@@ -1,0 +1,40 @@
+# Notes on Server-side DataSource Implementations
+
+[← Back to API Index](../main.md)
+
+---
+
+## KB Topic: Notes on Server-side DataSource Implementations
+
+### Description
+NOTE: This section includes references to server-side classes and methods; you can find the documentation for these in the server-side Javadocs.
+
+Bear in mind the following points when working with DataSources (whether custom or built-in) on the SmartClient Server:
+
+*   There is no requirement or expectation that DataSource subclasses be threadsafe. As long as you use documented techniques for creating DataSource instances, the server framework will ensure that no single instance is used concurrently by more than one thread.
+
+*   If you are using [Spring-injected dataSources](springIntegration.md#kb-topic-integration-with-spring), note that the default scope for a Spring bean is "singleton". This means that a single instance of the bean is cached by Spring and returned every time the framework code asks for that DataSource. This pattern prevents the SmartClient framework from making the above-mentioned guarantee that no single instance will be used by multiple threads, and can lead to unpleasant concurrency bugs. The solution is to mark your Spring beans with a scope of "prototype" (you could also use "request", but SmartClient caches DataSource instances per-HttpServletRequest anyway, so nothing is gained by doing that). See the [Spring documentation](http://docs.spring.io/spring/docs/3.2.5.RELEASE/spring-framework-reference/html/beans.html#beans-factory-scopes) for further information about bean scope.
+    
+*   DataSource instances can safely be retained for use multiple times in a given HTTP request; this presents no thread-safety issues unless you specifically introduce them by, eg, creating a new DSRequest and executing it in its own thread. However, note that mixing [transactional](../classes/DataSource.md#attr-datasourceautojointransactions) and non-transactional operations on the same DataSource instance in a single HTTP request can lead to connection leaks if you are using the built-in Hibernate or JPA DataSource.
+
+*   If the [server.properties](server_properties.md#kb-topic-serverproperties-file) attribute `datasource.cacheFailedLookups` is set, the server remembers the names of DataSources it failed to look up, and does not attempt to look them up again (until the server is restarted). This provides a negligible performance improvement in normal circumstances, but can provide a more significant benefit in cases of questionable usage where DataSources or field types are declared server-side, for use purely client-side. Note, if you set this flag, a DataSource that you introduce in the middle of a running application will not be picked up if the system has already cached a failed lookup of that DataSource.
+
+*   If the [server.properties](server_properties.md#kb-topic-serverproperties-file) attribute `datasources.pool.enabled` is set, DataSource instances are automatically cached in an in-memory pool. This caching is smart if `server.properties` flag `datasources.enableUpToDateCheck` is set: if the underlying `.ds.xml` file changes, cached instances are discarded and rebuilt. **IMPORTANT:** This facility is intended as a convenience for use on development servers only, and is only set to true by default in the `smartclientSDK` directory, which is a self-contained development environment that contains the embedded servlet engine, embedded database, examples, and documentation. With `enableUpToDateCheck:true`, your application may end up using mixed versions of DataSources in a given HttpRequest, and this could lead to severe consequences including data corruption. Consider, for example, the interaction between two DataSources that have been redesigned and the server ends up using an older version of one DataSource with a newer version of another; there are unlimited ways in which that kind of scenario could prove disastrous. In short, setting `enableUpToDateCheck:true` is not safe for production environments - **do not switch it on in production!**
+    
+    *   Related, there is a second flag, `datasources.enableUpToDateCheckForComponentSchema`. This is the same as `enableUpToDateCheck`, but it controls whether we do the up-to-date checking in the specific context of processing [Component Schema](componentSchema.md#kb-topic-component-schema). We make the distinction because, even if you want to use up-to-date checking for your "ordinary" dataSources, most people will not have a requirement to support dynamically changing Component Schema - it would only be necessary if you were building some kind of visual tool like our [Reify](reify.md#kb-topic-reify-overview) low-code platform, or possibly something based on the [Dashboards and Tools Framework](devTools.md#kb-topic-dashboards--tools-framework-overview). If you leave this flag unset, it will use the setting of `datasources.enableUpToDateCheck`
+
+*   If pooling is not switched on, DataSource instances are constructed new as required. Whether or not pooling is enabled, new DataSource instances are always constructed using cached configuration for better performance. The configuration file (`.ds.xml` file) is read the first time the DataSource is requested; thereafter, we will only re-read the configuration file if its last-changed timestamp changes. This scheme combines the performance benefits of caching with the with the convenience of being able to change a `.ds.xml` file and pick up the changes without restarting the server.
+
+*   The safe way to obtain a DataSource instance is to use `RPCManager.getDataSource()`. If pooling is enabled, this is the only way to obtain a DataSource instance with the guarantee that it will be returned to the pool at the end of request processing.
+
+*   If you are using the `DynamicDSGenerator` to provide DataSources to the framework dynamically:
+    
+    *   You are expected to use one of the `DataSource.fromXML()` APIs to construct your DataSources from an XML document or String of XML text
+    
+    *   Do not use normal Java instantiation techniques like `new DataSource()`, as this will introduce thread-safety issues
+    
+    *   Return a new DataSource instance each time - returning the same DataSource twice will introduce thread-safety issues. If you are concerned about performance, ensure pooling is enabled as described above - this will mean that the DataSource you return will be automatically cached and re-used, so your DynamicDSGenerator will only be called enough times to populate the pool. If you are still concerned about performance, cache the XML String that you pass to `DataSource.fromXML()`.
+    
+    *   For many applications of `DynamicDSGenerator`, pooling is inappropriate because the returned DataSource for a given name might be different each time the generator is called. For this reason, pooling of dynamic DataSources is disabled by default. To enable pooling for dynamically-generated DataSources, set the [server.properties](server_properties.md#kb-topic-serverproperties-file) flag `datasources.poolDynamicDataSources` to true. Keep in mind, that if pooling for dynamic DataSources is enabled, then DataSource definition must be the same for the same DataSource ID. NOTE: Here, "dynamic DataSource" means a DataSource whose name would cause the framework to invoke a DynamicDSGenerator, which doesn't necessarily mean that the generator would actually create a dynamic DataSource. As the server-side documentation for `DynamicDSGenerator.getDataSource()` states, a generator can simply return null to decline the opportunity to create a dynamic DataSource. Therefore, if the proper operation of pooling is important to you, avoid patterns of `DynamicDSGenerator` usage that involve registering more generically than you need to. In particular, avoid the `addDynamicDSGenerator()` signature that does not take a prefix or regex parameter - this will cause the pooling subsystem to regard **all** DataSources as dynamic, and will effectively disable all DataSource pooling.
+
+---

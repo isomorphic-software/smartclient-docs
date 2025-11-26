@@ -1,6 +1,6 @@
 # CalendarEvent Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -77,7 +77,7 @@ Note that the recommended approach for styling events is to set a [custom CSS st
 ## Attr: CalendarEvent.lane
 
 ### Description
-When in Timeline mode, or when [Calendar.showDayLanes](Calendar.md#attr-calendarshowdaylanes) is true, a string that represents the name of the [lane](Calendar.md#attr-calendarlanes) this [CalendarEvent](../main.md#object-calendarevent) should sit in. The name of this field within the CalendarEvent can be changed via [Calendar.laneNameField](Calendar.md#attr-calendarlanenamefield).
+When in Timeline mode, or when [Calendar.showDayLanes](Calendar.md#attr-calendarshowdaylanes) is true, a string that represents the name of the [lane](Calendar.md#attr-calendarlanes) this [CalendarEvent](../reference.md#object-calendarevent) should sit in. The name of this field within the CalendarEvent can be changed via [Calendar.laneNameField](Calendar.md#attr-calendarlanenamefield).
 
 **Flags**: IRW
 
@@ -85,7 +85,7 @@ When in Timeline mode, or when [Calendar.showDayLanes](Calendar.md#attr-calendar
 ## Attr: CalendarEvent.startDate
 
 ### Description
-Date object which represents the start date of a [CalendarEvent](../main.md#object-calendarevent). The name of this field within the CalendarEvent can be changed via [Calendar.startDateField](Calendar.md#attr-calendarstartdatefield)
+Date object which represents the start date of a [CalendarEvent](../reference.md#object-calendarevent). The name of this field within the CalendarEvent can be changed via [Calendar.startDateField](Calendar.md#attr-calendarstartdatefield)
 
 **Flags**: IRW
 
@@ -131,7 +131,7 @@ Note that the recommended approach for styling events is to set a [custom CSS st
 ## Attr: CalendarEvent.name
 
 ### Description
-String which represents the name of a [CalendarEvent](../main.md#object-calendarevent) The name of this field within the CalendarEvent can be changed via [Calendar.nameField](Calendar.md#attr-calendarnamefield)
+String which represents the name of a [CalendarEvent](../reference.md#object-calendarevent) The name of this field within the CalendarEvent can be changed via [Calendar.nameField](Calendar.md#attr-calendarnamefield)
 
 **Flags**: IRW
 
@@ -147,7 +147,7 @@ When a [duration](#attr-calendareventduration) is set for this event, this is th
 ## Attr: CalendarEvent.description
 
 ### Description
-String which represents the description of a [CalendarEvent](../main.md#object-calendarevent) The name of this field within the CalendarEvent can be changed via [Calendar.descriptionField](Calendar.md#attr-calendardescriptionfield)
+String which represents the description of a [CalendarEvent](../reference.md#object-calendarevent) The name of this field within the CalendarEvent can be changed via [Calendar.descriptionField](Calendar.md#attr-calendardescriptionfield)
 
 **Flags**: IRW
 
@@ -155,7 +155,7 @@ String which represents the description of a [CalendarEvent](../main.md#object-c
 ## Attr: CalendarEvent.sublane
 
 ### Description
-When in Timeline mode, or when [Calendar.showDayLanes](Calendar.md#attr-calendarshowdaylanes) is true, a string that represents the name of the [sublane](Lane.md#attr-lanesublanes) this [CalendarEvent](../main.md#object-calendarevent) should sit in. The name of this field within the CalendarEvent can be changed via [Calendar.sublaneNameField](Calendar.md#attr-calendarsublanenamefield).
+When in Timeline mode, or when [Calendar.showDayLanes](Calendar.md#attr-calendarshowdaylanes) is true, a string that represents the name of the [sublane](Lane.md#attr-lanesublanes) this [CalendarEvent](../reference.md#object-calendarevent) should sit in. The name of this field within the CalendarEvent can be changed via [Calendar.sublaneNameField](Calendar.md#attr-calendarsublanenamefield).
 
 **Flags**: IRW
 
@@ -193,7 +193,7 @@ The duration of this event. May be specified instead of an [end date](#attr-cale
 ## Attr: CalendarEvent.endDate
 
 ### Description
-Date object which represents the end date of a [CalendarEvent](../main.md#object-calendarevent) The name of this field within the CalendarEvent can be changed via [Calendar.endDateField](Calendar.md#attr-calendarenddatefield)
+Date object which represents the end date of a [CalendarEvent](../reference.md#object-calendarevent) The name of this field within the CalendarEvent can be changed via [Calendar.endDateField](Calendar.md#attr-calendarenddatefield)
 
 **Flags**: IRW
 

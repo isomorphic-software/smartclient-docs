@@ -1,6 +1,6 @@
 # TextItem Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -15,7 +15,7 @@ FormItem for managing a text field.
 ## ClassAttr: TextItem.LOWER
 
 ### Description
-A declared value of the enum type [CharacterCasing](../main.md#type-charactercasing).
+A declared value of the enum type [CharacterCasing](../reference.md#type-charactercasing).
 
 **Flags**: R
 
@@ -23,7 +23,7 @@ A declared value of the enum type [CharacterCasing](../main.md#type-charactercas
 ## ClassAttr: TextItem.DEFAULT
 
 ### Description
-A declared value of the enum type [CharacterCasing](../main.md#type-charactercasing).
+A declared value of the enum type [CharacterCasing](../reference.md#type-charactercasing).
 
 **Flags**: R
 
@@ -41,7 +41,7 @@ Note that this is an advanced property and in most cases developers do not need 
 ## ClassAttr: TextItem.UPPER
 
 ### Description
-A declared value of the enum type [CharacterCasing](../main.md#type-charactercasing).
+A declared value of the enum type [CharacterCasing](../reference.md#type-charactercasing).
 
 **Flags**: R
 
@@ -93,7 +93,7 @@ Allows the [selectOnClick](DynamicForm.md#attr-dynamicformselectonclick) behavio
 ## Attr: TextItem.textBoxStyle
 
 ### Description
-Base CSS class name for this item's input element. NOTE: See the [CompoundFormItem_skinning](../main.md#kb-topic-compoundformitem_skinning) discussion for special skinning considerations.
+Base CSS class name for this item's input element. NOTE: See the [CompoundFormItem_skinning](../reference.md#kb-topic-compoundformitem_skinning) discussion for special skinning considerations.
 
 For a rounded text item, you can set `textBoxStyle` to "roundedTextItem". This style exists only in Enterprise, EnterpriseBlue and Graphite skins. There is no corresponding rounded style for SelectItem or ComboBoxItem as this creates an awkward seam with the pop-up list (and a rounded pop-up list wouldn't help: data could not be flush to corners). For these reasons we recommend rounded inputs only in limited cases like single standalone fields.
 
@@ -109,7 +109,7 @@ For a rounded text item, you can set `textBoxStyle` to "roundedTextItem". This s
 ### Description
 If set, the maximum number of characters for this field. If [enforceLength](#attr-textitemenforcelength) is set to true, user input will be limited to this value, and values exceeding this length passed to [setValue()](FormItem.md#method-formitemsetvalue) will be trimmed. Otherwise values exceeding the specified length will raise an error on validation.
 
-If the item has a numeric type, like [integer](../main.md#class-integeritem) or [float](../main.md#class-floatitem), length is applied to the raw number value, after any specified [decimalPrecision](FormItem.md#attr-formitemdecimalprecision) and [decimalPad](FormItem.md#attr-formitemdecimalpad) but before any formatters - this means the string measured includes sign and decimal placeholder, and padded decimal places as required, but not thousands separators or any custom formatting.
+If the item has a numeric type, like [integer](../reference.md#class-integeritem) or [float](../reference.md#class-floatitem), length is applied to the raw number value, after any specified [decimalPrecision](FormItem.md#attr-formitemdecimalprecision) and [decimalPad](FormItem.md#attr-formitemdecimalpad) but before any formatters - this means the string measured includes sign and decimal placeholder, and padded decimal places as required, but not thousands separators or any custom formatting.
 
 See also [DataSourceField.length](DataSourceField.md#attr-datasourcefieldlength).
 
@@ -662,8 +662,8 @@ Puts focus into this form item and selects characters between the given indices.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| start | [int](../main.md#type-int) | false | — | selection starting character index |
-| end | [int](../main.md#type-int) | false | — | end of selection character index |
+| start | [int](../reference.md#type-int) | false | — | selection starting character index |
+| end | [int](../reference.md#type-int) | false | — | end of selection character index |
 
 ---
 ## Method: TextItem.setMask
@@ -720,7 +720,7 @@ Returns the hint text for this item. Default implementation returns [FormItem.hi
 
 ### Returns
 
-`[HTMLString](../main.md#type-htmlstring)` — HTML to show as the hint for the item
+`[HTMLString](../reference.md#type-htmlstring)` — HTML to show as the hint for the item
 
 ### Groups
 
@@ -742,13 +742,13 @@ The default behavior is that the [titleStyle](FormItem.md#attr-formitemtitlestyl
 |------|------|----------|---------|-------------|
 | form | [DynamicForm](#type-dynamicform) | false | — | the managing `DynamicForm` instance. |
 | item | [FormItem](#type-formitem) | false | — | the form item itself (also available as "this"). |
-| pendingStatus | [boolean](../main.md#type-boolean) | false | — | `true` if the item should show its pending visual state; `false` otherwise. |
+| pendingStatus | [boolean](../reference.md#type-boolean) | false | — | `true` if the item should show its pending visual state; `false` otherwise. |
 | newValue | [Any](#type-any) | false | — | the current form item value. |
 | value | [Any](#type-any) | false | — | the value that would be restored by a call to [DynamicForm.resetValues](DynamicForm.md#method-dynamicformresetvalues). |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — `false` to cancel the default behavior.
+`[boolean](../reference.md#type-boolean)` — `false` to cancel the default behavior.
 
 ---
 ## Method: TextItem.transformPastedValue

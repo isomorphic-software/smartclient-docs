@@ -1,6 +1,6 @@
 # LoadProjectSettings Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -108,9 +108,9 @@ Note that this setting only applies when using [Reify.loadProject](#method-reify
 ## Attr: LoadProjectSettings.dataContext
 
 ### Description
-[DataContext](../main.md#object-datacontext) that will be provided to the top-level component as [dataContext](Canvas.md#attr-canvasdatacontext) in each screen cached for the project.
+[DataContext](../reference.md#object-datacontext) that will be provided to the top-level component as [dataContext](Canvas.md#attr-canvasdatacontext) in each screen cached for the project.
 
-To understand how `dataContext` is used to automatically populate [DataBoundComponents](../main.md#interface-databoundcomponent), see [Canvas.autoPopulateData](Canvas.md#attr-canvasautopopulatedata).
+To understand how `dataContext` is used to automatically populate [DataBoundComponents](../reference.md#interface-databoundcomponent), see [Canvas.autoPopulateData](Canvas.md#attr-canvasautopopulatedata).
 
 ### Groups
 

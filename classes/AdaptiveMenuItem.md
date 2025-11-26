@@ -1,6 +1,6 @@
 # AdaptiveMenuItem Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -20,12 +20,12 @@ Note that the `menu` parameter may be null if this `AdaptiveMenuItem` is not cur
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | target | [Canvas](#type-canvas) | false | — | [target](Menu.md#attr-menutarget) attribute for the top level menu. |
-| menu | [Menu](#type-menu) | false | — | The [Menu](Menu.md#class-menu) instance of which this [MenuItem](../main_2.md#object-menuitem) is a member, or null if this item is not currently displayed in a Menu |
+| menu | [Menu](#type-menu) | false | — | The [Menu](Menu.md#class-menu) instance of which this [MenuItem](../reference_2.md#object-menuitem) is a member, or null if this item is not currently displayed in a Menu |
 | item | [AdaptiveMenuItem](#type-adaptivemenuitem) | false | — | contains the reference to the current item |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — Return true to show a checkmark by this menu item
+`[boolean](../reference.md#type-boolean)` — Return true to show a checkmark by this menu item
 
 ### Groups
 
@@ -43,9 +43,9 @@ Note that the `menu` parameter may be null if this `AdaptiveMenuItem` is not cur
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| target | [Canvas](#type-canvas) | false | — | for a menu shown as a context menu, the Canvas the menu was shown on. Otherwise the [Menu](Menu.md#class-menu) instance of which this [MenuItem](../main_2.md#object-menuitem) is a member. |
-| item | [MenuItem](#type-menuitem) | false | — | The [MenuItem](../main_2.md#object-menuitem) that was clicked on. |
-| menu | [Menu](#type-menu) | false | — | The [Menu](Menu.md#class-menu) instance of which this [MenuItem](../main_2.md#object-menuitem) is a member, or null if this item is not currently displayed in a Menu |
+| target | [Canvas](#type-canvas) | false | — | for a menu shown as a context menu, the Canvas the menu was shown on. Otherwise the [Menu](Menu.md#class-menu) instance of which this [MenuItem](../reference_2.md#object-menuitem) is a member. |
+| item | [MenuItem](#type-menuitem) | false | — | The [MenuItem](../reference_2.md#object-menuitem) that was clicked on. |
+| menu | [Menu](#type-menu) | false | — | The [Menu](Menu.md#class-menu) instance of which this [MenuItem](../reference_2.md#object-menuitem) is a member, or null if this item is not currently displayed in a Menu |
 | colNum | [number](#type-number) | true | — | Index of the column the user clicked. May be null if the user activated the menu via a keyboard event. |
 
 ### Groups
@@ -69,7 +69,7 @@ Note that the `menu` parameter may be null if this `AdaptiveMenuItem` is not cur
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | target | [Canvas](#type-canvas) | false | — | [target](Menu.md#attr-menutarget) attribute for the top level menu. |
-| menu | [Menu](#type-menu) | false | — | The [Menu](Menu.md#class-menu) instance of which this [MenuItem](../main_2.md#object-menuitem) is a member, or null if this item is not currently displayed in a Menu |
+| menu | [Menu](#type-menu) | false | — | The [Menu](Menu.md#class-menu) instance of which this [MenuItem](../reference_2.md#object-menuitem) is a member, or null if this item is not currently displayed in a Menu |
 | item | [AdaptiveMenuItem](#type-adaptivemenuitem) | false | — | contains the reference to the current item |
 
 ### Returns
@@ -97,12 +97,12 @@ Note that the `menu` parameter may be null if this `AdaptiveMenuItem` is not cur
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | target | [Canvas](#type-canvas) | false | — | [target](Menu.md#attr-menutarget) attribute for the top level menu. |
-| menu | [Menu](#type-menu) | false | — | The [Menu](Menu.md#class-menu) instance of which this [MenuItem](../main_2.md#object-menuitem) is a member, or null if this item is not currently displayed in a Menu |
+| menu | [Menu](#type-menu) | false | — | The [Menu](Menu.md#class-menu) instance of which this [MenuItem](../reference_2.md#object-menuitem) is a member, or null if this item is not currently displayed in a Menu |
 | item | [AdaptiveMenuItem](#type-adaptivemenuitem) | false | — | contains the reference to the current item |
 
 ### Returns
 
-`[SCImgURL](../main.md#type-scimgurl)` — the url of this menuItems icon
+`[SCImgURL](../reference.md#type-scimgurl)` — the url of this menuItems icon
 
 ### Groups
 
@@ -130,7 +130,7 @@ Contains the condition that will enable or disable the current menuItem. The han
 
 If you don't need to set this state dynamically, use [MenuItem.enabled](MenuItem.md#attr-menuitemenabled) instead.
 
-Alternatively, you can use [Criteria](../main_2.md#type-criteria) to declare when a MenuItem is enabled via [MenuItem.enableWhen](MenuItem.md#attr-menuitemenablewhen).
+Alternatively, you can use [Criteria](../reference_2.md#type-criteria) to declare when a MenuItem is enabled via [MenuItem.enableWhen](MenuItem.md#attr-menuitemenablewhen).
 
 May be defined as a [stringMethod](../kb_topics/stringMethods.md#kb-topic-string-methods-overview).
 
@@ -141,12 +141,12 @@ Note that the `menu` parameter may be null if this `AdaptiveMenuItem` is not cur
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | target | [Canvas](#type-canvas) | false | — | [target](Menu.md#attr-menutarget) attribute for the top level menu. |
-| menu | [Menu](#type-menu) | false | — | The [Menu](Menu.md#class-menu) instance of which this [MenuItem](../main_2.md#object-menuitem) is a member, or null if this item is not currently displayed in a Menu |
+| menu | [Menu](#type-menu) | false | — | The [Menu](Menu.md#class-menu) instance of which this [MenuItem](../reference_2.md#object-menuitem) is a member, or null if this item is not currently displayed in a Menu |
 | item | [AdaptiveMenuItem](#type-adaptivemenuitem) | false | — | contains the reference to the current item |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — Return true to show a checkmark by this menu item
+`[boolean](../reference.md#type-boolean)` — Return true to show a checkmark by this menu item
 
 ### Groups
 

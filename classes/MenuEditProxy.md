@@ -1,12 +1,12 @@
 # MenuEditProxy Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
 ## Class: MenuEditProxy
 
-*Inherits from:* [CanvasEditProxy](../main.md#class-canvaseditproxy)
+*Inherits from:* [CanvasEditProxy](../reference.md#class-canvaseditproxy)
 
 ### Description
 [EditProxy](EditProxy.md#class-editproxy) that handles [MenuButton](MenuButton.md#class-menubutton) and [MenuBar](MenuBar.md#class-menubar) objects when editMode is enabled.

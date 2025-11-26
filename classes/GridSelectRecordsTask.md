@@ -1,6 +1,6 @@
 # GridSelectRecordsTask Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -46,7 +46,7 @@ Set to `false` to clear selection.
 ## Attr: GridSelectRecordsTask.selectMultiple
 
 ### Description
-Should multiple records matching [Criteria](../main_2.md#type-criteria) be affected? If set to `false` only the first matching record is affected.
+Should multiple records matching [Criteria](../reference_2.md#type-criteria) be affected? If set to `false` only the first matching record is affected.
 
 **Flags**: IR
 

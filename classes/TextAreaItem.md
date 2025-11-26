@@ -1,6 +1,6 @@
 # TextAreaItem Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -15,7 +15,7 @@ Class for editable multi-line text areas (uses HTML ``<TEXTAREA>`` object)
 ## ClassAttr: TextAreaItem.HARD
 
 ### Description
-A declared value of the enum type [TEXTAREA\_WRAP](../main.md#type-textarea_wrap).
+A declared value of the enum type [TEXTAREA\_WRAP](../reference.md#type-textarea_wrap).
 
 **Flags**: R
 
@@ -23,7 +23,7 @@ A declared value of the enum type [TEXTAREA\_WRAP](../main.md#type-textarea_wrap
 ## ClassAttr: TextAreaItem.SOFT
 
 ### Description
-A declared value of the enum type [TEXTAREA\_WRAP](../main.md#type-textarea_wrap).
+A declared value of the enum type [TEXTAREA\_WRAP](../reference.md#type-textarea_wrap).
 
 **Flags**: R
 
@@ -31,7 +31,7 @@ A declared value of the enum type [TEXTAREA\_WRAP](../main.md#type-textarea_wrap
 ## ClassAttr: TextAreaItem.OFF
 
 ### Description
-A declared value of the enum type [TEXTAREA\_WRAP](../main.md#type-textarea_wrap).
+A declared value of the enum type [TEXTAREA\_WRAP](../reference.md#type-textarea_wrap).
 
 **Flags**: R
 
@@ -51,7 +51,7 @@ Allows the [selectOnFocus](DynamicForm.md#attr-dynamicformselectonfocus) behavio
 ## Attr: TextAreaItem.textBoxStyle
 
 ### Description
-Base CSS class to apply to this item's input element. NOTE: See the [CompoundFormItem_skinning](../main.md#kb-topic-compoundformitem_skinning) discussion for special skinning considerations.
+Base CSS class to apply to this item's input element. NOTE: See the [CompoundFormItem_skinning](../reference.md#kb-topic-compoundformitem_skinning) discussion for special skinning considerations.
 
 ### Groups
 
@@ -496,8 +496,8 @@ Puts focus into this form item and selects characters between the given indices.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| start | [int](../main.md#type-int) | false | — | selection starting character index |
-| end | [int](../main.md#type-int) | false | — | end of selection character index |
+| start | [int](../reference.md#type-int) | false | — | selection starting character index |
+| end | [int](../reference.md#type-int) | false | — | end of selection character index |
 
 ---
 ## Method: TextAreaItem.deselectValue

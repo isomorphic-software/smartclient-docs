@@ -1,13 +1,13 @@
 # <isomorphic:loadUI>
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
 ## KB Topic: <isomorphic:loadUI>
 
 ### Description
-See [jspTags](../main.md#kb-topic-smartclient-jsp-tags)
+See [jspTags](../reference.md#kb-topic-smartclient-jsp-tags)
 
 _produces:_ JavaScript
 

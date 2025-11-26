@@ -1,6 +1,6 @@
 # Server logging
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -69,7 +69,7 @@ Set category logging level to "DEBUG" to log all slow queries:
  <Logger name="com.isomorphic.SLOW_SQL" level="DEBUG" />
  
 ```
-or enable logging for specific [operation types](../main.md#type-dsoperationtype):
+or enable logging for specific [operation types](../reference.md#type-dsoperationtype):
 ```
  <Logger name="com.isomorphic.SLOW_SQL.fetch" level="DEBUG" />
  <Logger name="com.isomorphic.SLOW_SQL.add" level="DEBUG" />

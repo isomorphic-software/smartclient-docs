@@ -1,6 +1,6 @@
 # StyleSheetHandler Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -56,7 +56,7 @@ Rename the passed _oldClass_ to _newClass_ in all rules that reference it.
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — returns true if a class was renamed, false otherwise
+`[boolean](../reference.md#type-boolean)` — returns true if a class was renamed, false otherwise
 
 ---
 ## Method: StyleSheetHandler.loaded
@@ -101,7 +101,7 @@ The passed 'cssText' should contain semi-colon -separated CSS settings only, not
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — returns true if CSS was applied, false otherwise
+`[boolean](../reference.md#type-boolean)` — returns true if CSS was applied, false otherwise
 
 ---
 ## Method: StyleSheetHandler.injectCssText
@@ -119,7 +119,7 @@ The passed 'cssText' string should contain one or more selectors, each in the fo
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — returns true if CSS was injected, false otherwise
+`[boolean](../reference.md#type-boolean)` — returns true if CSS was injected, false otherwise
 
 ---
 ## Method: StyleSheetHandler.filterCssText
@@ -153,7 +153,7 @@ Remove the passed CSS class from the [stylesheet](#attr-stylesheethandlerstylesh
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — returns true if CSS was removed, false otherwise
+`[boolean](../reference.md#type-boolean)` — returns true if CSS was removed, false otherwise
 
 ---
 ## Method: StyleSheetHandler.getClassList

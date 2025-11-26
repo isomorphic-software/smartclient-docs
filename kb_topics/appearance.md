@@ -1,6 +1,6 @@
 # appearance
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -11,15 +11,15 @@ Properties defining an object's appearance
 
 ### Related
 
-- [Alignment](../main_2.md#type-alignment)
-- [VerticalAlignment](../main.md#type-verticalalignment)
-- [Direction](../main_2.md#type-direction)
-- [ImageStyle](../main.md#type-imagestyle)
-- [BackgroundRepeat](../main_2.md#type-backgroundrepeat)
-- [CSSStyleName](../main.md#type-cssstylename)
-- [CSSColor](../main_2.md#type-csscolor)
-- [SortArrow](../main_2.md#type-sortarrow)
-- [ListGridComponent](../main_2.md#type-listgridcomponent)
+- [Alignment](../reference_2.md#type-alignment)
+- [VerticalAlignment](../reference.md#type-verticalalignment)
+- [Direction](../reference_2.md#type-direction)
+- [ImageStyle](../reference.md#type-imagestyle)
+- [BackgroundRepeat](../reference_2.md#type-backgroundrepeat)
+- [CSSStyleName](../reference.md#type-cssstylename)
+- [CSSColor](../reference_2.md#type-csscolor)
+- [SortArrow](../reference_2.md#type-sortarrow)
+- [ListGridComponent](../reference_2.md#type-listgridcomponent)
 - [Page.isRTL](../classes/Page.md#classmethod-pageisrtl)
 - [Canvas.getPrintStyleName](../classes/Canvas.md#method-canvasgetprintstylename)
 - [Canvas.setPadding](../classes/Canvas.md#method-canvassetpadding)
@@ -387,7 +387,7 @@ Properties defining an object's appearance
 - [CheckboxItem.uncheckedImage](../classes/CheckboxItem.md#attr-checkboxitemuncheckedimage)
 - [CheckboxItem.partialSelectedImage](../classes/CheckboxItem.md#attr-checkboxitempartialselectedimage)
 - [CheckboxItem.unsetImage](../classes/CheckboxItem.md#attr-checkboxitemunsetimage)
-- [NativeCheckboxItem.textBoxStyle](../main.md#attr-nativecheckboxitemtextboxstyle)
+- [NativeCheckboxItem.textBoxStyle](../reference.md#attr-nativecheckboxitemtextboxstyle)
 - [HeaderItem.defaultValue](../classes/HeaderItem.md#attr-headeritemdefaultvalue)
 - [HeaderItem.showTitle](../classes/HeaderItem.md#attr-headeritemshowtitle)
 - [HeaderItem.textBoxStyle](../classes/HeaderItem.md#attr-headeritemtextboxstyle)
@@ -419,13 +419,13 @@ Properties defining an object's appearance
 - [DateItem.startDate](../classes/DateItem.md#attr-dateitemstartdate)
 - [DateItem.endDate](../classes/DateItem.md#attr-dateitemenddate)
 - [DateItem.centuryThreshold](../classes/DateItem.md#attr-dateitemcenturythreshold)
-- [SpacerItem.showTitle](../main.md#attr-spaceritemshowtitle)
-- [SpacerItem.width](../main.md#attr-spaceritemwidth)
-- [SpacerItem.height](../main.md#attr-spaceritemheight)
-- [RowSpacerItem.showTitle](../main.md#attr-rowspaceritemshowtitle)
-- [RowSpacerItem.colSpan](../main.md#attr-rowspaceritemcolspan)
-- [RowSpacerItem.startRow](../main.md#attr-rowspaceritemstartrow)
-- [RowSpacerItem.endRow](../main.md#attr-rowspaceritemendrow)
+- [SpacerItem.showTitle](../reference.md#attr-spaceritemshowtitle)
+- [SpacerItem.width](../reference.md#attr-spaceritemwidth)
+- [SpacerItem.height](../reference.md#attr-spaceritemheight)
+- [RowSpacerItem.showTitle](../reference.md#attr-rowspaceritemshowtitle)
+- [RowSpacerItem.colSpan](../reference.md#attr-rowspaceritemcolspan)
+- [RowSpacerItem.startRow](../reference.md#attr-rowspaceritemstartrow)
+- [RowSpacerItem.endRow](../reference.md#attr-rowspaceritemendrow)
 - [TextAreaItem.wrap](../classes/TextAreaItem.md#attr-textareaitemwrap)
 - [TextAreaItem.width](../classes/TextAreaItem.md#attr-textareaitemwidth)
 - [TextAreaItem.height](../classes/TextAreaItem.md#attr-textareaitemheight)

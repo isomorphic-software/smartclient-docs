@@ -1,6 +1,6 @@
 # DrawRect Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -87,12 +87,12 @@ Returns true if the given point in the drawing coordinate system is within this 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| x | [int](../main.md#type-int) | false | — | X coordinate of the test point. |
-| y | [int](../main.md#type-int) | false | — | Y coordinate of the test point. |
+| x | [int](../reference.md#type-int) | false | — | X coordinate of the test point. |
+| y | [int](../reference.md#type-int) | false | — | Y coordinate of the test point. |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — —
+`[boolean](../reference.md#type-boolean)` — —
 
 ---
 ## Method: DrawRect.moveTo
@@ -104,8 +104,8 @@ Move the drawRect to the specified position
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| left | [Integer](../main_2.md#type-integer) | false | — | new left coordinate |
-| top | [Integer](../main_2.md#type-integer) | false | — | new top coordinate |
+| left | [Integer](../reference_2.md#type-integer) | false | — | new left coordinate |
+| top | [Integer](../reference_2.md#type-integer) | false | — | new top coordinate |
 
 ---
 ## Method: DrawRect.getBoundingBox
@@ -127,10 +127,10 @@ Move and resize the drawRect to match the specified coordinates and size.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| left | [Integer](../main_2.md#type-integer) | false | — | new left coordinate |
-| top | [Integer](../main_2.md#type-integer) | false | — | new top coordinate |
-| width | [Integer](../main_2.md#type-integer) | false | — | new width |
-| height | [Integer](../main_2.md#type-integer) | false | — | new height |
+| left | [Integer](../reference_2.md#type-integer) | false | — | new left coordinate |
+| top | [Integer](../reference_2.md#type-integer) | false | — | new top coordinate |
+| width | [Integer](../reference_2.md#type-integer) | false | — | new width |
+| height | [Integer](../reference_2.md#type-integer) | false | — | new height |
 
 ---
 ## Method: DrawRect.getCenter
@@ -152,7 +152,7 @@ Set the height of the drawRect
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| height | [Distance](../main.md#type-distance) | false | — | new height |
+| height | [Distance](../reference.md#type-distance) | false | — | new height |
 
 ---
 ## Method: DrawRect.resizeTo
@@ -164,8 +164,8 @@ Resize to the specified size
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| width | [Integer](../main_2.md#type-integer) | false | — | new width |
-| height | [Integer](../main_2.md#type-integer) | false | — | new height |
+| width | [Integer](../reference_2.md#type-integer) | false | — | new width |
+| height | [Integer](../reference_2.md#type-integer) | false | — | new height |
 
 ---
 ## Method: DrawRect.setCenter
@@ -177,8 +177,8 @@ Move the drawRect such that it is centered over the specified coordinates.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| left | [Coordinate](../main.md#type-coordinate) | false | — | left coordinate for new center position |
-| top | [Coordinate](../main.md#type-coordinate) | false | — | top coordinate for new center postiion |
+| left | [Coordinate](../reference.md#type-coordinate) | false | — | left coordinate for new center position |
+| top | [Coordinate](../reference.md#type-coordinate) | false | — | top coordinate for new center postiion |
 
 ---
 ## Method: DrawRect.setTop
@@ -190,7 +190,7 @@ Set the top coordinate of the drawRect
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| top | [Coordinate](../main.md#type-coordinate) | false | — | new top coordinate |
+| top | [Coordinate](../reference.md#type-coordinate) | false | — | new top coordinate |
 
 ---
 ## Method: DrawRect.moveBy
@@ -202,8 +202,8 @@ Move the drawRect by the specified delta
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| dX | [Distance](../main.md#type-distance) | false | — | number of pixels to move horizontally |
-| dY | [Distance](../main.md#type-distance) | false | — | number of pixels to move vertically |
+| dX | [Distance](../reference.md#type-distance) | false | — | number of pixels to move horizontally |
+| dY | [Distance](../reference.md#type-distance) | false | — | number of pixels to move vertically |
 
 ---
 ## Method: DrawRect.setLeft
@@ -215,7 +215,7 @@ Set the left coordinate of the drawRect
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| left | [Coordinate](../main.md#type-coordinate) | false | — | new left coordinate |
+| left | [Coordinate](../reference.md#type-coordinate) | false | — | new left coordinate |
 
 ---
 ## Method: DrawRect.resizeBy
@@ -227,8 +227,8 @@ Resize by the specified delta
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| dX | [Distance](../main.md#type-distance) | false | — | number of pixels to resize by horizontally |
-| dY | [Distance](../main.md#type-distance) | false | — | number of pixels to resize by vertically |
+| dX | [Distance](../reference.md#type-distance) | false | — | number of pixels to resize by horizontally |
+| dY | [Distance](../reference.md#type-distance) | false | — | number of pixels to resize by vertically |
 
 ---
 ## Method: DrawRect.setWidth
@@ -240,7 +240,7 @@ Set the width of the drawRect
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| width | [Distance](../main.md#type-distance) | false | — | new width |
+| width | [Distance](../reference.md#type-distance) | false | — | new width |
 
 ---
 ## Method: DrawRect.setRounding
@@ -252,6 +252,6 @@ Setter method for [DrawRect.rounding](#attr-drawrectrounding)
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| rounding | [float](../main.md#type-float) | false | — | new rounding value. Should be between zero (a rectangle) and 1 (shorter edge is a semicircle) |
+| rounding | [float](../reference.md#type-float) | false | — | new rounding value. Should be between zero (a rectangle) and 1 (shorter edge is a semicircle) |
 
 ---

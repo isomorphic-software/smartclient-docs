@@ -1,6 +1,6 @@
 # Integration with JPA
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -22,7 +22,7 @@ To use JPA, set serverType="jpa" in your .ds.xml file, then set [beanClassName](
 ```
 [DataSource.autoDeriveSchema](../classes/DataSource.md#attr-datasourceautoderiveschema) is supported for deriving DataSource fields from JPA entities automatically (except with JPA 1.0; see below).
 
-Full support is provided for executing simple [Criteria](../main_2.md#type-criteria), with [AdvancedCriteria](../main.md#object-advancedcriteria) supported if you have Power Edition or above. However, note that there are limitations with case sensitive search in MySQL since MySQL automatically uses the 'like' operator in a case-insensitive manner and JPA does not correct this. See [MySQL Reference Manual :: C.5.5.1 Case Sensitivity in String Searches](http://dev.mysql.com/doc/refman/5.5/en/case-sensitivity.html) for more information.
+Full support is provided for executing simple [Criteria](../reference_2.md#type-criteria), with [AdvancedCriteria](../reference.md#object-advancedcriteria) supported if you have Power Edition or above. However, note that there are limitations with case sensitive search in MySQL since MySQL automatically uses the 'like' operator in a case-insensitive manner and JPA does not correct this. See [MySQL Reference Manual :: C.5.5.1 Case Sensitivity in String Searches](http://dev.mysql.com/doc/refman/5.5/en/case-sensitivity.html) for more information.
 
 If create a custom DataSource based on the built-in JPA functionality, subclass `com.isomorphic.jpa.JPA2DataSource`.
 
@@ -186,7 +186,7 @@ To use additional JPA configuration you have to set **`jpaConfig`** property in 
 ```
 **Transaction management:**
 
-*   Operating under [RPCManager](../classes/RPCManager.md#class-rpcmanager) (`[DSRequest](../main_2.md#object-dsrequest)` has reference to `[RPCManager](../classes/RPCManager.md#class-rpcmanager)`):
+*   Operating under [RPCManager](../classes/RPCManager.md#class-rpcmanager) (`[DSRequest](../reference_2.md#object-dsrequest)` has reference to `[RPCManager](../classes/RPCManager.md#class-rpcmanager)`):
     
     *   If participating in automatic transactions:
         *   retrieves existing transaction from `[RPCManager](../classes/RPCManager.md#class-rpcmanager)` (if available);

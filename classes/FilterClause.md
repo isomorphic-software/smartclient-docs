@@ -1,6 +1,6 @@
 # FilterClause Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -235,7 +235,7 @@ Return the criterion specified by this FilterClause.
 
 ### Returns
 
-`[Criteria](../main_2.md#type-criteria)` — The single criterion for this FilterClause
+`[Criteria](../reference_2.md#type-criteria)` — The single criterion for this FilterClause
 
 ---
 ## Method: FilterClause.getFilterBuilder
@@ -257,10 +257,10 @@ Note that the [Operator.valueType](Operator.md#attr-operatorvaluetype) impacts w
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| type | [FieldType](../main_2.md#type-fieldtype) | false | — | type of the DataSource field for this filter row |
+| type | [FieldType](../reference_2.md#type-fieldtype) | false | — | type of the DataSource field for this filter row |
 | fieldName | [String](#type-string) | false | — | name of the DataSource field for this filter row |
-| operatorId | [OperatorId](../main.md#type-operatorid) | false | — | [OperatorId](../main.md#type-operatorid) for the chosen operator |
-| itemType | [ValueItemType](../main.md#type-valueitemtype) | false | — | What valueItem is being generated. |
+| operatorId | [OperatorId](../reference.md#type-operatorid) | false | — | [OperatorId](../reference.md#type-operatorid) for the chosen operator |
+| itemType | [ValueItemType](../reference.md#type-valueitemtype) | false | — | What valueItem is being generated. |
 
 ### Returns
 
@@ -286,7 +286,7 @@ Remove this clause by destroy()ing it.
 ## Method: FilterClause.getFieldOperators
 
 ### Description
-Get the list of [operatorIds](../main.md#type-operatorid) that are valid for this field. By default, calls through to the same method on [filterBuilder](FilterBuilder.md#method-filterbuildergetfieldoperators), which defaults to all operators returned by [DataSource.getFieldOperators](DataSource.md#method-datasourcegetfieldoperators).
+Get the list of [operatorIds](../reference.md#type-operatorid) that are valid for this field. By default, calls through to the same method on [filterBuilder](FilterBuilder.md#method-filterbuildergetfieldoperators), which defaults to all operators returned by [DataSource.getFieldOperators](DataSource.md#method-datasourcegetfieldoperators).
 
 Called whenever the fieldName is changed.
 

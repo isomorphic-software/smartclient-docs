@@ -1,12 +1,12 @@
 # NavigationBar Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
 ## Class: NavigationBar
 
-*Inherits from:* [HLayout](../main.md#class-hlayout)
+*Inherits from:* [HLayout](../reference.md#class-hlayout)
 
 ### Description
 Navigation control implemented as a horizontal layout showing back and forward controls and a title.
@@ -149,7 +149,7 @@ If set to `false`, then the [rightButton](#attr-navigationbarrightbutton) is not
 ## Attr: NavigationBar.miniNavControl
 
 ### Description
-AutoChild of type [MiniNavControl](../main.md#class-mininavcontrol). Not shown by default (see [showMiniNavControl](#attr-navigationbarshowmininavcontrol)). Also, if a [customNavControl](#attr-navigationbarcustomnavcontrol) is provided, then the `customNavControl` is used instead of an automatically created `miniNavControl`.
+AutoChild of type [MiniNavControl](../reference.md#class-mininavcontrol). Not shown by default (see [showMiniNavControl](#attr-navigationbarshowmininavcontrol)). Also, if a [customNavControl](#attr-navigationbarcustomnavcontrol) is provided, then the `customNavControl` is used instead of an automatically created `miniNavControl`.
 
 **Flags**: IR
 
@@ -180,7 +180,7 @@ If there is not enough room for the title with the current titles of the [left](
 ## Attr: NavigationBar.miniNavAlign
 
 ### Description
-Placement of [MiniNavControl](../main.md#class-mininavcontrol), if present:
+Placement of [MiniNavControl](../reference.md#class-mininavcontrol), if present:
 
 *   "right" alignment places the miniNav on the far right
 *   "center" alignment places the miniNav in the center, or to the right of the title if the title is present
@@ -234,7 +234,7 @@ Notification method fired when the user clicks the [NavigationBar.leftButton](#a
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| direction | [NavigationDirection](../main.md#type-navigationdirection) | false | — | direction in which the user is attempting to navigate |
+| direction | [NavigationDirection](../reference.md#type-navigationdirection) | false | — | direction in which the user is attempting to navigate |
 
 ---
 ## Method: NavigationBar.setAlwaysShowLeftButtonTitle
@@ -246,7 +246,7 @@ Setter for [alwaysShowLeftButtonTitle](#attr-navigationbaralwaysshowleftbuttonti
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newAlwaysShowLeftButtonTitle | [boolean](../main.md#type-boolean) | false | — | new value for `alwaysShowLeftButtonTitle`. |
+| newAlwaysShowLeftButtonTitle | [boolean](../reference.md#type-boolean) | false | — | new value for `alwaysShowLeftButtonTitle`. |
 
 ---
 ## Method: NavigationBar.upClick
@@ -282,7 +282,7 @@ Setter for [shortLeftButtonTitle](#attr-navigationbarshortleftbuttontitle).
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newShortLeftButtonTitle | [HTMLString](../main.md#type-htmlstring) | false | — | new short title HTML. |
+| newShortLeftButtonTitle | [HTMLString](../reference.md#type-htmlstring) | false | — | new short title HTML. |
 
 ---
 ## Method: NavigationBar.setViewState
@@ -295,7 +295,7 @@ Sets multiple state attributes of this `NavigationBar` at once. If this `Navigat
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | viewState | [NavigationBarViewState](#type-navigationbarviewstate) | false | — | the new view state. |
-| direction | [NavigationDirection](../main.md#type-navigationdirection) | true | — | an optional direction for animation. If not specified or set to "none" then the state change will not be animated. The direction should be "forward" for operations that reveal new content and "back" for operations that reveal previously-displayed content. |
+| direction | [NavigationDirection](../reference.md#type-navigationdirection) | true | — | an optional direction for animation. If not specified or set to "none" then the state change will not be animated. The direction should be "forward" for operations that reveal new content and "back" for operations that reveal previously-displayed content. |
 
 **Flags**: A
 
@@ -321,7 +321,7 @@ Setter for [leftButtonTitle](#attr-navigationbarleftbuttontitle).
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newTitle | [HTMLString](../main.md#type-htmlstring) | false | — | new title HTML for the left button. |
+| newTitle | [HTMLString](../reference.md#type-htmlstring) | false | — | new title HTML for the left button. |
 
 ---
 ## Method: NavigationBar.setTitle
@@ -333,7 +333,7 @@ Updates the [title](#attr-navigationbartitle) for this `NavigationBar`.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newTitle | [HTMLString](../main.md#type-htmlstring) | false | — | new title HTML. |
+| newTitle | [HTMLString](../reference.md#type-htmlstring) | false | — | new title HTML. |
 
 ---
 ## Method: NavigationBar.setRightButtonIcon
@@ -345,7 +345,7 @@ Setter for [rightButtonIcon](#attr-navigationbarrightbuttonicon).
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newIcon | [SCImgURL](../main.md#type-scimgurl) | false | — | new icon for the right button. |
+| newIcon | [SCImgURL](../reference.md#type-scimgurl) | false | — | new icon for the right button. |
 
 ---
 ## Method: NavigationBar.setRightButtonTitle
@@ -357,7 +357,7 @@ Setter for [rightButtonTitle](#attr-navigationbarrightbuttontitle).
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newTitle | [HTMLString](../main.md#type-htmlstring) | false | — | new title HTML for the right button. |
+| newTitle | [HTMLString](../reference.md#type-htmlstring) | false | — | new title HTML for the right button. |
 
 ---
 ## Method: NavigationBar.setLeftButtonIcon
@@ -369,6 +369,6 @@ Setter for [leftButtonIcon](#attr-navigationbarleftbuttonicon).
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newIcon | [SCImgURL](../main.md#type-scimgurl) | false | — | new icon for left button. |
+| newIcon | [SCImgURL](../reference.md#type-scimgurl) | false | — | new icon for left button. |
 
 ---

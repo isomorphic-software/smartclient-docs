@@ -1,6 +1,6 @@
 # Server Summaries
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -17,7 +17,7 @@ Server Summaries is a feature of the SmartClient Server allowing similar summari
 
 See also the related feature which allows a single field to receive a value summarized from several related records, [DataSourceField.includeSummaryFunction](../classes/DataSourceField.md#attr-datasourcefieldincludesummaryfunction).
 
-Summarization can be statically configured directly in a .ds.xml file, or can be dynamically configured when sending a [DSRequest](../main_2.md#object-dsrequest), either client-side or server-side. The following examples all assume a DataSource with fields like this:
+Summarization can be statically configured directly in a .ds.xml file, or can be dynamically configured when sending a [DSRequest](../reference_2.md#object-dsrequest), either client-side or server-side. The following examples all assume a DataSource with fields like this:
 
 ```
  <DataSource ID="dsOrders" ...>
@@ -121,7 +121,7 @@ Criteria apply to record **before** summaries are applied. For example, if the "
 
 With the [SQL Templating](customQuerying.md#kb-topic-custom-querying-overview) feature you can customize portions of the query without ever having to re-create portions that the framework knows how to generate. This allows to create partially or entirely custom complex aggregation queries to use in a regular "fetch" operation. The SQL Templating feature supports aggregated queries just as regular ones with some additions, see below.
 
-In clause-by-clause substitution there are two additional aggregation specific clauses: [groupClause](../classes/OperationBinding.md#attr-operationbindinggroupclause) providing "group by" part of aggregated query and [afterWhereClause](../classes/OperationBinding.md#attr-operationbindingafterwhereclause) providing "having" part of aggregated query (or outer "where" part if sub-select approach is used, see [OperationBinding.useHavingClause](../classes/OperationBinding.md#attr-operationbindingusehavingclause) for more details). The automatically generated `groupClause` and `afterWhereClause` clauses are also available as [$defaultGroupClause](../main.md#type-defaultqueryclause) and [$defaultAfterWhereClause](../main.md#type-defaultqueryclause) SQL templating variables.
+In clause-by-clause substitution there are two additional aggregation specific clauses: [groupClause](../classes/OperationBinding.md#attr-operationbindinggroupclause) providing "group by" part of aggregated query and [afterWhereClause](../classes/OperationBinding.md#attr-operationbindingafterwhereclause) providing "having" part of aggregated query (or outer "where" part if sub-select approach is used, see [OperationBinding.useHavingClause](../classes/OperationBinding.md#attr-operationbindingusehavingclause) for more details). The automatically generated `groupClause` and `afterWhereClause` clauses are also available as [$defaultGroupClause](../reference.md#type-defaultqueryclause) and [$defaultAfterWhereClause](../reference.md#type-defaultqueryclause) SQL templating variables.
 
 Note that if [OperationBinding.applyCriteriaBeforeAggregation](../classes/OperationBinding.md#attr-operationbindingapplycriteriabeforeaggregation) is set to `true`, aggregated fields referenced in regular criteria are filtered before aggregation occurs. In this case, an `afterWhereClause` may still be generated, but only for the criteria defined in [DSRequest.afterCriteria](../classes/DSRequest.md#attr-dsrequestaftercriteria).
 
@@ -155,7 +155,7 @@ Aggregated data fetches cannot include additional fields that are not aggregated
 
 ### Related
 
-- [SummaryFunction](../main_2.md#type-summaryfunction)
+- [SummaryFunction](../reference_2.md#type-summaryfunction)
 - [DSRequest.summaryFunctions](../classes/DSRequest.md#attr-dsrequestsummaryfunctions)
 - [DSRequest.groupBy](../classes/DSRequest.md#attr-dsrequestgroupby)
 - [DSRequest.afterCriteria](../classes/DSRequest.md#attr-dsrequestaftercriteria)

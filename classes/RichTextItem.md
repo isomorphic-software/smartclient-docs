@@ -1,6 +1,6 @@
 # RichTextItem Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -75,7 +75,7 @@ By default RichTextItems take up an entire row
 ## Attr: RichTextItem.controlGroups
 
 ### Description
-[RichTextEditor.controlGroups](RichTextEditor.md#attr-richtexteditorcontrolgroups) to display for this editor. Each controlGroup should be a property set either on this item or on the RichTextEditor prototype and should be set to an array of [ControlName](../main.md#type-controlname)s.
+[RichTextEditor.controlGroups](RichTextEditor.md#attr-richtexteditorcontrolgroups) to display for this editor. Each controlGroup should be a property set either on this item or on the RichTextEditor prototype and should be set to an array of [ControlName](../reference.md#type-controlname)s.
 
 **Flags**: IA
 
@@ -105,6 +105,6 @@ Setter for [RichTextItem.moveFocusOnTab](#attr-richtextitemmovefocusontab).
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| moveFocusOnTab | [boolean](../main.md#type-boolean) | false | — | new value for moveFocusOnTab |
+| moveFocusOnTab | [boolean](../reference.md#type-boolean) | false | — | new value for moveFocusOnTab |
 
 ---

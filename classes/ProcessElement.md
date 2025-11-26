@@ -1,6 +1,6 @@
 # ProcessElement Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -25,7 +25,7 @@ Note that since this property applies to an instance of a task that could be use
 ### Description
 Does this processElement pass through output from the last executed task (i.e. transient state)?
 
-See [taskInputExpressions](../main_2.md#type-taskinputexpression) for details on the transient state outputs.
+See [taskInputExpressions](../reference_2.md#type-taskinputexpression) for details on the transient state outputs.
 
 Note that this property does not affect the task at all but is an indicator to the user and to the workflow editor of the behavior of the task as coded (See [Process.passThruTaskOutput](Process.md#method-processpassthrutaskoutput)).
 
@@ -43,7 +43,7 @@ Optional short, descriptive title for this process element. Used by an editor as
 ## Attr: ProcessElement.waitLocator
 
 ### Description
-Component specified as an [AutoTestLocator](../main_2.md#type-autotestlocator) that should be waited on if [ProcessElement.waitFor](#attr-processelementwaitfor) is "locator" or "locatorAndSystemDone".
+Component specified as an [AutoTestLocator](../reference_2.md#type-autotestlocator) that should be waited on if [ProcessElement.waitFor](#attr-processelementwaitfor) is "locator" or "locatorAndSystemDone".
 
 **Flags**: IR
 
@@ -83,7 +83,7 @@ Note that it is up to each task determine what effect mock mode has.
 ### Description
 Does this processElement support being called multiple times for multiple records in the [last task output](Process.md#method-processsettaskoutput)?
 
-By default a processElement is [executed](#method-processelementexecuteelement) exactly once, however, for a task that can process records from the last task output it can be useful to handle each incoming record individually. Setting this property indicates to the [process](Process.md#class-process) that if the last task output is an array, it should be executed once per value in the array. Normal processing of [taskInputExpressions](../main_2.md#type-taskinputexpression) or use of [Process.getLastTaskOutput](Process.md#method-processgetlasttaskoutput) will have exactly one record except uses of the output for criteria values where the full output is used at once.
+By default a processElement is [executed](#method-processelementexecuteelement) exactly once, however, for a task that can process records from the last task output it can be useful to handle each incoming record individually. Setting this property indicates to the [process](Process.md#class-process) that if the last task output is an array, it should be executed once per value in the array. Normal processing of [taskInputExpressions](../reference_2.md#type-taskinputexpression) or use of [Process.getLastTaskOutput](Process.md#method-processgetlasttaskoutput) will have exactly one record except uses of the output for criteria values where the full output is used at once.
 
 Processing of the task can determine that multiple incoming records should not result in multiple calls and set [ProcessElement.forceSingle](#attr-processelementforcesingle). For example, a task that uses last task output for a criteria or for values should set `forceSingle=true` when a criteria is used because multiple calls do not make sense.
 
@@ -135,7 +135,7 @@ When [ProcessElement.waitFor](#attr-processelementwaitfor) or [Process.defaultWa
 ### Description
 When set, the output of the task will be automatically bound to the specified value in the [process state](Process.md#attr-processstate).
 
-See [taskInputExpressions](../main_2.md#type-taskinputexpression) for details on the transient state outputs.
+See [taskInputExpressions](../reference_2.md#type-taskinputexpression) for details on the transient state outputs.
 
 **Flags**: IR
 
@@ -143,7 +143,7 @@ See [taskInputExpressions](../main_2.md#type-taskinputexpression) for details on
 ## Attr: ProcessElement.ID
 
 ### Description
-Optional ID for this process element, allowing it to be referred to from [Decisions](MultiDecisionTask.md#class-multidecisiontask), or as the [Process.startElement](Process.md#attr-processstartelement). See [ProcessSequence](../main.md#class-processsequence) and [Process](Process.md#class-process) to understand when this is required or can be omitted.
+Optional ID for this process element, allowing it to be referred to from [Decisions](MultiDecisionTask.md#class-multidecisiontask), or as the [Process.startElement](Process.md#attr-processstartelement). See [ProcessSequence](../reference.md#class-processsequence) and [Process](Process.md#class-process) to understand when this is required or can be omitted.
 
 Unlike [Canvas.ID](Canvas.md#attr-canvasid) a `processElement`'s is a not a globally unique variable, it need only by unique within its process.
 
@@ -207,8 +207,8 @@ There are a number of helper methods to make this easier listed below.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| oldId | [Identifier](../main.md#type-identifier) | false | — | the ID being renamed |
-| newId | [Identifier](../main.md#type-identifier) | false | — | the new ID to be assigned |
+| oldId | [Identifier](../reference.md#type-identifier) | false | — | the ID being renamed |
+| newId | [Identifier](../reference.md#type-identifier) | false | — | the new ID to be assigned |
 
 ### Returns
 
@@ -224,7 +224,7 @@ There are a number of helper methods to make this easier listed below.
 ## Method: ProcessElement.updateGlobalIDInCriteria
 
 ### Description
-Updates [AdvancedCriteria](../main.md#object-advancedcriteria) [Criterion](../main_2.md#object-criterion) [TaskInputExpression](../main_2.md#type-taskinputexpression) values containing ruleScope references.
+Updates [AdvancedCriteria](../reference.md#object-advancedcriteria) [Criterion](../reference_2.md#object-criterion) [TaskInputExpression](../reference_2.md#type-taskinputexpression) values containing ruleScope references.
 
 This method is a helper to implement task-specific [ProcessElement.updateGlobalIDReferences](#method-processelementupdateglobalidreferences).
 
@@ -233,8 +233,8 @@ This method is a helper to implement task-specific [ProcessElement.updateGlobalI
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | criteria | [AdvancedCriteria](#type-advancedcriteria) | false | — | the criteria to be updated in place |
-| oldId | [Identifier](../main.md#type-identifier) | false | — | the ID being renamed |
-| newId | [Identifier](../main.md#type-identifier) | false | — | the new ID to be assigned |
+| oldId | [Identifier](../reference.md#type-identifier) | false | — | the ID being renamed |
+| newId | [Identifier](../reference.md#type-identifier) | false | — | the new ID to be assigned |
 
 ### Returns
 
@@ -250,7 +250,7 @@ Returns the workflow task editor type to be used edit instances of this type of 
 ## Method: ProcessElement.updateLastElementInValueProperty
 
 ### Description
-Updates a [TaskInputExpression](../main_2.md#type-taskinputexpression) property value containing $last references. Any implicit reference to the last task is updated to reference a last task of a specified `taskType`.
+Updates a [TaskInputExpression](../reference_2.md#type-taskinputexpression) property value containing $last references. Any implicit reference to the last task is updated to reference a last task of a specified `taskType`.
 
 For example, a value of "$last.sequenceNo" would be replaced with "$last\[fetch\].sequenceNo" if the taskType is "fetch". Existing "$last\[...\]" references are left as-is.
 
@@ -271,7 +271,7 @@ This method is a helper to implement task-specific [ProcessElement.updateLastEle
 ## Method: ProcessElement.updateLastElementInCriteria
 
 ### Description
-Updates [AdvancedCriteria](../main.md#object-advancedcriteria) [Criterion](../main_2.md#object-criterion) [TaskInputExpression](../main_2.md#type-taskinputexpression) values containing $last references. Any implicit reference to the last task is updated to reference a last task of a specified `taskType`.
+Updates [AdvancedCriteria](../reference.md#object-advancedcriteria) [Criterion](../reference_2.md#object-criterion) [TaskInputExpression](../reference_2.md#type-taskinputexpression) values containing $last references. Any implicit reference to the last task is updated to reference a last task of a specified `taskType`.
 
 For example, a value of "$last.sequenceNo" would be replaced with "$last\[fetch\].sequenceNo" if the taskType is "fetch". Existing "$last\[...\]" references are left as-is.
 
@@ -292,7 +292,7 @@ This method is a helper to implement task-specific [ProcessElement.updateLastEle
 ## Method: ProcessElement.getTextFormulaValue
 
 ### Description
-Resolves a [UserSummary](../main.md#object-usersummary) value against the current [rule context](Canvas.md#attr-canvasrulescope).
+Resolves a [UserSummary](../reference.md#object-usersummary) value against the current [rule context](Canvas.md#attr-canvasrulescope).
 
 ### Parameters
 
@@ -309,7 +309,7 @@ Resolves a [UserSummary](../main.md#object-usersummary) value against the curren
 ## Method: ProcessElement.getDynamicValue
 
 ### Description
-Resolves a dynamic value as [taskInputExpressions](../main_2.md#type-taskinputexpression) or returns the value as-is.
+Resolves a dynamic value as [taskInputExpressions](../reference_2.md#type-taskinputexpression) or returns the value as-is.
 
 ### Parameters
 
@@ -326,7 +326,7 @@ Resolves a dynamic value as [taskInputExpressions](../main_2.md#type-taskinputex
 ## Method: ProcessElement.updateGlobalIDInValues
 
 ### Description
-Updates a set of [TaskInputExpression](../main_2.md#type-taskinputexpression) values containing ruleScope references.
+Updates a set of [TaskInputExpression](../reference_2.md#type-taskinputexpression) values containing ruleScope references.
 
 This method is a helper to implement task-specific [ProcessElement.updateGlobalIDReferences](#method-processelementupdateglobalidreferences).
 
@@ -334,9 +334,9 @@ This method is a helper to implement task-specific [ProcessElement.updateGlobalI
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| values | [Object](../main.md#type-object) | false | — | the object to be updated |
-| oldId | [Identifier](../main.md#type-identifier) | false | — | the ID being renamed |
-| newId | [Identifier](../main.md#type-identifier) | false | — | the new ID to be assigned |
+| values | [Object](../reference.md#type-object) | false | — | the object to be updated |
+| oldId | [Identifier](../reference.md#type-identifier) | false | — | the ID being renamed |
+| newId | [Identifier](../reference.md#type-identifier) | false | — | the new ID to be assigned |
 
 ### Returns
 
@@ -352,7 +352,7 @@ Does the object have fields that reference the last task output (i.e. $last)?
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| object | [Object](../main.md#type-object) | false | — | object to be checked |
+| object | [Object](../reference.md#type-object) | false | — | object to be checked |
 | process | [Process](#type-process) | false | — | the enclosing process |
 
 ### Returns
@@ -425,7 +425,7 @@ Default implementation calls [ProcessElement.getInvalidTaskMessage](#method-proc
 ## Method: ProcessElement.updateGlobalIDInValueProperty
 
 ### Description
-Updates a [TaskInputExpression](../main_2.md#type-taskinputexpression) property value containing ruleScope references.
+Updates a [TaskInputExpression](../reference_2.md#type-taskinputexpression) property value containing ruleScope references.
 
 This method is a helper to implement task-specific [ProcessElement.updateGlobalIDReferences](#method-processelementupdateglobalidreferences).
 
@@ -434,8 +434,8 @@ This method is a helper to implement task-specific [ProcessElement.updateGlobalI
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | propertyName | [String](#type-string) | false | — | the property name to be updated in this task |
-| oldId | [Identifier](../main.md#type-identifier) | false | — | the ID being renamed |
-| newId | [Identifier](../main.md#type-identifier) | false | — | the new ID to be assigned |
+| oldId | [Identifier](../reference.md#type-identifier) | false | — | the ID being renamed |
+| newId | [Identifier](../reference.md#type-identifier) | false | — | the new ID to be assigned |
 
 ### Returns
 
@@ -469,7 +469,7 @@ The default implementation returns nothing. Subclasses that add new potential co
 ## Method: ProcessElement.updateLastElementInValues
 
 ### Description
-Updates a set of [TaskInputExpression](../main_2.md#type-taskinputexpression) values containing $last references. Any implicit reference to the last task is updated to reference a last task of a specified `taskType`.
+Updates a set of [TaskInputExpression](../reference_2.md#type-taskinputexpression) values containing $last references. Any implicit reference to the last task is updated to reference a last task of a specified `taskType`.
 
 For example, a value of "$last.sequenceNo" would be replaced with "$last\[fetch\].sequenceNo" if the taskType is "fetch". Existing "$last\[...\]" references are left as-is.
 
@@ -479,7 +479,7 @@ This method is a helper to implement task-specific [ProcessElement.updateLastEle
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| values | [Object](../main.md#type-object) | false | — | the object to be updated |
+| values | [Object](../reference.md#type-object) | false | — | the object to be updated |
 | taskType | [String](#type-string) | false | — | the taskType to be used in new reference |
 
 ### Returns
@@ -504,7 +504,7 @@ StringMethod called when a processElement completes. Typically used to clear tra
 ### Description
 Update references to a binding $last within properties of this processElement. This method is not called as part of workflow execution but is used by the [WorkflowEditor](#class-workfloweditor) to adjust last task references as new tasks are inserted.
 
-Each processElement or Task that has properties supporting [taskInputExpressions](../main_2.md#type-taskinputexpression) using the $last syntax must be able to update its references on demand by overriding this method or defer to its superclass.
+Each processElement or Task that has properties supporting [taskInputExpressions](../reference_2.md#type-taskinputexpression) using the $last syntax must be able to update its references on demand by overriding this method or defer to its superclass.
 
 There are a number of helper methods to make this easier listed below.
 
@@ -512,8 +512,8 @@ There are a number of helper methods to make this easier listed below.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| oldId | [Identifier](../main.md#type-identifier) | false | — | the ID being renamed |
-| newId | [Identifier](../main.md#type-identifier) | false | — | the new ID to be assigned |
+| oldId | [Identifier](../reference.md#type-identifier) | false | — | the ID being renamed |
+| newId | [Identifier](../reference.md#type-identifier) | false | — | the new ID to be assigned |
 
 ### Returns
 
@@ -551,7 +551,7 @@ Sets the [process](Process.md#class-process) executing this task instance making
 ## Method: ProcessElement.updateGlobalIDInTextFormula
 
 ### Description
-Updates [text formula](../main.md#object-usersummary) containing ruleScope references.
+Updates [text formula](../reference.md#object-usersummary) containing ruleScope references.
 
 This method is a helper to implement task-specific [ProcessElement.updateGlobalIDReferences](#method-processelementupdateglobalidreferences).
 
@@ -560,8 +560,8 @@ This method is a helper to implement task-specific [ProcessElement.updateGlobalI
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | textFormula | [UserSummary](#type-usersummary) | false | — | the UserSummary to be updated in place |
-| oldId | [Identifier](../main.md#type-identifier) | false | — | the ID being renamed |
-| newId | [Identifier](../main.md#type-identifier) | false | — | the new ID to be assigned |
+| oldId | [Identifier](../reference.md#type-identifier) | false | — | the ID being renamed |
+| newId | [Identifier](../reference.md#type-identifier) | false | — | the new ID to be assigned |
 
 ### Returns
 

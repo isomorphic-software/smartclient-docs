@@ -1,12 +1,12 @@
 # TabSetEditProxy Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
 ## Class: TabSetEditProxy
 
-*Inherits from:* [CanvasEditProxy](../main.md#class-canvaseditproxy)
+*Inherits from:* [CanvasEditProxy](../reference.md#class-canvaseditproxy)
 
 ### Description
 [EditProxy](EditProxy.md#class-editproxy) that handles [TabSet](TabSet.md#class-tabset) objects when editMode is enabled.

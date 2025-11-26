@@ -1,6 +1,6 @@
 # Media Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -37,7 +37,7 @@ When true automatically scales "size" attributes specified in SVG src-strings.
 ## ClassAttr: Media.iconSets
 
 ### Description
-A list of [IconSets](../main.md#object-iconset) that are available for use by passing their names to [Media.useMedia](#classmethod-mediausemedia).
+A list of [IconSets](../reference.md#object-iconset) that are available for use by passing their names to [Media.useMedia](#classmethod-mediausemedia).
 
 The framework has two builtin IconSets
 
@@ -67,13 +67,13 @@ When true, causes SVGs with no divinable size to render at a useable [default si
 ## ClassMethod: Media.getIconSet
 
 ### Description
-Retrieves an [IconSet](../main.md#object-iconset) that was previously registered with [addIconSet()](#classmethod-mediaaddiconset) or passed to [useMedia()](#classmethod-mediausemedia).
+Retrieves an [IconSet](../reference.md#object-iconset) that was previously registered with [addIconSet()](#classmethod-mediaaddiconset) or passed to [useMedia()](#classmethod-mediausemedia).
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| iconSet | [String](#type-string)|[IconSet](#type-iconset) | false | — | an [IconSet](../main.md#object-iconset) or its [name](IconSet.md#attr-iconsetname) |
+| iconSet | [String](#type-string)|[IconSet](#type-iconset) | false | — | an [IconSet](../reference.md#object-iconset) or its [name](IconSet.md#attr-iconsetname) |
 
 ### Groups
 
@@ -84,7 +84,7 @@ Retrieves an [IconSet](../main.md#object-iconset) that was previously registered
 ## ClassMethod: Media.useMedia
 
 ### Description
-Installs an [IconSet](../main.md#object-iconset) by adding its list of [custom stockIcons](IconSet.md#attr-iconsetstockicons) and/or applying its set of [stockIcon-mappings](IconSet.md#attr-iconsetmappings) that modify the images used by existing [stockIcons](../main_2.md#object-stockicon).
+Installs an [IconSet](../reference.md#object-iconset) by adding its list of [custom stockIcons](IconSet.md#attr-iconsetstockicons) and/or applying its set of [stockIcon-mappings](IconSet.md#attr-iconsetmappings) that modify the images used by existing [stockIcons](../reference_2.md#object-stockicon).
 
 Typically, this will take effect immediately with no further action by the developer.
 
@@ -92,7 +92,7 @@ Typically, this will take effect immediately with no further action by the devel
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| iconSet | [String](#type-string)|[IconSet](#type-iconset) | false | — | a new [IconSet](../main.md#object-iconset), or the [name](IconSet.md#attr-iconsetname) of one previously [registered](#classmethod-mediaaddiconset) |
+| iconSet | [String](#type-string)|[IconSet](#type-iconset) | false | — | a new [IconSet](../reference.md#object-iconset), or the [name](IconSet.md#attr-iconsetname) of one previously [registered](#classmethod-mediaaddiconset) |
 
 ### Groups
 
@@ -103,7 +103,7 @@ Typically, this will take effect immediately with no further action by the devel
 ## ClassMethod: Media.getStockIconNames
 
 ### Description
-Returns an array of the [names](StockIcon.md#attr-stockiconname) of all registered [stockIcons](../main_2.md#object-stockicon). These are the names which can be used as src-string values for [image attributes](../main.md#type-scimgurl).
+Returns an array of the [names](StockIcon.md#attr-stockiconname) of all registered [stockIcons](../reference_2.md#object-stockicon). These are the names which can be used as src-string values for [image attributes](../reference.md#type-scimgurl).
 
 ### Groups
 
@@ -116,14 +116,14 @@ Returns an array of the [names](StockIcon.md#attr-stockiconname) of all register
 ### Description
 Updates the [src-string](StockIcon.md#attr-stockiconsrc) currently assigned to the passed [icon-name](StockIcon.md#attr-stockiconname).
 
-Changes the src that will be rendered when the passed icon-name or it's [StockIcon.fromSrc](StockIcon.md#attr-stockiconfromsrc) are used as the value of an [image-src](../main.md#type-scimgurl) property, such as [Button.icon](Button.md#attr-buttonicon) or [Img.src](Img.md#attr-imgsrc).
+Changes the src that will be rendered when the passed icon-name or it's [StockIcon.fromSrc](StockIcon.md#attr-stockiconfromsrc) are used as the value of an [image-src](../reference.md#type-scimgurl) property, such as [Button.icon](Button.md#attr-buttonicon) or [Img.src](Img.md#attr-imgsrc).
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | name | [String](#type-string) | false | — | the name of the stockIcon to modify |
-| newSrc | [String](#type-string) | false | — | the new [src-string](../main.md#type-scimgurl) for the passed icon-name |
+| newSrc | [String](#type-string) | false | — | the new [src-string](../reference.md#type-scimgurl) for the passed icon-name |
 
 ### Groups
 
@@ -134,7 +134,7 @@ Changes the src that will be rendered when the passed icon-name or it's [StockIc
 ## ClassMethod: Media.addIconSet
 
 ### Description
-Adds an [IconSet](../main.md#object-iconset) to the [global list](#classattr-mediaiconsets) for future use by passing its name to [useMedia()](#classmethod-mediausemedia).
+Adds an [IconSet](../reference.md#object-iconset) to the [global list](#classattr-mediaiconsets) for future use by passing its name to [useMedia()](#classmethod-mediausemedia).
 
 If an IconSet has not been registered with this method, you may pass the object itself to _Media.useMedia()_ to have it registered and applied right away.
 
@@ -142,7 +142,7 @@ If an IconSet has not been registered with this method, you may pass the object 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| iconSet | [IconSet](#type-iconset) | false | — | the [IconSet](../main.md#object-iconset) to add |
+| iconSet | [IconSet](#type-iconset) | false | — | the [IconSet](../reference.md#object-iconset) to add |
 
 ### Groups
 
@@ -153,13 +153,13 @@ If an IconSet has not been registered with this method, you may pass the object 
 ## ClassMethod: Media.addStockIcons
 
 ### Description
-Registers a list of new [stockIcons](../main_2.md#object-stockicon) for use in an application.
+Registers a list of new [stockIcons](../reference_2.md#object-stockicon) for use in an application.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| icons | [Array of StockIcon](#type-array-of-stockicon) | false | — | the [StockIcons](../main_2.md#object-stockicon) to add |
+| icons | [Array of StockIcon](#type-array-of-stockicon) | false | — | the [StockIcons](../reference_2.md#object-stockicon) to add |
 
 ### Groups
 
@@ -170,7 +170,7 @@ Registers a list of new [stockIcons](../main_2.md#object-stockicon) for use in a
 ## ClassMethod: Media.updateIconMappings
 
 ### Description
-Updates the [src-strings](StockIcon.md#attr-stockiconsrc) currently assigned to one or more [StockIcons](../main_2.md#object-stockicon). The _mappings_ parameter should be a map of StockIcon-name to [any valid src-string](../main.md#type-scimgurl).
+Updates the [src-strings](StockIcon.md#attr-stockiconsrc) currently assigned to one or more [StockIcons](../reference_2.md#object-stockicon). The _mappings_ parameter should be a map of StockIcon-name to [any valid src-string](../reference.md#type-scimgurl).
 
 Once updated, the icons named in the map will render their respective new images when their [names](StockIcon.md#attr-stockiconname) or [fromSrc-values](StockIcon.md#attr-stockiconfromsrc) are used as the value of an image-src property, such as [Button.icon](Button.md#attr-buttonicon) or [Img.src](Img.md#attr-imgsrc).
 
@@ -178,7 +178,7 @@ Once updated, the icons named in the map will render their respective new images
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| mappings | [Object](../main.md#type-object) | false | — | a map of StockIcon-names to new src-strings |
+| mappings | [Object](../reference.md#type-object) | false | — | a map of StockIcon-names to new src-strings |
 
 ### Groups
 
@@ -189,13 +189,13 @@ Once updated, the icons named in the map will render their respective new images
 ## ClassMethod: Media.getStockIcon
 
 ### Description
-Returns the [stockIcon](../main_2.md#object-stockicon) with the passed name, or null if the name is unused.
+Returns the [stockIcon](../reference_2.md#object-stockicon) with the passed name, or null if the name is unused.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| iconName | [String](#type-string) | false | — | the name of the [StockIcon](../main_2.md#object-stockicon) to return |
+| iconName | [String](#type-string) | false | — | the name of the [StockIcon](../reference_2.md#object-stockicon) to return |
 
 ### Groups
 

@@ -1,6 +1,6 @@
 # ViewLoader Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -119,7 +119,7 @@ This method is called from the response processing pipeline. If you want to prov
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — false to suppress further response processing
+`[boolean](../reference.md#type-boolean)` — false to suppress further response processing
 
 ### Groups
 
@@ -137,8 +137,8 @@ Can also be called with no arguments to reload the view from the existing [ViewL
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| url | [URL](../main_2.md#type-url) | true | — | URL to retrieve view from |
-| params | [Object](../main.md#type-object) | true | — | Parameters to send to the viewURL. Merged with `component.viewURLParams` if both are set. |
+| url | [URL](../reference_2.md#type-url) | true | — | URL to retrieve view from |
+| params | [Object](../reference.md#type-object) | true | — | Parameters to send to the viewURL. Merged with `component.viewURLParams` if both are set. |
 | rpcProperties | [RPCRequest Properties](#type-rpcrequest-properties) | true | — | Additional properties for the RPCRequest sent by the ViewLoader. Very advanced; could be used to, for example, set HTTP headers. |
 
 ### Groups

@@ -1,13 +1,13 @@
 # ResultSet Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
 ## Class: ResultSet
 
 ### Description
-ResultSets are an implementation of the [List](../main_2.md#interface-list) interface that automatically fetches DataSource records when items are requested from the List. ResultSets provide robust, customizable, high-performance cache management for ListGrids and other built-in SmartClient components, and can be used as cache managers by custom components.
+ResultSets are an implementation of the [List](../reference_2.md#interface-list) interface that automatically fetches DataSource records when items are requested from the List. ResultSets provide robust, customizable, high-performance cache management for ListGrids and other built-in SmartClient components, and can be used as cache managers by custom components.
 
 ResultSets manage data paging, that is, loading records in batches as the user navigates the data set. A ResultSet will switch to using client-side sorting and filtering when possible to improve responsiveness and reduce server load. ResultSets also participate in automatic cache synchronization, observing operations on DataSources and automatically updating their caches.
 
@@ -30,7 +30,7 @@ A ResultSet can be created directly with just the ID of a [DataSource](DataSourc
 
 Directly created ResultSets are typically used by custom components, or as a means of managing datasets that will be used by several components.
 
-When created directly rather than via a dataBoundComponent, a newly created ResultSet will not issue it's first "fetch" [DSRequest](../main_2.md#object-dsrequest) until data is accessed (for example, via [get()](#method-resultsetget)).
+When created directly rather than via a dataBoundComponent, a newly created ResultSet will not issue it's first "fetch" [DSRequest](../reference_2.md#object-dsrequest) until data is accessed (for example, via [get()](#method-resultsetget)).
 
 **Paging and total dataset length**
 
@@ -54,11 +54,11 @@ The [useClientSorting](#attr-resultsetuseclientsorting) and [useClientFiltering]
 
 Sorting behavior is primarily customized via the "sort normalizer" passed to [ResultSet.sortByProperty](#method-resultsetsortbyproperty), either via direct calls on a standalone ResultSet, or via [ListGridField.sortNormalizer](ListGridField.md#method-listgridfieldsortnormalizer) for a ListGrid-managed ResultSet.
 
-By default, client-side filtering interprets the [criteria](../main_2.md#type-criteria) passed to [setCriteria()](#method-resultsetsetcriteria) as a set of field values that records must match (similarly to the built-in SQL/Hibernate connectors built into the SmartClient Server). Custom client-side filtering logic can be implemented by overriding [applyFilter()](#method-resultsetapplyfilter). Overriding [compareCriteria()](#method-resultsetcomparecriteria) allows you to control when the ResultSet uses client-side vs server-side filtering, and the ResultSet has two default [criteria policies](#attr-resultsetcriteriapolicy) built-in.
+By default, client-side filtering interprets the [criteria](../reference_2.md#type-criteria) passed to [setCriteria()](#method-resultsetsetcriteria) as a set of field values that records must match (similarly to the built-in SQL/Hibernate connectors built into the SmartClient Server). Custom client-side filtering logic can be implemented by overriding [applyFilter()](#method-resultsetapplyfilter). Overriding [compareCriteria()](#method-resultsetcomparecriteria) allows you to control when the ResultSet uses client-side vs server-side filtering, and the ResultSet has two default [criteria policies](#attr-resultsetcriteriapolicy) built-in.
 
 **Modifying ResultSets**
 
-Records cannot be directly added or removed from a ResultSet via [List](../main_2.md#interface-list) APIs such as [removeAt()](List.md#method-listremoveat), unless it always filters locally, since this would break the consistency of server and client row numbering needed for data paging, and also create some issues with automatic cache synchronization. Set [modifiable](#attr-resultsetmodifiable) to enable the [List](../main_2.md#interface-list) modification APIs on a [fetchMode](#attr-resultsetfetchmode):"local" ResultSet. Note that the special [FilteredList](FilteredList.md#class-filteredlist) class sets this property to allow developers to modify its data.
+Records cannot be directly added or removed from a ResultSet via [List](../reference_2.md#interface-list) APIs such as [removeAt()](List.md#method-listremoveat), unless it always filters locally, since this would break the consistency of server and client row numbering needed for data paging, and also create some issues with automatic cache synchronization. Set [modifiable](#attr-resultsetmodifiable) to enable the [List](../reference_2.md#interface-list) modification APIs on a [fetchMode](#attr-resultsetfetchmode):"local" ResultSet. Note that the special [FilteredList](FilteredList.md#class-filteredlist) class sets this property to allow developers to modify its data.
 
 Use [DataSource.addData](DataSource.md#method-datasourceadddata)/[removeData()](DataSource.md#method-datasourceremovedata) to add/remove rows from the [DataSource](DataSource.md#class-datasource), and the ResultSet will reflect the changes automatically. Alternatively, the [DataSource.updateCaches](DataSource.md#method-datasourceupdatecaches) method may be called to only update local caches of the DataSource in question, without generating any server traffic.
 
@@ -88,7 +88,7 @@ For this reason, after an "add" or "update" operation with a partial cache, the 
 
 ### See Also
 
-- [DataBoundComponent](../main.md#interface-databoundcomponent)
+- [DataBoundComponent](../reference.md#interface-databoundcomponent)
 - [dataBoundComponentMethods](../kb_topics/dataBoundComponentMethods.md#kb-topic-databound-component-methods)
 - [DataSource.resultSetClass](DataSource.md#attr-datasourceresultsetclass)
 - [ResultSet.getRange](#method-resultsetgetrange)
@@ -109,7 +109,7 @@ Initial set of data for the ResultSet.
 
 This data will be treated exactly as though it were the data returned from the ResultSet's first server fetch.
 
-By default, `initialData` will be considered a complete response (all rows that match the [Criteria](../main_2.md#type-criteria) which the ResultSet was initialized with).
+By default, `initialData` will be considered a complete response (all rows that match the [Criteria](../reference_2.md#type-criteria) which the ResultSet was initialized with).
 
 Set [ResultSet.initialLength](#attr-resultsetinitiallength) to treat `initialData` as a partial response, equivalent to receiving a [DSResponse](DSResponse.md#class-dsresponse) with `startRow:0`, `endRow:initialData.length` and `totalRows:initialLength`. Normal data paging will then occur if data is requested for row indices not filled via `initialData`.
 
@@ -222,9 +222,9 @@ One known case where modification can be useful is when an array has been passed
 ## Attr: ResultSet.progressiveLoading
 
 ### Description
-Sets [progressive loading mode](DataSource.md#attr-datasourceprogressiveloading) for this ResultSet. Any [DSRequest](../main_2.md#object-dsrequest)s issued by this ResultSet will copy this setting onto the request, overriding the OperationBinding- and DataSource-level settings.
+Sets [progressive loading mode](DataSource.md#attr-datasourceprogressiveloading) for this ResultSet. Any [DSRequest](../reference_2.md#object-dsrequest)s issued by this ResultSet will copy this setting onto the request, overriding the OperationBinding- and DataSource-level settings.
 
-This setting is applied automatically by [DataBoundComponent](../main.md#interface-databoundcomponent)s that have their own explicit setting for [progressiveLoading](DataBoundComponent.md#attr-databoundcomponentprogressiveloading)
+This setting is applied automatically by [DataBoundComponent](../reference.md#interface-databoundcomponent)s that have their own explicit setting for [progressiveLoading](DataBoundComponent.md#attr-databoundcomponentprogressiveloading)
 
 See also the [ResultSet.rememberDynamicProgressiveLoading](#attr-resultsetrememberdynamicprogressiveloading) attribute.
 
@@ -412,7 +412,7 @@ Mode of fetching records from the server. If unset, will default to `"local"` if
 
 ### See Also
 
-- [FetchMode](../main_2.md#type-fetchmode)
+- [FetchMode](../reference_2.md#type-fetchmode)
 
 **Flags**: IRA
 
@@ -434,11 +434,11 @@ Set this flag to true to disable this behavior.
 ## Attr: ResultSet.criteriaPolicy
 
 ### Description
-Decides under what conditions the cache should be dropped when the [Criteria](../main_2.md#type-criteria) changes.
+Decides under what conditions the cache should be dropped when the [Criteria](../reference_2.md#type-criteria) changes.
 
 ### See Also
 
-- [Criteria](../main_2.md#type-criteria)
+- [Criteria](../reference_2.md#type-criteria)
 - [DataSource.criteriaPolicy](DataSource.md#attr-datasourcecriteriapolicy)
 
 **Flags**: IRWA
@@ -563,7 +563,7 @@ Return the singleton marker object that is used as a placeholder for records tha
 ## Method: ResultSet.resort
 
 ### Description
-Forcibly resort this ResultSet by the current list of [SortSpecifier](../main_2.md#object-sortspecifier)s.
+Forcibly resort this ResultSet by the current list of [SortSpecifier](../reference_2.md#object-sortspecifier)s.
 
 ---
 ## Method: ResultSet.rangeIsLoaded
@@ -580,7 +580,7 @@ Whether the given range of rows has been loaded. Unlike getRange(), will not tri
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true if all rows in the given range have been loaded, false if any rows in the range have not been loaded or are still in the process of being loaded
+`[boolean](../reference.md#type-boolean)` — true if all rows in the given range have been loaded, false if any rows in the range have not been loaded or are still in the process of being loaded
 
 **Flags**: A
 
@@ -628,12 +628,12 @@ Like [List.find](List.md#method-listfind). Checks only loaded rows and will not 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| propertyName | [String](#type-string)|[Object](../main.md#type-object)|[AdvancedCriteria](#type-advancedcriteria) | false | — | property to match, or if an Object is passed, set of properties and values to match |
+| propertyName | [String](#type-string)|[Object](../reference.md#type-object)|[AdvancedCriteria](#type-advancedcriteria) | false | — | property to match, or if an Object is passed, set of properties and values to match |
 | value | [Any](#type-any) | true | — | value to compare against (if propertyName is a string) |
 
 ### Returns
 
-`[Object](../main.md#type-object)` — first matching object or null if not found
+`[Object](../reference.md#type-object)` — first matching object or null if not found
 
 ### Groups
 
@@ -673,7 +673,7 @@ Returns `false` if this is a paged data set, and the entire set of records that 
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — whether all matching rows are cached
+`[boolean](../reference.md#type-boolean)` — whether all matching rows are cached
 
 **Flags**: A
 
@@ -681,7 +681,7 @@ Returns `false` if this is a paged data set, and the entire set of records that 
 ## Method: ResultSet.setSort
 
 ### Description
-Sort this ResultSet by the passed list of [SortSpecifier](../main_2.md#object-sortspecifier)s.
+Sort this ResultSet by the passed list of [SortSpecifier](../reference_2.md#object-sortspecifier)s.
 
 If the ResultSet is already sorted and this method is called with an identical list of specifiers, this method will no-op. To cause data to be resorted with the same set of specifiers, use [resort()](#method-resultsetresort).
 
@@ -701,8 +701,8 @@ Note that `dataArrived()` won't fire in the case of the owning component filteri
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| startRow | [int](../main.md#type-int) | false | — | starting index of rows that have just loaded |
-| endRow | [int](../main.md#type-int) | false | — | ending index of rows that have just loaded, non-inclusive |
+| startRow | [int](../reference.md#type-int) | false | — | starting index of rows that have just loaded |
+| endRow | [int](../reference.md#type-int) | false | — | ending index of rows that have just loaded, non-inclusive |
 
 ---
 ## Method: ResultSet.findByKey
@@ -716,7 +716,7 @@ Note, if you pass a simple value to this method, it will be matched against the 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| keyValue | [Object](../main.md#type-object) | false | — | primary key value to search for |
+| keyValue | [Object](../reference.md#type-object) | false | — | primary key value to search for |
 
 ### Returns
 
@@ -755,7 +755,7 @@ Override this method or [DataSource.applyFilter](DataSource.md#method-datasource
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | data | [Array](#type-array) | false | — | the list of rows |
-| criteria | [Criteria](../main_2.md#type-criteria) | false | — | the filter criteria |
+| criteria | [Criteria](../reference_2.md#type-criteria) | false | — | the filter criteria |
 | requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | dataSource request properties |
 
 ### Returns
@@ -805,7 +805,7 @@ Note: If [progressive loading](DataSource.md#attr-datasourceprogressiveloading) 
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — whether length is known
+`[boolean](../reference.md#type-boolean)` — whether length is known
 
 ---
 ## Method: ResultSet.getCombinedCriteria
@@ -815,7 +815,7 @@ Returns a copy of all [explicit](#attr-resultsetcriteria) and [implicit](#attr-r
 
 ### Returns
 
-`[Criteria](../main_2.md#type-criteria)|[AdvancedCriteria](#type-advancedcriteria)` — combined criteria
+`[Criteria](../reference_2.md#type-criteria)|[AdvancedCriteria](#type-advancedcriteria)` — combined criteria
 
 ---
 ## Method: ResultSet.getValueMap
@@ -834,7 +834,7 @@ If this method is called when the [cache is incomplete](#method-resultsetallmatc
 
 ### Returns
 
-`[Object](../main.md#type-object)` — valueMap object
+`[Object](../reference.md#type-object)` — valueMap object
 
 ### See Also
 
@@ -848,20 +848,20 @@ Will changing the criteria for this resultSet require fetching new data from the
 Second `textMatchStyle` parameter determines whether a change of text-match style will require a server fetch - for example if filter is being changed between an exact match (from e.g: [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata)) and a substring match (from e.g: [ListGrid.filterData](ListGrid_2.md#method-listgridfilterdata)).  
 This method can be used to determine whether [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata) or [ListGrid.filterData](ListGrid_2.md#method-listgridfilterdata) would cause a server side fetch when passed a certain set of criteria.
 
-Note that to predict correctly the decision that will be made by filter/fetch, you'll need to pass the same [TextMatchStyle](../main_2.md#type-textmatchstyle) that will be used by the future filter/fetch. Fetching manually (e.g. [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata)) will by default use "exact" while filtering (e.g. [ListGrid.filterData](ListGrid_2.md#method-listgridfilterdata)) will by default use "substring". If the component is configured for autofetch (i.e. [ListGrid.autoFetchData](ListGrid_1.md#attr-listgridautofetchdata): true), that will use [ListGrid.autoFetchTextMatchStyle](ListGrid_1.md#attr-listgridautofetchtextmatchstyle), which defaults to "substring". If nothing/null is passed for the style, this method assumes you want the style from the last filter/fetch.
+Note that to predict correctly the decision that will be made by filter/fetch, you'll need to pass the same [TextMatchStyle](../reference_2.md#type-textmatchstyle) that will be used by the future filter/fetch. Fetching manually (e.g. [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata)) will by default use "exact" while filtering (e.g. [ListGrid.filterData](ListGrid_2.md#method-listgridfilterdata)) will by default use "substring". If the component is configured for autofetch (i.e. [ListGrid.autoFetchData](ListGrid_1.md#attr-listgridautofetchdata): true), that will use [ListGrid.autoFetchTextMatchStyle](ListGrid_1.md#attr-listgridautofetchtextmatchstyle), which defaults to "substring". If nothing/null is passed for the style, this method assumes you want the style from the last filter/fetch.
 
-To determine what [TextMatchStyle](../main_2.md#type-textmatchstyle) is being used, check the RPC Tab of the [SmartClient Developer Console](../kb_topics/debugging.md#kb-topic-debugging) and check the relevant [DSRequest](../main_2.md#object-dsrequest).
+To determine what [TextMatchStyle](../reference_2.md#type-textmatchstyle) is being used, check the RPC Tab of the [SmartClient Developer Console](../kb_topics/debugging.md#kb-topic-debugging) and check the relevant [DSRequest](../reference_2.md#object-dsrequest).
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newCriteria | [Criteria](../main_2.md#type-criteria) | false | — | new criteria to test. |
-| textMatchStyle | [TextMatchStyle](../main_2.md#type-textmatchstyle) | true | — | New text match style. If not passed, assumes textMatchStyle will not be modified. |
+| newCriteria | [Criteria](../reference_2.md#type-criteria) | false | — | new criteria to test. |
+| textMatchStyle | [TextMatchStyle](../reference_2.md#type-textmatchstyle) | true | — | New text match style. If not passed, assumes textMatchStyle will not be modified. |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true if server fetch would be required to satisfy new criteria.
+`[boolean](../reference.md#type-boolean)` — true if server fetch would be required to satisfy new criteria.
 
 ---
 ## Method: ResultSet.sortByProperty
@@ -878,8 +878,8 @@ Sorting is performed on the client for a ResultSet that has a full cache for the
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | property | [String](#type-string) | false | — | name of the property to sort by |
-| up | [boolean](../main.md#type-boolean) | false | — | true == sort ascending, false == sort descending |
-| normalizer | [Function](#type-function)|[ValueMap](../main_2.md#type-valuemap) | true | — | May be specified as a function, with signature `normalize(item, propertyName, context)`, where `item` is a pointer to the item in the array, `propertyName` is the property by which the array is being sorted, and `context` is the arbitrary context passed into this method. Normalizer function should return the value normalized for sorting.  
+| up | [boolean](../reference.md#type-boolean) | false | — | true == sort ascending, false == sort descending |
+| normalizer | [Function](#type-function)|[ValueMap](../reference_2.md#type-valuemap) | true | — | May be specified as a function, with signature `normalize(item, propertyName, context)`, where `item` is a pointer to the item in the array, `propertyName` is the property by which the array is being sorted, and `context` is the arbitrary context passed into this method. Normalizer function should return the value normalized for sorting.  
 May also be specified as a ValueMap which maps property values to sortable values. |
 | context | [Any](#type-any) | true | — | Callers may pass an arbitrary context into the sort method, which will then be made available to the normalizer function |
 
@@ -921,10 +921,10 @@ Override this method or [DataSource.compareCriteria](DataSource.md#method-dataso
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newCriteria | [Criteria](../main_2.md#type-criteria) | false | — | new filter criteria |
-| oldCriteria | [Criteria](../main_2.md#type-criteria) | false | — | old filter criteria |
+| newCriteria | [Criteria](../reference_2.md#type-criteria) | false | — | new filter criteria |
+| oldCriteria | [Criteria](../reference_2.md#type-criteria) | false | — | old filter criteria |
 | requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | dataSource request properties |
-| policy | [String](#type-string) | true | — | overrides [CriteriaPolicy](../main_2.md#type-criteriapolicy) |
+| policy | [String](#type-string) | true | — | overrides [CriteriaPolicy](../reference_2.md#type-criteriapolicy) |
 
 ### Returns
 
@@ -932,7 +932,7 @@ Override this method or [DataSource.compareCriteria](DataSource.md#method-dataso
 
 ### See Also
 
-- [CriteriaPolicy](../main_2.md#type-criteriapolicy)
+- [CriteriaPolicy](../reference_2.md#type-criteriapolicy)
 
 ---
 ## Method: ResultSet.findIndex
@@ -944,12 +944,12 @@ Like [List.findIndex](List.md#method-listfindindex). Checks only loaded rows and
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| propertyName | [String](#type-string)|[Object](../main.md#type-object)|[AdvancedCriteria](#type-advancedcriteria) | false | — | property to match, or if an Object is passed, set of properties and values to match |
+| propertyName | [String](#type-string)|[Object](../reference.md#type-object)|[AdvancedCriteria](#type-advancedcriteria) | false | — | property to match, or if an Object is passed, set of properties and values to match |
 | value | [Any](#type-any) | true | — | value to compare against (if propertyName is a string) |
 
 ### Returns
 
-`[int](../main.md#type-int)` — index of the first matching Object or -1 if not found
+`[int](../reference.md#type-int)` — index of the first matching Object or -1 if not found
 
 ### Groups
 
@@ -960,11 +960,11 @@ Like [List.findIndex](List.md#method-listfindindex). Checks only loaded rows and
 ## Method: ResultSet.getSort
 
 ### Description
-Return the current sort-specification for this ResultSet as an Array of [SortSpecifier](../main_2.md#object-sortspecifier)s.
+Return the current sort-specification for this ResultSet as an Array of [SortSpecifier](../reference_2.md#object-sortspecifier)s.
 
 ### Returns
 
-`[Array of SortSpecifier](#type-array-of-sortspecifier)` — the list of [SortSpecifier](../main_2.md#object-sortspecifier)s currently applied to this ResultSet
+`[Array of SortSpecifier](#type-array-of-sortspecifier)` — the list of [SortSpecifier](../reference_2.md#object-sortspecifier)s currently applied to this ResultSet
 
 ---
 ## Method: ResultSet.rowIsLoaded
@@ -982,7 +982,7 @@ Unlike get(), will not trigger a server fetch.
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true if the given row has been loaded, false if it has not been loaded or is still in the process of being loaded
+`[boolean](../reference.md#type-boolean)` — true if the given row has been loaded, false if it has not been loaded or is still in the process of being loaded
 
 **Flags**: A
 
@@ -1052,7 +1052,7 @@ Becomes true only when the ResultSet obtains a complete cache after a fetch with
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — whether all rows are cached
+`[boolean](../reference.md#type-boolean)` — whether all rows are cached
 
 **Flags**: A
 
@@ -1100,7 +1100,7 @@ This method returns false if data is not loaded yet.
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true if the ResultSet is showing a filtered subset of the cached rows, false otherwise.
+`[boolean](../reference.md#type-boolean)` — true if the ResultSet is showing a filtered subset of the cached rows, false otherwise.
 
 ### See Also
 
@@ -1112,11 +1112,11 @@ This method returns false if data is not loaded yet.
 ### Description
 This method indicates whether [ResultSet.getRowCount](#method-resultsetgetrowcount) reflects an accurate row-count for this data set. An accurate row count may not currently be available if [ResultSet.progressiveLoading](#attr-resultsetprogressiveloading) is active.
 
-See [RowCountStatus](../main.md#type-rowcountstatus) for further details.
+See [RowCountStatus](../reference.md#type-rowcountstatus) for further details.
 
 ### Returns
 
-`[RowCountStatus](../main.md#type-rowcountstatus)` — Current row-count status for this grid
+`[RowCountStatus](../reference.md#type-rowcountstatus)` — Current row-count status for this grid
 
 ### Groups
 
@@ -1128,7 +1128,7 @@ See [RowCountStatus](../main.md#type-rowcountstatus) for further details.
 ### Description
 Set the filter criteria to use when fetching rows.
 
-Depending on the result of [ResultSet.compareCriteria](#method-resultsetcomparecriteria) and settings for [ResultSet.useClientFiltering](#attr-resultsetuseclientfiltering) / [FetchMode](../main_2.md#type-fetchmode), setting criteria may cause a trip to the server to get a new set of rows, or may simply cause already-fetched rows to be re-filtered according to the new Criteria. In either case, the dataset length available from [ResultSet.getLength](#method-resultsetgetlength) may change and rows will appear at different indices.
+Depending on the result of [ResultSet.compareCriteria](#method-resultsetcomparecriteria) and settings for [ResultSet.useClientFiltering](#attr-resultsetuseclientfiltering) / [FetchMode](../reference_2.md#type-fetchmode), setting criteria may cause a trip to the server to get a new set of rows, or may simply cause already-fetched rows to be re-filtered according to the new Criteria. In either case, the dataset length available from [ResultSet.getLength](#method-resultsetgetlength) may change and rows will appear at different indices.
 
 The filter criteria can be changed while server fetches for data matching the old criteria are still outstanding. If this is the case, the ResultSet will make sure that any records received matching the old criteria are not added to the cache for the new criteria. Any callbacks for responses to the outstanding requests are fired as normal, and the responses' [totalRows](DSResponse.md#attr-dsresponsetotalrows) counts are kept (as they are still potentially meaningful to components using the ResultSet), but the response data is cleared so that it won't be used inadvertently as data matching the new criteria.
 
@@ -1138,11 +1138,11 @@ Note: for simple Criteria, any field values in the criteria explicitly specified
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newCriteria | [Criteria](../main_2.md#type-criteria) | false | — | the filter criteria |
+| newCriteria | [Criteria](../reference_2.md#type-criteria) | false | — | the filter criteria |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — Returns false if the new criteria match the previous criteria, implying the data is unchanged.
+`[boolean](../reference.md#type-boolean)` — Returns false if the new criteria match the previous criteria, implying the data is unchanged.
 
 ---
 ## Method: ResultSet.get
@@ -1160,7 +1160,7 @@ All List access methods of the ResultSet have the semantics described in `getRan
 
 ### Returns
 
-`[Object](../main.md#type-object)` — whatever's at that position, or `undefined` if not found
+`[Object](../reference.md#type-object)` — whatever's at that position, or `undefined` if not found
 
 ### Groups
 
@@ -1198,7 +1198,7 @@ Like [List.findAll](List.md#method-listfindall). Checks only loaded rows and wil
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| propertyName | [String](#type-string)|[Object](../main.md#type-object)|[AdvancedCriteria](#type-advancedcriteria) | false | — | property to match, or if an Object is passed, set of properties and values to match |
+| propertyName | [String](#type-string)|[Object](../reference.md#type-object)|[AdvancedCriteria](#type-advancedcriteria) | false | — | property to match, or if an Object is passed, set of properties and values to match |
 | value | [Any](#type-any) | true | — | value to compare against (if propertyName is a string) |
 
 ### Returns
@@ -1218,7 +1218,7 @@ This method retrieves the row-count for this data set. If progressive loading is
 
 ### Returns
 
-`[int](../main.md#type-int)` — Current row-count for this grid
+`[int](../reference.md#type-int)` — Current row-count for this grid
 
 ### Groups
 
@@ -1238,7 +1238,7 @@ If you need to force a partially loaded ResultSet to discard it's current sort, 
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true == list supports unsorting, false == not supported.
+`[boolean](../reference.md#type-boolean)` — true == list supports unsorting, false == not supported.
 
 ### Groups
 
@@ -1286,7 +1286,7 @@ Get the current criteria for this ResultSet.
 
 ### Returns
 
-`[Criteria](../main_2.md#type-criteria)` — current criteria
+`[Criteria](../reference_2.md#type-criteria)` — current criteria
 
 ---
 ## Method: ResultSet.lengthIsProgressive
@@ -1300,7 +1300,7 @@ This method relies on the [DSResponse.progressiveLoading](DSResponse.md#attr-dsr
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true if the length of this ResultSet was derived from a [progressiveLoading:true](DSResponse.md#attr-dsresponseprogressiveloading) dsResponse.
+`[boolean](../reference.md#type-boolean)` — true if the length of this ResultSet was derived from a [progressiveLoading:true](DSResponse.md#attr-dsresponseprogressiveloading) dsResponse.
 
 ### Groups
 
@@ -1316,14 +1316,14 @@ Like [List.findNextIndex](List.md#method-listfindnextindex). Checks only loaded 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| startIndex | [int](../main.md#type-int) | false | — | first index to consider. |
-| propertyName | [String](#type-string)|[Function](#type-function)|[Object](../main.md#type-object)|[AdvancedCriteria](#type-advancedcriteria) | false | — | property to match; or, if a function is passed, the predicate function to call; or, if an object is passed, set of properties and values to match. |
+| startIndex | [int](../reference.md#type-int) | false | — | first index to consider. |
+| propertyName | [String](#type-string)|[Function](#type-function)|[Object](../reference.md#type-object)|[AdvancedCriteria](#type-advancedcriteria) | false | — | property to match; or, if a function is passed, the predicate function to call; or, if an object is passed, set of properties and values to match. |
 | value | [Any](#type-any) | true | — | value to compare against (if `propertyName` is a string) or the value of `this` when the predicate function is invoked (if `propertyName` is a function) |
-| endIndex | [int](../main.md#type-int) | true | — | last index to consider (inclusive). |
+| endIndex | [int](../reference.md#type-int) | true | — | last index to consider (inclusive). |
 
 ### Returns
 
-`[int](../main.md#type-int)` — index of the first matching value or -1 if not found.
+`[int](../reference.md#type-int)` — index of the first matching value or -1 if not found.
 
 ### Groups
 

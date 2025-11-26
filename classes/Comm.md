@@ -1,6 +1,6 @@
 # Comm Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -25,7 +25,7 @@ The message to show the user if [concurrentXHRsInIE](#classattr-commconcurrentxh
 ## ClassAttr: Comm.concurrentXHRsInIE
 
 ### Description
-If true, SmartClient will use a [web worker](https://html.spec.whatwg.org/multipage/workers.html) to send [RPCRequest](../main.md#object-rpcrequest)s and [DSRequest](../main_2.md#object-dsrequest)s concurrent with the main Javascript thread, if:
+If true, SmartClient will use a [web worker](https://html.spec.whatwg.org/multipage/workers.html) to send [RPCRequest](../reference.md#object-rpcrequest)s and [DSRequest](../reference_2.md#object-dsrequest)s concurrent with the main Javascript thread, if:
 
 *   The [transport](RPCRequest.md#attr-rpcrequesttransport) is "xmlHttpRequest"
 *   The browser is Internet Explorer 10 or greater

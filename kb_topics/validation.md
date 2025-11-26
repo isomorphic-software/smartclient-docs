@@ -1,6 +1,6 @@
 # validation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -11,7 +11,7 @@ Validation
 
 ### Related
 
-- [CharacterCasing](../main.md#type-charactercasing)
+- [CharacterCasing](../reference.md#type-charactercasing)
 - [Validator.addValidator](../classes/Validator.md#classmethod-validatoraddvalidator)
 - [Validator.addValidators](../classes/Validator.md#classmethod-validatoraddvalidators)
 - [Validator.addValidatorDefinition](../classes/Validator.md#classmethod-validatoraddvalidatordefinition)

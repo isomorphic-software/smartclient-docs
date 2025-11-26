@@ -1,6 +1,6 @@
 # Callbacks Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -34,7 +34,7 @@ Called when [Process.runTask](Process.md#method-processruntask) has finished exe
 |------|------|----------|---------|-------------|
 | task | [Task](#type-task) | false | — | The task instance that was executed. |
 | process | [Process](#type-process) | false | — | The owning process instance. |
-| outputs | [Object](../main.md#type-object) | false | — | Task outputs, if any (for [CoTTask](CoTTask.md#class-cottask), this is the final `$outputs` JSON). May be null if the task does not produce outputs. |
+| outputs | [Object](../reference.md#type-object) | false | — | Task outputs, if any (for [CoTTask](CoTTask.md#class-cottask), this is the final `$outputs` JSON). May be null if the task does not produce outputs. |
 
 ---
 ## Method: Callbacks.AsyncMultipleValuesGenerationResultCallback
@@ -52,7 +52,7 @@ Callback fired with the result of an asynchronous operation to generate multiple
 ## Method: Callbacks.LoadScreenCallback
 
 ### Description
-A [Callback](../main.md#type-callback) to evaluate when a screen is loaded via [RPCManager.loadScreen](RPCManager.md#classmethod-rpcmanagerloadscreen).
+A [Callback](../reference.md#type-callback) to evaluate when a screen is loaded via [RPCManager.loadScreen](RPCManager.md#classmethod-rpcmanagerloadscreen).
 
 ### Parameters
 
@@ -86,21 +86,21 @@ Callback called with progress information about an ongoing AI process.
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | context | [AIContext](#type-aicontext) | false | — | — |
-| numStepsCompleted | [Integer](../main_2.md#type-integer) | false | — | — |
-| estimatedNumTotalSteps | [Integer](../main_2.md#type-integer) | false | — | — |
+| numStepsCompleted | [Integer](../reference_2.md#type-integer) | false | — | — |
+| estimatedNumTotalSteps | [Integer](../reference_2.md#type-integer) | false | — | — |
 | newMessages | [Array of AIProgressMessage](#type-array-of-aiprogressmessage) | false | — | Any additional messages about the progress that has been made since the last invocation of the progress callback. This may be `null` or an empty array, if, for example, only the `numStepsCompleted` is being updated. |
 
 ---
 ## Method: Callbacks.RPCCallback
 
 ### Description
-A [Callback](../main.md#type-callback) to evaluate when an RPCRequest completes.
+A [Callback](../reference.md#type-callback) to evaluate when an RPCRequest completes.
 
 Parameters passed to this callback are:
 
 *   rpcResponse: an [RPCResponse](RPCResponse.md#class-rpcresponse) encapsulating the server response to your request
 *   data: just the "data" property from the RPCResponse, for convenience
-*   rpcRequest: the [RPCRequest](../main.md#object-rpcrequest) that was sent. You can use [RPCRequest.clientContext](RPCRequest.md#attr-rpcrequestclientcontext) to track state during the server turnaround.
+*   rpcRequest: the [RPCRequest](../reference.md#object-rpcrequest) that was sent. You can use [RPCRequest.clientContext](RPCRequest.md#attr-rpcrequestclientcontext) to track state during the server turnaround.
 
 For example, to take the data returned by the server and display it in a previously created ListGrid with the ID "myGrid":
 ```
@@ -125,14 +125,14 @@ Or
 
 ### See Also
 
-- [RPCRequest](../main.md#object-rpcrequest)
+- [RPCRequest](../reference.md#object-rpcrequest)
 - [RPCResponse](RPCResponse.md#class-rpcresponse)
 
 ---
 ## Method: Callbacks.PlaybackCompleteCallback
 
 ### Description
-A [Callback](../main.md#type-callback) fired when [Sound.play](Sound.md#method-soundplay) completes.
+A [Callback](../reference.md#type-callback) fired when [Sound.play](Sound.md#method-soundplay) completes.
 
 ---
 ## Method: Callbacks.TimingDataCallback
@@ -144,7 +144,7 @@ Callback fired after a call to [RPCManager.getTimingData](RPCManager.md#classmet
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| data | [Object](../main.md#type-object) | false | — | The root object of the timing data tree (note, this is a plain JS object, not an instance of the SmartClient Tree class) |
+| data | [Object](../reference.md#type-object) | false | — | The root object of the timing data tree (note, this is a plain JS object, not an instance of the SmartClient Tree class) |
 
 ---
 ## Method: Callbacks.MultiWindowEventCallback
@@ -159,14 +159,14 @@ Note that the event is simply an [OpenFin application event](https://developer.o
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | remoteWindow | [RemoteWindow](#type-remotewindow) | false | — | window affected by event, or null if not found |
-| eventType | [MultiWindowEvent](../main_2.md#type-multiwindowevent) | false | — | event type as passed to [MultiWindow.setEvent](MultiWindow.md#classmethod-multiwindowsetevent) |
-| event | [Object](../main.md#type-object) | false | — | event data see MultiWindow.setEvent() see MultiWindow.clearEvent() |
+| eventType | [MultiWindowEvent](../reference_2.md#type-multiwindowevent) | false | — | event type as passed to [MultiWindow.setEvent](MultiWindow.md#classmethod-multiwindowsetevent) |
+| event | [Object](../reference.md#type-object) | false | — | event data see MultiWindow.setEvent() see MultiWindow.clearEvent() |
 
 ---
 ## Method: Callbacks.ValidatorConditionCallback
 
 ### Description
-[Callback](../main.md#type-callback) required for the property [Validator.condition](Validator.md#attr-validatorcondition) and [ValidatorDefinition.condition](ValidatorDefinition.md#attr-validatordefinitioncondition).
+[Callback](../reference.md#type-callback) required for the property [Validator.condition](Validator.md#attr-validatorcondition) and [ValidatorDefinition.condition](ValidatorDefinition.md#attr-validatordefinitioncondition).
 
 ### Parameters
 
@@ -175,10 +175,10 @@ Note that the event is simply an [OpenFin application event](https://developer.o
 | item | [DataSourceField](#type-datasourcefield)|[ListGridField](#type-listgridfield)|[FormItem](#type-formitem) | false | — | FormItem, DataSourceField or ListGridField on which this validator was declared. NOTE: FormItem will not be available during a save performed without a form (eg programmatic save) or if the field is not available in the form. |
 | validator | [Validator](#type-validator) | false | — | Validator declaration from eg [DataSourceField.validators](DataSourceField.md#attr-datasourcefieldvalidators). |
 | value | [Any](#type-any) | false | — | value to validate |
-| record | [Object](../main.md#type-object) | false | — | Field values for record being validated. |
-| additionalContext | [Object](../main.md#type-object) | false | — | Object containing extra context which may be useful to the condition function. Contains the following properties:  
+| record | [Object](../reference.md#type-object) | false | — | Field values for record being validated. |
+| additionalContext | [Object](../reference.md#type-object) | false | — | Object containing extra context which may be useful to the condition function. Contains the following properties:  
 
-*   validatorDefinition: the [ValidatorDefinition](../main_2.md#object-validatordefinition) for the validator being processed. This allows easy access to custom validator defintion properties while evaluating the condition.
+*   validatorDefinition: the [ValidatorDefinition](../reference_2.md#object-validatordefinition) for the validator being processed. This allows easy access to custom validator defintion properties while evaluating the condition.
 *   component: the DynamicForm or ListGrid being validated  
     
 *   rowNum: the row number of the cell being validated (only if component is a ListGrid)  
@@ -187,13 +187,13 @@ Note that the event is simply an [OpenFin application event](https://developer.o
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — whether the value passed validation. True for passed, false for fail.
+`[boolean](../reference.md#type-boolean)` — whether the value passed validation. True for passed, false for fail.
 
 ---
 ## Method: Callbacks.ShiftFocusCallback
 
 ### Description
-A [Callback](../main.md#type-callback) fired by the TabIndexManager when application code or user action attempts to synthetically shift focus to some registered target. See [TabIndexManager.shiftFocus](TabIndexManager.md#classmethod-tabindexmanagershiftfocus).
+A [Callback](../reference.md#type-callback) fired by the TabIndexManager when application code or user action attempts to synthetically shift focus to some registered target. See [TabIndexManager.shiftFocus](TabIndexManager.md#classmethod-tabindexmanagershiftfocus).
 
 A typical implementation will shift focus to some native element associated with the registered target, or if this is not currently possible, return false.
 
@@ -205,7 +205,7 @@ A typical implementation will shift focus to some native element associated with
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — Return true if focus could be successfully moved to the desired target. Returning false indicates the target could not accept focus and will often cause the TabIndexManager to find the next registered target and attempt to shift focus there.
+`[boolean](../reference.md#type-boolean)` — Return true if focus could be successfully moved to the desired target. Returning false indicates the target could not accept focus and will often cause the TabIndexManager to find the next registered target and attempt to shift focus there.
 
 ---
 ## Method: Callbacks.DSCallback
@@ -219,7 +219,7 @@ Callback fired when DataSource methods that send DSRequests complete (such as [D
 |------|------|----------|---------|-------------|
 | dsResponse | [DSResponse](#type-dsresponse) | false | — | a [DSResponse](DSResponse.md#class-dsresponse) instance with metadata about the returned data |
 | data | [Any](#type-any) | false | — | data returned to satisfy the DataSource request. See the [DataSource operations](../kb_topics/dataSourceOperations.md#kb-topic-datasource-operations) topic for expected results for each type of DataSource operation |
-| dsRequest | [DSRequest](#type-dsrequest) | false | — | the [DSRequest](../main_2.md#object-dsrequest) that was sent. You can use [DSRequest.clientContext](DSRequest.md#attr-dsrequestclientcontext) to track state during the server turnaround. |
+| dsRequest | [DSRequest](#type-dsrequest) | false | — | the [DSRequest](../reference_2.md#object-dsrequest) that was sent. You can use [DSRequest.clientContext](DSRequest.md#attr-dsrequestclientcontext) to track state during the server turnaround. |
 
 ---
 ## Method: Callbacks.ExportImageCallback
@@ -237,28 +237,28 @@ Callback for [RPCManager.exportImage](RPCManager.md#classmethod-rpcmanagerexport
 ## Method: Callbacks.AnimationCallback
 
 ### Description
-A [Callback](../main.md#type-callback) called when the move completes.
+A [Callback](../reference.md#type-callback) called when the move completes.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| earlyFinish | [boolean](../main.md#type-boolean) | false | — | true if the animation was cut short. To quit an animation early, simply call the non-animated version of the same API, so for example call [Canvas.hide](Canvas.md#method-canvashide) to cut short an animation from [Canvas.animateHide](Canvas.md#method-canvasanimatehide) already in progress. |
+| earlyFinish | [boolean](../reference.md#type-boolean) | false | — | true if the animation was cut short. To quit an animation early, simply call the non-animated version of the same API, so for example call [Canvas.hide](Canvas.md#method-canvashide) to cut short an animation from [Canvas.animateHide](Canvas.md#method-canvasanimatehide) already in progress. |
 
 ---
 ## Method: Callbacks.GetFieldValueCallback
 
 ### Description
-[Callback](../main.md#type-callback) required for the property [DataSourceField.getFieldValue](DataSourceField.md#attr-datasourcefieldgetfieldvalue).
+[Callback](../reference.md#type-callback) required for the property [DataSourceField.getFieldValue](DataSourceField.md#attr-datasourcefieldgetfieldvalue).
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| record | [Object](../main.md#type-object)|[XMLElement](../main.md#type-xmlelement) | false | — | record object selected from web service response data by [recordXPath](OperationBinding.md#attr-operationbindingrecordxpath) |
+| record | [Object](../reference.md#type-object)|[XMLElement](../reference.md#type-xmlelement) | false | — | record object selected from web service response data by [recordXPath](OperationBinding.md#attr-operationbindingrecordxpath) |
 | value | [Any](#type-any) | false | — | default value derived by the method described in [DataSourceField.valueXPath](DataSourceField.md#attr-datasourcefieldvaluexpath) |
 | field | [DataSourceField](#type-datasourcefield) | false | — | DataSourceField definition |
-| fieldName | [FieldName](../main.md#type-fieldname) | false | — | name of the DataSource field |
+| fieldName | [FieldName](../reference.md#type-fieldname) | false | — | name of the DataSource field |
 
 ### Groups
 
@@ -325,7 +325,7 @@ Note that the Array of RPCResponses passed to this callback will actually be DSR
 ## Method: Callbacks.ProcessCallback
 
 ### Description
-A [Callback](../main.md#type-callback) to evaluate when a Process has been loaded via [Process.loadProcess](Process.md#classmethod-processloadprocess).
+A [Callback](../reference.md#type-callback) to evaluate when a Process has been loaded via [Process.loadProcess](Process.md#classmethod-processloadprocess).
 
 ### Parameters
 
@@ -342,14 +342,14 @@ A [Callback](../main.md#type-callback) to evaluate when a Process has been loade
 ## Method: Callbacks.EventErrorCallback
 
 ### Description
-A [Callback](../main.md#type-callback) called to report [event errors](EventStream.md#attr-eventstreamcaptureeventerrors) from an [active](EventStream.md#method-eventstreamstart) [EventStream](EventStream.md#class-eventstream) to a listener.
+A [Callback](../reference.md#type-callback) called to report [event errors](EventStream.md#attr-eventstreamcaptureeventerrors) from an [active](EventStream.md#method-eventstreamstart) [EventStream](EventStream.md#class-eventstream) to a listener.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| data | [EventStreamData](#type-eventstreamdata) | false | — | A JavaScript object representing the current state of the stream; [events](EventStreamData.md#attr-eventstreamdataevents) will be an array of all retained [EventStreamEvent](../main.md#object-eventstreamevent)s captured by the stream since the last time the callback was invoked, oldest first. The last array element should be the `EventStreamEvent` that triggered this call and have an [errorTrace](EventStreamEvent.md#attr-eventstreameventerrortrace). |
-| nEvents | [int](../main.md#type-int) | false | — | The number of events captured by the stream since the last time the callback was invoked. Compare with [EventStreamData.nEvents](EventStreamData.md#attr-eventstreamdatanevents). |
+| data | [EventStreamData](#type-eventstreamdata) | false | — | A JavaScript object representing the current state of the stream; [events](EventStreamData.md#attr-eventstreamdataevents) will be an array of all retained [EventStreamEvent](../reference.md#object-eventstreamevent)s captured by the stream since the last time the callback was invoked, oldest first. The last array element should be the `EventStreamEvent` that triggered this call and have an [errorTrace](EventStreamEvent.md#attr-eventstreameventerrortrace). |
+| nEvents | [int](../reference.md#type-int) | false | — | The number of events captured by the stream since the last time the callback was invoked. Compare with [EventStreamData.nEvents](EventStreamData.md#attr-eventstreamdatanevents). |
 
 ### See Also
 
@@ -366,15 +366,15 @@ Callback to execute after the section has been shown.
 ## Method: Callbacks.HasFileVersionCallback
 
 ### Description
-A [Callback](../main.md#type-callback) fired when [DataSource.hasFileVersion](DataSource.md#method-datasourcehasfileversion) completes.
+A [Callback](../reference.md#type-callback) fired when [DataSource.hasFileVersion](DataSource.md#method-datasourcehasfileversion) completes.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | dsResponse | [DSResponse](#type-dsresponse) | false | — | A [DSResponse](DSResponse.md#class-dsresponse) instance with metadata about the returned data. |
-| data | [boolean](../main.md#type-boolean) | false | — | Whether the file version exists. |
-| dsRequest | [DSRequest](#type-dsrequest) | false | — | The [DSRequest](../main_2.md#object-dsrequest) that was sent. |
+| data | [boolean](../reference.md#type-boolean) | false | — | Whether the file version exists. |
+| dsRequest | [DSRequest](#type-dsrequest) | false | — | The [DSRequest](../reference_2.md#object-dsrequest) that was sent. |
 
 ### Groups
 
@@ -384,7 +384,7 @@ A [Callback](../main.md#type-callback) fired when [DataSource.hasFileVersion](Da
 ## Method: Callbacks.PaletteNodeCallback
 
 ### Description
-Callback fired with the [PaletteNodes](../main.md#object-palettenode) obtained asynchronously.
+Callback fired with the [PaletteNodes](../reference.md#object-palettenode) obtained asynchronously.
 
 ### Parameters
 
@@ -396,15 +396,15 @@ Callback fired with the [PaletteNodes](../main.md#object-palettenode) obtained a
 ## Method: Callbacks.HasFileCallback
 
 ### Description
-A [Callback](../main.md#type-callback) fired when [DataSource.hasFile](DataSource.md#method-datasourcehasfile) completes.
+A [Callback](../reference.md#type-callback) fired when [DataSource.hasFile](DataSource.md#method-datasourcehasfile) completes.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | dsResponse | [DSResponse](#type-dsresponse) | false | — | A [DSResponse](DSResponse.md#class-dsresponse) instance with metadata about the returned data. |
-| data | [boolean](../main.md#type-boolean) | false | — | Whether the file exists. |
-| dsRequest | [DSRequest](#type-dsrequest) | false | — | The [DSRequest](../main_2.md#object-dsrequest) that was sent. |
+| data | [boolean](../reference.md#type-boolean) | false | — | Whether the file exists. |
+| dsRequest | [DSRequest](#type-dsrequest) | false | — | The [DSRequest](../reference_2.md#object-dsrequest) that was sent. |
 
 ### Groups
 
@@ -414,7 +414,7 @@ A [Callback](../main.md#type-callback) fired when [DataSource.hasFile](DataSourc
 ## Method: Callbacks.CanPlayCallback
 
 ### Description
-A [Callback](../main.md#type-callback) fired when [Sound.load](Sound.md#method-soundload) completes.
+A [Callback](../reference.md#type-callback) fired when [Sound.load](Sound.md#method-soundload) completes.
 
 ---
 ## Method: Callbacks.AskDataQuestionResultCallback
@@ -445,7 +445,7 @@ Callback fired when [DataSource.getFileVersion](DataSource.md#method-datasourceg
 |------|------|----------|---------|-------------|
 | dsResponse | [DSResponse](#type-dsresponse) | false | — | A [DSResponse](DSResponse.md#class-dsresponse) instance with metadata about the returned data. |
 | data | [String](#type-string) | false | — | The file contents, or null if there was an error (such as file not found). |
-| dsRequest | [DSRequest](#type-dsrequest) | false | — | The [DSRequest](../main_2.md#object-dsrequest) that was sent. |
+| dsRequest | [DSRequest](#type-dsrequest) | false | — | The [DSRequest](../reference_2.md#object-dsrequest) that was sent. |
 
 ### Groups
 
@@ -461,7 +461,7 @@ Callback to execute after the section has been collapsed.
 ## Method: Callbacks.LoadProjectCallback
 
 ### Description
-A [Callback](../main.md#type-callback) to evaluate after [RPCManager.loadProject](RPCManager.md#classmethod-rpcmanagerloadproject) completes.
+A [Callback](../reference.md#type-callback) to evaluate after [RPCManager.loadProject](RPCManager.md#classmethod-rpcmanagerloadproject) completes.
 
 If [LoadProjectSettings.willHandleError](LoadProjectSettings.md#attr-loadprojectsettingswillhandleerror) is set, the callback will fire even if the requested projects could not be retrieved. You can call [RPCManager.getLoadProjectErrorStatus](RPCManager.md#classmethod-rpcmanagergetloadprojecterrorstatus) or [RPCManager.getLoadProjectErrorMessage](RPCManager.md#classmethod-rpcmanagergetloadprojecterrormessage) in this case for more information.
 
@@ -495,7 +495,7 @@ Callback fired after a call to [RPCManager.getFormattedTimingData](RPCManager.md
 ## Method: Callbacks.TabIndexUpdatedCallback
 
 ### Description
-A notification [Callback](../main.md#type-callback) fired by the TabIndexManager to allow application code to react to the numeric tab-index of some registered target being modified.
+A notification [Callback](../reference.md#type-callback) fired by the TabIndexManager to allow application code to react to the numeric tab-index of some registered target being modified.
 
 ### Parameters
 
@@ -551,7 +551,7 @@ Callback fired when [DataSource.getFile](DataSource.md#method-datasourcegetfile)
 |------|------|----------|---------|-------------|
 | dsResponse | [DSResponse](#type-dsresponse) | false | — | A [DSResponse](DSResponse.md#class-dsresponse) instance with metadata about the returned data. |
 | data | [String](#type-string) | false | — | The file contents, or null if there was an error (such as file not found). |
-| dsRequest | [DSRequest](#type-dsrequest) | false | — | The [DSRequest](../main_2.md#object-dsrequest) that was sent. |
+| dsRequest | [DSRequest](#type-dsrequest) | false | — | The [DSRequest](../reference_2.md#object-dsrequest) that was sent. |
 
 ### Groups
 
@@ -561,7 +561,7 @@ Callback fired when [DataSource.getFile](DataSource.md#method-datasourcegetfile)
 ## Method: Callbacks.ValidationStatusCallback
 
 ### Description
-A [Callback](../main.md#type-callback) to evaluate when form validation completes.
+A [Callback](../reference.md#type-callback) to evaluate when form validation completes.
 
 The available parameters are:
 
@@ -588,13 +588,13 @@ Callback reporting a failure in a [RemoteWindow](RemoteWindow.md#class-remotewin
 ## Method: Callbacks.ValidatorActionCallback
 
 ### Description
-[Callback](../main.md#type-callback) required for the property [ValidatorDefinition.action](ValidatorDefinition.md#attr-validatordefinitionaction).
+[Callback](../reference.md#type-callback) required for the property [ValidatorDefinition.action](ValidatorDefinition.md#attr-validatordefinitionaction).
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| result | [boolean](../main.md#type-boolean) | false | — | The result of the validator. The value will be null if the validator was skipped because of conditional criteria. |
+| result | [boolean](../reference.md#type-boolean) | false | — | The result of the validator. The value will be null if the validator was skipped because of conditional criteria. |
 | item | [DataSourceField](#type-datasourcefield)|[FormItem](#type-formitem) | false | — | FormItem or DataSourceField on which this validator was declared. NOTE: FormItem will not be available during a save performed without a form (eg programmatic save) or if the field is not available in the form. |
 | validator | [Validator](#type-validator) | false | — | Validator declaration from eg [DataSourceField.validators](DataSourceField.md#attr-datasourcefieldvalidators). |
 | record | [Record](#type-record) | false | — | Record that was validated |
@@ -642,7 +642,7 @@ Callback fired when ResultSet.fetchRowCount() completes
 |------|------|----------|---------|-------------|
 | resultSet | [ResultSet](#type-resultset) | false | — | the [ResultSet](ResultSet.md#class-resultset) resultSet that issued the row-count fetch request. |
 | dsResponse | [DSResponse](#type-dsresponse) | false | — | the [DSResponse](DSResponse.md#class-dsresponse) from the fetch request. May be null if the row count fetch was invalidated before the server responded |
-| invalidated | [boolean](../main.md#type-boolean) | false | — | boolean indicating whether the rowCountFetch request was invalidated. This parameter will be true if, after the row count fetch request was issued, the criteria were changed, the cache was invalidated or the rowCount status has changed since the fetch was initiated. Calling [ResultSet.fetchRowCount](ResultSet.md#method-resultsetfetchrowcount) before a row count fetch has completed will also invalidate the previous row count fetch. In any of these cases the row count will not be updated by this fetch operation. |
+| invalidated | [boolean](../reference.md#type-boolean) | false | — | boolean indicating whether the rowCountFetch request was invalidated. This parameter will be true if, after the row count fetch request was issued, the criteria were changed, the cache was invalidated or the rowCount status has changed since the fetch was initiated. Calling [ResultSet.fetchRowCount](ResultSet.md#method-resultsetfetchrowcount) before a row count fetch has completed will also invalidate the previous row count fetch. In any of these cases the row count will not be updated by this fetch operation. |
 
 ### Groups
 
@@ -688,7 +688,7 @@ Callback fired when [FormItem.setValueByDisplayValue](FormItem.md#method-formite
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| success | [boolean](../main.md#type-boolean) | false | — | True if the value was successfully set, false otherwise |
+| success | [boolean](../reference.md#type-boolean) | false | — | True if the value was successfully set, false otherwise |
 | value | [Any](#type-any) | false | — | If success is true, contains the mapped value that was set. If success is false, contains an error message string. |
 
 ---

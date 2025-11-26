@@ -1,6 +1,6 @@
 # DrawOval Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -98,7 +98,7 @@ Set the width of the drawOval
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| width | [Distance](../main.md#type-distance) | false | — | new width |
+| width | [Distance](../reference.md#type-distance) | false | — | new width |
 
 ---
 ## Method: DrawOval.setRadius
@@ -110,7 +110,7 @@ Resize the drawOval by setting its radius, and retaining its current center poin
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| radius | [Distance](../main.md#type-distance) | false | — | new radius. This will be applied on both axes, meaning calling this method will always result in the DrawOval being a circle. |
+| radius | [Distance](../reference.md#type-distance) | false | — | new radius. This will be applied on both axes, meaning calling this method will always result in the DrawOval being a circle. |
 
 ### See Also
 
@@ -126,8 +126,8 @@ Move the drawOval by the specified delta
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| dX | [Distance](../main.md#type-distance) | false | — | number of pixels to move horizontally |
-| dY | [Distance](../main.md#type-distance) | false | — | number of pixels to move vertically |
+| dX | [Distance](../reference.md#type-distance) | false | — | number of pixels to move horizontally |
+| dY | [Distance](../reference.md#type-distance) | false | — | number of pixels to move vertically |
 
 ---
 ## Method: DrawOval.getBoundingBox
@@ -149,8 +149,8 @@ Resize to the specified size. Note that the resize will occur from the current t
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| width | [Integer](../main_2.md#type-integer) | false | — | new width |
-| height | [Integer](../main_2.md#type-integer) | false | — | new height |
+| width | [Integer](../reference_2.md#type-integer) | false | — | new width |
+| height | [Integer](../reference_2.md#type-integer) | false | — | new height |
 
 ---
 ## Method: DrawOval.setHeight
@@ -162,7 +162,7 @@ Set the height of the drawOval
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| height | [Distance](../main.md#type-distance) | false | — | new height |
+| height | [Distance](../reference.md#type-distance) | false | — | new height |
 
 ---
 ## Method: DrawOval.resizeBy
@@ -174,8 +174,8 @@ Resize by the specified delta. Note that the resize will occur from the current 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| dX | [Distance](../main.md#type-distance) | false | — | number of pixels to resize by horizontally |
-| dY | [Distance](../main.md#type-distance) | false | — | number of pixels to resize by vertically |
+| dX | [Distance](../reference.md#type-distance) | false | — | number of pixels to resize by horizontally |
+| dY | [Distance](../reference.md#type-distance) | false | — | number of pixels to resize by vertically |
 
 ---
 ## Method: DrawOval.setOval
@@ -187,10 +187,10 @@ Resize and reposition the drawOval by setting its radius, and centerPoint.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| cx | [Coordinate](../main.md#type-coordinate) | false | — | new horizontal center point coordinate |
-| cy | [Coordinate](../main.md#type-coordinate) | false | — | new vertical center point coordinate |
-| rx | [Distance](../main.md#type-distance) | false | — | new horizontal radius |
-| ry | [Distance](../main.md#type-distance) | false | — | new vertical radius |
+| cx | [Coordinate](../reference.md#type-coordinate) | false | — | new horizontal center point coordinate |
+| cy | [Coordinate](../reference.md#type-coordinate) | false | — | new vertical center point coordinate |
+| rx | [Distance](../reference.md#type-distance) | false | — | new horizontal radius |
+| ry | [Distance](../reference.md#type-distance) | false | — | new vertical radius |
 
 ---
 ## Method: DrawOval.getRadiusX
@@ -200,7 +200,7 @@ Returns the horizontal radius of the DrawOval.
 
 ### Returns
 
-`[Distance](../main.md#type-distance)` — the horizontal radius.
+`[Distance](../reference.md#type-distance)` — the horizontal radius.
 
 ### See Also
 
@@ -216,8 +216,8 @@ Resize the drawOval by setting its horizontal and vertical radius, and retaining
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| rx | [Distance](../main.md#type-distance) | false | — | new horizontal radius |
-| ry | [Distance](../main.md#type-distance) | false | — | new vertical radius |
+| rx | [Distance](../reference.md#type-distance) | false | — | new horizontal radius |
+| ry | [Distance](../reference.md#type-distance) | false | — | new vertical radius |
 
 ### See Also
 
@@ -234,8 +234,8 @@ Change the center point for this oval.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| left | [Coordinate](../main.md#type-coordinate) | false | — | left coordinate (in the global coordinate system) |
-| top | [Coordinate](../main.md#type-coordinate) | false | — | top coordinate (in the global coordinate system) |
+| left | [Coordinate](../reference.md#type-coordinate) | false | — | left coordinate (in the global coordinate system) |
+| top | [Coordinate](../reference.md#type-coordinate) | false | — | top coordinate (in the global coordinate system) |
 
 ---
 ## Method: DrawOval.moveTo
@@ -247,8 +247,8 @@ Move the drawOval to the specified left/top position. You may also call [DrawOva
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| left | [Integer](../main_2.md#type-integer) | false | — | new left coordinate |
-| top | [Integer](../main_2.md#type-integer) | false | — | new top coordinate |
+| left | [Integer](../reference_2.md#type-integer) | false | — | new left coordinate |
+| top | [Integer](../reference_2.md#type-integer) | false | — | new top coordinate |
 
 ---
 ## Method: DrawOval.getRadiusY
@@ -258,7 +258,7 @@ Returns the vertical radius of the DrawOval.
 
 ### Returns
 
-`[Distance](../main.md#type-distance)` — the vertical radius.
+`[Distance](../reference.md#type-distance)` — the vertical radius.
 
 ### See Also
 
@@ -274,7 +274,7 @@ Set the left coordinate of the drawOval
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| left | [Coordinate](../main.md#type-coordinate) | false | — | new left coordinate |
+| left | [Coordinate](../reference.md#type-coordinate) | false | — | new left coordinate |
 
 ---
 ## Method: DrawOval.setTop
@@ -286,7 +286,7 @@ Set the top coordinate of the drawOval
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| top | [Coordinate](../main.md#type-coordinate) | false | — | new top coordinate |
+| top | [Coordinate](../reference.md#type-coordinate) | false | — | new top coordinate |
 
 ---
 ## Method: DrawOval.setRect
@@ -298,9 +298,9 @@ Move and resize the drawOval to match the specified coordinates and size.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| left | [Integer](../main_2.md#type-integer) | false | — | new left coordinate |
-| top | [Integer](../main_2.md#type-integer) | false | — | new top coordinate |
-| width | [Integer](../main_2.md#type-integer) | false | — | new width |
-| height | [Integer](../main_2.md#type-integer) | false | — | new height |
+| left | [Integer](../reference_2.md#type-integer) | false | — | new left coordinate |
+| top | [Integer](../reference_2.md#type-integer) | false | — | new top coordinate |
+| width | [Integer](../reference_2.md#type-integer) | false | — | new width |
+| height | [Integer](../reference_2.md#type-integer) | false | — | new height |
 
 ---

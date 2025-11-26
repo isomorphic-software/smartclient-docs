@@ -1,13 +1,13 @@
 # Automated Testing
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
 ## KB Topic: Automated Testing
 
 ### Description
-SmartClient supports automated testing with a variety of tools. See the [AutoTest](../classes/AutoTest.md#class-autotest) class for information about how to generate and resolve [AutoTestLocators](../main_2.md#type-autotestlocator) and other utilities within the SmartClient framework related to generating automated tests.
+SmartClient supports automated testing with a variety of tools. See the [AutoTest](../classes/AutoTest.md#class-autotest) class for information about how to generate and resolve [AutoTestLocators](../reference_2.md#type-autotestlocator) and other utilities within the SmartClient framework related to generating automated tests.
 
 #### Playwright
 SmartClient applications work smoothly with [Playwright](https://playwright.dev/).

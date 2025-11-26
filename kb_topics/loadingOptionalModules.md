@@ -1,6 +1,6 @@
 # Loading Optional Modules
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -26,7 +26,7 @@ Note that if using [loadISCTag](loadISCTag.md#kb-topic-isomorphicloadisc), multi
      <isomorphic:loadISC includeModules="Charts,Analytics"/>
  
 ```
-Refer to the [taglib documentation topic](../main.md#kb-topic-smartclient-jsp-tags) for usage.
+Refer to the [taglib documentation topic](../reference.md#kb-topic-smartclient-jsp-tags) for usage.
 
 #### Non-Java backend
 To load optional modules with a Non-Java backend, add the specified `<SCRIPT>` block(s) at the end of your existing SmartClient `<SCRIPT>` loads in your bootstrap HTML file. Replace "../isomorphic/" with the value of window.isomorphicDir, as appropriate.
@@ -66,9 +66,9 @@ Some optional modules may have server side functionality as well as client side 
 | AIEnables AI for various components.JSP tag:<isomorphic:loadISC includeModules="AI"/>HTML tag:`<SCRIPT SRC="../isomorphic/system/modules/ISC_AI.js">``</SCRIPT>` |
 | AnalyticsRequired for [CubeGrid](../classes/CubeGrid.md#class-cubegrid). Note that if charting is also required, the Charts module should be loaded before this one.JSP tag:<isomorphic:loadISC includeModules="Analytics"/>HTML tag:`<SCRIPT SRC="../isomorphic/system/modules/ISC_Analytics.js">``</SCRIPT>` |
 | RealtimeMessaging (see [Messaging](messaging.md#kb-topic-real-time-messaging))JSP tag:<isomorphic:loadISC includeModules="RealtimeMessaging"/>HTML tag:`<SCRIPT SRC="../isomorphic/system/modules/ISC_RealtimeMessaging.js">``</SCRIPT>` |
-| PluginBridgesRequired for all [BrowserPlugin](../main.md#class-browserplugin) derivatives (such as [Flashlet](../classes/Flashlet.md#class-flashlet)).JSP tag:<isomorphic:loadISC includeModules="PluginBridges"/>HTML tag:`<SCRIPT SRC="../isomorphic/system/modules/ISC_PluginBridges.js">``</SCRIPT>` |
-| HistoryThis module provides synthetic browser history support via the [History](../main.md#object-history) class, and can be used independently. That is, you can use it on pages that don't load any other modules.JSP tag(s):<isomorphic:loadISC includeModules="History"/>HTML tag:`<SCRIPT SRC="../isomorphic/system/modules/ISC_History.js">``</SCRIPT>` |
-| FileLoaderPart of the [Network Performance](networkPerformance.md#kb-topic-network-performance) subsystem. Note that unlike other optional modules the FileLoader can be loaded without loading the rest of the SmartClient modules. See [FileLoader](../main_2.md#object-fileloader) for more information on how this special class is used.JSP tag(s):<isomorphic:loadISC cacheOnly="true"/>or<isomorphic:loadISC deferLoad="true"/>HTML tag:`<SCRIPT SRC="../isomorphic/system/modules/ISC_FileLoader.js">``</SCRIPT>` |
+| PluginBridgesRequired for all [BrowserPlugin](../reference.md#class-browserplugin) derivatives (such as [Flashlet](../classes/Flashlet.md#class-flashlet)).JSP tag:<isomorphic:loadISC includeModules="PluginBridges"/>HTML tag:`<SCRIPT SRC="../isomorphic/system/modules/ISC_PluginBridges.js">``</SCRIPT>` |
+| HistoryThis module provides synthetic browser history support via the [History](../reference.md#object-history) class, and can be used independently. That is, you can use it on pages that don't load any other modules.JSP tag(s):<isomorphic:loadISC includeModules="History"/>HTML tag:`<SCRIPT SRC="../isomorphic/system/modules/ISC_History.js">``</SCRIPT>` |
+| FileLoaderPart of the [Network Performance](networkPerformance.md#kb-topic-network-performance) subsystem. Note that unlike other optional modules the FileLoader can be loaded without loading the rest of the SmartClient modules. See [FileLoader](../reference_2.md#object-fileloader) for more information on how this special class is used.JSP tag(s):<isomorphic:loadISC cacheOnly="true"/>or<isomorphic:loadISC deferLoad="true"/>HTML tag:`<SCRIPT SRC="../isomorphic/system/modules/ISC_FileLoader.js">``</SCRIPT>` |
 | TourThis module contains the [Tour](../classes/Tour.md#class-tour) class, allowing developers to create interactive guided tours of an application's user interface. Note that [Tour](../classes/Tour.md#class-tour) also requires the Drawing module to be loaded before this module.JSP tag:<isomorphic:loadISC includeModules="Tour"/>HTML tag: `<SCRIPT SRC="../isomorphic/system/modules/ISC_Tour.js">``</SCRIPT>` |
 | ToolsRequired for [Dashboards & Tools Framework](devTools.md#kb-topic-dashboards--tools-framework-overview). This module should always be included last in a group of optional modules.JSP tag:<isomorphic:loadISC includeModules="Tools"/>HTML tag:`<SCRIPT SRC="../isomorphic/system/modules/ISC_Tools.js">``</SCRIPT>`Note: Using these tools to edit hierarchies of SmartClient components and generate Component XML for them also requires the system schema to be loaded.JSP tag:`<script>`<isomorphic:loadSystemSchema />`</script>`HTML tag:`<SCRIPT SRC="../isomorphic/DataSourceLoader?dataSource=$systemSchema">``</SCRIPT>` |
 

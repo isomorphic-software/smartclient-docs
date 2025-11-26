@@ -1,6 +1,6 @@
 # FormItem Styling
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -26,11 +26,11 @@ In addition to this, form items may show validation error icons or text (see [Dy
 Most formItem user-interface elements support stateful styling - showing a different appearance for [focused](../classes/FormItem.md#attr-formitemshowfocused), [over](../classes/FormItem.md#attr-formitemshowover), [disabled](../classes/FormItem.md#attr-formitemshowdisabled) and [error](../classes/FormItem.md#attr-formitemshowerrorstyle) states.
 
 Default styling for items will vary by skin, and note that subclasses of FormItem may have additional styling properties not explicitly called out here.  
-Developers performing global styling modifications for formItems should also be aware of compound items (such as [DateItem](../classes/DateItem.md#class-dateitem)) which achieve their user interface by embedding simpler items in an outer structure. See [CompoundFormItem_skinning](../main.md#kb-topic-compoundformitem_skinning).
+Developers performing global styling modifications for formItems should also be aware of compound items (such as [DateItem](../classes/DateItem.md#class-dateitem)) which achieve their user interface by embedding simpler items in an outer structure. See [CompoundFormItem_skinning](../reference.md#kb-topic-compoundformitem_skinning).
 
 ### Related
 
-- [FormItemBaseStyle](../main_2.md#type-formitembasestyle)
+- [FormItemBaseStyle](../reference_2.md#type-formitembasestyle)
 - [FormItem.cellHeight](../classes/FormItem.md#attr-formitemcellheight)
 - [FormItem.iconBaseStyle](../classes/FormItem.md#attr-formitemiconbasestyle)
 - [FormItem.showFocused](../classes/FormItem.md#attr-formitemshowfocused)

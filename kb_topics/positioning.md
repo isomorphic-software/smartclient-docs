@@ -1,6 +1,6 @@
 # positioning
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -11,7 +11,7 @@ Horizontal and vertical location on the page
 
 ### Related
 
-- [Positioning](../main_2.md#type-positioning)
+- [Positioning](../reference_2.md#type-positioning)
 - [Canvas.setRect](../classes/Canvas.md#method-canvassetrect)
 - [Canvas.getLeft](../classes/Canvas.md#method-canvasgetleft)
 - [Canvas.setLeft](../classes/Canvas.md#method-canvassetleft)

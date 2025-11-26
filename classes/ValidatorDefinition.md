@@ -1,13 +1,13 @@
 # ValidatorDefinition Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
 ## Attr: ValidatorDefinition.action
 
 ### Description
-[Callback](../main.md#type-callback), function, or JavaScript expression called after every validation (i.e. call to [ValidatorDefinition.condition](#attr-validatordefinitioncondition)) whether it passed or failed. This allows the validator perform an operation on the field based on the validation outcome.
+[Callback](../reference.md#type-callback), function, or JavaScript expression called after every validation (i.e. call to [ValidatorDefinition.condition](#attr-validatordefinitioncondition)) whether it passed or failed. This allows the validator perform an operation on the field based on the validation outcome.
 
 An `action()` function is not needed to report an error message only.
 
@@ -19,7 +19,7 @@ For the required parameters, see the documentation for [ValidatorActionCallback]
 ## Attr: ValidatorDefinition.condition
 
 ### Description
-[Callback](../main.md#type-callback), function or JavaScript expression invoked to perform the actual validation of a value.
+[Callback](../reference.md#type-callback), function or JavaScript expression invoked to perform the actual validation of a value.
 
 Because the validator itself is passed as a parameter, you can effectively parameterize it. For example, to create a validator that checks that the value is after a certain date:
 
@@ -28,7 +28,7 @@ Because the validator itself is passed as a parameter, you can effectively param
        condition:"value.getTime() > validator.afterDate.getTime()" }
  
 ```
-Note that, if a field is declared with a builtin [FieldType](../main_2.md#type-fieldtype), the value passed in will already have been converted to the specified type, if possible.
+Note that, if a field is declared with a builtin [FieldType](../reference_2.md#type-fieldtype), the value passed in will already have been converted to the specified type, if possible.
 
 For the required parameters, see the documentation for [ValidatorConditionCallback](Callbacks.md#method-callbacksvalidatorconditioncallback).
 
@@ -46,7 +46,7 @@ Optional name to be shown in tools that edit validators. If not specified, the t
 ## Attr: ValidatorDefinition.type
 
 ### Description
-Type of the validator unique in [ValidatorType](../main.md#type-validatortype).
+Type of the validator unique in [ValidatorType](../reference.md#type-validatortype).
 
 **Flags**: IR
 

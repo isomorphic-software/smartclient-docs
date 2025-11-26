@@ -1,6 +1,6 @@
 # SQL DataSource vs JPA, EJB, MyBatis and other technologies
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 

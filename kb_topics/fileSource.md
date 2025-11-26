@@ -1,13 +1,13 @@
 # FileSource Operations
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
 ## KB Topic: FileSource Operations
 
 ### Description
-These APIs allow a [DataSource](../classes/DataSource.md#class-datasource) to be used as a way to store files in a DataSource that might otherwise be stored in a filesystem on the server. They are implemented by sending requests to the server with a special [operationType](../main.md#type-dsoperationtype).
+These APIs allow a [DataSource](../classes/DataSource.md#class-datasource) to be used as a way to store files in a DataSource that might otherwise be stored in a filesystem on the server. They are implemented by sending requests to the server with a special [operationType](../reference.md#type-dsoperationtype).
 
 FileSource operations use standardized field names: fileName, fileType, fileFormat, fileContents, fileSize, fileLastModified and optionally fileVersion. These are translated on the server to native field names for the [DataSource](../classes/DataSource.md#class-datasource), determined according to the DataSource configuration for [fileNameField](../classes/DataSource.md#attr-datasourcefilenamefield), [fileTypeField](../classes/DataSource.md#attr-datasourcefiletypefield), [fileFormatField](../classes/DataSource.md#attr-datasourcefileformatfield), [fileContentsField](../classes/DataSource.md#attr-datasourcefilecontentsfield), [fileLastModifiedField](../classes/DataSource.md#attr-datasourcefilelastmodifiedfield), and [fileVersionField](../classes/DataSource.md#attr-datasourcefileversionfield).
 
@@ -28,7 +28,7 @@ FileSource operations use standardized field names: fileName, fileType, fileForm
 - [DataSource.getFileVersion](../classes/DataSource.md#method-datasourcegetfileversion)
 - [DataSource.hasFileVersion](../classes/DataSource.md#method-datasourcehasfileversion)
 - [DataSource.removeFileVersion](../classes/DataSource.md#method-datasourceremovefileversion)
-- [FileSpec](../main.md#object-filespec)
+- [FileSpec](../reference.md#object-filespec)
 - [DataSource.fileNameField](../classes/DataSource.md#attr-datasourcefilenamefield)
 - [DataSource.fileTypeField](../classes/DataSource.md#attr-datasourcefiletypefield)
 - [DataSource.fileFormatField](../classes/DataSource.md#attr-datasourcefileformatfield)

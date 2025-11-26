@@ -1,6 +1,6 @@
 # EventStreamEvent Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -74,7 +74,7 @@ The [page width](Page.md#classmethod-pagegetwidth), present for page-level [resi
 ## Attr: EventStreamEvent.keyName
 
 ### Description
-The name of the key that triggered this event, present for [key events](EventStream.md#attr-eventstreamcapturekeyevents). For flexibility and ease of conversion to formats such as Selenese, the `keyName` for self-inserting keys (e.g. alphanumerics, "!", "@", etc.) reflects the actual character typed, factoring in the shift key. This aligns with [EventHandler.getKeyEventKey](EventHandler.md#classmethod-eventhandlergetkeyeventkey) rather than [EventHandler.getKey](EventHandler.md#classmethod-eventhandlergetkey), but refer to [KeyName](../main_2.md#type-keyname) for special keys.
+The name of the key that triggered this event, present for [key events](EventStream.md#attr-eventstreamcapturekeyevents). For flexibility and ease of conversion to formats such as Selenese, the `keyName` for self-inserting keys (e.g. alphanumerics, "!", "@", etc.) reflects the actual character typed, factoring in the shift key. This aligns with [EventHandler.getKeyEventKey](EventHandler.md#classmethod-eventhandlergetkeyeventkey) rather than [EventHandler.getKey](EventHandler.md#classmethod-eventhandlergetkey), but refer to [KeyName](../reference_2.md#type-keyname) for special keys.
 
 Note that the `keyName` for special keys may be more than one character, such as "Enter", or "Down". For improved [collapsing](EventStream.md#attr-eventstreamcollapsekeyevents), the space key is always reported as the self-inserting key " ", rather than the special key "Space", since we can't collapse special and self-inserting keys into one event.
 
@@ -338,7 +338,7 @@ Note that if drag events are not being captured, it will be populated for the `m
 ## Attr: EventStreamEvent.eventType
 
 ### Description
-The type of the [EventStreamEvent](../main.md#object-eventstreamevent). For DOM events, this is just the official [EventHandler](EventHandler.md#class-eventhandler) name for the event, such as `mouseDown`. Otherwise, it's unique to [EventStream](EventStream.md#class-eventstream), but should reflect what event was captured, such as `fileLoad` or `relogin`.
+The type of the [EventStreamEvent](../reference.md#object-eventstreamevent). For DOM events, this is just the official [EventHandler](EventHandler.md#class-eventhandler) name for the event, such as `mouseDown`. Otherwise, it's unique to [EventStream](EventStream.md#class-eventstream), but should reflect what event was captured, such as `fileLoad` or `relogin`.
 
 **Flags**: R
 

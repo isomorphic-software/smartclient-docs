@@ -1,6 +1,6 @@
 # Server-side OData DataSource
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -11,7 +11,7 @@
 
 In addition to the regular `RestConnector` facilities, `ODataDataSource` adds the following support, specifically for REST services that follow the OData protocol
 
-*   Generate an OData-compliant "$filter" query from standard SmartClient criteria. Note, the generated filter query will convert [textMatchStyle](../classes/DSRequest.md#attr-dsrequesttextmatchstyle) to the corresponding OData function ("`substring`" becomes "`contains`" and "`startsWith`" becomes "`startswith`"; other textMatchStyles just generate straight equality checks), but there is no current support for true [AdvancedCriteria](../main.md#object-advancedcriteria)
+*   Generate an OData-compliant "$filter" query from standard SmartClient criteria. Note, the generated filter query will convert [textMatchStyle](../classes/DSRequest.md#attr-dsrequesttextmatchstyle) to the corresponding OData function ("`substring`" becomes "`contains`" and "`startsWith`" becomes "`startswith`"; other textMatchStyles just generate straight equality checks), but there is no current support for true [AdvancedCriteria](../reference.md#object-advancedcriteria)
 *   Generate an OData "$orderby" parameter from the SmartClient sortBy information
 *   Generate an OData "$select" parameter from the SmartClient "outputs" information
 *   Derive "$skip" and "$top" attributes from the SmartClient startRow and endRow

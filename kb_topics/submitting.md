@@ -1,6 +1,6 @@
 # submitting
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -13,8 +13,8 @@ Direct submission of forms to a target URL
 
 ### Related
 
-- [FormMethod](../main.md#type-formmethod)
-- [Encoding](../main_2.md#type-encoding)
+- [FormMethod](../reference.md#type-formmethod)
+- [Encoding](../reference_2.md#type-encoding)
 - [DynamicForm.cancel](../classes/DynamicForm.md#method-dynamicformcancel)
 - [ValuesManager.cancel](../classes/ValuesManager.md#method-valuesmanagercancel)
 - [DynamicForm.submitForm](../classes/DynamicForm.md#method-dynamicformsubmitform)

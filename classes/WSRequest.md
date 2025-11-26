@@ -1,6 +1,6 @@
 # WSRequest Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -81,7 +81,7 @@ However if useFlatFields were set, `request.data` could be just:
 
 [OperationBinding.useFlatFields](OperationBinding.md#attr-operationbindinguseflatfields) can also be set to cause **all** dsRequests of a particular type to `useFlatFields` automatically.
 
-For [DataBoundComponents](../main.md#interface-databoundcomponent), [component.useFlatFields](DataBoundComponent.md#attr-databoundcomponentuseflatfields) can be set use "flattened" binding to fields of a WSDL message or XML Schema.
+For [DataBoundComponents](../reference.md#interface-databoundcomponent), [component.useFlatFields](DataBoundComponent.md#attr-databoundcomponentuseflatfields) can be set use "flattened" binding to fields of a WSDL message or XML Schema.
 
 Note that `useFlatFields` is not generally recommended for use with XML input messages where multiple simple type fields exist with the same name, however if used in this way, the first field to use a given name wins. "first" means the first field encountered in a depth first search. "wins" means only the first field will be populated in the generated XML message.
 

@@ -1,6 +1,6 @@
 # Integrating SmartClient with Cypress
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -25,9 +25,9 @@ This file contains some [custom commands](https://docs.cypress.io/api/cypress-ap
 
 **Using _locators_ to interact with SmartClient User Interface components**
 
-The [AutoTestLocator](../main_2.md#type-autotestlocator) subsystem is used to reliably identify DOM elements generated within a SmartClient application.
+The [AutoTestLocator](../reference_2.md#type-autotestlocator) subsystem is used to reliably identify DOM elements generated within a SmartClient application.
 
-For general concepts, see [obtainingLocators](../main.md#kb-topic-obtaining-locators). The following is Cypress-specific guidance.
+For general concepts, see [obtainingLocators](../reference.md#kb-topic-obtaining-locators). The following is Cypress-specific guidance.
 
 The sample `commands.js` file includes a `getSC()` command that uses [AutoTest.waitForElement](../classes/AutoTest.md#classmethod-autotestwaitforelement) to wait for any pending system actions, resolve an AutoTestLocator to a DOM element, and yield it back. You can make use of this command in your test code as follows:
 
@@ -44,7 +44,7 @@ or directly:
 
 **Scroll behavior in Cypress**
 
-For general concepts, see [scrollingBehavior](../main.md#kb-topic-understanding-scroll-behavior). The following is Cypress-specific guidance.
+For general concepts, see [scrollingBehavior](../reference.md#kb-topic-understanding-scroll-behavior). The following is Cypress-specific guidance.
 
 Cypress actions like [click](https://docs.cypress.io/api/commands/click) may scroll the target element into view. If SmartClient components redraw synchronously on scroll, this can interfere with Cypress actions. To avoid issues, ensure the element is in view before interacting, and set `scrollBehavior:false` in the click options.
 
@@ -135,7 +135,7 @@ For more details on explicitly handling asynchronous actions without using `getS
 
 Additionally you may have asynchronous behaviors that are unrelated to SmartClient interactions, such as network activity that does not go through the SmartClient [RPCManager](../classes/RPCManager.md#class-rpcmanager), asynchronous rendering of third party widgets, etc. In these cases [AutoTest.isSystemDone](../classes/AutoTest.md#classmethod-autotestissystemdone) may return true even though the application is not ready for further input.
 
-The `options` parameter for `getSC()` can be used to change the [waitStyle](../main.md#attr-elementwaitconfigwaitstyle) passed to [AutoTest.waitForElement](../classes/AutoTest.md#classmethod-autotestwaitforelement). If you request `"element"` rather than `"system"`, instead of relying on [AutoTest.isSystemDone](../classes/AutoTest.md#classmethod-autotestissystemdone), the framework will continue trying to resolve the locator to an element until the command times out. This gives you an easy way to instruct the test case to keep trying to resolve a locator even after [AutoTest.isSystemDone](../classes/AutoTest.md#classmethod-autotestissystemdone) returns true.
+The `options` parameter for `getSC()` can be used to change the [waitStyle](../reference.md#attr-elementwaitconfigwaitstyle) passed to [AutoTest.waitForElement](../classes/AutoTest.md#classmethod-autotestwaitforelement). If you request `"element"` rather than `"system"`, instead of relying on [AutoTest.isSystemDone](../classes/AutoTest.md#classmethod-autotestissystemdone), the framework will continue trying to resolve the locator to an element until the command times out. This gives you an easy way to instruct the test case to keep trying to resolve a locator even after [AutoTest.isSystemDone](../classes/AutoTest.md#classmethod-autotestissystemdone) returns true.
 
 Both `waitForSCDone()` and `getSC()` support being passed an explicit timeout on the `options` parameter. This governs how long the commands will wait for system quiescence / for the locator to be resolved. If no explicit timeout was specified, the default wait time for these commands is 30 seconds, but this can be customized by setting `"scCommandTimeout"` in your Cypress config.
 
@@ -145,7 +145,7 @@ If `getSC()` or `waitForSCDone()` does time out the Cypress test will fail.
 
 **RPC timing logs in Cypress**
 
-For general concepts, see [usingRPCTimingLogs](../main.md#kb-topic-rpc-timing-logs). The following is Cypress-specific guidance.
+For general concepts, see [usingRPCTimingLogs](../reference.md#kb-topic-rpc-timing-logs). The following is Cypress-specific guidance.
 
 The sample `commands.js` file includes a command `"enableSC_RPCTimeout"` which makes use of [Event emitters](https://nodejs.org/api/events.html#class-eventemitter) in Cypress to take advantage of these APIs and log timing information for slow requests.
 

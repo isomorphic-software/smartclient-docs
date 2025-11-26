@@ -1,6 +1,6 @@
 # Task Input / Output
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -10,7 +10,7 @@
 #### Input
 Tasks require "inputs" to do their work, just like a method call. For example, [GridFetchDataTask](../classes/GridFetchDataTask.md#class-gridfetchdatatask) requires [criteria](../classes/GridFetchDataTask.md#attr-gridfetchdatataskcriteria).
 
-For built-in tasks, you can typically use [TaskInputExpressions](../main_2.md#type-taskinputexpression) to declare that the inputs of a task are drawn from [Process.state](../classes/Process.md#attr-processstate), the [output](../classes/Task.md#method-tasksetoutput) of a previous task in the process, or from global context such as [ruleScope](../classes/Process.md#attr-processrulescope). See the docs for each task for details.
+For built-in tasks, you can typically use [TaskInputExpressions](../reference_2.md#type-taskinputexpression) to declare that the inputs of a task are drawn from [Process.state](../classes/Process.md#attr-processstate), the [output](../classes/Task.md#method-tasksetoutput) of a previous task in the process, or from global context such as [ruleScope](../classes/Process.md#attr-processrulescope). See the docs for each task for details.
 
 If you are implementing your own task and want to support `TaskInputExpressions` for the data required by your task, use +link{task.getExpressionValue(_expression_)}.
 
@@ -21,7 +21,7 @@ A task can call [Task.setOutput](../classes/Task.md#method-tasksetoutput) to pro
 
 Using the property [Task.outputField](../classes/Task.md#attr-taskoutputfield) and/or [Task.outputFieldList](../classes/Task.md#attr-taskoutputfieldlist) allows certain properties of the output, from setOutput(), to be written into the [Process.state](../classes/Process.md#attr-processstate). Use [Task.outputField](../classes/Task.md#attr-taskoutputfield) to specify the field in the process state where the task output should be written. Or, for more complex tasks, use [Task.outputFieldList](../classes/Task.md#attr-taskoutputfieldlist) to specify multiple fields.
 
-You can also use the property [Task.outputExpression](../classes/Task.md#attr-taskoutputexpression) to write task output directly into a [DataBoundComponent](../main.md#interface-databoundcomponent) instead of or in addition to the process state.
+You can also use the property [Task.outputExpression](../classes/Task.md#attr-taskoutputexpression) to write task output directly into a [DataBoundComponent](../reference.md#interface-databoundcomponent) instead of or in addition to the process state.
 
 An output expression is a String prefixed with "$" followed by the DataBoundComponent ID and optionally followed by a dot-separated field name. When no optional field name is specified, the task output is written to the target component using setValues() or setData(). With the optional field name, the task output is written to the target with setFieldValue() or setEditValue(). For a ListGrid the row is either the current edit row or the one selected row.
 

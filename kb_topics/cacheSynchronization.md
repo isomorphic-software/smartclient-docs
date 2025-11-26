@@ -1,18 +1,18 @@
 # Automatic Cache Synchronization
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
 ## KB Topic: Automatic Cache Synchronization
 
 ### Description
-_Cache synchronization_ is the mechanism used by SmartClient to ensure that updates made by [dataBoundComponent](../main.md#interface-databoundcomponent)s or programmatically on [dataSource](../classes/DataSource.md#class-datasource)s directly, are reflected in the client-side caches of other `dataBoundComponent`s. Automatic cache sync means that components update themselves to reflect data changes - so if you update a record in a [form](../classes/DynamicForm.md#class-dynamicform), and the same information is currently visible in a [grid](../classes/ListGrid_1.md#class-listgrid), the grid data will change to reflect the updates automatically.
+_Cache synchronization_ is the mechanism used by SmartClient to ensure that updates made by [dataBoundComponent](../reference.md#interface-databoundcomponent)s or programmatically on [dataSource](../classes/DataSource.md#class-datasource)s directly, are reflected in the client-side caches of other `dataBoundComponent`s. Automatic cache sync means that components update themselves to reflect data changes - so if you update a record in a [form](../classes/DynamicForm.md#class-dynamicform), and the same information is currently visible in a [grid](../classes/ListGrid_1.md#class-listgrid), the grid data will change to reflect the updates automatically.
 
 The SmartClient server is designed to retrieve cache sync data in the most optimal way, taking into account the capabilities of the target data store or data service and the context of the request, such as whether it came from a browser or was programmatically initiated on the server. The cacheSyncStrategy setting can be used to manually control how cache sync is performed server-side, whenever that's necessary.
 
 #### CacheSyncStrategy
-Cache sync configuration revolves around the [CacheSyncStrategy](../main_2.md#type-cachesyncstrategy) type, and to a lesser extent the [CacheSyncTiming](../main_2.md#type-cachesynctiming). These settings allow you to define a default cache sync approach globally, overridable [per-DataSource](../classes/DataSource.md#attr-datasourcecachesyncstrategy), [per-Operation](../classes/OperationBinding.md#attr-operationbindingcachesyncstrategy) or [per-request](../classes/DSRequest.md#attr-dsrequestcachesyncstrategy). See the [CacheSyncStrategy documentation](../main_2.md#type-cachesyncstrategy) for details.
+Cache sync configuration revolves around the [CacheSyncStrategy](../reference_2.md#type-cachesyncstrategy) type, and to a lesser extent the [CacheSyncTiming](../reference_2.md#type-cachesynctiming). These settings allow you to define a default cache sync approach globally, overridable [per-DataSource](../classes/DataSource.md#attr-datasourcecachesyncstrategy), [per-Operation](../classes/OperationBinding.md#attr-operationbindingcachesyncstrategy) or [per-request](../classes/DSRequest.md#attr-dsrequestcachesyncstrategy). See the [CacheSyncStrategy documentation](../reference_2.md#type-cachesyncstrategy) for details.
 
 Note that DataSource-level, operation-level and request-level `cacheSyncStrategy` settings are honored in all cases (though see below for a caveat on that), but global settings are defaults only. SmartClient will override the default if it detects that it might lead to problems in a given case.
 
@@ -24,7 +24,7 @@ SmartClient will detect these cases where we would have possibly incomplete cach
 *   customSQL
 *   customSelectExpression
 
-Similarly, SmartClient will override the global `cacheSyncTiming` setting according to the requirements of a given request. For example, if the global default is "lazy" and there is no DataSource-level, operation-level or request-level timing setting, SmartClient will override the timing to "immediate" for any client-originated request, amongst other things. See the [CacheSyncTiming documentation](../main_2.md#type-cachesynctiming) for further details.
+Similarly, SmartClient will override the global `cacheSyncTiming` setting according to the requirements of a given request. For example, if the global default is "lazy" and there is no DataSource-level, operation-level or request-level timing setting, SmartClient will override the timing to "immediate" for any client-originated request, amongst other things. See the [CacheSyncTiming documentation](../reference_2.md#type-cachesynctiming) for further details.
 
 If you do not want these intelligent fallback behaviors for a given DataSource, operation or request, set a `cacheSyncStrategy` or `cacheSyncTiming` on the DataSource, operation or request. This will always be honored for `cacheSyncStrategy`, even when the system knows that it is going to lead to incomplete cache-sync data. However, even an explicit `cacheSyncTiming` setting at the DataSource, operation or request level will be ignored in certain circumstances, where deferring the cache sync operation could break framework functionality. An example of this is auditing: if your dataSource is configured for [automatic auditing](../classes/DataSource.md#attr-datasourceaudit), the framework categorically _does_ need the cache sync data in order to write an audit record, and when deferred cache sync is in force, we have no guarantee that cache sync will run at all. So we ignore attempts to configure it for deferred cache sync.
 
@@ -33,7 +33,7 @@ Different DataSource types may support only a subset of cacheSyncStrategy option
 #### SQLDataSource
 SQL databases accessed via JDBC do not return the record-as-saved, so extra work is required to retrieve database-generated fields, such as sequences (though sequences are a special case, see below)
 
-With JDBC 3.0+ drivers and a [sequenceMode](../classes/DataSource.md#attr-datasourcesequencemode) of `jdbcDriver`, we can retrieve generated sequence values without requiring an explicit, separate SQL query to retrieve the generated keys. With the default CacheSyncStrategy of `requestValuesPlusSequences`, SQLDataSource uses this JDBC approach to avoid a separate SQL query where possible - see the "requestValuesPlusSequences" section of the [CacheSyncStrategy](../main_2.md#type-cachesyncstrategy) documentation for details. With a `sequenceMode` of `native`, we will issue a separate SQL query to retrieve the generated keys, even if you are using "requestvaluesPlusSequences". However, it is not a full refetch, it is just a special native query, specific to the database in use, to retrieve just the generated sequence values, so it is still likely to have a performance advantage over using "refetch" - in the refetch case, we perform an _additional_ full fetch, using the retrieved keys as the criteria.
+With JDBC 3.0+ drivers and a [sequenceMode](../classes/DataSource.md#attr-datasourcesequencemode) of `jdbcDriver`, we can retrieve generated sequence values without requiring an explicit, separate SQL query to retrieve the generated keys. With the default CacheSyncStrategy of `requestValuesPlusSequences`, SQLDataSource uses this JDBC approach to avoid a separate SQL query where possible - see the "requestValuesPlusSequences" section of the [CacheSyncStrategy](../reference_2.md#type-cachesyncstrategy) documentation for details. With a `sequenceMode` of `native`, we will issue a separate SQL query to retrieve the generated keys, even if you are using "requestvaluesPlusSequences". However, it is not a full refetch, it is just a special native query, specific to the database in use, to retrieve just the generated sequence values, so it is still likely to have a performance advantage over using "refetch" - in the refetch case, we perform an _additional_ full fetch, using the retrieved keys as the criteria.
 
 Note that sequences (or identity columns, or auto-increment columns - different databases use different mechanisms and terminology for the same concept) are not the only kind of database-generated value. As well as the three DataSource field settings, mentioned above, that can explicitly denote a generated value - [autoGenerated](../classes/DataSourceField.md#attr-datasourcefieldautogenerated), [customSQL](../classes/DataSourceField.md#attr-datasourcefieldcustomsql) and [customSelectExpression](../classes/DataSourceField.md#attr-datasourcefieldcustomselectexpression) - database-generated values can come from database-declared default values, UDFs and stored procedures, and triggers. In addition, application code can modify data returned from the database in arbitrary ways, via logic in a [DMI](dmiOverview.md#kb-topic-direct-method-invocation), [server script](../classes/OperationBinding.md#attr-operationbindingscript) or [custom DataSource implementation](../classes/DataSource.md#attr-datasourceserverconstructor). So there are cases where "refetch" is necessary, and for some applications it may be that most or even all cases require it (if you make extensive use of triggers, or enhance many database responses in Java code, for example).
 
@@ -94,7 +94,7 @@ For this reason, `HibernateDataSource` and `JPADataSource` install a special `Ca
 #### Custom/Generic DataSources
 In addition to the built-in DataSource types listed above, you can of course write your own [custom dataSource](writeCustomDataSource.md#kb-topic-custom-server-datasources) implementations. These custom DataSources will participate in cache sync like any other:
 
-*   You can specify a `cacheSyncStrategy` on the [DataSource](../classes/DataSource.md#class-datasource), [operationBinding](../classes/OperationBinding.md#class-operationbinding) or [dsRequest](../main_2.md#object-dsrequest)
+*   You can specify a `cacheSyncStrategy` on the [DataSource](../classes/DataSource.md#class-datasource), [operationBinding](../classes/OperationBinding.md#class-operationbinding) or [dsRequest](../reference_2.md#object-dsrequest)
 *   The default strategy for a custom dataSource is "`responseValues`", because that was the prevailing behavior for custom DataSources before `cacheSyncStrategy` was introduced
 *   If you want to use "`refetch`" (ie, you override the default in your `server.properties`, or set the strategy explicitly on your DataSource or operation binding), you must implement a fetch operation, and if your dataSource has fields of type "sequence", your fetch mechanism must be able to resolve the values of such fields
 
@@ -133,7 +133,7 @@ You can also just set a specific `cacheSyncStrategy` on the DataSource, operatio
 
 ### See Also
 
-- [CacheSyncStrategy](../main_2.md#type-cachesyncstrategy)
+- [CacheSyncStrategy](../reference_2.md#type-cachesyncstrategy)
 - [OperationBinding.canSyncCache](../classes/OperationBinding.md#attr-operationbindingcansynccache)
 - [OperationBinding.useForCacheSync](../classes/OperationBinding.md#attr-operationbindinguseforcachesync)
 - [OperationBinding.cacheSyncOperation](../classes/OperationBinding.md#attr-operationbindingcachesyncoperation)

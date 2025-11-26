@@ -1,6 +1,6 @@
 # NPMJS Support
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -117,7 +117,7 @@ For example, if you've installed the SmartClient runtime in the default location
 ```
    @import '../isomorphic/skins/Tahoe/skin_styles.css';
 ```
-**Note:** if you are using the [FileLoader](../main_2.md#object-fileloader) to load a skin, it must be installed under `src/assets` (for example copied from `isomorphic/skins`) to work properly.
+**Note:** if you are using the [FileLoader](../reference_2.md#object-fileloader) to load a skin, it must be installed under `src/assets` (for example copied from `isomorphic/skins`) to work properly.
 #### Using SmartClient APIs
 If you want to refer to SmartClient APIs through your own constant, you can always issue a declaration such as:
 ```

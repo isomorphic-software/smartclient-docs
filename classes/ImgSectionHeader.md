@@ -1,12 +1,12 @@
 # ImgSectionHeader Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
 ## Class: ImgSectionHeader
 
-*Inherits from:* [HLayout](../main.md#class-hlayout)
+*Inherits from:* [HLayout](../reference.md#class-hlayout)
 
 ### Description
 SectionHeader class based on an HLayout with [StretchImg](StretchImg.md#class-stretchimg) background.
@@ -27,7 +27,7 @@ This feature is supported only in browsers that support the CSS UI text-overflow
 ### Description
 Optional icon to be shown with the button title text.
 
-Specify as the partial URL to an image, relative to the imgDir of this component. A sprited image can be specified using the [SCSpriteConfig](../main.md#type-scspriteconfig) format.
+Specify as the partial URL to an image, relative to the imgDir of this component. A sprited image can be specified using the [SCSpriteConfig](../reference.md#type-scspriteconfig) format.
 
 Note that the string "blank" is a valid setting for this attribute and will always result in the system blank image, with no state suffixes applied. Typically, this might be used when an iconStyle is also specified and the iconStyle renders the icon via a stateful background-image or other CSS approach.
 
@@ -131,7 +131,7 @@ Size in pixels of the icon image.
 
 The [iconWidth](StatefulCanvas.md#attr-statefulcanvasiconwidth) and [iconHeight](StatefulCanvas.md#attr-statefulcanvasiconheight) properties can be used to configure width and height separately.
 
-Note: When configuring the properties of a `StatefulCanvas` (or derivative) [AutoChild](../main.md#type-autochild), it is best to set the `iconWidth` and `iconHeight` to the same value rather than setting an `iconSize`. This is because certain skins or customizations thereto might set the `iconWidth` and `iconHeight`, making the customization of the AutoChild's `iconSize` ineffective.
+Note: When configuring the properties of a `StatefulCanvas` (or derivative) [AutoChild](../reference.md#type-autochild), it is best to set the `iconWidth` and `iconHeight` to the same value rather than setting an `iconSize`. This is because certain skins or customizations thereto might set the `iconWidth` and `iconHeight`, making the customization of the AutoChild's `iconSize` ineffective.
 
 ### Groups
 
@@ -181,7 +181,7 @@ Optional stringMethod to fire when the user hovers over this section header and 
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — false to suppress the standard hover
+`[boolean](../reference.md#type-boolean)` — false to suppress the standard hover
 
 ### Groups
 
@@ -202,7 +202,7 @@ Change the icon being shown for the header.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| icon | [SCImgURL](../main.md#type-scimgurl) | false | — | URL of new icon |
+| icon | [SCImgURL](../reference.md#type-scimgurl) | false | — | URL of new icon |
 
 ---
 ## Method: ImgSectionHeader.setIconOrientation
@@ -226,7 +226,7 @@ Sets the text shown as a tooltip for the header.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| prompt | [HTMLString](../main.md#type-htmlstring) | false | — | the new tooltip |
+| prompt | [HTMLString](../reference.md#type-htmlstring) | false | — | the new tooltip |
 
 ---
 ## Method: ImgSectionHeader.getSectionStack
@@ -248,11 +248,11 @@ Returns the HTML that is displayed by the default [titleHover](#method-imgsectio
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| defaultHTML | [HTMLString](../main.md#type-htmlstring) | false | — | the HTML that would have been displayed by default |
+| defaultHTML | [HTMLString](../reference.md#type-htmlstring) | false | — | the HTML that would have been displayed by default |
 
 ### Returns
 
-`[HTMLString](../main.md#type-htmlstring)` — HTML to be displayed in the hover. If null or an empty string, then the hover is canceled.
+`[HTMLString](../reference.md#type-htmlstring)` — HTML to be displayed in the hover. If null or an empty string, then the hover is canceled.
 
 ---
 ## Method: ImgSectionHeader.titleClipped
@@ -262,7 +262,7 @@ Is the title of this section header clipped by [section controls](#attr-imgsecti
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — whether the title is clipped.
+`[boolean](../reference.md#type-boolean)` — whether the title is clipped.
 
 ### See Also
 

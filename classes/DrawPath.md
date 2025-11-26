@@ -1,6 +1,6 @@
 # DrawPath Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -61,8 +61,8 @@ Resize by the specified delta
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| dX | [Distance](../main.md#type-distance) | false | — | number of pixels to resize by horizontally |
-| dY | [Distance](../main.md#type-distance) | false | — | number of pixels to resize by vertically |
+| dX | [Distance](../reference.md#type-distance) | false | — | number of pixels to resize by horizontally |
+| dY | [Distance](../reference.md#type-distance) | false | — | number of pixels to resize by vertically |
 
 ---
 ## Method: DrawPath.moveBy
@@ -74,8 +74,8 @@ Move the points by dX,dY
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| dX | [Distance](../main.md#type-distance) | false | — | delta x coordinate in pixels |
-| dY | [Distance](../main.md#type-distance) | false | — | delta y coordinate in pixels |
+| dX | [Distance](../reference.md#type-distance) | false | — | delta x coordinate in pixels |
+| dY | [Distance](../reference.md#type-distance) | false | — | delta y coordinate in pixels |
 
 ---
 ## Method: DrawPath.resizeTo
@@ -87,8 +87,8 @@ Resize to the specified size
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| width | [Integer](../main_2.md#type-integer) | false | — | new width |
-| height | [Integer](../main_2.md#type-integer) | false | — | new height |
+| width | [Integer](../reference_2.md#type-integer) | false | — | new width |
+| height | [Integer](../reference_2.md#type-integer) | false | — | new height |
 
 ---
 ## Method: DrawPath.moveFirstPointTo
@@ -100,8 +100,8 @@ Move all points in the path such that the first point ends up at the specified c
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| left | [Integer](../main_2.md#type-integer) | false | — | new left coordinate in pixels |
-| top | [Integer](../main_2.md#type-integer) | false | — | new top coordinate in pixels |
+| left | [Integer](../reference_2.md#type-integer) | false | — | new left coordinate in pixels |
+| top | [Integer](../reference_2.md#type-integer) | false | — | new top coordinate in pixels |
 
 ---
 ## Method: DrawPath.getCenter

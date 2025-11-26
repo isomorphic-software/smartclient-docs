@@ -1,6 +1,6 @@
 # Window Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -13,7 +13,7 @@ A general purpose Window class for implementing dialogs, portlets, alerts, promp
 
 Windows can contain arbitrary SmartClient components, configured via the [Window.items](#attr-windowitems) property. Windows may be [modal](#attr-windowismodal) or non-modal.
 
-Windows provide a series of highly configurable and skinnable [autoChildren](../main.md#type-autochild) including a header, various header controls, footer, and corner resizer.
+Windows provide a series of highly configurable and skinnable [autoChildren](../reference.md#type-autochild) including a header, various header controls, footer, and corner resizer.
 
 The more specialized [Dialog](Dialog.md#class-dialog) subclass of Window has additional functionality targetted at simple prompts and confirmations, such as buttons with default actions, and single-method [shortcuts](isc.md#staticmethod-iscwarn) for common application dialogs.
 
@@ -21,7 +21,7 @@ The more specialized [Dialog](Dialog.md#class-dialog) subclass of Window has add
 ## ClassAttr: Window.HORIZONTAL
 
 ### Description
-A declared value of the enum type [ContentLayoutPolicy](../main.md#type-contentlayoutpolicy).
+A declared value of the enum type [ContentLayoutPolicy](../reference.md#type-contentlayoutpolicy).
 
 **Flags**: R
 
@@ -29,7 +29,7 @@ A declared value of the enum type [ContentLayoutPolicy](../main.md#type-contentl
 ## ClassAttr: Window.VERTICAL
 
 ### Description
-A declared value of the enum type [ContentLayoutPolicy](../main.md#type-contentlayoutpolicy).
+A declared value of the enum type [ContentLayoutPolicy](../reference.md#type-contentlayoutpolicy).
 
 **Flags**: R
 
@@ -37,7 +37,7 @@ A declared value of the enum type [ContentLayoutPolicy](../main.md#type-contentl
 ## ClassAttr: Window.NONE
 
 ### Description
-A declared value of the enum type [ContentLayoutPolicy](../main.md#type-contentlayoutpolicy).
+A declared value of the enum type [ContentLayoutPolicy](../reference.md#type-contentlayoutpolicy).
 
 **Flags**: R
 
@@ -211,7 +211,7 @@ If unset default behavior depends on whether a close / cancel button is visible 
 ## Attr: Window.body
 
 ### Description
-Body of the Window, where [contained components](../main.md#kb-topic-form-items) or [loaded content](#attr-windowsrc) is shown.
+Body of the Window, where [contained components](../reference.md#kb-topic-form-items) or [loaded content](#attr-windowsrc) is shown.
 
 The following [passthroughs](../kb_topics/autoChildUsage.md#kb-topic-using-autochildren) apply:
 
@@ -240,7 +240,7 @@ If set to true the image source is derived from [Window.headerSrc](#attr-windowh
 
 ### Description
 The name of the widget class (as a string) to use for the body. If unset the appropriate constructor type will be determined as follows:  
-\- if [Window.items](#attr-windowitems) is defined as an array of widgets, and [Window.contentLayout](#attr-windowcontentlayout) is not set to `"none"`, bodyConstructor defaults to a [VLayout](../main.md#class-vlayout)  
+\- if [Window.items](#attr-windowitems) is defined as an array of widgets, and [Window.contentLayout](#attr-windowcontentlayout) is not set to `"none"`, bodyConstructor defaults to a [VLayout](../reference.md#class-vlayout)  
 \- if [Window.src](#attr-windowsrc) is set, bodyConstructor defaults to an [HTMLFlow](HTMLFlow.md#class-htmlflow)  
 \- otherwise bodyConstructor will default to a simple [Canvas](Canvas.md#class-canvas)  
 Note that if this property is overridden for some window, the specified constructor should be a subclass of one of these defaults to ensure the window renders out as expected.
@@ -294,7 +294,7 @@ The default value of `footerControls` is an Array of Strings listing the standar
     footerControls : ["spacer", "resizer"]
  
 ```
-As with [Window.headerControls](#attr-windowheadercontrols), you can override `footerControls` to change the order of standard controls in the footer. `"spacer"` is a special value which will create a [LayoutSpacer](../main.md#class-layoutspacer) in the footer bar. `"resizer"` will show the [Window.resizer](#attr-windowresizer) in the footer.
+As with [Window.headerControls](#attr-windowheadercontrols), you can override `footerControls` to change the order of standard controls in the footer. `"spacer"` is a special value which will create a [LayoutSpacer](../reference.md#class-layoutspacer) in the footer bar. `"resizer"` will show the [Window.resizer](#attr-windowresizer) in the footer.
 
 By embedding a Canvas directly in this list you can add arbitrary additional controls to the footer.
 
@@ -578,7 +578,7 @@ Button show in the header that will close this Window by calling [Window.closeCl
 ### Description
 Where should the window be placed on the screen? Valid settings include `"fillScreen"`, `"fillPanel"`, `"halfScreen"` and `"none"`
 
-If not explicitly specified, default is to use [PanelPlacement](../main_2.md#type-panelplacement) "fillScreen" if [Browser.isHandset](Browser.md#classattr-browserishandset), and "none" for non-handset devices.
+If not explicitly specified, default is to use [PanelPlacement](../reference_2.md#type-panelplacement) "fillScreen" if [Browser.isHandset](Browser.md#classattr-browserishandset), and "none" for non-handset devices.
 
 If `window.placement` is something other than `"none"`, sizing and positioning settings (either explicit left, top, width, height settings or the [Window.autoCenter](#attr-windowautocenter) and [Window.autoSize](#attr-windowautosize) features) will have no effect.
 
@@ -903,7 +903,7 @@ If true, we show an icon on the left in the header.
 ### Description
 The layout policy that should be used for widgets within the Window body.
 
-See [ContentLayoutPolicy](../main.md#type-contentlayoutpolicy) and [Window.bodyConstructor](#attr-windowbodyconstructor) for details.
+See [ContentLayoutPolicy](../reference.md#type-contentlayoutpolicy) and [Window.bodyConstructor](#attr-windowbodyconstructor) for details.
 
 ### Groups
 
@@ -1100,7 +1100,7 @@ Setter for [headerStyle](#attr-windowheaderstyle).
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newHeaderStyle | [CSSStyleName](../main.md#type-cssstylename) | false | — | new [styleName](Canvas.md#attr-canvasstylename) for the [header](#attr-windowheader). |
+| newHeaderStyle | [CSSStyleName](../reference.md#type-cssstylename) | false | — | new [styleName](Canvas.md#attr-canvasstylename) for the [header](#attr-windowheader). |
 
 ---
 ## Method: Window.setBodyStyle
@@ -1112,7 +1112,7 @@ Setter for [bodyStyle](#attr-windowbodystyle).
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newBodyStyle | [CSSStyleName](../main.md#type-cssstylename) | false | — | new [styleName](Canvas.md#attr-canvasstylename) for the [body](#attr-windowbody). |
+| newBodyStyle | [CSSStyleName](../reference.md#type-cssstylename) | false | — | new [styleName](Canvas.md#attr-canvasstylename) for the [body](#attr-windowbody). |
 
 ---
 ## Method: Window.centerInPage
@@ -1140,7 +1140,7 @@ Setter for [Window.autoSize](#attr-windowautosize)
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| autoSize | [boolean](../main.md#type-boolean) | false | — | true if the window should auto-size to its content |
+| autoSize | [boolean](../reference.md#type-boolean) | false | — | true if the window should auto-size to its content |
 
 ---
 ## Method: Window.removeItem
@@ -1174,7 +1174,7 @@ Setter for the [Window.autoCenter](#attr-windowautocenter) attribute.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| autoCenter | [boolean](../main.md#type-boolean) | false | — | new value for autoCenter |
+| autoCenter | [boolean](../reference.md#type-boolean) | false | — | new value for autoCenter |
 
 ---
 ## Method: Window.closeClick
@@ -1231,7 +1231,7 @@ Reveals the child Canvas passed in by showing it if it is currently hidden. Note
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| child | [GlobalId](../main.md#type-globalid)|[Canvas](#type-canvas) | false | — | the child Canvas to reveal, or its global ID |
+| child | [GlobalId](../reference.md#type-globalid)|[Canvas](#type-canvas) | false | — | the child Canvas to reveal, or its global ID |
 
 ---
 ## Method: Window.shouldDismissOnEscape
@@ -1295,7 +1295,7 @@ Setter for [bodyColor](#attr-windowbodycolor).
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newBodyColor | [CSSColor](../main_2.md#type-csscolor) | false | — | new [backgroundColor](Canvas.md#attr-canvasbackgroundcolor) for the [body](#attr-windowbody). |
+| newBodyColor | [CSSColor](../reference_2.md#type-csscolor) | false | — | new [backgroundColor](Canvas.md#attr-canvasbackgroundcolor) for the [body](#attr-windowbody). |
 
 ---
 ## Method: Window.setShowMaximizeButton
@@ -1362,7 +1362,7 @@ Same as [Layout.addMembers](Layout.md#method-layoutaddmembers). Note that in ord
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | newMembers | [Array of Canvas](#type-array-of-canvas)|[Canvas](#type-canvas) | false | — | array of canvases to be added or single Canvas |
-| position | [Integer](../main_2.md#type-integer) | true | — | If passed, this specifies the insertion position between the existing members of the layout. If omitted, the canvas will be added at the last position |
+| position | [Integer](../reference_2.md#type-integer) | true | — | If passed, this specifies the insertion position between the existing members of the layout. If omitted, the canvas will be added at the last position |
 
 **Flags**: A
 
@@ -1406,7 +1406,7 @@ Same as [Layout.addMember](Layout.md#method-layoutaddmember). Note that in order
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | newMember | [Canvas](#type-canvas) | false | — | the canvas object to be added to the layout |
-| position | [Integer](../main_2.md#type-integer) | true | — | If passed, this specifies the insertion position between the existing members of the layout. If omitted, the canvas will be added at the last position |
+| position | [Integer](../reference_2.md#type-integer) | true | — | If passed, this specifies the insertion position between the existing members of the layout. If omitted, the canvas will be added at the last position |
 
 ### See Also
 
@@ -1424,7 +1424,7 @@ Setter for [hiliteBodyColor](#attr-windowhilitebodycolor).
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newHiliteBodyColor | [CSSColor](../main_2.md#type-csscolor) | false | — | new `hiliteBodyColor`. |
+| newHiliteBodyColor | [CSSColor](../reference_2.md#type-csscolor) | false | — | new `hiliteBodyColor`. |
 
 ---
 ## Method: Window.setSrc
@@ -1486,7 +1486,7 @@ Sets the [title](#attr-windowtitle) that appears in the window [header](#attr-wi
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newTitle | [HTMLString](../main.md#type-htmlstring) | false | — | new title. |
+| newTitle | [HTMLString](../reference.md#type-htmlstring) | false | — | new title. |
 
 ### Groups
 

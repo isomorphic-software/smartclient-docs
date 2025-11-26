@@ -1,6 +1,6 @@
 # visibility
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -11,7 +11,7 @@ Whether an object can be seen
 
 ### Related
 
-- [Visibility](../main_2.md#type-visibility)
+- [Visibility](../reference_2.md#type-visibility)
 - [Canvas.show](../classes/Canvas.md#method-canvasshow)
 - [Canvas.showRecursively](../classes/Canvas.md#method-canvasshowrecursively)
 - [Canvas.hide](../classes/Canvas.md#method-canvashide)

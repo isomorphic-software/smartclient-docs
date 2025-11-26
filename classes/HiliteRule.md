@@ -1,15 +1,15 @@
 # HiliteRule Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
 ## Class: HiliteRule
 
-*Inherits from:* [HLayout](../main.md#class-hlayout)
+*Inherits from:* [HLayout](../reference.md#class-hlayout)
 
 ### Description
-A widget for editing the criteria of a single [DataBoundComponent](../main.md#interface-databoundcomponent) hilite. The default implementation presents a series of [formItems](FormItem.md#class-formitem) for selecting the various elements of a simple criterion and a foreground or background color. To specify more complex criteria, specify both foreground and background colors or to apply the hilite to multiple fields, you can create an [advanced hilite rule](AdvancedHiliteEditor.md#class-advancedhiliteeditor).
+A widget for editing the criteria of a single [DataBoundComponent](../reference.md#interface-databoundcomponent) hilite. The default implementation presents a series of [formItems](FormItem.md#class-formitem) for selecting the various elements of a simple criterion and a foreground or background color. To specify more complex criteria, specify both foreground and background colors or to apply the hilite to multiple fields, you can create an [advanced hilite rule](AdvancedHiliteEditor.md#class-advancedhiliteeditor).
 
 _**Important Note:** this class should not be used directly - it is exposed purely for [i18n reasons.](../kb_topics/i18nMessages.md#kb-topic-i18n-messages)_
 
@@ -19,7 +19,7 @@ _**Important Note:** this class should not be used directly - it is exposed pure
 ### Description
 AutoChild [DynamicForm](DynamicForm.md#class-dynamicform) displaying the [formItems](FormItem.md#class-formitem) used to specify the hiliting properties of this rule.
 
-This component is an [AutoChild](../main.md#type-autochild) and as such may be customized via `hiliteRule.hiliteFormProperties`.
+This component is an [AutoChild](../reference.md#type-autochild) and as such may be customized via `hiliteRule.hiliteFormProperties`.
 
 **Flags**: IR
 
@@ -61,7 +61,7 @@ The title for the Color picker field.
 ### Description
 AutoChild [FilterClause](FilterClause.md#class-filterclause) displaying the [formItems](FormItem.md#class-formitem) used to specify the criteria for this HiliteRule.
 
-This component is an [AutoChild](../main.md#type-autochild) and as such may be customized via `hiliteRule.clauseProperties`.
+This component is an [AutoChild](../reference.md#type-autochild) and as such may be customized via `hiliteRule.clauseProperties`.
 
 **Flags**: IR
 
@@ -87,7 +87,7 @@ If true, show a [button](#attr-hiliteruleremovebutton) for this HiliteRule, allo
 ### Description
 The Hilite removal ImgButton that appears before this Hilite if [HiliteRule.showRemoveButton](#attr-hiliteruleshowremovebutton) is set.
 
-This component is an [AutoChild](../main.md#type-autochild) and as such may be customized via `hiliteRule.removeButtonProperties`.
+This component is an [AutoChild](../reference.md#type-autochild) and as such may be customized via `hiliteRule.removeButtonProperties`.
 
 **Flags**: IR
 
@@ -109,7 +109,7 @@ The hover prompt text for the [remove button](#attr-hiliteruleremovebutton).
 ### Description
 AutoChild [ImgButton](ImgButton.md#class-imgbutton) displayed by an advanced hilite-rule and used to open it for editing in an [advanced hilite editor](AdvancedHiliteEditor.md#class-advancedhiliteeditor).
 
-This component is an [AutoChild](../main.md#type-autochild) and as such may be customized via `hiliteRule.advancedClauseEditButtonProperties`.
+This component is an [AutoChild](../reference.md#type-autochild) and as such may be customized via `hiliteRule.advancedClauseEditButtonProperties`.
 
 **Flags**: IR
 
@@ -143,7 +143,7 @@ The [title](FormItem.md#attr-formitemtitle) of the 'Text' color picker.
 ### Description
 AutoChild [Label](Label.md#class-label) displaying the human-readable description of an advanced hilite-rule.
 
-This component is an [AutoChild](../main.md#type-autochild) and as such may be customized via `hiliteRule.advancedClauseLabelProperties`.
+This component is an [AutoChild](../reference.md#type-autochild) and as such may be customized via `hiliteRule.advancedClauseLabelProperties`.
 
 **Flags**: IR
 

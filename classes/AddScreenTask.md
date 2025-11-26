@@ -1,6 +1,6 @@
 # AddScreenTask Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -33,7 +33,7 @@ Title of new SectionStackSection or TabSet when [componentId](ComponentTask.md#a
 ## Attr: AddScreenTask.dataContextBinding
 
 ### Description
-A [DataContextBinding](../main.md#object-datacontextbinding) to be applied to the created screen via [Canvas.setDataContext](Canvas.md#method-canvassetdatacontext).
+A [DataContextBinding](../reference.md#object-datacontextbinding) to be applied to the created screen via [Canvas.setDataContext](Canvas.md#method-canvassetdatacontext).
 
 **Flags**: IR
 

@@ -1,6 +1,6 @@
 # Exports & Formatting
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -24,7 +24,7 @@ These different default behaviors for different export formats can be overriden 
 Use [DSRequest.exportPropertyIdentifier](../classes/DSRequest.md#attr-dsrequestexportpropertyidentifier) to override the default behavior for a server or client-driven export and force either component field names or titles to be exported.
 
 #### Display-mapped fields
-SmartClient supports a number of ways to declaratively map underlying data values to "display values" that have more meaning to a user. This mapping can be achieved using a [displayField](../classes/DataSourceField.md#attr-datasourcefielddisplayfield) in the same record, a [ValueMap](../main_2.md#type-valuemap) or an [optionDataSource](../classes/ListGridField.md#attr-listgridfieldoptiondatasource). The table below shows what values get exported for each of these possibilities, in combination with the [exportValueFields](../classes/DSRequest.md#attr-dsrequestexportvaluefields) flag and whether you are using client-driven or server-driven export:
+SmartClient supports a number of ways to declaratively map underlying data values to "display values" that have more meaning to a user. This mapping can be achieved using a [displayField](../classes/DataSourceField.md#attr-datasourcefielddisplayfield) in the same record, a [ValueMap](../reference_2.md#type-valuemap) or an [optionDataSource](../classes/ListGridField.md#attr-listgridfieldoptiondatasource). The table below shows what values get exported for each of these possibilities, in combination with the [exportValueFields](../classes/DSRequest.md#attr-dsrequestexportvaluefields) flag and whether you are using client-driven or server-driven export:
 
 | Use case | Exports value field | Exports display field |
 |---|---|---|

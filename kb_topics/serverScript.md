@@ -1,6 +1,6 @@
 # Server Scripting
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -13,10 +13,10 @@ These scriptlets can be written in any language supported by the Java "JSR 223" 
 
 The primary use cases for server scripts are:
 
-*   DMI scriptlet declared via [DataSource.script](../classes/DataSource.md#attr-datasourcescript). Like DMI logic declared via [ServerObject](../main_2.md#object-serverobject), DMI scriptlets can be used to add business logic by modifying the DSRequest before it is executed, modifying the default DSResponse, or taking other, unrelated actions.
+*   DMI scriptlet declared via [DataSource.script](../classes/DataSource.md#attr-datasourcescript). Like DMI logic declared via [ServerObject](../reference_2.md#object-serverobject), DMI scriptlets can be used to add business logic by modifying the DSRequest before it is executed, modifying the default DSResponse, or taking other, unrelated actions.
 *   DMI scriplet declared via [OperationBinding.script](../classes/OperationBinding.md#attr-operationbindingscript), same as the above, but `operationBinding` specific and prioritized over the `DataSource.script` if both present.
-*   validator scriptlets declared via [Validator.serverCondition](../classes/Validator.md#attr-validatorservercondition). Like a validator declared via [ServerObject](../main_2.md#object-serverobject), a scriptlet validator defines whether data is valid by running arbitrary logic, then returning true or false.
-*   scripted [VisibleMethod](../main_2.md#object-visiblemethod) as part of [ServerObject.visibleMethods](../classes/ServerObject.md#attr-serverobjectvisiblemethods) declared in an [Application declaration file](applicationDeclaration.md#kb-topic-application-declaration-files).
+*   validator scriptlets declared via [Validator.serverCondition](../classes/Validator.md#attr-validatorservercondition). Like a validator declared via [ServerObject](../reference_2.md#object-serverobject), a scriptlet validator defines whether data is valid by running arbitrary logic, then returning true or false.
+*   scripted [VisibleMethod](../reference_2.md#object-visiblemethod) as part of [ServerObject.visibleMethods](../classes/ServerObject.md#attr-serverobjectvisiblemethods) declared in an [Application declaration file](applicationDeclaration.md#kb-topic-application-declaration-files).
 
 For example `DataSource.script` below is executed before all DataSource operations adding session ID to the request helping to ensure that users can only read or write to the data they own (you can see this in action [here](https://www.smartclient.com/smartclient-latest/showcase/?id=scriptingUserSpecificData)):
 ```

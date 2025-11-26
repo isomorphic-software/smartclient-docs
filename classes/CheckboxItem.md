@@ -1,6 +1,6 @@
 # CheckboxItem Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -47,7 +47,7 @@ Note that this is the base image name - if [CheckboxItem.showValueIconOver](#att
 
 The special value "blank" means that no image will be shown.
 
-[Spriting](../kb_topics/skinning.md#kb-topic-skinning--theming) can be used for this image, by setting this property to a [SCSpriteConfig](../main.md#type-scspriteconfig) formatted string. Alternatively developers can omit this property and instead use CSS directly in the [CheckboxItem.booleanBaseStyle](#attr-checkboxitembooleanbasestyle) property to provide a "checked" appearance.
+[Spriting](../kb_topics/skinning.md#kb-topic-skinning--theming) can be used for this image, by setting this property to a [SCSpriteConfig](../reference.md#type-scspriteconfig) formatted string. Alternatively developers can omit this property and instead use CSS directly in the [CheckboxItem.booleanBaseStyle](#attr-checkboxitembooleanbasestyle) property to provide a "checked" appearance.
 
 ### Groups
 
@@ -153,7 +153,7 @@ URL for the image to display when this checkbox is not selected, or unchecked.
 
 The special value "blank" means that no image will be shown.
 
-[Spriting](../kb_topics/skinning.md#kb-topic-skinning--theming) can be used for this image, by setting this property to a [SCSpriteConfig](../main.md#type-scspriteconfig) formatted string. Alternatively developers can omit this property and instead use CSS directly in the [CheckboxItem.booleanBaseStyle](#attr-checkboxitembooleanbasestyle) property to provide an "unchecked" appearance.
+[Spriting](../kb_topics/skinning.md#kb-topic-skinning--theming) can be used for this image, by setting this property to a [SCSpriteConfig](../reference.md#type-scspriteconfig) formatted string. Alternatively developers can omit this property and instead use CSS directly in the [CheckboxItem.booleanBaseStyle](#attr-checkboxitembooleanbasestyle) property to provide an "unchecked" appearance.
 
 ### Groups
 
@@ -173,7 +173,7 @@ URL for the image to display when this checkbox is partially selected.
 
 The special value "blank" means that no image will be shown.
 
-[Spriting](../kb_topics/skinning.md#kb-topic-skinning--theming) can be used for this image, by setting this property to a [SCSpriteConfig](../main.md#type-scspriteconfig) formatted string. Alternatively developers can omit this property and instead use CSS directly in the [CheckboxItem.booleanBaseStyle](#attr-checkboxitembooleanbasestyle) property to provide a "partially checked" appearance.
+[Spriting](../kb_topics/skinning.md#kb-topic-skinning--theming) can be used for this image, by setting this property to a [SCSpriteConfig](../reference.md#type-scspriteconfig) formatted string. Alternatively developers can omit this property and instead use CSS directly in the [CheckboxItem.booleanBaseStyle](#attr-checkboxitembooleanbasestyle) property to provide a "partially checked" appearance.
 
 ### Groups
 
@@ -309,7 +309,7 @@ URL for the image to display when this checkbox is unset. Note that if [Checkbox
 
 The special value "blank" means that no image will be shown.
 
-[Spriting](../kb_topics/skinning.md#kb-topic-skinning--theming) can be used for this image, by setting this property to a [SCSpriteConfig](../main.md#type-scspriteconfig) formatted string. Alternatively developers can omit this property and instead use CSS directly in the [CheckboxItem.booleanBaseStyle](#attr-checkboxitembooleanbasestyle) property to provide an "unset" appearance.
+[Spriting](../kb_topics/skinning.md#kb-topic-skinning--theming) can be used for this image, by setting this property to a [SCSpriteConfig](../reference.md#type-scspriteconfig) formatted string. Alternatively developers can omit this property and instead use CSS directly in the [CheckboxItem.booleanBaseStyle](#attr-checkboxitembooleanbasestyle) property to provide an "unset" appearance.
 
 ### Groups
 
@@ -424,7 +424,7 @@ Height of the checkbox image.
 ## Attr: CheckboxItem.labelAsTitle
 
 ### Description
-By default a checkboxItem sets [CheckboxItem.showTitle](#attr-checkboxitemshowtitle):true, and so takes up two cells with the default [TitleOrientation](../main_2.md#type-titleorientation) of "left" (see [form layout\\n overview](../kb_topics/formLayout.md#kb-topic-form-layout)). However, the title cell is left blank by default, and the title specified by [FormItem.title](FormItem.md#attr-formitemtitle) is shown inside the formItem's cell instead, in an element called the "label".
+By default a checkboxItem sets [CheckboxItem.showTitle](#attr-checkboxitemshowtitle):true, and so takes up two cells with the default [TitleOrientation](../reference_2.md#type-titleorientation) of "left" (see [form layout\\n overview](../kb_topics/formLayout.md#kb-topic-form-layout)). However, the title cell is left blank by default, and the title specified by [FormItem.title](FormItem.md#attr-formitemtitle) is shown inside the formItem's cell instead, in an element called the "label".
 
 To instead show the title in it's original location, set `labelAsTitle:true`. You can also set [CheckboxItem.showLabel](#attr-checkboxitemshowlabel):false to suppress the label and/or title altogether.
 
@@ -529,12 +529,12 @@ The default behavior is that the [cellStyle](FormItem.md#attr-formitemcellstyle)
 |------|------|----------|---------|-------------|
 | form | [DynamicForm](#type-dynamicform) | false | — | the managing `DynamicForm` instance. |
 | item | [FormItem](#type-formitem) | false | — | the form item itself (also available as "this"). |
-| pendingStatus | [boolean](../main.md#type-boolean) | false | — | `true` if the item should show its pending visual state; `false` otherwise. |
+| pendingStatus | [boolean](../reference.md#type-boolean) | false | — | `true` if the item should show its pending visual state; `false` otherwise. |
 | newValue | [Any](#type-any) | false | — | the current form item value. |
 | value | [Any](#type-any) | false | — | the value that would be restored by a call to [DynamicForm.resetValues](DynamicForm.md#method-dynamicformresetvalues). |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — `false` to cancel the default behavior.
+`[boolean](../reference.md#type-boolean)` — `false` to cancel the default behavior.
 
 ---

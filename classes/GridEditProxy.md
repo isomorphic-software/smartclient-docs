@@ -1,12 +1,12 @@
 # GridEditProxy Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
 ## Class: GridEditProxy
 
-*Inherits from:* [LayoutEditProxy](../main.md#class-layouteditproxy)
+*Inherits from:* [LayoutEditProxy](../reference.md#class-layouteditproxy)
 
 ### Description
 [EditProxy](EditProxy.md#class-editproxy) that handles [ListGrid](ListGrid_1.md#class-listgrid) and [TreeGrid](TreeGrid.md#class-treegrid) components when editMode is enabled.
@@ -37,7 +37,7 @@ Indicates whether fields in this listGrid can be resized by dragging header fiel
 ### Description
 Should changes to grid grouping (including both grouping and ungrouping the grid) be persisted?
 
-Only valid with [SelectedAppearance](../main.md#type-selectedappearance) settings that allow direct interactivity (such as "outlineEdges").
+Only valid with [SelectedAppearance](../reference.md#type-selectedappearance) settings that allow direct interactivity (such as "outlineEdges").
 
 **Flags**: IR
 
@@ -65,7 +65,7 @@ Should changes to grid field order be persisted?
 
 Note that changes are saved directly into the ListGridFields not via fieldState or viewState settings. EditNodes will also be introduced for fields as needed if they do not already exist.
 
-Only valid with [SelectedAppearance](../main.md#type-selectedappearance) settings that allow direct interactivity (such as "outlineEdges").
+Only valid with [SelectedAppearance](../reference.md#type-selectedappearance) settings that allow direct interactivity (such as "outlineEdges").
 
 **Flags**: IR
 
@@ -77,7 +77,7 @@ Should changes to which fields are [frozen](ListGridField.md#attr-listgridfieldf
 
 Note that changes are saved directly into the ListGridFields not via fieldState or viewState settings. EditNodes will also be introduced for fields as needed if they do not already exist.
 
-Only valid with [SelectedAppearance](../main.md#type-selectedappearance) settings that allow direct interactivity (such as "outlineEdges").
+Only valid with [SelectedAppearance](../reference.md#type-selectedappearance) settings that allow direct interactivity (such as "outlineEdges").
 
 **Flags**: IR
 
@@ -113,7 +113,7 @@ Should changes to grid field visibility be persisted?
 
 Note that changes are saved directly into the ListGridFields not via fieldState or viewState settings. EditNodes will also be introduced for fields as needed if they do not already exist.
 
-Only valid with [SelectedAppearance](../main.md#type-selectedappearance) settings that allow direct interactivity (such as "outlineEdges").
+Only valid with [SelectedAppearance](../reference.md#type-selectedappearance) settings that allow direct interactivity (such as "outlineEdges").
 
 **Flags**: IR
 
@@ -123,7 +123,7 @@ Only valid with [SelectedAppearance](../main.md#type-selectedappearance) setting
 ### Description
 Should changes to filter criteria by end user editing of criteria in the [filter editor](ListGrid_1.md#attr-listgridshowfiltereditor) by persisted?
 
-Only valid with [SelectedAppearance](../main.md#type-selectedappearance) settings that allow direct interactivity (such as "outlineEdges").
+Only valid with [SelectedAppearance](../reference.md#type-selectedappearance) settings that allow direct interactivity (such as "outlineEdges").
 
 **Flags**: IR
 
@@ -141,7 +141,7 @@ Can new summary fields be created from header context menu? Overrides [ListGrid.
 ### Description
 Should changes to which fields are sorted be persisted?
 
-Only valid with [SelectedAppearance](../main.md#type-selectedappearance) settings that allow direct interactivity (such as "outlineEdges").
+Only valid with [SelectedAppearance](../reference.md#type-selectedappearance) settings that allow direct interactivity (such as "outlineEdges").
 
 **Flags**: IR
 

@@ -1,6 +1,6 @@
 # XMLTools Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -33,7 +33,7 @@ To declare your own namespace prefixes, provide a prefix to URI mapping as a sim
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| element | [XMLElement](../main.md#type-xmlelement)|[XMLDocument](../main.md#type-xmldocument)|[String](#type-string) | false | — | Native XMLElement,document, or xml string to select from |
+| element | [XMLElement](../reference.md#type-xmlelement)|[XMLDocument](../reference.md#type-xmldocument)|[String](#type-string) | false | — | Native XMLElement,document, or xml string to select from |
 | expression | [XPath](#type-xpath) | false | — | XPath expression to use to select nodes |
 | namespaces | [Map](#type-map)<[Prefix,URI](#type-prefix-uri)> | true | — | namespace mapping used by the expression |
 
@@ -53,7 +53,7 @@ Returns true if the current browser exposes an XML parser that can be used for S
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true if native XML processing is available, false otherwise.
+`[boolean](../reference.md#type-boolean)` — true if native XML processing is available, false otherwise.
 
 ---
 ## ClassMethod: XMLTools.selectObjects
@@ -112,7 +112,7 @@ Details of the XPath -> Objects mapping:
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| object | [Object](../main.md#type-object) | false | — | Object to select results from |
+| object | [Object](../reference.md#type-object) | false | — | Object to select results from |
 | xPath | [String](#type-string) | false | — | XPath expression |
 
 ### Returns
@@ -133,8 +133,8 @@ Relaying through the origin server requires that the ISC HttpProxyServlet be ins
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| URL | [URL](../main_2.md#type-url) | false | — | URL to load the schema from |
-| callback | [Callback](../main.md#type-callback) | false | — | callback to fire when the XML is loaded. Signature is callback(xmlDoc, xmlText) |
+| URL | [URL](../reference_2.md#type-url) | false | — | URL to load the schema from |
+| callback | [Callback](../reference.md#type-callback) | false | — | callback to fire when the XML is loaded. Signature is callback(xmlDoc, xmlText) |
 | requestProperties | [RPCRequest](#type-rpcrequest) | true | — | additional properties to set on the RPCRequest that will be issued |
 
 ---
@@ -175,10 +175,10 @@ NOTE: required fields: the XML Schema concept of "required" for an attribute or 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| schemaURL | [URL](../main_2.md#type-url) | false | — | URL to load the schema from |
-| callback | [Callback](../main.md#type-callback) | false | — | signature is callback(schemaSet) |
+| schemaURL | [URL](../reference_2.md#type-url) | false | — | URL to load the schema from |
+| callback | [Callback](../reference.md#type-callback) | false | — | signature is callback(schemaSet) |
 | requestProperties | [RPCRequest](#type-rpcrequest) | false | — | additional properties to set on the RPCRequest that will be issued |
-| autoLoadImports | [boolean](../main.md#type-boolean) | false | — | if set, xsd:import statements will be processed automatically to load dependent XSD files where a "location" is specified. The callback will not fire until all dependencies have been loaded |
+| autoLoadImports | [boolean](../reference.md#type-boolean) | false | — | if set, xsd:import statements will be processed automatically to load dependent XSD files where a "location" is specified. The callback will not fire until all dependencies have been loaded |
 
 ### Groups
 
@@ -202,7 +202,7 @@ Namespacing works as described under [XMLTools.selectNodes](#classmethod-xmltool
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| element | [XMLElement](../main.md#type-xmlelement)|[XMLDocument](../main.md#type-xmldocument)|[String](#type-string) | false | — | Native XMLElement,document, or xml string to select from |
+| element | [XMLElement](../reference.md#type-xmlelement)|[XMLDocument](../reference.md#type-xmldocument)|[String](#type-string) | false | — | Native XMLElement,document, or xml string to select from |
 | expression | [XPath](#type-xpath) | false | — | XPath expression to use to select nodes |
 | namespaces | [Map](#type-map)<[Prefix,URI](#type-prefix-uri)> | true | — | namespace mapping used by the expression |
 
@@ -232,7 +232,7 @@ Namespacing works as described under [XMLTools.selectNodes](#classmethod-xmltool
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| element | [XMLElement](../main.md#type-xmlelement)|[XMLDocument](../main.md#type-xmldocument)|[String](#type-string) | false | — | Native XMLElement,document, or xml string to select from |
+| element | [XMLElement](../reference.md#type-xmlelement)|[XMLDocument](../reference.md#type-xmldocument)|[String](#type-string) | false | — | Native XMLElement,document, or xml string to select from |
 | expression | [XPath](#type-xpath) | false | — | XPath expression to use to select nodes |
 | namespaces | [Map](#type-map)<[Prefix,URI](#type-prefix-uri)> | true | — | namespace mapping used by the expression |
 
@@ -250,7 +250,7 @@ Namespacing works as described under [XMLTools.selectNodes](#classmethod-xmltool
 ## ClassMethod: XMLTools.parseXML
 
 ### Description
-Parse XML text into an [XMLDocument](../main.md#type-xmldocument). Parse errors, if any, are reported to the log.
+Parse XML text into an [XMLDocument](../reference.md#type-xmldocument). Parse errors, if any, are reported to the log.
 
 **NOTE:** Internet Explorer's XML parser implementation, MSXML, has a bug in its handling of namespace name `http://www.w3.org/XML/1998/namespace`. Though redundant, the [Namespaces in XML spec allows](http://www.w3.org/TR/REC-xml-names/#xmlReserved) XML documents to explicitly declare namespace prefix 'xml' bound to namespace name `http://www.w3.org/XML/1998/namespace`; e.g.
 
@@ -267,7 +267,7 @@ MSXML does not allow the 'xml' namespace prefix to be declared, and will raise t
 
 ### Returns
 
-`[XMLDocument](../main.md#type-xmldocument)` — resulting XMLDocument
+`[XMLDocument](../reference.md#type-xmldocument)` — resulting XMLDocument
 
 ---
 ## ClassMethod: XMLTools.loadWSDL
@@ -293,10 +293,10 @@ Platform notes:
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| wsdlURL | [URL](../main_2.md#type-url) | false | — | URL to load the WSDL file from |
-| callback | [Callback](../main.md#type-callback) | false | — | signature is callback(service) |
+| wsdlURL | [URL](../reference_2.md#type-url) | false | — | URL to load the WSDL file from |
+| callback | [Callback](../reference.md#type-callback) | false | — | signature is callback(service) |
 | requestProperties | [RPCRequest](#type-rpcrequest) | false | — | additional properties to set on the RPCRequest that will be issued |
-| autoLoadImports | [boolean](../main.md#type-boolean) | false | — | if set, xsd:import statements will be processed automatically to load dependent XSD files where a "location" is specified. The callback will not fire until all dependencies have been loaded |
+| autoLoadImports | [boolean](../reference.md#type-boolean) | false | — | if set, xsd:import statements will be processed automatically to load dependent XSD files where a "location" is specified. The callback will not fire until all dependencies have been loaded |
 
 ### Groups
 
@@ -332,11 +332,11 @@ All atomic property values will be of String type. Use [DataSource.recordsFromXM
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| element | [XMLElement](../main.md#type-xmlelement)|[XMLDocument](../main.md#type-xmldocument) | false | — | The element to transform to JS |
+| element | [XMLElement](../reference.md#type-xmlelement)|[XMLDocument](../reference.md#type-xmldocument) | false | — | The element to transform to JS |
 
 ### Returns
 
-`[Object](../main.md#type-object)` — The resulting JavaScript collection.
+`[Object](../reference.md#type-object)` — The resulting JavaScript collection.
 
 ---
 ## ClassMethod: XMLTools.serializeToString
@@ -350,7 +350,7 @@ This method is not supported on the Safari web browser versions prior to 3.0.3.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| inputDocument | [XMLDocument](../main.md#type-xmldocument) | false | — | XML document to apply the transform to |
+| inputDocument | [XMLDocument](../reference.md#type-xmldocument) | false | — | XML document to apply the transform to |
 
 ### Returns
 
@@ -372,8 +372,8 @@ This method cannot currently be supported on the Safari web browser versions pri
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| inputDocument | [XMLDocument](../main.md#type-xmldocument) | false | — | XML document to apply the transform to |
-| styleSheet | [XMLDocument](../main.md#type-xmldocument) | false | — | XSLT stylesheet to use for transform |
+| inputDocument | [XMLDocument](../reference.md#type-xmldocument) | false | — | XML document to apply the transform to |
+| styleSheet | [XMLDocument](../reference.md#type-xmldocument) | false | — | XSLT stylesheet to use for transform |
 
 ### Returns
 

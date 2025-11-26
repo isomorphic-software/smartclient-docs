@@ -1,6 +1,6 @@
 # FusionChart Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -23,7 +23,7 @@ Provides multiple-series (area, bar, column, line, radar) and single-series (dou
 ## ClassAttr: FusionChart.allChartTypes
 
 ### Description
-All [ChartTypes](../main.md#type-charttype) that are supported by this class. Should be defined by concrete implementations of the charting interface.
+All [ChartTypes](../reference.md#type-charttype) that are supported by this class. Should be defined by concrete implementations of the charting interface.
 
 **Flags**: R
 

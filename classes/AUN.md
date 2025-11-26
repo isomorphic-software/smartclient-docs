@@ -1,6 +1,6 @@
 # AUN Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -159,7 +159,7 @@ Return the current navigation graph built during exploration.
 
 ### Returns
 
-`[Object](../main.md#type-object)` — Navigation graph with nodes and edges
+`[Object](../reference.md#type-object)` — Navigation graph with nodes and edges
 
 ---
 ## Method: AUN.generateTest
@@ -221,7 +221,7 @@ This works by wrapping the AI task execution to capture inputs and outputs. Must
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| options | [Object](../main.md#type-object) | false | — | Configuration options for conversation logging |
+| options | [Object](../reference.md#type-object) | false | — | Configuration options for conversation logging |
 
 ---
 ## Method: AUN.exportMarkdownLog
@@ -244,7 +244,7 @@ Supports selective omission of content sections via options parameter:
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| options | [Object](../main.md#type-object) | false | — | Configuration options for log export |
+| options | [Object](../reference.md#type-object) | false | — | Configuration options for log export |
 
 ### Returns
 

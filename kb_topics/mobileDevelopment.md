@@ -1,6 +1,6 @@
 # Mobile Application Development
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -79,7 +79,7 @@ If you have designed a screen for desktop use and it is too wide to fit on a han
     *   _make the scrolling component smaller or flexible size_. Whether it's a grid or other scrollable component on the left, this situation usually arises because an inappropriately large fixed size has been set, instead of a [flexible size](../classes/Canvas.md#attr-canvaswidth).
     *   _leave some blank space_ above or below the grid - this gives the user somewhere to use touch scrolling to move both the grid and adjacent component
     *   _force scrollbars to appear_ by setting [useTouchScrolling](../classes/Canvas.md#attr-canvasusetouchscrolling) to false. This is another way to give the user a place they can touch in order to scroll the both the grid and adjacent component together
-*   **use [FlowLayout](../main.md#class-flowlayout)**: a `FlowLayout` can automatically take two side-by-side elements and switch them to vertical stacking when the screen is narrow
+*   **use [FlowLayout](../reference.md#class-flowlayout)**: a `FlowLayout` can automatically take two side-by-side elements and switch them to vertical stacking when the screen is narrow
 
 #### SplitPane
 
@@ -141,7 +141,7 @@ For more information on the mobile device viewport, see:
 
 When orientation changes, this is treated identically to resizing the browser on a desktop machine. If you've already created a UI that fills the browser and makes good use of available screen space for desktop browsers, the same behaviors will automatically apply when your application runs on mobile devices and the device is pivoted.
 
-If you want to build specialized interfaces that respond to device orientation, the [Page.getOrientation](../classes/Page.md#classmethod-pagegetorientation) API may be used to determine the current orientation of the application, and [the page orientationChange event](../main_2.md#type-pageevent) will fire whenever the user rotates the screen allowing applications or components to directly respond to the user pivoting their device.
+If you want to build specialized interfaces that respond to device orientation, the [Page.getOrientation](../classes/Page.md#classmethod-pagegetorientation) API may be used to determine the current orientation of the application, and [the page orientationChange event](../reference_2.md#type-pageevent) will fire whenever the user rotates the screen allowing applications or components to directly respond to the user pivoting their device.
 
 #### Launching native helper apps (phone, facetime, maps..)
 
@@ -150,7 +150,7 @@ Generally, all that's required to launch native mobile apps is to create an ordi
 ```
    <a href="tel:8675309">Call Jenny</a>
 ```
-You can provide HTML like this as [HTMLFlow.contents](../classes/HTMLFlow.md#attr-htmlflowcontents). Or use a field of [type:"link"](../main_2.md#type-fieldtype) to cause various [DataBoundComponents](../main.md#interface-databoundcomponent) to render a DataSourceField value as a clickable URL.
+You can provide HTML like this as [HTMLFlow.contents](../classes/HTMLFlow.md#attr-htmlflowcontents). Or use a field of [type:"link"](../reference_2.md#type-fieldtype) to cause various [DataBoundComponents](../reference.md#interface-databoundcomponent) to render a DataSourceField value as a clickable URL.
 
 The URL prefixes that are valid for iOS are documented [at Apple.com](https://developer.apple.com/library/ios/featuredarticles/iPhoneURLScheme_Reference/Introduction/Introduction.html#//apple_ref/doc/uid/TP40007899-CH1-SW1). Typically, the same prefixes also work for Android, Windows Phone and others.
 

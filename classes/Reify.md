@@ -1,12 +1,12 @@
 # Reify Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
 ## Class: Reify
 
-*Inherits from:* [VLayout](../main.md#class-vlayout)
+*Inherits from:* [VLayout](../reference.md#class-vlayout)
 
 ### Description
 An application available within [Reify OnSite](../kb_topics/reifyOnSite.md#kb-topic-reify-onsite) that allows developers to create and manage SmartClient screens and datasources. Only **internal framework code** can create an instance of the Reify tool - do not try it directly in your applications. If you want to create visual tools similar to Reify, see [the Dashboards & Tools framework overview](../kb_topics/devTools.md#kb-topic-dashboards--tools-framework-overview).
@@ -132,7 +132,7 @@ Setter for [Reify.serverURL](#classattr-reifyserverurl).
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| serverURL | [URL](../main_2.md#type-url) | false | — | — |
+| serverURL | [URL](../reference_2.md#type-url) | false | — | — |
 
 ---
 ## ClassMethod: Reify.setProjectLoaderPath

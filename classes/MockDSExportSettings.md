@@ -1,6 +1,6 @@
 # MockDSExportSettings Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -15,7 +15,7 @@ Whether to include custom-defined [SimpleTypes](SimpleType.md#class-simpletype).
 ## Attr: MockDSExportSettings.requestProperties
 
 ### Description
-The properties that will be specified on the [DSRequest](../main_2.md#object-dsrequest) when fetching records. You can pass an array of different request properties matching the length of the `dsNames` param of [Reify.getMockDS](Reify.md#classmethod-reifygetmockds) or [Reify.showMockDS](Reify.md#classmethod-reifyshowmockds) if you want the fetch for each [DataSource](DataSource.md#class-datasource) made with different properties.
+The properties that will be specified on the [DSRequest](../reference_2.md#object-dsrequest) when fetching records. You can pass an array of different request properties matching the length of the `dsNames` param of [Reify.getMockDS](Reify.md#classmethod-reifygetmockds) or [Reify.showMockDS](Reify.md#classmethod-reifyshowmockds) if you want the fetch for each [DataSource](DataSource.md#class-datasource) made with different properties.
 
 **Flags**: IR
 
@@ -35,7 +35,7 @@ The number of levels of nodes to include, for DataSources that define a [tree re
 ## Attr: MockDSExportSettings.includeImageFields
 
 ### Description
-Should [image fields](../main_2.md#type-fieldtype) be included in the export or serialization of the [DataSource](DataSource.md#class-datasource)? They are excluded by default since the stored paths are unlikely to be correct when placed in any other environment, such as Reify.
+Should [image fields](../reference_2.md#type-fieldtype) be included in the export or serialization of the [DataSource](DataSource.md#class-datasource)? They are excluded by default since the stored paths are unlikely to be correct when placed in any other environment, such as Reify.
 
 **Flags**: IR
 
@@ -43,7 +43,7 @@ Should [image fields](../main_2.md#type-fieldtype) be included in the export or 
 ## Attr: MockDSExportSettings.criteria
 
 ### Description
-The [criteria](../main_2.md#type-criteria) used to fetch the records returned as part of the export or serialization.
+The [criteria](../reference_2.md#type-criteria) used to fetch the records returned as part of the export or serialization.
 
 **Flags**: IR
 

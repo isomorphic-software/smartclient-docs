@@ -1,6 +1,6 @@
 # LoginDialog Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -341,7 +341,7 @@ The following code shows typical usage. This code assumes you have created a glo
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| credentials | [Object](../main.md#type-object) | false | — | Login credentials supplied by the user |
+| credentials | [Object](../reference.md#type-object) | false | — | Login credentials supplied by the user |
 | dialogCallback | [Function](#type-function) | false | — | Function that must be called once the login transaction completes |
 
 ---
@@ -354,7 +354,7 @@ Called if the user clicks on the [registration link](#attr-logindialogregistrati
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| values | [Object](../main.md#type-object) | false | — | Current values of form fields |
+| values | [Object](../reference.md#type-object) | false | — | Current values of form fields |
 | form | [DynamicForm](#type-dynamicform) | false | — | Form on which the link was clicked |
 
 ---
@@ -367,7 +367,7 @@ Called if the user clicks on the ["Lost Password"](#attr-logindialoglostpassword
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| values | [Object](../main.md#type-object) | false | — | Current values of form fields |
+| values | [Object](../reference.md#type-object) | false | — | Current values of form fields |
 | form | [DynamicForm](#type-dynamicform) | false | — | Form on which the link was clicked |
 
 ---

@@ -1,6 +1,6 @@
 # CoTTask Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -64,7 +64,7 @@ Transitions are other states in the CoT that the AI can choose to go to. For exa
      },
  
 ```
-A [CoTTransition](../main_2.md#object-cottransition) can declare a [label](CoTTransition.md#attr-cottransitionlabel) to describe the target step. If this is omitted, the target's [description](#attr-cottaskdescription) is used if present, otherwise its [title](#cottasktitle).
+A [CoTTransition](../reference_2.md#object-cottransition) can declare a [label](CoTTransition.md#attr-cottransitionlabel) to describe the target step. If this is omitted, the target's [description](#attr-cottaskdescription) is used if present, otherwise its [title](#cottasktitle).
 
 As part of default prompt assembly, if `transitions` are defined, the [transitionsPrimer](#transitionsprimer) explains to the AI how to perform a transition (by outputting a particular JSON object). Then the `transitions` themselves are output one at a time using the [transitionsPrimer](#transitionsprimer).
 
@@ -109,7 +109,7 @@ When AI produces a non-transition result, typically it just needs to be stored t
   },
  
 ```
-Shown above is a shorthand format; in general `stateUpdates` is a mapping from a [statePath](../main.md#type-statepath) to a ${TaskInputExpression} or other value.
+Shown above is a shorthand format; in general `stateUpdates` is a mapping from a [statePath](../reference.md#type-statepath) to a ${TaskInputExpression} or other value.
 ```
  { ID:"addField", title: "Add Field", ... other properties ...
     stateUpdates : {
@@ -170,7 +170,7 @@ Shorthand for [CoTTask.outputDS](#attr-cottaskoutputds), causing a temporary Dat
 ## Attr: CoTTask.stateUpdates
 
 ### Description
-Declarative mapping from [StatePaths](../main.md#type-statepath) to [TaskInputExpressions](../main_2.md#type-taskinputexpression), or just a single StatePath if the entire outputs object should be applied to a single path. When the task completes successfully (no validation errors), each mapping is applied to update [Process.state](Process.md#attr-processstate). Shorthand: a String path means the entire outputs go to that path.
+Declarative mapping from [StatePaths](../reference.md#type-statepath) to [TaskInputExpressions](../reference_2.md#type-taskinputexpression), or just a single StatePath if the entire outputs object should be applied to a single path. When the task completes successfully (no validation errors), each mapping is applied to update [Process.state](Process.md#attr-processstate). Shorthand: a String path means the entire outputs go to that path.
 
 **Flags**: IR
 
@@ -258,7 +258,7 @@ Returns the template scope used to render this task's prompt, including the data
 
 ### Returns
 
-`[Object](../main.md#type-object)` — Prompt context object
+`[Object](../reference.md#type-object)` — Prompt context object
 
 ---
 ## Method: CoTTask.mockOutput
@@ -268,7 +268,7 @@ Return synthetic AI output for this task when mocking is in effect (see [CoTTask
 
 ### Returns
 
-`[Object](../main.md#type-object)` — Fake AI output to be processed as if returned by the model.
+`[Object](../reference.md#type-object)` — Fake AI output to be processed as if returned by the model.
 
 ### Groups
 

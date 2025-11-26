@@ -1,6 +1,6 @@
 # Experimental Features
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -23,14 +23,14 @@ Experimental features are subject to the following limitations:
 - [EventStream.getAsSeleneseHTML](../classes/EventStream.md#method-eventstreamgetasselenesehtml)
 - [EventStream.getAsSeleneseCommands](../classes/EventStream.md#method-eventstreamgetasselenesecommands)
 - [EventStream](../classes/EventStream.md#class-eventstream)
-- [SeleniumCommand](../main.md#object-seleniumcommand)
-- [SeleneseSettings](../main_2.md#object-selenesesettings)
-- [EventStreamData](../main.md#object-eventstreamdata)
-- [EventStreamEvent](../main.md#object-eventstreamevent)
+- [SeleniumCommand](../reference.md#object-seleniumcommand)
+- [SeleneseSettings](../reference_2.md#object-selenesesettings)
+- [EventStreamData](../reference.md#object-eventstreamdata)
+- [EventStreamEvent](../reference.md#object-eventstreamevent)
 - [MultiWindow](../classes/MultiWindow.md#class-multiwindow)
 - [RemoteWindow](../classes/RemoteWindow.md#class-remotewindow)
-- [OpenFin](../main.md#class-openfin)
-- [OpenFinWindow](../main.md#class-openfinwindow)
+- [OpenFin](../reference.md#class-openfin)
+- [OpenFinWindow](../reference.md#class-openfinwindow)
 - [SeleneseRecorder](../classes/SeleneseRecorder.md#class-seleneserecorder)
 
 ---

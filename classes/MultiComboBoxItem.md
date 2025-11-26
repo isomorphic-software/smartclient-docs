@@ -1,6 +1,6 @@
 # MultiComboBoxItem Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -9,7 +9,7 @@
 *Inherits from:* [CanvasItem](CanvasItem.md#class-canvasitem)
 
 ### Description
-A MultiComboBoxItem is a combo box that allows the user to select multiple options. Each selected option is represented as a button that can be clicked to deselect the option. The relative layout of the buttons to the combo box is specified with the [MultiComboBoxItem.layoutStyle](#attr-multicomboboxitemlayoutstyle) attribute. The buttons will be kept in the order that they were added, with the most recently added button being adjacent to the combo box. `MultiComboBoxItem` uses the [AutoChild](../main.md#type-autochild) pattern to construct the [comboBox](#attr-multicomboboxitemcombobox) and the [buttons](#attr-multicomboboxitembutton) so that they can be easily customized. For example, you can customize the criteria used to fetch by overriding [ComboBoxItem.getPickListFilterCriteria](ComboBoxItem.md#method-comboboxitemgetpicklistfiltercriteria) via [comboBoxProperties](#attr-multicomboboxitemcombobox).
+A MultiComboBoxItem is a combo box that allows the user to select multiple options. Each selected option is represented as a button that can be clicked to deselect the option. The relative layout of the buttons to the combo box is specified with the [MultiComboBoxItem.layoutStyle](#attr-multicomboboxitemlayoutstyle) attribute. The buttons will be kept in the order that they were added, with the most recently added button being adjacent to the combo box. `MultiComboBoxItem` uses the [AutoChild](../reference.md#type-autochild) pattern to construct the [comboBox](#attr-multicomboboxitemcombobox) and the [buttons](#attr-multicomboboxitembutton) so that they can be easily customized. For example, you can customize the criteria used to fetch by overriding [ComboBoxItem.getPickListFilterCriteria](ComboBoxItem.md#method-comboboxitemgetpicklistfiltercriteria) via [comboBoxProperties](#attr-multicomboboxitemcombobox).
 
 ### See Also
 
@@ -107,7 +107,7 @@ The `optionDataSource` of the combo box.
 ## Attr: MultiComboBoxItem.button
 
 ### Description
-An [AutoChild](../main.md#type-autochild) attribute used to create the buttons in the MultiComboBoxItem.
+An [AutoChild](../reference.md#type-autochild) attribute used to create the buttons in the MultiComboBoxItem.
 
 **Flags**: RA
 
@@ -115,7 +115,7 @@ An [AutoChild](../main.md#type-autochild) attribute used to create the buttons i
 ## Attr: MultiComboBoxItem.pickTreeConstructor
 
 ### Description
-The Class to use when creating a picker of [type "tree"](PickList.md#attr-picklistdatasettype) for a FormItem. Must be a subclass of the builtin default, [PickTreeMenu](../main.md#class-picktreemenu).
+The Class to use when creating a picker of [type "tree"](PickList.md#attr-picklistdatasettype) for a FormItem. Must be a subclass of the builtin default, [PickTreeMenu](../reference.md#class-picktreemenu).
 
 **Flags**: IR
 
@@ -269,7 +269,7 @@ Specifies whether to arrange the buttons of the MultiComboBoxItem in the order t
 ## Attr: MultiComboBoxItem.comboBox
 
 ### Description
-An [AutoChild](../main.md#type-autochild) attribute to create the combo box in a MultiComboBoxItem.
+An [AutoChild](../reference.md#type-autochild) attribute to create the combo box in a MultiComboBoxItem.
 
 **Flags**: RA
 
@@ -310,13 +310,13 @@ Returning `false` will cancel this default behavior.
 |------|------|----------|---------|-------------|
 | form | [DynamicForm](#type-dynamicform) | false | — | the managing `DynamicForm` instance. |
 | item | [FormItem](#type-formitem) | false | — | the form item itself (also available as "this"). |
-| pendingStatus | [boolean](../main.md#type-boolean) | false | — | `true` if the item should show its pending visual state; `false` otherwise. |
+| pendingStatus | [boolean](../reference.md#type-boolean) | false | — | `true` if the item should show its pending visual state; `false` otherwise. |
 | newValue | [Any](#type-any) | false | — | the current form item value. |
 | value | [Any](#type-any) | false | — | the value that would be restored by a call to [DynamicForm.resetValues](DynamicForm.md#method-dynamicformresetvalues). |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — `false` to cancel the default behavior.
+`[boolean](../reference.md#type-boolean)` — `false` to cancel the default behavior.
 
 ---
 ## Method: MultiComboBoxItem.showValue
@@ -345,7 +345,7 @@ The value of a MultiComboBoxItem to the form is an array of valueField values co
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| layoutStyle | [MultiComboBoxLayoutStyle](../main_2.md#type-multicomboboxlayoutstyle) | false | — | the new layout style |
+| layoutStyle | [MultiComboBoxLayoutStyle](../reference_2.md#type-multicomboboxlayoutstyle) | false | — | the new layout style |
 
 ### See Also
 
@@ -361,6 +361,6 @@ Sets the [MultiComboBoxItem.autoFitButtons](#attr-multicomboboxitemautofitbutton
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| autoFitButtons | [boolean](../main.md#type-boolean) | false | — | whether to autofit the buttons |
+| autoFitButtons | [boolean](../reference.md#type-boolean) | false | — | whether to autofit the buttons |
 
 ---

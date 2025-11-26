@@ -1,6 +1,6 @@
 # DrawCurve Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -55,7 +55,7 @@ This defaults to true for [DrawSector](DrawSector.md#class-drawsector)s and shap
 ## Attr: DrawCurve.knobs
 
 ### Description
-Array of control knobs to display for this item. Each [KnobType](../main.md#type-knobtype) specified in this will turn on UI element(s) allowing the user to manipulate this DrawCurve. To update the set of knobs at runtime use [DrawItem.showKnobs](DrawItem.md#method-drawitemshowknobs) and [DrawItem.hideKnobs](DrawItem.md#method-drawitemhideknobs).
+Array of control knobs to display for this item. Each [KnobType](../reference.md#type-knobtype) specified in this will turn on UI element(s) allowing the user to manipulate this DrawCurve. To update the set of knobs at runtime use [DrawItem.showKnobs](DrawItem.md#method-drawitemshowknobs) and [DrawItem.hideKnobs](DrawItem.md#method-drawitemhideknobs).
 
 DrawCurve supports the "startPoint", "endPoint", "controlPoint1", and "controlPoint2" knob types.
 
@@ -107,8 +107,8 @@ Update the startPoint
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| left | [Coordinate](../main.md#type-coordinate) | false | — | left coordinate for start point, in pixels |
-| top | [Coordinate](../main.md#type-coordinate) | false | — | top coordinate for start point, in pixels |
+| left | [Coordinate](../reference.md#type-coordinate) | false | — | left coordinate for start point, in pixels |
+| top | [Coordinate](../reference.md#type-coordinate) | false | — | top coordinate for start point, in pixels |
 
 ---
 ## Method: DrawCurve.getBoundingBox
@@ -130,8 +130,8 @@ Update the endPoint
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| left | [Coordinate](../main.md#type-coordinate) | false | — | left coordinate for end point, in pixels |
-| top | [Coordinate](../main.md#type-coordinate) | false | — | top coordinate for end point, in pixels |
+| left | [Coordinate](../reference.md#type-coordinate) | false | — | left coordinate for end point, in pixels |
+| top | [Coordinate](../reference.md#type-coordinate) | false | — | top coordinate for end point, in pixels |
 
 ---
 ## Method: DrawCurve.moveStartPointTo
@@ -143,8 +143,8 @@ Move the start point, end point, and control points of the curve such that the [
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| x | [Integer](../main_2.md#type-integer) | false | — | new x coordinate in pixels |
-| y | [Integer](../main_2.md#type-integer) | false | — | new y coordinate in pixels |
+| x | [Integer](../reference_2.md#type-integer) | false | — | new x coordinate in pixels |
+| y | [Integer](../reference_2.md#type-integer) | false | — | new y coordinate in pixels |
 
 ---
 ## Method: DrawCurve.moveBy
@@ -156,8 +156,8 @@ Increment start, end and control points of this curve
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| x | [Distance](../main.md#type-distance) | false | — | new x coordinate in pixels |
-| y | [Distance](../main.md#type-distance) | false | — | new y coordinate in pixels |
+| x | [Distance](../reference.md#type-distance) | false | — | new x coordinate in pixels |
+| y | [Distance](../reference.md#type-distance) | false | — | new y coordinate in pixels |
 
 ---
 ## Method: DrawCurve.setControlPoint2
@@ -169,8 +169,8 @@ Updates the second cubic Bézier control point.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| left | [Coordinate](../main.md#type-coordinate) | false | — | left coordinate for control point, in pixels |
-| top | [Coordinate](../main.md#type-coordinate) | false | — | top coordinate for control point, in pixels |
+| left | [Coordinate](../reference.md#type-coordinate) | false | — | left coordinate for control point, in pixels |
+| top | [Coordinate](../reference.md#type-coordinate) | false | — | top coordinate for control point, in pixels |
 
 ---
 ## Method: DrawCurve.setControlPoint1
@@ -182,8 +182,8 @@ Updates the first cubic Bézier control point.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| left | [Coordinate](../main.md#type-coordinate) | false | — | left coordinate for control point, in pixels |
-| top | [Coordinate](../main.md#type-coordinate) | false | — | top coordinate for control point, in pixels |
+| left | [Coordinate](../reference.md#type-coordinate) | false | — | left coordinate for control point, in pixels |
+| top | [Coordinate](../reference.md#type-coordinate) | false | — | top coordinate for control point, in pixels |
 
 ---
 ## Method: DrawCurve.getCenter

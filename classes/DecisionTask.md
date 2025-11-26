@@ -1,6 +1,6 @@
 # DecisionTask Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -37,9 +37,9 @@ Note that if there is both a `sequence` and a normal `element` with the same nam
 ## Attr: DecisionTask.criteria
 
 ### Description
-Simple or [AdvancedCriteria](../main.md#object-advancedcriteria) to be applied against the [Process.state](Process.md#attr-processstate).
+Simple or [AdvancedCriteria](../reference.md#object-advancedcriteria) to be applied against the [Process.state](Process.md#attr-processstate).
 
-Data values in this criteria prefixed with "$" will be treated as dynamic expressions as detailed in [TaskInputExpression](../main_2.md#type-taskinputexpression). Specifically, this means that for simple criteria, any property value that is a String and is prefixed with "$" will be assumed to be an expression, and for AdvancedCriteria, the same treatment will be applied to [Criterion.value](Criterion.md#attr-criterionvalue).
+Data values in this criteria prefixed with "$" will be treated as dynamic expressions as detailed in [TaskInputExpression](../reference_2.md#type-taskinputexpression). Specifically, this means that for simple criteria, any property value that is a String and is prefixed with "$" will be assumed to be an expression, and for AdvancedCriteria, the same treatment will be applied to [Criterion.value](Criterion.md#attr-criterionvalue).
 
 Note that dynamic expressions starting with "$input" are not applicable for a DecisionTask but "$inputRecord" can be used for direct reference to [Process.state](Process.md#attr-processstate).
 

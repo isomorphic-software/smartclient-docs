@@ -1,6 +1,6 @@
 # SQL Database Settings in server.properties
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -91,7 +91,7 @@ Mysql vs MariaDB: there is broad compatibility between these two databases as de
 #### Smartclient properties
 
 **`sql.mysql.optimizeCaseSensitiveCriteria`**  
-_This setting affects all **MySQL** connectors and it is set to **true** by default._ Depending on [textMatchStyle](../main_2.md#type-textmatchstyle) case sensitivity in text criteria is achieved by using LIKE BINARY sql comparison operator, which does not use indexed search. Indexes are used with regular "=" comparison operator, which does not ensure case sensitivity. With big amounts of data indexes are critical, so in order to use them and still have case sensitivity supported this setting must be set to `true` (default). This way we would generate comparison expression like:  
+_This setting affects all **MySQL** connectors and it is set to **true** by default._ Depending on [textMatchStyle](../reference_2.md#type-textmatchstyle) case sensitivity in text criteria is achieved by using LIKE BINARY sql comparison operator, which does not use indexed search. Indexes are used with regular "=" comparison operator, which does not ensure case sensitivity. With big amounts of data indexes are critical, so in order to use them and still have case sensitivity supported this setting must be set to `true` (default). This way we would generate comparison expression like:  
 ``<field>` = `<value>` AND `<field>` LIKE BINARY `<value>``  
 where first part ensures efficient indexed search and second part adds case sensitivity to significantly reduced amounts of data. This would be more efficient without indexes as well, cause LIKE BINARY conversion would be performed on less rows anyway.  
 Setting this property to `false` would bring back the old behavior, when only LIKE BINARY comparison would be used, which would return same results, but much slower.
@@ -111,7 +111,7 @@ This may be overridden by setting [OperationBinding.useHavingClause](../classes/
 **`sql.likeIsCaseSensitive` and `sql.MyDatabase.likeIsCaseSensitive`**  
 The "LIKE" operator in the SQL standard is defined as being case-insensitive, however, some databases default to case-sensitive matching. This is not ultimately not technically in violation of the standard since the standard specifies that the comparison is based on the configured "collation" (the collation is basically the rules for comparing characters and deciding which is first when sorting).
 
-If the default behavior of the LIKE operator is a case-sensitive comparison, then, to achieve a case-insensitive comparison, as required by [case insensitive operators](../main.md#type-operatorid) such as iEquals, iContains and so forth, the SmartClient server must generate SQL that uses LOWER() or similar SQL functions to ensure case-insensitive comparison.
+If the default behavior of the LIKE operator is a case-sensitive comparison, then, to achieve a case-insensitive comparison, as required by [case insensitive operators](../reference.md#type-operatorid) such as iEquals, iContains and so forth, the SmartClient server must generate SQL that uses LOWER() or similar SQL functions to ensure case-insensitive comparison.
 
 In databases where the default behavior of the "LIKE" operator is already case-insensitive comparison, explicit use of the LOWER() function can be slower - certain databases do not realize that this is a "no-op" and perform the query poorly (fail to use indices, etc).
 

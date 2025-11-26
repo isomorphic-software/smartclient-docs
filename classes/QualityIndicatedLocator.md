@@ -1,13 +1,13 @@
 # QualityIndicatedLocator Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
 ## Attr: QualityIndicatedLocator.locator
 
 ### Description
-The [AutoTestLocator](../main_2.md#type-autotestlocator) associated with some DOM element in a SmartClient application page.
+The [AutoTestLocator](../reference_2.md#type-autotestlocator) associated with some DOM element in a SmartClient application page.
 
 **Flags**: IR
 

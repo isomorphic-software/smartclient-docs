@@ -1,6 +1,6 @@
 # MenuItem Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -75,7 +75,7 @@ Whether a click on this specific `menuItem` automatically dismisses the menu. Se
 ## Attr: MenuItem.embeddedComponentPosition
 
 ### Description
-See [ListGridRecord.embeddedComponentPosition](ListGridRecord.md#attr-listgridrecordembeddedcomponentposition), except that when used in a `menuItem`, default behavior is [EmbeddedPosition](../main_2.md#type-embeddedposition) "expand".
+See [ListGridRecord.embeddedComponentPosition](ListGridRecord.md#attr-listgridrecordembeddedcomponentposition), except that when used in a `menuItem`, default behavior is [EmbeddedPosition](../reference_2.md#type-embeddedposition) "expand".
 
 ### Groups
 
@@ -248,7 +248,7 @@ A reference to another menu, to display as a submenu when the mouse cursor hover
 ## Attr: MenuItem.keys
 
 ### Description
-Shortcut key(s) to fire the menu item action. Each key can be defined as a [KeyIdentifier](../main.md#object-keyidentifier). To apply multiple shortcut keys to this item, set this property to an array of such key identifiers.
+Shortcut key(s) to fire the menu item action. Each key can be defined as a [KeyIdentifier](../reference.md#object-keyidentifier). To apply multiple shortcut keys to this item, set this property to an array of such key identifiers.
 
 ### Groups
 
@@ -272,7 +272,7 @@ Contains the condition that will enable or disable the current menuItem. The han
 
 If you don't need to set this state dynamically, use [MenuItem.enabled](#attr-menuitemenabled) instead.
 
-Alternatively, you can use [Criteria](../main_2.md#type-criteria) to declare when a MenuItem is enabled via [MenuItem.enableWhen](#attr-menuitemenablewhen).
+Alternatively, you can use [Criteria](../reference_2.md#type-criteria) to declare when a MenuItem is enabled via [MenuItem.enableWhen](#attr-menuitemenablewhen).
 
 May be defined as a [stringMethod](../kb_topics/stringMethods.md#kb-topic-string-methods-overview).
 
@@ -286,7 +286,7 @@ May be defined as a [stringMethod](../kb_topics/stringMethods.md#kb-topic-string
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — Return true to show a checkmark by this menu item
+`[boolean](../reference.md#type-boolean)` — Return true to show a checkmark by this menu item
 
 ### Groups
 
@@ -348,7 +348,7 @@ May be defined as a [stringMethod](../kb_topics/stringMethods.md#kb-topic-string
 
 ### Returns
 
-`[SCImgURL](../main.md#type-scimgurl)` — the url of this menuItems icon
+`[SCImgURL](../reference.md#type-scimgurl)` — the url of this menuItems icon
 
 ### Groups
 
@@ -364,9 +364,9 @@ Executed when this menu item is clicked by the user. The click handler must be s
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| target | [Canvas](#type-canvas) | false | — | for a menu shown as a context menu, the Canvas the menu was shown on. Otherwise the [Menu](Menu.md#class-menu) instance of which this [MenuItem](../main_2.md#object-menuitem) is a member. |
-| item | [MenuItem](#type-menuitem) | false | — | The [MenuItem](../main_2.md#object-menuitem) that was clicked on. |
-| menu | [Menu](#type-menu) | false | — | The [Menu](Menu.md#class-menu) instance of which this [MenuItem](../main_2.md#object-menuitem) is a member. |
+| target | [Canvas](#type-canvas) | false | — | for a menu shown as a context menu, the Canvas the menu was shown on. Otherwise the [Menu](Menu.md#class-menu) instance of which this [MenuItem](../reference_2.md#object-menuitem) is a member. |
+| item | [MenuItem](#type-menuitem) | false | — | The [MenuItem](../reference_2.md#object-menuitem) that was clicked on. |
+| menu | [Menu](#type-menu) | false | — | The [Menu](Menu.md#class-menu) instance of which this [MenuItem](../reference_2.md#object-menuitem) is a member. |
 | colNum | [number](#type-number) | true | — | Index of the column the user clicked. May be null if the user activated the menu via a keyboard event. |
 
 ### Groups
@@ -393,7 +393,7 @@ May be defined as a [stringMethod](../kb_topics/stringMethods.md#kb-topic-string
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — Return true to show a checkmark by this menu item
+`[boolean](../reference.md#type-boolean)` — Return true to show a checkmark by this menu item
 
 ### Groups
 

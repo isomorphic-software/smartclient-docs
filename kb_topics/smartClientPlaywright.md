@@ -1,6 +1,6 @@
 # Integrating SmartClient with Playwright
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -25,9 +25,9 @@ This file contains custom helper methods which simplify interacting with a runni
 
 **Using _locators_ to interact with SmartClient User Interface components**
 
-The [AutoTestLocator](../main_2.md#type-autotestlocator) subsystem is used to reliably identify DOM elements generated within a SmartClient application.
+The [AutoTestLocator](../reference_2.md#type-autotestlocator) subsystem is used to reliably identify DOM elements generated within a SmartClient application.
 
-For general concepts, see [obtainingLocators](../main.md#kb-topic-obtaining-locators). The following is Playwright-specific guidance.
+For general concepts, see [obtainingLocators](../reference.md#kb-topic-obtaining-locators). The following is Playwright-specific guidance.
 
 The sample `commands.js` file includes a `getSC()` method that uses [AutoTest.waitForElement](../classes/AutoTest.md#classmethod-autotestwaitforelement) to wait for any pending system actions, resolve an AutoTestLocator to a DOM element, and yield it back as a Playwright ElementHandle. You can make use of this method in your test code as follows:
 
@@ -45,7 +45,7 @@ or directly:
 
 **Scroll behavior in Playwright**
 
-For general concepts, see [scrollingBehavior](../main.md#kb-topic-understanding-scroll-behavior). The following is Playwright-specific guidance.
+For general concepts, see [scrollingBehavior](../reference.md#kb-topic-understanding-scroll-behavior). The following is Playwright-specific guidance.
 
 Playwright actions like [click](https://playwright.dev/docs/api/class-elementhandle#element-handle-click) may scroll the target element into view. If SmartClient components redraw synchronously on scroll, this can interfere with Playwright actions. To avoid issues, ensure the element is in view before interacting.
 
@@ -131,7 +131,7 @@ For more details on explicitly handling asynchronous actions without using `getS
 
 Additionally you may have asynchronous behaviors that are unrelated to SmartClient interactions, such as network activity that does not go through the SmartClient [RPCManager](../classes/RPCManager.md#class-rpcmanager), asynchronous rendering of third party widgets, etc. In these cases [AutoTest.isSystemDone](../classes/AutoTest.md#classmethod-autotestissystemdone) may return true even though the application is not ready for further input.
 
-The `options` parameter for `getSC()` can be used to change the [waitStyle](../main.md#attr-elementwaitconfigwaitstyle) passed to [AutoTest.waitForElement](../classes/AutoTest.md#classmethod-autotestwaitforelement). If you request `"element"` rather than `"system"`, instead of relying on [AutoTest.isSystemDone](../classes/AutoTest.md#classmethod-autotestissystemdone), the framework will continue trying to resolve the locator to an element until the command times out. This gives you an easy way to instruct the test case to keep trying to resolve a locator even after [AutoTest.isSystemDone](../classes/AutoTest.md#classmethod-autotestissystemdone) returns true.
+The `options` parameter for `getSC()` can be used to change the [waitStyle](../reference.md#attr-elementwaitconfigwaitstyle) passed to [AutoTest.waitForElement](../classes/AutoTest.md#classmethod-autotestwaitforelement). If you request `"element"` rather than `"system"`, instead of relying on [AutoTest.isSystemDone](../classes/AutoTest.md#classmethod-autotestissystemdone), the framework will continue trying to resolve the locator to an element until the command times out. This gives you an easy way to instruct the test case to keep trying to resolve a locator even after [AutoTest.isSystemDone](../classes/AutoTest.md#classmethod-autotestissystemdone) returns true.
 
 Both `waitForSCDone()` and `getSC()` support being passed an explicit timeout on the `options` parameter. This governs how long the methods will wait for system quiescence / for the locator to be resolved. If no explicit timeout was specified, the default wait time for these methods is 30 seconds, but this can be customized by setting `"scCommandTimeout"` in your SmartClientCommands configuration.
 
@@ -141,7 +141,7 @@ If `getSC()` or `waitForSCDone()` does time out the Playwright test will fail.
 
 **RPC timing logs in Playwright**
 
-For general concepts, see [usingRPCTimingLogs](../main.md#kb-topic-rpc-timing-logs). The following is Playwright-specific guidance.
+For general concepts, see [usingRPCTimingLogs](../reference.md#kb-topic-rpc-timing-logs). The following is Playwright-specific guidance.
 
 The sample `commands.js` file includes a method `"enableSC_RPCTimeout"` which makes use of console logging in Playwright to take advantage of these APIs and log timing information for slow requests.
 

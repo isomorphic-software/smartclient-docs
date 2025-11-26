@@ -1,6 +1,6 @@
 # DrawShape Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -41,8 +41,8 @@ Move the drawShape by the specified delta
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| dX | [Distance](../main.md#type-distance) | false | — | number of pixels to move horizontally |
-| dY | [Distance](../main.md#type-distance) | false | — | number of pixels to move vertically |
+| dX | [Distance](../reference.md#type-distance) | false | — | number of pixels to move horizontally |
+| dY | [Distance](../reference.md#type-distance) | false | — | number of pixels to move vertically |
 
 ---
 ## Method: DrawShape.setCommands
@@ -66,7 +66,7 @@ Resize by the specified delta
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| dX | [Distance](../main.md#type-distance) | false | — | number of pixels to resize by horizontally |
-| dY | [Distance](../main.md#type-distance) | false | — | number of pixels to resize by vertically |
+| dX | [Distance](../reference.md#type-distance) | false | — | number of pixels to resize by horizontally |
+| dY | [Distance](../reference.md#type-distance) | false | — | number of pixels to resize by vertically |
 
 ---

@@ -1,6 +1,6 @@
 # ButtonItem Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -188,7 +188,7 @@ Sets showFocusedAsOver.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| showFocusedAsOver | [boolean](../main.md#type-boolean) | false | — | — |
+| showFocusedAsOver | [boolean](../reference.md#type-boolean) | false | — | — |
 
 ---
 ## Method: ButtonItem.click
@@ -205,7 +205,7 @@ Called when a ButtonItem is clicked on.
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — Return false to cancel the click event. This will prevent the event from bubbling up, suppressing [click](Canvas.md#method-canvasclick) on the form containing this item.
+`[boolean](../reference.md#type-boolean)` — Return false to cancel the click event. This will prevent the event from bubbling up, suppressing [click](Canvas.md#method-canvasclick) on the form containing this item.
 
 ### Groups
 
@@ -221,7 +221,7 @@ Sets the (horizontal) alignment of this button's title.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| alignment | [Alignment](../main_2.md#type-alignment) | false | — | new title alignment |
+| alignment | [Alignment](../reference_2.md#type-alignment) | false | — | new title alignment |
 
 ### Groups
 

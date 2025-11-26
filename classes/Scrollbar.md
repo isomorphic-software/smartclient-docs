@@ -1,6 +1,6 @@
 # Scrollbar Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -11,7 +11,7 @@
 ### Description
 The Scrollbar widget implements cross-platform, image-based scrollbars that control the scrolling of content in other widgets. Scrollbar widgets are created and displayed automatically for widgets that require them, based on settings for [Canvas.overflow](Canvas.md#attr-canvasoverflow).
 
-The scrollbar's appearance is based on a [StretchImg](StretchImg.md#class-stretchimg) for the "track", which consists of two fixed size buttons and a stretchable center segment, and the [ScrollThumb](../main.md#class-scrollthumb), the draggable portion of the scrollbar, also a StretchImg, with an optional [grip](StretchImg.md#attr-stretchimgshowgrip).
+The scrollbar's appearance is based on a [StretchImg](StretchImg.md#class-stretchimg) for the "track", which consists of two fixed size buttons and a stretchable center segment, and the [ScrollThumb](../reference.md#class-scrollthumb), the draggable portion of the scrollbar, also a StretchImg, with an optional [grip](StretchImg.md#attr-stretchimgshowgrip).
 
 ---
 ## Attr: Scrollbar.cornerSize

@@ -1,6 +1,6 @@
 # Page Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -30,7 +30,7 @@ On a call to `Page.checkBrowserAndRedirect()`, if no explicit URL is passed in, 
 ## ClassAttr: Page.FIRE_ONCE
 
 ### Description
-A declared value of the enum type [FireStyle](../main_2.md#type-firestyle).
+A declared value of the enum type [FireStyle](../reference_2.md#type-firestyle).
 
 **Flags**: R
 
@@ -201,7 +201,7 @@ Return the directory for a skin image.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| imgDir | [URL](../main_2.md#type-url) | true | — | Partial URL (relative to Page.\_skinDir) where the image lives. If not supplied, will use "images/" |
+| imgDir | [URL](../reference_2.md#type-url) | true | — | Partial URL (relative to Page.\_skinDir) where the image lives. If not supplied, will use "images/" |
 
 ### Returns
 
@@ -245,7 +245,7 @@ See also [Page.getOrientation](#classmethod-pagegetorientation).
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| wd | [Object](../main.md#type-object) | true | — | the window object |
+| wd | [Object](../reference.md#type-object) | true | — | the window object |
 
 ### Returns
 
@@ -272,7 +272,7 @@ Note: If the document's ONLOAD handler has already fired, this will have no effe
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| styleSheetURL | [URL](../main_2.md#type-url) | false | — | URL to the stylesheet. |
+| styleSheetURL | [URL](../reference_2.md#type-url) | false | — | URL to the stylesheet. |
 
 ### Groups
 
@@ -303,8 +303,8 @@ Clears an action registered to fire on a specific a keyPress event via the [Page
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| actionID | [KeyName](../main_2.md#type-keyname) | false | — | Name of key to clear registry entries for. |
-| target | [Object](../main.md#type-object) | true | — | target specified when the action was registered for the key. |
+| actionID | [KeyName](../reference_2.md#type-keyname) | false | — | Name of key to clear registry entries for. |
+| target | [Object](../reference.md#type-object) | true | — | target specified when the action was registered for the key. |
 
 ### Groups
 
@@ -355,13 +355,13 @@ Return whether the page text direction is right to left. If you set "DIR=RTL" in
 ## ClassMethod: Page.getOrientation
 
 ### Description
-Is the current page wider than it is tall ("landscape" orientation) or the reverse ("portrait" orientation). Note that the [orientationChange page event](../main_2.md#type-pageevent) will be fired whenever the page orientation changes.
+Is the current page wider than it is tall ("landscape" orientation) or the reverse ("portrait" orientation). Note that the [orientationChange page event](../reference_2.md#type-pageevent) will be fired whenever the page orientation changes.
 
 This method is typically useful for apps developed for display on mobile devices, though it will also return a valid value when running against a desktop browser. See also [this discussion](../kb_topics/mobileDevelopment.md#kb-topic-mobile-application-development) on building applications for mobile devices
 
 ### Returns
 
-`[PageOrientation](../main.md#type-pageorientation)` — current page orientation
+`[PageOrientation](../reference.md#type-pageorientation)` — current page orientation
 
 ### Groups
 
@@ -413,7 +413,7 @@ To clear all events, omit the ID parameter. To clear a specific event, pass the 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| eventType | [PageEvent](../main_2.md#type-pageevent) | false | — | event type to clear |
+| eventType | [PageEvent](../reference_2.md#type-pageevent) | false | — | event type to clear |
 | ID | [number](#type-number) | true | — | ID of the event to clear. If not specified, all events in eventType will be cleared. |
 
 ### Groups
@@ -450,7 +450,7 @@ Wait for a method to fire on an object.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| object | [Object](../main.md#type-object) | false | — | any SmartClient object, eg, a ListGrid |
+| object | [Object](../reference.md#type-object) | false | — | any SmartClient object, eg, a ListGrid |
 | methodName | [String](#type-string) | false | — | name of a method on that object |
 | callback | [Function](#type-function) | false | — | Callback to fire when the observed method completes |
 | timeout | [Number](#type-number) | true | — | Optional timeout period (in milliseconds). If you want a timeout, you must also provide a timeoutCallback |
@@ -458,7 +458,7 @@ Wait for a method to fire on an object.
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — whether observation succeeded. Observation may fail due to null object, non-existent method or similar bad parameters
+`[boolean](../reference.md#type-boolean)` — whether observation succeeded. Observation may fail due to null object, non-existent method or similar bad parameters
 
 ---
 ## ClassMethod: Page.getURL
@@ -535,7 +535,7 @@ To use a skin image, start the URL with "\[SKIN\]". Any other relative URL is as
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| src | [SCImgURL](../main.md#type-scimgurl) | false | — | Local file name for the image. |
+| src | [SCImgURL](../reference.md#type-scimgurl) | false | — | Local file name for the image. |
 | imgDir | [String](#type-string) | true | — | User-specified image directory, local to |
 
 ### Returns
@@ -638,7 +638,7 @@ This differs from calling [Page.setEvent](#classmethod-pagesetevent) with the `"
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | key | [KeyIdentifier](#type-keyidentifier) | false | — | key name or identifier object. |
-| action | [StringMethod](../main_2.md#type-stringmethod)|[Function](#type-function) | false | — | Action to fire when key is pressed. This can be a string of script to evaluate or a javascript function.  
+| action | [StringMethod](../reference_2.md#type-stringmethod)|[Function](#type-function) | false | — | Action to fire when key is pressed. This can be a string of script to evaluate or a javascript function.  
 This action will be passed 2 parameters: The name of the key pressed will be available as the first parameter or `key` keyword. The target passed into this method will be available as the second parameter or `target` keyword. |
 | target | [Any](#type-any) | true | — | If specified this object will be made available to the action fired as a parameter. |
 
@@ -696,7 +696,7 @@ See also [Page.getOrientation](#classmethod-pagegetorientation).
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| wd | [Object](../main.md#type-object) | true | — | the window object |
+| wd | [Object](../reference.md#type-object) | true | — | the window object |
 
 ### Returns
 
@@ -725,9 +725,9 @@ _Note:_ Modifying the width/height or initial scale of the viewport has two user
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| scale | [float](../main.md#type-float) | true | — | Desired scale level where 1 indicates no scaling (each css pixel will be displayed using 1px on the physical device). Pass in null to avoid setting this property. |
-| width | [Integer](../main_2.md#type-integer) | true | — | Desired viewport width in pixels. This indicates how many pixels should fit within the device screen. Pass in null to avoid setting this property. |
-| height | [Integer](../main_2.md#type-integer) | true | — | Desired viewport height in pixels. This indicates how many pixels should fit within the device screen. Pass in null to avoid setting this property. |
+| scale | [float](../reference.md#type-float) | true | — | Desired scale level where 1 indicates no scaling (each css pixel will be displayed using 1px on the physical device). Pass in null to avoid setting this property. |
+| width | [Integer](../reference_2.md#type-integer) | true | — | Desired viewport width in pixels. This indicates how many pixels should fit within the device screen. Pass in null to avoid setting this property. |
+| height | [Integer](../reference_2.md#type-integer) | true | — | Desired viewport height in pixels. This indicates how many pixels should fit within the device screen. Pass in null to avoid setting this property. |
 | scalable | [Boolean](#type-boolean) | true | — | Should the user be able to scale the application (using pinch gestures, double tapping, rotating the device, etc.)? Pass in null to avoid setting this property. |
 
 ### Groups
@@ -790,15 +790,15 @@ This includes events that also occur on widgets (like "click") and events that o
 
 For events that also occur on widgets, page level event registrations will fire BEFORE the event handlers on Canvases. If your action returns `false`, this will prevent the event from getting to the intended Canvas.
 
-Capturing events on widgets can be done by setting one of the event methods available on Canvas (and hence available to all widget classes). See [widgetEvents](../main.md#kb-topic-widgetevents).
+Capturing events on widgets can be done by setting one of the event methods available on Canvas (and hence available to all widget classes). See [widgetEvents](../reference.md#kb-topic-widgetevents).
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| eventType | [PageEvent](../main_2.md#type-pageevent) | false | — | event type to register for ("mouseDown", "load", etc) |
+| eventType | [PageEvent](../reference_2.md#type-pageevent) | false | — | event type to register for ("mouseDown", "load", etc) |
 | action | [String](#type-string) | false | — | string to be eval'd when event fires (function) function to be executed when event fires (object) an object to call on which a method named "page" + eventType will be called |
-| fireStyle | [FireStyle](../main_2.md#type-firestyle) | true | — | Flag to set automatic removal of the event after it fires one or more times |
+| fireStyle | [FireStyle](../reference_2.md#type-firestyle) | true | — | Flag to set automatic removal of the event after it fires one or more times |
 | functionName | [String](#type-string) | true | — | optional - if an object was passed in as the second parameter, this is a name of a method to call on that object. |
 
 ### Returns
@@ -835,7 +835,7 @@ While cleaning up observations that are no longer required is always good practi
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| object | [Object](../main.md#type-object) | false | — | Object to observe. This may be any JavaScript object with the specified target method, including native arrays, and instances of SmartClient classes such as [Canvas](Canvas.md#class-canvas). |
+| object | [Object](../reference.md#type-object) | false | — | Object to observe. This may be any JavaScript object with the specified target method, including native arrays, and instances of SmartClient classes such as [Canvas](Canvas.md#class-canvas). |
 | methodName | [String](#type-string) | false | — | Name of the method to observe. Every time this method is invoked on the target object the specified action will fire (after the default implementation completes). |
 | action | [Function](#type-function)|[String](#type-string) | false | — | Action to take when the observed method is invoked.  
 If `action` is a string to execute, certain keywords are available for context:
@@ -871,7 +871,7 @@ Wait for methods to fire on multiple objects.
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — whether observation succeeded. Observation may fail due to null objects, non-existent methods or similar bad parameters
+`[boolean](../reference.md#type-boolean)` — whether observation succeeded. Observation may fail due to null objects, non-existent methods or similar bad parameters
 
 ---
 ## ClassMethod: Page.checkBrowserAndRedirect

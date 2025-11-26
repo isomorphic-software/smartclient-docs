@@ -1,6 +1,6 @@
 # FileLoader Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -26,7 +26,7 @@ It is recommended to use [load()](#classmethod-fileloaderload) if you plan on us
 ## ClassAttr: FileLoader.modulesDir
 
 ### Description
-Path to module files (ISC\_Core.js et al) relative to the isomorphicDir (see [FileLoader overview](../main_2.md#object-fileloader)).
+Path to module files (ISC\_Core.js et al) relative to the isomorphicDir (see [FileLoader overview](../reference_2.md#object-fileloader)).
 
 Does not normally need to be set for SmartClient. If using Smart GWT, set to "modules/".
 
@@ -78,7 +78,7 @@ The default configuration for this object has the following attribute values:
 *   [imageStyle](LoadingIndicatorSettings.md#attr-loadingindicatorsettingsimagestyle) : "loadingIndicatorImage"
 *   [zIndex](LoadingIndicatorSettings.md#attr-loadingindicatorsettingszindex) : 1000000000
 
-To change or add attributes we recommend using [Class.changeDefaults](Class.md#classmethod-classchangedefaults). Developers may also pass an explicit [LoadingIndicatorSettings](../main.md#object-loadingindicatorsettings) configuration object to [FileLoader.showLoadingIndicator](#classmethod-fileloadershowloadingindicator) to override these settings at runtime.
+To change or add attributes we recommend using [Class.changeDefaults](Class.md#classmethod-classchangedefaults). Developers may also pass an explicit [LoadingIndicatorSettings](../reference.md#object-loadingindicatorsettings) configuration object to [FileLoader.showLoadingIndicator](#classmethod-fileloadershowloadingindicator) to override these settings at runtime.
 
 Note that the FileLoader is meant to be very tiny, so that it can be inserted into a context like a plain HTML login page and start loading SmartClient resources & your application code in the background. For this reason, the image used by this attribute does not support SVG symbols via the +link{@group:svgSymbols, SVG spriting system}, because that would require additional framework code to be loaded in advance.
 
@@ -201,7 +201,7 @@ Similarly if a skin has already been loaded, a call to load() will not attempt t
 |------|------|----------|---------|-------------|
 | onload | [String](#type-string)|[Function](#type-function) | true | — | Optional code to execute when all specified modules and skin have loaded. |
 | showLoadingIndicator | [Boolean](#type-boolean)|[LoadingIndicatorSettings](#type-loadingindicatorsettings) | true | — | This parameter will cause the [loading indicator](#classmethod-fileloadershowloadingindicator) to be displayed while the load is in progress, then automatically dismissed when load completes.  
-May be specified as simple boolean `true` value or a [configuration block](../main.md#object-loadingindicatorsettings) for the loading indicator. |
+May be specified as simple boolean `true` value or a [configuration block](../reference.md#object-loadingindicatorsettings) for the loading indicator. |
 | skin | [String](#type-string) | true | — | Name of the skin to load. If not specified, the skin specified by the default [FileLoader.defaultSkin](#classattr-fileloaderdefaultskin) will be used. Instead of a skin name, you can specify a skinDir - this works just like [Page.setSkinDir](Page.md#classmethod-pagesetskindir) - the skin assumed to be a skinDir if there's at least one forward slash (/) in the name.  
 To suppress loading a skin, this parameter may be passed as an explicit empty string. |
 | modules | [String](#type-string)|[Array](#type-array) | true | — | List of modules to load. If not specified, the list of modules specified by the default [FileLoader.defaultModules](#classattr-fileloaderdefaultmodules) will be used. You can specify modules as e.g: "Core,Foundation" or as \["Core","Foundation"\].  
@@ -322,7 +322,7 @@ Checks to see whether a specified module has been loaded. Note that it isn't usu
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — True when the specified modules have been loaded. False otherwise.
+`[boolean](../reference.md#type-boolean)` — True when the specified modules have been loaded. False otherwise.
 
 ---
 ## ClassMethod: FileLoader.loadLocale
@@ -373,7 +373,7 @@ The purpose of this method is to enable a canonical way of loading/caching code 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| callback | [Callback](../main.md#type-callback) | false | — | Callback to fire when FileLoader has loaded. |
+| callback | [Callback](../reference.md#type-callback) | false | — | Callback to fire when FileLoader has loaded. |
 
 ---
 ## ClassMethod: FileLoader.loadModules

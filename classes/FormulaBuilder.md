@@ -1,12 +1,12 @@
 # FormulaBuilder Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
 ## Class: FormulaBuilder
 
-*Inherits from:* [VLayout](../main.md#class-vlayout)
+*Inherits from:* [VLayout](../reference.md#class-vlayout)
 
 ### Description
 Shows an interface allowing a user to enter simple formulas by typing them into a text field.
@@ -804,7 +804,7 @@ Evaluates and returns the dynamic [FormulaBuilder.samplePrompt](#attr-formulabui
 
 ### Returns
 
-`[HTMLString](../main.md#type-htmlstring)` — Caption displaying dynamic row-title and the result of the formula
+`[HTMLString](../reference.md#type-htmlstring)` — Caption displaying dynamic row-title and the result of the formula
 
 ### Groups
 

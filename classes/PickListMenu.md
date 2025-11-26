@@ -1,6 +1,6 @@
 # PickListMenu Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -9,7 +9,7 @@
 *Inherits from:* [ListGrid](ListGrid_1.md#class-listgrid)
 
 ### Description
-[ListGrid](ListGrid_1.md#class-listgrid) subclass used, by default, by FormItems which implement [PickList](../main_2.md#interface-picklist) to display a [flat list](PickList.md#attr-picklistdatasettype) of selectable options.
+[ListGrid](ListGrid_1.md#class-listgrid) subclass used, by default, by FormItems which implement [PickList](../reference_2.md#interface-picklist) to display a [flat list](PickList.md#attr-picklistdatasettype) of selectable options.
 
 Can be subclassed, customized and assigned to FormItems via the [pickListConstructor](ComboBoxItem.md#attr-comboboxitempicklistconstructor) attribute.
 

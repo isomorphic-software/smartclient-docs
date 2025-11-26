@@ -1,15 +1,15 @@
 # FieldPicker Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
 ## Class: FieldPicker
 
-*Inherits from:* [VLayout](../main.md#class-vlayout)
+*Inherits from:* [VLayout](../reference.md#class-vlayout)
 
 ### Description
-FieldPicker provides a configuration dialog that displays, side-by-side, the available and currently-displayed fields of a [DataBoundComponent](../main.md#interface-databoundcomponent). It allows for easy customization of the order in which the fields of a [DataBoundComponent](../main.md#interface-databoundcomponent) are displayed, and of which are visible. If so configured, it also allows for convenient launching of the HiliteEditor, FormulaBuilder, and SummaryBuilder. A FieldPicker instance runs in its own window, a [FieldPickerWindow](FieldPickerWindow.md#class-fieldpickerwindow)
+FieldPicker provides a configuration dialog that displays, side-by-side, the available and currently-displayed fields of a [DataBoundComponent](../reference.md#interface-databoundcomponent). It allows for easy customization of the order in which the fields of a [DataBoundComponent](../reference.md#interface-databoundcomponent) are displayed, and of which are visible. If so configured, it also allows for convenient launching of the HiliteEditor, FormulaBuilder, and SummaryBuilder. A FieldPicker instance runs in its own window, a [FieldPickerWindow](FieldPickerWindow.md#class-fieldpickerwindow)
 
 ---
 ## Attr: FieldPicker.instructionLabel
@@ -107,7 +107,7 @@ The title displayed for the sample value property of the current fields
 ## Attr: FieldPicker.buttonLayout
 
 ### Description
-A [horizontal layout](../main.md#class-hlayout) used to show the [Save](#attr-fieldpickersaveandexitbutton) and [Cancel](#attr-fieldpickercancelchangesbutton) buttons.
+A [horizontal layout](../reference.md#class-hlayout) used to show the [Save](#attr-fieldpickersaveandexitbutton) and [Cancel](#attr-fieldpickercancelchangesbutton) buttons.
 
 **Flags**: IR
 
@@ -161,7 +161,7 @@ Note that if [DataBoundComponent.useAllDataSourceFields](DataBoundComponent.md#a
 ## Attr: FieldPicker.cancelChangesButton
 
 ### Description
-An AutoChild [button](../main.md#class-ibutton) that saves the current field-set and exits the Field Picker.
+An AutoChild [button](../reference.md#class-ibutton) that saves the current field-set and exits the Field Picker.
 
 **Flags**: IR
 
@@ -185,7 +185,7 @@ A [ListGrid](ListGrid_1.md#class-listgrid) showing the list of currently selecte
 ## Attr: FieldPicker.saveAndExitButton
 
 ### Description
-An AutoChild [button](../main.md#class-ibutton) that saves the current field-set and exits the Field Picker.
+An AutoChild [button](../reference.md#class-ibutton) that saves the current field-set and exits the Field Picker.
 
 **Flags**: IR
 
@@ -295,7 +295,7 @@ A value of "first" means the first record. If the underlying [FieldPicker.dataBo
 ## Method: FieldPicker.callback
 
 ### Description
-Callback invoked when picker changes are committed, if a disposable [DataBoundComponent](../main.md#interface-databoundcomponent) is present.
+Callback invoked when picker changes are committed, if a disposable [DataBoundComponent](../reference.md#interface-databoundcomponent) is present.
 
 ### Parameters
 

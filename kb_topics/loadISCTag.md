@@ -1,13 +1,13 @@
 # <isomorphic:loadISC>
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
 ## KB Topic: <isomorphic:loadISC>
 
 ### Description
-See [jspTags](../main.md#kb-topic-smartclient-jsp-tags)
+See [jspTags](../reference.md#kb-topic-smartclient-jsp-tags)
 
 _produces:_ HTML
 
@@ -147,6 +147,6 @@ The value of this attribute is passed as the `onload` handler to the generated [
 _value format_: boolean - acceptable values: "true" or "false"  
 _default value_: "true"
 
-Setting this attribute to false puts SmartClient in namespace mode. See [isc](../main.md#object-isc) for more info.
+Setting this attribute to false puts SmartClient in namespace mode. See [isc](../reference.md#object-isc) for more info.
 
 ---

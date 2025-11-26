@@ -1,6 +1,6 @@
 # SectionHeader Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -43,7 +43,7 @@ By default doubleClicks are disabled for SectionHeaders. All mouse click events 
 ## Attr: SectionHeader.definingProperty
 
 ### Description
-This attribute denotes the name of a property to use as a [getDefiningPropertyName()](Canvas.md#method-canvasgetdefiningpropertyname) for this property when generating and resolving [AutoTest locators with search segments](../main_2.md#type-autotestlocator).
+This attribute denotes the name of a property to use as a [getDefiningPropertyName()](Canvas.md#method-canvasgetdefiningpropertyname) for this property when generating and resolving [AutoTest locators with search segments](../reference_2.md#type-autotestlocator).
 
 **Flags**: IRWA
 
@@ -121,7 +121,7 @@ Is the title of this section header clipped by [section controls](#attr-sectionh
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — whether the title is clipped.
+`[boolean](../reference.md#type-boolean)` — whether the title is clipped.
 
 ### See Also
 
@@ -137,7 +137,7 @@ Optional stringMethod to fire when the user hovers over this section header and 
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — false to suppress the standard hover
+`[boolean](../reference.md#type-boolean)` — false to suppress the standard hover
 
 ### Groups
 
@@ -158,10 +158,10 @@ Returns the HTML that is displayed by the default [titleHover](#method-sectionhe
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| defaultHTML | [HTMLString](../main.md#type-htmlstring) | false | — | the HTML that would have been displayed by default |
+| defaultHTML | [HTMLString](../reference.md#type-htmlstring) | false | — | the HTML that would have been displayed by default |
 
 ### Returns
 
-`[HTMLString](../main.md#type-htmlstring)` — HTML to be displayed in the hover. If an empty string, then the hover is canceled. If null, then the default HTML is used.
+`[HTMLString](../reference.md#type-htmlstring)` — HTML to be displayed in the hover. If an empty string, then the hover is canceled. If null, then the default HTML is used.
 
 ---

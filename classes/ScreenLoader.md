@@ -1,12 +1,12 @@
 # ScreenLoader Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
 ## Class: ScreenLoader
 
-*Inherits from:* [VLayout](../main.md#class-vlayout)
+*Inherits from:* [VLayout](../reference.md#class-vlayout)
 
 ### Description
 The ScreenLoader component can be used to load [ComponentXML Screens](../kb_topics/componentXML.md#kb-topic-component-xml) into a running application.
@@ -21,7 +21,7 @@ The ScreenLoader relies on the XMLHttpRequest object which can be disabled by en
 ## Attr: ScreenLoader.dataContextBinding
 
 ### Description
-A [DataContextBinding](../main.md#object-datacontextbinding) to be applied to the loaded screen via [Canvas.setDataContext](Canvas.md#method-canvassetdatacontext).
+A [DataContextBinding](../reference.md#object-datacontextbinding) to be applied to the loaded screen via [Canvas.setDataContext](Canvas.md#method-canvassetdatacontext).
 
 ### Groups
 
@@ -89,7 +89,7 @@ Set the dataContextBinding property.
 ## Method: ScreenLoader.dataContextChanged
 
 ### Description
-Notification method fired when [DataContext](../main.md#object-datacontext) is bound on the embedded screen. This can occur on the initial draw or by an explicit call to [setDataContext()](Canvas.md#method-canvassetdatacontext) either via this ScreenLoader or from other components including the screen itself.
+Notification method fired when [DataContext](../reference.md#object-datacontext) is bound on the embedded screen. This can occur on the initial draw or by an explicit call to [setDataContext()](Canvas.md#method-canvassetdatacontext) either via this ScreenLoader or from other components including the screen itself.
 
 ### Groups
 

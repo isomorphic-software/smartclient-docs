@@ -1,6 +1,6 @@
 # FacetChartEditProxy Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -19,7 +19,7 @@
 ## Attr: FacetChartEditProxy.dataSeparatorChar
 
 ### Description
-If [inline editing](../main.md#type-inlineeditevent) for this chart edits the [FacetChart.data](FacetChart.md#attr-facetchartdata), character that should be used as a separator between values, or between pairs of label vs values.
+If [inline editing](../reference.md#type-inlineeditevent) for this chart edits the [FacetChart.data](FacetChart.md#attr-facetchartdata), character that should be used as a separator between values, or between pairs of label vs values.
 
 The [dataEscapeChar](#attr-facetcharteditproxydataescapechar) can be used to enter the separator char as part of a field name or value.
 
@@ -29,7 +29,7 @@ The [dataEscapeChar](#attr-facetcharteditproxydataescapechar) can be used to ent
 ## Attr: FacetChartEditProxy.dataEscapeChar
 
 ### Description
-If [inline editing](../main.md#type-inlineeditevent) for this chart edits the [FacetChart.data](FacetChart.md#attr-facetchartdata), character that can be used to enter literal separator chars (such as the [dataSeparatorChar](#attr-facetcharteditproxydataseparatorchar)).
+If [inline editing](../reference.md#type-inlineeditevent) for this chart edits the [FacetChart.data](FacetChart.md#attr-facetchartdata), character that can be used to enter literal separator chars (such as the [dataSeparatorChar](#attr-facetcharteditproxydataseparatorchar)).
 
 Repeat this character twice to enter it literally. For example, with the default of "\\", inputting "\\\\" would result in a literal backslash in the value.
 
@@ -39,7 +39,7 @@ Repeat this character twice to enter it literally. For example, with the default
 ## Attr: FacetChartEditProxy.dataDisplaySeparatorChar
 
 ### Description
-If [inline editing](../main.md#type-inlineeditevent) for this chart edits the [FacetChart.data](FacetChart.md#attr-facetchartdata), character that should be used as a separator for entering label vs value entries.
+If [inline editing](../reference.md#type-inlineeditevent) for this chart edits the [FacetChart.data](FacetChart.md#attr-facetchartdata), character that should be used as a separator for entering label vs value entries.
 
 With the default of ":", the following input defines four values with titles:
 

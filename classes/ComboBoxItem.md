@@ -1,6 +1,6 @@
 # ComboBoxItem Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -11,7 +11,7 @@
 ### Description
 The Combobox is a text input field which can show a list of options via a drop-down PickList.
 
-The set of options will be filtered based on the current value in the text field, so only options that match what has been typed so far will be displayed. The set of options can be derived from a ValueMap or dynamically retrieved from a dataSource. See the [PickList](../main_2.md#interface-picklist) interface for further settings.
+The set of options will be filtered based on the current value in the text field, so only options that match what has been typed so far will be displayed. The set of options can be derived from a ValueMap or dynamically retrieved from a dataSource. See the [PickList](../reference_2.md#interface-picklist) interface for further settings.
 
 The two most common use cases for ComboBoxItems are:
 
@@ -26,7 +26,7 @@ ComboBoxItem does not provide built-in support for multiple selection. For a Com
 
 ### See Also
 
-- [PickList](../main_2.md#interface-picklist)
+- [PickList](../reference_2.md#interface-picklist)
 
 ---
 ## Attr: ComboBoxItem.pickerExitButton
@@ -84,7 +84,7 @@ If not explicitly set, completeOnEnter will default to false for items embedded 
 ### Description
 Specifies one or more fields by which this item should be initially sorted. It can be a [field name](ListGridField.md#attr-listgridfieldname), or an array of field names - but note that, if multiple fields are supplied, then each will be sorted in the same [direction](ListGrid_1.md#attr-listgridsortdirection).
 
-For full sorting control, set [initialSort](PickList.md#attr-picklistinitialsort) to a list of custom [sortSpecifiers](../main_2.md#object-sortspecifier).
+For full sorting control, set [initialSort](PickList.md#attr-picklistinitialsort) to a list of custom [sortSpecifiers](../reference_2.md#object-sortspecifier).
 
 This attribute can also be set to the index of a field in the fields array, but note that it will be converted to a string (field name) after initialization.
 
@@ -152,7 +152,7 @@ If this field has an [FormItem.optionDataSource](FormItem.md#attr-formitemoption
 If not using [local display values](FormItem.md#attr-formitemuselocaldisplayfieldvalue), the display value for this item will be derived by performing a fetch against the [option dataSource](FormItem.md#method-formitemgetoptiondatasource) to find a record where the [value field](FormItem.md#method-formitemgetvaluefieldname) matches this item's value, and use the `displayField` value from that record.  
 In addition to this, PickList-based form items that provide a list of possible options such as the [SelectItem](SelectItem.md#class-selectitem) or [ComboBoxItem](#class-comboboxitem) will show the `displayField` values to the user by default, allowing them to choose a new data value (see [FormItem.valueField](FormItem.md#attr-formitemvaluefield)) from a list of user-friendly display values.
 
-This essentially allows the specified `optionDataSource` to be used as a server based [valueMap](../main.md#kb-topic-valuemap).
+This essentially allows the specified `optionDataSource` to be used as a server based [valueMap](../reference.md#kb-topic-valuemap).
 
 If [local display values](FormItem.md#attr-formitemuselocaldisplayfieldvalue) are being used and [FormItem.storeDisplayValues](FormItem.md#attr-formitemstoredisplayvalues) is true, selecting a new value will update both the value for this field and the associated display-field value on the record being edited.
 
@@ -252,7 +252,7 @@ This property controls whether the user can enter a value that is not present in
 
 If set to false, the value the user enters in the text box is essentially used to filter the set of options displayed in the pickList.
 
-In this mode, when focus is taken from the field, if the entered value does not match any entries in the [ValueMap](../main_2.md#type-valuemap) or [ComboBoxItem.optionDataSource](#attr-comboboxitemoptiondatasource), it will be discarded. Note that in this mode, [ComboBoxItem.completeOnTab](#attr-comboboxitemcompleteontab) behavior is automatically enabled so if the user enters a valid partial value such that one or more options is displayed in the pickList, and hits the Tab key, the first matching option will be chosen automatically. In this mode the user may also hit the `"Escape"` key to discard their edits.
+In this mode, when focus is taken from the field, if the entered value does not match any entries in the [ValueMap](../reference_2.md#type-valuemap) or [ComboBoxItem.optionDataSource](#attr-comboboxitemoptiondatasource), it will be discarded. Note that in this mode, [ComboBoxItem.completeOnTab](#attr-comboboxitemcompleteontab) behavior is automatically enabled so if the user enters a valid partial value such that one or more options is displayed in the pickList, and hits the Tab key, the first matching option will be chosen automatically. In this mode the user may also hit the `"Escape"` key to discard their edits.
 
 Note also that when `addUnknownValues` is set to false, the underlying value returned by [getValue()](FormItem.md#method-formitemgetvalue) will not be updated until a value is explicitly chosen. This means any change or changed handlers will not fire directly in response to the user typing in the field - they will fire when the user actually selects a value, or takes focus from the field.
 
@@ -356,7 +356,7 @@ Static default value for this ComboBoxItem. To default to the first option use [
 ## Attr: ComboBoxItem.initialSort
 
 ### Description
-An array of [SortSpecifier](../main_2.md#object-sortspecifier) objects used to set up the initial sort configuration for this pickList. If specified, this will be used instead of any [PickList.sortField](PickList.md#attr-picklistsortfield) specified.
+An array of [SortSpecifier](../reference_2.md#object-sortspecifier) objects used to set up the initial sort configuration for this pickList. If specified, this will be used instead of any [PickList.sortField](PickList.md#attr-picklistsortfield) specified.
 
 ### Groups
 
@@ -415,7 +415,7 @@ When set to true, shows an [icon](#attr-comboboxitempickersearchicon) in the [Co
 ## Attr: ComboBoxItem.progressiveLoading
 
 ### Description
-Indicates whether or not this ComboBoxItem will load its list of options [progressively](DataSource.md#attr-datasourceprogressiveloading). This property is copied onto the underlying [PickList](../main_2.md#interface-picklist).
+Indicates whether or not this ComboBoxItem will load its list of options [progressively](DataSource.md#attr-datasourceprogressiveloading). This property is copied onto the underlying [PickList](../reference_2.md#interface-picklist).
 
 ### Groups
 
@@ -439,7 +439,7 @@ Should the list of options be displayed whenever the user types into the combo-b
 ## Attr: ComboBoxItem.pickListPlacement
 
 ### Description
-Controls where the [PickList](../main_2.md#interface-picklist) is placed. Can be specified as a [PanelPlacement](../main_2.md#type-panelplacement) or a specific widget that should be filled (by specifying an actual Canvas or [Canvas.ID](Canvas.md#attr-canvasid)).
+Controls where the [PickList](../reference_2.md#interface-picklist) is placed. Can be specified as a [PanelPlacement](../reference_2.md#type-panelplacement) or a specific widget that should be filled (by specifying an actual Canvas or [Canvas.ID](Canvas.md#attr-canvasid)).
 
 Default behavior is to `"fillPanel"` if [Browser.isHandset](Browser.md#classattr-browserishandset) or [Browser.isTablet](Browser.md#classattr-browseristablet), to better accommodate the smaller screen real estate and less precise pointing ability on such devices.
 
@@ -501,7 +501,7 @@ As the user types into this item's textBox, a comboBoxItem will show the pick-li
 
 This attribute allows the developer to explicitly change which fields to filter against, causing the user-entered text to be matched against any of the specified set of fields from the [ComboBoxItem.optionDataSource](#attr-comboboxitemoptiondatasource).
 
-This essentially causes [ComboBoxItem.getPickListFilterCriteria](#method-comboboxitemgetpicklistfiltercriteria) to return an [AdvancedCriteria](../main.md#object-advancedcriteria) object representing "field1 starts with value or field2 starts with value or ...". The [operator](../main.md#type-operatorid) used is controlled by [TextMatchStyle](../main_2.md#type-textmatchstyle) as usual, that is, "startsWith" implies the operator "iStartsWith, "substring" implies "iContains" and "exact" implies "iEquals".
+This essentially causes [ComboBoxItem.getPickListFilterCriteria](#method-comboboxitemgetpicklistfiltercriteria) to return an [AdvancedCriteria](../reference.md#object-advancedcriteria) object representing "field1 starts with value or field2 starts with value or ...". The [operator](../reference.md#type-operatorid) used is controlled by [TextMatchStyle](../reference_2.md#type-textmatchstyle) as usual, that is, "startsWith" implies the operator "iStartsWith, "substring" implies "iContains" and "exact" implies "iEquals".
 
 The most common use case for this setting would be when a comboBoxItem is showing multiple [ComboBoxItem.pickListFields](#attr-comboboxitempicklistfields) - if the same set of fields is specified as [ComboBoxItem.filterFields](#attr-comboboxitemfilterfields), the user can use the text-box to filter against whichever fields are visible in the pickList.
 
@@ -548,7 +548,7 @@ The following [passthroughs](../kb_topics/autoChildUsage.md#kb-topic-using-autoc
 ## Attr: ComboBoxItem.iconPlacement
 
 ### Description
-For PickList items with [PickListItemIconPlacement](../main.md#type-picklistitemiconplacement) set such that the pickList does not render near-origin, should specified [icons](FormItem.md#attr-formitemicons) be rendered inline within the formItem itself, or within the [pickerNavigationBar](#attr-comboboxitempickernavigationbar).
+For PickList items with [PickListItemIconPlacement](../reference.md#type-picklistitemiconplacement) set such that the pickList does not render near-origin, should specified [icons](FormItem.md#attr-formitemicons) be rendered inline within the formItem itself, or within the [pickerNavigationBar](#attr-comboboxitempickernavigationbar).
 
 May be overridden at the icon level via [FormItemIcon.iconPlacement](FormItemIcon.md#attr-formitemiconiconplacement).
 
@@ -570,7 +570,7 @@ When this item is showing a [tree-based picker](PickList.md#attr-picklistdataset
 ### Description
 ListGrid-based AutoChild created by the system to display a list of pickable options for this item.
 
-The pickList is automatically generated and displayed by the system when necessary. It may be customized via properties such as [ComboBoxItem.pickListConstructor](#attr-comboboxitempicklistconstructor), [ComboBoxItem.pickTreeConstructor](#attr-comboboxitempicktreeconstructor), [ComboBoxItem.pickListProperties](#attr-comboboxitempicklistproperties) and more. See the [PickList overview](../main_2.md#interface-picklist) for more information.
+The pickList is automatically generated and displayed by the system when necessary. It may be customized via properties such as [ComboBoxItem.pickListConstructor](#attr-comboboxitempicklistconstructor), [ComboBoxItem.pickTreeConstructor](#attr-comboboxitempicktreeconstructor), [ComboBoxItem.pickListProperties](#attr-comboboxitempicklistproperties) and more. See the [PickList overview](../reference_2.md#interface-picklist) for more information.
 
 Accessing the generated pickList at runtime is an advanced usage. In most cases developers should not modify this generated component directly but should instead use attributes on the formItem to configure it.
 
@@ -626,9 +626,9 @@ If not explicitly supplied, the valueField name will be derived as described in 
 ## Attr: ComboBoxItem.specialValues
 
 ### Description
-A set of "special" values such as "All", "None" or "Invalid" that do not appear in the normal [ValueMap](../main_2.md#type-valuemap) or in the data returned by the [ComboBoxItem.optionDataSource](#attr-comboboxitemoptiondatasource).
+A set of "special" values such as "All", "None" or "Invalid" that do not appear in the normal [ValueMap](../reference_2.md#type-valuemap) or in the data returned by the [ComboBoxItem.optionDataSource](#attr-comboboxitemoptiondatasource).
 
-Like other uses of [ValueMap](../main_2.md#type-valuemap), either a list of values or a mapping from stored to display value can be provided.
+Like other uses of [ValueMap](../reference_2.md#type-valuemap), either a list of values or a mapping from stored to display value can be provided.
 
 These values can either be shown at the top of the list of values (in the order specified), or can be shown in a separate, non-scrolling region - the setting [separateSpecialValues](SelectItem.md#attr-selectitemseparatespecialvalues) controls this. Note that data paging can only be used if `separateSpecialValues` is enabled.
 
@@ -636,7 +636,7 @@ If `specialValues` are configured, [allowEmptyValue](SelectItem.md#attr-selectit
 
 `specialValues` can also be used to take a value that _does_ appear in the normal data and redundantly display it at the top of the list to make it more accessible. Note that in this case it is expected that the special value appears _both_ at the top of the list _and_ in it's normal position in the list, so this works best with [separateSpecialValues](SelectItem.md#attr-selectitemseparatespecialvalues) mode enabled.
 
-Also, if an [ComboBoxItem.optionDataSource](#attr-comboboxitemoptiondatasource) is used, [ComboBoxItem.specialValues](#attr-comboboxitemspecialvalues) that appear in the normal dataset _will_ be updated by automatic [cache synchronization](../main.md#kb-topic-cachesync) (if the [ComboBoxItem.displayField](#attr-comboboxitemdisplayfield) is updated). However when using a distinct [ComboBoxItem.valueField](#attr-comboboxitemvaluefield) and [ComboBoxItem.displayField](#attr-comboboxitemdisplayfield), you are required to provide [ComboBoxItem.specialValues](#attr-comboboxitemspecialvalues) as a map (there is no support for [fetchMissingValues](FormItem.md#attr-formitemfetchmissingvalues) automatically fetching appropriate display values).
+Also, if an [ComboBoxItem.optionDataSource](#attr-comboboxitemoptiondatasource) is used, [ComboBoxItem.specialValues](#attr-comboboxitemspecialvalues) that appear in the normal dataset _will_ be updated by automatic [cache synchronization](../reference.md#kb-topic-cachesync) (if the [ComboBoxItem.displayField](#attr-comboboxitemdisplayfield) is updated). However when using a distinct [ComboBoxItem.valueField](#attr-comboboxitemvaluefield) and [ComboBoxItem.displayField](#attr-comboboxitemdisplayfield), you are required to provide [ComboBoxItem.specialValues](#attr-comboboxitemspecialvalues) as a map (there is no support for [fetchMissingValues](FormItem.md#attr-formitemfetchmissingvalues) automatically fetching appropriate display values).
 
 Note that specialValues are not supported in conjunction with [MultiComboBoxItem](MultiComboBoxItem.md#class-multicomboboxitem). Whereas with [selectItem.multiple:true](SelectItem.md#attr-selectitemmultiple), specialValues will never be normal values that may be selected. So, specialValues should have options such as "Select All", "Select None" and others.
 
@@ -725,7 +725,7 @@ Size for the icon displayed in the [ComboBoxItem.pickerSearchField](#attr-combob
 ## Attr: ComboBoxItem.optionFilterContext
 
 ### Description
-If this item has a specified `optionDataSource`, and this property is not null, this will be passed to the datasource as [DSRequest](../main_2.md#object-dsrequest) properties when performing the filter operation on the dataSource to obtain the set of options for the list. This provides, among other capabilities, a way to trigger the server to return summary records.
+If this item has a specified `optionDataSource`, and this property is not null, this will be passed to the datasource as [DSRequest](../reference_2.md#object-dsrequest) properties when performing the filter operation on the dataSource to obtain the set of options for the list. This provides, among other capabilities, a way to trigger the server to return summary records.
 
 ### See Also
 
@@ -737,7 +737,7 @@ If this item has a specified `optionDataSource`, and this property is not null, 
 ## Attr: ComboBoxItem.showPickerIcon
 
 ### Description
-Should we show a special 'picker' [icon](../main.md#object-formitemicon) for this form item? Picker icons are customizable via [pickerIconProperties](FormItem.md#attr-formitempickericonproperties). By default they will be rendered inside the form item's ["control box"](FormItem.md#attr-formitemcontrolstyle) area. By default clicking the pickerIcon will call [FormItem.showPicker](FormItem.md#method-formitemshowpicker).
+Should we show a special 'picker' [icon](../reference.md#object-formitemicon) for this form item? Picker icons are customizable via [pickerIconProperties](FormItem.md#attr-formitempickericonproperties). By default they will be rendered inside the form item's ["control box"](FormItem.md#attr-formitemcontrolstyle) area. By default clicking the pickerIcon will call [FormItem.showPicker](FormItem.md#method-formitemshowpicker).
 
 ### Groups
 
@@ -796,7 +796,7 @@ Note that this does not control re-use of data **within a single pickList**. To 
 If [showPickerIcon](#attr-comboboxitemshowpickericon) is true for this item, this property governs the size of the picker icon. If unset, the picker icon will be sized as a square to fit in the available height for the icon.
 
 Note that if spriting is being used, and the image to be displayed is specified using css properties such as `background-image`, `background-size`, changing this value may result in an unexpected appearance as the image will not scale.  
-Scaleable spriting can be achieved using the [SCSpriteConfig](../main.md#type-scspriteconfig) format. See the section on spriting in the [skinning overview](../kb_topics/skinning.md#kb-topic-skinning--theming) for further information.
+Scaleable spriting can be achieved using the [SCSpriteConfig](../reference.md#type-scspriteconfig) format. See the section on spriting in the [skinning overview](../kb_topics/skinning.md#kb-topic-skinning--theming) for further information.
 
 ### Groups
 
@@ -823,7 +823,7 @@ Scaleable spriting can be achieved using the [SCSpriteConfig](../main.md#type-sc
 ### Description
 When a comboBoxItem is used to generate search criteria in a SearchForm this property governs whether, if the user explicitly chose an option from the pickList, we explicitly generate criteria that will search for an exact match against the chosen value.
 
-In order to achieve this, when this property is set to true, this item will generate [AdvancedCriteria](../main.md#object-advancedcriteria) in its [ComboBoxItem.getCriterion](#method-comboboxitemgetcriterion) method .
+In order to achieve this, when this property is set to true, this item will generate [AdvancedCriteria](../reference.md#object-advancedcriteria) in its [ComboBoxItem.getCriterion](#method-comboboxitemgetcriterion) method .
 
 See [ComboBoxItem.shouldGenerateExactMatchCriteria](#method-comboboxitemshouldgenerateexactmatchcriteria) for behavior when this flag is unset.
 
@@ -892,7 +892,7 @@ Not applicable to a ComboBoxItem.
 ## Attr: ComboBoxItem.pickTreeConstructor
 
 ### Description
-The Class to use when creating a picker of [type "tree"](PickList.md#attr-picklistdatasettype) for a FormItem. Must be a subclass of the builtin default, [PickTreeMenu](../main.md#class-picktreemenu).
+The Class to use when creating a picker of [type "tree"](PickList.md#attr-picklistdatasettype) for a FormItem. Must be a subclass of the builtin default, [PickTreeMenu](../reference.md#class-picktreemenu).
 
 **Flags**: IR
 
@@ -958,7 +958,7 @@ If this property is unset, we display the [PickList.displayField](PickList.md#at
 
 If there are multiple fields, column headers will be shown for each field, the height of which can be customized via the [PickList.pickListHeaderHeight](PickList.md#attr-picklistpicklistheaderheight) attribute.
 
-Each field to display should be specified as a [ListGridField](../main_2.md#object-listgridfield) object. Note that unlike in [listGrids](ListGrid_1.md#class-listgrid), dataSource fields marked as [hidden:true](DataSourceField.md#attr-datasourcefieldhidden) will be hidden by default in pickLists. To override this behavior, ensure that you specify an explicit value for [showIf](ListGridField.md#method-listgridfieldshowif).
+Each field to display should be specified as a [ListGridField](../reference_2.md#object-listgridfield) object. Note that unlike in [listGrids](ListGrid_1.md#class-listgrid), dataSource fields marked as [hidden:true](DataSourceField.md#attr-datasourcefieldhidden) will be hidden by default in pickLists. To override this behavior, ensure that you specify an explicit value for [showIf](ListGridField.md#method-listgridfieldshowif).
 
 ### Groups
 
@@ -1001,7 +1001,7 @@ Note: if the pickList is being shown in any view other than the default [nearOri
 ### Description
 When a comboBoxItem is used to generate search criteria in a SearchForm, if the user explicitly chose an option from the pickList, should the criterion generated by [ComboBoxItem.getCriterion](#method-comboboxitemgetcriterion) enforce a search for an exact match against the chosen value?
 
-In order to achieve this, when this property is set to true, this item will generate [AdvancedCriteria](../main.md#object-advancedcriteria) in its [ComboBoxItem.getCriterion](#method-comboboxitemgetcriterion) method.
+In order to achieve this, when this property is set to true, this item will generate [AdvancedCriteria](../reference.md#object-advancedcriteria) in its [ComboBoxItem.getCriterion](#method-comboboxitemgetcriterion) method.
 
 Default implementation will return [ComboBoxItem.generateExactMatchCriteria](#attr-comboboxitemgenerateexactmatchcriteria) if specified, otherwise true if the DataSource for this item [supports advanced criteria](DataSource.md#method-datasourcesupportsadvancedcriteria), false if it does not.
 
@@ -1053,7 +1053,7 @@ See [comboBoxFiltering](../kb_topics/comboBoxFiltering.md#kb-topic-comboboxitem-
 
 ### Returns
 
-`[Criteria](../main_2.md#type-criteria)` — criteria to be used for databound or local filtering
+`[Criteria](../reference_2.md#type-criteria)` — criteria to be used for databound or local filtering
 
 **Flags**: A
 
@@ -1065,7 +1065,7 @@ Will this item return advancedCriteria if [DynamicForm.getValuesAsCriteria](Dyna
 
 This method is overridden in ComboBoxItem to return true if [ComboBoxItem.shouldGenerateExactMatchCriteria](#method-comboboxitemshouldgenerateexactmatchcriteria) returns true, and the user has chosen an exact value from the options in the pickList. In this case we will use advancedCriteria to ensure the generated search criteria exactly matches the chosen value for this item.
 
-As with formItem.hasAdvancedCriteria() this will also return true if an [Operator](../main.md#object-operator) was explicitly specified for this item
+As with formItem.hasAdvancedCriteria() this will also return true if an [Operator](../reference.md#object-operator) was explicitly specified for this item
 
 See [comboBoxItemCriteria](../kb_topics/comboBoxItemCriteria.md#kb-topic-comboboxitem-criteria) for a discussion of criterion generated by a ComboBoxItem.
 
@@ -1089,7 +1089,7 @@ Expression evaluated to determine the [ComboBoxItem.defaultValue](#attr-combobox
 |------|------|----------|---------|-------------|
 | item | [FormItem](#type-formitem) | false | — | the form item itself (also available as "this") |
 | form | [DynamicForm](#type-dynamicform) | false | — | the managing DynamicForm instance |
-| values | [Object](../main.md#type-object) | false | — | the current set of values for the form as a whole |
+| values | [Object](../reference.md#type-object) | false | — | the current set of values for the form as a whole |
 
 ### Returns
 
@@ -1108,12 +1108,12 @@ Performs a fetch type operation on this item's DataSource to retrieve the set of
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| callback | [DSCallback](../main_2.md#type-dscallback) | true | — | Callback to fire when the fetch completes. Callback will fire with 4 parameters:
+| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | Callback to fire when the fetch completes. Callback will fire with 4 parameters:
 
 *   `item` a pointer to the form item
 *   `dsResponse` the [DSResponse](DSResponse.md#class-dsresponse) returned by the server
 *   `data` the raw data returned by the server
-*   `dsRequest` the [DSRequest](../main_2.md#object-dsrequest) sent to the server |
+*   `dsRequest` the [DSRequest](../reference_2.md#object-dsrequest) sent to the server |
 | requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | properties to apply to the dsRequest for this fetch. |
 
 ---
@@ -1140,7 +1140,7 @@ Behavior varies based on the configuration of this item, as follows:
 
 ### Returns
 
-`[FieldName](../main.md#type-fieldname)` — display field name, or null if there is no separate display field to use.
+`[FieldName](../reference.md#type-fieldname)` — display field name, or null if there is no separate display field to use.
 
 **Flags**: A
 
@@ -1154,8 +1154,8 @@ If this item is showing a dataBound pickList, this notification method will be f
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| startRow | [int](../main.md#type-int) | false | — | index of first row returned by the server |
-| endRow | [int](../main.md#type-int) | false | — | index of last row returned by the server |
+| startRow | [int](../reference.md#type-int) | false | — | index of first row returned by the server |
+| endRow | [int](../reference.md#type-int) | false | — | index of last row returned by the server |
 | data | [ResultSet](#type-resultset) | false | — | pointer to this pickList's data |
 
 ---
@@ -1174,7 +1174,7 @@ The user can also edit criteria attempting to match exactly against the item's f
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — return true if this item can edit the criterion in question.
+`[boolean](../reference.md#type-boolean)` — return true if this item can edit the criterion in question.
 
 ### Groups
 
@@ -1234,7 +1234,7 @@ Get the record returned from the [ComboBoxItem.optionDataSource](#attr-comboboxi
 ### Description
 Returns the data to display in the pick list.
 
-The default implementation applies the criteria returned by [PickList.getPickListFilterCriteria](PickList.md#method-picklistgetpicklistfiltercriteria) to the data returned by [PickList.getClientPickListData](PickList.md#method-picklistgetclientpicklistdata). A record passes the filter if it has a matching value for all fields in the criteria object. Matching is performed according to [TextMatchStyle](../main_2.md#type-textmatchstyle).
+The default implementation applies the criteria returned by [PickList.getPickListFilterCriteria](PickList.md#method-picklistgetpicklistfiltercriteria) to the data returned by [PickList.getClientPickListData](PickList.md#method-picklistgetclientpicklistdata). A record passes the filter if it has a matching value for all fields in the criteria object. Matching is performed according to [TextMatchStyle](../reference_2.md#type-textmatchstyle).
 
 If [PickList.showAllOptions](PickList.md#attr-picklistshowalloptions) is set, all values are shown, with matching values shown below a [separator](PickList.md#attr-picklistseparatorrows).
 

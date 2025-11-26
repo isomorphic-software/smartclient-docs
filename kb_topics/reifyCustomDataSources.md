@@ -1,6 +1,6 @@
 # Adding Custom DataSources to Reify
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 

@@ -1,6 +1,6 @@
 # NotifySettings Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -22,7 +22,7 @@ We can simply dismiss the oldest message of that [messagePriority](#attr-notifys
 ## Attr: NotifySettings.slideSpeed
 
 ### Description
-Animation speed for [NotifyTransition](../main.md#type-notifytransition): "slide", in pixels/second.
+Animation speed for [NotifyTransition](../reference.md#type-notifytransition): "slide", in pixels/second.
 
 **Flags**: IR
 
@@ -30,7 +30,7 @@ Animation speed for [NotifyTransition](../main.md#type-notifytransition): "slide
 ## Attr: NotifySettings.multiMessageMode
 
 ### Description
-Determines what happens if a message appears while there's still another one of the same [NotifyType](../main_2.md#type-notifytype) being shown. Such messages are either stacked or replace one another,
+Determines what happens if a message appears while there's still another one of the same [NotifyType](../reference_2.md#type-notifytype) being shown. Such messages are either stacked or replace one another,
 
 **Flags**: IR
 
@@ -68,9 +68,9 @@ Sets the priority of the message. Priority is used to determine which message to
 
 The default is:
 
-*   [Notify.ERROR](Notify.md#classattr-notifyerror) for [NotifyType](../main_2.md#type-notifytype): "error",
-*   [Notify.WARN](Notify.md#classattr-notifywarn) for [NotifyType](../main_2.md#type-notifytype): "warn", and
-*   [Notify.MESSAGE](Notify.md#classattr-notifymessage) for all other [NotifyType](../main_2.md#type-notifytype)s
+*   [Notify.ERROR](Notify.md#classattr-notifyerror) for [NotifyType](../reference_2.md#type-notifytype): "error",
+*   [Notify.WARN](Notify.md#classattr-notifywarn) for [NotifyType](../reference_2.md#type-notifytype): "warn", and
+*   [Notify.MESSAGE](Notify.md#classattr-notifymessage) for all other [NotifyType](../reference_2.md#type-notifytype)s
 
 **Impact on Appearance**
 
@@ -82,9 +82,9 @@ If you specify `messagePriority`, and [NotifySettings.applyPriorityToAppearance]
 
 will be assigned, if not specified, to the default values from:
 
-*   [NotifyType](../main_2.md#type-notifytype): "error" for priority [Notify.ERROR](Notify.md#classattr-notifyerror),
-*   [NotifyType](../main_2.md#type-notifytype): "warn" for priority [Notify.WARN](Notify.md#classattr-notifywarn), or
-*   [NotifyType](../main_2.md#type-notifytype): "message" for priorities at or below [Notify.MESSAGE](Notify.md#classattr-notifymessage) (greater or equal numerically)
+*   [NotifyType](../reference_2.md#type-notifytype): "error" for priority [Notify.ERROR](Notify.md#classattr-notifyerror),
+*   [NotifyType](../reference_2.md#type-notifytype): "warn" for priority [Notify.WARN](Notify.md#classattr-notifywarn), or
+*   [NotifyType](../reference_2.md#type-notifytype): "message" for priorities at or below [Notify.MESSAGE](Notify.md#classattr-notifymessage) (greater or equal numerically)
 
 This allows you to automatically set "error" or "warn" styling, on a per-message basis, for any non-"error" or "warn" `NotifyType` by simply supplying a `messagePriority` for that message.
 
@@ -113,7 +113,7 @@ Canvas over which to position the message, available as an alternative means of 
 ## Attr: NotifySettings.applyPriorityToAppearance
 
 ### Description
-Whether to default properties affecting the message appearance to those of the built-in [NotifyType](../main_2.md#type-notifytype) corresponding to the [messagePriority](#attr-notifysettingsmessagepriority). Default is true except for [NotifyType](../main_2.md#type-notifytype)s "error" and "warn", which default to false.
+Whether to default properties affecting the message appearance to those of the built-in [NotifyType](../reference_2.md#type-notifytype) corresponding to the [messagePriority](#attr-notifysettingsmessagepriority). Default is true except for [NotifyType](../reference_2.md#type-notifytype)s "error" and "warn", which default to false.
 
 ### See Also
 
@@ -148,7 +148,7 @@ Controls how messages disappear from or leave their requested location. The defa
 ## Attr: NotifySettings.fadeOutDuration
 
 ### Description
-Time over which the fade-out effect runs for [NotifyTransition](../main.md#type-notifytransition): "fade", in milliseconds.
+Time over which the fade-out effect runs for [NotifyTransition](../reference.md#type-notifytransition): "fade", in milliseconds.
 
 **Flags**: IR
 
@@ -156,7 +156,7 @@ Time over which the fade-out effect runs for [NotifyTransition](../main.md#type-
 ## Attr: NotifySettings.stackDirection
 
 ### Description
-Determines how messages are stacked if [MultiMessageMode](../main_2.md#type-multimessagemode) is "stack". For example, "down" means that older messages move down when a new message of the same [NotifyType](../main_2.md#type-notifytype) appears.
+Determines how messages are stacked if [MultiMessageMode](../reference_2.md#type-multimessagemode) is "stack". For example, "down" means that older messages move down when a new message of the same [NotifyType](../reference_2.md#type-notifytype) appears.
 
 **Flags**: IR
 
@@ -184,9 +184,9 @@ To place the message at an offset from the specified position, use [NotifySettin
 ### Description
 Optional icon to be shown in the [Label](Label.md#class-label) drawn for this message. Default is
 
-*   "\[SKIN\]/Notify/error.png" for [NotifyType](../main_2.md#type-notifytype): "error",
-*   "\[SKIN\]/Notify/warning.png" for [NotifyType](../main_2.md#type-notifytype): "warn", and
-*   "\[SKIN\]/Notify/checkmark.png" for all other [NotifyType](../main_2.md#type-notifytype)s.
+*   "\[SKIN\]/Notify/error.png" for [NotifyType](../reference_2.md#type-notifytype): "error",
+*   "\[SKIN\]/Notify/warning.png" for [NotifyType](../reference_2.md#type-notifytype): "warn", and
+*   "\[SKIN\]/Notify/checkmark.png" for all other [NotifyType](../reference_2.md#type-notifytype)s.
 
 However, if you specify a [messagePriority](#attr-notifysettingsmessagepriority), it will determine the default rather than the actual `NotifyType`, if [NotifySettings.applyPriorityToAppearance](#attr-notifysettingsapplyprioritytoappearance) is true.
 
@@ -213,7 +213,7 @@ Specifies a top offset from the position specified by [NotifySettings.position](
 ## Attr: NotifySettings.stackPersistence
 
 ### Description
-Controls how older messages' [NotifySettings.duration](#attr-notifysettingsduration) countdowns are affected when a new message of the same [NotifyType](../main_2.md#type-notifytype) appears. We either continue the countdowns on the older messages as if they are unrelated, or we reset any countdowns that are less than the new message's `duration`.
+Controls how older messages' [NotifySettings.duration](#attr-notifysettingsduration) countdowns are affected when a new message of the same [NotifyType](../reference_2.md#type-notifytype) appears. We either continue the countdowns on the older messages as if they are unrelated, or we reset any countdowns that are less than the new message's `duration`.
 
 Note that you can set this property in a call to [Notify.addMessage](Notify.md#classmethod-notifyaddmessage) even though it has "stack" in its name, since it governs the logic run on behalf of this message.
 
@@ -223,7 +223,7 @@ Note that you can set this property in a call to [Notify.addMessage](Notify.md#c
 ## Attr: NotifySettings.maxStackSize
 
 ### Description
-Sets a limit on how many messages may be stacked if [MultiMessageMode](../main_2.md#type-multimessagemode) is "stack". The oldest message of the affected [NotifyType](../main_2.md#type-notifytype) will be dismissed to enforce this limit.
+Sets a limit on how many messages may be stacked if [MultiMessageMode](../reference_2.md#type-multimessagemode) is "stack". The oldest message of the affected [NotifyType](../reference_2.md#type-notifytype) will be dismissed to enforce this limit.
 
 **Flags**: IR
 
@@ -260,7 +260,7 @@ Displays an icon to allow a message to be dismissed through the UI. Messages can
 ## Attr: NotifySettings.stackSpacing
 
 ### Description
-Space between each message when [MultiMessageMode](../main_2.md#type-multimessagemode) is "stack".
+Space between each message when [MultiMessageMode](../reference_2.md#type-multimessagemode) is "stack".
 
 **Flags**: IR
 
@@ -296,7 +296,7 @@ Optional specified padding to apply after the message content when showing a [di
 ### Description
 HTML to be added before each action to separate it from the previous action. For the first action, it will only be added if the message contents aren't empty.
 
-You may override this on a per action basis using [NotifyAction.separator](../main.md#attr-notifyactionseparator).
+You may override this on a per action basis using [NotifyAction.separator](../reference.md#attr-notifyactionseparator).
 
 Besides the default, some other known useful values are "&emsp;" and "&nbsp;".
 
@@ -345,9 +345,9 @@ Maximum auto-fit width for a message if [NotifySettings.autoFitWidth](#attr-noti
 ### Description
 The CSS class to apply to the [Label](Label.md#class-label) drawn for this message. Default is:
 
-*   "notifyError" for [NotifyType](../main_2.md#type-notifytype): "error",
-*   "notifyWarn" for [NotifyType](../main_2.md#type-notifytype): "warn", and
-*   "notifyMessage" for all other [NotifyType](../main_2.md#type-notifytype)s.
+*   "notifyError" for [NotifyType](../reference_2.md#type-notifytype): "error",
+*   "notifyWarn" for [NotifyType](../reference_2.md#type-notifytype): "warn", and
+*   "notifyMessage" for all other [NotifyType](../reference_2.md#type-notifytype)s.
 
 However, if you specify a [messagePriority](#attr-notifysettingsmessagepriority), it will determine the default rather than the actual `NotifyType`, if [NotifySettings.applyPriorityToAppearance](#attr-notifysettingsapplyprioritytoappearance) is true.
 
@@ -391,7 +391,7 @@ If true, pauses the auto-dismiss countdown timer when the mouse is over the mess
 ## Attr: NotifySettings.fadeInDuration
 
 ### Description
-Time over which the fade-in effect runs for [NotifyTransition](../main.md#type-notifytransition): "fade", in milliseconds.
+Time over which the fade-in effect runs for [NotifyTransition](../reference.md#type-notifytransition): "fade", in milliseconds.
 
 **Flags**: IR
 
@@ -401,9 +401,9 @@ Time over which the fade-in effect runs for [NotifyTransition](../main.md#type-n
 ### Description
 The CSS class to apply to action text in this message. default is:
 
-*   "notifyErrorActionLink" for [NotifyType](../main_2.md#type-notifytype): "error",
-*   "notifyWarnActionLink" for [NotifyType](../main_2.md#type-notifytype): "warn", and
-*   "notifyMessageActionLink" for all other [NotifyType](../main_2.md#type-notifytype)s.
+*   "notifyErrorActionLink" for [NotifyType](../reference_2.md#type-notifytype): "error",
+*   "notifyWarnActionLink" for [NotifyType](../reference_2.md#type-notifytype): "warn", and
+*   "notifyMessageActionLink" for all other [NotifyType](../reference_2.md#type-notifytype)s.
 
 However, if you specify a [messagePriority](#attr-notifysettingsmessagepriority), it will determine the default rather than the actual `NotifyType`, if [NotifySettings.applyPriorityToAppearance](#attr-notifysettingsapplyprioritytoappearance) is true.
 

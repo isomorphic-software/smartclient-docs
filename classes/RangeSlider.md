@@ -1,6 +1,6 @@
 # RangeSlider Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -112,8 +112,8 @@ Notification fired when the selected range is changed by the end user.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| startValue | [float](../main.md#type-float) | false | — | new start value |
-| endValue | [float](../main.md#type-float) | false | — | new end value |
-| isDragging | [boolean](../main.md#type-boolean) | false | — | whether the user is still in the middle of a drag, so that expensive operations can be avoided if needed |
+| startValue | [float](../reference.md#type-float) | false | — | new start value |
+| endValue | [float](../reference.md#type-float) | false | — | new end value |
+| isDragging | [boolean](../reference.md#type-boolean) | false | — | whether the user is still in the middle of a drag, so that expensive operations can be avoided if needed |
 
 ---

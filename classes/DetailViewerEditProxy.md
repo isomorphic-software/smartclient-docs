@@ -1,12 +1,12 @@
 # DetailViewerEditProxy Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
 ## Class: DetailViewerEditProxy
 
-*Inherits from:* [CanvasEditProxy](../main.md#class-canvaseditproxy)
+*Inherits from:* [CanvasEditProxy](../reference.md#class-canvaseditproxy)
 
 ### Description
 [EditProxy](EditProxy.md#class-editproxy) that handles [DetailViewer](DetailViewer.md#class-detailviewer) components when editMode is enabled.
@@ -29,7 +29,7 @@ Repeat this character twice to enter it literally. For example, with the default
 ## Attr: DetailViewerEditProxy.dataDisplaySeparatorChar
 
 ### Description
-If [inline editing](EditProxy.md#attr-editproxyinlineeditevent) for this viewer edits the [DetailViewer.data](DetailViewer.md#attr-detailviewerdata), character that should be used as a separator for entering [ValueMap](../main_2.md#type-valuemap)-style entries that map from a field name to a value.
+If [inline editing](EditProxy.md#attr-editproxyinlineeditevent) for this viewer edits the [DetailViewer.data](DetailViewer.md#attr-detailviewerdata), character that should be used as a separator for entering [ValueMap](../reference_2.md#type-valuemap)-style entries that map from a field name to a value.
 
 With the default of ":", the following input:
 
@@ -73,7 +73,7 @@ Set `dataDisplaySeparatorChar` to null to prevent entry of values - user input w
 ## Attr: DetailViewerEditProxy.dataSeparatorChar
 
 ### Description
-If [inline editing](EditProxy.md#attr-editproxyinlineeditevent) for this viewer edits the [DetailViewer.data](DetailViewer.md#attr-detailviewerdata), character that should be used as a separator between values, or between pairs of field name vs values if the user is entering such a [ValueMap](../main_2.md#type-valuemap) using the [dataDisplaySeparatorChar](#attr-detailviewereditproxydatadisplayseparatorchar).
+If [inline editing](EditProxy.md#attr-editproxyinlineeditevent) for this viewer edits the [DetailViewer.data](DetailViewer.md#attr-detailviewerdata), character that should be used as a separator between values, or between pairs of field name vs values if the user is entering such a [ValueMap](../reference_2.md#type-valuemap) using the [dataDisplaySeparatorChar](#attr-detailviewereditproxydatadisplayseparatorchar).
 
 If [EditProxy.inlineEditMultiline](EditProxy.md#attr-editproxyinlineeditmultiline) is enabled, newlines will be used as value separators and the `dataSeparatorChar`
 

@@ -1,12 +1,12 @@
 # Shuttle Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
 ## Class: Shuttle
 
-*Inherits from:* [HLayout](../main.md#class-hlayout)
+*Inherits from:* [HLayout](../reference.md#class-hlayout)
 
 ### Description
 Shuttle-style selection component allowing uses to select records by moving them from a set of source records to a set of target records
@@ -51,7 +51,7 @@ Title for the source grid, shown as a [Canvas.groupTitle](Canvas.md#attr-canvasg
 ## Attr: Shuttle.sortDirection
 
 ### Description
-[Sort direction](ListGrid_1.md#attr-listgridsortdirection) for this item's list of options. Will be applied to [Shuttle.sourceGrid](#attr-shuttlesourcegrid) and [Shuttle.targetGrid](#attr-shuttletargetgrid). To specify initial sort for each grid separately, these properties may be set per grid using the standard [autoChild pattern](../main.md#type-autochild).
+[Sort direction](ListGrid_1.md#attr-listgridsortdirection) for this item's list of options. Will be applied to [Shuttle.sourceGrid](#attr-shuttlesourcegrid) and [Shuttle.targetGrid](#attr-shuttletargetgrid). To specify initial sort for each grid separately, these properties may be set per grid using the standard [autoChild pattern](../reference.md#type-autochild).
 
 **Flags**: IR
 
@@ -115,7 +115,7 @@ ImgButton for selecting a single record
 ## Attr: Shuttle.sortField
 
 ### Description
-[Sort field](ListGrid_1.md#attr-listgridsortfield) for this item's list of options. Will be applied to [Shuttle.sourceGrid](#attr-shuttlesourcegrid) and [Shuttle.targetGrid](#attr-shuttletargetgrid). To specify initial sort for each grid separately, these properties may be set per grid using the standard [autoChild pattern](../main.md#type-autochild).
+[Sort field](ListGrid_1.md#attr-listgridsortfield) for this item's list of options. Will be applied to [Shuttle.sourceGrid](#attr-shuttlesourcegrid) and [Shuttle.targetGrid](#attr-shuttletargetgrid). To specify initial sort for each grid separately, these properties may be set per grid using the standard [autoChild pattern](../reference.md#type-autochild).
 
 **Flags**: IR
 
@@ -213,7 +213,7 @@ Width for the [Shuttle.selectAllButton](#attr-shuttleselectallbutton)
 ## Attr: Shuttle.initialSort
 
 ### Description
-[Initial sort specifiers](ListGrid_1.md#attr-listgridinitialsort) for this item's list of options. Will be applied to [Shuttle.sourceGrid](#attr-shuttlesourcegrid) and [Shuttle.targetGrid](#attr-shuttletargetgrid). To specify initial sort for each grid separately, these properties may be set per grid using the standard [autoChild pattern](../main.md#type-autochild).
+[Initial sort specifiers](ListGrid_1.md#attr-listgridinitialsort) for this item's list of options. Will be applied to [Shuttle.sourceGrid](#attr-shuttlesourcegrid) and [Shuttle.targetGrid](#attr-shuttletargetgrid). To specify initial sort for each grid separately, these properties may be set per grid using the standard [autoChild pattern](../reference.md#type-autochild).
 
 **Flags**: IR
 
@@ -353,7 +353,7 @@ In this case no record will be returned by this method for that record by defaul
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| includeLoadingPlaceholders | [boolean](../main.md#type-boolean) | true | — | should we include loading placeholder records for selected values whose records have not yet been loaded? |
+| includeLoadingPlaceholders | [boolean](../reference.md#type-boolean) | true | — | should we include loading placeholder records for selected values whose records have not yet been loaded? |
 
 ### Returns
 
@@ -395,7 +395,7 @@ Programmatically select a set of records from this shuttle's dataSource. The spe
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | records | [Array of ListGridRecord](#type-array-of-listgridrecord) | false | — | Records to select |
-| fireSelectionChanged | [boolean](../main.md#type-boolean) | true | — | Fire the [Shuttle.selectionUpdated](#method-shuttleselectionupdated) notification? |
+| fireSelectionChanged | [boolean](../reference.md#type-boolean) | true | — | Fire the [Shuttle.selectionUpdated](#method-shuttleselectionupdated) notification? |
 
 ---
 ## Method: Shuttle.getSelectedValues
@@ -411,7 +411,7 @@ The `includeUnloadedValues` parameter can be used to return values for these unl
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| includeUnloadedValues | [boolean](../main.md#type-boolean) | true | — | should we include values where the associated record has not yet been loaded? |
+| includeUnloadedValues | [boolean](../reference.md#type-boolean) | true | — | should we include values where the associated record has not yet been loaded? |
 
 ### Returns
 
@@ -428,7 +428,7 @@ Programmatically deselect a set of records that are currently selected and displ
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | records | [Array of ListGridRecord](#type-array-of-listgridrecord) | false | — | Records to deselect |
-| fireSelectionChanged | [boolean](../main.md#type-boolean) | true | — | Fire the [Shuttle.selectionUpdated](#method-shuttleselectionupdated) notification? |
+| fireSelectionChanged | [boolean](../reference.md#type-boolean) | true | — | Fire the [Shuttle.selectionUpdated](#method-shuttleselectionupdated) notification? |
 
 ---
 ## Method: Shuttle.valuesFetchInProgress
@@ -446,7 +446,7 @@ If no explicit `value` parameter was passed, this method will return true if thi
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true if there is an outstanding values fetch
+`[boolean](../reference.md#type-boolean)` — true if there is an outstanding values fetch
 
 ---
 ## Method: Shuttle.clearSelection
@@ -458,7 +458,7 @@ Deselect all currently selected records
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| fireSelectionChanged | [boolean](../main.md#type-boolean) | true | — | Fire the [Shuttle.selectionUpdated](#method-shuttleselectionupdated) notification? |
+| fireSelectionChanged | [boolean](../reference.md#type-boolean) | true | — | Fire the [Shuttle.selectionUpdated](#method-shuttleselectionupdated) notification? |
 
 ---
 ## Method: Shuttle.valuesFetchComplete
@@ -470,7 +470,7 @@ Note that if no associated record for the specified value was found in the dataS
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true if there is an outstanding values fetch
+`[boolean](../reference.md#type-boolean)` — true if there is an outstanding values fetch
 
 ---
 ## Method: Shuttle.setImplicitCriteria
@@ -482,6 +482,6 @@ Update the [Shuttle.implicitCriteria](#attr-shuttleimplicitcriteria) for the shu
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| criteria | [Criteria](../main_2.md#type-criteria) | false | — | new implicitCriteria |
+| criteria | [Criteria](../reference_2.md#type-criteria) | false | — | new implicitCriteria |
 
 ---

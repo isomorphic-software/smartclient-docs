@@ -1,6 +1,6 @@
 # Task Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -43,7 +43,7 @@ If [Task.outputField](#attr-taskoutputfield) is also specified, it will be impli
 ## Attr: Task.outputExpression
 
 ### Description
-Special expression to write task output directly into a [DataBoundComponent](../main.md#interface-databoundcomponent). See [taskIO](../kb_topics/taskIO.md#kb-topic-task-input--output).
+Special expression to write task output directly into a [DataBoundComponent](../reference.md#interface-databoundcomponent). See [taskIO](../kb_topics/taskIO.md#kb-topic-task-input--output).
 
 ### Groups
 
@@ -57,7 +57,7 @@ Special expression to write task output directly into a [DataBoundComponent](../
 ### Description
 Defines how fields in the [process state](Process.md#attr-processstate) are extracted for the input record to this task.
 
-When `inputs` is an object, the keys are the [setter paths](../main_2.md#type-setterpath) of the fields to be set in the input record, and the values are literals or [taskInputExpressions](../main_2.md#type-taskinputexpression). See [taskIO](../kb_topics/taskIO.md#kb-topic-task-input--output).
+When `inputs` is an object, the keys are the [setter paths](../reference_2.md#type-setterpath) of the fields to be set in the input record, and the values are literals or [taskInputExpressions](../reference_2.md#type-taskinputexpression). See [taskIO](../kb_topics/taskIO.md#kb-topic-task-input--output).
 
 ### Groups
 
@@ -105,7 +105,7 @@ Get all inputs to the task as specified by the [inputs](#attr-taskinputs), as a 
 ## Method: Task.setOutput
 
 ### Description
-Sets the task output available to the next task via [Process.getLastTaskOutput](Process.md#method-processgetlasttaskoutput) or more commonly, with a [TaskInputExpression](../main_2.md#type-taskinputexpression) property. If [outputFieldList](#attr-taskoutputfieldlist) is specified, the output will also be written to the specified fields in the process state (See [taskIO](../kb_topics/taskIO.md#kb-topic-task-input--output)).
+Sets the task output available to the next task via [Process.getLastTaskOutput](Process.md#method-processgetlasttaskoutput) or more commonly, with a [TaskInputExpression](../reference_2.md#type-taskinputexpression) property. If [outputFieldList](#attr-taskoutputfieldlist) is specified, the output will also be written to the specified fields in the process state (See [taskIO](../kb_topics/taskIO.md#kb-topic-task-input--output)).
 
 To have the output written as-is to the process state, see [bindOutput](ProcessElement.md#attr-processelementbindoutput).
 
@@ -135,7 +135,7 @@ Returns a value from the [process state](Process.md#attr-processstate). Values c
 ## Method: Task.setState
 
 ### Description
-Sets a [process state](Process.md#attr-processstate) value for later reference with [Process.getStateVariable](Process.md#method-processgetstatevariable) or more commonly with a [TaskInputExpression](../main_2.md#type-taskinputexpression) property.
+Sets a [process state](Process.md#attr-processstate) value for later reference with [Process.getStateVariable](Process.md#method-processgetstatevariable) or more commonly with a [TaskInputExpression](../reference_2.md#type-taskinputexpression) property.
 
 The path, which is one or more valid identifiers separated by periods, is used to identify the variable. By appending an empty pair of brackets (\[\]) the value will be placed into an existing or new array at the specified path.
 
@@ -144,14 +144,14 @@ The path, which is one or more valid identifiers separated by periods, is used t
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | stateVariablePath | [String](#type-string) | false | — | path to the variable in the process state to set. segments are separated by a decimal point (.) |
-| value | [TaskInputExpression](../main_2.md#type-taskinputexpression)|[Any](#type-any) | false | — | the value to save |
+| value | [TaskInputExpression](../reference_2.md#type-taskinputexpression)|[Any](#type-any) | false | — | the value to save |
 | strict | [Boolean](#type-boolean) | false | — | if true, the path must exist in the state to be set. If false, the path will be created if it does not exist. Defaults to `process.strictPaths` when null. |
 
 ---
 ## Method: Task.getExpressionValue
 
 ### Description
-Get the value of a [inputExpression](../main_2.md#type-taskinputexpression).
+Get the value of a [inputExpression](../reference_2.md#type-taskinputexpression).
 
 ### Parameters
 

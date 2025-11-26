@@ -1,6 +1,6 @@
 # DateTimeItem Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -13,7 +13,7 @@ A simple [DateItem subclass](DateItem.md#class-dateitem) for editing [regular da
 
 The item edits datetimes directly as text-values, formatted according to your locale and settings such as [DateItem.dateFormatter](DateItem.md#attr-dateitemdateformatter).
 
-To edit [logical-Date values](DateUtil.md#classmethod-dateutilcreatelogicaldate), see [DateItem](DateItem.md#class-dateitem), and to edit [logical-time values](DateUtil.md#classmethod-dateutilcreatelogicaltime), see [TimeItem](TimeItem.md#class-timeitem). For [relative-date features](../main_2.md#type-relativedatestring), see [RelativeDateItem](RelativeDateItem.md#class-relativedateitem).
+To edit [logical-Date values](DateUtil.md#classmethod-dateutilcreatelogicaldate), see [DateItem](DateItem.md#class-dateitem), and to edit [logical-time values](DateUtil.md#classmethod-dateutilcreatelogicaltime), see [TimeItem](TimeItem.md#class-timeitem). For [relative-date features](../reference_2.md#type-relativedatestring), see [RelativeDateItem](RelativeDateItem.md#class-relativedateitem).
 
 For detailed information on working with dates, times and datetimes, see the [Date and Time Format and Storage overview](../kb_topics/dateFormatAndStorage.md#kb-topic-date-and-time-format-and-storage).
 
@@ -22,7 +22,7 @@ For detailed information on working with dates, times and datetimes, see the [Da
 
 ### Description
 This property can be used to customize the format in which datetimes are displayed.  
-Should be set to a standard [DateDisplayFormat](../main.md#type-datedisplayformat) or a function which will return a formatted date time string.
+Should be set to a standard [DateDisplayFormat](../reference.md#type-datedisplayformat) or a function which will return a formatted date time string.
 
 If unset, the standard shortDateTime format as set up in [DateUtil.setShortDatetimeDisplayFormat](DateUtil.md#classmethod-dateutilsetshortdatetimedisplayformat) will be used.
 
@@ -55,9 +55,9 @@ The use of a native HTML5 datetime input causes certain features to be disabled.
 ### Description
 If [DateItem.useTextField](DateItem.md#attr-dateitemusetextfield) is `true` this property can be used to specify the input format for date strings. If unset, the input format will be determined based on the specified [DateItem.dateFormatter](DateItem.md#attr-dateitemdateformatter) if possible (see [DateItem.getInputFormat](DateItem.md#method-dateitemgetinputformat)), otherwise picked up from the Date class (see [DateUtil.setInputFormat](DateUtil.md#classmethod-dateutilsetinputformat)).
 
-Should be set to a standard [DateInputFormat](../main.md#type-dateinputformat)
+Should be set to a standard [DateInputFormat](../reference.md#type-dateinputformat)
 
-Note that the [DateInputFormat](../main.md#type-dateinputformat) property is sufficient to parse date or datetime strings specified in most standard date formats. However should an entirely custom parsing function be required developers can implement a custom [DateItem.parseEditorValue](DateItem.md#method-dateitemparseeditorvalue) method.
+Note that the [DateInputFormat](../reference.md#type-dateinputformat) property is sufficient to parse date or datetime strings specified in most standard date formats. However should an entirely custom parsing function be required developers can implement a custom [DateItem.parseEditorValue](DateItem.md#method-dateitemparseeditorvalue) method.
 
 This attribute does not have an effect if a native HTML5 date input is being used. See [DateItem.browserInputType](DateItem.md#attr-dateitembrowserinputtype).
 

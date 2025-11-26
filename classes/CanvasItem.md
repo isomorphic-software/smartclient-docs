@@ -1,6 +1,6 @@
 # CanvasItem Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -191,11 +191,11 @@ Standard `CanvasItem`\-based form items may customize the default behavior. For 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| canEdit | [boolean](../main.md#type-boolean) | false | — | New `canEdit` value |
+| canEdit | [boolean](../reference.md#type-boolean) | false | — | New `canEdit` value |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — `false` to cancel the default behavior.
+`[boolean](../reference.md#type-boolean)` — `false` to cancel the default behavior.
 
 ### See Also
 
@@ -205,7 +205,7 @@ Standard `CanvasItem`\-based form items may customize the default behavior. For 
 ## Method: CanvasItem.setCriterion
 
 ### Description
-Display a [Criterion](../main_2.md#object-criterion) object in this item for editing. Overridden from [FormItem.setCriterion](FormItem.md#method-formitemsetcriterion) in order to support editing nested criteria using nested dynamicForms as described in [CanvasItem.getCriterion](#method-canvasitemgetcriterion).
+Display a [Criterion](../reference_2.md#object-criterion) object in this item for editing. Overridden from [FormItem.setCriterion](FormItem.md#method-formitemsetcriterion) in order to support editing nested criteria using nested dynamicForms as described in [CanvasItem.getCriterion](#method-canvasitemgetcriterion).
 
 Implementation checks for this.canvas being specified as a DynamicForm, and applies criterion directly to the embedded form via setValuesAsCriteria()
 
@@ -259,11 +259,11 @@ Standard `CanvasItem`\-based form items may customize the default behavior.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| appearance | [ReadOnlyDisplayAppearance](../main_2.md#type-readonlydisplayappearance) | false | — | new `readOnlyDisplay` value |
+| appearance | [ReadOnlyDisplayAppearance](../reference_2.md#type-readonlydisplayappearance) | false | — | new `readOnlyDisplay` value |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — `false` to cancel the default behavior.
+`[boolean](../reference.md#type-boolean)` — `false` to cancel the default behavior.
 
 ### See Also
 
@@ -294,13 +294,13 @@ Set the [FormItem.prompt](FormItem.md#attr-formitemprompt) for this item. Defaul
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| prompt | [HTMLString](../main.md#type-htmlstring) | false | — | new prompt for the item. |
+| prompt | [HTMLString](../reference.md#type-htmlstring) | false | — | new prompt for the item. |
 
 ---
 ## Method: CanvasItem.getCriterion
 
 ### Description
-The standard formItem criteria editing APIs have been overridden in the canvasItem class to simplify the editing of complex [AdvancedCriteria](../main.md#object-advancedcriteria) objects using nested DynamicForms.
+The standard formItem criteria editing APIs have been overridden in the canvasItem class to simplify the editing of complex [AdvancedCriteria](../reference.md#object-advancedcriteria) objects using nested DynamicForms.
 
 The following pattern is supported without need for further modification:  
 A complex Advanced criteria object may have nested sub criteria using the `"and"` or `"or"` operators. For example:
@@ -395,7 +395,7 @@ This method has been overridden to return true if this item's canvas is a Dynami
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — returns true if the specified criterion may be edited by this item
+`[boolean](../reference.md#type-boolean)` — returns true if the specified criterion may be edited by this item
 
 ### Groups
 
@@ -411,7 +411,7 @@ This method may be overridden to customize the default return value.
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — `true` if the `canvas` should be disabled; `false` otherwise.
+`[boolean](../reference.md#type-boolean)` — `true` if the `canvas` should be disabled; `false` otherwise.
 
 ---
 ## Method: CanvasItem.storeValue
@@ -421,7 +421,7 @@ Store (and optionally show) a value for this form item.
 
 This method will fire standard [FormItem.change](FormItem.md#method-formitemchange) and [DynamicForm.itemChanged](DynamicForm.md#method-dynamicformitemchanged) handlers, and store the value passed in such that subsequent calls to [FormItem.getValue](FormItem.md#method-formitemgetvalue) or [DynamicForm.getValue](DynamicForm.md#method-dynamicformgetvalue) will return the new value for this item.
 
-This method is intended to provide a way for custom formItems - most commonly [canvasItems](#class-canvasitem) - to provide a new interface to the user, allowing them to manipulate the item's value, for example in an embedded [CanvasItem.canvas](#attr-canvasitemcanvas), or a pop-up dialog launched from an [icon](../main.md#object-formitemicon), etc. Developers should call this method when the user interacts with this custom interface in order to store the changed value.
+This method is intended to provide a way for custom formItems - most commonly [canvasItems](#class-canvasitem) - to provide a new interface to the user, allowing them to manipulate the item's value, for example in an embedded [CanvasItem.canvas](#attr-canvasitemcanvas), or a pop-up dialog launched from an [icon](../reference.md#object-formitemicon), etc. Developers should call this method when the user interacts with this custom interface in order to store the changed value.
 
 [shouldSaveValue](#attr-canvasitemshouldsavevalue) for CanvasItems is false by default. Custom CanvasItems will need to override shouldSaveValue to true if the values stored via this API should be included in the form's [getValues()](DynamicForm.md#method-dynamicformgetvalues) and saved with the form when [saveData()](DynamicForm.md#method-dynamicformsavedata) is called.
 

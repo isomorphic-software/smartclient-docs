@@ -1,6 +1,6 @@
 # CoTProcess Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -249,7 +249,7 @@ Process-level provider of synthetic AI output used when mocking is in effect and
 
 ### Returns
 
-`[Object](../main.md#type-object)` — Fake AI output for the given task
+`[Object](../reference.md#type-object)` — Fake AI output for the given task
 
 ### Groups
 

@@ -1,6 +1,6 @@
 # TimeItem Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -32,9 +32,9 @@ When `useTextField` is set to false, the item provides separate pickers for [hou
 
 Values entered by the user are stored as JavaScript `Date` objects in local time. The day, month and year values of this `Date` object are not relevant and should be ignored.
 
-By default, when used in a [SearchForm](SearchForm.md#class-searchform) or as a field in a [ListGrid](ListGrid_1.md#class-listgrid)'s [filter editor](ListGrid_1.md#attr-listgridshowfiltereditor), TimeItems will automatically generate AdvancedCriteria - for example, entering "11:00" into the item will generate a [betweenInclusive](../main.md#type-operatorid) Criterion that selects all times between 11:00:00 and 11:59:59. If the form is databound and the DataSource is marked as being [allowAdvancedCriteria](DataSource.md#attr-datasourceallowadvancedcriteria):false, the criteria generated will be simple, checking for data with logical time values equal to the displayed value.
+By default, when used in a [SearchForm](SearchForm.md#class-searchform) or as a field in a [ListGrid](ListGrid_1.md#class-listgrid)'s [filter editor](ListGrid_1.md#attr-listgridshowfiltereditor), TimeItems will automatically generate AdvancedCriteria - for example, entering "11:00" into the item will generate a [betweenInclusive](../reference.md#type-operatorid) Criterion that selects all times between 11:00:00 and 11:59:59. If the form is databound and the DataSource is marked as being [allowAdvancedCriteria](DataSource.md#attr-datasourceallowadvancedcriteria):false, the criteria generated will be simple, checking for data with logical time values equal to the displayed value.
 
-To edit [logical-Date values](DateUtil.md#classmethod-dateutilcreatelogicaldate), see [DateItem](DateItem.md#class-dateitem), and to edit [datetime values](DateUtil.md#classmethod-dateutilcreatedatetime), see [DateTimeItem](DateTimeItem.md#class-datetimeitem). For [relative-date features](../main_2.md#type-relativedatestring), see [RelativeDateItem](RelativeDateItem.md#class-relativedateitem).
+To edit [logical-Date values](DateUtil.md#classmethod-dateutilcreatelogicaldate), see [DateItem](DateItem.md#class-dateitem), and to edit [datetime values](DateUtil.md#classmethod-dateutilcreatedatetime), see [DateTimeItem](DateTimeItem.md#class-datetimeitem). For [relative-date features](../reference_2.md#type-relativedatestring), see [RelativeDateItem](RelativeDateItem.md#class-relativedateitem).
 
 For detailed information on working with dates, times and datetimes, see the [Date and Time Format and Storage overview](../kb_topics/dateFormatAndStorage.md#kb-topic-date-and-time-format-and-storage).
 
@@ -312,7 +312,7 @@ This setting does not apply to hints that are [shown in field](TextItem.md#attr-
 ## Attr: TimeItem.itemTitleOrientation
 
 ### Description
-When [useTextField](#attr-timeitemusetextfield) is false, the default orientation of titles for child-items, such as the [hour](#attr-timeitemhouritem), [minute](#attr-timeitemminuteitem) and [second](#attr-timeitemseconditem) pickers. [TitleOrientation](../main_2.md#type-titleorientation) lists valid options.
+When [useTextField](#attr-timeitemusetextfield) is false, the default orientation of titles for child-items, such as the [hour](#attr-timeitemhouritem), [minute](#attr-timeitemminuteitem) and [second](#attr-timeitemseconditem) pickers. [TitleOrientation](../reference_2.md#type-titleorientation) lists valid options.
 
 Note that titles on the left or right take up a cell in tabular [form layouts](../kb_topics/formLayout.md#kb-topic-form-layout), but titles on top do not.
 
@@ -766,8 +766,8 @@ If [TimeItem.useTextField](#attr-timeitemusetextfield) is true, falls through to
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| start | [int](../main.md#type-int) | false | — | character index for start of new selection |
-| end | [int](../main.md#type-int) | false | — | character index for end of new selection |
+| start | [int](../reference.md#type-int) | false | — | character index for start of new selection |
+| end | [int](../reference.md#type-int) | false | — | character index for end of new selection |
 
 ---
 ## Method: TimeItem.setValue
@@ -787,17 +787,17 @@ NOTE: for valueMap'd items, newValue should be data value not displayed value
 ## Method: TimeItem.getDuration
 
 ### Description
-When [useTextField](#attr-timeitemusetextfield) is set to false, this method returns the value of the time expressed as a duration in the [timeUnit](../main_2.md#type-timeunit) provided. If no timeUnit is passed, the default is the smallest unit for which a picker is visible.
+When [useTextField](#attr-timeitemusetextfield) is set to false, this method returns the value of the time expressed as a duration in the [timeUnit](../reference_2.md#type-timeunit) provided. If no timeUnit is passed, the default is the smallest unit for which a picker is visible.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| timeUnit | [TimeUnit](../main_2.md#type-timeunit) | true | — | the unit of the return value |
+| timeUnit | [TimeUnit](../reference_2.md#type-timeunit) | true | — | the unit of the return value |
 
 ### Returns
 
-`[int](../main.md#type-int)` — the item's value, expressed as a duration in the TimeUnit passed
+`[int](../reference.md#type-int)` — the item's value, expressed as a duration in the TimeUnit passed
 
 **Flags**: A
 
@@ -848,13 +848,13 @@ Returning `false` will cancel this default behavior.
 |------|------|----------|---------|-------------|
 | form | [DynamicForm](#type-dynamicform) | false | — | the managing `DynamicForm` instance. |
 | item | [FormItem](#type-formitem) | false | — | the form item itself (also available as "this"). |
-| pendingStatus | [boolean](../main.md#type-boolean) | false | — | `true` if the item should show its pending visual state; `false` otherwise. |
+| pendingStatus | [boolean](../reference.md#type-boolean) | false | — | `true` if the item should show its pending visual state; `false` otherwise. |
 | newValue | [Any](#type-any) | false | — | the current form item value. |
 | value | [Any](#type-any) | false | — | the value that would be restored by a call to [DynamicForm.resetValues](DynamicForm.md#method-dynamicformresetvalues). |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — `false` to cancel the default behavior.
+`[boolean](../reference.md#type-boolean)` — `false` to cancel the default behavior.
 
 ---
 ## Method: TimeItem.setMinuteValues

@@ -1,6 +1,6 @@
 # SetFilterItem Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -11,7 +11,7 @@
 ### Description
 Specialized [MultiPickerItem](MultiPickerItem.md#class-multipickeritem) used for generating search criteria in the [FilterEditor](ListGrid_1.md#attr-listgridfiltereditor) and in SearchForms.
 
-SetFilterItem generates [inSet and notInSet](../main.md#type-operatorid) filter criteria from a set of possible values, which can be provided via an explicit [valueMap](FormItem.md#attr-formitemvaluemap) or [optionDataSource](MultiPickerItem.md#attr-multipickeritemoptiondatasource), or can be derived from the [target databound component](#attr-setfilteritemfiltertargetcomponent) or a [list of records](#attr-setfilteritemsourcelist).
+SetFilterItem generates [inSet and notInSet](../reference.md#type-operatorid) filter criteria from a set of possible values, which can be provided via an explicit [valueMap](FormItem.md#attr-formitemvaluemap) or [optionDataSource](MultiPickerItem.md#attr-multipickeritemoptiondatasource), or can be derived from the [target databound component](#attr-setfilteritemfiltertargetcomponent) or a [list of records](#attr-setfilteritemsourcelist).
 
 In particular, when attached to a databound component such as a ListGrid, SetFilterItem can provide "Excel-style filtering", allowing the user to pick from amongst whatever values are present in the dataset.
 
@@ -21,13 +21,13 @@ Note that [SetFilterItem.deriveUniqueValues](#attr-setfilteritemderiveuniquevalu
 
 When a SetFilterItem is used as a [ListGrid filterEditor](ListGridField.md#attr-listgridfieldfiltereditortype), the filterTargetComponent will automatically be set to the grid being filtered.
 
-The item's picker-component can be customized via settings such as [sortField](MultiPickerItem.md#attr-multipickeritemsortfield), or by configuring [auto-children](../main.md#type-autochild) like the [search-form](MultiPickerItem.md#attr-multipickeritemfilterform), the [main pickList-grid](MultiPickerItem.md#attr-multipickeritempicklist) or the separate list of [selected values](MultiPickerItem.md#attr-multipickeritemselectionlist). You can use [MultiPickerItem.optionFilterContext](MultiPickerItem.md#attr-multipickeritemoptionfiltercontext) to apply custom `requestProperties` to fetches from the main `pickList` grid.
+The item's picker-component can be customized via settings such as [sortField](MultiPickerItem.md#attr-multipickeritemsortfield), or by configuring [auto-children](../reference.md#type-autochild) like the [search-form](MultiPickerItem.md#attr-multipickeritemfilterform), the [main pickList-grid](MultiPickerItem.md#attr-multipickeritempicklist) or the separate list of [selected values](MultiPickerItem.md#attr-multipickeritemselectionlist). You can use [MultiPickerItem.optionFilterContext](MultiPickerItem.md#attr-multipickeritemoptionfiltercontext) to apply custom `requestProperties` to fetches from the main `pickList` grid.
 
 ---
 ## Attr: SetFilterItem.expandedPickListFields
 
 ### Description
-If [SetFilterItem.canExpand](#attr-setfilteritemcanexpand) is true, this is the list of fields to display in the [PickList](../main_2.md#interface-picklist) or [pickTree](MultiPickerItem.md#attr-multipickeritempicktree) when the picker is expanded
+If [SetFilterItem.canExpand](#attr-setfilteritemcanexpand) is true, this is the list of fields to display in the [PickList](../reference_2.md#interface-picklist) or [pickTree](MultiPickerItem.md#attr-multipickeritempicktree) when the picker is expanded
 
 **Flags**: IR
 
@@ -151,6 +151,6 @@ Clear any current value for this item and dynamically update [SetFilterItem.useU
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| useUnselectedValues | [boolean](../main.md#type-boolean) | false | — | new value for useUnselectedValues |
+| useUnselectedValues | [boolean](../reference.md#type-boolean) | false | — | new value for useUnselectedValues |
 
 ---

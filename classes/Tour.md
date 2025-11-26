@@ -1,6 +1,6 @@
 # Tour Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -213,7 +213,7 @@ Title for the _Make Changes..._ button in the TourComplete dialog.
 ## Attr: Tour.notifyMessageSettings
 
 ### Description
-Defaults settings for [notifyType](../main_2.md#type-notifytype) message displayed by [notifyValidationMessage](#method-tournotifyvalidationmessage).
+Defaults settings for [notifyType](../reference_2.md#type-notifytype) message displayed by [notifyValidationMessage](#method-tournotifyvalidationmessage).
 
 **Flags**: IR
 
@@ -669,7 +669,7 @@ Title for the _Tour ID_ field in the TourComplete dialog.
 ## Attr: Tour.showInputValidationMessage
 
 ### Description
-Should [TourStep.inputValidationNotifyMessage](TourStep.md#attr-tourstepinputvalidationnotifymessage) be shown as detailed in [TourInputValidationMode](../main.md#type-tourinputvalidationmode) for the entire tour? Set to `false` to suppress reporting messages to the user. [notifyValidationMessage](#method-tournotifyvalidationmessage) will not be called.
+Should [TourStep.inputValidationNotifyMessage](TourStep.md#attr-tourstepinputvalidationnotifymessage) be shown as detailed in [TourInputValidationMode](../reference.md#type-tourinputvalidationmode) for the entire tour? Set to `false` to suppress reporting messages to the user. [notifyValidationMessage](#method-tournotifyvalidationmessage) will not be called.
 
 This setting can be overridden for individual [tourSteps](TourStep.md#class-tourstep).
 
@@ -713,7 +713,7 @@ Get a Tour instance by it's ID.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| tourId | [Identifier](../main.md#type-identifier) | false | — | tour ID to retrieve |
+| tourId | [Identifier](../reference.md#type-identifier) | false | — | tour ID to retrieve |
 
 ### Returns
 
@@ -731,14 +731,14 @@ Tour files are stored as .proc.xml files in [Component XML](../kb_topics/compone
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| tourId | [Identifier](../main.md#type-identifier)|[Array of Identifier](#type-array-of-identifier) | false | — | tour ID or IDs to load |
+| tourId | [Identifier](../reference.md#type-identifier)|[Array of Identifier](#type-array-of-identifier) | false | — | tour ID or IDs to load |
 | callback | [ProcessCallback](#type-processcallback) | false | — | called when the tour is loaded with argument "process", the first tour. Other tours can be looked up via [Tour.getTour](#classmethod-tourgettour). |
 
 ---
 ## Method: Tour.notifyValidationMessage
 
 ### Description
-Notify user of expected value entry validation message. Default implementation uses the [Notify system](Notify.md#class-notify) to show the message in it's default position. See [notifyType](../main_2.md#type-notifytype) for notification configuration details.
+Notify user of expected value entry validation message. Default implementation uses the [Notify system](Notify.md#class-notify) to show the message in it's default position. See [notifyType](../reference_2.md#type-notifytype) for notification configuration details.
 
 Override this method to display message by a different means.
 

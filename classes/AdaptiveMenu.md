@@ -1,6 +1,6 @@
 # AdaptiveMenu Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -37,7 +37,7 @@ Title used for the [MenuButton](MenuButton.md#class-menubutton).
 ## Attr: AdaptiveMenu.inlineImgButton
 
 ### Description
-[ToolStripButton](../main.md#class-toolstripbutton) to display when [AdaptiveMenu.showIconOnlyInline](#attr-adaptivemenushowicononlyinline) is set for one [MenuItem](../main_2.md#object-menuitem)
+[ToolStripButton](../reference.md#class-toolstripbutton) to display when [AdaptiveMenu.showIconOnlyInline](#attr-adaptivemenushowicononlyinline) is set for one [MenuItem](../reference_2.md#object-menuitem)
 
 **Flags**: R
 
@@ -45,7 +45,7 @@ Title used for the [MenuButton](MenuButton.md#class-menubutton).
 ## Attr: AdaptiveMenu.inlineSeparator
 
 ### Description
-[ToolStripSeparator](../main.md#class-toolstripseparator) to display when [isSeparator](MenuItem.md#attr-menuitemisseparator) is set for a [MenuItem](../main_2.md#object-menuitem).
+[ToolStripSeparator](../reference.md#class-toolstripseparator) to display when [isSeparator](MenuItem.md#attr-menuitemisseparator) is set for a [MenuItem](../reference_2.md#object-menuitem).
 
 **Flags**: R
 
@@ -53,9 +53,9 @@ Title used for the [MenuButton](MenuButton.md#class-menubutton).
 ## Attr: AdaptiveMenu.inlineSubmenuItem
 
 ### Description
-[MultiAutoChild](../main.md#type-multiautochild) used to create inline menu items for menu items that have a submenu.
+[MultiAutoChild](../reference.md#type-multiautochild) used to create inline menu items for menu items that have a submenu.
 
-The [MenuItem.icon](MenuItem.md#attr-menuitemicon) and [MenuItem.title](MenuItem.md#attr-menuitemtitle) will be rendered via [IconButton.icon](RibbonButton.md#attr-ribbonbuttonicon) and [Button.title](Button.md#attr-buttontitle) respectively; other [MenuItem](../main_2.md#object-menuitem) appearance-related properties do not apply.
+The [MenuItem.icon](MenuItem.md#attr-menuitemicon) and [MenuItem.title](MenuItem.md#attr-menuitemtitle) will be rendered via [IconButton.icon](RibbonButton.md#attr-ribbonbuttonicon) and [Button.title](Button.md#attr-buttontitle) respectively; other [MenuItem](../reference_2.md#object-menuitem) appearance-related properties do not apply.
 
 **Flags**: R
 
@@ -73,13 +73,13 @@ Default setting for [MenuItem.showIconOnlyInline](MenuItem.md#attr-menuitemshowi
 ### Description
 MenuItems to be show either inline or as a drop-down [Menu](Menu.md#class-menu).
 
-When shown inline, items are rendered as different [AutoChild](../main.md#type-autochild) according to the settings on the MenuItem:
+When shown inline, items are rendered as different [AutoChild](../reference.md#type-autochild) according to the settings on the MenuItem:
 
-*   normal MenuItems render as the [AdaptiveMenu.inlineMenuItem](#attr-adaptivemenuinlinemenuitem), a [ToolStripButton](../main.md#class-toolstripbutton) AutoChild
+*   normal MenuItems render as the [AdaptiveMenu.inlineMenuItem](#attr-adaptivemenuinlinemenuitem), a [ToolStripButton](../reference.md#class-toolstripbutton) AutoChild
 *   MenuItems that have submenus render as the [AdaptiveMenu.inlineSubmenuItem](#attr-adaptivemenuinlinesubmenuitem), a [MenuButton](MenuButton.md#class-menubutton) AutoChild
-*   MenuItems with [showIconOnlyInline](MenuItem.md#attr-menuitemshowicononlyinline) set render as the [AdaptiveMenu.inlineImgButton](#attr-adaptivemenuinlineimgbutton), a [ToolStripButton](../main.md#class-toolstripbutton) AutoChild
+*   MenuItems with [showIconOnlyInline](MenuItem.md#attr-menuitemshowicononlyinline) set render as the [AdaptiveMenu.inlineImgButton](#attr-adaptivemenuinlineimgbutton), a [ToolStripButton](../reference.md#class-toolstripbutton) AutoChild
 *   MenuItems where [MenuItem.embeddedComponent](MenuItem.md#attr-menuitemembeddedcomponent) has been specified will have the embedded component displayed directly instead (no AutoChild involvement here). If the the control should have different appearance when inlined vs embedded in the menu, one way to achieve this is to detect whether the parent is a Menu when it is drawn.
-*   MenuItems with [isSeparator](MenuItem.md#attr-menuitemisseparator) set render as the [AdaptiveMenu.inlineSeparator](#attr-adaptivemenuinlineseparator), a [ToolStripSeparator](../main.md#class-toolstripseparator) AutoChild
+*   MenuItems with [isSeparator](MenuItem.md#attr-menuitemisseparator) set render as the [AdaptiveMenu.inlineSeparator](#attr-adaptivemenuinlineseparator), a [ToolStripSeparator](../reference.md#class-toolstripseparator) AutoChild
 
 **Flags**: IRW
 
@@ -113,9 +113,9 @@ A setting of "center" is invalid and will cause a warning and be ignored
 ## Attr: AdaptiveMenu.inlineMenuItem
 
 ### Description
-[MultiAutoChild](../main.md#type-multiautochild) used to create inline menu items.
+[MultiAutoChild](../reference.md#type-multiautochild) used to create inline menu items.
 
-The [MenuItem.icon](MenuItem.md#attr-menuitemicon) and [MenuItem.title](MenuItem.md#attr-menuitemtitle) will be rendered via [Button.icon](Button.md#attr-buttonicon) and [Button.title](Button.md#attr-buttontitle) respectively; other [MenuItem](../main_2.md#object-menuitem) appearance-related properties do not apply.
+The [MenuItem.icon](MenuItem.md#attr-menuitemicon) and [MenuItem.title](MenuItem.md#attr-menuitemtitle) will be rendered via [Button.icon](Button.md#attr-buttonicon) and [Button.title](Button.md#attr-buttontitle) respectively; other [MenuItem](../reference_2.md#object-menuitem) appearance-related properties do not apply.
 
 **Flags**: R
 
@@ -131,7 +131,7 @@ Instance of the normal (non-Adaptive) [Menu](Menu.md#class-menu) class used to s
 ## Attr: AdaptiveMenu.showInlineSeparators
 
 ### Description
-Whether [separators](../main.md#class-toolstripseparator) should be shown for inline menu items. True by default for horizontal [orientation](Layout.md#attr-layoutorientation), false for vertical.
+Whether [separators](../reference.md#class-toolstripseparator) should be shown for inline menu items. True by default for horizontal [orientation](Layout.md#attr-layoutorientation), false for vertical.
 
 Note, to use explicit menu separators ([MenuItem.isSeparator](MenuItem.md#attr-menuitemisseparator)) which will also show in the ToolStrip, set this property `false` to avoid showing duplicate separators in the menu.
 
@@ -159,6 +159,6 @@ Note, to use explicit menu separators ([MenuItem.isSeparator](MenuItem.md#attr-m
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| partialInlining | [boolean](../main.md#type-boolean) | false | — | — |
+| partialInlining | [boolean](../reference.md#type-boolean) | false | — | — |
 
 ---

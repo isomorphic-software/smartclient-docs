@@ -1,6 +1,6 @@
 # Stateful Images
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -12,8 +12,8 @@ Images displayed in [stateful components](../classes/StatefulCanvas.md#class-sta
 In general the media to load for each state may be specified in two ways:
 
 #### Base URL combined with state suffixes
-If the property in question is set to a standard [image URL](../main.md#type-scimgurl), this value will be treated as a default, or base URL. When a new [state](../classes/StatefulCanvas.md#attr-statefulcanvasstate) is applied, this filename will be combined with the state name to form a combined URL. This in turn changes the media that gets loaded and updates the image to reflect the new state.  
-Note that if the property was defined as a sprite configuration string a css style may be defined instead of, or in addition to a src URL. See the [sprite configuration documentation](../main.md#type-scspriteconfig) for a discussion of how sprites can be used for stateful images.
+If the property in question is set to a standard [image URL](../reference.md#type-scimgurl), this value will be treated as a default, or base URL. When a new [state](../classes/StatefulCanvas.md#attr-statefulcanvasstate) is applied, this filename will be combined with the state name to form a combined URL. This in turn changes the media that gets loaded and updates the image to reflect the new state.  
+Note that if the property was defined as a sprite configuration string a css style may be defined instead of, or in addition to a src URL. See the [sprite configuration documentation](../reference.md#type-scspriteconfig) for a discussion of how sprites can be used for stateful images.
 
 The following table lists out the standard set of combined URLs that may be generated. Subclasses may support additional state-derived media of course. Note that the src URL will be split such that the extension is always applied to the end of the combined string. For example in the following table, if `src` was set to `"blank.gif"`, the Selected+Focused URL would be `"blank_Selected_Focused.gif"`.
 
@@ -36,6 +36,6 @@ The following table lists out the standard set of combined URLs that may be gene
 | src+"_Selected_Disabled"+extension | Combined Selected and Disabled state |
 
 #### Explicit stateful image configuration
-The [SCStatefulImgConfig](../main.md#object-scstatefulimgconfig) object allows developers to specify a set of explicit image URLs, one for each state to be displayed, rather than relying on an automatically generated combined URL. This pattern is useful for cases where the filename of the stateful versions of the image doesn't match up with the auto-generated format.
+The [SCStatefulImgConfig](../reference.md#object-scstatefulimgconfig) object allows developers to specify a set of explicit image URLs, one for each state to be displayed, rather than relying on an automatically generated combined URL. This pattern is useful for cases where the filename of the stateful versions of the image doesn't match up with the auto-generated format.
 
 ---

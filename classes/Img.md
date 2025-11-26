@@ -1,6 +1,6 @@
 # Img Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -87,7 +87,7 @@ Should the image be updated on mouse down as described in [statefulImages](../kb
 
 If not explicitly set, behavior is as follows:  
 If [Img.src](#attr-imgsrc) is specified as a string, [Img.showDown](#attr-imgshowdown) will be used to determine whether to show a mouse down image.  
-If [Img.src](#attr-imgsrc) is specified as a [SCStatefulImgConfig](../main.md#object-scstatefulimgconfig), the appropriate [SCStatefulImgConfig.Down](SCStatefulImgConfig.md#attr-scstatefulimgconfigdown) state image will be displayed if defined.
+If [Img.src](#attr-imgsrc) is specified as a [SCStatefulImgConfig](../reference.md#object-scstatefulimgconfig), the appropriate [SCStatefulImgConfig.Down](SCStatefulImgConfig.md#attr-scstatefulimgconfigdown) state image will be displayed if defined.
 
 ### Groups
 
@@ -117,7 +117,7 @@ Should the image be updated when disabled as described in [statefulImages](../kb
 
 If not explicitly set, behavior is as follows:  
 If [Img.src](#attr-imgsrc) is specified as a string, [Img.showDisabled](#attr-imgshowdisabled) will be used to determine whether to show a disabled image.  
-If [Img.src](#attr-imgsrc) is specified as a [SCStatefulImgConfig](../main.md#object-scstatefulimgconfig), the appropriate [SCStatefulImgConfig.Disabled](SCStatefulImgConfig.md#attr-scstatefulimgconfigdisabled) state image will be displayed if defined.
+If [Img.src](#attr-imgsrc) is specified as a [SCStatefulImgConfig](../reference.md#object-scstatefulimgconfig), the appropriate [SCStatefulImgConfig.Disabled](SCStatefulImgConfig.md#attr-scstatefulimgconfigdisabled) state image will be displayed if defined.
 
 ### Groups
 
@@ -222,7 +222,7 @@ Should the image be updated on rollOver as described in [statefulImages](../kb_t
 
 If not explicitly set, behavior is as follows:  
 If [Img.src](#attr-imgsrc) is specified as a string, [Img.showRollOver](#attr-imgshowrollover) will be used to determine whether to show a roll-over image.  
-If [Img.src](#attr-imgsrc) is specified as a [SCStatefulImgConfig](../main.md#object-scstatefulimgconfig), the appropriate [SCStatefulImgConfig.Over](SCStatefulImgConfig.md#attr-scstatefulimgconfigover) state image will be displayed if defined.
+If [Img.src](#attr-imgsrc) is specified as a [SCStatefulImgConfig](../reference.md#object-scstatefulimgconfig), the appropriate [SCStatefulImgConfig.Over](SCStatefulImgConfig.md#attr-scstatefulimgconfigover) state image will be displayed if defined.
 
 ### Groups
 
@@ -261,10 +261,10 @@ Should the image be updated on focus as described in [statefulImages](../kb_topi
 
 If not explicitly set, behavior is as follows:  
 If [Img.src](#attr-imgsrc) is specified as a string, [Img.showFocused](#attr-imgshowfocused) will be used to determine whether to show a focused image.  
-If [Img.src](#attr-imgsrc) is specified as a [SCStatefulImgConfig](../main.md#object-scstatefulimgconfig), the appropriate [SCStatefulImgConfig.Over](SCStatefulImgConfig.md#attr-scstatefulimgconfigover) state image will be displayed if defined.
+If [Img.src](#attr-imgsrc) is specified as a [SCStatefulImgConfig](../reference.md#object-scstatefulimgconfig), the appropriate [SCStatefulImgConfig.Over](SCStatefulImgConfig.md#attr-scstatefulimgconfigover) state image will be displayed if defined.
 
 Note that if [Img.src](#attr-imgsrc) is defined as a string, the "Over" media may be used to indicate a focused state. See [Img.showFocusedAsOver](#attr-imgshowfocusedasover) and [Img.showImageFocusedAsOver](#attr-imgshowimagefocusedasover).  
-This is not the case for components with [Img.src](#attr-imgsrc) defined as a [SCStatefulImgConfig](../main.md#object-scstatefulimgconfig) configuration.
+This is not the case for components with [Img.src](#attr-imgsrc) defined as a [SCStatefulImgConfig](../reference.md#object-scstatefulimgconfig) configuration.
 
 ### Groups
 
@@ -301,7 +301,7 @@ Explicit size for the image, for [Img.imageType](#attr-imgimagetype) settings th
 If [showFocused](StatefulCanvas.md#attr-statefulcanvasshowfocused) is true for this widget, should the `"over"` state be used to indicate the widget as focused. If set to false, a separate `"focused"` state will be used.
 
 This property effects the css styling for the focused state.  
-If [Img.src](#attr-imgsrc) is specified as a string it will also cause the "Over" media to be displayed to indicate focus, unless explicitly overridden by [Img.showImageFocusedAsOver](#attr-imgshowimagefocusedasover). Note that this has no impact on the image to be displayed if [Img.src](#attr-imgsrc) is specified as a [SCStatefulImgConfig](../main.md#object-scstatefulimgconfig).
+If [Img.src](#attr-imgsrc) is specified as a string it will also cause the "Over" media to be displayed to indicate focus, unless explicitly overridden by [Img.showImageFocusedAsOver](#attr-imgshowimagefocusedasover). Note that this has no impact on the image to be displayed if [Img.src](#attr-imgsrc) is specified as a [SCStatefulImgConfig](../reference.md#object-scstatefulimgconfig).
 
 ### Groups
 
@@ -315,7 +315,7 @@ If [Img.src](#attr-imgsrc) is specified as a string it will also cause the "Over
 ### Description
 If [Img.src](#attr-imgsrc) is defined as a string, and this component is configured to [show focused state images](#attr-imgshowimagefocused), this property will cause the `"over"` state image to be used to indicate focused state. (If unset, [Img.showFocusedAsOver](#attr-imgshowfocusedasover) will be consulted instead).
 
-Note that this has no impact on the image to be displayed if [Img.src](#attr-imgsrc) is specified as a [SCStatefulImgConfig](../main.md#object-scstatefulimgconfig).
+Note that this has no impact on the image to be displayed if [Img.src](#attr-imgsrc) is specified as a [SCStatefulImgConfig](../reference.md#object-scstatefulimgconfig).
 
 ### Groups
 
@@ -333,7 +333,7 @@ Change the style of image rendering.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| imageType | [ImageStyle](../main.md#type-imagestyle) | false | — | new style of image rendering |
+| imageType | [ImageStyle](../reference.md#type-imagestyle) | false | — | new style of image rendering |
 
 ---
 ## Method: Img.getHoverHTML
@@ -369,7 +369,7 @@ Does nothing if the src has not changed - if `src` has not changed but other sta
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| URL | [SCImgURL](../main.md#type-scimgurl) | false | — | new URL for the image |
+| URL | [SCImgURL](../reference.md#type-scimgurl) | false | — | new URL for the image |
 
 ### Groups
 

@@ -1,13 +1,13 @@
 # RemoteWindow Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
 ## Class: RemoteWindow
 
 ### Description
-Provides APIs that manipulate a SmartClient browser window. Within the [OpenFin](https://developers.openfin.co/of-docs/docs) environment, the underlying implementation is actually via the [OpenFinWindow](../main.md#class-openfinwindow) class.
+Provides APIs that manipulate a SmartClient browser window. Within the [OpenFin](https://developers.openfin.co/of-docs/docs) environment, the underlying implementation is actually via the [OpenFinWindow](../reference.md#class-openfinwindow) class.
 
 ### Groups
 
@@ -112,7 +112,7 @@ Returns the browser `window` object associated with this RemoteWindow.
 
 ### Returns
 
-`[Object](../main.md#type-object)` — browser window
+`[Object](../reference.md#type-object)` — browser window
 
 ---
 ## Method: RemoteWindow.getParent
@@ -208,7 +208,7 @@ Returns the container window, if present, wrapping the browser window for this R
 
 ### Returns
 
-`[Object](../main.md#type-object)` — OpenFin window
+`[Object](../reference.md#type-object)` — OpenFin window
 
 ---
 ## Method: RemoteWindow.activate
@@ -245,7 +245,7 @@ Closes this RemoteWindow.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| force | [boolean](../main.md#type-boolean) | true | — | whether to force it closed |
+| force | [boolean](../reference.md#type-boolean) | true | — | whether to force it closed |
 | callback | [RemoteWindowCallback](#type-remotewindowcallback) | true | — | callback run after it's closed |
 
 ---

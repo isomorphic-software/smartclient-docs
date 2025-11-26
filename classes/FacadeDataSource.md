@@ -1,6 +1,6 @@
 # FacadeDataSource Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -53,7 +53,7 @@ Setter for [queueRequests](#attr-facadedatasourcequeuerequests).
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| queueRequests | [boolean](../main.md#type-boolean) | false | — | — |
+| queueRequests | [boolean](../reference.md#type-boolean) | false | — | — |
 
 ### See Also
 

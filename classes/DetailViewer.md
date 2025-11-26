@@ -1,6 +1,6 @@
 # DetailViewer Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -27,7 +27,7 @@ How much padding should there be on the right of [hilite icons](#attr-detailview
 ## Attr: DetailViewer.fieldPickerFieldProperties
 
 ### Description
-Names of properties on [DetailViewerField](../main.md#object-detailviewerfield) for which the [FieldPicker](FieldPicker.md#class-fieldpicker) should show an editing interface, for convenience.
+Names of properties on [DetailViewerField](../reference.md#object-detailviewerfield) for which the [FieldPicker](FieldPicker.md#class-fieldpicker) should show an editing interface, for convenience.
 
 For example, specify \["decimalPad", "decimalPrecision"\] to allow end users to modify [DetailViewerField.decimalPad](DetailViewerField.md#attr-detailviewerfielddecimalpad) and [DetailViewerField.decimalPrecision](DetailViewerField.md#attr-detailviewerfielddecimalprecision) respectively.
 
@@ -37,7 +37,7 @@ For example, specify \["decimalPad", "decimalPrecision"\] to allow end users to 
 ## Attr: DetailViewer.fetchRequestProperties
 
 ### Description
-If [DetailViewer.autoFetchData](#attr-detailviewerautofetchdata) is `true`, this attribute allows the developer to declaratively specify [DSRequest](../main_2.md#object-dsrequest) properties for the initial [fetchData()](ListGrid_2.md#method-listgridfetchdata) call.
+If [DetailViewer.autoFetchData](#attr-detailviewerautofetchdata) is `true`, this attribute allows the developer to declaratively specify [DSRequest](../reference_2.md#object-dsrequest) properties for the initial [fetchData()](ListGrid_2.md#method-listgridfetchdata) call.
 
 Note that any properties governing more specific request attributes for the initial fetch (such as [autoFetchTextMatchStyle](#attr-databoundcomponentautofetchtextmatchstyle) and initial sort specifiers) will be applied on top of this properties block.
 
@@ -143,7 +143,7 @@ Whether to show the field when the value is null
 ## Attr: DetailViewer.dataSource
 
 ### Description
-The DataSource that this component should bind to for default fields and for performing [DataSource requests](../main_2.md#object-dsrequest).
+The DataSource that this component should bind to for default fields and for performing [DataSource requests](../reference_2.md#object-dsrequest).
 
 Can be specified as either a DataSource instance or the String ID of a DataSource.
 
@@ -171,7 +171,7 @@ Optional CSS style for a header in printable HTML for this component. If unset [
 ### Description
 Specifies a list of icons that can be used in [hilites](DataBoundComponent.md#method-databoundcomponentedithilites).
 
-`hiliteIcons` should be specified as an Array of [SCImgURL](../main.md#type-scimgurl). When present, the hilite editing interface shown when [DataBoundComponent.editHilites](DataBoundComponent.md#method-databoundcomponentedithilites) is called will offer the user a drop down for picking one of these icons when defining either a simple or advanced hilite rule.
+`hiliteIcons` should be specified as an Array of [SCImgURL](../reference.md#type-scimgurl). When present, the hilite editing interface shown when [DataBoundComponent.editHilites](DataBoundComponent.md#method-databoundcomponentedithilites) is called will offer the user a drop down for picking one of these icons when defining either a simple or advanced hilite rule.
 
 If the user picks an icon, the created hiliting rule will have [Hilite.icon](Hilite.md#attr-hiliteicon) set to the chosen icon. [DataBoundComponent.hiliteIconPosition](DataBoundComponent.md#attr-databoundcomponenthiliteiconposition) controls where the icon will appear for that field -- the default is that it appears in front of the normal cell content. This can also be overridden at the field level.
 
@@ -385,7 +385,7 @@ Show [DetailViewer.emptyMessage](#attr-detailvieweremptymessage) when there is n
 ## Attr: DetailViewer.datetimeFormatter
 
 ### Description
-Display format to use for fields specified as type 'datetime'. Default is to use the system-wide default long ("normal") date time format, configured via [DateUtil.setNormalDatetimeDisplayFormat](DateUtil.md#classmethod-dateutilsetnormaldatetimedisplayformat). Specify any valid [DateDisplayFormat](../main.md#type-datedisplayformat) to change the display format for datetimes used by this viewer. May be specified as a function. If specified as a function, this function will be executed in the scope of the Date and should return the formatted string.
+Display format to use for fields specified as type 'datetime'. Default is to use the system-wide default long ("normal") date time format, configured via [DateUtil.setNormalDatetimeDisplayFormat](DateUtil.md#classmethod-dateutilsetnormaldatetimedisplayformat). Specify any valid [DateDisplayFormat](../reference.md#type-datedisplayformat) to change the display format for datetimes used by this viewer. May be specified as a function. If specified as a function, this function will be executed in the scope of the Date and should return the formatted string.
 
 May also be specified at the field level via [DetailViewerField.dateFormatter](DetailViewerField.md#attr-detailviewerfielddateformatter)
 
@@ -498,7 +498,7 @@ If set, right-clicking on the DetailViewer will show a context menu that offers 
 ## Attr: DetailViewer.hiliteIconPosition
 
 ### Description
-When [hiliteIcons](#attr-detailviewerhiliteicons) are present, where the hilite icon will be placed relative to the field value. See [HiliteIconPosition](../main_2.md#type-hiliteiconposition). Can be overridden at the field level.
+When [hiliteIcons](#attr-detailviewerhiliteicons) are present, where the hilite icon will be placed relative to the field value. See [HiliteIconPosition](../reference_2.md#type-hiliteiconposition). Can be overridden at the field level.
 
 ### Groups
 
@@ -662,19 +662,19 @@ Check whether a field is currently visible
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true if the field is currently visible, false otherwise.
+`[boolean](../reference.md#type-boolean)` — true if the field is currently visible, false otherwise.
 
 ---
 ## Method: DetailViewer.getViewState
 
 ### Description
 Returns a snapshot of the current view state of this DetailViewer.  
-This includes the field state of the DetailViewer, returned as a [DetailViewerViewState](../main.md#type-detailviewerviewstate) object.  
+This includes the field state of the DetailViewer, returned as a [DetailViewerViewState](../reference.md#type-detailviewerviewstate) object.  
 This object can be passed to [DetailViewer.setViewState](#method-detailviewersetviewstate) to reset this detail viewer's view state to the current state (assuming the same data / fields are present in the detail viewer).
 
 ### Returns
 
-`[DetailViewerViewState](../main.md#type-detailviewerviewstate)` — current view state for the detail viewer.
+`[DetailViewerViewState](../reference.md#type-detailviewerviewstate)` — current view state for the detail viewer.
 
 ### Groups
 
@@ -682,7 +682,7 @@ This object can be passed to [DetailViewer.setViewState](#method-detailviewerset
 
 ### See Also
 
-- [DetailViewerViewState](../main.md#type-detailviewerviewstate)
+- [DetailViewerViewState](../reference.md#type-detailviewerviewstate)
 - [DetailViewer.setViewState](#method-detailviewersetviewstate)
 
 ---
@@ -693,7 +693,7 @@ Returns true if this component is currently [exporting client data](#method-deta
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — returns true if this component is currently exporting client data
+`[boolean](../reference.md#type-boolean)` — returns true if this component is currently exporting client data
 
 ### See Also
 
@@ -716,7 +716,7 @@ Return the CSS class for a cell. Default implementation calls [getCellStyle()](D
 
 ### Returns
 
-`[CSSStyleName](../main.md#type-cssstylename)` — CSS style for this cell
+`[CSSStyleName](../reference.md#type-cssstylename)` — CSS style for this cell
 
 ### Groups
 
@@ -726,14 +726,14 @@ Return the CSS class for a cell. Default implementation calls [getCellStyle()](D
 ## Method: DetailViewer.setViewState
 
 ### Description
-Reset this detail viewer's view state to match the [DetailViewerViewState](../main.md#type-detailviewerviewstate) object passed in.  
+Reset this detail viewer's view state to match the [DetailViewerViewState](../reference.md#type-detailviewerviewstate) object passed in.  
 Used to restore previous state retrieved from the detail viewer by a call to [DetailViewer.getViewState](#method-detailviewergetviewstate).
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| viewState | [DetailViewerViewState](../main.md#type-detailviewerviewstate) | false | — | Object describing the desired view state for the detail viewer |
+| viewState | [DetailViewerViewState](../reference.md#type-detailviewerviewstate) | false | — | Object describing the desired view state for the detail viewer |
 
 ### Groups
 
@@ -773,7 +773,7 @@ For example, given two related DataSources "orders" and "orderItems", where we w
 |------|------|----------|---------|-------------|
 | record | [ListGridRecord](#type-listgridrecord) | false | — | DataSource record |
 | schema | [Canvas](#type-canvas)|[DataSource](#type-datasource)|[ID](#type-id) | false | — | schema of the DataSource record, or DataBoundComponent already bound to that schema |
-| callback | [DSCallback](../main_2.md#type-dscallback) | true | — | callback to invoke on completion |
+| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke on completion |
 | requestProperties | [DSRequest](#type-dsrequest) | true | — | additional properties to set on the DSRequest that will be issued |
 
 ### Groups
@@ -797,7 +797,7 @@ For more information on exporting data, see [DataSource.exportData](DataSource.m
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | requestProperties | [DSRequest](#type-dsrequest) | true | — | additional properties to set on the DSRequest that will be issued |
-| callback | [DSCallback](../main_2.md#type-dscallback) | true | — | callback to invoke on completion. Note that this parameter only applies where [DSRequest.exportToClient](DSRequest.md#attr-dsrequestexporttoclient) is explicitly set to false, because file downloads do not provide ordinary SmartClient callbacks |
+| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke on completion. Note that this parameter only applies where [DSRequest.exportToClient](DSRequest.md#attr-dsrequestexporttoclient) is explicitly set to false, because file downloads do not provide ordinary SmartClient callbacks |
 
 ### Groups
 
@@ -884,7 +884,7 @@ Return CSS text for styling this cell, which will be applied in addition to the 
 
 ### Returns
 
-`[CSSText](../main_2.md#type-csstext)` — CSS text to add to this cell
+`[CSSText](../reference_2.md#type-csstext)` — CSS text to add to this cell
 
 ### Groups
 

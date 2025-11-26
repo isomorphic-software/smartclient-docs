@@ -1,6 +1,6 @@
 # DrawGroup Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -121,8 +121,8 @@ Scale all drawItem\[\] shapes by the x, y multipliers
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| x | [float](../main.md#type-float) | false | — | scale in the x direction |
-| y | [float](../main.md#type-float) | false | — | scale in the y direction |
+| x | [float](../reference.md#type-float) | false | — | scale in the x direction |
+| y | [float](../reference.md#type-float) | false | — | scale in the y direction |
 
 ---
 ## Method: DrawGroup.scaleTo
@@ -134,8 +134,8 @@ Scale the each item in the drawGroup by the x, y multipliers
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| x | [float](../main.md#type-float) | false | — | scale in the x direction |
-| y | [float](../main.md#type-float) | false | — | scale in the y direction |
+| x | [float](../reference.md#type-float) | false | — | scale in the x direction |
+| y | [float](../reference.md#type-float) | false | — | scale in the y direction |
 
 ---
 ## Method: DrawGroup.moveBy
@@ -147,8 +147,8 @@ Updates the `DrawGroup`'s left coordinate by `dX` and the top coordinate by `dY`
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| dX | [Distance](../main.md#type-distance) | false | — | change to left coordinate in pixels |
-| dY | [Distance](../main.md#type-distance) | false | — | change to top coordinate in pixels |
+| dX | [Distance](../reference.md#type-distance) | false | — | change to left coordinate in pixels |
+| dY | [Distance](../reference.md#type-distance) | false | — | change to top coordinate in pixels |
 
 ---
 ## Method: DrawGroup.erase
@@ -168,7 +168,7 @@ Default drag behavior will be to reposition all items in the group (and update t
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — false to cancel drag interaction.
+`[boolean](../reference.md#type-boolean)` — false to cancel drag interaction.
 
 ### Groups
 
@@ -241,7 +241,7 @@ Sets the height of this `DrawGroup`'s [group rectangle](#method-drawgroupgetgrou
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| height | [Distance](../main.md#type-distance) | false | — | new height for the group rectangle |
+| height | [Distance](../reference.md#type-distance) | false | — | new height for the group rectangle |
 
 ---
 ## Method: DrawGroup.mouseUp
@@ -274,7 +274,7 @@ Sets the top coordinate of this `DrawGroup`'s [group rectangle](#method-drawgrou
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| top | [Coordinate](../main.md#type-coordinate) | false | — | new top coordinate in pixels |
+| top | [Coordinate](../reference.md#type-coordinate) | false | — | new top coordinate in pixels |
 
 ---
 ## Method: DrawGroup.setWidth
@@ -286,7 +286,7 @@ Sets the width of this `DrawGroup`'s [group rectangle](#method-drawgroupgetgroup
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| width | [Distance](../main.md#type-distance) | false | — | new width for the group rectangle |
+| width | [Distance](../reference.md#type-distance) | false | — | new width for the group rectangle |
 
 ---
 ## Method: DrawGroup.getCenter
@@ -308,7 +308,7 @@ Rotate each item in the group by the specified number of degrees.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| degrees | [float](../main.md#type-float) | false | — | — |
+| degrees | [float](../reference.md#type-float) | false | — | — |
 
 ---
 ## Method: DrawGroup.mouseOver
@@ -353,8 +353,8 @@ Sets both the left and top coordinates of this `DrawGroup`'s [group rectangle](#
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| left | [Integer](../main_2.md#type-integer) | false | — | new left coordinate in pixels |
-| top | [Integer](../main_2.md#type-integer) | false | — | new top coordinate in pixels |
+| left | [Integer](../reference_2.md#type-integer) | false | — | new left coordinate in pixels |
+| top | [Integer](../reference_2.md#type-integer) | false | — | new top coordinate in pixels |
 
 ---
 ## Method: DrawGroup.dragStart
@@ -368,7 +368,7 @@ Default drag behavior will be to reposition all items in the group (and update t
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — false to cancel drag action.
+`[boolean](../reference.md#type-boolean)` — false to cancel drag action.
 
 ### Groups
 
@@ -410,7 +410,7 @@ Sets the left coordinate of this `DrawGroup`'s [group rectangle](#method-drawgro
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| left | [Coordinate](../main.md#type-coordinate) | false | — | new left coordinate |
+| left | [Coordinate](../reference.md#type-coordinate) | false | — | new left coordinate |
 
 ---
 ## Method: DrawGroup.rotateTo
@@ -422,7 +422,7 @@ Rotate each item in the group to the specified number of degrees.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| degrees | [float](../main.md#type-float) | false | — | — |
+| degrees | [float](../reference.md#type-float) | false | — | — |
 
 ---
 ## Method: DrawGroup.mouseOut
@@ -450,7 +450,7 @@ Note that if [useGroupRect](#attr-drawgroupusegrouprect) is true, this notificat
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — false to cancel drag interaction.
+`[boolean](../reference.md#type-boolean)` — false to cancel drag interaction.
 
 ### Groups
 

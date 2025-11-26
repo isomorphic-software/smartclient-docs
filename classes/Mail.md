@@ -1,6 +1,6 @@
 # Mail Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -101,7 +101,7 @@ Defines whether authentication is required by SMTP server that will send the ema
 ## Attr: Mail.messageData
 
 ### Description
-Allows you to specify an alternative source of substitution values for the templating process (by default, the data record(s) returned by the DataSource operation are used). If set, this [VelocityExpression](../main_2.md#type-velocityexpression) should evaluate to a Java `Map` object, or a Java `List` containing only `Map`s.
+Allows you to specify an alternative source of substitution values for the templating process (by default, the data record(s) returned by the DataSource operation are used). If set, this [VelocityExpression](../reference_2.md#type-velocityexpression) should evaluate to a Java `Map` object, or a Java `List` containing only `Map`s.
 
 For example, assuming you had suitable context stored in a `Map` that is held in the current session as attribute "foo", the following would cause the mail templating system to look in there for values when running substitution:
 

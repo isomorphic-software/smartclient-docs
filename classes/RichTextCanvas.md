@@ -1,6 +1,6 @@
 # RichTextCanvas Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -59,7 +59,7 @@ Converts the selection to an ordered list. If the selection is within an unorder
 ## Method: RichTextCanvas.applyListProperties
 
 ### Description
-Applies the given [ListProperties](../main_2.md#object-listproperties) to the currently selected HTML list, if any. If there is no list selected, then this method does nothing.
+Applies the given [ListProperties](../reference_2.md#object-listproperties) to the currently selected HTML list, if any. If there is no list selected, then this method does nothing.
 
 ### Parameters
 

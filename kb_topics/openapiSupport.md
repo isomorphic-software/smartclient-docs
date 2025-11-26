@@ -1,13 +1,13 @@
 # OpenAPI Specification (OAS) Support
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
 ## KB Topic: OpenAPI Specification (OAS) Support
 
 ### Description
-If you allow access to your server-side DataSources via the [RESTHandler servlet](servletDetails.md#kb-topic-the-core-and-optional-smartclient-servlets), the SmartClient server can also generate a standard [OpenAPI specification](https://github.com/OAI/OpenAPI-Specification) of the REST interface supported by `RestHandler`. This allows any client system that supports OpenAPI to access the operations supported by your DataSources. Because details like [field types](../main_2.md#type-fieldtype) and [validators](../classes/Validator.md#class-validator)) are automatically translated to OpenAPI, the OpenAPI specification (OAS) of your DataSource operations is much more specific and detailed than the general [RestDataSource](../classes/RestDataSource.md#class-restdatasource) protocol spec, and can allow automatically generated UIs or automatically generated communication stubs to be much richer and easier to use.
+If you allow access to your server-side DataSources via the [RESTHandler servlet](servletDetails.md#kb-topic-the-core-and-optional-smartclient-servlets), the SmartClient server can also generate a standard [OpenAPI specification](https://github.com/OAI/OpenAPI-Specification) of the REST interface supported by `RestHandler`. This allows any client system that supports OpenAPI to access the operations supported by your DataSources. Because details like [field types](../reference_2.md#type-fieldtype) and [validators](../classes/Validator.md#class-validator)) are automatically translated to OpenAPI, the OpenAPI specification (OAS) of your DataSource operations is much more specific and detailed than the general [RestDataSource](../classes/RestDataSource.md#class-restdatasource) protocol spec, and can allow automatically generated UIs or automatically generated communication stubs to be much richer and easier to use.
 
 Very often, a reasonably simple DataSource expresses more than can be easily translated to the current OpenAPI specification. In such cases, efforts are made to use the OpenAPI [extensions](https://swagger.io/docs/specification/openapi-extensions/) mechanism to provide that level of detail. Validators are one common area of interest. It is worthwhile to inspect the raw YAML output at least once before relying solely on visual tooling, unless said tooling supports vendor extensions. [ReDoc](https://github.com/Redocly/redoc), for example, is able to render the generated spec well, and in fact powers the example specification (see link below), but leaves out important details found in the extensions, like the RESTHandler's JSON [prefix](../classes/RestDataSource.md#attr-restdatasourcejsonprefix) and [suffix](../classes/RestDataSource.md#attr-restdatasourcejsonsuffix).
 

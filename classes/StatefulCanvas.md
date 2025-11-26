@@ -1,6 +1,6 @@
 # StatefulCanvas Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -15,7 +15,7 @@ A component that has a set of possible states, and which presents itself differe
 ## ClassAttr: StatefulCanvas.SELECTED
 
 ### Description
-A declared value of the enum type [Selected](../main.md#type-selected).
+A declared value of the enum type [Selected](../reference.md#type-selected).
 
 **Flags**: R
 
@@ -23,7 +23,7 @@ A declared value of the enum type [Selected](../main.md#type-selected).
 ## ClassAttr: StatefulCanvas.STATE_DOWN
 
 ### Description
-A declared value of the enum type [State](../main.md#type-state).
+A declared value of the enum type [State](../reference.md#type-state).
 
 **Flags**: R
 
@@ -31,7 +31,7 @@ A declared value of the enum type [State](../main.md#type-state).
 ## ClassAttr: StatefulCanvas.CHECKBOX
 
 ### Description
-A declared value of the enum type [SelectionType](../main_2.md#type-selectiontype).
+A declared value of the enum type [SelectionType](../reference_2.md#type-selectiontype).
 
 **Flags**: R
 
@@ -39,7 +39,7 @@ A declared value of the enum type [SelectionType](../main_2.md#type-selectiontyp
 ## ClassAttr: StatefulCanvas.FOCUSED
 
 ### Description
-A declared value of the enum type [Selected](../main.md#type-selected).
+A declared value of the enum type [Selected](../reference.md#type-selected).
 
 **Flags**: R
 
@@ -47,7 +47,7 @@ A declared value of the enum type [Selected](../main.md#type-selected).
 ## ClassAttr: StatefulCanvas.UNSELECTED
 
 ### Description
-A declared value of the enum type [Selected](../main.md#type-selected).
+A declared value of the enum type [Selected](../reference.md#type-selected).
 
 **Flags**: R
 
@@ -55,7 +55,7 @@ A declared value of the enum type [Selected](../main.md#type-selected).
 ## ClassAttr: StatefulCanvas.STATE_OVER
 
 ### Description
-A declared value of the enum type [State](../main.md#type-state).
+A declared value of the enum type [State](../reference.md#type-state).
 
 **Flags**: R
 
@@ -63,7 +63,7 @@ A declared value of the enum type [State](../main.md#type-state).
 ## ClassAttr: StatefulCanvas.STATE_DISABLED
 
 ### Description
-A declared value of the enum type [State](../main.md#type-state).
+A declared value of the enum type [State](../reference.md#type-state).
 
 **Flags**: R
 
@@ -71,7 +71,7 @@ A declared value of the enum type [State](../main.md#type-state).
 ## ClassAttr: StatefulCanvas.BUTTON
 
 ### Description
-A declared value of the enum type [SelectionType](../main_2.md#type-selectiontype).
+A declared value of the enum type [SelectionType](../reference_2.md#type-selectiontype).
 
 **Flags**: R
 
@@ -79,7 +79,7 @@ A declared value of the enum type [SelectionType](../main_2.md#type-selectiontyp
 ## ClassAttr: StatefulCanvas.STATE_UP
 
 ### Description
-A declared value of the enum type [State](../main.md#type-state).
+A declared value of the enum type [State](../reference.md#type-state).
 
 **Flags**: R
 
@@ -87,7 +87,7 @@ A declared value of the enum type [State](../main.md#type-state).
 ## ClassAttr: StatefulCanvas.RADIO
 
 ### Description
-A declared value of the enum type [SelectionType](../main_2.md#type-selectiontype).
+A declared value of the enum type [SelectionType](../reference_2.md#type-selectiontype).
 
 **Flags**: R
 
@@ -121,7 +121,7 @@ For [Img](Img.md#class-img) or [StretchImg](StretchImg.md#class-stretchimg) base
 
 ### See Also
 
-- [State](../main.md#type-state)
+- [State](../reference.md#type-state)
 - [state](../kb_topics/state.md#kb-topic-state)
 
 **Flags**: IRWA
@@ -132,7 +132,7 @@ For [Img](Img.md#class-img) or [StretchImg](StretchImg.md#class-stretchimg) base
 ### Description
 If true, this widget will fire [showContextMenu()](Canvas.md#method-canvasshowcontextmenu) to show the [context menu](Canvas.md#attr-canvascontextmenu) if one is defined, rather than [click()](Canvas.md#method-canvasclick), when the left mouse is clicked.
 
-Note that this property has a different interpretation in [IconButton](../main.md#class-iconbutton) as [IconButton.showMenuOnClick](RibbonButton.md#attr-ribbonbuttonshowmenuonclick).
+Note that this property has a different interpretation in [IconButton](../reference.md#class-iconbutton) as [IconButton.showMenuOnClick](RibbonButton.md#attr-ribbonbuttonshowmenuonclick).
 
 ### Groups
 
@@ -239,7 +239,7 @@ Horizontal alignment of this component's title.
 ## Attr: StatefulCanvas.overCanvas
 
 ### Description
-Auto generated child widget to be shown when the user rolls over this canvas if [StatefulCanvas.showOverCanvas](#attr-statefulcanvasshowovercanvas) is true. See documentation for [AutoChild](../main.md#type-autochild) for information on how to customize this canvas.
+Auto generated child widget to be shown when the user rolls over this canvas if [StatefulCanvas.showOverCanvas](#attr-statefulcanvasshowovercanvas) is true. See documentation for [AutoChild](../reference.md#type-autochild) for information on how to customize this canvas.
 
 **Flags**: R
 
@@ -315,7 +315,7 @@ Size in pixels of the icon image.
 
 The [iconWidth](#attr-statefulcanvasiconwidth) and [iconHeight](#attr-statefulcanvasiconheight) properties can be used to configure width and height separately.
 
-Note: When configuring the properties of a `StatefulCanvas` (or derivative) [AutoChild](../main.md#type-autochild), it is best to set the `iconWidth` and `iconHeight` to the same value rather than setting an `iconSize`. This is because certain skins or customizations thereto might set the `iconWidth` and `iconHeight`, making the customization of the AutoChild's `iconSize` ineffective.
+Note: When configuring the properties of a `StatefulCanvas` (or derivative) [AutoChild](../reference.md#type-autochild), it is best to set the `iconWidth` and `iconHeight` to the same value rather than setting an `iconSize`. This is because certain skins or customizations thereto might set the `iconWidth` and `iconHeight`, making the customization of the AutoChild's `iconSize` ineffective.
 
 ### Groups
 
@@ -341,7 +341,7 @@ If using an icon for this button, whether to switch the icon image when the butt
 ### Description
 Optional icon to be shown with the button title text.
 
-Specify as the partial URL to an image, relative to the imgDir of this component. A sprited image can be specified using the [SCSpriteConfig](../main.md#type-scspriteconfig) format.
+Specify as the partial URL to an image, relative to the imgDir of this component. A sprited image can be specified using the [SCSpriteConfig](../reference.md#type-scspriteconfig) format.
 
 Note that the string "blank" is a valid setting for this attribute and will always result in the system blank image, with no state suffixes applied. Typically, this might be used when an iconStyle is also specified and the iconStyle renders the icon via a stateful background-image or other CSS approach.
 
@@ -532,7 +532,7 @@ Note that if [StatefulCanvas.autoFit](#attr-statefulcanvasautofit) is set, this 
 ## Attr: StatefulCanvas.styleName
 
 ### Description
-StatefulCanvases are styled by combining [StatefulCanvas.baseStyle](#attr-statefulcanvasbasestyle) with [State](../main.md#type-state) to build a composite css style name. In most cases, `statefulCanvas.styleName` will have no effect on statefulCanvas styling and should not be used.
+StatefulCanvases are styled by combining [StatefulCanvas.baseStyle](#attr-statefulcanvasbasestyle) with [State](../reference.md#type-state) to build a composite css style name. In most cases, `statefulCanvas.styleName` will have no effect on statefulCanvas styling and should not be used.
 
 If the `baseStyle` is not explicitly specified for a class, the `styleName` will be used as a default baseStyle. Other than that, this attribute will be ignored.
 
@@ -703,7 +703,7 @@ Sets the base CSS style. As the component changes state and/or is selected, suff
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| style | [CSSStyleName](../main.md#type-cssstylename) | false | — | new base style |
+| style | [CSSStyleName](../reference.md#type-cssstylename) | false | — | new base style |
 
 ---
 ## Method: StatefulCanvas.setIgnoreRTL
@@ -715,7 +715,7 @@ Setter for [ignoreRTL](#attr-statefulcanvasignorertl).
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| ignoreRTL | [boolean](../main.md#type-boolean) | false | — | new value for ignoreRTL. |
+| ignoreRTL | [boolean](../reference.md#type-boolean) | false | — | new value for ignoreRTL. |
 
 **Flags**: A
 
@@ -729,7 +729,7 @@ Overridden by StatefulCanvas to pick up [aria-label](#method-statefulcanvasgetar
 
 ### Returns
 
-`[Object](../main.md#type-object)` — dynamically calculated default aria state properties
+`[Object](../reference.md#type-object)` — dynamically calculated default aria state properties
 
 **Flags**: A
 
@@ -741,7 +741,7 @@ Return the 'actionType' for this canvas (radio / checkbox / button)
 
 ### Returns
 
-`[SelectionType](../main_2.md#type-selectiontype)` — the current action type
+`[SelectionType](../reference_2.md#type-selectiontype)` — the current action type
 
 ### Groups
 
@@ -760,7 +760,7 @@ Setter for the [title](#attr-statefulcanvastitle).
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newTitle | [HTMLString](../main.md#type-htmlstring) | false | — | the new title HTML. |
+| newTitle | [HTMLString](../reference.md#type-htmlstring) | false | — | the new title HTML. |
 
 ### Groups
 
@@ -819,7 +819,7 @@ Setter method for the [StatefulCanvas.autoFit](#attr-statefulcanvasautofit) prop
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| autoFit | [boolean](../main.md#type-boolean) | false | — | New autoFit setting. |
+| autoFit | [boolean](../reference.md#type-boolean) | false | — | New autoFit setting. |
 
 ---
 ## Method: StatefulCanvas.getTitle
@@ -831,7 +831,7 @@ Default is to simply return this.title.
 
 ### Returns
 
-`[HTMLString](../main.md#type-htmlstring)` — HTML for the title.
+`[HTMLString](../reference.md#type-htmlstring)` — HTML for the title.
 
 **Flags**: A
 
@@ -857,7 +857,7 @@ Change the icon being shown next to the title text.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| icon | [SCImgURL](../main.md#type-scimgurl) | false | — | URL of new icon |
+| icon | [SCImgURL](../reference.md#type-scimgurl) | false | — | URL of new icon |
 
 ### Groups
 
@@ -871,7 +871,7 @@ Return the state of this StatefulCanvas
 
 ### Returns
 
-`[State](../main.md#type-state)` — —
+`[State](../reference.md#type-state)` — —
 
 ### Groups
 
@@ -899,7 +899,7 @@ Enable or disable this object
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| disabled | [boolean](../main.md#type-boolean) | false | — | true if this widget is to be disabled |
+| disabled | [boolean](../reference.md#type-boolean) | false | — | true if this widget is to be disabled |
 
 ### Groups
 
@@ -916,7 +916,7 @@ Set this object to be selected or deselected.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newIsSelected | [boolean](../main.md#type-boolean) | false | — | new boolean value of whether or not the object is selected. |
+| newIsSelected | [boolean](../reference.md#type-boolean) | false | — | new boolean value of whether or not the object is selected. |
 
 ### Groups
 
@@ -932,7 +932,7 @@ Update the 'actionType' for this canvas (radio / checkbox / button) If the canva
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| actionType | [SelectionType](../main_2.md#type-selectiontype) | false | — | new action type |
+| actionType | [SelectionType](../reference_2.md#type-selectiontype) | false | — | new action type |
 
 ### Groups
 
@@ -967,7 +967,7 @@ Sets the [state](#attr-statefulcanvasstate) of this object, changing its appeara
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newState | [State](../main.md#type-state) | false | — | the new state. |
+| newState | [State](../reference.md#type-state) | false | — | the new state. |
 
 ### Groups
 
@@ -986,7 +986,7 @@ Setter for [StatefulCanvas.iconStyle](#attr-statefulcanvasiconstyle).
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| iconStyle | [CSSStyleName](../main.md#type-cssstylename) | false | — | the new `iconStyle` (may be `null` to remove the className on the image). |
+| iconStyle | [CSSStyleName](../reference.md#type-cssstylename) | false | — | the new `iconStyle` (may be `null` to remove the className on the image). |
 
 ---
 ## Method: StatefulCanvas.addToRadioGroup

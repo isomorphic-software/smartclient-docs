@@ -1,13 +1,13 @@
 # AdvancedCriterionSubquery Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
 ## Attr: AdvancedCriterionSubquery.queryOutput
 
 ### Description
-The name of the field that will be used as the output of this query. Only useful if your subquery returns more than one field, and optional even in that case. See the [Subqueries overview](../main.md#object-advancedcriterionsubquery) for more details
+The name of the field that will be used as the output of this query. Only useful if your subquery returns more than one field, and optional even in that case. See the [Subqueries overview](../reference.md#object-advancedcriterionsubquery) for more details
 
 ### Groups
 
@@ -25,7 +25,7 @@ For many use cases, there is only one relation between any two DataSources, so t
 
 **NOTE:**The `queryFK` property leverages the [includeVia](DataSourceField.md#attr-datasourcefieldincludevia) feature, and so is constrained by the same restrictions as that feature. Primarily, this means that `queryFK` can only name a `foreignKey` field on the [subquery dataSouce](#attr-advancedcriterionsubquerydatasource); it is not valid to name a field on the main dataSource. In practice, this is not usually a restriction because typically the subquery dataSource will be at the "many" end of a direct or indirect relation to the main dataSource, and so is naturally the one that declares the `foreignKey`
 
-You can also specify the special value "\*none\*" for `queryFK`, which means the aggregation query should be done independently from the main query, to simply produce a value separately without any joins to the main dataset. A subquery that specifies `queryFK: "*none*"` is quite unusual because most use cases of subqueries require a join to the parent dataSource; however, valid use cases do exist - see the "Simple valueQuery" example on the [subquery overview page](../main.md#object-advancedcriterionsubquery)
+You can also specify the special value "\*none\*" for `queryFK`, which means the aggregation query should be done independently from the main query, to simply produce a value separately without any joins to the main dataset. A subquery that specifies `queryFK: "*none*"` is quite unusual because most use cases of subqueries require a join to the parent dataSource; however, valid use cases do exist - see the "Simple valueQuery" example on the [subquery overview page](../reference.md#object-advancedcriterionsubquery)
 
 ### Groups
 
@@ -51,7 +51,7 @@ Also, because subqueries are themselves part of a larger set of criteria, the su
 ## Attr: AdvancedCriterionSubquery.summaryFunctions
 
 ### Description
-A mapping from field names to [summary functions](../main_2.md#type-summaryfunction) to be applied to each field.
+A mapping from field names to [summary functions](../reference_2.md#type-summaryfunction) to be applied to each field.
 
 Valid only for an operation of type "fetch". See the [Server Summaries overview](../kb_topics/serverSummaries.md#kb-topic-server-summaries) for examples of usage.
 
@@ -69,7 +69,7 @@ Valid only for an operation of type "fetch". See the [Server Summaries overview]
 ## Attr: AdvancedCriterionSubquery.canEmbedSQL
 
 ### Description
-Indicates whether this subquery can be implemented by embedding SQL directly in the wider SQL statement that will be used to resolve the fetch request. This property is considered as part of a set of rules we apply to decide whether a subquery can be resolved by embedding SQL (which is the most efficient thing to do, and may be significantly faster), or if we must resolve by separating the subquery out into its own [DSRequest](../main_2.md#object-dsrequest) and manually applying the results.
+Indicates whether this subquery can be implemented by embedding SQL directly in the wider SQL statement that will be used to resolve the fetch request. This property is considered as part of a set of rules we apply to decide whether a subquery can be resolved by embedding SQL (which is the most efficient thing to do, and may be significantly faster), or if we must resolve by separating the subquery out into its own [DSRequest](../reference_2.md#object-dsrequest) and manually applying the results.
 
 There are two reasons why we might decide to run a subquery as its own `DSRequest`: First, if either the "main" dataSource or the subquery dataSource is not an [SQL dataSource](../kb_topics/sqlDataSource.md#kb-topic-sql-datasources), then obviously we cannot merge into a single SQL statement. More subtly, if there is the possibility that customized logic might be in play, we run the subquery separately because in that case we may interfere with - or completely fail to apply - the custom logic if we do not run the subquery as a full-fledged `DSRequest`.
 

@@ -1,6 +1,6 @@
 # DataSource Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -21,7 +21,7 @@ The abstract object description provided by a DataSource is easily mapped to a v
 
 DataSources can be [declared](../kb_topics/dataSourceDeclaration.md#kb-topic-creating-datasources) in either JavaScript or XML format, and can also be [imported](../kb_topics/metadataImport.md#kb-topic-metadata-import) from existing metadata formats, including XML Schema.
 
-_Data Binding_ is the process by which [Data Binding-capable UI components](../main.md#interface-databoundcomponent) can automatically configure themselves for viewing, editing and saving data described by DataSources. DataBinding is covered in the *QuickStart Guide*, Chapter 6, _Data Binding_.
+_Data Binding_ is the process by which [Data Binding-capable UI components](../reference.md#interface-databoundcomponent) can automatically configure themselves for viewing, editing and saving data described by DataSources. DataBinding is covered in the *QuickStart Guide*, Chapter 6, _Data Binding_.
 
 [Data Integration](../kb_topics/clientServerIntegration.md#kb-topic-client-server-integration) is the process by which a DataSource can be connected to server systems such as SQL DataBases, Java Object models, WSDL web services and other data providers. Data Integration comes in two variants: client-side and server-side. [Server-side integration](../kb_topics/serverDataIntegration.md#kb-topic-server-datasource-integration) uses the SmartClient Java-based server to connect to data represented by Java Objects or JDBC-accessible databases. [Client-side integration](../kb_topics/clientDataIntegration.md#kb-topic-client-side-data-integration) connects SmartClient DataSources to XML, JSON or other formats accessible via HTTP.
 
@@ -31,7 +31,7 @@ These interactions include [grid views](ListGrid_1.md#class-listgrid), [tree vie
 
 ### See Also
 
-- [DataBoundComponent](../main.md#interface-databoundcomponent)
+- [DataBoundComponent](../reference.md#interface-databoundcomponent)
 - [dataSourceDeclaration](../kb_topics/dataSourceDeclaration.md#kb-topic-creating-datasources)
 
 ---
@@ -187,7 +187,7 @@ Note this property is only applicable to [SQL](#attr-datasourceservertype) DataS
 ### Description
 Applies to RestConnector dataSources ([serverType](#attr-datasourceservertype) "rest") only, and is overridable per operationBinding (see [OperationBinding.requestTemplate](OperationBinding.md#attr-operationbindingrequesttemplate)).
 
-By default, if you have a [requestFormat](#attr-datasourcerequestformat) of "params", `RestConnector` will add your values or criteria as standard HTTP parameters to the the URL it generates for hitting the target REST server - this is described in more detail in the [RESTRequestFormat](../main.md#type-restrequestformat) documentation.
+By default, if you have a [requestFormat](#attr-datasourcerequestformat) of "params", `RestConnector` will add your values or criteria as standard HTTP parameters to the the URL it generates for hitting the target REST server - this is described in more detail in the [RESTRequestFormat](../reference.md#type-restrequestformat) documentation.
 
 With a `requestFormat` of "json", `RestConnector` will generate a block of JSON from your criteria or values, again as described in the `RESTRequestFormat` docs
 
@@ -352,7 +352,7 @@ Only applies to responses formatted as json objects. Does not apply to responses
 ## Attr: DataSource.sequenceMode
 
 ### Description
-For fields of [type](DataSourceField.md#attr-datasourcefieldtype) "sequence" in a dataSource of [serverType](#attr-datasourceservertype) "sql", indicates the [SequenceMode](../main.md#type-sequencemode) to use. This property has no effect for fields or dataSources of other types.
+For fields of [type](DataSourceField.md#attr-datasourcefieldtype) "sequence" in a dataSource of [serverType](#attr-datasourceservertype) "sql", indicates the [SequenceMode](../reference.md#type-sequencemode) to use. This property has no effect for fields or dataSources of other types.
 
 You can set a default sequenceMode for all DataSources of a given database type by setting property "sql.{database\_type}.default.sequence.mode" in `server.properties`. You set a global default sequenceMode that applies to all database types by setting property "sql.default.sequence.mode". For example:
 
@@ -528,7 +528,7 @@ For example, this code accomplishes part of the binding to the [SalesForce partn
 ```
 NOTE: additional code is required to handle authentication and other details, see the complete code in smartclientSDK/examples/databinding/SalesForce.
 
-For DataSources that contact non-WSDL-described XML or JSON services, OperationBindings can be used to separately configure the URL, HTTP method, input and output processing for each operationType. This makes it possible to fetch JSON data from one URL for the "fetch" operationType and save to a web service for the "update" operationType, while appearing as a single integrated DataSource to a [DataBoundComponent](../main.md#interface-databoundcomponent) such as an [editable ListGrid](ListGrid_1.md#attr-listgridcanedit).
+For DataSources that contact non-WSDL-described XML or JSON services, OperationBindings can be used to separately configure the URL, HTTP method, input and output processing for each operationType. This makes it possible to fetch JSON data from one URL for the "fetch" operationType and save to a web service for the "update" operationType, while appearing as a single integrated DataSource to a [DataBoundComponent](../reference.md#interface-databoundcomponent) such as an [editable ListGrid](ListGrid_1.md#attr-listgridcanedit).
 
 If no operationBinding is defined for a given DataSource operation, all of the properties which are valid on the operationBinding are checked for on the DataSource itself.
 
@@ -544,7 +544,7 @@ This also means that for a read-only DataSource, that is, a DataSource only capa
 ## Attr: DataSource.logSlowRemove
 
 ### Description
-Allows you to specify ["remove" operation](../main.md#type-dsoperationtype) SQL query execution time threshold in milliseconds, which if exceeded query is identified as "slow" and may be logged under specific logging category.
+Allows you to specify ["remove" operation](../reference.md#type-dsoperationtype) SQL query execution time threshold in milliseconds, which if exceeded query is identified as "slow" and may be logged under specific logging category.
 
 See [DataSource.logSlowSQL](#attr-datasourcelogslowsql) for more details.
 
@@ -582,7 +582,7 @@ Like [DataBoundComponent.useFlatFields](DataBoundComponent.md#attr-databoundcomp
 ## Attr: DataSource.infoField
 
 ### Description
-Name of the field that has the second most pertinent piece of textual information in the record, for use when a [DataBoundComponent](../main.md#interface-databoundcomponent) needs to show a short summary of a record.
+Name of the field that has the second most pertinent piece of textual information in the record, for use when a [DataBoundComponent](../reference.md#interface-databoundcomponent) needs to show a short summary of a record.
 
 For example, for a DataSource of employees, a "job title" field would probably be the second most pertinent text field aside from the employee's "full name".
 
@@ -610,7 +610,7 @@ Sets the XML namespace prefixes available for XPaths on a DataSource-wide basied
 ## Attr: DataSource.multiInsertNonMatchingStrategy
 
 ### Description
-For dataSources of [serverType](#attr-datasourceservertype) "sql" only, this property sets the multi-insert "non matching" strategy for add requests on this [dataSource](#class-datasource). Only has an effect if the [add request](#method-datasourceadddata) specifies a list of records as the data, and only if [multiInsertStrategy](#attr-datasourcemultiinsertstrategy) is set to "multipleValues" either globally or at the [DSRequest](../main_2.md#object-dsrequest), [OperationBinding](OperationBinding.md#class-operationbinding), or [DataSource](#class-datasource) level. See the docs for [MultiInsertNonMatchingStrategy](../main_2.md#type-multiinsertnonmatchingstrategy) for more information.
+For dataSources of [serverType](#attr-datasourceservertype) "sql" only, this property sets the multi-insert "non matching" strategy for add requests on this [dataSource](#class-datasource). Only has an effect if the [add request](#method-datasourceadddata) specifies a list of records as the data, and only if [multiInsertStrategy](#attr-datasourcemultiinsertstrategy) is set to "multipleValues" either globally or at the [DSRequest](../reference_2.md#object-dsrequest), [OperationBinding](OperationBinding.md#class-operationbinding), or [DataSource](#class-datasource) level. See the docs for [MultiInsertNonMatchingStrategy](../reference_2.md#type-multiinsertnonmatchingstrategy) for more information.
 
 Note that this setting (along with the other multi-insert properties, [multiInsertStrategy](#attr-datasourcemultiinsertstrategy) and [multiInsertBatchSize](#attr-datasourcemultiinsertbatchsize)) can be overridden at the [operationBinding level](OperationBinding.md#attr-operationbindingmultiinsertnonmatchingstrategy) and the [dsRequest level](DSRequest.md#attr-dsrequestmultiinsertnonmatchingstrategy). If you wish to configure multi-insert setting globally, see the documentation for [multiInsertStrategy](#attr-datasourcemultiinsertstrategy).
 
@@ -625,7 +625,7 @@ Note that this setting (along with the other multi-insert properties, [multiInse
 ## Attr: DataSource.requires
 
 ### Description
-Indicates that the specified [VelocityExpression](../main_2.md#type-velocityexpression) must evaluate to true for a user to access this DataSource.
+Indicates that the specified [VelocityExpression](../reference_2.md#type-velocityexpression) must evaluate to true for a user to access this DataSource.
 
 See also [OperationBinding.requires](OperationBinding.md#attr-operationbindingrequires).
 
@@ -730,7 +730,7 @@ Only applies to dataSources which send requests to a server and have [DataSource
 ## Attr: DataSource.allowClientRequestedSummaries
 
 ### Description
-If a [DSRequest](../main_2.md#object-dsrequest) arrives from the client that requests [server-calculated summaries](../kb_topics/serverSummaries.md#kb-topic-server-summaries), should it be allowed?
+If a [DSRequest](../reference_2.md#object-dsrequest) arrives from the client that requests [server-calculated summaries](../kb_topics/serverSummaries.md#kb-topic-server-summaries), should it be allowed?
 
 Note this setting **only** affects `dsRequests` that come from the browser (or another client). This setting has no effect on server summaries declared in .ds.xml files or summaries configured in DSRequests created programmatically on the server side, which are always allowed.
 
@@ -893,7 +893,7 @@ Sets the strategy this DataSource uses to translate Java enumerated types (objec
 ## Attr: DataSource.clientOnly
 
 ### Description
-A clientOnly DataSource simulates the behavior of a remote data store by manipulating a static dataset in memory as [DSRequests](../main_2.md#object-dsrequest) are executed on it. Any changes are lost when the user reloads the page or navigates away.
+A clientOnly DataSource simulates the behavior of a remote data store by manipulating a static dataset in memory as [DSRequests](../reference_2.md#object-dsrequest) are executed on it. Any changes are lost when the user reloads the page or navigates away.
 
 A clientOnly DataSource will return responses asynchronously, just as a DataSource accessing remote data does. This allows a clientOnly DataSource to be used as a temporary placeholder while a real DataSource is being implemented - if a clientOnly DataSource is replaced by a DataSource that accesses a remote data store, UI code for components that used the clientOnly DataSource will not need be changed.
 
@@ -913,7 +913,7 @@ ClientOnly DataSources can be populated programmatically via [DataSource.cacheDa
 ## Attr: DataSource.ignoreTextMatchStyleCaseSensitive
 
 ### Description
-For fields on this dataSource that specify [ignoreTextMatchStyle](DataSourceField.md#attr-datasourcefieldignoretextmatchstyle) true, the prevailing textMatchStyle is ignored and SmartClient matches exact values. This property dictates whether that match is case-sensitive like the "exactCase" textMatchStyle, or case-insensitive like the "exact" textMatchStyle (the default). Please see the [TextMatchStyle documentation](../main_2.md#type-textmatchstyle) for a discussion of the nuances of case-sensitive matching.
+For fields on this dataSource that specify [ignoreTextMatchStyle](DataSourceField.md#attr-datasourcefieldignoretextmatchstyle) true, the prevailing textMatchStyle is ignored and SmartClient matches exact values. This property dictates whether that match is case-sensitive like the "exactCase" textMatchStyle, or case-insensitive like the "exact" textMatchStyle (the default). Please see the [TextMatchStyle documentation](../reference_2.md#type-textmatchstyle) for a discussion of the nuances of case-sensitive matching.
 
 **Flags**: IR
 
@@ -969,13 +969,13 @@ Decides under what conditions the [ResultSet](ResultSet.md#class-resultset) cach
 ### Description
 Applies to [RestConnector dataSources](../kb_topics/serverRestConnector.md#kb-topic-server-side-rest-connector) ([serverType](#attr-datasourceservertype) "rest") only, and is overridable per operationBinding (see [OperationBinding.requestTemplate](OperationBinding.md#attr-operationbindingrequesttemplate)).
 
-If you have a [requestFormat](#attr-datasourcerequestformat) of "json" or "xml", `RestConnector` will generate a block of JSON or XML, as appropriate, from your criteria or values, as described in the [RESTRequestFormat](../main.md#type-restrequestformat) docs. You can also specify a `requestTemplate`, and `RestConnector` will use the template to drive the generation of the JSON or XML, so you can use the full power of the Velocity Templating Language to perform mappings and other transformations, all declaratively. The process involves the following steps:
+If you have a [requestFormat](#attr-datasourcerequestformat) of "json" or "xml", `RestConnector` will generate a block of JSON or XML, as appropriate, from your criteria or values, as described in the [RESTRequestFormat](../reference.md#type-restrequestformat) docs. You can also specify a `requestTemplate`, and `RestConnector` will use the template to drive the generation of the JSON or XML, so you can use the full power of the Velocity Templating Language to perform mappings and other transformations, all declaratively. The process involves the following steps:
 
 1.  We parse the template as JSON or XML, as appropriate, and convert it into an internal object structure
-2.  Velocity templating is now performed on this structure, with the [DSRequest](../main_2.md#object-dsrequest) values and criteria as context variables
+2.  Velocity templating is now performed on this structure, with the [DSRequest](../reference_2.md#object-dsrequest) values and criteria as context variables
 3.  We serialize the result of this process back to JSON or XML
 
-Note, if you provide a `requestTemplate`, it serves as the basis for the entire JSON or XML structure sent to the REST server, so you can include, omit, rename or transform values from the client request as required. Also note, if the [dsRequest](../main_2.md#object-dsrequest) has multiple valueSets (records), we will apply the template to each valueSet in turn, to construct a list for sending to the remote REST service (but note, this only works if the `requestFormat` is "json").
+Note, if you provide a `requestTemplate`, it serves as the basis for the entire JSON or XML structure sent to the REST server, so you can include, omit, rename or transform values from the client request as required. Also note, if the [dsRequest](../reference_2.md#object-dsrequest) has multiple valueSets (records), we will apply the template to each valueSet in turn, to construct a list for sending to the remote REST service (but note, this only works if the `requestFormat` is "json").
 
 #### Example templates
 Templates can make use of all of the conditional and iteration features of the Velocity Template Language, so can be used to perform some fairly sophisticated transformations. Consider a case where we have an update request with data like this sent from the client:
@@ -1073,7 +1073,7 @@ See the [Velocity User Guide](https://velocity.apache.org/engine/2.3/user-guide.
 ## Attr: DataSource.logSlowAdd
 
 ### Description
-Allows you to specify ["add" operation](../main.md#type-dsoperationtype) SQL query execution time threshold in milliseconds, which if exceeded query is identified as "slow" and may be logged under specific logging category.
+Allows you to specify ["add" operation](../reference.md#type-dsoperationtype) SQL query execution time threshold in milliseconds, which if exceeded query is identified as "slow" and may be logged under specific logging category.
 
 See [DataSource.logSlowSQL](#attr-datasourcelogslowsql) for more details.
 
@@ -1158,7 +1158,7 @@ Whether to make this DataSource available as a global variable for convenience.
 ## Attr: DataSource.deepCloneNonFieldValuesOnEdit
 
 ### Description
-When editing values in [DataBoundComponent](../main.md#interface-databoundcomponent)s bound to this dataSource, should we perform a deep clone of values that are not associated with a field (ie, attributes on the record that do not map to a component field either directly by name, or by [dataPath](FormItem.md#attr-formitemdatapath)). If this flag is not explicitly set, it defaults to the value of the same-named static property, [DataSource.deepCloneNonFieldValuesOnEdit](#classattr-datasourcedeepclonenonfieldvaluesonedit). This flag can also be overridden per-component - see [DataBoundComponent.deepCloneNonFieldValuesOnEdit](DataBoundComponent.md#attr-databoundcomponentdeepclonenonfieldvaluesonedit).
+When editing values in [DataBoundComponent](../reference.md#interface-databoundcomponent)s bound to this dataSource, should we perform a deep clone of values that are not associated with a field (ie, attributes on the record that do not map to a component field either directly by name, or by [dataPath](FormItem.md#attr-formitemdatapath)). If this flag is not explicitly set, it defaults to the value of the same-named static property, [DataSource.deepCloneNonFieldValuesOnEdit](#classattr-datasourcedeepclonenonfieldvaluesonedit). This flag can also be overridden per-component - see [DataBoundComponent.deepCloneNonFieldValuesOnEdit](DataBoundComponent.md#attr-databoundcomponentdeepclonenonfieldvaluesonedit).
 
 Note, a "deep clone" is one created by traversing the original values object recursively, cloning the contents of nested objects and arrays; a "shallow clone" is a copy created by simply copying the top-level attributes of an object; if you have nested objects that are copied like this, the "copies" are actual references to the original objects.
 
@@ -1204,7 +1204,7 @@ When set, causes a [client-only](#attr-datasourceclientonly) or [DataSource.cach
 ### Description
 For an XML DataSource, URN of the WebService to use to invoke operations. This URN comes from the "targetNamespace" attribute of the <wsdl:definitions> element in a WSDL (Web Service Description Language) document, and serves as the unique identifier of the service.
 
-Having loaded a WebService using [XMLTools.loadWSDL](XMLTools.md#classmethod-xmltoolsloadwsdl), setting `serviceNamespace` combined with specifying [operationBindings](OperationBinding.md#class-operationbinding) that set [OperationBinding.wsOperation](OperationBinding.md#attr-operationbindingwsoperation) will cause a DataSource to invoke web service operations to fulfill DataSource requests ([DSRequests](../main_2.md#object-dsrequest)).
+Having loaded a WebService using [XMLTools.loadWSDL](XMLTools.md#classmethod-xmltoolsloadwsdl), setting `serviceNamespace` combined with specifying [operationBindings](OperationBinding.md#class-operationbinding) that set [OperationBinding.wsOperation](OperationBinding.md#attr-operationbindingwsoperation) will cause a DataSource to invoke web service operations to fulfill DataSource requests ([DSRequests](../reference_2.md#object-dsrequest)).
 
 Setting `serviceNamespace` also defaults [dataURL](#attr-datasourcedataurl) to the service's location, [dataFormat](#attr-datasourcedataformat) to "xml" and [dataProtocol](OperationBinding.md#attr-operationbindingdataprotocol) to "soap".
 
@@ -1390,7 +1390,7 @@ DataSource-level equivalent of [OperationBinding.applySqlPrefixToRowCount](Opera
 ## Attr: DataSource.enumConstantProperty
 
 ### Description
-The name of the property this DataSource uses for constant name when translating Java enumerated types to and from Javascript, if the [EnumTranslateStrategy](../main_2.md#type-enumtranslatestrategy) is set to "bean". Defaults to "\_constant" if not set.
+The name of the property this DataSource uses for constant name when translating Java enumerated types to and from Javascript, if the [EnumTranslateStrategy](../reference_2.md#type-enumtranslatestrategy) is set to "bean". Defaults to "\_constant" if not set.
 
 This property is only applicable if you are using the SmartClient server
 
@@ -1444,7 +1444,7 @@ Set this attribute if you need to send the dsRequest.parentNode to the server-si
 ### Description
 Applies to [SQL DataSources](../kb_topics/sqlDataSource.md#kb-topic-sql-datasources) only.
 
-If this attribute is set to a non-negative value, it acts as a hard safety limit for client-initiated [DSRequest](../main_2.md#object-dsrequest)s for "all rows". If the server encounters more rows in a response than this safety limit, it will abort immediately with an Exception.
+If this attribute is set to a non-negative value, it acts as a hard safety limit for client-initiated [DSRequest](../reference_2.md#object-dsrequest)s for "all rows". If the server encounters more rows in a response than this safety limit, it will abort immediately with an Exception.
 
 **This attribute is not meant to be a regular application facility.** As mentioned above, it is a safety mechanism, intended primarily to prevent bugs in development from causing long delays or server Out Of Memory crashes by unintentionally issuing requests that fetch huge numbers of rows (eg, by failing to specify filter criteria).
 
@@ -1483,7 +1483,7 @@ When using the "scriptInclude" transport, be sure to set [DataSource.callbackPar
 
 ### See Also
 
-- [RPCTransport](../main.md#type-rpctransport)
+- [RPCTransport](../reference.md#type-rpctransport)
 - [DataSource.callbackParam](#attr-datasourcecallbackparam)
 
 **Flags**: IR
@@ -1593,7 +1593,7 @@ _Note that if a dataSource configuration has both a [`<script>`](OperationBindin
 ## Attr: DataSource.validateRelatedRecords
 
 ### Description
-If true, indicates that the SmartClient Server should automatically apply a [ValidatorType](../main.md#type-validatortype) of "hasRelatedRecord" to every field on this dataSource that has a [foreignKey](DataSourceField.md#attr-datasourcefieldforeignkey) defined.
+If true, indicates that the SmartClient Server should automatically apply a [ValidatorType](../reference.md#type-validatortype) of "hasRelatedRecord" to every field on this dataSource that has a [foreignKey](DataSourceField.md#attr-datasourcefieldforeignkey) defined.
 
 **Flags**: IR
 
@@ -1601,7 +1601,7 @@ If true, indicates that the SmartClient Server should automatically apply a [Val
 ## Attr: DataSource.logSlowCustom
 
 ### Description
-Allows you to specify ["custom" operation](../main.md#type-dsoperationtype) SQL query execution time threshold in milliseconds, which if exceeded query is identified as "slow" and may be logged under specific logging category.
+Allows you to specify ["custom" operation](../reference.md#type-dsoperationtype) SQL query execution time threshold in milliseconds, which if exceeded query is identified as "slow" and may be logged under specific logging category.
 
 See [DataSource.logSlowSQL](#attr-datasourcelogslowsql) for more details.
 
@@ -1635,7 +1635,7 @@ If set to true, both client and server-side advanced filtering used by SmartClie
     not (field != "someValue")   (normally false)
  
 ```
-This property can be overridden per-query by specifying `strictSQLFiltering` directly as a property on the [AdvancedCriteria](../main.md#object-advancedcriteria).
+This property can be overridden per-query by specifying `strictSQLFiltering` directly as a property on the [AdvancedCriteria](../reference.md#object-advancedcriteria).
 
 **NOTE:** On the server side, this property is only applicable if you are using the SQL DataSource; the other built-in types (Hibernate and JPA/JPA2) do not offer this mode.
 
@@ -1738,9 +1738,9 @@ To simplify this intended usage, the string "sql" is allowed for `auditDSConstru
 ## Attr: DataSource.cacheSyncTiming
 
 ### Description
-The [cacheSyncTiming](../main_2.md#type-cachesynctiming) to use for operations on this DataSource. Can be overridden at the [operation](OperationBinding.md#attr-operationbindingcachesynctiming) and [DSRequest](DSRequest.md#attr-dsrequestcachesynctiming) levels. The default value of null is the same as specifying "immediate".
+The [cacheSyncTiming](../reference_2.md#type-cachesynctiming) to use for operations on this DataSource. Can be overridden at the [operation](OperationBinding.md#attr-operationbindingcachesynctiming) and [DSRequest](DSRequest.md#attr-dsrequestcachesynctiming) levels. The default value of null is the same as specifying "immediate".
 
-Note that `cacheSyncTiming` is not applicable to many common types of request, and is simply ignored for these request types. See the [CacheSyncTiming type documentation](../main_2.md#type-cachesynctiming) for more details.
+Note that `cacheSyncTiming` is not applicable to many common types of request, and is simply ignored for these request types. See the [CacheSyncTiming type documentation](../reference_2.md#type-cachesynctiming) for more details.
 
 ### Groups
 
@@ -1777,7 +1777,7 @@ By default the template token is "`$config`" because that is the token used for 
 ## Attr: DataSource.enumOrdinalProperty
 
 ### Description
-The name of the property this DataSource uses for ordinal number when translating Java enumerated types to and from Javascript, if the [EnumTranslateStrategy](../main_2.md#type-enumtranslatestrategy) is set to "bean". Defaults to "\_ordinal" if not set.
+The name of the property this DataSource uses for ordinal number when translating Java enumerated types to and from Javascript, if the [EnumTranslateStrategy](../reference_2.md#type-enumtranslatestrategy) is set to "bean". Defaults to "\_ordinal" if not set.
 
 This property is only applicable if you are using the SmartClient server
 
@@ -1860,7 +1860,7 @@ If an operation should ever be non-blocking, methods that initiate DataSource re
 ## Attr: DataSource.defaultTextMatchStyle
 
 ### Description
-The default textMatchStyle to use for [DSRequest](../main_2.md#object-dsrequest)s that do not explicitly state a [textMatchStyle](DSRequest.md#attr-dsrequesttextmatchstyle). Note, however, that DSRequests issued by [ListGrid](ListGrid_1.md#class-listgrid)s and other [components](../main.md#interface-databoundcomponent) will generally have a setting for textMatchStyle on the component itself (see [ListGrid.autoFetchTextMatchStyle](ListGrid_1.md#attr-listgridautofetchtextmatchstyle), for example).
+The default textMatchStyle to use for [DSRequest](../reference_2.md#object-dsrequest)s that do not explicitly state a [textMatchStyle](DSRequest.md#attr-dsrequesttextmatchstyle). Note, however, that DSRequests issued by [ListGrid](ListGrid_1.md#class-listgrid)s and other [components](../reference.md#interface-databoundcomponent) will generally have a setting for textMatchStyle on the component itself (see [ListGrid.autoFetchTextMatchStyle](ListGrid_1.md#attr-listgridautofetchtextmatchstyle), for example).
 
 ### Groups
 
@@ -1873,7 +1873,7 @@ The default textMatchStyle to use for [DSRequest](../main_2.md#object-dsrequest)
 ## Attr: DataSource.patternSingleWildcard
 
 ### Description
-When using the [pattern operators](../kb_topics/patternOperators.md#kb-topic-patternoperators) [search operator](../main.md#type-operatorid), character that matches any single character.
+When using the [pattern operators](../kb_topics/patternOperators.md#kb-topic-patternoperators) [search operator](../reference.md#type-operatorid), character that matches any single character.
 
 Pass multiple strings to provide multiple alternative wildcards.
 
@@ -2216,7 +2216,7 @@ Note that setting this property does not automatically cause an authentication m
 ## Attr: DataSource.logSlowFetch
 
 ### Description
-Allows you to specify ["fetch" operation](../main.md#type-dsoperationtype) SQL query execution time threshold in milliseconds, which if exceeded query is identified as "slow" and may be logged under specific logging category.
+Allows you to specify ["fetch" operation](../reference.md#type-dsoperationtype) SQL query execution time threshold in milliseconds, which if exceeded query is identified as "slow" and may be logged under specific logging category.
 
 See [DataSource.logSlowSQL](#attr-datasourcelogslowsql) for more details.
 
@@ -2226,7 +2226,7 @@ See [DataSource.logSlowSQL](#attr-datasourcelogslowsql) for more details.
 ## Attr: DataSource.allowRelatedFieldsInCriteria
 
 ### Description
-This property indicates whether this DataSource supports referencees to related fields in criteria, either using qualified field names, or subqueries. See the [subquery filtering overview](../main.md#object-advancedcriterionsubquery) for details. Note, only [AdvancedCriteria](../main.md#object-advancedcriteria) can contain related fields.
+This property indicates whether this DataSource supports referencees to related fields in criteria, either using qualified field names, or subqueries. See the [subquery filtering overview](../reference.md#object-advancedcriterionsubquery) for details. Note, only [AdvancedCriteria](../reference.md#object-advancedcriteria) can contain related fields.
 
 All server-side DataSource implementations provide a level of support for related fields in criteria, but only [SQL DataSources](../kb_topics/sqlDataSource.md#kb-topic-sql-datasources) can handle cases that require conditions to be considered simultaneously with a join to the outer dataSource.
 
@@ -2248,7 +2248,7 @@ Used by Reify to identify DataSources that are provided as samples. Reify will n
 ## Attr: DataSource.translatePatternOperators
 
 ### Description
-[Search operators](../main.md#type-operatorid) like "matchesPattern" use patterns like "foo\*txt" to match text values. The patterns are similar to the patterns you use to match names of files in a command-line interface, or to the pattern allowed for the SQL "LIKE" operator.
+[Search operators](../reference.md#type-operatorid) like "matchesPattern" use patterns like "foo\*txt" to match text values. The patterns are similar to the patterns you use to match names of files in a command-line interface, or to the pattern allowed for the SQL "LIKE" operator.
 
 `translatePatternOperators` controls whether these pattern operators should be translated to a nested series of "startsWith"/"endsWidth"/"contains" operators before being sent to the server. This allows a server that only implements simple operators like "startsWith" to support pattern operators such as "matchesPattern" and "containsPattern", but with caveats:
 
@@ -2276,7 +2276,7 @@ Also supported: one startsWith, multiple contains, one endsWith.
 ## Attr: DataSource.cacheSyncStrategy
 
 ### Description
-The [cacheSyncStrategy](../main_2.md#type-cachesyncstrategy) to use for operations on this DataSource. Can be overridden at the [operation](OperationBinding.md#attr-operationbindingcachesyncstrategy) and [DSRequest](DSRequest.md#attr-dsrequestcachesyncstrategy) levels.
+The [cacheSyncStrategy](../reference_2.md#type-cachesyncstrategy) to use for operations on this DataSource. Can be overridden at the [operation](OperationBinding.md#attr-operationbindingcachesyncstrategy) and [DSRequest](DSRequest.md#attr-dsrequestcachesyncstrategy) levels.
 
 If `cacheSyncStrategy` is not explicitly set for a `DataSource`, we will use the default strategy for this [DataSource type](#attr-datasourceservertype). The defaults as shipped, are:
 
@@ -2359,7 +2359,7 @@ Given this, the different unionFieldsStrategy settings would derive the followin
 ## Attr: DataSource.multiInsertBatchSize
 
 ### Description
-For dataSources of [serverType](#attr-datasourceservertype) "sql" only, this property sets the multi-insert batch size for add requests on this [dataSource](#class-datasource). Only has an effect if the [add request](#method-datasourceadddata) specifies a list of records as the data, and only if [multiInsertStrategy](#attr-datasourcemultiinsertstrategy) is set to "multipleValues", either globally or at the [DSRequest](../main_2.md#object-dsrequest), [OperationBinding](OperationBinding.md#class-operationbinding), or [DataSource](#class-datasource) level.
+For dataSources of [serverType](#attr-datasourceservertype) "sql" only, this property sets the multi-insert batch size for add requests on this [dataSource](#class-datasource). Only has an effect if the [add request](#method-datasourceadddata) specifies a list of records as the data, and only if [multiInsertStrategy](#attr-datasourcemultiinsertstrategy) is set to "multipleValues", either globally or at the [DSRequest](../reference_2.md#object-dsrequest), [OperationBinding](OperationBinding.md#class-operationbinding), or [DataSource](#class-datasource) level.
 
 The multi-insert batch size determines the maximum number of `VALUES` clauses SmartClient Server will generate for a single `INSERT` operation. The optimum value for this setting depends on the underlying database, but typically larger batches yield better performance. if the number of records in the request exceeds the batch size, we break it up into however many batches are required. For example, if the batch size is 55 and the request contains 200 records, we would create 4 database `INSERT` operations - 3 with 55 `VALUES` clauses, and a final one with the remaining 35.
 
@@ -2414,7 +2414,7 @@ Indicates that declarative security rules are waived for rows that were created 
 
 In order for this to work, we require two things:
 
-*   The DataSource must specify a field of type "creator" - this field type is described on [this page](../main_2.md#type-fieldtype)
+*   The DataSource must specify a field of type "creator" - this field type is described on [this page](../reference_2.md#type-fieldtype)
 *   The authentication regime in use must include the idea of a "current user". The authentication provided by the Servlet API is an example of such a regime.
 
 This setting can be overridden at operationBinding and field level, allowing extremely fine-grained control.
@@ -2474,7 +2474,7 @@ This property can be used in conjunction with [DataSource.ownerIdNullRole](#attr
 ## Attr: DataSource.iconField
 
 ### Description
-Designates a field of [type](../main_2.md#type-fieldtype):"image" as the field to use when rendering a record as an image, for example, in a [TileGrid](TileGrid.md#class-tilegrid).
+Designates a field of [type](../reference_2.md#type-fieldtype):"image" as the field to use when rendering a record as an image, for example, in a [TileGrid](TileGrid.md#class-tilegrid).
 
 For example, for a DataSource of employees, a "photo" field of type "image" should be designated as the iconField.
 
@@ -2557,7 +2557,7 @@ An example implementation of AuditDS could be as follows:
 
 ### See Also
 
-- [DataSourceField](../main_2.md#object-datasourcefield)
+- [DataSourceField](../reference_2.md#object-datasourcefield)
 
 **Flags**: IR
 
@@ -2577,7 +2577,7 @@ After a DataSource has been [created](Class.md#classmethod-classcreate), access 
 
 ### See Also
 
-- [DataSourceField](../main_2.md#object-datasourcefield)
+- [DataSourceField](../reference_2.md#object-datasourcefield)
 
 **Flags**: IR
 
@@ -2668,7 +2668,7 @@ A list of key/value pairs to pass as URL parameters when constructing the query 
       <userIdentifier>$config['rest.service.user.identifier']</userIdentifier>
     </params>
 ```
-Bear in mind that [requestFormat](#attr-datasourcerequestformat) "params" implies by default a behavior that automatically adds parameters corresponding to values and/or criteria (see the [RESTRequestFormat](../main.md#type-restrequestformat) docs for details), so you would not normally use this property to specify parameters based on request values. Any params explicitly specified with the `params` property at DataSource of operationBinding level will be added to the auto-created list of params implied if `requestFormat` is "params".
+Bear in mind that [requestFormat](#attr-datasourcerequestformat) "params" implies by default a behavior that automatically adds parameters corresponding to values and/or criteria (see the [RESTRequestFormat](../reference.md#type-restrequestformat) docs for details), so you would not normally use this property to specify parameters based on request values. Any params explicitly specified with the `params` property at DataSource of operationBinding level will be added to the auto-created list of params implied if `requestFormat` is "params".
 
 ### Groups
 
@@ -2680,7 +2680,7 @@ Bear in mind that [requestFormat](#attr-datasourcerequestformat) "params" implie
 ## Attr: DataSource.projectFileKey
 
 ### Description
-For DataSources with type [`projectFile`](../main_2.md#type-dsservertype), looks up the locations to use as [projectFileLocations](#attr-datasourceprojectfilelocations) from the project's configuration (i.e. project.properties, [server.properties](../kb_topics/server_properties.md#kb-topic-serverproperties-file) etc.).
+For DataSources with type [`projectFile`](../reference_2.md#type-dsservertype), looks up the locations to use as [projectFileLocations](#attr-datasourceprojectfilelocations) from the project's configuration (i.e. project.properties, [server.properties](../kb_topics/server_properties.md#kb-topic-serverproperties-file) etc.).
 
 For instance, to look up the value of project.datasources and use it for `projectFileLocations`, use "datasources" as the `projectFileKey`.
 
@@ -2700,7 +2700,7 @@ If you specify both `projectFileKey` and `projectFileLocations`, then both with 
 ## Attr: DataSource.logSlowUpdate
 
 ### Description
-Allows you to specify ["update" operation](../main.md#type-dsoperationtype) SQL query execution time threshold in milliseconds, which if exceeded query is identified as "slow" and may be logged under specific logging category.
+Allows you to specify ["update" operation](../reference.md#type-dsoperationtype) SQL query execution time threshold in milliseconds, which if exceeded query is identified as "slow" and may be logged under specific logging category.
 
 See [DataSource.logSlowSQL](#attr-datasourcelogslowsql) for more details.
 
@@ -2870,7 +2870,7 @@ Note, if you prefer a Java solution rather than placing scripts in your `.ds.xml
 ## Attr: DataSource.transformRequestScript
 
 ### Description
-A scriptlet to be executed on the server prior to running any operation on this dataSource. The intention is that this scriptlet transforms the DSRequest in some way - probably its [criteria](DSRequest.md#attr-dsrequestdata) and/or [values](DSRequest.md#attr-dsrequestdata), but maybe something less obvious, such as adding to its templateContext Map - prior to running the operation proper. It is provided to allow more complex, programmatic transformations than is possible with declarative [DSRequestModifier](../main_2.md#object-dsrequestmodifier)s, without having to handle the operation in a [DMI](DMI.md#class-dmi) or [handler script](#attr-datasourcescript). To avoid confusion, it should be noted that, in many cases, you could instead write request transformation logic in a [script](#attr-datasourcescript) and then have that script invoke execute() on the DSRequest to proceed with default behavior. The advantage of `transformRequestScript` is that it allows you partition any script logic appropriately, and is more self-documenting.
+A scriptlet to be executed on the server prior to running any operation on this dataSource. The intention is that this scriptlet transforms the DSRequest in some way - probably its [criteria](DSRequest.md#attr-dsrequestdata) and/or [values](DSRequest.md#attr-dsrequestdata), but maybe something less obvious, such as adding to its templateContext Map - prior to running the operation proper. It is provided to allow more complex, programmatic transformations than is possible with declarative [DSRequestModifier](../reference_2.md#object-dsrequestmodifier)s, without having to handle the operation in a [DMI](DMI.md#class-dmi) or [handler script](#attr-datasourcescript). To avoid confusion, it should be noted that, in many cases, you could instead write request transformation logic in a [script](#attr-datasourcescript) and then have that script invoke execute() on the DSRequest to proceed with default behavior. The advantage of `transformRequestScript` is that it allows you partition any script logic appropriately, and is more self-documenting.
 
 If [OperationBinding.transformRequestScript](OperationBinding.md#attr-operationbindingtransformrequestscript) is also specified, it will be executed for the operation binding in question _in addtion to_ and _after_ the DataSource-level script.
 
@@ -2930,7 +2930,7 @@ Note that when this property is unset, the default [DataSourceField.sqlStorageSt
 ### Description
 Controls when primary keys are required for "update" and "remove" server operations, when allowMultiUpdate has not been explicitly configured on either the [operationBinding.allowMultiUpdate](OperationBinding.md#attr-operationbindingallowmultiupdate) or via the server-side API `DSRequest.setAllowMultiUpdate()`.
 
-Default value of null means this DataSource will use the system-wide default, which is set via `datasources.defaultMultiUpdatePolicy` in [server.properties](../kb_topics/server_properties.md#kb-topic-serverproperties-file), and defaults to not allowing multi updates for requests associated with an RPCManager, see [MultiUpdatePolicy](../main.md#type-multiupdatepolicy) for details.
+Default value of null means this DataSource will use the system-wide default, which is set via `datasources.defaultMultiUpdatePolicy` in [server.properties](../kb_topics/server_properties.md#kb-topic-serverproperties-file), and defaults to not allowing multi updates for requests associated with an RPCManager, see [MultiUpdatePolicy](../reference.md#type-multiupdatepolicy) for details.
 
 ### See Also
 
@@ -2985,7 +2985,7 @@ For JPA and Hibernate DataSources this property indicates, that data source has 
 ### Description
 For DataSources with [auditing enabled](#attr-datasourceaudit), specifies the field name used to store the names of the fields which were updated. If empty string is specified as the field name, the audit DataSource will not store this field.
 
-Note that this field will only be set for [update](../main.md#type-dsoperationtype) operations.
+Note that this field will only be set for [update](../reference.md#type-dsoperationtype) operations.
 
 **Flags**: IR
 
@@ -2993,7 +2993,7 @@ Note that this field will only be set for [update](../main.md#type-dsoperationty
 ## Attr: DataSource.patternEscapeChar
 
 ### Description
-When using the [pattern operators](../kb_topics/patternOperators.md#kb-topic-patternoperators) [search operator](../main.md#type-operatorid), character that escapes the [DataSource.patternSingleWildcard](#attr-datasourcepatternsinglewildcard) or [DataSource.patternMultiWildcard](#attr-datasourcepatternmultiwildcard) if placed before it, so that it is treated as a literal character.
+When using the [pattern operators](../kb_topics/patternOperators.md#kb-topic-patternoperators) [search operator](../reference.md#type-operatorid), character that escapes the [DataSource.patternSingleWildcard](#attr-datasourcepatternsinglewildcard) or [DataSource.patternMultiWildcard](#attr-datasourcepatternmultiwildcard) if placed before it, so that it is treated as a literal character.
 
 **Flags**: IR
 
@@ -3001,7 +3001,7 @@ When using the [pattern operators](../kb_topics/patternOperators.md#kb-topic-pat
 ## Attr: DataSource.deepCloneOnEdit
 
 ### Description
-Before we start editing values in [DataBoundComponent](../main.md#interface-databoundcomponent)s bound to this dataSource, should we perform a deep clone of the underlying values (a "deep clone" is one created by traversing the original values object recursively, cloning the contents of nested objects and arrays). If this flag is explicitly set to false, we perform a shallow clone of the underlying values before edit (a "shallow clone" is a copy created by simply copying the top-level attributes of an object). Note, this setting only affects deep-cloning of attributes that are bound to a field; for other, non-field values, see [DataSource.deepCloneNonFieldValuesOnEdit](#attr-datasourcedeepclonenonfieldvaluesonedit).
+Before we start editing values in [DataBoundComponent](../reference.md#interface-databoundcomponent)s bound to this dataSource, should we perform a deep clone of the underlying values (a "deep clone" is one created by traversing the original values object recursively, cloning the contents of nested objects and arrays). If this flag is explicitly set to false, we perform a shallow clone of the underlying values before edit (a "shallow clone" is a copy created by simply copying the top-level attributes of an object). Note, this setting only affects deep-cloning of attributes that are bound to a field; for other, non-field values, see [DataSource.deepCloneNonFieldValuesOnEdit](#attr-datasourcedeepclonenonfieldvaluesonedit).
 
 If this flag is not explicitly set, it defaults to the value of the same-named static property, [DataSource.deepCloneOnEdit](#classattr-datasourcedeepcloneonedit). This flag can also be overridden per-component and per-field - see [DataBoundComponent.deepCloneOnEdit](DataBoundComponent.md#attr-databoundcomponentdeepcloneonedit) and [DataSourceField.deepCloneOnEdit](DataSourceField.md#attr-datasourcefielddeepcloneonedit).
 
@@ -3041,7 +3041,7 @@ This property only has an effect if `forceSort` is in effect for the fetch opera
 ```
 Note, the `defaultSortField` should ideally provide a unique ordering: so for an employee table, payroll number would be preferable to employee name. A non-unique ordering will usually be sufficient to ensure stablity of ordering from one query to the next, because it will usually ensure that the database is forced to use the same index in each case. However, the database may still choose to order rows differently within the confines of the non-unique ordering, so only a unique ordering is guaranteed to ensure stability.
 
-Fields of [type](../main_2.md#type-fieldtype) `creatorTimestamp` are also good candidates for this purpose - assuming you have a suitable index in place, and assuming sorting by temporal values does not introduce performance problems with your database of choice - as they are often unique or near-to-unique, and they reflect the insertion order, which is the "natural ordering" in some (not all) databases.
+Fields of [type](../reference_2.md#type-fieldtype) `creatorTimestamp` are also good candidates for this purpose - assuming you have a suitable index in place, and assuming sorting by temporal values does not introduce performance problems with your database of choice - as they are often unique or near-to-unique, and they reflect the insertion order, which is the "natural ordering" in some (not all) databases.
 
 Note that this automatic sorting does not interfere with the ordinary sorting that your application may do: it is applied _in addition to_ any application sort order. So if your application imposes no [sort order](ListGrid_2.md#method-listgridsetsort), the resultset will be sorted by the `defaultSortField`; if your application requests a sort order of, eg, "state" then "city", the resultset will be ordered by "state", then "city", and then the `defaultSortField`
 
@@ -3077,7 +3077,7 @@ This property has a different implementation depending upon the [serverType](#at
 
 Note that when dataSource schema is derived by introspecting the Java class or Spring bean the derived fields are sorted alphabetically, but with [primary key](DataSourceField.md#attr-datasourcefieldprimarykey) fields at the top.
 #### Field types
-The following table shows how SQL types are derived into [DataSource types](../main_2.md#type-fieldtype) when we use an SQL table as a source of metadata for a SQL or Hibernate DataSource:
+The following table shows how SQL types are derived into [DataSource types](../reference_2.md#type-fieldtype) when we use an SQL table as a source of metadata for a SQL or Hibernate DataSource:
 
 | SQL type | [DataSource type](DataSourceField.md#attr-datasourcefieldtype) |
 |---|---|
@@ -3235,7 +3235,7 @@ If not set, this flag defaults to the `server.properties` setting `sql.{dbName}.
 ## Attr: DataSource.allowAdvancedCriteria
 
 ### Description
-By default, all DataSources are assumed to be capable of handling [AdvancedCriteria](../main.md#object-advancedcriteria) on fetch or filter type operations. This property may be set to `false` to indicate that this dataSource does not support advancedCriteria. See [DataSource.supportsAdvancedCriteria](#method-datasourcesupportsadvancedcriteria) for further information on this.
+By default, all DataSources are assumed to be capable of handling [AdvancedCriteria](../reference.md#object-advancedcriteria) on fetch or filter type operations. This property may be set to `false` to indicate that this dataSource does not support advancedCriteria. See [DataSource.supportsAdvancedCriteria](#method-datasourcesupportsadvancedcriteria) for further information on this.
 
 **NOTE:** If you specify this property in a DataSource descriptor (`.ds.xml` file), it is enforced on the server. This means that if you run a request containing AdvancedCriteria against a DataSource that advertises itself as `allowAdvancedCriteria:false`, it will be rejected.
 
@@ -3442,7 +3442,7 @@ Setting a DataSource to be `serverOnly="true"` ensures that it will not be visib
 ## Attr: DataSource.multiInsertStrategy
 
 ### Description
-For dataSources of [serverType](#attr-datasourceservertype) "sql" only, this property sets the multi-insert strategy for add requests on this [dataSource](#class-datasource). Only has an effect if the [add request](#method-datasourceadddata) specifies a list of records as the data. See the docs for [MultiInsertStrategy](../main_2.md#type-multiinsertstrategy) for more information.
+For dataSources of [serverType](#attr-datasourceservertype) "sql" only, this property sets the multi-insert strategy for add requests on this [dataSource](#class-datasource). Only has an effect if the [add request](#method-datasourceadddata) specifies a list of records as the data. See the docs for [MultiInsertStrategy](../reference_2.md#type-multiinsertstrategy) for more information.
 
 Note that this setting (along with the other multi-insert properties, [multiInsertBatchSize](#attr-datasourcemultiinsertbatchsize) and [multiInsertNonMatchingStrategy](#attr-datasourcemultiinsertnonmatchingstrategy)) can be overridden at the [operationBinding level](OperationBinding.md#attr-operationbindingmultiinsertstrategy) and the [dsRequest level](DSRequest.md#attr-dsrequestmultiinsertstrategy). If you wish to configure multi-insert setting globally, you can add the following properties to your `server.properties` file:
 
@@ -3571,7 +3571,7 @@ Note that there is no inherent support for millisecond precision in SmartClient 
 ## Attr: DataSource.requestProperties
 
 ### Description
-Additional properties to pass through to the [DSRequest](../main_2.md#object-dsrequest)s made by this DataSource. This must be set before any [DSRequest](../main_2.md#object-dsrequest)s are issued and before any component is bound to the DataSource.
+Additional properties to pass through to the [DSRequest](../reference_2.md#object-dsrequest)s made by this DataSource. This must be set before any [DSRequest](../reference_2.md#object-dsrequest)s are issued and before any component is bound to the DataSource.
 
 These properties are applied before [DataSource.transformRequest](#method-datasourcetransformrequest) is called.
 
@@ -3582,7 +3582,7 @@ These properties are applied before [DataSource.transformRequest](#method-dataso
 
 ### See Also
 
-- [DSRequest](../main_2.md#object-dsrequest)
+- [DSRequest](../reference_2.md#object-dsrequest)
 - [OperationBinding.requestProperties](OperationBinding.md#attr-operationbindingrequestproperties)
 
 **Flags**: IRW
@@ -3591,7 +3591,7 @@ These properties are applied before [DataSource.transformRequest](#method-dataso
 ## Attr: DataSource.auditTypeFieldName
 
 ### Description
-For DataSources with [auditing enabled](#attr-datasourceaudit), specifies the field name used to store the [operationType](../main.md#type-dsoperationtype) (in a field of type "text"). If empty string is specified as the field name, the audit DataSource will not store this field.
+For DataSources with [auditing enabled](#attr-datasourceaudit), specifies the field name used to store the [operationType](../reference.md#type-dsoperationtype) (in a field of type "text"). If empty string is specified as the field name, the audit DataSource will not store this field.
 
 **Flags**: IR
 
@@ -3629,7 +3629,7 @@ For DataSources of [serverType](#attr-datasourceservertype) "sql" only, some tex
 ## Attr: DataSource.arrayCriteriaForceExact
 
 ### Description
-With ordinary [simple criteria](../main_2.md#type-criteria), it is possible to provide an array of values for a given field, which means "any of these values". For example:
+With ordinary [simple criteria](../reference_2.md#type-criteria), it is possible to provide an array of values for a given field, which means "any of these values". For example:
 ```
   var criteria = {
     field1 : "value1",
@@ -3638,7 +3638,7 @@ With ordinary [simple criteria](../main_2.md#type-criteria), it is possible to p
 ```
 At first glance, this criteria appears to mean "select records where 'field1' is 'value1' and 'field2' is one of 'value2' or 'value3'". However, if the prevailing [textMatchStyle](DSRequest.md#attr-dsrequesttextmatchstyle) is "substring" - as it would be if, for example, you had issued a [filterData()](#method-datasourcefilterdata) call - then this criteria means "select records where 'field1' contains 'value1' somewhere, and 'field2' contains either 'value2' or 'value3'"
 
-Depending on your requirement, this may or may not be what you want, and you can control it by setting the `textMatchStyle` on your [DSRequest](../main_2.md#object-dsrequest), or by setting a default `textMatchStyle` on the DataSource ([DataSource.defaultTextMatchStyle](#attr-datasourcedefaulttextmatchstyle)), or by specifying that the `textMatchStyle` should be ignored for certain fields ([DataSourceField.ignoreTextMatchStyle](DataSourceField.md#attr-datasourcefieldignoretextmatchstyle))
+Depending on your requirement, this may or may not be what you want, and you can control it by setting the `textMatchStyle` on your [DSRequest](../reference_2.md#object-dsrequest), or by setting a default `textMatchStyle` on the DataSource ([DataSource.defaultTextMatchStyle](#attr-datasourcedefaulttextmatchstyle)), or by specifying that the `textMatchStyle` should be ignored for certain fields ([DataSourceField.ignoreTextMatchStyle](DataSourceField.md#attr-datasourcefieldignoretextmatchstyle))
 
 However, a common use case is that you want "substring" style filtering on one or more single-valued fields, but exact matching on a list-valued field. For example, say you want a list of customers based in certain cities, with a name matching the substring "software":
 
@@ -3847,7 +3847,7 @@ The maximum time, in seconds, to maintain the client-side cache. If a fetch occu
 ## Attr: DataSource.projectFileLocations
 
 ### Description
-For DataSources with type [`projectFile`](../main_2.md#type-dsservertype), specifies locations for the project files. In XML, each location is expressed with a ``<location>`` tag, e.g.:
+For DataSources with type [`projectFile`](../reference_2.md#type-dsservertype), specifies locations for the project files. In XML, each location is expressed with a ``<location>`` tag, e.g.:
 ```
      <projectFileLocations>
          <location>[WEBROOT]/shared/ds</location>
@@ -3933,7 +3933,7 @@ If you specify both [projectFileKey](#attr-datasourceprojectfilekey) and `projec
 ## Attr: DataSource.allowCriteriaSubqueries
 
 ### Description
-Controls whether [AdvancedCriteria subqueries](../main.md#object-advancedcriterionsubquery) are permitted for this `DataSource`. Set this value `true` to always permit subqueries in criteria on this dataSource, and set it false to always disallow them.
+Controls whether [AdvancedCriteria subqueries](../reference.md#object-advancedcriterionsubquery) are permitted for this `DataSource`. Set this value `true` to always permit subqueries in criteria on this dataSource, and set it false to always disallow them.
 
 The default value of null means that we use the global setting, controlled by setting the `allowCriteriaSubqueries` flag in your `server.properties` file (this global flag is true by default))
 
@@ -3951,11 +3951,11 @@ Requires that the currently authenticated user match the contents of this field,
 
 Note, the behaviors described below can be affected by the dataSource properties [ownerIdNullRole](#attr-datasourceowneridnullrole) and [ownerIdNullAccess](#attr-datasourceowneridnullaccess), so please read the documentation for those two properties in conjunction with this article.
 
-When a new row is added by a client-initiated [DSRequest](../main_2.md#object-dsrequest), the ownerIdField will be automatically populated with the currently authenticated user (clobbering any value supplied by the client). Client-initiated attempts to update the ownerIdField will also be prevented.
+When a new row is added by a client-initiated [DSRequest](../reference_2.md#object-dsrequest), the ownerIdField will be automatically populated with the currently authenticated user (clobbering any value supplied by the client). Client-initiated attempts to update the ownerIdField will also be prevented.
 
 If you wish to set the ownerIdField to a different value via an "add" or "update" operation, you can do so in server-side DMI code (possibly consulting `DSRequest.getClientSuppliedValues()` to get the value that was clobbered).
 
-For client-initiated "fetch", "update" or "remove" operations, the server will modify client-supplied criteria so that only rows whose ownerIdField matches the currently authenticated user can be read, updated or deleted. For built-in DataSource types (SQL, Hibernate and JPA), the additional criteria required to match the `ownerIdField` field will ignore the prevailing [textMatchStyle](DSRequest.md#attr-dsrequesttextmatchstyle) and always use exact equality. If you have a custom or generic DataSource implementation, you will want to do the same thing, to avoid false positives on partial matches (eg, a user with name "a" gets records where the owner is any user with an "a" in the name). You can determine when this is necessary by looking for a [DSRequest](../main_2.md#object-dsrequest) attribute called "restrictedOwnerIdField". For example, code similar to the following:
+For client-initiated "fetch", "update" or "remove" operations, the server will modify client-supplied criteria so that only rows whose ownerIdField matches the currently authenticated user can be read, updated or deleted. For built-in DataSource types (SQL, Hibernate and JPA), the additional criteria required to match the `ownerIdField` field will ignore the prevailing [textMatchStyle](DSRequest.md#attr-dsrequesttextmatchstyle) and always use exact equality. If you have a custom or generic DataSource implementation, you will want to do the same thing, to avoid false positives on partial matches (eg, a user with name "a" gets records where the owner is any user with an "a" in the name). You can determine when this is necessary by looking for a [DSRequest](../reference_2.md#object-dsrequest) attribute called "restrictedOwnerIdField". For example, code similar to the following:
 
 ```
 	String restrictedField = (String)dsRequest.getAttribute("restrictedOwnerIdField");
@@ -4069,11 +4069,11 @@ Note that **only fields are inherited** - other properties such as dataURL and d
 
 This feature can be used for:
 
-*   creating a customized view (eg, only certain fields shown) which will be used by multiple [databound components](../main.md#interface-databoundcomponent).
+*   creating a customized view (eg, only certain fields shown) which will be used by multiple [databound components](../reference.md#interface-databoundcomponent).
 *   adding presentation-specific attributes to metadata that has been automatically derived from [XML Schema](XMLTools.md#classmethod-xmltoolsloadxmlschema) or other metadata formats
 *   modeling object subclassing and extension in server-side code and storage systems
 *   modeling relational database joins, and the equivalents in other systems
-*   creating hooks for others to customize your application in a maintainable way. For example, if you have a dataSource "employee", you can create a dataSource "customizedEmployee" which inherits from "employee" but does not initially define any fields, and bind all [databound components](../main.md#interface-databoundcomponent) to "customizedEmployee". Customizations of fields (including appearance changes, field order, new fields, hiding of fields, and custom validation rules) can be added to "customizedEmployee", so that they are kept separately from the original field data and have the best possible chance of working with future versions of the "employee" dataSource.
+*   creating hooks for others to customize your application in a maintainable way. For example, if you have a dataSource "employee", you can create a dataSource "customizedEmployee" which inherits from "employee" but does not initially define any fields, and bind all [databound components](../reference.md#interface-databoundcomponent) to "customizedEmployee". Customizations of fields (including appearance changes, field order, new fields, hiding of fields, and custom validation rules) can be added to "customizedEmployee", so that they are kept separately from the original field data and have the best possible chance of working with future versions of the "employee" dataSource.
 
 ### Groups
 
@@ -4087,7 +4087,7 @@ This feature can be used for:
 ### Description
 Applies to RestConnector dataSources ([serverType](#attr-datasourceservertype) "rest") only, and is overridable per operationBinding (see [OperationBinding.wrapInList](OperationBinding.md#attr-operationbindingwrapinlist)).
 
-When true, and the [requestFormat](#attr-datasourcerequestformat) is "json", and the [dsRequest](../main_2.md#object-dsrequest) only contains a single valueSet, we will wrap that single valueSet in a list before sending to the remote REST server. This is useful if you have a remote service that wants data to be supplied as a list, even when there is only one entry in the list
+When true, and the [requestFormat](#attr-datasourcerequestformat) is "json", and the [dsRequest](../reference_2.md#object-dsrequest) only contains a single valueSet, we will wrap that single valueSet in a list before sending to the remote REST server. This is useful if you have a remote service that wants data to be supplied as a list, even when there is only one entry in the list
 
 ### Groups
 
@@ -4115,7 +4115,7 @@ For audit DataSources, this required property specifies the ID of the [audited](
 ## Attr: DataSource.patternMultiWildcard
 
 ### Description
-When using the [pattern operators](../kb_topics/patternOperators.md#kb-topic-patternoperators) [search operator](../main.md#type-operatorid), character that matches a series of one or more characters.
+When using the [pattern operators](../kb_topics/patternOperators.md#kb-topic-patternoperators) [search operator](../reference.md#type-operatorid), character that matches a series of one or more characters.
 
 Pass multiple strings to provide multiple alternative wildcards.
 
@@ -4153,7 +4153,7 @@ Unlike strings and numbers, there is no "natural" choice for a null replacement 
 ## Attr: DataSource.dataField
 
 ### Description
-Name of the field that has the most pertinent numeric, date, or enum value, for use when a [DataBoundComponent](../main.md#interface-databoundcomponent) needs to show a short summary of a record.
+Name of the field that has the most pertinent numeric, date, or enum value, for use when a [DataBoundComponent](../reference.md#interface-databoundcomponent) needs to show a short summary of a record.
 
 For example, for a DataSource of employees, good choices might be the "salary" field, "hire date" or "status" (active, vacation, on leave, etc).
 
@@ -4169,7 +4169,7 @@ Unlike [DataSource.titleField](#attr-datasourcetitlefield), dataField is not aut
 ## ClassMethod: DataSource.makeFileSpec
 
 ### Description
-Converts a file path to a [FileSpec](../main.md#object-filespec).
+Converts a file path to a [FileSpec](../reference.md#object-filespec).
 
 ### Parameters
 
@@ -4195,7 +4195,7 @@ Lookup a DataSource by ID.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| ID | [GlobalId](../main.md#type-globalid) | false | — | DataSource ID |
+| ID | [GlobalId](../reference.md#type-globalid) | false | — | DataSource ID |
 
 ### Returns
 
@@ -4285,7 +4285,7 @@ The Java API DSResponse.addError(fieldName, errorMessage) is used to send server
 
 ### Returns
 
-`[Object](../main.md#type-object)` — Map of fieldName to error messages for the errors included in the DSResponse.
+`[Object](../reference.md#type-object)` — Map of fieldName to error messages for the errors included in the DSResponse.
 
 ### Groups
 
@@ -4297,7 +4297,7 @@ The Java API DSResponse.addError(fieldName, errorMessage) is used to send server
 ### Description
 Returns true if a given AdvancedCriteria is "flat." That is, the criteria consists of either:
 
-*   a top-level "and" or "or" [Criterion](../main_2.md#object-criterion), where none of the [subcriteria](Criterion.md#attr-criterioncriteria) use [logical operators](../main_2.md#type-logicaloperator), hence have no subcriteria of their own
+*   a top-level "and" or "or" [Criterion](../reference_2.md#object-criterion), where none of the [subcriteria](Criterion.md#attr-criterioncriteria) use [logical operators](../reference_2.md#type-logicaloperator), hence have no subcriteria of their own
 *   a single Criterion that is not a logical operator, hence has no subcriteria
 
 ### Parameters
@@ -4308,7 +4308,7 @@ Returns true if a given AdvancedCriteria is "flat." That is, the criteria consis
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true if criteria is flat
+`[boolean](../reference.md#type-boolean)` — true if criteria is flat
 
 ---
 ## ClassMethod: DataSource.loadWithParents
@@ -4324,20 +4324,20 @@ If the parent DataSource is already loaded, calling `loadWithParents` will not a
 |------|------|----------|---------|-------------|
 | dsID | [String](#type-string)|[Array of String](#type-array-of-string) | false | — | DataSource ID or Array of DataSource IDs |
 | callback | [Function](#type-function) | false | — | Callback to fire after DataSource loading completes |
-| forceReload | [boolean](../main.md#type-boolean)|[DSLoadSettings](#type-dsloadsettings) | true | — | Forcibly reload a dataSource if it's already loaded |
+| forceReload | [boolean](../reference.md#type-boolean)|[DSLoadSettings](#type-dsloadsettings) | true | — | Forcibly reload a dataSource if it's already loaded |
 
 ---
 ## ClassMethod: DataSource.registerRecordSummaryFunction
 
 ### Description
-Register a new [RecordSummaryFunction](../main_2.md#type-recordsummaryfunction). This will then be available by calling [DataSource.applyRecordSummaryFunction](#classmethod-datasourceapplyrecordsummaryfunction) and passing in the `functionName`, or by setting the [ListGridField.recordSummaryFunction](ListGridField.md#attr-listgridfieldrecordsummaryfunction) property of a summary field to `functionName`.
+Register a new [RecordSummaryFunction](../reference_2.md#type-recordsummaryfunction). This will then be available by calling [DataSource.applyRecordSummaryFunction](#classmethod-datasourceapplyrecordsummaryfunction) and passing in the `functionName`, or by setting the [ListGridField.recordSummaryFunction](ListGridField.md#attr-listgridfieldrecordsummaryfunction) property of a summary field to `functionName`.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | functionName | [String](#type-string) | false | — | identifier for the new record summary function |
-| summaryFunction | [Function](#type-function)|[StringMethod](../main_2.md#type-stringmethod) | false | — | new summary function implementation. This method takes 3 parameters: `record` (the record for which the summary is being generated), `fields` (an array of the available fields) and `summaryField` (the summary field). |
+| summaryFunction | [Function](#type-function)|[StringMethod](../reference_2.md#type-stringmethod) | false | — | new summary function implementation. This method takes 3 parameters: `record` (the record for which the summary is being generated), `fields` (an array of the available fields) and `summaryField` (the summary field). |
 
 ---
 ## ClassMethod: DataSource.load
@@ -4353,7 +4353,7 @@ To force reloading of DataSources that have already been loaded, pass `true` for
 |------|------|----------|---------|-------------|
 | dsID | [String](#type-string)|[Array of String](#type-array-of-string) | false | — | DataSource ID or Array of DataSource IDs |
 | callback | [Function](#type-function) | false | — | Callback to fire after DataSource loading completes |
-| forceReload | [boolean](../main.md#type-boolean)|[DSLoadSettings](#type-dsloadsettings) | true | — | Forcibly reload a dataSource if it's already loaded |
+| forceReload | [boolean](../reference.md#type-boolean)|[DSLoadSettings](#type-dsloadsettings) | true | — | Forcibly reload a dataSource if it's already loaded |
 
 ---
 ## ClassMethod: DataSource.convertCriteria
@@ -4365,8 +4365,8 @@ Converts criteria expressed in SmartClient's simple criteria format to an Advanc
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| criteria | [Criteria](../main_2.md#type-criteria) | false | — | simple criteria |
-| textMatchStyle | [TextMatchStyle](../main_2.md#type-textmatchstyle) | true | — | default style of matching text. Defaults to "substring" |
+| criteria | [Criteria](../reference_2.md#type-criteria) | false | — | simple criteria |
+| textMatchStyle | [TextMatchStyle](../reference_2.md#type-textmatchstyle) | true | — | default style of matching text. Defaults to "substring" |
 
 ### Returns
 
@@ -4411,7 +4411,7 @@ This method will call the [updateAtomicValue()](SimpleType.md#method-simpletypeu
 ## ClassMethod: DataSource.getSortBy
 
 ### Description
-Given an array of [SortSpecifier](../main_2.md#object-sortspecifier)s, return a simple list of Strings in the format expected by [DSRequest.sortBy](DSRequest.md#attr-dsrequestsortby).
+Given an array of [SortSpecifier](../reference_2.md#object-sortspecifier)s, return a simple list of Strings in the format expected by [DSRequest.sortBy](DSRequest.md#attr-dsrequestsortby).
 
 ### Parameters
 
@@ -4437,14 +4437,14 @@ Combines two criteria (either simple criteria objects or AdvancedCriteria) using
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| criteria1 | [Criteria](../main_2.md#type-criteria) | false | — | first criteria object |
-| criteria2 | [Criteria](../main_2.md#type-criteria) | false | — | second criteria object |
-| outerOperator | [CriteriaCombineOperator](../main_2.md#type-criteriacombineoperator) | true | — | operator to use to combine the criteria. Defaults to "and" |
-| textMatchStyle | [TextMatchStyle](../main_2.md#type-textmatchstyle) | true | — | style of matching text, if it is necessary to convert a simple criteria object to an AdvancedCriteria. Defaults to "substring" |
+| criteria1 | [Criteria](../reference_2.md#type-criteria) | false | — | first criteria object |
+| criteria2 | [Criteria](../reference_2.md#type-criteria) | false | — | second criteria object |
+| outerOperator | [CriteriaCombineOperator](../reference_2.md#type-criteriacombineoperator) | true | — | operator to use to combine the criteria. Defaults to "and" |
+| textMatchStyle | [TextMatchStyle](../reference_2.md#type-textmatchstyle) | true | — | style of matching text, if it is necessary to convert a simple criteria object to an AdvancedCriteria. Defaults to "substring" |
 
 ### Returns
 
-`[Criteria](../main_2.md#type-criteria)` — The combined criteria
+`[Criteria](../reference_2.md#type-criteria)` — The combined criteria
 
 ---
 ## ClassMethod: DataSource.clearValueAtDataPath
@@ -4466,13 +4466,13 @@ This method will call the [updateAtomicValue()](SimpleType.md#method-simpletypeu
 ## ClassMethod: DataSource.applyRecordSummaryFunction
 
 ### Description
-Applies a [RecordSummaryFunction](../main_2.md#type-recordsummaryfunction) to a record and returns the result.
+Applies a [RecordSummaryFunction](../reference_2.md#type-recordsummaryfunction) to a record and returns the result.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| summaryFunction | [RecordSummaryFunction](../main_2.md#type-recordsummaryfunction) | false | — | The record summary function to execute. |
+| summaryFunction | [RecordSummaryFunction](../reference_2.md#type-recordsummaryfunction) | false | — | The record summary function to execute. |
 | record | [Record](#type-record) | false | — | Record to retrieve a summary for. |
 | fields | [Array of Field](#type-array-of-field) | false | — | The available fields. |
 | summaryField | [DBCField](#type-dbcfield) | false | — | The summary field. |
@@ -4507,19 +4507,19 @@ Returns true if calling [DataSource.flattenCriteria](#classmethod-datasourceflat
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true if criteria can be flattened without logical change
+`[boolean](../reference.md#type-boolean)` — true if criteria can be flattened without logical change
 
 ---
 ## ClassMethod: DataSource.setTypeOperators
 
 ### Description
-Set the list of valid [OperatorId](../main.md#type-operatorid)s for a given FieldType.
+Set the list of valid [OperatorId](../reference.md#type-operatorid)s for a given FieldType.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| typeName | [String](#type-string)|[FieldType](../main_2.md#type-fieldtype) | false | — | — |
+| typeName | [String](#type-string)|[FieldType](../reference_2.md#type-fieldtype) | false | — | — |
 | operators | [Array of OperatorId](#type-array-of-operatorid)[] | false | — | available Operators |
 
 ### Groups
@@ -4530,7 +4530,7 @@ Set the list of valid [OperatorId](../main.md#type-operatorid)s for a given Fiel
 ## ClassMethod: DataSource.getSortSpecifiers
 
 ### Description
-Return an array of [SortSpecifier](../main_2.md#object-sortspecifier)s, given an array of Strings in the format expected by [DSRequest.sortBy](DSRequest.md#attr-dsrequestsortby).
+Return an array of [SortSpecifier](../reference_2.md#object-sortspecifier)s, given an array of Strings in the format expected by [DSRequest.sortBy](DSRequest.md#attr-dsrequestsortby).
 
 ### Parameters
 
@@ -4541,7 +4541,7 @@ Return an array of [SortSpecifier](../main_2.md#object-sortspecifier)s, given an
 
 ### Returns
 
-`[Array of SortSpecifier](#type-array-of-sortspecifier)` — An array of [SortSpecifier](../main_2.md#object-sortspecifier)s equivalent to the passed in string array
+`[Array of SortSpecifier](#type-array-of-sortspecifier)` — An array of [SortSpecifier](../reference_2.md#object-sortspecifier)s equivalent to the passed in string array
 
 ---
 ## ClassMethod: DataSource.get
@@ -4553,7 +4553,7 @@ Synonym of [DataSource.getDataSource](#classmethod-datasourcegetdatasource): Loo
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| ID | [GlobalId](../main.md#type-globalid) | false | — | DataSource ID |
+| ID | [GlobalId](../reference.md#type-globalid) | false | — | DataSource ID |
 
 ### Returns
 
@@ -4569,11 +4569,11 @@ Create a copy of a criteria.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| criteria | [Criteria](../main_2.md#type-criteria) | false | — | criteria to copy |
+| criteria | [Criteria](../reference_2.md#type-criteria) | false | — | criteria to copy |
 
 ### Returns
 
-`[Criteria](../main_2.md#type-criteria)` — copy of criteria
+`[Criteria](../reference_2.md#type-criteria)` — copy of criteria
 
 ---
 ## ClassMethod: DataSource.verifyDataSourcePair
@@ -4653,7 +4653,7 @@ Returns true if the operator list for the passed type has been customized via a 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| typeName | [String](#type-string)|[FieldType](../main_2.md#type-fieldtype) | false | — | — |
+| typeName | [String](#type-string)|[FieldType](../reference_2.md#type-fieldtype) | false | — | — |
 | ds | [DataSource](#type-datasource) | false | — | — |
 
 ### Groups
@@ -4678,7 +4678,7 @@ Note that field [displayFormat](DataSourceField.md#attr-datasourcefielddateforma
 |------|------|----------|---------|-------------|
 | data | [Array of Record](#type-array-of-record) | false | — | Array of Records to export |
 | requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | Request properties for the export |
-| callback | [DSCallback](../main_2.md#type-dscallback) | true | — | Optional callback. Note that this is only applicable if you also specify [exportToClient](DSRequest.md#attr-dsrequestexporttoclient): false in the request properties |
+| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | Optional callback. Note that this is only applicable if you also specify [exportToClient](DSRequest.md#attr-dsrequestexporttoclient): false in the request properties |
 
 ---
 ## ClassMethod: DataSource.getLoaderURL
@@ -4720,7 +4720,7 @@ The following approach is taken:
 ## Method: DataSource.getFieldOperators
 
 ### Description
-Get the list of [OperatorId](../main.md#type-operatorid)s available for this field.
+Get the list of [OperatorId](../reference.md#type-operatorid)s available for this field.
 
 By default, if [field.validOperators](DataSourceField.md#attr-datasourcefieldvalidoperators) is set, returns that list, otherwise returns the result of [DataSource.getTypeOperators](#method-datasourcegettypeoperators).
 
@@ -4821,7 +4821,7 @@ Rename a file stored in this DataSource. Note, if [automatic file versioning](#a
 |------|------|----------|---------|-------------|
 | oldFileSpec | [FileSpec](#type-filespec)|[String](#type-string) | false | — | Either a FileSpec, or a String which will be parsed to determine the fileName, fileType and fileFormat of the file to rename. For instance, "employees.ds.xml" would be parsed as {fileName: "employees", fileType: "ds", fileFormat: "xml"}. Depending on the configuration of the DataSource, the fileType and fileFormat may be optional. |
 | newFileSpec | [FileSpec](#type-filespec)|[String](#type-string) | false | — | Either a FileSpec, or a String which will be parsed to determine the fileName, fileType and fileFormat to rename the file to. For instance, "employees.ds.xml" would be parsed as {fileName: "employees", fileType: "ds", fileFormat: "xml"}. If the fileType or fileFormat are not provided, then they will not be changed. |
-| callback | [DSCallback](../main_2.md#type-dscallback) | true | — | Callback executed with the results. The `data` parameter is either an array of records represening the renamed file(s), or null to indicate an error. The records will have their `fileName` fields and `fileType` fields populated, but not the `fileContents` field. You can examine `[dsResponse.status](DSResponse.md#attr-dsresponsestatus)` and `[dsResponse.data](DSResponse.md#attr-dsresponsedata)` for additional information about any error. |
+| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | Callback executed with the results. The `data` parameter is either an array of records represening the renamed file(s), or null to indicate an error. The records will have their `fileName` fields and `fileType` fields populated, but not the `fileContents` field. You can examine `[dsResponse.status](DSResponse.md#attr-dsresponsestatus)` and `[dsResponse.data](DSResponse.md#attr-dsresponsedata)` for additional information about any error. |
 
 ### Groups
 
@@ -4842,7 +4842,7 @@ Convenience method to test if two records are equal. Testing is done only for th
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true if the records are equal, false otherwise.
+`[boolean](../reference.md#type-boolean)` — true if the records are equal, false otherwise.
 
 ---
 ## Method: DataSource.formatFieldValue
@@ -4856,7 +4856,7 @@ Note that if [DataSourceField.format](DataSourceField.md#attr-datasourcefieldfor
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| field | [DataSourceField](#type-datasourcefield)|[FieldName](../main.md#type-fieldname) | false | — | name of the field to use to format value |
+| field | [DataSourceField](#type-datasourcefield)|[FieldName](../reference.md#type-fieldname) | false | — | name of the field to use to format value |
 | value | [Any](#type-any) | false | — | raw value to be formatted |
 
 ### Returns
@@ -4876,7 +4876,7 @@ If a callback was provided, it will be invoked when the operation completes succ
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | updatedRecord | [Record Properties](#type-record-properties) | false | — | updated record |
-| callback | [DSCallback](../main_2.md#type-dscallback) | true | — | callback to invoke on completion |
+| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke on completion |
 | requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | additional properties to set on the DSRequest that will be issued |
 
 ### Groups
@@ -4887,7 +4887,7 @@ If a callback was provided, it will be invoked when the operation completes succ
 ## Method: DataSource.getDataProtocol
 
 ### Description
-Returns the appropriate [OperationBinding.dataProtocol](OperationBinding.md#attr-operationbindingdataprotocol) for a [DSRequest](../main_2.md#object-dsrequest)
+Returns the appropriate [OperationBinding.dataProtocol](OperationBinding.md#attr-operationbindingdataprotocol) for a [DSRequest](../reference_2.md#object-dsrequest)
 
 ### Parameters
 
@@ -4897,7 +4897,7 @@ Returns the appropriate [OperationBinding.dataProtocol](OperationBinding.md#attr
 
 ### Returns
 
-`[DSProtocol](../main_2.md#type-dsprotocol)` — DataProtocol to be used for this request operation.
+`[DSProtocol](../reference_2.md#type-dsprotocol)` — DataProtocol to be used for this request operation.
 
 **Flags**: A
 
@@ -4905,17 +4905,17 @@ Returns the appropriate [OperationBinding.dataProtocol](OperationBinding.md#attr
 ## Method: DataSource.getSearchOperator
 
 ### Description
-Get the [Operator](../main.md#object-operator) definition for an [OperatorId](../main.md#type-operatorid).
+Get the [Operator](../reference.md#object-operator) definition for an [OperatorId](../reference.md#type-operatorid).
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| operatorId | [OperatorId](../main.md#type-operatorid) | false | — | the id of the operator |
+| operatorId | [OperatorId](../reference.md#type-operatorid) | false | — | the id of the operator |
 
 ### Returns
 
-`[Operator](#type-operator)` — the [Operator](../main.md#object-operator) definition
+`[Operator](#type-operator)` — the [Operator](../reference.md#object-operator) definition
 
 ### Groups
 
@@ -4929,7 +4929,7 @@ Display a file stored in a field of type:"binary" in a new browser window.
 
 This will open a new browser window to show the file. Depending on the file type, the user's installed plugins and applications, and the user's browser settings, this may cause the file to be actually displayed in the new browser window, or may prompt the user to either launch an external application to view the file or save the file to disk.
 
-Note that if this method is called for a record with no associated file, the target window's new URL may not be functional. By default when dataSources encounter a [binary type fields](../main_2.md#type-fieldtype), an additional field, ``<fieldName>`_filename`, is generated to store the filename for the binary field value. If this field is present in the data source but has no value for this record, developers can assume they're working with a record with no stored file. If this field is not present in some custom dataSource configuration, or the record is not loaded on the client, an additional server transaction may be required to determine whether the record has an associated file before calling this method to view a file.
+Note that if this method is called for a record with no associated file, the target window's new URL may not be functional. By default when dataSources encounter a [binary type fields](../reference_2.md#type-fieldtype), an additional field, ``<fieldName>`_filename`, is generated to store the filename for the binary field value. If this field is present in the data source but has no value for this record, developers can assume they're working with a record with no stored file. If this field is not present in some custom dataSource configuration, or the record is not loaded on the client, an additional server transaction may be required to determine whether the record has an associated file before calling this method to view a file.
 
 See the overview of [Binary Fields](../kb_topics/binaryFields.md#kb-topic-binary-fields) for details.
 
@@ -4938,31 +4938,31 @@ See the overview of [Binary Fields](../kb_topics/binaryFields.md#kb-topic-binary
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | data | [Record](#type-record) | false | — | Record to download. Only required to have a value for the primary key field. |
-| fieldName | [FieldName](../main.md#type-fieldname) | true | — | Optional name of the binary field containing the file. If not provided, the first binary field is used. |
+| fieldName | [FieldName](../reference.md#type-fieldname) | true | — | Optional name of the binary field containing the file. If not provided, the first binary field is used. |
 | requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | Additional properties to set on the DSRequest that will be issued. |
 
 ---
 ## Method: DataSource.getFieldOperatorMap
 
 ### Description
-Get the list of [Operator](../main.md#object-operator)s available for this field, as a [ValueMap](../main_2.md#type-valuemap) from [OperatorId](../main.md#type-operatorid) to the [Operator.title](Operator.md#attr-operatortitle) specified for the [Operator](../main.md#object-operator), or the corresponding property in [Operators](Operators.md#class-operators) if [Operator.titleProperty](Operator.md#attr-operatortitleproperty) is set.
+Get the list of [Operator](../reference.md#object-operator)s available for this field, as a [ValueMap](../reference_2.md#type-valuemap) from [OperatorId](../reference.md#type-operatorid) to the [Operator.title](Operator.md#attr-operatortitle) specified for the [Operator](../reference.md#object-operator), or the corresponding property in [Operators](Operators.md#class-operators) if [Operator.titleProperty](Operator.md#attr-operatortitleproperty) is set.
 
 This valueMap is suitable for use in a UI for building queries, similar to the [FilterBuilder](FilterBuilder.md#class-filterbuilder), and optionally omits operators marked [Operator.hidden](Operator.md#attr-operatorhidden):true.
 
-It is also possible to have this function return only operators of a given [OperatorValueType](../main_2.md#type-operatorvaluetype), or everything except operators of that type. This is useful, for example, if you want to return all the logical operators (like "and"), or everything except the logical operators.
+It is also possible to have this function return only operators of a given [OperatorValueType](../reference_2.md#type-operatorvaluetype), or everything except operators of that type. This is useful, for example, if you want to return all the logical operators (like "and"), or everything except the logical operators.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | field | [String](#type-string)|[DataSourceField](#type-datasourcefield) | false | — | Field (or field name) to obtain operator map for. |
-| includeHidden | [boolean](../main.md#type-boolean) | true | — | whether to include Operators marked hidden:true |
-| valueType | [OperatorValueType](../main_2.md#type-operatorvaluetype) | true | — | If passed, returns only operators of this [OperatorValueType](../main_2.md#type-operatorvaluetype) |
-| omitValueType | [boolean](../main.md#type-boolean) | true | — | If set, reverses the meaning of the `valueType` parameter, so operators of that [OperatorValueType](../main_2.md#type-operatorvaluetype) are the only ones omitted |
+| includeHidden | [boolean](../reference.md#type-boolean) | true | — | whether to include Operators marked hidden:true |
+| valueType | [OperatorValueType](../reference_2.md#type-operatorvaluetype) | true | — | If passed, returns only operators of this [OperatorValueType](../reference_2.md#type-operatorvaluetype) |
+| omitValueType | [boolean](../reference.md#type-boolean) | true | — | If set, reverses the meaning of the `valueType` parameter, so operators of that [OperatorValueType](../reference_2.md#type-operatorvaluetype) are the only ones omitted |
 
 ### Returns
 
-`[ValueMap](../main_2.md#type-valuemap)` — mapping from [OperatorId](../main.md#type-operatorid) to title, as described above
+`[ValueMap](../reference_2.md#type-valuemap)` — mapping from [OperatorId](../reference.md#type-operatorid) to title, as described above
 
 ### Groups
 
@@ -4976,7 +4976,7 @@ It is also possible to have this function return only operators of a given [Oper
 ## Method: DataSource.compareDates
 
 ### Description
-Convenience method to compare two Date objects appropriately, depending on whether the passed-in fieldName refers to a field of [type](../main_2.md#type-fieldtype) "datetime" or "date". In the former case, the dates are compared using [DateUtil.compareDates](DateUtil.md#classmethod-dateutilcomparedates); in the latter case, or if the supplied fieldName is null or unknown to this DataSource, the dates are compared using [DateUtil.compareLogicalDates](DateUtil.md#classmethod-dateutilcomparelogicaldates).
+Convenience method to compare two Date objects appropriately, depending on whether the passed-in fieldName refers to a field of [type](../reference_2.md#type-fieldtype) "datetime" or "date". In the former case, the dates are compared using [DateUtil.compareDates](DateUtil.md#classmethod-dateutilcomparedates); in the latter case, or if the supplied fieldName is null or unknown to this DataSource, the dates are compared using [DateUtil.compareLogicalDates](DateUtil.md#classmethod-dateutilcomparelogicaldates).
 
 ### Parameters
 
@@ -4984,7 +4984,7 @@ Convenience method to compare two Date objects appropriately, depending on wheth
 |------|------|----------|---------|-------------|
 | date1 | [Date](#type-date) | false | — | First date in comparison |
 | date2 | [Date](#type-date) | false | — | Second date in comparison |
-| fieldName | [FieldName](../main.md#type-fieldname) | false | — | The name of the field for which the comparison is being run |
+| fieldName | [FieldName](../reference.md#type-fieldname) | false | — | The name of the field for which the comparison is being run |
 
 ### Returns
 
@@ -5066,9 +5066,9 @@ Perform a "fetch" DataSource operation against this DataSource, sending search c
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| criteria | [Criteria](../main_2.md#type-criteria) | true | — | search criteria |
+| criteria | [Criteria](../reference_2.md#type-criteria) | true | — | search criteria |
 | requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | additional properties to set on the DSRequest that will be issued |
-| callback | [DSCallback](../main_2.md#type-dscallback) | true | — | callback to invoke on completion. Note that this parameter only applies where [DSRequest.exportToClient](DSRequest.md#attr-dsrequestexporttoclient) is explicitly set to false, because file downloads do not provide ordinary SmartClient callbacks |
+| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke on completion. Note that this parameter only applies where [DSRequest.exportToClient](DSRequest.md#attr-dsrequestexporttoclient) is explicitly set to false, because file downloads do not provide ordinary SmartClient callbacks |
 
 ### Groups
 
@@ -5084,7 +5084,7 @@ Retrieves the list of fields declared on this DataSource.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| excludeHidden | [boolean](../main.md#type-boolean) | false | — | If true, returns only those fields that are not marked as hidden |
+| excludeHidden | [boolean](../reference.md#type-boolean) | false | — | If true, returns only those fields that are not marked as hidden |
 
 ### Returns
 
@@ -5103,7 +5103,7 @@ A "validate" dsRequest is effectively always [RPCRequest.willHandleError](RPCReq
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | values | [Record](#type-record) | false | — | record values to validate |
-| callback | [DSCallback](../main_2.md#type-dscallback) | true | — | callback to invoke on completion |
+| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke on completion |
 | requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | additional properties to set on the DSRequest that will be issued |
 
 ### Groups
@@ -5120,8 +5120,8 @@ Converts criteria expressed in SmartClient's simple criteria format to an Advanc
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| criteria | [Criteria](../main_2.md#type-criteria) | false | — | simple criteria |
-| textMatchStyle | [TextMatchStyle](../main_2.md#type-textmatchstyle) | true | — | default style of matching text. Defaults to the dataSource's defaultTextMatchStyle |
+| criteria | [Criteria](../reference_2.md#type-criteria) | false | — | simple criteria |
+| textMatchStyle | [TextMatchStyle](../reference_2.md#type-textmatchstyle) | true | — | default style of matching text. Defaults to the dataSource's defaultTextMatchStyle |
 
 ### Returns
 
@@ -5191,7 +5191,7 @@ Note: rather than overriding this method, we recommend using [observation](Class
 ### Description
 Exports arbitrary client-side data, with client-side formatters applied, so is suitable for direct display to users. This method can be used to export data formatted outside of any kind of visual component.
 
-If you do not specify an [operationId](OperationBinding.md#attr-operationbindingoperationid) in the `requestProperties` you pass to this method, it behaves exactly the same as the [static classMethod](#classmethod-datasourceexportclientdata) of the same name. If you do specify an `operationId`, the framework expects your DataSource to configure an [OperationBinding](OperationBinding.md#class-operationbinding) of [operationType](OperationBinding.md#attr-operationbindingoperationtype) "clientExport" with the same `operationId`. The framework will then send the `exportClientData` request via the ordinary [DSRequest](../main_2.md#object-dsrequest) mechanism, which allows you to use normal framework features in the client data export.
+If you do not specify an [operationId](OperationBinding.md#attr-operationbindingoperationid) in the `requestProperties` you pass to this method, it behaves exactly the same as the [static classMethod](#classmethod-datasourceexportclientdata) of the same name. If you do specify an `operationId`, the framework expects your DataSource to configure an [OperationBinding](OperationBinding.md#class-operationbinding) of [operationType](OperationBinding.md#attr-operationbindingoperationtype) "clientExport" with the same `operationId`. The framework will then send the `exportClientData` request via the ordinary [DSRequest](../reference_2.md#object-dsrequest) mechanism, which allows you to use normal framework features in the client data export.
 
 For example, you could add a [DMI declaration](../kb_topics/dmiOverview.md#kb-topic-direct-method-invocation) to your `operationBinding`, which would allow you to write server-side code that intervenes in the export process - for instance, by calling the `getExportObject()` API to do something special with the export document, like saving it to a database table or sending it to an email list.
 
@@ -5207,13 +5207,13 @@ Note that field [displayFormat](DataSourceField.md#attr-datasourcefielddateforma
 |------|------|----------|---------|-------------|
 | data | [Array of Record](#type-array-of-record) | false | — | Array of Records to export |
 | requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | Request properties for the export |
-| callback | [DSCallback](../main_2.md#type-dscallback) | true | — | Optional callback. Note that this is only applicable if you also specify [exportToClient](DSRequest.md#attr-dsrequestexporttoclient): false in the request properties |
+| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | Optional callback. Note that this is only applicable if you also specify [exportToClient](DSRequest.md#attr-dsrequestexporttoclient): false in the request properties |
 
 ---
 ## Method: DataSource.applyFilter
 
 ### Description
-Returns records in the passed Array that match the provided filter [criteria](../main_2.md#type-criteria). Handles simple or [advanced](../main.md#object-advancedcriteria) criteria.
+Returns records in the passed Array that match the provided filter [criteria](../reference_2.md#type-criteria). Handles simple or [advanced](../reference.md#object-advancedcriteria) criteria.
 
 By default:
 
@@ -5228,10 +5228,10 @@ This method is called by [ResultSet.applyFilter](ResultSet.md#method-resultsetap
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | data | [Array of Record](#type-array-of-record) | false | — | the list of rows |
-| criteria | [Criteria](../main_2.md#type-criteria) | false | — | the filter criteria |
+| criteria | [Criteria](../reference_2.md#type-criteria) | false | — | the filter criteria |
 | requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | optional dataSource request properties |
-| startPos | [Integer](../main_2.md#type-integer) | true | — | starting index - earlier rows are excluded |
-| endPos | [Integer](../main_2.md#type-integer) | true | — | ending index (exclusive) - this row and beyond are excluded |
+| startPos | [Integer](../reference_2.md#type-integer) | true | — | starting index - earlier rows are excluded |
+| endPos | [Integer](../reference_2.md#type-integer) | true | — | ending index (exclusive) - this row and beyond are excluded |
 
 ### Returns
 
@@ -5248,7 +5248,7 @@ Remove a file stored in this DataSource. Note, if [automatic file versioning](#a
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | fileSpec | [FileSpec](#type-filespec)|[String](#type-string) | false | — | Either a FileSpec, or a String which will be parsed to determine the fileName, fileType and fileFormat. For instance, "employees.ds.xml" would be parsed as {fileName: "employees", fileType: "ds", fileFormat: "xml"}. Depending the configuration of the DataSource, the fileType and fileFormat may be optional. |
-| callback | [DSCallback](../main_2.md#type-dscallback) | true | — | Callback executed with the results. The `data` parameter is either an array of records represening the removed file(s), or null to indicate an error. The records will have their `fileName` fields and `fileType` fields populated, but not the `fileContents` field. You can examine `[dsResponse.status](DSResponse.md#attr-dsresponsestatus)` and `[dsResponse.data](DSResponse.md#attr-dsresponsedata)` for additional information about any error. |
+| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | Callback executed with the results. The `data` parameter is either an array of records represening the removed file(s), or null to indicate an error. The records will have their `fileName` fields and `fileType` fields populated, but not the `fileContents` field. You can examine `[dsResponse.status](DSResponse.md#attr-dsresponsestatus)` and `[dsResponse.data](DSResponse.md#attr-dsresponsedata)` for additional information about any error. |
 
 ### Groups
 
@@ -5258,7 +5258,7 @@ Remove a file stored in this DataSource. Note, if [automatic file versioning](#a
 ## Method: DataSource.getFieldDefaultOperator
 
 ### Description
-Get the default [OperatorId](../main.md#type-operatorid) for this field.
+Get the default [OperatorId](../reference.md#type-operatorid) for this field.
 
 By default, if [field.defaultOperator](DataSourceField.md#attr-datasourcefielddefaultoperator) is set, returns that value, otherwise returns the data-type default from [SimpleType.defaultOperator](SimpleType.md#attr-simpletypedefaultoperator).
 
@@ -5389,7 +5389,7 @@ Does this dataSource support the specified "textMatchStyle" when performing a fi
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| textMatchStyle | [TextMatchStyle](../main_2.md#type-textmatchstyle) | false | — | textMatchStyle to check. If passed a null value, assume an exact match is being requested. |
+| textMatchStyle | [TextMatchStyle](../reference_2.md#type-textmatchstyle) | false | — | textMatchStyle to check. If passed a null value, assume an exact match is being requested. |
 
 **Flags**: A
 
@@ -5404,7 +5404,7 @@ Get the list of a given file's versions from the dataSource, sorted in version o
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | fileSpec | [FileSpec](#type-filespec)|[String](#type-string) | false | — | Either a FileSpec, or a String which will be parsed to determine the fileName, fileType and fileFormat. For instance, "employees.ds.xml" would be parsed as {fileName: "employees", fileType: "ds", fileFormat: "xml"}. If fileType and fileFormat are not provided, will return the first file with the specified fileName. |
-| callback | [DSCallback](../main_2.md#type-dscallback) | false | — | Callback executed with the results. The `data` parameter is either an array of records, or null to indicate an error. The records will have the `[fileName](#attr-datasourcefilenamefield)`, `[fileType](#attr-datasourcefiletypefield)`, `[fileFormat](#attr-datasourcefileformatfield)`, `[fileLastModified](#attr-datasourcefilelastmodifiedfield)` and `[fileVersion](#attr-datasourcefileversionfield)` fields populated, but not the `[fileContents](#attr-datasourcefilecontentsfield)` field. (You can use [getFileVersion()](#method-datasourcegetfileversion) to get the `fileContents`). You can examine `[dsResponse.status](DSResponse.md#attr-dsresponsestatus)` and `[dsResponse.data](DSResponse.md#attr-dsresponsedata)` for additional information about any error. |
+| callback | [DSCallback](../reference_2.md#type-dscallback) | false | — | Callback executed with the results. The `data` parameter is either an array of records, or null to indicate an error. The records will have the `[fileName](#attr-datasourcefilenamefield)`, `[fileType](#attr-datasourcefiletypefield)`, `[fileFormat](#attr-datasourcefileformatfield)`, `[fileLastModified](#attr-datasourcefilelastmodifiedfield)` and `[fileVersion](#attr-datasourcefileversionfield)` fields populated, but not the `[fileContents](#attr-datasourcefilecontentsfield)` field. (You can use [getFileVersion()](#method-datasourcegetfileversion) to get the `fileContents`). You can examine `[dsResponse.status](DSResponse.md#attr-dsresponsestatus)` and `[dsResponse.data](DSResponse.md#attr-dsresponsedata)` for additional information about any error. |
 
 ### Groups
 
@@ -5460,7 +5460,7 @@ Save a file to the DataSource.
 |------|------|----------|---------|-------------|
 | fileSpec | [FileSpec](#type-filespec)|[String](#type-string) | false | — | Either a FileSpec, or a String which will be parsed to determine the fileName, fileType and fileFormat. For instance, "employees.ds.xml" would be parsed as {fileName: "employees", fileType: "ds", fileFormat: "xml"}. Depending on the configuration of the DataSource, the fileType and fileFormat may be optional. |
 | contents | [String](#type-string) | false | — | The contents of the file |
-| callback | [DSCallback](../main_2.md#type-dscallback) | true | — | Callback executed with the results. The `data` parameter is either a record represening the new file, or null to indicate an error. The record will have its `fileName`, `fileType` and `fileFormat` field populated, but not the `fileContents` field. You can examine `[dsResponse.status](DSResponse.md#attr-dsresponsestatus)` and `[dsResponse.data](DSResponse.md#attr-dsresponsedata)` for additional information about any error. |
+| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | Callback executed with the results. The `data` parameter is either a record represening the new file, or null to indicate an error. The record will have its `fileName`, `fileType` and `fileFormat` field populated, but not the `fileContents` field. You can examine `[dsResponse.status](DSResponse.md#attr-dsresponsestatus)` and `[dsResponse.data](DSResponse.md#attr-dsresponsedata)` for additional information about any error. |
 
 ### Groups
 
@@ -5472,13 +5472,13 @@ Save a file to the DataSource.
 ### Description
 Split a criteria apart based on `fields`.
 
-This method will take a simple or [Advanced](../main.md#object-advancedcriteria) criteria object and extract the subcriteria that apply to the specified array of fields. If passed an AdvancedCriteria, the criteria should be [flat](#classmethod-datasourceisflatcriteria) and the outer operator must be `"and"`.
+This method will take a simple or [Advanced](../reference.md#object-advancedcriteria) criteria object and extract the subcriteria that apply to the specified array of fields. If passed an AdvancedCriteria, the criteria should be [flat](#classmethod-datasourceisflatcriteria) and the outer operator must be `"and"`.
 
 A new criteria object is returned with any criteria applicable to the specified fields. The passed `criteria` is then modified to remove these fields resulting in two distinct criteria.
 
 To avoid modifying an original criteria, use [DataSource.copyCriteria](#classmethod-datasourcecopycriteria) to make a copy to be passed in.
 
-By default the field-specific criteria returned will be in simple criteria format even if the criteria passed in was Advanced. Developers may suppress this conversion by passing in the `preserveAdvanced` parameter. Note that not every [criterion operator](../main.md#type-operatorid) can be converted to a simple format. This method will only to convert field level criterion with operators that correspond to one of the available [textMatchStyle](../main_2.md#type-textmatchstyle) options - namely `"equals"`, `"iEquals"` `"iContains"` or `"startsWith"`.
+By default the field-specific criteria returned will be in simple criteria format even if the criteria passed in was Advanced. Developers may suppress this conversion by passing in the `preserveAdvanced` parameter. Note that not every [criterion operator](../reference.md#type-operatorid) can be converted to a simple format. This method will only to convert field level criterion with operators that correspond to one of the available [textMatchStyle](../reference_2.md#type-textmatchstyle) options - namely `"equals"`, `"iEquals"` `"iContains"` or `"startsWith"`.
 
 This method will return an empty criteria object if it was unable to split the specified criteria by the specified fields.
 
@@ -5486,13 +5486,13 @@ This method will return an empty criteria object if it was unable to split the s
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| criteria | [Criteria](../main_2.md#type-criteria) | false | — | criteria to be split. May be modified if criteria is extracted. |
+| criteria | [Criteria](../reference_2.md#type-criteria) | false | — | criteria to be split. May be modified if criteria is extracted. |
 | fields | [Array of String](#type-array-of-string) | false | — | list of fields to extract from criteria |
 | preserveAdvanced | [Boolean](#type-boolean) | true | — | If passed an AdvancedCriteria, should the returned field-specific split criteria object also be an AdvancedCriteria. |
 
 ### Returns
 
-`[Criteria](../main_2.md#type-criteria)` — extracted criteria
+`[Criteria](../reference_2.md#type-criteria)` — extracted criteria
 
 ---
 ## Method: DataSource.getUpdatedData
@@ -5506,7 +5506,7 @@ Helper method to retrieve the updated data from a successful dataSource update o
 |------|------|----------|---------|-------------|
 | dsRequest | [DSRequest](#type-dsrequest) | false | — | Update request object passed to the server. Note that this request may have been modified by [DataSource.transformRequest](#method-datasourcetransformrequest) |
 | dsResponse | [DSResponse](#type-dsresponse) | false | — | Response returned by the server |
-| useDataFromRequest | [boolean](../main.md#type-boolean) | false | — | If [DSResponse.data](DSResponse.md#attr-dsresponsedata) is empty, should data be derived from the submitted request. |
+| useDataFromRequest | [boolean](../reference.md#type-boolean) | false | — | If [DSResponse.data](DSResponse.md#attr-dsresponsedata) is empty, should data be derived from the submitted request. |
 
 ### Returns
 
@@ -5594,8 +5594,8 @@ This capability to dynamically create visual components from dynamically fetched
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| criteria | [Criteria](../main_2.md#type-criteria) | true | — | search criteria |
-| callback | [DSCallback](../main_2.md#type-dscallback) | true | — | callback to invoke on completion |
+| criteria | [Criteria](../reference_2.md#type-criteria) | true | — | search criteria |
+| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke on completion |
 | requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | additional properties to set on the DSRequest that will be issued |
 
 ### Groups
@@ -5606,13 +5606,13 @@ This capability to dynamically create visual components from dynamically fetched
 ## Method: DataSource.setTypeOperators
 
 ### Description
-Set the list of [OperatorId](../main.md#type-operatorid)s valid for a given FieldType.
+Set the list of [OperatorId](../reference.md#type-operatorid)s valid for a given FieldType.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| typeName | [FieldType](../main_2.md#type-fieldtype)|[String](#type-string) | false | — | — |
+| typeName | [FieldType](../reference_2.md#type-fieldtype)|[String](#type-string) | false | — | — |
 | operators | [Array of OperatorId](#type-array-of-operatorid)[] | false | — | available Operators |
 
 ### Groups
@@ -5677,7 +5677,7 @@ As an example, if you have a dataURL that can return paged data given URL parame
 ```
 Other reasons to implement transformRequest():
 
-*   transform a [Criteria](../main_2.md#type-criteria) object into the custom query language of a web service
+*   transform a [Criteria](../reference_2.md#type-criteria) object into the custom query language of a web service
 *   add a session id to requests that require authentication
 *   detect colliding updates by sending both updated values and the values the user originally retrieved before editing began (available as [DSRequest.oldValues](DSRequest.md#attr-dsrequestoldvalues))
 
@@ -5768,7 +5768,7 @@ NOTE: this method is NOT an appropriate time to call methods on visual component
 |------|------|----------|---------|-------------|
 | dsResponse | [DSResponse](#type-dsresponse) | false | — | default DSResponse derived from the response data |
 | dsRequest | [DSRequest](#type-dsrequest) | false | — | DSRequest object that initiated this request |
-| data | [XMLDocument](../main.md#type-xmldocument)|[JSON](#type-json) | false | — | XML document or JSON objects returned by the web service |
+| data | [XMLDocument](../reference.md#type-xmldocument)|[JSON](#type-json) | false | — | XML document or JSON objects returned by the web service |
 
 ### Returns
 
@@ -5788,8 +5788,8 @@ This is identical to [DataSource.fetchData](#method-datasourcefetchdata) except 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| criteria | [Criteria](../main_2.md#type-criteria) | true | — | search criteria |
-| callback | [DSCallback](../main_2.md#type-dscallback) | true | — | callback to invoke on completion |
+| criteria | [Criteria](../reference_2.md#type-criteria) | true | — | search criteria |
+| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke on completion |
 | requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | additional properties to set on the DSRequest that will be issued |
 
 ### Groups
@@ -5809,7 +5809,7 @@ If a callback was provided, it will be invoked when the operation completes succ
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | data | [Record](#type-record)|[PrimaryKeys](#type-primarykeys) | false | — | primary key values of record to delete, (or complete record) |
-| callback | [DSCallback](../main_2.md#type-dscallback) | true | — | callback to invoke on completion |
+| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke on completion |
 | requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | additional properties to set on the DSRequest that will be issued |
 
 ### Groups
@@ -5827,7 +5827,7 @@ If the operation fails, the callback will not be invoked unless [DSRequest.willH
 **NOTE:** do not use repeated calls to `addData()` to provide the initial dataset for a [clientOnly](#attr-datasourceclientonly) DataSource, instead, provide initial data via [DataSource.cacheData](#attr-datasourcecachedata). Using `addData()` for subsequent, incremental updates from sources like user editing is fine.
 
 #### Batch inserting
-`addData()` can be passed a [List](../main_2.md#interface-list) of records to insert, rather than a single record. Actual support for this kind of multi-add is entirely dependent on the server-side DataSource implementation; only the built-in `SQLDataSource` has support for multi-add out-of-the-box. If you are using `SQLDataSource` (ie, your dataSource's [serverType](#attr-datasourceservertype) is "sql"), the default behavior of the server when it receives an "add" request with a list of records is to invoke a single-record add on the `DataSource` for each of the records in the provided list.
+`addData()` can be passed a [List](../reference_2.md#interface-list) of records to insert, rather than a single record. Actual support for this kind of multi-add is entirely dependent on the server-side DataSource implementation; only the built-in `SQLDataSource` has support for multi-add out-of-the-box. If you are using `SQLDataSource` (ie, your dataSource's [serverType](#attr-datasourceservertype) is "sql"), the default behavior of the server when it receives an "add" request with a list of records is to invoke a single-record add on the `DataSource` for each of the records in the provided list.
 
 However, you can also configure the server to generate a true "batch insert", and this will typically be significantly faster. Instead of generating multiple `INSERT` queries, `SQLDataSource` will generate a single `INSERT` with multiple `VALUES`, like so:
 
@@ -5841,13 +5841,13 @@ However, you can also configure the server to generate a true "batch insert", an
 ```
 Note, the Oracle database product does not support this syntax, so we implement batch insert in a different way - using subselects - with that one database. This difference is transparent from the perspective of a SmartClient developer, and is only mentioned for completeness.
 
-Batch inserting can be configured at the [DSRequest](../main_2.md#object-dsrequest), [DataSource](#class-datasource) and [OperationBinding](OperationBinding.md#class-operationbinding) levels, and it can also be globally configured in `server.properties`. See the [multiInsertStrategy](#attr-datasourcemultiinsertstrategy) documentation for details.
+Batch inserting can be configured at the [DSRequest](../reference_2.md#object-dsrequest), [DataSource](#class-datasource) and [OperationBinding](OperationBinding.md#class-operationbinding) levels, and it can also be globally configured in `server.properties`. See the [multiInsertStrategy](#attr-datasourcemultiinsertstrategy) documentation for details.
 
 #### Cache Synchronization and Audit
 This optimized batch insert style of multi-record add only supports [cache synchronization](OperationBinding.md#attr-operationbindingcansynccache) in a limited way, because database products do not provide a reliable way to determine the generated keys of rows inserted in this way. We support cache synchronization of batch-inserted records only when
 
 *   The DataSource does not specify any "sequence" fields, and
-*   The `requestValuesPlusSequences` [cacheSyncStrategy](../main_2.md#type-cachesyncstrategy) is in force
+*   The `requestValuesPlusSequences` [cacheSyncStrategy](../reference_2.md#type-cachesyncstrategy) is in force
 
 We support [automatic audit](#attr-datasourceaudit) of batch-inserted records only when both of the above conditions are true, and the `sql.multi.insert.allowAudit` flag is set to `true` in your `server.properties` file.
 
@@ -5867,7 +5867,7 @@ Please note a couple of provisos about batch inserting; since batch insert has a
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | newRecord | [Record](#type-record) | false | — | new record |
-| callback | [DSCallback](../main_2.md#type-dscallback) | true | — | Callback to invoke on completion. |
+| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | Callback to invoke on completion. |
 | requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | additional properties to set on the DSRequest that will be issued |
 
 ### Groups
@@ -5878,7 +5878,7 @@ Please note a couple of provisos about batch inserting; since batch insert has a
 ## Method: DataSource.cloneDSRequest
 
 ### Description
-Creates a shallow copy of the given [DSRequest](../main_2.md#object-dsrequest). The request's [data](DSRequest.md#attr-dsrequestdata), if any, is shallow copied in the cloned request.
+Creates a shallow copy of the given [DSRequest](../reference_2.md#object-dsrequest). The request's [data](DSRequest.md#attr-dsrequestdata), if any, is shallow copied in the cloned request.
 
 The [callback](DSRequest.md#attr-dsrequestcallback) property of the given request is not copied into the cloned request.
 
@@ -5924,12 +5924,12 @@ Returns the depth-first match of a criterion matching the given fieldName.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| criterion | [Criteria](../main_2.md#type-criteria) | false | — | the criteria to search |
-| fieldName | [FieldName](../main.md#type-fieldname) | false | — | the fieldName to find criteria for |
+| criterion | [Criteria](../reference_2.md#type-criteria) | false | — | the criteria to search |
+| fieldName | [FieldName](../reference.md#type-fieldname) | false | — | the fieldName to find criteria for |
 
 ### Returns
 
-`[Criteria](../main_2.md#type-criteria)` — the depth-first matching criterion for the passed fieldName
+`[Criteria](../reference_2.md#type-criteria)` — the depth-first matching criterion for the passed fieldName
 
 ---
 ## Method: DataSource.copyRecords
@@ -5964,7 +5964,7 @@ This is an application override point only; there is no default implementation.
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true to allow this response to be used, false to prevent it
+`[boolean](../reference.md#type-boolean)` — true to allow this response to be used, false to prevent it
 
 ### Groups
 
@@ -5996,7 +5996,7 @@ Return a "spoofed" response for a [clientOnly](#attr-datasourceclientonly) or [D
 
 The default implementation will use [DataSource.cacheData](#attr-datasourcecachedata) to provide an appropriate response, by using [client-side filtering](#method-datasourceapplyfilter) for a "fetch" request, and by modifying the `cacheData` for other requests.
 
-Override this method to provide simulations of other server-side behavior, such as modifying other records, or to implement **synchronous** client-side data providers (such as Google Gears). For **asynchronous** third-party data providers, such as GWT-RPC, HTML5 sockets, or bridges to plug-in based protocols (Java, Flash, Silverlight..), use [dataProtocol:"clientCustom"](../main_2.md#type-dsprotocol) instead.
+Override this method to provide simulations of other server-side behavior, such as modifying other records, or to implement **synchronous** client-side data providers (such as Google Gears). For **asynchronous** third-party data providers, such as GWT-RPC, HTML5 sockets, or bridges to plug-in based protocols (Java, Flash, Silverlight..), use [dataProtocol:"clientCustom"](../reference_2.md#type-dsprotocol) instead.
 
 Overriding this method is also a means of detecting that a normal DataSource (not clientOnly) would be contacting the server.
 
@@ -6032,7 +6032,7 @@ Compares a criteria value to a field value and returns whether they match, as fo
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true if the filter and field values match, false otherwise
+`[boolean](../reference.md#type-boolean)` — true if the filter and field values match, false otherwise
 
 ---
 ## Method: DataSource.setCacheData
@@ -6056,7 +6056,7 @@ Call this method to set the data in the client-side cache after initialization.
 ### Description
 Invoke an operation declared with [OperationBinding.operationType](OperationBinding.md#attr-operationbindingoperationtype) "custom".
 
-**This is a rarely used API.** If the operation you are performing can be thought of as one of the standard "CRUD" [operation types](../main.md#type-dsoperationtype), declare it with a CRUD operationType. For example, if your operation updates a record, declare it with operationType "update" and invoke it via [DataSource.updateData](#method-datasourceupdatedata) - this will cause [cache sync](ResultSet.md#class-resultset) to work correctly.
+**This is a rarely used API.** If the operation you are performing can be thought of as one of the standard "CRUD" [operation types](../reference.md#type-dsoperationtype), declare it with a CRUD operationType. For example, if your operation updates a record, declare it with operationType "update" and invoke it via [DataSource.updateData](#method-datasourceupdatedata) - this will cause [cache sync](ResultSet.md#class-resultset) to work correctly.
 
 In particular:
 
@@ -6077,7 +6077,7 @@ Note that with SQLDataSource, `performCustomOperation` must be used if you plan 
 |------|------|----------|---------|-------------|
 | operationId | [String](#type-string) | false | — | the operation ID |
 | data | [Record Properties](#type-record-properties) | true | — | data to pass to the server. |
-| callback | [DSCallback](../main_2.md#type-dscallback) | true | — | callback to invoke on completion |
+| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke on completion |
 | requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | additional properties to set on the DSRequest that will be issued |
 
 ### Groups
@@ -6108,7 +6108,7 @@ Returns true if the operator list for the passed type has been customized via a 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| typeName | [String](#type-string)|[FieldType](../main_2.md#type-fieldtype) | false | — | — |
+| typeName | [String](#type-string)|[FieldType](../reference_2.md#type-fieldtype) | false | — | — |
 
 ### Groups
 
@@ -6126,7 +6126,7 @@ Remove a particular file version stored in this DataSource. Any other versions o
 |------|------|----------|---------|-------------|
 | fileSpec | [FileSpec](#type-filespec)|[String](#type-string) | false | — | Either a FileSpec, or a String which will be parsed to determine the fileName, fileType and fileFormat. For instance, "employees.ds.xml" would be parsed as {fileName: "employees", fileType: "ds", fileFormat: "xml"}. If fileType and fileFormat are not provided, will return the first file with the specified fileName. |
 | version | [Date](#type-date) | false | — | A version timestamp. This must exactly match the version timestamp recorded in the DataSource. You can obtain the list of versions for a given file with the [DataSource.listFileVersions](#method-datasourcelistfileversions) API. |
-| callback | [DSCallback](../main_2.md#type-dscallback) | true | — | Callback executed with the results. The `data` parameter is either a record representing the removed file version, or null to indicate an error. The record will have its `[fileName](#attr-datasourcefilenamefield)`, `[fileType](#attr-datasourcefiletypefield)`, `[fileFormat](#attr-datasourcefileformatfield)`, `[fileLastModified](#attr-datasourcefilelastmodifiedfield)`, and `[fileVersion](#attr-datasourcefileversionfield)` fields populated, but not the `[fileContents](#attr-datasourcefilecontentsfield)` field. You can examine `[dsResponse.status](DSResponse.md#attr-dsresponsestatus)` and `[dsResponse.data](DSResponse.md#attr-dsresponsedata)` for additional information about any error. |
+| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | Callback executed with the results. The `data` parameter is either a record representing the removed file version, or null to indicate an error. The record will have its `[fileName](#attr-datasourcefilenamefield)`, `[fileType](#attr-datasourcefiletypefield)`, `[fileFormat](#attr-datasourcefileformatfield)`, `[fileLastModified](#attr-datasourcefilelastmodifiedfield)`, and `[fileVersion](#attr-datasourcefileversionfield)` fields populated, but not the `[fileContents](#attr-datasourcefilecontentsfield)` field. You can examine `[dsResponse.status](DSResponse.md#attr-dsresponsestatus)` and `[dsResponse.data](DSResponse.md#attr-dsresponsedata)` for additional information about any error. |
 
 ### Groups
 
@@ -6168,9 +6168,9 @@ Returns the path having the shortest distance between this and the given targetD
 ### Description
 Given two sets of criteria, determine whether they are equivalent, the new criteria is guaranteed more restrictive, or the new criteria is not guaranteed more restrictive, returning 0, 1 or -1 respectively.
 
-Comparisons between [AdvancedCriteria](../main.md#object-advancedcriteria) are made via recursively calling [Operator.compareCriteria](Operator.md#method-operatorcomparecriteria) for all criteria involved.
+Comparisons between [AdvancedCriteria](../reference.md#object-advancedcriteria) are made via recursively calling [Operator.compareCriteria](Operator.md#method-operatorcomparecriteria) for all criteria involved.
 
-For simple [Criteria](../main_2.md#type-criteria), by default ([CriteriaPolicy](../main_2.md#type-criteriapolicy):"dropOnShortening"), returns:
+For simple [Criteria](../reference_2.md#type-criteria), by default ([CriteriaPolicy](../reference_2.md#type-criteriapolicy):"dropOnShortening"), returns:
 
 *   \-1 if the new criteria has fewer properties than the old criteria (indicating that it isn't more restrictive)
 *   \-1 if the value for any property in the old criteria is an array and 1) the value for the same property in the new criteria isn't an array, or 2) is an array but of different length, or 3) the arrays do not contain the exact same set of objects (order can be different)
@@ -6179,7 +6179,7 @@ For simple [Criteria](../main_2.md#type-criteria), by default ([CriteriaPolicy](
 *   1 if none of the above are true and, for at least one of the properties, the respective criteria values are both strings, and the old criteria value is a substring of, and is shorter than, the new criteria value
 *   0 otherwise (indicating the sets of criteria are equivalent)
 
-For ([CriteriaPolicy](../main_2.md#type-criteriapolicy):"dropOnChange"), returns:
+For ([CriteriaPolicy](../reference_2.md#type-criteriapolicy):"dropOnChange"), returns:
 
 *   \-1 if the two sets of criteria have a different number of properties
 *   \-1 if the value for any property in the old criteria is an array and 1) the value for the same property in the new criteria isn't an array, or 2) is an array but of different length, or 3) the arrays do not contain the exact same set of objects (order can be different)
@@ -6192,10 +6192,10 @@ This method is called by [ResultSet.compareCriteria](ResultSet.md#method-results
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newCriteria | [Criteria](../main_2.md#type-criteria) | false | — | new filter criteria |
-| oldCriteria | [Criteria](../main_2.md#type-criteria) | false | — | previous filter criteria |
+| newCriteria | [Criteria](../reference_2.md#type-criteria) | false | — | new filter criteria |
+| oldCriteria | [Criteria](../reference_2.md#type-criteria) | false | — | previous filter criteria |
 | requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | dataSource request properties |
-| policy | [String](#type-string) | true | — | overrides [CriteriaPolicy](../main_2.md#type-criteriapolicy) |
+| policy | [String](#type-string) | true | — | overrides [CriteriaPolicy](../reference_2.md#type-criteriapolicy) |
 
 ### Returns
 
@@ -6203,21 +6203,21 @@ This method is called by [ResultSet.compareCriteria](ResultSet.md#method-results
 
 ### See Also
 
-- [CriteriaPolicy](../main_2.md#type-criteriapolicy)
+- [CriteriaPolicy](../reference_2.md#type-criteriapolicy)
 
 ---
 ## Method: DataSource.getTypeOperators
 
 ### Description
-Get the list of [OperatorId](../main.md#type-operatorid)s available on this DataSource for the given [FieldType](../main_2.md#type-fieldtype).
+Get the list of [OperatorId](../reference.md#type-operatorid)s available on this DataSource for the given [FieldType](../reference_2.md#type-fieldtype).
 
-If [DataSource.setTypeOperators](#method-datasourcesettypeoperators) has been called for this DataSource and FieldType, returns that list, otherwise, returns the set of valid operators for the [FieldType](../main_2.md#type-fieldtype) as specified by [SimpleType.validOperators](SimpleType.md#attr-simpletypevalidoperators), otherwise, the system-wide set of valid operators for the type as registered via [DataSource.addSearchOperator](#classmethod-datasourceaddsearchoperator).
+If [DataSource.setTypeOperators](#method-datasourcesettypeoperators) has been called for this DataSource and FieldType, returns that list, otherwise, returns the set of valid operators for the [FieldType](../reference_2.md#type-fieldtype) as specified by [SimpleType.validOperators](SimpleType.md#attr-simpletypevalidoperators), otherwise, the system-wide set of valid operators for the type as registered via [DataSource.addSearchOperator](#classmethod-datasourceaddsearchoperator).
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| typeName | [FieldType](../main_2.md#type-fieldtype)|[String](#type-string) | true | — | Defaults to "text" if not passed. |
+| typeName | [FieldType](../reference_2.md#type-fieldtype)|[String](#type-string) | true | — | Defaults to "text" if not passed. |
 
 ### Returns
 
@@ -6237,7 +6237,7 @@ Return the field definition object.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| fieldName | [FieldName](../main.md#type-fieldname) | false | — | Name of the field to retrieve |
+| fieldName | [FieldName](../reference.md#type-fieldname) | false | — | Name of the field to retrieve |
 
 ### Returns
 
@@ -6253,8 +6253,8 @@ Get a list of files from the DataSource. Note, if [automatic file versioning](#a
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| criteria | [Criteria](../main_2.md#type-criteria) | false | — | Criteria to apply. References to `fileName`, `fileType` and `fileFormat` fields will be translated to the native field names configured for this DataSource. |
-| callback | [DSCallback](../main_2.md#type-dscallback) | false | — | Callback executed with the results. The `data` parameter is either an array of records, or null to indicate an error. The records will have the `[fileName](#attr-datasourcefilenamefield)`, `[fileType](#attr-datasourcefiletypefield)`, `[fileFormat](#attr-datasourcefileformatfield)`, `[fileLastModified](#attr-datasourcefilelastmodifiedfield)`, and `[fileVersion](#attr-datasourcefileversionfield)` fields populated, but not the `[fileContents](#attr-datasourcefilecontentsfield)` field. (You can use [getFile()](#method-datasourcegetfile) to get the `fileContents`). You can examine `[dsResponse.status](DSResponse.md#attr-dsresponsestatus)` and `[dsResponse.data](DSResponse.md#attr-dsresponsedata)` for additional information about any error. |
+| criteria | [Criteria](../reference_2.md#type-criteria) | false | — | Criteria to apply. References to `fileName`, `fileType` and `fileFormat` fields will be translated to the native field names configured for this DataSource. |
+| callback | [DSCallback](../reference_2.md#type-dscallback) | false | — | Callback executed with the results. The `data` parameter is either an array of records, or null to indicate an error. The records will have the `[fileName](#attr-datasourcefilenamefield)`, `[fileType](#attr-datasourcefiletypefield)`, `[fileFormat](#attr-datasourcefileformatfield)`, `[fileLastModified](#attr-datasourcefilelastmodifiedfield)`, and `[fileVersion](#attr-datasourcefileversionfield)` fields populated, but not the `[fileContents](#attr-datasourcefilecontentsfield)` field. (You can use [getFile()](#method-datasourcegetfile) to get the `fileContents`). You can examine `[dsResponse.status](DSResponse.md#attr-dsresponsestatus)` and `[dsResponse.data](DSResponse.md#attr-dsresponsedata)` for additional information about any error. |
 
 ### Groups
 
@@ -6276,7 +6276,7 @@ Note that because the entirety of the request is encoded in the URL, there is an
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| criteria | [Criteria](../main_2.md#type-criteria) | false | — | Criteria to be sent to server. |
+| criteria | [Criteria](../reference_2.md#type-criteria) | false | — | Criteria to be sent to server. |
 | requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | additional properties to set on the DSRequest that will be issued |
 
 ### Returns
@@ -6311,14 +6311,14 @@ The URL returned is not to a static file on disk, rather, the returned URL essen
 
 Hence, this URL will dynamically retrieve whatever file is currently stored in the binary field via executing a normal DSRequest server side. The request will run through normal security checks, so if your application requires authentication, the user must have a valid session and be authorized to access the binary field.
 
-Note that if this method is called for a record with no associated file, the returned URL may not be functional. By default when dataSources encounter a [binary type fields](../main_2.md#type-fieldtype), an additional field, ``<fieldName>`_filename`, is generated to store the filename for the binary field value. If this field is present in the data source but has no value for this record, developers can assume they're working with a record with no stored file. If this field is not present in some custom dataSource configuration, or the record is not loaded on the client, an additional server transaction may be required to determine whether the record has an associated file before calling this method to retrieve a download URL.
+Note that if this method is called for a record with no associated file, the returned URL may not be functional. By default when dataSources encounter a [binary type fields](../reference_2.md#type-fieldtype), an additional field, ``<fieldName>`_filename`, is generated to store the filename for the binary field value. If this field is present in the data source but has no value for this record, developers can assume they're working with a record with no stored file. If this field is not present in some custom dataSource configuration, or the record is not loaded on the client, an additional server transaction may be required to determine whether the record has an associated file before calling this method to retrieve a download URL.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | data | [Record](#type-record)|[PKValue](#type-pkvalue) | false | — | Record containing at least the primary key field, or just the value of the primary key field. |
-| fieldName | [FieldName](../main.md#type-fieldname) | true | — | Optional name of the binary field containing the file. If not provided, the first binary field is used. |
+| fieldName | [FieldName](../reference.md#type-fieldname) | true | — | Optional name of the binary field containing the file. If not provided, the first binary field is used. |
 | requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | Additional properties to set on the DSRequest that will be issued. |
 
 ### Returns
@@ -6350,7 +6350,7 @@ If two or more different text exports are needed for the same DataSource creatin
 ## Method: DataSource.fetchRecord
 
 ### Description
-Fetch a single record from the DataSource by [primary key](DataSourceField.md#attr-datasourcefieldprimarykey). This simply calls [DataSource.fetchData](#method-datasourcefetchdata) after creating [Criteria](../main_2.md#type-criteria) that contain the primary key field and value.
+Fetch a single record from the DataSource by [primary key](DataSourceField.md#attr-datasourcefieldprimarykey). This simply calls [DataSource.fetchData](#method-datasourcefetchdata) after creating [Criteria](../reference_2.md#type-criteria) that contain the primary key field and value.
 
 If you call this method on a DataSource with a composite primary key - ie, one with multiple primaryKey fields - this method returns the first record where the first defined primary field matches the supplied pkValue; this may or may not be meaningful, depending on your use case. Generally, for DataSources with composite keys, it makes more sense to use `fetchData()` directly, rather than this convenience method.
 
@@ -6359,14 +6359,14 @@ If you call this method on a DataSource with a composite primary key - ie, one w
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | pkValue | [Any](#type-any) | false | — | value for the field marked [primaryKey](DataSourceField.md#attr-datasourcefieldprimarykey):true in this DataSource (or the first field so marked if there is more than one) |
-| callback | [DSCallback](../main_2.md#type-dscallback) | true | — | callback to invoke on completion |
+| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke on completion |
 | requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | additional properties to set on the DSRequest that will be issued |
 
 ---
 ## Method: DataSource.supportsAdvancedCriteria
 
 ### Description
-Do fetch and filter operations on this dataSource support being passed [AdvancedCriteria](../main.md#object-advancedcriteria)?
+Do fetch and filter operations on this dataSource support being passed [AdvancedCriteria](../reference.md#object-advancedcriteria)?
 
 For a DataSource to support being passed AdvancedCriteria, it must be [clientOnly:true](#attr-datasourceclientonly) or [cacheAllData:true](#attr-datasourcecachealldata), or have server side logic which can process AdvancedCriteria objects passed from the client.
 
@@ -6388,7 +6388,7 @@ Given a fieldName and a dataValue, apply any [DataSourceField.valueMap](DataSour
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| fieldName | [FieldName](../main.md#type-fieldname) | false | — | name of the field to retrieve a value for |
+| fieldName | [FieldName](../reference.md#type-fieldname) | false | — | name of the field to retrieve a value for |
 | value | [Any](#type-any) | false | — | data value for the field |
 
 ### Returns
@@ -6417,7 +6417,7 @@ Or if the field has explicitly been marked as [calculated:true](DataSourceField.
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true if this is a field with dynamically calculated values
+`[boolean](../reference.md#type-boolean)` — true if this is a field with dynamically calculated values
 
 ---
 ## Method: DataSource.handleError
@@ -6434,7 +6434,7 @@ If you define this method on a DataSource, it will be called whenever the server
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — false to suppress [RPCManager.handleError](RPCManager.md#classmethod-rpcmanagerhandleerror)
+`[boolean](../reference.md#type-boolean)` — false to suppress [RPCManager.handleError](RPCManager.md#classmethod-rpcmanagerhandleerror)
 
 ### Groups
 
@@ -6473,14 +6473,14 @@ Takes all relative date values found anywhere within a Criteria / AdvancedCriter
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| criteria | [Criteria](../main_2.md#type-criteria) | false | — | criteria to convert |
+| criteria | [Criteria](../reference_2.md#type-criteria) | false | — | criteria to convert |
 | timezoneOffset | [String](#type-string) | true | — | optional timezone offset. Defaults to the current timezone |
-| firstDayOfWeek | [Integer](../main_2.md#type-integer) | true | — | first day of the week (zero is Sunday). Defaults to [DateChooser.firstDayOfWeek](DateChooser.md#attr-datechooserfirstdayofweek) |
+| firstDayOfWeek | [Integer](../reference_2.md#type-integer) | true | — | first day of the week (zero is Sunday). Defaults to [DateChooser.firstDayOfWeek](DateChooser.md#attr-datechooserfirstdayofweek) |
 | baseDate | [Date](#type-date) | true | — | base value for relative conversion - defaults to now |
 
 ### Returns
 
-`[Criteria](../main_2.md#type-criteria)` — new copy of the criteria with all relative dates converted
+`[Criteria](../reference_2.md#type-criteria)` — new copy of the criteria with all relative dates converted
 
 ---
 ## Method: DataSource.addSearchOperator
@@ -6488,7 +6488,7 @@ Takes all relative date values found anywhere within a Criteria / AdvancedCriter
 ### Description
 Add a new search operator, only to this DataSource.
 
-If an existing [Operator](../main.md#object-operator) is passed, restricts the set of FieldTypes to which that operator can be applied in this DataSource.
+If an existing [Operator](../reference.md#object-operator) is passed, restricts the set of FieldTypes to which that operator can be applied in this DataSource.
 
 See also [DataSource.addSearchOperator](#classmethod-datasourceaddsearchoperator) for adding operators to all DataSources.
 
@@ -6516,7 +6516,7 @@ Drop the current dataSource cache. This has two effects:
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| notify | [boolean](../main.md#type-boolean) | true | — | Should data objects associated with this dataSource have their cache invalidated? |
+| notify | [boolean](../reference.md#type-boolean) | true | — | Should data objects associated with this dataSource have their cache invalidated? |
 
 ### Groups
 
@@ -6530,7 +6530,7 @@ Download a file stored in a field of type:"binary" in a DataSource record.
 
 This will trigger the browser's "Save As" dialog and allow the user to save the file associated with some record.
 
-Note that if this method is called for a record with no associated file, the download URL may not be functional. By default when dataSources encounter a [binary type fields](../main_2.md#type-fieldtype), an additional field, ``<fieldName>`_filename`, is generated to store the filename for the binary field value. If this field is present in the data source but has no value for this record, developers can assume they're working with a record with no stored file. If this field is not present in some custom dataSource configuration, or the record is not loaded on the client, an additional server transaction may be required to determine whether the record has an associated file before calling this method to download a file.
+Note that if this method is called for a record with no associated file, the download URL may not be functional. By default when dataSources encounter a [binary type fields](../reference_2.md#type-fieldtype), an additional field, ``<fieldName>`_filename`, is generated to store the filename for the binary field value. If this field is present in the data source but has no value for this record, developers can assume they're working with a record with no stored file. If this field is not present in some custom dataSource configuration, or the record is not loaded on the client, an additional server transaction may be required to determine whether the record has an associated file before calling this method to download a file.
 
 See the overview of [Binary Fields](../kb_topics/binaryFields.md#kb-topic-binary-fields) for more details.
 
@@ -6539,7 +6539,7 @@ See the overview of [Binary Fields](../kb_topics/binaryFields.md#kb-topic-binary
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | data | [Record](#type-record) | false | — | Record to download. Only required to have a value for the primary key field. |
-| fieldName | [FieldName](../main.md#type-fieldname) | true | — | Optional name of the binary field containing the file. If not provided, the first binary field is used. |
+| fieldName | [FieldName](../reference.md#type-fieldname) | true | — | Optional name of the binary field containing the file. If not provided, the first binary field is used. |
 | requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | Additional properties to set on the DSRequest that will be issued. |
 
 ---
@@ -6556,7 +6556,7 @@ The new DataSource is returned via the "callback" argument. If [DataSource.cache
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| criteria | [Criteria](../main_2.md#type-criteria) | false | — | The criteria for the clientOnly DS |
+| criteria | [Criteria](../reference_2.md#type-criteria) | false | — | The criteria for the clientOnly DS |
 | callback | [ClientOnlyDataSourceCallback](#type-clientonlydatasourcecallback) | false | — | The callback to fire passing the clientOnly DS |
 | requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | optional properties to pass through to the DSRequest |
 | dataSourceProperties | [DataSource Properties](#type-datasource-properties) | true | — | optional properties to pass through to the clientOnly DS |
@@ -6594,24 +6594,24 @@ Returns this DataSource's [primaryKey](DataSourceField.md#attr-datasourcefieldpr
 ## Method: DataSource.getTypeOperatorMap
 
 ### Description
-Get the list of [Operator](../main.md#object-operator)s available for this [FieldType](../main_2.md#type-fieldtype), as a [ValueMap](../main_2.md#type-valuemap) from [OperatorId](../main.md#type-operatorid) to the [Operator.title](Operator.md#attr-operatortitle) specified for the [Operator](../main.md#object-operator), or the corresponding property in [Operators](Operators.md#class-operators) if [Operator.titleProperty](Operator.md#attr-operatortitleproperty) is set.
+Get the list of [Operator](../reference.md#object-operator)s available for this [FieldType](../reference_2.md#type-fieldtype), as a [ValueMap](../reference_2.md#type-valuemap) from [OperatorId](../reference.md#type-operatorid) to the [Operator.title](Operator.md#attr-operatortitle) specified for the [Operator](../reference.md#object-operator), or the corresponding property in [Operators](Operators.md#class-operators) if [Operator.titleProperty](Operator.md#attr-operatortitleproperty) is set.
 
 This valueMap is suitable for use in a UI for building queries, similar to the [FilterBuilder](FilterBuilder.md#class-filterbuilder), and optionally omits operators marked [Operator.hidden](Operator.md#attr-operatorhidden) : true.
 
-It is also possible to have this function return only operators of a given [OperatorValueType](../main_2.md#type-operatorvaluetype), or everything except operators of that type. This is useful, for example, if you want to return all the logical operators (like "and"), or everything except the logical operators.
+It is also possible to have this function return only operators of a given [OperatorValueType](../reference_2.md#type-operatorvaluetype), or everything except operators of that type. This is useful, for example, if you want to return all the logical operators (like "and"), or everything except the logical operators.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| type | [FieldType](../main_2.md#type-fieldtype) | true | — | Type to obtain operator map for. Defaults to "text" if not passed. |
-| includeHidden | [boolean](../main.md#type-boolean) | true | — | whether to include Operators marked hidden:true |
-| valueType | [OperatorValueType](../main_2.md#type-operatorvaluetype) | true | — | If passed, returns only operators of this [OperatorValueType](../main_2.md#type-operatorvaluetype) |
-| omitValueType | [boolean](../main.md#type-boolean) | true | — | If set, reverses the meaning of the `valueType` parameter, so operators of that [OperatorValueType](../main_2.md#type-operatorvaluetype) are the only ones omitted |
+| type | [FieldType](../reference_2.md#type-fieldtype) | true | — | Type to obtain operator map for. Defaults to "text" if not passed. |
+| includeHidden | [boolean](../reference.md#type-boolean) | true | — | whether to include Operators marked hidden:true |
+| valueType | [OperatorValueType](../reference_2.md#type-operatorvaluetype) | true | — | If passed, returns only operators of this [OperatorValueType](../reference_2.md#type-operatorvaluetype) |
+| omitValueType | [boolean](../reference.md#type-boolean) | true | — | If set, reverses the meaning of the `valueType` parameter, so operators of that [OperatorValueType](../reference_2.md#type-operatorvaluetype) are the only ones omitted |
 
 ### Returns
 
-`[ValueMap](../main_2.md#type-valuemap)` — mapping from [OperatorId](../main.md#type-operatorid) to title, as described above
+`[ValueMap](../reference_2.md#type-valuemap)` — mapping from [OperatorId](../reference.md#type-operatorid) to title, as described above
 
 ### Groups
 
@@ -6641,7 +6641,7 @@ Note that currently, if an XML schema file contains ordering constraints, DataSo
 ### Description
 Evaluate the given criterion with respect to the passed record.
 
-Typically called by the [condition](Operator.md#method-operatorcondition) function of a custom [Operator](../main.md#object-operator) to evaluate [sub-criteria](Criterion.md#attr-criterioncriteria).
+Typically called by the [condition](Operator.md#method-operatorcondition) function of a custom [Operator](../reference.md#object-operator) to evaluate [sub-criteria](Criterion.md#attr-criterioncriteria).
 
 ### Parameters
 
@@ -6652,7 +6652,7 @@ Typically called by the [condition](Operator.md#method-operatorcondition) functi
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — whether the record meets the supplied [Criterion](../main_2.md#object-criterion)
+`[boolean](../reference.md#type-boolean)` — whether the record meets the supplied [Criterion](../reference_2.md#object-criterion)
 
 ### Groups
 

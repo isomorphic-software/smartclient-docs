@@ -1,6 +1,6 @@
 # Using includeVia with Composite Keys and domainKey
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 

@@ -1,6 +1,6 @@
 # StyleSetting Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -47,7 +47,7 @@ Title for this setting when applied to a FormItem.
 ## Attr: StyleSetting.groupName
 
 ### Description
-Name of the [group](../main.md#object-stylegroup) this setting will appear in for editing.
+Name of the [group](../reference.md#object-stylegroup) this setting will appear in for editing.
 
 **Flags**: IR
 

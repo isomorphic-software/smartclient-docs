@@ -1,6 +1,6 @@
 # MultiFileItem Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -70,7 +70,7 @@ Also in both cases, deletion of any file is immediate. In the case of a pre-exis
 ## Attr: MultiFileItem.editButton
 
 ### Description
-Button for launching a picker to add new files for upload. Supports the properties of a [FormItemIcon](../main.md#object-formitemicon).
+Button for launching a picker to add new files for upload. Supports the properties of a [FormItemIcon](../reference.md#object-formitemicon).
 
 **Flags**: IR
 
@@ -142,7 +142,7 @@ The initial title of the upload button in the picker lauched by the [edit button
 ## Attr: MultiFileItem.removeButton
 
 ### Description
-Button for removing files. Supports the properties of a [FormItemIcon](../main.md#object-formitemicon).
+Button for removing files. Supports the properties of a [FormItemIcon](../reference.md#object-formitemicon).
 
 **Flags**: IR
 
@@ -178,7 +178,7 @@ The title of the upload button in the picker lauched by the [edit button](#attr-
 ## Attr: MultiFileItem.pickerConstructor
 
 ### Description
-MultiFileItems use a [MultiFilePicker](../main.md#class-multifilepicker) instance as their picker. The generated `picker` autoChild may be customized via the standard [AutoChild](../main.md#type-autochild) pattern.
+MultiFileItems use a [MultiFilePicker](../reference.md#class-multifilepicker) instance as their picker. The generated `picker` autoChild may be customized via the standard [AutoChild](../reference.md#type-autochild) pattern.
 
 **Flags**: IR
 

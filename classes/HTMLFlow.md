@@ -1,6 +1,6 @@
 # HTMLFlow Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -13,11 +13,11 @@ Use the HTMLFlow component to display HTML content that should expand to its nat
 
 HTML content can be specified directly via [HTMLFlow.contents](#attr-htmlflowcontents), or loaded from a URL via the property [HTMLFlow.contentsURL](#attr-htmlflowcontentsurl). This method of loading is for simple HTML content only; SmartClient components should be loaded via the [ViewLoader](ViewLoader.md#class-viewloader) class.
 
-HTMLFlows are typically used to render snippets of HTML directly in the document rather than holding a complete HTML page, as the component can only size to fit HTML content it renders directly into the DOM. If you are looking to display a complete HTML page, you will need to modify the default [Overflow](../main.md#type-overflow) and [HTMLFlow.defaultHeight](#attr-htmlflowdefaultheight), or use the [HTMLPane](HTMLPane.md#class-htmlpane) class
+HTMLFlows are typically used to render snippets of HTML directly in the document rather than holding a complete HTML page, as the component can only size to fit HTML content it renders directly into the DOM. If you are looking to display a complete HTML page, you will need to modify the default [Overflow](../reference.md#type-overflow) and [HTMLFlow.defaultHeight](#attr-htmlflowdefaultheight), or use the [HTMLPane](HTMLPane.md#class-htmlpane) class
 
 NOTE: Since the size of an HTMLFlow component is determined by its HTML contents, this component will draw at varying sizes if given content of varying size. When using HTMLFlow components within a Layout, consider what will happen if the HTMLFlow renders at various sizes. An HTMLFlow which can expand should be placed in a container where other components can render smaller, where the container is allowed to scroll, or where there is padding to expand into.
 
-HTMLFlow is a [DataBoundComponent](../main.md#interface-databoundcomponent) but only supports one method at this time, [fetchRelatedData](#method-htmlflowfetchrelateddata).
+HTMLFlow is a [DataBoundComponent](../reference.md#interface-databoundcomponent) but only supports one method at this time, [fetchRelatedData](#method-htmlflowfetchrelateddata).
 
 ### Groups
 
@@ -29,7 +29,7 @@ HTMLFlow is a [DataBoundComponent](../main.md#interface-databoundcomponent) but 
 ### Description
 Can this component have its [HTMLFlow.contents](#attr-htmlflowcontents) specified as a complete standalone HTML page to be rendered into an embedded IFRAME?
 
-If true, if [ContentsType](../main_2.md#type-contentstype) is specified as, or [derived to be](#attr-htmlflowautoderivecontentstype) "page", the contents will be rendered into an embedded IFRAME using the `srcdoc` attribute rather than written directly into the component handle.
+If true, if [ContentsType](../reference_2.md#type-contentstype) is specified as, or [derived to be](#attr-htmlflowautoderivecontentstype) "page", the contents will be rendered into an embedded IFRAME using the `srcdoc` attribute rather than written directly into the component handle.
 
 If false, contentsType has no effect unless contents are being loaded from an explicitly specified [HTMLFlow.contentsURL](#attr-htmlflowcontentsurl)
 
@@ -117,13 +117,13 @@ See [Canvas.dynamicContents](Canvas.md#attr-canvasdynamiccontents) for details o
 ## Attr: HTMLFlow.autoDeriveContentsType
 
 ### Description
-If [ContentsType](../main_2.md#type-contentstype) is not explicitly specified, should it be automatically derived?
+If [ContentsType](../reference_2.md#type-contentstype) is not explicitly specified, should it be automatically derived?
 
 If set to true, this component will use [HTMLFlow.isPageHTML](#method-htmlflowispagehtml) to determine whether the contents are a standalone HTML page which should be rendered into an embedded IFRAME rather than written directly into the component's handle in the DOM.
 
 Note that this property will auto derive the appropriate contents type for both explicitly specified [HTMLFlow.contents](#attr-htmlflowcontents) and for HTML loaded from the [HTMLFlow.contentsURL](#attr-htmlflowcontentsurl)
 
-See [ContentsType](../main_2.md#type-contentstype) for further information on displaying complete HTML pages in an IFRAME.
+See [ContentsType](../reference_2.md#type-contentstype) for further information on displaying complete HTML pages in an IFRAME.
 
 **Flags**: IRW
 
@@ -133,7 +133,7 @@ See [ContentsType](../main_2.md#type-contentstype) for further information on di
 ### Description
 The `contentsType` attribute governs whether the contents of this htmlFlow are a fragment of HTML to inserted directly into the DOM, or a complete HTML page to be displayed in an IFRAME. If not explicitly specified, [HTMLFlow.autoDeriveContentsType](#attr-htmlflowautoderivecontentstype) may be set to automatically determine the appropriate contents type by analyzing the contents of the component. If `autoDeriveContentsType` is false and `contentsType` is not explicitly specified, contents will always be assumed to be `"fragment"`.
 
-HTMLFlow contents may be [directly specified](#attr-htmlflowcontents) or loaded from a [specified URL](#attr-htmlflowcontentsurl). Note that if [HTMLFlow.supportsContentsAsPage](#attr-htmlflowsupportscontentsaspage) is false and no [HTMLFlow.contentsURL](#attr-htmlflowcontentsurl) is specified, the contents string will always be assumed to be a fragment, even if [ContentsType](../main_2.md#type-contentstype) is explicitly set to `"page"`.
+HTMLFlow contents may be [directly specified](#attr-htmlflowcontents) or loaded from a [specified URL](#attr-htmlflowcontentsurl). Note that if [HTMLFlow.supportsContentsAsPage](#attr-htmlflowsupportscontentsaspage) is false and no [HTMLFlow.contentsURL](#attr-htmlflowcontentsurl) is specified, the contents string will always be assumed to be a fragment, even if [ContentsType](../reference_2.md#type-contentstype) is explicitly set to `"page"`.
 
 Note that an HTMLFlow with contentsType:"page" should not be used to load and display a page containing a set of SmartClient components into the application. To dynamically load SmartClient components, use [ViewLoader](ViewLoader.md#class-viewloader), **never** this mechanism (click [here](../kb_topics/noFrames.md#kb-topic-dont-misuse-frames) for why).
 
@@ -156,7 +156,7 @@ Note that if [HTMLFlow.autoDeriveContentsType](#attr-htmlflowautoderivecontentst
 ## Attr: HTMLFlow.canSelectText
 
 ### Description
-Text selection for copy and paste is enabled by default in the HTMLFlow class. Note that this setting has no impact if [ContentsType](../main_2.md#type-contentstype) is set to "page". In this case contents is loaded from a target URL via an IFRAME element, and text selection behavior will be dictated by the loaded HTML.
+Text selection for copy and paste is enabled by default in the HTMLFlow class. Note that this setting has no impact if [ContentsType](../reference_2.md#type-contentstype) is set to "page". In this case contents is loaded from a target URL via an IFRAME element, and text selection behavior will be dictated by the loaded HTML.
 
 **Flags**: IR
 
@@ -176,9 +176,9 @@ Selects the HTTP method that will be used when fetching content. Valid values ar
 ## Attr: HTMLFlow.defaultHeight
 
 ### Description
-HTMLFlow defaultHeight is set to `1` which, together with [overflow:"visible"](../main.md#type-overflow) causes the HTMLFlow to size to its content HTML.
+HTMLFlow defaultHeight is set to `1` which, together with [overflow:"visible"](../reference.md#type-overflow) causes the HTMLFlow to size to its content HTML.
 
-Note that if [ContentsType](../main_2.md#type-contentstype) is `"page"`, `overflow:"visible"` is not supported - for this usage an explicit larger height should be specified. You may want to use the preconfigured [HTMLPane](HTMLPane.md#class-htmlpane) class instead of HTMLFlow for this usage.
+Note that if [ContentsType](../reference_2.md#type-contentstype) is `"page"`, `overflow:"visible"` is not supported - for this usage an explicit larger height should be specified. You may want to use the preconfigured [HTMLPane](HTMLPane.md#class-htmlpane) class instead of HTMLFlow for this usage.
 
 **Flags**: IRW
 
@@ -227,7 +227,7 @@ Note that SmartClient simply applies the provided value to the generated `<ifram
 ### Description
 HTMLFlows are `overflow:"visible"` by default, allowing them to fit their HTML content.
 
-Note that if [ContentsType](../main_2.md#type-contentstype) is `"page"`, `overflow:"visible"` is not supported and the overflow will default to `"auto"` instead
+Note that if [ContentsType](../reference_2.md#type-contentstype) is `"page"`, `overflow:"visible"` is not supported and the overflow will default to `"auto"` instead
 
 **Flags**: IRW
 
@@ -283,7 +283,7 @@ Set to true to allow browser caching **if the browser would normally do so**, in
 ### Description
 If specified the HTMLFlow will load its contents from this URL instead of displaying [this.contents](#attr-htmlflowcontents). May be combined with parameters if [HTMLFlow.contentsURLParams](#attr-htmlflowcontentsurlparams) were specified.
 
-The HTML retrieved from the target URL may be a complete standalone page to be rendered into its own scope using an IFRAME, or a fragment of HTML to display within this component's handle. See [ContentsType](../main_2.md#type-contentstype) and [HTMLFlow.autoDeriveContentsType](#attr-htmlflowautoderivecontentstype) for more information.
+The HTML retrieved from the target URL may be a complete standalone page to be rendered into its own scope using an IFRAME, or a fragment of HTML to display within this component's handle. See [ContentsType](../reference_2.md#type-contentstype) and [HTMLFlow.autoDeriveContentsType](#attr-htmlflowautoderivecontentstype) for more information.
 
 Note that the link{loadingMessage} and [HTMLFlow.httpMethod](#attr-htmlflowhttpmethod) features only apply if contentsURL was set and contentsType was not explicitly set to `"page"`
 
@@ -311,7 +311,7 @@ For example, given two related DataSources "orders" and "orderItems", where we w
 |------|------|----------|---------|-------------|
 | record | [ListGridRecord](#type-listgridrecord) | false | — | DataSource record |
 | schema | [Canvas](#type-canvas)|[DataSource](#type-datasource)|[ID](#type-id) | false | — | schema of the DataSource record, or DataBoundComponent already bound to that schema |
-| callback | [DSCallback](../main_2.md#type-dscallback) | true | — | callback to invoke on completion |
+| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke on completion |
 | requestProperties | [DSRequest](#type-dsrequest) | true | — | additional properties to set on the DSRequest that will be issued |
 
 ### Groups
@@ -351,8 +351,8 @@ Can also be called with no arguments to reload content from the existing [HTMLFl
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| url | [URL](../main_2.md#type-url) | true | — | URL to retrieve contents from |
-| params | [Object](../main.md#type-object) | true | — | Parameters to send to the contentsURL. Merged with `component.contentsURLParams` if both are set. |
+| url | [URL](../reference_2.md#type-url) | true | — | URL to retrieve contents from |
+| params | [Object](../reference.md#type-object) | true | — | Parameters to send to the contentsURL. Merged with `component.contentsURLParams` if both are set. |
 
 ### Groups
 
@@ -395,7 +395,7 @@ This method is used by [HTMLFlow.autoDeriveContentsType](#attr-htmlflowautoderiv
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true if the HTML string contains any structural HTML page elements.
+`[boolean](../reference.md#type-boolean)` — true if the HTML string contains any structural HTML page elements.
 
 ---
 ## Method: HTMLFlow.setContents
@@ -407,7 +407,7 @@ Changes the contents of a widget to newContents, an HTML string.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newContents | [HTMLString](../main.md#type-htmlstring) | true | — | an HTML string to be set as the contents of this widget |
+| newContents | [HTMLString](../reference.md#type-htmlstring) | true | — | an HTML string to be set as the contents of this widget |
 
 ### See Also
 
@@ -423,7 +423,7 @@ Override to modify the loaded HTML before it is rendered.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| html | [HTMLString](../main.md#type-htmlstring) | false | — | the html as loaded from the server return (HTML) html to be rendered |
+| html | [HTMLString](../reference.md#type-htmlstring) | false | — | the html as loaded from the server return (HTML) html to be rendered |
 
 ### Groups
 
@@ -446,7 +446,7 @@ This method is called from the response processing pipeline. If you want to prov
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — false to suppress further response processing
+`[boolean](../reference.md#type-boolean)` — false to suppress further response processing
 
 ### Groups
 

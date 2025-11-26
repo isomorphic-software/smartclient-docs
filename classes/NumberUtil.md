@@ -1,6 +1,6 @@
 # NumberUtil Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -93,14 +93,14 @@ The grouping symbol, or thousands separator, to use when formatting numbers
 ## ClassMethod: NumberUtil.format
 
 ### Description
-Return the parameter number formatted according to the parameter [FormatString](../main.md#type-formatstring). This method is used to implement the [DataSourceField.format](DataSourceField.md#attr-datasourcefieldformat) functionality, but it can also be used to format arbitrary numbers programmatically.
+Return the parameter number formatted according to the parameter [FormatString](../reference.md#type-formatstring). This method is used to implement the [DataSourceField.format](DataSourceField.md#attr-datasourcefieldformat) functionality, but it can also be used to format arbitrary numbers programmatically.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | number | [Number](#type-number) | false | — | The number to format |
-| format | [FormatString](../main.md#type-formatstring) | false | — | The format to apply |
+| format | [FormatString](../reference.md#type-formatstring) | false | — | The format to apply |
 
 ### Returns
 
@@ -136,8 +136,8 @@ Return the passed number as a currency-formatted string, or an empty string if n
 | number | [Number](#type-number) | false | — | the number to convert |
 | currencyChar | [String](#type-string) | true | — | Currency symbol, default taken from the locale and can be set to an empty string. If not passed and missing from the locale, defaults to `"$"`. |
 | decimalChar | [String](#type-string) | true | — | Decimal separator symbol, default taken from the locale. If if not passed and missing from the locale, defaults to `"."`. |
-| padDecimal | [boolean](../main.md#type-boolean) | true | — | Should decimal portion be padded out to two digits? True by default. |
-| currencyCharLast | [boolean](../main.md#type-boolean) | true | — | Should the currency symbol be shown at the end of the string? If unspecified, and not defined in the locale, it will prefix the number. |
+| padDecimal | [boolean](../reference.md#type-boolean) | true | — | Should decimal portion be padded out to two digits? True by default. |
+| currencyCharLast | [boolean](../reference.md#type-boolean) | true | — | Should the currency symbol be shown at the end of the string? If unspecified, and not defined in the locale, it will prefix the number. |
 
 ### Returns
 
@@ -262,7 +262,7 @@ Parse string that contains float number. This method correctly handles locale ba
 
 ### Returns
 
-`[float](../main.md#type-float)` — parsed number as a Number
+`[float](../reference.md#type-float)` — parsed number as a Number
 
 ---
 ## ClassMethod: NumberUtil.toUSCurrencyString

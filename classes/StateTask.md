@@ -1,6 +1,6 @@
 # StateTask Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -71,7 +71,7 @@ A value of "record" type or "array" type can be declared in Component XML using 
 ### Description
 Does this processElement pass through output from the last executed task (i.e. transient state)?
 
-See [taskInputExpressions](../main_2.md#type-taskinputexpression) for details on the transient state outputs.
+See [taskInputExpressions](../reference_2.md#type-taskinputexpression) for details on the transient state outputs.
 
 Note that this property does not affect the task at all but is an indicator to the user and to the workflow editor of the behavior of the task as coded (See [Process.passThruTaskOutput](Process.md#method-processpassthrutaskoutput)).
 

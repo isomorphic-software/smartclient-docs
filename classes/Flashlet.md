@@ -1,12 +1,12 @@
 # Flashlet Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
 ## Class: Flashlet
 
-*Inherits from:* [BrowserPlugin](../main.md#class-browserplugin)
+*Inherits from:* [BrowserPlugin](../reference.md#class-browserplugin)
 
 ### Description
 ISC abstraction for Flashlets.
@@ -87,7 +87,7 @@ Is Shockwave Flash installed on this browser?
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — `true` if Flash is installed; `false` otherwise.
+`[boolean](../reference.md#type-boolean)` — `true` if Flash is installed; `false` otherwise.
 
 ---
 ## Method: Flashlet.setSrc

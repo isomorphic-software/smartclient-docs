@@ -1,6 +1,6 @@
 # Button Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -92,7 +92,7 @@ In addition, if [StatefulCanvas.showRTLIcon](StatefulCanvas.md#attr-statefulcanv
 ## Attr: Button.definingProperty
 
 ### Description
-This attribute denotes the name of a property to use as a [getDefiningPropertyName()](Canvas.md#method-canvasgetdefiningpropertyname) for this property when generating and resolving [AutoTest locators with search segments](../main_2.md#type-autotestlocator).
+This attribute denotes the name of a property to use as a [getDefiningPropertyName()](Canvas.md#method-canvasgetdefiningpropertyname) for this property when generating and resolving [AutoTest locators with search segments](../reference_2.md#type-autotestlocator).
 
 **Flags**: IRWA
 
@@ -148,7 +148,7 @@ Should we visibly change state when the canvas receives focus? If [StatefulCanva
 ## Attr: Button.styleName
 
 ### Description
-StatefulCanvases are styled by combining [Button.baseStyle](#attr-buttonbasestyle) with [State](../main.md#type-state) to build a composite css style name. In most cases, `statefulCanvas.styleName` will have no effect on statefulCanvas styling and should not be used.
+StatefulCanvases are styled by combining [Button.baseStyle](#attr-buttonbasestyle) with [State](../reference.md#type-state) to build a composite css style name. In most cases, `statefulCanvas.styleName` will have no effect on statefulCanvas styling and should not be used.
 
 If the `baseStyle` is not explicitly specified for a class, the `styleName` will be used as a default baseStyle. Other than that, this attribute will be ignored.
 
@@ -180,7 +180,7 @@ Size in pixels of the icon image.
 
 The [iconWidth](StatefulCanvas.md#attr-statefulcanvasiconwidth) and [iconHeight](StatefulCanvas.md#attr-statefulcanvasiconheight) properties can be used to configure width and height separately.
 
-Note: When configuring the properties of a `StatefulCanvas` (or derivative) [AutoChild](../main.md#type-autochild), it is best to set the `iconWidth` and `iconHeight` to the same value rather than setting an `iconSize`. This is because certain skins or customizations thereto might set the `iconWidth` and `iconHeight`, making the customization of the AutoChild's `iconSize` ineffective.
+Note: When configuring the properties of a `StatefulCanvas` (or derivative) [AutoChild](../reference.md#type-autochild), it is best to set the `iconWidth` and `iconHeight` to the same value rather than setting an `iconSize`. This is because certain skins or customizations thereto might set the `iconWidth` and `iconHeight`, making the customization of the AutoChild's `iconSize` ineffective.
 
 ### Groups
 
@@ -371,7 +371,7 @@ Behavior on state changes -- BUTTON, RADIO or CHECKBOX
 ### Description
 Optional icon to be shown with the button title text.
 
-Specify as the partial URL to an image, relative to the imgDir of this component. A sprited image can be specified using the [SCSpriteConfig](../main.md#type-scspriteconfig) format.
+Specify as the partial URL to an image, relative to the imgDir of this component. A sprited image can be specified using the [SCSpriteConfig](../reference.md#type-scspriteconfig) format.
 
 Note that the string "blank" is a valid setting for this attribute and will always result in the system blank image, with no state suffixes applied. Typically, this might be used when an iconStyle is also specified and the iconStyle renders the icon via a stateful background-image or other CSS approach.
 
@@ -421,7 +421,7 @@ For [Img](Img.md#class-img) or [StretchImg](StretchImg.md#class-stretchimg) base
 
 ### See Also
 
-- [State](../main.md#type-state)
+- [State](../reference.md#type-state)
 - [state](../kb_topics/state.md#kb-topic-state)
 
 **Flags**: IRWA
@@ -653,7 +653,7 @@ Default is to simply return this.title.
 
 ### Returns
 
-`[HTMLString](../main.md#type-htmlstring)` — HTML for the title.
+`[HTMLString](../reference.md#type-htmlstring)` — HTML for the title.
 
 **Flags**: A
 
@@ -665,7 +665,7 @@ Is the title of this button clipped?
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — whether the title is clipped.
+`[boolean](../reference.md#type-boolean)` — whether the title is clipped.
 
 **Flags**: A
 
@@ -705,11 +705,11 @@ Returns the HTML that is displayed by the default [titleHover](#method-buttontit
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| defaultHTML | [HTMLString](../main.md#type-htmlstring) | false | — | the HTML that would have been displayed by default |
+| defaultHTML | [HTMLString](../reference.md#type-htmlstring) | false | — | the HTML that would have been displayed by default |
 
 ### Returns
 
-`[HTMLString](../main.md#type-htmlstring)` — HTML to be displayed in the hover. If null or an empty string, then the hover is canceled.
+`[HTMLString](../reference.md#type-htmlstring)` — HTML to be displayed in the hover. If null or an empty string, then the hover is canceled.
 
 ---
 ## Method: Button.setState
@@ -721,7 +721,7 @@ Sets the [state](StatefulCanvas.md#attr-statefulcanvasstate) of this object, cha
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newState | [State](../main.md#type-state) | false | — | the new state. |
+| newState | [State](../reference.md#type-state) | false | — | the new state. |
 
 ### Groups
 
@@ -736,7 +736,7 @@ Return the state of this StatefulCanvas
 
 ### Returns
 
-`[State](../main.md#type-state)` — —
+`[State](../reference.md#type-state)` — —
 
 ### Groups
 
@@ -750,7 +750,7 @@ Optional stringMethod to fire when the user hovers over this button and the titl
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — false to suppress the standard hover
+`[boolean](../reference.md#type-boolean)` — false to suppress the standard hover
 
 ### Groups
 
@@ -780,7 +780,7 @@ Sets the base CSS style. As the component changes state and/or is selected, suff
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| style | [CSSStyleName](../main.md#type-cssstylename) | false | — | new base style |
+| style | [CSSStyleName](../reference.md#type-cssstylename) | false | — | new base style |
 
 ---
 ## Method: Button.setActionType
@@ -792,7 +792,7 @@ Update the 'actionType' for this canvas (radio / checkbox / button) If the canva
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| actionType | [SelectionType](../main_2.md#type-selectiontype) | false | — | new action type |
+| actionType | [SelectionType](../reference_2.md#type-selectiontype) | false | — | new action type |
 
 ### Groups
 
@@ -809,7 +809,7 @@ Set whether the title of this button should be allowed to wrap if too long for t
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newWrap | [boolean](../main.md#type-boolean) | false | — | whether to wrap the title |
+| newWrap | [boolean](../reference.md#type-boolean) | false | — | whether to wrap the title |
 
 ---
 ## Method: Button.getActionType
@@ -819,7 +819,7 @@ Return the 'actionType' for this canvas (radio / checkbox / button)
 
 ### Returns
 
-`[SelectionType](../main_2.md#type-selectiontype)` — the current action type
+`[SelectionType](../reference_2.md#type-selectiontype)` — the current action type
 
 ### Groups
 
@@ -836,7 +836,7 @@ Enable or disable this object
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| disabled | [boolean](../main.md#type-boolean) | false | — | true if this widget is to be disabled |
+| disabled | [boolean](../reference.md#type-boolean) | false | — | true if this widget is to be disabled |
 
 ### Groups
 
@@ -861,7 +861,7 @@ If this button is showing an [icon](#attr-buttonicon), a separate click handler 
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — false to suppress the standard button click event
+`[boolean](../reference.md#type-boolean)` — false to suppress the standard button click event
 
 ### Groups
 
@@ -894,7 +894,7 @@ Change the icon being shown next to the title text.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| icon | [SCImgURL](../main.md#type-scimgurl) | false | — | URL of new icon |
+| icon | [SCImgURL](../reference.md#type-scimgurl) | false | — | URL of new icon |
 
 ### Groups
 
@@ -910,7 +910,7 @@ Setter method for the [StatefulCanvas.autoFit](StatefulCanvas.md#attr-statefulca
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| autoFit | [boolean](../main.md#type-boolean) | false | — | New autoFit setting. |
+| autoFit | [boolean](../reference.md#type-boolean) | false | — | New autoFit setting. |
 
 ---
 ## Method: Button.setTitle
@@ -922,7 +922,7 @@ Setter for the [title](StatefulCanvas.md#attr-statefulcanvastitle).
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newTitle | [HTMLString](../main.md#type-htmlstring) | false | — | the new title HTML. |
+| newTitle | [HTMLString](../reference.md#type-htmlstring) | false | — | the new title HTML. |
 
 ### Groups
 

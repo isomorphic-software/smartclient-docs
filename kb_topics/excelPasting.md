@@ -1,6 +1,6 @@
 # Copy and Paste with Excel
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 

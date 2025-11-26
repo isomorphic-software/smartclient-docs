@@ -1,6 +1,6 @@
 # SimpleTile Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -51,7 +51,7 @@ The default implementation will call [TileGrid.getTileHTML](TileGrid.md#method-t
 
 ### Returns
 
-`[HTMLString](../main.md#type-htmlstring)` — HTML contents for the tile, as a String
+`[HTMLString](../reference.md#type-htmlstring)` — HTML contents for the tile, as a String
 
 ---
 ## Method: SimpleTile.getRecord

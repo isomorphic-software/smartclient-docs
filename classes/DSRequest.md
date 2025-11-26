@@ -1,6 +1,6 @@
 # DSRequest Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -67,9 +67,9 @@ In this case [DSRequest.additionalOutputs](#attr-dsrequestadditionaloutputs) sen
 ## Attr: DSRequest.textMatchStyle
 
 ### Description
-For "fetch" operations, how search criteria should be interpreted for text fields: one of "exact" for exact match, "exactCase" for case-sensitive exact match, "startsWith" for matching at the beginning only, or "substring" for substring match. All `textMatchStyle` settings except "exactCase" are case-insensitive; use [AdvancedCriteria](../main.md#object-advancedcriteria) for greater control over matching.
+For "fetch" operations, how search criteria should be interpreted for text fields: one of "exact" for exact match, "exactCase" for case-sensitive exact match, "startsWith" for matching at the beginning only, or "substring" for substring match. All `textMatchStyle` settings except "exactCase" are case-insensitive; use [AdvancedCriteria](../reference.md#object-advancedcriteria) for greater control over matching.
 
-This property defaults to the value of [DataSource.defaultTextMatchStyle](DataSource.md#attr-datasourcedefaulttextmatchstyle) if it is not explicitly provided on the `DSRequest`. Note, however, that DSRequests issued by [ListGrid](ListGrid_1.md#class-listgrid)s and other [components](../main.md#interface-databoundcomponent) will generally have a setting for textMatchStyle on the component itself (see [ListGrid.autoFetchTextMatchStyle](ListGrid_1.md#attr-listgridautofetchtextmatchstyle), for example).
+This property defaults to the value of [DataSource.defaultTextMatchStyle](DataSource.md#attr-datasourcedefaulttextmatchstyle) if it is not explicitly provided on the `DSRequest`. Note, however, that DSRequests issued by [ListGrid](ListGrid_1.md#class-listgrid)s and other [components](../reference.md#interface-databoundcomponent) will generally have a setting for textMatchStyle on the component itself (see [ListGrid.autoFetchTextMatchStyle](ListGrid_1.md#attr-listgridautofetchtextmatchstyle), for example).
 
 This setting is respected by the built-in server-side connectors for SQL, JPA and Hibernate. A custom server-side DataSource implementation should generally respect this flag as well, or server-side filtering will not match client-side filtering, which will require [disabling client-side filtering](ResultSet.md#attr-resultsetuseclientfiltering), a huge performance loss.
 
@@ -139,8 +139,8 @@ Currently, no built-in server-side connectors (SQL, JPA, Hibernate) implement su
 ### Description
 An object to be held onto for the duration of the DSRequest turnaround to track application-specific context.
 
-When a DataSource request completes, the `clientContext` is available in the [DSCallback](../main_2.md#type-dscallback) as `dsResponse.clientContext`. The `clientContext` is never sent to the server.  
-The `clientContext` is useful for holding onto state that will be used when the [DSCallback](../main_2.md#type-dscallback) fires, such as the name of a component that will receive the returned data.
+When a DataSource request completes, the `clientContext` is available in the [DSCallback](../reference_2.md#type-dscallback) as `dsResponse.clientContext`. The `clientContext` is never sent to the server.  
+The `clientContext` is useful for holding onto state that will be used when the [DSCallback](../reference_2.md#type-dscallback) fires, such as the name of a component that will receive the returned data.
 
 ### See Also
 
@@ -153,7 +153,7 @@ The `clientContext` is useful for holding onto state that will be used when the 
 ## Attr: DSRequest.exportTZ
 
 ### Description
-For server-side export with [ExportFormat](../main_2.md#type-exportformat) "xls" or "ooxml" only, timezone to use when saving values from [FieldType](../main_2.md#type-fieldtype) "datetime" to the spreadsheet.
+For server-side export with [ExportFormat](../reference_2.md#type-exportformat) "xls" or "ooxml" only, timezone to use when saving values from [FieldType](../reference_2.md#type-fieldtype) "datetime" to the spreadsheet.
 
 This setting exists because MS Excel™ has no concept of providing a true datetime value that is timezone-independent and will display in the local timezone where the Excel program is launched. This setting sets the timezone of the Excel workbook, so that it will display dates in the same timezone regardless of the local timezone where the Excel program is launched. Alternative approach is to set [exportDatesAsFormattedString=true](#attr-dsrequestexportdatesasformattedstring) telling datetime values must be provided as a rendered string, which implies rendering in a particular timezone when the spreadsheet is generated.
 
@@ -179,9 +179,9 @@ When exporting via [ListGrid.exportClientData](ListGrid_2.md#method-listgridexpo
 
 If a number is provided to a spreadsheet as a string, Excel or other spreadsheet applications may not recognize them as being numbers that are valid for use in numerical formulas, filters, etc.
 
-For this reason, the default behavior of `exportClientData` is to provide numerical values to the spreadsheet as true numbers. If [Format Strings](../main.md#type-formatstring) are provided via properties like [dataSourceField.format](DataSourceField.md#attr-datasourcefieldformat) these will be translated to Excel / OpenOffice format strings and used when generating spreadsheets. Other formatting logic, such as [cell formatters](ListGridField.md#method-listgridfieldformatcellvalue), will not be used since they cannot be automatically translated to an Excel format string. If no translatable format string is available, numbers will be provided to the spreadsheet with no formatter and the spreadsheet program's default formatting for numerical values will be used.
+For this reason, the default behavior of `exportClientData` is to provide numerical values to the spreadsheet as true numbers. If [Format Strings](../reference.md#type-formatstring) are provided via properties like [dataSourceField.format](DataSourceField.md#attr-datasourcefieldformat) these will be translated to Excel / OpenOffice format strings and used when generating spreadsheets. Other formatting logic, such as [cell formatters](ListGridField.md#method-listgridfieldformatcellvalue), will not be used since they cannot be automatically translated to an Excel format string. If no translatable format string is available, numbers will be provided to the spreadsheet with no formatter and the spreadsheet program's default formatting for numerical values will be used.
 
-If `exportNumbersAsFormattedString` is set to true, numbers will appear as strings that exactly match the formatting shown in the [DataBoundComponent](../main.md#interface-databoundcomponent). As noted above, this means the spreadsheet program will not recognize the value as a number.
+If `exportNumbersAsFormattedString` is set to true, numbers will appear as strings that exactly match the formatting shown in the [DataBoundComponent](../reference.md#interface-databoundcomponent). As noted above, this means the spreadsheet program will not recognize the value as a number.
 
 ### Groups
 
@@ -210,7 +210,7 @@ DSRequest-level override for the DataSource-level [arrayCriteriaForceExact](Data
 ## Attr: DSRequest.requestId
 
 ### Description
-Automatically generated unique ID for this request. This ID will be required by developers making use of the ["clientCustom" dataProtocol](../main_2.md#type-dsprotocol).
+Automatically generated unique ID for this request. This ID will be required by developers making use of the ["clientCustom" dataProtocol](../reference_2.md#type-dsprotocol).
 
 **Flags**: RA
 
@@ -218,7 +218,7 @@ Automatically generated unique ID for this request. This ID will be required by 
 ## Attr: DSRequest.operationId
 
 ### Description
-When a [DataBoundComponent](../main.md#interface-databoundcomponent) sends a DSRequest, the `dsRequest.operationId` will be automatically picked up from the `fetchOperation`, `addOperation`, etc properties of the DataBoundComponent.
+When a [DataBoundComponent](../reference.md#interface-databoundcomponent) sends a DSRequest, the `dsRequest.operationId` will be automatically picked up from the `fetchOperation`, `addOperation`, etc properties of the DataBoundComponent.
 
 The `operationId` serves as an identifier that you can use to create variations on the 4 basic DataSource operations that are used by different components in different parts of your application. For example, you may be using a standard `fetch` operation in one part of your application, however on another screen you want to perform a `fetch` operation on the same DataSource but interpret search criteria differently (eg full text search).
 
@@ -298,7 +298,7 @@ However if useFlatFields were set, `request.data` could be just:
 
 [OperationBinding.useFlatFields](OperationBinding.md#attr-operationbindinguseflatfields) can also be set to cause **all** dsRequests of a particular type to `useFlatFields` automatically.
 
-For [DataBoundComponents](../main.md#interface-databoundcomponent), [component.useFlatFields](DataBoundComponent.md#attr-databoundcomponentuseflatfields) can be set use "flattened" binding to fields of a WSDL message or XML Schema.
+For [DataBoundComponents](../reference.md#interface-databoundcomponent), [component.useFlatFields](DataBoundComponent.md#attr-databoundcomponentuseflatfields) can be set use "flattened" binding to fields of a WSDL message or XML Schema.
 
 Note that `useFlatFields` is not generally recommended for use with XML input messages where multiple simple type fields exist with the same name, however if used in this way, the first field to use a given name wins. "first" means the first field encountered in a depth first search. "wins" means only the first field will be populated in the generated XML message.
 
@@ -312,7 +312,7 @@ Note that `useFlatFields` is not generally recommended for use with XML input me
 ## Attr: DSRequest.exportImageQuality
 
 ### Description
-If exporting in [JPEG format](../main_2.md#type-exportimageformat), the output JPEG quality level. This is a number from 0 to 1, with 1 representing the best quality and 0 representing the least quality but smallest file size.
+If exporting in [JPEG format](../reference_2.md#type-exportimageformat), the output JPEG quality level. This is a number from 0 to 1, with 1 representing the best quality and 0 representing the least quality but smallest file size.
 
 **Flags**: IR
 
@@ -399,7 +399,7 @@ This property allows omitting column names from CSV and Excel exports (no effect
 ## Attr: DSRequest.multiInsertStrategy
 
 ### Description
-For dataSources of [serverType](DataSource.md#attr-datasourceservertype) "sql" only, this property sets the multi-insert strategy for this specific [dsRequest](../main_2.md#object-dsrequest). Only has an effect if this is an [add request](DataSource.md#method-datasourceadddata) that specifies a list of records as the data.
+For dataSources of [serverType](DataSource.md#attr-datasourceservertype) "sql" only, this property sets the multi-insert strategy for this specific [dsRequest](../reference_2.md#object-dsrequest). Only has an effect if this is an [add request](DataSource.md#method-datasourceadddata) that specifies a list of records as the data.
 
 Note that this setting overrides the equivalent [operationBinding setting](OperationBinding.md#attr-operationbindingmultiinsertstrategy) and [dataSource setting](DataSource.md#attr-datasourcemultiinsertstrategy)
 
@@ -414,7 +414,7 @@ Note that this setting overrides the equivalent [operationBinding setting](Opera
 ## Attr: DSRequest.cacheSyncStrategy
 
 ### Description
-The [cacheSyncStrategy](../main_2.md#type-cachesyncstrategy) to use for this specific request. Overrides any [operation-level](OperationBinding.md#attr-operationbindingcachesyncstrategy) or [dataSource-level](DataSource.md#attr-datasourcecachesyncstrategy) `cacheSyncStrategy`
+The [cacheSyncStrategy](../reference_2.md#type-cachesyncstrategy) to use for this specific request. Overrides any [operation-level](OperationBinding.md#attr-operationbindingcachesyncstrategy) or [dataSource-level](DataSource.md#attr-datasourcecachesyncstrategy) `cacheSyncStrategy`
 
 ### Groups
 
@@ -431,7 +431,7 @@ The [cacheSyncStrategy](../main_2.md#type-cachesyncstrategy) to use for this spe
 ## Attr: DSRequest.componentId
 
 ### Description
-For requests submitted by a [DataBoundComponent](../main.md#interface-databoundcomponent), the [Canvas.ID](Canvas.md#attr-canvasid) of the submitting component.
+For requests submitted by a [DataBoundComponent](../reference.md#interface-databoundcomponent), the [Canvas.ID](Canvas.md#attr-canvasid) of the submitting component.
 
 This ID will be present for operations including automatic saves by a ListGrid [during editing](../kb_topics/editing.md#kb-topic-grid-editing), or calls to [form.saveData()](DynamicForm.md#method-dynamicformsavedata). It will not be present for a direct call to a DataSource method such as [DataSource.fetchData](DataSource.md#method-datasourcefetchdata).
 
@@ -485,7 +485,7 @@ Note that this only applies to SOAP headers. General HTTP headers for requests m
 ## Attr: DSRequest.cacheSyncTiming
 
 ### Description
-The [cacheSyncTiming](../main_2.md#type-cachesynctiming) to use for this specific request. Overrides any [operation-level](OperationBinding.md#attr-operationbindingcachesynctiming) or [dataSource-level](DataSource.md#attr-datasourcecachesynctiming) `cacheSyncTiming`
+The [cacheSyncTiming](../reference_2.md#type-cachesynctiming) to use for this specific request. Overrides any [operation-level](OperationBinding.md#attr-operationbindingcachesynctiming) or [dataSource-level](DataSource.md#attr-datasourcecachesynctiming) `cacheSyncTiming`
 
 ### Groups
 
@@ -508,7 +508,7 @@ To sort by multiple fields, an array of field names is also supported. For examp
 
 `[ "department", "-userName" ]`
 
-Additionally, this property supports an array of [SortSpecifier](../main_2.md#object-sortspecifier) objects. Setting `sortBy` to the following SortSpecifier array results in the same multi-level sort mentioned above:
+Additionally, this property supports an array of [SortSpecifier](../reference_2.md#object-sortspecifier) objects. Setting `sortBy` to the following SortSpecifier array results in the same multi-level sort mentioned above:
 
 `[     { property: "department", direction: "ascending" },     { property: "userName", direction: "descending" }   ]`
 
@@ -518,7 +518,7 @@ Additionally, this property supports an array of [SortSpecifier](../main_2.md#ob
 ## Attr: DSRequest.linkDataFetchOperation
 
 ### Description
-For a databound [multi-link tree](Tree.md#method-treeismultilinktree), this is the `operationId` to use for the separate fetch on the [ResultTree.linkDataSource](ResultTree.md#attr-resulttreelinkdatasource) that will be generated if [LinkDataFetchMode](../main.md#type-linkdatafetchmode) is "separate". This property overrides the [linkDataFetchOperation](ResultTree.md#attr-resulttreelinkdatafetchoperation) property on [ResultTree](ResultTree.md#class-resulttree), for this fetch only.
+For a databound [multi-link tree](Tree.md#method-treeismultilinktree), this is the `operationId` to use for the separate fetch on the [ResultTree.linkDataSource](ResultTree.md#attr-resulttreelinkdatasource) that will be generated if [LinkDataFetchMode](../reference.md#type-linkdatafetchmode) is "separate". This property overrides the [linkDataFetchOperation](ResultTree.md#attr-resulttreelinkdatafetchoperation) property on [ResultTree](ResultTree.md#class-resulttree), for this fetch only.
 
 Ignored if this DSRequest is not a fetch against a multi-link tree.
 
@@ -550,7 +550,7 @@ This property can only be read. There is no meaning to setting this property you
 ## Attr: DSRequest.summaryFunctions
 
 ### Description
-A mapping from field names to [summary functions](../main_2.md#type-summaryfunction) to be applied to each field.
+A mapping from field names to [summary functions](../reference_2.md#type-summaryfunction) to be applied to each field.
 
 Valid only for an operation of type "fetch". See the [Server Summaries overview](../kb_topics/serverSummaries.md#kb-topic-server-summaries) for examples of usage.
 
@@ -586,7 +586,7 @@ Optional text to appear at the end of the file.
 ### Description
 The name of the file to save the exported data into. If [exportToFilesystem](#attr-dsrequestexporttofilesystem) is set, this is the name of the file the server creates on its filesystem. If [exportToClient](#attr-dsrequestexporttoclient) is set, this is the filename that will appear to the browser.
 
-If the exportFilename that you specify does not include an extension, one will be added to it based on the [ExportFormat](../main_2.md#type-exportformat) specified by [DSRequest.exportAs](#attr-dsrequestexportas). Filename is forced to have the correct extension to work around bugs in IE, but if you don't want the filename to be manipulated, use "custom" [exportFormat](../main_2.md#type-exportformat), see example.
+If the exportFilename that you specify does not include an extension, one will be added to it based on the [ExportFormat](../reference_2.md#type-exportformat) specified by [DSRequest.exportAs](#attr-dsrequestexportas). Filename is forced to have the correct extension to work around bugs in IE, but if you don't want the filename to be manipulated, use "custom" [exportFormat](../reference_2.md#type-exportformat), see example.
 
 ### See Also
 
@@ -610,7 +610,7 @@ For example, when printing a very wide page, such as a grid with many columns or
 ### Description
 If set, indicates that the server will write values provided in the `DSRequest`'s values, for fields that it would normally auto-populate or allow to be generated by the persistence mechanism. This setting allows you to specify that client-provided values for, eg, a `creatorTimestamp` field should be honored, where ordinarily they would be ignored.
 
-See the [WriteToGeneratedFields](../main.md#type-writetogeneratedfields) documentation for more information about valid settings
+See the [WriteToGeneratedFields](../reference.md#type-writetogeneratedfields) documentation for more information about valid settings
 
 **Flags**: IR
 
@@ -626,7 +626,7 @@ Note that streaming requires specific server support; of SmartClient's built-in 
 
 See also the server-side documentation for `DSResponse`, `SQLDataSource` and `StreamingResponseIterator`.
 
-Note, that streaming results does not support fields with ["concat" summary function](../main_2.md#type-summaryfunction) on non-Oracle databases. Such fields will be skipped.
+Note, that streaming results does not support fields with ["concat" summary function](../reference_2.md#type-summaryfunction) on non-Oracle databases. Such fields will be skipped.
 
 **Flags**: IR
 
@@ -634,7 +634,7 @@ Note, that streaming results does not support fields with ["concat" summary func
 ## Attr: DSRequest.lineBreakStyle
 
 ### Description
-The style of line-breaks to use in the exported output. See [LineBreakStyle](../main.md#type-linebreakstyle) for more information.
+The style of line-breaks to use in the exported output. See [LineBreakStyle](../reference.md#type-linebreakstyle) for more information.
 
 **Flags**: IR
 
@@ -694,9 +694,9 @@ When exporting via [ListGrid.exportClientData](ListGrid_2.md#method-listgridexpo
 
 If a date value is provided to a spreadsheet as a string, Excel or other spreadsheet applications may not recognize them as being date values that are valid for use in date-specific functions in formulas, filters, etc.
 
-For this reason, the default behavior of `exportClientData` is to provide date values to the spreadsheet as true date values. If [Format Strings](../main.md#type-formatstring) are provided via properties like [dataSourceField.format](DataSourceField.md#attr-datasourcefieldformat) these will be translated to Excel / OpenOffice format strings and used when generating spreadsheets. Other formatting logic, such as [cell formatters](ListGridField.md#method-listgridfieldformatcellvalue), will not be used since they cannot be automatically translated to an Excel format string. If no translatable format string is available, date values will be provided to the spreadsheet with no formatter and the spreadsheet program's default formatting for date values will be used.
+For this reason, the default behavior of `exportClientData` is to provide date values to the spreadsheet as true date values. If [Format Strings](../reference.md#type-formatstring) are provided via properties like [dataSourceField.format](DataSourceField.md#attr-datasourcefieldformat) these will be translated to Excel / OpenOffice format strings and used when generating spreadsheets. Other formatting logic, such as [cell formatters](ListGridField.md#method-listgridfieldformatcellvalue), will not be used since they cannot be automatically translated to an Excel format string. If no translatable format string is available, date values will be provided to the spreadsheet with no formatter and the spreadsheet program's default formatting for date values will be used.
 
-If `exportDatesAsFormattedString` is set to true, date fields will appear as strings that exactly match the formatting shown in the [DataBoundComponent](../main.md#interface-databoundcomponent). As noted above, this means the spreadsheet program will not recognize the value as a date.
+If `exportDatesAsFormattedString` is set to true, date fields will appear as strings that exactly match the formatting shown in the [DataBoundComponent](../reference.md#interface-databoundcomponent). As noted above, this means the spreadsheet program will not recognize the value as a date.
 
 ### Groups
 
@@ -712,7 +712,7 @@ If `exportDatesAsFormattedString` is set to true, date fields will appear as str
 ## Attr: DSRequest.multiInsertNonMatchingStrategy
 
 ### Description
-For dataSources of [serverType](DataSource.md#attr-datasourceservertype) "sql" only, this property sets the multi-insert "non matching" strategy for this specific [dsRequest](../main_2.md#object-dsrequest). Only has an effect if this is an [add request](DataSource.md#method-datasourceadddata) that specifies a list of records as the data, and only if [multiInsertStrategy](#attr-dsrequestmultiinsertstrategy) is set to "multipleValues" either globally or at the [DSRequest](../main_2.md#object-dsrequest), [OperationBinding](OperationBinding.md#class-operationbinding), or [DataSource](DataSource.md#class-datasource) level.
+For dataSources of [serverType](DataSource.md#attr-datasourceservertype) "sql" only, this property sets the multi-insert "non matching" strategy for this specific [dsRequest](../reference_2.md#object-dsrequest). Only has an effect if this is an [add request](DataSource.md#method-datasourceadddata) that specifies a list of records as the data, and only if [multiInsertStrategy](#attr-dsrequestmultiinsertstrategy) is set to "multipleValues" either globally or at the [DSRequest](../reference_2.md#object-dsrequest), [OperationBinding](OperationBinding.md#class-operationbinding), or [DataSource](DataSource.md#class-datasource) level.
 
 Note that this setting overrides the equivalent [operationBinding setting](OperationBinding.md#attr-operationbindingmultiinsertnonmatchingstrategy) and [dataSource setting](DataSource.md#attr-datasourcemultiinsertnonmatchingstrategy)
 
@@ -730,9 +730,9 @@ When set, causes the results of the DSRequest to be exported to a file, whose na
 
 The export field-list can also be configured, see [DSRequest.exportFields](#attr-dsrequestexportfields). Formats for exported date and numeric are controlled by several settings - see [exportFormatting](../kb_topics/exportFormatting.md#kb-topic-exports--formatting) for an overview.
 
-Once the operation completes, [DSRequest.exportDisplay](#attr-dsrequestexportdisplay) specifies whether the exported data should be downloaded to the file-system or displayed in a new window. The default value of exportDisplay is "download" which displays the Save As dialog. See [ExportDisplay](../main_2.md#type-exportdisplay) for more information.
+Once the operation completes, [DSRequest.exportDisplay](#attr-dsrequestexportdisplay) specifies whether the exported data should be downloaded to the file-system or displayed in a new window. The default value of exportDisplay is "download" which displays the Save As dialog. See [ExportDisplay](../reference_2.md#type-exportdisplay) for more information.
 
-You can configure the style of [line-breaks](../main.md#type-linebreakstyle) to use when generating the output, the [delimiter](#attr-dsrequestexportdelimiter) to use when exporting to CSV and the [separator-character](#attr-dsrequestexporttitleseparatorchar) to use in field-titles when exporting to XML.
+You can configure the style of [line-breaks](../reference.md#type-linebreakstyle) to use when generating the output, the [delimiter](#attr-dsrequestexportdelimiter) to use when exporting to CSV and the [separator-character](#attr-dsrequestexporttitleseparatorchar) to use in field-titles when exporting to XML.
 
 Additionally, you can output arbitrary text before and after the exported data by setting [exportHeader](#attr-dsrequestexportheader) and [exportFooter](#attr-dsrequestexportfooter).
 
@@ -828,7 +828,7 @@ Further, this setting is overridden by the [ListGrid.fetchFields](ListGrid_1.md#
 ## Attr: DSRequest.exportDisplay
 
 ### Description
-Specifies whether the exported data will be downloaded as an attachment or displayed in a new browser window. See [ExportDisplay](../main_2.md#type-exportdisplay) for more information.
+Specifies whether the exported data will be downloaded as an attachment or displayed in a new browser window. See [ExportDisplay](../reference_2.md#type-exportdisplay) for more information.
 
 **Flags**: IR
 
@@ -836,7 +836,7 @@ Specifies whether the exported data will be downloaded as an attachment or displ
 ## Attr: DSRequest.exportAs
 
 ### Description
-The format in which the data should be exported. Note that 'JSON' is not allowed as a client-side option. See [ExportFormat](../main_2.md#type-exportformat) for more information.
+The format in which the data should be exported. Note that 'JSON' is not allowed as a client-side option. See [ExportFormat](../reference_2.md#type-exportformat) for more information.
 
 **Flags**: IR
 
@@ -844,7 +844,7 @@ The format in which the data should be exported. Note that 'JSON' is not allowed
 ## Attr: DSRequest.multiInsertBatchSize
 
 ### Description
-For dataSources of [serverType](DataSource.md#attr-datasourceservertype) "sql" only, this property sets the multi-insert batch size for this specific [dsRequest](../main_2.md#object-dsrequest). Only has an effect if this is an [add request](DataSource.md#method-datasourceadddata) that specifies a list of records as the data, and only if [multiInsertStrategy](#attr-dsrequestmultiinsertstrategy) is set to "multipleValues" either globally or at the [DSRequest](../main_2.md#object-dsrequest), [OperationBinding](OperationBinding.md#class-operationbinding), or [DataSource](DataSource.md#class-datasource) level.
+For dataSources of [serverType](DataSource.md#attr-datasourceservertype) "sql" only, this property sets the multi-insert batch size for this specific [dsRequest](../reference_2.md#object-dsrequest). Only has an effect if this is an [add request](DataSource.md#method-datasourceadddata) that specifies a list of records as the data, and only if [multiInsertStrategy](#attr-dsrequestmultiinsertstrategy) is set to "multipleValues" either globally or at the [DSRequest](../reference_2.md#object-dsrequest), [OperationBinding](OperationBinding.md#class-operationbinding), or [DataSource](DataSource.md#class-datasource) level.
 
 Note that this setting overrides the equivalent [operationBinding setting](OperationBinding.md#attr-operationbindingmultiinsertbatchsize) and [dataSource setting](DataSource.md#attr-datasourcemultiinsertbatchsize)
 
@@ -859,7 +859,7 @@ Note that this setting overrides the equivalent [operationBinding setting](Opera
 ## Attr: DSRequest.exportPropertyIdentifier
 
 ### Description
-Determines the [PropertyIdentifier](../main.md#type-propertyidentifier) to be used in the exported data. This essentially means, should we export internal field names like "countryCode" or "EMPLOYEE\_NO", or localized descriptive field titles like "code du pays" or "Employee Number". This setting has a lot in common with [DSRequest.exportRawValues](#attr-dsrequestexportrawvalues); both are largely dependent on whether the exported data is intended for direct consumption by an end user (in which case it is appropriate to export formatted values and localized field titles), or for interface to some downstream computer system (in which case you probably want raw, unformatted values and internal field names).
+Determines the [PropertyIdentifier](../reference.md#type-propertyidentifier) to be used in the exported data. This essentially means, should we export internal field names like "countryCode" or "EMPLOYEE\_NO", or localized descriptive field titles like "code du pays" or "Employee Number". This setting has a lot in common with [DSRequest.exportRawValues](#attr-dsrequestexportrawvalues); both are largely dependent on whether the exported data is intended for direct consumption by an end user (in which case it is appropriate to export formatted values and localized field titles), or for interface to some downstream computer system (in which case you probably want raw, unformatted values and internal field names).
 
 If this property is not set, the following defaults apply:
 
@@ -1048,7 +1048,7 @@ Note, it is possible to globally disable `fieldValueExpression` in client-origin
 
 **Note:** Typically developers should use [operation bindings](DataSource.md#attr-datasourceoperationbindings) to specify an explicit data protocol for a request.
 
-One exception: advanced developers may wish to have a custom [request transformer](DataSource.md#method-datasourcetransformrequest) with entirely client-side handling for some requests. This may be achieved by setting the request's `dataProtocol` to ["clientCustom"](../main_2.md#type-dsprotocol) within transformRequest, and also triggering application code which will fire [DataSource.processResponse](DataSource.md#method-datasourceprocessresponse) when complete.
+One exception: advanced developers may wish to have a custom [request transformer](DataSource.md#method-datasourcetransformrequest) with entirely client-side handling for some requests. This may be achieved by setting the request's `dataProtocol` to ["clientCustom"](../reference_2.md#type-dsprotocol) within transformRequest, and also triggering application code which will fire [DataSource.processResponse](DataSource.md#method-datasourceprocessresponse) when complete.
 
 The [DataSource.getDataProtocol](DataSource.md#method-datasourcegetdataprotocol) method may be used to determine what data protocol will be used to handle a specific request based on this property (if set), otherwise the settings at the [operationBinding](OperationBinding.md#attr-operationbindingdataprotocol) or [dataSource](DataSource.md#attr-datasourcedataprotocol) levels.
 

@@ -1,6 +1,6 @@
 # Platform Dependencies
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -23,7 +23,7 @@ You call [XMLTools.nativeXMLAvailable](../classes/XMLTools.md#classmethod-xmltoo
 
 **XMLHttpRequest**
 
-The XMLHttpRequest object is used for the `xmlHttpRequest` [RPCTransport](../main.md#type-rpctransport). Safari, Mozilla, Firefox, and IE 7 provide a native XMLHttpRequest implementation that is not affected by ActiveX being disabled (although the native IE 7 implementation can still be explicitly disabled by the end user). IE 5.5 and IE 6.0 rely on the ActiveX bridge to support XMLHttpRequest, so if ActiveX is disabled in these browsers, XMLHttpRequest will not be available.
+The XMLHttpRequest object is used for the `xmlHttpRequest` [RPCTransport](../reference.md#type-rpctransport). Safari, Mozilla, Firefox, and IE 7 provide a native XMLHttpRequest implementation that is not affected by ActiveX being disabled (although the native IE 7 implementation can still be explicitly disabled by the end user). IE 5.5 and IE 6.0 rely on the ActiveX bridge to support XMLHttpRequest, so if ActiveX is disabled in these browsers, XMLHttpRequest will not be available.
 
 The lack of the XMLHttpRequest objects affects UI loading features like [ViewLoader](../classes/ViewLoader.md#class-viewloader), and [HTMLFlow](../classes/HTMLFlow.md#class-htmlflow) when used in remote loading mode (via [HTMLFlow.contentsURL](../classes/HTMLFlow.md#attr-htmlflowcontentsurl), [HTMLFlow.setContentsURL](../classes/HTMLFlow.md#method-htmlflowsetcontentsurl), but does not affect the typical client/server communication pathways (integration paths 1 and 5 in the diagram above).
 

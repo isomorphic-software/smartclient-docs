@@ -1,6 +1,6 @@
 # Selection Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -23,7 +23,7 @@ Note that selection and deselection are skipped for objects that aren't enabled,
 ## ClassAttr: Selection.NONE
 
 ### Description
-A declared value of the enum type [SelectionStyle](../main.md#type-selectionstyle).
+A declared value of the enum type [SelectionStyle](../reference.md#type-selectionstyle).
 
 **Flags**: R
 
@@ -31,7 +31,7 @@ A declared value of the enum type [SelectionStyle](../main.md#type-selectionstyl
 ## ClassAttr: Selection.MULTIPLE
 
 ### Description
-A declared value of the enum type [SelectionStyle](../main.md#type-selectionstyle).
+A declared value of the enum type [SelectionStyle](../reference.md#type-selectionstyle).
 
 **Flags**: R
 
@@ -39,7 +39,7 @@ A declared value of the enum type [SelectionStyle](../main.md#type-selectionstyl
 ## ClassAttr: Selection.SIMPLE
 
 ### Description
-A declared value of the enum type [SelectionStyle](../main.md#type-selectionstyle).
+A declared value of the enum type [SelectionStyle](../reference.md#type-selectionstyle).
 
 **Flags**: R
 
@@ -47,7 +47,7 @@ A declared value of the enum type [SelectionStyle](../main.md#type-selectionstyl
 ## ClassAttr: Selection.SINGLE
 
 ### Description
-A declared value of the enum type [SelectionStyle](../main.md#type-selectionstyle).
+A declared value of the enum type [SelectionStyle](../reference.md#type-selectionstyle).
 
 **Flags**: R
 
@@ -77,7 +77,7 @@ Deselect a particular item by its position in the list
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true == selection actually changed, false == no change
+`[boolean](../reference.md#type-boolean)` — true == selection actually changed, false == no change
 
 ### Groups
 
@@ -93,11 +93,11 @@ Return true if a particular item is selected
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| item | [Object](../main.md#type-object) | false | — | object to check |
+| item | [Object](../reference.md#type-object) | false | — | object to check |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true == object is selected, false == object is not selected
+`[boolean](../reference.md#type-boolean)` — true == object is selected, false == object is not selected
 
 ### Groups
 
@@ -113,11 +113,11 @@ When using tree-oriented selection modes like [TreeGrid.cascadeSelection](TreeGr
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| item | [Object](../main.md#type-object) | false | — | object to check |
+| item | [Object](../reference.md#type-object) | false | — | object to check |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true == object is partially selected false == object is not partially selected
+`[boolean](../reference.md#type-boolean)` — true == object is partially selected false == object is not partially selected
 
 ### Groups
 
@@ -138,7 +138,7 @@ Deselect an array of items (subset of the entire list). Equivalent to calling +l
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true == selection actually changed, false == no change
+`[boolean](../reference.md#type-boolean)` — true == selection actually changed, false == no change
 
 ### Groups
 
@@ -156,11 +156,11 @@ Select range of records from `start` to `end`, non-inclusive.
 |------|------|----------|---------|-------------|
 | start | [number](#type-number) | false | — | start index to select |
 | end | [number](#type-number) | false | — | end index (non-inclusive) |
-| newState | [boolean](../main.md#type-boolean) | true | — | optional new selection state to set. True means selected, false means unselected. Defaults to true. |
+| newState | [boolean](../reference.md#type-boolean) | true | — | optional new selection state to set. True means selected, false means unselected. Defaults to true. |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true == selection actually changed, false == no change
+`[boolean](../reference.md#type-boolean)` — true == selection actually changed, false == no change
 
 ### Groups
 
@@ -176,11 +176,11 @@ Select a particular item
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| item | [Object](../main.md#type-object) | false | — | object to select |
+| item | [Object](../reference.md#type-object) | false | — | object to select |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true == selection actually changed, false == no change
+`[boolean](../reference.md#type-boolean)` — true == selection actually changed, false == no change
 
 ### Groups
 
@@ -196,11 +196,11 @@ Select all records of the list.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| visibleNodesOnly | [boolean](../main.md#type-boolean) | true | — | If this selection's data object is a tree, if `true` is passed for this parameter, only visible nodes will be selected. Nodes embedded in a closed parent folder (and thus hidden from the user) will not be selected. |
+| visibleNodesOnly | [boolean](../reference.md#type-boolean) | true | — | If this selection's data object is a tree, if `true` is passed for this parameter, only visible nodes will be selected. Nodes embedded in a closed parent folder (and thus hidden from the user) will not be selected. |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — Returns `true` if the selection actually changed, `false` if not.
+`[boolean](../reference.md#type-boolean)` — Returns `true` if the selection actually changed, `false` if not.
 
 ### Groups
 
@@ -221,7 +221,7 @@ Deselect range of records from `start` to `end`, non-inclusive
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true == selection actually changed, false == no change
+`[boolean](../reference.md#type-boolean)` — true == selection actually changed, false == no change
 
 ### Groups
 
@@ -235,7 +235,7 @@ Whether at least one item is selected
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true == at least one item is selected false == nothing at all is selected
+`[boolean](../reference.md#type-boolean)` — true == at least one item is selected false == nothing at all is selected
 
 ### Groups
 
@@ -249,7 +249,7 @@ Whether multiple items are selected
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true == more than one item is selected false == no items are selected, or only one item is selected
+`[boolean](../reference.md#type-boolean)` — true == more than one item is selected false == no items are selected, or only one item is selected
 
 ### Groups
 
@@ -269,7 +269,7 @@ Select a particular item by its position in the list
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true == selection actually changed, false == no change
+`[boolean](../reference.md#type-boolean)` — true == selection actually changed, false == no change
 
 ### Groups
 
@@ -287,13 +287,13 @@ All other selection routines go through this one, so by observing this routine y
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| item | [Object](../main.md#type-object) | false | — | object to select |
-| newState | [boolean](../main.md#type-boolean) | false | — | turn selection on or off |
-| recordNum | [Integer](../main_2.md#type-integer) | false | — | The record number to select. Only used in the case of selection in a [multi-link tree](Tree.md#attr-treemultilinktree), where the node itself is not enough to unambiguously identify an occurrence in the tree |
+| item | [Object](../reference.md#type-object) | false | — | object to select |
+| newState | [boolean](../reference.md#type-boolean) | false | — | turn selection on or off |
+| recordNum | [Integer](../reference_2.md#type-integer) | false | — | The record number to select. Only used in the case of selection in a [multi-link tree](Tree.md#attr-treemultilinktree), where the node itself is not enough to unambiguously identify an occurrence in the tree |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true == selection actually changed, false == no change
+`[boolean](../reference.md#type-boolean)` — true == selection actually changed, false == no change
 
 ### Groups
 
@@ -313,11 +313,11 @@ Select an array of items (subset of the entire list)
 |------|------|----------|---------|-------------|
 | list | [Array of Object](#type-array-of-object) | false | — | array of objects to select or deselect |
 | newState | [Boolean](#type-boolean) | true | — | true to select objects, false to deselect. Defaults to true |
-| rowNums | [Array of Integer](#type-array-of-integer) | true | — | optional array of row numbers corresponding to the objects in the "list" param. Required for [multi-link trees](Tree.md#attr-treemultilinktree), unless "list" contains [NodeLocator](../main_2.md#object-nodelocator)s rather than records |
+| rowNums | [Array of Integer](#type-array-of-integer) | true | — | optional array of row numbers corresponding to the objects in the "list" param. Required for [multi-link trees](Tree.md#attr-treemultilinktree), unless "list" contains [NodeLocator](../reference_2.md#object-nodelocator)s rather than records |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true == selection actually changed, false == no change
+`[boolean](../reference.md#type-boolean)` — true == selection actually changed, false == no change
 
 ### Groups
 
@@ -333,11 +333,11 @@ Select a single item and deselect everything else
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| item | [Object](../main.md#type-object) | false | — | object to select |
+| item | [Object](../reference.md#type-object) | false | — | object to select |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true == selection actually changed, false == no change
+`[boolean](../reference.md#type-boolean)` — true == selection actually changed, false == no change
 
 ### Groups
 
@@ -351,7 +351,7 @@ Returns the number of selected records.
 
 ### Returns
 
-`[int](../main.md#type-int)` — number of selected records
+`[int](../reference.md#type-int)` — number of selected records
 
 ### Groups
 
@@ -367,11 +367,11 @@ Deselect a particular item
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| item | [Object](../main.md#type-object) | false | — | object to select |
+| item | [Object](../reference.md#type-object) | false | — | object to select |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true == selection actually changed, false == no change
+`[boolean](../reference.md#type-boolean)` — true == selection actually changed, false == no change
 
 ### Groups
 
@@ -385,7 +385,7 @@ Deselect ALL records of the list
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true == selection actually changed, false == no change
+`[boolean](../reference.md#type-boolean)` — true == selection actually changed, false == no change
 
 ### Groups
 
@@ -403,7 +403,7 @@ To get all selected objects, use `[Selection.getSelection](#method-selectiongets
 
 ### Returns
 
-`[Object](../main.md#type-object)` — first selected record, or null if nothing selected
+`[Object](../reference.md#type-object)` — first selected record, or null if nothing selected
 
 ### Groups
 

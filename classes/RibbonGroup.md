@@ -1,12 +1,12 @@
 # RibbonGroup Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
 ## Class: RibbonGroup
 
-*Inherits from:* [VLayout](../main.md#class-vlayout)
+*Inherits from:* [VLayout](../reference.md#class-vlayout)
 
 ### Description
 A widget that groups [RibbonButtons](RibbonButton.md#class-ribbonbutton)s for use in [RibbonBars](RibbonBar.md#class-ribbonbar).
@@ -29,7 +29,7 @@ CSS class applied to this RibbonGroup.
 ### Description
 AutoChild [Label](Label.md#class-label) used to display the [title text](#attr-ribbongrouptitle) for this group.
 
-Can be customized via the standard [AutoChild](../main.md#type-autochild) pattern, and various convenience APIs exist for configuring it after initial draw: see [setShowTitle](#method-ribbongroupsetshowtitle), [setTitle](#method-ribbongroupsettitle), [setTitleAlign](#method-ribbongroupsettitlealign), [setTitleHeight](#method-ribbongroupsettitleheight), [setTitleOrientation](#method-ribbongroupsettitleorientation) and [setTitleStyle](#method-ribbongroupsettitlestyle).
+Can be customized via the standard [AutoChild](../reference.md#type-autochild) pattern, and various convenience APIs exist for configuring it after initial draw: see [setShowTitle](#method-ribbongroupsetshowtitle), [setTitle](#method-ribbongroupsettitle), [setTitleAlign](#method-ribbongroupsettitlealign), [setTitleHeight](#method-ribbongroupsettitleheight), [setTitleOrientation](#method-ribbongroupsettitleorientation) and [setTitleStyle](#method-ribbongroupsettitlestyle).
 
 **Flags**: IR
 
@@ -129,7 +129,7 @@ CSS class applied to the [title label](#attr-ribbongrouplabel) in this group.
 ### Description
 HLayout autoChild that houses the [label](#attr-ribbongrouplabel) in which the [title text](#attr-ribbongrouptitle) is displayed.
 
-This can be customized via the standard [AutoChild](../main.md#type-autochild) pattern.
+This can be customized via the standard [AutoChild](../reference.md#type-autochild) pattern.
 
 **Flags**: IR
 
@@ -221,7 +221,7 @@ This method forcibly sets the [vertical orientation](#attr-ribbongrouptitleorien
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| orientation | [VerticalAlignment](../main.md#type-verticalalignment) | false | — | the new orientation for the title, either bottom or top |
+| orientation | [VerticalAlignment](../reference.md#type-verticalalignment) | false | — | the new orientation for the title, either bottom or top |
 
 ### Groups
 
@@ -237,7 +237,7 @@ This method forcibly sets the [CSS class name](#attr-ribbongrouptitlestyle) for 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| styleName | [CSSStyleName](../main.md#type-cssstylename) | false | — | the CSS class to apply to the [title label](#attr-ribbongrouplabel). |
+| styleName | [CSSStyleName](../reference.md#type-cssstylename) | false | — | the CSS class to apply to the [title label](#attr-ribbongrouplabel). |
 
 ---
 ## Method: RibbonGroup.reflowControls
@@ -295,7 +295,7 @@ This method forcibly shows or hides this group's [title label](#attr-ribbongroup
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| showTitle | [boolean](../main.md#type-boolean) | false | — | should the title be shown or hidden? |
+| showTitle | [boolean](../reference.md#type-boolean) | false | — | should the title be shown or hidden? |
 
 ---
 ## Method: RibbonGroup.setTitleAlign
@@ -307,7 +307,7 @@ This method forcibly sets the horizontal alignment of the [title-text](#attr-rib
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| align | [Alignment](../main_2.md#type-alignment) | false | — | the new alignment for the text, left or right |
+| align | [Alignment](../reference_2.md#type-alignment) | false | — | the new alignment for the text, left or right |
 
 ### Groups
 
@@ -336,7 +336,7 @@ Adds a control to this `RibbonGroup`, creating a new [column](#attr-ribbongroupc
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | control | [Canvas](#type-canvas) | false | — | a widget to add to this group |
-| index | [Integer](../main_2.md#type-integer) | true | — | optional insertion index for this control |
+| index | [Integer](../reference_2.md#type-integer) | true | — | optional insertion index for this control |
 
 ---
 ## Method: RibbonGroup.setTitleHeight
@@ -348,7 +348,7 @@ This method forcibly sets the height of this group's [title label](#attr-ribbong
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| titleHeight | [int](../main.md#type-int) | false | — | the new height for the [title label](#attr-ribbongrouplabel) |
+| titleHeight | [int](../reference.md#type-int) | false | — | the new height for the [title label](#attr-ribbongrouplabel) |
 
 ---
 ## Method: RibbonGroup.setControls
@@ -373,6 +373,6 @@ Creates a new control and adds it to this RibbonGroup. The control is created us
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | properties | [Canvas Properties](#type-canvas-properties) | false | — | properties to apply to the new control |
-| position | [Integer](../main_2.md#type-integer) | true | — | the index at which to insert the new control |
+| position | [Integer](../reference_2.md#type-integer) | true | — | the index at which to insert the new control |
 
 ---

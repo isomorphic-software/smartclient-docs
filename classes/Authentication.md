@@ -1,13 +1,13 @@
 # Authentication Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
 ## Class: Authentication
 
 ### Description
-The Authentication or [Auth](../main.md#class-auth) class represents a convenient, standard place to keep information about the currently logged in user and their assigned user roles.
+The Authentication or [Auth](../reference.md#class-auth) class represents a convenient, standard place to keep information about the currently logged in user and their assigned user roles.
 
 The intended usage is that a server authentication system would require the user to log in, then provide data about the currently logged in user via [Authentication.setCurrentUser](#classmethod-authenticationsetcurrentuser) and [Authentication.setRoles](#classmethod-authenticationsetroles). This data is then available in the [Rule Scope](Canvas.md#attr-canvasrulescope) so that components can use it to enable or disable or hide themselves, via properties such as [FormItem.readOnlyWhen](FormItem.md#attr-formitemreadonlywhen).
 

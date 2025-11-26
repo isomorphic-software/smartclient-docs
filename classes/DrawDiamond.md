@@ -1,6 +1,6 @@
 # DrawDiamond Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -65,9 +65,9 @@ Move and resize the drawDiamond to match the specified coordinates and size.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| left | [Integer](../main_2.md#type-integer) | false | — | new left coordinate |
-| top | [Integer](../main_2.md#type-integer) | false | — | new top coordinate |
-| width | [Integer](../main_2.md#type-integer) | false | — | new width |
-| height | [Integer](../main_2.md#type-integer) | false | — | new height |
+| left | [Integer](../reference_2.md#type-integer) | false | — | new left coordinate |
+| top | [Integer](../reference_2.md#type-integer) | false | — | new top coordinate |
+| width | [Integer](../reference_2.md#type-integer) | false | — | new width |
+| height | [Integer](../reference_2.md#type-integer) | false | — | new height |
 
 ---

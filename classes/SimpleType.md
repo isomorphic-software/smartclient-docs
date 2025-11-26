@@ -1,6 +1,6 @@
 # SimpleType Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -9,7 +9,7 @@
 ### Description
 An atomic type such as a string or number, that is generally stored, displayed and manipulated as a single value.
 
-SimpleTypes can be [created](#classmethod-simpletypecreate) at any time, and subsequently referred to as a [field type](Field.md#attr-fieldtype) in [DataSources](DataSource.md#class-datasource) and [DataBoundComponents](../main.md#interface-databoundcomponent). This allows you to define [validation](#attr-simpletypevalidators), [formatting](#method-simpletypenormaldisplayformatter) and [editing](#attr-simpletypeeditortype) behaviors for a type to be reused across all [DataBoundComponents](../main.md#interface-databoundcomponent).
+SimpleTypes can be [created](#classmethod-simpletypecreate) at any time, and subsequently referred to as a [field type](Field.md#attr-fieldtype) in [DataSources](DataSource.md#class-datasource) and [DataBoundComponents](../reference.md#interface-databoundcomponent). This allows you to define [validation](#attr-simpletypevalidators), [formatting](#method-simpletypenormaldisplayformatter) and [editing](#attr-simpletypeeditortype) behaviors for a type to be reused across all [DataBoundComponents](../reference.md#interface-databoundcomponent).
 
 The SimpleType class also allows data to be stored in some opaque format but treated as simple atomic values as far as SmartClient components are concerned by implementing [SimpleType.getAtomicValue](#method-simpletypegetatomicvalue) and [SimpleType.updateAtomicValue](#method-simpletypeupdateatomicvalue) methods. For example, if some record has a field value set to a javascript object with the following properties:
 
@@ -109,7 +109,7 @@ Name of the type, used to refer to the type from [field.type](DataSourceField.md
 ## Attr: SimpleType.validOperators
 
 ### Description
-Set of [search-operators](../main.md#type-operatorid) valid for this `SimpleType`.
+Set of [search-operators](../reference.md#type-operatorid) valid for this `SimpleType`.
 
 If not specified, the [inherited](#attr-simpletypeinheritsfrom) type's operators will be used, finally defaulting to the default operators for the basic types (eg, integer).
 
@@ -187,7 +187,7 @@ This property is set to false for the "sequence" SimpleType by default.
 ## Attr: SimpleType.exportFormat
 
 ### Description
-[FormatString](../main.md#type-formatstring) used during exports for numeric or date formatting. See [DataSourceField.exportFormat](DataSourceField.md#attr-datasourcefieldexportformat).
+[FormatString](../reference.md#type-formatstring) used during exports for numeric or date formatting. See [DataSourceField.exportFormat](DataSourceField.md#attr-datasourcefieldexportformat).
 
 ### Groups
 
@@ -217,7 +217,7 @@ These are properties that are essentially copied onto any DataSourceField where 
 ## Attr: SimpleType.defaultOperator
 
 ### Description
-The default [search-operator](../main.md#type-operatorid) for this data-type.
+The default [search-operator](../reference.md#type-operatorid) for this data-type.
 
 ### Groups
 
@@ -229,7 +229,7 @@ The default [search-operator](../main.md#type-operatorid) for this data-type.
 ## Attr: SimpleType.format
 
 ### Description
-[FormatString](../main.md#type-formatstring) for numeric or date formatting. See [DataSourceField.format](DataSourceField.md#attr-datasourcefieldformat).
+[FormatString](../reference.md#type-formatstring) for numeric or date formatting. See [DataSourceField.format](DataSourceField.md#attr-datasourcefieldformat).
 
 ### Groups
 
@@ -280,13 +280,13 @@ Note that the following default summary functions are set up when SmartClient in
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | typeName | [String](#type-string) | false | — | type name |
-| summaryFunction | [SummaryFunction](../main_2.md#type-summaryfunction) | false | — | summary function to set as the default for this data type. |
+| summaryFunction | [SummaryFunction](../reference_2.md#type-summaryfunction) | false | — | summary function to set as the default for this data type. |
 
 ---
 ## ClassMethod: SimpleType.registerSummaryFunction
 
 ### Description
-Registers a new [SummaryFunction](../main_2.md#type-summaryfunction) by name. After calling this method, developers may specify the name passed in as a standard summaryFunction (for example in [ListGridField.summaryFunction](ListGridField.md#attr-listgridfieldsummaryfunction)).
+Registers a new [SummaryFunction](../reference_2.md#type-summaryfunction) by name. After calling this method, developers may specify the name passed in as a standard summaryFunction (for example in [ListGridField.summaryFunction](ListGridField.md#attr-listgridfieldsummaryfunction)).
 
 You may override built-in summary functions; however, the summary value type should still be the same (for example, the 'count' summary function should still result in an integer summary value). Also, if a replacement summary function implementation departs significantly from the standard behavior, AI-generated aggregated data fetches may be negatively impacted, because AI is not aware of the non-standard behavior.
 
@@ -299,7 +299,7 @@ You may override built-in summary functions; however, the summary value type sho
 
 *   `records`: an array of records for which a summary must be generated
 *   `field`: a field definition
-*   `summaryConfig`: summary configuration (see [SummaryConfiguration](../main.md#object-summaryconfiguration))
+*   `summaryConfig`: summary configuration (see [SummaryConfiguration](../reference.md#object-summaryconfiguration))
 
 and return a summary value for the field across the records. |
 
@@ -317,13 +317,13 @@ Retrieves the default summary function for some field type.
 
 ### Returns
 
-`[SummaryFunction](../main_2.md#type-summaryfunction)` — default summary function for this data type.
+`[SummaryFunction](../reference_2.md#type-summaryfunction)` — default summary function for this data type.
 
 ---
 ## ClassMethod: SimpleType.applySummaryFunction
 
 ### Description
-Applies a [SummaryFunction](../main_2.md#type-summaryfunction) to an array of records
+Applies a [SummaryFunction](../reference_2.md#type-summaryfunction) to an array of records
 
 ### Parameters
 
@@ -331,7 +331,7 @@ Applies a [SummaryFunction](../main_2.md#type-summaryfunction) to an array of re
 |------|------|----------|---------|-------------|
 | records | [Array of Objects](#type-array-of-objects) | false | — | set of records to retrieve a summary value for |
 | field | [DataSourceField](#type-datasourcefield) | false | — | field for which we're picking up a summary value |
-| summaryFunction | [SummaryFunction](../main_2.md#type-summaryfunction) | false | — | SummaryFunction to apply to the records in order to retrieve the summary value. May be specified as an explicit function or string of script to execute, or a built-in or [registered](#classmethod-simpletyperegistersummaryfunction) SummaryFunction identifier |
+| summaryFunction | [SummaryFunction](../reference_2.md#type-summaryfunction) | false | — | SummaryFunction to apply to the records in order to retrieve the summary value. May be specified as an explicit function or string of script to execute, or a built-in or [registered](#classmethod-simpletyperegistersummaryfunction) SummaryFunction identifier |
 | summaryConfig | [SummaryConfiguration](#type-summaryconfiguration) | false | — | config that affects summary calculation |
 
 ### Returns
@@ -354,7 +354,7 @@ See [Class.create](Class.md#classmethod-classcreate) for more details about the 
 
 ### Returns
 
-`[Object](../main.md#type-object)` — New instance of this class, whose init() routine has already been called
+`[Object](../reference.md#type-object)` — New instance of this class, whose init() routine has already been called
 
 ---
 ## Method: SimpleType.getGroupValue
@@ -368,7 +368,7 @@ Returns a group value appropriate for the passed record, field and value, in the
 |------|------|----------|---------|-------------|
 | value | [Any](#type-any) | false | — | the record value to return a group value for |
 | record | [Record](#type-record) | false | — | the record containing the passed value |
-| field | [Object](../main.md#type-object) | false | — | the field relating to the value to be processed |
+| field | [Object](../reference.md#type-object) | false | — | the field relating to the value to be processed |
 | fieldName | [String](#type-string) | false | — | the name of the field relating to the value to be processed |
 | component | [Canvas](#type-canvas) | false | — | the component, usually a [ListGrid](ListGrid_1.md#class-listgrid), containing the passed record |
 
@@ -427,7 +427,7 @@ Returns a string value appropriate for the title of the group containing the pas
 |------|------|----------|---------|-------------|
 | value | [Any](#type-any) | false | — | the record value to return a group title for |
 | record | [Record](#type-record) | false | — | the record containing the passed group value |
-| field | [Object](../main.md#type-object) | false | — | the field relating to the value to be processed |
+| field | [Object](../reference.md#type-object) | false | — | the field relating to the value to be processed |
 | fieldName | [String](#type-string) | false | — | the name of the field relating to the value to be processed |
 | component | [Canvas](#type-canvas) | false | — | the component, usually a [ListGrid](ListGrid_1.md#class-listgrid), containing the passed record |
 
@@ -450,9 +450,9 @@ A formatter can make itself configurable on a per-component or per-field basis b
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | value | [Any](#type-any) | false | — | value to be formatted |
-| field | [Field](#type-field) | true | — | field descriptor from the component calling the formatter, if applicable. Depending on the calling component, this could be a [ListGridField](../main_2.md#object-listgridfield), [TreeGridField](../main.md#object-treegridfield), etc |
+| field | [Field](#type-field) | true | — | field descriptor from the component calling the formatter, if applicable. Depending on the calling component, this could be a [ListGridField](../reference_2.md#object-listgridfield), [TreeGridField](../reference.md#object-treegridfield), etc |
 | component | [DataBoundComponent](#type-databoundcomponent) | true | — | component calling this formatter, if applicable |
-| record | [Object](../main.md#type-object) | true | — | Full record, if applicable |
+| record | [Object](../reference.md#type-object) | true | — | Full record, if applicable |
 
 ---
 ## Method: SimpleType.editFormatter
@@ -532,7 +532,7 @@ Implementations of this method should return the following:
 
 ### Returns
 
-`[Integer](../main_2.md#type-integer)` — Result of comparison, -1, 0 or 1, as described above
+`[Integer](../reference_2.md#type-integer)` — Result of comparison, -1, 0 or 1, as described above
 
 ---
 ## Method: SimpleType.getGroupingModes
@@ -542,7 +542,7 @@ Returns the set of [grouping modes](#attr-simpletypegroupingmodes) available for
 
 ### Returns
 
-`[ValueMap](../main_2.md#type-valuemap)` — the set of grouping modes available for this type
+`[ValueMap](../reference_2.md#type-valuemap)` — the set of grouping modes available for this type
 
 ---
 ## Method: SimpleType.normalDisplayFormatter
@@ -559,8 +559,8 @@ A formatter can make itself configurable on a per-component or per-field basis b
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | value | [Any](#type-any) | false | — | value to be formatted |
-| field | [Field](#type-field) | true | — | field descriptor from the component calling the formatter, if applicable. Depending on the calling component, this could be a [FormItem](FormItem.md#class-formitem), [DetailViewerField](../main.md#object-detailviewerfield), etc |
+| field | [Field](#type-field) | true | — | field descriptor from the component calling the formatter, if applicable. Depending on the calling component, this could be a [FormItem](FormItem.md#class-formitem), [DetailViewerField](../reference.md#object-detailviewerfield), etc |
 | component | [DataBoundComponent](#type-databoundcomponent) | true | — | component calling this formatter, if applicable |
-| record | [Object](../main.md#type-object) | true | — | Full record, if applicable |
+| record | [Object](../reference.md#type-object) | true | — | Full record, if applicable |
 
 ---

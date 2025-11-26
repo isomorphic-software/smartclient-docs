@@ -1,20 +1,20 @@
 # Advanced Filtering
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
 ## KB Topic: Advanced Filtering
 
 ### Description
-Isomorphic [DataSources](../classes/DataSource.md#class-datasource) provide an advanced filtering mechanism for searching data, including a wide range of builtin [search-operators](../main.md#object-operator), which allow searching via simple comparisons like `equals` and `contains` and more complex checks, like `equalsOtherField` and `regex`. You can also add entirely custom search-operators, via DataSource method [addSearchOperator()](../classes/DataSource.md#method-datasourceaddsearchoperator).
+Isomorphic [DataSources](../classes/DataSource.md#class-datasource) provide an advanced filtering mechanism for searching data, including a wide range of builtin [search-operators](../reference.md#object-operator), which allow searching via simple comparisons like `equals` and `contains` and more complex checks, like `equalsOtherField` and `regex`. You can also add entirely custom search-operators, via DataSource method [addSearchOperator()](../classes/DataSource.md#method-datasourceaddsearchoperator).
 
-For a full list of operators, see [OperatorId](../main.md#type-operatorid).
+For a full list of operators, see [OperatorId](../reference.md#type-operatorid).
 
 ### Related
 
-- [OperatorValueType](../main_2.md#type-operatorvaluetype)
-- [OperatorId](../main.md#type-operatorid)
+- [OperatorValueType](../reference_2.md#type-operatorvaluetype)
+- [OperatorId](../reference.md#type-operatorid)
 - [DataSource.addSearchOperator](../classes/DataSource.md#classmethod-datasourceaddsearchoperator)
 - [DataSource.setTypeOperators](../classes/DataSource.md#classmethod-datasourcesettypeoperators)
 - [DataSource.hasCustomTypeOperators](../classes/DataSource.md#classmethod-datasourcehascustomtypeoperators)
@@ -30,16 +30,16 @@ For a full list of operators, see [OperatorId](../main.md#type-operatorid).
 - [DataSource.getFieldOperatorMap](../classes/DataSource.md#method-datasourcegetfieldoperatormap)
 - [DataSource.getTypeOperatorMap](../classes/DataSource.md#method-datasourcegettypeoperatormap)
 - [DataSource.evaluateCriterion](../classes/DataSource.md#method-datasourceevaluatecriterion)
-- [AdvancedCriteria](../main.md#object-advancedcriteria)
-- [Criterion](../main_2.md#object-criterion)
-- [AdvancedCriterionSubquery](../main.md#object-advancedcriterionsubquery)
-- [Operator](../main.md#object-operator)
-- [CriterionValues](../main.md#object-criterionvalues)
+- [AdvancedCriteria](../reference.md#object-advancedcriteria)
+- [Criterion](../reference_2.md#object-criterion)
+- [AdvancedCriterionSubquery](../reference.md#object-advancedcriterionsubquery)
+- [Operator](../reference.md#object-operator)
+- [CriterionValues](../reference.md#object-criterionvalues)
 - [ListGridField.allowFilterExpressions](../classes/ListGridField.md#attr-listgridfieldallowfilterexpressions)
 - [ListGrid.allowFilterExpressions](../classes/ListGrid_1.md#attr-listgridallowfilterexpressions)
 - [SimpleType.validOperators](../classes/SimpleType.md#attr-simpletypevalidoperators)
 - [SimpleType.defaultOperator](../classes/SimpleType.md#attr-simpletypedefaultoperator)
-- [AdvancedCriteria.strictSQLFiltering](../main.md#attr-advancedcriteriastrictsqlfiltering)
+- [AdvancedCriteria.strictSQLFiltering](../reference.md#attr-advancedcriteriastrictsqlfiltering)
 - [Criterion.operator](../classes/Criterion.md#attr-criterionoperator)
 - [Criterion.fieldName](../classes/Criterion.md#attr-criterionfieldname)
 - [Criterion.value](../classes/Criterion.md#attr-criterionvalue)

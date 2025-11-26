@@ -1,6 +1,6 @@
 # TabSet Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -27,7 +27,7 @@ Pane contents for the "more" tab based on a VLayout. Typically contains a [Navig
 ### Description
 If this tabSet will [show edges](#attr-tabsetshowpanecontaineredges) for the paneContainer, and [TabSet.symmetricEdges](#attr-tabsetsymmetricedges) is set to false, the `leftEdgeSizes`, `rightEdgeSizes`, `topEdgeSizes` and `bottomEdgeSizes` properties allow the sizes of edges for the paneContainer to be customized depending on the [TabSet.tabBarPosition](#attr-tabsettabbarposition).
 
-The attribute should be specified an [edgeSizes map](../main.md#type-edgesizes), specifying the desired edge sizes where for the appropriate [TabSet.tabBarPosition](#attr-tabsettabbarposition).
+The attribute should be specified an [edgeSizes map](../reference.md#type-edgesizes), specifying the desired edge sizes where for the appropriate [TabSet.tabBarPosition](#attr-tabsettabbarposition).
 
 **Flags**: IR
 
@@ -84,7 +84,7 @@ This attribute allows developers to specify custom properties for this tabset's 
 ## Attr: TabSet.titleEditor
 
 ### Description
-TextItem we use to edit tab titles in this TabSet. You can override this property using the normal [AutoChild](../main.md#type-autochild) facilities.
+TextItem we use to edit tab titles in this TabSet. You can override this property using the normal [AutoChild](../reference.md#type-autochild) facilities.
 
 ### See Also
 
@@ -158,7 +158,7 @@ If there is not enough space to display all the tab-buttons in this tabSet, shou
 ## Attr: TabSet.tabBarControlLayout
 
 ### Description
-[AutoChild](../main.md#type-autochild) of type [Layout](Layout.md#class-layout) that holds the [TabSet.tabBarControls](#attr-tabsettabbarcontrols) as well as the built-in controls such as the [tab picker menu](#attr-tabsetshowtabpicker).
+[AutoChild](../reference.md#type-autochild) of type [Layout](Layout.md#class-layout) that holds the [TabSet.tabBarControls](#attr-tabsettabbarcontrols) as well as the built-in controls such as the [tab picker menu](#attr-tabsetshowtabpicker).
 
 **Flags**: IR
 
@@ -267,9 +267,9 @@ Default src for the close icon for tabs to display if [TabSet.canCloseTabs](#att
 ## Attr: TabSet.tabs
 
 ### Description
-An array of [Tab](../main.md#object-tab) objects, specifying the title and pane contents of each tab in the TabSet. When developing in JavaScript, tabs are specified as an array of object literals, not instances - see [Tab](../main.md#object-tab).
+An array of [Tab](../reference.md#object-tab) objects, specifying the title and pane contents of each tab in the TabSet. When developing in JavaScript, tabs are specified as an array of object literals, not instances - see [Tab](../reference.md#object-tab).
 
-After providing [Tab](../main.md#object-tab) instances to `setTabs()`, the TabSet creates actual UI widgets to serve as interactive tabs. Any further modifications to tabs should be performed via TabSet APIs such as [TabSet.setTabTitle](#method-tabsetsettabtitle), [TabSet.setTabIcon](#method-tabsetsettabicon) and [TabSet.setTabPane](#method-tabsetsettabpane).
+After providing [Tab](../reference.md#object-tab) instances to `setTabs()`, the TabSet creates actual UI widgets to serve as interactive tabs. Any further modifications to tabs should be performed via TabSet APIs such as [TabSet.setTabTitle](#method-tabsetsettabtitle), [TabSet.setTabIcon](#method-tabsetsettabicon) and [TabSet.setTabPane](#method-tabsetsettabpane).
 
 You can add and remove tabs after creating the TabSet by calling [TabSet.addTab](#method-tabsetaddtab) and [TabSet.removeTab](#method-tabsetremovetab)
 
@@ -281,7 +281,7 @@ You can add and remove tabs after creating the TabSet by calling [TabSet.addTab]
 ### Description
 If true, users can edit the titles of tabs in this TabSet when the [titleEditEvent](#attr-tabsettitleeditevent) fires. You can override this behavior per tab with the [Tab.canEditTitle](Tab.md#attr-tabcanedittitle) property.
 
-Note that this TabSet's [titleEditEvent](#attr-tabsettitleeditevent) must be set to a supported [TabTitleEditEvent](../main.md#type-tabtitleeditevent) in order for users to be able to edit the titles of tabs.
+Note that this TabSet's [titleEditEvent](#attr-tabsettitleeditevent) must be set to a supported [TabTitleEditEvent](../reference.md#type-tabtitleeditevent) in order for users to be able to edit the titles of tabs.
 
 **Flags**: IRW
 
@@ -291,7 +291,7 @@ Note that this TabSet's [titleEditEvent](#attr-tabsettitleeditevent) must be set
 ### Description
 If this tabSet will [show edges](#attr-tabsetshowpanecontaineredges) for the paneContainer, and [TabSet.symmetricEdges](#attr-tabsetsymmetricedges) is set to false, the `leftEdgeOffsets`, `rightEdgeOffsets`, `topEdgeOffsets` and `bottomEdgeOffsets` properties allow the offsets of edges for the paneContainer to be customized depending on the [TabSet.tabBarPosition](#attr-tabsettabbarposition).
 
-The attribute should be specified an [edgeSizes map](../main.md#type-edgesizes), specifying the desired edge offsets where for the appropriate [TabSet.tabBarPosition](#attr-tabsettabbarposition).
+The attribute should be specified an [edgeSizes map](../reference.md#type-edgesizes), specifying the desired edge offsets where for the appropriate [TabSet.tabBarPosition](#attr-tabsettabbarposition).
 
 **Flags**: IR
 
@@ -377,7 +377,7 @@ If the [tabBarPosition](#attr-tabsettabbarposition) is "left" or "right", then t
 ### Description
 If this tabSet will [show edges](#attr-tabsetshowpanecontaineredges) for the paneContainer, and [TabSet.symmetricEdges](#attr-tabsetsymmetricedges) is set to false, the `leftEdgeOffsets`, `rightEdgeOffsets`, `topEdgeOffsets` and `bottomEdgeOffsets` properties allow the offsets of edges for the paneContainer to be customized depending on the [TabSet.tabBarPosition](#attr-tabsettabbarposition).
 
-The attribute should be specified an [edgeSizes map](../main.md#type-edgesizes), specifying the desired edge offsets where for the appropriate [TabSet.tabBarPosition](#attr-tabsettabbarposition).
+The attribute should be specified an [edgeSizes map](../reference.md#type-edgesizes), specifying the desired edge offsets where for the appropriate [TabSet.tabBarPosition](#attr-tabsettabbarposition).
 
 **Flags**: IR
 
@@ -387,7 +387,7 @@ The attribute should be specified an [edgeSizes map](../main.md#type-edgesizes),
 ### Description
 Container where the component specified by [Tab.pane](Tab.md#attr-tabpane) is shown.
 
-Note: paneContainer and showEdges:true for rounded tabsets: you can enable decorative image-based edges on the paneContainer by setting [showEdges:true](Canvas.md#attr-canvasshowedges) via paneContainerDefaults (to skin all tabsets) or paneContainerProperties (to use edges on one instance). In this structure, the [baseLine](../main.md#kb-topic-baseline) should use media that matches the appearance of the decorative edges and fully overlaps the edge of the paneContainer that it is adjacent to. In the most typical appearance (symmetric edges on all 4 sides), both [TabBar.baseLineCapSize](TabBar.md#attr-tabbarbaselinecapsize) and [TabBar.baseLineThickness](TabBar.md#attr-tabbarbaselinethickness) match the [edgeSize](Canvas.md#attr-canvasedgesize) set on the paneContainer. See the load\_skin.js file for the "SmartClient" skin for an example of setting all relevant properties.
+Note: paneContainer and showEdges:true for rounded tabsets: you can enable decorative image-based edges on the paneContainer by setting [showEdges:true](Canvas.md#attr-canvasshowedges) via paneContainerDefaults (to skin all tabsets) or paneContainerProperties (to use edges on one instance). In this structure, the [baseLine](../reference.md#kb-topic-baseline) should use media that matches the appearance of the decorative edges and fully overlaps the edge of the paneContainer that it is adjacent to. In the most typical appearance (symmetric edges on all 4 sides), both [TabBar.baseLineCapSize](TabBar.md#attr-tabbarbaselinecapsize) and [TabBar.baseLineThickness](TabBar.md#attr-tabbarbaselinethickness) match the [edgeSize](Canvas.md#attr-canvasedgesize) set on the paneContainer. See the load\_skin.js file for the "SmartClient" skin for an example of setting all relevant properties.
 
 To disable edges for a particular TabSet, which you may want to do for a TabSet that is already within a clearly defined container, configure the paneContainer to show only it's top edge:
 
@@ -477,7 +477,7 @@ Note that for best results the media should be sized to match the scroller butto
 ## Attr: TabSet.moreTab
 
 ### Description
-[Tab](../main.md#object-tab) to be shown when [TabSet.showMoreTab](#attr-tabsetshowmoretab) is enabled more than [TabSet.moreTabCount](#attr-tabsetmoretabcount) tabs are provided.
+[Tab](../reference.md#object-tab) to be shown when [TabSet.showMoreTab](#attr-tabsetshowmoretab) is enabled more than [TabSet.moreTabCount](#attr-tabsetmoretabcount) tabs are provided.
 
 **Flags**: R
 
@@ -563,7 +563,7 @@ Note that for best results the media should be sized to match the scroller butto
 ### Description
 If this tabSet will [show edges](#attr-tabsetshowpanecontaineredges) for the paneContainer, and [TabSet.symmetricEdges](#attr-tabsetsymmetricedges) is set to false, the `leftEdgeSizes`, `rightEdgeSizes`, `topEdgeSizes` and `bottomEdgeSizes` properties allow the sizes of edges for the paneContainer to be customized depending on the [TabSet.tabBarPosition](#attr-tabsettabbarposition).
 
-The attribute should be specified an [edgeSizes map](../main.md#type-edgesizes), specifying the desired edge sizes where for the appropriate [TabSet.tabBarPosition](#attr-tabsettabbarposition).
+The attribute should be specified an [edgeSizes map](../reference.md#type-edgesizes), specifying the desired edge sizes where for the appropriate [TabSet.tabBarPosition](#attr-tabsettabbarposition).
 
 **Flags**: IR
 
@@ -605,7 +605,7 @@ If [TabSet.showTabScroller](#attr-tabsetshowtabscroller) is true, should tabs be
 ### Description
 If this tabSet will [show edges](#attr-tabsetshowpanecontaineredges) for the paneContainer, and [TabSet.symmetricEdges](#attr-tabsetsymmetricedges) is set to false, the `leftEdgeOffsets`, `rightEdgeOffsets`, `topEdgeOffsets` and `bottomEdgeOffsets` properties allow the offsets of edges for the paneContainer to be customized depending on the [TabSet.tabBarPosition](#attr-tabsettabbarposition).
 
-The attribute should be specified an [edgeSizes map](../main.md#type-edgesizes), specifying the desired edge offsets where for the appropriate [TabSet.tabBarPosition](#attr-tabsettabbarposition).
+The attribute should be specified an [edgeSizes map](../reference.md#type-edgesizes), specifying the desired edge offsets where for the appropriate [TabSet.tabBarPosition](#attr-tabsettabbarposition).
 
 **Flags**: IR
 
@@ -627,7 +627,7 @@ If there is not enough space to display all the tab-buttons in this tabSet, shou
 ### Description
 Specifies the overflow of the pane container (the component that holds the pane contents for all tabs). By default this is set to "auto", meaning the pane container will automatically introduce scrolling when the pane contents exceed the TabSet's specified size.
 
-For other values and their meaning, see [Overflow](../main.md#type-overflow)
+For other values and their meaning, see [Overflow](../reference.md#type-overflow)
 
 **Flags**: IRWA
 
@@ -637,7 +637,7 @@ For other values and their meaning, see [Overflow](../main.md#type-overflow)
 ### Description
 If this tabSet will [show edges](#attr-tabsetshowpanecontaineredges) for the paneContainer, and [TabSet.symmetricEdges](#attr-tabsetsymmetricedges) is set to false, the `leftEdgeSizes`, `rightEdgeSizes`, `topEdgeSizes` and `bottomEdgeSizes` properties allow the sizes of edges for the paneContainer to be customized depending on the [TabSet.tabBarPosition](#attr-tabsettabbarposition).
 
-The attribute should be specified an [edgeSizes map](../main.md#type-edgesizes), specifying the desired edge sizes where for the appropriate [TabSet.tabBarPosition](#attr-tabsettabbarposition).
+The attribute should be specified an [edgeSizes map](../reference.md#type-edgesizes), specifying the desired edge sizes where for the appropriate [TabSet.tabBarPosition](#attr-tabsettabbarposition).
 
 **Flags**: IR
 
@@ -686,7 +686,7 @@ You can also refer to the default tabPicker/tabScroll controls from Component XM
 
 When [Browser.isTouch](Browser.md#classattr-browseristouch) is `true` and native touch scrolling is supported, then by default, only the `"tabPicker"` is shown. The `"tabScroller"` control is omitted by default on touch devices because the tabs in the tab bar are native touch-scrollable, so the `"tabScroller"` control is unnecessary. To override the omission of the `"tabScroller"`, simply add "tabScroller" to the `tabBarControls` array.
 
-**Note:** Due to tabs supporting [adaptive width](Tab.md#attr-tabcanadaptwidth) and other complexities of TabSet widget layout, [flexible-sized](Canvas.md#attr-canvaswidth) controls (including [spacers](../main.md#class-layoutspacer)) aren't supported in `tabBarControls`. However, if you take into account the width of your tabs and whether the [picker](#attr-tabsettabpicker) and [TabSet.scroller](#attr-tabsetscroller) are present, you can add a fixed-width spacer to achieve the desired appearance, as long as the set of tabs and TabSet width are static.
+**Note:** Due to tabs supporting [adaptive width](Tab.md#attr-tabcanadaptwidth) and other complexities of TabSet widget layout, [flexible-sized](Canvas.md#attr-canvaswidth) controls (including [spacers](../reference.md#class-layoutspacer)) aren't supported in `tabBarControls`. However, if you take into account the width of your tabs and whether the [picker](#attr-tabsettabpicker) and [TabSet.scroller](#attr-tabsetscroller) are present, you can add a fixed-width spacer to achieve the desired appearance, as long as the set of tabs and TabSet width are static.
 
 ### Groups
 
@@ -815,7 +815,7 @@ Set to `null` to disable appending this suffix.
 ### Description
 If this tabSet will [show edges](#attr-tabsetshowpanecontaineredges) for the paneContainer, and [TabSet.symmetricEdges](#attr-tabsetsymmetricedges) is set to false, the `leftEdgeSizes`, `rightEdgeSizes`, `topEdgeSizes` and `bottomEdgeSizes` properties allow the sizes of edges for the paneContainer to be customized depending on the [TabSet.tabBarPosition](#attr-tabsettabbarposition).
 
-The attribute should be specified an [edgeSizes map](../main.md#type-edgesizes), specifying the desired edge sizes where for the appropriate [TabSet.tabBarPosition](#attr-tabsettabbarposition).
+The attribute should be specified an [edgeSizes map](../reference.md#type-edgesizes), specifying the desired edge sizes where for the appropriate [TabSet.tabBarPosition](#attr-tabsettabbarposition).
 
 **Flags**: IR
 
@@ -839,7 +839,7 @@ On touch browsers (where [Browser.isTouch](Browser.md#classattr-browseristouch) 
 ### Description
 If this tabSet will [show edges](#attr-tabsetshowpanecontaineredges) for the paneContainer, and [TabSet.symmetricEdges](#attr-tabsetsymmetricedges) is set to false, the `leftEdgeOffsets`, `rightEdgeOffsets`, `topEdgeOffsets` and `bottomEdgeOffsets` properties allow the offsets of edges for the paneContainer to be customized depending on the [TabSet.tabBarPosition](#attr-tabsettabbarposition).
 
-The attribute should be specified an [edgeSizes map](../main.md#type-edgesizes), specifying the desired edge offsets where for the appropriate [TabSet.tabBarPosition](#attr-tabsettabbarposition).
+The attribute should be specified an [edgeSizes map](../reference.md#type-edgesizes), specifying the desired edge offsets where for the appropriate [TabSet.tabBarPosition](#attr-tabsettabbarposition).
 
 **Flags**: IR
 
@@ -949,7 +949,7 @@ If unset, and the locator has no specified ID or name, default behavior is to id
 
 ### See Also
 
-- [LocatorStrategy](../main_2.md#type-locatorstrategy)
+- [LocatorStrategy](../reference_2.md#type-locatorstrategy)
 
 **Flags**: IRWA
 
@@ -1059,7 +1059,7 @@ Update [TabSet.paneContainerOverflow](#attr-tabsetpanecontaineroverflow) after c
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newOverflow | [Overflow](../main.md#type-overflow) | false | — | new overflow setting |
+| newOverflow | [Overflow](../reference.md#type-overflow) | false | — | new overflow setting |
 
 ---
 ## Method: TabSet.tabDeselected
@@ -1071,16 +1071,16 @@ Optional handler to fire when a tab is deselected. Returning false will cancel t
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| tabNum | [Integer](../main_2.md#type-integer) | false | — | the index of the deselected tab |
+| tabNum | [Integer](../reference_2.md#type-integer) | false | — | the index of the deselected tab |
 | tabPane | [Canvas](#type-canvas) | false | — | the deselected tab's pane if set |
-| ID | [GlobalId](../main.md#type-globalid) | false | — | the ID of the deselected tab |
+| ID | [GlobalId](../reference.md#type-globalid) | false | — | the ID of the deselected tab |
 | tab | [Tab](#type-tab) | false | — | the deselected tab object (not tab button instance) |
 | newTab | [Tab](#type-tab) | false | — | the tab object being selected |
-| name | [TabName](../main.md#type-tabname) | false | — | the name of the deselected tab |
+| name | [TabName](../reference.md#type-tabname) | false | — | the name of the deselected tab |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — return false to cancel the tab deselection
+`[boolean](../reference.md#type-boolean)` — return false to cancel the tab deselection
 
 ---
 ## Method: TabSet.getTabObject
@@ -1092,7 +1092,7 @@ Get the tab Object originally passed to [TabSet.tabs](#attr-tabsettabs), by inde
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| tab | [int](../main.md#type-int)|[GlobalId](../main.md#type-globalid)|[TabName](../main.md#type-tabname)|[Tab](#type-tab) | false | — | — |
+| tab | [int](../reference.md#type-int)|[GlobalId](../reference.md#type-globalid)|[TabName](../reference.md#type-tabname)|[Tab](#type-tab) | false | — | — |
 
 ### Returns
 
@@ -1108,7 +1108,7 @@ Changes this TabSet's [canCloseTabs](#attr-tabsetcanclosetabs) property.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| canCloseTabs | [boolean](../main.md#type-boolean) | false | — | the new value for canCloseTabs. |
+| canCloseTabs | [boolean](../reference.md#type-boolean) | false | — | the new value for canCloseTabs. |
 
 ---
 ## Method: TabSet.addTab
@@ -1165,7 +1165,7 @@ The pane associated with the removed tab is automatically destroyed when you cal
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| tabs | [Tab](#type-tab)|[GlobalId](../main.md#type-globalid)|[TabName](../main.md#type-tabname)|[number](#type-number)|[Array of Tab](#type-array-of-tab) | false | — | list of tabs, tabIDs, or tab numbers |
+| tabs | [Tab](#type-tab)|[GlobalId](../reference.md#type-globalid)|[TabName](../reference.md#type-tabname)|[number](#type-number)|[Array of Tab](#type-array-of-tab) | false | — | list of tabs, tabIDs, or tab numbers |
 
 ### See Also
 
@@ -1183,7 +1183,7 @@ Places an editor in the title of the parameter tab and allows the user to edit t
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| tab | [Tab](#type-tab)|[String](#type-string)|[Integer](../main_2.md#type-integer) | false | — | The tab whose title should be edited (may be specified by ID or index) |
+| tab | [Tab](#type-tab)|[String](#type-string)|[Integer](../reference_2.md#type-integer) | false | — | The tab whose title should be edited (may be specified by ID or index) |
 
 ### See Also
 
@@ -1206,8 +1206,8 @@ Changes the title of the picker menu item of a tab
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| tab | [Tab](#type-tab)|[number](#type-number)|[GlobalId](../main.md#type-globalid)|[TabName](../main.md#type-tabname) | false | — | — |
-| pickerTitle | [HTMLString](../main.md#type-htmlstring) | false | — | new title |
+| tab | [Tab](#type-tab)|[number](#type-number)|[GlobalId](../reference.md#type-globalid)|[TabName](../reference.md#type-tabname) | false | — | — |
+| pickerTitle | [HTMLString](../reference.md#type-htmlstring) | false | — | new title |
 
 **Flags**: A
 
@@ -1226,7 +1226,7 @@ Notification fired when the user right-clicks on a tab. Event may be cancelled b
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — return false to cancel default right-click behavior
+`[boolean](../reference.md#type-boolean)` — return false to cancel default right-click behavior
 
 ---
 ## Method: TabSet.getSelectedTab
@@ -1250,8 +1250,8 @@ Changes the icon for a tab
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| tab | [Tab](#type-tab)|[number](#type-number)|[GlobalId](../main.md#type-globalid)|[TabName](../main.md#type-tabname) | false | — | tab to update |
-| icon | [SCImgURL](../main.md#type-scimgurl) | false | — | new icon |
+| tab | [Tab](#type-tab)|[number](#type-number)|[GlobalId](../reference.md#type-globalid)|[TabName](../reference.md#type-tabname) | false | — | tab to update |
+| icon | [SCImgURL](../reference.md#type-scimgurl) | false | — | new icon |
 
 **Flags**: A
 
@@ -1273,7 +1273,7 @@ Return false from this method to cancel the change.
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — return false to suppress the title change
+`[boolean](../reference.md#type-boolean)` — return false to suppress the title change
 
 ---
 ## Method: TabSet.removeTabs
@@ -1285,7 +1285,7 @@ Remove one or more tabs. The pane(s) associated with the removed tab(s) is autom
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| tabs | [Tab](#type-tab)|[GlobalId](../main.md#type-globalid)|[TabName](../main.md#type-tabname)|[number](#type-number) | false | — | list of tabs, tabIDs, tab names, or tab numbers |
+| tabs | [Tab](#type-tab)|[GlobalId](../reference.md#type-globalid)|[TabName](../reference.md#type-tabname)|[number](#type-number) | false | — | list of tabs, tabIDs, tab names, or tab numbers |
 
 ### See Also
 
@@ -1318,7 +1318,7 @@ Notification method executed when one or more tabs in the TabSet are reordered.
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | tabCanvas | [StatefulCanvas](#type-statefulcanvas) | false | — | the live Canvas representing the tab that was moved |
-| tabIndex | [Integer](../main_2.md#type-integer) | false | — | the new index of the tab in the tabSet |
+| tabIndex | [Integer](../reference_2.md#type-integer) | false | — | the new index of the tab in the tabSet |
 
 ---
 ## Method: TabSet.getSelectedTabNumber
@@ -1342,7 +1342,7 @@ Get the index of a tab, from the tab, tab ID or tab name. If passed a number, ju
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| tab | [number](#type-number)|[GlobalId](../main.md#type-globalid)|[TabName](../main.md#type-tabname)|[Tab](#type-tab) | false | — | — |
+| tab | [number](#type-number)|[GlobalId](../reference.md#type-globalid)|[TabName](../reference.md#type-tabname)|[Tab](#type-tab) | false | — | — |
 
 ### Returns
 
@@ -1358,7 +1358,7 @@ If the specified tab is enabled, disable it now.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| tab | [Tab](#type-tab)|[number](#type-number)|[GlobalId](../main.md#type-globalid)|[TabName](../main.md#type-tabname) | false | — | — |
+| tab | [Tab](#type-tab)|[number](#type-number)|[GlobalId](../reference.md#type-globalid)|[TabName](../reference.md#type-tabname) | false | — | — |
 
 ### See Also
 
@@ -1374,8 +1374,8 @@ Sets the given tab's [canClose](Tab.md#attr-tabcanclose) property to the boolean
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| tab | [Tab](#type-tab)|[GlobalId](../main.md#type-globalid)|[TabName](../main.md#type-tabname)|[number](#type-number) | false | — | tab to change |
-| canClose | [boolean](../main.md#type-boolean) | false | — | new value for the tab's canClose property, or null to clear it |
+| tab | [Tab](#type-tab)|[GlobalId](../reference.md#type-globalid)|[TabName](../reference.md#type-tabname)|[number](#type-number) | false | — | tab to change |
+| canClose | [boolean](../reference.md#type-boolean) | false | — | new value for the tab's canClose property, or null to clear it |
 
 ---
 ## Method: TabSet.setTabTitle
@@ -1387,8 +1387,8 @@ Changes the title of a tab
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| tab | [Tab](#type-tab)|[number](#type-number)|[GlobalId](../main.md#type-globalid)|[TabName](../main.md#type-tabname) | false | — | — |
-| title | [HTMLString](../main.md#type-htmlstring) | false | — | new title |
+| tab | [Tab](#type-tab)|[number](#type-number)|[GlobalId](../reference.md#type-globalid)|[TabName](../reference.md#type-tabname) | false | — | — |
+| title | [HTMLString](../reference.md#type-htmlstring) | false | — | new title |
 
 **Flags**: A
 
@@ -1416,7 +1416,7 @@ Returns the pane for a given tab.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| tab | [Object](../main.md#type-object)|[number](#type-number)|[GlobalId](../main.md#type-globalid)|[TabName](../main.md#type-tabname)|[Tab](#type-tab) | false | — | — |
+| tab | [Object](../reference.md#type-object)|[number](#type-number)|[GlobalId](../reference.md#type-globalid)|[TabName](../reference.md#type-tabname)|[Tab](#type-tab) | false | — | — |
 
 ### Returns
 
@@ -1432,7 +1432,7 @@ Reveals the child Canvas passed in by selecting the tab containing that child if
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| child | [GlobalId](../main.md#type-globalid)|[Canvas](#type-canvas) | false | — | the child Canvas to reveal, or its global ID |
+| child | [GlobalId](../reference.md#type-globalid)|[Canvas](#type-canvas) | false | — | the child Canvas to reveal, or its global ID |
 
 ---
 ## Method: TabSet.showTab
@@ -1458,8 +1458,8 @@ Apply properties to an existing tab in a tabSet.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| tab | [Tab](#type-tab)|[number](#type-number)|[GlobalId](../main.md#type-globalid)|[TabName](../main.md#type-tabname) | false | — | Identifier for the tab to be modified |
-| properties | [Object](../main.md#type-object) | false | — | Javascript object containing the set of properties to be applied to the tab. |
+| tab | [Tab](#type-tab)|[number](#type-number)|[GlobalId](../reference.md#type-globalid)|[TabName](../reference.md#type-tabname) | false | — | Identifier for the tab to be modified |
+| properties | [Object](../reference.md#type-object) | false | — | Javascript object containing the set of properties to be applied to the tab. |
 
 **Flags**: A
 
@@ -1492,7 +1492,7 @@ Move a tab to another location in the tabset.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| tab | [Tab](#type-tab)|[GlobalId](../main.md#type-globalid)|[TabName](../main.md#type-tabname)|[number](#type-number) | false | — | tab to move |
+| tab | [Tab](#type-tab)|[GlobalId](../reference.md#type-globalid)|[TabName](../reference.md#type-tabname)|[number](#type-number) | false | — | tab to move |
 | moveToPosition | [number](#type-number) | true | — | the index to move the tab to - defaults to the end of the tabset if not passed |
 
 ---
@@ -1505,7 +1505,7 @@ If the specified tab is disabled, enable it now.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| tab | [Tab](#type-tab)|[number](#type-number)|[GlobalId](../main.md#type-globalid)|[TabName](../main.md#type-tabname) | false | — | — |
+| tab | [Tab](#type-tab)|[number](#type-number)|[GlobalId](../reference.md#type-globalid)|[TabName](../reference.md#type-tabname) | false | — | — |
 
 ### See Also
 
@@ -1576,7 +1576,7 @@ The returned Tab is considered an internal component of the TabSet. In order to 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| tab | [int](../main.md#type-int)|[GlobalId](../main.md#type-globalid)|[TabName](../main.md#type-tabname)|[Canvas](#type-canvas) | false | — | identifier for the tab or tab button |
+| tab | [int](../reference.md#type-int)|[GlobalId](../reference.md#type-globalid)|[TabName](../reference.md#type-tabname)|[Canvas](#type-canvas) | false | — | identifier for the tab or tab button |
 
 ### Returns
 
@@ -1596,7 +1596,7 @@ NOTE: the old pane for the tab is not destroy()d
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| tab | [number](#type-number)|[GlobalId](../main.md#type-globalid)|[TabName](../main.md#type-tabname)|[Tab](#type-tab) | false | — | tab to update |
+| tab | [number](#type-number)|[GlobalId](../reference.md#type-globalid)|[TabName](../reference.md#type-tabname)|[Tab](#type-tab) | false | — | tab to update |
 | pane | [Canvas](#type-canvas)|[ID](#type-id) | false | — | new pane for the tab |
 
 ---
@@ -1609,11 +1609,11 @@ Notification fired when a tab is selected. Note that this will only fire if this
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| tabNum | [Integer](../main_2.md#type-integer) | false | — | the index of the newly selected tab |
+| tabNum | [Integer](../reference_2.md#type-integer) | false | — | the index of the newly selected tab |
 | tabPane | [Canvas](#type-canvas) | false | — | the newly selected tab's pane if set |
-| ID | [GlobalId](../main.md#type-globalid) | false | — | the ID of the newly selected tab |
+| ID | [GlobalId](../reference.md#type-globalid) | false | — | the ID of the newly selected tab |
 | tab | [Tab](#type-tab) | false | — | the tab object (not tab button instance) |
-| name | [TabName](../main.md#type-tabname) | false | — | the name of the newly selected tab |
+| name | [TabName](../reference.md#type-tabname) | false | — | the name of the newly selected tab |
 
 ---
 ## Method: TabSet.addTabClick
@@ -1637,7 +1637,7 @@ Is the tab [hidden or visible](Tab.md#attr-tabhidden)?
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — returns true if the tab has not been hidden.
+`[boolean](../reference.md#type-boolean)` — returns true if the tab has not been hidden.
 
 ---
 ## Method: TabSet.saveTabTitle
@@ -1655,6 +1655,6 @@ Select a tab. Note that this method will have no effect if the tab is [hidden](T
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| tab | [number](#type-number)|[GlobalId](../main.md#type-globalid)|[TabName](../main.md#type-tabname)|[Tab](#type-tab) | false | — | tab to select |
+| tab | [number](#type-number)|[GlobalId](../reference.md#type-globalid)|[TabName](../reference.md#type-tabname)|[Tab](#type-tab) | false | — | tab to select |
 
 ---

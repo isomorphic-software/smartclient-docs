@@ -1,6 +1,6 @@
 # EditNode Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -41,7 +41,7 @@ See [PaletteNode.canDuplicate](PaletteNode.md#attr-palettenodecanduplicate).
 ## Attr: EditNode.type
 
 ### Description
-[SCClassName](../main.md#type-scclassname) of the [EditNode.liveObject](#attr-editnodeliveobject) , for example, "ListGrid".
+[SCClassName](../reference.md#type-scclassname) of the [EditNode.liveObject](#attr-editnodeliveobject) , for example, "ListGrid".
 
 **Flags**: IR
 

@@ -1,13 +1,13 @@
 # patternOperators
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
 ## KB Topic: patternOperators
 
 ### Description
-The [search operators](../main.md#type-operatorid) use patterns like "foo\*txt" to match text values. The patterns are similar to the patterns you use to match names of files in a command-line interface, or to the pattern allowed for the SQL "LIKE" operator. The supported search operators are:
+The [search operators](../reference.md#type-operatorid) use patterns like "foo\*txt" to match text values. The patterns are similar to the patterns you use to match names of files in a command-line interface, or to the pattern allowed for the SQL "LIKE" operator. The supported search operators are:
 
 *   "matchesPattern" Basic GLOB matching using wildcards.
 *   "iMatchesPattern" Basic GLOB matching using wildcards (case insensitive).

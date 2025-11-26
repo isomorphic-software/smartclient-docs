@@ -1,6 +1,6 @@
 # String Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -158,11 +158,11 @@ Returns `true` if this string starts with another string, or if the other string
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | substring | [String](#type-string) | false | — | other string to check |
-| position | [int](../main.md#type-int) | true | — | optional position in this string. Defaults to 0. |
+| position | [int](../reference.md#type-int) | true | — | optional position in this string. Defaults to 0. |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — `true` if `substring` occurs within this string at position `position`.
+`[boolean](../reference.md#type-boolean)` — `true` if `substring` occurs within this string at position `position`.
 
 ### Groups
 
@@ -179,11 +179,11 @@ Returns `true` if this string ends with another string, or if the other string o
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | substring | [String](#type-string) | false | — | other string to check |
-| position | [int](../main.md#type-int) | true | — | optional position in this string. Defaults to the length of this string. |
+| position | [int](../reference.md#type-int) | true | — | optional position in this string. Defaults to the length of this string. |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — `true` if `substring` occurs within this string ending with `position - 1`.
+`[boolean](../reference.md#type-boolean)` — `true` if `substring` occurs within this string ending with `position - 1`.
 
 ### Groups
 
@@ -203,7 +203,7 @@ Returns true if this string contains the specified substring.
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true == this string contains the substring
+`[boolean](../reference.md#type-boolean)` — true == this string contains the substring
 
 ### Groups
 
@@ -232,7 +232,7 @@ This prevents HTML-special characters like '<' and '>' from being interpreted as
 
 ### Returns
 
-`[HTMLString](../main.md#type-htmlstring)` — string of HTML with tags in the original HTML escaped.
+`[HTMLString](../reference.md#type-htmlstring)` — string of HTML with tags in the original HTML escaped.
 
 ### Groups
 
@@ -252,7 +252,7 @@ Formats the given integer `n` as an ordinal number string. For example:
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| n | [Integer](../main_2.md#type-integer) | false | — | the integer to format as an ordinal number string |
+| n | [Integer](../reference_2.md#type-integer) | false | — | the integer to format as an ordinal number string |
 
 ### Returns
 
@@ -276,6 +276,6 @@ Tests whether the given string is a valid JavaScript identifier.
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true if string is a valid JavaScript identifier; false otherwise.
+`[boolean](../reference.md#type-boolean)` — true if string is a valid JavaScript identifier; false otherwise.
 
 ---

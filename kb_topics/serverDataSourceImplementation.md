@@ -1,6 +1,6 @@
 # Notes on Server-side DataSource Implementations
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 

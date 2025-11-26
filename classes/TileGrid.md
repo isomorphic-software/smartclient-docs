@@ -1,6 +1,6 @@
 # TileGrid Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -9,7 +9,7 @@
 *Inherits from:* [TileLayout](TileLayout.md#class-tilelayout)
 
 ### Description
-A TileGrid is a [DataBoundComponent](../main.md#interface-databoundcomponent) that displays a list of objects as a set of "tiles", where each tile represents one object, and the tiles are laid out in a grid with multiple tiles per row. Each tile displays one or more properties of the object it represents.
+A TileGrid is a [DataBoundComponent](../reference.md#interface-databoundcomponent) that displays a list of objects as a set of "tiles", where each tile represents one object, and the tiles are laid out in a grid with multiple tiles per row. Each tile displays one or more properties of the object it represents.
 
 ---
 ## Attr: TileGrid.wrapValues
@@ -98,7 +98,7 @@ This detailViewer is never actually drawn or displayed to the user - it is simpl
 ## Attr: TileGrid.dataSource
 
 ### Description
-The DataSource that this component should bind to for default fields and for performing [DataSource requests](../main_2.md#object-dsrequest).
+The DataSource that this component should bind to for default fields and for performing [DataSource requests](../reference_2.md#object-dsrequest).
 
 Can be specified as either a DataSource instance or the String ID of a DataSource.
 
@@ -169,7 +169,7 @@ NOTE: if `autoFetchData` is set, calling [fetchData()](ListGrid_2.md#method-list
 ## Attr: TileGrid.tile
 
 ### Description
-A TileGrid automatically creates one tile per record in the dataset, via the [AutoChild](../main.md#type-autochild) pattern.
+A TileGrid automatically creates one tile per record in the dataset, via the [AutoChild](../reference.md#type-autochild) pattern.
 
 By default, the [SimpleTile](SimpleTile.md#class-simpletile) class will be used. This class automatically invokes [TileGrid.getTileHTML](#method-tilegridgettilehtml) on the tileGrid to generate its content. The standard [TileGrid.getTileHTML](#method-tilegridgettilehtml) method uses a [detailViewer](#attr-tilegriddetailviewer) to render html for the tile's record, based on the provided [TileGrid.fields](#attr-tilegridfields) (or on the default set of fields).
 
@@ -189,7 +189,7 @@ To create a completely different appearance, override [TileGrid.tileConstructor]
  
 ```
 
-Note that you can also override tile behaviors on a per-record basis, via [TileRecord.tileConstructor](../main.md#attr-tilerecordtileconstructor) and [TileRecord.tileProperties](../main.md#attr-tilerecordtileproperties).
+Note that you can also override tile behaviors on a per-record basis, via [TileRecord.tileConstructor](../reference.md#attr-tilerecordtileconstructor) and [TileRecord.tileProperties](../reference.md#attr-tilerecordtileproperties).
 
 **Flags**: IR
 
@@ -285,7 +285,7 @@ When using the default [SimpleTile](SimpleTile.md#class-simpletile), CSS style f
 ## Attr: TileGrid.fetchRequestProperties
 
 ### Description
-If [TileGrid.autoFetchData](#attr-tilegridautofetchdata) is `true`, this attribute allows the developer to declaratively specify [DSRequest](../main_2.md#object-dsrequest) properties for the initial [fetchData()](ListGrid_2.md#method-listgridfetchdata) call.
+If [TileGrid.autoFetchData](#attr-tilegridautofetchdata) is `true`, this attribute allows the developer to declaratively specify [DSRequest](../reference_2.md#object-dsrequest) properties for the initial [fetchData()](ListGrid_2.md#method-listgridfetchdata) call.
 
 Note that any properties governing more specific request attributes for the initial fetch (such as [TileGrid.autoFetchTextMatchStyle](#attr-tilegridautofetchtextmatchstyle) and initial sort specifiers) will be applied on top of this properties block.
 
@@ -321,7 +321,7 @@ This property will typically not be explicitly specified for databound TileGrids
 
 ### See Also
 
-- [TileRecord](../main.md#object-tilerecord)
+- [TileRecord](../reference.md#object-tilerecord)
 
 **Flags**: IRW
 
@@ -349,7 +349,7 @@ The CSS style name applied to the [TileGrid.emptyMessage](#attr-tilegridemptymes
 ## Attr: TileGrid.dataFetchMode
 
 ### Description
-How to fetch and manage records retrieve from the server. See [FetchMode](../main_2.md#type-fetchmode).
+How to fetch and manage records retrieve from the server. See [FetchMode](../reference_2.md#type-fetchmode).
 
 This setting only applies to the [ResultSet](ResultSet.md#class-resultset) automatically created by calling [fetchData()](ListGrid_2.md#method-listgridfetchdata). If a pre-existing ResultSet is passed to setData() instead, it's existing setting for [ResultSet.fetchMode](ResultSet.md#attr-resultsetfetchmode) applies.
 
@@ -391,7 +391,7 @@ How many tiles should be present in a line when printing?
 ## Attr: TileGrid.tileConstructor
 
 ### Description
-Class-name of a SmartClient component to use for each tile rendered by this TileGrid. Tiles are created by the [AutoChild](../main.md#type-autochild) pattern; see [TileGrid.tile](#attr-tilegridtile).
+Class-name of a SmartClient component to use for each tile rendered by this TileGrid. Tiles are created by the [AutoChild](../reference.md#type-autochild) pattern; see [TileGrid.tile](#attr-tilegridtile).
 
 Any subclass of Canvas is allowed, but typically any custom class will derive from [SimpleTile](SimpleTile.md#class-simpletile).
 
@@ -424,7 +424,7 @@ Defines a tileGrid's clickable-selection behavior.
 
 ### See Also
 
-- [SelectionStyle](../main.md#type-selectionstyle)
+- [SelectionStyle](../reference.md#type-selectionstyle)
 
 **Flags**: IRW
 
@@ -642,8 +642,8 @@ For a discussion of the various filtering and criteria-management APIs and when 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| criteria | [Criteria](../main_2.md#type-criteria) | true | — | Search criteria. If a [DynamicForm](DynamicForm.md#class-dynamicform) is passed in as this argument instead of a raw criteria object, will be derived by calling [DynamicForm.getValuesAsCriteria](DynamicForm.md#method-dynamicformgetvaluesascriteria) |
-| callback | [DSCallback](../main_2.md#type-dscallback) | true | — | callback to invoke when a fetch is complete. Fires only if server contact was required; see [fetchData()](ListGrid_2.md#method-listgridfetchdata) for details |
+| criteria | [Criteria](../reference_2.md#type-criteria) | true | — | Search criteria. If a [DynamicForm](DynamicForm.md#class-dynamicform) is passed in as this argument instead of a raw criteria object, will be derived by calling [DynamicForm.getValuesAsCriteria](DynamicForm.md#method-dynamicformgetvaluesascriteria) |
+| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke when a fetch is complete. Fires only if server contact was required; see [fetchData()](ListGrid_2.md#method-listgridfetchdata) for details |
 | requestProperties | [DSRequest](#type-dsrequest) | true | — | for databound components only - optional additional properties to set on the DSRequest that will be issued |
 
 ### Groups
@@ -670,8 +670,8 @@ In all other cases, this call returns true and a fetch is issued for all necessa
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| maxRecords | [Integer](../main_2.md#type-integer) | true | — | optional maximum record count - if passed, no fetch takes place if maxRecords is below the known length of the data |
-| callback | [DSCallback](../main_2.md#type-dscallback) | true | — | callback to fire if a fetch is issued - if all data was already loaded, the callback is fired with no parameters |
+| maxRecords | [Integer](../reference_2.md#type-integer) | true | — | optional maximum record count - if passed, no fetch takes place if maxRecords is below the known length of the data |
+| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to fire if a fetch is issued - if all data was already loaded, the callback is fired with no parameters |
 
 ### Returns
 
@@ -725,8 +725,8 @@ This is a synonym for `selectRange(startRow, endRow, false);`
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| startRow | [int](../main.md#type-int) | false | — | start of selection range |
-| endRow | [int](../main.md#type-int) | false | — | end of selection range (non-inclusive) |
+| startRow | [int](../reference.md#type-int) | false | — | start of selection range |
+| endRow | [int](../reference.md#type-int) | false | — | end of selection range (non-inclusive) |
 
 ### Groups
 
@@ -753,7 +753,7 @@ For more information on exporting data, see [DataSource.exportData](DataSource.m
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | requestProperties | [DSRequest](#type-dsrequest) | true | — | additional properties to set on the DSRequest that will be issued |
-| callback | [DSCallback](../main_2.md#type-dscallback) | true | — | callback to invoke on completion. Note that this parameter only applies where [DSRequest.exportToClient](DSRequest.md#attr-dsrequestexporttoclient) is explicitly set to false, because file downloads do not provide ordinary SmartClient callbacks |
+| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke on completion. Note that this parameter only applies where [DSRequest.exportToClient](DSRequest.md#attr-dsrequestexporttoclient) is explicitly set to false, because file downloads do not provide ordinary SmartClient callbacks |
 
 ### Groups
 
@@ -773,8 +773,8 @@ Notification method fired when new data arrives from the server to be displayed 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| startRecord | [int](../main.md#type-int) | false | — | starting index of the newly loaded set of records |
-| endRecord | [int](../main.md#type-int) | false | — | ending index of the newly loaded set of records (non inclusive). |
+| startRecord | [int](../reference.md#type-int) | false | — | starting index of the newly loaded set of records |
+| endRecord | [int](../reference.md#type-int) | false | — | ending index of the newly loaded set of records (non inclusive). |
 
 **Flags**: A
 
@@ -789,7 +789,7 @@ Perform a DataSource "add" operation to add new records to this component's Data
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | newRecord | [Record](#type-record) | false | — | new record |
-| callback | [DSCallback](../main_2.md#type-dscallback) | true | — | method to call on operation completion |
+| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | method to call on operation completion |
 | requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | additional properties to set on the DSRequest that will be issued |
 
 ### Groups
@@ -820,9 +820,9 @@ Select a contiguous range of records by index
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| startRow | [int](../main.md#type-int) | false | — | start of selection range |
-| endRow | [int](../main.md#type-int) | false | — | end of selection range (non-inclusive) |
-| newState | [boolean](../main.md#type-boolean) | true | — | new selection state (if null, defaults to true) |
+| startRow | [int](../reference.md#type-int) | false | — | start of selection range |
+| endRow | [int](../reference.md#type-int) | false | — | end of selection range (non-inclusive) |
+| newState | [boolean](../reference.md#type-boolean) | true | — | new selection state (if null, defaults to true) |
 
 ### Groups
 
@@ -846,7 +846,7 @@ For a grid with no DataSource or where `saveLocally` is true, the data removal i
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| callback | [DSCallback](../main_2.md#type-dscallback) | true | — | callback to fire when each record has been removed |
+| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to fire when each record has been removed |
 | requestProperties | [DSRequest](#type-dsrequest) | true | — | additional properties to set on the DSRequest that will be issued |
 | queueCallback | [RPCQueueCallback](#type-rpcqueuecallback) | true | — | callback to fire after all selected data has been removed |
 
@@ -878,7 +878,7 @@ Note that since field-level `canEdit:true` settings override the form-level canE
 ## Method: TileGrid.deselectRecord
 
 ### Description
-Deselect a [Record](../main.md#object-record) passed in explicitly, or by index.
+Deselect a [Record](../reference.md#object-record) passed in explicitly, or by index.
 
 Synonym for `selectRecord(record, false)`
 
@@ -887,7 +887,7 @@ Synonym for `selectRecord(record, false)`
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | record | [Record](#type-record)|[number](#type-number) | false | — | record (or row number) to deselect |
-| rowNum | [Integer](../main_2.md#type-integer) | true | — | row number to select. Required for [multi-link trees](Tree.md#attr-treemultilinktree) unless row number is passed in the "record" param |
+| rowNum | [Integer](../reference_2.md#type-integer) | true | — | row number to select. Required for [multi-link trees](Tree.md#attr-treemultilinktree) unless row number is passed in the "record" param |
 
 ### Groups
 
@@ -925,7 +925,7 @@ If both this method and [TileGrid.createTile](#method-tilegridcreatetile) are de
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | record | [Record](#type-record) | false | — | record that will be associated with the recycled tile |
-| tileIndex | [Integer](../main_2.md#type-integer) | false | — | index of the record in the tileGrid |
+| tileIndex | [Integer](../reference_2.md#type-integer) | false | — | index of the record in the tileGrid |
 | reclaimedTile | [Canvas](#type-canvas) | false | — | the tile to be recycled |
 
 ### See Also
@@ -946,7 +946,7 @@ When calling this method directly, if [TileGrid.showAllRecords](#attr-tilegridsh
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| tile | [TileRecord](#type-tilerecord)|[int](../main.md#type-int) | false | — | record or index of record in this.data |
+| tile | [TileRecord](#type-tilerecord)|[int](../reference.md#type-int) | false | — | record or index of record in this.data |
 
 ### Returns
 
@@ -973,7 +973,7 @@ Perform a DataSource "remove" operation to remove records from this component's 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | data | [Record](#type-record) | false | — | primary key values of record to delete, (or complete record) |
-| callback | [DSCallback](../main_2.md#type-dscallback) | true | — | method to call on operation completion |
+| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | method to call on operation completion |
 | requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | additional properties to set on the DSRequest that will be issued |
 
 ### Groups
@@ -990,15 +990,15 @@ To transfer **all** data in, for example, a [ListGrid](ListGrid_1.md#class-listg
 
 Note that drag/drop type transfers of records between components are asynchronous operations: SmartClient may need to perform server turnarounds to establish whether dropped records already exist in the target component. Therefore, it is possible to issue a call to transferSelectedData() and/or the [drop()](ListGrid_2.md#method-listgriddrop) method of a databound component whilst a transfer is still active. When this happens, SmartClient adds the second and subsequent transfer requests to a queue and runs them one after the other. If you want to be notified when a transfer process has actually completed, either provide a callback to this method or implement [DataBoundComponent.dropComplete](DataBoundComponent.md#method-databoundcomponentdropcomplete).
 
-See the [dragging](../main.md#kb-topic-dragging) documentation for an overview of list grid drag/drop data transfer.
+See the [dragging](../reference.md#kb-topic-dragging) documentation for an overview of list grid drag/drop data transfer.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | source | [DataBoundComponent](#type-databoundcomponent) | false | — | source component from which the records will be transferred |
-| index | [Integer](../main_2.md#type-integer) | true | — | target index (drop position) of the rows within this grid. |
-| callback | [Callback](../main.md#type-callback) | true | — | optional callback to be fired when the transfer process has completed. The callback will be passed a single parameter "records", the list of records actually transferred to this component. |
+| index | [Integer](../reference_2.md#type-integer) | true | — | target index (drop position) of the rows within this grid. |
+| callback | [Callback](../reference.md#type-callback) | true | — | optional callback to be fired when the transfer process has completed. The callback will be passed a single parameter "records", the list of records actually transferred to this component. |
 
 ### Groups
 
@@ -1008,7 +1008,7 @@ See the [dragging](../main.md#kb-topic-dragging) documentation for an overview o
 ## Method: TileGrid.deselectRecords
 
 ### Description
-Deselect a list of [Record](../main.md#object-record)s passed in explicitly, or by index.
+Deselect a list of [Record](../reference.md#object-record)s passed in explicitly, or by index.
 
 Synonym for `selectRecords(records, false)`
 
@@ -1019,7 +1019,7 @@ Note that developers may wish to use [TileGrid.deselectRange](#method-tilegridde
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | records | [Array of Record](#type-array-of-record)|[number](#type-number) | false | — | records (or row numbers) to deselect |
-| rowNums | [Array of Integer](#type-array-of-integer)|[Integer](../main_2.md#type-integer) | true | — | row numbers to select. Required for [multi-link trees](Tree.md#attr-treemultilinktree) unless row numbers are passed in the "records" param. If passed, the rowNums array should correspond to the records array (ie, rowNums\[0\] refers to the same object as records\[0\]) |
+| rowNums | [Array of Integer](#type-array-of-integer)|[Integer](../reference_2.md#type-integer) | true | — | row numbers to select. Required for [multi-link trees](Tree.md#attr-treemultilinktree) unless row numbers are passed in the "records" param. If passed, the rowNums array should correspond to the records array (ie, rowNums\[0\] refers to the same object as records\[0\]) |
 
 ### Groups
 
@@ -1059,7 +1059,7 @@ Returns the record index of the tile that would currently be dropped on by the d
 
 ### Returns
 
-`[int](../main.md#type-int)` — record index of tile that would currently be dropped on, or the record count for a drop after all records
+`[int](../reference.md#type-int)` — record index of tile that would currently be dropped on, or the record count for a drop after all records
 
 ### See Also
 
@@ -1075,11 +1075,11 @@ This is not allowed for tileGrid. Instead, use [TileGrid.removeData](#method-til
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| tileID | [Canvas](#type-canvas)|[int](../main.md#type-int)|[ID](#type-id) | false | — | index or String ID of the tile |
+| tileID | [Canvas](#type-canvas)|[int](../reference.md#type-int)|[ID](#type-id) | false | — | index or String ID of the tile |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — whether a tile was found and removed
+`[boolean](../reference.md#type-boolean)` — whether a tile was found and removed
 
 ---
 ## Method: TileGrid.recordContextClick
@@ -1101,7 +1101,7 @@ If you want to cancel the click based on the parameters, return false. Otherwise
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — return false to suppress the native browser context menu.
+`[boolean](../reference.md#type-boolean)` — return false to suppress the native browser context menu.
 
 ### Groups
 
@@ -1118,7 +1118,7 @@ If defined, this method will be called when a new tile is required. Note that th
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | record | [Record](#type-record) | false | — | record that will be associated with new tile |
-| tileIndex | [Integer](../main_2.md#type-integer) | false | — | index of the record in the tileGrid |
+| tileIndex | [Integer](../reference_2.md#type-integer) | false | — | index of the record in the tileGrid |
 
 ### Returns
 
@@ -1133,7 +1133,7 @@ If defined, this method will be called when a new tile is required. Note that th
 ## Method: TileGrid.getFieldState
 
 ### Description
-Returns a snapshot of the current presentation of this grid's fields as a [ListGridFieldState](../main_2.md#type-listgridfieldstate) object.
+Returns a snapshot of the current presentation of this grid's fields as a [ListGridFieldState](../reference_2.md#type-listgridfieldstate) object.
 
 This object can be passed to [TileGrid.setFieldState](#method-tilegridsetfieldstate) to reset this grid's fields to the current state.
 
@@ -1150,7 +1150,7 @@ When applying sparse field state to a component via [TileGrid.setFieldState](#me
 
 ### Returns
 
-`[ListGridFieldState](../main_2.md#type-listgridfieldstate)` — current state of this grid's fields.
+`[ListGridFieldState](../reference_2.md#type-listgridfieldstate)` — current state of this grid's fields.
 
 ### Groups
 
@@ -1198,7 +1198,7 @@ Returns the index of the specified tile.
 
 ### Returns
 
-`[int](../main.md#type-int)` — index of the tile in this tileGrid. Will return -1 if the specified tile is not displayed within this grid.
+`[int](../reference.md#type-int)` — index of the tile in this tileGrid. Will return -1 if the specified tile is not displayed within this grid.
 
 ---
 ## Method: TileGrid.setData
@@ -1255,7 +1255,7 @@ To display custom drag tracker HTML, this method may be overridden - call [Event
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — returns false by default to suppress 'setDragTracker' on any ancestors of this component.
+`[boolean](../reference.md#type-boolean)` — returns false by default to suppress 'setDragTracker' on any ancestors of this component.
 
 ### Groups
 
@@ -1269,7 +1269,7 @@ During a drag-and-drop interaction, this method returns the set of records being
 
 This method is consulted by [ListGrid.willAcceptDrop](ListGrid_2.md#method-listgridwillacceptdrop).
 
-NOTE: If this component is a [multi-linked](Tree.md#method-treeismultilinktree) `TreeGrid`, this method returns a list of [NodeLocator](../main_2.md#object-nodelocator)s rather than a list of records. Each `nodeLocator` contains a pointer to the associated record in its `node` property.
+NOTE: If this component is a [multi-linked](Tree.md#method-treeismultilinktree) `TreeGrid`, this method returns a list of [NodeLocator](../reference_2.md#object-nodelocator)s rather than a list of records. Each `nodeLocator` contains a pointer to the associated record in its `node` property.
 
 ### Parameters
 
@@ -1279,7 +1279,7 @@ NOTE: If this component is a [multi-linked](Tree.md#method-treeismultilinktree) 
 
 ### Returns
 
-`[Array of Record](#type-array-of-record)` — Array of [Record](../main.md#object-record)s that are currently selected.
+`[Array of Record](#type-array-of-record)` — Array of [Record](../reference.md#object-record)s that are currently selected.
 
 ### Groups
 
@@ -1290,7 +1290,7 @@ NOTE: If this component is a [multi-linked](Tree.md#method-treeismultilinktree) 
 ## Method: TileGrid.setFieldState
 
 ### Description
-Sets some presentation properties (visibility, width, userFormula and userSummary) of the grid fields based on the [ListGridFieldState](../main_2.md#type-listgridfieldstate) object passed in.  
+Sets some presentation properties (visibility, width, userFormula and userSummary) of the grid fields based on the [ListGridFieldState](../reference_2.md#type-listgridfieldstate) object passed in.  
 Used to restore previous state retrieved from the grid by a call to [TileGrid.getFieldState](#method-tilegridgetfieldstate).
 
 The optional `isSparse` parameter may be passed to indicate whether the fieldState object is "sparse" - whether it includes explicit state information for hidden fields. In this case any fields defined on the component not explicitly included in the fieldState object will be hidden.  
@@ -1300,7 +1300,7 @@ If `isSparse` is not explicitly passed as a parameter, sparseness will be assume
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| fieldState | [ListGridFieldState](../main_2.md#type-listgridfieldstate) | false | — | state to apply to the grid's fields. |
+| fieldState | [ListGridFieldState](../reference_2.md#type-listgridfieldstate) | false | — | state to apply to the grid's fields. |
 | isSparse | [Boolean](#type-boolean) | true | — | If true, the fieldState passed in is assumed to be "sparse". Any fields defined on this component without explicit field state values will be hidden. |
 
 ### Groups
@@ -1329,7 +1329,7 @@ The default implementation of this method uses an automatically generated [detai
 
 ### Returns
 
-`[HTMLString](../main.md#type-htmlstring)` — HTML contents for the tile, as a String
+`[HTMLString](../reference.md#type-htmlstring)` — HTML contents for the tile, as a String
 
 ---
 ## Method: TileGrid.deselectAllRecords
@@ -1371,7 +1371,7 @@ For a discussion of the various filtering and criteria-management APIs and when 
 
 When `fetchData()` is first called, if data has not already been provided via [setData()](ListGrid_2.md#method-listgridsetdata), this method will create a [ResultSet](ResultSet.md#class-resultset), which will be configured based on component settings such as [DataBoundComponent.fetchOperation](DataBoundComponent.md#attr-databoundcomponentfetchoperation) and [DataBoundComponent.dataPageSize](DataBoundComponent.md#attr-databoundcomponentdatapagesize), as well as the general purpose [ListGrid.dataProperties](ListGrid_1.md#attr-listgriddataproperties). The created ResultSet will automatically send a DSRequest to retrieve data from [listGrid.dataSource](ListGrid_1.md#attr-listgriddatasource), and from then on will automatically manage paging through large datasets, as well as performing filtering and sorting operations inside the browser when possible - see the [ResultSet](ResultSet.md#class-resultset) docs for details.
 
-**NOTE:** do not use **both** [autoFetchData:true](DataBoundComponent.md#attr-databoundcomponentautofetchdata) **and** a call to `fetchData()` - this may result in two DSRequests to fetch data. Use either [autoFetchData](DataBoundComponent.md#attr-databoundcomponentautofetchdata) and [Criteria](../main_2.md#type-criteria) **or** a manual call to fetchData() passing criteria.
+**NOTE:** do not use **both** [autoFetchData:true](DataBoundComponent.md#attr-databoundcomponentautofetchdata) **and** a call to `fetchData()` - this may result in two DSRequests to fetch data. Use either [autoFetchData](DataBoundComponent.md#attr-databoundcomponentautofetchdata) and [Criteria](../reference_2.md#type-criteria) **or** a manual call to fetchData() passing criteria.
 
 Whether a ResultSet was automatically created or provided via [setData()](ListGrid_2.md#method-listgridsetdata), subsequent calls to fetchData() will simply call [ResultSet.setCriteria](ResultSet.md#method-resultsetsetcriteria).
 
@@ -1379,15 +1379,15 @@ Changes to criteria may or may not result in a DSRequest to the server due to [c
 
 If you need to force data to be re-fetched, you can call [invalidateCache()](ListGrid_2.md#method-listgridinvalidatecache) and new data will automatically be fetched from the server using the current criteria and sort direction. **NOTE:** when using `invalidateCache()` there is no need to **also** call `fetchData()` and in fact this could produce unexpected results.
 
-This method takes an optional callback parameter (set to a [DSCallback](../main_2.md#type-dscallback)) to fire when the fetch completes. Note that this callback will not fire if no server fetch is performed. In this case the data is updated synchronously, so as soon as this method completes you can interact with the new data. If necessary, you can use [willFetchData()](DataBoundComponent.md#method-databoundcomponentwillfetchdata) to determine whether or not a server fetch will occur when `fetchData()` is called with new criteria.
+This method takes an optional callback parameter (set to a [DSCallback](../reference_2.md#type-dscallback)) to fire when the fetch completes. Note that this callback will not fire if no server fetch is performed. In this case the data is updated synchronously, so as soon as this method completes you can interact with the new data. If necessary, you can use [willFetchData()](DataBoundComponent.md#method-databoundcomponentwillfetchdata) to determine whether or not a server fetch will occur when `fetchData()` is called with new criteria.
 
 In addition to the callback parameter for this method, developers can use [dataArrived()](ListGrid_2.md#method-listgriddataarrived) to be notified every time data is loaded.
 
-By default, this method assumes a [TextMatchStyle](../main_2.md#type-textmatchstyle) of "exact"; that can be overridden by supplying a different value in the requestProperties parameter. See [DataBoundComponent.willFetchData](DataBoundComponent.md#method-databoundcomponentwillfetchdata);
+By default, this method assumes a [TextMatchStyle](../reference_2.md#type-textmatchstyle) of "exact"; that can be overridden by supplying a different value in the requestProperties parameter. See [DataBoundComponent.willFetchData](DataBoundComponent.md#method-databoundcomponentwillfetchdata);
 
 **Changing the request properties**
 
-Changes to [TextMatchStyle](../main_2.md#type-textmatchstyle) made via `requestProperties` will be honored in combination with the fetch criteria, possibly invalidating cache and triggering a server request if needed, as documented for [willFetchData()](DataBoundComponent.md#method-databoundcomponentwillfetchdata). In contrast, changes to [operationId](DSRequest.md#attr-dsrequestoperationid) in the request properties will cause the [ResultSet](ResultSet.md#class-resultset) or [ResultTree](ResultTree.md#class-resulttree) to be rebuilt, always refetching from the server. However, changes to other request properties after the initial fetch won't be detected, and no fetch will get triggered based on that new request context.
+Changes to [TextMatchStyle](../reference_2.md#type-textmatchstyle) made via `requestProperties` will be honored in combination with the fetch criteria, possibly invalidating cache and triggering a server request if needed, as documented for [willFetchData()](DataBoundComponent.md#method-databoundcomponentwillfetchdata). In contrast, changes to [operationId](DSRequest.md#attr-dsrequestoperationid) in the request properties will cause the [ResultSet](ResultSet.md#class-resultset) or [ResultTree](ResultTree.md#class-resulttree) to be rebuilt, always refetching from the server. However, changes to other request properties after the initial fetch won't be detected, and no fetch will get triggered based on that new request context.
 
 To pick up such changes, we recommend that you call [setData(\[\])](#method-tilegridsetdata) (passing an empty array to ensure the data model is cleared), and then call this method to fetch again. If you try to do it by calling [invalidateCache()](ListGrid_2.md#method-listgridinvalidatecache), you may see duplicate fetches if you haven't already updated the data context by calling this method with the new request properties, and fail to do so before the component is [redrawn](Canvas.md#method-canvasredraw).
 
@@ -1395,8 +1395,8 @@ To pick up such changes, we recommend that you call [setData(\[\])](#method-tile
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| criteria | [Criteria](../main_2.md#type-criteria) | true | — | Search criteria. If a [DynamicForm](DynamicForm.md#class-dynamicform) is passed in as this argument instead of a raw criteria object, will be derived by calling [DynamicForm.getValuesAsCriteria](DynamicForm.md#method-dynamicformgetvaluesascriteria) |
-| callback | [DSCallback](../main_2.md#type-dscallback) | true | — | callback to invoke when a fetch is complete. Fires only if server contact was required |
+| criteria | [Criteria](../reference_2.md#type-criteria) | true | — | Search criteria. If a [DynamicForm](DynamicForm.md#class-dynamicform) is passed in as this argument instead of a raw criteria object, will be derived by calling [DynamicForm.getValuesAsCriteria](DynamicForm.md#method-dynamicformgetvaluesascriteria) |
+| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke when a fetch is complete. Fires only if server contact was required |
 | requestProperties | [DSRequest](#type-dsrequest) | true | — | additional properties to set on the DSRequest that will be issued |
 
 ### Groups
@@ -1427,7 +1427,7 @@ Given a tile within this this tile-grid, this method will return the associated 
 ## Method: TileGrid.selectRecords
 
 ### Description
-Select/deselect a list of [Record](../main.md#object-record)s passed in explicitly, or by index.
+Select/deselect a list of [Record](../reference.md#object-record)s passed in explicitly, or by index.
 
 Note that developers may wish to use [TileGrid.selectRange](#method-tilegridselectrange) to select a single contiguous range.
 
@@ -1436,8 +1436,8 @@ Note that developers may wish to use [TileGrid.selectRange](#method-tilegridsele
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | records | [Array of Record](#type-array-of-record)|[number](#type-number) | false | — | records (or row numbers) to select |
-| newState | [boolean](../main.md#type-boolean) | true | — | new selection state (if null, defaults to true) |
-| rowNums | [Array of Integer](#type-array-of-integer)|[Integer](../main_2.md#type-integer) | true | — | row numbers to select. Required for [multi-link trees](Tree.md#attr-treemultilinktree) unless row numbers are passed in the "records" param. If passed, the rowNums array should correspond to the records array (ie, rowNums\[0\] refers to the same object as records\[0\]) |
+| newState | [boolean](../reference.md#type-boolean) | true | — | new selection state (if null, defaults to true) |
+| rowNums | [Array of Integer](#type-array-of-integer)|[Integer](../reference_2.md#type-integer) | true | — | row numbers to select. Required for [multi-link trees](Tree.md#attr-treemultilinktree) unless row numbers are passed in the "records" param. If passed, the rowNums array should correspond to the records array (ie, rowNums\[0\] refers to the same object as records\[0\]) |
 
 ### Groups
 
@@ -1451,15 +1451,15 @@ Note that developers may wish to use [TileGrid.selectRange](#method-tilegridsele
 ## Method: TileGrid.selectRecord
 
 ### Description
-Select/deselect a [Record](../main.md#object-record) passed in explicitly, or by index.
+Select/deselect a [Record](../reference.md#object-record) passed in explicitly, or by index.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | record | [Record](#type-record)|[number](#type-number) | false | — | record (or row number) to select |
-| newState | [boolean](../main.md#type-boolean) | true | — | new selection state (if null, defaults to true) |
-| rowNum | [Integer](../main_2.md#type-integer) | true | — | row number to select. Required for [multi-link trees](Tree.md#attr-treemultilinktree) unless row number is passed in the "record" param |
+| newState | [boolean](../reference.md#type-boolean) | true | — | new selection state (if null, defaults to true) |
+| rowNum | [Integer](../reference_2.md#type-integer) | true | — | row number to select. Required for [multi-link trees](Tree.md#attr-treemultilinktree) unless row number is passed in the "record" param |
 
 ### Groups
 
@@ -1487,7 +1487,7 @@ Whether at least one item is selected
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true == at least one item is selected false == nothing at all is selected
+`[boolean](../reference.md#type-boolean)` — true == at least one item is selected false == nothing at all is selected
 
 ### Groups
 
@@ -1544,7 +1544,7 @@ Called when selection changes within this tileGrid. Note this method fires for e
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | record | [Record](#type-record) | false | — | record for which selection changed |
-| state | [boolean](../main.md#type-boolean) | false | — | New selection state (true for selected, false for unselected) |
+| state | [boolean](../reference.md#type-boolean) | false | — | New selection state (true for selected, false for unselected) |
 
 ### Groups
 

@@ -1,13 +1,13 @@
 # Velocity context variables
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
 ## KB Topic: Velocity context variables
 
 ### Description
-The SmartClient Server provides a number of standard context variables for use in the Velocity templates you write to implement [custom queries](customQuerying.md#kb-topic-custom-querying-overview), [transaction chaining](transactionChaining.md#kb-topic-transaction-chaining), [dynamic security checking](../classes/OperationBinding.md#attr-operationbindingrequires), [templated mail messages](../classes/Mail.md#class-mail), and in other templating contexts. The variables available depend on the exact use case - for example, variables related to a [DSRequest](../main_2.md#object-dsrequest) are not available in contexts where there is no `DSRequest`, such as when we are loading a DataSource definition, and variables relating to the servlet environment are not available in a standalone context. The full list of available context variables:
+The SmartClient Server provides a number of standard context variables for use in the Velocity templates you write to implement [custom queries](customQuerying.md#kb-topic-custom-querying-overview), [transaction chaining](transactionChaining.md#kb-topic-transaction-chaining), [dynamic security checking](../classes/OperationBinding.md#attr-operationbindingrequires), [templated mail messages](../classes/Mail.md#class-mail), and in other templating contexts. The variables available depend on the exact use case - for example, variables related to a [DSRequest](../reference_2.md#object-dsrequest) are not available in contexts where there is no `DSRequest`, such as when we are loading a DataSource definition, and variables relating to the servlet environment are not available in a standalone context. The full list of available context variables:
 
 *   **$currentDate**. The current date/time with millisecond precision
 *   **$currentDateUTC**. $currentDate in UTC
@@ -20,7 +20,7 @@ The SmartClient Server provides a number of standard context variables for use i
 *   **$userId**. The currently-authenticated user. This is a shortcut for "$rpc.getUserId()"
 *   **$config**. The global `Config` object (though of course this is a server-side object, so please see the server-side Javadocs)
 *   **$servletRequest**. The associated `HttpServletRequest`
-*   **$dsRequest**. The associated [DSRequest](../main_2.md#object-dsrequest) (though of course this is a server-side `DSRequest` object, so please also see the server-side Javadocs)
+*   **$dsRequest**. The associated [DSRequest](../reference_2.md#object-dsrequest) (though of course this is a server-side `DSRequest` object, so please also see the server-side Javadocs)
 *   **$primaryDSRequest**. Only present on cache-sync operations, this is the original update `DSRequest` that caused the cache-sync request to be created
 *   **$session**. The associated `HttpSession`
 *   **$httpParameters**. This variable gives you access to the parameters Map of the associated `HttpServletRequest`; it is an alternate form of `$servletRequest.getParameter`
@@ -103,6 +103,6 @@ Additionally, if you would like to modify the Velocity Engine defaults, you can 
 
 ### Related
 
-- [VelocityExpression](../main_2.md#type-velocityexpression)
+- [VelocityExpression](../reference_2.md#type-velocityexpression)
 
 ---

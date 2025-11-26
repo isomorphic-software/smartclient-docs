@@ -1,6 +1,6 @@
 # TreeGrid Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -18,7 +18,7 @@ For information on DataBinding Trees, see [treeDataBinding](../kb_topics/treeDat
 
 A TreeGrid works just like a [ListGrid](ListGrid_1.md#class-listgrid), except one column (specified by [TreeGridField.treeField](TreeGridField.md#attr-treegridfieldtreefield)) shows a hierarchical [Tree](Tree.md#class-tree). A TreeGrid is not limited to displaying just the [Tree](Tree.md#class-tree) column - you can define additional columns (via [TreeGrid.fields](#attr-treegridfields)) which will render just like the columns of a [ListGrid](ListGrid_1.md#class-listgrid), and support all of the functionality of ListGrid columns, such as [formatters](ListGridField.md#method-listgridfieldformatcellvalue).
 
-Except where explicitly overridden, [ListGrid](ListGrid_1.md#class-listgrid) methods, callbacks, and properties apply to TreeGrids as well. The [ListGrid](ListGrid_1.md#class-listgrid) defines some methods as taking/returning [ListGridField](../main_2.md#object-listgridfield) and [ListGridRecord](../main_2.md#object-listgridrecord). When using those methods in a TreeGrid, those types will be [TreeGridField](../main.md#object-treegridfield) and [TreeNode](../main_2.md#object-treenode), respectively.
+Except where explicitly overridden, [ListGrid](ListGrid_1.md#class-listgrid) methods, callbacks, and properties apply to TreeGrids as well. The [ListGrid](ListGrid_1.md#class-listgrid) defines some methods as taking/returning [ListGridField](../reference_2.md#object-listgridfield) and [ListGridRecord](../reference_2.md#object-listgridrecord). When using those methods in a TreeGrid, those types will be [TreeGridField](../reference.md#object-treegridfield) and [TreeNode](../reference_2.md#object-treenode), respectively.
 
 ---
 ## Attr: TreeGrid.customIconDropProperty
@@ -369,7 +369,7 @@ Specifies the type of nodes displayed in the treeGrid.
 
 ### See Also
 
-- [DisplayNodeType](../main_2.md#type-displaynodetype)
+- [DisplayNodeType](../reference_2.md#type-displaynodetype)
 
 **Flags**: IRW
 
@@ -377,9 +377,9 @@ Specifies the type of nodes displayed in the treeGrid.
 ## Attr: TreeGrid.openerImage
 
 ### Description
-The base filename or [stateful image block](../main.md#object-scstatefulimgconfig) for the opener icon for folder nodes when "showConnectors" is false for this TreeGrid. The opener icon is displayed beside the folder icon in the Tree column for folder nodes. Clicking on this icon will toggle the open state of the folder.
+The base filename or [stateful image block](../reference.md#object-scstatefulimgconfig) for the opener icon for folder nodes when "showConnectors" is false for this TreeGrid. The opener icon is displayed beside the folder icon in the Tree column for folder nodes. Clicking on this icon will toggle the open state of the folder.
 
-**When set to an [SCImgURL](../main.md#type-scimgurl):** the stateful filenames for these icons are assembled from this base filename and the state of the node, as follows: If the openerImage is set to `{baseName}.{extension}`, `{baseName}_opened.{extension}` will be displayed next to opened folders, and `{baseName}_closed.{extension}` will be displayed next to closed folders, or if this page is in RTL mode, `{baseName}_opened_rtl.{extension}` and `{baseName}_closed_rtl.{extension}` will be used.
+**When set to an [SCImgURL](../reference.md#type-scimgurl):** the stateful filenames for these icons are assembled from this base filename and the state of the node, as follows: If the openerImage is set to `{baseName}.{extension}`, `{baseName}_opened.{extension}` will be displayed next to opened folders, and `{baseName}_closed.{extension}` will be displayed next to closed folders, or if this page is in RTL mode, `{baseName}_opened_rtl.{extension}` and `{baseName}_closed_rtl.{extension}` will be used.
 
 If [TreeGrid.showSelectedOpener](#attr-treegridshowselectedopener) is true the URL for selected nodes will append the string `"_selected"` to the image URLs described above. So for an openerImage set to `{baseName}.{extension}`, the URLs for selected records would be `{baseName}_opened_selected.{extension}`, `{baseName}_closed_selected.{extension}`, etc.
 
@@ -435,13 +435,13 @@ This suffix will be appended to the [TreeGrid.folderIcon](#attr-treegridfolderic
 ## Attr: TreeGrid.initialData
 
 ### Description
-You can specify the initial set of data for a databound TreeGrid using this property. The value of this attribute should be a list of `parentId`\-linked [TreeNode](../main_2.md#object-treenode)s in a format equivalent to that documented on [Tree.data](Tree.md#attr-treedata) or, for TreeGrids with [dataFetchMode](#attr-treegriddatafetchmode) set to ["paged"](../main_2.md#type-fetchmode), on [ResultTree.data](ResultTree.md#attr-resulttreedata).
+You can specify the initial set of data for a databound TreeGrid using this property. The value of this attribute should be a list of `parentId`\-linked [TreeNode](../reference_2.md#object-treenode)s in a format equivalent to that documented on [Tree.data](Tree.md#attr-treedata) or, for TreeGrids with [dataFetchMode](#attr-treegriddatafetchmode) set to ["paged"](../reference_2.md#type-fetchmode), on [ResultTree.data](ResultTree.md#attr-resulttreedata).
 
 If you create a standalone [Tree](Tree.md#class-tree) or [ResultTree](ResultTree.md#class-resulttree) as the TreeGrid's [data](#attr-treegriddata) then you may equivalently specify this initial set of tree nodes in that tree's [data](Tree.md#attr-treedata) property.
 
 ### See Also
 
-- [TreeNode](../main_2.md#object-treenode)
+- [TreeNode](../reference_2.md#object-treenode)
 - [Tree.data](Tree.md#attr-treedata)
 - [ResultTree.data](ResultTree.md#attr-resulttreedata)
 
@@ -500,13 +500,13 @@ If specified, the selection object for this list will use this property to mark 
 ### Description
 If set, tree-based filtering is performed such that parent nodes are kept as long as they have children that match the filter criteria, even if the parents themselves do not match the filter criteria. If not set, filtering will exclude parent nodes not matching the criteria, and all nodes below them in the tree.
 
-ResultTrees will default to [fetchMode:"local"](../main_2.md#type-fetchmode) whenever `keepParentsOnFilter` is true, unless fetchMode was explicitly set to "paged" (see below). This allows the filtering logic to fetch a complete tree of nodes from the DataSource (or if loadDataOnDemand:true, a complete set of nodes under a given parent) and then filter the resulting data locally on the client.
+ResultTrees will default to [fetchMode:"local"](../reference_2.md#type-fetchmode) whenever `keepParentsOnFilter` is true, unless fetchMode was explicitly set to "paged" (see below). This allows the filtering logic to fetch a complete tree of nodes from the DataSource (or if loadDataOnDemand:true, a complete set of nodes under a given parent) and then filter the resulting data locally on the client.
 
 This means that the server does not need to implement special tree filtering logic to support looking up nodes that match the specified criteria as well as ancestor nodes that may not.
 
 If some criteria _must_ be sent to the server in order to produce a valid tree of data, but `keepParentsOnFilter` is also required, the [ResultTree.serverFilterFields](ResultTree.md#attr-resulttreeserverfilterfields) attribute may be used to specify a list of field names that will be sent to the server whenever they are present in the criteria. Note that for the subset of criteria applied to these fields, `keepParentsInFilter` behavior will not occur without custom logic in the DataSource fetch operation.
 
-If [FetchMode](../main_2.md#type-fetchmode) is explicitly set to `"paged"`, it is not possible to implement `keepParentsOnFilter`, either by local filtering or with the automatic client-driven handling mentioned below. Support for `keepParentsOnFilter` for a paged ResultTree therefore also requires custom logic in the DataSource fetch operation. To support this a developer must ensure that their fetch operation returns the appropriate set of nodes - all nodes that match the specified criteria plus their ancestor nodes even if they do not match the specified criteria.
+If [FetchMode](../reference_2.md#type-fetchmode) is explicitly set to `"paged"`, it is not possible to implement `keepParentsOnFilter`, either by local filtering or with the automatic client-driven handling mentioned below. Support for `keepParentsOnFilter` for a paged ResultTree therefore also requires custom logic in the DataSource fetch operation. To support this a developer must ensure that their fetch operation returns the appropriate set of nodes - all nodes that match the specified criteria plus their ancestor nodes even if they do not match the specified criteria.
 
 #### keepParentsOnFilter with load-on-demand trees
 The combination of `keepParentsOnFilter` and [loadDataOnDemand](ResultTree.md#attr-resulttreeloaddataondemand) presents additional difficulties that require special handling. The problem is that in order to determine even the top-level folders, you have to examine every node in the entire tree. For example, say there is one top-level folder that has thousands of folders and nodes underneath it, and there is just one leaf node, 6 levels deep, that matches the filter criteria. You have to find out about that node, because it implies the top-level folder must be retained.
@@ -608,7 +608,7 @@ For databound trees, use this attribute to supply a [DataSourceField.rootValue](
 
 This property allows you to have a particular component navigate a tree starting from any given node as the root.
 
-This setting is invalid if [TreeGrid.keepParentsOnFilter](#attr-treegridkeepparentsonfilter) is set and [fetch-mode](#attr-treegriddatafetchmode) is set to anything other than ["paged"](../main_2.md#type-fetchmode) - a root-value cannot be used in this case because there is no efficient way to load a subtree to include all parents. If `fetchMode` is specifically set to "paged", the [keepParentsOnFilter](DSRequest.md#attr-dsrequestkeepparentsonfilter) flag is set on the request so the server knows to use special filtering rules, but these rules are not built-in - the developer is responsible for this logic.
+This setting is invalid if [TreeGrid.keepParentsOnFilter](#attr-treegridkeepparentsonfilter) is set and [fetch-mode](#attr-treegriddatafetchmode) is set to anything other than ["paged"](../reference_2.md#type-fetchmode) - a root-value cannot be used in this case because there is no efficient way to load a subtree to include all parents. If `fetchMode` is specifically set to "paged", the [keepParentsOnFilter](DSRequest.md#attr-dsrequestkeepparentsonfilter) flag is set on the request so the server knows to use special filtering rules, but these rules are not built-in - the developer is responsible for this logic.
 
 ### Groups
 
@@ -659,7 +659,7 @@ fetchMode:"paged" enables paging for nodes that have very large numbers of child
 ## Attr: TreeGrid.connectorImage
 
 ### Description
-The base filename or [stateful image block](../main.md#object-scstatefulimgconfig) for the connector icons shown when [TreeGrid.showConnectors](#attr-treegridshowconnectors) is true. Connector icons are rendered into the title field of each row and show the dotted hierarchy lines between siblings of the same parent node. For each node, a connector icon may be shown:
+The base filename or [stateful image block](../reference.md#object-scstatefulimgconfig) for the connector icons shown when [TreeGrid.showConnectors](#attr-treegridshowconnectors) is true. Connector icons are rendered into the title field of each row and show the dotted hierarchy lines between siblings of the same parent node. For each node, a connector icon may be shown:
 
 *   As an opener icon for folder nodes, next to the folder icon
 *   In place of an opener icon for leaf nodes, next to the leaf icon
@@ -667,7 +667,7 @@ The base filename or [stateful image block](../main.md#object-scstatefulimgconfi
 
 Note that [TreeGrid.showFullConnectors](#attr-treegridshowfullconnectors) governs whether connector lines will be displayed for all indent levels, or just for the innermost level of the tree.
 
-**When set to an [SCImgURL](../main.md#type-scimgurl):** the stateful filenames for these icons are assembled from this base filename and the state of the node. Assuming the connectorImage is set to `{baseName}.{extension}`, the full set of images to be displayed will be:
+**When set to an [SCImgURL](../reference.md#type-scimgurl):** the stateful filenames for these icons are assembled from this base filename and the state of the node. Assuming the connectorImage is set to `{baseName}.{extension}`, the full set of images to be displayed will be:
 
 `{baseName}_ancestor[_rtl].{extension}` if [TreeGrid.showFullConnectors](#attr-treegridshowfullconnectors) is true, this is the URL for the vertical continuation image to be displayed at the appropriate indent levels for ancestor nodes with subsequent children.
 
@@ -731,7 +731,7 @@ See [TreeGrid.getIcon](#method-treegridgeticon) for more details on treeGrid ico
 ## Attr: TreeGrid.recordDropAppearance
 
 ### Description
-If [TreeGrid.canAcceptDroppedRecords](#attr-treegridcanacceptdroppedrecords) is true for this treeGrid, this property governs whether the user can drop between, or over records within the grid. This controls what [RecordDropPosition](../main.md#type-recorddropposition) is passed to the [TreeGrid.recordDrop](#method-treegridrecorddrop) event handler.
+If [TreeGrid.canAcceptDroppedRecords](#attr-treegridcanacceptdroppedrecords) is true for this treeGrid, this property governs whether the user can drop between, or over records within the grid. This controls what [RecordDropPosition](../reference.md#type-recorddropposition) is passed to the [TreeGrid.recordDrop](#method-treegridrecorddrop) event handler.
 
 **Flags**: IRW
 
@@ -1004,7 +1004,7 @@ When animating folder opening / closing, if [TreeGrid.animateFolderSpeed](#attr-
 ## Attr: TreeGrid.serverFilterFields
 
 ### Description
-For [fetchMode:"local"](../main_2.md#type-fetchmode) ResultTrees, this property lists field names that will be sent to the server if they are present in the criteria.
+For [fetchMode:"local"](../reference_2.md#type-fetchmode) ResultTrees, this property lists field names that will be sent to the server if they are present in the criteria.
 
 This property may be used to ensure a dataSource receives the necessary criteria to populate a ResultTree's data, and also support [TreeGrid.keepParentsOnFilter](#attr-treegridkeepparentsonfilter).
 
@@ -1030,7 +1030,7 @@ See also [canDropInEmptyArea](ListGrid_1.md#attr-listgridcandropinemptyarea) and
 ## Attr: TreeGrid.data
 
 ### Description
-A [Tree](Tree.md#class-tree) object containing of nested [TreeNode](../main_2.md#object-treenode)s to display as rows in this TreeGrid. The `data` property will typically not be explicitly specified for databound TreeGrids, where the data is returned from the server via databound component methods such as `fetchData()`
+A [Tree](Tree.md#class-tree) object containing of nested [TreeNode](../reference_2.md#object-treenode)s to display as rows in this TreeGrid. The `data` property will typically not be explicitly specified for databound TreeGrids, where the data is returned from the server via databound component methods such as `fetchData()`
 
 ### Groups
 
@@ -1320,7 +1320,7 @@ If [TreeGrid.dataSource](#attr-treegriddatasource) is also set, this value acts 
 
 ### See Also
 
-- [TreeGridField](../main.md#object-treegridfield)
+- [TreeGridField](../reference.md#object-treegridfield)
 
 **Flags**: IRW
 
@@ -1350,7 +1350,7 @@ For a `TreeGrid` that uses a DataSource, these properties will be passed to the 
 ## Attr: TreeGrid.dataSource
 
 ### Description
-The DataSource that this component should bind to for default fields and for performing [DataSource requests](../main_2.md#object-dsrequest).
+The DataSource that this component should bind to for default fields and for performing [DataSource requests](../reference_2.md#object-dsrequest).
 
 Can be specified as either a DataSource instance or the String ID of a DataSource.
 
@@ -1470,7 +1470,7 @@ Get the appropriate open/close opener icon for a node. Returns null if [TreeGrid
 
 ### Returns
 
-`[URL](../main_2.md#type-url)` — URL for the icon to show the node's open state
+`[URL](../reference_2.md#type-url)` — URL for the icon to show the node's open state
 
 **Flags**: A
 
@@ -1482,7 +1482,7 @@ Returns true if this component is currently [exporting client data](#method-tree
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — returns true if this component is currently exporting client data
+`[boolean](../reference.md#type-boolean)` — returns true if this component is currently exporting client data
 
 ### See Also
 
@@ -1492,11 +1492,11 @@ Returns true if this component is currently [exporting client data](#method-tree
 ## Method: TreeGrid.getViewState
 
 ### Description
-Overridden to return a [TreeGridViewState](../main.md#type-treegridviewstate) object for the grid including open state if [TreeGrid.saveOpenStateInViewState](#attr-treegridsaveopenstateinviewstate) is true.
+Overridden to return a [TreeGridViewState](../reference.md#type-treegridviewstate) object for the grid including open state if [TreeGrid.saveOpenStateInViewState](#attr-treegridsaveopenstateinviewstate) is true.
 
 ### Returns
 
-`[TreeGridViewState](../main.md#type-treegridviewstate)` — current view state for the grid.
+`[TreeGridViewState](../reference.md#type-treegridviewstate)` — current view state for the grid.
 
 ### Groups
 
@@ -1504,7 +1504,7 @@ Overridden to return a [TreeGridViewState](../main.md#type-treegridviewstate) ob
 
 ### See Also
 
-- [TreeGridViewState](../main.md#type-treegridviewstate)
+- [TreeGridViewState](../reference.md#type-treegridviewstate)
 - [TreeGrid.setViewState](#method-treegridsetviewstate)
 
 ---
@@ -1523,7 +1523,7 @@ Return the horizontal alignment for cell contents. Default implementation will a
 
 ### Returns
 
-`[Alignment](../main_2.md#type-alignment)` — Horizontal alignment of cell contents: 'right', 'center', or 'left'
+`[Alignment](../reference_2.md#type-alignment)` — Horizontal alignment of cell contents: 'right', 'center', or 'left'
 
 ---
 ## Method: TreeGrid.recordDoubleClick
@@ -1540,12 +1540,12 @@ Handle a doubleClick on a tree node - override of ListGrid stringMethod of same 
 | recordNum | [number](#type-number) | false | — | number of the record clicked on in the current set of displayed records (starts with 0) |
 | field | [TreeGridField](#type-treegridfield) | false | — | the field that was clicked on (field definition) |
 | fieldNum | [number](#type-number) | false | — | number of the field clicked on in the treeGrid.fields array |
-| value | [Object](../main.md#type-object) | false | — | value of the cell (after valueMap, etc. applied) |
-| rawValue | [Object](../main.md#type-object) | false | — | raw value of the cell (before valueMap, etc applied) |
+| value | [Object](../reference.md#type-object) | false | — | value of the cell (after valueMap, etc. applied) |
+| rawValue | [Object](../reference.md#type-object) | false | — | raw value of the cell (before valueMap, etc applied) |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — false to stop event bubbling
+`[boolean](../reference.md#type-boolean)` — false to stop event bubbling
 
 ### Groups
 
@@ -1571,7 +1571,7 @@ This method is called when a context click occurs on a folder record.
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### See Also
 
@@ -1581,7 +1581,7 @@ This method is called when a context click occurs on a folder record.
 ## Method: TreeGrid.transferNodes
 
 ### Description
-Transfer a list of [TreeNode](../main_2.md#object-treenode)s within this treeGrid or from from some other component (does not have to be a databound component) into this component. This method is only applicable to list-type components, such as [listGrid](ListGrid_1.md#class-listgrid), [treeGrid](#class-treegrid) or [tileGrid](TileGrid.md#class-tilegrid). Please see the paragraph below for special rules concerning [multi-link trees](Tree.md#method-treeismultilinktree).
+Transfer a list of [TreeNode](../reference_2.md#object-treenode)s within this treeGrid or from from some other component (does not have to be a databound component) into this component. This method is only applicable to list-type components, such as [listGrid](ListGrid_1.md#class-listgrid), [treeGrid](#class-treegrid) or [tileGrid](TileGrid.md#class-tilegrid). Please see the paragraph below for special rules concerning [multi-link trees](Tree.md#method-treeismultilinktree).
 
 This method implements the automatic drag-copy and drag-move behavior and calling it is equivalent to completing a drag and drop of the `nodes` (the default [TreeGrid.folderDrop](#method-treegridfolderdrop) implementation simply calls `transferNodes()`)
 
@@ -1590,7 +1590,7 @@ Note that this method is asynchronous - it may need to perform server turnaround
 For a TreeGrid, see also [transferSelectedData()](#method-treegridtransferselecteddata).
 
 **Multi-link trees**  
-If both the target treeGrid and the `sourceWidget` for this transfer are multi-link treeGrids, the `nodes` parameter must be an array of [NodeLocator](../main_2.md#object-nodelocator)s rather than TreeNodes. Likewise, if the target (this) component is a multi-link treeGrid, the `folder` parameter must be a NodeLocator.
+If both the target treeGrid and the `sourceWidget` for this transfer are multi-link treeGrids, the `nodes` parameter must be an array of [NodeLocator](../reference_2.md#object-nodelocator)s rather than TreeNodes. Likewise, if the target (this) component is a multi-link treeGrid, the `folder` parameter must be a NodeLocator.
 
 You can obtain a NodeLocator for a visible node occurence in a multi-link TreeGrid by calling its data model's [getNodeLocator()](Tree.md#method-treegetnodelocator) method.
 
@@ -1600,9 +1600,9 @@ You can obtain a NodeLocator for a visible node occurence in a multi-link TreeGr
 |------|------|----------|---------|-------------|
 | nodes | [Array of TreeNode](#type-array-of-treenode)|[Array of NodeLocator](#type-array-of-nodelocator) | false | — | Nodes to transfer to this component |
 | folder | [TreeNode](#type-treenode) | false | — | The target folder (eg, of a drop interaction), for context |
-| index | [Integer](../main_2.md#type-integer) | false | — | Insert point within the target folder data for the transferred nodes |
+| index | [Integer](../reference_2.md#type-integer) | false | — | Insert point within the target folder data for the transferred nodes |
 | sourceWidget | [Canvas](#type-canvas) | false | — | The databound or non-databound component from which the nodes are to be transferred. |
-| callback | [Callback](../main.md#type-callback) | true | — | optional callback to be fired when the transfer process has completed. The callback will be passed a single parameter "records", the list of nodes actually transferred to this component (it is called "records" because this is logic shared with [ListGrid](ListGrid_1.md#class-listgrid)) |
+| callback | [Callback](../reference.md#type-callback) | true | — | optional callback to be fired when the transfer process has completed. The callback will be passed a single parameter "records", the list of nodes actually transferred to this component (it is called "records" because this is logic shared with [ListGrid](ListGrid_1.md#class-listgrid)) |
 
 ### Groups
 
@@ -1620,7 +1620,7 @@ Opens the folder specified by node if it's closed, and closes it if it's open. T
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| node | [TreeNode](#type-treenode)|[String](#type-string)|[Integer](../main_2.md#type-integer)|[NodeLocator](#type-nodelocator) | false | — | the node in question, or the the node's ID, or a NodeLocator object |
+| node | [TreeNode](#type-treenode)|[String](#type-string)|[Integer](../reference_2.md#type-integer)|[NodeLocator](#type-nodelocator) | false | — | the node in question, or the the node's ID, or a NodeLocator object |
 
 ---
 ## Method: TreeGrid.leafContextClick
@@ -1638,7 +1638,7 @@ This method is called when a context click occurs on a leaf record.
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### See Also
 
@@ -1648,14 +1648,14 @@ This method is called when a context click occurs on a leaf record.
 ## Method: TreeGrid.setSelectedPaths
 
 ### Description
-Reset this grid's selection to match the [ListGridSelectedState](../main_2.md#type-listgridselectedstate) object passed in.  
+Reset this grid's selection to match the [ListGridSelectedState](../reference_2.md#type-listgridselectedstate) object passed in.  
 Used to restore previous state retrieved from the grid by a call to [TreeGrid.getSelectedPaths](#method-treegridgetselectedpaths).
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| selectedPaths | [ListGridSelectedState](../main_2.md#type-listgridselectedstate) | false | — | Object describing the desired selection state of the grid |
+| selectedPaths | [ListGridSelectedState](../reference_2.md#type-listgridselectedstate) | false | — | Object describing the desired selection state of the grid |
 
 ### Groups
 
@@ -1681,7 +1681,7 @@ This method is called when a context click occurs on a leaf or folder record. No
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### See Also
 
@@ -1702,13 +1702,13 @@ Returns true if the last event occurred over the indented area or over the open 
 ## Method: TreeGrid.setViewState
 
 ### Description
-Overridden to take a [TreeGridViewState](../main.md#type-treegridviewstate) object.
+Overridden to take a [TreeGridViewState](../reference.md#type-treegridviewstate) object.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| viewState | [TreeGridViewState](../main.md#type-treegridviewstate) | false | — | Object describing the desired view state for the grid |
+| viewState | [TreeGridViewState](../reference.md#type-treegridviewstate) | false | — | Object describing the desired view state for the grid |
 
 ### Groups
 
@@ -1732,7 +1732,7 @@ Should this folder be animated when opened / closed? Default implementation will
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — returns true if folders should be animated when opened / closed.
+`[boolean](../reference.md#type-boolean)` — returns true if folders should be animated when opened / closed.
 
 ### Groups
 
@@ -1750,8 +1750,8 @@ This method behaves exactly like [TreeGrid.fetchData](#method-treegridfetchdata)
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| criteria | [Criteria](../main_2.md#type-criteria) | true | — | Search criteria. If a [DynamicForm](DynamicForm.md#class-dynamicform) is passed in as this argument instead of a raw criteria object, will be derived by calling [DynamicForm.getValuesAsCriteria](DynamicForm.md#method-dynamicformgetvaluesascriteria) |
-| callback | [DSCallback](../main_2.md#type-dscallback) | true | — | callback to invoke when a fetch is complete. Fires only if server contact was required; see [fetchData()](ListGrid_2.md#method-listgridfetchdata) for details |
+| criteria | [Criteria](../reference_2.md#type-criteria) | true | — | Search criteria. If a [DynamicForm](DynamicForm.md#class-dynamicform) is passed in as this argument instead of a raw criteria object, will be derived by calling [DynamicForm.getValuesAsCriteria](DynamicForm.md#method-dynamicformgetvaluesascriteria) |
+| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke when a fetch is complete. Fires only if server contact was required; see [fetchData()](ListGrid_2.md#method-listgridfetchdata) for details |
 | requestProperties | [DSRequest](#type-dsrequest) | true | — | for databound components only - optional additional properties to set on the DSRequest that will be issued |
 
 ### Groups
@@ -1794,7 +1794,7 @@ This method is called when a folder is closed either via the user manipulating t
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — false to cancel the close, true to all it to proceed
+`[boolean](../reference.md#type-boolean)` — false to cancel the close, true to all it to proceed
 
 ---
 ## Method: TreeGrid.getDragTrackerIcon
@@ -1833,7 +1833,7 @@ The superclass event [ListGrid.recordDrop](ListGrid_2.md#method-listgridrecorddr
 ### Description
 **NOTE:** Applicable only to [multi-link trees](Tree.md#attr-treemultilinktree); if called on a regular `TreeGrid`, returns an empty array.
 
-During a drag-and-drop interaction, this method returns the set of node occurrences being dragged out of the component, wrapped inside [NodeLocator](../main_2.md#object-nodelocator)s. In the default implementation, this is the list of currently selected node occurrences
+During a drag-and-drop interaction, this method returns the set of node occurrences being dragged out of the component, wrapped inside [NodeLocator](../reference_2.md#object-nodelocator)s. In the default implementation, this is the list of currently selected node occurrences
 
 ### Parameters
 
@@ -1843,7 +1843,7 @@ During a drag-and-drop interaction, this method returns the set of node occurren
 
 ### Returns
 
-`[Array of NodeLocator](#type-array-of-nodelocator)` — Array of [NodeLocator](../main_2.md#object-nodelocator)s unambiguously identifying the node occurrences that are currently selected
+`[Array of NodeLocator](#type-array-of-nodelocator)` — Array of [NodeLocator](../reference_2.md#object-nodelocator)s unambiguously identifying the node occurrences that are currently selected
 
 ### Groups
 
@@ -1889,7 +1889,7 @@ You can override this method to return a custom title for node titles in the tre
 
 ### Returns
 
-`[HTMLString](../main.md#type-htmlstring)` — the title to display.
+`[HTMLString](../reference.md#type-htmlstring)` — the title to display.
 
 ### See Also
 
@@ -1917,7 +1917,7 @@ Otherwise this method returns true.
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true if this component will accept a drop of the dragData
+`[boolean](../reference.md#type-boolean)` — true if this component will accept a drop of the dragData
 
 ### Groups
 
@@ -1943,7 +1943,7 @@ Do not override this method unless you need a rowClick callback that fires even 
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — false == cancel further event processing
+`[boolean](../reference.md#type-boolean)` — false == cancel further event processing
 
 ### Groups
 
@@ -1966,11 +1966,11 @@ Returns the row number of the provided Y-coordinate, or the most recent mouse ev
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| y | [Integer](../main_2.md#type-integer) | true | — | Y-coordinate relative to the top edge of the content to obtain the row number for. If not provided, then [Canvas.getOffsetY](Canvas.md#method-canvasgetoffsety) will be used. |
+| y | [Integer](../reference_2.md#type-integer) | true | — | Y-coordinate relative to the top edge of the content to obtain the row number for. If not provided, then [Canvas.getOffsetY](Canvas.md#method-canvasgetoffsety) will be used. |
 
 ### Returns
 
-`[int](../main.md#type-int)` — row number, or -2 if beyond last drawn row
+`[int](../reference.md#type-int)` — row number, or -2 if beyond last drawn row
 
 ### Groups
 
@@ -1984,7 +1984,7 @@ If [TreeGrid.animateFolders](#attr-treegridanimatefolders) is true for this tree
 
 ### Returns
 
-`[Integer](../main_2.md#type-integer)` — maximum number of rows to be animated when opening or closing folders.
+`[Integer](../reference_2.md#type-integer)` — maximum number of rows to be animated when opening or closing folders.
 
 ### Groups
 
@@ -2018,8 +2018,8 @@ When using invalidateCache() there is no need to also call fetchData() and in fa
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| criteria | [Criteria](../main_2.md#type-criteria) | true | — | Search criteria. If a [DynamicForm](DynamicForm.md#class-dynamicform) is passed in as this argument instead of a raw criteria object, will be derived by calling [DynamicForm.getValuesAsCriteria](DynamicForm.md#method-dynamicformgetvaluesascriteria) |
-| callback | [DSCallback](../main_2.md#type-dscallback) | true | — | callback to invoke when a fetch is complete. Fires only if server contact was required |
+| criteria | [Criteria](../reference_2.md#type-criteria) | true | — | Search criteria. If a [DynamicForm](DynamicForm.md#class-dynamicform) is passed in as this argument instead of a raw criteria object, will be derived by calling [DynamicForm.getValuesAsCriteria](DynamicForm.md#method-dynamicformgetvaluesascriteria) |
+| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke when a fetch is complete. Fires only if server contact was required |
 | requestProperties | [DSRequest](#type-dsrequest) | true | — | additional properties to set on the DSRequest that will be issued |
 
 ### Groups
@@ -2073,7 +2073,7 @@ This method is called when a folder is opened either via the user manipulating t
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — false to cancel the open, true to all it to proceed
+`[boolean](../reference.md#type-boolean)` — false to cancel the open, true to all it to proceed
 
 ---
 ## Method: TreeGrid.isOverExtraIcon
@@ -2110,12 +2110,12 @@ This method is called when a leaf or folder record is clicked on. Note that if y
 ## Method: TreeGrid.getSelectedPaths
 
 ### Description
-Returns a snapshot of the current selection within this treeGrid as a [ListGridSelectedState](../main_2.md#type-listgridselectedstate) object.  
+Returns a snapshot of the current selection within this treeGrid as a [ListGridSelectedState](../reference_2.md#type-listgridselectedstate) object.  
 This object can be passed to [TreeGrid.setSelectedPaths](#method-treegridsetselectedpaths) to reset this grid's selection the current state (assuming the same data is present in the grid).
 
 ### Returns
 
-`[ListGridSelectedState](../main_2.md#type-listgridselectedstate)` — current state of this grid's selection
+`[ListGridSelectedState](../reference_2.md#type-listgridselectedstate)` — current state of this grid's selection
 
 ### Groups
 
@@ -2158,7 +2158,7 @@ If these default persistence behaviors are undesirable, return false to cancel t
 |------|------|----------|---------|-------------|
 | nodes | [Array of TreeNode](#type-array-of-treenode) | false | — | List of nodes being dropped |
 | folder | [TreeNode](#type-treenode) | false | — | The folder being dropped on |
-| index | [int](../main.md#type-int) | false | — | Within the folder being dropped on, the index at which the drop is occurring. Only passed if [canReorderRecords](#attr-treegridcanreorderrecords) is true. |
+| index | [int](../reference.md#type-int) | false | — | Within the folder being dropped on, the index at which the drop is occurring. Only passed if [canReorderRecords](#attr-treegridcanreorderrecords) is true. |
 | sourceWidget | [Canvas](#type-canvas) | false | — | The component that is the source of the nodes (where the nodes were dragged from) |
 
 ### Groups
@@ -2189,11 +2189,11 @@ Note that the full icon URL will be derived by applying [Canvas.getImgURL](Canva
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | node | [TreeNode](#type-treenode) | false | — | tree node in question |
-| rowNum | [Integer](../main_2.md#type-integer) | true | — | the row number of the node in the TreeGrid. This additional context is required for [multi-link trees](Tree.md#attr-treemultilinktree) because the same node can appear in multiple places |
+| rowNum | [Integer](../reference_2.md#type-integer) | true | — | the row number of the node in the TreeGrid. This additional context is required for [multi-link trees](Tree.md#attr-treemultilinktree) because the same node can appear in multiple places |
 
 ### Returns
 
-`[URL](../main_2.md#type-url)` — URL for the icon to show for this node
+`[URL](../reference_2.md#type-url)` — URL for the icon to show for this node
 
 ---
 ## Method: TreeGrid.closeFolder
@@ -2271,8 +2271,8 @@ This method is not currently supported for this grid-type. See [ListGrid.loadAll
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| maxRecords | [Integer](../main_2.md#type-integer) | true | — | optional maximum record count - if passed, no fetch takes place if maxRecords is below the known length of the data |
-| callback | [DSCallback](../main_2.md#type-dscallback) | true | — | callback to fire if a fetch is issued - if all data was already loaded, the callback is fired with no parameters |
+| maxRecords | [Integer](../reference_2.md#type-integer) | true | — | optional maximum record count - if passed, no fetch takes place if maxRecords is below the known length of the data |
+| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to fire if a fetch is issued - if all data was already loaded, the callback is fired with no parameters |
 
 ### Returns
 
@@ -2294,7 +2294,7 @@ NOTE: If [ListGrid.selectionAppearance](ListGrid_1.md#attr-listgridselectionappe
 
 ### Returns
 
-`[URL](../main_2.md#type-url)` — URL for the extra icon (null if none required)
+`[URL](../reference_2.md#type-url)` — URL for the extra icon (null if none required)
 
 **Flags**: A
 
@@ -2328,14 +2328,14 @@ Not applicable to TreeGrids, as the [TreeGrid.data](#attr-treegriddata) already 
 ## Method: TreeGrid.setOpenState
 
 ### Description
-Reset this set of open folders within this grid's data to match the [TreeGridOpenState](../main_2.md#type-treegridopenstate) object passed in.  
+Reset this set of open folders within this grid's data to match the [TreeGridOpenState](../reference_2.md#type-treegridopenstate) object passed in.  
 Used to restore previous state retrieved from the grid by a call to [TreeGrid.getOpenState](#method-treegridgetopenstate).
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| openState | [TreeGridOpenState](../main_2.md#type-treegridopenstate) | false | — | Object describing the desired set of open folders. |
+| openState | [TreeGridOpenState](../reference_2.md#type-treegridopenstate) | false | — | Object describing the desired set of open folders. |
 
 ### Groups
 
@@ -2356,7 +2356,7 @@ Set the icon for a particular treenode to a specified URL
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | node | [TreeNode](#type-treenode) | false | — | tree node |
-| icon | [SCImgURL](../main.md#type-scimgurl) | false | — | path to the resource |
+| icon | [SCImgURL](../reference.md#type-scimgurl) | false | — | path to the resource |
 
 ### Groups
 
@@ -2375,8 +2375,8 @@ This inherited [ListGrid API](ListGrid_2.md#method-listgridstarteditingnew) is n
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newValues | [Object](../main.md#type-object) | true | — | Optional initial set of properties for the new record |
-| suppressFocus | [boolean](../main.md#type-boolean) | true | — | Whether to suppress the default behavior of moving focus to the newly shown editor. |
+| newValues | [Object](../reference.md#type-object) | true | — | Optional initial set of properties for the new record |
+| suppressFocus | [boolean](../reference.md#type-boolean) | true | — | Whether to suppress the default behavior of moving focus to the newly shown editor. |
 
 ### Groups
 
@@ -2387,7 +2387,7 @@ This inherited [ListGrid API](ListGrid_2.md#method-listgridstarteditingnew) is n
 
 ### Description
 Simulates a drag / drop type transfer of the selected records in some other grid to this treeGrid, without requiring any user interaction.  
-See the [dragging](../main.md#kb-topic-dragging) documentation for an overview of grid drag/drop data transfer.
+See the [dragging](../reference.md#kb-topic-dragging) documentation for an overview of grid drag/drop data transfer.
 
 ### Parameters
 
@@ -2395,8 +2395,8 @@ See the [dragging](../main.md#kb-topic-dragging) documentation for an overview o
 |------|------|----------|---------|-------------|
 | sourceGrid | [ListGrid](#type-listgrid) | false | — | source grid from which the records will be transferred |
 | folder | [TreeNode](#type-treenode) | true | — | parent node into which records should be dropped - if null records will be transferred as children of the root node. |
-| index | [Integer](../main_2.md#type-integer) | true | — | target index (drop position) within the parent folder |
-| callback | [Callback](../main.md#type-callback) | true | — | optional callback to be fired when the transfer process has completed. The callback will be passed a single parameter "records", the list of nodes actually transferred to this component (it is called "records" because this logic is shared with [ListGrid](ListGrid_1.md#class-listgrid)). |
+| index | [Integer](../reference_2.md#type-integer) | true | — | target index (drop position) within the parent folder |
+| callback | [Callback](../reference.md#type-callback) | true | — | optional callback to be fired when the transfer process has completed. The callback will be passed a single parameter "records", the list of nodes actually transferred to this component (it is called "records" because this logic is shared with [ListGrid](ListGrid_1.md#class-listgrid)). |
 
 ### Groups
 
@@ -2434,12 +2434,12 @@ This method is called when a folder record is clicked on.
 ## Method: TreeGrid.getOpenState
 
 ### Description
-Returns a snapshot of the current open state of this grid's data as a [TreeGridOpenState](../main_2.md#type-treegridopenstate) object.  
+Returns a snapshot of the current open state of this grid's data as a [TreeGridOpenState](../reference_2.md#type-treegridopenstate) object.  
 This object can be passed to [TreeGrid.setOpenState](#method-treegridsetopenstate) to open the same set of folders within the treeGrid's data (assuming the nodes are still present in the data).
 
 ### Returns
 
-`[TreeGridOpenState](../main_2.md#type-treegridopenstate)` — current open state for the grid.
+`[TreeGridOpenState](../reference_2.md#type-treegridopenstate)` — current open state for the grid.
 
 ### Groups
 

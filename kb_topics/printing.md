@@ -1,6 +1,6 @@
 # Printing
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -18,7 +18,7 @@ SmartClient has specialized printing support that can take any page built with S
 
 The default printed view can be customized with settings and method overrides as necessary, including the ability to created printed representations of custom components you have created.
 
-For simple, built in printing support, see the [Canvas.showPrintPreview](../classes/Canvas.md#classmethod-canvasshowprintpreview) and [Canvas.getPrintPreview](../classes/Canvas.md#classmethod-canvasgetprintpreview) APIs, or for finer grained control developers may call [Canvas.getPrintHTML](../classes/Canvas.md#method-canvasgetprinthtml) directly and work with the [PrintCanvas](../classes/PrintCanvas.md#class-printcanvas) or [PrintWindow](../main.md#class-printwindow) class.
+For simple, built in printing support, see the [Canvas.showPrintPreview](../classes/Canvas.md#classmethod-canvasshowprintpreview) and [Canvas.getPrintPreview](../classes/Canvas.md#classmethod-canvasgetprintpreview) APIs, or for finer grained control developers may call [Canvas.getPrintHTML](../classes/Canvas.md#method-canvasgetprinthtml) directly and work with the [PrintCanvas](../classes/PrintCanvas.md#class-printcanvas) or [PrintWindow](../reference.md#class-printwindow) class.
 
 Note that the [CubeGrid](../classes/CubeGrid.md#class-cubegrid) component does not currently support WYSIWYG printing (as documented [in that class](../classes/CubeGrid.md#method-cubegridgetprinthtml)).
 
@@ -34,9 +34,9 @@ Note that the [CubeGrid](../classes/CubeGrid.md#class-cubegrid) component does n
 - [FormItem.getPrintValueIcon](../classes/FormItem.md#method-formitemgetprintvalueicon)
 - [DrawPane.getPrintHTML](../classes/DrawPane.md#method-drawpanegetprinthtml)
 - [FacetChart.getPrintHTML](../classes/FacetChart.md#method-facetchartgetprinthtml)
-- [PrintProperties](../main_2.md#object-printproperties)
+- [PrintProperties](../reference_2.md#object-printproperties)
 - [PrintCanvas](../classes/PrintCanvas.md#class-printcanvas)
-- [PrintWindow](../main.md#class-printwindow)
+- [PrintWindow](../reference.md#class-printwindow)
 - [Canvas.printChildrenAbsolutelyPositioned](../classes/Canvas.md#attr-canvasprintchildrenabsolutelypositioned)
 - [Canvas.shouldPrint](../classes/Canvas.md#attr-canvasshouldprint)
 - [PrintProperties.omitControls](../classes/PrintProperties.md#attr-printpropertiesomitcontrols)

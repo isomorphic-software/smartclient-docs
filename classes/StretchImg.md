@@ -1,6 +1,6 @@
 # StretchImg Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -36,7 +36,7 @@ If set to false, items will be displayed in RTL order for RTL pages.
 ### Description
 The base URL for the image.
 
-The [State](../main.md#type-state) for the component will be combined with this URL using the same approach as described in [Img.src](Img.md#attr-imgsrc). Then the image segment [name](StretchItem.md#attr-stretchitemname) as specified by each [StretchItem](../main_2.md#object-stretchitem) is added.
+The [State](../reference.md#type-state) for the component will be combined with this URL using the same approach as described in [Img.src](Img.md#attr-imgsrc). Then the image segment [name](StretchItem.md#attr-stretchitemname) as specified by each [StretchItem](../reference_2.md#object-stretchitem) is added.
 
 For example, for a stretchImg in "Over" state with a `src` of "button.png" and a segment name of "stretch", the resulting URL would be "button\_Over\_stretch.png".
 
@@ -226,7 +226,7 @@ Setter for [StretchImg.ignoreRTL](#attr-stretchimgignorertl).
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| ignoreRTL | [boolean](../main.md#type-boolean) | false | — | new value for ignoreRTL. |
+| ignoreRTL | [boolean](../reference.md#type-boolean) | false | — | new value for ignoreRTL. |
 
 **Flags**: A
 
@@ -271,7 +271,7 @@ Changes the base [StretchImg.src](#attr-stretchimgsrc) for this stretchImg, redr
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| src | [SCImgURL](../main.md#type-scimgurl) | false | — | new URL for the image |
+| src | [SCImgURL](../reference.md#type-scimgurl) | false | — | new URL for the image |
 
 ### Groups
 

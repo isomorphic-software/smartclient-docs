@@ -1,6 +1,6 @@
 # Using SmartClient with React
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -48,7 +48,7 @@ where the SmartClient utility class `SC` provides a `render()` method that inter
 With a few exceptions, you should be able to use [Component XML](componentXML.md#kb-topic-component-xml) syntax to specify widgets and objects in JSX:
 
 *   [Canvas.children](../classes/Canvas.md#attr-canvaschildren) should be specified in JSX with the tag `childComponents` instead, since React reserves the use of the `children` property.
-*   [ListGridFIelds](../main_2.md#object-listgridfield) should be declared in JSX via the tag `LGField` rather than `field` as in Component XML, since in React types are expected to be capitalized and clearly denote the underlying object type. The same applies to [DataSources](../classes/DataSource.md#class-datasource) and other [DBCs](../main.md#interface-databoundcomponent), such as [TreeGrids](../classes/TreeGrid.md#class-treegrid), [TileGrids](../classes/TileGrid.md#class-tilegrid) and [DetailViewers](../classes/DetailViewer.md#class-detailviewer), where respectively the tags to use are `DSField`, `TGField`, and then `DVField` (for both TileGrid and DetailViewer fields).
+*   [ListGridFIelds](../reference_2.md#object-listgridfield) should be declared in JSX via the tag `LGField` rather than `field` as in Component XML, since in React types are expected to be capitalized and clearly denote the underlying object type. The same applies to [DataSources](../classes/DataSource.md#class-datasource) and other [DBCs](../reference.md#interface-databoundcomponent), such as [TreeGrids](../classes/TreeGrid.md#class-treegrid), [TileGrids](../classes/TileGrid.md#class-tilegrid) and [DetailViewers](../classes/DetailViewer.md#class-detailviewer), where respectively the tags to use are `DSField`, `TGField`, and then `DVField` (for both TileGrid and DetailViewer fields).
     
     For example:
     
@@ -74,7 +74,7 @@ With a few exceptions, you should be able to use [Component XML](componentXML.md
      );
     ```
     
-*   [ValueMaps](../main_2.md#type-valuemap) or other JS objects that have capitalized property names, or property names that aren't valid [Identifiers](../main.md#type-identifier) will not parse as React JSX. So the following Component XML, for example, declared as the value of the `valueMap` property for a component, is _not_ valid JSX:
+*   [ValueMaps](../reference_2.md#type-valuemap) or other JS objects that have capitalized property names, or property names that aren't valid [Identifiers](../reference.md#type-identifier) will not parse as React JSX. So the following Component XML, for example, declared as the value of the `valueMap` property for a component, is _not_ valid JSX:
     ```
      <valueMap>
          <Weather>Current Weather</Weather>
@@ -210,7 +210,7 @@ We recommend using React refs to reconfigure components after construction, as d
 
 When using conditional JSX, keep in mind:
 
-*   When JSX is re-rendered, React will call **componentDidUpdate()**, which will cause us to apply any detected property changes via [setters](../classes/Class.md#method-classsetproperty). This is limited to [writable properties](../main.md#kb-topic-flag-abbreviations). The underlying SmartClient widget will not be recreated.
+*   When JSX is re-rendered, React will call **componentDidUpdate()**, which will cause us to apply any detected property changes via [setters](../classes/Class.md#method-classsetproperty). This is limited to [writable properties](../reference.md#kb-topic-flag-abbreviations). The underlying SmartClient widget will not be recreated.
 *   To destroy and recreate the SC widget in **componentDidUpdate()**, you can set the attribute `recreateOnReactComponentUpdate` true on the component.
 *   Alternatively, if you set the `key` attribute on the component to a unique number, that will force React to re-create and remount the component, so that **componentDidMount()** gets called against, recreating the underlying SC widget.
 *   When declaring properties that can contain objects, like [Window.headerControls](../classes/Window.md#attr-windowheadercontrols) (a list of strings naming specific controls or Canvas instances), any falsy value will be considered an excluded child element and skipped.

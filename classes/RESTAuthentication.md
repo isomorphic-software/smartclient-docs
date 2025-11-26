@@ -1,13 +1,13 @@
 # RESTAuthentication Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
 ## Attr: RESTAuthentication.authToken
 
 ### Description
-For a [RestConnector DataSource](../kb_topics/serverRestConnector.md#kb-topic-server-side-rest-connector) using [bearerToken authentication](../main_2.md#type-restauthenticationtype), the token to use. This attribute is for use when you are using bearerToken auth with a long-lived token, such as a fixed API key, rather than a regularly changing refresh/accept pattern. If you need to use the refresh/accept token pattern, omit this attribute and instead declare an [authentication dataSource](#attr-restauthenticationdatasource)
+For a [RestConnector DataSource](../kb_topics/serverRestConnector.md#kb-topic-server-side-rest-connector) using [bearerToken authentication](../reference_2.md#type-restauthenticationtype), the token to use. This attribute is for use when you are using bearerToken auth with a long-lived token, such as a fixed API key, rather than a regularly changing refresh/accept pattern. If you need to use the refresh/accept token pattern, omit this attribute and instead declare an [authentication dataSource](#attr-restauthenticationdatasource)
 
 ### Groups
 
@@ -19,7 +19,7 @@ For a [RestConnector DataSource](../kb_topics/serverRestConnector.md#kb-topic-se
 ## Attr: RESTAuthentication.password
 
 ### Description
-For a [RestConnector DataSource](../kb_topics/serverRestConnector.md#kb-topic-server-side-rest-connector), the password to authenticate with if you are using [basic authentication](../main_2.md#type-restauthenticationtype). Note, for services that support Basic authentication but require an API key rather than a password, you still use this property, just set it to the API key instead
+For a [RestConnector DataSource](../kb_topics/serverRestConnector.md#kb-topic-server-side-rest-connector), the password to authenticate with if you are using [basic authentication](../reference_2.md#type-restauthenticationtype). Note, for services that support Basic authentication but require an API key rather than a password, you still use this property, just set it to the API key instead
 
 ### Groups
 
@@ -31,7 +31,7 @@ For a [RestConnector DataSource](../kb_topics/serverRestConnector.md#kb-topic-se
 ## Attr: RESTAuthentication.authHeader
 
 ### Description
-For a [RestConnector DataSource](../kb_topics/serverRestConnector.md#kb-topic-server-side-rest-connector) using [authHeader authentication](../main_2.md#type-restauthenticationtype), the complete, well-formed header value to set for the "Authorization" HTTP header. This attribute is for use when you are using authHeader authentication with a long-lived token, such as a fixed API key, rather than a regularly changing refresh/accept pattern. If you need to use the refresh/accept token pattern, omit this attribute and instead declare an [authentication dataSource](#attr-restauthenticationdatasource)
+For a [RestConnector DataSource](../kb_topics/serverRestConnector.md#kb-topic-server-side-rest-connector) using [authHeader authentication](../reference_2.md#type-restauthenticationtype), the complete, well-formed header value to set for the "Authorization" HTTP header. This attribute is for use when you are using authHeader authentication with a long-lived token, such as a fixed API key, rather than a regularly changing refresh/accept pattern. If you need to use the refresh/accept token pattern, omit this attribute and instead declare an [authentication dataSource](#attr-restauthenticationdatasource)
 
 ### Groups
 
@@ -43,7 +43,7 @@ For a [RestConnector DataSource](../kb_topics/serverRestConnector.md#kb-topic-se
 ## Attr: RESTAuthentication.username
 
 ### Description
-For a [RestConnector DataSource](../kb_topics/serverRestConnector.md#kb-topic-server-side-rest-connector), the username to authenticate with if you are using [basic authentication](../main_2.md#type-restauthenticationtype)
+For a [RestConnector DataSource](../kb_topics/serverRestConnector.md#kb-topic-server-side-rest-connector), the username to authenticate with if you are using [basic authentication](../reference_2.md#type-restauthenticationtype)
 
 ### Groups
 
@@ -77,13 +77,13 @@ Note, if the REST service you are targeting does have a non-standard auth scheme
 ## Attr: RESTAuthentication.dataSource
 
 ### Description
-For a [RestConnector DataSource](../kb_topics/serverRestConnector.md#kb-topic-server-side-rest-connector), a second dataSource that is capable of fetching tokens that this dataSource can use to authenticate requests. This property is required for [bearerToken](../main_2.md#type-restauthenticationtype) and [authHeader](../main_2.md#type-restauthenticationtype) authentication types.
+For a [RestConnector DataSource](../kb_topics/serverRestConnector.md#kb-topic-server-side-rest-connector), a second dataSource that is capable of fetching tokens that this dataSource can use to authenticate requests. This property is required for [bearerToken](../reference_2.md#type-restauthenticationtype) and [authHeader](../reference_2.md#type-restauthenticationtype) authentication types.
 
 Typically, this dataSource will be a separate "rest" dataSource that connects to the token vending endpoint of an authorization server, passing in a "refresh" token and getting back an "access" token. Access tokens are typically short-lived, to minimize their usefulness to attackers if the token should somehow be exposed. When an access token expires it must be refreshed by again connecting to the token vending endpoint of the authorization server. `RestConnector` handles all the mechanics of this for you; you just have to provide a dataSource that can do the fetch.
 
 Note, `RestConnector` will issue a straightforward fetch with null criteria on the authentication dataSource when it needs to refresh its access token. This means that the authentication dataSource must be able to supply the refresh token to the REST auth endpoint without context from the dataSource fetch request. As mentioned above, the authentication dataSource is typically another "rest" dataSource, so you can use `RestConnector`'s extensive request templating features to accomplish this - for example, by embedding a reference to a `server.properties` property in the [dataURL](DataSource.md#attr-datasourcedataurl)
 
-A `RestConnector` authentication dataSource should include the following fields. Note, the "Field name" shown in the table is just the default; you can override the name of any of these fields by setting the property shown in the "Customize" column. So, eg, if you set `tokenField: "custom_token"` in the [auth](../main.md#object-restauthentication) config block, we will expect the dataSource to contain a field called "custom\_token" instead of the default "access\_token"
+A `RestConnector` authentication dataSource should include the following fields. Note, the "Field name" shown in the table is just the default; you can override the name of any of these fields by setting the property shown in the "Customize" column. So, eg, if you set `tokenField: "custom_token"` in the [auth](../reference.md#object-restauthentication) config block, we will expect the dataSource to contain a field called "custom\_token" instead of the default "access\_token"
 
 | Field name | Description | Customize |
 |---|---|---|

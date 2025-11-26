@@ -1,6 +1,6 @@
 # Dialog Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -76,7 +76,7 @@ Title for the `"Yes"` button.
 
 ### See Also
 
-- [DialogButtons](../main.md#type-dialogbuttons)
+- [DialogButtons](../reference.md#type-dialogbuttons)
 
 **Flags**: IRW
 
@@ -92,7 +92,7 @@ Title for the `"Done"` button.
 
 ### See Also
 
-- [DialogButtons](../main.md#type-dialogbuttons)
+- [DialogButtons](../reference.md#type-dialogbuttons)
 
 **Flags**: IRW
 
@@ -108,7 +108,7 @@ Title for the `"No"` button.
 
 ### See Also
 
-- [DialogButtons](../main.md#type-dialogbuttons)
+- [DialogButtons](../reference.md#type-dialogbuttons)
 
 **Flags**: IRW
 
@@ -161,7 +161,7 @@ Title for the `"Apply"` button.
 
 ### See Also
 
-- [DialogButtons](../main.md#type-dialogbuttons)
+- [DialogButtons](../reference.md#type-dialogbuttons)
 
 **Flags**: IRW
 
@@ -213,7 +213,7 @@ Title for the `"OK"` button.
 
 ### See Also
 
-- [DialogButtons](../main.md#type-dialogbuttons)
+- [DialogButtons](../reference.md#type-dialogbuttons)
 
 **Flags**: IRW
 
@@ -229,7 +229,7 @@ Title for the `"Cancel"` button.
 
 ### See Also
 
-- [DialogButtons](../main.md#type-dialogbuttons)
+- [DialogButtons](../reference.md#type-dialogbuttons)
 
 **Flags**: IRW
 
@@ -368,7 +368,7 @@ AutoChild that shows [Dialog.icon](#attr-dialogicon).
 ## Attr: Dialog.toolbar
 
 ### Description
-[AutoChild](../main.md#type-autochild) of type Toolbar used to create the [Dialog.toolbarButtons](#attr-dialogtoolbarbuttons).
+[AutoChild](../reference.md#type-autochild) of type Toolbar used to create the [Dialog.toolbarButtons](#attr-dialogtoolbarbuttons).
 
 **Flags**: IR
 
@@ -425,7 +425,7 @@ Array of Buttons to show in the [toolbar](#attr-dialogshowtoolbar), if shown.
 
 The set of buttons to use is typically set by calling one of the shortcuts such as [isc.say](isc.md#staticmethod-iscsay) or [isc.confirm](isc.md#staticmethod-iscconfirm) . A custom set of buttons can be passed to these shortcuts methods via the "properties" argument, or to a directly created Dialog.
 
-In both cases, a mixture of [built-in buttons](../main.md#type-dialogbuttons), custom buttons, and other components (such as a [LayoutSpacer](../main.md#class-layoutspacer)) can be passed. Built-in buttons can be referred to as `isc.Dialog.OK`, for example:
+In both cases, a mixture of [built-in buttons](../reference.md#type-dialogbuttons), custom buttons, and other components (such as a [LayoutSpacer](../reference.md#class-layoutspacer)) can be passed. Built-in buttons can be referred to as `isc.Dialog.OK`, for example:
 
 ```
  isc.Dialog.create({
@@ -438,7 +438,7 @@ In both cases, a mixture of [built-in buttons](../main.md#type-dialogbuttons), c
  })
  
 ```
-Built-in buttons will call standard methods on the Dialog itself, such as [Dialog.cancelClick](#method-dialogcancelclick), as explained in the [list of built-in buttons](../main.md#type-dialogbuttons).
+Built-in buttons will call standard methods on the Dialog itself, such as [Dialog.cancelClick](#method-dialogcancelclick), as explained in the [list of built-in buttons](../reference.md#type-dialogbuttons).
 
 **Flags**: IR
 
@@ -503,7 +503,7 @@ Handle a click on the 'apply' button of this Dialog. Default implementation is t
 
 ### See Also
 
-- [DialogButtons](../main.md#type-dialogbuttons)
+- [DialogButtons](../reference.md#type-dialogbuttons)
 
 ---
 ## Method: Dialog.setToolbarButtons
@@ -529,7 +529,7 @@ Handle a click on the 'cancel' button of this Dialog. Default implementation is 
 
 ### See Also
 
-- [DialogButtons](../main.md#type-dialogbuttons)
+- [DialogButtons](../reference.md#type-dialogbuttons)
 
 ---
 ## Method: Dialog.saveData
@@ -560,7 +560,7 @@ Handle a click on the 'ok' button of this Dialog. Default implementation is to c
 
 ### See Also
 
-- [DialogButtons](../main.md#type-dialogbuttons)
+- [DialogButtons](../reference.md#type-dialogbuttons)
 
 ---
 ## Method: Dialog.doneClick
@@ -574,7 +574,7 @@ Handle a click on the 'done' button of this Dialog. Default implementation is to
 
 ### See Also
 
-- [DialogButtons](../main.md#type-dialogbuttons)
+- [DialogButtons](../reference.md#type-dialogbuttons)
 
 ---
 ## Method: Dialog.buttonClick
@@ -587,7 +587,7 @@ Fires when any button in this Dialog's toolbar is clicked. Default implementatio
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | button | [StatefulCanvas](#type-statefulcanvas) | false | — | button that was clicked |
-| index | [int](../main.md#type-int) | false | — | index of the button that was clicked |
+| index | [int](../reference.md#type-int) | false | — | index of the button that was clicked |
 
 ### Groups
 
@@ -603,7 +603,7 @@ Method to update the message on this Dialog.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newMessage | [HTMLString](../main.md#type-htmlstring) | false | — | new message to show |
+| newMessage | [HTMLString](../reference.md#type-htmlstring) | false | — | new message to show |
 
 ---
 ## Method: Dialog.yesClick
@@ -617,7 +617,7 @@ Handle a click on the 'yes' button of this Dialog. Default implementation is to 
 
 ### See Also
 
-- [DialogButtons](../main.md#type-dialogbuttons)
+- [DialogButtons](../reference.md#type-dialogbuttons)
 
 ---
 ## Method: Dialog.noClick
@@ -631,6 +631,6 @@ Handle a click on the 'no' button of this Dialog. Default implementation is to r
 
 ### See Also
 
-- [DialogButtons](../main.md#type-dialogbuttons)
+- [DialogButtons](../reference.md#type-dialogbuttons)
 
 ---

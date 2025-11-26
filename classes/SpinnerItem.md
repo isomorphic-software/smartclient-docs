@@ -1,6 +1,6 @@
 # SpinnerItem Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -113,7 +113,7 @@ Minimum valid value for this item. If this and [max](#attr-spinneritemmax) are b
 ## Attr: SpinnerItem.increaseIcon
 
 ### Description
-In [stacked mode](#attr-spinneritemwritestackedicons), the icon to increase the spinner's value (an up arrow by default). This icon is generated automatically using the [AutoChild](../main.md#type-autochild) pattern. For skinning purposes, `increaseIconDefaults` may be modified using [changeDefaults()](Class.md#classmethod-classchangedefaults).
+In [stacked mode](#attr-spinneritemwritestackedicons), the icon to increase the spinner's value (an up arrow by default). This icon is generated automatically using the [AutoChild](../reference.md#type-autochild) pattern. For skinning purposes, `increaseIconDefaults` may be modified using [changeDefaults()](Class.md#classmethod-classchangedefaults).
 
 If sizes for the increase and decrease icons are not explicitly specified in their autoChild configuration, they will be derived from the specified [SpinnerItem.stackedIconsHeight](#attr-spinneritemstackediconsheight) and [SpinnerItem.stackedIconsWidth](#attr-spinneritemstackediconswidth) properties.
 
@@ -161,7 +161,7 @@ Not applicable to a SpinnerItem.
 ## Attr: SpinnerItem.decreaseIcon
 
 ### Description
-In [stacked mode](#attr-spinneritemwritestackedicons), the icon to decrease the spinner's value (a down arrow by default). This icon is generated automatically using the [AutoChild](../main.md#type-autochild) pattern. For skinning purposes, `decreaseIconDefaults` may be modified using [changeDefaults()](Class.md#classmethod-classchangedefaults).
+In [stacked mode](#attr-spinneritemwritestackedicons), the icon to decrease the spinner's value (a down arrow by default). This icon is generated automatically using the [AutoChild](../reference.md#type-autochild) pattern. For skinning purposes, `decreaseIconDefaults` may be modified using [changeDefaults()](Class.md#classmethod-classchangedefaults).
 
 If sizes for the increase and decrease icons are not explicitly specified in their autoChild configuration, they will be derived from the specified [SpinnerItem.stackedIconsHeight](#attr-spinneritemstackediconsheight) and [SpinnerItem.stackedIconsWidth](#attr-spinneritemstackediconswidth) properties.
 
@@ -187,7 +187,7 @@ When [spriting](../kb_topics/skinning.md#kb-topic-skinning--theming) is enabled,
 ### Description
 In [unstacked mode](#attr-spinneritemwritestackedicons), the base CSS class name for the `SpinnerItem`'s text box element.
 
-NOTE: See the [CompoundFormItem_skinning](../main.md#kb-topic-compoundformitem_skinning) discussion for special skinning considerations.
+NOTE: See the [CompoundFormItem_skinning](../reference.md#kb-topic-compoundformitem_skinning) discussion for special skinning considerations.
 
 ### Groups
 

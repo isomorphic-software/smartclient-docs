@@ -1,6 +1,6 @@
 # DSResponse Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -9,7 +9,7 @@
 *Inherits from:* [RPCResponse](RPCResponse.md#class-rpcresponse)
 
 ### Description
-Response sent by the server in response to a [DataSource request](../main_2.md#object-dsrequest). Contains all the properties available on the basic [RPCResponse](RPCResponse.md#class-rpcresponse), in addition to the properties listed here.
+Response sent by the server in response to a [DataSource request](../reference_2.md#object-dsrequest). Contains all the properties available on the basic [RPCResponse](RPCResponse.md#class-rpcresponse), in addition to the properties listed here.
 
 ---
 ## Attr: DSResponse.offlineTimestamp
@@ -111,7 +111,7 @@ Note that startRow and endRow are zero-based, inclusive at the beginning and exc
 ## Attr: DSResponse.clientContext
 
 ### Description
-The [DSRequest.clientContext](DSRequest.md#attr-dsrequestclientcontext) object as set on the [DSRequest](../main_2.md#object-dsrequest).
+The [DSRequest.clientContext](DSRequest.md#attr-dsrequestclientcontext) object as set on the [DSRequest](../reference_2.md#object-dsrequest).
 
 ### See Also
 
@@ -202,7 +202,7 @@ The Java API DSResponse.addError(fieldName, errorMessage) is used to send server
 ### Description
 HTTP headers returned by the server as a map from header name to header value.
 
-Headers are available only when the default [RPCTransport](../main.md#type-rpctransport) "xmlHttpRequest" is in use, and browsers may limit access to headers for cross-domain requests or in other security-sensitive scenarios.
+Headers are available only when the default [RPCTransport](../reference.md#type-rpctransport) "xmlHttpRequest" is in use, and browsers may limit access to headers for cross-domain requests or in other security-sensitive scenarios.
 
 **Flags**: R
 

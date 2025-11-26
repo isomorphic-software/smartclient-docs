@@ -1,6 +1,6 @@
 # LoadScreenSettings Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -15,7 +15,7 @@ If true, server logic does not crash out if it cannot load a DataSource specifie
 ## Attr: LoadScreenSettings.requestProperties
 
 ### Description
-Specifies optional [RPCRequest](../main.md#object-rpcrequest) properties for the request.
+Specifies optional [RPCRequest](../reference.md#object-rpcrequest) properties for the request.
 
 **Flags**: IRW
 

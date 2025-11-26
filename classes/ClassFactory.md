@@ -1,6 +1,6 @@
 # ClassFactory Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -15,7 +15,7 @@ Intentionally clobber an existing SmartClient Class, if it already exists. Works
 ### Description
 Create a new SmartClient class, which can then be used to create instances of this object type, via [Class.create](Class.md#classmethod-classcreate).
 
-The new Class is returned by `defineClass`, is available as `isc._ClassName_` and is also available in global scope if not in [portal mode](../main.md#object-isc). Typically, [Class.addProperties](Class.md#classmethod-classaddproperties) is then called to establish different defaults in the new class, or to add methods. For example:
+The new Class is returned by `defineClass`, is available as `isc._ClassName_` and is also available in global scope if not in [portal mode](../reference.md#object-isc). Typically, [Class.addProperties](Class.md#classmethod-classaddproperties) is then called to establish different defaults in the new class, or to add methods. For example:
 
 ```
     isc.defineClass("MyListGrid", "ListGrid").addProperties({
@@ -32,7 +32,7 @@ The new Class is returned by `defineClass`, is available as `isc._ClassName_` an
 
 See also [Super()](Class.md#method-classsuper) for calling superclass methods.
 
-NOTE: `isc.defineClass()` also creates a new function `[class:isA](../main.md#object-isa)._ClassName()_` object for identifying instances of this Class.
+NOTE: `isc.defineClass()` also creates a new function `[class:isA](../reference.md#object-isa)._ClassName()_` object for identifying instances of this Class.
 
 ### Parameters
 
@@ -72,9 +72,9 @@ Given the name of a class, create an instance of that class.
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | className | [String](#type-string) | false | — | Name of a class. (ClassObject) Actual class object to use. |
-| props | [Object](../main.md#type-object) | true | — | Properties to apply to the instance. |
-| props2 | [Object](../main.md#type-object) | true | — | More properties to apply to the instance. |
-| props3 | [Object](../main.md#type-object) | true | — | Yet more properties to apply to the instance. |
+| props | [Object](../reference.md#type-object) | true | — | Properties to apply to the instance. |
+| props2 | [Object](../reference.md#type-object) | true | — | More properties to apply to the instance. |
+| props3 | [Object](../reference.md#type-object) | true | — | Yet more properties to apply to the instance. |
 
 ### Returns
 

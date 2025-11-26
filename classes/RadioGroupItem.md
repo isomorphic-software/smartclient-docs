@@ -1,6 +1,6 @@
 # RadioGroupItem Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -47,7 +47,7 @@ If [RadioGroupItem.vertical](#attr-radiogroupitemvertical) is false, and this it
 ## Attr: RadioGroupItem.allowEmptyValue
 
 ### Description
-When set to true, allows a checked [RadioItem](../main.md#class-radioitem) to be unchecked when clicked, clearing the value from the `RadioGroupItem`.
+When set to true, allows a checked [RadioItem](../reference.md#class-radioitem) to be unchecked when clicked, clearing the value from the `RadioGroupItem`.
 
 Note that this is not a default behavior of native radios and could impact compliance with accessibility standards depending on the application.
 
@@ -141,7 +141,7 @@ If defined, this method should return the HTML to display in a hover canvas when
 
 ### Returns
 
-`[HTMLString](../main.md#type-htmlstring)` — HTML to be displayed in the hover
+`[HTMLString](../reference.md#type-htmlstring)` — HTML to be displayed in the hover
 
 ### Groups
 
@@ -160,7 +160,7 @@ Disable or Enable a specific option within this radioGroup
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | value | [Any](#type-any) | false | — | value of option to disable |
-| disabled | [boolean](../main.md#type-boolean) | false | — | true to disable the option, false to enable it |
+| disabled | [boolean](../reference.md#type-boolean) | false | — | true to disable the option, false to enable it |
 
 ---
 ## Method: RadioGroupItem.setTextBoxStyle
@@ -172,7 +172,7 @@ Setter for [RadioGroupItem.textBoxStyle](#attr-radiogroupitemtextboxstyle).
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newTextBoxStyle | [FormItemBaseStyle](../main_2.md#type-formitembasestyle) | false | — | new `textBoxStyle`. |
+| newTextBoxStyle | [FormItemBaseStyle](../reference_2.md#type-formitembasestyle) | false | — | new `textBoxStyle`. |
 
 ---
 ## Method: RadioGroupItem.pendingStatusChanged
@@ -188,12 +188,12 @@ The default behavior is that the [titleStyle](FormItem.md#attr-formitemtitlestyl
 |------|------|----------|---------|-------------|
 | form | [DynamicForm](#type-dynamicform) | false | — | the managing `DynamicForm` instance. |
 | item | [FormItem](#type-formitem) | false | — | the form item itself (also available as "this"). |
-| pendingStatus | [boolean](../main.md#type-boolean) | false | — | `true` if the item should show its pending visual state; `false` otherwise. |
+| pendingStatus | [boolean](../reference.md#type-boolean) | false | — | `true` if the item should show its pending visual state; `false` otherwise. |
 | newValue | [Any](#type-any) | false | — | the current form item value. |
 | value | [Any](#type-any) | false | — | the value that would be restored by a call to [DynamicForm.resetValues](DynamicForm.md#method-dynamicformresetvalues). |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — `false` to cancel the default behavior.
+`[boolean](../reference.md#type-boolean)` — `false` to cancel the default behavior.
 
 ---

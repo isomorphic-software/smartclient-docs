@@ -1,12 +1,12 @@
 # DrawItem Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
 ## Class: DrawItem
 
-*Inherits from:* [BaseWidget](../main.md#class-basewidget)
+*Inherits from:* [BaseWidget](../reference.md#class-basewidget)
 
 ### Description
 Base class for graphical elements drawn in a DrawPane. All properties and methods documented here are available on all DrawItems unless otherwise specified.
@@ -51,7 +51,7 @@ Whether to rotate the [DrawItem.titleLabel](#attr-drawitemtitlelabel) 90 degrees
 ## Attr: DrawItem.knobs
 
 ### Description
-Array of control knobs to display for this item. Each [KnobType](../main.md#type-knobtype) specified in this array will turn on UI element(s) allowing the user to manipulate this drawItem. To update the set of knobs at runtime use [DrawItem.showKnobs](#method-drawitemshowknobs) and [DrawItem.hideKnobs](#method-drawitemhideknobs).
+Array of control knobs to display for this item. Each [KnobType](../reference.md#type-knobtype) specified in this array will turn on UI element(s) allowing the user to manipulate this drawItem. To update the set of knobs at runtime use [DrawItem.showKnobs](#method-drawitemshowknobs) and [DrawItem.hideKnobs](#method-drawitemhideknobs).
 
 **NOTE:** Unless otherwise documented, DrawItem types only support "resize" and "move" knobs.
 
@@ -159,12 +159,12 @@ The resize and move knobs show at the same position by default. However, when bo
 ## Attr: DrawItem.titleLabel
 
 ### Description
-When a non-null [title](#attr-drawitemtitle) is set, this AutoChild is created automatically and positioned at the [center](#method-drawitemgetcenter) of this `DrawItem` . The `titleLabel` moves with this `DrawItem` and, depending on [titleRotationMode](../main_2.md#type-titlerotationmode), can rotate with this `DrawItem` as well.
+When a non-null [title](#attr-drawitemtitle) is set, this AutoChild is created automatically and positioned at the [center](#method-drawitemgetcenter) of this `DrawItem` . The `titleLabel` moves with this `DrawItem` and, depending on [titleRotationMode](../reference_2.md#type-titlerotationmode), can rotate with this `DrawItem` as well.
 
 The following [passthrough](../kb_topics/autoChildUsage.md#kb-topic-using-autochildren) applies:  
 [title](#attr-drawitemtitle) for [DrawLabel.contents](DrawLabel.md#attr-drawlabelcontents).
 
-Related to the `titleLabel` is the [titleLabelBackground](#attr-drawitemtitlelabelbackground) which allows a border to be placed around the `titleLabel` and/or a background added. By default, shapes that are commonly filled such as [DrawTriangle](../main.md#class-drawtriangle)s, with the exception of [DrawSector](DrawSector.md#class-drawsector)s, do not show the `titleLabelBackground` (see [showTitleLabelBackground](#attr-drawitemshowtitlelabelbackground)).
+Related to the `titleLabel` is the [titleLabelBackground](#attr-drawitemtitlelabelbackground) which allows a border to be placed around the `titleLabel` and/or a background added. By default, shapes that are commonly filled such as [DrawTriangle](../reference.md#class-drawtriangle)s, with the exception of [DrawSector](DrawSector.md#class-drawsector)s, do not show the `titleLabelBackground` (see [showTitleLabelBackground](#attr-drawitemshowtitlelabelbackground)).
 
 ### See Also
 
@@ -178,7 +178,7 @@ Related to the `titleLabel` is the [titleLabelBackground](#attr-drawitemtitlelab
 ### Description
 Whether the [DrawItem.titleLabel](#attr-drawitemtitlelabel) should be scaled to the maximum possible size that fits inside the bounds of this item. Currently only [DrawRect](DrawRect.md#class-drawrect)s and [DrawPolygon](DrawPolygon.md#class-drawpolygon)s with 90 degree angles are supported.
 
-Note that [DrawItem.titleAutoFit](#attr-drawitemtitleautofit) isn't supported for rotated, sheared, or scaled [DrawItem](#class-drawitem)s, and that therefore the value of [TitleRotationMode](../main_2.md#type-titlerotationmode), which relates to rotation of the item, is ignored when this property is set. However, we do support having the label automatically rotate to run vertically if there's more space - see [DrawItem.titleAutoFitRotationMode](#attr-drawitemtitleautofitrotationmode).
+Note that [DrawItem.titleAutoFit](#attr-drawitemtitleautofit) isn't supported for rotated, sheared, or scaled [DrawItem](#class-drawitem)s, and that therefore the value of [TitleRotationMode](../reference_2.md#type-titlerotationmode), which relates to rotation of the item, is ignored when this property is set. However, we do support having the label automatically rotate to run vertically if there's more space - see [DrawItem.titleAutoFitRotationMode](#attr-drawitemtitleautofitrotationmode).
 
 ### See Also
 
@@ -231,7 +231,7 @@ The slope of an x-shearing transformation applied to this DrawItem. Each point i
 ## Attr: DrawItem.fillGradient
 
 ### Description
-Fill gradient to use for shapes. If a string it uses the gradient identifier parameter provided in [DrawPane.addGradient](DrawPane.md#method-drawpaneaddgradient). Otherwise it expects one of [SimpleGradient](../main.md#object-simplegradient), [LinearGradient](../main.md#object-lineargradient) or [RadialGradient](../main.md#object-radialgradient).
+Fill gradient to use for shapes. If a string it uses the gradient identifier parameter provided in [DrawPane.addGradient](DrawPane.md#method-drawpaneaddgradient). Otherwise it expects one of [SimpleGradient](../reference.md#object-simplegradient), [LinearGradient](../reference.md#object-lineargradient) or [RadialGradient](../reference.md#object-radialgradient).
 
 ### Groups
 
@@ -239,7 +239,7 @@ Fill gradient to use for shapes. If a string it uses the gradient identifier par
 
 ### See Also
 
-- [Gradient](../main_2.md#object-gradient)
+- [Gradient](../reference_2.md#object-gradient)
 
 **Flags**: IRW
 
@@ -317,7 +317,7 @@ The mode in which the [titleLabel](#attr-drawitemtitlelabel) (if shown) is rotat
 ### Description
 Should events inside this DrawItem be attributed to it regardless of which pixels are actually set, if no fill is specified? If set for DrawItems that aren't closed, will capture events occurring in the region that would filled if a fill were specified. This property is true by default for closed shapes, and false for paths, lines, etc.
 
-**Note:** this property must be true if you're writing to an HTML5 `<canvas>` element directly in your code (only applies to [DrawingType](../main.md#type-drawingtype) "bitmap" ).
+**Note:** this property must be true if you're writing to an HTML5 `<canvas>` element directly in your code (only applies to [DrawingType](../reference.md#type-drawingtype) "bitmap" ).
 
 ### See Also
 
@@ -680,14 +680,14 @@ Computes the angle in degrees from the positive X axis to the difference vector 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| px1 | [double](../main.md#type-double) | false | — | X coordinate of **v**1 |
-| py1 | [double](../main.md#type-double) | false | — | Y coordinate of **v**1 |
-| px2 | [double](../main.md#type-double) | false | — | X coordinate of **v**2 |
-| py2 | [double](../main.md#type-double) | false | — | Y coordinate of **v**2 |
+| px1 | [double](../reference.md#type-double) | false | — | X coordinate of **v**1 |
+| py1 | [double](../reference.md#type-double) | false | — | Y coordinate of **v**1 |
+| px2 | [double](../reference.md#type-double) | false | — | X coordinate of **v**2 |
+| py2 | [double](../reference.md#type-double) | false | — | Y coordinate of **v**2 |
 
 ### Returns
 
-`[double](../main.md#type-double)` — the angle in degrees, in the range \[0, 360).
+`[double](../reference.md#type-double)` — the angle in degrees, in the range \[0, 360).
 
 ---
 ## Method: DrawItem.scaleBy
@@ -699,8 +699,8 @@ Scale the shape by the x, y multipliers
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| x | [float](../main.md#type-float) | false | — | scale in the x direction |
-| y | [float](../main.md#type-float) | false | — | scale in the y direction |
+| x | [float](../reference.md#type-float) | false | — | scale in the x direction |
+| y | [float](../reference.md#type-float) | false | — | scale in the y direction |
 
 ---
 ## Method: DrawItem.setStartArrow
@@ -714,7 +714,7 @@ Set the arrowhead at the beginning of this path.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| arrowStyle | [ArrowStyle](../main_2.md#type-arrowstyle) | false | — | style of arrow to use |
+| arrowStyle | [ArrowStyle](../reference_2.md#type-arrowstyle) | false | — | style of arrow to use |
 
 ---
 ## Method: DrawItem.showAllKnobs
@@ -746,7 +746,7 @@ Update lineWidth for this drawItem.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| width | [int](../main.md#type-int) | false | — | new pixel lineWidth |
+| width | [int](../reference.md#type-int) | false | — | new pixel lineWidth |
 
 ---
 ## Method: DrawItem.supportsEndArrow
@@ -756,7 +756,7 @@ Does this DrawItem [support](Class.md#classmethod-classismethodsupported) [DrawI
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — whether setEndArrow() is supported by this DrawItem.
+`[boolean](../reference.md#type-boolean)` — whether setEndArrow() is supported by this DrawItem.
 
 **Flags**: A
 
@@ -770,14 +770,14 @@ Computes the angle in degrees from the positive X axis to the difference vector 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| px1 | [double](../main.md#type-double) | false | — | X coordinate of **v**1 |
-| py1 | [double](../main.md#type-double) | false | — | Y coordinate of **v**1 |
-| px2 | [double](../main.md#type-double) | false | — | X coordinate of **v**2 |
-| py2 | [double](../main.md#type-double) | false | — | Y coordinate of **v**2 |
+| px1 | [double](../reference.md#type-double) | false | — | X coordinate of **v**1 |
+| py1 | [double](../reference.md#type-double) | false | — | Y coordinate of **v**1 |
+| px2 | [double](../reference.md#type-double) | false | — | X coordinate of **v**2 |
+| py2 | [double](../reference.md#type-double) | false | — | Y coordinate of **v**2 |
 
 ### Returns
 
-`[double](../main.md#type-double)` — the angle in degrees, in the range \[0, 360).
+`[double](../reference.md#type-double)` — the angle in degrees, in the range \[0, 360).
 
 ---
 ## Method: DrawItem.hover
@@ -787,7 +787,7 @@ If [canHover](#attr-drawitemcanhover) is true for this DrawItem, the hover() str
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — false to cancel the hover event.
+`[boolean](../reference.md#type-boolean)` — false to cancel the hover event.
 
 ### Groups
 
@@ -803,7 +803,7 @@ Setter for [DrawItem.zIndex](#attr-drawitemzindex).
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newZIndex | [Integer](../main_2.md#type-integer) | false | — | new `zIndex`. If null and this draw item is already in a `DrawPane` or `DrawGroup`, then this item's zIndex will be set to the next higher auto-assigned zIndex.
+| newZIndex | [Integer](../reference_2.md#type-integer) | false | — | new `zIndex`. If null and this draw item is already in a `DrawPane` or `DrawGroup`, then this item's zIndex will be set to the next higher auto-assigned zIndex.
 
 Note that when setting draw items' zIndexes via this advanced API, the application should take over management of all draw items' zIndexes, and [bringToFront()](#method-drawitembringtofront) / [sendToBack()](#method-drawitemsendtoback) should not be used, as those APIs assume automatic management of zIndexes. |
 
@@ -821,7 +821,7 @@ Does this DrawItem [support](Class.md#classmethod-classismethodsupported) [DrawI
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — whether setStartArrow() is supported by this DrawItem.
+`[boolean](../reference.md#type-boolean)` — whether setStartArrow() is supported by this DrawItem.
 
 **Flags**: A
 
@@ -835,8 +835,8 @@ Resize to the specified size
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| width | [Integer](../main_2.md#type-integer) | false | — | new width |
-| height | [Integer](../main_2.md#type-integer) | false | — | new height |
+| width | [Integer](../reference_2.md#type-integer) | false | — | new width |
+| height | [Integer](../reference_2.md#type-integer) | false | — | new height |
 
 ---
 ## Method: DrawItem.dragStart
@@ -848,7 +848,7 @@ Note that if this item is part of a [DrawGroup](DrawGroup.md#class-drawgroup), t
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — false to cancel drag action.
+`[boolean](../reference.md#type-boolean)` — false to cancel drag action.
 
 ### Groups
 
@@ -900,12 +900,12 @@ This method can be used to quickly check whether the given point is definitely _
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| x | [int](../main.md#type-int) | false | — | X coordinate of the point in the drawing coordinate system. |
-| y | [int](../main.md#type-int) | false | — | Y coordinate of the point in the drawing coordinate system. |
+| x | [int](../reference.md#type-int) | false | — | X coordinate of the point in the drawing coordinate system. |
+| y | [int](../reference.md#type-int) | false | — | Y coordinate of the point in the drawing coordinate system. |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — —
+`[boolean](../reference.md#type-boolean)` — —
 
 ---
 ## Method: DrawItem.erase
@@ -925,7 +925,7 @@ Note that if this item is part of a [DrawGroup](DrawGroup.md#class-drawgroup), t
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — false to cancel drag interaction.
+`[boolean](../reference.md#type-boolean)` — false to cancel drag interaction.
 
 ### Groups
 
@@ -952,7 +952,7 @@ Update lineCap for this drawItem.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| cap | [LineCap](../main.md#type-linecap) | false | — | new lineCap to use |
+| cap | [LineCap](../reference.md#type-linecap) | false | — | new lineCap to use |
 
 ---
 ## Method: DrawItem.rotateBy
@@ -964,7 +964,7 @@ Rotate the shape by the relative rotation in degrees
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| degrees | [float](../main.md#type-float) | false | — | number of degrees to rotate from current orientation. |
+| degrees | [float](../reference.md#type-float) | false | — | number of degrees to rotate from current orientation. |
 
 ---
 ## Method: DrawItem.resizeBy
@@ -976,8 +976,8 @@ Resize the shape by the specified deltas.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| dX | [int](../main.md#type-int) | false | — | number of pixels to resize by horizontally |
-| dY | [int](../main.md#type-int) | false | — | number of pixels to resize by vertically |
+| dX | [int](../reference.md#type-int) | false | — | number of pixels to resize by horizontally |
+| dY | [int](../reference.md#type-int) | false | — | number of pixels to resize by vertically |
 
 ---
 ## Method: DrawItem.getHoverHTML
@@ -987,7 +987,7 @@ If [showHover](#attr-drawitemshowhover) is true, when the user holds the mouse o
 
 ### Returns
 
-`[HTMLString](../main.md#type-htmlstring)` — the HTML to show in the hover
+`[HTMLString](../reference.md#type-htmlstring)` — the HTML to show in the hover
 
 ### Groups
 
@@ -1024,7 +1024,7 @@ Rotate the shape by the absolute rotation in degrees
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| degrees | [float](../main.md#type-float) | false | — | number of degrees to rotate |
+| degrees | [float](../reference.md#type-float) | false | — | number of degrees to rotate |
 
 ---
 ## Method: DrawItem.hideAllKnobs
@@ -1042,7 +1042,7 @@ Returns an opaque JavaScript object representing the current local transformatio
 
 ### Returns
 
-`[Object](../main.md#type-object)` — opaque tranformation data
+`[Object](../reference.md#type-object)` — opaque tranformation data
 
 ### See Also
 
@@ -1079,7 +1079,7 @@ Note that if this item is part of a [DrawGroup](DrawGroup.md#class-drawgroup), t
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — false to cancel drag interaction.
+`[boolean](../reference.md#type-boolean)` — false to cancel drag interaction.
 
 ### Groups
 
@@ -1100,13 +1100,13 @@ Update fillOpacity for this drawItem.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| opacity | [float](../main.md#type-float) | false | — | new opacity, as a number between 0 (transparent) and 1 (opaque). |
+| opacity | [float](../reference.md#type-float) | false | — | new opacity, as a number between 0 (transparent) and 1 (opaque). |
 
 ---
 ## Method: DrawItem.drawStart
 
 ### Description
-Called when we start drawing for this DrawItem to the [DrawItem.drawPane](#attr-drawitemdrawpane)'s underlying HTML5 `<canvas>` element. Only called if the [DrawingType](../main.md#type-drawingtype) is "bitmap".
+Called when we start drawing for this DrawItem to the [DrawItem.drawPane](#attr-drawitemdrawpane)'s underlying HTML5 `<canvas>` element. Only called if the [DrawingType](../reference.md#type-drawingtype) is "bitmap".
 
 There is no default implementation of this method.
 
@@ -1122,8 +1122,8 @@ Move the shape by the specified deltas for the left and top coordinate.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| dX | [int](../main.md#type-int) | false | — | change to left coordinate in pixels |
-| dY | [int](../main.md#type-int) | false | — | change to top coordinate in pixels |
+| dX | [int](../reference.md#type-int) | false | — | change to left coordinate in pixels |
+| dY | [int](../reference.md#type-int) | false | — | change to top coordinate in pixels |
 
 ---
 ## Method: DrawItem.setPropertyValue
@@ -1170,7 +1170,7 @@ Set the arrowhead at the end of this path.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| arrowStyle | [ArrowStyle](../main_2.md#type-arrowstyle) | false | — | style of arrow to use |
+| arrowStyle | [ArrowStyle](../reference_2.md#type-arrowstyle) | false | — | style of arrow to use |
 
 ---
 ## Method: DrawItem.setDrawPane
@@ -1194,14 +1194,14 @@ Notification method fired when this component is explicitly moved. Note that a c
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| deltaX | [int](../main.md#type-int) | false | — | horizontal difference between current and previous position |
-| deltaY | [int](../main.md#type-int) | false | — | vertical difference between current and previous position |
+| deltaX | [int](../reference.md#type-int) | false | — | horizontal difference between current and previous position |
+| deltaY | [int](../reference.md#type-int) | false | — | vertical difference between current and previous position |
 
 ---
 ## Method: DrawItem.getCenter
 
 ### Description
-Returns the center point of this draw item in local coordinates. Generally this is the center of the [bounding box](#method-drawitemgetboundingbox), but some item types may use a different point. For example, [DrawTriangle](../main.md#class-drawtriangle) uses the [incenter](http://en.wikipedia.org/wiki/Incenter#Cartesian_coordinates) of the triangle.
+Returns the center point of this draw item in local coordinates. Generally this is the center of the [bounding box](#method-drawitemgetboundingbox), but some item types may use a different point. For example, [DrawTriangle](../reference.md#class-drawtriangle) uses the [incenter](http://en.wikipedia.org/wiki/Incenter#Cartesian_coordinates) of the triangle.
 
 ### Returns
 
@@ -1217,7 +1217,7 @@ Update lineOpacity for this drawItem.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| opacity | [float](../main.md#type-float) | false | — | new opacity, as a number between 0 (transparent) and 1 (opaque). |
+| opacity | [float](../reference.md#type-float) | false | — | new opacity, as a number between 0 (transparent) and 1 (opaque). |
 
 ---
 ## Method: DrawItem.setLineColor
@@ -1229,7 +1229,7 @@ Update lineColor for this drawItem.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| color | [CSSColor](../main_2.md#type-csscolor) | false | — | new line color. Pass null for transparent. |
+| color | [CSSColor](../reference_2.md#type-csscolor) | false | — | new line color. Pass null for transparent. |
 
 ---
 ## Method: DrawItem.getPageTop
@@ -1257,7 +1257,7 @@ Hides a set of control knobs for this drawItem. Updates [DrawItem.knobs](#attr-d
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| knobType | [KnobType](../main.md#type-knobtype)|[Array of KnobType](#type-array-of-knobtype) | false | — | knobs to hide |
+| knobType | [KnobType](../reference.md#type-knobtype)|[Array of KnobType](#type-array-of-knobtype) | false | — | knobs to hide |
 
 ---
 ## Method: DrawItem.isPointInPath
@@ -1269,12 +1269,12 @@ Returns true if the given point in the drawing coordinate system is within this 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| x | [int](../main.md#type-int) | false | — | X coordinate of the test point. |
-| y | [int](../main.md#type-int) | false | — | Y coordinate of the test point. |
+| x | [int](../reference.md#type-int) | false | — | X coordinate of the test point. |
+| y | [int](../reference.md#type-int) | false | — | Y coordinate of the test point. |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — —
+`[boolean](../reference.md#type-boolean)` — —
 
 ---
 ## Method: DrawItem.resized
@@ -1349,7 +1349,7 @@ Note that if this item is part of a [DrawGroup](DrawGroup.md#class-drawgroup), t
 ## Method: DrawItem.drawEnd
 
 ### Description
-Called when we finish drawing for this DrawItem to the [DrawItem.drawPane](#attr-drawitemdrawpane)'s underlying HTML5 `<canvas>` element. Only called if the [DrawingType](../main.md#type-drawingtype) is "bitmap".
+Called when we finish drawing for this DrawItem to the [DrawItem.drawPane](#attr-drawitemdrawpane)'s underlying HTML5 `<canvas>` element. Only called if the [DrawingType](../reference.md#type-drawingtype) is "bitmap".
 
 There is no default implementation of this method.
 
@@ -1369,7 +1369,7 @@ Returns the [zIndex](#attr-drawitemzindex) of this draw item.
 
 ### Returns
 
-`[Integer](../main_2.md#type-integer)` — this draw item's zIndex, or null if not resolved yet. If the `resolveToNumber` parameter is true, then the returned integer is guaranteed to be non-null.
+`[Integer](../reference_2.md#type-integer)` — this draw item's zIndex, or null if not resolved yet. If the `resolveToNumber` parameter is true, then the returned integer is guaranteed to be non-null.
 
 ### Groups
 
@@ -1393,7 +1393,7 @@ Shows a set of control knobs for this drawItem. Updates [DrawItem.knobs](#attr-d
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| knobType | [KnobType](../main.md#type-knobtype)|[Array of KnobType](#type-array-of-knobtype) | false | — | knobs to show |
+| knobType | [KnobType](../reference.md#type-knobtype)|[Array of KnobType](#type-array-of-knobtype) | false | — | knobs to show |
 
 ---
 ## Method: DrawItem.doubleClick
@@ -1443,10 +1443,10 @@ If [DrawItem.canDrag](#attr-drawitemcandrag) is true and the [control knobs](#at
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | position | [String](#type-string) | false | — | provides which knob of the [DrawItem.resizeKnobPoints](#attr-drawitemresizeknobpoints) was dragged |
-| x | [Integer](../main_2.md#type-integer) | false | — | new x-coordinate of the knob |
-| y | [Integer](../main_2.md#type-integer) | false | — | new y-coordinate of the knob |
-| dX | [Integer](../main_2.md#type-integer) | false | — | horizontal distance moved |
-| dY | [Integer](../main_2.md#type-integer) | false | — | vertical distance moved |
+| x | [Integer](../reference_2.md#type-integer) | false | — | new x-coordinate of the knob |
+| y | [Integer](../reference_2.md#type-integer) | false | — | new y-coordinate of the knob |
+| dX | [Integer](../reference_2.md#type-integer) | false | — | horizontal distance moved |
+| dY | [Integer](../reference_2.md#type-integer) | false | — | vertical distance moved |
 
 **Flags**: A
 
@@ -1462,7 +1462,7 @@ If you want to do some other processing before showing a menu or do something el
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — false == don't show native context menu, true == show native context menu
+`[boolean](../reference.md#type-boolean)` — false == don't show native context menu, true == show native context menu
 
 ### Groups
 
@@ -1488,7 +1488,7 @@ If you want to do some other processing before showing a menu or do something el
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newCursor | [Cursor](../main.md#type-cursor) | false | — | new cursor. |
+| newCursor | [Cursor](../reference.md#type-cursor) | false | — | new cursor. |
 
 ---
 ## Method: DrawItem.setTitle
@@ -1542,8 +1542,8 @@ Change the center point for this DrawItem.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| left | [int](../main.md#type-int) | false | — | X coordinate of the center point (in the global coordinate system). |
-| top | [int](../main.md#type-int) | false | — | Y coordinate of the center point (in the global coordinate system). |
+| left | [int](../reference.md#type-int) | false | — | X coordinate of the center point (in the global coordinate system). |
+| top | [int](../reference.md#type-int) | false | — | Y coordinate of the center point (in the global coordinate system). |
 
 ---
 ## Method: DrawItem.setFillColor
@@ -1555,7 +1555,7 @@ Update fillColor for this drawItem.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| color | [CSSColor](../main_2.md#type-csscolor) | false | — | new fillColor to use. Pass null for transparent. |
+| color | [CSSColor](../reference_2.md#type-csscolor) | false | — | new fillColor to use. Pass null for transparent. |
 
 ---
 ## Method: DrawItem.moveTo
@@ -1567,8 +1567,8 @@ Move the DrawItem to the specified coordinates in the global coordinate system. 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| left | [Integer](../main_2.md#type-integer) | false | — | new left coordinate in pixels |
-| top | [Integer](../main_2.md#type-integer) | false | — | new top coordinate in pixels |
+| left | [Integer](../reference_2.md#type-integer) | false | — | new left coordinate in pixels |
+| top | [Integer](../reference_2.md#type-integer) | false | — | new top coordinate in pixels |
 
 ---
 ## Method: DrawItem.mouseUp
@@ -1601,7 +1601,7 @@ Update linePattern for this drawItem.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| pattern | [LinePattern](../main.md#type-linepattern) | false | — | new linePattern to use |
+| pattern | [LinePattern](../reference.md#type-linepattern) | false | — | new linePattern to use |
 
 ---
 ## Method: DrawItem.destroy
@@ -1631,8 +1631,8 @@ Scale the shape by the x, y multipliers
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| x | [float](../main.md#type-float) | false | — | scale in the x direction |
-| y | [float](../main.md#type-float) | false | — | scale in the y direction |
+| x | [float](../reference.md#type-float) | false | — | scale in the x direction |
+| y | [float](../reference.md#type-float) | false | — | scale in the y direction |
 
 ---
 ## Method: DrawItem.click

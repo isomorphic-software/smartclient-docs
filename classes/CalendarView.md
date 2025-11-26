@@ -1,6 +1,6 @@
 # CalendarView Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -43,7 +43,7 @@ If a multi-day event spans beyond the current view's date-range at one or both e
 
 If multiple long-events occupy the same date-range, they are stacked vertically and this component will resize to accommodate them.
 
-This component is an [AutoChild](../main.md#type-autochild) and as such may be customized via `calendarView.longEventsLayoutProperties` and `calendarView.longEventsLayoutDefaults`.
+This component is an [AutoChild](../reference.md#type-autochild) and as such may be customized via `calendarView.longEventsLayoutProperties` and `calendarView.longEventsLayoutDefaults`.
 
 ### Groups
 
@@ -51,7 +51,7 @@ This component is an [AutoChild](../main.md#type-autochild) and as such may be c
 
 ### See Also
 
-- [CalendarEvent](../main.md#object-calendarevent)
+- [CalendarEvent](../reference.md#object-calendarevent)
 
 **Flags**: IR
 
@@ -99,7 +99,7 @@ Returns true if this is the [week](Calendar.md#attr-calendarweekview) or [day](C
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true if this is a Week or Day view
+`[boolean](../reference.md#type-boolean)` — true if this is a Week or Day view
 
 ---
 ## Method: CalendarView.rebuild
@@ -127,7 +127,7 @@ Returns true if this is the [week view](Calendar.md#attr-calendarweekview), fals
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true if this is a Week view
+`[boolean](../reference.md#type-boolean)` — true if this is a Week view
 
 ---
 ## Method: CalendarView.isTimelineView
@@ -137,7 +137,7 @@ Returns true if this is the [timeline view](Calendar.md#attr-calendartimelinevie
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true if this is a Timeline view
+`[boolean](../reference.md#type-boolean)` — true if this is a Timeline view
 
 ---
 ## Method: CalendarView.isDayView
@@ -147,7 +147,7 @@ Returns true if this is the [day view](Calendar.md#attr-calendardayview), false 
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true if this is a Day view
+`[boolean](../reference.md#type-boolean)` — true if this is a Day view
 
 ---
 ## Method: CalendarView.isMonthView
@@ -157,7 +157,7 @@ Returns true if this is the [month view](Calendar.md#attr-calendarmonthview), fa
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true if this is a Month view
+`[boolean](../reference.md#type-boolean)` — true if this is a Month view
 
 ---
 ## Method: CalendarView.scrollToStart

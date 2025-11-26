@@ -1,6 +1,6 @@
 # UserTask Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -15,7 +15,7 @@ A UserTask takes the following steps:
 
 *   Optionally show() or otherwise make visible the [targetView](#attr-usertasktargetview) or [inlineView](#attr-usertaskinlineview)
 *   Provide values to either a [DynamicForm](DynamicForm.md#class-dynamicform) designated as the [targetForm](#attr-usertasktargetform) or to a [ValuesManager](ValuesManager.md#class-valuesmanager) designated as the [targetVM](#attr-usertasktargetvm), via [setValues()](ValuesManager.md#method-valuesmanagersetvalues)
-*   Waits for notification of completion or cancellation. The UserTask is notified of completion if a [SubmitItem](../main.md#class-submititem) is pressed in either the `targetForm` or any form that is a member of the `targetVM`. Likewise a [CancelItem](../main.md#class-cancelitem) triggers cancellation. Direct calls to [DynamicForm.cancelEditing](DynamicForm.md#method-dynamicformcancelediting) or [DynamicForm.completeEditing](DynamicForm.md#method-dynamicformcompleteediting) achieve the same result.
+*   Waits for notification of completion or cancellation. The UserTask is notified of completion if a [SubmitItem](../reference.md#class-submititem) is pressed in either the `targetForm` or any form that is a member of the `targetVM`. Likewise a [CancelItem](../reference.md#class-cancelitem) triggers cancellation. Direct calls to [DynamicForm.cancelEditing](DynamicForm.md#method-dynamicformcancelediting) or [DynamicForm.completeEditing](DynamicForm.md#method-dynamicformcompleteediting) achieve the same result.
 *   if cancellation occurs, the process continues to the [cancelElement](#attr-usertaskcancelelement) if specified. Otherwise the workflow is immediately finished.
 *   if completion occurs, values are retrieved from the form or valuesManager and applied to the process state based on [outputField](Task.md#attr-taskoutputfield), [outputFieldList](Task.md#attr-taskoutputfieldlist) or [inputs](Task.md#attr-taskinputs), in that order.
 
@@ -82,7 +82,7 @@ An inline definition of the form. Can be used in place of [UserTask.targetView](
 ### Description
 Does this processElement pass through output from the last executed task (i.e. transient state)?
 
-See [taskInputExpressions](../main_2.md#type-taskinputexpression) for details on the transient state outputs.
+See [taskInputExpressions](../reference_2.md#type-taskinputexpression) for details on the transient state outputs.
 
 Note that this property does not affect the task at all but is an indicator to the user and to the workflow editor of the behavior of the task as coded (See [Process.passThruTaskOutput](Process.md#method-processpassthrutaskoutput)).
 
@@ -92,7 +92,7 @@ Note that this property does not affect the task at all but is an indicator to t
 ## Attr: UserTask.saveToServer
 
 ### Description
-If saveToServer is set then the associated form ([UserTask.targetForm](#attr-usertasktargetform)) will perform the normal [DynamicForm.submit](DynamicForm.md#method-dynamicformsubmit) actions when submitted (typically from a [SubmitItem](../main.md#class-submititem)). By default the form submit action is bypassed.
+If saveToServer is set then the associated form ([UserTask.targetForm](#attr-usertasktargetform)) will perform the normal [DynamicForm.submit](DynamicForm.md#method-dynamicformsubmit) actions when submitted (typically from a [SubmitItem](../reference.md#class-submititem)). By default the form submit action is bypassed.
 
 **Flags**: IR
 

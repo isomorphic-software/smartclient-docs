@@ -1,15 +1,15 @@
 # xmlCriteriaShorthand
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
 ## KB Topic: xmlCriteriaShorthand
 
 ### Description
-_All rules described in this topic are applied any time a property is of type [AdvancedCriteria](../main.md#object-advancedcriteria) (in both Component XML and JavaScript component creation) and any API declares an [AdvancedCriteria](../main.md#object-advancedcriteria) param._
+_All rules described in this topic are applied any time a property is of type [AdvancedCriteria](../reference.md#object-advancedcriteria) (in both Component XML and JavaScript component creation) and any API declares an [AdvancedCriteria](../reference.md#object-advancedcriteria) param._
 
-A shorthand format for [AdvancedCriteria](../main.md#object-advancedcriteria) is supported for simple criteria where the outer criterion is assumed to be an "and" operator:
+A shorthand format for [AdvancedCriteria](../reference.md#object-advancedcriteria) is supported for simple criteria where the outer criterion is assumed to be an "and" operator:
 
 ```
  <!-- Simple format -->

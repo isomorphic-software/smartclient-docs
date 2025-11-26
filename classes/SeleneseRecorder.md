@@ -1,12 +1,12 @@
 # SeleneseRecorder Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
 ## Class: SeleneseRecorder
 
-*Inherits from:* [VLayout](../main.md#class-vlayout)
+*Inherits from:* [VLayout](../reference.md#class-vlayout)
 
 ### Description
 Selenese Recorder is a tool that can automatically record browser interaction as Selenese Commands, or play back Selenese previously recorded by launching a separate browser using Selenium APIs. Rather than creating your own instance of the recorder, you can also use it from the the [Developer Console](../kb_topics/debugging.md#kb-topic-debugging), which avoids having to integrate it with your application.

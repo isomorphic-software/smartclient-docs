@@ -1,6 +1,6 @@
 # DateUtil Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -137,14 +137,14 @@ Sets a new default separator that will be used when formatting dates. By default
 ## ClassMethod: DateUtil.format
 
 ### Description
-Return the parameter date formatted according to the parameter [FormatString](../main.md#type-formatstring). This method is used to implement the [DataSourceField.format](DataSourceField.md#attr-datasourcefieldformat) functionality, but it can also be used to format arbitrary dates programmatically.
+Return the parameter date formatted according to the parameter [FormatString](../reference.md#type-formatstring). This method is used to implement the [DataSourceField.format](DataSourceField.md#attr-datasourcefieldformat) functionality, but it can also be used to format arbitrary dates programmatically.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | date | [Date](#type-date) | false | — | The date to format |
-| format | [FormatString](../main.md#type-formatstring) | false | — | The format to apply to this date |
+| format | [FormatString](../reference.md#type-formatstring) | false | — | The format to apply to this date |
 
 ### Returns
 
@@ -164,7 +164,7 @@ Sets the global attribute that dictates whether the [choosers](DateChooser.md#cl
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| showChooserFiscalYearPickers | [boolean](../main.md#type-boolean) | false | — | whether to show Fiscal Year pickers in DateChoosers by default |
+| showChooserFiscalYearPickers | [boolean](../reference.md#type-boolean) | false | — | whether to show Fiscal Year pickers in DateChoosers by default |
 
 ---
 ## ClassMethod: DateUtil.setShortDatetimeDisplayFormat
@@ -172,7 +172,7 @@ Sets the global attribute that dictates whether the [choosers](DateChooser.md#cl
 ### Description
 Set the default short format for datetime values. After calling this method, subsequent calls to [Date.toShortDateTime](Date.md#method-datetoshortdatetime) will return a string formatted according to this format specification. Note that this will be the standard datetime format used by SmartClient components.
 
-The `format` parameter may be a [FormatString](../main.md#type-formatstring), a [DateDisplayFormat](../main.md#type-datedisplayformat) string, or a function. If passed a function, this function will be executed in the scope of the Date and should return the formatted string.  
+The `format` parameter may be a [FormatString](../reference.md#type-formatstring), a [DateDisplayFormat](../reference.md#type-datedisplayformat) string, or a function. If passed a function, this function will be executed in the scope of the Date and should return the formatted string.  
 
 Initial default format is `"toUSShortDatetime"`. See [http://en.wikipedia.org/wiki/Date\_format\_by\_country](http://en.wikipedia.org/wiki/Date_format_by_country) for a useful overview of standard date formats per country.
 
@@ -180,7 +180,7 @@ Initial default format is `"toUSShortDatetime"`. See [http://en.wikipedia.org/wi
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| format | [FormatString](../main.md#type-formatstring)|[DateDisplayFormat](../main.md#type-datedisplayformat)|[Function](#type-function) | false | — | new formatter |
+| format | [FormatString](../reference.md#type-formatstring)|[DateDisplayFormat](../reference.md#type-datedisplayformat)|[Function](#type-function) | false | — | new formatter |
 
 ### Groups
 
@@ -201,7 +201,7 @@ Compare two dates; returns 0 if equal, -1 if the first date is greater (later), 
 
 ### Returns
 
-`[int](../main.md#type-int)` — 0 if equal, -1 if first date > second date, 1 if second date > first date
+`[int](../reference.md#type-int)` — 0 if equal, -1 if first date > second date, 1 if second date > first date
 
 ---
 ## ClassMethod: DateUtil.setInputFormat
@@ -209,7 +209,7 @@ Compare two dates; returns 0 if equal, -1 if the first date is greater (later), 
 ### Description
 Sets up the default system-wide input format for strings being parsed into dates via `DateUtil.parseInput()`. This will effect how SmartClient components showing editable date or datetime fields parse user-entered values into live Date objects.
 
-The input format can be specified as a [DateInputFormat](../main.md#type-dateinputformat) - a 3 character string like `"MDY"` indicating the order of the Month, Day and Year components of date strings.
+The input format can be specified as a [DateInputFormat](../reference.md#type-dateinputformat) - a 3 character string like `"MDY"` indicating the order of the Month, Day and Year components of date strings.
 
 As an example - an input format of "MDY" would parse "01/02/1999" to Jan 2nd 1999  
 This standard parsing logic will also handle date-time strings such as "01/02/1999 08:45", or "01/02/1999 16:21:05".
@@ -224,7 +224,7 @@ Notes:
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| format | [DateInputFormat](../main.md#type-dateinputformat)|[Function](#type-function) | false | — | Default format for strings to be parsed into Dates. If this method is passed a function, it is expected to take a single parameter (the formatted date string), and return the appropriate Javascript Date object (or null if appropriate). |
+| format | [DateInputFormat](../reference.md#type-dateinputformat)|[Function](#type-function) | false | — | Default format for strings to be parsed into Dates. If this method is passed a function, it is expected to take a single parameter (the formatted date string), and return the appropriate Javascript Date object (or null if appropriate). |
 
 ### See Also
 
@@ -277,7 +277,7 @@ Returns a date's week-number, according to the fiscal calendar
 
 ### Returns
 
-`[int](../main.md#type-int)` — the fiscal week for the passed date
+`[int](../reference.md#type-int)` — the fiscal week for the passed date
 
 ---
 ## ClassMethod: DateUtil.getDisplayDay
@@ -293,7 +293,7 @@ Returns the day of month from the passed datetime, as it will be displayed to th
 
 ### Returns
 
-`[int](../main.md#type-int)` — the day of month from the passed datetime
+`[int](../reference.md#type-int)` — the day of month from the passed datetime
 
 ---
 ## ClassMethod: DateUtil.setWeekendDays
@@ -311,18 +311,18 @@ Sets the days that are considered [weekend days](#classattr-dateutilweekenddays)
 ## ClassMethod: DateUtil.getFiscalYear
 
 ### Description
-Returns the [FiscalYear](../main_2.md#object-fiscalyear) object for the fiscal year in which the passed date exists.
+Returns the [FiscalYear](../reference_2.md#object-fiscalyear) object for the fiscal year in which the passed date exists.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| date | [Date](#type-date)|[int](../main.md#type-int) | false | — | the date to get the fiscal year for |
+| date | [Date](#type-date)|[int](../reference.md#type-int) | false | — | the date to get the fiscal year for |
 | fiscalCalendar | [FiscalCalendar](#type-fiscalcalendar) | true | — | the object representing the start of the fiscal period |
 
 ### Returns
 
-`[FiscalYear](#type-fiscalyear)` — the [FiscalYear](../main_2.md#object-fiscalyear) object for the passed date
+`[FiscalYear](#type-fiscalyear)` — the [FiscalYear](../reference_2.md#object-fiscalyear) object for the passed date
 
 ---
 ## ClassMethod: DateUtil.create
@@ -340,7 +340,7 @@ Create a new `Date` object - synonym for `new Date(arguments)`
 ### Description
 Set the default formatter for date objects to the method name passed in. After calling this method, subsequent calls to [Date.toNormalDate](Date.md#method-datetonormaldate) will return a string formatted according to this format specification. Note: this will be the standard long date format used by SmartClient components.
 
-The `format` parameter may be a [FormatString](../main.md#type-formatstring), a [DateDisplayFormat](../main.md#type-datedisplayformat) string, or a function. If passed a function, this function will be executed in the scope of the Date and should return the formatted string.  
+The `format` parameter may be a [FormatString](../reference.md#type-formatstring), a [DateDisplayFormat](../reference.md#type-datedisplayformat) string, or a function. If passed a function, this function will be executed in the scope of the Date and should return the formatted string.  
 
 Initial default normalDisplayFormat is `"toLocaleString"`
 
@@ -348,7 +348,7 @@ Initial default normalDisplayFormat is `"toLocaleString"`
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| format | [FormatString](../main.md#type-formatstring)|[DateDisplayFormat](../main.md#type-datedisplayformat)|[Function](#type-function) | false | — | new formatter |
+| format | [FormatString](../reference.md#type-formatstring)|[DateDisplayFormat](../reference.md#type-datedisplayformat)|[Function](#type-function) | false | — | new formatter |
 
 ### Groups
 
@@ -369,7 +369,7 @@ Compare two dates, normalizing out the time elements so that only the date eleme
 
 ### Returns
 
-`[int](../main.md#type-int)` — 0 if equal, -1 if first date > second date, 1 if second date > first date. Returns false if either argument is not a date
+`[int](../reference.md#type-int)` — 0 if equal, -1 if first date > second date, 1 if second date > first date. Returns false if either argument is not a date
 
 ---
 ## ClassMethod: DateUtil.getLogicalTimeOnly
@@ -404,7 +404,7 @@ Returns the end of some period, like day, week or month, relative to a passed Da
 | date | [Date](#type-date) | false | — | the base date to find the period end from |
 | period | [String](#type-string) | false | — | the period to return the end of, one of mn/h/d/w/m/y |
 | logicalDate | [Boolean](#type-boolean) | true | — | process and return a logicalDate with no time element |
-| firstDayOfWeek | [Integer](../main_2.md#type-integer) | true | — | which day should be considered the firstDayOfWeek - overrides the default provided by the locale |
+| firstDayOfWeek | [Integer](../reference_2.md#type-integer) | true | — | which day should be considered the firstDayOfWeek - overrides the default provided by the locale |
 
 ### Returns
 
@@ -422,7 +422,7 @@ Sets the global attribute that dictates whether the [choosers](DateChooser.md#cl
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| showChooserWeekPickers | [boolean](../main.md#type-boolean) | false | — | whether to show Fiscal Week pickers in DateChoosers by default |
+| showChooserWeekPickers | [boolean](../reference.md#type-boolean) | false | — | whether to show Fiscal Week pickers in DateChoosers by default |
 
 ---
 ## ClassMethod: DateUtil.setShortDisplayFormat
@@ -430,7 +430,7 @@ Sets the global attribute that dictates whether the [choosers](DateChooser.md#cl
 ### Description
 Set the default short format for dates. After calling this method, subsequent calls to [Date.toShortDate](Date.md#method-datetoshortdate) will return a string formatted according to this format specification. Note that this will be the standard short date format used by SmartClient components.
 
-The `format` parameter may be a [FormatString](../main.md#type-formatstring), a [DateDisplayFormat](../main.md#type-datedisplayformat) string, or a function. If passed a function, this function will be executed in the scope of the Date and should return the formatted string.  
+The `format` parameter may be a [FormatString](../reference.md#type-formatstring), a [DateDisplayFormat](../reference.md#type-datedisplayformat) string, or a function. If passed a function, this function will be executed in the scope of the Date and should return the formatted string.  
 
 Initial default shortDateFormat is `"toUSShortDate"`. This property is commonly modified for localization of applications. See [http://en.wikipedia.org/wiki/Date\_format\_by\_country](http://en.wikipedia.org/wiki/Date_format_by_country) for a useful overview of standard date formats per country.
 
@@ -438,7 +438,7 @@ Initial default shortDateFormat is `"toUSShortDate"`. This property is commonly 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| format | [FormatString](../main.md#type-formatstring)|[DateDisplayFormat](../main.md#type-datedisplayformat)|[Function](#type-function) | false | — | new formatter |
+| format | [FormatString](../reference.md#type-formatstring)|[DateDisplayFormat](../reference.md#type-datedisplayformat)|[Function](#type-function) | false | — | new formatter |
 
 ### Groups
 
@@ -458,7 +458,7 @@ Returns the month number from the passed datetime, as it will be displayed to th
 
 ### Returns
 
-`[int](../main.md#type-int)` — the month number from the passed datetime
+`[int](../reference.md#type-int)` — the month number from the passed datetime
 
 ---
 ## ClassMethod: DateUtil.setFiscalCalendar
@@ -486,7 +486,7 @@ Returns the minutes value from the passed datetime, as it will be displayed to t
 
 ### Returns
 
-`[int](../main.md#type-int)` — the minutes value from the passed datetime
+`[int](../reference.md#type-int)` — the minutes value from the passed datetime
 
 ---
 ## ClassMethod: DateUtil.getStartOf
@@ -501,7 +501,7 @@ Returns the start of some period, like day, week or month, relative to a passed 
 | date | [Date](#type-date) | false | — | the base date to find the period start from |
 | period | [String](#type-string) | false | — | the period to return the start of, one of mn/h/d/w/m/y |
 | logicalDate | [Boolean](#type-boolean) | true | — | process and return a logicalDate with no time element |
-| firstDayOfWeek | [Integer](../main_2.md#type-integer) | true | — | which day should be considered the firstDayOfWeek - overrides the default provided by the locale |
+| firstDayOfWeek | [Integer](../reference_2.md#type-integer) | true | — | which day should be considered the firstDayOfWeek - overrides the default provided by the locale |
 
 ### Returns
 
@@ -515,13 +515,13 @@ Returns the start of some period, like day, week or month, relative to a passed 
 ### Description
 Set the default normal format for datetime values. After calling this method, subsequent calls to [Date.toNormalDatetime](Date.md#method-datetonormaldatetime) will return a string formatted according to this format specification. Note that this will be the standard datetime format used by SmartClient components.
 
-The `format` parameter may be a [FormatString](../main.md#type-formatstring), a [DateDisplayFormat](../main.md#type-datedisplayformat) string, or a function. If passed a function, this function will be executed in the scope of the Date and should return the formatted string.
+The `format` parameter may be a [FormatString](../reference.md#type-formatstring), a [DateDisplayFormat](../reference.md#type-datedisplayformat) string, or a function. If passed a function, this function will be executed in the scope of the Date and should return the formatted string.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| format | [FormatString](../main.md#type-formatstring)|[DateDisplayFormat](../main.md#type-datedisplayformat)|[Function](#type-function) | false | — | new formatter |
+| format | [FormatString](../reference.md#type-formatstring)|[DateDisplayFormat](../reference.md#type-datedisplayformat)|[Function](#type-function) | false | — | new formatter |
 
 ### Groups
 
@@ -541,9 +541,9 @@ See [dateFormatAndStorage](../kb_topics/dateFormatAndStorage.md#kb-topic-date-an
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| hour | [Integer](../main_2.md#type-integer)|[Date](#type-date) | false | — | integer hour (0-23) or a Date instance - if passed a Date instance, its time-elements are mapped to hour, minute and second parameters. Passing null is the same as passing `new Date()` |
-| minute | [Integer](../main_2.md#type-integer) | false | — | minute (0-59) - defaults to zero or, if the `hour` parameter is a Date instance, the minutes from that Date instance |
-| second | [Integer](../main_2.md#type-integer) | false | — | second (0-59) - defaults to zero or, if the `hour` parameter is a Date instance, the seconds from that Date |
+| hour | [Integer](../reference_2.md#type-integer)|[Date](#type-date) | false | — | integer hour (0-23) or a Date instance - if passed a Date instance, its time-elements are mapped to hour, minute and second parameters. Passing null is the same as passing `new Date()` |
+| minute | [Integer](../reference_2.md#type-integer) | false | — | minute (0-59) - defaults to zero or, if the `hour` parameter is a Date instance, the minutes from that Date instance |
+| second | [Integer](../reference_2.md#type-integer) | false | — | second (0-59) - defaults to zero or, if the `hour` parameter is a Date instance, the seconds from that Date |
 
 ### Returns
 
@@ -560,8 +560,8 @@ Parse a date passed in as a string, returning the appropriate date object.
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | dateString | [String](#type-string) | false | — | date value as a string |
-| format | [DateInputFormat](../main.md#type-dateinputformat) | true | — | Format of the date string being passed. If not passed, the default date input format as set up via setInputFormat() will be used. |
-| centuryThreshold | [Integer](../main_2.md#type-integer) | true | — | For date formats that support a 2 digit year, if parsed year is 2 digits and less than this number, assume year to be 20xx rather than 19xx |
+| format | [DateInputFormat](../reference.md#type-dateinputformat) | true | — | Format of the date string being passed. If not passed, the default date input format as set up via setInputFormat() will be used. |
+| centuryThreshold | [Integer](../reference_2.md#type-integer) | true | — | For date formats that support a 2 digit year, if parsed year is 2 digits and less than this number, assume year to be 20xx rather than 19xx |
 | suppressConversion | [Boolean](#type-boolean) | true | — | If the string passed in was not a valid date, in some cases we can convert to a valid date (for example incrementing the year if the month is greater than 12). This optional parameter will suppress such conversions - anything that doesn't parse directly to a valid date will simply return null. |
 
 ### Returns
@@ -586,9 +586,9 @@ See [dateFormatAndStorage](../kb_topics/dateFormatAndStorage.md#kb-topic-date-an
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| year | [int](../main.md#type-int)|[Date](#type-date) | false | — | full year or a Date instance - if passed a Date, its parts are mapped to year, month and date parameters. Passing null is the same as passing `new Date()` |
-| month | [int](../main.md#type-int) | false | — | month (zero based, so 0 is January) - defaults to today's month or, if the `year` parameter is a Date instance, to the month from that instance |
-| date | [int](../main.md#type-int) | false | — | date within the month - defaults to today's date or, if the `year` parameter is a Date instance, to the date from that instance |
+| year | [int](../reference.md#type-int)|[Date](#type-date) | false | — | full year or a Date instance - if passed a Date, its parts are mapped to year, month and date parameters. Passing null is the same as passing `new Date()` |
+| month | [int](../reference.md#type-int) | false | — | month (zero based, so 0 is January) - defaults to today's month or, if the `year` parameter is a Date instance, to the month from that instance |
+| date | [int](../reference.md#type-int) | false | — | date within the month - defaults to today's date or, if the `year` parameter is a Date instance, to the date from that instance |
 
 ### Returns
 
@@ -598,14 +598,14 @@ See [dateFormatAndStorage](../kb_topics/dateFormatAndStorage.md#kb-topic-date-an
 ## ClassMethod: DateUtil.adjustDate
 
 ### Description
-Returns a new [Date](../main_2.md#object-date) instance, representing the `baseDate` adjusted by the relative amount of the [relativeDateString](../main_2.md#type-relativedatestring).
+Returns a new [Date](../reference_2.md#object-date) instance, representing the `baseDate` adjusted by the relative amount of the [relativeDateString](../reference_2.md#type-relativedatestring).
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | baseDate | [Date](#type-date) | false | — | Date instance to apply a relative amount to - defaults to new Date() |
-| relativeDateString | [RelativeDateString](../main_2.md#type-relativedatestring) | false | — | the relative amount to apply to the `baseDate` |
+| relativeDateString | [RelativeDateString](../reference_2.md#type-relativedatestring) | false | — | the relative amount to apply to the `baseDate` |
 
 ### Returns
 
@@ -615,18 +615,18 @@ Returns a new [Date](../main_2.md#object-date) instance, representing the `baseD
 ## ClassMethod: DateUtil.mapRelativeDateShortcut
 
 ### Description
-Converts a [RelativeDateShortcut](../main.md#type-relativedateshortcut) to a [RelativeDateString](../main_2.md#type-relativedatestring).
+Converts a [RelativeDateShortcut](../reference.md#type-relativedateshortcut) to a [RelativeDateString](../reference_2.md#type-relativedatestring).
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| relativeDate | [RelativeDateShortcut](../main.md#type-relativedateshortcut) | false | — | shortcut string to convert |
-| rangePosition | [RelativeDateRangePosition](../main_2.md#type-relativedaterangeposition) | true | — | Are we interested in the start or end of the specified relative date? This applies to shortcuts which do not specify a specific moment (such as `$today`) - it does not apply to shortcuts which already specify a specific moment such as `$startOfToday`. If unspecified rangePosition is always assumed to be "start" |
+| relativeDate | [RelativeDateShortcut](../reference.md#type-relativedateshortcut) | false | — | shortcut string to convert |
+| rangePosition | [RelativeDateRangePosition](../reference_2.md#type-relativedaterangeposition) | true | — | Are we interested in the start or end of the specified relative date? This applies to shortcuts which do not specify a specific moment (such as `$today`) - it does not apply to shortcuts which already specify a specific moment such as `$startOfToday`. If unspecified rangePosition is always assumed to be "start" |
 
 ### Returns
 
-`[RelativeDateString](../main_2.md#type-relativedatestring)` — converted relative date string.
+`[RelativeDateString](../reference_2.md#type-relativedatestring)` — converted relative date string.
 
 **Flags**: A
 
@@ -644,7 +644,7 @@ Returns the hours value from the passed datetime, as it will be displayed to the
 
 ### Returns
 
-`[int](../main.md#type-int)` — the hours value from the passed datetime
+`[int](../reference.md#type-int)` — the hours value from the passed datetime
 
 ---
 ## ClassMethod: DateUtil.getWeekendDays
@@ -674,12 +674,12 @@ See [dateFormatAndStorage](../kb_topics/dateFormatAndStorage.md#kb-topic-date-an
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| year | [Integer](../main_2.md#type-integer)|[Date](#type-date) | true | — | full year or a Date instance or date-string - if passed a Date, or a date-string, its parts are mapped to all the other parameters. Passing null is the same as passing `new Date()` |
-| month | [Integer](../main_2.md#type-integer) | true | — | month (zero based, so 0 is January) - defaults to today's month or, if the `year` parameter is a Date instance, to the month from that instance |
-| date | [Integer](../main_2.md#type-integer) | true | — | date within the month - defaults to today's date or, if the `year` parameter is a Date instance, to the date from that instance |
-| hour | [Integer](../main_2.md#type-integer) | true | — | integer hour (0-23) - defaults to zero or, if the `year` parameter is a Date instance, the hours from that Date instance |
-| minute | [Integer](../main_2.md#type-integer) | true | — | minute (0-59) - defaults to zero or, if the `year` parameter is a Date instance, the minutes from that Date instance |
-| second | [Integer](../main_2.md#type-integer) | true | — | second (0-59) - defaults to zero or, if the `year` parameter is a Date instance, the seconds from that Date |
+| year | [Integer](../reference_2.md#type-integer)|[Date](#type-date) | true | — | full year or a Date instance or date-string - if passed a Date, or a date-string, its parts are mapped to all the other parameters. Passing null is the same as passing `new Date()` |
+| month | [Integer](../reference_2.md#type-integer) | true | — | month (zero based, so 0 is January) - defaults to today's month or, if the `year` parameter is a Date instance, to the month from that instance |
+| date | [Integer](../reference_2.md#type-integer) | true | — | date within the month - defaults to today's date or, if the `year` parameter is a Date instance, to the date from that instance |
+| hour | [Integer](../reference_2.md#type-integer) | true | — | integer hour (0-23) - defaults to zero or, if the `year` parameter is a Date instance, the hours from that Date instance |
+| minute | [Integer](../reference_2.md#type-integer) | true | — | minute (0-59) - defaults to zero or, if the `year` parameter is a Date instance, the minutes from that Date instance |
+| second | [Integer](../reference_2.md#type-integer) | true | — | second (0-59) - defaults to zero or, if the `year` parameter is a Date instance, the seconds from that Date |
 
 ### Returns
 
@@ -699,7 +699,7 @@ Returns the full year from the passed datetime, as it will be displayed to the u
 
 ### Returns
 
-`[int](../main.md#type-int)` — the 4-digit display year from the passed datetime
+`[int](../reference.md#type-int)` — the 4-digit display year from the passed datetime
 
 ---
 ## ClassMethod: DateUtil.getLogicalDateOnly
@@ -762,22 +762,22 @@ The default value is picked up from the current locale.
 
 ### Returns
 
-`[int](../main.md#type-int)` — the number of the day being used as the first day of the week
+`[int](../reference.md#type-int)` — the number of the day being used as the first day of the week
 
 ---
 ## ClassMethod: DateUtil.getAbsoluteDate
 
 ### Description
-Converts a [RelativeDate](../main.md#object-relativedate), [RelativeDateShortcut](../main.md#type-relativedateshortcut), or [RelativeDateString](../main_2.md#type-relativedatestring) to a concrete Date.
+Converts a [RelativeDate](../reference.md#object-relativedate), [RelativeDateShortcut](../reference.md#type-relativedateshortcut), or [RelativeDateString](../reference_2.md#type-relativedatestring) to a concrete Date.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| relativeDate | [RelativeDate](#type-relativedate)|[RelativeDateShortcut](../main.md#type-relativedateshortcut)|[RelativeDateString](../main_2.md#type-relativedatestring) | false | — | the relative date to convert |
+| relativeDate | [RelativeDate](#type-relativedate)|[RelativeDateShortcut](../reference.md#type-relativedateshortcut)|[RelativeDateString](../reference_2.md#type-relativedatestring) | false | — | the relative date to convert |
 | baseDate | [Date](#type-date) | true | — | base value for conversion. Defaults to the current date/time. |
-| rangePosition | [RelativeDateRangePosition](../main_2.md#type-relativedaterangeposition) | true | — | optional date-range position. Only has an effect if the date passed in is a [RelativeDateShortcut](../main.md#type-relativedateshortcut) where the range position is not implicit, such as "$yesterday" |
-| isLogicalDate | [boolean](../main.md#type-boolean) | true | — | should the generated date be marked as a "logical" date? A logical date object is a Date value where the time component is ignored for formatting and serialization purposes - such as the date displayed within a component field of specified type "date". See [dateFormatAndStorage](../kb_topics/dateFormatAndStorage.md#kb-topic-date-and-time-format-and-storage) for more on logical dates vs datetime type values. |
+| rangePosition | [RelativeDateRangePosition](../reference_2.md#type-relativedaterangeposition) | true | — | optional date-range position. Only has an effect if the date passed in is a [RelativeDateShortcut](../reference.md#type-relativedateshortcut) where the range position is not implicit, such as "$yesterday" |
+| isLogicalDate | [boolean](../reference.md#type-boolean) | true | — | should the generated date be marked as a "logical" date? A logical date object is a Date value where the time component is ignored for formatting and serialization purposes - such as the date displayed within a component field of specified type "date". See [dateFormatAndStorage](../kb_topics/dateFormatAndStorage.md#kb-topic-date-and-time-format-and-storage) for more on logical dates vs datetime type values. |
 
 ### Returns
 
@@ -793,7 +793,7 @@ Return an array of the short names of each day, suitable for use in a selection 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| length | [int](../main.md#type-int) | false | — | maximum length of each day string - default is no maximum (full strings) |
+| length | [int](../reference.md#type-int) | false | — | maximum length of each day string - default is no maximum (full strings) |
 
 ### Returns
 
@@ -809,7 +809,7 @@ Return an array of the short names of each day, suitable for use in a selection 
 ## ClassMethod: DateUtil.getFiscalCalendar
 
 ### Description
-Returns the global [FiscalCalendar object](../main.md#object-fiscalcalendar) representing the start month and date of the fiscal year in the current locale.
+Returns the global [FiscalCalendar object](../reference.md#object-fiscalcalendar) representing the start month and date of the fiscal year in the current locale.
 
 ### Returns
 
@@ -837,6 +837,6 @@ The default value is picked up from the current locale.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| firstDayOfWeek | [int](../main.md#type-int) | false | — | the number of the day to use as the first day of the week |
+| firstDayOfWeek | [int](../reference.md#type-int) | false | — | the number of the day to use as the first day of the week |
 
 ---

@@ -1,6 +1,6 @@
 # DataBound Component Methods
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -73,6 +73,6 @@ Action Methods are available on DataBoundComponents.
 
 ### See Also
 
-- [DataBoundComponent](../main.md#interface-databoundcomponent)
+- [DataBoundComponent](../reference.md#interface-databoundcomponent)
 
 ---

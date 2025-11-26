@@ -1,6 +1,6 @@
 # TextSettings Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -37,7 +37,7 @@ Separator between Records. For import, default of null means that either the Uni
 ## Attr: TextSettings.escapingMode
 
 ### Description
-[EscapingMode](../main.md#type-escapingmode) expected for escaping special characters embedded in text values.
+[EscapingMode](../reference.md#type-escapingmode) expected for escaping special characters embedded in text values.
 
 **Flags**: IR
 

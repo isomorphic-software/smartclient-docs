@@ -1,6 +1,6 @@
 # Process Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -16,7 +16,7 @@ A instance of Process represents a stateful process executing a series of Tasks,
 
 A Process is _stateful_ in the sense that it maintains [state](#attr-processstate) across the different tasks that are executed. This allows you to maintain context as you walk a user through a multi-step business process in your application, which may involve multiple operations on multiple entities. Each Task that executes can use the Process state as inputs, and can output a result which is stored in the Process state - see [taskIO](../kb_topics/taskIO.md#kb-topic-task-input--output).
 
-A Process can have multiple branches, choosing the next Task to execute based on [Criteria](../main_2.md#type-criteria) - see [DecisionTask](DecisionTask.md#class-decisiontask) and [MultiDecisionTask](MultiDecisionTask.md#class-multidecisiontask).
+A Process can have multiple branches, choosing the next Task to execute based on [Criteria](../reference_2.md#type-criteria) - see [DecisionTask](DecisionTask.md#class-decisiontask) and [MultiDecisionTask](MultiDecisionTask.md#class-multidecisiontask).
 
 Because a Process may return to a previous Task in various situations, the data model of a Process is strictly speaking a _graph_ (a set of nodes connected by arbitary interlinks). However, most processes have sequences of several tasks in a row, and the definition format allows these to be represented as simple Arrays called "sequences", specified via [Process.sequences](#attr-processsequences). This reduces the need to manually specify IDs and interlinks for Tasks that simply proceed to the next task in a sequence.
 
@@ -61,7 +61,7 @@ Value of `failureElement` in various [tasks](ProcessElement.md#class-processelem
 Current state of a process. As with Records in general, any field of a Record may contain a nested Record or Array of Records, so the process state is essentially a hierarchical data structure.
 
 #### Transient state
-In addition to the explicit process state there is a "transient state." The transient state represents the complete output of each of the last tasks of each type within the current process execution. This allows easy reference to the previous task output with [taskInputExpressions](../main_2.md#type-taskinputexpression).
+In addition to the explicit process state there is a "transient state." The transient state represents the complete output of each of the last tasks of each type within the current process execution. This allows easy reference to the previous task output with [taskInputExpressions](../reference_2.md#type-taskinputexpression).
 
 **Flags**: IRW
 
@@ -81,7 +81,7 @@ Sequences of ProcessElements. By defining a sequences of elements you can make t
 
 For a simple sequence of tasks, consider using [Process.tasks](#attr-processtasks) instead.
 
-You do not have to explicitly create a [ProcessSequence](../main.md#class-processsequence), you can instead use the shorthand:
+You do not have to explicitly create a [ProcessSequence](../reference.md#class-processsequence), you can instead use the shorthand:
 
 ```
  isc.Process.create({
@@ -121,7 +121,7 @@ You do not have to explicitly create a [ProcessSequence](../main.md#class-proces
 ## Attr: Process.ruleScope
 
 ### Description
-[Canvas.ID](Canvas.md#attr-canvasid) of the component that manages "rule context" for which this process participates. The rule context can be used in [taskInputExpression](../main_2.md#type-taskinputexpression).
+[Canvas.ID](Canvas.md#attr-canvasid) of the component that manages "rule context" for which this process participates. The rule context can be used in [taskInputExpression](../reference_2.md#type-taskinputexpression).
 
 ### See Also
 
@@ -317,7 +317,7 @@ Process files are stored as .proc.xml files in [Component XML](../kb_topics/comp
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| processId | [Identifier](../main.md#type-identifier)|[Array of Identifier](#type-array-of-identifier) | false | — | process ID or IDs to load |
+| processId | [Identifier](../reference.md#type-identifier)|[Array of Identifier](#type-array-of-identifier) | false | — | process ID or IDs to load |
 | callback | [ProcessCallback](#type-processcallback) | false | — | called when the process is loaded with argument "process", the first process. Other processes can be looked up via [Process.getProcess](#classmethod-processgetprocess). |
 
 ---
@@ -332,7 +332,7 @@ Each process instance created that has an [ID](ProcessElement.md#attr-processele
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| processId | [Identifier](../main.md#type-identifier) | false | — | process ID to retrieve |
+| processId | [Identifier](../reference.md#type-identifier) | false | — | process ID to retrieve |
 
 ### Returns
 
@@ -346,7 +346,7 @@ Each process instance created that has an [ID](ProcessElement.md#attr-processele
 ## Method: Process.setTaskOutput
 
 ### Description
-Sets the task output of `task` in the [process state](../main.md#type-state) so it can be used by later tasks with [Process.getLastTaskOutput](#method-processgetlasttaskoutput) or more commonly with a [TaskInputExpression](../main_2.md#type-taskinputexpression) property.
+Sets the task output of `task` in the [process state](../reference.md#type-state) so it can be used by later tasks with [Process.getLastTaskOutput](#method-processgetlasttaskoutput) or more commonly with a [TaskInputExpression](../reference_2.md#type-taskinputexpression) property.
 
 If the task sets `bindOutput` the output value is also written into that [process state](#attr-processstate) variable.
 
@@ -387,7 +387,7 @@ List is assembled by calling [ProcessElement.getComponentReferences](ProcessElem
 ### Description
 Apply the state updates specified by [Process.setStateVariable](#method-processsetstatevariable) to the process state.
 
-`stateUpdates` is a mapping from a [setterPath](../main_2.md#type-setterpath) to a ${TaskInputExpression} or other value.
+`stateUpdates` is a mapping from a [setterPath](../reference_2.md#type-setterpath) to a ${TaskInputExpression} or other value.
 
 `stateUpdates` can declare nested structures, and `TaskInputExpressions` are allowed anywhere in the nested declaration.
 
@@ -407,8 +407,8 @@ In this example, the output is appended to the "currentDS.fields" array in [Proc
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| stateUpdates | [Object](../main.md#type-object) | false | — | state updates to apply |
-| inputRecord | [Object](../main.md#type-object) | true | — | record to use as the source for any $input [TaskInputExpression](../main_2.md#type-taskinputexpression) properties. |
+| stateUpdates | [Object](../reference.md#type-object) | false | — | state updates to apply |
+| inputRecord | [Object](../reference.md#type-object) | true | — | record to use as the source for any $input [TaskInputExpression](../reference_2.md#type-taskinputexpression) properties. |
 | strict | [Boolean](#type-boolean) | true | — | if true, the paths must exist in the state to be set. Otherwise, the paths will be created if not existing. Defaults to `process.strictPaths` when null. |
 
 ---
@@ -438,7 +438,7 @@ StringMethod called during process execution before each task element is process
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | element | [Task](#type-task) | false | — | the [Task](Task.md#class-task) being executed |
-| context | [Object](../main.md#type-object) | false | — | the [Process.traceContext](#attr-processtracecontext), if set |
+| context | [Object](../reference.md#type-object) | false | — | the [Process.traceContext](#attr-processtracecontext), if set |
 
 ---
 ## Method: Process.getStateVariable
@@ -460,7 +460,7 @@ Returns a variable value from the [process state](#attr-processstate). Values ca
 ## Method: Process.setStateVariable
 
 ### Description
-Sets a [process state](#attr-processstate) variable for later reference with [Process.getStateVariable](#method-processgetstatevariable) or more commonly with a [TaskInputExpression](../main_2.md#type-taskinputexpression) property.
+Sets a [process state](#attr-processstate) variable for later reference with [Process.getStateVariable](#method-processgetstatevariable) or more commonly with a [TaskInputExpression](../reference_2.md#type-taskinputexpression) property.
 
 The path, which is one or more valid identifiers separated by periods, is used to identify the variable. By appending an empty pair of brackets (\[\]) the value will be placed into an existing or new array at the specified path.
 
@@ -468,7 +468,7 @@ The path, which is one or more valid identifiers separated by periods, is used t
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| stateVariablePath | [SetterPath](../main_2.md#type-setterpath) | false | — | path to the variable in the process state to set. |
+| stateVariablePath | [SetterPath](../reference_2.md#type-setterpath) | false | — | path to the variable in the process state to set. |
 | value | [Any](#type-any) | false | — | the value to save |
 | strict | [Boolean](#type-boolean) | true | — | if true, the path must exist in the state to be set. Otherwise, the path will be created if it does not exist. Defaults to `process.strictPaths` when null. |
 
@@ -488,7 +488,7 @@ Sets the task ID of the next task to execute after the current task finishes. If
 ## Method: Process.getLastTaskOutput
 
 ### Description
-Returns the task output of the last task executed. More commonly a [TaskInputExpression](../main_2.md#type-taskinputexpression) property is used (see [ProcessElement.getDynamicValue](ProcessElement.md#method-processelementgetdynamicvalue)).
+Returns the task output of the last task executed. More commonly a [TaskInputExpression](../reference_2.md#type-taskinputexpression) property is used (see [ProcessElement.getDynamicValue](ProcessElement.md#method-processelementgetdynamicvalue)).
 
 ### Parameters
 
@@ -521,7 +521,7 @@ Notification hook invoked after a Task's outputs have been committed to state an
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | task | [Task](#type-task) | false | — | The Task that just committed. |
-| outputs | [Object](../main.md#type-object) | false | — | The committed outputs (if any). |
+| outputs | [Object](../reference.md#type-object) | false | — | The committed outputs (if any). |
 
 ---
 ## Method: Process.start
@@ -549,7 +549,7 @@ Execute a single task in isolation for testing. The process must not already be 
 
 Typically used for automated tests of complex tasks, including those involving AI.
 
-Providing `priorTaskOutputs` means that [TaskInputExpressions](../main_2.md#type-taskinputexpression) and other forms of [Task.inputs](Task.md#attr-taskinputs) declarative inputs will draw from the provided data. For example, $outputs.propertyName used as an expression would refer to the value under `propertyName` in the provided priorTaskOutputs object.
+Providing `priorTaskOutputs` means that [TaskInputExpressions](../reference_2.md#type-taskinputexpression) and other forms of [Task.inputs](Task.md#attr-taskinputs) declarative inputs will draw from the provided data. For example, $outputs.propertyName used as an expression would refer to the value under `propertyName` in the provided priorTaskOutputs object.
 
 If `state` is supplied, it is used as the temporary process state for this call (the original state is preserved). If `ruleScope` is supplied, it replaces the normal [ruleScope determination](#attr-processrulescope) for this invocation only.
 
@@ -561,9 +561,9 @@ When the task completes, `callback` (a [Callbacks.RunTaskCallback](Callbacks.md#
 |------|------|----------|---------|-------------|
 | taskID | [String](#type-string) | false | — | ID of the task to execute. |
 | callback | [RunTaskCallback](#type-runtaskcallback) | false | — | Completion callback. |
-| priorTaskOutputs | [Object](../main.md#type-object) | false | — | Optional object to simulate outputs from a prior task (see behavior above). |
-| state | [Object](../main.md#type-object) | false | — | Optional state fixture to use for this call. |
-| ruleContext | [Object](../main.md#type-object) | false | — | Optional override ruleContext for expression evaluation. |
+| priorTaskOutputs | [Object](../reference.md#type-object) | false | — | Optional object to simulate outputs from a prior task (see behavior above). |
+| state | [Object](../reference.md#type-object) | false | — | Optional state fixture to use for this call. |
+| ruleContext | [Object](../reference.md#type-object) | false | — | Optional override ruleContext for expression evaluation. |
 
 ---
 ## Method: Process.passThruTaskOutput
@@ -589,14 +589,14 @@ Override point invoked after a Task completes successfully, but before any of th
 *   Augment or replace the Task's outputs prior to commit.
 *   Apply additional declarative updates to [state](#attr-processstate).
 
-Return a [TaskResultModifications](../main.md#object-taskresultmodifications) object to influence commit behavior. If you return nothing, the engine proceeds normally.
+Return a [TaskResultModifications](../reference.md#object-taskresultmodifications) object to influence commit behavior. If you return nothing, the engine proceeds normally.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | task | [ProcessElement](#type-processelement) | false | — | The Task or sub-Process that just completed. |
-| outputs | [Object](../main.md#type-object) | false | — | The Task's outputs |
+| outputs | [Object](../reference.md#type-object) | false | — | The Task's outputs |
 
 ### Returns
 

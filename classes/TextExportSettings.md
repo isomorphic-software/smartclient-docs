@@ -1,6 +1,6 @@
 # TextExportSettings Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -47,7 +47,7 @@ Whether to convert each field's value to the corresponding display value for exp
 ## Attr: TextExportSettings.forceText
 
 ### Description
-If set, all text fields will use the indicated [ForceTextApproach](../main.md#type-forcetextapproach) unless they have a specific setting for [DataSourceField.exportForceText](DataSourceField.md#attr-datasourcefieldexportforcetext).
+If set, all text fields will use the indicated [ForceTextApproach](../reference.md#type-forcetextapproach) unless they have a specific setting for [DataSourceField.exportForceText](DataSourceField.md#attr-datasourcefieldexportforcetext).
 
 **Flags**: IR
 

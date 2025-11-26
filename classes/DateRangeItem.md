@@ -1,6 +1,6 @@
 # DateRangeItem Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -11,7 +11,7 @@
 ### Description
 Allows a user to select an absolute or relative range of dates via two [RelativeDateItem](RelativeDateItem.md#class-relativedateitem)s (if [DateRangeItem.allowRelativeDates](#attr-daterangeitemallowrelativedates) is true) or two [DateItems](DateItem.md#class-dateitem).
 
-The item's [data type](FormItem.md#attr-formitemtype) is expected to be one of "date" or "datetime" and dictates whether the dates in the range include a time portion. If unset and the item's form is databound, the data type is detected from the associated [dataSource field](../main_2.md#object-datasourcefield). If there is no such field, or the form is not databound, the default data type value is "date".
+The item's [data type](FormItem.md#attr-formitemtype) is expected to be one of "date" or "datetime" and dictates whether the dates in the range include a time portion. If unset and the item's form is databound, the data type is detected from the associated [dataSource field](../reference_2.md#object-datasourcefield). If there is no such field, or the form is not databound, the default data type value is "date".
 
 DateRangeItem is just a convenience relative to using two [RelativeDateItem](RelativeDateItem.md#class-relativedateitem) or [DateItem](DateItem.md#class-dateitem) controls in a form, then using [FormItem.operator](FormItem.md#attr-formitemoperator) and [FormItem.criteriaField](FormItem.md#attr-formitemcriteriafield) to cause them to produce a date range. If you need more control over layout, validation, event handling or any other aspect of appearance or behavior, stop using DateRangeItem and use two DateItem/RelativeDateItem controls directly instead.
 
@@ -59,7 +59,7 @@ The [FormItem](FormItem.md#class-formitem) class to create when [DateRangeItem.a
 
 ### See Also
 
-- [FieldType](../main_2.md#type-fieldtype)
+- [FieldType](../reference_2.md#type-fieldtype)
 
 **Flags**: R
 
@@ -101,7 +101,7 @@ The [FormItem](FormItem.md#class-formitem) class to create when [DateRangeItem.a
 
 ### See Also
 
-- [FieldType](../main_2.md#type-fieldtype)
+- [FieldType](../reference_2.md#type-fieldtype)
 
 **Flags**: R
 
@@ -181,7 +181,7 @@ Not applicable to a DateRangeItem.
 ## Attr: DateRangeItem.dateRangeForm
 
 ### Description
-[DynamicForm](DynamicForm.md#class-dynamicform) [AutoChild](../main.md#type-autochild) automatically created by the dateRangeItem and applied to the item as [this.canvas](CanvasItem.md#attr-canvasitemcanvas).
+[DynamicForm](DynamicForm.md#class-dynamicform) [AutoChild](../reference.md#type-autochild) automatically created by the dateRangeItem and applied to the item as [this.canvas](CanvasItem.md#attr-canvasitemcanvas).
 
 This DynamicForm contains the "from" and "to" fields the user will interact with to actually select a date-range. Note that as a standard autoChild, developers may customize this form by modifying `dateRangeProperties`.
 
@@ -213,7 +213,7 @@ Returns true if the specified criterion contains:
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — returns true if this criterion can be edited by this item
+`[boolean](../reference.md#type-boolean)` — returns true if this criterion can be edited by this item
 
 ### Groups
 
@@ -239,13 +239,13 @@ Sets the [DateRangeItem.fromDate](#attr-daterangeitemfromdate) for this DateRang
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| fromDate | [Date](#type-date)|[RelativeDateString](../main_2.md#type-relativedatestring)|[TimeUnit](../main_2.md#type-timeunit) | false | — | the date from which this item should start it's range |
+| fromDate | [Date](#type-date)|[RelativeDateString](../reference_2.md#type-relativedatestring)|[TimeUnit](../reference_2.md#type-timeunit) | false | — | the date from which this item should start it's range |
 
 ---
 ## Method: DateRangeItem.setValue
 
 ### Description
-Sets the value for this dateRangeItem. The value parameter is a [DateRange](../main_2.md#object-daterange) object that optionally includes both start and end values. If passed null, both start- and end-range values are cleared.
+Sets the value for this dateRangeItem. The value parameter is a [DateRange](../reference_2.md#object-daterange) object that optionally includes both start and end values. If passed null, both start- and end-range values are cleared.
 
 ### Parameters
 
@@ -281,7 +281,7 @@ Sets the [DateRangeItem.toDate](#attr-daterangeitemtodate) for this DateRangeIte
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| fromDate | [Date](#type-date)|[RelativeDateString](../main_2.md#type-relativedatestring)|[TimeUnit](../main_2.md#type-timeunit) | false | — | the date at which this item should end it's range |
+| fromDate | [Date](#type-date)|[RelativeDateString](../reference_2.md#type-relativedatestring)|[TimeUnit](../reference_2.md#type-timeunit) | false | — | the date at which this item should end it's range |
 
 ---
 ## Method: DateRangeItem.getCriterion
@@ -289,7 +289,7 @@ Sets the [DateRangeItem.toDate](#attr-daterangeitemtodate) for this DateRangeIte
 ### Description
 Returns the Criterion entered in the date field.
 
-A Criterion with an "and" [operator](../main.md#type-operatorid) will be returned with both a "greaterOrEqual" and "lessOrEqual" sub-criteria. If either date is omitted, only the "greaterOrEqual" (from date) or "lessOrEqual" (to date) Criterion is included.
+A Criterion with an "and" [operator](../reference.md#type-operatorid) will be returned with both a "greaterOrEqual" and "lessOrEqual" sub-criteria. If either date is omitted, only the "greaterOrEqual" (from date) or "lessOrEqual" (to date) Criterion is included.
 
 ### Returns
 
@@ -303,7 +303,7 @@ A Criterion with an "and" [operator](../main.md#type-operatorid) will be returne
 ## Method: DateRangeItem.getValue
 
 ### Description
-Retrieves the current value of this dateRangeItem. The return value is a [DateRange](../main_2.md#object-daterange) object that excludes start and end values if they aren't set.
+Retrieves the current value of this dateRangeItem. The return value is a [DateRange](../reference_2.md#object-daterange) object that excludes start and end values if they aren't set.
 
 ### Returns
 

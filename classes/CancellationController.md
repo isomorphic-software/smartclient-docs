@@ -1,6 +1,6 @@
 # CancellationController Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -13,7 +13,7 @@ Provides a mechanism for canceling asynchronous operations.
 ## ClassAttr: CancellationController.componentFieldsWereChangedReason
 
 ### Description
-Cancellation reason string that is used when the set of fields for a [DataBoundComponent](../main.md#interface-databoundcomponent) are changed while an asynchronous operation that depends on the component's old set of fields was in progress.
+Cancellation reason string that is used when the set of fields for a [DataBoundComponent](../reference.md#interface-databoundcomponent) are changed while an asynchronous operation that depends on the component's old set of fields was in progress.
 
 ### Groups
 
@@ -38,7 +38,7 @@ For example: "The great-grandparent operation was canceled: The user requested c
 ## ClassAttr: CancellationController.componentDataSourceWasChangedReason
 
 ### Description
-Cancellation reason string that is used when the [dataSource](DataBoundComponent.md#attr-databoundcomponentdatasource) for a [DataBoundComponent](../main.md#interface-databoundcomponent) is changed while an asynchronous operation that depends on the component's old `dataSource` was in progress.
+Cancellation reason string that is used when the [dataSource](DataBoundComponent.md#attr-databoundcomponentdatasource) for a [DataBoundComponent](../reference.md#interface-databoundcomponent) is changed while an asynchronous operation that depends on the component's old `dataSource` was in progress.
 
 ### Groups
 
@@ -101,7 +101,7 @@ For observers of this method, the recommended practice is to capture the `return
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| reason | [HTMLString](../main.md#type-htmlstring) | true | — | A reason for cancellation. |
+| reason | [HTMLString](../reference.md#type-htmlstring) | true | — | A reason for cancellation. |
 
 ### Returns
 

@@ -1,13 +1,13 @@
 # Metadata Import
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
 ## KB Topic: Metadata Import
 
 ### Description
-In SmartClient, metadata is expressed through [DataSources](../classes/DataSource.md#class-datasource), which in turn drive [DataBoundComponents](../main.md#interface-databoundcomponent). If you have existing metadata, there are several possible approaches to transforming it to SmartClient DataSources, either one time or on the fly.
+In SmartClient, metadata is expressed through [DataSources](../classes/DataSource.md#class-datasource), which in turn drive [DataBoundComponents](../reference.md#interface-databoundcomponent). If you have existing metadata, there are several possible approaches to transforming it to SmartClient DataSources, either one time or on the fly.
 
 There are two possible targets for metadata import: XML format or JavaScript format. The XML format is more general purpose, since the ISC server can transform it to JavaScript via the [loadDS tag](loadDSTag.md#kb-topic-isomorphicloadds), and DataSources in XML format can be used by the ISC server for server-side validation (this split is covered in more detail under [Data Source Declaration](dataSourceDeclaration.md#kb-topic-creating-datasources)).
 

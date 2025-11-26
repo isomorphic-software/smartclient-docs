@@ -1,6 +1,6 @@
 # NavPanel Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -9,7 +9,7 @@
 *Inherits from:* [SplitPane](SplitPane.md#class-splitpane)
 
 ### Description
-Provides a list or tree of [navigation items](../main.md#object-navitem), each of which specifies a component to be displayed in a mutually exclusive fashion in the [navDeck](#attr-navpanelnavdeck).
+Provides a list or tree of [navigation items](../reference.md#object-navitem), each of which specifies a component to be displayed in a mutually exclusive fashion in the [navDeck](#attr-navpanelnavdeck).
 
 A NavPanel can either have a flat list of `NavItems` or a hierarchy via [NavItem.items](NavItem.md#attr-navitemitems) - use [NavPanel.isTree](#attr-navpanelistree) to explicitly control this.
 
@@ -21,7 +21,7 @@ Note that `NavPanel` is a fairly simple component to replicate by composing othe
 ## Attr: NavPanel.navGrid
 
 ### Description
-The [TreeGrid](TreeGrid.md#class-treegrid) used to display [NavItem](../main.md#object-navitem)s.
+The [TreeGrid](TreeGrid.md#class-treegrid) used to display [NavItem](../reference.md#object-navitem)s.
 
 **Flags**: IR
 
@@ -45,9 +45,9 @@ CSS style for the [NavPanel.navDeck](#attr-navpanelnavdeck).
 ## Attr: NavPanel.isTree
 
 ### Description
-Whether the [NavItem](../main.md#object-navitem)s form a [Tree](Tree.md#class-tree) or are just a flat list. If `isTree` is false, [TreeGrid.showOpener](TreeGrid.md#attr-treegridshowopener) will be set false on the [NavPanel.navGrid](#attr-navpanelnavgrid) so that space isn't wasted.
+Whether the [NavItem](../reference.md#object-navitem)s form a [Tree](Tree.md#class-tree) or are just a flat list. If `isTree` is false, [TreeGrid.showOpener](TreeGrid.md#attr-treegridshowopener) will be set false on the [NavPanel.navGrid](#attr-navpanelnavgrid) so that space isn't wasted.
 
-The setting for `isTree` is defaulted immediately before initial draw, based on whether any [NavItem](../main.md#object-navitem) has a list of subitems specified via [NavItem.items](NavItem.md#attr-navitemitems). If no [NavItem](../main.md#object-navitem)s are provided before draw, `isTree` defaults to `true`. Auto-detection is never attempted again even if all `NavItems` are replaced.
+The setting for `isTree` is defaulted immediately before initial draw, based on whether any [NavItem](../reference.md#object-navitem) has a list of subitems specified via [NavItem.items](NavItem.md#attr-navitemitems). If no [NavItem](../reference.md#object-navitem)s are provided before draw, `isTree` defaults to `true`. Auto-detection is never attempted again even if all `NavItems` are replaced.
 
 Set `isTree` explicitly if auto-detection doesn't yield the correct result for your application.
 
@@ -57,7 +57,7 @@ Set `isTree` explicitly if auto-detection doesn't yield the correct result for y
 ## Attr: NavPanel.currentItem
 
 ### Description
-The current [NavItem](../main.md#object-navitem) whose [pane](NavItem.md#attr-navitempane) is showing in the [navDeck](#attr-navpanelnavdeck). This must be an item of this `NavPanel` if set.
+The current [NavItem](../reference.md#object-navitem) whose [pane](NavItem.md#attr-navitempane) is showing in the [navDeck](#attr-navpanelnavdeck). This must be an item of this `NavPanel` if set.
 
 **Flags**: IRW
 
@@ -81,7 +81,7 @@ Members to add before the [NavPanel.navGrid](#attr-navpanelnavgrid) in the [NavP
 ## Attr: NavPanel.defaultToFirstItem
 
 ### Description
-Select the first [NavItem](../main.md#object-navitem) on initialization if neither [NavPanel.currentItemId](#attr-navpanelcurrentitemid) nor [NavPanel.currentItem](#attr-navpanelcurrentitem) are provided.
+Select the first [NavItem](../reference.md#object-navitem) on initialization if neither [NavPanel.currentItemId](#attr-navpanelcurrentitemid) nor [NavPanel.currentItem](#attr-navpanelcurrentitem) are provided.
 
 **Flags**: IRW
 
@@ -143,7 +143,7 @@ When [NavPanel.isTree](#attr-navpanelistree) is true, should all nodes be opened
 ## Attr: NavPanel.currentItemId
 
 ### Description
-The ID of the current [NavItem](../main.md#object-navitem) whose [pane](NavItem.md#attr-navitempane) is showing in the [navDeck](#attr-navpanelnavdeck). The `NavItem` must be an item of this `NavPanel` if set.
+The ID of the current [NavItem](../reference.md#object-navitem) whose [pane](NavItem.md#attr-navitempane) is showing in the [navDeck](#attr-navpanelnavdeck). The `NavItem` must be an item of this `NavPanel` if set.
 
 The ID of a `NavItem` is the item's [NavItem.id](NavItem.md#attr-navitemid) if set; otherwise, it is the ID of the item's [NavItem.pane](NavItem.md#attr-navitempane), though `currentItemId` may be initialized to either identifier.
 
@@ -171,6 +171,6 @@ Setter for [NavPanel.currentItemId](#attr-navpanelcurrentitemid). Note that [Nav
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newCurrentItemId | [Identifier](../main.md#type-identifier) | true | — | the ID of the new current item, which may be either the item's [NavItem.id](NavItem.md#attr-navitemid) or the ID of the item's [NavItem.pane](NavItem.md#attr-navitempane). May be `null` or an empty string to hide the current item. If the item with ID `newCurrentItemId` is a separator or header item, then setCurrentItemId() has no effect. |
+| newCurrentItemId | [Identifier](../reference.md#type-identifier) | true | — | the ID of the new current item, which may be either the item's [NavItem.id](NavItem.md#attr-navitemid) or the ID of the item's [NavItem.pane](NavItem.md#attr-navitempane). May be `null` or an empty string to hide the current item. If the item with ID `newCurrentItemId` is a separator or header item, then setCurrentItemId() has no effect. |
 
 ---

@@ -1,13 +1,13 @@
 # EventStream Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
 ## Class: EventStream
 
 ### Description
-A `EventStream` captures event details as JavaScript objects as they are handled by the [EventHandler](EventHandler.md#class-eventhandler). The event target [canvas](Canvas.md#class-canvas) ID and [class name](Class.md#method-classgetclassname) as well the [locator](../main_2.md#type-autotestlocator) are included, as available. Event-specific data (for example, the [KeyName](../main_2.md#type-keyname) for keyboard events) are also included where appropriate. See [EventStreamEvent](../main.md#object-eventstreamevent) for more information.
+A `EventStream` captures event details as JavaScript objects as they are handled by the [EventHandler](EventHandler.md#class-eventhandler). The event target [canvas](Canvas.md#class-canvas) ID and [class name](Class.md#method-classgetclassname) as well the [locator](../reference_2.md#type-autotestlocator) are included, as available. Event-specific data (for example, the [KeyName](../reference_2.md#type-keyname) for keyboard events) are also included where appropriate. See [EventStreamEvent](../reference.md#object-eventstreamevent) for more information.
 
 You can configure the stream to capture most DOM event types and other useful events, such as [relogins](../kb_topics/relogin.md#kb-topic-relogin) and JavaScript errors that are triggered by events:
 
@@ -26,9 +26,9 @@ You can configure the stream to capture most DOM event types and other useful ev
 
 (Pointer and touch equivalents to mouse events have not been listed above. See the associated attribute for a more inclusive list.)
 
-Note that several types of DOM events can be collapsed so that one event is reported instead of many if they occur over the same target. You can enable collapsing for [move and drag events](#attr-eventstreamcollapsemoveevents), [key events](#attr-eventstreamcollapsekeyevents), [wheel events](#attr-eventstreamcollapsewheelevents), and [page events](#attr-eventstreamcollapsepageevents). A [stream capture limit](#attr-eventstreammaxsize) is also supported via circular buffering, so that only the most recent events are preserved. All available events can be returned as an array of [EventStreamEvent](../main.md#object-eventstreamevent) via [getEvents()](#method-eventstreamgetevents).
+Note that several types of DOM events can be collapsed so that one event is reported instead of many if they occur over the same target. You can enable collapsing for [move and drag events](#attr-eventstreamcollapsemoveevents), [key events](#attr-eventstreamcollapsekeyevents), [wheel events](#attr-eventstreamcollapsewheelevents), and [page events](#attr-eventstreamcollapsepageevents). A [stream capture limit](#attr-eventstreammaxsize) is also supported via circular buffering, so that only the most recent events are preserved. All available events can be returned as an array of [EventStreamEvent](../reference.md#object-eventstreamevent) via [getEvents()](#method-eventstreamgetevents).
 
-A `EventStream` will start capturing events as soon as it's created by default, but if you set [autoStart](#attr-eventstreamautostart): false, you can start capturing manually by calling [start()](#method-eventstreamstart). Calling [end()](#method-eventstreamend) will end capturing and return the [EventStreamData](../main.md#object-eventstreamdata).
+A `EventStream` will start capturing events as soon as it's created by default, but if you set [autoStart](#attr-eventstreamautostart): false, you can start capturing manually by calling [start()](#method-eventstreamstart). Calling [end()](#method-eventstreamend) will end capturing and return the [EventStreamData](../reference.md#object-eventstreamdata).
 
 ### Groups
 
@@ -169,7 +169,7 @@ Includes the [eventType](EventStreamEvent.md#attr-eventstreameventeventtype) `mo
 ### Description
 Whether to capture JavaScript errors. If an already-captured event triggered the error, the details will attached to that event. Otherwise, a separate event will be created, with the [eventType](EventStreamEvent.md#attr-eventstreameventeventtype) of the last dispatched DOM event (i.e., there is no special "error" [eventType](EventStreamEvent.md#attr-eventstreameventeventtype).)
 
-[EventStreamEvent](../main.md#object-eventstreamevent) records annotated or specially-reported with error details will contain an [errorTrace](EventStreamEvent.md#attr-eventstreameventerrortrace) with the error stack trace, and a [threadCode](EventStreamEvent.md#attr-eventstreameventthreadcode) reporting the thread ID from the [EventHandler](EventHandler.md#class-eventhandler) responsible for the error.
+[EventStreamEvent](../reference.md#object-eventstreamevent) records annotated or specially-reported with error details will contain an [errorTrace](EventStreamEvent.md#attr-eventstreameventerrortrace) with the error stack trace, and a [threadCode](EventStreamEvent.md#attr-eventstreameventthreadcode) reporting the thread ID from the [EventHandler](EventHandler.md#class-eventhandler) responsible for the error.
 
 **Flags**: IR
 
@@ -274,11 +274,11 @@ Evaluates a "verify" event to check if the specified condition is met. A verify 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | event | [EventStreamEvent](#type-eventstreamevent) | false | — | The verify event to evaluate with structure: - eventType: "verify" (required) - locator: AutoTest locator for target component (required) - description: Human-readable description (optional) - dataTarget: "data" | "selection" | "properties" (defaults to "data" for DBCs, "properties" otherwise) - criteria: AdvancedCriteria to match against dataTarget - matchType: "any" | "all" | "none" | "exact" | "one" (default "any") - matchCount: Expected count for matchType:"exact" (default 1) - formula: {text: "formula expression"} to evaluate - value: Expected value for formula/script comparison - operator: "equals" | "notEquals" | "greaterThan" | "lessThan" | "between" (default "equals") - script: Arbitrary script to run for verification - timeout: Max time to wait for verification (milliseconds, default 5000) |
-| ruleScope | [Object](../main.md#type-object) | true | — | Optional ruleScope for formula/criteria evaluation |
+| ruleScope | [Object](../reference.md#type-object) | true | — | Optional ruleScope for formula/criteria evaluation |
 
 ### Returns
 
-`[Object](../main.md#type-object)` — Result object with structure: - success: (Boolean) True if verification passed - error: (String) Error message if verification failed - actual: (Any) Actual value that was checked - expected: (Any) Expected value for comparison
+`[Object](../reference.md#type-object)` — Result object with structure: - success: (Boolean) True if verification passed - error: (String) Error message if verification failed - actual: (Any) Actual value that was checked - expected: (Any) Expected value for comparison
 
 ### Groups
 
@@ -438,7 +438,7 @@ Returns a human-readable description of an event action for logging purposes. Us
 ## Method: EventStream.end
 
 ### Description
-Ends event capturing and returns the [EventStreamData](../main.md#object-eventstreamdata). Once ended, capturing cannot be restarted without losing all stored events.
+Ends event capturing and returns the [EventStreamData](../reference.md#object-eventstreamdata). Once ended, capturing cannot be restarted without losing all stored events.
 
 ### Returns
 
@@ -453,7 +453,7 @@ Ends event capturing and returns the [EventStreamData](../main.md#object-eventst
 ## Method: EventStream.getAsSeleneseCommands
 
 ### Description
-Creates and returns Selenese that represents the events captured by the stream as an array of [Selenium commands](../main.md#object-seleniumcommand). Compare with [EventStream.getAsSeleneseHTML](#method-eventstreamgetasselenesehtml), where you'll also find more common details.
+Creates and returns Selenese that represents the events captured by the stream as an array of [Selenium commands](../reference.md#object-seleniumcommand). Compare with [EventStream.getAsSeleneseHTML](#method-eventstreamgetasselenesehtml), where you'll also find more common details.
 
 Just as when retrieving the Selenese as HTML, if a [EventStream.transformSelenese](#method-eventstreamtransformselenese) function has been defined, it's called before returning the Selenese.
 
@@ -520,7 +520,7 @@ If called after [EventStream.end](#method-eventstreamend), capturing will restar
 ### Description
 Creates and returns Selenese that represents the events captured by the stream. This Selenese contains SmartClient-specific locators (scLocators), and SmartClient command extensions (e.g. "waitForElementClickable") that are discussed in our [Selenium](../kb_topics/usingSelenium.md#kb-topic-using-selenium-scripts-selenese) overview.
 
-This method returns the Selenese as a string of HTML table rows, just as in an rctest.html file that you can directly execute with Selenium. Does not include the leading or trailing HTML, such as the `<BODY>` and `<TBODY>` tags; you'll need to wrap what's returned with the appropriate outer HTML tags to properly embed the table. If you'd rather have the Selenese returned as an array of [Selenium commands](../main.md#object-seleniumcommand), call [EventStream.getAsSeleneseCommands](#method-eventstreamgetasselenesecommands) instead.
+This method returns the Selenese as a string of HTML table rows, just as in an rctest.html file that you can directly execute with Selenium. Does not include the leading or trailing HTML, such as the `<BODY>` and `<TBODY>` tags; you'll need to wrap what's returned with the appropriate outer HTML tags to properly embed the table. If you'd rather have the Selenese returned as an array of [Selenium commands](../reference.md#object-seleniumcommand), call [EventStream.getAsSeleneseCommands](#method-eventstreamgetasselenesecommands) instead.
 
 To customize the returned Selenese, see [EventStream.transformSelenese](#method-eventstreamtransformselenese). Note that if the stream has [rolled over](#attr-eventstreammaxsize), the Selenese for the lost events will not be returned.
 
@@ -547,7 +547,7 @@ _... time passes where end user is interacting with your app ...._ Then to retri
 
 ### Returns
 
-`[HTML](../main.md#type-html)` — —
+`[HTML](../reference.md#type-html)` — —
 
 ### Groups
 
@@ -558,7 +558,7 @@ _... time passes where end user is interacting with your app ...._ Then to retri
 ## Method: EventStream.setEventErrorListener
 
 ### Description
-Installs a callback that will be called when the EventStream reports an [event error](#attr-eventstreamcaptureeventerrors), subject to the [error reporting interval](#attr-eventstreamminerrorreportinginterval). The callback will be passed all retained [EventStreamEvent](../main.md#object-eventstreamevent)s captured by the stream since the last time it was called.
+Installs a callback that will be called when the EventStream reports an [event error](#attr-eventstreamcaptureeventerrors), subject to the [error reporting interval](#attr-eventstreamminerrorreportinginterval). The callback will be passed all retained [EventStreamEvent](../reference.md#object-eventstreamevent)s captured by the stream since the last time it was called.
 
 ### Parameters
 

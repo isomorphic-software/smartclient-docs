@@ -1,6 +1,6 @@
 # MultiSortPanel Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -9,9 +9,9 @@
 *Inherits from:* [Layout](Layout.md#class-layout)
 
 ### Description
-A widget that allows the user to set up complex sorting arrangements by defining a group of [SortSpecifier](../main_2.md#object-sortspecifier)s.
+A widget that allows the user to set up complex sorting arrangements by defining a group of [SortSpecifier](../reference_2.md#object-sortspecifier)s.
 
-Each [SortSpecifier](../main_2.md#object-sortspecifier) applies to a single property and direction - so, for instance, in a grid with two columns, `year` and `monthNumber`, you could sort first by `year` in descending order and then by `monthNumber` in ascending order. This would producing a grid sorted by year from largest (most recent) to smallest (least recent) and, within each year, by monthNumber from smallest (January) to largest (December).
+Each [SortSpecifier](../reference_2.md#object-sortspecifier) applies to a single property and direction - so, for instance, in a grid with two columns, `year` and `monthNumber`, you could sort first by `year` in descending order and then by `monthNumber` in ascending order. This would producing a grid sorted by year from largest (most recent) to smallest (least recent) and, within each year, by monthNumber from smallest (January) to largest (December).
 
 ---
 ## Attr: MultiSortPanel.otherSortLevelTitle
@@ -37,9 +37,9 @@ The size for the images in the [Level Up](#attr-multisortpanellevelupbutton) and
 ## Attr: MultiSortPanel.addLevelButton
 
 ### Description
-Automatically generated [IButton](../main.md#class-ibutton) providing a mechanism for adding new levels to the sort configuration.
+Automatically generated [IButton](../reference.md#class-ibutton) providing a mechanism for adding new levels to the sort configuration.
 
-This component is an [AutoChild](../main.md#type-autochild) and as such may be customized via `multiSortPanel.addLevelButtonProperties` and `multiSortPanel.addLevelButtonDefaults`.
+This component is an [AutoChild](../reference.md#type-autochild) and as such may be customized via `multiSortPanel.addLevelButtonProperties` and `multiSortPanel.addLevelButtonDefaults`.
 
 **Flags**: RA
 
@@ -49,7 +49,7 @@ This component is an [AutoChild](../main.md#type-autochild) and as such may be c
 ### Description
 Automatically generated [ImgButton](ImgButton.md#class-imgbutton) providing a mechanism for moving existing sort-levels down in the sort configuration.
 
-This component is an [AutoChild](../main.md#type-autochild) and as such may be customized via `multiSortPanel.levelDownButtonProperties` and `multiSortPanel.levelDownButtonDefaults`.
+This component is an [AutoChild](../reference.md#type-autochild) and as such may be customized via `multiSortPanel.levelDownButtonProperties` and `multiSortPanel.levelDownButtonDefaults`.
 
 **Flags**: RA
 
@@ -125,9 +125,9 @@ The title-text to appear in the header of the "property" field.
 ## Attr: MultiSortPanel.deleteLevelButton
 
 ### Description
-Automatically generated [IButton](../main.md#class-ibutton) providing a mechanism for deleting levels from the sort configuration.
+Automatically generated [IButton](../reference.md#class-ibutton) providing a mechanism for deleting levels from the sort configuration.
 
-This component is an [AutoChild](../main.md#type-autochild) and as such may be customized via `multiSortPanel.deleteLevelButtonProperties` and `multiSortPanel.deleteLevelButtonDefaults`.
+This component is an [AutoChild](../reference.md#type-autochild) and as such may be customized via `multiSortPanel.deleteLevelButtonProperties` and `multiSortPanel.deleteLevelButtonDefaults`.
 
 **Flags**: RA
 
@@ -159,9 +159,9 @@ The title-text to appear on the copyLevelButton
 ## Attr: MultiSortPanel.optionsGrid
 
 ### Description
-Automatically generated [ListGrid](ListGrid_1.md#class-listgrid) allowing the user to configure a set of [SortSpecifier](../main_2.md#object-sortspecifier)s.
+Automatically generated [ListGrid](ListGrid_1.md#class-listgrid) allowing the user to configure a set of [SortSpecifier](../reference_2.md#object-sortspecifier)s.
 
-This component is an [AutoChild](../main.md#type-autochild) and as such may be customized via `multiSortPanel.optionsGridProperties` and `multiSortPanel.optionsGridDefaults`.
+This component is an [AutoChild](../reference.md#type-autochild) and as such may be customized via `multiSortPanel.optionsGridProperties` and `multiSortPanel.optionsGridDefaults`.
 
 **Flags**: IR
 
@@ -181,9 +181,9 @@ The title-text to appear in the "direction" field's SelectItem for an "ascending
 ## Attr: MultiSortPanel.copyLevelButton
 
 ### Description
-Automatically generated [IButton](../main.md#class-ibutton) providing a mechanism for duplicating levels in the sort configuration.
+Automatically generated [IButton](../reference.md#class-ibutton) providing a mechanism for duplicating levels in the sort configuration.
 
-This component is an [AutoChild](../main.md#type-autochild) and as such may be customized via `multiSortPanel.copyLevelButtonProperties` and `multiSortPanel.copyLevelButtonDefaults`.
+This component is an [AutoChild](../reference.md#type-autochild) and as such may be customized via `multiSortPanel.copyLevelButtonProperties` and `multiSortPanel.copyLevelButtonDefaults`.
 
 **Flags**: RA
 
@@ -205,7 +205,7 @@ The hover-prompt for the Level Down button.
 ### Description
 Automatically generated [ImgButton](ImgButton.md#class-imgbutton) providing a mechanism for moving existing sort-levels up in the sort configuration.
 
-This component is an [AutoChild](../main.md#type-autochild) and as such may be customized via `multiSortPanel.levelUpButtonProperties` and `multiSortPanel.levelUpButtonDefaults`.
+This component is an [AutoChild](../reference.md#type-autochild) and as such may be customized via `multiSortPanel.levelUpButtonProperties` and `multiSortPanel.levelUpButtonDefaults`.
 
 **Flags**: RA
 
@@ -265,7 +265,7 @@ A CSS style to apply to images in the [Level Up](#attr-multisortpanellevelupbutt
 ## Method: MultiSortPanel.getSortLevel
 
 ### Description
-Return a [SortSpecifier](../main_2.md#object-sortspecifier) object for the requested levelNum.
+Return a [SortSpecifier](../reference_2.md#object-sortspecifier) object for the requested levelNum.
 
 ### Parameters
 
@@ -281,7 +281,7 @@ Return a [SortSpecifier](../main_2.md#object-sortspecifier) object for the reque
 ## Method: MultiSortPanel.sortChanged
 
 ### Description
-Fired whenever the sort configuration changes. The single parameter is an array of [SortSpecifier](../main_2.md#object-sortspecifier)s that represent the list of sort-levels as they appear after whatever change has occurred.
+Fired whenever the sort configuration changes. The single parameter is an array of [SortSpecifier](../reference_2.md#object-sortspecifier)s that represent the list of sort-levels as they appear after whatever change has occurred.
 
 ### Parameters
 
@@ -303,7 +303,7 @@ Return the number of levels of sorting that have been configured.
 ## Method: MultiSortPanel.getSort
 
 ### Description
-Returns all configured sorting levels, as an array of [SortSpecifier](../main_2.md#object-sortspecifier)s.
+Returns all configured sorting levels, as an array of [SortSpecifier](../reference_2.md#object-sortspecifier)s.
 
 ### Returns
 
@@ -313,10 +313,10 @@ Returns all configured sorting levels, as an array of [SortSpecifier](../main_2.
 ## Method: MultiSortPanel.validate
 
 ### Description
-Validate that no two [SortSpecifier](../main_2.md#object-sortspecifier)s sort on the same [property](../main.md#attr-sortspecifierproperty).
+Validate that no two [SortSpecifier](../reference_2.md#object-sortspecifier)s sort on the same [property](../reference.md#attr-sortspecifierproperty).
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — True if validation succeeds, false if any property is used twice
+`[boolean](../reference.md#type-boolean)` — True if validation succeeds, false if any property is used twice
 
 ---

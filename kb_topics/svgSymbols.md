@@ -1,6 +1,6 @@
 # SVG Symbols Overview
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -147,7 +147,7 @@ For example, an external CSS class could be created:
  .iconOver { color: red; }
  
 ```
-This class can then be applied to a stateful widget housing a symbol, via its [baseStyle](../classes/StatefulCanvas.md#attr-statefulcanvasbasestyle) or similar, or by including it directly in `src` strings via "cssClass", or as separate per-state URLs in an [SCStatefulImgConfig](../main.md#object-scstatefulimgconfig) object.
+This class can then be applied to a stateful widget housing a symbol, via its [baseStyle](../classes/StatefulCanvas.md#attr-statefulcanvasbasestyle) or similar, or by including it directly in `src` strings via "cssClass", or as separate per-state URLs in an [SCStatefulImgConfig](../reference.md#object-scstatefulimgconfig) object.
 ```
  isc.Img.create({
      // show stateful styles

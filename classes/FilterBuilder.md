@@ -1,6 +1,6 @@
 # FilterBuilder Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -11,7 +11,7 @@
 ### Description
 A form that allows the user to input advanced search criteria, including operators on field values such as "less than", and sub-clauses using "AND" and "OR" operators.
 
-A FilterBuilder produces an [AdvancedCriteria](../main.md#object-advancedcriteria) object, which the [DataSource](DataSource.md#class-datasource) subsystem can use to filter datasets, including the ability to perform such filtering within the browser for datasets that are completely loaded.
+A FilterBuilder produces an [AdvancedCriteria](../reference.md#object-advancedcriteria) object, which the [DataSource](DataSource.md#class-datasource) subsystem can use to filter datasets, including the ability to perform such filtering within the browser for datasets that are completely loaded.
 
 The operators available for each field can be customized at the DataSource level via [DataSourceField.validOperators](DataSourceField.md#attr-datasourcefieldvalidoperators), [DataSource.setTypeOperators](DataSource.md#method-datasourcesettypeoperators) and related APIs.
 
@@ -37,7 +37,7 @@ Properties to combine with the [FilterBuilder.operatorPicker](#attr-filterbuilde
 ### Description
 If specified, the FilterBuilder will dynamically fetch DataSourceField definitions from this DataSource rather than using [FilterBuilder.dataSource](#attr-filterbuilderdatasource). The [FieldPicker](FieldPicker.md#class-fieldpicker) will default to being a [ComboBoxItem](ComboBoxItem.md#class-comboboxitem) rather than a [SelectItem](SelectItem.md#class-selectitem) so that the user will have type-ahead auto-completion.
 
-The records returned from the `fieldDataSource` must have properties corresponding to a [DataSourceField](../main_2.md#object-datasourcefield) definition, at a minimum, ["name"](DataSourceField.md#attr-datasourcefieldname) and ["type"](DataSourceField.md#attr-datasourcefieldtype). Any property legal on a DataSourceField is legal on the returned records, including [valueMap](DataSourceField.md#attr-datasourcefieldvaluemap).
+The records returned from the `fieldDataSource` must have properties corresponding to a [DataSourceField](../reference_2.md#object-datasourcefield) definition, at a minimum, ["name"](DataSourceField.md#attr-datasourcefieldname) and ["type"](DataSourceField.md#attr-datasourcefieldtype). Any property legal on a DataSourceField is legal on the returned records, including [valueMap](DataSourceField.md#attr-datasourcefieldvaluemap).
 
 Even when a `fieldDataSource` is specified, [FilterBuilder.dataSource](#attr-filterbuilderdatasource) may still be specified in order to control the list of [valid operators](DataSource.md#method-datasourcesettypeoperators) for each field.
 
@@ -75,7 +75,7 @@ Default operator for subclauses added via the [FilterBuilder.subClauseButton](#a
 ## Attr: FilterBuilder.radioOptions
 
 ### Description
-Logical operators to allow if we have a [TopOperatorAppearance](../main.md#type-topoperatorappearance) of "radio".
+Logical operators to allow if we have a [TopOperatorAppearance](../reference.md#type-topoperatorappearance) of "radio".
 
 **Deprecated**
 
@@ -99,7 +99,7 @@ The title for the Operator RadioGroupItem displayed in the [FilterBuilder.radioO
 ### Description
 How to display and edit the [top-level operator](#attr-filterbuildertopoperator) for this FilterBuilder.
 
-See [TopOperatorAppearance](../main.md#type-topoperatorappearance) for a list of options.
+See [TopOperatorAppearance](../reference.md#type-topoperatorappearance) for a list of options.
 
 **Flags**: IRW
 
@@ -151,7 +151,7 @@ For operators that check that a value is within a range, text to show between th
 ### Description
 Default logical operator for all top-level clauses in the FilterBuilder.
 
-May be able to be changed by the user via the UI, according to [TopOperatorAppearance](../main.md#type-topoperatorappearance).
+May be able to be changed by the user via the UI, according to [TopOperatorAppearance](../reference.md#type-topoperatorappearance).
 
 **Flags**: IRW
 
@@ -171,7 +171,7 @@ The hover prompt text for the dynamic value button.
 ## Attr: FilterBuilder.topOperatorOptions
 
 ### Description
-Logical operators to allow for [TopOperatorAppearance](../main.md#type-topoperatorappearance)s of "radio" and "bracket".
+Logical operators to allow for [TopOperatorAppearance](../reference.md#type-topoperatorappearance)s of "radio" and "bracket".
 
 Note that this list may be further limited according to the [available operators](DataSource.md#method-datasourcegettypeoperatormap) returned by the [DataSource](DataSource.md#class-datasource).
 
@@ -193,7 +193,7 @@ The title for the operator-picker select-item.
 ## Attr: FilterBuilder.showSubClauseButton
 
 ### Description
-Whether to show a button that allows the user to add subclauses. Defaults to false if the [TopOperatorAppearance](../main.md#type-topoperatorappearance) is "radio" or "inline", true in all other cases.
+Whether to show a button that allows the user to add subclauses. Defaults to false if the [TopOperatorAppearance](../reference.md#type-topoperatorappearance) is "radio" or "inline", true in all other cases.
 
 **Flags**: IR
 
@@ -281,7 +281,7 @@ If true (the default), validates each entered value when it changes, to make sur
 ## Attr: FilterBuilder.showSelectionCheckbox
 
 ### Description
-If true, causes a CheckboxItem to appear to the left of each clause in "inline" [appearance](../main.md#type-topoperatorappearance). This checkbox allows the user to select individual clauses so that, for example, clauses can be removed from the filterBuilder by application code. This property is ignored for appearances other than "inline".
+If true, causes a CheckboxItem to appear to the left of each clause in "inline" [appearance](../reference.md#type-topoperatorappearance). This checkbox allows the user to select individual clauses so that, for example, clauses can be removed from the filterBuilder by application code. This property is ignored for appearances other than "inline".
 
 **Flags**: IR
 
@@ -345,7 +345,7 @@ Shows either [modeSwitcherSimpleMessage](#attr-filterbuildermodeswitchersimpleme
 ## Attr: FilterBuilder.dataSource
 
 ### Description
-DataSource this filter should use for field definitions and available [Operator](../main.md#object-operator)s.
+DataSource this filter should use for field definitions and available [Operator](../reference.md#object-operator)s.
 
 **Flags**: IRW
 
@@ -393,7 +393,7 @@ Message displayed when switching to "radio" mode if the criteria will be logical
 ## Attr: FilterBuilder.matchNoneTitle
 
 ### Description
-Title for the "Match None" (not) operator when using [topOperatorAppearance](../main.md#type-topoperatorappearance):"radio".
+Title for the "Match None" (not) operator when using [topOperatorAppearance](../reference.md#type-topoperatorappearance):"radio".
 
 ### Groups
 
@@ -419,7 +419,7 @@ Initial criteria.
 
 When initialized with criteria, appropriate clauses for editing the provided criteria will be automatically generated.
 
-Note that empty or partial criteria are allowed, for example, criteria that specify [Criterion.fieldName](Criterion.md#attr-criterionfieldname) only will generate an expression with the operator not chosen yet, and a [Criterion](../main_2.md#object-criterion) with a logical operator ("and" or "or") but not [subcriteria](Criterion.md#attr-criterioncriteria) defined will generate an empty subclause.
+Note that empty or partial criteria are allowed, for example, criteria that specify [Criterion.fieldName](Criterion.md#attr-criterionfieldname) only will generate an expression with the operator not chosen yet, and a [Criterion](../reference_2.md#object-criterion) with a logical operator ("and" or "or") but not [subcriteria](Criterion.md#attr-criterioncriteria) defined will generate an empty subclause.
 
 **Flags**: IRW
 
@@ -435,7 +435,7 @@ Width for the [FilterBuilder.topOperatorItem](#attr-filterbuildertopoperatoritem
 ## Attr: FilterBuilder.subClauseButton
 
 ### Description
-Button allowing the user to add subclauses grouped by a [LogicalOperator](../main_2.md#type-logicaloperator).
+Button allowing the user to add subclauses grouped by a [LogicalOperator](../reference_2.md#type-logicaloperator).
 
 **Flags**: IR
 
@@ -467,7 +467,7 @@ AutoChild for the [FormItem](FormItem.md#class-formitem) that allows a user to s
 ## Attr: FilterBuilder.radioOperatorForm
 
 ### Description
-With [TopOperatorAppearance](../main.md#type-topoperatorappearance):"radio", form that appears above the stack of clauses and allows picking the [LogicalOperator](../main_2.md#type-logicaloperator) for the overall FilterBuilder.
+With [TopOperatorAppearance](../reference.md#type-topoperatorappearance):"radio", form that appears above the stack of clauses and allows picking the [LogicalOperator](../reference_2.md#type-logicaloperator) for the overall FilterBuilder.
 
 By default, consists of a simple RadioGroupItem.
 
@@ -525,7 +525,7 @@ The title for the left-aligned Operator selectItem in the [FilterBuilder.topOper
 ## Attr: FilterBuilder.matchAllTitle
 
 ### Description
-Title for the "Match All" (and) operator when using [topOperatorAppearance](../main.md#type-topoperatorappearance):"radio".
+Title for the "Match All" (and) operator when using [topOperatorAppearance](../reference.md#type-topoperatorappearance):"radio".
 
 ### Groups
 
@@ -636,7 +636,7 @@ The prefix to be displayed before a aggregate valueQuery value in the clause.
 ## Attr: FilterBuilder.matchAnyTitle
 
 ### Description
-Title for the "Match Any" (or) operator when using [topOperatorAppearance](../main.md#type-topoperatorappearance):"radio".
+Title for the "Match Any" (or) operator when using [topOperatorAppearance](../reference.md#type-topoperatorappearance):"radio".
 
 ### Groups
 
@@ -656,7 +656,7 @@ When set, dictates the size of the [add](#attr-filterbuilderaddbutton) and [remo
 ## Attr: FilterBuilder.topOperatorForm
 
 ### Description
-With [TopOperatorAppearance](../main.md#type-topoperatorappearance) "bracket" and "inline", a form that appears to the left of the stack of clauses and allows picking the [LogicalOperator](../main_2.md#type-logicaloperator) for the overall FilterBuilder (or for that specific FilterClause, in the case of "inline")
+With [TopOperatorAppearance](../reference.md#type-topoperatorappearance) "bracket" and "inline", a form that appears to the left of the stack of clauses and allows picking the [LogicalOperator](../reference_2.md#type-logicaloperator) for the overall FilterBuilder (or for that specific FilterClause, in the case of "inline")
 
 By default, consists of a CheckboxItem if [FilterBuilder.showSelectionCheckbox](#attr-filterbuildershowselectioncheckbox) is true, and a simple SelectItem containing the available logical operators.
 
@@ -818,7 +818,7 @@ A StringMethod that is automatically invoked if [FilterBuilder.saveOnEnter](#att
 ## Method: FilterBuilder.getFieldOperators
 
 ### Description
-Get the list of [operatorIds](../main.md#type-operatorid) that are valid for the passed field. By default, all operators returned by [DataSource.getFieldOperators](DataSource.md#method-datasourcegetfieldoperators) are used.
+Get the list of [operatorIds](../reference.md#type-operatorid) that are valid for the passed field. By default, all operators returned by [DataSource.getFieldOperators](DataSource.md#method-datasourcegetfieldoperators) are used.
 
 Called automatically by the default implementation of the same method on each [clause](FilterClause.md#method-filterclausegetfieldoperators), whenever its fieldName is changed.
 
@@ -842,7 +842,7 @@ Get the criteria entered by the user.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| includeEmptyValues | [boolean](../main.md#type-boolean) | true | — | By default if a user has selected a field and operator type, but has failed to enter a value for the field it will be skipped. This optional parameter allows you to retrieve all criteria, including those with an empty `value` attribute. |
+| includeEmptyValues | [boolean](../reference.md#type-boolean) | true | — | By default if a user has selected a field and operator type, but has failed to enter a value for the field it will be skipped. This optional parameter allows you to retrieve all criteria, including those with an empty `value` attribute. |
 
 ### Returns
 
@@ -861,11 +861,11 @@ Default behavior is to use the [Operator.editorType](Operator.md#attr-operatored
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | field | [DataSourceField](#type-datasourcefield) | false | — | DataSourceField definition |
-| operatorId | [OperatorId](../main.md#type-operatorid) | false | — | [OperatorId](../main.md#type-operatorid) for the chosen operator |
+| operatorId | [OperatorId](../reference.md#type-operatorid) | false | — | [OperatorId](../reference.md#type-operatorid) for the chosen operator |
 
 ### Returns
 
-`[SCClassName](../main.md#type-scclassname)` — SmartClient class to use (must be subclass of FormItem)
+`[SCClassName](../reference.md#type-scclassname)` — SmartClient class to use (must be subclass of FormItem)
 
 ---
 ## Method: FilterBuilder.setTopOperator
@@ -877,7 +877,7 @@ Programmatically change the [FilterBuilder.topOperator](#attr-filterbuildertopop
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| operator | [LogicalOperator](../main_2.md#type-logicaloperator) | false | — | new top-level operator |
+| operator | [LogicalOperator](../reference_2.md#type-logicaloperator) | false | — | new top-level operator |
 
 ---
 ## Method: FilterBuilder.addClause
@@ -913,7 +913,7 @@ Returns a human-readable string describing the clauses in this filterBuilder.
 ### Description
 Set new criteria for editing.
 
-An interface for editing the provided criteria will be generated identically to what happens when initialized with [Criteria](../main_2.md#type-criteria).
+An interface for editing the provided criteria will be generated identically to what happens when initialized with [Criteria](../reference_2.md#type-criteria).
 
 Any existing criteria entered by the user will be discarded.
 
@@ -927,7 +927,7 @@ Any existing criteria entered by the user will be discarded.
 ## Method: FilterBuilder.setTopOperatorAppearance
 
 ### Description
-Modify [TopOperatorAppearance](../main.md#type-topoperatorappearance) at runtime.
+Modify [TopOperatorAppearance](../reference.md#type-topoperatorappearance) at runtime.
 
 Note that when changing from "bracket" to "radio" mode the criteria will be flattened by calling [DataSource.flattenCriteria](DataSource.md#classmethod-datasourceflattencriteria) which could result in a logical change to the criteria.
 
@@ -935,7 +935,7 @@ Note that when changing from "bracket" to "radio" mode the criteria will be flat
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| appearance | [TopOperatorAppearance](../main.md#type-topoperatorappearance) | false | — | new topOperatorAppearance |
+| appearance | [TopOperatorAppearance](../reference.md#type-topoperatorappearance) | false | — | new topOperatorAppearance |
 
 ### Groups
 
@@ -967,7 +967,7 @@ Remove a clause this FilterBuilder is currently showing.
 ## Method: FilterBuilder.getSelectedClauses
 
 ### Description
-Returns the list of this FilterBuilder's FilterClauses that are currently selected. A clause is "selected" if the user has checked the checkbox next to it; therefore, this method always returns an empty list unless the [showSelectionCheckbox](#attr-filterbuildershowselectioncheckbox) property is set. This method is only applicable where [TopOperatorAppearance](../main.md#type-topoperatorappearance) is "inline" (because that is the only appearance that supports `showSelectionCheckbox`)
+Returns the list of this FilterBuilder's FilterClauses that are currently selected. A clause is "selected" if the user has checked the checkbox next to it; therefore, this method always returns an empty list unless the [showSelectionCheckbox](#attr-filterbuildershowselectioncheckbox) property is set. This method is only applicable where [TopOperatorAppearance](../reference.md#type-topoperatorappearance) is "inline" (because that is the only appearance that supports `showSelectionCheckbox`)
 
 ### Returns
 
@@ -995,10 +995,10 @@ Note that the [Operator.valueType](Operator.md#attr-operatorvaluetype) impacts w
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| type | [FieldType](../main_2.md#type-fieldtype) | false | — | type of the DataSource field for this filter row |
+| type | [FieldType](../reference_2.md#type-fieldtype) | false | — | type of the DataSource field for this filter row |
 | fieldName | [String](#type-string) | false | — | name of the DataSource field for this filter row |
-| operatorId | [OperatorId](../main.md#type-operatorid) | false | — | [OperatorId](../main.md#type-operatorid) for the chosen operator |
-| itemType | [ValueItemType](../main.md#type-valueitemtype) | false | — | What valueItem is being generated. |
+| operatorId | [OperatorId](../reference.md#type-operatorid) | false | — | [OperatorId](../reference.md#type-operatorid) for the chosen operator |
+| itemType | [ValueItemType](../reference.md#type-valueitemtype) | false | — | What valueItem is being generated. |
 
 ### Returns
 

@@ -1,6 +1,6 @@
 # GridFetchDataTask Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -53,7 +53,7 @@ See the [Server Summaries overview](../kb_topics/serverSummaries.md#kb-topic-ser
 ## Attr: GridFetchDataTask.summaryFunctions
 
 ### Description
-A mapping from field names to [summary functions](../main_2.md#type-summaryfunction) to be applied to each field in the fetch.
+A mapping from field names to [summary functions](../reference_2.md#type-summaryfunction) to be applied to each field in the fetch.
 
 See the [Server Summaries overview](../kb_topics/serverSummaries.md#kb-topic-server-summaries) for examples of usage.
 

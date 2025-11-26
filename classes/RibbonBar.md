@@ -1,6 +1,6 @@
 # RibbonBar Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -58,7 +58,7 @@ Add a new group to this RibbonBar. You can either create your group externally a
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | group | [RibbonGroup](#type-ribbongroup) | false | — | the new group to add to this ribbon |
-| position | [Integer](../main_2.md#type-integer) | true | — | the index at which to insert the new group |
+| position | [Integer](../reference_2.md#type-integer) | true | — | the index at which to insert the new group |
 
 ### Groups
 

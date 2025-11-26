@@ -1,6 +1,6 @@
 # Browser Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -63,7 +63,7 @@ If isc\_css3Mode is "on" then useCSS3 is set to true. If isc\_css3Mode is set to
 ## ClassAttr: Browser.isOpenFin
 
 ### Description
-Are we in an [OpenFin](https://developers.openfin.co/of-docs/docs) environment? See class [OpenFin](../main.md#class-openfin) for ways to call OpenFin methods from within SmartClient.
+Are we in an [OpenFin](https://developers.openfin.co/of-docs/docs) environment? See class [OpenFin](../reference.md#class-openfin) for ways to call OpenFin methods from within SmartClient.
 
 **Flags**: R
 
@@ -133,7 +133,7 @@ Note that setting `Browser.isTablet` might affect the values of [Browser.isDeskt
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| isTablet | [boolean](../main.md#type-boolean) | false | — | new setting for `Browser.isTablet`. |
+| isTablet | [boolean](../reference.md#type-boolean) | false | — | new setting for `Browser.isTablet`. |
 
 **Flags**: A
 
@@ -149,7 +149,7 @@ Note that this method may only be called from the [main window](MultiWindow.md#c
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| isMultiWindow | [boolean](../main.md#type-boolean) | false | — | new setting for `Browser.isMultiWindow`. |
+| isMultiWindow | [boolean](../reference.md#type-boolean) | false | — | new setting for `Browser.isMultiWindow`. |
 
 **Flags**: A
 
@@ -165,7 +165,7 @@ Note that setting `Browser.isTouch` might affect the values of [Browser.isDeskto
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| isTouch | [boolean](../main.md#type-boolean) | false | — | new setting for `Browser.isTablet`. |
+| isTouch | [boolean](../reference.md#type-boolean) | false | — | new setting for `Browser.isTablet`. |
 
 **Flags**: A
 
@@ -181,7 +181,7 @@ Note that setting `Browser.isHandset` might affect the values of [Browser.isDesk
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| isHandset | [boolean](../main.md#type-boolean) | false | — | new setting for `Browser.isHandset`. |
+| isHandset | [boolean](../reference.md#type-boolean) | false | — | new setting for `Browser.isHandset`. |
 
 **Flags**: A
 
@@ -197,7 +197,7 @@ Note that setting `Browser.isDesktop` might affect the values of [Browser.isHand
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| isDesktop | [boolean](../main.md#type-boolean) | false | — | new setting for `Browser.isDesktop`. |
+| isDesktop | [boolean](../reference.md#type-boolean) | false | — | new setting for `Browser.isDesktop`. |
 
 **Flags**: A
 

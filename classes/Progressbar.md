@@ -1,6 +1,6 @@
 # Progressbar Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -175,7 +175,7 @@ Overridden by Progressbar to pick up aria-valuenow.
 
 ### Returns
 
-`[Object](../main.md#type-object)` — dynamically calculated default aria state properties
+`[Object](../reference.md#type-object)` — dynamically calculated default aria state properties
 
 **Flags**: A
 

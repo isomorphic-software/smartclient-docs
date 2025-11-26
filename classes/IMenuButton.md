@@ -1,6 +1,6 @@
 # IMenuButton Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -153,7 +153,7 @@ Setter for the 'showMenuButtonBelow' property - determines whether the menu will
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| below | [boolean](../main.md#type-boolean) | false | — | True if the menu should be shown below the `MenuButton`. |
+| below | [boolean](../reference.md#type-boolean) | false | — | True if the menu should be shown below the `MenuButton`. |
 
 ### Groups
 
@@ -169,7 +169,7 @@ Setter for the 'showMenuButtonImage' property - shows/hides the menu button imag
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| show | [boolean](../main.md#type-boolean) | false | — | Should the image be shown |
+| show | [boolean](../reference.md#type-boolean) | false | — | Should the image be shown |
 
 ### Groups
 

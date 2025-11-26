@@ -1,6 +1,6 @@
 # SavedSearches Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -183,7 +183,7 @@ _(optional)_, type "boolean". Designates this search as an admin search, visible
 ## Attr: SavedSearches.componentIdField
 
 ### Description
-Type: "string". Stores a unique ID for the component the saved search is associated with. This does not have to be the [Canvas.ID](Canvas.md#attr-canvasid) and is usually a [AutoTestLocator](../main_2.md#type-autotestlocator)
+Type: "string". Stores a unique ID for the component the saved search is associated with. This does not have to be the [Canvas.ID](Canvas.md#attr-canvasid) and is usually a [AutoTestLocator](../reference_2.md#type-autotestlocator)
 
 **Flags**: RW
 
@@ -226,7 +226,7 @@ The `applicationId` allows the same dataSource to be used to store savedSearches
 ### Description
 Type: "string". Name dataSource field used as the primary key.
 
-This is expected to be populated automatically when new search records are added to the data set, so will typically be of [type:sequence](../main_2.md#type-fieldtype).
+This is expected to be populated automatically when new search records are added to the data set, so will typically be of [type:sequence](../reference_2.md#type-fieldtype).
 
 **Flags**: RW
 
@@ -414,9 +414,9 @@ This will invoke the [SavedSearches.setDefaultUserSearchOperation](#attr-savedse
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | component | [DataBoundComponent](#type-databoundcomponent) | false | — | component being updated |
-| isDefault | [boolean](../main.md#type-boolean) | false | — | whether the default is being set to true or false |
+| isDefault | [boolean](../reference.md#type-boolean) | false | — | whether the default is being set to true or false |
 | searchRecord | [Record](#type-record) | false | — | record containing details of the search to be updated |
-| callback | [Callback](../main.md#type-callback) | false | — | callback to invoke when the search has been updated. Takes no arguments. |
+| callback | [Callback](../reference.md#type-callback) | false | — | callback to invoke when the search has been updated. Takes no arguments. |
 
 ---
 ## Method: SavedSearches.getDefaultDataSource
@@ -445,8 +445,8 @@ This will invoke the [SavedSearches.setDefaultAdminSearchOperation](#attr-saveds
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | component | [DataBoundComponent](#type-databoundcomponent) | false | — | component being updated |
-| isDefault | [boolean](../main.md#type-boolean) | false | — | whether the default is being set to true or false |
+| isDefault | [boolean](../reference.md#type-boolean) | false | — | whether the default is being set to true or false |
 | searchRecord | [Record](#type-record) | false | — | record containing details of the search to be updated |
-| callback | [Callback](../main.md#type-callback) | false | — | callback to invoke when the search has been updated. Takes no arguments. |
+| callback | [Callback](../reference.md#type-callback) | false | — | callback to invoke when the search has been updated. Takes no arguments. |
 
 ---

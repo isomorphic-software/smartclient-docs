@@ -1,6 +1,6 @@
 # TourStep Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -13,7 +13,7 @@ User task configuration for a step within a [Tour](Tour.md#class-tour). As each 
 
 At a minimum tourSteps will typically have a [title](#attr-toursteptitle) and/or [description](ProcessElement.md#attr-processelementdescription). Without a [target](#attr-toursteptarget) the window will be shown in the center of the screen.
 
-To relate the step to a component provide a [target](#attr-toursteptarget) value. An [actionType](#attr-tourstepactiontype) value determines what action, if any, is expected with the `target`. Some `actionTypes` like "none" and "any" just highlight the target for review and the user must click the next button to complete the step. Others like "click" or "change" expect the user to interact with the target component in a certain way. Many of these will advance to the next step when the required action is completed. See [action types](../main.md#type-touractiontype) for details.
+To relate the step to a component provide a [target](#attr-toursteptarget) value. An [actionType](#attr-tourstepactiontype) value determines what action, if any, is expected with the `target`. Some `actionTypes` like "none" and "any" just highlight the target for review and the user must click the next button to complete the step. Others like "click" or "change" expect the user to interact with the target component in a certain way. Many of these will advance to the next step when the required action is completed. See [action types](../reference.md#type-touractiontype) for details.
 
 In most cases the `actionType` can be left unset because a default is applied based on the other step properties and the [Tour.mode](Tour.md#attr-tourmode). However, actions like `doubleClick`, `rightClick` and `mouseOver` must be provided.
 
@@ -47,7 +47,7 @@ Target component which must clicked to process [TourStep.expectedValue](#attr-to
 
 This is commonly used for a dialog where the must select a value and then click a submit button.
 
-Target may be specified as a [GlobalId](../main.md#type-globalid) for a Component or FormItem, or as a [AutoTestLocator](../main_2.md#type-autotestlocator) for an element.
+Target may be specified as a [GlobalId](../reference.md#type-globalid) for a Component or FormItem, or as a [AutoTestLocator](../reference_2.md#type-autotestlocator) for an element.
 
 **Flags**: IR
 
@@ -67,7 +67,7 @@ If unset this will be derived from [Tour.allowDropOnDescendants](Tour.md#attr-to
 ## Attr: TourStep.showInputValidationMessage
 
 ### Description
-Should [inputValidationNotifyMessage](#attr-tourstepinputvalidationnotifymessage) be shown as detailed in [TourInputValidationMode](../main.md#type-tourinputvalidationmode)? Defaults from [Tour.showInputValidationMessage](Tour.md#attr-tourshowinputvalidationmessage) if not set.
+Should [inputValidationNotifyMessage](#attr-tourstepinputvalidationnotifymessage) be shown as detailed in [TourInputValidationMode](../reference.md#type-tourinputvalidationmode)? Defaults from [Tour.showInputValidationMessage](Tour.md#attr-tourshowinputvalidationmessage) if not set.
 
 If set to `false` reporting messages to the user are suppressed and therefore [Tour.notifyValidationMessage](Tour.md#method-tournotifyvalidationmessage) will not be called.
 
@@ -115,7 +115,7 @@ The following [passthroughs](../kb_topics/autoChildUsage.md#kb-topic-using-autoc
 ### Description
 Component that is the target of this step. The interaction for this step is indicated in [actionType](#attr-tourstepactiontype). For actions that need multiple targets, this target is the primary one.
 
-Target may be specified as a [GlobalId](../main.md#type-globalid) for a Component or FormItem, or as a [AutoTestLocator](../main_2.md#type-autotestlocator) for an element.
+Target may be specified as a [GlobalId](../reference.md#type-globalid) for a Component or FormItem, or as a [AutoTestLocator](../reference_2.md#type-autotestlocator) for an element.
 
 **Flags**: IR
 
@@ -133,7 +133,7 @@ Applied directly to [TourStep.targetView](#attr-toursteptargetview). Defaults fr
 ### Description
 Should the [TourStep.targetView](#attr-toursteptargetview) [action button](TourWindow.md#attr-tourwindowshowactionbutton) be shown for this step?
 
-If no value is provided it will be defaulted to `true` when [autoComplete](../main.md#type-autocomplete) is `not false` and any of the following are true:
+If no value is provided it will be defaulted to `true` when [autoComplete](../reference.md#type-autocomplete) is `not false` and any of the following are true:
 
 *   [actionType](#attr-tourstepactiontype) is "click"
 *   actionType is "mouseDown"
@@ -180,7 +180,7 @@ Should the target(s) be outlined? Defaults to `true` in [Tour.mode](Tour.md#attr
 ### Description
 If this step has a target that prompts a user for a specific action, should the step be automatically completed and have the tour move forward to the next step when the user takes this action?
 
-Has no effect except on [action types](../main.md#type-touractiontype) that can auto-complete.
+Has no effect except on [action types](../reference.md#type-touractiontype) that can auto-complete.
 
 If autoComplete is `false` the action button is shown but is disabled until the expected action is completed at which time the button is enabled so the user can continue.
 
@@ -240,7 +240,7 @@ Defaults for the [TourStep.targetView](#attr-toursteptargetview) autoChild. Thes
 ### Description
 Target component on which a [target](#attr-toursteptarget) must be dropped to complete step. If [actionType](#attr-tourstepactiontype) is not specified and this property is provided, `actionType` defaults to "drag".
 
-Target may be specified as a [GlobalId](../main.md#type-globalid) for a Component or FormItem, or as a [AutoTestLocator](../main_2.md#type-autotestlocator) for an element.
+Target may be specified as a [GlobalId](../reference.md#type-globalid) for a Component or FormItem, or as a [AutoTestLocator](../reference_2.md#type-autotestlocator) for an element.
 
 **Flags**: IR
 

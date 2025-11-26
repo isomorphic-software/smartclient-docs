@@ -1,6 +1,6 @@
 # JSONEncoder Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -41,7 +41,7 @@ Encoding only where required produces slightly shorter, more readable output whi
 ## Attr: JSONEncoder.serializeInstances
 
 ### Description
-Controls the output of the JSONEncoder when instances of SmartClient classes (eg a ListGrid) are included in the data to be serialized. See [JSONInstanceSerializationMode](../main_2.md#type-jsoninstanceserializationmode).
+Controls the output of the JSONEncoder when instances of SmartClient classes (eg a ListGrid) are included in the data to be serialized. See [JSONInstanceSerializationMode](../reference_2.md#type-jsoninstanceserializationmode).
 
 Note that the JSONEncoder does not support a format that will recreate the instance if passed to decode() or eval().
 
@@ -75,7 +75,7 @@ What the JSONEncoder should do if it encounters a circular reference.
 ## Attr: JSONEncoder.dateFormat
 
 ### Description
-Format for encoding JavaScript Date values in JSON. See [JSONDateFormat](../main.md#type-jsondateformat) for valid options, or override [JSONEncoder.encodeDate](#method-jsonencoderencodedate) to do something custom.
+Format for encoding JavaScript Date values in JSON. See [JSONDateFormat](../reference.md#type-jsondateformat) for valid options, or override [JSONEncoder.encodeDate](#method-jsonencoderencodedate) to do something custom.
 
 **Flags**: IR
 

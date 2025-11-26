@@ -1,6 +1,6 @@
 # PortalLayout Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -190,7 +190,7 @@ For more control over what can be dropped, you can also implement [willAcceptPor
 ## Attr: PortalLayout.row
 
 ### Description
-Automatically generated horizontal [Layout](Layout.md#class-layout) used to create rows of [Portlets](Portlet.md#class-portlet) via [createAutoChild()](Class.md#method-classcreateautochild). Since this is an [AutoChild](../main.md#type-autochild), you can use rowDefaults and rowProperties to customize the rows.
+Automatically generated horizontal [Layout](Layout.md#class-layout) used to create rows of [Portlets](Portlet.md#class-portlet) via [createAutoChild()](Class.md#method-classcreateautochild). Since this is an [AutoChild](../reference.md#type-autochild), you can use rowDefaults and rowProperties to customize the rows.
 
 Rows are created inside [rowLayouts](#attr-portallayoutrowlayout), which in turn are inside [columns](#attr-portallayoutcolumn).
 
@@ -232,7 +232,7 @@ Controls the [overflow](Canvas.md#attr-canvasoverflow) setting for each column. 
 
 ### See Also
 
-- [Overflow](../main.md#type-overflow)
+- [Overflow](../reference.md#type-overflow)
 - [Canvas.overflow](Canvas.md#attr-canvasoverflow)
 
 **Flags**: IRWA
@@ -381,7 +381,7 @@ If true, when a portlet is removed from a column that didn't contain any other p
 ## Attr: PortalLayout.rowLayout
 
 ### Description
-Automatically generated vertical [Layout](Layout.md#class-layout) used to create columns of [Portlets](Portlet.md#class-portlet) via [createAutoChild()](Class.md#method-classcreateautochild). Since this is an [AutoChild](../main.md#type-autochild), you can use rowLayoutDefaults and rowLayoutProperties to customize the layout used to contain the rows.
+Automatically generated vertical [Layout](Layout.md#class-layout) used to create columns of [Portlets](Portlet.md#class-portlet) via [createAutoChild()](Class.md#method-classcreateautochild). Since this is an [AutoChild](../reference.md#type-autochild), you can use rowLayoutDefaults and rowLayoutProperties to customize the layout used to contain the rows.
 
 The rowLayout is the actual container for [rows](#attr-portallayoutrow) of [Portlets](Portlet.md#class-portlet). See [column](#attr-portallayoutcolumn) for the column as a whole, which may include a menu as well (depending on [showColumnMenus](#attr-portallayoutshowcolumnmenus)). If you want to style the columns as a whole, use columnDefaults or columnProperties, but if you want to style the layout that actually contains the rows, use rowLayoutDefaults or rowLayoutProperties.
 
@@ -417,7 +417,7 @@ To set spacing between portlets on a row in the same column, see [PortalLayout.p
 ### Description
 Controls whether the PortalLayout will stretch column widths, if needed to accommodate the width of [Portlets](Portlet.md#class-portlet). If set, columns will overflow their widths in order to accommodate the widths of their Portlets.
 
-With the default setting of [Overflow](../main.md#type-overflow): auto, the PortalLayout as a whole will scroll horizontally if needed. Depending on the setting of [canShrinkColumnWidths](#attr-portallayoutcanshrinkcolumnwidths), other columns may shrink to avoid overflow on the PortalLayout as a whole.
+With the default setting of [Overflow](../reference.md#type-overflow): auto, the PortalLayout as a whole will scroll horizontally if needed. Depending on the setting of [canShrinkColumnWidths](#attr-portallayoutcanshrinkcolumnwidths), other columns may shrink to avoid overflow on the PortalLayout as a whole.
 
 If `canStretchColumnWidths` is turned off, then individual rows will scroll horizontally in order to accommodate Portlets that are wider than their column width allows.
 
@@ -429,7 +429,7 @@ If `canStretchColumnWidths` is turned off, then individual rows will scroll hori
 
 - [PortalLayout.canShrinkColumnWidths](#attr-portallayoutcanshrinkcolumnwidths)
 - [PortalLayout.canResizePortlets](#attr-portallayoutcanresizeportlets)
-- [Overflow](../main.md#type-overflow)
+- [Overflow](../reference.md#type-overflow)
 
 **Flags**: IRWA
 
@@ -437,7 +437,7 @@ If `canStretchColumnWidths` is turned off, then individual rows will scroll hori
 ## Attr: PortalLayout.portlet
 
 ### Description
-[MultiAutoChild](../main.md#type-multiautochild) configuration for Portlets that will be automatically generated when the user drops a non-Portlet component into a PortalLayout.
+[MultiAutoChild](../reference.md#type-multiautochild) configuration for Portlets that will be automatically generated when the user drops a non-Portlet component into a PortalLayout.
 
 Use standard autoChild pattern to customize the appearance and behavior of these standard generated portlet instances.
 
@@ -447,7 +447,7 @@ Use standard autoChild pattern to customize the appearance and behavior of these
 ## Attr: PortalLayout.column
 
 ### Description
-Automatically generated vertical [Layout](Layout.md#class-layout) used to create columns of [Portlets](Portlet.md#class-portlet) via [createAutoChild()](Class.md#method-classcreateautochild). Since this is an [AutoChild](../main.md#type-autochild), you can use columnDefaults and columnProperties to customize the columns.
+Automatically generated vertical [Layout](Layout.md#class-layout) used to create columns of [Portlets](Portlet.md#class-portlet) via [createAutoChild()](Class.md#method-classcreateautochild). Since this is an [AutoChild](../reference.md#type-autochild), you can use columnDefaults and columnProperties to customize the columns.
 
 The column includes a menu, if [showColumnMenus](#attr-portallayoutshowcolumnmenus) is true, and a [rowLayout](#attr-portallayoutrowlayout) which actually contains the [rows](#attr-portallayoutrow). Therefore, if you want to style the columns as a whole, use columnDefaults or columnProperties, but if you want to style the layout that contains the rows, use rowLayoutDefaults or rowLayoutProperties.
 
@@ -477,13 +477,13 @@ See [portalLayoutDrop](../kb_topics/portalLayoutDrop.md#kb-topic-drag-and-drop-b
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | dragTarget | [Canvas](#type-canvas) | false | — | The [Portlet](Portlet.md#class-portlet), or other component, being dragged |
-| colNum | [int](../main.md#type-int) | false | — | indicates the target column number for the portlet to be added to. |
-| rowNum | [int](../main.md#type-int) | true | — | indicates the row number being dropped on within the target column. If this parameter is not passed, the user is attempting to add a new column by dropping outside any existing column. |
-| dropPosition | [int](../main.md#type-int) | true | — | Drop position within an existing row. If this parameter is not passed, the user is attempting to add a new row by dropping above or below any existing row. |
+| colNum | [int](../reference.md#type-int) | false | — | indicates the target column number for the portlet to be added to. |
+| rowNum | [int](../reference.md#type-int) | true | — | indicates the row number being dropped on within the target column. If this parameter is not passed, the user is attempting to add a new column by dropping outside any existing column. |
+| dropPosition | [int](../reference.md#type-int) | true | — | Drop position within an existing row. If this parameter is not passed, the user is attempting to add a new row by dropping above or below any existing row. |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true if the [Portlet](Portlet.md#class-portlet) or other component being dragged can be dropped on this PortalLayout, false otherwise
+`[boolean](../reference.md#type-boolean)` — true if the [Portlet](Portlet.md#class-portlet) or other component being dragged can be dropped on this PortalLayout, false otherwise
 
 ### Groups
 
@@ -507,7 +507,7 @@ Sets [PortalLayout.canShrinkColumnWidths](#attr-portallayoutcanshrinkcolumnwidth
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| canShrink | [boolean](../main.md#type-boolean) | false | — | Whether columns can shrink to avoid overflowing the PortalLayout's width. |
+| canShrink | [boolean](../reference.md#type-boolean) | false | — | Whether columns can shrink to avoid overflowing the PortalLayout's width. |
 
 ### Groups
 
@@ -552,7 +552,7 @@ Sets [PortalLayout.showColumnMenus](#attr-portallayoutshowcolumnmenus) and updat
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| showMenus | [boolean](../main.md#type-boolean) | false | — | Whether to show column menus |
+| showMenus | [boolean](../reference.md#type-boolean) | false | — | Whether to show column menus |
 
 ---
 ## Method: PortalLayout.removeColumn
@@ -564,7 +564,7 @@ Removes the specified column from this layout. All portlets displayed within thi
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| index | [int](../main.md#type-int) | false | — | column number to remove |
+| index | [int](../reference.md#type-int) | false | — | column number to remove |
 
 ---
 ## Method: PortalLayout.getPortalPosition
@@ -616,7 +616,7 @@ Returns the current number of columns displayed in this PortalLayout.
 
 ### Returns
 
-`[int](../main.md#type-int)` — numColumns
+`[int](../reference.md#type-int)` — numColumns
 
 ---
 ## Method: PortalLayout.willMinimizePortlet
@@ -634,7 +634,7 @@ Return false to cancel the action.
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — whether the action should proceed
+`[boolean](../reference.md#type-boolean)` — whether the action should proceed
 
 ### See Also
 
@@ -656,7 +656,7 @@ Return false to cancel the action.
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — whether the action should proceed
+`[boolean](../reference.md#type-boolean)` — whether the action should proceed
 
 ### See Also
 
@@ -672,7 +672,7 @@ Adds a new portal column to this layout at the specified position
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| index | [int](../main.md#type-int) | false | — | target position for the new column |
+| index | [int](../reference.md#type-int) | false | — | target position for the new column |
 
 ---
 ## Method: PortalLayout.setColumnOverflow
@@ -684,7 +684,7 @@ Sets [PortalLayout.columnOverflow](#attr-portallayoutcolumnoverflow) and updates
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| overflow | [Overflow](../main.md#type-overflow) | false | — | Overflow setting for columns |
+| overflow | [Overflow](../reference.md#type-overflow) | false | — | Overflow setting for columns |
 
 ### See Also
 
@@ -702,7 +702,7 @@ Note that this sets the intrinsic width of the column. Columns may also automati
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| colNumber | [Integer](../main_2.md#type-integer) | false | — | Which column's width to set. |
+| colNumber | [Integer](../reference_2.md#type-integer) | false | — | Which column's width to set. |
 | width | [Number](#type-number)|[String](#type-string) | false | — | How wide to make the column |
 
 ### See Also
@@ -747,7 +747,7 @@ Sets [preventColumnUnderflow](#attr-portallayoutpreventcolumnunderflow) and refl
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| preventColumnUnderflow | [boolean](../main.md#type-boolean) | false | — | Whether to stretch the last [Portlet](Portlet.md#class-portlet) in a column to fill the column's height. |
+| preventColumnUnderflow | [boolean](../reference.md#type-boolean) | false | — | Whether to stretch the last [Portlet](Portlet.md#class-portlet) in a column to fill the column's height. |
 
 ### Groups
 
@@ -783,7 +783,7 @@ Sets [PortalLayout.canStretchColumnWidths](#attr-portallayoutcanstretchcolumnwid
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| canStretch | [boolean](../main.md#type-boolean) | false | — | Whether columns can stretch to accommodate [Portlet](Portlet.md#class-portlet) widths. |
+| canStretch | [boolean](../reference.md#type-boolean) | false | — | Whether columns can stretch to accommodate [Portlet](Portlet.md#class-portlet) widths. |
 
 ### Groups
 
@@ -836,7 +836,7 @@ Sets [preventUnderflow](#attr-portallayoutpreventunderflow) and reflows the layo
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| preventUnderflow | [boolean](../main.md#type-boolean) | false | — | Whether to stretch the last column to fill the PortalLayout's width. |
+| preventUnderflow | [boolean](../reference.md#type-boolean) | false | — | Whether to stretch the last column to fill the PortalLayout's width. |
 
 ### Groups
 
@@ -858,7 +858,7 @@ Return false to cancel the action.
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — whether the action should proceed
+`[boolean](../reference.md#type-boolean)` — whether the action should proceed
 
 ### See Also
 
@@ -875,7 +875,7 @@ Sets [columnSpacing](#attr-portallayoutcolumnspacing) and reflows the layout to 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| spacing | [Integer](../main_2.md#type-integer) | false | — | The amount of space to apply between columns |
+| spacing | [Integer](../reference_2.md#type-integer) | false | — | The amount of space to apply between columns |
 
 ### Groups
 
@@ -902,9 +902,9 @@ Otherwise, return the component you want to be dropped (as for [Layout.getDropCo
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | dragTarget | [Canvas](#type-canvas) | false | — | drag target |
-| colNum | [int](../main.md#type-int) | false | — | indicates the index of the column the portlet is being dropped on. Note that if a new column will be created (`rowNum` is `null`), then this will be the index of the new column, but it doesn't exist, yet. |
-| rowNum | [Integer](../main_2.md#type-integer) | true | — | indicates the index of the row being dropped on. If the `rowNum` is `null`, a new column will be created to contain the portlet. |
-| dropPosition | [Integer](../main_2.md#type-integer) | true | — | Drop position within an existing row. If the `dropPosition` is `null`, a new row will be created to contain the portlet. |
+| colNum | [int](../reference.md#type-int) | false | — | indicates the index of the column the portlet is being dropped on. Note that if a new column will be created (`rowNum` is `null`), then this will be the index of the new column, but it doesn't exist, yet. |
+| rowNum | [Integer](../reference_2.md#type-integer) | true | — | indicates the index of the row being dropped on. If the `rowNum` is `null`, a new column will be created to contain the portlet. |
+| dropPosition | [Integer](../reference_2.md#type-integer) | true | — | Drop position within an existing row. If the `dropPosition` is `null`, a new row will be created to contain the portlet. |
 
 ### Returns
 
@@ -960,9 +960,9 @@ Adds a [Portlet](Portlet.md#class-portlet) instance to this portalLayout in the 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | portlet | [Canvas](#type-canvas) | false | — | Portlet to add to this layout. If the component passed in is not an instance of [Portlet](Portlet.md#class-portlet) a [portlet auto child](#attr-portallayoutportlet) will be automatically created to hold the component and added to the layout at the appropriate position. |
-| colNum | [Integer](../main_2.md#type-integer) | true | — | Column in which the Portlet should be added. If unspecified, portlet will be added to the first column. If specified, but the specified column does not exist, a column is automatically added at the specified colNum index. |
-| rowWithinCol | [Integer](../main_2.md#type-integer) | true | — | Row-position within the specified column for this portlet. If unspecified defaults to zero - the portlet will be added to the top of the column. By default a new row will be added to the column for the portlet. Use the `positionInExistingRow` parameter to add the portlet to an existing row. |
-| positionInExistingRow | [Integer](../main_2.md#type-integer) | true | — | Position within an existing row in the column. If this parameter is passed, this portlet will be added to the existing row at `rowWithinCol`, at the specified position. This allows developers to place multiple portlets side by side on a row within the column.  
+| colNum | [Integer](../reference_2.md#type-integer) | true | — | Column in which the Portlet should be added. If unspecified, portlet will be added to the first column. If specified, but the specified column does not exist, a column is automatically added at the specified colNum index. |
+| rowWithinCol | [Integer](../reference_2.md#type-integer) | true | — | Row-position within the specified column for this portlet. If unspecified defaults to zero - the portlet will be added to the top of the column. By default a new row will be added to the column for the portlet. Use the `positionInExistingRow` parameter to add the portlet to an existing row. |
+| positionInExistingRow | [Integer](../reference_2.md#type-integer) | true | — | Position within an existing row in the column. If this parameter is passed, this portlet will be added to the existing row at `rowWithinCol`, at the specified position. This allows developers to place multiple portlets side by side on a row within the column.  
 If omitted a new row will be created in the column for the portlet. |
 
 ---
@@ -975,7 +975,7 @@ Sets [PortalLayout.stretchColumnWidthsProportionally](#attr-portallayoutstretchc
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| stretchProportionally | [boolean](../main.md#type-boolean) | false | — | Whether to stretch column widths proportionally |
+| stretchProportionally | [boolean](../reference.md#type-boolean) | false | — | Whether to stretch column widths proportionally |
 
 ### Groups
 
@@ -1001,7 +1001,7 @@ Return false to cancel the action.
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — whether the action should proceed
+`[boolean](../reference.md#type-boolean)` — whether the action should proceed
 
 ### See Also
 
@@ -1017,7 +1017,7 @@ Sets [portletHSpacing](#attr-portallayoutportlethspacing) and reflows the layout
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| spacing | [Integer](../main_2.md#type-integer) | false | — | The amount of space to apply between portlets in a row |
+| spacing | [Integer](../reference_2.md#type-integer) | false | — | The amount of space to apply between portlets in a row |
 
 ### Groups
 
@@ -1033,11 +1033,11 @@ Gets the width of a column in the PortalLayout.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| colNumber | [int](../main.md#type-int) | false | — | Which column's width to get |
+| colNumber | [int](../reference.md#type-int) | false | — | Which column's width to get |
 
 ### Returns
 
-`[int](../main.md#type-int)` — width
+`[int](../reference.md#type-int)` — width
 
 ### See Also
 
@@ -1069,7 +1069,7 @@ Sets [preventRowUnderflow](#attr-portallayoutpreventrowunderflow) and reflows th
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| preventRowUnderflow | [boolean](../main.md#type-boolean) | false | — | Whether to stretch the last [Portlet](Portlet.md#class-portlet) in a row to to fill the row's width. |
+| preventRowUnderflow | [boolean](../reference.md#type-boolean) | false | — | Whether to stretch the last [Portlet](Portlet.md#class-portlet) in a row to to fill the row's width. |
 
 ### Groups
 
@@ -1099,7 +1099,7 @@ Sets [portletVSpacing](#attr-portallayoutportletvspacing) and reflows the layout
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| spacing | [Integer](../main_2.md#type-integer) | false | — | The amount of space to apply between rows |
+| spacing | [Integer](../reference_2.md#type-integer) | false | — | The amount of space to apply between rows |
 
 ### Groups
 

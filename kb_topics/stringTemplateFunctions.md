@@ -1,6 +1,6 @@
 # String Template Functions
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -62,7 +62,7 @@ Each template receives an `sc` parameter providing shared utilities:
 *   **sc.trim(value)**: Trim leading and trailing whitespace from the given value converted to a string. If the value is `null`, returns an empty string.
 *   **sc.escapeHTML(value)**: Escape HTML in an arbitrary value converted to a string. If the value is `null`, returns an empty string.
 
-The `sc` object also inherits from the global [isc](../main.md#object-isc) object (through prototypal inheritance), so all SmartClient APIs are available (for example, `sc.NumberUtil` references the [NumberUtil](../classes/NumberUtil.md#class-numberutil) class).
+The `sc` object also inherits from the global [isc](../reference.md#object-isc) object (through prototypal inheritance), so all SmartClient APIs are available (for example, `sc.NumberUtil` references the [NumberUtil](../classes/NumberUtil.md#class-numberutil) class).
 
 ### Related
 

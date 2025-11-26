@@ -1,6 +1,6 @@
 # StaticTextItem Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -128,7 +128,7 @@ Note that Fields of type `"date"`, `"datetime"` or `"time"` will be edited using
 The [FormItem.timeFormatter](FormItem.md#attr-formitemtimeformatter) may also be used to format underlying Date values as times (ommitting the date part entirely). If both `dateFormatter` and `timeFormatter` are specified on an item, for fields specified as [type "time"](FormItem.md#attr-formitemtype) the `timeFormatter` will be used, otherwise the `dateFormatter`
 
 If `item.dateFormatter` and `item.timeFormatter` is unspecified, date display format may be defined at the component level via [DynamicForm.dateFormatter](DynamicForm.md#attr-dynamicformdateformatter), or for fields of type `"datetime"` [DynamicForm.datetimeFormatter](DynamicForm.md#attr-dynamicformdatetimeformatter). Otherwise for fields of type "date", default is to use the system-wide default short date format, configured via [DateUtil.setShortDisplayFormat](DateUtil.md#classmethod-dateutilsetshortdisplayformat). For fields of type "datetime" or for Date values in fields whose type does not inherit from the logical "date" type, default is to use the system-wide normal date format configured via [DateUtil.setNormalDisplayFormat](DateUtil.md#classmethod-dateutilsetnormaldisplayformat) (using "toNormalDate()" on logical `"date"` type fields is not desirable as this would display the time component of the date object to the user).  
-Specify any valid [DateDisplayFormat](../main.md#type-datedisplayformat) to change the format used by this item.
+Specify any valid [DateDisplayFormat](../reference.md#type-datedisplayformat) to change the format used by this item.
 
 ### Groups
 

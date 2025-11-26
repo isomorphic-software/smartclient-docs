@@ -1,17 +1,17 @@
 # DataView Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
 ## Class: DataView
 
-*Inherits from:* [VLayout](../main.md#class-vlayout)
+*Inherits from:* [VLayout](../reference.md#class-vlayout)
 
 ### Description
 A DataView coordinates the asynchronous loading of WSDL WebService and XML Schema definitions in applications created by Reify.
 
-For applications that do not use WSDL Web Services and were not created by Reify, DataView is equivalent to it's superclass [VLayout](../main.md#class-vlayout).
+For applications that do not use WSDL Web Services and were not created by Reify, DataView is equivalent to it's superclass [VLayout](../reference.md#class-vlayout).
 
 ---
 ## Attr: DataView.minMemberLength

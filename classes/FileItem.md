@@ -1,6 +1,6 @@
 # FileItem Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -37,7 +37,7 @@ Otherwise, the displayCanvas will render out [View](#attr-fileitemviewiconsrc) a
 ### Description
 The [UploadItem](UploadItem.md#class-uploaditem) created automatically and displayed in the [FileItem.editForm](#attr-fileitemeditform) when [canEdit](FormItem.md#attr-formitemcanedit) is true.
 
-This component is an [AutoChild](../main.md#type-autochild) and as such may be customized via `fileItem.uploadItemDefaults` and `fileItem.uploadItemProperties`.
+This component is an [AutoChild](../reference.md#type-autochild) and as such may be customized via `fileItem.uploadItemDefaults` and `fileItem.uploadItemProperties`.
 
 ### Groups
 
@@ -51,7 +51,7 @@ This component is an [AutoChild](../main.md#type-autochild) and as such may be c
 ### Description
 The [DynamicForm](DynamicForm.md#class-dynamicform) created automatically when [canEdit](FormItem.md#attr-formitemcanedit) is true. Displays a single [item](#attr-fileitemuploaditem) for manipulating a file.
 
-This component is an [AutoChild](../main.md#type-autochild) and as such may be customized via `fileItem.editFormDefaults` and `fileItem.editFormProperties`.
+This component is an [AutoChild](../reference.md#type-autochild) and as such may be customized via `fileItem.editFormDefaults` and `fileItem.editFormProperties`.
 
 ### Groups
 
@@ -129,7 +129,7 @@ This information is "circa 2023" and may not apply to all devices.
 ### Description
 The [StaticTextItem](StaticTextItem.md#class-statictextitem) created automatically and displayed in the [FileItem.displayForm](#attr-fileitemdisplayform) when [canEdit](FormItem.md#attr-formitemcanedit) is false and the field type is "blob".
 
-This component is an [AutoChild](../main.md#type-autochild) and as such may be customized via `fileItem.displayItemDefaults` and `fileItem.displayItemProperties`.
+This component is an [AutoChild](../reference.md#type-autochild) and as such may be customized via `fileItem.displayItemDefaults` and `fileItem.displayItemProperties`.
 
 ### Groups
 
@@ -191,7 +191,7 @@ The [Canvas](Canvas.md#class-canvas) created automatically when [canEdit](FormIt
 
 If the field is of type "imageFile", and [showFileInline](#attr-fileitemshowfileinline) is true, the contents of the canvas are set to HTML that streams the image file for display. Otherwise, the item renders icons that allow the file to be [viewed](#attr-fileitemviewiconsrc) or [downloaded](#attr-fileitemdownloadiconsrc).
 
-This component is an [AutoChild](../main.md#type-autochild) and as such may be customized via `fileItem.displayCanvasDefaults` and `fileItem.displayCanvasProperties`.
+This component is an [AutoChild](../reference.md#type-autochild) and as such may be customized via `fileItem.displayCanvasDefaults` and `fileItem.displayCanvasProperties`.
 
 ### Groups
 
@@ -252,7 +252,7 @@ Support is not full-cycle at the server - that is, there are server APIs for ret
 ### Description
 The [DynamicForm](DynamicForm.md#class-dynamicform) created automatically when [canEdit](FormItem.md#attr-formitemcanedit) is false and the field is of type "blob". Displays a single [item](#attr-fileitemdisplayitem) for viewing the content of a blob file.
 
-This component is an [AutoChild](../main.md#type-autochild) and as such may be customized via `fileItem.displayFormDefaults` and `fileItem.displayFormProperties`.
+This component is an [AutoChild](../reference.md#type-autochild) and as such may be customized via `fileItem.displayFormDefaults` and `fileItem.displayFormProperties`.
 
 ### Groups
 
@@ -270,6 +270,6 @@ Updates the [FileItem.multiple](#attr-fileitemmultiple) setting at runtime, prop
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| multiple | [boolean](../main.md#type-boolean) | false | — | the HTML of the view link |
+| multiple | [boolean](../reference.md#type-boolean) | false | — | the HTML of the view link |
 
 ---

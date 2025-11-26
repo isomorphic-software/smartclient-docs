@@ -1,6 +1,6 @@
 # CreateScreenSettings Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -75,9 +75,9 @@ If true, prevents any screen from being drawn when it's created, even if there's
 ## Attr: CreateScreenSettings.dataContext
 
 ### Description
-[DataContext](../main.md#object-datacontext) that will be provided to the top-level component as [dataContext](Canvas.md#attr-canvasdatacontext) in the screen.
+[DataContext](../reference.md#object-datacontext) that will be provided to the top-level component as [dataContext](Canvas.md#attr-canvasdatacontext) in the screen.
 
-To understand how `dataContext` is used to automatically populate [DataBoundComponents](../main.md#interface-databoundcomponent), see [Canvas.autoPopulateData](Canvas.md#attr-canvasautopopulatedata).
+To understand how `dataContext` is used to automatically populate [DataBoundComponents](../reference.md#interface-databoundcomponent), see [Canvas.autoPopulateData](Canvas.md#attr-canvasautopopulatedata).
 
 ### Groups
 

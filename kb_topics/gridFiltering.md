@@ -1,13 +1,13 @@
 # Grid Filtering Overview
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
 ## KB Topic: Grid Filtering Overview
 
 ### Description
-This overview discusses various ways that [search criteria](../main_2.md#type-criteria) can be applied to a [grid](../classes/ListGrid_1.md#class-listgrid) to filter the data being displayed.
+This overview discusses various ways that [search criteria](../reference_2.md#type-criteria) can be applied to a [grid](../classes/ListGrid_1.md#class-listgrid) to filter the data being displayed.
 
 Typically, there are two types of criteria that affect how a grid matches data:
 
@@ -21,7 +21,7 @@ Note, however, that attempts to fetch with more restrictive criteria may not res
 #### Initial Filter Criteria
 You can provide an initial filter for a grid by setting [implicit criteria](../classes/ListGrid_1.md#attr-listgridimplicitcriteria), which is never shown to the user, or [initial criteria](../classes/ListGrid_1.md#attr-listgridinitialcriteria), which may be shown for editing in the grid's builtin [filter-row](../classes/ListGrid_1.md#attr-listgridshowfiltereditor). You can also provide both types, if only some parts of the criteria should be public.
 #### Filter Row Criteria
-Grids provide a [filter-row](../classes/ListGrid_1.md#attr-listgridfiltereditor) that allows users to apply search-values on a per-field basis. When [ListGrid.allowFilterOperators](../classes/ListGrid_1.md#attr-listgridallowfilteroperators) is true, the default, users can modify the [search operator](../main.md#object-operator) assigned to a given field via the grid's [header context-menu](../classes/ListGrid_1.md#attr-listgridheadercontextmenu), allowing for more complex matching. If the selected operator is not the field's [default operator](../classes/ListGridField.md#attr-listgridfieldfilteroperator), or if [ListGrid.alwaysShowOperatorIcon](../classes/ListGrid_1.md#attr-listgridalwaysshowoperatoricon) is true, the current operator is indicated in a small icon in each filter-field.
+Grids provide a [filter-row](../classes/ListGrid_1.md#attr-listgridfiltereditor) that allows users to apply search-values on a per-field basis. When [ListGrid.allowFilterOperators](../classes/ListGrid_1.md#attr-listgridallowfilteroperators) is true, the default, users can modify the [search operator](../reference.md#object-operator) assigned to a given field via the grid's [header context-menu](../classes/ListGrid_1.md#attr-listgridheadercontextmenu), allowing for more complex matching. If the selected operator is not the field's [default operator](../classes/ListGridField.md#attr-listgridfieldfilteroperator), or if [ListGrid.alwaysShowOperatorIcon](../classes/ListGrid_1.md#attr-listgridalwaysshowoperatoricon) is true, the current operator is indicated in a small icon in each filter-field.
 
 Developers can interact with a field's search operator with [ListGrid.getFieldSearchOperator](../classes/ListGrid_2.md#method-listgridgetfieldsearchoperator), [ListGrid.setFieldSearchOperator](../classes/ListGrid_2.md#method-listgridsetfieldsearchoperator) and [ListGrid.clearFieldSearchOperator](../classes/ListGrid_2.md#method-listgridclearfieldsearchoperator).
 

@@ -1,6 +1,6 @@
 # Application Declaration Files
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -11,7 +11,7 @@ When using the SmartClient server, server side methods written in java can be di
 
 In order to support this an application configuration file needs to be present on your server. This file lists out what server side methods are exposed for direct invocation. The application configuration file should be named `_appID_.app.xml` (where _"appID"_ is some arbitrary id for your application) and must be present at the location specified by the `project.apps` setting in the [server.properties](server_properties.md#kb-topic-serverproperties-file) file.
 
-The application declaration should be written in xml, and should contain a `rpcBindings` block, which holds [ServerObject](../main_2.md#object-serverobject) definitions for each exposed method. Here's an example demonstrating the specified format:
+The application declaration should be written in xml, and should contain a `rpcBindings` block, which holds [ServerObject](../reference_2.md#object-serverobject) definitions for each exposed method. Here's an example demonstrating the specified format:
 
 ```
     <Application>

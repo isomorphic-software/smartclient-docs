@@ -1,6 +1,6 @@
 # WebService Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -99,7 +99,7 @@ If you have more than one <wsdl:service> in the same target namespace, use [WebS
 ### Description
 Retrieve a DataSource that provides read-only access to records returned by a web service operation.
 
-[DataBound Components](../main.md#interface-databoundcomponent) can be bound to the returned DataSource, and the [fetchData()](ListGrid_2.md#method-listgridfetchdata) method can be invoked to retrieve data from the web service.
+[DataBound Components](../reference.md#interface-databoundcomponent) can be bound to the returned DataSource, and the [fetchData()](ListGrid_2.md#method-listgridfetchdata) method can be invoked to retrieve data from the web service.
 
 The returned DataSource is only capable of the "fetch" [DataSource operation](../kb_topics/dataSourceOperations.md#kb-topic-datasource-operations), not "update", "add" or "remove". To create a DataSource capable of full read-write access, use [DataSource.operationBindings](DataSource.md#attr-datasourceoperationbindings) with the [wsOperation](OperationBinding.md#attr-operationbindingwsoperation) property set to associate each DataSource operation with a web service operation.
 
@@ -141,7 +141,7 @@ The schema are instances of [DataSource](DataSource.md#class-datasource) that ca
 
 ### Returns
 
-`[Object](../main.md#type-object)` — mapping from partName to schema
+`[Object](../reference.md#type-object)` — mapping from partName to schema
 
 ---
 ## Method: WebService.callOperation
@@ -166,9 +166,9 @@ NOTE: `callOperation()` is appropriate for simple operations that do not involve
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | operationName | [String](#type-string) | false | — | Name of the operation to invoke |
-| data | [Object](../main.md#type-object) | false | — | data to serialize as XML to form the inbound message of the operation |
+| data | [Object](../reference.md#type-object) | false | — | data to serialize as XML to form the inbound message of the operation |
 | resultType | [Type](#type-type)|[ElementName](#type-elementname)|[XPath](#type-xpath) | false | — | Type, Element name, or XPath that should be selected from the result. For XPaths, see [WSRequest.xmlNamespaces](WSRequest.md#attr-wsrequestxmlnamespaces) for available namespace prefixes and how to add more. |
-| callback | [Callback](../main.md#type-callback) | false | — | Callback to invoke on completion. Signature callback(data, xmlDoc, rpcResponse, wsRequest) |
+| callback | [Callback](../reference.md#type-callback) | false | — | Callback to invoke on completion. Signature callback(data, xmlDoc, rpcResponse, wsRequest) |
 | requestProperties | [WSRequest Properties](#type-wsrequest-properties) | false | — | Additional properties for the WSRequest, such as HTTPHeaders |
 
 ### Groups
@@ -195,7 +195,7 @@ If `headerData` is instead provided via either dsRequest.headerData or as part o
 
 ### Returns
 
-`[Object](../main.md#type-object)` — data for SOAP headers
+`[Object](../reference.md#type-object)` — data for SOAP headers
 
 ---
 ## Method: WebService.setLocation
@@ -209,7 +209,7 @@ With an operation parameter, `setLocation()` can be used to set a distinct URL f
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| location | [URL](../main_2.md#type-url) | false | — | URL where web service can be contacted |
+| location | [URL](../reference_2.md#type-url) | false | — | URL where web service can be contacted |
 | operation | [String](#type-string) | true | — | optional operation name to set the location for, for debugging only |
 
 ### Groups
@@ -315,6 +315,6 @@ The schema are instances of [DataSource](DataSource.md#class-datasource) that ca
 
 ### Returns
 
-`[Object](../main.md#type-object)` — mapping from partName to schema
+`[Object](../reference.md#type-object)` — mapping from partName to schema
 
 ---

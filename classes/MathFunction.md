@@ -1,6 +1,6 @@
 # MathFunction Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -107,7 +107,7 @@ Returns an index of all registered functions by name
 
 ### Returns
 
-`[int](../main.md#type-int)` — —
+`[int](../reference.md#type-int)` — —
 
 ### Groups
 
@@ -121,7 +121,7 @@ Returns an index of all default registered functions by name, ordered by [MathFu
 
 ### Returns
 
-`[int](../main.md#type-int)` — —
+`[int](../reference.md#type-int)` — —
 
 ### Groups
 

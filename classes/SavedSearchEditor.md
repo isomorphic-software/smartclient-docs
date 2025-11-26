@@ -1,12 +1,12 @@
 # SavedSearchEditor Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
 ## Class: SavedSearchEditor
 
-*Inherits from:* [VLayout](../main.md#class-vlayout)
+*Inherits from:* [VLayout](../reference.md#class-vlayout)
 
 ### Description
 User Interface component allowing a user to add a new saved search or edit an existing search. Automatically used by [SavedSearchItem](SavedSearchItem.md#class-savedsearchitem) and [ListGrid.canSaveSearches](ListGrid_1.md#attr-listgridcansavesearches); cannot be used directly and is documented only for skinning and internationalization purposes.

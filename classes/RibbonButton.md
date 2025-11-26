@@ -1,6 +1,6 @@
 # RibbonButton Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -281,7 +281,7 @@ Whether to show a Disabled version of the [menuIcon](#attr-ribbonbuttonmenuicons
 ## Attr: RibbonButton.largeIcon
 
 ### Description
-Icon to show above the title when [Orientation](../main_2.md#type-orientation) is "vertical".
+Icon to show above the title when [Orientation](../reference_2.md#type-orientation) is "vertical".
 
 If a largeIcon is not specified, the [normal icon](#attr-ribbonbuttonicon) will be stretched to the [RibbonButton.largeIconSize](#attr-ribbonbuttonlargeiconsize).
 
@@ -373,7 +373,7 @@ Returns the URL for the current icon.
 
 ### Returns
 
-`[SCImgURL](../main.md#type-scimgurl)` — URL of current icon
+`[SCImgURL](../reference.md#type-scimgurl)` — URL of current icon
 
 ### Groups
 
@@ -417,7 +417,7 @@ Sets a new Icon for this button after initialization.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| icon | [SCImgURL](../main.md#type-scimgurl) | false | — | URL of new icon |
+| icon | [SCImgURL](../reference.md#type-scimgurl) | false | — | URL of new icon |
 
 ### Groups
 

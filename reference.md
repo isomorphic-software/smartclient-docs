@@ -282,7 +282,6 @@ This is the central API reference for the SmartClient framework.
     - [CoTProcess](classes/CoTProcess.md)
       - [AUN](classes/AUN.md)
   - [SimpleType](classes/SimpleType.md)
-  - [EventHandler](classes/EventHandler.md)
   - [ProcessElement](classes/ProcessElement.md)
     - [Task](classes/Task.md)
       - [CoTTask](classes/CoTTask.md)
@@ -348,6 +347,7 @@ This is the central API reference for the SmartClient framework.
     - [LogOutTask](#class-logouttask)
     - [StartTransactionTask](#class-starttransactiontask)
     - [SendTransactionTask](#class-sendtransactiontask)
+  - [EventHandler](classes/EventHandler.md)
   - [TabIndexManager](classes/TabIndexManager.md)
   - [Log](classes/Log.md)
   - [XMLTools](classes/XMLTools.md)
@@ -1289,7 +1289,7 @@ Set form values.
 ### Description
 Values to be set on the form.
 
-Data values prefixed with "$" will be treated as a [TaskInputExpression](main_2.md#type-taskinputexpression). Use [FormSetValuesTask.fixedValues](#attr-formsetvaluestaskfixedvalues) for any values that start with "$" but should be treated as a literal.
+Data values prefixed with "$" will be treated as a [TaskInputExpression](reference_2.md#type-taskinputexpression). Use [FormSetValuesTask.fixedValues](#attr-formsetvaluestaskfixedvalues) for any values that start with "$" but should be treated as a literal.
 
 **Flags**: IR
 
@@ -1341,7 +1341,7 @@ Has no effect unless [ListGrid.showBackgroundComponents](classes/ListGrid_1.md#a
 ### Description
 A TreeGrid that implements the Palette behavior, so it can be used as the source for drag and drop instantiation of components when combined with an [EditContext](classes/EditContext.md#class-editcontext) as the drop target.
 
-Each [TreeNode](main_2.md#object-treenode) within [TreeGrid.data](classes/TreeGrid.md#attr-treegriddata) can be a [PaletteNode](#object-palettenode).
+Each [TreeNode](reference_2.md#object-treenode) within [TreeGrid.data](classes/TreeGrid.md#attr-treegriddata) can be a [PaletteNode](#object-palettenode).
 
 ### Groups
 
@@ -1649,6 +1649,30 @@ A ZoneCanvas is a semi-transparent canvas that highlights a portion of a calenda
 By default, the canvas shows a bottom-aligned label containing the [zone name](classes/CalendarEvent.md#attr-calendareventname). Default styling is specified at the [calendar level](classes/Calendar.md#attr-calendarzonestylename) and can be overridden for [individual zones](classes/CalendarEvent.md#attr-calendareventstylename).
 
 ---
+## Class: AIDataQuestionItem
+
+*Inherits from:* [FormItem](classes/FormItem.md#class-formitem)
+
+### Description
+A form item for managing existing, as well as creating new, Answer Engine [DataQuestion](reference_2.md#object-dataquestion)s.
+
+---
+## Attr: AIDataQuestionItem.answerEngineOperationProperties
+
+### Description
+Properties to apply to new [AnswerEngineOperation](classes/AnswerEngineOperation.md#class-answerengineoperation) instances created by this item. Note that [AnswerEngineOperation.dataQuestion](classes/AnswerEngineOperation.md#attr-answerengineoperationdataquestion), if specified, will be replaced.
+
+**Flags**: IR
+
+---
+## Attr: AIDataQuestionItem.dataQuestionSettings
+
+### Description
+Settings to use for new [DataQuestion](reference_2.md#object-dataquestion) objects created directly or indirectly by this item.
+
+**Flags**: IR
+
+---
 ## Class: ToolStripSeparator
 
 *Inherits from:* [Img](classes/Img.md#class-img)
@@ -1685,30 +1709,6 @@ Image for horizontally oriented separator (for vertical toolstrips).
 
 ### Description
 Path to separator image.
-
-**Flags**: IR
-
----
-## Class: AIDataQuestionItem
-
-*Inherits from:* [FormItem](classes/FormItem.md#class-formitem)
-
-### Description
-A form item for managing existing, as well as creating new, Answer Engine [DataQuestion](main_2.md#object-dataquestion)s.
-
----
-## Attr: AIDataQuestionItem.answerEngineOperationProperties
-
-### Description
-Properties to apply to new [AnswerEngineOperation](classes/AnswerEngineOperation.md#class-answerengineoperation) instances created by this item. Note that [AnswerEngineOperation.dataQuestion](classes/AnswerEngineOperation.md#attr-answerengineoperationdataquestion), if specified, will be replaced.
-
-**Flags**: IR
-
----
-## Attr: AIDataQuestionItem.dataQuestionSettings
-
-### Description
-Settings to use for new [DataQuestion](main_2.md#object-dataquestion) objects created directly or indirectly by this item.
 
 **Flags**: IR
 
@@ -1793,6 +1793,56 @@ Message type.
 **Flags**: IR
 
 ---
+## Class: FormValidateValuesTask
+
+*Inherits from:* [ComponentTask](classes/ComponentTask.md#class-componenttask)
+
+### Description
+Validate a form and show errors to user.
+
+### See Also
+
+- [DynamicForm.validate](classes/DynamicForm.md#method-dynamicformvalidate)
+
+---
+## Attr: FormValidateValuesTask.passThruOutput
+
+### Description
+Does this processElement pass through output from the last executed task (i.e. transient state)?
+
+See [taskInputExpressions](reference_2.md#type-taskinputexpression) for details on the transient state outputs.
+
+Note that this property does not affect the task at all but is an indicator to the user and to the workflow editor of the behavior of the task as coded (See [Process.passThruTaskOutput](classes/Process.md#method-processpassthrutaskoutput)).
+
+**Flags**: IR
+
+---
+## Class: PickTreeMenu
+
+*Inherits from:* [TreeGrid](classes/TreeGrid.md#class-treegrid)
+
+### Description
+[TreeGrid](classes/TreeGrid.md#class-treegrid) subclass used, by default, by FormItems which implement [PickList](reference_2.md#interface-picklist) to display a [collapsible tree](classes/PickList.md#attr-picklistdatasettype) of selectable options.
+
+Can be subclassed, customized and assigned to FormItems via the [pickTreeConstructor](classes/ComboBoxItem.md#attr-comboboxitempicktreeconstructor) attribute.
+
+---
+## Attr: PickTreeMenu.canSaveSearches
+
+### Description
+Option to save searches is disabled for PickTreeMenus
+
+**Flags**: IRA
+
+---
+## Attr: PickTreeMenu.canShowFilterEditor
+
+### Description
+Option to show filter editor is disabled for pickTreeMenus by default
+
+**Flags**: IRA
+
+---
 ## Class: BuildViaAIProgressDialog
 
 *Inherits from:* [Dialog](classes/Dialog.md#class-dialog)
@@ -1821,56 +1871,6 @@ Title for this Window, shown if [showTitle](classes/Window.md#attr-windowshowtit
 Whether to allow the user to cancel the AI process.
 
 **Flags**: IR
-
----
-## Class: FormValidateValuesTask
-
-*Inherits from:* [ComponentTask](classes/ComponentTask.md#class-componenttask)
-
-### Description
-Validate a form and show errors to user.
-
-### See Also
-
-- [DynamicForm.validate](classes/DynamicForm.md#method-dynamicformvalidate)
-
----
-## Attr: FormValidateValuesTask.passThruOutput
-
-### Description
-Does this processElement pass through output from the last executed task (i.e. transient state)?
-
-See [taskInputExpressions](main_2.md#type-taskinputexpression) for details on the transient state outputs.
-
-Note that this property does not affect the task at all but is an indicator to the user and to the workflow editor of the behavior of the task as coded (See [Process.passThruTaskOutput](classes/Process.md#method-processpassthrutaskoutput)).
-
-**Flags**: IR
-
----
-## Class: PickTreeMenu
-
-*Inherits from:* [TreeGrid](classes/TreeGrid.md#class-treegrid)
-
-### Description
-[TreeGrid](classes/TreeGrid.md#class-treegrid) subclass used, by default, by FormItems which implement [PickList](main_2.md#interface-picklist) to display a [collapsible tree](classes/PickList.md#attr-picklistdatasettype) of selectable options.
-
-Can be subclassed, customized and assigned to FormItems via the [pickTreeConstructor](classes/ComboBoxItem.md#attr-comboboxitempicktreeconstructor) attribute.
-
----
-## Attr: PickTreeMenu.canSaveSearches
-
-### Description
-Option to save searches is disabled for PickTreeMenus
-
-**Flags**: IRA
-
----
-## Attr: PickTreeMenu.canShowFilterEditor
-
-### Description
-Option to show filter editor is disabled for pickTreeMenus by default
-
-**Flags**: IRA
 
 ---
 ## Class: FetchRelatedDataTask
@@ -2009,27 +2009,6 @@ Notification method fired when the up button is clicked.
 Notification method fired when the down button is clicked.
 
 ---
-## Class: SetScreenDataTask
-
-*Inherits from:* [ComponentTask](classes/ComponentTask.md#class-componenttask)
-
-### Description
-Sets an embedded screen's [dataContext](classes/Canvas.md#attr-canvasdatacontext) with the [dataContextBinding](#attr-setscreendatataskdatacontextbinding) evaluated in the scope of this task.
-
-### See Also
-
-- [ScreenLoader.setDataContextBinding](classes/ScreenLoader.md#method-screenloadersetdatacontextbinding)
-- [Canvas.setDataContext](classes/Canvas.md#method-canvassetdatacontext)
-
----
-## Attr: SetScreenDataTask.dataContextBinding
-
-### Description
-A [DataContextBinding](#object-datacontextbinding) to be applied to the screen via [Canvas.setDataContext](classes/Canvas.md#method-canvassetdatacontext).
-
-**Flags**: IR
-
----
 ## Class: ListPalette
 
 *Inherits from:* [ListGrid](classes/ListGrid_1.md#class-listgrid)
@@ -2037,7 +2016,7 @@ A [DataContextBinding](#object-datacontextbinding) to be applied to the screen v
 ### Description
 A ListGrid that implements the [Palette](#interface-palette) behavior, so it can be used as the source for drag and drop instantiation of components when combined with an [EditContext](classes/EditContext.md#class-editcontext) as the drop target.
 
-Each [ListGridRecord](main_2.md#object-listgridrecord) can be a [PaletteNode](#object-palettenode).
+Each [ListGridRecord](reference_2.md#object-listgridrecord) can be a [PaletteNode](#object-palettenode).
 
 ### Groups
 
@@ -2058,6 +2037,27 @@ Option to show filter editor is disabled for listPalettes
 Option to save searches is disabled for listPalettes
 
 **Flags**: IRA
+
+---
+## Class: SetScreenDataTask
+
+*Inherits from:* [ComponentTask](classes/ComponentTask.md#class-componenttask)
+
+### Description
+Sets an embedded screen's [dataContext](classes/Canvas.md#attr-canvasdatacontext) with the [dataContextBinding](#attr-setscreendatataskdatacontextbinding) evaluated in the scope of this task.
+
+### See Also
+
+- [ScreenLoader.setDataContextBinding](classes/ScreenLoader.md#method-screenloadersetdatacontextbinding)
+- [Canvas.setDataContext](classes/Canvas.md#method-canvassetdatacontext)
+
+---
+## Attr: SetScreenDataTask.dataContextBinding
+
+### Description
+A [DataContextBinding](#object-datacontextbinding) to be applied to the screen via [Canvas.setDataContext](classes/Canvas.md#method-canvassetdatacontext).
+
+**Flags**: IR
 
 ---
 ## Class: DoubleItem
@@ -2244,7 +2244,7 @@ Start editing a new record.
 ### Description
 Initial values for new edit record.
 
-Data values prefixed with "$" will be treated as a [TaskInputExpression](main_2.md#type-taskinputexpression) excluding "$input" and "$inputRecord" references.
+Data values prefixed with "$" will be treated as a [TaskInputExpression](reference_2.md#type-taskinputexpression) excluding "$input" and "$inputRecord" references.
 
 **Flags**: IR
 
@@ -2739,6 +2739,20 @@ Component to pull record for editing.
 **Flags**: IR
 
 ---
+## Class: MenuPalette
+
+*Inherits from:* [Menu](classes/Menu.md#class-menu)
+
+### Description
+A Menu that implements the [Palette](#interface-palette) behavior, so it can be used as the source for drag and drop instantiation of components when combined with an [EditContext](classes/EditContext.md#class-editcontext) as the drop target.
+
+Each [MenuItem](reference_2.md#object-menuitem) can be a [PaletteNode](#object-palettenode).
+
+### Groups
+
+- devTools
+
+---
 ## Class: UserConfirmationGateway
 
 *Inherits from:* [ProcessElement](classes/ProcessElement.md#class-processelement)
@@ -2749,20 +2763,6 @@ Chooses one or another next process element based on confirmation of a message s
 If the user clicks OK, the [nextElement](classes/DecisionTask.md#attr-decisiontasknextelement) is chosen, otherwise the choice is [failureElement](classes/DecisionTask.md#attr-decisiontaskfailureelement).
 
 **Deprecated**
-
----
-## Class: MenuPalette
-
-*Inherits from:* [Menu](classes/Menu.md#class-menu)
-
-### Description
-A Menu that implements the [Palette](#interface-palette) behavior, so it can be used as the source for drag and drop instantiation of components when combined with an [EditContext](classes/EditContext.md#class-editcontext) as the drop target.
-
-Each [MenuItem](main_2.md#object-menuitem) can be a [PaletteNode](#object-palettenode).
-
-### Groups
-
-- devTools
 
 ---
 ## Class: GridTransferDataTask
@@ -3655,7 +3655,7 @@ Parent/child relationships
 
 ### Related
 
-- [DisplayNodeType](main_2.md#type-displaynodetype)
+- [DisplayNodeType](reference_2.md#type-displaynodetype)
 
 ---
 ## KB Topic: Answer Engine
@@ -3671,7 +3671,7 @@ The SmartClient Answer Engine (AE) employs AI to navigate your data to answer an
 - [AI.resumeDataQuestion](classes/AI.md#classmethod-airesumedataquestion)
 - [Callbacks.AskDataQuestionResultCallback](classes/Callbacks.md#method-callbacksaskdataquestionresultcallback)
 - [DataQuestionSettings](#object-dataquestionsettings)
-- [DataQuestion](main_2.md#object-dataquestion)
+- [DataQuestion](reference_2.md#object-dataquestion)
 - [AnswerEngineOperation](classes/AnswerEngineOperation.md#class-answerengineoperation)
 - [AI.maxActiveAnswerEngineOperations](classes/AI.md#classattr-aimaxactiveanswerengineoperations)
 
@@ -4116,7 +4116,7 @@ Log RPC timing info for transactions exceeding thresholds, and optionally fail t
 ## KB Topic: valueMap
 
 ### Description
-A [ValueMap](main_2.md#type-valuemap) defines the set of legal values for a field, and optionally allows you to provide a mapping from stored values to values as seen by the end user.
+A [ValueMap](reference_2.md#type-valuemap) defines the set of legal values for a field, and optionally allows you to provide a mapping from stored values to values as seen by the end user.
 
 ### Related
 
@@ -4246,7 +4246,7 @@ Policy for choosing between admin searches fetched from the DataSource vs. those
 ## Type: AIResponseErrorType
 
 ### Description
-For an [AIResponse](main_2.md#object-airesponse) of [type](classes/AsyncOperationResult.md#attr-asyncoperationresulttype) "error", the type of error, if known.
+For an [AIResponse](reference_2.md#object-airesponse) of [type](classes/AsyncOperationResult.md#attr-asyncoperationresulttype) "error", the type of error, if known.
 
 ### Values
 
@@ -4319,7 +4319,7 @@ What to do if the user hits Up or Down arrow key while editing a cell.
 | Value | Description |
 |-------|-------------|
 | "none" | The grid will take no special action when the user presses up or down arrow keys within an editor |
-| "editNext" | The grid will intercept up and down arrow keypresses and navigate to the next or previous edit row by generating an appropriate [EditCompletionEvent](main_2.md#type-editcompletionevent) |
+| "editNext" | The grid will intercept up and down arrow keypresses and navigate to the next or previous edit row by generating an appropriate [EditCompletionEvent](reference_2.md#type-editcompletionevent) |
 
 ### Groups
 
@@ -4434,7 +4434,7 @@ Selection model for [CubeGrid](classes/CubeGrid.md#class-cubegrid) indicating wh
 ---
 ## Locator Structure
 
-[AutoTest locators](main_2.md#type-autotestlocator) consist of a series of segments, delineated by "/" characters.
+[AutoTest locators](reference_2.md#type-autotestlocator) consist of a series of segments, delineated by "/" characters.
 
 Each segment identifies a step in a hierarchy from a root component to the target element. Individual segments may represent a Canvas, a FormItem, an interior DOM element or some other construction specific to the locator in question.
 
@@ -4681,7 +4681,7 @@ Policy controlling how the window will manage content within its body.
 
 | Value | Description |
 |-------|-------------|
-| Window.NONE | Window does not try to size members at all on either axis. Window body defaults to a Canvas if not autosizing. Otherwise a Layout is used with policies on both axes set to [LayoutPolicy](main_2.md#type-layoutpolicy) "none". |
+| Window.NONE | Window does not try to size members at all on either axis. Window body defaults to a Canvas if not autosizing. Otherwise a Layout is used with policies on both axes set to [LayoutPolicy](reference_2.md#type-layoutpolicy) "none". |
 | Window.VERTICAL | Window body defaults to VLayout behavior. (Body is actually just a Layout with [Layout.vertical](classes/Layout.md#attr-layoutvertical): true.) |
 | Window.HORIZONTAL | Window body defaults to HLayout behavior. (Body is actually just a Layout with [Layout.vertical](classes/Layout.md#attr-layoutvertical): false.) |
 
@@ -5312,7 +5312,7 @@ This category includes cases where code running in the browser does the renderin
 #### Excel export
 Almost the same as in-browser rendering, with minor limitations due to missing features in Excel. Exact differences are described under [DataSourceField.exportFormat](classes/DataSourceField.md#attr-datasourcefieldexportformat).
 #### non-Excel server export
-For example, CSV, XML or JSON [export formats](main_2.md#type-exportformat) provided via [DataSource.exportData](classes/DataSource.md#method-datasourceexportdata). Full support for SimpleDateFormat/DecimalFormat as provided by whichever Java version you have installed on the server. However note that depending on the context of the export, the default behavior may be to ignore format strings, since formatting intended for end users wouldn't be desirable if data exchange is the goal. See the [Export Formatting overview](kb_topics/exportFormatting.md#kb-topic-exports--formatting) for details.
+For example, CSV, XML or JSON [export formats](reference_2.md#type-exportformat) provided via [DataSource.exportData](classes/DataSource.md#method-datasourceexportdata). Full support for SimpleDateFormat/DecimalFormat as provided by whichever Java version you have installed on the server. However note that depending on the context of the export, the default behavior may be to ignore format strings, since formatting intended for end users wouldn't be desirable if data exchange is the goal. See the [Export Formatting overview](kb_topics/exportFormatting.md#kb-topic-exports--formatting) for details.
 
 #### Date Format
 
@@ -5492,7 +5492,7 @@ If [non editable](classes/FormItem.md#attr-formitemcanedit), and [readOnlyDispla
 ### See Also
 
 - [FormItem.type](classes/FormItem.md#attr-formitemtype)
-- [FieldType](main_2.md#type-fieldtype)
+- [FieldType](reference_2.md#type-fieldtype)
 
 ---
 ## Type: FormMethod
@@ -5693,8 +5693,8 @@ Policy for whether resize bars are shown on members by default.
 | Value | Description |
 |-------|-------------|
 | "marked" | resize bars are only shown on members marked [showResizeBar:true](classes/Canvas.md#attr-canvasshowresizebar) |
-| "middle" | resize bars are shown on all resizable members that are not explicitly marked showResizeBar:false, except the last member. Appropriate for a [LayoutPolicy](main_2.md#type-layoutpolicy) of "fill" (VLayout, HLayout) since the overall space will always be filled. |
-| "all" | resize bars are shown on all resizable members that are not explicitly marked showResizeBar:false, including the last member. Can be appropriate for a [LayoutPolicy](main_2.md#type-layoutpolicy) of "none" (VStack, HStack) since the overall size of the layout is dictated by it's member's sizes. |
+| "middle" | resize bars are shown on all resizable members that are not explicitly marked showResizeBar:false, except the last member. Appropriate for a [LayoutPolicy](reference_2.md#type-layoutpolicy) of "fill" (VLayout, HLayout) since the overall space will always be filled. |
+| "all" | resize bars are shown on all resizable members that are not explicitly marked showResizeBar:false, including the last member. Can be appropriate for a [LayoutPolicy](reference_2.md#type-layoutpolicy) of "none" (VStack, HStack) since the overall size of the layout is dictated by it's member's sizes. |
 | "none" | resize bars are not shown even if members are marked with [showResizeBar:true](classes/Canvas.md#attr-canvasshowresizebar) |
 
 ---
@@ -5880,7 +5880,7 @@ and adding "#" and "\*" to the regular expressions above would allow for users t
 ### See Also
 
 - [ListGridField.type](classes/ListGridField.md#attr-listgridfieldtype)
-- [FieldType](main_2.md#type-fieldtype)
+- [FieldType](reference_2.md#type-fieldtype)
 
 ---
 ## Type: ListGridGroupState
@@ -5928,7 +5928,7 @@ An object containing the stored sort information for a listGrid. Note that this 
 ## Type: LocatorTypeStrategy
 
 ### Description
-When attempting to identify a component from within a list of possible candidates as described [here](main_2.md#type-locatorstrategy), if we are unable to find a unique match by name or title, we will use the recorded "type" of the component to verify an apparent match.
+When attempting to identify a component from within a list of possible candidates as described [here](reference_2.md#type-locatorstrategy), if we are unable to find a unique match by name or title, we will use the recorded "type" of the component to verify an apparent match.
 
 By default we check the following properties in order:
 
@@ -5936,7 +5936,7 @@ By default we check the following properties in order:
 *   If this is not a [framework class](classes/Class.md#classattr-classisframeworkclass), does the core framework superclass match?
 *   Does the `role` match?
 
-In some cases an explicit locatorTypeStrategy can be specified to modify this behavior. As with [LocatorStrategy](main_2.md#type-locatorstrategy), if we are unable to match using the specified type strategy we continue to test against the remaining strategies in order - so if a type strategy of "scClass" was specified but we were unable to find a match with the appropriate core superclass, we will attempt to match by role. Possible values are:
+In some cases an explicit locatorTypeStrategy can be specified to modify this behavior. As with [LocatorStrategy](reference_2.md#type-locatorstrategy), if we are unable to match using the specified type strategy we continue to test against the remaining strategies in order - so if a type strategy of "scClass" was specified but we were unable to find a match with the appropriate core superclass, we will attempt to match by role. Possible values are:
 
 ### Values
 
@@ -5953,7 +5953,7 @@ In some cases an explicit locatorTypeStrategy can be specified to modify this be
 
 ### See Also
 
-- [LocatorStrategy](main_2.md#type-locatorstrategy)
+- [LocatorStrategy](reference_2.md#type-locatorstrategy)
 
 ---
 ## Type: LogPriority
@@ -6060,7 +6060,7 @@ Governs whether a [MultiPickerItem](classes/MultiPickerItem.md#class-multipicker
 
 | Value | Description |
 |-------|-------------|
-| "pickList" | Options will be displayed in a [PickList](main_2.md#interface-picklist) |
+| "pickList" | Options will be displayed in a [PickList](reference_2.md#interface-picklist) |
 | "shuttle" | Options will be displayed in a [Shuttle](classes/Shuttle.md#class-shuttle) |
 | "pickTree" | Options will be displayed in a [TreeGrid](classes/TreeGrid.md#class-treegrid). Only suitable for hierarchical data. |
 
@@ -6250,7 +6250,7 @@ This is considered a syntax error by Internet Explorer, but not by Firefox. This
 ## Type: OperatorId
 
 ### Description
-An operator is used as part of a [Criterion](main_2.md#object-criterion) when specifying [AdvancedCriteria](#object-advancedcriteria).
+An operator is used as part of a [Criterion](reference_2.md#object-criterion) when specifying [AdvancedCriteria](#object-advancedcriteria).
 
 This list of operators indicates the set of operators built into SmartClient DataSources, which can be used for both client and server-side filtering. Some operators offer case-insensitive versions, prefixed with a lower-case _i_, such as `iContains`. **Note that such operators are intended for text-based searches and are not available to numeric or date fields (integer/float/date/datetime and derivatives), where there is no use for case.**
 
@@ -6530,14 +6530,14 @@ Defines the various types of record that can be present in a [ListGrid](classes/
 ## Type: RelativeDateShortcut
 
 ### Description
-A RelativeDateShortcut is a special string that represents a shortcut to a date phrase that can be automatically mapped to a [RelativeDateString](main_2.md#type-relativedatestring) for use in widgets that leverage relative-dates, such as the [RelativeDateItem](classes/RelativeDateItem.md#class-relativedateitem).
+A RelativeDateShortcut is a special string that represents a shortcut to a date phrase that can be automatically mapped to a [RelativeDateString](reference_2.md#type-relativedatestring) for use in widgets that leverage relative-dates, such as the [RelativeDateItem](classes/RelativeDateItem.md#class-relativedateitem).
 
-Note that some shortcuts indicate a time period but do not directly indicate whether the value refers to the start or end of the time period in question. This ambiguity can be resolved by specifying an explicit [RelativeDateRangePosition](main_2.md#type-relativedaterangeposition) when calling APIs that convert from RelativeDates to absolute date values. This is the case for _$today_, _$tomorrow_, _$yesterday_, _$weekAgo_, _$weekFromNow_, _$monthAgo_ and _$monthFromNow_. If a range position is not explicitly passed, these will all default to the start of the day in question.
+Note that some shortcuts indicate a time period but do not directly indicate whether the value refers to the start or end of the time period in question. This ambiguity can be resolved by specifying an explicit [RelativeDateRangePosition](reference_2.md#type-relativedaterangeposition) when calling APIs that convert from RelativeDates to absolute date values. This is the case for _$today_, _$tomorrow_, _$yesterday_, _$weekAgo_, _$weekFromNow_, _$monthAgo_ and _$monthFromNow_. If a range position is not explicitly passed, these will all default to the start of the day in question.
 
 Builtin options include
 
 *   $now - this moment
-*   $today - the current day. By default this resolves to the start of the current day though an explicit [RelativeDateRangePosition](main_2.md#type-relativedaterangeposition) may be used to specify the end of the current day.
+*   $today - the current day. By default this resolves to the start of the current day though an explicit [RelativeDateRangePosition](reference_2.md#type-relativedaterangeposition) may be used to specify the end of the current day.
 *   $startOfToday - the start of today
 *   $endOfToday - the end of today (one millisecond before the $startOfTomorrow)
 *   $yesterday - the previous day.
@@ -6559,7 +6559,7 @@ Builtin options include
 
 ### See Also
 
-- [RelativeDateString](main_2.md#type-relativedatestring)
+- [RelativeDateString](reference_2.md#type-relativedatestring)
 
 ---
 ## Type: ResizeDirection
@@ -6584,7 +6584,7 @@ Indicates the request format to be used for a REST operation. Is only applicable
 
 | Value | Description |
 |-------|-------------|
-| "params" | Indicates that context is provided to the target REST service by setting parameter values in the URL. With this request format, the [DSRequest](main_2.md#object-dsrequest)'s values or criteria will be added to the [target dataURL](classes/DataSource.md#attr-datasourcedataurl) as standard HTTP parameters values as follows:
+| "params" | Indicates that context is provided to the target REST service by setting parameter values in the URL. With this request format, the [DSRequest](reference_2.md#object-dsrequest)'s values or criteria will be added to the [target dataURL](classes/DataSource.md#attr-datasourcedataurl) as standard HTTP parameters values as follows:
 
 *   For "add" and "update" requests the "values" will be added to the target URL (see the server-side Javadoc for `DSRequest.getValues()`)
 *   For "fetch" and "remove" requests, where the concept of "values" doesn't make sense, the "criteria" will be added to the target URL (see the server-side Javadoc for `DSRequest.getCriteria()`)
@@ -6609,7 +6609,7 @@ Also, note that any explicitly declared [params](classes/DataSource.md#attr-data
 This format is often used to supply criteria to "fetch" operations, and primary-key values to "remove" operations. However, this is by no means a universal approach; different REST services adopt different approaches, there is no generally-accepted "right way" to handle things
 
 It is possible to suppress this automatic mapping - see [DataSource.suppressAutoMappings](classes/DataSource.md#attr-datasourcesuppressautomappings) |
-| "json" | Indicates that context is provided to the target REST service by providing a block of JSON-encoded text in the body of the HTTP request sent to the REST server. With this request format, `RestConnector` will render an incoming [DSRequest](main_2.md#object-dsrequest)'s values or criteria as a JSON object; for "add" and "update" requests, the "values" will be used, and for "fetch" and "remove" operations, the criteria will be used (see the server-side Javadoc for `DSRequest.getCriteria()`).
+| "json" | Indicates that context is provided to the target REST service by providing a block of JSON-encoded text in the body of the HTTP request sent to the REST server. With this request format, `RestConnector` will render an incoming [DSRequest](reference_2.md#object-dsrequest)'s values or criteria as a JSON object; for "add" and "update" requests, the "values" will be used, and for "fetch" and "remove" operations, the criteria will be used (see the server-side Javadoc for `DSRequest.getCriteria()`).
 
 So if we had an add request with the following record:
 
@@ -6633,7 +6633,7 @@ those values would be included, in strict JSON form, in the body of the HTTP req
 This format is most often used when you need to supply more extensive amounts of data, like entire records to "add" and "update" operations. However, as mentioned above, this is by no means a universal approach, and some REST services use URL parameters even when specifying entire records of data. Also, some REST services use XML rather than JSON
 
 Note, if there is a [requestTemplate](classes/DataSource.md#attr-datasourcerequesttemplate) in force, we use that to drive the content and format of the generated JSON block |
-| "xml" | Indicates that context is provided to the target REST service by providing a block of XML text in the body of the HTTP request sent to the REST server. With this request format, `RestConnector` will render an incoming [DSRequest](main_2.md#object-dsrequest)'s values or criteria as a snippet of XML text; for "add" and "update" requests, the "values" will be used, and for "fetch" and "remove" operations, the criteria will be used (see the server-side Javadoc for `DSRequest.getCriteria()`). The name of the enclosing tag is specified in [DataSource.xmlTag](classes/DataSource.md#attr-datasourcexmltag).
+| "xml" | Indicates that context is provided to the target REST service by providing a block of XML text in the body of the HTTP request sent to the REST server. With this request format, `RestConnector` will render an incoming [DSRequest](reference_2.md#object-dsrequest)'s values or criteria as a snippet of XML text; for "add" and "update" requests, the "values" will be used, and for "fetch" and "remove" operations, the criteria will be used (see the server-side Javadoc for `DSRequest.getCriteria()`). The name of the enclosing tag is specified in [DataSource.xmlTag](classes/DataSource.md#attr-datasourcexmltag).
 
 So if we had an add request with the following record:
 
@@ -6806,7 +6806,7 @@ Name of a SmartClient Class, that is, a Class that has been created via [isc.def
 ### Description
 For properties that refer to images by URL, such as [Img.src](classes/Img.md#attr-imgsrc) and [Button.icon](classes/Button.md#attr-buttonicon), SmartClient provides various capabilities to allow for simpler and more uniform settings, and to allow applications to be restructured more easily.
 
-**[StockIcons](main_2.md#object-stockicon)**
+**[StockIcons](reference_2.md#object-stockicon)**
 
 SmartClient defines a list of [known-icons](classes/Media.md#classmethod-mediagetstockiconnames) which can be used by name in src-strings. For example, setting a button's [icon](classes/Button.md#attr-buttonicon) property to "Edit" will show the [current image](classes/StockIcon.md#attr-stockiconsrc) mapped to the builtin StockIcon with that name. You can also modify the image currently assigned to the "Edit" icon by calling [Media.updateIconMapping("Edit", "new src")](classes/Media.md#classmethod-mediaupdateiconmapping).
 
@@ -7040,7 +7040,7 @@ Different styles of selection that a list, etc. might support
 ## Type: SequenceMode
 
 ### Description
-The possible types of sequence handling SmartClient Server can apply. This refers to the technique used to obtain the primary keys of the most recent insert, which the product uses to enable [automatic cache synchronization](kb_topics/cacheSynchronization.md#kb-topic-automatic-cache-synchronization) (updating client-side components bound to a dataSource to reflect updates to that dataSource). Only applicable to [fields](main_2.md#object-datasourcefield) of [type](main_2.md#type-fieldtype) "sequence".
+The possible types of sequence handling SmartClient Server can apply. This refers to the technique used to obtain the primary keys of the most recent insert, which the product uses to enable [automatic cache synchronization](kb_topics/cacheSynchronization.md#kb-topic-automatic-cache-synchronization) (updating client-side components bound to a dataSource to reflect updates to that dataSource). Only applicable to [fields](reference_2.md#object-datasourcefield) of [type](reference_2.md#type-fieldtype) "sequence".
 
 ### Values
 
@@ -7372,7 +7372,7 @@ Mode for applying criteria to a tree.
 ## Type: TreeGridViewState
 
 ### Description
-An object containing the "view state" information for a treeGrid. In addition to the state data contained by a [ListGridViewState](main_2.md#type-listgridviewstate) object, this will also contain the current open state of the treeGrid in question.  
+An object containing the "view state" information for a treeGrid. In addition to the state data contained by a [ListGridViewState](reference_2.md#type-listgridviewstate) object, this will also contain the current open state of the treeGrid in question.  
 Note that this object is not intended to be interrogated directly, but may be stored (for example) as a blob on the server for view state persistence across sessions.
 
 ### Groups
@@ -7571,7 +7571,7 @@ Settings for whether multiple sections can be in the expanded state simultaneous
 ## Type: WriteToGeneratedFields
 
 ### Description
-Indicates the category of "generated fields" the SmartClient Server should write values to, if defined on a [DSRequest](main_2.md#object-dsrequest) - see [writeToGeneratedFields](classes/DSRequest.md#attr-dsrequestwritetogeneratedfields). At the time of writing we only support one such category, but this may be extended in the future.
+Indicates the category of "generated fields" the SmartClient Server should write values to, if defined on a [DSRequest](reference_2.md#object-dsrequest) - see [writeToGeneratedFields](classes/DSRequest.md#attr-dsrequestwritetogeneratedfields). At the time of writing we only support one such category, but this may be extended in the future.
 
 ### Values
 
@@ -7655,7 +7655,7 @@ AdvancedCriteria can also be specified in [Component XML](kb_topics/componentXML
  </AdvancedCriteria>
  
 ```
-An AdvancedCriteria is in effect a [Criterion](main_2.md#object-criterion) that has been marked with \_constructor:"AdvancedCriteria" to mark it as complete criteria.
+An AdvancedCriteria is in effect a [Criterion](reference_2.md#object-criterion) that has been marked with \_constructor:"AdvancedCriteria" to mark it as complete criteria.
 
 In addition to directly creating an AdvancedCriteria object as described above, the [DataSource.convertCriteria](classes/DataSource.md#classmethod-datasourceconvertcriteria) and [DataSource.combineCriteria](classes/DataSource.md#classmethod-datasourcecombinecriteria) methods may be used to create and modify criteria based on simple fieldName / value mappings.
 
@@ -7685,11 +7685,11 @@ When using the SmartClient Server, AdvancedCriteria created on the client and st
 ## Object: AdvancedCriterionSubquery
 
 ### Description
-A specialized subclass of [DSRequest](main_2.md#object-dsrequest) that you use to declare the properties of a subquery (a [fieldQuery](classes/Criterion.md#attr-criterionfieldquery) or [valueQuery](classes/Criterion.md#attr-criterionvaluequery)) to be used in [AdvancedCriteria](#object-advancedcriteria). Subquery definitions are often very compact; only a few properties are permitted for a client-driven subquery (see "Restrictions on client-driven subqueries", below), and many use cases can be satisfied specifying just a [dataSource](classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubquerydatasource) and a [summary function](classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubquerysummaryfunctions).
+A specialized subclass of [DSRequest](reference_2.md#object-dsrequest) that you use to declare the properties of a subquery (a [fieldQuery](classes/Criterion.md#attr-criterionfieldquery) or [valueQuery](classes/Criterion.md#attr-criterionvaluequery)) to be used in [AdvancedCriteria](#object-advancedcriteria). Subquery definitions are often very compact; only a few properties are permitted for a client-driven subquery (see "Restrictions on client-driven subqueries", below), and many use cases can be satisfied specifying just a [dataSource](classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubquerydatasource) and a [summary function](classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubquerysummaryfunctions).
 
 Criteria subquery definitions fall into two broad categories:
 
-*   **Aggregation**, where the subquery uses a [SummaryFunction](main_2.md#type-summaryfunction) to aggregate or summarize a related dataset, and then filter on that aggregated or summarized value. For example, orders with more than 10 lines, customers with an average order value more than $1000, UK customers with an outstanding payment more than a week old, etc
+*   **Aggregation**, where the subquery uses a [SummaryFunction](reference_2.md#type-summaryfunction) to aggregate or summarize a related dataset, and then filter on that aggregated or summarized value. For example, orders with more than 10 lines, customers with an average order value more than $1000, UK customers with an outstanding payment more than a week old, etc
 *   **Related value**, where the subquery selects a value (or, for `inSet`\-type clauses, a set of values) from a related dataSource and then filters on that value. For example, Products that were not ordered last month, Employees who are based in one of the North American offices, Orders that include a particular category of Product, etc
 
 In ideal circumstances - when both main and subquery [dataSource](classes/DataSource.md#class-datasource)s are [SQL DataSources](kb_topics/sqlDataSource.md#kb-topic-sql-datasources), and a number of other restrictions are satisfied - subqueries are implemented by incorporating their functionality into a larger overall SQL query, because this is the most efficient thing to do, and gives the best performance. See [canEmbedSQL](classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubquerycanembedsql) for a description of the rules and nuances around this.
@@ -7711,7 +7711,7 @@ This join from the subquery to the outer query is applied implicitly by SmartCli
 Since SmartClient can only make use of a single value as output from a subquery, if your subquery returns multiple records, we will simply use the first. If the query returns multiple fields, you can specify the field to use as the subquery output with [queryOutput](classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubqueryqueryoutput). If the subquery returns more than one field and no `queryOutput` is specified, we will use the first aggregated ([summaryFunction](classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubquerysummaryfunctions)) field, or the first [grouped](classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubquerygroupby) field if there are no aggregated fields, or the [primaryKey](classes/DataSourceField.md#attr-datasourcefieldprimarykey) field if there are also no `groupBy` fields, or just the first numeric field failing all else. Note, however, that although we attempt to derive a sensible value, it never makes sense to return multiple records from a subquery, and it only really makes sense to return multiple fields if you explicitly identify the correct field with `queryOutput`. Ideally, for the sake of clarity, return a single record, and either have that record contain a single field, or specify `queryOutput`
 
 #### Restrictions on client-driven subqueries
-For security reasons, subqueries in [requests](main_2.md#object-dsrequest) that came from the client-side are only permitted to specify a handful of properties. These properties are sufficient to allow the full power of the subquery feature to be used, without allowing any of the much broader set of general properties associated with the `DSRequest` superclass. The properties that can be set in a client-driven subquery are just those that are documented as direct properties of the `AdvancedCriterionSubquery` class - specifically [canEmbedSQL](classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubquerycanembedsql), [criteria](classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubquerycriteria), [dataSource](classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubquerydatasource), [groupBy](classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubquerygroupby), [operationId](classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubqueryoperationid), [queryFK](classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubqueryqueryfk), [queryOutput](classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubqueryqueryoutput), and [summaryFunctions](classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubquerysummaryfunctions)
+For security reasons, subqueries in [requests](reference_2.md#object-dsrequest) that came from the client-side are only permitted to specify a handful of properties. These properties are sufficient to allow the full power of the subquery feature to be used, without allowing any of the much broader set of general properties associated with the `DSRequest` superclass. The properties that can be set in a client-driven subquery are just those that are documented as direct properties of the `AdvancedCriterionSubquery` class - specifically [canEmbedSQL](classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubquerycanembedsql), [criteria](classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubquerycriteria), [dataSource](classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubquerydatasource), [groupBy](classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubquerygroupby), [operationId](classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubqueryoperationid), [queryFK](classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubqueryqueryfk), [queryOutput](classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubqueryqueryoutput), and [summaryFunctions](classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubquerysummaryfunctions)
 
 For `DSRequest`s that originally came from the server, it is possible to have a subquery that specifies any `DSRequest` property. Many of these would only have any relevance or effect if the subquery was run separately rather than embedded (as described above and in the [canEmbedSQL](classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubquerycanembedsql) doc). If you need to do this, look in the server Javadoc for `DSRequest.setAllowArbitrarySubqueries(boolean)`
 
@@ -7725,7 +7725,7 @@ Finally, note that it is possible to switch off the ability to use subqueries al
 #### `exists / notExists` operators
 The [`exists / notExists`](#type-operatorid) operators provide a concise way to filter records based on the existence (or absence) of related rows.
 
-When both main DataSource and suquery DataSource is backed by `SQLDataSource`, these operators are transformed into `EXISTS (...)` / `NOT EXISTS (...)` correlated subselects in the generated SQL. Non-SQL backends, as well as when [canEmbedSQL:false](classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubquerycanembedsql) is set for SQL backends, will execute subqueries as separate [DSRequests](main_2.md#object-dsrequest) and apply their results manually.
+When both main DataSource and suquery DataSource is backed by `SQLDataSource`, these operators are transformed into `EXISTS (...)` / `NOT EXISTS (...)` correlated subselects in the generated SQL. Non-SQL backends, as well as when [canEmbedSQL:false](classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubquerycanembedsql) is set for SQL backends, will execute subqueries as separate [DSRequests](reference_2.md#object-dsrequest) and apply their results manually.
 
 These operators must be used with a [fieldQuery](classes/Criterion.md#attr-criterionfieldquery):
 
@@ -7915,7 +7915,7 @@ Parameters to an asynchronous operation.
 ### Description
 An object containing information about the result of an asynchronous operation.
 
-Note: [isc.defaultAsyncOperationCatchCallback](classes/isc.md#staticmethod-iscdefaultasyncoperationcatchcallback) can be used to provide default error handling for a [Promise](main_2.md#object-promise)-based asynchronous operation.
+Note: [isc.defaultAsyncOperationCatchCallback](classes/isc.md#staticmethod-iscdefaultasyncoperationcatchcallback) can be used to provide default error handling for a [Promise](reference_2.md#object-promise)-based asynchronous operation.
 
 ---
 ## Object: AsyncSingleValueGenerationResult
@@ -7931,7 +7931,7 @@ The result of an asynchronous operation to generate a value.
 ## Object: AutoTestLocatorConfiguration
 
 ### Description
-Configuration object for generating [AutoTestLocators](main_2.md#type-autotestlocator).
+Configuration object for generating [AutoTestLocators](reference_2.md#type-autotestlocator).
 
 An AutoTestLocatorConfiguration may be passed to [AutoTest.getLocator](classes/AutoTest.md#classmethod-autotestgetlocator) to override default locator configuration settings.
 
@@ -7945,7 +7945,7 @@ Allows specifying additional browser window settings when calling the underlying
 ## Object: BuildHilitesResponse
 
 ### Description
-Represents a response from AI to a request to build one or more [Hilite](main_2.md#object-hilite) objects.
+Represents a response from AI to a request to build one or more [Hilite](reference_2.md#object-hilite) objects.
 
 ### See Also
 
@@ -8055,7 +8055,7 @@ For example, in JavaScript:
  
 ```
 
-When used within a Workflow [SetScreenDataTask](#class-setscreendatatask) or [AddScreenTask](classes/AddScreenTask.md#class-addscreentask), any applicable [TaskInputExpression](main_2.md#type-taskinputexpression) can be used as a value.
+When used within a Workflow [SetScreenDataTask](#class-setscreendatatask) or [AddScreenTask](classes/AddScreenTask.md#class-addscreentask), any applicable [TaskInputExpression](reference_2.md#type-taskinputexpression) can be used as a value.
 
 To use a literal value that starts with one of the expressions described above, prefix the leading dollar sign ($) with a backslash (\\) (ex. "\\$ruleScope.goes.here") to prevent the value from being resolved as an expression.
 
@@ -8077,7 +8077,7 @@ Represents a field in a [DataBoundComponent](#interface-databoundcomponent).
 
 ### See Also
 
-- [ListGridField](main_2.md#object-listgridfield)
+- [ListGridField](reference_2.md#object-listgridfield)
 - [DetailViewerField](#object-detailviewerfield)
 
 ---
@@ -8141,7 +8141,7 @@ Configuration object for [AutoTest.waitForElement](classes/AutoTest.md#classmeth
 ### Description
 A JavaScript object representing the state of a live [EventStream](classes/EventStream.md#class-eventstream) instance, including all captured events retained by the stream. When [EventStream.end](classes/EventStream.md#method-eventstreamend) is called to complete capturing, a `EventStreamData` object is returned.
 
-Note that `EventStreamData` is essentially JSON, except that dates remain JavaScript [Date](main_2.md#object-date)s, rather than being converted to string format. This ensures that if you [serialize](classes/JSON.md#classmethod-jsonencode) the data and then [deserialize](classes/JSON.md#classmethod-jsondecode) it, dates round trip properly and time zone information is not lost.
+Note that `EventStreamData` is essentially JSON, except that dates remain JavaScript [Date](reference_2.md#object-date)s, rather than being converted to string format. This ensures that if you [serialize](classes/JSON.md#classmethod-jsonencode) the data and then [deserialize](classes/JSON.md#classmethod-jsondecode) it, dates round trip properly and time zone information is not lost.
 
 ### Groups
 
@@ -8208,7 +8208,7 @@ An object representing the start date for fiscal years in the current locale.
 
 A fiscal year spans a configurable date range - it may not exactly match a calendar year in length and it can start on any date within the calendar year and potentially end in the next calendar year.
 
-Developers may specify explicit fiscal year start dates by adding [FiscalYear](main_2.md#object-fiscalyear) objects to the [fiscal years array](classes/FiscalCalendar.md#attr-fiscalcalendarfiscalyears). If none are provided, or if there is no entry for the given year, one is manufactured based on the default [month](classes/FiscalCalendar.md#attr-fiscalcalendardefaultmonth) and [date](classes/FiscalCalendar.md#attr-fiscalcalendardefaultdate).
+Developers may specify explicit fiscal year start dates by adding [FiscalYear](reference_2.md#object-fiscalyear) objects to the [fiscal years array](classes/FiscalCalendar.md#attr-fiscalcalendarfiscalyears). If none are provided, or if there is no entry for the given year, one is manufactured based on the default [month](classes/FiscalCalendar.md#attr-fiscalcalendardefaultmonth) and [date](classes/FiscalCalendar.md#attr-fiscalcalendardefaultdate).
 
 ---
 ## Object: FormItemIcon
@@ -8228,7 +8228,7 @@ Form item icon descriptor objects used by Form Items to specify the appearance a
 ## Object: GroupNode
 
 ### Description
-An auto-generated subclass of [TreeNode](main_2.md#object-treenode) representing the group nodes in a grouped [ListGrid](classes/ListGrid_1.md#class-listgrid).
+An auto-generated subclass of [TreeNode](reference_2.md#object-treenode) representing the group nodes in a grouped [ListGrid](classes/ListGrid_1.md#class-listgrid).
 
 ### Groups
 
@@ -8260,7 +8260,7 @@ The [History.registerCallback](classes/History.md#staticmethod-historyregisterca
 ## Object: IconSet
 
 ### Description
-An object with a unique name that groups together [known images](classes/IconSet.md#attr-iconsetstockicons) as an array of [stockIcons](main_2.md#object-stockicon) and/or [mappings](classes/IconSet.md#attr-iconsetmappings) from existing [stockIcon-names](classes/StockIcon.md#attr-stockiconname) to new [src-strings of any type](#type-scimgurl). Provides a means of applying an overlay that will replace many or all registered stockIcons, and/or install a set of custom stockIcons, in a single call.
+An object with a unique name that groups together [known images](classes/IconSet.md#attr-iconsetstockicons) as an array of [stockIcons](reference_2.md#object-stockicon) and/or [mappings](classes/IconSet.md#attr-iconsetmappings) from existing [stockIcon-names](classes/StockIcon.md#attr-stockiconname) to new [src-strings of any type](#type-scimgurl). Provides a means of applying an overlay that will replace many or all registered stockIcons, and/or install a set of custom stockIcons, in a single call.
 
 The framework ships with many builtin [StockIcons](classes/Media.md#classmethod-mediagetstockiconnames) and has two builtin IconSets that use them:
 
@@ -8335,7 +8335,7 @@ In this example, the "logoIconSet" defines a few new StockIcons for existing ima
  
 ```
 
-If your project bootstrap runs this code, you may then use the names of these new StockIcons in image-sources, such as [Button.icon](classes/Button.md#attr-buttonicon): "ProductLogo", and extend them as described [here](main_2.md#object-stockicon), anywhere in your project. Any request for the StockIcon-names will render the associated **fromSrc**, since no [target src](classes/StockIcon.md#attr-stockiconsrc) has been set.
+If your project bootstrap runs this code, you may then use the names of these new StockIcons in image-sources, such as [Button.icon](classes/Button.md#attr-buttonicon): "ProductLogo", and extend them as described [here](reference_2.md#object-stockicon), anywhere in your project. Any request for the StockIcon-names will render the associated **fromSrc**, since no [target src](classes/StockIcon.md#attr-stockiconsrc) has been set.
 
 #### Example 3
 If you support multiple skins in your project, you may have icons that look great on light-colored backgrounds, but need to be lighter in order to look good on dark backgrounds. To do that, you can create another IconSet that defines new src-string mappings for your StockIcons, and install it in the dark-skin's _load\_skin.js_ file, or other load-time code, after the first IconSet has been installed so the StockIcons are present.
@@ -8453,7 +8453,7 @@ Extra methods added to the Number object, available on all number variables. Att
 
 ### See Also
 
-- [Integer](main_2.md#type-integer)
+- [Integer](reference_2.md#type-integer)
 - [Double](#type-double)
 - [Float](#type-float)
 
@@ -8477,7 +8477,7 @@ A PaletteNode expresses visual properties for how the palette will display it (e
 
 Various types of palettes ([ListPalette](#class-listpalette), [TreePalette](#class-treepalette), [MenuPalette](#class-menupalette), [TilePalette](#class-tilepalette)) render a PaletteNode in different ways, and allow the user to trigger creation in different ways (eg drag and drop, or just click). All share a common pattern for how components are created from palettes.
 
-Note that in a TreePalette, a PaletteNode is essentially a [TreeNode](main_2.md#object-treenode) and can have properties expected for a TreeNode (eg, [showDropIcon](classes/TreeGrid.md#attr-treegridcustomicondropproperty)). Likewise a PaletteNode in a MenuPalette can have the properties of a [MenuItem](main_2.md#object-menuitem), such as [MenuItem.enableIf](classes/MenuItem.md#method-menuitemenableif).
+Note that in a TreePalette, a PaletteNode is essentially a [TreeNode](reference_2.md#object-treenode) and can have properties expected for a TreeNode (eg, [showDropIcon](classes/TreeGrid.md#attr-treegridcustomicondropproperty)). Likewise a PaletteNode in a MenuPalette can have the properties of a [MenuItem](reference_2.md#object-menuitem), such as [MenuItem.enableIf](classes/MenuItem.md#method-menuitemenableif).
 
 ---
 ## Object: PlaceholderDefaults
@@ -8499,7 +8499,7 @@ A set of properties that can be used to configure a [canvas pointer](classes/Can
 ## Object: PromiseOutcome
 
 ### Description
-Holds information about the outcome of a settled [Promise](main_2.md#object-promise).
+Holds information about the outcome of a settled [Promise](reference_2.md#object-promise).
 
 Note: This is the type of object returned by Promise.allSettled().
 
@@ -8766,13 +8766,13 @@ A TileRecord is a JavaScript Object whose properties contain values for each Til
 ## Object: TreeGridField
 
 ### Description
-An object literal with a particular set of properties used to configure the display of and interaction with the columns of a [TreeGrid](classes/TreeGrid.md#class-treegrid). [TreeGrid](classes/TreeGrid.md#class-treegrid) is a subclass of [ListGrid](classes/ListGrid_1.md#class-listgrid) and as a result, for all fields except the field containing the [Tree](classes/Tree.md#class-tree) itself (specified by [TreeGridField.treeField](classes/TreeGridField.md#attr-treegridfieldtreefield), all properties settable on [ListGridField](main_2.md#object-listgridfield) apply to TreeGridField as well.
+An object literal with a particular set of properties used to configure the display of and interaction with the columns of a [TreeGrid](classes/TreeGrid.md#class-treegrid). [TreeGrid](classes/TreeGrid.md#class-treegrid) is a subclass of [ListGrid](classes/ListGrid_1.md#class-listgrid) and as a result, for all fields except the field containing the [Tree](classes/Tree.md#class-tree) itself (specified by [TreeGridField.treeField](classes/TreeGridField.md#attr-treegridfieldtreefield), all properties settable on [ListGridField](reference_2.md#object-listgridfield) apply to TreeGridField as well.
 
-This class documents just those properties that are specific to TreeGridFields - see [ListGridField](main_2.md#object-listgridfield) for the set of inherited properties.
+This class documents just those properties that are specific to TreeGridFields - see [ListGridField](reference_2.md#object-listgridfield) for the set of inherited properties.
 
 ### See Also
 
-- [ListGridField](main_2.md#object-listgridfield)
+- [ListGridField](reference_2.md#object-listgridfield)
 - [TreeGrid.fields](classes/TreeGrid.md#attr-treegridfields)
 - [ListGrid.setFields](classes/ListGrid_2.md#method-listgridsetfields)
 

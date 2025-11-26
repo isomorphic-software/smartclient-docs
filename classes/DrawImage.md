@@ -1,6 +1,6 @@
 # DrawImage Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -91,7 +91,7 @@ Change the URL of the image displayed.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| src | [URL](../main_2.md#type-url) | false | — | new URL |
+| src | [URL](../reference_2.md#type-url) | false | — | new URL |
 
 ---
 ## Method: DrawImage.setRect
@@ -103,10 +103,10 @@ Updates the drawImage to match the specified coordinates and size in [local coor
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| left | [Integer](../main_2.md#type-integer) | false | — | new left coordinate |
-| top | [Integer](../main_2.md#type-integer) | false | — | new top coordinate |
-| width | [Integer](../main_2.md#type-integer) | false | — | new width |
-| height | [Integer](../main_2.md#type-integer) | false | — | new height |
+| left | [Integer](../reference_2.md#type-integer) | false | — | new left coordinate |
+| top | [Integer](../reference_2.md#type-integer) | false | — | new top coordinate |
+| width | [Integer](../reference_2.md#type-integer) | false | — | new width |
+| height | [Integer](../reference_2.md#type-integer) | false | — | new height |
 
 ---
 ## Method: DrawImage.setTop
@@ -118,7 +118,7 @@ Set the top coordinate of the drawImage.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| top | [Coordinate](../main.md#type-coordinate) | false | — | new top coordinate |
+| top | [Coordinate](../reference.md#type-coordinate) | false | — | new top coordinate |
 
 ---
 ## Method: DrawImage.setHeight
@@ -130,7 +130,7 @@ Set the height of the drawImage.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| height | [Distance](../main.md#type-distance) | false | — | new height |
+| height | [Distance](../reference.md#type-distance) | false | — | new height |
 
 ---
 ## Method: DrawImage.moveBy
@@ -142,8 +142,8 @@ Move the drawImage by the specified delta
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| dX | [Distance](../main.md#type-distance) | false | — | number of pixels to move horizontally |
-| dY | [Distance](../main.md#type-distance) | false | — | number of pixels to move vertically |
+| dX | [Distance](../reference.md#type-distance) | false | — | number of pixels to move horizontally |
+| dY | [Distance](../reference.md#type-distance) | false | — | number of pixels to move vertically |
 
 ---
 ## Method: DrawImage.getBoundingBox
@@ -165,8 +165,8 @@ Move the drawImage to the specified position
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| left | [Integer](../main_2.md#type-integer) | false | — | new left coordinate |
-| top | [Integer](../main_2.md#type-integer) | false | — | new top coordinate |
+| left | [Integer](../reference_2.md#type-integer) | false | — | new left coordinate |
+| top | [Integer](../reference_2.md#type-integer) | false | — | new top coordinate |
 
 ---
 ## Method: DrawImage.setLeft
@@ -178,7 +178,7 @@ Set the left coordinate of the drawImage.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| left | [Coordinate](../main.md#type-coordinate) | false | — | new left coordinate |
+| left | [Coordinate](../reference.md#type-coordinate) | false | — | new left coordinate |
 
 ---
 ## Method: DrawImage.setWidth
@@ -190,7 +190,7 @@ Set the width of the drawImage.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| width | [Distance](../main.md#type-distance) | false | — | new width |
+| width | [Distance](../reference.md#type-distance) | false | — | new width |
 
 ---
 ## Method: DrawImage.getCenter

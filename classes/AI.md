@@ -1,6 +1,6 @@
 # AI Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -188,7 +188,7 @@ Determines whether AI support is enabled. [AI.disabled](#classattr-aidisabled) m
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — `true` if the use of AI is enabled; `false` otherwise.
+`[boolean](../reference.md#type-boolean)` — `true` if the use of AI is enabled; `false` otherwise.
 
 ### See Also
 
@@ -207,8 +207,8 @@ Within `dynamicString`, any evaluated JavaScript expressions have access to all 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| dynamicString | [DynamicString](../main_2.md#type-dynamicstring) | false | — | A dynamic string. |
-| context | [ValueMap](../main_2.md#type-valuemap) | false | — | A map from each in-scope [Identifier](../main.md#type-identifier) to its value. |
+| dynamicString | [DynamicString](../reference_2.md#type-dynamicstring) | false | — | A dynamic string. |
+| context | [ValueMap](../reference_2.md#type-valuemap) | false | — | A map from each in-scope [Identifier](../reference.md#type-identifier) to its value. |
 | callback | [AIResponseCallback](#type-airesponsecallback) | false | — | The callback to fire with the response from AI. |
 
 ### Groups

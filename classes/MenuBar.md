@@ -1,6 +1,6 @@
 # MenuBar Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -61,7 +61,7 @@ Shows (opens) a menu.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| menu | [Menu](#type-menu)|[Integer](../main_2.md#type-integer) | false | — | menu to show (may be specified as a menu object, or index of the menu from [this.menus](#attr-menubarmenus)). |
+| menu | [Menu](#type-menu)|[Integer](../reference_2.md#type-integer) | false | — | menu to show (may be specified as a menu object, or index of the menu from [this.menus](#attr-menubarmenus)). |
 
 ---
 ## Method: MenuBar.addMenus

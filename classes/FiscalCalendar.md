@@ -1,6 +1,6 @@
 # FiscalCalendar Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -16,7 +16,7 @@ See also [FiscalCalendar.defaultYearMode](#attr-fiscalcalendardefaultyearmode).
 ## Attr: FiscalCalendar.fiscalYears
 
 ### Description
-An array of [FiscalYear objects](../main_2.md#object-fiscalyear) which each represent the start date of a single fiscal year.
+An array of [FiscalYear objects](../reference_2.md#object-fiscalyear) which each represent the start date of a single fiscal year.
 
 **Flags**: IRW
 

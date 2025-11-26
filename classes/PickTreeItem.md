@@ -1,6 +1,6 @@
 # PickTreeItem Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -77,7 +77,7 @@ This message will be displayed as a single, disabled option in any empty menu/su
 ## Attr: PickTreeItem.button
 
 ### Description
-The visible button created by a PickTreeItem is an [AutoChild](../main.md#type-autochild) of type [TreeMenuButton](TreeMenuButton.md#class-treemenubutton) by default.
+The visible button created by a PickTreeItem is an [AutoChild](../reference.md#type-autochild) of type [TreeMenuButton](TreeMenuButton.md#class-treemenubutton) by default.
 
 **Flags**: R
 
@@ -123,7 +123,7 @@ For a `PickTreeItem` that uses a DataSource, these properties will be passed to 
 ## Attr: PickTreeItem.optionDataSource
 
 ### Description
-If set, this FormItem will map stored values to display values as though a [ValueMap](../main_2.md#type-valuemap) were specified, by fetching records from the specified `optionDataSource` and extracting the [valueField](FormItem.md#attr-formitemvaluefield) and [displayField](FormItem.md#attr-formitemdisplayfield) in loaded records, to derive one valueMap entry per record loaded from the optionDataSource.
+If set, this FormItem will map stored values to display values as though a [ValueMap](../reference_2.md#type-valuemap) were specified, by fetching records from the specified `optionDataSource` and extracting the [valueField](FormItem.md#attr-formitemvaluefield) and [displayField](FormItem.md#attr-formitemdisplayfield) in loaded records, to derive one valueMap entry per record loaded from the optionDataSource.
 
 With the default setting of [fetchMissingValues](FormItem.md#attr-formitemfetchmissingvalues), fetches will be initiated against the optionDataSource any time the FormItem has a non-null value and no corresponding display value is available. This includes when the form is first initialized, as well as any subsequent calls to [FormItem.setValue](FormItem.md#method-formitemsetvalue), such as may happen when [DynamicForm.editRecord](DynamicForm.md#method-dynamicformeditrecord) is called. Retrieved values are automatically cached by the FormItem.
 
@@ -195,7 +195,7 @@ Setter for [PickTreeItem.emptyDisplayValue](#attr-picktreeitememptydisplayvalue)
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| emptyDisplayValue | [HTMLString](../main.md#type-htmlstring) | false | — | — |
+| emptyDisplayValue | [HTMLString](../reference.md#type-htmlstring) | false | — | — |
 
 ### Groups
 
@@ -222,12 +222,12 @@ The default behavior is that the [titleStyle](FormItem.md#attr-formitemtitlestyl
 |------|------|----------|---------|-------------|
 | form | [DynamicForm](#type-dynamicform) | false | — | the managing `DynamicForm` instance. |
 | item | [FormItem](#type-formitem) | false | — | the form item itself (also available as "this"). |
-| pendingStatus | [boolean](../main.md#type-boolean) | false | — | `true` if the item should show its pending visual state; `false` otherwise. |
+| pendingStatus | [boolean](../reference.md#type-boolean) | false | — | `true` if the item should show its pending visual state; `false` otherwise. |
 | newValue | [Any](#type-any) | false | — | the current form item value. |
 | value | [Any](#type-any) | false | — | the value that would be restored by a call to [DynamicForm.resetValues](DynamicForm.md#method-dynamicformresetvalues). |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — `false` to cancel the default behavior.
+`[boolean](../reference.md#type-boolean)` — `false` to cancel the default behavior.
 
 ---

@@ -1,6 +1,6 @@
 # Including custom elements in the tab order
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 

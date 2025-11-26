@@ -1,12 +1,12 @@
 # Sound Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
 ## Class: Sound
 
-*Inherits from:* [BaseWidget](../main.md#class-basewidget)
+*Inherits from:* [BaseWidget](../reference.md#class-basewidget)
 
 ### Description
 SmartClient class for loading and playing audio files using the HTML5 `<AUDIO>` element.
@@ -62,7 +62,7 @@ Returns true for browsers which natively support HTML5 Audio, used by the Sound 
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true if Audio is supported in this browser
+`[boolean](../reference.md#type-boolean)` — true if Audio is supported in this browser
 
 ---
 ## Method: Sound.setCurrentTime
@@ -74,7 +74,7 @@ Move playback to a particular time in a loaded audio file.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| time | [Float](../main.md#type-float) | false | — | time to move to. This method will have no effect if the file has not been loaded or no [Sound.src](#attr-soundsrc) element is defined. |
+| time | [Float](../reference.md#type-float) | false | — | time to move to. This method will have no effect if the file has not been loaded or no [Sound.src](#attr-soundsrc) element is defined. |
 
 ---
 ## Method: Sound.setSrc
@@ -96,7 +96,7 @@ Retrieves the current playback time of a playing or paused audio file in seconds
 
 ### Returns
 
-`[Float](../main.md#type-float)` — current playback time audio file in seconds. If the file has not been loaded, or no [Sound.src](#attr-soundsrc) is defined, this method will return zero.
+`[Float](../reference.md#type-float)` — current playback time audio file in seconds. If the file has not been loaded, or no [Sound.src](#attr-soundsrc) is defined, this method will return zero.
 
 ---
 ## Method: Sound.reset
@@ -124,7 +124,7 @@ Retrieves the duration of the current audio file in seconds.
 
 ### Returns
 
-`[Float](../main.md#type-float)` — duration of the audio file in seconds. If the file has not been loaded, or no [Sound.src](#attr-soundsrc) is defined, this method will return null.
+`[Float](../reference.md#type-float)` — duration of the audio file in seconds. If the file has not been loaded, or no [Sound.src](#attr-soundsrc) is defined, this method will return null.
 
 ---
 ## Method: Sound.play
@@ -148,7 +148,7 @@ Notification method fired repeatedly to indicate a change in currentTime value w
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| currentTime | [float](../main.md#type-float) | false | — | Current playback position in seconds. |
+| currentTime | [float](../reference.md#type-float) | false | — | Current playback position in seconds. |
 
 ---
 ## Method: Sound.pause

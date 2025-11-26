@@ -1,6 +1,6 @@
 # isA Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -13,11 +13,11 @@ Is `object` a non-empty String?
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| object | [Object](../main.md#type-object) | false | — | object to test |
+| object | [Object](../reference.md#type-object) | false | — | object to test |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true == `object` is a non-empty string
+`[boolean](../reference.md#type-boolean)` — true == `object` is a non-empty string
 
 ---
 ## StaticMethod: isA.Date
@@ -29,11 +29,11 @@ Is `object` a Date object?
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| object | [Object](../main.md#type-object) | false | — | object to test |
+| object | [Object](../reference.md#type-object) | false | — | object to test |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true == `object` is a Date
+`[boolean](../reference.md#type-boolean)` — true == `object` is a Date
 
 ---
 ## StaticMethod: isA.Interface
@@ -45,11 +45,11 @@ Is `object` an interface object?
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| object | [Object](../main.md#type-object) | false | — | object to test |
+| object | [Object](../reference.md#type-object) | false | — | object to test |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true == `object` is a Interface Object
+`[boolean](../reference.md#type-boolean)` — true == `object` is a Interface Object
 
 ---
 ## StaticMethod: isA.Boolean
@@ -61,11 +61,11 @@ Is `object` a Boolean object?
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| object | [Object](../main.md#type-object) | false | — | object to test |
+| object | [Object](../reference.md#type-object) | false | — | object to test |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true == `object` is a Boolean
+`[boolean](../reference.md#type-boolean)` — true == `object` is a Boolean
 
 ---
 ## StaticMethod: isA.emptyObject
@@ -81,11 +81,11 @@ NOTE: if you prefer, you can call this as `isAn.emptyObject()`
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| object | [Object](../main.md#type-object) | false | — | object to test |
+| object | [Object](../reference.md#type-object) | false | — | object to test |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true == `object` is the empty object
+`[boolean](../reference.md#type-boolean)` — true == `object` is the empty object
 
 ---
 ## StaticMethod: isA.ClassObject
@@ -97,11 +97,11 @@ Is `object` a class object?
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| object | [Object](../main.md#type-object) | false | — | object to test |
+| object | [Object](../reference.md#type-object) | false | — | object to test |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true == `object` is a Class Object
+`[boolean](../reference.md#type-boolean)` — true == `object` is a Class Object
 
 ---
 ## StaticMethod: isA.Instance
@@ -113,11 +113,11 @@ Is `object` an instance of some class?
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| object | [Object](../main.md#type-object) | false | — | object to test |
+| object | [Object](../reference.md#type-object) | false | — | object to test |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true == `object` is an instance of some class
+`[boolean](../reference.md#type-boolean)` — true == `object` is an instance of some class
 
 ---
 ## StaticMethod: isA.List
@@ -129,11 +129,11 @@ Does `object` implement the `List` interface?
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| object | [Object](../main.md#type-object) | false | — | object to test |
+| object | [Object](../reference.md#type-object) | false | — | object to test |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — `true` if the object is an Array or belongs to another class that implements the `List` API.
+`[boolean](../reference.md#type-boolean)` — `true` if the object is an Array or belongs to another class that implements the `List` API.
 
 ---
 ## StaticMethod: isA.emptyArray
@@ -145,11 +145,11 @@ Is `object` an Array with no items?
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| object | [Object](../main.md#type-object) | false | — | object to test |
+| object | [Object](../reference.md#type-object) | false | — | object to test |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true == `object` is an empty array
+`[boolean](../reference.md#type-boolean)` — true == `object` is an empty array
 
 ---
 ## StaticMethod: isA.nonemptyArray
@@ -167,7 +167,7 @@ Note: `null`, `undefined`, and empty slots in an array are still considered an i
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — `true` if `object` is an array with at least one item; `false` otherwise (i.e. `object` isn't an array, or it has no items)
+`[boolean](../reference.md#type-boolean)` — `true` if `object` is an array with at least one item; `false` otherwise (i.e. `object` isn't an array, or it has no items)
 
 ---
 ## StaticMethod: isA.Object
@@ -187,7 +187,7 @@ Returns true for Object, Array, Regular Expression, Date and other kinds of nati
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — whether passed value is an Object
+`[boolean](../reference.md#type-boolean)` — whether passed value is an Object
 
 ---
 ## StaticMethod: isA.RegularExpression
@@ -199,11 +199,11 @@ Is `object` a Regular Expression (RegExp) object?
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| object | [Object](../main.md#type-object) | false | — | object to test |
+| object | [Object](../reference.md#type-object) | false | — | object to test |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true == `object` is a Boolean
+`[boolean](../reference.md#type-boolean)` — true == `object` is a Boolean
 
 ---
 ## StaticMethod: isA.String
@@ -215,11 +215,11 @@ Is `object` a String object?
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| object | [Object](../main.md#type-object) | false | — | object to test |
+| object | [Object](../reference.md#type-object) | false | — | object to test |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true == `object` is a String
+`[boolean](../reference.md#type-boolean)` — true == `object` is a String
 
 ---
 ## StaticMethod: isA.Number
@@ -233,11 +233,11 @@ NOTE: this returns false if `object` is an invalid number (`isNaN(object) == tru
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| object | [Object](../main.md#type-object) | false | — | object to test |
+| object | [Object](../reference.md#type-object) | false | — | object to test |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true == `object` is a Number
+`[boolean](../reference.md#type-boolean)` — true == `object` is a Number
 
 ---
 ## StaticMethod: isA.Function
@@ -249,11 +249,11 @@ Is `object` a Function object?
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| object | [Object](../main.md#type-object) | false | — | object to test |
+| object | [Object](../reference.md#type-object) | false | — | object to test |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true == `object` is a Function
+`[boolean](../reference.md#type-boolean)` — true == `object` is a Function
 
 ---
 ## StaticMethod: isA.emptyString
@@ -267,11 +267,11 @@ NOTE: if you prefer, you can call this as `isAn.emptyString()`
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| object | [Object](../main.md#type-object) | false | — | object to test |
+| object | [Object](../reference.md#type-object) | false | — | object to test |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true == `object` is a null string
+`[boolean](../reference.md#type-boolean)` — true == `object` is a null string
 
 ---
 ## StaticMethod: isA.Array
@@ -285,10 +285,10 @@ NOTE: if you prefer, you can call this as `isAn.Array()`
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| object | [Object](../main.md#type-object) | false | — | object to test |
+| object | [Object](../reference.md#type-object) | false | — | object to test |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true == `object` is an Array
+`[boolean](../reference.md#type-boolean)` — true == `object` is an Array
 
 ---

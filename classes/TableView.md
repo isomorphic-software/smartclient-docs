@@ -1,6 +1,6 @@
 # TableView Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -11,7 +11,7 @@
 ### Description
 Shows a listing of records with one or more fields from each record, with built-in support for navigation and editing of lists of records.
 
-The TableView provides built-in controls such as [navigation arrows](#attr-tableviewshownavigation) and shows fields from the provided records in one of several built-in [RecordLayout](../main_2.md#type-recordlayout)s.
+The TableView provides built-in controls such as [navigation arrows](#attr-tableviewshownavigation) and shows fields from the provided records in one of several built-in [RecordLayout](../reference_2.md#type-recordlayout)s.
 
 NOTE: This widget is intended primarily for creating handset/phone-sized interfaces and does not have an appearance in any skin other than Mobile.
 
@@ -19,7 +19,7 @@ NOTE: This widget is intended primarily for creating handset/phone-sized interfa
 ## ClassAttr: TableView.WHOLE_RECORD
 
 ### Description
-A declared value of the enum type [NavigationMode](../main.md#type-navigationmode).
+A declared value of the enum type [NavigationMode](../reference.md#type-navigationmode).
 
 **Flags**: R
 
@@ -27,7 +27,7 @@ A declared value of the enum type [NavigationMode](../main.md#type-navigationmod
 ## ClassAttr: TableView.SUMMARY_DATA
 
 ### Description
-A declared value of the enum type [RecordLayout](../main_2.md#type-recordlayout).
+A declared value of the enum type [RecordLayout](../reference_2.md#type-recordlayout).
 
 **Flags**: R
 
@@ -35,7 +35,7 @@ A declared value of the enum type [RecordLayout](../main_2.md#type-recordlayout)
 ## ClassAttr: TableView.TITLE_DESCRIPTION
 
 ### Description
-A declared value of the enum type [RecordLayout](../main_2.md#type-recordlayout).
+A declared value of the enum type [RecordLayout](../reference_2.md#type-recordlayout).
 
 **Flags**: R
 
@@ -43,7 +43,7 @@ A declared value of the enum type [RecordLayout](../main_2.md#type-recordlayout)
 ## ClassAttr: TableView.GROUPED
 
 ### Description
-A declared value of the enum type [TableMode](../main.md#type-tablemode).
+A declared value of the enum type [TableMode](../reference.md#type-tablemode).
 
 **Flags**: R
 
@@ -51,7 +51,7 @@ A declared value of the enum type [TableMode](../main.md#type-tablemode).
 ## ClassAttr: TableView.SUMMARY_INFO
 
 ### Description
-A declared value of the enum type [RecordLayout](../main_2.md#type-recordlayout).
+A declared value of the enum type [RecordLayout](../reference_2.md#type-recordlayout).
 
 **Flags**: R
 
@@ -59,7 +59,7 @@ A declared value of the enum type [RecordLayout](../main_2.md#type-recordlayout)
 ## ClassAttr: TableView.TITLE_ONLY
 
 ### Description
-A declared value of the enum type [RecordLayout](../main_2.md#type-recordlayout).
+A declared value of the enum type [RecordLayout](../reference_2.md#type-recordlayout).
 
 **Flags**: R
 
@@ -67,7 +67,7 @@ A declared value of the enum type [RecordLayout](../main_2.md#type-recordlayout)
 ## ClassAttr: TableView.PLAIN
 
 ### Description
-A declared value of the enum type [TableMode](../main.md#type-tablemode).
+A declared value of the enum type [TableMode](../reference.md#type-tablemode).
 
 **Flags**: R
 
@@ -75,7 +75,7 @@ A declared value of the enum type [TableMode](../main.md#type-tablemode).
 ## ClassAttr: TableView.NAVICON_ONLY
 
 ### Description
-A declared value of the enum type [NavigationMode](../main.md#type-navigationmode).
+A declared value of the enum type [NavigationMode](../reference.md#type-navigationmode).
 
 **Flags**: R
 
@@ -83,7 +83,7 @@ A declared value of the enum type [NavigationMode](../main.md#type-navigationmod
 ## ClassAttr: TableView.SUMMARY_FULL
 
 ### Description
-A declared value of the enum type [RecordLayout](../main_2.md#type-recordlayout).
+A declared value of the enum type [RecordLayout](../reference_2.md#type-recordlayout).
 
 **Flags**: R
 
@@ -91,11 +91,11 @@ A declared value of the enum type [RecordLayout](../main_2.md#type-recordlayout)
 ## Attr: TableView.infoField
 
 ### Description
-Field to display as part of individual record in "summary" [RecordLayout](../main_2.md#type-recordlayout)s.
+Field to display as part of individual record in "summary" [RecordLayout](../reference_2.md#type-recordlayout)s.
 
 ### See Also
 
-- [RecordLayout](../main_2.md#type-recordlayout)
+- [RecordLayout](../reference_2.md#type-recordlayout)
 
 **Flags**: IRW
 
@@ -103,7 +103,7 @@ Field to display as part of individual record in "summary" [RecordLayout](../mai
 ## Attr: TableView.navIcon
 
 ### Description
-The navigation icon shown next to records when [TableView.showNavigation](#attr-tableviewshownavigation) is true and [NavigationMode](../main.md#type-navigationmode) is set to "navIconOny".
+The navigation icon shown next to records when [TableView.showNavigation](#attr-tableviewshownavigation) is true and [NavigationMode](../reference.md#type-navigationmode) is set to "navIconOny".
 
 **Flags**: IRW
 
@@ -129,7 +129,7 @@ Note that controls supported by the TableView itself, such as navigation icons, 
 ## Attr: TableView.descriptionField
 
 ### Description
-Field to display as part of individual record in all [RecordLayout](../main_2.md#type-recordlayout)s except "titleOnly".
+Field to display as part of individual record in all [RecordLayout](../reference_2.md#type-recordlayout)s except "titleOnly".
 
 **Flags**: IRW
 
@@ -169,7 +169,7 @@ Should an icon field be shown for each record? A column in the table is set asid
 ## Attr: TableView.wholeRecordNavIcon
 
 ### Description
-The navigation icon shown next to records when [TableView.showNavigation](#attr-tableviewshownavigation) is true and [NavigationMode](../main.md#type-navigationmode) is set to "wholeRecord".
+The navigation icon shown next to records when [TableView.showNavigation](#attr-tableviewshownavigation) is true and [NavigationMode](../reference.md#type-navigationmode) is set to "wholeRecord".
 
 **Flags**: IRW
 
@@ -217,7 +217,7 @@ Default style for info field.
 ## Attr: TableView.dataField
 
 ### Description
-Field to display as part of individual record in "summary" [RecordLayout](../main_2.md#type-recordlayout)s.
+Field to display as part of individual record in "summary" [RecordLayout](../reference_2.md#type-recordlayout)s.
 
 **Flags**: IRW
 
@@ -259,7 +259,7 @@ Formatter to apply to record display.
 
 ### Returns
 
-`[HTMLString](../main.md#type-htmlstring)` — formatted record contents
+`[HTMLString](../reference.md#type-htmlstring)` — formatted record contents
 
 ---
 ## Method: TableView.imageClick
@@ -277,7 +277,7 @@ Executed when the user clicks on the image displayed in a record if [TableView.i
 ## Method: TableView.recordNavigationClick
 
 ### Description
-Executed when the user clicks on a record, or on the navigate icon for a record depending on [NavigationMode](../main.md#type-navigationmode).
+Executed when the user clicks on a record, or on the navigate icon for a record depending on [NavigationMode](../reference.md#type-navigationmode).
 
 ### Parameters
 

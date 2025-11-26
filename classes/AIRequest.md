@@ -1,6 +1,6 @@
 # AIRequest Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -81,7 +81,7 @@ When the [AIRequest.responseType](#attr-airequestresponsetype) is "number", the 
 ## Attr: AIRequest.historyDelimiters
 
 ### Description
-When this engine does not support multiple messages, all of the messages of the request must be concatenated together. This maps the [AIMessageSource](../main.md#type-aimessagesource) to the delimiter to be used to enclose the content of the message.
+When this engine does not support multiple messages, all of the messages of the request must be concatenated together. This maps the [AIMessageSource](../reference.md#type-aimessagesource) to the delimiter to be used to enclose the content of the message.
 
 **Flags**: IR
 

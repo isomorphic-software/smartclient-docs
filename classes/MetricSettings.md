@@ -1,6 +1,6 @@
 # MetricSettings Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -191,7 +191,7 @@ When this property is set to the metric of another MetricSettings object, the ex
 ## Attr: MetricSettings.chartType
 
 ### Description
-See [ChartType](../main.md#type-charttype) for a list of known types - Column, Bar, Line, Pie, Doughnut, Area, Radar, and Histogram charts are supported.
+See [ChartType](../reference.md#type-charttype) for a list of known types - Column, Bar, Line, Pie, Doughnut, Area, Radar, and Histogram charts are supported.
 
 ### Groups
 
@@ -281,7 +281,7 @@ Same as [FacetChart.minDataSpreadPercent](FacetChart.md#attr-facetchartmindatasp
 ## Attr: MetricSettings.stacked
 
 ### Description
-If the [ChartType](../main.md#type-charttype) is "Column" then the metric settings may include a setting for [FacetChart.stacked](FacetChart.md#attr-facetchartstacked).
+If the [ChartType](../reference.md#type-charttype) is "Column" then the metric settings may include a setting for [FacetChart.stacked](FacetChart.md#attr-facetchartstacked).
 
 ### Groups
 
@@ -443,7 +443,7 @@ Or base 2:
 ## Method: MetricSettings.setStacked
 
 ### Description
-Method to change [stacked](#attr-metricsettingsstacked). Use null to apply a default value for the current [chartType](../main.md#type-charttype).
+Method to change [stacked](#attr-metricsettingsstacked). Use null to apply a default value for the current [chartType](../reference.md#type-charttype).
 
 ### Parameters
 
@@ -465,7 +465,7 @@ When [MetricSettings.showDataPoints](#attr-metricsettingsshowdatapoints) is true
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| value | [float](../main.md#type-float) | false | — | the value at the point |
+| value | [float](../reference.md#type-float) | false | — | the value at the point |
 | record | [Record](#type-record) | false | — | the record at the point |
 | metricId | [String](#type-string) | false | — | the ID of the metric at the point |
 
@@ -523,7 +523,7 @@ Note that the rendering of values in hovers or via [MetricSettings.showDataValue
 ## Method: MetricSettings.setChartType
 
 ### Description
-Method to change the current [chartType](../main.md#type-charttype). Will redraw the chart if drawn. Will use default settings for the new chart type for [stacked](#attr-metricsettingsstacked) and [filled](#attr-metricsettingsfilled) if those values are null.
+Method to change the current [chartType](../reference.md#type-charttype). Will redraw the chart if drawn. Will use default settings for the new chart type for [stacked](#attr-metricsettingsstacked) and [filled](#attr-metricsettingsfilled) if those values are null.
 
 Note that for [multi-axis](FacetChart.md#attr-facetchartextraaxismetrics) charts this method changes the `chartType` for the main value axis only.
 
@@ -531,7 +531,7 @@ Note that for [multi-axis](FacetChart.md#attr-facetchartextraaxismetrics) charts
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| chartType | [ChartType](../main.md#type-charttype) | false | — | new chart type |
+| chartType | [ChartType](../reference.md#type-charttype) | false | — | new chart type |
 
 ### Groups
 
@@ -555,7 +555,7 @@ Note that this method is simply an override point, since it has no default imple
 
 ### Returns
 
-`[int](../main.md#type-int)` — width to use for data lines or null to use [ChartType](../main.md#type-charttype) default
+`[int](../reference.md#type-int)` — width to use for data lines or null to use [ChartType](../reference.md#type-charttype) default
 
 ### See Also
 
@@ -568,7 +568,7 @@ Note that this method is simply an override point, since it has no default imple
 ### Description
 Return the text string to display in labels [in the chart-body or in hovers](FacetChart.md#attr-facetchartshowdatavaluesmode) given the raw value for the metric displayed on the value axis.
 
-This method may also be passed the [context](../main.md#type-formattingcontext) for which the value is being formatted, the record associated with the value and the id of its [facet](FacetChart.md#attr-facetchartfacets).
+This method may also be passed the [context](../reference.md#type-formattingcontext) for which the value is being formatted, the record associated with the value and the id of its [facet](FacetChart.md#attr-facetchartfacets).
 
 Note that the rendering of values for gradation labels is handled by [MetricSettings.formatAxisValue](#method-metricsettingsformataxisvalue).
 
@@ -594,17 +594,17 @@ Returns the Y coordinate where the passed data value either was or would be draw
 
 This is only allowed to be called after [FacetChart.chartDrawn](FacetChart.md#method-facetchartchartdrawn) fires.
 
-If the [chartType](FacetChart.md#attr-facetchartcharttype) is "Area", "Bubble", "Column", "Histogram", "Line", or "Scatter" then the `value` argument should be a number. For "Bar" charts this method expects a [FacetValueMap](../main.md#object-facetvaluemap) that uniquely identifies the data cell whose Y-axis coordinate is to be retrieved.
+If the [chartType](FacetChart.md#attr-facetchartcharttype) is "Area", "Bubble", "Column", "Histogram", "Line", or "Scatter" then the `value` argument should be a number. For "Bar" charts this method expects a [FacetValueMap](../reference.md#object-facetvaluemap) that uniquely identifies the data cell whose Y-axis coordinate is to be retrieved.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| value | [float](../main.md#type-float) | false | — | the value to be drawn. |
+| value | [float](../reference.md#type-float) | false | — | the value to be drawn. |
 
 ### Returns
 
-`[float](../main.md#type-float)` — the Y coordinate where the passed data value would be drawn.
+`[float](../reference.md#type-float)` — the Y coordinate where the passed data value would be drawn.
 
 ---
 ## Method: MetricSettings.pointClick
@@ -616,7 +616,7 @@ When [MetricSettings.showDataPoints](#attr-metricsettingsshowdatapoints) is true
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| value | [float](../main.md#type-float) | false | — | the value at the point |
+| value | [float](../reference.md#type-float) | false | — | the value at the point |
 | record | [Record](#type-record) | false | — | the record at the point |
 | metricId | [String](#type-string) | false | — | the ID of the metric at the point |
 
@@ -638,7 +638,7 @@ Note that this method is simply an override point, since it has no default imple
 
 ### Returns
 
-`[CSSColor](../main_2.md#type-csscolor)` — color to use for data lines or null to default to [MetricSettings.getDataColor](#method-metricsettingsgetdatacolor)
+`[CSSColor](../reference_2.md#type-csscolor)` — color to use for data lines or null to default to [MetricSettings.getDataColor](#method-metricsettingsgetdatacolor)
 
 ### See Also
 
@@ -667,7 +667,7 @@ Setter for [MetricSettings.proportional](#attr-metricsettingsproportional).
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| proportional | [boolean](../main.md#type-boolean) | false | — | Whether the chart should now use proportional mode. |
+| proportional | [boolean](../reference.md#type-boolean) | false | — | Whether the chart should now use proportional mode. |
 
 ---
 ## Method: MetricSettings.getDataColor
@@ -691,7 +691,7 @@ Must return a color in the format of a leading hash (#) plus 6 hexadecimal digit
 
 ### Returns
 
-`[CSSColor](../main_2.md#type-csscolor)` — —
+`[CSSColor](../reference_2.md#type-csscolor)` — —
 
 ### See Also
 
@@ -722,7 +722,7 @@ Returns the X coordinate where the passed data value either was or would be draw
 
 This is only allowed to be called after [FacetChart.chartDrawn](FacetChart.md#method-facetchartchartdrawn) fires.
 
-If the [chartType](FacetChart.md#attr-facetchartcharttype) is "Bar", "Bubble", or "Scatter" then the `value` argument should be a number. For other rectangular charts, this method expects a [FacetValueMap](../main.md#object-facetvaluemap) that uniquely identifies the data cell whose X-axis coordinate is to be retrieved.
+If the [chartType](FacetChart.md#attr-facetchartcharttype) is "Bar", "Bubble", or "Scatter" then the `value` argument should be a number. For other rectangular charts, this method expects a [FacetValueMap](../reference.md#object-facetvaluemap) that uniquely identifies the data cell whose X-axis coordinate is to be retrieved.
 
 Note that when [canZoom](FacetChart.md#attr-facetchartcanzoom) is enabled, this API is valid only for data values between [zoomStartValue](FacetChart.md#attr-facetchartzoomstartvalue) and [zoomEndValue](FacetChart.md#attr-facetchartzoomendvalue).
 
@@ -730,17 +730,17 @@ Note that when [canZoom](FacetChart.md#attr-facetchartcanzoom) is enabled, this 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| value | [float](../main.md#type-float)|[FacetValueMap](#type-facetvaluemap) | false | — | the value to be drawn. |
+| value | [float](../reference.md#type-float)|[FacetValueMap](#type-facetvaluemap) | false | — | the value to be drawn. |
 
 ### Returns
 
-`[Float](../main.md#type-float)` — the X coordinate where the passed data value would be drawn; or null if the passed `FacetValueMap` does not identify a currently-drawn data cell.
+`[Float](../reference.md#type-float)` — the X coordinate where the passed data value would be drawn; or null if the passed `FacetValueMap` does not identify a currently-drawn data cell.
 
 ---
 ## Method: MetricSettings.setFilled
 
 ### Description
-Method to change [filled](#attr-metricsettingsfilled). Use null to apply a default value for the current [chartType](../main.md#type-charttype).
+Method to change [filled](#attr-metricsettingsfilled). Use null to apply a default value for the current [chartType](../reference.md#type-charttype).
 
 ### Parameters
 

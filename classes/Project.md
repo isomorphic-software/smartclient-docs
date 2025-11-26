@@ -1,6 +1,6 @@
 # Project Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -92,7 +92,7 @@ Note that when a screen cached in the project is created, all project DataSource
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| ID | [Identifier](../main.md#type-identifier) | false | — | ID of the DataSource to create |
+| ID | [Identifier](../reference.md#type-identifier) | false | — | ID of the DataSource to create |
 
 ### Returns
 

@@ -1,6 +1,6 @@
 # state
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -11,9 +11,9 @@ Change of state and it's consequences for presentation.
 
 ### Related
 
-- [State](../main.md#type-state)
-- [SelectionType](../main_2.md#type-selectiontype)
-- [Selected](../main.md#type-selected)
+- [State](../reference.md#type-state)
+- [SelectionType](../reference_2.md#type-selectiontype)
+- [Selected](../reference.md#type-selected)
 - [isc.setRadioGroup](../classes/isc.md#staticmethod-iscsetradiogroup)
 - [StatefulCanvas.setState](../classes/StatefulCanvas.md#method-statefulcanvassetstate)
 - [StatefulCanvas.getState](../classes/StatefulCanvas.md#method-statefulcanvasgetstate)

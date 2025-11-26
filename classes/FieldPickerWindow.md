@@ -1,6 +1,6 @@
 # FieldPickerWindow Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -29,7 +29,7 @@ This is typically useful in scenarios where there are many more fields than can 
 ## Attr: FieldPickerWindow.fieldPicker
 
 ### Description
-A [FieldPicker](FieldPicker.md#class-fieldpicker) for altering the working field-set in a [Data-bound component](../main.md#interface-databoundcomponent).
+A [FieldPicker](FieldPicker.md#class-fieldpicker) for altering the working field-set in a [Data-bound component](../reference.md#interface-databoundcomponent).
 
 **Flags**: IR
 

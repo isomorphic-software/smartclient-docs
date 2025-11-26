@@ -1,6 +1,6 @@
 # DSRequestTask Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -11,7 +11,7 @@
 ### Description
 A DSRequestTask (previously called ServiceTask) is an element of a [Process](Process.md#class-process) which calls a DataSource operation, optionally using part of the [process state](Process.md#attr-processstate) as inputs or storing outputs in the process state. A special "export" [operationType](#attr-dsrequesttaskoperationtype) is supported to perform a server export based on criteria.
 
-By default, a DSRequestTask takes the data indicated by [inputs](Task.md#attr-taskinputs) as detailed in [taskIO](../kb_topics/taskIO.md#kb-topic-task-input--output) and uses the `inputRecord` as [DSRequest.data](DSRequest.md#attr-dsrequestdata). This means the input data becomes [Criteria](../main_2.md#type-criteria) for "fetch" and "export" operations, new record values for an "add" operation, etc.
+By default, a DSRequestTask takes the data indicated by [inputs](Task.md#attr-taskinputs) as detailed in [taskIO](../kb_topics/taskIO.md#kb-topic-task-input--output) and uses the `inputRecord` as [DSRequest.data](DSRequest.md#attr-dsrequestdata). This means the input data becomes [Criteria](../reference_2.md#type-criteria) for "fetch" and "export" operations, new record values for an "add" operation, etc.
 
 Alternatively, you can set [DSRequestTask.criteria](#attr-dsrequesttaskcriteria) for a "fetch" and "export" operations, or [DSRequestTask.values](#attr-dsrequesttaskvalues) for other operationTypes. In both cases, you can use simple expressions like $input._fieldName_ to take portions of the input data and use it as part of the criteria or values.
 
@@ -25,7 +25,7 @@ For example, if you specify 'id' and 'name' in outputFieldList, only these prope
 ### Description
 Does this processElement pass through output from the last executed task (i.e. transient state)?
 
-See [taskInputExpressions](../main_2.md#type-taskinputexpression) for details on the transient state outputs.
+See [taskInputExpressions](../reference_2.md#type-taskinputexpression) for details on the transient state outputs.
 
 Note that this property does not affect the task at all but is an indicator to the user and to the workflow editor of the behavior of the task as coded (See [Process.passThruTaskOutput](Process.md#method-processpassthrutaskoutput)).
 
@@ -49,7 +49,7 @@ See [DSRequestTask.outputFieldList](#attr-dsrequesttaskoutputfieldlist) for a sh
 ## Attr: DSRequestTask.sort
 
 ### Description
-An array of [SortSpecifier](../main_2.md#object-sortspecifier) objects used to set up the sort configuration for a fetch.
+An array of [SortSpecifier](../reference_2.md#object-sortspecifier) objects used to set up the sort configuration for a fetch.
 
 **Flags**: IR
 
@@ -59,7 +59,7 @@ An array of [SortSpecifier](../main_2.md#object-sortspecifier) objects used to s
 ### Description
 Values to be submitted for "update", "add" and "remove" operations.
 
-Similar to [Criteria](../main_2.md#type-criteria), data values prefixed with "$" will be treated as a [TaskInputExpression](../main_2.md#type-taskinputexpression). Use [DSRequestTask.fixedValues](#attr-dsrequesttaskfixedvalues) for any values that start with "$" but should be treated as a literal.
+Similar to [Criteria](../reference_2.md#type-criteria), data values prefixed with "$" will be treated as a [TaskInputExpression](../reference_2.md#type-taskinputexpression). Use [DSRequestTask.fixedValues](#attr-dsrequesttaskfixedvalues) for any values that start with "$" but should be treated as a literal.
 
 **Flags**: IR
 
@@ -77,7 +77,7 @@ Values to be submitted as part of the DSRequest, regardless of inputs to the tas
 ### Description
 Criteria (including AdvancedCriteria) to use for "fetch" and "export" operations.
 
-Data values in this criteria prefixed with "$" will be treated as dynamic expressions which can access the inputs to this task as $input - see [TaskInputExpression](../main_2.md#type-taskinputexpression). Specifically, this means that for simple criteria, any property value that is a String and is prefixed with "$" will be assumed to be an expression, and for AdvancedCriteria, the same treatment will be applied to [Criterion.value](Criterion.md#attr-criterionvalue).
+Data values in this criteria prefixed with "$" will be treated as dynamic expressions which can access the inputs to this task as $input - see [TaskInputExpression](../reference_2.md#type-taskinputexpression). Specifically, this means that for simple criteria, any property value that is a String and is prefixed with "$" will be assumed to be an expression, and for AdvancedCriteria, the same treatment will be applied to [Criterion.value](Criterion.md#attr-criterionvalue).
 
 If any data value should not be treated as dynamic (for example, a "$" should be taken as literal), you can place it in [DSRequestTask.fixedCriteria](#attr-dsrequesttaskfixedcriteria) instead.
 
@@ -111,7 +111,7 @@ The [operationId](OperationBinding.md#attr-operationbindingoperationid) to invok
 ## Attr: DSRequestTask.exportFormat
 
 ### Description
-The format in which the data should be exported. See [ExportFormat](../main_2.md#type-exportformat) for more information.
+The format in which the data should be exported. See [ExportFormat](../reference_2.md#type-exportformat) for more information.
 
 **Flags**: IR
 
@@ -119,7 +119,7 @@ The format in which the data should be exported. See [ExportFormat](../main_2.md
 ## Attr: DSRequestTask.summaryFunctions
 
 ### Description
-A mapping from field names to [summary functions](../main_2.md#type-summaryfunction) to be applied to each field for a fetch.
+A mapping from field names to [summary functions](../reference_2.md#type-summaryfunction) to be applied to each field for a fetch.
 
 See the [Server Summaries overview](../kb_topics/serverSummaries.md#kb-topic-server-summaries) for examples of usage.
 

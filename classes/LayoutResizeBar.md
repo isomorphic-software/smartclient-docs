@@ -1,6 +1,6 @@
 # LayoutResizeBar Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -50,12 +50,12 @@ Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) fo
 ## Method: LayoutResizeBar.setResizeDirection
 
 ### Description
-Setter for [ResizeDirection](../main.md#type-resizedirection).
+Setter for [ResizeDirection](../reference.md#type-resizedirection).
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| direction | [ResizeDirection](../main.md#type-resizedirection) | false | — | the new direction to target |
+| direction | [ResizeDirection](../reference.md#type-resizedirection) | false | — | the new direction to target |
 
 ---

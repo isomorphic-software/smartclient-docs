@@ -1,6 +1,6 @@
 # MultiGroupDialog Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -9,9 +9,9 @@
 *Inherits from:* [Window](Window.md#class-window)
 
 ### Description
-A dialog that allows the user to set up complex grouping arrangements by defining a group of [GroupSpecifier](../main_2.md#object-groupspecifier)s.
+A dialog that allows the user to set up complex grouping arrangements by defining a group of [GroupSpecifier](../reference_2.md#object-groupspecifier)s.
 
-Each [GroupSpecifier](../main_2.md#object-groupspecifier) applies to a single property and grouping - so, for instance, in a grid with two columns, `Nationhood` and `Country`, you could group first by `Nationhood` with its selected groupingMode and then by `Country` with its selected groupingMode.
+Each [GroupSpecifier](../reference_2.md#object-groupspecifier) applies to a single property and grouping - so, for instance, in a grid with two columns, `Nationhood` and `Country`, you could group first by `Nationhood` with its selected groupingMode and then by `Country` with its selected groupingMode.
 
 _**Important Note:** this class should not be used directly - it is exposed purely for [i18n reasons.](../kb_topics/i18nMessages.md#kb-topic-i18n-messages)_
 
@@ -33,9 +33,9 @@ Note, this is a passthrough property which, when set, is passed through to the [
 ## Attr: MultiGroupDialog.addLevelButton
 
 ### Description
-Automatically generated [IButton](../main.md#class-ibutton) providing a mechanism for adding new levels to the group configuration.
+Automatically generated [IButton](../reference.md#class-ibutton) providing a mechanism for adding new levels to the group configuration.
 
-This component is an [AutoChild](../main.md#type-autochild) and as such may be customized via `multiGroupPanel.addLevelButtonProperties` and `multiGroupPanel.addLevelButtonDefaults`.
+This component is an [AutoChild](../reference.md#type-autochild) and as such may be customized via `multiGroupPanel.addLevelButtonProperties` and `multiGroupPanel.addLevelButtonDefaults`.
 
 **Flags**: RA
 
@@ -43,9 +43,9 @@ This component is an [AutoChild](../main.md#type-autochild) and as such may be c
 ## Attr: MultiGroupDialog.deleteLevelButton
 
 ### Description
-Automatically generated [IButton](../main.md#class-ibutton) providing a mechanism for deleting levels from the group configuration.
+Automatically generated [IButton](../reference.md#class-ibutton) providing a mechanism for deleting levels from the group configuration.
 
-This component is an [AutoChild](../main.md#type-autochild) and as such may be customized via `multiGroupPanel.deleteLevelButtonProperties` and `multiGroupPanel.deleteLevelButtonDefaults`.
+This component is an [AutoChild](../reference.md#type-autochild) and as such may be customized via `multiGroupPanel.deleteLevelButtonProperties` and `multiGroupPanel.deleteLevelButtonDefaults`.
 
 **Flags**: RA
 
@@ -67,7 +67,7 @@ The title-text to appear in this Dialog's Header-bar.
 ### Description
 Automatically generated [ImgButton](ImgButton.md#class-imgbutton) providing a mechanism for moving existing group-levels down in the group configuration.
 
-This component is an [AutoChild](../main.md#type-autochild) and as such may be customized via `multiGroupPanel.levelDownButtonProperties` and `multiGroupPanel.levelDownButtonDefaults`.
+This component is an [AutoChild](../reference.md#type-autochild) and as such may be customized via `multiGroupPanel.levelDownButtonProperties` and `multiGroupPanel.levelDownButtonDefaults`.
 
 **Flags**: RA
 
@@ -89,9 +89,9 @@ Note, this is a passthrough property which, when set, is passed through to the [
 ## Attr: MultiGroupDialog.optionsGrid
 
 ### Description
-Automatically generated [ListGrid](ListGrid_1.md#class-listgrid) allowing the user to configure a set of [GroupSpecifier](../main_2.md#object-groupspecifier)s.
+Automatically generated [ListGrid](ListGrid_1.md#class-listgrid) allowing the user to configure a set of [GroupSpecifier](../reference_2.md#object-groupspecifier)s.
 
-This component is an [AutoChild](../main.md#type-autochild) and as such may be customized via `multiGroupPanel.optionsGridProperties` and `multiGroupPanel.optionsGridDefaults`.
+This component is an [AutoChild](../reference.md#type-autochild) and as such may be customized via `multiGroupPanel.optionsGridProperties` and `multiGroupPanel.optionsGridDefaults`.
 
 **Flags**: IR
 
@@ -145,9 +145,9 @@ The title-text to appear on the applyButton
 ## Attr: MultiGroupDialog.applyButton
 
 ### Description
-Automatically generated [IButton](../main.md#class-ibutton) providing the mechanism for accepting the current group configuration. Fires the passed callback with a single parameter, groupLevels, representing the current group configuration as an array of [GroupSpecifier](../main_2.md#object-groupspecifier)s.
+Automatically generated [IButton](../reference.md#class-ibutton) providing the mechanism for accepting the current group configuration. Fires the passed callback with a single parameter, groupLevels, representing the current group configuration as an array of [GroupSpecifier](../reference_2.md#object-groupspecifier)s.
 
-This component is an [AutoChild](../main.md#type-autochild) and as such may be customized via `multiGroupPanel.applyButtonProperties` and `multiGroupPanel.applyButtonDefaults`.
+This component is an [AutoChild](../reference.md#type-autochild) and as such may be customized via `multiGroupPanel.applyButtonProperties` and `multiGroupPanel.applyButtonDefaults`.
 
 **Flags**: RA
 
@@ -155,9 +155,9 @@ This component is an [AutoChild](../main.md#type-autochild) and as such may be c
 ## Attr: MultiGroupDialog.copyLevelButton
 
 ### Description
-Automatically generated [IButton](../main.md#class-ibutton) providing a mechanism for duplicating levels in the group configuration.
+Automatically generated [IButton](../reference.md#class-ibutton) providing a mechanism for duplicating levels in the group configuration.
 
-This component is an [AutoChild](../main.md#type-autochild) and as such may be customized via `multiGroupPanel.copyLevelButtonProperties` and `multiGroupPanel.copyLevelButtonDefaults`.
+This component is an [AutoChild](../reference.md#type-autochild) and as such may be customized via `multiGroupPanel.copyLevelButtonProperties` and `multiGroupPanel.copyLevelButtonDefaults`.
 
 **Flags**: RA
 
@@ -215,9 +215,9 @@ Note, this is a passthrough property which, when set, is passed through to the [
 ## Attr: MultiGroupDialog.cancelButton
 
 ### Description
-Automatically generated [IButton](../main.md#class-ibutton) providing the mechanism for closing this Dialog without accepting the current group configuration. The passed callback is fired with a single null parameter, indicating that the operation was cancelled.
+Automatically generated [IButton](../reference.md#class-ibutton) providing the mechanism for closing this Dialog without accepting the current group configuration. The passed callback is fired with a single null parameter, indicating that the operation was cancelled.
 
-This component is an [AutoChild](../main.md#type-autochild) and as such may be customized via `multiGroupPanel.cancelButtonProperties` and `multiGroupPanel.cancelButtonDefaults`.
+This component is an [AutoChild](../reference.md#type-autochild) and as such may be customized via `multiGroupPanel.cancelButtonProperties` and `multiGroupPanel.cancelButtonDefaults`.
 
 **Flags**: RA
 
@@ -241,7 +241,7 @@ Note, this is a passthrough property which, when set, is passed through to the [
 ### Description
 Automatically generated [ImgButton](ImgButton.md#class-imgbutton) providing a mechanism for moving existing group-levels up in the group configuration.
 
-This component is an [AutoChild](../main.md#type-autochild) and as such may be customized via `multiGroupPanel.levelUpButtonProperties` and `multiGroupPanel.levelUpButtonDefaults`.
+This component is an [AutoChild](../reference.md#type-autochild) and as such may be customized via `multiGroupPanel.levelUpButtonProperties` and `multiGroupPanel.levelUpButtonDefaults`.
 
 **Flags**: RA
 
@@ -283,7 +283,7 @@ Launches a MultiGroupDialog and obtains a group-definition from the user.
 |------|------|----------|---------|-------------|
 | fieldSource | [Array of Field](#type-array-of-field)|[DataSource](#type-datasource)|[DataBoundComponent](#type-databoundcomponent) | false | — | A source for Fields which the user can choose to group by |
 | initialGrouping | [Array](#type-array) | false | — | The initial group definition. |
-| callback | [Callback](../main.md#type-callback) | false | — | Called when the user defines and accepts one or more [GroupSpecifier](../main_2.md#object-groupspecifier)s. Single parameter `groupLevels` is an Array of GroupSpecifier or null if the user cancelled the dialog. |
+| callback | [Callback](../reference.md#type-callback) | false | — | Called when the user defines and accepts one or more [GroupSpecifier](../reference_2.md#object-groupspecifier)s. Single parameter `groupLevels` is an Array of GroupSpecifier or null if the user cancelled the dialog. |
 | properties | [MultiGroupDialog Properties](#type-multigroupdialog-properties) | true | — | Configuration to apply to the generated dialog |
 
 ---
@@ -300,17 +300,17 @@ Return the number of levels of grouping that have been configured.
 ## Method: MultiGroupDialog.validate
 
 ### Description
-Validate that no two [GroupSpecifier](../main_2.md#object-groupspecifier)s group on the same [property](../main.md#attr-groupspecifierproperty).
+Validate that no two [GroupSpecifier](../reference_2.md#object-groupspecifier)s group on the same [property](../reference.md#attr-groupspecifierproperty).
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — True if validation succeeds, false if any property is used twice
+`[boolean](../reference.md#type-boolean)` — True if validation succeeds, false if any property is used twice
 
 ---
 ## Method: MultiGroupDialog.getGroup
 
 ### Description
-Returns all configured grouping levels, as an array of [GroupSpecifier](../main_2.md#object-groupspecifier)s.
+Returns all configured grouping levels, as an array of [GroupSpecifier](../reference_2.md#object-groupspecifier)s.
 
 ### Returns
 

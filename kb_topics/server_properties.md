@@ -1,6 +1,6 @@
 # server.properties file
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -24,10 +24,10 @@ _Note that this is not intended to be an exhaustive list_:
 *   `project.ui` specifies the location for [XML Screen definitions _(\*.ui.xml files)_](../classes/RPCManager.md#classmethod-rpcmanagerloadscreen)
 *   `project.project` specifies the location for [XML Project definitions _(\*.project.xml files)_](../classes/RPCManager.md#classmethod-rpcmanagerloadproject)
 *   `project.apps` specifies the location for [Application declarations _(\*.app.xml files)_](applicationDeclaration.md#kb-topic-application-declaration-files)
-*   `modulesDir` specifies the location for modules files if using the [loadISC](loadISCTag.md#kb-topic-isomorphicloadisc) or [loadModules](../main.md#kb-topic-isomorphicloadmodules) jsp tags.
-*   `isc.addVersionToLoadTags` (boolean) May be set to false to disable the automatic versioning applied to URLs written out by [loadISC](loadISCTag.md#kb-topic-isomorphicloadisc) or [loadModules](../main.md#kb-topic-isomorphicloadmodules) jsp tags.
-*   `isc.defaultVersionStyle` specifies the default `versionStyle` for [loadISC](loadISCTag.md#kb-topic-isomorphicloadisc) or [loadModules](../main.md#kb-topic-isomorphicloadmodules) jsp tags. Default value is "params".
-*   `isc.versionPathSegmentPrefix` Specifies a standard path segment prefix written out by [loadISC](loadISCTag.md#kb-topic-isomorphicloadisc) or [loadModules](../main.md#kb-topic-isomorphicloadmodules) jsp tags with `versionStyle` set to "pathSegment". The generated path segment will consist of this prefix combined with the current SmartClient version. The default value is `"isc_version."`.
+*   `modulesDir` specifies the location for modules files if using the [loadISC](loadISCTag.md#kb-topic-isomorphicloadisc) or [loadModules](../reference.md#kb-topic-isomorphicloadmodules) jsp tags.
+*   `isc.addVersionToLoadTags` (boolean) May be set to false to disable the automatic versioning applied to URLs written out by [loadISC](loadISCTag.md#kb-topic-isomorphicloadisc) or [loadModules](../reference.md#kb-topic-isomorphicloadmodules) jsp tags.
+*   `isc.defaultVersionStyle` specifies the default `versionStyle` for [loadISC](loadISCTag.md#kb-topic-isomorphicloadisc) or [loadModules](../reference.md#kb-topic-isomorphicloadmodules) jsp tags. Default value is "params".
+*   `isc.versionPathSegmentPrefix` Specifies a standard path segment prefix written out by [loadISC](loadISCTag.md#kb-topic-isomorphicloadisc) or [loadModules](../reference.md#kb-topic-isomorphicloadmodules) jsp tags with `versionStyle` set to "pathSegment". The generated path segment will consist of this prefix combined with the current SmartClient version. The default value is `"isc_version."`.
 *   `isc.stripVersionPathSegments` (boolean) When set to true, any URL containing a path segment that starts with the `isc.pathSegmentPrefix` will be automatically stripped by the SmartClient FileDownloadServlet, or the dedicated VersionedURLFilter when resolving the URL to a resource on the filesystem.  
     This may be disabled if you want to use a different strategy such as using Apache mod\_rewrite on a dedicated web server to resolve URLs including versioned path segments.
 *   `authentication.defaultRequired` can be used to require [authentication](../classes/DataSource.md#attr-datasourcerequiresauthentication) for all dataSources by default

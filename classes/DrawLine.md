@@ -1,6 +1,6 @@
 # DrawLine Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -31,7 +31,7 @@ Ending left coordinate of the line. Overrides left coordinate of [DrawLine.endPo
 ## Attr: DrawLine.knobs
 
 ### Description
-Array of control knobs to display for this item. Each [KnobType](../main.md#type-knobtype) specified in this will turn on UI element(s) allowing the user to manipulate this DrawLine. To update the set of knobs at runtime use [DrawItem.showKnobs](DrawItem.md#method-drawitemshowknobs) and [DrawItem.hideKnobs](DrawItem.md#method-drawitemhideknobs).
+Array of control knobs to display for this item. Each [KnobType](../reference.md#type-knobtype) specified in this will turn on UI element(s) allowing the user to manipulate this DrawLine. To update the set of knobs at runtime use [DrawItem.showKnobs](DrawItem.md#method-drawitemshowknobs) and [DrawItem.hideKnobs](DrawItem.md#method-drawitemhideknobs).
 
 DrawLine supports the "startPoint", "endPoint", and "move" knob types.
 
@@ -101,8 +101,8 @@ Move both the start and end points of the line by a relative amount.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| left | [Distance](../main.md#type-distance) | false | — | change to left coordinate in pixels |
-| top | [Distance](../main.md#type-distance) | false | — | change to top coordinate in pixels |
+| left | [Distance](../reference.md#type-distance) | false | — | change to left coordinate in pixels |
+| top | [Distance](../reference.md#type-distance) | false | — | change to top coordinate in pixels |
 
 ---
 ## Method: DrawLine.setStartPoint
@@ -114,8 +114,8 @@ Update the startPoint
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| left | [Coordinate](../main.md#type-coordinate) | false | — | left coordinate for start point, in pixels |
-| top | [Coordinate](../main.md#type-coordinate) | false | — | top coordinate for start point, in pixels |
+| left | [Coordinate](../reference.md#type-coordinate) | false | — | left coordinate for start point, in pixels |
+| top | [Coordinate](../reference.md#type-coordinate) | false | — | top coordinate for start point, in pixels |
 
 ---
 ## Method: DrawLine.getBoundingBox
@@ -147,8 +147,8 @@ Update the endPoint
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| left | [Coordinate](../main.md#type-coordinate) | false | — | left coordinate for end point, in pixels |
-| top | [Coordinate](../main.md#type-coordinate) | false | — | top coordinate for end point, in pixels |
+| left | [Coordinate](../reference.md#type-coordinate) | false | — | left coordinate for end point, in pixels |
+| top | [Coordinate](../reference.md#type-coordinate) | false | — | top coordinate for end point, in pixels |
 
 ---
 ## Method: DrawLine.moveStartPointTo
@@ -160,8 +160,8 @@ Move both the start and end points of the line such that the [DrawLine.startPoin
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| left | [Integer](../main_2.md#type-integer) | false | — | new left coordinate in pixels |
-| top | [Integer](../main_2.md#type-integer) | false | — | new top coordinate in pixels |
+| left | [Integer](../reference_2.md#type-integer) | false | — | new left coordinate in pixels |
+| top | [Integer](../reference_2.md#type-integer) | false | — | new top coordinate in pixels |
 
 ---
 ## Method: DrawLine.isPointInPath
@@ -173,11 +173,11 @@ Returns true if the given point in the drawing coordinate system is within this 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| x | [int](../main.md#type-int) | false | — | X coordinate of the test point. |
-| y | [int](../main.md#type-int) | false | — | Y coordinate of the test point. |
+| x | [int](../reference.md#type-int) | false | — | X coordinate of the test point. |
+| y | [int](../reference.md#type-int) | false | — | Y coordinate of the test point. |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — —
+`[boolean](../reference.md#type-boolean)` — —
 
 ---

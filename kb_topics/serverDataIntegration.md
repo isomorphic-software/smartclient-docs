@@ -1,6 +1,6 @@
 # Server DataSource Integration
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -19,7 +19,7 @@ This approach is in contrast to [Client-side Data Integration](clientDataIntegra
 
 **Server-side Request Processing**
 
-Client-side [DataBoundComponents](../main.md#interface-databoundcomponent) will send [DSRequests](../main_2.md#object-dsrequest) to the SmartClient Server as background communications transparent to the user. Integrating SmartClient's DataSource layer with your data model is a matter of handling these DSRequests and sending back DSResponses, in order to fulfill the 4 basic operations of the [DataSource Protocol](dataSourceOperations.md#kb-topic-datasource-operations).
+Client-side [DataBoundComponents](../reference.md#interface-databoundcomponent) will send [DSRequests](../reference_2.md#object-dsrequest) to the SmartClient Server as background communications transparent to the user. Integrating SmartClient's DataSource layer with your data model is a matter of handling these DSRequests and sending back DSResponses, in order to fulfill the 4 basic operations of the [DataSource Protocol](dataSourceOperations.md#kb-topic-datasource-operations).
 
 Out of the box, SmartClient is set up to route all DSRequests through a special servlet called `IDACall`.
 
@@ -47,7 +47,7 @@ This basic request handling flow can be customized at a number of points:
 
 *   The `<criteria>` and `<values>` properties of an [OperationBinding](../classes/OperationBinding.md#class-operationbinding) allow you to modify the dataSource request dynamically at transaction-processing time, using built-in [Velocity support](velocitySupport.md#kb-topic-velocity-context-variables).  
     Note this feature also allows developers to use [Transaction Chaining](transactionChaining.md#kb-topic-transaction-chaining) to dynamically set data values according to the results of earlier transactions.
-*   For editing, standard [DataSourceField.validators](../classes/DataSourceField.md#attr-datasourcefieldvalidators) defined in the `.ds.xml` file will be processed on both the client and the server. In addition to the built-in validator types, entirely custom server validation logic may be implemented using ["serverCustom" type validators](../main.md#type-validatortype).
+*   For editing, standard [DataSourceField.validators](../classes/DataSourceField.md#attr-datasourcefieldvalidators) defined in the `.ds.xml` file will be processed on both the client and the server. In addition to the built-in validator types, entirely custom server validation logic may be implemented using ["serverCustom" type validators](../reference.md#type-validatortype).
 *   For SQL DataSources, use [SQL Templating](customQuerying.md#kb-topic-custom-querying-overview) to change, add to or even completely replace the SQL sent to the database, including calling stored procedures
 *   The [DataSource.serverConstructor](../classes/DataSource.md#attr-datasourceserverconstructor) allows you to specify an explicit custom DataSource subclass to create as your DataSource instance. This must be a subclass of `BasicDataSource`.  
     When requests are recieved by the `IDACall` servlet, they will be passed to standard methods on this DataSource, which can be overridden for custom behavior.  
@@ -83,8 +83,8 @@ For more information, see the [RPCManager documentation](../classes/RPCManager.m
 
 ### Related
 
-- [DSDataFormat](../main_2.md#type-dsdataformat)
-- [DSServerType](../main_2.md#type-dsservertype)
+- [DSDataFormat](../reference_2.md#type-dsdataformat)
+- [DSServerType](../reference_2.md#type-dsservertype)
 - [DataSource.dataFormat](../classes/DataSource.md#attr-datasourcedataformat)
 - [DataSource.dataProtocol](../classes/DataSource.md#attr-datasourcedataprotocol)
 - [DataSource.requestProperties](../classes/DataSource.md#attr-datasourcerequestproperties)

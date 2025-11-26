@@ -1,6 +1,6 @@
 # Slider Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -47,7 +47,7 @@ The minimum slider value. The slider value is equal to minValue when the thumb i
 ## Attr: Slider.rangeFormat
 
 ### Description
-[FormatString](../main.md#type-formatstring) for numeric formatting of the range labels. If unset, defaults to [Slider.valueFormat](#attr-slidervalueformat)
+[FormatString](../reference.md#type-formatstring) for numeric formatting of the range labels. If unset, defaults to [Slider.valueFormat](#attr-slidervalueformat)
 
 ### Groups
 
@@ -149,7 +149,7 @@ The space around the labels used to display the [minimum, maximum](#attr-sliderr
 ## Attr: Slider.rangeLabel
 
 ### Description
-Used to create both of the min and max range-labels, via the [AutoChild](../main.md#type-autochild) pattern, hence `rangeLabelConstructor`, `rangeLabelDefaults` and `rangeLabelProperties` are valid.
+Used to create both of the min and max range-labels, via the [AutoChild](../reference.md#type-autochild) pattern, hence `rangeLabelConstructor`, `rangeLabelDefaults` and `rangeLabelProperties` are valid.
 
 **Flags**: IR
 
@@ -282,7 +282,7 @@ The imageType setting for the slider track.
 
 ### See Also
 
-- [ImageStyle](../main.md#type-imagestyle)
+- [ImageStyle](../reference.md#type-imagestyle)
 - [StretchImg.imageType](StretchImg.md#attr-stretchimgimagetype)
 
 **Flags**: IRW
@@ -324,7 +324,7 @@ Indicates whether labels for the [min and max values](#attr-sliderrangelabel) of
 ## Attr: Slider.valueFormat
 
 ### Description
-[FormatString](../main.md#type-formatstring) for numeric formatting of the value and range labels.
+[FormatString](../reference.md#type-formatstring) for numeric formatting of the value and range labels.
 
 ### Groups
 
@@ -348,7 +348,7 @@ The maximum slider value. The slider value is equal to maxValue when the thumb i
 ## Attr: Slider.valueLabel
 
 ### Description
-[AutoChild](../main.md#type-autochild) displaying the current value as a floating label when [showValue](#attr-slidershowvalue) is true.
+[AutoChild](../reference.md#type-autochild) displaying the current value as a floating label when [showValue](#attr-slidershowvalue) is true.
 
 **Flags**: IR
 
@@ -566,7 +566,7 @@ Returns the current slider value.
 
 ### Returns
 
-`[float](../main.md#type-float)` — current slider value
+`[float](../reference.md#type-float)` — current slider value
 
 ---
 ## Method: Slider.setMaxValue
@@ -578,7 +578,7 @@ Sets the [maximum value](#attr-slidermaxvalue) of the slider
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newValue | [float](../main.md#type-float) | false | — | the new maximum value |
+| newValue | [float](../reference.md#type-float) | false | — | the new maximum value |
 
 ---
 ## Method: Slider.setRoundPrecision
@@ -590,7 +590,7 @@ Sets the [Slider.roundPrecision](#attr-sliderroundprecision) property of the sli
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| roundPrecision | [int](../main.md#type-int) | false | — | new round precision |
+| roundPrecision | [int](../reference.md#type-int) | false | — | new round precision |
 
 ---
 ## Method: Slider.setThumbThinWidth
@@ -602,7 +602,7 @@ Sets the [Slider.thumbThinWidth](#attr-sliderthumbthinwidth) property of the sli
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newWidth | [int](../main.md#type-int) | false | — | new thumbThinWidth |
+| newWidth | [int](../reference.md#type-int) | false | — | new thumbThinWidth |
 
 ---
 ## Method: Slider.setFlipValues
@@ -614,7 +614,7 @@ Sets the [Slider.flipValues](#attr-sliderflipvalues) property of the slider
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| flipValues | [boolean](../main.md#type-boolean) | false | — | flip slider values? |
+| flipValues | [boolean](../reference.md#type-boolean) | false | — | flip slider values? |
 
 ---
 ## Method: Slider.setValue
@@ -626,8 +626,8 @@ Sets the slider value to newValue and moves the slider thumb to the appropriate 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newValue | [float](../main.md#type-float) | false | — | the new value |
-| noAnimation | [boolean](../main.md#type-boolean) | false | — | do not animate the slider thumb to the new value |
+| newValue | [float](../reference.md#type-float) | false | — | the new value |
+| noAnimation | [boolean](../reference.md#type-boolean) | false | — | do not animate the slider thumb to the new value |
 
 ---
 ## Method: Slider.setLabelSpacing
@@ -639,7 +639,7 @@ Sets the [Slider.labelSpacing](#attr-sliderlabelspacing) property of the slider
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| labelWidth | [int](../main.md#type-int) | false | — | new label spacing |
+| labelWidth | [int](../reference.md#type-int) | false | — | new label spacing |
 
 ---
 ## Method: Slider.setTitle
@@ -663,7 +663,7 @@ Sets the [Slider.showValue](#attr-slidershowvalue) property of the slider
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| showValue | [boolean](../main.md#type-boolean) | false | — | show the slider value? |
+| showValue | [boolean](../reference.md#type-boolean) | false | — | show the slider value? |
 
 ---
 ## Method: Slider.setRoundValues
@@ -675,7 +675,7 @@ Sets the [Slider.roundValues](#attr-sliderroundvalues) property of the slider
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| roundValues | [boolean](../main.md#type-boolean) | false | — | round slider values? |
+| roundValues | [boolean](../reference.md#type-boolean) | false | — | round slider values? |
 
 ---
 ## Method: Slider.setThumbThickWidth
@@ -687,7 +687,7 @@ Sets the [Slider.thumbThickWidth](#attr-sliderthumbthickwidth) property of the s
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newWidth | [int](../main.md#type-int) | false | — | new thumbThickWidth |
+| newWidth | [int](../reference.md#type-int) | false | — | new thumbThickWidth |
 
 ---
 ## Method: Slider.setShowTitle
@@ -711,7 +711,7 @@ Sets the [Slider.stepPercent](#attr-slidersteppercent) property of the slider
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| stepPercent | [float](../main.md#type-float) | false | — | new slider step percent |
+| stepPercent | [float](../reference.md#type-float) | false | — | new slider step percent |
 
 ---
 ## Method: Slider.valueIsChanging
@@ -735,7 +735,7 @@ Sets the [number of values](#attr-slidernumvalues) for the slider
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newNumValues | [Integer](../main_2.md#type-integer) | false | — | the new number of values |
+| newNumValues | [Integer](../reference_2.md#type-integer) | false | — | the new number of values |
 
 ---
 ## Method: Slider.setThumbSrc
@@ -759,7 +759,7 @@ Sets the [Slider.labelHeight](#attr-sliderlabelheight) property of the slider
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newHeight | [int](../main.md#type-int) | false | — | new label height |
+| newHeight | [int](../reference.md#type-int) | false | — | new label height |
 
 ---
 ## Method: Slider.setTrackWidth
@@ -771,7 +771,7 @@ Sets the [Slider.trackWidth](#attr-slidertrackwidth) property of the slider
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newWidth | [int](../main.md#type-int) | false | — | new trackWidth |
+| newWidth | [int](../reference.md#type-int) | false | — | new trackWidth |
 
 ---
 ## Method: Slider.setTrackSrc
@@ -795,7 +795,7 @@ Sets the [Slider.showRange](#attr-slidershowrange) property of the slider
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| showRange | [boolean](../main.md#type-boolean) | false | — | show the slider range? |
+| showRange | [boolean](../reference.md#type-boolean) | false | — | show the slider range? |
 
 ---
 ## Method: Slider.setLabelWidth
@@ -807,7 +807,7 @@ Sets the [Slider.labelWidth](#attr-sliderlabelwidth) property of the slider
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| labelWidth | [int](../main.md#type-int) | false | — | new label width |
+| labelWidth | [int](../reference.md#type-int) | false | — | new label width |
 
 ---
 ## Method: Slider.setVertical
@@ -819,7 +819,7 @@ Sets the [Slider.vertical](#attr-slidervertical) property of the slider
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| isVertical | [boolean](../main.md#type-boolean) | false | — | is the slider vertical |
+| isVertical | [boolean](../reference.md#type-boolean) | false | — | is the slider vertical |
 
 ---
 ## Method: Slider.setTrackCapSize
@@ -831,7 +831,7 @@ Sets the [Slider.trackCapSize](#attr-slidertrackcapsize) property of the slider
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newSize | [int](../main.md#type-int) | false | — | new trackCapSize |
+| newSize | [int](../reference.md#type-int) | false | — | new trackCapSize |
 
 ---
 ## Method: Slider.valueChanged
@@ -843,7 +843,7 @@ This method is called when the slider value changes. This occurs when the [setVa
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| value | [double](../main.md#type-double) | false | — | the new value. |
+| value | [double](../reference.md#type-double) | false | — | the new value. |
 
 ### See Also
 
@@ -861,7 +861,7 @@ Sets the [minimum value](#attr-sliderminvalue) of the slider
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newValue | [float](../main.md#type-float) | false | — | the new minimum value |
+| newValue | [float](../reference.md#type-float) | false | — | the new minimum value |
 
 ---
 ## Method: Slider.setTrackImageType
@@ -873,6 +873,6 @@ Sets the [Slider.trackImageType](#attr-slidertrackimagetype) property of the sli
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newType | [ImageStyle](../main.md#type-imagestyle) | false | — | new trackImageType |
+| newType | [ImageStyle](../reference.md#type-imagestyle) | false | — | new trackImageType |
 
 ---

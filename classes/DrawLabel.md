@@ -1,6 +1,6 @@
 # DrawLabel Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -31,7 +31,7 @@ This setting exists due to platform limitations in some versions of Internet Exp
 ## ClassAttr: DrawLabel.LEFT
 
 ### Description
-A declared value of the enum type [LabelAlignment](../main_2.md#type-labelalignment).
+A declared value of the enum type [LabelAlignment](../reference_2.md#type-labelalignment).
 
 **Flags**: R
 
@@ -47,7 +47,7 @@ This setting exists due to platform limitations in some versions of Internet Exp
 ## ClassAttr: DrawLabel.CENTER
 
 ### Description
-A declared value of the enum type [LabelAlignment](../main_2.md#type-labelalignment).
+A declared value of the enum type [LabelAlignment](../reference_2.md#type-labelalignment).
 
 **Flags**: R
 
@@ -63,7 +63,7 @@ This setting exists due to platform limitations in some versions of Internet Exp
 ## ClassAttr: DrawLabel.RIGHT
 
 ### Description
-A declared value of the enum type [LabelAlignment](../main_2.md#type-labelalignment).
+A declared value of the enum type [LabelAlignment](../reference_2.md#type-labelalignment).
 
 **Flags**: R
 
@@ -71,7 +71,7 @@ A declared value of the enum type [LabelAlignment](../main_2.md#type-labelalignm
 ## ClassAttr: DrawLabel.END
 
 ### Description
-A declared value of the enum type [LabelAlignment](../main_2.md#type-labelalignment).
+A declared value of the enum type [LabelAlignment](../reference_2.md#type-labelalignment).
 
 **Flags**: R
 
@@ -79,7 +79,7 @@ A declared value of the enum type [LabelAlignment](../main_2.md#type-labelalignm
 ## ClassAttr: DrawLabel.START
 
 ### Description
-A declared value of the enum type [LabelAlignment](../main_2.md#type-labelalignment).
+A declared value of the enum type [LabelAlignment](../reference_2.md#type-labelalignment).
 
 **Flags**: R
 
@@ -279,7 +279,7 @@ Sets the text color of the label.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| color | [CSSColor](../main_2.md#type-csscolor) | false | — | new text color. |
+| color | [CSSColor](../reference_2.md#type-csscolor) | false | — | new text color. |
 
 ---
 ## Method: DrawLabel.setStyleName
@@ -291,7 +291,7 @@ Sets this DrawLabel's [styleName](#attr-drawlabelstylename).
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| styleName | [CSSStyleName](../main.md#type-cssstylename) | false | — | the new styleName |
+| styleName | [CSSStyleName](../reference.md#type-cssstylename) | false | — | the new styleName |
 
 ---
 ## Method: DrawLabel.setFontSize
@@ -303,7 +303,7 @@ Sets this DrawLabel's [fontSize](#attr-drawlabelfontsize).
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| size | [int](../main.md#type-int) | false | — | the new font size in pixels. |
+| size | [int](../reference.md#type-int) | false | — | the new font size in pixels. |
 
 ---
 ## Method: DrawLabel.setEscapeContents
@@ -315,7 +315,7 @@ Sets the [DrawLabel.escapeContents](#attr-drawlabelescapecontents) property for 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| escapeContents | [boolean](../main.md#type-boolean) | false | — | whether to escape [DrawLabel.contents](#attr-drawlabelcontents) |
+| escapeContents | [boolean](../reference.md#type-boolean) | false | — | whether to escape [DrawLabel.contents](#attr-drawlabelcontents) |
 
 ---
 ## Method: DrawLabel.getCenter

@@ -1,6 +1,6 @@
 # Frozen Fields
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -13,7 +13,7 @@ Fields can be programmatically frozen via setting [field.frozen](../classes/List
 
 The frozen fields feature is not compatible with the following features:
 
-*   [autoFitData](../main.md#kb-topic-autofitdata):"horizontal", as well as headers that autoFit to titles (normally enabled via `field.overflow:"visible"`)
+*   [autoFitData](../reference.md#kb-topic-autofitdata):"horizontal", as well as headers that autoFit to titles (normally enabled via `field.overflow:"visible"`)
 *   the [CubeGrid](../classes/CubeGrid.md#class-cubegrid) subclass of ListGrid
 *   nested grids
 

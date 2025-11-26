@@ -1,6 +1,6 @@
 # DrawSector Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -92,11 +92,11 @@ Calculates the midpoint coordinates of the circular arc of the sector defined by
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| centerX | [double](../main.md#type-double) | false | — | X coordinate of the center point of the sector. |
-| centerY | [double](../main.md#type-double) | false | — | Y coordinate of the center point of the sector. |
-| startAngle | [double](../main.md#type-double) | false | — | start angle of the sector in degrees. |
-| endAngle | [double](../main.md#type-double) | false | — | end angle of the sector in degrees. |
-| radius | [double](../main.md#type-double) | false | — | radius of the sector. |
+| centerX | [double](../reference.md#type-double) | false | — | X coordinate of the center point of the sector. |
+| centerY | [double](../reference.md#type-double) | false | — | Y coordinate of the center point of the sector. |
+| startAngle | [double](../reference.md#type-double) | false | — | start angle of the sector in degrees. |
+| endAngle | [double](../reference.md#type-double) | false | — | end angle of the sector in degrees. |
+| radius | [double](../reference.md#type-double) | false | — | radius of the sector. |
 
 ### Returns
 
@@ -122,8 +122,8 @@ Change the center point for this sector.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| left | [Coordinate](../main.md#type-coordinate) | false | — | X coordinate of the center point (in the global coordinate system). |
-| top | [Coordinate](../main.md#type-coordinate) | false | — | Y coordinate of the center point (in the global coordinate system. |
+| left | [Coordinate](../reference.md#type-coordinate) | false | — | X coordinate of the center point (in the global coordinate system). |
+| top | [Coordinate](../reference.md#type-coordinate) | false | — | Y coordinate of the center point (in the global coordinate system. |
 
 ---
 ## Method: DrawSector.getArcMidpoint
@@ -160,7 +160,7 @@ Move the DrawSector by the specified amounts.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| x | [Distance](../main.md#type-distance) | false | — | number of pixels to move by horizontally |
-| y | [Distance](../main.md#type-distance) | false | — | number of pixels to move by vertically |
+| x | [Distance](../reference.md#type-distance) | false | — | number of pixels to move by horizontally |
+| y | [Distance](../reference.md#type-distance) | false | — | number of pixels to move by vertically |
 
 ---

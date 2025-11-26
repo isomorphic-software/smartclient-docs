@@ -1,6 +1,6 @@
 # Integration with Spring
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -17,11 +17,11 @@ However, Spring's DispatchServlet, Handler chain, and Controller architecture is
 
 **Existing Spring Application**
 
-As discussed under the general [server integration](clientServerIntegration.md#kb-topic-client-server-integration) topic, integrating SmartClient into your application involves finding a way to provide data that fulfills the [DataSource requests](../main_2.md#object-dsrequest) sent by SmartClient components.
+As discussed under the general [server integration](clientServerIntegration.md#kb-topic-client-server-integration) topic, integrating SmartClient into your application involves finding a way to provide data that fulfills the [DataSource requests](../reference_2.md#object-dsrequest) sent by SmartClient components.
 
 There are 2 approaches for integrating SmartClient into an existing Spring application:
 
-*   **call Spring beans via SmartClient DMI or custom DataSources** \[Recommended\]: use SmartClient Direct Method Invocation (DMI) to map [DataSource requests](../main_2.md#object-dsrequest) to beans managed by Spring, via [ServerObject.lookupStyle](../classes/ServerObject.md#attr-serverobjectlookupstyle):"spring". Return data to the browser by either simply returning it from your method, or via creating a DSResponse and calling DSResponse.setData() (server-side method). Or, use a similar approach based on custom DataSource implementations where the [serverConstructor](../classes/DataSource.md#attr-datasourceserverconstructor) is of the pattern **"spring:{bean\_name}"**
+*   **call Spring beans via SmartClient DMI or custom DataSources** \[Recommended\]: use SmartClient Direct Method Invocation (DMI) to map [DataSource requests](../reference_2.md#object-dsrequest) to beans managed by Spring, via [ServerObject.lookupStyle](../classes/ServerObject.md#attr-serverobjectlookupstyle):"spring". Return data to the browser by either simply returning it from your method, or via creating a DSResponse and calling DSResponse.setData() (server-side method). Or, use a similar approach based on custom DataSource implementations where the [serverConstructor](../classes/DataSource.md#attr-datasourceserverconstructor) is of the pattern **"spring:{bean\_name}"**
     
     This is the easiest method and produces the best result. A Collection of Java Beans, such as EJB or Hibernate-managed beans, can be directly returned to SmartClient as the result of a DMI method, without the need to create an intervening [Data Transfer Object](http://en.wikipedia.org/wiki/Data_transfer_object) to express which fields should be delivered to the browser - instead, only the fields declared on the DataSource are returned to the browser (see [dropExtraFields](../classes/DataSource.md#attr-datasourcedropextrafields). In this integration scenario, the majority of the features of the SmartClient Server framework still apply - see this [overview](featuresCustomPersistence.md#kb-topic-server-features-and-custom-persistence).
     
@@ -74,7 +74,7 @@ This lets you use Spring's DispatchServlet, Handler chain and Controller archite
 
 You can make DMI's participate in Spring's transaction management scheme by setting the [useSpringTransaction](../classes/DataSource.md#attr-datasourceusespringtransaction) flag on your DataSources or [OperationBinding](../classes/OperationBinding.md#class-operationbinding)s. This makes your DMI method(s) transactional, and ensures that any DSRequests and Spring DAO operations executed within that DMI use the same Spring-managed transaction. See the documentation for `useSpringTransaction` for more details.
 
-In Power Edition and above, SmartClient Server has its own transaction management system. This allows you to send [queues](../classes/RPCManager.md#classmethod-rpcmanagerstartqueue) of [DSRequest](../main_2.md#object-dsrequest)s to the server, and the entire queue will be treated as a single database transaction. This is **not** the same thing as Spring transaction integration: SmartClient's built-in transaction management works across an entire queue of DSRequests, whereas Spring transactions are specific to a Java method that has been marked `@Transactional` - the transaction starts and ends when the method starts and ends.
+In Power Edition and above, SmartClient Server has its own transaction management system. This allows you to send [queues](../classes/RPCManager.md#classmethod-rpcmanagerstartqueue) of [DSRequest](../reference_2.md#object-dsrequest)s to the server, and the entire queue will be treated as a single database transaction. This is **not** the same thing as Spring transaction integration: SmartClient's built-in transaction management works across an entire queue of DSRequests, whereas Spring transactions are specific to a Java method that has been marked `@Transactional` - the transaction starts and ends when the method starts and ends.
 
 It is possible to have an entire SmartClient queue - including any `@Transactional` DMIs that contain both Spring DAO operations and DSRequests - use the same Spring-managed transaction. To do this:
 

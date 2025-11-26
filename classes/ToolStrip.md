@@ -1,6 +1,6 @@
 # ToolStrip Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -9,7 +9,7 @@
 *Inherits from:* [Layout](Layout.md#class-layout)
 
 ### Description
-Base class for creating toolstrips like those found in browsers and office applications: a mixed set of controls including [icon buttons](ImgButton.md#class-imgbutton), [radio button groups](Button.md#attr-buttonradiogroup), [menus](MenuButton.md#class-menubutton), [comboBoxes](ComboBoxItem.md#class-comboboxitem), [spacers](../main.md#class-layoutspacer), [status displays](Label.md#class-label) and [drop-down selects](SelectItem.md#class-selectitem).
+Base class for creating toolstrips like those found in browsers and office applications: a mixed set of controls including [icon buttons](ImgButton.md#class-imgbutton), [radio button groups](Button.md#attr-buttonradiogroup), [menus](MenuButton.md#class-menubutton), [comboBoxes](ComboBoxItem.md#class-comboboxitem), [spacers](../reference.md#class-layoutspacer), [status displays](Label.md#class-label) and [drop-down selects](SelectItem.md#class-selectitem).
 
 All of the above components are placed in the [members array](#attr-toolstripmembers) to form a ToolStrip. Note that the [FormItems](FormItem.md#class-formitem) mentioned above (ComboBox and drop-down selects) need to be placed within a [DynamicForm](DynamicForm.md#class-dynamicform) as usual.
 
@@ -17,7 +17,7 @@ The following strings can be used to add special behaviors:
 
 *   the String "separator" will cause a separator to be created (instance of [ToolStrip.separatorClass](#attr-toolstripseparatorclass))
 *   the String "resizer" will cause a resizer to be created (instance of [ToolStrip.resizeBarClass](#attr-toolstripresizebarclass)). This is equivalent to setting [showResizeBar:true](Canvas.md#attr-canvasshowresizebar) on the preceding member.
-*   the String "starSpacer" will cause a spacer to be created (instance of [LayoutSpacer](../main.md#class-layoutspacer)).
+*   the String "starSpacer" will cause a spacer to be created (instance of [LayoutSpacer](../reference.md#class-layoutspacer)).
 
 ---
 ## Attr: ToolStrip.verticalStyleName
@@ -155,7 +155,7 @@ Note that if [ToolStrip.vertical](#attr-toolstripvertical) is true for this tool
 ## Attr: ToolStrip.formWrapper
 
 ### Description
-DynamicForm instance created by [ToolStrip.addFormItem](#method-toolstripaddformitem) to contain form items for display in this toolStrip. Each time addFormItem() is run, a new formWrapper autoChild will be created, picking up properties according to the standard [AutoChild](../main.md#type-autochild) pattern.
+DynamicForm instance created by [ToolStrip.addFormItem](#method-toolstripaddformitem) to contain form items for display in this toolStrip. Each time addFormItem() is run, a new formWrapper autoChild will be created, picking up properties according to the standard [AutoChild](../reference.md#type-autochild) pattern.
 
 **Flags**: IR
 
@@ -173,7 +173,7 @@ Returns a pointer to the generated formWrapper component.
 |------|------|----------|---------|-------------|
 | formItem | [FormItem Properties](#type-formitem-properties) | false | — | properties for the form item to add to this toolStrip. |
 | formProperties | [DynamicForm Properties](#type-dynamicform-properties) | true | — | properties to apply to the generated formWrapper component. If passed, specified properties will be overlaid onto the properties derived from [ToolStrip.formWrapperDefaults](#attr-toolstripformwrapperdefaults) and [ToolStrip.formWrapperProperties](#attr-toolstripformwrapperproperties). |
-| position | [Integer](../main_2.md#type-integer) | true | — | desired position for the form item in the tools |
+| position | [Integer](../reference_2.md#type-integer) | true | — | desired position for the form item in the tools |
 
 ### Returns
 

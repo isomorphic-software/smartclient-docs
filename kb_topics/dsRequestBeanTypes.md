@@ -1,6 +1,6 @@
 # DSRequest data auto-converted to bean types
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 

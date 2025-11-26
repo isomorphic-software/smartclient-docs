@@ -1,12 +1,12 @@
 # GradientEditor Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
 ## Class: GradientEditor
 
-*Inherits from:* [VLayout](../main.md#class-vlayout)
+*Inherits from:* [VLayout](../reference.md#class-vlayout)
 
 ### Description
 A widget for visually editing CSS gradients.
@@ -33,7 +33,7 @@ Whether to show the [preview canvas](#attr-gradienteditorpreviewcanvas), used to
 ## Attr: GradientEditor.previewCanvas
 
 ### Description
-An [AutoChild](../main.md#type-autochild) of type [Canvas](Canvas.md#class-canvas), used to display the gradient according to the defined color-stops. The canvas supports drag and click mouse interactions to update a gradient's rotation and origin.
+An [AutoChild](../reference.md#type-autochild) of type [Canvas](Canvas.md#class-canvas), used to display the gradient according to the defined color-stops. The canvas supports drag and click mouse interactions to update a gradient's rotation and origin.
 
 **Flags**: R
 

@@ -1,6 +1,6 @@
 # DrawPane Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -13,9 +13,9 @@ A DrawPane is a container for drawing bitmap and vector graphics using browser's
 
 To draw in a `DrawPane` you create [DrawLine](DrawLine.md#class-drawline)s, [DrawOval](DrawOval.md#class-drawoval)s, [DrawPath](DrawPath.md#class-drawpath)s and other [DrawItem](DrawItem.md#class-drawitem)-based components, and place them in the `DrawPane` via [DrawPane.drawItems](#attr-drawpanedrawitems) or add them incrementally via [DrawPane.addDrawItem](#method-drawpaneadddrawitem).
 
-`DrawItems` support a variety of common features, such as [gradient fills](../main_2.md#object-gradient), [arrowheads](DrawItem.md#attr-drawitemstartarrow), events such as [click()](DrawItem.md#method-drawitemclick) and built-in [control knobs](DrawItem.md#attr-drawitemknobs) for end user resizing and manipulation of shapes.
+`DrawItems` support a variety of common features, such as [gradient fills](../reference_2.md#object-gradient), [arrowheads](DrawItem.md#attr-drawitemstartarrow), events such as [click()](DrawItem.md#method-drawitemclick) and built-in [control knobs](DrawItem.md#attr-drawitemknobs) for end user resizing and manipulation of shapes.
 
-Common shapes such as [rectangles](DrawRect.md#class-drawrect), [ovals](DrawOval.md#class-drawoval) and [triangles](../main.md#class-drawtriangle) have dedicated DrawItem subclasses. For other shapes, consider:
+Common shapes such as [rectangles](DrawRect.md#class-drawrect), [ovals](DrawOval.md#class-drawoval) and [triangles](../reference.md#class-drawtriangle) have dedicated DrawItem subclasses. For other shapes, consider:
 
 *   [DrawPath](DrawPath.md#class-drawpath) - a multi-segment line with straight segments, defined by a series of [points](DrawPath.md#attr-drawpathpoints)
 *   [DrawPolygon](DrawPolygon.md#class-drawpolygon) - a closed shape with straight sides, defined by a series of [points](DrawPolygon.md#attr-drawpolygonpoints)
@@ -26,7 +26,7 @@ There are three different coordinate systems involved when a DrawItem is drawn o
 
 *   The "local coordinate system" for a DrawItem refers to the Cartesian coordinate system in which dimensional and positional values are interpreted. For example, when a [DrawRect](DrawRect.md#class-drawrect) is configured with left:20, top:30, width:200, and height:100, the DrawRect represents a rectangle from (20, 30) to (220, 130) in its local coordinate system. For this same DrawRect, [top](DrawRect.md#attr-drawrecttop) is going to be 30 even if the shape is scaled by 3x, such that the (transformed) top coordinate in the drawing coordinate system actually lies outside the visible region of the DrawPane. Similarly, no matter what rotation is applied, [top](DrawRect.md#attr-drawrecttop) will continue to be 30.
     
-    Use [DrawItem.getBoundingBox](DrawItem.md#method-drawitemgetboundingbox) to obtain the bounding box of the item in local coordinates. Subclass properties also typically provide data in the local coordinate system, such as [DrawRect.left](DrawRect.md#attr-drawrectleft), [DrawRect.top](DrawRect.md#attr-drawrecttop), [DrawRect.width](DrawRect.md#attr-drawrectwidth), [DrawRect.height](DrawRect.md#attr-drawrectheight), [DrawPath.points](DrawPath.md#attr-drawpathpoints), and [DrawTriangle.points](../main.md#attr-drawtrianglepoints).
+    Use [DrawItem.getBoundingBox](DrawItem.md#method-drawitemgetboundingbox) to obtain the bounding box of the item in local coordinates. Subclass properties also typically provide data in the local coordinate system, such as [DrawRect.left](DrawRect.md#attr-drawrectleft), [DrawRect.top](DrawRect.md#attr-drawrecttop), [DrawRect.width](DrawRect.md#attr-drawrectwidth), [DrawRect.height](DrawRect.md#attr-drawrectheight), [DrawPath.points](DrawPath.md#attr-drawpathpoints), and [DrawTriangle.points](../reference.md#attr-drawtrianglepoints).
     
     There is a local coordinate system for each DrawItem.
     
@@ -81,7 +81,7 @@ Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) fo
 ### Description
 Which type of drawing back-end should be used by this `DrawPane`? A default drawing back-end is automatically selected based on the browser.
 
-The `drawingType` can only be set to a drawing back-end type that is supported by the browser. It is provided for cases where the browser supports more than one drawing back-end. See the [DrawingType](../main.md#type-drawingtype) documentation for the supported drawing back-ends and the list of browsers that support each type of drawing back-end.
+The `drawingType` can only be set to a drawing back-end type that is supported by the browser. It is provided for cases where the browser supports more than one drawing back-end. See the [DrawingType](../reference.md#type-drawingtype) documentation for the supported drawing back-ends and the list of browsers that support each type of drawing back-end.
 
 **Flags**: IRA
 
@@ -152,10 +152,10 @@ Computes the minimum and maximum value of the cubic Bézier curve polynomial de
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| p1 | [double](../main.md#type-double) | false | — | starting point coordinate |
-| cp1 | [double](../main.md#type-double) | false | — | first control point coordinate |
-| cp2 | [double](../main.md#type-double) | false | — | second control point coordinate |
-| p2 | [double](../main.md#type-double) | false | — | end point coordinate |
+| p1 | [double](../reference.md#type-double) | false | — | starting point coordinate |
+| cp1 | [double](../reference.md#type-double) | false | — | first control point coordinate |
+| cp2 | [double](../reference.md#type-double) | false | — | second control point coordinate |
+| p2 | [double](../reference.md#type-double) | false | — | end point coordinate |
 
 ### Returns
 
@@ -171,12 +171,12 @@ Calls [DrawPane.getPolygonPoints](#classmethod-drawpanegetpolygonpoints) with an
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| n | [int](../main.md#type-int) | false | — | the number of vertices the polygon |
-| width | [int](../main.md#type-int) | false | — | width of target space |
-| height | [int](../main.md#type-int) | false | — | height of target space |
-| xc | [int](../main.md#type-int) | false | — | center point x |
-| yc | [int](../main.md#type-int) | false | — | center point y |
-| startAngle | [double](../main.md#type-double) | false | — | the angle (in radians) with respect to the center point of the first vertex of the polygon |
+| n | [int](../reference.md#type-int) | false | — | the number of vertices the polygon |
+| width | [int](../reference.md#type-int) | false | — | width of target space |
+| height | [int](../reference.md#type-int) | false | — | height of target space |
+| xc | [int](../reference.md#type-int) | false | — | center point x |
+| yc | [int](../reference.md#type-int) | false | — | center point y |
+| startAngle | [double](../reference.md#type-double) | false | — | the angle (in radians) with respect to the center point of the first vertex of the polygon |
 
 ### Returns
 
@@ -192,10 +192,10 @@ Computes an array of Points for a polygon that has an equal distance from its ce
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| width | [int](../main.md#type-int) | false | — | width of target space |
-| height | [int](../main.md#type-int) | false | — | height of target space |
-| xc | [int](../main.md#type-int) | false | — | center point x |
-| yc | [int](../main.md#type-int) | false | — | center point y |
+| width | [int](../reference.md#type-int) | false | — | width of target space |
+| height | [int](../reference.md#type-int) | false | — | height of target space |
+| xc | [int](../reference.md#type-int) | false | — | center point x |
+| yc | [int](../reference.md#type-int) | false | — | center point y |
 | angles | [Array of double](#type-array-of-double) | false | — | the complete list of angles (in radians) with respect to the center point at which the polygon must have vertices |
 
 ### Returns
@@ -212,10 +212,10 @@ Computes the top-, left-, bottom-, and right-most coordinates containing the Be�
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| width | [int](../main.md#type-int) | false | — | width of target space |
-| height | [int](../main.md#type-int) | false | — | height of target space |
-| xc | [int](../main.md#type-int) | false | — | center point x |
-| yc | [int](../main.md#type-int) | false | — | center point y |
+| width | [int](../reference.md#type-int) | false | — | width of target space |
+| height | [int](../reference.md#type-int) | false | — | height of target space |
+| xc | [int](../reference.md#type-int) | false | — | center point x |
+| yc | [int](../reference.md#type-int) | false | — | center point y |
 | startPoint | [Point](#type-point) | false | — | start point of the curve |
 | endPoint | [Point](#type-point) | false | — | end point of the curve |
 | controlPoint1 | [Point](#type-point) | false | — | first cubic Bézier control point |
@@ -231,15 +231,15 @@ Computes a cubic Bézier curve polynomial: `B(t) = (1 - t)3P1 + 3(1 - t)2tCP1 +
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| p1 | [double](../main.md#type-double) | false | — | starting point coordinate |
-| cp1 | [double](../main.md#type-double) | false | — | first control point coordinate |
-| cp2 | [double](../main.md#type-double) | false | — | second control point coordinate |
-| p2 | [double](../main.md#type-double) | false | — | end point coordinate |
-| t | [double](../main.md#type-double) | false | — | the value of the parameter of the curve, between 0 and 1 |
+| p1 | [double](../reference.md#type-double) | false | — | starting point coordinate |
+| cp1 | [double](../reference.md#type-double) | false | — | first control point coordinate |
+| cp2 | [double](../reference.md#type-double) | false | — | second control point coordinate |
+| p2 | [double](../reference.md#type-double) | false | — | end point coordinate |
+| t | [double](../reference.md#type-double) | false | — | the value of the parameter of the curve, between 0 and 1 |
 
 ### Returns
 
-`[double](../main.md#type-double)` — the value of the polynomial `B(t)` at `t`
+`[double](../reference.md#type-double)` — the value of the polynomial `B(t)` at `t`
 
 ---
 ## ClassMethod: DrawPane.getBezierBoundingBox
@@ -280,10 +280,10 @@ The example call below scales a set of points into a 100x100 thumbnail:
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| width | [int](../main.md#type-int) | false | — | width of target space |
-| height | [int](../main.md#type-int) | false | — | height of target space |
-| xc | [int](../main.md#type-int) | false | — | center point x |
-| yc | [int](../main.md#type-int) | false | — | center point y |
+| width | [int](../reference.md#type-int) | false | — | width of target space |
+| height | [int](../reference.md#type-int) | false | — | height of target space |
+| xc | [int](../reference.md#type-int) | false | — | center point x |
+| yc | [int](../reference.md#type-int) | false | — | center point y |
 | points | [Array of Point](#type-array-of-point) | false | — | list of points to scale and translate |
 
 ---
@@ -296,7 +296,7 @@ Synonym of [DrawPane.setZoomLevel](#method-drawpanesetzoomlevel).
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| zoomLevel | [float](../main.md#type-float) | false | — | Desired zoom level as a float where `1.0` is equivalent to 100% magnification. Must be greater than 0. |
+| zoomLevel | [float](../reference.md#type-float) | false | — | Desired zoom level as a float where `1.0` is equivalent to 100% magnification. Must be greater than 0. |
 
 ---
 ## Method: DrawPane.getDrawingX
@@ -308,7 +308,7 @@ See the documentation of [getDrawingPoint()](#method-drawpanegetdrawingpoint) fo
 
 ### Returns
 
-`[int](../main.md#type-int)` — X coordinate in the drawing coordinate system of the last event.
+`[int](../reference.md#type-int)` — X coordinate in the drawing coordinate system of the last event.
 
 **Flags**: A
 
@@ -341,7 +341,7 @@ NOTE: For performance reasons, this `DrawPane` may draw the new item on a delay 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | item | [DrawItem](#type-drawitem) | false | — | item to add. |
-| autoDraw | [boolean](../main.md#type-boolean) | false | — | If explicitly set to false, and this drawPane is drawn, don't draw the newly added item |
+| autoDraw | [boolean](../reference.md#type-boolean) | false | — | If explicitly set to false, and this drawPane is drawn, don't draw the newly added item |
 
 ---
 ## Method: DrawPane.getPrintHTML
@@ -359,7 +359,7 @@ The `printProperties` argument, if passed, must be passed to any subcomponents o
 
 **Notes on printing**
 
-To print a `DrawPane` for export on IE8 and earlier, it is important to pass [PrintProperties](../main_2.md#object-printproperties) with [printForExport](PrintProperties.md#attr-printpropertiesprintforexport):true:
+To print a `DrawPane` for export on IE8 and earlier, it is important to pass [PrintProperties](../reference_2.md#object-printproperties) with [printForExport](PrintProperties.md#attr-printpropertiesprintforexport):true:
 
 ```
 var exportHTML = drawPane.getPrintHTML({ printForExport:true });
@@ -370,11 +370,11 @@ var exportHTML = drawPane.getPrintHTML({ printForExport:true });
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | printProperties | [PrintProperties](#type-printproperties) | true | — | properties to configure printing behavior - may be null. |
-| callback | [Callback](../main.md#type-callback) | true | — | optional callback. This is required to handle cases where HTML generation is asynchronous - if a method generates HTML asynchronously, it should return null, and fire the specified callback on completion of HTML generation. The first parameter `HTML` should contain the generated print HTML. The callback is only called if null is returned. Furthermore, the default getPrintHTML() implementation always returns null and fires the callback when a callback is provided. |
+| callback | [Callback](../reference.md#type-callback) | true | — | optional callback. This is required to handle cases where HTML generation is asynchronous - if a method generates HTML asynchronously, it should return null, and fire the specified callback on completion of HTML generation. The first parameter `HTML` should contain the generated print HTML. The callback is only called if null is returned. Furthermore, the default getPrintHTML() implementation always returns null and fires the callback when a callback is provided. |
 
 ### Returns
 
-`[HTMLString](../main.md#type-htmlstring)` — null if the print HTML is being generated asynchronously and/or a callback is provided; otherwise, the direct print HTML for this component (but note that returning direct print HTML is a deprecated feature).
+`[HTMLString](../reference.md#type-htmlstring)` — null if the print HTML is being generated asynchronously and/or a callback is provided; otherwise, the direct print HTML for this component (but note that returning direct print HTML is a deprecated feature).
 
 ### Groups
 
@@ -396,7 +396,7 @@ Add a new gradient to the drawPane shared gradient list ([DrawPane.gradients](#a
 
 ### Returns
 
-`[Identifier](../main.md#type-identifier)` — the ID of the gradient (either provided or auto-assigned)
+`[Identifier](../reference.md#type-identifier)` — the ID of the gradient (either provided or auto-assigned)
 
 ---
 ## Method: DrawPane.getGradient
@@ -408,7 +408,7 @@ Returns gradient for gradientID.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| gradientID | [Identifier](../main.md#type-identifier) | false | — | ID of gradient to retrieve |
+| gradientID | [Identifier](../reference.md#type-identifier) | false | — | ID of gradient to retrieve |
 
 ### Returns
 
@@ -436,12 +436,12 @@ Creates a linear gradient which can be used by any DrawItem of this DrawPane. An
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| id | [Identifier](../main.md#type-identifier) | false | — | the ID of the linear gradient |
+| id | [Identifier](../reference.md#type-identifier) | false | — | the ID of the linear gradient |
 | linearGradient | [LinearGradient](#type-lineargradient) | false | — | the linear gradient |
 
 ### Returns
 
-`[Identifier](../main.md#type-identifier)` — id
+`[Identifier](../reference.md#type-identifier)` — id
 
 **Deprecated**
 
@@ -449,7 +449,7 @@ Creates a linear gradient which can be used by any DrawItem of this DrawPane. An
 ## Method: DrawPane.getBitmap
 
 ### Description
-Returns the DrawPane's underlying HTML5 `<canvas>` element. Will only return a valid element if the [DrawingType](../main.md#type-drawingtype) is "bitmap".
+Returns the DrawPane's underlying HTML5 `<canvas>` element. Will only return a valid element if the [DrawingType](../reference.md#type-drawingtype) is "bitmap".
 
 To create a DrawItem drawn by custom HTML5 `<canvas>` drawing code, you should:
 
@@ -478,7 +478,7 @@ Sets the [rotation](#attr-drawpanerotation) of the `DrawPane`.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| degrees | [float](../main.md#type-float) | false | — | the new rotation in degrees. The positive direction corresponds to clockwise rotation. |
+| degrees | [float](../reference.md#type-float) | false | — | the new rotation in degrees. The positive direction corresponds to clockwise rotation. |
 
 ---
 ## Method: DrawPane.getDataURL
@@ -503,7 +503,7 @@ Note: It is recommended to pass a callback instead of relying on the method retu
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | callback | [DataURLCallback](#type-dataurlcallback) | true | — | callback to fire when the data URL is available. The callback is called regardless of whether the data URL is also returned. |
-| format | [DataURLFormat](../main.md#type-dataurlformat) | true | — | the format of the data URL. If not specified, then "all" is assumed. |
+| format | [DataURLFormat](../reference.md#type-dataurlformat) | true | — | the format of the data URL. If not specified, then "all" is assumed. |
 
 ### Returns
 
@@ -513,7 +513,7 @@ Note: It is recommended to pass a callback instead of relying on the method retu
 ## Method: DrawPane.drawEnd
 
 ### Description
-Called after we finish drawing to the underlying HTML5 `<canvas>` element of a DrawPane, after the last [DrawItem](DrawItem.md#class-drawitem) has been drawn. Only called if the [DrawingType](../main.md#type-drawingtype) is "bitmap".
+Called after we finish drawing to the underlying HTML5 `<canvas>` element of a DrawPane, after the last [DrawItem](DrawItem.md#class-drawitem) has been drawn. Only called if the [DrawingType](../reference.md#type-drawingtype) is "bitmap".
 
 There is no default implementation of this method.
 
@@ -529,7 +529,7 @@ Synonym of [DrawPane.setRotation](#method-drawpanesetrotation).
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| degrees | [float](../main.md#type-float) | false | — | the new rotation in degrees. The positive direction corresponds to clockwise rotation. |
+| degrees | [float](../reference.md#type-float) | false | — | the new rotation in degrees. The positive direction corresponds to clockwise rotation. |
 
 ---
 ## Method: DrawPane.erase
@@ -557,7 +557,7 @@ To give a concrete example, suppose that this `DrawPane` has [zoomLevel](#attr-d
 ## Method: DrawPane.drawStart
 
 ### Description
-Called when we start drawing to the underlying HTML5 `<canvas>` element of a DrawPane, right after the element is cleared. Only called if the [DrawingType](../main.md#type-drawingtype) is "bitmap".
+Called when we start drawing to the underlying HTML5 `<canvas>` element of a DrawPane, right after the element is cleared. Only called if the [DrawingType](../reference.md#type-drawingtype) is "bitmap".
 
 There is no default implementation of this method.
 
@@ -573,7 +573,7 @@ See the documentation of [getDrawingPoint()](#method-drawpanegetdrawingpoint) fo
 
 ### Returns
 
-`[int](../main.md#type-int)` — Y coordinate in the drawing coordinate system of the last event.
+`[int](../reference.md#type-int)` — Y coordinate in the drawing coordinate system of the last event.
 
 **Flags**: A
 
@@ -587,12 +587,12 @@ Creates a radial gradient which can be used by any DrawItem of this DrawPane. An
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| id | [Identifier](../main.md#type-identifier) | false | — | the ID of the radial gradient |
+| id | [Identifier](../reference.md#type-identifier) | false | — | the ID of the radial gradient |
 | radialGradient | [RadialGradient](#type-radialgradient) | false | — | the radial gradient |
 
 ### Returns
 
-`[Identifier](../main.md#type-identifier)` — id
+`[Identifier](../reference.md#type-identifier)` — id
 
 **Deprecated**
 
@@ -606,7 +606,7 @@ Sets the zoom on this `DrawPane` to the specified magnification, maintaining the
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| zoomLevel | [float](../main.md#type-float) | false | — | Desired zoom level as a float where `1.0` is equivalent to 100% magnification. Must be greater than 0. |
+| zoomLevel | [float](../reference.md#type-float) | false | — | Desired zoom level as a float where `1.0` is equivalent to 100% magnification. Must be greater than 0. |
 
 ---
 ## Method: DrawPane.getViewPortRectInViewBoxCoords
@@ -633,12 +633,12 @@ Creates a simple linear gradient which can be used by any DrawItem of this DrawP
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| id | [Identifier](../main.md#type-identifier) | false | — | the ID of the simple linear gradient |
+| id | [Identifier](../reference.md#type-identifier) | false | — | the ID of the simple linear gradient |
 | simple | [SimpleGradient](#type-simplegradient) | false | — | the simple linear gradient |
 
 ### Returns
 
-`[Identifier](../main.md#type-identifier)` — id
+`[Identifier](../reference.md#type-identifier)` — id
 
 **Deprecated**
 
@@ -652,6 +652,6 @@ Removes gradient for gradientID.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| gradientID | [Identifier](../main.md#type-identifier) | false | — | ID of gradient to remove |
+| gradientID | [Identifier](../reference.md#type-identifier) | false | — | ID of gradient to remove |
 
 ---

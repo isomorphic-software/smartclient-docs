@@ -1,6 +1,6 @@
 # Component Schema
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -68,7 +68,7 @@ In order for a method to be considered an action, it needs to have a method defi
      </methods>
  
 ```
-For custom component actions, an array of expected parameters may be specified using the `params` attribute. Each entry in this array should have a specified type. By doing this, you allow the Reify to pass parameters through to actions when setting up events that call actions (possibly on another component). For example if you had a component with a custom action that expected to be passed a single parameter of type [ListGridRecord](../main_2.md#object-listgridrecord) you could define it as follows:
+For custom component actions, an array of expected parameters may be specified using the `params` attribute. Each entry in this array should have a specified type. By doing this, you allow the Reify to pass parameters through to actions when setting up events that call actions (possibly on another component). For example if you had a component with a custom action that expected to be passed a single parameter of type [ListGridRecord](../reference_2.md#object-listgridrecord) you could define it as follows:
 ```
      <method name="showRecordDetails" title="Show Record Details" action="true">
          <params>
@@ -81,8 +81,8 @@ If a user working within the Reify then added ListGrid to the page and used the 
 
 ### Related
 
-- [ComponentSchemaField](../main.md#object-componentschemafield)
-- [ComponentSchema](../main.md#class-componentschema)
+- [ComponentSchemaField](../reference.md#object-componentschemafield)
+- [ComponentSchema](../reference.md#class-componentschema)
 - [DataSourceField.xmlAttribute](../classes/DataSourceField.md#attr-datasourcefieldxmlattribute)
 - [DataSourceField.childTagName](../classes/DataSourceField.md#attr-datasourcefieldchildtagname)
 - [DataSourceField.propertiesOnly](../classes/DataSourceField.md#attr-datasourcefieldpropertiesonly)

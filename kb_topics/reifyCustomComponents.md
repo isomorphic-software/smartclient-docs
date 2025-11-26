@@ -1,6 +1,6 @@
 # Adding Custom Components to Reify
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -32,7 +32,7 @@ As can be seen by looking at defaultComponents.xml, components are specified usi
 *   `icon`: icon to show in the Reify component tree (if desired)
 *   `iconWidth/Height/Size`: dimensions of the icon in pixels ("iconSize" sets both)
 *   `showDropIcon`: for components that allow children, whether to show a special drop icon on valid drop (like [TreeGrid.showDropIcons](../classes/TreeGrid.md#attr-treegridshowdropicons))
-*   and additional properties described on [PaletteNode](../main.md#object-palettenode).
+*   and additional properties described on [PaletteNode](../reference.md#object-palettenode).
 
 In order to use custom classes in Reify, you must modify `[webroot]/tools/visualBuilder/globalDependencies.xml` to include:
 
@@ -49,7 +49,7 @@ When you provide [custom schema](componentSchema.md#kb-topic-component-schema) f
 
 Newly declared fields will appear in the Component Editor in the "Other" category at the bottom by default. You can create your own category by simply setting field.group to the name of a new group and using this on multiple custom fields.
 
-The ComponentEditor will pick a FormItem for a custom field by the [same rules](../main.md#type-formitemtype) used for ordinary databinding, including the ability to set field.editorType to use a custom FormItem.
+The ComponentEditor will pick a FormItem for a custom field by the [same rules](../reference.md#type-formitemtype) used for ordinary databinding, including the ability to set field.editorType to use a custom FormItem.
 
 When properties are changed by the user, Reify will look for an appropriate "setter function" for the custom field, for example, for a field named "myProp", Reify will look for "setMyProp". The target component will also be [redrawn](../classes/Canvas.md#method-canvasredraw).
 

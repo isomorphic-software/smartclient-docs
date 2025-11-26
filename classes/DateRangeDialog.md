@@ -1,6 +1,6 @@
 # DateRangeDialog Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -23,7 +23,7 @@ Simple modal dialog for collecting a date range from the end user.
 ## Attr: DateRangeDialog.clearButton
 
 ### Description
-Button used for clearing the dialog's values. Note that, since this is an [AutoChild](../main.md#type-autochild), it can be configured using clearButtonDefaults and clearButtonProperties.
+Button used for clearing the dialog's values. Note that, since this is an [AutoChild](../reference.md#type-autochild), it can be configured using clearButtonDefaults and clearButtonProperties.
 
 **Flags**: IR
 
@@ -43,7 +43,7 @@ The title for the "Cancel" button on this dialog.
 ## Attr: DateRangeDialog.okButton
 
 ### Description
-Button used for accepting the values entered into the dialog. Note that, since this is an [AutoChild](../main.md#type-autochild), it can be configured using okButtonDefaults and okButtonProperties.
+Button used for accepting the values entered into the dialog. Note that, since this is an [AutoChild](../reference.md#type-autochild), it can be configured using okButtonDefaults and okButtonProperties.
 
 **Flags**: IR
 
@@ -63,7 +63,7 @@ The title for the "Clear" button on this dialog.
 ## Attr: DateRangeDialog.cancelButton
 
 ### Description
-Button used for cancelling the dialog. Note that, since this is an [AutoChild](../main.md#type-autochild), it can be configured using cancelButtonDefaults and cancelButtonProperties.
+Button used for cancelling the dialog. Note that, since this is an [AutoChild](../reference.md#type-autochild), it can be configured using cancelButtonDefaults and cancelButtonProperties.
 
 **Flags**: IR
 
@@ -101,9 +101,9 @@ Helper method to launch a DateRangeDialog to have a date range input by the user
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| allowRelativeDates | [boolean](../main.md#type-boolean) | false | — | whether to allow relative date entry via [RelativeDateItem](RelativeDateItem.md#class-relativedateitem)s, default true |
+| allowRelativeDates | [boolean](../reference.md#type-boolean) | false | — | whether to allow relative date entry via [RelativeDateItem](RelativeDateItem.md#class-relativedateitem)s, default true |
 | rangeItemProperties | [DateRangeItem Properties](#type-daterangeitem-properties) | false | — | properties for the DateRangeItem |
 | windowProperties | [DateRangeDialog Properties](#type-daterangedialog-properties) | false | — | properties for the Window |
-| callback | [DateRangeCallback](#type-daterangecallback) | false | — | method to fire once user has input values, with a single parameter "criterion" of type [Criterion](../main_2.md#object-criterion) |
+| callback | [DateRangeCallback](#type-daterangecallback) | false | — | method to fire once user has input values, with a single parameter "criterion" of type [Criterion](../reference_2.md#object-criterion) |
 
 ---

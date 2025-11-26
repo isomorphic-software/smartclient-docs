@@ -1,6 +1,6 @@
 # SavedSearchForm Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -285,12 +285,12 @@ If a [SavedSearchForm.targetComponent](#attr-savedsearchformtargetcomponent) has
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newCriteria | [Criteria](../main_2.md#type-criteria) | false | — | new criteria |
+| newCriteria | [Criteria](../reference_2.md#type-criteria) | false | — | new criteria |
 | searchData | [String](#type-string) | false | — | search data |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — whether to automatically apply the search to the [SavedSearchForm.targetComponent](#attr-savedsearchformtargetcomponent)
+`[boolean](../reference.md#type-boolean)` — whether to automatically apply the search to the [SavedSearchForm.targetComponent](#attr-savedsearchformtargetcomponent)
 
 ---
 ## Method: SavedSearchForm.setTargetComponent

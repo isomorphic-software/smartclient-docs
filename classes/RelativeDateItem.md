@@ -1,6 +1,6 @@
 # RelativeDateItem Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -11,7 +11,7 @@
 ### Description
 A FormItem for entering a date relative to today or relative to some other date, or a specific absolute date. Typically used for filtering data by date.
 
-The RelativeDateItem consists of a [ComboBoxItem](ComboBoxItem.md#class-comboboxitem) where the user may directly choose one of several [preset options](#attr-relativedateitempresetoptions), choose to enter a [quantity](#attr-relativedateitemquantityfield) and [time unit](../main_2.md#type-timeunit) (eg "4 months ago" or "3 years from now") or directly type in an absolute date value (7/18/2009).
+The RelativeDateItem consists of a [ComboBoxItem](ComboBoxItem.md#class-comboboxitem) where the user may directly choose one of several [preset options](#attr-relativedateitempresetoptions), choose to enter a [quantity](#attr-relativedateitemquantityfield) and [time unit](../reference_2.md#type-timeunit) (eg "4 months ago" or "3 years from now") or directly type in an absolute date value (7/18/2009).
 
 This item can work with logical dates or datetimes, depending on the specified [data-type](DataSourceField.md#attr-datasourcefieldtype). For detailed information on working with dates, times and datetimes, see the [Date and Time Format and Storage overview](../kb_topics/dateFormatAndStorage.md#kb-topic-date-and-time-format-and-storage).
 
@@ -27,7 +27,7 @@ Minimum value to allow in the [RelativeDateItem.quantityField](#attr-relativedat
 ## Attr: RelativeDateItem.monthsFromNowTitle
 
 ### Description
-The title to show for future periods when the [TimeUnit](../main_2.md#type-timeunit) is "month".
+The title to show for future periods when the [TimeUnit](../reference_2.md#type-timeunit) is "month".
 
 ### Groups
 
@@ -71,7 +71,7 @@ Note that
 ## Attr: RelativeDateItem.yearsFromNowTitle
 
 ### Description
-The title to show for future periods when the [TimeUnit](../main_2.md#type-timeunit) is "year".
+The title to show for future periods when the [TimeUnit](../reference_2.md#type-timeunit) is "year".
 
 ### Groups
 
@@ -116,7 +116,7 @@ If unset "start" is assumed.
 ## Attr: RelativeDateItem.daysFromNowTitle
 
 ### Description
-The title to show for future periods when the [TimeUnit](../main_2.md#type-timeunit) is "day".
+The title to show for future periods when the [TimeUnit](../reference_2.md#type-timeunit) is "day".
 
 ### Groups
 
@@ -138,7 +138,7 @@ Note: if entirely custom date formatting/parsing logic is required for this item
 ## Attr: RelativeDateItem.valueField
 
 ### Description
-[ComboBoxItem](ComboBoxItem.md#class-comboboxitem) field where a user may choose among [presets](#attr-relativedateitempresetoptions), [time unit](../main_2.md#type-timeunit) plus [quantity](#attr-relativedateitemquantityfield), or direct entry of a date as text.
+[ComboBoxItem](ComboBoxItem.md#class-comboboxitem) field where a user may choose among [presets](#attr-relativedateitempresetoptions), [time unit](../reference_2.md#type-timeunit) plus [quantity](#attr-relativedateitemquantityfield), or direct entry of a date as text.
 
 **Flags**: IR
 
@@ -162,7 +162,7 @@ Icon that launches a [DateChooser](DateChooser.md#class-datechooser) for choosin
 ## Attr: RelativeDateItem.monthsAgoTitle
 
 ### Description
-The title to show for historical periods when the [TimeUnit](../main_2.md#type-timeunit) is "month".
+The title to show for historical periods when the [TimeUnit](../reference_2.md#type-timeunit) is "month".
 
 ### Groups
 
@@ -182,7 +182,7 @@ SmartClient class for the [dateChooser](DateChooser.md#class-datechooser) autoCh
 ## Attr: RelativeDateItem.minutesFromNowTitle
 
 ### Description
-The title to show for future periods when the [TimeUnit](../main_2.md#type-timeunit) is "minute".
+The title to show for future periods when the [TimeUnit](../reference_2.md#type-timeunit) is "minute".
 
 ### Groups
 
@@ -202,7 +202,7 @@ Should the Calculated-Date be displayed to the right of the [RelativeDateItem.pi
 ## Attr: RelativeDateItem.defaultValue
 
 ### Description
-Default value to show. Can be a concrete Date, a [RelativeDateString](../main_2.md#type-relativedatestring) that matches one of the [RelativeDateItem.presetOptions](#attr-relativedateitempresetoptions), or one of the available [time units](#attr-relativedateitemtimeunitoptions). If setting a [TimeUnit](../main_2.md#type-timeunit), use [defaultQuantity](#attr-relativedateitemdefaultquantity) to establish a default value for the [quantityField](#attr-relativedateitemquantityfield).
+Default value to show. Can be a concrete Date, a [RelativeDateString](../reference_2.md#type-relativedatestring) that matches one of the [RelativeDateItem.presetOptions](#attr-relativedateitempresetoptions), or one of the available [time units](#attr-relativedateitemtimeunitoptions). If setting a [TimeUnit](../reference_2.md#type-timeunit), use [defaultQuantity](#attr-relativedateitemdefaultquantity) to establish a default value for the [quantityField](#attr-relativedateitemquantityfield).
 
 **Flags**: IR
 
@@ -228,7 +228,7 @@ When set to true (the default), use a single shared date-picker across all widge
 ## Attr: RelativeDateItem.secondsFromNowTitle
 
 ### Description
-The title to show for future periods when the [TimeUnit](../main_2.md#type-timeunit) is "second".
+The title to show for future periods when the [TimeUnit](../reference_2.md#type-timeunit) is "second".
 
 ### Groups
 
@@ -240,7 +240,7 @@ The title to show for future periods when the [TimeUnit](../main_2.md#type-timeu
 ## Attr: RelativeDateItem.quartersFromNowTitle
 
 ### Description
-The title to show for future periods when the [TimeUnit](../main_2.md#type-timeunit) is "quarter".
+The title to show for future periods when the [TimeUnit](../reference_2.md#type-timeunit) is "quarter".
 
 ### Groups
 
@@ -262,7 +262,7 @@ Default is true.
 ## Attr: RelativeDateItem.secondsAgoTitle
 
 ### Description
-The title to show for historical periods when the [TimeUnit](../main_2.md#type-timeunit) is "second".
+The title to show for historical periods when the [TimeUnit](../reference_2.md#type-timeunit) is "second".
 
 ### Groups
 
@@ -284,7 +284,7 @@ Note: this does not change the [RelativeDateItem.presetOptions](#attr-relativeda
 ## Attr: RelativeDateItem.daysAgoTitle
 
 ### Description
-The title to show for historical periods when the [TimeUnit](../main_2.md#type-timeunit) is "day".
+The title to show for historical periods when the [TimeUnit](../reference_2.md#type-timeunit) is "day".
 
 ### Groups
 
@@ -296,7 +296,7 @@ The title to show for historical periods when the [TimeUnit](../main_2.md#type-t
 ## Attr: RelativeDateItem.weeksFromNowTitle
 
 ### Description
-The title to show for future periods when the [TimeUnit](../main_2.md#type-timeunit) is "week".
+The title to show for future periods when the [TimeUnit](../reference_2.md#type-timeunit) is "week".
 
 ### Groups
 
@@ -332,7 +332,7 @@ When set to false, only relative dates can be entered - in this mode, the [date 
 ## Attr: RelativeDateItem.yearsAgoTitle
 
 ### Description
-The title to show for historical periods when the [TimeUnit](../main_2.md#type-timeunit) is "year".
+The title to show for historical periods when the [TimeUnit](../reference_2.md#type-timeunit) is "year".
 
 ### Groups
 
@@ -344,7 +344,7 @@ The title to show for historical periods when the [TimeUnit](../main_2.md#type-t
 ## Attr: RelativeDateItem.quartersAgoTitle
 
 ### Description
-The title to show for historical periods when the [TimeUnit](../main_2.md#type-timeunit) is "quarter".
+The title to show for historical periods when the [TimeUnit](../reference_2.md#type-timeunit) is "quarter".
 
 ### Groups
 
@@ -372,7 +372,7 @@ Note that changing this attribute after the item is drawn may result in item-val
 ## Attr: RelativeDateItem.minutesAgoTitle
 
 ### Description
-The title to show for historical periods when the [TimeUnit](../main_2.md#type-timeunit) is "minute".
+The title to show for historical periods when the [TimeUnit](../reference_2.md#type-timeunit) is "minute".
 
 ### Groups
 
@@ -427,7 +427,7 @@ When set to true, show a button that allows the calendar to be navigated by week
 ### Description
 List of time units that will be offered for relative dates.
 
-Each available time unit option will cause two options to appear in the [RelativeDateItem.valueField](#attr-relativedateitemvaluefield). For example, if "day" is an available [time unit](../main_2.md#type-timeunit) option, there will be ["N days ago"](#attr-relativedateitemdaysagotitle) and ["N days from now"](#attr-relativedateitemdaysfromnowtitle).
+Each available time unit option will cause two options to appear in the [RelativeDateItem.valueField](#attr-relativedateitemvaluefield). For example, if "day" is an available [time unit](../reference_2.md#type-timeunit) option, there will be ["N days ago"](#attr-relativedateitemdaysagotitle) and ["N days from now"](#attr-relativedateitemdaysfromnowtitle).
 
 ### See Also
 
@@ -459,7 +459,7 @@ Note: this does not change the [RelativeDateItem.presetOptions](#attr-relativeda
 ## Attr: RelativeDateItem.millisecondsAgoTitle
 
 ### Description
-The title to show for historical periods when the [TimeUnit](../main_2.md#type-timeunit) is "millisecond".
+The title to show for historical periods when the [TimeUnit](../reference_2.md#type-timeunit) is "millisecond".
 
 ### Groups
 
@@ -477,7 +477,7 @@ When true, the default, the item will generate a dateRange validator automatical
 
 If a dateRange validator already exists, this attribute is non-functional - no automatic validator is generated, and no checks are made that the values in the developer-provided validator match the item's current start or end dates.
 
-Note that the validator generated by this attribute exists only on the FormItem, so it doesn't do any server enforcement and doesn't cause validation to happen in any other circumstance (eg, an unrelated grid used for editing). For consistent and pervasive enforcement, the validator should be declared on the [DataSourceField](../main_2.md#object-datasourcefield).
+Note that the validator generated by this attribute exists only on the FormItem, so it doesn't do any server enforcement and doesn't cause validation to happen in any other circumstance (eg, an unrelated grid used for editing). For consistent and pervasive enforcement, the validator should be declared on the [DataSourceField](../reference_2.md#object-datasourcefield).
 
 **Flags**: IR
 
@@ -529,7 +529,7 @@ When set to true, show a button that allows the calendar to be navigated by fisc
 ### Description
 Preset relative dates, such as "today" or "tomorrow", that the user can choose directly from the [RelativeDateItem.valueField](#attr-relativedateitemvaluefield).
 
-Format is an Object mapping user-visible titles to [RelativeDateShortcut](../main.md#type-relativedateshortcut) or [RelativeDateString](../main_2.md#type-relativedatestring)s. The default value (expressed in JSON) is:
+Format is an Object mapping user-visible titles to [RelativeDateShortcut](../reference.md#type-relativedateshortcut) or [RelativeDateString](../reference_2.md#type-relativedatestring)s. The default value (expressed in JSON) is:
 
 ```
  {
@@ -543,7 +543,7 @@ Format is an Object mapping user-visible titles to [RelativeDateShortcut](../mai
  }
  
 ```
-In addition to these presets, options are shown for each of the [timeUnit options](../main_2.md#type-timeunit).
+In addition to these presets, options are shown for each of the [timeUnit options](../reference_2.md#type-timeunit).
 
 **Flags**: IR
 
@@ -571,7 +571,7 @@ Has no effect if the field type is `"date"` - in this case the picker will never
 ## Attr: RelativeDateItem.hoursAgoTitle
 
 ### Description
-The title to show for historical periods when the [TimeUnit](../main_2.md#type-timeunit) is "hour".
+The title to show for historical periods when the [TimeUnit](../reference_2.md#type-timeunit) is "hour".
 
 ### Groups
 
@@ -583,7 +583,7 @@ The title to show for historical periods when the [TimeUnit](../main_2.md#type-t
 ## Attr: RelativeDateItem.weeksAgoTitle
 
 ### Description
-The title to show for historical periods when the [TimeUnit](../main_2.md#type-timeunit) is "week".
+The title to show for historical periods when the [TimeUnit](../reference_2.md#type-timeunit) is "week".
 
 ### Groups
 
@@ -595,7 +595,7 @@ The title to show for historical periods when the [TimeUnit](../main_2.md#type-t
 ## Attr: RelativeDateItem.hoursFromNowTitle
 
 ### Description
-The title to show for future periods when the [TimeUnit](../main_2.md#type-timeunit) is "hour".
+The title to show for future periods when the [TimeUnit](../reference_2.md#type-timeunit) is "hour".
 
 ### Groups
 
@@ -627,7 +627,7 @@ Field allowing user to pick units of time, eg, number of days.
 ## Attr: RelativeDateItem.millisecondsFromNowTitle
 
 ### Description
-The title to show for future periods when the [TimeUnit](../main_2.md#type-timeunit) is "millisecond".
+The title to show for future periods when the [TimeUnit](../reference_2.md#type-timeunit) is "millisecond".
 
 ### Groups
 
@@ -639,7 +639,7 @@ The title to show for future periods when the [TimeUnit](../main_2.md#type-timeu
 ## ClassMethod: RelativeDateItem.getAbsoluteDate
 
 ### Description
-Converts a [RelativeDate](../main.md#object-relativedate), [RelativeDateShortcut](../main.md#type-relativedateshortcut), or [RelativeDateString](../main_2.md#type-relativedatestring) to a concrete Date.
+Converts a [RelativeDate](../reference.md#object-relativedate), [RelativeDateShortcut](../reference.md#type-relativedateshortcut), or [RelativeDateString](../reference_2.md#type-relativedatestring) to a concrete Date.
 
 ### Parameters
 
@@ -656,7 +656,7 @@ Converts a [RelativeDate](../main.md#object-relativedate), [RelativeDateShortcut
 ## Method: RelativeDateItem.getFiscalCalendar
 
 ### Description
-Returns the [FiscalCalendar](../main.md#object-fiscalcalendar) object that will be used by this item's DateChooser.
+Returns the [FiscalCalendar](../reference.md#object-fiscalcalendar) object that will be used by this item's DateChooser.
 
 ### Returns
 
@@ -666,7 +666,7 @@ Returns the [FiscalCalendar](../main.md#object-fiscalcalendar) object that will 
 ## Method: RelativeDateItem.setFiscalCalendar
 
 ### Description
-Sets the [FiscalCalendar](../main.md#object-fiscalcalendar) object that will be used by this item's DateChooser. If unset, the [global fiscal calendar](DateUtil.md#classmethod-dateutilgetfiscalcalendar) is used.
+Sets the [FiscalCalendar](../reference.md#object-fiscalcalendar) object that will be used by this item's DateChooser. If unset, the [global fiscal calendar](DateUtil.md#classmethod-dateutilgetfiscalcalendar) is used.
 
 ### Parameters
 
@@ -678,7 +678,7 @@ Sets the [FiscalCalendar](../main.md#object-fiscalcalendar) object that will be 
 ## Method: RelativeDateItem.getInputFormat
 
 ### Description
-If [DateItem.useTextField](DateItem.md#attr-dateitemusetextfield) is `true` this method returns a standard [DateInputFormat](../main.md#type-dateinputformat), determining how values entered by the user are to be converted to Javascript Date objects.
+If [DateItem.useTextField](DateItem.md#attr-dateitemusetextfield) is `true` this method returns a standard [DateInputFormat](../reference.md#type-dateinputformat), determining how values entered by the user are to be converted to Javascript Date objects.
 
 If an explicit [DateItem.inputFormat](DateItem.md#attr-dateiteminputformat) has been specified it will be returned, otherwise, if a custom [DateItem.dateFormatter](DateItem.md#attr-dateitemdateformatter) or [DateItem.format](FormItem.md#attr-formitemformat) are specified, the input format will be automatically derived from that property.
 
@@ -688,7 +688,7 @@ Note that the inputFormat will ignore any separator characters and padding of va
 
 ### Returns
 
-`[DateInputFormat](../main.md#type-dateinputformat)` — expected format of date strings to parse
+`[DateInputFormat](../reference.md#type-dateinputformat)` — expected format of date strings to parse
 
 **Flags**: A
 
@@ -702,7 +702,7 @@ Returns the raw text value typed into this items value text field
 ## Method: RelativeDateItem.getRelativeDate
 
 ### Description
-Returns the current [RelativeDate](../main.md#object-relativedate) object for this item. Only applies if the user entered a relative date value (such as "Today") - if an absolute date was entered, this method returns null.  
+Returns the current [RelativeDate](../reference.md#object-relativedate) object for this item. Only applies if the user entered a relative date value (such as "Today") - if an absolute date was entered, this method returns null.  
 Relative date objects have the following format:
 ```
      { _constructor: "RelativeDate", value: "$today" }
@@ -711,7 +711,7 @@ Relative date objects have the following format:
 
 ### Returns
 
-`[Object](../main.md#type-object)` — an object containing the relativeDate string for the current value
+`[Object](../reference.md#type-object)` — an object containing the relativeDate string for the current value
 
 ---
 ## Method: RelativeDateItem.parseEditorValue
@@ -747,7 +747,7 @@ Get the criterion based on the values the user has entered.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| absolute | [boolean](../main.md#type-boolean) | true | — | whether to use an absolute date in the Criterion produced. By default a [RelativeDate](../main.md#object-relativedate) will be used if the user entered a relative date value |
+| absolute | [boolean](../reference.md#type-boolean) | true | — | whether to use an absolute date in the Criterion produced. By default a [RelativeDate](../reference.md#object-relativedate) will be used if the user entered a relative date value |
 
 ### Returns
 

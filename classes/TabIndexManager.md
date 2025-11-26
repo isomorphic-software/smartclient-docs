@@ -1,6 +1,6 @@
 # TabIndexManager Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -32,7 +32,7 @@ As targets are added to, or moved within the TabIndexManager, their tab index ma
 
 ### Returns
 
-`[Integer](../main_2.md#type-integer)` — returns the numeric tabIndex value for the specified target
+`[Integer](../reference_2.md#type-integer)` — returns the numeric tabIndex value for the specified target
 
 ---
 ## ClassMethod: TabIndexManager.focusInTarget
@@ -52,7 +52,7 @@ Returns false if the target had no no `shiftFocusCallback`, the `shiftFocusCallb
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — returns false to indicate failure to shift focus.
+`[boolean](../reference.md#type-boolean)` — returns false to indicate failure to shift focus.
 
 ---
 ## ClassMethod: TabIndexManager.removeTarget
@@ -77,9 +77,9 @@ Register a target to have its tab order position managed by the TabIndexManager.
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | ID | [String](#type-string) | false | — | Unique ID to associate with a tab position. For a Canvas this would typically be the [Canvas.ID](Canvas.md#attr-canvasid) but any unique string is valid. |
-| canFocus | [boolean](../main.md#type-boolean) | false | — | Is this target directly focusable? Governs whether an explicit tabIndex will be created for this target. This parameter should be passed as `false` for targets which do not require an explicit tabIndex as they are not focusable, or not explicit tab-stops for the user tabbing through the page. They will still have an implicit tab order position which governs where descendants appear, and would be used to generate a tabIndex if canFocus is subsequently updated via [TabIndexManager.setCanFocus](#classmethod-tabindexmanagersetcanfocus). |
+| canFocus | [boolean](../reference.md#type-boolean) | false | — | Is this target directly focusable? Governs whether an explicit tabIndex will be created for this target. This parameter should be passed as `false` for targets which do not require an explicit tabIndex as they are not focusable, or not explicit tab-stops for the user tabbing through the page. They will still have an implicit tab order position which governs where descendants appear, and would be used to generate a tabIndex if canFocus is subsequently updated via [TabIndexManager.setCanFocus](#classmethod-tabindexmanagersetcanfocus). |
 | parentID | [String](#type-string) | true | — | For cases where the tab position should be treated part of a group to be moved together, the ID of the parent target containing all members of this group. An example of this would be a Layout managing the tab order of all its members. If present, the passed parentID must already be being managed by this TabIndexManager. May be updated for registered targets via [TabIndexManager.moveTarget](#classmethod-tabindexmanagermovetarget). |
-| position | [Integer](../main_2.md#type-integer) | true | — | Position in the tab-order within the specified parent \[or within top level widgets\]. Omitting this parameter will add the target to the end of the specified parent's tab group. May be updated for registered targets via [TabIndexManager.moveTarget](#classmethod-tabindexmanagermovetarget). |
+| position | [Integer](../reference_2.md#type-integer) | true | — | Position in the tab-order within the specified parent \[or within top level widgets\]. Omitting this parameter will add the target to the end of the specified parent's tab group. May be updated for registered targets via [TabIndexManager.moveTarget](#classmethod-tabindexmanagermovetarget). |
 | tabIndexUpdatedCallback | [TabIndexUpdatedCallback](#type-tabindexupdatedcallback) | true | — | This notification method will be fired when the tabIndex is actually updated, typically due to the target, or some parent of it being re-positioned in the managed Tab order. In some cases tab indices may also be updated to make space for unrelated entries being added to the TabIndexManager. This notification is typically used to update the appropriate element in the DOM to reflect a new tab index. |
 | shiftFocusCallback | [ShiftFocusCallback](#type-shiftfocuscallback) | true | — | This notification method will be fired when the special [TabIndexManager.shiftFocus](#classmethod-tabindexmanagershiftfocus) method is called to programmatically move focus through the registered targets (simulating the user tabbing through elements in the tab index chain). The implementation should attempt to update the UI state by focusing in the appropriate UI for this target -- typically this means putting browser focus into a DOM element, and return true to indicate success.  
 Returning false indicates the element is currently not focusable (disabled, masked, etc), and cause the TabIndexManager to call the shiftFocusCallback on the next registered entry (skipping over this entry).  
@@ -115,7 +115,7 @@ Move a list of targets to the newly specified parent / position. This method may
 |------|------|----------|---------|-------------|
 | IDs | [Array of String](#type-array-of-string) | false | — | IDs of the targets to move |
 | parentID | [String](#type-string) | true | — | ID of the new parent (if null, will move to the top level) |
-| position | [Integer](../main_2.md#type-integer) | true | — | Position within the specified parent. If null will be added at the end |
+| position | [Integer](../reference_2.md#type-integer) | true | — | Position within the specified parent. If null will be added at the end |
 
 ---
 ## ClassMethod: TabIndexManager.setUseExplicitFocusNavigation
@@ -128,7 +128,7 @@ Mark the specified node (and its descendents) as using explicit focus navigation
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | ID | [String](#type-string) | false | — | registered TabIndexManager target |
-| newValue | [boolean](../main.md#type-boolean) | false | — | should explicit focus navigation be used for the specified target and its descendents |
+| newValue | [boolean](../reference.md#type-boolean) | false | — | should explicit focus navigation be used for the specified target and its descendents |
 
 ---
 ## ClassMethod: TabIndexManager.getAllocatedTabChain
@@ -157,7 +157,7 @@ Modifies whether or not some specified target should be treated as focusable and
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | ID | [String](#type-string) | false | — | target ID |
-| canFocus | [boolean](../main.md#type-boolean) | false | — | new value for canFocus |
+| canFocus | [boolean](../reference.md#type-boolean) | false | — | new value for canFocus |
 
 ---
 ## ClassMethod: TabIndexManager.shiftFocusWithinGroup
@@ -179,11 +179,11 @@ A return value of false indicates that this method was unable to shift focus to 
 |------|------|----------|---------|-------------|
 | targetGroup | [String](#type-string) | false | — | ID of registered target. Focus will be shifted within this target and its descendants only. |
 | currentTarget | [String](#type-string) | false | — | Optional ID of current focus target within the group focus will be shifted in the specified direction from this node. |
-| forward | [boolean](../main.md#type-boolean) | false | — | should focus move forward to the next focusable target, or backward to the previous focusable target. |
+| forward | [boolean](../reference.md#type-boolean) | false | — | should focus move forward to the next focusable target, or backward to the previous focusable target. |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — returns true to indicate focus was successfully shifted, false to indicate this method was unable to change focus.
+`[boolean](../reference.md#type-boolean)` — returns true to indicate focus was successfully shifted, false to indicate this method was unable to change focus.
 
 ---
 ## ClassMethod: TabIndexManager.setAlwaysUseExplicitFocusNavigation
@@ -195,7 +195,7 @@ Should [TabIndexManager.useExplicitFocusNavigation](#classmethod-tabindexmanager
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newValue | [boolean](../main.md#type-boolean) | false | — | whether we should always use explicit focus navigation |
+| newValue | [boolean](../reference.md#type-boolean) | false | — | whether we should always use explicit focus navigation |
 
 ---
 ## ClassMethod: TabIndexManager.useExplicitFocusNavigation
@@ -215,7 +215,7 @@ This method will return true if the [TabIndexManager.setAlwaysUseExplicitFocusNa
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true if explicit focus navigation should be used
+`[boolean](../reference.md#type-boolean)` — true if explicit focus navigation should be used
 
 ---
 ## ClassMethod: TabIndexManager.moveTarget
@@ -229,7 +229,7 @@ Move a target to the newly specified parent / position. This method may change t
 |------|------|----------|---------|-------------|
 | ID | [String](#type-string) | false | — | ID of the target to move |
 | parentID | [String](#type-string) | true | — | ID of the new parent (if null, will move to the top level) |
-| position | [Integer](../main_2.md#type-integer) | true | — | Position within the specified parent. If null will be the last entry. |
+| position | [Integer](../reference_2.md#type-integer) | true | — | Position within the specified parent. If null will be the last entry. |
 
 ---
 ## ClassMethod: TabIndexManager.shiftFocusAfterGroup
@@ -248,11 +248,11 @@ A return value of false indicates that this method was unable to shift focus to 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | targetGroup | [String](#type-string) | false | — | ID of registered target. Focus will be shifted to the next registered focusable element, skipping this group and its descendants. |
-| forward | [boolean](../main.md#type-boolean) | false | — | should focus move forward to the next focusable target, or backward to the previous focusable target. |
+| forward | [boolean](../reference.md#type-boolean) | false | — | should focus move forward to the next focusable target, or backward to the previous focusable target. |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — returns true to indicate focus was successfully shifted, false to indicate this method was unable to change focus.
+`[boolean](../reference.md#type-boolean)` — returns true to indicate focus was successfully shifted, false to indicate this method was unable to change focus.
 
 ---
 ## ClassMethod: TabIndexManager.shiftFocus
@@ -269,11 +269,11 @@ Targets with no `shiftFocusCallback` will be skipped entirely in this process.
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | ID | [String](#type-string) | false | — | current focus target. If null, focus will be applied to the first focusable target (or the last if the `forward` parameter is false). |
-| forward | [boolean](../main.md#type-boolean) | false | — | should focus move forward to the next focusable target, or backward to the previous focusable target. |
+| forward | [boolean](../reference.md#type-boolean) | false | — | should focus move forward to the next focusable target, or backward to the previous focusable target. |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — returns true to indicate focus was successfully shifted, false to indicate this method was unable to change focus.
+`[boolean](../reference.md#type-boolean)` — returns true to indicate focus was successfully shifted, false to indicate this method was unable to change focus.
 
 ---
 ## ClassMethod: TabIndexManager.resumeCallbacks
@@ -305,6 +305,6 @@ Has the specified target been added to this TabIndexManager via [TabIndexManager
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true if we are managing the tab index for the specified target
+`[boolean](../reference.md#type-boolean)` — true if we are managing the tab index for the specified target
 
 ---

@@ -1,6 +1,6 @@
 # ResultTree Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -13,7 +13,7 @@ ResultTrees are an implementation of the [Tree](Tree.md#class-tree) API, used to
 
 **Modifying ResultTrees**
 
-`ResultTree` nodes cannot be directly added or removed from a [paged](#attr-resulttreefetchmode) `ResultTree` via [Tree](Tree.md#class-tree) APIs such as [Tree.add](Tree.md#method-treeadd) or [Tree.remove](Tree.md#method-treeremove), since such trees are considered to be read-only by virtue of containing [ResultSet](ResultSet.md#class-resultset)s, which are read-only data structures. Even in other [FetchMode](../main_2.md#type-fetchmode)s, calling such APIs will only update the local cache of the ResultTree, rather than triggering any server traffict to update the DataSource.
+`ResultTree` nodes cannot be directly added or removed from a [paged](#attr-resulttreefetchmode) `ResultTree` via [Tree](Tree.md#class-tree) APIs such as [Tree.add](Tree.md#method-treeadd) or [Tree.remove](Tree.md#method-treeremove), since such trees are considered to be read-only by virtue of containing [ResultSet](ResultSet.md#class-resultset)s, which are read-only data structures. Even in other [FetchMode](../reference_2.md#type-fetchmode)s, calling such APIs will only update the local cache of the ResultTree, rather than triggering any server traffict to update the DataSource.
 
 Use [DataSource.addData](DataSource.md#method-datasourceadddata)/[removeData()](DataSource.md#method-datasourceremovedata) to add/remove rows from the [DataSource](DataSource.md#class-datasource), and the `ResultTree` will reflect the changes automatically. Alternatively, the [DataSource.updateCaches](DataSource.md#method-datasourceupdatecaches) method may be called to only update local caches of the DataSource in question, without generating any server traffic.
 
@@ -77,7 +77,7 @@ Controls what happens to the ["open state"](#method-resulttreegetopenstate) - th
 ## Attr: ResultTree.canReturnOpenFolders
 
 ### Description
-When using [fetchMode:"paged"](../main_2.md#type-fetchmode) and providing multiple levels of the tree in one DSResponse, this property specifies the default value assumed for the [ResultTree.canReturnOpenSubfoldersProperty](#attr-resulttreecanreturnopensubfoldersproperty) when no value for that property is provided for a node.
+When using [fetchMode:"paged"](../reference_2.md#type-fetchmode) and providing multiple levels of the tree in one DSResponse, this property specifies the default value assumed for the [ResultTree.canReturnOpenSubfoldersProperty](#attr-resulttreecanreturnopensubfoldersproperty) when no value for that property is provided for a node.
 
 **Flags**: IR
 
@@ -109,7 +109,7 @@ The fetch mode for this tree's link data; ignored if this is not a [multi-link t
 ## Attr: ResultTree.useSimpleCriteriaLOD
 
 ### Description
-Whether or not we should skip promotion of a simple criteria to an [AdvancedCriteria](../main.md#object-advancedcriteria) when sending the [DSRequest](../main_2.md#object-dsrequest) to load the children of a node in a [ResultTree.loadDataOnDemand](#attr-resulttreeloaddataondemand) or [fetchMode:"paged"](#attr-resulttreefetchmode) `ResultTree`. If the [DSRequest.textMatchStyle](DSRequest.md#attr-dsrequesttextmatchstyle) is not "exact", we normally convert the simple criteria to an [AdvancedCriteria](../main.md#object-advancedcriteria) for correctness in matching the node name, but setting this property to `true` will allow that to be skipped for backcompat with older releases.
+Whether or not we should skip promotion of a simple criteria to an [AdvancedCriteria](../reference.md#object-advancedcriteria) when sending the [DSRequest](../reference_2.md#object-dsrequest) to load the children of a node in a [ResultTree.loadDataOnDemand](#attr-resulttreeloaddataondemand) or [fetchMode:"paged"](#attr-resulttreefetchmode) `ResultTree`. If the [DSRequest.textMatchStyle](DSRequest.md#attr-dsrequesttextmatchstyle) is not "exact", we normally convert the simple criteria to an [AdvancedCriteria](../reference.md#object-advancedcriteria) for correctness in matching the node name, but setting this property to `true` will allow that to be skipped for backcompat with older releases.
 
 ### See Also
 
@@ -229,7 +229,7 @@ Please note the following:
 ## Attr: ResultTree.childCountProperty
 
 ### Description
-When using [fetchMode:"paged"](../main_2.md#type-fetchmode) and providing multiple levels of the tree in one DSResponse, `childCountProperty` must be set for any folders that include only a partial list of children. For a deeper discussion see the **Paging large sets of children** section of the [treeDataBinding](../kb_topics/treeDataBinding.md#kb-topic-tree-databinding) overview.
+When using [fetchMode:"paged"](../reference_2.md#type-fetchmode) and providing multiple levels of the tree in one DSResponse, `childCountProperty` must be set for any folders that include only a partial list of children. For a deeper discussion see the **Paging large sets of children** section of the [treeDataBinding](../kb_topics/treeDataBinding.md#kb-topic-tree-databinding) overview.
 
 **Flags**: IR
 
@@ -337,7 +337,7 @@ Because the initial data is treated exactly as though it were returned from the 
 ### See Also
 
 - [Tree.data](Tree.md#attr-treedata)
-- [TreeNode](../main_2.md#object-treenode)
+- [TreeNode](../reference_2.md#object-treenode)
 
 **Flags**: IRA
 
@@ -345,7 +345,7 @@ Because the initial data is treated exactly as though it were returned from the 
 ## Attr: ResultTree.serverFilterFields
 
 ### Description
-For [fetchMode:"local"](../main_2.md#type-fetchmode) ResultTrees, this property lists field names that will be sent to the server if they are present in the criteria.
+For [fetchMode:"local"](../reference_2.md#type-fetchmode) ResultTrees, this property lists field names that will be sent to the server if they are present in the criteria.
 
 This property may be used to ensure a dataSource receives the necessary criteria to populate a ResultTree's data, and also support [ResultTree.keepParentsOnFilter](#attr-resulttreekeepparentsonfilter).
 
@@ -403,7 +403,7 @@ When a successful Add, Update or Remove type operation fires on this ResultTree'
 ## Attr: ResultTree.modelType
 
 ### Description
-Selects the model used to construct the tree representation. See [TreeModelType](../main.md#type-treemodeltype) for the available options and their implications.
+Selects the model used to construct the tree representation. See [TreeModelType](../reference.md#type-treemodeltype) for the available options and their implications.
 
 If the "parent" modelType is used, you can provide the initial parent-linked data set to the tree via the [Tree.data](Tree.md#attr-treedata) attribute. If the "children" modelType is used, you can provide the initial tree structure to the Tree via the [Tree.root](Tree.md#attr-treeroot) attribute.
 
@@ -418,7 +418,7 @@ If the "parent" modelType is used, you can provide the initial parent-linked dat
 ## Attr: ResultTree.canReturnOpenSubfoldersProperty
 
 ### Description
-When using [fetchMode:"paged"](../main_2.md#type-fetchmode) and providing multiple levels of the tree in one DSResponse, `canReturnOpenSubfoldersProperty` may be set on any folder to indicate whether child folders might be returned by the server already open. If the property is set to false on a folder then subfolders of that folder are never allowed to be returned already open. This enables the paging mechanism to be more efficient in the amount of data that it requests from the server.
+When using [fetchMode:"paged"](../reference_2.md#type-fetchmode) and providing multiple levels of the tree in one DSResponse, `canReturnOpenSubfoldersProperty` may be set on any folder to indicate whether child folders might be returned by the server already open. If the property is set to false on a folder then subfolders of that folder are never allowed to be returned already open. This enables the paging mechanism to be more efficient in the amount of data that it requests from the server.
 
 For example, setting the `canReturnOpenSubfoldersProperty` value to `false` on a node is appropriate if the server-side code determines that the the node's children consist of entirely leaf nodes.
 
@@ -498,13 +498,13 @@ May be overridden via [TreeGrid.treeRootValue](TreeGrid.md#attr-treegridtreeroot
 ### Description
 If set, tree-based filtering is performed such that parent nodes are kept as long as they have children that match the filter criteria, even if the parents themselves do not match the filter criteria. If not set, filtering will exclude parent nodes not matching the criteria, and all nodes below them in the tree.
 
-ResultTrees will default to [fetchMode:"local"](../main_2.md#type-fetchmode) whenever `keepParentsOnFilter` is true, unless fetchMode was explicitly set to "paged" (see below). This allows the filtering logic to fetch a complete tree of nodes from the DataSource (or if loadDataOnDemand:true, a complete set of nodes under a given parent) and then filter the resulting data locally on the client.
+ResultTrees will default to [fetchMode:"local"](../reference_2.md#type-fetchmode) whenever `keepParentsOnFilter` is true, unless fetchMode was explicitly set to "paged" (see below). This allows the filtering logic to fetch a complete tree of nodes from the DataSource (or if loadDataOnDemand:true, a complete set of nodes under a given parent) and then filter the resulting data locally on the client.
 
 This means that the server does not need to implement special tree filtering logic to support looking up nodes that match the specified criteria as well as ancestor nodes that may not.
 
 If some criteria _must_ be sent to the server in order to produce a valid tree of data, but `keepParentsOnFilter` is also required, the [ResultTree.serverFilterFields](#attr-resulttreeserverfilterfields) attribute may be used to specify a list of field names that will be sent to the server whenever they are present in the criteria. Note that for the subset of criteria applied to these fields, `keepParentsInFilter` behavior will not occur without custom logic in the DataSource fetch operation.
 
-If [FetchMode](../main_2.md#type-fetchmode) is explicitly set to `"paged"`, it is not possible to implement `keepParentsOnFilter`, either by local filtering or with the automatic client-driven handling mentioned below. Support for `keepParentsOnFilter` for a paged ResultTree therefore also requires custom logic in the DataSource fetch operation. To support this a developer must ensure that their fetch operation returns the appropriate set of nodes - all nodes that match the specified criteria plus their ancestor nodes even if they do not match the specified criteria.
+If [FetchMode](../reference_2.md#type-fetchmode) is explicitly set to `"paged"`, it is not possible to implement `keepParentsOnFilter`, either by local filtering or with the automatic client-driven handling mentioned below. Support for `keepParentsOnFilter` for a paged ResultTree therefore also requires custom logic in the DataSource fetch operation. To support this a developer must ensure that their fetch operation returns the appropriate set of nodes - all nodes that match the specified criteria plus their ancestor nodes even if they do not match the specified criteria.
 
 #### keepParentsOnFilter with load-on-demand trees
 The combination of `keepParentsOnFilter` and [loadDataOnDemand](#attr-resulttreeloaddataondemand) presents additional difficulties that require special handling. The problem is that in order to determine even the top-level folders, you have to examine every node in the entire tree. For example, say there is one top-level folder that has thousands of folders and nodes underneath it, and there is just one leaf node, 6 levels deep, that matches the filter criteria. You have to find out about that node, because it implies the top-level folder must be retained.
@@ -535,11 +535,11 @@ If you want to disable the automatic handling of `keepParentsOnFilter` on load-o
 ## Attr: ResultTree.progressiveLoading
 
 ### Description
-Sets [progressive loading mode](DataSource.md#attr-datasourceprogressiveloading) for this ResultTree. The ResultTree will copy this setting onto the [DSRequest](../main_2.md#object-dsrequest)s that it issues, overriding the OperationBinding- and DataSource-level settings, in cases where the use of progressive loading does not affect the correctness of the tree's paging algorithm.
+Sets [progressive loading mode](DataSource.md#attr-datasourceprogressiveloading) for this ResultTree. The ResultTree will copy this setting onto the [DSRequest](../reference_2.md#object-dsrequest)s that it issues, overriding the OperationBinding- and DataSource-level settings, in cases where the use of progressive loading does not affect the correctness of the tree's paging algorithm.
 
-This setting is applied automatically by [DataBoundComponent](../main.md#interface-databoundcomponent)s that have their own explicit setting for [progressiveLoading](DataBoundComponent.md#attr-databoundcomponentprogressiveloading).
+This setting is applied automatically by [DataBoundComponent](../reference.md#interface-databoundcomponent)s that have their own explicit setting for [progressiveLoading](DataBoundComponent.md#attr-databoundcomponentprogressiveloading).
 
-**Note:** This property only has an effect for [fetchMode:"paged"](../main_2.md#type-fetchmode) ResultTrees.
+**Note:** This property only has an effect for [fetchMode:"paged"](../reference_2.md#type-fetchmode) ResultTrees.
 
 ### Groups
 
@@ -590,7 +590,7 @@ This method can be used to determine whether [TreeGrid.fetchData](TreeGrid.md#me
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newCriteria | [Criteria](../main_2.md#type-criteria) | false | — | new criteria to test. |
+| newCriteria | [Criteria](../reference_2.md#type-criteria) | false | — | new criteria to test. |
 
 ### Returns
 
@@ -606,13 +606,13 @@ Depending on the result of [ResultTree.compareCriteria](#method-resulttreecompar
 
 For a basic overview on when server fetches are generally performed, see [ResultTree.fetchMode](#attr-resulttreefetchmode). However, this is not the final determination of when server fetches occur. Criteria can be split into local criteria and server criteria by specifying [ResultTree.serverFilterFields](#attr-resulttreeserverfilterfields). Thus, even when using fetchMode:"local" a new server fetch will occur if the server criteria changes. For details on how the criteria is split, see [DataSource.splitCriteria](DataSource.md#method-datasourcesplitcriteria).
 
-Note: if criteria is being split to retrieve server criteria portion and the criteria is an [AdvancedCriteria](../main.md#object-advancedcriteria), the criteria must consist of a single "and" operator and one or more simple criteria below it. No other logical operators may be used. In other words, the [AdvancedCriteria](../main.md#object-advancedcriteria) provided must be exactly representable by a simple criteria.
+Note: if criteria is being split to retrieve server criteria portion and the criteria is an [AdvancedCriteria](../reference.md#object-advancedcriteria), the criteria must consist of a single "and" operator and one or more simple criteria below it. No other logical operators may be used. In other words, the [AdvancedCriteria](../reference.md#object-advancedcriteria) provided must be exactly representable by a simple criteria.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newCriteria | [Criteria](../main_2.md#type-criteria) | false | — | the filter criteria |
+| newCriteria | [Criteria](../reference_2.md#type-criteria) | false | — | the filter criteria |
 
 ---
 ## Method: ResultTree.compareCriteria
@@ -620,7 +620,7 @@ Note: if criteria is being split to retrieve server criteria portion and the cri
 ### Description
 Default behavior is to call [DataSource.compareCriteria](DataSource.md#method-datasourcecomparecriteria) to determine whether new criteria is equivalent to the old criteria (returns 0) or not.
 
-See [DataSource.compareCriteria](DataSource.md#method-datasourcecomparecriteria) for a full explanation of the default behavior. The [CriteriaPolicy](../main_2.md#type-criteriapolicy) used is "dropOnChange".
+See [DataSource.compareCriteria](DataSource.md#method-datasourcecomparecriteria) for a full explanation of the default behavior. The [CriteriaPolicy](../reference_2.md#type-criteriapolicy) used is "dropOnChange".
 
 Override this method or [DataSource.compareCriteria](DataSource.md#method-datasourcecomparecriteria) to implement your own client-side filtering behavior.
 
@@ -628,8 +628,8 @@ Override this method or [DataSource.compareCriteria](DataSource.md#method-dataso
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newCriteria | [Criteria](../main_2.md#type-criteria) | false | — | new filter criteria |
-| oldCriteria | [Criteria](../main_2.md#type-criteria) | false | — | old filter criteria |
+| newCriteria | [Criteria](../reference_2.md#type-criteria) | false | — | new filter criteria |
+| oldCriteria | [Criteria](../reference_2.md#type-criteria) | false | — | old filter criteria |
 | requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | dataSource request properties |
 
 ### Returns
@@ -638,7 +638,7 @@ Override this method or [DataSource.compareCriteria](DataSource.md#method-dataso
 
 ### See Also
 
-- [CriteriaPolicy](../main_2.md#type-criteriapolicy)
+- [CriteriaPolicy](../reference_2.md#type-criteriapolicy)
 
 ---
 ## Method: ResultTree.dataArrived
@@ -677,13 +677,13 @@ Get the item in the openList at a particular position.
 ## Method: ResultTree.getOpenState
 
 ### Description
-Returns a snapshot of the current open state of this tree's data as a [TreeGridOpenState](../main_2.md#type-treegridopenstate) object.
+Returns a snapshot of the current open state of this tree's data as a [TreeGridOpenState](../reference_2.md#type-treegridopenstate) object.
 
 This object can be passed to [ResultTree.setOpenState](#method-resulttreesetopenstate) or [TreeGrid.setOpenState](TreeGrid.md#method-treegridsetopenstate) to open the same set of folders within the tree's data (assuming the nodes are still present in the data).
 
 ### Returns
 
-`[TreeGridOpenState](../main_2.md#type-treegridopenstate)` — current open state for the grid.
+`[TreeGridOpenState](../reference_2.md#type-treegridopenstate)` — current open state for the grid.
 
 ### Groups
 
@@ -740,7 +740,7 @@ In particular, note that for a [paged](#attr-resulttreefetchmode) `ResultTree`, 
 |------|------|----------|---------|-------------|
 | parent | [TreeNode](#type-treenode) | false | — | parent of children |
 | newChildren | [List of TreeNode](#type-list-of-treenode) | false | — | children to be set |
-| totalChildren | [Integer](../main_2.md#type-integer) | true | — | number of total children (if not all have been provided as newChildren); only allowed if paging |
+| totalChildren | [Integer](../reference_2.md#type-integer) | true | — | number of total children (if not all have been provided as newChildren); only allowed if paging |
 
 ### Groups
 
@@ -781,7 +781,7 @@ Returns a copy of all [explicit](#attr-resulttreecriteria) and [implicit](#metho
 
 ### Returns
 
-`[Criteria](../main_2.md#type-criteria)|[AdvancedCriteria](#type-advancedcriteria)` — combined criteria
+`[Criteria](../reference_2.md#type-criteria)|[AdvancedCriteria](#type-advancedcriteria)` — combined criteria
 
 ---
 ## Method: ResultTree.loadChildren
@@ -796,7 +796,7 @@ For a databound tree this will trigger a fetch against the Tree's DataSource.
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | node | [TreeNode](#type-treenode) | false | — | node in question |
-| callback | [DSCallback](../main_2.md#type-dscallback) | true | — | Optional callback (stringMethod) to fire when loading completes. Has a single param `node` - the node whose children have been loaded, and is fired in the scope of the Tree. |
+| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | Optional callback (stringMethod) to fire when loading completes. Has a single param `node` - the node whose children have been loaded, and is fired in the scope of the Tree. |
 
 ### Groups
 
@@ -817,8 +817,8 @@ Override this method or [Tree.getFilteredTree](Tree.md#method-treegetfilteredtre
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | tree | [Tree](#type-tree) | false | — | the source tree to be filtered |
-| criteria | [Criteria](../main_2.md#type-criteria) | false | — | the filter criteria |
-| filterMode | [TreeFilterMode](../main.md#type-treefiltermode) | false | — | mode to use for filtering |
+| criteria | [Criteria](../reference_2.md#type-criteria) | false | — | the filter criteria |
+| filterMode | [TreeFilterMode](../reference.md#type-treefiltermode) | false | — | mode to use for filtering |
 | dataSource | [DataSource](#type-datasource) | false | — | dataSource for filtering if the Tree does not already have one |
 | requestProperties | [DSRequest](#type-dsrequest) | true | — | Request properties block. This allows developers to specify properties that would impact the filter such as [DSRequest.textMatchStyle](DSRequest.md#attr-dsrequesttextmatchstyle) |
 
@@ -832,7 +832,7 @@ Override this method or [Tree.getFilteredTree](Tree.md#method-treegetfilteredtre
 ## Method: ResultTree.setOpenState
 
 ### Description
-Reset the set of open folders within this tree's data to match the [TreeGridOpenState](../main_2.md#type-treegridopenstate) object passed in.
+Reset the set of open folders within this tree's data to match the [TreeGridOpenState](../reference_2.md#type-treegridopenstate) object passed in.
 
 Used to restore previous state retrieved from the tree by a call to [ResultTree.getOpenState](#method-resulttreegetopenstate).
 
@@ -840,7 +840,7 @@ Used to restore previous state retrieved from the tree by a call to [ResultTree.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| openState | [TreeGridOpenState](../main_2.md#type-treegridopenstate) | false | — | Object describing the desired set of open folders. |
+| openState | [TreeGridOpenState](../reference_2.md#type-treegridopenstate) | false | — | Object describing the desired set of open folders. |
 
 ### Groups
 

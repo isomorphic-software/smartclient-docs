@@ -1,6 +1,6 @@
 # RPCManager Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -9,7 +9,7 @@
 ### Description
 RPCManager is a static singleton class that manages transparent client/server RPC (remote procedure call). This class provides a generic, low-level client/server communication integration point.
 
-SmartClient's powerful databinding subsystem (see [DataSource](DataSource.md#class-datasource), [DataBoundComponents](../main.md#interface-databoundcomponent)) automatically make use of this class to issue RPCs as necessary, based on the [DataSource protocol](../kb_topics/dataSourceOperations.md#kb-topic-datasource-operations). To integrate DataBoundComponents with your server, [start here](../kb_topics/clientServerIntegration.md#kb-topic-client-server-integration).
+SmartClient's powerful databinding subsystem (see [DataSource](DataSource.md#class-datasource), [DataBoundComponents](../reference.md#interface-databoundcomponent)) automatically make use of this class to issue RPCs as necessary, based on the [DataSource protocol](../kb_topics/dataSourceOperations.md#kb-topic-datasource-operations). To integrate DataBoundComponents with your server, [start here](../kb_topics/clientServerIntegration.md#kb-topic-client-server-integration).
 
 For arbitrary client/server interactions outside of the DataSource subsystem, the SmartClient server also provides the [Direct Method Invocation](../kb_topics/dmiOverview.md#kb-topic-direct-method-invocation) feature.
 
@@ -562,7 +562,7 @@ Returns a brief description of the transaction in the following format for loggi
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| transactionNum | [Integer](../main_2.md#type-integer) | false | — | The number of the transaction to return timing data for |
+| transactionNum | [Integer](../reference_2.md#type-integer) | false | — | The number of the transaction to return timing data for |
 
 ### Returns
 
@@ -578,11 +578,11 @@ This method will register a callback to fire every time the processing of an RPC
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| callback | [Callback](../main.md#type-callback) | false | — | Callback to fire when processing is complete. This takes a single parameter "transactionNum" |
+| callback | [Callback](../reference.md#type-callback) | false | — | Callback to fire when processing is complete. This takes a single parameter "transactionNum" |
 
 ### Returns
 
-`[Integer](../main_2.md#type-integer)` — Identifier for the registered callback. May be passed to [RPCManager.removeProcessingCompleteCallback](#classmethod-rpcmanagerremoveprocessingcompletecallback) to unregister this callback.
+`[Integer](../reference_2.md#type-integer)` — Identifier for the registered callback. May be passed to [RPCManager.removeProcessingCompleteCallback](#classmethod-rpcmanagerremoveprocessingcompletecallback) to unregister this callback.
 
 ### See Also
 
@@ -647,7 +647,7 @@ Also, take into account that this method removes all queued requests from the cu
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| transactionNum | [int](../main.md#type-int) | true | — | transactionId of the queue. |
+| transactionNum | [int](../reference.md#type-int) | true | — | transactionId of the queue. |
 
 ---
 ## ClassMethod: RPCManager.setActionURL
@@ -659,7 +659,7 @@ Setter for [RPCManager.actionURL](#classattr-rpcmanageractionurl).
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| actionURL | [URL](../main_2.md#type-url) | false | — | new actionURL |
+| actionURL | [URL](../reference_2.md#type-url) | false | — | new actionURL |
 
 ---
 ## ClassMethod: RPCManager.transformRequest
@@ -667,7 +667,7 @@ Setter for [RPCManager.actionURL](#classattr-rpcmanageractionurl).
 ### Description
 Returns the data that should be sent to the [RPCManager.actionURL](#classattr-rpcmanageractionurl).
 
-In a manner analogous to [DataSource.transformRequest](DataSource.md#method-datasourcetransformrequest), this method allows you to transform an [RPCRequest](../main.md#object-rpcrequest), such as by adding [HTTP headers](RPCRequest.md#attr-rpcrequesthttpheaders), to ensure proper handling on the server.
+In a manner analogous to [DataSource.transformRequest](DataSource.md#method-datasourcetransformrequest), this method allows you to transform an [RPCRequest](../reference.md#object-rpcrequest), such as by adding [HTTP headers](RPCRequest.md#attr-rpcrequesthttpheaders), to ensure proper handling on the server.
 
 ### Parameters
 
@@ -709,13 +709,13 @@ A suspended transaction must ultimately be either cleared via [RPCManager.clearT
 ### Description
 This method is called by the RPCManager every time it sends a queue of requests to the server (note that if you are not using queuing, the system simply sends queues containing just one request, so this API is valid regardless).
 
-There is no default implementation of this method; it is simply an override point. It is intended to be used by user code that needs to be notified when SmartClient sends requests to the server. Note that the list of [RPCRequest](../main.md#object-rpcrequest)s passed to this method is strictly **read-only**.
+There is no default implementation of this method; it is simply an override point. It is intended to be used by user code that needs to be notified when SmartClient sends requests to the server. Note that the list of [RPCRequest](../reference.md#object-rpcrequest)s passed to this method is strictly **read-only**.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| requests | [List of RPCRequest](#type-list-of-rpcrequest) | false | — | The queue of [RPCRequest](../main.md#object-rpcrequest)s that was sent |
+| requests | [List of RPCRequest](#type-list-of-rpcrequest) | false | — | The queue of [RPCRequest](../reference.md#object-rpcrequest)s that was sent |
 
 ---
 ## ClassMethod: RPCManager.send
@@ -729,12 +729,12 @@ This method is a convenience wrapper on `RPCManager.sendRequest()` - it calls th
 |------|------|----------|---------|-------------|
 | data | [Any](#type-any) | false | — | data to be passed to the server |
 | callback | [RPCCallback](#type-rpccallback) | true | — | method to call on RPC completion |
-| requestParams | [Object](../main.md#type-object) | true | — | object literal containing any additional properties you want to set - these will be applied to the RPCRequest object that will be auto-created for you. |
+| requestParams | [Object](../reference.md#type-object) | true | — | object literal containing any additional properties you want to set - these will be applied to the RPCRequest object that will be auto-created for you. |
 
 ### See Also
 
 - [RPCManager.sendRequest](#classmethod-rpcmanagersendrequest)
-- [RPCRequest](../main.md#object-rpcrequest)
+- [RPCRequest](../reference.md#object-rpcrequest)
 
 ---
 ## ClassMethod: RPCManager.getFormattedTimingData
@@ -748,12 +748,12 @@ Please read the `getTimingData()` documentation for some important remarks about
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| transactionNum | [Integer](../main_2.md#type-integer) | false | — | The number of the transaction to return timing data for |
+| transactionNum | [Integer](../reference_2.md#type-integer) | false | — | The number of the transaction to return timing data for |
 | callback | [FormattedTimingDataCallback](#type-formattedtimingdatacallback) | true | — | A callback to invoke, passing the formatted timing data. This parameter is optional, but it is necessary if timing data cannot be obtained synchronously, as described in the `getTimingData()` documentation |
-| operationNo | [Integer](../main_2.md#type-integer) | true | — | Optionally, the index of a specific operation in the overall transaction. Only pass this parameter if you want to limit the returned data to a single request |
-| includeClient | [boolean](../main.md#type-boolean) | true | — | Whether to include client-side timing data. Optional defaults to true |
-| includeServer | [boolean](../main.md#type-boolean) | true | — | Whether to include server-side timing data. Optional, defaults to true |
-| maxDepth | [Integer](../main_2.md#type-integer) | true | — | The maximum depth to descend into the tree. The lowest meaningful value for this parameter is 1 - anything less will simply cause the API to return an empty string. This parameter is optional; if it not passed, we default to "no limit" |
+| operationNo | [Integer](../reference_2.md#type-integer) | true | — | Optionally, the index of a specific operation in the overall transaction. Only pass this parameter if you want to limit the returned data to a single request |
+| includeClient | [boolean](../reference.md#type-boolean) | true | — | Whether to include client-side timing data. Optional defaults to true |
+| includeServer | [boolean](../reference.md#type-boolean) | true | — | Whether to include server-side timing data. Optional, defaults to true |
+| maxDepth | [Integer](../reference_2.md#type-integer) | true | — | The maximum depth to descend into the tree. The lowest meaningful value for this parameter is 1 - anything less will simply cause the API to return an empty string. This parameter is optional; if it not passed, we default to "no limit" |
 
 ### Returns
 
@@ -769,11 +769,11 @@ This API allows contacting services which are hosted on servers other than the o
 
 The HttpProxy will be used if the [RPCRequest.actionURL](RPCRequest.md#attr-rpcrequestactionurl) starts with "http" and uses a hostname other than "localhost" or `window.location.hostname`, or if the port number differs, or if `request.useHttpProxy` is explicitly set. Otherwise the request goes to the origin server (the server that returned the current page).
 
-The [RPCRequest](../main.md#object-rpcrequest) properties that will be respected when relaying requests via the HttpProxy are: [actionURL](RPCRequest.md#attr-rpcrequestactionurl), [httpMethod](RPCRequest.md#attr-rpcrequesthttpmethod), [params](RPCRequest.md#attr-rpcrequestparams), [contentType](RPCRequest.md#attr-rpcrequestcontenttype), [httpHeaders](RPCRequest.md#attr-rpcrequesthttpheaders), and [data](RPCRequest.md#attr-rpcrequestdata). In this case "data", if set, will be used as the request body for an HTTP POST.
+The [RPCRequest](../reference.md#object-rpcrequest) properties that will be respected when relaying requests via the HttpProxy are: [actionURL](RPCRequest.md#attr-rpcrequestactionurl), [httpMethod](RPCRequest.md#attr-rpcrequesthttpmethod), [params](RPCRequest.md#attr-rpcrequestparams), [contentType](RPCRequest.md#attr-rpcrequestcontenttype), [httpHeaders](RPCRequest.md#attr-rpcrequesthttpheaders), and [data](RPCRequest.md#attr-rpcrequestdata). In this case "data", if set, will be used as the request body for an HTTP POST.
 
 Higher-level APIs like [DataSource](DataSource.md#class-datasource) or [WebService](WebService.md#class-webservice) call through this API, and so automatically use the HttpProxy if [DataSource.dataURL](DataSource.md#attr-datasourcedataurl) or [webService.location](WebService.md#method-webservicesetlocation) is set to a foreign server.
 
-This API is only suitable for direct use when loading unstructured data that will not be shown in a [DataBoundComponent](../main.md#interface-databoundcomponent). For a WSDL-described web service, use [XMLTools.loadWSDL](XMLTools.md#classmethod-xmltoolsloadwsdl) instead. For other web services, use a [DataSource](DataSource.md#class-datasource) with [dataURL](DataSource.md#attr-datasourcedataurl), and use [DataSource.transformRequest](DataSource.md#method-datasourcetransformrequest) and [DataSource.transformResponse](DataSource.md#method-datasourcetransformresponse) as necessary to form requests for the service and transform responses for display.
+This API is only suitable for direct use when loading unstructured data that will not be shown in a [DataBoundComponent](../reference.md#interface-databoundcomponent). For a WSDL-described web service, use [XMLTools.loadWSDL](XMLTools.md#classmethod-xmltoolsloadwsdl) instead. For other web services, use a [DataSource](DataSource.md#class-datasource) with [dataURL](DataSource.md#attr-datasourcedataurl), and use [DataSource.transformRequest](DataSource.md#method-datasourcetransformrequest) and [DataSource.transformResponse](DataSource.md#method-datasourcetransformresponse) as necessary to form requests for the service and transform responses for display.
 
 ### Parameters
 
@@ -813,7 +813,7 @@ Unregister the [processingComplete](#classmethod-rpcmanageraddprocessingcomplete
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| index | [Integer](../main_2.md#type-integer) | false | — | The identifying index returned from [RPCManager.addProcessingCompleteCallback](#classmethod-rpcmanageraddprocessingcompletecallback) |
+| index | [Integer](../reference_2.md#type-integer) | false | — | The identifying index returned from [RPCManager.addProcessingCompleteCallback](#classmethod-rpcmanageraddprocessingcompletecallback) |
 
 ---
 ## ClassMethod: RPCManager.sendRequest
@@ -845,7 +845,7 @@ Synonym of [RPCManager.getQueueTransactionId](#classmethod-rpcmanagergetqueuetra
 
 ### Returns
 
-`[Integer](../main_2.md#type-integer)` — the transactionNum of the current transaction, or null
+`[Integer](../reference_2.md#type-integer)` — the transactionNum of the current transaction, or null
 
 ---
 ## ClassMethod: RPCManager.sendQueue
@@ -904,7 +904,7 @@ Pass `true` or `false` to switch the gathering of timing metrics on and off prog
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| enabled | [boolean](../main.md#type-boolean) | false | — | Whether to switch timing data on or off |
+| enabled | [boolean](../reference.md#type-boolean) | false | — | Whether to switch timing data on or off |
 
 ---
 ## ClassMethod: RPCManager.exportContent
@@ -951,7 +951,7 @@ This would allow resources from anywhere inside the "Tahoe" skin directory, any 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| canvas | [Canvas](#type-canvas)|[Array of Canvas[]](#type-array-of-canvas)|[HTMLString](../main.md#type-htmlstring) | false | — | Canvas or canvas list that has exportable widgets, or an HTML fragment derived from [getPrintHTML()](Canvas.md#method-canvasgetprinthtml) |
+| canvas | [Canvas](#type-canvas)|[Array of Canvas[]](#type-array-of-canvas)|[HTMLString](../reference.md#type-htmlstring) | false | — | Canvas or canvas list that has exportable widgets, or an HTML fragment derived from [getPrintHTML()](Canvas.md#method-canvasgetprinthtml) |
 | requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | Request properties for the export to pdf object |
 
 ---
@@ -968,7 +968,7 @@ If you do not pass `globals` and avoid depending on global IDs within the screen
 
 Creating a screen may or may not cause it to draw, depending on current global autoDraw setting ([isc.setAutoDraw](isc.md#staticmethod-iscsetautodraw)) and any `autoDraw` settings in the screen itself.
 
-Instead of `globals`, you may instead pass a [substitution configuration](../main.md#object-createscreensettings) to change what classes are used to construct widgets, or subsitute existing widgets for those to be constructed, by widget ID.
+Instead of `globals`, you may instead pass a [substitution configuration](../reference.md#object-createscreensettings) to change what classes are used to construct widgets, or subsitute existing widgets for those to be constructed, by widget ID.
 
 ### Parameters
 
@@ -1007,7 +1007,7 @@ You can resend **all** suspended transactions by calling [RPCManager.resendTrans
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| transactionNum | [int](../main.md#type-int) | true | — | id of the transaction to be re-sent, or null to resend all suspended transactions |
+| transactionNum | [int](../reference.md#type-int) | true | — | id of the transaction to be re-sent, or null to resend all suspended transactions |
 
 ### See Also
 
@@ -1106,15 +1106,15 @@ Here is an example of how to provide a callback to the function:
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| transactionNum | [Integer](../main_2.md#type-integer) | false | — | The number of the transaction to return timing data for |
+| transactionNum | [Integer](../reference_2.md#type-integer) | false | — | The number of the transaction to return timing data for |
 | callback | [TimingDataCallback](#type-timingdatacallback) | true | — | A callback to invoke, passing the timing data object tree. This parameter is optional, but it is necessary if timing data cannot be obtained synchronously, as described above |
-| operationNo | [Integer](../main_2.md#type-integer) | true | — | Optionally, the index of a specific operation in the overall transaction. Only pass this parameter if you want to limit the returned data to a single request |
-| includeClient | [boolean](../main.md#type-boolean) | true | — | Whether to include client-side timing data. Optional defaults to true |
-| includeServer | [boolean](../main.md#type-boolean) | true | — | Whether to include server-side timing data. Optional, defaults to true |
+| operationNo | [Integer](../reference_2.md#type-integer) | true | — | Optionally, the index of a specific operation in the overall transaction. Only pass this parameter if you want to limit the returned data to a single request |
+| includeClient | [boolean](../reference.md#type-boolean) | true | — | Whether to include client-side timing data. Optional defaults to true |
+| includeServer | [boolean](../reference.md#type-boolean) | true | — | Whether to include server-side timing data. Optional, defaults to true |
 
 ### Returns
 
-`[Object](../main.md#type-object)` — the tree of timing data, as described in the above documentation
+`[Object](../reference.md#type-object)` — the tree of timing data, as described in the above documentation
 
 ### See Also
 
@@ -1130,7 +1130,7 @@ This method will return null if no requests are currently queued, even if [RPCMa
 
 ### Returns
 
-`[Integer](../main_2.md#type-integer)` — the transactionNum of the current transaction, or null
+`[Integer](../reference_2.md#type-integer)` — the transactionNum of the current transaction, or null
 
 ---
 ## ClassMethod: RPCManager.cacheScreens
@@ -1214,7 +1214,7 @@ This API assumes the ScreenLoaderServlet is installed at the default location - 
 ## ClassMethod: RPCManager.startQueue
 
 ### Description
-Start queuing [DSRequests](../main_2.md#object-dsrequest) and [RPCRequests](../main.md#object-rpcrequest) system-wide, for later sending when RPCManager.sendQueue() is called, at which time all queued requests will be sent as a single, combined HTTP request.
+Start queuing [DSRequests](../reference_2.md#object-dsrequest) and [RPCRequests](../reference.md#object-rpcrequest) system-wide, for later sending when RPCManager.sendQueue() is called, at which time all queued requests will be sent as a single, combined HTTP request.
 
 Combining requests via queuing:
 
@@ -1222,7 +1222,7 @@ Combining requests via queuing:
 *   can reduce overhead by combining related requests, avoiding the use of multiple network connections, redundant authentication checks, and other redundant resource allocations that would otherwise happen if requests were processed separately
 *   can simplify application logic that otherwise has to deal with multiple outstanding server requests that might complete in any order
 
-Queuing is used automatically by many, many framework features, including multi-row grid editing ([Grid Mass Editing](ListGrid_1.md#attr-listgridautosaveedits)), *multi-row drag & drop*, [data paging for large trees](ResultTree.md#attr-resulttreefetchmode), ["serverCustom" validators](../main.md#type-validatortype), *Master-Detail saves*, [OLAP / datacube functionalty](CubeGrid.md#class-cubegrid), and many others.
+Queuing is used automatically by many, many framework features, including multi-row grid editing ([Grid Mass Editing](ListGrid_1.md#attr-listgridautosaveedits)), *multi-row drag & drop*, [data paging for large trees](ResultTree.md#attr-resulttreefetchmode), ["serverCustom" validators](../reference.md#type-validatortype), *Master-Detail saves*, [OLAP / datacube functionalty](CubeGrid.md#class-cubegrid), and many others.
 
 Queuing also has subtler architectural benefits in terms of building reusable services - see the QuickStart Guide sections on Queuing for details.
 
@@ -1267,11 +1267,11 @@ Note that attempting to integrate with `RPCManager`'s queuing system doesn't rea
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| shouldQueue | [boolean](../main.md#type-boolean) | true | — | whether queuing should be enabled, default true. Passing false will disable queuing but not send the queue yet, so that any queued requests will be sent along with the next send()/sendRequest() |
+| shouldQueue | [boolean](../reference.md#type-boolean) | true | — | whether queuing should be enabled, default true. Passing false will disable queuing but not send the queue yet, so that any queued requests will be sent along with the next send()/sendRequest() |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — whether queuing was already enabled before we called.
+`[boolean](../reference.md#type-boolean)` — whether queuing was already enabled before we called.
 
 ### See Also
 
@@ -1291,7 +1291,7 @@ You can retrieve the id of the current transaction, if there is one, by [getQueu
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| transactionNum | [int](../main.md#type-int) | false | — | id of the transaction to be cleared |
+| transactionNum | [int](../reference.md#type-int) | false | — | id of the transaction to be cleared |
 
 ### See Also
 
@@ -1321,7 +1321,7 @@ The default implementation takes no action - by default transport errors are han
 
 Return an explicit `false` from this method to cancel default error handling, so that [RPCManager.handleError](#classmethod-rpcmanagerhandleerror) is not called for any [DSResponse](DSResponse.md#class-dsresponse) in this transaction.
 
-Note: This method only applies to operations submitted via [XMLHttpRequest](../main.md#type-rpctransport) - it is not possible to provide similar error handling for other transports.
+Note: This method only applies to operations submitted via [XMLHttpRequest](../reference.md#type-rpctransport) - it is not possible to provide similar error handling for other transports.
 
 See the [overview of error handling](../kb_topics/errorHandling.md#kb-topic-error-handling-overview) for additional guidance.
 
@@ -1329,9 +1329,9 @@ See the [overview of error handling](../kb_topics/errorHandling.md#kb-topic-erro
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| transactionNum | [int](../main.md#type-int) | false | — | The submitted client-server transaction number |
-| status | [Integer](../main_2.md#type-integer) | false | — | The RPCResponse status code |
-| httpResponseCode | [Integer](../main_2.md#type-integer) | false | — | The HTTP Response code reported by the server |
+| transactionNum | [int](../reference.md#type-int) | false | — | The submitted client-server transaction number |
+| status | [Integer](../reference_2.md#type-integer) | false | — | The RPCResponse status code |
+| httpResponseCode | [Integer](../reference_2.md#type-integer) | false | — | The HTTP Response code reported by the server |
 | httpResponseText | [String](#type-string) | false | — | The raw HTTP Response text |
 
 ### Returns
@@ -1362,7 +1362,7 @@ The `rpcResponse` parameter has rpcResponse.data set to the raw text of the resp
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| transactionNum | [int](../main.md#type-int) | false | — | id of the transaction |
+| transactionNum | [int](../reference.md#type-int) | false | — | id of the transaction |
 | rpcRequest | [RPCRequest](#type-rpcrequest) | false | — | first RPCRequest of the transaction |
 | rpcResponse | [RPCResponse](#type-rpcresponse) | false | — | RPCResponse containing the session timeout response that caused loginRequired() to be invoked |
 

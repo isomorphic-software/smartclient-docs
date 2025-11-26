@@ -1,6 +1,6 @@
 # Deck Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -76,7 +76,7 @@ Hides the current pane, without showing any other pane.
 ## Method: Deck.setCurrentPane
 
 ### Description
-Change the [CurrentPane](../main.md#type-currentpane).
+Change the [CurrentPane](../reference.md#type-currentpane).
 
 If the passed pane is not contained in this `Deck`, logs a warning and does nothing.
 
@@ -84,7 +84,7 @@ If the passed pane is not contained in this `Deck`, logs a warning and does noth
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| pane | [Canvas](#type-canvas)|[GlobalId](../main.md#type-globalid) | false | — | the pane to show, as either a `Canvas` or the [Canvas.ID](Canvas.md#attr-canvasid) |
+| pane | [Canvas](#type-canvas)|[GlobalId](../reference.md#type-globalid) | false | — | the pane to show, as either a `Canvas` or the [Canvas.ID](Canvas.md#attr-canvasid) |
 
 ---
 ## Method: Deck.addPane
@@ -97,7 +97,7 @@ Add a pane to this deck. If the specified pane is already present in the deck, i
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | pane | [Canvas](#type-canvas) | false | — | pane to add |
-| index | [Integer](../main_2.md#type-integer) | true | — | position for the new pane in the [panes](#attr-deckpanes) array. If no index is specified, the pane will be added to the end of the panes array. |
+| index | [Integer](../reference_2.md#type-integer) | true | — | position for the new pane in the [panes](#attr-deckpanes) array. If no index is specified, the pane will be added to the end of the panes array. |
 
 ---
 ## Method: Deck.currentPaneChanged

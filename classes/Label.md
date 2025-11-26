@@ -1,6 +1,6 @@
 # Label Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -125,7 +125,7 @@ Size in pixels of the icon image.
 
 The [iconWidth](StatefulCanvas.md#attr-statefulcanvasiconwidth) and [iconHeight](StatefulCanvas.md#attr-statefulcanvasiconheight) properties can be used to configure width and height separately.
 
-Note: When configuring the properties of a `StatefulCanvas` (or derivative) [AutoChild](../main.md#type-autochild), it is best to set the `iconWidth` and `iconHeight` to the same value rather than setting an `iconSize`. This is because certain skins or customizations thereto might set the `iconWidth` and `iconHeight`, making the customization of the AutoChild's `iconSize` ineffective.
+Note: When configuring the properties of a `StatefulCanvas` (or derivative) [AutoChild](../reference.md#type-autochild), it is best to set the `iconWidth` and `iconHeight` to the same value rather than setting an `iconSize`. This is because certain skins or customizations thereto might set the `iconWidth` and `iconHeight`, making the customization of the AutoChild's `iconSize` ineffective.
 
 ### Groups
 
@@ -299,7 +299,7 @@ Note that if [StatefulCanvas.autoFit](StatefulCanvas.md#attr-statefulcanvasautof
 ### Description
 Optional icon to be shown with the button title text.
 
-Specify as the partial URL to an image, relative to the imgDir of this component. A sprited image can be specified using the [SCSpriteConfig](../main.md#type-scspriteconfig) format.
+Specify as the partial URL to an image, relative to the imgDir of this component. A sprited image can be specified using the [SCSpriteConfig](../reference.md#type-scspriteconfig) format.
 
 Note that the string "blank" is a valid setting for this attribute and will always result in the system blank image, with no state suffixes applied. Typically, this might be used when an iconStyle is also specified and the iconStyle renders the icon via a stateful background-image or other CSS approach.
 
@@ -331,7 +331,7 @@ Dynamically change the CSS class for this widget. For a Label, this is equivalen
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newStyle | [CSSStyleName](../main.md#type-cssstylename) | false | — | new CSS style name |
+| newStyle | [CSSStyleName](../reference.md#type-cssstylename) | false | — | new CSS style name |
 
 ---
 ## Method: Label.setContents
@@ -345,7 +345,7 @@ When [dynamicContents](Canvas.md#attr-canvasdynamiccontents) is set, `setContent
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newContents | [HTMLString](../main.md#type-htmlstring) | true | — | an HTML string to be set as the contents of this widget |
+| newContents | [HTMLString](../reference.md#type-htmlstring) | true | — | an HTML string to be set as the contents of this widget |
 
 ---
 ## Method: Label.setIconOrientation
@@ -373,7 +373,7 @@ Change the icon being shown next to the title text.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| icon | [SCImgURL](../main.md#type-scimgurl) | false | — | URL of new icon |
+| icon | [SCImgURL](../reference.md#type-scimgurl) | false | — | URL of new icon |
 
 ### Groups
 

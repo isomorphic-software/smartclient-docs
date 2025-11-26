@@ -1,6 +1,6 @@
 # I18n Messages
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -762,7 +762,7 @@ The properties in this group are default system messages that a localized applic
 - [SavedSearchEditor.overwriteSharedSearchConfirmationMessage](../classes/SavedSearchEditor.md#attr-savedsearcheditoroverwritesharedsearchconfirmationmessage)
 - [SavedSearchEditor.overwriteSearchConfirmationMessage](../classes/SavedSearchEditor.md#attr-savedsearcheditoroverwritesearchconfirmationmessage)
 - [SavedSearchEditor.validationFailedMessage](../classes/SavedSearchEditor.md#attr-savedsearcheditorvalidationfailedmessage)
-- [EditSearchWindow.title](../main.md#attr-editsearchwindowtitle)
+- [EditSearchWindow.title](../reference.md#attr-editsearchwindowtitle)
 - [RelativeDateItem.millisecondsAgoTitle](../classes/RelativeDateItem.md#attr-relativedateitemmillisecondsagotitle)
 - [RelativeDateItem.secondsAgoTitle](../classes/RelativeDateItem.md#attr-relativedateitemsecondsagotitle)
 - [RelativeDateItem.minutesAgoTitle](../classes/RelativeDateItem.md#attr-relativedateitemminutesagotitle)
@@ -831,12 +831,12 @@ The properties in this group are default system messages that a localized applic
 - [AIFieldBuilder.testButtonHoverContents_cantTest](../classes/AIFieldBuilder.md#attr-aifieldbuildertestbuttonhovercontents_canttest)
 - [AIFieldBuilder.testButtonHoverContents_cantTestWithoutData](../classes/AIFieldBuilder.md#attr-aifieldbuildertestbuttonhovercontents_canttestwithoutdata)
 - [AIFieldBuilder.anotherSuggestedTitleRequestedCancellationReason](../classes/AIFieldBuilder.md#attr-aifieldbuilderanothersuggestedtitlerequestedcancellationreason)
-- [AISortFieldBuilder.titleFieldTitle](../main.md#attr-aisortfieldbuildertitlefieldtitle)
-- [AISortFieldBuilder.instructionsTextStart](../main.md#attr-aisortfieldbuilderinstructionstextstart)
-- [BuildViaAIProgressDialog.title](../main.md#attr-buildviaaiprogressdialogtitle)
-- [BuildUIViaAIProgressDialog.title](../main.md#attr-builduiviaaiprogressdialogtitle)
-- [FilterViaAIProgressDialog.title](../main.md#attr-filterviaaiprogressdialogtitle)
-- [HiliteViaAIProgressDialog.title](../main.md#attr-hiliteviaaiprogressdialogtitle)
+- [AISortFieldBuilder.titleFieldTitle](../reference.md#attr-aisortfieldbuildertitlefieldtitle)
+- [AISortFieldBuilder.instructionsTextStart](../reference.md#attr-aisortfieldbuilderinstructionstextstart)
+- [BuildViaAIProgressDialog.title](../reference.md#attr-buildviaaiprogressdialogtitle)
+- [BuildUIViaAIProgressDialog.title](../reference.md#attr-builduiviaaiprogressdialogtitle)
+- [FilterViaAIProgressDialog.title](../reference.md#attr-filterviaaiprogressdialogtitle)
+- [HiliteViaAIProgressDialog.title](../reference.md#attr-hiliteviaaiprogressdialogtitle)
 - [FacetChart.proportionalAxisLabel](../classes/FacetChart.md#attr-facetchartproportionalaxislabel)
 - [MetricSettings.proportionalAxisLabel](../classes/MetricSettings.md#attr-metricsettingsproportionalaxislabel)
 

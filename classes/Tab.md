@@ -1,6 +1,6 @@
 # Tab Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -189,7 +189,7 @@ After the TabSet has been created, you can change a tab's `pickerTitle` property
 ### Description
 If specified, overrides the [TabSet.canEditTabTitles](TabSet.md#attr-tabsetcanedittabtitles) setting, for this one tab only.
 
-Note that the TabSet's [titleEditEvent](TabSet.md#attr-tabsettitleeditevent) must be set to a supported [TabTitleEditEvent](../main.md#type-tabtitleeditevent) in order for users to be able to edit this tab's title.
+Note that the TabSet's [titleEditEvent](TabSet.md#attr-tabsettitleeditevent) must be set to a supported [TabTitleEditEvent](../reference.md#type-tabtitleeditevent) in order for users to be able to edit this tab's title.
 
 After the TabSet has been created, you can change a tab's `canEditTtile` property by calling [TabSet.setTabProperties](TabSet.md#method-tabsetsettabproperties).
 
@@ -287,16 +287,16 @@ Optional handler to fire when a tab is deselected. Returning false will cancel t
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | tabSet | [TabSet](#type-tabset) | false | — | the tabSet containing the tab. |
-| tabNum | [Integer](../main_2.md#type-integer) | false | — | the index of the deselected tab |
+| tabNum | [Integer](../reference_2.md#type-integer) | false | — | the index of the deselected tab |
 | tabPane | [Canvas](#type-canvas) | false | — | the deselected tab's pane if set |
-| ID | [GlobalId](../main.md#type-globalid) | false | — | the ID of the deselected tab |
+| ID | [GlobalId](../reference.md#type-globalid) | false | — | the ID of the deselected tab |
 | tab | [Tab](#type-tab) | false | — | the deselected tab object (not tab button instance) |
 | newTab | [Tab](#type-tab) | false | — | the tab object being selected |
-| name | [TabName](../main.md#type-tabname) | false | — | the name of the deselected tab |
+| name | [TabName](../reference.md#type-tabname) | false | — | the name of the deselected tab |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — return `false` to cancel the tab selection
+`[boolean](../reference.md#type-boolean)` — return `false` to cancel the tab selection
 
 ### See Also
 
@@ -313,11 +313,11 @@ Optional handler to fire when a tab is selected. As with [TabSet.tabSelected](Ta
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | tabSet | [TabSet](#type-tabset) | false | — | the tabSet containing the tab. |
-| tabNum | [Integer](../main_2.md#type-integer) | false | — | the index of the newly selected tab |
+| tabNum | [Integer](../reference_2.md#type-integer) | false | — | the index of the newly selected tab |
 | tabPane | [Canvas](#type-canvas) | false | — | the newly selected tab's pane if set |
-| ID | [GlobalId](../main.md#type-globalid) | false | — | the ID of the newly selected tab |
+| ID | [GlobalId](../reference.md#type-globalid) | false | — | the ID of the newly selected tab |
 | tab | [Tab](#type-tab) | false | — | the tab object (not tab button instance) |
-| name | [TabName](../main.md#type-tabname) | false | — | the name of the newly selected tab |
+| name | [TabName](../reference.md#type-tabname) | false | — | the name of the newly selected tab |
 
 ### See Also
 

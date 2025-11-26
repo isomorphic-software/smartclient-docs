@@ -1,6 +1,6 @@
 # GridRenderer Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -736,7 +736,7 @@ If you do implement `getCellRecord`, the value you return is passed to you as th
 
 ### Returns
 
-`[Object](../main.md#type-object)` — record for this cell
+`[Object](../reference.md#type-object)` — record for this cell
 
 ---
 ## Method: GridRenderer.rowMouseDown
@@ -754,7 +754,7 @@ Called when a row receives a mousedown event.
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -812,7 +812,7 @@ Called when a row receives a mouseup event.
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -836,7 +836,7 @@ Optional stringMethod to fire when the user hovers over a cell and the value is 
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — false to suppress the standard hover
+`[boolean](../reference.md#type-boolean)` — false to suppress the standard hover
 
 ### Groups
 
@@ -889,7 +889,7 @@ Return the base stylename for this cell. Default implementation just returns thi
 
 ### Returns
 
-`[CSSStyleName](../main.md#type-cssstylename)` — CSS class for this cell
+`[CSSStyleName](../reference.md#type-cssstylename)` — CSS class for this cell
 
 ### See Also
 
@@ -929,11 +929,11 @@ Returns the row number of the provided Y-coordinate, or the most recent mouse ev
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| y | [Integer](../main_2.md#type-integer) | true | — | Y-coordinate relative to the top edge of the content to obtain the row number for. If not provided, then [Canvas.getOffsetY](Canvas.md#method-canvasgetoffsety) will be used. |
+| y | [Integer](../reference_2.md#type-integer) | true | — | Y-coordinate relative to the top edge of the content to obtain the row number for. If not provided, then [Canvas.getOffsetY](Canvas.md#method-canvasgetoffsety) will be used. |
 
 ### Returns
 
-`[int](../main.md#type-int)` — row number, or -2 if beyond last drawn row
+`[int](../reference.md#type-int)` — row number, or -2 if beyond last drawn row
 
 ### Groups
 
@@ -1015,7 +1015,7 @@ Called when a cell receives a mouseup event.
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -1039,7 +1039,7 @@ StringMethod to dynamically assemble an HTML string to show in a hover window ov
 
 ### Returns
 
-`[HTMLString](../main.md#type-htmlstring)` — the html to be shown inside the hover for this cell
+`[HTMLString](../reference.md#type-htmlstring)` — the html to be shown inside the hover for this cell
 
 ### Groups
 
@@ -1064,12 +1064,12 @@ For example, if row 2 col 0 spans 3 cells, `getCellStartRow()` for row 2 col 0, 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| rowNum | [int](../main.md#type-int) | false | — | row number of cell for which the start row should be returned |
-| colNum | [int](../main.md#type-int) | false | — | column number of cell for which the start row should be returned |
+| rowNum | [int](../reference.md#type-int) | false | — | row number of cell for which the start row should be returned |
+| colNum | [int](../reference.md#type-int) | false | — | column number of cell for which the start row should be returned |
 
 ### Returns
 
-`[int](../main.md#type-int)` — row number where spanning starts
+`[int](../reference.md#type-int)` — row number where spanning starts
 
 ---
 ## Method: GridRenderer.cellSelectionChanged
@@ -1085,7 +1085,7 @@ Called when (cell-based) selection changes within this grid.
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — Returning false will prevent the GridRenderer styling from being updated to reflect the selection change.
+`[boolean](../reference.md#type-boolean)` — Returning false will prevent the GridRenderer styling from being updated to reflect the selection change.
 
 ### Groups
 
@@ -1135,7 +1135,7 @@ Called when the mouse pointer leaves a cell
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -1156,11 +1156,11 @@ Returns the HTML that is displayed by the default cellValueHover handler. Return
 | record | [ListGridRecord](#type-listgridrecord) | false | — | cell record as returned by getCellRecord() |
 | rowNum | [number](#type-number) | false | — | row number for the cell |
 | colNum | [number](#type-number) | false | — | column number of the cell |
-| defaultHTML | [HTMLString](../main.md#type-htmlstring) | false | — | the HTML that would have been displayed by default |
+| defaultHTML | [HTMLString](../reference.md#type-htmlstring) | false | — | the HTML that would have been displayed by default |
 
 ### Returns
 
-`[HTMLString](../main.md#type-htmlstring)` — HTML to be displayed in the hover. If null or an empty string, then the hover is canceled.
+`[HTMLString](../reference.md#type-htmlstring)` — HTML to be displayed in the hover. If null or an empty string, then the hover is canceled.
 
 ### Groups
 
@@ -1235,7 +1235,7 @@ Called when the mouse hovers over a row if this.canHover is true. Returning fals
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — whether to cancel the event (default behavior of showing the hover)
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event (default behavior of showing the hover)
 
 ### Groups
 
@@ -1263,7 +1263,7 @@ Called when the mouse hovers over a cell if `this.canHover` is `true`. Returning
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -1291,7 +1291,7 @@ Called when the mouse pointer leaves a row
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -1392,11 +1392,11 @@ This method is reliable only for rows that are currently drawn, which is general
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| rowNum | [int](../main.md#type-int) | false | — | — |
+| rowNum | [int](../reference.md#type-int) | false | — | — |
 
 ### Returns
 
-`[int](../main.md#type-int)` — Y-coordinate
+`[int](../reference.md#type-int)` — Y-coordinate
 
 ### Groups
 
@@ -1414,7 +1414,7 @@ Setter for [GridRenderer.fastCellUpdates](#attr-gridrendererfastcellupdates). Ha
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| fastCellUpdates | [boolean](../main.md#type-boolean) | false | — | whether to enable fastCellUpdates. |
+| fastCellUpdates | [boolean](../reference.md#type-boolean) | false | — | whether to enable fastCellUpdates. |
 
 ---
 ## Method: GridRenderer.getColumnPageLeft
@@ -1426,11 +1426,11 @@ Return the left coordinate for a given column number as a GLOBAL coordinate
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| colNum | [Integer](../main_2.md#type-integer) | false | — | number of the column |
+| colNum | [Integer](../reference_2.md#type-integer) | false | — | number of the column |
 
 ### Returns
 
-`[Integer](../main_2.md#type-integer)` — page left offset of the passed colNum, or null if undrawn or no such column
+`[Integer](../reference_2.md#type-integer)` — page left offset of the passed colNum, or null if undrawn or no such column
 
 ### Groups
 
@@ -1455,7 +1455,7 @@ Called when a cell receives a double click event.
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -1479,7 +1479,7 @@ Called when the mouse pointer enters a row
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -1497,11 +1497,11 @@ Returns the column number of the provided X-coordinate, or the most recent mouse
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| x | [Integer](../main_2.md#type-integer) | true | — | X-coordinate relative to the left edge of the content to obtain the column number for. If not provided, then [Canvas.getOffsetX](Canvas.md#method-canvasgetoffsetx) will be used. |
+| x | [Integer](../reference_2.md#type-integer) | true | — | X-coordinate relative to the left edge of the content to obtain the column number for. If not provided, then [Canvas.getOffsetX](Canvas.md#method-canvasgetoffsetx) will be used. |
 
 ### Returns
 
-`[int](../main.md#type-int)` — column number, or -2 if beyond last drawn column
+`[int](../reference.md#type-int)` — column number, or -2 if beyond last drawn column
 
 ### Groups
 
@@ -1559,7 +1559,7 @@ In addition to this, [getCellCSSText()](#method-gridrenderergetcellcsstext) may 
 
 ### Returns
 
-`[CSSStyleName](../main.md#type-cssstylename)` — CSS style for this cell
+`[CSSStyleName](../reference.md#type-cssstylename)` — CSS style for this cell
 
 ### Groups
 
@@ -1581,12 +1581,12 @@ This method returns row span information for the current rendered cells. In cont
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| rowNum | [int](../main.md#type-int) | false | — | row number of cell to return the row span for |
-| colNum | [int](../main.md#type-int) | false | — | column number of cell to return the row span for |
+| rowNum | [int](../reference.md#type-int) | false | — | row number of cell to return the row span for |
+| colNum | [int](../reference.md#type-int) | false | — | column number of cell to return the row span for |
 
 ### Returns
 
-`[int](../main.md#type-int)` — number of cells spanned by the cell that spans through these coordinates
+`[int](../reference.md#type-int)` — number of cells spanned by the cell that spans through these coordinates
 
 ---
 ## Method: GridRenderer.rowClick
@@ -1604,7 +1604,7 @@ Called when a row receives a click event.
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -1627,7 +1627,7 @@ Whether this cell should be considered enabled. Affects whether events will fire
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — whether this record is enabled or not
+`[boolean](../reference.md#type-boolean)` — whether this record is enabled or not
 
 ### Groups
 
@@ -1652,7 +1652,7 @@ Called when a row receives a contextclick event.
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -1694,11 +1694,11 @@ Return the left coordinate (in local coordinate space) of a particular column.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| colNum | [Integer](../main_2.md#type-integer) | false | — | number of the column |
+| colNum | [Integer](../reference_2.md#type-integer) | false | — | number of the column |
 
 ### Returns
 
-`[Integer](../main_2.md#type-integer)` — left coordinate of the passed colNum
+`[Integer](../reference_2.md#type-integer)` — left coordinate of the passed colNum
 
 ### Groups
 
@@ -1723,7 +1723,7 @@ Called when a cell receives a mousedown event.
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -1747,7 +1747,7 @@ Called when the mouse pointer enters a cell
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -1811,11 +1811,11 @@ Returns the Y-coordinate for a given row number as a page-relative coordinate. S
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| rowNum | [int](../main.md#type-int) | false | — | — |
+| rowNum | [int](../reference.md#type-int) | false | — | — |
 
 ### Returns
 
-`[int](../main.md#type-int)` — Y-coordinate
+`[int](../reference.md#type-int)` — Y-coordinate
 
 ### Groups
 
@@ -1839,7 +1839,7 @@ Called when a row receives a double click event.
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -1863,7 +1863,7 @@ Called when a cell receives a click event.
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -1884,7 +1884,7 @@ NOTE: For updating other components based on selections or triggering selection-
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | record | [ListGridRecord](#type-listgridrecord) | false | — | record for which selection changed |
-| state | [boolean](../main.md#type-boolean) | false | — | New selection state (true for selected, false for unselected) |
+| state | [boolean](../reference.md#type-boolean) | false | — | New selection state (true for selected, false for unselected) |
 
 ### Groups
 
@@ -1908,7 +1908,7 @@ Called when a cell receives a contextclick event.
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 

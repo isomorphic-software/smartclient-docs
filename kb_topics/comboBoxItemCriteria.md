@@ -1,6 +1,6 @@
 # ComboBoxItem criteria
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -15,7 +15,7 @@ A ComboBoxItem generates two different types of criteria in different circumstan
 This overview covers the latter case: how a ComboBoxItem creates criteria for searching some in some other component.
 
 **Explicitly selected option:**  
-If a user explicitly selects an option from the ComboBox drop down pickList, default behavior is to generate an [advanced criterion](../classes/ComboBoxItem.md#method-comboboxitemhasadvancedcriteria) with [operator:"equals"](../main.md#type-operatorid) to exactly match the selected option.
+If a user explicitly selects an option from the ComboBox drop down pickList, default behavior is to generate an [advanced criterion](../classes/ComboBoxItem.md#method-comboboxitemhasadvancedcriteria) with [operator:"equals"](../reference.md#type-operatorid) to exactly match the selected option.
 
 This reflects user expectation. If you are, for example, filtering a grid of Orders, and you have a ComboBoxItem as part of a search interface that allows you to pick a specific salesRep, then you expect to see only orders handled by that salesRep.
 

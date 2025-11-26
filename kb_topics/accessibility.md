@@ -1,6 +1,6 @@
 # Accessibility / Section 508 compliance
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 

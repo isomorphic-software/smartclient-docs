@@ -1,6 +1,6 @@
 # Date and Time Format and Storage
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -13,7 +13,7 @@ DataSources and databound components may define fields of type `date`, `time`, o
 
 #### "date" handling
 
-Fields of type [date](../main_2.md#type-fieldtype) are considered to be logical Dates with no time value, such as a holiday or birthday. In the browser, values for "date" fields are stored as Date objects, but when formatted for display to the user, they are typically displayed without any time information.
+Fields of type [date](../reference_2.md#type-fieldtype) are considered to be logical Dates with no time value, such as a holiday or birthday. In the browser, values for "date" fields are stored as Date objects, but when formatted for display to the user, they are typically displayed without any time information.
 
 When using the SmartClient server framework, "date" values are automatically transmitted with year, month and day preserved and time value ignored.
 
@@ -25,7 +25,7 @@ System wide formatting for dates may be controlled via the [DateUtil.setNormalDi
 
 #### "datetime" handling
 
-Fields of type [datetime](../main_2.md#type-fieldtype) are dates with full time information. In the browser, values for datetime fields are stored as Date objects.
+Fields of type [datetime](../reference_2.md#type-fieldtype) are dates with full time information. In the browser, values for datetime fields are stored as Date objects.
 
 When using the SmartClient server framework, "datetime" values are automatically transmitted such that the resulting Date object has the same GMT/UTC timestamp. This value is referred to elsewhere in these discussions as an "epoch value", and it is precisely defined as: the number of milliseconds since midnight on January 1st 1970 in the UTC timezone (because 1970-01-01 00:00:00 UTC is "the epoch").
 
@@ -37,7 +37,7 @@ System wide formatting for datetimes may be controlled via the [DateUtil.setShor
 
 #### "time" handling
 
-Fields of type [time](../main_2.md#type-fieldtype) are time values in the absence of a day, such as the beginning of the workday (9:00). In the browser, values for "time" fields are stored as Date objects with the time in browser local time. The date information has no meaning and only the time information is displayed to the user.
+Fields of type [time](../reference_2.md#type-fieldtype) are time values in the absence of a day, such as the beginning of the workday (9:00). In the browser, values for "time" fields are stored as Date objects with the time in browser local time. The date information has no meaning and only the time information is displayed to the user.
 
 Time formatting is handled by the [Time](../classes/Time.md#class-time) class APIs.  
 When using the SmartClient server framework, "time" values are automatically transmitted such that the resulting Date object has the same hour, minute and second values in local time, and year/month/day is ignored.
@@ -52,7 +52,7 @@ By default, "datetime" values will be shown to the user in browser local time, a
 
 Note that depending on the specific date being displayed, a Daylight Savings Time offset may also be applied based on the browser locale. To disable this behavior set [Time.adjustForDST](../classes/Time.md#classattr-timeadjustfordst) to false.
 
-If a custom timezone is specified, it will be respected by all [TimeDisplayFormat](../main_2.md#type-timedisplayformat)s, and by the standard short [DateDisplayFormat](../main.md#type-datedisplayformat)s when formatting dates representing datetime type values. However native JavaScript Date formatters, including `toLocaleString()` will not respect the specified timezone. Developers specifying a custom timezone may therefore wish to modify the [DateUtil.setNormalDisplayFormat](../classes/DateUtil.md#classmethod-dateutilsetnormaldisplayformat) to avoid using a native JS Date formatter function.
+If a custom timezone is specified, it will be respected by all [TimeDisplayFormat](../reference_2.md#type-timedisplayformat)s, and by the standard short [DateDisplayFormat](../reference.md#type-datedisplayformat)s when formatting dates representing datetime type values. However native JavaScript Date formatters, including `toLocaleString()` will not respect the specified timezone. Developers specifying a custom timezone may therefore wish to modify the [DateUtil.setNormalDisplayFormat](../classes/DateUtil.md#classmethod-dateutilsetnormaldisplayformat) to avoid using a native JS Date formatter function.
 
 Note that in addition to the system-wide date, datetime and time-formatting settings described above, databound components also support applying custom display formats for date values. Typically this can be achieved via a custom `dateFormatter` or `timeFormatter` at the field level (see [DataSourceField.dateFormatter](../classes/DataSourceField.md#attr-datasourcefielddateformatter), [DataSourceField.timeFormatter](../classes/DataSourceField.md#attr-datasourcefieldtimeformatter) and for example [ListGridField.dateFormatter](../classes/ListGridField.md#attr-listgridfielddateformatter)). Date formatting may also be configured at the component level by setting the `dateFormatter`, `datetimeFormatter` and `timeFormatter` attributes (See for example [ListGrid.dateFormatter](../classes/ListGrid_1.md#attr-listgriddateformatter), [ListGrid.timeFormatter](../classes/ListGrid_1.md#attr-listgridtimeformatter), and [ListGrid.datetimeFormatter](../classes/ListGrid_1.md#attr-listgriddatetimeformatter)).
 

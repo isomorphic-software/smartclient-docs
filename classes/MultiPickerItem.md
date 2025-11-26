@@ -1,6 +1,6 @@
 # MultiPickerItem Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -17,13 +17,13 @@ MultiPickerItem is a compact editor for this purpose, using a [pop-up](#attr-mul
 
 To configure a MultiPickerItem, provide either an optionDataSource or a valueMap. The [value](FormItem.md#method-formitemgetvalue) stored by a MultiPickerItem is the set of selected items, as either a list of [primary key values](DataSourceField.md#attr-datasourcefieldprimarykey) if an optionDataSource is used, or as just ID values if an valueMap is used.
 
-The item's picker-component can be customized via settings such as [sortField](#attr-multipickeritemsortfield), or by configuring [auto-children](../main.md#type-autochild) like the [search-form](#attr-multipickeritemfilterform), the [main pickList-grid](#attr-multipickeritempicklist) or the separate list of [selected values](#attr-multipickeritemselectionlist). You can use [MultiPickerItem.optionFilterContext](#attr-multipickeritemoptionfiltercontext) to apply custom `requestProperties` to fetches from the main `pickList` grid.
+The item's picker-component can be customized via settings such as [sortField](#attr-multipickeritemsortfield), or by configuring [auto-children](../reference.md#type-autochild) like the [search-form](#attr-multipickeritemfilterform), the [main pickList-grid](#attr-multipickeritempicklist) or the separate list of [selected values](#attr-multipickeritemselectionlist). You can use [MultiPickerItem.optionFilterContext](#attr-multipickeritemoptionfiltercontext) to apply custom `requestProperties` to fetches from the main `pickList` grid.
 
 ---
 ## Attr: MultiPickerItem.canSelectFolders
 
 ### Description
-For multiPickerItems with [selectionStyle:"pickTree"](../main.md#type-selectionstyle), should the user be able to select and deselect folders?
+For multiPickerItems with [selectionStyle:"pickTree"](../reference.md#type-selectionstyle), should the user be able to select and deselect folders?
 
 If false, selection checkboxes will only be visible by leaf nodes within the pickTree data set.
 
@@ -43,7 +43,7 @@ textMatchStyle to apply to [option criteria](#method-multipickeritemgetoptioncri
 ## Attr: MultiPickerItem.cascadeSelection
 
 ### Description
-For multiPickerItems with [selectionStyle:"pickTree"](../main.md#type-selectionstyle), and [canSelectFolders:true](#attr-multipickeritemcanselectfolders), should [TreeGrid.cascadeSelection](TreeGrid.md#attr-treegridcascadeselection) be enabled on our pickTree?
+For multiPickerItems with [selectionStyle:"pickTree"](../reference.md#type-selectionstyle), and [canSelectFolders:true](#attr-multipickeritemcanselectfolders), should [TreeGrid.cascadeSelection](TreeGrid.md#attr-treegridcascadeselection) be enabled on our pickTree?
 
 **Flags**: IR
 
@@ -51,7 +51,7 @@ For multiPickerItems with [selectionStyle:"pickTree"](../main.md#type-selections
 ## Attr: MultiPickerItem.pickList
 
 ### Description
-The MultiPickerItem `pickList` is a filterable ListGrid [AutoChild](../main.md#type-autochild) for viewing and selecting the list of available options when [SelectionStyle](../main.md#type-selectionstyle) is `"pickList"`.
+The MultiPickerItem `pickList` is a filterable ListGrid [AutoChild](../reference.md#type-autochild) for viewing and selecting the list of available options when [SelectionStyle](../reference.md#type-selectionstyle) is `"pickList"`.
 
 It is rendered inside the [MultiPickerItem.pickerLayout](#attr-multipickeritempickerlayout) along with the optional [MultiPickerItem.selectionList](#attr-multipickeritemselectionlist)
 
@@ -61,7 +61,7 @@ It is rendered inside the [MultiPickerItem.pickerLayout](#attr-multipickeritempi
 ## Attr: MultiPickerItem.showSelectionList
 
 ### Description
-Should a [list of selected items](#attr-multipickeritemselectionlist) be displayed below the [PickList](../main_2.md#interface-picklist) if [SelectionStyle](../main.md#type-selectionstyle) is `"pickList"`?
+Should a [list of selected items](#attr-multipickeritemselectionlist) be displayed below the [PickList](../reference_2.md#interface-picklist) if [SelectionStyle](../reference.md#type-selectionstyle) is `"pickList"`?
 
 **Flags**: IR
 
@@ -77,7 +77,7 @@ Width for the [MultiPickerItem.pickerLayout](#attr-multipickeritempickerlayout) 
 ## Attr: MultiPickerItem.shuttleHeight
 
 ### Description
-Height for the [MultiPickerItem.pickerLayout](#attr-multipickeritempickerlayout) when [SelectionStyle](../main.md#type-selectionstyle) is `"shuttle"`.
+Height for the [MultiPickerItem.pickerLayout](#attr-multipickeritempickerlayout) when [SelectionStyle](../reference.md#type-selectionstyle) is `"shuttle"`.
 
 **Flags**: IRW
 
@@ -101,7 +101,7 @@ AutoChild to show the [MultiPickerItem.selectedSelectionListTitle](#attr-multipi
 ## Attr: MultiPickerItem.pickerLayout
 
 ### Description
-Main dropdown picker layout containing the [PickList](../main_2.md#interface-picklist) or [Shuttle](Shuttle.md#class-shuttle).
+Main dropdown picker layout containing the [PickList](../reference_2.md#interface-picklist) or [Shuttle](Shuttle.md#class-shuttle).
 
 **Flags**: IR
 
@@ -109,7 +109,7 @@ Main dropdown picker layout containing the [PickList](../main_2.md#interface-pic
 ## Attr: MultiPickerItem.optionDataSource
 
 ### Description
-If set, this FormItem will map stored values to display values as though a [ValueMap](../main_2.md#type-valuemap) were specified, by fetching records from the specified `optionDataSource` and extracting the [valueField](FormItem.md#attr-formitemvaluefield) and [displayField](FormItem.md#attr-formitemdisplayfield) in loaded records, to derive one valueMap entry per record loaded from the optionDataSource.
+If set, this FormItem will map stored values to display values as though a [ValueMap](../reference_2.md#type-valuemap) were specified, by fetching records from the specified `optionDataSource` and extracting the [valueField](FormItem.md#attr-formitemvaluefield) and [displayField](FormItem.md#attr-formitemdisplayfield) in loaded records, to derive one valueMap entry per record loaded from the optionDataSource.
 
 With the default setting of [fetchMissingValues](FormItem.md#attr-formitemfetchmissingvalues), fetches will be initiated against the optionDataSource any time the FormItem has a non-null value and no corresponding display value is available. This includes when the form is first initialized, as well as any subsequent calls to [FormItem.setValue](FormItem.md#method-formitemsetvalue), such as may happen when [DynamicForm.editRecord](DynamicForm.md#method-dynamicformeditrecord) is called. Retrieved values are automatically cached by the FormItem.
 
@@ -151,7 +151,7 @@ Title for the [MultiPickerItem.selectAllButton](#attr-multipickeritemselectallbu
 ## Attr: MultiPickerItem.pickListWidth
 
 ### Description
-Default width for the [MultiPickerItem.pickerLayout](#attr-multipickeritempickerlayout) when [SelectionStyle](../main.md#type-selectionstyle) is `"pickList"`.
+Default width for the [MultiPickerItem.pickerLayout](#attr-multipickeritempickerlayout) when [SelectionStyle](../reference.md#type-selectionstyle) is `"pickList"`.
 
 **Flags**: IRW
 
@@ -159,7 +159,7 @@ Default width for the [MultiPickerItem.pickerLayout](#attr-multipickeritempicker
 ## Attr: MultiPickerItem.selectAllButton
 
 ### Description
-Select All button [AutoChild](../main.md#type-autochild)
+Select All button [AutoChild](../reference.md#type-autochild)
 
 **Flags**: IR
 
@@ -181,7 +181,7 @@ This will be shown inside the field via [TextItem.showHintInField](TextItem.md#a
 ## Attr: MultiPickerItem.expandIconSrc
 
 ### Description
-[SCImgURL](../main.md#type-scimgurl) for the [MultiPickerItem.expansionIcon](#attr-multipickeritemexpansionicon) while not in expanded mode
+[SCImgURL](../reference.md#type-scimgurl) for the [MultiPickerItem.expansionIcon](#attr-multipickeritemexpansionicon) while not in expanded mode
 
 **Flags**: IR
 
@@ -197,7 +197,7 @@ This will be shown inside the field via [TextItem.showHintInField](TextItem.md#a
 ## Attr: MultiPickerItem.deselectAllWhileFiltered_partialCachePrompt
 
 ### Description
-Disabled prompt for the [MultiPickerItem.deselectAllButton](#attr-multipickeritemdeselectallbutton) while filtered if [MultiPickerItem.selectAllWhileFiltered](#attr-multipickeritemselectallwhilefiltered) is set to `"whenLoaded"` and the [PickList](../main_2.md#interface-picklist) does not have a complete data set loaded on the client.
+Disabled prompt for the [MultiPickerItem.deselectAllButton](#attr-multipickeritemdeselectallbutton) while filtered if [MultiPickerItem.selectAllWhileFiltered](#attr-multipickeritemselectallwhilefiltered) is set to `"whenLoaded"` and the [PickList](../reference_2.md#interface-picklist) does not have a complete data set loaded on the client.
 
 ### Groups
 
@@ -209,7 +209,7 @@ Disabled prompt for the [MultiPickerItem.deselectAllButton](#attr-multipickerite
 ## Attr: MultiPickerItem.includeSelectedParents
 
 ### Description
-For multiPickerItems with [selectionStyle:"pickTree"](../main.md#type-selectionstyle), and [canSelectFolders:true](#attr-multipickeritemcanselectfolders), should selected parent nodes be included in the item's value?
+For multiPickerItems with [selectionStyle:"pickTree"](../reference.md#type-selectionstyle), and [canSelectFolders:true](#attr-multipickeritemcanselectfolders), should selected parent nodes be included in the item's value?
 
 When [cascading selection](#attr-multipickeritemcascadeselection) is enabled for a tree, the selected state of parent nodes always reflects the selected state of their children, and it may not be necessary or desirable to explicitly record the parents' selected state in the item's value.
 
@@ -236,7 +236,7 @@ If this field has an [FormItem.optionDataSource](FormItem.md#attr-formitemoption
 If not using [local display values](FormItem.md#attr-formitemuselocaldisplayfieldvalue), the display value for this item will be derived by performing a fetch against the [option dataSource](FormItem.md#method-formitemgetoptiondatasource) to find a record where the [value field](FormItem.md#method-formitemgetvaluefieldname) matches this item's value, and use the `displayField` value from that record.  
 In addition to this, PickList-based form items that provide a list of possible options such as the [SelectItem](SelectItem.md#class-selectitem) or [ComboBoxItem](ComboBoxItem.md#class-comboboxitem) will show the `displayField` values to the user by default, allowing them to choose a new data value (see [FormItem.valueField](FormItem.md#attr-formitemvaluefield)) from a list of user-friendly display values.
 
-This essentially allows the specified `optionDataSource` to be used as a server based [valueMap](../main.md#kb-topic-valuemap).
+This essentially allows the specified `optionDataSource` to be used as a server based [valueMap](../reference.md#kb-topic-valuemap).
 
 If [local display values](FormItem.md#attr-formitemuselocaldisplayfieldvalue) are being used and [FormItem.storeDisplayValues](FormItem.md#attr-formitemstoredisplayvalues) is true, selecting a new value will update both the value for this field and the associated display-field value on the record being edited.
 
@@ -365,7 +365,7 @@ Should we show an [MultiPickerItem.expansionIcon](#attr-multipickeritemexpansion
 ## Attr: MultiPickerItem.shuttleWidth
 
 ### Description
-Width for the [MultiPickerItem.pickerLayout](#attr-multipickeritempickerlayout) when [SelectionStyle](../main.md#type-selectionstyle) is `"shuttle"`.
+Width for the [MultiPickerItem.pickerLayout](#attr-multipickeritempickerlayout) when [SelectionStyle](../reference.md#type-selectionstyle) is `"shuttle"`.
 
 **Flags**: IRW
 
@@ -381,7 +381,7 @@ Width for the [MultiPickerItem.pickerLayout](#attr-multipickeritempickerlayout) 
 ## Attr: MultiPickerItem.expandedPickListFields
 
 ### Description
-If [MultiPickerItem.canExpand](#attr-multipickeritemcanexpand) is true, this is the list of fields to display in the [PickList](../main_2.md#interface-picklist) or [MultiPickerItem.pickTree](#attr-multipickeritempicktree) when the picker is expanded
+If [MultiPickerItem.canExpand](#attr-multipickeritemcanexpand) is true, this is the list of fields to display in the [PickList](../reference_2.md#interface-picklist) or [MultiPickerItem.pickTree](#attr-multipickeritempicktree) when the picker is expanded
 
 **Flags**: IR
 
@@ -389,9 +389,9 @@ If [MultiPickerItem.canExpand](#attr-multipickeritemcanexpand) is true, this is 
 ## Attr: MultiPickerItem.selectionList
 
 ### Description
-Automatically generated ListGrid displaying the current selection for [selectionStyle:"pickList"](../main.md#type-selectionstyle).
+Automatically generated ListGrid displaying the current selection for [selectionStyle:"pickList"](../reference.md#type-selectionstyle).
 
-Has [canRemoveRecords](ListGrid_1.md#attr-listgridcanremoverecords) enabled as an alternative UI for deselecting records to unchecking the item in the [PickList](../main_2.md#interface-picklist).
+Has [canRemoveRecords](ListGrid_1.md#attr-listgridcanremoverecords) enabled as an alternative UI for deselecting records to unchecking the item in the [PickList](../reference_2.md#interface-picklist).
 
 **Flags**: IR
 
@@ -399,7 +399,7 @@ Has [canRemoveRecords](ListGrid_1.md#attr-listgridcanremoverecords) enabled as a
 ## Attr: MultiPickerItem.selectAllWhileFiltered_partialCachePrompt
 
 ### Description
-Disabled prompt for the [MultiPickerItem.selectAllButton](#attr-multipickeritemselectallbutton) while filtered if [MultiPickerItem.selectAllWhileFiltered](#attr-multipickeritemselectallwhilefiltered) is set to `"whenLoaded"` and the [PickList](../main_2.md#interface-picklist) does not have a complete data set loaded on the client.
+Disabled prompt for the [MultiPickerItem.selectAllButton](#attr-multipickeritemselectallbutton) while filtered if [MultiPickerItem.selectAllWhileFiltered](#attr-multipickeritemselectallwhilefiltered) is set to `"whenLoaded"` and the [PickList](../reference_2.md#interface-picklist) does not have a complete data set loaded on the client.
 
 ### Groups
 
@@ -433,7 +433,7 @@ This only applies to selectionStyle "pickList".
 ## Attr: MultiPickerItem.collapseIconSrc
 
 ### Description
-[SCImgURL](../main.md#type-scimgurl) for the [MultiPickerItem.expansionIcon](#attr-multipickeritemexpansionicon) while in expanded mode
+[SCImgURL](../reference.md#type-scimgurl) for the [MultiPickerItem.expansionIcon](#attr-multipickeritemexpansionicon) while in expanded mode
 
 **Flags**: IR
 
@@ -463,7 +463,7 @@ Note that if [MultiPickerItem.canExpand](#attr-multipickeritemcanexpand) is true
 ### Description
 Toolbar autoChild containing the [MultiPickerItem.selectAllButton](#attr-multipickeritemselectallbutton), [MultiPickerItem.deselectAllButton](#attr-multipickeritemdeselectallbutton) and [MultiPickerItem.expansionIcon](#attr-multipickeritemexpansionicon).
 
-Shown within the [MultiPickerItem.pickerLayout](#attr-multipickeritempickerlayout) if [SelectionStyle](../main.md#type-selectionstyle) is `"pickList"`
+Shown within the [MultiPickerItem.pickerLayout](#attr-multipickeritempickerlayout) if [SelectionStyle](../reference.md#type-selectionstyle) is `"pickList"`
 
 **Flags**: IR
 
@@ -471,7 +471,7 @@ Shown within the [MultiPickerItem.pickerLayout](#attr-multipickeritempickerlayou
 ## Attr: MultiPickerItem.optionFilterContext
 
 ### Description
-If this item has a specified `optionDataSource`, and this property is not null, the context is passed to the dataSource as [RPCRequest](../main.md#object-rpcrequest) properties when performing fetch operations on the dataSource to obtain a data-value to display-value mapping, and when fetching for grid-based pickers.
+If this item has a specified `optionDataSource`, and this property is not null, the context is passed to the dataSource as [RPCRequest](../reference.md#object-rpcrequest) properties when performing fetch operations on the dataSource to obtain a data-value to display-value mapping, and when fetching for grid-based pickers.
 
 This attribute is a direct shortcut for setting fetch-request properties via `item.pickerProperties.dataProperties.requestProperties`.
 
@@ -510,7 +510,7 @@ If not explicitly supplied, the valueField name will be derived as described in 
 ## Attr: MultiPickerItem.shuttle
 
 ### Description
-AutoChild [Shuttle](Shuttle.md#class-shuttle) shown in the [MultiPickerItem.pickerLayout](#attr-multipickeritempickerlayout) when [SelectionStyle](../main.md#type-selectionstyle) is set to `"shuttle"`.
+AutoChild [Shuttle](Shuttle.md#class-shuttle) shown in the [MultiPickerItem.pickerLayout](#attr-multipickeritempickerlayout) when [SelectionStyle](../reference.md#type-selectionstyle) is set to `"shuttle"`.
 
 **Flags**: IR
 
@@ -534,7 +534,7 @@ If the user has filtered the set of options available in this item, how should t
 ## Attr: MultiPickerItem.pickTree
 
 ### Description
-The MultiPickerItem `pickTree` is a TreeGrid [AutoChild](../main.md#type-autochild) for viewing and selecting a tree of available options when [SelectionStyle](../main.md#type-selectionstyle) is `"pickTree"`.
+The MultiPickerItem `pickTree` is a TreeGrid [AutoChild](../reference.md#type-autochild) for viewing and selecting a tree of available options when [SelectionStyle](../reference.md#type-selectionstyle) is `"pickTree"`.
 
 It is rendered inside the [MultiPickerItem.pickerLayout](#attr-multipickeritempickerlayout) along with the optional [MultiPickerItem.selectionList](#attr-multipickeritemselectionlist)
 
@@ -554,7 +554,7 @@ This icon may be customized using the standard AutoChild pattern as well as via 
 ## Attr: MultiPickerItem.pickListHeight
 
 ### Description
-Default height for the [MultiPickerItem.pickerLayout](#attr-multipickeritempickerlayout) when [SelectionStyle](../main.md#type-selectionstyle) is `"pickList"`.
+Default height for the [MultiPickerItem.pickerLayout](#attr-multipickeritempickerlayout) when [SelectionStyle](../reference.md#type-selectionstyle) is `"pickList"`.
 
 **Flags**: IRW
 
@@ -562,7 +562,7 @@ Default height for the [MultiPickerItem.pickerLayout](#attr-multipickeritempicke
 ## Attr: MultiPickerItem.deselectAllButton
 
 ### Description
-Clear All button [AutoChild](../main.md#type-autochild)
+Clear All button [AutoChild](../reference.md#type-autochild)
 
 **Flags**: IR
 
@@ -590,7 +590,7 @@ Disabled prompt for the [MultiPickerItem.selectAllButton](#attr-multipickeritems
 ## Attr: MultiPickerItem.filterForm
 
 ### Description
-Dynamic form showing a single text item for filtering the [PickList](../main_2.md#interface-picklist) while [SelectionStyle](../main.md#type-selectionstyle) is "pickList".
+Dynamic form showing a single text item for filtering the [PickList](../reference_2.md#interface-picklist) while [SelectionStyle](../reference.md#type-selectionstyle) is "pickList".
 
 May be hidden by setting [MultiPickerItem.showFilterForm](#attr-multipickeritemshowfilterform) to false.
 
@@ -610,7 +610,7 @@ Return the derived [MultiPickerItem.optionCriteria](#attr-multipickeritemoptionc
 
 ### Returns
 
-`[Criteria](../main_2.md#type-criteria)` — criteria to apply to the pickList and expandedPickerGrid
+`[Criteria](../reference_2.md#type-criteria)` — criteria to apply to the pickList and expandedPickerGrid
 
 ---
 ## Method: MultiPickerItem.getValueFieldName

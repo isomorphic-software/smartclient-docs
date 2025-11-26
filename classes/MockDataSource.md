@@ -1,6 +1,6 @@
 # MockDataSource Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -29,9 +29,9 @@ Data intended for a [ListGrid](ListGrid_1.md#class-listgrid) or [TreeGrid](TreeG
 
 Balsamiq publishes documentation of the grid format [here](https://docs.balsamiq.com/cloud/editing-controls/#the-data-grid-table-control), with a simple example of using tree-specific formatting [here](https://docs.balsamiq.com/cloud/editing-controls/#the-tree-pane).
 
-MockData can also be provided as XML, CSV or JSON text by setting [MockDataFormat](../main_2.md#type-mockdataformat) to the correct format.
+MockData can also be provided as XML, CSV or JSON text by setting [MockDataFormat](../reference_2.md#type-mockdataformat) to the correct format.
 
-An alternative format of data consisting of an array of [Records](../main.md#object-record) can also be provided. In this case the records are converted to "grid" [format](../main.md#type-mockdatatype).
+An alternative format of data consisting of an array of [Records](../reference.md#object-record) can also be provided. In this case the records are converted to "grid" [format](../reference.md#type-mockdatatype).
 
 **Flags**: IR
 
@@ -47,7 +47,7 @@ Name of field in [MockDataSource.mockData](#attr-mockdatasourcemockdata) that sh
 ## Attr: MockDataSource.mockDataFormat
 
 ### Description
-Format of data provided in [MockDataSource.mockData](#attr-mockdatasourcemockdata). See [MockDataFormat](../main_2.md#type-mockdataformat).
+Format of data provided in [MockDataSource.mockData](#attr-mockdatasourcemockdata). See [MockDataFormat](../reference_2.md#type-mockdataformat).
 
 **Flags**: IR
 
@@ -55,7 +55,7 @@ Format of data provided in [MockDataSource.mockData](#attr-mockdatasourcemockdat
 ## Attr: MockDataSource.mockDataType
 
 ### Description
-When [MockDataSource.mockDataFormat](#attr-mockdatasourcemockdataformat) is "mock", whether [MockDataSource.mockData](#attr-mockdatasourcemockdata) is in the "grid" or "tree" format. See [MockDataType](../main.md#type-mockdatatype).
+When [MockDataSource.mockDataFormat](#attr-mockdatasourcemockdataformat) is "mock", whether [MockDataSource.mockData](#attr-mockdatasourcemockdata) is in the "grid" or "tree" format. See [MockDataType](../reference.md#type-mockdatatype).
 
 If not specified, the type will be detected from the data.
 

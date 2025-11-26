@@ -1,6 +1,6 @@
 # CriterionValues Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -39,7 +39,7 @@ If the operator's [valueType](Operator.md#attr-operatorvaluetype) is "fieldName"
 ## Attr: CriterionValues.criterion
 
 ### Description
-If the operator's [valueType](Operator.md#attr-operatorvaluetype) is "criteria" or "custom", then the [Criterion](../main_2.md#object-criterion) itself.
+If the operator's [valueType](Operator.md#attr-operatorvaluetype) is "criteria" or "custom", then the [Criterion](../reference_2.md#object-criterion) itself.
 
 **Flags**: R
 

@@ -1,13 +1,13 @@
 # DataBoundComponent Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
 ## Attr: DataBoundComponent.dataFetchMode
 
 ### Description
-How to fetch and manage records retrieve from the server. See [FetchMode](../main_2.md#type-fetchmode).
+How to fetch and manage records retrieve from the server. See [FetchMode](../reference_2.md#type-fetchmode).
 
 This setting only applies to the [ResultSet](ResultSet.md#class-resultset) automatically created by calling [fetchData()](ListGrid_2.md#method-listgridfetchdata). If a pre-existing ResultSet is passed to setData() instead, it's existing setting for [ResultSet.fetchMode](ResultSet.md#attr-resultsetfetchmode) applies.
 
@@ -125,7 +125,7 @@ Adds an item to the header context menu allowing users to launch a dialog to def
 
 User-added hilites can be persisted via [DataBoundComponent.getHiliteState](#method-databoundcomponentgethilitestate) and [DataBoundComponent.setHiliteState](#method-databoundcomponentsethilitestate).
 
-To avoid undefined behavior, this property must be set to `false` if the same record objects, or the same [ResultSet](ResultSet.md#class-resultset) instances, are shared among multiple [DataBoundComponent](../main.md#interface-databoundcomponent)s.
+To avoid undefined behavior, this property must be set to `false` if the same record objects, or the same [ResultSet](ResultSet.md#class-resultset) instances, are shared among multiple [DataBoundComponent](../reference.md#interface-databoundcomponent)s.
 
 ### Groups
 
@@ -165,7 +165,7 @@ The message to display to the user if an export of a DataBoundComponent's data i
 ### Description
 Specifies a list of icons that can be used in [hilites](#method-databoundcomponentedithilites).
 
-`hiliteIcons` should be specified as an Array of [SCImgURL](../main.md#type-scimgurl). When present, the hilite editing interface shown when [DataBoundComponent.editHilites](#method-databoundcomponentedithilites) is called will offer the user a drop down for picking one of these icons when defining either a simple or advanced hilite rule.
+`hiliteIcons` should be specified as an Array of [SCImgURL](../reference.md#type-scimgurl). When present, the hilite editing interface shown when [DataBoundComponent.editHilites](#method-databoundcomponentedithilites) is called will offer the user a drop down for picking one of these icons when defining either a simple or advanced hilite rule.
 
 If the user picks an icon, the created hiliting rule will have [Hilite.icon](Hilite.md#attr-hiliteicon) set to the chosen icon. [DataBoundComponent.hiliteIconPosition](#attr-databoundcomponenthiliteiconposition) controls where the icon will appear for that field -- the default is that it appears in front of the normal cell content. This can also be overridden at the field level.
 
@@ -183,7 +183,7 @@ Adds an item to the header context menu allowing users to launch a dialog to def
 
 User-added formula fields can be persisted via [ListGrid.getFieldState](ListGrid_2.md#method-listgridgetfieldstate) and [ListGrid.setFieldState](ListGrid_2.md#method-listgridsetfieldstate).
 
-To avoid undefined behavior, this property must be set to `false` if the same record objects, or the same [ResultSet](ResultSet.md#class-resultset) instances, are shared among multiple [DataBoundComponent](../main.md#interface-databoundcomponent)s.
+To avoid undefined behavior, this property must be set to `false` if the same record objects, or the same [ResultSet](ResultSet.md#class-resultset) instances, are shared among multiple [DataBoundComponent](../reference.md#interface-databoundcomponent)s.
 
 ### Groups
 
@@ -208,7 +208,7 @@ Message to display when this DataBoundComponent attempts to save data while the 
 ## Attr: DataBoundComponent.iconField
 
 ### Description
-Designates a field of [type](../main_2.md#type-fieldtype):"image" as the field to use when rendering a record as an image, for example, in a [TileGrid](TileGrid.md#class-tilegrid).
+Designates a field of [type](../reference_2.md#type-fieldtype):"image" as the field to use when rendering a record as an image, for example, in a [TileGrid](TileGrid.md#class-tilegrid).
 
 This attribute has the same function as [DataSource.iconField](DataSource.md#attr-datasourceiconfield) but can be set for a component with no dataSource, or can be used to override the dataSource setting.
 
@@ -267,7 +267,7 @@ Height for hilite icons for this listGrid. Overrides [hiliteIconSize](#attr-data
 ### Description
 The format in which the data should be exported if [DataBoundComponent.exportData](#method-databoundcomponentexportdata) is called without specifying a format. Otherwise, the format passed to [DataBoundComponent.exportData](#method-databoundcomponentexportdata) via the requestProperties parameter will be used.
 
-See [ExportFormat](../main_2.md#type-exportformat) for more information.
+See [ExportFormat](../reference_2.md#type-exportformat) for more information.
 
 **Flags**: IR
 
@@ -312,7 +312,7 @@ Message to display when this DataBoundComponent attempts to load data that is no
 ## Attr: DataBoundComponent.canChangeNonFieldValues
 
 ### Description
-If this attribute is set to false, any attributes in the component's values object that do not map to a [field](../main_2.md#object-datasourcefield) or [formItem](FormItem.md#class-formitem) will not be tracked when checking for changes. You should only set this flag to false if you know that your code does not store additional, non-field values in the component's data, or if you do store such values, but you don't care that they are not checked for changes. This flag is primarily provided to avoid performance issues in cases where developers are storing large numbers of extra attributes in component data; generally speaking, you should only consider setting it to false if you have a use case like this.
+If this attribute is set to false, any attributes in the component's values object that do not map to a [field](../reference_2.md#object-datasourcefield) or [formItem](FormItem.md#class-formitem) will not be tracked when checking for changes. You should only set this flag to false if you know that your code does not store additional, non-field values in the component's data, or if you do store such values, but you don't care that they are not checked for changes. This flag is primarily provided to avoid performance issues in cases where developers are storing large numbers of extra attributes in component data; generally speaking, you should only consider setting it to false if you have a use case like this.
 
 Note, even with this flag set to false, these extra values will still be managed and stored by SmartClient; they just will not be checked when the component's values are inspected to see if they have changed. This may lead to methods like [ListGrid.rowHasChanges](ListGrid_2.md#method-listgridrowhaschanges) returning false when you are expecting it to return true. In this case, either switch this flag back to true (or just do not set it false), or provide a field definition for the affected attribute(s).
 
@@ -358,7 +358,7 @@ The following [passthroughs](../kb_topics/autoChildUsage.md#kb-topic-using-autoc
 ## Attr: DataBoundComponent.dataSource
 
 ### Description
-The DataSource that this component should bind to for default fields and for performing [DataSource requests](../main_2.md#object-dsrequest).
+The DataSource that this component should bind to for default fields and for performing [DataSource requests](../reference_2.md#object-dsrequest).
 
 Can be specified as either a DataSource instance or the String ID of a DataSource.
 
@@ -708,7 +708,7 @@ Note that `useFlatFields` is not generally recommended for use with structures w
 ## Attr: DataBoundComponent.infoField
 
 ### Description
-Name of the field that has the second most pertinent piece of textual information in the record, for use when a [DataBoundComponent](../main.md#interface-databoundcomponent) needs to show a short summary of a record.
+Name of the field that has the second most pertinent piece of textual information in the record, for use when a [DataBoundComponent](../reference.md#interface-databoundcomponent) needs to show a short summary of a record.
 
 This attribute has the same function as [DataSource.infoField](DataSource.md#attr-datasourceinfofield) but can be set for a component with no dataSource, or can be used to override the dataSource setting.
 
@@ -742,7 +742,7 @@ If the result of a formula evaluation is invalid (specifically, if isNaN(result)
 ## Attr: DataBoundComponent.dataField
 
 ### Description
-Name of the field that has the most pertinent numeric, date, or enum value, for use when a [DataBoundComponent](../main.md#interface-databoundcomponent) needs to show a short summary of a record.
+Name of the field that has the most pertinent numeric, date, or enum value, for use when a [DataBoundComponent](../reference.md#interface-databoundcomponent) needs to show a short summary of a record.
 
 This attribute has the same function as [DataSource.dataField](DataSource.md#attr-datasourcedatafield) but can be set for a component with no dataSource, or can be used to override the dataSource setting.
 
@@ -804,7 +804,7 @@ Indicates whether the text of the offlineMessage property should be displayed if
 ### Description
 Specifies whether the exported data will be downloaded as an attachment or displayed in a new browser window. This option will be used if [DataBoundComponent.exportData](#method-databoundcomponentexportdata) is called without specifying it. Otherwise, the exportDisplay passed to [DataBoundComponent.exportData](#method-databoundcomponentexportdata) via the requestProperties parameter will be used.
 
-See [ExportDisplay](../main_2.md#type-exportdisplay) for more information.
+See [ExportDisplay](../reference_2.md#type-exportdisplay) for more information.
 
 **Flags**: IR
 
@@ -838,7 +838,7 @@ If set, detect and prevent duplicate records from being transferred to this comp
 
 If the component either does not have a [DataSource](DataSource.md#class-datasource) or has a DataSource with no [primaryKey](DataSourceField.md#attr-datasourcefieldprimarykey) declared, duplicate checking is off by default. If duplicate checking is enabled, it looks for an existing record in the dataset that has **all** of the properties of the dragged record, and considers that a duplicate.
 
-For [DragDataAction](../main.md#type-dragdataaction):"copy" where the target DataSource is related to the source DataSource by foreignKey, a duplicate means that the target list, as filtered by the current criteria, already has a record whose value for the foreignKey field matches the primaryKey of the record being transferred.
+For [DragDataAction](../reference.md#type-dragdataaction):"copy" where the target DataSource is related to the source DataSource by foreignKey, a duplicate means that the target list, as filtered by the current criteria, already has a record whose value for the foreignKey field matches the primaryKey of the record being transferred.
 
 For example, consider dragging "employees" to "teams", where "teams" has a field "teams.employeeId" which is a foreignKey pointing to "employees.id", and the target grid has search criteria causing it to show all the members of one team. A duplicate - adding an employee to the same team twice - is when the target grid's dataset contains an record with "employeeId" matching the "id" field of the dropped employee.
 
@@ -1014,7 +1014,7 @@ Specifies a form to automatically use as a search form for this component - that
 
 For a discussion of the various filtering and criteria-management APIs and when to use them, see the [Grid Filtering overview](../kb_topics/gridFiltering.md#kb-topic-grid-filtering-overview).
 
-In particular, the component will automatically filter when the [search()](SearchForm.md#method-searchformsearch) or [submit()](DynamicForm.md#method-dynamicformsubmit) events fire on the form (happens if a [SubmitItem](../main.md#class-submititem) is present and is pressed), and will automatically trigger filtering if Enter is pressed in the form, as though [searchOnEnter](SearchForm.md#attr-searchformsearchonenter) or [saveOnEnter](DynamicForm.md#attr-dynamicformsaveonenter) had been set.
+In particular, the component will automatically filter when the [search()](SearchForm.md#method-searchformsearch) or [submit()](DynamicForm.md#method-dynamicformsubmit) events fire on the form (happens if a [SubmitItem](../reference.md#class-submititem) is present and is pressed), and will automatically trigger filtering if Enter is pressed in the form, as though [searchOnEnter](SearchForm.md#attr-searchformsearchonenter) or [saveOnEnter](DynamicForm.md#attr-dynamicformsaveonenter) had been set.
 
 If [filterOnKeypress](#attr-databoundcomponentfilteronkeypress) is set to true, this component will also automatically watch for [SearchForm.criteriaChanged](SearchForm.md#method-searchformcriteriachanged), and filter whenever that event fires.
 
@@ -1080,7 +1080,7 @@ If a summary format string contains an invalid field reference, replace the refe
 ## Attr: DataBoundComponent.hiliteIconPosition
 
 ### Description
-When [hiliteIcons](#attr-databoundcomponenthiliteicons) are present, where the hilite icon will be placed relative to the field value. See [HiliteIconPosition](../main_2.md#type-hiliteiconposition). Can be overridden at the field level.
+When [hiliteIcons](#attr-databoundcomponenthiliteicons) are present, where the hilite icon will be placed relative to the field value. See [HiliteIconPosition](../reference_2.md#type-hiliteiconposition). Can be overridden at the field level.
 
 ### Groups
 
@@ -1202,7 +1202,7 @@ Adds an item to the header context menu allowing users to launch a dialog to def
 
 User-added summary fields can be persisted via [ListGrid.getFieldState](ListGrid_2.md#method-listgridgetfieldstate) and [ListGrid.setFieldState](ListGrid_2.md#method-listgridsetfieldstate).
 
-To avoid undefined behavior, this property must be set to `false` if the same record objects, or the same [ResultSet](ResultSet.md#class-resultset) instances, are shared among multiple [DataBoundComponent](../main.md#interface-databoundcomponent)s.
+To avoid undefined behavior, this property must be set to `false` if the same record objects, or the same [ResultSet](ResultSet.md#class-resultset) instances, are shared among multiple [DataBoundComponent](../reference.md#interface-databoundcomponent)s.
 
 ### Groups
 
@@ -1295,7 +1295,7 @@ Secondly this allows the same set of saved searches to be applied to more than o
 ## ClassMethod: DataBoundComponent.requestsArePending
 
 ### Description
-Returns whether there are any pending [DSRequest](../main_2.md#object-dsrequest)s initiated by this [DataBoundComponent](../main.md#interface-databoundcomponent). May not include any requests sent by directly calling the [DataSource](DataSource.md#class-datasource) APIs (rather than the DataBoundComponent APIs).
+Returns whether there are any pending [DSRequest](../reference_2.md#object-dsrequest)s initiated by this [DataBoundComponent](../reference.md#interface-databoundcomponent). May not include any requests sent by directly calling the [DataSource](DataSource.md#class-datasource) APIs (rather than the DataBoundComponent APIs).
 
 ### Returns
 
@@ -1305,7 +1305,7 @@ Returns whether there are any pending [DSRequest](../main_2.md#object-dsrequest)
 ## Method: DataBoundComponent.getSort
 
 ### Description
-Return the [SortSpecifier](../main_2.md#object-sortspecifier)s representing the current sort configuration of this component.
+Return the [SortSpecifier](../reference_2.md#object-sortspecifier)s representing the current sort configuration of this component.
 
 ### Returns
 
@@ -1337,11 +1337,11 @@ Find the index of a currently visible field.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| fieldName | [FieldName](../main.md#type-fieldname)|[Field](#type-field) | false | — | field name or field |
+| fieldName | [FieldName](../reference.md#type-fieldname)|[Field](#type-field) | false | — | field name or field |
 
 ### Returns
 
-`[int](../main.md#type-int)` — index of field within currently visible fields, or -1 if not found.
+`[int](../reference.md#type-int)` — index of field within currently visible fields, or -1 if not found.
 
 ---
 ## Method: DataBoundComponent.editHilites
@@ -1361,7 +1361,7 @@ Returns the number of selected records.
 
 ### Returns
 
-`[int](../main.md#type-int)` — number of selected records
+`[int](../reference.md#type-int)` — number of selected records
 
 ### Groups
 
@@ -1387,15 +1387,15 @@ To transfer **all** data in, for example, a [ListGrid](ListGrid_1.md#class-listg
 
 Note that drag/drop type transfers of records between components are asynchronous operations: SmartClient may need to perform server turnarounds to establish whether dropped records already exist in the target component. Therefore, it is possible to issue a call to transferSelectedData() and/or the [drop()](ListGrid_2.md#method-listgriddrop) method of a databound component whilst a transfer is still active. When this happens, SmartClient adds the second and subsequent transfer requests to a queue and runs them one after the other. If you want to be notified when a transfer process has actually completed, either provide a callback to this method or implement [DataBoundComponent.dropComplete](#method-databoundcomponentdropcomplete).
 
-See the [dragging](../main.md#kb-topic-dragging) documentation for an overview of list grid drag/drop data transfer.
+See the [dragging](../reference.md#kb-topic-dragging) documentation for an overview of list grid drag/drop data transfer.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | source | [DataBoundComponent](#type-databoundcomponent) | false | — | source component from which the records will be transferred |
-| index | [Integer](../main_2.md#type-integer) | true | — | target index (drop position) of the rows within this grid. |
-| callback | [Callback](../main.md#type-callback) | true | — | optional callback to be fired when the transfer process has completed. The callback will be passed a single parameter "records", the list of records actually transferred to this component. |
+| index | [Integer](../reference_2.md#type-integer) | true | — | target index (drop position) of the rows within this grid. |
+| callback | [Callback](../reference.md#type-callback) | true | — | optional callback to be fired when the transfer process has completed. The callback will be passed a single parameter "records", the list of records actually transferred to this component. |
 
 ### Groups
 
@@ -1442,7 +1442,7 @@ Note that this method may be overridden by specific component types to handle mo
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| fieldState | [FieldState](../main_2.md#type-fieldstate) | false | — | field state to apply |
+| fieldState | [FieldState](../reference_2.md#type-fieldstate) | false | — | field state to apply |
 | isSparse | [Boolean](#type-boolean) | true | — | If true, the fieldState passed in is assumed to be "sparse". Any fields defined on this component without explicit field state values will be hidden. |
 
 ---
@@ -1546,7 +1546,7 @@ To control hilites showing in group summaries, see [showHilitesInGroupSummary](L
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — Return true to include hilites from the used field in the generated summary field value.
+`[boolean](../reference.md#type-boolean)` — Return true to include hilites from the used field in the generated summary field value.
 
 ---
 ## Method: DataBoundComponent.shouldIncludeTitleInFieldState
@@ -1570,11 +1570,11 @@ This method may be overridden to customize this behavior. For example the follow
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | field | [ListGridField](#type-listgridfield) | false | — | field to provide field state for |
-| sparse | [boolean](../main.md#type-boolean) | false | — | true if [sparse field state](#method-databoundcomponentgetfieldstate) was requested. |
+| sparse | [boolean](../reference.md#type-boolean) | false | — | true if [sparse field state](#method-databoundcomponentgetfieldstate) was requested. |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true if title should be included in field state
+`[boolean](../reference.md#type-boolean)` — true if title should be included in field state
 
 **Flags**: A
 
@@ -1592,7 +1592,7 @@ This API is equivalent to [List.findIndex](List.md#method-listfindindex) but sea
 
 ### Returns
 
-`[int](../main.md#type-int)` — index of the first matching Object or -1 if not found
+`[int](../reference.md#type-int)` — index of the first matching Object or -1 if not found
 
 ---
 ## Method: DataBoundComponent.willFetchData
@@ -1602,16 +1602,16 @@ Compares the specified criteria with the current criteria applied to this compon
 
 This is equivalent to calling `this.data.willFetchData(...)`. Always returns true if this component is not showing a set of data from the dataSource.
 
-Note that to predict correctly the decision that will be made by filter/fetch, you'll need to pass the same [TextMatchStyle](../main_2.md#type-textmatchstyle) that will be used by the future filter/fetch. Fetching manually (e.g. [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata)) will by default use "exact" while filtering (e.g. [ListGrid.filterData](ListGrid_2.md#method-listgridfilterdata)) will by default use "substring". If the component is configured for autofetch (i.e. [ListGrid.autoFetchData](ListGrid_1.md#attr-listgridautofetchdata): true), that will use [ListGrid.autoFetchTextMatchStyle](ListGrid_1.md#attr-listgridautofetchtextmatchstyle), which defaults to "substring". If nothing/null is passed for the style, this method assumes you want the style from the last filter/fetch.
+Note that to predict correctly the decision that will be made by filter/fetch, you'll need to pass the same [TextMatchStyle](../reference_2.md#type-textmatchstyle) that will be used by the future filter/fetch. Fetching manually (e.g. [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata)) will by default use "exact" while filtering (e.g. [ListGrid.filterData](ListGrid_2.md#method-listgridfilterdata)) will by default use "substring". If the component is configured for autofetch (i.e. [ListGrid.autoFetchData](ListGrid_1.md#attr-listgridautofetchdata): true), that will use [ListGrid.autoFetchTextMatchStyle](ListGrid_1.md#attr-listgridautofetchtextmatchstyle), which defaults to "substring". If nothing/null is passed for the style, this method assumes you want the style from the last filter/fetch.
 
-To determine what [TextMatchStyle](../main_2.md#type-textmatchstyle) is being used, check the RPC Tab of the [SmartClient Developer Console](../kb_topics/debugging.md#kb-topic-debugging) and check the relevant [DSRequest](../main_2.md#object-dsrequest).
+To determine what [TextMatchStyle](../reference_2.md#type-textmatchstyle) is being used, check the RPC Tab of the [SmartClient Developer Console](../kb_topics/debugging.md#kb-topic-debugging) and check the relevant [DSRequest](../reference_2.md#object-dsrequest).
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newCriteria | [Criteria](../main_2.md#type-criteria) | false | — | new criteria to test. |
-| textMatchStyle | [TextMatchStyle](../main_2.md#type-textmatchstyle) | true | — | New text match style. If not passed assumes textMatchStyle will not be modified. |
+| newCriteria | [Criteria](../reference_2.md#type-criteria) | false | — | new criteria to test. |
+| textMatchStyle | [TextMatchStyle](../reference_2.md#type-textmatchstyle) | true | — | New text match style. If not passed assumes textMatchStyle will not be modified. |
 
 ### Returns
 
@@ -1630,7 +1630,7 @@ To display custom drag tracker HTML, this method may be overridden - call [Event
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — returns false by default to suppress 'setDragTracker' on any ancestors of this component.
+`[boolean](../reference.md#type-boolean)` — returns false by default to suppress 'setDragTracker' on any ancestors of this component.
 
 ### Groups
 
@@ -1640,7 +1640,7 @@ To display custom drag tracker HTML, this method may be overridden - call [Event
 ## Method: DataBoundComponent.selectRecords
 
 ### Description
-Select/deselect a list of [Record](../main.md#object-record)s passed in explicitly, or by index.
+Select/deselect a list of [Record](../reference.md#object-record)s passed in explicitly, or by index.
 
 Note that developers may wish to use [DataBoundComponent.selectRange](#method-databoundcomponentselectrange) to select a single contiguous range.
 
@@ -1649,8 +1649,8 @@ Note that developers may wish to use [DataBoundComponent.selectRange](#method-da
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | records | [Array of Record](#type-array-of-record)|[number](#type-number) | false | — | records (or row numbers) to select |
-| newState | [boolean](../main.md#type-boolean) | true | — | new selection state (if null, defaults to true) |
-| rowNums | [Array of Integer](#type-array-of-integer)|[Integer](../main_2.md#type-integer) | true | — | row numbers to select. Required for [multi-link trees](Tree.md#attr-treemultilinktree) unless row numbers are passed in the "records" param. If passed, the rowNums array should correspond to the records array (ie, rowNums\[0\] refers to the same object as records\[0\]) |
+| newState | [boolean](../reference.md#type-boolean) | true | — | new selection state (if null, defaults to true) |
+| rowNums | [Array of Integer](#type-array-of-integer)|[Integer](../reference_2.md#type-integer) | true | — | row numbers to select. Required for [multi-link trees](Tree.md#attr-treemultilinktree) unless row numbers are passed in the "records" param. If passed, the rowNums array should correspond to the records array (ie, rowNums\[0\] refers to the same object as records\[0\]) |
 
 ### Groups
 
@@ -1688,8 +1688,8 @@ Enable / disable a [hilite](#attr-databoundcomponenthilites)
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| hiliteID | [Identifier](../main.md#type-identifier) | false | — | ID of hilite to enable |
-| enable | [boolean](../main.md#type-boolean) | true | — | new enabled state to apply - if null, defaults to true |
+| hiliteID | [Identifier](../reference.md#type-identifier) | false | — | ID of hilite to enable |
+| enable | [boolean](../reference.md#type-boolean) | true | — | new enabled state to apply - if null, defaults to true |
 
 ### Groups
 
@@ -1705,11 +1705,11 @@ Can the field be edited? This base method always returns false, but it's overrid
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| field | [Object](../main.md#type-object)|[number](#type-number)|[String](#type-string) | false | — | field object or identifier |
+| field | [Object](../reference.md#type-object)|[number](#type-number)|[String](#type-string) | false | — | field object or identifier |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — whether field can be edited
+`[boolean](../reference.md#type-boolean)` — whether field can be edited
 
 ### Groups
 
@@ -1754,8 +1754,8 @@ This is a synonym for `selectRange(startRow, endRow, false);`
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| startRow | [int](../main.md#type-int) | false | — | start of selection range |
-| endRow | [int](../main.md#type-int) | false | — | end of selection range (non-inclusive) |
+| startRow | [int](../reference.md#type-int) | false | — | start of selection range |
+| endRow | [int](../reference.md#type-int) | false | — | end of selection range (non-inclusive) |
 
 ### Groups
 
@@ -1779,7 +1779,7 @@ This API is equivalent to [List.find](List.md#method-listfind) but searches for 
 
 ### Returns
 
-`[Object](../main.md#type-object)` — first matching object or null if not found
+`[Object](../reference.md#type-object)` — first matching object or null if not found
 
 ---
 ## Method: DataBoundComponent.disableHiliting
@@ -1808,7 +1808,7 @@ For more information on exporting data, see [DataSource.exportData](DataSource.m
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | requestProperties | [DSRequest](#type-dsrequest) | true | — | additional properties to set on the DSRequest that will be issued |
-| callback | [DSCallback](../main_2.md#type-dscallback) | true | — | callback to invoke on completion. Note that this parameter only applies where [DSRequest.exportToClient](DSRequest.md#attr-dsrequestexporttoclient) is explicitly set to false, because file downloads do not provide ordinary SmartClient callbacks |
+| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke on completion. Note that this parameter only applies where [DSRequest.exportToClient](DSRequest.md#attr-dsrequestexporttoclient) is explicitly set to false, because file downloads do not provide ordinary SmartClient callbacks |
 
 ### Groups
 
@@ -1834,7 +1834,7 @@ Returning `false` from this method will prevent the field from being added. Note
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — Return false to cancel the addition of the field
+`[boolean](../reference.md#type-boolean)` — Return false to cancel the addition of the field
 
 ### Groups
 
@@ -1851,7 +1851,7 @@ Returns a copy of the [DataBoundComponent.implicitCriteria](#attr-databoundcompo
 ## Method: DataBoundComponent.deselectRecord
 
 ### Description
-Deselect a [Record](../main.md#object-record) passed in explicitly, or by index.
+Deselect a [Record](../reference.md#object-record) passed in explicitly, or by index.
 
 Synonym for `selectRecord(record, false)`
 
@@ -1860,7 +1860,7 @@ Synonym for `selectRecord(record, false)`
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | record | [Record](#type-record)|[number](#type-number) | false | — | record (or row number) to deselect |
-| rowNum | [Integer](../main_2.md#type-integer) | true | — | row number to select. Required for [multi-link trees](Tree.md#attr-treemultilinktree) unless row number is passed in the "record" param |
+| rowNum | [Integer](../reference_2.md#type-integer) | true | — | row number to select. Required for [multi-link trees](Tree.md#attr-treemultilinktree) unless row number is passed in the "record" param |
 
 ### Groups
 
@@ -1902,7 +1902,7 @@ Enable all hilites.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| enable | [boolean](../main.md#type-boolean) | true | — | new enabled state to apply - if null, defaults to true |
+| enable | [boolean](../reference.md#type-boolean) | true | — | new enabled state to apply - if null, defaults to true |
 
 ### Groups
 
@@ -1934,7 +1934,7 @@ Note, if you pass a simple value to this method, it will be matched against the 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| keyValue | [Object](../main.md#type-object) | false | — | primary key value to search for |
+| keyValue | [Object](../reference.md#type-object) | false | — | primary key value to search for |
 
 ### Returns
 
@@ -1954,13 +1954,13 @@ Convenience method to display a [FormulaBuilder](FormulaBuilder.md#class-formula
 ## Method: DataBoundComponent.getDataPathField
 
 ### Description
-For a component with a specified [DataSource](DataSource.md#class-datasource), find the associated dataSource field object from a specified [dataPath](../main_2.md#type-datapath).
+For a component with a specified [DataSource](DataSource.md#class-datasource), find the associated dataSource field object from a specified [dataPath](../reference_2.md#type-datapath).
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| dataPath | [DataPath](../main_2.md#type-datapath) | false | — | dataPath for which the field definition should be returned. |
+| dataPath | [DataPath](../reference_2.md#type-datapath) | false | — | dataPath for which the field definition should be returned. |
 
 ### Returns
 
@@ -1970,7 +1970,7 @@ For a component with a specified [DataSource](DataSource.md#class-datasource), f
 ## Method: DataBoundComponent.transferRecords
 
 ### Description
-Transfer a list of [Record](../main.md#object-record)s from another component (does not have to be a databound component) into this component. This method is only applicable to list-type components, such as [listGrid](ListGrid_1.md#class-listgrid), [treeGrid](TreeGrid.md#class-treegrid) or [tileGrid](TileGrid.md#class-tilegrid)
+Transfer a list of [Record](../reference.md#object-record)s from another component (does not have to be a databound component) into this component. This method is only applicable to list-type components, such as [listGrid](ListGrid_1.md#class-listgrid), [treeGrid](TreeGrid.md#class-treegrid) or [tileGrid](TileGrid.md#class-tilegrid)
 
 This method implements the automatic drag-copy and drag-move behaviors of components like [ListGrid](ListGrid_1.md#class-listgrid), and calling it is equivalent to completing a drag and drop of the `dropRecords`.
 
@@ -1984,9 +1984,9 @@ See also [DataBoundComponent.transferSelectedData](#method-databoundcomponenttra
 |------|------|----------|---------|-------------|
 | dropRecords | [Array of Record](#type-array-of-record) | false | — | Records to transfer to this component |
 | targetRecord | [Record](#type-record) | false | — | The target record (eg, of a drop interaction), for context |
-| index | [Integer](../main_2.md#type-integer) | false | — | Insert point in this component's data for the transferred records |
+| index | [Integer](../reference_2.md#type-integer) | false | — | Insert point in this component's data for the transferred records |
 | sourceWidget | [Canvas](#type-canvas) | false | — | The databound or non-databound component from which the records are to be transferred. |
-| callback | [Callback](../main.md#type-callback) | true | — | optional callback to be fired when the transfer process has completed |
+| callback | [Callback](../reference.md#type-callback) | true | — | optional callback to be fired when the transfer process has completed |
 
 ### Groups
 
@@ -2020,7 +2020,7 @@ Note: In some `DataBoundComponent` types, this will only return fields that are 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| fieldId | [FieldName](../main.md#type-fieldname)|[Number](#type-number) | false | — | field index or field name |
+| fieldId | [FieldName](../reference.md#type-fieldname)|[Number](#type-number) | false | — | field index or field name |
 
 ### Returns
 
@@ -2103,7 +2103,7 @@ Notification method fired when a generated field is removed from this component 
 ## Method: DataBoundComponent.deselectRecords
 
 ### Description
-Deselect a list of [Record](../main.md#object-record)s passed in explicitly, or by index.
+Deselect a list of [Record](../reference.md#object-record)s passed in explicitly, or by index.
 
 Synonym for `selectRecords(records, false)`
 
@@ -2114,7 +2114,7 @@ Note that developers may wish to use [DataBoundComponent.deselectRange](#method-
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | records | [Array of Record](#type-array-of-record)|[number](#type-number) | false | — | records (or row numbers) to deselect |
-| rowNums | [Array of Integer](#type-array-of-integer)|[Integer](../main_2.md#type-integer) | true | — | row numbers to select. Required for [multi-link trees](Tree.md#attr-treemultilinktree) unless row numbers are passed in the "records" param. If passed, the rowNums array should correspond to the records array (ie, rowNums\[0\] refers to the same object as records\[0\]) |
+| rowNums | [Array of Integer](#type-array-of-integer)|[Integer](../reference_2.md#type-integer) | true | — | row numbers to select. Required for [multi-link trees](Tree.md#attr-treemultilinktree) unless row numbers are passed in the "records" param. If passed, the rowNums array should correspond to the records array (ie, rowNums\[0\] refers to the same object as records\[0\]) |
 
 ### Groups
 
@@ -2134,9 +2134,9 @@ Select a contiguous range of records by index
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| startRow | [int](../main.md#type-int) | false | — | start of selection range |
-| endRow | [int](../main.md#type-int) | false | — | end of selection range (non-inclusive) |
-| newState | [boolean](../main.md#type-boolean) | true | — | new selection state (if null, defaults to true) |
+| startRow | [int](../reference.md#type-int) | false | — | start of selection range |
+| endRow | [int](../reference.md#type-int) | false | — | end of selection range (non-inclusive) |
+| newState | [boolean](../reference.md#type-boolean) | true | — | new selection state (if null, defaults to true) |
 
 ### Groups
 
@@ -2179,7 +2179,7 @@ This event is also fired when selection is updated by a direct call to one of th
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| record | [Object](../main.md#type-object) | false | — | first selected record in the selection, if any, which may or may not be the first record in sort order if the `DataBoundComponent` is sorted. This parameter is typically used when only one record can be selected at a time. |
+| record | [Object](../reference.md#type-object) | false | — | first selected record in the selection, if any, which may or may not be the first record in sort order if the `DataBoundComponent` is sorted. This parameter is typically used when only one record can be selected at a time. |
 | recordList | [Array of Object](#type-array-of-object) | false | — | List of records that are now selected |
 
 ### Groups
@@ -2200,7 +2200,7 @@ When binding to a new DataSource, if the component has any existing "fields" or 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| dataSource | [GlobalId](../main.md#type-globalid)|[DataSource](#type-datasource) | false | — | DataSource to bind to |
+| dataSource | [GlobalId](../reference.md#type-globalid)|[DataSource](#type-datasource) | false | — | DataSource to bind to |
 | fields | [Array of DataSourceField](#type-array-of-datasourcefield) | true | — | optional array of fields to use |
 
 ---
@@ -2215,20 +2215,20 @@ The viewState returned by this method may be stored over page-reloads and then a
 
 ### Returns
 
-`[ViewState](../main.md#type-viewstate)` — Current view state of the component
+`[ViewState](../reference.md#type-viewstate)` — Current view state of the component
 
 ---
 ## Method: DataBoundComponent.setViewState
 
 ### Description
-Reset this component's view state to match the [ViewState](../main.md#type-viewstate) object passed in.  
+Reset this component's view state to match the [ViewState](../reference.md#type-viewstate) object passed in.  
 Used to restore previous state retrieved from the component by a call to [DataBoundComponent.getViewState](#method-databoundcomponentgetviewstate).
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| viewState | [ViewState](../main.md#type-viewstate) | false | — | Object describing the desired view state for the component |
+| viewState | [ViewState](../reference.md#type-viewstate) | false | — | Object describing the desired view state for the component |
 
 ### Groups
 
@@ -2242,13 +2242,13 @@ Used to restore previous state retrieved from the component by a call to [DataBo
 ## Method: DataBoundComponent.setSort
 
 ### Description
-Sort this component by a list of [SortSpecifier](../main_2.md#object-sortspecifier)s. If the component's data is not a [ResultSet](ResultSet.md#class-resultset), only the first specifier is applied.
+Sort this component by a list of [SortSpecifier](../reference_2.md#object-sortspecifier)s. If the component's data is not a [ResultSet](ResultSet.md#class-resultset), only the first specifier is applied.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| sortSpecifiers | [Array of SortSpecifier](#type-array-of-sortspecifier) | false | — | List of [SortSpecifier](../main_2.md#object-sortspecifier) objects, one per sort-field and direction |
+| sortSpecifiers | [Array of SortSpecifier](#type-array-of-sortspecifier) | false | — | List of [SortSpecifier](../reference_2.md#object-sortspecifier) objects, one per sort-field and direction |
 
 ---
 ## Method: DataBoundComponent.getSummaryFieldValue
@@ -2287,7 +2287,7 @@ Returns true if the component's current data model is marked as offline. This do
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — Offline if true
+`[boolean](../reference.md#type-boolean)` — Offline if true
 
 ### Groups
 
@@ -2303,14 +2303,14 @@ Sets the title of the specified field.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| fieldId | [FieldName](../main.md#type-fieldname)|[Field](#type-field) | false | — | The field to update. |
-| newTitle | [HTMLString](../main.md#type-htmlstring) | false | — | The new title. |
+| fieldId | [FieldName](../reference.md#type-fieldname)|[Field](#type-field) | false | — | The field to update. |
+| newTitle | [HTMLString](../reference.md#type-htmlstring) | false | — | The new title. |
 
 ---
 ## Method: DataBoundComponent.getFieldTitle
 
 ### Description
-Returns an [HTMLString](../main.md#type-htmlstring) to use as the displayable title for the specified field.
+Returns an [HTMLString](../reference.md#type-htmlstring) to use as the displayable title for the specified field.
 
 Even though a `Field` object has a [title](Field.md#attr-fieldtitle) property, this method should be used to obtain the field's title in the context of this field container, because the field container implementation may offer further customization of the field's title HTML.
 
@@ -2318,11 +2318,11 @@ Even though a `Field` object has a [title](Field.md#attr-fieldtitle) property, t
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| fieldId | [FieldName](../main.md#type-fieldname) | false | — | The name or other identifier of the field. |
+| fieldId | [FieldName](../reference.md#type-fieldname) | false | — | The name or other identifier of the field. |
 
 ### Returns
 
-`[HTMLString](../main.md#type-htmlstring)` — The specified field's title.
+`[HTMLString](../reference.md#type-htmlstring)` — The specified field's title.
 
 ---
 ## Method: DataBoundComponent.getDragData
@@ -2332,7 +2332,7 @@ During a drag-and-drop interaction, this method returns the set of records being
 
 This method is consulted by [ListGrid.willAcceptDrop](ListGrid_2.md#method-listgridwillacceptdrop).
 
-NOTE: If this component is a [multi-linked](Tree.md#method-treeismultilinktree) `TreeGrid`, this method returns a list of [NodeLocator](../main_2.md#object-nodelocator)s rather than a list of records. Each `nodeLocator` contains a pointer to the associated record in its `node` property.
+NOTE: If this component is a [multi-linked](Tree.md#method-treeismultilinktree) `TreeGrid`, this method returns a list of [NodeLocator](../reference_2.md#object-nodelocator)s rather than a list of records. Each `nodeLocator` contains a pointer to the associated record in its `node` property.
 
 ### Parameters
 
@@ -2342,7 +2342,7 @@ NOTE: If this component is a [multi-linked](Tree.md#method-treeismultilinktree) 
 
 ### Returns
 
-`[Array of Record](#type-array-of-record)` — Array of [Record](../main.md#object-record)s that are currently selected.
+`[Array of Record](#type-array-of-record)` — Array of [Record](../reference.md#object-record)s that are currently selected.
 
 ### Groups
 
@@ -2380,7 +2380,7 @@ Whether at least one item is selected
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true == at least one item is selected false == nothing at all is selected
+`[boolean](../reference.md#type-boolean)` — true == at least one item is selected false == nothing at all is selected
 
 ### Groups
 
@@ -2396,7 +2396,7 @@ Disable a hilite
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| hiliteID | [Identifier](../main.md#type-identifier) | false | — | ID of hilite to disable |
+| hiliteID | [Identifier](../reference.md#type-identifier) | false | — | ID of hilite to disable |
 
 ### Groups
 
@@ -2406,15 +2406,15 @@ Disable a hilite
 ## Method: DataBoundComponent.selectRecord
 
 ### Description
-Select/deselect a [Record](../main.md#object-record) passed in explicitly, or by index.
+Select/deselect a [Record](../reference.md#object-record) passed in explicitly, or by index.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | record | [Record](#type-record)|[number](#type-number) | false | — | record (or row number) to select |
-| newState | [boolean](../main.md#type-boolean) | true | — | new selection state (if null, defaults to true) |
-| rowNum | [Integer](../main_2.md#type-integer) | true | — | row number to select. Required for [multi-link trees](Tree.md#attr-treemultilinktree) unless row number is passed in the "record" param |
+| newState | [boolean](../reference.md#type-boolean) | true | — | new selection state (if null, defaults to true) |
+| rowNum | [Integer](../reference_2.md#type-integer) | true | — | row number to select. Required for [multi-link trees](Tree.md#attr-treemultilinktree) unless row number is passed in the "record" param |
 
 ### Groups
 
@@ -2438,8 +2438,8 @@ If data has never been fetched for this component, this method will not issue an
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| criteria | [Criteria](../main_2.md#type-criteria) | false | — | non user-editable criteria to apply to this component |
-| callback | [DSCallback](../main_2.md#type-dscallback) | true | — | callback to fire on successful fetch - will not fire if `willFetchData` is false or if an initial fetch is required but `initialFetch` was not passed |
+| criteria | [Criteria](../reference_2.md#type-criteria) | false | — | non user-editable criteria to apply to this component |
+| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to fire on successful fetch - will not fire if `willFetchData` is false or if an initial fetch is required but `initialFetch` was not passed |
 | initialFetch | [Boolean](#type-boolean) | true | — | flag to allow initial fetch if this grid has never fetched data before - default behavior is not to perform an initial fetch |
 
 ### Returns
@@ -2484,7 +2484,7 @@ Override in subclasses to provide more specific behavior, for instance, when dat
 ## Method: DataBoundComponent.getFieldAlignments
 
 ### Description
-Returns an array of [field alignments](../main_2.md#type-alignment) for this grid
+Returns an array of [field alignments](../reference_2.md#type-alignment) for this grid
 
 ### Returns
 
@@ -2505,7 +2505,7 @@ Get the computed value of a [formula field](#attr-databoundcomponentcanaddformul
 
 ### Returns
 
-`[Double](../main.md#type-double)|[String](#type-string)` — formula result if a valid number or [DataBoundComponent.badFormulaResultValue](#attr-databoundcomponentbadformularesultvalue) if invalid
+`[Double](../reference.md#type-double)|[String](#type-string)` — formula result if a valid number or [DataBoundComponent.badFormulaResultValue](#attr-databoundcomponentbadformularesultvalue) if invalid
 
 ---
 ## Method: DataBoundComponent.getDropValues
@@ -2529,12 +2529,12 @@ You can override this method if you need more complex setting of drop values tha
 | record | [Record](#type-record) | false | — | record being dropped |
 | sourceDS | [DataSource](#type-datasource) | false | — | dataSource the record being dropped is bound to |
 | targetRecord | [Record](#type-record) | false | — | record being dropped on |
-| index | [int](../main.md#type-int) | false | — | index of record being dropped on |
+| index | [int](../reference.md#type-int) | false | — | index of record being dropped on |
 | sourceWidget | [Canvas](#type-canvas) | false | — | widget where dragging began |
 
 ### Returns
 
-`[Object](../main.md#type-object)` — dropValues, as described above.
+`[Object](../reference.md#type-object)` — dropValues, as described above.
 
 ---
 ## Method: DataBoundComponent.findNextIndex
@@ -2546,26 +2546,26 @@ This API is equivalent to [List.findNextIndex](List.md#method-listfindnextindex)
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| startIndex | [int](../main.md#type-int) | false | — | first index to consider |
+| startIndex | [int](../reference.md#type-int) | false | — | first index to consider |
 | advancedCriteria | [AdvancedCriteria](#type-advancedcriteria) | false | — | AdvancedCriteria to use with |
-| endIndex | [int](../main.md#type-int) | true | — | last index to consider |
+| endIndex | [int](../reference.md#type-int) | true | — | last index to consider |
 
 ### Returns
 
-`[int](../main.md#type-int)` — index of the first matching Object or -1 if not found
+`[int](../reference.md#type-int)` — index of the first matching Object or -1 if not found
 
 ---
 ## Method: DataBoundComponent.selectSingleRecord
 
 ### Description
-Select a single [Record](../main.md#object-record) passed in explicitly, or by index, and deselect everything else. When programmatic selection of records is a requirement and [selectionType()](ListGrid_1.md#attr-listgridselectiontype) is "single", use this method rather than [selectRecord()](#method-databoundcomponentselectrecord) to enforce mutually-exclusive record-selection.
+Select a single [Record](../reference.md#object-record) passed in explicitly, or by index, and deselect everything else. When programmatic selection of records is a requirement and [selectionType()](ListGrid_1.md#attr-listgridselectiontype) is "single", use this method rather than [selectRecord()](#method-databoundcomponentselectrecord) to enforce mutually-exclusive record-selection.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | record | [Record](#type-record)|[number](#type-number) | false | — | record (or row number) to select |
-| rowNum | [Integer](../main_2.md#type-integer) | true | — | row number to select. Required for [multi-link trees](Tree.md#attr-treemultilinktree) unless row number is passed in the "record" param |
+| rowNum | [Integer](../reference_2.md#type-integer) | true | — | row number to select. Required for [multi-link trees](Tree.md#attr-treemultilinktree) unless row number is passed in the "record" param |
 
 ### Groups
 

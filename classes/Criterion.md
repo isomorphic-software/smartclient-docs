@@ -1,6 +1,6 @@
 # Criterion Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -19,10 +19,10 @@ Operator this criterion applies.
 ## Attr: Criterion.fieldName
 
 ### Description
-Name of the field in each [Record](../main.md#object-record) that this criterion applies to. Not applicable for a criterion with [sub-criteria](#attr-criterioncriteria). Can be specified as a dataPath to allow matching nested objects. Use '/' as delimiters for dataPath. See [dataPath](../main_2.md#type-datapath) for more information.
+Name of the field in each [Record](../reference.md#object-record) that this criterion applies to. Not applicable for a criterion with [sub-criteria](#attr-criterioncriteria). Can be specified as a dataPath to allow matching nested objects. Use '/' as delimiters for dataPath. See [dataPath](../reference_2.md#type-datapath) for more information.
 
 #### [fieldQuery](#attr-criterionfieldquery) shortcuts
-`fieldName` can also be used to express a compact form of related-field filtering. If you set this property to the qualified name of a field on a related DataSource, it will be transformed into a basic [AdvancedCriterionSubquery](../main.md#object-advancedcriterionsubquery). For example, say you have an `Order` dataSource, which has a [foreign key relation](DataSourceField.md#attr-datasourcefieldforeignkey) to your `Customer` dataSource, and your `Customer` dataSource has a "region" field. If you wanted to fetch all Orders for Customers in the EMEA region, you could declare criteria like this:
+`fieldName` can also be used to express a compact form of related-field filtering. If you set this property to the qualified name of a field on a related DataSource, it will be transformed into a basic [AdvancedCriterionSubquery](../reference.md#object-advancedcriterionsubquery). For example, say you have an `Order` dataSource, which has a [foreign key relation](DataSourceField.md#attr-datasourcefieldforeignkey) to your `Customer` dataSource, and your `Customer` dataSource has a "region" field. If you wanted to fetch all Orders for Customers in the EMEA region, you could declare criteria like this:
 ```
     {fieldName: "Customer.region", operator: "equals", value: "EMEA"}
  
@@ -53,7 +53,7 @@ See the `AdvancedCriterionSubquery` overview linked above for more details of th
 ### Description
 A subquery to use instead of a [Criterion.value](#attr-criterionvalue). When you use a `valueQuery` instead of a `value`, you are comparing the values in the record field named in the criterion [Criterion.fieldName](#attr-criterionfieldname) to the result of running a per-record subquery, rather than a literal scalar value. . Note, it is also possible to specify both a `valueQuery` and a [fieldQuery](#attr-criterionfieldquery).
 
-See the [subquery overview](../main.md#object-advancedcriterionsubquery) for more details of the criteria subquery feature, and examples of use.
+See the [subquery overview](../reference.md#object-advancedcriterionsubquery) for more details of the criteria subquery feature, and examples of use.
 
 Note, if you specify both `valueQuery` and `value` in a criterion, we use the `value` and the `valueQuery` is ignored
 
@@ -69,7 +69,7 @@ Note, if you specify both `valueQuery` and `value` in a criterion, we use the `v
 ### Description
 A subquery to use instead of a [Criterion.fieldName](#attr-criterionfieldname). When you use a `fieldQuery` instead of a `fieldName`, you are comparing the criterion [Criterion.value](#attr-criterionvalue) to the result of running a per-record subquery, rather than a field value found directly on the record. Note, it is also possible to specify both a `fieldQuery` and a [valueQuery](#attr-criterionvaluequery).
 
-See the [subquery overview](../main.md#object-advancedcriterionsubquery) for more details of the criteria subquery feature, and examples of use.
+See the [subquery overview](../reference.md#object-advancedcriterionsubquery) for more details of the criteria subquery feature, and examples of use.
 
 Note, if you specify both `fieldQuery` and `fieldName` in a criterion, we use the `fieldName` and the `fieldQuery` is ignored.
 
@@ -136,7 +136,7 @@ For a criterion with an operator that acts on other criteria (eg "and", "or"), a
 ### Description
 Value to be used in the application of this criterion.
 
-Value may be required or not required, or may be an Array, according to the [OperatorValueType](../main_2.md#type-operatorvaluetype) of the operator.
+Value may be required or not required, or may be an Array, according to the [OperatorValueType](../reference_2.md#type-operatorvaluetype) of the operator.
 
 ### Groups
 

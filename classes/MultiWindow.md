@@ -1,6 +1,6 @@
 # MultiWindow Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -17,7 +17,7 @@ Includes APIs for:
 *   Sharing DataSources and their caches between SmartClient windows
 *   Sharing [messaging](../kb_topics/messaging.md#kb-topic-real-time-messaging) channels between SmartClient windows
 
-Within the [OpenFin](https://developers.openfin.co/of-docs/docs) environment, the underlying implementation is actually via the [OpenFin](../main.md#class-openfin) class.
+Within the [OpenFin](https://developers.openfin.co/of-docs/docs) environment, the underlying implementation is actually via the [OpenFin](../reference.md#class-openfin) class.
 
 Reloading of child windows is in general supported (but see [MultiWindow.autoCopyDataSources](#classattr-multiwindowautocopydatasources)), while reloading the [main window](#classmethod-multiwindowismainwindow) currently is not.
 
@@ -82,11 +82,11 @@ Minimizes the existing window with the specified name,
 ## ClassMethod: MultiWindow.getDataContext
 
 ### Description
-Returns the [DataContext](../main.md#object-datacontext) provided by the [MultiWindow.open](#classmethod-multiwindowopen) call that opened this window, or a newly created (on demand) [DataContext](../main.md#object-datacontext) if this is the main application window, or no DataContext was provided.
+Returns the [DataContext](../reference.md#object-datacontext) provided by the [MultiWindow.open](#classmethod-multiwindowopen) call that opened this window, or a newly created (on demand) [DataContext](../reference.md#object-datacontext) if this is the main application window, or no DataContext was provided.
 
 ### Returns
 
-`[DataContext](#type-datacontext)` — [DataContext](../main.md#object-datacontext) for this window
+`[DataContext](#type-datacontext)` — [DataContext](../reference.md#object-datacontext) for this window
 
 ---
 ## ClassMethod: MultiWindow.restore
@@ -158,7 +158,7 @@ Unregisters a previously registered window event listener. The event type and ID
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| eventType | [MultiWindowEvent](../main_2.md#type-multiwindowevent) | false | — | event type to register |
+| eventType | [MultiWindowEvent](../reference_2.md#type-multiwindowevent) | false | — | event type to register |
 | ID | [number](#type-number) | true | — | ID of the event to clear. If not specified, all events of eventType will be cleared. |
 
 ### See Also
@@ -195,7 +195,7 @@ Deactivates (blurs) the existing window with the specified name,
 ## ClassMethod: MultiWindow.open
 
 ### Description
-Opens a new window with the specified URL, name, and [DataContext](../main.md#object-datacontext).
+Opens a new window with the specified URL, name, and [DataContext](../reference.md#object-datacontext).
 
 Note that if the provided window name already exists, that window will just be [activated](#classmethod-multiwindowactivate), and though the callback will be run, the supplied url, dataContext, windowSettings, and classSettings will be ignored.
 
@@ -203,7 +203,7 @@ Note that if the provided window name already exists, that window will just be [
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| url | [URL](../main_2.md#type-url) | false | — | url to open in the window or null to reuse the current url |
+| url | [URL](../reference_2.md#type-url) | false | — | url to open in the window or null to reuse the current url |
 | name | [String](#type-string) | false | — | unique window name to open as a new window |
 | dataContext | [DataContext](#type-datacontext) | true | — | dataContext to apply to window |
 | callback | [RemoteWindowBooleanCallback](#type-remotewindowbooleancallback) | true | — | callback run after [RemoteWindow](RemoteWindow.md#class-remotewindow) created or activated (parameter true if created) |
@@ -236,7 +236,7 @@ Closes the existing window with the specified name,
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | name | [String](#type-string) | false | — | unique window name |
-| force | [boolean](../main.md#type-boolean) | true | — | whether to force it closed |
+| force | [boolean](../reference.md#type-boolean) | true | — | whether to force it closed |
 | callback | [RemoteWindowCallback](#type-remotewindowcallback) | true | — | callback run after [RemoteWindow](RemoteWindow.md#class-remotewindow) closed |
 
 ---
@@ -247,7 +247,7 @@ Returns whether this [RemoteWindow](RemoteWindow.md#class-remotewindow) wraps th
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — whether this instance wraps the main application window
+`[boolean](../reference.md#type-boolean)` — whether this instance wraps the main application window
 
 ---
 ## ClassMethod: MultiWindow.getOtherWindows
@@ -282,7 +282,7 @@ Registers a window event listener to be called whenever the event type occurs fo
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| eventType | [MultiWindowEvent](../main_2.md#type-multiwindowevent) | false | — | event type to register |
+| eventType | [MultiWindowEvent](../reference_2.md#type-multiwindowevent) | false | — | event type to register |
 | listener | [MultiWindowEventCallback](#type-multiwindoweventcallback) | false | — | function to be called when event fires |
 
 ### Returns

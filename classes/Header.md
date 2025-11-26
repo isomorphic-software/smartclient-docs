@@ -1,6 +1,6 @@
 # Header Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -19,7 +19,7 @@ This header is a special type of ToolStrip, so any ToolStrip controls can be add
 ### Description
 Label autoChild for [title](#attr-headertitle) display.
 
-This can be customized via the standard [AutoChild](../main.md#type-autochild) pattern.
+This can be customized via the standard [AutoChild](../reference.md#type-autochild) pattern.
 
 **Flags**: IR
 
@@ -53,6 +53,6 @@ Setter for the [title](#attr-headertitle).
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newTitle | [HTMLString](../main.md#type-htmlstring) | false | — | the new title HTML. |
+| newTitle | [HTMLString](../reference.md#type-htmlstring) | false | — | the new title HTML. |
 
 ---

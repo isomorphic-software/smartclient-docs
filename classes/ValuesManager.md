@@ -1,6 +1,6 @@
 # ValuesManager Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -104,7 +104,7 @@ Note that member forms should have the same dataSource applied to them to allow 
 ## Attr: ValuesManager.saveOperationType
 
 ### Description
-Default [DSOperationType](../main.md#type-dsoperationtype) to be performed when [DynamicForm.saveData](DynamicForm.md#method-dynamicformsavedata) is called. This property is automatically set on a call to [DynamicForm.editRecord](DynamicForm.md#method-dynamicformeditrecord) or [DynamicForm.editNewRecord](DynamicForm.md#method-dynamicformeditnewrecord), or may be set directly via [DynamicForm.setSaveOperationType](DynamicForm.md#method-dynamicformsetsaveoperationtype).
+Default [DSOperationType](../reference.md#type-dsoperationtype) to be performed when [DynamicForm.saveData](DynamicForm.md#method-dynamicformsavedata) is called. This property is automatically set on a call to [DynamicForm.editRecord](DynamicForm.md#method-dynamicformeditrecord) or [DynamicForm.editNewRecord](DynamicForm.md#method-dynamicformeditnewrecord), or may be set directly via [DynamicForm.setSaveOperationType](DynamicForm.md#method-dynamicformsetsaveoperationtype).
 
 If `saveOperationType` is unset, the form will heuristically determine whether an "add" or "update" operation is intended based on whether the primaryKey field is present and editable.
 
@@ -271,7 +271,7 @@ Returns true if [ValuesManager.saveOperationType](#attr-valuesmanagersaveoperati
 ### Description
 Retrieves the combined [criteria values](DynamicForm.md#method-dynamicformgetvaluesascriteria) for all member forms.
 
-As with the DynamicForm getValuesAsCriteria, this method may return [AdvancedCriteria](../main.md#object-advancedcriteria) or simple [Criteria](../main_2.md#type-criteria) depending on whether the `advanced` parameter was passed, whether the [ValuesManager.operator](#attr-valuesmanageroperator) is set to `"or"` rather than `"and"`, and whether any member forms return [AdvancedCriteria](../main.md#object-advancedcriteria).
+As with the DynamicForm getValuesAsCriteria, this method may return [AdvancedCriteria](../reference.md#object-advancedcriteria) or simple [Criteria](../reference_2.md#type-criteria) depending on whether the `advanced` parameter was passed, whether the [ValuesManager.operator](#attr-valuesmanageroperator) is set to `"or"` rather than `"and"`, and whether any member forms return [AdvancedCriteria](../reference.md#object-advancedcriteria).
 
 Note that developers can also use [DataSource.combineCriteria](DataSource.md#classmethod-datasourcecombinecriteria) to combine sub-criteria from various sources, including member forms of a ValuesManager, into a combined criteria object.
 
@@ -279,12 +279,12 @@ Note that developers can also use [DataSource.combineCriteria](DataSource.md#cla
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| advanced | [boolean](../main.md#type-boolean) | false | — | if true, return an [AdvancedCriteria](../main.md#object-advancedcriteria) object even if the form item values could be represented in a simple [Criterion](../main_2.md#object-criterion) object. |
-| textMatchStyle | [TextMatchStyle](../main_2.md#type-textmatchstyle) | true | — | This parameter may be passed to indicate whether the criteria are to be applied to a substring match (filter) or exact match (fetch). When advanced criteria are returned this parameter will cause the appropriate `operator` to be generated for individual fields' criterion clauses. |
+| advanced | [boolean](../reference.md#type-boolean) | false | — | if true, return an [AdvancedCriteria](../reference.md#object-advancedcriteria) object even if the form item values could be represented in a simple [Criterion](../reference_2.md#object-criterion) object. |
+| textMatchStyle | [TextMatchStyle](../reference_2.md#type-textmatchstyle) | true | — | This parameter may be passed to indicate whether the criteria are to be applied to a substring match (filter) or exact match (fetch). When advanced criteria are returned this parameter will cause the appropriate `operator` to be generated for individual fields' criterion clauses. |
 
 ### Returns
 
-`[Criteria](../main_2.md#type-criteria)|[AdvancedCriteria](#type-advancedcriteria)` — a [Criteria](../main_2.md#type-criteria) object, or [AdvancedCriteria](../main.md#object-advancedcriteria)
+`[Criteria](../reference_2.md#type-criteria)|[AdvancedCriteria](#type-advancedcriteria)` — a [Criteria](../reference_2.md#type-criteria) object, or [AdvancedCriteria](../reference.md#object-advancedcriteria)
 
 ### Groups
 
@@ -302,11 +302,11 @@ Similar to [ValuesManager.getValuesAsCriteria](#method-valuesmanagergetvaluesasc
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| textMatchStyle | [TextMatchStyle](../main_2.md#type-textmatchstyle) | true | — | If specified the text match style will be used to generate the appropriate `operator` for per field criteria. |
+| textMatchStyle | [TextMatchStyle](../reference_2.md#type-textmatchstyle) | true | — | If specified the text match style will be used to generate the appropriate `operator` for per field criteria. |
 
 ### Returns
 
-`[AdvancedCriteria](#type-advancedcriteria)` — a [AdvancedCriteria](../main.md#object-advancedcriteria) based on the form's current values
+`[AdvancedCriteria](#type-advancedcriteria)` — a [AdvancedCriteria](../reference.md#object-advancedcriteria) based on the form's current values
 
 ### Groups
 
@@ -323,8 +323,8 @@ Differs from [DynamicForm.fetchData](DynamicForm.md#method-dynamicformfetchdata)
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| criteria | [Criteria](../main_2.md#type-criteria) | true | — | search criteria |
-| callback | [DSCallback](../main_2.md#type-dscallback) | true | — | callback to invoke on completion |
+| criteria | [Criteria](../reference_2.md#type-criteria) | true | — | search criteria |
+| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke on completion |
 | requestProperties | [DSRequest](#type-dsrequest) | true | — | additional properties to set on the DSRequest that will be issued |
 
 ### Groups
@@ -339,7 +339,7 @@ Call [ValuesManager.validate](#method-valuesmanagervalidate) to check for valida
 
 ### Returns
 
-`[Object](../main.md#type-object)` — current values or null if validation failed.
+`[Object](../reference.md#type-object)` — current values or null if validation failed.
 
 ### Groups
 
@@ -358,7 +358,7 @@ The callback must be passed unless server-side validation is being skipped, and 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | callback | [ValidationStatusCallback](#type-validationstatuscallback) | false | — | callback to invoke after validation is complete |
-| skipServerValidation | [boolean](../main.md#type-boolean) | true | — | whether to skip doing server-side validation |
+| skipServerValidation | [boolean](../reference.md#type-boolean) | true | — | whether to skip doing server-side validation |
 
 ### Returns
 
@@ -391,7 +391,7 @@ Update the parameter ValuesManager member to reflect the current values held by 
 ### Description
 Retrieve a [FormItem](FormItem.md#class-formitem) from this ValuesManager.
 
-Takes a field [name](FormItem.md#attr-formitemname) or [DataPath](../main_2.md#type-datapath), and searches through the members of this valuesManager for an editor for that field. If found the appropriate formItem will be returned. If the "retrieveAll" parameter is true, this method will return all FormItems that are bound to the supplied name or dataPath (a dataPath can be bound to more than one FormItem, as long as those FormItems are on different forms); if "retrieveAll" is false or unset, and there is more than one binding for the dataPath, this method just returns the first one it finds.
+Takes a field [name](FormItem.md#attr-formitemname) or [DataPath](../reference_2.md#type-datapath), and searches through the members of this valuesManager for an editor for that field. If found the appropriate formItem will be returned. If the "retrieveAll" parameter is true, this method will return all FormItems that are bound to the supplied name or dataPath (a dataPath can be bound to more than one FormItem, as long as those FormItems are on different forms); if "retrieveAll" is false or unset, and there is more than one binding for the dataPath, this method just returns the first one it finds.
 
 Note that if a dataPath is passed in, it should be the full data path for the item, including any canvas level [dataPath](Canvas.md#attr-canvasdatapath) specified on the member form containing this form item.  
 Note: Unlike the `DynamicForm` class, this method will not return an item by index
@@ -400,8 +400,8 @@ Note: Unlike the `DynamicForm` class, this method will not return an item by ind
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| itemID | [FieldName](../main.md#type-fieldname)|[DataPath](../main_2.md#type-datapath) | false | — | item fieldName or dataPath identifier |
-| retrieveAll | [boolean](../main.md#type-boolean) | true | — | If true, return the list of all FormItems that are bound to this name or dataPath on a member form of this ValuesManager |
+| itemID | [FieldName](../reference.md#type-fieldname)|[DataPath](../reference_2.md#type-datapath) | false | — | item fieldName or dataPath identifier |
+| retrieveAll | [boolean](../reference.md#type-boolean) | true | — | If true, return the list of all FormItems that are bound to this name or dataPath on a member form of this ValuesManager |
 
 ### Returns
 
@@ -431,7 +431,7 @@ Are there any errors associated with a field in this valuesManager?
 ## Method: ValuesManager.addMember
 
 ### Description
-Add a new member to this valuesManager. Any [Canvas](Canvas.md#class-canvas) can be a member of a valuesManager, even components like [Layout](Layout.md#class-layout) or [TabSet](TabSet.md#class-tabset) that do not actually have any values to manage. When "valueless" components like these bind to a ValuesManager, it is in order to provide their own child components with a shared valuesManager so that complex data can be displayed and edited - see [DataPath](../main_2.md#type-datapath) for more details.
+Add a new member to this valuesManager. Any [Canvas](Canvas.md#class-canvas) can be a member of a valuesManager, even components like [Layout](Layout.md#class-layout) or [TabSet](TabSet.md#class-tabset) that do not actually have any values to manage. When "valueless" components like these bind to a ValuesManager, it is in order to provide their own child components with a shared valuesManager so that complex data can be displayed and edited - see [DataPath](../reference_2.md#type-datapath) for more details.
 
 For components like [DynamicForm](DynamicForm.md#class-dynamicform) and [ListGrid](ListGrid_1.md#class-listgrid), which do have a set of values to manage, the component's values will subsequently be available through this valuesManager.
 
@@ -465,7 +465,7 @@ Specifies a dataSource for this valuesManager. This dataSource will then be used
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| dataSource | [DataSource](#type-datasource)|[GlobalId](../main.md#type-globalid) | false | — | Datasource object or identifier to bind to. |
+| dataSource | [DataSource](#type-datasource)|[GlobalId](../reference.md#type-globalid) | false | — | Datasource object or identifier to bind to. |
 
 **Flags**: A
 
@@ -508,8 +508,8 @@ Notification fired when an asynchronous validation completes.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| success | [boolean](../main.md#type-boolean) | false | — | true if validation succeeded, false if it failed |
-| errors | [Object](../main.md#type-object) | false | — | Map of errors by fieldName. Will be null if validation succeeded. |
+| success | [boolean](../reference.md#type-boolean) | false | — | true if validation succeeded, false if it failed |
+| errors | [Object](../reference.md#type-object) | false | — | Map of errors by fieldName. Will be null if validation succeeded. |
 
 ---
 ## Method: ValuesManager.synchronizeMembersOnDataPath
@@ -563,13 +563,13 @@ By default hidden validation errors will be logged as warnings in the developerC
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| errors | [Object](../main.md#type-object) | false | — | The set of errors returned - this is an object of the form  
+| errors | [Object](../reference.md#type-object) | false | — | The set of errors returned - this is an object of the form  
   `{fieldName:errors}`  
 Where the 'errors' object is either a single string or an array of strings containing the error messages for the field. |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — false from this method to suppress that behavior
+`[boolean](../reference.md#type-boolean)` — false from this method to suppress that behavior
 
 **Flags**: A
 
@@ -610,7 +610,7 @@ Returns the subset of this valuesManager's values associated with some member fo
 
 ### Returns
 
-`[Object](../main.md#type-object)` — a map of the values for the appropriate member form.
+`[Object](../reference.md#type-object)` — a map of the values for the appropriate member form.
 
 ### Groups
 
@@ -627,7 +627,7 @@ Clear all validation errors associated with some field in this form
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | fieldName | [String](#type-string) | false | — | field for which errors should be cleared |
-| show | [boolean](../main.md#type-boolean) | false | — | if true, and the field is present in one of our member forms, redraw it to clear any currently visible validation errors |
+| show | [boolean](../reference.md#type-boolean) | false | — | if true, and the field is present in one of our member forms, redraw it to clear any currently visible validation errors |
 
 ### Groups
 
@@ -664,7 +664,7 @@ Where each errors object is either a single error message or an array of error m
 
 ### Returns
 
-`[Object](../main.md#type-object)` — Object containing mapping from field names to error strings. Returns null if there are no errors for this valuesManager.
+`[Object](../reference.md#type-object)` — Object containing mapping from field names to error strings. Returns null if there are no errors for this valuesManager.
 
 ### Groups
 
@@ -680,7 +680,7 @@ Clears all errors from member forms.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| showErrors | [boolean](../main.md#type-boolean) | false | — | If true, clear any visible error messages. |
+| showErrors | [boolean](../reference.md#type-boolean) | false | — | If true, clear any visible error messages. |
 
 ### Groups
 
@@ -696,7 +696,7 @@ Optional [StringMethod](../kb_topics/stringMethods.md#kb-topic-string-methods-ov
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| values | [Object](../main.md#type-object) | false | — | the valuesManager values |
+| values | [Object](../reference.md#type-object) | false | — | the valuesManager values |
 | valuesManager | [ValuesManager](#type-valuesmanager) | false | — | the valuesManager being submitted |
 
 ### Groups
@@ -790,7 +790,7 @@ Validate and then save the form's current values to the [DataSource](DataSource.
 
 If client-side validators are defined, they are executed first, and if any errors are found the save is aborted and the form will show the errors.
 
-If client-side validation passes, a [DSRequest](../main_2.md#object-dsrequest) will be sent, exactly as though [DataSource.addData](DataSource.md#method-datasourceadddata) or [DataSource.updateData](DataSource.md#method-datasourceupdatedata) had been called with ${isc.DocUtils.linkForRef('method:DynamicForm.getValues','the form\\'s values')} as data. The [DSRequest.operationType](DSRequest.md#attr-dsrequestoperationtype) will be either "update" or "add", depending on the current [DynamicForm.saveOperationType](DynamicForm.md#attr-dynamicformsaveoperationtype).
+If client-side validation passes, a [DSRequest](../reference_2.md#object-dsrequest) will be sent, exactly as though [DataSource.addData](DataSource.md#method-datasourceadddata) or [DataSource.updateData](DataSource.md#method-datasourceupdatedata) had been called with ${isc.DocUtils.linkForRef('method:DynamicForm.getValues','the form\\'s values')} as data. The [DSRequest.operationType](DSRequest.md#attr-dsrequestoperationtype) will be either "update" or "add", depending on the current [DynamicForm.saveOperationType](DynamicForm.md#attr-dynamicformsaveoperationtype).
 
 On either a client-side or server-side validation failure, validation errors will be displayed in the form. Visible items within a DynamicForm will be redrawn to display errors. Validation failure occurring on hidden items, or DataSource fields with no associated form items may be handled via [DynamicForm.handleHiddenValidationErrors](DynamicForm.md#method-dynamicformhandlehiddenvalidationerrors) or [ValuesManager.handleHiddenValidationErrors](#method-valuesmanagerhandlehiddenvalidationerrors).
 
@@ -805,7 +805,7 @@ In the case of a validation error, the callback will **not** be called by defaul
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| callback | [DSCallback](../main_2.md#type-dscallback) | true | — | callback to invoke on completion |
+| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke on completion |
 | requestProperties | [DSRequest](#type-dsrequest) | true | — | additional properties to set on the DSRequest that will be issued |
 
 ### Groups
@@ -834,7 +834,7 @@ Returns all values within this DynamicForm that have changed since [DynamicForm.
 
 ### Returns
 
-`[Object](../main.md#type-object)` — changed values in the form
+`[Object](../reference.md#type-object)` — changed values in the form
 
 ### Groups
 
@@ -854,8 +854,8 @@ Retrieve data that matches the provided criteria, and edit the first record retu
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| criteria | [Criteria](../main_2.md#type-criteria) | true | — | search criteria |
-| callback | [DSCallback](../main_2.md#type-dscallback) | true | — | callback to invoke on completion |
+| criteria | [Criteria](../reference_2.md#type-criteria) | true | — | search criteria |
+| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke on completion |
 | requestProperties | [DSRequest](#type-dsrequest) | true | — | additional properties to set on the DSRequest that will be issued |
 
 ### Groups
@@ -916,11 +916,11 @@ Unlike [ValuesManager.validate](#method-valuesmanagervalidate) this method will 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| returnErrors | [boolean](../main.md#type-boolean) | true | — | If unset, this method returns a simple boolean value indicating success or failure of validation. If this parameter is passed, this method will return an object mapping each field name to the errors(s) encountered on validation failure, or null if validation was successful. |
+| returnErrors | [boolean](../reference.md#type-boolean) | true | — | If unset, this method returns a simple boolean value indicating success or failure of validation. If this parameter is passed, this method will return an object mapping each field name to the errors(s) encountered on validation failure, or null if validation was successful. |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)|[Map](#type-map)` — Boolean value indicating validation success, or if `returnErrors` was specified, an object mapping field names to the associated errors, for those fields that failed validation, or null if validation succeeded.
+`[boolean](../reference.md#type-boolean)|[Map](#type-map)` — Boolean value indicating validation success, or if `returnErrors` was specified, an object mapping field names to the associated errors, for those fields that failed validation, or null if validation succeeded.
 
 ### Groups
 
@@ -937,7 +937,7 @@ Set the values for some member form.
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | ID | [String](#type-string) | false | — | ID of the member form to update |
-| values | [Object](../main.md#type-object) | false | — | new values for the form |
+| values | [Object](../reference.md#type-object) | false | — | new values for the form |
 
 ### Groups
 
@@ -954,7 +954,7 @@ This method will also call [DynamicForm.setSaveOperationType](DynamicForm.md#met
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| initialValues | [Record](#type-record)|[Object](../main.md#type-object) | true | — | initial set of values for the editor as a map of field names to their corresponding values |
+| initialValues | [Record](#type-record)|[Object](../reference.md#type-object) | true | — | initial set of values for the editor as a map of field names to their corresponding values |
 
 ### Groups
 
@@ -1009,7 +1009,7 @@ If this form has a dataSource, then saving via [ValuesManager.saveData](#method-
 ## Method: ValuesManager.submit
 
 ### Description
-`submit()` is automatically called when a [SubmitItem](../main.md#class-submititem) in a member form is clicked, or if [saveOnEnter](DynamicForm.md#attr-dynamicformsaveonenter) is set for some member form, when the "Enter" key is pressed in a text input. Submit can also be manually called.
+`submit()` is automatically called when a [SubmitItem](../reference.md#class-submititem) in a member form is clicked, or if [saveOnEnter](DynamicForm.md#attr-dynamicformsaveonenter) is set for some member form, when the "Enter" key is pressed in a text input. Submit can also be manually called.
 
 If [valuesManager.submitValues()](#method-valuesmanagersubmitvalues) exists, it will be called, and no further action will be taken.
 
@@ -1021,7 +1021,7 @@ The parameters to `submit()` apply only if `submit()` will be calling [ValuesMan
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| callback | [DSCallback](../main_2.md#type-dscallback) | true | — | callback to invoke on completion. |
+| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke on completion. |
 | requestProperties | [DSRequest](#type-dsrequest) | true | — | additional properties to set on the DSRequest that will be issued |
 
 ### Groups
@@ -1062,7 +1062,7 @@ Note that modifying the returned object is not a supported way of adding or modi
 
 ### Returns
 
-`[Object](../main.md#type-object)` — a map of the values for this manager
+`[Object](../reference.md#type-object)` — a map of the values for this manager
 
 ### Groups
 
@@ -1162,7 +1162,7 @@ Make a snapshot of the current set of values, so we can reset to them later. Cre
 
 ### Returns
 
-`[Object](../main.md#type-object)` — copy of current form values
+`[Object](../reference.md#type-object)` — copy of current form values
 
 ### Groups
 
@@ -1172,13 +1172,13 @@ Make a snapshot of the current set of values, so we can reset to them later. Cre
 ## Method: ValuesManager.setSaveOperationType
 
 ### Description
-Setter for the default [DSOperationType](../main.md#type-dsoperationtype) when [DynamicForm.saveData](DynamicForm.md#method-dynamicformsavedata) is called. Note that this property can also be set by calling [DynamicForm.editRecord](DynamicForm.md#method-dynamicformeditrecord) or [DynamicForm.editNewRecord](DynamicForm.md#method-dynamicformeditnewrecord)
+Setter for the default [DSOperationType](../reference.md#type-dsoperationtype) when [DynamicForm.saveData](DynamicForm.md#method-dynamicformsavedata) is called. Note that this property can also be set by calling [DynamicForm.editRecord](DynamicForm.md#method-dynamicformeditrecord) or [DynamicForm.editNewRecord](DynamicForm.md#method-dynamicformeditnewrecord)
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| operationType | [DSOperationType](../main.md#type-dsoperationtype) | false | — | Operation type to use as a default. Valid values are `"add"` or `"update"`. |
+| operationType | [DSOperationType](../reference.md#type-dsoperationtype) | false | — | Operation type to use as a default. Valid values are `"add"` or `"update"`. |
 
 ---
 ## Method: ValuesManager.setValues
@@ -1186,7 +1186,7 @@ Setter for the default [DSOperationType](../main.md#type-dsoperationtype) when [
 ### Description
 Replaces the current values of the ValuesManager and all member components with the values passed in.
 
-Values should be provided as an Object containing the new values as properties, where each propertyName is the name of a [form item](../main.md#kb-topic-form-items) in one of the member forms, and each property value is the value to apply to that form item via [FormItem.setValue](FormItem.md#method-formitemsetvalue).
+Values should be provided as an Object containing the new values as properties, where each propertyName is the name of a [form item](../reference.md#kb-topic-form-items) in one of the member forms, and each property value is the value to apply to that form item via [FormItem.setValue](FormItem.md#method-formitemsetvalue).
 
 Values with no corresponding form item may also be passed, will be tracked by the valuesManager and returned by subsequent calls to [ValuesManager.getValues](#method-valuesmanagergetvalues).
 
@@ -1198,7 +1198,7 @@ This method also calls [ValuesManager.rememberValues](#method-valuesmanagerremem
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| values | [Object](../main.md#type-object) | false | — | new set of values for this values manager. |
+| values | [Object](../reference.md#type-object) | false | — | new set of values for this values manager. |
 
 ### Groups
 
@@ -1212,7 +1212,7 @@ Returns the set of values last stored by [DynamicForm.rememberValues](DynamicFor
 
 ### Returns
 
-`[Object](../main.md#type-object)` — old values in the form
+`[Object](../reference.md#type-object)` — old values in the form
 
 ### Groups
 
@@ -1234,7 +1234,7 @@ Adds validation errors to the existing set of errors for the field in question. 
 |------|------|----------|---------|-------------|
 | fieldName | [String](#type-string) | false | — | name of field to apply errors to |
 | errors | [String](#type-string)|[Array of String](#type-array-of-string) | false | — | error messages for the field |
-| showErrors | [boolean](../main.md#type-boolean) | false | — | should the error(s) be immediately displayed to the user? |
+| showErrors | [boolean](../reference.md#type-boolean) | false | — | should the error(s) be immediately displayed to the user? |
 
 ### Groups
 
@@ -1244,10 +1244,10 @@ Adds validation errors to the existing set of errors for the field in question. 
 ## Method: ValuesManager.getSaveOperationType
 
 ### Description
-Returns the [DSOperationType](../main.md#type-dsoperationtype) to be performed when [DynamicForm.saveData](DynamicForm.md#method-dynamicformsavedata) or [ValuesManager.saveData](#method-valuesmanagersavedata) is called.  
+Returns the [DSOperationType](../reference.md#type-dsoperationtype) to be performed when [DynamicForm.saveData](DynamicForm.md#method-dynamicformsavedata) or [ValuesManager.saveData](#method-valuesmanagersavedata) is called.  
 Valid options are `"add"` or `"update"`.
 
-If a [DSRequest](../main_2.md#object-dsrequest) configuration object is passed in containing an explicit operationType this will be returned. Otherwise [this.saveOperationType](DynamicForm.md#attr-dynamicformsaveoperationtype) will be returned if set. Note that `saveOperationType` is automatically set via calls to data binding methods such as [DynamicForm.editNewRecord](DynamicForm.md#method-dynamicformeditnewrecord), or it may be [set explicitly](DynamicForm.md#method-dynamicformsetsaveoperationtype).
+If a [DSRequest](../reference_2.md#object-dsrequest) configuration object is passed in containing an explicit operationType this will be returned. Otherwise [this.saveOperationType](DynamicForm.md#attr-dynamicformsaveoperationtype) will be returned if set. Note that `saveOperationType` is automatically set via calls to data binding methods such as [DynamicForm.editNewRecord](DynamicForm.md#method-dynamicformeditnewrecord), or it may be [set explicitly](DynamicForm.md#method-dynamicformsetsaveoperationtype).
 
 If no explicit saveOperationType is present, the system will use the following heuristic to determine the save operationType:
 
@@ -1264,7 +1264,7 @@ If no explicit saveOperationType is present, the system will use the following h
 
 ### Returns
 
-`[DSOperationType](../main.md#type-dsoperationtype)` — Operation type for the save request.
+`[DSOperationType](../reference.md#type-dsoperationtype)` — Operation type for the save request.
 
 ---
 ## Method: ValuesManager.showFieldErrors
@@ -1290,7 +1290,7 @@ Errors passed in should be a string (for a single error message) or an array of 
 |------|------|----------|---------|-------------|
 | fieldName | [String](#type-string) | false | — | name of field to apply errors to |
 | errors | [String](#type-string)|[Array of String](#type-array-of-string) | false | — | error messages for the field |
-| showErrors | [boolean](../main.md#type-boolean) | false | — | should the error(s) be immediately displayed to the user? |
+| showErrors | [boolean](../reference.md#type-boolean) | false | — | should the error(s) be immediately displayed to the user? |
 
 ### Groups
 
@@ -1310,8 +1310,8 @@ Note that if `showErrors` is false, errors may be shown at any time via a call t
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| errors | [Object](../main.md#type-object) | false | — | list of errors as an object with the field names as keys |
-| showErrors | [boolean](../main.md#type-boolean) | false | — | If true display errors now. |
+| errors | [Object](../reference.md#type-object) | false | — | list of errors as an object with the field names as keys |
+| showErrors | [boolean](../reference.md#type-boolean) | false | — | If true display errors now. |
 
 ### Groups
 

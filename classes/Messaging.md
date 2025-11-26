@@ -1,6 +1,6 @@
 # Messaging Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -83,7 +83,7 @@ Calling subscribe() again for a channel you are already subscribed to will resul
 |------|------|----------|---------|-------------|
 | channel | [String](#type-string) | false | — | — |
 | callback | [MessagingCallback](#type-messagingcallback) | false | — | callback fired whenever data is sent to this channel |
-| subscribeCallback | [Callback](../main.md#type-callback) | false | — | callback fired when the subscription is established |
+| subscribeCallback | [Callback](../reference.md#type-callback) | false | — | callback fired when the subscription is established |
 | selector | [String](#type-string) | true | — | JMS selector used with Queues to filter the messages that arrive to the channel (optional). |
 
 ### Groups
@@ -174,7 +174,7 @@ This is not perfectly authoritative since the server may crash at any given inst
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — whether we are currently connected
+`[boolean](../reference.md#type-boolean)` — whether we are currently connected
 
 ### Groups
 

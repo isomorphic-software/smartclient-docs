@@ -1,6 +1,6 @@
 # SplitPane Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -17,7 +17,7 @@ A `SplitPane` can manage either two or three panes — a [navigationPane](#attr-
 *   `listPane`: [ListGrid](ListGrid_1.md#class-listgrid) showing messages in a folder
 *   `detailPane`: message detail view (perhaps a [DetailViewer](DetailViewer.md#class-detailviewer) over an [HTMLFlow](HTMLFlow.md#class-htmlflow) or similar arrangement)
 
-The placement of the panes is by default sensitive to whether the device is detected as a handset (phone), tablet or desktop device (see [DeviceMode](../main.md#type-devicemode)) and to the current [PageOrientation](../main.md#type-pageorientation). You can also configure a `SplitPane` with a fixed [SplitPane.pageOrientation](#attr-splitpanepageorientation) or [SplitPane.deviceMode](#attr-splitpanedevicemode).
+The placement of the panes is by default sensitive to whether the device is detected as a handset (phone), tablet or desktop device (see [DeviceMode](../reference.md#type-devicemode)) and to the current [PageOrientation](../reference.md#type-pageorientation). You can also configure a `SplitPane` with a fixed [SplitPane.pageOrientation](#attr-splitpanepageorientation) or [SplitPane.deviceMode](#attr-splitpanedevicemode).
 
 Beyond providing the panes listed above, typical usage is simply to call [showListPane()](#method-splitpaneshowlistpane) and [showDetailPane()](#method-splitpaneshowdetailpane) when the `SplitPane` should navigate to a new pane. For example, in an email application, clicking on a folder in the `navigationPane` should cause the `listPane` to show messages from the folder, then `showListPane(_"folder name"_)` would be called to show the `listPane` and give it a new title reflecting the name of the folder.
 
@@ -75,7 +75,7 @@ The `navigationPane` is typically used for navigation, to initialize the content
 ## Attr: SplitPane.showMiniNav
 
 ### Description
-If true, a [MiniNavControl](../main.md#class-mininavcontrol) will be shown:
+If true, a [MiniNavControl](../reference.md#class-mininavcontrol) will be shown:
 
 *   In the [navigationBar](#attr-splitpanenavigationbar) when the device mode is "handset" and the [currentPane](#attr-splitpanecurrentpane) is "detail".
 *   In the [detailToolStrip](#attr-splitpanedetailtoolstrip) when the device mode is "tablet" and the [pageOrientation](#attr-splitpanepageorientation) is "portrait".
@@ -191,7 +191,7 @@ Whether to animate state changes of the [navigationBar](#attr-splitpanenavigatio
 ## Attr: SplitPane.pageOrientation
 
 ### Description
-Current [PageOrientation](../main.md#type-pageorientation). The default behavior of the `SplitPane` is to register for orientation change notifications from the device (see [Page.getOrientation](Page.md#classmethod-pagegetorientation)) and automatically change orientation based on the [type of device](#attr-splitpanedevicemode).
+Current [PageOrientation](../reference.md#type-pageorientation). The default behavior of the `SplitPane` is to register for orientation change notifications from the device (see [Page.getOrientation](Page.md#classmethod-pagegetorientation)) and automatically change orientation based on the [type of device](#attr-splitpanedevicemode).
 
 You can instead set a specific value for `pageOrientation` if you only want to use a specific layout, and not respond to orientation information from the device.
 
@@ -266,7 +266,7 @@ Available variables are:
 ## Attr: SplitPane.currentPane
 
 ### Description
-The most recently shown pane. In handset [DeviceMode](../main.md#type-devicemode), the `currentPane` is the only pane that is actually visible to the user. In other modes more than one pane can be simultaneously visible, so the `currentPane` is the most recent pane that was brought into view via a call to [SplitPane.setCurrentPane](#method-splitpanesetcurrentpane) or [SplitPane.showNavigationPane](#method-splitpaneshownavigationpane).
+The most recently shown pane. In handset [DeviceMode](../reference.md#type-devicemode), the `currentPane` is the only pane that is actually visible to the user. In other modes more than one pane can be simultaneously visible, so the `currentPane` is the most recent pane that was brought into view via a call to [SplitPane.setCurrentPane](#method-splitpanesetcurrentpane) or [SplitPane.showNavigationPane](#method-splitpaneshownavigationpane).
 
 The default value of `currentPane` is "navigation".
 
@@ -361,7 +361,7 @@ This size is active only on platforms where multiple panes are showing at once; 
 
 Note that setting a `navigationPaneWidth` which creates more size in one of the panes may backfire on mobile, where all panes end up having the same width (the device width). If you make one pane larger to accommodate more controls or content, make sure you use techniques such as showing fewer columns on mobile, or using adaptive components such as [AdaptiveMenu](AdaptiveMenu.md#class-adaptivemenu).
 
-If you simply want side-by-side display with arbitrary proportions, and don't care about tablet and mobile adaptation, use [HLayout](../main.md#class-hlayout) instead.
+If you simply want side-by-side display with arbitrary proportions, and don't care about tablet and mobile adaptation, use [HLayout](../reference.md#class-hlayout) instead.
 
 ### See Also
 
@@ -409,7 +409,7 @@ If set to `false`, the [listToolStrip](#attr-splitpanelisttoolstrip) will not be
 ### Description
 UI layout mode used for this `SplitPane`.
 
-A `SplitPane` can be configured with up to 3 panes: the [SplitPane.navigationPane](#attr-splitpanenavigationpane), [SplitPane.listPane](#attr-splitpanelistpane) and [SplitPane.detailPane](#attr-splitpanedetailpane). Both [DeviceMode](../main.md#type-devicemode) and [PageOrientation](../main.md#type-pageorientation) influence the placement of these panes as follows:
+A `SplitPane` can be configured with up to 3 panes: the [SplitPane.navigationPane](#attr-splitpanenavigationpane), [SplitPane.listPane](#attr-splitpanelistpane) and [SplitPane.detailPane](#attr-splitpanedetailpane). Both [DeviceMode](../reference.md#type-devicemode) and [PageOrientation](../reference.md#type-pageorientation) influence the placement of these panes as follows:
 
 *   "handset" `deviceMode`: only a single pane is shown at a time. Not orientation sensitive
 *   "tablet" `deviceMode` with `pageOrientation`:"landscape": the `detailPane` is shown side by side with either the `navigationPane` or `listPane`
@@ -448,7 +448,7 @@ If this property is unset, the [SplitPane.navigationBar](#attr-splitpanenavigati
 ### Description
 If set, the `SplitPane` will automatically monitor selection changes in the [SplitPane.navigationPane](#attr-splitpanenavigationpane) and [SplitPane.listPane](#attr-splitpanelistpane), and call [SplitPane.navigateListPane](#method-splitpanenavigatelistpane) or [SplitPane.navigateDetailPane](#method-splitpanenavigatedetailpane) when selections are changed.
 
-If a pane is not a [DataBoundComponent](../main.md#interface-databoundcomponent), but contains a component (selected via a breadth-first search), then that inner component will be monitored for selection changes instead. In either case, `autoNavigate` does nothing unless the monitored component has a valid [DataSource](DataSource.md#class-datasource) and there is a DataSource relationship declared between panes. Note that for [Layout](Layout.md#class-layout)s, the [members](Layout.md#attr-layoutmembers) will be searched when looking for a component rather than the [children](Canvas.md#attr-canvaschildren).
+If a pane is not a [DataBoundComponent](../reference.md#interface-databoundcomponent), but contains a component (selected via a breadth-first search), then that inner component will be monitored for selection changes instead. In either case, `autoNavigate` does nothing unless the monitored component has a valid [DataSource](DataSource.md#class-datasource) and there is a DataSource relationship declared between panes. Note that for [Layout](Layout.md#class-layout)s, the [members](Layout.md#attr-layoutmembers) will be searched when looking for a component rather than the [children](Canvas.md#attr-canvaschildren).
 
 Auto-navigation occurs after the [recordClick()](ListGrid_2.md#method-listgridrecordclick) or [selectionUpdated()](DataBoundComponent.md#method-databoundcomponentselectionupdated) method is called, so if you implement these methods, your code will run first. Importantly, if your methods call [fetchData()](ListGrid_2.md#method-listgridfetchdata), [setCriteria()](ListGrid_2.md#method-listgridsetcriteria), [DynamicForm.editRecord](DynamicForm.md#method-dynamicformeditrecord) or [DynamicForm.editNewRecord](DynamicForm.md#method-dynamicformeditnewrecord) on the target component, navigation will still occur, but duplicate calls to fetch related data, set data into the target, or start editing the record in the target will be skipped.
 
@@ -468,7 +468,7 @@ Sets the title for the [navigationPane](#attr-splitpanenavigationpane).
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| title | [HTMLString](../main.md#type-htmlstring) | false | — | new title for the navigation pane. |
+| title | [HTMLString](../reference.md#type-htmlstring) | false | — | new title for the navigation pane. |
 
 ---
 ## Method: SplitPane.setShowRightButton
@@ -480,7 +480,7 @@ Show or hide the [rightButton](NavigationBar.md#attr-navigationbarrightbutton) o
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| visible | [boolean](../main.md#type-boolean) | false | — | if `true`, the button will be shown, otherwise hidden. |
+| visible | [boolean](../reference.md#type-boolean) | false | — | if `true`, the button will be shown, otherwise hidden. |
 
 ---
 ## Method: SplitPane.showNavigationPane
@@ -492,7 +492,7 @@ Causes a transition to the [navigationPane](#attr-splitpanenavigationpane).
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| direction | [NavigationDirection](../main.md#type-navigationdirection) | true | — | when [SplitPane.animateNavigationBarStateChanges](#attr-splitpaneanimatenavigationbarstatechanges) is `true`, this is the direction passed to [NavigationBar.setViewState](NavigationBar.md#method-navigationbarsetviewstate). |
+| direction | [NavigationDirection](../reference.md#type-navigationdirection) | true | — | when [SplitPane.animateNavigationBarStateChanges](#attr-splitpaneanimatenavigationbarstatechanges) is `true`, this is the direction passed to [NavigationBar.setViewState](NavigationBar.md#method-navigationbarsetviewstate). |
 
 ---
 ## Method: SplitPane.setDetailPaneTitleTemplate
@@ -506,7 +506,7 @@ By calling this method it is assumed you want the detail pane title to change to
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| template | [HTMLString](../main.md#type-htmlstring) | false | — | new template, can use HTML to be styled. |
+| template | [HTMLString](../reference.md#type-htmlstring) | false | — | new template, can use HTML to be styled. |
 
 ---
 ## Method: SplitPane.setPageOrientation
@@ -514,19 +514,19 @@ By calling this method it is assumed you want the detail pane title to change to
 ### Description
 Explicitly sets the page orientation to a fixed value instead of being responsive to device orientation changes. Pass `null` to return to responding automatically to device orientation.
 
-See [PageOrientation](../main.md#type-pageorientation) for details of how page orientation affects layout.
+See [PageOrientation](../reference.md#type-pageorientation) for details of how page orientation affects layout.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newOrientation | [PageOrientation](../main.md#type-pageorientation) | false | — | new orientation to use. |
+| newOrientation | [PageOrientation](../reference.md#type-pageorientation) | false | — | new orientation to use. |
 
 ---
 ## Method: SplitPane.downClick
 
 ### Description
-Notification method fired when the [miniNav is showing](#attr-splitpaneshowmininav) and the down button on the [navigationBar](#attr-splitpanenavigationbar)'s [MiniNavControl](../main.md#class-mininavcontrol) is clicked.
+Notification method fired when the [miniNav is showing](#attr-splitpaneshowmininav) and the down button on the [navigationBar](#attr-splitpanenavigationbar)'s [MiniNavControl](../reference.md#class-mininavcontrol) is clicked.
 
 ---
 ## Method: SplitPane.setShowListToolStrip
@@ -550,7 +550,7 @@ Calls [SplitPane.navigatePane](#method-splitpanenavigatepane) with the [SplitPan
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| title | [HTMLString](../main.md#type-htmlstring) | true | — | optional title to use instead of the automatically chosen one |
+| title | [HTMLString](../reference.md#type-htmlstring) | true | — | optional title to use instead of the automatically chosen one |
 
 ---
 ## Method: SplitPane.showListPane
@@ -564,9 +564,9 @@ If, based on the [deviceMode](#attr-splitpanedevicemode) and [pageOrientation](#
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| listPaneTitle | [HTMLString](../main.md#type-htmlstring) | true | — | optional new list title. |
-| backButtonTitle | [HTMLString](../main.md#type-htmlstring) | true | — | optional new title for the [back button](#attr-splitpanebackbutton). |
-| direction | [NavigationDirection](../main.md#type-navigationdirection) | true | — | when [SplitPane.animateNavigationBarStateChanges](#attr-splitpaneanimatenavigationbarstatechanges) is `true`, this is the direction passed to [NavigationBar.setViewState](NavigationBar.md#method-navigationbarsetviewstate). |
+| listPaneTitle | [HTMLString](../reference.md#type-htmlstring) | true | — | optional new list title. |
+| backButtonTitle | [HTMLString](../reference.md#type-htmlstring) | true | — | optional new title for the [back button](#attr-splitpanebackbutton). |
+| direction | [NavigationDirection](../reference.md#type-navigationdirection) | true | — | when [SplitPane.animateNavigationBarStateChanges](#attr-splitpaneanimatenavigationbarstatechanges) is `true`, this is the direction passed to [NavigationBar.setViewState](NavigationBar.md#method-navigationbarsetviewstate). |
 
 ---
 ## Method: SplitPane.setListTitle
@@ -578,7 +578,7 @@ Sets the title for the [listPane](#attr-splitpanelistpane).
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| title | [HTMLString](../main.md#type-htmlstring) | false | — | new title for the list pane. |
+| title | [HTMLString](../reference.md#type-htmlstring) | false | — | new title for the list pane. |
 
 ---
 ## Method: SplitPane.setDetailPane
@@ -604,7 +604,7 @@ Note that the return value will be ignored and cancelation won't be possible if 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| direction | [NavigationDirection](../main.md#type-navigationdirection) | false | — | direction in which the user is attempting to navigate. |
+| direction | [NavigationDirection](../reference.md#type-navigationdirection) | false | — | direction in which the user is attempting to navigate. |
 
 ### Returns
 
@@ -648,9 +648,9 @@ If, based on the [deviceMode](#attr-splitpanedevicemode) and [pageOrientation](#
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| detailPaneTitle | [HTMLString](../main.md#type-htmlstring) | true | — | optional new [detail title](#attr-splitpanedetailtitle). |
-| backButtonTitle | [HTMLString](../main.md#type-htmlstring) | true | — | optional new title for the [back button](#attr-splitpanebackbutton). |
-| direction | [NavigationDirection](../main.md#type-navigationdirection) | true | — | when [SplitPane.animateNavigationBarStateChanges](#attr-splitpaneanimatenavigationbarstatechanges) is `true`, this is the direction passed to [NavigationBar.setViewState](NavigationBar.md#method-navigationbarsetviewstate). |
+| detailPaneTitle | [HTMLString](../reference.md#type-htmlstring) | true | — | optional new [detail title](#attr-splitpanedetailtitle). |
+| backButtonTitle | [HTMLString](../reference.md#type-htmlstring) | true | — | optional new title for the [back button](#attr-splitpanebackbutton). |
+| direction | [NavigationDirection](../reference.md#type-navigationdirection) | true | — | when [SplitPane.animateNavigationBarStateChanges](#attr-splitpaneanimatenavigationbarstatechanges) is `true`, this is the direction passed to [NavigationBar.setViewState](NavigationBar.md#method-navigationbarsetviewstate). |
 
 ---
 ## Method: SplitPane.setNavigationPane
@@ -668,7 +668,7 @@ Update the [navigationPane](#attr-splitpanenavigationpane) at runtime.
 ## Method: SplitPane.upClick
 
 ### Description
-Notification method fired when the [miniNav is showing](#attr-splitpaneshowmininav) and the up button on the [navigationBar](#attr-splitpanenavigationbar)'s [MiniNavControl](../main.md#class-mininavcontrol) is clicked.
+Notification method fired when the [miniNav is showing](#attr-splitpaneshowmininav) and the up button on the [navigationBar](#attr-splitpanenavigationbar)'s [MiniNavControl](../reference.md#class-mininavcontrol) is clicked.
 
 ---
 ## Method: SplitPane.navigatePane
@@ -676,7 +676,7 @@ Notification method fired when the [miniNav is showing](#attr-splitpaneshowminin
 ### Description
 Causes the target pane component to load data and update its title based on the current selection in the source pane. Also shows the target pane if it's not already visible.
 
-For the target pane to load data, both the source pane and target pane must be [DataBoundComponent](../main.md#interface-databoundcomponent)s or contain a component as a descendant widget, and have a [DataSource](DataSource.md#class-datasource), and either:
+For the target pane to load data, both the source pane and target pane must be [DataBoundComponent](../reference.md#interface-databoundcomponent)s or contain a component as a descendant widget, and have a [DataSource](DataSource.md#class-datasource), and either:
 
 *   The two DataSources must have a Many-To-One relationship declared via [DataSourceField.foreignKey](DataSourceField.md#attr-datasourcefieldforeignkey), so that [ListGrid.fetchRelatedData](ListGrid_2.md#method-listgridfetchrelateddata) can be used on the target pane. A common example of this would be navigation from a source pane that's a [TreeGrid](TreeGrid.md#class-treegrid) to a [ListGrid](ListGrid_1.md#class-listgrid) target.
 *   The two DataSources must be the same, so that the record selected in the source pane can be displayed in the target pane via simply calling [setData()](DetailViewer.md#method-detailviewersetdata). This would apply, for example, if the source pane is a [ListGrid](ListGrid_1.md#class-listgrid) and the target is a [DynamicForm](DynamicForm.md#class-dynamicform), so that [editRecord()](DynamicForm.md#method-dynamicformeditrecord) gets called, or if the target is a [DetailViewer](DetailViewer.md#class-detailviewer).
@@ -695,9 +695,9 @@ Defaults:
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| target | [CurrentPane](../main.md#type-currentpane) | true | — | pane that should navigate |
-| title | [HTMLString](../main.md#type-htmlstring) | true | — | optional title to use for target pane. If not specified, the title is based on [SplitPane.listPaneTitleTemplate](#attr-splitpanelistpanetitletemplate) if the target pane is the `listPane`, otherwise [SplitPane.detailPaneTitleTemplate](#attr-splitpanedetailpanetitletemplate). |
-| source | [CurrentPane](../main.md#type-currentpane) | true | — | source pane used for selection |
+| target | [CurrentPane](../reference.md#type-currentpane) | true | — | pane that should navigate |
+| title | [HTMLString](../reference.md#type-htmlstring) | true | — | optional title to use for target pane. If not specified, the title is based on [SplitPane.listPaneTitleTemplate](#attr-splitpanelistpanetitletemplate) if the target pane is the `listPane`, otherwise [SplitPane.detailPaneTitleTemplate](#attr-splitpanedetailpanetitletemplate). |
+| source | [CurrentPane](../reference.md#type-currentpane) | true | — | source pane used for selection |
 
 ---
 ## Method: SplitPane.setLeftButtonTitle
@@ -709,7 +709,7 @@ Setter for the [leftButtonTitle](NavigationBar.md#attr-navigationbarleftbuttonti
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newTitle | [HTMLString](../main.md#type-htmlstring) | false | — | new title for the left button. |
+| newTitle | [HTMLString](../reference.md#type-htmlstring) | false | — | new title for the left button. |
 
 ---
 ## Method: SplitPane.setDetailToolButtons
@@ -733,7 +733,7 @@ Show or hide the [leftButton](#attr-splitpaneleftbutton) in the navigation bar.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| show | [boolean](../main.md#type-boolean) | false | — | if `true`, the `leftButton` will be shown, otherwise hidden. |
+| show | [boolean](../reference.md#type-boolean) | false | — | if `true`, the `leftButton` will be shown, otherwise hidden. |
 
 ---
 ## Method: SplitPane.setRightButtonTitle
@@ -745,7 +745,7 @@ Setter for the [rightButtonTitle](NavigationBar.md#attr-navigationbarrightbutton
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newTitle | [HTMLString](../main.md#type-htmlstring) | false | — | new title for the right button. |
+| newTitle | [HTMLString](../reference.md#type-htmlstring) | false | — | new title for the right button. |
 
 ---
 ## Method: SplitPane.setCurrentPane
@@ -753,13 +753,13 @@ Setter for the [rightButtonTitle](NavigationBar.md#attr-navigationbarrightbutton
 ### Description
 Reveals the pane indicated by the `newPane` parameter.
 
-This has different effects based on the [DeviceMode](../main.md#type-devicemode) and [PageOrientation](../main.md#type-pageorientation). For example, in "handset" mode, the new pane will be the only one showing. In other modes such as "desktop", this method may do nothing, but should still be called in order to ensure correct behavior with other [DeviceMode](../main.md#type-devicemode) settings.
+This has different effects based on the [DeviceMode](../reference.md#type-devicemode) and [PageOrientation](../reference.md#type-pageorientation). For example, in "handset" mode, the new pane will be the only one showing. In other modes such as "desktop", this method may do nothing, but should still be called in order to ensure correct behavior with other [DeviceMode](../reference.md#type-devicemode) settings.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newPane | [CurrentPane](../main.md#type-currentpane) | false | — | new pane to show. |
+| newPane | [CurrentPane](../reference.md#type-currentpane) | false | — | new pane to show. |
 
 ---
 ## Method: SplitPane.setDetailTitle
@@ -771,7 +771,7 @@ Sets the title for the [detailPane](#attr-splitpanedetailpane).
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| title | [HTMLString](../main.md#type-htmlstring) | false | — | new title for the detail pane. |
+| title | [HTMLString](../reference.md#type-htmlstring) | false | — | new title for the detail pane. |
 
 ---
 ## Method: SplitPane.setAddHistoryEntries
@@ -783,7 +783,7 @@ Setter for [SplitPane.addHistoryEntries](#attr-splitpaneaddhistoryentries).
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| addHistoryEntries | [boolean](../main.md#type-boolean) | false | — | the new setting. |
+| addHistoryEntries | [boolean](../reference.md#type-boolean) | false | — | the new setting. |
 
 ---
 ## Method: SplitPane.setDetailNavigationControl
@@ -809,7 +809,7 @@ By calling this method it is assumed you want the list pane title to change to t
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| template | [HTMLString](../main.md#type-htmlstring) | false | — | new template, can use HTML to be styled. |
+| template | [HTMLString](../reference.md#type-htmlstring) | false | — | new template, can use HTML to be styled. |
 
 ---
 ## Method: SplitPane.setShowDetailToolStrip
@@ -829,7 +829,7 @@ Setter for [SplitPane.showDetailToolStrip](#attr-splitpaneshowdetailtoolstrip). 
 ### Description
 Notification fired when the [SplitPane.currentPane](#attr-splitpanecurrentpane) changes, either due to end-user action or due to a programmatic call to [setCurrentPane()](#method-splitpanesetcurrentpane) or other APIs that can change the pane.
 
-Note that depending on the [DeviceMode](../main.md#type-devicemode), this event may not signal that any pane has actually been shown or hidden, since in some modes multiple panes are shown simultaneously.
+Note that depending on the [DeviceMode](../reference.md#type-devicemode), this event may not signal that any pane has actually been shown or hidden, since in some modes multiple panes are shown simultaneously.
 
 Never fires while the `SplitPane` is not drawn.
 
@@ -837,9 +837,9 @@ Never fires while the `SplitPane` is not drawn.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newPane | [CurrentPane](../main.md#type-currentpane) | false | — | new [SplitPane.currentPane](#attr-splitpanecurrentpane) value. |
-| oldPane | [CurrentPane](../main.md#type-currentpane) | false | — | old [SplitPane.currentPane](#attr-splitpanecurrentpane) value. |
-| navigationMethod | [NavigationMethod](../main_2.md#type-navigationmethod) | false | — | reason for pane change |
+| newPane | [CurrentPane](../reference.md#type-currentpane) | false | — | new [SplitPane.currentPane](#attr-splitpanecurrentpane) value. |
+| oldPane | [CurrentPane](../reference.md#type-currentpane) | false | — | old [SplitPane.currentPane](#attr-splitpanecurrentpane) value. |
+| navigationMethod | [NavigationMethod](../reference_2.md#type-navigationmethod) | false | — | reason for pane change |
 
 ---
 ## Method: SplitPane.navigateListPane
@@ -851,6 +851,6 @@ Calls [SplitPane.navigatePane](#method-splitpanenavigatepane) with the [SplitPan
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| title | [HTMLString](../main.md#type-htmlstring) | true | — | optional title to use instead of the automatically chosen one |
+| title | [HTMLString](../reference.md#type-htmlstring) | true | — | optional title to use instead of the automatically chosen one |
 
 ---

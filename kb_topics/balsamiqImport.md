@@ -1,6 +1,6 @@
 # Mockup Importer
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -167,12 +167,12 @@ Almost all balsamiq components have obvious analogs in smartclient, so during tr
 
 *   "com.balsamiq.mockups::Accordion": [SectionStack](../classes/SectionStack.md#class-sectionstack)
 *   "com.balsamiq.mockups::BarChart": [FacetChart](../classes/FacetChart.md#class-facetchart)
-*   "com.balsamiq.mockups::BreadCrumbs": [HLayout](../main.md#class-hlayout)
-*   "com.balsamiq.mockups::BrowserWindow": [VStack](../main.md#class-vstack)
+*   "com.balsamiq.mockups::BreadCrumbs": [HLayout](../reference.md#class-hlayout)
+*   "com.balsamiq.mockups::BrowserWindow": [VStack](../reference.md#class-vstack)
 *   "com.balsamiq.mockups::Button": [ButtonItem](../classes/ButtonItem.md#class-buttonitem)
 *   "com.balsamiq.mockups::ButtonBar": [ToolStrip](../classes/ToolStrip.md#class-toolstrip)
 *   "com.balsamiq.mockups::Calendar": [DateChooser](../classes/DateChooser.md#class-datechooser)
-*   "com.balsamiq.mockups::Canvas": [VStack](../main.md#class-vstack)
+*   "com.balsamiq.mockups::Canvas": [VStack](../reference.md#class-vstack)
 *   "com.balsamiq.mockups::CheckBox": [CheckboxItem](../classes/CheckboxItem.md#class-checkboxitem)
 *   "com.balsamiq.mockups::CheckBoxGroup": [DynamicForm](../classes/DynamicForm.md#class-dynamicform)
 *   "com.balsamiq.mockups::ColorPicker": [ColorItem](../classes/ColorItem.md#class-coloritem)
@@ -191,7 +191,7 @@ Almost all balsamiq components have obvious analogs in smartclient, so during tr
 *   "com.balsamiq.mockups::Label": [Label](../classes/Label.md#class-label)
 *   "com.balsamiq.mockups::LineChart": [FacetChart](../classes/FacetChart.md#class-facetchart)
 *   "com.balsamiq.mockups::Link": [LinkItem](../classes/LinkItem.md#class-linkitem)
-*   "com.balsamiq.mockups::LinkBar": [HLayout](../main.md#class-hlayout)
+*   "com.balsamiq.mockups::LinkBar": [HLayout](../reference.md#class-hlayout)
 *   "com.balsamiq.mockups::List": [SelectItem](../classes/SelectItem.md#class-selectitem)
 *   "com.balsamiq.mockups::Menu": [MenuButton](../classes/MenuButton.md#class-menubutton)
 *   "com.balsamiq.mockups::MenuBar": [MenuBar](../classes/MenuBar.md#class-menubar)
@@ -201,7 +201,7 @@ Almost all balsamiq components have obvious analogs in smartclient, so during tr
 *   "com.balsamiq.mockups::PieChart": [FacetChart](../classes/FacetChart.md#class-facetchart)
 *   "com.balsamiq.mockups::PointyButton": [Button](../classes/Button.md#class-button)
 *   "com.balsamiq.mockups::ProgressBar": [Progressbar](../classes/Progressbar.md#class-progressbar)
-*   "com.balsamiq.mockups::RadioButton": [RadioItem](../main.md#class-radioitem)
+*   "com.balsamiq.mockups::RadioButton": [RadioItem](../reference.md#class-radioitem)
 *   "com.balsamiq.mockups::RadioButtonGroup": [DynamicForm](../classes/DynamicForm.md#class-dynamicform)
 *   "com.balsamiq.mockups::SearchBox": [TextItem](../classes/TextItem.md#class-textitem)
 *   "com.balsamiq.mockups::SubTitle": [Label](../classes/Label.md#class-label)

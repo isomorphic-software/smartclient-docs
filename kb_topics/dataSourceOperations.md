@@ -1,6 +1,6 @@
 # DataSource Operations
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -42,6 +42,6 @@ If you are using [client-side data integration](clientDataIntegration.md#kb-topi
 *   Request data: whatever the custom operation requires
 *   Response data: custom operations can return whatever they like, including nothing. Custom operations are like RPC calls in this respect - the exchanged data is unstructured, so it is up to you to make sure the client and server agree. Note also that, because of this unstructured data exchange, cache synchronization does not work with custom operations.
 
-If you need to do a **remove** with criteria rather than a primary key, the recommended approach is to do it as a **custom** operation so the intent is clear. You can also do it as a **remove**, but just use [DSRequest.oldValues](../classes/DSRequest.md#attr-dsrequestoldvalues) as the source for whatever criteria values you need. That covers everything except [AdvancedCriteria](../main.md#object-advancedcriteria).
+If you need to do a **remove** with criteria rather than a primary key, the recommended approach is to do it as a **custom** operation so the intent is clear. You can also do it as a **remove**, but just use [DSRequest.oldValues](../classes/DSRequest.md#attr-dsrequestoldvalues) as the source for whatever criteria values you need. That covers everything except [AdvancedCriteria](../reference.md#object-advancedcriteria).
 
 ---

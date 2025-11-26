@@ -1,6 +1,6 @@
 # OperationBinding Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -96,7 +96,7 @@ When using the "scriptInclude" transport, be sure to set [DataSource.callbackPar
 
 ### See Also
 
-- [RPCTransport](../main.md#type-rpctransport)
+- [RPCTransport](../reference.md#type-rpctransport)
 - [DataSource.callbackParam](DataSource.md#attr-datasourcecallbackparam)
 
 **Flags**: IR
@@ -204,7 +204,7 @@ Valid only for an operation of type "fetch". See the [Server Summaries overview]
 ## Attr: OperationBinding.lineBreakStyle
 
 ### Description
-The style of line-breaks to use in the exported output. See [LineBreakStyle](../main.md#type-linebreakstyle) for more information.
+The style of line-breaks to use in the exported output. See [LineBreakStyle](../reference.md#type-linebreakstyle) for more information.
 
 **Flags**: IR
 
@@ -212,7 +212,7 @@ The style of line-breaks to use in the exported output. See [LineBreakStyle](../
 ## Attr: OperationBinding.multiInsertNonMatchingStrategy
 
 ### Description
-For "add" operations on dataSources of [serverType](DataSource.md#attr-datasourceservertype) "sql" only, this property sets the multi-insert "non matching" strategy for this [operation](#class-operationbinding). Only has an effect if the [add request](DataSource.md#method-datasourceadddata) specifies a list of records as the data, and only if [multiInsertStrategy](#attr-operationbindingmultiinsertstrategy) is set to "multipleValues" either globally or at the [DSRequest](../main_2.md#object-dsrequest), [OperationBinding](#class-operationbinding), or [DataSource](DataSource.md#class-datasource) level.
+For "add" operations on dataSources of [serverType](DataSource.md#attr-datasourceservertype) "sql" only, this property sets the multi-insert "non matching" strategy for this [operation](#class-operationbinding). Only has an effect if the [add request](DataSource.md#method-datasourceadddata) specifies a list of records as the data, and only if [multiInsertStrategy](#attr-operationbindingmultiinsertstrategy) is set to "multipleValues" either globally or at the [DSRequest](../reference_2.md#object-dsrequest), [OperationBinding](#class-operationbinding), or [DataSource](DataSource.md#class-datasource) level.
 
 Note that this setting overrides the equivalent [dataSource setting](DataSource.md#attr-datasourcemultiinsertnonmatchingstrategy), and can in turn be overridden at the [DSRequest level](DSRequest.md#attr-dsrequestmultiinsertnonmatchingstrategy)
 
@@ -257,7 +257,7 @@ NOTE: when [OperationBinding.dataFormat](#attr-operationbindingdataformat) is "i
 
 ### See Also
 
-- [DSProtocol](../main_2.md#type-dsprotocol)
+- [DSProtocol](../reference_2.md#type-dsprotocol)
 
 **Flags**: IR
 
@@ -401,7 +401,7 @@ Note that using customHQL affects paging implementation. If you use it, full dat
 ### Description
 **Elements of this feature are only available with Power or better licenses.** See [smartclient.com/product](http://smartclient.com/product) for details.
 
-A list of [DSRequestModifier](../main_2.md#object-dsrequestmodifier)s that will be used to modify the criteria of each [DSRequest](../main_2.md#object-dsrequest) that uses this operationBinding. Note that the criteria elements are applied to DSRequest criteria as follows:
+A list of [DSRequestModifier](../reference_2.md#object-dsrequestmodifier)s that will be used to modify the criteria of each [DSRequest](../reference_2.md#object-dsrequest) that uses this operationBinding. Note that the criteria elements are applied to DSRequest criteria as follows:
 
 *   **Simple criteria:** The field and value are just applied as an extra key/value pair in the criteria map, as long as the [operator](DSRequestModifier.md#attr-dsrequestmodifieroperator) attribute is left unset, or is set to "equals". For any other setting of `operator`, the criteria is first converted to the equivalent AdvancedCriteria and then processed as described below
 *   **AdvancedCriteria:** If the topmost operator is "and", we add the new criterion as an additional criterion directly in the existing list. Otherwise, we create a new top-level AdvancedCriteria with an operator of "and". This is then set to have two elements in its criteria: the previous top-level criteria and the new criterion.
@@ -493,11 +493,11 @@ For a [RestConnector DataSource](../kb_topics/serverRestConnector.md#kb-topic-se
 ## Attr: OperationBinding.exportResults
 
 ### Description
-When set, causes the results of the DataSource Operation to be exported to a file, whose name and format are indicated by [OperationBinding.exportFilename](#attr-operationbindingexportfilename) and [OperationBinding.exportAs](#attr-operationbindingexportas) respectively. When no exportFilename is provided, the default is _Results_ and the default value of exportAs is _csv_. Once the Operation completes, [DSRequest.exportDisplay](DSRequest.md#attr-dsrequestexportdisplay) specifies whether the exported data will be downloaded to the file-system or displayed in a new window. The default value of exportDisplay is "download" which displays the Save As dialog. See [ExportDisplay](../main_2.md#type-exportdisplay) for more information.
+When set, causes the results of the DataSource Operation to be exported to a file, whose name and format are indicated by [OperationBinding.exportFilename](#attr-operationbindingexportfilename) and [OperationBinding.exportAs](#attr-operationbindingexportas) respectively. When no exportFilename is provided, the default is _Results_ and the default value of exportAs is _csv_. Once the Operation completes, [DSRequest.exportDisplay](DSRequest.md#attr-dsrequestexportdisplay) specifies whether the exported data will be downloaded to the file-system or displayed in a new window. The default value of exportDisplay is "download" which displays the Save As dialog. See [ExportDisplay](../reference_2.md#type-exportdisplay) for more information.
 
 The export field-list can also be configured, see [DSRequest.exportFields](DSRequest.md#attr-dsrequestexportfields).
 
-You can also configure the style of line-breaks to use when generating the output. See [LineBreakStyle](../main.md#type-linebreakstyle) for more information.
+You can also configure the style of line-breaks to use when generating the output. See [LineBreakStyle](../reference.md#type-linebreakstyle) for more information.
 
 As well as setting this and other properties on the [OperationBinding](#class-operationbinding), Exports can be initiated in two other ways. You can set properties on the dsRequest by passing _requestProperties_ into [DataSource.exportData](DataSource.md#method-datasourceexportdata). Note that this method does not support exporting to JSON format (see [this post](http://forums.smartclient.com/showthread.php?t=235) for more detail). Additionally, custom server code may set export-related properties on the [DSResponse](DSResponse.md#class-dsresponse).
 
@@ -574,7 +574,7 @@ Note that using customJQL affects paging implementation. If you use it, full dat
 ## Attr: OperationBinding.requestProperties
 
 ### Description
-Additional properties to pass through to the [DSRequest](../main_2.md#object-dsrequest) created for this operation. Note that these will be cumulative with and will override on a per-property basis any properties set via [DataSource.requestProperties](DataSource.md#attr-datasourcerequestproperties).
+Additional properties to pass through to the [DSRequest](../reference_2.md#object-dsrequest) created for this operation. Note that these will be cumulative with and will override on a per-property basis any properties set via [DataSource.requestProperties](DataSource.md#attr-datasourcerequestproperties).
 
 These properties are applied before [DataSource.transformRequest](DataSource.md#method-datasourcetransformrequest) is called.
 
@@ -585,7 +585,7 @@ These properties are applied before [DataSource.transformRequest](DataSource.md#
 
 ### See Also
 
-- [DSRequest](../main_2.md#object-dsrequest)
+- [DSRequest](../reference_2.md#object-dsrequest)
 - [DataSource.requestProperties](DataSource.md#attr-datasourcerequestproperties)
 
 **Flags**: IR
@@ -618,7 +618,7 @@ See the documentation for [OperationBinding.customSQL](#attr-operationbindingcus
 ## Attr: OperationBinding.summaryFunctions
 
 ### Description
-A mapping from field names to [summary functions](../main_2.md#type-summaryfunction) to be applied to each field.
+A mapping from field names to [summary functions](../reference_2.md#type-summaryfunction) to be applied to each field.
 
 Valid only for an operation of type "fetch". See the [Server Summaries overview](../kb_topics/serverSummaries.md#kb-topic-server-summaries) for examples of usage.
 
@@ -658,7 +658,7 @@ This property can also be specified at the [DataSource level](DataSource.md#attr
 ## Attr: OperationBinding.cacheSyncTiming
 
 ### Description
-The [cacheSyncTiming](../main_2.md#type-cachesyncstrategy) to use for this operation. Overrides any [dataSource-level cacheSyncTiming](DataSource.md#attr-datasourcecachesynctiming)
+The [cacheSyncTiming](../reference_2.md#type-cachesyncstrategy) to use for this operation. Overrides any [dataSource-level cacheSyncTiming](DataSource.md#attr-datasourcecachesynctiming)
 
 ### Groups
 
@@ -688,7 +688,7 @@ Applies to RestConnector dataSources ([serverType](DataSource.md#attr-datasource
 ## Attr: OperationBinding.methodArguments
 
 ### Description
-You can explicitly declare the arguments to be passed to [OperationBinding.serverMethod](#attr-operationbindingservermethod) using this attribute. This isn't required - in the absence of `methodArguments`, the DMI implementation will still automatically pass a stock set of arguments to your method (see the overview in [ServerObject](../main_2.md#object-serverobject)), but specifying arguments gives you the ability to call pre-existing methods without adding SmartClient-specific code.
+You can explicitly declare the arguments to be passed to [OperationBinding.serverMethod](#attr-operationbindingservermethod) using this attribute. This isn't required - in the absence of `methodArguments`, the DMI implementation will still automatically pass a stock set of arguments to your method (see the overview in [ServerObject](../reference_2.md#object-serverobject)), but specifying arguments gives you the ability to call pre-existing methods without adding SmartClient-specific code.
 
 The format for specifying `methodArguments` is as a comma separated list of VTL (Velocity Template Language) expressions. See the [VTL Reference](https://velocity.apache.org/engine/devel/vtl-reference.html) and [Velocity User Guide](https://velocity.apache.org/engine/2.3/user-guide.html) for an overview of how to use VTL.
 
@@ -712,7 +712,7 @@ Without `methodArguments`, there would be no way for you to specify `startRow/en
 
 ### See Also
 
-- [ServerObject](../main_2.md#object-serverobject)
+- [ServerObject](../reference_2.md#object-serverobject)
 
 **Flags**: IR
 
@@ -720,7 +720,7 @@ Without `methodArguments`, there would be no way for you to specify `startRow/en
 ## Attr: OperationBinding.requires
 
 ### Description
-Indicates that the specified [VelocityExpression](../main_2.md#type-velocityexpression) must be true for a user to access this operationBinding.
+Indicates that the specified [VelocityExpression](../reference_2.md#type-velocityexpression) must be true for a user to access this operationBinding.
 
 As with [OperationBinding.requiresRole](#attr-operationbindingrequiresrole), if there an operationBinding that is the default operationBinding for the operationType, its `requires` expression is assumed to apply to all other operationBindings of the same type unless they explicitly set `requires=""`
 
@@ -1017,7 +1017,7 @@ This property is only applicable to DataSources of ["sql"](DataSource.md#attr-da
 ## Attr: OperationBinding.multiInsertBatchSize
 
 ### Description
-For "add" operations on dataSources of [serverType](DataSource.md#attr-datasourceservertype) "sql" only, this property sets the multi-insert batch size for this [operation](#class-operationbinding). Only has an effect if the [add request](DataSource.md#method-datasourceadddata) specifies a list of records as the data, and only if [multiInsertStrategy](#attr-operationbindingmultiinsertstrategy) is set to "multipleValues" either globally or at the [DSRequest](../main_2.md#object-dsrequest), [OperationBinding](#class-operationbinding), or [DataSource](DataSource.md#class-datasource) level.
+For "add" operations on dataSources of [serverType](DataSource.md#attr-datasourceservertype) "sql" only, this property sets the multi-insert batch size for this [operation](#class-operationbinding). Only has an effect if the [add request](DataSource.md#method-datasourceadddata) specifies a list of records as the data, and only if [multiInsertStrategy](#attr-operationbindingmultiinsertstrategy) is set to "multipleValues" either globally or at the [DSRequest](../reference_2.md#object-dsrequest), [OperationBinding](#class-operationbinding), or [DataSource](DataSource.md#class-datasource) level.
 
 Note that this setting overrides the equivalent [dataSource setting](DataSource.md#attr-datasourcemultiinsertbatchsize), and can in turn be overridden at the [DSRequest level](DSRequest.md#attr-dsrequestmultiinsertbatchsize)
 
@@ -1251,7 +1251,7 @@ Note that `useFlatFields` is not generally recommended for use with input messag
 ## Attr: OperationBinding.cacheSyncStrategy
 
 ### Description
-The [cacheSyncStrategy](../main_2.md#type-cachesyncstrategy) to use for this operation. Overrides any [dataSource-level cacheSyncStrategy](DataSource.md#attr-datasourcecachesyncstrategy)
+The [cacheSyncStrategy](../reference_2.md#type-cachesyncstrategy) to use for this operation. Overrides any [dataSource-level cacheSyncStrategy](DataSource.md#attr-datasourcecachesyncstrategy)
 
 ### Groups
 
@@ -1558,7 +1558,7 @@ Whether to use the subselect technique (see [DataSource.useSubselectForRowCount]
 ## Attr: OperationBinding.includeAnsiJoinsInTableClause
 
 ### Description
-This setting makes difference if [ANSI-style joins](DataSource.md#attr-datasourceuseansijoins) are in use. If true, causes ansi joins to be included in [$defaultTableClause](../main.md#type-defaultqueryclause), otherwise ansi joins will be put into separate [$defaultAnsiJoinClause](../main.md#type-defaultqueryclause).
+This setting makes difference if [ANSI-style joins](DataSource.md#attr-datasourceuseansijoins) are in use. If true, causes ansi joins to be included in [$defaultTableClause](../reference.md#type-defaultqueryclause), otherwise ansi joins will be put into separate [$defaultAnsiJoinClause](../reference.md#type-defaultqueryclause).
 
 If omitted, system-wide `sql.includeAnsiJoinsInTableClause` setting from `server.properties` will be used. If it is missing as well, `false` is the default.
 
@@ -1668,7 +1668,7 @@ A per-operationBinding setting for beanClassName, otherwise also settable at the
 ## Attr: OperationBinding.serverMethod
 
 ### Description
-The name of the method to invoke on the [ServerObject](../main_2.md#object-serverobject) for this operationBinding.
+The name of the method to invoke on the [ServerObject](../reference_2.md#object-serverobject) for this operationBinding.
 
 **NOTE:** If you have a [DataSource-level ServerObject](DataSource.md#attr-datasourceserverobject) and wish to override this operation so that it simply calls a different method on the same server object, it is sufficient to specify just this property on the operationBinding: there is no need to redefine the serverObject at the operationBinding level.
 
@@ -1811,7 +1811,7 @@ See the documentation for [OperationBinding.customSQL](#attr-operationbindingcus
 ## Attr: OperationBinding.exportAs
 
 ### Description
-The format in which the data should be exported. Default is "csv". See [ExportFormat](../main_2.md#type-exportformat) for more information.
+The format in which the data should be exported. Default is "csv". See [ExportFormat](../reference_2.md#type-exportformat) for more information.
 
 **Flags**: IR
 
@@ -1837,7 +1837,7 @@ Can be set for all operations of a given DataSource as DataSource.defaultParams.
 ### Description
 **Elements of this feature are only available with Power or better licenses.** See [smartclient.com/product](http://smartclient.com/product) for details.
 
-A list of [DSRequestModifier](../main_2.md#object-dsrequestmodifier)s that will be used to modify the values object of each [DSRequest](../main_2.md#object-dsrequest) that uses this operationBinding. See this example: *queuedAdd example*.
+A list of [DSRequestModifier](../reference_2.md#object-dsrequestmodifier)s that will be used to modify the values object of each [DSRequest](../reference_2.md#object-dsrequest) that uses this operationBinding. See this example: *queuedAdd example*.
 
 Below example of the xml as it should be defined in ds.xml: ``<operationBinding operationType="add">` `<values fieldName="orderID" value="$responseData.last('queuedAdd_order','add').orderID" />` `</operationBinding>``
 
@@ -1871,9 +1871,9 @@ For an operation of type "add" or "update", a SQLDataSource will normally obtain
 
 It is possible that the data needed for cache synchronization could be obtained by application code running in a [DMI](DMI.md#class-dmi) or [server script](../kb_topics/serverScript.md#kb-topic-server-scripting), even if the normal automatic cache synchronization will not work. However, such application code is almost certainly going to need to know the primary key(s) of any newly added record(s).
 
-When `makeKeysAvailable` is true, SmartClient Server will go through the process of obtaining generated keys in accordance with the [SequenceMode](../main.md#type-sequencemode), even if `canSyncCache` is false (note, "in accordance with the `sequenceMode`" implies that we do not attempt to get keys if the `sequenceMode` is "none"). The keys used in the operation (both generated keys, if any, and any keys provided in the operation's criteria or values) will be stored on the `DSResponse` and your server-side DMI or script will have access to them via the server API `dsResponse.getKeys()`. Please see the server-side documentation for that method for further details.
+When `makeKeysAvailable` is true, SmartClient Server will go through the process of obtaining generated keys in accordance with the [SequenceMode](../reference.md#type-sequencemode), even if `canSyncCache` is false (note, "in accordance with the `sequenceMode`" implies that we do not attempt to get keys if the `sequenceMode` is "none"). The keys used in the operation (both generated keys, if any, and any keys provided in the operation's criteria or values) will be stored on the `DSResponse` and your server-side DMI or script will have access to them via the server API `dsResponse.getKeys()`. Please see the server-side documentation for that method for further details.
 
-Note, if you are using [SequenceMode](../main.md#type-sequencemode) "jdbcDriver", the keys are available to SmartClient Server at no cost, so `makeKeysAvailable` is always true. If you are using `sequenceMode` "native", a separate native query must be run to obtain the keys. The overhead of this native query is likely to be insignificant, but because it is an extra step that you may not want or need, `makeKeysAvailable` defaults to false in this case. You can override this by adding setting `sql.always.makeKeysAvailable:true` to your `server.properties` file.
+Note, if you are using [SequenceMode](../reference.md#type-sequencemode) "jdbcDriver", the keys are available to SmartClient Server at no cost, so `makeKeysAvailable` is always true. If you are using `sequenceMode` "native", a separate native query must be run to obtain the keys. The overhead of this native query is likely to be insignificant, but because it is an extra step that you may not want or need, `makeKeysAvailable` defaults to false in this case. You can override this by adding setting `sql.always.makeKeysAvailable:true` to your `server.properties` file.
 
 This property is only applicable to DataSources of type "sql".
 
@@ -2122,7 +2122,7 @@ For SQL dataSources, as an alternative to `customSQL` you can provide custom "pi
 This feature is not available for Hibernate or JPA DataSources.  
 See the [customQuerying](../kb_topics/customQuerying.md#kb-topic-custom-querying-overview) for more details.
 
-For a dataSource of type "sql", the SmartClient server generates a number of useful [query "pieces"](../main.md#type-defaultqueryclause), and makes them available to your custom SQL code via the Velocity templating language (note that this is not available for "hibernate" dataSources).
+For a dataSource of type "sql", the SmartClient server generates a number of useful [query "pieces"](../reference.md#type-defaultqueryclause), and makes them available to your custom SQL code via the Velocity templating language (note that this is not available for "hibernate" dataSources).
 
 We also make the template variables **$criteria** and **$values** available, to give you direct access to the supplied criteria, and to the new field values for update and add operations. These variables are available to both "sql" and "hibernate" dataSources.
 

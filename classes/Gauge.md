@@ -1,6 +1,6 @@
 # Gauge Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -222,7 +222,7 @@ All DrawItems currently associated with this Gauge are destroyed and new DrawIte
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| dialRadius | [float](../main.md#type-float) | false | — | Radius in pixels of the dial |
+| dialRadius | [float](../reference.md#type-float) | false | — | Radius in pixels of the dial |
 
 ---
 ## Method: Gauge.addSector
@@ -234,11 +234,11 @@ Adds a new sector.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newSector | [GaugeSector](#type-gaugesector)|[double](../main.md#type-double) | false | — | the new GaugeSector or the new sector's value. This is formatted with [Gauge.formatLabelContents](#method-gaugeformatlabelcontents) to get its label. |
+| newSector | [GaugeSector](#type-gaugesector)|[double](../reference.md#type-double) | false | — | the new GaugeSector or the new sector's value. This is formatted with [Gauge.formatLabelContents](#method-gaugeformatlabelcontents) to get its label. |
 
 ### Returns
 
-`[int](../main.md#type-int)` — the index of the newly-added sector.
+`[int](../reference.md#type-int)` — the index of the newly-added sector.
 
 ---
 ## Method: Gauge.setLabelPrefix
@@ -272,7 +272,7 @@ Gets the number of sectors.
 
 ### Returns
 
-`[int](../main.md#type-int)` — the number of sectors on this gauge.
+`[int](../reference.md#type-int)` — the number of sectors on this gauge.
 
 ---
 ## Method: Gauge.getSectorLabelContents
@@ -284,7 +284,7 @@ Gets the label contents of the label for the sector at sectorIndex.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| sectorIndex | [int](../main.md#type-int) | false | — | index of the target sector. |
+| sectorIndex | [int](../reference.md#type-int) | false | — | index of the target sector. |
 
 ### Returns
 
@@ -300,11 +300,11 @@ Gets the fill color of the sector at index `sectorIndex`.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| sectorIndex | [int](../main.md#type-int) | false | — | index of the target sector. |
+| sectorIndex | [int](../reference.md#type-int) | false | — | index of the target sector. |
 
 ### Returns
 
-`[CSSColor](../main_2.md#type-csscolor)` — the fill color of the sector at `sectorIndex`.
+`[CSSColor](../reference_2.md#type-csscolor)` — the fill color of the sector at `sectorIndex`.
 
 ### See Also
 
@@ -320,11 +320,11 @@ Gets the value of the sector at `sectorIndex`.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| sectorIndex | [int](../main.md#type-int) | false | — | index of the target sector. |
+| sectorIndex | [int](../reference.md#type-int) | false | — | index of the target sector. |
 
 ### Returns
 
-`[float](../main.md#type-float)` — the value of the sector at `sectorIndex`.
+`[float](../reference.md#type-float)` — the value of the sector at `sectorIndex`.
 
 ---
 ## Method: Gauge.getDefaultFillColor
@@ -336,11 +336,11 @@ Gets the default fill color for the sector at index `sectorIndex`. The default i
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| sectorIndex | [int](../main.md#type-int) | false | — | index of the target sector. |
+| sectorIndex | [int](../reference.md#type-int) | false | — | index of the target sector. |
 
 ### Returns
 
-`[CSSColor](../main_2.md#type-csscolor)` — a fill color.
+`[CSSColor](../reference_2.md#type-csscolor)` — a fill color.
 
 **Flags**: A
 
@@ -356,7 +356,7 @@ Sets the number of major tick lines.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| numMajorTicks | [int](../main.md#type-int) | false | — | the number of major tick lines to draw. Must be either 0 or an integer greater than or equal to 2. |
+| numMajorTicks | [int](../reference.md#type-int) | false | — | the number of major tick lines to draw. Must be either 0 or an integer greater than or equal to 2. |
 
 ---
 ## Method: Gauge.setSectorFillColor
@@ -368,8 +368,8 @@ Sets the fill color of the sector at `sectorIndex`.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| sectorIndex | [int](../main.md#type-int) | false | — | index of the target sector. |
-| fillColor | [CSSColor](../main_2.md#type-csscolor) | false | — | the new fill color. |
+| sectorIndex | [int](../reference.md#type-int) | false | — | index of the target sector. |
+| fillColor | [CSSColor](../reference_2.md#type-csscolor) | false | — | the new fill color. |
 
 ### See Also
 
@@ -387,7 +387,7 @@ Removes the sector at sectorIndex.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| sectorIndex | [int](../main.md#type-int) | false | — | the index of the sector to remove. |
+| sectorIndex | [int](../reference.md#type-int) | false | — | the index of the sector to remove. |
 
 ---
 ## Method: Gauge.setMaxValue
@@ -401,7 +401,7 @@ See [setValueRange](#method-gaugesetvaluerange) to set both minValue and maxValu
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| maxValue | [float](../main.md#type-float) | false | — | the new maximum dial value. Must be at least 1 greater than the minimum dial value. If `maxValue` is not at least 1 greater than the minimum value, then it is set to `1 + minValue`. |
+| maxValue | [float](../reference.md#type-float) | false | — | the new maximum dial value. Must be at least 1 greater than the minimum dial value. If `maxValue` is not at least 1 greater than the minimum value, then it is set to `1 + minValue`. |
 
 ---
 ## Method: Gauge.setValueRange
@@ -413,8 +413,8 @@ Sets the minimum and maximum dial values, rescaling all sectors and the dial val
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| minValue | [float](../main.md#type-float) | false | — | the new minimum dial value |
-| maxValue | [float](../main.md#type-float) | false | — | the new maximum dial value |
+| minValue | [float](../reference.md#type-float) | false | — | the new minimum dial value |
+| maxValue | [float](../reference.md#type-float) | false | — | the new maximum dial value |
 
 ---
 ## Method: Gauge.setDrawnClockwise
@@ -426,7 +426,7 @@ Sets the [drawnClockwise](#attr-gaugedrawnclockwise) property and redraws the ga
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| drawnClockwise | [boolean](../main.md#type-boolean) | false | — | whether the sectors are drawn clockwise. |
+| drawnClockwise | [boolean](../reference.md#type-boolean) | false | — | whether the sectors are drawn clockwise. |
 
 ---
 ## Method: Gauge.formatLabelContents
@@ -440,7 +440,7 @@ Formats a value as a string to be used as the contents of a [DrawLabel](DrawLabe
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| value | [float](../main.md#type-float) | false | — | the value to format. |
+| value | [float](../reference.md#type-float) | false | — | the value to format. |
 
 ### Returns
 
@@ -460,7 +460,7 @@ See [setValueRange](#method-gaugesetvaluerange) to set both minValue and maxValu
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| minValue | [float](../main.md#type-float) | false | — | the new minimum dial value. Must be at least 1 less than the maximum dial value. If `minValue` is not at least 1 less than the maximum value, then it is set to `maxValue - 1`. |
+| minValue | [float](../reference.md#type-float) | false | — | the new minimum dial value. Must be at least 1 less than the maximum dial value. If `minValue` is not at least 1 less than the maximum value, then it is set to `maxValue - 1`. |
 
 ---
 ## Method: Gauge.setPivotPoint
@@ -496,7 +496,7 @@ Sets the number of minor tick lines.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| numMinorTicks | [int](../main.md#type-int) | false | — | the number of minor tick lines to draw. Must be either 0 or an integer greater than or equal to 2. |
+| numMinorTicks | [int](../reference.md#type-int) | false | — | the number of minor tick lines to draw. Must be either 0 or an integer greater than or equal to 2. |
 
 ---
 ## Method: Gauge.setLabelSuffix
@@ -520,6 +520,6 @@ Sets the value on the dial that the needle is displaying.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| value | [float](../main.md#type-float) | false | — | the new dial value. Must be between [minValue](#attr-gaugeminvalue) and [maxValue](#attr-gaugemaxvalue). |
+| value | [float](../reference.md#type-float) | false | — | the new dial value. Must be between [minValue](#attr-gaugeminvalue) and [maxValue](#attr-gaugemaxvalue). |
 
 ---

@@ -1,6 +1,6 @@
 # Server-side REST Connector
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -9,7 +9,7 @@
 ### Description
 _**NOTE:** This article discusses SmartClient's server-side REST client implementation. It should not be confused with the client-side [RestDataSource](../classes/RestDataSource.md#class-restdatasource) implementation; the client-side dataSource is intended for cases where you are creating the server API and thus have control over the format and protocols used, but you do not wish to use the SmartClient Server for some reason. The server-side implementation, which is documented below, is intended for cases where you need to connect to existing third-party REST APIs (which, despite the impression that "REST" is a standardized approach, vary significantly from one to the other in their details)_
 
-RestConnector is a built-in server-side [DataSource](../classes/DataSource.md#class-datasource) implementation. It is able to convert a standard client-submitted or server-created [DSRequest](../main_2.md#object-dsrequest) into an arbitrary REST webservice call, and convert the REST service response into a standard [DSResponse](../classes/DSResponse.md#class-dsresponse). These conversions are highly configurable, making use of any or all of the following:
+RestConnector is a built-in server-side [DataSource](../classes/DataSource.md#class-datasource) implementation. It is able to convert a standard client-submitted or server-created [DSRequest](../reference_2.md#object-dsrequest) into an arbitrary REST webservice call, and convert the REST service response into a standard [DSResponse](../classes/DSResponse.md#class-dsresponse). These conversions are highly configurable, making use of any or all of the following:
 
 *   [Record-level](../classes/DataSource.md#attr-datasourcerecordxpath) and [field-level](../classes/DataSourceField.md#attr-datasourcefieldvaluexpath) XPath processing
 *   [Velocity-based](velocitySupport.md#kb-topic-velocity-context-variables) templates providing powerful declarative data templating and conversion for both [requests](../classes/DataSource.md#attr-datasourcerequesttemplate) and [responses](../classes/DataSource.md#attr-datasourceresponsetemplate). These templates are evaluated at request/response execution time, so can include dynamic elements such as the criteria sent from the client
@@ -21,7 +21,7 @@ RestConnector is a built-in server-side [DataSource](../classes/DataSource.md#cl
 **Important:** Because we allow references to `$criteria` and `$values` in `RestConnector` config, it follows that we re-evaluate Velocity expressions on every `DSRequest`; in fact, as the following section discusses, when there are multiple valueSets, we evaluate Velocity expressions multiple times per `DSRequest`. However, we do **not** evaluate `$config` references per-`DSRequest`: `$config` references are evaluated during `DataSource` initialization, and are fixed thereafter. The main implication of this is, if you are pooling and reusing `DataSource` instances (which is the default), `$config` references will be fixed after initial evaluation for the life of the JVM, so you should not expect to be able to change a config setting and have it picked up in `RestConnector` Velocity templates.
 
 #### Multiple ValueSets
-`RestController` has a general ability to handle multiple valueSets, but only for REST services where both the [requestFormat](../classes/DataSource.md#attr-datasourcerequestformat) and the [responseFormat](../classes/DataSource.md#attr-datasourceresponseformat) are "json". For example, if we receive a [dsRequest](../main_2.md#object-dsrequest) with two valueSets, like this:
+`RestController` has a general ability to handle multiple valueSets, but only for REST services where both the [requestFormat](../classes/DataSource.md#attr-datasourcerequestformat) and the [responseFormat](../classes/DataSource.md#attr-datasourceresponseformat) are "json". For example, if we receive a [dsRequest](../reference_2.md#object-dsrequest) with two valueSets, like this:
 ```
     [
         {name:"Smith", ID:72},
@@ -108,10 +108,10 @@ An example configuration is shown below.
 
 ### Related
 
-- [RESTRequestFormat](../main.md#type-restrequestformat)
-- [RESTResponseFormat](../main.md#type-restresponseformat)
-- [RESTAuthenticationType](../main_2.md#type-restauthenticationtype)
-- [RESTAuthentication](../main.md#object-restauthentication)
+- [RESTRequestFormat](../reference.md#type-restrequestformat)
+- [RESTResponseFormat](../reference.md#type-restresponseformat)
+- [RESTAuthenticationType](../reference_2.md#type-restauthenticationtype)
+- [RESTAuthentication](../reference.md#object-restauthentication)
 - [DataSource.serverConfig](../classes/DataSource.md#attr-datasourceserverconfig)
 - [DataSource.headers](../classes/DataSource.md#attr-datasourceheaders)
 - [OperationBinding.headers](../classes/OperationBinding.md#attr-operationbindingheaders)

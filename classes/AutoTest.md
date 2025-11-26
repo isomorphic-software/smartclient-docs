@@ -1,6 +1,6 @@
 # AutoTest Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -13,7 +13,7 @@ _For an overview of Automated Testing in SmartClient, see the documentation [her
 
 ## AutoTestLocators
 
-The AutoTest class is responsible for creating and resolving [autoTestLocators](../main_2.md#type-autotestlocator) - identifier strings which can reliably identify an interactive element in a SmartClient application.
+The AutoTest class is responsible for creating and resolving [autoTestLocators](../reference_2.md#type-autotestlocator) - identifier strings which can reliably identify an interactive element in a SmartClient application.
 
 These locators are designed to work across browsers, SmartClient versions, and even major changes to your application's UI. They do not rely on the DOM structure, and are intended to be able to identify the target element reliably without requiring pervasive explicitly specified [component IDs](Canvas.md#attr-canvasid).
 
@@ -26,7 +26,7 @@ The primary APIs for working with AutoTest locators are as follows:
 
 Developers should also be aware of the [AutoTest.installLocatorShortcut](#classmethod-autotestinstalllocatorshortcut) method which allows you to retreive locators via a simple key combo + mouseDown event on the target element.
 
-See the [AutoTestLocator overview](../main_2.md#type-autotestlocator) documentation for details on how locators are structured.
+See the [AutoTestLocator overview](../reference_2.md#type-autotestlocator) documentation for details on how locators are structured.
 
 See the [Reliable AutoTestLocators overview](../kb_topics/reliableLocators.md#kb-topic-generating-reliable-autotestlocators) documentation for best practices for generating high quality locators.
 
@@ -44,7 +44,7 @@ For tests that target a standard widget hierarchy such as a [screen](RPCManager.
 
 The AutoTest class provides utilities to wait for asynchronous actions, including both system delays (such as [redraws that fire on system idle](Canvas.md#method-canvasmarkforredraw), for example), and asynchronous [RPC operations](RPCManager.md#class-rpcmanager).
 
-*   [AutoTest.waitForElement](#classmethod-autotestwaitforelement): this method will wait for asynchronous operations to complete before resolving an [AutoTestLocator](../main_2.md#type-autotestlocator) to an element and firing a callback function. This allows recorded tests to reference elements that are blocked or unavailable until some asynchronous action(s) complete.
+*   [AutoTest.waitForElement](#classmethod-autotestwaitforelement): this method will wait for asynchronous operations to complete before resolving an [AutoTestLocator](../reference_2.md#type-autotestlocator) to an element and firing a callback function. This allows recorded tests to reference elements that are blocked or unavailable until some asynchronous action(s) complete.
 *   [AutoTest.waitForSystemDone](#classmethod-autotestwaitforsystemdone): this method will wait for any outstanding asynchronous system operations to complete and then fire the specified callback.
 *   [AutoTest.isSystemDone](#classmethod-autotestissystemdone): this method may be called to check whether there are currently any outstanding asynchronous system operations.
 
@@ -72,7 +72,7 @@ Controls whether certain AutoTest APIs wait for network operations to complete b
 ### Description
 Should generated locators omit fallback locator attributes when generating segments that identify components or other objects by attribute values?
 
-See the [AutoTestLocator overview](../main_2.md#type-autotestlocator) for details of locator fallback attributes.
+See the [AutoTestLocator overview](../reference_2.md#type-autotestlocator) for details of locator fallback attributes.
 
 **Flags**: IRW
 
@@ -92,7 +92,7 @@ Sets the implicit root canvas available in scLocators starting "//testRoot\[\]".
 ## ClassAttr: AutoTest.useSearchSegments
 
 ### Description
-Should generated locators include search segments (as detailed in the [AutoTestLocator overview](../main_2.md#type-autotestlocator)) to identify components with [defining property values](Canvas.md#method-canvasgetdefiningpropertyname)?
+Should generated locators include search segments (as detailed in the [AutoTestLocator overview](../reference_2.md#type-autotestlocator)) to identify components with [defining property values](Canvas.md#method-canvasgetdefiningpropertyname)?
 
 See also [AutoTestLocatorConfiguration.searchSegmentsIncludeHidden](AutoTestLocatorConfiguration.md#attr-autotestlocatorconfigurationsearchsegmentsincludehidden)
 
@@ -102,7 +102,7 @@ See also [AutoTestLocatorConfiguration.searchSegmentsIncludeHidden](AutoTestLoca
 ## ClassAttr: AutoTest.defaultElementWaitStyle
 
 ### Description
-Default [ElementWaitStyle](../main_2.md#type-elementwaitstyle) for [AutoTest.waitForElement](#classmethod-autotestwaitforelement)
+Default [ElementWaitStyle](../reference_2.md#type-elementwaitstyle) for [AutoTest.waitForElement](#classmethod-autotestwaitforelement)
 
 **Flags**: IRW
 
@@ -116,7 +116,7 @@ Setting this property to true ensures that, even for visible components, search 
 
 Note that this setting has no impact on locators being generated for components that are currently hidden. Any search segments for hidden components will always consider uniqueness among all components (hidden and visible), and include the marker to ensure that they are considered when resolving the locator back to an object.
 
-See the [AutoTestLocator overview](../main_2.md#type-autotestlocator) for more information about search segments in AutoTestLocators
+See the [AutoTestLocator overview](../reference_2.md#type-autotestlocator) for more information about search segments in AutoTestLocators
 
 **Flags**: IRWA
 
@@ -148,7 +148,7 @@ if so simplified.
 ### Description
 This setting controls whether locator segments that identify components or other objects by attribute values use a compact or verbose syntax.
 
-See the [AutoTestLocator overview](../main_2.md#type-autotestlocator) for details of locator attributes.
+See the [AutoTestLocator overview](../reference_2.md#type-autotestlocator) for details of locator attributes.
 
 **Flags**: IRW
 
@@ -162,7 +162,7 @@ If true, when a locator is requested for a component, and that component has an 
 
 This only applies when the target of the locator is the component itself or its handle. If the target is a child, or an interior DOM element that requires additional locator segments to identify, a standard multi-segment locator will be generated.
 
-See the [AutoTestLocator overview](../main_2.md#type-autotestlocator) for more information on locators.
+See the [AutoTestLocator overview](../reference_2.md#type-autotestlocator) for more information on locators.
 
 **Flags**: IRW
 
@@ -233,9 +233,9 @@ Returns a boolean to indicate whether the current application is fully loaded wi
 *   all DynamicForms that are drawn satisfy [AutoTest.isFormDone](#classmethod-autotestisformdone)
 *   all Canvii that are drawn satisfy [AutoTest.isCanvasDone](#classmethod-autotestiscanvasdone)
 
-In addition to this the `options` parameter allows developers to check additional criteria as documented under [SystemDoneConfig](../main.md#object-systemdoneconfig).
+In addition to this the `options` parameter allows developers to check additional criteria as documented under [SystemDoneConfig](../reference.md#object-systemdoneconfig).
 
-Note: [AutoTest.waitForSystemDone](#classmethod-autotestwaitforsystemdone) will poll this method repeatedly to check for all pending actions being complete. The [SystemWaitConfig](../main.md#object-systemwaitconfig) parameter of that method allow the user to speciofy which actions to wait for. By default [AutoTest.waitForSystemDone](#classmethod-autotestwaitforsystemdone) will wait for _all_ actions to complete, including queued redraws, timers, network requests, as well as page load and comopnent level `is_Component_Done` checks.
+Note: [AutoTest.waitForSystemDone](#classmethod-autotestwaitforsystemdone) will poll this method repeatedly to check for all pending actions being complete. The [SystemWaitConfig](../reference.md#object-systemwaitconfig) parameter of that method allow the user to speciofy which actions to wait for. By default [AutoTest.waitForSystemDone](#classmethod-autotestwaitforsystemdone) will wait for _all_ actions to complete, including queued redraws, timers, network requests, as well as page load and comopnent level `is_Component_Done` checks.
 
 Depending on your application configuration, it is possible that this method will not be able to determine whether it is truly in a busy state. Some examples include:
 
@@ -247,11 +247,11 @@ Depending on your application configuration, it is possible that this method wil
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| options | [SystemDoneConfig](#type-systemdoneconfig)|[boolean](../main.md#type-boolean) | true | — | This parameter determines what specific outstanding actions are required to be completed before the system is considered "done" with current processing. If passed as a boolean rather than a SystemDoneConfig object, this determines whether the system should wait for [pending redraws](Canvas.md#method-canvasmarkforredraw). |
+| options | [SystemDoneConfig](#type-systemdoneconfig)|[boolean](../reference.md#type-boolean) | true | — | This parameter determines what specific outstanding actions are required to be completed before the system is considered "done" with current processing. If passed as a boolean rather than a SystemDoneConfig object, this determines whether the system should wait for [pending redraws](Canvas.md#method-canvasmarkforredraw). |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — whether loaded page is 'done' as described above
+`[boolean](../reference.md#type-boolean)` — whether loaded page is 'done' as described above
 
 ### Groups
 
@@ -273,7 +273,7 @@ Returns whether the canvas associated with the given DOM element is in a consist
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| element | [Canvas](#type-canvas)|[DOMElement](#type-domelement)|[AutoTestLocator](../main_2.md#type-autotestlocator) | false | — | DOM element to test (element obtained from canvas or SmartClient locator if provided) |
+| element | [Canvas](#type-canvas)|[DOMElement](#type-domelement)|[AutoTestLocator](../reference_2.md#type-autotestlocator) | false | — | DOM element to test (element obtained from canvas or SmartClient locator if provided) |
 
 ### Returns
 
@@ -297,7 +297,7 @@ Returns whether the TileLayout associated with the given DOM element is in a con
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| element | [Canvas](#type-canvas)|[DOMElement](#type-domelement)|[AutoTestLocator](../main_2.md#type-autotestlocator) | false | — | DOM element to test (element obtained from canvas or SmartClient locator if provided) |
+| element | [Canvas](#type-canvas)|[DOMElement](#type-domelement)|[AutoTestLocator](../reference_2.md#type-autotestlocator) | false | — | DOM element to test (element obtained from canvas or SmartClient locator if provided) |
 
 ### Returns
 
@@ -313,16 +313,16 @@ Returns whether the TileLayout associated with the given DOM element is in a con
 ### Description
 Waits for any in-progress actions to complete and then returns the element for the specified locator.
 
-By default this method will wait for the [system to be done](#classmethod-autotestissystemdone) before calling [AutoTest.getElement](#classmethod-autotestgetelement) with the specified locator. The [waitStyle](../main.md#attr-elementwaitconfigwaitstyle) attribute of the options parameter may be used to instead wait for the locator to resolve to a [clickable element](#classmethod-autotestiselementclickable).
+By default this method will wait for the [system to be done](#classmethod-autotestissystemdone) before calling [AutoTest.getElement](#classmethod-autotestgetelement) with the specified locator. The [waitStyle](../reference.md#attr-elementwaitconfigwaitstyle) attribute of the options parameter may be used to instead wait for the locator to resolve to a [clickable element](#classmethod-autotestiselementclickable).
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| locator | [AutoTestLocator](../main_2.md#type-autotestlocator) | false | — | locator for the element to retrieve |
-| callback | [Callback](../main.md#type-callback) | false | — | callback to fire when the element has been retrieved - takes two parameters:
+| locator | [AutoTestLocator](../reference_2.md#type-autotestlocator) | false | — | locator for the element to retrieve |
+| callback | [Callback](../reference.md#type-callback) | false | — | callback to fire when the element has been retrieved - takes two parameters:
 
-*   "element" ([DOMElement](../main_2.md#object-domelement)) - the clickable element the locator resolved to (or null)
+*   "element" ([DOMElement](../reference_2.md#object-domelement)) - the clickable element the locator resolved to (or null)
 *   "done" (boolean) - this will be false if the method timed out |
 | options | [ElementWaitConfig](#type-elementwaitconfig) | true | — | Options to configure the wait |
 
@@ -347,7 +347,7 @@ Note that for a form item in a DynamicForm, the DynamicForm must satisfy the thi
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| element | [Canvas](#type-canvas)|[FormItem](#type-formitem)|[DOMElement](#type-domelement)|[AutoTestLocator](../main_2.md#type-autotestlocator) | false | — | DOM element to test (element obtained from canvas, form item, or SmartClient locator if provided) |
+| element | [Canvas](#type-canvas)|[FormItem](#type-formitem)|[DOMElement](#type-domelement)|[AutoTestLocator](../reference_2.md#type-autotestlocator) | false | — | DOM element to test (element obtained from canvas, form item, or SmartClient locator if provided) |
 
 ### Returns
 
@@ -380,7 +380,7 @@ For example, the following code would store the first record from a listGrid wit
 |------|------|----------|---------|-------------|
 | name | [String](#type-string) | false | — | variable name for the locator |
 | locator | [String](#type-string) | true | — | locator to resolve. If null the named variable will be cleared. |
-| attribute | [LocatorAttributeType](../main_2.md#type-locatorattributetype) | true | — | what type of value should be derived from the locator? Valid options differ based on the locator |
+| attribute | [LocatorAttributeType](../reference_2.md#type-locatorattributetype) | true | — | what type of value should be derived from the locator? Valid options differ based on the locator |
 
 ---
 ## ClassMethod: AutoTest.waitForSystemDone
@@ -391,7 +391,7 @@ Fires the provided callback when [AutoTest.isSystemDone](#classmethod-autotestis
 By default this will wait for the following system actions to complete:
 
 *   All outstanding SmartClient [RPC and DataSource requests](RPCManager.md#class-rpcmanager)
-*   All outstanding [FileLoader requests](../main_2.md#object-fileloader)
+*   All outstanding [FileLoader requests](../reference_2.md#object-fileloader)
 *   Any [queued redraws](Canvas.md#method-canvasmarkforredraw)
 *   Any non-recurring [delayed actions](Timer.md#class-timer)
 
@@ -403,7 +403,7 @@ The `options` parameter gives developers finer grained control over what to wait
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| callback | [Callback](../main.md#type-callback) | false | — | Action to fire. This will take a single parameter "done" which will be set to false if the method timed out waiting for isSystemDone() to return true; |
+| callback | [Callback](../reference.md#type-callback) | false | — | Action to fire. This will take a single parameter "done" which will be set to false if the method timed out waiting for isSystemDone() to return true; |
 | options | [SystemWaitConfig](#type-systemwaitconfig) | true | — | options to configure the wait |
 
 ---
@@ -416,7 +416,7 @@ Returns the page-level coordinates corresponding to the supplied locator. Note: 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| locator | [AutoTestLocator](../main_2.md#type-autotestlocator) | false | — | Locator String previously returned by [AutoTest.getLocator](#classmethod-autotestgetlocator) |
+| locator | [AutoTestLocator](../reference_2.md#type-autotestlocator) | false | — | Locator String previously returned by [AutoTest.getLocator](#classmethod-autotestgetlocator) |
 
 ### Returns
 
@@ -430,26 +430,26 @@ Returns the page-level coordinates corresponding to the supplied locator. Note: 
 ## ClassMethod: AutoTest.getLocator
 
 ### Description
-Returns an [AutoTestLocator](../main_2.md#type-autotestlocator) for some DOM element or object in a SmartClient application page. The generated locator may be resolved to a target element or object via [AutoTest.getElement](#classmethod-autotestgetelement) or [AutoTest.getObject](#classmethod-autotestgetobject), to target event coordinates via [AutoTest.getPageCoords](#classmethod-autotestgetpagecoords), or may be used to retrieve some data value relevant to the target via [AutoTest.getValue](#classmethod-autotestgetvalue).
+Returns an [AutoTestLocator](../reference_2.md#type-autotestlocator) for some DOM element or object in a SmartClient application page. The generated locator may be resolved to a target element or object via [AutoTest.getElement](#classmethod-autotestgetelement) or [AutoTest.getObject](#classmethod-autotestgetobject), to target event coordinates via [AutoTest.getPageCoords](#classmethod-autotestgetpagecoords), or may be used to retrieve some data value relevant to the target via [AutoTest.getValue](#classmethod-autotestgetvalue).
 
 The optional `coords` parameter allows developers to specify page-level event coordinates. For certain components where the exact mouse-position of an event would change its behavior, this may cause the generated locator to include information about the position of an event within a target in the form of a "target area" suffix or similar. Note that not page coordinates may not impact the generated locator in every case, and calling [AutoTest.getPageCoords](#classmethod-autotestgetpagecoords) is not typically expected to return exactly the coordinates passed into this method. That method will return coordinates that would result in the same event handling behavior as an event that occurred over the specified coordinates when the locator was created.
 
-The `options` parameter may be used to configure how the locator is generated - see [AutoTestLocatorConfiguration](../main.md#object-autotestlocatorconfiguration).
+The `options` parameter may be used to configure how the locator is generated - see [AutoTestLocatorConfiguration](../reference.md#object-autotestlocatorconfiguration).
 
-See also the [AutoTestLocator overview](../main_2.md#type-autotestlocator) for more information about autoTest locators.
+See also the [AutoTestLocator overview](../reference_2.md#type-autotestlocator) for more information about autoTest locators.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | target | [DOMElement](#type-domelement)|[Canvas](#type-canvas)|[FormItem](#type-formitem) | true | — | Target within the page. This may be a DOM element, a [Canvas](Canvas.md#class-canvas) or a [FormItem](FormItem.md#class-formitem). If null, a locator for the last mouse event target DOM element will be generated. |
-| checkForNativeHandling | [boolean](../main.md#type-boolean) | true | — | If this parameter is passed in, check whether the target element responds to native browser events directly rather than going through the SmartClient widget/event handling model. If we detect this case, return null rather than a live locator. This allows us to differentiate between (for example) an event on a Canvas handle, and an event occurring directly on a simple ``<a href=...>`` tag written inside a Canvas handle. |
+| checkForNativeHandling | [boolean](../reference.md#type-boolean) | true | — | If this parameter is passed in, check whether the target element responds to native browser events directly rather than going through the SmartClient widget/event handling model. If we detect this case, return null rather than a live locator. This allows us to differentiate between (for example) an event on a Canvas handle, and an event occurring directly on a simple ``<a href=...>`` tag written inside a Canvas handle. |
 | coords | [Array](#type-array) | true | — | X, Y page position |
 | options | [AutoTestLocatorConfiguration](#type-autotestlocatorconfiguration) | true | — | Options to configure the locator returned by this method |
 
 ### Returns
 
-`[AutoTestLocator](../main_2.md#type-autotestlocator)` — Locator string allowing the AutoTest subsystem to find an equivalent DOM element on subsequent page loads.
+`[AutoTestLocator](../reference_2.md#type-autotestlocator)` — Locator string allowing the AutoTest subsystem to find an equivalent DOM element on subsequent page loads.
 
 ### Groups
 
@@ -459,7 +459,7 @@ See also the [AutoTestLocator overview](../main_2.md#type-autotestlocator) for m
 ## ClassMethod: AutoTest.getValue
 
 ### Description
-Given an [AutoTestLocator](../main_2.md#type-autotestlocator) that refers to a live SmartClient object or a logical subcomponent of that object, return the associated meaningful JS value, if any.
+Given an [AutoTestLocator](../reference_2.md#type-autotestlocator) that refers to a live SmartClient object or a logical subcomponent of that object, return the associated meaningful JS value, if any.
 
 For example:
 
@@ -472,11 +472,11 @@ For example:
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| locator | [AutoTestLocator](../main_2.md#type-autotestlocator) | false | — | Locator String previously returned by [AutoTest.getLocator](#classmethod-autotestgetlocator) |
+| locator | [AutoTestLocator](../reference_2.md#type-autotestlocator) | false | — | Locator String previously returned by [AutoTest.getLocator](#classmethod-autotestgetlocator) |
 
 ### Returns
 
-`[Object](../main.md#type-object)` — value associated with SC object if any, otherwise undefined
+`[Object](../reference.md#type-object)` — value associated with SC object if any, otherwise undefined
 
 ### Groups
 
@@ -506,9 +506,9 @@ Given an element in the DOM, returns the FormItem containing this element, or nu
 ## ClassMethod: AutoTest.getMinimalLocator
 
 ### Description
-Convenience method to generate a [AutoTestLocator](../main_2.md#type-autotestlocator) that is as compact as possible.
+Convenience method to generate a [AutoTestLocator](../reference_2.md#type-autotestlocator) that is as compact as possible.
 
-This method sets [AutoTest.getLocator](#classmethod-autotestgetlocator) with the following [configuration settings](../main.md#object-autotestlocatorconfiguration):
+This method sets [AutoTest.getLocator](#classmethod-autotestgetlocator) with the following [configuration settings](../reference.md#object-autotestlocatorconfiguration):
 
 *   useSearchSegments:true
 *   searchSegmentsIncludeHidden:false
@@ -520,12 +520,12 @@ This method sets [AutoTest.getLocator](#classmethod-autotestgetlocator) with the
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | target | [DOMElement](#type-domelement)|[Canvas](#type-canvas)|[FormItem](#type-formitem) | true | — | Target within the page. This may be a DOM element, a [Canvas](Canvas.md#class-canvas) or a [FormItem](FormItem.md#class-formitem). If null, a locator for the last mouse event target DOM element will be generated. |
-| checkForNativeHandling | [boolean](../main.md#type-boolean) | true | — | If this parameter is passed in, check whether the target element responds to native browser events directly rather than going through the SmartClient widget/event handling model. If we detect this case, return null rather than a live locator. This allows us to differentiate between (for example) an event on a Canvas handle, and an event occurring directly on a simple ``<a href=...>`` tag written inside a Canvas handle. |
+| checkForNativeHandling | [boolean](../reference.md#type-boolean) | true | — | If this parameter is passed in, check whether the target element responds to native browser events directly rather than going through the SmartClient widget/event handling model. If we detect this case, return null rather than a live locator. This allows us to differentiate between (for example) an event on a Canvas handle, and an event occurring directly on a simple ``<a href=...>`` tag written inside a Canvas handle. |
 | coords | [Array](#type-array) | true | — | X, Y page position |
 
 ### Returns
 
-`[AutoTestLocator](../main_2.md#type-autotestlocator)` — minimal locator string to identify the target.
+`[AutoTestLocator](../reference_2.md#type-autotestlocator)` — minimal locator string to identify the target.
 
 ---
 ## ClassMethod: AutoTest.isElementReadyForKeyPresses
@@ -541,7 +541,7 @@ Given a DOM element, returns whether the associated SmartClient Canvas or FormIt
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| element | [Canvas](#type-canvas)|[FormItem](#type-formitem)|[DOMElement](#type-domelement)|[AutoTestLocator](../main_2.md#type-autotestlocator) | false | — | DOM element to test (element obtained from canvas, form item, or SmartClient locator if provided) |
+| element | [Canvas](#type-canvas)|[FormItem](#type-formitem)|[DOMElement](#type-domelement)|[AutoTestLocator](../reference_2.md#type-autotestlocator) | false | — | DOM element to test (element obtained from canvas, form item, or SmartClient locator if provided) |
 
 ### Returns
 
@@ -555,9 +555,9 @@ Given a DOM element, returns whether the associated SmartClient Canvas or FormIt
 ## ClassMethod: AutoTest.getFullPathLocator
 
 ### Description
-Convenience method to generate a [AutoTestLocator](../main_2.md#type-autotestlocator) with no search segments and an explicit path from the locator root to the target.
+Convenience method to generate a [AutoTestLocator](../reference_2.md#type-autotestlocator) with no search segments and an explicit path from the locator root to the target.
 
-This method sets [AutoTest.getLocator](#classmethod-autotestgetlocator) with the following [configuration settings](../main.md#object-autotestlocatorconfiguration):
+This method sets [AutoTest.getLocator](#classmethod-autotestgetlocator) with the following [configuration settings](../reference.md#object-autotestlocatorconfiguration):
 
 *   useSearchSegments:false
 *   useMinimalFallbackAttributes:false
@@ -568,12 +568,12 @@ This method sets [AutoTest.getLocator](#classmethod-autotestgetlocator) with the
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | target | [DOMElement](#type-domelement)|[Canvas](#type-canvas)|[FormItem](#type-formitem) | true | — | Target within the page. This may be a DOM element, a [Canvas](Canvas.md#class-canvas) or a [FormItem](FormItem.md#class-formitem). If null, a locator for the last mouse event target DOM element will be generated. |
-| checkForNativeHandling | [boolean](../main.md#type-boolean) | true | — | If this parameter is passed in, check whether the target element responds to native browser events directly rather than going through the SmartClient widget/event handling model. If we detect this case, return null rather than a live locator. This allows us to differentiate between (for example) an event on a Canvas handle, and an event occurring directly on a simple ``<a href=...>`` tag written inside a Canvas handle. |
+| checkForNativeHandling | [boolean](../reference.md#type-boolean) | true | — | If this parameter is passed in, check whether the target element responds to native browser events directly rather than going through the SmartClient widget/event handling model. If we detect this case, return null rather than a live locator. This allows us to differentiate between (for example) an event on a Canvas handle, and an event occurring directly on a simple ``<a href=...>`` tag written inside a Canvas handle. |
 | coords | [Array](#type-array) | true | — | X, Y page position |
 
 ### Returns
 
-`[AutoTestLocator](../main_2.md#type-autotestlocator)` — full-path locator string to identify the target.
+`[AutoTestLocator](../reference_2.md#type-autotestlocator)` — full-path locator string to identify the target.
 
 ---
 ## ClassMethod: AutoTest.uninstallLocatorShortcut
@@ -598,7 +598,7 @@ Returns whether the FormItem associated with the given DOM element is in a consi
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| element | [FormItem](#type-formitem)|[DOMElement](#type-domelement)|[AutoTestLocator](../main_2.md#type-autotestlocator) | false | — | DOM element to test (element obtained from canvas or SmartClient locator if provided) |
+| element | [FormItem](#type-formitem)|[DOMElement](#type-domelement)|[AutoTestLocator](../reference_2.md#type-autotestlocator) | false | — | DOM element to test (element obtained from canvas or SmartClient locator if provided) |
 
 ### Returns
 
@@ -622,7 +622,7 @@ Returns whether the TileGrid associated with the given DOM element is in a consi
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| element | [Canvas](#type-canvas)|[DOMElement](#type-domelement)|[AutoTestLocator](../main_2.md#type-autotestlocator) | false | — | DOM element to test (element obtained from canvas or SmartClient locator if provided) |
+| element | [Canvas](#type-canvas)|[DOMElement](#type-domelement)|[AutoTestLocator](../reference_2.md#type-autotestlocator) | false | — | DOM element to test (element obtained from canvas or SmartClient locator if provided) |
 
 ### Returns
 
@@ -636,14 +636,14 @@ Returns whether the TileGrid associated with the given DOM element is in a consi
 ## ClassMethod: AutoTest.getLocatorWithIndicators
 
 ### Description
-Returns the [QualityIndicatedLocator](../main_2.md#object-qualityindicatedlocator) associated with some DOM element in a SmartClient application page. If coords, representing the page position, is passed in, the locator may be generated with a specific trailing "target area" identifer that will map back to the appropriate, potentially different, physical coordinates, even if the widget is moved. The coords argument will only have an effect in cases where the mouse position over the target could potentially change behavior.
+Returns the [QualityIndicatedLocator](../reference_2.md#object-qualityindicatedlocator) associated with some DOM element in a SmartClient application page. If coords, representing the page position, is passed in, the locator may be generated with a specific trailing "target area" identifer that will map back to the appropriate, potentially different, physical coordinates, even if the widget is moved. The coords argument will only have an effect in cases where the mouse position over the target could potentially change behavior.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | DOMElement | [DOMElement](#type-domelement) | false | — | DOM element within in the page. If null the locator for the last mouse event target will be generated |
-| checkForNativeHandling | [boolean](../main.md#type-boolean) | true | — | If this parameter is passed in, check whether the target element responds to native browser events directly rather than going through the SmartClient widget/event handling model. If we detect this case, return null rather than a live locator. This allows us to differentiate between (for example) an event on a Canvas handle, and an event occurring directly on a simple ``<a href=...>`` tag written inside a Canvas handle. |
+| checkForNativeHandling | [boolean](../reference.md#type-boolean) | true | — | If this parameter is passed in, check whether the target element responds to native browser events directly rather than going through the SmartClient widget/event handling model. If we detect this case, return null rather than a live locator. This allows us to differentiate between (for example) an event on a Canvas handle, and an event occurring directly on a simple ``<a href=...>`` tag written inside a Canvas handle. |
 | coords | [Array](#type-array) | true | — | X, Y page position |
 
 ### Returns
@@ -658,13 +658,13 @@ Returns the [QualityIndicatedLocator](../main_2.md#object-qualityindicatedlocato
 ## ClassMethod: AutoTest.getObject
 
 ### Description
-Given an [AutoTestLocator](../main_2.md#type-autotestlocator), return the live SmartClient object it refers to, if any.
+Given an [AutoTestLocator](../reference_2.md#type-autotestlocator), return the live SmartClient object it refers to, if any.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| locator | [AutoTestLocator](../main_2.md#type-autotestlocator) | false | — | Locator String previously returned by [AutoTest.getLocator](#classmethod-autotestgetlocator) |
+| locator | [AutoTestLocator](../reference_2.md#type-autotestlocator) | false | — | Locator String previously returned by [AutoTest.getLocator](#classmethod-autotestgetlocator) |
 
 ### Returns
 
@@ -735,7 +735,7 @@ Retrieve a variable stored by [AutoTest.setVariable](#classmethod-autotestsetvar
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| locator | [AutoTestLocator](../main_2.md#type-autotestlocator) | false | — | Locator String previously returned by [AutoTest.getLocator](#classmethod-autotestgetlocator) |
+| locator | [AutoTestLocator](../reference_2.md#type-autotestlocator) | false | — | Locator String previously returned by [AutoTest.getLocator](#classmethod-autotestgetlocator) |
 
 ### Returns
 
@@ -759,7 +759,7 @@ Returns whether the DynamicForm associated with the given DOM element is in a co
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| element | [Canvas](#type-canvas)|[DOMElement](#type-domelement)|[AutoTestLocator](../main_2.md#type-autotestlocator) | false | — | DOM element to test (element obtained from canvas or SmartClient locator if provided) |
+| element | [Canvas](#type-canvas)|[DOMElement](#type-domelement)|[AutoTestLocator](../reference_2.md#type-autotestlocator) | false | — | DOM element to test (element obtained from canvas or SmartClient locator if provided) |
 
 ### Returns
 
@@ -787,7 +787,7 @@ Returns whether the ListGrid associated with or contained by the given DOM eleme
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| element | [Canvas](#type-canvas)|[DOMElement](#type-domelement)|[AutoTestLocator](../main_2.md#type-autotestlocator) | false | — | DOM element to test (element obtained from canvas or SmartClient locator if provided) |
+| element | [Canvas](#type-canvas)|[DOMElement](#type-domelement)|[AutoTestLocator](../reference_2.md#type-autotestlocator) | false | — | DOM element to test (element obtained from canvas or SmartClient locator if provided) |
 
 ### Returns
 

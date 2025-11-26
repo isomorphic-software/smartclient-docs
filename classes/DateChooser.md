@@ -1,12 +1,12 @@
 # DateChooser Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
 ## Class: DateChooser
 
-*Inherits from:* [VLayout](../main.md#class-vlayout)
+*Inherits from:* [VLayout](../reference.md#class-vlayout)
 
 ### Description
 Simple interactive calendar interface used to pick a date. Used by the [DateItem](DateItem.md#class-dateitem) class.
@@ -281,7 +281,7 @@ Title for "Today" button.
 ## Attr: DateChooser.buttonLayout
 
 ### Description
-An [AutoChild](../main.md#type-autochild) [HLayout](../main.md#class-hlayout), rendered below the [date grid](../main.md#class-dategrid), and showing the [Today](#attr-datechoosertodaybutton), [Cancel](#attr-datechoosercancelbutton) and, when working with "datetime" values, [Apply](#attr-datechooserapplybutton) buttons.
+An [AutoChild](../reference.md#type-autochild) [HLayout](../reference.md#class-hlayout), rendered below the [date grid](../reference.md#class-dategrid), and showing the [Today](#attr-datechoosertodaybutton), [Cancel](#attr-datechoosercancelbutton) and, when working with "datetime" values, [Apply](#attr-datechooserapplybutton) buttons.
 
 **Flags**: IR
 
@@ -459,7 +459,7 @@ If unset, the chooser's range-start is dictated by [startYear](#attr-datechooser
 ## Attr: DateChooser.cancelButton
 
 ### Description
-A button shown below the [calendar grid](../main.md#class-dategrid) which, when clicked, closes the DateChooser without selecting a value.
+A button shown below the [calendar grid](../reference.md#class-dategrid) which, when clicked, closes the DateChooser without selecting a value.
 
 **Flags**: IR
 
@@ -499,7 +499,7 @@ Height of the icon for the previous month button
 ## Attr: DateChooser.navigationLayout
 
 ### Description
-An [AutoChild](../main.md#type-autochild) [HLayout](../main.md#class-hlayout), rendered above the [date grid](../main.md#class-dategrid), and showing a number of widgets for navigating the DateChooser. These include buttons for moving to the previous [year](#attr-datechooserpreviousyearbutton) or [month](#attr-datechooserpreviousmonthbutton), the next [year](#attr-datechoosernextyearbutton) or [month](#attr-datechoosernextmonthbutton), and for selecting a specific [year](#attr-datechooseryearchooserbutton), [month](#attr-datechoosermonthchooserbutton) or [week](#attr-datechooserweekchooserbutton).
+An [AutoChild](../reference.md#type-autochild) [HLayout](../reference.md#class-hlayout), rendered above the [date grid](../reference.md#class-dategrid), and showing a number of widgets for navigating the DateChooser. These include buttons for moving to the previous [year](#attr-datechooserpreviousyearbutton) or [month](#attr-datechooserpreviousmonthbutton), the next [year](#attr-datechoosernextyearbutton) or [month](#attr-datechoosernextmonthbutton), and for selecting a specific [year](#attr-datechooseryearchooserbutton), [month](#attr-datechoosermonthchooserbutton) or [week](#attr-datechooserweekchooserbutton).
 
 **Flags**: IR
 
@@ -657,7 +657,7 @@ The text appended to the style name when using [DateChooser.alternateWeekStyles]
 ## Attr: DateChooser.todayButton
 
 ### Description
-A button shown below the [calendar grid](../main.md#class-dategrid) which, when clicked, navigates the calendar to today.
+A button shown below the [calendar grid](../reference.md#class-dategrid) which, when clicked, navigates the calendar to today.
 
 **Flags**: IR
 
@@ -916,7 +916,7 @@ Override this method to alter the year representation shown in the DateChooser's
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| year | [Integer](../main_2.md#type-integer) | false | — | The Gregorian year number to derive a display value for |
+| year | [Integer](../reference_2.md#type-integer) | false | — | The Gregorian year number to derive a display value for |
 
 ### Returns
 
@@ -926,7 +926,7 @@ Override this method to alter the year representation shown in the DateChooser's
 ## Method: DateChooser.setFiscalCalendar
 
 ### Description
-Sets the [FiscalCalendar](../main.md#object-fiscalcalendar) object that will be used by this DateChooser. If unset, the [global fiscal calendar](DateUtil.md#classmethod-dateutilgetfiscalcalendar) is used.
+Sets the [FiscalCalendar](../reference.md#object-fiscalcalendar) object that will be used by this DateChooser. If unset, the [global fiscal calendar](DateUtil.md#classmethod-dateutilgetfiscalcalendar) is used.
 
 ### Parameters
 
@@ -938,7 +938,7 @@ Sets the [FiscalCalendar](../main.md#object-fiscalcalendar) object that will be 
 ## Method: DateChooser.getFiscalCalendar
 
 ### Description
-Returns the [FiscalCalendar](../main.md#object-fiscalcalendar) object that will be used by this DateChooser.
+Returns the [FiscalCalendar](../reference.md#object-fiscalcalendar) object that will be used by this DateChooser.
 
 ### Returns
 
@@ -988,7 +988,7 @@ Override this method to alter the year representations that are shown in the Dat
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| year | [Integer](../main_2.md#type-integer) | false | — | The Gregorian year number to derive a display value for |
+| year | [Integer](../reference_2.md#type-integer) | false | — | The Gregorian year number to derive a display value for |
 
 ### Returns
 

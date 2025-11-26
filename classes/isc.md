@@ -1,6 +1,6 @@
 # isc Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -15,8 +15,8 @@ The callback will receive boolean true for an OK button click, or null if the Di
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| message | [HTMLString](../main.md#type-htmlstring) | false | — | message to display |
-| callback | [Callback](../main.md#type-callback) | true | — | Optional Callback to fire when the user dismisses the dialog. This has the single parameter 'value', indicating the value returned by the Warn dialog from 'okClick()' etc. |
+| message | [HTMLString](../reference.md#type-htmlstring) | false | — | message to display |
+| callback | [Callback](../reference.md#type-callback) | true | — | Optional Callback to fire when the user dismisses the dialog. This has the single parameter 'value', indicating the value returned by the Warn dialog from 'okClick()' etc. |
 | properties | [Dialog Properties](#type-dialog-properties) | true | — | additional properties for the Dialog. To set [custom buttons](Dialog.md#attr-dialogbuttons) for the Dialog, set properties.buttons to an array of buttons eg: { buttons : \[Dialog.OK, Dialog.CANCEL\] } |
 
 ### Groups
@@ -54,7 +54,7 @@ Use `"${loadingImage}"` to include [a loading image](Canvas.md#classattr-canvasl
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| message | [HTMLString](../main.md#type-htmlstring) | false | — | message to display |
+| message | [HTMLString](../reference.md#type-htmlstring) | false | — | message to display |
 | properties | [Dialog Properties](#type-dialog-properties) | true | — | additional properties for the Dialog, applied before the Dialog is shown |
 
 ### Groups
@@ -81,11 +81,11 @@ Only an Array directly passed to `shallowClone()` is copied. Arrays contained wi
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| object | [Object](../main.md#type-object)|[Array](#type-array)|[Object](../main.md#type-object) | false | — | object to be cloned |
+| object | [Object](../reference.md#type-object)|[Array](#type-array)|[Object](../reference.md#type-object) | false | — | object to be cloned |
 
 ### Returns
 
-`[Object](../main.md#type-object)|[Array of Object](#type-array-of-object)` — a shallow copy of the passed-in data
+`[Object](../reference.md#type-object)|[Array of Object](#type-array-of-object)` — a shallow copy of the passed-in data
 
 ---
 ## StaticMethod: isc.notify
@@ -99,9 +99,9 @@ This method is simply a shorthand way to call [Notify.addMessage](Notify.md#clas
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| contents | [HTMLString](../main.md#type-htmlstring) | false | — | message to be displayed |
+| contents | [HTMLString](../reference.md#type-htmlstring) | false | — | message to be displayed |
 | actions | [Array of NotifyAction](#type-array-of-notifyaction) | true | — | actions (if any) for this message |
-| notifyType | [NotifyType](../main_2.md#type-notifytype) | true | — | category of message |
+| notifyType | [NotifyType](../reference_2.md#type-notifytype) | true | — | category of message |
 | settings | [NotifySettings](#type-notifysettings) | true | — | display and behavior settings for this message, overriding any stored settings for this `NotifyType` |
 
 ### Returns
@@ -168,7 +168,7 @@ See below for links to the default values for these properties.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| loginFunc | [Callback](../main.md#type-callback) | false | — | Function to call to attempt login. Receives parameters "credentials" and "dialogCallback", described above |
+| loginFunc | [Callback](../reference.md#type-callback) | false | — | Function to call to attempt login. Receives parameters "credentials" and "dialogCallback", described above |
 | properties | [LoginDialog Properties](#type-logindialog-properties) | true | — | additional properties for the Dialog |
 
 ### Groups
@@ -225,8 +225,8 @@ The callback will receive boolean true for a Yes button click, boolean false for
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| message | [HTMLString](../main.md#type-htmlstring) | false | — | message to display |
-| callback | [Callback](../main.md#type-callback) | true | — | Callback to fire when the user clicks a button to dismiss the dialog. This has the single parameter 'value', indicating the value returned by the Warn dialog from 'okClick()' etc. |
+| message | [HTMLString](../reference.md#type-htmlstring) | false | — | message to display |
+| callback | [Callback](../reference.md#type-callback) | true | — | Callback to fire when the user clicks a button to dismiss the dialog. This has the single parameter 'value', indicating the value returned by the Warn dialog from 'okClick()' etc. |
 | properties | [Dialog Properties](#type-dialog-properties) | true | — | additional properties for the Dialog. To set [custom buttons](Dialog.md#attr-dialogbuttons) for the Dialog, set properties.buttons to an array of buttons eg: { buttons : \[Dialog.OK, Dialog.CANCEL\] } |
 
 ### Groups
@@ -273,7 +273,7 @@ Keyboard focus is automatically placed in the text entry field, and hitting the 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | message | [String](#type-string) | false | — | message to display |
-| callback | [Callback](../main.md#type-callback) | true | — | Callback to fire when the user clicks a button to dismiss the dialog. This has the single parameter 'value', indicating the user entry, or null if cancel was pressed or the window closed |
+| callback | [Callback](../reference.md#type-callback) | true | — | Callback to fire when the user clicks a button to dismiss the dialog. This has the single parameter 'value', indicating the user entry, or null if cancel was pressed or the window closed |
 | properties | [Dialog Properties](#type-dialog-properties) | true | — | additional properties for the Dialog. To set [custom buttons](Dialog.md#attr-dialogbuttons) for the Dialog, set properties.buttons to an array of buttons eg: { buttons : \[Dialog.OK, Dialog.CANCEL\] } |
 
 ### Groups
@@ -306,7 +306,7 @@ While cleaning up observations that are no longer required is always good practi
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| object | [Object](../main.md#type-object) | false | — | Object to observe. This may be any JavaScript object with the specified target method, including native arrays, and instances of SmartClient classes such as [Canvas](Canvas.md#class-canvas). |
+| object | [Object](../reference.md#type-object) | false | — | Object to observe. This may be any JavaScript object with the specified target method, including native arrays, and instances of SmartClient classes such as [Canvas](Canvas.md#class-canvas). |
 | methodName | [String](#type-string) | false | — | Name of the method to observe. Every time this method is invoked on the target object the specified action will fire (after the default implementation completes). |
 | action | [Function](#type-function)|[String](#type-string) | false | — | Action to take when the observed method is invoked.  
 If `action` is a string to execute, certain keywords are available for context:
@@ -331,7 +331,7 @@ Enables full screen reader mode. Must be called before any components are create
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newState | [boolean](../main.md#type-boolean) | false | — | new setting |
+| newState | [boolean](../reference.md#type-boolean) | false | — | new setting |
 
 ### Groups
 
@@ -351,8 +351,8 @@ Note: this does not override the native window.confirm() method.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| message | [HTMLString](../main.md#type-htmlstring) | false | — | message to display |
-| callback | [Callback](../main.md#type-callback) | true | — | Callback to fire when the user clicks a button to dismiss the dialog. This has the single parameter 'value', indicating the value returned by the Warn dialog from 'okClick()' etc. |
+| message | [HTMLString](../reference.md#type-htmlstring) | false | — | message to display |
+| callback | [Callback](../reference.md#type-callback) | true | — | Callback to fire when the user clicks a button to dismiss the dialog. This has the single parameter 'value', indicating the value returned by the Warn dialog from 'okClick()' etc. |
 | properties | [Dialog Properties](#type-dialog-properties) | true | — | additional properties for the Dialog. To set [custom buttons](Dialog.md#attr-dialogbuttons) for the Dialog, set properties.buttons to an array of buttons eg: { buttons : \[Dialog.OK, Dialog.CANCEL\] } |
 
 ### Groups
@@ -378,7 +378,7 @@ Return all values of a given object
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| object | [Object](../main.md#type-object) | false | — | object to get properties from |
+| object | [Object](../reference.md#type-object) | false | — | object to get properties from |
 
 ### Returns
 
@@ -401,13 +401,13 @@ Same as [Log.logInfo](Log.md#classmethod-logloginfo).
 ## StaticMethod: isc.rejectWithError
 
 ### Description
-Creates a [Promise](../main_2.md#object-promise) that rejects with an "error"-[type](AsyncOperationResult.md#attr-asyncoperationresulttype) [AsyncOperationResult](../main.md#object-asyncoperationresult).
+Creates a [Promise](../reference_2.md#object-promise) that rejects with an "error"-[type](AsyncOperationResult.md#attr-asyncoperationresulttype) [AsyncOperationResult](../reference.md#object-asyncoperationresult).
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| errorMessage | [HTMLString](../main.md#type-htmlstring) | true | — | a message describing the error, if available. |
+| errorMessage | [HTMLString](../reference.md#type-htmlstring) | true | — | a message describing the error, if available. |
 | additionalProperties | [AsyncOperationResult Properties](#type-asyncoperationresult-properties) | true | — | additional properties to add to the reject result. Note that the `type` and/or `errorMessage` properties, if set on `additionalProperties`, will not be preserved. |
 
 ### Returns
@@ -424,7 +424,7 @@ Returns the size / position of an icon on the page as an array of coordinates.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| icon | [Object](../main.md#type-object) | false | — | icon definition for the icon you want to determine the position of (defaults to first icon in this.icons). |
+| icon | [Object](../reference.md#type-object) | false | — | icon definition for the icon you want to determine the position of (defaults to first icon in this.icons). |
 
 ### Returns
 
@@ -442,7 +442,7 @@ Returns the (offset) left-coordinate of an icon within its containing widget.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| icon | [Object](../main.md#type-object) | false | — | icon definition |
+| icon | [Object](../reference.md#type-object) | false | — | icon definition |
 
 ### Returns
 
@@ -462,8 +462,8 @@ The callback will receive boolean true for an OK button click, or null if the Di
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| message | [HTMLString](../main.md#type-htmlstring) | false | — | message to display |
-| callback | [Callback](../main.md#type-callback) | true | — | Optional Callback to fire when the user dismisses the dialog. This has the single parameter 'value', indicating the value returned by the Warn dialog from 'okClick()' etc. |
+| message | [HTMLString](../reference.md#type-htmlstring) | false | — | message to display |
+| callback | [Callback](../reference.md#type-callback) | true | — | Optional Callback to fire when the user dismisses the dialog. This has the single parameter 'value', indicating the value returned by the Warn dialog from 'okClick()' etc. |
 | properties | [Dialog Properties](#type-dialog-properties) | true | — | additional properties for the Dialog. To set [custom buttons](Dialog.md#attr-dialogbuttons) for the Dialog, set properties.buttons to an array of buttons eg: { buttons : \[Dialog.OK, Dialog.CANCEL\] } |
 
 ### Groups
@@ -508,7 +508,7 @@ If the key is not found, `defaultValue` will be returned if provided, otherwise 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | key | [String](#type-string)|[number](#type-number) | false | — | key to look for |
-| valueMap | [Object](../main.md#type-object) | false | — | object of key:value pairs |
+| valueMap | [Object](../reference.md#type-object) | false | — | object of key:value pairs |
 | defaultValue | [Any](#type-any) | true | — | default value to return if key not found |
 
 ### Returns
@@ -539,7 +539,7 @@ Return all keys (property names) of a given object
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| object | [Object](../main.md#type-object) | false | — | object to get properties from |
+| object | [Object](../reference.md#type-object) | false | — | object to get properties from |
 
 ### Returns
 
@@ -555,7 +555,7 @@ Returns the size / position of an icon with respect to the widget rendering out 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| icon | [Object](../main.md#type-object) | false | — | icon definition for the icon you want to determine the position of (defaults to first icon in this.icons). |
+| icon | [Object](../reference.md#type-object) | false | — | icon definition for the icon you want to determine the position of (defaults to first icon in this.icons). |
 
 ### Returns
 
@@ -575,11 +575,11 @@ If the same value appears more than once, the key will correspond to the last in
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| valueMap | [Object](../main.md#type-object) | false | — | object of key:value pairs |
+| valueMap | [Object](../reference.md#type-object) | false | — | object of key:value pairs |
 
 ### Returns
 
-`[Object](../main.md#type-object)` — reversed value map
+`[Object](../reference.md#type-object)` — reversed value map
 
 ---
 ## StaticMethod: isc.firstKey
@@ -591,7 +591,7 @@ Return the first property name in a given Object, according to for..in iteration
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| object | [Object](../main.md#type-object) | false | — | Object to get properties from |
+| object | [Object](../reference.md#type-object) | false | — | Object to get properties from |
 
 ### Returns
 
@@ -619,12 +619,12 @@ Usage example - may be used to sort a [formItem valueMap](FormItem.md#attr-formi
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| object | [Object](../main.md#type-object) | false | — | Object to sort |
+| object | [Object](../reference.md#type-object) | false | — | Object to sort |
 | comparator | [Function](#type-function) | true | — | Comparator function to use when sorting the object properties |
 
 ### Returns
 
-`[Object](../main.md#type-object)` — sorted version of the object passed in.
+`[Object](../reference.md#type-object)` — sorted version of the object passed in.
 
 ---
 ## StaticMethod: isc.logEchoAll
@@ -670,12 +670,12 @@ Usage example - may be used to sort a [formItem valueMap](FormItem.md#attr-formi
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| object | [Object](../main.md#type-object) | false | — | Object to sort |
+| object | [Object](../reference.md#type-object) | false | — | Object to sort |
 | comparator | [Function](#type-function) | true | — | Comparator function to use when sorting the objects keys |
 
 ### Returns
 
-`[Object](../main.md#type-object)` — sorted version of the object passed in.
+`[Object](../reference.md#type-object)` — sorted version of the object passed in.
 
 ---
 ## StaticMethod: isc.getKeyForValue
@@ -690,7 +690,7 @@ If the key is not found, `defaultKey` will be returned if provided, otherwise th
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | value | [String](#type-string)|[number](#type-number) | false | — | value to look for |
-| valueMap | [Object](../main.md#type-object) | false | — | object of key:value pairs |
+| valueMap | [Object](../reference.md#type-object) | false | — | object of key:value pairs |
 | defaultKey | [Any](#type-any) | true | — | default key to return if value not found |
 
 ### Returns
@@ -727,7 +727,7 @@ autoDraw:false is the recommended default setting for most applications since it
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| enable | [boolean](../main.md#type-boolean) | true | — | whether autoDraw should be enabled or disabled. Defaults to true. |
+| enable | [boolean](../reference.md#type-boolean) | true | — | whether autoDraw should be enabled or disabled. Defaults to true. |
 
 ### Groups
 
@@ -747,7 +747,7 @@ Returns the (offset) top-coordinate of an icon within its containing widget.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| icon | [Object](../main.md#type-object) | false | — | icon definition |
+| icon | [Object](../reference.md#type-object) | false | — | icon definition |
 
 ### Returns
 
@@ -767,7 +767,7 @@ Only JavaScript built-in types may be cloned. SmartClient UI widgets do not supp
 Note that you also can't duplicate a live canvas by passing into _create()_ as an argument. If you need to create multiple components with similar configuration, some common patterns inclulde:
 
 *   Create a new SmartClient class with the desired default configuration, and create instances of this class as needed.
-*   For components created by some specific instance, the [AutoChild](../main.md#type-autochild) system may be used. Developers can specify a standard configuration in `_autoChildName_Defaults` and `_autoChildName_Properties`, and use [Class.createAutoChild](Class.md#method-classcreateautochild) to create a number of standard auto child components.
+*   For components created by some specific instance, the [AutoChild](../reference.md#type-autochild) system may be used. Developers can specify a standard configuration in `_autoChildName_Defaults` and `_autoChildName_Properties`, and use [Class.createAutoChild](Class.md#method-classcreateautochild) to create a number of standard auto child components.
 *   A less formal approach might be to have a simple _getter_ type method which created and returned a new component each time it was called, passing in a standard configuration block.
 
 Does not handle looping references (will infinite loop).
@@ -776,11 +776,11 @@ Does not handle looping references (will infinite loop).
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| object | [Object](../main.md#type-object) | false | — | object to clone |
+| object | [Object](../reference.md#type-object) | false | — | object to clone |
 
 ### Returns
 
-`[Object](../main.md#type-object)` — cloned object
+`[Object](../reference.md#type-object)` — cloned object
 
 ### Groups
 
@@ -800,7 +800,7 @@ Shortcut for `isc.ClassFactory.overwriteClass()`.
 ## StaticMethod: isc.defaultAsyncOperationCatchCallback
 
 ### Description
-A catch callback that can be used on a Promise for an [AsyncOperationResult](../main.md#object-asyncoperationresult) to provide default error handling.
+A catch callback that can be used on a Promise for an [AsyncOperationResult](../reference.md#object-asyncoperationresult) to provide default error handling.
 
 ### Parameters
 
@@ -820,7 +820,7 @@ Shorthand for `new Date().getTime();`, this returns a timeStamp - a large number
 
 ### Returns
 
-`[int](../main.md#type-int)` — a large integer (actually the number of milliseconds since 1/1/1970)
+`[int](../reference.md#type-int)` — a large integer (actually the number of milliseconds since 1/1/1970)
 
 ---
 ## StaticMethod: isc.logEcho
@@ -857,13 +857,13 @@ To clear a modal prompt shown by [isc.showPrompt](#staticmethod-iscshowprompt), 
 ## StaticMethod: isc.createErrorResult
 
 ### Description
-Creates an "error"-[type](AsyncOperationResult.md#attr-asyncoperationresulttype) [AsyncOperationResult](../main.md#object-asyncoperationresult).
+Creates an "error"-[type](AsyncOperationResult.md#attr-asyncoperationresulttype) [AsyncOperationResult](../reference.md#object-asyncoperationresult).
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| errorMessage | [HTMLString](../main.md#type-htmlstring) | true | — | a message describing the error, if available. |
+| errorMessage | [HTMLString](../reference.md#type-htmlstring) | true | — | a message describing the error, if available. |
 | additionalProperties | [AsyncOperationResult Properties](#type-asyncoperationresult-properties) | true | — | additional properties to add to the error result. Note that the `type` and/or `errorMessage` properties, if set on `additionalProperties`, will not be preserved. |
 
 ---
@@ -895,12 +895,12 @@ Combining settings in order of precedence:
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| destination | [Object](../main.md#type-object) | false | — | object to add properties to |
-| arguments 1-N | [Object](../main.md#type-object) | true | — | objects to obtain properties from. Properties of all arguments other than destination are applied in turn. |
+| destination | [Object](../reference.md#type-object) | false | — | object to add properties to |
+| arguments 1-N | [Object](../reference.md#type-object) | true | — | objects to obtain properties from. Properties of all arguments other than destination are applied in turn. |
 
 ### Returns
 
-`[Object](../main.md#type-object)` — returns the destination object
+`[Object](../reference.md#type-object)` — returns the destination object
 
 ### See Also
 
@@ -917,12 +917,12 @@ Copy any properties that do not already have a value in destination. Null and ze
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| destination | [Object](../main.md#type-object) | false | — | Object to which properties will be added. |
-| source | [Object](../main.md#type-object) | false | — | Object from which properties will be added. |
+| destination | [Object](../reference.md#type-object) | false | — | Object to which properties will be added. |
+| source | [Object](../reference.md#type-object) | false | — | Object from which properties will be added. |
 
 ### Returns
 
-`[Object](../main.md#type-object)` — The destination object is returned.
+`[Object](../reference.md#type-object)` — The destination object is returned.
 
 ---
 ## StaticMethod: isc.defineClass
@@ -949,7 +949,7 @@ Shortcut for `isc.ClassFactory.defineClass()`.
 ## StaticMethod: isc.getAsyncMessage
 
 ### Description
-Returns a user-displayable message for the given [AsyncOperationResult](../main.md#object-asyncoperationresult) if its [type](AsyncOperationResult.md#attr-asyncoperationresulttype) is not "success".
+Returns a user-displayable message for the given [AsyncOperationResult](../reference.md#object-asyncoperationresult) if its [type](AsyncOperationResult.md#attr-asyncoperationresulttype) is not "success".
 
 [isc.getAsyncMessage()](#staticmethod-iscgetasyncmessage) and [AsyncUtil.getAsyncMessage()](AsyncUtil.md#classmethod-asyncutilgetasyncmessage) are equivalent.
 
@@ -961,7 +961,7 @@ Returns a user-displayable message for the given [AsyncOperationResult](../main.
 
 ### Returns
 
-`[HTMLString](../main.md#type-htmlstring)` — If the [type](AsyncOperationResult.md#attr-asyncoperationresulttype) is "success", then `null`; otherwise, a user-displayable message describing the non-successful result.
+`[HTMLString](../reference.md#type-htmlstring)` — If the [type](AsyncOperationResult.md#attr-asyncoperationresulttype) is "success", then `null`; otherwise, a user-displayable message describing the non-successful result.
 
 ### See Also
 
@@ -983,12 +983,12 @@ May return true even if `object[propertyName] === undefined` if the property is 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| object | [Object](../main.md#type-object) | false | — | Object to test |
+| object | [Object](../reference.md#type-object) | false | — | Object to test |
 | propertyName | [String](#type-string) | false | — | Which property is being tested for? |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true if property is defined
+`[boolean](../reference.md#type-boolean)` — true if property is defined
 
 ---
 ## StaticMethod: isc.showFadingPrompt
@@ -1005,7 +1005,7 @@ The prompt may be cleared before the duration has elapsed via a call to [isc.cle
 |------|------|----------|---------|-------------|
 | message | [String](#type-string) | false | — | message to display |
 | duration | [number](#type-number) | false | — | how long the message should appear for in milliseconds before fading from view. |
-| callback | [Callback](../main.md#type-callback) | true | — | When the prompt is hidden, callback will be fired. |
+| callback | [Callback](../reference.md#type-callback) | true | — | When the prompt is hidden, callback will be fired. |
 | properties | [Dialog Properties](#type-dialog-properties) | true | — | additional properties for the Dialog, applied before the Dialog is shown |
 
 ### Groups

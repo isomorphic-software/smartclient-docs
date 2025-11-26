@@ -1,6 +1,6 @@
 # ListGridRecord Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -138,8 +138,8 @@ The HTML to display in this row for fields with fieldType set to link. This over
 
 ### See Also
 
-- [ListGridFieldType](../main.md#type-listgridfieldtype)
-- [FieldType](../main_2.md#type-fieldtype)
+- [ListGridFieldType](../reference.md#type-listgridfieldtype)
+- [FieldType](../reference_2.md#type-fieldtype)
 - [ListGridField.linkText](ListGridField.md#attr-listgridfieldlinktext)
 - [ListGrid.linkTextProperty](ListGrid_1.md#attr-listgridlinktextproperty)
 
@@ -149,7 +149,7 @@ The HTML to display in this row for fields with fieldType set to link. This over
 ## Attr: ListGridRecord.embeddedComponentPosition
 
 ### Description
-Sizing policy applied to the embedded component. Default behavior if unspecified is the same as [EmbeddedPosition](../main_2.md#type-embeddedposition) "within" (fill space allocated to the record, including the ability use percentage sizing and snapTo offset). Use "expand" to have the record expand to accommodate the embedded components' specified sizes instead.
+Sizing policy applied to the embedded component. Default behavior if unspecified is the same as [EmbeddedPosition](../reference_2.md#type-embeddedposition) "within" (fill space allocated to the record, including the ability use percentage sizing and snapTo offset). Use "expand" to have the record expand to accommodate the embedded components' specified sizes instead.
 
 ### Groups
 

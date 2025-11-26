@@ -1,6 +1,6 @@
 # ColumnTree Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -33,7 +33,7 @@ If [ColumnTree.dataSource](#attr-columntreedatasource) is also set, this value a
 
 ### See Also
 
-- [ListGridField](../main_2.md#object-listgridfield)
+- [ListGridField](../reference_2.md#object-listgridfield)
 
 **Flags**: IRW
 
@@ -235,7 +235,7 @@ The URL of the base icon for all folder nodes in this columnTree. Note that this
 ## Attr: ColumnTree.data
 
 ### Description
-A [Tree](Tree.md#class-tree) object consisting of nested [TreeNode](../main_2.md#object-treenode)s to display in this ColumnTree. The `data` property will typically not be explicitly specified for databound ColumnTrees, where the data is returned from the server via databound component methods such as `fetchData()`
+A [Tree](Tree.md#class-tree) object consisting of nested [TreeNode](../reference_2.md#object-treenode)s to display in this ColumnTree. The `data` property will typically not be explicitly specified for databound ColumnTrees, where the data is returned from the server via databound component methods such as `fetchData()`
 
 ### Groups
 
@@ -259,7 +259,7 @@ For a `ColumnTree` that uses a DataSource, these properties will be passed to th
 ## Attr: ColumnTree.dataFetchMode
 
 ### Description
-How to fetch and manage records retrieve from the server. See [FetchMode](../main_2.md#type-fetchmode).
+How to fetch and manage records retrieve from the server. See [FetchMode](../reference_2.md#type-fetchmode).
 
 This setting only applies to the [ResultSet](ResultSet.md#class-resultset) automatically created by calling [fetchData()](ListGrid_2.md#method-listgridfetchdata). If a pre-existing ResultSet is passed to setData() instead, it's existing setting for [ResultSet.fetchMode](ResultSet.md#attr-resultsetfetchmode) applies.
 
@@ -333,7 +333,7 @@ Can be overridden at the node level via the default property [TreeNode.showOpenI
 ## Attr: ColumnTree.dataSource
 
 ### Description
-The DataSource that this component should bind to for default fields and for performing [DataSource requests](../main_2.md#object-dsrequest).
+The DataSource that this component should bind to for default fields and for performing [DataSource requests](../reference_2.md#object-dsrequest).
 
 Can be specified as either a DataSource instance or the String ID of a DataSource.
 
@@ -406,16 +406,16 @@ This property allows the developer to rename the [default node.showOpenIcon](Tre
 ## Method: ColumnTree.selectRecords
 
 ### Description
-Select/deselect a list of [Record](../main.md#object-record)s passed in explicitly, or by index.
+Select/deselect a list of [Record](../reference.md#object-record)s passed in explicitly, or by index.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | records | [Array of Record](#type-array-of-record)|[number](#type-number) | false | — | records (or row numbers) to select |
-| newState | [boolean](../main.md#type-boolean) | true | — | new selection state (if null, defaults to true) |
-| rowNums | [Array of Integer](#type-array-of-integer)|[Integer](../main_2.md#type-integer) | true | — | row numbers to select. Required for [multi-link trees](Tree.md#attr-treemultilinktree) unless row numbers are passed in the "records" param. If passed, the rowNums array should correspond to the records array (ie, rowNums\[0\] refers to the same object as records\[0\]) |
-| colNum | [Integer](../main_2.md#type-integer) | true | — | Column number |
+| newState | [boolean](../reference.md#type-boolean) | true | — | new selection state (if null, defaults to true) |
+| rowNums | [Array of Integer](#type-array-of-integer)|[Integer](../reference_2.md#type-integer) | true | — | row numbers to select. Required for [multi-link trees](Tree.md#attr-treemultilinktree) unless row numbers are passed in the "records" param. If passed, the rowNums array should correspond to the records array (ie, rowNums\[0\] refers to the same object as records\[0\]) |
+| colNum | [Integer](../reference_2.md#type-integer) | true | — | Column number |
 
 ### Groups
 
@@ -435,8 +435,8 @@ With no `colNum` parameter, a record's index is it's position counting from the 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| index | [int](../main.md#type-int) | false | — | index of record to return. |
-| colNum | [Integer](../main_2.md#type-integer) | true | — | optional index of the column |
+| index | [int](../reference.md#type-int) | false | — | index of record to return. |
+| colNum | [Integer](../reference_2.md#type-integer) | true | — | optional index of the column |
 
 ### Returns
 
@@ -459,7 +459,7 @@ The new column will be created if it is not already showing. Any columns further
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — override and return false to cancel the default action
+`[boolean](../reference.md#type-boolean)` — override and return false to cancel the default action
 
 ---
 ## Method: ColumnTree.getColumnTitle
@@ -474,7 +474,7 @@ By default, returns [ColumnTree.firstColumnTitle](#attr-columntreefirstcolumntit
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | node | [TreeNode](#type-treenode) | false | — | parent node for the nodes to be shown in the column |
-| colNum | [int](../main.md#type-int) | false | — | index of the column |
+| colNum | [int](../reference.md#type-int) | false | — | index of the column |
 
 ---
 ## Method: ColumnTree.setData
@@ -492,7 +492,7 @@ Set the [Tree](Tree.md#class-tree) object this ColumnTree will view
 ## Method: ColumnTree.transferNodes
 
 ### Description
-Transfer a list of [TreeNode](../main_2.md#object-treenode)s within this treeGrid or from from some other component (does not have to be a databound component) into this component. This method is only applicable to list-type components, such as [listGrid](ListGrid_1.md#class-listgrid), [treeGrid](TreeGrid.md#class-treegrid) or [tileGrid](TileGrid.md#class-tilegrid). Please see the paragraph below for special rules concerning [multi-link trees](Tree.md#method-treeismultilinktree).
+Transfer a list of [TreeNode](../reference_2.md#object-treenode)s within this treeGrid or from from some other component (does not have to be a databound component) into this component. This method is only applicable to list-type components, such as [listGrid](ListGrid_1.md#class-listgrid), [treeGrid](TreeGrid.md#class-treegrid) or [tileGrid](TileGrid.md#class-tilegrid). Please see the paragraph below for special rules concerning [multi-link trees](Tree.md#method-treeismultilinktree).
 
 This method implements the automatic drag-copy and drag-move behavior and calling it is equivalent to completing a drag and drop of the `nodes` (the default [ColumnTree.folderDrop](#method-columntreefolderdrop) implementation simply calls `transferNodes()`)
 
@@ -501,7 +501,7 @@ Note that this method is asynchronous - it may need to perform server turnaround
 For a TreeGrid, see also [transferSelectedData()](TreeGrid.md#method-treegridtransferselecteddata).
 
 **Multi-link trees**  
-If both the target treeGrid and the `sourceWidget` for this transfer are multi-link treeGrids, the `nodes` parameter must be an array of [NodeLocator](../main_2.md#object-nodelocator)s rather than TreeNodes. Likewise, if the target (this) component is a multi-link treeGrid, the `folder` parameter must be a NodeLocator.
+If both the target treeGrid and the `sourceWidget` for this transfer are multi-link treeGrids, the `nodes` parameter must be an array of [NodeLocator](../reference_2.md#object-nodelocator)s rather than TreeNodes. Likewise, if the target (this) component is a multi-link treeGrid, the `folder` parameter must be a NodeLocator.
 
 You can obtain a NodeLocator for a visible node occurence in a multi-link TreeGrid by calling its data model's [getNodeLocator()](Tree.md#method-treegetnodelocator) method.
 
@@ -511,9 +511,9 @@ You can obtain a NodeLocator for a visible node occurence in a multi-link TreeGr
 |------|------|----------|---------|-------------|
 | nodes | [Array of TreeNode](#type-array-of-treenode)|[Array of NodeLocator](#type-array-of-nodelocator) | false | — | Nodes to transfer to this component |
 | folder | [TreeNode](#type-treenode) | false | — | The target folder (eg, of a drop interaction), for context |
-| index | [Integer](../main_2.md#type-integer) | false | — | Insert point within the target folder data for the transferred nodes |
+| index | [Integer](../reference_2.md#type-integer) | false | — | Insert point within the target folder data for the transferred nodes |
 | sourceWidget | [Canvas](#type-canvas) | false | — | The databound or non-databound component from which the nodes are to be transferred. |
-| callback | [Callback](../main.md#type-callback) | true | — | optional callback to be fired when the transfer process has completed. The callback will be passed a single parameter "records", the list of nodes actually transferred to this component (it is called "records" because this is logic shared with [ListGrid](ListGrid_1.md#class-listgrid)) |
+| callback | [Callback](../reference.md#type-callback) | true | — | optional callback to be fired when the transfer process has completed. The callback will be passed a single parameter "records", the list of nodes actually transferred to this component (it is called "records" because this is logic shared with [ListGrid](ListGrid_1.md#class-listgrid)) |
 
 ### Groups
 
@@ -545,7 +545,7 @@ Whether at least one item is selected in the supplied column (the first column i
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| colNum | [Integer](../main_2.md#type-integer) | true | — | Column number |
+| colNum | [Integer](../reference_2.md#type-integer) | true | — | Column number |
 
 ### Returns
 
@@ -575,8 +575,8 @@ Note that, if criteria are passed to `fetchData()`, they will be passed every ti
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| criteria | [Criteria](../main_2.md#type-criteria) | true | — | Search criteria. If a [DynamicForm](DynamicForm.md#class-dynamicform) is passed in as this argument instead of a raw criteria object, will be derived by calling [DynamicForm.getValuesAsCriteria](DynamicForm.md#method-dynamicformgetvaluesascriteria) |
-| callback | [DSCallback](../main_2.md#type-dscallback) | true | — | callback to invoke when a fetch is complete. Fires only if server contact was required |
+| criteria | [Criteria](../reference_2.md#type-criteria) | true | — | Search criteria. If a [DynamicForm](DynamicForm.md#class-dynamicform) is passed in as this argument instead of a raw criteria object, will be derived by calling [DynamicForm.getValuesAsCriteria](DynamicForm.md#method-dynamicformgetvaluesascriteria) |
+| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke when a fetch is complete. Fires only if server contact was required |
 | requestProperties | [DSRequest](#type-dsrequest) | true | — | additional properties to set on the DSRequest that will be issued |
 
 ### Groups
@@ -605,7 +605,7 @@ You can override this method to return a custom title for nodes in the tree.
 
 ### Returns
 
-`[HTMLString](../main.md#type-htmlstring)` — the title to display.
+`[HTMLString](../reference.md#type-htmlstring)` — the title to display.
 
 ### See Also
 
@@ -621,7 +621,7 @@ Select all records in the supplied column (the first column if none is passed)
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| colNum | [Integer](../main_2.md#type-integer) | true | — | Column number |
+| colNum | [Integer](../reference_2.md#type-integer) | true | — | Column number |
 
 ### Groups
 
@@ -657,7 +657,7 @@ Advanced API - get the ListGrid representing the indicated column.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| column | [int](../main.md#type-int)|[TreeNode](#type-treenode) | false | — | column number, or parent node of the nodes shown in the column |
+| column | [int](../reference.md#type-int)|[TreeNode](#type-treenode) | false | — | column number, or parent node of the nodes shown in the column |
 
 ### Returns
 
@@ -669,7 +669,7 @@ Advanced API - get the ListGrid representing the indicated column.
 ## Method: ColumnTree.deselectRecords
 
 ### Description
-Deselect a list of [Record](../main.md#object-record)s passed in explicitly, or by index.
+Deselect a list of [Record](../reference.md#object-record)s passed in explicitly, or by index.
 
 Synonym for `selectRecords(records, false)`
 
@@ -678,8 +678,8 @@ Synonym for `selectRecords(records, false)`
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | records | [Array of Record](#type-array-of-record)|[number](#type-number) | false | — | records (or row numbers) to deselect |
-| rowNums | [Array of Integer](#type-array-of-integer)|[Integer](../main_2.md#type-integer) | true | — | row numbers to select. Required for [multi-link trees](Tree.md#attr-treemultilinktree) unless row numbers are passed in the "records" param. If passed, the rowNums array should correspond to the records array (ie, rowNums\[0\] refers to the same object as records\[0\]) |
-| colNum | [Integer](../main_2.md#type-integer) | true | — | Column number |
+| rowNums | [Array of Integer](#type-array-of-integer)|[Integer](../reference_2.md#type-integer) | true | — | row numbers to select. Required for [multi-link trees](Tree.md#attr-treemultilinktree) unless row numbers are passed in the "records" param. If passed, the rowNums array should correspond to the records array (ie, rowNums\[0\] refers to the same object as records\[0\]) |
+| colNum | [Integer](../reference_2.md#type-integer) | true | — | Column number |
 
 ### Groups
 
@@ -696,7 +696,7 @@ Additional properties to apply to the ListGrid that will show the indicated colu
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | node | [TreeNode](#type-treenode) | false | — | parent node for the nodes to be shown in the column |
-| colNum | [int](../main.md#type-int) | false | — | index of the column |
+| colNum | [int](../reference.md#type-int) | false | — | index of the column |
 
 ### Returns
 
@@ -737,7 +737,7 @@ If these default persistence behaviors are undesirable, return false to cancel t
 |------|------|----------|---------|-------------|
 | nodes | [Array of TreeNode](#type-array-of-treenode) | false | — | List of nodes being dropped |
 | folder | [TreeNode](#type-treenode) | false | — | The folder being dropped on |
-| index | [int](../main.md#type-int) | false | — | Within the folder being dropped on, the index at which the drop is occurring. Only passed if [canReorderRecords](TreeGrid.md#attr-treegridcanreorderrecords) is true. |
+| index | [int](../reference.md#type-int) | false | — | Within the folder being dropped on, the index at which the drop is occurring. Only passed if [canReorderRecords](TreeGrid.md#attr-treegridcanreorderrecords) is true. |
 | sourceWidget | [Canvas](#type-canvas) | false | — | The component that is the source of the nodes (where the nodes were dragged from) |
 
 ### Groups
@@ -762,8 +762,8 @@ For a discussion of the various filtering and criteria-management APIs and when 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| criteria | [Criteria](../main_2.md#type-criteria) | true | — | Search criteria. If a [DynamicForm](DynamicForm.md#class-dynamicform) is passed in as this argument instead of a raw criteria object, will be derived by calling [DynamicForm.getValuesAsCriteria](DynamicForm.md#method-dynamicformgetvaluesascriteria) |
-| callback | [DSCallback](../main_2.md#type-dscallback) | true | — | callback to invoke when a fetch is complete. Fires only if server contact was required; see [fetchData()](ListGrid_2.md#method-listgridfetchdata) for details |
+| criteria | [Criteria](../reference_2.md#type-criteria) | true | — | Search criteria. If a [DynamicForm](DynamicForm.md#class-dynamicform) is passed in as this argument instead of a raw criteria object, will be derived by calling [DynamicForm.getValuesAsCriteria](DynamicForm.md#method-dynamicformgetvaluesascriteria) |
+| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke when a fetch is complete. Fires only if server contact was required; see [fetchData()](ListGrid_2.md#method-listgridfetchdata) for details |
 | requestProperties | [DSRequest](#type-dsrequest) | true | — | for databound components only - optional additional properties to set on the DSRequest that will be issued |
 
 ### Groups
@@ -784,16 +784,16 @@ Navigate to the previous column.
 ## Method: ColumnTree.selectRecord
 
 ### Description
-Select/deselect a [Record](../main.md#object-record) passed in explicitly, or by index.
+Select/deselect a [Record](../reference.md#object-record) passed in explicitly, or by index.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | record | [Record](#type-record)|[number](#type-number) | false | — | record (or row number) to select |
-| newState | [boolean](../main.md#type-boolean) | true | — | new selection state (if null, defaults to true) |
-| rowNum | [Integer](../main_2.md#type-integer) | true | — | row number to select. Required for [multi-link trees](Tree.md#attr-treemultilinktree) unless row number is passed in the "record" param |
-| colNum | [Integer](../main_2.md#type-integer) | true | — | Column number |
+| newState | [boolean](../reference.md#type-boolean) | true | — | new selection state (if null, defaults to true) |
+| rowNum | [Integer](../reference_2.md#type-integer) | true | — | row number to select. Required for [multi-link trees](Tree.md#attr-treemultilinktree) unless row number is passed in the "record" param |
+| colNum | [Integer](../reference_2.md#type-integer) | true | — | Column number |
 
 ### Groups
 
@@ -803,7 +803,7 @@ Select/deselect a [Record](../main.md#object-record) passed in explicitly, or by
 ## Method: ColumnTree.deselectRecord
 
 ### Description
-Deselect a [Record](../main.md#object-record) passed in explicitly, or by index.
+Deselect a [Record](../reference.md#object-record) passed in explicitly, or by index.
 
 Synonym for `selectRecord(record, false)`
 
@@ -812,8 +812,8 @@ Synonym for `selectRecord(record, false)`
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | record | [Record](#type-record)|[number](#type-number) | false | — | record (or row number) to deselect |
-| rowNum | [Integer](../main_2.md#type-integer) | true | — | row number to select. Required for [multi-link trees](Tree.md#attr-treemultilinktree) unless row number is passed in the "record" param |
-| colNum | [Integer](../main_2.md#type-integer) | true | — | Column number |
+| rowNum | [Integer](../reference_2.md#type-integer) | true | — | row number to select. Required for [multi-link trees](Tree.md#attr-treemultilinktree) unless row number is passed in the "record" param |
+| colNum | [Integer](../reference_2.md#type-integer) | true | — | Column number |
 
 ### Groups
 
@@ -829,7 +829,7 @@ Deselect all records in the supplied column (the first column if none is passed)
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| colNum | [Integer](../main_2.md#type-integer) | true | — | Column number |
+| colNum | [Integer](../reference_2.md#type-integer) | true | — | Column number |
 
 ### Groups
 
@@ -846,6 +846,6 @@ Whether the indicated column should show a header. Returns this.showHeaders by d
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | node | [TreeNode](#type-treenode) | false | — | parent node for the nodes to be shown in the column |
-| colNum | [int](../main.md#type-int) | false | — | index of the column |
+| colNum | [int](../reference.md#type-int) | false | — | index of the column |
 
 ---

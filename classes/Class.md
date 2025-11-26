@@ -1,6 +1,6 @@
 # Class Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -13,7 +13,7 @@ To add functionality to ALL classes, add them to Class.
   
 To create a Class, call `ClassFactory.defineClass("MyClass", "MySuperClass")`
 
-`defineClass` will return the created class, and make it available as `isc.MyClass`, and as the global variable `MyClass` if not in [portal mode](../main.md#object-isc).
+`defineClass` will return the created class, and make it available as `isc.MyClass`, and as the global variable `MyClass` if not in [portal mode](../reference.md#object-isc).
 
 You can then:
 
@@ -57,7 +57,7 @@ If left unspecified, the Framework applies rules to determine which component to
 ## Attr: Class.dynamicProperties
 
 ### Description
-Object mapping dynamic property names to the source - a [DataPath](../main_2.md#type-datapath), [UserSummary](UserSummary.md#attr-usersummarytext) with [rule context](#attr-classrulescope), [UserFormula](UserFormula.md#attr-userformulatext) with rule context, [AdvancedCriteria](../main.md#object-advancedcriteria) or a conditional set of the above (except trueWhen). This is a declarative alternative to calling [Class.addDynamicProperty](#method-classadddynamicproperty) for each property.
+Object mapping dynamic property names to the source - a [DataPath](../reference_2.md#type-datapath), [UserSummary](UserSummary.md#attr-usersummarytext) with [rule context](#attr-classrulescope), [UserFormula](UserFormula.md#attr-userformulatext) with rule context, [AdvancedCriteria](../reference.md#object-advancedcriteria) or a conditional set of the above (except trueWhen). This is a declarative alternative to calling [Class.addDynamicProperty](#method-classadddynamicproperty) for each property.
 
 See [Class.addDynamicProperty](#method-classadddynamicproperty) for details on using dynamic properties.
 
@@ -135,7 +135,7 @@ In ComponentXML dynamicProperties can be intialized as:
 ## Attr: Class.addPropertiesOnCreate
 
 ### Description
-Controls whether arguments passed to [Class.create](#classmethod-classcreate) are assumed to be Objects containing properties that should be added to the newly created instance. This behavior is how `create()` works with almost all SmartClient widgets and other components, allowing the convenient shorthand of setting a batch of properties via an [JavaScript Object Literal](../main.md#type-objectliteral) passed to create().
+Controls whether arguments passed to [Class.create](#classmethod-classcreate) are assumed to be Objects containing properties that should be added to the newly created instance. This behavior is how `create()` works with almost all SmartClient widgets and other components, allowing the convenient shorthand of setting a batch of properties via an [JavaScript Object Literal](../reference.md#type-objectliteral) passed to create().
 
 The setting defaults to true if unset. To disable this behavior for a custom class, such that `create()` works more like typical constructors found in Java and other languages, use:
 
@@ -237,14 +237,14 @@ Instead of re-specifying the value, you can use this method to modify the value 
  
 ```
 
-See also the [AutoChild](../main.md#type-autochild) system for information about standard sets of defaults that are available for customization.
+See also the [AutoChild](../reference.md#type-autochild) system for information about standard sets of defaults that are available for customization.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | defaultsName | [String](#type-string) | false | — | name of the property to change |
-| newDefaults | [Object](../main.md#type-object) | false | — | overrides for defaults |
+| newDefaults | [Object](../reference.md#type-object) | false | — | overrides for defaults |
 
 **Flags**: A
 
@@ -252,16 +252,16 @@ See also the [AutoChild](../main.md#type-autochild) system for information about
 ## ClassMethod: Class.fireCallback
 
 ### Description
-Fire some arbitrary action specified as a [Callback](../main.md#type-callback). Returns the value returned by the action.
+Fire some arbitrary action specified as a [Callback](../reference.md#type-callback). Returns the value returned by the action.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| callback | [Callback](../main.md#type-callback) | false | — | Action to fire. |
+| callback | [Callback](../reference.md#type-callback) | false | — | Action to fire. |
 | argNames | [String](#type-string) | true | — | Comma separated string of variable names. If the callback passed in was a string of script, any arguments passed to the callback will be available as local variables with these names. |
 | args | [Array](#type-array) | true | — | Array of arguments to pass to the method. Note that the number of arguments should match the number of argNames. |
-| target | [Object](../main.md#type-object) | true | — | If specified the callback will be evaluated in the scope of this object - the `this` keyword will be a pointer to this target when the callback is fired. |
+| target | [Object](../reference.md#type-object) | true | — | If specified the callback will be evaluated in the scope of this object - the `this` keyword will be a pointer to this target when the callback is fired. |
 
 ### Returns
 
@@ -288,7 +288,7 @@ To set the visible log priority for some category across the entire page, use `i
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | category | [String](#type-string) | false | — | Category for which the log priority will be updated. If not all logs on this canvas will be logged at the priority passed in. |
-| priority | [LogPriority](../main.md#type-logpriority) | false | — | priority level |
+| priority | [LogPriority](../reference.md#type-logpriority) | false | — | priority level |
 
 ### See Also
 
@@ -308,11 +308,11 @@ Functionally equivalent to [Class.addProperties](#method-classaddproperties), wh
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| arguments 0-N | [Object](../main.md#type-object) | true | — | objects with methods to add (think named parameters). all the methods of each argument will be applied as instance-level methods. |
+| arguments 0-N | [Object](../reference.md#type-object) | true | — | objects with methods to add (think named parameters). all the methods of each argument will be applied as instance-level methods. |
 
 ### Returns
 
-`[Object](../main.md#type-object)` — the class after methods have been added to it
+`[Object](../reference.md#type-object)` — the class after methods have been added to it
 
 ---
 ## ClassMethod: Class.logWarn
@@ -380,7 +380,7 @@ Templates are stored in the class object and prototype inheritance is maintained
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| templates | [Object](../main.md#type-object) | false | — | Object mapping template names to template functions. |
+| templates | [Object](../reference.md#type-object) | false | — | Object mapping template names to template functions. |
 | type | [String](#type-string) | true | — | The namespace type for the templates. Defaults to "default". |
 
 ### Groups
@@ -403,7 +403,7 @@ To set the default visible log priority across the entire page, use `isc.Log.set
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | category | [String](#type-string) | false | — | Category for which the log priority will be updated. If not all logs on this canvas will be logged at the priority passed in. |
-| priority | [LogPriority](../main.md#type-logpriority) | false | — | priority level |
+| priority | [LogPriority](../reference.md#type-logpriority) | false | — | priority level |
 
 ### See Also
 
@@ -474,7 +474,7 @@ Add default properties to all instances of this class
 
 ### Returns
 
-`[Object](../main.md#type-object)` — the class after properties have been added to it
+`[Object](../reference.md#type-object)` — the class after properties have been added to it
 
 ---
 ## ClassMethod: Class.logError
@@ -516,7 +516,7 @@ Shared template utilities (`sc` and `json`) are automatically initialized and pa
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | templateName | [String](#type-string) | false | — | The name of the template to render, from the "default" namespace type. |
-| state | [Object](../main.md#type-object) | false | — | Input state passed to the template function. |
+| state | [Object](../reference.md#type-object) | false | — | Input state passed to the template function. |
 
 ### Returns
 
@@ -543,7 +543,7 @@ This method is a wrapper around the native javascript method `eval()`. It papers
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | expression | [String](#type-string) | false | — | the expression to be evaluated |
-| evalArgs | [Object](../main.md#type-object) | false | — | Optional mapping of argument names to values - each key will be available as a local variable when the script is executed. |
+| evalArgs | [Object](../reference.md#type-object) | false | — | Optional mapping of argument names to values - each key will be available as a local variable when the script is executed. |
 
 ### Returns
 
@@ -586,7 +586,7 @@ Returns whether this class object is the provided class or is a subclass of the 
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true == this Class is a subclass of the provided classname
+`[boolean](../reference.md#type-boolean)` — true == this Class is a subclass of the provided classname
 
 ---
 ## ClassMethod: Class.toString
@@ -618,7 +618,7 @@ Note: Generally, you would not override this method. If you want to specify a co
 
 ### Returns
 
-`[Object](../main.md#type-object)` — New instance of this class, whose init() routine has already been called
+`[Object](../reference.md#type-object)` — New instance of this class, whose init() routine has already been called
 
 ---
 ## ClassMethod: Class.logIsInfoEnabled
@@ -644,7 +644,7 @@ Apply a set of properties to a class object, calling the appropriate setter clas
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| arguments 0-N | [Object](../main.md#type-object) | true | — | objects with properties to add (think named parameters). all the properties of each argument will be applied one after another so later properties will override |
+| arguments 0-N | [Object](../reference.md#type-object) | true | — | objects with properties to add (think named parameters). all the properties of each argument will be applied one after another so later properties will override |
 
 ---
 ## ClassMethod: Class.registerStringMethods
@@ -666,7 +666,7 @@ Note that registered stringMethods are eligible as target methods for `Action`s 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| methodName | [Object](../main.md#type-object) | false | — | If this is a string, name of the property to register If this is an object, assume passing in a set of name/value pairs to register |
+| methodName | [Object](../reference.md#type-object) | false | — | If this is a string, name of the property to register If this is an object, assume passing in a set of name/value pairs to register |
 | argumentString | [String](#type-string) | false | — | named arguments for the property in a comma separated string (not used if methodName is an object) |
 
 ### See Also
@@ -702,11 +702,11 @@ These properties can then be accessed as `myInstance.property`, and methods can 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| arguments 0-N | [Object](../main.md#type-object) | true | — | objects with properties to add (think named parameters). all the properties of each argument will be applied |
+| arguments 0-N | [Object](../reference.md#type-object) | true | — | objects with properties to add (think named parameters). all the properties of each argument will be applied |
 
 ### Returns
 
-`[Object](../main.md#type-object)` — the class after properties have been added to it
+`[Object](../reference.md#type-object)` — the class after properties have been added to it
 
 ### See Also
 
@@ -723,11 +723,11 @@ Returns true if the method is supported by this class, meaning that it is not nu
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| methodName | [Identifier](../main.md#type-identifier) | false | — | the name of a method to test. |
+| methodName | [Identifier](../reference.md#type-identifier) | false | — | the name of a method to test. |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true if the method is not null and is not an unsupported method; false otherwise.
+`[boolean](../reference.md#type-boolean)` — true if the method is not null and is not an unsupported method; false otherwise.
 
 **Flags**: A
 
@@ -850,7 +850,7 @@ This is a helper to delay a call to a method on some target by a specified amoun
 | methodName | [String](#type-string) | false | — | name of the method to call |
 | arrayArgs | [Array](#type-array) | true | — | array of arguments to pass to the method in question |
 | time | [number](#type-number) | true | — | Number of ms to delay the call by - defaults to zero (so just pulls execution of the method out of the current execution thread. |
-| target | [Object](../main.md#type-object) | true | — | Target to fire the method on - if unspecified assume this is a call to a classMethod on this Class. |
+| target | [Object](../reference.md#type-object) | true | — | Target to fire the method on - if unspecified assume this is a call to a classMethod on this Class. |
 
 ### Returns
 
@@ -946,7 +946,7 @@ As with logDebug, category is defaulted to the current className. Use this metho
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| priority | [LogPriority](../main.md#type-logpriority) | false | — | priority level |
+| priority | [LogPriority](../reference.md#type-logpriority) | false | — | priority level |
 | category | [String](#type-string) | true | — | category to log in |
 
 ---
@@ -961,11 +961,11 @@ These properties can then be accessed as MyClass.property, or for functions, cal
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| arguments 0-N | [Object](../main.md#type-object) | true | — | objects with properties to add (think named parameters). all the properties of each argument will be applied as class-level properties. |
+| arguments 0-N | [Object](../reference.md#type-object) | true | — | objects with properties to add (think named parameters). all the properties of each argument will be applied as class-level properties. |
 
 ### Returns
 
-`[Object](../main.md#type-object)` — the class after properties have been added to it
+`[Object](../reference.md#type-object)` — the class after properties have been added to it
 
 ---
 ## ClassMethod: Class.getTemplate
@@ -1010,7 +1010,7 @@ Retrieves the default priority of messages for this class or instance.
 
 ### Returns
 
-`[LogPriority](../main.md#type-logpriority)` — default priority for logging messages on this object.
+`[LogPriority](../reference.md#type-logpriority)` — default priority for logging messages on this object.
 
 ---
 ## ClassMethod: Class.logIsDebugEnabled
@@ -1079,11 +1079,11 @@ Returns true if the property is dynamic.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| propertyName | [Identifier](../main.md#type-identifier) | false | — | name of a settable property on this instance |
+| propertyName | [Identifier](../reference.md#type-identifier) | false | — | name of a settable property on this instance |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true if the property is dynamic
+`[boolean](../reference.md#type-boolean)` — true if the property is dynamic
 
 ---
 ## Method: Class.Super
@@ -1158,7 +1158,7 @@ The current value of the property will not be changed by this call.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| propertyName | [Identifier](../main.md#type-identifier) | false | — | property name of the dynamic property to clear |
+| propertyName | [Identifier](../reference.md#type-identifier) | false | — | property name of the dynamic property to clear |
 
 ---
 ## Method: Class.ignore
@@ -1170,12 +1170,12 @@ Stop observing a method on some other object.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| object | [Object](../main.md#type-object) | false | — | object to observe |
+| object | [Object](../reference.md#type-object) | false | — | object to observe |
 | methodName | [String](#type-string) | false | — | name of the method to ignore |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true == observation stopped, false == no change made
+`[boolean](../reference.md#type-boolean)` — true == observation stopped, false == no change made
 
 ### Groups
 
@@ -1307,7 +1307,7 @@ Add properties to this instance.
 
 ### Returns
 
-`[Object](../main.md#type-object)` — the object after properties have been added to it
+`[Object](../reference.md#type-object)` — the object after properties have been added to it
 
 ---
 ## Method: Class.isObserving
@@ -1319,12 +1319,12 @@ Return true if this object is already observing a method of another object
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| object | [Object](../main.md#type-object) | false | — | object we may be observing |
+| object | [Object](../reference.md#type-object) | false | — | object we may be observing |
 | methodName | [String](#type-string) | false | — | name of the method to observed |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true if we're already observing that method
+`[boolean](../reference.md#type-boolean)` — true if we're already observing that method
 
 ### Groups
 
@@ -1401,7 +1401,7 @@ Note that by default the child created by this method will be destroyed when [de
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | childName | [String](#type-string) | false | — | name of the autoChild |
-| defaults | [Properties](../main.md#type-properties) | false | — | dynamic properties for the autoChild |
+| defaults | [Properties](../reference.md#type-properties) | false | — | dynamic properties for the autoChild |
 
 ### Returns
 
@@ -1427,7 +1427,7 @@ NOTE: this only applies to ISC's class system, eg: `myInstance.isA("Object")` wi
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — whether this object is of that Class or a subClass of that Class
+`[boolean](../reference.md#type-boolean)` — whether this object is of that Class or a subClass of that Class
 
 ---
 ## Method: Class.setProperties
@@ -1443,7 +1443,7 @@ With `setProperties()` in particular, some classes may be able to take shortcuts
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| arguments 0-N | [Object](../main.md#type-object) | true | — | objects with properties to add (think named parameters). all the properties of each argument will be applied one after another so later properties will override |
+| arguments 0-N | [Object](../reference.md#type-object) | true | — | objects with properties to add (think named parameters). all the properties of each argument will be applied one after another so later properties will override |
 
 ### See Also
 
@@ -1472,7 +1472,7 @@ To set the visible log priority for some category across the entire page, use `i
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | category | [String](#type-string) | false | — | Category for which the log priority will be updated. If not all logs on this canvas will be logged at the priority passed in. |
-| priority | [LogPriority](../main.md#type-logpriority) | false | — | priority level |
+| priority | [LogPriority](../reference.md#type-logpriority) | false | — | priority level |
 
 ### See Also
 
@@ -1503,7 +1503,7 @@ Note that by default the child created by this method will be destroyed when [de
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | childName | [String](#type-string) | false | — | name of the autoChild |
-| defaults | [Properties](../main.md#type-properties) | false | — | dynamic properties for the autoChild |
+| defaults | [Properties](../reference.md#type-properties) | false | — | dynamic properties for the autoChild |
 
 ### Returns
 
@@ -1567,13 +1567,13 @@ To clear the Page-level priority setting for this log category use `isc.Log.clea
 ## Method: Class.getDynamicPropertyRuleTime
 
 ### Description
-Returns the last time the rule for the specified dynamic property fired, as a [Date](../main_2.md#object-date).
+Returns the last time the rule for the specified dynamic property fired, as a [Date](../reference_2.md#object-date).
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| propertyName | [Identifier](../main.md#type-identifier) | false | — | name of a settable property on this instance |
+| propertyName | [Identifier](../reference.md#type-identifier) | false | — | name of a settable property on this instance |
 
 ### Returns
 
@@ -1591,7 +1591,7 @@ As with logDebug, category is defaulted to the current className. Use this metho
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| priority | [LogPriority](../main.md#type-logpriority) | false | — | priority level |
+| priority | [LogPriority](../reference.md#type-logpriority) | false | — | priority level |
 | category | [String](#type-string) | true | — | category to log in |
 
 ---
@@ -1606,7 +1606,7 @@ To set the default visible log priority across the entire page, use `isc.Log.set
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | category | [String](#type-string) | false | — | Category for which the log priority will be updated. If not all logs on this canvas will be logged at the priority passed in. |
-| priority | [LogPriority](../main.md#type-logpriority) | false | — | priority level |
+| priority | [LogPriority](../reference.md#type-logpriority) | false | — | priority level |
 
 ### See Also
 
@@ -1681,9 +1681,9 @@ General best practice is to call the method as "this.echo()" whenever "this" is 
 ## Method: Class.addDynamicProperty
 
 ### Description
-Sets up the value of `propertyName` to be dynamically derived from the [ruleScope](Canvas.md#attr-canvasrulescope), by either a simple [DataPath](../main_2.md#type-datapath) into the ruleScope, an [AdvancedCriteria](../main.md#object-advancedcriteria) built against [DataPaths](../main_2.md#type-datapath), or via a template or numeric formula using the ruleScope as available formula inputs.
+Sets up the value of `propertyName` to be dynamically derived from the [ruleScope](Canvas.md#attr-canvasrulescope), by either a simple [DataPath](../reference_2.md#type-datapath) into the ruleScope, an [AdvancedCriteria](../reference.md#object-advancedcriteria) built against [DataPaths](../reference_2.md#type-datapath), or via a template or numeric formula using the ruleScope as available formula inputs.
 
-The dataPath, criteria, template or formula is evaluated immediately when addDynamicProperty() is called, then re-evaluated every time the ruleScope changes. An [AdvancedCriteria](../main.md#object-advancedcriteria) will always evaluate to boolean true or false, and a [template](../main.md#object-usersummary) to a string.
+The dataPath, criteria, template or formula is evaluated immediately when addDynamicProperty() is called, then re-evaluated every time the ruleScope changes. An [AdvancedCriteria](../reference.md#object-advancedcriteria) will always evaluate to boolean true or false, and a [template](../reference.md#object-usersummary) to a string.
 
 It is invalid usage to use `addDynamicProperty()` on a property that is not runtime settable. However, `addDynamicProperty()` will not throw an error or log a warning if this is done.
 
@@ -1691,14 +1691,14 @@ If a property is already dynamic and addDynamicProperty() is called again, the n
 
 Dynamic properties can also be declared together via [Class.dynamicProperties](#attr-classdynamicproperties).
 
-Note that you may convert a simple criteria to an [AdvancedCriteria](../main.md#object-advancedcriteria) by calling [DataSource.convertCriteria](DataSource.md#classmethod-datasourceconvertcriteria).
+Note that you may convert a simple criteria to an [AdvancedCriteria](../reference.md#object-advancedcriteria) by calling [DataSource.convertCriteria](DataSource.md#classmethod-datasourceconvertcriteria).
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| propertyName | [Identifier](../main.md#type-identifier) | false | — | name of a settable property on this instance |
-| source | [DataPath](../main_2.md#type-datapath)|[UserSummary](#type-usersummary)|[UserFormula](#type-userformula)|[AdvancedCriteria](#type-advancedcriteria) | false | — | — |
+| propertyName | [Identifier](../reference.md#type-identifier) | false | — | name of a settable property on this instance |
+| source | [DataPath](../reference_2.md#type-datapath)|[UserSummary](#type-usersummary)|[UserFormula](#type-userformula)|[AdvancedCriteria](#type-advancedcriteria) | false | — | — |
 
 ### See Also
 
@@ -1757,7 +1757,7 @@ Retrieves the default priority of messages for this class or instance.
 
 ### Returns
 
-`[LogPriority](../main.md#type-logpriority)` — default priority for logging messages on this object.
+`[LogPriority](../reference.md#type-logpriority)` — default priority for logging messages on this object.
 
 ---
 ## Method: Class.echoLeaf
@@ -1794,11 +1794,11 @@ Add properties or methods to this specific instance. Properties with the same na
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| arguments 0-N | [Object](../main.md#type-object) | true | — | Object containing name:value pairs to be added to this object |
+| arguments 0-N | [Object](../reference.md#type-object) | true | — | Object containing name:value pairs to be added to this object |
 
 ### Returns
 
-`[Object](../main.md#type-object)` — the object after properties have been added to it
+`[Object](../reference.md#type-object)` — the object after properties have been added to it
 
 ### See Also
 
@@ -1816,7 +1816,7 @@ Falls through to [Class.fireCallback](#classmethod-classfirecallback)
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| callback | [Callback](../main.md#type-callback) | false | — | Callback to fire |
+| callback | [Callback](../reference.md#type-callback) | false | — | Callback to fire |
 | argNames | [String](#type-string) | true | — | comma separated string of variables |
 | args | [Array](#type-array) | true | — | array of arguments to pass to the method |
 
@@ -1858,7 +1858,7 @@ NOTES:
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| object | [Object](../main.md#type-object) | false | — | Object to observe. This may be any JavaScript object with the specified target method, including native arrays, and instances of SmartClient classes such as [Canvas](Canvas.md#class-canvas). |
+| object | [Object](../reference.md#type-object) | false | — | Object to observe. This may be any JavaScript object with the specified target method, including native arrays, and instances of SmartClient classes such as [Canvas](Canvas.md#class-canvas). |
 | methodName | [String](#type-string) | false | — | Name of the method to observe. Every time this method is invoked on the target object the specified action will fire (after the default implementation completes). |
 | action | [Function](#type-function)|[String](#type-string) | true | — | Optional action to take when the observed method is invoked on the target object.  
 If `action` is a string to execute, certain keywords are available for context:
@@ -1873,7 +1873,7 @@ If the `action` parameter is omitted the default behavior will invoke the same n
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true == observation set up, false == observation not set up
+`[boolean](../reference.md#type-boolean)` — true == observation set up, false == observation not set up
 
 ### Groups
 
@@ -1911,7 +1911,7 @@ Evaluate a string of script in the scope of this instance (so `this` is availabl
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | expression | [String](#type-string) | false | — | the expression to be evaluated |
-| evalArgs | [Object](../main.md#type-object) | false | — | Optional mapping of argument names to values - each key will be available as a local variable when the script is executed. |
+| evalArgs | [Object](../reference.md#type-object) | false | — | Optional mapping of argument names to values - each key will be available as a local variable when the script is executed. |
 
 ### Returns
 

@@ -1,6 +1,6 @@
 # FormItemEditProxy Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -19,7 +19,7 @@
 ## Attr: FormItemEditProxy.valueMapDisplaySeparatorChar
 
 ### Description
-If [inline editing](../main.md#type-inlineeditevent) for this FormItem edits the [FormItem.valueMap](FormItem.md#attr-formitemvaluemap), character that should be used as a separator for entering [ValueMap](../main_2.md#type-valuemap)s that map from a stored value to a user-displayed value.
+If [inline editing](../reference.md#type-inlineeditevent) for this FormItem edits the [FormItem.valueMap](FormItem.md#attr-formitemvaluemap), character that should be used as a separator for entering [ValueMap](../reference_2.md#type-valuemap)s that map from a stored value to a user-displayed value.
 
 With the default of ":", the following input:
 
@@ -63,7 +63,7 @@ Set `valueMapDisplaySeparatorChar` to null to prevent entry of stored vs display
 ## Attr: FormItemEditProxy.valueMapSelectedChar
 
 ### Description
-If [inline editing](../main.md#type-inlineeditevent) for this FormItem edits the [FormItem.valueMap](FormItem.md#attr-formitemvaluemap), character that can be used to mark the default selected option. Can appear before or after a value, for example, with this input:
+If [inline editing](../reference.md#type-inlineeditevent) for this FormItem edits the [FormItem.valueMap](FormItem.md#attr-formitemvaluemap), character that can be used to mark the default selected option. Can appear before or after a value, for example, with this input:
 ```
      Fixed,Won't Fix,Resolved*
  
@@ -80,7 +80,7 @@ The [valueMapEscapeChar](#attr-formitemeditproxyvaluemapescapechar) can be used 
 ## Attr: FormItemEditProxy.valueMapEscapeChar
 
 ### Description
-If [inline editing](../main.md#type-inlineeditevent) for this FormItem edits the [FormItem.valueMap](FormItem.md#attr-formitemvaluemap), character that can be used to enter literal separator chars (such as the [valueMapSeparatorChar](#attr-formitemeditproxyvaluemapseparatorchar)) or literal leading or trailing whitespace.
+If [inline editing](../reference.md#type-inlineeditevent) for this FormItem edits the [FormItem.valueMap](FormItem.md#attr-formitemvaluemap), character that can be used to enter literal separator chars (such as the [valueMapSeparatorChar](#attr-formitemeditproxyvaluemapseparatorchar)) or literal leading or trailing whitespace.
 
 Repeat this character twice to enter it literally. For example, with the default of "\\", inputting "\\\\" would result in a literal backslash in the value.
 
@@ -90,7 +90,7 @@ Repeat this character twice to enter it literally. For example, with the default
 ## Attr: FormItemEditProxy.valueMapSeparatorChar
 
 ### Description
-If [inline editing](../main.md#type-inlineeditevent) for this FormItem edits the [FormItem.valueMap](FormItem.md#attr-formitemvaluemap), character that should be used as a separator between values, or between pairs of stored vs display values if the user is entering such a [ValueMap](../main_2.md#type-valuemap) using the [valueMapDisplaySeparatorChar](#attr-formitemeditproxyvaluemapdisplayseparatorchar).
+If [inline editing](../reference.md#type-inlineeditevent) for this FormItem edits the [FormItem.valueMap](FormItem.md#attr-formitemvaluemap), character that should be used as a separator between values, or between pairs of stored vs display values if the user is entering such a [ValueMap](../reference_2.md#type-valuemap) using the [valueMapDisplaySeparatorChar](#attr-formitemeditproxyvaluemapdisplayseparatorchar).
 
 If [EditProxy.inlineEditMultiline](EditProxy.md#attr-editproxyinlineeditmultiline) is enabled, newlines will be used as value separators and the `valueMapSeparatorChar`
 

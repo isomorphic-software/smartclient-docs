@@ -1,6 +1,6 @@
 # LinkItem Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -88,6 +88,6 @@ Setter for [LinkItem.linkTitle](#attr-linkitemlinktitle).
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| title | [HTMLString](../main.md#type-htmlstring) | false | — | new `linkTitle` HTML. |
+| title | [HTMLString](../reference.md#type-htmlstring) | false | — | new `linkTitle` HTML. |
 
 ---

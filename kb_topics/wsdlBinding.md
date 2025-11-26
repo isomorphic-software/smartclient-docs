@@ -1,6 +1,6 @@
 # WSDL Binding
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -23,7 +23,7 @@ To bind a component to a web service operation, call
 
   [WebService.getFetchDS(_operationName,elementName_)](../classes/WebService.md#method-webservicegetfetchds)
 
-to obtain a DataSource which describes the structure of an XML element or XML Schema type named _elementName_, which appears in the response message for the operation named _operationName_. A component bound to this DataSource will show fields corresponding to the structure of the chosen XML element or type, that is, one field per subelement or attribute. [fetchData()](../classes/ListGrid_2.md#method-listgridfetchdata) called on this DataSource (or on a component bound to it) will invoke the specified web service operation, using the [Criteria](../main_2.md#type-criteria) passed to fetchData() to fill out the input message via [DataSource.xmlSerialize](../classes/DataSource.md#method-datasourcexmlserialize), and using the specified XML element from the response message as data.
+to obtain a DataSource which describes the structure of an XML element or XML Schema type named _elementName_, which appears in the response message for the operation named _operationName_. A component bound to this DataSource will show fields corresponding to the structure of the chosen XML element or type, that is, one field per subelement or attribute. [fetchData()](../classes/ListGrid_2.md#method-listgridfetchdata) called on this DataSource (or on a component bound to it) will invoke the specified web service operation, using the [Criteria](../reference_2.md#type-criteria) passed to fetchData() to fill out the input message via [DataSource.xmlSerialize](../classes/DataSource.md#method-datasourcexmlserialize), and using the specified XML element from the response message as data.
 
 Similarly, [WebService.getInputDS(_operationName_)](../classes/WebService.md#method-webservicegetinputds) returns a DataSource suitable for binding to a form that a user will fill out to provide inputs to the specified web service operation. Typical use is to let the user fill in the form, then pass the results of [form.getValues()](../classes/DynamicForm.md#method-dynamicformgetvalues) to [fetchData()](../classes/ListGrid_2.md#method-listgridfetchdata) as criteria.
 
@@ -98,7 +98,7 @@ For best performance, using the [<isc:loadWSDL> JSP tag](loadWSDLTag.md#kb-topic
 
 **Creating New WSDL Services**
 
-If you have no existing WSDL web service but would like to use web services for integration, you can implement the "SmartClientOperations" web service described by the ${isc.DocUtils.externalLink(isc.Page.getIsomorphicDir()+"system/schema/SmartClientOperations.wsdl","WSDL file")} included in the SDK. This simple, 4 operation web service can support any number of DataSources. In this case, you create your DataSources as client-side instances of [WSDataSource](../main.md#class-wsdatasource) (general client-side DataSource creation is described under [Creating DataSources](dataSourceDeclaration.md#kb-topic-creating-datasources)). To change the URL where ISC expects to find the SmartClientOperations web service, use [WebService.setLocation](../classes/WebService.md#method-webservicesetlocation) like so:
+If you have no existing WSDL web service but would like to use web services for integration, you can implement the "SmartClientOperations" web service described by the ${isc.DocUtils.externalLink(isc.Page.getIsomorphicDir()+"system/schema/SmartClientOperations.wsdl","WSDL file")} included in the SDK. This simple, 4 operation web service can support any number of DataSources. In this case, you create your DataSources as client-side instances of [WSDataSource](../reference.md#class-wsdatasource) (general client-side DataSource creation is described under [Creating DataSources](dataSourceDeclaration.md#kb-topic-creating-datasources)). To change the URL where ISC expects to find the SmartClientOperations web service, use [WebService.setLocation](../classes/WebService.md#method-webservicesetlocation) like so:
 
 ```
       var service = isc.WebService.get("urn:operations.smartclient.com");

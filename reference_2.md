@@ -1,6 +1,6 @@
 # SmartClient API Reference (Part 2 of 2)
 
-[← Back to Part 1](main.md)
+[← Back to Part 1](reference.md)
 
 ---
 
@@ -184,7 +184,7 @@ This is the default strategy for [RestConnector](kb_topics/serverRestConnector.m
 ## Type: CacheSyncTiming
 
 ### Description
-Indicates the timing strategy to be used for [automatic cache synchronization](kb_topics/cacheSynchronization.md#kb-topic-automatic-cache-synchronization), for a given [DataSource](classes/DataSource.md#attr-datasourcecachesynctiming), [OperationBinding](classes/OperationBinding.md#attr-operationbindingcachesynctiming) or [DSRequest](classes/DSRequest.md#attr-dsrequestcachesynctiming). This property controls the "when" of cache synchronization; the "how" is controlled by [CacheSyncStrategy](main_2.md#type-cachesyncstrategy).
+Indicates the timing strategy to be used for [automatic cache synchronization](kb_topics/cacheSynchronization.md#kb-topic-automatic-cache-synchronization), for a given [DataSource](classes/DataSource.md#attr-datasourcecachesynctiming), [OperationBinding](classes/OperationBinding.md#attr-operationbindingcachesynctiming) or [DSRequest](classes/DSRequest.md#attr-dsrequestcachesynctiming). This property controls the "when" of cache synchronization; the "how" is controlled by [CacheSyncStrategy](reference_2.md#type-cachesyncstrategy).
 
 **NOTE:** `CacheSyncTiming` is intended to allow applications to defer cache synchronization to the point where response data is actually requested; the primary aim of this is to avoid doing cache sync altogether in cases where the response data is never requested. There are some mainstream types of request where we know that the response data unequivocally _is_ required, and for these requests a global default `CacheSyncTiming` will be overridden to "immediate" by SmartClient because there is no point in deferring cache sync when we know for sure it will eventually be needed. Thus, cache sync will always run immediately regardless of the default `cacheSyncTiming` setting in these cases:
 
@@ -339,11 +339,11 @@ Would select all records where field1 has value "value1" and where field2 has _e
 
 Use [DataSource.combineCriteria](classes/DataSource.md#classmethod-datasourcecombinecriteria) to combine two Criteria objects (including Criteria and AdvancedCriteria) or [DataSource.convertCriteria](classes/DataSource.md#classmethod-datasourceconvertcriteria) to convert simple Criteria to the AdvancedCriteria format.
 
-When writing custom client and server-side filtering logic, criteria must be a JavaScript Object but the properties of that Object can contain whatever data you want. When sent to the SmartClient server, the Java representation of the criteria is described [here](classes/RPCRequest.md#attr-rpcrequestdata). When sent to other servers, the [operationBinding.dataProtocol](main_2.md#type-dsprotocol) affects the format.
+When writing custom client and server-side filtering logic, criteria must be a JavaScript Object but the properties of that Object can contain whatever data you want. When sent to the SmartClient server, the Java representation of the criteria is described [here](classes/RPCRequest.md#attr-rpcrequestdata). When sent to other servers, the [operationBinding.dataProtocol](reference_2.md#type-dsprotocol) affects the format.
 
 ### See Also
 
-- [CriteriaPolicy](main_2.md#type-criteriapolicy)
+- [CriteriaPolicy](reference_2.md#type-criteriapolicy)
 
 ---
 ## Type: CriteriaCombineOperator
@@ -427,7 +427,7 @@ _*   If a subobject exists just to bundle several related fields together, and i
     
     It may seem like a good idea to work with a single hierarchical order object, where the "deliveryAddress" attribute is set to a sub-object that matches the structure defined in the "address" dataSource. DataPaths could be used to extract individual address fields for editing in a form alongside other fields from the order, and edits would be saved via a simple "add" or "update" operation, passing in the modified nested data object.
     
-    In fact, this has a number of disadvantages. Since there is no call to the "update" operation on the "address" subobject, the address will be modified without the normal features of a dataSource update. You can't specify [security rules](classes/DataSource.md#attr-datasourcerequiresauthentication), [DMI](kb_topics/dmiOverview.md#kb-topic-direct-method-invocation) logic, [request modifiers](main_2.md#object-dsrequestmodifier), and no logging or [auditing](classes/DataSource.md#attr-datasourceaudit) will run.  
+    In fact, this has a number of disadvantages. Since there is no call to the "update" operation on the "address" subobject, the address will be modified without the normal features of a dataSource update. You can't specify [security rules](classes/DataSource.md#attr-datasourcerequiresauthentication), [DMI](kb_topics/dmiOverview.md#kb-topic-direct-method-invocation) logic, [request modifiers](reference_2.md#object-dsrequestmodifier), and no logging or [auditing](classes/DataSource.md#attr-datasourceaudit) will run.  
     The same "bypassing" problem occurs, in perhaps worse form, if a subobject does not yet exist and the framework creates it automatically, skipping a DataSource "add" operation that may have established defaults, not been allowed for the user, etc.
     
     Loading and saving nested data objects as a single hierarchical block also offers no advantages in terms of performance or simplicity.  
@@ -530,7 +530,7 @@ the below example would cause `dbName` to be resolved as `MyDatabase`
  
 ```
 (Note, you can use a different token than "`$config`" if you need to - see [templateConfigToken](classes/DataSource.md#attr-datasourcetemplateconfigtoken)) |
-| "all" | Indicates that full Velocity processing will be used to resolve templated references. This allows you to use all of Velocity's template-handling features - for example, conditional blocks and iteration - and so is more powerful than the simple "configOnly" option above. Note, however, that this templating is necessarily limited by the fact that it takes place during DataSource initialization, when there is not a lot of context available for templating purposes - you have the "`$config`" object, as with "configOnly", and some of the other variables listed in the [Velocity overview](kb_topics/velocitySupport.md#kb-topic-velocity-context-variables), but nothing relating to [DSRequest](main_2.md#object-dsrequest)s |
+| "all" | Indicates that full Velocity processing will be used to resolve templated references. This allows you to use all of Velocity's template-handling features - for example, conditional blocks and iteration - and so is more powerful than the simple "configOnly" option above. Note, however, that this templating is necessarily limited by the fact that it takes place during DataSource initialization, when there is not a lot of context available for templating purposes - you have the "`$config`" object, as with "configOnly", and some of the other variables listed in the [Velocity overview](kb_topics/velocitySupport.md#kb-topic-velocity-context-variables), but nothing relating to [DSRequest](reference_2.md#object-dsrequest)s |
 
 ### See Also
 
@@ -662,7 +662,7 @@ The parameters available in the DSCallback expression are:
 
 *   dsResponse: a [DSResponse](classes/DSResponse.md#class-dsresponse) instance with metadata about the returned data
 *   data: data returned to satisfy the DataSource request. See the [DataSource operations](kb_topics/dataSourceOperations.md#kb-topic-datasource-operations) topic for expected results for each type of DataSource operation
-*   dsRequest: the [DSRequest](main_2.md#object-dsrequest) that was sent. You can use [DSRequest.clientContext](classes/DSRequest.md#attr-dsrequestclientcontext) to track state during the server turnaround.
+*   dsRequest: the [DSRequest](reference_2.md#object-dsrequest) that was sent. You can use [DSRequest.clientContext](classes/DSRequest.md#attr-dsrequestclientcontext) to track state during the server turnaround.
 
 For example, if you had a DynamicForm with ID "myForm" and you wanted to retrieve a record from a DataSource "myUsers", where each record has a "userId" field:
 ```
@@ -944,7 +944,7 @@ Method to use for displaying the exported data.
 ## Type: ExportFormat
 
 ### Description
-One of the supported formats for data-export. If you are doing a [client export](classes/ListGrid_2.md#method-listgridexportclientdata) to one of the native spreadsheet formats (xls or ooxml), we also export [hilite-based](main_2.md#object-hilite) coloring. So, if Hilites are causing a particular cell to be rendered as green text on a blue background, the corresponding cell in the exported spreadsheet document will also be colored that way.
+One of the supported formats for data-export. If you are doing a [client export](classes/ListGrid_2.md#method-listgridexportclientdata) to one of the native spreadsheet formats (xls or ooxml), we also export [hilite-based](reference_2.md#object-hilite) coloring. So, if Hilites are causing a particular cell to be rendered as green text on a blue background, the corresponding cell in the exported spreadsheet document will also be colored that way.
 
 ### Values
 
@@ -1538,11 +1538,11 @@ An object containing the "view state" information for a listGrid.
 
 This object contains state information reflecting the following states in the grid:
 
-*   [field state](main_2.md#type-listgridfieldstate)
+*   [field state](reference_2.md#type-listgridfieldstate)
 *   [sort state](#type-listgridsortstate)
-*   [selected state](main_2.md#type-listgridselectedstate)
+*   [selected state](reference_2.md#type-listgridselectedstate)
 *   [group state](#type-listgridgroupstate)
-*   [criteria state](main_2.md#type-listgridusercriteriastate)
+*   [criteria state](reference_2.md#type-listgridusercriteriastate)
 *   hilite state
 *   filterEditor visibility state
 
@@ -1613,7 +1613,7 @@ Trees that dynamically load nodes keep track of whether each node has loaded its
 ## Type: LocatorAttributeType
 
 ### Description
-Attributes that may be retrieved from [autoTest locators](main_2.md#type-autotestlocator).
+Attributes that may be retrieved from [autoTest locators](reference_2.md#type-autotestlocator).
 
 ### Values
 
@@ -1813,8 +1813,8 @@ For `SQLDataSource` only, the strategy to use to insert multiple records when [a
 
 | Value | Description |
 |-------|-------------|
-| "stack" | messages of the same [NotifyType](main_2.md#type-notifytype) are arranged in a stack |
-| "replace" | messages of the same [NotifyType](main_2.md#type-notifytype) replace each other |
+| "stack" | messages of the same [NotifyType](reference_2.md#type-notifytype) are arranged in a stack |
+| "replace" | messages of the same [NotifyType](reference_2.md#type-notifytype) replace each other |
 
 ---
 ## Type: MultiWindowEvent
@@ -1874,7 +1874,7 @@ An identifier passed to [Notify](classes/Notify.md#class-notify) APIs to group r
 ## Type: OperatorValueType
 
 ### Description
-Indicates the kind of value expected in a [Criterion](main_2.md#object-criterion) that uses this operator.
+Indicates the kind of value expected in a [Criterion](reference_2.md#object-criterion) that uses this operator.
 
 ### Values
 
@@ -2390,7 +2390,7 @@ Assume `process.state` starts as:
 ## Type: SettledPromiseStatus
 
 ### Description
-The eventual state of a settled [Promise](main_2.md#object-promise).
+The eventual state of a settled [Promise](reference_2.md#object-promise).
 
 ### Values
 
@@ -2517,7 +2517,7 @@ _Server:_ acts exactly like SQL AVG function. |
 1.  via [SimpleType.compareValues](classes/SimpleType.md#method-simpletypecomparevalues) if defined for the field's [type](classes/Field.md#attr-fieldtype)
 2.  via [DateUtil.compareLogicalDates](classes/DateUtil.md#classmethod-dateutilcomparelogicaldates) if the field type inherits from "date"
 3.  via comparison as [logical times](classes/Time.md#classmethod-timecreatelogicaltime) if the field type inherits from "time"
-4.  via [DateUtil.compareDates](classes/DateUtil.md#classmethod-dateutilcomparedates) for two values that are both [Date](main_2.md#object-date)s
+4.  via [DateUtil.compareDates](classes/DateUtil.md#classmethod-dateutilcomparedates) for two values that are both [Date](reference_2.md#object-date)s
 5.  otherwise, using traditional methods
 
 Returns null to indicate an invalid summary value or when all source values are null. For best results, ensure that the [Field.type](classes/Field.md#attr-fieldtype) is correctly set.  
@@ -2527,7 +2527,7 @@ _Server:_ acts exactly like the SQL MAX aggregate function. |
 1.  via [SimpleType.compareValues](classes/SimpleType.md#method-simpletypecomparevalues) if defined for the field's [type](classes/Field.md#attr-fieldtype)
 2.  via [DateUtil.compareLogicalDates](classes/DateUtil.md#classmethod-dateutilcomparelogicaldates) if the field type inherits from "date"
 3.  via comparison as [logical times](classes/Time.md#classmethod-timecreatelogicaltime) if the field type inherits from "time"
-4.  via [DateUtil.compareDates](classes/DateUtil.md#classmethod-dateutilcomparedates) for two values that are both [Date](main_2.md#object-date)s
+4.  via [DateUtil.compareDates](classes/DateUtil.md#classmethod-dateutilcomparedates) for two values that are both [Date](reference_2.md#object-date)s
 5.  otherwise, using traditional methods
 
 Returns null to indicate an invalid summary value or when all source values are null. For best results, ensure that the [Field.type](classes/Field.md#attr-fieldtype) is correctly set.  
@@ -2592,7 +2592,7 @@ Two others sources of input are "$state" and "$last". The former references the 
 *   $last\[service\].property or $last\[DSRequestTask\].property references the last "DSRequestTask" output in the "property" field
 *   $ruleScope.property references the ruleScope "property" field
 
-The last two sources of input are "$lastRequest" and "$lastResponse". These are the objects `dsRequest` and `dsResponse` representing the last [DSRequestTask](classes/DSRequestTask.md#class-dsrequesttask), [DSFetchTask](#class-dsfetchtask), [DSAddTask](#class-dsaddtask), [DSUpdateTask](#class-dsupdatetask) or [DSRemoveTask](#class-dsremovetask) DataSource operation as returned in the operation's [callback](main_2.md#type-dscallback). A common usage would be to reference $lastResponse.totalRows to know how many rows were returned from a fetch.
+The last two sources of input are "$lastRequest" and "$lastResponse". These are the objects `dsRequest` and `dsResponse` representing the last [DSRequestTask](classes/DSRequestTask.md#class-dsrequesttask), [DSFetchTask](#class-dsfetchtask), [DSAddTask](#class-dsaddtask), [DSUpdateTask](#class-dsupdatetask) or [DSRemoveTask](#class-dsremovetask) DataSource operation as returned in the operation's [callback](reference_2.md#type-dscallback). A common usage would be to reference $lastResponse.totalRows to know how many rows were returned from a fetch.
 
 #### Transient state outputs
 Most tasks pass the output from the _previous_ task as their output (i.e. passed through) making it easy to refer to earlier output without referencing the task type. Tasks that work with records or interact with the user, however, typically provide task-specific output as detailed below:
@@ -2903,7 +2903,7 @@ The names of the Calendar views.
 |-------|-------------|
 | "duration" | wait for a specific amount of time |
 | "systemDone" | wait for the page to become quiet as reported by [AutoTest.isSystemDone](classes/AutoTest.md#classmethod-autotestissystemdone). |
-| "locator" | wait for a specific [AutoTestLocator](main_2.md#type-autotestlocator) to become ready. |
+| "locator" | wait for a specific [AutoTestLocator](reference_2.md#type-autotestlocator) to become ready. |
 
 ---
 ## Type: ZoomStartPosition
@@ -2926,7 +2926,7 @@ The names of the Calendar views.
 ## Object: AdaptiveMenuItem
 
 ### Description
-Object extending [MenuItem](main_2.md#object-menuitem) and specifying an item in an [AdaptiveMenu](classes/AdaptiveMenu.md#class-adaptivemenu). As with `MenuItems` each `AdaptiveMenuItem` can have a [title](classes/MenuItem.md#attr-menuitemtitle), [icon](classes/MenuItem.md#attr-menuitemicon), [shortcut keys](classes/MenuItem.md#attr-menuitemkeys), optional [MenuItem.submenu](classes/MenuItem.md#attr-menuitemsubmenu) and various other settings, including arbitrary widgets via [MenuItem.embeddedComponent](classes/MenuItem.md#attr-menuitemembeddedcomponent).
+Object extending [MenuItem](reference_2.md#object-menuitem) and specifying an item in an [AdaptiveMenu](classes/AdaptiveMenu.md#class-adaptivemenu). As with `MenuItems` each `AdaptiveMenuItem` can have a [title](classes/MenuItem.md#attr-menuitemtitle), [icon](classes/MenuItem.md#attr-menuitemicon), [shortcut keys](classes/MenuItem.md#attr-menuitemkeys), optional [MenuItem.submenu](classes/MenuItem.md#attr-menuitemsubmenu) and various other settings, including arbitrary widgets via [MenuItem.embeddedComponent](classes/MenuItem.md#attr-menuitemembeddedcomponent).
 
 Additionally, an `AdaptiveMenuItem` may be displayed either as an item in a regular [Menu](classes/Menu.md#class-menu) or as a [button in a toolstrip](classes/AdaptiveMenu.md#attr-adaptivemenuinlinemenuitem) and will adapt it's appearance according to layout and available space.
 
@@ -2972,7 +2972,7 @@ JavaScript's native Array is retrofitted to support the `List` API.
 
 ### See Also
 
-- [List](main_2.md#interface-list)
+- [List](reference_2.md#interface-list)
 
 ---
 ## Object: Boolean
@@ -3201,7 +3201,7 @@ See the [Master/Detail Add Example](https://www.smartclient.com/smartclient-late
 ### Description
 Base type representing a field.
 
-Field container implementations may extend this type with additional attributes and/or methods. For example, [DataSource](classes/DataSource.md#class-datasource) uses [DataSourceField](main_2.md#object-datasourcefield), [DataBoundComponent](#interface-databoundcomponent) uses [DBCField](#object-dbcfield), and [ListGrid](classes/ListGrid_1.md#class-listgrid) uses [ListGridField](main_2.md#object-listgridfield) (itself an extension of `DBCField`).
+Field container implementations may extend this type with additional attributes and/or methods. For example, [DataSource](classes/DataSource.md#class-datasource) uses [DataSourceField](reference_2.md#object-datasourcefield), [DataBoundComponent](#interface-databoundcomponent) uses [DBCField](#object-dbcfield), and [ListGrid](classes/ListGrid_1.md#class-listgrid) uses [ListGridField](reference_2.md#object-listgridfield) (itself an extension of `DBCField`).
 
 In general, `Field` instances should not be shared with multiple field containers.
 
@@ -3355,7 +3355,7 @@ An ordinary JavaScript object containing properties that configures the display 
 ## Object: ListGridRecord
 
 ### Description
-A ListGridRecord is a JavaScript Object whose properties contain values for each [ListGridField](main_2.md#object-listgridfield). A ListGridRecord may have additional properties which affect the record's appearance or behavior, or which hold data for use by custom logic or other, related components.
+A ListGridRecord is a JavaScript Object whose properties contain values for each [ListGridField](reference_2.md#object-listgridfield). A ListGridRecord may have additional properties which affect the record's appearance or behavior, or which hold data for use by custom logic or other, related components.
 
 For example a ListGrid that defines the following fields:
 
@@ -3481,7 +3481,7 @@ Encapsulates state of a [NavigationBar](classes/NavigationBar.md#class-navigatio
 ## Object: NodeLocator
 
 ### Description
-An object containing sufficient context to unambiguously identify a single node in the tree. For normal trees, the node itself - or its ID - is sufficient for this purpose, but for [multi-link trees](classes/Tree.md#method-treeismultilinktree), we also need to know the node's parent, and its position within that parent. For cases where we need to propagate change back up the node's parent chain, in order to maintain a given parent node's openList, the node, parent and position are not enough context; for those cases, we need either the node's position in the tree's openList, or a full path to the node. `NodeLocator` objects contain this extra context, and can be passed to APIs such as [Tree.openFolder](classes/Tree.md#method-treeopenfolder), which would ordinarily accept a parameter of type [TreeNode](main_2.md#object-treenode).
+An object containing sufficient context to unambiguously identify a single node in the tree. For normal trees, the node itself - or its ID - is sufficient for this purpose, but for [multi-link trees](classes/Tree.md#method-treeismultilinktree), we also need to know the node's parent, and its position within that parent. For cases where we need to propagate change back up the node's parent chain, in order to maintain a given parent node's openList, the node, parent and position are not enough context; for those cases, we need either the node's position in the tree's openList, or a full path to the node. `NodeLocator` objects contain this extra context, and can be passed to APIs such as [Tree.openFolder](classes/Tree.md#method-treeopenfolder), which would ordinarily accept a parameter of type [TreeNode](reference_2.md#object-treenode).
 
 ---
 ## Object: Point
@@ -3543,7 +3543,7 @@ An object used to configure how Selenese is generated by [EventStream.getAsSelen
 ### Description
 The ServerObject tells the ISC server how to find or create a server-side object involved in [DMI](kb_topics/dmiOverview.md#kb-topic-direct-method-invocation) (Direct Method Invocation).
 
-A ServerObject declaration appears in the XML definition of a [DataSource](classes/DataSource.md#class-datasource) (for responding to [DSRequest](main_2.md#object-dsrequest)s) or in an Application configuration file (.app.xml) for responding to [RPCRequest](#object-rpcrequest)s.
+A ServerObject declaration appears in the XML definition of a [DataSource](classes/DataSource.md#class-datasource) (for responding to [DSRequest](reference_2.md#object-dsrequest)s) or in an Application configuration file (.app.xml) for responding to [RPCRequest](#object-rpcrequest)s.
 
 NOTE: Please take note of the points made in [this discussion](kb_topics/serverDataSourceImplementation.md#kb-topic-notes-on-server-side-datasource-implementations) of caching and thread-safety issues in server-side DataSources.
 
@@ -3688,7 +3688,7 @@ Because TestFunctionResult is always an ordinary JavaScript Object, it supports 
 ### Description
 Every node in the tree is represented by a TreeNode object which is an object literal with a set of properties that configure the node.
 
-When a Tree is supplied as [TreeGrid.data](classes/TreeGrid.md#attr-treegriddata) to [TreeGrid](classes/TreeGrid.md#class-treegrid), you can also set properties from [ListGridRecord](main_2.md#object-listgridrecord) on the TreeNode (e.g. setting [ListGridRecord.enabled](classes/ListGridRecord.md#attr-listgridrecordenabled):`false` on the node).
+When a Tree is supplied as [TreeGrid.data](classes/TreeGrid.md#attr-treegriddata) to [TreeGrid](classes/TreeGrid.md#class-treegrid), you can also set properties from [ListGridRecord](reference_2.md#object-listgridrecord) on the TreeNode (e.g. setting [ListGridRecord.enabled](classes/ListGridRecord.md#attr-listgridrecordenabled):`false` on the node).
 
 ---
 ## Object: UISummarySettings
@@ -3714,7 +3714,7 @@ Validator definition for a built-in [Validator.type](classes/Validator.md#attr-v
 ## Object: VisibleMethod
 
 ### Description
-Defines the method of the [ServerObject](main_2.md#object-serverobject) if it appears in an [Application declaration file](kb_topics/applicationDeclaration.md#kb-topic-application-declaration-files). Method can refer the `ServerObject` method allowed to be called from the client or can be implemented right in the .app.xml file using the [inline server script](kb_topics/serverScript.md#kb-topic-server-scripting).
+Defines the method of the [ServerObject](reference_2.md#object-serverobject) if it appears in an [Application declaration file](kb_topics/applicationDeclaration.md#kb-topic-application-declaration-files). Method can refer the `ServerObject` method allowed to be called from the client or can be implemented right in the .app.xml file using the [inline server script](kb_topics/serverScript.md#kb-topic-server-scripting).
 
 ---
 ## Object: WSRequest

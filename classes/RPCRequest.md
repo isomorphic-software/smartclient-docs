@@ -1,6 +1,6 @@
 # RPCRequest Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -362,7 +362,7 @@ If promptStyle is set to "cursor" for the request that specified showPrompt: tru
 ## Attr: RPCRequest.callbackParam
 
 ### Description
-For use only with the [scriptInclude](../main.md#type-rpctransport) transport, this attribute specifies the name of the URL parameter which is used to specify the callback function that the server is expected to call by writing out JavaScript code. The actual function to call is automatically generated and differs for every request (to allow concurrency).
+For use only with the [scriptInclude](../reference.md#type-rpctransport) transport, this attribute specifies the name of the URL parameter which is used to specify the callback function that the server is expected to call by writing out JavaScript code. The actual function to call is automatically generated and differs for every request (to allow concurrency).
 
 For example, with `callbackParam` set to it's default value of "callback", the server might be contacted with a URL like:
 
@@ -642,7 +642,7 @@ This is typically useful to provide visual feedback to the user when a lengthy d
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| progressEvent | [Object](../main.md#type-object) | false | — | The native [ProgressEvent](https://developer.mozilla.org/en-US/docs/Web/API/ProgressEvent) with attributes indicating the `loaded` content so far, and, if `Content-Length` headers were set on the response, the `total` download size. Note that this is a native event produced by the browser and SmartClient does not guarantee consistency for the event object, or the timing of the `onprogress` event notifications across browsers. |
+| progressEvent | [Object](../reference.md#type-object) | false | — | The native [ProgressEvent](https://developer.mozilla.org/en-US/docs/Web/API/ProgressEvent) with attributes indicating the `loaded` content so far, and, if `Content-Length` headers were set on the response, the `total` download size. Note that this is a native event produced by the browser and SmartClient does not guarantee consistency for the event object, or the timing of the `onprogress` event notifications across browsers. |
 | request | [RPCRequest](#type-rpcrequest) | false | — | the request that initiated the download |
 
 ---
@@ -662,13 +662,13 @@ Note that for a successful download request, the `data` parameter will be a [Blo
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | response | [RPCResponse](#type-rpcresponse) | false | — | the response to the request |
-| data | [Object](../main.md#type-object) | false | — | The Blob returned by the server, or error message if the download was unsuccessful |
+| data | [Object](../reference.md#type-object) | false | — | The Blob returned by the server, or error message if the download was unsuccessful |
 | fileName | [String](#type-string) | false | — | The file name for the downloaded file, derived from the [content-disposition header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Disposition). |
 | type | [String](#type-string) | false | — | the content type for the downloaded file, as specified by the [content-type header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Type). |
 | request | [RPCRequest](#type-rpcrequest) | false | — | the request that initiated the download |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — return false to suppress default behavior of saving the download file to the user's filesystem.
+`[boolean](../reference.md#type-boolean)` — return false to suppress default behavior of saving the download file to the user's filesystem.
 
 ---

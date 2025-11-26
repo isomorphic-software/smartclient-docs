@@ -1,6 +1,6 @@
 # Admin Console
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -28,7 +28,7 @@ This tab allows you to generate and populate database tables from DataSource def
 
 All DataSources defined in XML (as described [here](dataSourceDeclaration.md#kb-topic-creating-datasources)) are displayed in a list. Developers may select any dataSource to see details of the dataSource and preview its data if any exists.
 
-For DataSources of [type](../main_2.md#type-dsservertype) `"sql"` or `"hibernate"`, the buttons at the bottom of this tab allow users to create a new database table for the DataSources. Test data may be imported test data, either from an existing [test data file](../classes/DataSource.md#attr-datasourcetestdata) or by uploading [CSV, JSON or XML formatted data](testData.md#kb-topic-test-data).
+For DataSources of [type](../reference_2.md#type-dsservertype) `"sql"` or `"hibernate"`, the buttons at the bottom of this tab allow users to create a new database table for the DataSources. Test data may be imported test data, either from an existing [test data file](../classes/DataSource.md#attr-datasourcetestdata) or by uploading [CSV, JSON or XML formatted data](testData.md#kb-topic-test-data).
 
 **Server Logs**
 

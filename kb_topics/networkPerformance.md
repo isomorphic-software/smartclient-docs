@@ -1,6 +1,6 @@
 # Network Performance
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -29,14 +29,14 @@ Modern browsers limit the number of HTTP connections they use to fetch the asset
 
 **FileLoader**
 
-The FileLoader is a standalone client-side module that allows you to performing caching or loading of various resources in the background on any page. The typical usage pattern is to use this module to pre-cache SmartClient modules, skin images, and application logic while the user is, for example filling in a login form. See the [FileLoader](../main_2.md#object-fileloader) documentation on usage.
+The FileLoader is a standalone client-side module that allows you to performing caching or loading of various resources in the background on any page. The typical usage pattern is to use this module to pre-cache SmartClient modules, skin images, and application logic while the user is, for example filling in a login form. See the [FileLoader](../reference_2.md#object-fileloader) documentation on usage.
 
 **SSL Considerations**
 
 Some quirks to be aware of when optimizing for pages serviced via HTTPS:
 
 *   If your top-level https page loads an image via http, IE will pop a warning to the user asking if it's ok to serve the "unsecure" content. Firefox does not pop an alert, bug shows a different lock icon to indicate that not all content is served from a secure server.
-*   Firefox will not write images fetched via SSL to disk, even if expires headers are set. But it will cache them in memory for the duration of the browser session. This makes the use of the [FileLoader](../main_2.md#object-fileloader) even more important for SSL applications. IE will cache SSL content across browser restarts.
+*   Firefox will not write images fetched via SSL to disk, even if expires headers are set. But it will cache them in memory for the duration of the browser session. This makes the use of the [FileLoader](../reference_2.md#object-fileloader) even more important for SSL applications. IE will cache SSL content across browser restarts.
 *   If your only concern is with actual security and not with perception, it makes a lot of sense to serve the top-level page via plain HTTP and then use the SmartClient RPC mechanism to fetch sensitive data with no-cache headers via HTTPS. Unfortunately this almost never practical because most users look for the secure lock icon on the top-level page and may become worried that the application is not secure if they don't see it.
 
 **Other Tips**

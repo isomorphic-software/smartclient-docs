@@ -1,6 +1,6 @@
 # Hilite Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 

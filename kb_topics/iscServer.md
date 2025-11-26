@@ -1,6 +1,6 @@
 # SmartClient Server Summary
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -74,7 +74,7 @@ JavaScript Objects existing in the browser can likewise be automatically transmi
 
 #### SQL and Hibernate connectors
 
-DataSources of serverType:"sql" or serverType:"hibernate" can generate and execute queries against popular SQL engines or against the Hibernate ORM system, providing SmartClient's [DataBoundComponent](../main.md#interface-databoundcomponent)s with the four standard CRUD operations (create, retrieve, update, delete) without writing any server-side code. For rapid prototyping, these DataSources can even generate SQL tables based on the DataSource declaration, using the [Admin Console](adminConsole.md#kb-topic-admin-console) visual tool.
+DataSources of serverType:"sql" or serverType:"hibernate" can generate and execute queries against popular SQL engines or against the Hibernate ORM system, providing SmartClient's [DataBoundComponent](../reference.md#interface-databoundcomponent)s with the four standard CRUD operations (create, retrieve, update, delete) without writing any server-side code. For rapid prototyping, these DataSources can even generate SQL tables based on the DataSource declaration, using the [Admin Console](adminConsole.md#kb-topic-admin-console) visual tool.
 
 Server-side APIs allow server-side modification of the request before it is executed (for example, to enforce security) and post-processing of the request after execution (for example, to provide calculated values).
 
@@ -84,7 +84,7 @@ Both serverType:"sql" and serverType:"hibernate" support the field-operator-valu
 
 The SmartClient Server provides a standardized request and response protocol designed for data-oriented "CRUD" operations (create, retrieve, update, delete).
 
-This standardized protocol automatically handles [request metadata](../main_2.md#object-dsrequest) (paging parameters, requested sort order, original values of data being modified) and [response metadata](../classes/DSResponse.md#class-dsresponse) (error handling, cache management, session expiration etc).
+This standardized protocol automatically handles [request metadata](../reference_2.md#object-dsrequest) (paging parameters, requested sort order, original values of data being modified) and [response metadata](../classes/DSResponse.md#class-dsresponse) (error handling, cache management, session expiration etc).
 
 This standardized protocol avoids developers in different groups inventing their own incompatible and redundant request/response protocols, and allows developers to more easily learn code they didn't author.
 
@@ -107,7 +107,7 @@ The SmartClient Server can compensate for facilities [missing or disabled in cer
 Provides:
 
 *   compressed delivery of SmartClient runtime, application logic and other assets such as CSS
-*   [background download](../main_2.md#object-fileloader) of SmartClient and other assets for zero user-perceived load time
+*   [background download](../reference_2.md#object-fileloader) of SmartClient and other assets for zero user-perceived load time
 *   on-the-fly stripping and combining of JavaScript (application code and data)
 *   browser cache control
 

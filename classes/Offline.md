@@ -1,6 +1,6 @@
 # Offline Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -121,7 +121,7 @@ Note that limitations in the underlying storage engines mean that only primitive
 |------|------|----------|---------|-------------|
 | key | [String](#type-string) | false | — | The key to use when storing the value |
 | value | [Any](#type-any) | false | — | The value to store |
-| recycleEntries | [boolean](../main.md#type-boolean) | true | — | If false, suppresses the default behavior of repeatedly discarding the oldest entry if there is insufficient space to store the value |
+| recycleEntries | [boolean](../reference.md#type-boolean) | true | — | If false, suppresses the default behavior of repeatedly discarding the oldest entry if there is insufficient space to store the value |
 
 ### See Also
 

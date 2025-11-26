@@ -1,6 +1,6 @@
 # Log Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -37,7 +37,7 @@ NOTE: if you have the Microsoft JavaScript Debugger installed, ISC will be unabl
 ## ClassAttr: Log.WARN
 
 ### Description
-A declared value of the enum type [LogPriority](../main.md#type-logpriority).
+A declared value of the enum type [LogPriority](../reference.md#type-logpriority).
 
 **Flags**: R
 
@@ -45,7 +45,7 @@ A declared value of the enum type [LogPriority](../main.md#type-logpriority).
 ## ClassAttr: Log.DEBUG
 
 ### Description
-A declared value of the enum type [LogPriority](../main.md#type-logpriority).
+A declared value of the enum type [LogPriority](../reference.md#type-logpriority).
 
 **Flags**: R
 
@@ -53,7 +53,7 @@ A declared value of the enum type [LogPriority](../main.md#type-logpriority).
 ## ClassAttr: Log.FATAL
 
 ### Description
-A declared value of the enum type [LogPriority](../main.md#type-logpriority).
+A declared value of the enum type [LogPriority](../reference.md#type-logpriority).
 
 **Flags**: R
 
@@ -69,7 +69,7 @@ At this priority and above, a stack trace will be included automatically along w
 ## ClassAttr: Log.INFO
 
 ### Description
-A declared value of the enum type [LogPriority](../main.md#type-logpriority).
+A declared value of the enum type [LogPriority](../reference.md#type-logpriority).
 
 **Flags**: R
 
@@ -99,7 +99,7 @@ Note that if the Developer Console is open, it will accumulate an unbounded numb
 ## ClassAttr: Log.ERROR
 
 ### Description
-A declared value of the enum type [LogPriority](../main.md#type-logpriority).
+A declared value of the enum type [LogPriority](../reference.md#type-logpriority).
 
 **Flags**: R
 
@@ -111,7 +111,7 @@ A common usage of [Class.getDefaultLogPriority](Class.md#classmethod-classgetdef
 
 ### Returns
 
-`[LogPriority](../main.md#type-logpriority)` — default priority for logging messages on this object.
+`[LogPriority](../reference.md#type-logpriority)` — default priority for logging messages on this object.
 
 ---
 ## ClassMethod: Log.isEnabledFor
@@ -126,7 +126,7 @@ NOTE: if there is no specific priority setting for a given category, the `Log.de
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | category | [String](#type-string) | false | — | category name |
-| priority | [LogPriority](../main.md#type-logpriority) | false | — | priority level to check |
+| priority | [LogPriority](../reference.md#type-logpriority) | false | — | priority level to check |
 
 ---
 ## ClassMethod: Log.getMessages
@@ -252,7 +252,7 @@ Retrieves the default priority of messages that will be visible.
 
 ### Returns
 
-`[LogPriority](../main.md#type-logpriority)` — default priority for which messages will be logged.
+`[LogPriority](../reference.md#type-logpriority)` — default priority for which messages will be logged.
 
 ---
 ## ClassMethod: Log.getStackTrace
@@ -284,7 +284,7 @@ Apply a batch a batch of priority settings, as a object mapping category names t
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| settings | [Object](../main.md#type-object) | false | — | priority settings for multiple categories |
+| settings | [Object](../reference.md#type-object) | false | — | priority settings for multiple categories |
 
 ---
 ## ClassMethod: Log.getLogPriorities
@@ -297,11 +297,11 @@ Get all priority settings as an object mapping category names to priority levels
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | object | [Class](#type-class)|[Instance Object](#type-instance-object) | true | — | Optional param to get priorities specific to some ISC class or instance. |
-| overridesOnly | [boolean](../main.md#type-boolean) | true | — | If this method is retrieving the priorities specific to logging for some class or instance, this parameter can be used to view only the overrides to the default log priorities on this object. |
+| overridesOnly | [boolean](../reference.md#type-boolean) | true | — | If this method is retrieving the priorities specific to logging for some class or instance, this parameter can be used to view only the overrides to the default log priorities on this object. |
 
 ### Returns
 
-`[Object](../main.md#type-object)` — priority settings
+`[Object](../reference.md#type-object)` — priority settings
 
 ---
 ## ClassMethod: Log.setDefaultPriority
@@ -313,7 +313,7 @@ Set the default priority of messages that will be visible.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| priority | [LogPriority](../main.md#type-logpriority) | false | — | priority level to set |
+| priority | [LogPriority](../reference.md#type-logpriority) | false | — | priority level to set |
 | object | [Class](#type-class)|[Instance Object](#type-instance-object) | true | — | Optional ISC class or instance - if passed the default priority will be set for logging occurring on the class or instance only. |
 
 ---
@@ -421,7 +421,7 @@ Call a second time with identical arguments to disable tracing.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| object | [Object](../main.md#type-object) | false | — | object to observe |
+| object | [Object](../reference.md#type-object) | false | — | object to observe |
 | methodName | [String](#type-string) | false | — | name of the method to observe |
 
 ### Groups
@@ -445,7 +445,7 @@ If there is no priority setting specific to this category, `null` will be return
 
 ### Returns
 
-`[LogPriority](../main.md#type-logpriority)` — priority setting
+`[LogPriority](../reference.md#type-logpriority)` — priority setting
 
 ---
 ## ClassMethod: Log.logInfo
@@ -475,7 +475,7 @@ A common usage of [Class.setLogPriority](Class.md#classmethod-classsetlogpriorit
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | category | [String](#type-string) | false | — | Category for which the log priority will be updated. If not all logs on this canvas will be logged at the priority passed in. |
-| priority | [LogPriority](../main.md#type-logpriority) | false | — | priority level |
+| priority | [LogPriority](../reference.md#type-logpriority) | false | — | priority level |
 
 ### See Also
 
@@ -530,7 +530,7 @@ A common usage of [Class.setDefaultLogPriority](Class.md#classmethod-classsetdef
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | category | [String](#type-string) | false | — | Category for which the log priority will be updated. If not all logs on this canvas will be logged at the priority passed in. |
-| priority | [LogPriority](../main.md#type-logpriority) | false | — | priority level |
+| priority | [LogPriority](../reference.md#type-logpriority) | false | — | priority level |
 
 ### See Also
 
@@ -548,7 +548,7 @@ Call a second time with identical arguments to disable tracing.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| object | [Object](../main.md#type-object) | false | — | object to observe |
+| object | [Object](../reference.md#type-object) | false | — | object to observe |
 | methodName | [String](#type-string) | false | — | name of the method to observe |
 
 ### Groups
@@ -568,7 +568,7 @@ After calling setPriority, any messages logged to the given category whose prior
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | category | [String](#type-string) | false | — | category name |
-| priority | [LogPriority](../main.md#type-logpriority) | false | — | priority level to set |
+| priority | [LogPriority](../reference.md#type-logpriority) | false | — | priority level to set |
 | object | [Class](#type-class)|[Instance Object](#type-instance-object) | true | — | Optional ISC class or instance - if passed the priority will be set for logging occurring on the class or instance only. |
 
 ### See Also

@@ -1,6 +1,6 @@
 # RPCResponse Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -11,7 +11,7 @@ Encapsulates an RPC response from the server. Instances of this class are automa
 
 ### See Also
 
-- [RPCRequest](../main.md#object-rpcrequest)
+- [RPCRequest](../reference.md#object-rpcrequest)
 - [Callbacks.RPCCallback](Callbacks.md#method-callbacksrpccallback)
 
 ---
@@ -27,7 +27,7 @@ Indicates that the login succeeded.
 
 ### See Also
 
-- [RPCRequest](../main.md#object-rpcrequest)
+- [RPCRequest](../reference.md#object-rpcrequest)
 
 **Flags**: R
 
@@ -45,7 +45,7 @@ Indicates that an uploaded file's size exceeded the maximum file size allowed.
 ### See Also
 
 - [RPCResponse.STATUS_FILE_REQUIRED_ERROR](#classattr-rpcresponsestatus_file_required_error)
-- [RPCRequest](../main.md#object-rpcrequest)
+- [RPCRequest](../reference.md#object-rpcrequest)
 
 **Flags**: R
 
@@ -62,7 +62,7 @@ Indicates that too many authentication attempts have been made and the server re
 
 ### See Also
 
-- [RPCRequest](../main.md#object-rpcrequest)
+- [RPCRequest](../reference.md#object-rpcrequest)
 
 **Flags**: R
 
@@ -79,7 +79,7 @@ Indicates a [Declarative Security](../kb_topics/declarativeSecurity.md#kb-topic-
 
 ### See Also
 
-- [RPCRequest](../main.md#object-rpcrequest)
+- [RPCRequest](../reference.md#object-rpcrequest)
 
 **Flags**: R
 
@@ -109,7 +109,7 @@ Indicates that the client attempted an update or remove operation without provid
 
 ### See Also
 
-- [RPCRequest](../main.md#object-rpcrequest)
+- [RPCRequest](../reference.md#object-rpcrequest)
 
 **Flags**: R
 
@@ -146,7 +146,7 @@ In Jetty, you can update or create war/WEB-INF/jetty-web.xml, adding a section l
 
 ### See Also
 
-- [RPCRequest](../main.md#object-rpcrequest)
+- [RPCRequest](../reference.md#object-rpcrequest)
 
 **Flags**: R
 
@@ -191,7 +191,7 @@ Indicates that the RPC has been intercepted by an authenticator that requires th
 
 ### See Also
 
-- [RPCRequest](../main.md#object-rpcrequest)
+- [RPCRequest](../reference.md#object-rpcrequest)
 
 **Flags**: R
 
@@ -209,7 +209,7 @@ Indicates that the browser is currently offline, and that we do not hold a cache
 
 ### See Also
 
-- [RPCRequest](../main.md#object-rpcrequest)
+- [RPCRequest](../reference.md#object-rpcrequest)
 
 **Flags**: R
 
@@ -228,7 +228,7 @@ See the error handling section in [RPCManager documentation](RPCManager.md#class
 
 ### See Also
 
-- [RPCRequest](../main.md#object-rpcrequest)
+- [RPCRequest](../reference.md#object-rpcrequest)
 
 **Flags**: R
 
@@ -245,7 +245,7 @@ Indicates a generic failure on the server. See the error handling section in [RP
 
 ### See Also
 
-- [RPCRequest](../main.md#object-rpcrequest)
+- [RPCRequest](../reference.md#object-rpcrequest)
 
 **Flags**: R
 
@@ -294,7 +294,7 @@ Indicates that the request was either never attempted or was rolled back, becaus
 
 ### See Also
 
-- [RPCRequest](../main.md#object-rpcrequest)
+- [RPCRequest](../reference.md#object-rpcrequest)
 
 **Flags**: R
 
@@ -358,7 +358,7 @@ Indicates a validation failure on the server. See the error handling section in 
 
 ### See Also
 
-- [RPCRequest](../main.md#object-rpcrequest)
+- [RPCRequest](../reference.md#object-rpcrequest)
 
 **Flags**: R
 
@@ -377,7 +377,7 @@ Applications do not directly set this status code, instead, to trigger the relog
 
 ### See Also
 
-- [RPCRequest](../main.md#object-rpcrequest)
+- [RPCRequest](../reference.md#object-rpcrequest)
 
 **Flags**: R
 
@@ -385,7 +385,7 @@ Applications do not directly set this status code, instead, to trigger the relog
 ## Attr: RPCResponse.clientContext
 
 ### Description
-The [RPCRequest.clientContext](RPCRequest.md#attr-rpcrequestclientcontext) object as set on the [RPCRequest](../main.md#object-rpcrequest).
+The [RPCRequest.clientContext](RPCRequest.md#attr-rpcrequestclientcontext) object as set on the [RPCRequest](../reference.md#object-rpcrequest).
 
 ### See Also
 
@@ -397,7 +397,7 @@ The [RPCRequest.clientContext](RPCRequest.md#attr-rpcrequestclientcontext) objec
 ## Attr: RPCResponse.httpResponseText
 
 ### Description
-The actual text of the HTTP response. Only available when the default [RPCTransport](../main.md#type-rpctransport) "xmlHttpRequest" transport is in use,
+The actual text of the HTTP response. Only available when the default [RPCTransport](../reference.md#type-rpctransport) "xmlHttpRequest" transport is in use,
 
 **Flags**: R
 
@@ -425,7 +425,7 @@ With or without the SmartClient server, the [relogin](../kb_topics/relogin.md#kb
 ### Description
 HTTP headers returned by the server as a map from header name to header value.
 
-Headers are available only when the default [RPCTransport](../main.md#type-rpctransport) "xmlHttpRequest" is in use, and browsers may limit access to headers for cross-domain requests or in other security-sensitive scenarios.
+Headers are available only when the default [RPCTransport](../reference.md#type-rpctransport) "xmlHttpRequest" is in use, and browsers may limit access to headers for cross-domain requests or in other security-sensitive scenarios.
 
 **Flags**: R
 
@@ -459,7 +459,7 @@ If you're using this attribute, you'll typically want to avoid the default error
 ## Attr: RPCResponse.transactionNum
 
 ### Description
-ID of the transaction sent to the server via [RPCManager.sendQueue](RPCManager.md#classmethod-rpcmanagersendqueue) containing the [RPCRequest](../main.md#object-rpcrequest) associated with this response.
+ID of the transaction sent to the server via [RPCManager.sendQueue](RPCManager.md#classmethod-rpcmanagersendqueue) containing the [RPCRequest](../reference.md#object-rpcrequest) associated with this response.
 
 **Flags**: R
 
@@ -467,6 +467,6 @@ ID of the transaction sent to the server via [RPCManager.sendQueue](RPCManager.m
 ## ClassMethod: RPCResponse.create
 
 ### Description
-RPCResponses shouldn't be created directly. Instances of this class are automatically created and optionally passed to you in the callback you specify as part of your [RPCRequest](../main.md#object-rpcrequest).
+RPCResponses shouldn't be created directly. Instances of this class are automatically created and optionally passed to you in the callback you specify as part of your [RPCRequest](../reference.md#object-rpcrequest).
 
 ---

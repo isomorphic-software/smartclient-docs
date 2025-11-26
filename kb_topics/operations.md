@@ -1,6 +1,6 @@
 # Operations Overview
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -25,7 +25,7 @@ A DataBound component supporting an interaction such as inline editing will auto
   
 **DataSource Operation Integration**  
   
-Integrating DataSource operations with an existing system is best approached by implementing the the 4 basic DataSource operations in terms of your existing object model or data store. With these 4 operations implemented, the entire range of user interactions supported by SmartClient [databinding-capable components](../main.md#interface-databoundcomponent) becomes applicable to your server. At that point authentication, authorization and other business rules can be layered on top.  
+Integrating DataSource operations with an existing system is best approached by implementing the the 4 basic DataSource operations in terms of your existing object model or data store. With these 4 operations implemented, the entire range of user interactions supported by SmartClient [databinding-capable components](../reference.md#interface-databoundcomponent) becomes applicable to your server. At that point authentication, authorization and other business rules can be layered on top.  
   
 **Built-in SQL Connectivity**  
   
@@ -66,7 +66,7 @@ Data Managers provide load-on-demand for datasets too large to be loaded on the 
 ### See Also
 
 - [RPCManager](../classes/RPCManager.md#class-rpcmanager)
-- [DataBoundComponent](../main.md#interface-databoundcomponent)
+- [DataBoundComponent](../reference.md#interface-databoundcomponent)
 - [dataSourceOperations](dataSourceOperations.md#kb-topic-datasource-operations)
 - [clientServerIntegration](clientServerIntegration.md#kb-topic-client-server-integration)
 - [DataSource.fetchData](../classes/DataSource.md#method-datasourcefetchdata)

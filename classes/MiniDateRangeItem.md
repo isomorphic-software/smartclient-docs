@@ -1,6 +1,6 @@
 # MiniDateRangeItem Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -17,7 +17,7 @@ Provides a compact interface for editing a date range, by providing a formatted,
 ### Description
 Base CSS class name for a form item's text box element.
 
-See [formItemStyling](../kb_topics/formItemStyling.md#kb-topic-formitem-styling) for an overview of formItem styling, and the [CompoundFormItem_skinning](../main.md#kb-topic-compoundformitem_skinning) discussion for special skinning considerations.
+See [formItemStyling](../kb_topics/formItemStyling.md#kb-topic-formitem-styling) for an overview of formItem styling, and the [CompoundFormItem_skinning](../reference.md#kb-topic-compoundformitem_skinning) discussion for special skinning considerations.
 
 If the `textBoxStyle` is changed at runtime, [updateState()](FormItem.md#method-formitemupdatestate) must be called to update the visual state of this item.
 
@@ -181,7 +181,7 @@ Note that a single "equals" criterion can also be passed. See [canEditCriterion(
 ### Description
 Returns the Criterion entered in the fields shown in the [MiniDateRangeItem.rangeDialog](#attr-minidaterangeitemrangedialog).
 
-If both dates are entered, a Criterion with an "and" [operator](../main.md#type-operatorid) and both "greaterOrEqual" and "lessOrEqual" sub-criteria will be returned. If either date is omitted, only the "greaterOrEqual" (from date) or "lessOrEqual" (to date) Criterion is returned.
+If both dates are entered, a Criterion with an "and" [operator](../reference.md#type-operatorid) and both "greaterOrEqual" and "lessOrEqual" sub-criteria will be returned. If either date is omitted, only the "greaterOrEqual" (from date) or "lessOrEqual" (to date) Criterion is returned.
 
 ### Returns
 
@@ -215,13 +215,13 @@ Setter for [MiniDateRangeItem.autoValidate](#attr-minidaterangeitemautovalidate)
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| autoValidate | [boolean](../main.md#type-boolean) | false | — | New auto-validate setting. |
+| autoValidate | [boolean](../reference.md#type-boolean) | false | — | New auto-validate setting. |
 
 ---
 ## Method: MiniDateRangeItem.getValue
 
 ### Description
-Retrieves the current value of this dateRangeItem. The return value is a [DateRange](../main_2.md#object-daterange) object that excludes start and end values if they aren't set.
+Retrieves the current value of this dateRangeItem. The return value is a [DateRange](../reference_2.md#object-daterange) object that excludes start and end values if they aren't set.
 
 ### Returns
 
@@ -245,7 +245,7 @@ Returns true if the specified criterion contains:
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — returns true if this criterion can be edited by this item
+`[boolean](../reference.md#type-boolean)` — returns true if this criterion can be edited by this item
 
 ### Groups
 
@@ -255,7 +255,7 @@ Returns true if the specified criterion contains:
 ## Method: MiniDateRangeItem.setValue
 
 ### Description
-Sets the value for this miniDateRangeItem. The value parameter is a [DateRange](../main_2.md#object-daterange) object that optionally includes both start and end values.
+Sets the value for this miniDateRangeItem. The value parameter is a [DateRange](../reference_2.md#object-daterange) object that optionally includes both start and end values.
 
 ### Parameters
 

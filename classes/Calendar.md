@@ -1,6 +1,6 @@
 # Calendar Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -13,7 +13,7 @@ The Calendar component provides several different ways for a user to view and ed
 
 **CalendarEvents**
 
-Events are represented as ordinary JavaScript Objects (see [CalendarEvent](../main.md#object-calendarevent)). The Calendar expects to be able to read and write a basic set of properties on events: name, startDate, endDate, description, etc, which can be stored under configurable property names (see eg [Calendar.startDateField](#attr-calendarstartdatefield)).
+Events are represented as ordinary JavaScript Objects (see [CalendarEvent](../reference.md#object-calendarevent)). The Calendar expects to be able to read and write a basic set of properties on events: name, startDate, endDate, description, etc, which can be stored under configurable property names (see eg [Calendar.startDateField](#attr-calendarstartdatefield)).
 
 Much like a [ListGrid](ListGrid_1.md#class-listgrid) manages it's ListGridRecords, the Calendar can either be passed an ordinary Array of CalendarEvents or can fetch data from a DataSource. When this is the case, if the DataSource does not contain fields with the configured property names, an attempt is made to auto-detect likely-looking fields from those that are present. To see logs indicating that this has happened, switch default logging preferences to INFO level in the Developer Console.
 
@@ -59,7 +59,7 @@ When [eventHeaderWrap](#attr-calendareventheaderwrap) is false and [showEventDes
 ## Attr: Calendar.cancelButton
 
 ### Description
-An [AutoChild](../main.md#type-autochild) of type [IButton](../main.md#class-ibutton), used to cancel editing of an event and close the [eventEditor](#attr-calendareventeditor).
+An [AutoChild](../reference.md#type-autochild) of type [IButton](../reference.md#class-ibutton), used to cancel editing of an event and close the [eventEditor](#attr-calendareventeditor).
 
 **Flags**: R
 
@@ -67,7 +67,7 @@ An [AutoChild](../main.md#type-autochild) of type [IButton](../main.md#class-ibu
 ## Attr: Calendar.dateEditingStyle
 
 ### Description
-Indicates the type of controls to use in event-windows. Valid values are those in the [DateEditingStyle](../main.md#type-dateeditingstyle) type.
+Indicates the type of controls to use in event-windows. Valid values are those in the [DateEditingStyle](../reference.md#type-dateeditingstyle) type.
 
 If unset, the editing style will be set to the field-type on the DataSource, if there is one. If there's no DataSource, it will be set to "date" if the [granularity](#attr-calendartimelinegranularity) is "day" or larger and "time" if granularity is "minute" or smaller, otherwise "datetime".
 
@@ -129,7 +129,7 @@ This property supports [dynamicCriteria](../kb_topics/dynamicCriteria.md#kb-topi
 ## Attr: Calendar.dataSource
 
 ### Description
-The DataSource that this component should bind to for default fields and for performing [DataSource requests](../main_2.md#object-dsrequest).
+The DataSource that this component should bind to for default fields and for performing [DataSource requests](../reference_2.md#object-dsrequest).
 
 Can be specified as either a DataSource instance or the String ID of a DataSource.
 
@@ -163,7 +163,7 @@ Note that when this property is false, single clicking the event canvas for an e
 ## Attr: Calendar.eventEditor
 
 ### Description
-An [AutoChild](../main.md#type-autochild) of type [DynamicForm](DynamicForm.md#class-dynamicform) which displays [event data](../main.md#object-calendarevent). This form is created within the [event editor layout](#attr-calendareventeditorlayout)
+An [AutoChild](../reference.md#type-autochild) of type [DynamicForm](DynamicForm.md#class-dynamicform) which displays [event data](../reference.md#object-calendarevent). This form is created within the [event editor layout](#attr-calendareventeditorlayout)
 
 **Flags**: R
 
@@ -221,7 +221,7 @@ The number of pixels to leave to the right of events so overlapping events can s
 ## Attr: Calendar.startDate
 
 ### Description
-The start date of the calendar [timeline view](../main.md#class-timeline). Has no effect in other views. If not specified, defaults to a timeline starting from the beginning of the current [timelineGranularity](#attr-calendartimelinegranularity) and spanning [a default of 20](#attr-calendardefaulttimelinecolumnspan) columns of that granularity.
+The start date of the calendar [timeline view](../reference.md#class-timeline). Has no effect in other views. If not specified, defaults to a timeline starting from the beginning of the current [timelineGranularity](#attr-calendartimelinegranularity) and spanning [a default of 20](#attr-calendardefaulttimelinecolumnspan) columns of that granularity.
 
 To set different start and [end](#attr-calendarenddate) dates after initial draw, see [setTimelineRange](#method-calendarsettimelinerange).
 
@@ -277,7 +277,7 @@ This setting can be overridden on each [event](CalendarEvent.md#attr-calendareve
 ## Attr: Calendar.lanes
 
 ### Description
-An array of [Lane](../main.md#object-lane) definitions that represent the rows of the [Calendar.timelineView](#attr-calendartimelineview), or the columns of the [Calendar.dayView](#attr-calendardayview) if [showDayLanes](#attr-calendarshowdaylanes) is true.
+An array of [Lane](../reference.md#object-lane) definitions that represent the rows of the [Calendar.timelineView](#attr-calendartimelineview), or the columns of the [Calendar.dayView](#attr-calendardayview) if [showDayLanes](#attr-calendarshowdaylanes) is true.
 
 **Flags**: IRW
 
@@ -407,7 +407,7 @@ The title for the [Save button](#attr-calendarsavebutton) in the [quick event di
 ## Attr: Calendar.timelineGranularity
 
 ### Description
-The granularity in which the [timelineView](#attr-calendartimelineview) will display events. Possible values are those available in the built-in [TimeUnit](../main_2.md#type-timeunit) type.
+The granularity in which the [timelineView](#attr-calendartimelineview) will display events. Possible values are those available in the built-in [TimeUnit](../reference_2.md#type-timeunit) type.
 
 **Flags**: IR
 
@@ -425,7 +425,7 @@ When [lane grouping](#attr-calendarcangrouplanes) is enabled, only fields that a
 ## Attr: Calendar.durationUnitField
 
 ### Description
-The name of the [durationUnit](CalendarEvent.md#attr-calendareventdurationunit) field on a [CalendarEvent](../main.md#object-calendarevent).
+The name of the [durationUnit](CalendarEvent.md#attr-calendareventdurationunit) field on a [CalendarEvent](../reference.md#object-calendarevent).
 
 ### Groups
 
@@ -433,7 +433,7 @@ The name of the [durationUnit](CalendarEvent.md#attr-calendareventdurationunit) 
 
 ### See Also
 
-- [CalendarEvent](../main.md#object-calendarevent)
+- [CalendarEvent](../reference.md#object-calendarevent)
 
 **Flags**: IR
 
@@ -483,7 +483,7 @@ This property will typically not be explicitly specified for databound Calendars
 
 ### See Also
 
-- [CalendarEvent](../main.md#object-calendarevent)
+- [CalendarEvent](../reference.md#object-calendarevent)
 
 **Flags**: IRW
 
@@ -491,7 +491,7 @@ This property will typically not be explicitly specified for databound Calendars
 ## Attr: Calendar.saveButton
 
 ### Description
-An [AutoChild](../main.md#type-autochild) of type [IButton](../main.md#class-ibutton), used to save an event from the [eventEditor](#attr-calendareventeditor).
+An [AutoChild](../reference.md#type-autochild) of type [IButton](../reference.md#class-ibutton), used to save an event from the [eventEditor](#attr-calendareventeditor).
 
 **Flags**: R
 
@@ -515,7 +515,7 @@ The name of the leading date field for each event. When this attribute and [Cale
 
 ### See Also
 
-- [CalendarEvent](../main.md#object-calendarevent)
+- [CalendarEvent](../reference.md#object-calendarevent)
 
 **Flags**: IR
 
@@ -588,7 +588,7 @@ Set to false to hide the [Next](#attr-calendarnextbutton) button.
 ## Attr: Calendar.removeButton
 
 ### Description
-An [AutoChild](../main.md#type-autochild) of type [IButton](../main.md#class-ibutton), used to permanently remove an event from the [eventEditor](#attr-calendareventeditor).
+An [AutoChild](../reference.md#type-autochild) of type [IButton](../reference.md#class-ibutton), used to permanently remove an event from the [eventEditor](#attr-calendareventeditor).
 
 **Flags**: R
 
@@ -634,7 +634,7 @@ Set to false to hide the [Add Event](#attr-calendaraddeventbutton) button.
 ## Attr: Calendar.addEventButton
 
 ### Description
-An [ImgButton](ImgButton.md#class-imgbutton) that appears in a Calendar's week/day/month views and offers an alternative way to create a new [event](../main.md#object-calendarevent).
+An [ImgButton](ImgButton.md#class-imgbutton) that appears in a Calendar's week/day/month views and offers an alternative way to create a new [event](../reference.md#object-calendarevent).
 
 **Flags**: IR
 
@@ -684,7 +684,7 @@ If true, the default, show a header cell for each day cell in the [month view](#
 ## Attr: Calendar.indicators
 
 ### Description
-An array of CalendarEvent instances representing instants in time, to be highlighted in [timeline views](#attr-calendartimelineview). Each indicator renders out as an [indicator canvas](../main.md#class-indicatorcanvas), a special, non-interactive subclass of [EventCanvas](EventCanvas.md#class-eventcanvas), which spans all lanes and draws behind any normal, interactive events in the zorder, but in front of any [zones](#attr-calendarzones). The default [style](#attr-calendarindicatorstylename) for these components renders them as thin vertical lines that span all lanes and have a hover but no title.
+An array of CalendarEvent instances representing instants in time, to be highlighted in [timeline views](#attr-calendartimelineview). Each indicator renders out as an [indicator canvas](../reference.md#class-indicatorcanvas), a special, non-interactive subclass of [EventCanvas](EventCanvas.md#class-eventcanvas), which spans all lanes and draws behind any normal, interactive events in the zorder, but in front of any [zones](#attr-calendarzones). The default [style](#attr-calendarindicatorstylename) for these components renders them as thin vertical lines that span all lanes and have a hover but no title.
 
 **Flags**: IRW
 
@@ -705,7 +705,7 @@ The name of the field used to override [Calendar.eventStyleName](#attr-calendare
 ## Attr: Calendar.timelineView
 
 ### Description
-[CalendarView](CalendarView.md#class-calendarview) used to display events in lanes in a horizontal [Timeline](../main.md#class-timeline) view.
+[CalendarView](CalendarView.md#class-calendarview) used to display events in lanes in a horizontal [Timeline](../reference.md#class-timeline) view.
 
 **Flags**: R
 
@@ -737,9 +737,9 @@ The title for the edit button in the quick [quick event dialog](#attr-calendarev
 ## Attr: Calendar.overlapSortSpecifiers
 
 ### Description
-A set of [sort-specifiers](../main_2.md#object-sortspecifier) for customizing the render order of events that overlap.
+A set of [sort-specifiers](../reference_2.md#object-sortspecifier) for customizing the render order of events that overlap.
 
-In [timelines](../main.md#class-timeline), this dictates the vertical rendering order of overlapped events in each [lane](../main.md#object-lane).
+In [timelines](../reference.md#class-timeline), this dictates the vertical rendering order of overlapped events in each [lane](../reference.md#object-lane).
 
 In [day](#attr-calendardayview) and [week](#attr-calendarweekview) views, it dictates the horizontal rendering order of overlapped events in each column or Lane.
 
@@ -769,7 +769,7 @@ The name of the view that should be visible initially by default.
 ## Attr: Calendar.canRemoveField
 
 ### Description
-Name of the field on each [CalendarEvent](../main.md#object-calendarevent) that determines whether an event shows a remove button.
+Name of the field on each [CalendarEvent](../reference.md#object-calendarevent) that determines whether an event shows a remove button.
 
 ### Groups
 
@@ -777,7 +777,7 @@ Name of the field on each [CalendarEvent](../main.md#object-calendarevent) that 
 
 ### See Also
 
-- [CalendarEvent](../main.md#object-calendarevent)
+- [CalendarEvent](../reference.md#object-calendarevent)
 
 **Flags**: IR
 
@@ -820,7 +820,7 @@ Only has an effect when [canEditEvents](#attr-calendarcaneditevents) is true.
 ## Attr: Calendar.eventEditorLayout
 
 ### Description
-An [AutoChild](../main.md#type-autochild) of type [Window](Window.md#class-window) that displays the full [event editor](#attr-calendareventeditor)
+An [AutoChild](../reference.md#type-autochild) of type [Window](Window.md#class-window) that displays the full [event editor](#attr-calendareventeditor)
 
 **Flags**: R
 
@@ -828,7 +828,7 @@ An [AutoChild](../main.md#type-autochild) of type [Window](Window.md#class-windo
 ## Attr: Calendar.eventOverlap
 
 ### Description
-When [Calendar.eventAutoArrange](#attr-calendareventautoarrange) is true, setting eventOverlap to true causes events that share timeslots to overlap each other by a percentage of their width, specified by [Calendar.eventOverlapPercent](#attr-calendareventoverlappercent). The default is true for Calendars and false for [Timelines](../main.md#class-timeline).
+When [Calendar.eventAutoArrange](#attr-calendareventautoarrange) is true, setting eventOverlap to true causes events that share timeslots to overlap each other by a percentage of their width, specified by [Calendar.eventOverlapPercent](#attr-calendareventoverlappercent). The default is true for Calendars and false for [Timelines](../reference.md#class-timeline).
 
 ### Groups
 
@@ -848,7 +848,7 @@ An [ImgButton](ImgButton.md#class-imgbutton) that appears above the various view
 ## Attr: Calendar.canResizeEvents
 
 ### Description
-Can [events](../main.md#object-calendarevent) be resized by dragging appropriate edges of the [canvas](EventCanvas.md#attr-eventcanvasverticalresize)? Only has an effect when both [canEditEvents](#attr-calendarcaneditevents) and [canDragEvents](#attr-calendarcandragevents) are true. Set this attribute to false to disallow drag-resizing.
+Can [events](../reference.md#object-calendarevent) be resized by dragging appropriate edges of the [canvas](EventCanvas.md#attr-eventcanvasverticalresize)? Only has an effect when both [canEditEvents](#attr-calendarcaneditevents) and [canDragEvents](#attr-calendarcandragevents) are true. Set this attribute to false to disallow drag-resizing.
 
 Always false when [showColumnLayouts](#attr-calendarshowcolumnlayouts) is true.
 
@@ -934,7 +934,7 @@ Used to show and hide the [month view](#attr-calendarmonthview) on devices with 
 ## Attr: Calendar.eventCanvas
 
 ### Description
-To display events in [day](#attr-calendardayview), [week](#attr-calendarweekview) and [timeline](#attr-calendartimelineview) views, the Calendar creates instances of [EventCanvas](EventCanvas.md#class-eventcanvas) for each event. Use the [AutoChild](../main.md#type-autochild) system to customize these canvases.
+To display events in [day](#attr-calendardayview), [week](#attr-calendarweekview) and [timeline](#attr-calendartimelineview) views, the Calendar creates instances of [EventCanvas](EventCanvas.md#class-eventcanvas) for each event. Use the [AutoChild](../reference.md#type-autochild) system to customize these canvases.
 
 **Flags**: A
 
@@ -1002,7 +1002,7 @@ The base name for the CSS class applied to event windows within calendars. This 
 ## Attr: Calendar.eventEditorButtons
 
 ### Description
-The list of buttons to include in the [Calendar.eventEditor](#attr-calendareventeditor). Entries can be the names of the builtin buttons, [saveButton](#attr-calendarsavebutton), [removeButton](#attr-calendarremovebutton) and [cancelButton](#attr-calendarcancelbutton), or the names of custom [autoChildren](../main.md#type-autochild) that have been defined on the Calendar instance, or widget instances that already exist.
+The list of buttons to include in the [Calendar.eventEditor](#attr-calendareventeditor). Entries can be the names of the builtin buttons, [saveButton](#attr-calendarsavebutton), [removeButton](#attr-calendarremovebutton) and [cancelButton](#attr-calendarcancelbutton), or the names of custom [autoChildren](../reference.md#type-autochild) that have been defined on the Calendar instance, or widget instances that already exist.
 
 The default is to show the builtin buttons.
 
@@ -1012,7 +1012,7 @@ The default is to show the builtin buttons.
 ## Attr: Calendar.eventDialog
 
 ### Description
-An [AutoChild](../main.md#type-autochild) of type [Window](Window.md#class-window) that displays a quick event entry form in a popup window.
+An [AutoChild](../reference.md#type-autochild) of type [Window](Window.md#class-window) that displays a quick event entry form in a popup window.
 
 **Flags**: R
 
@@ -1072,7 +1072,7 @@ The content of the hover is determined by a call to [Calendar.getCellHoverHTML](
 ## Attr: Calendar.headerLevels
 
 ### Description
-Configures the levels of [headers](../main_2.md#object-headerlevel) shown above the event area, and their time units.
+Configures the levels of [headers](../reference_2.md#object-headerlevel) shown above the event area, and their time units.
 
 Header levels are provided from the top down, so the first header level should be the largest time unit and the last one the smallest. The smallest is then used for the actual field-headers.
 
@@ -1102,7 +1102,7 @@ The hours of the workday can be customized for particular dates by providing imp
 ## Attr: Calendar.canEditField
 
 ### Description
-Name of the field on each [CalendarEvent](../main.md#object-calendarevent) that determines whether it can be edited in the [event editor](#attr-calendareventeditor). Note that an event with `canEdit` set to true can also have [canDrag](#attr-calendarcandrageventfield) or [canResize](#attr-calendarcanresizeeventfield) set to false, which would still allow editing, but not via drag operations.
+Name of the field on each [CalendarEvent](../reference.md#object-calendarevent) that determines whether it can be edited in the [event editor](#attr-calendareventeditor). Note that an event with `canEdit` set to true can also have [canDrag](#attr-calendarcandrageventfield) or [canResize](#attr-calendarcanresizeeventfield) set to false, which would still allow editing, but not via drag operations.
 
 ### Groups
 
@@ -1110,7 +1110,7 @@ Name of the field on each [CalendarEvent](../main.md#object-calendarevent) that 
 
 ### See Also
 
-- [CalendarEvent](../main.md#object-calendarevent)
+- [CalendarEvent](../reference.md#object-calendarevent)
 
 **Flags**: IR
 
@@ -1198,7 +1198,7 @@ The title for the [Calendar.descriptionField](#attr-calendardescriptionfield) fi
 ## Attr: Calendar.canResizeEventField
 
 ### Description
-Name of the field on each [CalendarEvent](../main.md#object-calendarevent) that determines whether an event can be resized by dragging.
+Name of the field on each [CalendarEvent](../reference.md#object-calendarevent) that determines whether an event can be resized by dragging.
 
 ### Groups
 
@@ -1206,7 +1206,7 @@ Name of the field on each [CalendarEvent](../main.md#object-calendarevent) that 
 
 ### See Also
 
-- [CalendarEvent](../main.md#object-calendarevent)
+- [CalendarEvent](../reference.md#object-calendarevent)
 
 **Flags**: IR
 
@@ -1242,7 +1242,7 @@ When using the Next and Previous arrows to scroll a Timeline, this is the number
 ## Attr: Calendar.canGroupLanes
 
 ### Description
-If true, allows the lanes in a Timeline to be grouped by providing a value for [laneGroupByField](#attr-calendarlanegroupbyfield). The fields available for grouping on are those defined as [lane fields](#attr-calendarlanefields). Since these are definitions for [normal fields](../main_2.md#object-listgridfield), you can choose to [hide](ListGridField.md#method-listgridfieldshowif) the field in the timeline, but still have it available for grouping.
+If true, allows the lanes in a Timeline to be grouped by providing a value for [laneGroupByField](#attr-calendarlanegroupbyfield). The fields available for grouping on are those defined as [lane fields](#attr-calendarlanefields). Since these are definitions for [normal fields](../reference_2.md#object-listgridfield), you can choose to [hide](ListGridField.md#method-listgridfieldshowif) the field in the timeline, but still have it available for grouping.
 
 **Flags**: IRW
 
@@ -1330,7 +1330,7 @@ The minimum height for Lanes in a Timeline. When events have a [fixed height](#a
 ## Attr: Calendar.eventEditorButtonLayout
 
 ### Description
-An [AutoChild](../main.md#type-autochild) of type [HLayout](../main.md#class-hlayout) which houses the [Save](#attr-calendarsavebutton), [Remove](#attr-calendarremovebutton) and [Cancel](#attr-calendarcancelbutton) buttons in the [eventEditor](#attr-calendareventeditor).
+An [AutoChild](../reference.md#type-autochild) of type [HLayout](../reference.md#class-hlayout) which houses the [Save](#attr-calendarsavebutton), [Remove](#attr-calendarremovebutton) and [Cancel](#attr-calendarcancelbutton) buttons in the [eventEditor](#attr-calendareventeditor).
 
 **Flags**: R
 
@@ -1348,7 +1348,7 @@ Has no effect when [showColumnLayouts](#attr-calendarshowcolumnlayouts) is true.
 ## Attr: Calendar.weekPrefix
 
 ### Description
-The text to appear before the week number in the title of [week-based](../main_2.md#type-timeunit) [HeaderLevel](../main_2.md#object-headerlevel)s when this calendar is showing a timeline.
+The text to appear before the week number in the title of [week-based](../reference_2.md#type-timeunit) [HeaderLevel](../reference_2.md#object-headerlevel)s when this calendar is showing a timeline.
 
 ### Groups
 
@@ -1381,7 +1381,7 @@ Note that row-heights will not shrink below the [Calendar.minRowHeight](#attr-ca
 ## Attr: Calendar.sublaneNameField
 
 ### Description
-The name of the field which will determine the [sublane](Lane.md#attr-lanesublanes) in which this event will be displayed, within its parent Lane, in [Timeline](../main.md#class-timeline)s and in the [day view](#attr-calendardayview), if [Calendar.showDayLanes](#attr-calendarshowdaylanes) is true.
+The name of the field which will determine the [sublane](Lane.md#attr-lanesublanes) in which this event will be displayed, within its parent Lane, in [Timeline](../reference.md#class-timeline)s and in the [day view](#attr-calendardayview), if [Calendar.showDayLanes](#attr-calendarshowdaylanes) is true.
 
 ### Groups
 
@@ -1497,7 +1497,7 @@ The base name for the CSS class applied to the layouts that show [long-events](C
 ## Attr: Calendar.nameField
 
 ### Description
-The name of the name field on a [CalendarEvent](../main.md#object-calendarevent).
+The name of the name field on a [CalendarEvent](../reference.md#object-calendarevent).
 
 ### Groups
 
@@ -1505,7 +1505,7 @@ The name of the name field on a [CalendarEvent](../main.md#object-calendarevent)
 
 ### See Also
 
-- [CalendarEvent](../main.md#object-calendarevent)
+- [CalendarEvent](../reference.md#object-calendarevent)
 
 **Flags**: IR
 
@@ -1533,7 +1533,7 @@ When set to true, causes [lanes](#attr-calendarlanes) to be sub-divided accordin
 ## Attr: Calendar.allDayField
 
 ### Description
-The name of the field on a [CalendarEvent](../main.md#object-calendarevent) which indicates an event should fill the whole day. Such events are displayed in a separate [long-events layout](CalendarView.md#attr-calendarviewlongeventslayout), which appears beneath the headers in the [week](#attr-calendarweekview) and [day](#attr-calendardayview) views and does not scroll with the main body. In the [month](#attr-calendarmonthview) view, these layouts appear beneath the headers for each week, and very long events might wrap from one week to the next.
+The name of the field on a [CalendarEvent](../reference.md#object-calendarevent) which indicates an event should fill the whole day. Such events are displayed in a separate [long-events layout](CalendarView.md#attr-calendarviewlongeventslayout), which appears beneath the headers in the [week](#attr-calendarweekview) and [day](#attr-calendardayview) views and does not scroll with the main body. In the [month](#attr-calendarmonthview) view, these layouts appear beneath the headers for each week, and very long events might wrap from one week to the next.
 
 ### Groups
 
@@ -1541,7 +1541,7 @@ The name of the field on a [CalendarEvent](../main.md#object-calendarevent) whic
 
 ### See Also
 
-- [CalendarEvent](../main.md#object-calendarevent)
+- [CalendarEvent](../reference.md#object-calendarevent)
 
 **Flags**: IR
 
@@ -1601,7 +1601,7 @@ The content of the hover is determined by a call to [Calendar.getCellHoverHTML](
 ## Attr: Calendar.canDragEventField
 
 ### Description
-Name of the field on each [CalendarEvent](../main.md#object-calendarevent) that determines whether an [EventCanvas](EventCanvas.md#class-eventcanvas) can be moved or resized by dragging with the mouse. Note that [canEditEvents](#attr-calendarcaneditevents) must be true for dragging to be allowed.
+Name of the field on each [CalendarEvent](../reference.md#object-calendarevent) that determines whether an [EventCanvas](EventCanvas.md#class-eventcanvas) can be moved or resized by dragging with the mouse. Note that [canEditEvents](#attr-calendarcaneditevents) must be true for dragging to be allowed.
 
 ### Groups
 
@@ -1609,7 +1609,7 @@ Name of the field on each [CalendarEvent](../main.md#object-calendarevent) that 
 
 ### See Also
 
-- [CalendarEvent](../main.md#object-calendarevent)
+- [CalendarEvent](../reference.md#object-calendarevent)
 
 **Flags**: IR
 
@@ -1668,7 +1668,7 @@ The title for the Date-field in the [eventEditor](#method-calendarshoweventedito
 ## Attr: Calendar.startDateField
 
 ### Description
-The name of the start date field on a [CalendarEvent](../main.md#object-calendarevent).
+The name of the start date field on a [CalendarEvent](../reference.md#object-calendarevent).
 
 ### Groups
 
@@ -1676,7 +1676,7 @@ The name of the start date field on a [CalendarEvent](../main.md#object-calendar
 
 ### See Also
 
-- [CalendarEvent](../main.md#object-calendarevent)
+- [CalendarEvent](../reference.md#object-calendarevent)
 
 **Flags**: IR
 
@@ -1684,7 +1684,7 @@ The name of the start date field on a [CalendarEvent](../main.md#object-calendar
 ## Attr: Calendar.durationField
 
 ### Description
-The name of the [duration](CalendarEvent.md#attr-calendareventduration) field on a [CalendarEvent](../main.md#object-calendarevent).
+The name of the [duration](CalendarEvent.md#attr-calendareventduration) field on a [CalendarEvent](../reference.md#object-calendarevent).
 
 ### Groups
 
@@ -1692,7 +1692,7 @@ The name of the [duration](CalendarEvent.md#attr-calendareventduration) field on
 
 ### See Also
 
-- [CalendarEvent](../main.md#object-calendarevent)
+- [CalendarEvent](../reference.md#object-calendarevent)
 
 **Flags**: IR
 
@@ -1727,7 +1727,7 @@ If this calendar has a [dataSource](DataBoundComponent.md#attr-databoundcomponen
 ## Attr: Calendar.canResizeTimelineEvents
 
 ### Description
-Can [Timeline](../main.md#class-timeline) events be stretched by their left and right edges?
+Can [Timeline](../reference.md#class-timeline) events be stretched by their left and right edges?
 
 **Deprecated**
 
@@ -1755,7 +1755,7 @@ If set, and [showWorkday](#attr-calendarshowworkday) is true, automatically scro
 ## Attr: Calendar.canEditSublaneField
 
 ### Description
-Name of the field on each [CalendarEvent](../main.md#object-calendarevent) that determines whether that event can be moved between individual [sublanes](Lane.md#attr-lanesublanes) in a [Lane](../main.md#object-lane).
+Name of the field on each [CalendarEvent](../reference.md#object-calendarevent) that determines whether that event can be moved between individual [sublanes](Lane.md#attr-lanesublanes) in a [Lane](../reference.md#object-lane).
 
 ### Groups
 
@@ -1763,7 +1763,7 @@ Name of the field on each [CalendarEvent](../main.md#object-calendarevent) that 
 
 ### See Also
 
-- [CalendarEvent](../main.md#object-calendarevent)
+- [CalendarEvent](../reference.md#object-calendarevent)
 
 **Flags**: IR
 
@@ -2156,7 +2156,7 @@ The default name for new [long-events](#attr-calendarallowlongevents).
 ## Attr: Calendar.eventWindowStyleField
 
 ### Description
-The name of the field used to override [Calendar.eventWindowStyle](#attr-calendareventwindowstyle) for an individual [CalendarEvent](../main.md#object-calendarevent). See [CalendarEvent.eventWindowStyle](CalendarEvent.md#attr-calendareventeventwindowstyle).
+The name of the field used to override [Calendar.eventWindowStyle](#attr-calendareventwindowstyle) for an individual [CalendarEvent](../reference.md#object-calendarevent). See [CalendarEvent.eventWindowStyle](CalendarEvent.md#attr-calendareventeventwindowstyle).
 
 ### Groups
 
@@ -2179,7 +2179,7 @@ Set to false to hide the [Calendar.datePickerButton](#attr-calendardatepickerbut
 ## Attr: Calendar.canEditLaneField
 
 ### Description
-Name of the field on each [CalendarEvent](../main.md#object-calendarevent) that determines whether that event can be moved between lanes.
+Name of the field on each [CalendarEvent](../reference.md#object-calendarevent) that determines whether that event can be moved between lanes.
 
 ### Groups
 
@@ -2187,7 +2187,7 @@ Name of the field on each [CalendarEvent](../main.md#object-calendarevent) that 
 
 ### See Also
 
-- [CalendarEvent](../main.md#object-calendarevent)
+- [CalendarEvent](../reference.md#object-calendarevent)
 
 **Flags**: IR
 
@@ -2203,7 +2203,7 @@ If true, lanes can be reordered by dragging their [laneFields](#attr-calendarlan
 ## Attr: Calendar.laneNameField
 
 ### Description
-The name of the field which will determine the [lane](#attr-calendarlanes) in which a given event will be displayed in [Timeline](../main.md#class-timeline)s and in the [day view](#attr-calendardayview), if [Calendar.showDayLanes](#attr-calendarshowdaylanes) is true.
+The name of the field which will determine the [lane](#attr-calendarlanes) in which a given event will be displayed in [Timeline](../reference.md#class-timeline)s and in the [day view](#attr-calendardayview), if [Calendar.showDayLanes](#attr-calendarshowdaylanes) is true.
 
 ### Groups
 
@@ -2211,7 +2211,7 @@ The name of the field which will determine the [lane](#attr-calendarlanes) in wh
 
 ### See Also
 
-- [CalendarEvent](../main.md#object-calendarevent)
+- [CalendarEvent](../reference.md#object-calendarevent)
 
 **Flags**: IR
 
@@ -2247,7 +2247,7 @@ The name of the trailing date field for each event. When this attribute and [Cal
 
 ### See Also
 
-- [CalendarEvent](../main.md#object-calendarevent)
+- [CalendarEvent](../reference.md#object-calendarevent)
 
 **Flags**: IR
 
@@ -2255,7 +2255,7 @@ The name of the trailing date field for each event. When this attribute and [Cal
 ## Attr: Calendar.showDayLanes
 
 ### Description
-If set to true, the [day view](#attr-calendardayview) uses [Calendar.lanes](#attr-calendarlanes) to render multiple vertical "lanes" within the day, very much like a vertical [Timeline](../main.md#class-timeline).
+If set to true, the [day view](#attr-calendardayview) uses [Calendar.lanes](#attr-calendarlanes) to render multiple vertical "lanes" within the day, very much like a vertical [Timeline](../reference.md#class-timeline).
 
 Day lanes are useful for showing events for various entities on the same day - agendas for various staff members, for example, or delivery schedules for a fleet of trucks.
 
@@ -2275,7 +2275,7 @@ When set to true, allows events to be managed by duration, as well as by end dat
 
 ### See Also
 
-- [CalendarEvent](../main.md#object-calendarevent)
+- [CalendarEvent](../reference.md#object-calendarevent)
 
 **Flags**: IRW
 
@@ -2358,7 +2358,7 @@ The content of the hover is determined by a call to [Calendar.getDragHoverHTML](
 ## Attr: Calendar.zones
 
 ### Description
-An array of CalendarEvent instances representing pre-defined periods of time to be highlighted in [timelines](#attr-calendartimelineview) and in [day](#attr-calendardayview) or [week](#attr-calendarweekview) views. Each zone renders out a [zone canvas](../main.md#class-zonecanvas), a special, non-interactive subclass of [EventCanvas](EventCanvas.md#class-eventcanvas), which draws behind any normal, interactive events in the zorder.
+An array of CalendarEvent instances representing pre-defined periods of time to be highlighted in [timelines](#attr-calendartimelineview) and in [day](#attr-calendardayview) or [week](#attr-calendarweekview) views. Each zone renders out a [zone canvas](../reference.md#class-zonecanvas), a special, non-interactive subclass of [EventCanvas](EventCanvas.md#class-eventcanvas), which draws behind any normal, interactive events in the zorder.
 
 In timelines, a `zone` with a [lane-field](#attr-calendarlanenamefield) set will fill that lane vertically - otherwise, it will span all rows vertically. In a DayView showing vertical [day-lanes](#attr-calendarshowdaylanes), a `zone` with a lane-field set will span its date-column horizontally - otherwise, it will span all columns horizontally. In other vertical views, zones span only the time-slots covered by their dates. In a week-view, for example, a Zone from 12 noon on Monday to 1pm on Friday will only cover those time-slots on each of the days.
 
@@ -2384,7 +2384,7 @@ The amount of space available in [long-event layouts](CalendarView.md#attr-calen
 ## Attr: Calendar.dateFormatter
 
 ### Description
-Date formatter for displaying events. Default is to use the system-wide default short date format, configured via [DateUtil.setShortDisplayFormat](DateUtil.md#classmethod-dateutilsetshortdisplayformat). Specify any valid [DateDisplayFormat](../main.md#type-datedisplayformat).
+Date formatter for displaying events. Default is to use the system-wide default short date format, configured via [DateUtil.setShortDisplayFormat](DateUtil.md#classmethod-dateutilsetshortdisplayformat). Specify any valid [DateDisplayFormat](../reference.md#type-datedisplayformat).
 
 **Flags**: IRW
 
@@ -2420,7 +2420,7 @@ When [Calendar.showOtherDays](#attr-calendarshowotherdays) is true, this attribu
 ## Attr: Calendar.dateLabel
 
 ### Description
-The [AutoChild](../main.md#type-autochild) [Label](Label.md#class-label) used to display the current date or range above the selected calendar view.
+The [AutoChild](../reference.md#type-autochild) [Label](Label.md#class-label) used to display the current date or range above the selected calendar view.
 
 **Flags**: IR
 
@@ -2428,7 +2428,7 @@ The [AutoChild](../main.md#type-autochild) [Label](Label.md#class-label) used to
 ## Attr: Calendar.dataFetchMode
 
 ### Description
-How to fetch and manage records retrieve from the server. See [FetchMode](../main_2.md#type-fetchmode).
+How to fetch and manage records retrieve from the server. See [FetchMode](../reference_2.md#type-fetchmode).
 
 This setting only applies to the [ResultSet](ResultSet.md#class-resultset) automatically created by calling [fetchData()](ListGrid_2.md#method-listgridfetchdata). If a pre-existing ResultSet is passed to setData() instead, it's existing setting for [ResultSet.fetchMode](ResultSet.md#attr-resultsetfetchmode) applies.
 
@@ -2462,7 +2462,7 @@ The title for the [day view](#attr-calendardayview).
 ## Attr: Calendar.descriptionField
 
 ### Description
-The name of the description field on a [CalendarEvent](../main.md#object-calendarevent).
+The name of the description field on a [CalendarEvent](../reference.md#object-calendarevent).
 
 ### Groups
 
@@ -2520,7 +2520,7 @@ The default is true - if set to false, the header area is [fixed](#attr-calendar
 ## Attr: Calendar.controlsBar
 
 ### Description
-An [HLayout](../main.md#class-hlayout) shown above the Calendar views and displaying a set of controls for interacting with the current view - namely, the [next](#attr-calendarnextbutton), [previous](#attr-calendarpreviousbutton) and [add](#attr-calendaraddeventbutton) buttons, the [date label](#attr-calendardatelabel) and the [date-picker](#attr-calendardatepickerbutton) icon.
+An [HLayout](../reference.md#class-hlayout) shown above the Calendar views and displaying a set of controls for interacting with the current view - namely, the [next](#attr-calendarnextbutton), [previous](#attr-calendarpreviousbutton) and [add](#attr-calendaraddeventbutton) buttons, the [date label](#attr-calendardatelabel) and the [date-picker](#attr-calendardatepickerbutton) icon.
 
 **Flags**: IR
 
@@ -2628,7 +2628,7 @@ If set to true, enables the auto-arrangement of events that share time in the ca
 ## Attr: Calendar.eventCanvasHResizer
 
 ### Description
-The resizer image that snaps to the left and right edges of an editable event canvas in a [Timeline](../main.md#class-timeline), allowing it to be resized horizontally by dragging with the mouse.
+The resizer image that snaps to the left and right edges of an editable event canvas in a [Timeline](../reference.md#class-timeline), allowing it to be resized horizontally by dragging with the mouse.
 
 **Flags**: A
 
@@ -2636,7 +2636,7 @@ The resizer image that snaps to the left and right edges of an editable event ca
 ## Attr: Calendar.endDateField
 
 ### Description
-The name of the end date field on a [CalendarEvent](../main.md#object-calendarevent).
+The name of the end date field on a [CalendarEvent](../reference.md#object-calendarevent).
 
 ### Groups
 
@@ -2644,7 +2644,7 @@ The name of the end date field on a [CalendarEvent](../main.md#object-calendarev
 
 ### See Also
 
-- [CalendarEvent](../main.md#object-calendarevent)
+- [CalendarEvent](../reference.md#object-calendarevent)
 
 **Flags**: IR
 
@@ -2762,7 +2762,7 @@ Default implementation will display a list of the events occurring on the date t
 
 ### Returns
 
-`[HTMLString](../main.md#type-htmlstring)` — HTML string to display
+`[HTMLString](../reference.md#type-htmlstring)` — HTML string to display
 
 ---
 ## Method: Calendar.updateEventCanvasComponent
@@ -2814,7 +2814,7 @@ Returns the text to be displayed in a [hover](Canvas.md#attr-canvasshowhover) wh
 
 ### Returns
 
-`[HTMLString](../main.md#type-htmlstring)` — the HTML to display in the hover for this longEventsLayout
+`[HTMLString](../reference.md#type-htmlstring)` — the HTML to display in the hover for this longEventsLayout
 
 ---
 ## Method: Calendar.getSublaneEvents
@@ -2844,7 +2844,7 @@ Fires whenever the user changes the current date, including picking a specific d
 ## Method: Calendar.getSublane
 
 ### Description
-Returns the [sublane](Lane.md#attr-lanesublanes) with the passed name, from the [lane](../main.md#object-lane) with the passed name, in the passed view.
+Returns the [sublane](Lane.md#attr-lanesublanes) with the passed name, from the [lane](../reference.md#object-lane) with the passed name, in the passed view.
 
 ### Parameters
 
@@ -2868,7 +2868,7 @@ Setter for updating [Calendar.hideUnusedLanes](#attr-calendarhideunusedlanes) af
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| hideUnusedEvents | [boolean](../main.md#type-boolean) | false | — | whether to hide unused lanes |
+| hideUnusedEvents | [boolean](../reference.md#type-boolean) | false | — | whether to hide unused lanes |
 
 ---
 ## Method: Calendar.selectSingleEvent
@@ -2890,14 +2890,14 @@ Selects a single event in the current view, showing it in a selected style and d
 ## Method: Calendar.getEventLength
 
 ### Description
-Returns the length of the passed [event](../main.md#object-calendarevent) in the passed [unit](../main_2.md#type-timeunit). If `unit` isn't passed, returns the length of the event in milliseconds.
+Returns the length of the passed [event](../reference.md#object-calendarevent) in the passed [unit](../reference_2.md#type-timeunit). If `unit` isn't passed, returns the length of the event in milliseconds.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | event | [CalendarEvent](#type-calendarevent) | false | — | the event to get the length of |
-| unit | [TimeUnit](../main_2.md#type-timeunit) | true | — | the time unit to return the length in, milliseconds if not passed |
+| unit | [TimeUnit](../reference_2.md#type-timeunit) | true | — | the time unit to return the length in, milliseconds if not passed |
 
 ---
 ## Method: Calendar.removeZone
@@ -2905,7 +2905,7 @@ Returns the length of the passed [event](../main.md#object-calendarevent) in the
 ### Description
 Removes a [zone](#attr-calendarzones) from the calendar.
 
-Accepts either a [zone object](../main.md#object-calendarevent) or a string that represents the [name](CalendarEvent.md#attr-calendareventname) of a zone.
+Accepts either a [zone object](../reference.md#object-calendarevent) or a string that represents the [name](CalendarEvent.md#attr-calendareventname) of a zone.
 
 ### Parameters
 
@@ -2919,7 +2919,7 @@ Accepts either a [zone object](../main.md#object-calendarevent) or a string that
 ### Description
 Reset the resolution, the header levels and scrollable range, of the timeline view.
 
-`headerLevels` specifies the array of [headers](../main_2.md#object-headerlevel) to show above the timeline, and the `unit` and `unitCount` parameters dictate the scrollable range (eg, passing "week" and 6 will create a timeline with a scrollable range of six weeks, irrespective of the number of columns that requires, according to the [granularity](#attr-calendartimelinegranularity)).
+`headerLevels` specifies the array of [headers](../reference_2.md#object-headerlevel) to show above the timeline, and the `unit` and `unitCount` parameters dictate the scrollable range (eg, passing "week" and 6 will create a timeline with a scrollable range of six weeks, irrespective of the number of columns that requires, according to the [granularity](#attr-calendartimelinegranularity)).
 
 If the optional `granularityPerColumn` parameter is passed, each column will span that number of units of the granularity, which is determined from the unit of the innermost of the passed headerLevels. For example, to show a span of 12 hours with inner columns that each span 15 minutes, you could pass "hour" and "minute" -based headerLevels, unit and unitCount values of "hour" and 12 respectively, and granularityPerColumn of 15.
 
@@ -2928,9 +2928,9 @@ If the optional `granularityPerColumn` parameter is passed, each column will spa
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | headerLevels | [Array of HeaderLevel](#type-array-of-headerlevel) | false | — | the header levels to show in the timeline |
-| unit | [TimeUnit](../main_2.md#type-timeunit) | false | — | the time unit to use when calculating the range of the timeline |
-| unitCount | [Integer](../main_2.md#type-integer) | false | — | the count of the passed unit that the timeline should span |
-| granularityPerColumn | [Integer](../main_2.md#type-integer) | true | — | how many units of the granularity (the unit of the innermost headerLevel) should each column span? The default is 1. |
+| unit | [TimeUnit](../reference_2.md#type-timeunit) | false | — | the time unit to use when calculating the range of the timeline |
+| unitCount | [Integer](../reference_2.md#type-integer) | false | — | the count of the passed unit that the timeline should span |
+| granularityPerColumn | [Integer](../reference_2.md#type-integer) | true | — | how many units of the granularity (the unit of the innermost headerLevel) should each column span? The default is 1. |
 
 ---
 ## Method: Calendar.getPeriodStartDate
@@ -2952,7 +2952,7 @@ Returns the start of the selected week or month depending on the current calenda
 ## Method: Calendar.showNewEventDialog
 
 ### Description
-Open the Quick Event dialog to begin editing a new [event](../main.md#object-calendarevent).
+Open the Quick Event dialog to begin editing a new [event](../reference.md#object-calendarevent).
 
 If passed, the event parameter is used as defaults for the new event - in addition, the event's [startDate](#attr-calendarstartdatefield), and its [lane](#attr-calendarlanenamefield), for timeline events, are used to calculate the display location for the dialog.
 
@@ -2999,7 +2999,7 @@ Implement this method to intercept the automatic removal of data. You can return
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — false to cancel the removal
+`[boolean](../reference.md#type-boolean)` — false to cancel the removal
 
 ### Groups
 
@@ -3042,13 +3042,13 @@ Returns the text to be displayed in a [hover](Canvas.md#attr-canvasshowhover) wh
 
 ### Returns
 
-`[HTMLString](../main.md#type-htmlstring)` — the HTML to display in the header of an event canvas
+`[HTMLString](../reference.md#type-htmlstring)` — the HTML to display in the header of an event canvas
 
 ---
 ## Method: Calendar.getEventCanvasMenuItems
 
 ### Description
-If this method returns a value, it is expected to return an array of [items](../main_2.md#object-menuitem) applicable to the passed canvas and its event. If an array with valid entries is returned, the rollover [context button](#attr-calendareventcanvascontextbutton) is shown for the passed canvas.
+If this method returns a value, it is expected to return an array of [items](../reference_2.md#object-menuitem) applicable to the passed canvas and its event. If an array with valid entries is returned, the rollover [context button](#attr-calendareventcanvascontextbutton) is shown for the passed canvas.
 
 ### Parameters
 
@@ -3074,7 +3074,7 @@ Should a component be applied to the passed [canvas](EventCanvas.md#class-eventc
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — boolean
+`[boolean](../reference.md#type-boolean)` — boolean
 
 ### See Also
 
@@ -3131,7 +3131,7 @@ Called when an event is moved via dragging by a user. Return false to disallow t
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — return false to disallow the move.
+`[boolean](../reference.md#type-boolean)` — return false to disallow the move.
 
 ### Groups
 
@@ -3150,13 +3150,13 @@ When [getDateHTML](#method-calendargetdatehtml) returns a value, this method ret
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | date | [Date](#type-date) | false | — | the date to get the cell-alignment for |
-| rowNum | [Integer](../main_2.md#type-integer) | false | — | the row number containing the date to get the cell-alignment for |
-| colNum | [Integer](../main_2.md#type-integer) | false | — | the column number containing the date to get the cell-alignment for |
+| rowNum | [Integer](../reference_2.md#type-integer) | false | — | the row number containing the date to get the cell-alignment for |
+| colNum | [Integer](../reference_2.md#type-integer) | false | — | the column number containing the date to get the cell-alignment for |
 | view | [CalendarView](#type-calendarview) | false | — | the relevant CalendarView |
 
 ### Returns
 
-`[HTMLString](../main.md#type-htmlstring)` — cell-alignment for content in the cell with the passed date and rowNum/colNum
+`[HTMLString](../reference.md#type-htmlstring)` — cell-alignment for content in the cell with the passed date and rowNum/colNum
 
 ### See Also
 
@@ -3169,7 +3169,7 @@ When [getDateHTML](#method-calendargetdatehtml) returns a value, this method ret
 ## Method: Calendar.getLane
 
 ### Description
-Returns the [lane](../main.md#object-lane) with the passed name, in the passed view
+Returns the [lane](../reference.md#object-lane) with the passed name, in the passed view
 
 ### Parameters
 
@@ -3186,14 +3186,14 @@ Returns the [lane](../main.md#object-lane) with the passed name, in the passed v
 ## Method: Calendar.getLaneFromPoint
 
 ### Description
-Returns the [Lane](../main.md#object-lane) at the passed co-ordinates. To get the lane under the mouse, pass null for both x and y.
+Returns the [Lane](../reference.md#object-lane) at the passed co-ordinates. To get the lane under the mouse, pass null for both x and y.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| x | [Integer](../main_2.md#type-integer) | true | — | the x offset into the body of the selected view |
-| y | [Integer](../main_2.md#type-integer) | true | — | the y offset into the body of the selected view. If this param and "x" are both unset, assumes both offsets from the last mouse event. |
+| x | [Integer](../reference_2.md#type-integer) | true | — | the x offset into the body of the selected view |
+| y | [Integer](../reference_2.md#type-integer) | true | — | the y offset into the body of the selected view. If this param and "x" are both unset, assumes both offsets from the last mouse event. |
 | view | [CalendarView](#type-calendarview) | true | — | the view to get the lane from - selected view if not passed |
 
 ### Returns
@@ -3219,12 +3219,12 @@ Not called if the day falls outside the current month and [Calendar.showOtherDay
 | date | [Date](#type-date) | false | — | JavaScript Date object representing this day |
 | events | [Array of CalendarEvent](#type-array-of-calendarevent) | false | — | events that fall on this day |
 | calendar | [Calendar](#type-calendar) | false | — | the calendar itself |
-| rowNum | [Integer](../main_2.md#type-integer) | false | — | the row number to which the parameter date belongs |
-| colNum | [Integer](../main_2.md#type-integer) | false | — | the column number to which the parameter date belongs |
+| rowNum | [Integer](../reference_2.md#type-integer) | false | — | the row number to which the parameter date belongs |
+| colNum | [Integer](../reference_2.md#type-integer) | false | — | the column number to which the parameter date belongs |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — false to cancel the default action
+`[boolean](../reference.md#type-boolean)` — false to cancel the default action
 
 ### Groups
 
@@ -3247,12 +3247,12 @@ Default is to render a series of links that call [Calendar.eventClick](#method-c
 | date | [Date](#type-date) | false | — | JavaScript Date object representing this day |
 | events | [Array of CalendarEvent](#type-array-of-calendarevent) | false | — | events that fall on this day |
 | calendar | [Calendar](#type-calendar) | false | — | the calendar itself |
-| rowNum | [int](../main.md#type-int) | false | — | the row number to which the parameter date belongs |
-| colNum | [int](../main.md#type-int) | false | — | the column number to which the parameter date belongs |
+| rowNum | [int](../reference.md#type-int) | false | — | the row number to which the parameter date belongs |
+| colNum | [int](../reference.md#type-int) | false | — | the column number to which the parameter date belongs |
 
 ### Returns
 
-`[HTMLString](../main.md#type-htmlstring)` — HTML to display
+`[HTMLString](../reference.md#type-htmlstring)` — HTML to display
 
 ### Groups
 
@@ -3273,7 +3273,7 @@ For views that support [lanes](#attr-calendarlanes), updates the title for the p
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true if the title was updated, false otherwise
+`[boolean](../reference.md#type-boolean)` — true if the title was updated, false otherwise
 
 ---
 ## Method: Calendar.addZone
@@ -3307,7 +3307,7 @@ Removes an event from the list of selected events in the current view, clearing 
 ## Method: Calendar.setHeaderLevels
 
 ### Description
-For [Timeline](../main.md#class-timeline)s, configures the levels of [headers](../main_2.md#object-headerlevel) shown above the event area, and their time units, after initialization.
+For [Timeline](../reference.md#class-timeline)s, configures the levels of [headers](../reference_2.md#object-headerlevel) shown above the event area, and their time units, after initialization.
 
 ### Parameters
 
@@ -3349,7 +3349,7 @@ The default implementation returns true for dates that fall on a [weekend](DateU
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true if this date should be considered disabled
+`[boolean](../reference.md#type-boolean)` — true if this date should be considered disabled
 
 ---
 ## Method: Calendar.backgroundClick
@@ -3366,7 +3366,7 @@ Callback fired when the mouse is clicked in a background-cell, ie, one without a
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — return false to cancel the default behavior of creating a new event at the selected location and showing its editor.
+`[boolean](../reference.md#type-boolean)` — return false to cancel the default behavior of creating a new event at the selected location and showing its editor.
 
 ---
 ## Method: Calendar.setIndicators
@@ -3406,7 +3406,7 @@ Switches the various levels of [hovers](#attr-calendarshowviewhovers) on or off 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| showViewHovers | [boolean](../main.md#type-boolean) | false | — | whether to allow CalendarViews to show hovers |
+| showViewHovers | [boolean](../reference.md#type-boolean) | false | — | whether to allow CalendarViews to show hovers |
 
 ---
 ## Method: Calendar.dayHeaderClick
@@ -3425,12 +3425,12 @@ Not called if the day falls outside the current month and [Calendar.showOtherDay
 | date | [Date](#type-date) | false | — | JavaScript Date object representing this day |
 | events | [Array of CalendarEvent](#type-array-of-calendarevent) | false | — | events that fall on this day |
 | calendar | [Calendar](#type-calendar) | false | — | the calendar itself |
-| rowNum | [int](../main.md#type-int) | false | — | the row number to which the parameter date belongs |
-| colNum | [int](../main.md#type-int) | false | — | the column number to which the parameter date belongs |
+| rowNum | [int](../reference.md#type-int) | false | — | the row number to which the parameter date belongs |
+| colNum | [int](../reference.md#type-int) | false | — | the column number to which the parameter date belongs |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — return false to cancel the action
+`[boolean](../reference.md#type-boolean)` — return false to cancel the action
 
 ### Groups
 
@@ -3440,13 +3440,13 @@ Not called if the day falls outside the current month and [Calendar.showOtherDay
 ## Method: Calendar.getView
 
 ### Description
-Returns the [view](CalendarView.md#class-calendarview) with the passed [name](../main_2.md#type-viewname).
+Returns the [view](CalendarView.md#class-calendarview) with the passed [name](../reference_2.md#type-viewname).
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| viewName | [ViewName](../main_2.md#type-viewname) | false | — | the name of the CalendarView to return |
+| viewName | [ViewName](../reference_2.md#type-viewname) | false | — | the name of the CalendarView to return |
 
 ### Returns
 
@@ -3468,7 +3468,7 @@ Returns the HTML to show in a hover when an existing event is dragged, or when a
 
 ### Returns
 
-`[HTMLString](../main.md#type-htmlstring)` — the HTML to show in the hover
+`[HTMLString](../reference.md#type-htmlstring)` — the HTML to show in the hover
 
 ---
 ## Method: Calendar.timelineEventResized
@@ -3521,7 +3521,7 @@ See [Calendar.updateEventCanvasComponent](#method-calendarupdateeventcanvascompo
 ## Method: Calendar.getSelectedEvent
 
 ### Description
-Returns the currently selected [event](../main.md#object-calendarevent), or the first one if more than one is selected.
+Returns the currently selected [event](../reference.md#object-calendarevent), or the first one if more than one is selected.
 
 ### Returns
 
@@ -3531,7 +3531,7 @@ Returns the currently selected [event](../main.md#object-calendarevent), or the 
 ## Method: Calendar.getIndicatorCanvasStyle
 
 ### Description
-Returns the [styleName](../main.md#type-cssstylename) to use for the passed [indicator](#attr-calendarindicators), in the passed [view](CalendarView.md#class-calendarview). By default, returns the style [on the indicator](#attr-calendareventstylenamefield), if one is specified, or the style specified on the [calendar](#attr-calendarindicatorstylename) otherwise.
+Returns the [styleName](../reference.md#type-cssstylename) to use for the passed [indicator](#attr-calendarindicators), in the passed [view](CalendarView.md#class-calendarview). By default, returns the style [on the indicator](#attr-calendareventstylenamefield), if one is specified, or the style specified on the [calendar](#attr-calendarindicatorstylename) otherwise.
 
 ### Parameters
 
@@ -3542,13 +3542,13 @@ Returns the [styleName](../main.md#type-cssstylename) to use for the passed [ind
 
 ### Returns
 
-`[CSSStyleName](../main.md#type-cssstylename)` — —
+`[CSSStyleName](../reference.md#type-cssstylename)` — —
 
 ---
 ## Method: Calendar.getEventLane
 
 ### Description
-Returns the [lane](../main.md#object-lane) associated with the passed event, in the passed view
+Returns the [lane](../reference.md#object-lane) associated with the passed event, in the passed view
 
 ### Parameters
 
@@ -3572,7 +3572,7 @@ Sets the [lanes](#attr-calendarlanes) in the current calendar view. Only has an 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | lanes | [Array of Lane](#type-array-of-lane) | false | — | array of lanes to display |
-| skipRefreshEvents | [boolean](../main.md#type-boolean) | true | — | set to false to prevent events from being refreshed |
+| skipRefreshEvents | [boolean](../reference.md#type-boolean) | true | — | set to false to prevent events from being refreshed |
 
 ---
 ## Method: Calendar.getLaneEvents
@@ -3608,7 +3608,7 @@ Note that, when showing [vertical lanes](#attr-calendarshowdaylanes) in the [day
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true if date is a workday, false otherwise
+`[boolean](../reference.md#type-boolean)` — true if date is a workday, false otherwise
 
 ---
 ## Method: Calendar.getEventStartDate
@@ -3639,8 +3639,8 @@ Return CSS text for styling the cell associated with the passed date and/or rowN
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | date | [Date](#type-date) | false | — | the date to return CSS text for |
-| rowNum | [Integer](../main_2.md#type-integer) | false | — | the row number containing the date to get the CSS for |
-| colNum | [Integer](../main_2.md#type-integer) | false | — | the column number containing the date to get the CSS for |
+| rowNum | [Integer](../reference_2.md#type-integer) | false | — | the row number containing the date to get the CSS for |
+| colNum | [Integer](../reference_2.md#type-integer) | false | — | the column number containing the date to get the CSS for |
 | view | [CalendarView](#type-calendarview) | false | — | the relevant CalendarView |
 
 ### Returns
@@ -3658,7 +3658,7 @@ Return CSS text for styling the cell associated with the passed date and/or rowN
 ### Description
 Create a new event in this calendar.
 
-In all cases, the [event](../main.md#object-calendarevent) passed as the first parameter must have at least a [start date](#attr-calendarstartdatefield) set. If the calendar is showing [lanes](#attr-calendarlanes), the name of the [lane](CalendarEvent.md#attr-calendareventlane) and, if applicable, the [sublane](CalendarEvent.md#attr-calendareventsublane), must also be set.
+In all cases, the [event](../reference.md#object-calendarevent) passed as the first parameter must have at least a [start date](#attr-calendarstartdatefield) set. If the calendar is showing [lanes](#attr-calendarlanes), the name of the [lane](CalendarEvent.md#attr-calendareventlane) and, if applicable, the [sublane](CalendarEvent.md#attr-calendareventsublane), must also be set.
 
 To deal with errors during saving, see [Calendar.eventSaveError](#method-calendareventsaveerror).
 
@@ -3667,7 +3667,7 @@ To deal with errors during saving, see [Calendar.eventSaveError](#method-calenda
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | event | [CalendarEvent](#type-calendarevent) | false | — | the new calendar event to add |
-| customValues | [Object](../main.md#type-object) | true | — | additional, custom values to be saved with the event |
+| customValues | [Object](../reference.md#type-object) | true | — | additional, custom values to be saved with the event |
 
 ---
 ## Method: Calendar.getVisibleStartDate
@@ -3709,7 +3709,7 @@ Gets the day of the week (0-6) that the mouse is currently over.
 
 ### Returns
 
-`[Integer](../main_2.md#type-integer)` — the day that the mouse is currently over
+`[Integer](../reference_2.md#type-integer)` — the day that the mouse is currently over
 
 ### See Also
 
@@ -3732,7 +3732,7 @@ The default implementation returns the event's [name field](#attr-calendarnamefi
 
 ### Returns
 
-`[HTMLString](../main.md#type-htmlstring)` — the HTML to display in the header of an event canvas
+`[HTMLString](../reference.md#type-htmlstring)` — the HTML to display in the header of an event canvas
 
 ---
 ## Method: Calendar.eventClick
@@ -3747,7 +3747,7 @@ By default, a dialog appears showing details for the event, and offering the abi
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | event | [CalendarEvent](#type-calendarevent) | false | — | event that was clicked on |
-| viewName | [ViewName](../main_2.md#type-viewname) | false | — | view where the event's canvas was clicked |
+| viewName | [ViewName](../reference_2.md#type-viewname) | false | — | view where the event's canvas was clicked |
 
 ### Returns
 
@@ -3757,7 +3757,7 @@ By default, a dialog appears showing details for the event, and offering the abi
 ## Method: Calendar.showEventDialog
 
 ### Description
-Open the Quick Event dialog showing minimal information about an existing [event](../main.md#object-calendarevent).
+Open the Quick Event dialog showing minimal information about an existing [event](../reference.md#object-calendarevent).
 
 The [startDate](#attr-calendarstartdatefield) field on the event is used to calculate the display location for the dialog.
 
@@ -3821,20 +3821,20 @@ Callback fired when the mouse button is depressed over a background-cell, ie, on
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — return false to suppress default behavior of allowing sweep selection via dragging.
+`[boolean](../reference.md#type-boolean)` — return false to suppress default behavior of allowing sweep selection via dragging.
 
 ---
 ## Method: Calendar.indicatorClick
 
 ### Description
-Called whenever an [IndicatorCanvas](../main.md#class-indicatorcanvas) is clicked in the [timelineView](#attr-calendartimelineview). There is no default implementation.
+Called whenever an [IndicatorCanvas](../reference.md#class-indicatorcanvas) is clicked in the [timelineView](#attr-calendartimelineview). There is no default implementation.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | indicatorEvent | [CalendarEvent](#type-calendarevent) | false | — | indicator that was clicked on |
-| viewName | [ViewName](../main_2.md#type-viewname) | false | — | view where the event's canvas was clicked |
+| viewName | [ViewName](../reference_2.md#type-viewname) | false | — | view where the event's canvas was clicked |
 
 ### Returns
 
@@ -3850,7 +3850,7 @@ Notification that fires whenever the current view changes via the [mainView tabs
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| viewName | [ViewName](../main_2.md#type-viewname) | false | — | the name of the current view after the change |
+| viewName | [ViewName](../reference_2.md#type-viewname) | false | — | the name of the current view after the change |
 
 ---
 ## Method: Calendar.selectTab
@@ -3874,7 +3874,7 @@ Changes the [view mode](#attr-calendarshowdaylanes) of the day view at runtime -
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| showDayLanes | [boolean](../main.md#type-boolean) | false | — | whether or not to show lanes in the day view |
+| showDayLanes | [boolean](../reference.md#type-boolean) | false | — | whether or not to show lanes in the day view |
 
 ---
 ## Method: Calendar.getDateStyle
@@ -3887,13 +3887,13 @@ Return the CSS styleName for the associated date-cell in the passed view.
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | date | [Date](#type-date) | false | — | the date to return the CSS styleName for |
-| rowNum | [Integer](../main_2.md#type-integer) | false | — | the row number containing the date to get the CSS styleName for |
-| colNum | [Integer](../main_2.md#type-integer) | false | — | the column number containing the date to get the CSS styleName for |
+| rowNum | [Integer](../reference_2.md#type-integer) | false | — | the row number containing the date to get the CSS styleName for |
+| colNum | [Integer](../reference_2.md#type-integer) | false | — | the column number containing the date to get the CSS styleName for |
 | view | [CalendarView](#type-calendarview) | false | — | the relevant CalendarView |
 
 ### Returns
 
-`[CSSStyleName](../main.md#type-cssstylename)` — CSS style for the cell with the passed date and rowNum/colNum
+`[CSSStyleName](../reference.md#type-cssstylename)` — CSS style for the cell with the passed date and rowNum/colNum
 
 ### See Also
 
@@ -3926,7 +3926,7 @@ Create a new event in this calendar instance.
 | endDate | [Date](#type-date) | true | — | end date of event |
 | name | [String](#type-string) | true | — | name of event |
 | description | [String](#type-string) | true | — | description of event |
-| otherFields | [Object](../main.md#type-object) | true | — | new values of additional fields to be updated |
+| otherFields | [Object](../reference.md#type-object) | true | — | new values of additional fields to be updated |
 
 **Deprecated**
 
@@ -3944,20 +3944,20 @@ Override here to return custom HTML for the passed cell.
 |------|------|----------|---------|-------------|
 | view | [CalendarView](#type-calendarview) | false | — | the CalendarView the mouse is hovered over |
 | record | [Record](#type-record) | false | — | The record containing the cell being hovered |
-| rowNum | [Integer](../main_2.md#type-integer) | false | — | The rowNum of the cell being hovered |
-| colNum | [Integer](../main_2.md#type-integer) | false | — | the colNum of the cell being hovered |
+| rowNum | [Integer](../reference_2.md#type-integer) | false | — | The rowNum of the cell being hovered |
+| colNum | [Integer](../reference_2.md#type-integer) | false | — | the colNum of the cell being hovered |
 | date | [Date](#type-date) | false | — | the snap-date at the mouse, which may be different from the result of a call to [getCellDate](#method-calendargetcelldate) |
 | defaultValue | [String](#type-string) | false | — | the default hover text for the passed values |
 
 ### Returns
 
-`[HTMLString](../main.md#type-htmlstring)` — the HTML to show in the hover
+`[HTMLString](../reference.md#type-htmlstring)` — the HTML to show in the hover
 
 ---
 ## Method: Calendar.shouldShowEvent
 
 ### Description
-Indicates whether the passed [event](../main.md#object-calendarevent) should be visible in the passed [CalendarView](CalendarView.md#class-calendarview).
+Indicates whether the passed [event](../reference.md#object-calendarevent) should be visible in the passed [CalendarView](CalendarView.md#class-calendarview).
 
 The default implementation returns true - note that this method only runs for events that are known to be in the accessible range and is a mechanism for extended custom filtering.
 
@@ -3970,13 +3970,13 @@ The default implementation returns true - note that this method only runs for ev
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true if this event should be displayed in the passed view
+`[boolean](../reference.md#type-boolean)` — true if this event should be displayed in the passed view
 
 ---
 ## Method: Calendar.showNewEventEditor
 
 ### Description
-Show an Event Editor for a new event. If an [event](../main.md#object-calendarevent) is passed as the parameter, it is used as defaults for the new event.
+Show an Event Editor for a new event. If an [event](../reference.md#object-calendarevent) is passed as the parameter, it is used as defaults for the new event.
 
 ### Parameters
 
@@ -4027,15 +4027,15 @@ Setter for updating [Calendar.showWeekends](#attr-calendarshowweekends) at runti
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| showWeekends | [boolean](../main.md#type-boolean) | false | — | whether or not to show weekends |
+| showWeekends | [boolean](../reference.md#type-boolean) | false | — | whether or not to show weekends |
 
 ---
 ## Method: Calendar.eventSaveError
 
 ### Description
-Notification method fired when an attempt to save [an event](../main.md#object-calendarevent) following edits or drag-movements results in an error from the server. May be overridden to handle specific errors and provide feedback to the user or push a server-provided record to client caches with a call to [updateCaches()](DataSource.md#method-datasourceupdatecaches), for example.
+Notification method fired when an attempt to save [an event](../reference.md#object-calendarevent) following edits or drag-movements results in an error from the server. May be overridden to handle specific errors and provide feedback to the user or push a server-provided record to client caches with a call to [updateCaches()](DataSource.md#method-datasourceupdatecaches), for example.
 
-The `scenarioCode` parameter may be used to determine [how the save was initiated](../main.md#type-calendarsavescenario).
+The `scenarioCode` parameter may be used to determine [how the save was initiated](../reference.md#type-calendarsavescenario).
 
 Return _false_ from this method to cancel builtin behavior, which is as follows:
 
@@ -4051,7 +4051,7 @@ In all cases, if the server returned an updated record despite the save failing 
 |------|------|----------|---------|-------------|
 | dsResponse | [DSResponse](#type-dsresponse) | false | — | DSResponse from the save-attempt |
 | dsRequest | [DSRequest](#type-dsrequest) | false | — | initiating DSRequest Properties |
-| scenarioCode | [CalendarSaveScenario](../main.md#type-calendarsavescenario) | false | — | scenario in which the save occurred |
+| scenarioCode | [CalendarSaveScenario](../reference.md#type-calendarsavescenario) | false | — | scenario in which the save occurred |
 
 ### Returns
 
@@ -4080,7 +4080,7 @@ Gets the hover HTML for an [indicator](#attr-calendarindicators) being hovered o
 
 ### Returns
 
-`[HTMLString](../main.md#type-htmlstring)` — the HTML to show in the hover
+`[HTMLString](../reference.md#type-htmlstring)` — the HTML to show in the hover
 
 ---
 ## Method: Calendar.setCurrentViewName
@@ -4092,11 +4092,11 @@ Sets the currently visible view.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| viewName | [ViewName](../main_2.md#type-viewname) | false | — | The name of the view that should be made visible. |
+| viewName | [ViewName](../reference_2.md#type-viewname) | false | — | The name of the view that should be made visible. |
 
 ### Returns
 
-`[ViewName](../main_2.md#type-viewname)` — The name of the visible view.
+`[ViewName](../reference_2.md#type-viewname)` — The name of the visible view.
 
 ---
 ## Method: Calendar.backgroundMouseUp
@@ -4113,7 +4113,7 @@ Notification method fired when the mouse button is released over a background-ce
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — return false to suppress default behavior of showing a dialog to add a new event with the passed dates.
+`[boolean](../reference.md#type-boolean)` — return false to suppress default behavior of showing a dialog to add a new event with the passed dates.
 
 ---
 ## Method: Calendar.next
@@ -4125,7 +4125,7 @@ Move to the next day, week, or month, depending on which tab is selected.
 ## Method: Calendar.getEventCanvasStyle
 
 ### Description
-Returns the [styleName](../main.md#type-cssstylename) to use for the passed [event](../main.md#object-calendarevent), in the passed [view](CalendarView.md#class-calendarview). By default, returns the style [on the event](#attr-calendareventstylenamefield), if one is specified - otherwise, in [lane-based](#attr-calendarlanes) views, it returns the style specified on the [lane or sublane](Lane.md#attr-laneeventstylename), or the style specified on the [calendar](#attr-calendareventstylename).
+Returns the [styleName](../reference.md#type-cssstylename) to use for the passed [event](../reference.md#object-calendarevent), in the passed [view](CalendarView.md#class-calendarview). By default, returns the style [on the event](#attr-calendareventstylenamefield), if one is specified - otherwise, in [lane-based](#attr-calendarlanes) views, it returns the style specified on the [lane or sublane](Lane.md#attr-laneeventstylename), or the style specified on the [calendar](#attr-calendareventstylename).
 
 ### Parameters
 
@@ -4136,13 +4136,13 @@ Returns the [styleName](../main.md#type-cssstylename) to use for the passed [eve
 
 ### Returns
 
-`[CSSStyleName](../main.md#type-cssstylename)` — the CSS style to apply to the passed event in the passed view
+`[CSSStyleName](../reference.md#type-cssstylename)` — the CSS style to apply to the passed event in the passed view
 
 ---
 ## Method: Calendar.getZoneCanvasStyle
 
 ### Description
-Returns the [styleName](../main.md#type-cssstylename) to use for the passed [zone](#attr-calendarzones), in the passed [view](CalendarView.md#class-calendarview). By default, returns the style [on the zone](#attr-calendareventstylenamefield), if one is specified, or the style specified on the [calendar](#attr-calendarzonestylename) otherwise.
+Returns the [styleName](../reference.md#type-cssstylename) to use for the passed [zone](#attr-calendarzones), in the passed [view](CalendarView.md#class-calendarview). By default, returns the style [on the zone](#attr-calendareventstylenamefield), if one is specified, or the style specified on the [calendar](#attr-calendarzonestylename) otherwise.
 
 ### Parameters
 
@@ -4153,7 +4153,7 @@ Returns the [styleName](../main.md#type-cssstylename) to use for the passed [zon
 
 ### Returns
 
-`[CSSStyleName](../main.md#type-cssstylename)` — —
+`[CSSStyleName](../reference.md#type-cssstylename)` — —
 
 ---
 ## Method: Calendar.getPeriodEndDate
@@ -4177,7 +4177,7 @@ Returns the end of the period selected in the passed, or current, calendar view.
 ### Description
 Removes a lane from the calendar in [Calendar.timelineView](#attr-calendartimelineview), or in [Calendar.dayView](#attr-calendardayview) if [Calendar.showDayLanes](#attr-calendarshowdaylanes) is true.
 
-Accepts either a [Lane object](../main.md#object-lane) or a string that represents the [name](Lane.md#attr-lanename) of a lane.
+Accepts either a [Lane object](../reference.md#object-lane) or a string that represents the [name](Lane.md#attr-lanename) of a lane.
 
 ### Parameters
 
@@ -4212,8 +4212,8 @@ To determine the date at a more specific point within a cell, see [Calendar.getD
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| rowNum | [Integer](../main_2.md#type-integer) | true | — | the row number to get the date for |
-| colNum | [Integer](../main_2.md#type-integer) | true | — | the column number to get the date for |
+| rowNum | [Integer](../reference_2.md#type-integer) | true | — | the row number to get the date for |
+| colNum | [Integer](../reference_2.md#type-integer) | true | — | the column number to get the date for |
 | view | [CalendarView](#type-calendarview) | true | — | the view to use - uses the selected view if not passed |
 
 ### Returns
@@ -4231,7 +4231,7 @@ Return the title text to display in the header-button of the ListGridField showi
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | date | [Date](#type-date) | false | — | the date to return the header-title for - note that the [month view](#attr-calendarmonthview) does not pass this parameter because a single column represents multiple dates |
-| dayOfWeek | [int](../main.md#type-int) | false | — | the week-day number of the passed date, except for the [month view](#attr-calendarmonthview), where no date is passed, because the week-day number represents multiple dates. |
+| dayOfWeek | [int](../reference.md#type-int) | false | — | the week-day number of the passed date, except for the [month view](#attr-calendarmonthview), where no date is passed, because the week-day number represents multiple dates. |
 | defaultValue | [String](#type-string) | false | — | the default header-title for the passed date and view |
 | view | [CalendarView](#type-calendarview) | false | — | the relevant CalendarView |
 
@@ -4250,7 +4250,7 @@ Update the styleName for the passed event. Refreshes the event's canvas in the c
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | event | [CalendarEvent](#type-calendarevent) | false | — | The event object to refresh in the current view |
-| styleName | [CSSStyleName](../main.md#type-cssstylename) | false | — | The new CSS style to apply to the canvases showing this event |
+| styleName | [CSSStyleName](../reference.md#type-cssstylename) | false | — | The new CSS style to apply to the canvases showing this event |
 
 ---
 ## Method: Calendar.removeEvent
@@ -4278,7 +4278,7 @@ Returns the [source image](#attr-calendareventcanvasgrippericon) to use as the g
 
 ### Returns
 
-`[SCImgURL](../main.md#type-scimgurl)` — the URL for the image to load
+`[SCImgURL](../reference.md#type-scimgurl)` — the URL for the image to load
 
 ---
 ## Method: Calendar.shouldShowLane
@@ -4297,7 +4297,7 @@ The default implementation returns true, unless the lane has no events and [Cale
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true if this lane should be displayed in the passed view
+`[boolean](../reference.md#type-boolean)` — true if this lane should be displayed in the passed view
 
 ---
 ## Method: Calendar.getSublaneFromPoint
@@ -4309,8 +4309,8 @@ Returns the [sublane](Lane.md#attr-lanesublanes) at the passed co-ordinates. To 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| x | [Integer](../main_2.md#type-integer) | true | — | optional x offset into the body of the selected view |
-| y | [Integer](../main_2.md#type-integer) | true | — | optional y offset into the body of the selected view. If this param and "x" are both unset, assumes both offsets from the last mouse event. |
+| x | [Integer](../reference_2.md#type-integer) | true | — | optional x offset into the body of the selected view |
+| y | [Integer](../reference_2.md#type-integer) | true | — | optional y offset into the body of the selected view. If this param and "x" are both unset, assumes both offsets from the last mouse event. |
 | view | [CalendarView](#type-calendarview) | true | — | the view to get the sublane from - selected view if not passed |
 
 ### Returns
@@ -4334,7 +4334,7 @@ Gets the hover HTML for a [zone](#attr-calendarzones) being hovered over. Overri
 
 ### Returns
 
-`[HTMLString](../main.md#type-htmlstring)` — the HTML to show in the hover
+`[HTMLString](../reference.md#type-htmlstring)` — the HTML to show in the hover
 
 ---
 ## Method: Calendar.getDateCellVAlign
@@ -4347,13 +4347,13 @@ When [getDateHTML](#method-calendargetdatehtml) returns a value, this method ret
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | date | [Date](#type-date) | false | — | the date to get the cell-alignment for |
-| rowNum | [Integer](../main_2.md#type-integer) | false | — | the row number containing the date to get the cell-alignment for |
-| colNum | [Integer](../main_2.md#type-integer) | false | — | the column number containing the date to get the cell-alignment for |
+| rowNum | [Integer](../reference_2.md#type-integer) | false | — | the row number containing the date to get the cell-alignment for |
+| colNum | [Integer](../reference_2.md#type-integer) | false | — | the column number containing the date to get the cell-alignment for |
 | view | [CalendarView](#type-calendarview) | false | — | the relevant CalendarView |
 
 ### Returns
 
-`[HTMLString](../main.md#type-htmlstring)` — vertical-alignment for content in the cell with the passed date and rowNum/colNum
+`[HTMLString](../reference.md#type-htmlstring)` — vertical-alignment for content in the cell with the passed date and rowNum/colNum
 
 ### See Also
 
@@ -4384,14 +4384,14 @@ Adds a new [indicator](#attr-calendarindicators) to the calendar.
 ## Method: Calendar.zoneClick
 
 ### Description
-Called whenever a [ZoneCanvas](../main.md#class-zonecanvas) is clicked in views other than [Month](#attr-calendarmonthview). There is no default implementation.
+Called whenever a [ZoneCanvas](../reference.md#class-zonecanvas) is clicked in views other than [Month](#attr-calendarmonthview). There is no default implementation.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | zoneEvent | [CalendarEvent](#type-calendarevent) | false | — | zone that was clicked on |
-| viewName | [ViewName](../main_2.md#type-viewname) | false | — | view where the event's canvas was clicked |
+| viewName | [ViewName](../reference_2.md#type-viewname) | false | — | view where the event's canvas was clicked |
 
 ### Returns
 
@@ -4401,7 +4401,7 @@ Called whenever a [ZoneCanvas](../main.md#class-zonecanvas) is clicked in views 
 ## Method: Calendar.getSelectedEvents
 
 ### Description
-Returns the currently selected list of [events](../main.md#object-calendarevent).
+Returns the currently selected list of [events](../reference.md#object-calendarevent).
 
 ### Returns
 
@@ -4442,7 +4442,7 @@ You can override this method to prevent the default action, perhaps instead show
 ### Description
 Returns a Date instance representing the point at the passed offsets into the body of the current view.
 
-If snapOffsets is passed as false, returns the date representing the exact position of the passed offsets. If unset or passed as true, returns the date at the nearest eventSnapGap to the left, for [Timeline](../main.md#class-timeline)s, or above for [day](#attr-calendardayview) and [week](#attr-calendarweekview) views.
+If snapOffsets is passed as false, returns the date representing the exact position of the passed offsets. If unset or passed as true, returns the date at the nearest eventSnapGap to the left, for [Timeline](../reference.md#class-timeline)s, or above for [day](#attr-calendardayview) and [week](#attr-calendarweekview) views.
 
 If neither x nor y offsets are passed, assumes them from the last mouse event.
 
@@ -4454,8 +4454,8 @@ Note that, for the [month view](#attr-calendarmonthview), this method is functio
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| x | [Integer](../main_2.md#type-integer) | true | — | the x offset into the body of the selected view - non-functional for the [day view](#attr-calendardayview). If this param and "y" are both unset, assumes both offsets from the last mouse event. |
-| y | [Integer](../main_2.md#type-integer) | true | — | the y offset into the body of the selected view - non-functional for the [timeline view](#attr-calendartimelineview). If this param and "x" are both unset, assumes both offsets from the last mouse event. |
+| x | [Integer](../reference_2.md#type-integer) | true | — | the x offset into the body of the selected view - non-functional for the [day view](#attr-calendardayview). If this param and "y" are both unset, assumes both offsets from the last mouse event. |
+| y | [Integer](../reference_2.md#type-integer) | true | — | the y offset into the body of the selected view - non-functional for the [timeline view](#attr-calendartimelineview). If this param and "x" are both unset, assumes both offsets from the last mouse event. |
 | snapOffsets | [Boolean](#type-boolean) | true | — | whether to snap the offsets to the nearest eventSnapGap - if unset, the default is true |
 | view | [CalendarView](#type-calendarview) | true | — | the view to use - or the selected view if not passed |
 
@@ -4478,7 +4478,7 @@ Update an event in this calendar.
 | endDate | [Date](#type-date) | false | — | end date of event |
 | name | [String](#type-string) | false | — | name of event |
 | description | [String](#type-string) | false | — | description of event |
-| otherFields | [Object](../main.md#type-object) | false | — | new values of additional fields to be updated |
+| otherFields | [Object](../reference.md#type-object) | false | — | new values of additional fields to be updated |
 
 **Deprecated**
 
@@ -4498,7 +4498,7 @@ Return false to prevent the default action, of actually [updating](#method-calen
 |------|------|----------|---------|-------------|
 | event | [CalendarEvent](#type-calendarevent) | false | — | the event that's about to be moved |
 | newEvent | [CalendarEvent](#type-calendarevent) | false | — | the event as it will be, unless this method returns false |
-| customValues | [Object](../main.md#type-object) | true | — | additional custom values associated with the event |
+| customValues | [Object](../reference.md#type-object) | true | — | additional custom values associated with the event |
 
 ### Returns
 
@@ -4514,7 +4514,7 @@ For a discussion of the various filtering and criteria-management APIs and when 
 
 When `fetchData()` is first called, if data has not already been provided via [setData()](ListGrid_2.md#method-listgridsetdata), this method will create a [ResultSet](ResultSet.md#class-resultset), which will be configured based on component settings such as [DataBoundComponent.fetchOperation](DataBoundComponent.md#attr-databoundcomponentfetchoperation) and [DataBoundComponent.dataPageSize](DataBoundComponent.md#attr-databoundcomponentdatapagesize), as well as the general purpose [ListGrid.dataProperties](ListGrid_1.md#attr-listgriddataproperties). The created ResultSet will automatically send a DSRequest to retrieve data from [listGrid.dataSource](ListGrid_1.md#attr-listgriddatasource), and from then on will automatically manage paging through large datasets, as well as performing filtering and sorting operations inside the browser when possible - see the [ResultSet](ResultSet.md#class-resultset) docs for details.
 
-**NOTE:** do not use **both** [autoFetchData:true](DataBoundComponent.md#attr-databoundcomponentautofetchdata) **and** a call to `fetchData()` - this may result in two DSRequests to fetch data. Use either [autoFetchData](DataBoundComponent.md#attr-databoundcomponentautofetchdata) and [Criteria](../main_2.md#type-criteria) **or** a manual call to fetchData() passing criteria.
+**NOTE:** do not use **both** [autoFetchData:true](DataBoundComponent.md#attr-databoundcomponentautofetchdata) **and** a call to `fetchData()` - this may result in two DSRequests to fetch data. Use either [autoFetchData](DataBoundComponent.md#attr-databoundcomponentautofetchdata) and [Criteria](../reference_2.md#type-criteria) **or** a manual call to fetchData() passing criteria.
 
 Whether a ResultSet was automatically created or provided via [setData()](ListGrid_2.md#method-listgridsetdata), subsequent calls to fetchData() will simply call [ResultSet.setCriteria](ResultSet.md#method-resultsetsetcriteria).
 
@@ -4522,15 +4522,15 @@ Changes to criteria may or may not result in a DSRequest to the server due to [c
 
 If you need to force data to be re-fetched, you can call [invalidateCache()](ListGrid_2.md#method-listgridinvalidatecache) and new data will automatically be fetched from the server using the current criteria and sort direction. **NOTE:** when using `invalidateCache()` there is no need to **also** call `fetchData()` and in fact this could produce unexpected results.
 
-This method takes an optional callback parameter (set to a [DSCallback](../main_2.md#type-dscallback)) to fire when the fetch completes. Note that this callback will not fire if no server fetch is performed. In this case the data is updated synchronously, so as soon as this method completes you can interact with the new data. If necessary, you can use [willFetchData()](DataBoundComponent.md#method-databoundcomponentwillfetchdata) to determine whether or not a server fetch will occur when `fetchData()` is called with new criteria.
+This method takes an optional callback parameter (set to a [DSCallback](../reference_2.md#type-dscallback)) to fire when the fetch completes. Note that this callback will not fire if no server fetch is performed. In this case the data is updated synchronously, so as soon as this method completes you can interact with the new data. If necessary, you can use [willFetchData()](DataBoundComponent.md#method-databoundcomponentwillfetchdata) to determine whether or not a server fetch will occur when `fetchData()` is called with new criteria.
 
 In addition to the callback parameter for this method, developers can use [dataArrived()](ListGrid_2.md#method-listgriddataarrived) to be notified every time data is loaded.
 
-By default, this method assumes a [TextMatchStyle](../main_2.md#type-textmatchstyle) of "exact"; that can be overridden by supplying a different value in the requestProperties parameter. See [DataBoundComponent.willFetchData](DataBoundComponent.md#method-databoundcomponentwillfetchdata);
+By default, this method assumes a [TextMatchStyle](../reference_2.md#type-textmatchstyle) of "exact"; that can be overridden by supplying a different value in the requestProperties parameter. See [DataBoundComponent.willFetchData](DataBoundComponent.md#method-databoundcomponentwillfetchdata);
 
 **Changing the request properties**
 
-Changes to [TextMatchStyle](../main_2.md#type-textmatchstyle) made via `requestProperties` will be honored in combination with the fetch criteria, possibly invalidating cache and triggering a server request if needed, as documented for [willFetchData()](DataBoundComponent.md#method-databoundcomponentwillfetchdata). In contrast, changes to [operationId](DSRequest.md#attr-dsrequestoperationid) in the request properties will cause the [ResultSet](ResultSet.md#class-resultset) or [ResultTree](ResultTree.md#class-resulttree) to be rebuilt, always refetching from the server. However, changes to other request properties after the initial fetch won't be detected, and no fetch will get triggered based on that new request context.
+Changes to [TextMatchStyle](../reference_2.md#type-textmatchstyle) made via `requestProperties` will be honored in combination with the fetch criteria, possibly invalidating cache and triggering a server request if needed, as documented for [willFetchData()](DataBoundComponent.md#method-databoundcomponentwillfetchdata). In contrast, changes to [operationId](DSRequest.md#attr-dsrequestoperationid) in the request properties will cause the [ResultSet](ResultSet.md#class-resultset) or [ResultTree](ResultTree.md#class-resulttree) to be rebuilt, always refetching from the server. However, changes to other request properties after the initial fetch won't be detected, and no fetch will get triggered based on that new request context.
 
 To pick up such changes, we recommend that you call [setData(\[\])](#method-calendarsetdata) (passing an empty array to ensure the data model is cleared), and then call this method to fetch again. If you try to do it by calling [invalidateCache()](ListGrid_2.md#method-listgridinvalidatecache), you may see duplicate fetches if you haven't already updated the data context by calling this method with the new request properties, and fail to do so before the component is [redrawn](Canvas.md#method-canvasredraw).
 
@@ -4538,8 +4538,8 @@ To pick up such changes, we recommend that you call [setData(\[\])](#method-cale
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| criteria | [Criteria](../main_2.md#type-criteria) | true | — | Search criteria. If a [DynamicForm](DynamicForm.md#class-dynamicform) is passed in as this argument instead of a raw criteria object, will be derived by calling [DynamicForm.getValuesAsCriteria](DynamicForm.md#method-dynamicformgetvaluesascriteria) |
-| callback | [DSCallback](../main_2.md#type-dscallback) | true | — | callback to invoke when a fetch is complete. Fires only if server contact was required |
+| criteria | [Criteria](../reference_2.md#type-criteria) | true | — | Search criteria. If a [DynamicForm](DynamicForm.md#class-dynamicform) is passed in as this argument instead of a raw criteria object, will be derived by calling [DynamicForm.getValuesAsCriteria](DynamicForm.md#method-dynamicformgetvaluesascriteria) |
+| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke when a fetch is complete. Fires only if server contact was required |
 | requestProperties | [DSRequest](#type-dsrequest) | true | — | additional properties to set on the DSRequest that will be issued |
 
 ### Groups
@@ -4561,7 +4561,7 @@ Scrolls the [current view](#method-calendargetcurrentviewname) so the passed eve
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | event | [CalendarEvent](#type-calendarevent) | false | — | the event to move the calendar view to |
-| canReload | [boolean](../main.md#type-boolean) | true | — | set to false to prevent a view from automatically reloading with a new range if the passed event is not in its current scrollable range |
+| canReload | [boolean](../reference.md#type-boolean) | true | — | set to false to prevent a view from automatically reloading with a new range if the passed event is not in its current scrollable range |
 
 ---
 ## Method: Calendar.moveToEvent
@@ -4605,13 +4605,13 @@ Return the HTML to be displayed in the associated date-cell in the passed view. 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | date | [Date](#type-date) | false | — | the date to get the HTML for |
-| rowNum | [Integer](../main_2.md#type-integer) | false | — | the row number containing the date to get the HTML for |
-| colNum | [Integer](../main_2.md#type-integer) | false | — | the column number containing the date to get the HTML for |
+| rowNum | [Integer](../reference_2.md#type-integer) | false | — | the row number containing the date to get the HTML for |
+| colNum | [Integer](../reference_2.md#type-integer) | false | — | the column number containing the date to get the HTML for |
 | view | [CalendarView](#type-calendarview) | false | — | the relevant CalendarView |
 
 ### Returns
 
-`[HTMLString](../main.md#type-htmlstring)` — HTML to display in the cell with the passed date and rowNum/colNum
+`[HTMLString](../reference.md#type-htmlstring)` — HTML to display in the cell with the passed date and rowNum/colNum
 
 ### See Also
 
@@ -4648,7 +4648,7 @@ Called when an event is resized with the mouse. The passed date value is the new
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — return false to disallow the resize
+`[boolean](../reference.md#type-boolean)` — return false to disallow the resize
 
 ### Groups
 
@@ -4672,7 +4672,7 @@ Return false to prevent the default action, of actually [updating](#method-calen
 |------|------|----------|---------|-------------|
 | event | [CalendarEvent](#type-calendarevent) | false | — | the event that's about to be resized |
 | newEvent | [CalendarEvent](#type-calendarevent) | false | — | the event as it will be, unless this method returns false |
-| customValues | [Object](../main.md#type-object) | true | — | additional custom values associated with the event |
+| customValues | [Object](../reference.md#type-object) | true | — | additional custom values associated with the event |
 
 ### Returns
 
@@ -4744,7 +4744,7 @@ Gets the hover HTML for an event being hovered over. Override here to return cus
 
 ### Returns
 
-`[HTMLString](../main.md#type-htmlstring)` — the HTML to show in the hover
+`[HTMLString](../reference.md#type-htmlstring)` — the HTML to show in the hover
 
 ---
 ## Method: Calendar.selectEvent
@@ -4790,7 +4790,7 @@ Returns the hover HTML to show in a hover when the mouse moves over the header a
 
 ### Returns
 
-`[HTMLString](../main.md#type-htmlstring)` — the HTML to show in the hover
+`[HTMLString](../reference.md#type-htmlstring)` — the HTML to show in the hover
 
 ---
 ## Method: Calendar.getCurrentViewName
@@ -4800,7 +4800,7 @@ Get the name of the visible view. Returns one of 'day', 'week', 'month' or 'time
 
 ### Returns
 
-`[ViewName](../main_2.md#type-viewname)` — The name of the currently visible view.
+`[ViewName](../reference_2.md#type-viewname)` — The name of the currently visible view.
 
 ---
 ## Method: Calendar.eventsRendered
@@ -4820,7 +4820,7 @@ Save an event to this Calendar's ${isc.DocUtils.linkForRef('attr:Calendar.dataSo
 |------|------|----------|---------|-------------|
 | event | [CalendarEvent](#type-calendarevent) | false | — | The event object that will be updated |
 | newEvent | [CalendarEvent](#type-calendarevent) | false | — | The new attributes for the event |
-| otherFields | [Object](../main.md#type-object) | false | — | new values of additional fields to be updated |
+| otherFields | [Object](../reference.md#type-object) | false | — | new values of additional fields to be updated |
 
 ---
 ## Method: Calendar.removeIndicator
@@ -4828,7 +4828,7 @@ Save an event to this Calendar's ${isc.DocUtils.linkForRef('attr:Calendar.dataSo
 ### Description
 Removes a [indicator](#attr-calendarindicators) from the calendar.
 
-Accepts either a [indicator object](../main.md#object-calendarevent) or a string that represents the [name](CalendarEvent.md#attr-calendareventname) of anindicator.
+Accepts either a [indicator object](../reference.md#object-calendarevent) or a string that represents the [name](CalendarEvent.md#attr-calendareventname) of anindicator.
 
 ### Parameters
 
@@ -4840,7 +4840,7 @@ Accepts either a [indicator object](../main.md#object-calendarevent) or a string
 ## Method: Calendar.addLane
 
 ### Description
-Adds a new [Lane](../main.md#object-lane) to the calendar, for display in the [timeline view](#attr-calendartimelineview), and in the [day view](#attr-calendardayview) if [showDayLanes](#attr-calendarshowdaylanes) is true.
+Adds a new [Lane](../reference.md#object-lane) to the calendar, for display in the [timeline view](#attr-calendartimelineview), and in the [day view](#attr-calendardayview) if [showDayLanes](#attr-calendarshowdaylanes) is true.
 
 ### Parameters
 
@@ -4895,7 +4895,7 @@ The default implementation returns true, unless the date falls on a [weekend](Da
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true if this date should be considered disabled
+`[boolean](../reference.md#type-boolean)` — true if this date should be considered disabled
 
 ---
 ## Method: Calendar.filterData
@@ -4911,8 +4911,8 @@ For a discussion of the various filtering and criteria-management APIs and when 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| criteria | [Criteria](../main_2.md#type-criteria) | true | — | Search criteria. If a [DynamicForm](DynamicForm.md#class-dynamicform) is passed in as this argument instead of a raw criteria object, will be derived by calling [DynamicForm.getValuesAsCriteria](DynamicForm.md#method-dynamicformgetvaluesascriteria) |
-| callback | [DSCallback](../main_2.md#type-dscallback) | true | — | callback to invoke when a fetch is complete. Fires only if server contact was required; see [fetchData()](ListGrid_2.md#method-listgridfetchdata) for details |
+| criteria | [Criteria](../reference_2.md#type-criteria) | true | — | Search criteria. If a [DynamicForm](DynamicForm.md#class-dynamicform) is passed in as this argument instead of a raw criteria object, will be derived by calling [DynamicForm.getValuesAsCriteria](DynamicForm.md#method-dynamicformgetvaluesascriteria) |
+| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke when a fetch is complete. Fires only if server contact was required; see [fetchData()](ListGrid_2.md#method-listgridfetchdata) for details |
 | requestProperties | [DSRequest](#type-dsrequest) | true | — | for databound components only - optional additional properties to set on the DSRequest that will be issued |
 
 ### Groups
@@ -4937,14 +4937,14 @@ Returns the currently selected [view](CalendarView.md#class-calendarview).
 ## Method: Calendar.addLaneEvent
 
 ### Description
-For [Timeline](../main.md#class-timeline)s, and for [dayView](#attr-calendardayview) with [showDayLanes](#attr-calendarshowdaylanes) set, creates a new event and adds it to a particular [Lane](../main.md#object-lane).
+For [Timeline](../reference.md#class-timeline)s, and for [dayView](#attr-calendardayview) with [showDayLanes](#attr-calendarshowdaylanes) set, creates a new event and adds it to a particular [Lane](../reference.md#object-lane).
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | laneName | [Lane](#type-lane) | false | — | the Lane in which to add this event |
-| startDate | [Date](#type-date)|[Object](../main.md#type-object) | false | — | start date of event, or CalendarEvent Object |
+| startDate | [Date](#type-date)|[Object](../reference.md#type-object) | false | — | start date of event, or CalendarEvent Object |
 | endDate | [Date](#type-date) | true | — | end date of event |
 | name | [String](#type-string) | true | — | name of event |
 | description | [String](#type-string) | true | — | description of event |
@@ -4967,7 +4967,7 @@ Returns the description text for the passed event, for display in the body area 
 
 ### Returns
 
-`[HTMLString](../main.md#type-htmlstring)` — the HTML to display in the body of the passed event's EventCanvas
+`[HTMLString](../reference.md#type-htmlstring)` — the HTML to display in the body of the passed event's EventCanvas
 
 ---
 ## Method: Calendar.getLongEventHTML
@@ -4985,7 +4985,7 @@ Returns the text to be displayed in a [long-event](#attr-calendaralldayfield) di
 
 ### Returns
 
-`[HTMLString](../main.md#type-htmlstring)` — the HTML to display in the header of an event canvas
+`[HTMLString](../reference.md#type-htmlstring)` — the HTML to display in the header of an event canvas
 
 ---
 ## Method: Calendar.getLanePadding
@@ -5001,6 +5001,6 @@ For views that support [lanes](#attr-calendarlanes), returns the padding to appl
 
 ### Returns
 
-`[Integer](../main_2.md#type-integer)` — the padding to apply to events in lanes in the passed or current view
+`[Integer](../reference_2.md#type-integer)` — the padding to apply to events in lanes in the passed or current view
 
 ---

@@ -1,6 +1,6 @@
 # Handling concurrent edits in SmartClient DataSources
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 

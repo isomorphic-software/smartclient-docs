@@ -1,15 +1,15 @@
 # EventCanvas Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
 ## Class: EventCanvas
 
-*Inherits from:* [VLayout](../main.md#class-vlayout)
+*Inherits from:* [VLayout](../reference.md#class-vlayout)
 
 ### Description
-The EventCanvas component is a lightweight [layout](../main.md#class-vlayout) subclass for displaying a [CalendarEvent](../main.md#object-calendarevent) in a [CalendarView](CalendarView.md#class-calendarview).
+The EventCanvas component is a lightweight [layout](../reference.md#class-vlayout) subclass for displaying a [CalendarEvent](../reference.md#object-calendarevent) in a [CalendarView](CalendarView.md#class-calendarview).
 
 Each instance can be [styled](CalendarEvent.md#attr-calendareventstylename), and can render a single area, or separate [header](#attr-eventcanvasshowheader) and [body](#attr-eventcanvasshowbody) areas, for the look of a Window.
 
@@ -141,7 +141,7 @@ When [showLabel](#attr-eventcanvasshowlabel) is true, this autoChild is used to 
 ## Attr: EventCanvas.isZoneCanvas
 
 ### Description
-Readonly property indicating whether this is a special [ZoneCanvas](../main.md#class-zonecanvas) subclass.
+Readonly property indicating whether this is a special [ZoneCanvas](../reference.md#class-zonecanvas) subclass.
 
 **Flags**: R
 
@@ -183,7 +183,7 @@ Whether the [header area](#attr-eventcanvasshowheader) should autosize verticall
 ## Attr: EventCanvas.isIndicatorCanvas
 
 ### Description
-Readonly property dictating whether this is a special [IndicatorCanvas](../main.md#class-indicatorcanvas) subclass.
+Readonly property dictating whether this is a special [IndicatorCanvas](../reference.md#class-indicatorcanvas) subclass.
 
 **Flags**: R
 
@@ -205,7 +205,7 @@ Also see [EventCanvas.headerStyle](#attr-eventcanvasheaderstyle) and [EventCanva
 ## Attr: EventCanvas.event
 
 ### Description
-The [event](../main.md#object-calendarevent) associated with this EventCanvas.
+The [event](../reference.md#object-calendarevent) associated with this EventCanvas.
 
 **Flags**: IR
 
@@ -213,11 +213,11 @@ The [event](../main.md#object-calendarevent) associated with this EventCanvas.
 ## Method: EventCanvas.getBodyHTML
 
 ### Description
-Return the HTML to show in the body of this EventCanvas. The default implementation calls [Calendar.getEventBodyHTML](Calendar.md#method-calendargeteventbodyhtml), which returns the value of the [description field](Calendar.md#attr-calendardescriptionfield) for the current [event](../main.md#object-calendarevent).
+Return the HTML to show in the body of this EventCanvas. The default implementation calls [Calendar.getEventBodyHTML](Calendar.md#method-calendargeteventbodyhtml), which returns the value of the [description field](Calendar.md#attr-calendardescriptionfield) for the current [event](../reference.md#object-calendarevent).
 
 ### Returns
 
-`[HTMLString](../main.md#type-htmlstring)` — HTML to display in the body of the canvas
+`[HTMLString](../reference.md#type-htmlstring)` — HTML to display in the body of the canvas
 
 ### Groups
 
@@ -227,16 +227,16 @@ Return the HTML to show in the body of this EventCanvas. The default implementat
 ## Method: EventCanvas.setEvent
 
 ### Description
-Assigns a new [event](../main.md#object-calendarevent) to this EventCanvas, including updates to drag, style and [rollover](#attr-eventcanvasshowrollovercontrols) properties.
+Assigns a new [event](../reference.md#object-calendarevent) to this EventCanvas, including updates to drag, style and [rollover](#attr-eventcanvasshowrollovercontrols) properties.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | event | [CalendarEvent](#type-calendarevent) | false | — | the new event to apply to this EventCanvas |
-| styleName | [CSSStyleName](../main.md#type-cssstylename) | true | — | optional CSS class to apply to this EventCanvas |
-| headerStyle | [CSSStyleName](../main.md#type-cssstylename) | true | — | optional separate CSS class to apply to the [header](#attr-eventcanvasshowheader). |
-| bodyStyle | [CSSStyleName](../main.md#type-cssstylename) | true | — | optional separate CSS class to apply to the [body](#attr-eventcanvasshowbody). |
+| styleName | [CSSStyleName](../reference.md#type-cssstylename) | true | — | optional CSS class to apply to this EventCanvas |
+| headerStyle | [CSSStyleName](../reference.md#type-cssstylename) | true | — | optional separate CSS class to apply to the [header](#attr-eventcanvasshowheader). |
+| bodyStyle | [CSSStyleName](../reference.md#type-cssstylename) | true | — | optional separate CSS class to apply to the [body](#attr-eventcanvasshowbody). |
 
 ### Groups
 
@@ -250,7 +250,7 @@ Returns the HTML to show in the header of this EventCanvas. The default implemen
 
 ### Returns
 
-`[HTMLString](../main.md#type-htmlstring)` — HTML to display in the header of the canvas
+`[HTMLString](../reference.md#type-htmlstring)` — HTML to display in the header of the canvas
 
 ### Groups
 

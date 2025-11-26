@@ -1,12 +1,12 @@
 # BatchUploader Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
 ## Class: BatchUploader
 
-*Inherits from:* [VStack](../main.md#class-vstack)
+*Inherits from:* [VStack](../reference.md#class-vstack)
 
 ### Description
 The BatchUploader handles the upload, validation, review and saving of a dataset expressed in CSV or other upload formats.
@@ -41,7 +41,7 @@ Another technique is to handle the initial SmartClient call in your own servlet,
 
 However, there are circumstances in which you may wish to change it to achieve specific aims. For example, you may wish to override the Java class it invokes, in order to insert your own security or other validation logic into the initial upload flow. This is entirely in keeping with the design, but we regard it as an out-of-the-ordinary use-case: normal usage is simply to ignore the presence of the batchUpload DataSource.
 
-BatchUploader is a [VStack](../main.md#class-vstack), that simply stacks members on the vertical axis without trying to manage their height. If you need to control heights, you can set [vPolicy](Layout.md#attr-layoutvpolicy) to "fill"
+BatchUploader is a [VStack](../reference.md#class-vstack), that simply stacks members on the vertical axis without trying to manage their height. If you need to control heights, you can set [vPolicy](Layout.md#attr-layoutvpolicy) to "fill"
 
 ---
 ## Attr: BatchUploader.uploadDelimiter
@@ -304,7 +304,7 @@ Error message to show when the uploading process detects a missing delimiter or 
 ## Attr: BatchUploader.dataFormat
 
 ### Description
-Format to assume for user-provided data. Use [ImportFormat](../main_2.md#type-importformat) "auto" for auto-detection.
+Format to assume for user-provided data. Use [ImportFormat](../reference_2.md#type-importformat) "auto" for auto-detection.
 
 **Flags**: IR
 

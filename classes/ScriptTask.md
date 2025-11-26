@@ -1,6 +1,6 @@
 # ScriptTask Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -27,7 +27,7 @@ An asynchronous task is expected to start processing in execute(), and will not 
 ### Description
 Does this processElement pass through output from the last executed task (i.e. transient state)?
 
-See [taskInputExpressions](../main_2.md#type-taskinputexpression) for details on the transient state outputs.
+See [taskInputExpressions](../reference_2.md#type-taskinputexpression) for details on the transient state outputs.
 
 Note that this property does not affect the task at all but is an indicator to the user and to the workflow editor of the behavior of the task as coded (See [Process.passThruTaskOutput](Process.md#method-processpassthrutaskoutput)).
 
@@ -56,7 +56,7 @@ For an asynchronous task, the return value is ignored and the task should call [
 ## Method: ScriptTask.setOutput
 
 ### Description
-Sets the task output available to the next task via [Process.getLastTaskOutput](Process.md#method-processgetlasttaskoutput) or more commonly, with a [TaskInputExpression](../main_2.md#type-taskinputexpression) property. If [outputFieldList](Task.md#attr-taskoutputfieldlist) is specified, the output will also be written to the specified fields in the process state (See [taskIO](../kb_topics/taskIO.md#kb-topic-task-input--output)).
+Sets the task output available to the next task via [Process.getLastTaskOutput](Process.md#method-processgetlasttaskoutput) or more commonly, with a [TaskInputExpression](../reference_2.md#type-taskinputexpression) property. If [outputFieldList](Task.md#attr-taskoutputfieldlist) is specified, the output will also be written to the specified fields in the process state (See [taskIO](../kb_topics/taskIO.md#kb-topic-task-input--output)).
 
 To have the output written as-is to the process state, see [bindOutput](ProcessElement.md#attr-processelementbindoutput).
 

@@ -1,6 +1,6 @@
 # RestDataSource Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -19,7 +19,7 @@ A RestDataSource is used just like a normal DataSource. RestDataSources are pre-
 
 If you have a pre-existing REST or WSDL service which is difficult to change, consider adapting SmartClient to the existing service instead, by starting with a normal [DataSource](DataSource.md#class-datasource) and either
 
-*   Uusing the [client-side data integration](../kb_topics/clientDataIntegration.md#kb-topic-client-side-data-integration) facilities to create a mapping between SmartClient's [DSRequest](../main_2.md#object-dsrequest) and [DSResponse](DSResponse.md#class-dsresponse) objects and the message formats of your existing services, **OR**
+*   Uusing the [client-side data integration](../kb_topics/clientDataIntegration.md#kb-topic-client-side-data-integration) facilities to create a mapping between SmartClient's [DSRequest](../reference_2.md#object-dsrequest) and [DSResponse](DSResponse.md#class-dsresponse) objects and the message formats of your existing services, **OR**
 *   Using the highly configurable server-side [RestConnector](../kb_topics/serverRestConnector.md#kb-topic-server-side-rest-connector) to adapt regular client-server DataSource requests/responses to and from the formats required by the remote REST service (server-side data integration)
 
 **NOTE**: do **not** begin this process by creating or subclassing RestDataSource; for a **pre-existing** service which is unrelated to the protocol documented for `RestDataSource`, start by configuring or subclassing [DataSource](DataSource.md#class-datasource) instead.
@@ -197,7 +197,7 @@ Example URL constructed with the metaDataPrefix set to `"_"` (the default):
 
 In this case the server would be able to separate the request's data from the meta data via the `"_"` prefix.
 
-If data is sent to the server via the `"postMessage"` dataProtocol, the data will be serialized as an XML or JSON message according to the `dataFormat` setting. Both XML and JSON messages will contain request metadata such as startRow and endRow, and will appear exactly as though the subset of the [DSRequest](../main_2.md#object-dsrequest) that is meaningful to the server had been passed to [DataSource.xmlSerialize](DataSource.md#method-datasourcexmlserialize) or [JSON.encode](JSON.md#classmethod-jsonencode) respectively.
+If data is sent to the server via the `"postMessage"` dataProtocol, the data will be serialized as an XML or JSON message according to the `dataFormat` setting. Both XML and JSON messages will contain request metadata such as startRow and endRow, and will appear exactly as though the subset of the [DSRequest](../reference_2.md#object-dsrequest) that is meaningful to the server had been passed to [DataSource.xmlSerialize](DataSource.md#method-datasourcexmlserialize) or [JSON.encode](JSON.md#classmethod-jsonencode) respectively.
 
 An example of an XML message might look like this:
 
@@ -553,7 +553,7 @@ Default URL to contact to fulfill all DSRequests. RestDataSources also allow per
 ## Attr: RestDataSource.fetchDataURL
 
 ### Description
-Custom [dataURL](DataSource.md#attr-datasourcedataurl) for [DSRequests](../main_2.md#object-dsrequest) with [operationType](DSRequest.md#attr-dsrequestoperationtype) "fetch".
+Custom [dataURL](DataSource.md#attr-datasourcedataurl) for [DSRequests](../reference_2.md#object-dsrequest) with [operationType](DSRequest.md#attr-dsrequestoperationtype) "fetch".
 
 Use [RestDataSource.dataURL](#attr-restdatasourcedataurl) to configure a single URL for all requests, which is required to support [RPCManager.startQueue](RPCManager.md#classmethod-rpcmanagerstartqueue).
 
@@ -582,7 +582,7 @@ See [RestDataSource.transformRequest](#method-restdatasourcetransformrequest) to
 ## Attr: RestDataSource.addDataURL
 
 ### Description
-Custom [dataURL](DataSource.md#attr-datasourcedataurl) for [DSRequests](../main_2.md#object-dsrequest) with [operationType](DSRequest.md#attr-dsrequestoperationtype) "add".
+Custom [dataURL](DataSource.md#attr-datasourcedataurl) for [DSRequests](../reference_2.md#object-dsrequest) with [operationType](DSRequest.md#attr-dsrequestoperationtype) "add".
 
 See [RestDataSource.dataURL](#attr-restdatasourcedataurl) to configure a single URL for all requests, which is required to support [RPCManager.startQueue](RPCManager.md#classmethod-rpcmanagerstartqueue).
 
@@ -750,7 +750,7 @@ This is because `RestDataSource` specifies default `operationBindings` for all o
 ## Attr: RestDataSource.removeDataURL
 
 ### Description
-Custom [dataURL](DataSource.md#attr-datasourcedataurl) for [DSRequests](../main_2.md#object-dsrequest) with [operationType](DSRequest.md#attr-dsrequestoperationtype) "remove".
+Custom [dataURL](DataSource.md#attr-datasourcedataurl) for [DSRequests](../reference_2.md#object-dsrequest) with [operationType](DSRequest.md#attr-dsrequestoperationtype) "remove".
 
 See [RestDataSource.dataURL](#attr-restdatasourcedataurl) to configure a single URL for all requests, which is required to support [RPCManager.startQueue](RPCManager.md#classmethod-rpcmanagerstartqueue).
 
@@ -760,7 +760,7 @@ See [RestDataSource.dataURL](#attr-restdatasourcedataurl) to configure a single 
 ## Attr: RestDataSource.updateDataURL
 
 ### Description
-Custom [dataURL](DataSource.md#attr-datasourcedataurl) for [DSRequests](../main_2.md#object-dsrequest) with [operationType](DSRequest.md#attr-dsrequestoperationtype) "update".
+Custom [dataURL](DataSource.md#attr-datasourcedataurl) for [DSRequests](../reference_2.md#object-dsrequest) with [operationType](DSRequest.md#attr-dsrequestoperationtype) "update".
 
 See [RestDataSource.dataURL](#attr-restdatasourcedataurl) to configure a single URL for all requests, which is required to support [RPCManager.startQueue](RPCManager.md#classmethod-rpcmanagerstartqueue).
 
@@ -828,7 +828,7 @@ You can override `transformResponse()` in order to further modify the response, 
 |------|------|----------|---------|-------------|
 | dsResponse | [DSResponse](#type-dsresponse) | false | — | default DSResponse derived from the response data |
 | dsRequest | [DSRequest](#type-dsrequest) | false | — | DSRequest object that initiated this request |
-| data | [XMLDocument](../main.md#type-xmldocument)|[JSON](#type-json) | false | — | XML document or JSON objects returned by the web service |
+| data | [XMLDocument](../reference.md#type-xmldocument)|[JSON](#type-json) | false | — | XML document or JSON objects returned by the web service |
 
 ### Returns
 

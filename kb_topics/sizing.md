@@ -1,6 +1,6 @@
 # sizing
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -11,7 +11,7 @@ Width and height of an object
 
 ### Related
 
-- [Overflow](../main.md#type-overflow)
+- [Overflow](../reference.md#type-overflow)
 - [Page.resizeTo](../classes/Page.md#classmethod-pageresizeto)
 - [Page.getWidth](../classes/Page.md#classmethod-pagegetwidth)
 - [Page.getHeight](../classes/Page.md#classmethod-pagegetheight)

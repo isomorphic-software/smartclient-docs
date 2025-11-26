@@ -1,6 +1,6 @@
 # FacetValue Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -199,7 +199,7 @@ Can only be set on the [metric facet](CubeGrid.md#attr-cubegridmetricfacetid) or
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | viewer | [CubeGrid](#type-cubegrid) | false | — | this facetValue's CubeGrid |
-| record | [Object](../main.md#type-object) | false | — | cell record |
+| record | [Object](../reference.md#type-object) | false | — | cell record |
 | rowNum | [number](#type-number) | false | — | row value for the cell |
 | colNum | [number](#type-number) | false | — | column value for the cell |
 

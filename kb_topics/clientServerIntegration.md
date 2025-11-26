@@ -1,6 +1,6 @@
 # Client-Server Integration
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -11,15 +11,15 @@ Like client-server desktop applications, SmartClient browser-based applications 
 
 **DataSources**
 
-First you must create [DataSources](../classes/DataSource.md#class-datasource) that describe the objects from your object model that will be loaded or manipulated within your application. All of SmartClient's most powerful functionality builds on the concept of a DataSource, and because of SmartClient's databinding framework (see [DataBoundComponent](../main.md#interface-databoundcomponent)), it's as easy to create a DataSource that can configure an unlimited number of components as it is to configure a single component.
+First you must create [DataSources](../classes/DataSource.md#class-datasource) that describe the objects from your object model that will be loaded or manipulated within your application. All of SmartClient's most powerful functionality builds on the concept of a DataSource, and because of SmartClient's databinding framework (see [DataBoundComponent](../reference.md#interface-databoundcomponent)), it's as easy to create a DataSource that can configure an unlimited number of components as it is to configure a single component.
 
-For background information on how to create DataSources, [bind](../main.md#interface-databoundcomponent) components to DataSources and initiate [DSRequest](../main_2.md#object-dsrequest)s, please see the _Data Binding_ chapter of the _SmartClient Quickstart Guide_.
+For background information on how to create DataSources, [bind](../reference.md#interface-databoundcomponent) components to DataSources and initiate [DSRequest](../reference_2.md#object-dsrequest)s, please see the _Data Binding_ chapter of the _SmartClient Quickstart Guide_.
 
 **Data Integration**
 
 DataSources provide a data-provider agnostic API to SmartClient Visual Components that allow them to perform the 4 CRUD operations (**C**reate, **R**etrieve, **U**pdate, **D**elete). By "agnostic" we mean that the implementation details - the nuts and bolts of how a given DataSource actually retrieves or updates data - are unknown to bound SmartClient components. One effect of this is that DataSources are "pluggable": they can be replaced without affecting the User Interface.
 
-When a visual component, or your own custom code, performs a CRUD operation on a DataSource, the DataSource creates a [DSRequest](../main_2.md#object-dsrequest) (DataSource Request) representing the operation. "Data Integration" is the process of fulfilling that DSRequest by creating a corresponding [DSResponse](../classes/DSResponse.md#class-dsresponse) (DataSource Response), by using a variety of possible approaches to connect to the ultimate data provider.
+When a visual component, or your own custom code, performs a CRUD operation on a DataSource, the DataSource creates a [DSRequest](../reference_2.md#object-dsrequest) (DataSource Request) representing the operation. "Data Integration" is the process of fulfilling that DSRequest by creating a corresponding [DSResponse](../classes/DSResponse.md#class-dsresponse) (DataSource Response), by using a variety of possible approaches to connect to the ultimate data provider.
 
 There are two main approaches to integrating DataSources with your server technology:
 
@@ -67,12 +67,12 @@ This section aims to help you decide which of the many possible data integration
   
 **RPCs: Unstructured Server Communication**
 
-SmartClient also supports "unstructured" client-server operations. These [RPCRequest](../main.md#object-rpcrequest)s (Remote Procedure Call Requests) are a low-level, very flexible mechanism for custom client-server communications. In an nutshell, RPCRequests:
+SmartClient also supports "unstructured" client-server operations. These [RPCRequest](../reference.md#object-rpcrequest)s (Remote Procedure Call Requests) are a low-level, very flexible mechanism for custom client-server communications. In an nutshell, RPCRequests:
 
 *   may contain arbitrary data
 *   are always initiated by custom code (a call to [RPCManager.send](../classes/RPCManager.md#classmethod-rpcmanagersend)), and have their responses handled by custom code (the callback passed to `send()`)
 
-RPCRequests are relatively rare. Most client-server communications are better done in a structured fashion using a [DSRequest](../main_2.md#object-dsrequest) (DataSource Request). Note that _any_ RPCRequest can alternatively be framed as a [DataSource fetch](../classes/DataSource.md#method-datasourcefetchdata); depending on the circumstances, this may be more convenient.
+RPCRequests are relatively rare. Most client-server communications are better done in a structured fashion using a [DSRequest](../reference_2.md#object-dsrequest) (DataSource Request). Note that _any_ RPCRequest can alternatively be framed as a [DataSource fetch](../classes/DataSource.md#method-datasourcefetchdata); depending on the circumstances, this may be more convenient.
 
 See the [RPCManager](../classes/RPCManager.md#class-rpcmanager) documentation for further information on RPCRequests.
 

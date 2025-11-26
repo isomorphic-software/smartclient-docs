@@ -1,6 +1,6 @@
 # HeaderLevel Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -49,6 +49,6 @@ Note that this method will not run for spans in this headerLevel that have a non
 
 ### Returns
 
-`[HTMLString](../main.md#type-htmlstring)` — The formatted title for the values passed in
+`[HTMLString](../reference.md#type-htmlstring)` — The formatted title for the values passed in
 
 ---

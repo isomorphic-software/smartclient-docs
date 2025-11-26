@@ -1,6 +1,6 @@
 # PaletteNode Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -27,7 +27,7 @@ Prefix used to create unique component ID. If not specified, [PaletteNode.type](
 ### Description
 Name used to create unique component ID. If not specified, [PaletteNode.type](#attr-palettenodetype) is used.
 
-Note: idName must follow all rules for a [Identifier](../main.md#type-identifier).
+Note: idName must follow all rules for a [Identifier](../reference.md#type-identifier).
 
 **Flags**: IR
 
@@ -67,7 +67,7 @@ Image to display in lieu of the usual placeholder text.
 ## Attr: PaletteNode.canDuplicate
 
 ### Description
-If set to false, indicates that this node cannot be [copy & pasted](EditProxy.md#attr-editproxyusecopypasteshortcuts), including disallowing calls to [EditContext.makePaletteNode](EditContext.md#method-editcontextmakepalettenode) for [EditNodes](../main.md#object-editnode) created from this [PaletteNode](../main.md#object-palettenode).
+If set to false, indicates that this node cannot be [copy & pasted](EditProxy.md#attr-editproxyusecopypasteshortcuts), including disallowing calls to [EditContext.makePaletteNode](EditContext.md#method-editcontextmakepalettenode) for [EditNodes](../reference.md#object-editnode) created from this [PaletteNode](../reference.md#object-palettenode).
 
 **Flags**: IR
 
@@ -75,7 +75,7 @@ If set to false, indicates that this node cannot be [copy & pasted](EditProxy.md
 ## Attr: PaletteNode.editNodeProperties
 
 ### Description
-Properties to be applied to the [editNode](../main.md#object-editnode) when created.
+Properties to be applied to the [editNode](../reference.md#object-editnode) when created.
 
 **Flags**: IR
 
@@ -109,7 +109,7 @@ If set to true, indicates that a [Placeholder](Placeholder.md#class-placeholder)
 ## Attr: PaletteNode.type
 
 ### Description
-[SCClassName](../main.md#type-scclassname) this paletteNode creates, for example, "ListGrid".
+[SCClassName](../reference.md#type-scclassname) this paletteNode creates, for example, "ListGrid".
 
 **Flags**: IR
 

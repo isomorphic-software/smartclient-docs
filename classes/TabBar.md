@@ -1,6 +1,6 @@
 # TabBar Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -23,7 +23,7 @@ Tab to show as the "more" tab when [TabBar.showMoreTab](#attr-tabbarshowmoretab)
 ## Attr: TabBar.baseLineSrc
 
 ### Description
-Sets [StretchImg.src](StretchImg.md#attr-stretchimgsrc) for the [baseLine](../main.md#kb-topic-baseline) StretchImg.
+Sets [StretchImg.src](StretchImg.md#attr-stretchimgsrc) for the [baseLine](../reference.md#kb-topic-baseline) StretchImg.
 
 ### Groups
 
@@ -98,7 +98,7 @@ Thickness of the baseLine, in pixels. This should be set to match the media spec
 ## Attr: TabBar.baseLineCapSize
 
 ### Description
-Set [StretchImg.capSize](StretchImg.md#attr-stretchimgcapsize) for the [baseLine](../main.md#kb-topic-baseline) stretchImg.
+Set [StretchImg.capSize](StretchImg.md#attr-stretchimgcapsize) for the [baseLine](../reference.md#kb-topic-baseline) stretchImg.
 
 ### Groups
 

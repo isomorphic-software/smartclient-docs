@@ -1,6 +1,6 @@
 # Validator Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -9,9 +9,9 @@
 ### Description
 A validator describes a check that should be performed on a value the user is trying to save.
 
-Validators are specified for DataSource fields via the [DataSourceField.validators](DataSourceField.md#attr-datasourcefieldvalidators) property and [are executed in the order in which they are defined](../main.md#kb-topic-validatorexecution). Validators that need not be run on the server can also be specified for a specific [FormItem](FormItem.md#class-formitem) or [ListGridField](../main_2.md#object-listgridfield).
+Validators are specified for DataSource fields via the [DataSourceField.validators](DataSourceField.md#attr-datasourcefieldvalidators) property and [are executed in the order in which they are defined](../reference.md#kb-topic-validatorexecution). Validators that need not be run on the server can also be specified for a specific [FormItem](FormItem.md#class-formitem) or [ListGridField](../reference_2.md#object-listgridfield).
 
-SmartClient supports a powerful library of [ValidatorTypes](../main.md#type-validatortype) which have identical behavior on both the client and the server.
+SmartClient supports a powerful library of [ValidatorTypes](../reference.md#type-validatortype) which have identical behavior on both the client and the server.
 
 Beyond this, custom validators can be defined on the client and custom validation logic added on the server. Note that the `regexp` and `mask` validator types are very flexible and can be used to perform virtually any kind of formatting check that doesn't involve some large external dataset.
 
@@ -19,13 +19,13 @@ Custom validators can be reused on the client by adding them to the global valid
 
 ### See Also
 
-- [ValidatorType](../main.md#type-validatortype)
+- [ValidatorType](../reference.md#type-validatortype)
 
 ---
 ## ClassAttr: Validator.DISABLED
 
 ### Description
-A declared value of the enum type [FieldAppearance](../main_2.md#type-fieldappearance).
+A declared value of the enum type [FieldAppearance](../reference_2.md#type-fieldappearance).
 
 **Flags**: R
 
@@ -33,7 +33,7 @@ A declared value of the enum type [FieldAppearance](../main_2.md#type-fieldappea
 ## ClassAttr: Validator.HIDDEN
 
 ### Description
-A declared value of the enum type [FieldAppearance](../main_2.md#type-fieldappearance).
+A declared value of the enum type [FieldAppearance](../reference_2.md#type-fieldappearance).
 
 **Flags**: R
 
@@ -131,7 +131,7 @@ Default error message to display when the standard `maxFileSize` type validator 
 ## ClassAttr: Validator.READONLY
 
 ### Description
-A declared value of the enum type [FieldAppearance](../main_2.md#type-fieldappearance).
+A declared value of the enum type [FieldAppearance](../reference_2.md#type-fieldappearance).
 
 **Flags**: R
 
@@ -342,14 +342,14 @@ Enabling this property also implies [FormItem.validateOnExit](FormItem.md#attr-f
 ## Attr: Validator.applyWhen
 
 ### Description
-Used to create a conditional validator based on [criteria](../main.md#object-advancedcriteria). The criteria defines when the validator applies. The form current values or ListGrid record is used as reference for the criteria. If the criteria match, then the validator will be processed. Otherwise the validator is skipped and assumed valid.
+Used to create a conditional validator based on [criteria](../reference.md#object-advancedcriteria). The criteria defines when the validator applies. The form current values or ListGrid record is used as reference for the criteria. If the criteria match, then the validator will be processed. Otherwise the validator is skipped and assumed valid.
 
 To use an `applyWhen` criteria the form or grid must use a [DataSource](DataSource.md#class-datasource).
 
 **NOTE:** `applyWhen` is not supported for "binary" fields.
 
 #### Server and client use
-Conditional validators are enforced both on the server and on the client-side when defined on a DataSource field as shown in the examples below. Note the `applyWhen` element is treated as a [Criterion](../main_2.md#object-criterion).
+Conditional validators are enforced both on the server and on the client-side when defined on a DataSource field as shown in the examples below. Note the `applyWhen` element is treated as a [Criterion](../reference_2.md#object-criterion).
 ```
  <!-- Normal format -->
  <field name="age" type="integer">
@@ -467,7 +467,7 @@ Only applies to validators within a [multiple dataArity](DataBoundComponent.md#a
 ## Attr: Validator.stopIfFalse
 
 ### Description
-Normally, all validators defined for a field will be run [in the order in which they are defined](../main.md#kb-topic-validatorexecution) even if one of the validators has already failed. However, if `stopIfFalse` is set, validation will not proceed beyond this validator if the check fails.
+Normally, all validators defined for a field will be run [in the order in which they are defined](../reference.md#kb-topic-validatorexecution) even if one of the validators has already failed. However, if `stopIfFalse` is set, validation will not proceed beyond this validator if the check fails.
 
 This is useful to prevent expensive validators from being run unnecessarily, or to allow custom validators that don't need to be robust about handling every conceivable type of value.
 
@@ -492,7 +492,7 @@ When set to true, values that equal the specified [Validator.min](#attr-validato
 ### Description
 Type of the validator.
 
-This can be one of the built-in [ValidatorType](../main.md#type-validatortype), the string "custom" to define a custom validator, or the string "serverCustom" to define a server-only custom validator.
+This can be one of the built-in [ValidatorType](../reference.md#type-validatortype), the string "custom" to define a custom validator, or the string "serverCustom" to define a server-only custom validator.
 
 **Flags**: IR
 
@@ -518,7 +518,7 @@ Normally, if the server is trying to run validators and finds a validator that i
 ## Attr: Validator.condition
 
 ### Description
-For a validator that is not a built-in [ValidatorType](../main.md#type-validatortype), a [Callback](../main.md#type-callback), function, or JavaScript expression to evaluate to see if this validator passes or fails.
+For a validator that is not a built-in [ValidatorType](../reference.md#type-validatortype), a [Callback](../reference.md#type-callback), function, or JavaScript expression to evaluate to see if this validator passes or fails.
 
 Because the validator declaration itself is passed as a parameter to `condition()`, you can effectively parameterize the validator. For example, to create a validator that checks that the value is after a certain date:
 
@@ -530,7 +530,7 @@ Because the validator declaration itself is passed as a parameter to `condition(
 ```
 Reusable validators, like the above, can be registered as a standard validatorType by calling [Validator.addValidator](#classmethod-validatoraddvalidator).
 
-Note that, if a field is declared with a builtin [FieldType](../main_2.md#type-fieldtype), the value passed in will already have been converted to the specified type, if possible.
+Note that, if a field is declared with a builtin [FieldType](../reference_2.md#type-fieldtype), the value passed in will already have been converted to the specified type, if possible.
 
 For the required parameters, see the documentation for [ValidatorConditionCallback](Callbacks.md#method-callbacksvalidatorconditioncallback).
 
@@ -553,7 +553,7 @@ Indicates the minimum value for range-based validators. By default, range-valida
 ## Attr: Validator.serverObject
 
 ### Description
-For validators of type "serverCustom" only, a [ServerObject](../main_2.md#object-serverobject) declaration that allows the SmartClient Server to find a Java class via a variety of possible approaches, and call a method on it to perform validation.
+For validators of type "serverCustom" only, a [ServerObject](../reference_2.md#object-serverobject) declaration that allows the SmartClient Server to find a Java class via a variety of possible approaches, and call a method on it to perform validation.
 
 The target object must implement a method whose first 4 arguments are: `Object value, Validator validator, String fieldName, Map record`
 
@@ -618,7 +618,7 @@ To transform the incoming value that is validated into a different value or form
 ## ClassMethod: Validator.create
 
 ### Description
-A Validator shouldn't be created directly. Instead pass [Properties](../main.md#type-properties) as each Validator in [FormItem.validators](FormItem.md#attr-formitemvalidators) or wherever a Validator is needed.
+A Validator shouldn't be created directly. Instead pass [Properties](../reference.md#type-properties) as each Validator in [FormItem.validators](FormItem.md#attr-formitemvalidators) or wherever a Validator is needed.
 
 ---
 ## ClassMethod: Validator.addValidatorDefinitions
@@ -630,7 +630,7 @@ Add several new validator types at once, as though [Validator.addValidatorDefini
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newDefinitions | [Object](../main.md#type-object) | false | — | Set of validators to add. This parameter should be a JavaScript object where the property names are validator type names, and the property values are [ValidatorDefinition](../main_2.md#object-validatordefinition)s. |
+| newDefinitions | [Object](../reference.md#type-object) | false | — | Set of validators to add. This parameter should be a JavaScript object where the property names are validator type names, and the property values are [ValidatorDefinition](../reference_2.md#object-validatordefinition)s. |
 
 ### Groups
 
@@ -652,7 +652,7 @@ Add several new validator types at once, as though [Validator.addValidator](#cla
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newValidators | [Object](../main.md#type-object) | false | — | Set of validators to add. This parameter should be a JavaScript object where the property names are validator type names, and the property values are condition functions or expressions, for example:  
+| newValidators | [Object](../reference.md#type-object) | false | — | Set of validators to add. This parameter should be a JavaScript object where the property names are validator type names, and the property values are condition functions or expressions, for example:  
    `{type1:condition1, type2:condition2}`  
 . |
 
@@ -696,7 +696,7 @@ Add a new validator type that can be specified as [Validator.type](#attr-validat
 Add a new validator type that can be specified as [Validator.type](#attr-validatortype) anywhere validators are declared, such as [DataSourceField.validators](DataSourceField.md#attr-datasourcefieldvalidators) or [FormItem.validators](FormItem.md#attr-formitemvalidators).  
 The `condition` argument should be a method of the same signature as [Validator.condition](#attr-validatorcondition).
 
-This method is essentially a shortcut for building a [ValidatorDefinition](../main_2.md#object-validatordefinition) object and passing that to [Validator.addValidatorDefinition](#classmethod-validatoraddvalidatordefinition)
+This method is essentially a shortcut for building a [ValidatorDefinition](../reference_2.md#object-validatordefinition) object and passing that to [Validator.addValidatorDefinition](#classmethod-validatoraddvalidatordefinition)
 
 ### Parameters
 

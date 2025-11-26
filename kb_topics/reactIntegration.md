@@ -1,6 +1,6 @@
 # Integrating Pre-Existing SmartClient Apps with React
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 

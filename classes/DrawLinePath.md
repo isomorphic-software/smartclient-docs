@@ -1,6 +1,6 @@
 # DrawLinePath Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -97,7 +97,7 @@ The mode in which the [titleLabel](DrawItem.md#attr-drawitemtitlelabel) (if show
 ## Attr: DrawLinePath.knobs
 
 ### Description
-Array of control knobs to display for this item. Each [KnobType](../main.md#type-knobtype) specified in this will turn on UI element(s) allowing the user to manipulate this DrawLinePath. To update the set of knobs at runtime use [DrawItem.showKnobs](DrawItem.md#method-drawitemshowknobs) and [DrawItem.hideKnobs](DrawItem.md#method-drawitemhideknobs).
+Array of control knobs to display for this item. Each [KnobType](../reference.md#type-knobtype) specified in this will turn on UI element(s) allowing the user to manipulate this DrawLinePath. To update the set of knobs at runtime use [DrawItem.showKnobs](DrawItem.md#method-drawitemshowknobs) and [DrawItem.hideKnobs](DrawItem.md#method-drawitemhideknobs).
 
 DrawLinePath supports the "startPoint", "endPoint", "controlPoint1", and "controlPoint2" knob types.
 
@@ -171,8 +171,8 @@ Moves the line path such that the [DrawLinePath.startPoint](#attr-drawlinepathst
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| left | [Integer](../main_2.md#type-integer) | false | — | new left coordinate in pixels |
-| top | [Integer](../main_2.md#type-integer) | false | — | new top coordinate in pixels |
+| left | [Integer](../reference_2.md#type-integer) | false | — | new left coordinate in pixels |
+| top | [Integer](../reference_2.md#type-integer) | false | — | new top coordinate in pixels |
 
 ---
 ## Method: DrawLinePath.setStartPoint
@@ -184,8 +184,8 @@ Update the startPoint
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| left | [Coordinate](../main.md#type-coordinate) | false | — | left coordinate for start point, in pixels |
-| top | [Coordinate](../main.md#type-coordinate) | false | — | top coordinate for start point, in pixels |
+| left | [Coordinate](../reference.md#type-coordinate) | false | — | left coordinate for start point, in pixels |
+| top | [Coordinate](../reference.md#type-coordinate) | false | — | top coordinate for start point, in pixels |
 
 ---
 ## Method: DrawLinePath.moveBy
@@ -197,8 +197,8 @@ Move both the start and end points of the line by a relative amount.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| left | [Distance](../main.md#type-distance) | false | — | change to left coordinate in pixels |
-| top | [Distance](../main.md#type-distance) | false | — | change to top coordinate in pixels |
+| left | [Distance](../reference.md#type-distance) | false | — | change to left coordinate in pixels |
+| top | [Distance](../reference.md#type-distance) | false | — | change to top coordinate in pixels |
 
 ---
 ## Method: DrawLinePath.setControlPoint2
@@ -210,8 +210,8 @@ Sets the coordinates of the controlPoint2 knob and by extension the coordinates 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| left | [Coordinate](../main.md#type-coordinate) | false | — | left coordinate for start point, in pixels |
-| top | [Coordinate](../main.md#type-coordinate) | false | — | top coordinate for start point, in pixels |
+| left | [Coordinate](../reference.md#type-coordinate) | false | — | left coordinate for start point, in pixels |
+| top | [Coordinate](../reference.md#type-coordinate) | false | — | top coordinate for start point, in pixels |
 
 ---
 ## Method: DrawLinePath.getBoundingBox
@@ -233,8 +233,8 @@ Update the endPoint
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| left | [Coordinate](../main.md#type-coordinate) | false | — | left coordinate for end point, in pixels |
-| top | [Coordinate](../main.md#type-coordinate) | false | — | top coordinate for end point, in pixels |
+| left | [Coordinate](../reference.md#type-coordinate) | false | — | left coordinate for end point, in pixels |
+| top | [Coordinate](../reference.md#type-coordinate) | false | — | top coordinate for end point, in pixels |
 
 ---
 ## Method: DrawLinePath.setControlPoint1
@@ -246,7 +246,7 @@ Sets the coordinates of the controlPoint1 knob and by extension the coordinates 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| left | [Coordinate](../main.md#type-coordinate) | false | — | left coordinate for start point, in pixels |
-| top | [Coordinate](../main.md#type-coordinate) | false | — | top coordinate for start point, in pixels |
+| left | [Coordinate](../reference.md#type-coordinate) | false | — | left coordinate for start point, in pixels |
+| top | [Coordinate](../reference.md#type-coordinate) | false | — | top coordinate for start point, in pixels |
 
 ---

@@ -1,6 +1,6 @@
 # Integrating AI Technology
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -12,7 +12,7 @@ AI technology is woven into the SmartClient Framework, not only at a base level,
 *   Filter a [ListGrid](../classes/ListGrid_1.md#class-listgrid) according to their description of the records to include or exclude.
 *   Add a custom field to a `ListGrid`, combining data from the underlying dataSource or augmenting the data with AI-provided knowledge.
 *   Sort the data of a `ListGrid` according to the user's description of how the data should be ordered.
-*   Build a custom [DataBoundComponent](../main.md#interface-databoundcomponent) using available dataSources according to the user's description of what they would like to see.
+*   Build a custom [DataBoundComponent](../reference.md#interface-databoundcomponent) using available dataSources according to the user's description of what they would like to see.
 
 #### The `AIEngine` class
 Communication with AI services is performed by instances of the [AIEngine](../classes/AIEngine.md#class-aiengine) class. The following engines are built-in and don't require registration. Just put the appropriate API key in your [server configuration file](server_properties.md#kb-topic-serverproperties-file).
@@ -64,9 +64,9 @@ If the built-in [AI Engines](../classes/AIEngine.md#class-aiengine) aren't enoug
 You can also [unregister](#classmethod-aiunregisterengine) an engine, or grab the `AIEngine` instance of a built-in or manually registered engine by passing the ID to [AI.getEngine](../classes/AI.md#classmethod-aigetengine).
 
 #### AI Component Views and `AIServiceMode`
-AI can be used to set up the view settings of a [ListGrid](../classes/ListGrid_1.md#class-listgrid), such as filters, sorts, and record hilites, according to the user's natural-language request for how the records should be filtered, sorted, and hilited. These AI-generated view settings are saved in the component [viewState](../main.md#kb-topic-viewstate).
+AI can be used to set up the view settings of a [ListGrid](../classes/ListGrid_1.md#class-listgrid), such as filters, sorts, and record hilites, according to the user's natural-language request for how the records should be filtered, sorted, and hilited. These AI-generated view settings are saved in the component [viewState](../reference.md#kb-topic-viewstate).
 
-With each AI component view feature, there is an associated [AIServiceMode](../main.md#type-aiservicemode) setting that controls the mode for how AI should respond to user requests:
+With each AI component view feature, there is an associated [AIServiceMode](../reference.md#type-aiservicemode) setting that controls the mode for how AI should respond to user requests:
 
 | Filtering | [filterViaAIMode](../classes/ListGrid_1.md#attr-listgridfilterviaaimode) |
 |---|---|
@@ -75,14 +75,14 @@ With each AI component view feature, there is an associated [AIServiceMode](../m
 
 With respect to AI component views, the supported AI service modes are:
 
-*   AI Assist - AI drives existing UI on the user's behalf according to the request. An example of this is: AI converts the user's description of what records they would like to see into [AdvancedCriteria](../main.md#object-advancedcriteria) that is then set as the filter criterion of a `DataBoundComponent`.
+*   AI Assist - AI drives existing UI on the user's behalf according to the request. An example of this is: AI converts the user's description of what records they would like to see into [AdvancedCriteria](../reference.md#object-advancedcriteria) that is then set as the filter criterion of a `DataBoundComponent`.
 *   AIDE (AI Data Enhance) - per-record augmentation or enhancements provided via AI. Examples of this are AI-generated fields, where the field values are not derived from the records, but rather, supplied via AI.
 *   Hybrid - a combination of AI Assist and AIDE, where AI decides whether AI Assist, AIDE, or some combination of both approaches should be used to best respond to the request.
 
 The amount of interaction with AI is lowest in AI Assist mode. AIDE requires more interaction with AI, and Hybrid mode requires the most amount of interaction. More interaction with AI generally requires more time to process the component view request.
 
 #### Requirements for AI Component Views to be Enabled
-With respect to a particular [DataBoundComponent](../main.md#interface-databoundcomponent), the requirements for AI component views to be enabled are:
+With respect to a particular [DataBoundComponent](../reference.md#interface-databoundcomponent), the requirements for AI component views to be enabled are:
 
 *   AI must be enabled: [AI.isEnabled](../classes/AI.md#classmethod-aiisenabled)
 *   A globally-installed [DataSource](../classes/DataSource.md#class-datasource) with a primary key and [supporting AdvancedCriteria](../classes/DataSource.md#method-datasourcesupportsadvancedcriteria) must be set.

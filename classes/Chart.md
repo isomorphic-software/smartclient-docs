@@ -1,13 +1,13 @@
 # Chart Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
 ## ClassAttr: Chart.allChartTypes
 
 ### Description
-All [ChartTypes](../main.md#type-charttype) that are supported by this class. Should be defined by concrete implementations of the charting interface.
+All [ChartTypes](../reference.md#type-charttype) that are supported by this class. Should be defined by concrete implementations of the charting interface.
 
 **Flags**: R
 
@@ -23,7 +23,7 @@ Whether to use stacking for charts where this makes sense (bar, column, line and
 ## Attr: Chart.chartType
 
 ### Description
-Type of chart to draw, see [ChartType](../main.md#type-charttype) for a list of known types.
+Type of chart to draw, see [ChartType](../reference.md#type-charttype) for a list of known types.
 
 **Flags**: IRW
 
@@ -234,7 +234,7 @@ Get facet value definition by facetId and facetValueId.
 
 ### See Also
 
-- [FacetValue](../main.md#object-facetvalue)
+- [FacetValue](../reference.md#object-facetvalue)
 
 ---
 ## Method: Chart.setupChart
@@ -246,7 +246,7 @@ General facet and data model setup, including auto-derivation of facetValues fro
 ## Method: Chart.getValue
 
 ### Description
-Lookup a data value by the set of matching facetValues expressed as a [FacetValueMap](../main.md#object-facetvaluemap). Automatically handles the [inlinedFacet](#attr-chartdata), if any.
+Lookup a data value by the set of matching facetValues expressed as a [FacetValueMap](../reference.md#object-facetvaluemap). Automatically handles the [inlinedFacet](#attr-chartdata), if any.
 
 This method is designed to be called by a concrete Chart implementation.
 

@@ -1,6 +1,6 @@
 # ColorPicker Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -501,8 +501,8 @@ The optional second parameter to this method indicates whether the shared picker
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| properties | [Object](../main.md#type-object) | false | — | Properties to apply to the global ColorPicker object |
-| keepCurrentState | [boolean](../main.md#type-boolean) | true | — | Should we keep the current state? If false (or not provided), revert to default state |
+| properties | [Object](../reference.md#type-object) | false | — | Properties to apply to the global ColorPicker object |
+| keepCurrentState | [boolean](../reference.md#type-boolean) | true | — | Should we keep the current state? If false (or not provided), revert to default state |
 
 ---
 ## Method: ColorPicker.getRed
@@ -512,7 +512,7 @@ Returns the Red element of the currently-selected color, as an integer from 0-25
 
 ### Returns
 
-`[int](../main.md#type-int)` — red color component
+`[int](../reference.md#type-int)` — red color component
 
 ### See Also
 
@@ -526,7 +526,7 @@ Returns the Blue element of the currently-selected color, as an integer from 0-2
 
 ### Returns
 
-`[int](../main.md#type-int)` — blue color component
+`[int](../reference.md#type-int)` — blue color component
 
 ### See Also
 
@@ -588,7 +588,7 @@ Returns the Green element of the currently-selected color, as an integer from 0-
 
 ### Returns
 
-`[int](../main.md#type-int)` — green color component
+`[int](../reference.md#type-int)` — green color component
 
 ### See Also
 
@@ -634,7 +634,7 @@ Returns the opacity of the currently-selected color, as an integer from 0-100. I
 
 ### Returns
 
-`[int](../main.md#type-int)` — opacity value
+`[int](../reference.md#type-int)` — opacity value
 
 ---
 ## Method: ColorPicker.setRed
@@ -660,7 +660,7 @@ Returns the Saturation of the currently-selected color, as an integer from 0-240
 
 ### Returns
 
-`[int](../main.md#type-int)` — saturation value
+`[int](../reference.md#type-int)` — saturation value
 
 ### See Also
 
@@ -674,7 +674,7 @@ Returns the Luminosity (brightness) of the currently-selected color, as an integ
 
 ### Returns
 
-`[int](../main.md#type-int)` — luminosity value
+`[int](../reference.md#type-int)` — luminosity value
 
 ### See Also
 
@@ -716,7 +716,7 @@ Note: It is not allowed to set the pick mode to "complex" if [allowComplexMode](
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| pickMode | [ColorPickerMode](../main.md#type-colorpickermode) | false | — | the new pick mode. |
+| pickMode | [ColorPickerMode](../reference.md#type-colorpickermode) | false | — | the new pick mode. |
 
 ---
 ## Method: ColorPicker.setSupportsTransparency
@@ -728,7 +728,7 @@ Set the [ColorPicker.supportsTransparency](#attr-colorpickersupportstransparency
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| transparencyFlag | [boolean](../main.md#type-boolean) | false | — | Set to true to enable transparency/opacity |
+| transparencyFlag | [boolean](../reference.md#type-boolean) | false | — | Set to true to enable transparency/opacity |
 
 ---
 ## Method: ColorPicker.setLuminosity
@@ -757,7 +757,7 @@ Override this method to be notified when the user selects a color either by clic
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | color | [String](#type-string) | false | — | The color selected, in HTML format. |
-| opacity | [Integer](../main_2.md#type-integer) | false | — | The selected opacity, from 0 (transparent) to 100 (opaque), or null if [ColorPicker.supportsTransparency](#attr-colorpickersupportstransparency) is false or the picker selected a color while in [simple mode](../main.md#type-colorpickermode). |
+| opacity | [Integer](../reference_2.md#type-integer) | false | — | The selected opacity, from 0 (transparent) to 100 (opaque), or null if [ColorPicker.supportsTransparency](#attr-colorpickersupportstransparency) is false or the picker selected a color while in [simple mode](../reference.md#type-colorpickermode). |
 
 ### See Also
 
@@ -771,7 +771,7 @@ Returns the Hue of the currently-selected color, as an integer from 0-239
 
 ### Returns
 
-`[int](../main.md#type-int)` — hue value
+`[int](../reference.md#type-int)` — hue value
 
 ### See Also
 

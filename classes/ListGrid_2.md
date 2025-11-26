@@ -1,9 +1,34 @@
 # ListGrid Documentation (Part 2 of 2)
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
+## Method: ListGrid.setFieldIcon
+
+### Description
+Change the [ListGridField.icon](ListGridField.md#attr-listgridfieldicon) for a field after the grid is created
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| fieldName | [String](#type-string) | false | — | field to update |
+| icon | [SCImgURL](../reference.md#type-scimgurl) | false | — | icon for the field |
+
+---
+## Method: ListGrid.setCanRemoveRecords
+
+### Description
+Updates the [ListGrid.canRemoveRecords](ListGrid_1.md#attr-listgridcanremoverecords) property for this listGrid at runtime.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| canRemove | [boolean](../reference.md#type-boolean) | false | — | new canRemoveRecords value |
+
+---
 ## Method: ListGrid.hilitesChanged
 
 ### Description
@@ -17,7 +42,7 @@ Notification method executed whenever the end user uses the HiliteEditor to chan
 ## Method: ListGrid.getDataSource
 
 ### Description
-The DataSource that this component should bind to for default fields and for performing [DataSource requests](../main_2.md#object-dsrequest).
+The DataSource that this component should bind to for default fields and for performing [DataSource requests](../reference_2.md#object-dsrequest).
 
 ### Returns
 
@@ -100,7 +125,7 @@ The default set of menu items includes items for built-in ListGrid features like
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| fieldNum | [Integer](../main_2.md#type-integer) | true | — | Index of the field the user clicked in the [fields](ListGrid_1.md#attr-listgridfields) array. **Note:** if the user right-clicked the sorter button this parameter will be `null`. |
+| fieldNum | [Integer](../reference_2.md#type-integer) | true | — | Index of the field the user clicked in the [fields](ListGrid_1.md#attr-listgridfields) array. **Note:** if the user right-clicked the sorter button this parameter will be `null`. |
 
 ### Returns
 
@@ -123,11 +148,11 @@ Note that if [ListGrid.saveRequestProperties](ListGrid_1.md#attr-listgridsavereq
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | rows | [Array of Number](#type-array-of-number) | true | — | optionally specify which rows to save |
-| saveCallback | [Callback](../main.md#type-callback) | true | — | If specified this callback will be fired on a successful save of the specified rows. Note that if there are no pending edits to be saved this callback will not fire - you can check for this condition using [ListGrid.hasChanges](#method-listgridhaschanges) or [ListGrid.rowHasChanges](#method-listgridrowhaschanges). Use [ListGrid.editFailed](ListGrid_1.md#method-listgrideditfailed) to find out about failures encountered during saving (on a per-row basis). |
+| saveCallback | [Callback](../reference.md#type-callback) | true | — | If specified this callback will be fired on a successful save of the specified rows. Note that if there are no pending edits to be saved this callback will not fire - you can check for this condition using [ListGrid.hasChanges](#method-listgridhaschanges) or [ListGrid.rowHasChanges](#method-listgridrowhaschanges). Use [ListGrid.editFailed](ListGrid_1.md#method-listgrideditfailed) to find out about failures encountered during saving (on a per-row basis). |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true if a save has been initiated (at least one row had changes, passed client-side validation, and a save has been attempted). False otherwise
+`[boolean](../reference.md#type-boolean)` — true if a save has been initiated (at least one row had changes, passed client-side validation, and a save has been attempted). False otherwise
 
 ### Groups
 
@@ -150,14 +175,14 @@ Updates the [ListGridField.hideOnTablet](ListGridField.md#attr-listgridfieldhide
 ## Method: ListGrid.setSortState
 
 ### Description
-Reset this grid's sort state (sort field and direction or list of [SortSpecifier](../main_2.md#object-sortspecifier)s) to match the [ListGridSortState](../main.md#type-listgridsortstate) object passed in.  
+Reset this grid's sort state (sort field and direction or list of [SortSpecifier](../reference_2.md#object-sortspecifier)s) to match the [ListGridSortState](../reference.md#type-listgridsortstate) object passed in.  
 Used to restore previous state retrieved from the grid by a call to [ListGrid.getSortState](#method-listgridgetsortstate).
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| sortState | [ListGridSortState](../main.md#type-listgridsortstate) | false | — | Object describing the desired sort state for the grid. |
+| sortState | [ListGridSortState](../reference.md#type-listgridsortstate) | false | — | Object describing the desired sort state for the grid. |
 
 ### Groups
 
@@ -181,7 +206,7 @@ When binding to a new DataSource, if the component has any existing "fields" or 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| dataSource | [GlobalId](../main.md#type-globalid)|[DataSource](#type-datasource) | false | — | DataSource to bind to |
+| dataSource | [GlobalId](../reference.md#type-globalid)|[DataSource](#type-datasource) | false | — | DataSource to bind to |
 | fields | [Array of DataSourceField](#type-array-of-datasourcefield) | true | — | optional array of fields to use |
 
 ---
@@ -194,7 +219,7 @@ This object can be passed to [ListGrid.setUserCriteriaState](#method-listgridset
 
 ### Returns
 
-`[ListGridUserCriteriaState](../main_2.md#type-listgridusercriteriastate)` — current criteria state for the grid.
+`[ListGridUserCriteriaState](../reference_2.md#type-listgridusercriteriastate)` — current criteria state for the grid.
 
 ### Groups
 
@@ -202,7 +227,7 @@ This object can be passed to [ListGrid.setUserCriteriaState](#method-listgridset
 
 ### See Also
 
-- [ListGridUserCriteriaState](../main_2.md#type-listgridusercriteriastate)
+- [ListGridUserCriteriaState](../reference_2.md#type-listgridusercriteriastate)
 - [ListGrid.setUserCriteriaState](#method-listgridsetusercriteriastate)
 
 ---
@@ -232,7 +257,7 @@ This is useful for cases where it would not be appropriate to render the standar
 
 ### Returns
 
-`[HTMLString](../main.md#type-htmlstring)` — formatted value to display in the cell.
+`[HTMLString](../reference.md#type-htmlstring)` — formatted value to display in the cell.
 
 ### See Also
 
@@ -301,7 +326,7 @@ Update the [bodyStyleName](ListGrid_1.md#attr-listgridbodystylename) for this li
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| styleName | [CSSStyleName](../main.md#type-cssstylename) | false | — | new body style name |
+| styleName | [CSSStyleName](../reference.md#type-cssstylename) | false | — | new body style name |
 
 ---
 ## Method: ListGrid.getEditedRecord
@@ -315,11 +340,11 @@ The returned value is never null, and can be freely modified.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| valuesID | [number](#type-number)|[Object](../main.md#type-object) | false | — | rowNum of the record being edited, or an Object containing values for all the record's primary keys |
+| valuesID | [number](#type-number)|[Object](../reference.md#type-object) | false | — | rowNum of the record being edited, or an Object containing values for all the record's primary keys |
 
 ### Returns
 
-`[Object](../main.md#type-object)` — A copy of the record with unsaved edits included
+`[Object](../reference.md#type-object)` — A copy of the record with unsaved edits included
 
 ### Groups
 
@@ -382,7 +407,7 @@ Called when the mouse pointer enters a row
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -394,14 +419,14 @@ Called when the mouse pointer enters a row
 ### Description
 For a [grouped](ListGrid_1.md#attr-listgridgroupbyfield) grid, returns all the direct children of the supplied node in the [ListGrid.groupTree](ListGrid_1.md#attr-listgridgrouptree) if `recordsOnly` false. Otherwise, if `recordsOnly` is true, returns instead a list of all descendants under the supplied node that are actual records from the grid's original data - i.e. that are not other group nodes (for multi-grouping) or summary records.
 
-Note that null may be returned if the grid is not currently grouped or the supplied node is not a valid [GroupNode](../main.md#object-groupnode).
+Note that null may be returned if the grid is not currently grouped or the supplied node is not a valid [GroupNode](../reference.md#object-groupnode).
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | node | [GroupNode](#type-groupnode) | false | — | node from [ListGrid.groupTree](ListGrid_1.md#attr-listgridgrouptree) |
-| recordsOnly | [boolean](../main.md#type-boolean) | false | — | `true` to return all descendants that are actual records from the grid's original data, or `false` to return all immediate children of the supplied group node |
+| recordsOnly | [boolean](../reference.md#type-boolean) | false | — | `true` to return all descendants that are actual records from the grid's original data, or `false` to return all immediate children of the supplied group node |
 
 ### Returns
 
@@ -421,8 +446,8 @@ Setter for [ListGrid.autoFitFieldWidths](ListGrid_1.md#attr-listgridautofitfield
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| autoFit | [boolean](../main.md#type-boolean) | false | — | New value for autoFitFieldWidths |
-| dontResetWidths | [boolean](../main.md#type-boolean) | true | — | If autoFitFieldWidths was true, and is being set to false, should fields be resized to their originally specified size? Pass in this parameter to suppress this behavior. |
+| autoFit | [boolean](../reference.md#type-boolean) | false | — | New value for autoFitFieldWidths |
+| dontResetWidths | [boolean](../reference.md#type-boolean) | true | — | If autoFitFieldWidths was true, and is being set to false, should fields be resized to their originally specified size? Pass in this parameter to suppress this behavior. |
 
 ---
 ## Method: ListGrid.showRecordComponent
@@ -439,11 +464,11 @@ The second parameter is only applicable if [ListGrid.showRecordComponentsByCell]
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | record | [ListGridRecord](#type-listgridrecord) | false | — | record being processed |
-| colNum | [Integer](../main_2.md#type-integer) | true | — | column index of the cell in which the record component may be shown. Will be null unless showRecordComponentsByCell is true. |
+| colNum | [Integer](../reference_2.md#type-integer) | true | — | column index of the cell in which the record component may be shown. Will be null unless showRecordComponentsByCell is true. |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — return false to cancel showRecordComponent behavior
+`[boolean](../reference.md#type-boolean)` — return false to cancel showRecordComponent behavior
 
 ### Groups
 
@@ -464,7 +489,7 @@ When hiding multiple fields, this method should be called rather than calling [L
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | fields | [Array of String](#type-array-of-string)|[Array of ListGridField](#type-array-of-listgridfield) | false | — | fields to hide |
-| suppressRelayout | [boolean](../main.md#type-boolean) | true | — | if passed, don't relayout non-explicit sized fields to fit the available space |
+| suppressRelayout | [boolean](../reference.md#type-boolean) | true | — | if passed, don't relayout non-explicit sized fields to fit the available space |
 
 ---
 ## Method: ListGrid.sorterClick
@@ -474,7 +499,7 @@ Notification method fired when the user clicks on the corner [sort button](ListG
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — return false to suppress the sort
+`[boolean](../reference.md#type-boolean)` — return false to suppress the sort
 
 ### Groups
 
@@ -489,7 +514,7 @@ Notification method fired when the user clicks on the corner [sort button](ListG
 ### Description
 When [ListGrid.canExpandRecords](ListGrid_1.md#attr-listgridcanexpandrecords) is true, gets the embedded-component to show as a given record's expansionComponent. This component is then housed in [a VLayout](ListGrid_1.md#attr-listgridexpansionlayout) and embedded into a record's row.
 
-By default, this method returns one of a set of built-in components, according to the value of [listGrid.expansionMode](../main_2.md#type-expansionmode). You can override this method to return any component you wish to provide as an expansionComponent.
+By default, this method returns one of a set of built-in components, according to the value of [listGrid.expansionMode](../reference_2.md#type-expansionmode). You can override this method to return any component you wish to provide as an expansionComponent.
 
 As long as the record is expanded, this component may be retrieved via a call to [ListGrid.getCurrentExpansionComponent](#method-listgridgetcurrentexpansioncomponent).
 
@@ -523,7 +548,7 @@ Changes selectionAppearance on the fly.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| selectionAppearance | [SelectionAppearance](../main.md#type-selectionappearance) | false | — | new selection appearance |
+| selectionAppearance | [SelectionAppearance](../reference.md#type-selectionappearance) | false | — | new selection appearance |
 
 ---
 ## Method: ListGrid.getFields
@@ -551,7 +576,7 @@ Update the [bodyOverflow](ListGrid_1.md#attr-listgridbodyoverflow) for this list
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| overflow | [Overflow](../main.md#type-overflow) | false | — | new overflow setting for the body |
+| overflow | [Overflow](../reference.md#type-overflow) | false | — | new overflow setting for the body |
 
 **Flags**: A
 
@@ -570,7 +595,7 @@ Note also that if multiple fields are to be hidden it is more efficient to call 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | field | [String](#type-string)|[ListGridField](#type-listgridfield) | false | — | field to hide |
-| suppressRelayout | [boolean](../main.md#type-boolean) | true | — | if passed, don't relayout non-explicit sized fields to fit the available space |
+| suppressRelayout | [boolean](../reference.md#type-boolean) | true | — | if passed, don't relayout non-explicit sized fields to fit the available space |
 
 ---
 ## Method: ListGrid.cellSelectionChanged
@@ -586,7 +611,7 @@ Called when (cell-based) selection changes within this grid.
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — Returning false will prevent the GridRenderer styling from being updated to reflect the selection change.
+`[boolean](../reference.md#type-boolean)` — Returning false will prevent the GridRenderer styling from being updated to reflect the selection change.
 
 ### Groups
 
@@ -604,7 +629,7 @@ Setter for [ListGrid.fixedRecordHeights](ListGrid_1.md#attr-listgridfixedrecordh
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| fixedRecordHeights | [boolean](../main.md#type-boolean) | false | — | New fixedRecordHeights value |
+| fixedRecordHeights | [boolean](../reference.md#type-boolean) | false | — | New fixedRecordHeights value |
 
 ---
 ## Method: ListGrid.drawAreaChanged
@@ -635,14 +660,14 @@ The colNum parameter is applicable only when [ListGrid.showRecordComponentsByCel
 
 If this row should not have a `recordComponent`, return null.
 
-This method should create and return a new component for the record passed in every time it is called and never return the same Canvas instance twice. To re-use components with different rows, set [RecordComponentPoolingMode](../main_2.md#type-recordcomponentpoolingmode) to "recycle". In this mode, in addition to implementing this method, developers should also implement [ListGrid.updateRecordComponent](#method-listgridupdaterecordcomponent) which allows already created components to be altered for re-use in new records. See the [ListGrid.showRecordComponents](ListGrid_1.md#attr-listgridshowrecordcomponents) overview for more information.
+This method should create and return a new component for the record passed in every time it is called and never return the same Canvas instance twice. To re-use components with different rows, set [RecordComponentPoolingMode](../reference_2.md#type-recordcomponentpoolingmode) to "recycle". In this mode, in addition to implementing this method, developers should also implement [ListGrid.updateRecordComponent](#method-listgridupdaterecordcomponent) which allows already created components to be altered for re-use in new records. See the [ListGrid.showRecordComponents](ListGrid_1.md#attr-listgridshowrecordcomponents) overview for more information.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | record | [ListGridRecord](#type-listgridrecord) | false | — | record to create a component for |
-| colNum | [Integer](../main_2.md#type-integer) | false | — | cell to which the component applies |
+| colNum | [Integer](../reference_2.md#type-integer) | false | — | cell to which the component applies |
 
 ### Returns
 
@@ -662,7 +687,7 @@ Redraw just the [grid header](ListGrid_1.md#attr-listgridheader)
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| rightNow | [boolean](../main.md#type-boolean) | false | — | If true, redraw the grid header with a direct inline call to its redraw() method. Otherwise, [mark the header for redraw](Canvas.md#method-canvasmarkforredraw) |
+| rightNow | [boolean](../reference.md#type-boolean) | false | — | If true, redraw the grid header with a direct inline call to its redraw() method. Otherwise, [mark the header for redraw](Canvas.md#method-canvasmarkforredraw) |
 
 ---
 ## Method: ListGrid.getValueIcon
@@ -680,7 +705,7 @@ Returns the appropriate valueIcon for a cell based on the field and the data val
 
 ### Returns
 
-`[SCImgURL](../main.md#type-scimgurl)` — url for the icon
+`[SCImgURL](../reference.md#type-scimgurl)` — url for the icon
 
 ### Groups
 
@@ -697,7 +722,7 @@ Perform a DataSource "update" operation to update existing records in this compo
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | updatedRecord | [Record](#type-record) | false | — | updated record |
-| callback | [DSCallback](../main_2.md#type-dscallback) | true | — | method to call on operation completion |
+| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | method to call on operation completion |
 | requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | additional properties to set on the DSRequest that will be issued |
 
 ### Groups
@@ -714,7 +739,7 @@ For a discussion of the various filtering and criteria-management APIs and when 
 
 When `fetchData()` is first called, if data has not already been provided via [setData()](#method-listgridsetdata), this method will create a [ResultSet](ResultSet.md#class-resultset), which will be configured based on component settings such as [DataBoundComponent.fetchOperation](DataBoundComponent.md#attr-databoundcomponentfetchoperation) and [DataBoundComponent.dataPageSize](DataBoundComponent.md#attr-databoundcomponentdatapagesize), as well as the general purpose [ListGrid.dataProperties](ListGrid_1.md#attr-listgriddataproperties). The created ResultSet will automatically send a DSRequest to retrieve data from [listGrid.dataSource](ListGrid_1.md#attr-listgriddatasource), and from then on will automatically manage paging through large datasets, as well as performing filtering and sorting operations inside the browser when possible - see the [ResultSet](ResultSet.md#class-resultset) docs for details.
 
-**NOTE:** do not use **both** [autoFetchData:true](DataBoundComponent.md#attr-databoundcomponentautofetchdata) **and** a call to `fetchData()` - this may result in two DSRequests to fetch data. Use either [autoFetchData](DataBoundComponent.md#attr-databoundcomponentautofetchdata) and [Criteria](../main_2.md#type-criteria) **or** a manual call to fetchData() passing criteria.
+**NOTE:** do not use **both** [autoFetchData:true](DataBoundComponent.md#attr-databoundcomponentautofetchdata) **and** a call to `fetchData()` - this may result in two DSRequests to fetch data. Use either [autoFetchData](DataBoundComponent.md#attr-databoundcomponentautofetchdata) and [Criteria](../reference_2.md#type-criteria) **or** a manual call to fetchData() passing criteria.
 
 Whether a ResultSet was automatically created or provided via [setData()](#method-listgridsetdata), subsequent calls to fetchData() will simply call [ResultSet.setCriteria](ResultSet.md#method-resultsetsetcriteria).
 
@@ -722,15 +747,15 @@ Changes to criteria may or may not result in a DSRequest to the server due to [c
 
 If you need to force data to be re-fetched, you can call [invalidateCache()](#method-listgridinvalidatecache) and new data will automatically be fetched from the server using the current criteria and sort direction. **NOTE:** when using `invalidateCache()` there is no need to **also** call `fetchData()` and in fact this could produce unexpected results.
 
-This method takes an optional callback parameter (set to a [DSCallback](../main_2.md#type-dscallback)) to fire when the fetch completes. Note that this callback will not fire if no server fetch is performed. In this case the data is updated synchronously, so as soon as this method completes you can interact with the new data. If necessary, you can use [willFetchData()](DataBoundComponent.md#method-databoundcomponentwillfetchdata) to determine whether or not a server fetch will occur when `fetchData()` is called with new criteria.
+This method takes an optional callback parameter (set to a [DSCallback](../reference_2.md#type-dscallback)) to fire when the fetch completes. Note that this callback will not fire if no server fetch is performed. In this case the data is updated synchronously, so as soon as this method completes you can interact with the new data. If necessary, you can use [willFetchData()](DataBoundComponent.md#method-databoundcomponentwillfetchdata) to determine whether or not a server fetch will occur when `fetchData()` is called with new criteria.
 
 In addition to the callback parameter for this method, developers can use [dataArrived()](#method-listgriddataarrived) to be notified every time data is loaded.
 
-By default, this method assumes a [TextMatchStyle](../main_2.md#type-textmatchstyle) of "exact"; that can be overridden by supplying a different value in the requestProperties parameter. See [DataBoundComponent.willFetchData](DataBoundComponent.md#method-databoundcomponentwillfetchdata);
+By default, this method assumes a [TextMatchStyle](../reference_2.md#type-textmatchstyle) of "exact"; that can be overridden by supplying a different value in the requestProperties parameter. See [DataBoundComponent.willFetchData](DataBoundComponent.md#method-databoundcomponentwillfetchdata);
 
 **Changing the request properties**
 
-Changes to [TextMatchStyle](../main_2.md#type-textmatchstyle) made via `requestProperties` will be honored in combination with the fetch criteria, possibly invalidating cache and triggering a server request if needed, as documented for [willFetchData()](DataBoundComponent.md#method-databoundcomponentwillfetchdata). In contrast, changes to [operationId](DSRequest.md#attr-dsrequestoperationid) in the request properties will cause the [ResultSet](ResultSet.md#class-resultset) or [ResultTree](ResultTree.md#class-resulttree) to be rebuilt, always refetching from the server. However, changes to other request properties after the initial fetch won't be detected, and no fetch will get triggered based on that new request context.
+Changes to [TextMatchStyle](../reference_2.md#type-textmatchstyle) made via `requestProperties` will be honored in combination with the fetch criteria, possibly invalidating cache and triggering a server request if needed, as documented for [willFetchData()](DataBoundComponent.md#method-databoundcomponentwillfetchdata). In contrast, changes to [operationId](DSRequest.md#attr-dsrequestoperationid) in the request properties will cause the [ResultSet](ResultSet.md#class-resultset) or [ResultTree](ResultTree.md#class-resulttree) to be rebuilt, always refetching from the server. However, changes to other request properties after the initial fetch won't be detected, and no fetch will get triggered based on that new request context.
 
 To pick up such changes, we recommend that you call [setData(\[\])](#method-listgridsetdata) (passing an empty array to ensure the data model is cleared), and then call this method to fetch again. If you try to do it by calling [invalidateCache()](#method-listgridinvalidatecache), you may see duplicate fetches if you haven't already updated the data context by calling this method with the new request properties, and fail to do so before the component is [redrawn](Canvas.md#method-canvasredraw).
 
@@ -738,8 +763,8 @@ To pick up such changes, we recommend that you call [setData(\[\])](#method-list
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| criteria | [Criteria](../main_2.md#type-criteria) | true | — | Search criteria. If a [DynamicForm](DynamicForm.md#class-dynamicform) is passed in as this argument instead of a raw criteria object, will be derived by calling [DynamicForm.getValuesAsCriteria](DynamicForm.md#method-dynamicformgetvaluesascriteria) |
-| callback | [DSCallback](../main_2.md#type-dscallback) | true | — | callback to invoke when a fetch is complete. Fires only if server contact was required |
+| criteria | [Criteria](../reference_2.md#type-criteria) | true | — | Search criteria. If a [DynamicForm](DynamicForm.md#class-dynamicform) is passed in as this argument instead of a raw criteria object, will be derived by calling [DynamicForm.getValuesAsCriteria](DynamicForm.md#method-dynamicformgetvaluesascriteria) |
+| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke when a fetch is complete. Fires only if server contact was required |
 | requestProperties | [DSRequest](#type-dsrequest) | true | — | additional properties to set on the DSRequest that will be issued |
 
 ### Groups
@@ -754,7 +779,7 @@ To pick up such changes, we recommend that you call [setData(\[\])](#method-list
 ## Method: ListGrid.getFieldState
 
 ### Description
-Returns a snapshot of the current presentation of this listGrid's fields as a [ListGridFieldState](../main_2.md#type-listgridfieldstate) object.
+Returns a snapshot of the current presentation of this listGrid's fields as a [ListGridFieldState](../reference_2.md#type-listgridfieldstate) object.
 
 This object can later be passed to [ListGrid.setFieldState](#method-listgridsetfieldstate) to reset this grid's fields to the current state.
 
@@ -771,7 +796,7 @@ When applying sparse field state to a component via [ListGrid.setFieldState](#me
 
 ### Returns
 
-`[ListGridFieldState](../main_2.md#type-listgridfieldstate)` — current state of this grid's fields.
+`[ListGridFieldState](../reference_2.md#type-listgridfieldstate)` — current state of this grid's fields.
 
 ### Groups
 
@@ -791,11 +816,11 @@ Return the left coordinate for a given column number as a GLOBAL coordinate
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| colNum | [Integer](../main_2.md#type-integer) | false | — | number of the column |
+| colNum | [Integer](../reference_2.md#type-integer) | false | — | number of the column |
 
 ### Returns
 
-`[Integer](../main_2.md#type-integer)` — page left offset of the passed colNum, or null if undrawn or no such column
+`[Integer](../reference_2.md#type-integer)` — page left offset of the passed colNum, or null if undrawn or no such column
 
 ### Groups
 
@@ -814,11 +839,11 @@ Returns the column number of the provided X-coordinate, or the most recent mouse
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| x | [Integer](../main_2.md#type-integer) | true | — | X-coordinate relative to the left edge of the content to obtain the column number for. If not provided, then [Canvas.getOffsetX](Canvas.md#method-canvasgetoffsetx) will be used. |
+| x | [Integer](../reference_2.md#type-integer) | true | — | X-coordinate relative to the left edge of the content to obtain the column number for. If not provided, then [Canvas.getOffsetX](Canvas.md#method-canvasgetoffsetx) will be used. |
 
 ### Returns
 
-`[int](../main.md#type-int)` — column number, or -2 if beyond last drawn column
+`[int](../reference.md#type-int)` — column number, or -2 if beyond last drawn column
 
 ### Groups
 
@@ -835,7 +860,7 @@ Update the [ListGridField.headerTitleStyle](ListGridField.md#attr-listgridfieldh
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | name | [String](#type-string) | false | — | name of the field. |
-| newStyle | [CSSStyleName](../main.md#type-cssstylename) | false | — | new titleTyle for the field header |
+| newStyle | [CSSStyleName](../reference.md#type-cssstylename) | false | — | new titleTyle for the field header |
 
 ---
 ## Method: ListGrid.getEditValues
@@ -847,11 +872,11 @@ Returns the current set of unsaved edits for a given row being edited.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| valuesID | [number](#type-number)|[Object](../main.md#type-object) | false | — | rowNum of the record being edited, or an Object containing values for all the record's primary keys |
+| valuesID | [number](#type-number)|[Object](../reference.md#type-object) | false | — | rowNum of the record being edited, or an Object containing values for all the record's primary keys |
 
 ### Returns
 
-`[Object](../main.md#type-object)` — Current editValues object for the row. This contains the current edit values in {fieldName1:value1, fieldName2:value2} format.
+`[Object](../reference.md#type-object)` — Current editValues object for the row. This contains the current edit values in {fieldName1:value1, fieldName2:value2} format.
 
 ### Groups
 
@@ -869,8 +894,8 @@ Only applies where [ListGrid.canSelectCells](ListGrid_1.md#attr-listgridcanselec
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| row | [Integer](../main_2.md#type-integer) | false | — | Index of target row |
-| col | [Integer](../main_2.md#type-integer) | false | — | Index of target col |
+| row | [Integer](../reference_2.md#type-integer) | false | — | Index of target row |
+| col | [Integer](../reference_2.md#type-integer) | false | — | Index of target col |
 
 ### See Also
 
@@ -889,7 +914,7 @@ NOTE: For updating other components based on selections or triggering selection-
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | record | [ListGridRecord](#type-listgridrecord) | false | — | record for which selection changed |
-| state | [boolean](../main.md#type-boolean) | false | — | New selection state (true for selected, false for unselected) |
+| state | [boolean](../reference.md#type-boolean) | false | — | New selection state (true for selected, false for unselected) |
 
 ### Groups
 
@@ -914,7 +939,7 @@ Override this method for more specific control over individual record expansion.
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true if the record can be expanded
+`[boolean](../reference.md#type-boolean)` — true if the record can be expanded
 
 ### Groups
 
@@ -936,7 +961,7 @@ See [addSort()](#method-listgridaddsort) and [toggleSort()](#method-listgridtogg
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| sortSpecifiers | [Array of SortSpecifier](#type-array-of-sortspecifier) | false | — | Array of [SortSpecifier](../main_2.md#object-sortspecifier) objects |
+| sortSpecifiers | [Array of SortSpecifier](#type-array-of-sortspecifier) | false | — | Array of [SortSpecifier](../reference_2.md#object-sortspecifier) objects |
 
 **Flags**: A
 
@@ -994,7 +1019,7 @@ Given a field or field id, return it's index in the fields array
 
 ### Returns
 
-`[int](../main.md#type-int)` — index of the field within this.fields
+`[int](../reference.md#type-int)` — index of the field within this.fields
 
 ### Groups
 
@@ -1016,7 +1041,7 @@ Returns the pixel width of the content of a visible field in this grid.
 
 ### Returns
 
-`[Integer](../main_2.md#type-integer)` — drawn width of this fields content
+`[Integer](../reference_2.md#type-integer)` — drawn width of this fields content
 
 ---
 ## Method: ListGrid.setRecordRadius
@@ -1040,7 +1065,7 @@ Setter for [ListGrid.canExpandRecords](ListGrid_1.md#attr-listgridcanexpandrecor
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| canExpand | [boolean](../main.md#type-boolean) | false | — | new value for listGrid.canExpandRecords. |
+| canExpand | [boolean](../reference.md#type-boolean) | false | — | new value for listGrid.canExpandRecords. |
 
 ---
 ## Method: ListGrid.getAriaState
@@ -1056,7 +1081,7 @@ Note that [redrawing](Canvas.md#method-canvasredraw) the grid will re-evaluate t
 
 ### Returns
 
-`[Object](../main.md#type-object)` — object containing aria attribute names and values to apply to this grid's handle
+`[Object](../reference.md#type-object)` — object containing aria attribute names and values to apply to this grid's handle
 
 **Flags**: A
 
@@ -1092,8 +1117,8 @@ If neither property is set, the default implementation will return `"gridcell"` 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| rowNum | [Integer](../main_2.md#type-integer) | false | — | row index of the cell |
-| colNum | [Integer](../main_2.md#type-integer) | false | — | column index of the cell |
+| rowNum | [Integer](../reference_2.md#type-integer) | false | — | row index of the cell |
+| colNum | [Integer](../reference_2.md#type-integer) | false | — | column index of the cell |
 | record | [ListGridRecord](#type-listgridrecord) | false | — | Record for the cell in question |
 
 ### Returns
@@ -1116,8 +1141,8 @@ Returns the message to display when a user attempts to save a required field wit
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| field | [Object](../main.md#type-object) | false | — | definition of the field being edited |
-| record | [Object](../main.md#type-object) | false | — | record object being edited |
+| field | [Object](../reference.md#type-object) | false | — | definition of the field being edited |
+| record | [Object](../reference.md#type-object) | false | — | record object being edited |
 
 ### Returns
 
@@ -1144,7 +1169,7 @@ Called when a cell receives a double click event.
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -1162,8 +1187,8 @@ Note that `dataArrived()`, unlike [ListGrid.dataChanged](#method-listgriddatacha
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| startRow | [int](../main.md#type-int) | false | — | starting index of the newly loaded set of rows |
-| endRow | [int](../main.md#type-int) | false | — | ending index of the newly loaded set of rows (non inclusive). |
+| startRow | [int](../reference.md#type-int) | false | — | starting index of the newly loaded set of rows |
+| endRow | [int](../reference.md#type-int) | false | — | ending index of the newly loaded set of rows (non inclusive). |
 
 ### See Also
 
@@ -1183,8 +1208,8 @@ If `changeType` is "groupBy", [ListGrid.handleGroupBy](#method-listgridhandlegro
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| changeType | [GroupTreeChangeType](../main_2.md#type-grouptreechangetype) | false | — | did the change originate from [ListGrid.groupBy](#method-listgridgroupby), [ListGrid.regroup](#method-listgridregroup). or an incremental data change? |
-| success | [boolean](../main.md#type-boolean) | false | — | did the operation complete successfully? |
+| changeType | [GroupTreeChangeType](../reference_2.md#type-grouptreechangetype) | false | — | did the change originate from [ListGrid.groupBy](#method-listgridgroupby), [ListGrid.regroup](#method-listgridregroup). or an incremental data change? |
+| success | [boolean](../reference.md#type-boolean) | false | — | did the operation complete successfully? |
 
 ### Groups
 
@@ -1228,14 +1253,14 @@ You can alternatively use [ListGridField.cellChanged](ListGridField.md#method-li
 ## Method: ListGrid.getRecordSummary
 
 ### Description
-Provides access to the summary (see ["summary"-type](../main.md#type-listgridfieldtype) fields) value of the record for other fields when called from inside the body of [ListGridField.getRecordSummary](ListGridField.md#method-listgridfieldgetrecordsummary) (since they're not available directly off the record). The behavior is undefined if not called from inside the [ListGridField.getRecordSummary](ListGridField.md#method-listgridfieldgetrecordsummary) method, or if the summary field has generated dependencies.
+Provides access to the summary (see ["summary"-type](../reference.md#type-listgridfieldtype) fields) value of the record for other fields when called from inside the body of [ListGridField.getRecordSummary](ListGridField.md#method-listgridfieldgetrecordsummary) (since they're not available directly off the record). The behavior is undefined if not called from inside the [ListGridField.getRecordSummary](ListGridField.md#method-listgridfieldgetrecordsummary) method, or if the summary field has generated dependencies.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | record | [ListGridRecord](#type-listgridrecord) | false | — | record for which a summary is being generated |
-| field | [ListGridField](#type-listgridfield)|[int](../main.md#type-int)|[ID](#type-id) | false | — | field, or its number or id |
+| field | [ListGridField](#type-listgridfield)|[int](../reference.md#type-int)|[ID](#type-id) | false | — | field, or its number or id |
 
 ### Returns
 
@@ -1247,7 +1272,7 @@ Provides access to the summary (see ["summary"-type](../main.md#type-listgridfie
 ## Method: ListGrid.selectRecord
 
 ### Description
-Select/deselect a [Record](../main.md#object-record) passed in explicitly, or by index.
+Select/deselect a [Record](../reference.md#object-record) passed in explicitly, or by index.
 
 Note that this method selects records unconditionally, allowing multiple selected records, even when [ListGrid.selectionType](ListGrid_1.md#attr-listgridselectiontype) is "single". To enforce mutually-exclusive record-selection, use [ListGrid.selectSingleRecord](#method-listgridselectsinglerecord).
 
@@ -1256,8 +1281,8 @@ Note that this method selects records unconditionally, allowing multiple selecte
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | record | [Record](#type-record)|[number](#type-number) | false | — | record (or row number) to select |
-| newState | [boolean](../main.md#type-boolean) | true | — | new selection state (if null, defaults to true) |
-| rowNum | [Integer](../main_2.md#type-integer) | true | — | row number to select. Required for [multi-link trees](Tree.md#attr-treemultilinktree) unless row number is passed in the "record" param |
+| newState | [boolean](../reference.md#type-boolean) | true | — | new selection state (if null, defaults to true) |
+| rowNum | [Integer](../reference_2.md#type-integer) | true | — | row number to select. Required for [multi-link trees](Tree.md#attr-treemultilinktree) unless row number is passed in the "record" param |
 
 ### Groups
 
@@ -1320,7 +1345,7 @@ Note that multiple foreign keys into the schema are supported by this method.
 |------|------|----------|---------|-------------|
 | record | [ListGridRecord](#type-listgridrecord) | false | — | DataSource record |
 | schema | [Canvas](#type-canvas)|[DataSource](#type-datasource)|[ID](#type-id) | false | — | schema of the DataSource record, or DataBoundComponent already bound to that schema |
-| callback | [DSCallback](../main_2.md#type-dscallback) | true | — | callback to invoke on completion |
+| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke on completion |
 | requestProperties | [DSRequest](#type-dsrequest) | true | — | additional properties to set on the DSRequest that will be issued |
 
 ### Groups
@@ -1340,7 +1365,7 @@ This method sets up a set of editValues for some row / cell. It differs from 'se
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | rowNum | [number](#type-number) | false | — | Row number for the record being edited |
-| values | [Object](../main.md#type-object) | false | — | New values for the row |
+| values | [Object](../reference.md#type-object) | false | — | New values for the row |
 
 ---
 ## Method: ListGrid.transferSelectedData
@@ -1352,15 +1377,15 @@ To transfer **all** data in, for example, a [ListGrid](ListGrid_1.md#class-listg
 
 Note that drag/drop type transfers of records between components are asynchronous operations: SmartClient may need to perform server turnarounds to establish whether dropped records already exist in the target component. Therefore, it is possible to issue a call to transferSelectedData() and/or the [drop()](#method-listgriddrop) method of a databound component whilst a transfer is still active. When this happens, SmartClient adds the second and subsequent transfer requests to a queue and runs them one after the other. If you want to be notified when a transfer process has actually completed, either provide a callback to this method or implement [DataBoundComponent.dropComplete](DataBoundComponent.md#method-databoundcomponentdropcomplete).
 
-See the [dragging](../main.md#kb-topic-dragging) documentation for an overview of list grid drag/drop data transfer.
+See the [dragging](../reference.md#kb-topic-dragging) documentation for an overview of list grid drag/drop data transfer.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | source | [DataBoundComponent](#type-databoundcomponent) | false | — | source component from which the records will be transferred |
-| index | [Integer](../main_2.md#type-integer) | true | — | target index (drop position) of the rows within this grid. |
-| callback | [Callback](../main.md#type-callback) | true | — | optional callback to be fired when the transfer process has completed. The callback will be passed a single parameter "records", the list of records actually transferred to this component. |
+| index | [Integer](../reference_2.md#type-integer) | true | — | target index (drop position) of the rows within this grid. |
+| callback | [Callback](../reference.md#type-callback) | true | — | optional callback to be fired when the transfer process has completed. The callback will be passed a single parameter "records", the list of records actually transferred to this component. |
 
 ### Groups
 
@@ -1379,11 +1404,11 @@ Returns the HTML that is displayed by the default cellValueHover handler. Return
 | record | [ListGridRecord](#type-listgridrecord) | false | — | cell record as returned by getCellRecord() |
 | rowNum | [number](#type-number) | false | — | row number for the cell |
 | colNum | [number](#type-number) | false | — | column number of the cell |
-| defaultHTML | [HTMLString](../main.md#type-htmlstring) | false | — | the HTML that would have been displayed by default |
+| defaultHTML | [HTMLString](../reference.md#type-htmlstring) | false | — | the HTML that would have been displayed by default |
 
 ### Returns
 
-`[HTMLString](../main.md#type-htmlstring)` — HTML to be displayed in the hover. If null or an empty string, then the hover is canceled.
+`[HTMLString](../reference.md#type-htmlstring)` — HTML to be displayed in the hover. If null or an empty string, then the hover is canceled.
 
 ### Groups
 
@@ -1408,7 +1433,7 @@ Default implementation evaluates and returns the dynamic [ListGrid.groupByText](
 
 ### Returns
 
-`[HTMLString](../main.md#type-htmlstring)` — Title to show in the menu item
+`[HTMLString](../reference.md#type-htmlstring)` — Title to show in the menu item
 
 ### Groups
 
@@ -1422,7 +1447,7 @@ Returns the current [ListGrid.filterWindowCriteria](ListGrid_1.md#attr-listgridf
 
 ### Returns
 
-`[Criteria](../main_2.md#type-criteria)` — a copy of the current filter window criteria
+`[Criteria](../reference_2.md#type-criteria)` — a copy of the current filter window criteria
 
 ---
 ## Method: ListGrid.keyPress
@@ -1434,7 +1459,7 @@ Note that the majority of keyboard handling for a ListGrid is performed by [List
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — return false to cancel
+`[boolean](../reference.md#type-boolean)` — return false to cancel
 
 ---
 ## Method: ListGrid.editComplete
@@ -1450,9 +1475,9 @@ No default implementation.
 |------|------|----------|---------|-------------|
 | rowNum | [number](#type-number) | false | — | current index of the row that was saved |
 | colNum | [number](#type-number) | false | — | index of the column that was saved, if applicable |
-| newValues | [Object](../main.md#type-object)|[Record](#type-record) | false | — | new values that were saved |
+| newValues | [Object](../reference.md#type-object)|[Record](#type-record) | false | — | new values that were saved |
 | oldValues | [Record](#type-record) | false | — | the complete original values from before the save occurred |
-| editCompletionEvent | [EditCompletionEvent](../main_2.md#type-editcompletionevent) | false | — | Event that led to the save |
+| editCompletionEvent | [EditCompletionEvent](../reference_2.md#type-editcompletionevent) | false | — | Event that led to the save |
 | dsResponse | [DSResponse](#type-dsresponse) | true | — | for DataSource saves, DSResponse object returned |
 
 ### Groups
@@ -1486,12 +1511,12 @@ For example, if row 2 col 0 spans 3 cells, `getCellStartRow()` for row 2 col 0, 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| rowNum | [int](../main.md#type-int) | false | — | row number of cell for which the start row should be returned |
-| colNum | [int](../main.md#type-int) | false | — | column number of cell for which the start row should be returned |
+| rowNum | [int](../reference.md#type-int) | false | — | row number of cell for which the start row should be returned |
+| colNum | [int](../reference.md#type-int) | false | — | column number of cell for which the start row should be returned |
 
 ### Returns
 
-`[int](../main.md#type-int)` — row number where spanning starts
+`[int](../reference.md#type-int)` — row number where spanning starts
 
 ---
 ## Method: ListGrid.formatCellValue
@@ -1521,7 +1546,7 @@ If `formatCellValue` is defined at the field level for some cell being edited, t
 
 ### Returns
 
-`[HTMLString](../main.md#type-htmlstring)` — formatted value to display in the cell.
+`[HTMLString](../reference.md#type-htmlstring)` — formatted value to display in the cell.
 
 ### Groups
 
@@ -1542,7 +1567,7 @@ Setter for [ListGrid.autoFitMaxHeight](ListGrid_1.md#attr-listgridautofitmaxheig
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| height | [Integer](../main_2.md#type-integer) | false | — | Maximum height in px we'll expand to accommodate if [auto fit](ListGrid_1.md#attr-listgridautofitdata) is enabled vertically. |
+| height | [Integer](../reference_2.md#type-integer) | false | — | Maximum height in px we'll expand to accommodate if [auto fit](ListGrid_1.md#attr-listgridautofitdata) is enabled vertically. |
 
 ### Groups
 
@@ -1564,7 +1589,7 @@ Called when the mouse pointer leaves a row
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -1580,7 +1605,7 @@ Setter for [ListGrid.autoFitExtraRecords](ListGrid_1.md#attr-listgridautofitextr
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| extraRecords | [Integer](../main_2.md#type-integer) | false | — | Number of extra rows beyond the data-size we'll expand to accommodate if [auto fit](ListGrid_1.md#attr-listgridautofitdata) is enabled vertically. |
+| extraRecords | [Integer](../reference_2.md#type-integer) | false | — | Number of extra rows beyond the data-size we'll expand to accommodate if [auto fit](ListGrid_1.md#attr-listgridautofitdata) is enabled vertically. |
 
 ### Groups
 
@@ -1596,7 +1621,7 @@ Setter method for updating [ListGrid.canResizeFields](ListGrid_1.md#attr-listgri
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| canResize | [boolean](../main.md#type-boolean) | false | — | new value for this.canResizeFields |
+| canResize | [boolean](../reference.md#type-boolean) | false | — | new value for this.canResizeFields |
 
 ---
 ## Method: ListGrid.setCanFreezeFields
@@ -1608,7 +1633,7 @@ Setter method for [ListGrid.canFreezeFields](ListGrid_1.md#attr-listgridcanfreez
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| canFreeze | [boolean](../main.md#type-boolean) | false | — | New value for `listGrid.canFreezeFields` |
+| canFreeze | [boolean](../reference.md#type-boolean) | false | — | New value for `listGrid.canFreezeFields` |
 
 ---
 ## Method: ListGrid.chartRow
@@ -1638,11 +1663,11 @@ Returns the Y-coordinate for a given row number as a page-relative coordinate. S
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| rowNum | [int](../main.md#type-int) | false | — | — |
+| rowNum | [int](../reference.md#type-int) | false | — | — |
 
 ### Returns
 
-`[int](../main.md#type-int)` — Y-coordinate
+`[int](../reference.md#type-int)` — Y-coordinate
 
 ### Groups
 
@@ -1659,7 +1684,7 @@ Update the [HeaderSpan.headerTitleStyle](HeaderSpan.md#attr-headerspanheadertitl
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | name | [String](#type-string) | false | — | name of the headerSpan, as specified via [HeaderSpan.name](HeaderSpan.md#attr-headerspanname). |
-| newTitle | [CSSStyleName](../main.md#type-cssstylename) | false | — | new titleStyle for the headerSpan |
+| newTitle | [CSSStyleName](../reference.md#type-cssstylename) | false | — | new titleStyle for the headerSpan |
 
 ---
 ## Method: ListGrid.getEventRow
@@ -1671,11 +1696,11 @@ Returns the row number of the provided Y-coordinate, or the most recent mouse ev
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| y | [Integer](../main_2.md#type-integer) | true | — | Y-coordinate relative to the top edge of the content to obtain the row number for. If not provided, then [Canvas.getOffsetY](Canvas.md#method-canvasgetoffsety) will be used. |
+| y | [Integer](../reference_2.md#type-integer) | true | — | Y-coordinate relative to the top edge of the content to obtain the row number for. If not provided, then [Canvas.getOffsetY](Canvas.md#method-canvasgetoffsety) will be used. |
 
 ### Returns
 
-`[int](../main.md#type-int)` — row number, or -2 if beyond last drawn row
+`[int](../reference.md#type-int)` — row number, or -2 if beyond last drawn row
 
 ### Groups
 
@@ -1691,7 +1716,7 @@ Updates [ListGrid.minFieldWidth](ListGrid_1.md#attr-listgridminfieldwidth) and r
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| width | [int](../main.md#type-int) | false | — | — |
+| width | [int](../reference.md#type-int) | false | — | — |
 
 ### See Also
 
@@ -1725,8 +1750,8 @@ For more information on editing, see the [editing overview](../kb_topics/editing
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| editCompletionEvent | [EditCompletionEvent](../main_2.md#type-editcompletionevent) | true | — | Event used to complete cell editing. Optional, and defaults to `"programmatic"`. Can be used by the `callback` method to perform custom actions such as navigation when the save completes. |
-| callback | [Callback](../main.md#type-callback) | true | — | Callback to fire on completion of the saving process. If no edits were made or client-side validation fails the callback will be fired synchronously at the end of this method.  
+| editCompletionEvent | [EditCompletionEvent](../reference_2.md#type-editcompletionevent) | true | — | Event used to complete cell editing. Optional, and defaults to `"programmatic"`. Can be used by the `callback` method to perform custom actions such as navigation when the save completes. |
+| callback | [Callback](../reference.md#type-callback) | true | — | Callback to fire on completion of the saving process. If no edits were made or client-side validation fails the callback will be fired synchronously at the end of this method.  
 Takes the following parameters:  
 \- rowNum _(Number) edited row number_  
 \- colNum _(Number) edited column number_  
@@ -1760,7 +1785,7 @@ Called when a row receives a contextclick event.
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -1790,7 +1815,7 @@ Note that the record to be matched must already be loaded in the grid - no fetch
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| criteria | [Criteria](../main_2.md#type-criteria) | true | — | Criteria identifying the existing row to edit |
+| criteria | [Criteria](../reference_2.md#type-criteria) | true | — | Criteria identifying the existing row to edit |
 
 ### Groups
 
@@ -1852,7 +1877,7 @@ Clear the current criteria used to filter data. This method clears filter-values
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| callback | [DSCallback](../main_2.md#type-dscallback) | true | — | callback to invoke on completion |
+| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke on completion |
 | requestProperties | [DSRequest](#type-dsrequest) | true | — | additional properties to set on the DSRequest that will be issued |
 
 ### Groups
@@ -1875,11 +1900,11 @@ For a detailed discussion, see the documentation at [ListGrid.canEdit](ListGrid_
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| field | [ListGridField](#type-listgridfield)|[number](#type-number)|[FieldName](../main.md#type-fieldname) | false | — | field object, number, or name |
+| field | [ListGridField](#type-listgridfield)|[number](#type-number)|[FieldName](../reference.md#type-fieldname) | false | — | field object, number, or name |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — whether field can be edited
+`[boolean](../reference.md#type-boolean)` — whether field can be edited
 
 ### Groups
 
@@ -1895,7 +1920,7 @@ Setter for the [ListGrid.frozenFieldsMaxWidth](ListGrid_1.md#attr-listgridfrozen
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| width | [String](#type-string)|[Integer](../main_2.md#type-integer) | false | — | new maximum width for frozen fields |
+| width | [String](#type-string)|[Integer](../reference_2.md#type-integer) | false | — | new maximum width for frozen fields |
 
 ---
 ## Method: ListGrid.canSelectCell
@@ -1907,12 +1932,12 @@ If [ListGrid.canSelectCells](ListGrid_1.md#attr-listgridcanselectcells) is set t
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| rowNum | [int](../main.md#type-int) | false | — | rowNum being selected |
-| colNum | [int](../main.md#type-int) | false | — | colNum being selected |
+| rowNum | [int](../reference.md#type-int) | false | — | rowNum being selected |
+| colNum | [int](../reference.md#type-int) | false | — | colNum being selected |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — return false to disallow selection
+`[boolean](../reference.md#type-boolean)` — return false to disallow selection
 
 **Flags**: A
 
@@ -1938,7 +1963,7 @@ Also, if an explicit property is set in ariaState, it will be respected and will
 
 ### Returns
 
-`[Object](../main.md#type-object)` — Object containing aria property names and values to write into the button's handle
+`[Object](../reference.md#type-object)` — Object containing aria property names and values to write into the button's handle
 
 ### Groups
 
@@ -1968,7 +1993,7 @@ By default, all data is charted if all data is loaded, otherwise, data visible i
 | dataFields | [Array of String](#type-array-of-string) | true | — | optional list of fields to use as labels. By default, all fields are used. |
 | dataRows | [Array of ListGridRecord](#type-array-of-listgridrecord) | true | — | set of records to chart. Can be obtained by eg [grid.data.getRange()](ResultSet.md#method-resultsetgetrange). |
 | chartProperties | [FacetChart Properties](#type-facetchart-properties) | true | — | properties to pass to the created chart |
-| labelFieldFirst | [boolean](../main.md#type-boolean) | true | — | if true, use the labelField as the "first" set of labels, for example, as the bar labels in a stacked bar chart, whereas the second set of labels would appear as the legend. |
+| labelFieldFirst | [boolean](../reference.md#type-boolean) | true | — | if true, use the labelField as the "first" set of labels, for example, as the bar labels in a stacked bar chart, whereas the second set of labels would appear as the legend. |
 
 ### Returns
 
@@ -2014,7 +2039,7 @@ Returns an array of every rowNum for which we have pending (unsubmitted) edits. 
 ## Method: ListGrid.isExpanded
 
 ### Description
-Whether a given [record](../main_2.md#object-listgridrecord) is expanded or collapsed.
+Whether a given [record](../reference_2.md#object-listgridrecord) is expanded or collapsed.
 
 ### Parameters
 
@@ -2043,7 +2068,7 @@ See [ListGrid.scrollToCell](#method-listgridscrolltocell) for a full description
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | colNum | [number](#type-number) | false | — | Index of the column to scroll into view |
-| xPosition | [Alignment](../main_2.md#type-alignment) | true | — | Horizontal position of scrolled column (optional) |
+| xPosition | [Alignment](../reference_2.md#type-alignment) | true | — | Horizontal position of scrolled column (optional) |
 
 ### Groups
 
@@ -2057,7 +2082,7 @@ Returns the index of the row being edited or null if there is no current edit ro
 
 ### Returns
 
-`[int](../main.md#type-int)` — index of the current edit row
+`[int](../reference.md#type-int)` — index of the current edit row
 
 ### Groups
 
@@ -2103,7 +2128,7 @@ Grouping is often an asynchronous operation, both because of automatic loading o
 ### Description
 This method is called to retrieve the [ListGrid.rollUnderCanvas](ListGrid_1.md#attr-listgridrollundercanvas) when the user moves over a new row or cell if [showing a rollUnder canvas](ListGrid_1.md#attr-listgridshowrollundercanvas) or showing a [rollUnder canvas for the selected record](ListGrid_1.md#attr-listgridshowselectedrollundercanvas).
 
-The default implementation uses the [AutoChild](../main.md#type-autochild) subystem to create the [ListGrid.rollUnderCanvas](ListGrid_1.md#attr-listgridrollundercanvas) auto child. It may be overridden for custom behavior.
+The default implementation uses the [AutoChild](../reference.md#type-autochild) subystem to create the [ListGrid.rollUnderCanvas](ListGrid_1.md#attr-listgridrollundercanvas) auto child. It may be overridden for custom behavior.
 
 Note that for efficiency this should not typically create a new Canvas every time that it is called. Instead usually a single rollOver canvas should be created and updated to reflect the current rollOver row if necessary.
 
@@ -2115,8 +2140,8 @@ See also [ListGrid.getFrozenRollUnderCanvas](#method-listgridgetfrozenrollunderc
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| rowNum | [Integer](../main_2.md#type-integer) | false | — | index of the current rollOver row. |
-| colNum | [Integer](../main_2.md#type-integer) | false | — | index of the current rollOver column. This parameter will be null unless [useCellRollOvers](ListGrid_1.md#attr-listgridusecellrollovers) is true for the grid. |
+| rowNum | [Integer](../reference_2.md#type-integer) | false | — | index of the current rollOver row. |
+| colNum | [Integer](../reference_2.md#type-integer) | false | — | index of the current rollOver column. This parameter will be null unless [useCellRollOvers](ListGrid_1.md#attr-listgridusecellrollovers) is true for the grid. |
 
 ### Returns
 
@@ -2132,7 +2157,7 @@ See also [ListGrid.getFrozenRollUnderCanvas](#method-listgridgetfrozenrollunderc
 ### Description
 Dynamically set properties for a particular field. This method will update the fields header-button without having to explicitly reset the fields in the grid.
 
-NOTE: Where explicit setters exist for field properties (such as [ListGrid.resizeField](#method-listgridresizefield), [ListGrid.setFieldTitle](#method-listgridsetfieldtitle), [ListGrid.setFieldIcon](ListGrid_1.md#method-listgridsetfieldicon), etc.) these should be used instead.
+NOTE: Where explicit setters exist for field properties (such as [ListGrid.resizeField](#method-listgridresizefield), [ListGrid.setFieldTitle](#method-listgridsetfieldtitle), [ListGrid.setFieldIcon](#method-listgridsetfieldicon), etc.) these should be used instead.
 
 ### Parameters
 
@@ -2171,8 +2196,8 @@ For a discussion of the various filtering and criteria-management APIs and when 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| criteria | [Criteria](../main_2.md#type-criteria) | true | — | Search criteria. If a [DynamicForm](DynamicForm.md#class-dynamicform) is passed in as this argument instead of a raw criteria object, will be derived by calling [DynamicForm.getValuesAsCriteria](DynamicForm.md#method-dynamicformgetvaluesascriteria) |
-| callback | [DSCallback](../main_2.md#type-dscallback) | true | — | callback to invoke when a fetch is complete. Fires only if server contact was required; see [fetchData()](#method-listgridfetchdata) for details |
+| criteria | [Criteria](../reference_2.md#type-criteria) | true | — | Search criteria. If a [DynamicForm](DynamicForm.md#class-dynamicform) is passed in as this argument instead of a raw criteria object, will be derived by calling [DynamicForm.getValuesAsCriteria](DynamicForm.md#method-dynamicformgetvaluesascriteria) |
+| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke when a fetch is complete. Fires only if server contact was required; see [fetchData()](#method-listgridfetchdata) for details |
 | requestProperties | [DSRequest](#type-dsrequest) | true | — | for databound components only - optional additional properties to set on the DSRequest that will be issued |
 
 ### Groups
@@ -2222,7 +2247,7 @@ StringMethod to dynamically assemble an HTML string to show in a hover window ov
 
 ### Returns
 
-`[HTMLString](../main.md#type-htmlstring)` — the html to be shown inside the hover for this cell
+`[HTMLString](../reference.md#type-htmlstring)` — the html to be shown inside the hover for this cell
 
 ### Groups
 
@@ -2243,7 +2268,7 @@ Changes selectionType on the fly.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| selectionType | [SelectionStyle](../main.md#type-selectionstyle) | false | — | New selection style. |
+| selectionType | [SelectionStyle](../reference.md#type-selectionstyle) | false | — | New selection style. |
 
 **Flags**: A
 
@@ -2277,7 +2302,7 @@ Called when the mouse pointer leaves a cell
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -2328,7 +2353,7 @@ Returns whether the supplied record is a group or grid summary record. Useful in
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — whether record is summary
+`[boolean](../reference.md#type-boolean)` — whether record is summary
 
 ---
 ## Method: ListGrid.getCellHoverComponent
@@ -2336,7 +2361,7 @@ Returns whether the supplied record is a group or grid summary record. Useful in
 ### Description
 When [ListGrid.showHoverComponents](ListGrid_1.md#attr-listgridshowhovercomponents) is set, this method is called to get the component to show as a hover for the current cell.
 
-By default, this method returns one of a set of builtin components, according to the value of [listGrid.hoverMode](../main.md#type-hovermode). You can override this method to return any component you wish to provide as a hoverComponent, or invoke the superclass method to have the default hover component generated, then further customize it.
+By default, this method returns one of a set of builtin components, according to the value of [listGrid.hoverMode](../reference.md#type-hovermode). You can override this method to return any component you wish to provide as a hoverComponent, or invoke the superclass method to have the default hover component generated, then further customize it.
 
 By default, components returned by `getCellHoverComponent()` will be automatically destroyed when the hover is hidden. To prevent this, set [Canvas.hoverAutoDestroy](Canvas.md#attr-canvashoverautodestroy) to false on the returned component.
 
@@ -2351,8 +2376,8 @@ If you return a component that fetches data or loads content dynamically:
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | record | [Record](#type-record) | false | — | record to get the hoverComponent for |
-| rowNum | [Integer](../main_2.md#type-integer) | false | — | row number for the cell |
-| colNum | [Integer](../main_2.md#type-integer) | false | — | column number of the cell |
+| rowNum | [Integer](../reference_2.md#type-integer) | false | — | row number for the cell |
+| colNum | [Integer](../reference_2.md#type-integer) | false | — | column number of the cell |
 
 ### Returns
 
@@ -2416,7 +2441,7 @@ Check whether a field is currently visible
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true if the field is currently visible, false otherwise.
+`[boolean](../reference.md#type-boolean)` — true if the field is currently visible, false otherwise.
 
 ---
 ## Method: ListGrid.getExportRowBGColor
@@ -2430,12 +2455,12 @@ See [exportBGColor](../kb_topics/exportBGColor.md#kb-topic-exports--cell-backgro
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| rowNum | [int](../main.md#type-int) | false | — | row number |
+| rowNum | [int](../reference.md#type-int) | false | — | row number |
 | record | [Record](#type-record) | false | — | the record object behind the row being exported |
 
 ### Returns
 
-`[CSSColor](../main_2.md#type-csscolor)` — background color to use for the row, or null to use the default background color
+`[CSSColor](../reference_2.md#type-csscolor)` — background color to use for the row, or null to use the default background color
 
 ### Groups
 
@@ -2451,7 +2476,7 @@ Given a field name, return the appropriate field definition. Unlike [getField()]
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| fieldName | [FieldName](../main.md#type-fieldname) | false | — | name of the field to retrieve |
+| fieldName | [FieldName](../reference.md#type-fieldname) | false | — | name of the field to retrieve |
 
 ### Returns
 
@@ -2473,7 +2498,7 @@ Optional stringMethod to fire when the user hovers over a cell and the value is 
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — false to suppress the standard hover
+`[boolean](../reference.md#type-boolean)` — false to suppress the standard hover
 
 ### Groups
 
@@ -2496,7 +2521,7 @@ This object can be passed to [ListGrid.setGroupState](#method-listgridsetgroupst
 
 ### Returns
 
-`[ListGridGroupState](../main.md#type-listgridgroupstate)` — current view state for the grid.
+`[ListGridGroupState](../reference.md#type-listgridgroupstate)` — current view state for the grid.
 
 ### Groups
 
@@ -2504,20 +2529,20 @@ This object can be passed to [ListGrid.setGroupState](#method-listgridsetgroupst
 
 ### See Also
 
-- [ListGridGroupState](../main.md#type-listgridgroupstate)
+- [ListGridGroupState](../reference.md#type-listgridgroupstate)
 - [ListGrid.setGroupState](#method-listgridsetgroupstate)
 
 ---
 ## Method: ListGrid.getSortSpecifier
 
 ### Description
-Returns the [SortSpecifier](../main_2.md#object-sortspecifier) for the passed fieldName, or null if the field is not sorted.
+Returns the [SortSpecifier](../reference_2.md#object-sortspecifier) for the passed fieldName, or null if the field is not sorted.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| fieldName | [FieldName](../main.md#type-fieldname) | false | — | The name of a field, visible, hidden or existing only in the dataSource |
+| fieldName | [FieldName](../reference.md#type-fieldname) | false | — | The name of a field, visible, hidden or existing only in the dataSource |
 
 ### Returns
 
@@ -2529,7 +2554,7 @@ Returns the [SortSpecifier](../main_2.md#object-sortspecifier) for the passed fi
 ## Method: ListGrid.clearSavedViewState
 
 ### Description
-Clear this grid's auto-saved [view state](../main_2.md#type-listgridviewstate) as described in [ListGrid.autoPersistViewState](ListGrid_1.md#attr-listgridautopersistviewstate).
+Clear this grid's auto-saved [view state](../reference_2.md#type-listgridviewstate) as described in [ListGrid.autoPersistViewState](ListGrid_1.md#attr-listgridautopersistviewstate).
 
 ### Groups
 
@@ -2555,8 +2580,8 @@ Note, this is potentially an expensive method. For example, consider a listGrid 
 | rowNum | [Number](#type-number) | false | — | Index of starting row |
 | colNum | [Number](#type-number) | false | — | Index of starting column |
 | direction | [Number](#type-number) | false | — | +1 if searching forward for the next edit cell, -1 if searching backwards |
-| stepThroughFields | [boolean](../main.md#type-boolean) | false | — | true if we should check every field in each row - false if we should check the same field in each row. |
-| checkStartingCell | [boolean](../main.md#type-boolean) | true | — | Should we check whether the cell passed in is editable? Default behavior WILL check that cell - pass false to suppress checking that cell. |
+| stepThroughFields | [boolean](../reference.md#type-boolean) | false | — | true if we should check every field in each row - false if we should check the same field in each row. |
+| checkStartingCell | [boolean](../reference.md#type-boolean) | true | — | Should we check whether the cell passed in is editable? Default behavior WILL check that cell - pass false to suppress checking that cell. |
 
 ### Returns
 
@@ -2576,7 +2601,7 @@ Overridden by ListGrid to pick up aria-rowcount and aria-colcount.
 
 ### Returns
 
-`[Object](../main.md#type-object)` — dynamically calculated default aria state properties
+`[Object](../reference.md#type-object)` — dynamically calculated default aria state properties
 
 **Flags**: A
 
@@ -2584,13 +2609,13 @@ Overridden by ListGrid to pick up aria-rowcount and aria-colcount.
 ## Method: ListGrid.getRecordDropPosition
 
 ### Description
-Returns the [RecordDropPosition](../main.md#type-recorddropposition) for some record drop operation. This value is passed to the [ListGrid.recordDrop](#method-listgridrecorddrop) event notification method.
+Returns the [RecordDropPosition](../reference.md#type-recorddropposition) for some record drop operation. This value is passed to the [ListGrid.recordDrop](#method-listgridrecorddrop) event notification method.
 
 Default implementation determines the position to return based on the specified [ListGrid.recordDropAppearance](ListGrid_1.md#attr-listgridrecorddropappearance) for the grid and the [y-coordinate of the drop event](EventHandler.md#classmethod-eventhandlergety).
 
 ### Returns
 
-`[RecordDropPosition](../main.md#type-recorddropposition)` — record drop position.
+`[RecordDropPosition](../reference.md#type-recorddropposition)` — record drop position.
 
 ---
 ## Method: ListGrid.setDontAutoDestroyComponent
@@ -2603,7 +2628,7 @@ If [ListGrid.showRecordComponents](ListGrid_1.md#attr-listgridshowrecordcomponen
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | component | [Canvas](#type-canvas) | false | — | component in question. |
-| dontAutoDestroy | [boolean](../main.md#type-boolean) | false | — | If true, the component will not be destroyed automatically when the grid is destroyed |
+| dontAutoDestroy | [boolean](../reference.md#type-boolean) | false | — | If true, the component will not be destroyed automatically when the grid is destroyed |
 
 ---
 ## Method: ListGrid.getDragTrackerTitle
@@ -2639,7 +2664,7 @@ Unfreeze a frozen field, so that it will now scroll along with other fields when
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| field | [ListGridField](#type-listgridfield)|[Integer](../main_2.md#type-integer)|[String](#type-string)|[Array](#type-array) | false | — | field or fields to unfreeze. fields may be specified as ListGridField objects, field names or colNum. |
+| field | [ListGridField](#type-listgridfield)|[Integer](../reference_2.md#type-integer)|[String](#type-string)|[Array](#type-array) | false | — | field or fields to unfreeze. fields may be specified as ListGridField objects, field names or colNum. |
 
 ### Groups
 
@@ -2656,13 +2681,13 @@ To format the value displayed in the cell, make use of the [formatting](#method-
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| record | [Object](../main.md#type-object) | false | — | the current record object |
+| record | [Object](../reference.md#type-object) | false | — | the current record object |
 | recordNum | [number](#type-number) | false | — | number of the record in the current set of displayed record (e.g. 0 for the first displayed record) |
 | fieldNum | [number](#type-number) | false | — | number of the field in the listGrid.fields array |
 
 ### Returns
 
-`[HTMLString](../main.md#type-htmlstring)` — display value for this cell
+`[HTMLString](../reference.md#type-htmlstring)` — display value for this cell
 
 ### Groups
 
@@ -2702,11 +2727,11 @@ This method is reliable only for rows that are currently drawn, which is general
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| rowNum | [int](../main.md#type-int) | false | — | — |
+| rowNum | [int](../reference.md#type-int) | false | — | — |
 
 ### Returns
 
-`[int](../main.md#type-int)` — Y-coordinate
+`[int](../reference.md#type-int)` — Y-coordinate
 
 ### Groups
 
@@ -2729,7 +2754,7 @@ For more information on exporting data, see [DataSource.exportData](DataSource.m
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | requestProperties | [DSRequest](#type-dsrequest) | true | — | additional properties to set on the DSRequest that will be issued |
-| callback | [DSCallback](../main_2.md#type-dscallback) | true | — | callback to invoke on completion. Note that this parameter only applies where [DSRequest.exportToClient](DSRequest.md#attr-dsrequestexporttoclient) is explicitly set to false, because file downloads do not provide ordinary SmartClient callbacks |
+| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke on completion. Note that this parameter only applies where [DSRequest.exportToClient](DSRequest.md#attr-dsrequestexporttoclient) is explicitly set to false, because file downloads do not provide ordinary SmartClient callbacks |
 
 ### Groups
 
@@ -2749,7 +2774,7 @@ Setter for [ListGrid.autoFitMaxColumns](ListGrid_1.md#attr-listgridautofitmaxcol
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| maxColumns | [int](../main.md#type-int) | false | — | Maximum number of fields we'll expand to accommodate if [auto fit](ListGrid_1.md#attr-listgridautofitdata) is enabled horizontally. |
+| maxColumns | [int](../reference.md#type-int) | false | — | Maximum number of fields we'll expand to accommodate if [auto fit](ListGrid_1.md#attr-listgridautofitdata) is enabled horizontally. |
 
 ### Groups
 
@@ -2771,7 +2796,7 @@ Called when the mouse hovers over a cell if `this.canHover` is `true`. Returning
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -2827,20 +2852,20 @@ For a discussion of the various filtering and criteria-management APIs and when 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| criteria | [Criteria](../main_2.md#type-criteria)|[AdvancedCriteria](#type-advancedcriteria) | false | — | New criteria to show |
+| criteria | [Criteria](../reference_2.md#type-criteria)|[AdvancedCriteria](#type-advancedcriteria) | false | — | New criteria to show |
 
 ---
 ## Method: ListGrid.getGroupTreeSelection
 
 ### Description
-If this grid [is grouped](ListGrid_1.md#attr-listgridisgrouped), this method will return the current selection. Unlike the standard [getSelection method](#method-listgridgetselection), this method will return [group nodes](#method-listgridisgroupnode) in addition to standard [ListGridRecord](../main_2.md#object-listgridrecord)s within the grid's data.
+If this grid [is grouped](ListGrid_1.md#attr-listgridisgrouped), this method will return the current selection. Unlike the standard [getSelection method](#method-listgridgetselection), this method will return [group nodes](#method-listgridisgroupnode) in addition to standard [ListGridRecord](../reference_2.md#object-listgridrecord)s within the grid's data.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| excludePartialSelection | [boolean](../main.md#type-boolean) | true | — | By default a group header node is considered selected if any members of the group are selected. If this flag is passed in, only header nodes where **all** members of the group are selected will be included in the returned results. |
-| groupNodesOnly | [boolean](../main.md#type-boolean) | true | — | If this parameter is passed as `true`, this method will return just the group header nodes from the group tree. If omitted or false, both header nodes and data records will be returned. |
+| excludePartialSelection | [boolean](../reference.md#type-boolean) | true | — | By default a group header node is considered selected if any members of the group are selected. If this flag is passed in, only header nodes where **all** members of the group are selected will be included in the returned results. |
+| groupNodesOnly | [boolean](../reference.md#type-boolean) | true | — | If this parameter is passed as `true`, this method will return just the group header nodes from the group tree. If omitted or false, both header nodes and data records will be returned. |
 
 ### Returns
 
@@ -2860,8 +2885,8 @@ Also note that this method will clear the [removed](#method-listgridmarkrecordre
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| rowNum | [int](../main.md#type-int) | false | — | Row to cancel |
-| colNum | [int](../main.md#type-int) | false | — | Column to cancel. Note that this parameter is ignored in ListGrids but may be required in subclasses of ListGrid where each cell represents one record in the data set (EG CubeGrid) |
+| rowNum | [int](../reference.md#type-int) | false | — | Row to cancel |
+| colNum | [int](../reference.md#type-int) | false | — | Column to cancel. Note that this parameter is ignored in ListGrids but may be required in subclasses of ListGrid where each cell represents one record in the data set (EG CubeGrid) |
 | dontHideEditor | [Boolean](#type-boolean) | true | — | By default this method will hide the editor if it is currently showing for the row in question. Passing in this parameter will leave the editor visible (and just reset the edit values underneath the editor). |
 
 ### Groups
@@ -2874,14 +2899,14 @@ Also note that this method will clear the [removed](#method-listgridmarkrecordre
 ## Method: ListGrid.setSelectedState
 
 ### Description
-Reset this grid's selection to match the [ListGridSelectedState](../main_2.md#type-listgridselectedstate) object passed in.  
+Reset this grid's selection to match the [ListGridSelectedState](../reference_2.md#type-listgridselectedstate) object passed in.  
 Used to restore previous state retrieved from the grid by a call to [ListGrid.getSelectedState](#method-listgridgetselectedstate).
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| selectedState | [ListGridSelectedState](../main_2.md#type-listgridselectedstate) | false | — | Object describing the desired selection state of the grid |
+| selectedState | [ListGridSelectedState](../reference_2.md#type-listgridselectedstate) | false | — | Object describing the desired selection state of the grid |
 
 ### Groups
 
@@ -2920,7 +2945,7 @@ Called when the ListGrid freezes or unfreezes fields by user action.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| field | [ListGridField](#type-listgridfield)|[Integer](../main_2.md#type-integer)|[String](#type-string)|[Array](#type-array) | false | — | field or fields to freeze. fields may be specified as ListGridField objects, field names or colNum. |
+| field | [ListGridField](#type-listgridfield)|[Integer](../reference_2.md#type-integer)|[String](#type-string)|[Array](#type-array) | false | — | field or fields to freeze. fields may be specified as ListGridField objects, field names or colNum. |
 
 ### Groups
 
@@ -2946,11 +2971,11 @@ Return the left offset (in local coordinate space) of a particular column.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| colNum | [Integer](../main_2.md#type-integer) | false | — | number of the column |
+| colNum | [Integer](../reference_2.md#type-integer) | false | — | number of the column |
 
 ### Returns
 
-`[Integer](../main_2.md#type-integer)` — left offset of the passed colNum, or null if not yet drawn or no such column
+`[Integer](../reference_2.md#type-integer)` — left offset of the passed colNum, or null if not yet drawn or no such column
 
 ### Groups
 
@@ -3014,13 +3039,13 @@ Setter for [GridRenderer.fastCellUpdates](GridRenderer.md#attr-gridrendererfastc
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| fastCellUpdates | [boolean](../main.md#type-boolean) | false | — | whether to enable fastCellUpdates. |
+| fastCellUpdates | [boolean](../reference.md#type-boolean) | false | — | whether to enable fastCellUpdates. |
 
 ---
 ## Method: ListGrid.markRecordsRemoved
 
 ### Description
-Marks an array of records deleted such that a later call to [ListGrid.saveEdits](#method-listgridsaveedits) or [ListGrid.saveAllEdits](#method-listgridsavealledits) will cause a "remove" [DSRequest](../main_2.md#object-dsrequest) to be submitted.
+Marks an array of records deleted such that a later call to [ListGrid.saveEdits](#method-listgridsaveedits) or [ListGrid.saveAllEdits](#method-listgridsavealledits) will cause a "remove" [DSRequest](../reference_2.md#object-dsrequest) to be submitted.
 
 This method is similar to [ListGrid.markRecordRemoved](#method-listgridmarkrecordremoved) but should be more efficient in avoiding unneeded duplicate refreshes due to the multiple records getting marked.
 
@@ -3086,7 +3111,7 @@ This method has no effect if no specific operator has been set on the field, eit
 ### Description
 Sort the grid on one or more fields.
 
-Pass in an array of [SortSpecifier](../main_2.md#object-sortspecifier)s to have the grid's data sorted by the fields in each [specifier.property](../main.md#attr-sortspecifierproperty) and in the directions specified. The grid can be sorted by any combination of fields, including fields specified in the fields array, whether visible or hidden, and [unused fields from the\\n underlying dataSource](DataSource.md#attr-datasourcefields), if there is one.
+Pass in an array of [SortSpecifier](../reference_2.md#object-sortspecifier)s to have the grid's data sorted by the fields in each [specifier.property](../reference.md#attr-sortspecifierproperty) and in the directions specified. The grid can be sorted by any combination of fields, including fields specified in the fields array, whether visible or hidden, and [unused fields from the\\n underlying dataSource](DataSource.md#attr-datasourcefields), if there is one.
 
 If multiple fields are sorted, those that are visible show a directional icon and a small [sort-numeral](ListGrid_1.md#attr-listgridsortnumeralstyle) indicating that field's index in the sort configuration.
 
@@ -3098,7 +3123,7 @@ Note that for editable grids, sorting is performed by underlying data values, no
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| sortSpecifiers | [Array of SortSpecifier](#type-array-of-sortspecifier) | false | — | Array of [SortSpecifier](../main_2.md#object-sortspecifier) objects |
+| sortSpecifiers | [Array of SortSpecifier](#type-array-of-sortspecifier) | false | — | Array of [SortSpecifier](../reference_2.md#object-sortspecifier) objects |
 
 **Flags**: A
 
@@ -3107,7 +3132,7 @@ Note that for editable grids, sorting is performed by underlying data values, no
 
 ### Description
 Returns a snapshot of the current view state of this ListGrid.  
-This includes the field, sort, hilite, group, and selected state of the grid, its criteria and, when canShowFilterEditor is true, whether the filter-editor is visible, returned as a string representation of a [ListGridViewState](../main_2.md#type-listgridviewstate) object.  
+This includes the field, sort, hilite, group, and selected state of the grid, its criteria and, when canShowFilterEditor is true, whether the filter-editor is visible, returned as a string representation of a [ListGridViewState](../reference_2.md#type-listgridviewstate) object.  
 This string can be stored over page-reloads (for example, in [browser local storage](Offline.md#classmethod-offlineput) or as field value in a record stored to a [DataSource](DataSource.md#class-datasource)) and then reapplied to the grid via [ListGrid.setViewState](#method-listgridsetviewstate) later to reset the grid to to the current state (assuming the same data / fields are present).
 
 To detect when view state changes, developers may use the [viewStateChanged event](#method-listgridviewstatechanged).
@@ -3116,7 +3141,7 @@ Note that the [ListGrid.autoPersistViewState](ListGrid_1.md#attr-listgridautoper
 
 ### Returns
 
-`[ListGridViewState](../main_2.md#type-listgridviewstate)` — current view state for the grid.
+`[ListGridViewState](../reference_2.md#type-listgridviewstate)` — current view state for the grid.
 
 ### Groups
 
@@ -3124,7 +3149,7 @@ Note that the [ListGrid.autoPersistViewState](ListGrid_1.md#attr-listgridautoper
 
 ### See Also
 
-- [ListGridViewState](../main_2.md#type-listgridviewstate)
+- [ListGridViewState](../reference_2.md#type-listgridviewstate)
 - [ListGrid.setViewState](#method-listgridsetviewstate)
 
 ---
@@ -3139,8 +3164,8 @@ This is a synonym for `selectRange(startRow, endRow, false);`
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| startRow | [int](../main.md#type-int) | false | — | start of selection range |
-| endRow | [int](../main.md#type-int) | false | — | end of selection range (non-inclusive) |
+| startRow | [int](../reference.md#type-int) | false | — | start of selection range |
+| endRow | [int](../reference.md#type-int) | false | — | end of selection range (non-inclusive) |
 
 ### Groups
 
@@ -3156,7 +3181,7 @@ This is a synonym for `selectRange(startRow, endRow, false);`
 ### Description
 How should "Up" and "Down" arrow keypresses be handled when the user is editing an item in the grid.
 
-Returning "none" will cause the grid to take no action and allow default up/down arrow key behavior within the editor to proceed. Returning "editNext" will create an appropriate [EditCompletionEvent](../main_2.md#type-editcompletionevent) (_"arrow\_up"_ or _"arrow\_down"_ and cause the grid to start editing the previous or next row).
+Returning "none" will cause the grid to take no action and allow default up/down arrow key behavior within the editor to proceed. Returning "editNext" will create an appropriate [EditCompletionEvent](../reference_2.md#type-editcompletionevent) (_"arrow\_up"_ or _"arrow\_down"_ and cause the grid to start editing the previous or next row).
 
 Default behavior varies by item type. For items where up and down arrows have significant functionality to the editor this method returns _"none"_, allowing that standard behavior to proceed. This includes:  
 \- Multi line editors (such as TextAreaItems)  
@@ -3171,11 +3196,11 @@ To override these defaults, developers may specify an explicit arrowKeyEditActio
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | item | [FormItem](#type-formitem) | false | — | Edit item receiving the up or down arrow keypress event |
-| keyName | [KeyName](../main_2.md#type-keyname) | false | — | Key pressed (one of "Arrow\_Up" or "Arrow\_Down") |
+| keyName | [KeyName](../reference_2.md#type-keyname) | false | — | Key pressed (one of "Arrow\_Up" or "Arrow\_Down") |
 
 ### Returns
 
-`[ArrowKeyEditAction](../main.md#type-arrowkeyeditaction)` — action to take
+`[ArrowKeyEditAction](../reference.md#type-arrowkeyeditaction)` — action to take
 
 ---
 ## Method: ListGrid.cellMouseDown
@@ -3193,7 +3218,7 @@ Called when a cell receives a mousedown event.
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -3225,7 +3250,7 @@ As noted under [ListGrid.enforceVClipping](ListGrid_1.md#attr-listgridenforcevcl
 
 ### Returns
 
-`[CSSStyleName](../main.md#type-cssstylename)` — CSS class for this cell
+`[CSSStyleName](../reference.md#type-cssstylename)` — CSS class for this cell
 
 ### See Also
 
@@ -3298,14 +3323,14 @@ When there are no rows in the grid, getDropIndex() returns zero.
 
 If parameter _recordNum_ is not passed, the current event row is used, see [ListGrid.getEventRow](#method-listgridgeteventrow).
 
-Parameter [reorderPosition](../main_2.md#type-reorderposition) indicates where the drop-item should appear in relation to the row at index _recordNum_. If no reorderPosition is provided, it is calculated based on the physical position of the mouse in the drop-target row when the drop occurs; if the mouse is in the top half of a row, the drop-index is before _recordNum_. Otherwise, the drop-index is after _recordNum_.
+Parameter [reorderPosition](../reference_2.md#type-reorderposition) indicates where the drop-item should appear in relation to the row at index _recordNum_. If no reorderPosition is provided, it is calculated based on the physical position of the mouse in the drop-target row when the drop occurs; if the mouse is in the top half of a row, the drop-index is before _recordNum_. Otherwise, the drop-index is after _recordNum_.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | recordNum | [number](#type-number) | true | — | Index of the record to drop onto |
-| reorderPosition | [ReorderPosition](../main_2.md#type-reorderposition) | true | — | Where to drop in relation to _recordNum_ |
+| reorderPosition | [ReorderPosition](../reference_2.md#type-reorderposition) | true | — | Where to drop in relation to _recordNum_ |
 
 ### Returns
 
@@ -3317,7 +3342,7 @@ Parameter [reorderPosition](../main_2.md#type-reorderposition) indicates where t
 ### Description
 Sets the fields array and/or field widths to newFields and sizes, respectively.
 
-If newFields is specified, it is assumed that the new fields may have nothing in common with the old fields, and the component is substantially rebuilt. Furthermore, it's invalid to modify any of the existing [ListGridField](../main_2.md#object-listgridfield)s after they've been passed to this function. Consider the following methods for more efficient, more incremental changes: [ListGrid.resizeField](#method-listgridresizefield), [ListGrid.reorderField](#method-listgridreorderfield), [ListGrid.showField](#method-listgridshowfield), [ListGrid.hideField](#method-listgridhidefield), or [ListGrid.setFieldProperties](#method-listgridsetfieldproperties).
+If newFields is specified, it is assumed that the new fields may have nothing in common with the old fields, and the component is substantially rebuilt. Furthermore, it's invalid to modify any of the existing [ListGridField](../reference_2.md#object-listgridfield)s after they've been passed to this function. Consider the following methods for more efficient, more incremental changes: [ListGrid.resizeField](#method-listgridresizefield), [ListGrid.reorderField](#method-listgridreorderfield), [ListGrid.showField](#method-listgridshowfield), [ListGrid.hideField](#method-listgridhidefield), or [ListGrid.setFieldProperties](#method-listgridsetfieldproperties).
 
 Two specific values of newFields have explicit meanings:
 
@@ -3340,7 +3365,7 @@ During a drag-and-drop interaction, this method returns the set of records being
 
 This method is consulted by [ListGrid.willAcceptDrop](#method-listgridwillacceptdrop).
 
-NOTE: If this component is a [multi-linked](Tree.md#method-treeismultilinktree) `TreeGrid`, this method returns a list of [NodeLocator](../main_2.md#object-nodelocator)s rather than a list of records. Each `nodeLocator` contains a pointer to the associated record in its `node` property.
+NOTE: If this component is a [multi-linked](Tree.md#method-treeismultilinktree) `TreeGrid`, this method returns a list of [NodeLocator](../reference_2.md#object-nodelocator)s rather than a list of records. Each `nodeLocator` contains a pointer to the associated record in its `node` property.
 
 ### Parameters
 
@@ -3350,7 +3375,7 @@ NOTE: If this component is a [multi-linked](Tree.md#method-treeismultilinktree) 
 
 ### Returns
 
-`[Array of Record](#type-array-of-record)` — Array of [Record](../main.md#object-record)s that are currently selected.
+`[Array of Record](#type-array-of-record)` — Array of [Record](../reference.md#object-record)s that are currently selected.
 
 ### Groups
 
@@ -3395,7 +3420,7 @@ Default implementation evaluates and returns [ListGrid.freezeFieldText](ListGrid
 
 ### Returns
 
-`[HTMLString](../main.md#type-htmlstring)` — Title to show in the menu item
+`[HTMLString](../reference.md#type-htmlstring)` — Title to show in the menu item
 
 ### Groups
 
@@ -3413,7 +3438,7 @@ Returns all selected records in this grid.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| excludePartialSelections | [boolean](../main.md#type-boolean) | true | — | When true, partially selected records will not be returned. Otherwise, both fully and partially selected records are returned. |
+| excludePartialSelections | [boolean](../reference.md#type-boolean) | true | — | When true, partially selected records will not be returned. Otherwise, both fully and partially selected records are returned. |
 
 ### Returns
 
@@ -3437,7 +3462,7 @@ Return the width of a particular column.
 
 ### Returns
 
-`[Integer](../main_2.md#type-integer)` — width of the column, or `null` if undrawn or no such column.
+`[Integer](../reference_2.md#type-integer)` — width of the column, or `null` if undrawn or no such column.
 
 ### Groups
 
@@ -3476,7 +3501,7 @@ Notification method executed when the [sort specifiers](#method-listgridsetsort)
 ## Method: ListGrid.getExpandedRecords
 
 ### Description
-Returns the list of [records](../main_2.md#object-listgridrecord) from this ListGrid that are [expanded](#method-listgridexpandrecord)
+Returns the list of [records](../reference_2.md#object-listgridrecord) from this ListGrid that are [expanded](#method-listgridexpandrecord)
 
 ### Returns
 
@@ -3500,9 +3525,9 @@ The default set of menu items includes items for built-in ListGrid features, lik
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| record | [Integer](../main_2.md#type-integer) | false | — | The record the user clicked in |
-| rowNum | [Integer](../main_2.md#type-integer) | false | — | Index of the record the user clicked in |
-| colNum | [Integer](../main_2.md#type-integer) | false | — | Index of the column the user clicked in |
+| record | [Integer](../reference_2.md#type-integer) | false | — | The record the user clicked in |
+| rowNum | [Integer](../reference_2.md#type-integer) | false | — | Index of the record the user clicked in |
+| colNum | [Integer](../reference_2.md#type-integer) | false | — | Index of the column the user clicked in |
 
 ### Returns
 
@@ -3580,7 +3605,7 @@ Optional stringMethod to fire when the user hovers over the error icon of a cell
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — false to suppress the standard error message hover
+`[boolean](../reference.md#type-boolean)` — false to suppress the standard error message hover
 
 ### Groups
 
@@ -3596,7 +3621,7 @@ Optional stringMethod to fire when the user hovers over the error icon of a cell
 ## Method: ListGrid.expandRecords
 
 ### Description
-Expands the passed list of [records](../main_2.md#object-listgridrecord) by creating a subcomponent for each record and inserting them it in to the record's grid-row. Calls [expandRecord](#method-listgridexpandrecord) for each passed record, but only marks the grid for redraw once, after all expansions are complete.
+Expands the passed list of [records](../reference_2.md#object-listgridrecord) by creating a subcomponent for each record and inserting them it in to the record's grid-row. Calls [expandRecord](#method-listgridexpandrecord) for each passed record, but only marks the grid for redraw once, after all expansions are complete.
 
 ### Parameters
 
@@ -3647,7 +3672,7 @@ Called when the mouse hovers over a row if this.canHover is true. Returning fals
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — whether to cancel the event (default behavior of showing the hover)
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event (default behavior of showing the hover)
 
 ### Groups
 
@@ -3671,7 +3696,7 @@ This method may also be called directly to perform row level validation at any t
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| rowNum | [int](../main.md#type-int) | false | — | index of row to be validated. |
+| rowNum | [int](../reference.md#type-int) | false | — | index of row to be validated. |
 
 ### Returns
 
@@ -3693,13 +3718,13 @@ See [exportBGColor](../kb_topics/exportBGColor.md#kb-topic-exports--cell-backgro
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| rowNum | [int](../main.md#type-int) | false | — | row number of cell |
-| colNum | [int](../main.md#type-int) | false | — | column number of cell |
+| rowNum | [int](../reference.md#type-int) | false | — | row number of cell |
+| colNum | [int](../reference.md#type-int) | false | — | column number of cell |
 | record | [Record](#type-record) | false | — | the record object behind the row being exported |
 
 ### Returns
 
-`[CSSColor](../main_2.md#type-csscolor)` — background color to use for the cell, or null to use the default background color
+`[CSSColor](../reference_2.md#type-csscolor)` — background color to use for the cell, or null to use the default background color
 
 ### Groups
 
@@ -3715,7 +3740,7 @@ Setter for the [ListGrid.showGridSummary](ListGrid_1.md#attr-listgridshowgridsum
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| showGridSummary | [boolean](../main.md#type-boolean) | false | — | new value for this.showGridSummary |
+| showGridSummary | [boolean](../reference.md#type-boolean) | false | — | new value for this.showGridSummary |
 
 ---
 ## Method: ListGrid.getRowSpan
@@ -3735,14 +3760,14 @@ When using row spanning:
 *   when using [cell-based selection](ListGrid_1.md#attr-listgridcanselectcells), only the spanning cell is considered selected, and not any of the cells spanned through. For example, if the cell at row 2 column 0 spans 2 cells, [CellSelection.isSelected()](CellSelection.md#class-cellselection) will be true for 2,0 but false for 3,0.
 *   if using incremental rendering (either horizontal or vertical), `getRowSpan()` may be called for a rowNum **in the middle of a spanning cell**, and should return the remaining span from that rowNum onward.
 *   cell-level events such as [ListGrid.recordClick](#method-listgridrecordclick) will report the logical rowNum for spanned cells. In other words if a cell spans two rows, a different rowNum parameter will be passed to the recordClick handler depending on whether the user clicks at the top of the spanning cell or the bottom. Developers can normalize this to the starting cell via the [ListGrid.getCellStartRow](#method-listgridgetcellstartrow) API.
-*   for cells that span multiple records, editing behavior may be controlled by the [rowSpanEditMode](../main.md#type-rowspaneditmode) attribute.
+*   for cells that span multiple records, editing behavior may be controlled by the [rowSpanEditMode](../reference.md#type-rowspaneditmode) attribute.
 *   rowSpanning can be used in conjunction with [recordComponents](ListGrid_1.md#attr-listgridshowrecordcomponents). If record component are enabled on a grid with row-spanning cells the behavior is as follows:
     *   Having [ListGrid.recordComponentPosition](ListGrid_1.md#attr-listgridrecordcomponentposition) set to "expand" is not currently supported for grids that render out spanning cells.
     *   The method to retrieve / create record components will not be run for cells that are "spanned". In other words if the first row in a grid spans 2 rows for some field, the second logical row is "spanned" for that field - that cell doesn't render any content and won't attempt to create a recordComponent.
     *   If [ListGrid.showRecordComponentsByCell](ListGrid_1.md#attr-listgridshowrecordcomponentsbycell) is false, the method to create record components will be called for every non-spanned cell in the first column of the grid.
     *   Percentage sizing of record components spanning multiple cells will be calculated relative to the set of spanned cells.
 
-More generally, the ListGrid has a data model of one [Record](../main.md#object-record) per row, and spanning cells doesn't fit well with this model, meaning that many ListGrid features are incompatible with rowSpanning.
+More generally, the ListGrid has a data model of one [Record](../reference.md#object-record) per row, and spanning cells doesn't fit well with this model, meaning that many ListGrid features are incompatible with rowSpanning.
 
 ### Parameters
 
@@ -3766,7 +3791,7 @@ Returns the expansion component derived from [ListGrid.getExpansionComponent](#m
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| record | [Integer](../main_2.md#type-integer)|[ListGridRecord](#type-listgridrecord) | false | — | rowNum or record to get the expansionComponent for |
+| record | [Integer](../reference_2.md#type-integer)|[ListGridRecord](#type-listgridrecord) | false | — | rowNum or record to get the expansionComponent for |
 
 ### Returns
 
@@ -3782,7 +3807,7 @@ Returns the expansion component derived from [ListGrid.getExpansionComponent](#m
 ### Description
 For grids with frozen columns, this method is called to retrieve the [ListGrid.frozenRollUnderCanvas](ListGrid_1.md#attr-listgridfrozenrollundercanvas) when [showing a rollUnder canvas](ListGrid_1.md#attr-listgridshowrollundercanvas) or showing a [rollUnder canvas for the selected record](ListGrid_1.md#attr-listgridshowselectedrollundercanvas).
 
-The default implementation uses the [AutoChild](../main.md#type-autochild) subystem to create the [ListGrid.rollUnderCanvas](ListGrid_1.md#attr-listgridrollundercanvas) auto child. It may be overridden for custom behavior.
+The default implementation uses the [AutoChild](../reference.md#type-autochild) subystem to create the [ListGrid.rollUnderCanvas](ListGrid_1.md#attr-listgridrollundercanvas) auto child. It may be overridden for custom behavior.
 
 Note that for efficiency this should not typically create a new Canvas every time that it is called. Instead usually a single rollOver canvas should be created and updated to reflect the current rollOver row if necessary.
 
@@ -3794,8 +3819,8 @@ See also [ListGrid.getRollUnderCanvas](#method-listgridgetrollundercanvas).
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| rowNum | [Integer](../main_2.md#type-integer) | false | — | index of the current rollOver row. |
-| colNum | [Integer](../main_2.md#type-integer) | false | — | index of the current rollOver column. This parameter will be null unless [useCellRollOvers](ListGrid_1.md#attr-listgridusecellrollovers) is true for the grid. |
+| rowNum | [Integer](../reference_2.md#type-integer) | false | — | index of the current rollOver row. |
+| colNum | [Integer](../reference_2.md#type-integer) | false | — | index of the current rollOver column. This parameter will be null unless [useCellRollOvers](ListGrid_1.md#attr-listgridusecellrollovers) is true for the grid. |
 
 ### Returns
 
@@ -3819,7 +3844,7 @@ If this listGrid is [grouped](#method-listgridgroupby), is the record passed in 
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — returns true if the record passed in is a group header node
+`[boolean](../reference.md#type-boolean)` — returns true if the record passed in is a group header node
 
 ---
 ## Method: ListGrid.cellClick
@@ -3839,7 +3864,7 @@ Note that returning false from this method will not prevent any specified [ListG
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -3863,13 +3888,13 @@ Default implementation returns an object with combined properties from any speci
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| rowNum | [Integer](../main_2.md#type-integer) | false | — | row index |
+| rowNum | [Integer](../reference_2.md#type-integer) | false | — | row index |
 | record | [ListGridRecord](#type-listgridrecord) | false | — | record for the row in question |
 | role | [String](#type-string) | false | — | ARIA role for the cell as returned by [ListGrid.getRowRole](#method-listgridgetrowrole) |
 
 ### Returns
 
-`[Object](../main.md#type-object)` — Object containing aria property names and values to write into the cell's HTML
+`[Object](../reference.md#type-object)` — Object containing aria property names and values to write into the cell's HTML
 
 ### Groups
 
@@ -3887,7 +3912,7 @@ Setter for [ListGrid.wrapCells](ListGrid_1.md#attr-listgridwrapcells)
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| wrapCells | [boolean](../main.md#type-boolean) | false | — | New wrapCells value |
+| wrapCells | [boolean](../reference.md#type-boolean) | false | — | New wrapCells value |
 
 ---
 ## Method: ListGrid.viewStateChanged
@@ -3915,7 +3940,7 @@ Called when the mouse pointer enters a cell
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -3956,7 +3981,7 @@ Note that this method may be called repeatedly during a drag-drop interaction to
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true if this component will accept a drop of the dragData, otherwise false, or null if the drop() should be bubbled to parent elements
+`[boolean](../reference.md#type-boolean)` — true if this component will accept a drop of the dragData, otherwise false, or null if the drop() should be bubbled to parent elements
 
 ### Groups
 
@@ -3976,7 +4001,7 @@ Note that this method may be called repeatedly during a drag-drop interaction to
 ### Description
 Returns the specially generated expansion field used when [ListGrid.canExpandRecords](ListGrid_1.md#attr-listgridcanexpandrecords) is true.
 
-Called during [ListGrid.setFields](#method-listgridsetfields), this method can be overridden to add advanced dynamic defaults to the expansion field (call Super, modify the default field returned by Super, return the modified field). Normal customization can be handled by just setting [AutoChild](../main.md#type-autochild) properties, as mentioned under the docs for [ListGrid.expansionField](ListGrid_1.md#attr-listgridexpansionfield).
+Called during [ListGrid.setFields](#method-listgridsetfields), this method can be overridden to add advanced dynamic defaults to the expansion field (call Super, modify the default field returned by Super, return the modified field). Normal customization can be handled by just setting [AutoChild](../reference.md#type-autochild) properties, as mentioned under the docs for [ListGrid.expansionField](ListGrid_1.md#attr-listgridexpansionfield).
 
 ### Returns
 
@@ -4139,7 +4164,7 @@ To do something specific if a particular field is clicked, add a recordClick met
 ## Method: ListGrid.getRelatedDataSource
 
 ### Description
-Returns the [DataSource](DataSource.md#class-datasource) containing data related to the passed record. Used when [ListGrid.canExpandRecords](ListGrid_1.md#attr-listgridcanexpandrecords) is true and [ExpansionMode](../main_2.md#type-expansionmode) is "related". The default implementation returns the DataSource specified in [ListGridRecord.detailDS](ListGridRecord.md#attr-listgridrecorddetailds) if set, otherwise [ListGrid.detailDS](ListGrid_1.md#attr-listgriddetailds).
+Returns the [DataSource](DataSource.md#class-datasource) containing data related to the passed record. Used when [ListGrid.canExpandRecords](ListGrid_1.md#attr-listgridcanexpandrecords) is true and [ExpansionMode](../reference_2.md#type-expansionmode) is "related". The default implementation returns the DataSource specified in [ListGridRecord.detailDS](ListGridRecord.md#attr-listgridrecorddetailds) if set, otherwise [ListGrid.detailDS](ListGrid_1.md#attr-listgriddetailds).
 
 ### Parameters
 
@@ -4161,7 +4186,7 @@ Setter for [ListGrid.filterWindowCriteria](ListGrid_1.md#attr-listgridfilterwind
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| criteria | [Criteria](../main_2.md#type-criteria) | false | — | criteria for advanced filtering |
+| criteria | [Criteria](../reference_2.md#type-criteria) | false | — | criteria for advanced filtering |
 
 ---
 ## Method: ListGrid.getTitleField
@@ -4202,7 +4227,7 @@ To display custom drag tracker HTML, this method may be overridden - call [Event
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — returns false by default to suppress 'setDragTracker' on any ancestors of this component.
+`[boolean](../reference.md#type-boolean)` — returns false by default to suppress 'setDragTracker' on any ancestors of this component.
 
 ### Groups
 
@@ -4218,13 +4243,13 @@ Setter for [ListGrid.showGroupSummaryInHeader](ListGrid_1.md#attr-listgridshowgr
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| showGroupSummaryInHeader | [boolean](../main.md#type-boolean) | false | — | new showGroupSummaryInHeader state |
+| showGroupSummaryInHeader | [boolean](../reference.md#type-boolean) | false | — | new showGroupSummaryInHeader state |
 
 ---
 ## Method: ListGrid.addSort
 
 ### Description
-Adds another [SortSpecifier](../main_2.md#object-sortspecifier) to this grid's sort configuration and resorts.
+Adds another [SortSpecifier](../reference_2.md#object-sortspecifier) to this grid's sort configuration and resorts.
 
 ### Parameters
 
@@ -4250,13 +4275,13 @@ This is essentially the same as calling listGrid.data.indexOf(record), except th
 
 ### Returns
 
-`[int](../main.md#type-int)` — index of the record, or -1 if not found
+`[int](../reference.md#type-int)` — index of the record, or -1 if not found
 
 ---
 ## Method: ListGrid.getGridSummaryFunction
 
 ### Description
-Determines the [SummaryFunction](../main_2.md#type-summaryfunction) to use when calculating per-field summary values describing multiple records in this grid. Used to determine the summary function to use for both [ListGrid.showGridSummary](ListGrid_1.md#attr-listgridshowgridsummary) and [ListGrid.showGroupSummary](ListGrid_1.md#attr-listgridshowgroupsummary).
+Determines the [SummaryFunction](../reference_2.md#type-summaryfunction) to use when calculating per-field summary values describing multiple records in this grid. Used to determine the summary function to use for both [ListGrid.showGridSummary](ListGrid_1.md#attr-listgridshowgridsummary) and [ListGrid.showGroupSummary](ListGrid_1.md#attr-listgridshowgroupsummary).
 
 Default implementation picks up [ListGridField.summaryFunction](ListGridField.md#attr-listgridfieldsummaryfunction) if explicitly specified, otherwise checks for a default summary function based on field type (see [SimpleType.setDefaultSummaryFunction](SimpleType.md#classmethod-simpletypesetdefaultsummaryfunction)). Note that a default summary function will not be supplied if the field represents a [primaryKey](DataSourceField.md#attr-datasourcefieldprimarykey) or [foreignKey](DataSourceField.md#attr-datasourcefieldforeignkey), since it would likely not be meaningful.
 
@@ -4268,7 +4293,7 @@ Default implementation picks up [ListGridField.summaryFunction](ListGridField.md
 
 ### Returns
 
-`[SummaryFunction](../main_2.md#type-summaryfunction)` — summary function for the field in question
+`[SummaryFunction](../reference_2.md#type-summaryfunction)` — summary function for the field in question
 
 **Flags**: A
 
@@ -4294,10 +4319,10 @@ With mixed-height rows it will only reliably work if virtualScrolling is enabled
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| rowNum | [int](../main.md#type-int) | false | — | Row index of the cell to scroll into view |
-| colNum | [int](../main.md#type-int) | false | — | Column index of the cell to scroll into view |
-| xPosition | [Alignment](../main_2.md#type-alignment) | true | — | Horizontal position of scrolled cell (optional) |
-| yPosition | [VerticalAlignment](../main.md#type-verticalalignment) | true | — | Vertical position of scrolled cell (optional) |
+| rowNum | [int](../reference.md#type-int) | false | — | Row index of the cell to scroll into view |
+| colNum | [int](../reference.md#type-int) | false | — | Column index of the cell to scroll into view |
+| xPosition | [Alignment](../reference_2.md#type-alignment) | true | — | Horizontal position of scrolled cell (optional) |
+| yPosition | [VerticalAlignment](../reference.md#type-verticalalignment) | true | — | Vertical position of scrolled cell (optional) |
 
 ### Groups
 
@@ -4339,7 +4364,7 @@ Function is not applicable for non-grouped grids and will return -1 if called.
 
 ### Returns
 
-`[int](../main.md#type-int)` — row index for record or -1 for group or summary records
+`[int](../reference.md#type-int)` — row index for record or -1 for group or summary records
 
 ### Groups
 
@@ -4356,7 +4381,7 @@ Change the [ListGridField.cellIcon](ListGridField.md#attr-listgridfieldcellicon)
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | fieldName | [String](#type-string) | false | — | field to update |
-| cellIcon | [SCImgURL](../main.md#type-scimgurl) | false | — | new cellIcon for the field |
+| cellIcon | [SCImgURL](../reference.md#type-scimgurl) | false | — | new cellIcon for the field |
 
 ---
 ## Method: ListGrid.getExportTextColor
@@ -4370,13 +4395,13 @@ Return null (the default function behavior) to allow [hilite color](Hilite.md#at
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| rowNum | [int](../main.md#type-int) | false | — | row number of cell |
-| colNum | [int](../main.md#type-int) | false | — | column number of cell |
+| rowNum | [int](../reference.md#type-int) | false | — | row number of cell |
+| colNum | [int](../reference.md#type-int) | false | — | column number of cell |
 | record | [Record](#type-record) | false | — | the record object behind the row being exported |
 
 ### Returns
 
-`[CSSColor](../main_2.md#type-csscolor)` — text color to use for the cell, or null to use the default text color
+`[CSSColor](../reference_2.md#type-csscolor)` — text color to use for the cell, or null to use the default text color
 
 ### Groups
 
@@ -4428,7 +4453,7 @@ Except for changes to the dataset length, [dataChanged()](#method-listgriddatach
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| callback | [DSCallback](../main_2.md#type-dscallback) | true | — | callback method to run once the refresh completes. |
+| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback method to run once the refresh completes. |
 
 ### Groups
 
@@ -4455,7 +4480,7 @@ Default behavior will display the [ListGridField.iconCursor](ListGridField.md#at
 
 ### Returns
 
-`[Cursor](../main.md#type-cursor)` — cursor to display when the user rolls over icons in this field's cells
+`[Cursor](../reference.md#type-cursor)` — cursor to display when the user rolls over icons in this field's cells
 
 ---
 ## Method: ListGrid.updateRecordComponent
@@ -4472,9 +4497,9 @@ Return null to avoid re-adding the component to the row or cell.
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | record | [ListGridRecord](#type-listgridrecord) | false | — | record to which the passed component applies |
-| colNum | [Integer](../main_2.md#type-integer) | false | — | cell to which the passed component applies |
+| colNum | [Integer](../reference_2.md#type-integer) | false | — | cell to which the passed component applies |
 | component | [Canvas](#type-canvas) | false | — | the component to update |
-| recordChanged | [boolean](../main.md#type-boolean) | false | — | was the passed component previously embedded in a different record? |
+| recordChanged | [boolean](../reference.md#type-boolean) | false | — | was the passed component previously embedded in a different record? |
 
 ### Returns
 
@@ -4494,7 +4519,7 @@ Setter for the [ListGrid.showGroupSummary](ListGrid_1.md#attr-listgridshowgroups
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| showGroupSummary | [boolean](../main.md#type-boolean) | false | — | new value for this.showGroupSummary |
+| showGroupSummary | [boolean](../reference.md#type-boolean) | false | — | new value for this.showGroupSummary |
 
 ---
 ## Method: ListGrid.isExportingClientData
@@ -4504,7 +4529,7 @@ Returns true if this component is currently [exporting client data](#method-list
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — returns true if this component is currently exporting client data
+`[boolean](../reference.md#type-boolean)` — returns true if this component is currently exporting client data
 
 ### See Also
 
@@ -4529,7 +4554,7 @@ Update the [ListGridField.headerBaseStyle](ListGridField.md#attr-listgridfieldhe
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | name | [String](#type-string) | false | — | name of the field. |
-| newStyle | [CSSStyleName](../main.md#type-cssstylename) | false | — | new baseStyle for the field header |
+| newStyle | [CSSStyleName](../reference.md#type-cssstylename) | false | — | new baseStyle for the field header |
 
 ---
 ## Method: ListGrid.getGroupSummaryData
@@ -4563,7 +4588,7 @@ Setter for the [ListGrid.autoFitWidthApproach](ListGrid_1.md#attr-listgridautofi
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| approach | [AutoFitWidthApproach](../main_2.md#type-autofitwidthapproach) | false | — | new AutoFitWidth approach |
+| approach | [AutoFitWidthApproach](../reference_2.md#type-autofitwidthapproach) | false | — | new AutoFitWidth approach |
 
 ---
 ## Method: ListGrid.formulaUpdated
@@ -4589,13 +4614,13 @@ Update the [HeaderSpan.headerBaseStyle](HeaderSpan.md#attr-headerspanheaderbases
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | name | [String](#type-string) | false | — | name of the headerSpan, as specified via [HeaderSpan.name](HeaderSpan.md#attr-headerspanname). |
-| newStyle | [CSSStyleName](../main.md#type-cssstylename) | false | — | new baseStyle for the headerSpan |
+| newStyle | [CSSStyleName](../reference.md#type-cssstylename) | false | — | new baseStyle for the headerSpan |
 
 ---
 ## Method: ListGrid.clearSort
 
 ### Description
-This method clears any existing sort on this grid by calling [ListGrid.setSort](#method-listgridsetsort) with a null parameter. The internal list of [SortSpecifier](../main_2.md#object-sortspecifier)s is removed and the grid is unsorted.
+This method clears any existing sort on this grid by calling [ListGrid.setSort](#method-listgridsetsort) with a null parameter. The internal list of [SortSpecifier](../reference_2.md#object-sortspecifier)s is removed and the grid is unsorted.
 
 **Flags**: A
 
@@ -4609,7 +4634,7 @@ Setter for the [ListGrid.recordComponentHeight](ListGrid_1.md#attr-listgridrecor
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| height | [Integer](../main_2.md#type-integer) | false | — | recordComponent height |
+| height | [Integer](../reference_2.md#type-integer) | false | — | recordComponent height |
 
 ### Groups
 
@@ -4642,7 +4667,7 @@ Does the specified row have unresolved errors?
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| rowNum | [int](../main.md#type-int) | false | — | rowNum to check for errors |
+| rowNum | [int](../reference.md#type-int) | false | — | rowNum to check for errors |
 
 ### Returns
 
@@ -4665,16 +4690,16 @@ Compares the specified criteria with the current criteria applied to this compon
 
 This is equivalent to calling `this.data.willFetchData(...)`. Always returns true if this component is not showing a set of data from the dataSource.
 
-Note that to predict correctly the decision that will be made by filter/fetch, you'll need to pass the same [TextMatchStyle](../main_2.md#type-textmatchstyle) that will be used by the future filter/fetch. Fetching manually (e.g. [ListGrid.fetchData](#method-listgridfetchdata)) will by default use "exact" while filtering (e.g. [ListGrid.filterData](#method-listgridfilterdata)) will by default use "substring". If the component is configured for autofetch (i.e. [ListGrid.autoFetchData](ListGrid_1.md#attr-listgridautofetchdata): true), that will use [ListGrid.autoFetchTextMatchStyle](ListGrid_1.md#attr-listgridautofetchtextmatchstyle), which defaults to "substring". If nothing/null is passed for the style, this method assumes you want the style from the last filter/fetch.
+Note that to predict correctly the decision that will be made by filter/fetch, you'll need to pass the same [TextMatchStyle](../reference_2.md#type-textmatchstyle) that will be used by the future filter/fetch. Fetching manually (e.g. [ListGrid.fetchData](#method-listgridfetchdata)) will by default use "exact" while filtering (e.g. [ListGrid.filterData](#method-listgridfilterdata)) will by default use "substring". If the component is configured for autofetch (i.e. [ListGrid.autoFetchData](ListGrid_1.md#attr-listgridautofetchdata): true), that will use [ListGrid.autoFetchTextMatchStyle](ListGrid_1.md#attr-listgridautofetchtextmatchstyle), which defaults to "substring". If nothing/null is passed for the style, this method assumes you want the style from the last filter/fetch.
 
-To determine what [TextMatchStyle](../main_2.md#type-textmatchstyle) is being used, check the RPC Tab of the [SmartClient Developer Console](../kb_topics/debugging.md#kb-topic-debugging) and check the relevant [DSRequest](../main_2.md#object-dsrequest).
+To determine what [TextMatchStyle](../reference_2.md#type-textmatchstyle) is being used, check the RPC Tab of the [SmartClient Developer Console](../kb_topics/debugging.md#kb-topic-debugging) and check the relevant [DSRequest](../reference_2.md#object-dsrequest).
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newCriteria | [Criteria](../main_2.md#type-criteria) | false | — | new criteria to test. |
-| textMatchStyle | [TextMatchStyle](../main_2.md#type-textmatchstyle) | true | — | New text match style. If not passed assumes textMatchStyle will not be modified. |
+| newCriteria | [Criteria](../reference_2.md#type-criteria) | false | — | new criteria to test. |
+| textMatchStyle | [TextMatchStyle](../reference_2.md#type-textmatchstyle) | true | — | New text match style. If not passed assumes textMatchStyle will not be modified. |
 
 ### Returns
 
@@ -4698,7 +4723,7 @@ Get the row that currently has keyboard focus. Arrow key navigation moves relati
 
 ### Returns
 
-`[Integer](../main_2.md#type-integer)` — rowNum of the current focus row
+`[Integer](../reference_2.md#type-integer)` — rowNum of the current focus row
 
 **Flags**: A
 
@@ -4743,7 +4768,7 @@ Note this method will not be called at all if [ListGrid.canSelectCells](ListGrid
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — return false to disallow selection
+`[boolean](../reference.md#type-boolean)` — return false to disallow selection
 
 ---
 ## Method: ListGrid.getSortFieldCount
@@ -4771,7 +4796,7 @@ For a discussion of the various filtering and criteria-management APIs and when 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| criteria | [Criteria](../main_2.md#type-criteria)|[AdvancedCriteria](#type-advancedcriteria) | false | — | new criteria to show |
+| criteria | [Criteria](../reference_2.md#type-criteria)|[AdvancedCriteria](#type-advancedcriteria) | false | — | new criteria to show |
 
 ### Groups
 
@@ -4781,9 +4806,9 @@ For a discussion of the various filtering and criteria-management APIs and when 
 ## Method: ListGrid.getCheckboxField
 
 ### Description
-Returns the specially generated checkbox field used when [SelectionAppearance](../main.md#type-selectionappearance) is "checkbox".
+Returns the specially generated checkbox field used when [SelectionAppearance](../reference.md#type-selectionappearance) is "checkbox".
 
-Called during [ListGrid.setFields](#method-listgridsetfields), this method can be overridden to add advanced dynamic defaults to the checkbox field (call Super, modify the default field returned by Super, return the modified field). Normal customization can be handled by just setting [AutoChild](../main.md#type-autochild) properties, as mentioned under the docs for [ListGrid.checkboxField](ListGrid_1.md#attr-listgridcheckboxfield).
+Called during [ListGrid.setFields](#method-listgridsetfields), this method can be overridden to add advanced dynamic defaults to the checkbox field (call Super, modify the default field returned by Super, return the modified field). Normal customization can be handled by just setting [AutoChild](../reference.md#type-autochild) properties, as mentioned under the docs for [ListGrid.checkboxField](ListGrid_1.md#attr-listgridcheckboxfield).
 
 ### Returns
 
@@ -4805,8 +4830,8 @@ See also [ListGrid.invalidateRecordComponents](#method-listgridinvalidaterecordc
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| rowNum | [int](../main.md#type-int) | false | — | Row to refresh |
-| colNum | [Integer](../main_2.md#type-integer) | true | — | Column to refresh. This parameter should be passed if [ListGrid.showRecordComponentsByCell](ListGrid_1.md#attr-listgridshowrecordcomponentsbycell) is true. |
+| rowNum | [int](../reference.md#type-int) | false | — | Row to refresh |
+| colNum | [Integer](../reference_2.md#type-integer) | true | — | Column to refresh. This parameter should be passed if [ListGrid.showRecordComponentsByCell](ListGrid_1.md#attr-listgridshowrecordcomponentsbycell) is true. |
 
 ### Groups
 
@@ -4816,7 +4841,7 @@ See also [ListGrid.invalidateRecordComponents](#method-listgridinvalidaterecordc
 ## Method: ListGrid.setUserCriteriaState
 
 ### Description
-Reset this grid's user-criteria to match the [ListGridUserCriteriaState](../main_2.md#type-listgridusercriteriastate) object passed in.
+Reset this grid's user-criteria to match the [ListGridUserCriteriaState](../reference_2.md#type-listgridusercriteriastate) object passed in.
 
 Used to restore previous state retrieved from the grid by a call to [ListGrid.getUserCriteriaState](#method-listgridgetusercriteriastate).
 
@@ -4824,7 +4849,7 @@ Used to restore previous state retrieved from the grid by a call to [ListGrid.ge
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| userCriteriaState | [ListGridUserCriteriaState](../main_2.md#type-listgridusercriteriastate) | false | — | Object describing the desired criteria |
+| userCriteriaState | [ListGridUserCriteriaState](../reference_2.md#type-listgridusercriteriastate) | false | — | Object describing the desired criteria |
 
 ### Groups
 
@@ -4847,11 +4872,11 @@ Note that the sortIndex passed in is zero based. The default implementation of t
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | fieldName | [String](#type-string) | false | — | The name of a sort-field to get the [sortNumeral](ListGrid_1.md#attr-listgridsortnumeralstyle) HTML for. |
-| sortIndex | [int](../main.md#type-int) | false | — | The sort index for the field. |
+| sortIndex | [int](../reference.md#type-int) | false | — | The sort index for the field. |
 
 ### Returns
 
-`[HTMLString](../main.md#type-htmlstring)` — The HTML for this field's sortNumeral
+`[HTMLString](../reference.md#type-htmlstring)` — The HTML for this field's sortNumeral
 
 ---
 ## Method: ListGrid.rowMouseUp
@@ -4869,7 +4894,7 @@ Called when a row receives a mouseup event.
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -4900,12 +4925,12 @@ The result of this method will be displayed to the user for the appropriate row,
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| node | [Object](../main.md#type-object) | false | — | Specified group node |
+| node | [Object](../reference.md#type-object) | false | — | Specified group node |
 | gridBody | [GridRenderer](#type-gridrenderer) | true | — | The body in which the returned value will be displayed. This parameter allows the default implementation to return an empty string if appropriate for the case where there is both a frozen and unfrozen body. Note that if this parameter may be empty. If not passed, the full group node HTML will be returned. |
 
 ### Returns
 
-`[HTMLString](../main.md#type-htmlstring)` — The HTML to be displayed in the appropriate row.
+`[HTMLString](../reference.md#type-htmlstring)` — The HTML to be displayed in the appropriate row.
 
 ---
 ## Method: ListGrid.getFilterEditorCriteria
@@ -4923,7 +4948,7 @@ For a discussion of the various filtering and criteria-management APIs and when 
 
 ### Returns
 
-`[Criteria](../main_2.md#type-criteria)|[AdvancedCriteria](#type-advancedcriteria)` — criteria currently displayed in the filterEditor
+`[Criteria](../reference_2.md#type-criteria)|[AdvancedCriteria](#type-advancedcriteria)` — criteria currently displayed in the filterEditor
 
 ---
 ## Method: ListGrid.getCellRowSpan
@@ -4941,25 +4966,25 @@ This method returns row span information for the current rendered cells. In cont
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| rowNum | [int](../main.md#type-int) | false | — | row number of cell to return the row span for |
-| colNum | [int](../main.md#type-int) | false | — | column number of cell to return the row span for |
+| rowNum | [int](../reference.md#type-int) | false | — | row number of cell to return the row span for |
+| colNum | [int](../reference.md#type-int) | false | — | column number of cell to return the row span for |
 
 ### Returns
 
-`[int](../main.md#type-int)` — number of cells spanned by the cell that spans through these coordinates
+`[int](../reference.md#type-int)` — number of cells spanned by the cell that spans through these coordinates
 
 ---
 ## Method: ListGrid.setGroupState
 
 ### Description
-Reset this grid's grouping to match the [ListGridGroupState](../main.md#type-listgridgroupstate) object passed in.  
+Reset this grid's grouping to match the [ListGridGroupState](../reference.md#type-listgridgroupstate) object passed in.  
 Used to restore previous state retrieved from the grid by a call to [ListGrid.getGroupState](#method-listgridgetgroupstate).
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| groupState | [ListGridGroupState](../main.md#type-listgridgroupstate) | false | — | Object describing the desired grouping state of the grid |
+| groupState | [ListGridGroupState](../reference.md#type-listgridgroupstate) | false | — | Object describing the desired grouping state of the grid |
 
 ### Groups
 
@@ -4977,7 +5002,7 @@ This method will return a row range summary display value containing the current
 
 The [RowRangeDisplay](RowRangeDisplay.md#class-rowrangedisplay) label autoChild shows this value as its contents.
 
-The format of the display value is governed by the [RowRangeDisplayStyle](../main_2.md#type-rowrangedisplaystyle)
+The format of the display value is governed by the [RowRangeDisplayStyle](../reference_2.md#type-rowrangedisplaystyle)
 
 ### Returns
 
@@ -4997,8 +5022,8 @@ If this listGrid can be edited, this method will return true if the cell passed 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| rowNum | [int](../main.md#type-int) | false | — | index of row to check for changes |
-| colNum | [int](../main.md#type-int) | false | — | index of the col to check for changes |
+| rowNum | [int](../reference.md#type-int) | false | — | index of row to check for changes |
+| colNum | [int](../reference.md#type-int) | false | — | index of the col to check for changes |
 
 ### Returns
 
@@ -5018,7 +5043,7 @@ Developers wishing to implement custom listGrid record drag and drop behavior sh
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true for completion of a successful drag/drop interaction
+`[boolean](../reference.md#type-boolean)` — true for completion of a successful drag/drop interaction
 
 ### Groups
 
@@ -5042,7 +5067,7 @@ Setter for the [ListGrid.showRecordComponents](ListGrid_1.md#attr-listgridshowre
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| showRecordComponents | [boolean](../main.md#type-boolean) | false | — | new value for `this.showRecordComponents` |
+| showRecordComponents | [boolean](../reference.md#type-boolean) | false | — | new value for `this.showRecordComponents` |
 
 ### Groups
 
@@ -5106,7 +5131,7 @@ Setter for [ListGrid.autoFitMaxRecords](ListGrid_1.md#attr-listgridautofitmaxrec
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| maxRecords | [int](../main.md#type-int) | false | — | Maximum number of rows we'll expand to accommodate if [auto fit](ListGrid_1.md#attr-listgridautofitdata) is enabled vertically. |
+| maxRecords | [int](../reference.md#type-int) | false | — | Maximum number of rows we'll expand to accommodate if [auto fit](ListGrid_1.md#attr-listgridautofitdata) is enabled vertically. |
 
 ### Groups
 
@@ -5116,7 +5141,7 @@ Setter for [ListGrid.autoFitMaxRecords](ListGrid_1.md#attr-listgridautofitmaxrec
 ## Method: ListGrid.expandRecord
 
 ### Description
-Expands a given [record](../main_2.md#object-listgridrecord) by creating a subcomponent and inserting it in to the record's grid-row. A number of built-in [expansionModes](../main_2.md#type-expansionmode) are supported by the default implementation of [getExpansionComponent()](#method-listgridgetexpansioncomponent) and you can override that method to provide your own expansion behavior.
+Expands a given [record](../reference_2.md#object-listgridrecord) by creating a subcomponent and inserting it in to the record's grid-row. A number of built-in [expansionModes](../reference_2.md#type-expansionmode) are supported by the default implementation of [getExpansionComponent()](#method-listgridgetexpansioncomponent) and you can override that method to provide your own expansion behavior.
 
 Once a record has been expanded, the currently visible expansion component may be retrieved via [ListGrid.getCurrentExpansionComponent](#method-listgridgetcurrentexpansioncomponent).
 
@@ -5134,7 +5159,7 @@ Once a record has been expanded, the currently visible expansion component may b
 ## Method: ListGrid.deselectRecords
 
 ### Description
-Deselect a list of [Record](../main.md#object-record)s passed in explicitly, or by index.
+Deselect a list of [Record](../reference.md#object-record)s passed in explicitly, or by index.
 
 Synonym for `selectRecords(records, false)`
 
@@ -5145,7 +5170,7 @@ Note that developers may wish to use [ListGrid.deselectRange](#method-listgridde
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | records | [Array of Record](#type-array-of-record)|[number](#type-number) | false | — | records (or row numbers) to deselect |
-| rowNums | [Array of Integer](#type-array-of-integer)|[Integer](../main_2.md#type-integer) | true | — | row numbers to select. Required for [multi-link trees](Tree.md#attr-treemultilinktree) unless row numbers are passed in the "records" param. If passed, the rowNums array should correspond to the records array (ie, rowNums\[0\] refers to the same object as records\[0\]) |
+| rowNums | [Array of Integer](#type-array-of-integer)|[Integer](../reference_2.md#type-integer) | true | — | row numbers to select. Required for [multi-link trees](Tree.md#attr-treemultilinktree) unless row numbers are passed in the "records" param. If passed, the rowNums array should correspond to the records array (ie, rowNums\[0\] refers to the same object as records\[0\]) |
 
 ### Groups
 
@@ -5171,7 +5196,7 @@ Returns `true` if the passed fieldName is in the current sort-specification.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| fieldName | [FieldName](../main.md#type-fieldname) | false | — | The name of a field, which may be visible, hidden or existing only in the dataSource |
+| fieldName | [FieldName](../reference.md#type-fieldname) | false | — | The name of a field, which may be visible, hidden or existing only in the dataSource |
 
 ### Returns
 
@@ -5189,7 +5214,7 @@ Setter for the [ListGrid.canReorderRecords](ListGrid_1.md#attr-listgridcanreorde
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| canReorderRecords | [boolean](../main.md#type-boolean) | false | — | new value for `this.canReorderRecords` |
+| canReorderRecords | [boolean](../reference.md#type-boolean) | false | — | new value for `this.canReorderRecords` |
 
 ---
 ## Method: ListGrid.getRowNum
@@ -5205,7 +5230,7 @@ Synonym of [getRecordIndex()](#method-listgridgetrecordindex).
 
 ### Returns
 
-`[int](../main.md#type-int)` — index of the record, or -1 if not found
+`[int](../reference.md#type-int)` — index of the record, or -1 if not found
 
 ---
 ## Method: ListGrid.removeRecordClick
@@ -5223,7 +5248,7 @@ May be overridden to perform custom logic on remove click.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| rowNum | [int](../main.md#type-int) | false | — | Row on which the icon was clicked |
+| rowNum | [int](../reference.md#type-int) | false | — | Row on which the icon was clicked |
 
 ---
 ## Method: ListGrid.selectAllRecords
@@ -5237,7 +5262,7 @@ Note that this method will select records even if [ListGrid.canSelectRecord](#me
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| visibleNodesOnly | [boolean](../main.md#type-boolean) | true | — | For TreeGrids, or listGrids showing hierarchical [group data](ListGrid_1.md#attr-listgridisgrouped), if `true` is passed for this parameter, only visible nodes will be selected. Nodes embedded in a closed parent folder (and thus hidden from the user) will not be selected. |
+| visibleNodesOnly | [boolean](../reference.md#type-boolean) | true | — | For TreeGrids, or listGrids showing hierarchical [group data](ListGrid_1.md#attr-listgridisgrouped), if `true` is passed for this parameter, only visible nodes will be selected. Nodes embedded in a closed parent folder (and thus hidden from the user) will not be selected. |
 
 ---
 ## Method: ListGrid.getBody
@@ -5279,7 +5304,7 @@ See also [ListGrid.getRowRangeDisplayValue](#method-listgridgetrowrangedisplayva
 ## Method: ListGrid.deselectRecord
 
 ### Description
-Deselect a [Record](../main.md#object-record) passed in explicitly, or by index.
+Deselect a [Record](../reference.md#object-record) passed in explicitly, or by index.
 
 Synonym for `selectRecord(record, false)`
 
@@ -5288,7 +5313,7 @@ Synonym for `selectRecord(record, false)`
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | record | [Record](#type-record)|[number](#type-number) | false | — | record (or row number) to deselect |
-| rowNum | [Integer](../main_2.md#type-integer) | true | — | row number to select. Required for [multi-link trees](Tree.md#attr-treemultilinktree) unless row number is passed in the "record" param |
+| rowNum | [Integer](../reference_2.md#type-integer) | true | — | row number to select. Required for [multi-link trees](Tree.md#attr-treemultilinktree) unless row number is passed in the "record" param |
 
 ### Groups
 
@@ -5324,11 +5349,11 @@ Given a column number or field id, return the field name of a field.
 ## Method: ListGrid.getSavedViewState
 
 ### Description
-Returns the [view state](../main_2.md#type-listgridviewstate) for this ListGrid as last saved by the [ListGrid.autoPersistViewState](ListGrid_1.md#attr-listgridautopersistviewstate) setting.
+Returns the [view state](../reference_2.md#type-listgridviewstate) for this ListGrid as last saved by the [ListGrid.autoPersistViewState](ListGrid_1.md#attr-listgridautopersistviewstate) setting.
 
 ### Returns
 
-`[ListGridViewState](../main_2.md#type-listgridviewstate)` — last auto-saved view state for the grid.
+`[ListGridViewState](../reference_2.md#type-listgridviewstate)` — last auto-saved view state for the grid.
 
 ### Groups
 
@@ -5345,7 +5370,7 @@ Returns the [view state](../main_2.md#type-listgridviewstate) for this ListGrid 
 ### Description
 This method is called to retrieve the [ListGrid.rollOverCanvas](ListGrid_1.md#attr-listgridrollovercanvas) when the user moves over a new row or cell if [ListGrid.showRollOverCanvas](ListGrid_1.md#attr-listgridshowrollovercanvas) is true, or when the user moves over the selected record if [ListGrid.showSelectedRollOverCanvas](ListGrid_1.md#attr-listgridshowselectedrollovercanvas) is true.
 
-The default implementation uses the [AutoChild](../main.md#type-autochild) subystem to create the [ListGrid.rollOverCanvas](ListGrid_1.md#attr-listgridrollovercanvas) auto child. It may be overridden for custom behavior.
+The default implementation uses the [AutoChild](../reference.md#type-autochild) subystem to create the [ListGrid.rollOverCanvas](ListGrid_1.md#attr-listgridrollovercanvas) auto child. It may be overridden for custom behavior.
 
 Note that for efficiency this should not typically create a new Canvas every time that it is called. Instead usually a single rollOver canvas should be created and updated to reflect the current rollOver row if necessary.
 
@@ -5357,8 +5382,8 @@ See also [ListGrid.getFrozenRollOverCanvas](#method-listgridgetfrozenrollovercan
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| rowNum | [Integer](../main_2.md#type-integer) | false | — | index of the current rollOver row. |
-| colNum | [Integer](../main_2.md#type-integer) | false | — | index of the current rollOver column. This parameter will be null unless [useCellRollOvers](ListGrid_1.md#attr-listgridusecellrollovers) is true for the grid. |
+| rowNum | [Integer](../reference_2.md#type-integer) | false | — | index of the current rollOver row. |
+| colNum | [Integer](../reference_2.md#type-integer) | false | — | index of the current rollOver column. This parameter will be null unless [useCellRollOvers](ListGrid_1.md#attr-listgridusecellrollovers) is true for the grid. |
 
 ### Returns
 
@@ -5419,13 +5444,13 @@ To control hilites showing in group summaries, see [showHilitesInGroupSummary](L
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — Return true to include hilites from the used field in the generated summary field value.
+`[boolean](../reference.md#type-boolean)` — Return true to include hilites from the used field in the generated summary field value.
 
 ---
 ## Method: ListGrid.setFieldSearchOperator
 
 ### Description
-Applies a new [search operator](../main.md#type-operatorid) to a field in the grid's [filter row](ListGrid_1.md#attr-listgridfiltereditor), and updates it's operatorIcon.
+Applies a new [search operator](../reference.md#type-operatorid) to a field in the grid's [filter row](ListGrid_1.md#attr-listgridfiltereditor), and updates it's operatorIcon.
 
 For a discussion of the various filtering and criteria-management APIs and when to use them, see the [Grid Filtering overview](../kb_topics/gridFiltering.md#kb-topic-grid-filtering-overview).
 
@@ -5433,8 +5458,8 @@ Depending on the field's current filter-value and operator, calls to this method
 
 In general, if the field has a current filter-value, it will be cleared if
 
-*   the new operator does not require a value (operator-type [none](../main_2.md#type-operatorvaluetype) - [isBlank](../main.md#type-operatorid), for example)
-*   the current and new operators have different [value-types](../main_2.md#type-operatorvaluetype) and [ListGrid.allowFilterExpressions](ListGrid_1.md#attr-listgridallowfilterexpressions) is false
+*   the new operator does not require a value (operator-type [none](../reference_2.md#type-operatorvaluetype) - [isBlank](../reference.md#type-operatorid), for example)
+*   the current and new operators have different [value-types](../reference_2.md#type-operatorvaluetype) and [ListGrid.allowFilterExpressions](ListGrid_1.md#attr-listgridallowfilterexpressions) is false
 *   the item has an [optionDataSource](FormItem.md#attr-formitemoptiondatasource) or valueMap which no longer includes the current value
 
 If `filterOnKeypress` is true, a fetch will be issued if
@@ -5452,7 +5477,7 @@ To retrieve a field's current search operator, use [ListGrid.getFieldSearchOpera
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | fieldName | [String](#type-string) | false | — | name of the field to apply a new search operator to |
-| operator | [OperatorId](../main.md#type-operatorid) | false | — | id of the search operator to apply |
+| operator | [OperatorId](../reference.md#type-operatorid) | false | — | id of the search operator to apply |
 
 ---
 ## Method: ListGrid.editorExit
@@ -5470,7 +5495,7 @@ Can be overridden at the field level as field.editorExit.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| editCompletionEvent | [EditCompletionEvent](../main_2.md#type-editcompletionevent) | false | — | How was the edit completion fired? |
+| editCompletionEvent | [EditCompletionEvent](../reference_2.md#type-editcompletionevent) | false | — | How was the edit completion fired? |
 | record | [ListGridRecord](#type-listgridrecord) | false | — | record for the cell being edited |
 | newValue | [Any](#type-any) | false | — | new edit value for the cell being edited. Note that if the user has not made any changes this will be undefined |
 | rowNum | [number](#type-number) | false | — | row number for the cell |
@@ -5478,7 +5503,7 @@ Can be overridden at the field level as field.editorExit.
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — Returning false from this method will cancel the default behavior (for example saving the row) and leave the editor visible and focus in this edit cell.
+`[boolean](../reference.md#type-boolean)` — Returning false from this method will cancel the default behavior (for example saving the row) and leave the editor visible and focus in this edit cell.
 
 ### Groups
 
@@ -5496,7 +5521,7 @@ Returns the field object associated with cell currently being edited
 
 ### Returns
 
-`[Object](../main.md#type-object)` — Field object definition
+`[Object](../reference.md#type-object)` — Field object definition
 
 ### Groups
 
@@ -5570,11 +5595,11 @@ or, to ensure the specified [ListGrid.autoFetchTextMatchStyle](ListGrid_1.md#att
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| criteria | [Criteria](../main_2.md#type-criteria) | false | — | criteria derived from the filter editor values |
+| criteria | [Criteria](../reference_2.md#type-criteria) | false | — | criteria derived from the filter editor values |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — returning false will suppress the filter from occurring
+`[boolean](../reference.md#type-boolean)` — returning false will suppress the filter from occurring
 
 ### See Also
 
@@ -5593,7 +5618,7 @@ Note: for showing multiple fields it is more efficient to call [ListGrid.showFie
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | field | [String](#type-string)|[ListGridField](#type-listgridfield) | false | — | field to show |
-| suppressRelayout | [boolean](../main.md#type-boolean) | true | — | If passed, don't resize non-explicitly sized columns to fill the available space. |
+| suppressRelayout | [boolean](../reference.md#type-boolean) | true | — | If passed, don't resize non-explicitly sized columns to fill the available space. |
 
 ---
 ## Method: ListGrid.getGridSummaryData
@@ -5656,8 +5681,8 @@ Will update the UI to show the editor for the new cell, and put focus in it unle
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| rowNum | [Integer](../main_2.md#type-integer) | true | — | Row number of the cell to edit. Defaults to first editable row |
-| colNum | [Integer](../main_2.md#type-integer) | true | — | Column number of the cell to edit. Defaults to first editable column |
+| rowNum | [Integer](../reference_2.md#type-integer) | true | — | Row number of the cell to edit. Defaults to first editable row |
+| colNum | [Integer](../reference_2.md#type-integer) | true | — | Column number of the cell to edit. Defaults to first editable column |
 | suppressFocus | [Boolean](#type-boolean) | true | — | If passed this parameter suppresses the default behavior of focusing in the edit form item when the editor is shown. |
 
 ### Returns
@@ -5730,7 +5755,7 @@ Returns the original, ungrouped data in the grid. If the grid is ungrouped, retu
 
 ### Returns
 
-`[Object](../main.md#type-object)` — The ungrouped data that is being displayed and observed
+`[Object](../reference.md#type-object)` — The ungrouped data that is being displayed and observed
 
 ### Groups
 
@@ -5746,7 +5771,7 @@ Note that, when creating new rows via inline editing, this can be more than the 
 
 ### Returns
 
-`[int](../main.md#type-int)` — total number of rows in the grid
+`[int](../reference.md#type-int)` — total number of rows in the grid
 
 ---
 ## Method: ListGrid.isRowNumberField
@@ -5788,8 +5813,8 @@ Returns null if there is no component at the specified coordinates.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| rowNum | [int](../main.md#type-int) | false | — | row number to get record component for |
-| colNum | [Integer](../main_2.md#type-integer) | true | — | optional column number to get the record component for |
+| rowNum | [int](../reference.md#type-int) | false | — | row number to get record component for |
+| colNum | [Integer](../reference_2.md#type-integer) | true | — | optional column number to get the record component for |
 
 ### Returns
 
@@ -5819,7 +5844,7 @@ Called when a row receives a mousedown event.
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -5849,9 +5874,9 @@ When embedding components will result in variable height records, you should swi
 |------|------|----------|---------|-------------|
 | component | [Canvas](#type-canvas) | false | — | component to embed |
 | record | [ListGridRecord](#type-listgridrecord) | false | — | record to attach the component to |
-| rowNum | [Integer](../main_2.md#type-integer) | true | — | rowNum of the record to attach the component to |
-| colNum | [Integer](../main_2.md#type-integer) | true | — | colNum in which to embed the component |
-| position | [EmbeddedPosition](../main_2.md#type-embeddedposition) | true | — | positioning with respect to the record or cell (Defaults to "expand"). |
+| rowNum | [Integer](../reference_2.md#type-integer) | true | — | rowNum of the record to attach the component to |
+| colNum | [Integer](../reference_2.md#type-integer) | true | — | colNum in which to embed the component |
+| position | [EmbeddedPosition](../reference_2.md#type-embeddedposition) | true | — | positioning with respect to the record or cell (Defaults to "expand"). |
 
 **Flags**: A
 
@@ -5890,7 +5915,7 @@ This event is also fired when selection is updated by a direct call to one of th
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| record | [Object](../main.md#type-object) | false | — | first selected record in the selection, if any, which may or may not be the first record in sort order if the `DataBoundComponent` is sorted. This parameter is typically used when only one record can be selected at a time. |
+| record | [Object](../reference.md#type-object) | false | — | first selected record in the selection, if any, which may or may not be the first record in sort order if the `DataBoundComponent` is sorted. This parameter is typically used when only one record can be selected at a time. |
 | recordList | [Array of Object](#type-array-of-object) | false | — | List of records that are now selected |
 
 ### Groups
@@ -5936,7 +5961,7 @@ Change the title of a field after the grid is created.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| fieldNum | [int](../main.md#type-int)|[String](#type-string) | false | — | name of the field, or index. |
+| fieldNum | [int](../reference.md#type-int)|[String](#type-string) | false | — | name of the field, or index. |
 | title | [String](#type-string) | false | — | new title |
 
 ---
@@ -5982,13 +6007,13 @@ To do something specific if a particular field is double clicked, add a recordDo
 | recordNum | [number](#type-number) | false | — | number of the record clicked on in the current set of displayed records (starts with 0) |
 | field | [ListGridField](#type-listgridfield) | false | — | the field that was clicked on (field definition) |
 | fieldNum | [number](#type-number) | false | — | number of the field clicked on in the listGrid.fields array |
-| value | [Object](../main.md#type-object) | false | — | value of the cell (after valueMap, etc. applied) |
-| rawValue | [Object](../main.md#type-object) | false | — | raw value of the cell (before valueMap, etc applied) |
+| value | [Object](../reference.md#type-object) | false | — | value of the cell (after valueMap, etc. applied) |
+| rawValue | [Object](../reference.md#type-object) | false | — | raw value of the cell (before valueMap, etc applied) |
 | editedRecord | [ListGridRecord](#type-listgridrecord) | false | — | the clicked record with any unsaved edit values overlaid (see `listGrid.getEditedRecord()`). |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — return false to cancel event bubbling
+`[boolean](../reference.md#type-boolean)` — return false to cancel event bubbling
 
 ### Groups
 
@@ -6030,8 +6055,8 @@ In all other cases, this call returns true and a fetch is issued for all necessa
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| maxRecords | [Integer](../main_2.md#type-integer) | true | — | optional maximum record count - if passed, no fetch takes place if maxRecords is below the known length of the data |
-| callback | [DSCallback](../main_2.md#type-dscallback) | true | — | callback to fire if a fetch is issued - if all data was already loaded, the callback is fired with no parameters |
+| maxRecords | [Integer](../reference_2.md#type-integer) | true | — | optional maximum record count - if passed, no fetch takes place if maxRecords is below the known length of the data |
+| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to fire if a fetch is issued - if all data was already loaded, the callback is fired with no parameters |
 
 ### Returns
 
@@ -6041,13 +6066,13 @@ In all other cases, this call returns true and a fetch is issued for all necessa
 ## Method: ListGrid.getSelectedState
 
 ### Description
-For components bound to a [dataSource](ListGrid_1.md#attr-listgriddatasource) with records identified by unique [primaryKeys](DataSourceField.md#attr-datasourcefieldprimarykey), this method returns a snapshot of the component's current selection, as a [ListGridSelectedState](../main_2.md#type-listgridselectedstate) object.  
+For components bound to a [dataSource](ListGrid_1.md#attr-listgriddatasource) with records identified by unique [primaryKeys](DataSourceField.md#attr-datasourcefieldprimarykey), this method returns a snapshot of the component's current selection, as a [ListGridSelectedState](../reference_2.md#type-listgridselectedstate) object.  
 This object can be passed to [ListGrid.setSelectedState](#method-listgridsetselectedstate) to reset this grid's current selection state (assuming the same data is present in the grid).  
 Selected state is not supported if the component has no dataSource, or the dataSource has no primaryKey fields.
 
 ### Returns
 
-`[ListGridSelectedState](../main_2.md#type-listgridselectedstate)` — current state of this grid's selection
+`[ListGridSelectedState](../reference_2.md#type-listgridselectedstate)` — current state of this grid's selection
 
 ### Groups
 
@@ -6079,7 +6104,7 @@ See also [ListGrid.getRowCountStatus](ListGrid_1.md#method-listgridgetrowcountst
 
 ### Returns
 
-`[Integer](../main_2.md#type-integer)` — current row count for the grid
+`[Integer](../reference_2.md#type-integer)` — current row count for the grid
 
 ### Groups
 
@@ -6095,12 +6120,12 @@ Returns the valueIcons for a field when it is displayed in the editor while edit
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| field | [Object](../main.md#type-object) | false | — | field definition |
-| values | [Object](../main.md#type-object) | false | — | current edit values for the record |
+| field | [Object](../reference.md#type-object) | false | — | field definition |
+| values | [Object](../reference.md#type-object) | false | — | current edit values for the record |
 
 ### Returns
 
-`[Object](../main.md#type-object)` — valueIcons for the editor
+`[Object](../reference.md#type-object)` — valueIcons for the editor
 
 ### Groups
 
@@ -6120,7 +6145,7 @@ For a grid with no DataSource or where `saveLocally` is true, the data removal i
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| callback | [DSCallback](../main_2.md#type-dscallback) | true | — | callback to fire when each record has been removed |
+| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to fire when each record has been removed |
 | requestProperties | [DSRequest](#type-dsrequest) | true | — | additional properties to set on the DSRequest that will be issued |
 | queueCallback | [RPCQueueCallback](#type-rpcqueuecallback) | true | — | callback to fire after all selected data has been removed |
 
@@ -6164,7 +6189,7 @@ Show or hide the ListGrid header.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| show | [boolean](../main.md#type-boolean) | false | — | true to show the header, false to hide it. |
+| show | [boolean](../reference.md#type-boolean) | false | — | true to show the header, false to hide it. |
 
 ### Groups
 
@@ -6185,7 +6210,7 @@ Returns any currently stored validation errors for this row in the following for
 
 ### Returns
 
-`[Object](../main.md#type-object)` — object showing validation error arrays by field for the row passed in - if no validation errors stored for the row, null is returned.
+`[Object](../reference.md#type-object)` — object showing validation error arrays by field for the row passed in - if no validation errors stored for the row, null is returned.
 
 ### Groups
 
@@ -6205,7 +6230,7 @@ Returns the current value of a cell. If the cell has an outstanding edit value, 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| record | [number](#type-number)|[Object](../main.md#type-object) | false | — | rowNum of the record being edited, or an Object containing values for all the record's primary keys |
+| record | [number](#type-number)|[Object](../reference.md#type-object) | false | — | rowNum of the record being edited, or an Object containing values for all the record's primary keys |
 | field | [number](#type-number)|[String](#type-string) | false | — | colNum or fieldName of the cell |
 
 ### Returns
@@ -6277,14 +6302,14 @@ See also [ListGrid.applyRecordData](#method-listgridapplyrecorddata).
 ## Method: ListGrid.selectSingleRecord
 
 ### Description
-Select a single [Record](../main.md#object-record) passed in explicitly, or by index, and deselect everything else. When programmatic selection of records is a requirement and [selectionType()](ListGrid_1.md#attr-listgridselectiontype) is "single", use this method rather than [selectRecord()](DataBoundComponent.md#method-databoundcomponentselectrecord) to enforce mutually-exclusive record-selection.
+Select a single [Record](../reference.md#object-record) passed in explicitly, or by index, and deselect everything else. When programmatic selection of records is a requirement and [selectionType()](ListGrid_1.md#attr-listgridselectiontype) is "single", use this method rather than [selectRecord()](DataBoundComponent.md#method-databoundcomponentselectrecord) to enforce mutually-exclusive record-selection.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | record | [Record](#type-record)|[number](#type-number) | false | — | record (or row number) to select |
-| rowNum | [Integer](../main_2.md#type-integer) | true | — | row number to select. Required for [multi-link trees](Tree.md#attr-treemultilinktree) unless row number is passed in the "record" param |
+| rowNum | [Integer](../reference_2.md#type-integer) | true | — | row number to select. Required for [multi-link trees](Tree.md#attr-treemultilinktree) unless row number is passed in the "record" param |
 
 ### Groups
 
@@ -6325,7 +6350,7 @@ Update the [alternateBodyStyleName](ListGrid_1.md#attr-listgridalternatebodystyl
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| styleName | [CSSStyleName](../main.md#type-cssstylename) | false | — | new body style name when showing alternateRecordStyles |
+| styleName | [CSSStyleName](../reference.md#type-cssstylename) | false | — | new body style name when showing alternateRecordStyles |
 
 ---
 ## Method: ListGrid.getDefaultFormattedValue
@@ -6342,8 +6367,8 @@ For example - a developer might wish to apply a custom [formatter](ListGridField
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | record | [Record](#type-record) | false | — | the cell's record object |
-| rowNum | [int](../main.md#type-int) | false | — | rowNum for the cell |
-| colNum | [int](../main.md#type-int) | false | — | colNum for the cell |
+| rowNum | [int](../reference.md#type-int) | false | — | rowNum for the cell |
+| colNum | [int](../reference.md#type-int) | false | — | colNum for the cell |
 
 ### Returns
 
@@ -6378,7 +6403,7 @@ To make changes to the local data object even when a DataSource is present, use 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | data | [Record](#type-record) | false | — | listGrid record, or primary key values of record to delete. |
-| callback | [DSCallback](../main_2.md#type-dscallback) | true | — | method to call on operation completion. Note that if this is method does not trigger a dataSource remove operation, the callback will still be fired when the data has been removed, but the `dsResponse` parameter will be null. |
+| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | method to call on operation completion. Note that if this is method does not trigger a dataSource remove operation, the callback will still be fired when the data has been removed, but the `dsResponse` parameter will be null. |
 | requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | additional properties to set on any DSRequest that will be issued |
 
 ### Groups
@@ -6399,7 +6424,7 @@ Returns the [ListGrid.autoFitMaxWidth](ListGrid_1.md#attr-listgridautofitmaxwidt
 
 ### Returns
 
-`[Integer](../main_2.md#type-integer)` — autoFitMaxWidth pixel value
+`[Integer](../reference_2.md#type-integer)` — autoFitMaxWidth pixel value
 
 ### Groups
 
@@ -6415,7 +6440,7 @@ Setter for [ListGrid.autoFitData](ListGrid_1.md#attr-listgridautofitdata).
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| autoFitData | [Autofit](../main_2.md#type-autofit) | false | — | One of `"vertical"`, `"horizontal"` or `"both"`. To disable auto fit behavior, pass in `null`. |
+| autoFitData | [Autofit](../reference_2.md#type-autofit) | false | — | One of `"vertical"`, `"horizontal"` or `"both"`. To disable auto fit behavior, pass in `null`. |
 
 ### Groups
 
@@ -6478,7 +6503,7 @@ Perform a DataSource "add" operation to add new records to this component's Data
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | newRecord | [Record](#type-record) | false | — | new record |
-| callback | [DSCallback](../main_2.md#type-dscallback) | true | — | method to call on operation completion |
+| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | method to call on operation completion |
 | requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | additional properties to set on the DSRequest that will be issued |
 
 ### Groups
@@ -6498,7 +6523,7 @@ See [ListGrid.scrollToCell](#method-listgridscrolltocell) for a full description
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | rowNum | [number](#type-number) | false | — | Row index of the cell to scroll into view |
-| yPosition | [VerticalAlignment](../main.md#type-verticalalignment) | true | — | Vertical position of scrolled row (optional) |
+| yPosition | [VerticalAlignment](../reference.md#type-verticalalignment) | true | — | Vertical position of scrolled row (optional) |
 
 ### Groups
 
@@ -6526,7 +6551,7 @@ Setter for [ListGrid.alternateRecordStyles](ListGrid_1.md#attr-listgridalternate
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| alternateStyles | [boolean](../main.md#type-boolean) | false | — | New value for `this.alternateRecordStyles` |
+| alternateStyles | [boolean](../reference.md#type-boolean) | false | — | New value for `this.alternateRecordStyles` |
 
 ---
 ## Method: ListGrid.getEditorType
@@ -6540,7 +6565,7 @@ Default implementation will return field.editorType if specified. If not specifi
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | field | [ListGridField](#type-listgridfield) | false | — | field definition field for which we need a valueMap |
-| values | [Object](../main.md#type-object) | false | — | current edit values for the record (may be null, if editing a new record) |
+| values | [Object](../reference.md#type-object) | false | — | current edit values for the record (may be null, if editing a new record) |
 
 ### Returns
 
@@ -6582,7 +6607,7 @@ In addition to this, [getCellCSSText()](GridRenderer.md#method-gridrenderergetce
 
 ### Returns
 
-`[CSSStyleName](../main.md#type-cssstylename)` — CSS style for this cell
+`[CSSStyleName](../reference.md#type-cssstylename)` — CSS style for this cell
 
 ### Groups
 
@@ -6625,11 +6650,11 @@ Default implementation fires 'editCell' if appropriate, and handles firing 'reco
 | record | [ListGridRecord](#type-listgridrecord) | false | — | record object returned from getCellRecord() |
 | recordNum | [number](#type-number) | false | — | index of the row where the click occurred |
 | fieldNum | [number](#type-number) | false | — | index of the col where the click occurred |
-| keyboardGenerated | [boolean](../main.md#type-boolean) | true | — | indicates whether this was a synthesized record doubleclick in response to a keyboard event |
+| keyboardGenerated | [boolean](../reference.md#type-boolean) | true | — | indicates whether this was a synthesized record doubleclick in response to a keyboard event |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — false if first click not on same record; true otherwise
+`[boolean](../reference.md#type-boolean)` — false if first click not on same record; true otherwise
 
 ### Groups
 
@@ -6667,7 +6692,7 @@ This method may also be called directly to perform cell level validation at any 
 ## Method: ListGrid.setFieldState
 
 ### Description
-Sets some presentation properties (visibility, width, userFormula and userSummary) of the listGrid fields based on the [ListGridFieldState](../main_2.md#type-listgridfieldstate) object passed in.  
+Sets some presentation properties (visibility, width, userFormula and userSummary) of the listGrid fields based on the [ListGridFieldState](../reference_2.md#type-listgridfieldstate) object passed in.  
 Used to restore previous state retrieved from the grid by a call to [ListGrid.getFieldState](#method-listgridgetfieldstate).
 
 The optional `isSparse` parameter may be passed to indicate whether the fieldState object is "sparse" - whether it includes explicit state information for hidden fields. In this case any fields defined on the component not explicitly included in the fieldState object will be hidden.  
@@ -6677,7 +6702,7 @@ If `isSparse` is not explicitly passed as a parameter, sparseness will be assume
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| fieldState | [ListGridFieldState](../main_2.md#type-listgridfieldstate) | false | — | state to apply to the listGrid's fields. |
+| fieldState | [ListGridFieldState](../reference_2.md#type-listgridfieldstate) | false | — | state to apply to the listGrid's fields. |
 | isSparse | [Boolean](#type-boolean) | true | — | If true, the fieldState passed in is assumed to be "sparse". Any fields defined on this component without explicit field state values will be hidden. |
 
 ### Groups
@@ -6743,7 +6768,7 @@ Get the computed value of a [formula field](ListGrid_1.md#attr-listgridcanaddfor
 
 ### Returns
 
-`[Double](../main.md#type-double)|[String](#type-string)` — formula result if a valid number or [DataBoundComponent.badFormulaResultValue](DataBoundComponent.md#attr-databoundcomponentbadformularesultvalue) if invalid
+`[Double](../reference.md#type-double)|[String](#type-string)` — formula result if a valid number or [DataBoundComponent.badFormulaResultValue](DataBoundComponent.md#attr-databoundcomponentbadformularesultvalue) if invalid
 
 ---
 ## Method: ListGrid.setFieldMaxWidth
@@ -6755,7 +6780,7 @@ Updates [ListGridField.maxWidth](ListGridField.md#attr-listgridfieldmaxwidth) fo
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| fieldNum | [int](../main.md#type-int)|[String](#type-string) | false | — | name of the field, or index. |
+| fieldNum | [int](../reference.md#type-int)|[String](#type-string) | false | — | name of the field, or index. |
 | width | [Number](#type-number) | false | — | — |
 
 ### See Also
@@ -6817,7 +6842,7 @@ Modify the height of a listGrid. To hide the header set height to zero.
 ### Description
 For grids with frozen columns, this method is called to retrieve the [ListGrid.frozenRollOverCanvas](ListGrid_1.md#attr-listgridfrozenrollovercanvas) when the user moves over a new row or cell if [ListGrid.showRollOverCanvas](ListGrid_1.md#attr-listgridshowrollovercanvas) is true, or when the user moves over the selected record if [ListGrid.showSelectedRollOverCanvas](ListGrid_1.md#attr-listgridshowselectedrollovercanvas) is true.
 
-The default implementation uses the [AutoChild](../main.md#type-autochild) subystem to create the [ListGrid.frozenRollOverCanvas](ListGrid_1.md#attr-listgridfrozenrollovercanvas) based on the `rollOverCanvas` auto child settings. It may be overridden for custom behavior.
+The default implementation uses the [AutoChild](../reference.md#type-autochild) subystem to create the [ListGrid.frozenRollOverCanvas](ListGrid_1.md#attr-listgridfrozenrollovercanvas) based on the `rollOverCanvas` auto child settings. It may be overridden for custom behavior.
 
 Note that for efficiency this should not typically create a new Canvas every time that it is called. Instead usually a single rollOver canvas should be created and updated to reflect the current rollOver row if necessary.
 
@@ -6829,8 +6854,8 @@ See also [ListGrid.getRollOverCanvas](#method-listgridgetrollovercanvas).
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| rowNum | [Integer](../main_2.md#type-integer) | false | — | index of the current rollOver row. |
-| colNum | [Integer](../main_2.md#type-integer) | false | — | index of the current rollOver column. This parameter will be null unless [useCellRollOvers](ListGrid_1.md#attr-listgridusecellrollovers) is true for the grid. |
+| rowNum | [Integer](../reference_2.md#type-integer) | false | — | index of the current rollOver row. |
+| colNum | [Integer](../reference_2.md#type-integer) | false | — | index of the current rollOver column. This parameter will be null unless [useCellRollOvers](ListGrid_1.md#attr-listgridusecellrollovers) is true for the grid. |
 
 ### Returns
 
@@ -6844,7 +6869,7 @@ See also [ListGrid.getRollOverCanvas](#method-listgridgetrollovercanvas).
 ## Method: ListGrid.getSort
 
 ### Description
-Returns the current [SortSpecifiers](../main_2.md#object-sortspecifier) for this ListGrid. Will return null if this grid has never been sorted (and has no specified [ListGrid.initialSort](ListGrid_1.md#attr-listgridinitialsort) or [ListGrid.sortField](ListGrid_1.md#attr-listgridsortfield)).
+Returns the current [SortSpecifiers](../reference_2.md#object-sortspecifier) for this ListGrid. Will return null if this grid has never been sorted (and has no specified [ListGrid.initialSort](ListGrid_1.md#attr-listgridinitialsort) or [ListGrid.sortField](ListGrid_1.md#attr-listgridsortfield)).
 
 Note that if sorting was applied via [ListGrid.sort](#method-listgridsort) \[rather than [ListGrid.setSort](#method-listgridsetsort)\] the sortSpecifiers returned will have been created based on the specified sort field / direction passed into [ListGrid.sort](#method-listgridsort).
 
@@ -6868,14 +6893,14 @@ Return false from this method to cancel the default behavior (Saving / cancellin
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| editCompletionEvent | [EditCompletionEvent](../main_2.md#type-editcompletionevent) | false | — | How was the edit completion fired? |
+| editCompletionEvent | [EditCompletionEvent](../reference_2.md#type-editcompletionevent) | false | — | How was the edit completion fired? |
 | record | [ListGridRecord](#type-listgridrecord) | false | — | record for the cell being edited |
-| newValues | [Object](../main.md#type-object) | false | — | new values for the record \[Note that fields that have not been edited will not be included in this object\] |
+| newValues | [Object](../reference.md#type-object) | false | — | new values for the record \[Note that fields that have not been edited will not be included in this object\] |
 | rowNum | [number](#type-number) | false | — | row number for the row being left |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — Returning false from this method will cancel the default behavior (for example saving the row) and leave the editor visible and focus in this edit cell.
+`[boolean](../reference.md#type-boolean)` — Returning false from this method will cancel the default behavior (for example saving the row) and leave the editor visible and focus in this edit cell.
 
 ### Groups
 
@@ -6904,7 +6929,7 @@ Note that this method is not called when the data is regrouped, either [programm
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — return false to cancel grouping on the passed specification
+`[boolean](../reference.md#type-boolean)` — return false to cancel grouping on the passed specification
 
 ### Groups
 
@@ -6961,13 +6986,13 @@ Setter for [ListGrid.showCollapsedGroupSummary](ListGrid_1.md#attr-listgridshowc
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| showCollapsedGroupSummary | [boolean](../main.md#type-boolean) | false | — | new showCollapsedGroupSummary value |
+| showCollapsedGroupSummary | [boolean](../reference.md#type-boolean) | false | — | new showCollapsedGroupSummary value |
 
 ---
 ## Method: ListGrid.collapseRecord
 
 ### Description
-Collapses a given [record](../main_2.md#object-listgridrecord) which has been previously expanded using [ListGrid.expandRecord](#method-listgridexpandrecord).
+Collapses a given [record](../reference_2.md#object-listgridrecord) which has been previously expanded using [ListGrid.expandRecord](#method-listgridexpandrecord).
 
 Depending on the [pooling mode](ListGrid_1.md#attr-listgridexpansioncomponentpoolingmode), this method may automatically destroy expansionComponents. By default, components created automatically by the ListGrid will be auto-destroyed. This behavior can be changed by setting a different pooling mode.
 
@@ -7017,7 +7042,7 @@ As with [ListGrid.autoFitFieldWidths](ListGrid_1.md#attr-listgridautofitfieldwid
 
 ### Returns
 
-`[int](../main.md#type-int)` — new width in pixels
+`[int](../reference.md#type-int)` — new width in pixels
 
 ### Groups
 
@@ -7045,7 +7070,7 @@ In general - bear in mind that this is an advanced usage and if there is an equi
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| field | [String](#type-string)|[Integer](../main_2.md#type-integer) | false | — | fieldName or colNum to get the edit item for. |
+| field | [String](#type-string)|[Integer](../reference_2.md#type-integer) | false | — | fieldName or colNum to get the edit item for. |
 
 ### Returns
 
@@ -7059,7 +7084,7 @@ In general - bear in mind that this is an advanced usage and if there is an equi
 ### Description
 Optional notification fired when either user or framework code calls [setSort()](#method-listgridsetsort). This notification fires before the default behavior; return false from the handler to cancel the default behavior. Note, the notification is fired before the default functionality, but _after_ prechecks have completed; your method will only be called if the default behavior would have been called. For example, if there are pending edits and the user does not confirm that these should be saved, normal sorting would not have gone ahead, so equally your handler will not be called.
 
-The default `setSort()` method does two things to reflect the set of [sortSpecifier](../main_2.md#object-sortspecifier)s passed to it:
+The default `setSort()` method does two things to reflect the set of [sortSpecifier](../reference_2.md#object-sortspecifier)s passed to it:
 
 *   Change the grid UI (show directional arrows, numerals to indicate sort priority, etc)
 *   Actually sort the grid data
@@ -7077,11 +7102,11 @@ If your reason for implementing a custom `setSortHandler()` is to inhibit or rep
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| sortSpecifiers | [Array of SortSpecifier](#type-array-of-sortspecifier) | false | — | Array of [SortSpecifier](../main_2.md#object-sortspecifier) objects |
+| sortSpecifiers | [Array of SortSpecifier](#type-array-of-sortspecifier) | false | — | Array of [SortSpecifier](../reference_2.md#object-sortspecifier) objects |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — return false to cancel the default setSort() behavior
+`[boolean](../reference.md#type-boolean)` — return false to cancel the default setSort() behavior
 
 **Flags**: A
 
@@ -7119,7 +7144,7 @@ Is the field title for the specified field clipped?
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — whether the field title for the specified field is clipped
+`[boolean](../reference.md#type-boolean)` — whether the field title for the specified field is clipped
 
 ### Groups
 
@@ -7145,7 +7170,7 @@ Closes the node represented by the "record" parameter, if it is a folder and is 
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true if the node was closed, false if it was not (either because it is not a folder, or because it was already closed)
+`[boolean](../reference.md#type-boolean)` — true if the node was closed, false if it was not (either because it is not a folder, or because it was already closed)
 
 ---
 ## Method: ListGrid.getFieldWidth
@@ -7157,11 +7182,11 @@ Returns a numeric value for the width of some field within this `ListGrid`.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| fieldNum | [int](../main.md#type-int)|[FieldName](../main.md#type-fieldname) | false | — | Index or name of the field for which the width is to be determined. |
+| fieldNum | [int](../reference.md#type-int)|[FieldName](../reference.md#type-fieldname) | false | — | Index or name of the field for which the width is to be determined. |
 
 ### Returns
 
-`[Integer](../main_2.md#type-integer)` — width of the field in px, or `null` if the width can't be determined.
+`[Integer](../reference_2.md#type-integer)` — width of the field in px, or `null` if the width can't be determined.
 
 ---
 ## Method: ListGrid.focusInRow
@@ -7175,7 +7200,7 @@ Only applies where [ListGrid.canSelectCells](ListGrid_1.md#attr-listgridcanselec
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| row | [Integer](../main_2.md#type-integer) | false | — | Index of target row |
+| row | [Integer](../reference_2.md#type-integer) | false | — | Index of target row |
 
 ### See Also
 
@@ -7239,7 +7264,7 @@ Note: you should set [editorType](FormItem.md#attr-formitemeditortype) in the re
 
 ### Returns
 
-`[Object](../main.md#type-object)` — default properties for the field
+`[Object](../reference.md#type-object)` — default properties for the field
 
 ### See Also
 
@@ -7249,14 +7274,14 @@ Note: you should set [editorType](FormItem.md#attr-formitemeditortype) in the re
 ## Method: ListGrid.setViewState
 
 ### Description
-Reset this grid's view state to match the [ListGridViewState](../main_2.md#type-listgridviewstate) object passed in.  
+Reset this grid's view state to match the [ListGridViewState](../reference_2.md#type-listgridviewstate) object passed in.  
 Used to restore previous state retrieved from the grid by a call to [ListGrid.getViewState](#method-listgridgetviewstate).
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| viewState | [ListGridViewState](../main_2.md#type-listgridviewstate) | false | — | Object describing the desired view state for the grid |
+| viewState | [ListGridViewState](../reference_2.md#type-listgridviewstate) | false | — | Object describing the desired view state for the grid |
 
 ### Groups
 
@@ -7311,7 +7336,7 @@ Note that for edits to an existing record, clearing all edit values will drop th
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| editValuesID | [number](#type-number)|[Object](../main.md#type-object) | false | — | Row number, primary keys object for the record, or editValues object |
+| editValuesID | [number](#type-number)|[Object](../reference.md#type-object) | false | — | Row number, primary keys object for the record, or editValues object |
 | colNum | [number](#type-number)|[String](#type-string) | false | — | Column number, or Name of field for which the value is to be cleared |
 
 ### Groups
@@ -7330,13 +7355,13 @@ Default implementation handles navigating between records with arrow keys, and a
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — return false to cancel
+`[boolean](../reference.md#type-boolean)` — return false to cancel
 
 ---
 ## Method: ListGrid.groupSortNormalizer
 
 ### Description
-When [ListGrid.sortByGroupFirst](ListGrid_1.md#attr-listgridsortbygroupfirst) is active, the sorting [normalizer](../main.md#attr-sortspecifiernormalizer) applied for implicit sorting by the field(s) used for grouping.
+When [ListGrid.sortByGroupFirst](ListGrid_1.md#attr-listgridsortbygroupfirst) is active, the sorting [normalizer](../reference.md#attr-sortspecifiernormalizer) applied for implicit sorting by the field(s) used for grouping.
 
 No default implementation.
 
@@ -7345,7 +7370,7 @@ No default implementation.
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | record | [ListGridRecord](#type-listgridrecord) | false | — | record to normalize |
-| fieldName | [FieldName](../main.md#type-fieldname) | false | — | name of the field on which sorting occurred |
+| fieldName | [FieldName](../reference.md#type-fieldname) | false | — | name of the field on which sorting occurred |
 | context | [ListGrid](#type-listgrid) | false | — | the grid is passed to allow property and method access |
 
 ### Returns
@@ -7361,13 +7386,13 @@ No default implementation.
 
 - [ListGrid.sortByGroupFirst](ListGrid_1.md#attr-listgridsortbygroupfirst)
 - [ListGrid.groupSortDirection](ListGrid_1.md#attr-listgridgroupsortdirection)
-- [SortSpecifier.normalizer](../main.md#attr-sortspecifiernormalizer)
+- [SortSpecifier.normalizer](../reference.md#attr-sortspecifiernormalizer)
 
 ---
 ## Method: ListGrid.collapseRecords
 
 ### Description
-Collapses the passed list of expanded [records](../main_2.md#object-listgridrecord). Calls [collapseRecord](#method-listgridcollapserecord) for each passed record, but only marks the grid for redraw once, after all records have been collapsed.
+Collapses the passed list of expanded [records](../reference_2.md#object-listgridrecord). Calls [collapseRecord](#method-listgridcollapserecord) for each passed record, but only marks the grid for redraw once, after all records have been collapsed.
 
 ### Parameters
 
@@ -7383,7 +7408,7 @@ Collapses the passed list of expanded [records](../main_2.md#object-listgridreco
 ## Method: ListGrid.isCheckboxField
 
 ### Description
-Identifies whether the passed-in field is the specially generated [checkboxField](ListGrid_1.md#attr-listgridcheckboxfield) used when [SelectionAppearance](../main.md#type-selectionappearance) is "checkbox". Use this method in your custom event handlers to avoid inappropriately performing actions when the checkboxField is clicked on.
+Identifies whether the passed-in field is the specially generated [checkboxField](ListGrid_1.md#attr-listgridcheckboxfield) used when [SelectionAppearance](../reference.md#type-selectionappearance) is "checkbox". Use this method in your custom event handlers to avoid inappropriately performing actions when the checkboxField is clicked on.
 
 ### Parameters
 
@@ -7407,7 +7432,7 @@ Returns the index of the column being edited or null if there is no current edit
 
 ### Returns
 
-`[int](../main.md#type-int)` — index of the current edit column
+`[int](../reference.md#type-int)` — index of the current edit column
 
 ### Groups
 
@@ -7473,7 +7498,7 @@ Return the vertical alignment for cell contents. Expected values are: 'top', 'ce
 
 ### Returns
 
-`[VerticalAlignment](../main.md#type-verticalalignment)` — Vertical alignment of cell contents: 'top', 'center', or 'bottom'
+`[VerticalAlignment](../reference.md#type-verticalalignment)` — Vertical alignment of cell contents: 'top', 'center', or 'bottom'
 
 ### See Also
 
@@ -7493,7 +7518,7 @@ If we're showing the filter (query-by-example) row for this ListGrid, this metho
 
 ### Returns
 
-`[ValueMap](../main_2.md#type-valuemap)` — ValueMap for the edit field (or null if no valueMap required)
+`[ValueMap](../reference_2.md#type-valuemap)` — ValueMap for the edit field (or null if no valueMap required)
 
 ### Groups
 
@@ -7513,11 +7538,11 @@ See [exportBGColor](../kb_topics/exportBGColor.md#kb-topic-exports--cell-backgro
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| colNum | [int](../main.md#type-int) | false | — | column number |
+| colNum | [int](../reference.md#type-int) | false | — | column number |
 
 ### Returns
 
-`[CSSColor](../main_2.md#type-csscolor)` — background color to use for the column, or null to use the default background color
+`[CSSColor](../reference_2.md#type-csscolor)` — background color to use for the column, or null to use the default background color
 
 ### Groups
 
@@ -7533,8 +7558,8 @@ Set the [valueMap](ListGridField.md#attr-listgridfieldvaluemap) for a field. See
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| fieldID | [String](#type-string)|[int](../main.md#type-int) | false | — | Name or index of field to update |
-| map | [Object](../main.md#type-object) | false | — | ValueMap for the passed field |
+| fieldID | [String](#type-string)|[int](../reference.md#type-int) | false | — | Name or index of field to update |
+| map | [Object](../reference.md#type-object) | false | — | ValueMap for the passed field |
 
 ---
 ## Method: ListGrid.sorterContextClick
@@ -7544,7 +7569,7 @@ Notification method fired when the user right-clicks on the corner [sort button]
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — return false to suppress the context menu
+`[boolean](../reference.md#type-boolean)` — return false to suppress the context menu
 
 ### Groups
 
@@ -7565,7 +7590,7 @@ By default, hiding the `filterEditor` will also clear any user-criteria it speci
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| value | [boolean](../main.md#type-boolean) | false | — | true if the filter editor should be shown, false if it should be hidden |
+| value | [boolean](../reference.md#type-boolean) | false | — | true if the filter editor should be shown, false if it should be hidden |
 
 ### Groups
 
@@ -7583,7 +7608,7 @@ When using [DataBinding](DataBoundComponent.md#attr-databoundcomponentfields), t
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| colNum | [int](../main.md#type-int)|[FieldName](../main.md#type-fieldname) | false | — | number or name of the field |
+| colNum | [int](../reference.md#type-int)|[FieldName](../reference.md#type-fieldname) | false | — | number or name of the field |
 
 ### Returns
 
@@ -7597,7 +7622,7 @@ Method to calculate and return the default width of a field. This method is call
 
 If [ListGridField.defaultWidth](ListGridField.md#attr-listgridfielddefaultwidth) is specified, this will be returned.
 
-Otherwise, the default implementation varies by [field type](../main.md#type-listgridfieldtype). For fields of type `"icon"`, or fields which show only a [valueIcon](ListGridField.md#attr-listgridfieldvalueicons) as a value, and for boolean fields which show a checkbox value, the width will be calculated based on the icon size and [ListGrid.iconPadding](ListGrid_1.md#attr-listgridiconpadding). For other fields the [ListGrid.getFieldContentWidth](#method-listgridgetfieldcontentwidth) method will be used to calculate a width based on the rendered width of content. Note that for `"image"` type fields, this method will rely on the [ListGridField.imageWidth](ListGridField.md#attr-listgridfieldimagewidth) being specified.
+Otherwise, the default implementation varies by [field type](../reference.md#type-listgridfieldtype). For fields of type `"icon"`, or fields which show only a [valueIcon](ListGridField.md#attr-listgridfieldvalueicons) as a value, and for boolean fields which show a checkbox value, the width will be calculated based on the icon size and [ListGrid.iconPadding](ListGrid_1.md#attr-listgridiconpadding). For other fields the [ListGrid.getFieldContentWidth](#method-listgridgetfieldcontentwidth) method will be used to calculate a width based on the rendered width of content. Note that for `"image"` type fields, this method will rely on the [ListGridField.imageWidth](ListGridField.md#attr-listgridfieldimagewidth) being specified.
 
 Note that this width is the default width of "content" - it does not take into account the rendered size of the field title.
 
@@ -7609,7 +7634,7 @@ Note that this width is the default width of "content" - it does not take into a
 
 ### Returns
 
-`[int](../main.md#type-int)` — default size required for the field's content.
+`[int](../reference.md#type-int)` — default size required for the field's content.
 
 ---
 ## Method: ListGrid.getSelectedRecord
@@ -7661,7 +7686,7 @@ Note that a record that is marked for removal and then un-marked retains any unc
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| rowNum | [int](../main.md#type-int) | false | — | index of record to clear the 'removed' |
+| rowNum | [int](../reference.md#type-int) | false | — | index of record to clear the 'removed' |
 
 ### Groups
 
@@ -7702,7 +7727,7 @@ If editing is already underway elsewhere in the grid, startEditingNew() behaves 
 ## Method: ListGrid.selectRecords
 
 ### Description
-Select/deselect a list of [Record](../main.md#object-record)s passed in explicitly, or by index.
+Select/deselect a list of [Record](../reference.md#object-record)s passed in explicitly, or by index.
 
 Note that developers may wish to use [ListGrid.selectRange](#method-listgridselectrange) to select a single contiguous range.
 
@@ -7711,8 +7736,8 @@ Note that developers may wish to use [ListGrid.selectRange](#method-listgridsele
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | records | [Array of Record](#type-array-of-record)|[number](#type-number) | false | — | records (or row numbers) to select |
-| newState | [boolean](../main.md#type-boolean) | true | — | new selection state (if null, defaults to true) |
-| rowNums | [Array of Integer](#type-array-of-integer)|[Integer](../main_2.md#type-integer) | true | — | row numbers to select. Required for [multi-link trees](Tree.md#attr-treemultilinktree) unless row numbers are passed in the "records" param. If passed, the rowNums array should correspond to the records array (ie, rowNums\[0\] refers to the same object as records\[0\]) |
+| newState | [boolean](../reference.md#type-boolean) | true | — | new selection state (if null, defaults to true) |
+| rowNums | [Array of Integer](#type-array-of-integer)|[Integer](../reference_2.md#type-integer) | true | — | row numbers to select. Required for [multi-link trees](Tree.md#attr-treemultilinktree) unless row numbers are passed in the "records" param. If passed, the rowNums array should correspond to the records array (ie, rowNums\[0\] refers to the same object as records\[0\]) |
 
 ### Groups
 
@@ -7732,7 +7757,7 @@ Freeze the indicated field, so that it remains in place and visible when horizon
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| field | [ListGridField](#type-listgridfield)|[Integer](../main_2.md#type-integer)|[String](#type-string)|[Array](#type-array) | false | — | field or fields to freeze. fields may be specified as ListGridField objects, field names or colNum. |
+| field | [ListGridField](#type-listgridfield)|[Integer](../reference_2.md#type-integer)|[String](#type-string)|[Array](#type-array) | false | — | field or fields to freeze. fields may be specified as ListGridField objects, field names or colNum. |
 
 ### Groups
 
@@ -7756,7 +7781,7 @@ Default behavior will display the [ListGridField.iconCursor](ListGridField.md#at
 
 ### Returns
 
-`[Cursor](../main.md#type-cursor)` — cursor to display when the user rolls over icons in this field's cells. May be null indicating no special cursor to display.
+`[Cursor](../reference.md#type-cursor)` — cursor to display when the user rolls over icons in this field's cells. May be null indicating no special cursor to display.
 
 ---
 ## Method: ListGrid.resizeField
@@ -7788,7 +7813,7 @@ Note that this also clears the [removed](#method-listgridmarkrecordremoved) stat
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | rows | [Array of Number](#type-array-of-number) | true | — | allows you to specify which row(s) to drop edits for |
-| dontHideEditor | [boolean](../main.md#type-boolean) | true | — | By default this method will hide the editor if it is currently showing for any row in the grid. Passing in this parameter will leave the editor visible (and just reset the edit values underneath the editor). |
+| dontHideEditor | [boolean](../reference.md#type-boolean) | true | — | By default this method will hide the editor if it is currently showing for any row in the grid. Passing in this parameter will leave the editor visible (and just reset the edit values underneath the editor). |
 
 ### Groups
 
@@ -7856,7 +7881,7 @@ For more information on editing, see the [editing overview](../kb_topics/editing
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — Whether to allow editing this cell
+`[boolean](../reference.md#type-boolean)` — Whether to allow editing this cell
 
 ### Groups
 
@@ -7911,14 +7936,14 @@ Returns a map of [WAI ARIA state attribute values](Canvas.md#attr-canvasariastat
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| rowNum | [Integer](../main_2.md#type-integer) | false | — | row index of the cell |
-| colNum | [Integer](../main_2.md#type-integer) | false | — | column index of the cell |
+| rowNum | [Integer](../reference_2.md#type-integer) | false | — | row index of the cell |
+| colNum | [Integer](../reference_2.md#type-integer) | false | — | column index of the cell |
 | record | [ListGridRecord](#type-listgridrecord) | false | — | record for the cell in question |
 | role | [String](#type-string) | false | — | ARIA role for the cell as returned by [ListGrid.getCellRole](#method-listgridgetcellrole) |
 
 ### Returns
 
-`[Object](../main.md#type-object)` — Object containing aria property names and values to write into the cell's HTML
+`[Object](../reference.md#type-object)` — Object containing aria property names and values to write into the cell's HTML
 
 ### Groups
 
@@ -7938,7 +7963,7 @@ Sort the grid's data to reflect the parameter sortSpecifiers.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| sortSpecifiers | [Array of SortSpecifier](#type-array-of-sortspecifier) | false | — | Array of [SortSpecifier](../main_2.md#object-sortspecifier) objects |
+| sortSpecifiers | [Array of SortSpecifier](#type-array-of-sortspecifier) | false | — | Array of [SortSpecifier](../reference_2.md#object-sortspecifier) objects |
 
 **Flags**: A
 
@@ -7946,12 +7971,12 @@ Sort the grid's data to reflect the parameter sortSpecifiers.
 ## Method: ListGrid.getSortState
 
 ### Description
-Returns a snapshot of the current sort state within this listGrid as a [ListGridSortState](../main.md#type-listgridsortstate) object.  
+Returns a snapshot of the current sort state within this listGrid as a [ListGridSortState](../reference.md#type-listgridsortstate) object.  
 This object can be passed to [ListGrid.setSortState](#method-listgridsetsortstate) to reset this grid's sort to the current state (assuming the same fields are present in the grid).
 
 ### Returns
 
-`[ListGridSortState](../main.md#type-listgridsortstate)` — current sort state for the grid.
+`[ListGridSortState](../reference.md#type-listgridsortstate)` — current sort state for the grid.
 
 ### Groups
 
@@ -7976,7 +8001,7 @@ If the property is not explicitly set, default implementation will return `"sepa
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| rowNum | [Integer](../main_2.md#type-integer) | false | — | row index |
+| rowNum | [Integer](../reference_2.md#type-integer) | false | — | row index |
 | record | [ListGridRecord](#type-listgridrecord) | false | — | Record for the row in question |
 
 ### Returns
@@ -8006,7 +8031,7 @@ Note that for editable grids, sorting is performed by underlying data values, no
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | sortField | [String](#type-string)|[number](#type-number) | true | — | the field name or column number to sort by |
-| sortDirection | [SortDirection](../main_2.md#type-sortdirection) | true | — | the direction to sort in |
+| sortDirection | [SortDirection](../reference_2.md#type-sortdirection) | true | — | the direction to sort in |
 
 ### Returns
 
@@ -8018,7 +8043,7 @@ Note that for editable grids, sorting is performed by underlying data values, no
 
 ### See Also
 
-- [SortDirection](../main_2.md#type-sortdirection)
+- [SortDirection](../reference_2.md#type-sortdirection)
 
 ---
 ## Method: ListGrid.removeEmbeddedComponent
@@ -8031,7 +8056,7 @@ Removes an embedded component previously associated with the provided record. If
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | record | [ListGridRecord](#type-listgridrecord)|[Canvas](#type-canvas) | false | — | record that the component was previously attached to or the component itself |
-| component | [Integer](../main_2.md#type-integer)|[Canvas](#type-canvas) | true | — | component to unembed, or the colNum in which it appears |
+| component | [Integer](../reference_2.md#type-integer)|[Canvas](#type-canvas) | true | — | component to unembed, or the colNum in which it appears |
 
 **Flags**: A
 
@@ -8046,11 +8071,11 @@ Returns the HTML that is displayed by the default [headerHover](#method-listgrid
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | fieldNum | [number](#type-number) | false | — | field number for the header that was hovered |
-| defaultHTML | [HTMLString](../main.md#type-htmlstring) | false | — | the HTML that would have been displayed by default |
+| defaultHTML | [HTMLString](../reference.md#type-htmlstring) | false | — | the HTML that would have been displayed by default |
 
 ### Returns
 
-`[HTMLString](../main.md#type-htmlstring)` — HTML to be displayed in the hover. If null or an empty string, then the hover is canceled.
+`[HTMLString](../reference.md#type-htmlstring)` — HTML to be displayed in the hover. If null or an empty string, then the hover is canceled.
 
 ### Groups
 
@@ -8075,7 +8100,7 @@ Callback fired when the user starts editing a new row.
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | record | [ListGridField](#type-listgridfield) | false | — | record for the cell being edited |
-| editValues | [Object](../main.md#type-object) | false | — | edit values for the current row |
+| editValues | [Object](../reference.md#type-object) | false | — | edit values for the current row |
 | rowNum | [number](#type-number) | false | — | row number for the cell |
 
 ### Groups
@@ -8090,7 +8115,7 @@ Callback fired when the user starts editing a new row.
 ## Method: ListGrid.markRecordRemoved
 
 ### Description
-Marks a record deleted such that a later call to [ListGrid.saveEdits](#method-listgridsaveedits) or [ListGrid.saveAllEdits](#method-listgridsavealledits) will cause a "remove" [DSRequest](../main_2.md#object-dsrequest) to be submitted.
+Marks a record deleted such that a later call to [ListGrid.saveEdits](#method-listgridsaveedits) or [ListGrid.saveAllEdits](#method-listgridsavealledits) will cause a "remove" [DSRequest](../reference_2.md#object-dsrequest) to be submitted.
 
 A removed record is disabled and non-editable, and uses [ListGrid.removedCSSText](ListGrid_1.md#attr-listgridremovedcsstext) for its CSS style, which by default will show strikethrough text.
 
@@ -8124,7 +8149,7 @@ The `ignorePendingValues` parameter may be used by developers who want to ignore
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| rowNum | [int](../main.md#type-int) | false | — | index of row to check for changes |
+| rowNum | [int](../reference.md#type-int) | false | — | index of row to check for changes |
 | ignorePendingValues | [Boolean](#type-boolean) | true | — | If true, this method will compare the current edit values against the underlying record in the dataset, not taking pending edit values into account |
 
 ### Returns
@@ -8149,7 +8174,7 @@ Opens the node represented by the "record" parameter, if it is a folder and is n
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true if the node was opened, false if it was not (either because it is not a folder, or because it was already open)
+`[boolean](../reference.md#type-boolean)` — true if the node was opened, false if it was not (either because it is not a folder, or because it was already open)
 
 ---
 ## Method: ListGrid.getDragTrackerIcon
@@ -8191,7 +8216,7 @@ Return the horizontal alignment for cell contents. Default implementation return
 
 ### Returns
 
-`[Alignment](../main_2.md#type-alignment)` — Horizontal alignment of cell contents: 'right', 'center', or 'left'
+`[Alignment](../reference_2.md#type-alignment)` — Horizontal alignment of cell contents: 'right', 'center', or 'left'
 
 ### See Also
 
@@ -8207,7 +8232,7 @@ Returns true if the specified record is marked as removed via a call to [ListGri
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| rowNum | [int](../main.md#type-int) | false | — | index of row to verify |
+| rowNum | [int](../reference.md#type-int) | false | — | index of row to verify |
 
 ### Returns
 
@@ -8249,7 +8274,7 @@ NOTE: for a drop beyond the last visible record of a ListGrid, `targetRecord` wi
 |------|------|----------|---------|-------------|
 | dropRecords | [Array of ListGridRecord](#type-array-of-listgridrecord)[] | false | — | records being dropped |
 | targetRecord | [ListGridRecord](#type-listgridrecord) | false | — | record being dropped on. May be null |
-| index | [int](../main.md#type-int) | false | — | index of record being dropped on |
+| index | [int](../reference.md#type-int) | false | — | index of record being dropped on |
 | sourceWidget | [Canvas](#type-canvas) | false | — | widget where dragging began |
 
 ---
@@ -8263,8 +8288,8 @@ This method sets the [field.editorValueMap](ListGridField.md#attr-listgridfielde
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| fieldID | [Object](../main.md#type-object)|[number](#type-number)|[FieldName](../main.md#type-fieldname) | false | — | field object, number, or name |
-| map | [Object](../main.md#type-object) | false | — | ValueMap to apply to the field |
+| fieldID | [Object](../reference.md#type-object)|[number](#type-number)|[FieldName](../reference.md#type-fieldname) | false | — | field object, number, or name |
+| map | [Object](../reference.md#type-object) | false | — | ValueMap to apply to the field |
 
 ### Groups
 
@@ -8288,7 +8313,7 @@ Called when a cell receives a mouseup event.
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -8317,9 +8342,9 @@ Select a contiguous range of records by index
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| startRow | [int](../main.md#type-int) | false | — | start of selection range |
-| endRow | [int](../main.md#type-int) | false | — | end of selection range (non-inclusive) |
-| newState | [boolean](../main.md#type-boolean) | true | — | new selection state (if null, defaults to true) |
+| startRow | [int](../reference.md#type-int) | false | — | start of selection range |
+| endRow | [int](../reference.md#type-int) | false | — | end of selection range (non-inclusive) |
+| newState | [boolean](../reference.md#type-boolean) | true | — | new selection state (if null, defaults to true) |
 
 ### Groups
 
@@ -8339,7 +8364,7 @@ Note: if [ListGrid.showFilterEditor](ListGrid_1.md#attr-listgridshowfiltereditor
 
 ### Returns
 
-`[Criteria](../main_2.md#type-criteria)` — current filter criteria
+`[Criteria](../reference_2.md#type-criteria)` — current filter criteria
 
 ### Groups
 
@@ -8383,11 +8408,11 @@ Called when a user starts to edit a field, or whenever the field valueMap is upd
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | field | [ListGridField](#type-listgridfield) | false | — | field definition field for which we need a valueMap |
-| values | [Object](../main.md#type-object) | false | — | Field values for record being edited. Note that this will include the current edit values for fields that have not yet been saved. May be null, if editing a new record. |
+| values | [Object](../reference.md#type-object) | false | — | Field values for record being edited. Note that this will include the current edit values for fields that have not yet been saved. May be null, if editing a new record. |
 
 ### Returns
 
-`[ValueMap](../main_2.md#type-valuemap)` — ValueMap for the edit field (or null if no valueMap required)
+`[ValueMap](../reference_2.md#type-valuemap)` — ValueMap for the edit field (or null if no valueMap required)
 
 ### Groups
 
@@ -8419,7 +8444,7 @@ Setter for [ListGrid.autoFitMaxWidth](ListGrid_1.md#attr-listgridautofitmaxwidth
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| width | [Integer](../main_2.md#type-integer)|[String](#type-string) | false | — | Width we'll expand to accommodate if [auto fit](ListGrid_1.md#attr-listgridautofitdata) is enabled horizontally. |
+| width | [Integer](../reference_2.md#type-integer)|[String](#type-string) | false | — | Width we'll expand to accommodate if [auto fit](ListGrid_1.md#attr-listgridautofitdata) is enabled horizontally. |
 
 ### Groups
 
@@ -8435,7 +8460,7 @@ Updates [ListGridField.minWidth](ListGridField.md#attr-listgridfieldminwidth) fo
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| fieldNum | [int](../main.md#type-int)|[String](#type-string) | false | — | name of the field, or index. |
+| fieldNum | [int](../reference.md#type-int)|[String](#type-string) | false | — | name of the field, or index. |
 | width | [Number](#type-number) | false | — | — |
 
 ### See Also
@@ -8453,7 +8478,7 @@ Setter for [ListGridField.autoFitWidth](ListGridField.md#attr-listgridfieldautof
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | fieldName | [String](#type-string) | false | — | field to auto-fit |
-| autoFit | [boolean](../main.md#type-boolean) | false | — | Should autoFitWidth be enabled or disabled? |
+| autoFit | [boolean](../reference.md#type-boolean) | false | — | Should autoFitWidth be enabled or disabled? |
 
 ### Groups
 
@@ -8463,7 +8488,7 @@ Setter for [ListGridField.autoFitWidth](ListGridField.md#attr-listgridfieldautof
 ## Method: ListGrid.getFilterEditorCriterion
 
 ### Description
-Extracts and returns the criteria for the passed field from the [filterEditor](ListGrid_1.md#attr-listgridshowfiltereditor). The result can be an [AdvancedCriteria](../main.md#object-advancedcriteria), if the field in question produces more than one restriction, such as separate `greaterThan` and `lessThan` criteria for a range.
+Extracts and returns the criteria for the passed field from the [filterEditor](ListGrid_1.md#attr-listgridshowfiltereditor). The result can be an [AdvancedCriteria](../reference.md#object-advancedcriteria), if the field in question produces more than one restriction, such as separate `greaterThan` and `lessThan` criteria for a range.
 
 ### Parameters
 
@@ -8488,9 +8513,9 @@ Note that this method fires in addition to any specified [ListGrid.cellClick](#m
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | record | [ListGridRecord](#type-listgridrecord) | false | — | record object returned from getCellRecord() |
-| recordNum | [int](../main.md#type-int) | false | — | index of the row where the click occurred |
-| fieldNum | [int](../main.md#type-int) | false | — | index of the col where the click occurred |
-| keyboardGenerated | [boolean](../main.md#type-boolean) | true | — | indicates whether this was a synthesized record click in response to a keyboard event |
+| recordNum | [int](../reference.md#type-int) | false | — | index of the row where the click occurred |
+| fieldNum | [int](../reference.md#type-int) | false | — | index of the col where the click occurred |
+| keyboardGenerated | [boolean](../reference.md#type-boolean) | true | — | indicates whether this was a synthesized record click in response to a keyboard event |
 
 ### Returns
 
@@ -8523,8 +8548,8 @@ Can also be overridden on a per-field basis via [field.editorEnter](ListGridFiel
 |------|------|----------|---------|-------------|
 | record | [ListGridRecord](#type-listgridrecord) | false | — | record for the cell being edited. **Will be null** for a new, unsaved record. |
 | value | [Any](#type-any) | false | — | value for the cell being edited |
-| rowNum | [int](../main.md#type-int) | false | — | row number for the cell |
-| colNum | [int](../main.md#type-int) | false | — | column number of the cell |
+| rowNum | [int](../reference.md#type-int) | false | — | row number for the cell |
+| colNum | [int](../reference.md#type-int) | false | — | column number of the cell |
 
 ### Groups
 

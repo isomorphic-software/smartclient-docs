@@ -1,15 +1,15 @@
 # HiliteEditor Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
 ## Class: HiliteEditor
 
-*Inherits from:* [VLayout](../main.md#class-vlayout)
+*Inherits from:* [VLayout](../reference.md#class-vlayout)
 
 ### Description
-A widget for defining and editing a set of [hilite rules](HiliteRule.md#class-hiliterule) for use by [dataBoundComponents](../main.md#interface-databoundcomponent). Presents a list of available fields and allows editing of simple hilites directly and more complex hilites via [AdvancedHiliteEditor](AdvancedHiliteEditor.md#class-advancedhiliteeditor)s.
+A widget for defining and editing a set of [hilite rules](HiliteRule.md#class-hiliterule) for use by [dataBoundComponents](../reference.md#interface-databoundcomponent). Presents a list of available fields and allows editing of simple hilites directly and more complex hilites via [AdvancedHiliteEditor](AdvancedHiliteEditor.md#class-advancedhiliteeditor)s.
 
 _**Important Note:** this class should not be used directly - it is exposed purely for [i18n reasons.](../kb_topics/i18nMessages.md#kb-topic-i18n-messages)_
 
@@ -19,7 +19,7 @@ _**Important Note:** this class should not be used directly - it is exposed pure
 ### Description
 AutoChild [HiliteRule](HiliteRule.md#class-hiliterule) used to create new simple hilites.
 
-This component is an [AutoChild](../main.md#type-autochild) and as such may be customized via `hiliteEditor.hiliteRuleProperties`.
+This component is an [AutoChild](../reference.md#type-autochild) and as such may be customized via `hiliteEditor.hiliteRuleProperties`.
 
 **Flags**: IR
 
@@ -29,7 +29,7 @@ This component is an [AutoChild](../main.md#type-autochild) and as such may be c
 ### Description
 AutoChild [ListGrid](ListGrid_1.md#class-listgrid) showing the list of fields to create hilites for.
 
-This component is an [AutoChild](../main.md#type-autochild) and as such may be customized via `hiliteEditor.fieldListProperties`.
+This component is an [AutoChild](../reference.md#type-autochild) and as such may be customized via `hiliteEditor.fieldListProperties`.
 
 **Flags**: IR
 
@@ -45,9 +45,9 @@ The callback to fire when [HiliteEditor.saveHilites](#method-hiliteeditorsavehil
 ## Attr: HiliteEditor.addAdvancedRuleButton
 
 ### Description
-AutoChild [IButton](../main.md#class-ibutton) that opens an [AdvancedHiliteEditor](AdvancedHiliteEditor.md#class-advancedhiliteeditor) to create a new advanced rule.
+AutoChild [IButton](../reference.md#class-ibutton) that opens an [AdvancedHiliteEditor](AdvancedHiliteEditor.md#class-advancedhiliteeditor) to create a new advanced rule.
 
-This component is an [AutoChild](../main.md#type-autochild) and as such may be customized via `hiliteEditor.addAdvancedRuleButtonProperties`.
+This component is an [AutoChild](../reference.md#type-autochild) and as such may be customized via `hiliteEditor.addAdvancedRuleButtonProperties`.
 
 **Flags**: IR
 
@@ -89,7 +89,7 @@ The title for the 'Available Fields' column in the [fieldList](#attr-hiliteedito
 ### Description
 AutoChild [ImgButton](ImgButton.md#class-imgbutton) that cancels this editor without saving any changes, firing the [callback](#attr-hiliteeditorcallback) with a null parameter.
 
-This component is an [AutoChild](../main.md#type-autochild) and as such may be customized via `hiliteEditor.cancelButtonProperties`.
+This component is an [AutoChild](../reference.md#type-autochild) and as such may be customized via `hiliteEditor.cancelButtonProperties`.
 
 **Flags**: IR
 
@@ -97,9 +97,9 @@ This component is an [AutoChild](../main.md#type-autochild) and as such may be c
 ## Attr: HiliteEditor.hiliteIcons
 
 ### Description
-Specifies a list of icons that can be used in [hilites](../main_2.md#object-hilite).
+Specifies a list of icons that can be used in [hilites](../reference_2.md#object-hilite).
 
-`hiliteIcons` should be specified as an Array of [SCImgURL](../main.md#type-scimgurl). When present, [HiliteRule](HiliteRule.md#class-hiliterule)s will offer the user a drop down for picking one of these icons.
+`hiliteIcons` should be specified as an Array of [SCImgURL](../reference.md#type-scimgurl). When present, [HiliteRule](HiliteRule.md#class-hiliterule)s will offer the user a drop down for picking one of these icons.
 
 If the user picks an icon, the created hiliting rule will have [Hilite.icon](Hilite.md#attr-hiliteicon) set to the chosen icon. [ListGridField.hiliteIconPosition](ListGridField.md#attr-listgridfieldhiliteiconposition) controls where the icon will appear for that field -- the default is that it appears in front of the normal cell content.
 
@@ -135,7 +135,7 @@ The title text for the [saveButton](#attr-hiliteeditorsavebutton).
 ### Description
 AutoChild [ImgButton](ImgButton.md#class-imgbutton) that saves the hilites in this editor and fires the [callback](#attr-hiliteeditorcallback).
 
-This component is an [AutoChild](../main.md#type-autochild) and as such may be customized via `hiliteEditor.saveButtonProperties`.
+This component is an [AutoChild](../reference.md#type-autochild) and as such may be customized via `hiliteEditor.saveButtonProperties`.
 
 **Flags**: IR
 
@@ -149,7 +149,7 @@ Save the set of Hilites and fire the [callback](#attr-hiliteeditorcallback).
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| callback | [Callback](../main.md#type-callback) | false | — | the function to call when saving is complete |
+| callback | [Callback](../reference.md#type-callback) | false | — | the function to call when saving is complete |
 
 ---
 ## Method: HiliteEditor.clearHilites

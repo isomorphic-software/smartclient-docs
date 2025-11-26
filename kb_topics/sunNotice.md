@@ -1,6 +1,6 @@
 # Sun's java-engine implementation - Notice and Disclaimer
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 

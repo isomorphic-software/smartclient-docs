@@ -1,6 +1,6 @@
 # EventStreamData Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -15,9 +15,9 @@ The total number of events captured by the stream since capturing [started](Even
 ## Attr: EventStreamData.events
 
 ### Description
-An array of the captured [event records](../main.md#object-eventstreamevent) retained by the stream. Only the last [EventStream.maxSize](EventStream.md#attr-eventstreammaxsize) event records will be present, though more events may have been captured since capturing [started](EventStream.md#method-eventstreamstart).
+An array of the captured [event records](../reference.md#object-eventstreamevent) retained by the stream. Only the last [EventStream.maxSize](EventStream.md#attr-eventstreammaxsize) event records will be present, though more events may have been captured since capturing [started](EventStream.md#method-eventstreamstart).
 
-Note that [EventStreamData](../main.md#object-eventstreamdata) reported via an [error callback](Callbacks.md#method-callbackseventerrorcallback) will only contain events that have occurred after the last callback, for efficiency.
+Note that [EventStreamData](../reference.md#object-eventstreamdata) reported via an [error callback](Callbacks.md#method-callbackseventerrorcallback) will only contain events that have occurred after the last callback, for efficiency.
 
 ### See Also
 

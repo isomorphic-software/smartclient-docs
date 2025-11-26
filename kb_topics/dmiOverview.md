@@ -1,6 +1,6 @@
 # Direct Method Invocation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -47,9 +47,9 @@ To do this, just configure an operationBinding for DMI, as described above. Then
 **RPC DMI**  
 RPC DMI makes a set of methods from a server-side class available as client-side methods for direct invocation (via [DMI.call](../classes/DMI.md#classmethod-dmicall)). This provides a way to perform arbitrary client/server interactions outside of the DataSource subsystem.
 
-RPC DMI is an alternative approach to using the [RPCManager](../classes/RPCManager.md#class-rpcmanager) class directly to send requests to some `actionURL` where your server code would receive a generalized [request object](../main.md#object-rpcrequest), to be routed to appropriate methods yourself. Which interface (DMI or RPCManager) you choose is largely a matter of preference - they provide equivalent functionality.
+RPC DMI is an alternative approach to using the [RPCManager](../classes/RPCManager.md#class-rpcmanager) class directly to send requests to some `actionURL` where your server code would receive a generalized [request object](../reference.md#object-rpcrequest), to be routed to appropriate methods yourself. Which interface (DMI or RPCManager) you choose is largely a matter of preference - they provide equivalent functionality.
 
-RPC DMI also uses a [ServerObject](../main_2.md#object-serverobject) configuration block to specify the server-side DMI end-point, but in the case of RPCs, the [ServerObject](../main_2.md#object-serverobject) definition goes into an `rpcBindings` section of an [Application definition](applicationDeclaration.md#kb-topic-application-declaration-files) in a `*.app.xml` file. For an example, see the `example.app.xml` file in the /shared/app directory of the SmartClient SDK. The only difference between the RPC DMI ServerObject definition and the DataSource DMI version is the addition of the [ServerObject.visibleMethods](../classes/ServerObject.md#attr-serverobjectvisiblemethods) block that specifies which methods are callable on this ServerObject. This section is not consulted for DataSource DMIs because the [OperationBinding.serverMethod](../classes/OperationBinding.md#attr-operationbindingservermethod) is used to specify the callable method in that case.
+RPC DMI also uses a [ServerObject](../reference_2.md#object-serverobject) configuration block to specify the server-side DMI end-point, but in the case of RPCs, the [ServerObject](../reference_2.md#object-serverobject) definition goes into an `rpcBindings` section of an [Application definition](applicationDeclaration.md#kb-topic-application-declaration-files) in a `*.app.xml` file. For an example, see the `example.app.xml` file in the /shared/app directory of the SmartClient SDK. The only difference between the RPC DMI ServerObject definition and the DataSource DMI version is the addition of the [ServerObject.visibleMethods](../classes/ServerObject.md#attr-serverobjectvisiblemethods) block that specifies which methods are callable on this ServerObject. This section is not consulted for DataSource DMIs because the [OperationBinding.serverMethod](../classes/OperationBinding.md#attr-operationbindingservermethod) is used to specify the callable method in that case.
 
 **Method Invocation**  
 SmartClient can pass a set of stock context variables to your DMI method and also performs some type adaptation logic to make this interface more flexible. For DataSource DMI, you can declare your method to take any number of the following types of arguments and they will be passed to you:
@@ -119,7 +119,7 @@ See [the getTimeStampDMI example](/examples/server_integration/#genericRPCIntegr
 
 - [applicationDeclaration](applicationDeclaration.md#kb-topic-application-declaration-files)
 - [loadDMIStubsTag](loadDMIStubsTag.md#kb-topic-isomorphicloaddmistubs)
-- [ServerObject](../main_2.md#object-serverobject)
+- [ServerObject](../reference_2.md#object-serverobject)
 - [DataSource.serverObject](../classes/DataSource.md#attr-datasourceserverobject)
 - [OperationBinding.serverObject](../classes/OperationBinding.md#attr-operationbindingserverobject)
 - [clientServerIntegration](clientServerIntegration.md#kb-topic-client-server-integration)

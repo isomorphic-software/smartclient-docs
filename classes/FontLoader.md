@@ -1,6 +1,6 @@
 # FontLoader Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -28,6 +28,6 @@ Whether all requested custom fonts have been loaded. If this method returns true
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — whether all requested fonts have been loaded
+`[boolean](../reference.md#type-boolean)` — whether all requested fonts have been loaded
 
 ---

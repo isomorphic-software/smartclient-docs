@@ -1,6 +1,6 @@
 # EventHandler Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -34,7 +34,7 @@ You can use isc.Event as an alias for isc.EventHandler.
 
 ### See Also
 
-- [PageEvent](../main_2.md#type-pageevent)
+- [PageEvent](../reference_2.md#type-pageevent)
 - [Page.setEvent](Page.md#classmethod-pagesetevent)
 - [Page.clearEvent](Page.md#classmethod-pageclearevent)
 - [Canvas#methods#widgetEvents](#class-canvas-methods-widgetevents)
@@ -147,8 +147,8 @@ Your canvas can call this method to set the initial drag offset to whatever you 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| offsetX | [int](../main.md#type-int) | false | — | initial x-offset for the drag |
-| offsetY | [int](../main.md#type-int) | false | — | initial y-offset for the drag |
+| offsetX | [int](../reference.md#type-int) | false | — | initial x-offset for the drag |
+| offsetY | [int](../reference.md#type-int) | false | — | initial y-offset for the drag |
 
 ### Groups
 
@@ -187,7 +187,7 @@ Checking whether the middle mouse button is pressed can be used to implement pow
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true if the middle mouse button is pressed; false otherwise.
+`[boolean](../reference.md#type-boolean)` — true if the middle mouse button is pressed; false otherwise.
 
 ### Groups
 
@@ -249,7 +249,7 @@ Returns a numeric value indicating how far the mouse wheel was rotated / the mag
 
 ### Returns
 
-`[float](../main.md#type-float)` — numeric value indicating how far the mouse wheel was rotated.
+`[float](../reference.md#type-float)` — numeric value indicating how far the mouse wheel was rotated.
 
 ### See Also
 
@@ -283,7 +283,7 @@ Can only be called during the [Canvas.drop](Canvas.md#method-canvasdrop) event (
 
 ### Returns
 
-`[Object](../main.md#type-object)` — data made available in the foreign frame
+`[Object](../reference.md#type-object)` — data made available in the foreign frame
 
 ---
 ## ClassMethod: EventHandler.setDragTrackerImage
@@ -303,9 +303,9 @@ Can only be called during the [Canvas.dragStart](Canvas.md#method-canvasdragstar
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| src | [SCImgURL](../main.md#type-scimgurl) | false | — | image source |
-| x | [int](../main.md#type-int) | true | — | offset-x from the mouse cursor |
-| y | [int](../main.md#type-int) | true | — | offset-y from the mouse cursor |
+| src | [SCImgURL](../reference.md#type-scimgurl) | false | — | image source |
+| x | [int](../reference.md#type-int) | true | — | offset-x from the mouse cursor |
+| y | [int](../reference.md#type-int) | true | — | offset-y from the mouse cursor |
 
 ### Groups
 
@@ -327,7 +327,7 @@ Do not pass in sensitive data (e.g. passwords, auth/session tokens, credit card 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| data | [Object](../main.md#type-object)|[String](#type-string) | false | — | data to make available to foreign frames |
+| data | [Object](../reference.md#type-object)|[String](#type-string) | false | — | data to make available to foreign frames |
 | strData | [String](#type-string) | true | — | text data to set. This is the text that users may see if the drag is dropped into an external application such as Notepad or a non-SmartClient/Smart GWT web application. |
 
 ---
@@ -356,7 +356,7 @@ See the [Keyboard Events Overview](../kb_topics/keyboardEvents.md#kb-topic-keybo
 
 ### Returns
 
-`[int](../main.md#type-int)` — Numeric character value reported by the browser (ASCII value of the key pressed)
+`[int](../reference.md#type-int)` — Numeric character value reported by the browser (ASCII value of the key pressed)
 
 ### Groups
 
@@ -420,7 +420,7 @@ Return the page-relative X (horizontal) coordinate of an event.
 
 ### Returns
 
-`[int](../main.md#type-int)` — x-coordinate in page coordinate space
+`[int](../reference.md#type-int)` — x-coordinate in page coordinate space
 
 ### Groups
 
@@ -447,7 +447,7 @@ Return the canvas that is the target of the mouse event. Returns null if no canv
 Return the name of the key for the current event.  
 Note that this is only set reliably for keyboard events.
 
-This method returns a calculated key name for the current key. See [KeyName](../main_2.md#type-keyname) for a list of all possible key names.
+This method returns a calculated key name for the current key. See [KeyName](../reference_2.md#type-keyname) for a list of all possible key names.
 
 Note: this differs from the natively reported [event.key](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key) value for the event. To retrieve that value, use [EventHandler.getKeyEventKey](#classmethod-eventhandlergetkeyeventkey) rather than this method.
 
@@ -455,7 +455,7 @@ See the [Keyboard Events Overview](../kb_topics/keyboardEvents.md#kb-topic-keybo
 
 ### Returns
 
-`[KeyName](../main_2.md#type-keyname)` — Key Name
+`[KeyName](../reference_2.md#type-keyname)` — Key Name
 
 ### Groups
 
@@ -492,7 +492,7 @@ Return the natively reported [event.key](https://developer.mozilla.org/en-US/doc
 Note that this differs from [EventHandler.getKey](#classmethod-eventhandlergetkey) in a couple of important ways:
 
 *   The actual key values returned for specific keys differ in a number of ways. For example alpha characters keys are natively reported as either upper or lower case depending on what would actually by typed, (whereas [getKey()](#classmethod-eventhandlergetkey) is always uppercase for alpha keys) and the reported name for various 'named' keys (such as the arrow keys differ).  
-    The full set of native key names is available [here](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values), and the SmartClient key names is available [here](../main_2.md#type-keyname).
+    The full set of native key names is available [here](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values), and the SmartClient key names is available [here](../reference_2.md#type-keyname).
 *   `EventHandler.getKeyEventKey()` simply provides access to the `event.key` value. As such the reported values are generated by the browser itself and SmartClient has no control over whether they may vary by browser, etc.
 
 See the [Keyboard Events Overview](../kb_topics/keyboardEvents.md#kb-topic-keyboard-events) for related APIs and more information on keyboard event handling in SmartClient.
@@ -543,7 +543,7 @@ Return the page-relative Y (vertical) coordinate of an event.
 
 ### Returns
 
-`[int](../main.md#type-int)` — y-coordinate in page coordinate space
+`[int](../reference.md#type-int)` — y-coordinate in page coordinate space
 
 ### Groups
 
@@ -569,10 +569,10 @@ Your canvas can use this routine to set the drag tracker to whatever HTML you wa
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | html | [String](#type-string) | false | — | HTML for the tracker |
-| newWidth | [int](../main.md#type-int) | true | — | new width for the tracker. Default value: 10 |
-| newHeight | [int](../main.md#type-int) | true | — | new height for the tracker. Default value: 10 |
-| offsetX | [int](../main.md#type-int) | true | — | x-offset for the tracker |
-| offsetY | [int](../main.md#type-int) | true | — | y-offset for the tracker |
+| newWidth | [int](../reference.md#type-int) | true | — | new width for the tracker. Default value: 10 |
+| newHeight | [int](../reference.md#type-int) | true | — | new height for the tracker. Default value: 10 |
+| offsetX | [int](../reference.md#type-int) | true | — | x-offset for the tracker |
+| offsetY | [int](../reference.md#type-int) | true | — | y-offset for the tracker |
 | properties | [Canvas Properties](#type-canvas-properties) | true | — | properties to configure the dragTracker |
 
 ### Groups
@@ -610,7 +610,7 @@ Developers should also be aware that some browsers and operating systems allow t
 
 ### Returns
 
-`[float](../main.md#type-float)` — numeric value indicating how far the mouse wheel was rotated.
+`[float](../reference.md#type-float)` — numeric value indicating how far the mouse wheel was rotated.
 
 **Deprecated**
 
@@ -626,7 +626,7 @@ Developers should also be aware that some browsers and operating systems allow t
 
 ### Returns
 
-`[float](../main.md#type-float)` — numeric value indicating how far the mouse wheel was rotated.
+`[float](../reference.md#type-float)` — numeric value indicating how far the mouse wheel was rotated.
 
 ### See Also
 

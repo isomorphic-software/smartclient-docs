@@ -1,6 +1,6 @@
 # PresetCriteriaItem Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -87,7 +87,7 @@ This method is called when [PresetCriteriaItem.showCustomOption](#attr-presetcri
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| callback | [Callback](../main.md#type-callback) | false | — | callback to fire when custom criteria has been gathered. Expects parameters "criteria,title". The "title" will be displayed as the currently selected value when custom criteria have been chosen. |
+| callback | [Callback](../reference.md#type-callback) | false | — | callback to fire when custom criteria has been gathered. Expects parameters "criteria,title". The "title" will be displayed as the currently selected value when custom criteria have been chosen. |
 
 **Flags**: A
 

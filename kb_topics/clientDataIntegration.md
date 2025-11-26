@@ -1,6 +1,6 @@
 # Client-side Data Integration
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -13,7 +13,7 @@ This approach is called Client-Side Data Integration, which means:
 
 *   You [create DataSources](dataSourceDeclaration.md#kb-topic-creating-datasources) in JavaScript which describe the data to be loaded and manipulated in the user interface. The JavaScript that creates these DataSources may be dynamically generated and/or existing metadata may be [imported](metadataImport.md#kb-topic-metadata-import).
 *   You configure DataSources, via property and method overrides, to send appropriate HTTP requests to your server, and to parse HTTP responses from your server, in order to fulfill the 4 core operations of the [DataSource Protocol](dataSourceOperations.md#kb-topic-datasource-operations).
-*   These DataSources are then bound to [databinding-capable UI components](../main.md#interface-databoundcomponent), which can provide a variety of complete user interactions (form-based editing, grid-based editing, load on demand, ..) based on these 4 core operations
+*   These DataSources are then bound to [databinding-capable UI components](../reference.md#interface-databoundcomponent), which can provide a variety of complete user interactions (form-based editing, grid-based editing, load on demand, ..) based on these 4 core operations
 
 #### Approaches and platforms
 
@@ -83,7 +83,7 @@ When using RestDataSource, see the [RestDataSource](../classes/RestDataSource.md
 
 When a user triggers a DSRequest (eg, completes an inline edit in a grid), the request data will be sent to the dataURL. The [DataSource protocol](dataSourceOperations.md#kb-topic-datasource-operations) describes request and response data expected for each operation type.
 
-By using settings such as [OperationBinding.dataProtocol](../classes/OperationBinding.md#attr-operationbindingdataprotocol), you can control how DSRequests are sent to your backend so that you can handle them most easily. By using the same properties used to initially load data (eg [recordXPath](../classes/OperationBinding.md#attr-operationbindingrecordxpath)), you can control how SmartClient forms the DSResponses that are then interpreted by [databound components](../main.md#interface-databoundcomponent).
+By using settings such as [OperationBinding.dataProtocol](../classes/OperationBinding.md#attr-operationbindingdataprotocol), you can control how DSRequests are sent to your backend so that you can handle them most easily. By using the same properties used to initially load data (eg [recordXPath](../classes/OperationBinding.md#attr-operationbindingrecordxpath)), you can control how SmartClient forms the DSResponses that are then interpreted by [databound components](../reference.md#interface-databoundcomponent).
 
 **Controlling how DSRequests are sent**
 
@@ -114,8 +114,8 @@ See the *XML* and *JSON* versions of the transformResponse() example for an exam
 
 ### Related
 
-- [DSDataFormat](../main_2.md#type-dsdataformat)
-- [DSProtocol](../main_2.md#type-dsprotocol)
+- [DSDataFormat](../reference_2.md#type-dsdataformat)
+- [DSProtocol](../reference_2.md#type-dsprotocol)
 - [Callbacks.GetFieldValueCallback](../classes/Callbacks.md#method-callbacksgetfieldvaluecallback)
 - [DataSource.dataFormat](../classes/DataSource.md#attr-datasourcedataformat)
 - [DataSource.dataProtocol](../classes/DataSource.md#attr-datasourcedataprotocol)

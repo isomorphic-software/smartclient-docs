@@ -1,6 +1,6 @@
 # Layout Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -13,7 +13,7 @@ Arranges a set of "member" Canvases in horizontal or vertical stacks, applying a
 
 A Layout manages a set of "member" Canvases provided as [Layout.members](#attr-layoutmembers). Layouts can have both "members", whose position and size are managed by the Layout, and normal Canvas children, which manage their own position and size.
 
-Rather than using the Layout class directly, use the [HLayout](../main.md#class-hlayout), [VLayout](../main.md#class-vlayout), [HStack](../main.md#class-hstack) and [VStack](../main.md#class-vstack) classes, which are subclasses of Layout preconfigured for horizontal or vertical stacking, with the "fill" (VLayout) or "none" (VStack) [policies](../main_2.md#type-layoutpolicy) already set.
+Rather than using the Layout class directly, use the [HLayout](../reference.md#class-hlayout), [VLayout](../reference.md#class-vlayout), [HStack](../reference.md#class-hstack) and [VStack](../reference.md#class-vstack) classes, which are subclasses of Layout preconfigured for horizontal or vertical stacking, with the "fill" (VLayout) or "none" (VStack) [policies](../reference_2.md#type-layoutpolicy) already set.
 
 Layouts and Stacks may be nested to create arbitrarily complex layouts.
 
@@ -25,18 +25,18 @@ Like other Canvas subclasses, Layout and Stack components may have % width and h
 
 ### See Also
 
-- [LayoutPolicy](../main_2.md#type-layoutpolicy)
-- [VLayout](../main.md#class-vlayout)
-- [HLayout](../main.md#class-hlayout)
-- [VStack](../main.md#class-vstack)
-- [HStack](../main.md#class-hstack)
-- [LayoutSpacer](../main.md#class-layoutspacer)
+- [LayoutPolicy](../reference_2.md#type-layoutpolicy)
+- [VLayout](../reference.md#class-vlayout)
+- [HLayout](../reference.md#class-hlayout)
+- [VStack](../reference.md#class-vstack)
+- [HStack](../reference.md#class-hstack)
+- [LayoutSpacer](../reference.md#class-layoutspacer)
 
 ---
 ## ClassAttr: Layout.FILL
 
 ### Description
-A declared value of the enum type [LayoutPolicy](../main_2.md#type-layoutpolicy).
+A declared value of the enum type [LayoutPolicy](../reference_2.md#type-layoutpolicy).
 
 **Flags**: R
 
@@ -44,7 +44,7 @@ A declared value of the enum type [LayoutPolicy](../main_2.md#type-layoutpolicy)
 ## ClassAttr: Layout.NONE
 
 ### Description
-A declared value of the enum type [LayoutPolicy](../main_2.md#type-layoutpolicy).
+A declared value of the enum type [LayoutPolicy](../reference_2.md#type-layoutpolicy).
 
 **Flags**: R
 
@@ -52,7 +52,7 @@ A declared value of the enum type [LayoutPolicy](../main_2.md#type-layoutpolicy)
 ## ClassAttr: Layout.VERTICAL
 
 ### Description
-A declared value of the enum type [Orientation](../main_2.md#type-orientation).
+A declared value of the enum type [Orientation](../reference_2.md#type-orientation).
 
 **Flags**: R
 
@@ -60,7 +60,7 @@ A declared value of the enum type [Orientation](../main_2.md#type-orientation).
 ## ClassAttr: Layout.HORIZONTAL
 
 ### Description
-A declared value of the enum type [Orientation](../main_2.md#type-orientation).
+A declared value of the enum type [Orientation](../reference_2.md#type-orientation).
 
 **Flags**: R
 
@@ -251,7 +251,7 @@ Sizing policy applied to members on vertical axis
 ## Attr: Layout.locateMembersType
 
 ### Description
-[LocatorTypeStrategy](../main.md#type-locatortypestrategy) to use when finding members within this layout.
+[LocatorTypeStrategy](../reference.md#type-locatortypestrategy) to use when finding members within this layout.
 
 ### Groups
 
@@ -306,7 +306,7 @@ Without this property set, members of a layout aren't ever expanded in breadth (
 
 ### See Also
 
-- [LayoutPolicy](../main_2.md#type-layoutpolicy)
+- [LayoutPolicy](../reference_2.md#type-layoutpolicy)
 
 **Flags**: IRWA
 
@@ -342,7 +342,7 @@ If true when members are added / removed, they should be animated as they are sh
 ### Description
 Alignment of all members in this Layout on the length axis (vertical for a VLayout, horizontal for an HLayout). Defaults to "top" for vertical Layouts, and "left" for horizontal Layouts.
 
-Horizontal layouts should only be set to [Alignment](../main_2.md#type-alignment), and vertical layouts to [VerticalAlignment](../main.md#type-verticalalignment), otherwise they will be considered invalid values, and assigning an invalid value here will log a warning to the Developer Console.
+Horizontal layouts should only be set to [Alignment](../reference_2.md#type-alignment), and vertical layouts to [VerticalAlignment](../reference.md#type-verticalalignment), otherwise they will be considered invalid values, and assigning an invalid value here will log a warning to the Developer Console.
 
 For alignment on the breadth axis, see [Layout.defaultLayoutAlign](#attr-layoutdefaultlayoutalign) and [Canvas.layoutAlign](Canvas.md#attr-canvaslayoutalign).
 
@@ -499,7 +499,7 @@ If set to true, when a member is dragged out of layout, a visible placeholder ca
 ## Attr: Layout.overflow
 
 ### Description
-A Layout may overflow if it has one or more members with a fixed width or height, or that themselves overflow. For details on member sizing see [LayoutPolicy](../main_2.md#type-layoutpolicy).
+A Layout may overflow if it has one or more members with a fixed width or height, or that themselves overflow. For details on member sizing see [LayoutPolicy](../reference_2.md#type-layoutpolicy).
 
 Note that for overflow: "auto", "scroll", or "visible", members exceeding the Layout's specified breadth but falling short of its overflow breadth will keep the alignment set via [Layout.defaultLayoutAlign](#attr-layoutdefaultlayoutalign) or [Canvas.layoutAlign](Canvas.md#attr-canvaslayoutalign).
 
@@ -703,7 +703,7 @@ Method to force a reflow of the layout after directly assigning a value to any o
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newMargin | [Integer](../main_2.md#type-integer) | true | — | optional new setting for layout.layoutMargin. Regardless of whether a new layout margin is passed, the layout reflows according to the current settings for layoutStartMargin et al |
+| newMargin | [Integer](../reference_2.md#type-integer) | true | — | optional new setting for layout.layoutMargin. Regardless of whether a new layout margin is passed, the layout reflows according to the current settings for layoutStartMargin et al |
 
 ### Groups
 
@@ -725,7 +725,7 @@ As with [Canvas.getChildTabPosition](Canvas.md#method-canvasgetchildtabposition)
 
 ### Returns
 
-`[Integer](../main_2.md#type-integer)` — tab position of the child within this layout.
+`[Integer](../reference_2.md#type-integer)` — tab position of the child within this layout.
 
 ---
 ## Method: Layout.getMemberNumber
@@ -739,11 +739,11 @@ Note that if more than one member has the same `name`, passing in a `name` has a
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| memberID | [String](#type-string)|[Canvas](#type-canvas)|[int](../main.md#type-int) | false | — | identifier for the required member |
+| memberID | [String](#type-string)|[Canvas](#type-canvas)|[int](../reference.md#type-int) | false | — | identifier for the required member |
 
 ### Returns
 
-`[int](../main.md#type-int)` — index of the member canvas (or -1 if not found)
+`[int](../reference.md#type-int)` — index of the member canvas (or -1 if not found)
 
 ### See Also
 
@@ -809,7 +809,7 @@ Layouts have built-in handling of component drag and drop. See the discussion in
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — Returning false will cancel the drop entirely
+`[boolean](../reference.md#type-boolean)` — Returning false will cancel the drop entirely
 
 **Flags**: A
 
@@ -849,7 +849,7 @@ Note that if more than one member has the same `name`, passing in a `name` has a
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| memberID | [String](#type-string)|[int](../main.md#type-int)|[Canvas](#type-canvas) | false | — | identifier for the required member |
+| memberID | [String](#type-string)|[int](../reference.md#type-int)|[Canvas](#type-canvas) | false | — | identifier for the required member |
 
 ### Returns
 
@@ -882,7 +882,7 @@ Convenience method to return the number of members this Layout has
 
 ### Returns
 
-`[Integer](../main_2.md#type-integer)` — the number of members this Layout has
+`[Integer](../reference_2.md#type-integer)` — the number of members this Layout has
 
 ---
 ## Method: Layout.reorderMember
@@ -922,7 +922,7 @@ Use this method to obtain the drop position for e.g. a custom drop handler.
 
 ### Returns
 
-`[int](../main.md#type-int)` — the position a new member would be dropped
+`[int](../reference.md#type-int)` — the position a new member would be dropped
 
 **Flags**: A
 
@@ -941,7 +941,7 @@ You can also return null to cancel the drop.
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | dragTarget | [Canvas](#type-canvas) | false | — | current drag target |
-| dropPosition | [int](../main.md#type-int) | false | — | index of the drop in the list of current members |
+| dropPosition | [int](../reference.md#type-int) | false | — | index of the drop in the list of current members |
 
 ### Returns
 
@@ -1001,7 +1001,7 @@ Reveals the child or member Canvas passed in by showing it if it is currently hi
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| child | [GlobalId](../main.md#type-globalid)|[Canvas](#type-canvas) | false | — | the child Canvas to reveal, or its global ID |
+| child | [GlobalId](../reference.md#type-globalid)|[Canvas](#type-canvas) | false | — | the child Canvas to reveal, or its global ID |
 
 ---
 ## Method: Layout.addMember
@@ -1028,7 +1028,7 @@ places the member after the component that currently follows it in the members a
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | newMember | [Canvas](#type-canvas) | false | — | the canvas object to be added to the layout |
-| position | [Integer](../main_2.md#type-integer) | true | — | If passed, this specifies the insertion position between the existing members of the layout. If omitted, the canvas will be added at the last position |
+| position | [Integer](../reference_2.md#type-integer) | true | — | If passed, this specifies the insertion position between the existing members of the layout. If omitted, the canvas will be added at the last position |
 
 ### See Also
 
@@ -1057,7 +1057,7 @@ Add one or more canvases to the layout, optionally at a specific position. See [
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | newMembers | [Array of Canvas](#type-array-of-canvas)|[Canvas](#type-canvas) | false | — | array of canvases to be added or single Canvas |
-| position | [Integer](../main_2.md#type-integer) | true | — | If passed, this specifies the insertion position between the existing members of the layout. If omitted, the canvas will be added at the last position |
+| position | [Integer](../reference_2.md#type-integer) | true | — | If passed, this specifies the insertion position between the existing members of the layout. If omitted, the canvas will be added at the last position |
 
 ---
 ## Method: Layout.hideDropLine
@@ -1073,7 +1073,7 @@ Calling this method hides the dropLine shown during a drag and drop interaction 
 ### Description
 Return the breadth for a member of this layout which either didn't specify a breadth or specified a percent breadth with [Layout.managePercentBreadth](#attr-layoutmanagepercentbreadth):true.
 
-Called only for Layouts which have a [layout policy](../main_2.md#type-layoutpolicy) for the breadth axis of "fill", since Layouts with a breadth policy of "none" leave all member breadths alone.
+Called only for Layouts which have a [layout policy](../reference_2.md#type-layoutpolicy) for the breadth axis of "fill", since Layouts with a breadth policy of "none" leave all member breadths alone.
 
 ### Parameters
 
@@ -1094,7 +1094,7 @@ Called only for Layouts which have a [layout policy](../main_2.md#type-layoutpol
 ### Description
 Changes the [Layout.align](#attr-layoutalign) for this Layout.
 
-Horizontal layouts should only be changed to [Alignment](../main_2.md#type-alignment), and vertical layouts to [VerticalAlignment](../main.md#type-verticalalignment), otherwise they will be considered invalid values, and assigning an invalid value here will log a warning to the Developer Console.
+Horizontal layouts should only be changed to [Alignment](../reference_2.md#type-alignment), and vertical layouts to [VerticalAlignment](../reference.md#type-verticalalignment), otherwise they will be considered invalid values, and assigning an invalid value here will log a warning to the Developer Console.
 
 For alignment on the breadth axis, see [Layout.defaultLayoutAlign](#attr-layoutdefaultlayoutalign) and [Canvas.layoutAlign](Canvas.md#attr-canvaslayoutalign).
 
@@ -1102,7 +1102,7 @@ For alignment on the breadth axis, see [Layout.defaultLayoutAlign](#attr-layoutd
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| align | [Alignment](../main_2.md#type-alignment)|[VerticalAlignment](../main.md#type-verticalalignment) | false | — | — |
+| align | [Alignment](../reference_2.md#type-alignment)|[VerticalAlignment](../reference.md#type-verticalalignment) | false | — | — |
 
 ---
 ## Method: Layout.layoutIsDirty
@@ -1116,7 +1116,7 @@ To force immediate recalculation of new member sizes and resizing of members, ca
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — whether the layout is currently dirty
+`[boolean](../reference.md#type-boolean)` — whether the layout is currently dirty
 
 **Flags**: A
 

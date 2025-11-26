@@ -1,6 +1,6 @@
 # Menu Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -11,7 +11,7 @@
 ### Description
 The Menu widget class implements interactive menu widgets, with optional icons, submenus, and shortcut keys.
 
-A Menu is initialized with a set of [MenuItem](../main_2.md#object-menuitem)s specified as [Menu.items](#attr-menuitems), each of which represents one row in the menu's display and specifies the action to take when that menu item is selected.
+A Menu is initialized with a set of [MenuItem](../reference_2.md#object-menuitem)s specified as [Menu.items](#attr-menuitems), each of which represents one row in the menu's display and specifies the action to take when that menu item is selected.
 
 Each `MenuItem` can have a [title](MenuItem.md#attr-menuitemtitle), [icon](MenuItem.md#attr-menuitemicon), [shortcut keys](MenuItem.md#attr-menuitemkeys), optional [MenuItem.submenu](MenuItem.md#attr-menuitemsubmenu) and various other settings. Alternatively, a `MenuItem` can contain an arbitrary widget via [MenuItem.embeddedComponent](MenuItem.md#attr-menuitemembeddedcomponent).
 
@@ -99,7 +99,7 @@ See [Menu.showSubmenus](#attr-menushowsubmenus) for an overview of the submenu c
 ### Description
 Where should the menu be placed on the screen?
 
-Default is to use [PanelPlacement](../main_2.md#type-panelplacement) "fillScreen" if [Browser.isHandset](Browser.md#classattr-browserishandset). In any non-handset device, `placement` is unset, so the menu defaults to normal placement (near the originating MenuButton, or the mouse for a context menu, or according to left/top/width/height for a manually created Menu).
+Default is to use [PanelPlacement](../reference_2.md#type-panelplacement) "fillScreen" if [Browser.isHandset](Browser.md#classattr-browserishandset). In any non-handset device, `placement` is unset, so the menu defaults to normal placement (near the originating MenuButton, or the mouse for a context menu, or according to left/top/width/height for a manually created Menu).
 
 When using any `placement` setting that fills a portion of the screen or a panel, submenus are displayed by sliding them into place on top of the currently active menu, and a [menu.navigationBar](NavigationBar.md#class-navigationbar) is used to manage navigation to the main menu (and provide dismissal, via a [cancel button](#attr-menucancelbuttontitle).
 
@@ -109,7 +109,7 @@ When using any `placement` setting that fills a portion of the screen or a panel
 ## Attr: Menu.submenuDisabledImage
 
 ### Description
-Default image to use for the submenu indicator when the item is disabled. The value can be either a regular [SCImgURL](../main.md#type-scimgurl) which can specify _size:w,h;_, or an [ImgHTMLProperties](../main_2.md#object-imghtmlproperties) object, specifying at least _src_, _width_ and _height_.
+Default image to use for the submenu indicator when the item is disabled. The value can be either a regular [SCImgURL](../reference.md#type-scimgurl) which can specify _size:w,h;_, or an [ImgHTMLProperties](../reference_2.md#object-imghtmlproperties) object, specifying at least _src_, _width_ and _height_.
 
 If [Menu.submenuDirection](#attr-menusubmenudirection) is set to `"left"`, the image src will have the suffix `"_left"` appended to it.
 
@@ -189,7 +189,7 @@ When using a Tree or hierarchical DataSource as the menu's data, optional subcla
 ## Attr: Menu.submenuImage
 
 ### Description
-Default image to use for the submenu indicator. The value can be either a regular [SCImgURL](../main.md#type-scimgurl) which can specify _size:w,h;_, or an [ImgHTMLProperties](../main_2.md#object-imghtmlproperties) object, specifying at least _src_, _width_ and _height_.
+Default image to use for the submenu indicator. The value can be either a regular [SCImgURL](../reference.md#type-scimgurl) which can specify _size:w,h;_, or an [ImgHTMLProperties](../reference_2.md#object-imghtmlproperties) object, specifying at least _src_, _width_ and _height_.
 
 If [Menu.submenuDirection](#attr-menusubmenudirection) is set to `"left"`, the image src will have the suffix `"_left"` appended to it.
 
@@ -331,8 +331,8 @@ If true, clicking or pressing Enter on a menu item that has a submenu will selec
 
 ### Description
 Array of columns to show for this menu.  
-Standard menu fields may be included by specifying [MenuFieldIDs](../main.md#type-menufieldid) directly. Additional custom fields may be specified as [ListGridField](../main_2.md#object-listgridfield) objects.  
-If this property is unset, default behavior will show the [standard set of fields](../main.md#type-menufieldid), with the exception of any that have been suppressed via [Menu.showIcons](#attr-menushowicons), [Menu.showKeys](#attr-menushowkeys) and [Menu.showSubmenus](#attr-menushowsubmenus)
+Standard menu fields may be included by specifying [MenuFieldIDs](../reference.md#type-menufieldid) directly. Additional custom fields may be specified as [ListGridField](../reference_2.md#object-listgridfield) objects.  
+If this property is unset, default behavior will show the [standard set of fields](../reference.md#type-menufieldid), with the exception of any that have been suppressed via [Menu.showIcons](#attr-menushowicons), [Menu.showKeys](#attr-menushowkeys) and [Menu.showSubmenus](#attr-menushowsubmenus)
 
 **Flags**: IRWA
 
@@ -469,7 +469,7 @@ Explicitly disable alternateRecordStyles at the menu level by default so setting
 ## Attr: Menu.checkmarkDisabledImage
 
 ### Description
-Default image to display for [check-marked items](MenuItem.md#attr-menuitemchecked) when the item is disabled. The value can be either a regular [SCImgURL](../main.md#type-scimgurl) which can specify _size:w,h;_, or an [ImgHTMLProperties](../main_2.md#object-imghtmlproperties) object, specifying at least _src_, _width_ and _height_.
+Default image to display for [check-marked items](MenuItem.md#attr-menuitemchecked) when the item is disabled. The value can be either a regular [SCImgURL](../reference.md#type-scimgurl) which can specify _size:w,h;_, or an [ImgHTMLProperties](../reference_2.md#object-imghtmlproperties) object, specifying at least _src_, _width_ and _height_.
 
 **Flags**: IR
 
@@ -599,7 +599,7 @@ Custom properties for the automatically generated title column.
 ## Attr: Menu.checkmarkImage
 
 ### Description
-Default image to display for [check-marked items](MenuItem.md#attr-menuitemchecked). The value can be either a regular [SCImgURL](../main.md#type-scimgurl) which can specify _size:w,h;_, or an [ImgHTMLProperties](../main_2.md#object-imghtmlproperties) object, specifying at least _src_, _width_ and _height_.
+Default image to display for [check-marked items](MenuItem.md#attr-menuitemchecked). The value can be either a regular [SCImgURL](../reference.md#type-scimgurl) which can specify _size:w,h;_, or an [ImgHTMLProperties](../reference_2.md#object-imghtmlproperties) object, specifying at least _src_, _width_ and _height_.
 
 **Flags**: IR
 
@@ -619,12 +619,12 @@ Enables or disables the menu item according to the value of newState, and redraw
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| item | [MenuItem](#type-menuitem)|[int](../main.md#type-int) | false | — | MenuItem or visible index of the MenuItem |
-| newState | [boolean](../main.md#type-boolean) | true | — | true to enable the menu item, false to disable it. If not passed, true is assumed |
+| item | [MenuItem](#type-menuitem)|[int](../reference.md#type-int) | false | — | MenuItem or visible index of the MenuItem |
+| newState | [boolean](../reference.md#type-boolean) | true | — | true to enable the menu item, false to disable it. If not passed, true is assumed |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true if the enabled state was changed
+`[boolean](../reference.md#type-boolean)` — true if the enabled state was changed
 
 ---
 ## Method: Menu.getVisibleItemNum
@@ -642,7 +642,7 @@ To get the index of the item in the [full set of items](#method-menugetallitems)
 
 ### Returns
 
-`[int](../main.md#type-int)` — index of the item in the visible items, or -1 if not found.
+`[int](../reference.md#type-int)` — index of the item in the visible items, or -1 if not found.
 
 ### Groups
 
@@ -663,11 +663,11 @@ Hides or shows the menu item according to the value of newState, and redraws the
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | item | [MenuItem](#type-menuitem)|[number](#type-number) | false | — | MenuItem in question, or its index. Note that if an index is passed it will be interpreted as the index in the full specified set of items rather than the visible-index of the item. |
-| newState | [boolean](../main.md#type-boolean) | true | — | true to hide the menu item, false to show it. |
+| newState | [boolean](../reference.md#type-boolean) | true | — | true to hide the menu item, false to show it. |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true if the hidden state was changed
+`[boolean](../reference.md#type-boolean)` — true if the hidden state was changed
 
 ### See Also
 
@@ -683,7 +683,7 @@ Set arbitrary properties for a particular menu item.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| item | [MenuItem](#type-menuitem)|[int](../main.md#type-int) | false | — | MenuItem or visible index of the MenuItem |
+| item | [MenuItem](#type-menuitem)|[int](../reference.md#type-int) | false | — | MenuItem or visible index of the MenuItem |
 | properties | [MenuItem Properties](#type-menuitem-properties) | false | — | properties to apply to the item |
 
 ---
@@ -696,7 +696,7 @@ Show or hide the checkmark/custom icon column at runtime.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| showIcons | [boolean](../main.md#type-boolean) | false | — | whether the icon column should be displayed |
+| showIcons | [boolean](../reference.md#type-boolean) | false | — | whether the icon column should be displayed |
 
 ---
 ## Method: Menu.getSubmenu
@@ -710,7 +710,7 @@ Override to provide dynamic generation of submenus.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| item | [MenuItem](#type-menuitem)|[int](../main.md#type-int) | false | — | MenuItem or visible index of the MenuItem |
+| item | [MenuItem](#type-menuitem)|[int](../reference.md#type-int) | false | — | MenuItem or visible index of the MenuItem |
 
 ### Returns
 
@@ -734,7 +734,7 @@ To retrieve the item's position in the currently visible set of items, use [Menu
 
 ### Returns
 
-`[int](../main.md#type-int)` — index of the item, or -1 if not defined.
+`[int](../reference.md#type-int)` — index of the item, or -1 if not defined.
 
 ### Groups
 
@@ -750,7 +750,7 @@ This DataBoundComponent method is not supported - use [initialCriteria](#attr-me
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| criteria | [Criteria](../main_2.md#type-criteria)|[AdvancedCriteria](#type-advancedcriteria) | false | — | new criteria to show |
+| criteria | [Criteria](../reference_2.md#type-criteria)|[AdvancedCriteria](#type-advancedcriteria) | false | — | new criteria to show |
 
 ---
 ## Method: Menu.setItemIcon
@@ -762,13 +762,13 @@ Sets the icon and disabled icon (if specified) for a particular menu item and re
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| item | [MenuItem](#type-menuitem)|[int](../main.md#type-int) | false | — | MenuItem or visible index of the MenuItem |
+| item | [MenuItem](#type-menuitem)|[int](../reference.md#type-int) | false | — | MenuItem or visible index of the MenuItem |
 | newIcon | [String](#type-string) | false | — | new icon URL |
 | newDisabledIcon | [String](#type-string) | true | — | new icon URL for disabled image |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true == something changed, redraw is called for
+`[boolean](../reference.md#type-boolean)` — true == something changed, redraw is called for
 
 ---
 ## Method: Menu.getData
@@ -794,12 +794,12 @@ Sets the title of a particular menu item to the string specified by newTitle and
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| item | [MenuItem](#type-menuitem)|[int](../main.md#type-int) | false | — | MenuItem or visible index of the MenuItem |
+| item | [MenuItem](#type-menuitem)|[int](../reference.md#type-int) | false | — | MenuItem or visible index of the MenuItem |
 | newTitle | [String](#type-string) | false | — | new title |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true if the title was changed, and false otherwise
+`[boolean](../reference.md#type-boolean)` — true if the title was changed, and false otherwise
 
 ---
 ## Method: Menu.itemClick
@@ -811,12 +811,12 @@ Executed when a menu item with no click handler is clicked by the user. This ite
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| item | [Object](../main.md#type-object) | false | — | pointer to the item in question |
+| item | [Object](../reference.md#type-object) | false | — | pointer to the item in question |
 | colNum | [number](#type-number) | true | — | Index of the column clicked by the user. May be null if this menu item was activated in response to a keyboard event. |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — false if event processing should be stopped, true to continue
+`[boolean](../reference.md#type-boolean)` — false if event processing should be stopped, true to continue
 
 **Flags**: A
 
@@ -892,7 +892,7 @@ In addition to this, [getCellCSSText()](GridRenderer.md#method-gridrenderergetce
 
 ### Returns
 
-`[CSSStyleName](../main.md#type-cssstylename)` — CSS style for this cell
+`[CSSStyleName](../reference.md#type-cssstylename)` — CSS style for this cell
 
 ### Groups
 
@@ -912,8 +912,8 @@ If passed a MenuItem, returns it.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| item | [int](../main.md#type-int) | false | — | index of the MenuItem |
-| logicalIndex | [boolean](../main.md#type-boolean) | true | — | Interpret the index passed in with regards to the full set of specified items. |
+| item | [int](../reference.md#type-int) | false | — | index of the MenuItem |
+| logicalIndex | [boolean](../reference.md#type-boolean) | true | — | Interpret the index passed in with regards to the full set of specified items. |
 
 ### Returns
 
@@ -959,12 +959,12 @@ Checks or unchecks the menu item according to the value of newState, and redraws
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| item | [MenuItem](#type-menuitem)|[int](../main.md#type-int) | false | — | MenuItem or visible index of the MenuItem |
-| newState | [boolean](../main.md#type-boolean) | true | — | true to check the menu item, false to uncheck it. If not passed, true is assumed |
+| item | [MenuItem](#type-menuitem)|[int](../reference.md#type-int) | false | — | MenuItem or visible index of the MenuItem |
+| newState | [boolean](../reference.md#type-boolean) | true | — | true to check the menu item, false to uncheck it. If not passed, true is assumed |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true if the checked state was changed
+`[boolean](../reference.md#type-boolean)` — true if the checked state was changed
 
 ---
 ## Method: Menu.hideContextMenu
@@ -1000,7 +1000,7 @@ Show or hide the submenu indicator column at runtime.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| showSubmenus | [boolean](../main.md#type-boolean) | false | — | whether the submenu indicator column should be displayed |
+| showSubmenus | [boolean](../reference.md#type-boolean) | false | — | whether the submenu indicator column should be displayed |
 
 ---
 ## Method: Menu.fetchData
@@ -1012,8 +1012,8 @@ This DataBoundComponent method does not apply to Menu.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| criteria | [Criteria](../main_2.md#type-criteria) | true | — | Search criteria. If a [DynamicForm](DynamicForm.md#class-dynamicform) is passed in as this argument instead of a raw criteria object, will be derived by calling [DynamicForm.getValuesAsCriteria](DynamicForm.md#method-dynamicformgetvaluesascriteria) |
-| callback | [DSCallback](../main_2.md#type-dscallback) | true | — | callback to invoke when a fetch is complete. Fires only if server contact was required |
+| criteria | [Criteria](../reference_2.md#type-criteria) | true | — | Search criteria. If a [DynamicForm](DynamicForm.md#class-dynamicform) is passed in as this argument instead of a raw criteria object, will be derived by calling [DynamicForm.getValuesAsCriteria](DynamicForm.md#method-dynamicformgetvaluesascriteria) |
+| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke when a fetch is complete. Fires only if server contact was required |
 | requestProperties | [DSRequest](#type-dsrequest) | true | — | additional properties to set on the DSRequest that will be issued |
 
 ---

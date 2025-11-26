@@ -1,12 +1,12 @@
 # ActiveXControl Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
 ## Class: ActiveXControl
 
-*Inherits from:* [BrowserPlugin](../main.md#class-browserplugin)
+*Inherits from:* [BrowserPlugin](../reference.md#class-browserplugin)
 
 ### Description
 ISC Abstraction for ActiveX controls

@@ -1,6 +1,6 @@
 # Toolbar Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -143,7 +143,7 @@ Retrieves a button widget instance (within this toolbar) from the name / ID / in
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| index | [number](#type-number)|[String](#type-string)|[Object](../main.md#type-object) | false | — | identifier for the button to retrieve |
+| index | [number](#type-number)|[String](#type-string)|[Object](../reference.md#type-object) | false | — | identifier for the button to retrieve |
 
 ### Returns
 
@@ -167,7 +167,7 @@ Deselects the specified button from the toolbar, where buttonID is the index of 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| buttonID | [number](#type-number)|[String](#type-string)|[Object](../main.md#type-object)|[Canvas](#type-canvas) | false | — | Button / Button identifier |
+| buttonID | [number](#type-number)|[String](#type-string)|[Object](../reference.md#type-object)|[Canvas](#type-canvas) | false | — | Button / Button identifier |
 
 ### Groups
 
@@ -187,7 +187,7 @@ Setter for updating [Toolbar.canResizeItems](#attr-toolbarcanresizeitems) at run
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| canResizeItems | [boolean](../main.md#type-boolean) | false | — | New value for this.canResizeItems |
+| canResizeItems | [boolean](../reference.md#type-boolean) | false | — | New value for this.canResizeItems |
 
 ---
 ## Method: Toolbar.addButtons
@@ -301,7 +301,7 @@ Given an identifier for a button, select it. The button identifier can be a numb
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| buttonID | [number](#type-number)|[String](#type-string)|[Object](../main.md#type-object)|[Canvas](#type-canvas) | false | — | Button / Button identifier |
+| buttonID | [number](#type-number)|[String](#type-string)|[Object](../reference.md#type-object)|[Canvas](#type-canvas) | false | — | Button / Button identifier |
 
 ### Groups
 

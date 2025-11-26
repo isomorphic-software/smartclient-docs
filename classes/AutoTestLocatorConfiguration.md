@@ -1,6 +1,6 @@
 # AutoTestLocatorConfiguration Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -13,7 +13,7 @@ Setting this property to true ensures that, even for visible components, search 
 
 Note that this setting has no impact on locators being generated for components that are currently hidden. Any search segments for hidden components will always consider uniqueness among all components (hidden and visible), and include the marker to ensure that they are considered when resolving the locator back to an object.
 
-See the [AutoTestLocator overview](../main_2.md#type-autotestlocator) for more information about search segments in AutoTestLocators
+See the [AutoTestLocator overview](../reference_2.md#type-autotestlocator) for more information about search segments in AutoTestLocators
 
 **Flags**: IRA
 
@@ -23,7 +23,7 @@ See the [AutoTestLocator overview](../main_2.md#type-autotestlocator) for more i
 ### Description
 Should generated locators omit fallback locator attributes when generating segments that identify components or other objects by attribute values?
 
-See the [AutoTestLocator overview](../main_2.md#type-autotestlocator) for details of locator fallback attributes.
+See the [AutoTestLocator overview](../reference_2.md#type-autotestlocator) for details of locator fallback attributes.
 
 **Flags**: IR
 
@@ -37,7 +37,7 @@ If true, when a locator is requested for a component, and that component has an 
 
 This only applies when the target of the locator is the component itself or its handle. If the target is a child, or an interior DOM element that requires additional locator segments to identify, a standard multi-segment locator will be generated.
 
-See the [AutoTestLocator overview](../main_2.md#type-autotestlocator) for more information on locators.
+See the [AutoTestLocator overview](../reference_2.md#type-autotestlocator) for more information on locators.
 
 **Flags**: IR
 
@@ -45,7 +45,7 @@ See the [AutoTestLocator overview](../main_2.md#type-autotestlocator) for more i
 ## Attr: AutoTestLocatorConfiguration.useSearchSegments
 
 ### Description
-Should generated locators include search segments (as detailed in the [AutoTestLocator overview](../main_2.md#type-autotestlocator)) to identify components with [defining property values](Canvas.md#method-canvasgetdefiningpropertyname)?
+Should generated locators include search segments (as detailed in the [AutoTestLocator overview](../reference_2.md#type-autotestlocator)) to identify components with [defining property values](Canvas.md#method-canvasgetdefiningpropertyname)?
 
 See also [AutoTestLocatorConfiguration.searchSegmentsIncludeHidden](#attr-autotestlocatorconfigurationsearchsegmentsincludehidden)
 
@@ -57,7 +57,7 @@ See also [AutoTestLocatorConfiguration.searchSegmentsIncludeHidden](#attr-autote
 ### Description
 This setting controls whether locator segments that identify components or other objects by attribute values use a compact or verbose syntax.
 
-See the [AutoTestLocator overview](../main_2.md#type-autotestlocator) for details of locator attributes.
+See the [AutoTestLocator overview](../reference_2.md#type-autotestlocator) for details of locator attributes.
 
 **Flags**: IR
 

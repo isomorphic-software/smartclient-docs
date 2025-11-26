@@ -1,6 +1,6 @@
 # Drag and Drop
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -11,12 +11,12 @@ Dragging objects and dropping them onto other objects
 
 ### Related
 
-- [DragAppearance](../main_2.md#type-dragappearance)
-- [DragIntersectStyle](../main.md#type-dragintersectstyle)
-- [ProportionalResizeMode](../main.md#type-proportionalresizemode)
-- [DragMaskType](../main.md#type-dragmasktype)
-- [DragDataAction](../main.md#type-dragdataaction)
-- [ReorderPosition](../main_2.md#type-reorderposition)
+- [DragAppearance](../reference_2.md#type-dragappearance)
+- [DragIntersectStyle](../reference.md#type-dragintersectstyle)
+- [ProportionalResizeMode](../reference.md#type-proportionalresizemode)
+- [DragMaskType](../reference.md#type-dragmasktype)
+- [DragDataAction](../reference.md#type-dragdataaction)
+- [ReorderPosition](../reference_2.md#type-reorderposition)
 - [EventHandler.setDragTrackerImage](../classes/EventHandler.md#classmethod-eventhandlersetdragtrackerimage)
 - [EventHandler.setDragOffset](../classes/EventHandler.md#classmethod-eventhandlersetdragoffset)
 - [EventHandler.setDragTracker](../classes/EventHandler.md#classmethod-eventhandlersetdragtracker)

@@ -1,6 +1,6 @@
 # MultiGroupPanel Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -9,9 +9,9 @@
 *Inherits from:* [Layout](Layout.md#class-layout)
 
 ### Description
-A widget that allows the user to set up complex grouping arrangements by defining a group of [GroupSpecifier](../main_2.md#object-groupspecifier)s.
+A widget that allows the user to set up complex grouping arrangements by defining a group of [GroupSpecifier](../reference_2.md#object-groupspecifier)s.
 
-Each [GroupSpecifier](../main_2.md#object-groupspecifier) applies to a single property and grouping - so, for instance, in a grid with two columns, `Nationhood` and `Country`, you could group first by `Nationhood` with its selected groupingMode and then by `Country` with its selected groupingMode. _**Important Note:** this class should not be used directly - it is exposed purely for [i18n reasons.](../kb_topics/i18nMessages.md#kb-topic-i18n-messages)_
+Each [GroupSpecifier](../reference_2.md#object-groupspecifier) applies to a single property and grouping - so, for instance, in a grid with two columns, `Nationhood` and `Country`, you could group first by `Nationhood` with its selected groupingMode and then by `Country` with its selected groupingMode. _**Important Note:** this class should not be used directly - it is exposed purely for [i18n reasons.](../kb_topics/i18nMessages.md#kb-topic-i18n-messages)_
 
 ---
 ## Attr: MultiGroupPanel.invalidListPrompt
@@ -57,9 +57,9 @@ The title-text to appear in the header of the "grouping" field.
 ## Attr: MultiGroupPanel.deleteLevelButton
 
 ### Description
-Automatically generated [IButton](../main.md#class-ibutton) providing a mechanism for deleting levels from the group configuration.
+Automatically generated [IButton](../reference.md#class-ibutton) providing a mechanism for deleting levels from the group configuration.
 
-This component is an [AutoChild](../main.md#type-autochild) and as such may be customized via `multiGroupPanel.deleteLevelButtonProperties` and `multiGroupPanel.deleteLevelButtonDefaults`.
+This component is an [AutoChild](../reference.md#type-autochild) and as such may be customized via `multiGroupPanel.deleteLevelButtonProperties` and `multiGroupPanel.deleteLevelButtonDefaults`.
 
 **Flags**: RA
 
@@ -147,9 +147,9 @@ The list of fields which the user can choose to group by.
 ## Attr: MultiGroupPanel.copyLevelButton
 
 ### Description
-Automatically generated [IButton](../main.md#class-ibutton) providing a mechanism for duplicating levels in the group configuration.
+Automatically generated [IButton](../reference.md#class-ibutton) providing a mechanism for duplicating levels in the group configuration.
 
-This component is an [AutoChild](../main.md#type-autochild) and as such may be customized via `multiGroupPanel.copyLevelButtonProperties` and `multiGroupPanel.copyLevelButtonDefaults`.
+This component is an [AutoChild](../reference.md#type-autochild) and as such may be customized via `multiGroupPanel.copyLevelButtonProperties` and `multiGroupPanel.copyLevelButtonDefaults`.
 
 **Flags**: RA
 
@@ -171,7 +171,7 @@ The hover-prompt for the Level Down button.
 ### Description
 Automatically generated [ImgButton](ImgButton.md#class-imgbutton) providing a mechanism for moving existing group-levels down in the group configuration.
 
-This component is an [AutoChild](../main.md#type-autochild) and as such may be customized via `multiGroupPanel.levelDownButtonProperties` and `multiGroupPanel.levelDownButtonDefaults`.
+This component is an [AutoChild](../reference.md#type-autochild) and as such may be customized via `multiGroupPanel.levelDownButtonProperties` and `multiGroupPanel.levelDownButtonDefaults`.
 
 **Flags**: RA
 
@@ -199,9 +199,9 @@ The maximum number of levels of grouping that can be applied. Since each group-p
 ## Attr: MultiGroupPanel.addLevelButton
 
 ### Description
-Automatically generated [IButton](../main.md#class-ibutton) providing a mechanism for adding new levels to the group configuration.
+Automatically generated [IButton](../reference.md#class-ibutton) providing a mechanism for adding new levels to the group configuration.
 
-This component is an [AutoChild](../main.md#type-autochild) and as such may be customized via `multiGroupPanel.addLevelButtonProperties` and `multiGroupPanel.addLevelButtonDefaults`.
+This component is an [AutoChild](../reference.md#type-autochild) and as such may be customized via `multiGroupPanel.addLevelButtonProperties` and `multiGroupPanel.addLevelButtonDefaults`.
 
 **Flags**: RA
 
@@ -221,9 +221,9 @@ The title-text to appear on the deleteLevelButton
 ## Attr: MultiGroupPanel.optionsGrid
 
 ### Description
-Automatically generated [ListGrid](ListGrid_1.md#class-listgrid) allowing the user to configure a set of [GroupSpecifier](../main_2.md#object-groupspecifier)s.
+Automatically generated [ListGrid](ListGrid_1.md#class-listgrid) allowing the user to configure a set of [GroupSpecifier](../reference_2.md#object-groupspecifier)s.
 
-This component is an [AutoChild](../main.md#type-autochild) and as such may be customized via `multiGroupPanel.optionsGridProperties` and `multiGroupPanel.optionsGridDefaults`.
+This component is an [AutoChild](../reference.md#type-autochild) and as such may be customized via `multiGroupPanel.optionsGridProperties` and `multiGroupPanel.optionsGridDefaults`.
 
 **Flags**: IR
 
@@ -233,7 +233,7 @@ This component is an [AutoChild](../main.md#type-autochild) and as such may be c
 ### Description
 Automatically generated [ImgButton](ImgButton.md#class-imgbutton) providing a mechanism for moving existing group-levels up in the group configuration.
 
-This component is an [AutoChild](../main.md#type-autochild) and as such may be customized via `multiGroupPanel.levelUpButtonProperties` and `multiGroupPanel.levelUpButtonDefaults`.
+This component is an [AutoChild](../reference.md#type-autochild) and as such may be customized via `multiGroupPanel.levelUpButtonProperties` and `multiGroupPanel.levelUpButtonDefaults`.
 
 **Flags**: RA
 
@@ -241,7 +241,7 @@ This component is an [AutoChild](../main.md#type-autochild) and as such may be c
 ## Method: MultiGroupPanel.groupChanged
 
 ### Description
-Fired whenever the group configuration changes. The single parameter is an array of [GroupSpecifier](../main_2.md#object-groupspecifier)s that represent the list of group-levels as they appear after whatever change has occurred.
+Fired whenever the group configuration changes. The single parameter is an array of [GroupSpecifier](../reference_2.md#object-groupspecifier)s that represent the list of group-levels as they appear after whatever change has occurred.
 
 ### Parameters
 
@@ -253,17 +253,17 @@ Fired whenever the group configuration changes. The single parameter is an array
 ## Method: MultiGroupPanel.validate
 
 ### Description
-Validate that no two [GroupSpecifier](../main_2.md#object-groupspecifier)s group on the same [property](../main.md#attr-groupspecifierproperty).
+Validate that no two [GroupSpecifier](../reference_2.md#object-groupspecifier)s group on the same [property](../reference.md#attr-groupspecifierproperty).
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — True if validation succeeds, false if any property is used twice
+`[boolean](../reference.md#type-boolean)` — True if validation succeeds, false if any property is used twice
 
 ---
 ## Method: MultiGroupPanel.getGroup
 
 ### Description
-Returns all configured grouping levels, as an array of [GroupSpecifier](../main_2.md#object-groupspecifier)s.
+Returns all configured grouping levels, as an array of [GroupSpecifier](../reference_2.md#object-groupspecifier)s.
 
 ### Returns
 

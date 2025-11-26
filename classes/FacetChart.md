@@ -1,6 +1,6 @@
 # FacetChart Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -9,7 +9,7 @@
 *Inherits from:* [DrawPane](DrawPane.md#class-drawpane)
 
 ### Description
-HTML5-based charting engine, implementing all [chartTypes](Chart.md#attr-chartcharttype) of the [Chart](../main_2.md#interface-chart) interface.
+HTML5-based charting engine, implementing all [chartTypes](Chart.md#attr-chartcharttype) of the [Chart](../reference_2.md#interface-chart) interface.
 
 Can be used directly, or specified as [ListGrid.chartConstructor](ListGrid_1.md#attr-listgridchartconstructor) or [CubeGrid.chartConstructor](CubeGrid.md#attr-cubegridchartconstructor).
 
@@ -35,7 +35,7 @@ To create a FacetChart, set [FacetChart.facets](#attr-facetchartfacets) to an Ar
  
 ```
 
-A [DataSource](DataSource.md#class-datasource) may be provided instead of inline [data](#attr-facetchartdata) to use the chart as a [DataBoundComponent](../main.md#interface-databoundcomponent). In this case, [facetFields](#attr-facetchartfacetfields) may be provided instead of [facets](#attr-facetchartfacets), to specify which DataSource fields to use as the facets. If neither is set, the framework will attempt to auto-derive the [facetFields](#attr-facetchartfacetfields). The [valueProperty](#attr-facetchartvalueproperty) will also be auto-derived for databound charts if it hasn't been set in the chart instance.
+A [DataSource](DataSource.md#class-datasource) may be provided instead of inline [data](#attr-facetchartdata) to use the chart as a [DataBoundComponent](../reference.md#interface-databoundcomponent). In this case, [facetFields](#attr-facetchartfacetfields) may be provided instead of [facets](#attr-facetchartfacets), to specify which DataSource fields to use as the facets. If neither is set, the framework will attempt to auto-derive the [facetFields](#attr-facetchartfacetfields). The [valueProperty](#attr-facetchartvalueproperty) will also be auto-derived for databound charts if it hasn't been set in the chart instance.
 
 The following SDK examples demonstrate charts with a single facet:
 
@@ -187,7 +187,7 @@ Warning message issued when an invalid polynomial degree is entered into the pro
 ## ClassAttr: FacetChart.allChartTypes
 
 ### Description
-All [ChartTypes](../main.md#type-charttype) that are supported by this class. Should be defined by concrete implementations of the charting interface.
+All [ChartTypes](../reference.md#type-charttype) that are supported by this class. Should be defined by concrete implementations of the charting interface.
 
 **Flags**: R
 
@@ -571,7 +571,7 @@ Horizontal alignment of labels shown in extra y-axes, shown to the right of the 
 ### Description
 For scatter plots only, whether to display a regression curve that best fits the data of the two metric facet values.
 
-The type of regression curve used depends on the [RegressionLineType](../main_2.md#type-regressionlinetype) property, which can be:
+The type of regression curve used depends on the [RegressionLineType](../reference_2.md#type-regressionlinetype) property, which can be:
 
 *   **"line"** – to draw a linear regression curve, or
 *   **"polynomial"** – to draw a polynomial regression curve (of degree [FacetChart.regressionPolynomialDegree](#attr-facetchartregressionpolynomialdegree)).
@@ -947,7 +947,7 @@ Horizontal alignment of the chart's [legend widget](#attr-facetchartshowlegend).
 ## Attr: FacetChart.dataLineType
 
 ### Description
-How to draw lines between adjacent data points in Line and Scatter charts. See [DataLineType](../main_2.md#type-datalinetype).
+How to draw lines between adjacent data points in Line and Scatter charts. See [DataLineType](../reference_2.md#type-datalinetype).
 
 Does not apply to boundary lines for shapes in Area or Radar plots.
 
@@ -1017,7 +1017,7 @@ Properties for a "value line" - a line shows where a particular discrete value i
 ## Attr: FacetChart.allowedChartTypes
 
 ### Description
-Other [chart types](../main.md#type-charttype) that the end user will be allowed to switch to, using the built-in context menu.
+Other [chart types](../reference.md#type-charttype) that the end user will be allowed to switch to, using the built-in context menu.
 
 The actual list of ChartTypes displayed in the context menu may be a subset of `allowedChartTypes`, since the FacetChart will automatically disallow certain modes that are clearly invalid, for example, not allowing switching to Pie mode if either [FacetChart.canZoom](#attr-facetchartcanzoom) is enabled, or if the chart is [multi-axis](#attr-facetchartextraaxismetrics).
 
@@ -1061,7 +1061,7 @@ For rectangular charts (bar, column, line), margin around the inside of the main
 ## Attr: FacetChart.showScatterLines
 
 ### Description
-Whether to draw lines between adjacent data points in "Scatter" plots. See also [DataLineType](../main_2.md#type-datalinetype) for enabling smoothing.
+Whether to draw lines between adjacent data points in "Scatter" plots. See also [DataLineType](../reference_2.md#type-datalinetype) for enabling smoothing.
 
 **Flags**: IRW
 
@@ -1122,18 +1122,18 @@ When true for a Bar chart, expansion and scrollbar are vertical, and also make s
 
 Note that this feature is incompatible with the following properties:
 
-*   [LabelCollapseMode](../main.md#type-labelcollapsemode) (other than the default of "none")
+*   [LabelCollapseMode](../reference.md#type-labelcollapsemode) (other than the default of "none")
 *   [FacetChart.rotateLabels](#attr-facetchartrotatelabels) (in "auto" mode)
 *   [canDragScroll](DrawPane.md#attr-drawpanecandragscroll)
 *   [FacetChart.canZoom](#attr-facetchartcanzoom)
 
-If [FacetChart.rotateLabels](#attr-facetchartrotatelabels) is set to "auto" it will be treated as "never" if `autoScrollData` has been set. If any of the other properties have non-default values, a warning will be logged and `autoScrollData` will be disabled. The factors used to drive expansion can be limited by setting [AutoScrollDataApproach](../main.md#type-autoscrolldataapproach). You can also enforce a minimum size for the chart-content, and scrollbars will be introduced if this widget shrinks below that size. See [autoScrollContent](#attr-facetchartautoscrollcontent), along with [minContentWidth](#attr-facetchartmincontentwidth) and [minContentHeight](#attr-facetchartmincontentheight).
+If [FacetChart.rotateLabels](#attr-facetchartrotatelabels) is set to "auto" it will be treated as "never" if `autoScrollData` has been set. If any of the other properties have non-default values, a warning will be logged and `autoScrollData` will be disabled. The factors used to drive expansion can be limited by setting [AutoScrollDataApproach](../reference.md#type-autoscrolldataapproach). You can also enforce a minimum size for the chart-content, and scrollbars will be introduced if this widget shrinks below that size. See [autoScrollContent](#attr-facetchartautoscrollcontent), along with [minContentWidth](#attr-facetchartmincontentwidth) and [minContentHeight](#attr-facetchartmincontentheight).
 
 ### See Also
 
 - [FacetChart.canZoom](#attr-facetchartcanzoom)
 - [FacetChart.rotateLabels](#attr-facetchartrotatelabels)
-- [LabelCollapseMode](../main.md#type-labelcollapsemode)
+- [LabelCollapseMode](../reference.md#type-labelcollapsemode)
 - [FacetChart.getMinClusterSize](#method-facetchartgetminclustersize)
 - [DrawPane.canDragScroll](DrawPane.md#attr-drawpanecandragscroll)
 
@@ -1155,7 +1155,7 @@ FacetCharts do not yet support paging, and will fetch all records that meet the 
 ## Attr: FacetChart.radialLabelOffset
 
 ### Description
-Distance in pixels that radial labels are offset from the outside of the circle. Default can vary depending upon [ChartType](../main.md#type-charttype) and [FacetChart.radarRotateLabels](#attr-facetchartradarrotatelabels).
+Distance in pixels that radial labels are offset from the outside of the circle. Default can vary depending upon [ChartType](../reference.md#type-charttype) and [FacetChart.radarRotateLabels](#attr-facetchartradarrotatelabels).
 
 ### Groups
 
@@ -1268,7 +1268,7 @@ The default x-axis metric is the second value of the metric facet.
 ## Attr: FacetChart.fetchRequestProperties
 
 ### Description
-If [FacetChart.autoFetchData](#attr-facetchartautofetchdata) is `true`, this attribute allows the developer to declaratively specify [DSRequest](../main_2.md#object-dsrequest) properties for the initial [fetchData()](ListGrid_2.md#method-listgridfetchdata) call.
+If [FacetChart.autoFetchData](#attr-facetchartautofetchdata) is `true`, this attribute allows the developer to declaratively specify [DSRequest](../reference_2.md#object-dsrequest) properties for the initial [fetchData()](ListGrid_2.md#method-listgridfetchdata) call.
 
 Note that any properties governing more specific request attributes for the initial fetch (such as [FacetChart.autoFetchTextMatchStyle](#attr-facetchartautofetchtextmatchstyle) and initial sort specifiers) will be applied on top of this properties block.
 
@@ -1440,7 +1440,7 @@ This property would generally only be set to `false` if several small charts are
 ## Attr: FacetChart.rotateDataValues
 
 ### Description
-This property controls whether to rotate the labels shown for data-values in [Column-type charts](../main.md#type-charttype). "auto" will rotate all data-values if any of them are wider than their columns. In all cases, whether rotated or not, data-values are hidden and instead shown in hovers if any of them exceed their bar's width.
+This property controls whether to rotate the labels shown for data-values in [Column-type charts](../reference.md#type-charttype). "auto" will rotate all data-values if any of them are wider than their columns. In all cases, whether rotated or not, data-values are hidden and instead shown in hovers if any of them exceed their bar's width.
 
 ### Groups
 
@@ -1506,7 +1506,7 @@ See also [FacetChart.majorTickTimeIntervals](#attr-facetchartmajorticktimeinterv
 ## Attr: FacetChart.labelCollapseMode
 
 ### Description
-What to do when there are too many data points to be able to show labels for every data point at the current chart size - see [LabelCollapseMode](../main.md#type-labelcollapsemode).
+What to do when there are too many data points to be able to show labels for every data point at the current chart size - see [LabelCollapseMode](../reference.md#type-labelcollapsemode).
 
 Each of the possible strategies is re-applied when the user resizes the chart as a whole, so if labels are omitted the user can make them visible via resize or zoom.
 
@@ -1701,7 +1701,7 @@ When [FacetChart.logScalePointColor](#attr-facetchartlogscalepointcolor) is `tru
 ## Attr: FacetChart.showDetailFields
 
 ### Description
-This [DataBoundComponent](../main.md#interface-databoundcomponent) property is not applicable to charts.
+This [DataBoundComponent](../reference.md#interface-databoundcomponent) property is not applicable to charts.
 
 **Flags**: IR
 
@@ -2306,7 +2306,7 @@ Note that if this chart's data includes points that fall above this value, they 
 ### Description
 Defines the set of metrics that will be plotted as additional vertical axes. See the main [FacetChart](#class-facetchart) docs for an overview of how multi-axis charts are used.
 
-Each metric corresponds to different value property of the data records and superimposes its drawn data onto the chart rectangle. The value properties are called metrics, and they can be either the [FacetChart.valueProperty](#attr-facetchartvalueproperty) or the "id" of a [FacetValue](../main.md#object-facetvalue) of the inlined [Facet](Facet.md#class-facet) (which is then called the metric facet). Each value axis has its own gradations that are shown as tick marks along the length of the axis. This property, extraAxisMetrics, specifies the metrics to use for additional value axes to the main value axis.
+Each metric corresponds to different value property of the data records and superimposes its drawn data onto the chart rectangle. The value properties are called metrics, and they can be either the [FacetChart.valueProperty](#attr-facetchartvalueproperty) or the "id" of a [FacetValue](../reference.md#object-facetvalue) of the inlined [Facet](Facet.md#class-facet) (which is then called the metric facet). Each value axis has its own gradations that are shown as tick marks along the length of the axis. This property, extraAxisMetrics, specifies the metrics to use for additional value axes to the main value axis.
 
 The additional value axis may have their own gradations, chart type, log scale, data colors and gradients, and other chart properties. These properties are specified with the [FacetChart.extraAxisSettings](#attr-facetchartextraaxissettings) property.
 
@@ -2340,7 +2340,7 @@ Whether to use logarithmic scaling for the [data point sizes](#attr-facetchartpo
 ## Attr: FacetChart.dataSource
 
 ### Description
-The DataSource that this component should bind to for default fields and for performing [DataSource requests](../main_2.md#object-dsrequest).
+The DataSource that this component should bind to for default fields and for performing [DataSource requests](../reference_2.md#object-dsrequest).
 
 Can be specified as either a DataSource instance or the String ID of a DataSource.
 
@@ -2552,7 +2552,7 @@ Maximum distance from the \*outer radius\* of the nearest bubble when hover will
 ## Attr: FacetChart.dataValueHoverShadow
 
 ### Description
-When [FacetChart.highlightDataValues](#attr-facetcharthighlightdatavalues) is true, this attribute can be set to a [DrawItem shadow](../main.md#object-shadow) to show around the draw-area of nearby filled data-value shapes as the mouse is moved around in Bar, Column, Pie and Doughnut [chart-types](#attr-facetchartcharttype).
+When [FacetChart.highlightDataValues](#attr-facetcharthighlightdatavalues) is true, this attribute can be set to a [DrawItem shadow](../reference.md#object-shadow) to show around the draw-area of nearby filled data-value shapes as the mouse is moved around in Bar, Column, Pie and Doughnut [chart-types](#attr-facetchartcharttype).
 
 **Flags**: IRW
 
@@ -2578,7 +2578,7 @@ The size is calculated by linearly scaling the value of the `pointSizeMetric` of
 
 Using a log-scale to calulate the size of the data points is achieved by enabling [FacetChart.logScalePointSize](#attr-facetchartlogscalepointsize).
 
-If the [ChartType](../main.md#type-charttype) is `"Bubble"` then the default `pointSizeMetric` is `"pointSize"`.
+If the [ChartType](../reference.md#type-charttype) is `"Bubble"` then the default `pointSizeMetric` is `"pointSize"`.
 
 Note that setting `pointSizeMetric` to non-`null` implicitly enables [FacetChart.showDataPoints](#attr-facetchartshowdatapoints).
 
@@ -2792,7 +2792,7 @@ Maximum allowed zIndex that can be specified through [FacetChart.zIndexMetric](#
 
 ### See Also
 
-- [ChartType](../main.md#type-charttype)
+- [ChartType](../reference.md#type-charttype)
 - [FacetChart.zIndexMetric](#attr-facetchartzindexmetric)
 
 **Flags**: IR
@@ -3215,7 +3215,7 @@ Properties for the swatches of color shown in the legend.
 ## Attr: FacetChart.chartType
 
 ### Description
-See [ChartType](../main.md#type-charttype) for a list of known types - Column, Bar, Line, Pie, Doughnut, Area, Radar, and Histogram charts are supported.
+See [ChartType](../reference.md#type-charttype) for a list of known types - Column, Bar, Line, Pie, Doughnut, Area, Radar, and Histogram charts are supported.
 
 ### Groups
 
@@ -3551,7 +3551,7 @@ Note that this method is simply an override point, since it has no default imple
 
 ### Returns
 
-`[int](../main.md#type-int)` — width to use for data lines or null to use [ChartType](../main.md#type-charttype) default
+`[int](../reference.md#type-int)` — width to use for data lines or null to use [ChartType](../reference.md#type-charttype) default
 
 ### See Also
 
@@ -3584,7 +3584,7 @@ Returns the [FacetChart.minContentWidth](#attr-facetchartmincontentwidth) for th
 
 ### Returns
 
-`[int](../main.md#type-int)` — Min content width
+`[int](../reference.md#type-int)` — Min content width
 
 ---
 ## Method: FacetChart.getChartWidth
@@ -3598,11 +3598,11 @@ This is only allowed to be called when [FacetChart.chartDrawn](#method-facetchar
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| recalc | [boolean](../main.md#type-boolean) | false | — | if false then cached value will be returned, otherwise will be recalculated. |
+| recalc | [boolean](../reference.md#type-boolean) | false | — | if false then cached value will be returned, otherwise will be recalculated. |
 
 ### Returns
 
-`[float](../main.md#type-float)` — the width of the central chart area.
+`[float](../reference.md#type-float)` — the width of the central chart area.
 
 ---
 ## Method: FacetChart.getMax
@@ -3610,7 +3610,7 @@ This is only allowed to be called when [FacetChart.chartDrawn](#method-facetchar
 ### Description
 Calculate the maximum of the data from a single metric.
 
-The first argument, criteria, determines which metric is used to calculate the maximum. The criteria may be a String that is the "id" of some [FacetValue](../main.md#object-facetvalue) of the metric facet, or a [FacetValueMap](../main.md#object-facetvaluemap) that contains an entry for the metric facet, or null to use the [FacetChart.valueProperty](#attr-facetchartvalueproperty). A FacetValueMap criteria may also be used to restrict the calculation to a slice of the data.
+The first argument, criteria, determines which metric is used to calculate the maximum. The criteria may be a String that is the "id" of some [FacetValue](../reference.md#object-facetvalue) of the metric facet, or a [FacetValueMap](../reference.md#object-facetvaluemap) that contains an entry for the metric facet, or null to use the [FacetChart.valueProperty](#attr-facetchartvalueproperty). A FacetValueMap criteria may also be used to restrict the calculation to a slice of the data.
 
 ### Parameters
 
@@ -3620,7 +3620,7 @@ The first argument, criteria, determines which metric is used to calculate the m
 
 ### Returns
 
-`[Float](../main.md#type-float)` — the maximum of the data values
+`[Float](../reference.md#type-float)` — the maximum of the data values
 
 ---
 ## Method: FacetChart.zoomTo
@@ -3645,7 +3645,7 @@ For a [zoomed chart](#attr-facetchartcanzoom), simultaneously sets the [zoomStar
 ### Description
 Calculate the mean, or expected value, of the data over a single metric. See [http://en.wikipedia.org/wiki/Expected\_value](http://en.wikipedia.org/wiki/Expected_value).
 
-The first argument, criteria, determines which metric is used to calculate the mean. The criteria may be a String that is the "id" of some [FacetValue](../main.md#object-facetvalue) of the metric facet, or a [FacetValueMap](../main.md#object-facetvaluemap) that contains an entry for the metric facet, or null to use the [FacetChart.valueProperty](#attr-facetchartvalueproperty). A FacetValueMap criteria may also be used to restrict the calculation to a slice of the data.
+The first argument, criteria, determines which metric is used to calculate the mean. The criteria may be a String that is the "id" of some [FacetValue](../reference.md#object-facetvalue) of the metric facet, or a [FacetValueMap](../reference.md#object-facetvaluemap) that contains an entry for the metric facet, or null to use the [FacetChart.valueProperty](#attr-facetchartvalueproperty). A FacetValueMap criteria may also be used to restrict the calculation to a slice of the data.
 
 ### Parameters
 
@@ -3655,7 +3655,7 @@ The first argument, criteria, determines which metric is used to calculate the m
 
 ### Returns
 
-`[Float](../main.md#type-float)` — the mean of the data values
+`[Float](../reference.md#type-float)` — the mean of the data values
 
 ---
 ## Method: FacetChart.getPercentile
@@ -3663,7 +3663,7 @@ The first argument, criteria, determines which metric is used to calculate the m
 ### Description
 Calculate a percentile of the data over a single metric. See [http://en.wikipedia.org/wiki/Percentile](http://en.wikipedia.org/wiki/Percentile).
 
-The first argument, criteria, determines which metric is used to calculate a percentile. The criteria may be a String that is the "id" of some [FacetValue](../main.md#object-facetvalue) of the metric facet, or a [FacetValueMap](../main.md#object-facetvaluemap) that contains an entry for the metric facet, or null to use the [FacetChart.valueProperty](#attr-facetchartvalueproperty). A FacetValueMap criteria may also be used to restrict the calculation to a slice of the data.
+The first argument, criteria, determines which metric is used to calculate a percentile. The criteria may be a String that is the "id" of some [FacetValue](../reference.md#object-facetvalue) of the metric facet, or a [FacetValueMap](../reference.md#object-facetvaluemap) that contains an entry for the metric facet, or null to use the [FacetChart.valueProperty](#attr-facetchartvalueproperty). A FacetValueMap criteria may also be used to restrict the calculation to a slice of the data.
 
 The second argument is the percentile to calculate and it must be a number from 0 to 100.
 
@@ -3672,11 +3672,11 @@ The second argument is the percentile to calculate and it must be a number from 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | criteria | [String](#type-string)|[FacetValueMap](#type-facetvaluemap) | false | — | the "id" of a metric facet value, or a set of mappings describing the data over which to calculate, or null |
-| percentile | [float](../main.md#type-float) | false | — | the percentile to calculate |
+| percentile | [float](../reference.md#type-float) | false | — | the percentile to calculate |
 
 ### Returns
 
-`[Float](../main.md#type-float)` — a percentile of the data values
+`[Float](../reference.md#type-float)` — a percentile of the data values
 
 ---
 ## Method: FacetChart.setOtherAxisGradationTimes
@@ -3777,7 +3777,7 @@ Note that the user may swap the legend facet and the [data label facet](#method-
 ### Description
 Return the text string to display in labels [in the chart-body or in hovers](#attr-facetchartshowdatavaluesmode) given the raw value for the metric displayed on the value axis.
 
-This method may also be passed the [context](../main.md#type-formattingcontext) for which the value is being formatted, the record associated with the value and the id of its [facet](#attr-facetchartfacets).
+This method may also be passed the [context](../reference.md#type-formattingcontext) for which the value is being formatted, the record associated with the value and the id of its [facet](#attr-facetchartfacets).
 
 Note that the rendering of values for gradation labels is handled by [FacetChart.formatAxisValue](#method-facetchartformataxisvalue).
 
@@ -3786,7 +3786,7 @@ Note that the rendering of values for gradation labels is handled by [FacetChart
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | value | [Any](#type-any) | false | — | raw value of the metric |
-| context | [FormattingContext](../main.md#type-formattingcontext) | true | — | context in which the value is being displayed |
+| context | [FormattingContext](../reference.md#type-formattingcontext) | true | — | context in which the value is being displayed |
 | record | [Record](#type-record) | true | — | cell record for the data value |
 | facetId | [String](#type-string) | true | — | facet ID for the data value |
 
@@ -3808,7 +3808,7 @@ For scatter plots only, get a Function from the specified independent variable X
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| degree | [Integer](../main_2.md#type-integer) | true | — | the degree of the polynomial. Defaults to [FacetChart.regressionPolynomialDegree](#attr-facetchartregressionpolynomialdegree). |
+| degree | [Integer](../reference_2.md#type-integer) | true | — | the degree of the polynomial. Defaults to [FacetChart.regressionPolynomialDegree](#attr-facetchartregressionpolynomialdegree). |
 | xMetric | [String](#type-string) | true | — | ID of an inlined facet value to use as the independent variable. Defaults to the [x-axis metric](#attr-facetchartxaxismetric). |
 | yMetric | [String](#type-string) | true | — | ID of an inlined facet value to use as the dependent variable. Defaults to the [y-axis metric](#attr-facetchartyaxismetric). |
 
@@ -3826,7 +3826,7 @@ Called when the mouse hovers over a data label, that is, a text label showing va
 
 ### Returns
 
-`[HTMLString](../main.md#type-htmlstring)` — hover text to be shown. Return null to avoid a hover being shown
+`[HTMLString](../reference.md#type-htmlstring)` — hover text to be shown. Return null to avoid a hover being shown
 
 ---
 ## Method: FacetChart.setOtherAxisPixelsPerGradation
@@ -3838,7 +3838,7 @@ Setter for [FacetChart.otherAxisPixelsPerGradation](#attr-facetchartotheraxispix
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| pixelsPerGradation | [int](../main.md#type-int) | false | — | new [FacetChart.otherAxisPixelsPerGradation](#attr-facetchartotheraxispixelspergradation) value |
+| pixelsPerGradation | [int](../reference.md#type-int) | false | — | new [FacetChart.otherAxisPixelsPerGradation](#attr-facetchartotheraxispixelspergradation) value |
 
 ### Groups
 
@@ -3850,7 +3850,7 @@ Setter for [FacetChart.otherAxisPixelsPerGradation](#attr-facetchartotheraxispix
 ### Description
 Calculate the minimum of the data from a single metric.
 
-The first argument, criteria, determines which metric is used to calculate the minimum. The criteria may be a String that is the "id" of some [FacetValue](../main.md#object-facetvalue) of the metric facet, or a [FacetValueMap](../main.md#object-facetvaluemap) that contains an entry for the metric facet, or null to use the [FacetChart.valueProperty](#attr-facetchartvalueproperty). A FacetValueMap criteria may also be used to restrict the calculation to a slice of the data.
+The first argument, criteria, determines which metric is used to calculate the minimum. The criteria may be a String that is the "id" of some [FacetValue](../reference.md#object-facetvalue) of the metric facet, or a [FacetValueMap](../reference.md#object-facetvaluemap) that contains an entry for the metric facet, or null to use the [FacetChart.valueProperty](#attr-facetchartvalueproperty). A FacetValueMap criteria may also be used to restrict the calculation to a slice of the data.
 
 ### Parameters
 
@@ -3860,7 +3860,7 @@ The first argument, criteria, determines which metric is used to calculate the m
 
 ### Returns
 
-`[Float](../main.md#type-float)` — the minimum of the data values
+`[Float](../reference.md#type-float)` — the minimum of the data values
 
 ---
 ## Method: FacetChart.setTickLength
@@ -3872,7 +3872,7 @@ Setter for [FacetChart.tickLength](#attr-facetchartticklength).
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| tickLength | [int](../main.md#type-int) | false | — | new [FacetChart.tickLength](#attr-facetchartticklength) value |
+| tickLength | [int](../reference.md#type-int) | false | — | new [FacetChart.tickLength](#attr-facetchartticklength) value |
 
 ### Groups
 
@@ -3926,18 +3926,18 @@ Note that this method has no impact on the facet value labels appearing on the h
 ### Description
 Calculate the variance of the data from a single metric. See [http://en.wikipedia.org/wiki/Variance](http://en.wikipedia.org/wiki/Variance).
 
-The first argument, criteria, determines which metric is used to calculate the variance. The criteria may be a String that is the "id" of some [FacetValue](../main.md#object-facetvalue) of the metric facet, or a [FacetValueMap](../main.md#object-facetvaluemap) that contains an entry for the metric facet, or null to use the [FacetChart.valueProperty](#attr-facetchartvalueproperty). A FacetValueMap criteria may also be used to restrict the calculation to a slice of the data.
+The first argument, criteria, determines which metric is used to calculate the variance. The criteria may be a String that is the "id" of some [FacetValue](../reference.md#object-facetvalue) of the metric facet, or a [FacetValueMap](../reference.md#object-facetvaluemap) that contains an entry for the metric facet, or null to use the [FacetChart.valueProperty](#attr-facetchartvalueproperty). A FacetValueMap criteria may also be used to restrict the calculation to a slice of the data.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | criteria | [String](#type-string)|[FacetValueMap](#type-facetvaluemap) | false | — | the "id" of a metric facet value, or a set of mappings describing the data over which to calculate, or null |
-| population | [boolean](../main.md#type-boolean) | false | — | false to calculate a sample variance, true to calculate a population variance |
+| population | [boolean](../reference.md#type-boolean) | false | — | false to calculate a sample variance, true to calculate a population variance |
 
 ### Returns
 
-`[Float](../main.md#type-float)` — the variance of the data values
+`[Float](../reference.md#type-float)` — the variance of the data values
 
 ---
 ## Method: FacetChart.fetchRelatedData
@@ -3957,7 +3957,7 @@ Note that multiple foreign keys into the schema are supported by this method.
 |------|------|----------|---------|-------------|
 | record | [ListGridRecord](#type-listgridrecord) | false | — | DataSource record |
 | schema | [Canvas](#type-canvas)|[DataSource](#type-datasource)|[ID](#type-id) | false | — | schema of the DataSource record, or DataBoundComponent already bound to that schema |
-| callback | [DSCallback](../main_2.md#type-dscallback) | true | — | callback to invoke on completion |
+| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke on completion |
 | requestProperties | [DSRequest](#type-dsrequest) | true | — | additional properties to set on the DSRequest that will be issued |
 
 ### Groups
@@ -3974,13 +3974,13 @@ Sets [FacetChart.autoScrollData](#attr-facetchartautoscrolldata) and updates the
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| autoScrollData | [boolean](../main.md#type-boolean) | false | — | whether chart should automatically expand and show scrollbars to accommodate content. |
+| autoScrollData | [boolean](../reference.md#type-boolean) | false | — | whether chart should automatically expand and show scrollbars to accommodate content. |
 
 ---
 ## Method: FacetChart.getNearestDrawnValues
 
 ### Description
-Returns an array of [DrawnValue](../main_2.md#object-drawnvalue) objects containing rendering information for the data values having each metric that are shown nearest to the passed coordinates.
+Returns an array of [DrawnValue](../reference_2.md#object-drawnvalue) objects containing rendering information for the data values having each metric that are shown nearest to the passed coordinates.
 
 Passed X and Y coordinates should be relative to the FacetChart. If neither an X or Y coordinate is passed, both X and Y will use the current [Canvas.getOffsetX](Canvas.md#method-canvasgetoffsetx) and [Canvas.getOffsetY](Canvas.md#method-canvasgetoffsety).
 
@@ -3992,8 +3992,8 @@ To get the nearest DrawnValues only if they contain the given coordinates, you c
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| x | [Integer](../main_2.md#type-integer) | true | — | X coordinate. If this parameter is specified, then `y` is a required parameter. |
-| y | [Integer](../main_2.md#type-integer) | true | — | Y coordinate |
+| x | [Integer](../reference_2.md#type-integer) | true | — | X coordinate. If this parameter is specified, then `y` is a required parameter. |
+| y | [Integer](../reference_2.md#type-integer) | true | — | Y coordinate |
 
 ### Returns
 
@@ -4013,7 +4013,7 @@ This is only allowed to be called when [FacetChart.chartDrawn](#method-facetchar
 
 ### Returns
 
-`[float](../main.md#type-float)` — left margin of the central chart area
+`[float](../reference.md#type-float)` — left margin of the central chart area
 
 ---
 ## Method: FacetChart.getFacetValue
@@ -4034,7 +4034,7 @@ Get facet value definition by facetId and facetValueId.
 
 ### See Also
 
-- [FacetValue](../main.md#object-facetvalue)
+- [FacetValue](../reference.md#object-facetvalue)
 
 ---
 ## Method: FacetChart.setZIndexMetric
@@ -4062,7 +4062,7 @@ Sets [FacetChart.autoScrollContent](#attr-facetchartautoscrollcontent) and updat
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| autoScrollContent | [boolean](../main.md#type-boolean) | false | — | whether the chart should automatically show scrollbars when it's size is smaller than the minimum content [width](#attr-facetchartmincontentwidth) or [height](#attr-facetchartmincontentheight). |
+| autoScrollContent | [boolean](../reference.md#type-boolean) | false | — | whether the chart should automatically show scrollbars when it's size is smaller than the minimum content [width](#attr-facetchartmincontentwidth) or [height](#attr-facetchartmincontentheight). |
 
 ---
 ## Method: FacetChart.setPixelsPerGradation
@@ -4074,7 +4074,7 @@ Setter for [FacetChart.pixelsPerGradation](#attr-facetchartpixelspergradation).
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| pixelsPerGradation | [int](../main.md#type-int) | false | — | new [FacetChart.pixelsPerGradation](#attr-facetchartpixelspergradation) value |
+| pixelsPerGradation | [int](../reference.md#type-int) | false | — | new [FacetChart.pixelsPerGradation](#attr-facetchartpixelspergradation) value |
 
 ### Groups
 
@@ -4098,11 +4098,11 @@ This is only allowed to be called when [FacetChart.chartDrawn](#method-facetchar
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| recalc | [boolean](../main.md#type-boolean) | false | — | if false then cached value will be returned, otherwise will be recalculated. |
+| recalc | [boolean](../reference.md#type-boolean) | false | — | if false then cached value will be returned, otherwise will be recalculated. |
 
 ### Returns
 
-`[float](../main.md#type-float)` — the width of the central chart area.
+`[float](../reference.md#type-float)` — the width of the central chart area.
 
 ---
 ## Method: FacetChart.setShowYTicks
@@ -4114,7 +4114,7 @@ Setter for [FacetChart.showYTicks](#attr-facetchartshowyticks).
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| showTicks | [boolean](../main.md#type-boolean) | false | — | new [FacetChart.showYTicks](#attr-facetchartshowyticks) value |
+| showTicks | [boolean](../reference.md#type-boolean) | false | — | new [FacetChart.showYTicks](#attr-facetchartshowyticks) value |
 
 ### Groups
 
@@ -4137,7 +4137,7 @@ For scatter plots only, get a Function from the specified independent variable X
 ## Method: FacetChart.getNearestDrawnValue
 
 ### Description
-Returns rendering information for the data value that is shown nearest to the passed coordinates, as a [DrawnValue](../main_2.md#object-drawnvalue) object.
+Returns rendering information for the data value that is shown nearest to the passed coordinates, as a [DrawnValue](../reference_2.md#object-drawnvalue) object.
 
 Passed X and Y coordinates should be relative to the FacetChart. If neither an X or Y coordinate is passed, both X and Y will use the current [Canvas.getOffsetX](Canvas.md#method-canvasgetoffsetx) and [Canvas.getOffsetY](Canvas.md#method-canvasgetoffsety).
 
@@ -4175,8 +4175,8 @@ If the chart is a [multi-axis chart](#attr-facetchartextraaxismetrics) then this
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| x | [Integer](../main_2.md#type-integer) | true | — | X coordinate. If this parameter is specified, then `y` is a required parameter. |
-| y | [Integer](../main_2.md#type-integer) | true | — | Y coordinate |
+| x | [Integer](../reference_2.md#type-integer) | true | — | X coordinate. If this parameter is specified, then `y` is a required parameter. |
+| y | [Integer](../reference_2.md#type-integer) | true | — | Y coordinate |
 | metric | [String](#type-string) | true | — | metric over which to determine the drawn value |
 
 ### Returns
@@ -4235,7 +4235,7 @@ The `printProperties` argument, if passed, must be passed to any subcomponents o
 
 **Notes on printing**
 
-To print a `FacetChart` for export on IE8 and earlier, it is important to pass [PrintProperties](../main_2.md#object-printproperties) with [printForExport](PrintProperties.md#attr-printpropertiesprintforexport):true:
+To print a `FacetChart` for export on IE8 and earlier, it is important to pass [PrintProperties](../reference_2.md#object-printproperties) with [printForExport](PrintProperties.md#attr-printpropertiesprintforexport):true:
 
 ```
 var exportHTML = chart.getPrintHTML({ printForExport:true });
@@ -4246,11 +4246,11 @@ var exportHTML = chart.getPrintHTML({ printForExport:true });
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | printProperties | [PrintProperties](#type-printproperties) | true | — | properties to configure printing behavior - may be null. |
-| callback | [Callback](../main.md#type-callback) | true | — | optional callback. This is required to handle cases where HTML generation is asynchronous - if a method generates HTML asynchronously, it should return null, and fire the specified callback on completion of HTML generation. The first parameter `HTML` should contain the generated print HTML. The callback is only called if null is returned. Furthermore, the default getPrintHTML() implementation always returns null and fires the callback when a callback is provided. |
+| callback | [Callback](../reference.md#type-callback) | true | — | optional callback. This is required to handle cases where HTML generation is asynchronous - if a method generates HTML asynchronously, it should return null, and fire the specified callback on completion of HTML generation. The first parameter `HTML` should contain the generated print HTML. The callback is only called if null is returned. Furthermore, the default getPrintHTML() implementation always returns null and fires the callback when a callback is provided. |
 
 ### Returns
 
-`[HTMLString](../main.md#type-htmlstring)` — null if the print HTML is being generated asynchronously and/or a callback is provided; otherwise, the direct print HTML for this component (but note that returning direct print HTML is a deprecated feature).
+`[HTMLString](../reference.md#type-htmlstring)` — null if the print HTML is being generated asynchronously and/or a callback is provided; otherwise, the direct print HTML for this component (but note that returning direct print HTML is a deprecated feature).
 
 ### Groups
 
@@ -4264,7 +4264,7 @@ var exportHTML = chart.getPrintHTML({ printForExport:true });
 ### Description
 Fires when the mouse hovers over a color swatch or its label in the legend area of the chart.
 
-The [FacetValue](../main.md#object-facetvalue) that the user is hovering over is provided. If the chart is a [multi-axis chart](#attr-facetchartextraaxismetrics), the [FacetValue](../main.md#object-facetvalue) for the hovered-over metric will also be provided.
+The [FacetValue](../reference.md#object-facetvalue) that the user is hovering over is provided. If the chart is a [multi-axis chart](#attr-facetchartextraaxismetrics), the [FacetValue](../reference.md#object-facetvalue) for the hovered-over metric will also be provided.
 
 ### Parameters
 
@@ -4287,7 +4287,7 @@ Setter for [FacetChart.proportional](#attr-facetchartproportional).
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| proportional | [boolean](../main.md#type-boolean) | false | — | Whether the chart should now use proportional mode. |
+| proportional | [boolean](../reference.md#type-boolean) | false | — | Whether the chart should now use proportional mode. |
 
 ---
 ## Method: FacetChart.getFacet
@@ -4319,7 +4319,7 @@ Setter for [FacetChart.scaleStartColor](#attr-facetchartscalestartcolor).
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| scaleStartColor | [CSSColor](../main_2.md#type-csscolor) | false | — | The new start color for the color scale. |
+| scaleStartColor | [CSSColor](../reference_2.md#type-csscolor) | false | — | The new start color for the color scale. |
 
 ### Groups
 
@@ -4335,7 +4335,7 @@ This is only allowed to be called when [FacetChart.chartDrawn](#method-facetchar
 
 ### Returns
 
-`[float](../main.md#type-float)` — The top coordinate of the central chart area
+`[float](../reference.md#type-float)` — The top coordinate of the central chart area
 
 ---
 ## Method: FacetChart.setShowMinorTicks
@@ -4347,7 +4347,7 @@ Setter for [FacetChart.showMinorTicks](#attr-facetchartshowminorticks).
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| showMinorTicks | [boolean](../main.md#type-boolean) | false | — | new [FacetChart.showMinorTicks](#attr-facetchartshowminorticks) value |
+| showMinorTicks | [boolean](../reference.md#type-boolean) | false | — | new [FacetChart.showMinorTicks](#attr-facetchartshowminorticks) value |
 
 ### Groups
 
@@ -4361,7 +4361,7 @@ Returns the X coordinate where the passed data value either was or would be draw
 
 This is only allowed to be called after [FacetChart.chartDrawn](#method-facetchartchartdrawn) fires.
 
-If the [chartType](#attr-facetchartcharttype) is "Bar", "Bubble", or "Scatter" then the `value` argument should be a number. For other rectangular charts, this method expects a [FacetValueMap](../main.md#object-facetvaluemap) that uniquely identifies the data cell whose X-axis coordinate is to be retrieved.
+If the [chartType](#attr-facetchartcharttype) is "Bar", "Bubble", or "Scatter" then the `value` argument should be a number. For other rectangular charts, this method expects a [FacetValueMap](../reference.md#object-facetvaluemap) that uniquely identifies the data cell whose X-axis coordinate is to be retrieved.
 
 Note that when [canZoom](#attr-facetchartcanzoom) is enabled, this API is valid only for data values between [zoomStartValue](#attr-facetchartzoomstartvalue) and [zoomEndValue](#attr-facetchartzoomendvalue).
 
@@ -4369,11 +4369,11 @@ Note that when [canZoom](#attr-facetchartcanzoom) is enabled, this API is valid 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| value | [float](../main.md#type-float)|[FacetValueMap](#type-facetvaluemap) | false | — | the value to be drawn. |
+| value | [float](../reference.md#type-float)|[FacetValueMap](#type-facetvaluemap) | false | — | the value to be drawn. |
 
 ### Returns
 
-`[Float](../main.md#type-float)` — the X coordinate where the passed data value would be drawn; or null if the passed `FacetValueMap` does not identify a currently-drawn data cell.
+`[Float](../reference.md#type-float)` — the X coordinate where the passed data value would be drawn; or null if the passed `FacetValueMap` does not identify a currently-drawn data cell.
 
 ---
 ## Method: FacetChart.setShowXTicks
@@ -4385,7 +4385,7 @@ Setter for [FacetChart.showXTicks](#attr-facetchartshowxticks).
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| showTicks | [boolean](../main.md#type-boolean) | false | — | new [FacetChart.showXTicks](#attr-facetchartshowxticks) value |
+| showTicks | [boolean](../reference.md#type-boolean) | false | — | new [FacetChart.showXTicks](#attr-facetchartshowxticks) value |
 
 ### Groups
 
@@ -4395,7 +4395,7 @@ Setter for [FacetChart.showXTicks](#attr-facetchartshowxticks).
 ## Method: FacetChart.getDrawnValuesAtPoint
 
 ### Description
-Returns an array of [DrawnValue](../main_2.md#object-drawnvalue) objects for the data values of each metric that are shown nearest to the passed coordinates, but only if they're under the given coordinates, or under the current mouse event coordinates if no coordinates are passed. This method is similar to [FacetChart.getNearestDrawnValues](#method-facetchartgetnearestdrawnvalues), but DrawnValues are only included in the returned array if they're under the coordinates.
+Returns an array of [DrawnValue](../reference_2.md#object-drawnvalue) objects for the data values of each metric that are shown nearest to the passed coordinates, but only if they're under the given coordinates, or under the current mouse event coordinates if no coordinates are passed. This method is similar to [FacetChart.getNearestDrawnValues](#method-facetchartgetnearestdrawnvalues), but DrawnValues are only included in the returned array if they're under the coordinates.
 
 See [FacetChart.drawnValueContainsPoint](#method-facetchartdrawnvaluecontainspoint) for the criteria that determine whether a DrawnValue is under (contains) the coordinates.
 
@@ -4403,8 +4403,8 @@ See [FacetChart.drawnValueContainsPoint](#method-facetchartdrawnvaluecontainspoi
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| x | [Integer](../main_2.md#type-integer) | true | — | X coordinate. If this parameter is specified, then `y` is a required parameter. |
-| y | [Integer](../main_2.md#type-integer) | true | — | Y coordinate |
+| x | [Integer](../reference_2.md#type-integer) | true | — | X coordinate. If this parameter is specified, then `y` is a required parameter. |
+| y | [Integer](../reference_2.md#type-integer) | true | — | Y coordinate |
 
 ### Returns
 
@@ -4420,7 +4420,7 @@ Setter for [FacetChart.scaleEndColor](#attr-facetchartscaleendcolor).
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| scaleEndColor | [CSSColor](../main_2.md#type-csscolor) | false | — | The new end color for the color scale. |
+| scaleEndColor | [CSSColor](../reference_2.md#type-csscolor) | false | — | The new end color for the color scale. |
 
 ### Groups
 
@@ -4432,9 +4432,9 @@ Setter for [FacetChart.scaleEndColor](#attr-facetchartscaleendcolor).
 ### Description
 Fires when the user clicks on the legend area of the chart.
 
-If the user specifically clicks on a color swatch or it's label, the [FacetValue](../main.md#object-facetvalue) clicked on will be provided.
+If the user specifically clicks on a color swatch or it's label, the [FacetValue](../reference.md#object-facetvalue) clicked on will be provided.
 
-If the chart is a [multi-axis chart](#attr-facetchartextraaxismetrics), the [FacetValue](../main.md#object-facetvalue) for the clicked-on metric will also be provided.
+If the chart is a [multi-axis chart](#attr-facetchartextraaxismetrics), the [FacetValue](../reference.md#object-facetvalue) for the clicked-on metric will also be provided.
 
 ### Parameters
 
@@ -4465,7 +4465,7 @@ Note that this method is simply an override point, since it has no default imple
 
 ### Returns
 
-`[CSSColor](../main_2.md#type-csscolor)` — color to use for data lines or null to default to [FacetChart.getDataColor](#method-facetchartgetdatacolor)
+`[CSSColor](../reference_2.md#type-csscolor)` — color to use for data lines or null to default to [FacetChart.getDataColor](#method-facetchartgetdatacolor)
 
 ### See Also
 
@@ -4480,7 +4480,7 @@ Returns the [FacetChart.minContentHeight](#attr-facetchartmincontentheight) for 
 
 ### Returns
 
-`[int](../main.md#type-int)` — Min content height
+`[int](../reference.md#type-int)` — Min content height
 
 ---
 ## Method: FacetChart.setMinorTickLength
@@ -4492,7 +4492,7 @@ Setter for [FacetChart.minorTickLength](#attr-facetchartminorticklength).
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| minorTickLength | [int](../main.md#type-int) | false | — | new [FacetChart.minorTickLength](#attr-facetchartminorticklength) value |
+| minorTickLength | [int](../reference.md#type-int) | false | — | new [FacetChart.minorTickLength](#attr-facetchartminorticklength) value |
 
 ### Groups
 
@@ -4529,13 +4529,13 @@ This is only allowed to be called when [FacetChart.chartDrawn](#method-facetchar
 ## Method: FacetChart.setAutoScrollDataApproach
 
 ### Description
-Sets [AutoScrollDataApproach](../main.md#type-autoscrolldataapproach) and updates the chart.
+Sets [AutoScrollDataApproach](../reference.md#type-autoscrolldataapproach) and updates the chart.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| autoScrollDataApproach | [AutoScrollDataApproach](../main.md#type-autoscrolldataapproach) | false | — | what should drive horizontal expansion of the chart? |
+| autoScrollDataApproach | [AutoScrollDataApproach](../reference.md#type-autoscrolldataapproach) | false | — | what should drive horizontal expansion of the chart? |
 
 ---
 ## Method: FacetChart.getChartRadius
@@ -4549,7 +4549,7 @@ This is only allowed to be called when [FacetChart.chartDrawn](#method-facetchar
 
 ### Returns
 
-`[float](../main.md#type-float)` — the radius for radar charts and pie charts.
+`[float](../reference.md#type-float)` — the radius for radar charts and pie charts.
 
 ---
 ## Method: FacetChart.setMajorTickGradations
@@ -4609,7 +4609,7 @@ Setter for [FacetChart.useMultiplePointShapes](#attr-facetchartusemultiplepoints
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| useMultiplePointShapes | [boolean](../main.md#type-boolean) | false | — | Whether the chart should now use multiple shapes to show data points. |
+| useMultiplePointShapes | [boolean](../reference.md#type-boolean) | false | — | Whether the chart should now use multiple shapes to show data points. |
 
 ### Groups
 
@@ -4619,13 +4619,13 @@ Setter for [FacetChart.useMultiplePointShapes](#attr-facetchartusemultiplepoints
 ## Method: FacetChart.setDataLineType
 
 ### Description
-Method to change the current [dataLineType](../main.md#type-charttype). Will redraw the chart if drawn.
+Method to change the current [dataLineType](../reference.md#type-charttype). Will redraw the chart if drawn.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| dataLineType | [DataLineType](../main_2.md#type-datalinetype) | false | — | ow to draw lines between adjacent data points in Line and Scatter charts |
+| dataLineType | [DataLineType](../reference_2.md#type-datalinetype) | false | — | ow to draw lines between adjacent data points in Line and Scatter charts |
 
 ---
 ## Method: FacetChart.formatFacetValueId
@@ -4659,7 +4659,7 @@ When [FacetChart.showDataPoints](#attr-facetchartshowdatapoints) is true, fires 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| value | [float](../main.md#type-float) | false | — | the value at the point |
+| value | [float](../reference.md#type-float) | false | — | the value at the point |
 | record | [Record](#type-record) | false | — | the record at the point |
 | metricId | [String](#type-string) | false | — | the ID of the metric at the point |
 
@@ -4667,7 +4667,7 @@ When [FacetChart.showDataPoints](#attr-facetchartshowdatapoints) is true, fires 
 ## Method: FacetChart.setStacked
 
 ### Description
-Method to change [stacked](#attr-facetchartstacked). Use null to apply a default value for the current [chartType](../main.md#type-charttype).
+Method to change [stacked](#attr-facetchartstacked). Use null to apply a default value for the current [chartType](../reference.md#type-charttype).
 
 ### Parameters
 
@@ -4709,7 +4709,7 @@ See [FacetChart.chartBackgroundDrawn](#method-facetchartchartbackgrounddrawn) fo
 ### Description
 Return the text string to display along the axes for [gradation labels](#attr-facetchartgradationlabelproperties) or facet value labels given the raw metric value or facet value id.
 
-Note that this formatter will be called for the gradation labels on an axis, including those generated for [LabelCollapseMode](../main.md#type-labelcollapsemode) "numeric". It also will be called for each facet value along the linear axes of a chart (vertical or horizontal) when [LabelCollapseMode](../main.md#type-labelcollapsemode) is _not_ active, unless a [FacetValue.title](FacetValue.md#attr-facetvaluetitle) has been specified (in [Facet.values](Facet.md#attr-facetvalues)) or the raw value is a string and [FacetChart.formatStringFacetValueIds](#attr-facetchartformatstringfacetvalueids) is false.
+Note that this formatter will be called for the gradation labels on an axis, including those generated for [LabelCollapseMode](../reference.md#type-labelcollapsemode) "numeric". It also will be called for each facet value along the linear axes of a chart (vertical or horizontal) when [LabelCollapseMode](../reference.md#type-labelcollapsemode) is _not_ active, unless a [FacetValue.title](FacetValue.md#attr-facetvaluetitle) has been specified (in [Facet.values](Facet.md#attr-facetvalues)) or the raw value is a string and [FacetChart.formatStringFacetValueIds](#attr-facetchartformatstringfacetvalueids) is false.
 
 Note that the rendering of values in hovers or via [FacetChart.showDataValues](#attr-facetchartshowdatavalues) is handled by [FacetChart.formatDataValue](#method-facetchartformatdatavalue).
 
@@ -4718,7 +4718,7 @@ Note that the rendering of values in hovers or via [FacetChart.showDataValues](#
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | value | [Any](#type-any) | false | — | raw value of the metric or facet value id |
-| forHorizontalAxis | [boolean](../main.md#type-boolean) | false | — | whether the raw value is for the horizontal/x-axis (true) or for the vertical/y-axis (false) |
+| forHorizontalAxis | [boolean](../reference.md#type-boolean) | false | — | whether the raw value is for the horizontal/x-axis (true) or for the vertical/y-axis (false) |
 
 ### Returns
 
@@ -4737,7 +4737,7 @@ Note that the rendering of values in hovers or via [FacetChart.showDataValues](#
 ## Method: FacetChart.valueClick
 
 ### Description
-Fires when a data value is clicked, and provides information about the data value that was clicked as a [DrawnValue](../main_2.md#object-drawnvalue) object.
+Fires when a data value is clicked, and provides information about the data value that was clicked as a [DrawnValue](../reference_2.md#object-drawnvalue) object.
 
 Specifically, this fires for clicks on pie slices, bars or columns, areas, lines or points (in a Bubble or Scatter plot).
 
@@ -4755,7 +4755,7 @@ If you want to create behaviors for clicking or moving _near_ shapes without req
 ## Method: FacetChart.setShowScatterLines
 
 ### Description
-Method to change the current [showScatterLines](../main.md#type-charttype). Will redraw the chart if drawn.
+Method to change the current [showScatterLines](../reference.md#type-charttype). Will redraw the chart if drawn.
 
 ### Parameters
 
@@ -4779,7 +4779,7 @@ Additional DrawItems added in this method will appear underneath data elements s
 ### Description
 Returns the minimum cluster size (for clustered charts), or minimum bar thickness (for histogram or stacked charts) for the specified [data label\\n facet](#method-facetchartgetdatalabelfacet) value. Only applicable to a column, bar, or histogram chart. No default implementation. Both this minimum and [FacetChart.minBarThickness](#attr-facetchartminbarthickness) are used together to determine the effective minimum of the cluster or bar stack.
 
-Per-facet-value minimum cluster sizes aren't supported for [multi-axis](../main_2.md#object-metricsettings) charts, in which multiple chart types are overlaid onto the same chart.
+Per-facet-value minimum cluster sizes aren't supported for [multi-axis](../reference_2.md#object-metricsettings) charts, in which multiple chart types are overlaid onto the same chart.
 
 Note that this method is simply an override point, since it has no default implementation.
 
@@ -4792,7 +4792,7 @@ Note that this method is simply an override point, since it has no default imple
 
 ### Returns
 
-`[int](../main.md#type-int)` — minimum for the specified cluster or bar stack
+`[int](../reference.md#type-int)` — minimum for the specified cluster or bar stack
 
 ### Groups
 
@@ -4825,7 +4825,7 @@ Must return a color in the format of a leading hash (#) plus 6 hexadecimal digit
 
 ### Returns
 
-`[CSSColor](../main_2.md#type-csscolor)` — —
+`[CSSColor](../reference_2.md#type-csscolor)` — —
 
 ### See Also
 
@@ -4850,7 +4850,7 @@ Setter for [FacetChart.showRegressionLine](#attr-facetchartshowregressionline).
 ### Description
 Calculate the median of the data over a single metric. See [http://en.wikipedia.org/wiki/Median](http://en.wikipedia.org/wiki/Median).
 
-The first argument, criteria, determines which metric is used to calculate the median. The criteria may be a String that is the "id" of some [FacetValue](../main.md#object-facetvalue) of the metric facet, or a [FacetValueMap](../main.md#object-facetvaluemap) that contains an entry for the metric facet, or null to use the [FacetChart.valueProperty](#attr-facetchartvalueproperty). A FacetValueMap criteria may also be used to restrict the calculation to a slice of the data.
+The first argument, criteria, determines which metric is used to calculate the median. The criteria may be a String that is the "id" of some [FacetValue](../reference.md#object-facetvalue) of the metric facet, or a [FacetValueMap](../reference.md#object-facetvaluemap) that contains an entry for the metric facet, or null to use the [FacetChart.valueProperty](#attr-facetchartvalueproperty). A FacetValueMap criteria may also be used to restrict the calculation to a slice of the data.
 
 ### Parameters
 
@@ -4860,7 +4860,7 @@ The first argument, criteria, determines which metric is used to calculate the m
 
 ### Returns
 
-`[Float](../main.md#type-float)` — the median of the data values
+`[Float](../reference.md#type-float)` — the median of the data values
 
 ---
 ## Method: FacetChart.getDataLabelFacet
@@ -4902,7 +4902,7 @@ Note that the [FacetChart.zoomStartValue](#attr-facetchartzoomstartvalue) and [F
 ## Method: FacetChart.setFilled
 
 ### Description
-Method to change [filled](#attr-facetchartfilled). Use null to apply a default value for the current [chartType](../main.md#type-charttype).
+Method to change [filled](#attr-facetchartfilled). Use null to apply a default value for the current [chartType](../reference.md#type-charttype).
 
 ### Parameters
 
@@ -4940,13 +4940,13 @@ While data is being re-loaded after a call to `invalidateCache()`, the widget is
 ## Method: FacetChart.setRegressionLineType
 
 ### Description
-Setter for [RegressionLineType](../main_2.md#type-regressionlinetype).
+Setter for [RegressionLineType](../reference_2.md#type-regressionlinetype).
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| regressionLineType | [RegressionLineType](../main_2.md#type-regressionlinetype) | false | — | New value for this.regressionLineType |
+| regressionLineType | [RegressionLineType](../reference_2.md#type-regressionlinetype) | false | — | New value for this.regressionLineType |
 
 ---
 ## Method: FacetChart.getNumDataPoints
@@ -4962,7 +4962,7 @@ Count the number of data points.
 
 ### Returns
 
-`[Integer](../main_2.md#type-integer)` — the number of data values
+`[Integer](../reference_2.md#type-integer)` — the number of data values
 
 ---
 ## Method: FacetChart.getPointHoverHTML
@@ -4974,13 +4974,13 @@ When [FacetChart.showDataPoints](#attr-facetchartshowdatapoints) is true and the
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| value | [float](../main.md#type-float) | false | — | the value at the point |
+| value | [float](../reference.md#type-float) | false | — | the value at the point |
 | record | [Record](#type-record) | false | — | the record at the point |
 | metricId | [String](#type-string) | false | — | the ID of the metric at the point |
 
 ### Returns
 
-`[HTMLString](../main.md#type-htmlstring)` — String of HTML to show in a hover
+`[HTMLString](../reference.md#type-htmlstring)` — String of HTML to show in a hover
 
 ---
 ## Method: FacetChart.getLegendHoverHTML
@@ -4988,7 +4988,7 @@ When [FacetChart.showDataPoints](#attr-facetchartshowdatapoints) is true and the
 ### Description
 Called when the mouse hovers over a color swatch or its label in the legend area of the chart.
 
-The [FacetValue](../main.md#object-facetvalue) that the user is hovering over is provided. If the chart is a [multi-axis chart](#attr-facetchartextraaxismetrics), the [FacetValue](../main.md#object-facetvalue) for the hovered-over metric will also be provided.
+The [FacetValue](../reference.md#object-facetvalue) that the user is hovering over is provided. If the chart is a [multi-axis chart](#attr-facetchartextraaxismetrics), the [FacetValue](../reference.md#object-facetvalue) for the hovered-over metric will also be provided.
 
 ### Parameters
 
@@ -4999,7 +4999,7 @@ The [FacetValue](../main.md#object-facetvalue) that the user is hovering over is
 
 ### Returns
 
-`[HTMLString](../main.md#type-htmlstring)` — hover text to be shown. Return null to avoid a hover being shown
+`[HTMLString](../reference.md#type-htmlstring)` — hover text to be shown. Return null to avoid a hover being shown
 
 ### Groups
 
@@ -5021,7 +5021,7 @@ Setter for [FacetChart.regressionPolynomialDegree](#attr-facetchartregressionpol
 ## Method: FacetChart.getDrawnValueAtPoint
 
 ### Description
-Returns a [DrawnValue](../main_2.md#object-drawnvalue) object for the data value that is shown nearest to the passed coordinates only if it's under the given coordinates, or under the current mouse event coordinates if no coordinates are passed. This method is similar to [FacetChart.getNearestDrawnValue](#method-facetchartgetnearestdrawnvalue), but the DrawnValue is only returned if it's under the coordinates.
+Returns a [DrawnValue](../reference_2.md#object-drawnvalue) object for the data value that is shown nearest to the passed coordinates only if it's under the given coordinates, or under the current mouse event coordinates if no coordinates are passed. This method is similar to [FacetChart.getNearestDrawnValue](#method-facetchartgetnearestdrawnvalue), but the DrawnValue is only returned if it's under the coordinates.
 
 See [FacetChart.drawnValueContainsPoint](#method-facetchartdrawnvaluecontainspoint) for the criteria that determine whether a DrawnValue is under (contains) the coordinates.
 
@@ -5029,8 +5029,8 @@ See [FacetChart.drawnValueContainsPoint](#method-facetchartdrawnvaluecontainspoi
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| x | [Integer](../main_2.md#type-integer) | true | — | X coordinate. If this parameter is specified, then `y` is a required parameter. |
-| y | [Integer](../main_2.md#type-integer) | true | — | Y coordinate |
+| x | [Integer](../reference_2.md#type-integer) | true | — | X coordinate. If this parameter is specified, then `y` is a required parameter. |
+| y | [Integer](../reference_2.md#type-integer) | true | — | Y coordinate |
 | metric | [String](#type-string) | true | — | metric over which to determine the drawn value |
 
 ### Returns
@@ -5043,7 +5043,7 @@ See [FacetChart.drawnValueContainsPoint](#method-facetchartdrawnvaluecontainspoi
 ### Description
 Calculate the range of the data from a single metric.
 
-The first argument, criteria, determines which metric is used to calculate the range. The criteria may be a String that is the "id" of some [FacetValue](../main.md#object-facetvalue) of the metric facet, or a [FacetValueMap](../main.md#object-facetvaluemap) that contains an entry for the metric facet, or null to use the [FacetChart.valueProperty](#attr-facetchartvalueproperty). A FacetValueMap criteria may also be used to restrict the calculation to a slice of the data.
+The first argument, criteria, determines which metric is used to calculate the range. The criteria may be a String that is the "id" of some [FacetValue](../reference.md#object-facetvalue) of the metric facet, or a [FacetValueMap](../reference.md#object-facetvaluemap) that contains an entry for the metric facet, or null to use the [FacetChart.valueProperty](#attr-facetchartvalueproperty). A FacetValueMap criteria may also be used to restrict the calculation to a slice of the data.
 
 ### Parameters
 
@@ -5053,7 +5053,7 @@ The first argument, criteria, determines which metric is used to calculate the r
 
 ### Returns
 
-`[Float](../main.md#type-float)` — the range of the data values
+`[Float](../reference.md#type-float)` — the range of the data values
 
 ---
 ## Method: FacetChart.fetchData
@@ -5065,7 +5065,7 @@ For a discussion of the various filtering and criteria-management APIs and when 
 
 When `fetchData()` is first called, if data has not already been provided via [setData()](ListGrid_2.md#method-listgridsetdata), this method will create a [ResultSet](ResultSet.md#class-resultset), which will be configured based on component settings such as [DataBoundComponent.fetchOperation](DataBoundComponent.md#attr-databoundcomponentfetchoperation) and [DataBoundComponent.dataPageSize](DataBoundComponent.md#attr-databoundcomponentdatapagesize), as well as the general purpose [ListGrid.dataProperties](ListGrid_1.md#attr-listgriddataproperties). The created ResultSet will automatically send a DSRequest to retrieve data from [listGrid.dataSource](ListGrid_1.md#attr-listgriddatasource), and from then on will automatically manage paging through large datasets, as well as performing filtering and sorting operations inside the browser when possible - see the [ResultSet](ResultSet.md#class-resultset) docs for details.
 
-**NOTE:** do not use **both** [autoFetchData:true](DataBoundComponent.md#attr-databoundcomponentautofetchdata) **and** a call to `fetchData()` - this may result in two DSRequests to fetch data. Use either [autoFetchData](DataBoundComponent.md#attr-databoundcomponentautofetchdata) and [Criteria](../main_2.md#type-criteria) **or** a manual call to fetchData() passing criteria.
+**NOTE:** do not use **both** [autoFetchData:true](DataBoundComponent.md#attr-databoundcomponentautofetchdata) **and** a call to `fetchData()` - this may result in two DSRequests to fetch data. Use either [autoFetchData](DataBoundComponent.md#attr-databoundcomponentautofetchdata) and [Criteria](../reference_2.md#type-criteria) **or** a manual call to fetchData() passing criteria.
 
 Whether a ResultSet was automatically created or provided via [setData()](ListGrid_2.md#method-listgridsetdata), subsequent calls to fetchData() will simply call [ResultSet.setCriteria](ResultSet.md#method-resultsetsetcriteria).
 
@@ -5073,15 +5073,15 @@ Changes to criteria may or may not result in a DSRequest to the server due to [c
 
 If you need to force data to be re-fetched, you can call [invalidateCache()](ListGrid_2.md#method-listgridinvalidatecache) and new data will automatically be fetched from the server using the current criteria and sort direction. **NOTE:** when using `invalidateCache()` there is no need to **also** call `fetchData()` and in fact this could produce unexpected results.
 
-This method takes an optional callback parameter (set to a [DSCallback](../main_2.md#type-dscallback)) to fire when the fetch completes. Note that this callback will not fire if no server fetch is performed. In this case the data is updated synchronously, so as soon as this method completes you can interact with the new data. If necessary, you can use [willFetchData()](DataBoundComponent.md#method-databoundcomponentwillfetchdata) to determine whether or not a server fetch will occur when `fetchData()` is called with new criteria.
+This method takes an optional callback parameter (set to a [DSCallback](../reference_2.md#type-dscallback)) to fire when the fetch completes. Note that this callback will not fire if no server fetch is performed. In this case the data is updated synchronously, so as soon as this method completes you can interact with the new data. If necessary, you can use [willFetchData()](DataBoundComponent.md#method-databoundcomponentwillfetchdata) to determine whether or not a server fetch will occur when `fetchData()` is called with new criteria.
 
 In addition to the callback parameter for this method, developers can use [dataArrived()](ListGrid_2.md#method-listgriddataarrived) to be notified every time data is loaded.
 
-By default, this method assumes a [TextMatchStyle](../main_2.md#type-textmatchstyle) of "exact"; that can be overridden by supplying a different value in the requestProperties parameter. See [DataBoundComponent.willFetchData](DataBoundComponent.md#method-databoundcomponentwillfetchdata);
+By default, this method assumes a [TextMatchStyle](../reference_2.md#type-textmatchstyle) of "exact"; that can be overridden by supplying a different value in the requestProperties parameter. See [DataBoundComponent.willFetchData](DataBoundComponent.md#method-databoundcomponentwillfetchdata);
 
 **Changing the request properties**
 
-Changes to [TextMatchStyle](../main_2.md#type-textmatchstyle) made via `requestProperties` will be honored in combination with the fetch criteria, possibly invalidating cache and triggering a server request if needed, as documented for [willFetchData()](DataBoundComponent.md#method-databoundcomponentwillfetchdata). In contrast, changes to [operationId](DSRequest.md#attr-dsrequestoperationid) in the request properties will cause the [ResultSet](ResultSet.md#class-resultset) or [ResultTree](ResultTree.md#class-resulttree) to be rebuilt, always refetching from the server. However, changes to other request properties after the initial fetch won't be detected, and no fetch will get triggered based on that new request context.
+Changes to [TextMatchStyle](../reference_2.md#type-textmatchstyle) made via `requestProperties` will be honored in combination with the fetch criteria, possibly invalidating cache and triggering a server request if needed, as documented for [willFetchData()](DataBoundComponent.md#method-databoundcomponentwillfetchdata). In contrast, changes to [operationId](DSRequest.md#attr-dsrequestoperationid) in the request properties will cause the [ResultSet](ResultSet.md#class-resultset) or [ResultTree](ResultTree.md#class-resulttree) to be rebuilt, always refetching from the server. However, changes to other request properties after the initial fetch won't be detected, and no fetch will get triggered based on that new request context.
 
 To pick up such changes, we recommend that you call [setData(\[\])](#method-facetchartsetdata) (passing an empty array to ensure the data model is cleared), and then call this method to fetch again. If you try to do it by calling [invalidateCache()](ListGrid_2.md#method-listgridinvalidatecache), you may see duplicate fetches if you haven't already updated the data context by calling this method with the new request properties, and fail to do so before the component is [redrawn](Canvas.md#method-canvasredraw).
 
@@ -5089,8 +5089,8 @@ To pick up such changes, we recommend that you call [setData(\[\])](#method-face
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| criteria | [Criteria](../main_2.md#type-criteria) | true | — | Search criteria. If a [DynamicForm](DynamicForm.md#class-dynamicform) is passed in as this argument instead of a raw criteria object, will be derived by calling [DynamicForm.getValuesAsCriteria](DynamicForm.md#method-dynamicformgetvaluesascriteria) |
-| callback | [DSCallback](../main_2.md#type-dscallback) | true | — | callback to invoke when a fetch is complete. Fires only if server contact was required |
+| criteria | [Criteria](../reference_2.md#type-criteria) | true | — | Search criteria. If a [DynamicForm](DynamicForm.md#class-dynamicform) is passed in as this argument instead of a raw criteria object, will be derived by calling [DynamicForm.getValuesAsCriteria](DynamicForm.md#method-dynamicformgetvaluesascriteria) |
+| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke when a fetch is complete. Fires only if server contact was required |
 | requestProperties | [DSRequest](#type-dsrequest) | true | — | additional properties to set on the DSRequest that will be issued |
 
 ### Groups
@@ -5109,23 +5109,23 @@ Returns the Y coordinate where the passed data value either was or would be draw
 
 This is only allowed to be called after [FacetChart.chartDrawn](#method-facetchartchartdrawn) fires.
 
-If the [chartType](#attr-facetchartcharttype) is "Area", "Bubble", "Column", "Histogram", "Line", or "Scatter" then the `value` argument should be a number. For "Bar" charts this method expects a [FacetValueMap](../main.md#object-facetvaluemap) that uniquely identifies the data cell whose Y-axis coordinate is to be retrieved.
+If the [chartType](#attr-facetchartcharttype) is "Area", "Bubble", "Column", "Histogram", "Line", or "Scatter" then the `value` argument should be a number. For "Bar" charts this method expects a [FacetValueMap](../reference.md#object-facetvaluemap) that uniquely identifies the data cell whose Y-axis coordinate is to be retrieved.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| value | [float](../main.md#type-float)|[FacetValueMap](#type-facetvaluemap) | false | — | the value to be drawn. |
+| value | [float](../reference.md#type-float)|[FacetValueMap](#type-facetvaluemap) | false | — | the value to be drawn. |
 
 ### Returns
 
-`[Float](../main.md#type-float)` — the Y coordinate where the passed data value would be drawn.
+`[Float](../reference.md#type-float)` — the Y coordinate where the passed data value would be drawn.
 
 ---
 ## Method: FacetChart.drawnValueContainsPoint
 
 ### Description
-Returns whether a given [DrawnValue](../main_2.md#object-drawnvalue) contains a point. The point's X and Y coordinates may be passed into this method, or, if unspecified, the coordinates used are the current mouse event coordinates.
+Returns whether a given [DrawnValue](../reference_2.md#object-drawnvalue) contains a point. The point's X and Y coordinates may be passed into this method, or, if unspecified, the coordinates used are the current mouse event coordinates.
 
 For Area, Bubble, Line, Radar, and Scatter charts, a DrawnValue is considered to contain a point if the Euclidean distance from the DrawnValue's center ([x](DrawnValue.md#attr-drawnvaluex), [y](DrawnValue.md#attr-drawnvaluey)) to the point is less than [this.dataPointSize](#attr-facetchartdatapointsize). For Pie charts, the DrawnValue is considered to contain a point if the point is within the pie slice. Similarly, for Doughnut charts, the DrawnValue is considered to contain a point if the point is within the pie slice and not in the doughnut hole. For Bar and Column charts, the DrawnValue is considered to contain a point if the point is within the bar or column, respectively. Note that for stacked Bar and Column charts, the point must also be in the stacked portion as opposed to anywhere within the bar or column.
 
@@ -5134,8 +5134,8 @@ For Area, Bubble, Line, Radar, and Scatter charts, a DrawnValue is considered to
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | drawnValue | [DrawnValue](#type-drawnvalue) | false | — | the DrawnValue to check. The DrawnValue must be a valid DrawnValue from this chart. |
-| x | [Integer](../main_2.md#type-integer) | true | — | X coordinate of the point. If this parameter is specified, then `y` is a required parameter. |
-| y | [Integer](../main_2.md#type-integer) | true | — | Y coordinate of the point |
+| x | [Integer](../reference_2.md#type-integer) | true | — | X coordinate of the point. If this parameter is specified, then `y` is a required parameter. |
+| y | [Integer](../reference_2.md#type-integer) | true | — | Y coordinate of the point |
 
 ### Returns
 
@@ -5177,7 +5177,7 @@ This is only allowed to be called when [FacetChart.chartDrawn](#method-facetchar
 ## Method: FacetChart.setChartType
 
 ### Description
-Method to change the current [chartType](../main.md#type-charttype). Will redraw the chart if drawn. Will use default settings for the new chart type for [stacked](#attr-facetchartstacked) and [filled](#attr-facetchartfilled) if those values are null.
+Method to change the current [chartType](../reference.md#type-charttype). Will redraw the chart if drawn. Will use default settings for the new chart type for [stacked](#attr-facetchartstacked) and [filled](#attr-facetchartfilled) if those values are null.
 
 Note that for [multi-axis](#attr-facetchartextraaxismetrics) charts this method changes the `chartType` for the main value axis only.
 
@@ -5185,7 +5185,7 @@ Note that for [multi-axis](#attr-facetchartextraaxismetrics) charts this method 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| chartType | [ChartType](../main.md#type-charttype) | false | — | new chart type |
+| chartType | [ChartType](../reference.md#type-charttype) | false | — | new chart type |
 
 ### Groups
 
@@ -5197,17 +5197,17 @@ Note that for [multi-axis](#attr-facetchartextraaxismetrics) charts this method 
 ### Description
 Calculate the standard deviation of the data from a single metric. See [http://en.wikipedia.org/wiki/Standard\_deviation](http://en.wikipedia.org/wiki/Standard_deviation).
 
-The first argument, criteria, determines which metric is used to calculate the standard deviation. The criteria may be a String that is the "id" of some [FacetValue](../main.md#object-facetvalue) of the metric facet, or a [FacetValueMap](../main.md#object-facetvaluemap) that contains an entry for the metric facet, or null to use the [FacetChart.valueProperty](#attr-facetchartvalueproperty). A FacetValueMap criteria may also be used to restrict the calculation to a slice of the data.
+The first argument, criteria, determines which metric is used to calculate the standard deviation. The criteria may be a String that is the "id" of some [FacetValue](../reference.md#object-facetvalue) of the metric facet, or a [FacetValueMap](../reference.md#object-facetvaluemap) that contains an entry for the metric facet, or null to use the [FacetChart.valueProperty](#attr-facetchartvalueproperty). A FacetValueMap criteria may also be used to restrict the calculation to a slice of the data.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | criteria | [String](#type-string)|[FacetValueMap](#type-facetvaluemap) | false | — | the "id" of a metric facet value, or a set of mappings describing the data over which to calculate, or null |
-| population | [boolean](../main.md#type-boolean) | false | — | false to calculate a sample standard deviation, true to calculate a population standard deviation |
+| population | [boolean](../reference.md#type-boolean) | false | — | false to calculate a sample standard deviation, true to calculate a population standard deviation |
 
 ### Returns
 
-`[Float](../main.md#type-float)` — the standard deviation of the data values
+`[Float](../reference.md#type-float)` — the standard deviation of the data values
 
 ---

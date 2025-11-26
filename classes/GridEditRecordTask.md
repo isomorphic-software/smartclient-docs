@@ -1,6 +1,6 @@
 # GridEditRecordTask Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -26,7 +26,7 @@ Note that the record to be matched must already be loaded in the grid - no fetch
 ### Description
 Initial values for a new edit record.
 
-Data values prefixed with "$" will be treated as a [TaskInputExpression](../main_2.md#type-taskinputexpression) excluding "$input" and "$inputRecord" references.
+Data values prefixed with "$" will be treated as a [TaskInputExpression](../reference_2.md#type-taskinputexpression) excluding "$input" and "$inputRecord" references.
 
 **Flags**: IR
 
@@ -34,7 +34,7 @@ Data values prefixed with "$" will be treated as a [TaskInputExpression](../main
 ## Attr: GridEditRecordTask.editFirstRecord
 
 ### Description
-When neither [GridEditRecordTask.initialValues](#attr-grideditrecordtaskinitialvalues) nor [Criteria](../main_2.md#type-criteria) are provided should the first record in the grid be edited? If not set, a new record is added.
+When neither [GridEditRecordTask.initialValues](#attr-grideditrecordtaskinitialvalues) nor [Criteria](../reference_2.md#type-criteria) are provided should the first record in the grid be edited? If not set, a new record is added.
 
 **Flags**: IR
 
@@ -44,7 +44,7 @@ When neither [GridEditRecordTask.initialValues](#attr-grideditrecordtaskinitialv
 ### Description
 Criteria (including AdvancedCriteria) used to locate the record to be edited. If criteria matches more than one record, the first record is edited.
 
-Data values in this criteria prefixed with "$" will be treated as dynamic expressions which can access the inputs to this task as $input - see [TaskInputExpression](../main_2.md#type-taskinputexpression). Specifically, this means that for simple criteria, any property value that is a String and is prefixed with "$" will be assumed to be an expression, and for AdvancedCriteria, the same treatment will be applied to [Criterion.value](Criterion.md#attr-criterionvalue).
+Data values in this criteria prefixed with "$" will be treated as dynamic expressions which can access the inputs to this task as $input - see [TaskInputExpression](../reference_2.md#type-taskinputexpression). Specifically, this means that for simple criteria, any property value that is a String and is prefixed with "$" will be assumed to be an expression, and for AdvancedCriteria, the same treatment will be applied to [Criterion.value](Criterion.md#attr-criterionvalue).
 
 This property supports [dynamicCriteria](../kb_topics/dynamicCriteria.md#kb-topic-dynamiccriteria) - use [Criterion.valuePath](Criterion.md#attr-criterionvaluepath) to refer to values in the [Process.ruleScope](Process.md#attr-processrulescope).
 

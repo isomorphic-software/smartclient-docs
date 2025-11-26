@@ -1,6 +1,6 @@
 # Time Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -87,7 +87,7 @@ This setting will not have any impact on the display of fields specified as type
 ## ClassAttr: Time.UTCHoursOffset
 
 ### Description
-Hour offset from UTC to use when formatting ["datetime"](../main_2.md#type-fieldtype) type fields for display to the user.
+Hour offset from UTC to use when formatting ["datetime"](../reference_2.md#type-fieldtype) type fields for display to the user.
 
 Has no effect on fields specified as logical date (`field.type = "date";`) and logical time (`field.type = "time"`) fields.
 
@@ -118,8 +118,8 @@ Given a date object, return the time associated with the date as a short string.
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | date | [Date](#type-date) | false | — | Date to convert to a time string. |
-| formatter | [TimeDisplayFormat](../main_2.md#type-timedisplayformat)|[FormatString](../main.md#type-formatstring)|[Function](#type-function) | true | — | Optional custom formatter to use. Will accept a function (which will be passed a pointer to the Date to format), a format string, or a string designating a standard formatter |
-| logicalTime | [boolean](../main.md#type-boolean) | true | — | Is the date passed in a representation of a logical time value such as a value from a `"time"` type field on a dataSource or a datetime value? For datetime values the formatted string will respect any custom [display timezone](#classmethod-timesetdefaultdisplaytimezone). If not explicitly specified, the date passed in will be assumed to be a datetime unless it was created explicitly as a time via [Time.createLogicalTime](#classmethod-timecreatelogicaltime) or similar APIs. |
+| formatter | [TimeDisplayFormat](../reference_2.md#type-timedisplayformat)|[FormatString](../reference.md#type-formatstring)|[Function](#type-function) | true | — | Optional custom formatter to use. Will accept a function (which will be passed a pointer to the Date to format), a format string, or a string designating a standard formatter |
+| logicalTime | [boolean](../reference.md#type-boolean) | true | — | Is the date passed in a representation of a logical time value such as a value from a `"time"` type field on a dataSource or a datetime value? For datetime values the formatted string will respect any custom [display timezone](#classmethod-timesetdefaultdisplaytimezone). If not explicitly specified, the date passed in will be assumed to be a datetime unless it was created explicitly as a time via [Time.createLogicalTime](#classmethod-timecreatelogicaltime) or similar APIs. |
 
 ### See Also
 
@@ -145,7 +145,7 @@ Sets the default format for strings returned by [Time.toTime](#classmethod-timet
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| formatter | [TimeDisplayFormat](../main_2.md#type-timedisplayformat)|[FormatString](../main.md#type-formatstring)|[Function](#type-function) | false | — | Optional custom formatter to use. Will accept a function (which will be passed a pointer to the Date to format), a format string, or a string designating a standard formatter |
+| formatter | [TimeDisplayFormat](../reference_2.md#type-timedisplayformat)|[FormatString](../reference.md#type-formatstring)|[Function](#type-function) | false | — | Optional custom formatter to use. Will accept a function (which will be passed a pointer to the Date to format), a format string, or a string designating a standard formatter |
 
 ---
 ## ClassMethod: Time.createDate
@@ -161,7 +161,7 @@ Creates a date object with the time set to the hours, minutes and seconds passed
 | minutes | [number](#type-number) | true | — | Minutes for the date (defaults to zero) |
 | seconds | [number](#type-number) | true | — | Seconds for the date (defaults to zero) |
 | milliseconds | [number](#type-number) | true | — | Milliseconds for the date (defaults to zero) |
-| UTCTime | [boolean](../main.md#type-boolean) | true | — | If true, treat the time passed in as UTC time rather than local time |
+| UTCTime | [boolean](../reference.md#type-boolean) | true | — | If true, treat the time passed in as UTC time rather than local time |
 
 **Deprecated**
 
@@ -179,9 +179,9 @@ See [dateFormatAndStorage](../kb_topics/dateFormatAndStorage.md#kb-topic-date-an
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| hour | [Integer](../main_2.md#type-integer)|[Date](#type-date) | false | — | integer hour (0-23) or a Date instance - if passed a Date instance, its time-elements are mapped to hour, minute and second parameters. Passing null is the same as passing `new Date()` |
-| minute | [Integer](../main_2.md#type-integer) | false | — | minute (0-59) - defaults to zero or, if the `hour` parameter is a Date instance, the minutes from that Date instance |
-| second | [Integer](../main_2.md#type-integer) | false | — | second (0-59) - defaults to zero or, if the `hour` parameter is a Date instance, the seconds from that Date |
+| hour | [Integer](../reference_2.md#type-integer)|[Date](#type-date) | false | — | integer hour (0-23) or a Date instance - if passed a Date instance, its time-elements are mapped to hour, minute and second parameters. Passing null is the same as passing `new Date()` |
+| minute | [Integer](../reference_2.md#type-integer) | false | — | minute (0-59) - defaults to zero or, if the `hour` parameter is a Date instance, the minutes from that Date instance |
+| second | [Integer](../reference_2.md#type-integer) | false | — | second (0-59) - defaults to zero or, if the `hour` parameter is a Date instance, the seconds from that Date |
 
 ### Returns
 
@@ -191,7 +191,7 @@ See [dateFormatAndStorage](../kb_topics/dateFormatAndStorage.md#kb-topic-date-an
 ## ClassMethod: Time.setDefaultDisplayTimezone
 
 ### Description
-Sets the offset from UTC to use when formatting values of type [datetime](../main_2.md#type-fieldtype) with standard display formatters.
+Sets the offset from UTC to use when formatting values of type [datetime](../reference_2.md#type-fieldtype) with standard display formatters.
 
 This property affects how dates are displayed and also the assumed timezone for user-input. For a concrete example - assume this method has been called and passed a value of "+01:00", and an application has a [DateTimeItem](DateTimeItem.md#class-datetimeitem) visible in a DynamicForm. If the value of this field is set to the current date, with UTC time set to "10:00", the time portion of the value displayed in the form item will be "11:00". Similarly if a user modifies the time value in the text box to be "16:00", a call to [FormItem.getValue](FormItem.md#method-formitemgetvalue) for the item will return a date object with UTC time set to 15:00.
 
@@ -228,8 +228,8 @@ Given a date object, return the time associated with the date as a formatted str
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | date | [Date](#type-date) | false | — | Date to convert to a time string. |
-| formatter | [TimeDisplayFormat](../main_2.md#type-timedisplayformat)|[FormatString](../main.md#type-formatstring)|[Function](#type-function) | true | — | Optional custom formatter to use. Will accept a function (which will be passed a pointer to the Date to format), a format string, or a string designating a standard formatter |
-| logicalTime | [boolean](../main.md#type-boolean) | true | — | Is the date passed in a representation of a logical time value such as a value from a `"time"` type field on a dataSource or a datetime value? For datetime values the formatted string will respect any custom [display timezone](#classmethod-timesetdefaultdisplaytimezone). If not explicitly specified, the date passed in will be assumed to be a datetime unless it was created explicitly as a time via [Time.createLogicalTime](#classmethod-timecreatelogicaltime) or similar APIs. |
+| formatter | [TimeDisplayFormat](../reference_2.md#type-timedisplayformat)|[FormatString](../reference.md#type-formatstring)|[Function](#type-function) | true | — | Optional custom formatter to use. Will accept a function (which will be passed a pointer to the Date to format), a format string, or a string designating a standard formatter |
+| logicalTime | [boolean](../reference.md#type-boolean) | true | — | Is the date passed in a representation of a logical time value such as a value from a `"time"` type field on a dataSource or a datetime value? For datetime values the formatted string will respect any custom [display timezone](#classmethod-timesetdefaultdisplaytimezone). If not explicitly specified, the date passed in will be assumed to be a datetime unless it was created explicitly as a time via [Time.createLogicalTime](#classmethod-timecreatelogicaltime) or similar APIs. |
 
 ### See Also
 
@@ -245,7 +245,7 @@ Sets the default format for strings returned by [Time.toShortTime](#classmethod-
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| formatter | [TimeDisplayFormat](../main_2.md#type-timedisplayformat)|[FormatString](../main.md#type-formatstring)|[Function](#type-function) | false | — | Optional custom formatter to use. Will accept a function (which will be passed a pointer to the Date to format), a format string, or a string designating a standard formatter |
+| formatter | [TimeDisplayFormat](../reference_2.md#type-timedisplayformat)|[FormatString](../reference.md#type-formatstring)|[Function](#type-function) | false | — | Optional custom formatter to use. Will accept a function (which will be passed a pointer to the Date to format), a format string, or a string designating a standard formatter |
 
 ---
 ## ClassMethod: Time.compareTimes
@@ -262,7 +262,7 @@ Compares the times of 2 dates, or strings. If a string is passed as one of the p
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — True if the times match, false if not
+`[boolean](../reference.md#type-boolean)` — True if the times match, false if not
 
 ---
 ## ClassMethod: Time.parseInput
@@ -279,6 +279,6 @@ It may be a common hack for a server framework (e.g. aspx) where there is no "ti
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | timeString | [String](#type-string) | false | — | time string to convert to a date |
-| validTime | [boolean](../main.md#type-boolean) | false | — | If this method is passed a timeString in an unrecognized format, return null rather than a date object with time set to 00:00:00 |
+| validTime | [boolean](../reference.md#type-boolean) | false | — | If this method is passed a timeString in an unrecognized format, return null rather than a date object with time set to 00:00:00 |
 
 ---

@@ -1,6 +1,6 @@
 # ImgButton Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -75,7 +75,7 @@ Size in pixels of the icon image.
 
 The [iconWidth](StatefulCanvas.md#attr-statefulcanvasiconwidth) and [iconHeight](StatefulCanvas.md#attr-statefulcanvasiconheight) properties can be used to configure width and height separately.
 
-Note: When configuring the properties of a `StatefulCanvas` (or derivative) [AutoChild](../main.md#type-autochild), it is best to set the `iconWidth` and `iconHeight` to the same value rather than setting an `iconSize`. This is because certain skins or customizations thereto might set the `iconWidth` and `iconHeight`, making the customization of the AutoChild's `iconSize` ineffective.
+Note: When configuring the properties of a `StatefulCanvas` (or derivative) [AutoChild](../reference.md#type-autochild), it is best to set the `iconWidth` and `iconHeight` to the same value rather than setting an `iconSize`. This is because certain skins or customizations thereto might set the `iconWidth` and `iconHeight`, making the customization of the AutoChild's `iconSize` ineffective.
 
 ### Groups
 
@@ -125,7 +125,7 @@ Whether this component is selected. For some components, selection affects appea
 ### Description
 Optional icon to be shown with the button title text.
 
-Specify as the partial URL to an image, relative to the imgDir of this component. A sprited image can be specified using the [SCSpriteConfig](../main.md#type-scspriteconfig) format.
+Specify as the partial URL to an image, relative to the imgDir of this component. A sprited image can be specified using the [SCSpriteConfig](../reference.md#type-scspriteconfig) format.
 
 Note that the string "blank" is a valid setting for this attribute and will always result in the system blank image, with no state suffixes applied. Typically, this might be used when an iconStyle is also specified and the iconStyle renders the icon via a stateful background-image or other CSS approach.
 
@@ -446,7 +446,7 @@ For [Img](Img.md#class-img) or [StretchImg](StretchImg.md#class-stretchimg) base
 
 ### See Also
 
-- [State](../main.md#type-state)
+- [State](../reference.md#type-state)
 - [state](../kb_topics/state.md#kb-topic-state)
 
 **Flags**: IRWA
@@ -497,7 +497,7 @@ Setter method for the [StatefulCanvas.autoFit](StatefulCanvas.md#attr-statefulca
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| autoFit | [boolean](../main.md#type-boolean) | false | — | New autoFit setting. |
+| autoFit | [boolean](../reference.md#type-boolean) | false | — | New autoFit setting. |
 
 ---
 ## Method: ImgButton.setDisabled
@@ -509,7 +509,7 @@ Enable or disable this object
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| disabled | [boolean](../main.md#type-boolean) | false | — | true if this widget is to be disabled |
+| disabled | [boolean](../reference.md#type-boolean) | false | — | true if this widget is to be disabled |
 
 ### Groups
 
@@ -526,7 +526,7 @@ Update the 'actionType' for this canvas (radio / checkbox / button) If the canva
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| actionType | [SelectionType](../main_2.md#type-selectiontype) | false | — | new action type |
+| actionType | [SelectionType](../reference_2.md#type-selectiontype) | false | — | new action type |
 
 ### Groups
 
@@ -587,7 +587,7 @@ Return the state of this StatefulCanvas
 
 ### Returns
 
-`[State](../main.md#type-state)` — —
+`[State](../reference.md#type-state)` — —
 
 ### Groups
 
@@ -603,11 +603,11 @@ Returns the HTML that is displayed by the default [titleHover](#method-imgbutton
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| defaultHTML | [HTMLString](../main.md#type-htmlstring) | false | — | the HTML that would have been displayed by default |
+| defaultHTML | [HTMLString](../reference.md#type-htmlstring) | false | — | the HTML that would have been displayed by default |
 
 ### Returns
 
-`[HTMLString](../main.md#type-htmlstring)` — HTML to be displayed in the hover. If null or an empty string, then the hover is canceled.
+`[HTMLString](../reference.md#type-htmlstring)` — HTML to be displayed in the hover. If null or an empty string, then the hover is canceled.
 
 ---
 ## Method: ImgButton.titleHover
@@ -617,7 +617,7 @@ Optional stringMethod to fire when the user hovers over this button and the titl
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — false to suppress the standard hover
+`[boolean](../reference.md#type-boolean)` — false to suppress the standard hover
 
 ### Groups
 
@@ -635,7 +635,7 @@ Return the 'actionType' for this canvas (radio / checkbox / button)
 
 ### Returns
 
-`[SelectionType](../main_2.md#type-selectiontype)` — the current action type
+`[SelectionType](../reference_2.md#type-selectiontype)` — the current action type
 
 ### Groups
 
@@ -664,7 +664,7 @@ Is the title of this button clipped?
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — whether the title is clipped.
+`[boolean](../reference.md#type-boolean)` — whether the title is clipped.
 
 **Flags**: A
 
@@ -678,7 +678,7 @@ Change the icon being shown next to the title text.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| icon | [SCImgURL](../main.md#type-scimgurl) | false | — | URL of new icon |
+| icon | [SCImgURL](../reference.md#type-scimgurl) | false | — | URL of new icon |
 
 ### Groups
 
@@ -694,7 +694,7 @@ Setter for the [title](StatefulCanvas.md#attr-statefulcanvastitle).
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newTitle | [HTMLString](../main.md#type-htmlstring) | false | — | the new title HTML. |
+| newTitle | [HTMLString](../reference.md#type-htmlstring) | false | — | the new title HTML. |
 
 ### Groups
 
@@ -710,7 +710,7 @@ Sets the [state](StatefulCanvas.md#attr-statefulcanvasstate) of this object, cha
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newState | [State](../main.md#type-state) | false | — | the new state. |
+| newState | [State](../reference.md#type-state) | false | — | the new state. |
 
 ### Groups
 
@@ -727,7 +727,7 @@ Default is to simply return this.title.
 
 ### Returns
 
-`[HTMLString](../main.md#type-htmlstring)` — HTML for the title.
+`[HTMLString](../reference.md#type-htmlstring)` — HTML for the title.
 
 **Flags**: A
 
@@ -741,7 +741,7 @@ Sets the base CSS style. As the component changes state and/or is selected, suff
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| style | [CSSStyleName](../main.md#type-cssstylename) | false | — | new base style |
+| style | [CSSStyleName](../reference.md#type-cssstylename) | false | — | new base style |
 
 ---
 ## Method: ImgButton.action

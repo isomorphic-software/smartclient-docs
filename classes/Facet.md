@@ -1,6 +1,6 @@
 # Facet Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -236,7 +236,7 @@ Alignment of facet label title.
 ## Attr: Facet.inlinedValues
 
 ### Description
-When applied to a [Chart](../main_2.md#interface-chart), does the chart's data contain multiple values per record for this facet. See [Chart.data](Chart.md#attr-chartdata) for a full overview of `inlinedValues` behavior.
+When applied to a [Chart](../reference_2.md#interface-chart), does the chart's data contain multiple values per record for this facet. See [Chart.data](Chart.md#attr-chartdata) for a full overview of `inlinedValues` behavior.
 
 **Flags**: IRW
 
@@ -289,7 +289,7 @@ Array of facetValue definitions.
 
 ### See Also
 
-- [FacetValue](../main.md#object-facetvalue)
+- [FacetValue](../reference.md#object-facetvalue)
 
 **Flags**: IRW
 

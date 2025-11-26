@@ -1,6 +1,6 @@
 # StockIcons Overview
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -19,7 +19,7 @@ The framework ships with [many such StockIcon-definitions](../classes/Media.md#c
  
 ```
 
-You can also provide additional customization along with the StockIcon-name. For example, if your StockIcons are mapped to [stylable SVG Symbols](svgSymbols.md#kb-topic-svg-symbols-overview) via [sprite-strings](../main.md#type-scspriteconfig) (our Shiva skin does this), you can add a colon (":") right after the StockIcon-name and then include any additional properties that are supported by SVG sprite-strings, to modify this instance of the base StockIcon definition.
+You can also provide additional customization along with the StockIcon-name. For example, if your StockIcons are mapped to [stylable SVG Symbols](svgSymbols.md#kb-topic-svg-symbols-overview) via [sprite-strings](../reference.md#type-scspriteconfig) (our Shiva skin does this), you can add a colon (":") right after the StockIcon-name and then include any additional properties that are supported by SVG sprite-strings, to modify this instance of the base StockIcon definition.
 
 ```
  // make it red and semi-transparent
@@ -39,8 +39,8 @@ You can also provide additional customization along with the StockIcon-name. For
 - [Media.getIconSet](../classes/Media.md#classmethod-mediageticonset)
 - [Media.addIconSet](../classes/Media.md#classmethod-mediaaddiconset)
 - [Media.useMedia](../classes/Media.md#classmethod-mediausemedia)
-- [IconSet](../main.md#object-iconset)
-- [StockIcon](../main_2.md#object-stockicon)
+- [IconSet](../reference.md#object-iconset)
+- [StockIcon](../reference_2.md#object-stockicon)
 - [Media.iconSets](../classes/Media.md#classattr-mediaiconsets)
 - [IconSet.name](../classes/IconSet.md#attr-iconsetname)
 - [IconSet.mappings](../classes/IconSet.md#attr-iconsetmappings)

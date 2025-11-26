@@ -1,6 +1,6 @@
 # Field Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -15,9 +15,9 @@ If set to `true`, then values for the field will be HTML-escaped.
 ## Attr: Field.title
 
 ### Description
-An [HTMLString](../main.md#type-htmlstring) to use as the displayable title for this field outside the context of a field container.
+An [HTMLString](../reference.md#type-htmlstring) to use as the displayable title for this field outside the context of a field container.
 
-Within a [DataBoundComponent](../main.md#interface-databoundcomponent):
+Within a [DataBoundComponent](../reference.md#interface-databoundcomponent):
 
 *   A field's title may be set with [DataBoundComponent.setFieldTitle](DataBoundComponent.md#method-databoundcomponentsetfieldtitle).
 *   Always call the [DataBoundComponent.getFieldTitle](DataBoundComponent.md#method-databoundcomponentgetfieldtitle) method to obtain the field's title.
@@ -66,7 +66,7 @@ Name of the field.
 ## Attr: Field.type
 
 ### Description
-Type of the field. This may be a built-in [FieldType](../main_2.md#type-fieldtype), the [name](SimpleType.md#attr-simpletypename) of a [SimpleType](SimpleType.md#class-simpletype), or the [ID](DataSource.md#attr-datasourceid) of a [DataSource](DataSource.md#class-datasource).
+Type of the field. This may be a built-in [FieldType](../reference_2.md#type-fieldtype), the [name](SimpleType.md#attr-simpletypename) of a [SimpleType](SimpleType.md#class-simpletype), or the [ID](DataSource.md#attr-datasourceid) of a [DataSource](DataSource.md#class-datasource).
 
 **Flags**: IR
 

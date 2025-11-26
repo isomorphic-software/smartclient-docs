@@ -1,6 +1,6 @@
 # DataBinding
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -114,6 +114,6 @@ DataBinding means the automatic, highly customizable process of 'binding' a UI c
 
 ### See Also
 
-- [DataBoundComponent](../main.md#interface-databoundcomponent)
+- [DataBoundComponent](../reference.md#interface-databoundcomponent)
 
 ---

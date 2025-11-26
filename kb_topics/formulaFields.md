@@ -1,6 +1,6 @@
 # formulaFields
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -28,7 +28,7 @@ Fields with values calculated from other fields in the grid.
 - [SummaryBuilder.setSummary](../classes/SummaryBuilder.md#method-summarybuildersetsummary)
 - [SummaryBuilder.save](../classes/SummaryBuilder.md#method-summarybuildersave)
 - [MathFunction](../classes/MathFunction.md#class-mathfunction)
-- [TestFunctionResult](../main_2.md#object-testfunctionresult)
+- [TestFunctionResult](../reference_2.md#object-testfunctionresult)
 - [FormulaBuilder](../classes/FormulaBuilder.md#class-formulabuilder)
 - [DataBoundComponent.badFormulaResultValue](../classes/DataBoundComponent.md#attr-databoundcomponentbadformularesultvalue)
 - [DataBoundComponent.canAddFormulaFields](../classes/DataBoundComponent.md#attr-databoundcomponentcanaddformulafields)

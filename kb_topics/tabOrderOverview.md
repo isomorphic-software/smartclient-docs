@@ -1,6 +1,6 @@
 # Tab Order Overview
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -15,7 +15,7 @@ The actual tab indices are lazily generated when requested, and will be slotted 
 
 A notification method will be fired if any calculated tab index becomes obsolete due to the tree structure changing (either a parent is moved or we run out of space between elements and have to reassign indices to later elements).
 
-Each SmartClient Canvas uses its own ID to register with the TabIndexManager at creation time and has built in logic to update its position in the as the page structure changes, and, for focusable widgets, ensure the returned tabIndex value is assigned to the widget handle. [FormItem](../classes/FormItem.md#class-formitem)s and [FormItemIcon](../main.md#object-formitemicon)s are similarly registered with TabIndexManager and apply the returned tab index to the appropriate element on the page.
+Each SmartClient Canvas uses its own ID to register with the TabIndexManager at creation time and has built in logic to update its position in the as the page structure changes, and, for focusable widgets, ensure the returned tabIndex value is assigned to the widget handle. [FormItem](../classes/FormItem.md#class-formitem)s and [FormItemIcon](../reference.md#object-formitemicon)s are similarly registered with TabIndexManager and apply the returned tab index to the appropriate element on the page.
 
 By default canvas tab positions are updated as follows:
 

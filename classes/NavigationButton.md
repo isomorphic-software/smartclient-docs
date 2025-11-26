@@ -1,6 +1,6 @@
 # NavigationButton Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -23,7 +23,7 @@ Navigation direction for this button. If set to `"forward"` or `"back"` the spec
 ## Attr: NavigationButton.forwardBaseStyle
 
 ### Description
-Base style for navigation buttons where [Direction](../main_2.md#type-direction) is set to `"forward"`
+Base style for navigation buttons where [Direction](../reference_2.md#type-direction) is set to `"forward"`
 
 **Flags**: IRW
 
@@ -31,7 +31,7 @@ Base style for navigation buttons where [Direction](../main_2.md#type-direction)
 ## Attr: NavigationButton.backBaseStyle
 
 ### Description
-Base style for navigation buttons where [Direction](../main_2.md#type-direction) is set to `"back"`
+Base style for navigation buttons where [Direction](../reference_2.md#type-direction) is set to `"back"`
 
 **Flags**: IRW
 

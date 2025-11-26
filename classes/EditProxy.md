@@ -1,6 +1,6 @@
 # EditProxy Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -31,7 +31,7 @@ For pasting, if [EditContext.allowNestedDrops](EditContext.md#attr-editcontextal
 ## Attr: EditProxy.canSelectChildren
 
 ### Description
-Whether to allow selection of the children of this [EditNode](../main.md#object-editnode). The appearance and behavior of selected components is controlled by [SelectedAppearance](../main.md#type-selectedappearance), or centrally across an [EditContext](EditContext.md#class-editcontext) via [EditContext.selectedAppearance](EditContext.md#attr-editcontextselectedappearance).
+Whether to allow selection of the children of this [EditNode](../reference.md#object-editnode). The appearance and behavior of selected components is controlled by [SelectedAppearance](../reference.md#type-selectedappearance), or centrally across an [EditContext](EditContext.md#class-editcontext) via [EditContext.selectedAppearance](EditContext.md#attr-editcontextselectedappearance).
 
 Individual children can be marked non-selectable via setting [EditProxy.canSelect](#attr-editproxycanselect) to `false`.
 
@@ -268,7 +268,7 @@ If this property is not set it will enabled when added to an EditContext if its 
 ## Attr: EditProxy.persistCoordinates
 
 ### Description
-Changes to all child [liveObject](EditNode.md#attr-editnodeliveobject)'s position and size can be persisted to their [EditNodes](../main.md#object-editnode) based on this attribute setting and [EditContext.persistCoordinates](EditContext.md#attr-editcontextpersistcoordinates). This applies to both programmatic calls and user interaction (drag reposition or drag resize).
+Changes to all child [liveObject](EditNode.md#attr-editnodeliveobject)'s position and size can be persisted to their [EditNodes](../reference.md#object-editnode) based on this attribute setting and [EditContext.persistCoordinates](EditContext.md#attr-editcontextpersistcoordinates). This applies to both programmatic calls and user interaction (drag reposition or drag resize).
 
 The default value of `null` allows [EditContext.persistCoordinates](EditContext.md#attr-editcontextpersistcoordinates) to control all coordinate persistence. An explicit value of `false` overrides the EditContext setting so that no children of the component save coordinates.
 
@@ -286,13 +286,13 @@ This method applies the [selectedAppearance](#attr-editproxyselectedappearance) 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| show | [boolean](../main.md#type-boolean) | false | — | true to show component as selected, false otherwise |
+| show | [boolean](../reference.md#type-boolean) | false | — | true to show component as selected, false otherwise |
 
 ---
 ## Method: EditProxy.startInlineEditing
 
 ### Description
-Manual means of triggering inline editing. See [InlineEditEvent](../main.md#type-inlineeditevent).
+Manual means of triggering inline editing. See [InlineEditEvent](../reference.md#type-inlineeditevent).
 
 ### Parameters
 
@@ -324,7 +324,7 @@ Setter for [canSelectChildren](#attr-editproxycanselectchildren).
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| canSelect | [boolean](../main.md#type-boolean) | false | — | the new canSelectChildren |
+| canSelect | [boolean](../reference.md#type-boolean) | false | — | the new canSelectChildren |
 
 **Flags**: A
 

@@ -1,6 +1,6 @@
 # FormItemIcon Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -119,7 +119,7 @@ The special value "blank" means that no image will be shown for this icon. This 
 
 For an [inline](#attr-formitemiconinline) `FormItemIcon`, [text](#attr-formitemicontext) may be specified to show a string of HTML instead of an image.
 
-[Spriting](../kb_topics/skinning.md#kb-topic-skinning--theming) can be used for this image, by setting this property to a [SCSpriteConfig](../main.md#type-scspriteconfig) formatted string.
+[Spriting](../kb_topics/skinning.md#kb-topic-skinning--theming) can be used for this image, by setting this property to a [SCSpriteConfig](../reference.md#type-scspriteconfig) formatted string.
 
 ### Groups
 
@@ -333,7 +333,7 @@ If set, this property determines the height of this icon in px. If unset the for
 ## Attr: FormItemIcon.iconPlacement
 
 ### Description
-For PickList items with [PickListItemIconPlacement](../main.md#type-picklistitemiconplacement) set such that the pickList does not render near-origin, should this icon be rendered inline within the formItem itself, or within the [ComboBoxItem.pickerNavigationBar](ComboBoxItem.md#attr-comboboxitempickernavigationbar).
+For PickList items with [PickListItemIconPlacement](../reference.md#type-picklistitemiconplacement) set such that the pickList does not render near-origin, should this icon be rendered inline within the formItem itself, or within the [ComboBoxItem.pickerNavigationBar](ComboBoxItem.md#attr-comboboxitempickernavigationbar).
 
 If not explicitly specified at the icon level, this will be picked up from [PickList.iconPlacement](PickList.md#attr-picklisticonplacement).
 
@@ -452,7 +452,7 @@ Return false to cancel this event. If this event is not cancelled by the icon-le
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — Return false to cancel the event.
+`[boolean](../reference.md#type-boolean)` — Return false to cancel the event.
 
 ### Groups
 
@@ -468,7 +468,7 @@ StringMethod action to fire when this icon has focus and receives a keypress eve
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| keyName | [KeyName](../main_2.md#type-keyname) | false | — | Name of the key pressed |
+| keyName | [KeyName](../reference_2.md#type-keyname) | false | — | Name of the key pressed |
 | character | [Character](#type-character) | false | — | character produced by the keypress |
 | form | [DynamicForm](#type-dynamicform) | false | — | The Dynamic Form to which this icon's item belongs. |
 | item | [FormItem](#type-formitem) | false | — | The Form Item containing this icon |
@@ -493,6 +493,6 @@ If specified, `icon.showIf` will be evaluated when the form item is drawn or red
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — Return true if the icon should be visible, false otherwise.
+`[boolean](../reference.md#type-boolean)` — Return true if the icon should be visible, false otherwise.
 
 ---

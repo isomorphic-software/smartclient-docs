@@ -1,6 +1,6 @@
 # ColorItem Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -18,7 +18,7 @@ Form item for selecting a color via a pop-up [ColorPicker](ColorPicker.md#class-
 If [showPickerIcon](#attr-coloritemshowpickericon) is true for this item, this property governs the size of the picker icon. If unset, the picker icon will be sized as a square to fit in the available height for the icon.
 
 Note that if spriting is being used, and the image to be displayed is specified using css properties such as `background-image`, `background-size`, changing this value may result in an unexpected appearance as the image will not scale.  
-Scaleable spriting can be achieved using the [SCSpriteConfig](../main.md#type-scspriteconfig) format. See the section on spriting in the [skinning overview](../kb_topics/skinning.md#kb-topic-skinning--theming) for further information.
+Scaleable spriting can be achieved using the [SCSpriteConfig](../reference.md#type-scspriteconfig) format. See the section on spriting in the [skinning overview](../kb_topics/skinning.md#kb-topic-skinning--theming) for further information.
 
 ### Groups
 
@@ -42,7 +42,7 @@ If false, no "More" button is shown on the simple picker
 ### Description
 If [showPickerIcon](#attr-coloritemshowpickericon) is true for this item, this property governs the [src](FormItemIcon.md#attr-formitemiconsrc) of the picker icon image to be displayed.
 
-[Spriting](../kb_topics/skinning.md#kb-topic-skinning--theming) can be used for this image, by setting this property to a [SCSpriteConfig](../main.md#type-scspriteconfig) formatted string.
+[Spriting](../kb_topics/skinning.md#kb-topic-skinning--theming) can be used for this image, by setting this property to a [SCSpriteConfig](../reference.md#type-scspriteconfig) formatted string.
 
 ### Groups
 
@@ -89,7 +89,7 @@ Should the pick button icon be shown for choosing colors from a ColorPicker
 If [showPickerIcon](#attr-coloritemshowpickericon) is true for this item, this property governs the size of the picker icon. If unset, the picker icon will be sized as a square to fit in the available height for the icon.
 
 Note that if spriting is being used, and the image to be displayed is specified using css properties such as `background-image`, `background-size`, changing this value may result in an unexpected appearance as the image will not scale.  
-Scaleable spriting can be achieved using the [SCSpriteConfig](../main.md#type-scspriteconfig) format. See the section on spriting in the [skinning overview](../kb_topics/skinning.md#kb-topic-skinning--theming) for further information.
+Scaleable spriting can be achieved using the [SCSpriteConfig](../reference.md#type-scspriteconfig) format. See the section on spriting in the [skinning overview](../kb_topics/skinning.md#kb-topic-skinning--theming) for further information.
 
 ### Groups
 
@@ -118,6 +118,6 @@ Store the color value selected by the user from the color picker. You will need 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | color | [String](#type-string) | false | — | The selected color as a string. |
-| opacity | [Integer](../main_2.md#type-integer) | false | — | The selected opacity, from 0 (transparent) to 100 (opaque), or null if [ColorItem.supportsTransparency](#attr-coloritemsupportstransparency) is false or the [color picker](ColorPicker.md#class-colorpicker) selected a color while in [simple mode](../main.md#type-colorpickermode). |
+| opacity | [Integer](../reference_2.md#type-integer) | false | — | The selected opacity, from 0 (transparent) to 100 (opaque), or null if [ColorItem.supportsTransparency](#attr-coloritemsupportstransparency) is false or the [color picker](ColorPicker.md#class-colorpicker) selected a color while in [simple mode](../reference.md#type-colorpickermode). |
 
 ---

@@ -1,6 +1,6 @@
 # History Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -89,13 +89,13 @@ When the user transitions to the history entry immediately before the first synt
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| callback | [String](#type-string)|[Object](../main.md#type-object) | false | — | The callback to invoke when the user navigates to a synthetic history entry. |
-| requiresData | [boolean](../main.md#type-boolean) | false | — | If passed, this callback will only be fired if the user is navigating to a history entry that was explicitly generated in this browser session. |
-| isAdditional | [boolean](../main.md#type-boolean) | true | — | If false or unspecified, then the callback is considered to be the primary callback, replacing the previous primary callback if the primary callback was previously registered. If true, then the callback is an additive callback; that is, it is called in addition to the primary callback, and after the primary callback is called. |
+| callback | [String](#type-string)|[Object](../reference.md#type-object) | false | — | The callback to invoke when the user navigates to a synthetic history entry. |
+| requiresData | [boolean](../reference.md#type-boolean) | false | — | If passed, this callback will only be fired if the user is navigating to a history entry that was explicitly generated in this browser session. |
+| isAdditional | [boolean](../reference.md#type-boolean) | true | — | If false or unspecified, then the callback is considered to be the primary callback, replacing the previous primary callback if the primary callback was previously registered. If true, then the callback is an additive callback; that is, it is called in addition to the primary callback, and after the primary callback is called. |
 
 ### Returns
 
-`[int](../main.md#type-int)` — the ID of the callback. This can be passed to [History.unregisterCallback](#staticmethod-historyunregistercallback) to remove the callback.
+`[int](../reference.md#type-int)` — the ID of the callback. This can be passed to [History.unregisterCallback](#staticmethod-historyunregistercallback) to remove the callback.
 
 ---
 ## StaticMethod: History.getHistoryData
@@ -123,11 +123,11 @@ Unregisters a callback so that it will no longer be called when the user navigat
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| id | [int](../main.md#type-int) | false | — | the ID of the callback that was returned by [History.registerCallback](#staticmethod-historyregistercallback). |
+| id | [int](../reference.md#type-int) | false | — | the ID of the callback that was returned by [History.registerCallback](#staticmethod-historyregistercallback). |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — `true` if the callback registration was located and removed; `false` otherwise.
+`[boolean](../reference.md#type-boolean)` — `true` if the callback registration was located and removed; `false` otherwise.
 
 ---
 ## StaticMethod: History.readyForAnotherHistoryEntry
@@ -139,6 +139,6 @@ Browsers including Chrome and Firefox require a delay, even a minimal 1 millisec
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — whether another history entry can be added via [History.addHistoryEntry](#staticmethod-historyaddhistoryentry).
+`[boolean](../reference.md#type-boolean)` — whether another history entry can be added via [History.addHistoryEntry](#staticmethod-historyaddhistoryentry).
 
 ---

@@ -1,6 +1,6 @@
 # Hover Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -15,7 +15,7 @@ The Hover class handles showing a simple SmartClient canvas containing arbitrary
 ### Description
 This is a single-instance widget, used to show contextual hover HTML and created lazily on the first call to [Hover.show](#classmethod-hovershow).
 
-This component is created using the [autoChild pattern](../main.md#type-autochild), so you can configure it using [autoChild defaults](#classattr-hoverhovercanvasdefaults) and [properties](#classattr-hoverhovercanvasproperties), or change its type with [Hover.hoverCanvasConstructor](#classattr-hoverhovercanvasconstructor). Note that size and position are managed by the Hover subsystem, so not all [Canvas settings](Canvas.md#class-canvas) are supported.
+This component is created using the [autoChild pattern](../reference.md#type-autochild), so you can configure it using [autoChild defaults](#classattr-hoverhovercanvasdefaults) and [properties](#classattr-hoverhovercanvasproperties), or change its type with [Hover.hoverCanvasConstructor](#classattr-hoverhovercanvasconstructor). Note that size and position are managed by the Hover subsystem, so not all [Canvas settings](Canvas.md#class-canvas) are supported.
 
 To fully customize what a hover looks like, see [Hover.showHoverComponent](#classmethod-hovershowhovercomponent), which allows entirely custom widgets such as [grids](ListGrid_1.md#class-listgrid) to be shown as hovers.
 
@@ -86,7 +86,7 @@ May be overridden by including a `moveWithMouse` attribute on the properties blo
 ## ClassAttr: Hover.hoverCanvasConstructor
 
 ### Description
-[SmartClient Class](../main.md#type-scclassname) to use for showing hover HTML; a [Label](Label.md#class-label) by default and instantiated lazily as the first hover is requested.
+[SmartClient Class](../reference.md#type-scclassname) to use for showing hover HTML; a [Label](Label.md#class-label) by default and instantiated lazily as the first hover is requested.
 
 **Flags**: IR
 
@@ -184,7 +184,7 @@ The default Hover canvas position will be based on the mouse pointer position, a
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| contents | [HTMLString](../main.md#type-htmlstring)|[Canvas](#type-canvas) | false | — | contents for the hover |
+| contents | [HTMLString](../reference.md#type-htmlstring)|[Canvas](#type-canvas) | false | — | contents for the hover |
 | properties | [Label Properties](#type-label-properties) | false | — | object containing attributes for managing the hover canvas' appearance. Valid properties include:
 
 *   left, top, width, height

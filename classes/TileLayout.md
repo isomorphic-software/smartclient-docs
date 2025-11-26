@@ -1,6 +1,6 @@
 # TileLayout Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -15,7 +15,7 @@ Lays out a series of components, called "tiles", in a grid with multiple tiles p
 ## Attr: TileLayout.tileSize
 
 ### Description
-Size of each tile in pixels. Depending on the [TileLayoutPolicy](../main.md#type-tilelayoutpolicy), `tileSize` may be taken as a maximum, minimum or exact size of tiles, or may be irrelevant.
+Size of each tile in pixels. Depending on the [TileLayoutPolicy](../reference.md#type-tilelayoutpolicy), `tileSize` may be taken as a maximum, minimum or exact size of tiles, or may be irrelevant.
 
 Width and height may be separately set via [TileLayout.tileHeight](#attr-tilelayouttileheight) and [TileLayout.tileWidth](#attr-tilelayouttilewidth).
 
@@ -53,7 +53,7 @@ Set false to prevent the [TileLayout.dragLine](#attr-tilelayoutdragline) autochi
 ## Attr: TileLayout.tilesPerLine
 
 ### Description
-Number of tiles to show in each line. Auto-derived from [TileLayout.tileSize](#attr-tilelayouttilesize) for some layout modes. See [TileLayoutPolicy](../main.md#type-tilelayoutpolicy). This can also affect [TileLayout.tileWidth](#attr-tilelayouttilewidth) or [TileLayout.tileHeight](#attr-tilelayouttileheight). See those properties for details.
+Number of tiles to show in each line. Auto-derived from [TileLayout.tileSize](#attr-tilelayouttilesize) for some layout modes. See [TileLayoutPolicy](../reference.md#type-tilelayoutpolicy). This can also affect [TileLayout.tileWidth](#attr-tilelayouttilewidth) or [TileLayout.tileHeight](#attr-tilelayouttileheight). See those properties for details.
 
 ### Groups
 
@@ -77,7 +77,7 @@ Margin in between tiles. Can be set on a per-axis basis with [TileLayout.tileHMa
 ## Attr: TileLayout.tileWidth
 
 ### Description
-Width of each tile in pixels. See [TileLayout.tileSize](#attr-tilelayouttilesize). If [TileLayoutPolicy](../main.md#type-tilelayoutpolicy) is "fit", [TileLayout.expandMargins](#attr-tilelayoutexpandmargins) is false, [TileLayout.tilesPerLine](#attr-tilelayouttilesperline) is set, [Orientation](../main_2.md#type-orientation) is "horizontal", and tileWidth is not set, tileWidth will be computed automatically based on [TileLayout.tilesPerLine](#attr-tilelayouttilesperline).
+Width of each tile in pixels. See [TileLayout.tileSize](#attr-tilelayouttilesize). If [TileLayoutPolicy](../reference.md#type-tilelayoutpolicy) is "fit", [TileLayout.expandMargins](#attr-tilelayoutexpandmargins) is false, [TileLayout.tilesPerLine](#attr-tilelayouttilesperline) is set, [Orientation](../reference_2.md#type-orientation) is "horizontal", and tileWidth is not set, tileWidth will be computed automatically based on [TileLayout.tilesPerLine](#attr-tilelayouttilesperline).
 
 ### Groups
 
@@ -125,7 +125,7 @@ Indicates what to do with data dragged into another DataBoundComponent. See Drag
 ## Attr: TileLayout.tileHeight
 
 ### Description
-Height of each tile in pixels. See [TileLayout.tileSize](#attr-tilelayouttilesize). If [TileLayoutPolicy](../main.md#type-tilelayoutpolicy) is "fit", [TileLayout.expandMargins](#attr-tilelayoutexpandmargins) is false, [TileLayout.tilesPerLine](#attr-tilelayouttilesperline) is set, [Orientation](../main_2.md#type-orientation) is "vertical", and tileHeight is not set, tileHeight will be computed automatically based on [TileLayout.tilesPerLine](#attr-tilelayouttilesperline).
+Height of each tile in pixels. See [TileLayout.tileSize](#attr-tilelayouttilesize). If [TileLayoutPolicy](../reference.md#type-tilelayoutpolicy) is "fit", [TileLayout.expandMargins](#attr-tilelayoutexpandmargins) is false, [TileLayout.tilesPerLine](#attr-tilelayouttilesperline) is set, [Orientation](../reference_2.md#type-orientation) is "vertical", and tileHeight is not set, tileHeight will be computed automatically based on [TileLayout.tilesPerLine](#attr-tilelayouttilesperline).
 
 ### Groups
 
@@ -165,7 +165,7 @@ A margin left around the outside of all tiles.
 ## Attr: TileLayout.overflow
 
 ### Description
-Normal [Overflow](../main.md#type-overflow) settings can be used on TileLayouts, for example, an overflow:auto TileLayout will scroll if members exceed its specified size, whereas an overflow:visible TileLayout will grow to accommodate members.
+Normal [Overflow](../reference.md#type-overflow) settings can be used on TileLayouts, for example, an overflow:auto TileLayout will scroll if members exceed its specified size, whereas an overflow:visible TileLayout will grow to accommodate members.
 
 ### Groups
 
@@ -177,7 +177,7 @@ Normal [Overflow](../main.md#type-overflow) settings can be used on TileLayouts,
 ## Attr: TileLayout.autoWrapLines
 
 ### Description
-When [LayoutPolicy](../main_2.md#type-layoutpolicy) is "flow", should we automatically start a new line when there's not enough room to fit the next tile on the same line?
+When [LayoutPolicy](../reference_2.md#type-layoutpolicy) is "flow", should we automatically start a new line when there's not enough room to fit the next tile on the same line?
 
 If set to false, a new line will only be started if a tile specifies [tile.startLine](Canvas.md#attr-canvasstartline) or [tile.endLine](Canvas.md#attr-canvasendline).
 
@@ -199,7 +199,7 @@ List of tiles to lay out.
 ## Attr: TileLayout.expandMargins
 
 ### Description
-With [LayoutPolicy](../main_2.md#type-layoutpolicy):"fit", should margins be expanded so that tiles fill the available space in the TileLayout on the breadth axis? This can also affect [TileLayout.tileWidth](#attr-tilelayouttilewidth) or [TileLayout.tileHeight](#attr-tilelayouttileheight). See those properties for details.
+With [LayoutPolicy](../reference_2.md#type-layoutpolicy):"fit", should margins be expanded so that tiles fill the available space in the TileLayout on the breadth axis? This can also affect [TileLayout.tileWidth](#attr-tilelayouttilewidth) or [TileLayout.tileHeight](#attr-tilelayouttileheight). See those properties for details.
 
 ### Groups
 
@@ -211,7 +211,7 @@ With [LayoutPolicy](../main_2.md#type-layoutpolicy):"fit", should margins be exp
 ## Attr: TileLayout.orientation
 
 ### Description
-Direction of tiling. See also [TileLayoutPolicy](../main.md#type-tilelayoutpolicy).
+Direction of tiling. See also [TileLayoutPolicy](../reference.md#type-tilelayoutpolicy).
 
 ### Groups
 
@@ -223,7 +223,7 @@ Direction of tiling. See also [TileLayoutPolicy](../main.md#type-tilelayoutpolic
 ## Attr: TileLayout.layoutPolicy
 
 ### Description
-Policy for laying out tiles. See [TileLayoutPolicy](../main.md#type-tilelayoutpolicy) for options.
+Policy for laying out tiles. See [TileLayoutPolicy](../reference.md#type-tilelayoutpolicy) for options.
 
 ### Groups
 
@@ -263,7 +263,7 @@ The TileLayout consistently uses this method to access tiles, in order to allow 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| index | [int](../main.md#type-int) | false | — | index of the tile |
+| index | [int](../reference.md#type-int) | false | — | index of the tile |
 
 ### Returns
 
@@ -279,7 +279,7 @@ Sets the height and width of tiles.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| size | [int](../main.md#type-int) | false | — | size |
+| size | [int](../reference.md#type-int) | false | — | size |
 
 ### Groups
 
@@ -295,7 +295,7 @@ Sets the vertical margin of tiles.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| margin | [Integer](../main_2.md#type-integer) | false | — | margin |
+| margin | [Integer](../reference_2.md#type-integer) | false | — | margin |
 
 ### Groups
 
@@ -312,7 +312,7 @@ Add a tile to the layout, dynamically.
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | tile | [Canvas](#type-canvas) | false | — | new tile to add |
-| index | [Integer](../main_2.md#type-integer) | true | — | position where the tile should be added. Defaults to adding the tile at the end. |
+| index | [Integer](../reference_2.md#type-integer) | true | — | position where the tile should be added. Defaults to adding the tile at the end. |
 
 ---
 ## Method: TileLayout.transformTileRect
@@ -433,7 +433,7 @@ Sets the height of tiles.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| height | [Integer](../main_2.md#type-integer) | false | — | height |
+| height | [Integer](../reference_2.md#type-integer) | false | — | height |
 
 ### Groups
 
@@ -449,7 +449,7 @@ Sets the horizontal margin of tiles.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| margin | [Integer](../main_2.md#type-integer) | false | — | margin |
+| margin | [Integer](../reference_2.md#type-integer) | false | — | margin |
 
 ### Groups
 
@@ -465,11 +465,11 @@ Remove a tile from the layout.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| tileID | [Canvas](#type-canvas)|[int](../main.md#type-int)|[ID](#type-id) | false | — | index or String ID of the tile |
+| tileID | [Canvas](#type-canvas)|[int](../reference.md#type-int)|[ID](#type-id) | false | — | index or String ID of the tile |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — whether a tile was found and removed
+`[boolean](../reference.md#type-boolean)` — whether a tile was found and removed
 
 ---
 ## Method: TileLayout.getDragData
@@ -479,7 +479,7 @@ During a drag-and-drop interaction, this method returns the set of records being
 
 This method is consulted by [ListGrid.willAcceptDrop](ListGrid_2.md#method-listgridwillacceptdrop).
 
-NOTE: If this component is a [multi-linked](Tree.md#method-treeismultilinktree) `TreeGrid`, this method returns a list of [NodeLocator](../main_2.md#object-nodelocator)s rather than a list of records. Each `nodeLocator` contains a pointer to the associated record in its `node` property.
+NOTE: If this component is a [multi-linked](Tree.md#method-treeismultilinktree) `TreeGrid`, this method returns a list of [NodeLocator](../reference_2.md#object-nodelocator)s rather than a list of records. Each `nodeLocator` contains a pointer to the associated record in its `node` property.
 
 ### Parameters
 
@@ -489,7 +489,7 @@ NOTE: If this component is a [multi-linked](Tree.md#method-treeismultilinktree) 
 
 ### Returns
 
-`[Array of Record](#type-array-of-record)` — Array of [Record](../main.md#object-record)s that are currently selected.
+`[Array of Record](#type-array-of-record)` — Array of [Record](../reference.md#object-record)s that are currently selected.
 
 ### Groups
 
@@ -504,7 +504,7 @@ Returns the tile index of the tile that would currently be dropped on by the dra
 
 ### Returns
 
-`[int](../main.md#type-int)` — tile index of tile that would currently be dropped on, or the tile count for a drop after all tiles
+`[int](../reference.md#type-int)` — tile index of tile that would currently be dropped on, or the tile count for a drop after all tiles
 
 ### See Also
 
@@ -520,7 +520,7 @@ Sets the vertical and horizontal margin of tiles.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| margin | [int](../main.md#type-int) | false | — | margin |
+| margin | [int](../reference.md#type-int) | false | — | margin |
 
 ### Groups
 
@@ -536,7 +536,7 @@ Sets the width of tiles.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| width | [Integer](../main_2.md#type-integer) | false | — | width |
+| width | [Integer](../reference_2.md#type-integer) | false | — | width |
 
 ### Groups
 
@@ -552,7 +552,7 @@ Sets the number of tiles per line.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| tilesPerLine | [Integer](../main_2.md#type-integer) | false | — | New [TileLayout.tilesPerLine](#attr-tilelayouttilesperline) value |
+| tilesPerLine | [Integer](../reference_2.md#type-integer) | false | — | New [TileLayout.tilesPerLine](#attr-tilelayouttilesperline) value |
 
 ### Groups
 

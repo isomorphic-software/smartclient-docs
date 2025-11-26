@@ -1,6 +1,6 @@
 # AIEngine Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -41,7 +41,7 @@ Whether this AI engine can handle vision requests, or requests where one or more
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — `true` if this AI engine can handle vision requests; `false` otherwise.
+`[boolean](../reference.md#type-boolean)` — `true` if this AI engine can handle vision requests; `false` otherwise.
 
 ---
 ## Method: AIEngine.couldSupportRequest
@@ -59,7 +59,7 @@ The reason for the uncertainty is that the implementation may use estimates (e.g
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — `true` if this AIEngine could support the request; `false` otherwise.
+`[boolean](../reference.md#type-boolean)` — `true` if this AIEngine could support the request; `false` otherwise.
 
 ---
 ## Method: AIEngine.sendRequest

@@ -1,6 +1,6 @@
 # Troubleshooting thread deadlocks on the server
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 

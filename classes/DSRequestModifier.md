@@ -1,6 +1,6 @@
 # DSRequestModifier Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -53,7 +53,7 @@ The same rules apply to this attribute as apply to [value](#attr-dsrequestmodifi
 ### Description
 The value to assign to the field named by [fieldName](#attr-dsrequestmodifierfieldname). This value can be static, and for Pro licenses that is the only option. With Power and better licenses, this value can be an expression in the Velocity template language. In this latter case, all the standard [Velocity context variables](../kb_topics/velocitySupport.md#kb-topic-velocity-context-variables) provided by SmartClient Server are available to you.
 
-Note, `dsRequestModifier` values are evaluated during [DSRequest](../main_2.md#object-dsrequest) setup, before the request's `execute()` method is called. This means that variables added to the Velocity context by calling `addToTemplateContext()` from a [DMI](../kb_topics/dmiOverview.md#kb-topic-direct-method-invocation) method or [custom DataSource implementation](DataSource.md#attr-datasourceserverconstructor) will not be available. In this case, you can either
+Note, `dsRequestModifier` values are evaluated during [DSRequest](../reference_2.md#object-dsrequest) setup, before the request's `execute()` method is called. This means that variables added to the Velocity context by calling `addToTemplateContext()` from a [DMI](../kb_topics/dmiOverview.md#kb-topic-direct-method-invocation) method or [custom DataSource implementation](DataSource.md#attr-datasourceserverconstructor) will not be available. In this case, you can either
 
 *   Apply the variable values directly to the `DSRequest`'s criteria and values from your Java code. See the server-side Javadoc for `DSRequest`
 *   Add your template variables to the `DSRequest`'s template context before `dsRequestModifier` evaluation takes place, in a custom override of [the IDACall servlet](../kb_topics/serverDataIntegration.md#kb-topic-server-datasource-integration)

@@ -1,6 +1,6 @@
 # Uploading Files
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -22,14 +22,14 @@ To use SmartClient's client-server upload system, you use a DataSource field of 
 
 When you call [DynamicForm.saveData](../classes/DynamicForm.md#method-dynamicformsavedata) on a DynamicForm containing a FileItem, SmartClient processes the save identically to a saveData() call that did not include a file upload:
 
-*   if you are using the built-in SQL connectors via serverType:"sql", the file will be saved to SQL as described under [field type "binary"](../main_2.md#type-fieldtype).
+*   if you are using the built-in SQL connectors via serverType:"sql", the file will be saved to SQL as described under [field type "binary"](../reference_2.md#type-fieldtype).
 *   if you have server-side business logic, the inbound request may be routed to your business logic via RPCManager dispatch or DMI declarations as normal, your business logic will receive a normal DSRequest, and you are expected to provide a normal DSResponse.
 
 Client-side callbacks, such as the callback passed to saveData(), fire normally.
 
 Note that FileItems cannot be programmatically populated - this is a browser security restriction over which we have no control. This restriction means that we are unable to populate a FileItem with the correct filename when a form is editing an existing record. Also, when you call saveData() on a form that is editing a new record, the FileItem will be cleared on successful completion of the saveData() call; this is a side-effect of the form being placed into "edit" mode. In both of these cases, the fact that the FileItem has been cleared will not cause the persisted binary data to be removed by SmartClient Server on subsequent calls to setData(). If the user selects another file, it will overwrite the existing one; if the FileItem is left blank, the server simply ignores it. If you actually wish to wipe out the value of a binary field, call [updateData()](../classes/DataSource.md#method-datasourceupdatedata) on the underlying dataSource, passing an explicit null value for the binary field.
 
-DataSources can have multiple binary fields, but developers should be aware that you can not submit more than one FileItem in a single form. Developers needing to upload multiple files can either use the [MultiFileItem](../classes/MultiFileItem.md#class-multifileitem), or use multiple DynamicForms (nested in a [VStack](../main.md#class-vstack), or similar), and submit them separately. For an add operation, the pattern would be to perform the initial submission of values for the record and then use the [callback](../classes/DSRequest.md#attr-dsrequestcallback) to apply the primary key value for the new record to the forms with binary fields and save them to the server separately. This approach has the advantage that if an error or timeout occurs, users will not be caught waiting for files to complete uploading before being notified of the failure and having to repeat the entire transaction.  
+DataSources can have multiple binary fields, but developers should be aware that you can not submit more than one FileItem in a single form. Developers needing to upload multiple files can either use the [MultiFileItem](../classes/MultiFileItem.md#class-multifileitem), or use multiple DynamicForms (nested in a [VStack](../reference.md#class-vstack), or similar), and submit them separately. For an add operation, the pattern would be to perform the initial submission of values for the record and then use the [callback](../classes/DSRequest.md#attr-dsrequestcallback) to apply the primary key value for the new record to the forms with binary fields and save them to the server separately. This approach has the advantage that if an error or timeout occurs, users will not be caught waiting for files to complete uploading before being notified of the failure and having to repeat the entire transaction.  
 Note when adding a new record using this pattern, if you have a binary field marked as `required="true"` it should be submitted as part of the initial submission.
 
 **Restricting upload sizes**
@@ -52,7 +52,7 @@ To configure the maximum number of files in a single request (set to 10 by defau
 
 fileUpload.maxFileCount: 10
 
-When a [FileItem](../classes/FileItem.md#class-fileitem) or [UploadItem](../classes/UploadItem.md#class-uploaditem) is bound to a "binary" `DataSourceField` with a `maxFileSize` setting, a [`maxFileSize`\-type](../main.md#type-validatortype) validator is automatically added to the item's [validators](../classes/FormItem.md#attr-formitemvalidators). In supported browsers, a `maxFileSize` validator is a client-side check that the size of a file selected for upload does not exceed the field's `maxFileSize`. Note, however, that server-side enforcement of the `maxFileSize` is always required because the user's browser might not support client-side file size checks. Also, any client-side check can be bypassed by a malicious user.
+When a [FileItem](../classes/FileItem.md#class-fileitem) or [UploadItem](../classes/UploadItem.md#class-uploaditem) is bound to a "binary" `DataSourceField` with a `maxFileSize` setting, a [`maxFileSize`\-type](../reference.md#type-validatortype) validator is automatically added to the item's [validators](../classes/FormItem.md#attr-formitemvalidators). In supported browsers, a `maxFileSize` validator is a client-side check that the size of a file selected for upload does not exceed the field's `maxFileSize`. Note, however, that server-side enforcement of the `maxFileSize` is always required because the user's browser might not support client-side file size checks. Also, any client-side check can be bypassed by a malicious user.
 
 **Processing File Uploads with server-side business logic**
 
@@ -95,8 +95,8 @@ Achieving background file upload without using the SmartClient server is also po
 - [UploadItem](../classes/UploadItem.md#class-uploaditem)
 - [FileItem](../classes/FileItem.md#class-fileitem)
 - [MultiFileItem](../classes/MultiFileItem.md#class-multifileitem)
-- [MultiFilePicker](../main.md#class-multifilepicker)
-- [ViewFileItem](../main.md#class-viewfileitem)
+- [MultiFilePicker](../reference.md#class-multifilepicker)
+- [ViewFileItem](../reference.md#class-viewfileitem)
 - [FileItem.editForm](../classes/FileItem.md#attr-fileitemeditform)
 - [FileItem.uploadItem](../classes/FileItem.md#attr-fileitemuploaditem)
 - [FileItem.displayForm](../classes/FileItem.md#attr-fileitemdisplayform)

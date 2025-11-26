@@ -1,6 +1,6 @@
 # Grid Editing
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -21,7 +21,7 @@ By default, editing is restricted to existing records. Setting [ListGrid.listEnd
 
 Saving of changes is triggered automatically when the user navigates out of the row or cell being edited (based on [ListGrid.saveByCell](../classes/ListGrid_1.md#attr-listgridsavebycell)) or when the user ends editing. For a "mass update" interface, automatic saving of changes can be disabled entirely via [autoSaveEdits:false](../classes/ListGrid_1.md#attr-listgridautosaveedits), in which case a manual call to [saveEdits()](../classes/ListGrid_2.md#method-listgridsaveedits) or [saveAllEdits()](../classes/ListGrid_2.md#method-listgridsavealledits) is required to trigger saving.
 
-If a grid has no DataSource, saving means that the properties of the [ListGridRecord](../main_2.md#object-listgridrecord)s in [grid.data](../classes/ListGrid_1.md#attr-listgriddata) are directly changed.
+If a grid has no DataSource, saving means that the properties of the [ListGridRecord](../reference_2.md#object-listgridrecord)s in [grid.data](../classes/ListGrid_1.md#attr-listgriddata) are directly changed.
 
 For a grid with a DataSource, saving will be accomplished by using DataSource "update" operations for existing records, and DataSource "add" operations for new records. If multiple records have been edited and [saveAllEdits()](../classes/ListGrid_2.md#method-listgridsavealledits) is called, [request queuing](../classes/RPCManager.md#classmethod-rpcmanagerstartqueue) will be automatically used to enable all edits to be saved in one HTTP turnaround (if using the SmartClient Server).
 
@@ -40,7 +40,7 @@ Similar to editing and saving, validation can be done on row transitions or on c
 
 **Editability of cells**
 
-Editors will either be shown for the complete row or for a single cell based on [editByCell,editByCell](../classes/ListGrid_1.md#class-listgrid). Whether a cell can be edited can be controlled on a per field basis by setting [field.canEdit](../classes/ListGridField.md#attr-listgridfieldcanedit), or on a per-record basis by setting [recordEditProperty](../classes/ListGrid_1.md#attr-listgridrecordeditproperty) on a [record](../main_2.md#object-listgridrecord), or can be controlled on an arbitrary, programmatic basis via an override of [ListGrid.canEditCell](../classes/ListGrid_2.md#method-listgridcaneditcell).
+Editors will either be shown for the complete row or for a single cell based on [editByCell,editByCell](../classes/ListGrid_1.md#class-listgrid). Whether a cell can be edited can be controlled on a per field basis by setting [field.canEdit](../classes/ListGridField.md#attr-listgridfieldcanedit), or on a per-record basis by setting [recordEditProperty](../classes/ListGrid_1.md#attr-listgridrecordeditproperty) on a [record](../reference_2.md#object-listgridrecord), or can be controlled on an arbitrary, programmatic basis via an override of [ListGrid.canEditCell](../classes/ListGrid_2.md#method-listgridcaneditcell).
 
 Cells which are not editable just display the cell's current value.
 
@@ -78,20 +78,20 @@ You can also install event handlers directly on the FormItem-based editors used 
 
 **Binary Fields**
 
-The ListGrid will automatically show "view" and "download" icon buttons for binary field types (see [ListGridFieldType](../main.md#type-listgridfieldtype)). However, you cannot use an upload control embedded within a ListGrid row to upload files (regardless of whether you use FileItem or UploadItem). This is because, in the browser's security model, native HTML upload controls cannot be re-created and populated with a chosen file, and the ListGrid needs to be able to re-create editors at any time in order to handle loading data on scroll, scrolling editors in and out of view, adding new rows, changing sort direction, and other use cases.
+The ListGrid will automatically show "view" and "download" icon buttons for binary field types (see [ListGridFieldType](../reference.md#type-listgridfieldtype)). However, you cannot use an upload control embedded within a ListGrid row to upload files (regardless of whether you use FileItem or UploadItem). This is because, in the browser's security model, native HTML upload controls cannot be re-created and populated with a chosen file, and the ListGrid needs to be able to re-create editors at any time in order to handle loading data on scroll, scrolling editors in and out of view, adding new rows, changing sort direction, and other use cases.
 
 However you _can_ create an editor with a [FormItem icon](../classes/FormItem.md#attr-formitemicons) that pops up a separate Window containing a FileItem in a DynamicForm, so long as the form in the Window saves the uploaded file immediately rather than trying to have the grid perform the save.
 
 ### Related
 
-- [RowEndEditAction](../main.md#type-rowendeditaction)
-- [EnterKeyEditAction](../main.md#type-enterkeyeditaction)
-- [EscapeKeyEditAction](../main.md#type-escapekeyeditaction)
-- [ArrowKeyEditAction](../main.md#type-arrowkeyeditaction)
-- [EditCompletionEvent](../main_2.md#type-editcompletionevent)
-- [ListGridEditEvent](../main.md#type-listgrideditevent)
-- [InlineEditEvent](../main.md#type-inlineeditevent)
-- [SearchEditorMode](../main.md#type-searcheditormode)
+- [RowEndEditAction](../reference.md#type-rowendeditaction)
+- [EnterKeyEditAction](../reference.md#type-enterkeyeditaction)
+- [EscapeKeyEditAction](../reference.md#type-escapekeyeditaction)
+- [ArrowKeyEditAction](../reference.md#type-arrowkeyeditaction)
+- [EditCompletionEvent](../reference_2.md#type-editcompletionevent)
+- [ListGridEditEvent](../reference.md#type-listgrideditevent)
+- [InlineEditEvent](../reference.md#type-inlineeditevent)
+- [SearchEditorMode](../reference.md#type-searcheditormode)
 - [DataBoundComponent.fieldIsEditable](../classes/DataBoundComponent.md#method-databoundcomponentfieldiseditable)
 - [CubeGrid.setEditValue](../classes/CubeGrid.md#method-cubegridseteditvalue)
 - [CubeGrid.getEditValue](../classes/CubeGrid.md#method-cubegridgeteditvalue)

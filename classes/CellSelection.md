@@ -1,6 +1,6 @@
 # CellSelection Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -20,8 +20,8 @@ select a single cell and deselect everything else
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| rowNum | [int](../main.md#type-int) | false | — | row index of cell to select |
-| colNum | [int](../main.md#type-int) | false | — | column index of cell to select |
+| rowNum | [int](../reference.md#type-int) | false | — | row index of cell to select |
+| colNum | [int](../reference.md#type-int) | false | — | column index of cell to select |
 
 ### Returns
 
@@ -65,8 +65,8 @@ Deselect a particular cell
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| rowNum | [int](../main.md#type-int) | false | — | row index of the cell to select |
-| colNum | [int](../main.md#type-int) | false | — | column index of the cell to select |
+| rowNum | [int](../reference.md#type-int) | false | — | row index of the cell to select |
+| colNum | [int](../reference.md#type-int) | false | — | column index of the cell to select |
 
 ### Returns
 
@@ -90,7 +90,7 @@ select an array of cells
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true == selection actually changed, false == no change
+`[boolean](../reference.md#type-boolean)` — true == selection actually changed, false == no change
 
 ### Groups
 
@@ -106,8 +106,8 @@ Return true if a particular item is selected
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| rowNum | [int](../main.md#type-int) | false | — | row index of the cell to check |
-| colNum | [int](../main.md#type-int) | false | — | column index of the cell to check |
+| rowNum | [int](../reference.md#type-int) | false | — | row index of the cell to check |
+| colNum | [int](../reference.md#type-int) | false | — | column index of the cell to check |
 
 ### Returns
 
@@ -127,8 +127,8 @@ Select a particular cell
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| rowNum | [int](../main.md#type-int) | false | — | row index of cell to select |
-| colNum | [int](../main.md#type-int) | false | — | column index of cell to select |
+| rowNum | [int](../reference.md#type-int) | false | — | row index of cell to select |
+| colNum | [int](../reference.md#type-int) | false | — | column index of cell to select |
 
 ### Returns
 
@@ -152,7 +152,7 @@ deselect an array of cells
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true == selection actually changed, false == no change
+`[boolean](../reference.md#type-boolean)` — true == selection actually changed, false == no change
 
 ### Groups
 

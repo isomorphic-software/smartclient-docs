@@ -1,6 +1,6 @@
 # DetailViewerField Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -123,7 +123,7 @@ Specifies the type of this DetailViewerField. By default (value is `null`) the f
 *   "header" - If you specify type "header", the field spans both the field name and field value columns and contains text defined in the [DetailViewerField.value](#attr-detailviewerfieldvalue) attribute with the style specified by [DetailViewer.headerStyle](DetailViewer.md#attr-detailviewerheaderstyle). You can use this field type as a titled separator.
 *   "separator" - If you specify type "separator", the field spans both the field name and the field value columns with no text, and is styled using the style specified via [DetailViewer.separatorStyle](DetailViewer.md#attr-detailviewerseparatorstyle). The height of the separator field can be controlled via [DetailViewerField.height](#attr-detailviewerfieldheight).
 *   "image" For viewing, a thumbnail image is rendered in the field. The URL of the image is the value of the field, and should be absolute. The size of the image is controlled by [DetailViewerField.imageSize](#attr-detailviewerfieldimagesize), [DetailViewerField.imageWidth](#attr-detailviewerfieldimagewidth), [DetailViewerField.imageHeight](#attr-detailviewerfieldimageheight)
-*   "link" For viewing, a clickable html link (using an HTML anchor tag: `<A>`) is rendered in the field. The target URL is the value of the field, which is also the default display value. You can override the display value by setting [DetailViewerRecord.linkText](../main.md#attr-detailviewerrecordlinktext) or [DetailViewerField.linkText](#attr-detailviewerfieldlinktext).
+*   "link" For viewing, a clickable html link (using an HTML anchor tag: `<A>`) is rendered in the field. The target URL is the value of the field, which is also the default display value. You can override the display value by setting [DetailViewerRecord.linkText](../reference.md#attr-detailviewerrecordlinktext) or [DetailViewerField.linkText](#attr-detailviewerfieldlinktext).
     
     Clicking the link opens the URL in a new window by default. To change this behavior, you can set `field.target`, which works identically to the "target" attribute on an HTML anchor (`<A>`) tag. See [DetailViewerField.target](#attr-detailviewerfieldtarget) for more information.
 
@@ -153,7 +153,7 @@ If this field has type set to `"image"` and the URL for the image displayed is n
 ## Attr: DetailViewerField.format
 
 ### Description
-[FormatString](../main.md#type-formatstring) for numeric or date formatting. See [DataSourceField.format](DataSourceField.md#attr-datasourcefieldformat).
+[FormatString](../reference.md#type-formatstring) for numeric or date formatting. See [DataSourceField.format](DataSourceField.md#attr-datasourcefieldformat).
 
 ### Groups
 
@@ -165,7 +165,7 @@ If this field has type set to `"image"` and the URL for the image displayed is n
 ## Attr: DetailViewerField.exportFormat
 
 ### Description
-[FormatString](../main.md#type-formatstring) used during exports for numeric or date formatting. See [DataSourceField.exportFormat](DataSourceField.md#attr-datasourcefieldexportformat).
+[FormatString](../reference.md#type-formatstring) used during exports for numeric or date formatting. See [DataSourceField.exportFormat](DataSourceField.md#attr-datasourcefieldexportformat).
 
 ### Groups
 
@@ -227,7 +227,7 @@ Summary definition for this field.
 ### Description
 Name property used to identify the field, and determines which attribute from records will be displayed in this field.
 
-Must be unique within the DetailViewer as well as a valid JavaScript identifier - see [FieldName](../main.md#type-fieldname) for details and how to check for validity.
+Must be unique within the DetailViewer as well as a valid JavaScript identifier - see [FieldName](../reference.md#type-fieldname) for details and how to check for validity.
 
 The attribute of the records to display in this field may also be set by [DetailViewerField.displayField](#attr-detailviewerfielddisplayfield).
 
@@ -324,12 +324,12 @@ If set to a String, assumed to be a property on each record that specifies the i
 ### Description
 The HTML to display for values of this field if the field type is set to "link".
 
-This property sets linkText that will be the same for all records. You can set linkText on a per-record basis via [DetailViewerRecord.linkText](../main.md#attr-detailviewerrecordlinktext).
+This property sets linkText that will be the same for all records. You can set linkText on a per-record basis via [DetailViewerRecord.linkText](../reference.md#attr-detailviewerrecordlinktext).
 
 ### See Also
 
 - [DetailViewerField.type](#attr-detailviewerfieldtype)
-- [DetailViewerRecord.linkText](../main.md#attr-detailviewerrecordlinktext)
+- [DetailViewerRecord.linkText](../reference.md#attr-detailviewerrecordlinktext)
 - [DetailViewer.linkTextProperty](DetailViewer.md#attr-detailviewerlinktextproperty)
 - [DetailViewerField.linkTextProperty](#attr-detailviewerfieldlinktextproperty)
 
@@ -373,7 +373,7 @@ Display format to use for date type values within this field.
 
 The [DetailViewerField.timeFormatter](#attr-detailviewerfieldtimeformatter) may also be used to format underlying Date values as times (omitting the date part entirely). If both `dateFormatter` and `timeFormatter` are specified on a field, for fields specified as [type "time"](#attr-detailviewerfieldtype) the `timeFormatter` will be used, otherwise the `dateFormatter`
 
-If `field.dateFormatter` and `field.timeFormatter` is unspecified, date display format may be defined at the component level via [DetailViewer.dateFormatter](DetailViewer.md#attr-detailviewerdateformatter), or for fields of type `"datetime"` [DetailViewer.datetimeFormatter](DetailViewer.md#attr-detailviewerdatetimeformatter). Otherwise the default is to use the system-wide default normal date format, configured via [DateUtil.setNormalDisplayFormat](DateUtil.md#classmethod-dateutilsetnormaldisplayformat). Specify any valid [DateDisplayFormat](../main.md#type-datedisplayformat) to change the format used by this item.
+If `field.dateFormatter` and `field.timeFormatter` is unspecified, date display format may be defined at the component level via [DetailViewer.dateFormatter](DetailViewer.md#attr-detailviewerdateformatter), or for fields of type `"datetime"` [DetailViewer.datetimeFormatter](DetailViewer.md#attr-detailviewerdatetimeformatter). Otherwise the default is to use the system-wide default normal date format, configured via [DateUtil.setNormalDisplayFormat](DateUtil.md#classmethod-dateutilsetnormaldisplayformat). Specify any valid [DateDisplayFormat](../reference.md#type-datedisplayformat) to change the format used by this item.
 
 ### See Also
 
@@ -449,7 +449,7 @@ Name of the property in a DetailViewerRecord that holds the HTML to display for 
 ### See Also
 
 - [DetailViewerField.type](#attr-detailviewerfieldtype)
-- [DetailViewerRecord.linkText](../main.md#attr-detailviewerrecordlinktext)
+- [DetailViewerRecord.linkText](../reference.md#attr-detailviewerrecordlinktext)
 - [DetailViewerField.linkText](#attr-detailviewerfieldlinktext)
 - [DetailViewer.linkTextProperty](DetailViewer.md#attr-detailviewerlinktextproperty)
 
@@ -477,7 +477,7 @@ This is the field-specific attribute. You may also set the emptyCellValue at the
 ## Attr: DetailViewerField.hiliteIconPosition
 
 ### Description
-When [DetailViewer.hiliteIcons](DetailViewer.md#attr-detailviewerhiliteicons) are present, where the hilite icon will be placed relative to the field value. See [HiliteIconPosition](../main_2.md#type-hiliteiconposition). Overrides [DetailViewer.hiliteIconPosition](DetailViewer.md#attr-detailviewerhiliteiconposition)
+When [DetailViewer.hiliteIcons](DetailViewer.md#attr-detailviewerhiliteicons) are present, where the hilite icon will be placed relative to the field value. See [HiliteIconPosition](../reference_2.md#type-hiliteiconposition). Overrides [DetailViewer.hiliteIconPosition](DetailViewer.md#attr-detailviewerhiliteiconposition)
 
 ### Groups
 
@@ -514,7 +514,7 @@ This method can be specified either as a function or a string that will be auto-
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true to show the field, false to not show it.
+`[boolean](../reference.md#type-boolean)` — true to show the field, false to not show it.
 
 ---
 ## Method: DetailViewerField.formatCellValue
@@ -542,13 +542,13 @@ Optional method to return the CSS class for cells in this field. If specified, t
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | value | [String](#type-string) | false | — | actual value of this cell |
-| field | [Object](../main.md#type-object) | false | — | field object for this cell |
-| record | [Object](../main.md#type-object) | false | — | record object for this cell |
+| field | [Object](../reference.md#type-object) | false | — | field object for this cell |
+| record | [Object](../reference.md#type-object) | false | — | record object for this cell |
 | viewer | [DetailViewer](#type-detailviewer) | false | — | the viewer instance to which this cell belongs |
 
 ### Returns
 
-`[CSSStyleName](../main.md#type-cssstylename)` — CSS style for this cell
+`[CSSStyleName](../reference.md#type-cssstylename)` — CSS style for this cell
 
 ### Groups
 

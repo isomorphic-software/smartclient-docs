@@ -1,6 +1,6 @@
 # SavedSearchItem Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -11,15 +11,15 @@
 ### Description
 (SSI for short) Provides a UI for creating, editing and applying saved searches for a [target](#attr-savedsearchitemtargetcomponent) using the [SavedSearches](SavedSearches.md#class-savedsearches) system.
 
-Normally, a `SavedSearchItem` is just provided a [targetComponent](#attr-savedsearchitemtargetcomponent), and all other configuration comes from the central [SavedSearches](SavedSearches.md#class-savedsearches) class by default. The `targetComponent` must be a [DataBoundComponent](../main.md#interface-databoundcomponent) with a [DataSource configured](DataBoundComponent.md#attr-databoundcomponentdatasource).
+Normally, a `SavedSearchItem` is just provided a [targetComponent](#attr-savedsearchitemtargetcomponent), and all other configuration comes from the central [SavedSearches](SavedSearches.md#class-savedsearches) class by default. The `targetComponent` must be a [DataBoundComponent](../reference.md#interface-databoundcomponent) with a [DataSource configured](DataBoundComponent.md#attr-databoundcomponentdatasource).
 
 Searches are applied to the target by calling [DataBoundComponent.fetchData](#method-databoundcomponentfetchdata), or, for ListGrids, by calling [ListGrid.setViewState](ListGrid_2.md#method-listgridsetviewstate). If [SavedSearchItem.saveLastSearch](#attr-savedsearchitemsavelastsearch) is set, the name of the last search is automatically stored in browser `localStorage`, and will be applied to the `targetComponent` as soon as saved searches are loaded.
 
 By default, `SavedSearchItem` acquires the [default DataSource for storing searches](SavedSearches.md#attr-savedsearchesdefaultdatasource) and uses it as [SelectItem.optionDataSource](SelectItem.md#attr-selectitemoptiondatasource). The displayed value is the user's name for the search (from [SavedSearches.searchNameField](SavedSearches.md#attr-savedsearchessearchnamefield)) followed by a user-readable summary of the stored search, derived from [DataSource.getAdvancedCriteriaDescription](DataSource.md#classmethod-datasourcegetadvancedcriteriadescription), with a hover to show long values that may be clipped.
 
-If [adding searches is allowed](#attr-savedsearchitemcanaddsearch), the `SavedSearchItem` either shows a [FormItemIcon](../main.md#object-formitemicon) ([SavedSearchItem.addSearchIcon](#attr-savedsearchitemaddsearchicon)) or a pickList entry for adding searches ([SavedSearchItem.addSearchValue](#attr-savedsearchitemaddsearchvalue)). Either interface opens an [EditSearchWindow](../main.md#class-editsearchwindow).
+If [adding searches is allowed](#attr-savedsearchitemcanaddsearch), the `SavedSearchItem` either shows a [FormItemIcon](../reference.md#object-formitemicon) ([SavedSearchItem.addSearchIcon](#attr-savedsearchitemaddsearchicon)) or a pickList entry for adding searches ([SavedSearchItem.addSearchValue](#attr-savedsearchitemaddsearchvalue)). Either interface opens an [EditSearchWindow](../reference.md#class-editsearchwindow).
 
-The [PickList](../main_2.md#interface-picklist) is automatically configured to show the search name plus the search description (via [pickListFields](#attr-savedsearchitempicklistfields)), plus additional columns for icons for [editing](#attr-savedsearchitemeditsearchfield), [removal](#attr-savedsearchitemremovesearchfield), [copying existing searches](#attr-savedsearchitemcopysearchfield), and [choosing a default search](#attr-savedsearchitemmarkasdefaultfield).
+The [PickList](../reference_2.md#interface-picklist) is automatically configured to show the search name plus the search description (via [pickListFields](#attr-savedsearchitempicklistfields)), plus additional columns for icons for [editing](#attr-savedsearchitemeditsearchfield), [removal](#attr-savedsearchitemremovesearchfield), [copying existing searches](#attr-savedsearchitemcopysearchfield), and [choosing a default search](#attr-savedsearchitemmarkasdefaultfield).
 
 Admin-configured searches are displayed after user-created searches, after a [separator](#attr-savedsearchitemadminseparatorrecord).
 
@@ -213,7 +213,7 @@ ListGridField shown in the pickList to allow users to designate which field is t
 ## Attr: SavedSearchItem.addSearchIcon
 
 ### Description
-Icon to be used to show the [EditSearchWindow](../main.md#class-editsearchwindow).
+Icon to be used to show the [EditSearchWindow](../reference.md#class-editsearchwindow).
 
 **Flags**: IR
 
@@ -297,7 +297,7 @@ HTML string to append to the search title in the search name field if this is th
 ## Attr: SavedSearchItem.editSearchWindow
 
 ### Description
-Modal pop-up window shown when the user adds or edits a search, instance of of [EditSearchWindow](../main.md#class-editsearchwindow).
+Modal pop-up window shown when the user adds or edits a search, instance of of [EditSearchWindow](../reference.md#class-editsearchwindow).
 
 **Flags**: IR
 
@@ -415,12 +415,12 @@ If a [SavedSearchItem.targetComponent](#attr-savedsearchitemtargetcomponent) has
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newCriteria | [Criteria](../main_2.md#type-criteria) | false | — | new criteria |
+| newCriteria | [Criteria](../reference_2.md#type-criteria) | false | — | new criteria |
 | searchData | [Record](#type-record) | false | — | savedSearch record |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — whether to automatically apply the search to the [SavedSearchItem.targetComponent](#attr-savedsearchitemtargetcomponent)
+`[boolean](../reference.md#type-boolean)` — whether to automatically apply the search to the [SavedSearchItem.targetComponent](#attr-savedsearchitemtargetcomponent)
 
 ---
 ## Method: SavedSearchItem.setTargetComponent

@@ -1,6 +1,6 @@
 # autoChildren
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -229,7 +229,7 @@ For example:
 
 ### Related
 
-- [AutoChild](../main.md#type-autochild)
+- [AutoChild](../reference.md#type-autochild)
 - [Class.addAutoChild](../classes/Class.md#method-classaddautochild)
 - [Class.createAutoChild](../classes/Class.md#method-classcreateautochild)
 - [Class.creator](../classes/Class.md#attr-classcreator)

@@ -1,12 +1,12 @@
 # SectionStack Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
 ## Class: SectionStack
 
-*Inherits from:* [VLayout](../main.md#class-vlayout)
+*Inherits from:* [VLayout](../reference.md#class-vlayout)
 
 ### Description
 A container that manages a list of sections of widgets, each with a header. Sometimes called an "Accordion".
@@ -211,7 +211,7 @@ Should any specified [SectionStackSection.ID](SectionStackSection.md#attr-sectio
 ## Attr: SectionStack.locateSectionsType
 
 ### Description
-[LocatorTypeStrategy](../main.md#type-locatortypestrategy) to use when finding Sections within this section Stack.
+[LocatorTypeStrategy](../reference.md#type-locatortypestrategy) to use when finding Sections within this section Stack.
 
 ### Groups
 
@@ -280,7 +280,7 @@ Note that, with `canReorderSections:true`, sections with [section.canReorder:fal
 ## Attr: SectionStack.overflow
 
 ### Description
-Normal [Overflow](../main.md#type-overflow) settings can be used on layouts, for example, an overflow:auto Layout will scroll if sections are resized to exceed the specified size, whereas an overflow:visible Layout will grow to accommodate the resized sections.
+Normal [Overflow](../reference.md#type-overflow) settings can be used on layouts, for example, an overflow:auto Layout will scroll if sections are resized to exceed the specified size, whereas an overflow:visible Layout will grow to accommodate the resized sections.
 
 **Flags**: IRW
 
@@ -361,7 +361,7 @@ Also note that to modify properties of items within a section, call the appropri
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| section | [String](#type-string)|[int](../main.md#type-int) | false | — | ID or index of the section to modify |
+| section | [String](#type-string)|[int](../reference.md#type-int) | false | — | ID or index of the section to modify |
 | properties | [SectionStackSection Properties](#type-sectionstacksection-properties) | false | — | properties to apply to the section. |
 
 ---
@@ -374,11 +374,11 @@ Returns true if the specified section is visible, false if it is not. A section 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| section | [int](../main.md#type-int)|[String](#type-string) | false | — | Section for which you want to obtain visibility information. For this parameter, you can pass the position of the section in the SectionStack, or the name of the section. |
+| section | [int](../reference.md#type-int)|[String](#type-string) | false | — | Section for which you want to obtain visibility information. For this parameter, you can pass the position of the section in the SectionStack, or the name of the section. |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true if the section is visible, false if it is not.
+`[boolean](../reference.md#type-boolean)` — true if the section is visible, false if it is not.
 
 ---
 ## Method: SectionStack.setAnimateSections
@@ -390,7 +390,7 @@ setter for [SectionStack.animateSections](#attr-sectionstackanimatesections)
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| shouldAnimate | [boolean](../main.md#type-boolean) | false | — | Should expand/collapse of section be animated? |
+| shouldAnimate | [boolean](../reference.md#type-boolean) | false | — | Should expand/collapse of section be animated? |
 
 ---
 ## Method: SectionStack.setSectionTitle
@@ -415,7 +415,7 @@ Expands a section or sections. This action shows all the items assigned to the s
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| sections | [int](../main.md#type-int)|[String](#type-string)|[Array of int](#type-array-of-int)|[Array of String](#type-array-of-string) | false | — | Section(s) to expand. For this parameter, you can pass the position of the section in the SectionStack, the name of the section, or a List of section names/positions. |
+| sections | [int](../reference.md#type-int)|[String](#type-string)|[Array of int](#type-array-of-int)|[Array of String](#type-array-of-string) | false | — | Section(s) to expand. For this parameter, you can pass the position of the section in the SectionStack, the name of the section, or a List of section names/positions. |
 | callback | [ExpandSectionCallback](#type-expandsectioncallback) | true | — | callback to fire when the section has been expanded. |
 
 ### See Also
@@ -443,7 +443,7 @@ Reorder the sections by shifting the specified section to a new position
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| section | [Integer](../main_2.md#type-integer)|[String](#type-string) | false | — | Section to move. You can pass the position of the section in the SectionStack or the name of the section. |
+| section | [Integer](../reference_2.md#type-integer)|[String](#type-string) | false | — | Section to move. You can pass the position of the section in the SectionStack or the name of the section. |
 | position | [number](#type-number) | false | — | new position index for the section. |
 
 **Deprecated**
@@ -458,11 +458,11 @@ Returns true if the specified section is expanded, false if it is collapsed.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| section | [int](../main.md#type-int)|[String](#type-string) | false | — | Section for which you want to obtain information. For this parameter, you can pass the position of the section in the SectionStack, or the name of the section. |
+| section | [int](../reference.md#type-int)|[String](#type-string) | false | — | Section for which you want to obtain information. For this parameter, you can pass the position of the section in the SectionStack, or the name of the section. |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true if the section is expanded, false if it is not.
+`[boolean](../reference.md#type-boolean)` — true if the section is expanded, false if it is not.
 
 ---
 ## Method: SectionStack.showSection
@@ -474,7 +474,7 @@ Shows a section or sections. This includes the section header and its items. If 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| sections | [int](../main.md#type-int)|[String](#type-string)|[Array of int](#type-array-of-int)|[Array of String](#type-array-of-string) | false | — | Section(s) to show. For this parameter, you can pass the position of the section in the SectionStack, the name of the section, or a List of section names / positions. |
+| sections | [int](../reference.md#type-int)|[String](#type-string)|[Array of int](#type-array-of-int)|[Array of String](#type-array-of-string) | false | — | Section(s) to show. For this parameter, you can pass the position of the section in the SectionStack, the name of the section, or a List of section names / positions. |
 | callback | [ShowSectionCallback](#type-showsectioncallback) | true | — | callback to fire when the sections have been shown. |
 
 ### See Also
@@ -492,7 +492,7 @@ Reveals the child Canvas passed in by expanding the section containing that chil
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| child | [GlobalId](../main.md#type-globalid)|[Canvas](#type-canvas) | false | — | the child Canvas to reveal, or its global ID |
+| child | [GlobalId](../reference.md#type-globalid)|[Canvas](#type-canvas) | false | — | the child Canvas to reveal, or its global ID |
 
 ---
 ## Method: SectionStack.sectionForItem
@@ -524,8 +524,8 @@ Moves the specified section(s) to a new position in the SectionStack order. If y
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| sections | [int](../main.md#type-int)|[String](#type-string)|[Array of int](#type-array-of-int)|[Array of String](#type-array-of-string) | false | — | Section(s) to move. For this parameter, you can pass the position of the section in the SectionStack, the name of the section, or a List of section names/positions. |
-| position | [int](../main.md#type-int) | false | — | new position index for the section(s). |
+| sections | [int](../reference.md#type-int)|[String](#type-string)|[Array of int](#type-array-of-int)|[Array of String](#type-array-of-string) | false | — | Section(s) to move. For this parameter, you can pass the position of the section in the SectionStack, the name of the section, or a List of section names/positions. |
+| position | [int](../reference.md#type-int) | false | — | new position index for the section(s). |
 
 ---
 ## Method: SectionStack.collapseSection
@@ -537,7 +537,7 @@ Collapse a section or sections. This action hides all the items assigned to the 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| sections | [int](../main.md#type-int)|[String](#type-string)|[Array of int](#type-array-of-int)|[Array of String](#type-array-of-string) | false | — | Section(s) to collapse. For this parameter, you can pass the position of the section in the SectionStack, the name of the section, or a List of section positions / names |
+| sections | [int](../reference.md#type-int)|[String](#type-string)|[Array of int](#type-array-of-int)|[Array of String](#type-array-of-string) | false | — | Section(s) to collapse. For this parameter, you can pass the position of the section in the SectionStack, the name of the section, or a List of section positions / names |
 | callback | [CollapseSectionCallback](#type-collapsesectioncallback) | true | — | callback to fire when the section has been collapsed |
 
 ### See Also
@@ -618,7 +618,7 @@ Setter for [SectionStack.visibilityMode](#attr-sectionstackvisibilitymode).
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newVisibilityMode | [VisibilityMode](../main.md#type-visibilitymode) | false | — | new `visibilityMode` setting. If this is "mutex" then all but the first expanded section is collapsed. |
+| newVisibilityMode | [VisibilityMode](../reference.md#type-visibilitymode) | false | — | new `visibilityMode` setting. If this is "mutex" then all but the first expanded section is collapsed. |
 
 ---
 ## Method: SectionStack.getVisibleSections
@@ -670,7 +670,7 @@ Remove a section or set of sections from the SectionStack. The removed sections'
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| sections | [int](../main.md#type-int)|[String](#type-string)|[Array of int](#type-array-of-int)|[Array of String](#type-array-of-string) | false | — | Section(s) to remove. For this parameter, you can pass the position of the section in the SectionStack, the `name` of the section, or a List of section `name`s or indices. |
+| sections | [int](../reference.md#type-int)|[String](#type-string)|[Array of int](#type-array-of-int)|[Array of String](#type-array-of-string) | false | — | Section(s) to remove. For this parameter, you can pass the position of the section in the SectionStack, the `name` of the section, or a List of section `name`s or indices. |
 
 ---
 ## Method: SectionStack.hideSection
@@ -682,7 +682,7 @@ Hides a section or sections. This includes the section header and its items. The
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| sections | [int](../main.md#type-int)|[String](#type-string)|[Array of int](#type-array-of-int)|[Array of String](#type-array-of-string) | false | — | Section(s) to hide. For this parameter, you can pass the position of the section in the SectionStack, the name of the section, or a List of section names / positions. |
+| sections | [int](../reference.md#type-int)|[String](#type-string)|[Array of int](#type-array-of-int)|[Array of String](#type-array-of-string) | false | — | Section(s) to hide. For this parameter, you can pass the position of the section in the SectionStack, the name of the section, or a List of section names / positions. |
 | callback | [HideSectionCallback](#type-hidesectioncallback) | true | — | to fire when the section has been hidden |
 
 ### See Also

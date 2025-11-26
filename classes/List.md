@@ -1,6 +1,6 @@
 # List Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -73,12 +73,12 @@ Add a single item to this array at a specific position in the list, sliding othe
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| obj | [Object](../main.md#type-object) | false | — | object to add |
+| obj | [Object](../reference.md#type-object) | false | — | object to add |
 | pos | [number](#type-number) | false | — | position in the list to add at |
 
 ### Returns
 
-`[Object](../main.md#type-object)` — object that was added
+`[Object](../reference.md#type-object)` — object that was added
 
 ### Groups
 
@@ -182,7 +182,7 @@ Return the item at a particular position
 
 ### Returns
 
-`[Object](../main.md#type-object)` — whatever's at that position, or `undefined` if not found
+`[Object](../reference.md#type-object)` — whatever's at that position, or `undefined` if not found
 
 ### Groups
 
@@ -202,7 +202,7 @@ Return whether this list contains all the item in the specified list.
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — whether all items were found
+`[boolean](../reference.md#type-boolean)` — whether all items were found
 
 ### Groups
 
@@ -222,12 +222,12 @@ Note: for string values, matches are case sensitive.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| propertyName | [String](#type-string)|[Object](../main.md#type-object)|[AdvancedCriteria](#type-advancedcriteria) | false | — | property to match, or if an Object is passed, set of properties and values to match |
+| propertyName | [String](#type-string)|[Object](../reference.md#type-object)|[AdvancedCriteria](#type-advancedcriteria) | false | — | property to match, or if an Object is passed, set of properties and values to match |
 | value | [Any](#type-any) | true | — | value to compare against (if propertyName is a string) |
 
 ### Returns
 
-`[int](../main.md#type-int)` — index of the first matching Object or -1 if not found
+`[int](../reference.md#type-int)` — index of the first matching Object or -1 if not found
 
 ### Groups
 
@@ -287,7 +287,7 @@ If pos is specified, starts looking after that position.
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true == item was found, false == not found
+`[boolean](../reference.md#type-boolean)` — true == item was found, false == not found
 
 ### Groups
 
@@ -309,7 +309,7 @@ Two lists are equal only if they have the same length and all contained items ar
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — whether the specified list is equal to this list
+`[boolean](../reference.md#type-boolean)` — whether the specified list is equal to this list
 
 ### Groups
 
@@ -327,7 +327,7 @@ Pass an Object as the `propertyName` argument to match multiple properties.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| propertyName | [String](#type-string)|[Object](../main.md#type-object)|[AdvancedCriteria](#type-advancedcriteria) | false | — | property to match, or if an Object is passed, set of properties and values to match |
+| propertyName | [String](#type-string)|[Object](../reference.md#type-object)|[AdvancedCriteria](#type-advancedcriteria) | false | — | property to match, or if an Object is passed, set of properties and values to match |
 | value | [Any](#type-any) | true | — | value to compare against (if propertyName is a string) |
 
 ### Returns
@@ -378,8 +378,8 @@ NOTE: string sort is case INsensitive by default
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | property | [String](#type-string) | false | — | name of the property to sort by |
-| up | [boolean](../main.md#type-boolean) | false | — | true == sort ascending, false == sort descending |
-| normalizer | [Function](#type-function)|[ValueMap](../main_2.md#type-valuemap) | true | — | May be specified as a function, with signature `normalize(item, propertyName, context)`, where `item` is a pointer to the item in the array, `propertyName` is the property by which the array is being sorted, and `context` is the arbitrary context passed into this method. Normalizer function should return the value normalized for sorting.  
+| up | [boolean](../reference.md#type-boolean) | false | — | true == sort ascending, false == sort descending |
+| normalizer | [Function](#type-function)|[ValueMap](../reference_2.md#type-valuemap) | true | — | May be specified as a function, with signature `normalize(item, propertyName, context)`, where `item` is a pointer to the item in the array, `propertyName` is the property by which the array is being sorted, and `context` is the arbitrary context passed into this method. Normalizer function should return the value normalized for sorting.  
 May also be specified as a ValueMap which maps property values to sortable values. |
 | context | [Any](#type-any) | true | — | Callers may pass an arbitrary context into the sort method, which will then be made available to the normalizer function |
 
@@ -431,14 +431,14 @@ var currentUserRecord = recordList.findNextIndex(0, function (record, i, recordL
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| startIndex | [int](../main.md#type-int) | false | — | first index to consider. |
-| propertyName | [String](#type-string)|[Function](#type-function)|[Object](../main.md#type-object)|[AdvancedCriteria](#type-advancedcriteria) | false | — | property to match; or, if a function is passed, the predicate function to call; or, if an object is passed, set of properties and values to match. |
+| startIndex | [int](../reference.md#type-int) | false | — | first index to consider. |
+| propertyName | [String](#type-string)|[Function](#type-function)|[Object](../reference.md#type-object)|[AdvancedCriteria](#type-advancedcriteria) | false | — | property to match; or, if a function is passed, the predicate function to call; or, if an object is passed, set of properties and values to match. |
 | value | [Any](#type-any) | true | — | value to compare against (if `propertyName` is a string) or the value of `this` when the predicate function is invoked (if `propertyName` is a function) |
-| endIndex | [int](../main.md#type-int) | true | — | last index to consider (inclusive). |
+| endIndex | [int](../reference.md#type-int) | true | — | last index to consider (inclusive). |
 
 ### Returns
 
-`[int](../main.md#type-int)` — index of the first matching value or -1 if not found.
+`[int](../reference.md#type-int)` — index of the first matching value or -1 if not found.
 
 ### Groups
 
@@ -495,12 +495,12 @@ Like [List.findIndex](#method-listfindindex), but returns the object itself inst
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| propertyName | [String](#type-string)|[Object](../main.md#type-object)|[AdvancedCriteria](#type-advancedcriteria) | false | — | property to match, or if an Object is passed, set of properties and values to match |
+| propertyName | [String](#type-string)|[Object](../reference.md#type-object)|[AdvancedCriteria](#type-advancedcriteria) | false | — | property to match, or if an Object is passed, set of properties and values to match |
 | value | [Any](#type-any) | true | — | value to compare against (if propertyName is a string) |
 
 ### Returns
 
-`[Object](../main.md#type-object)` — first matching object or null if not found
+`[Object](../reference.md#type-object)` — first matching object or null if not found
 
 ### Groups
 
@@ -537,7 +537,7 @@ Remove first instance of the passed object from this array, sliding other items 
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true if a matching object was found and removed, false if no matching object was found and the list remains unchanged.
+`[boolean](../reference.md#type-boolean)` — true if a matching object was found and removed, false if no matching object was found and the list remains unchanged.
 
 ### Groups
 
@@ -596,7 +596,7 @@ Get a map of the form `{ item[idField] -> item[displayField] }`, for all items i
 
 ### Returns
 
-`[Object](../main.md#type-object)` — valueMap object
+`[Object](../reference.md#type-object)` — valueMap object
 
 ---
 ## Method: List.getProperty
@@ -640,7 +640,7 @@ Return whether or not this array is empty
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — true == this array is empty, false == some items in the array
+`[boolean](../reference.md#type-boolean)` — true == this array is empty, false == some items in the array
 
 ### Groups
 
@@ -659,11 +659,11 @@ set() can be used to expand the length of the list.
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | pos | [number](#type-number) | false | — | position in the list to change |
-| obj | [Object](../main.md#type-object) | false | — | new value for that position |
+| obj | [Object](../reference.md#type-object) | false | — | new value for that position |
 
 ### Returns
 
-`[Object](../main.md#type-object)` — previous value at that position, or `undefined` if not found
+`[Object](../reference.md#type-object)` — previous value at that position, or `undefined` if not found
 
 ### Groups
 

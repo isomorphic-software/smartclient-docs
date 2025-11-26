@@ -1,6 +1,6 @@
 # TreeMenuButton Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -15,7 +15,7 @@ _**Important Note:** this class should not be used directly - it is exposed pure
 
 ### See Also
 
-- [SelectionTreeMenu](../main.md#class-selectiontreemenu)
+- [SelectionTreeMenu](../reference.md#class-selectiontreemenu)
 
 ---
 ## Attr: TreeMenuButton.title
@@ -45,7 +45,7 @@ Base style to apply to the selected path within the menu. (The "over" version of
 ## Attr: TreeMenuButton.treeMenuConstructor
 
 ### Description
-Widget class for the menu created by this button. The default is [SelectionTreeMenu](../main.md#class-selectiontreemenu).
+Widget class for the menu created by this button. The default is [SelectionTreeMenu](../reference.md#class-selectiontreemenu).
 
 **Flags**: IR
 

@@ -1,6 +1,6 @@
 # SliderItem Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -43,7 +43,7 @@ Indicates whether this is a vertical or horizontal slider.
 ## Attr: SliderItem.slider
 
 ### Description
-This item is an autoChild generated [Canvas](Canvas.md#class-canvas) displayed by the SliderItem and is an instance of [Slider](Slider.md#class-slider) by default. It is customizable via the standard [AutoChild](../main.md#type-autochild) pattern, by customizing [SliderItem.sliderProperties](#attr-slideritemsliderproperties) and [SliderItem.sliderConstructor](#attr-slideritemsliderconstructor).
+This item is an autoChild generated [Canvas](Canvas.md#class-canvas) displayed by the SliderItem and is an instance of [Slider](Slider.md#class-slider) by default. It is customizable via the standard [AutoChild](../reference.md#type-autochild) pattern, by customizing [SliderItem.sliderProperties](#attr-slideritemsliderproperties) and [SliderItem.sliderConstructor](#attr-slideritemsliderconstructor).
 
 **Flags**: R
 
@@ -149,7 +149,7 @@ Sets the [number of values](Slider.md#attr-slidernumvalues) for the slider
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newNumValues | [Integer](../main_2.md#type-integer) | false | — | the new number of values |
+| newNumValues | [Integer](../reference_2.md#type-integer) | false | — | the new number of values |
 
 ---
 ## Method: SliderItem.setMaxValue
@@ -161,7 +161,7 @@ Sets the [maximum value](Slider.md#attr-slidermaxvalue) of the slider
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newValue | [float](../main.md#type-float) | false | — | the new maximum value |
+| newValue | [float](../reference.md#type-float) | false | — | the new maximum value |
 
 ---
 ## Method: SliderItem.pendingStatusChanged
@@ -177,13 +177,13 @@ The default behavior is that the [titleStyle](FormItem.md#attr-formitemtitlestyl
 |------|------|----------|---------|-------------|
 | form | [DynamicForm](#type-dynamicform) | false | — | the managing `DynamicForm` instance. |
 | item | [FormItem](#type-formitem) | false | — | the form item itself (also available as "this"). |
-| pendingStatus | [boolean](../main.md#type-boolean) | false | — | `true` if the item should show its pending visual state; `false` otherwise. |
+| pendingStatus | [boolean](../reference.md#type-boolean) | false | — | `true` if the item should show its pending visual state; `false` otherwise. |
 | newValue | [Any](#type-any) | false | — | the current form item value. |
 | value | [Any](#type-any) | false | — | the value that would be restored by a call to [DynamicForm.resetValues](DynamicForm.md#method-dynamicformresetvalues). |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — `false` to cancel the default behavior.
+`[boolean](../reference.md#type-boolean)` — `false` to cancel the default behavior.
 
 ---
 ## Method: SliderItem.setMinValue
@@ -195,6 +195,6 @@ Sets the [minimum value](Slider.md#attr-sliderminvalue) of the slider
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newValue | [float](../main.md#type-float) | false | — | the new minimum value |
+| newValue | [float](../reference.md#type-float) | false | — | the new minimum value |
 
 ---

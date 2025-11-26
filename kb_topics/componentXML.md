@@ -1,6 +1,6 @@
 # Component XML
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -178,7 +178,7 @@ Of these, the most interesting and most commonly-used are the first two. `Action
 
 To take the above example, we want to call `viewSelectedData()` on the [DetailViewer](../classes/DetailViewer.md#class-detailviewer), so looking at the documentation for [DetailViewer.viewSelectedData](../classes/DetailViewer.md#method-detailviewerviewselecteddata), we can see that it takes a single parameter of type [ListGrid](../classes/ListGrid_1.md#class-listgrid) or [TileGrid](../classes/TileGrid.md#class-tilegrid), or the ID of a `ListGrid` or `TileGrid`. This parameter tells the `DetailViewer` which component's selected data to show, so we want to pass in the `ListGrid` itself, the component we are declaring this `Action` on.
 
-One way to do this would be to use a mapping of `"this"`. As you can see from the example above, though, there is another way. If we look at the documentation for the event method wrapping our `Action` - [ListGrid.recordClick](../classes/ListGrid_2.md#method-listgridrecordclick) - we will see that it is passed a number of parameters, the first of which is a pointer to the `ListGrid` itself. As the documentation shows, this parameter is called "viewer". Therefore, we can use a `mapping` of "viewer". If we were declaring an `Action` to call a method that requires a [Record](../main.md#object-record) parameter, we can look at the documentation for `recordClick()` again and note that it is also passed the record just clicked, in a parameter called `record`. So our mapping for that `Action` would be "record".
+One way to do this would be to use a mapping of `"this"`. As you can see from the example above, though, there is another way. If we look at the documentation for the event method wrapping our `Action` - [ListGrid.recordClick](../classes/ListGrid_2.md#method-listgridrecordclick) - we will see that it is passed a number of parameters, the first of which is a pointer to the `ListGrid` itself. As the documentation shows, this parameter is called "viewer". Therefore, we can use a `mapping` of "viewer". If we were declaring an `Action` to call a method that requires a [Record](../reference.md#object-record) parameter, we can look at the documentation for `recordClick()` again and note that it is also passed the record just clicked, in a parameter called `record`. So our mapping for that `Action` would be "record".
 
 #### Component XML and global IDs
 

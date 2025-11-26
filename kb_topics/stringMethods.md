@@ -1,13 +1,13 @@
 # String Methods Overview
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
 ## KB Topic: String Methods Overview
 
 ### Description
-A method flagged as a [StringMethod](../main_2.md#type-stringmethod) can be specified as a String containing a valid JavaScript expression. This expression will automatically be converted to a function with a return value matching the value of the last statement. Providing a String is not required - you may use a real function instead.
+A method flagged as a [StringMethod](../reference_2.md#type-stringmethod) can be specified as a String containing a valid JavaScript expression. This expression will automatically be converted to a function with a return value matching the value of the last statement. Providing a String is not required - you may use a real function instead.
 
 For example - suppose you wanted to override the `leafClick()` method on the TreeGrid. Normally you would do so as follows:  
 
@@ -24,7 +24,7 @@ For example - suppose you wanted to override the `leafClick()` method on the Tre
  });
  
 ```
-Since leafClick is a [StringMethod](../main_2.md#type-stringmethod), however, you can shorten this to:  
+Since leafClick is a [StringMethod](../reference_2.md#type-stringmethod), however, you can shorten this to:  
 ```
  TreeGrid.create({
      ...

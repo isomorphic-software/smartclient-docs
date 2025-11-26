@@ -1,6 +1,6 @@
 # HTMLPane Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -23,7 +23,7 @@ You can set the size of an HTMLPane directly via the width and height properties
 ### Description
 If specified the HTMLFlow will load its contents from this URL instead of displaying [this.contents](#attr-htmlpanecontents). May be combined with parameters if [HTMLPane.contentsURLParams](#attr-htmlpanecontentsurlparams) were specified.
 
-The HTML retrieved from the target URL may be a complete standalone page to be rendered into its own scope using an IFRAME, or a fragment of HTML to display within this component's handle. See [ContentsType](../main_2.md#type-contentstype) and [HTMLPane.autoDeriveContentsType](#attr-htmlpaneautoderivecontentstype) for more information.
+The HTML retrieved from the target URL may be a complete standalone page to be rendered into its own scope using an IFRAME, or a fragment of HTML to display within this component's handle. See [ContentsType](../reference_2.md#type-contentstype) and [HTMLPane.autoDeriveContentsType](#attr-htmlpaneautoderivecontentstype) for more information.
 
 Note that the link{loadingMessage} and [httpMethod](HTMLFlow.md#attr-htmlflowhttpmethod) features only apply if contentsURL was set and contentsType was not explicitly set to `"page"`
 
@@ -39,7 +39,7 @@ Note that the link{loadingMessage} and [httpMethod](HTMLFlow.md#attr-htmlflowhtt
 ### Description
 The `contentsType` attribute governs whether the contents of this htmlFlow are a fragment of HTML to inserted directly into the DOM, or a complete HTML page to be displayed in an IFRAME. If not explicitly specified, [HTMLPane.autoDeriveContentsType](#attr-htmlpaneautoderivecontentstype) may be set to automatically determine the appropriate contents type by analyzing the contents of the component. If `autoDeriveContentsType` is false and `contentsType` is not explicitly specified, contents will always be assumed to be `"fragment"`.
 
-HTMLFlow contents may be [directly specified](#attr-htmlpanecontents) or loaded from a [specified URL](#attr-htmlpanecontentsurl). Note that if [HTMLPane.supportsContentsAsPage](#attr-htmlpanesupportscontentsaspage) is false and no [HTMLPane.contentsURL](#attr-htmlpanecontentsurl) is specified, the contents string will always be assumed to be a fragment, even if [ContentsType](../main_2.md#type-contentstype) is explicitly set to `"page"`.
+HTMLFlow contents may be [directly specified](#attr-htmlpanecontents) or loaded from a [specified URL](#attr-htmlpanecontentsurl). Note that if [HTMLPane.supportsContentsAsPage](#attr-htmlpanesupportscontentsaspage) is false and no [HTMLPane.contentsURL](#attr-htmlpanecontentsurl) is specified, the contents string will always be assumed to be a fragment, even if [ContentsType](../reference_2.md#type-contentstype) is explicitly set to `"page"`.
 
 Note that an HTMLFlow with contentsType:"page" should not be used to load and display a page containing a set of SmartClient components into the application. To dynamically load SmartClient components, use [ViewLoader](ViewLoader.md#class-viewloader), **never** this mechanism (click [here](../kb_topics/noFrames.md#kb-topic-dont-misuse-frames) for why).
 
@@ -62,13 +62,13 @@ Note that if [HTMLPane.autoDeriveContentsType](#attr-htmlpaneautoderivecontentst
 ## Attr: HTMLPane.autoDeriveContentsType
 
 ### Description
-If [ContentsType](../main_2.md#type-contentstype) is not explicitly specified, should it be automatically derived?
+If [ContentsType](../reference_2.md#type-contentstype) is not explicitly specified, should it be automatically derived?
 
 If set to true, this component will use [isPageHTML()](HTMLFlow.md#method-htmlflowispagehtml) to determine whether the contents are a standalone HTML page which should be rendered into an embedded IFRAME rather than written directly into the component's handle in the DOM.
 
 Note that this property will auto derive the appropriate contents type for both explicitly specified [HTMLPane.contents](#attr-htmlpanecontents) and for HTML loaded from the [HTMLPane.contentsURL](#attr-htmlpanecontentsurl)
 
-See [ContentsType](../main_2.md#type-contentstype) for further information on displaying complete HTML pages in an IFRAME.
+See [ContentsType](../reference_2.md#type-contentstype) for further information on displaying complete HTML pages in an IFRAME.
 
 **Flags**: IRW
 
@@ -105,7 +105,7 @@ To load HTML contents from a URL, use [HTMLFlow.contentsURL](HTMLFlow.md#attr-ht
 ### Description
 Can this component have its [HTMLPane.contents](#attr-htmlpanecontents) specified as a complete standalone HTML page to be rendered into an embedded IFRAME?
 
-If true, if [ContentsType](../main_2.md#type-contentstype) is specified as, or [derived to be](#attr-htmlpaneautoderivecontentstype) "page", the contents will be rendered into an embedded IFRAME using the `srcdoc` attribute rather than written directly into the component handle.
+If true, if [ContentsType](../reference_2.md#type-contentstype) is specified as, or [derived to be](#attr-htmlpaneautoderivecontentstype) "page", the contents will be rendered into an embedded IFRAME using the `srcdoc` attribute rather than written directly into the component handle.
 
 If false, contentsType has no effect unless contents are being loaded from an explicitly specified [HTMLPane.contentsURL](#attr-htmlpanecontentsurl)
 
@@ -131,7 +131,7 @@ For a component that should potentially be sized automatically by a Layout, set 
 ### Description
 HTMLPanes are `overflow:"auto"` by default.
 
-Note that for [contentsType:"page"](../main_2.md#type-contentstype), `overflow:"visible"` is not supported.
+Note that for [contentsType:"page"](../reference_2.md#type-contentstype), `overflow:"visible"` is not supported.
 
 **Flags**: IRW
 

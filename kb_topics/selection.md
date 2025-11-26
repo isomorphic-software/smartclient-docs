@@ -1,20 +1,20 @@
 # Selection
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
 ## KB Topic: Selection
 
 ### Description
-APIs for marking [Record](../main.md#object-record)s as selected and retrieving the selected record or records.
+APIs for marking [Record](../reference.md#object-record)s as selected and retrieving the selected record or records.
 
-Only applicable to a [DataBoundComponent](../main.md#interface-databoundcomponent) that manages a list of Records, or manages a data model that can be viewed as a list (for example, the current list of visible nodes on a tree can be treated as a list for selection purposes).
+Only applicable to a [DataBoundComponent](../reference.md#interface-databoundcomponent) that manages a list of Records, or manages a data model that can be viewed as a list (for example, the current list of visible nodes on a tree can be treated as a list for selection purposes).
 
 ### Related
 
-- [CellRecordMode](../main_2.md#type-cellrecordmode)
-- [SelectionStyle](../main.md#type-selectionstyle)
+- [CellRecordMode](../reference_2.md#type-cellrecordmode)
+- [SelectionStyle](../reference.md#type-selectionstyle)
 - [ListGrid.getSelectedRecord](../classes/ListGrid_2.md#method-listgridgetselectedrecord)
 - [ListGrid.getSelectedRecords](../classes/ListGrid_2.md#method-listgridgetselectedrecords)
 - [ListGrid.isSelected](../classes/ListGrid_2.md#method-listgridisselected)

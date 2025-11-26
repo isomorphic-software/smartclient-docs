@@ -1,13 +1,13 @@
 # Operators Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
 ## Class: Operators
 
 ### Description
-The Operators class provides a collection of class-level properties that can be used to modify the descriptions associated with the logical [Operator](../main.md#object-operator)s used in [AdvancedCriteria](../main.md#object-advancedcriteria). This is primarily intended for internationalization.
+The Operators class provides a collection of class-level properties that can be used to modify the descriptions associated with the logical [Operator](../reference.md#object-operator)s used in [AdvancedCriteria](../reference.md#object-advancedcriteria). This is primarily intended for internationalization.
 
 To add or override an operator's description, use Operators.[addClassProperties()](Class.md#classmethod-classaddclassproperties). For example:
 
@@ -137,7 +137,7 @@ Title for the "iStartsWith" operator
 ## ClassAttr: Operators.valueRangeUsageHint
 
 ### Description
-The default usage description for operators with [valueType](../main_2.md#type-operatorvaluetype) "valueRange". A usage hint can also be set directly on a [specific operator](Operator.md#attr-operatorusagehint).
+The default usage description for operators with [valueType](../reference_2.md#type-operatorvaluetype) "valueRange". A usage hint can also be set directly on a [specific operator](Operator.md#attr-operatorusagehint).
 
 ### Groups
 
@@ -245,7 +245,7 @@ Title for the "notStartsWithField" operator
 ## ClassAttr: Operators.fieldTypeUsageHint
 
 ### Description
-The default usage description for operators with [valueType](../main_2.md#type-operatorvaluetype) "fieldType". A usage hint can also be set directly on a [specific operator](Operator.md#attr-operatorusagehint).
+The default usage description for operators with [valueType](../reference_2.md#type-operatorvaluetype) "fieldType". A usage hint can also be set directly on a [specific operator](Operator.md#attr-operatorusagehint).
 
 ### Groups
 
@@ -497,7 +497,7 @@ Title for the "iStartsWithField" operator
 ## ClassAttr: Operators.noDataSourceDescription
 
 ### Description
-Human-readable description of an object, such as a [Criterion](../main_2.md#object-criterion), where there is no [DataSource](DataSource.md#class-datasource) available for context.
+Human-readable description of an object, such as a [Criterion](../reference_2.md#object-criterion), where there is no [DataSource](DataSource.md#class-datasource) available for context.
 
 ### Groups
 
@@ -509,7 +509,7 @@ Human-readable description of an object, such as a [Criterion](../main_2.md#obje
 ## ClassAttr: Operators.fieldNameUsageHint
 
 ### Description
-The default usage description for operators with [valueType](../main_2.md#type-operatorvaluetype) "fieldName". A usage hint can also be set directly on a [specific operator](Operator.md#attr-operatorusagehint).
+The default usage description for operators with [valueType](../reference_2.md#type-operatorvaluetype) "fieldName". A usage hint can also be set directly on a [specific operator](Operator.md#attr-operatorusagehint).
 
 ### Groups
 
@@ -521,7 +521,7 @@ The default usage description for operators with [valueType](../main_2.md#type-o
 ## ClassAttr: Operators.valueSetUsageHint
 
 ### Description
-The default usage description for operators with [valueType](../main_2.md#type-operatorvaluetype) "valueSet". A usage hint can also be set directly on a [specific operator](Operator.md#attr-operatorusagehint).
+The default usage description for operators with [valueType](../reference_2.md#type-operatorvaluetype) "valueSet". A usage hint can also be set directly on a [specific operator](Operator.md#attr-operatorusagehint).
 
 ### Groups
 

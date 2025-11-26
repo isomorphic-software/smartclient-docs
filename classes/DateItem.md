@@ -1,6 +1,6 @@
 # DateItem Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -17,7 +17,7 @@ When set to false, the default appearance, the item uses separate selectors for 
 
 In either mode, a [popup picker](DateChooser.md#class-datechooser) is provided assuming that the [pickerIcon](#attr-dateitemshowpickericon) is visible.
 
-As noted, this item is for editing [logical-Date values](DateUtil.md#classmethod-dateutilcreatelogicaldate). To edit [logical-Time values](DateUtil.md#classmethod-dateutilcreatelogicaltime), see [TimeItem](TimeItem.md#class-timeitem), and to edit [datetime values](DateUtil.md#classmethod-dateutilcreatedatetime), see [DateTimeItem](DateTimeItem.md#class-datetimeitem). For [relative-date features](../main_2.md#type-relativedatestring), see [RelativeDateItem](RelativeDateItem.md#class-relativedateitem).
+As noted, this item is for editing [logical-Date values](DateUtil.md#classmethod-dateutilcreatelogicaldate). To edit [logical-Time values](DateUtil.md#classmethod-dateutilcreatelogicaltime), see [TimeItem](TimeItem.md#class-timeitem), and to edit [datetime values](DateUtil.md#classmethod-dateutilcreatedatetime), see [DateTimeItem](DateTimeItem.md#class-datetimeitem). For [relative-date features](../reference_2.md#type-relativedatestring), see [RelativeDateItem](RelativeDateItem.md#class-relativedateitem).
 
 For detailed information on working with dates, times and datetimes, see the [Date and Time Format and Storage overview](../kb_topics/dateFormatAndStorage.md#kb-topic-date-and-time-format-and-storage).
 
@@ -25,7 +25,7 @@ For detailed information on working with dates, times and datetimes, see the [Da
 ## ClassAttr: DateItem.MONTH_YEAR
 
 ### Description
-A declared value of the enum type [DateItemSelectorFormat](../main_2.md#type-dateitemselectorformat).
+A declared value of the enum type [DateItemSelectorFormat](../reference_2.md#type-dateitemselectorformat).
 
 **Flags**: R
 
@@ -33,7 +33,7 @@ A declared value of the enum type [DateItemSelectorFormat](../main_2.md#type-dat
 ## ClassAttr: DateItem.YEAR_MONTH_DAY
 
 ### Description
-A declared value of the enum type [DateItemSelectorFormat](../main_2.md#type-dateitemselectorformat).
+A declared value of the enum type [DateItemSelectorFormat](../reference_2.md#type-dateitemselectorformat).
 
 **Flags**: R
 
@@ -41,7 +41,7 @@ A declared value of the enum type [DateItemSelectorFormat](../main_2.md#type-dat
 ## ClassAttr: DateItem.DAY_MONTH
 
 ### Description
-A declared value of the enum type [DateItemSelectorFormat](../main_2.md#type-dateitemselectorformat).
+A declared value of the enum type [DateItemSelectorFormat](../reference_2.md#type-dateitemselectorformat).
 
 **Flags**: R
 
@@ -49,7 +49,7 @@ A declared value of the enum type [DateItemSelectorFormat](../main_2.md#type-dat
 ## ClassAttr: DateItem.YEAR_MONTH
 
 ### Description
-A declared value of the enum type [DateItemSelectorFormat](../main_2.md#type-dateitemselectorformat).
+A declared value of the enum type [DateItemSelectorFormat](../reference_2.md#type-dateitemselectorformat).
 
 **Flags**: R
 
@@ -57,7 +57,7 @@ A declared value of the enum type [DateItemSelectorFormat](../main_2.md#type-dat
 ## ClassAttr: DateItem.MONTH_DAY
 
 ### Description
-A declared value of the enum type [DateItemSelectorFormat](../main_2.md#type-dateitemselectorformat).
+A declared value of the enum type [DateItemSelectorFormat](../reference_2.md#type-dateitemselectorformat).
 
 **Flags**: R
 
@@ -65,7 +65,7 @@ A declared value of the enum type [DateItemSelectorFormat](../main_2.md#type-dat
 ## ClassAttr: DateItem.MONTH_DAY_YEAR
 
 ### Description
-A declared value of the enum type [DateItemSelectorFormat](../main_2.md#type-dateitemselectorformat).
+A declared value of the enum type [DateItemSelectorFormat](../reference_2.md#type-dateitemselectorformat).
 
 **Flags**: R
 
@@ -73,7 +73,7 @@ A declared value of the enum type [DateItemSelectorFormat](../main_2.md#type-dat
 ## ClassAttr: DateItem.DAY_MONTH_YEAR
 
 ### Description
-A declared value of the enum type [DateItemSelectorFormat](../main_2.md#type-dateitemselectorformat).
+A declared value of the enum type [DateItemSelectorFormat](../reference_2.md#type-dateitemselectorformat).
 
 **Flags**: R
 
@@ -83,9 +83,9 @@ A declared value of the enum type [DateItemSelectorFormat](../main_2.md#type-dat
 ### Description
 If [DateItem.useTextField](#attr-dateitemusetextfield) is `true` this property can be used to specify the input format for date strings. If unset, the input format will be determined based on the specified [DateItem.dateFormatter](#attr-dateitemdateformatter) if possible (see [DateItem.getInputFormat](#method-dateitemgetinputformat)), otherwise picked up from the Date class (see [DateUtil.setInputFormat](DateUtil.md#classmethod-dateutilsetinputformat)).
 
-Should be set to a standard [DateInputFormat](../main.md#type-dateinputformat)
+Should be set to a standard [DateInputFormat](../reference.md#type-dateinputformat)
 
-Note that the [DateInputFormat](../main.md#type-dateinputformat) property is sufficient to parse date or datetime strings specified in most standard date formats. However should an entirely custom parsing function be required developers can implement a custom [DateItem.parseEditorValue](#method-dateitemparseeditorvalue) method.
+Note that the [DateInputFormat](../reference.md#type-dateinputformat) property is sufficient to parse date or datetime strings specified in most standard date formats. However should an entirely custom parsing function be required developers can implement a custom [DateItem.parseEditorValue](#method-dateitemparseeditorvalue) method.
 
 This attribute does not have an effect if a native HTML5 date input is being used. See [DateItem.browserInputType](#attr-dateitembrowserinputtype).
 
@@ -146,7 +146,7 @@ If you want to change the appearance of a DateItem, you will need to configure s
 
 ### Description
 If [DateItem.useTextField](#attr-dateitemusetextfield) is `true` this property can be used to customize the format in which dates are displayed for this item.  
-Should be set to a standard [DateDisplayFormat](../main.md#type-datedisplayformat).
+Should be set to a standard [DateDisplayFormat](../reference.md#type-datedisplayformat).
 
 As with any formItem rendering out a date value, if no explicit dateFormatter is supplied, dateFormatter will be derived from [DynamicForm.dateFormatter](DynamicForm.md#attr-dynamicformdateformatter) or [DynamicForm.datetimeFormatter](DynamicForm.md#attr-dynamicformdatetimeformatter), depending on the specified [FormItem.type](FormItem.md#attr-formitemtype) for this field, if set, otherwise from the standard default [DateUtil.setShortDisplayFormat](DateUtil.md#classmethod-dateutilsetshortdisplayformat) or [DateUtil.setShortDatetimeDisplayFormat](DateUtil.md#classmethod-dateutilsetshortdatetimedisplayformat).
 
@@ -265,7 +265,7 @@ The minimum date this item is intended to work with.
 
 The default value is January 1st, 10 years before the current year.
 
-The range specified by this setting and `endDate` must be enforced via a [dateRange validator](FormItem.md#attr-formitemvalidators). By default, a client-only validator is [automatically generated](#attr-dateitemgeneratevalidator) for you, unless you provide a customized one on this item or an associated [DataSourceField](../main_2.md#object-datasourcefield). Note that changing this attribute after the item is drawn may result in item-validation.
+The range specified by this setting and `endDate` must be enforced via a [dateRange validator](FormItem.md#attr-formitemvalidators). By default, a client-only validator is [automatically generated](#attr-dateitemgeneratevalidator) for you, unless you provide a customized one on this item or an associated [DataSourceField](../reference_2.md#object-datasourcefield). Note that changing this attribute after the item is drawn may result in item-validation.
 
 When [DateItem.useTextField](#attr-dateitemusetextfield) is true, dates are typed in and will be validated as usual, according to settings such as [validateOnChange](FormItem.md#attr-formitemvalidateonchange) and [validateOnExit](FormItem.md#attr-formitemvalidateonexit).
 
@@ -461,7 +461,7 @@ When true, the default, the item will generate a dateRange validator automatical
 
 If a dateRange validator already exists, this attribute is non-functional - no automatic validator is generated, and no checks are made that the values in the developer-provided validator match the item's current start or end dates.
 
-Note that the validator generated by this attribute exists only on the FormItem, so it doesn't do any server enforcement and does not cause validation to happen in any other circumstance (eg, an unrelated grid used for editing). For consistent and pervasive enforcement, the validator should be declared on the [DataSourceField](../main_2.md#object-datasourcefield).
+Note that the validator generated by this attribute exists only on the FormItem, so it doesn't do any server enforcement and does not cause validation to happen in any other circumstance (eg, an unrelated grid used for editing). For consistent and pervasive enforcement, the validator should be declared on the [DataSourceField](../reference_2.md#object-datasourcefield).
 
 **Flags**: IR
 
@@ -477,7 +477,7 @@ When set to true, show a button that allows the calendar to be navigated by fisc
 ## Attr: DateItem.itemTitleOrientation
 
 ### Description
-When [useTextField](#attr-dateitemusetextfield) is false, the default orientation of titles for the [day](#attr-dateitemdayselector), [month](#attr-dateitemmonthselector) and [year](#attr-dateitemyearselector) selectors. [TitleOrientation](../main_2.md#type-titleorientation) lists valid options.
+When [useTextField](#attr-dateitemusetextfield) is false, the default orientation of titles for the [day](#attr-dateitemdayselector), [month](#attr-dateitemmonthselector) and [year](#attr-dateitemyearselector) selectors. [TitleOrientation](../reference_2.md#type-titleorientation) lists valid options.
 
 Note that titles on the left or right take up a cell in tabular [form layouts](../kb_topics/formLayout.md#kb-topic-form-layout), but titles on top do not.
 
@@ -495,7 +495,7 @@ The maximum date this item is intended to work with.
 
 The default value is December 31st, 5 years after the current year.
 
-The range specified by this setting and `startDate` must be enforced via a [dateRange validator](FormItem.md#attr-formitemvalidators). By default, a client-only validator is [automatically generated](#attr-dateitemgeneratevalidator) for you, unless you provide a customized one on this item or an associated [DataSourceField](../main_2.md#object-datasourcefield). Note that changing this attribute after the item is drawn may result in item-validation.
+The range specified by this setting and `startDate` must be enforced via a [dateRange validator](FormItem.md#attr-formitemvalidators). By default, a client-only validator is [automatically generated](#attr-dateitemgeneratevalidator) for you, unless you provide a customized one on this item or an associated [DataSourceField](../reference_2.md#object-datasourcefield). Note that changing this attribute after the item is drawn may result in item-validation.
 
 See [DateItem.startDate](#attr-dateitemstartdate) and [DateItem.generateValidator](#attr-dateitemgeneratevalidator) for more information.
 
@@ -728,7 +728,7 @@ When [useTextField](#attr-dateitemusetextfield) is false, whether titles should 
 ## Attr: DateItem.selectorFormat
 
 ### Description
-If showing date selectors rather than the date text field (so when `this.useTextField` is false), this property allows customization of the order of the day, month and year selector fields. If unset, these fields will match the specified [DateItem.inputFormat](#attr-dateiteminputformat) for this item, but note that the attribute default will likely be set by [localization](../kb_topics/i18n.md#kb-topic-internationalization-and-localization) to a valid [DateItemSelectorFormat](../main_2.md#type-dateitemselectorformat).
+If showing date selectors rather than the date text field (so when `this.useTextField` is false), this property allows customization of the order of the day, month and year selector fields. If unset, these fields will match the specified [DateItem.inputFormat](#attr-dateiteminputformat) for this item, but note that the attribute default will likely be set by [localization](../kb_topics/i18n.md#kb-topic-internationalization-and-localization) to a valid [DateItemSelectorFormat](../reference_2.md#type-dateitemselectorformat).
 
 Note: selectors may be omitted entirely by setting selectorFormat to (for example) `"MD"`. In this case the value for the omitted selector will match the [defaultValue](FormItem.md#attr-formitemdefaultvalue) specified for the item. For example, if the selector format is "MD" (month and day only), the year comes from the Date specified as the defaultValue.
 
@@ -794,8 +794,8 @@ If [DateItem.useTextField](#attr-dateitemusetextfield) is true, falls through to
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| start | [int](../main.md#type-int) | false | — | character index for start of new selection |
-| end | [int](../main.md#type-int) | false | — | character index for end of new selection |
+| start | [int](../reference.md#type-int) | false | — | character index for start of new selection |
+| end | [int](../reference.md#type-int) | false | — | character index for end of new selection |
 
 ---
 ## Method: DateItem.getEnteredValue
@@ -811,7 +811,7 @@ Returns the raw text value typed into this items text field if [DateItem.useText
 ## Method: DateItem.getFiscalCalendar
 
 ### Description
-Returns the [FiscalCalendar](../main.md#object-fiscalcalendar) object that will be used by this item's DateChooser.
+Returns the [FiscalCalendar](../reference.md#object-fiscalcalendar) object that will be used by this item's DateChooser.
 
 ### Returns
 
@@ -821,7 +821,7 @@ Returns the [FiscalCalendar](../main.md#object-fiscalcalendar) object that will 
 ## Method: DateItem.getInputFormat
 
 ### Description
-If [DateItem.useTextField](#attr-dateitemusetextfield) is `true` this method returns a standard [DateInputFormat](../main.md#type-dateinputformat), determining how values entered by the user are to be converted to Javascript Date objects.
+If [DateItem.useTextField](#attr-dateitemusetextfield) is `true` this method returns a standard [DateInputFormat](../reference.md#type-dateinputformat), determining how values entered by the user are to be converted to Javascript Date objects.
 
 If an explicit [DateItem.inputFormat](#attr-dateiteminputformat) has been specified it will be returned, otherwise, if a custom [DateItem.dateFormatter](#attr-dateitemdateformatter) or [format](FormItem.md#attr-formitemformat) are specified, the input format will be automatically derived from that property.
 
@@ -831,7 +831,7 @@ Note that the inputFormat will ignore any separator characters and padding of va
 
 ### Returns
 
-`[DateInputFormat](../main.md#type-dateinputformat)` — expected format of date strings to parse
+`[DateInputFormat](../reference.md#type-dateinputformat)` — expected format of date strings to parse
 
 **Flags**: A
 
@@ -851,7 +851,7 @@ Default implementation returns [DateItem.defaultChooserDate](#attr-dateitemdefau
 ## Method: DateItem.setFiscalCalendar
 
 ### Description
-Sets the [FiscalCalendar](../main.md#object-fiscalcalendar) object that will be used by this item's DateChooser. If unset, the [global fiscal calendar](DateUtil.md#classmethod-dateutilgetfiscalcalendar) is used.
+Sets the [FiscalCalendar](../reference.md#object-fiscalcalendar) object that will be used by this item's DateChooser. If unset, the [global fiscal calendar](DateUtil.md#classmethod-dateutilgetfiscalcalendar) is used.
 
 ### Parameters
 
@@ -881,7 +881,7 @@ Setter for [DateItem.endDate](#attr-dateitemenddate).
 ### Description
 Convert a text value entered in this item's text field to a final data value for storage.
 
-If [DateItem.useTextField](#attr-dateitemusetextfield) is true, entirely custom date formatting and parsing logic may be applied via overrides to [DateItem.parseEditorValue](#method-dateitemparseeditorvalue) and [DateItem.formatEditorValue](#method-dateitemformateditorvalue). These methods apply to this FormItem only - system-wide Date and Datetime formatting and parsing may also be customized via the APIs on the [Date](../main_2.md#object-date) class. See [dateFormatAndStorage](../kb_topics/dateFormatAndStorage.md#kb-topic-date-and-time-format-and-storage) for more on this.
+If [DateItem.useTextField](#attr-dateitemusetextfield) is true, entirely custom date formatting and parsing logic may be applied via overrides to [DateItem.parseEditorValue](#method-dateitemparseeditorvalue) and [DateItem.formatEditorValue](#method-dateitemformateditorvalue). These methods apply to this FormItem only - system-wide Date and Datetime formatting and parsing may also be customized via the APIs on the [Date](../reference_2.md#object-date) class. See [dateFormatAndStorage](../kb_topics/dateFormatAndStorage.md#kb-topic-date-and-time-format-and-storage) for more on this.
 
 Note: custom parsing for this item may also be achieved by modifying the [DateItem.inputFormat](#attr-dateiteminputformat). This mechanism provides support many common date formats without the need for an entirely custom parser function.
 
@@ -944,13 +944,13 @@ Returning `false` will cancel this default behavior.
 |------|------|----------|---------|-------------|
 | form | [DynamicForm](#type-dynamicform) | false | — | the managing `DynamicForm` instance. |
 | item | [FormItem](#type-formitem) | false | — | the form item itself (also available as "this"). |
-| pendingStatus | [boolean](../main.md#type-boolean) | false | — | `true` if the item should show its pending visual state; `false` otherwise. |
+| pendingStatus | [boolean](../reference.md#type-boolean) | false | — | `true` if the item should show its pending visual state; `false` otherwise. |
 | newValue | [Any](#type-any) | false | — | the current form item value. |
 | value | [Any](#type-any) | false | — | the value that would be restored by a call to [DynamicForm.resetValues](DynamicForm.md#method-dynamicformresetvalues). |
 
 ### Returns
 
-`[boolean](../main.md#type-boolean)` — `false` to cancel the default behavior.
+`[boolean](../reference.md#type-boolean)` — `false` to cancel the default behavior.
 
 ---
 ## Method: DateItem.deselectValue
@@ -976,7 +976,7 @@ If [DateItem.useTextField](#attr-dateitemusetextfield) is true, falls through to
 ### Description
 Convert this item's data value to a text value for display in this item's text field.
 
-If [DateItem.useTextField](#attr-dateitemusetextfield) is true, entirely custom date formatting and parsing logic may be applied via overrides to [DateItem.parseEditorValue](#method-dateitemparseeditorvalue) and [DateItem.formatEditorValue](#method-dateitemformateditorvalue). These methods apply to this FormItem only - system-wide Date and Datetime formatting and parsing may also be customized via the APIs on the [Date](../main_2.md#object-date) class. See [dateFormatAndStorage](../kb_topics/dateFormatAndStorage.md#kb-topic-date-and-time-format-and-storage) for more on this.
+If [DateItem.useTextField](#attr-dateitemusetextfield) is true, entirely custom date formatting and parsing logic may be applied via overrides to [DateItem.parseEditorValue](#method-dateitemparseeditorvalue) and [DateItem.formatEditorValue](#method-dateitemformateditorvalue). These methods apply to this FormItem only - system-wide Date and Datetime formatting and parsing may also be customized via the APIs on the [Date](../reference_2.md#object-date) class. See [dateFormatAndStorage](../kb_topics/dateFormatAndStorage.md#kb-topic-date-and-time-format-and-storage) for more on this.
 
 Note: custom formatting for this item may also be achieved via the [DateItem.dateFormatter](#attr-dateitemdateformatter) which allows you to directly specify various standard date display formats.
 

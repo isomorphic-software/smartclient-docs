@@ -1,6 +1,6 @@
 # ModalWindow Documentation
 
-[← Back to API Index](../main.md)
+[← Back to API Index](../reference.md)
 
 ---
 
@@ -40,7 +40,7 @@ See [percentSizing](../kb_topics/percentSizing.md#kb-topic-canvas-percentage-siz
 
 If [overflow](Canvas.md#attr-canvasoverflow) is set to "visible", the specified size acts as a minimum, and the component may overflow to show all content and/or children.
 
-Note that developers wishing to set a default width or height for a component class should set [defaultWidth](Canvas.md#attr-canvasdefaultwidth) or [Canvas.defaultHeight](Canvas.md#attr-canvasdefaultheight) instead of specifying an explicit default `width` or `height`. This is important for components added to a [Layout](Layout.md#class-layout) as members - it allows the Layout to determine whether the canvas has an explicitly specified size that must be respected, or whether it can participate in its [sizing policies](../main_2.md#type-layoutpolicy).
+Note that developers wishing to set a default width or height for a component class should set [defaultWidth](Canvas.md#attr-canvasdefaultwidth) or [Canvas.defaultHeight](Canvas.md#attr-canvasdefaultheight) instead of specifying an explicit default `width` or `height`. This is important for components added to a [Layout](Layout.md#class-layout) as members - it allows the Layout to determine whether the canvas has an explicitly specified size that must be respected, or whether it can participate in its [sizing policies](../reference_2.md#type-layoutpolicy).
 
 ### Groups
 
@@ -60,7 +60,7 @@ See [percentSizing](../kb_topics/percentSizing.md#kb-topic-canvas-percentage-siz
 
 If [overflow](Canvas.md#attr-canvasoverflow) is set to "visible", the specified size acts as a minimum, and the component may overflow to show all content and/or children.
 
-Note that developers wishing to set a default width or height for a component class should set [defaultWidth](Canvas.md#attr-canvasdefaultwidth) or [Canvas.defaultHeight](Canvas.md#attr-canvasdefaultheight) instead of specifying an explicit default `width` or `height`. This is important for components added to a [Layout](Layout.md#class-layout) as members - it allows the Layout to determine whether the canvas has an explicitly specified size that must be respected, or whether it can participate in its [sizing policies](../main_2.md#type-layoutpolicy).
+Note that developers wishing to set a default width or height for a component class should set [defaultWidth](Canvas.md#attr-canvasdefaultwidth) or [Canvas.defaultHeight](Canvas.md#attr-canvasdefaultheight) instead of specifying an explicit default `width` or `height`. This is important for components added to a [Layout](Layout.md#class-layout) as members - it allows the Layout to determine whether the canvas has an explicitly specified size that must be respected, or whether it can participate in its [sizing policies](../reference_2.md#type-layoutpolicy).
 
 ### Groups
 
@@ -72,7 +72,7 @@ Note that developers wishing to set a default width or height for a component cl
 ## Attr: ModalWindow.visibility
 
 ### Description
-Controls widget visibility when the widget is initialized. See [Visibility](../main_2.md#type-visibility) type for details.
+Controls widget visibility when the widget is initialized. See [Visibility](../reference_2.md#type-visibility) type for details.
 
 Specifying "visible" sets the CSS visiblity to "visible", forcing a child to be visible even if the parent is hidden. **Not supported for use with SmartClient layouts, scrolling or auto-sizing** but may be useful when working with third-party or legacy DOM layout systems.
 

@@ -569,7 +569,7 @@ Where the 'errors' object is either a single string or an array of strings conta
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — false from this method to suppress that behavior
+`[Boolean](#type-boolean)` — false from this method to suppress that behavior
 
 **Flags**: A
 

@@ -644,7 +644,7 @@ For a discussion of the various filtering and criteria-management APIs and when 
 |------|------|----------|---------|-------------|
 | criteria | [Criteria](../reference_2.md#type-criteria) | true | — | Search criteria. If a [DynamicForm](DynamicForm.md#class-dynamicform) is passed in as this argument instead of a raw criteria object, will be derived by calling [DynamicForm.getValuesAsCriteria](DynamicForm.md#method-dynamicformgetvaluesascriteria) |
 | callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke when a fetch is complete. Fires only if server contact was required; see [fetchData()](ListGrid_2.md#method-listgridfetchdata) for details |
-| requestProperties | [DSRequest](#type-dsrequest) | true | — | for databound components only - optional additional properties to set on the DSRequest that will be issued |
+| requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | for databound components only - optional additional properties to set on the DSRequest that will be issued |
 
 ### Groups
 
@@ -752,7 +752,7 @@ For more information on exporting data, see [DataSource.exportData](DataSource.m
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| requestProperties | [DSRequest](#type-dsrequest) | true | — | additional properties to set on the DSRequest that will be issued |
+| requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | additional properties to set on the DSRequest that will be issued |
 | callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke on completion. Note that this parameter only applies where [DSRequest.exportToClient](DSRequest.md#attr-dsrequestexporttoclient) is explicitly set to false, because file downloads do not provide ordinary SmartClient callbacks |
 
 ### Groups
@@ -847,7 +847,7 @@ For a grid with no DataSource or where `saveLocally` is true, the data removal i
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to fire when each record has been removed |
-| requestProperties | [DSRequest](#type-dsrequest) | true | — | additional properties to set on the DSRequest that will be issued |
+| requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | additional properties to set on the DSRequest that will be issued |
 | queueCallback | [RPCQueueCallback](#type-rpcqueuecallback) | true | — | callback to fire after all selected data has been removed |
 
 ### Groups
@@ -873,6 +873,16 @@ Note that since field-level `canEdit:true` settings override the form-level canE
 ### Groups
 
 - dataBoundComponentMethods
+
+---
+## Method: TileGrid.getData
+
+### Description
+Method to return the tileGrid's [data](#attr-tilegriddata) object.
+
+### Returns
+
+`[Object](../reference.md#type-object)` — The data that is being displayed
 
 ---
 ## Method: TileGrid.deselectRecord
@@ -1101,7 +1111,7 @@ If you want to cancel the click based on the parameters, return false. Otherwise
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — return false to suppress the native browser context menu.
+`[Boolean](#type-boolean)` — return false to suppress the native browser context menu.
 
 ### Groups
 
@@ -1255,7 +1265,7 @@ To display custom drag tracker HTML, this method may be overridden - call [Event
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — returns false by default to suppress 'setDragTracker' on any ancestors of this component.
+`[Boolean](#type-boolean)` — returns false by default to suppress 'setDragTracker' on any ancestors of this component.
 
 ### Groups
 
@@ -1397,7 +1407,7 @@ To pick up such changes, we recommend that you call [setData(\[\])](#method-tile
 |------|------|----------|---------|-------------|
 | criteria | [Criteria](../reference_2.md#type-criteria) | true | — | Search criteria. If a [DynamicForm](DynamicForm.md#class-dynamicform) is passed in as this argument instead of a raw criteria object, will be derived by calling [DynamicForm.getValuesAsCriteria](DynamicForm.md#method-dynamicformgetvaluesascriteria) |
 | callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke when a fetch is complete. Fires only if server contact was required |
-| requestProperties | [DSRequest](#type-dsrequest) | true | — | additional properties to set on the DSRequest that will be issued |
+| requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | additional properties to set on the DSRequest that will be issued |
 
 ### Groups
 

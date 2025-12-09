@@ -6,7 +6,7 @@ This is the central API reference for the SmartClient framework.
 ### Classes
 
 - [Class](classes/Class.md)
-  - [BaseWidget](#class-basewidget)
+  - [BaseWidget](classes/BaseWidget.md)
     - [Canvas](classes/Canvas.md)
       - [Layout](classes/Layout.md)
         - [VLayout](#class-vlayout)
@@ -32,9 +32,9 @@ This is the central API reference for the SmartClient framework.
             - [SummaryBuilder](classes/SummaryBuilder.md)
               - [AIFieldBuilder](classes/AIFieldBuilder.md)
                 - [AISortFieldBuilder](#class-aisortfieldbuilder)
-          - [RichTextEditor](classes/RichTextEditor.md)
           - [RibbonGroup](classes/RibbonGroup.md)
             - [ToolStripGroup](#class-toolstripgroup)
+          - [RichTextEditor](classes/RichTextEditor.md)
           - [Reify](classes/Reify.md)
           - [EventCanvas](classes/EventCanvas.md)
             - [ZoneCanvas](#class-zonecanvas)
@@ -61,9 +61,9 @@ This is the central API reference for the SmartClient framework.
           - [MultiSortDialog](classes/MultiSortDialog.md)
           - [LoginDialog](classes/LoginDialog.md)
           - [MultiGroupDialog](classes/MultiGroupDialog.md)
+          - [DatabaseBrowser](classes/DatabaseBrowser.md)
           - [Portlet](classes/Portlet.md)
           - [ModalWindow](classes/ModalWindow.md)
-          - [DatabaseBrowser](classes/DatabaseBrowser.md)
           - [TourWindow](classes/TourWindow.md)
           - [HibernateBrowser](classes/HibernateBrowser.md)
           - [DateRangeDialog](classes/DateRangeDialog.md)
@@ -92,10 +92,10 @@ This is the central API reference for the SmartClient framework.
         - [FilterClause](classes/FilterClause.md)
         - [MultiSortPanel](classes/MultiSortPanel.md)
         - [MultiGroupPanel](classes/MultiGroupPanel.md)
-        - [AdaptiveMenu](classes/AdaptiveMenu.md)
         - [ToolStrip](classes/ToolStrip.md)
           - [RibbonBar](classes/RibbonBar.md)
           - [Header](classes/Header.md)
+        - [AdaptiveMenu](classes/AdaptiveMenu.md)
         - [Deck](classes/Deck.md)
         - [ListPropertiesPane](classes/ListPropertiesPane.md)
         - [HStack](#class-hstack)
@@ -113,9 +113,9 @@ This is the central API reference for the SmartClient framework.
         - [TileGrid](classes/TileGrid.md)
           - [TilePalette](#class-tilepalette)
         - [FlowLayout](#class-flowlayout)
-      - [GridRenderer](classes/GridRenderer.md)
       - [TabSet](classes/TabSet.md)
         - [VerticalTabs](#class-verticaltabs)
+      - [GridRenderer](classes/GridRenderer.md)
       - [EditPane](classes/EditPane.md)
       - [DetailViewer](classes/DetailViewer.md)
       - [StatefulCanvas](classes/StatefulCanvas.md)
@@ -277,10 +277,10 @@ This is the central API reference for the SmartClient framework.
   - [Validator](classes/Validator.md)
   - [EventStream](classes/EventStream.md)
   - [Process](classes/Process.md)
-    - [Tour](classes/Tour.md)
-      - [Tutorial](#class-tutorial)
     - [CoTProcess](classes/CoTProcess.md)
       - [AUN](classes/AUN.md)
+    - [Tour](classes/Tour.md)
+      - [Tutorial](#class-tutorial)
   - [SimpleType](classes/SimpleType.md)
   - [ProcessElement](classes/ProcessElement.md)
     - [Task](classes/Task.md)
@@ -405,7 +405,6 @@ This is the central API reference for the SmartClient framework.
   - [Authentication](classes/Authentication.md)
     - [Auth](#class-auth)
   - [NumberUtil](classes/NumberUtil.md)
-  - [Facet](classes/Facet.md)
   - [GroupingMessages](classes/GroupingMessages.md)
   - [RemoteWindow](classes/RemoteWindow.md)
     - [OpenFinWindow](#class-openfinwindow)
@@ -497,6 +496,7 @@ This is the central API reference for the SmartClient framework.
 - [CoTExecutionModels](kb_topics/CoTExecutionModels.md)
 - [CoTHistory](kb_topics/CoTHistory.md)
 - [CoTMocking](kb_topics/CoTMocking.md)
+- [CoTPartialPrompt](kb_topics/CoTPartialPrompt.md)
 - [CoTPromptScope](kb_topics/CoTPromptScope.md)
 - [Criteria Editing](kb_topics/criteriaEditing.md)
 - [cues](#kb-topic-cues)
@@ -559,6 +559,7 @@ This is the central API reference for the SmartClient framework.
 - [Frozen Fields](kb_topics/frozenFields.md)
 - [Google Application Engine (GAE)](#kb-topic-google-application-engine-gae)
 - [Determining the size of a drawn canvas](kb_topics/gettingCanvasSize.md)
+- [GraalJS Polyglot API for DMI](kb_topics/graalPolyglotDMI.md)
 - [Grid Filtering Overview](kb_topics/gridFiltering.md)
 - [gridHeader](kb_topics/gridHeader.md)
 - [gridValidation](kb_topics/gridValidation.md)
@@ -722,12 +723,6 @@ This is the central API reference for the SmartClient framework.
 - [<isomorphic:XML>](kb_topics/xmlTag.md)
 - [XSS and CSRF Security](kb_topics/xssAndCSRFSecurity.md)
 - [zIndex](#kb-topic-zindex)
-
----
-## Class: BaseWidget
-
-### Description
-Base class for [Canvas](classes/Canvas.md#class-canvas) and [DrawItem](classes/DrawItem.md#class-drawitem).
 
 ---
 ## Class: VLayout
@@ -3782,6 +3777,7 @@ Rendering an object on the page.
 - [FormItem.getFieldName](classes/FormItem.md#method-formitemgetfieldname)
 - [FormItem.getTitle](classes/FormItem.md#method-formitemgettitle)
 - [FormItem.isDrawn](classes/FormItem.md#method-formitemisdrawn)
+- [BaseWidget.autoDraw](classes/BaseWidget.md#attr-basewidgetautodraw)
 - [Canvas.autoDraw](classes/Canvas.md#attr-canvasautodraw)
 - [Canvas.redrawOnResize](classes/Canvas.md#attr-canvasredrawonresize)
 
@@ -8478,6 +8474,18 @@ A PaletteNode expresses visual properties for how the palette will display it (e
 Various types of palettes ([ListPalette](#class-listpalette), [TreePalette](#class-treepalette), [MenuPalette](#class-menupalette), [TilePalette](#class-tilepalette)) render a PaletteNode in different ways, and allow the user to trigger creation in different ways (eg drag and drop, or just click). All share a common pattern for how components are created from palettes.
 
 Note that in a TreePalette, a PaletteNode is essentially a [TreeNode](reference_2.md#object-treenode) and can have properties expected for a TreeNode (eg, [showDropIcon](classes/TreeGrid.md#attr-treegridcustomicondropproperty)). Likewise a PaletteNode in a MenuPalette can have the properties of a [MenuItem](reference_2.md#object-menuitem), such as [MenuItem.enableIf](classes/MenuItem.md#method-menuitemenableif).
+
+---
+## Object: PartialPromptConfig
+
+### Description
+Configuration for partial prompt generation specifying which fragments to omit.
+
+Used with [CoTProcess.getPartialPrompt](classes/CoTProcess.md#method-cotprocessgetpartialprompt) to generate prompts with selected fragments replaced by placeholders for debugging/logging purposes.
+
+### Groups
+
+- CoTPartialPrompt
 
 ---
 ## Object: PlaceholderDefaults

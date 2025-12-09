@@ -30,6 +30,8 @@ An array of canvases that will be contained within this layout. You can set the 
 
 Height and width settings found on members are interpreted by the Layout according to the [layout policy](Layout.md#attr-layoutvpolicy).
 
+As an alternative to providing Canvas instances, the `members` array may also contain Strings. A String will be assumed to be a global ID, and a Canvas with that ID will be used as the member. Additionally, some Layout subclasses interpret certain special String values as references to automatically generated components (AutoChildren). See [ToolStrip.members](ToolStrip.md#attr-toolstripmembers) and [ListGrid.gridComponents](ListGrid_1.md#attr-listgridgridcomponents) for examples.
+
 Note that it is valid to have null slots in the provided `members` Array, and the Layout will ignore those slots. This can be useful to keep code compact, for example, when constructing the `members` Array, you might use an expression that either returns a component or null depending on whether the component should be present. If the expression returns null, the null slot will be ignored by the Layout.
 
 **Flags**: IR

@@ -2931,7 +2931,7 @@ Return false from this method to cancel the default behavior (Saving / cancellin
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — Returning false from this method will cancel the default behavior (for example saving the row) and leave the editor visible and focus in this edit cell.
+`[Boolean](#type-boolean)` — Returning false from this method will cancel the default behavior (for example saving the row) and leave the editor visible and focus in this edit cell.
 
 ### Groups
 

@@ -40,6 +40,7 @@ For a full list of operators, see [OperatorId](../reference.md#type-operatorid).
 - [SimpleType.validOperators](../classes/SimpleType.md#attr-simpletypevalidoperators)
 - [SimpleType.defaultOperator](../classes/SimpleType.md#attr-simpletypedefaultoperator)
 - [AdvancedCriteria.strictSQLFiltering](../reference.md#attr-advancedcriteriastrictsqlfiltering)
+- [AdvancedCriteria._constructor](../reference.md#attr-advancedcriteria_constructor)
 - [Criterion.operator](../classes/Criterion.md#attr-criterionoperator)
 - [Criterion.fieldName](../classes/Criterion.md#attr-criterionfieldname)
 - [Criterion.value](../classes/Criterion.md#attr-criterionvalue)

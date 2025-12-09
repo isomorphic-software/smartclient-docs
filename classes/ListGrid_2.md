@@ -407,7 +407,7 @@ Called when the mouse pointer enters a row
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — whether to cancel the event
+`[Boolean](#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -468,7 +468,7 @@ The second parameter is only applicable if [ListGrid.showRecordComponentsByCell]
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — return false to cancel showRecordComponent behavior
+`[Boolean](#type-boolean)` — return false to cancel showRecordComponent behavior
 
 ### Groups
 
@@ -499,7 +499,7 @@ Notification method fired when the user clicks on the corner [sort button](ListG
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — return false to suppress the sort
+`[Boolean](#type-boolean)` — return false to suppress the sort
 
 ### Groups
 
@@ -611,7 +611,7 @@ Called when (cell-based) selection changes within this grid.
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — Returning false will prevent the GridRenderer styling from being updated to reflect the selection change.
+`[Boolean](#type-boolean)` — Returning false will prevent the GridRenderer styling from being updated to reflect the selection change.
 
 ### Groups
 
@@ -765,7 +765,7 @@ To pick up such changes, we recommend that you call [setData(\[\])](#method-list
 |------|------|----------|---------|-------------|
 | criteria | [Criteria](../reference_2.md#type-criteria) | true | — | Search criteria. If a [DynamicForm](DynamicForm.md#class-dynamicform) is passed in as this argument instead of a raw criteria object, will be derived by calling [DynamicForm.getValuesAsCriteria](DynamicForm.md#method-dynamicformgetvaluesascriteria) |
 | callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke when a fetch is complete. Fires only if server contact was required |
-| requestProperties | [DSRequest](#type-dsrequest) | true | — | additional properties to set on the DSRequest that will be issued |
+| requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | additional properties to set on the DSRequest that will be issued |
 
 ### Groups
 
@@ -1169,7 +1169,7 @@ Called when a cell receives a double click event.
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — whether to cancel the event
+`[Boolean](#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -1346,7 +1346,7 @@ Note that multiple foreign keys into the schema are supported by this method.
 | record | [ListGridRecord](#type-listgridrecord) | false | — | DataSource record |
 | schema | [Canvas](#type-canvas)|[DataSource](#type-datasource)|[ID](#type-id) | false | — | schema of the DataSource record, or DataBoundComponent already bound to that schema |
 | callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke on completion |
-| requestProperties | [DSRequest](#type-dsrequest) | true | — | additional properties to set on the DSRequest that will be issued |
+| requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | additional properties to set on the DSRequest that will be issued |
 
 ### Groups
 
@@ -1459,7 +1459,7 @@ Note that the majority of keyboard handling for a ListGrid is performed by [List
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — return false to cancel
+`[Boolean](#type-boolean)` — return false to cancel
 
 ---
 ## Method: ListGrid.editComplete
@@ -1589,7 +1589,7 @@ Called when the mouse pointer leaves a row
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — whether to cancel the event
+`[Boolean](#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -1785,7 +1785,7 @@ Called when a row receives a contextclick event.
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — whether to cancel the event
+`[Boolean](#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -1878,7 +1878,7 @@ Clear the current criteria used to filter data. This method clears filter-values
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke on completion |
-| requestProperties | [DSRequest](#type-dsrequest) | true | — | additional properties to set on the DSRequest that will be issued |
+| requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | additional properties to set on the DSRequest that will be issued |
 
 ### Groups
 
@@ -1937,7 +1937,7 @@ If [ListGrid.canSelectCells](ListGrid_1.md#attr-listgridcanselectcells) is set t
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — return false to disallow selection
+`[Boolean](#type-boolean)` — return false to disallow selection
 
 **Flags**: A
 
@@ -2198,7 +2198,7 @@ For a discussion of the various filtering and criteria-management APIs and when 
 |------|------|----------|---------|-------------|
 | criteria | [Criteria](../reference_2.md#type-criteria) | true | — | Search criteria. If a [DynamicForm](DynamicForm.md#class-dynamicform) is passed in as this argument instead of a raw criteria object, will be derived by calling [DynamicForm.getValuesAsCriteria](DynamicForm.md#method-dynamicformgetvaluesascriteria) |
 | callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke when a fetch is complete. Fires only if server contact was required; see [fetchData()](#method-listgridfetchdata) for details |
-| requestProperties | [DSRequest](#type-dsrequest) | true | — | for databound components only - optional additional properties to set on the DSRequest that will be issued |
+| requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | for databound components only - optional additional properties to set on the DSRequest that will be issued |
 
 ### Groups
 
@@ -2302,7 +2302,7 @@ Called when the mouse pointer leaves a cell
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — whether to cancel the event
+`[Boolean](#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -2498,7 +2498,7 @@ Optional stringMethod to fire when the user hovers over a cell and the value is 
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — false to suppress the standard hover
+`[Boolean](#type-boolean)` — false to suppress the standard hover
 
 ### Groups
 
@@ -2753,7 +2753,7 @@ For more information on exporting data, see [DataSource.exportData](DataSource.m
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| requestProperties | [DSRequest](#type-dsrequest) | true | — | additional properties to set on the DSRequest that will be issued |
+| requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | additional properties to set on the DSRequest that will be issued |
 | callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke on completion. Note that this parameter only applies where [DSRequest.exportToClient](DSRequest.md#attr-dsrequestexporttoclient) is explicitly set to false, because file downloads do not provide ordinary SmartClient callbacks |
 
 ### Groups
@@ -2796,7 +2796,7 @@ Called when the mouse hovers over a cell if `this.canHover` is `true`. Returning
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — whether to cancel the event
+`[Boolean](#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -3218,7 +3218,7 @@ Called when a cell receives a mousedown event.
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — whether to cancel the event
+`[Boolean](#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -3605,7 +3605,7 @@ Optional stringMethod to fire when the user hovers over the error icon of a cell
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — false to suppress the standard error message hover
+`[Boolean](#type-boolean)` — false to suppress the standard error message hover
 
 ### Groups
 
@@ -3672,7 +3672,7 @@ Called when the mouse hovers over a row if this.canHover is true. Returning fals
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — whether to cancel the event (default behavior of showing the hover)
+`[Boolean](#type-boolean)` — whether to cancel the event (default behavior of showing the hover)
 
 ### Groups
 
@@ -3864,7 +3864,7 @@ Note that returning false from this method will not prevent any specified [ListG
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — whether to cancel the event
+`[Boolean](#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -3940,7 +3940,7 @@ Called when the mouse pointer enters a cell
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — whether to cancel the event
+`[Boolean](#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -4227,7 +4227,7 @@ To display custom drag tracker HTML, this method may be overridden - call [Event
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — returns false by default to suppress 'setDragTracker' on any ancestors of this component.
+`[Boolean](#type-boolean)` — returns false by default to suppress 'setDragTracker' on any ancestors of this component.
 
 ### Groups
 
@@ -4768,7 +4768,7 @@ Note this method will not be called at all if [ListGrid.canSelectCells](ListGrid
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — return false to disallow selection
+`[Boolean](#type-boolean)` — return false to disallow selection
 
 ---
 ## Method: ListGrid.getSortFieldCount
@@ -4894,7 +4894,7 @@ Called when a row receives a mouseup event.
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — whether to cancel the event
+`[Boolean](#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -5503,7 +5503,7 @@ Can be overridden at the field level as field.editorExit.
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — Returning false from this method will cancel the default behavior (for example saving the row) and leave the editor visible and focus in this edit cell.
+`[Boolean](#type-boolean)` — Returning false from this method will cancel the default behavior (for example saving the row) and leave the editor visible and focus in this edit cell.
 
 ### Groups
 
@@ -5599,7 +5599,7 @@ or, to ensure the specified [ListGrid.autoFetchTextMatchStyle](ListGrid_1.md#att
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — returning false will suppress the filter from occurring
+`[Boolean](#type-boolean)` — returning false will suppress the filter from occurring
 
 ### See Also
 
@@ -5762,6 +5762,20 @@ Returns the original, ungrouped data in the grid. If the grid is ungrouped, retu
 - grouping
 
 ---
+## Method: ListGrid.getData
+
+### Description
+Method to return the listGrid's [data](ListGrid_1.md#attr-listgriddata) object.
+
+### Returns
+
+`[Object](../reference.md#type-object)` — The data that is being displayed
+
+### See Also
+
+- [ListGrid.getOriginalData](#method-listgridgetoriginaldata)
+
+---
 ## Method: ListGrid.getTotalRows
 
 ### Description
@@ -5844,7 +5858,7 @@ Called when a row receives a mousedown event.
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — whether to cancel the event
+`[Boolean](#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -6013,7 +6027,7 @@ To do something specific if a particular field is double clicked, add a recordDo
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — return false to cancel event bubbling
+`[Boolean](#type-boolean)` — return false to cancel event bubbling
 
 ### Groups
 
@@ -6146,7 +6160,7 @@ For a grid with no DataSource or where `saveLocally` is true, the data removal i
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to fire when each record has been removed |
-| requestProperties | [DSRequest](#type-dsrequest) | true | — | additional properties to set on the DSRequest that will be issued |
+| requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | additional properties to set on the DSRequest that will be issued |
 | queueCallback | [RPCQueueCallback](#type-rpcqueuecallback) | true | — | callback to fire after all selected data has been removed |
 
 ### Groups
@@ -6900,7 +6914,7 @@ Return false from this method to cancel the default behavior (Saving / cancellin
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — Returning false from this method will cancel the default behavior (for example saving the row) and leave the editor visible and focus in this edit cell.
+`[Boolean](#type-boolean)` — Returning false from this method will cancel the default behavior (for example saving the row) and leave the editor visible and focus in this edit cell.
 
 ### Groups
 
@@ -6929,7 +6943,7 @@ Note that this method is not called when the data is regrouped, either [programm
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — return false to cancel grouping on the passed specification
+`[Boolean](#type-boolean)` — return false to cancel grouping on the passed specification
 
 ### Groups
 
@@ -7106,7 +7120,7 @@ If your reason for implementing a custom `setSortHandler()` is to inhibit or rep
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — return false to cancel the default setSort() behavior
+`[Boolean](#type-boolean)` — return false to cancel the default setSort() behavior
 
 **Flags**: A
 
@@ -7355,7 +7369,7 @@ Default implementation handles navigating between records with arrow keys, and a
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — return false to cancel
+`[Boolean](#type-boolean)` — return false to cancel
 
 ---
 ## Method: ListGrid.groupSortNormalizer
@@ -7569,7 +7583,7 @@ Notification method fired when the user right-clicks on the corner [sort button]
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — return false to suppress the context menu
+`[Boolean](#type-boolean)` — return false to suppress the context menu
 
 ### Groups
 
@@ -8313,7 +8327,7 @@ Called when a cell receives a mouseup event.
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — whether to cancel the event
+`[Boolean](#type-boolean)` — whether to cancel the event
 
 ### Groups
 

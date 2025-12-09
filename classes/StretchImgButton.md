@@ -635,7 +635,7 @@ Optional stringMethod to fire when the user hovers over this button and the titl
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — false to suppress the standard hover
+`[Boolean](#type-boolean)` — false to suppress the standard hover
 
 ### Groups
 
@@ -837,7 +837,7 @@ If this button is showing an [icon](#attr-stretchimgbuttonicon), a separate clic
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — false to suppress the standard button click event
+`[Boolean](#type-boolean)` — false to suppress the standard button click event
 
 ### Groups
 

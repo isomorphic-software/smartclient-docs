@@ -2999,7 +2999,7 @@ Implement this method to intercept the automatic removal of data. You can return
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — false to cancel the removal
+`[Boolean](#type-boolean)` — false to cancel the removal
 
 ### Groups
 
@@ -3131,7 +3131,7 @@ Called when an event is moved via dragging by a user. Return false to disallow t
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — return false to disallow the move.
+`[Boolean](#type-boolean)` — return false to disallow the move.
 
 ### Groups
 
@@ -3224,7 +3224,7 @@ Not called if the day falls outside the current month and [Calendar.showOtherDay
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — false to cancel the default action
+`[Boolean](#type-boolean)` — false to cancel the default action
 
 ### Groups
 
@@ -3366,7 +3366,7 @@ Callback fired when the mouse is clicked in a background-cell, ie, one without a
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — return false to cancel the default behavior of creating a new event at the selected location and showing its editor.
+`[Boolean](#type-boolean)` — return false to cancel the default behavior of creating a new event at the selected location and showing its editor.
 
 ---
 ## Method: Calendar.setIndicators
@@ -3430,7 +3430,7 @@ Not called if the day falls outside the current month and [Calendar.showOtherDay
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — return false to cancel the action
+`[Boolean](#type-boolean)` — return false to cancel the action
 
 ### Groups
 
@@ -3821,7 +3821,7 @@ Callback fired when the mouse button is depressed over a background-cell, ie, on
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — return false to suppress default behavior of allowing sweep selection via dragging.
+`[Boolean](#type-boolean)` — return false to suppress default behavior of allowing sweep selection via dragging.
 
 ---
 ## Method: Calendar.indicatorClick
@@ -4113,7 +4113,7 @@ Notification method fired when the mouse button is released over a background-ce
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — return false to suppress default behavior of showing a dialog to add a new event with the passed dates.
+`[Boolean](#type-boolean)` — return false to suppress default behavior of showing a dialog to add a new event with the passed dates.
 
 ---
 ## Method: Calendar.next
@@ -4540,7 +4540,7 @@ To pick up such changes, we recommend that you call [setData(\[\])](#method-cale
 |------|------|----------|---------|-------------|
 | criteria | [Criteria](../reference_2.md#type-criteria) | true | — | Search criteria. If a [DynamicForm](DynamicForm.md#class-dynamicform) is passed in as this argument instead of a raw criteria object, will be derived by calling [DynamicForm.getValuesAsCriteria](DynamicForm.md#method-dynamicformgetvaluesascriteria) |
 | callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke when a fetch is complete. Fires only if server contact was required |
-| requestProperties | [DSRequest](#type-dsrequest) | true | — | additional properties to set on the DSRequest that will be issued |
+| requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | additional properties to set on the DSRequest that will be issued |
 
 ### Groups
 
@@ -4648,7 +4648,7 @@ Called when an event is resized with the mouse. The passed date value is the new
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — return false to disallow the resize
+`[Boolean](#type-boolean)` — return false to disallow the resize
 
 ### Groups
 
@@ -4913,7 +4913,7 @@ For a discussion of the various filtering and criteria-management APIs and when 
 |------|------|----------|---------|-------------|
 | criteria | [Criteria](../reference_2.md#type-criteria) | true | — | Search criteria. If a [DynamicForm](DynamicForm.md#class-dynamicform) is passed in as this argument instead of a raw criteria object, will be derived by calling [DynamicForm.getValuesAsCriteria](DynamicForm.md#method-dynamicformgetvaluesascriteria) |
 | callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke when a fetch is complete. Fires only if server contact was required; see [fetchData()](ListGrid_2.md#method-listgridfetchdata) for details |
-| requestProperties | [DSRequest](#type-dsrequest) | true | — | for databound components only - optional additional properties to set on the DSRequest that will be issued |
+| requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | for databound components only - optional additional properties to set on the DSRequest that will be issued |
 
 ### Groups
 

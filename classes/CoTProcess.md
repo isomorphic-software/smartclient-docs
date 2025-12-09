@@ -50,12 +50,42 @@ Use [runTask()](Process.md#method-processruntask) to enter a single CoTTask with
 - CoT
 
 ---
+## Attr: CoTProcess.promptModeMinimal
+
+### Description
+Partial prompt mode producing the smallest useful prompt for quick inspection.
+
+Keeps only goal and taskPrompt; omits everything else including large state variables. Best for: "Show me just the essentials" or "Quick overview of prompt structure"
+
+### Groups
+
+- CoTPartialPrompt
+
+**Flags**: IR
+
+---
 ## Attr: CoTProcess.transitionsPrimer
 
 ### Description
 Primer text shown before the transitions list when using [CoTProcess.getPromptPart](#method-cotprocessgetpromptpart) with "transitions".
 
 **Flags**: IR
+
+---
+## Attr: CoTProcess.mockData
+
+### Description
+Array of mock data entries for capture or replay.
+
+**During Capture:** When [CoTProcess.captureMockData](#attr-cotprocesscapturemockdata) is true, this array is automatically populated with entries containing `taskID`, `aiResponse`, and `timestamp` for each AI call.
+
+**During Replay:** When [CoTProcess.mockMode](#attr-cotprocessmockmode) is true and this array is populated, the framework replays responses in sequence, matching each entry's `taskID` against the current task. If the workflow diverges (task IDs don't match), replay fails with a diagnostic error.
+
+### Groups
+
+- CoTMocking
+
+**Flags**: IRW
 
 ---
 ## Attr: CoTProcess.goal
@@ -92,6 +122,56 @@ If true, history is not tracked and is omitted from prompts for all tasks in thi
 **Flags**: IR
 
 ---
+## Attr: CoTProcess.captureMockData
+
+### Description
+When true, enables mock data capture mode. During execution, each AI response is recorded in the [CoTProcess.mockData](#attr-cotprocessmockdata) array along with the task ID and timestamp. The captured data can later be used for replay testing by setting [mockMode:true](#attr-cotprocessmockmode) and populating [CoTProcess.mockData](#attr-cotprocessmockdata) with the captured array.
+
+**Environment Sensitivity:** MockData replay assumes the test environment is _exactly_ the same as during capture. Replays can produce false regressions if:
+
+*   **Component IDs change:** If the CoT interacts with SmartClient components that use auto-generated IDs (e.g., `isc_ListGrid_0`), any change to the UI initialization order (additional components created before the test) will cause IDs to differ from the captured values.
+*   **Database state changes:** If the CoT modifies a database during capture (creates, updates, or deletes records), subsequent replays against the same database will encounter different data. For example, a captured workflow that finds and edits "Order #123 with status On Hold" will fail on replay if that order no longer exists or has a different status.
+*   **External service responses differ:** Any external API calls that return different data on replay will cause workflow divergence.
+
+To avoid false regressions, ensure the test environment is reset to the same state before each replay (e.g., restore database snapshots, use deterministic component IDs via [Canvas.ID](Canvas.md#attr-canvasid), or isolate tests in fresh browser sessions).
+
+**ID Stability via UISession:** CoT processes that use [UISession](#class-uisession) (such as [AUN](AUN.md#class-aun)) benefit from UISession's deterministic ID generation. UISession assigns its own [PathLocalIds](#type-pathlocalid) that are independent of SmartClient's global ID counters, so components created _before_ the session do not affect IDs within the session's scope. See [UISession](#class-uisession) for details on ID stability guarantees.
+
+### Groups
+
+- CoTMocking
+
+**Flags**: IRW
+
+---
+## Attr: CoTProcess.promptModeTaskPromptOnly
+
+### Description
+Partial prompt mode for debugging task-specific prompt content.
+
+Omits shared boilerplate (introPrompt, history, errors, primers) to focus on what makes this task unique. Best for: "Why is my task asking the wrong question?"
+
+### Groups
+
+- CoTPartialPrompt
+
+**Flags**: IR
+
+---
+## Attr: CoTProcess.promptModeTransitionDebug
+
+### Description
+Partial prompt mode for debugging conditional transition logic between tasks.
+
+Keeps transitions visible while omitting intro and history noise. Best for: "Why did the workflow go to task X instead of Y?"
+
+### Groups
+
+- CoTPartialPrompt
+
+**Flags**: IR
+
+---
 ## Attr: CoTProcess.introPrompt
 
 ### Description
@@ -104,6 +184,20 @@ The beginning of the AI prompt that is common to all participating [CoTTasks](Co
 
 ### Description
 Maximum number of retries for validation failures when running [CoTTask](CoTTask.md#class-cottask) steps under this process. Tasks may override via [CoTTask.maxRetries](CoTTask.md#attr-cottaskmaxretries). A value of 0 disables retries.
+
+**Flags**: IR
+
+---
+## Attr: CoTProcess.promptModeErrorsOnly
+
+### Description
+Partial prompt mode focusing on validation and execution errors.
+
+Shows errors and taskPrompt (for context) while omitting most other content. Best for: "Why did validation fail? What error occurred?"
+
+### Groups
+
+- CoTPartialPrompt
 
 **Flags**: IR
 
@@ -142,6 +236,48 @@ Individual `CoTTasks` can reference `optionalPrompts` by name when constructing 
 
 ### Description
 Primer text shown before the goal value when using [CoTProcess.getPromptPart](#method-cotprocessgetpromptpart) with "goal".
+
+**Flags**: IR
+
+---
+## Attr: CoTProcess.promptModeNoData
+
+### Description
+Partial prompt mode omitting large data structures while keeping all logic/text.
+
+Uses truncation for history and errors to limit size without hiding logic. Best for: "Show prompt structure without 100KB of JSON blobs"
+
+### Groups
+
+- CoTPartialPrompt
+
+**Flags**: IR
+
+---
+## Attr: CoTProcess.promptModeStateTracking
+
+### Description
+Partial prompt mode for tracking state variable changes across steps.
+
+Keeps all state variables and history visible while omitting boilerplate. Best for: "Why is state.X set to this value?"
+
+### Groups
+
+- CoTPartialPrompt
+
+**Flags**: IR
+
+---
+## Attr: CoTProcess.promptModeHistoryOnly
+
+### Description
+Partial prompt mode focusing on action history and continuity.
+
+Shows history and errors while omitting most other content. Best for: "What actions led to the current state?"
+
+### Groups
+
+- CoTPartialPrompt
 
 **Flags**: IR
 
@@ -239,21 +375,88 @@ Names matching keys in [CoTProcess.optionalPrompts](#attr-cotprocessoptionalprom
 ## Method: CoTProcess.mockOutput
 
 ### Description
-Process-level provider of synthetic AI output used when mocking is in effect and the current task does not implement [CoTTask.mockOutput](CoTTask.md#method-cottaskmockoutput) or returns null from that method.
+Process-level provider of synthetic AI output used when mocking is in effect.
+
+When [CoTProcess.mockData](#attr-cotprocessmockdata) is populated, the default implementation automatically returns the aiResponse from the next AIMockEntry. Override to customize replay behavior or add validation.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| task | [CoTTask](#type-cottask) | false | — | The task requesting mocked output |
+| task | [CoTTask](#type-cottask) | false | — | The task requesting mock output |
+| fullPrompt | [String](#type-string) | false | — | The complete prompt that would be sent to the AI |
+| mockEntry | [AIMockEntry](#type-aimockentry) | false | — | The AIMockEntry for this step (if in replay mode). Null if not in replay mode or if no mockData is set. |
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — Fake AI output for the given task
+`[Object](../reference.md#type-object)` — Fake AI output. Return a Promise for async mock generation.
+
+The default implementation is equivalent to:
+
+```
+ mockOutput: function (task, fullPrompt, mockEntry) {
+     return mockEntry ? mockEntry.aiResponse : null;
+ }
+ 
+```
+When overriding, call `this.Super("mockOutput", arguments)` to get this default replay behavior. A no-op override that just returns the captured response looks like:
+```
+ mockOutput: function (task, fullPrompt, mockEntry) {
+     return this.Super("mockOutput", arguments);
+ }
+ 
+```
 
 ### Groups
 
 - CoTMocking
+
+---
+## Method: CoTProcess.getPartialPrompt
+
+### Description
+Generate a partial prompt with specified fragments omitted for debugging/logging.
+
+Partial prompts help isolate specific aspects of AI prompts when troubleshooting workflow issues. They reduce noise from boilerplate, large data structures, and irrelevant context so you can focus on the specific logic being debugged.
+
+#### Using Built-in Modes
+Pass a mode name string to use a pre-configured set of omissions. The mode is resolved by looking for `this.promptMode[ModeName]` on the process instance. Available modes in CoTProcess:
+
+*   **taskPromptOnly** - Focus on task-specific prompt; omit shared boilerplate, history, errors. Best for: "Why is my task asking the wrong question?"
+*   **transitionDebug** - Keep transitions visible; omit intro and history. Best for: "Why did the workflow go to task X instead of Y?"
+*   **stateTracking** - Keep all state variables and history visible. Best for: "Why is state.X set to this value?"
+*   **historyOnly** - Focus on action history; omit most other content. Best for: "What actions led to the current state?"
+*   **errorsOnly** - Focus on validation/execution errors. Best for: "Why did validation fail?"
+*   **minimal** - Smallest useful prompt (goal + taskPrompt only). Best for: "Quick overview of prompt structure"
+*   **noData** - Omit large data but keep logic; truncate history/errors. Best for: "Show logic without 100KB JSON blobs"
+
+AUN adds additional modes - see [AUN.getPartialPrompt](AUN.md#method-aungetpartialprompt).
+
+#### Customizing Modes
+Pass a [PartialPromptConfig](../reference.md#object-partialpromptconfig) object to customize the mode: // Start with taskPromptOnly, but include history var partial = process.getPartialPrompt({ mode: "taskPromptOnly", add: \["history"\] }); // Start with transitionDebug, also omit errors var partial = process.getPartialPrompt({ mode: "transitionDebug", remove: \["errors"\] });
+
+#### Custom Configuration
+For full control, pass a config without a mode: var partial = process.getPartialPrompt({ omit: \["introPrompt", "history"\], omitStateVars: \["currentSummary", "eventStream"\], truncateHistory: 3 });
+
+If a requested mode is not found, a log message is generated and the full prompt is returned (no omissions).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| config | [String](#type-string)|[PartialPromptConfig](#type-partialpromptconfig) | false | — | Mode name string or configuration object |
+
+### Returns
+
+`[String](#type-string)` — The partial prompt with specified omissions applied
+
+### Groups
+
+- CoTPartialPrompt
+
+### See Also
+
+- [PartialPromptConfig](../reference.md#object-partialpromptconfig)
 
 ---
 ## Method: CoTProcess.addHistory
@@ -270,5 +473,23 @@ Add a history entry to [history](#attr-cotprocesshistory) and, if within limits,
 ### Groups
 
 - CoTHistory
+
+---
+## Method: CoTProcess.setMockReplayFailure
+
+### Description
+Signal a failure during Mock Replay mode. This immediately halts the process and logs a clear explanation of the failure.
+
+Use this in custom mockOutput() or processOutputs() implementations to enforce sanity checks during replay, such as verifying prompt content or state consistency.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| errorExplanation | [String](#type-string) | false | — | Human-readable explanation of what went wrong |
+
+### Groups
+
+- CoTMocking
 
 ---

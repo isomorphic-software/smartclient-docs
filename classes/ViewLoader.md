@@ -119,7 +119,7 @@ This method is called from the response processing pipeline. If you want to prov
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — false to suppress further response processing
+`[Boolean](#type-boolean)` — false to suppress further response processing
 
 ### Groups
 

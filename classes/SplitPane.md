@@ -724,6 +724,16 @@ Updates the [detailToolButtons](#attr-splitpanedetailtoolbuttons) at runtime.
 | buttons | [Array of Canvas](#type-array-of-canvas) | false | — | new controls for the toolstrip. |
 
 ---
+## Method: SplitPane.getPageOrientation
+
+### Description
+Returns the current [PageOrientation](../reference.md#type-pageorientation). If [SplitPane.pageOrientation](#attr-splitpanepageorientation) has been set to a non-null value, it is returned; otherwise returns the current device orientation from [Page.getOrientation](Page.md#classmethod-pagegetorientation).
+
+### Returns
+
+`[PageOrientation](../reference.md#type-pageorientation)` — current page orientation
+
+---
 ## Method: SplitPane.setShowLeftButton
 
 ### Description

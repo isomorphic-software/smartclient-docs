@@ -452,7 +452,7 @@ Return false to cancel this event. If this event is not cancelled by the icon-le
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — Return false to cancel the event.
+`[Boolean](#type-boolean)` — Return false to cancel the event.
 
 ### Groups
 

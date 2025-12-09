@@ -34,6 +34,9 @@ Add entries programmatically via [CoTProcess.addHistory](../classes/CoTProcess.m
 #### Maximum history entries
 The in‑memory maximum is controlled by [CoTProcess.historyMaxItems](../classes/CoTProcess.md#attr-cotprocesshistorymaxitems). The mirrored `state.history` maximum is controlled by [CoTProcess.stateHistoryMaxItems](../classes/CoTProcess.md#attr-cotprocessstatehistorymaxitems) and defaults to the in‑memory maximum if unset. Older entries are dropped when limits are reached. Implementations may summarize older entries into a compact note before dropping them.
 
+#### Truncation in Partial Prompts
+When generating [partial prompts](CoTPartialPrompt.md#kb-topic-cotpartialprompt), history can be truncated via [PartialPromptConfig.truncateHistory](../classes/PartialPromptConfig.md#attr-partialpromptconfigtruncatehistory) to include only the N most recent entries. This is useful when debugging recent actions without including the full history.
+
 ### Related
 
 - [CoTProcess.addHistory](../classes/CoTProcess.md#method-cotprocessaddhistory)

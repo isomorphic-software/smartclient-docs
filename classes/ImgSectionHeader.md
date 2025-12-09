@@ -181,7 +181,7 @@ Optional stringMethod to fire when the user hovers over this section header and 
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — false to suppress the standard hover
+`[Boolean](#type-boolean)` — false to suppress the standard hover
 
 ### Groups
 

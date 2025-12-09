@@ -1080,7 +1080,7 @@ Optional handler to fire when a tab is deselected. Returning false will cancel t
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — return false to cancel the tab deselection
+`[Boolean](#type-boolean)` — return false to cancel the tab deselection
 
 ---
 ## Method: TabSet.getTabObject
@@ -1226,7 +1226,7 @@ Notification fired when the user right-clicks on a tab. Event may be cancelled b
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — return false to cancel default right-click behavior
+`[Boolean](#type-boolean)` — return false to cancel default right-click behavior
 
 ---
 ## Method: TabSet.getSelectedTab
@@ -1273,7 +1273,7 @@ Return false from this method to cancel the change.
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — return false to suppress the title change
+`[Boolean](#type-boolean)` — return false to suppress the title change
 
 ---
 ## Method: TabSet.removeTabs

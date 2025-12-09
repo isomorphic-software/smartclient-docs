@@ -6,7 +6,7 @@
 
 ## Class: Canvas
 
-*Inherits from:* [BaseWidget](../reference.md#class-basewidget)
+*Inherits from:* [BaseWidget](BaseWidget.md#class-basewidget)
 
 ### Description
 Base class for all SmartClient visual components (except [FormItems](FormItem.md#class-formitem)).
@@ -1219,7 +1219,7 @@ Specifies the cursor image to display when the mouse pointer is over this widget
 ## Attr: Canvas.parentCanvas
 
 ### Description
-This Canvas's immediate parent, if any.  
+This Canvas's immediate parent, if any. May be specified as a Canvas instance or the String ID of a Canvas.  
 Can be initialized, but any subsequent manipulation should be via [addChild()](#method-canvasaddchild) and [removeChild()](#method-canvasremovechild) calls on the parent. The parent Canvas should be fetched using [getParentCanvas()](#method-canvasgetparentcanvas).
 
 See [containment](../kb_topics/containment.md#kb-topic-component-containment-and-hierarchy) for an overview of parent/child relationships.
@@ -2221,6 +2221,20 @@ This property is defaulted to true in the [Canvas](#class-canvas) prototype for 
 **Flags**: IRWA
 
 ---
+## Attr: Canvas.showFocusOutline
+
+### Description
+For focusable widgets, should the native dotted focus outline be shown, where supported?
+
+This controls whether the browser's default focus outline (typically a dotted border) is displayed when the widget has keyboard focus. Set to false to suppress this outline, for example when custom focus styling is applied via [canvas.showFocused](#canvasshowfocused).
+
+### Groups
+
+- focus
+
+**Flags**: IRWA
+
+---
 ## Attr: Canvas.groupLabelStyleName
 
 ### Description
@@ -2585,6 +2599,8 @@ If [this.showHover](#attr-canvasshowhover) is true, this property can be used to
 Array of all Canvii that are immediate children of this Canvas.
 
 Use [Canvas.addChild](#method-canvasaddchild) and [Canvas.removeChild](#method-canvasremovechild) to add and remove children after a Canvas has been created/drawn.
+
+As an alternative to providing Canvas instances, the `children` array may also contain Strings. A String will be assumed to be a global ID, and a Canvas with that ID will be used as the child.
 
 See [containment](../kb_topics/containment.md#kb-topic-component-containment-and-hierarchy) for an overview of parent/child relationships.
 
@@ -4006,7 +4022,7 @@ If `this.showHover` is true, this property can be used to customize the alignmen
 ## Attr: Canvas.parentElement
 
 ### Description
-This Canvas's immediate parent, if any.  
+This Canvas's immediate parent, if any. May be specified as a Canvas instance or the String ID of a Canvas.  
 Can be initialized, but any subsequent manipulation should be via [addChild()](#method-canvasaddchild) and [removeChild()](#method-canvasremovechild) calls on the parent.
 
 ### Groups
@@ -5201,7 +5217,7 @@ Executed every time the mouse moves while drag-resizing. If this method does not
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — false to suppress auto-resize of the [Canvas.dragTarget](#attr-canvasdragtarget) or outline.
+`[Boolean](#type-boolean)` — false to suppress auto-resize of the [Canvas.dragTarget](#attr-canvasdragtarget) or outline.
 
 ### Groups
 
@@ -5229,7 +5245,7 @@ Note that [Canvas.animateResizeLayoutMode](#attr-canvasanimateresizelayoutmode) 
 |------|------|----------|---------|-------------|
 | width | [Integer](../reference_2.md#type-integer) | false | — | new width (or null for unchanged) |
 | height | [Integer](../reference_2.md#type-integer) | false | — | new height (or null for unchanged) |
-| callback | [AnimationCallback](#type-animationcallback) | true | — | When the resize completes this callback will be fired. Single 'earlyFinish' parameter will be passed if the animation was cut short, for example by a call to the non-animated APIs [Canvas.resizeTo](#method-canvasresizeto) or [Canvas.resizeBy](#method-canvasresizeby). |
+| callback | [AnimationCallback](../reference_2.md#type-animationcallback) | true | — | When the resize completes this callback will be fired. Single 'earlyFinish' parameter will be passed if the animation was cut short, for example by a call to the non-animated APIs [Canvas.resizeTo](#method-canvasresizeto) or [Canvas.resizeBy](#method-canvasresizeby). |
 | duration | [Integer](../reference_2.md#type-integer) | true | — | Duration in ms of the animated resize |
 | acceleration | [AnimationAcceleration](../reference.md#type-animationacceleration) | true | — | Optional acceleration effect to apply to the resize |
 
@@ -5368,7 +5384,7 @@ Executed when the dragged object is no longer over this drop target, including w
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — false to prevent this event from bubbling to this widget's parent, true or undefined to bubble.
+`[Boolean](#type-boolean)` — false to prevent this event from bubbling to this widget's parent, true or undefined to bubble.
 
 ### Groups
 
@@ -5430,7 +5446,7 @@ Executed every time the mouse moves while dragging this canvas.
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — false to cancel drag interaction.
+`[Boolean](#type-boolean)` — false to cancel drag interaction.
 
 ### Groups
 
@@ -6138,7 +6154,7 @@ Animate a reposition of this canvas from its current position to the specified p
 |------|------|----------|---------|-------------|
 | left | [Integer](../reference_2.md#type-integer) | false | — | new left position (or null for unchanged) |
 | top | [Integer](../reference_2.md#type-integer) | false | — | new top position (or null for unchanged) |
-| callback | [AnimationCallback](#type-animationcallback) | true | — | When the move completes this callback will be fired. Single 'earlyFinish' parameter will be passed if the animation was cut short, for example by a call to the non-animated APIs [Canvas.moveTo](#method-canvasmoveto) or [Canvas.moveBy](#method-canvasmoveby). |
+| callback | [AnimationCallback](../reference_2.md#type-animationcallback) | true | — | When the move completes this callback will be fired. Single 'earlyFinish' parameter will be passed if the animation was cut short, for example by a call to the non-animated APIs [Canvas.moveTo](#method-canvasmoveto) or [Canvas.moveBy](#method-canvasmoveby). |
 | duration | [Integer](../reference_2.md#type-integer) | true | — | Duration in ms of the animated move |
 | acceleration | [AnimationAcceleration](../reference.md#type-animationacceleration) | true | — | Optional acceleration effect to bias the ratios |
 
@@ -6245,7 +6261,7 @@ Hide a canvas by shrinking it vertically to zero height over a period of time. T
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | effect | [AnimateShowEffectId](../reference_2.md#type-animateshoweffectid)|[AnimateShowEffect](#type-animateshoweffect) | true | — | How should the content of the window be hidden during the hide? If ommitted, default behavior can be configured via [Canvas.animateHideEffect](#attr-canvasanimatehideeffect) |
-| callback | [AnimationCallback](#type-animationcallback) | true | — | When the hide completes this callback will be fired. Single 'earlyFinish' parameter will be passed if the animation was cut short, for example by a call to the non-animated API [Canvas.hide](#method-canvashide). |
+| callback | [AnimationCallback](../reference_2.md#type-animationcallback) | true | — | When the hide completes this callback will be fired. Single 'earlyFinish' parameter will be passed if the animation was cut short, for example by a call to the non-animated API [Canvas.hide](#method-canvashide). |
 | duration | [Integer](../reference_2.md#type-integer) | true | — | Duration in ms of the animated hide. If unset, duration will be picked up from [Canvas.animateHideTime](#attr-canvasanimatehidetime) |
 | acceleration | [AnimationAcceleration](../reference.md#type-animationacceleration) | true | — | Optional acceleration effect function to bias the animation ratios. If unset, acceleration will be picked up from [Canvas.animateShowTime](#attr-canvasanimateshowtime) |
 
@@ -6317,7 +6333,7 @@ Show a canvas by growing it vertically to its fully drawn height over a period o
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | effect | [AnimateShowEffectId](../reference_2.md#type-animateshoweffectid)|[AnimateShowEffect](#type-animateshoweffect) | true | — | Animation effect to use when revealing the widget. If ommitted, default behavior can be configured via [Canvas.animateShowEffect](#attr-canvasanimateshoweffect) |
-| callback | [AnimationCallback](#type-animationcallback) | true | — | When the show completes this callback will be fired. Single 'earlyFinish' parameter will be passed if the animation was cut short, for example by a call to the non-animated API [Canvas.show](#method-canvasshow). |
+| callback | [AnimationCallback](../reference_2.md#type-animationcallback) | true | — | When the show completes this callback will be fired. Single 'earlyFinish' parameter will be passed if the animation was cut short, for example by a call to the non-animated API [Canvas.show](#method-canvasshow). |
 | duration | [Integer](../reference_2.md#type-integer) | true | — | Duration in ms of the animated show. If unset, duration will be picked up from [Canvas.animateShowTime](#attr-canvasanimateshowtime) |
 | acceleration | [AnimationAcceleration](../reference.md#type-animationacceleration) | true | — | Optional acceleration effect function to bias the animation ratios. If unset, acceleration will be picked up from [Canvas.animateShowAcceleration](#attr-canvasanimateshowacceleration) |
 
@@ -6336,7 +6352,7 @@ Animate a change in opacity from the widget's current opacity to the specified o
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | opacity | [Integer](../reference_2.md#type-integer) | false | — | desired final opacity |
-| callback | [AnimationCallback](#type-animationcallback) | true | — | When the fade completes this callback will be fired. Single 'earlyFinish' parameter will be passed if the animation was cut short, for example by a call to the non-animated API [Canvas.setOpacity](#method-canvassetopacity). |
+| callback | [AnimationCallback](../reference_2.md#type-animationcallback) | true | — | When the fade completes this callback will be fired. Single 'earlyFinish' parameter will be passed if the animation was cut short, for example by a call to the non-animated API [Canvas.setOpacity](#method-canvassetopacity). |
 | duration | [Integer](../reference_2.md#type-integer) | true | — | Duration in ms of the animated fade |
 | acceleration | [AnimationAcceleration](../reference.md#type-animationacceleration) | true | — | Optional animation acceleration to bias the ratios |
 
@@ -6709,7 +6725,7 @@ Use [EventHandler.getKey](EventHandler.md#classmethod-eventhandlergetkey) to fin
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — false to suppress native behavior in response to the keyPress, and prevent this event from bubbling to this widget's parent, or true or undefined to bubble.
+`[Boolean](#type-boolean)` — false to suppress native behavior in response to the keyPress, and prevent this event from bubbling to this widget's parent, or true or undefined to bubble.
 
 ### Groups
 
@@ -6771,7 +6787,7 @@ Executed every time the mouse moves while drag-repositioning. If this method doe
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — false to suppress auto-move of the [Canvas.dragTarget](#attr-canvasdragtarget) or outline.
+`[Boolean](#type-boolean)` — false to suppress auto-move of the [Canvas.dragTarget](#attr-canvasdragtarget) or outline.
 
 ### Groups
 
@@ -6815,7 +6831,7 @@ Executed when the mouse button is released over a compatible drop target at the 
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — false to prevent this event from bubbling to this widget's parent, true or undefined to bubble.
+`[Boolean](#type-boolean)` — false to prevent this event from bubbling to this widget's parent, true or undefined to bubble.
 
 ### Groups
 
@@ -7066,7 +7082,7 @@ Returning true from this handler will cause the [Canvas.dragTarget](#attr-canvas
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — false to snap the [Canvas.dragTarget](#attr-canvasdragtarget) (or outline) back to its original location or true to leave it at the current cursor position.
+`[Boolean](#type-boolean)` — false to snap the [Canvas.dragTarget](#attr-canvasdragtarget) (or outline) back to its original location or true to leave it at the current cursor position.
 
 ### Groups
 
@@ -7170,7 +7186,7 @@ For details on showing a 'no drop' cursor when the user drags over all invalid d
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — false to prevent this event from bubbling to this widget's parent, true or undefined to bubble.
+`[Boolean](#type-boolean)` — false to prevent this event from bubbling to this widget's parent, true or undefined to bubble.
 
 ### Groups
 
@@ -7306,7 +7322,7 @@ If [Canvas.dragAppearance](#attr-canvasdragappearance) is set to `"tracker"`, th
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — Return false to suppress bubbling, and prevent `setDragTracker()` from being called on this widget's ancestors.
+`[Boolean](#type-boolean)` — Return false to suppress bubbling, and prevent `setDragTracker()` from being called on this widget's ancestors.
 
 ### Groups
 
@@ -7326,7 +7342,7 @@ Animate a reposition / resize of this canvas from its current size and position.
 | top | [Integer](../reference_2.md#type-integer) | false | — | new top position (or null for unchanged) |
 | width | [Integer](../reference_2.md#type-integer) | false | — | new width (or null for unchanged) |
 | height | [Integer](../reference_2.md#type-integer) | false | — | new height (or null for unchanged) |
-| callback | [AnimationCallback](#type-animationcallback) | true | — | When the setRect completes this callback will be fired. Single 'earlyFinish' parameter will be passed if the animation was cut short, for example by a call to the non-animated API [Canvas.setRect](#method-canvassetrect). |
+| callback | [AnimationCallback](../reference_2.md#type-animationcallback) | true | — | When the setRect completes this callback will be fired. Single 'earlyFinish' parameter will be passed if the animation was cut short, for example by a call to the non-animated API [Canvas.setRect](#method-canvassetrect). |
 | duration | [Integer](../reference_2.md#type-integer) | true | — | Duration in ms of the animated setRect |
 | acceleration | [AnimationAcceleration](../reference.md#type-animationacceleration) | true | — | Optional acceleration effect to apply to the animation |
 
@@ -7649,7 +7665,7 @@ Animate a scroll from the current scroll position to the specified position.
 |------|------|----------|---------|-------------|
 | scrollLeft | [Integer](../reference_2.md#type-integer) | false | — | desired final left scroll position |
 | scrollTop | [Integer](../reference_2.md#type-integer) | false | — | desired final top scroll position |
-| callback | [AnimationCallback](#type-animationcallback) | true | — | When the scroll completes this callback will be fired. Single 'earlyFinish' parameter will be passed if the animation was cut short, for example by a call to the non-animated APIs [Canvas.scrollTo](#method-canvasscrollto) or [Canvas.scrollBy](#method-canvasscrollby). |
+| callback | [AnimationCallback](../reference_2.md#type-animationcallback) | true | — | When the scroll completes this callback will be fired. Single 'earlyFinish' parameter will be passed if the animation was cut short, for example by a call to the non-animated APIs [Canvas.scrollTo](#method-canvasscrollto) or [Canvas.scrollBy](#method-canvasscrollby). |
 | duration | [Integer](../reference_2.md#type-integer) | true | — | Duration in ms of the animated scroll |
 | acceleration | [AnimationAcceleration](../reference.md#type-animationacceleration) | true | — | Optional acceleration to bias the animation ratios |
 
@@ -8006,7 +8022,7 @@ Returning true from this handler will cause the [Canvas.dragTarget](#attr-canvas
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — false to snap the [Canvas.dragTarget](#attr-canvasdragtarget) (or outline) back to its original size or true to leave it at the current cursor position.
+`[Boolean](#type-boolean)` — false to snap the [Canvas.dragTarget](#attr-canvasdragtarget) (or outline) back to its original size or true to leave it at the current cursor position.
 
 ### Groups
 
@@ -8087,7 +8103,7 @@ Executed when the mouse button is released at the end of the drag. Your widget c
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — false to cancel drag interaction.
+`[Boolean](#type-boolean)` — false to cancel drag interaction.
 
 ### Groups
 
@@ -8218,7 +8234,7 @@ Executed when the compatible dragged object is first moved over this drop target
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — false to prevent this event from bubbling to this widget's parent, true or undefined to bubble.
+`[Boolean](#type-boolean)` — false to prevent this event from bubbling to this widget's parent, true or undefined to bubble.
 
 ### Groups
 
@@ -8323,7 +8339,7 @@ Executed when dragging first starts. No default implementation. Create this hand
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — false to cancel the drag reposition action
+`[Boolean](#type-boolean)` — false to cancel the drag reposition action
 
 ### Groups
 
@@ -8665,7 +8681,7 @@ A drag action is considered to be begin when the mouse has moved [Canvas.dragSta
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — false to cancel drag action.
+`[Boolean](#type-boolean)` — false to cancel drag action.
 
 ### Groups
 
@@ -8797,7 +8813,7 @@ If `canHover` is true for this widget, the `hover` string method will be fired w
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — false to cancel the hover event.
+`[Boolean](#type-boolean)` — false to cancel the hover event.
 
 ### Groups
 
@@ -9016,7 +9032,7 @@ Executed when resize dragging first starts. No default implementation. Create th
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — false to cancel the drag reposition action
+`[Boolean](#type-boolean)` — false to cancel the drag reposition action
 
 ### Groups
 
@@ -9133,7 +9149,7 @@ Use [EventHandler.getKey](EventHandler.md#classmethod-eventhandlergetkey) to fin
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — false to prevent this event from bubbling to this widget's parent, true or undefined to bubble.
+`[Boolean](#type-boolean)` — false to prevent this event from bubbling to this widget's parent, true or undefined to bubble.
 
 ### Groups
 
@@ -9597,6 +9613,21 @@ Resizes the widget vertically if required to satisfy the specified [Canvas.minHe
 
 ### Groups
 
+- sizing
+
+---
+## Method: Canvas.getRect
+
+### Description
+Returns the coordinates of this object as an array in left, top, width, height order.
+
+### Returns
+
+`[Array of int](#type-array-of-int)` — coordinates as \[left, top, width, height\]
+
+### Groups
+
+- positioning
 - sizing
 
 ---

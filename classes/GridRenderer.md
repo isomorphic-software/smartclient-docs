@@ -754,7 +754,7 @@ Called when a row receives a mousedown event.
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — whether to cancel the event
+`[Boolean](#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -812,7 +812,7 @@ Called when a row receives a mouseup event.
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — whether to cancel the event
+`[Boolean](#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -836,7 +836,7 @@ Optional stringMethod to fire when the user hovers over a cell and the value is 
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — false to suppress the standard hover
+`[Boolean](#type-boolean)` — false to suppress the standard hover
 
 ### Groups
 
@@ -1015,7 +1015,7 @@ Called when a cell receives a mouseup event.
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — whether to cancel the event
+`[Boolean](#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -1085,7 +1085,7 @@ Called when (cell-based) selection changes within this grid.
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — Returning false will prevent the GridRenderer styling from being updated to reflect the selection change.
+`[Boolean](#type-boolean)` — Returning false will prevent the GridRenderer styling from being updated to reflect the selection change.
 
 ### Groups
 
@@ -1135,7 +1135,7 @@ Called when the mouse pointer leaves a cell
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — whether to cancel the event
+`[Boolean](#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -1235,7 +1235,7 @@ Called when the mouse hovers over a row if this.canHover is true. Returning fals
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — whether to cancel the event (default behavior of showing the hover)
+`[Boolean](#type-boolean)` — whether to cancel the event (default behavior of showing the hover)
 
 ### Groups
 
@@ -1263,7 +1263,7 @@ Called when the mouse hovers over a cell if `this.canHover` is `true`. Returning
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — whether to cancel the event
+`[Boolean](#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -1291,7 +1291,7 @@ Called when the mouse pointer leaves a row
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — whether to cancel the event
+`[Boolean](#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -1455,7 +1455,7 @@ Called when a cell receives a double click event.
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — whether to cancel the event
+`[Boolean](#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -1479,7 +1479,7 @@ Called when the mouse pointer enters a row
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — whether to cancel the event
+`[Boolean](#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -1604,7 +1604,7 @@ Called when a row receives a click event.
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — whether to cancel the event
+`[Boolean](#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -1652,7 +1652,7 @@ Called when a row receives a contextclick event.
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — whether to cancel the event
+`[Boolean](#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -1723,7 +1723,7 @@ Called when a cell receives a mousedown event.
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — whether to cancel the event
+`[Boolean](#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -1747,7 +1747,7 @@ Called when the mouse pointer enters a cell
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — whether to cancel the event
+`[Boolean](#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -1839,7 +1839,7 @@ Called when a row receives a double click event.
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — whether to cancel the event
+`[Boolean](#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -1863,7 +1863,7 @@ Called when a cell receives a click event.
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — whether to cancel the event
+`[Boolean](#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -1908,7 +1908,7 @@ Called when a cell receives a contextclick event.
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — whether to cancel the event
+`[Boolean](#type-boolean)` — whether to cancel the event
 
 ### Groups
 

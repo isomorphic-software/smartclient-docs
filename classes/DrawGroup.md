@@ -168,7 +168,7 @@ Default drag behavior will be to reposition all items in the group (and update t
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — false to cancel drag interaction.
+`[Boolean](#type-boolean)` — false to cancel drag interaction.
 
 ### Groups
 
@@ -368,7 +368,7 @@ Default drag behavior will be to reposition all items in the group (and update t
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — false to cancel drag action.
+`[Boolean](#type-boolean)` — false to cancel drag action.
 
 ### Groups
 
@@ -450,7 +450,7 @@ Note that if [useGroupRect](#attr-drawgroupusegrouprect) is true, this notificat
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — false to cancel drag interaction.
+`[Boolean](#type-boolean)` — false to cancel drag interaction.
 
 ### Groups
 

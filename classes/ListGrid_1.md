@@ -8972,7 +8972,7 @@ If [ListGrid.showHeaderShadow](#attr-listgridshowheadershadow) is true, the [Can
 ## Attr: ListGrid.searchForm
 
 ### Description
-When declared, the specified form is automatically used as a search form for this grid, that is, [form.getValuesAsCriteria()](DynamicForm.md#method-dynamicformgetvaluesascriteria) is called and the criteria returned are additive with any criteria present in the [FilterEditor](#attr-listgridfiltereditor) or [Filter Window](#attr-listgridallowfilterwindow).
+When declared, the specified form is automatically used as a search form for this grid. May be specified as a DynamicForm/ValuesManager instance or the String ID of one. that is, [form.getValuesAsCriteria()](DynamicForm.md#method-dynamicformgetvaluesascriteria) is called and the criteria returned are additive with any criteria present in the [FilterEditor](#attr-listgridfiltereditor) or [Filter Window](#attr-listgridallowfilterwindow).
 
 For a discussion of the various filtering and criteria-management APIs and when to use them, see the [Grid Filtering overview](../kb_topics/gridFiltering.md#kb-topic-grid-filtering-overview).
 
@@ -9615,7 +9615,7 @@ Optional stringMethod to fire when the mouse moves over the error icon of a cell
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — false to suppress the default behavior (show a standard error message hover)
+`[Boolean](#type-boolean)` — false to suppress the default behavior (show a standard error message hover)
 
 ### Groups
 
@@ -9732,7 +9732,7 @@ Called when a cell receives a contextclick event.
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — whether to cancel the event
+`[Boolean](#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -9816,7 +9816,7 @@ Optional stringMethod to fire when the mouse moves off the error icon of a cell 
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — false to suppress the standard behavior (clear the standard error message hover if it is showing)
+`[Boolean](#type-boolean)` — false to suppress the standard behavior (clear the standard error message hover if it is showing)
 
 ### Groups
 

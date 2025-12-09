@@ -296,7 +296,7 @@ Optional handler to fire when a tab is deselected. Returning false will cancel t
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — return `false` to cancel the tab selection
+`[Boolean](#type-boolean)` — return `false` to cancel the tab selection
 
 ### See Also
 

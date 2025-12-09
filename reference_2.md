@@ -37,6 +37,12 @@ String specifying effect to apply during an animated show or hide.
 | "fly" | widget moves into position from offscreen |
 
 ---
+## Type: AnimationCallback
+
+### Description
+A [Callback](#type-callback) to fire when an animation completes. The callback receives a single `earlyFinish` parameter which is true if the animation was cut short (for example by a call to a non-animated API that changes the same property).
+
+---
 ## Type: ArrowStyle
 
 ### Description
@@ -3194,6 +3200,12 @@ See the [Master/Detail Add Example](https://www.smartclient.com/smartclient-late
 ### Groups
 
 - transactionChaining
+
+---
+## Object: Facet
+
+### Description
+Facet definition object made use of by the [CubeGrid](classes/CubeGrid.md#class-cubegrid) and [FacetChart](classes/FacetChart.md#class-facetchart) classes.
 
 ---
 ## Object: Field

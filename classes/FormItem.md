@@ -257,6 +257,8 @@ CSS class for the "hint" string.
 ### Description
 The DynamicForm picks a field renderer based on the type of the field (and sometimes other attributes of the field).
 
+In addition to the standard [FormItemType](../reference.md#type-formitemtype) values, this property also accepts the name of any [FormItem](#class-formitem) subclass (e.g., "ButtonItem", "CheckboxItem") or a shorthand lowercase version (e.g., "button", "checkbox"). When a class name or shorthand is provided, it acts as a shortcut for setting [FormItem.editorType](#attr-formitemeditortype).
+
 ### Groups
 
 - appearance
@@ -3416,11 +3418,11 @@ Returns a [FormItemIcon](../reference.md#object-formitemicon) for a standard pic
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | pickerName | [PickerIconName](../reference.md#type-pickericonname) | false | — | Name of picker icon |
-| properties | [FormItemIcon](#type-formitemicon) | true | — | Properties to apply to new picker icon |
+| properties | [FormItemIcon Properties](#type-formitemicon-properties) | true | — | Properties to apply to new picker icon |
 
 ### Returns
 
-`[FormItemIcon](#type-formitemicon)` — the icon for picker
+`[FormItemIcon Properties](#type-formitemicon-properties)` — the icon for picker
 
 ---
 ## Method: FormItem.show
@@ -3718,7 +3720,7 @@ Notification method fired when the user double-clicks the title for this item
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — Return false to cancel the doubleclick event. This will prevent the event from bubbling up, suppressing [doubleClick](Canvas.md#method-canvasdoubleclick) on the form containing this item.
+`[Boolean](#type-boolean)` — Return false to cancel the doubleclick event. This will prevent the event from bubbling up, suppressing [doubleClick](Canvas.md#method-canvasdoubleclick) on the form containing this item.
 
 ---
 ## Method: FormItem.canEditCriterion
@@ -3776,7 +3778,7 @@ StringMethod fired in response to a keydown while focused in this form item.
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — return false to attempt to cancel the event. Note for general purpose APIs for managing whether user input is allowed, use [FormItem.change](#method-formitemchange) or [FormItem.transformInput](#method-formitemtransforminput) instead.
+`[Boolean](#type-boolean)` — return false to attempt to cancel the event. Note for general purpose APIs for managing whether user input is allowed, use [FormItem.change](#method-formitemchange) or [FormItem.transformInput](#method-formitemtransforminput) instead.
 
 ### Groups
 
@@ -4046,7 +4048,7 @@ Note that it can be bad practice to cancel this method if the mouse is over the 
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — return false to cancel default behavior
+`[Boolean](#type-boolean)` — return false to cancel default behavior
 
 ### Groups
 
@@ -4084,7 +4086,7 @@ StringMethod fired when the user presses a key while focused in this form item.
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — return false to attempt to cancel the event. Note for general purpose APIs for managing whether user input is allowed, use [FormItem.change](#method-formitemchange) or [FormItem.transformInput](#method-formitemtransforminput) instead.
+`[Boolean](#type-boolean)` — return false to attempt to cancel the event. Note for general purpose APIs for managing whether user input is allowed, use [FormItem.change](#method-formitemchange) or [FormItem.transformInput](#method-formitemtransforminput) instead.
 
 ### Groups
 
@@ -4121,7 +4123,7 @@ StringMethod fired in response to a keyup while focused in this form item.
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — return false to attempt to cancel the event. Note for general purpose APIs for managing whether user input is allowed, use [FormItem.change](#method-formitemchange) or [FormItem.transformInput](#method-formitemtransforminput) instead.
+`[Boolean](#type-boolean)` — return false to attempt to cancel the event. Note for general purpose APIs for managing whether user input is allowed, use [FormItem.change](#method-formitemchange) or [FormItem.transformInput](#method-formitemtransforminput) instead.
 
 ### Groups
 
@@ -4389,7 +4391,7 @@ This event may be cancelled by returning false to suppress the [FormItem.click](
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — return false to cancel this event
+`[Boolean](#type-boolean)` — return false to cancel this event
 
 ### Groups
 
@@ -4430,7 +4432,7 @@ Called when this FormItem is double-clicked.
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — Return false to cancel the doubleClick event. This will prevent the event from bubbling up, suppressing [doubleClick](Canvas.md#method-canvasdoubleclick) on the form containing this item.
+`[Boolean](#type-boolean)` — Return false to cancel the doubleClick event. This will prevent the event from bubbling up, suppressing [doubleClick](Canvas.md#method-canvasdoubleclick) on the form containing this item.
 
 ### Groups
 
@@ -4633,7 +4635,7 @@ Notification method fires when the user clicks a [value icon](#attr-formitemvalu
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — Return false to suppress standard click handling for the item.
+`[Boolean](#type-boolean)` — Return false to suppress standard click handling for the item.
 
 ---
 ## Method: FormItem.shouldStopKeyPressBubbling
@@ -4656,7 +4658,7 @@ Developers may override this method to allow the form to react to certain keypre
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — return true to prevent bubbling of the pressed key.
+`[Boolean](#type-boolean)` — return true to prevent bubbling of the pressed key.
 
 **Flags**: A
 
@@ -4913,7 +4915,7 @@ Notification method fired when the user clicks the title for this item
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — Return false to cancel the click event. This will prevent the event from bubbling up, suppressing [click](Canvas.md#method-canvasclick) on the form containing this item.
+`[Boolean](#type-boolean)` — Return false to cancel the click event. This will prevent the event from bubbling up, suppressing [click](Canvas.md#method-canvasclick) on the form containing this item.
 
 ---
 ## Method: FormItem.setHint
@@ -5050,7 +5052,7 @@ The default implementation will call [FormItem.showPicker](#method-formitemshowp
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — Return false to cancel the event.
+`[Boolean](#type-boolean)` — Return false to cancel the event.
 
 ### Groups
 
@@ -5218,7 +5220,7 @@ Change/Changed notifications vs _"...When"_ rules: the `change` and `changed` ev
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — In your handler, return false to cancel the change, true to allow the change
+`[Boolean](#type-boolean)` — In your handler, return false to cancel the change, true or null to allow the change
 
 ### Groups
 
@@ -5714,12 +5716,12 @@ Note: `click()` is available on StaticTextItem, BlurbItems, ButtonItem, and deri
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| form | [DynamicForm](#type-dynamicform) | false | — | the managing DynamicForm instance |
-| item | [FormItem](#type-formitem) | false | — | the form item itself (also available as "this") |
+| form | [DynamicForm](#type-dynamicform) | true | — | the managing DynamicForm instance |
+| item | [FormItem](#type-formitem) | true | — | the form item itself (also available as "this") |
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — Return false to cancel the click event. This will prevent the event from bubbling up, suppressing [click](Canvas.md#method-canvasclick) on the form containing this item.
+`[Boolean](#type-boolean)` — Return false to cancel the click event. This will prevent the event from bubbling up, suppressing [click](Canvas.md#method-canvasclick) on the form containing this item.
 
 ### Groups
 
@@ -5787,7 +5789,7 @@ The pendingStatusChanged() notification method is typically used by [CanvasItem]
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — `false` to cancel the default behavior.
+`[Boolean](#type-boolean)` — `false` to cancel the default behavior.
 
 **Flags**: A
 

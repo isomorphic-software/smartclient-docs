@@ -122,6 +122,7 @@ The properties in this group are default system messages that a localized applic
 - [Dialog.WARN_TITLE](../classes/Dialog.md#classattr-dialogwarn_title)
 - [Dialog.ASK_TITLE](../classes/Dialog.md#classattr-dialogask_title)
 - [Dialog.ASK_FOR_VALUE_TITLE](../classes/Dialog.md#classattr-dialogask_for_value_title)
+- [Dialog.ASK_FOR_VALUE_MESSAGE](../classes/Dialog.md#classattr-dialogask_for_value_message)
 - [LoginDialog.LOGIN_TITLE](../classes/LoginDialog.md#classattr-logindialoglogin_title)
 - [LoginDialog.USERNAME_TITLE](../classes/LoginDialog.md#classattr-logindialogusername_title)
 - [LoginDialog.PASSWORD_TITLE](../classes/LoginDialog.md#classattr-logindialogpassword_title)

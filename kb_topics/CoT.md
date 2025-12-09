@@ -15,6 +15,9 @@ Specifically, `CoTTask` implements a default approach to prompt assembly within 
 
 `CoTProcess` extends the existing `Process` class with some features to coordinate with `CoTTask`, such as providing [prompt pieces that are common to all tasks](../classes/CoTTask.md#attr-cottaskprompt) as well as centrally defining [CoTProcess.optionalPrompts](../classes/CoTProcess.md#attr-cotprocessoptionalprompts) prompt parts that might be used by multiple tasks.
 
+#### Debugging with Partial Prompts
+When troubleshooting CoT workflows, [partial prompts](CoTPartialPrompt.md#kb-topic-cotpartialprompt) allow omitting irrelevant fragments (boilerplate, large data) to focus on specific logic. Use [CoTProcess.getPartialPrompt](../classes/CoTProcess.md#method-cotprocessgetpartialprompt) with built-in modes like `"taskPromptOnly"` or `"transitionDebug"`.
+
 ### Related
 
 - [CoTProcess.getPromptPart](../classes/CoTProcess.md#method-cotprocessgetpromptpart)

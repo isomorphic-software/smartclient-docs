@@ -1630,7 +1630,7 @@ To display custom drag tracker HTML, this method may be overridden - call [Event
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — returns false by default to suppress 'setDragTracker' on any ancestors of this component.
+`[Boolean](#type-boolean)` — returns false by default to suppress 'setDragTracker' on any ancestors of this component.
 
 ### Groups
 
@@ -1807,7 +1807,7 @@ For more information on exporting data, see [DataSource.exportData](DataSource.m
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| requestProperties | [DSRequest](#type-dsrequest) | true | — | additional properties to set on the DSRequest that will be issued |
+| requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | additional properties to set on the DSRequest that will be issued |
 | callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke on completion. Note that this parameter only applies where [DSRequest.exportToClient](DSRequest.md#attr-dsrequestexporttoclient) is explicitly set to false, because file downloads do not provide ordinary SmartClient callbacks |
 
 ### Groups
@@ -1834,7 +1834,7 @@ Returning `false` from this method will prevent the field from being added. Note
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — Return false to cancel the addition of the field
+`[Boolean](#type-boolean)` — Return false to cancel the addition of the field
 
 ### Groups
 

@@ -13,6 +13,7 @@ Horizontal and vertical location on the page
 
 - [Positioning](../reference_2.md#type-positioning)
 - [Canvas.setRect](../classes/Canvas.md#method-canvassetrect)
+- [Canvas.getRect](../classes/Canvas.md#method-canvasgetrect)
 - [Canvas.getLeft](../classes/Canvas.md#method-canvasgetleft)
 - [Canvas.setLeft](../classes/Canvas.md#method-canvassetleft)
 - [Canvas.getTop](../classes/Canvas.md#method-canvasgettop)

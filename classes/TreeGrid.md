@@ -1571,7 +1571,7 @@ This method is called when a context click occurs on a folder record.
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — whether to cancel the event
+`[Boolean](#type-boolean)` — whether to cancel the event
 
 ### See Also
 
@@ -1638,7 +1638,7 @@ This method is called when a context click occurs on a leaf record.
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — whether to cancel the event
+`[Boolean](#type-boolean)` — whether to cancel the event
 
 ### See Also
 
@@ -1681,7 +1681,7 @@ This method is called when a context click occurs on a leaf or folder record. No
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — whether to cancel the event
+`[Boolean](#type-boolean)` — whether to cancel the event
 
 ### See Also
 
@@ -1752,7 +1752,7 @@ This method behaves exactly like [TreeGrid.fetchData](#method-treegridfetchdata)
 |------|------|----------|---------|-------------|
 | criteria | [Criteria](../reference_2.md#type-criteria) | true | — | Search criteria. If a [DynamicForm](DynamicForm.md#class-dynamicform) is passed in as this argument instead of a raw criteria object, will be derived by calling [DynamicForm.getValuesAsCriteria](DynamicForm.md#method-dynamicformgetvaluesascriteria) |
 | callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke when a fetch is complete. Fires only if server contact was required; see [fetchData()](ListGrid_2.md#method-listgridfetchdata) for details |
-| requestProperties | [DSRequest](#type-dsrequest) | true | — | for databound components only - optional additional properties to set on the DSRequest that will be issued |
+| requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | for databound components only - optional additional properties to set on the DSRequest that will be issued |
 
 ### Groups
 
@@ -1794,7 +1794,7 @@ This method is called when a folder is closed either via the user manipulating t
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — false to cancel the close, true to all it to proceed
+`[Boolean](#type-boolean)` — false to cancel the close, true to all it to proceed
 
 ---
 ## Method: TreeGrid.getDragTrackerIcon
@@ -1943,7 +1943,7 @@ Do not override this method unless you need a rowClick callback that fires even 
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — false == cancel further event processing
+`[Boolean](#type-boolean)` — false == cancel further event processing
 
 ### Groups
 
@@ -2020,7 +2020,7 @@ When using invalidateCache() there is no need to also call fetchData() and in fa
 |------|------|----------|---------|-------------|
 | criteria | [Criteria](../reference_2.md#type-criteria) | true | — | Search criteria. If a [DynamicForm](DynamicForm.md#class-dynamicform) is passed in as this argument instead of a raw criteria object, will be derived by calling [DynamicForm.getValuesAsCriteria](DynamicForm.md#method-dynamicformgetvaluesascriteria) |
 | callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke when a fetch is complete. Fires only if server contact was required |
-| requestProperties | [DSRequest](#type-dsrequest) | true | — | additional properties to set on the DSRequest that will be issued |
+| requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | additional properties to set on the DSRequest that will be issued |
 
 ### Groups
 
@@ -2073,7 +2073,7 @@ This method is called when a folder is opened either via the user manipulating t
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — false to cancel the open, true to all it to proceed
+`[Boolean](#type-boolean)` — false to cancel the open, true to all it to proceed
 
 ---
 ## Method: TreeGrid.isOverExtraIcon

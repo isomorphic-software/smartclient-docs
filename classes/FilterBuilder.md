@@ -35,7 +35,7 @@ Properties to combine with the [FilterBuilder.operatorPicker](#attr-filterbuilde
 ## Attr: FilterBuilder.fieldDataSource
 
 ### Description
-If specified, the FilterBuilder will dynamically fetch DataSourceField definitions from this DataSource rather than using [FilterBuilder.dataSource](#attr-filterbuilderdatasource). The [FieldPicker](FieldPicker.md#class-fieldpicker) will default to being a [ComboBoxItem](ComboBoxItem.md#class-comboboxitem) rather than a [SelectItem](SelectItem.md#class-selectitem) so that the user will have type-ahead auto-completion.
+If specified, the FilterBuilder will dynamically fetch DataSourceField definitions from this DataSource rather than using [FilterBuilder.dataSource](#attr-filterbuilderdatasource). May be specified as a DataSource instance or the String ID of a DataSource. The [FieldPicker](FieldPicker.md#class-fieldpicker) will default to being a [ComboBoxItem](ComboBoxItem.md#class-comboboxitem) rather than a [SelectItem](SelectItem.md#class-selectitem) so that the user will have type-ahead auto-completion.
 
 The records returned from the `fieldDataSource` must have properties corresponding to a [DataSourceField](../reference_2.md#object-datasourcefield) definition, at a minimum, ["name"](DataSourceField.md#attr-datasourcefieldname) and ["type"](DataSourceField.md#attr-datasourcefieldtype). Any property legal on a DataSourceField is legal on the returned records, including [valueMap](DataSourceField.md#attr-datasourcefieldvaluemap).
 
@@ -866,6 +866,16 @@ Default behavior is to use the [Operator.editorType](Operator.md#attr-operatored
 ### Returns
 
 `[SCClassName](../reference.md#type-scclassname)` — SmartClient class to use (must be subclass of FormItem)
+
+---
+## Method: FilterBuilder.getDataSource
+
+### Description
+Returns the [dataSource](#attr-filterbuilderdatasource) for this FilterBuilder.
+
+### Returns
+
+`[DataSource](#type-datasource)` — the DataSource for this FilterBuilder
 
 ---
 ## Method: FilterBuilder.setTopOperator

@@ -5964,7 +5964,7 @@ This is an application override point only; there is no default implementation.
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — true to allow this response to be used, false to prevent it
+`[Boolean](#type-boolean)` — true to allow this response to be used, false to prevent it
 
 ### Groups
 
@@ -6434,7 +6434,7 @@ If you define this method on a DataSource, it will be called whenever the server
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — false to suppress [RPCManager.handleError](RPCManager.md#classmethod-rpcmanagerhandleerror)
+`[Boolean](#type-boolean)` — false to suppress [RPCManager.handleError](RPCManager.md#classmethod-rpcmanagerhandleerror)
 
 ### Groups
 

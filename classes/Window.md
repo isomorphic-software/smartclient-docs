@@ -105,7 +105,7 @@ Array of members to show in the Window header.
 The default value of `headerControls` is an Array of Strings listing the standard header controls in their default order:
 
 ```
-    headerControls : ["headerIcon", "headerLabel", 
+    headerControls : ["headerIcon", "headerLabel",
                       "minimizeButton", "maximizeButton", "closeButton"]
  
 ```

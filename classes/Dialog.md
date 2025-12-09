@@ -81,6 +81,18 @@ Title for the `"Yes"` button.
 **Flags**: IRW
 
 ---
+## ClassAttr: Dialog.ASK_FOR_VALUE_MESSAGE
+
+### Description
+Default message for the dialog displayed by [isc.askForValue](isc.md#staticmethod-iscaskforvalue). A custom message can alternatively be specified as the `message` parameter passed to that method.
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IRW
+
+---
 ## ClassAttr: Dialog.DONE_BUTTON_TITLE
 
 ### Description

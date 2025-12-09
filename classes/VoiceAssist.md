@@ -38,6 +38,14 @@ The default cancel-phrase is "never mind" (or "nevermind").
 **Flags**: IRW
 
 ---
+## Attr: VoiceAssist.noSpeechDelay
+
+### Description
+VoiceAssist will stop recording automatically if the user doesn't speak at all for this length of time. The default is 3 seconds.
+
+**Flags**: IRW
+
+---
 ## Attr: VoiceAssist.voiceKey
 
 ### Description

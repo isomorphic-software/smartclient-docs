@@ -194,6 +194,6 @@ The default behavior is that the [titleStyle](FormItem.md#attr-formitemtitlestyl
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — `false` to cancel the default behavior.
+`[Boolean](#type-boolean)` — `false` to cancel the default behavior.
 
 ---

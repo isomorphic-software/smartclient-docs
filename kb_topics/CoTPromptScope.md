@@ -23,4 +23,7 @@ The following objects/values are always available to template expressions:
 *   **json(x)** — render a compact JSON representation of `x` suitable for inclusion in a prompt (intended for small/medium objects).
 *   **promptPart(nameOrNames, omitNewlines?)** / **prt(...)** — insert one or more prompt parts as returned by [CoTProcess.getPromptPart](../classes/CoTProcess.md#method-cotprocessgetpromptpart).
 
+#### State Variables in Partial Prompts
+When generating [partial prompts](CoTPartialPrompt.md#kb-topic-cotpartialprompt), state variables can be omitted via [PartialPromptConfig.omitStateVars](../classes/PartialPromptConfig.md#attr-partialpromptconfigomitstatevars). Specify variable names without the "state." prefix, e.g., `["eventStream"]` replaces `${state.eventStream}` references with `[state.eventStream omitted]`.
+
 ---

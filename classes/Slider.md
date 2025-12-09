@@ -627,7 +627,7 @@ Sets the slider value to newValue and moves the slider thumb to the appropriate 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | newValue | [float](../reference.md#type-float) | false | — | the new value |
-| noAnimation | [boolean](../reference.md#type-boolean) | false | — | do not animate the slider thumb to the new value |
+| noAnimation | [boolean](../reference.md#type-boolean) | true | — | do not animate the slider thumb to the new value |
 
 ---
 ## Method: Slider.setLabelSpacing

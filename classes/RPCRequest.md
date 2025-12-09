@@ -669,6 +669,6 @@ Note that for a successful download request, the `data` parameter will be a [Blo
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — return false to suppress default behavior of saving the download file to the user's filesystem.
+`[Boolean](#type-boolean)` — return false to suppress default behavior of saving the download file to the user's filesystem.
 
 ---

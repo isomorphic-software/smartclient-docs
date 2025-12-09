@@ -272,7 +272,7 @@ Keyboard focus is automatically placed in the text entry field, and hitting the 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| message | [String](#type-string) | false | — | message to display |
+| message | [String](#type-string) | true | — | message to display. If not specified, defaults to "Please enter a value:". This default can be customized via [Dialog.ASK_FOR_VALUE_MESSAGE](Dialog.md#classattr-dialogask_for_value_message). |
 | callback | [Callback](../reference.md#type-callback) | true | — | Callback to fire when the user clicks a button to dismiss the dialog. This has the single parameter 'value', indicating the user entry, or null if cancel was pressed or the window closed |
 | properties | [Dialog Properties](#type-dialog-properties) | true | — | additional properties for the Dialog. To set [custom buttons](Dialog.md#attr-dialogbuttons) for the Dialog, set properties.buttons to an array of buttons eg: { buttons : \[Dialog.OK, Dialog.CANCEL\] } |
 
@@ -792,6 +792,17 @@ Does not handle looping references (will infinite loop).
 ### Description
 Shortcut for `isc.ClassFactory.overwriteClass()`.
 
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| className | [String](#type-string) | false | — | Name for the new class. |
+| superClass | [Class](#type-class)|[SCClassName](../reference.md#type-scclassname) | true | — | Optional SuperClass Class object or name |
+
+### Returns
+
+`[Class](#type-class)` — Returns the new Class object.
+
 ### See Also
 
 - [ClassFactory.overwriteClass](ClassFactory.md#classmethod-classfactoryoverwriteclass)
@@ -935,7 +946,7 @@ Shortcut for `isc.ClassFactory.defineClass()`.
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | className | [String](#type-string) | false | — | Name for the new class. |
-| superClass | [Class](#type-class) | true | — | Optional SuperClass Class object or name |
+| superClass | [Class](#type-class)|[SCClassName](../reference.md#type-scclassname) | true | — | Optional SuperClass Class object or name |
 
 ### Returns
 

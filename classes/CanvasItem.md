@@ -195,7 +195,7 @@ Standard `CanvasItem`\-based form items may customize the default behavior. For 
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — `false` to cancel the default behavior.
+`[Boolean](#type-boolean)` — `false` to cancel the default behavior.
 
 ### See Also
 
@@ -263,7 +263,7 @@ Standard `CanvasItem`\-based form items may customize the default behavior.
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — `false` to cancel the default behavior.
+`[Boolean](#type-boolean)` — `false` to cancel the default behavior.
 
 ### See Also
 

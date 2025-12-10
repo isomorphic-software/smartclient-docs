@@ -104,14 +104,6 @@ SmartClient class for the [title label](#attr-ribbongrouplabel) AutoChild.
 **Flags**: IRA
 
 ---
-## Attr: RibbonGroup.defaultColWidth
-
-### Description
-Default width for columns in this RibbonGroup. This is used when a specific width is not provided in [RibbonGroup.colWidths](#attr-ribbongroupcolwidths) for a column.
-
-**Flags**: IR
-
----
 ## Attr: RibbonGroup.controls
 
 ### Description
@@ -138,14 +130,6 @@ CSS class applied to the [title label](#attr-ribbongrouplabel) in this group.
 HLayout autoChild that houses the [label](#attr-ribbongrouplabel) in which the [title text](#attr-ribbongrouptitle) is displayed.
 
 This can be customized via the standard [AutoChild](../reference.md#type-autochild) pattern.
-
-**Flags**: IR
-
----
-## Attr: RibbonGroup.colWidths
-
-### Description
-An array of widths for the columns in this RibbonGroup. If specified, the width at each index is used for the corresponding column. If a width is not specified for a particular column index, [RibbonGroup.defaultColWidth](#attr-ribbongroupdefaultcolwidth) is used instead. Width values can be numbers (pixels) or strings like "\*" (fill remaining space) or percentage values like "30%".
 
 **Flags**: IR
 

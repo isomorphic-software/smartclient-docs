@@ -748,7 +748,7 @@ The default behavior is that the [titleStyle](FormItem.md#attr-formitemtitlestyl
 
 ### Returns
 
-`[Boolean](#type-boolean)` — `false` to cancel the default behavior.
+`[boolean](../reference.md#type-boolean)` — `false` to cancel the default behavior.
 
 ---
 ## Method: TextItem.transformPastedValue

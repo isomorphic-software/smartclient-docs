@@ -366,13 +366,13 @@ This property is only applicable when [exportToFilesystem](#attr-dsrequestexport
 ## Attr: DSRequest.applyCriteriaBeforeAggregation
 
 ### Description
-If set to "true", all criteria for the DSRequest using [serverSummaries](#serversummaries) are applied before aggregation, and the [afterWhereClause](OperationBinding.md#attr-operationbindingafterwhereclause) is not generated.
+If set to "true", all criteria for the DSRequest using [serverSummaries](#serversummaries) are applied before aggregation, and the [groupWhereClause](OperationBinding.md#attr-operationbindinggroupwhereclause) is not generated.
 
 This behaves the same way as [OperationBinding.applyCriteriaBeforeAggregation](OperationBinding.md#attr-operationbindingapplycriteriabeforeaggregation), and if defined, overrides the OperationBinding-level setting for this specific DSRequest.
 
 ### See Also
 
-- [OperationBinding.afterWhereClause](OperationBinding.md#attr-operationbindingafterwhereclause)
+- [OperationBinding.groupWhereClause](OperationBinding.md#attr-operationbindinggroupwhereclause)
 - [OperationBinding.applyCriteriaBeforeAggregation](OperationBinding.md#attr-operationbindingapplycriteriabeforeaggregation)
 
 **Flags**: IR
@@ -884,40 +884,6 @@ Note that if the request encounters an error (such as 500 server error), by defa
 ### Groups
 
 - errorHandling
-
-**Flags**: IR
-
----
-## Attr: DSRequest.afterCriteria
-
-### Description
-For requests that use [server summaries](../kb_topics/serverSummaries.md#kb-topic-server-summaries), this property defines _post-aggregation criteria_ — criteria that are applied _after_ grouping and summarization have occurred. Conceptually, it works like a SQL `HAVING` clause and allows you to restrict which grouped or summarized results are returned, based on the values of summary fields rather than raw data rows.
-
-Supported by the built-in SQL, Hibernate, and JPA DataSources.
-
-**Example:**  
-  
-Suppose the `avg` function is being applied to the `unitPrice` field on `supplyItem` records. Specifying `afterCriteria` with the condition `unitPrice < 5` will eliminate only those groups whose _average_ price is less than 5 — that is, it filters _after_ the aggregation step.
-
-In SQL terms:
-
-```
- SELECT category, AVG(unitPrice)
- FROM supplyItem
- WHERE ...                            -- regular criteria
- GROUP BY category
- HAVING AVG(unitPrice) < 5            -- afterCriteria
- 
-```
-For more details on aggregation and post-aggregation filtering, see the [Server Summaries Overview](../kb_topics/serverSummaries.md#kb-topic-server-summaries).
-
-### Groups
-
-- serverSummaries
-
-### See Also
-
-- [OperationBinding.afterWhereClause](OperationBinding.md#attr-operationbindingafterwhereclause)
 
 **Flags**: IR
 

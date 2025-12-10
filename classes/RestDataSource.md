@@ -19,7 +19,7 @@ A RestDataSource is used just like a normal DataSource. RestDataSources are pre-
 
 If you have a pre-existing REST or WSDL service which is difficult to change, consider adapting SmartClient to the existing service instead, by starting with a normal [DataSource](DataSource.md#class-datasource) and either
 
-*   Uusing the [client-side data integration](../kb_topics/clientDataIntegration.md#kb-topic-client-side-data-integration) facilities to create a mapping between SmartClient's [DSRequest](../reference_2.md#object-dsrequest) and [DSResponse](DSResponse.md#class-dsresponse) objects and the message formats of your existing services, **OR**
+*   Using the [client-side data integration](../kb_topics/clientDataIntegration.md#kb-topic-client-side-data-integration) facilities to create a mapping between SmartClient's [DSRequest](../reference_2.md#object-dsrequest) and [DSResponse](DSResponse.md#class-dsresponse) objects and the message formats of your existing services, **OR**
 *   Using the highly configurable server-side [RestConnector](../kb_topics/serverRestConnector.md#kb-topic-server-side-rest-connector) to adapt regular client-server DataSource requests/responses to and from the formats required by the remote REST service (server-side data integration)
 
 **NOTE**: do **not** begin this process by creating or subclassing RestDataSource; for a **pre-existing** service which is unrelated to the protocol documented for `RestDataSource`, start by configuring or subclassing [DataSource](DataSource.md#class-datasource) instead.

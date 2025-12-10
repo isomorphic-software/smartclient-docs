@@ -1,4 +1,4 @@
-# SmartClient API Reference (Part 2 of 2)
+# SmartClient API Reference (14.1) (Part 2 of 2)
 
 [← Back to Part 1](reference.md)
 
@@ -35,12 +35,6 @@ String specifying effect to apply during an animated show or hide.
 | "wipe" | content is revealed or wiped as the widget grows or shrinks |
 | "fade" | widget's opacity smoothly fades into or out of view |
 | "fly" | widget moves into position from offscreen |
-
----
-## Type: AnimationCallback
-
-### Description
-A [Callback](#type-callback) to fire when an animation completes. The callback receives a single `earlyFinish` parameter which is true if the animation was cut short (for example by a call to a non-animated API that changes the same property).
 
 ---
 ## Type: ArrowStyle
@@ -513,6 +507,28 @@ Nested canvases can also have dataPaths specified, which will similarly be combi
 ### See Also
 
 - [Canvas.ruleScope](classes/Canvas.md#attr-canvasrulescope)
+
+---
+## Type: DataQuestionStepType
+
+### Description
+—
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| "summarizeUserAIRequest" | Prepares a summarization of the [UserAIRequest](reference_2.md#object-userairequest) containing the end user's data question, if necessary. |
+| "determineNextStep" | Asks AI to determine a next step. Only a subset of step types are offered as choices to AI. |
+| "makeQuery" | Asks AI to construct a [DSRequest](reference_2.md#object-dsrequest) query. |
+| "validateQuery" | Validates an AI-generated `DSRequest` against schema, identifying potential errors. |
+| "fixQuery" | Asks AI to fix a query, given the list of validation errors. |
+| "executeQuery" | Executes a validated [DSRequest](reference_2.md#object-dsrequest) query. |
+| "summarizePrevStepResults" | Asks AI to summarize the results of previous steps in the context of the end user's data question and AI's described purpose for each query made. |
+| "createDashboard" | Asks AI to describe the components of a dashboard to visualize the answer to a data question. |
+| "createDashboardComponent" | Asks AI to create a dashboard component. |
+| "validateDashboardComponent" | Validates an AI-generated component against schema, identifying potential errors. |
+| "fixDashboardComponent" | Asks AI to fix a dashboard component, given the list of validation errors. |
 
 ---
 ## Type: DataSourceTemplateReferenceMode
@@ -2355,44 +2371,6 @@ Controls whether and when individual items are selected when clicking on a form 
 - communication
 
 ---
-## Type: SetterPath
-
-### Description
-A path expression indicating where and how a nested Object should be updated.
-
-A `SetterPath` is a dot-delimited list of segments, where each segment is a property name. The `SetterPath` can end in an operator that controls how the property update is done:
-
-*   `[]` – append to an Array (creates the Array if missing)
-*   `{}` – deep merge into an Object, overwriting existing keys
-*   `{?}` – deep merge into an Object, preserving existing keys (non-clobbering)
-
-This syntax is used in [Task.setState](classes/Task.md#method-tasksetstate)/[Process.setStateVariable](classes/Process.md#method-processsetstatevariable).
-
-Missing objects and Arrays are created as needed unless [strictPaths](classes/Task.md#attr-taskstrictpaths) is set, either in the specific API call, or on the [task](classes/Task.md#attr-taskstrictpaths) or [process](classes/Process.md#attr-processstrictpaths) involved. When `strictPaths` is enabled, attempting to traverse through a non-object/Array or a missing segment throws an error instead.
-
-#### Examples
-Assume `process.state` starts as:
-```
- {
-     currentDS: {
-         fields: [ { name:"orderId", type:"integer" } ],
-         defaults: { timezone:"UTC" }
-     }
- }
- 
-```
-
-*   **Append**  
-    `"currentDS.fields[]": { name:"orderDate", type:"date" }`  
-    Result: `fields` gains a new element at the end.
-*   **Deep merge (clobber)**  
-    `"currentDS.defaults{}": { timezone:"PST", dateFormat:"YYYY-MM-DD" }`  
-    Result: `timezone` is overwritten to "PST"; `dateFormat` is added.
-*   **Deep merge (non-clobber)**  
-    `"currentDS.defaults{?}": { timezone:"PST", locale:"en-US" }`  
-    Result: existing `timezone:"UTC"` is preserved; `locale` is added.
-
----
 ## Type: SettledPromiseStatus
 
 ### Description
@@ -2518,26 +2496,10 @@ For valid ways to configure SummaryFunctions to use server-side feature see the 
 _Server:_ acts exactly like SQL SUM function. |
 | avg | _Client:_ iterates through the set of records, picking up all numeric values for the specified field and determining the mean value. Returns null to indicate invalid summary value if any non numeric field values are encountered.  
 _Server:_ acts exactly like SQL AVG function. |
-| max | _Client:_ iterates through the set of records, picking up all non-null values for the specified field and finding the maximum value, where comparison between values is made:
-
-1.  via [SimpleType.compareValues](classes/SimpleType.md#method-simpletypecomparevalues) if defined for the field's [type](classes/Field.md#attr-fieldtype)
-2.  via [DateUtil.compareLogicalDates](classes/DateUtil.md#classmethod-dateutilcomparelogicaldates) if the field type inherits from "date"
-3.  via comparison as [logical times](classes/Time.md#classmethod-timecreatelogicaltime) if the field type inherits from "time"
-4.  via [DateUtil.compareDates](classes/DateUtil.md#classmethod-dateutilcomparedates) for two values that are both [Date](reference_2.md#object-date)s
-5.  otherwise, using traditional methods
-
-Returns null to indicate an invalid summary value or when all source values are null. For best results, ensure that the [Field.type](classes/Field.md#attr-fieldtype) is correctly set.  
-_Server:_ acts exactly like the SQL MAX aggregate function. |
-| min | _Client:_ iterates through the set of records, picking up all non-null values for the specified field and finding the minimum value, where comparison between values is made:
-
-1.  via [SimpleType.compareValues](classes/SimpleType.md#method-simpletypecomparevalues) if defined for the field's [type](classes/Field.md#attr-fieldtype)
-2.  via [DateUtil.compareLogicalDates](classes/DateUtil.md#classmethod-dateutilcomparelogicaldates) if the field type inherits from "date"
-3.  via comparison as [logical times](classes/Time.md#classmethod-timecreatelogicaltime) if the field type inherits from "time"
-4.  via [DateUtil.compareDates](classes/DateUtil.md#classmethod-dateutilcomparedates) for two values that are both [Date](reference_2.md#object-date)s
-5.  otherwise, using traditional methods
-
-Returns null to indicate an invalid summary value or when all source values are null. For best results, ensure that the [Field.type](classes/Field.md#attr-fieldtype) is correctly set.  
-_Server:_ acts exactly like the SQL MIN aggregate function. |
+| max | _Client:_ iterates through the set of records, picking up all values for the specified field and finding the maximum value. Handles numeric fields and date/time/datetime type fields only. Returns null to indicate invalid summary value if any non numeric/date field values are encountered.  
+_Server:_ acts exactly like SQL MAX function. |
+| min | _Client:_ iterates through the set of records, picking up all values for the specified field and finding the minimum value. Handles numeric fields and date/time/datetime type fields only. Returns null to indicate invalid summary value if any non numeric field values are encountered.  
+_Server:_ acts exactly like SQL MIN function. |
 | multiplier | _Client:_ iterates through the set of records, picking up all numeric values for the specified field and multiplying them together. Returns null to indicate invalid summary value if any non numeric field values are encountered.  
 _Server:_ **not supported**. |
 | count | _Client:_ returns a numeric count of the total number of records passed in.  
@@ -2554,68 +2516,6 @@ _Server:_ The same approach as for "concat", and with the same restrictons and l
 ### Groups
 
 - serverSummaries
-
----
-## Type: TaskInputExpression
-
-### Description
-A TaskInputExpression is a way to specify a value in the declarative workflow system ([Process](classes/Process.md#class-process) / [Task](classes/Task.md#class-task)) that is derived from the running [process state](classes/Process.md#attr-processstate), the [output](classes/Task.md#method-tasksetoutput) of a previous task in the process, or from global context such as [ruleScope](classes/Process.md#attr-processrulescope).
-
-For example, in [FormEditNewRecordTask](#class-formeditnewrecordtask), `taskInputExpressions` are allowed in the [initialValues](#attr-formeditnewrecordtaskinitialvalues) specified for the task, making it very easy to build a process that fetches data from the server and populates a form with that data.
-
-Similarly, in [GridFetchDataTask](classes/GridFetchDataTask.md#class-gridfetchdatatask), `taskInputExpressions` are allowed in the [criteria](classes/GridFetchDataTask.md#attr-gridfetchdatataskcriteria) specified for the task, as the [Criterion.value](classes/Criterion.md#attr-criterionvalue) for any criterion.
-
-`TaskInputExpressions` are designed to be visual-tool-friendly so that it's easy to visually wire together processes in the [Workflow Editor](kb_topics/reifyAddWorkflowTask.md#kb-topic-reify-onsite-adding-custom-workflow-tasks).
-
-A TaskInputExpression is a String prefixed with "$input", "$inputRecord", "$ruleScope", "$state" or "$last" followed by an optional dot-separated hierarchical path, which can specify either an atomic data value (String, Number) or Record from the input data. For example, if the [Process.state](classes/Process.md#attr-processstate) represented in JSON were:
-
-```
- {
-    orderId:5,
-    orderItems: [
-       {name:"Pencils", quantity:3, itemId:2344}
-    ],
-    orderUser: { name:"Henry Winkle", address:"...", ... }
- }
- 
-```
-.. and a task specified an `inputs` of "orderId" and an inputFieldList of "orderItems","orderUser", then:
-
-*   $input is the value 5
-*   $inputRecord.orderUser.name is "Henry Winkle"
-*   $inputRecord.orderItems\[0\] is the first orderItems Record ({name:"Pencils", ... })
-
-"$ruleScope" can be used to pull values from a [ruleScope](classes/Canvas.md#attr-canvasrulescope) [ruleContext](classes/Canvas.md#method-canvasgetrulecontext) when configured in [Process.ruleScope](classes/Process.md#attr-processrulescope).
-
-*   $ruleScope.property references the ruleContext "property" field
-
-Two others sources of input are "$state" and "$last". The former references the contents of the [Process.state](classes/Process.md#attr-processstate) and the latter the [transient state](classes/Process.md#attr-processstate).
-
-*   $state is the full contents of the process state
-*   $state.orderId is the "orderId" field of the process state (5 from the example above)
-*   $last is the full output of the previous task executed in the process
-*   $last.property is the "property" field of the previous task executed in the process
-*   $last\[service\].property or $last\[DSRequestTask\].property references the last "DSRequestTask" output in the "property" field
-*   $ruleScope.property references the ruleScope "property" field
-
-The last two sources of input are "$lastRequest" and "$lastResponse". These are the objects `dsRequest` and `dsResponse` representing the last [DSRequestTask](classes/DSRequestTask.md#class-dsrequesttask), [DSFetchTask](#class-dsfetchtask), [DSAddTask](#class-dsaddtask), [DSUpdateTask](#class-dsupdatetask) or [DSRemoveTask](#class-dsremovetask) DataSource operation as returned in the operation's [callback](reference_2.md#type-dscallback). A common usage would be to reference $lastResponse.totalRows to know how many rows were returned from a fetch.
-
-#### Transient state outputs
-Most tasks pass the output from the _previous_ task as their output (i.e. passed through) making it easy to refer to earlier output without referencing the task type. Tasks that work with records or interact with the user, however, typically provide task-specific output as detailed below:
-
-*   **DSRequestTask**: the contents of dsResponse.data.
-*   **ScriptTask**: the result of [execute()](classes/ScriptTask.md#method-scripttaskexecute) or, for an asynchronous task, the value passed to [setOutput()](classes/ScriptTask.md#method-scripttasksetoutput).
-*   **StateTask**: the value assigned to the outputField.
-*   **UserTask**: the values of the targetForm or targetVM when the task completes.
-*   **AskForValueTask**: an object with "value" and "canceled" properties.
-*   **FetchRelatedDataTask**: the first fetched record.
-*   **GridFetchDataTask**: the contents of dsResponse.data.
-*   **GridTransferSelectedTask**: the first transfered record.
-*   **GridSelectRecordsTask**: on a select, the set of newly selected records, even if other records are also selected. On a deselect, the entire set of de-selected records.
-*   **FetchRelatedDataTask**: the first fetched related record.
-*   **FormSaveDataTask**: an object with "valuesValid" and "errors" properties.
-*   **FormValidateValuesTask**: an object with "valuesValid" and "errors" properties.
-*   **GetPropertiesTask**: an object with selected properties and values retrieved.
 
 ---
 ## Type: TextMatchStyle
@@ -3013,18 +2913,6 @@ Sets up a real inheritance structure for Javascript objects. We separate out cla
 An object containing properties that is used in Gradient types
 
 ---
-## Object: CoTHistoryEntry
-
-### Description
-Any serializable JavaScript Object can be added to the history via [CoTProcess.addHistory](classes/CoTProcess.md#method-cotprocessaddhistory). See [CoTHistory](kb_topics/CoTHistory.md#kb-topic-cothistory) for details on what automatic entries are created by built-in features and how history is used in prompt assembly.
-
----
-## Object: CoTTransition
-
-### Description
-Declares an allowed transition to another task.
-
----
 ## Object: Criterion
 
 ### Description
@@ -3200,12 +3088,6 @@ See the [Master/Detail Add Example](https://www.smartclient.com/smartclient-late
 ### Groups
 
 - transactionChaining
-
----
-## Object: Facet
-
-### Description
-Facet definition object made use of by the [CubeGrid](classes/CubeGrid.md#class-cubegrid) and [FacetChart](classes/FacetChart.md#class-facetchart) classes.
 
 ---
 ## Object: Field
@@ -3701,12 +3583,6 @@ Because TestFunctionResult is always an ordinary JavaScript Object, it supports 
 Every node in the tree is represented by a TreeNode object which is an object literal with a set of properties that configure the node.
 
 When a Tree is supplied as [TreeGrid.data](classes/TreeGrid.md#attr-treegriddata) to [TreeGrid](classes/TreeGrid.md#class-treegrid), you can also set properties from [ListGridRecord](reference_2.md#object-listgridrecord) on the TreeNode (e.g. setting [ListGridRecord.enabled](classes/ListGridRecord.md#attr-listgridrecordenabled):`false` on the node).
-
----
-## Object: UISummarySettings
-
-### Description
-Settings that control how a widget UI Summary is built.
 
 ---
 ## Object: UserAIRequest

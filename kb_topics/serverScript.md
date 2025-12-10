@@ -129,7 +129,7 @@ You can import Java libraries by placing a `<scriptImport>` tag immediately befo
 There is also a system-wide set of default imports:
 ```
  java.util.*
- javaxjakarta.servlet.http.*
+ jakarta.servlet.http.*
  com.isomorphic.base.Config
  com.isomorphic.util.*
  com.isomorphic.datasource.*
@@ -254,7 +254,7 @@ An alternative to the standalone Nashorn implementation is to switch from the re
 #### GraalVM
 GraalVM is Oracle's "polyglot" VM, which has support for Javascript as a first-class language. You can use GraalVM instead of a regular JVM (the JVM core of it is OpenJDK), and access its Javascript support through a JSR223 interface (there are more direct ways to use Javascript in GraalVM, but this is how you use it with SmartClient's scripting feature). This approach works fine with SmartClient's scripting support, and moreover it is **much** faster than the Nashorn engine. In fact, it has the same tiny call overhead as Groovy - about 80 microseconds in local testing - and so is suitable for use in even the most intensive use cases where we previously have recommended that only Groovy should be used.
 
-However, this very significant reduction in call overhead - from around 15ms per call in Nashorn in our local testing, to under 0.1ms in GraalJS - comes at the cost of reduced flexibility in importing Java classes. By default, SmartClient server scripts written in Javascript automatically import a number of useful or commonly-used Java packages - for example, `java.util.*`, `com.isomorphic.util.*` and `javaxjakarta.servlet.http.*`. This ability to import whole packages is a Mozilla Rhino compatibility feature that is discouraged by the GraalVM team, and if you use it, call overhead times increase dramatically, to the point where there is no performance advantage over Nashorn.
+However, this very significant reduction in call overhead - from around 15ms per call in Nashorn in our local testing, to under 0.1ms in GraalJS - comes at the cost of reduced flexibility in importing Java classes. By default, SmartClient server scripts written in Javascript automatically import a number of useful or commonly-used Java packages - for example, `java.util.*`, `com.isomorphic.util.*` and `jakarta.servlet.http.*`. This ability to import whole packages is a Mozilla Rhino compatibility feature that is discouraged by the GraalVM team, and if you use it, call overhead times increase dramatically, to the point where there is no performance advantage over Nashorn.
 
 For this reason, we support switching off Mozilla compatibility via a `server.properties` flag:
 

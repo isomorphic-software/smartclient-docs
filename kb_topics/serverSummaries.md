@@ -121,11 +121,9 @@ Criteria apply to record **before** summaries are applied. For example, if the "
 
 With the [SQL Templating](customQuerying.md#kb-topic-custom-querying-overview) feature you can customize portions of the query without ever having to re-create portions that the framework knows how to generate. This allows to create partially or entirely custom complex aggregation queries to use in a regular "fetch" operation. The SQL Templating feature supports aggregated queries just as regular ones with some additions, see below.
 
-In clause-by-clause substitution there are two additional aggregation specific clauses: [groupClause](../classes/OperationBinding.md#attr-operationbindinggroupclause) providing "group by" part of aggregated query and [afterWhereClause](../classes/OperationBinding.md#attr-operationbindingafterwhereclause) providing "having" part of aggregated query (or outer "where" part if sub-select approach is used, see [OperationBinding.useHavingClause](../classes/OperationBinding.md#attr-operationbindingusehavingclause) for more details). The automatically generated `groupClause` and `afterWhereClause` clauses are also available as [$defaultGroupClause](../reference.md#type-defaultqueryclause) and [$defaultAfterWhereClause](../reference.md#type-defaultqueryclause) SQL templating variables.
+In clause-by-clause substitution there are two additional aggregation specific clauses: [groupClause](../classes/OperationBinding.md#attr-operationbindinggroupclause) providing "group by" part of aggregated query and [groupWhereClause](../classes/OperationBinding.md#attr-operationbindinggroupwhereclause) providing "having" part of aggregated query (or outer "where" part if sub-select approach is used, see [OperationBinding.useHavingClause](../classes/OperationBinding.md#attr-operationbindingusehavingclause) for more details). The automatically generated `groupClause` and `groupWhereClause` clauses are also available as [$defaultGroupClause](../reference.md#type-defaultqueryclause) and [$defaultGroupWhereClause](../reference.md#type-defaultqueryclause) SQL templating variables. Note that if [OperationBinding.applyCriteriaBeforeAggregation](../classes/OperationBinding.md#attr-operationbindingapplycriteriabeforeaggregation) is set to `true`, `groupWhereClause` is not generated.
 
-Note that if [OperationBinding.applyCriteriaBeforeAggregation](../classes/OperationBinding.md#attr-operationbindingapplycriteriabeforeaggregation) is set to `true`, aggregated fields referenced in regular criteria are filtered before aggregation occurs. In this case, an `afterWhereClause` may still be generated, but only for the criteria defined in [DSRequest.afterCriteria](../classes/DSRequest.md#attr-dsrequestaftercriteria).
-
-`SQLDataSource.getSQLClause()` server-side API can generate the entire query, in case you wanted to use an aggregated query as just part of a larger query (perhaps a sub-select), or different parts of a query, including `groupClause` and `afterWhereClause` aggregated query clauses.
+`SQLDataSource.getSQLClause()` server-side API can generate the entire query, in case you wanted to use an aggregated query as just part of a larger query (perhaps a sub-select), or different parts of a query, including `groupClause` and `groupWhereClause` aggregated query clauses.
 
 Also note `SQLDataSource.getPartialHaving()` and `SQLDataSource.getHavingWithout()` server-side APIs which generate partial SQL condition expressions to be used as a complete or partial "having" or outer "where" clause. This is also can be accessed via `$sql.partialHaving` and `$sql.havingWithout` functions in SQL templates, see `$sql` variable description in [velocitySupport](velocitySupport.md#kb-topic-velocity-context-variables).
 
@@ -158,7 +156,6 @@ Aggregated data fetches cannot include additional fields that are not aggregated
 - [SummaryFunction](../reference_2.md#type-summaryfunction)
 - [DSRequest.summaryFunctions](../classes/DSRequest.md#attr-dsrequestsummaryfunctions)
 - [DSRequest.groupBy](../classes/DSRequest.md#attr-dsrequestgroupby)
-- [DSRequest.afterCriteria](../classes/DSRequest.md#attr-dsrequestaftercriteria)
 - [OperationBinding.summaryFunctions](../classes/OperationBinding.md#attr-operationbindingsummaryfunctions)
 - [OperationBinding.groupBy](../classes/OperationBinding.md#attr-operationbindinggroupby)
 - [DataSourceField.includeSummaryFunction](../classes/DataSourceField.md#attr-datasourcefieldincludesummaryfunction)
@@ -168,11 +165,11 @@ Aggregated data fetches cannot include additional fields that are not aggregated
 - [DataSource.canAggregate](../classes/DataSource.md#attr-datasourcecanaggregate)
 - [DataSource.allowClientRequestedSummaries](../classes/DataSource.md#attr-datasourceallowclientrequestedsummaries)
 - [DataSourceField.allowClientRequestedSummaries](../classes/DataSourceField.md#attr-datasourcefieldallowclientrequestedsummaries)
-- [OperationBinding.afterWhereClause](../classes/OperationBinding.md#attr-operationbindingafterwhereclause)
+- [OperationBinding.groupWhereClause](../classes/OperationBinding.md#attr-operationbindinggroupwhereclause)
 - [AdvancedCriterionSubquery.summaryFunctions](../classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubquerysummaryfunctions)
 - [AdvancedCriterionSubquery.groupBy](../classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubquerygroupby)
-- [DSRequestTask.groupBy](../classes/DSRequestTask.md#attr-dsrequesttaskgroupby)
-- [DSRequestTask.summaryFunctions](../classes/DSRequestTask.md#attr-dsrequesttasksummaryfunctions)
+- [ServiceTask.groupBy](../classes/ServiceTask.md#attr-servicetaskgroupby)
+- [ServiceTask.summaryFunctions](../classes/ServiceTask.md#attr-servicetasksummaryfunctions)
 - [GridFetchDataTask.groupBy](../classes/GridFetchDataTask.md#attr-gridfetchdatataskgroupby)
 - [GridFetchDataTask.summaryFunctions](../classes/GridFetchDataTask.md#attr-gridfetchdatatasksummaryfunctions)
 

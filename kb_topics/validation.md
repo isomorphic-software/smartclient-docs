@@ -16,7 +16,6 @@ Validation
 - [Validator.addValidators](../classes/Validator.md#classmethod-validatoraddvalidators)
 - [Validator.addValidatorDefinition](../classes/Validator.md#classmethod-validatoraddvalidatordefinition)
 - [Validator.addValidatorDefinitions](../classes/Validator.md#classmethod-validatoraddvalidatordefinitions)
-- [ListGrid.clearRowErrors](../classes/ListGrid_2.md#method-listgridclearrowerrors)
 - [DynamicForm.validateData](../classes/DynamicForm.md#method-dynamicformvalidatedata)
 - [DynamicForm.getErrorsHTML](../classes/DynamicForm.md#method-dynamicformgeterrorshtml)
 - [DynamicForm.getItemErrorHTML](../classes/DynamicForm.md#method-dynamicformgetitemerrorhtml)
@@ -25,9 +24,9 @@ Validation
 - [DynamicForm.checkForValidationErrors](../classes/DynamicForm.md#method-dynamicformcheckforvalidationerrors)
 - [ValuesManager.valuesAreValid](../classes/ValuesManager.md#method-valuesmanagervaluesarevalid)
 - [ValuesManager.checkForValidationErrors](../classes/ValuesManager.md#method-valuesmanagercheckforvalidationerrors)
+- [ListGrid.clearRowErrors](../classes/ListGrid_2.md#method-listgridclearrowerrors)
 - [DataBoundComponent.unknownErrorMessage](../classes/DataBoundComponent.md#attr-databoundcomponentunknownerrormessage)
 - [DataBoundComponent.noErrorDetailsMessage](../classes/DataBoundComponent.md#attr-databoundcomponentnoerrordetailsmessage)
-- [SimpleType.validators](../classes/SimpleType.md#attr-simpletypevalidators)
 - [DataSource.useLocalValidators](../classes/DataSource.md#attr-datasourceuselocalvalidators)
 - [DataSourceField.validators](../classes/DataSourceField.md#attr-datasourcefieldvalidators)
 - [DynamicForm.showInlineErrors](../classes/DynamicForm.md#attr-dynamicformshowinlineerrors)
@@ -56,5 +55,6 @@ Validation
 - [TextItem.length](../classes/TextItem.md#attr-textitemlength)
 - [TextAreaItem.length](../classes/TextAreaItem.md#attr-textareaitemlength)
 - [ValuesManager.disableValidation](../classes/ValuesManager.md#attr-valuesmanagerdisablevalidation)
+- [SimpleType.validators](../classes/SimpleType.md#attr-simpletypevalidators)
 
 ---

@@ -22,6 +22,7 @@ Experimental features are subject to the following limitations:
 
 - [EventStream.getAsSeleneseHTML](../classes/EventStream.md#method-eventstreamgetasselenesehtml)
 - [EventStream.getAsSeleneseCommands](../classes/EventStream.md#method-eventstreamgetasselenesecommands)
+- [SeleneseRecorder](../classes/SeleneseRecorder.md#class-seleneserecorder)
 - [EventStream](../classes/EventStream.md#class-eventstream)
 - [SeleniumCommand](../reference.md#object-seleniumcommand)
 - [SeleneseSettings](../reference_2.md#object-selenesesettings)
@@ -31,6 +32,5 @@ Experimental features are subject to the following limitations:
 - [RemoteWindow](../classes/RemoteWindow.md#class-remotewindow)
 - [OpenFin](../reference.md#class-openfin)
 - [OpenFinWindow](../reference.md#class-openfinwindow)
-- [SeleneseRecorder](../classes/SeleneseRecorder.md#class-seleneserecorder)
 
 ---

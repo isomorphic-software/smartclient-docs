@@ -159,47 +159,6 @@ You can alternatively set `editorType="ComboBoxItem"` on the "managerId" field t
 
 The [Include Summary Function](#attr-datasourcefieldincludesummaryfunction) feature is used for including from a related DataSource where there are multiple related records. It applies a [SummaryFunction](../reference_2.md#type-summaryfunction) to the related records aggregating them into single value. It is regularly used on directly included fields, but it supports indirect inclusions as well, when entire `includeFrom`+`includeSummaryFunction` setup is included from another DataSource. See [DataSourceField.includeSummaryFunction](#attr-datasourcefieldincludesummaryfunction) docs for more details.
 
-For best results, ensure that the field with `includeFrom` has its [DataSourceField.type](#attr-datasourcefieldtype) explicitly set to the included field's `type`.
-
-**`includeFrom` combined with `[multiple](#attr-datasourcefieldmultiple):true`**
-
-If you specify `[multiple](#attr-datasourcefieldmultiple):true` on an `includeFrom` field, it has one of two quite different meanings:
-
-1.  It is including a field which is itself marked `multiple:true`, across a regular many-to-one or one-to-one [relation](../kb_topics/dataSourceRelations.md#kb-topic-relations). In this case, the value of the included field is likely to be a flattened list of text values stored in a regular text field - see [DataSourceField.multipleStorage](#attr-datasourcefieldmultiplestorage)
-2.  It is including multiple related values across a one-to-many or many-to-many relation
-
-The first of these is exactly the same as any other regular `includeFrom`, except that it will have normal `multiple:true` processing applied to the included value, so the client sees a true list of values rather than a flat string of text.
-
-The second is more involved. With this type of `includeFrom` we will actually fetch multiple records from the included DataSource. You should read the **One-to-many** and **Many-to-many** sections of the [relations overview](../kb_topics/dataSourceRelations.md#kb-topic-relations) to make sure you understand how these relation types work, but essentially you declare a [foreignKey](#attr-datasourcefieldforeignkey) on a field that is also marked `multiple:true`, and this causes SmartClient to return a list of key values that your client-side code can use to obtain the related records (some SmartClient UI components will do this automatically).
-
-Once one of these relation types is in place, it is also possible to declare `includeFrom` fields that make use of the relation to include fields other than the identifying key field, for convenience. For example, if a **Country** dataSource declared a one-to-many relation to a **City** dataSource, like this:
-
-```
-     <field name="majorCities" multiple="true" foreignKey="City.cityId" />
- 
-```
-The same dataSource could make use of that relation to include the names of all related cities for convenience, so you can show a list of "Major Cities" against each country without having to go back to the server and fetch the actual City records. The declaration would look like this:
-```
-     <field name="cityNames" multiple="true" includeFrom="City.cityName" />
- 
-```
-With **Many-to-many** related includeFroms - which require a "middle" dataSource, and thus a three-part `foreignKey` declaration - you may specify either the entire inclusion path, or just the endpoint. For example, if your **Country** dataSource has a many-to-many relation with a **River** dataSource - necessary, because most countries contain more than one river, and many rivers flow through more than one country - via the following `foreignKey` definition:
-```
-     <field name="rivers" multiple="true" foreignKey="CountryRivers.Rivers.riverId" />
- 
-```
-you could `includeFrom` the list of related river names with either this:
-```
-     <field name="riverNames" multiple="true" includeFrom="CountryRivers.Rivers.name" />
- 
-```
-or slightly simpler, this:
-```
-     <field name="riverNames" multiple="true" includeFrom="Rivers.name" />
- 
-```
-If just the endpoint is specified, SmartClient will figure out the remainder of the path based on the available `foreignKey`s; if there is ambiguity that makes this impossible - ie, two `foreignKey` fields that target the same endpoint via different paths - you can either specify the entire include path in the `includeFrom` definition, or declare an [includeVia](#attr-datasourcefieldincludevia) setting on the field.
-
 ### Groups
 
 - dataSourceRelations
@@ -1370,43 +1329,6 @@ Note that this property is also honored when exporting directly to Excel spreads
 **Flags**: IRWA
 
 ---
-## Attr: DataSourceField.valueOperation
-
-### Description
-**Note:** Currently, this feature only works with [SQL DataSources](../kb_topics/sqlDataSource.md#kb-topic-sql-datasources)
-
-This property allows you to name an [operationBinding](OperationBinding.md#class-operationbinding) on a [related DataSource](../kb_topics/dataSourceRelations.md#kb-topic-relations) that should be executed to obtain a value for this field. The format of the property is
-
-```
-      dataSourceId.operationId.fieldName
- 
-```
-The `fieldName` is used to disambiguate in case the operation returns more than one value and it is required, even if the operation only returns a single field
-
-Typically, `valueOperation` names an operation that uses a [summaryFunction](OperationBinding.md#attr-operationbindingsummaryfunctions) to produce a single aggregated value from a DataSource with a one-to-many or many-to-many relation with this DataSource. Some examples of when `valueOperation` is appropriate:
-
-*   To obtain a total order value from the OrderLines on an Order
-*   To obtain the number of Employees reporting to a given manager
-*   To obtain the date of the most recent Order for a given Customer
-*   To obtain the average population of all Cities in a given Country
-
-Note, SmartClient will convert the sub-operation into inline SQL, for maximum efficiency.
-
-Because `valueOperations` are deriving a simple field value for a single field, they should return a single scalar value of the same type as the field. **Note that the requirement to return a single record is a strict one**: with most databases, failing to observe it will result in a SQL error, because most databases do not allow row limiting in the kind of subqueries we generate to implement `valueOperation` - so-called _correlated scalar subqueries_. MySQL is an exception in this, and with that one database we **do** limit the subquery to 1 row; but it is still better to ensure that the subquery can only return a single row (note, all [SummaryFunction](../reference_2.md#type-summaryfunction)s automatically return a single value)
-
-However, we do tolerate data type discrepancies; in cases where the data types do not match, we attempt the most obvious conversion. For example, if the `valueOperation` field is of type "boolean" but the operation returns a number, we will convert 0 to false and any other number to true; this allows you to create boolean "virtual fields" that answer questions like "Has this Employee booked any orders this month?". With other data types, we will stringify the response value (if the field type is `text`), or parse the result of calling `toString()` on the response object (if the field is of a numeric type).
-
-NOTE: Although `valueOperation` can be used to derive any singular value from any related dataSource, it is intended primarily as a mechanism for including summarized values across one-to-many or many-to-many relations. In cases where you want to go "the other way" and derive a value across a many-to-one or one-to-one relation, you would generally use [includeFrom](#attr-datasourcefieldincludefrom), which is conceptually simpler and more direct.
-
-### See Also
-
-- [AdvancedCriterionSubquery](../reference.md#object-advancedcriterionsubquery)
-- [DataSourceField.includeFrom](#attr-datasourcefieldincludefrom)
-- [OperationBinding.summaryFunctions](OperationBinding.md#attr-operationbindingsummaryfunctions)
-
-**Flags**: IRA
-
----
 ## Attr: DataSourceField.valueMapEnum
 
 ### Description
@@ -1841,7 +1763,7 @@ In complex cases involving composite foreign keys or indirect relation chains (m
 ### See Also
 
 - [DataSourceField.relatedTableAlias](#attr-datasourcefieldrelatedtablealias)
-- [advancedIncludeVia](#advancedincludevia)
+- [includeViaSyntax](#includeviasyntax)
 
 **Flags**: IR
 
@@ -2873,7 +2795,7 @@ If true, this property indicates that this field will hold an explicit array of 
 ### Description
 Indicates that this field should always be Array-valued. If the value derived from [XML or JSON data](DataSource.md#attr-datasourcedataformat) is singular, it will be wrapped in an Array.
 
-JPA and Hibernate DataSources use `multiple:true` as part of the declaration of One-To-Many and Many-to-Many relations - see [jpaHibernateRelations](../kb_topics/jpaHibernateRelations.md#kb-topic-jpa--hibernate-relations) for details. On fields that also declare a [foreignKey](#attr-datasourcefieldforeignkey) `multiple:true` also indicates that this field is participating in a one-to-many or many-to-many relation - see [dataSourceRelations](../kb_topics/dataSourceRelations.md#kb-topic-relations) for details.
+On fields that also declare a [foreignKey](#attr-datasourcefieldforeignkey) `multiple:true` also indicates that this field is participating in a one-to-many or many-to-many relation - see [dataSourceRelations](../kb_topics/dataSourceRelations.md#kb-topic-relations) for details.
 
 #### Criteria on multiple:true fields: client-side filtering
 
@@ -2893,7 +2815,7 @@ For the `inSet` operator, the field matches if there is any intersection between
 
 Values for multiple:true fields appear as Java Lists when received in server code such as a DMI. The SmartClient Server supports simple storage of values that are multiple:true, controlled via the [DataSourceField.multipleStorage](#attr-datasourcefieldmultiplestorage) setting.
 
-For server-side behavior of relation fields that are multiple:true, see +link{group:dataSourceRelations); for the specifics of JPA and Hibernate relation fields that are multiple:true, see [jpaHibernateRelations](../kb_topics/jpaHibernateRelations.md#kb-topic-jpa--hibernate-relations).
+For server-side behavior of JPA and Hibernate relation fields that are multiple:true, see [jpaHibernateRelations](../kb_topics/jpaHibernateRelations.md#kb-topic-jpa--hibernate-relations).
 
 For non-relation fields, the SmartClient Server supports simple storage of values that are multiple:true, controlled via the [DataSourceField.multipleStorage](#attr-datasourcefieldmultiplestorage) setting, with some limited support for server-side filtering, as described in the [DataSourceField.multipleStorage](#attr-datasourcefieldmultiplestorage) docs.
 

@@ -145,91 +145,6 @@ For general concepts, see [usingRPCTimingLogs](../reference.md#kb-topic-rpc-timi
 
 The sample `commands.js` file includes a method `"enableSC_RPCTimeout"` which makes use of console logging in Playwright to take advantage of these APIs and log timing information for slow requests.
 
-**Utility functions**
-
-The `commands.js` file also exports standalone utility functions:
-
-*   `scGoto(page, url, loopDetectSeconds?)` - Navigates to URL and waits for SmartClient page load (isc.Page.isLoaded()) and AutoTest.waitForSystemDone(). Optionally enables infinite loop detection during page load.
-*   `detectJSLoops(page, timeoutSeconds)` - Returns `{monitor, stop}` where `monitor` is a Promise that rejects if the browser becomes unresponsive for the specified number of seconds. Detects _continuous_ JS execution (infinite loops), not total elapsed time. Tests must race the monitor promise against their operations using `Promise.race([monitor, testOperations()])`.
-*   `captureISCLogs(page, outputPath)` - Captures SmartClient diagnostic logs from `isc.Log.getMessages()` and writes them to a file, useful for debugging test failures.
-
-**Detecting infinite loops with detectJSLoops()**
-
-The `detectJSLoops()` utility detects when the browser JavaScript engine becomes unresponsive due to infinite loops or other blocking code. Unlike standard timeouts which measure total elapsed time, `detectJSLoops()` monitors browser responsiveness - a test can run for hours without triggering the detector as long as the browser remains responsive.
-
-The monitor works by repeatedly attempting `page.evaluate()` calls from Node.js every 2 seconds. If any evaluation doesn't return within the specified timeout, the browser is hung and the test fails.
-
-**Style 1: Background monitoring (recommended):**
-
-```
- const { detectJSLoops } = require('path/to/commands');
-
- test('my test with hang detection', async ({ page }) => {
-   const stopMonitor = await detectJSLoops(page, 20);
-
-   try {
-     await page.goto('/myapp.html');
-     await page.clickSC('//Button[ID="submit"]');
-     await page.waitForSCDone();  // IMPORTANT: wait for async operations
-   } finally {
-     await stopMonitor();  // Always cleanup
-   }
- });
- 
-```
-
-**Style 2: Explicit Promise.race (for advanced control):**
-
-```
- const { detectJSLoops } = require('path/to/commands');
-
- test('my test with explicit race', async ({ page }) => {
-   const { monitor, stop } = await detectJSLoops(page, 20);
-
-   try {
-     await Promise.race([
-       monitor,  // Explicit - clearer error propagation
-       (async () => {
-         await page.goto('/myapp.html');
-         await page.clickSC('//Button[ID="submit"]');
-         await page.waitForSCDone();
-       })()
-     ]);
-   } finally {
-     await stop();
-   }
- });
- 
-```
-
-**Using scGoto() with automatic page load protection:**
-
-```
- const { scGoto } = require('path/to/commands');
-
- // Default - automatically monitors for hangs during page load (25s timeout)
- await scGoto(page, '/myapp.html');
-
- // Custom timeout for page load hang detection
- await scGoto(page, '/myapp.html', 10);
-
- // Disable hang detection during page load
- await scGoto(page, '/myapp.html', 0);
-
- // For hang detection during test operations, use detectJSLoops separately:
- await scGoto(page, '/myapp.html');  // Page load protected
- const stopMonitor = await detectJSLoops(page, 20);
- try {
-   await page.clickSC('//Button[ID="save"]');
-   await page.waitForSCDone();
- } finally {
-   await stopMonitor();
- }
- 
-```
-
-**IMPORTANT - Always wait for async operations:** End all tests with `waitForSCDone()` or `waitForSystemDone()`. If your test code completes but async operations continue (like redraws or server calls) and hit an infinite loop, the monitor will have already stopped and won't detect the hang. The test will appear to pass when it shouldn't. There's also a small race window between test completion and `stop()` being called where hangs won't be detected.
-
 `enableSC_RPCTimeout` should typically be called only once, at the beginning of your test. It will remain active as long as the page is loaded. The method takes the following arguments:
 
 *   `logThreshold` Any RPCs whose duration exceeds this threshold will log timing information via a console.log() call.
@@ -282,11 +197,5 @@ The custom methods shipped in the SmartClient SDK will respect the following set
 
 *   _scLogCommands_: Boolean - if true each command will be logged via console.log()
 *   _scCommandTimeout_: Number - default timeout for getSC() and waitForSCDone() in ms
-
-### Related
-
-- [EventStream.getPlaywrightEventScript](../classes/EventStream.md#classmethod-eventstreamgetplaywrighteventscript)
-- [EventStream.getPlaywrightScriptFromData](../classes/EventStream.md#classmethod-eventstreamgetplaywrightscriptfromdata)
-- [EventStream.getPlaywrightScript](../classes/EventStream.md#classmethod-eventstreamgetplaywrightscript)
 
 ---

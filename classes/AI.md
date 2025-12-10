@@ -124,7 +124,7 @@ The ID of the default [AIEngine](AIEngine.md#class-aiengine) to use.
 ## ClassAttr: AI.maxActiveAnswerEngineOperations
 
 ### Description
-The maximum number of Answer Engine operations that can be active (not paused and not canceled) at any given time.
+The maximum number of **_Answer Engine_** operations that can be active (not paused and not canceled) at any given time.
 
 ### Groups
 
@@ -244,7 +244,7 @@ Asks AI to answer a question about the data of the application.
 | question | [String](#type-string)|[UserAIRequest](#type-userairequest) | false | — | The text of the end-user's question or their request for an answer to a data question. |
 | dataSources | [Array of DataSource](#type-array-of-datasource)|[Array of GlobalId](#type-array-of-globalid) | true | — | The available data sources. All data sources in the array must have a global ID. If `null`, then the array of all DataSources available to the AI module is used. |
 | settings | [DataQuestionSettings](#type-dataquestionsettings) | true | — | Settings to use when answering the data question. |
-| callback | [AskDataQuestionResultCallback](#type-askdataquestionresultcallback) | true | — | The callback to call with the result. |
+| callback | [AskDataQuestionResultCallback](#type-askdataquestionresultcallback) | false | — | The callback to call with the result. |
 
 ### Groups
 

@@ -824,9 +824,10 @@ A method named log_Priority_ exists for each priority level, on every ISC Class 
 Returns a "stack trace" - one line per method in the current call stack, showing the method name and any parameters passed. This function is available as a static on every ISC Class and as an instance method on every instance of an ISC Class.  
 General best practice is to call the method as "this.getStackTrace" whenever "this" is an instance, or call the static classMethod on the [Log](Log.md#class-log) class otherwise.
 
-If the current thread was started by a [timer](Timer.md#classmethod-timersettimeout), you can [enable debug-level logging for the "timerTrace" log category](../kb_topics/debugging.md#kb-topic-debugging) to also include the stack trace leading up to the setTimeout call in most cases.
+Platform Notes: In Mozilla Firefox, if Firebug is enabled, a stack trace will be logged to the firebug console in addition to the standard stack trace string returned by this method.  
+In browsers other than Internet Explorer a complete stack trace may not be available - this occurs when a function is re-entrant (meaning it calls itself). In this case the stack will terminate with text indicating where the recursive function call occurred.
 
-See [debugging](../kb_topics/debugging.md#kb-topic-debugging) for further information.
+See [debugging](../kb_topics/debugging.md#kb-topic-debugging) for further information information.
 
 ### Returns
 
@@ -835,7 +836,6 @@ See [debugging](../kb_topics/debugging.md#kb-topic-debugging) for further inform
 ### Groups
 
 - debug
-- prodErrorReport
 
 ---
 ## ClassMethod: Class.delayCall
@@ -1280,9 +1280,10 @@ As with logDebug, category is defaulted to the current className. Use this metho
 Returns a "stack trace" - one line per method in the current call stack, showing the method name and any parameters passed. This function is available as a static on every ISC Class and as an instance method on every instance of an ISC Class.  
 General best practice is to call the method as "this.getStackTrace" whenever "this" is an instance, or call the static classMethod on the [Log](Log.md#class-log) class otherwise.
 
-If the current thread was started by a [timer](Timer.md#classmethod-timersettimeout), you can [enable debug-level logging for the "timerTrace" log category](../kb_topics/debugging.md#kb-topic-debugging) to also include the stack trace leading up to the setTimeout call in most cases.
+Platform Notes: In Mozilla Firefox, if Firebug is enabled, a stack trace will be logged to the firebug console in addition to the standard stack trace string returned by this method.  
+In browsers other than Internet Explorer a complete stack trace may not be available - this occurs when a function is re-entrant (meaning it calls itself). In this case the stack will terminate with text indicating where the recursive function call occurred.
 
-See [debugging](../kb_topics/debugging.md#kb-topic-debugging) for further information.
+See [debugging](../kb_topics/debugging.md#kb-topic-debugging) for further information information.
 
 ### Returns
 
@@ -1291,7 +1292,6 @@ See [debugging](../kb_topics/debugging.md#kb-topic-debugging) for further inform
 ### Groups
 
 - debug
-- prodErrorReport
 
 ---
 ## Method: Class.addPropertyList

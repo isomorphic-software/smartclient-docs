@@ -885,7 +885,7 @@ May also be specified as a ValueMap which maps property values to sortable value
 
 ### Returns
 
-`[ResultSet](#type-resultset)|[Array of Any](#type-array-of-any)` — this ResultSet
+`[ResultSet](#type-resultset)` — this ResultSet
 
 ### Groups
 

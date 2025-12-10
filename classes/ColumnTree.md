@@ -414,8 +414,7 @@ Select/deselect a list of [Record](../reference.md#object-record)s passed in exp
 |------|------|----------|---------|-------------|
 | records | [Array of Record](#type-array-of-record)|[number](#type-number) | false | — | records (or row numbers) to select |
 | newState | [boolean](../reference.md#type-boolean) | true | — | new selection state (if null, defaults to true) |
-| rowNums | [Array of Integer](#type-array-of-integer)|[Integer](../reference_2.md#type-integer) | true | — | row numbers to select. Required for [multi-link trees](Tree.md#attr-treemultilinktree) unless row numbers are passed in the "records" param. If passed, the rowNums array should correspond to the records array (ie, rowNums\[0\] refers to the same object as records\[0\]) |
-| colNum | [Integer](../reference_2.md#type-integer) | true | — | Column number |
+| colNum | [number](#type-number) | true | — | Column number |
 
 ### Groups
 
@@ -459,7 +458,7 @@ The new column will be created if it is not already showing. Any columns further
 
 ### Returns
 
-`[Boolean](#type-boolean)` — override and return false to cancel the default action
+`[boolean](../reference.md#type-boolean)` — override and return false to cancel the default action
 
 ---
 ## Method: ColumnTree.getColumnTitle
@@ -545,7 +544,7 @@ Whether at least one item is selected in the supplied column (the first column i
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| colNum | [Integer](../reference_2.md#type-integer) | true | — | Column number |
+| colNum | [number](#type-number) | true | — | Column number |
 
 ### Returns
 
@@ -577,7 +576,7 @@ Note that, if criteria are passed to `fetchData()`, they will be passed every ti
 |------|------|----------|---------|-------------|
 | criteria | [Criteria](../reference_2.md#type-criteria) | true | — | Search criteria. If a [DynamicForm](DynamicForm.md#class-dynamicform) is passed in as this argument instead of a raw criteria object, will be derived by calling [DynamicForm.getValuesAsCriteria](DynamicForm.md#method-dynamicformgetvaluesascriteria) |
 | callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke when a fetch is complete. Fires only if server contact was required |
-| requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | additional properties to set on the DSRequest that will be issued |
+| requestProperties | [DSRequest](#type-dsrequest) | true | — | additional properties to set on the DSRequest that will be issued |
 
 ### Groups
 
@@ -621,7 +620,7 @@ Select all records in the supplied column (the first column if none is passed)
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| colNum | [Integer](../reference_2.md#type-integer) | true | — | Column number |
+| colNum | [number](#type-number) | true | — | Column number |
 
 ### Groups
 
@@ -678,8 +677,7 @@ Synonym for `selectRecords(records, false)`
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | records | [Array of Record](#type-array-of-record)|[number](#type-number) | false | — | records (or row numbers) to deselect |
-| rowNums | [Array of Integer](#type-array-of-integer)|[Integer](../reference_2.md#type-integer) | true | — | row numbers to select. Required for [multi-link trees](Tree.md#attr-treemultilinktree) unless row numbers are passed in the "records" param. If passed, the rowNums array should correspond to the records array (ie, rowNums\[0\] refers to the same object as records\[0\]) |
-| colNum | [Integer](../reference_2.md#type-integer) | true | — | Column number |
+| colNum | [number](#type-number) | true | — | Column number |
 
 ### Groups
 
@@ -764,7 +762,7 @@ For a discussion of the various filtering and criteria-management APIs and when 
 |------|------|----------|---------|-------------|
 | criteria | [Criteria](../reference_2.md#type-criteria) | true | — | Search criteria. If a [DynamicForm](DynamicForm.md#class-dynamicform) is passed in as this argument instead of a raw criteria object, will be derived by calling [DynamicForm.getValuesAsCriteria](DynamicForm.md#method-dynamicformgetvaluesascriteria) |
 | callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke when a fetch is complete. Fires only if server contact was required; see [fetchData()](ListGrid_2.md#method-listgridfetchdata) for details |
-| requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | for databound components only - optional additional properties to set on the DSRequest that will be issued |
+| requestProperties | [DSRequest](#type-dsrequest) | true | — | for databound components only - optional additional properties to set on the DSRequest that will be issued |
 
 ### Groups
 
@@ -792,8 +790,7 @@ Select/deselect a [Record](../reference.md#object-record) passed in explicitly, 
 |------|------|----------|---------|-------------|
 | record | [Record](#type-record)|[number](#type-number) | false | — | record (or row number) to select |
 | newState | [boolean](../reference.md#type-boolean) | true | — | new selection state (if null, defaults to true) |
-| rowNum | [Integer](../reference_2.md#type-integer) | true | — | row number to select. Required for [multi-link trees](Tree.md#attr-treemultilinktree) unless row number is passed in the "record" param |
-| colNum | [Integer](../reference_2.md#type-integer) | true | — | Column number |
+| colNum | [number](#type-number) | true | — | Column number |
 
 ### Groups
 
@@ -812,8 +809,7 @@ Synonym for `selectRecord(record, false)`
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | record | [Record](#type-record)|[number](#type-number) | false | — | record (or row number) to deselect |
-| rowNum | [Integer](../reference_2.md#type-integer) | true | — | row number to select. Required for [multi-link trees](Tree.md#attr-treemultilinktree) unless row number is passed in the "record" param |
-| colNum | [Integer](../reference_2.md#type-integer) | true | — | Column number |
+| colNum | [number](#type-number) | true | — | Column number |
 
 ### Groups
 
@@ -829,7 +825,7 @@ Deselect all records in the supplied column (the first column if none is passed)
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| colNum | [Integer](../reference_2.md#type-integer) | true | — | Column number |
+| colNum | [number](#type-number) | true | — | Column number |
 
 ### Groups
 

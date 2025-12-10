@@ -738,6 +738,22 @@ Sets [PortalLayout.canAddColumns](#attr-portallayoutcanaddcolumns).
 | canAddColumns | [Boolean](#type-boolean) | false | — | The new value for `canAddColumns`. |
 
 ---
+## Method: PortalLayout.setColumnPreventUnderflow
+
+### Description
+Sets [preventColumnUnderflow](#attr-portallayoutpreventcolumnunderflow) and reflows the layout to implement it.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| preventColumnUnderflow | [boolean](../reference.md#type-boolean) | false | — | Whether to stretch the last [Portlet](Portlet.md#class-portlet) in a column to fill the column's height. |
+
+### Groups
+
+- sizing
+
+---
 ## Method: PortalLayout.setPortletDropTypes
 
 ### Description
@@ -848,22 +864,6 @@ Return false to cancel the action.
 
 - [Portlet.showCloseConfirmationMessage](Portlet.md#attr-portletshowcloseconfirmationmessage)
 - [PortalLayout.portletsChanged](#method-portallayoutportletschanged)
-
----
-## Method: PortalLayout.setPreventColumnUnderflow
-
-### Description
-Sets [preventColumnUnderflow](#attr-portallayoutpreventcolumnunderflow) and reflows the layout to implement it.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| preventColumnUnderflow | [boolean](../reference.md#type-boolean) | false | — | Whether to stretch the last [Portlet](Portlet.md#class-portlet) in a column to fill the column's height. |
-
-### Groups
-
-- sizing
 
 ---
 ## Method: PortalLayout.setColumnSpacing

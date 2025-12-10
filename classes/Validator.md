@@ -313,14 +313,6 @@ Note that this property can also be set at the form/grid or field level; If true
 **Flags**: IRW
 
 ---
-## Attr: Validator.otherField
-
-### Description
-For validators of type [matchesField](../reference.md#type-validatortype), specifies the name of the other field whose value this field must match.
-
-**Flags**: IR
-
----
 ## Attr: Validator.dependentFields
 
 ### Description
@@ -491,18 +483,6 @@ When set to true, values that equal the specified [Validator.min](#attr-validato
 
 - [Validator.min](#attr-validatormin)
 - [Validator.max](#attr-validatormax)
-
-**Flags**: IR
-
----
-## Attr: Validator.expression
-
-### Description
-For validators that use a regular expression or conditional logic, this property specifies the expression to evaluate.
-
-For [regexp](../reference.md#type-validatortype) validators, this should be a regular expression (as a string or RegExp object) that the value must match.
-
-For [requiredIf](../reference.md#type-validatortype) validators, this should be a [stringMethod](../kb_topics/stringMethods.md#kb-topic-string-methods-overview) that returns `true` if the field should be required. The function receives four parameters: `item` (the form item), `validator` (the validator object), `value` (the field value), and `record` (the form values).
 
 **Flags**: IR
 

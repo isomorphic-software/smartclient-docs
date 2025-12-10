@@ -81,7 +81,7 @@ For more sophisticated management of read-only behavior, see [SimpleType.readOnl
 ### Description
 A set of key-value pairs that represent the names and titles of the grouping modes available to values of this type, for use in components that support grouping.
 
-Some types provide a set of builtin groupingModes, as covered [here](../kb_topics/builtinGroupingModes.md#kb-topic-built-in-grouping-modes).
+Some types provide a set of builtin groupingModes, as covered [here](../kb_topics/builtinGroupingModes.md#kb-topic-builtingroupingmodes).
 
 Use [SimpleType.getGroupValue](#method-simpletypegetgroupvalue) and [SimpleType.getGroupTitle](#method-simpletypegetgrouptitle) to implement custom grouping logic for each of the grouping modes you provide.
 

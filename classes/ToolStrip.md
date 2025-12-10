@@ -89,13 +89,7 @@ Class to create when the string "separator" appears in [ToolStrip.members](#attr
 ## Attr: ToolStrip.members
 
 ### Description
-Array of components that will be contained within this Toolstrip. Like [Layout.members](Layout.md#attr-layoutmembers), Strings may be used as global IDs of Canvas instances.
-
-Additionally, the following special String values can be used to add built-in AutoChildren with standard ToolStrip behaviors:
-
-*   `"separator"` - creates a vertical separator (instance of [ToolStrip.separatorClass](#attr-toolstripseparatorclass))
-*   `"resizer"` - creates a resizer (instance of [ToolStrip.resizeBarClass](#attr-toolstripresizebarclass)), equivalent to setting [showResizeBar:true](Canvas.md#attr-canvasshowresizebar) on the preceding member
-*   `"starSpacer"` - creates a spacer (instance of [LayoutSpacer](../reference.md#class-layoutspacer))
+Array of components that will be contained within this Toolstrip, like [Layout.members](Layout.md#attr-layoutmembers). Built-in special behaviors can be indicated as describe [here](#class-toolstrip).
 
 **Flags**: IR
 

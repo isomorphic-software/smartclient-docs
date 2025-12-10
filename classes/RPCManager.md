@@ -1151,7 +1151,7 @@ Calling `cacheScreens` twice with the same screenName will re-load the definitio
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | screenName | [Array of String](#type-array-of-string) | false | — | name of the screens to cache |
-| callback | [Function](#type-function) | true | — | callback for notification of screens being successfully cached |
+| callback | [Function](#type-function) | false | — | callback for notification of screens being successfully cached |
 | locale | [String](#type-string) | true | — | The name of a locale to use for resolving i18n tags in the component XML of the screen |
 | requestProperties | [RPCRequest Properties](#type-rpcrequest-properties) | true | — | optional properties for the request |
 

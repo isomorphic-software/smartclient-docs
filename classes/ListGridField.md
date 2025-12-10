@@ -1508,8 +1508,6 @@ If no `optionDataSource` is defined for the field and [ListGridField.displayValu
 
 The display value for a record with a specified `displayField` can be picked up via [ListGrid.getDisplayValue](ListGrid_2.md#method-listgridgetdisplayvalue).
 
-Unless [ListGridField.sortByDisplayField](#attr-listgridfieldsortbydisplayfield) is explicitly set to `false`, sorting by this field will sort by the display field value instead.
-
 ### Groups
 
 - display_values
@@ -1953,7 +1951,7 @@ If `groupingModes` are present and [grouping is enabled](ListGrid_1.md#attr-list
 
 The user may also choose to group records without specifying a grouping mode, in this case, the [ListGridField.defaultGroupingMode](#attr-listgridfielddefaultgroupingmode) is used.
 
-Note that `getGroupValue`, `groupingModes` et al can be specified on [SimpleType](SimpleType.md#class-simpletype) declarations. See this list of [builtin grouping modes](../kb_topics/builtinGroupingModes.md#kb-topic-built-in-grouping-modes) for more information.
+Note that `getGroupValue`, `groupingModes` et al can be specified on [SimpleType](SimpleType.md#class-simpletype) declarations. See this list of [builtin grouping modes](../kb_topics/builtinGroupingModes.md#kb-topic-builtingroupingmodes) for more information.
 
 ### Groups
 
@@ -2753,7 +2751,7 @@ Optional icon to show next to the title for this field. Should be set to a URL t
 
 If [field.type](#attr-listgridfieldtype) is set to "icon", this icon will also be shown in every cell of this field - see also [field.cellIcon](#attr-listgridfieldcellicon).
 
-To change this property after fields have been passed to [ListGrid.setFields](ListGrid_2.md#method-listgridsetfields), use [ListGrid.setFieldIcon](ListGrid_2.md#method-listgridsetfieldicon).
+To change this property after fields have been passed to [ListGrid.setFields](ListGrid_2.md#method-listgridsetfields), use [ListGrid.setFieldIcon](ListGrid_1.md#method-listgridsetfieldicon).
 
 **Flags**: IR
 
@@ -2931,7 +2929,7 @@ Return false from this method to cancel the default behavior (Saving / cancellin
 
 ### Returns
 
-`[Boolean](#type-boolean)` — Returning false from this method will cancel the default behavior (for example saving the row) and leave the editor visible and focus in this edit cell.
+`[boolean](../reference.md#type-boolean)` — Returning false from this method will cancel the default behavior (for example saving the row) and leave the editor visible and focus in this edit cell.
 
 ### Groups
 

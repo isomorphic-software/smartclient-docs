@@ -216,11 +216,4 @@ The custom commands shipped in the SmartClient SDK will respect the following se
 *   _scLogCommands_: Boolean - if true each command will be logged via cy.log()
 *   _scCommandTimeout_: Number - default timeout for getSC() and waitForSCDone() in ms
 
-### Related
-
-- [EventStream.runEvents](../classes/EventStream.md#classmethod-eventstreamrunevents)
-- [EventStream.getCypressScriptFromData](../classes/EventStream.md#classmethod-eventstreamgetcypressscriptfromdata)
-- [EventStream.getCypressEventScript](../classes/EventStream.md#classmethod-eventstreamgetcypresseventscript)
-- [EventStream.getCypressScript](../classes/EventStream.md#method-eventstreamgetcypressscript)
-
 ---

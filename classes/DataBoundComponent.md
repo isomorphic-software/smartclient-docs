@@ -41,6 +41,16 @@ This attribute has the same function as [DataSource.descriptionField](DataSource
 **Flags**: IR
 
 ---
+## Attr: DataBoundComponent.canAddAISummaryFields
+
+### Description
+Adds an item to the header context menu allowing users to launch a dialog to define a new field based on an AI summary of the entire record and possibility related records.
+
+AI summary fields can be persisted via [ListGrid.getFieldState](ListGrid_2.md#method-listgridgetfieldstate) and [ListGrid.setFieldState](ListGrid_2.md#method-listgridsetfieldstate).
+
+**Flags**: IRW
+
+---
 ## Attr: DataBoundComponent.initialCriteria
 
 ### Description
@@ -520,7 +530,7 @@ The [Window](Window.md#class-window) used to edit calculated fields for this com
 ### Description
 A DataBoundComponent manipulates records with one or more fields, and `component.fields` tells the DataBoundComponent which fields to present, in what order, and how to present each field.
 
-When both `component.fields` and `[component.dataSource](#attr-databoundcomponentdatasource)` are set, any fields in `component.fields` with the same name as a DataSource field inherit properties of the DataSource field. This allows you to centralize data model information in the DataSource, but customize presentation of DataSource fields on a per-component basis. For example, in a ListGrid, a shorter title or format for a field might be chosen to save space.
+When both `component.fields` and `[component.dataSource](#attr-databoundcomponentdatasource)` are set, any fields in `component.fields` with the same name as a DataSource field inherit properties of the DataSource field. This allows you to centralize data model information in the DataSource, but customize presentation of DataSource fields on a per-component basic. For example, in a ListGrid, a shorter title or format for a field might be chosen to save space.
 
 By default, only fields specified on the component are shown, in the order specified on the component. The [DataBoundComponent.useAllDataSourceFields](#attr-databoundcomponentusealldatasourcefields) flag can be set to show all fields from the DataSource, with `component.fields` acting as field-by-field overrides and/or additional fields.
 
@@ -1292,16 +1302,6 @@ Secondly this allows the same set of saved searches to be applied to more than o
 **Flags**: IRWA
 
 ---
-## ClassMethod: DataBoundComponent.requestsArePending
-
-### Description
-Returns whether there are any pending [DSRequest](../reference_2.md#object-dsrequest)s initiated by this [DataBoundComponent](../reference.md#interface-databoundcomponent). May not include any requests sent by directly calling the [DataSource](DataSource.md#class-datasource) APIs (rather than the DataBoundComponent APIs).
-
-### Returns
-
-`[Boolean](#type-boolean)` — true if one or more requests are pending, false otherwise.
-
----
 ## Method: DataBoundComponent.getSort
 
 ### Description
@@ -1630,7 +1630,7 @@ To display custom drag tracker HTML, this method may be overridden - call [Event
 
 ### Returns
 
-`[Boolean](#type-boolean)` — returns false by default to suppress 'setDragTracker' on any ancestors of this component.
+`[boolean](../reference.md#type-boolean)` — returns false by default to suppress 'setDragTracker' on any ancestors of this component.
 
 ### Groups
 
@@ -1650,7 +1650,7 @@ Note that developers may wish to use [DataBoundComponent.selectRange](#method-da
 |------|------|----------|---------|-------------|
 | records | [Array of Record](#type-array-of-record)|[number](#type-number) | false | — | records (or row numbers) to select |
 | newState | [boolean](../reference.md#type-boolean) | true | — | new selection state (if null, defaults to true) |
-| rowNums | [Array of Integer](#type-array-of-integer)|[Integer](../reference_2.md#type-integer) | true | — | row numbers to select. Required for [multi-link trees](Tree.md#attr-treemultilinktree) unless row numbers are passed in the "records" param. If passed, the rowNums array should correspond to the records array (ie, rowNums\[0\] refers to the same object as records\[0\]) |
+| rowNums | [Array of Integer](#type-array-of-integer) | false | — | row numbers to select. Required for [multi-link trees](Tree.md#attr-treemultilinktree) unless row numbers are passed in the "records" param. If passed, the rowNums array should correspond to the records array (ie, rowNums\[0\] refers to the same object as records\[0\]) |
 
 ### Groups
 
@@ -1807,7 +1807,7 @@ For more information on exporting data, see [DataSource.exportData](DataSource.m
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | additional properties to set on the DSRequest that will be issued |
+| requestProperties | [DSRequest](#type-dsrequest) | true | — | additional properties to set on the DSRequest that will be issued |
 | callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke on completion. Note that this parameter only applies where [DSRequest.exportToClient](DSRequest.md#attr-dsrequestexporttoclient) is explicitly set to false, because file downloads do not provide ordinary SmartClient callbacks |
 
 ### Groups
@@ -1834,7 +1834,7 @@ Returning `false` from this method will prevent the field from being added. Note
 
 ### Returns
 
-`[Boolean](#type-boolean)` — Return false to cancel the addition of the field
+`[boolean](../reference.md#type-boolean)` — Return false to cancel the addition of the field
 
 ### Groups
 
@@ -1860,7 +1860,7 @@ Synonym for `selectRecord(record, false)`
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | record | [Record](#type-record)|[number](#type-number) | false | — | record (or row number) to deselect |
-| rowNum | [Integer](../reference_2.md#type-integer) | true | — | row number to select. Required for [multi-link trees](Tree.md#attr-treemultilinktree) unless row number is passed in the "record" param |
+| rowNum | [Integer](../reference_2.md#type-integer) | false | — | row number to select. Required for [multi-link trees](Tree.md#attr-treemultilinktree) unless row number is passed in the "record" param |
 
 ### Groups
 
@@ -1907,6 +1907,16 @@ Enable all hilites.
 ### Groups
 
 - hiliting
+
+---
+## Method: DataBoundComponent.requestsArePending
+
+### Description
+Returns whether there are any pending [DSRequest](../reference_2.md#object-dsrequest)s initiated by this [DataBoundComponent](../reference.md#interface-databoundcomponent). May not include any requests sent by directly calling the [DataSource](DataSource.md#class-datasource) APIs (rather than the DataBoundComponent APIs).
+
+### Returns
+
+`[Boolean](#type-boolean)` — true if one or more requests are pending, false otherwise.
 
 ---
 ## Method: DataBoundComponent.getHilites
@@ -2114,7 +2124,7 @@ Note that developers may wish to use [DataBoundComponent.deselectRange](#method-
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | records | [Array of Record](#type-array-of-record)|[number](#type-number) | false | — | records (or row numbers) to deselect |
-| rowNums | [Array of Integer](#type-array-of-integer)|[Integer](../reference_2.md#type-integer) | true | — | row numbers to select. Required for [multi-link trees](Tree.md#attr-treemultilinktree) unless row numbers are passed in the "records" param. If passed, the rowNums array should correspond to the records array (ie, rowNums\[0\] refers to the same object as records\[0\]) |
+| rowNums | [Array of Integer](#type-array-of-integer) | false | — | row numbers to select. Required for [multi-link trees](Tree.md#attr-treemultilinktree) unless row numbers are passed in the "records" param. If passed, the rowNums array should correspond to the records array (ie, rowNums\[0\] refers to the same object as records\[0\]) |
 
 ### Groups
 
@@ -2414,7 +2424,7 @@ Select/deselect a [Record](../reference.md#object-record) passed in explicitly, 
 |------|------|----------|---------|-------------|
 | record | [Record](#type-record)|[number](#type-number) | false | — | record (or row number) to select |
 | newState | [boolean](../reference.md#type-boolean) | true | — | new selection state (if null, defaults to true) |
-| rowNum | [Integer](../reference_2.md#type-integer) | true | — | row number to select. Required for [multi-link trees](Tree.md#attr-treemultilinktree) unless row number is passed in the "record" param |
+| rowNum | [Integer](../reference_2.md#type-integer) | false | — | row number to select. Required for [multi-link trees](Tree.md#attr-treemultilinktree) unless row number is passed in the "record" param |
 
 ### Groups
 
@@ -2565,7 +2575,6 @@ Select a single [Record](../reference.md#object-record) passed in explicitly, or
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | record | [Record](#type-record)|[number](#type-number) | false | — | record (or row number) to select |
-| rowNum | [Integer](../reference_2.md#type-integer) | true | — | row number to select. Required for [multi-link trees](Tree.md#attr-treemultilinktree) unless row number is passed in the "record" param |
 
 ### Groups
 

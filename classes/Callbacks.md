@@ -23,20 +23,6 @@ Callback reporting the result of a [RemoteWindow](RemoteWindow.md#class-remotewi
 | result | [Map](#type-map) | false | — | result |
 
 ---
-## Method: Callbacks.RunTaskCallback
-
-### Description
-Called when [Process.runTask](Process.md#method-processruntask) has finished executing the specified task.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| task | [Task](#type-task) | false | — | The task instance that was executed. |
-| process | [Process](#type-process) | false | — | The owning process instance. |
-| outputs | [Object](../reference.md#type-object) | false | — | Task outputs, if any (for [CoTTask](CoTTask.md#class-cottask), this is the final `$outputs` JSON). May be null if the task does not produce outputs. |
-
----
 ## Method: Callbacks.AsyncMultipleValuesGenerationResultCallback
 
 ### Description
@@ -677,18 +663,5 @@ Generic callback interface.
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | clientOnly | [DataSource](#type-datasource) | false | — | Client only Data Source. |
-
----
-## Method: Callbacks.SetValueByDisplayValueCallback
-
-### Description
-Callback fired when [FormItem.setValueByDisplayValue](FormItem.md#method-formitemsetvaluebydisplayvalue) completes.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| success | [boolean](../reference.md#type-boolean) | false | — | True if the value was successfully set, false otherwise |
-| value | [Any](#type-any) | false | — | If success is true, contains the mapped value that was set. If success is false, contains an error message string. |
 
 ---

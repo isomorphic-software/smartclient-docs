@@ -4,19 +4,6 @@
 
 ---
 
-## Method: ListGrid.setFieldIcon
-
-### Description
-Change the [ListGridField.icon](ListGridField.md#attr-listgridfieldicon) for a field after the grid is created
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| fieldName | [String](#type-string) | false | — | field to update |
-| icon | [SCImgURL](../reference.md#type-scimgurl) | false | — | icon for the field |
-
----
 ## Method: ListGrid.setCanRemoveRecords
 
 ### Description
@@ -351,23 +338,6 @@ The returned value is never null, and can be freely modified.
 - editing
 
 ---
-## Method: ListGrid.fetchRowCount
-
-### Description
-For databound grids, method will fall through to [ResultSet.fetchRowCount](ResultSet.md#method-resultsetfetchrowcount), allowing developers to request an accurate row count from the dataSource when [progressive loading is active](DataSource.md#attr-datasourceprogressiveloading).
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| callback | [RowCountCallback](#type-rowcountcallback) | true | — | Callback to fire when the fetch request completes. To retrieve details of the row-count that was retrieved from the server, use the `getRowCount()` and `getRowCountStatus()` methods. |
-| dsRequest | [DSRequest Properties](#type-dsrequest-properties) | true | — | Custom properties for the row count fetch request |
-
-### Groups
-
-- rowRangeDisplay
-
----
 ## Method: ListGrid.hasChanges
 
 ### Description
@@ -392,6 +362,23 @@ The `ignorePendingValues` parameter may be used by developers who want to ignore
 - editing
 
 ---
+## Method: ListGrid.fetchRowCount
+
+### Description
+For databound grids, method will fall through to [ResultSet.fetchRowCount](ResultSet.md#method-resultsetfetchrowcount), allowing developers to request an accurate row count from the dataSource when [progressive loading is active](DataSource.md#attr-datasourceprogressiveloading).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| callback | [RowCountCallback](#type-rowcountcallback) | true | — | Callback to fire when the fetch request completes. To retrieve details of the row-count that was retrieved from the server, use the `getRowCount()` and `getRowCountStatus()` methods. |
+| dsRequest | [DSRequest Properties](#type-dsrequest-properties) | true | — | Custom properties for the row count fetch request |
+
+### Groups
+
+- rowRangeDisplay
+
+---
 ## Method: ListGrid.rowOver
 
 ### Description
@@ -407,7 +394,7 @@ Called when the mouse pointer enters a row
 
 ### Returns
 
-`[Boolean](#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -468,7 +455,7 @@ The second parameter is only applicable if [ListGrid.showRecordComponentsByCell]
 
 ### Returns
 
-`[Boolean](#type-boolean)` — return false to cancel showRecordComponent behavior
+`[boolean](../reference.md#type-boolean)` — return false to cancel showRecordComponent behavior
 
 ### Groups
 
@@ -499,7 +486,7 @@ Notification method fired when the user clicks on the corner [sort button](ListG
 
 ### Returns
 
-`[Boolean](#type-boolean)` — return false to suppress the sort
+`[boolean](../reference.md#type-boolean)` — return false to suppress the sort
 
 ### Groups
 
@@ -611,7 +598,7 @@ Called when (cell-based) selection changes within this grid.
 
 ### Returns
 
-`[Boolean](#type-boolean)` — Returning false will prevent the GridRenderer styling from being updated to reflect the selection change.
+`[boolean](../reference.md#type-boolean)` — Returning false will prevent the GridRenderer styling from being updated to reflect the selection change.
 
 ### Groups
 
@@ -765,7 +752,7 @@ To pick up such changes, we recommend that you call [setData(\[\])](#method-list
 |------|------|----------|---------|-------------|
 | criteria | [Criteria](../reference_2.md#type-criteria) | true | — | Search criteria. If a [DynamicForm](DynamicForm.md#class-dynamicform) is passed in as this argument instead of a raw criteria object, will be derived by calling [DynamicForm.getValuesAsCriteria](DynamicForm.md#method-dynamicformgetvaluesascriteria) |
 | callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke when a fetch is complete. Fires only if server contact was required |
-| requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | additional properties to set on the DSRequest that will be issued |
+| requestProperties | [DSRequest](#type-dsrequest) | true | — | additional properties to set on the DSRequest that will be issued |
 
 ### Groups
 
@@ -1169,7 +1156,7 @@ Called when a cell receives a double click event.
 
 ### Returns
 
-`[Boolean](#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -1282,7 +1269,7 @@ Note that this method selects records unconditionally, allowing multiple selecte
 |------|------|----------|---------|-------------|
 | record | [Record](#type-record)|[number](#type-number) | false | — | record (or row number) to select |
 | newState | [boolean](../reference.md#type-boolean) | true | — | new selection state (if null, defaults to true) |
-| rowNum | [Integer](../reference_2.md#type-integer) | true | — | row number to select. Required for [multi-link trees](Tree.md#attr-treemultilinktree) unless row number is passed in the "record" param |
+| rowNum | [Integer](../reference_2.md#type-integer) | false | — | row number to select. Required for [multi-link trees](Tree.md#attr-treemultilinktree) unless row number is passed in the "record" param |
 
 ### Groups
 
@@ -1346,7 +1333,7 @@ Note that multiple foreign keys into the schema are supported by this method.
 | record | [ListGridRecord](#type-listgridrecord) | false | — | DataSource record |
 | schema | [Canvas](#type-canvas)|[DataSource](#type-datasource)|[ID](#type-id) | false | — | schema of the DataSource record, or DataBoundComponent already bound to that schema |
 | callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke on completion |
-| requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | additional properties to set on the DSRequest that will be issued |
+| requestProperties | [DSRequest](#type-dsrequest) | true | — | additional properties to set on the DSRequest that will be issued |
 
 ### Groups
 
@@ -1459,7 +1446,7 @@ Note that the majority of keyboard handling for a ListGrid is performed by [List
 
 ### Returns
 
-`[Boolean](#type-boolean)` — return false to cancel
+`[boolean](../reference.md#type-boolean)` — return false to cancel
 
 ---
 ## Method: ListGrid.editComplete
@@ -1589,7 +1576,7 @@ Called when the mouse pointer leaves a row
 
 ### Returns
 
-`[Boolean](#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -1785,7 +1772,7 @@ Called when a row receives a contextclick event.
 
 ### Returns
 
-`[Boolean](#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -1878,7 +1865,7 @@ Clear the current criteria used to filter data. This method clears filter-values
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke on completion |
-| requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | additional properties to set on the DSRequest that will be issued |
+| requestProperties | [DSRequest](#type-dsrequest) | true | — | additional properties to set on the DSRequest that will be issued |
 
 ### Groups
 
@@ -1937,7 +1924,7 @@ If [ListGrid.canSelectCells](ListGrid_1.md#attr-listgridcanselectcells) is set t
 
 ### Returns
 
-`[Boolean](#type-boolean)` — return false to disallow selection
+`[boolean](../reference.md#type-boolean)` — return false to disallow selection
 
 **Flags**: A
 
@@ -2075,20 +2062,6 @@ See [ListGrid.scrollToCell](#method-listgridscrolltocell) for a full description
 - scrolling
 
 ---
-## Method: ListGrid.getEditRow
-
-### Description
-Returns the index of the row being edited or null if there is no current edit row.
-
-### Returns
-
-`[int](../reference.md#type-int)` — index of the current edit row
-
-### Groups
-
-- editing
-
----
 ## Method: ListGrid.groupBy
 
 ### Description
@@ -2121,6 +2094,20 @@ Grouping is often an asynchronous operation, both because of automatic loading o
 ### Groups
 
 - grouping
+
+---
+## Method: ListGrid.getEditRow
+
+### Description
+Returns the index of the row being edited or null if there is no current edit row.
+
+### Returns
+
+`[int](../reference.md#type-int)` — index of the current edit row
+
+### Groups
+
+- editing
 
 ---
 ## Method: ListGrid.getRollUnderCanvas
@@ -2157,7 +2144,7 @@ See also [ListGrid.getFrozenRollUnderCanvas](#method-listgridgetfrozenrollunderc
 ### Description
 Dynamically set properties for a particular field. This method will update the fields header-button without having to explicitly reset the fields in the grid.
 
-NOTE: Where explicit setters exist for field properties (such as [ListGrid.resizeField](#method-listgridresizefield), [ListGrid.setFieldTitle](#method-listgridsetfieldtitle), [ListGrid.setFieldIcon](#method-listgridsetfieldicon), etc.) these should be used instead.
+NOTE: Where explicit setters exist for field properties (such as [ListGrid.resizeField](#method-listgridresizefield), [ListGrid.setFieldTitle](#method-listgridsetfieldtitle), [ListGrid.setFieldIcon](ListGrid_1.md#method-listgridsetfieldicon), etc.) these should be used instead.
 
 ### Parameters
 
@@ -2198,7 +2185,7 @@ For a discussion of the various filtering and criteria-management APIs and when 
 |------|------|----------|---------|-------------|
 | criteria | [Criteria](../reference_2.md#type-criteria) | true | — | Search criteria. If a [DynamicForm](DynamicForm.md#class-dynamicform) is passed in as this argument instead of a raw criteria object, will be derived by calling [DynamicForm.getValuesAsCriteria](DynamicForm.md#method-dynamicformgetvaluesascriteria) |
 | callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke when a fetch is complete. Fires only if server contact was required; see [fetchData()](#method-listgridfetchdata) for details |
-| requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | for databound components only - optional additional properties to set on the DSRequest that will be issued |
+| requestProperties | [DSRequest](#type-dsrequest) | true | — | for databound components only - optional additional properties to set on the DSRequest that will be issued |
 
 ### Groups
 
@@ -2302,7 +2289,7 @@ Called when the mouse pointer leaves a cell
 
 ### Returns
 
-`[Boolean](#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -2498,7 +2485,7 @@ Optional stringMethod to fire when the user hovers over a cell and the value is 
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false to suppress the standard hover
+`[boolean](../reference.md#type-boolean)` — false to suppress the standard hover
 
 ### Groups
 
@@ -2753,7 +2740,7 @@ For more information on exporting data, see [DataSource.exportData](DataSource.m
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | additional properties to set on the DSRequest that will be issued |
+| requestProperties | [DSRequest](#type-dsrequest) | true | — | additional properties to set on the DSRequest that will be issued |
 | callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke on completion. Note that this parameter only applies where [DSRequest.exportToClient](DSRequest.md#attr-dsrequestexporttoclient) is explicitly set to false, because file downloads do not provide ordinary SmartClient callbacks |
 
 ### Groups
@@ -2796,7 +2783,7 @@ Called when the mouse hovers over a cell if `this.canHover` is `true`. Returning
 
 ### Returns
 
-`[Boolean](#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -3218,7 +3205,7 @@ Called when a cell receives a mousedown event.
 
 ### Returns
 
-`[Boolean](#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -3427,28 +3414,6 @@ Default implementation evaluates and returns [ListGrid.freezeFieldText](ListGrid
 - i18nMessages
 
 ---
-## Method: ListGrid.getSelectedRecords
-
-### Description
-Returns all selected records in this grid.
-
-**NOTE:** Records in the returned array should be treated as read-only and not modified.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| excludePartialSelections | [boolean](../reference.md#type-boolean) | true | — | When true, partially selected records will not be returned. Otherwise, both fully and partially selected records are returned. |
-
-### Returns
-
-`[Array of ListGridRecord](#type-array-of-listgridrecord)` — array of selected records, which will be empty if no record is selected.
-
-### Groups
-
-- selection
-
----
 ## Method: ListGrid.getColumnWidth
 
 ### Description
@@ -3470,6 +3435,28 @@ Return the width of a particular column.
 - positioning
 
 **Flags**: A
+
+---
+## Method: ListGrid.getSelectedRecords
+
+### Description
+Returns all selected records in this grid.
+
+**NOTE:** Records in the returned array should be treated as read-only and not modified.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| excludePartialSelections | [boolean](../reference.md#type-boolean) | true | — | When true, partially selected records will not be returned. Otherwise, both fully and partially selected records are returned. |
+
+### Returns
+
+`[Array of ListGridRecord](#type-array-of-listgridrecord)` — array of selected records, which will be empty if no record is selected.
+
+### Groups
+
+- selection
 
 ---
 ## Method: ListGrid.getDrawArea
@@ -3605,7 +3592,7 @@ Optional stringMethod to fire when the user hovers over the error icon of a cell
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false to suppress the standard error message hover
+`[boolean](../reference.md#type-boolean)` — false to suppress the standard error message hover
 
 ### Groups
 
@@ -3672,7 +3659,7 @@ Called when the mouse hovers over a row if this.canHover is true. Returning fals
 
 ### Returns
 
-`[Boolean](#type-boolean)` — whether to cancel the event (default behavior of showing the hover)
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event (default behavior of showing the hover)
 
 ### Groups
 
@@ -3864,7 +3851,7 @@ Note that returning false from this method will not prevent any specified [ListG
 
 ### Returns
 
-`[Boolean](#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -3940,7 +3927,7 @@ Called when the mouse pointer enters a cell
 
 ### Returns
 
-`[Boolean](#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -4227,7 +4214,7 @@ To display custom drag tracker HTML, this method may be overridden - call [Event
 
 ### Returns
 
-`[Boolean](#type-boolean)` — returns false by default to suppress 'setDragTracker' on any ancestors of this component.
+`[boolean](../reference.md#type-boolean)` — returns false by default to suppress 'setDragTracker' on any ancestors of this component.
 
 ### Groups
 
@@ -4768,7 +4755,7 @@ Note this method will not be called at all if [ListGrid.canSelectCells](ListGrid
 
 ### Returns
 
-`[Boolean](#type-boolean)` — return false to disallow selection
+`[boolean](../reference.md#type-boolean)` — return false to disallow selection
 
 ---
 ## Method: ListGrid.getSortFieldCount
@@ -4894,7 +4881,7 @@ Called when a row receives a mouseup event.
 
 ### Returns
 
-`[Boolean](#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -5170,7 +5157,7 @@ Note that developers may wish to use [ListGrid.deselectRange](#method-listgridde
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | records | [Array of Record](#type-array-of-record)|[number](#type-number) | false | — | records (or row numbers) to deselect |
-| rowNums | [Array of Integer](#type-array-of-integer)|[Integer](../reference_2.md#type-integer) | true | — | row numbers to select. Required for [multi-link trees](Tree.md#attr-treemultilinktree) unless row numbers are passed in the "records" param. If passed, the rowNums array should correspond to the records array (ie, rowNums\[0\] refers to the same object as records\[0\]) |
+| rowNums | [Array of Integer](#type-array-of-integer) | false | — | row numbers to select. Required for [multi-link trees](Tree.md#attr-treemultilinktree) unless row numbers are passed in the "records" param. If passed, the rowNums array should correspond to the records array (ie, rowNums\[0\] refers to the same object as records\[0\]) |
 
 ### Groups
 
@@ -5313,7 +5300,7 @@ Synonym for `selectRecord(record, false)`
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | record | [Record](#type-record)|[number](#type-number) | false | — | record (or row number) to deselect |
-| rowNum | [Integer](../reference_2.md#type-integer) | true | — | row number to select. Required for [multi-link trees](Tree.md#attr-treemultilinktree) unless row number is passed in the "record" param |
+| rowNum | [Integer](../reference_2.md#type-integer) | false | — | row number to select. Required for [multi-link trees](Tree.md#attr-treemultilinktree) unless row number is passed in the "record" param |
 
 ### Groups
 
@@ -5503,7 +5490,7 @@ Can be overridden at the field level as field.editorExit.
 
 ### Returns
 
-`[Boolean](#type-boolean)` — Returning false from this method will cancel the default behavior (for example saving the row) and leave the editor visible and focus in this edit cell.
+`[boolean](../reference.md#type-boolean)` — Returning false from this method will cancel the default behavior (for example saving the row) and leave the editor visible and focus in this edit cell.
 
 ### Groups
 
@@ -5599,7 +5586,7 @@ or, to ensure the specified [ListGrid.autoFetchTextMatchStyle](ListGrid_1.md#att
 
 ### Returns
 
-`[Boolean](#type-boolean)` — returning false will suppress the filter from occurring
+`[boolean](../reference.md#type-boolean)` — returning false will suppress the filter from occurring
 
 ### See Also
 
@@ -5762,20 +5749,6 @@ Returns the original, ungrouped data in the grid. If the grid is ungrouped, retu
 - grouping
 
 ---
-## Method: ListGrid.getData
-
-### Description
-Method to return the listGrid's [data](ListGrid_1.md#attr-listgriddata) object.
-
-### Returns
-
-`[Object](../reference.md#type-object)` — The data that is being displayed
-
-### See Also
-
-- [ListGrid.getOriginalData](#method-listgridgetoriginaldata)
-
----
 ## Method: ListGrid.getTotalRows
 
 ### Description
@@ -5858,7 +5831,7 @@ Called when a row receives a mousedown event.
 
 ### Returns
 
-`[Boolean](#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -6027,7 +6000,7 @@ To do something specific if a particular field is double clicked, add a recordDo
 
 ### Returns
 
-`[Boolean](#type-boolean)` — return false to cancel event bubbling
+`[boolean](../reference.md#type-boolean)` — return false to cancel event bubbling
 
 ### Groups
 
@@ -6160,7 +6133,7 @@ For a grid with no DataSource or where `saveLocally` is true, the data removal i
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to fire when each record has been removed |
-| requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | additional properties to set on the DSRequest that will be issued |
+| requestProperties | [DSRequest](#type-dsrequest) | true | — | additional properties to set on the DSRequest that will be issued |
 | queueCallback | [RPCQueueCallback](#type-rpcqueuecallback) | true | — | callback to fire after all selected data has been removed |
 
 ### Groups
@@ -6323,7 +6296,6 @@ Select a single [Record](../reference.md#object-record) passed in explicitly, or
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | record | [Record](#type-record)|[number](#type-number) | false | — | record (or row number) to select |
-| rowNum | [Integer](../reference_2.md#type-integer) | true | — | row number to select. Required for [multi-link trees](Tree.md#attr-treemultilinktree) unless row number is passed in the "record" param |
 
 ### Groups
 
@@ -6914,7 +6886,7 @@ Return false from this method to cancel the default behavior (Saving / cancellin
 
 ### Returns
 
-`[Boolean](#type-boolean)` — Returning false from this method will cancel the default behavior (for example saving the row) and leave the editor visible and focus in this edit cell.
+`[boolean](../reference.md#type-boolean)` — Returning false from this method will cancel the default behavior (for example saving the row) and leave the editor visible and focus in this edit cell.
 
 ### Groups
 
@@ -6943,7 +6915,7 @@ Note that this method is not called when the data is regrouped, either [programm
 
 ### Returns
 
-`[Boolean](#type-boolean)` — return false to cancel grouping on the passed specification
+`[boolean](../reference.md#type-boolean)` — return false to cancel grouping on the passed specification
 
 ### Groups
 
@@ -6975,6 +6947,18 @@ Identifies whether the passed-in field is the specially generated [expansionFiel
 - expansionField
 
 ---
+## Method: ListGrid.setShowCollapsedGroupSummary
+
+### Description
+Setter for [ListGrid.showCollapsedGroupSummary](ListGrid_1.md#attr-listgridshowcollapsedgroupsummary)
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| showCollapsedGroupSummary | [boolean](../reference.md#type-boolean) | false | — | new showCollapsedGroupSummary value |
+
+---
 ## Method: ListGrid.focusInFilterEditor
 
 ### Description
@@ -6989,18 +6973,6 @@ If the filter editor ([ListGrid.showFilterEditor](ListGrid_1.md#attr-listgridsho
 ### Groups
 
 - filterEditor
-
----
-## Method: ListGrid.setShowCollapsedGroupSummary
-
-### Description
-Setter for [ListGrid.showCollapsedGroupSummary](ListGrid_1.md#attr-listgridshowcollapsedgroupsummary)
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| showCollapsedGroupSummary | [boolean](../reference.md#type-boolean) | false | — | new showCollapsedGroupSummary value |
 
 ---
 ## Method: ListGrid.collapseRecord
@@ -7120,7 +7092,7 @@ If your reason for implementing a custom `setSortHandler()` is to inhibit or rep
 
 ### Returns
 
-`[Boolean](#type-boolean)` — return false to cancel the default setSort() behavior
+`[boolean](../reference.md#type-boolean)` — return false to cancel the default setSort() behavior
 
 **Flags**: A
 
@@ -7369,7 +7341,7 @@ Default implementation handles navigating between records with arrow keys, and a
 
 ### Returns
 
-`[Boolean](#type-boolean)` — return false to cancel
+`[boolean](../reference.md#type-boolean)` — return false to cancel
 
 ---
 ## Method: ListGrid.groupSortNormalizer
@@ -7482,13 +7454,13 @@ If you need such ground-up recalculation, consider re-creating the grid as a who
 ## Method: ListGrid.toggleSort
 
 ### Description
-Toggles the sort direction of the field having the specified name, and re-sorts the grid. If the grid is not already sorted by the field, then a sort specifier for the field will be added.
+Toggles the sort-direction of the field with the passed name and resorts the grid.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| fieldName | [String](#type-string) | false | — | The name of a field, either visible, hidden or existing only in the dataSource |
+| fieldName | [String](#type-string) | false | — | The name of a field, visible, hidden or existing only in the dataSource |
 
 ### Groups
 
@@ -7583,7 +7555,7 @@ Notification method fired when the user right-clicks on the corner [sort button]
 
 ### Returns
 
-`[Boolean](#type-boolean)` — return false to suppress the context menu
+`[boolean](../reference.md#type-boolean)` — return false to suppress the context menu
 
 ### Groups
 
@@ -7651,24 +7623,6 @@ Note that this width is the default width of "content" - it does not take into a
 `[int](../reference.md#type-int)` — default size required for the field's content.
 
 ---
-## Method: ListGrid.getSelectedRecord
-
-### Description
-Returns the first selected record in this grid.
-
-This method is appropriate if the [selectionType](ListGrid_1.md#attr-listgridselectiontype) is "single", or if you only care about the first selected record in a multiple-record selection. To access all selected records, use [ListGrid.getSelection](#method-listgridgetselection) instead.
-
-**NOTE:** If a record is returned, it should be treated as read-only and not modified.
-
-### Returns
-
-`[ListGridRecord](#type-listgridrecord)` — the first selected record, or null if no record is selected.
-
-### Groups
-
-- selection
-
----
 ## Method: ListGrid.clearRowErrors
 
 ### Description
@@ -7687,6 +7641,24 @@ Clear any stored validation errors for some row
 ### See Also
 
 - [ListGrid.setRowErrors](#method-listgridsetrowerrors)
+
+---
+## Method: ListGrid.getSelectedRecord
+
+### Description
+Returns the first selected record in this grid.
+
+This method is appropriate if the [selectionType](ListGrid_1.md#attr-listgridselectiontype) is "single", or if you only care about the first selected record in a multiple-record selection. To access all selected records, use [ListGrid.getSelection](#method-listgridgetselection) instead.
+
+**NOTE:** If a record is returned, it should be treated as read-only and not modified.
+
+### Returns
+
+`[ListGridRecord](#type-listgridrecord)` — the first selected record, or null if no record is selected.
+
+### Groups
+
+- selection
 
 ---
 ## Method: ListGrid.unmarkRecordRemoved
@@ -7751,7 +7723,7 @@ Note that developers may wish to use [ListGrid.selectRange](#method-listgridsele
 |------|------|----------|---------|-------------|
 | records | [Array of Record](#type-array-of-record)|[number](#type-number) | false | — | records (or row numbers) to select |
 | newState | [boolean](../reference.md#type-boolean) | true | — | new selection state (if null, defaults to true) |
-| rowNums | [Array of Integer](#type-array-of-integer)|[Integer](../reference_2.md#type-integer) | true | — | row numbers to select. Required for [multi-link trees](Tree.md#attr-treemultilinktree) unless row numbers are passed in the "records" param. If passed, the rowNums array should correspond to the records array (ie, rowNums\[0\] refers to the same object as records\[0\]) |
+| rowNums | [Array of Integer](#type-array-of-integer) | false | — | row numbers to select. Required for [multi-link trees](Tree.md#attr-treemultilinktree) unless row numbers are passed in the "records" param. If passed, the rowNums array should correspond to the records array (ie, rowNums\[0\] refers to the same object as records\[0\]) |
 
 ### Groups
 
@@ -8327,7 +8299,7 @@ Called when a cell receives a mouseup event.
 
 ### Returns
 
-`[Boolean](#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 

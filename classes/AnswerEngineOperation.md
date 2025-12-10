@@ -9,7 +9,7 @@
 *Inherits from:* [PausableAsyncOperation](#class-pausableasyncoperation)
 
 ### Description
-Represents an Answer Engine operation.
+Represents an **_Answer Engine_** operation.
 
 ### Groups
 
@@ -27,27 +27,17 @@ Represents an Answer Engine operation.
 ## Attr: AnswerEngineOperation.dataQuestion
 
 ### Description
-The data question that is the subject of this Answer Engine operation. This is required to be non-`null`.
+The data question that is the subject of this **_Answer Engine_** operation.
 
 **Flags**: IR
 
 ---
-## Attr: AnswerEngineOperation.autoShowResult
+## Attr: AnswerEngineOperation.jsonEncoder
 
 ### Description
-Whether the result should be automatically shown to the user.
+The [JSONEncoder](JSONEncoder.md#class-jsonencoder) created for use by this **_Answer Engine_** operation.
 
-**Flags**: IR
-
----
-## Attr: AnswerEngineOperation.showNotify
-
-### Description
-Whether to show a notify for this Answer Engine operation.
-
-If [AnswerEngineOperation.autoShowResult](#attr-answerengineoperationautoshowresult) is also enabled, the notify will be dismissed when the result is shown.
-
-**Flags**: IR
+**Flags**: R
 
 ---
 ## Attr: AnswerEngineOperation.dataSources
@@ -66,11 +56,11 @@ The maximum number of records that may be requested per query. Must be a positiv
 **Flags**: IR
 
 ---
-## Attr: AnswerEngineOperation.notifyMessageId
+## Attr: AnswerEngineOperation.currentStep
 
 ### Description
-If [AnswerEngineOperation.showNotify](#attr-answerengineoperationshownotify) is `true` and a notify is shown, its message ID.
+The current step that this **_Answer Engine_** operation is working on.
 
-**Flags**: R
+**Flags**: IR
 
 ---

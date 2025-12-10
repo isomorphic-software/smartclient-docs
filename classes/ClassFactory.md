@@ -9,17 +9,6 @@
 ### Description
 Intentionally clobber an existing SmartClient Class, if it already exists. Works identically to [ClassFactory.defineClass](#classmethod-classfactorydefineclass), except that no warning is logged to the console.
 
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| className | [String](#type-string) | false | — | Name for the new class. |
-| superClass | [Class](#type-class)|[SCClassName](../reference.md#type-scclassname) | true | — | Optional SuperClass Class object or name |
-
-### Returns
-
-`[Class](#type-class)` — Returns the new Class object.
-
 ---
 ## ClassMethod: ClassFactory.defineClass
 
@@ -50,7 +39,7 @@ NOTE: `isc.defineClass()` also creates a new function `[class:isA](../reference.
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | className | [String](#type-string) | false | — | Name for the new class. |
-| superClass | [Class](#type-class)|[SCClassName](../reference.md#type-scclassname) | true | — | Optional SuperClass Class object or name |
+| superClass | [Class](#type-class) | true | — | Optional SuperClass Class object or name |
 
 ### Returns
 

@@ -34,7 +34,6 @@ Note that this engine does not support vision requests.
 | "o3-mini" | OpenAI | o3-mini |
 | "o4-mini" | OpenAI | o4-mini |
 | "gemini-pro" | Google | Gemini Pro & Gemini Pro Vision | You must obtain an API key having access to these models from: https://makersuite.google.com/app/apikey?authuser=1Then, the value of server configuration property Gemini.api.key must be set to your API key. |
-| "bedrock" | AWS Bedrock | Many different models are available, see the "AWS Bedrock" section below | You must obtain an API key from here (replacing $REGION with your region, eg "us-east-2"): https://$REGION.console.aws.amazon.com/bedrock/home?region=$REGION#/api-keys?tab=long-term">Then you need to request access to the model(s) you wish to use here (again, replacing $REGION): https://$REGION.console.aws.amazon.com/bedrock/home?region=$REGION#/modelaccess Then, set server configuration property Bedrock.api.key to your API key (ie, in your server.properties file) |
 
 Note: The AI services corresponding to the IDs in AntiqueWhite do not support vision requests.
 
@@ -48,18 +47,8 @@ Here is sample SmartClient code that enables AI using GPT-4.1:
  isc.AI.disabled = false;
 ```
 **Note:** If your application will need to ask AI to analyze images, you'll need an `AIEngine` that supports vision requests. Check the table above to see which built-in engines support vision, or you can register your own (covered below).
-#### AWS Bedrock
-Amazon Bedrock is not a model in itself but a managed service that provides access to multiple foundation models through a single AWS API. Instead of interacting directly with a specific AI vendor (as you would with OpenAI or Gemini), you connect to Bedrock and select which underlying model to use; Bedrock supports many such models, including Anthropic Claude, Meta Llama, Amazon's own Titan engine, Deepseek, and others).
-
-Therefore, Bedrock is an intermediary layer rather than the actual model provider. The most important thing about Bedrock integration into SmartClient is that it gives you access to a wide selection of models from numerous different AI providers, without the need for native support for all those different providers. It also means that billing is done through your AWS account rather than directly with the company that is providing the underlying AI service.
-
-Bedrock integration requies a couple of additional `server.properties` entries, in addition to the API key:
-
-*   `**Bedrock.api.aws.region**` Like other AWS services, Bedrock is a regional service, so we must connect to the endpoint of the region where you want the inference to run. Provide a valid AWS region in this property - for example `us-east-2` or `eu-central-1`
-*   `**Bedrock.api.model**` As mentioned above, Bedrock itself is not an AI model, so you must provide the name of the model to use. This must be a valid modelId or ARN that you have access to through the AWS account associated with your API key. This is not a completely straightforward topic and you should consult AWS Bedrock documentation to work out the correct modelId or ARN to specify
-
 #### Adding your own AIEngine
-If the built-in [AI Engines](../classes/AIEngine.md#class-aiengine) aren't enough, even with Bedrock support, you can implement your own for the generative AI service that you would like to use, and [register](#classmethod-airegisterengine) it with the Framework. You can then set your engine's ID into [AI.defaultEngineId](../classes/AI.md#classattr-aidefaultengineid).
+If the built-in [AI Engines](../classes/AIEngine.md#class-aiengine) aren't enough, you can implement your own for the generative AI service that you would like to use, and [register](#classmethod-airegisterengine) it with the Framework. You can then set your engine's ID into [AI.defaultEngineId](../classes/AI.md#classattr-aidefaultengineid).
 
 You can also [unregister](#classmethod-aiunregisterengine) an engine, or grab the `AIEngine` instance of a built-in or manually registered engine by passing the ID to [AI.getEngine](../classes/AI.md#classmethod-aigetengine).
 

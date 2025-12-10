@@ -1316,7 +1316,7 @@ If set to "false", transformation of values for [multiple:true](DataSourceField.
 ## Attr: DataSource.suppressManualAggregation
 
 ### Description
-Indicates whether we should suppress automatic aggregation and grouping handling logic. As noted below, this property does not apply to DataSources of [serverType](#attr-datasourceservertype) "sql", "jpa" or "hibernate". By default, the framework applies a post-fetch in-memory operation to handle aggregation and grouping, as described in the [allowAggregation](#attr-datasourceallowaggregation) documentation. You can suppress this automatic behavior by setting this flag true.
+For DataSources of [serverType](#attr-datasourceservertype) "generic" only, indicates whether we should suppress automatic aggregation and grouping handling logic. By default, the framework applies a post-fetch in-memory operation to handle aggregation and grouping, as described in the [allowAggregation](#attr-datasourceallowaggregation) documentation. You can suppress this automatic behavior by setting this flag true.
 
 Note, this is primarily intended as a back-compatibility flag, to allow you to compensate for situations where your own custom DataSource implementations have their own aggregation handling, pre-dating the automatic in-memory aggregation feature. In this circumstance, set this flag true to retain the existing behavior. If you want to suppress the manual aggregation for **all** dataSources by default (you can still re-enable it per-DataSource if required, using this `suppressManualAggregation` flag), add the following to your `server.properties` file:
 
@@ -2061,7 +2061,7 @@ It is valid for union DataSources to be nested inside other union DataSources; n
 ## Attr: DataSource.recordXPath
 
 ### Description
-See [OperationBinding.recordXPath](OperationBinding.md#attr-operationbindingrecordxpath). `recordXPath` can be specified directly on the DataSource for a simple read-only DataSource only capable of "fetch" operations, or on clientOnly DataSources using [testData](../kb_topics/testData.md#kb-topic-test-data), or on [RestConnector](../kb_topics/serverRestConnector.md#kb-topic-server-side-rest-connector) dataSources
+See [OperationBinding.recordXPath](OperationBinding.md#attr-operationbindingrecordxpath). `recordXPath` can be specified directly on the DataSource for a simple read-only DataSource only capable of "fetch" operations, on clientOnly DataSources using [testData](../kb_topics/testData.md#kb-topic-test-data), or on [RestConnector](../kb_topics/serverRestConnector.md#kb-topic-server-side-rest-connector) dataSources
 
 ### Groups
 
@@ -5720,7 +5720,7 @@ To cause all components that have cache managers to drop their caches, provide a
 
 As an alternative to calling `updateCaches()` directly, if updates to other DataSources occur as a result of server-side logic, you can use the server-side API DSResponse.addRelatedUpdate(DSResponse) (Pro Edition and above), which ultimately calls `updateCaches()` for you - see that method's documentation for details.
 
-**NOTE:** if `updateCaches` is called for a [clientOnly](#attr-datasourceclientonly) DataSource, it will update [DataSource.cacheData](#attr-datasourcecachedata) synchronously in addition to notifying all cache managers as normal.
+**NOTE:**: if `updateCaches` is called for a [clientOnly](#attr-datasourceclientonly) DataSource, it will update [DataSource.cacheData](#attr-datasourcecachedata) synchronously in addition to notifying all cache managers as normal.
 
 If a DataSource has [DataSource.cacheAllData](#attr-datasourcecachealldata) set and a full cache has been obtained, calling `updateCaches` will automatically update the cache.
 
@@ -5964,7 +5964,7 @@ This is an application override point only; there is no default implementation.
 
 ### Returns
 
-`[Boolean](#type-boolean)` — true to allow this response to be used, false to prevent it
+`[boolean](../reference.md#type-boolean)` — true to allow this response to be used, false to prevent it
 
 ### Groups
 
@@ -6434,7 +6434,7 @@ If you define this method on a DataSource, it will be called whenever the server
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false to suppress [RPCManager.handleError](RPCManager.md#classmethod-rpcmanagerhandleerror)
+`[boolean](../reference.md#type-boolean)` — false to suppress [RPCManager.handleError](RPCManager.md#classmethod-rpcmanagerhandleerror)
 
 ### Groups
 

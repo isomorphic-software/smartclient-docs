@@ -54,8 +54,8 @@ For completely user-driven advanced criteria editing see also the [FilterBuilder
 - [MiniDateRangeItem.getCriterion](../classes/MiniDateRangeItem.md#method-minidaterangeitemgetcriterion)
 - [MiniDateRangeItem.setCriterion](../classes/MiniDateRangeItem.md#method-minidaterangeitemsetcriterion)
 - [MiniDateRangeItem.canEditCriterion](../classes/MiniDateRangeItem.md#method-minidaterangeitemcaneditcriterion)
-- [ListGrid.useAdvancedCriteria](../classes/ListGrid_1.md#attr-listgriduseadvancedcriteria)
 - [FormItem.operator](../classes/FormItem.md#attr-formitemoperator)
 - [FormItem.useAdvancedCriteria](../classes/FormItem.md#attr-formitemuseadvancedcriteria)
+- [ListGrid.useAdvancedCriteria](../classes/ListGrid_1.md#attr-listgriduseadvancedcriteria)
 
 ---

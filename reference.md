@@ -1,4 +1,4 @@
-# SmartClient API Reference
+# SmartClient API Reference (14.1)
 
 This is the central API reference for the SmartClient framework.
 ## Table of Contents
@@ -6,7 +6,7 @@ This is the central API reference for the SmartClient framework.
 ### Classes
 
 - [Class](classes/Class.md)
-  - [BaseWidget](classes/BaseWidget.md)
+  - [BaseWidget](#class-basewidget)
     - [Canvas](classes/Canvas.md)
       - [Layout](classes/Layout.md)
         - [VLayout](#class-vlayout)
@@ -32,9 +32,9 @@ This is the central API reference for the SmartClient framework.
             - [SummaryBuilder](classes/SummaryBuilder.md)
               - [AIFieldBuilder](classes/AIFieldBuilder.md)
                 - [AISortFieldBuilder](#class-aisortfieldbuilder)
+          - [RichTextEditor](classes/RichTextEditor.md)
           - [RibbonGroup](classes/RibbonGroup.md)
             - [ToolStripGroup](#class-toolstripgroup)
-          - [RichTextEditor](classes/RichTextEditor.md)
           - [Reify](classes/Reify.md)
           - [EventCanvas](classes/EventCanvas.md)
             - [ZoneCanvas](#class-zonecanvas)
@@ -61,9 +61,9 @@ This is the central API reference for the SmartClient framework.
           - [MultiSortDialog](classes/MultiSortDialog.md)
           - [LoginDialog](classes/LoginDialog.md)
           - [MultiGroupDialog](classes/MultiGroupDialog.md)
-          - [DatabaseBrowser](classes/DatabaseBrowser.md)
           - [Portlet](classes/Portlet.md)
           - [ModalWindow](classes/ModalWindow.md)
+          - [DatabaseBrowser](classes/DatabaseBrowser.md)
           - [TourWindow](classes/TourWindow.md)
           - [HibernateBrowser](classes/HibernateBrowser.md)
           - [DateRangeDialog](classes/DateRangeDialog.md)
@@ -92,10 +92,10 @@ This is the central API reference for the SmartClient framework.
         - [FilterClause](classes/FilterClause.md)
         - [MultiSortPanel](classes/MultiSortPanel.md)
         - [MultiGroupPanel](classes/MultiGroupPanel.md)
+        - [AdaptiveMenu](classes/AdaptiveMenu.md)
         - [ToolStrip](classes/ToolStrip.md)
           - [RibbonBar](classes/RibbonBar.md)
           - [Header](classes/Header.md)
-        - [AdaptiveMenu](classes/AdaptiveMenu.md)
         - [Deck](classes/Deck.md)
         - [ListPropertiesPane](classes/ListPropertiesPane.md)
         - [HStack](#class-hstack)
@@ -113,9 +113,9 @@ This is the central API reference for the SmartClient framework.
         - [TileGrid](classes/TileGrid.md)
           - [TilePalette](#class-tilepalette)
         - [FlowLayout](#class-flowlayout)
+      - [GridRenderer](classes/GridRenderer.md)
       - [TabSet](classes/TabSet.md)
         - [VerticalTabs](#class-verticaltabs)
-      - [GridRenderer](classes/GridRenderer.md)
       - [EditPane](classes/EditPane.md)
       - [DetailViewer](classes/DetailViewer.md)
       - [StatefulCanvas](classes/StatefulCanvas.md)
@@ -257,7 +257,6 @@ This is the central API reference for the SmartClient framework.
     - [BlurbItem](classes/BlurbItem.md)
     - [SpacerItem](#class-spaceritem)
       - [RowSpacerItem](#class-rowspaceritem)
-    - [AIDataQuestionItem](#class-aidataquestionitem)
     - [NativeCheckboxItem](#class-nativecheckboxitem)
       - [RadioItem](#class-radioitem)
     - [BooleanItem](#class-booleanitem)
@@ -275,61 +274,55 @@ This is the central API reference for the SmartClient framework.
   - [SavedSearches](classes/SavedSearches.md)
   - [Callbacks](classes/Callbacks.md)
   - [Validator](classes/Validator.md)
-  - [EventStream](classes/EventStream.md)
-  - [Process](classes/Process.md)
-    - [CoTProcess](classes/CoTProcess.md)
-      - [AUN](classes/AUN.md)
-    - [Tour](classes/Tour.md)
-      - [Tutorial](#class-tutorial)
   - [SimpleType](classes/SimpleType.md)
+  - [EventHandler](classes/EventHandler.md)
   - [ProcessElement](classes/ProcessElement.md)
     - [Task](classes/Task.md)
-      - [CoTTask](classes/CoTTask.md)
       - [UserTask](classes/UserTask.md)
         - [TourStep](classes/TourStep.md)
         - [TourConfirmStep](classes/TourConfirmStep.md)
-      - [DSRequestTask](classes/DSRequestTask.md)
+      - [ServiceTask](classes/ServiceTask.md)
         - [DSRemoveTask](#class-dsremovetask)
         - [DSUpdateTask](#class-dsupdatetask)
         - [DSFetchTask](#class-dsfetchtask)
         - [DSAddTask](#class-dsaddtask)
-      - [ComponentTask](classes/ComponentTask.md)
-        - [GridRemoveSelectedDataTask](classes/GridRemoveSelectedDataTask.md)
-        - [SetTitleTask](classes/SetTitleTask.md)
-        - [FormSaveDataTask](classes/FormSaveDataTask.md)
-        - [GridEditRecordTask](classes/GridEditRecordTask.md)
-        - [ShowHideTask](classes/ShowHideTask.md)
-        - [AddScreenTask](classes/AddScreenTask.md)
-        - [GridFetchDataTask](classes/GridFetchDataTask.md)
-        - [GetPropertiesTask](classes/GetPropertiesTask.md)
-        - [GridSelectRecordsTask](classes/GridSelectRecordsTask.md)
-        - [EnableDisableTask](classes/EnableDisableTask.md)
-        - [SetPropertiesTask](classes/SetPropertiesTask.md)
-        - [PrintCanvasTask](#class-printcanvastask)
-        - [FormSetValuesTask](#class-formsetvaluestask)
-        - [ShowNextToComponentTask](#class-shownexttocomponenttask)
-        - [FormValidateValuesTask](#class-formvalidatevaluestask)
-        - [FetchRelatedDataTask](#class-fetchrelateddatatask)
-        - [NavigateSplitPaneTask](#class-navigatesplitpanetask)
-        - [SetScreenDataTask](#class-setscreendatatask)
-        - [GridSetEditValueTask](#class-gridseteditvaluetask)
-        - [FormEditNewRecordTask](#class-formeditnewrecordtask)
-          - [FormEditRecordTask](#class-formeditrecordtask)
-        - [FormSetFieldValueTask](#class-formsetfieldvaluetask)
-        - [GridExportClientDataTask](#class-gridexportclientdatatask)
-        - [FormDisableFieldTask](#class-formdisablefieldtask)
-        - [GridViewSelectedDataTask](#class-gridviewselecteddatatask)
-        - [GridExportDataTask](#class-gridexportdatatask)
-        - [FormEditSelectedTask](#class-formeditselectedtask)
-        - [GridTransferDataTask](#class-gridtransferdatatask)
-        - [GridSaveAllEditsTask](#class-gridsavealleditstask)
-        - [GridDiscardAllEditsTask](#class-griddiscardalleditstask)
-        - [FormClearValuesTask](#class-formclearvaluestask)
-        - [FormResetValuesTask](#class-formresetvaluestask)
-        - [ShowComponentTask](#class-showcomponenttask)
-      - [StateTask](classes/StateTask.md)
       - [ScriptTask](classes/ScriptTask.md)
         - [StartProcessTask](classes/StartProcessTask.md)
+      - [StateTask](classes/StateTask.md)
+    - [ComponentTask](classes/ComponentTask.md)
+      - [GridRemoveSelectedDataTask](classes/GridRemoveSelectedDataTask.md)
+      - [SetTitleTask](classes/SetTitleTask.md)
+      - [FormSaveDataTask](classes/FormSaveDataTask.md)
+      - [GridEditRecordTask](classes/GridEditRecordTask.md)
+      - [ShowHideTask](classes/ShowHideTask.md)
+      - [AddScreenTask](classes/AddScreenTask.md)
+      - [GridFetchDataTask](classes/GridFetchDataTask.md)
+      - [GetPropertiesTask](classes/GetPropertiesTask.md)
+      - [GridSelectRecordsTask](classes/GridSelectRecordsTask.md)
+      - [EnableDisableTask](classes/EnableDisableTask.md)
+      - [SetPropertiesTask](classes/SetPropertiesTask.md)
+      - [PrintCanvasTask](#class-printcanvastask)
+      - [FormSetValuesTask](#class-formsetvaluestask)
+      - [ShowNextToComponentTask](#class-shownexttocomponenttask)
+      - [FormValidateValuesTask](#class-formvalidatevaluestask)
+      - [FetchRelatedDataTask](#class-fetchrelateddatatask)
+      - [NavigateSplitPaneTask](#class-navigatesplitpanetask)
+      - [SetScreenDataTask](#class-setscreendatatask)
+      - [GridSetEditValueTask](#class-gridseteditvaluetask)
+      - [FormEditNewRecordTask](#class-formeditnewrecordtask)
+        - [FormEditRecordTask](#class-formeditrecordtask)
+      - [FormSetFieldValueTask](#class-formsetfieldvaluetask)
+      - [GridExportClientDataTask](#class-gridexportclientdatatask)
+      - [FormDisableFieldTask](#class-formdisablefieldtask)
+      - [GridViewSelectedDataTask](#class-gridviewselecteddatatask)
+      - [GridExportDataTask](#class-gridexportdatatask)
+      - [FormEditSelectedTask](#class-formeditselectedtask)
+      - [GridTransferDataTask](#class-gridtransferdatatask)
+      - [GridSaveAllEditsTask](#class-gridsavealleditstask)
+      - [GridDiscardAllEditsTask](#class-griddiscardalleditstask)
+      - [FormClearValuesTask](#class-formclearvaluestask)
+      - [FormResetValuesTask](#class-formresetvaluestask)
+      - [ShowComponentTask](#class-showcomponenttask)
     - [SendEmailTask](classes/SendEmailTask.md)
     - [DecisionTask](classes/DecisionTask.md)
       - [XORGateway](#class-xorgateway)
@@ -347,10 +340,13 @@ This is the central API reference for the SmartClient framework.
     - [LogOutTask](#class-logouttask)
     - [StartTransactionTask](#class-starttransactiontask)
     - [SendTransactionTask](#class-sendtransactiontask)
-  - [EventHandler](classes/EventHandler.md)
   - [TabIndexManager](classes/TabIndexManager.md)
   - [Log](classes/Log.md)
   - [XMLTools](classes/XMLTools.md)
+  - [EventStream](classes/EventStream.md)
+  - [Process](classes/Process.md)
+    - [Tour](classes/Tour.md)
+      - [Tutorial](#class-tutorial)
   - [Time](classes/Time.md)
   - [Notify](classes/Notify.md)
   - [RPCResponse](classes/RPCResponse.md)
@@ -405,6 +401,7 @@ This is the central API reference for the SmartClient framework.
   - [Authentication](classes/Authentication.md)
     - [Auth](#class-auth)
   - [NumberUtil](classes/NumberUtil.md)
+  - [Facet](classes/Facet.md)
   - [GroupingMessages](classes/GroupingMessages.md)
   - [RemoteWindow](classes/RemoteWindow.md)
     - [OpenFinWindow](#class-openfinwindow)
@@ -417,8 +414,8 @@ This is the central API reference for the SmartClient framework.
   - [MathFunction](classes/MathFunction.md)
   - [MultiLinkSelection](classes/MultiLinkSelection.md)
   - [AsyncUtil](classes/AsyncUtil.md)
-  - [JSONEncoder](classes/JSONEncoder.md)
   - [VoiceAssist](classes/VoiceAssist.md)
+  - [JSONEncoder](classes/JSONEncoder.md)
   - [CellSelection](classes/CellSelection.md)
   - [CancellationController](classes/CancellationController.md)
   - [Project](classes/Project.md)
@@ -426,7 +423,6 @@ This is the central API reference for the SmartClient framework.
   - [SortSpecifierUtil](classes/SortSpecifierUtil.md)
   - [FontLoader](classes/FontLoader.md)
   - [SelectOtherItem](classes/SelectOtherItem.md)
-  - [Timer](classes/Timer.md)
   - [SelectionOutline](classes/SelectionOutline.md)
   - [TextSettings](classes/TextSettings.md)
     - [TextExportSettings](classes/TextExportSettings.md)
@@ -434,6 +430,7 @@ This is the central API reference for the SmartClient framework.
   - [AIEngine](classes/AIEngine.md)
   - [Comm](classes/Comm.md)
   - [SchemaSet](classes/SchemaSet.md)
+  - [Timer](classes/Timer.md)
   - [FieldPickerField](classes/FieldPickerField.md)
   - [SyntaxHiliter](#class-syntaxhiliter)
     - [XMLSyntaxHiliter](#class-xmlsyntaxhiliter)
@@ -451,7 +448,6 @@ This is the central API reference for the SmartClient framework.
   - [RibbonGroupEditProxy](#class-ribbongroupeditproxy)
   - [ToolStripSeparatorEditProxy](#class-toolstripseparatoreditproxy)
   - [React](#class-react)
-  - [InstantUI](#class-instantui)
 - [AnswerEngineOperation](classes/AnswerEngineOperation.md)
 
 ### Knowledge Base
@@ -459,7 +455,6 @@ This is the central API reference for the SmartClient framework.
 - [Accessibility / Section 508 compliance](kb_topics/accessibility.md)
 - [Admin Console](kb_topics/adminConsole.md)
 - [Advanced Filtering](kb_topics/advancedFilter.md)
-- [AIRetriesExhausted](kb_topics/AIRetriesExhausted.md)
 - [ancestry](#kb-topic-ancestry)
 - [Angular Integration](kb_topics/angularIntegration.md)
 - [Answer Engine](#kb-topic-answer-engine)
@@ -475,7 +470,7 @@ This is the central API reference for the SmartClient framework.
 - [Binary Fields](kb_topics/binaryFields.md)
 - [Supported Browsers](kb_topics/browserSupport.md)
 - [Native Browser Zoom Support](kb_topics/browserZoom.md)
-- [Built-in Grouping Modes](kb_topics/builtinGroupingModes.md)
+- [builtinGroupingModes](kb_topics/builtinGroupingModes.md)
 - [Button Icon](kb_topics/buttonIcon.md)
 - [Automatic Cache Synchronization](kb_topics/cacheSynchronization.md)
 - [Caching](kb_topics/caching.md)
@@ -492,12 +487,6 @@ This is the central API reference for the SmartClient framework.
 - [Compression](kb_topics/compression.md)
 - [Handling concurrent edits in SmartClient DataSources](kb_topics/concurrentEdits.md)
 - [Component Containment and Hierarchy](kb_topics/containment.md)
-- [CoT](kb_topics/CoT.md)
-- [CoTExecutionModels](kb_topics/CoTExecutionModels.md)
-- [CoTHistory](kb_topics/CoTHistory.md)
-- [CoTMocking](kb_topics/CoTMocking.md)
-- [CoTPartialPrompt](kb_topics/CoTPartialPrompt.md)
-- [CoTPromptScope](kb_topics/CoTPromptScope.md)
 - [Criteria Editing](kb_topics/criteriaEditing.md)
 - [cues](#kb-topic-cues)
 - [Custom Querying Overview](kb_topics/customQuerying.md)
@@ -559,7 +548,6 @@ This is the central API reference for the SmartClient framework.
 - [Frozen Fields](kb_topics/frozenFields.md)
 - [Google Application Engine (GAE)](#kb-topic-google-application-engine-gae)
 - [Determining the size of a drawn canvas](kb_topics/gettingCanvasSize.md)
-- [GraalJS Polyglot API for DMI](kb_topics/graalPolyglotDMI.md)
 - [Grid Filtering Overview](kb_topics/gridFiltering.md)
 - [gridHeader](kb_topics/gridHeader.md)
 - [gridValidation](kb_topics/gridValidation.md)
@@ -628,7 +616,6 @@ This is the central API reference for the SmartClient framework.
 - [Drag and Drop behavior within PortalLayouts](kb_topics/portalLayoutDrop.md)
 - [positioning](kb_topics/positioning.md)
 - [Printing](kb_topics/printing.md)
-- [Production Error Reporting](kb_topics/prodErrorReport.md)
 - [Progressive Loading](kb_topics/progressiveLoading.md)
 - [Prompting](#kb-topic-prompting)
 - [Quartz DataSources](kb_topics/quartzAdapters.md)
@@ -692,6 +679,7 @@ This is the central API reference for the SmartClient framework.
 - [Sun's java-engine implementation - Notice and Disclaimer](kb_topics/sunNotice.md)
 - [SVG Symbols Overview](kb_topics/svgSymbols.md)
 - [Tab Order Overview](kb_topics/tabOrderOverview.md)
+- [Task Input Expressions](kb_topics/taskInputExpression.md)
 - [Task Input / Output](kb_topics/taskIO.md)
 - [Test Data](kb_topics/testData.md)
 - [TestRunner](kb_topics/testRunner.md)
@@ -723,6 +711,12 @@ This is the central API reference for the SmartClient framework.
 - [<isomorphic:XML>](kb_topics/xmlTag.md)
 - [XSS and CSRF Security](kb_topics/xssAndCSRFSecurity.md)
 - [zIndex](#kb-topic-zindex)
+
+---
+## Class: BaseWidget
+
+### Description
+Base class for [Canvas](classes/Canvas.md#class-canvas) and [DrawItem](classes/DrawItem.md#class-drawitem).
 
 ---
 ## Class: VLayout
@@ -1284,7 +1278,7 @@ Set form values.
 ### Description
 Values to be set on the form.
 
-Data values prefixed with "$" will be treated as a [TaskInputExpression](reference_2.md#type-taskinputexpression). Use [FormSetValuesTask.fixedValues](#attr-formsetvaluestaskfixedvalues) for any values that start with "$" but should be treated as a literal.
+Data values prefixed with "$" will be treated as a [taskInputExpression](kb_topics/taskInputExpression.md#kb-topic-task-input-expressions). Use [FormSetValuesTask.fixedValues](#attr-formsetvaluestaskfixedvalues) for any values that start with "$" but should be treated as a literal.
 
 **Flags**: IR
 
@@ -1292,7 +1286,7 @@ Data values prefixed with "$" will be treated as a [TaskInputExpression](referen
 ## Attr: FormSetValuesTask.fixedValues
 
 ### Description
-Values to be combined with the data from the [DSRequestTask.values](classes/DSRequestTask.md#attr-dsrequesttaskvalues) if specified, via simple copying of fields, with explicitly specified [DSRequestTask.values](classes/DSRequestTask.md#attr-dsrequesttaskvalues) overriding `fixedValues`.
+Values to be combined with the data from the [ServiceTask.values](classes/ServiceTask.md#attr-servicetaskvalues) if specified, via simple copying of fields, with explicitly specified [ServiceTask.values](classes/ServiceTask.md#attr-servicetaskvalues) overriding `fixedValues`.
 
 **Flags**: IR
 
@@ -1644,30 +1638,6 @@ A ZoneCanvas is a semi-transparent canvas that highlights a portion of a calenda
 By default, the canvas shows a bottom-aligned label containing the [zone name](classes/CalendarEvent.md#attr-calendareventname). Default styling is specified at the [calendar level](classes/Calendar.md#attr-calendarzonestylename) and can be overridden for [individual zones](classes/CalendarEvent.md#attr-calendareventstylename).
 
 ---
-## Class: AIDataQuestionItem
-
-*Inherits from:* [FormItem](classes/FormItem.md#class-formitem)
-
-### Description
-A form item for managing existing, as well as creating new, Answer Engine [DataQuestion](reference_2.md#object-dataquestion)s.
-
----
-## Attr: AIDataQuestionItem.answerEngineOperationProperties
-
-### Description
-Properties to apply to new [AnswerEngineOperation](classes/AnswerEngineOperation.md#class-answerengineoperation) instances created by this item. Note that [AnswerEngineOperation.dataQuestion](classes/AnswerEngineOperation.md#attr-answerengineoperationdataquestion), if specified, will be replaced.
-
-**Flags**: IR
-
----
-## Attr: AIDataQuestionItem.dataQuestionSettings
-
-### Description
-Settings to use for new [DataQuestion](reference_2.md#object-dataquestion) objects created directly or indirectly by this item.
-
-**Flags**: IR
-
----
 ## Class: ToolStripSeparator
 
 *Inherits from:* [Img](classes/Img.md#class-img)
@@ -1720,6 +1690,30 @@ An IndicatorCanvas is a non-interactive, semi-transparent canvas that highlights
 By default, the canvas shows no label but does show a hover.
 
 Default styling is specified at the [calendar level](classes/Calendar.md#attr-calendarindicatorstylename) and can be overridden for [individual indicators](classes/CalendarEvent.md#attr-calendareventstylename).
+
+---
+## Class: FormValidateValuesTask
+
+*Inherits from:* [ComponentTask](classes/ComponentTask.md#class-componenttask)
+
+### Description
+Validate a form and show errors to user.
+
+### See Also
+
+- [DynamicForm.validate](classes/DynamicForm.md#method-dynamicformvalidate)
+
+---
+## Attr: FormValidateValuesTask.passThruOutput
+
+### Description
+Does this processElement pass through output from the last executed task (i.e. transient state)?
+
+See [taskInputExpressions](kb_topics/taskInputExpression.md#kb-topic-task-input-expressions) for details on the transient state outputs.
+
+Note that this property does not affect the task at all but is an indicator to the user and to the workflow editor of the behavior of the task as coded (See [Process.passThruTaskOutput](classes/Process.md#method-processpassthrutaskoutput)).
+
+**Flags**: IR
 
 ---
 ## Class: AISortFieldBuilder
@@ -1784,30 +1778,6 @@ Message to display. To display a dynamic message see [ShowMessageTask.textFormul
 
 ### Description
 Message type.
-
-**Flags**: IR
-
----
-## Class: FormValidateValuesTask
-
-*Inherits from:* [ComponentTask](classes/ComponentTask.md#class-componenttask)
-
-### Description
-Validate a form and show errors to user.
-
-### See Also
-
-- [DynamicForm.validate](classes/DynamicForm.md#method-dynamicformvalidate)
-
----
-## Attr: FormValidateValuesTask.passThruOutput
-
-### Description
-Does this processElement pass through output from the last executed task (i.e. transient state)?
-
-See [taskInputExpressions](reference_2.md#type-taskinputexpression) for details on the transient state outputs.
-
-Note that this property does not affect the task at all but is an indicator to the user and to the workflow editor of the behavior of the task as coded (See [Process.passThruTaskOutput](classes/Process.md#method-processpassthrutaskoutput)).
 
 **Flags**: IR
 
@@ -2239,7 +2209,7 @@ Start editing a new record.
 ### Description
 Initial values for new edit record.
 
-Data values prefixed with "$" will be treated as a [TaskInputExpression](reference_2.md#type-taskinputexpression) excluding "$input" and "$inputRecord" references.
+Data values prefixed with "$" will be treated as a [taskInputExpression](kb_topics/taskInputExpression.md#kb-topic-task-input-expressions) excluding "$input" and "$inputRecord" references.
 
 **Flags**: IR
 
@@ -3523,30 +3493,6 @@ Show a currently hidden component.
 Editor with a minimalist appearance, tuned for editing large numbers of properties in a constrained space.
 
 ---
-## Class: DSRemoveTask
-
-*Inherits from:* [DSRequestTask](classes/DSRequestTask.md#class-dsrequesttask)
-
-### Description
-A [DSRequestTask](classes/DSRequestTask.md#class-dsrequesttask) configured to perform a remove.
-
----
-## Class: DSUpdateTask
-
-*Inherits from:* [DSRequestTask](classes/DSRequestTask.md#class-dsrequesttask)
-
-### Description
-A [DSRequestTask](classes/DSRequestTask.md#class-dsrequesttask) configured to perform a update.
-
----
-## Class: DSFetchTask
-
-*Inherits from:* [DSRequestTask](classes/DSRequestTask.md#class-dsrequesttask)
-
-### Description
-A [DSRequestTask](classes/DSRequestTask.md#class-dsrequesttask) configured to perform a fetch.
-
----
 ## Class: IconButton
 
 *Inherits from:* [RibbonButton](classes/RibbonButton.md#class-ribbonbutton)
@@ -3557,12 +3503,20 @@ A simple subclass of [RibbonButton](classes/RibbonButton.md#class-ribbonbutton).
 **Deprecated**
 
 ---
-## Class: DSAddTask
+## Class: DSRemoveTask
 
-*Inherits from:* [DSRequestTask](classes/DSRequestTask.md#class-dsrequesttask)
+*Inherits from:* [ServiceTask](classes/ServiceTask.md#class-servicetask)
 
 ### Description
-A [DSRequestTask](classes/DSRequestTask.md#class-dsrequesttask) configured to perform an add.
+A [ServiceTask](classes/ServiceTask.md#class-servicetask) configured to perform a remove.
+
+---
+## Class: DSUpdateTask
+
+*Inherits from:* [ServiceTask](classes/ServiceTask.md#class-servicetask)
+
+### Description
+A [ServiceTask](classes/ServiceTask.md#class-servicetask) configured to perform a update.
 
 ---
 ## Class: Auth
@@ -3573,12 +3527,28 @@ A [DSRequestTask](classes/DSRequestTask.md#class-dsrequesttask) configured to pe
 Synonym for the [Authentication](classes/Authentication.md#class-authentication) class
 
 ---
+## Class: DSFetchTask
+
+*Inherits from:* [ServiceTask](classes/ServiceTask.md#class-servicetask)
+
+### Description
+A [ServiceTask](classes/ServiceTask.md#class-servicetask) configured to perform a fetch.
+
+---
 ## Class: PasswordItem
 
 *Inherits from:* [TextItem](classes/TextItem.md#class-textitem)
 
 ### Description
 FormItem for password fields, where text input by the user should not be shown in readable text.
+
+---
+## Class: DSAddTask
+
+*Inherits from:* [ServiceTask](classes/ServiceTask.md#class-servicetask)
+
+### Description
+A [ServiceTask](classes/ServiceTask.md#class-servicetask) configured to perform an add.
 
 ---
 ## Class: VerticalTabBar
@@ -3637,12 +3607,6 @@ TextItem subclass for managing a DataPath
 Container for various helper methods used by our React wrapper classes.
 
 ---
-## Class: InstantUI
-
-### Description
-AI-backed utility for generating applications and arbitrary UI.
-
----
 ## KB Topic: ancestry
 
 ### Description
@@ -3656,7 +3620,7 @@ Parent/child relationships
 ## KB Topic: Answer Engine
 
 ### Description
-The SmartClient Answer Engine (AE) employs AI to navigate your data to answer any natural language question (a data question). After obtaining an answer, AI will then prepare a dashboard – grids and charts – to visually explain its answer.
+The SmartClient **_Answer Engine_** employs AI to navigate your data to answer any natural language question (a data question). After obtaining an answer, AI will then prepare a dashboard – grids and charts – to visually explain its answer.
 
 ### Related
 
@@ -3741,11 +3705,11 @@ Visual hints for the user that something can be done to this object
 - [Canvas.opacity](classes/Canvas.md#attr-canvasopacity)
 - [Canvas.contextMenu](classes/Canvas.md#attr-canvascontextmenu)
 - [Canvas.menuConstructor](classes/Canvas.md#attr-canvasmenuconstructor)
-- [Button.iconCursor](classes/Button.md#attr-buttoniconcursor)
-- [Button.disabledIconCursor](classes/Button.md#attr-buttondisablediconcursor)
+- [DrawItem.contextMenu](classes/DrawItem.md#attr-drawitemcontextmenu)
 - [FormItemIcon.cursor](classes/FormItemIcon.md#attr-formitemiconcursor)
 - [FormItemIcon.disabledCursor](classes/FormItemIcon.md#attr-formitemicondisabledcursor)
-- [DrawItem.contextMenu](classes/DrawItem.md#attr-drawitemcontextmenu)
+- [Button.iconCursor](classes/Button.md#attr-buttoniconcursor)
+- [Button.disabledIconCursor](classes/Button.md#attr-buttondisablediconcursor)
 
 ---
 ## KB Topic: Data Changes
@@ -3773,11 +3737,10 @@ Rendering an object on the page.
 - [Canvas.isDirty](classes/Canvas.md#method-canvasisdirty)
 - [Canvas.markForRedraw](classes/Canvas.md#method-canvasmarkforredraw)
 - [Canvas.redraw](classes/Canvas.md#method-canvasredraw)
-- [ListGrid.markForRedraw](classes/ListGrid_2.md#method-listgridmarkforredraw)
 - [FormItem.getFieldName](classes/FormItem.md#method-formitemgetfieldname)
 - [FormItem.getTitle](classes/FormItem.md#method-formitemgettitle)
 - [FormItem.isDrawn](classes/FormItem.md#method-formitemisdrawn)
-- [BaseWidget.autoDraw](classes/BaseWidget.md#attr-basewidgetautodraw)
+- [ListGrid.markForRedraw](classes/ListGrid_2.md#method-listgridmarkforredraw)
 - [Canvas.autoDraw](classes/Canvas.md#attr-canvasautodraw)
 - [Canvas.redrawOnResize](classes/Canvas.md#attr-canvasredrawonresize)
 
@@ -4131,10 +4094,10 @@ Manipulating the values stored in the form.
 
 ### Related
 
-- [DetailViewer.valueAlign](classes/DetailViewer.md#attr-detailviewervaluealign)
 - [FormItem.changeOnKeypress](classes/FormItem.md#attr-formitemchangeonkeypress)
 - [TextItem.changeOnKeypress](classes/TextItem.md#attr-textitemchangeonkeypress)
 - [TextAreaItem.changeOnKeypress](classes/TextAreaItem.md#attr-textareaitemchangeonkeypress)
+- [DetailViewer.valueAlign](classes/DetailViewer.md#attr-detailviewervaluealign)
 
 ---
 ## KB Topic: Window Header
@@ -4882,7 +4845,7 @@ The Velocity variable names of the "pieces" of SQL that SmartClient generates to
 | "$defaultAnsiJoinClause" | The [ansi join(s)](classes/DataSource.md#attr-datasourceuseansijoins) to join tables to select from, if enabled. |
 | "$defaultWhereClause" | The "where" condition, which will be derived from supplied criteria or a primary key value, depending on the type of operation |
 | "$defaultGroupClause" | For a fetch operation when using the [Server Summaries](kb_topics/serverSummaries.md#kb-topic-server-summaries) feature, "group by" part of aggregated query |
-| "$defaultAfterWhereClause" | For a fetch operation when using the [Server Summaries](kb_topics/serverSummaries.md#kb-topic-server-summaries) feature, "having" part of aggregated query (or outer "where" part if sub-select approach is used, see [OperationBinding.useHavingClause](classes/OperationBinding.md#attr-operationbindingusehavingclause) for more details) |
+| "$defaultGroupWhereClause" | For a fetch operation when using the [Server Summaries](kb_topics/serverSummaries.md#kb-topic-server-summaries) feature, "having" part of aggregated query (or outer "where" part if sub-select approach is used, see [OperationBinding.useHavingClause](classes/OperationBinding.md#attr-operationbindingusehavingclause) for more details) |
 | "$defaultValuesClause" | The column names to update and the update values, for an update or add operation |
 | "$defaultOrderClause" | The column names to sort by, for a fetch operation only |
 
@@ -6319,8 +6282,6 @@ You can extend the list of operators with [DataSource.addSearchOperator](classes
 | "or" | at least one subcriteria (criterion.criteria) is true |
 | "between" | shortcut for "greaterThan" + "lessThan" + "and". Specify criterion.start and criterion.end |
 | "betweenInclusive" | shortcut for "greaterOrEqual" + "lessOrEqual" + "and". Specify criterion.start and criterion.end |
-| "exists" | One or more related records exist (for [AdvancedCriteria subqueries](#object-advancedcriterionsubquery)). |
-| "notExists" | No related records exist (for [AdvancedCriteria subqueries](#object-advancedcriterionsubquery)). |
 
 ### Groups
 
@@ -7189,18 +7150,6 @@ Constants for the standard states for a StatefulCanvas.
 - state
 
 ---
-## Type: StatePath
-
-### Description
-A path expression indicating where a value in a nested Object should be extracted.
-
-A `StatePath` is a dot-delimited list of segments, where each segment is a property name. Any `segment` can end in an operator that provides additional details:
-
-*   `[]` – specifies an array index to extract
-
-This syntax is used in [Task.getInputRecord](classes/Task.md#method-taskgetinputrecord).
-
----
 ## Type: TableMode
 
 ### Description
@@ -7718,22 +7667,6 @@ Finally, note that it is possible to switch off the ability to use subqueries al
  
 ```
 
-#### `exists / notExists` operators
-The [`exists / notExists`](#type-operatorid) operators provide a concise way to filter records based on the existence (or absence) of related rows.
-
-When both main DataSource and suquery DataSource is backed by `SQLDataSource`, these operators are transformed into `EXISTS (...)` / `NOT EXISTS (...)` correlated subselects in the generated SQL. Non-SQL backends, as well as when [canEmbedSQL:false](classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubquerycanembedsql) is set for SQL backends, will execute subqueries as separate [DSRequests](reference_2.md#object-dsrequest) and apply their results manually.
-
-These operators must be used with a [fieldQuery](classes/Criterion.md#attr-criterionfieldquery):
-
-```
- // EXISTS: at least one related row matches the subquery
- { operator: "exists",
-   fieldQuery: { dataSource: "OrderLine", criteria: { /* ... */ } }
- }
- 
-```
-See full examples in the "Examples" section below.
-
 #### Examples
 Subqueries are quite hard to describe in narrative text, but the following examples demonstrate their use and should make things clearer
 
@@ -7765,7 +7698,7 @@ This example uses a `valueQuery` to derive the employeeNumber of a manager when 
                      dataSource: "Employee",
                      queryFK: "*none*",
                      criteria: { operator: "and", criteria: [
-                         {fieldName: "email", operator: "equals", value: "mpatterson@classicmodelcars.com"}
+                         {fieldName: "email", operator: "equals", value: 'mpatterson@classicmodelcars.com'}
                      ]
                  }
              }
@@ -7796,39 +7729,6 @@ This example uses both a `fieldQuery` and a `valueQuery` to select all US-based 
              }
          }
      ]
- });
- 
-```
-#### `exists` / `notExists` operators
-Show customers with any Orders in 2024 (exists).
-```
- Customer.fetchData({
-   _constructor: "AdvancedCriteria", operator: "and", criteria: [
-     { operator: "exists",
-       fieldQuery: {
-         dataSource: "Order",
-         criteria: { fieldName: "orderDate", operator: "iBetweenInclusive",
-                     start: new Date("2024-01-01"), end: new Date("2024-12-31") }
-       }
-     }
-   ]
- });
- 
-```
-Products not ordered last month (notExists).
-```
- Product.fetchData({
-   _constructor: "AdvancedCriteria", operator: "and", criteria: [
-     { operator: "notExists",
-       fieldQuery: {
-         dataSource: "OrderLine",
-         criteria: { operator: "and", criteria: [
-           { fieldName: "orderDate", operator: "iBetweenInclusive",
-             start: startOfLastMonth, end: endOfLastMonth }
-         ]}
-       }
-     }
-   ]
  });
  
 ```
@@ -8051,7 +7951,7 @@ For example, in JavaScript:
  
 ```
 
-When used within a Workflow [SetScreenDataTask](#class-setscreendatatask) or [AddScreenTask](classes/AddScreenTask.md#class-addscreentask), any applicable [TaskInputExpression](reference_2.md#type-taskinputexpression) can be used as a value.
+When used within a Workflow [SetScreenDataTask](#class-setscreendatatask) or [AddScreenTask](classes/AddScreenTask.md#class-addscreentask), any applicable [taskInputExpression](kb_topics/taskInputExpression.md#kb-topic-task-input-expressions) can be used as a value.
 
 To use a literal value that starts with one of the expressions described above, prefix the leading dollar sign ($) with a backslash (\\) (ex. "\\$ruleScope.goes.here") to prevent the value from being resolved as an expression.
 
@@ -8064,6 +7964,12 @@ Settings for a data question.
 ### Groups
 
 - answerEngine
+
+---
+## Object: DataQuestionStep
+
+### Description
+An object that contains information about a step in an Answer Engine operation.
 
 ---
 ## Object: DBCField
@@ -8476,18 +8382,6 @@ Various types of palettes ([ListPalette](#class-listpalette), [TreePalette](#cla
 Note that in a TreePalette, a PaletteNode is essentially a [TreeNode](reference_2.md#object-treenode) and can have properties expected for a TreeNode (eg, [showDropIcon](classes/TreeGrid.md#attr-treegridcustomicondropproperty)). Likewise a PaletteNode in a MenuPalette can have the properties of a [MenuItem](reference_2.md#object-menuitem), such as [MenuItem.enableIf](classes/MenuItem.md#method-menuitemenableif).
 
 ---
-## Object: PartialPromptConfig
-
-### Description
-Configuration for partial prompt generation specifying which fragments to omit.
-
-Used with [CoTProcess.getPartialPrompt](classes/CoTProcess.md#method-cotprocessgetpartialprompt) to generate prompts with selected fragments replaced by placeholders for debugging/logging purposes.
-
-### Groups
-
-- CoTPartialPrompt
-
----
 ## Object: PlaceholderDefaults
 
 ### Description
@@ -8759,12 +8653,6 @@ And in XML:
 ```
 
 ---
-## Object: TaskResultModifications
-
-### Description
-Result object for [Process.beforeTaskCommit](classes/Process.md#method-processbeforetaskcommit).
-
----
 ## Object: TileRecord
 
 ### Description
@@ -8783,12 +8671,6 @@ This class documents just those properties that are specific to TreeGridFields -
 - [ListGridField](reference_2.md#object-listgridfield)
 - [TreeGrid.fields](classes/TreeGrid.md#attr-treegridfields)
 - [ListGrid.setFields](classes/ListGrid_2.md#method-listgridsetfields)
-
----
-## Object: UISummary
-
-### Description
-Object summarizing a Canvas and its important nested Canvases for AI consumption. The object is hierarchical: each relevant child Canvas contributes its own UISummary at the appropriate location (children, members, or other properties containing child Canvases). This object is intended for instrumentation, analysis, or AI navigation purposes.
 
 ---
 ## Object: UserFormula

@@ -514,7 +514,7 @@ This method can be specified either as a function or a string that will be auto-
 
 ### Returns
 
-`[Boolean](#type-boolean)` — true to show the field, false to not show it.
+`[boolean](../reference.md#type-boolean)` — true to show the field, false to not show it.
 
 ---
 ## Method: DetailViewerField.formatCellValue

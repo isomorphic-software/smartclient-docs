@@ -1566,6 +1566,16 @@ When set to true, causes [Timelines](#attr-calendartimelineview) to highlight th
 **Flags**: IRW
 
 ---
+## Attr: Calendar.showEventDescriptions
+
+### Description
+When rendering the [canvas](#attr-calendareventcanvas) for an event, whether to show the [body area](EventCanvas.md#attr-eventcanvasshowbody), typically containing brief details of the event - [by default](#method-calendargeteventbodyhtml), [its description](#attr-calendardescriptionfield).
+
+The default is true - if set to false, the event's [header](EventCanvas.md#attr-eventcanvasshowheader) will fill the canvas.
+
+**Flags**: IR
+
+---
 ## Attr: Calendar.weekViewTitle
 
 ### Description
@@ -1574,16 +1584,6 @@ The title for the [week view](#attr-calendarweekview).
 ### Groups
 
 - i18nMessages
-
-**Flags**: IR
-
----
-## Attr: Calendar.showEventDescriptions
-
-### Description
-When rendering the [canvas](#attr-calendareventcanvas) for an event, whether to show the [body area](EventCanvas.md#attr-eventcanvasshowbody), typically containing brief details of the event - [by default](#method-calendargeteventbodyhtml), [its description](#attr-calendardescriptionfield).
-
-The default is true - if set to false, the event's [header](EventCanvas.md#attr-eventcanvasshowheader) will fill the canvas.
 
 **Flags**: IR
 
@@ -1840,6 +1840,14 @@ In [indicator lines](#attr-calendarindicators) are showing, this attribute affec
 **Flags**: IR
 
 ---
+## Attr: Calendar.backButtonIconSrc
+
+### Description
+The icon to show in the [month-button](#attr-calendarmonthbutton) on Handsets when the [month view](#attr-calendarmonthview) is the current visible view.
+
+**Flags**: IR
+
+---
 ## Attr: Calendar.showViewHovers
 
 ### Description
@@ -1848,14 +1856,6 @@ When set to true, the default value, causes the Calendar to show customizable ho
 See [showEventHovers](#attr-calendarshoweventhovers), [showZoneHovers](#attr-calendarshowzonehovers), [showHeaderHovers](#attr-calendarshowheaderhovers), [showCellHovers](#attr-calendarshowcellhovers), [showLaneFieldHovers](#attr-calendarshowlanefieldhovers), [showDragHovers](#attr-calendarshowdraghovers) for further configuration options.
 
 **Flags**: IRW
-
----
-## Attr: Calendar.backButtonIconSrc
-
-### Description
-The icon to show in the [month-button](#attr-calendarmonthbutton) on Handsets when the [month view](#attr-calendarmonthview) is the current visible view.
-
-**Flags**: IR
 
 ---
 ## Attr: Calendar.monthMoreEventsLinkTitle
@@ -2999,7 +2999,7 @@ Implement this method to intercept the automatic removal of data. You can return
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false to cancel the removal
+`[boolean](../reference.md#type-boolean)` — false to cancel the removal
 
 ### Groups
 
@@ -3131,7 +3131,7 @@ Called when an event is moved via dragging by a user. Return false to disallow t
 
 ### Returns
 
-`[Boolean](#type-boolean)` — return false to disallow the move.
+`[boolean](../reference.md#type-boolean)` — return false to disallow the move.
 
 ### Groups
 
@@ -3224,7 +3224,7 @@ Not called if the day falls outside the current month and [Calendar.showOtherDay
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false to cancel the default action
+`[boolean](../reference.md#type-boolean)` — false to cancel the default action
 
 ### Groups
 
@@ -3366,7 +3366,7 @@ Callback fired when the mouse is clicked in a background-cell, ie, one without a
 
 ### Returns
 
-`[Boolean](#type-boolean)` — return false to cancel the default behavior of creating a new event at the selected location and showing its editor.
+`[boolean](../reference.md#type-boolean)` — return false to cancel the default behavior of creating a new event at the selected location and showing its editor.
 
 ---
 ## Method: Calendar.setIndicators
@@ -3430,7 +3430,7 @@ Not called if the day falls outside the current month and [Calendar.showOtherDay
 
 ### Returns
 
-`[Boolean](#type-boolean)` — return false to cancel the action
+`[boolean](../reference.md#type-boolean)` — return false to cancel the action
 
 ### Groups
 
@@ -3821,7 +3821,7 @@ Callback fired when the mouse button is depressed over a background-cell, ie, on
 
 ### Returns
 
-`[Boolean](#type-boolean)` — return false to suppress default behavior of allowing sweep selection via dragging.
+`[boolean](../reference.md#type-boolean)` — return false to suppress default behavior of allowing sweep selection via dragging.
 
 ---
 ## Method: Calendar.indicatorClick
@@ -4113,7 +4113,7 @@ Notification method fired when the mouse button is released over a background-ce
 
 ### Returns
 
-`[Boolean](#type-boolean)` — return false to suppress default behavior of showing a dialog to add a new event with the passed dates.
+`[boolean](../reference.md#type-boolean)` — return false to suppress default behavior of showing a dialog to add a new event with the passed dates.
 
 ---
 ## Method: Calendar.next
@@ -4540,7 +4540,7 @@ To pick up such changes, we recommend that you call [setData(\[\])](#method-cale
 |------|------|----------|---------|-------------|
 | criteria | [Criteria](../reference_2.md#type-criteria) | true | — | Search criteria. If a [DynamicForm](DynamicForm.md#class-dynamicform) is passed in as this argument instead of a raw criteria object, will be derived by calling [DynamicForm.getValuesAsCriteria](DynamicForm.md#method-dynamicformgetvaluesascriteria) |
 | callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke when a fetch is complete. Fires only if server contact was required |
-| requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | additional properties to set on the DSRequest that will be issued |
+| requestProperties | [DSRequest](#type-dsrequest) | true | — | additional properties to set on the DSRequest that will be issued |
 
 ### Groups
 
@@ -4648,7 +4648,7 @@ Called when an event is resized with the mouse. The passed date value is the new
 
 ### Returns
 
-`[Boolean](#type-boolean)` — return false to disallow the resize
+`[boolean](../reference.md#type-boolean)` — return false to disallow the resize
 
 ### Groups
 
@@ -4913,7 +4913,7 @@ For a discussion of the various filtering and criteria-management APIs and when 
 |------|------|----------|---------|-------------|
 | criteria | [Criteria](../reference_2.md#type-criteria) | true | — | Search criteria. If a [DynamicForm](DynamicForm.md#class-dynamicform) is passed in as this argument instead of a raw criteria object, will be derived by calling [DynamicForm.getValuesAsCriteria](DynamicForm.md#method-dynamicformgetvaluesascriteria) |
 | callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke when a fetch is complete. Fires only if server contact was required; see [fetchData()](ListGrid_2.md#method-listgridfetchdata) for details |
-| requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | for databound components only - optional additional properties to set on the DSRequest that will be issued |
+| requestProperties | [DSRequest](#type-dsrequest) | true | — | for databound components only - optional additional properties to set on the DSRequest that will be issued |
 
 ### Groups
 

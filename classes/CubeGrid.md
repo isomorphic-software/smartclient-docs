@@ -52,7 +52,7 @@ Note that if "city" and "state" are represented as facets, they may look correct
 
 ### See Also
 
-- [Facet](../reference_2.md#object-facet)
+- [Facet](Facet.md#class-facet)
 - [FacetValue](../reference.md#object-facetvalue)
 
 ---
@@ -816,7 +816,7 @@ This property need not be set and will automatically be constructed during widge
 ### See Also
 
 - [CubeGrid.getFacet](#method-cubegridgetfacet)
-- [Facet](../reference_2.md#object-facet)
+- [Facet](Facet.md#class-facet)
 - [CubeGrid.getFacetValue](#method-cubegridgetfacetvalue)
 - [FacetValue](../reference.md#object-facetvalue)
 
@@ -1961,7 +1961,7 @@ Return whether the specified CubeGrid field is open, taking into account both [c
 
 Note that if you don't already have a [FacetValueMap](../reference.md#object-facetvaluemap) to the field in question, you can get one by calling [CubeGrid.getRowHeaderFacetValues](#method-cubegridgetrowheaderfacetvalues) or [CubeGrid.getColumnHeaderFacetValues](#method-cubegridgetcolumnheaderfacetvalues),
 
-You can also construct a [FacetValueMap](../reference.md#object-facetvaluemap) on your own by using the [Facet.id](Facet.md#attr-facetid)s from [CubeGrid.rowFacets](#attr-cubegridrowfacets) or [CubeGrid.columnFacets](#attr-cubegridcolumnfacets) together with the [FacetValue.id](FacetValue.md#attr-facetvalueid)s of the [Facet.values](Facet.md#attr-facetvalues) for the row or column that you want to query. Given a [Facet.id](Facet.md#attr-facetid), you can use [CubeGrid.getFacet](#method-cubegridgetfacet) to obtain the correponding [Facet](../reference_2.md#object-facet).
+You can also construct a [FacetValueMap](../reference.md#object-facetvaluemap) on your own by using the [Facet.id](Facet.md#attr-facetid)s from [CubeGrid.rowFacets](#attr-cubegridrowfacets) or [CubeGrid.columnFacets](#attr-cubegridcolumnfacets) together with the [FacetValue.id](FacetValue.md#attr-facetvalueid)s of the [Facet.values](Facet.md#attr-facetvalues) for the row or column that you want to query. Given a [Facet.id](Facet.md#attr-facetid), you can use [CubeGrid.getFacet](#method-cubegridgetfacet) to obtain the correponding [Facet](Facet.md#class-facet).
 
 ### Parameters
 
@@ -2567,7 +2567,7 @@ Get a facet definition by facetId. Constant time.
 
 ### See Also
 
-- [Facet](../reference_2.md#object-facet)
+- [Facet](Facet.md#class-facet)
 
 ---
 ## Method: CubeGrid.closeColumn

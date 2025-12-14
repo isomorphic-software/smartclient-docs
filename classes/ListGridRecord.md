@@ -17,7 +17,7 @@ When creating a component to use as an embedded component the component will mos
 
 When a record with an `embeddedComponent` is eliminated from view by filtering or because it is not currently rendered due to [incremental rendering](ListGrid_1.md#attr-listgridshowallrecords), the ListGrid may [Canvas.hide](Canvas.md#method-canvashide) or [Canvas.clear](Canvas.md#method-canvasclear) it.
 
-If the current dataset is completely replaced (by a call to [ListGrid.setData](ListGrid_2.md#method-listgridsetdata) or [ListGrid.setDataSource](ListGrid_2.md#method-listgridsetdatasource), for example), any embedded component is [deparented](Canvas.md#method-canvasdeparent) (which implies being [clear()ed](Canvas.md#method-canvasclear)).
+If the current dataset is completely replaced (by a call to [ListGrid.setData](ListGrid_2.md#method-listgridsetdata) or [ListGrid.setDataSource](ListGrid_1.md#method-listgridsetdatasource), for example), any embedded component is [deparented](Canvas.md#method-canvasdeparent) (which implies being [clear()ed](Canvas.md#method-canvasclear)).
 
 When a ListGrid is [destroyed](Canvas.md#method-canvasdestroy), it will destroy() all embedded components regardless of whether they are currently visible. Use a call to [ListGrid.setData](ListGrid_2.md#method-listgridsetdata) immediately before destroying the ListGrid to avoid this effect when unwanted.
 

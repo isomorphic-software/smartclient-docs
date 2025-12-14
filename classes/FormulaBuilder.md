@@ -11,7 +11,7 @@
 ### Description
 Shows an interface allowing a user to enter simple formulas by typing them into a text field.
 
-Available values for the formula are determined by the DataSource fields, and are given simple single-letter aliases (such as "A", "B", ...) similar to column names in Excel. The set of available values is shown in the [FormulaBuilder.fieldKey](#attr-formulabuilderfieldkey) as a simple mapping between the [field title](DataSourceField.md#attr-datasourcefieldtitle) and its short name.
+Available values for the formula are determined by the DataSource fields, and are given simple single-letter aliases (such as "A", "B", ...) similar to column names in Excel. The set of available values is shown in the [FormulaBuilder.fieldKey](#attr-formulabuilderfieldkey) as a simple mapping between the [field title](DataSourceField.md#attr-datasourcefieldtitle) and it's short name.
 
 If [FormulaBuilder.targetRuleScope](#attr-formulabuildertargetrulescope) is specified the formula will use full field path names instead of single-letter aliases and the resulting formula will not include the formulaVars property.
 
@@ -170,7 +170,7 @@ The Field object representing the field being created or edited.
 ## Attr: FormulaBuilder.testButton
 
 ### Description
-Button to Test the formula by generating its function and executing it
+Button to Test the formula by generating it's function and executing it
 
 ### Groups
 
@@ -182,7 +182,7 @@ Button to Test the formula by generating its function and executing it
 ## Attr: FormulaBuilder.titleFieldTitle
 
 ### Description
-The [TextItem.title](FormItem.md#attr-formitemtitle) of the [FormulaBuilder.titleField](#attr-formulabuildertitlefield).
+The text to display next to the "Title" field.
 
 ### Groups
 
@@ -209,18 +209,6 @@ The default output is:
 - i18nMessages
 
 **Flags**: IRWA
-
----
-## Attr: FormulaBuilder.anotherTestRequestedCancellationReason
-
-### Description
-Cancellation reason (see [CancellationController.cancellationReason](CancellationController.md#attr-cancellationcontrollercancellationreason)) used when another test is requested while the result for a previous test or save is still pending.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
 
 ---
 ## Attr: FormulaBuilder.currentComponentFieldPrompt
@@ -284,7 +272,7 @@ The default title for the "Cancel" button.
 ## Attr: FormulaBuilder.instructions
 
 ### Description
-Form displaying the instruction text (see [FormulaBuilder.instructionsTextStart](#attr-formulabuilderinstructionstextstart)) above the fieldKey grid.
+Label displaying the instruction text above the fieldKey grid.
 
 **Flags**: IR
 
@@ -315,10 +303,6 @@ Default value returns
 ### Groups
 
 - i18nMessages
-
-### See Also
-
-- [FormulaBuilder.ruleContextTitle](#attr-formulabuilderrulecontexttitle)
 
 **Flags**: IRWA
 
@@ -368,7 +352,7 @@ If not specified, the selected record in the component that launched the Formula
 ## Attr: FormulaBuilder.instructionsTextStart
 
 ### Description
-The text to display as a preamble to the instruction text that appears in the [instructions](#attr-formulabuilderinstructions).
+The text to display as a preamble to the instruction text that appears in the [instructions label](#attr-formulabuilderinstructions).
 
 This is a dynamic string - text within `${...}` are dynamic variables and will be evaluated as JS code when the message is displayed.
 
@@ -445,42 +429,6 @@ Set this to override the underlying set of available fields.
 ### Groups
 
 - formulaFields
-
-**Flags**: IRW
-
----
-## Attr: FormulaBuilder.ruleContextTitle
-
-### Description
-A string to display in the [FormulaBuilder.samplePrompt](#attr-formulabuildersampleprompt) as the `${title}` when the formula or summary is being evaluated against the values in the [FormulaBuilder.targetRuleScope](#attr-formulabuildertargetrulescope).
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
-
----
-## Attr: FormulaBuilder.userSavedCancellationReason
-
-### Description
-Cancellation reason (see [CancellationController.cancellationReason](CancellationController.md#attr-cancellationcontrollercancellationreason)) used when the user clicks the [FormulaBuilder.saveButton](#attr-formulabuildersavebutton), signaling that they are no longer interested in any pending result(s).
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
-
----
-## Attr: FormulaBuilder.testButtonHoverContents
-
-### Description
-Hover contents to display for the [FormulaBuilder.testButton](#attr-formulabuildertestbutton).
-
-### Groups
-
-- i18nMessages
 
 **Flags**: IRW
 
@@ -582,7 +530,7 @@ The default title for the "Save & Add Another" button.
 ## Attr: FormulaBuilder.saveAddAnotherButton
 
 ### Description
-Button to Save the formula, by generating its function, testing it and firing formulaBuilder.fireOnClose, and then start editing another, new one.
+Button to Save the formula, by generating it's function, testing it and firing formulaBuilder.fireOnClose, and then start editing another, new one.
 
 ### Groups
 
@@ -689,18 +637,6 @@ The default title for the "Key" column in [FormulaBuilder.fields](#attr-formulab
 **Flags**: IRWA
 
 ---
-## Attr: FormulaBuilder.testButtonHoverContents_cantTest
-
-### Description
-Hover contents to display for the [FormulaBuilder.testButton](#attr-formulabuildertestbutton) when this `FormulaBuilder` is unable to run a test.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
-
----
 ## Attr: FormulaBuilder.sourceFieldColumnTitle
 
 ### Description
@@ -721,16 +657,6 @@ The prefix to apply to the variable that is inserted in response to a record cli
 ### Groups
 
 - formulaFields
-
-**Flags**: IR
-
----
-## Attr: FormulaBuilder.useSingleLetterKey
-
-### Description
-Whether to use the legacy approach in the builder of assigning each field used in the formula or summary a key from the sequence A, B, C, ... Z, AA, AB, .... This approach will almost guarantee no collisions with registered math functions, but requires that the [formula key map](UserFormula.md#attr-userformulaformulavars) or [summary key map](UserSummary.md#attr-usersummarysummaryvars) be populated with a key for every field used.
-
-If unset, field names can be used directly in the formula or summary and aren't required to be in the key map. The builder will add key map bindings only for collisions between field names and math functions (or reserved words like "record"). For collisions, field name keys will be created as `<fieldName>`Field\[`<k>`\]. That is, the field name will be suffixed with "Field", and then an integer optionally added if there's still a collision. So, for example, a field named "foo" might be bound to the key "fooField" or "fooField5".
 
 **Flags**: IR
 
@@ -782,7 +708,7 @@ Label used for displaying messages related to the validity of the current formul
 ## Attr: FormulaBuilder.saveButton
 
 ### Description
-Button to Save the formula, by generating its function, testing it and firing formulaBuilder.fireOnClose
+Button to Save the formula, by generating it's function, testing it and firing formulaBuilder.fireOnClose
 
 ### Groups
 
@@ -838,7 +764,7 @@ Call to finish working, test the formula and call [fireOnClose()](#method-formul
 ## Method: FormulaBuilder.testFunction
 
 ### Description
-Test the formula by generating its function and trying to run it.
+Test the formula by generating it's function and trying to run it.
 
 ### Returns
 

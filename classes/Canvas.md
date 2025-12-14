@@ -6,7 +6,7 @@
 
 ## Class: Canvas
 
-*Inherits from:* [BaseWidget](BaseWidget.md#class-basewidget)
+*Inherits from:* [BaseWidget](../reference.md#class-basewidget)
 
 ### Description
 Base class for all SmartClient visual components (except [FormItems](FormItem.md#class-formitem)).
@@ -78,7 +78,7 @@ A declared value of the enum type [Overflow](../reference.md#type-overflow).
 ## ClassAttr: Canvas.ABSOLUTE
 
 ### Description
-A declared value of the enum type [Positioning](../reference_2.md#type-positioning).
+A declared value of the enum type [Positioning](../reference.md#type-positioning).
 
 **Flags**: R
 
@@ -100,7 +100,7 @@ See [IEFilters](../kb_topics/IEFilters.md#kb-topic-internet-explorer-filter-effe
 ## ClassAttr: Canvas.RELATIVE
 
 ### Description
-A declared value of the enum type [Positioning](../reference_2.md#type-positioning).
+A declared value of the enum type [Positioning](../reference.md#type-positioning).
 
 **Flags**: R
 
@@ -162,7 +162,7 @@ A declared value of the enum type s [Overflow](../reference.md#type-overflow) an
 ## ClassAttr: Canvas.LEFT
 
 ### Description
-A declared value of the enum type s [Side](../reference.md#type-side), [Alignment](../reference_2.md#type-alignment) and [Direction](../reference_2.md#type-direction).
+A declared value of the enum type s [Side](../reference.md#type-side), [Alignment](../reference.md#type-alignment) and [Direction](../reference_2.md#type-direction).
 
 **Flags**: R
 
@@ -298,7 +298,7 @@ A declared value of the enum type [Cursor](../reference.md#type-cursor).
 ## ClassAttr: Canvas.RIGHT
 
 ### Description
-A declared value of the enum type s [Side](../reference.md#type-side), [Alignment](../reference_2.md#type-alignment) and [Direction](../reference_2.md#type-direction).
+A declared value of the enum type s [Side](../reference.md#type-side), [Alignment](../reference.md#type-alignment) and [Direction](../reference_2.md#type-direction).
 
 **Flags**: R
 
@@ -306,7 +306,7 @@ A declared value of the enum type s [Side](../reference.md#type-side), [Alignmen
 ## ClassAttr: Canvas.CENTER
 
 ### Description
-A declared value of the enum type s [ImageStyle](../reference.md#type-imagestyle), [VerticalAlignment](../reference.md#type-verticalalignment) and [Alignment](../reference_2.md#type-alignment).
+A declared value of the enum type s [ImageStyle](../reference.md#type-imagestyle), [VerticalAlignment](../reference.md#type-verticalalignment) and [Alignment](../reference.md#type-alignment).
 
 **Flags**: R
 
@@ -1219,7 +1219,7 @@ Specifies the cursor image to display when the mouse pointer is over this widget
 ## Attr: Canvas.parentCanvas
 
 ### Description
-This Canvas's immediate parent, if any. May be specified as a Canvas instance or the String ID of a Canvas.  
+This Canvas's immediate parent, if any.  
 Can be initialized, but any subsequent manipulation should be via [addChild()](#method-canvasaddchild) and [removeChild()](#method-canvasremovechild) calls on the parent. The parent Canvas should be fetched using [getParentCanvas()](#method-canvasgetparentcanvas).
 
 See [containment](../kb_topics/containment.md#kb-topic-component-containment-and-hierarchy) for an overview of parent/child relationships.
@@ -1253,16 +1253,6 @@ Default time for performing an animated hide. If unset, `this.animateTime` will 
 - animation
 
 **Flags**: IRWA
-
----
-## Attr: Canvas.pendingMarkerStyle
-
-### Description
-CSS class used to apply additional styles to this canvas when [Canvas.showPendingMarker](#method-canvasshowpendingmarker) is called, or when [Canvas.pendingMarkerVisible](#attr-canvaspendingmarkervisible) has been set.
-
-The default `pendingMarkerStyle`, _pendingMarker_, renders a small triangle in the top-left of the Canvas. You can modify this class or provide a custom one to achieve a different display.
-
-**Flags**: IRW
 
 ---
 ## Attr: Canvas.menuConstructor
@@ -1354,24 +1344,6 @@ Sets the style for the grouping frame around the canvas. Only necessary when sho
 - appearance
 
 **Flags**: IR
-
----
-## Attr: Canvas.definingPropertyNameOptions
-
-### Description
-If no explicit [Canvas.definingProperty](#attr-canvasdefiningproperty) was specified for this component, this array denotes a list of options to use as a [defining property](#method-canvasgetdefiningpropertyname) when generating and resolving [AutoTest locators with search segments](../reference_2.md#type-autotestlocator). The first attribute in this array that is non-null for this component will be used as the defining property for locator search segments.
-
-The default set of options are as follows:
-
-```
- [
-  "locatorName",
-  "dataSource"
- ]
- 
-```
-
-**Flags**: IRWA
 
 ---
 ## Attr: Canvas.redrawOnResize
@@ -1702,15 +1674,9 @@ The class that will be used to create custom scrollbars for this component. Set 
 
 When [spriting is enabled](../kb_topics/skinning.md#kb-topic-skinning--theming) and supported by the skin, the default `scrollbarConstructor` is changed to a different scrollbar class which handles scrollbar spriting. Spriting of the scrollbars of an individual component can therefore be disabled by creating the component with `scrollbarConstructor` set to the "Scrollbar" class. "Scrollbar" is a basic scrollbar class that does not employ spriting.
 
-**Note:** This setting may be ignored if [Canvas.nativeAutoHideScrollbars](#attr-canvasnativeautohidescrollbars) is enabled - see that setting for details.
-
 ### Groups
 
 - scrolling
-
-### See Also
-
-- [Canvas.nativeAutoHideScrollbars](#attr-canvasnativeautohidescrollbars)
 
 **Flags**: IA
 
@@ -1899,11 +1865,11 @@ An optional map of name:value parameters that will be available within the scope
  });
  
 ```
-The above will create a canvas with contents `hello Bob`. You can add, remove, and change values in the dynamicContentsVars object literal, just call `markForRedraw()` on the canvas to have the dynamic contents template re-evaluated.
+The above will create a canvas with contents `hello Bob`. You can add, remove, and change values in the dynamicContentsVars object literal, just call `markForRedraw()` on the canvas to have the dynamicContents template re-evaluated.
 
 Note that `this` is always available inside a dynamic contents string and points to the canvas instance containing the dynamic contents.
 
-Used only if [Canvas.dynamicContents](#attr-canvasdynamiccontents) is set to `true`.
+Used only if [Canvas.dynamicContents](#attr-canvasdynamiccontents) : true has been set.
 
 ### See Also
 
@@ -1927,8 +1893,7 @@ ARIA role of this component. Usually does not need to be manually set - see [acc
 ## Attr: Canvas.dynamicContents
 
 ### Description
-Dynamic contents allows the contents string to be treated as a simple but powerful template. When this attribute is set to `true`, JavaScript expressions may be embedded within the contents string, using the format:  
-`${_[JavaScript to evaluate]_}`.
+Dynamic contents allows the contents string to be treated as a simple but powerful template. When this attribute is set to true, JavaScript expressions may be embedded within the contents string, using the format: `${_[JavaScript to evaluate]_}`.
 
 For example, to include the current date in a templated message, `canvas.contents` could be set to:  
 `"Today's date is `<b>`${new Date().toUSShortDate()}`</b>`"`
@@ -1941,7 +1906,7 @@ Notes:
 
 *   Calling markForRedraw() on the canvas will evaluate any embedded expressions.
 *   Multiple such expressions may be embedded within the contents string for a component.
-*   If an error occurs during evaluation, a warning is logged to the [Developer Console](../kb_topics/debugging.md#kb-topic-debugging) and an empty string will be substituted.
+*   If an error occurs during evaluation, a warning is logged to the [Developer Console](../kb_topics/debugging.md#kb-topic-debugging) and the error string will be embedded in place of the expected value in the Canvas.
 
 ### Groups
 
@@ -2165,8 +2130,6 @@ The `showCustomScrollbars` setting is typically overridden in load\_skin.js in o
 
 On [touch devices](Browser.md#classattr-browseristouch), custom scrollbars are disabled in favor of enabling native touch scrolling if available. However, custom scrollbars _and_ native touch scrolling can be enabled for the component by setting [Canvas.alwaysShowScrollbars](#attr-canvasalwaysshowscrollbars) to `true`.
 
-**Note:** This setting may be ignored if [Canvas.nativeAutoHideScrollbars](#attr-canvasnativeautohidescrollbars) is enabled - see that setting for details.
-
 ### Groups
 
 - scrolling
@@ -2174,7 +2137,6 @@ On [touch devices](Browser.md#classattr-browseristouch), custom scrollbars are d
 ### See Also
 
 - [Canvas.receiveScrollbarEvents](#attr-canvasreceivescrollbarevents)
-- [Canvas.nativeAutoHideScrollbars](#attr-canvasnativeautohidescrollbars)
 
 **Flags**: IRA
 
@@ -2217,20 +2179,6 @@ This property is defaulted to true in the [Canvas](#class-canvas) prototype for 
 ### See Also
 
 - [browserZoom](../kb_topics/browserZoom.md#kb-topic-native-browser-zoom-support)
-
-**Flags**: IRWA
-
----
-## Attr: Canvas.showFocusOutline
-
-### Description
-For focusable widgets, should the native dotted focus outline be shown, where supported?
-
-This controls whether the browser's default focus outline (typically a dotted border) is displayed when the widget has keyboard focus. Set to false to suppress this outline, for example when custom focus styling is applied via [canvas.showFocused](#canvasshowfocused).
-
-### Groups
-
-- focus
 
 **Flags**: IRWA
 
@@ -2600,8 +2548,6 @@ Array of all Canvii that are immediate children of this Canvas.
 
 Use [Canvas.addChild](#method-canvasaddchild) and [Canvas.removeChild](#method-canvasremovechild) to add and remove children after a Canvas has been created/drawn.
 
-As an alternative to providing Canvas instances, the `children` array may also contain Strings. A String will be assumed to be a global ID, and a Canvas with that ID will be used as the child.
-
 See [containment](../kb_topics/containment.md#kb-topic-component-containment-and-hierarchy) for an overview of parent/child relationships.
 
 ### Groups
@@ -2834,14 +2780,6 @@ Depending on the `pointerSettings.snapTo` and the [pointerSettings.targetSnapTo]
 **Flags**: IR
 
 ---
-## Attr: Canvas.workflows
-
-### Description
-List of screen-global [workflows](Process.md#class-process) that can be shared by event handler workflows using a [StartProcessTask](StartProcessTask.md#class-startprocesstask). Each workflow must be assigned an [ID](ProcessElement.md#attr-processelementid) for lookup.
-
-**Flags**: IR
-
----
 ## Attr: Canvas.childrenSnapEdgeAlign
 
 ### Description
@@ -2883,16 +2821,9 @@ The CSS class to apply when printing this widget. If unset, falls back to the [s
 ## Attr: Canvas.cursor
 
 ### Description
-Specifies the [css cursor image](https://developer.mozilla.org/en-US/docs/Web/CSS/cursor) to display when the mouse pointer is over this component. See [Cursor](../reference.md#type-cursor) for valid values.
+Specifies the cursor image to display when the mouse pointer is over this widget. It corresponds to the CSS cursor attribute. See Cursor type for different cursors.
 
-Note that the cursor may also be controlled by the following attributes in various cases:
-
-*   [Canvas.disabledCursor](#attr-canvasdisabledcursor)
-*   [Canvas.noDropCursor](#attr-canvasnodropcursor)
-*   [Canvas.dragRepositionCursor](#attr-canvasdragrepositioncursor)
-*   [Canvas.edgeCursorMap](#attr-canvasedgecursormap)
-
-If no cursor is explicitly specified for a component, the cursor will be derived from the component's [ancestors](#method-canvasgetparentcanvas). If `cursor` is not explicitly set in the ancestor chain, ["default"](../reference.md#type-cursor) will be used.
+See also [Canvas.disabledCursor](#attr-canvasdisabledcursor) and [Canvas.noDropCursor](#attr-canvasnodropcursor).
 
 ### Groups
 
@@ -3440,24 +3371,17 @@ In some platform/browser configurations, scrollable regions do not show visible 
 
 If `nativeAutoHideScrollbars` is set to true, we detect platforms that show scrollbars dynamically on user interaction and for components with [Canvas.showCustomScrollbars](#attr-canvasshowcustomscrollbars) we ignore the specified [Canvas.scrollbarConstructor](#attr-canvasscrollbarconstructor), and instead create system-managed native scrollbars via the special [NativeScrollbar](../reference.md#class-nativescrollbar) class, and set [Canvas.floatingScrollbars](#attr-canvasfloatingscrollbars) to true.
 
-This means that on platforms with auto-hiding scrollbars (such as macOS and Windows 11 Firefox), both [Canvas.scrollbarConstructor](#attr-canvasscrollbarconstructor) and [Canvas.showCustomScrollbars](#attr-canvasshowcustomscrollbars) will be ignored in favor of using [NativeScrollbar](../reference.md#class-nativescrollbar). To force use of a specific scrollbar constructor on all platforms, set `nativeAutoHideScrollbars: false`.
-
 Not applicable to [touch devices](Browser.md#classattr-browseristouch)
 
 Has no impact if [Canvas.alwaysShowScrollbars](#attr-canvasalwaysshowscrollbars) is true.
 
-If [Canvas.showCustomScrollbars](#attr-canvasshowcustomscrollbars) is false, this setting will have no effect (we would be showing custom scrollbars in any case)  
+If [Canvas.showCustomScrollbars](#attr-canvasshowcustomscrollbars) is false this setting will have no effect (we would be showing custom scrollbars in any case)  
 
 Also does not apply to [touch scrolling interfaces](#attr-canvasusetouchscrolling) (where scrollbars are always hidden unless [Canvas.alwaysShowScrollbars](#attr-canvasalwaysshowscrollbars) is true).
 
 ### Groups
 
 - scrolling
-
-### See Also
-
-- [Canvas.scrollbarConstructor](#attr-canvasscrollbarconstructor)
-- [Canvas.showCustomScrollbars](#attr-canvasshowcustomscrollbars)
 
 **Flags**: IRA
 
@@ -3785,14 +3709,6 @@ Automatically generated IDs will be unique as long as the canvases they refer to
 **Flags**: IR
 
 ---
-## Attr: Canvas.definingProperty
-
-### Description
-This attribute denotes the name of a property to use as a [Canvas.getDefiningPropertyName](#method-canvasgetdefiningpropertyname) for this property when generating and resolving [AutoTest locators with search segments](../reference_2.md#type-autotestlocator).
-
-**Flags**: IRWA
-
----
 ## Attr: Canvas.visibility
 
 ### Description
@@ -3847,14 +3763,6 @@ If [Canvas.showCustomScrollbars](#attr-canvasshowcustomscrollbars) is true, shou
 Floating scrollbars are typically only appropriate for scrollbars that are hidden by default and get shown as the user actively scrolls the widget handle, such as in the [Canvas.nativeAutoHideScrollbars](#attr-canvasnativeautohidescrollbars) case. If floating scrollbars are permanently visible over the component handle, they may block some of the widget's content.
 
 **Flags**: IRA
-
----
-## Attr: Canvas.pendingMarkerVisible
-
-### Description
-This attribute indicates whether the [pending marker class](#attr-canvaspendingmarkerstyle) should be appended to the list of CSS classes applied to this canvas. By default, this extra class overlays a small shape in the corner of this canvas.
-
-**Flags**: IRW
 
 ---
 ## Attr: Canvas.extraSpace
@@ -3962,7 +3870,7 @@ NOTE: this setting directly sets the CSS property `background-repeat` but does n
 
 - appearance
 
-**Flags**: IRW
+**Flags**: IR
 
 ---
 ## Attr: Canvas.masterElement
@@ -4022,7 +3930,7 @@ If `this.showHover` is true, this property can be used to customize the alignmen
 ## Attr: Canvas.parentElement
 
 ### Description
-This Canvas's immediate parent, if any. May be specified as a Canvas instance or the String ID of a Canvas.  
+This Canvas's immediate parent, if any.  
 Can be initialized, but any subsequent manipulation should be via [addChild()](#method-canvasaddchild) and [removeChild()](#method-canvasremovechild) calls on the parent.
 
 ### Groups
@@ -4132,28 +4040,12 @@ The component designated as the `ruleScope` manages a nested data structure call
 
 By default, the rule context contains data as follows:
 
-*   any `DataBoundComponent` or ValuesManager that has a DataSource contributes the values of the selected record or record being edited under the ID of the DataSource. For any collision an editable display (such as a form or editable grid) wins over a static display (such as a non-editable grid with a selection.) Hidden or cleared components have lowest priority even if editable. For two editable components the first becomes the contributor.
-*   any ListGrid or other component that manages a selection and has been assigned an explicit [Canvas.ID](#attr-canvasid) will contribute the values of the selected record under ``<componentId>`.selectedRecord`, the values of the grid summary record under ``<componentId>`.summaryRecord`, and also contributes 3 flags for checking for selection: `anySelected`, `multiSelected`, `numSelected`. The selected record can also be identified by row number: ``<componentId>`.selectedRowNum` which also applies to the edit row since editing implies selection by default.
+*   any `DataBoundComponent` that has a DataSource contributes the values of the selected record or record being edited under the ID of the DataSource. For any collision an editable display (such as a form or editable grid) wins over a static display (such as a non-editable grid with a selection.) Hidden or cleared components have lowest priority even if editable. For two editable components the first becomes the contributor.
+*   any ListGrid or other component that manages a selection and has been assigned an explicit [Canvas.ID](#attr-canvasid) will contribute the values of the selected record under ``<componentId>`.selectedRecord`, the values of the grid summary record under ``<componentId>`.summaryRecord`, and also contributes 3 flags for checking for selection: `anySelected`, `multiSelected`, `numSelected`.
 *   any DynamicForm or other component that edits values and has been assigned an explicit [Canvas.ID](#attr-canvasid) contributes its current values under ``<componentId>`.values`, and contributes a flag `hasChanges`.
 *   any DynamicForm or ListGrid that has been assigned an explicit [Canvas.ID](#attr-canvasid) contributes a value ``<componentId>`.focusField`. When present the value indicates the component has focus along with the name of the field that has focus. Its absense indicates the component does not have focus at all.
 *   any ListGrid that has been assigned an explicit [Canvas.ID](#attr-canvasid) contributes a flag `isGrouped` under ``<componentId>``.
 *   any DataSource included in a [DataContext](../reference.md#object-datacontext) or [Canvas.testDataContext](#attr-canvastestdatacontext) that is being used for this ruleScope contributes the values into the `dataContext` section of the ruleContext (ex. `dataContext.Customer`) so the values do not conflict with normal DataSource contributions. Note that the `dataContext` is immutable so only the first contribution is actually saved.
-
-A [ValuesManager](ValuesManager.md#class-valuesmanager) contributes the DataSource-prefixed portion of ruleContext prior to the member forms. See additional ValuesManager information below.
-
-In addition to data contributed by DataBoundComponent, the ruleScope also contains entries contributed by the Authentication class, such as the authenticated userId and roles - see [Authentication](Authentication.md#class-authentication) for details. Characteristics of the current device is also included as:
-
-```
- {
-  device : {
-     isPhone : false,
-     isTablet : false,
-     isDesktop : true,
-     isLandscape : true
-  }
- }
- 
-```
 
 For example, given a screen where:
 
@@ -4186,31 +4078,11 @@ The default rule context available from [Canvas.getRuleContext](#method-canvasge
   itemGrid.anySelected : true,
   itemGrid.multiSelected : false,
   itemGrid.numSelected : 1,
-  itemGrid.isGrouped : false,
-  device : {
-     isPhone : false,
-     isTablet : false,
-     isDesktop : true,
-     isLandscape : true
-  },
-  auth : {
-     currentUser : {
-        userId: "lisa",
-        firstName: "Lisa",
-        lastName: "Admin",
-        roles: "admin",
-        ..other properties..
-     },
-     roles : ['admin'],
-     isSuperUser : false
-  }
+  itemGrid.isGrouped : false
  }
  
 ```
 In addition, an application can put custom data into the ruleScope via [Canvas.provideRuleContext](#method-canvasproviderulecontext).
-
-#### ValuesManager and RuleContext
-[\*WhenRules](../kb_topics/ruleCriteria.md#kb-topic-dynamic-rules) in member forms of a ValuesManager using short-form field references (i.e. no prefix) apply to the particular member form. To reference field values outside of the form use the dataSource-prefixed path (e.g. Customer.email).
 
 ## Troubleshooting RuleScope issues
 
@@ -4611,16 +4483,6 @@ Default for `snapEdge` is the **opposite** edge or corner from `snapTo`. For exa
 - snapPositioning
 
 ---
-## ClassMethod: Canvas.stopDebuggingOverflow
-
-### Description
-Stop tracking and reporting excessive overflow.
-
-### See Also
-
-- [Canvas.startDebuggingOverflow](#classmethod-canvasstartdebuggingoverflow)
-
----
 ## ClassMethod: Canvas.showPrintPreview
 
 ### Description
@@ -4639,25 +4501,6 @@ Generate and show a [PrintWindow](../reference.md#class-printwindow) containing 
 ### Groups
 
 - printing
-
----
-## ClassMethod: Canvas.setNativeAutoHideScrollbars
-
-### Description
-In some platform/browser configurations, scrollable regions do not show visible scrollbars until the user attempts to interact with the region. The interaction to show the scrollbar varies by browser/OS but may include starting a trackpad scroll or simply rolling over the scrollable element.
-
-This method changes the value of [Canvas.nativeAutoHideScrollbars](#attr-canvasnativeautohidescrollbars).
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| autoHideNativeScrollbars | [boolean](../reference.md#type-boolean) | false | — | whether the native scrollbar should auto-hide by default. |
-
-### See Also
-
-- [Canvas.scrollbarConstructor](#attr-canvasscrollbarconstructor)
-- [Canvas.showCustomScrollbars](#attr-canvasshowcustomscrollbars)
 
 ---
 ## ClassMethod: Canvas.getPrintPreview
@@ -4722,26 +4565,6 @@ Changes the system-wide [Canvas.allowExternalFilters](#classattr-canvasallowexte
 ### Groups
 
 - IEFilters
-
----
-## ClassMethod: Canvas.getTopLevelComponents
-
-### Description
-Returns an array of all top-level [Canvases](#class-canvas) that are currently drawn and visible, ordered by zIndex (highest zIndex first). This method is useful for error reporting and debugging, as it provides a snapshot of the visible UI state at any given moment.
-
-A "top-level" component is one that has no parent canvas and is drawn and visible. This method filters the list to include only components that are actually visible to the user, excluding components that are completely occluded by other components with higher zIndex values.
-
-For example, if there is a modal [Window](Window.md#class-window) on top of a full-screen [NavPanel](NavPanel.md#class-navpanel), both would be returned (modal Window first due to higher zIndex). However, if there is another Window that is completely hidden behind the NavPanel, it would be excluded from the results.
-
-This method is particularly useful for capturing UI state as part of error reporting. See [prodErrorReport](../kb_topics/prodErrorReport.md#kb-topic-production-error-reporting) for more information on comprehensive error reporting.
-
-### Returns
-
-`[Array of Canvas](#type-array-of-canvas)` — Array of top-level canvases, sorted by zIndex (highest first)
-
-### Groups
-
-- prodErrorReport
 
 ---
 ## ClassMethod: Canvas.resizePadding
@@ -4812,22 +4635,6 @@ Resizes fonts as if calling [Canvas.resizeFonts](#classmethod-canvasresizefonts)
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | targetDelta | [int](../reference.md#type-int) | false | — | the final size, expressed as a differential from the default |
-
----
-## ClassMethod: Canvas.startDebuggingOverflow
-
-### Description
-Start to track and report excessive overflow per the supplied settings.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| settings | [DebugOverflowSettings](#type-debugoverflowsettings) | false | — | — |
-
-### See Also
-
-- [Canvas.stopDebuggingOverflow](#classmethod-canvasstopdebuggingoverflow)
 
 ---
 ## ClassMethod: Canvas.resizeFonts
@@ -5023,24 +4830,11 @@ This method changes the default value of [Canvas.showCustomScrollbars](#attr-can
 |------|------|----------|---------|-------------|
 | showCustomScrollbars | [boolean](../reference.md#type-boolean) | false | — | whether to show custom (SmartClient-based) scrollbars rather than css-scrollbars by default. |
 
-### See Also
-
-- [Canvas.scrollbarConstructor](#attr-canvasscrollbarconstructor)
-- [Canvas.nativeAutoHideScrollbars](#attr-canvasnativeautohidescrollbars)
-
 ---
 ## ClassMethod: Canvas.getById
 
 ### Description
-Retrieve a Canvas by its global [ID](#attr-canvasid).
-
-This method will only return instances of the class on which the static method was invoked.
-
-For example, if an application had a Canvas instance with ID set to `"someCanvas"`, calling `isc.Canvas.getById("someCanvas");` would return this instance, while `isc.DynamicForm.getById("someCanvas");` would not.
-
-If the application instead had a DynamicForm instance with ID set to `"someCanvas"`, either `isc.Canvas.getById("someCanvas");` or `isc.DynamicForm.getById("someCanvas");` would return a reference to it.
-
-This can be especially useful for developers using SmartClient's [TypeScript support](../kb_topics/typeScriptSupport.md#kb-topic-typescript-support) as it creates a type-aware reference to a component from its global ID from any scope.
+Retrieve a Canvas by it's global [ID](#attr-canvasid).
 
 ### Parameters
 
@@ -5097,7 +4891,7 @@ The policy parameter allows icons to be grouped together into sets so particular
 
 A policy can be any string. To modify the sizes of attributes registered under some policy, that same policy string should be passed to the [Canvas.resizeIcons](#classmethod-canvasresizeicons) method.
 
-The attributes parameter consists of a JavaScript object where each key specifies the name of the class on which the attributes exist, with its value set to an array, indicating the attribute(s) to register within that class.
+The attributes parameter consists of a JavaScript object where each key specifies the name of the class on which the attributes, with its value set to an array, indicating the attribute(s) to register within that class.
 
 Icon sizing attributes can be specified individually or in pairs. When a single attribute passed in, a call to [Canvas.resizeIcons](#classmethod-canvasresizeicons) will modify that attribute by the `delta` parameter. If a pair of attributes is passed in, this is assumed to be a _height,width_ pair. When [Canvas.resizeIcons](#classmethod-canvasresizeicons) is called in this case, both attributes will be modified such that they maintain the same scale. In other words, the first registered attribute (typically the height) will be adjusted by the specified `delta` (a simple numeric adjustment). The second attribute will be adjusted by a numeric delta calculated to have the same ratio to the original width as the provided delta had to the original height. This allows icons to be resized without becoming distorted.
 
@@ -5217,7 +5011,7 @@ Executed every time the mouse moves while drag-resizing. If this method does not
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false to suppress auto-resize of the [Canvas.dragTarget](#attr-canvasdragtarget) or outline.
+`[boolean](../reference.md#type-boolean)` — false to suppress auto-resize of the [Canvas.dragTarget](#attr-canvasdragtarget) or outline.
 
 ### Groups
 
@@ -5245,7 +5039,7 @@ Note that [Canvas.animateResizeLayoutMode](#attr-canvasanimateresizelayoutmode) 
 |------|------|----------|---------|-------------|
 | width | [Integer](../reference_2.md#type-integer) | false | — | new width (or null for unchanged) |
 | height | [Integer](../reference_2.md#type-integer) | false | — | new height (or null for unchanged) |
-| callback | [AnimationCallback](../reference_2.md#type-animationcallback) | true | — | When the resize completes this callback will be fired. Single 'earlyFinish' parameter will be passed if the animation was cut short, for example by a call to the non-animated APIs [Canvas.resizeTo](#method-canvasresizeto) or [Canvas.resizeBy](#method-canvasresizeby). |
+| callback | [AnimationCallback](#type-animationcallback) | true | — | When the resize completes this callback will be fired. Single 'earlyFinish' parameter will be passed if the animation was cut short, for example by a call to the non-animated APIs [Canvas.resizeTo](#method-canvasresizeto) or [Canvas.resizeBy](#method-canvasresizeby). |
 | duration | [Integer](../reference_2.md#type-integer) | true | — | Duration in ms of the animated resize |
 | acceleration | [AnimationAcceleration](../reference.md#type-animationacceleration) | true | — | Optional acceleration effect to apply to the resize |
 
@@ -5384,7 +5178,7 @@ Executed when the dragged object is no longer over this drop target, including w
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false to prevent this event from bubbling to this widget's parent, true or undefined to bubble.
+`[boolean](../reference.md#type-boolean)` — false to prevent this event from bubbling to this widget's parent, true or undefined to bubble.
 
 ### Groups
 
@@ -5446,7 +5240,7 @@ Executed every time the mouse moves while dragging this canvas.
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false to cancel drag interaction.
+`[boolean](../reference.md#type-boolean)` — false to cancel drag interaction.
 
 ### Groups
 
@@ -5564,7 +5358,7 @@ Executed when the mouse wheel is actuated.
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false to prevent this event from bubbling to this widget's parent, true or undefined to bubble.
+`[boolean](../reference.md#type-boolean)` — false to prevent this event from bubbling to this widget's parent, true or undefined to bubble.
 
 ### Groups
 
@@ -5661,14 +5455,6 @@ Return the page-relative right coordinate of this object, in pixels.
 - positioning
 
 ---
-## Method: Canvas.showPendingMarker
-
-### Description
-Manually move this component into the "pending changes" visual state (based on the [pendingMarker style](#attr-canvaspendingmarkerstyle), or the Pending suffix in stateful components).
-
-This is used for components that don't automatically track whether there are unsaved changes, such as tabs. Other components (such as [ListGrid](ListGrid_1.md#class-listgrid) and [DynamicForm](DynamicForm.md#class-dynamicform)) show the ["pending" visual state](DynamicForm.md#attr-dynamicformshowpending) automatically based on whether the end user has edited particular field values.
-
----
 ## Method: Canvas.getZIndex
 
 ### Description
@@ -5704,11 +5490,7 @@ Returns a summary of this canvas and its child canvii and/or fields that is usef
 
 ### Returns
 
-`[UISummary](#type-uisummary)` — the summary
-
-### Groups
-
-- prodErrorReport
+`[Object](../reference.md#type-object)` — the summary
 
 ---
 ## Method: Canvas.setEditMode
@@ -5776,24 +5558,6 @@ Horizontally scrolls the content of the widget to the end of its content
 ### Groups
 
 - scrolling
-
----
-## Method: Canvas.getDefiningPropertyName
-
-### Description
-This method returns the name of an attribute for the [AutoTest](AutoTest.md#class-autotest) system to use as the `definingProperty` when generating [locators](../reference_2.md#type-autotestlocator).
-
-If the value for the attribute returned by this method is non null, the [AutoTest.getLocator](AutoTest.md#classmethod-autotestgetlocator) method will use this property name and value in the locators it generates to search the widget hierarchy for this component.
-
-The default implementation will return [this.definingProperty](#attr-canvasdefiningproperty) if specified, otherwise the first entry in [this.definingPropertyNameOptions](#attr-canvasdefiningpropertynameoptions) that has a non empty value for this component.
-
-### Returns
-
-`[String](#type-string)` — property name to use as a defining property when generating AutoTest locators with search segments
-
-### Groups
-
-- autoTest
 
 ---
 ## Method: Canvas.intersectsRect
@@ -5992,13 +5756,11 @@ See [gettingCanvasSize](../kb_topics/gettingCanvasSize.md#kb-topic-determining-t
 ## Method: Canvas.initWidget
 
 ### Description
-Initialization method called by [Canvas.init](#method-canvasinit) when a Canvas or subclass is first initialized via [create()](Class.md#classmethod-classcreate).
+For custom components, perform any initialization specific to your widget subclass.
 
-The default implementation for this method varies by class, but while [Canvas.init](#method-canvasinit) performs very low-level initialization required by all canvases, this method will typically perform actions specificy to the canvas subclass, such as creating [autoChildren](../reference.md#type-autochild) for composite components.
+When creating a subclass of any Canvas-based component, you should generally override this method rather than overriding [Class.init](Class.md#method-classinit). This is because Canvas has its own [Class.init](Class.md#method-classinit) override which performs some generally desirable initialization - see [Canvas.init](#method-canvasinit) for details.
 
-This method may be overridden by subclasses of Canvas-based components to take additional standard actions on initialization. Note that if you're looking for a simple initialization notification for a specific instance of a component, you may want to use [Canvas.initComplete](#method-canvasinitcomplete) instead of overriding this method.
-
-If you do override this method, you must call the superClass initWidget implementation, like so:
+This method is called by [Canvas.init](#method-canvasinit) when a component is create()d. When overriding this method, You must call the superClass initWidget implementation, like so:
 
 ```
     this.Super("initWidget", arguments);
@@ -6007,7 +5769,7 @@ If you do override this method, you must call the superClass initWidget implemen
 
 In general, if you are going to call functionality supported by your superclass (eg calling addTab() when your superclass is a TabSet), call Super() first. However, you can generally assign properties to `this` before calling Super() as a way of mimicking the effect of the property being passed to [create()](Class.md#classmethod-classcreate) on normal instance construction. For example, when subclassing a DynamicForm, you could set this.items to a generated set of items before calling Super().
 
-NOTE - creating children: if you are creating a component that auto-creates certain children (eg a Window which creates a Header child), typical practice is to create those children immediately before drawing by overriding draw(). This postpones work until it is really necessary and avoids having to update children if settings are changed between creation and draw(). Alternatively, if you prefer callers to directly manipulate auto-created children, it's best to create them earlier in initWidget(), in order to allow manipulation before draw.
+NOTE: child creation: if you are creating a component that auto-creates certain children (eg a Window which creates a Header child), typical practice is to create those children immediately before drawing by overriding draw(). This postpones work until it is really necessary and avoids having to update children if settings are changed between creation and draw(). Alternatively, if you prefer callers to directly manipulate auto-created children, it's best to create them earlier in initWidget(), in order to allow manipulation before draw.
 
 ### Parameters
 
@@ -6154,7 +5916,7 @@ Animate a reposition of this canvas from its current position to the specified p
 |------|------|----------|---------|-------------|
 | left | [Integer](../reference_2.md#type-integer) | false | — | new left position (or null for unchanged) |
 | top | [Integer](../reference_2.md#type-integer) | false | — | new top position (or null for unchanged) |
-| callback | [AnimationCallback](../reference_2.md#type-animationcallback) | true | — | When the move completes this callback will be fired. Single 'earlyFinish' parameter will be passed if the animation was cut short, for example by a call to the non-animated APIs [Canvas.moveTo](#method-canvasmoveto) or [Canvas.moveBy](#method-canvasmoveby). |
+| callback | [AnimationCallback](#type-animationcallback) | true | — | When the move completes this callback will be fired. Single 'earlyFinish' parameter will be passed if the animation was cut short, for example by a call to the non-animated APIs [Canvas.moveTo](#method-canvasmoveto) or [Canvas.moveBy](#method-canvasmoveby). |
 | duration | [Integer](../reference_2.md#type-integer) | true | — | Duration in ms of the animated move |
 | acceleration | [AnimationAcceleration](../reference.md#type-animationacceleration) | true | — | Optional acceleration effect to bias the ratios |
 
@@ -6180,14 +5942,6 @@ Note: If you attempt to call this API before the widget is drawn, the call will 
 ### Groups
 
 - scrolling
-
----
-## Method: Canvas.initComplete
-
-### Description
-Notification method fired after [Canvas.initWidget](#method-canvasinitwidget), when canvas initialization is complete.
-
-This is a notification method only and has no default implementation
 
 ---
 ## Method: Canvas.adjustForContent
@@ -6261,7 +6015,7 @@ Hide a canvas by shrinking it vertically to zero height over a period of time. T
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | effect | [AnimateShowEffectId](../reference_2.md#type-animateshoweffectid)|[AnimateShowEffect](#type-animateshoweffect) | true | — | How should the content of the window be hidden during the hide? If ommitted, default behavior can be configured via [Canvas.animateHideEffect](#attr-canvasanimatehideeffect) |
-| callback | [AnimationCallback](../reference_2.md#type-animationcallback) | true | — | When the hide completes this callback will be fired. Single 'earlyFinish' parameter will be passed if the animation was cut short, for example by a call to the non-animated API [Canvas.hide](#method-canvashide). |
+| callback | [AnimationCallback](#type-animationcallback) | true | — | When the hide completes this callback will be fired. Single 'earlyFinish' parameter will be passed if the animation was cut short, for example by a call to the non-animated API [Canvas.hide](#method-canvashide). |
 | duration | [Integer](../reference_2.md#type-integer) | true | — | Duration in ms of the animated hide. If unset, duration will be picked up from [Canvas.animateHideTime](#attr-canvasanimatehidetime) |
 | acceleration | [AnimationAcceleration](../reference.md#type-animationacceleration) | true | — | Optional acceleration effect function to bias the animation ratios. If unset, acceleration will be picked up from [Canvas.animateShowTime](#attr-canvasanimateshowtime) |
 
@@ -6333,7 +6087,7 @@ Show a canvas by growing it vertically to its fully drawn height over a period o
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | effect | [AnimateShowEffectId](../reference_2.md#type-animateshoweffectid)|[AnimateShowEffect](#type-animateshoweffect) | true | — | Animation effect to use when revealing the widget. If ommitted, default behavior can be configured via [Canvas.animateShowEffect](#attr-canvasanimateshoweffect) |
-| callback | [AnimationCallback](../reference_2.md#type-animationcallback) | true | — | When the show completes this callback will be fired. Single 'earlyFinish' parameter will be passed if the animation was cut short, for example by a call to the non-animated API [Canvas.show](#method-canvasshow). |
+| callback | [AnimationCallback](#type-animationcallback) | true | — | When the show completes this callback will be fired. Single 'earlyFinish' parameter will be passed if the animation was cut short, for example by a call to the non-animated API [Canvas.show](#method-canvasshow). |
 | duration | [Integer](../reference_2.md#type-integer) | true | — | Duration in ms of the animated show. If unset, duration will be picked up from [Canvas.animateShowTime](#attr-canvasanimateshowtime) |
 | acceleration | [AnimationAcceleration](../reference.md#type-animationacceleration) | true | — | Optional acceleration effect function to bias the animation ratios. If unset, acceleration will be picked up from [Canvas.animateShowAcceleration](#attr-canvasanimateshowacceleration) |
 
@@ -6352,7 +6106,7 @@ Animate a change in opacity from the widget's current opacity to the specified o
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | opacity | [Integer](../reference_2.md#type-integer) | false | — | desired final opacity |
-| callback | [AnimationCallback](../reference_2.md#type-animationcallback) | true | — | When the fade completes this callback will be fired. Single 'earlyFinish' parameter will be passed if the animation was cut short, for example by a call to the non-animated API [Canvas.setOpacity](#method-canvassetopacity). |
+| callback | [AnimationCallback](#type-animationcallback) | true | — | When the fade completes this callback will be fired. Single 'earlyFinish' parameter will be passed if the animation was cut short, for example by a call to the non-animated API [Canvas.setOpacity](#method-canvassetopacity). |
 | duration | [Integer](../reference_2.md#type-integer) | true | — | Duration in ms of the animated fade |
 | acceleration | [AnimationAcceleration](../reference.md#type-animationacceleration) | true | — | Optional animation acceleration to bias the ratios |
 
@@ -6469,7 +6223,7 @@ Executed when the left mouse button is clicked twice in rapid succession (within
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false to prevent this event from bubbling to this widget's parent, true or undefined to bubble.
+`[boolean](../reference.md#type-boolean)` — false to prevent this event from bubbling to this widget's parent, true or undefined to bubble.
 
 ### Groups
 
@@ -6628,7 +6382,7 @@ Sets the widget's CSS visibility attribute to "hidden".
 ### Description
 Retrieve the local ID of this canvas. If no local ID is assigned the normal canvas ID is returned making this method a safe replacement for [getID()](#method-canvasgetid).
 
-A "local ID" originates as an explicit ID assigned to a widget created in Reify. These IDs assigned by Reify become local IDs when a screen is loaded by [RPCManager.loadScreen](RPCManager.md#classmethod-rpcmanagerloadscreen) or [RPCManager.cacheScreens](RPCManager.md#classmethod-rpcmanagercachescreens) and [RPCManager.createScreen](RPCManager.md#classmethod-rpcmanagercreatescreen). A local ID is unique only within the scope of a widget's screen, and is not globally unique as is required for [Canvas.ID](#attr-canvasid).
+A "local ID" is name for a child widget which is unique only for this parent, and not globally unique as is required for [Canvas.ID](#attr-canvasid). Widgets receive local IDs when loaded via [RPCManager.loadScreen](RPCManager.md#classmethod-rpcmanagerloadscreen) or [RPCManager.cacheScreens](RPCManager.md#classmethod-rpcmanagercachescreens) and [RPCManager.createScreen](RPCManager.md#classmethod-rpcmanagercreatescreen).
 
 ### Returns
 
@@ -6721,11 +6475,11 @@ The element must have been created from HTML generated by calling `canvas.imgHTM
 ### Description
 Executed when a key is pressed and released on a focusable widget ([Canvas.canFocus](#attr-canvascanfocus): true).
 
-Use [EventHandler.getKey](EventHandler.md#classmethod-eventhandlergetkey) to find out the [keyName](../reference_2.md#type-keyname) of the key that was pressed, and use [EventHandler.shiftKeyDown](EventHandler.md#classmethod-eventhandlershiftkeydown) and related functions to determine whether modifier keys were down.
+Use [EventHandler.getKey](EventHandler.md#classmethod-eventhandlergetkey) to find out the [keyName](../reference.md#type-keyname) of the key that was pressed, and use [EventHandler.shiftKeyDown](EventHandler.md#classmethod-eventhandlershiftkeydown) and related functions to determine whether modifier keys were down.
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false to suppress native behavior in response to the keyPress, and prevent this event from bubbling to this widget's parent, or true or undefined to bubble.
+`[boolean](../reference.md#type-boolean)` — false to suppress native behavior in response to the keyPress, and prevent this event from bubbling to this widget's parent, or true or undefined to bubble.
 
 ### Groups
 
@@ -6787,7 +6541,7 @@ Executed every time the mouse moves while drag-repositioning. If this method doe
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false to suppress auto-move of the [Canvas.dragTarget](#attr-canvasdragtarget) or outline.
+`[boolean](../reference.md#type-boolean)` — false to suppress auto-move of the [Canvas.dragTarget](#attr-canvasdragtarget) or outline.
 
 ### Groups
 
@@ -6831,7 +6585,7 @@ Executed when the mouse button is released over a compatible drop target at the 
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false to prevent this event from bubbling to this widget's parent, true or undefined to bubble.
+`[boolean](../reference.md#type-boolean)` — false to prevent this event from bubbling to this widget's parent, true or undefined to bubble.
 
 ### Groups
 
@@ -6851,7 +6605,7 @@ Executed when the mouse button is released over a compatible drop target at the 
 ### Description
 Executed when a key is released on a focusable widget ([Canvas.canFocus](#attr-canvascanfocus): true).
 
-Use [EventHandler.getKey](EventHandler.md#classmethod-eventhandlergetkey) to find out the [keyName](../reference_2.md#type-keyname) of the key that was pressed, and use [EventHandler.shiftKeyDown](EventHandler.md#classmethod-eventhandlershiftkeydown) and related functions to determine whether modifier keys were down.
+Use [EventHandler.getKey](EventHandler.md#classmethod-eventhandlergetkey) to find out the [keyName](../reference.md#type-keyname) of the key that was pressed, and use [EventHandler.shiftKeyDown](EventHandler.md#classmethod-eventhandlershiftkeydown) and related functions to determine whether modifier keys were down.
 
 ### Returns
 
@@ -6983,20 +6737,6 @@ If this canvas has keyboard focus, blur it. After this method, the canvas will n
 - focus
 
 ---
-## Method: Canvas.doVoiceCommand
-
-### Description
-If [Canvas.supportsVoiceCommands](#method-canvassupportsvoicecommands) returns true, this method must be implemented to deal with Voice commands recorded while this Canvas has focus.
-
-If focus is in this canvas or one of its children when the user holds down the [VoiceAssist.voiceKey](VoiceAssist.md#attr-voiceassistvoicekey), records some speech and releases the key, this method is invoked with the final dictated-text, allowing the canvas to display it or process it in some way, such as saving it to a database or providing it to an AI for processing.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| text | [String](#type-string) | false | — | the final text as spoken by the user |
-
----
 ## Method: Canvas.draw
 
 ### Description
@@ -7029,7 +6769,7 @@ So, you should return false to definitively deny a drop, and return null if it c
 
 ### Returns
 
-`[Boolean](#type-boolean)` — true if the widget object being dragged can be dropped on this widget, false if it cannot (and `drop()` should not bubble), null to permit `drop()` to bubble to parent elements
+`[boolean](../reference.md#type-boolean)` — true if the widget object being dragged can be dropped on this widget, false if it cannot (and `drop()` should not bubble), null to permit `drop()` to bubble to parent elements
 
 ### Groups
 
@@ -7082,7 +6822,7 @@ Returning true from this handler will cause the [Canvas.dragTarget](#attr-canvas
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false to snap the [Canvas.dragTarget](#attr-canvasdragtarget) (or outline) back to its original location or true to leave it at the current cursor position.
+`[boolean](../reference.md#type-boolean)` — false to snap the [Canvas.dragTarget](#attr-canvasdragtarget) (or outline) back to its original location or true to leave it at the current cursor position.
 
 ### Groups
 
@@ -7186,7 +6926,7 @@ For details on showing a 'no drop' cursor when the user drags over all invalid d
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false to prevent this event from bubbling to this widget's parent, true or undefined to bubble.
+`[boolean](../reference.md#type-boolean)` — false to prevent this event from bubbling to this widget's parent, true or undefined to bubble.
 
 ### Groups
 
@@ -7322,7 +7062,7 @@ If [Canvas.dragAppearance](#attr-canvasdragappearance) is set to `"tracker"`, th
 
 ### Returns
 
-`[Boolean](#type-boolean)` — Return false to suppress bubbling, and prevent `setDragTracker()` from being called on this widget's ancestors.
+`[boolean](../reference.md#type-boolean)` — Return false to suppress bubbling, and prevent `setDragTracker()` from being called on this widget's ancestors.
 
 ### Groups
 
@@ -7342,7 +7082,7 @@ Animate a reposition / resize of this canvas from its current size and position.
 | top | [Integer](../reference_2.md#type-integer) | false | — | new top position (or null for unchanged) |
 | width | [Integer](../reference_2.md#type-integer) | false | — | new width (or null for unchanged) |
 | height | [Integer](../reference_2.md#type-integer) | false | — | new height (or null for unchanged) |
-| callback | [AnimationCallback](../reference_2.md#type-animationcallback) | true | — | When the setRect completes this callback will be fired. Single 'earlyFinish' parameter will be passed if the animation was cut short, for example by a call to the non-animated API [Canvas.setRect](#method-canvassetrect). |
+| callback | [AnimationCallback](#type-animationcallback) | true | — | When the setRect completes this callback will be fired. Single 'earlyFinish' parameter will be passed if the animation was cut short, for example by a call to the non-animated API [Canvas.setRect](#method-canvassetrect). |
 | duration | [Integer](../reference_2.md#type-integer) | true | — | Duration in ms of the animated setRect |
 | acceleration | [AnimationAcceleration](../reference.md#type-animationacceleration) | true | — | Optional acceleration effect to apply to the animation |
 
@@ -7495,7 +7235,7 @@ Executed when the left mouse button is pressed on this widget. No default implem
 ## Method: Canvas.getImage
 
 ### Description
-Retrieve a native image, SVG object element or the container for an SVG symbol or font-icon, by name.
+Retrieve a native image or SVG object element by name.
 
 The element must have been created from HTML generated by calling [Canvas.imgHTML](#method-canvasimghtml) on this particular Canvas.
 
@@ -7503,11 +7243,11 @@ The element must have been created from HTML generated by calling [Canvas.imgHTM
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| identifier | [String](#type-string) | false | — | name of the image or container element to get, as originally passed to `imgHTML()` |
+| identifier | [String](#type-string) | false | — | name of the image or SVG object to get, as originally passed to `imgHTML()` |
 
 ### Returns
 
-`[DOMElement](#type-domelement)` — DOM image or container element if found, else null
+`[DOMElement](#type-domelement)` — DOM image or SVG object element if found, else null
 
 ### Groups
 
@@ -7545,7 +7285,7 @@ This method will be invoked during on [Canvas.draw](#method-canvasdraw) and [Can
 ## Method: Canvas.setLocatorParent
 
 ### Description
-This method will set mark the target canvas as the "locator parent" for this canvas, using the specified child name. After calling this method, [locators](AutoTest.md#classmethod-autotestgetlocator) that reference this canvas will use the `childName` to navigate from the specified parent to this component, exactly how named [autoChildren](../reference.md#type-autochild) are referenced in locators.
+This method will set mark the target canvas as the "locator parent" for this canvas, using the specified child name. After calling this method, [locators](#method-canvasgetlocator) that reference this canvas will use the `childName` to navigate from the specified parent to this component, exactly how named [autoChildren](../reference.md#type-autochild) are referenced in locators.
 
 Note that, as with SmartClient autoChildren, the locator parent does not need to be the direct parent of this component, or even a true ancestor, in the widget hierarchy. However, you should never set the locatorParent to a descendant of this widget as that would lead to infinite loops when attempting to create or resolve locators.
 
@@ -7665,7 +7405,7 @@ Animate a scroll from the current scroll position to the specified position.
 |------|------|----------|---------|-------------|
 | scrollLeft | [Integer](../reference_2.md#type-integer) | false | — | desired final left scroll position |
 | scrollTop | [Integer](../reference_2.md#type-integer) | false | — | desired final top scroll position |
-| callback | [AnimationCallback](../reference_2.md#type-animationcallback) | true | — | When the scroll completes this callback will be fired. Single 'earlyFinish' parameter will be passed if the animation was cut short, for example by a call to the non-animated APIs [Canvas.scrollTo](#method-canvasscrollto) or [Canvas.scrollBy](#method-canvasscrollby). |
+| callback | [AnimationCallback](#type-animationcallback) | true | — | When the scroll completes this callback will be fired. Single 'earlyFinish' parameter will be passed if the animation was cut short, for example by a call to the non-animated APIs [Canvas.scrollTo](#method-canvasscrollto) or [Canvas.scrollBy](#method-canvasscrollby). |
 | duration | [Integer](../reference_2.md#type-integer) | true | — | Duration in ms of the animated scroll |
 | acceleration | [AnimationAcceleration](../reference.md#type-animationacceleration) | true | — | Optional acceleration to bias the animation ratios |
 
@@ -7784,22 +7524,6 @@ Get the number of pixels this Canvas is scrolled from its top edge.
 **Flags**: A
 
 ---
-## Method: Canvas.supportsValueDictation
-
-### Description
-If this method returns true and VoiceAssist has been activated by triple-tapping the [Control key](VoiceAssist.md#attr-voiceassistvoicekey), the user may dictate a new value for this Canvas by double-tapping [Control](VoiceAssist.md#attr-voiceassistvoicekey) to start recording.
-
-If this canvas has a `setValue()` method, it will be called interactively as the user speaks. Alternatively, a developer may observe [VoiceAssist.recordingProgress](VoiceAssist.md#classmethod-voiceassistrecordingprogress) to access the interim transcription.
-
-While recording, if the user says a [cancel-phrase](VoiceAssist.md#attr-voiceassistcancelphrases), by default the English phrase "never mind", recording is canceled and not completed. If the transcription was being displayed interactively in the canvas, it is restored to its pre-recording value.
-
-If the user falls silent for [a few seconds](VoiceAssist.md#attr-voiceassistautostopdelay), or when they double-tap `Control` again, recording is completed normally and `doValueDictation` is invoked with the final transcription, allowing the canvas to display it or process it in some way, such as saving it to a database or providing it to an AI for action.
-
-### Returns
-
-`[Boolean](#type-boolean)` — true if value-dictation is supported, false otherwise
-
----
 ## Method: Canvas.getMasterCanvas
 
 ### Description
@@ -7916,22 +7640,6 @@ If the passed-in widget is not a child of this Canvas, this method has no effect
 | child | [GlobalId](../reference.md#type-globalid)|[Canvas](#type-canvas) | false | — | the child Canvas to reveal, or its global ID |
 
 ---
-## Method: Canvas.supportsVoiceCommands
-
-### Description
-If this method returns true and VoiceAssist has been activated by triple-tapping the [Control key](VoiceAssist.md#attr-voiceassistvoicekey), the user may dictate a command to this Canvas.
-
-When this method returns true, the widget must also implement [Canvas.doVoiceCommand](#method-canvasdovoicecommand).
-
-When the user holds down the [VoiceAssist.voiceKey](VoiceAssist.md#attr-voiceassistvoicekey), records some speech and releases the key, `doVoiceCommand` is invoked with the final dictated-text, allowing the canvas to display it or process it in some way, such as saving it to a database or providing it to an AI for processing.
-
-A developer may also observe [VoiceAssist.recordingProgress](VoiceAssist.md#classmethod-voiceassistrecordingprogress) to access the interim command-transcription interactively as the user speaks.
-
-### Returns
-
-`[Boolean](#type-boolean)` — true if Voice commands are supported, false otherwise
-
----
 ## Method: Canvas.setRight
 
 ### Description
@@ -7964,7 +7672,7 @@ This event is not native to JavaScript, but is provided by the ISC system.
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false to prevent this event from bubbling to this widget's parent, true or undefined to bubble.
+`[boolean](../reference.md#type-boolean)` — false to prevent this event from bubbling to this widget's parent, true or undefined to bubble.
 
 ### Groups
 
@@ -8022,7 +7730,7 @@ Returning true from this handler will cause the [Canvas.dragTarget](#attr-canvas
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false to snap the [Canvas.dragTarget](#attr-canvasdragtarget) (or outline) back to its original size or true to leave it at the current cursor position.
+`[boolean](../reference.md#type-boolean)` — false to snap the [Canvas.dragTarget](#attr-canvasdragtarget) (or outline) back to its original size or true to leave it at the current cursor position.
 
 ### Groups
 
@@ -8103,7 +7811,7 @@ Executed when the mouse button is released at the end of the drag. Your widget c
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false to cancel drag interaction.
+`[boolean](../reference.md#type-boolean)` — false to cancel drag interaction.
 
 ### Groups
 
@@ -8234,7 +7942,7 @@ Executed when the compatible dragged object is first moved over this drop target
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false to prevent this event from bubbling to this widget's parent, true or undefined to bubble.
+`[boolean](../reference.md#type-boolean)` — false to prevent this event from bubbling to this widget's parent, true or undefined to bubble.
 
 ### Groups
 
@@ -8339,7 +8047,7 @@ Executed when dragging first starts. No default implementation. Create this hand
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false to cancel the drag reposition action
+`[boolean](../reference.md#type-boolean)` — false to cancel the drag reposition action
 
 ### Groups
 
@@ -8477,7 +8185,7 @@ Executed when the right mouse button is pressed on this widget. No default imple
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false to prevent this event from bubbling to this widget's parent, true or undefined to bubble.
+`[boolean](../reference.md#type-boolean)` — false to prevent this event from bubbling to this widget's parent, true or undefined to bubble.
 
 ### Groups
 
@@ -8681,7 +8389,7 @@ A drag action is considered to be begin when the mouse has moved [Canvas.dragSta
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false to cancel drag action.
+`[boolean](../reference.md#type-boolean)` — false to cancel drag action.
 
 ### Groups
 
@@ -8813,7 +8521,7 @@ If `canHover` is true for this widget, the `hover` string method will be fired w
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false to cancel the hover event.
+`[boolean](../reference.md#type-boolean)` — false to cancel the hover event.
 
 ### Groups
 
@@ -9032,7 +8740,7 @@ Executed when resize dragging first starts. No default implementation. Create th
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false to cancel the drag reposition action
+`[boolean](../reference.md#type-boolean)` — false to cancel the drag reposition action
 
 ### Groups
 
@@ -9145,11 +8853,11 @@ If this canvas is currently showing a hover (see [Canvas.handleHover](#method-ca
 ### Description
 Executed when a key is pressed on a focusable widget ([Canvas.canFocus](#attr-canvascanfocus): true).
 
-Use [EventHandler.getKey](EventHandler.md#classmethod-eventhandlergetkey) to find out the [keyName](../reference_2.md#type-keyname) of the key that was pressed, and use [EventHandler.shiftKeyDown](EventHandler.md#classmethod-eventhandlershiftkeydown) and related functions to determine whether modifier keys were down.
+Use [EventHandler.getKey](EventHandler.md#classmethod-eventhandlergetkey) to find out the [keyName](../reference.md#type-keyname) of the key that was pressed, and use [EventHandler.shiftKeyDown](EventHandler.md#classmethod-eventhandlershiftkeydown) and related functions to determine whether modifier keys were down.
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false to prevent this event from bubbling to this widget's parent, true or undefined to bubble.
+`[boolean](../reference.md#type-boolean)` — false to prevent this event from bubbling to this widget's parent, true or undefined to bubble.
 
 ### Groups
 
@@ -9305,17 +9013,16 @@ Executed when mouse enters this widget. No default implementation.
 ## Method: Canvas.init
 
 ### Description
-This method performs some basic initialization common to all UI components. To do custom UI component initialization, you should generally override [Canvas.initComplete](#method-canvasinitcomplete) or [Canvas.initWidget](#method-canvasinitwidget). This method does the following, in order:
+This method performs some basic initialization common to all UI components. To do custom UI component initialization, you should generally override [Canvas.initWidget](#method-canvasinitwidget). This method does the following, in order:
 
 *   Sets up a global reference to this instance as described in [Canvas.ID](#attr-canvasid).
 *   Ensures certain numeric properties have numeric values (e.g. width, height, padding, margin)
 *   Ensures [Canvas.children](#attr-canvaschildren) and [Canvas.peers](#attr-canvaspeers) are Arrays.
-*   Calls [Canvas.initWidget](#method-canvasinitwidget) - typically implemented at the class level to perform standard initialization for Canvas subclasses.
-*   Calls [Canvas.initComplete](#method-canvasinitcomplete) - typically implemented to perform custom initialization at the instance level.
+*   Calls [Canvas.initWidget](#method-canvasinitwidget)
 *   Creates [edges](#attr-canvasshowedges) and [shadow](#attr-canvasshowshadow), if so configured.
 *   Calls [Canvas.draw](#method-canvasdraw) if [Canvas.autoDraw](#attr-canvasautodraw) is set on instance or globally.
 
-Unless you're in an advanced scenario where you need to inject code before the above logic executes, place your initialization logic in intComplete or initWidget() rather than init(). If you do decided to override this method, you must call the superclass implementation like so:
+Unless you're in an advanced scenario where you need to inject code before the above logic executes, place your initialization logic in initWidget() rather than init(). If you do decided to override this method, you must call the superclass implementation like so:
 ```
     this.Super("init", arguments);
  
@@ -9560,22 +9267,6 @@ This property sets the same thickness of padding on every side. Differing per-si
 - appearance
 
 ---
-## Method: Canvas.doValueDictation
-
-### Description
-If [Canvas.supportsVoiceCommands](#method-canvassupportsvoicecommands) returns true, this method may be implemented to deal with transcriptions recorded while this Canvas has focus.
-
-If focus is in this canvas when the user double-taps the [voice-key](VoiceAssist.md#attr-voiceassistvoicekey), records some speech and double-taps again, this method is invoked with the final dictated-text, allowing the canvas to display it or process it in some way, such as saving it to a database or providing it to an AI for processing.
-
-Note that, if the canvas has a `setValue` method, the transcription will be applied automatically and interactively as the user speaks. If that functionality suits your needs, there is no need to implement this method.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| text | [String](#type-string) | false | — | the final text as spoken by the user |
-
----
 ## Method: Canvas.getScrollBottom
 
 ### Description
@@ -9613,21 +9304,6 @@ Resizes the widget vertically if required to satisfy the specified [Canvas.minHe
 
 ### Groups
 
-- sizing
-
----
-## Method: Canvas.getRect
-
-### Description
-Returns the coordinates of this object as an array in left, top, width, height order.
-
-### Returns
-
-`[Array of int](#type-array-of-int)` — coordinates as \[left, top, width, height\]
-
-### Groups
-
-- positioning
 - sizing
 
 ---

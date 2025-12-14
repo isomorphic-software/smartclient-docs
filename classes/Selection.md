@@ -127,14 +127,13 @@ When using tree-oriented selection modes like [TreeGrid.cascadeSelection](TreeGr
 ## Method: Selection.deselectList
 
 ### Description
-Deselect an array of items (subset of the entire list). Equivalent to calling +link{Selection.selectList(),selectList(list, false)
+Deselect an array of items (subset of the entire list)
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | list | [Array of Object](#type-array-of-object)[] | false | — | array of objects to select |
-| rowNums | [Array of Object](#type-array-of-object)[] | false | — | array of objects to select |
 
 ### Returns
 
@@ -289,7 +288,6 @@ All other selection routines go through this one, so by observing this routine y
 |------|------|----------|---------|-------------|
 | item | [Object](../reference.md#type-object) | false | — | object to select |
 | newState | [boolean](../reference.md#type-boolean) | false | — | turn selection on or off |
-| recordNum | [Integer](../reference_2.md#type-integer) | false | — | The record number to select. Only used in the case of selection in a [multi-link tree](Tree.md#attr-treemultilinktree), where the node itself is not enough to unambiguously identify an occurrence in the tree |
 
 ### Returns
 
@@ -311,9 +309,7 @@ Select an array of items (subset of the entire list)
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| list | [Array of Object](#type-array-of-object) | false | — | array of objects to select or deselect |
-| newState | [Boolean](#type-boolean) | true | — | true to select objects, false to deselect. Defaults to true |
-| rowNums | [Array of Integer](#type-array-of-integer) | true | — | optional array of row numbers corresponding to the objects in the "list" param. Required for [multi-link trees](Tree.md#attr-treemultilinktree), unless "list" contains [NodeLocator](../reference_2.md#object-nodelocator)s rather than records |
+| list | [Array of Object](#type-array-of-object)[] | false | — | array of objects to select |
 
 ### Returns
 

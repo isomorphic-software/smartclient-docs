@@ -105,7 +105,7 @@ Whether a user must be authenticated in order to initialize to this field. If th
 ### Description
 Indicates that this field should be fetched from another, related DataSource.
 
-The `includeFrom` attribute should be of the form "_dataSourceId_._fieldName_", for example:
+The `incluedFrom` attribute should be of the form "_dataSourceId_._fieldName_", for example:
 
 ```
     <field includeFrom="supplyItem.itemName"/>
@@ -157,52 +157,21 @@ You can alternatively set `editorType="ComboBoxItem"` on the "managerId" field t
 
 **Including fields that use summary functions**
 
-The [Include Summary Function](#attr-datasourcefieldincludesummaryfunction) feature is used for including from a related DataSource where there are multiple related records. It applies a [SummaryFunction](../reference_2.md#type-summaryfunction) to the related records aggregating them into single value. It is regularly used on directly included fields, but it supports indirect inclusions as well, when entire `includeFrom`+`includeSummaryFunction` setup is included from another DataSource. See [DataSourceField.includeSummaryFunction](#attr-datasourcefieldincludesummaryfunction) docs for more details.
-
-For best results, ensure that the field with `includeFrom` has its [DataSourceField.type](#attr-datasourcefieldtype) explicitly set to the included field's `type`.
-
-**`includeFrom` combined with `[multiple](#attr-datasourcefieldmultiple):true`**
-
-If you specify `[multiple](#attr-datasourcefieldmultiple):true` on an `includeFrom` field, it has one of two quite different meanings:
-
-1.  It is including a field which is itself marked `multiple:true`, across a regular many-to-one or one-to-one [relation](../kb_topics/dataSourceRelations.md#kb-topic-relations). In this case, the value of the included field is likely to be a flattened list of text values stored in a regular text field - see [DataSourceField.multipleStorage](#attr-datasourcefieldmultiplestorage)
-2.  It is including multiple related values across a one-to-many or many-to-many relation
-
-The first of these is exactly the same as any other regular `includeFrom`, except that it will have normal `multiple:true` processing applied to the included value, so the client sees a true list of values rather than a flat string of text.
-
-The second is more involved. With this type of `includeFrom` we will actually fetch multiple records from the included DataSource. You should read the **One-to-many** and **Many-to-many** sections of the [relations overview](../kb_topics/dataSourceRelations.md#kb-topic-relations) to make sure you understand how these relation types work, but essentially you declare a [foreignKey](#attr-datasourcefieldforeignkey) on a field that is also marked `multiple:true`, and this causes SmartClient to return a list of key values that your client-side code can use to obtain the related records (some SmartClient UI components will do this automatically).
-
-Once one of these relation types is in place, it is also possible to declare `includeFrom` fields that make use of the relation to include fields other than the identifying key field, for convenience. For example, if a **Country** dataSource declared a one-to-many relation to a **City** dataSource, like this:
-
-```
-     <field name="majorCities" multiple="true" foreignKey="City.cityId" />
- 
-```
-The same dataSource could make use of that relation to include the names of all related cities for convenience, so you can show a list of "Major Cities" against each country without having to go back to the server and fetch the actual City records. The declaration would look like this:
-```
-     <field name="cityNames" multiple="true" includeFrom="City.cityName" />
- 
-```
-With **Many-to-many** related includeFroms - which require a "middle" dataSource, and thus a three-part `foreignKey` declaration - you may specify either the entire inclusion path, or just the endpoint. For example, if your **Country** dataSource has a many-to-many relation with a **River** dataSource - necessary, because most countries contain more than one river, and many rivers flow through more than one country - via the following `foreignKey` definition:
-```
-     <field name="rivers" multiple="true" foreignKey="CountryRivers.Rivers.riverId" />
- 
-```
-you could `includeFrom` the list of related river names with either this:
-```
-     <field name="riverNames" multiple="true" includeFrom="CountryRivers.Rivers.name" />
- 
-```
-or slightly simpler, this:
-```
-     <field name="riverNames" multiple="true" includeFrom="Rivers.name" />
- 
-```
-If just the endpoint is specified, SmartClient will figure out the remainder of the path based on the available `foreignKey`s; if there is ambiguity that makes this impossible - ie, two `foreignKey` fields that target the same endpoint via different paths - you can either specify the entire include path in the `includeFrom` definition, or declare an [includeVia](#attr-datasourcefieldincludevia) setting on the field.
+The [Include Summary Function](#attr-datasourcefieldincludesummaryfunction) feature is used for including from a related DataSource where there are multiple related records. It applies a [SummaryFunction](../reference.md#type-summaryfunction) to the related records aggregating them into single value. It is regularly used on directly included fields, but it supports indirect inclusions as well, when entire `includeFrom`+`includeSummaryFunction` setup is included from another DataSource. See [DataSourceField.includeSummaryFunction](#attr-datasourcefieldincludesummaryfunction) docs for more details.
 
 ### Groups
 
 - dataSourceRelations
+
+**Flags**: IR
+
+---
+## Attr: DataSourceField.displayFormat
+
+### Description
+The default date formatter to use for displaying this field. Only applicable to fields of type "date" and "datetime". Note that this property is honored when exporting directly to Excel spreadsheets (ie, when using XLS or XLSX/OOXML form, **not** CSV); "date" and "datetime" fields with this property set will deliver real dates and formatting information to Excel, rather than formatted strings or unformatted dates.
+
+**Deprecated**
 
 **Flags**: IR
 
@@ -238,7 +207,7 @@ Indicates this field must be non-null in order for a record to pass validation. 
 Note that `required` should not be set for a server-generated field, such as a sequence, or validation will fail on the client.
 
 #### Conditionally required fields
-Adding an [applyWhen](Validator.md#attr-validatorapplywhen) condition to a `required` validator introduces subtle complexities to the process of validating an existing record. The client is not guaranteed to know the full and complete state of the record it is editing because it is common for a [DynamicForm](DynamicForm.md#class-dynamicform) to be editing a subset of fields. When a field is _unconditionally_ required, things are simple: if the DynamicForm has a [FormItem](FormItem.md#class-formitem) for that field, then the `required` validation passes if that FormItem has a value, and fails if it does not. If the form has no FormItem for the field, it can assume that the field has a value because otherwise it would have failed validation when we attempted to add it (when we are adding a record, we of course do know the full and complete state of the record - it is whatever we are about to add).
+Adding an [applyWhen](Validator.md#attr-validatorapplywhen) condition to a `required` validator introduces subtle complexities to the process of validating an existing record. The client is not guaranteed to know the the full and complete state of the record it is editing because it is common for a [DynamicForm](DynamicForm.md#class-dynamicform) to be editing a subset of fields. When a field is _unconditionally_ required, things are simple: if the DynamicForm has a [FormItem](FormItem.md#class-formitem) for that field, then the `required` validation passes if that FormItem has a value, and fails if it does not. If the form has no FormItem for the field, it can assume that the field has a value because otherwise it would have failed validation when we attempted to add it (when we are adding a record, we of course do know the full and complete state of the record - it is whatever we are about to add).
 
 When a field is _conditionally_ required, the client can no longer assume that all required fields will have a value. It may be the case that the condition of requirement was not met when the record was added, but now it is. For example, consider these field definitions:
 
@@ -395,24 +364,7 @@ With this Excel limitation in mind, it makes sense to just go with the default b
 ## Attr: DataSourceField.description
 
 ### Description
-An optional description of the DataSourceField's meaning. It is not automatically exposed on any component, but it is useful for developer documentation, and as such it is included on any [OpenAPI specification](../kb_topics/openapiSupport.md#kb-topic-openapi-specification-oas-support) generated by the framework. Markdown is a commonly-used syntax, but you may also embed HTML content. When embedding HTML in the description in a .ds.xml file (see [dataSourceDeclaration](../kb_topics/dataSourceDeclaration.md#kb-topic-creating-datasources)), it is recommended to wrap the HTML in a CDATA tag.
-
-This description is also provided to AI when AI is asked to work with the field. Best practices for the description are:
-
-*   Start with a plain language explanation of what the field represents in the real world, its business concept or core purpose. For example: `order_subtotal` might be "Total price of the customer's order before tax and shipping."
-*   If the field involves time, clarify what moment in time the value applies to, and how the value relates to other timestamps in the record. For example: `updated_timestamp` might be "The last time when any value of the record was updated. Always greater or equal to 'created\_timestamp'."
-*   If a numeric field, clearly identify the units if there are any.
-*   When not [required](#attr-datasourcefieldrequired) (i.e. the value may be `NULL`), describe the interpretation of a `NULL` value. Does the absence of a value have a specific meaning, or does it mean that the data is not available, unknown, or pending?
-*   If values are constrained within a certain range or domain, identify the bounds or possible values.
-*   If values take a certain format, identify this format and fully describe each part.
-*   Include descriptions of how the field relates to or depends on others.
-*   Give a brief note about how the field is populated. This might include the source of the data, formula(s) used to calculate the value, and the frequency and timing of updates.
-
-Sample values in the description may be appropriate, but a better practice is to provide [sampleData](DataSource.md#attr-datasourcesampledata) on the data source, which show AI sample values in the context of complete record(s) from the data source.
-
-### See Also
-
-- [DataSource.description](DataSource.md#attr-datasourcedescription)
+An optional description of the DataSourceField's meaning. Not automatically exposed on any component, but useful for developer documentation, and as such is included on any [OpenAPI specification](../kb_topics/openapiSupport.md#kb-topic-openapi-specification-oas-support) generated by the framework. Markdown is a commonly used syntax, but you may also embed HTML content in a CDATA tag.
 
 **Flags**: IRW
 
@@ -422,21 +374,17 @@ Sample values in the description may be appropriate, but a better practice is to
 ### Description
 Default user-visible title for this field.
 
-This will be picked up by [DataBoundComponent](../reference.md#interface-databoundcomponent)s and other views over this data source.
+This will be picked up by DataBound components and other views over this DataSource.
 
 Note this property frequently does not need to be set since [DataSource.autoDeriveTitles](DataSource.md#attr-datasourceautoderivetitles) (on by default) usually picks an appropriate user-visible title if you have a reasonable naming convention for your field names.
 
-Note that if this field is being displayed in a [ListGrid](ListGrid_1.md#class-listgrid) bound to this data source, the [ListGridField.headerTitle](ListGridField.md#attr-listgridfieldheadertitle) attribute may be used to specify a different string for display in the column header.
+Note that if this field is being displayed in a [ListGrid](ListGrid_1.md#class-listgrid) bound to this dataSource, the [ListGridField.headerTitle](ListGridField.md#attr-listgridfieldheadertitle) attribute may be used to specify a different string for display in the listGrid column header.
 
 ### Groups
 
 - componentBinding
 
-### See Also
-
-- [Field.exportTitle](Field.md#attr-fieldexporttitle)
-
-**Flags**: IRW
+**Flags**: IR
 
 ---
 ## Attr: DataSourceField.multipleStorageSeparator
@@ -592,8 +540,6 @@ See [sqlSettings](../kb_topics/sqlSettings.md#kb-topic-sql-database-settings-in-
 
 - sqlSettings
 
-**Deprecated**
-
 **Flags**: IR
 
 ---
@@ -680,56 +626,6 @@ Causes values for this field to be sorted according to values for another field,
 This can be used to establish a sort order for a field that is not the normal sorting order indicated by the field value, typically by having the `sortByField` as a [hidden field](#attr-datasourcefieldhidden).
 
 If using SQLDataSource, consider using a [DataSourceField.customSelectExpression](#attr-datasourcefieldcustomselectexpression) as an efficient way to populate the `sortByField` with the results of a SQL expression.
-
-**Flags**: IR
-
----
-## Attr: DataSourceField.translatorClassName
-
-### Description
-The fully-qualified name of a Java class that implements the `com.isomorphic.datasource.DataTranslator` interface. If a field declares this attribute, SmartClient Server will create an instance of the translator class and call its `translate()` method for that field value on every record in the response data during `DSResponse` creation.
-
-Translators were originally provided as a mechanism for translating a plain text value of a field - for example, as provided in a CSV file or CSV REST server response - into a type-correct value. Now, however, they are integrated into the general response flow and are one of many ways in which you can modify response data; see also [Direct Method Invocation](DMI.md#class-dmi), [custom dataSources](DataSource.md#attr-datasourceserverconstructor), [transformResponseScript](OperationBinding.md#attr-operationbindingtransformresponsescript) and [fieldValueScript](#attr-datasourcefieldfieldvaluescript).
-
-Because the orignal translator implementation was intended to derive type-correct values from plain text CSV values, the `DataTranslator` interface only specifies a single `translate()` method, that accepts a String and returns an Object. For reasons of backwards compatibility, this has been left in place, but we have implemented an additional subinterface, `com.isomorphic.datasource.FieldDataTranslator`. If your translator implements `FieldDataTranslator`, the framework will call that interface's two-parameter `translate()` method, passing in both the raw text value and a type-correct object coerced from the raw value by SmartClient's type validation subsystem (though this automatic type coercion can be switched off with the [skipTypeCoercion flag](#attr-datasourcefieldskiptypecoercion)). Hence, `FieldDataTranslator`s are intended for more sophisticated value manipulations than simple type coercion.
-
-The following example shows a simple translator that parses a datetime using a non-standard format into a Java Date object and then alters that date to represent the first day of the month:
-
-```
- package com.mycompany;
-
- import java.util.Date;
- import java.text.ParseException;
- import java.text.SimpleDateFormat;
- import com.isomorphic.datasource.FieldDataTranslator;
- import com.isomorphic.datasource.TranslaterException;
-
- public class FirstDayOfTheMonthTranslator implements FieldDataTranslator {
-  	static SimpleDateFormat sdf = new SimpleDateFormat("MM/d/yyyy hh:mm:ss a z");
-
-  	public Object translate(String raw, Object coerced) throws TranslaterException {
-  		if (object == null) return null;
-
-          // Because the raw text is in a weird format, standard type coercion will not have
-          // been able to derive a real datetime, so we need to do that first
-  		try {
-  			Date theDate = sdf.parse(raw);
-              // This API was deprecated a long time ago, but is still the easiest way to do this!
-              theDate.setDate(1);
-              return theDate;
-  		} catch (ParseException e) {
-  			// Exception handling code goes here
-  			return null;
-  		}
-  	}
- }
- 
-```
-To make use of this translator, you would use a field definition like this:
-```
-     <field name="myDateField" type="datetime" translatorClassName="com.mycompany.FirstDayOfTheMonthTranslator" />
- 
-```
 
 **Flags**: IR
 
@@ -948,7 +844,7 @@ By default, view constraints automatically imply edit constraints - almost all o
 ## Attr: DataSourceField.foreignKey
 
 ### Description
-Declares that this field holds values that can be matched to values from another DataSource field, to create a relationship between records from different DataSources or even records within the same DataSource. Ordinarily, the relation to the other dataSource is a many-to-one relation, where multiple records on this dataSource refer to a single record on the other dataSource. To declare a one-to-many or many-to-many relation, specify [multiple](#attr-datasourcefieldmultiple):true as well as `foreignKey`. See [the Relations overview](../kb_topics/dataSourceRelations.md#kb-topic-relations) for more details
+Declares that this field holds values that can be matched to values from another DataSource field, to create a relationship between records from different DataSources or even records within the same DataSource.
 
 The format of `foreignKey` is `_dataSourceId_._fieldName_`.
 
@@ -1068,43 +964,10 @@ A number is always shown with its original precision when edited.
 **Flags**: IRW
 
 ---
-## Attr: DataSourceField.template
-
-### Description
-If `field.template` is set, this field's value in records will be calculated dynamically via the specified [template](../reference.md#object-usersummary).
-
-This property may be set to a valid [template expression](UserSummary.md#attr-usersummarytext).
-
-For example a composite field for a dataSource of citation references containing "volume", "issue", and "pages" fields might use the following template:
-
-```
- <field name="compositeLocation" title="Volume (issue), pages">
-      <template>#{volume} (#{issue}), #{pages}</template>
- </field>
- 
-```
-_\[This example might produce output like `"12 (5), 121-137"`\]_.
-
-For SQL DataSources, values are calculated on the server by modifying the generated SQL request as appropriate. As with other [dynamically calculated](DataSource.md#method-datasourceiscalculated) fields, fields with a specified template are non editable.  
-When records are displayed in [dataBoundComponents that support editing](../reference.md#interface-databoundcomponent), template field values will be re-calculated dynamically on the client as the user edits a record, so a user may preview the result of their changes.
-
-Note that `template` fields may make use of [formula fields](#attr-datasourcefieldformula), [fields included from related dataSources](#attr-datasourcefieldincludefrom) [aggregated values from related dataSources](#attr-datasourcefieldincludesummaryfunction), and [fields derived via customSQL](#attr-datasourcefieldcustomselectexpression).
-
-`DataSourceField.template` is supported for [SQL DataSources](../reference_2.md#type-dsservertype), and for [clientOnly dataSources](DataSource.md#attr-datasourceclientonly) only.
-
-**DataSourceField.formula is available with Power or better licenses only.** See [smartclient.com/product](http://smartclient.com/product) for details.
-
-### Groups
-
-- calculatedDataSourceFields
-
-**Flags**: IR
-
----
 ## Attr: DataSourceField.primaryKey
 
 ### Description
-If set to `true`, indicates **either** that this field holds a value unique across all records in this data source, **or** that it is one of a number of fields marked as primary keys, and the combination of the values held in all of those fields is unique across all records in the data source. Note that the latter usage - so-called "composite" or "multipart" keys - is intended for support of legacy databases only: if you are able to choose an approach, Isomorphic recommends the use of one `primaryKey` field per data source, and ideally this field should be of [type](#attr-datasourcefieldtype) "sequence". If you have control of the underlying tables, there is nothing to stop you from adding a field like this (a so-called "synthetic" or "surrogate" key), even for tables that already have a set of columns that could combine to make a composite key (a so-called "natural" key). Also, it is neither necessary nor correct to use a composite primaryKey because you want to enforce uniqueness across that combination of fields. You can achieve that by declaring a unique constraint in the table schema, or use an [isUnique](../reference.md#type-validatortype) validator with `validator.criteriaFields`, or both; there is no need to use a composite key to enforce uniqueness.
+Indicates **either** that this field holds a value unique across all records in this DataSource, **or** that it is one of a number of fields marked as primary keys, and the combination of the values held in all of those fields is unique across all records in the DataSource. Note that the latter usage - so-called "composite" or "multipart" keys - is intended for support of legacy databases only: if you are able to choose an approach, Isomorphic recommends the use of one `primaryKey` field per DataSource, and ideally this field should be of [type](#attr-datasourcefieldtype) "sequence". If you have control of the underlying tables, there is nothing to stop you from adding a field like this (a so-called "synthetic" or "surrogate" key), even for tables that already have a set of columns that could combine to make a composite key (a so-called "natural" key). Also, it is neither necessary nor correct to use a composite primaryKey because you want to enforce uniqueness across that combination of fields. You can achieve that by declaring a unique constraint in the table schema, or use an [isUnique](../reference.md#type-validatortype) validator with `validator.criteriaFields`, or both; there is no need to use a composite key to enforce uniqueness
 
 Note that composite primaryKeys are not supported in tree-structured datasets ([Tree](Tree.md#class-tree) and [ResultTree](ResultTree.md#class-resulttree)) or components ([TreeGrid](TreeGrid.md#class-treegrid), [ColumnTree](ColumnTree.md#class-columntree)). Tree-structured data requires that nodes have a unique [idField](Tree.md#attr-treeidfield), with the parent/child relationship expressed through the [parentIdField](Tree.md#attr-treeparentidfield). This implies that binding a Tree to a DataSource requires that the DataSource have a singular primaryKey, and that the primaryKey field is also the idField, as described in the [tree databinding overview](../kb_topics/treeDataBinding.md#kb-topic-tree-databinding)
 
@@ -1233,43 +1096,6 @@ Note this does not need to be declared in order for DataSource records to be der
 **Flags**: IR
 
 ---
-## Attr: DataSourceField.fieldValueScript
-
-### Description
-A scriptlet to be executed on the server when deriving values for this field. The script will run after the main operation (eg, SQL fetch) and after any [transformResponseScript](DataSource.md#attr-datasourcetransformresponsescript). It is intended to be used for fine-grained transformation at the field level, in cases where declarative approaches such as [customSelectExpression](#attr-datasourcefieldcustomselectexpression) are insufficient.
-
-The script will be provided with the following variables:
-
-*   **dsRequest** The current [DSRequest](../reference_2.md#object-dsrequest)
-*   **field** The current field, as an instance of `com.isomorphic.datasource.DSField`
-*   **record** The record containing the current field value, as either a Map or a Javabean, depending on your data model. See [beanClassName](DataSource.md#attr-datasourcebeanclassname)
-*   **value** The untransformed field value. Note, this will only be provided if the containing record is a Map; if it is a Javabean, your script is expected to derive the value itself, and to apply the transformed value directly to the bean
-
-Before the `fieldValueScript` is called, SmartClient will run type validations on the untransformed field value, to either confirm that the value is a valid one for the [declared field type](#attr-datasourcefieldtype), or to attempt to coerce it into such a valid value (for example, by parsing a number or date out of a string). Note, this validation/coercion step can be disabled - see [skipTypeCoercion](#attr-datasourcefieldskiptypecoercion) - but whether or not this step runs, and whether or not coercion was required, if the resulting value is valid for the declared field type, an additional variable of the appropriate type will be made available to your script
-
-*   **valueString**, an instance of String
-*   **valueInteger**, an instance of Long
-*   **valueFloat**, an instance of Double
-*   **valueBoolean**, an instance of Boolean
-*   **valueDate/Time/Datetime**, an instance of java.util.Date
-
-Your script can either manipulate the value directly in the record (if your record is a Javabean, this is the only supported option), or it can return the transformed value and SmartClient will apply it to the response data. If you change the value in the record directly, you should ensure that your script explicitly returns null.
-
-**PERFORMANCE NOTE:** JSR223 script calls can involve an overhead, and since `fieldValueScript` will be called for every field that declares one, for every record in a resultset, that overhead can easily multiply to become a performance issue. For this reason, SmartClient implements script caching for any JSR223 script language that support pre-compilation, and we also recommend the use of Groovy as a scripting language when you are creating `fieldValueScript`s. See the "Caching" and "Relative Performance" sections of the [server scripting article](../kb_topics/serverScript.md#kb-topic-server-scripting) for more details.
-
-### Groups
-
-- serverScript
-
-### See Also
-
-- [DataSource.script](DataSource.md#attr-datasourcescript)
-- [DataSource.transformRequestScript](DataSource.md#attr-datasourcetransformrequestscript)
-- [DataSource.transformResponseScript](DataSource.md#attr-datasourcetransformresponsescript)
-
-**Flags**: IR
-
----
 ## Attr: DataSourceField.initRequiresRole
 
 ### Description
@@ -1295,7 +1121,7 @@ Comma-separated list of user roles that are allowed to initialize this field. If
 ## Attr: DataSourceField.summaryFunction
 
 ### Description
-If [ListGrid.showGridSummary](ListGrid_1.md#attr-listgridshowgridsummary) or [ListGrid.showGroupSummary](ListGrid_1.md#attr-listgridshowgroupsummary) is true, this attribute can be used to specify an explicit [SummaryFunction](../reference_2.md#type-summaryfunction) for calculating the summary value to display.
+If [ListGrid.showGridSummary](ListGrid_1.md#attr-listgridshowgridsummary) or [ListGrid.showGroupSummary](ListGrid_1.md#attr-listgridshowgroupsummary) is true, this attribute can be used to specify an explicit [SummaryFunction](../reference.md#type-summaryfunction) for calculating the summary value to display.
 
 If an array of summaryFunctions is specified, they will be executed in turn and the grid will show multiple summary rows at the grid or group level (or both) containing the resulting values.
 
@@ -1370,43 +1196,6 @@ Note that this property is also honored when exporting directly to Excel spreads
 **Flags**: IRWA
 
 ---
-## Attr: DataSourceField.valueOperation
-
-### Description
-**Note:** Currently, this feature only works with [SQL DataSources](../kb_topics/sqlDataSource.md#kb-topic-sql-datasources)
-
-This property allows you to name an [operationBinding](OperationBinding.md#class-operationbinding) on a [related DataSource](../kb_topics/dataSourceRelations.md#kb-topic-relations) that should be executed to obtain a value for this field. The format of the property is
-
-```
-      dataSourceId.operationId.fieldName
- 
-```
-The `fieldName` is used to disambiguate in case the operation returns more than one value and it is required, even if the operation only returns a single field
-
-Typically, `valueOperation` names an operation that uses a [summaryFunction](OperationBinding.md#attr-operationbindingsummaryfunctions) to produce a single aggregated value from a DataSource with a one-to-many or many-to-many relation with this DataSource. Some examples of when `valueOperation` is appropriate:
-
-*   To obtain a total order value from the OrderLines on an Order
-*   To obtain the number of Employees reporting to a given manager
-*   To obtain the date of the most recent Order for a given Customer
-*   To obtain the average population of all Cities in a given Country
-
-Note, SmartClient will convert the sub-operation into inline SQL, for maximum efficiency.
-
-Because `valueOperations` are deriving a simple field value for a single field, they should return a single scalar value of the same type as the field. **Note that the requirement to return a single record is a strict one**: with most databases, failing to observe it will result in a SQL error, because most databases do not allow row limiting in the kind of subqueries we generate to implement `valueOperation` - so-called _correlated scalar subqueries_. MySQL is an exception in this, and with that one database we **do** limit the subquery to 1 row; but it is still better to ensure that the subquery can only return a single row (note, all [SummaryFunction](../reference_2.md#type-summaryfunction)s automatically return a single value)
-
-However, we do tolerate data type discrepancies; in cases where the data types do not match, we attempt the most obvious conversion. For example, if the `valueOperation` field is of type "boolean" but the operation returns a number, we will convert 0 to false and any other number to true; this allows you to create boolean "virtual fields" that answer questions like "Has this Employee booked any orders this month?". With other data types, we will stringify the response value (if the field type is `text`), or parse the result of calling `toString()` on the response object (if the field is of a numeric type).
-
-NOTE: Although `valueOperation` can be used to derive any singular value from any related dataSource, it is intended primarily as a mechanism for including summarized values across one-to-many or many-to-many relations. In cases where you want to go "the other way" and derive a value across a many-to-one or one-to-one relation, you would generally use [includeFrom](#attr-datasourcefieldincludefrom), which is conceptually simpler and more direct.
-
-### See Also
-
-- [AdvancedCriterionSubquery](../reference.md#object-advancedcriterionsubquery)
-- [DataSourceField.includeFrom](#attr-datasourcefieldincludefrom)
-- [OperationBinding.summaryFunctions](OperationBinding.md#attr-operationbindingsummaryfunctions)
-
-**Flags**: IRA
-
----
 ## Attr: DataSourceField.valueMapEnum
 
 ### Description
@@ -1470,7 +1259,7 @@ Whether a user must be authenticated in order to write to this field. If this pr
 
 This property affects two things. Firstly, the server determines when the DataSource is first loaded if we have an authenticated user; if we don't, the field is marked `canEdit: false`. Secondly, when an insert or update request is received from the client, the server removes the field from the `values` clause before the request is processed.
 
-Note that you can override this behavior. The `canEdit` setting can be overridden on the client-side DataSource like any other client-side property. The value-removing behavior can be overridden on a per-request basis by providing a DMI that re-adds values for the fields you want for that particular request to the values object (the values originally sent up by the client are available on the DSRequest). See the server-side Javadocs for `DSRequest.getValues()` and `DSRequest.getClientSuppliedValues()`.
+Note that you can override this behavior. The `canEdit` setting can be overridden on the the client-side DataSource like any other client-side property. The value-removing behavior can be overridden on a per-request basis by providing a DMI that re-adds values for the fields you want for that particular request to the values object (the values originally sent up by the client are available on the DSRequest). See the server-side Javadocs for `DSRequest.getValues()` and `DSRequest.getClientSuppliedValues()`.
 
 ### Groups
 
@@ -1600,16 +1389,6 @@ Note that this property only applies to users of the SmartClient server using da
 **Flags**: IR
 
 ---
-## Attr: DataSourceField.skipTypeCoercion
-
-### Description
-Ordinarily, SmartClient server runs `DSResponse` values through type validation logic in order to ensure that values are of the correct type. Eg, for a field declared to be type "date", type validation will ensure that the value is an instance of `java.util.Date`; if it isn't, the server will attempt to coerce it into an instance of that class - for a date, this coercion attempt would take the form of trying to parse the `toString()` form of the raw value.
-
-If `skipTypeCoercion` is true, the server skips this step. You may wish to do this if you have other value manipulation logic in place - for example in a [translator](#attr-datasourcefieldtranslatorclassname) or [fieldValueScript](#attr-datasourcefieldfieldvaluescript) - so you do not need the automatic type coercion, or don't want it for some other reason, such as performance. It may also be that you know the data is already in a correctly-typed form, so there is no point in running the type validation/coercion step. For example, data fetched by an `SQLDataSource` will have already been converted to the correct type in advance; similarly, data values coming out of Javabeans with strongly-typed accessor methods cannot help but be the correct type.
-
-**Flags**: IR
-
----
 ## Attr: DataSourceField.customSelectExpression
 
 ### Description
@@ -1662,8 +1441,6 @@ Must be unique across all fields within the DataSource as well as a valid JavaSc
 
 The field name is also the property in each DataSource record which holds the value for this field.
 
-Note: If this is a [SQL-backed](DataSource.md#attr-datasourceservertype) dataSource, the field name should be a valid SQL colmn name, or the [DataSourceField.nativeName](#attr-datasourcefieldnativename) property should be set to a valid column name.
-
 ### Groups
 
 - basics
@@ -1689,8 +1466,6 @@ Note that the rootValue may be overridden on a specific ResultTree instance by s
 
 ### Description
 If set, causes the field to be securely hashed before saving on an "add" or "update" operation.
-
-The default is null except for fields of [DataSourceField.type](#attr-datasourcefieldtype): "password", for which the default is "bcrypt". To disable hashing for password fields, you must set this property to "none".
 
 **Flags**: IR
 
@@ -1817,23 +1592,6 @@ In this case the prefix used for table aliases will be the same, cause relations
 
 **Note** that if [related table alias](#attr-datasourcefieldrelatedtablealias) are completely missing then, according to general rule, `foreignKey` field names will be used in aliases: "mtId\_sourceCurId\_groupId" and "mtId\_paymentCurId\_groupId".
 
-#### Ambiguous `includeFrom` definitions and logging
-Considering the flexibility and complexity of configuring relationships between Datasources, it is important to be aware of certain limitations. Specifically, when multiple fields attempt to include the same field from the same related Datasource via the same (default or specified) foreign key, such configurations are not permitted and may result in unpredictable behavior. This scenario is detected and reported as a warning in the server logs during both DataSource loading and DSRequest execution.
-
-In example below, fields "sourceCurrencySymbol", "currency" and "currencySymbol" include the same "currencySymbol" field from the same "currency" DataSource via the same "currencyId" foreign key field. So, for the fields "currency" and "currencySymbol" warnings will be logged as they include the same value as does the "sourceCurrencySymbol" field.
-
-```
-   <field name="currencyId" foreignKey="currency.id"/>
-   <field name="sourceCurrencySymbol" includeFrom="currency.currencySymbol" />
-   <field name="currency" includeFrom="currency.currencySymbol" />
-   <field includeFrom="currency.currencySymbol" />
- 
-```
-Additionally there are two server logging categories that may be set to DEBUG level to log details of the entire `includeFrom` setup. Specifically `com.isomorphic.sql.SQLDataSource.Alias` category enables logging for all fields with `includeFrom`, exact direct or indirect include path to the target field, includeVia/aliases used and `com.isomorphic.sql.SQLDataSource.FK` category additionally enables logging for the foreign key fields relations are based on.
-
-#### Extended `includeVia` syntax
-In complex cases involving composite foreign keys or indirect relation chains (multi-step paths across multiple DataSources), `includeVia` supports an extended syntax that allows explicit control over how relationships are resolved. See [includeViaSyntax](../kb_topics/includeViaSyntax.md#kb-topic-includevia-syntax) for more details.
-
 ### Groups
 
 - dataSourceRelations
@@ -1841,7 +1599,6 @@ In complex cases involving composite foreign keys or indirect relation chains (m
 ### See Also
 
 - [DataSourceField.relatedTableAlias](#attr-datasourcefieldrelatedtablealias)
-- [advancedIncludeVia](#advancedincludevia)
 
 **Flags**: IR
 
@@ -1855,7 +1612,7 @@ JavaScript has a single "Number" type which internally stores numbers in a forma
 
 The `stringInBrowser` setting can be used to deliver numeric values as Strings to the browser. This is intended to allow read-only display and successful round-tripping of the numeric value, however, it will not cause number-oriented features such as [SpinnerItem](SpinnerItem.md#class-spinneritem), [Slider](Slider.md#class-slider), [ListGrid summaries](ListGrid_1.md#attr-listgridshowgridsummary) or range-checking [validators](Validator.md#class-validator) or [criteria](../reference.md#object-advancedcriteria) to actually work.
 
-If `stringInBrowser` is not set, the default behavior is configured by the `server.properties` setting `datasource.defaultStringInBrowser`. If this flag is false, numeric values are delivered to the client as numbers, _even where this will lead to a loss of precision_. If the flag is true (which is the default), the behavior is to prevent range overflow for numeric values:
+If `stringInBrowser` is not set, the default behavior is configured by the `server.properties` setting `datasource.defaultStringInBrowser`. If this flag is false, numeric values are delivered to the client as numbers, _even where this will lead to a loss of precision_. If the flag is true (which is the the default), the behavior is to prevent range overflow for numeric values:
 
 *   Java values of type Long, BigInteger and BigDecimal will be delivered as String _only if_ they exceed JavaScript's number range.
 *   Client-side validation will allow inputs that are outside of JavaScript's normal integer range, and such numbers will remain as Strings after validation, instead of being converted to Numbers
@@ -1892,7 +1649,7 @@ You can use [DataSource.defaultStringInBrowser](DataSource.md#classattr-datasour
 ### Description
 This property is only applicable to fields of SQL DataSources that also specify a [foreignKey](#attr-datasourcefieldforeignkey) property; it is ignored for all other fields. Indicates the type of join to make between the tables underlying this DataSource and the other DataSource referred to in the `foreignKey` property, when resolving [includeFrom](#attr-datasourcefieldincludefrom) fields. The default value of null is the same as specifying "inner".
 
-Note, outer joins are allowed for all supported database products only if you are using [ANSI-style joins](DataSource.md#attr-datasourceuseansijoins). If you are using the older strategy of additional join expressions in the WHERE clause, outer joins are only supported for database products that provide a proprietary native syntax for expressing outer joins. Those products are:
+Note, outer joins are allowed for all supported database products only if you are using [ANSI-style joins](DataSource.md#attr-datasourceuseansijoins), which is not the case by default. If you are using the older strategy of additional join expressions in the WHERE clause, outer joins are only supported for database products that provide a proprietary native syntax for expressing outer joins. Those products are:
 
 *   Oracle
 *   Versions of Microsoft SQL Server earlier than 2012, and running in compatibility mode 80
@@ -1938,7 +1695,7 @@ Rather than a security setting, `canFilter:false` is intended for situations whe
 ### Description
 **NOTE:** Only applicable to [clientOnly](DataSource.md#attr-datasourceclientonly) DataSources and the built-in [SQL](../kb_topics/sqlDataSource.md#kb-topic-sql-datasources), [JPA](../kb_topics/jpaIntegration.md#kb-topic-integration-with-jpa) and [Hibernate](../kb_topics/hibernateIntegration.md#kb-topic-integration-with-hibernate) DataSources available in Pro, Power and Enterprise versions of SmartClient.
 
-Use this flag to inhibit the normal use of [TextMatchStyle](../reference_2.md#type-textmatchstyle) for this field. A field with this flag set will always be tested for exact equality in generated queries, even for filter-style queries where normal behavior would be to use a substring match or similar.
+Use this flag to inhibit the normal use of [TextMatchStyle](../reference.md#type-textmatchstyle) for this field. A field with this flag set will always be tested for exact equality in generated queries, even for filter-style queries where normal behavior would be to use a substring match or similar.
 
 Whether or not the exact match is case-sensitive is determined by the DataSource's [ignoreTextMatchStyleCaseSensitive](DataSource.md#attr-datasourceignoretextmatchstylecasesensitive) setting.
 
@@ -1948,7 +1705,7 @@ Whether or not the exact match is case-sensitive is determined by the DataSource
 ## Attr: DataSourceField.includeSummaryFunction
 
 ### Description
-When [field.includeFrom](#attr-datasourcefieldincludefrom) is specified and multiple records exist in the related DataSource per record in the including DataSource, `includeSummaryFunction` indicates which [SummaryFunction](../reference_2.md#type-summaryfunction) is used to produce the field value.
+When [field.includeFrom](#attr-datasourcefieldincludefrom) is specified and multiple records exist in the related DataSource per record in the including DataSource, `includeSummaryFunction` indicates which [SummaryFunction](../reference.md#type-summaryfunction) is used to produce the field value.
 
 **This feature is available with Power or better licenses only.** See [smartclient.com/product](http://smartclient.com/product) for details.
 
@@ -2014,9 +1771,9 @@ Some other common uses:
 
 *   using "max" to show the most recent "order" for a "customer"
 *   using "avg" to show the average order size for a "customer"
-*   using "concat" to show the names of all "salesReps" involved in an "order" (note: "concat" has limited support - see [SummaryFunction](../reference_2.md#type-summaryfunction)).
+*   using "concat" to show the names of all "salesReps" involved in an "order" (note: "concat" has limited support - see [SummaryFunction](../reference.md#type-summaryfunction)).
 
-**NOTE**: `includeSummaryFunction` and [Server Summaries](../kb_topics/serverSummaries.md#kb-topic-server-summaries) cannot be used in the same [DSRequest](../reference_2.md#object-dsrequest). If both configurations are present, Server Summaries settings always take priority.
+**NOTE**: `includeSummaryFunction` and [Server Summaries](../kb_topics/serverSummaries.md#kb-topic-server-summaries) cannot be used in the same [DSRequest](../reference.md#object-dsrequest). If both configurations are present, Server Summaries settings always take priority.
 
 ### Groups
 
@@ -2106,7 +1863,7 @@ Similar to `$criteriaValue`, we provide a special variable, `$criteriaOperator`.
 
    `myField #if ($criteriaOperator == "greaterThan") & #else | #end $criteriaValue = $criteriaValue`
 
-For simple criteria, note that `$criteriaOperator` will vary depending on field type and the [textMatchStyle](../reference_2.md#type-textmatchstyle) in force, as follows:
+For simple criteria, note that `$criteriaOperator` will vary depending on field type and the [textMatchStyle](../reference.md#type-textmatchstyle) in force, as follows:
 
 *   Text fields with textMatchStyle "substring" - "iContains"
 *   Text fields with textMatchStyle "startsWith" - "iStartsWith"
@@ -2138,7 +1895,7 @@ Height of the image-content of this field. If set as a string, represents the na
 ## Attr: DataSourceField.joinPrefix
 
 ### Description
-Defines prefix before concatenated values if field is used with [Server summaries](../kb_topics/serverSummaries.md#kb-topic-server-summaries) feature and the [summary function](../reference_2.md#type-summaryfunction) is "concat".
+Defines prefix before concatenated values if field is used with [Server summaries](../kb_topics/serverSummaries.md#kb-topic-server-summaries) feature and the [summary function](../reference.md#type-summaryfunction) is "concat".
 
 ### Groups
 
@@ -2148,7 +1905,7 @@ Defines prefix before concatenated values if field is used with [Server summarie
 
 - [DataSourceField.joinString](#attr-datasourcefieldjoinstring)
 - [DataSourceField.joinSuffix](#attr-datasourcefieldjoinsuffix)
-- [SummaryFunction](../reference_2.md#type-summaryfunction)
+- [SummaryFunction](../reference.md#type-summaryfunction)
 
 **Flags**: IR
 
@@ -2160,10 +1917,10 @@ Explicitly declares the Java class that should be used when data from the client
 
 For DataSources that do not use Java Beans, `javaClass` can be used to force a particular representation for validated DSRequest data (e.g. data passed to a DMI):
 
-*   for fields declared to be of type "integer" or "float" valid settings include "BigInteger", "Long", "Integer", "Short", "Byte", "AtomicInteger", "AtomicLong", "BigDecimal", "Double"and "Float" (or rather, the fully-qualified versions of those classes, such as "java.lang.Integer" and "java.math.BigDecimal")
+*   for fields declared to be of type "integer" or "float" valid settings include "BigInteger", "Long", "Integer", "Short", "Byte", "AtomicInteger", "AtomicLong", "BigDecimal", "Double", "Float".
 *   for fields declared to be of type "date" valid settings include basic "java.util.Date", "java.sql.Date" and "java.sql.Time" types as well as Joda-Time types "DateTime", "DateMidnight", "LocalDateTime", "LocalDate", "LocalTime" and Java 8 Date/Time API types "LocalDate", "LocalDateTime", "LocalTime".
 
-When populating Java Beans/ POJOs, `javaClass` does not normally have to be specified: SmartClient will use Java reflection to inspect the type of argument expected by a setter method and will attempt conversion of inbound data to that type. As described in the documentation for `DataTools.setProperties()`, this works for almost all typical cases. However `field.javaClass` is useful for:
+When populating Java Beans/ POJOs, `javaClass` does not normally have to specified: SmartClient will use Java reflection to inspect the type of argument expected by a setter method and will attempt conversion of inbound data to that type. As described in the documentation for `DataTools.setProperties()`, this works for almost all typical cases. However `field.javaClass` is useful for:
 
 *   subobject of abstract or interface type: in this case Java Reflection is not sufficient to discover the concrete type that should be instantiated, and `javaClass` should be set instead.
 *   subobject of Collection or Map type, when Java generics are not used or the Collection member type or Map value type is abstract. When Java generics are used (for example the setter takes an argument is of type Collection`<SomePOJO>` or Map<KeyType,SomePOJO>, SmartClient will automatically attempt to convert inbound data to the type of the members of the Collection or values of the Map. Without generics, `javaClass` needs to be specified. Note that `javaClass` will take precedence over generics if both are used. Also note that [DataSourceField.javaCollectionClass](#attr-datasourcefieldjavacollectionclass) can be specified if a particular Collection or Map type is needed, and [DataSourceField.javaKeyClass](#attr-datasourcefieldjavakeyclass) can be specified for a field of type `java.util.Map`.
@@ -2236,46 +1993,10 @@ This property only applies to users of the SmartClient server using dataSources 
 **Flags**: IR
 
 ---
-## Attr: DataSourceField.unionOf
-
-### Description
-Only applicable to "union" dataSources, this is a comma-separated list of qualified field names, specifying how this unioned field is to be derived. This setting allows full control of the union process for fields that only exist on certain member dataSources, or that are not named in the same way on member dataSources. Consider this example:
-```
-   <DataSource type="union" unionOf="ds1,ds2,ds3">
-     <fields>
-       <field name="myRenamedField" unionOf="ds1.someField,ds2.someOtherField" />
-     </fields>
-   </DataSource> 
-```
-This field definition states that field `someField` from dataSource `ds1` should be unioned with field `someOtherField` from dataSource `ds2`, and call the resulting bonded field `myRenamedField`. Note that no reference to a field in dataSource `ds3` is provided: this means that the value of `myRenamedField` will be null for any records contributed by `ds3`.
-
-Also note that the above example does not provide a DataSource-level [unionFields](DataSource.md#attr-datasourceunionfields) setting. This means that we will derive a list of fields to union by inspecting every member dataSource and unioning fields with matching names and data types (see [defaultUnionFieldsStrategy](DataSource.md#attr-datasourcedefaultunionfieldsstrategy) for more details of how this is done). However, fields `ds1.someField` and `ds2.someOtherField` will not be part of the auto-derivation, because the system will see that they are being explicitly referenced in a field's `unionOf` property.
-
-### Groups
-
-- unionDataSource
-
-### See Also
-
-- [DataSource.unionFields](DataSource.md#attr-datasourceunionfields)
-
-**Flags**: IR
-
----
-## Attr: DataSourceField.calculated
-
-### Description
-Boolean flag to indicate that a dataSource field has its values dynamically calculated rather than being populated in permanent storage.
-
-If explicitly set, this property will be respected by [DataSource.isCalculated](DataSource.md#method-datasourceiscalculated)
-
-**Flags**: IRA
-
----
 ## Attr: DataSourceField.joinSuffix
 
 ### Description
-Defines suffix after concatenated values if field is used with [Server summaries](../kb_topics/serverSummaries.md#kb-topic-server-summaries) feature and the [summary function](../reference_2.md#type-summaryfunction) is "concat".
+Defines suffix after concatenated values if field is used with [Server summaries](../kb_topics/serverSummaries.md#kb-topic-server-summaries) feature and the [summary function](../reference.md#type-summaryfunction) is "concat".
 
 ### Groups
 
@@ -2285,7 +2006,7 @@ Defines suffix after concatenated values if field is used with [Server summaries
 
 - [DataSourceField.joinPrefix](#attr-datasourcefieldjoinprefix)
 - [DataSourceField.joinString](#attr-datasourcefieldjoinstring)
-- [SummaryFunction](../reference_2.md#type-summaryfunction)
+- [SummaryFunction](../reference.md#type-summaryfunction)
 
 **Flags**: IR
 
@@ -2322,7 +2043,7 @@ Otherwise, [MultipleFieldStorage](../reference.md#type-multiplefieldstorage) "no
 For the built-in SQL, JPA and Hibernate connectors, when `multipleStorage`:"simpleString" or "json" is used, criteria are transformed to replicate the client-side filtering behavior for multiple:true fields, where possible. The following operators are supported with the same behavior as client-side filtering:
 
 *   all String-oriented operators including [pattern operators](../kb_topics/patternOperators.md#kb-topic-patternoperators)
-*   regexp / iRegexp (built-in SQL only, JPA and Hibernate do not support these. Additionally, when using PostgreSQL, regexp operators are supported only starting from PostgreSQL version 9.3)
+*   regexp / iRegexp (built-in SQL only, JPA and Hibernate do not support these)
 *   isBlank / notBlank
 *   isNull / notNull
 *   inSet / notInSet
@@ -2331,7 +2052,7 @@ For the built-in SQL, JPA and Hibernate connectors, when `multipleStorage`:"simp
 The following operators, which are supported for client-side filtering of multiple:true fields, are not supported for server filtering when using `multipleStorage`:
 
 *   greaterThan/lessThan(OrEqual)
-*   "between" and all other operators with [OperatorValueType](../reference_2.md#type-operatorvaluetype) of "valueRange"
+*   "between" and all other operators with [OperatorValueType](../reference.md#type-operatorvaluetype) of "valueRange"
 *   regexp / iRegexp as noted above
 
 Note that for string-based filtering operators such as "equals", no characters which are part of the [DataSourceField.multipleStorageSeparator](#attr-datasourcefieldmultiplestorageseparator) may be used in the filter string. If any characters from the `multipleStorageSeparator` are present in the filter value, it will always fail to match. For "json" mode, the `multipleStorageSeparator` is effectively the String '","'.
@@ -2459,7 +2180,7 @@ The inclusions may as well be indirect like shown below and they would produce s
 ## Attr: DataSourceField.joinString
 
 ### Description
-Defines the delimiter between concatenated values if field is used with [Server summaries](../kb_topics/serverSummaries.md#kb-topic-server-summaries) feature and the [summary function](../reference_2.md#type-summaryfunction) is "concat". The default value is ", ".
+Defines the delimiter between concatenated values if field is used with [Server summaries](../kb_topics/serverSummaries.md#kb-topic-server-summaries) feature and the [summary function](../reference.md#type-summaryfunction) is "concat". The default value is ", ".
 
 ### Groups
 
@@ -2469,7 +2190,7 @@ Defines the delimiter between concatenated values if field is used with [Server 
 
 - [DataSourceField.joinPrefix](#attr-datasourcefieldjoinprefix)
 - [DataSourceField.joinSuffix](#attr-datasourcefieldjoinsuffix)
-- [SummaryFunction](../reference_2.md#type-summaryfunction)
+- [SummaryFunction](../reference.md#type-summaryfunction)
 
 **Flags**: IR
 
@@ -2523,7 +2244,7 @@ The original unpadded value is always shown when the value is edited.
 ## Attr: DataSourceField.summaryValueTitle
 
 ### Description
-Title to show in a [Summary of type "title"](../reference_2.md#type-summaryfunction) for this field. If unspecified `title` summaries will show the [DataSourceField.title](#attr-datasourcefieldtitle) for the field.
+Title to show in a [Summary of type "title"](../reference.md#type-summaryfunction) for this field. If unspecified `title` summaries will show the [DataSourceField.title](#attr-datasourcefieldtitle) for the field.
 
 **Flags**: IR
 
@@ -2615,38 +2336,6 @@ Comma-separated list of user roles that are allowed to update this field. If the
 - [DataSourceField.editRequiresAuthentication](#attr-datasourcefieldeditrequiresauthentication)
 - [DataSourceField.editRequiresRole](#attr-datasourcefieldeditrequiresrole)
 - [DataSourceField.initRequires](#attr-datasourcefieldinitrequires)
-
-**Flags**: IR
-
----
-## Attr: DataSourceField.formula
-
-### Description
-If `field.formula` is set, this field's value in records will be calculated dynamically.
-
-`DataSourceField.formula` is supported for [SQL DataSources](../reference_2.md#type-dsservertype) and for [clientOnly dataSources](DataSource.md#attr-datasourceclientonly) only.
-
-Valid formula expressions may reference other field values directly by field name, or may reference the record object itself. Formula expressions may make use of standard [FormulaFunctions](../kb_topics/formulaFunction.md#kb-topic-datasourcefield-formula-functions).
-
-For example, given a dataSource with two numeric fields "population" and "area" you could easily add a "populationDensity" field with the following formula:
-
-```
- <field name="populationDensity" type="float">
-      <formula>round(population/area)</formula>
- </field>
- 
-```
-
-For SQL DataSources, values are calculated on the server by modifying the generated SQL request as appropriate. For clientOnly dataSources, values are calculated as part of the [standard fetch response flow](DataSource.md#method-datasourcegetclientonlyresponse). Since the field values are calculated in the data source layer, standard capbilities like server side sorting of paged data sets are supported for these fields. This would not be the case for formula field values calculated [at the component level](ListGridField.md#attr-listgridfielduserformula).
-
-As with other [dynamically calculated](DataSource.md#method-datasourceiscalculated) fields, fields with a specified formula are non editable.  
-When records are displayed in [dataBoundComponents that support editing](../reference.md#interface-databoundcomponent), formula field values will be re-calculated dynamically on the client as the user edits a record, so a user may preview the result of their changes.
-
-Note that `formula` fields may not make use of [fields included from related dataSources](#attr-datasourcefieldincludefrom). **DataSourceField.formula is available with Power or better licenses only.** See [smartclient.com/product](http://smartclient.com/product) for details.
-
-### Groups
-
-- calculatedDataSourceFields
 
 **Flags**: IR
 
@@ -2873,13 +2562,13 @@ If true, this property indicates that this field will hold an explicit array of 
 ### Description
 Indicates that this field should always be Array-valued. If the value derived from [XML or JSON data](DataSource.md#attr-datasourcedataformat) is singular, it will be wrapped in an Array.
 
-JPA and Hibernate DataSources use `multiple:true` as part of the declaration of One-To-Many and Many-to-Many relations - see [jpaHibernateRelations](../kb_topics/jpaHibernateRelations.md#kb-topic-jpa--hibernate-relations) for details. On fields that also declare a [foreignKey](#attr-datasourcefieldforeignkey) `multiple:true` also indicates that this field is participating in a one-to-many or many-to-many relation - see [dataSourceRelations](../kb_topics/dataSourceRelations.md#kb-topic-relations) for details.
+JPA and Hibernate DataSources use `multiple:true` as part of the declaration of One-To-Many and Many-to-Many relations - see [jpaHibernateRelations](../kb_topics/jpaHibernateRelations.md#kb-topic-jpa--hibernate-relations) for details.
 
 #### Criteria on multiple:true fields: client-side filtering
 
 For simple Criteria, the criteria value is compared to _each_ field value in the `multiple:true` field, according to the [textMatchStyle](DSRequest.md#attr-dsrequesttextmatchstyle). If _any_ field value matches the j filter value, the field is considered to match the criteria.
 
-For [AdvancedCriteria](../reference.md#object-advancedcriteria), for normal [search operators](../reference.md#type-operatorid) the field value is considered as matching the `Criterion` if _any_ of the field values match the Criterion. Specifically, this is true of all operators that have an [operatorValueType](../reference_2.md#type-operatorvaluetype) of "fieldType" or "valueRange".
+For [AdvancedCriteria](../reference.md#object-advancedcriteria), for normal [search operators](../reference.md#type-operatorid) the field value is considered as matching the `Criterion` if _any_ of the field values match the Criterion. Specifically, this is true of all operators that have an [operatorValueType](../reference.md#type-operatorvaluetype) of "fieldType" or "valueRange".
 
 For operators that compare against other fields in same record, such as "equalsField", if the other field is _not_ `multiple:true`, matching works the same as for normal operators, that is, as if `criterion.value` directly contained the value rather than the name of another field.
 
@@ -2893,7 +2582,7 @@ For the `inSet` operator, the field matches if there is any intersection between
 
 Values for multiple:true fields appear as Java Lists when received in server code such as a DMI. The SmartClient Server supports simple storage of values that are multiple:true, controlled via the [DataSourceField.multipleStorage](#attr-datasourcefieldmultiplestorage) setting.
 
-For server-side behavior of relation fields that are multiple:true, see +link{group:dataSourceRelations); for the specifics of JPA and Hibernate relation fields that are multiple:true, see [jpaHibernateRelations](../kb_topics/jpaHibernateRelations.md#kb-topic-jpa--hibernate-relations).
+For server-side behavior of JPA and Hibernate relation fields that are multiple:true, see [jpaHibernateRelations](../kb_topics/jpaHibernateRelations.md#kb-topic-jpa--hibernate-relations).
 
 For non-relation fields, the SmartClient Server supports simple storage of values that are multiple:true, controlled via the [DataSourceField.multipleStorage](#attr-datasourcefieldmultiplestorage) setting, with some limited support for server-side filtering, as described in the [DataSourceField.multipleStorage](#attr-datasourcefieldmultiplestorage) docs.
 
@@ -2924,23 +2613,6 @@ See [DataSourceField.childTagName](#attr-datasourcefieldchildtagname) for custom
 
 - xmlSerialize
 - componentSchema
-
-**Flags**: IR
-
----
-## Attr: DataSourceField.outputWhen
-
-### Description
-Specifies, for this field only, the type of condition field must match to be fetched from underlying source of data and delivered to the client.
-
-This setting overrides the [DSRequest.outputs](DSRequest.md#attr-dsrequestoutputs), meaning that if field is included in request.outputs, but does not match outputWhen condition, it won't be fetched and delivered to the client.
-
-This setting does not affect [OperationBinding.outputs](OperationBinding.md#attr-operationbindingoutputs), meaning that if field is explicitly listed in operationBinding.outputs, then it will be fetched and delivered to the client regardless of outputWhen condition.
-
-### See Also
-
-- [OperationBinding.outputs](OperationBinding.md#attr-operationbindingoutputs)
-- [DSRequest.outputs](DSRequest.md#attr-dsrequestoutputs)
 
 **Flags**: IR
 
@@ -3062,7 +2734,7 @@ The ListGrid and ToolStrip do not construct themselves automatically. Instead, t
 ## Attr: DataSourceField.format
 
 ### Description
-Format string to use when rendering the value in any [DataBoundComponent](../reference.md#interface-databoundcomponent) or when exporting via [DataSource.exportData](DataSource.md#method-datasourceexportdata) or [ListGrid.exportData](ListGrid_2.md#method-listgridexportdata) or [ListGrid.exportClientData](ListGrid_2.md#method-listgridexportclientdata).
+Format string to use when rendering the value in any [DataBoundComponent](../reference.md#interface-databoundcomponent) or when exporting via [DataSource.exportData](DataSource.md#method-datasourceexportdata) or [ListGrid.exportData](ListGrid_2.md#method-listgridexportdata) or [ListGrid.exportClientData](ListGrid_1.md#method-listgridexportclientdata).
 
 Supported for fields of type "date", "time", "datetime", "int", "float" or any derived [SimpleType](SimpleType.md#class-simpletype).
 

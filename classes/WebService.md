@@ -99,7 +99,7 @@ If you have more than one <wsdl:service> in the same target namespace, use [WebS
 ### Description
 Retrieve a DataSource that provides read-only access to records returned by a web service operation.
 
-[DataBound Components](../reference.md#interface-databoundcomponent) can be bound to the returned DataSource, and the [fetchData()](ListGrid_2.md#method-listgridfetchdata) method can be invoked to retrieve data from the web service.
+[DataBound Components](../reference.md#interface-databoundcomponent) can be bound to the returned DataSource, and the [fetchData()](ListGrid_1.md#method-listgridfetchdata) method can be invoked to retrieve data from the web service.
 
 The returned DataSource is only capable of the "fetch" [DataSource operation](../kb_topics/dataSourceOperations.md#kb-topic-datasource-operations), not "update", "add" or "remove". To create a DataSource capable of full read-write access, use [DataSource.operationBindings](DataSource.md#attr-datasourceoperationbindings) with the [wsOperation](OperationBinding.md#attr-operationbindingwsoperation) property set to associate each DataSource operation with a web service operation.
 
@@ -154,7 +154,7 @@ The `data` parameter will be serialized to XML to form the input message for the
 The `resultType` selects what part of the message should be decoded to JavaScript and made available as the "data" variable in the callback. The `resultType` parameter can be either:
 
 *   an XPath. "data" will be always be an Array, containing the selected elements as decoded by [XMLTools.toJS](XMLTools.md#classmethod-xmltoolstojs). All properties will have String value.
-*   the name of an XML Schema type found somewhere in the response. You can use the WSDL tab of the Developer Console to analyze the WSDL file for an appropriate type name. "data" will be an Array, containing the decoded elements as decoded by [DataSource.recordsFromXML](#method-datasourcerecordsfromxml). In this case, since the XML Schema type of the selected data is known, properties will have correct type (eg "date" fields will have JavaScript Date objects)
+*   the name of an XML Schema type found somewhere in the response. You can use the WSDL tab of the Developer Console to analyze the WSDL file for an appropriate type name. "data" will be an Array, containing the decoded elements as decoded by [DataSource.recordsFromXML](DataSource.md#method-datasourcerecordsfromxml). In this case, since the XML Schema type of the selected data is known, properties will have correct type (eg "date" fields will have JavaScript Date objects)
 *   null. "data" will an Object representing the entire <SOAP:Body> as decoded to JavaScript. As above, properties will have correct type.
 
 In the callback, you also receive the XML document returned by the web service as "xmlDoc".

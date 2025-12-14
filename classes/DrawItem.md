@@ -6,7 +6,7 @@
 
 ## Class: DrawItem
 
-*Inherits from:* [BaseWidget](BaseWidget.md#class-basewidget)
+*Inherits from:* [BaseWidget](../reference.md#class-basewidget)
 
 ### Description
 Base class for graphical elements drawn in a DrawPane. All properties and methods documented here are available on all DrawItems unless otherwise specified.
@@ -159,7 +159,7 @@ The resize and move knobs show at the same position by default. However, when bo
 ## Attr: DrawItem.titleLabel
 
 ### Description
-When a non-null [title](#attr-drawitemtitle) is set, this AutoChild is created automatically and positioned at the [center](#method-drawitemgetcenter) of this `DrawItem` . The `titleLabel` moves with this `DrawItem` and, depending on [titleRotationMode](../reference_2.md#type-titlerotationmode), can rotate with this `DrawItem` as well.
+When a non-null [title](#attr-drawitemtitle) is set, this AutoChild is created automatically and positioned at the [center](#method-drawitemgetcenter) of this `DrawItem` . The `titleLabel` moves with this `DrawItem` and, depending on [titleRotationMode](../reference.md#type-titlerotationmode), can rotate with this `DrawItem` as well.
 
 The following [passthrough](../kb_topics/autoChildUsage.md#kb-topic-using-autochildren) applies:  
 [title](#attr-drawitemtitle) for [DrawLabel.contents](DrawLabel.md#attr-drawlabelcontents).
@@ -178,7 +178,7 @@ Related to the `titleLabel` is the [titleLabelBackground](#attr-drawitemtitlelab
 ### Description
 Whether the [DrawItem.titleLabel](#attr-drawitemtitlelabel) should be scaled to the maximum possible size that fits inside the bounds of this item. Currently only [DrawRect](DrawRect.md#class-drawrect)s and [DrawPolygon](DrawPolygon.md#class-drawpolygon)s with 90 degree angles are supported.
 
-Note that [DrawItem.titleAutoFit](#attr-drawitemtitleautofit) isn't supported for rotated, sheared, or scaled [DrawItem](#class-drawitem)s, and that therefore the value of [TitleRotationMode](../reference_2.md#type-titlerotationmode), which relates to rotation of the item, is ignored when this property is set. However, we do support having the label automatically rotate to run vertically if there's more space - see [DrawItem.titleAutoFitRotationMode](#attr-drawitemtitleautofitrotationmode).
+Note that [DrawItem.titleAutoFit](#attr-drawitemtitleautofit) isn't supported for rotated, sheared, or scaled [DrawItem](#class-drawitem)s, and that therefore the value of [TitleRotationMode](../reference.md#type-titlerotationmode), which relates to rotation of the item, is ignored when this property is set. However, we do support having the label automatically rotate to run vertically if there's more space - see [DrawItem.titleAutoFitRotationMode](#attr-drawitemtitleautofitrotationmode).
 
 ### See Also
 
@@ -239,7 +239,7 @@ Fill gradient to use for shapes. If a string it uses the gradient identifier par
 
 ### See Also
 
-- [Gradient](../reference_2.md#object-gradient)
+- [Gradient](../reference.md#object-gradient)
 
 **Flags**: IRW
 
@@ -468,7 +468,7 @@ This offset overrides the built-in offset used when showing both resize and move
 ## Attr: DrawItem.drawPane
 
 ### Description
-[DrawPane](DrawPane.md#class-drawpane) or [global ID](Canvas.md#method-canvasgetid) of the DrawPane this drawItem should draw in.
+[DrawPane](DrawPane.md#class-drawpane) this drawItem should draw in.
 
 If this item has a [DrawGroup](DrawGroup.md#class-drawgroup), the drawGroup's drawPane is automatically used.
 
@@ -714,7 +714,7 @@ Set the arrowhead at the beginning of this path.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| arrowStyle | [ArrowStyle](../reference_2.md#type-arrowstyle) | false | — | style of arrow to use |
+| arrowStyle | [ArrowStyle](../reference.md#type-arrowstyle) | false | — | style of arrow to use |
 
 ---
 ## Method: DrawItem.showAllKnobs
@@ -787,7 +787,7 @@ If [canHover](#attr-drawitemcanhover) is true for this DrawItem, the hover() str
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false to cancel the hover event.
+`[boolean](../reference.md#type-boolean)` — false to cancel the hover event.
 
 ### Groups
 
@@ -848,7 +848,7 @@ Note that if this item is part of a [DrawGroup](DrawGroup.md#class-drawgroup), t
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false to cancel drag action.
+`[boolean](../reference.md#type-boolean)` — false to cancel drag action.
 
 ### Groups
 
@@ -925,7 +925,7 @@ Note that if this item is part of a [DrawGroup](DrawGroup.md#class-drawgroup), t
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false to cancel drag interaction.
+`[boolean](../reference.md#type-boolean)` — false to cancel drag interaction.
 
 ### Groups
 
@@ -1079,7 +1079,7 @@ Note that if this item is part of a [DrawGroup](DrawGroup.md#class-drawgroup), t
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false to cancel drag interaction.
+`[boolean](../reference.md#type-boolean)` — false to cancel drag interaction.
 
 ### Groups
 
@@ -1170,7 +1170,7 @@ Set the arrowhead at the end of this path.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| arrowStyle | [ArrowStyle](../reference_2.md#type-arrowstyle) | false | — | style of arrow to use |
+| arrowStyle | [ArrowStyle](../reference.md#type-arrowstyle) | false | — | style of arrow to use |
 
 ---
 ## Method: DrawItem.setDrawPane
@@ -1182,7 +1182,7 @@ Setter for [drawPane](#attr-drawitemdrawpane).
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| drawPane | [DrawPane](#type-drawpane)|[String](#type-string) | false | — | new value for `this.drawPane`. |
+| drawPane | [DrawPane](#type-drawpane) | false | — | new value for `this.drawPane`. |
 
 ---
 ## Method: DrawItem.moved
@@ -1394,26 +1394,6 @@ Shows a set of control knobs for this drawItem. Updates [DrawItem.knobs](#attr-d
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | knobType | [KnobType](../reference.md#type-knobtype)|[Array of KnobType](#type-array-of-knobtype) | false | — | knobs to show |
-
----
-## Method: DrawItem.doubleClick
-
-### Description
-Notification fired when the user clicks on this DrawItem twice in rapid succession (within the [DrawPane](DrawPane.md#class-drawpane)'s [doubleClickDelay](Canvas.md#attr-canvasdoubleclickdelay) by default) in this object.
-
-Note that if this item is part of a [DrawGroup](DrawGroup.md#class-drawgroup), then the group's [useGroupRect](DrawGroup.md#attr-drawgroupusegrouprect) setting affects whether this item receives the notification. If useGroupRect is true, then this item will _not_ receive the notification. Otherwise, the item receives the notification and notification bubbles up to the group.
-
-### Returns
-
-`[Boolean](#type-boolean)` — false to prevent this event from bubbling to this widget's parent, true or undefined to bubble.
-
-### Groups
-
-- widgetEvents
-
-### See Also
-
-- [Canvas.doubleClickDelay](Canvas.md#attr-canvasdoubleclickdelay)
 
 ---
 ## Method: DrawItem.sendToBack

@@ -129,7 +129,7 @@ This property supports [dynamicCriteria](../kb_topics/dynamicCriteria.md#kb-topi
 ## Attr: Calendar.dataSource
 
 ### Description
-The DataSource that this component should bind to for default fields and for performing [DataSource requests](../reference_2.md#object-dsrequest).
+The DataSource that this component should bind to for default fields and for performing [DataSource requests](../reference.md#object-dsrequest).
 
 Can be specified as either a DataSource instance or the String ID of a DataSource.
 
@@ -228,18 +228,6 @@ To set different start and [end](#attr-calendarenddate) dates after initial draw
 Note that the value you provide may be automatically altered if showing [header-levels](#attr-calendarheaderlevels), to fit to header boundaries.
 
 **Flags**: IR
-
----
-## Attr: Calendar.allowLongEvents
-
-### Description
-When set to true, provides an intuitive way for users to view and interact with multi-day events, or events marked as lasting [all day](#attr-calendaralldayfield). If you've seen the calendars provided by Google, Apple or Microsoft, you'll already be familiar with the approach.
-
-In vertical views, long-events are displayed in a [horizontal area](CalendarView.md#attr-calendarviewlongeventslayout) across the top of the main grid. In the [MonthView](#attr-calendarmonthview), each week of date-cells has its own area for displaying long-events, which may wrap from one week to the next. You can click or drag in this area to create new events, and click or drag existing events there to edit or move them, respectively. The style of this area may be [customized](#attr-calendarlongeventlayoutstylename).
-
-Long events are rendered using a subclass of [EventCanvas](EventCanvas.md#class-eventcanvas), with custom [content](#method-calendargetlongeventhtml), [hover-content](#method-calendargetlongeventhoverhtml) and [styling](#attr-calendarlongeventstylename).
-
-**Flags**: RWA
 
 ---
 ## Attr: Calendar.alternateLaneStyles
@@ -356,18 +344,6 @@ A boolean value controlling whether the Calendar shows tabs for available calend
 **Flags**: IRW
 
 ---
-## Attr: Calendar.fixedEventHeight
-
-### Description
-When set, applies a fixed height to horizontal events in Timelines, rather than allowing them to share the whole height of their Lane. Overlapping behavior is unchanged, but all events are of the same fixed height and are stacked in the Lane, which may overflow to accommodate more events.
-
-### Groups
-
-- appearance
-
-**Flags**: IRW
-
----
 ## Attr: Calendar.otherDayBlankStyle
 
 ### Description
@@ -456,20 +432,6 @@ An [ImgButton](ImgButton.md#class-imgbutton) that appears above the week/day/mon
 **Flags**: IR
 
 ---
-## Attr: Calendar.longEventStyleName
-
-### Description
-The base name for the CSS class applied to [events](#attr-calendareventcanvas) when they're rendered in a [long-events layout](CalendarView.md#attr-calendarviewlongeventslayout) in a view. This style will have "Header" and "Body" appended to it, according to which part of the event window is being styled. By default, only the Header.
-
-When the start or end of a longEvent extends beyond the range of its containing-view, this style is appended with "LeftEnd", "RightEnd" or "BothEnds", which additions clip the ends of the canvas into arrows pointing toward the next range.
-
-### Groups
-
-- appearance
-
-**Flags**: IRW
-
----
 ## Attr: Calendar.data
 
 ### Description
@@ -516,14 +478,6 @@ The name of the leading date field for each event. When this attribute and [Cale
 ### See Also
 
 - [CalendarEvent](../reference.md#object-calendarevent)
-
-**Flags**: IR
-
----
-## Attr: Calendar.eventCanvasCloseButtonSize
-
-### Description
-The size of the [close-button](#attr-calendareventcanvasclosebutton) that snaps to the top-right of an event canvas on rollover and shows allows an event to be removed from a [CalendarView](CalendarView.md#class-calendarview).
 
 **Flags**: IR
 
@@ -710,18 +664,6 @@ The name of the field used to override [Calendar.eventStyleName](#attr-calendare
 **Flags**: R
 
 ---
-## Attr: Calendar.eventAllDayFieldTitle
-
-### Description
-The title for the [Calendar.allDayField](#attr-calendaralldayfield) in the detailed [editor](#attr-calendareventeditor).
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IR
-
----
 ## Attr: Calendar.detailsButtonTitle
 
 ### Description
@@ -737,7 +679,7 @@ The title for the edit button in the quick [quick event dialog](#attr-calendarev
 ## Attr: Calendar.overlapSortSpecifiers
 
 ### Description
-A set of [sort-specifiers](../reference_2.md#object-sortspecifier) for customizing the render order of events that overlap.
+A set of [sort-specifiers](../reference.md#object-sortspecifier) for customizing the render order of events that overlap.
 
 In [timelines](../reference.md#class-timeline), this dictates the vertical rendering order of overlapped events in each [lane](../reference.md#object-lane).
 
@@ -953,18 +895,6 @@ See [cellStyleSuffixes](../kb_topics/cellStyleSuffixes.md#kb-topic-cellstylesuff
 **Flags**: IRW
 
 ---
-## Attr: Calendar.longEventHeight
-
-### Description
-The default height of the canvases for [long-events](#attr-calendarallowlongevents) which are displayed in the separate [CalendarView.longEventsLayout](CalendarView.md#attr-calendarviewlongeventslayout).
-
-### Groups
-
-- appearance
-
-**Flags**: IRW
-
----
 ## Attr: Calendar.monthButtonTitle
 
 ### Description
@@ -974,7 +904,7 @@ This is a dynamic string - text within `${...}` are dynamic variables and will b
 
 Only one dynamic variable, monthName, is available and represents the name of the month containing the currently selected date.
 
-The default value is the Month-name of the selected date.
+The default value is a left-facing arrow followed by the Month-name of the selected date.
 
 When the month view is already visible, the title for the month button is set according to the value of [Calendar.backButtonTitle](#attr-calendarbackbuttontitle).
 
@@ -997,16 +927,6 @@ The base name for the CSS class applied to event windows within calendars. This 
 **Deprecated**
 
 **Flags**: IRW
-
----
-## Attr: Calendar.eventEditorButtons
-
-### Description
-The list of buttons to include in the [Calendar.eventEditor](#attr-calendareventeditor). Entries can be the names of the builtin buttons, [saveButton](#attr-calendarsavebutton), [removeButton](#attr-calendarremovebutton) and [cancelButton](#attr-calendarcancelbutton), or the names of custom [autoChildren](../reference.md#type-autochild) that have been defined on the Calendar instance, or widget instances that already exist.
-
-The default is to show the builtin buttons.
-
-**Flags**: IR
 
 ---
 ## Attr: Calendar.eventDialog
@@ -1072,7 +992,7 @@ The content of the hover is determined by a call to [Calendar.getCellHoverHTML](
 ## Attr: Calendar.headerLevels
 
 ### Description
-Configures the levels of [headers](../reference_2.md#object-headerlevel) shown above the event area, and their time units.
+Configures the levels of [headers](../reference.md#object-headerlevel) shown above the event area, and their time units.
 
 Header levels are provided from the top down, so the first header level should be the largest time unit and the last one the smallest. The smallest is then used for the actual field-headers.
 
@@ -1123,20 +1043,12 @@ A minute value that indicates which rows should show times in vertical views, li
 **Flags**: IR
 
 ---
-## Attr: Calendar.controlBarIconBaseStyle
-
-### Description
-A CSS style to apply to icons in the [Calendar.controlsBar](#attr-calendarcontrolsbar). This is a base style supporting suffixes for states, specifically "Over", "Down" and "Disabled", which are applied when [ImgButton](ImgButton.md#class-imgbutton) settings like [ImgButton.showRollOverIcon](ImgButton.md#attr-imgbuttonshowrollovericon) are applied to the icons.
-
-**Flags**: IR
-
----
 ## Attr: Calendar.autoFetchData
 
 ### Description
-If true, when this component is first drawn, automatically call `this.fetchData()`. Criteria for this fetch may be picked up from [Calendar.initialCriteria](#attr-calendarinitialcriteria), and textMatchStyle may be specified via [autoFetchTextMatchStyle](ListGrid_1.md#attr-listgridautofetchtextmatchstyle). Additional request properties may be specified using [fetchRequestProperties](#attr-databoundcomponentfetchrequestproperties).
+If true, when this component is first drawn, automatically call `this.fetchData()`. Criteria for this fetch may be picked up from [Calendar.initialCriteria](#attr-calendarinitialcriteria), and textMatchStyle may be specified via [autoFetchTextMatchStyle](ListGrid_1.md#attr-listgridautofetchtextmatchstyle).
 
-NOTE: if `autoFetchData` is set, calling [fetchData()](ListGrid_2.md#method-listgridfetchdata) before draw will cause two requests to be issued, one from the manual call to fetchData() and one from the autoFetchData setting. The second request will use only [Calendar.initialCriteria](#attr-calendarinitialcriteria) and not any other criteria or settings from the first request. Generally, turn off autoFetchData if you are going to manually call [fetchData()](ListGrid_2.md#method-listgridfetchdata) at any time. Note: If you are using saved searches - either via [SavedSearchItem](SavedSearchItem.md#class-savedsearchitem) or [ListGrid.saveDefaultSearch](ListGrid_1.md#attr-listgridsavedefaultsearch), autoFetchData will be automatically suspended and replaced with the saved criteria/view state, if applicable.
+NOTE: if `autoFetchData` is set, calling [fetchData()](ListGrid_1.md#method-listgridfetchdata) before draw will cause two requests to be issued, one from the manual call to fetchData() and one from the autoFetchData setting. The second request will use only [Calendar.initialCriteria](#attr-calendarinitialcriteria) and not any other criteria or settings from the first request. Generally, turn off autoFetchData if you are going to manually call [fetchData()](ListGrid_1.md#method-listgridfetchdata) at any time. Note: If you are using saved searches - either via [SavedSearchItem](SavedSearchItem.md#class-savedsearchitem) or [ListGrid.saveDefaultSearch](ListGrid_1.md#attr-listgridsavedefaultsearch), autoFetchData will be automatically suspended and replaced with the saved criteria/view state, if applicable.
 
 ### Groups
 
@@ -1144,7 +1056,7 @@ NOTE: if `autoFetchData` is set, calling [fetchData()](ListGrid_2.md#method-list
 
 ### See Also
 
-- [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata)
+- [ListGrid.fetchData](ListGrid_1.md#method-listgridfetchdata)
 
 **Flags**: IR
 
@@ -1306,25 +1218,13 @@ If unset, the default is taken from the current locale.
 ### Description
 When true, causes [layouts](#attr-calendarcolumnlayout) to be added to each column in vertical views. In this mode, eventCanvases are stacked in these layouts, filling width and auto-sizing vertically to content, rather than being placed, sized and overlapped according to their times.
 
-Because times are ignored in this mode, various behaviors are switched off automatically; for example, the [time-column](#attr-calendarshowlabelcolumn) is hidden, [zones](#attr-calendarzones) are not supported and event-canvases cannot be [resized](#attr-calendarcanresizeevents) or rendered [on-demand](#attr-calendarrendereventsondemand).
+Because times are ignored in this mode, various behaviors are switched off automatically; for example, the [time-column](#attr-calendarshowlabelcolumn) is hidden and event-canvases cannot be [resized](#attr-calendarcanresizeevents) or rendered [on-demand](#attr-calendarrendereventsondemand).
 
 ### Groups
 
 - appearance
 
 **Flags**: IR
-
----
-## Attr: Calendar.minLaneHeight
-
-### Description
-The minimum height for Lanes in a Timeline. When events have a [fixed height](#attr-calendarfixedeventheight), Lanes will size just tall enough to accommodate their events but will not shrink below this minimum height.
-
-### Groups
-
-- appearance
-
-**Flags**: IRW
 
 ---
 ## Attr: Calendar.eventEditorButtonLayout
@@ -1348,7 +1248,7 @@ Has no effect when [showColumnLayouts](#attr-calendarshowcolumnlayouts) is true.
 ## Attr: Calendar.weekPrefix
 
 ### Description
-The text to appear before the week number in the title of [week-based](../reference_2.md#type-timeunit) [HeaderLevel](../reference_2.md#object-headerlevel)s when this calendar is showing a timeline.
+The text to appear before the week number in the title of [week-based](../reference_2.md#type-timeunit) [HeaderLevel](../reference.md#object-headerlevel)s when this calendar is showing a timeline.
 
 ### Groups
 
@@ -1482,18 +1382,6 @@ The text to be displayed when a user hovers over the [add event](#attr-calendara
 **Flags**: IR
 
 ---
-## Attr: Calendar.longEventLayoutStyleName
-
-### Description
-The base name for the CSS class applied to the layouts that show [long-events](CalendarView.md#attr-calendarviewlongeventslayout) in the various [CalendarViews](CalendarView.md#class-calendarview).
-
-### Groups
-
-- appearance
-
-**Flags**: IRW
-
----
 ## Attr: Calendar.nameField
 
 ### Description
@@ -1530,22 +1418,6 @@ When set to true, causes [lanes](#attr-calendarlanes) to be sub-divided accordin
 **Flags**: IR
 
 ---
-## Attr: Calendar.allDayField
-
-### Description
-The name of the field on a [CalendarEvent](../reference.md#object-calendarevent) which indicates an event should fill the whole day. Such events are displayed in a separate [long-events layout](CalendarView.md#attr-calendarviewlongeventslayout), which appears beneath the headers in the [week](#attr-calendarweekview) and [day](#attr-calendardayview) views and does not scroll with the main body. In the [month](#attr-calendarmonthview) view, these layouts appear beneath the headers for each week, and very long events might wrap from one week to the next.
-
-### Groups
-
-- calendarEvent
-
-### See Also
-
-- [CalendarEvent](../reference.md#object-calendarevent)
-
-**Flags**: IR
-
----
 ## Attr: Calendar.eventSublaneFieldTitle
 
 ### Description
@@ -1566,6 +1438,16 @@ When set to true, causes [Timelines](#attr-calendartimelineview) to highlight th
 **Flags**: IRW
 
 ---
+## Attr: Calendar.showEventDescriptions
+
+### Description
+When rendering the [canvas](#attr-calendareventcanvas) for an event, whether to show the [body area](EventCanvas.md#attr-eventcanvasshowbody), typically containing brief details of the event - [by default](#method-calendargeteventbodyhtml), [its description](#attr-calendardescriptionfield).
+
+The default is true - if set to false, the event's [header](EventCanvas.md#attr-eventcanvasshowheader) will fill the canvas.
+
+**Flags**: IR
+
+---
 ## Attr: Calendar.weekViewTitle
 
 ### Description
@@ -1574,16 +1456,6 @@ The title for the [week view](#attr-calendarweekview).
 ### Groups
 
 - i18nMessages
-
-**Flags**: IR
-
----
-## Attr: Calendar.showEventDescriptions
-
-### Description
-When rendering the [canvas](#attr-calendareventcanvas) for an event, whether to show the [body area](EventCanvas.md#attr-eventcanvasshowbody), typically containing brief details of the event - [by default](#method-calendargeteventbodyhtml), [its description](#attr-calendardescriptionfield).
-
-The default is true - if set to false, the event's [header](EventCanvas.md#attr-eventcanvasshowheader) will fill the canvas.
 
 **Flags**: IR
 
@@ -1622,16 +1494,6 @@ Augments the width of week event windows slightly to avoid duplicate adjacent bo
 ### Groups
 
 - appearance
-
-**Flags**: IR
-
----
-## Attr: Calendar.includeRangeCriteria
-
-### Description
-When set to true, the default, the fetches issued by navigating around in the various views are limited to the accessible date-range in the current view - as you change the current date-range, a fetch is only issued if the new range is not entirely within the previous range.
-
-For example, navigating in the [Calendar.monthView](#attr-calendarmonthview) will fetch all events in the range of 5 or 6 weeks that cover that month. If you then change to the [day](#attr-calendardayview) or [week](#attr-calendarweekview) views, no fetches will be issued until you navigate outside of the 5 or 6 weeks initially fetched by the Month view.
 
 **Flags**: IR
 
@@ -1850,14 +1712,6 @@ See [showEventHovers](#attr-calendarshoweventhovers), [showZoneHovers](#attr-cal
 **Flags**: IRW
 
 ---
-## Attr: Calendar.backButtonIconSrc
-
-### Description
-The icon to show in the [month-button](#attr-calendarmonthbutton) on Handsets when the [month view](#attr-calendarmonthview) is the current visible view.
-
-**Flags**: IR
-
----
 ## Attr: Calendar.monthMoreEventsLinkTitle
 
 ### Description
@@ -1947,7 +1801,7 @@ Note that, when [Calendar.otherDayClickNavigation](#attr-calendarotherdayclickna
 ## Attr: Calendar.showZones
 
 ### Description
-Set to true to render any defined [zones](#attr-calendarzones) in views other than [Month](#attr-calendarmonthview).
+Set to true to render any defined [zones](#attr-calendarzones) into [timeline views](#attr-calendartimelineview).
 
 **Flags**: IRW
 
@@ -2064,14 +1918,6 @@ When [Calendar.showColumnLayouts](#attr-calendarshowcolumnlayouts) is true, the 
 **Flags**: A
 
 ---
-## Attr: Calendar.monthButtonIconSrc
-
-### Description
-The icon to show next to the month-name in the [month button](#attr-calendarmonthbutton), used for showing and hiding the [month view](#attr-calendarmonthview) on Handsets.
-
-**Flags**: IR
-
----
 ## Attr: Calendar.showEventCanvasComponents
 
 ### Description
@@ -2117,34 +1963,10 @@ The text to be displayed when a user hovers over the [next](#attr-calendarnextbu
 **Flags**: IR
 
 ---
-## Attr: Calendar.longEventDragOpacity
-
-### Description
-The default [opacity percentage](Canvas.md#attr-canvasopacity) of [long-events](#attr-calendarallowlongevents) while being dragged.
-
-### Groups
-
-- appearance
-
-**Flags**: IRW
-
----
 ## Attr: Calendar.eventDurationFieldTitle
 
 ### Description
 The title for the [duration field](#attr-calendardurationfield) in the quick [event dialog](#attr-calendareventdialog) and the detailed [editor](#attr-calendareventeditor).
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IR
-
----
-## Attr: Calendar.newLongEventName
-
-### Description
-The default name for new [long-events](#attr-calendarallowlongevents).
 
 ### Groups
 
@@ -2300,14 +2122,6 @@ The base name for the CSS class applied to [events](#attr-calendareventcanvas) w
 **Flags**: IRW
 
 ---
-## Attr: Calendar.eventCanvasCloseIconSize
-
-### Description
-The size of the icon in the [close-button](#attr-calendareventcanvasclosebutton) floated over events on rollover.
-
-**Flags**: IR
-
----
 ## Attr: Calendar.workdayStart
 
 ### Description
@@ -2358,25 +2172,9 @@ The content of the hover is determined by a call to [Calendar.getDragHoverHTML](
 ## Attr: Calendar.zones
 
 ### Description
-An array of CalendarEvent instances representing pre-defined periods of time to be highlighted in [timelines](#attr-calendartimelineview) and in [day](#attr-calendardayview) or [week](#attr-calendarweekview) views. Each zone renders out a [zone canvas](../reference.md#class-zonecanvas), a special, non-interactive subclass of [EventCanvas](EventCanvas.md#class-eventcanvas), which draws behind any normal, interactive events in the zorder.
-
-In timelines, a `zone` with a [lane-field](#attr-calendarlanenamefield) set will fill that lane vertically - otherwise, it will span all rows vertically. In a DayView showing vertical [day-lanes](#attr-calendarshowdaylanes), a `zone` with a lane-field set will span its date-column horizontally - otherwise, it will span all columns horizontally. In other vertical views, zones span only the time-slots covered by their dates. In a week-view, for example, a Zone from 12 noon on Monday to 1pm on Friday will only cover those time-slots on each of the days.
-
-When vertical views are configured to stack the events vertically in their [date-columns](#attr-calendarshowcolumnlayouts), zones are not supported because that mode does not have time-slots.
+An array of CalendarEvent instances representing pre-defined periods of time to be highlighted in [timeline views](#attr-calendartimelineview). Each zone renders out a [zone canvas](../reference.md#class-zonecanvas), a special, non-interactive subclass of [EventCanvas](EventCanvas.md#class-eventcanvas), which spans all lanes and draws behind any normal, interactive events in the zorder.
 
 The default [style](#attr-calendarzonestylename) for these components renders them semi-transparent and with a bottom-aligned title label.
-
-**Flags**: IRW
-
----
-## Attr: Calendar.longEventLayoutSpace
-
-### Description
-The amount of space available in [long-event layouts](CalendarView.md#attr-calendarviewlongeventslayout) for drag-click and drag-creation of new events. Represents the default height of long-event layouts that have no events, and additional height in layouts with events.
-
-### Groups
-
-- appearance
 
 **Flags**: IRW
 
@@ -2430,7 +2228,7 @@ The [AutoChild](../reference.md#type-autochild) [Label](Label.md#class-label) us
 ### Description
 How to fetch and manage records retrieve from the server. See [FetchMode](../reference_2.md#type-fetchmode).
 
-This setting only applies to the [ResultSet](ResultSet.md#class-resultset) automatically created by calling [fetchData()](ListGrid_2.md#method-listgridfetchdata). If a pre-existing ResultSet is passed to setData() instead, it's existing setting for [ResultSet.fetchMode](ResultSet.md#attr-resultsetfetchmode) applies.
+This setting only applies to the [ResultSet](ResultSet.md#class-resultset) automatically created by calling [fetchData()](ListGrid_1.md#method-listgridfetchdata). If a pre-existing ResultSet is passed to setData() instead, it's existing setting for [ResultSet.fetchMode](ResultSet.md#attr-resultsetfetchmode) applies.
 
 ### Groups
 
@@ -2550,7 +2348,7 @@ The `detail` property is used on DataSource fields to mark fields that shouldn't
 ## Attr: Calendar.autoFetchTextMatchStyle
 
 ### Description
-If [Calendar.autoFetchData](#attr-calendarautofetchdata) is `true`, this attribute allows the developer to specify a textMatchStyle for the initial [fetchData()](ListGrid_2.md#method-listgridfetchdata) call.
+If [Calendar.autoFetchData](#attr-calendarautofetchdata) is `true`, this attribute allows the developer to specify a textMatchStyle for the initial [fetchData()](ListGrid_1.md#method-listgridfetchdata) call.
 
 ### Groups
 
@@ -2701,22 +2499,6 @@ Called when a Timeline event is moved via dragging by a user. Return false to di
 **Deprecated**
 
 ---
-## Method: Calendar.eventRepositionStart
-
-### Description
-Notification fired when a user drags an EventCanvas. Return false to cancel the drag.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| event | [CalendarEvent](#type-calendarevent) | false | — | the event that's about to be moved |
-
-### Returns
-
-`[Boolean](#type-boolean)` — return false to cancel the default drag start behavior
-
----
 ## Method: Calendar.getWorkdayEnd
 
 ### Description
@@ -2782,39 +2564,6 @@ By default, if the passed `component` has methods called `setEvent` or `setData`
 ### See Also
 
 - [Calendar.createEventCanvasComponent](#method-calendarcreateeventcanvascomponent)
-
----
-## Method: Calendar.adjustCriteria
-
-### Description
-Gets the criteria to use when the calendar date ranges shift. This would be called, for example, when the next button is clicked and new events may need to be fetched. Override this function to add any custom criteria to the default criteria constructed by the calendar.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| defaultCriteria | [Criterion](#type-criterion) | false | — | default criteria generated by the calendar |
-
-### Returns
-
-`[Criterion](#type-criterion)` — modified criteria
-
----
-## Method: Calendar.getLongEventLayoutHoverHTML
-
-### Description
-Returns the text to be displayed in a [hover](Canvas.md#attr-canvasshowhover) when the mouse is held over the [separate layout](CalendarView.md#attr-calendarviewlongeventslayout) where [long-events](#method-calendarislongevent) are displayed.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| layout | [Canvas](#type-canvas) | false | — | the longEventsLayout over which the mouse is hovered |
-| view | [CalendarView](#type-calendarview) | true | — | the view in which the event is being rendered |
-
-### Returns
-
-`[HTMLString](../reference.md#type-htmlstring)` — the HTML to display in the hover for this longEventsLayout
 
 ---
 ## Method: Calendar.getSublaneEvents
@@ -2919,7 +2668,7 @@ Accepts either a [zone object](../reference.md#object-calendarevent) or a string
 ### Description
 Reset the resolution, the header levels and scrollable range, of the timeline view.
 
-`headerLevels` specifies the array of [headers](../reference_2.md#object-headerlevel) to show above the timeline, and the `unit` and `unitCount` parameters dictate the scrollable range (eg, passing "week" and 6 will create a timeline with a scrollable range of six weeks, irrespective of the number of columns that requires, according to the [granularity](#attr-calendartimelinegranularity)).
+`headerLevels` specifies the array of [headers](../reference.md#object-headerlevel) to show above the timeline, and the `unit` and `unitCount` parameters dictate the scrollable range (eg, passing "week" and 6 will create a timeline with a scrollable range of six weeks, irrespective of the number of columns that requires, according to the [granularity](#attr-calendartimelinegranularity)).
 
 If the optional `granularityPerColumn` parameter is passed, each column will span that number of units of the granularity, which is determined from the unit of the innermost of the passed headerLevels. For example, to show a span of 12 hours with inner columns that each span 15 minutes, you could pass "hour" and "minute" -based headerLevels, unit and unitCount values of "hour" and 12 respectively, and granularityPerColumn of 15.
 
@@ -2999,7 +2748,7 @@ Implement this method to intercept the automatic removal of data. You can return
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false to cancel the removal
+`[boolean](../reference.md#type-boolean)` — false to cancel the removal
 
 ### Groups
 
@@ -3025,24 +2774,6 @@ Return false to prevent the default action, of resizing the drag canvas to the n
 ### Returns
 
 `[Boolean](#type-boolean)` — return false to cancel the default drag resize behavior
-
----
-## Method: Calendar.getLongEventHoverHTML
-
-### Description
-Returns the text to be displayed in a [hover](Canvas.md#attr-canvasshowhover) when the mouse is held over a given [event](EventCanvas.md#class-eventcanvas) in the [separate layout](CalendarView.md#attr-calendarviewlongeventslayout) where [long-events](#method-calendarislongevent) are displayed.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| event | [CalendarEvent](#type-calendarevent) | false | — | the event to get the description text for |
-| layout | [Canvas](#type-canvas) | false | — | the longEventsLayout in which this event is displayed |
-| view | [CalendarView](#type-calendarview) | true | — | the view in which the event is being rendered |
-
-### Returns
-
-`[HTMLString](../reference.md#type-htmlstring)` — the HTML to display in the header of an event canvas
 
 ---
 ## Method: Calendar.getEventCanvasMenuItems
@@ -3131,7 +2862,7 @@ Called when an event is moved via dragging by a user. Return false to disallow t
 
 ### Returns
 
-`[Boolean](#type-boolean)` — return false to disallow the move.
+`[boolean](../reference.md#type-boolean)` — return false to disallow the move.
 
 ### Groups
 
@@ -3224,7 +2955,7 @@ Not called if the day falls outside the current month and [Calendar.showOtherDay
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false to cancel the default action
+`[boolean](../reference.md#type-boolean)` — false to cancel the default action
 
 ### Groups
 
@@ -3307,7 +3038,7 @@ Removes an event from the list of selected events in the current view, clearing 
 ## Method: Calendar.setHeaderLevels
 
 ### Description
-For [Timeline](../reference.md#class-timeline)s, configures the levels of [headers](../reference_2.md#object-headerlevel) shown above the event area, and their time units, after initialization.
+For [Timeline](../reference.md#class-timeline)s, configures the levels of [headers](../reference.md#object-headerlevel) shown above the event area, and their time units, after initialization.
 
 ### Parameters
 
@@ -3335,9 +3066,9 @@ When [canGroupLanes](#attr-calendarcangrouplanes) is true, this method allows th
 ## Method: Calendar.shouldDisableDate
 
 ### Description
-Returns true if the passed date should be considered disabled, potentially in a particular [View](CalendarView.md#class-calendarview) or [Lane](#attr-calendarlanes). Disabled dates don't allow events to be created by clicking on them, and drag operations that would start or end on such dates are also disallowed.
+Returns true if the passed date should be considered disabled. Disabled dates don't allow events to be created by clicking on them, and drag operations that would start or end on such dates are also disallowed.
 
-The default implementation returns true for dates that fall on a [weekend](DateUtil.md#classmethod-dateutilgetweekenddays), when [disableWeekends](#attr-calendardisableweekends) is true, and for dates that are covered by a [Zone](#attr-calendarzones) with its disabled attribute set to true.
+The default implementation returns false only for dates that fall on a [weekend](DateUtil.md#classmethod-dateutilgetweekenddays).
 
 ### Parameters
 
@@ -3345,7 +3076,6 @@ The default implementation returns true for dates that fall on a [weekend](DateU
 |------|------|----------|---------|-------------|
 | date | [Date](#type-date) | false | — | a Date instance |
 | view | [CalendarView](#type-calendarview) | true | — | the view the date appears in |
-| lane | [String](#type-string) | true | — | in view's that show lanes, the name of the lane |
 
 ### Returns
 
@@ -3366,7 +3096,7 @@ Callback fired when the mouse is clicked in a background-cell, ie, one without a
 
 ### Returns
 
-`[Boolean](#type-boolean)` — return false to cancel the default behavior of creating a new event at the selected location and showing its editor.
+`[boolean](../reference.md#type-boolean)` — return false to cancel the default behavior of creating a new event at the selected location and showing its editor.
 
 ---
 ## Method: Calendar.setIndicators
@@ -3430,7 +3160,7 @@ Not called if the day falls outside the current month and [Calendar.showOtherDay
 
 ### Returns
 
-`[Boolean](#type-boolean)` — return false to cancel the action
+`[boolean](../reference.md#type-boolean)` — return false to cancel the action
 
 ### Groups
 
@@ -3440,13 +3170,13 @@ Not called if the day falls outside the current month and [Calendar.showOtherDay
 ## Method: Calendar.getView
 
 ### Description
-Returns the [view](CalendarView.md#class-calendarview) with the passed [name](../reference_2.md#type-viewname).
+Returns the [view](CalendarView.md#class-calendarview) with the passed [name](../reference.md#type-viewname).
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| viewName | [ViewName](../reference_2.md#type-viewname) | false | — | the name of the CalendarView to return |
+| viewName | [ViewName](../reference.md#type-viewname) | false | — | the name of the CalendarView to return |
 
 ### Returns
 
@@ -3747,7 +3477,7 @@ By default, a dialog appears showing details for the event, and offering the abi
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | event | [CalendarEvent](#type-calendarevent) | false | — | event that was clicked on |
-| viewName | [ViewName](../reference_2.md#type-viewname) | false | — | view where the event's canvas was clicked |
+| viewName | [ViewName](../reference.md#type-viewname) | false | — | view where the event's canvas was clicked |
 
 ### Returns
 
@@ -3821,7 +3551,7 @@ Callback fired when the mouse button is depressed over a background-cell, ie, on
 
 ### Returns
 
-`[Boolean](#type-boolean)` — return false to suppress default behavior of allowing sweep selection via dragging.
+`[boolean](../reference.md#type-boolean)` — return false to suppress default behavior of allowing sweep selection via dragging.
 
 ---
 ## Method: Calendar.indicatorClick
@@ -3834,7 +3564,7 @@ Called whenever an [IndicatorCanvas](../reference.md#class-indicatorcanvas) is c
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | indicatorEvent | [CalendarEvent](#type-calendarevent) | false | — | indicator that was clicked on |
-| viewName | [ViewName](../reference_2.md#type-viewname) | false | — | view where the event's canvas was clicked |
+| viewName | [ViewName](../reference.md#type-viewname) | false | — | view where the event's canvas was clicked |
 
 ### Returns
 
@@ -3850,7 +3580,7 @@ Notification that fires whenever the current view changes via the [mainView tabs
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| viewName | [ViewName](../reference_2.md#type-viewname) | false | — | the name of the current view after the change |
+| viewName | [ViewName](../reference.md#type-viewname) | false | — | the name of the current view after the change |
 
 ---
 ## Method: Calendar.selectTab
@@ -4001,23 +3731,6 @@ Returns the last visible date in the passed, or currently selected, calendar vie
 `[Date](#type-date)` — last visible date
 
 ---
-## Method: Calendar.isLongEvent
-
-### Description
-Returns true if the passed event is marked as lasting [all day](#attr-calendaralldayfield), or it [starts](#attr-calendarstartdatefield) and [ends](#attr-calendarenddatefield) on different days in your current locale. These types of events are displayed horizontally in a [separate layout](CalendarView.md#attr-calendarviewlongeventslayout) placed above the date cells in CalendarViews.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| event | [CalendarEvent](#type-calendarevent) | false | — | the event in question |
-| multiDayOnly | [Boolean](#type-boolean) | true | — | when true, only matches events that span multiple days - otherwise, matches those events or [all-day events](#attr-calendaralldayfield). |
-
-### Returns
-
-`[Boolean](#type-boolean)` — true if the event lasts all day or starts and ends on different days
-
----
 ## Method: Calendar.setShowWeekends
 
 ### Description
@@ -4092,11 +3805,11 @@ Sets the currently visible view.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| viewName | [ViewName](../reference_2.md#type-viewname) | false | — | The name of the view that should be made visible. |
+| viewName | [ViewName](../reference.md#type-viewname) | false | — | The name of the view that should be made visible. |
 
 ### Returns
 
-`[ViewName](../reference_2.md#type-viewname)` — The name of the visible view.
+`[ViewName](../reference.md#type-viewname)` — The name of the visible view.
 
 ---
 ## Method: Calendar.backgroundMouseUp
@@ -4113,7 +3826,7 @@ Notification method fired when the mouse button is released over a background-ce
 
 ### Returns
 
-`[Boolean](#type-boolean)` — return false to suppress default behavior of showing a dialog to add a new event with the passed dates.
+`[boolean](../reference.md#type-boolean)` — return false to suppress default behavior of showing a dialog to add a new event with the passed dates.
 
 ---
 ## Method: Calendar.next
@@ -4384,14 +4097,14 @@ Adds a new [indicator](#attr-calendarindicators) to the calendar.
 ## Method: Calendar.zoneClick
 
 ### Description
-Called whenever a [ZoneCanvas](../reference.md#class-zonecanvas) is clicked in views other than [Month](#attr-calendarmonthview). There is no default implementation.
+Called whenever a [ZoneCanvas](../reference.md#class-zonecanvas) is clicked in the [timelineView](#attr-calendartimelineview). There is no default implementation.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | zoneEvent | [CalendarEvent](#type-calendarevent) | false | — | zone that was clicked on |
-| viewName | [ViewName](../reference_2.md#type-viewname) | false | — | view where the event's canvas was clicked |
+| viewName | [ViewName](../reference.md#type-viewname) | false | — | view where the event's canvas was clicked |
 
 ### Returns
 
@@ -4526,11 +4239,11 @@ This method takes an optional callback parameter (set to a [DSCallback](../refer
 
 In addition to the callback parameter for this method, developers can use [dataArrived()](ListGrid_2.md#method-listgriddataarrived) to be notified every time data is loaded.
 
-By default, this method assumes a [TextMatchStyle](../reference_2.md#type-textmatchstyle) of "exact"; that can be overridden by supplying a different value in the requestProperties parameter. See [DataBoundComponent.willFetchData](DataBoundComponent.md#method-databoundcomponentwillfetchdata);
+By default, this method assumes a [TextMatchStyle](../reference.md#type-textmatchstyle) of "exact"; that can be overridden by supplying a different value in the requestProperties parameter. See [DataBoundComponent.willFetchData](DataBoundComponent.md#method-databoundcomponentwillfetchdata);
 
 **Changing the request properties**
 
-Changes to [TextMatchStyle](../reference_2.md#type-textmatchstyle) made via `requestProperties` will be honored in combination with the fetch criteria, possibly invalidating cache and triggering a server request if needed, as documented for [willFetchData()](DataBoundComponent.md#method-databoundcomponentwillfetchdata). In contrast, changes to [operationId](DSRequest.md#attr-dsrequestoperationid) in the request properties will cause the [ResultSet](ResultSet.md#class-resultset) or [ResultTree](ResultTree.md#class-resulttree) to be rebuilt, always refetching from the server. However, changes to other request properties after the initial fetch won't be detected, and no fetch will get triggered based on that new request context.
+Changes to [TextMatchStyle](../reference.md#type-textmatchstyle) made via `requestProperties` will be honored in combination with the fetch criteria, possibly invalidating cache and triggering a server request if needed, as documented for [willFetchData()](DataBoundComponent.md#method-databoundcomponentwillfetchdata). In contrast, changes to [operationId](DSRequest.md#attr-dsrequestoperationid) in the request properties will cause the [ResultSet](ResultSet.md#class-resultset) or [ResultTree](ResultTree.md#class-resulttree) to be rebuilt, always refetching from the server. However, changes to other request properties after the initial fetch won't be detected, and no fetch will get triggered based on that new request context.
 
 To pick up such changes, we recommend that you call [setData(\[\])](#method-calendarsetdata) (passing an empty array to ensure the data model is cleared), and then call this method to fetch again. If you try to do it by calling [invalidateCache()](ListGrid_2.md#method-listgridinvalidatecache), you may see duplicate fetches if you haven't already updated the data context by calling this method with the new request properties, and fail to do so before the component is [redrawn](Canvas.md#method-canvasredraw).
 
@@ -4540,7 +4253,7 @@ To pick up such changes, we recommend that you call [setData(\[\])](#method-cale
 |------|------|----------|---------|-------------|
 | criteria | [Criteria](../reference_2.md#type-criteria) | true | — | Search criteria. If a [DynamicForm](DynamicForm.md#class-dynamicform) is passed in as this argument instead of a raw criteria object, will be derived by calling [DynamicForm.getValuesAsCriteria](DynamicForm.md#method-dynamicformgetvaluesascriteria) |
 | callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke when a fetch is complete. Fires only if server contact was required |
-| requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | additional properties to set on the DSRequest that will be issued |
+| requestProperties | [DSRequest](#type-dsrequest) | true | — | additional properties to set on the DSRequest that will be issued |
 
 ### Groups
 
@@ -4648,7 +4361,7 @@ Called when an event is resized with the mouse. The passed date value is the new
 
 ### Returns
 
-`[Boolean](#type-boolean)` — return false to disallow the resize
+`[boolean](../reference.md#type-boolean)` — return false to disallow the resize
 
 ### Groups
 
@@ -4800,7 +4513,7 @@ Get the name of the visible view. Returns one of 'day', 'week', 'month' or 'time
 
 ### Returns
 
-`[ViewName](../reference_2.md#type-viewname)` — The name of the currently visible view.
+`[ViewName](../reference.md#type-viewname)` — The name of the currently visible view.
 
 ---
 ## Method: Calendar.eventsRendered
@@ -4903,7 +4616,7 @@ The default implementation returns true, unless the date falls on a [weekend](Da
 ### Description
 Retrieves data that matches the provided criteria and displays the matching data in this component.
 
-This method behaves exactly like [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata) except that [DSRequest.textMatchStyle](DSRequest.md#attr-dsrequesttextmatchstyle) is automatically set to "substring" so that String-valued fields are matched by case-insensitive substring comparison.
+This method behaves exactly like [ListGrid.fetchData](ListGrid_1.md#method-listgridfetchdata) except that [DSRequest.textMatchStyle](DSRequest.md#attr-dsrequesttextmatchstyle) is automatically set to "substring" so that String-valued fields are matched by case-insensitive substring comparison.
 
 For a discussion of the various filtering and criteria-management APIs and when to use them, see the [Grid Filtering overview](../kb_topics/gridFiltering.md#kb-topic-grid-filtering-overview).
 
@@ -4912,8 +4625,8 @@ For a discussion of the various filtering and criteria-management APIs and when 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | criteria | [Criteria](../reference_2.md#type-criteria) | true | — | Search criteria. If a [DynamicForm](DynamicForm.md#class-dynamicform) is passed in as this argument instead of a raw criteria object, will be derived by calling [DynamicForm.getValuesAsCriteria](DynamicForm.md#method-dynamicformgetvaluesascriteria) |
-| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke when a fetch is complete. Fires only if server contact was required; see [fetchData()](ListGrid_2.md#method-listgridfetchdata) for details |
-| requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | for databound components only - optional additional properties to set on the DSRequest that will be issued |
+| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke when a fetch is complete. Fires only if server contact was required; see [fetchData()](ListGrid_1.md#method-listgridfetchdata) for details |
+| requestProperties | [DSRequest](#type-dsrequest) | true | — | for databound components only - optional additional properties to set on the DSRequest that will be issued |
 
 ### Groups
 
@@ -4968,24 +4681,6 @@ Returns the description text for the passed event, for display in the body area 
 ### Returns
 
 `[HTMLString](../reference.md#type-htmlstring)` — the HTML to display in the body of the passed event's EventCanvas
-
----
-## Method: Calendar.getLongEventHTML
-
-### Description
-Returns the text to be displayed in a [long-event](#attr-calendaralldayfield) displayed horizontally in the separate [long-events layout](CalendarView.md#attr-calendarviewlongeventslayout) above vertical Calendar views.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| event | [CalendarEvent](#type-calendarevent) | false | — | the event to get the description text for |
-| layout | [Canvas](#type-canvas) | false | — | the longEventsLayout in which this event is displayed |
-| view | [CalendarView](#type-calendarview) | true | — | the view in which the event is being rendered |
-
-### Returns
-
-`[HTMLString](../reference.md#type-htmlstring)` — the HTML to display in the header of an event canvas
 
 ---
 ## Method: Calendar.getLanePadding

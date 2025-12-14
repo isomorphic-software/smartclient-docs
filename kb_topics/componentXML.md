@@ -11,15 +11,15 @@ As covered in the _QuickStart Guide_ Chapter 4, _Coding_, SmartClient components
 
 **Referring to previously defined components**
 
-To refer to another component by ID in XML, use `<Canvas withID=/>`. For example:
+To refer to another component by ID in XML, use `<Canvas ref=/>`. For example:
 
 ```
  <Canvas ID="myCanvas"/>
  <Canvas ID="myCanvas2"/>
  <VLayout>
      <members>
-         <Canvas withID="myCanvas"/>
-         <Canvas withID="myCanvas2"/>
+         <Canvas ref="myCanvas"/>
+         <Canvas ref="myCanvas2"/>
      </members>
  </VLayout>
  
@@ -115,11 +115,11 @@ You can also add a loaded screen to an existing layout container. For example, p
     existingLayout.addMember(isc.Canvas.getById("componentId"));
  
 ```
-Component XML files can also refer to components you have created programmatically, and incorporate them into layouts. For example, if you have created a ListGrid component with ID "theGrid", you could refer to that grid using a ``<Canvas withID=""/>`` tag, which can be used anywhere a Canvas is expected. For example:
+Component XML files can also refer to components you have created programmatically, and incorporate them into layouts. For example, if you have created a ListGrid component with ID "theGrid", you could refer to that grid using a ``<Canvas ref=""/>`` tag, which can be used anywhere a Canvas is expected. For example:
 ```
  <VLayout ... >
      <members>
-           <Canvas withID="theGrid"/>
+           <Canvas ref="theGrid"/>
      </members>
  </VLayout>
  
@@ -136,7 +136,7 @@ To take a simple example, this is how you would declare an `Action` to display a
    <ListGrid dataSource="Customer" autoID="customerGrid">
       ...
      <recordClick>
-       <Action target="customerDetailViewer" name="viewSelectedData" mapping="viewer"/>
+       <Action target="customerDetailGrid" name="viewSelectedData" mapping="viewer"/>
      </recordClick>
    </ListGrid>
  

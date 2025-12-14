@@ -57,7 +57,7 @@ If left unspecified, the Framework applies rules to determine which component to
 ## Attr: Class.dynamicProperties
 
 ### Description
-Object mapping dynamic property names to the source - a [DataPath](../reference_2.md#type-datapath), [UserSummary](UserSummary.md#attr-usersummarytext) with [rule context](#attr-classrulescope), [UserFormula](UserFormula.md#attr-userformulatext) with rule context, [AdvancedCriteria](../reference.md#object-advancedcriteria) or a conditional set of the above (except trueWhen). This is a declarative alternative to calling [Class.addDynamicProperty](#method-classadddynamicproperty) for each property.
+Object mapping dynamic property names to the source - a [DataPath](../reference_2.md#type-datapath), [UserSummary](../reference.md#object-usersummary), [UserFormula](../reference.md#object-userformula), or [AdvancedCriteria](../reference.md#object-advancedcriteria). This is a declarative alternative to calling [Class.addDynamicProperty](#method-classadddynamicproperty) for each property.
 
 See [Class.addDynamicProperty](#method-classadddynamicproperty) for details on using dynamic properties.
 
@@ -67,18 +67,14 @@ In JavaScript dynamicProperties can be declaratively initialized as follows:
  dynamicProperties: {
      propName1: "a/b/c",
      propName2: { formula: .. formula definition .. },
-     propName3: { template: .. template definition .. },
+     propName3: { textFormula: .. summary definition .. },
      propName4: { operator: "and",
-                  criteria: [
-                      { fieldName: "a/b/c", operator:"greaterOrEqual", value:"value1" },
-                      { fieldName: "a/b/c", operator:"lessOrEqual", value:"value2" }
-                  ]
+                  criteria: [{
+                      fieldName: "a/b/c", operator:"greaterOrEqual", value:"value1"
+                  }, {
+                      fieldName: "a/b/c", operator:"lessOrEqual", value:"value2"
+                  }]
                 }
-     propName5: { valueFrom: [
-                      { formula: "year(Order.orderData)", criteria: { ... } },
-                      { template: "2010 & earlier" }
-                  ]
-                }    
  }
  
 ```
@@ -88,25 +84,30 @@ In ComponentXML dynamicProperties can be intialized as:
 ```
  <dynamicProperties>
      <property name="propName" dataPath="a/b/c"/>
-     <property name="propName2" formula="..."/>
-     <property name="propName3" template="..."/>
+     <property name="propName2">
+         <formula>
+             <UserFormula ... >
+         </formula>
+     </property>
+     <property name="propName3">
+         <textFormula>
+             <UserSummary ... >
+         </textFormula>
+     </property>
      <property name="propName4">
          <trueWhen>
-             <criteria operator="and">
-                 <criteria fieldName="a/b/c" operator="greaterOrEqual" value="value1"/>
-                 <criteria fieldName="a/b/c" operator="lessOrEqual" value="value2"/>
-             </criteria>
+             <criteria fieldName="a/b/c" operator="iEquals" value="value1"/>
          </trueWhen>
      </property>
      <property name="propName5">
-         <valueFrom>
-             <case formula="year(Order.orderDate)">
-                 <criteria fieldName="Order.orderDate" operator="greaterThan">
-                     <value xsi:type="xsd:date">2010-12-31</value>
+         <trueWhen>
+             <AdvancedCriteria operator="and">
+                 <criteria>
+                     <criterion fieldName="a/b/c" operator="greaterOrEqual" value="value1"/>
+                     <criterion fieldName="a/b/c" operator="lessOrEqual"    value="value2"/>
                  </criteria>
-             </case>
-             <case template="2010 & earlier">
-         </valueFrom>
+             </AdvancedCriteria>
+         </trueWhen>
      </property>
  </dynamicProperties>
  
@@ -598,11 +599,7 @@ The default toString() for a ClassObject reports that you have a ClassObject and
 ## ClassMethod: Class.create
 
 ### Description
-Create an instance of this class. For example:
-```
- var myInstance = MyClass.create();
- 
-```
+Create an instance of this class.
 
 All arguments passed to this method are passed on to the [Class.init](#method-classinit) instance method. Unless [Class.addPropertiesOnCreate](#attr-classaddpropertiesoncreate) is set to `false`, all arguments passed to this method must be Objects and all properties on those objects will be copied to the newly created instance before [Class.init](#method-classinit) is called. If there are overlapping properties in the passed arguments, the last wins.
 
@@ -824,9 +821,10 @@ A method named log_Priority_ exists for each priority level, on every ISC Class 
 Returns a "stack trace" - one line per method in the current call stack, showing the method name and any parameters passed. This function is available as a static on every ISC Class and as an instance method on every instance of an ISC Class.  
 General best practice is to call the method as "this.getStackTrace" whenever "this" is an instance, or call the static classMethod on the [Log](Log.md#class-log) class otherwise.
 
-If the current thread was started by a [timer](Timer.md#classmethod-timersettimeout), you can [enable debug-level logging for the "timerTrace" log category](../kb_topics/debugging.md#kb-topic-debugging) to also include the stack trace leading up to the setTimeout call in most cases.
+Platform Notes: In Mozilla Firefox, if Firebug is enabled, a stack trace will be logged to the firebug console in addition to the standard stack trace string returned by this method.  
+In browsers other than Internet Explorer a complete stack trace may not be available - this occurs when a function is re-entrant (meaning it calls itself). In this case the stack will terminate with text indicating where the recursive function call occurred.
 
-See [debugging](../kb_topics/debugging.md#kb-topic-debugging) for further information.
+See [debugging](../kb_topics/debugging.md#kb-topic-debugging) for further information information.
 
 ### Returns
 
@@ -835,7 +833,6 @@ See [debugging](../kb_topics/debugging.md#kb-topic-debugging) for further inform
 ### Groups
 
 - debug
-- prodErrorReport
 
 ---
 ## ClassMethod: Class.delayCall
@@ -1249,7 +1246,7 @@ General best practice is to call the method as "this.echo()" whenever "this" is 
 ### Description
 Initialize a new instance of this Class. This method is called automatically by [Class.create](#classmethod-classcreate).
 
-Override this method to provide initialization logic for your class. If your class is a subclass of a UI component (i.e. descendant of [Canvas](Canvas.md#class-canvas)), it is typically recommended to override [Canvas.initComplete](Canvas.md#method-canvasinitcomplete) or [Canvas.initWidget](Canvas.md#method-canvasinitwidget) instead.
+Override this method to provide initialization logic for your class. If your class is a subclass of a UI component (i.e. descendant of [Canvas](Canvas.md#class-canvas)), override [Canvas.initWidget](Canvas.md#method-canvasinitwidget) instead.
 
 ### Parameters
 
@@ -1280,9 +1277,10 @@ As with logDebug, category is defaulted to the current className. Use this metho
 Returns a "stack trace" - one line per method in the current call stack, showing the method name and any parameters passed. This function is available as a static on every ISC Class and as an instance method on every instance of an ISC Class.  
 General best practice is to call the method as "this.getStackTrace" whenever "this" is an instance, or call the static classMethod on the [Log](Log.md#class-log) class otherwise.
 
-If the current thread was started by a [timer](Timer.md#classmethod-timersettimeout), you can [enable debug-level logging for the "timerTrace" log category](../kb_topics/debugging.md#kb-topic-debugging) to also include the stack trace leading up to the setTimeout call in most cases.
+Platform Notes: In Mozilla Firefox, if Firebug is enabled, a stack trace will be logged to the firebug console in addition to the standard stack trace string returned by this method.  
+In browsers other than Internet Explorer a complete stack trace may not be available - this occurs when a function is re-entrant (meaning it calls itself). In this case the stack will terminate with text indicating where the recursive function call occurred.
 
-See [debugging](../kb_topics/debugging.md#kb-topic-debugging) for further information.
+See [debugging](../kb_topics/debugging.md#kb-topic-debugging) for further information information.
 
 ### Returns
 
@@ -1291,7 +1289,6 @@ See [debugging](../kb_topics/debugging.md#kb-topic-debugging) for further inform
 ### Groups
 
 - debug
-- prodErrorReport
 
 ---
 ## Method: Class.addPropertyList
@@ -1681,9 +1678,9 @@ General best practice is to call the method as "this.echo()" whenever "this" is 
 ## Method: Class.addDynamicProperty
 
 ### Description
-Sets up the value of `propertyName` to be dynamically derived from the [ruleScope](Canvas.md#attr-canvasrulescope), by either a simple [DataPath](../reference_2.md#type-datapath) into the ruleScope, an [AdvancedCriteria](../reference.md#object-advancedcriteria) built against [DataPaths](../reference_2.md#type-datapath), or via a template or numeric formula using the ruleScope as available formula inputs.
+Sets up the value of `propertyName` to be dynamically derived from the [ruleScope](Canvas.md#attr-canvasrulescope), by either a simple [DataPath](../reference_2.md#type-datapath) into the ruleScope, an [AdvancedCriteria](../reference.md#object-advancedcriteria) built against [DataPaths](../reference_2.md#type-datapath), or via a textual or numeric formula using the ruleScope as available formula inputs.
 
-The dataPath, criteria, template or formula is evaluated immediately when addDynamicProperty() is called, then re-evaluated every time the ruleScope changes. An [AdvancedCriteria](../reference.md#object-advancedcriteria) will always evaluate to boolean true or false, and a [template](../reference.md#object-usersummary) to a string.
+The dataPath, criteria, or formula is evaluated immediately when addDynamicProperty() is called, then re-evaluated every time the ruleScope changes. An [AdvancedCriteria](../reference.md#object-advancedcriteria) will always evaluate to boolean true or false, and a [UserSummary](../reference.md#object-usersummary) to a string.
 
 It is invalid usage to use `addDynamicProperty()` on a property that is not runtime settable. However, `addDynamicProperty()` will not throw an error or log a warning if this is done.
 

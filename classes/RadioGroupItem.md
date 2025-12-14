@@ -82,14 +82,6 @@ This property allows you to specify an initial set of disabled options within th
 **Flags**: I
 
 ---
-## Attr: RadioGroupItem.customIconSize
-
-### Description
-If set, this property overrides the size of the image rendered when [RadioGroupItem.useNativeRadioItems](#attr-radiogroupitemusenativeradioitems) is false.
-
-**Flags**: IR
-
----
 ## Attr: RadioGroupItem.textBoxStyle
 
 ### Description
@@ -172,7 +164,7 @@ Setter for [RadioGroupItem.textBoxStyle](#attr-radiogroupitemtextboxstyle).
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newTextBoxStyle | [FormItemBaseStyle](../reference_2.md#type-formitembasestyle) | false | — | new `textBoxStyle`. |
+| newTextBoxStyle | [FormItemBaseStyle](../reference.md#type-formitembasestyle) | false | — | new `textBoxStyle`. |
 
 ---
 ## Method: RadioGroupItem.pendingStatusChanged
@@ -194,6 +186,6 @@ The default behavior is that the [titleStyle](FormItem.md#attr-formitemtitlestyl
 
 ### Returns
 
-`[Boolean](#type-boolean)` — `false` to cancel the default behavior.
+`[boolean](../reference.md#type-boolean)` — `false` to cancel the default behavior.
 
 ---

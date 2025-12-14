@@ -127,7 +127,7 @@ This implies that if a [Criterion](../reference_2.md#object-criterion) using thi
 ## Attr: Operator.valueType
 
 ### Description
-Indicates the kind of value expected in a [Criterion](../reference_2.md#object-criterion) that uses this operator. [OperatorValueType](../reference_2.md#type-operatorvaluetype) lists possibilities.
+Indicates the kind of value expected in a [Criterion](../reference_2.md#object-criterion) that uses this operator. [OperatorValueType](../reference.md#type-operatorvaluetype) lists possibilities.
 
 The default of `null` is equivalent to "fieldType", indicating that [Criterion.value](Criterion.md#attr-criterionvalue) is expected to contain a value of the same type as the field indicated by [Criterion.fieldName](Criterion.md#attr-criterionfieldname).
 
@@ -219,20 +219,21 @@ For operators that act on [sub-criteria](Criterion.md#attr-criterioncriteria), c
 
 Because criteria are sometimes applied to user-entered data that has not been validated, a robust `condition()` function should expect that data found in a [Record](../reference.md#object-record) may be null, NaN, not the correct type (eg "NA" for a type:"date" field) or otherwise out of the expected range.
 
-Note that `this` is the [Operator](../reference.md#object-operator) object, allowing a `condition()` function to be shared across a range of related operators with different [OperatorId](../reference.md#type-operatorid)s.
+Note that an Operator has access both to the [Criterion](../reference_2.md#object-criterion) object, allowing operators that act on more than one field or perform calculations, and access to the [Operator](../reference.md#object-operator) object itself, allowing a `condition()` function to be shared across a range of related operators with different [OperatorId](../reference.md#type-operatorid)s.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| fieldName | [String](#type-string) | false | — | the [Criterion.fieldName](Criterion.md#attr-criterionfieldname) |
-| value | [Any](#type-any) | false | — | value of the record at [Criterion.fieldName](Criterion.md#attr-criterionfieldname), if applicable |
-| criterionValues | [CriterionValues](#type-criterionvalues) | false | — | the [CriterionValues](../reference.md#object-criterionvalues) |
-| dataSource | [DataSource](#type-datasource) | false | — | the [DataSource](DataSource.md#class-datasource) performing the evaluation |
+| value | [Any](#type-any) | false | — | value from the field supplied as [Criterion.fieldName](Criterion.md#attr-criterionfieldname), if applicable |
+| record | [Record](#type-record) | false | — | record being evaluated |
+| fieldName | [Any](#type-any) | false | — | fieldName supplied as [Criterion.fieldName](Criterion.md#attr-criterionfieldname), if applicable |
+| criterion | [Criterion](#type-criterion) | false | — | criterion definition |
+| operator | [Operator](#type-operator) | false | — | operator definition |
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — whether the record passes the `Criterion`
+`[boolean](../reference.md#type-boolean)` — whether the field passes this criteria
 
 ### Groups
 

@@ -9,7 +9,7 @@
 ### Description
 An atomic type such as a string or number, that is generally stored, displayed and manipulated as a single value.
 
-SimpleTypes can be [created](#classmethod-simpletypecreate) at any time, and subsequently referred to as a [field type](Field.md#attr-fieldtype) in [DataSources](DataSource.md#class-datasource) and [DataBoundComponents](../reference.md#interface-databoundcomponent). This allows you to define [validation](#attr-simpletypevalidators), [formatting](#method-simpletypenormaldisplayformatter) and [editing](#attr-simpletypeeditortype) behaviors for a type to be reused across all [DataBoundComponents](../reference.md#interface-databoundcomponent).
+SimpleTypes can be created at any time, and subsequently referred to as a [field type](DataSourceField.md#attr-datasourcefieldtype) in [DataSources](DataSource.md#class-datasource) and [DataBoundComponents](../reference.md#interface-databoundcomponent). This allows you to define [validation](#attr-simpletypevalidators), [formatting](#method-simpletypenormaldisplayformatter) and [editing](#attr-simpletypeeditortype) behaviors for a type to be reused across all [DataBoundComponents](../reference.md#interface-databoundcomponent).
 
 The SimpleType class also allows data to be stored in some opaque format but treated as simple atomic values as far as SmartClient components are concerned by implementing [SimpleType.getAtomicValue](#method-simpletypegetatomicvalue) and [SimpleType.updateAtomicValue](#method-simpletypeupdateatomicvalue) methods. For example, if some record has a field value set to a javascript object with the following properties:
 
@@ -81,7 +81,7 @@ For more sophisticated management of read-only behavior, see [SimpleType.readOnl
 ### Description
 A set of key-value pairs that represent the names and titles of the grouping modes available to values of this type, for use in components that support grouping.
 
-Some types provide a set of builtin groupingModes, as covered [here](../kb_topics/builtinGroupingModes.md#kb-topic-built-in-grouping-modes).
+Some types provide a set of builtin groupingModes, as covered [here](../kb_topics/builtinGroupingModes.md#kb-topic-builtingroupingmodes).
 
 Use [SimpleType.getGroupValue](#method-simpletypegetgroupvalue) and [SimpleType.getGroupTitle](#method-simpletypegetgrouptitle) to implement custom grouping logic for each of the grouping modes you provide.
 
@@ -280,15 +280,13 @@ Note that the following default summary functions are set up when SmartClient in
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | typeName | [String](#type-string) | false | — | type name |
-| summaryFunction | [SummaryFunction](../reference_2.md#type-summaryfunction) | false | — | summary function to set as the default for this data type. |
+| summaryFunction | [SummaryFunction](../reference.md#type-summaryfunction) | false | — | summary function to set as the default for this data type. |
 
 ---
 ## ClassMethod: SimpleType.registerSummaryFunction
 
 ### Description
-Registers a new [SummaryFunction](../reference_2.md#type-summaryfunction) by name. After calling this method, developers may specify the name passed in as a standard summaryFunction (for example in [ListGridField.summaryFunction](ListGridField.md#attr-listgridfieldsummaryfunction)).
-
-You may override built-in summary functions; however, the summary value type should still be the same (for example, the 'count' summary function should still result in an integer summary value). Also, if a replacement summary function implementation departs significantly from the standard behavior, AI-generated aggregated data fetches may be negatively impacted, because AI is not aware of the non-standard behavior.
+Registers a new [SummaryFunction](../reference.md#type-summaryfunction) by name. After calling this method, developers may specify the name passed in as a standard summaryFunction (for example in [ListGridField.summaryFunction](ListGridField.md#attr-listgridfieldsummaryfunction)).
 
 ### Parameters
 
@@ -317,13 +315,13 @@ Retrieves the default summary function for some field type.
 
 ### Returns
 
-`[SummaryFunction](../reference_2.md#type-summaryfunction)` — default summary function for this data type.
+`[SummaryFunction](../reference.md#type-summaryfunction)` — default summary function for this data type.
 
 ---
 ## ClassMethod: SimpleType.applySummaryFunction
 
 ### Description
-Applies a [SummaryFunction](../reference_2.md#type-summaryfunction) to an array of records
+Applies a [SummaryFunction](../reference.md#type-summaryfunction) to an array of records
 
 ### Parameters
 
@@ -331,30 +329,12 @@ Applies a [SummaryFunction](../reference_2.md#type-summaryfunction) to an array 
 |------|------|----------|---------|-------------|
 | records | [Array of Objects](#type-array-of-objects) | false | — | set of records to retrieve a summary value for |
 | field | [DataSourceField](#type-datasourcefield) | false | — | field for which we're picking up a summary value |
-| summaryFunction | [SummaryFunction](../reference_2.md#type-summaryfunction) | false | — | SummaryFunction to apply to the records in order to retrieve the summary value. May be specified as an explicit function or string of script to execute, or a built-in or [registered](#classmethod-simpletyperegistersummaryfunction) SummaryFunction identifier |
+| summaryFunction | [SummaryFunction](../reference.md#type-summaryfunction) | false | — | SummaryFunction to apply to the records in order to retrieve the summary value. May be specified as an explicit function or string of script to execute, or a SummaryFunction identifier |
 | summaryConfig | [SummaryConfiguration](#type-summaryconfiguration) | false | — | config that affects summary calculation |
 
 ### Returns
 
 `[Any](#type-any)` — summary value generated from the applied SummaryFunction
-
----
-## ClassMethod: SimpleType.create
-
-### Description
-Creates and registers a new `SimpleType`, allowing the newly-created type to be used as a [Field.type](Field.md#attr-fieldtype).
-
-See [Class.create](Class.md#classmethod-classcreate) for more details about the create() class method.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| arguments 0-N | [Any](#type-any) | true | — | Any arguments passed will be passed along to the init() routine of the instance. Unless [Class.addPropertiesOnCreate](Class.md#attr-classaddpropertiesoncreate) is set to false, any arguments passed to this method must be of type Object. |
-
-### Returns
-
-`[Object](../reference.md#type-object)` — New instance of this class, whose init() routine has already been called
 
 ---
 ## Method: SimpleType.getGroupValue

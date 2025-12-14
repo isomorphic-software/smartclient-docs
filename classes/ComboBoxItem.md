@@ -84,7 +84,7 @@ If not explicitly set, completeOnEnter will default to false for items embedded 
 ### Description
 Specifies one or more fields by which this item should be initially sorted. It can be a [field name](ListGridField.md#attr-listgridfieldname), or an array of field names - but note that, if multiple fields are supplied, then each will be sorted in the same [direction](ListGrid_1.md#attr-listgridsortdirection).
 
-For full sorting control, set [initialSort](PickList.md#attr-picklistinitialsort) to a list of custom [sortSpecifiers](../reference_2.md#object-sortspecifier).
+For full sorting control, set [initialSort](PickList.md#attr-picklistinitialsort) to a list of custom [sortSpecifiers](../reference.md#object-sortspecifier).
 
 This attribute can also be set to the index of a field in the fields array, but note that it will be converted to a string (field name) after initialization.
 
@@ -356,7 +356,7 @@ Static default value for this ComboBoxItem. To default to the first option use [
 ## Attr: ComboBoxItem.initialSort
 
 ### Description
-An array of [SortSpecifier](../reference_2.md#object-sortspecifier) objects used to set up the initial sort configuration for this pickList. If specified, this will be used instead of any [PickList.sortField](PickList.md#attr-picklistsortfield) specified.
+An array of [SortSpecifier](../reference.md#object-sortspecifier) objects used to set up the initial sort configuration for this pickList. If specified, this will be used instead of any [PickList.sortField](PickList.md#attr-picklistsortfield) specified.
 
 ### Groups
 
@@ -396,18 +396,6 @@ The title for the [ComboBoxItem.pickerSaveButton](#attr-comboboxitempickersavebu
 
 - i18nMessages
 - panelPlacement
-
-**Flags**: IR
-
----
-## Attr: ComboBoxItem.showPickerSearchIcon
-
-### Description
-When set to true, shows an [icon](#attr-comboboxitempickersearchicon) in the [ComboBoxItem.pickerSearchField](#attr-comboboxitempickersearchfield) of a full-screen picker.
-
-### Groups
-
-- appearance
 
 **Flags**: IR
 
@@ -482,18 +470,6 @@ If true, [ComboBoxItem.specialValues](#attr-comboboxitemspecialvalues) special v
 **Flags**: IR
 
 ---
-## Attr: ComboBoxItem.pickerSearchIcon
-
-### Description
-FormItemIcon displayed in the [ComboBoxItem.pickerSearchField](#attr-comboboxitempickersearchfield) when [ComboBoxItem.showPickerSearchIcon](#attr-comboboxitemshowpickersearchicon) is true. Shows the builtin "Search" icon by default, and this can be modified or sized via [ComboBoxItem.pickerSearchIconSrc](#attr-comboboxitempickersearchiconsrc) and [ComboBoxItem.pickerSearchIconSize](#attr-comboboxitempickersearchiconsize).
-
-### Groups
-
-- panelPlacement
-
-**Flags**: IR
-
----
 ## Attr: ComboBoxItem.filterFields
 
 ### Description
@@ -501,7 +477,7 @@ As the user types into this item's textBox, a comboBoxItem will show the pick-li
 
 This attribute allows the developer to explicitly change which fields to filter against, causing the user-entered text to be matched against any of the specified set of fields from the [ComboBoxItem.optionDataSource](#attr-comboboxitemoptiondatasource).
 
-This essentially causes [ComboBoxItem.getPickListFilterCriteria](#method-comboboxitemgetpicklistfiltercriteria) to return an [AdvancedCriteria](../reference.md#object-advancedcriteria) object representing "field1 starts with value or field2 starts with value or ...". The [operator](../reference.md#type-operatorid) used is controlled by [TextMatchStyle](../reference_2.md#type-textmatchstyle) as usual, that is, "startsWith" implies the operator "iStartsWith, "substring" implies "iContains" and "exact" implies "iEquals".
+This essentially causes [ComboBoxItem.getPickListFilterCriteria](#method-comboboxitemgetpicklistfiltercriteria) to return an [AdvancedCriteria](../reference.md#object-advancedcriteria) object representing "field1 starts with value or field2 starts with value or ...". The [operator](../reference.md#type-operatorid) used is controlled by [TextMatchStyle](../reference.md#type-textmatchstyle) as usual, that is, "startsWith" implies the operator "iStartsWith, "substring" implies "iContains" and "exact" implies "iEquals".
 
 The most common use case for this setting would be when a comboBoxItem is showing multiple [ComboBoxItem.pickListFields](#attr-comboboxitempicklistfields) - if the same set of fields is specified as [ComboBoxItem.filterFields](#attr-comboboxitemfilterfields), the user can use the text-box to filter against whichever fields are visible in the pickList.
 
@@ -698,34 +674,10 @@ For a non-databound pickList, `textMatchStyle` is applied by [filterClientPickLi
 **Flags**: IR
 
 ---
-## Attr: ComboBoxItem.pickerSearchIconSrc
-
-### Description
-Source for the icon displayed in the [ComboBoxItem.pickerSearchField](#attr-comboboxitempickersearchfield) of a full-screen picker when [ComboBoxItem.showPickerSearchIcon](#attr-comboboxitemshowpickersearchicon) is true.
-
-### Groups
-
-- appearance
-
-**Flags**: IR
-
----
-## Attr: ComboBoxItem.pickerSearchIconSize
-
-### Description
-Size for the icon displayed in the [ComboBoxItem.pickerSearchField](#attr-comboboxitempickersearchfield) of a full-screen picker when [ComboBoxItem.showPickerSearchIcon](#attr-comboboxitemshowpickersearchicon) is true.
-
-### Groups
-
-- appearance
-
-**Flags**: IR
-
----
 ## Attr: ComboBoxItem.optionFilterContext
 
 ### Description
-If this item has a specified `optionDataSource`, and this property is not null, this will be passed to the datasource as [DSRequest](../reference_2.md#object-dsrequest) properties when performing the filter operation on the dataSource to obtain the set of options for the list. This provides, among other capabilities, a way to trigger the server to return summary records.
+If this item has a specified `optionDataSource`, and this property is not null, this will be passed to the datasource as [DSRequest](../reference.md#object-dsrequest) properties when performing the filter operation on the dataSource to obtain the set of options for the list. This provides, among other capabilities, a way to trigger the server to return summary records.
 
 ### See Also
 
@@ -900,7 +852,7 @@ The Class to use when creating a picker of [type "tree"](PickList.md#attr-pickli
 ## Attr: ComboBoxItem.allowEmptyValue
 
 ### Description
-If [ComboBoxItem.addUnknownValues](#attr-comboboxitemaddunknownvalues) is `false`, this property determines whether the user can clear the comboBoxItem value, or whether they are constrained to choosing one of the available options (in which case clearing the text box will simply revert to the last picked value when the user leaves the field). Note that a blank pickList line will never be shown regardless of this property's value, unlike for a [SelectItem](SelectItem.md#class-selectitem), where it may depending upon [allowEmptyValue](SelectItem.md#attr-selectitemallowemptyvalue) and [multiple](SelectItem.md#attr-selectitemmultiple).
+If [ComboBoxItem.addUnknownValues](#attr-comboboxitemaddunknownvalues) is `false`, this property determines whether the user can clear the comboBoxItem value, or whether they are constrained to choosing one of the available options (in which case clearing the text box will simply revert to the last picked value when the user leaves the field).
 
 See also [ComboBoxItem.specialValues](#attr-comboboxitemspecialvalues) as a way of providing several different special values in addition to an empty value, such as "Invalid". Note that setting `specialValues` disables the use of `allowEmptyValue` - see details of how to have an empty value while using `specialValues` in in [the `specialValues` documentation](#attr-comboboxitemspecialvalues).
 
@@ -1113,7 +1065,7 @@ Performs a fetch type operation on this item's DataSource to retrieve the set of
 *   `item` a pointer to the form item
 *   `dsResponse` the [DSResponse](DSResponse.md#class-dsresponse) returned by the server
 *   `data` the raw data returned by the server
-*   `dsRequest` the [DSRequest](../reference_2.md#object-dsrequest) sent to the server |
+*   `dsRequest` the [DSRequest](../reference.md#object-dsrequest) sent to the server |
 | requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | properties to apply to the dsRequest for this fetch. |
 
 ---
@@ -1234,7 +1186,7 @@ Get the record returned from the [ComboBoxItem.optionDataSource](#attr-comboboxi
 ### Description
 Returns the data to display in the pick list.
 
-The default implementation applies the criteria returned by [PickList.getPickListFilterCriteria](PickList.md#method-picklistgetpicklistfiltercriteria) to the data returned by [PickList.getClientPickListData](PickList.md#method-picklistgetclientpicklistdata). A record passes the filter if it has a matching value for all fields in the criteria object. Matching is performed according to [TextMatchStyle](../reference_2.md#type-textmatchstyle).
+The default implementation applies the criteria returned by [PickList.getPickListFilterCriteria](PickList.md#method-picklistgetpicklistfiltercriteria) to the data returned by [PickList.getClientPickListData](PickList.md#method-picklistgetclientpicklistdata). A record passes the filter if it has a matching value for all fields in the criteria object. Matching is performed according to [TextMatchStyle](../reference.md#type-textmatchstyle).
 
 If [PickList.showAllOptions](PickList.md#attr-picklistshowalloptions) is set, all values are shown, with matching values shown below a [separator](PickList.md#attr-picklistseparatorrows).
 

@@ -9,9 +9,7 @@
 *Inherits from:* [ProcessElement](ProcessElement.md#class-processelement)
 
 ### Description
-Sends the specified message via SMS or [notification](Notify.md#class-notify).
-
-SMS is sent using the [reifyMessaging](../kb_topics/reifyMessaging.md#kb-topic-reify-messaging) `isc_sendSMS` DataSource.
+Sends an SMS message using the [reifyMessaging](../kb_topics/reifyMessaging.md#kb-topic-reify-messaging) `isc_sendSMS` DataSource.
 
 There is a matching Reify Workflow Editor task editor, [SendSMSTaskEditor](#class-sendsmstaskeditor), that can be enabled by [Reify.enableSendSMSTaskEditor](#attr-reifyenablesendsmstaskeditor).
 

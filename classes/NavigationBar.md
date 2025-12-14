@@ -48,14 +48,6 @@ The AutoChild label used to display the [title](#attr-navigationbartitle) in thi
 **Flags**: IR
 
 ---
-## Attr: NavigationBar.iconBaseStyle
-
-### Description
-A CSS style to apply to images in the [left](#attr-navigationbarleftbutton) and [right](#attr-navigationbarrightbutton) buttons. This is a base style supporting suffixes for states, specifically "Over", "Down" and "Disabled", which are applied when [ImgButton](ImgButton.md#class-imgbutton) settings like [ImgButton.showRollOverIcon](ImgButton.md#attr-imgbuttonshowrollovericon) are applied to the icons.
-
-**Flags**: IR
-
----
 ## Attr: NavigationBar.rightButtonIcon
 
 ### Description
@@ -79,14 +71,6 @@ The following [passthroughs](../kb_topics/autoChildUsage.md#kb-topic-using-autoc
 - [NavigationBar.showRightButton](#attr-navigationbarshowrightbutton)
 
 **Flags**: IR
-
----
-## Attr: NavigationBar.iconSize
-
-### Description
-Default size for icons in the [left](#attr-navigationbarleftbutton) and [right](#attr-navigationbarrightbutton) buttons in this `NavigationBar`.
-
-**Flags**: IRW
 
 ---
 ## Attr: NavigationBar.shortLeftButtonTitle

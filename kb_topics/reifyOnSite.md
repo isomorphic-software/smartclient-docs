@@ -49,7 +49,6 @@ where the deployment type is one of "test", "staging", or "production". The foll
 | isc_hostedUsers | users for deployment | N |
 | isc_hostedRoles | user roles for deployment | N |
 | isc_hostedSessions | tracks deployment sessions | N |
-| isc_hostedSearches | saved searches | N |
 
 Your application's deployment URL will target the current host with a path like:
 
@@ -120,7 +119,6 @@ To switch Reify OnSite to use another database engine, such as MySQL, you can us
 *   isc\_hostedUsers
 *   isc\_hostedRoles
 *   isc\_hostedSessions
-*   isc\_hostedSearches
 *   isc\_hostedDeployments
 *   isc\_userSkin
 

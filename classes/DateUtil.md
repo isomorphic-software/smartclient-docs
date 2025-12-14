@@ -118,22 +118,6 @@ For further background on date, time and datetime types, storage and transmissio
 `[Date](#type-date)` — a Date instance representing a datetime value combining the logical date and time passed
 
 ---
-## ClassMethod: DateUtil.setDefaultDateSeparator
-
-### Description
-Sets a new default separator that will be used when formatting dates. By default, this is a forward slash character: "/"
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| separator | [String](#type-string) | false | — | separator to use in dates |
-
-### Groups
-
-- dateFormatting
-
----
 ## ClassMethod: DateUtil.format
 
 ### Description
@@ -149,6 +133,22 @@ Return the parameter date formatted according to the parameter [FormatString](..
 ### Returns
 
 `[String](#type-string)` — formatted date string
+
+### Groups
+
+- dateFormatting
+
+---
+## ClassMethod: DateUtil.setDefaultDateSeparator
+
+### Description
+Sets a new default separator that will be used when formatting dates. By default, this is a forward slash character: "/"
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| separator | [String](#type-string) | false | — | separator to use in dates |
 
 ### Groups
 
@@ -542,8 +542,8 @@ See [dateFormatAndStorage](../kb_topics/dateFormatAndStorage.md#kb-topic-date-an
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | hour | [Integer](../reference_2.md#type-integer)|[Date](#type-date) | false | — | integer hour (0-23) or a Date instance - if passed a Date instance, its time-elements are mapped to hour, minute and second parameters. Passing null is the same as passing `new Date()` |
-| minute | [Integer](../reference_2.md#type-integer) | true | — | minute (0-59) - defaults to zero or, if the `hour` parameter is a Date instance, the minutes from that Date instance |
-| second | [Integer](../reference_2.md#type-integer) | true | — | second (0-59) - defaults to zero or, if the `hour` parameter is a Date instance, the seconds from that Date |
+| minute | [Integer](../reference_2.md#type-integer) | false | — | minute (0-59) - defaults to zero or, if the `hour` parameter is a Date instance, the minutes from that Date instance |
+| second | [Integer](../reference_2.md#type-integer) | false | — | second (0-59) - defaults to zero or, if the `hour` parameter is a Date instance, the seconds from that Date |
 
 ### Returns
 
@@ -666,7 +666,7 @@ Return an array of days that are considered "weekend" days. Values will be the i
 ### Description
 Create a new Date object in the current locale time, typically for display in a [datetime field](DataSourceField.md#attr-datasourcefieldtype).
 
-For simplicity, you can pass a Date-instance in the first parameter to create a new date from that Date instance. If you pass a date-string, it is converted to a Date instance. Passing `null` is the same as passing `new Date()`. When the first parameter is a Date instance or string, the various datetime-element parameters - month, hour, etc - may still be passed to fine-tune the result.
+For simplicity, you can pass a Date-instance in the first parameter to create a new date from that Date instance. Passing `null` is the same as passing `new Date()`. When the first parameter is a Date instance, the various datetime-element parameters - month, hour, etc - may still be passed to fine-tune the result.
 
 See [dateFormatAndStorage](../kb_topics/dateFormatAndStorage.md#kb-topic-date-and-time-format-and-storage) for more information on date, time and datetime values in SmartClient.
 
@@ -674,7 +674,7 @@ See [dateFormatAndStorage](../kb_topics/dateFormatAndStorage.md#kb-topic-date-an
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| year | [Integer](../reference_2.md#type-integer)|[Date](#type-date) | true | — | full year or a Date instance or date-string - if passed a Date, or a date-string, its parts are mapped to all the other parameters. Passing null is the same as passing `new Date()` |
+| year | [Integer](../reference_2.md#type-integer)|[Date](#type-date) | true | — | full year or a Date instance - if passed a Date, its parts are mapped to all the other parameters. Passing null is the same as passing `new Date()` |
 | month | [Integer](../reference_2.md#type-integer) | true | — | month (zero based, so 0 is January) - defaults to today's month or, if the `year` parameter is a Date instance, to the month from that instance |
 | date | [Integer](../reference_2.md#type-integer) | true | — | date within the month - defaults to today's date or, if the `year` parameter is a Date instance, to the date from that instance |
 | hour | [Integer](../reference_2.md#type-integer) | true | — | integer hour (0-23) - defaults to zero or, if the `year` parameter is a Date instance, the hours from that Date instance |

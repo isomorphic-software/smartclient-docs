@@ -41,11 +41,11 @@ _Note that this is not intended to be an exhaustive list_:
 *   `domainSync.disabled` and `domainSync.baseDomains` can be used to [configure domain synching behavior](xssAndCSRFSecurity.md#kb-topic-xss-and-csrf-security).
 *   `import.consume.bom` can be set to false to switch off automatic consumption of Byte Order Markers when importing UTF data (see the server Javadocs for the DataImport class for more details)
 *   `datasources.autoConvertRelativeDates` can be used to change when relative dates are converted or to entirely disable the automatic conversion (see [DataSource.autoConvertRelativeDates](../classes/DataSource.md#attr-datasourceautoconvertrelativedates) for more details)
+*   `reflection.classCache` specifies how (if enabled) Smartclient Reflection library caches loaded classes, availables values are "global", "classloader" (default), "jdk" and "off". See comment in server.properties for more details.
 *   `sql.log.formatQueries` can be set to `true` to enable the SQL queries formatting in [server logs](serverLogging.md#kb-topic-server-logging) under `com.isomorphic.sql.SQLDriver` category
 *   `sql.log.compactFormatting` can be set to `true` to make formatted SQL queries more compact
 *   `sql.log.maxLength` can be set to an integer controlling the maximum length of formatted SQL queries
-*   `sql.log.queriesSlowerThan` can be set to an integer controlling SQL query execution time threshold in milliseconds (defaults to 10000), which if exceeded query is identified as "slow" and may be logged under specific logging category. See [DataSource.logSlowSQL](../classes/DataSource.md#attr-datasourcelogslowsql) for more details.
-*   `reflection.classCache` specifies how (if enabled) Smartclient Reflection library caches loaded classes, availables values are "global", "classloader" (default), "jdk" and "off". See comment in server.properties for more details.
+*   `sql.log.queriesSlowerThan` can be set to an integer controlling SQL query execution time threshold in milliseconds, which if exceeded query is identified as "slow" and may be logged under specific logging category. See [DataSource.logSlowSQL](../classes/DataSource.md#attr-datasourcelogslowsql) for more details.
 *   `sql_comment_mdc_key` if specified is used as a logging MDC key to get the configurable "log\_correlation\_id" third party tools, like Dynatrace, Graylog etc., use for the context. Smartclient picks that from the logging MDC and adds as a comment to the end of generated SQL queries, so those can be connected to the context.
 
 ---

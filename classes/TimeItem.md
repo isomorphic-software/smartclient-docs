@@ -312,7 +312,7 @@ This setting does not apply to hints that are [shown in field](TextItem.md#attr-
 ## Attr: TimeItem.itemTitleOrientation
 
 ### Description
-When [useTextField](#attr-timeitemusetextfield) is false, the default orientation of titles for child-items, such as the [hour](#attr-timeitemhouritem), [minute](#attr-timeitemminuteitem) and [second](#attr-timeitemseconditem) pickers. [TitleOrientation](../reference_2.md#type-titleorientation) lists valid options.
+When [useTextField](#attr-timeitemusetextfield) is false, the default orientation of titles for child-items, such as the [hour](#attr-timeitemhouritem), [minute](#attr-timeitemminuteitem) and [second](#attr-timeitemseconditem) pickers. [TitleOrientation](../reference.md#type-titleorientation) lists valid options.
 
 Note that titles on the left or right take up a cell in tabular [form layouts](../kb_topics/formLayout.md#kb-topic-form-layout), but titles on top do not.
 
@@ -391,6 +391,18 @@ Title to show for the [second picker](#attr-timeitemseconditem).
 ### Groups
 
 - i18nMessages
+
+**Flags**: IRW
+
+---
+## Attr: TimeItem.displayFormat
+
+### Description
+What format should this item's time string be presented in?
+
+This attribute does not have an effect if a native HTML5 time input is being used. See [TimeItem.browserInputType](#attr-timeitembrowserinputtype).
+
+**Deprecated**
 
 **Flags**: IRW
 
@@ -854,7 +866,7 @@ Returning `false` will cancel this default behavior.
 
 ### Returns
 
-`[Boolean](#type-boolean)` — `false` to cancel the default behavior.
+`[boolean](../reference.md#type-boolean)` — `false` to cancel the default behavior.
 
 ---
 ## Method: TimeItem.setMinuteValues

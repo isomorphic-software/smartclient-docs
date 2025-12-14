@@ -37,21 +37,13 @@ Occurred at 11:59:25 local time and 806 milliseconds. It's priority was `INFO`, 
 
 Each logging _category_ has a _priority_ associated with it. If a message's priority is lower than the current priority for the category it is logged in, the message will be suppressed (will not appear in the "Results" pane).
 
-Logging priorities for each log category may be configured in a running app using the Developer Console via the Logging Preferences menu. Click "More.." to see an extensive list of diagnostic log categories. Hover over each category name to see a description of what kind of messages are logged in the category.
-
-Developers may also use [Log.setLogPriority](../classes/Log.md#classmethod-logsetlogpriority) to configure log priorities programmatically.
-
-To add your own logs to the Developer Console, use [Class.logWarn](../classes/Class.md#method-classlogwarn), [Class.logInfo](../classes/Class.md#method-classloginfo) and related methods.
-
-Developers may also generate stack traces directly via [Log.getStackTrace](../classes/Log.md#classmethod-loggetstacktrace)
-
-If the current thread was started by a [timer](../classes/Timer.md#classmethod-timersettimeout), you can enable debug-level logging for the "timerTrace" log category to also include the stack trace leading up to the setTimeout call in most cases.
+It is critical to be familiar with the diagnostic categories built-in to SmartClient - you will use them in most debugging sessions. Open the Logging Preferences menu and select "More.." to see a list of diagnostic log categories. Hover over each category name to see a description of what kind of messages are logged in the category.
 
 #### Debugging JavaScript Errors
 
-Javascript errors will typically be reported in the Developer Console. Wherever possible a stack trace will be included which can help determine the cause of the error.
+Javascript errors will typically be reported in the Developer Console. Wherever possible a stack trace will be included which can help determine the cause of the error. In addition to this, recent versions of the Firefox browser (versions 6.0 and above) ship with some useful development tools including the Error Console for reporting errors. We also recommend Console2 and Firebug for debugging in Firefox.
 
-Stack traces from the Developer Console Explorer should _always_ be included in issue reports sent to Isomorphic Software, if at all possible.
+When JavaScript errors occur, SmartClient is usually able to report full stack traces in the Developer Console. This can be invaluable when your code triggers a JavaScript error in the SmartClient libraries themselves, or when it is unclear how your code is being called. Stack traces from the Developer Console Explorer should _always_ be included in issue reports sent to Isomorphic Software, if at all possible.
 
 #### Avoiding JavaScript Validation Errors from the Framework
 
@@ -106,7 +98,7 @@ Always include:
 
 Then, include **either** a standalone test case (see below), **or**:
 
-*   For JS errors, Stack traces as covered under "Debugging JavaScript Errors" above
+*   For JS errors, Stack traces from Firebug (for Firefox) or the Developer Console (for IE), as covered under "Debugging JavaScript Errors" above
 *   What server platform and [databinding approach](clientServerIntegration.md#kb-topic-client-server-integration) you are using, if applicable
 *   contents of the SmartClient Developer Console "Log messages" area, with appropriate diagnostic categories set the DEBUG or INFO level (see "Built-in Diagnostics" above)
 *   for any problem involving server contact, the complete server-side log for the request that fails or produces unexpected results
@@ -175,7 +167,7 @@ The core log methods (`logDebug()`, `logInfo()`, `logWarn()`) and the "echo" fac
      });
  
 ```
-The special value "this" is not always set to a SmartClient component, for example, in some kinds of callbacks (eg [fetchData()](../classes/ListGrid_2.md#method-listgridfetchdata)). When in doubt, use these methods via the Log class as `isc.Log.logWarn()`.
+The special value "this" is not always set to a SmartClient component, for example, in some kinds of callbacks (eg [fetchData()](../classes/ListGrid_1.md#method-listgridfetchdata)). When in doubt, use these methods via the Log class as `isc.Log.logWarn()`.
 
 **Find the source of logs** Sometimes, you will see a log message with a warning, usage error or other unusual condition, and it won't be clear how your code is causing the log to appear. In these situations, you can use [Log.traceLogMessage](../classes/Log.md#classmethod-logtracelogmessage) to request that a stack trace is logged whether that specific message appears. **Logging performance**
 

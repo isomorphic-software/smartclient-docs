@@ -13,7 +13,7 @@ To use the built-in SQL engine, declare a [DataSource](../classes/DataSource.md#
 
 You can then use the [Admin Console](adminConsole.md#kb-topic-admin-console) to configure database access, as well as to automatically create and populate a database table based on your DataSource. By default, DataSources will use the "default database" from the admin console, however you can set [DataSource.dbName](../classes/DataSource.md#attr-datasourcedbname) to the name of a specific database configuration you have configured via the Admin Console.
 
-The list of databases known to work with the built-in SQL logic is as follows:
+The list of databases known to work with the the built-in SQL logic is as follows:
 
 |  | HSQLDB ${HSQLDB_versions} |  |
 |---|---|---|
@@ -26,8 +26,6 @@ The list of databases known to work with the built-in SQL logic is as follows:
 |  | MariaDB ${MariaDB_versions} |  |
 |  | Oracle ${Oracle_versions} |  |
 |  | PostgreSQL ${PostgreSQL_versions} |  |
-|  | Progress OpenEdge ${OpenEdge_versions} (Note, DDL via JDBC operations are restricted by the product itself) |  |
-|  | Snowflake ${Snowflake_versions} |  |
 
 We also support a generic SQL92 database connection which works for basic CRUD operations with any database product that supports standard SQL92 syntax and data types, plus a couple of widely-implemented features that are not actually part of the standard. Specifically, this means we do not support:
 

@@ -114,7 +114,7 @@ See the *XML* and *JSON* versions of the transformResponse() example for an exam
 
 ### Related
 
-- [DSDataFormat](../reference_2.md#type-dsdataformat)
+- [DSDataFormat](../reference.md#type-dsdataformat)
 - [DSProtocol](../reference_2.md#type-dsprotocol)
 - [Callbacks.GetFieldValueCallback](../classes/Callbacks.md#method-callbacksgetfieldvaluecallback)
 - [DataSource.dataFormat](../classes/DataSource.md#attr-datasourcedataformat)
@@ -132,9 +132,6 @@ See the *XML* and *JSON* versions of the transformResponse() example for an exam
 - [DataSource.dataURL](../classes/DataSource.md#attr-datasourcedataurl)
 - [DataSource.tagName](../classes/DataSource.md#attr-datasourcetagname)
 - [DataSource.defaultTextMatchStyle](../classes/DataSource.md#attr-datasourcedefaulttextmatchstyle)
-- [DataSource.arrayCriteriaForceExact](../classes/DataSource.md#attr-datasourcearraycriteriaforceexact)
-- [OperationBinding.arrayCriteriaForceExact](../classes/OperationBinding.md#attr-operationbindingarraycriteriaforceexact)
-- [DSRequest.arrayCriteriaForceExact](../classes/DSRequest.md#attr-dsrequestarraycriteriaforceexact)
 - [DataSourceField.valueXPath](../classes/DataSourceField.md#attr-datasourcefieldvaluexpath)
 - [DataSourceField.valueWriteXPath](../classes/DataSourceField.md#attr-datasourcefieldvaluewritexpath)
 - [DataSourceField.getFieldValue](../classes/DataSourceField.md#attr-datasourcefieldgetfieldvalue)

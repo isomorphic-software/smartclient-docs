@@ -6,7 +6,7 @@
 
 ## Class: Sound
 
-*Inherits from:* [BaseWidget](BaseWidget.md#class-basewidget)
+*Inherits from:* [BaseWidget](../reference.md#class-basewidget)
 
 ### Description
 SmartClient class for loading and playing audio files using the HTML5 `<AUDIO>` element.

@@ -28,7 +28,7 @@ A declared value of the enum type [RecordDropAppearance](../reference_2.md#type-
 ## ClassAttr: ListGrid.UP_ARROW_KEYPRESS
 
 ### Description
-A declared value of the enum type [EditCompletionEvent](../reference_2.md#type-editcompletionevent).
+A declared value of the enum type [EditCompletionEvent](../reference.md#type-editcompletionevent).
 
 **Flags**: R
 
@@ -60,7 +60,7 @@ A declared value of the enum type [RecordDropAppearance](../reference_2.md#type-
 ## ClassAttr: ListGrid.SHIFT_TAB_KEYPRESS
 
 ### Description
-A declared value of the enum type [EditCompletionEvent](../reference_2.md#type-editcompletionevent).
+A declared value of the enum type [EditCompletionEvent](../reference.md#type-editcompletionevent).
 
 **Flags**: R
 
@@ -68,7 +68,7 @@ A declared value of the enum type [EditCompletionEvent](../reference_2.md#type-e
 ## ClassAttr: ListGrid.CLICK_OUTSIDE
 
 ### Description
-A declared value of the enum type [EditCompletionEvent](../reference_2.md#type-editcompletionevent).
+A declared value of the enum type [EditCompletionEvent](../reference.md#type-editcompletionevent).
 
 **Flags**: R
 
@@ -76,7 +76,7 @@ A declared value of the enum type [EditCompletionEvent](../reference_2.md#type-e
 ## ClassAttr: ListGrid.ENTER_KEYPRESS
 
 ### Description
-A declared value of the enum type [EditCompletionEvent](../reference_2.md#type-editcompletionevent).
+A declared value of the enum type [EditCompletionEvent](../reference.md#type-editcompletionevent).
 
 **Flags**: R
 
@@ -84,7 +84,7 @@ A declared value of the enum type [EditCompletionEvent](../reference_2.md#type-e
 ## ClassAttr: ListGrid.CLICK
 
 ### Description
-A declared value of the enum type [EditCompletionEvent](../reference_2.md#type-editcompletionevent).
+A declared value of the enum type [EditCompletionEvent](../reference.md#type-editcompletionevent).
 
 **Flags**: R
 
@@ -92,7 +92,7 @@ A declared value of the enum type [EditCompletionEvent](../reference_2.md#type-e
 ## ClassAttr: ListGrid.ESCAPE_KEYPRESS
 
 ### Description
-A declared value of the enum type [EditCompletionEvent](../reference_2.md#type-editcompletionevent).
+A declared value of the enum type [EditCompletionEvent](../reference.md#type-editcompletionevent).
 
 **Flags**: R
 
@@ -100,7 +100,7 @@ A declared value of the enum type [EditCompletionEvent](../reference_2.md#type-e
 ## ClassAttr: ListGrid.OVER
 
 ### Description
-A declared value of the enum types [RecordDropPosition](../reference.md#type-recorddropposition), [ReorderPosition](../reference_2.md#type-reorderposition) and [RecordDropAppearance](../reference_2.md#type-recorddropappearance).
+A declared value of the enum types [RecordDropPosition](../reference.md#type-recorddropposition), [ReorderPosition](../reference.md#type-reorderposition) and [RecordDropAppearance](../reference_2.md#type-recorddropappearance).
 
 **Flags**: R
 
@@ -108,7 +108,7 @@ A declared value of the enum types [RecordDropPosition](../reference.md#type-rec
 ## ClassAttr: ListGrid.DOUBLE_CLICK
 
 ### Description
-A declared value of the enum type [EditCompletionEvent](../reference_2.md#type-editcompletionevent).
+A declared value of the enum type [EditCompletionEvent](../reference.md#type-editcompletionevent).
 
 **Flags**: R
 
@@ -116,7 +116,7 @@ A declared value of the enum type [EditCompletionEvent](../reference_2.md#type-e
 ## ClassAttr: ListGrid.PROGRAMMATIC
 
 ### Description
-A declared value of the enum type [EditCompletionEvent](../reference_2.md#type-editcompletionevent).
+A declared value of the enum type [EditCompletionEvent](../reference.md#type-editcompletionevent).
 
 **Flags**: R
 
@@ -124,7 +124,7 @@ A declared value of the enum type [EditCompletionEvent](../reference_2.md#type-e
 ## ClassAttr: ListGrid.BEFORE
 
 ### Description
-A declared value of the enum types [RecordDropPosition](../reference.md#type-recorddropposition) and [ReorderPosition](../reference_2.md#type-reorderposition).
+A declared value of the enum types [RecordDropPosition](../reference.md#type-recorddropposition) and [ReorderPosition](../reference.md#type-reorderposition).
 
 **Flags**: R
 
@@ -148,7 +148,7 @@ A declared value of the enum type [RecordDropAppearance](../reference_2.md#type-
 ## ClassAttr: ListGrid.EDIT_FIELD_CHANGE
 
 ### Description
-A declared value of the enum type [EditCompletionEvent](../reference_2.md#type-editcompletionevent).
+A declared value of the enum type [EditCompletionEvent](../reference.md#type-editcompletionevent).
 
 **Flags**: R
 
@@ -164,7 +164,7 @@ A declared value of the enum type [RecordDropPosition](../reference.md#type-reco
 ## ClassAttr: ListGrid.DOWN_ARROW_KEYPRESS
 
 ### Description
-A declared value of the enum type [EditCompletionEvent](../reference_2.md#type-editcompletionevent).
+A declared value of the enum type [EditCompletionEvent](../reference.md#type-editcompletionevent).
 
 **Flags**: R
 
@@ -172,7 +172,7 @@ A declared value of the enum type [EditCompletionEvent](../reference_2.md#type-e
 ## ClassAttr: ListGrid.AFTER
 
 ### Description
-A declared value of the enum types [RecordDropPosition](../reference.md#type-recorddropposition) and [ReorderPosition](../reference_2.md#type-reorderposition).
+A declared value of the enum types [RecordDropPosition](../reference.md#type-recorddropposition) and [ReorderPosition](../reference.md#type-reorderposition).
 
 **Flags**: R
 
@@ -180,7 +180,7 @@ A declared value of the enum types [RecordDropPosition](../reference.md#type-rec
 ## ClassAttr: ListGrid.TAB_KEYPRESS
 
 ### Description
-A declared value of the enum type [EditCompletionEvent](../reference_2.md#type-editcompletionevent).
+A declared value of the enum type [EditCompletionEvent](../reference.md#type-editcompletionevent).
 
 **Flags**: R
 
@@ -324,50 +324,12 @@ If [ListGrid.showHeaderMenuButton](#attr-listgridshowheadermenubutton) is true, 
 **Flags**: RA
 
 ---
-## Attr: ListGrid.tableRowStyle
-
-### Description
-The style to apply to `<TR>` tags in this grid's table. Useful for applying spacing or a custom border between records in the grid.
-
-This is an advanced capability and care should be taken not to use CSS that applies sizes or other settings that could cause sizing/rendering issues when used in conjunction with certain other features, such as [ListGrid.virtualScrolling](#attr-listgridvirtualscrolling). For example, the style should apply _box-sizing: border-box;_ to ensure that settings like border and padding don't change the size of row elements. In some cases, the style will also need to apply _display: inline-block;_ for CSS changes to take effect - this is because the default display setting for `<TR>` elements, _table-row_, has limited styling support.
-
-**Flags**: IRWA
-
----
-## Attr: ListGrid.editPendingMarkerStyle
-
-### Description
-The name of a CSS class used to overlay regular cell styles with additional styling when a cell has unsaved edits - these styles are in addition to the styling applied by [ListGrid.editPendingCSSText](#attr-listgrideditpendingcsstext) or [ListGrid.editPendingBaseStyle](#attr-listgrideditpendingbasestyle).
-
-You can use a custom class that overlays styling of your choosing, or use the default _pendingMarker_ class which is present in modern skins and provides a small corner-marker in the top-left of unsaved cells.
-
-Once set, this styleName is automatically appended to the style-list for cells with unsaved edits.
-
-### Groups
-
-- appearance
-
-### See Also
-
-- [ListGrid.baseStyle](#attr-listgridbasestyle)
-
-**Flags**: IRWA
-
----
 ## Attr: ListGrid.removeFieldProperties
 
 ### Description
 Configuration properties for the "remove field" displayed when [ListGrid.canRemoveRecords](#attr-listgridcanremoverecords) is enabled. These configuration settings will be overlaid on top of the [ListGrid.removeFieldDefaults](#attr-listgridremovefielddefaults).
 
 **Flags**: IR
-
----
-## Attr: ListGrid.headerMenuButtonSnapOffsetLeft
-
-### Description
-Offset of the right edge of a [ListGrid.headerMenuButton](#attr-listgridheadermenubutton) from the right edge of it's parent button.
-
-**Flags**: IRW
 
 ---
 ## Attr: ListGrid.originBaseStyle
@@ -398,23 +360,6 @@ When set to false, sample values of the FieldPicker are never shown. This proper
 **Flags**: IR
 
 ---
-## Attr: ListGrid.fullRowRangeDisplayValue
-
-### Description
-Dynamic String specifying the format for the [row range summary value](ListGrid_2.md#method-listgridgetrowrangedisplayvalue) when [RowRangeDisplayStyle](../reference_2.md#type-rowrangedisplaystyle) is set to `"full"`.
-
-The following variables are available for evaluation within this string:
-
-*   `rowRange`: the [formatted row range](ListGrid_2.md#method-listgridgetformattedrowrange)
-*   `rowCount`: the [formatted row count](ListGrid_2.md#method-listgridgetformattedrowcount)
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
-
----
 ## Attr: ListGrid.showSelectionCanvas
 
 ### Description
@@ -435,23 +380,6 @@ With [frozen fields](#attr-listgridcanfreezefields), the `selectionCanvas` is di
 - [ListGrid.showSelectionUnderCanvas](#attr-listgridshowselectionundercanvas)
 
 **Flags**: IRWA
-
----
-## Attr: ListGrid.rangeRowCountFormat
-
-### Description
-Format for the string returned from [ListGrid.getFormattedRowCount](ListGrid_2.md#method-listgridgetformattedrowcount) when [row count status](#method-listgridgetrowcountstatus) is `"range"`.
-
-The following variables are available for evaluation within this string:
-
-*   `minRowCount`: the lower bound of this row count value from [getRowCountRange()\[0\]](ListGrid_2.md#method-listgridgetrowcountrange), as a [locale-formatted number](NumberUtil.md#classmethod-numberutiltolocalizedstring).
-*   `minRowCount`: the upper bound of this row count value from [getRowCountRange()\[1\]](ListGrid_2.md#method-listgridgetrowcountrange), as a [locale-formatted number](NumberUtil.md#classmethod-numberutiltolocalizedstring).
-
-### Groups
-
-- rowRangeDisplay
-
-**Flags**: IRW
 
 ---
 ## Attr: ListGrid.rowSpanSelectionMode
@@ -604,22 +532,10 @@ Properties to apply to all header buttons. Overrides defaults applied via [ListG
 **Flags**: IRA
 
 ---
-## Attr: ListGrid.aiFilterWindowHint
-
-### Description
-The inline hint-text displayed in the user-entry area in the [ListGrid.aiFilterWindow](#attr-listgridaifilterwindow).
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IR
-
----
 ## Attr: ListGrid.applyFormulaAfterSummary
 
 ### Description
-If [ListGridField.userFormula](ListGridField.md#attr-listgridfielduserformula) is set for some field, and this grid is showing [group summaries](#attr-listgridshowgroupsummary) or a [grid summary](#attr-listgridshowgridsummary), this property determines what field value should be present in those summary rows. Should the field's user-formula be applied to the calculated summary row (applyFormulaAfterSummary `true`), or should a standard grid or group summary be applied to the user-formula values displayed in the grid (applyFormulaAfterSummary `false`)?
+If [ListGridField.userFormula](ListGridField.md#attr-listgridfielduserformula) is set for some field, and this grid is showing [group summaries](#attr-listgridshowgroupsummary) or a [grid summary](#attr-listgridshowgridsummary), this property determines what field value should be present in those summary rows. Should the field apply the user-formula to the calculated summary row, or should it apply a standard grid or group summary to the user-formula values displayed in the grid?
 
 May be overridden at the field level via [ListGridField.applyAfterSummary](ListGridField.md#attr-listgridfieldapplyaftersummary)
 
@@ -709,18 +625,6 @@ Note if [ListGrid.showGroupSummaryInHeader](#attr-listgridshowgroupsummaryinhead
 **Flags**: IR
 
 ---
-## Attr: ListGrid.aiSortFieldMaxRecordsMessage
-
-### Description
-The message to show when a user asks the AI to sort more than the [maximum allowed records](DataBoundComponent.md#attr-databoundcomponentaisortfieldmaxrecords).
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
-
----
 ## Attr: ListGrid.groupSummaryRecordProperty
 
 ### Description
@@ -756,7 +660,7 @@ If set to false on a record, selection of that record is disallowed.
 ## Attr: ListGrid.showRecordComponents
 
 ### Description
-When enabled, [ListGrid.createRecordComponent](ListGrid_2.md#method-listgridcreaterecordcomponent) will be called when saved rows are being rendered, and any returned component will be displayed embedded within the row or cell.
+When enabled, [ListGrid.createRecordComponent](#method-listgridcreaterecordcomponent) will be called when saved rows are being rendered, and any returned component will be displayed embedded within the row or cell.
 
 recordComponents are not created for newly added rows which have not yet been saved. See the [Handling Unsaved Records overview](../kb_topics/unsavedRecords.md#kb-topic-handling-unsaved-records) for more information.
 
@@ -789,8 +693,8 @@ This is particularly pertinent where [ListGrid.recordComponentPosition](#attr-li
 - [ListGrid.recordComponentPosition](#attr-listgridrecordcomponentposition)
 - [ListGrid.showRecordComponentsByCell](#attr-listgridshowrecordcomponentsbycell)
 - [RecordComponentPoolingMode](../reference_2.md#type-recordcomponentpoolingmode)
-- [ListGrid.showRecordComponent](ListGrid_2.md#method-listgridshowrecordcomponent)
-- [ListGrid.createRecordComponent](ListGrid_2.md#method-listgridcreaterecordcomponent)
+- [ListGrid.showRecordComponent](#method-listgridshowrecordcomponent)
+- [ListGrid.createRecordComponent](#method-listgridcreaterecordcomponent)
 - [ListGrid.updateRecordComponent](ListGrid_2.md#method-listgridupdaterecordcomponent)
 
 **Flags**: IRW
@@ -836,16 +740,6 @@ If [ListGrid.autoFitData](#attr-listgridautofitdata) is set to `"vertical"` or `
 **Flags**: IRW
 
 ---
-## Attr: ListGrid.canAddAISummaryFields
-
-### Description
-Adds an item to the header context menu allowing users to launch a dialog to define a new field based on an AI summary of the entire record.
-
-AI summary fields can be persisted via [ListGrid.getFieldState](ListGrid_2.md#method-listgridgetfieldstate) and [ListGrid.setFieldState](ListGrid_2.md#method-listgridsetfieldstate).
-
-**Flags**: IRW
-
----
 ## Attr: ListGrid.criteriaIndicatorColor
 
 ### Description
@@ -857,7 +751,7 @@ The color of the [filterWindow criteria indicator](#attr-listgridshowfilterwindo
 ## Attr: ListGrid.exportRawValues
 
 ### Description
-Dictates whether the data in this grid should be exported raw by [exportClientData()](ListGrid_2.md#method-listgridexportclientdata). If set to true, data will not be processed by field-formatters during exports. Decreases the time taken for large exports. This property can also be set at the [field level](ListGridField.md#attr-listgridfieldexportrawvalues).
+Dictates whether the data in this grid should be exported raw by [exportClientData()](#method-listgridexportclientdata). If set to true, data will not be processed by field-formatters during exports. Decreases the time taken for large exports. This property can also be set at the [field level](ListGridField.md#attr-listgridfieldexportrawvalues).
 
 **Flags**: IR
 
@@ -891,18 +785,6 @@ Denotes the name of a property that can be set on records to display a custom st
 
 - [ListGrid.getCellStyle](ListGrid_2.md#method-listgridgetcellstyle)
 - [ListGrid.recordBaseStyleProperty](#attr-listgridrecordbasestyleproperty)
-
-**Flags**: IRW
-
----
-## Attr: ListGrid.canConfigureViaAI
-
-### Description
-Whether to show the [Configure via AI](#attr-listgridconfigureviaaitext) menu-item, which allows users to task the AI with performing multiple advanced configuration steps, such as grouping, hiliting and filtering, by entering plain-text commands.
-
-### Groups
-
-- ai
 
 **Flags**: IRW
 
@@ -945,7 +827,7 @@ Should the [filter-editor](#attr-listgridshowfiltereditor) in this grid always p
 ## Attr: ListGrid.showExpansionEditorSaveButton
 
 ### Description
-When [ExpansionMode](../reference_2.md#type-expansionmode) is _editor_, should a Save button be shown below the the expanded editor?
+When [ExpansionMode](../reference.md#type-expansionmode) is _editor_, should a Save button be shown below the the expanded editor?
 
 Note that if an expanded-row containing an editor is collapsed while changes are outstanding, changes will be either be automatically updated to the grid, or will first show a confirmation dialog, according to the value of [ListGrid.expansionEditorShowSaveDialog](#attr-listgridexpansioneditorshowsavedialog).
 
@@ -1071,25 +953,9 @@ If null, cells for which editing has failed will be rendered using the normal ba
 ### Description
 If [ListGrid.autoFitData](#attr-listgridautofitdata) is set to `"vertical"` or `"both"` this property provides an upper limit on how far the ListGrid will expand vertically to accommodate its content. If content exceeds this height, scrollbars will be introduced as usual. In addition to this property, [ListGrid.autoFitMaxRecords](#attr-listgridautofitmaxrecords) allows you to limit vertical expansion based on the number of rows to be rendered.
 
-Note: Unlike [ListGrid.autoFitMaxWidth](#attr-listgridautofitmaxwidth), this property cannot be set to a string percentage value; it must be a numeric pixel value or `null`.
-
 ### Groups
 
 - autoFitData
-
-**Flags**: IRW
-
----
-## Attr: ListGrid.hilites
-
-### Description
-Hilites to be applied to the data for this grid. See [hiliting](../kb_topics/hiliting.md#kb-topic-hiliting).
-
-It is undefined behavior to share the same record objects, or the same [ResultSet](ResultSet.md#class-resultset) instances, among multiple grids if one of the grid's fields specifies a [userFormula](ListGridField.md#attr-listgridfielduserformula), [userSummary](ListGridField.md#attr-listgridfieldusersummary), [aiFieldPrompt](ListGridField.md#attr-listgridfieldaifieldprompt), or [aiHoverRequest](ListGridField.md#attr-listgridfieldaihoverrequest), or if one of the grids has a [Hilite](../reference_2.md#object-hilite) with an asynchronous filter in the hilite's [criteria](Hilite.md#attr-hilitecriteria).
-
-### Groups
-
-- hiliting
 
 **Flags**: IRW
 
@@ -1134,9 +1000,7 @@ Instance of [FilterBuilder](FilterBuilder.md#class-filterbuilder) shown in [List
 ## Attr: ListGrid.autoFitWidthApproach
 
 ### Description
-When a user requests column autofitting via the [header context menu](ListGrid_2.md#method-listgridgetheadercontextmenuitems) or via a [mouse gesture](#attr-listgridheaderautofitevent), what autofit approach is used.
-
-For information about auto-fitting specific fields, see [ListGridField.autoFit](ListGridField.md#attr-listgridfieldautofit).
+When a user requests column autofitting via the [header context menu](#method-listgridgetheadercontextmenuitems) or via a [mouse gesture](#attr-listgridheaderautofitevent), what autofit approach is used.
 
 ### Groups
 
@@ -1182,8 +1046,6 @@ Should a menu item allowing the user to show or hide the [filter editor](#attr-l
 
 Note that if this ListGrid is not [bound to a dataSource](#attr-listgriddatasource) it can not be filtered. In this case the context menu option to show the filterEditor will not be displayed even if `canShowFilterEditor` is true.
 
-Enabling [filter via AI](#attr-listgridfilterviaaimode) forces this setting to true.
-
 ### Groups
 
 - filterEditor
@@ -1217,29 +1079,17 @@ To avoid leaking local storage, this setting will be disregarded, disabling the 
 ### Description
 If [ListGrid.showGridSummary](#attr-listgridshowgridsummary) is true, by default summary values are calculated on the client based on the current data-set for the grid (see [ListGrid.getGridSummary](ListGrid_2.md#method-listgridgetgridsummary) and [ListGrid.getGridSummaryFunction](ListGrid_2.md#method-listgridgetgridsummaryfunction)).
 
-In some cases however it may make sense to calculate summary values on the server and retrieve them via a dataSource fetch. If set, this property specifies a dataSource to fetch against for the summary row.
+In some cases however it may make sense to calculate summary values on the server and retrieve them via a dataSource fetch. If set, this property specifies a dataSource to fetch against for the summary row. The dataSource should return a single record with summary data for each field for which summary data should be shown. Note that specifying this property completely bypasses the standard client-side grid summary calculation logic.
 
-The fetch may be further customized via [ListGrid.summaryRowCriteria](#attr-listgridsummaryrowcriteria) and [ListGrid.summaryRowFetchRequestProperties](#attr-listgridsummaryrowfetchrequestproperties). Note that if [ListGrid.maxSummaryRowRecords](#attr-listgridmaxsummaryrowrecords) is specified this will be passed to the server as the [DSRequest.endRow](DSRequest.md#attr-dsrequestendrow) for the summaryRowFetchRequest. Developers may modify this property in order to display multiple summaryRowRecords from a summaryRowDataSource fetch
-
-Note that specifying a `summaryRowDataSource` completely bypasses the standard client-side grid summary calculation logic.
+The fetch may be further customized via [ListGrid.summaryRowCriteria](#attr-listgridsummaryrowcriteria) and [ListGrid.summaryRowFetchRequestProperties](#attr-listgridsummaryrowfetchrequestproperties)
 
 **Flags**: IRA
-
----
-## Attr: ListGrid.firstCellStyle
-
-### Description
-The style to apply to the first cell in each row, when [ListGrid.styledRowEnds](#attr-listgridstyledrowends) is true. Note that this style is additional to the regular cell styling and should not introduce settings that change the layout or size of the cell, such as padding or font-size. The styling will work with any design, and is also applied correctly with or without frozen fields.
-
-If all you want to do is provide rounded-corners for records in this grid, it may be simpler to set [ListGrid.recordRadius](#attr-listgridrecordradius) to a CSS _border-radius_ string that achieves the rounding you want.
-
-**Flags**: IRW
 
 ---
 ## Attr: ListGrid.exportFieldWidths
 
 ### Description
-When exporting data to Excel/OpenOffice format using [ListGrid.exportData](ListGrid_2.md#method-listgridexportdata) or [ListGrid.exportClientData](ListGrid_2.md#method-listgridexportclientdata), whether widths of fields should be replicated in the resulting spreadsheet.
+When exporting data to Excel/OpenOffice format using [ListGrid.exportData](ListGrid_2.md#method-listgridexportdata) or [ListGrid.exportClientData](#method-listgridexportclientdata), whether widths of fields should be replicated in the resulting spreadsheet.
 
 Because Excel's unit of measurement for field widths is based on the default system font, there is no exact way to translate field widths in pixels to Excel column widths. The [ListGrid.exportWidthScale](#attr-listgridexportwidthscale) property can be set to adjust scaling; it's default value errs on the side of making Excel's columns slightly wider than the ListGrid field's actual width to avoid clipping.
 
@@ -1301,22 +1151,10 @@ When [canShowFilterEditor](#attr-listgridcanshowfiltereditor) is true, this is t
 **Flags**: IRW
 
 ---
-## Attr: ListGrid.expansionFieldImageStyle
-
-### Description
-Custom style to apply to the image in the [ListGrid.expansionField](#attr-listgridexpansionfield) displayed in collapsible rows when [ListGrid.canExpandRecords](#attr-listgridcanexpandrecords) is true. Affects the icons provided by [ListGrid.expansionFieldTrueImage](#attr-listgridexpansionfieldtrueimage) and [ListGrid.expansionFieldFalseImage](#attr-listgridexpansionfieldfalseimage).
-
-### Groups
-
-- appearance
-
-**Flags**: IRW
-
----
 ## Attr: ListGrid.expansionDetailField
 
 ### Description
-Automatically generated [HTMLFlow](HTMLFlow.md#class-htmlflow) for displaying the contents of [a specified field](#attr-listgriddetailfield) in a record's expanded section when [listGrid.expansionMode](../reference_2.md#type-expansionmode) is `detailField`.
+Automatically generated [HTMLFlow](HTMLFlow.md#class-htmlflow) for displaying the contents of [a specified field](#attr-listgriddetailfield) in a record's expanded section when [listGrid.expansionMode](../reference.md#type-expansionmode) is `detailField`.
 
 This component is an [AutoChild](../reference.md#type-autochild) and as such may be customized via `listGrid.expansionDetailFieldProperties` and `listGrid.expansionDetailFieldDefaults`.
 
@@ -1344,7 +1182,7 @@ If this is an editable listGrid, when the user attempts to cancel an edit, shoul
 ## Attr: ListGrid.hiliteIconPosition
 
 ### Description
-When [hiliteIcons](#attr-listgridhiliteicons) are present, where the hilite icon will be placed relative to the field value. See [HiliteIconPosition](../reference_2.md#type-hiliteiconposition). Can be overridden at the field level.
+When [hiliteIcons](#attr-listgridhiliteicons) are present, where the hilite icon will be placed relative to the field value. See [HiliteIconPosition](../reference.md#type-hiliteiconposition). Can be overridden at the field level.
 
 ### Groups
 
@@ -1457,24 +1295,6 @@ If [ListGrid.deferRemoval](#attr-listgriddeferremoval) is true, when a record is
 ### Groups
 
 - editing
-
-**Flags**: IRW
-
----
-## Attr: ListGrid.rowLocatorField
-
-### Description
-If [ListGrid.locateRowsBy](#attr-listgridlocaterowsby) has been set to "cellValue", this property may be used to specify which field's cell value to use.
-
-If set to an array, cell values from each field will be recorded as part of the locator and used to identify the record.
-
-### Groups
-
-- autoTest
-
-### See Also
-
-- [LocatorStrategy](../reference_2.md#type-locatorstrategy)
 
 **Flags**: IRW
 
@@ -1819,7 +1639,7 @@ See [ListGrid.editSelectionType](#attr-listgrideditselectiontype) for how edit-s
 ## Attr: ListGrid.expansionMode
 
 ### Description
-The [ExpansionMode](../reference_2.md#type-expansionmode) for records in this grid.
+The [ExpansionMode](../reference.md#type-expansionmode) for records in this grid.
 
 If [canExpandRecords](#attr-listgridcanexpandrecords) is true but `expansionMode` is not set, it defaults to "detailRelated" if [ListGrid.detailDS](#attr-listgriddetailds) is set, or to "details" otherwise.
 
@@ -1862,38 +1682,6 @@ When [ListGrid.allowFilterOperators](#attr-listgridallowfilteroperators) is enab
 The default operator for a field is determined by [ListGrid.autoFetchTextMatchStyle](#attr-listgridautofetchtextmatchstyle) or by setting [ListGridField.filterOperator](ListGridField.md#attr-listgridfieldfilteroperator) for a specific field.
 
 **Flags**: IR
-
----
-## Attr: ListGrid.fetchFields
-
-### Description
-Fields that will be always requested from the server when the grid fetches data, even if they are not visible - may be either an array of fields or a CSV string.
-
-If `fetchFields` has been set, then aside from the declared `fetchFields`, the full set of requested fields will always include the primary-key fields from the dataSource and any visible fields that are also DataSource fields - so if either a [SavedSearch](SavedSearches.md#class-savedsearches) or the [ListGrid.fields](#attr-listgridfields) configuration includes fields not declared in `fetchFields`, those fields will be requested from the server even if they are not included in `fetchFields`.
-
-In addition, any fields that are referenced by declarative features, such as [UserFormula](../reference.md#object-userformula) or [ListGridField.visibleWhen](ListGridField.md#attr-listgridfieldvisiblewhen), will also be automatically included, even if not listed in `fetchFields`. Also applies to declarative [expansion](../reference_2.md#type-expansionmode) and [hover](../reference.md#type-hovermode) modes, where fields required by those modes are also fetched.
-
-This means you can essentially set `fetchFields` to just fields that always need to be there, whether visible or not - such as fields that are required by custom grid logic (e.g. formatters, or [ListGrid.canEditCell](ListGrid_2.md#method-listgridcaneditcell)) or may be required when other components interact with the data (such as editing a record from the grid in a form via [DynamicForm.editSelectedData](DynamicForm.md#method-dynamicformeditselecteddata)).
-
-To enable the feature of causing just primary-keys, visible and declaratively required fields to be requested, without any specific additional fields, you can set `fetchFields` to the special value "\*visible\*". In order for application code to more easily build a list of fields, you may also include this special value in a compound string, such as _"\*visible\*, field1, field2"_ - in this case, the special value is simply ignored, since visible fields are always requested if `fetchFields` is set to a value.
-
-If `fetchFields` includes fields which do not appear in the dataSource, a warning is logged and those fields will not be requested from the server.
-
-Fields to be retrieved are communicated to the server via [DSRequest.outputs](DSRequest.md#attr-dsrequestoutputs).
-
-If a user dynamically shows additional fields (via the field picking menu, via Saved Search or another mechanism), and such fields are not currently loaded, the ListGrid will automatically invalidate the data cache and issue a new fetch with a different dsRequest.outputs setting in order to fetch the necessary data.
-
-If `fetchFields` has been set and outputs are also set via another mechanism (like [ListGrid.fetchRequestProperties](#attr-listgridfetchrequestproperties)), `fetchFields` wins.
-
-Note that since `fetchFields` ultimately just sets [DSRequest.outputs](DSRequest.md#attr-dsrequestoutputs), [DataSourceField.outputWhen](DataSourceField.md#attr-datasourcefieldoutputwhen) settings will override `fetchFields` settings. This also means that, currently, `fetchFields` is not supported by clientOnly DataSources, because they do not support dsRequest.outputs.
-
-Additionally, if [OperationBinding.outputs](OperationBinding.md#attr-operationbindingoutputs) is specified in a server-side .ds.xml file, `fetchFields` will only be able to request fields listed as valid server outputs. In general, client-specified outputs do not override server-specified outputs; client-specified outputs must be a subset of outputs listed on the server.
-
-### Groups
-
-- databinding
-
-**Flags**: IRW
 
 ---
 ## Attr: ListGrid.selectionProperty
@@ -1948,11 +1736,11 @@ When there are large numbers of available fields, the FieldPicker-based interfac
 Should this listGrid display a filter row. If true, this ListGrid will be drawn with a single editable row, (separate from the body) with a filter button.
 
 Values entered into this row are used as filter criteria to filter this List's data. The [ListGrid.filterByCell](#attr-listgridfilterbycell) and [ListGrid.filterOnKeypress](#attr-listgridfilteronkeypress) attributes allow developers to configure whether filtering occurs automatically on change or requires an enter-keypress or filter button click.  
-[ListGrid.autoFetchTextMatchStyle](#attr-listgridautofetchtextmatchstyle) determines the textMatchStyle for the request passed to [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata).
+[ListGrid.autoFetchTextMatchStyle](#attr-listgridautofetchtextmatchstyle) determines the textMatchStyle for the request passed to [ListGrid.fetchData](#method-listgridfetchdata).
 
 The default [search operator](FormItem.md#attr-formitemoperator) for an item in the filterEditor can be set via [ListGridField.filterOperator](ListGridField.md#attr-listgridfieldfilteroperator). When `field.filterOperator` has been set calls to retrieve the criteria from the grid return [AdvancedCriteria](../reference.md#object-advancedcriteria). See also [ListGrid.allowFilterOperators](#attr-listgridallowfilteroperators) for a UI that allows end users to change the search operator on the fly
 
-Note that if [ListGrid.filterData](ListGrid_2.md#method-listgridfilterdata) or [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata) is called directly while the filter editor is showing, the filter editor values will be updated to reflect the new set of criteria. If you wish to retain the user entered filter criteria and modify a subset of field values programmatically, this can be achieved by copying the existing set of criteria and adding other changes - something like this:
+Note that if [ListGrid.filterData](ListGrid_2.md#method-listgridfilterdata) or [ListGrid.fetchData](#method-listgridfetchdata) is called directly while the filter editor is showing, the filter editor values will be updated to reflect the new set of criteria. If you wish to retain the user entered filter criteria and modify a subset of field values programmatically, this can be achieved by copying the existing set of criteria and adding other changes - something like this:
 
 ```
    var newCriteria = myListGrid.getFilterEditorCriteria();
@@ -2025,8 +1813,6 @@ To use this feature, the grid must be configured with a [DataSource](DataSource.
 
 **Note:** this feature requires [SmartClient Pro](https://www.smartclient.com/product/) or better.
 
-Enabling [filter via AI](#attr-listgridfilterviaaimode) forces this setting to true.
-
 ### See Also
 
 - [ListGrid.allowFilterOperators](#attr-listgridallowfilteroperators)
@@ -2041,7 +1827,7 @@ If this is an editable ListGrid, setting this property to true causes an extra r
 
 Clicking this row will start editing a new record at the end of the data set, as if [ListGrid.startEditingNew](ListGrid_2.md#method-listgridstarteditingnew) had been called.
 
-Note that for [databound grids](#attr-listgriddatasource), the new record row will be suppressed if the grid has not [fetched data](ListGrid_2.md#method-listgridfetchdata), unless [ListGrid.saveLocally](#attr-listgridsavelocally) has been set.
+Note that for [databound grids](#attr-listgriddatasource), the new record row will be suppressed if the grid has not [fetched data](#method-listgridfetchdata), unless [ListGrid.saveLocally](#attr-listgridsavelocally) has been set.
 
 **Flags**: IRW
 
@@ -2054,24 +1840,10 @@ Class-level defaults to apply to the [MultiGroupDialog](MultiGroupDialog.md#clas
 **Flags**: IR
 
 ---
-## Attr: ListGrid.exactRowCountFormat
-
-### Description
-Format for the string returned from [ListGrid.getFormattedRowCount](ListGrid_2.md#method-listgridgetformattedrowcount) when [row count status](#method-listgridgetrowcountstatus) is `"exact"`.
-
-The variable `rowCount` is available for evaluation within this string and will be set to the [current row count](ListGrid_2.md#method-listgridgetrowcount) as a [locale-formatted number](NumberUtil.md#classmethod-numberutiltolocalizedstring).
-
-### Groups
-
-- rowRangeDisplay
-
-**Flags**: IRW
-
----
 ## Attr: ListGrid.detailField
 
 ### Description
-The field whose contents to show in the expanded portion of a record when [canExpandRecords](#attr-listgridcanexpandrecords) is `true` and [listGrid.expansionMode](../reference_2.md#type-expansionmode) is `detailField`.
+The field whose contents to show in the expanded portion of a record when [canExpandRecords](#attr-listgridcanexpandrecords) is `true` and [listGrid.expansionMode](../reference.md#type-expansionmode) is `detailField`.
 
 ### Groups
 
@@ -2094,20 +1866,6 @@ Note that when enabled, the [field state](ListGrid_2.md#method-listgridgetfields
 
 ### Description
 If `record[this.isSeparatorProperty]` is set for some record, the record will be displayed as a simple separator row.
-
-**Flags**: IRW
-
----
-## Attr: ListGrid.minimumRowCountFormat
-
-### Description
-Format for the string returned from [ListGrid.getFormattedRowCount](ListGrid_2.md#method-listgridgetformattedrowcount) when [row count status](#method-listgridgetrowcountstatus) is `"minimum"`.
-
-The variable `rowCount` is available for evaluation within this string and will be set to the [current row count](ListGrid_2.md#method-listgridgetrowcount) as a [locale-formatted number](NumberUtil.md#classmethod-numberutiltolocalizedstring).
-
-### Groups
-
-- rowRangeDisplay
 
 **Flags**: IRW
 
@@ -2152,34 +1910,6 @@ Instance of [FieldPickerWindow](FieldPickerWindow.md#class-fieldpickerwindow) us
 **Flags**: IR
 
 ---
-## Attr: ListGrid.rowCountDisplayPrecision
-
-### Description
-When an exact [row count](ListGrid_2.md#method-listgridgetrowcount) is not known due to progressive loading, this attribute allows the formatted row count returned by [ListGrid.getFormattedRowCount](ListGrid_2.md#method-listgridgetformattedrowcount) and ultimately displayed in the [rowRangeDisplay label](#attr-listgridrowrangedisplay) to be rounded to a multiple of the specified value. If not explicitly set, this value defaults to the [page size](ResultSet.md#attr-resultsetresultsize) for the data.
-
-For example if the server reports a [DSResponse.totalRows](DSResponse.md#attr-dsresponsetotalrows) of `320` while progressive loading is active (meaning this is not an exact row count), and `rowCountDisplayPrecision` is set to `150`, the formatted rowCount may display `300+`
-
-The precision will round either up or down depending on the [row count status](#method-listgridgetrowcountstatus).
-
-*   `rowCountStatus:"exact"` - this setting has no effect
-*   `rowCountStatus:"minimum"` - the reported row count will be rounded down to the previous multiple of this value.
-*   `rowCountStatus:"maximum"` - the reported row count will be rounded up to the next multiple of this value.
-*   `rowCountStatus:"approximate"` - the reported row count will be rounded either up or down to the nearest multiple of this value.
-*   `rowCountStatus:"range"` - the reported minimum row count will be rounded down to the next multiple of this value, and the reported maximum will be rounded up to the next multiple of this value.
-
-Note the formatted row count will never be rounded down to zero - if the row count is less than the `rowCountDisplayPrecision`, the exact reported row count value will be displayed. This could typically only occur if `rowCountDisplayPrecision` is more than the [page size](ResultSet.md#attr-resultsetresultsize) for the data.
-
-This value may be set to `1` to effectively disable the rounding behavior altogether (the row count will not be displayed exactly as reported).
-
-Note that this is purely a formatting setting for the formatted row count string. It has no impact on the behavior of the grid in terms of the reported [data length](ResultSet.md#method-resultsetgetlength), [totalRows](ListGrid_2.md#method-listgridgettotalrows) or scrollable area.
-
-### Groups
-
-- rowRangeDisplay
-
-**Flags**: IRW
-
----
 ## Attr: ListGrid.resizeFieldsInRealTime
 
 ### Description
@@ -2210,27 +1940,10 @@ If set to false, do not show the [ListGrid.asynchGroupingPrompt](#attr-listgrida
 **Flags**: IR
 
 ---
-## Attr: ListGrid.briefRowRangeDisplayValue
-
-### Description
-Dynamic String specifying the format for the [row range summary value](ListGrid_2.md#method-listgridgetrowrangedisplayvalue) when [RowRangeDisplayStyle](../reference_2.md#type-rowrangedisplaystyle) is set to `"brief"`.
-
-The following variables are available for evaluation within this string:
-
-*   `rowRange`: the [formatted row range](ListGrid_2.md#method-listgridgetformattedrowrange)
-*   `rowCount`: the [formatted row count](ListGrid_2.md#method-listgridgetformattedrowcount)
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
-
----
 ## Attr: ListGrid.expansionEditorCollapseOnSave
 
 ### Description
-When [ExpansionMode](../reference_2.md#type-expansionmode) is _editor_, should the row be collapsed following a save initiated by the expansion-component's [save button](#attr-listgridexpansioneditorsavebutton).
+When [ExpansionMode](../reference.md#type-expansionmode) is _editor_, should the row be collapsed following a save initiated by the expansion-component's [save button](#attr-listgridexpansioneditorsavebutton).
 
 ### Groups
 
@@ -2242,7 +1955,7 @@ When [ExpansionMode](../reference_2.md#type-expansionmode) is _editor_, should t
 ## Attr: ListGrid.detailDS
 
 ### Description
-If [ListGrid.canExpandRecords](#attr-listgridcanexpandrecords) is true and [listGrid.expansionMode](../reference_2.md#type-expansionmode) is `"related"`, this property specifies the dataSource for the related records grid to be shown embedded in expanded records.
+If [ListGrid.canExpandRecords](#attr-listgridcanexpandrecords) is true and [listGrid.expansionMode](../reference.md#type-expansionmode) is `"related"`, this property specifies the dataSource for the related records grid to be shown embedded in expanded records.
 
 This property may also be specified on a per-record basis - see [ListGrid.recordDetailDSProperty](#attr-listgridrecorddetaildsproperty)
 
@@ -2371,9 +2084,9 @@ When [canExpandRecords](#attr-listgridcanexpandrecords) is true and [expansionMo
 ## Attr: ListGrid.autoFetchData
 
 ### Description
-If true, when this component is first drawn, automatically call `this.fetchData()`. Criteria for this fetch may be picked up from [ListGrid.initialCriteria](#attr-listgridinitialcriteria), and textMatchStyle may be specified via [autoFetchTextMatchStyle](#attr-listgridautofetchtextmatchstyle). Additional request properties may be specified using [ListGrid.fetchRequestProperties](#attr-listgridfetchrequestproperties).
+If true, when this component is first drawn, automatically call `this.fetchData()`. Criteria for this fetch may be picked up from [ListGrid.initialCriteria](#attr-listgridinitialcriteria), and textMatchStyle may be specified via [autoFetchTextMatchStyle](#attr-listgridautofetchtextmatchstyle).
 
-NOTE: if `autoFetchData` is set, calling [fetchData()](ListGrid_2.md#method-listgridfetchdata) before draw will cause two requests to be issued, one from the manual call to fetchData() and one from the autoFetchData setting. The second request will use only [ListGrid.initialCriteria](#attr-listgridinitialcriteria) and not any other criteria or settings from the first request. Generally, turn off autoFetchData if you are going to manually call [fetchData()](ListGrid_2.md#method-listgridfetchdata) at any time. Note: If you are using saved searches - either via [SavedSearchItem](SavedSearchItem.md#class-savedsearchitem) or [ListGrid.saveDefaultSearch](#attr-listgridsavedefaultsearch), autoFetchData will be automatically suspended and replaced with the saved criteria/view state, if applicable.
+NOTE: if `autoFetchData` is set, calling [fetchData()](#method-listgridfetchdata) before draw will cause two requests to be issued, one from the manual call to fetchData() and one from the autoFetchData setting. The second request will use only [ListGrid.initialCriteria](#attr-listgridinitialcriteria) and not any other criteria or settings from the first request. Generally, turn off autoFetchData if you are going to manually call [fetchData()](#method-listgridfetchdata) at any time. Note: If you are using saved searches - either via [SavedSearchItem](SavedSearchItem.md#class-savedsearchitem) or [ListGrid.saveDefaultSearch](#attr-listgridsavedefaultsearch), autoFetchData will be automatically suspended and replaced with the saved criteria/view state, if applicable.
 
 ### Groups
 
@@ -2381,21 +2094,9 @@ NOTE: if `autoFetchData` is set, calling [fetchData()](ListGrid_2.md#method-list
 
 ### See Also
 
-- [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata)
+- [ListGrid.fetchData](#method-listgridfetchdata)
 
 **Flags**: IR
-
----
-## Attr: ListGrid.hiliteViaAIText
-
-### Description
-Title for the menu item displayed in this component's header context menu when [AI-assisted hiliting](#attr-listgridcanhiliteviaai) is allowed.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
 
 ---
 ## Attr: ListGrid.animateRemoveTime
@@ -2576,22 +2277,6 @@ When true, indicates that this ListGrid supports sorting on multiple fields. Not
 **Flags**: IRW
 
 ---
-## Attr: ListGrid.discardDataOnSetFetchOperation
-
-### Description
-If [ListGrid.setFetchOperation](ListGrid_2.md#method-listgridsetfetchoperation) is invoked while this grid is showing a filtered data-set, should the data set be discarded?
-
-**Flags**: IRA
-
----
-## Attr: ListGrid.showDropLines
-
-### Description
-Controls whether to show a drop-indicator during a drag and drop operation.
-
-**Flags**: IRW
-
----
 ## Attr: ListGrid.autoFitMaxColumns
 
 ### Description
@@ -2604,26 +2289,14 @@ If [ListGrid.autoFitData](#attr-listgridautofitdata) is set to `"horizontal"` or
 **Flags**: IRW
 
 ---
-## Attr: ListGrid.blockingRowCountFetch
-
-### Description
-If specified, this attribute will be applied to this grid's [data object](ResultSet.md#attr-resultsetblockingrowcountfetch) for dataBound grids.
-
-### Groups
-
-- rowRangeDisplay
-
-**Flags**: IRW
-
----
 ## Attr: ListGrid.saveLocally
 
 ### Description
 For grids with a specified [ListGrid.dataSource](#attr-listgriddatasource), this property can be set to `true` to cause the grid directly update its local data set instead of performing an operation against it's configured DataSource.
 
-When using this mode, data must be provided to the grid via [ListGrid.setData](ListGrid_2.md#method-listgridsetdata), and must be provided as a simple Array of Records . Setting `saveLocally` is invalid if either [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata) is called or if a [ResultSet](ResultSet.md#class-resultset) is provided as the data model.
+When using this mode, data must be provided to the grid via [ListGrid.setData](ListGrid_2.md#method-listgridsetdata), and must be provided as a simple Array of Records . Setting `saveLocally` is invalid if either [ListGrid.fetchData](#method-listgridfetchdata) is called or if a [ResultSet](ResultSet.md#class-resultset) is provided as the data model.
 
-`saveLocally` mode includes changes made via [inline editing](#attr-listgridcanedit), record removal via [ListGrid.canRemoveRecords](#attr-listgridcanremoverecords), as well as programmatic calls to [ListGrid.updateData](ListGrid_2.md#method-listgridupdatedata), [addData()](ListGrid_2.md#method-listgridadddata) and [removeData()](ListGrid_2.md#method-listgridremovedata). This also causes saves to be performed synchronously (unlike normal DataSource operations).
+`saveLocally` mode includes changes made via [inline editing](#attr-listgridcanedit), record removal via [ListGrid.canRemoveRecords](#attr-listgridcanremoverecords), as well as programmatic calls to [ListGrid.updateData](#method-listgridupdatedata), [addData()](ListGrid_2.md#method-listgridadddata) and [removeData()](ListGrid_2.md#method-listgridremovedata). This also causes saves to be performed synchronously (unlike normal DataSource operations).
 
 Note that using this mode also disables the automatic cache synchronization provided by the DataSource system - changes made to this grid are saved only to this grid's data set.
 
@@ -2645,7 +2318,7 @@ If saveLocally is unset, and [ListGrid.filterLocalData](#attr-listgridfilterloca
 ## Attr: ListGrid.exportRawNumbers
 
 ### Description
-Dictates whether numeric values should be exported as raw numbers instead of formatted values when using [exportClientData()](ListGrid_2.md#method-listgridexportclientdata).
+Dictates whether numeric values should be exported as raw numbers instead of formatted values when using [exportClientData()](#method-listgridexportclientdata).
 
 This property is only consulted if `exportRawValues` is not set to true at the [grid](#attr-listgridexportrawvalues) or [field](ListGridField.md#attr-listgridfieldexportrawvalues) level. That property causes all values, including numeric values, to be exported unformatted.
 
@@ -2762,14 +2435,6 @@ The string to display in the body of a listGrid with an empty data array, if sho
 **Flags**: IRW
 
 ---
-## Attr: ListGrid.headerRadius
-
-### Description
-When set to any valid CSS _border-radius_ string, allows for a rounded header in this grid by applying a corner-radius to the left of the [header](#attr-listgridheader), and to the right of the [corner sort-button](#attr-listgridshowsortarrow) if it's visible, or the right of the `header` otherwise. This styling is applied on top of the regular header styles, so will work with any design, and is also applied correctly with or without frozen fields.
-
-**Flags**: IRW
-
----
 ## Attr: ListGrid.showHeaderPartialSelection
 
 ### Description
@@ -2785,9 +2450,9 @@ Should partial selection of all records be shown in header with a special icon? 
 ## Attr: ListGrid.filterOnKeypress
 
 ### Description
-When this attribute is true and this component has been assigned a [searchForm](#attr-listgridsearchform) or is showing the [filterEditor](#attr-listgridshowfiltereditor), data will be filtered automatically as users change values in those components.
+If we're showing the [filterEditor](#attr-listgridshowfiltereditor), should this list be filtered for every keypress within the filter editor fields?
 
-In the `filterEditor` case, this is equivalent to setting [FormItem.changeOnKeypress](FormItem.md#attr-formitemchangeonkeypress) to true for each text-based field in the [ListGridField.filterEditorProperties](ListGridField.md#attr-listgridfieldfiltereditorproperties) when [ListGrid.filterByCell](#attr-listgridfilterbycell) is true.
+This is equivalent to setting [ListGrid.filterByCell](#attr-listgridfilterbycell) to true and explicitly setting [FormItem.changeOnKeypress](FormItem.md#attr-formitemchangeonkeypress) to true for each text-based field within the [ListGridField.filterEditorProperties](ListGridField.md#attr-listgridfieldfiltereditorproperties).
 
 ### Groups
 
@@ -2797,7 +2462,7 @@ In the `filterEditor` case, this is equivalent to setting [FormItem.changeOnKeyp
 
 - [ListGrid.fetchDelay](#attr-listgridfetchdelay)
 
-**Flags**: IRW
+**Flags**: IRWA
 
 ---
 ## Attr: ListGrid.showHeaderSpanTitlesInHiliteEditor
@@ -2988,22 +2653,10 @@ If `showTreeColumnPicker` is false, no column picker will be shown on the header
 **Flags**: IR
 
 ---
-## Attr: ListGrid.loadingRowCountDisplayIcoHeight
-
-### Description
-Height for the [ListGrid.loadingRowCountDisplayIcon](#attr-listgridloadingrowcountdisplayicon)
-
-### Groups
-
-- rowRangeDisplay
-
-**Flags**: IRW
-
----
 ## Attr: ListGrid.headerHoverOpacity
 
 ### Description
-This property may be set to customize the opacity for the hover shown on [ListGrid.headerHover](ListGrid_2.md#method-listgridheaderhover).
+This property may be set to customize the opacity for the hover shown on [ListGrid.headerHover](#method-listgridheaderhover).
 
 **Flags**: IRW
 
@@ -3128,7 +2781,7 @@ If this ListGrid is editable, should edits be saved out when the user finishes e
 
 The default of `true` indicates that edits will be [automatically saved](#attr-listgridsavebycell) as the user navigates through the grid and/or ${isc.DocUtils.linkForRef('type:EnterKeyEditAction','hits \\'Enter\\'')} to end editing. See the [Grid Editing](../kb_topics/editing.md#kb-topic-grid-editing) overview for details.
 
-Setting `autoSaveEdits` false creates a "mass update" / "mass delete" interaction where edits will be retained for all edited cells (across rows if appropriate) until [ListGrid.saveEdits](ListGrid_2.md#method-listgridsaveedits) is called to save a particular row, or [ListGrid.saveAllEdits](ListGrid_2.md#method-listgridsavealledits) is called to save all changes in a batch.
+Setting `autoSaveEdits` false creates a "mass update" / "mass delete" interaction where edits will be retained for all edited cells (across rows if appropriate) until [ListGrid.saveEdits](ListGrid_2.md#method-listgridsaveedits) is called to save a particular row, or [ListGrid.saveAllEdits](#method-listgridsavealledits) is called to save all changes in a batch.
 
 **Note:** when [listGrid grouping](#attr-listgridgroupbyfield) is enabled, or when working with hierarchical data in a [TreeGrid](TreeGrid.md#class-treegrid), users have the option to hide records from view by collapsing the parent folder or group. This, in conjunction with `autoSaveEdits` being set to `false` can lead to a case where a user is unable to save edits due to validation errors on hidden rows. Therefore we recommend developers consider having validators in place such that errors are caught and displayed to the user on change or editor exit rather than being caught only when saving is attempted. If it's not possible for all validation to be performed immediately on row exit, we recommend that a different UI design be used that does not involve `autoSaveEdits` being set to `false`.
 
@@ -3147,16 +2800,6 @@ Height for the filterEditor, if shown.
 ### Groups
 
 - filterEditor
-
-**Flags**: IRW
-
----
-## Attr: ListGrid.aiHoverRetryDelay
-
-### Description
-Minimum number of milliseconds to wait before retrying to generate hover contents via AI.
-
-The results of [SummarizeValueRequest](#object-summarizevaluerequest)s generated from a field's [aiHoverRequest](ListGridField.md#attr-listgridfieldaihoverrequest) are cached, whether it was a successful or non-successful result. In the case of a non-successful result, the message therefrom will be displayed to the user for this configurable number of milliseconds before another request is made to try to generate the hover contents.
 
 **Flags**: IRW
 
@@ -3240,7 +2883,7 @@ Default width for editable date type fields. See [ListGrid.autoFitDateFields](#a
 ## Attr: ListGrid.selectedState
 
 ### Description
-Returns a snapshot of the current selection within this listGrid as a [ListGridSelectedState](../reference_2.md#type-listgridselectedstate) object.  
+Returns a snapshot of the current selection within this listGrid as a [ListGridSelectedState](../reference.md#type-listgridselectedstate) object.  
 This object can be passed to [ListGrid.setSelectedState](ListGrid_2.md#method-listgridsetselectedstate) to reset this grid's selection the current state (assuming the same data is present in the grid).
 
 ### Groups
@@ -3289,7 +2932,7 @@ Note that a [ListGrid.dataSource](#attr-listgriddatasource) must be provided for
 
 If this property is set to true, the supplied data is applied as the [complete dataset](ResultSet.md#attr-resultsetallrows) of a [ResultSet](ResultSet.md#class-resultset), which is then filtered according to the specified criteria, and the results displayed. If false, a normal databound fetch will occur, retrieving records that match the specified criteria from this component's [ListGrid.dataSource](#attr-listgriddatasource).
 
-`filterLocalData` includes both calls to [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata) and [ListGrid.filterData](ListGrid_2.md#method-listgridfilterdata) as well as automatic filtering when the [ListGrid.filterEditor](#attr-listgridfiltereditor) is enabled.
+`filterLocalData` includes both calls to [ListGrid.fetchData](#method-listgridfetchdata) and [ListGrid.filterData](ListGrid_2.md#method-listgridfilterdata) as well as automatic filtering when the [ListGrid.filterEditor](#attr-listgridfiltereditor) is enabled.
 
 If this property is not explicitly set, default behavior will filter against the dataSource unless the grid has a specified [dataPath](../reference_2.md#type-datapath), in which case filtering will occur locally.
 
@@ -3392,32 +3035,6 @@ Set to 0 to have the advanced picker always used (when useAdvancedFieldPicker is
 **Flags**: IR
 
 ---
-## Attr: ListGrid.pendingAsyncCellValue
-
-### Description
-The value to display for cells whose value is pending asynchronous computation.
-
-This is the grid-wide setting. [ListGridField.pendingAsyncCellValue](ListGridField.md#attr-listgridfieldpendingasynccellvalue) can override the grid setting for a specific field.
-
-### See Also
-
-- [DataBoundComponent.isValuePendingAsync](DataBoundComponent.md#method-databoundcomponentisvaluependingasync)
-
-**Flags**: IRW
-
----
-## Attr: ListGrid.loadingRowCountDisplayIconWidth
-
-### Description
-Width for the [ListGrid.loadingRowCountDisplayIcon](#attr-listgridloadingrowcountdisplayicon)
-
-### Groups
-
-- rowRangeDisplay
-
-**Flags**: IRW
-
----
 ## Attr: ListGrid.summaryRowStyle
 
 ### Description
@@ -3503,14 +3120,6 @@ Note that for more advanced customization of save operations, [DataBoundComponen
 **Flags**: IRWA
 
 ---
-## Attr: ListGrid.aiFilterWindow
-
-### Description
-Instance of [AIWindow](../reference.md#class-aiwindow) that allows a user to enter a description of how they would like the AI to filter this grid.
-
-**Flags**: IR
-
----
 ## Attr: ListGrid.dragHandleIconSize
 
 ### Description
@@ -3557,20 +3166,6 @@ Should partially selected parents (in a Tree data set) be shown with special ico
 **Flags**: IRW
 
 ---
-## Attr: ListGrid.canHiliteViaAI
-
-### Description
-When set to `true` and AI component views are enabled, shows an item in this component's header context menu that allows the user to ask the AI to hilite the records according to a natural language description of which records to hilite.
-
-See [integratingAI](../kb_topics/integratingAI.md#kb-topic-integrating-ai-technology) for the requirements to enable AI component views.
-
-### See Also
-
-- [ListGrid.hiliteViaAIMode](#attr-listgridhiliteviaaimode)
-
-**Flags**: IRW
-
----
 ## Attr: ListGrid.expansionField
 
 ### Description
@@ -3589,20 +3184,6 @@ The field providing the facility to expand and collapse rows.
 Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas.md#method-canvasseteditmode).
 
 **Flags**: IR
-
----
-## Attr: ListGrid.approximateRowCountFormat
-
-### Description
-Format for the string returned from [ListGrid.getFormattedRowCount](ListGrid_2.md#method-listgridgetformattedrowcount) when [row count status](#method-listgridgetrowcountstatus) is `"approximate"`.
-
-The variable `rowCount` is available for evaluation within this string and will be set to the [current row count](ListGrid_2.md#method-listgridgetrowcount) as a [locale-formatted number](NumberUtil.md#classmethod-numberutiltolocalizedstring).
-
-### Groups
-
-- rowRangeDisplay
-
-**Flags**: IRW
 
 ---
 ## Attr: ListGrid.sortState
@@ -3633,18 +3214,6 @@ To use a mixture of textMatchStyles, set an appropriate [operator](FormItem.md#a
 - databinding
 
 **Flags**: IR
-
----
-## Attr: ListGrid.emptyRowRangeDisplayValue
-
-### Description
-[Row range summary display value](ListGrid_2.md#method-listgridgetrowrangedisplayvalue) when the grid is empty.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
 
 ---
 ## Attr: ListGrid.frozenHeaderBaseStyle
@@ -3684,7 +3253,7 @@ Notes
 
 ### See Also
 
-- [ListGrid.getUserCriteriaState](ListGrid_2.md#method-listgridgetusercriteriastate)
+- [ListGrid.getUserCriteriaState](#method-listgridgetusercriteriastate)
 - [ListGrid.setUserCriteriaState](ListGrid_2.md#method-listgridsetusercriteriastate)
 
 **Flags**: IRW
@@ -3753,7 +3322,7 @@ When set to true, shows the [drag handle field](#attr-listgriddraghandlefield) o
 ### See Also
 
 - [ListGrid.showDragHandles](ListGrid_2.md#method-listgridshowdraghandles)
-- [ListGrid.hideDragHandles](ListGrid_2.md#method-listgridhidedraghandles)
+- [ListGrid.hideDragHandles](#method-listgridhidedraghandles)
 - [ListGrid.dragHandleField](#attr-listgriddraghandlefield)
 
 **Flags**: IRA
@@ -3872,44 +3441,6 @@ When grouped, a copy of the original ungrouped data.
 - [ListGrid.groupBy](ListGrid_2.md#method-listgridgroupby)
 
 **Flags**: R
-
----
-## Attr: ListGrid.recordRadius
-
-### Description
-When set to any valid CSS _border-radius_ string, allows for rounded records in this grid by having [ListGrid.getCellCSSText](ListGrid_2.md#method-listgridgetcellcsstext) apply a corner-radius to the first and last cells in each record. This styling is applied on top of the regular cell styles, so will work with any design, and is also applied correctly with or without frozen fields.
-
-If you need to apply more than just a radius to the ends of each record, you can set [ListGrid.styledRowEnds](#attr-listgridstyledrowends) to true and provide [ListGrid.firstCellStyle](#attr-listgridfirstcellstyle) and [ListGrid.lastCellStyle](#attr-listgridlastcellstyle) classes that achieve the design you need. Note that these two classes should not modify settings which may affect sizing, such as padding or font-sizes.
-
-Note that you can also provide your own implementation of [ListGrid.getCellCSSText](ListGrid_2.md#method-listgridgetcellcsstext) or [ListGrid.getCellStyle](ListGrid_2.md#method-listgridgetcellstyle), if you want to do something more complex, like a gradient fade that spans the end two cells on each side of a record.
-
-**Flags**: IRW
-
----
-## Attr: ListGrid.fetchRequestProperties
-
-### Description
-If [ListGrid.autoFetchData](#attr-listgridautofetchdata) is `true`, this attribute allows the developer to declaratively specify [DSRequest](../reference_2.md#object-dsrequest) properties for the initial [fetchData()](ListGrid_2.md#method-listgridfetchdata) call.
-
-Note that any properties governing more specific request attributes for the initial fetch (such as [ListGrid.autoFetchTextMatchStyle](#attr-listgridautofetchtextmatchstyle) and initial sort specifiers) will be applied on top of this properties block.
-
-### Groups
-
-- databinding
-
-**Flags**: IR
-
----
-## Attr: ListGrid.aiHiliteWindow
-
-### Description
-Instance of [AIWindow](../reference.md#class-aiwindow) that allows a user to enter a description of how they would like the AI to filter this grid.
-
-### Groups
-
-- ai
-
-**Flags**: IR
 
 ---
 ## Attr: ListGrid.alternateRecordSuffix
@@ -4140,7 +3671,11 @@ If we're showing a [headerContextMenu](#attr-listgridshowheadercontextmenu) for 
 ## Attr: ListGrid.sortAscendingImage
 
 ### Description
-Image to show when sorted in ascending order. Can be either a regular [SCImgURL](../reference.md#type-scimgurl) src, or an [ImgHTMLProperties](../reference_2.md#object-imghtmlproperties) object.
+Image to show when sorting ascending. See [ImgProperties](../reference.md#object-imgproperties) for format.
+
+### Groups
+
+- appearance
 
 ### See Also
 
@@ -4162,18 +3697,6 @@ The string to display in the body of a listGrid while data is being loaded. Use 
 ### See Also
 
 - [ListGrid.loadingDataMessageStyle](#attr-listgridloadingdatamessagestyle)
-
-**Flags**: IRW
-
----
-## Attr: ListGrid.groupIconStyle
-
-### Description
-Custom style to apply to the [ListGrid.groupIcon](#attr-listgridgroupicon) displayed in collapsible rows when [ListGrid.canGroupBy](#attr-listgridcangroupby) is true.
-
-### Groups
-
-- appearance
 
 **Flags**: IRW
 
@@ -4286,7 +3809,7 @@ Instead we could use `addProperties()` on our new subclass to set `defaultFields
 ## Attr: ListGrid.expansionRelated
 
 ### Description
-Automatically generated [ListGrid](#class-listgrid) for displaying data related to a record in its expanded section when [listGrid.expansionMode](../reference_2.md#type-expansionmode) is `related`. The [DataSource](DataSource.md#class-datasource) containing the related data is provided by [getRelatedDataSource()](ListGrid_2.md#method-listgridgetrelateddatasource) which, by default, returns the DataSource referred to in [ListGridRecord.detailDS](ListGridRecord.md#attr-listgridrecorddetailds).
+Automatically generated [ListGrid](#class-listgrid) for displaying data related to a record in its expanded section when [listGrid.expansionMode](../reference.md#type-expansionmode) is `related`. The [DataSource](DataSource.md#class-datasource) containing the related data is provided by [getRelatedDataSource()](ListGrid_2.md#method-listgridgetrelateddatasource) which, by default, returns the DataSource referred to in [ListGridRecord.detailDS](ListGridRecord.md#attr-listgridrecorddetailds).
 
 This component is an [AutoChild](../reference.md#type-autochild) and as such may be customized via `listGrid.expansionRelatedProperties` and `listGrid.expansionRelatedDefaults`.
 
@@ -4312,36 +3835,10 @@ Where do 'skin' images (those provided with the class) live?
 **Flags**: IRWA
 
 ---
-## Attr: ListGrid.aiFilterWindowTitle
-
-### Description
-The title for the [AI-driven filter window](#attr-listgridaifilterwindow).
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IR
-
----
-## Attr: ListGrid.maximumRowCountFormat
-
-### Description
-Format for the string returned from [ListGrid.getFormattedRowCount](ListGrid_2.md#method-listgridgetformattedrowcount) when [row count status](#method-listgridgetrowcountstatus) is `"maximum"`.
-
-The variable `rowCount` is available for evaluation within this string and will be set to the [current row count](ListGrid_2.md#method-listgridgetrowcount) as a [locale-formatted number](NumberUtil.md#classmethod-numberutiltolocalizedstring).
-
-### Groups
-
-- rowRangeDisplay
-
-**Flags**: IRW
-
----
 ## Attr: ListGrid.expansionEditor
 
 ### Description
-Automatically generated [DynamicForm](DynamicForm.md#class-dynamicform) for editing the details of a record in its expanded section when [listGrid.expansionMode](../reference_2.md#type-expansionmode) is `editor`. Note that only those fields which do not already appear in the grid will appear in the expanded section.
+Automatically generated [DynamicForm](DynamicForm.md#class-dynamicform) for editing the details of a record in its expanded section when [listGrid.expansionMode](../reference.md#type-expansionmode) is `editor`. Note that only those fields which do not already appear in the grid will appear in the expanded section.
 
 According to the value of [ListGrid.showExpansionEditorSaveButton](#attr-listgridshowexpansioneditorsavebutton), a save button is shown beneath the editor. You can save the values in the editor by clicking this button
 
@@ -4367,7 +3864,7 @@ If true, causes the [summaryRow](#attr-listgridsummaryrow) component to be hidde
 ## Attr: ListGrid.trackerImage
 
 ### Description
-Default image to use for the dragTracker when things are dragged within or out of this list. Can be either a regular [SCImgURL](../reference.md#type-scimgurl) src, or an [ImgHTMLProperties](../reference_2.md#object-imghtmlproperties) object.
+Default image to use for the dragTracker when things are dragged within or out of this list. See [ImgProperties](../reference.md#object-imgproperties) for format.
 
 ### Groups
 
@@ -4398,19 +3895,7 @@ If this property is true, users can drag the mouse to select several rows or cel
 ## Attr: ListGrid.headerHoverWidth
 
 ### Description
-Optional default width for the hover shown on [ListGrid.headerHover](ListGrid_2.md#method-listgridheaderhover).
-
-**Flags**: IRW
-
----
-## Attr: ListGrid.loadingRowCountDisplayIcon
-
-### Description
-The URL of the icon to display as a [row count value](ListGrid_2.md#method-listgridgetformattedrowcount) when the row count is loading.
-
-### Groups
-
-- rowRangeDisplay
+Optional default width for the hover shown on [ListGrid.headerHover](#method-listgridheaderhover).
 
 **Flags**: IRW
 
@@ -4494,24 +3979,6 @@ If false, grouping via context menu will be disabled.
 **Flags**: IRW
 
 ---
-## Attr: ListGrid.asyncErrorCellValue
-
-### Description
-The value to display for cells when an error occurred during asynchronous computation.
-
-This is the grid-wide setting. [ListGridField.asyncErrorCellValue](ListGridField.md#attr-listgridfieldasyncerrorcellvalue) can override the grid setting for a specific field.
-
-### Groups
-
-- i18nMessages
-
-### See Also
-
-- [DataBoundComponent.isValuePendingAsyncOrAsyncError](DataBoundComponent.md#method-databoundcomponentisvaluependingasyncorasyncerror)
-
-**Flags**: IRW
-
----
 ## Attr: ListGrid.dragDataAction
 
 ### Description
@@ -4520,30 +3987,6 @@ Indicates what to do with data dragged into another DataBoundComponent. See Drag
 ### Groups
 
 - dragging
-
-**Flags**: IRW
-
----
-## Attr: ListGrid.maxSummaryRowRecords
-
-### Description
-If [ListGrid.showGridSummary](#attr-listgridshowgridsummary) is true, and summary records are being derived from a fetch against the [ListGrid.summaryRowDataSource](#attr-listgridsummaryrowdatasource), this property may be set to specify the maximum expected number of results from the fetch opeeration. If specified, the [DSRequest.startRow](DSRequest.md#attr-dsrequeststartrow) for the summary row fetch operation will be zero and the [DSRequest.endRow](DSRequest.md#attr-dsrequestendrow) will be this value.
-
-This property has no effect unless summary row records are being retrieved from the [ListGrid.summaryRowDataSource](#attr-listgridsummaryrowdatasource).
-
-**Flags**: IRA
-
----
-## Attr: ListGrid.asyncMissingCellValue
-
-### Description
-The value to display for cells whose value was not computed by the previous asynchronous operation to compute it, or will not be computed by an asynchronous operation due to currently being disabled. For example, the previous asynchronous operation may have been canceled, or the grid may be displaying too many values to compute AI-generated values for a field.
-
-This is the grid-wide setting. [ListGridField.asyncMissingCellValue](ListGridField.md#attr-listgridfieldasyncmissingcellvalue) can override the grid setting for a specific field.
-
-### Groups
-
-- i18nMessages
 
 **Flags**: IRW
 
@@ -4612,7 +4055,7 @@ Developers should be aware that setting `navigateOnTab` explicitly to true enabl
 ### Description
 If [ListGrid.showGridSummary](#attr-listgridshowgridsummary) is true, and a [ListGrid.summaryRowDataSource](#attr-listgridsummaryrowdatasource) is specified this property may be used to customize the fetch request used when retrieving summary data to show in the summary row. An example use case might be specifying a [DSRequest.operationId](DSRequest.md#attr-dsrequestoperationid) to perform a custom fetch operation which retrieved only summary values based on criteria.
 
-Note that [DSRequest.startRow](DSRequest.md#attr-dsrequeststartrow) and [DSRequest.endRow](DSRequest.md#attr-dsrequestendrow) will be configured to only request the first [ListGrid.maxSummaryRowRecords](#attr-listgridmaxsummaryrowrecords) matches if the criteria matches multiple records - though typically a properly configured summary fetch operation will only return a single record, or an expected fixed number of records if multiple row summary values per field are to be displayed.
+By default, only the first [criteria](#attr-listgridsummaryrowcriteria) match is returned if the criteria matches multiple records.
 
 ### See Also
 
@@ -4768,7 +4211,7 @@ To retrieve current state call [getViewState](ListGrid_2.md#method-listgridgetvi
 ## Attr: ListGrid.dataSource
 
 ### Description
-The DataSource that this component should bind to for default fields and for performing [DataSource requests](../reference_2.md#object-dsrequest).
+The DataSource that this component should bind to for default fields and for performing [DataSource requests](../reference.md#object-dsrequest).
 
 Can be specified as either a DataSource instance or the String ID of a DataSource.
 
@@ -4916,18 +4359,6 @@ Can also be disabled on a per-field basis with [ListGridField.autoFetchDisplayMa
 **Flags**: IRW
 
 ---
-## Attr: ListGrid.styledRowEnds
-
-### Description
-When set to true, the first and last cells in each row will be styled with an additional CSS class, via the [ListGrid.firstCellStyle](#attr-listgridfirstcellstyle) and [ListGrid.lastCellStyle](#attr-listgridlastcellstyle) attributes. This styling is added as a second style, additional to the cell's regular stateful style, so works with any cell-design and in all states, and is also applied correctly with or without frozen fields.
-
-If all you want to do is provide rounded-corners for records in this grid, it may be simpler to set [ListGrid.recordRadius](#attr-listgridrecordradius) to a CSS _border-radius_ string that achieves the rounding you want.
-
-Note that you can also provide your own implementation of [ListGrid.getCellStyle](ListGrid_2.md#method-listgridgetcellstyle) or [ListGrid.getCellCSSText](ListGrid_2.md#method-listgridgetcellcsstext), if you want to do something more complex, like a gradient fade that spans the end two cells on each side of a record.
-
-**Flags**: IRW
-
----
 ## Attr: ListGrid.waitForSave
 
 ### Description
@@ -5030,18 +4461,6 @@ The field criteria prefix to show in filter editor field hover before the descri
 - i18nMessages
 
 **Flags**: IR
-
----
-## Attr: ListGrid.frozenBodyStyleName
-
-### Description
-CSS style used for the [frozen-body](#attr-listgridcanfreezefields) of this grid. If applying a background-color to the body via a CSS style applied using this property, be sure to set [ListGrid.bodyBackgroundColor](#attr-listgridbodybackgroundcolor) to `null`.
-
-### Groups
-
-- appearance
-
-**Flags**: IRW
 
 ---
 ## Attr: ListGrid.headerTitleVAlign
@@ -5291,7 +4710,7 @@ Note that if multiple records are being dragged the displayed tracker will be ba
 ### Description
 How to fetch and manage records retrieve from the server. See [FetchMode](../reference_2.md#type-fetchmode).
 
-This setting only applies to the [ResultSet](ResultSet.md#class-resultset) automatically created by calling [fetchData()](ListGrid_2.md#method-listgridfetchdata). If a pre-existing ResultSet is passed to setData() instead, it's existing setting for [ResultSet.fetchMode](ResultSet.md#attr-resultsetfetchmode) applies.
+This setting only applies to the [ResultSet](ResultSet.md#class-resultset) automatically created by calling [fetchData()](#method-listgridfetchdata). If a pre-existing ResultSet is passed to setData() instead, it's existing setting for [ResultSet.fetchMode](ResultSet.md#attr-resultsetfetchmode) applies.
 
 ### Groups
 
@@ -5323,7 +4742,7 @@ If the user picks an icon, the created hiliting rule will have [Hilite.icon](Hil
 ## Attr: ListGrid.sortDescendingImage
 
 ### Description
-Image to show when sorted in descending order. Can be either a regular [SCImgURL](../reference.md#type-scimgurl) src, or an [ImgHTMLProperties](../reference_2.md#object-imghtmlproperties) object.
+Image to show when sorting descending. See [ImgProperties](../reference.md#object-imgproperties) for format.
 
 ### Groups
 
@@ -5339,7 +4758,7 @@ Image to show when sorted in descending order. Can be either a regular [SCImgURL
 ## Attr: ListGrid.childExpansionMode
 
 ### Description
-For [expansionModes](../reference_2.md#type-expansionmode) that show another grid or tree, what the child's expansionMode should be.
+For [expansionModes](../reference.md#type-expansionmode) that show another grid or tree, what the child's expansionMode should be.
 
 Default value `null` means no further expansion.
 
@@ -5407,7 +4826,7 @@ This additional setting is likely to be phased out as browsers improve.
 ## Attr: ListGrid.expansionDetailRelated
 
 ### Description
-Automatically generated [HLayout](../reference.md#class-hlayout) appearing in a record's expanded section when [listGrid.expansionMode](../reference_2.md#type-expansionmode) is `detailRelated`. This component contains two other autoChild components, a [DetailViewer](DetailViewer.md#class-detailviewer) for viewing fields from the record which are not already present in the grid and a separate embedded [ListGrid](#class-listgrid) for displaying other data related to this record via record.detailDS. See [ListGrid.expansionDetails](#attr-listgridexpansiondetails) and [ListGrid.expansionRelated](#attr-listgridexpansionrelated) for more information.
+Automatically generated [HLayout](../reference.md#class-hlayout) appearing in a record's expanded section when [listGrid.expansionMode](../reference.md#type-expansionmode) is `detailRelated`. This component contains two other autoChild components, a [DetailViewer](DetailViewer.md#class-detailviewer) for viewing fields from the record which are not already present in the grid and a separate embedded [ListGrid](#class-listgrid) for displaying other data related to this record via record.detailDS. See [ListGrid.expansionDetails](#attr-listgridexpansiondetails) and [ListGrid.expansionRelated](#attr-listgridexpansionrelated) for more information.
 
 This component is an [AutoChild](../reference.md#type-autochild) and as such may be customized via `listGrid.expansionDetailRelatedProperties` and `listGrid.expansionDetailRelatedDefaults`.
 
@@ -5509,14 +4928,6 @@ Prefix prepended to the name of a ["summary"](ListGridField.md#attr-listgridfiel
 **Flags**: IRA
 
 ---
-## Attr: ListGrid.hiliteViaAIMode
-
-### Description
-When [ListGrid.canHiliteViaAI](#attr-listgridcanhiliteviaai) is `true`, the AI service mode to use.
-
-**Flags**: IR
-
----
 ## Attr: ListGrid.titleField
 
 ### Description
@@ -5593,13 +5004,13 @@ This setting overrides the [general indent](#attr-listgridembeddedcomponentinden
 ### Description
 A list of ListGridRecord objects, specifying the data to be used to populate the ListGrid. In ListGrids, the data array specifies rows.
 
-When using a [DataSource](DataSource.md#class-datasource), rather than directly providing `data`, you will typically call [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata) instead, which will automatically establish `data` as a [ResultSet](ResultSet.md#class-resultset) (see the [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata) docs for details).
+When using a [DataSource](DataSource.md#class-datasource), rather than directly providing `data`, you will typically call [ListGrid.fetchData](#method-listgridfetchdata) instead, which will automatically establish `data` as a [ResultSet](ResultSet.md#class-resultset) (see the [ListGrid.fetchData](#method-listgridfetchdata) docs for details).
 
-If you call `fetchData`, any previously supplied `data` is discarded. Also, it is not necessary to call `setData()` after calling [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata).
+If you call `fetchData`, any previously supplied `data` is discarded. Also, it is not necessary to call `setData()` after calling [ListGrid.fetchData](#method-listgridfetchdata).
 
-When calling `setData()`, direct changes to the list using Framework APIs such as [List.add](List.md#method-listadd) or [List.remove](List.md#method-listremove) will be automatically observed and the ListGrid will redraw in response. However, direct changes to individual Records will not be automatically observed and require calls to [ListGrid.refreshCell](ListGrid_2.md#method-listgridrefreshcell) or [ListGrid.refreshRow](ListGrid_2.md#method-listgridrefreshrow) to cause the ListGrid to visually update. Calling methods such as [ListGrid.updateData](ListGrid_2.md#method-listgridupdatedata), [ListGrid.removeData](ListGrid_2.md#method-listgridremovedata) or [ListGrid.addData](ListGrid_2.md#method-listgridadddata) always causes automatic visual refresh.
+When calling `setData()`, direct changes to the list using Framework APIs such as [List.add](List.md#method-listadd) or [List.remove](List.md#method-listremove) will be automatically observed and the ListGrid will redraw in response. However, direct changes to individual Records will not be automatically observed and require calls to [ListGrid.refreshCell](ListGrid_2.md#method-listgridrefreshcell) or [ListGrid.refreshRow](ListGrid_2.md#method-listgridrefreshrow) to cause the ListGrid to visually update. Calling methods such as [ListGrid.updateData](#method-listgridupdatedata), [ListGrid.removeData](ListGrid_2.md#method-listgridremovedata) or [ListGrid.addData](ListGrid_2.md#method-listgridadddata) always causes automatic visual refresh.
 
-Note that direct manipulation of the data object without using the [List](../reference_2.md#interface-list) APIs (for example by directly assigning a new Record object to some index or calling non-Framework APIs such as pop(), shift(), etc.) will not be reflected in the grid automatically, but developers can call [List.dataChanged](List.md#method-listdatachanged) directly to notify the grid of changes.
+Note that direct manipulation of the data object without using the [List](../reference.md#interface-list) APIs (for example by directly assigning a new Record object to some index or calling non-Framework APIs such as pop(), shift(), etc.) will not be reflected in the grid automatically, but developers can call [List.dataChanged](List.md#method-listdatachanged) directly to notify the grid of changes.
 
 ### Groups
 
@@ -5667,23 +5078,13 @@ For a ListGrid, this property applies when [grouping](#attr-listgridcangroupby) 
 ## Attr: ListGrid.recordDetailDSProperty
 
 ### Description
-The name of the ListGridRecord property that specifies the DataSource to use when [listGrid.expansionMode](../reference_2.md#type-expansionmode) is "related". The default is [ListGridRecord.detailDS](ListGridRecord.md#attr-listgridrecorddetailds). Note that you can set the [ListGrid.detailDS](#attr-listgriddetailds) at the grid level instead if the same dataSource is to be used for all records.
+The name of the ListGridRecord property that specifies the DataSource to use when [listGrid.expansionMode](../reference.md#type-expansionmode) is "related". The default is [ListGridRecord.detailDS](ListGridRecord.md#attr-listgridrecorddetailds). Note that you can set the [ListGrid.detailDS](#attr-listgriddetailds) at the grid level instead if the same dataSource is to be used for all records.
 
 ### Groups
 
 - expansionField
 
 **Flags**: IRWA
-
----
-## Attr: ListGrid.recordRadiusTargets
-
-### Description
-Array of [RecordTypes](../reference.md#type-recordtype) that should be rounded when [ListGrid.recordRadius](#attr-listgridrecordradius) is set to a valid CSS _border-radius_ string.
-
-By default, [group-headers](#attr-listgridcangroupby) and records showing [group](#attr-listgridshowgroupsummary) or [grid](#attr-listgridshowgridsummary) summaries are not rounded, because these records typically have a separator line to distinguish them from surrounding records.
-
-**Flags**: IRW
 
 ---
 ## Attr: ListGrid.reverseRTLAlign
@@ -5742,32 +5143,12 @@ When [ListGrid.canRemoveRecords](#attr-listgridcanremoverecords) is enabled, def
 **Flags**: IR
 
 ---
-## Attr: ListGrid.canRequestRowCount
-
-### Description
-Depending on whether [DataSource.progressiveLoading](DataSource.md#attr-datasourceprogressiveloading) is active, the exact count of available rows may not be known, and `canRequestRowCount` controls whether the end user may explicitly request it by clicking the [RowRangeDisplay](RowRangeDisplay.md#class-rowrangedisplay) label.
-
-When this property is set to `true`, the user may request an accurate row count if one is not currently known by [clicking](RowRangeDisplay.md#attr-rowrangedisplaycanrequestrowcount) the [ListGrid.rowRangeDisplay](#attr-listgridrowrangedisplay). To have a row count fetch operation occur automatically when progressive data is loaded instead of requiring a user interaction to initiate the fetch, see [ListGrid.autoFetchRowCount](#attr-listgridautofetchrowcount).
-
-Note: This property also acts as a default for [ResultSet.applyRowCountToLength](ResultSet.md#attr-resultsetapplyrowcounttolength). By default, if set to true, a user may therefore click the rowRangeDisplay label to request a row count query be executed on the server, and when the query is complete they may scroll the listGrid body freely, retrieving records from anywhere within the data set.
-
-If [ListGrid.applyRowCountToLength](#attr-listgridapplyrowcounttolength) is explicitly set it will be applied to the grid's data object instead of using `applyRowCountToLength` as a default. For finer grained control, a developer may set both properties to false and manage behavior by explicitly calling [ListGrid.fetchRowCount](ListGrid_2.md#method-listgridfetchrowcount) and [listGrid.data.setFullLength()](ResultSet.md#method-resultsetsetfulllength) from application code.
-
-### Groups
-
-- rowRangeDisplay
-
-**Flags**: IRW
-
----
 ## Attr: ListGrid.canEditHilites
 
 ### Description
 Adds an item to the header context menu allowing users to launch a dialog to define grid hilites using the [HiliteEditor](HiliteEditor.md#class-hiliteeditor).
 
 User-added hilites can be persisted via [DataBoundComponent.getHiliteState](DataBoundComponent.md#method-databoundcomponentgethilitestate) and [DataBoundComponent.setHiliteState](DataBoundComponent.md#method-databoundcomponentsethilitestate).
-
-To avoid undefined behavior, this property must be set to `false` if the same record objects, or the same [ResultSet](ResultSet.md#class-resultset) instances, are shared among multiple [DataBoundComponent](../reference.md#interface-databoundcomponent)s.
 
 ### Groups
 
@@ -5872,18 +5253,6 @@ Since [ListGrid.body](#attr-listgridbody) is configured with overflow: auto by d
 **Flags**: IRW
 
 ---
-## Attr: ListGrid.emptyAIHoverContents
-
-### Description
-Hover contents to use when the AI-generated hover text is empty.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
-
----
 ## Attr: ListGrid.printBooleanBaseStyle
 
 ### Description
@@ -5981,18 +5350,6 @@ If [ListGrid.showHeaderMenuButton](#attr-listgridshowheadermenubutton) is true, 
 **Flags**: IRA
 
 ---
-## Attr: ListGrid.unknownRowCountDisplayValue
-
-### Description
-Value to return from [ListGrid.getFormattedRowCount](ListGrid_2.md#method-listgridgetformattedrowcount) when the row count is unknown
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
-
----
 ## Attr: ListGrid.headerMenuButtonIconHeight
 
 ### Description
@@ -6055,7 +5412,7 @@ For example, specify \["frozen", "decimalPrecision"\] to allow end users to modi
 Array of components that make up this grid. This array controls which standard and/or custom parts will be displayed within this ListGrid.
 
 ListGrid is a subclass of [VLayout](../reference.md#class-vlayout) and consists of a number of member components. The standard set of members are automatically generated by the grid, and include (for example) the header (a Toolbar of buttons for each field) and the body (a GridRenderer displaying the actual data contained in the grid).  
-The default value of `gridComponents` is an Array of [ListGridComponent](../reference_2.md#type-listgridcomponent)s listing the standard components in their default order:
+The default value of `gridComponents` is an Array of [ListGridComponent](../reference.md#type-listgridcomponent)s listing the standard components in their default order:
 
 ```
     gridComponents : ["filterEditor", "header",
@@ -6063,10 +5420,9 @@ The default value of `gridComponents` is an Array of [ListGridComponent](../refe
  
 ```
 You can override `gridComponents` to change the order of standard components. You can also omit standard components this way, although it more efficient to use the related "show" property if available (eg [ListGrid.showFilterEditor](#attr-listgridshowfiltereditor)). Note that this array must contain an entry for the `"body"` - listGrids with no body showing are unsupported.  
-_Advanced note:_ The live components generated for each of these standard [ListGridComponent](../reference_2.md#type-listgridcomponent) types may differ across different listGrids. For example if this grid has any [frozen fields](ListGridField.md#attr-listgridfieldfrozen), the "body" entry will actually be created as an HLayout containing two GridRenderers (one for frozen fields, and one for unfrozen fields). This is really an implementation detail - the "body" entry in the gridComponents array simply specifies where the UI for the body should render within the ListGrid layout.
+_Advanced note:_ The live components generated for each of these standard [ListGridComponent](../reference.md#type-listgridcomponent) types may differ across different listGrids. For example if this grid has any [frozen fields](ListGridField.md#attr-listgridfieldfrozen), the "body" entry will actually be created as an HLayout containing two GridRenderers (one for frozen fields, and one for unfrozen fields). This is really an implementation detail - the "body" entry in the gridComponents array simply specifies where the UI for the body should render within the ListGrid layout.
 
-By embedding a Canvas directly in this list you can add arbitrary additional components to the listGrid as members, and have them be displayed alongside the standard automatically generated parts of the ListGrid.  
-You can also use a [AutoChildShortcut](../reference.md#type-autochildshortcut) to have an [AutoChild](../reference.md#type-autochild) be automatically generated and displayed. Note that this pattern requires that you explicitly set `show_AutoChildName_` to `true` for the grid.
+By embedding a Canvas directly in this list you can add arbitrary additional components to the listGrid as members, and have them be displayed alongside the standard automatically generated parts of the ListGrid.
 
 Note that having added controls to gridComponents, you can still call APIs directly on those controls to change their appearance, and you can also show() and hide() them if they should not be shown in some circumstances.
 
@@ -6173,7 +5529,7 @@ If true, show the field-header for the sorted field (or the first field in a [mu
 ## Attr: ListGrid.expansionDetails
 
 ### Description
-Automatically generated [DetailViewer](DetailViewer.md#class-detailviewer) for displaying the details of a record in its expanded section when [listGrid.expansionMode](../reference_2.md#type-expansionmode) is `details`. Note that only those fields which do not already appear in the grid are displayed in the expanded section.
+Automatically generated [DetailViewer](DetailViewer.md#class-detailviewer) for displaying the details of a record in its expanded section when [listGrid.expansionMode](../reference.md#type-expansionmode) is `details`. Note that only those fields which do not already appear in the grid are displayed in the expanded section.
 
 This component is an [AutoChild](../reference.md#type-autochild) and as such may be customized via `listGrid.expansionDetailsProperties` and `listGrid.expansionDetailsDefaults`.
 
@@ -6221,8 +5577,6 @@ Adds an item to the header context menu allowing users to launch a dialog to def
 
 User-added summary fields can be persisted via [ListGrid.getFieldState](ListGrid_2.md#method-listgridgetfieldstate) and [ListGrid.setFieldState](ListGrid_2.md#method-listgridsetfieldstate).
 
-To avoid undefined behavior, this property must be set to `false` if the same record objects, or the same [ResultSet](ResultSet.md#class-resultset) instances, are shared among multiple [DataBoundComponent](../reference.md#interface-databoundcomponent)s.
-
 ### Groups
 
 - summaryFields
@@ -6253,7 +5607,7 @@ If true, shows [recordComponents](#attr-listgridshowrecordcomponents) in cells, 
 ## Attr: ListGrid.dragHandleField
 
 ### Description
-An automatically generated field that can be dragged to drag the current selection (where otherwise the grid itself might be scrolled). Visibility is controlled by [ListGrid.showInitialDragHandles](#attr-listgridshowinitialdraghandles), [ListGrid.showDragHandles](ListGrid_2.md#method-listgridshowdraghandles), and [ListGrid.hideDragHandles](ListGrid_2.md#method-listgridhidedraghandles).
+An automatically generated field that can be dragged to drag the current selection (where otherwise the grid itself might be scrolled). Visibility is controlled by [ListGrid.showInitialDragHandles](#attr-listgridshowinitialdraghandles), [ListGrid.showDragHandles](ListGrid_2.md#method-listgridshowdraghandles), and [ListGrid.hideDragHandles](#method-listgridhidedraghandles).
 
 ### Groups
 
@@ -6272,26 +5626,6 @@ Warning message to show the user on a click on the 'remove' icon if [ListGrid.ca
 - i18nMessages
 
 **Flags**: IRW
-
----
-## Attr: ListGrid.rowRangeDisplayStyle
-
-### Description
-How should the [ListGrid.getFormattedRowRange](ListGrid_2.md#method-listgridgetformattedrowrange) format the row range and row count for display to the user?
-
-### Groups
-
-- rowRangeDisplay
-
-**Flags**: IRW
-
----
-## Attr: ListGrid.aiSortProgressDialog
-
-### Description
-Dialog that shows progress after requesting AI-sorting of a field.
-
-**Flags**: IR
 
 ---
 ## Attr: ListGrid.headerShadowVOffset
@@ -6376,7 +5710,7 @@ To retrieve current state call [getFieldState](ListGrid_2.md#method-listgridgetf
 ## Attr: ListGrid.exportAlternateRowBGColor
 
 ### Description
-When exporting data to Excel/OpenOffice format using [exportData()](ListGrid_2.md#method-listgridexportdata) or [exportClientData()](ListGrid_2.md#method-listgridexportclientdata), background color to use for even-numbered rows, to create a "banded" or "ledger" effect. Odd-numbered rows will use the [ListGrid.exportDefaultBGColor](#attr-listgridexportdefaultbgcolor).
+When exporting data to Excel/OpenOffice format using [exportData()](ListGrid_2.md#method-listgridexportdata) or [exportClientData()](#method-listgridexportclientdata), background color to use for even-numbered rows, to create a "banded" or "ledger" effect. Odd-numbered rows will use the [ListGrid.exportDefaultBGColor](#attr-listgridexportdefaultbgcolor).
 
 See [exportBGColor](../kb_topics/exportBGColor.md#kb-topic-exports--cell-background-color) for an overview.
 
@@ -6453,18 +5787,6 @@ See also [GridRenderer.instantScrollTrackRedraw](GridRenderer.md#attr-gridrender
 - performance
 
 **Flags**: IRW
-
----
-## Attr: ListGrid.filterWindowTitle
-
-### Description
-The title for the [advanced filtering window](#attr-listgridfilterwindow).
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IR
 
 ---
 ## Attr: ListGrid.savedSearchDS
@@ -6670,7 +5992,7 @@ If true, validation will not occur as a result of cell editing for this grid.
 ## Attr: ListGrid.exportHeaderHeights
 
 ### Description
-When exporting data to Excel/OpenOffice format using [ListGrid.exportData](ListGrid_2.md#method-listgridexportdata) or [ListGrid.exportClientData](ListGrid_2.md#method-listgridexportclientdata), causes the [ListGrid.headerHeight](#attr-listgridheaderheight) and [headerSpan heights](HeaderSpan.md#attr-headerspanheight) to be applied to the corresponding cells in the spreadsheet.
+When exporting data to Excel/OpenOffice format using [ListGrid.exportData](ListGrid_2.md#method-listgridexportdata) or [ListGrid.exportClientData](#method-listgridexportclientdata), causes the [ListGrid.headerHeight](#attr-listgridheaderheight) and [headerSpan heights](HeaderSpan.md#attr-headerspanheight) to be applied to the corresponding cells in the spreadsheet.
 
 **Flags**: IRW
 
@@ -6693,16 +6015,6 @@ This setting causes the [roll over canvas](#attr-listgridrollovercanvas) to be d
 If [screen reader mode is enabled](isc.md#staticmethod-iscsetscreenreadermode), and [ListGrid.canSelectCells](#attr-listgridcanselectcells) is true should the user be able to navigate the grid cell-by-cell, highlighting and focusing on individual cells within the selected row via left and right arrow keypresses?
 
 If [ListGrid.canSelectCells](#attr-listgridcanselectcells) is true, this property will have no effect as all navigation is by cell.
-
-**Flags**: IRW
-
----
-## Attr: ListGrid.canAddAISortFields
-
-### Description
-Adds an item to the header context menu allowing users to launch a dialog to define a new field to be sorted by an AI score of the entire record and possibility related records.
-
-AI sort fields can be persisted via [ListGrid.getFieldState](ListGrid_2.md#method-listgridgetfieldstate) and [ListGrid.setFieldState](ListGrid_2.md#method-listgridsetfieldstate).
 
 **Flags**: IRW
 
@@ -6750,7 +6062,7 @@ If [ListGrid.showHover](#attr-listgridshowhover) is true, should cell hover HTML
 ## Attr: ListGrid.headerHoverStyle
 
 ### Description
-This property may be set to customize the css style for the hover shown on [ListGrid.headerHover](ListGrid_2.md#method-listgridheaderhover).
+This property may be set to customize the css style for the hover shown on [ListGrid.headerHover](#method-listgridheaderhover).
 
 **Flags**: IRW
 
@@ -6834,6 +6146,20 @@ When [canShowFilterEditor](#attr-listgridcanshowfiltereditor) is true, this is t
 
 - filterEditor
 - i18nMessages
+
+**Flags**: IRW
+
+---
+## Attr: ListGrid.sortFieldNum
+
+### Description
+Specifies the number of the field by which to sort this listGrid. Column numbers start at 0 for the left-most column.
+
+### Groups
+
+- sorting
+
+**Deprecated**
 
 **Flags**: IRW
 
@@ -6930,7 +6256,7 @@ The prompt to show when the mouse hovers over the Filter button in the FilterEdi
 ## Attr: ListGrid.exportFieldAlignments
 
 ### Description
-When exporting data to Excel/OpenOffice format using [ListGrid.exportData](ListGrid_2.md#method-listgridexportdata) or [ListGrid.exportClientData](ListGrid_2.md#method-listgridexportclientdata), whether field [horizontal header alignments](ListGridField.md#attr-listgridfieldalign) and [data value alignments](ListGridField.md#attr-listgridfieldcellalign) should be replicated in the resulting spreadsheet.
+When exporting data to Excel/OpenOffice format using [ListGrid.exportData](ListGrid_2.md#method-listgridexportdata) or [ListGrid.exportClientData](#method-listgridexportclientdata), whether field [horizontal header alignments](ListGridField.md#attr-listgridfieldalign) and [data value alignments](ListGridField.md#attr-listgridfieldcellalign) should be replicated in the resulting spreadsheet.
 
 If this attribute is not set, cells will be assigned a default alignment by the spreadsheet, which is typically right-aligned for numeric and date values, and left-aligned for everything else (including dates and numbers that have been exported as strings, as would be the case, for example, if [DSRequest.exportDatesAsFormattedString](DSRequest.md#attr-dsrequestexportdatesasformattedstring) is set)
 
@@ -6994,7 +6320,7 @@ If content exceeds this width, scrollbars will be introduced as usual. In additi
 ## Attr: ListGrid.exportDefaultBGColor
 
 ### Description
-Default background color to use when exporting data to Excel/OpenOffice format using [exportData()](ListGrid_2.md#method-listgridexportdata) or [exportClientData()](ListGrid_2.md#method-listgridexportclientdata).
+Default background color to use when exporting data to Excel/OpenOffice format using [exportData()](ListGrid_2.md#method-listgridexportdata) or [exportClientData()](#method-listgridexportclientdata).
 
 If unset (the default), cells that are not provided a background color by more specific APIs will be the default background color used by the spreadsheet program where they are viewed.
 
@@ -7010,7 +6336,7 @@ See [exportBGColor](../kb_topics/exportBGColor.md#kb-topic-exports--cell-backgro
 ## Attr: ListGrid.exportHiddenFieldWidth
 
 ### Description
-Width to size non-visible fields (which may be specified with [exportFields](DataBoundComponent.md#attr-databoundcomponentexportfields) or [DSRequest.exportFields](DSRequest.md#attr-dsrequestexportfields)) during [ListGrid.exportData](ListGrid_2.md#method-listgridexportdata) or [ListGrid.exportClientData](ListGrid_2.md#method-listgridexportclientdata), if they have no defined numeric [width](ListGridField.md#attr-listgridfieldwidth).
+Width to size non-visible fields (which may be specified with [exportFields](DataBoundComponent.md#attr-databoundcomponentexportfields) or [DSRequest.exportFields](DSRequest.md#attr-dsrequestexportfields)) during [ListGrid.exportData](ListGrid_2.md#method-listgridexportdata) or [ListGrid.exportClientData](#method-listgridexportclientdata), if they have no defined numeric [width](ListGridField.md#attr-listgridfieldwidth).
 
 ### See Also
 
@@ -7073,7 +6399,7 @@ If [ListGrid.canExpandRecords](#attr-listgridcanexpandrecords) is set to `true`,
 ### Description
 The value to display for cells whose value is null or the empty string after applying [formatting](ListGrid_2.md#method-listgridformatcellvalue) and valueMap (if any).
 
-This is the grid-wide attribute. You may also set the [ListGridField.emptyCellValue](ListGridField.md#attr-listgridfieldemptycellvalue) on a per-field basis.
+This is the grid-wide attribute. You may also set the emptyCellValue on a per-field basis.
 
 ### Groups
 
@@ -7081,9 +6407,7 @@ This is the grid-wide attribute. You may also set the [ListGridField.emptyCellVa
 
 ### See Also
 
-- [ListGrid.pendingAsyncCellValue](#attr-listgridpendingasynccellvalue)
-- [ListGrid.asyncErrorCellValue](#attr-listgridasyncerrorcellvalue)
-- [ListGrid.asyncMissingCellValue](#attr-listgridasyncmissingcellvalue)
+- [ListGridField.emptyCellValue](ListGridField.md#attr-listgridfieldemptycellvalue)
 
 **Flags**: IRW
 
@@ -7122,20 +6446,10 @@ If [ListGrid.showFilterEditor](#attr-listgridshowfiltereditor) is true, this att
 **Flags**: IR
 
 ---
-## Attr: ListGrid.lastCellStyle
-
-### Description
-The style to apply to the last cell in each row, when [ListGrid.styledRowEnds](#attr-listgridstyledrowends) is true. Note that this style is additional to the regular cell styling and should not introduce settings that change the layout or size of the cell, such as padding or font-size, but is ideal for setting a corner-radius or fading gradient. The styling will work with any design, and is also applied correctly with or without frozen fields.
-
-If all you want to do is provide rounded-corners for records in this grid, it may be simpler to set [ListGrid.recordRadius](#attr-listgridrecordradius) to a CSS _border-radius_ string that achieves the rounding you want.
-
-**Flags**: IRW
-
----
 ## Attr: ListGrid.headerHoverWrap
 
 ### Description
-This property may be set to customize the `wrap` attribute for the hover shown on [ListGrid.headerHover](ListGrid_2.md#method-listgridheaderhover).
+This property may be set to customize the `wrap` attribute for the hover shown on [ListGrid.headerHover](#method-listgridheaderhover).
 
 **Flags**: IRW
 
@@ -7157,7 +6471,7 @@ This is achieved by enabling [autoFitWidth:true](ListGridField.md#attr-listgridf
 ## Attr: ListGrid.exportWrapHeaderTitles
 
 ### Description
-When exporting data to Excel/OpenOffice format using [ListGrid.exportData](ListGrid_2.md#method-listgridexportdata) or [ListGrid.exportClientData](ListGrid_2.md#method-listgridexportclientdata), whether titles in the [ListGrid header](#attr-listgridheader) and [headerSpans](#attr-listgridheaderspans) should be allowed to wrap.
+When exporting data to Excel/OpenOffice format using [ListGrid.exportData](ListGrid_2.md#method-listgridexportdata) or [ListGrid.exportClientData](#method-listgridexportclientdata), whether titles in the [ListGrid header](#attr-listgridheader) and [headerSpans](#attr-listgridheaderspans) should be allowed to wrap.
 
 Excel will wrap at the column boundary automatically; for explicit control over wrapping, insert "`<br>`" tags into your titles.
 
@@ -7178,7 +6492,7 @@ Whether to show a context menu on the header with standard items for showing and
 ### See Also
 
 - [ListGrid.displayHeaderContextMenu](ListGrid_2.md#method-listgriddisplayheadercontextmenu)
-- [ListGrid.getHeaderContextMenuItems](ListGrid_2.md#method-listgridgetheadercontextmenuitems)
+- [ListGrid.getHeaderContextMenuItems](#method-listgridgetheadercontextmenuitems)
 
 **Flags**: IR
 
@@ -7193,18 +6507,6 @@ The number to start the row-count from - default value is 1.
 - rowNumberField
 
 **Flags**: IRWA
-
----
-## Attr: ListGrid.placeholderAIHoverContents
-
-### Description
-Message to show in the hover while AI-generated hover text is being retrieved for fields specifying an [aiHoverRequest](ListGridField.md#attr-listgridfieldaihoverrequest).
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
 
 ---
 ## Attr: ListGrid.deselectOnPartialCheckboxClick
@@ -7316,17 +6618,9 @@ No effect if this.canEdit is false or null.
 ## Attr: ListGrid.headerHoverVAlign
 
 ### Description
-This property may be set to customize the vertical alignment for the hover shown on [ListGrid.headerHover](ListGrid_2.md#method-listgridheaderhover).
+This property may be set to customize the vertical alignment for the hover shown on [ListGrid.headerHover](#method-listgridheaderhover).
 
 **Flags**: IRW
-
----
-## Attr: ListGrid.filterViaAIMode
-
-### Description
-If filtering of the grid is enabled and AI [is enabled](AI.md#classmethod-aiisenabled), filtering-via-AI can be enabled by setting the [AIServiceMode](../reference.md#type-aiservicemode) to use.
-
-**Flags**: IR
 
 ---
 ## Attr: ListGrid.headerMenuButtonConstructor
@@ -7344,7 +6638,7 @@ Constructor for the [ListGrid.headerMenuButton](#attr-listgridheadermenubutton).
 ## Attr: ListGrid.expansionLayout
 
 ### Description
-Automatically generated [VLayout](../reference.md#class-vlayout) which fills a record's expanded section and contains other builtin [expansion-components](../reference_2.md#type-expansionmode). You can also override [getExpansionComponent()](ListGrid_2.md#method-listgridgetexpansioncomponent) to provide components of your own specification.
+Automatically generated [VLayout](../reference.md#class-vlayout) which fills a record's expanded section and contains other builtin [expansion-components](../reference.md#type-expansionmode). You can also override [getExpansionComponent()](#method-listgridgetexpansioncomponent) to provide components of your own specification.
 
 This component is an [AutoChild](../reference.md#type-autochild) and as such may be customized via `listGrid.expansionLayoutProperties` and `listGrid.expansionLayoutDefaults`.
 
@@ -7355,36 +6649,6 @@ Note, however, that this is a multi-instance component (potentially one per reco
 - expansionField
 
 **Flags**: RA
-
----
-## Attr: ListGrid.rowRangeFormat
-
-### Description
-Dynamic String specifying the format for the [visible row range](ListGrid_2.md#method-listgridgetformattedrowrange).
-
-The following variables are available for evaluation within this string:
-
-*   `startRow`: first visible row in the viewport as a [formatted string](NumberUtil.md#classmethod-numberutiltolocalizedstring)
-*   `endRow`: last visible row in the viewport as a [formatted string](NumberUtil.md#classmethod-numberutiltolocalizedstring)
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
-
----
-## Attr: ListGrid.clearFilterViaAIText
-
-### Description
-Title for the menu-item displayed in this component's header context-menu when [AI-assisted filtering](#attr-listgridfilterviaaimode) is allowed and an AI filter in already in effect.
-
-### Groups
-
-- ai
-- i18nMessages
-
-**Flags**: IRW
 
 ---
 ## Attr: ListGrid.defaultFilterOperatorSuffix
@@ -7402,7 +6666,7 @@ Text to show after the name of the default filterOperator in the [headerContextM
 ## Attr: ListGrid.headerHoverAlign
 
 ### Description
-This property may be set to customize the alignment for the hover shown on [ListGrid.headerHover](ListGrid_2.md#method-listgridheaderhover).
+This property may be set to customize the alignment for the hover shown on [ListGrid.headerHover](#method-listgridheaderhover).
 
 **Flags**: IRW
 
@@ -7424,15 +6688,13 @@ Sorting direction of this ListGrid. If specified when the ListGrid is initialize
 
 After initialization, this property will be updated on [ListGrid.sort](ListGrid_2.md#method-listgridsort) or [ListGrid.setSort](ListGrid_2.md#method-listgridsetsort) to reflect the current sort direction of the grid. When this grid is sorted by multiple fields, the grid's sortDirection reflects the sort direction of the primary sort field.
 
-Note: A side effect of [ListGrid.setSort](ListGrid_2.md#method-listgridsetsort) is that it updates the grid's `sortDirection` to the direction of the first sort. In particular, if there is an [ListGrid.initialSort](#attr-listgridinitialsort) or [ListGrid.sortField](#attr-listgridsortfield), then `sortDirection` will be updated during initialization to the direction of the first sort.
-
 ### Groups
 
 - sorting
 
 ### See Also
 
-- [SortDirection](../reference_2.md#type-sortdirection)
+- [SortDirection](../reference.md#type-sortdirection)
 
 **Flags**: IRW
 
@@ -7480,10 +6742,6 @@ An array of field objects, specifying the order, layout, formatting, and sorting
 
 If [ListGrid.dataSource](#attr-listgriddatasource) is also set, this value acts as a set of overrides as explained in [DataBoundComponent.fields](DataBoundComponent.md#attr-databoundcomponentfields).
 
-Note: grids with [useAllDataSourceFields:true](#attr-listgridusealldatasourcefields) will render the full set of dataSource fields in the order in which they are defined in the dataSource - in this usage the component fields array is just a way to customize the appearance of individual fields.
-
-Grids with [canPickOmittedFields:true](#attr-listgridcanpickomittedfields) will only show the explicitly specified set of fields, but will similarly show them in the order in which they're defined within the dataSource.
-
 ### Groups
 
 - databinding
@@ -7514,19 +6772,6 @@ For a ListGrid, this property applies when [grouping](#attr-listgridcangroupby) 
 **Flags**: IRW
 
 ---
-## Attr: ListGrid.configureViaAIText
-
-### Description
-Title for the menu-item displayed in this component's header context-menu when [ListGrid.canConfigureViaAI](#attr-listgridcanconfigureviaai) is tru.
-
-### Groups
-
-- ai
-- i18nMessages
-
-**Flags**: IRW
-
----
 ## Attr: ListGrid.wrapHeaderTitles
 
 ### Description
@@ -7550,18 +6795,6 @@ Indicates whether fields in this listGrid can be reordered by dragging and dropp
 - dragging
 
 **Flags**: IRW
-
----
-## Attr: ListGrid.filterViaAIPanelInstructions
-
-### Description
-The instruction text to display above the "Filter via AI" text box.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IR
 
 ---
 ## Attr: ListGrid.groupByField
@@ -7638,27 +6871,11 @@ The height of this listGrid's header, in pixels.
 ## Attr: ListGrid.canPickOmittedFields
 
 ### Description
-If true, the [field picker menu](#attr-listgridcanpickfields) will include entries for all dataSource fields, including those not included in the specified [fields array](#attr-listgridfields).
+If this grid has a specified [ListGrid.dataSource](#attr-listgriddatasource), and [ListGrid.useAllDataSourceFields](#attr-listgridusealldatasourcefields) is false, setting this property to true will cause all dataSource fields not included in the specified set of fields to show up in the [field picker menu item](#attr-listgridcanpickfields).
 
-This property only applies to grids with a specified [ListGrid.dataSource](#attr-listgriddatasource), where [ListGrid.fields](#attr-listgridfields) is explicitly set and [ListGrid.useAllDataSourceFields](#attr-listgridusealldatasourcefields) is false. The [ListGrid.canPickFields](#attr-listgridcanpickfields) property must also be set to true to allow the user to view the field picker menu.
-
-**Note: grids with `canPickOmittedFields:true`, like those with [useAllDataSourceFields:true](#attr-listgridusealldatasourcefields) will render fields in the order in which they are defined in the dataSource rather than the order in which they're defined in the [listGrid fields array](#attr-listgridfields).**
+Has no effect if [ListGrid.fields](#attr-listgridfields) is unset (as in this case all dataSource fields will be displayed by default), or if [ListGrid.canPickFields](#attr-listgridcanpickfields) is false.
 
 **Flags**: IR
-
----
-## Attr: ListGrid.applyRowCountToLength
-
-### Description
-This property allows developers to explicitly set [ResultSet.applyRowCountToLength](ResultSet.md#attr-resultsetapplyrowcounttolength) for this grid's data object.
-
-If not explicitly specified this will be derived from [ListGrid.canRequestRowCount](#attr-listgridcanrequestrowcount)
-
-### Groups
-
-- rowRangeDisplay
-
-**Flags**: IRW
 
 ---
 ## Attr: ListGrid.chartType
@@ -7714,19 +6931,6 @@ Note that headerSpans primarily provide a visual cue for grouping multiple heade
 **Flags**: IRW
 
 ---
-## Attr: ListGrid.filterViaAIText
-
-### Description
-Title for the menu-item displayed in this component's header context-menu when [AI-assisted filtering](#attr-listgridfilterviaaimode) is allowed.
-
-### Groups
-
-- ai
-- i18nMessages
-
-**Flags**: IRW
-
----
 ## Attr: ListGrid.filterUsingText
 
 ### Description
@@ -7758,7 +6962,7 @@ Any field which has been included directly in the `fields` array will be include
 
 Detail fields included will initially be hidden but the user may show these fields via the default header context menu ([ListGrid.showHeaderContextMenu](#attr-listgridshowheadercontextmenu)).
 
-The field's visibility can also be overridden programatically using the standard [ListGrid.showField](ListGrid_2.md#method-listgridshowfield), [ListGrid.hideField](ListGrid_2.md#method-listgridhidefield) and [ListGridField.showIf](ListGridField.md#method-listgridfieldshowif) APIs, for example, set showIf:"true" to show a detail field initially.
+The field's visibility can also be overridden programatically using the standard [ListGrid.showField](ListGrid_2.md#method-listgridshowfield), [ListGrid.hideField](#method-listgridhidefield) and [ListGridField.showIf](ListGridField.md#method-listgridfieldshowif) APIs, for example, set showIf:"true" to show a detail field initially.
 
 Setting this property to false will completely exclude all detail fields from the list grid's fields array, such that they cannot be shown by the user or programmatically.
 
@@ -7777,22 +6981,6 @@ If `true` this grid will create and show per-row backgroundComponents as detaile
 **Flags**: IRW
 
 ---
-## Attr: ListGrid.autoFetchRowCount
-
-### Description
-Depending on whether [DataSource.progressiveLoading](DataSource.md#attr-datasourceprogressiveloading) is active, the exact count of available rows may not be available as part of the standard data fetch response - setting `autoFetchRowCount:true` will cause a fetch for an accurate row count to be issued as soon as data arrives (from a [progressive dataSource response](DSResponse.md#attr-dsresponseprogressiveloading)) without an accurate row count. This value will then be available for display in the [RowRangeDisplay](RowRangeDisplay.md#class-rowrangedisplay) label.
-
-To allow users to request an accurate row count by clicking the [RowRangeDisplay](RowRangeDisplay.md#class-rowrangedisplay) instead of kicking off a row count fetch automatically, use [ListGrid.canRequestRowCount](#attr-listgridcanrequestrowcount).
-
-The `autoFetchRowCount` value will be passed through to the [ResultSet data object](ResultSet.md#attr-resultsetautofetchrowcount) which is responsible for issuing the row count fetch(es) at appropriate times.
-
-### Groups
-
-- rowCountDisplay
-
-**Flags**: IRW
-
----
 ## Attr: ListGrid.poolComponentsPerColumn
 
 ### Description
@@ -7800,7 +6988,7 @@ Should recycled [record components](#attr-listgridshowrecordcomponents), be pool
 
 When [ListGrid.recordComponentPoolingMode](#attr-listgridrecordcomponentpoolingmode) is "recycle" and you have components of different types in different columns, set this property to true to ensure that components intended for one column are not recycled for use in another column that should have a different component.
 
-If no components applicable to a particular column are available in the pool, the system calls [createRecordComponent](ListGrid_2.md#method-listgridcreaterecordcomponent).
+If no components applicable to a particular column are available in the pool, the system calls [createRecordComponent](#method-listgridcreaterecordcomponent).
 
 ### Groups
 
@@ -7820,12 +7008,9 @@ Valid options area:
 *   `"primaryKey"` Only applies to databound grids: If the cell in question has a primary key cell value, use it to identify cells in autoTest locator strings.
 *   `"titleField"` If the cell in question has a value for the [titleField](ListGrid_2.md#method-listgridgettitlefield), use it to identify cells in autoTest locator strings
 *   `"targetCellValue"` Identify rows by storing the cell value for the target row / field in autoTest locator strings
-*   `"cellValue"` Use the value of a specific cell to identify the row. The [ListGrid.rowLocatorField](#attr-listgridrowlocatorfield) attribute may be used to specify the field from which the cellValue should be retrieved.
 *   `"index"`The rowNum will be used to identify the row.
 
-If unset, default behavior depends on what information is available in the locator passed to [AutoTest.getElement](AutoTest.md#classmethod-autotestgetelement).
-
-If a primaryKey value was recorded (and this grid has a primary key field), it will be used to identify the target row. Otherwise the system will back off to use the titleField (if present in the locator), then the cell value (if present in the locator), and lastly the recorded index.
+If unset, default behavior is to identify by primary key (if available), otherwise by titleField (if available), otherwise by cell value (if available), and lastly by index.
 
 ### Groups
 
@@ -7935,7 +7120,7 @@ If this grid has specified [headerSpans](#attr-listgridheaderspans), should fiel
 ## Attr: ListGrid.dataPageSize
 
 ### Description
-When using [data paging](#attr-listgriddatafetchmode), how many records to fetch at a time. If set to a positive integer, `dataPageSize` will override the default [resultSize](ResultSet.md#attr-resultsetresultsize) for ResultSets automatically created when you call [fetchData()](ListGrid_2.md#method-listgridfetchdata) (and similarly for the [resultSize](ResultTree.md#attr-resulttreeresultsize) of ResultTrees). Leaving `dataPageSize` at its default means to just use the default page size of the data container.
+When using [data paging](#attr-listgriddatafetchmode), how many records to fetch at a time. If set to a positive integer, `dataPageSize` will override the default [resultSize](ResultSet.md#attr-resultsetresultsize) for ResultSets automatically created when you call [fetchData()](#method-listgridfetchdata) (and similarly for the [resultSize](ResultTree.md#attr-resulttreeresultsize) of ResultTrees). Leaving `dataPageSize` at its default means to just use the default page size of the data container.
 
 **Note** that regardless of the `dataPageSize` setting, a component will always fetch all of data that it needs to draw. Settings such as [showAllRecords:true](#attr-listgridshowallrecords), [drawAllMaxCells](#attr-listgriddrawallmaxcells) and [drawAheadRatio](#attr-listgriddrawaheadratio) can cause more rows than the configured `dataPageSize` to be fetched.
 
@@ -7948,6 +7133,16 @@ When using [data paging](#attr-listgriddatafetchmode), how many records to fetch
 - [ResultSet.resultSize](ResultSet.md#attr-resultsetresultsize)
 
 **Flags**: IRW
+
+---
+## Attr: ListGrid.canEditFieldAttribute
+
+### Description
+If this component is bound to a dataSource, this attribute may be specified to customize what fields from the dataSource may be edited by default. For example the [SearchForm](SearchForm.md#class-searchform) class has this attribute set to `"canFilter"` which allows search forms to edit dataSource fields marked as `canEdit:false` (but not those marked as `canFilter:false`).
+
+Note that if `canEdit` is explicitly specified on a field in the [DataBoundComponent.fields](DataBoundComponent.md#attr-databoundcomponentfields) array, that property will be respected in preference to the canEditAttribute value. (See [FormItem.canEdit](FormItem.md#attr-formitemcanedit), [ListGridField.canEdit](ListGridField.md#attr-listgridfieldcanedit)). Also note that individual dataBoundComponents may have additional logic around whether a field can be edited - for example [ListGrid.canEditCell](ListGrid_2.md#method-listgridcaneditcell) may be overridden.
+
+**Flags**: IRA
 
 ---
 ## Attr: ListGrid.screenReaderWriteRowLabelledBy
@@ -8010,7 +7205,7 @@ Name of the property that can be set on a per-record basis to disabled rollover 
 ## Attr: ListGrid.expansionCanEdit
 
 ### Description
-For [expansionModes](../reference_2.md#type-expansionmode) that show another grid or tree, is that component editable?
+For [expansionModes](../reference.md#type-expansionmode) that show another grid or tree, is that component editable?
 
 The default value for this property is `false`.
 
@@ -8031,20 +7226,6 @@ When [headerSpans](#attr-listgridheaderspans) are in use, this property sets the
 - headerSpan
 
 **Flags**: IR
-
----
-## Attr: ListGrid.aiHoverContentsPrefix
-
-### Description
-Optional prefix for the AI-generated hover text displayed when hovering over fields specifying an [aiHoverRequest](ListGridField.md#attr-listgridfieldaihoverrequest).
-
-This can be overridden per-field by [ListGridField.aiHoverContentsPrefix](ListGridField.md#attr-listgridfieldaihovercontentsprefix).
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
 
 ---
 ## Attr: ListGrid.canExpandRecordProperty
@@ -8181,18 +7362,10 @@ For further customization of styling for cells that failed editing validation, u
 **Flags**: IRWA
 
 ---
-## Attr: ListGrid.separatorRowStyle
-
-### Description
-CSS class to apply to rows marked as [separators](#attr-listgridisseparatorproperty) in this grid. The default behavior is to draw a line by rendering an `<HR>` tag, and the class applied to this attribute may be used to style that tag, for example by applying a _border-top_ setting.
-
-**Flags**: IRW
-
----
 ## Attr: ListGrid.gridAdditionalCriteriaText
 
 ### Description
-The additional criteria prefix to show in filter editor field hover, the filter action button or the sorter button before the descriptive version of the [ListGrid.filterWindowCriteria](#attr-listgridfilterwindowcriteria), if any. The descriptive text is formatted by [DataSource.getAdvancedCriteriaDescription](DataSource.md#classmethod-datasourcegetadvancedcriteriadescription).
+The additional criteria prefix to show in filter editor field hover, the filter action button or the sorter button before the descriptive version of the +{filterWindowCriteria}, if any. The descriptive text is formatted by [DataSource.getAdvancedCriteriaDescription](DataSource.md#classmethod-datasourcegetadvancedcriteriadescription).
 
 ### Groups
 
@@ -8288,7 +7461,7 @@ Indicates whether records can be dragged from this listGrid and dropped elsewher
 ## Attr: ListGrid.headerHoverHeight
 
 ### Description
-Optional default height for the hover shown on [ListGrid.headerHover](ListGrid_2.md#method-listgridheaderhover).
+Optional default height for the hover shown on [ListGrid.headerHover](#method-listgridheaderhover).
 
 **Flags**: IRW
 
@@ -8495,7 +7668,7 @@ Default behavior is to discard the edits - set this flag to false to preserve ed
 Action to perform when the listGrid has keyboard focus (but not editing focus) and a user presses the arrow keys to navigate around the grid.
 
 If [ListGrid.canSelectCells](#attr-listgridcanselectcells) is true, navigation occurs by cell - the user can move to a new cell in any direction.  
-If [ListGrid.canSelectCells](#attr-listgridcanselectcells) is false, navigation typically occurs by row - the user can move up or down through the rows in the grid.
+If [ListGrid.canSelectCells](#attr-listgridcanselectcells) is false, navigation typically occurs by row - the user can move up or down throw the rows in the grid.
 
 For actions that fire events (click or doubleClick), both cell and record level events are fired (for example for arrowKeyAction `"activate"`, [ListGrid.cellDoubleClick](ListGrid_2.md#method-listgridcelldoubleclick) and [ListGrid.recordDoubleClick](ListGrid_2.md#method-listgridrecorddoubleclick) are fired for the new position.  
 Note that if [ListGrid.canSelectCells](#attr-listgridcanselectcells) is false, the events will be fired as if a click or double click had occurred on the first cell where [ListGridField.ignoreKeyboardClicks](ListGridField.md#attr-listgridfieldignorekeyboardclicks) is not true.
@@ -8636,25 +7809,11 @@ Adds an item to the header context menu allowing users to launch a dialog to def
 
 User-added formula fields can be persisted via [ListGrid.getFieldState](ListGrid_2.md#method-listgridgetfieldstate) and [ListGrid.setFieldState](ListGrid_2.md#method-listgridsetfieldstate).
 
-To avoid undefined behavior, this property must be set to `false` if the same record objects, or the same [ResultSet](ResultSet.md#class-resultset) instances, are shared among multiple [DataBoundComponent](../reference.md#interface-databoundcomponent)s.
-
 ### Groups
 
 - formulaFields
 
 **Flags**: IRW
-
----
-## Attr: ListGrid.aiFilterWindowInstructions
-
-### Description
-The descriptive text displayed above the user-entry area in the [ListGrid.aiFilterWindow](#attr-listgridaifilterwindow).
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IR
 
 ---
 ## Attr: ListGrid.autoFitFieldWidths
@@ -8687,8 +7846,6 @@ This performance penalty is a result of [ListGrid.getDefaultFieldWidth](ListGrid
 Which fields are currently autofitting is saved as part of the [view state](ListGrid_2.md#method-listgridgetviewstate) of the ListGrid.
 
 Interaction with wrapping: If [wrapping of cell values](#attr-listgridwrapcells) is enabled, autoFit behavior based on [cell content](#attr-listgridautofitwidthapproach) will render fields wide enough to contain the _unwrapped_ cell values. If [wrapping of field titles](ListGridField.md#attr-listgridfieldwrap) is enabled, when fitting to a title, a field will render wide enough to accommodate the _wrapped_ title without clipping (so wide enough for the natural wrap-point / longest word or unwrappable string).
-
-Note that, if you just want to autofit specific fields, rather than trying to achieve cascading from grid-level settings with specific field overrides, the quick, single setting to use is [ListGridField.autoFit](ListGridField.md#attr-listgridfieldautofit).
 
 ### Groups
 
@@ -8972,15 +8129,15 @@ If [ListGrid.showHeaderShadow](#attr-listgridshowheadershadow) is true, the [Can
 ## Attr: ListGrid.searchForm
 
 ### Description
-When declared, the specified form is automatically used as a search form for this grid. May be specified as a DynamicForm/ValuesManager instance or the String ID of one. that is, [form.getValuesAsCriteria()](DynamicForm.md#method-dynamicformgetvaluesascriteria) is called and the criteria returned are additive with any criteria present in the [FilterEditor](#attr-listgridfiltereditor) or [Filter Window](#attr-listgridallowfilterwindow).
+When declared, the specified form is automatically used as a search form for this grid, with criteria that are additive with any criteria shown in the FilterEditor or [Filter Window](#attr-listgridallowfilterwindow).
 
 For a discussion of the various filtering and criteria-management APIs and when to use them, see the [Grid Filtering overview](../kb_topics/gridFiltering.md#kb-topic-grid-filtering-overview).
 
-This is similar to the effect of adding a [ListGrid.filterEditorSubmit](ListGrid_2.md#method-listgridfiltereditorsubmit) override that pulls in criteria from the external form, and having the external form call [ListGrid.filterByEditor](ListGrid_2.md#method-listgridfilterbyeditor) instead of [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata), as shown in the +exampleLink{additiveFilter} example.
+This is similar to the effect of adding a [ListGrid.filterEditorSubmit](ListGrid_2.md#method-listgridfiltereditorsubmit) override that pulls in criteria from the external form, and having the external form call [ListGrid.filterByEditor](ListGrid_2.md#method-listgridfilterbyeditor) instead of [ListGrid.fetchData](#method-listgridfetchdata), as shown in the +exampleLink{additiveFilter} example.
 
-In particular, the grid will automatically filter when the [search()](SearchForm.md#method-searchformsearch) or [submit()](DynamicForm.md#method-dynamicformsubmit) events fire on the form (happens if a [SubmitItem](../reference.md#class-submititem) is present and is pressed), and will automatically trigger filtering if Enter is pressed in the form, as though [searchOnEnter](SearchForm.md#attr-searchformsearchonenter) or [saveOnEnter](DynamicForm.md#attr-dynamicformsaveonenter) had been set.
+In particular. the grid will automatically filter when the searchForm.search() or dynamicForm.submit() event fires on the form (happens if a SubmitItem is present and is pressed), and will automatically trigger filtering if enter is pressed in the form, as though searchOnEnter / saveOnEnter had been set.
 
-If the FilterEditor is enabled and listGrid.filterOnKeypress is set, the grid will automatically watch for [SearchForm.criteriaChanged](SearchForm.md#method-searchformcriteriachanged), and filter whenever that method fires. For the purposes of this behavior, the FilterEditor is considered to be enabled even if it is not currently visible but [ListGrid.canShowFilterEditor](#attr-listgridcanshowfiltereditor) is true (as otherwise filtering behavior in the form would change when the FilterEditor appears).
+If the FilterEditor is enabled and listGrid.filterOnKeypress is set, the grid will automatically watch for searchForm.criteriaChanged(), and filter whenever that method fires. For the purposes of this behavior, the FilterEditor is considered to be enabled even if it is not currently visible but [ListGrid.canShowFilterEditor](#attr-listgridcanshowfiltereditor) is true (as otherwise filtering behavior in the form would change when the FilterEditor appears).
 
 The criteria from the specified `searchForm` will only be shown and edited in the external form; they will neither be shown nor editable in the FilterEditor, even if the FilterEditor also allows criteria on the same fields. That is, they are treated much like [ListGrid.implicitCriteria](#attr-listgridimplicitcriteria).
 
@@ -9092,18 +8249,6 @@ If we're showing a [headerContextMenu](#attr-listgridshowheadercontextmenu) for 
 ### Groups
 
 - i18nMessages
-
-**Flags**: IRW
-
----
-## Attr: ListGrid.removeIconStyle
-
-### Description
-Custom style to apply to the image in the [removeField](#attr-listgridremovefieldproperties) displayed in rows when [ListGrid.canRemoveRecords](#attr-listgridcanremoverecords) is true. Affects the icons provided by [ListGrid.removeIcon](#attr-listgridremoveicon) and [ListGrid.unremoveIcon](#attr-listgridunremoveicon).
-
-### Groups
-
-- appearance
 
 **Flags**: IRW
 
@@ -9249,7 +8394,7 @@ If defined, this prompt will be shown to the user in a [warning dialog](isc.md#s
 
 This can occur if an already-grouped grid's filter criteria are modified such that a new set of records is loaded from the DataSource which exceeds the [ListGrid.groupByMaxRecords](#attr-listgridgroupbymaxrecords) threshold.
 
-It can also occur when a user attempts to group a grid with a partially loaded data set where the true size of the data set is not known due to [progressiveLoading](DataBoundComponent.md#attr-databoundcomponentprogressiveloading). In this case, the grouping logic will attempt to retrieve all the records in the data set and may get back a new total row count from the DataSource which exceeds [ListGrid.groupByMaxRecords](#attr-listgridgroupbymaxrecords).
+It can also occur when a user attempts to group a grid with a partially loaded data set where the true size of the data set is not known due to [progressiveLoading](#progressiveloading). In this case, the grouping logic will attempt to retrieve all the records in the data set and may get back a new total row count from the DataSource which exceeds [ListGrid.groupByMaxRecords](#attr-listgridgroupbymaxrecords).
 
 In either case the warning will be displayed to the user and the [group by menu item](#attr-listgridcangroupby) will be disabled.
 
@@ -9267,7 +8412,7 @@ See also [ListGrid.disabledGroupByPrompt](#attr-listgriddisabledgroupbyprompt).
 ### Description
 Should the [summary row](#attr-listgridshowgridsummary) or [group summaries](#attr-listgridshowgroupsummary) be updated during editing of grid records? This can be set false to improve performance when a large number of [ListGridFields](../reference_2.md#object-listgridfield) or [DataSourceFields](../reference_2.md#object-datasourcefield) are present for the grid.
 
-Note that summaries will always be updated when the edits are saved, so to avoid recalculation overhead when a row or cell edit is completed, you must also set [ListGrid.autoSaveEdits](#attr-listgridautosaveedits): false. Summaries will then be updated upon your manual save, such as [ListGrid.saveAllEdits](ListGrid_2.md#method-listgridsavealledits).
+Note that summaries will always be updated when the edits are saved, so to avoid recalculation overhead when a row or cell edit is completed, you must also set [ListGrid.autoSaveEdits](#attr-listgridautosaveedits): false. Summaries will then be updated upon your manual save, such as [ListGrid.saveAllEdits](#method-listgridsavealledits).
 
 ### See Also
 
@@ -9383,7 +8528,7 @@ When set to true, shows an additional field at the beginning of the field-list (
 ## Attr: ListGrid.expansionScreen
 
 ### Description
-Screen to create (via [createScreen()](RPCManager.md#classmethod-rpcmanagercreatescreen)) in lieu of calling [ListGrid.getExpansionComponent](ListGrid_2.md#method-listgridgetexpansioncomponent).
+Screen to create (via [createScreen()](RPCManager.md#classmethod-rpcmanagercreatescreen)) in lieu of calling [ListGrid.getExpansionComponent](#method-listgridgetexpansioncomponent).
 
 If this grid has a [dataSource](#attr-listgriddatasource), the created screen is provided with a [Canvas.dataContext](Canvas.md#attr-canvasdatacontext) that includes the record being expanded. Be sure the expansion screen meets these [requirements](Canvas.md#attr-canvasautopopulatedata) to utilize the `dataContext`.
 
@@ -9454,7 +8599,7 @@ The URL of the base icon for the group icons in this listGrid. Default value may
 ## Attr: ListGrid.initialSort
 
 ### Description
-An array of [SortSpecifier](../reference_2.md#object-sortspecifier) objects used to set up the initial sort configuration for this grid. If specified, this will be used instead of any [ListGrid.sortField](#attr-listgridsortfield) specified.
+An array of [SortSpecifier](../reference.md#object-sortspecifier) objects used to set up the initial sort configuration for this grid. If specified, this will be used instead of any [ListGrid.sortField](#attr-listgridsortfield) specified.
 
 ### Groups
 
@@ -9557,18 +8702,6 @@ Can be overridden on a per-record basis via [ListGridRecord.showRollOver](ListGr
 **Flags**: IRW
 
 ---
-## Attr: ListGrid.rowRangeDisplay
-
-### Description
-[RowRangeDisplay](RowRangeDisplay.md#class-rowrangedisplay) autoChild, which may be retrieved by calling [ListGrid.getRowRangeDisplay](ListGrid_2.md#method-listgridgetrowrangedisplay).
-
-### Groups
-
-- rowRangeDisplay
-
-**Flags**: R
-
----
 ## Attr: ListGrid.showGroupSummary
 
 ### Description
@@ -9615,7 +8748,7 @@ Optional stringMethod to fire when the mouse moves over the error icon of a cell
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false to suppress the default behavior (show a standard error message hover)
+`[boolean](../reference.md#type-boolean)` — false to suppress the default behavior (show a standard error message hover)
 
 ### Groups
 
@@ -9709,7 +8842,7 @@ The default implementation of editFailed does nothing for normal validation erro
 | colNum | [number](#type-number) | false | — | index of the column where the edit failed, if applicable |
 | newValues | [Object](../reference.md#type-object)|[Record](#type-record) | false | — | new values that we attempted to save |
 | oldValues | [Record](#type-record) | false | — | the complete original values from before the save occurred |
-| editCompletionEvent | [EditCompletionEvent](../reference_2.md#type-editcompletionevent) | false | — | Edit completion event that led to the save attempt |
+| editCompletionEvent | [EditCompletionEvent](../reference.md#type-editcompletionevent) | false | — | Edit completion event that led to the save attempt |
 | dsResponse | [DSResponse](#type-dsresponse) | true | — | DSResponse, for saves through a DataSource |
 
 ### Groups
@@ -9732,7 +8865,7 @@ Called when a cell receives a contextclick event.
 
 ### Returns
 
-`[Boolean](#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -9785,22 +8918,6 @@ Get the drawn height of a row.
 **Flags**: A
 
 ---
-## Method: ListGrid.getRowCountStatus
-
-### Description
-This method indicates whether [ListGrid.getRowCount](ListGrid_2.md#method-listgridgetrowcount) reflects an accurate row-count for this listGrid. An accurate row count may not currently be available if [progressiveLoading](DataSource.md#attr-datasourceprogressiveloading) is active.
-
-See [RowCountStatus](../reference.md#type-rowcountstatus) for further details.
-
-### Returns
-
-`[RowCountStatus](../reference.md#type-rowcountstatus)` — Current row-count status for this grid
-
-### Groups
-
-- rowRangeDisplay
-
----
 ## Method: ListGrid.cellErrorIconOut
 
 ### Description
@@ -9816,7 +8933,7 @@ Optional stringMethod to fire when the mouse moves off the error icon of a cell 
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false to suppress the standard behavior (clear the standard error message hover if it is showing)
+`[boolean](../reference.md#type-boolean)` — false to suppress the standard behavior (clear the standard error message hover if it is showing)
 
 ### Groups
 
@@ -9843,5 +8960,760 @@ Update the headerSpans configuration on the grid dynamically.
 ### Groups
 
 - headerSpan
+
+---
+## Method: ListGrid.setFieldIcon
+
+### Description
+Change the [ListGridField.icon](ListGridField.md#attr-listgridfieldicon) for a field after the grid is created
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| fieldName | [String](#type-string) | false | — | field to update |
+| icon | [SCImgURL](../reference.md#type-scimgurl) | false | — | icon for the field |
+
+---
+## Method: ListGrid.setCanRemoveRecords
+
+### Description
+Updates the [ListGrid.canRemoveRecords](#attr-listgridcanremoverecords) property for this listGrid at runtime.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| canRemove | [boolean](../reference.md#type-boolean) | false | — | new canRemoveRecords value |
+
+---
+## Method: ListGrid.hilitesChanged
+
+### Description
+Notification method executed whenever the end user uses the HiliteEditor to change the set of hilites applied to this grid. This method will not be called after a purely programmatic change to the hilites made with a call to [setHilites()](DataBoundComponent.md#method-databoundcomponentsethilites). The array of currently applied hilite objects is accessible via [getHilites()](DataBoundComponent.md#method-databoundcomponentgethilites).
+
+### Groups
+
+- hiliting
+
+---
+## Method: ListGrid.getDataSource
+
+### Description
+The DataSource that this component should bind to for default fields and for performing [DataSource requests](../reference.md#object-dsrequest).
+
+### Returns
+
+`[DataSource](#type-datasource)` — Datasource object for this ListGrid instance.
+
+---
+## Method: ListGrid.getSummaryTitle
+
+### Description
+Return the summary title of particular field. This is the title of the field to be used in the show / hide fields context menu. Default implementation will use [ListGridField.getSummaryTitle](ListGridField.md#method-listgridfieldgetsummarytitle) or [ListGridField.summaryTitle](ListGridField.md#attr-listgridfieldsummarytitle) if specified, otherwise [ListGridField.title](ListGridField.md#attr-listgridfieldtitle).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| field | [ListGridField](#type-listgridfield) | false | — | field for which we're returning the title |
+
+### Returns
+
+`[String](#type-string)` — Field summary title.
+
+### Groups
+
+- i18nMessages
+- display
+
+**Flags**: A
+
+---
+## Method: ListGrid.hideDragHandles
+
+### Description
+Hides the [drag handle field](#attr-listgriddraghandlefield), if currently shown.
+
+### Groups
+
+- dragHandleField
+
+### See Also
+
+- [ListGrid.showDragHandles](ListGrid_2.md#method-listgridshowdraghandles)
+
+---
+## Method: ListGrid.headerHover
+
+### Description
+Handle a hover over a button in the header.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| fieldNum | [number](#type-number) | false | — | field number for the header that was hovered |
+
+### Groups
+
+- events
+- gridHeader
+- hovers
+
+### See Also
+
+- [ListGrid.headerHoverHTML](ListGrid_2.md#method-listgridheaderhoverhtml)
+
+**Flags**: A
+
+---
+## Method: ListGrid.getHeaderContextMenuItems
+
+### Description
+If [ListGrid.showHeaderContextMenu](#attr-listgridshowheadercontextmenu) is `true` this method returns the menu items to be displayed in the default header context menu.
+
+This method is called at various times, including during redraws, as the mouse moves over a ListGrid header button and each time the menu is actually displayed - this allows for dynamic content depending on the current state of the grid and its fields.
+
+Consequently, this method should not instantiate any classes, because they'll be re-created on each call, resulting in a leak - your implementation should return an array of menuItem config-blocks only, so you shouldn't instantiate actual Menu instances to apply as the [submenu](MenuItem.md#attr-menuitemsubmenu) of items - instead, set submenu to a simple array of menuItems. If your use-case necessitates that class instances are created, because specific submenus have a different Menu class, for example, you should keep a reference to them and either, if their content is dynamic, destroy and recreate them with the new items, or just return the existing instances otherwise.
+
+The default set of menu items includes items for built-in ListGrid features like showing and hiding fields, freezing fields or grouping by them, and other functions.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| fieldNum | [Integer](../reference_2.md#type-integer) | true | — | Index of the field the user clicked in the [fields](#attr-listgridfields) array. **Note:** if the user right-clicked the sorter button this parameter will be `null`. |
+
+### Returns
+
+`[Array of MenuItem](#type-array-of-menuitem)` — —
+
+### Groups
+
+- gridHeader
+
+---
+## Method: ListGrid.saveAllEdits
+
+### Description
+Save a number of outstanding edits for this ListGrid. If no rows are specified, all outstanding edits will be saved.
+
+Note that if [ListGrid.saveRequestProperties](#attr-listgridsaverequestproperties) is specified and the grid is performing a databound save, these properties will be applied to each generated DSRequest.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| rows | [Array of Number](#type-array-of-number) | true | — | optionally specify which rows to save |
+| saveCallback | [Callback](../reference.md#type-callback) | true | — | If specified this callback will be fired on a successful save of the specified rows. Note that if there are no pending edits to be saved this callback will not fire - you can check for this condition using [ListGrid.hasChanges](#method-listgridhaschanges) or [ListGrid.rowHasChanges](ListGrid_2.md#method-listgridrowhaschanges). Use [ListGrid.editFailed](#method-listgrideditfailed) to find out about failures encountered during saving (on a per-row basis). |
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — true if a save has been initiated (at least one row had changes, passed client-side validation, and a save has been attempted). False otherwise
+
+### Groups
+
+- editing
+
+---
+## Method: ListGrid.setHideOnTablet
+
+### Description
+Updates the [ListGridField.hideOnTablet](ListGridField.md#attr-listgridfieldhideontablet) attribute at runtime.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| field | [ListGridField](#type-listgridfield)|[String](#type-string) | false | — | field or field name to update |
+| hideOnTablet | [Boolean](#type-boolean) | false | — | new setting for hideOnTablet property |
+
+---
+## Method: ListGrid.setSortState
+
+### Description
+Reset this grid's sort state (sort field and direction or list of [SortSpecifier](../reference.md#object-sortspecifier)s) to match the [ListGridSortState](../reference.md#type-listgridsortstate) object passed in.  
+Used to restore previous state retrieved from the grid by a call to [ListGrid.getSortState](ListGrid_2.md#method-listgridgetsortstate).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| sortState | [ListGridSortState](../reference.md#type-listgridsortstate) | false | — | Object describing the desired sort state for the grid. |
+
+### Groups
+
+- viewState
+
+### See Also
+
+- [ListGrid.getSortState](ListGrid_2.md#method-listgridgetsortstate)
+
+---
+## Method: ListGrid.setDataSource
+
+### Description
+Bind to a new DataSource.
+
+Like passing the "dataSource" property on creation, binding to a DataSource means that the component will use the DataSource to provide default data for its fields.
+
+When binding to a new DataSource, if the component has any existing "fields" or has a dataset, these will be discarded by default, since it is assumed the new DataSource may represent a completely unrelated set of objects. If the old "fields" are still relevant, pass them to setDataSource().
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| dataSource | [GlobalId](../reference.md#type-globalid)|[DataSource](#type-datasource) | false | — | DataSource to bind to |
+| fields | [Array of DataSourceField](#type-array-of-datasourcefield) | true | — | optional array of fields to use |
+
+---
+## Method: ListGrid.getUserCriteriaState
+
+### Description
+Returns a snapshot of the current user-provided criteria for this ListGrid.
+
+This object can be passed to [ListGrid.setUserCriteriaState](ListGrid_2.md#method-listgridsetusercriteriastate) to reset this grid's user-criteria to the current state.
+
+### Returns
+
+`[ListGridUserCriteriaState](../reference_2.md#type-listgridusercriteriastate)` — current criteria state for the grid.
+
+### Groups
+
+- viewState
+
+### See Also
+
+- [ListGridUserCriteriaState](../reference_2.md#type-listgridusercriteriastate)
+- [ListGrid.setUserCriteriaState](ListGrid_2.md#method-listgridsetusercriteriastate)
+
+---
+## Method: ListGrid.formatInactiveCellValue
+
+### Description
+Formatter for inactive content.
+
+If present, this method will be invoked instead of [ListGrid.formatCellValue](ListGrid_2.md#method-listgridformatcellvalue) in cases where the grid is rendering non-interactive content outside. Examples of cases where this can happen include:
+
+*   dragTracker HTML for a row when [ListGrid.dragTrackerMode](#attr-listgriddragtrackermode) is set to "record"
+*   measurement HTML used for sizing columns during autoFit
+*   measurement HTML used for sizing rows when [ListGrid.fixedRecordHeights](#attr-listgridfixedrecordheights) is false and the grid has both frozen and unfrozen fields
+
+May also be overridden at the [field level](ListGridField.md#method-listgridfieldformatinactivecellvalue).
+
+This is useful for cases where it would not be appropriate to render the standard formatted cell value outside of the body of the grid. An example might be if the formatted value contains a DOM element with a specified ID - an approach sometimes used for integrating third party components into SmartClient listGrid cells. In this case developers will wish to avoid having the framework render an element with the same ID outside of the grid, and should instead return HTML that would render at the same size, with an appropriate appearance.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| value | [Any](#type-any) | false | — | raw value for the cell being |
+| record | [ListGridRecord](#type-listgridrecord) | false | — | Record object for the cell. Note: If this is a new row that has not been saved, in an editable grid, it has no associated record object. In this case the edit values will be passed in as this parameter. |
+| rowNum | [number](#type-number) | false | — | row number for the cell |
+| colNum | [number](#type-number) | false | — | column number for the cell. |
+
+### Returns
+
+`[HTMLString](../reference.md#type-htmlstring)` — formatted value to display in the cell.
+
+### See Also
+
+- [ListGrid.formatCellValue](ListGrid_2.md#method-listgridformatcellvalue)
+- [ListGridField.formatInactiveCellValue](ListGridField.md#method-listgridfieldformatinactivecellvalue)
+
+---
+## Method: ListGrid.unsort
+
+### Description
+Turn sorting off, typically because data has changed and is no longer sorted.
+
+Calling `unsort()` disables visual indication of which columns are sorted, and calls `unsort()` on the underlying dataset if supported.
+
+Note that a grid viewing a paged dataset may not be able to support [ResultSet.unsort](ResultSet.md#method-resultsetunsort) because the sort order is what establishes the row numbering that allows data to be fetched in batches. In this case the dataset will be explicitly sorted to an empty array which may cause the cache to be invalidated and a new fetch performed.
+
+`unsort()` is automatically called in response to edits or changes to the data set that would cause records to be reordered.
+
+### Groups
+
+- sorting
+
+---
+## Method: ListGrid.exportClientData
+
+### Description
+Exports this component's data with client-side formatters applied, so is suitable for direct display to users, using the specified [export format](DSRequest.md#attr-dsrequestexportas).
+
+A variety of DSRequest settings, such as [exportAs](DSRequest.md#attr-dsrequestexportas) and [DSRequest.exportFilename](DSRequest.md#attr-dsrequestexportfilename), affect the exporting process: see [exportResults](DSRequest.md#attr-dsrequestexportresults) for further detail.
+
+If this component is [databound](DataBoundComponent.md#method-databoundcomponentsetdatasource) and not all records that match the current [filter-criteria](ListGrid_2.md#method-listgridgetcriteria) have [been loaded](ResultSet.md#method-resultsetallmatchingrowscached), you can call [ListGrid.loadAllRecords](ListGrid_2.md#method-listgridloadallrecords) - this method accepts a callback which is fired when all necessary data has arrived. When that callback fires, a call to `exportClientData` will have access to the full dataset for the filter.
+
+This feature requires the SmartClient server.
+
+If your ListGrid has custom formatters, formatted values will be exported by default, with HTML normalized to text where possible. Since some levels of HTML normalizing aren't possible, this may result in missing or incorrect export values. In this case, you have three options:
+
+*   Set [exportRawValues](ListGridField.md#attr-listgridfieldexportrawvalues) on the field. This will export the raw underlying value of the field; your formatter will not be called
+*   Have your formatter call [isExportingClientData()](ListGrid_2.md#method-listgridisexportingclientdata) and perform whatever alternative formatting you require if that method returns true
+*   Set [exportRawNumbers](ListGridField.md#attr-listgridfieldexportrawnumbers) on the field. This will export the raw underlying number of the field; your formatter will not be called
+
+Note that during export, the [ListGridField.escapeHTML](ListGridField.md#attr-listgridfieldescapehtml) setting on a field determines how escaped and unescaped HTML values are handled. In particular, if `escapeHTML` is not set for a field, a value like "`<FOO>`" will be exported as the empty string, and you'd need the escaped value "&lt;FOO&gt;" to end up exporting "`<FOO>`".
+
+Ordinarily, calls to this method go through the static classMethod [DataSource.exportClientData](DataSource.md#classmethod-datasourceexportclientdata). In this case, no server-side DataSources are required. However, if this component is [databound](DataBoundComponent.md#method-databoundcomponentsetdatasource) and you specify a valid [operationId](DSRequest.md#attr-dsrequestoperationid) in the properties passed to this method, the call will go through the instance method [DataSource.exportClientData](DataSource.md#method-datasourceexportclientdata) instead. As the documentation for that method explains, this allows you more control on the server side. This approach requires both the SmartClient server and server-side DataSource definitions.
+
+To export data from this component's dataSource, see [exportData](DataBoundComponent.md#method-databoundcomponentexportdata), which does not include client-side formatters, but **does** include formatters declared in the `.ds.xml` file. `exportData()` relies on both the SmartClient server and server-side DataSources.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | Request properties for the export. Note that specifying [exportData](DSRequest.md#attr-dsrequestexportdata) on the request properties allows the developer to pass in an explicit data set to export. |
+| callback | [RPCCallback](#type-rpccallback) | true | — | Optional callback. If you specify [exportToClient](DSRequest.md#attr-dsrequestexporttoclient): false in the request properties, this callback will fire after export completes. Otherwise the callback will fire right before the download request is made to the server. |
+
+### See Also
+
+- [DataSource.exportClientData](DataSource.md#method-datasourceexportclientdata)
+- [exportFormatting](../kb_topics/exportFormatting.md#kb-topic-exports--formatting)
+
+---
+## Method: ListGrid.setBodyStyleName
+
+### Description
+Update the [bodyStyleName](#attr-listgridbodystylename) for this listGrid.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| styleName | [CSSStyleName](../reference.md#type-cssstylename) | false | — | new body style name |
+
+---
+## Method: ListGrid.getEditedRecord
+
+### Description
+Returns the combination of unsaved edits (if any) and original values (if any) for a given row being edited.
+
+The returned value is never null, and can be freely modified.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| valuesID | [number](#type-number)|[Object](../reference.md#type-object) | false | — | rowNum of the record being edited, or an Object containing values for all the record's primary keys |
+
+### Returns
+
+`[Object](../reference.md#type-object)` — A copy of the record with unsaved edits included
+
+### Groups
+
+- editing
+
+---
+## Method: ListGrid.hasChanges
+
+### Description
+Whether the grid as a whole has any unsaved edits, in any row. Note that this method will return true if any rows are [marked as removed](ListGrid_2.md#method-listgridmarkrecordremoved) in addition to any rows that have unsaved edits.
+
+Note that if this grid is bound to a [dataSource](#attr-listgriddatasource), and an asynchronous save has been submitted, this method will compare the local edit values against the submitted values by default, returning false (no changes), if they match. This is useful for detecting whether the user is actively editing values and hasn't yet committed them.
+
+The `ignorePendingValues` parameter may be used by developers who want to ignore this case and simply compare edit values against the record in the local data set.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| ignorePendingValues | [Boolean](#type-boolean) | true | — | If true, this method will compare the current edit values against the underlying records in the dataset, not taking pending edit values into account |
+
+### Returns
+
+`[Boolean](#type-boolean)` — returns true of any unsaved edits are present
+
+### Groups
+
+- editing
+
+---
+## Method: ListGrid.rowOver
+
+### Description
+Called when the mouse pointer enters a row
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| record | [ListGridRecord](#type-listgridrecord) | false | — | cell record as returned by getCellRecord |
+| rowNum | [number](#type-number) | false | — | row number for the cell |
+| colNum | [number](#type-number) | false | — | column number of the cell |
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
+
+### Groups
+
+- events
+
+---
+## Method: ListGrid.getGroupMembers
+
+### Description
+For a [grouped](#attr-listgridgroupbyfield) grid, returns all the direct children of the supplied node in the [ListGrid.groupTree](#attr-listgridgrouptree) if `recordsOnly` false. Otherwise, if `recordsOnly` is true, returns instead a list of all descendants under the supplied node that are actual records from the grid's original data - i.e. that are not other group nodes (for multi-grouping) or summary records.
+
+Note that null may be returned if the grid is not currently grouped or the supplied node is not a valid [GroupNode](../reference.md#object-groupnode).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| node | [GroupNode](#type-groupnode) | false | — | node from [ListGrid.groupTree](#attr-listgridgrouptree) |
+| recordsOnly | [boolean](../reference.md#type-boolean) | false | — | `true` to return all descendants that are actual records from the grid's original data, or `false` to return all immediate children of the supplied group node |
+
+### Returns
+
+`[Array of ListGridRecord](#type-array-of-listgridrecord)` — records under the supplied node, as specified above, or null if we're not grouping or the node isn't a group node
+
+### Groups
+
+- grouping
+
+---
+## Method: ListGrid.setAutoFitFieldWidths
+
+### Description
+Setter for [ListGrid.autoFitFieldWidths](#attr-listgridautofitfieldwidths). Modifies the default auto-fit-width behavior for fields in this grid. Note that this may be overridden at the field level via [ListGridField.autoFitWidth](ListGridField.md#attr-listgridfieldautofitwidth).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| autoFit | [boolean](../reference.md#type-boolean) | false | — | New value for autoFitFieldWidths |
+| dontResetWidths | [boolean](../reference.md#type-boolean) | true | — | If autoFitFieldWidths was true, and is being set to false, should fields be resized to their originally specified size? Pass in this parameter to suppress this behavior. |
+
+---
+## Method: ListGrid.showRecordComponent
+
+### Description
+When [ListGrid.showRecordComponents](#attr-listgridshowrecordcomponents) is true, return false from this method to prevent the recordComponent system from processing the passed record or cell.
+
+**If [showRecordComponentsByCell](#attr-listgridshowrecordcomponentsbycell) is true, it is important to implement this method** - especially if the grid has many fields - otherwise, the internal automatic detection will process every visible cell, checking, for example, whether a component already exists for that cell, before eventually running [ListGrid.createRecordComponent](#method-listgridcreaterecordcomponent) to check if one is required. Implementing this method avoids all that processing for cells that aren't expected to have components.
+
+The second parameter is only applicable if [ListGrid.showRecordComponentsByCell](#attr-listgridshowrecordcomponentsbycell) is true.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| record | [ListGridRecord](#type-listgridrecord) | false | — | record being processed |
+| colNum | [Integer](../reference_2.md#type-integer) | true | — | column index of the cell in which the record component may be shown. Will be null unless showRecordComponentsByCell is true. |
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — return false to cancel showRecordComponent behavior
+
+### Groups
+
+- recordComponents
+
+---
+## Method: ListGrid.hideFields
+
+### Description
+Force an array of fields to be hidden.
+
+NOTE: If a field.showIf expression exists, it will be destroyed.
+
+When hiding multiple fields, this method should be called rather than calling [ListGrid.hideField](#method-listgridhidefield) repeatedly for each field to hide.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| fields | [Array of String](#type-array-of-string)|[Array of ListGridField](#type-array-of-listgridfield) | false | — | fields to hide |
+| suppressRelayout | [boolean](../reference.md#type-boolean) | true | — | if passed, don't relayout non-explicit sized fields to fit the available space |
+
+---
+## Method: ListGrid.sorterClick
+
+### Description
+Notification method fired when the user clicks on the corner [sort button](#attr-listgridsorterconstructor). Return false to suppress the sort.
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — return false to suppress the sort
+
+### Groups
+
+- events
+- sorting
+
+**Flags**: A
+
+---
+## Method: ListGrid.getExpansionComponent
+
+### Description
+When [ListGrid.canExpandRecords](#attr-listgridcanexpandrecords) is true, gets the embedded-component to show as a given record's expansionComponent. This component is then housed in [a VLayout](#attr-listgridexpansionlayout) and embedded into a record's row.
+
+By default, this method returns one of a set of built-in components, according to the value of [listGrid.expansionMode](../reference.md#type-expansionmode). You can override this method to return any component you wish to provide as an expansionComponent.
+
+As long as the record is expanded, this component may be retrieved via a call to [ListGrid.getCurrentExpansionComponent](ListGrid_2.md#method-listgridgetcurrentexpansioncomponent).
+
+When an expanded record is collapsed, the component is disassociated from the record and may or may not be automatically destroyed. By default, built-in components will be destroyed on unembed according to the [pooling mode](#attr-listgridexpansioncomponentpoolingmode) being used. Custom expansion components, created via an override of getExpansionComponents(), will **_not_** be auto-destroyed - developers should override [ListGrid.collapseRecord](ListGrid_2.md#method-listgridcollapserecord) to take care of clean-up for such components.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| record | [ListGridRecord](#type-listgridrecord) | false | — | record to get the expansionComponent for |
+
+### Returns
+
+`[Canvas](#type-canvas)|[Canvas Properties](#type-canvas-properties)` — the component to embed
+
+### Groups
+
+- expansionField
+
+### See Also
+
+- [ListGrid.expansionScreen](#attr-listgridexpansionscreen)
+
+---
+## Method: ListGrid.setSelectionAppearance
+
+### Description
+Changes selectionAppearance on the fly.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| selectionAppearance | [SelectionAppearance](../reference.md#type-selectionappearance) | false | — | new selection appearance |
+
+---
+## Method: ListGrid.getFields
+
+### Description
+Get the array of all **currently visible** fields for this ListGrid.
+
+This list fields is only valid once the ListGrid has been [drawn](Canvas.md#method-canvasdraw) or once [ListGrid.setFields](ListGrid_2.md#method-listgridsetfields) has been called explicitly. If called earlier, only the list of directly specified fields will be returned (the Array passed to create()).
+
+This Array should be treated as **read-only**. To modify the set of visible fields, use [ListGrid.showField](ListGrid_2.md#method-listgridshowfield), [ListGrid.hideField](#method-listgridhidefield) and related APIs. To update properties of individual fields, use [ListGrid.setFieldProperties](ListGrid_2.md#method-listgridsetfieldproperties) or more specific APIs such as [ListGrid.setFieldTitle](ListGrid_2.md#method-listgridsetfieldtitle).
+
+To get the Array of all fields, including fields that are not currently visible or were specified implicitly, use [ListGrid.getAllFields](ListGrid_2.md#method-listgridgetallfields).
+
+### Returns
+
+`[Array of ListGridField](#type-array-of-listgridfield)` — Array of all currently visible fields
+
+---
+## Method: ListGrid.setBodyOverflow
+
+### Description
+Update the [bodyOverflow](#attr-listgridbodyoverflow) for this listGrid.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| overflow | [Overflow](../reference.md#type-overflow) | false | — | new overflow setting for the body |
+
+**Flags**: A
+
+---
+## Method: ListGrid.hideField
+
+### Description
+Force a field to be hidden.  
+  
+NOTE: If a field.showIf expression exists, it will be destroyed.
+
+Note also that if multiple fields are to be hidden it is more efficient to call [ListGrid.hideFields](#method-listgridhidefields) passing in the array of fields to hide rather than to call this method repeatedly. In particular, this will ensure [ListGrid.recalculateSummaries](ListGrid_2.md#method-listgridrecalculatesummaries) is only run once.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| field | [String](#type-string)|[ListGridField](#type-listgridfield) | false | — | field to hide |
+| suppressRelayout | [boolean](../reference.md#type-boolean) | true | — | if passed, don't relayout non-explicit sized fields to fit the available space |
+
+---
+## Method: ListGrid.cellSelectionChanged
+
+### Description
+Called when (cell-based) selection changes within this grid.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| cellList | [Array](#type-array) | false | — | Array of cells whos selected state was modified. |
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — Returning false will prevent the GridRenderer styling from being updated to reflect the selection change.
+
+### Groups
+
+- selection
+
+**Flags**: A
+
+---
+## Method: ListGrid.setFixedRecordHeights
+
+### Description
+Setter for [ListGrid.fixedRecordHeights](#attr-listgridfixedrecordheights)
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| fixedRecordHeights | [boolean](../reference.md#type-boolean) | false | — | New fixedRecordHeights value |
+
+---
+## Method: ListGrid.drawAreaChanged
+
+### Description
+Notification method that fires when the drawArea changes due to scrolling. Receives the previous drawArea co-ordinates as parameters. Call [ListGrid.getDrawArea](ListGrid_2.md#method-listgridgetdrawarea) to get the new drawArea co-ordinates.
+
+Note that if this grid is showing any [frozen fields](ListGridField.md#attr-listgridfieldfrozen), they will not be included in the `oldStartCol`, `oldEndCol` range reported by this method. Frozen fields are assumed never to be scrolled out of view.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| oldStartRow | [number](#type-number) | false | — | the startRow from before the drawArea changed |
+| oldEndRow | [number](#type-number) | false | — | the endRow from before the drawArea changed |
+| oldStartCol | [number](#type-number) | false | — | the startCol from before the drawArea changed |
+| oldEndCol | [number](#type-number) | false | — | the endCol from before the drawArea changed |
+
+**Flags**: A
+
+---
+## Method: ListGrid.createRecordComponent
+
+### Description
+When [ListGrid.showRecordComponents](#attr-listgridshowrecordcomponents) is true, this method is called to create per-row or per-cell embedded components to display in the grid.
+
+The colNum parameter is applicable only when [ListGrid.showRecordComponentsByCell](#attr-listgridshowrecordcomponentsbycell) is true.
+
+If this row should not have a `recordComponent`, return null.
+
+This method should create and return a new component for the record passed in every time it is called and never return the same Canvas instance twice. To re-use components with different rows, set [RecordComponentPoolingMode](../reference_2.md#type-recordcomponentpoolingmode) to "recycle". In this mode, in addition to implementing this method, developers should also implement [ListGrid.updateRecordComponent](ListGrid_2.md#method-listgridupdaterecordcomponent) which allows already created components to be altered for re-use in new records. See the [ListGrid.showRecordComponents](#attr-listgridshowrecordcomponents) overview for more information.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| record | [ListGridRecord](#type-listgridrecord) | false | — | record to create a component for |
+| colNum | [Integer](../reference_2.md#type-integer) | false | — | cell to which the component applies |
+
+### Returns
+
+`[Canvas](#type-canvas)` — return the component to embed in the passed record
+
+### Groups
+
+- recordComponents
+
+---
+## Method: ListGrid.redrawHeader
+
+### Description
+Redraw just the [grid header](#attr-listgridheader)
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| rightNow | [boolean](../reference.md#type-boolean) | false | — | If true, redraw the grid header with a direct inline call to its redraw() method. Otherwise, [mark the header for redraw](Canvas.md#method-canvasmarkforredraw) |
+
+---
+## Method: ListGrid.getValueIcon
+
+### Description
+Returns the appropriate valueIcon for a cell based on the field and the data value for the cell. Default implementation returns null if [ListGridField.suppressValueIcon](ListGridField.md#attr-listgridfieldsuppressvalueicon) is true otherwise looks at [ListGridField.valueIcons](ListGridField.md#attr-listgridfieldvalueicons).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| field | [ListGridField](#type-listgridfield) | false | — | field associated with the cell |
+| value | [Any](#type-any) | false | — | data value for the cell's record in this field. |
+| record | [ListGridRecord](#type-listgridrecord) | false | — | record associated with this cell |
+
+### Returns
+
+`[SCImgURL](../reference.md#type-scimgurl)` — url for the icon
+
+### Groups
+
+- imageColumns
+
+---
+## Method: ListGrid.updateData
+
+### Description
+Perform a DataSource "update" operation to update existing records in this component's DataSource.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| updatedRecord | [Record](#type-record) | false | — | updated record |
+| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | method to call on operation completion |
+| requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | additional properties to set on the DSRequest that will be issued |
+
+### Groups
+
+- dataBoundComponentMethods
+
+---
+## Method: ListGrid.fetchData
+
+### Description
+Retrieves data from the DataSource that matches the specified criteria.
+
+For a discussion of the various filtering and criteria-management APIs and when to use them, see the [Grid Filtering overview](../kb_topics/gridFiltering.md#kb-topic-grid-filtering-overview).
+
+When `fetchData()` is first called, if data has not already been provided via [setData()](ListGrid_2.md#method-listgridsetdata), this method will create a [ResultSet](ResultSet.md#class-resultset), which will be configured based on component settings such as [DataBoundComponent.fetchOperation](DataBoundComponent.md#attr-databoundcomponentfetchoperation) and [DataBoundComponent.dataPageSize](DataBoundComponent.md#attr-databoundcomponentdatapagesize), as well as the general purpose [ListGrid.dataProperties](#attr-listgriddataproperties). The created ResultSet will automatically send a DSRequest to retrieve data from [listGrid.dataSource](#attr-listgriddatasource), and from then on will automatically manage paging through large datasets, as well as performing filtering and sorting operations inside the browser when possible - see the [ResultSet](ResultSet.md#class-resultset) docs for details.
+
+**NOTE:** do not use **both** [autoFetchData:true](DataBoundComponent.md#attr-databoundcomponentautofetchdata) **and** a call to `fetchData()` - this may result in two DSRequests to fetch data. Use either [autoFetchData](DataBoundComponent.md#attr-databoundcomponentautofetchdata) and [Criteria](../reference_2.md#type-criteria) **or** a manual call to fetchData() passing criteria.
+
+Whether a ResultSet was automatically created or provided via [setData()](ListGrid_2.md#method-listgridsetdata), subsequent calls to fetchData() will simply call [ResultSet.setCriteria](ResultSet.md#method-resultsetsetcriteria).
+
+Changes to criteria may or may not result in a DSRequest to the server due to [client-side filtering](ResultSet.md#attr-resultsetuseclientfiltering). You can call [willFetchData(criteria)](DataBoundComponent.md#method-databoundcomponentwillfetchdata) to determine if new criteria will result in a server fetch.
+
+If you need to force data to be re-fetched, you can call [invalidateCache()](ListGrid_2.md#method-listgridinvalidatecache) and new data will automatically be fetched from the server using the current criteria and sort direction. **NOTE:** when using `invalidateCache()` there is no need to **also** call `fetchData()` and in fact this could produce unexpected results.
+
+This method takes an optional callback parameter (set to a [DSCallback](../reference_2.md#type-dscallback)) to fire when the fetch completes. Note that this callback will not fire if no server fetch is performed. In this case the data is updated synchronously, so as soon as this method completes you can interact with the new data. If necessary, you can use [willFetchData()](DataBoundComponent.md#method-databoundcomponentwillfetchdata) to determine whether or not a server fetch will occur when `fetchData()` is called with new criteria.
+
+In addition to the callback parameter for this method, developers can use [dataArrived()](ListGrid_2.md#method-listgriddataarrived) to be notified every time data is loaded.
+
+By default, this method assumes a [TextMatchStyle](../reference.md#type-textmatchstyle) of "exact"; that can be overridden by supplying a different value in the requestProperties parameter. See [DataBoundComponent.willFetchData](DataBoundComponent.md#method-databoundcomponentwillfetchdata);
+
+**Changing the request properties**
+
+Changes to [TextMatchStyle](../reference.md#type-textmatchstyle) made via `requestProperties` will be honored in combination with the fetch criteria, possibly invalidating cache and triggering a server request if needed, as documented for [willFetchData()](DataBoundComponent.md#method-databoundcomponentwillfetchdata). In contrast, changes to [operationId](DSRequest.md#attr-dsrequestoperationid) in the request properties will cause the [ResultSet](ResultSet.md#class-resultset) or [ResultTree](ResultTree.md#class-resulttree) to be rebuilt, always refetching from the server. However, changes to other request properties after the initial fetch won't be detected, and no fetch will get triggered based on that new request context.
+
+To pick up such changes, we recommend that you call [setData(\[\])](ListGrid_2.md#method-listgridsetdata) (passing an empty array to ensure the data model is cleared), and then call this method to fetch again. If you try to do it by calling [invalidateCache()](ListGrid_2.md#method-listgridinvalidatecache), you may see duplicate fetches if you haven't already updated the data context by calling this method with the new request properties, and fail to do so before the component is [redrawn](Canvas.md#method-canvasredraw).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| criteria | [Criteria](../reference_2.md#type-criteria) | true | — | Search criteria. If a [DynamicForm](DynamicForm.md#class-dynamicform) is passed in as this argument instead of a raw criteria object, will be derived by calling [DynamicForm.getValuesAsCriteria](DynamicForm.md#method-dynamicformgetvaluesascriteria) |
+| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke when a fetch is complete. Fires only if server contact was required |
+| requestProperties | [DSRequest](#type-dsrequest) | true | — | additional properties to set on the DSRequest that will be issued |
+
+### Groups
+
+- dataBoundComponentMethods
+
+### See Also
+
+- [ListGrid.refreshData](ListGrid_2.md#method-listgridrefreshdata)
 
 ---

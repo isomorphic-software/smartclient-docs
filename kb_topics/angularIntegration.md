@@ -124,8 +124,7 @@ Finally, a little helper `drawCanvasOnElement` function that causes the SmartCli
  /*
   * Load the SmartClient Runtime if it hasn't yet been, positioning a spinner placeholder
   * over the given element until the framework is available.  At that time, provide the
-  * element to a 'builder' function, which will use it to create a component at the right
-  * place.
+  * element to a 'builder' function, which will use it to create a component at the right place.
   */
  export function drawCanvasOnElement (builder, element) {
 

@@ -20,16 +20,6 @@ Use [DataSource.addData](DataSource.md#method-datasourceadddata)/[removeData()](
 To create a locally modifiable cache of records from a DataSource, you can use [DataSource.fetchData](DataSource.md#method-datasourcefetchdata) to retrieve a List of records which can be modified directly, or you can create a client-only [DataSource](DataSource.md#class-datasource) from the retrieved data to share a modifiable cache between several DataBoundComponents.
 
 ---
-## Attr: ResultTree.serverKeepParentsOnFilter
-
-### Description
-If true, indicates that your own server code will handle the complexities associated with the combination of [keepParentsOnFilter](#attr-resulttreekeepparentsonfilter) and [loadDataOnDemand](#attr-resulttreeloaddataondemand). If this flag is true and your server code does _not_ handle those complexities, the results are undefined, but most likely you will simply exclude non-matching parents if your tree is load-on-demand, which effectively means that filtering will be broken.
-
-If this flag is not set, SmartClient will use its own automatic client-driven algorithm to ensure that `keepParentsOnFilter` is honored on load-on-demand trees. See the `keepParentsOnFilter` overview for details
-
-**Flags**: IRW
-
----
 ## Attr: ResultTree.sendNullParentInLinkDataCriteria
 
 ### Description
@@ -54,14 +44,6 @@ Options are:
 *   "none" - no nodes are opened automatically
 *   "root" - opens the [top-level node](#attr-resulttreerootnode) - in databound trees, this node is always hidden
 *   "all" - when [loading data on demand](#attr-resulttreeloaddataondemand), opens the [top-level node](#attr-resulttreerootnode) and all of it's direct descendants - otherwise, opens all loaded nodes
-
-**Flags**: IRW
-
----
-## Attr: ResultTree.matchingLeafJoinDepth
-
-### Description
-This property allows you to specify the number of ancestor levels SmartClient attempts to retrieve with each request, when using the built-in support for [keepParentsOnFilter](#attr-resulttreekeepparentsonfilter) on [loadDataOnDemand](#attr-resulttreeloaddataondemand) trees. See the `keepParentsOnFilter` overview for details.
 
 **Flags**: IRW
 
@@ -109,7 +91,7 @@ The fetch mode for this tree's link data; ignored if this is not a [multi-link t
 ## Attr: ResultTree.useSimpleCriteriaLOD
 
 ### Description
-Whether or not we should skip promotion of a simple criteria to an [AdvancedCriteria](../reference.md#object-advancedcriteria) when sending the [DSRequest](../reference_2.md#object-dsrequest) to load the children of a node in a [ResultTree.loadDataOnDemand](#attr-resulttreeloaddataondemand) or [fetchMode:"paged"](#attr-resulttreefetchmode) `ResultTree`. If the [DSRequest.textMatchStyle](DSRequest.md#attr-dsrequesttextmatchstyle) is not "exact", we normally convert the simple criteria to an [AdvancedCriteria](../reference.md#object-advancedcriteria) for correctness in matching the node name, but setting this property to `true` will allow that to be skipped for backcompat with older releases.
+Whether or not we should skip promotion of a simple criteria to an [AdvancedCriteria](../reference.md#object-advancedcriteria) when sending the [DSRequest](../reference.md#object-dsrequest) to load the children of a node in a [ResultTree.loadDataOnDemand](#attr-resulttreeloaddataondemand) or [fetchMode:"paged"](#attr-resulttreefetchmode) `ResultTree`. If the [DSRequest.textMatchStyle](DSRequest.md#attr-dsrequesttextmatchstyle) is not "exact", we normally convert the simple criteria to an [AdvancedCriteria](../reference.md#object-advancedcriteria) for correctness in matching the node name, but setting this property to `true` will allow that to be skipped for backcompat with older releases.
 
 ### See Also
 
@@ -122,9 +104,7 @@ Whether or not we should skip promotion of a simple criteria to an [AdvancedCrit
 ## Attr: ResultTree.loadDataOnDemand
 
 ### Description
-Does this resultTree load data incrementally as folders within the tree are opened, or is it all loaded in a single request? Must be true if [ResultTree.fetchMode](#attr-resulttreefetchmode) is "paged"
-
-See the [keepParentsOnFilter](#attr-resulttreekeepparentsonfilter) overview for special considerations when filtering a load-on-demand tree
+Does this resultTree load data incrementally as folders within the tree are opened, or is it all loaded in a single request? Must be true if [ResultTree.fetchMode](#attr-resulttreefetchmode) is "paged".
 
 ### See Also
 
@@ -354,20 +334,6 @@ Note that for some AdvancedCriteria it will not be possible to extract the subcr
 **Flags**: IR
 
 ---
-## Attr: ResultTree.keepParentsOnFilterMaxNodes
-
-### Description
-When a tree specifies the combination of [keepParentsOnFilter](#attr-resulttreekeepparentsonfilter) and [loadDataOnDemand](#attr-resulttreeloaddataondemand), SmartClient by default automatically fetches the "skeleton" of the filtered tree - see the `keepParentsOnFilter` overview for details, including the definition of "skeleton" and other relevant terminology
-
-A problem can arise with this approach if the user enters overly inclusive filter criteria. For example, say you have a 200,000 row dataset and the user chooses to apply a filter of "a". Chances are that is going to include the majority of the nodes in the tree, which would be OK because this is a load-on-demand tree. However, because we will build, cache and then pass around the list of id's of the dangling parents, this may become a performance issue. A lot depends on the nature of your data - this will be much less of an issue for shallow trees with lots of leaf nodes relative to parents, compared to deep trees with a lot of dangling parents to record.
-
-If the user tries to filter the TreeGrid such that there are more matching nodes than is allowed by this setting, the system will truncate the fetch and show the warning message defined in [RPCManager.keepParentsOnFilterMaxNodesExceededMessage](RPCManager.md#classattr-rpcmanagerkeepparentsonfiltermaxnodesexceededmessage). Since the cached node-list is derived from bottom to top, this truncation of the fetch process will usually mean we have not yet derived any top-level nodes. This in turn means that the tree will appear to be empty.
-
-Setting this property to a suitable value for your specific use case is an application tuning exercise, finding the right balance between usability and performance. To remove the node limit altogether, set this property to -1. However, if you have a load-on-demand tree over a large dataset, we do not recommend that you remove the limit completely, as it can lead to serious problems on both the client and server, as the application tries to cope with criteria that contains huge numbers of id's.
-
-**Flags**: IRW
-
----
 ## Attr: ResultTree.criteria
 
 ### Description
@@ -496,38 +462,19 @@ May be overridden via [TreeGrid.treeRootValue](TreeGrid.md#attr-treegridtreeroot
 ## Attr: ResultTree.keepParentsOnFilter
 
 ### Description
-If set, tree-based filtering is performed such that parent nodes are kept as long as they have children that match the filter criteria, even if the parents themselves do not match the filter criteria. If not set, filtering will exclude parent nodes not matching the criteria, and all nodes below them in the tree.
+If set, tree-based filtering is performed such that parent nodes are kept as long as they have children that match the filter criteria, even if the parents themselves do not match the filter criteria. If not set, filtering will exclude parent nodes not matching the criteria and all nodes below them in the tree.
 
-ResultTrees will default to [fetchMode:"local"](../reference_2.md#type-fetchmode) whenever `keepParentsOnFilter` is true, unless fetchMode was explicitly set to "paged" (see below). This allows the filtering logic to fetch a complete tree of nodes from the DataSource (or if loadDataOnDemand:true, a complete set of nodes under a given parent) and then filter the resulting data locally on the client.
+ResultTrees will default to [fetchMode:"local"](../reference_2.md#type-fetchmode) whenever `keepParentsOnFilter` is true, unless fetchMode was explicitly set to `"paged"` (see below). This allows the filtering logic to fetch a complete tree of nodes from the DataSource (or if [ResultTree.loadDataOnDemand](#attr-resulttreeloaddataondemand):true, a complete set of nodes under a given parent) and then filter the resulting data locally on the client.
 
 This means that the server does not need to implement special tree filtering logic to support looking up nodes that match the specified criteria as well as ancestor nodes that may not.
 
-If some criteria _must_ be sent to the server in order to produce a valid tree of data, but `keepParentsOnFilter` is also required, the [ResultTree.serverFilterFields](#attr-resulttreeserverfilterfields) attribute may be used to specify a list of field names that will be sent to the server whenever they are present in the criteria. Note that for the subset of criteria applied to these fields, `keepParentsInFilter` behavior will not occur without custom logic in the DataSource fetch operation.
+If some criteria _must_ be sent to the server in order to produce a valid tree of data, but `keepParentsInFilter` is also required, the [ResultTree.serverFilterFields](#attr-resulttreeserverfilterfields) attribute may be used to specify a list of field names that will be sent to the server whenever they are present in the criteria. Note that for the subset of criteria applied to these fields, `keepParentsInFilter` behavior will not occur without custom logic in the DataSource fetch operation.
 
-If [FetchMode](../reference_2.md#type-fetchmode) is explicitly set to `"paged"`, it is not possible to implement `keepParentsOnFilter`, either by local filtering or with the automatic client-driven handling mentioned below. Support for `keepParentsOnFilter` for a paged ResultTree therefore also requires custom logic in the DataSource fetch operation. To support this a developer must ensure that their fetch operation returns the appropriate set of nodes - all nodes that match the specified criteria plus their ancestor nodes even if they do not match the specified criteria.
-
-#### keepParentsOnFilter with load-on-demand trees
-The combination of `keepParentsOnFilter` and [loadDataOnDemand](#attr-resulttreeloaddataondemand) presents additional difficulties that require special handling. The problem is that in order to determine even the top-level folders, you have to examine every node in the entire tree. For example, say there is one top-level folder that has thousands of folders and nodes underneath it, and there is just one leaf node, 6 levels deep, that matches the filter criteria. You have to find out about that node, because it implies the top-level folder must be retained.
-
-So the server basically has to examine every node in the dataset to determine even what shows up at the top level of the tree. If it does not do this, parent nodes that don't match the filter criteria will be excluded from the tree, with the upshot that the child nodes that _do_ match the criteria will be inaccessible because nodes in load-on-demand trees are only loaded when their parent node is opened
-
-By default, SmartClient solves this with a client-driven implementation of this special handling. This algorithm involves finding the nodes that match the filter criteria - which we term **matching leaves** - and then recursively travelling back up the tree, determining the ancestors of the matching leaves - the so-called **dangling parents**. When we have traversed all the way back to the root node from every matching leaf, we have recorded every dangling parent and have what we term the **skeleton** of the tree. The skeleton is then added to fetch criteria whenever a load-on-demand fetch request is made, ensuring that we fetch both dangling parents and matching leaves.
-
-There are three ways this recursive traversal can be implemented:
-
-*   For dataSources that [support dynamic tree joins](DataSource.md#method-datasourcesupportsdynamictreejoins), we use the [additionalOutputs](DSRequest.md#attr-dsrequestadditionaloutputs) feature to declare self-joins that fetch multiple levels of parent in one query (the number of levels is configurable, see [ResultTree.matchingLeafJoinDepth](#attr-resulttreematchingleafjoindepth)). Of SmartClient's built-in DataSource types, only SQLDataSource is currently capable of this approach
-*   For server-side dataSources that do not support self-joins, we combine individual single-level fetches into a [queue](RPCManager.md#classmethod-rpcmanagersendqueue), using [fieldValueExpressions](DSRequest.md#attr-dsrequestfieldvalueexpressions) with [responseData "allRecords"](DSRequestModifier.md#attr-dsrequestmodifiervalue) so that each fetch in the queue uses the output of the previous fetch as its criteria (so the first fetch returns the parents of the matching nodes, the second fetch returns the parents of those nodes, and so on). Again, the number of fetches per queue can be configured with the `matchingLeafJoinDepth` property. This approach works for any server-side DataSource implementation, including your own custom implementations
-*   For [client-side](DataSource.md#attr-datasourceclientonly) dataSources, which support neither self-joins not queueing, the algorithm simply makes as many single-level requests as necessary to build the entire skeleton. Note, this is exactly what would happen with previously-mentioned queueing approach, if you set `matchingLeafJoinDepth` to 1
-
-If you want to disable the automatic handling of `keepParentsOnFilter` on load-on-demand trees, see [ResultTree.serverKeepParentsOnFilter](#attr-resulttreeserverkeepparentsonfilter)
+If [FetchMode](../reference_2.md#type-fetchmode) is explicitly set to `"paged"`, it is not possible to implement `keepParentsOnFilter` by local filtering. Support for `keepParentsOnFilter` for a paged ResultTree therefore also requires custom logic in the DataSource fetch operation. To support this a developer must ensure that their fetch operation returns the appropriate set of nodes - all nodes that match the specified criteria plus their ancestor nodes even if they do not match the specified criteria.
 
 ### Groups
 
 - treeDataBinding
-
-### See Also
-
-- [ResultTree.keepParentsOnFilterMaxNodes](#attr-resulttreekeepparentsonfiltermaxnodes)
 
 **Flags**: IR
 
@@ -535,7 +482,7 @@ If you want to disable the automatic handling of `keepParentsOnFilter` on load-o
 ## Attr: ResultTree.progressiveLoading
 
 ### Description
-Sets [progressive loading mode](DataSource.md#attr-datasourceprogressiveloading) for this ResultTree. The ResultTree will copy this setting onto the [DSRequest](../reference_2.md#object-dsrequest)s that it issues, overriding the OperationBinding- and DataSource-level settings, in cases where the use of progressive loading does not affect the correctness of the tree's paging algorithm.
+Sets [progressive loading mode](DataSource.md#attr-datasourceprogressiveloading) for this ResultTree. The ResultTree will copy this setting onto the [DSRequest](../reference.md#object-dsrequest)s that it issues, overriding the OperationBinding- and DataSource-level settings, in cases where the use of progressive loading does not affect the correctness of the tree's paging algorithm.
 
 This setting is applied automatically by [DataBoundComponent](../reference.md#interface-databoundcomponent)s that have their own explicit setting for [progressiveLoading](DataBoundComponent.md#attr-databoundcomponentprogressiveloading).
 
@@ -620,7 +567,7 @@ Note: if criteria is being split to retrieve server criteria portion and the cri
 ### Description
 Default behavior is to call [DataSource.compareCriteria](DataSource.md#method-datasourcecomparecriteria) to determine whether new criteria is equivalent to the old criteria (returns 0) or not.
 
-See [DataSource.compareCriteria](DataSource.md#method-datasourcecomparecriteria) for a full explanation of the default behavior. The [CriteriaPolicy](../reference_2.md#type-criteriapolicy) used is "dropOnChange".
+See [DataSource.compareCriteria](DataSource.md#method-datasourcecomparecriteria) for a full explanation of the default behavior. The [CriteriaPolicy](../reference.md#type-criteriapolicy) used is "dropOnChange".
 
 Override this method or [DataSource.compareCriteria](DataSource.md#method-datasourcecomparecriteria) to implement your own client-side filtering behavior.
 
@@ -638,7 +585,7 @@ Override this method or [DataSource.compareCriteria](DataSource.md#method-dataso
 
 ### See Also
 
-- [CriteriaPolicy](../reference_2.md#type-criteriapolicy)
+- [CriteriaPolicy](../reference.md#type-criteriapolicy)
 
 ---
 ## Method: ResultTree.dataArrived

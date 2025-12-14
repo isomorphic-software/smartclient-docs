@@ -7,17 +7,7 @@
 ## KB Topic: Automated Testing
 
 ### Description
-SmartClient supports automated testing with a variety of tools. See the [AutoTest](../classes/AutoTest.md#class-autotest) class for information about how to generate and resolve [AutoTestLocators](../reference_2.md#type-autotestlocator) and other utilities within the SmartClient framework related to generating automated tests.
-
-#### Playwright
-SmartClient applications work smoothly with [Playwright](https://playwright.dev/).
-
-The SDK package provides an example `commands.js` file that defines [Playwright fixtures and helpers](https://playwright.dev/docs/test-fixtures) designed to locate and interact with SmartClient components, automatically handle asynchronous operations, record performance data, and more. For step-by-step guidance on using Playwright with SmartClient, see [Integrating SmartClient with Playwright](smartClientPlaywright.md#kb-topic-integrating-smartclient-with-playwright).
-
-#### Cypress
-SmartClient applications integrate seamlessly with [Cypress](https://www.cypress.io/).
-
-The SDK package includes a sample `commands.js` configuration file with custom [cypress commands](https://docs.cypress.io/api/cypress-api/custom-commands) to identify and interact with SmartClient components, seamlessly wait for asynchronous operations, recording timing data and more. See the [Cypress integration overview](smartClientCypress.md#kb-topic-integrating-smartclient-with-cypress) for details on how to use Cypress with SmartClient.
+SmartClient supports automated testing with a variety of tools.
 
 #### Selenium / Selenese
 
@@ -171,10 +161,5 @@ Different testing tools vary in how easily they can be configured to use the loc
 *   Read the [documentation for the locator system](../classes/AutoTest.md#class-autotest)
 *   Read over the source code of our Selenium extensions to get a clear understanding of how the Selenium integration works, because this will be analogous to the work you'll need to do
 *   Search the [forums](http://forums.smartclient.com/) for other developers who are trying to use the same test tool with SmartClient, and share efforts
-
-### Related
-
-- [EventStream.getAsSeleneseHTML](../classes/EventStream.md#method-eventstreamgetasselenesehtml)
-- [EventStream.getAsSeleneseCommands](../classes/EventStream.md#method-eventstreamgetasselenesecommands)
 
 ---

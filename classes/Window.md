@@ -105,7 +105,7 @@ Array of members to show in the Window header.
 The default value of `headerControls` is an Array of Strings listing the standard header controls in their default order:
 
 ```
-    headerControls : ["headerIcon", "headerLabel",
+    headerControls : ["headerIcon", "headerLabel", 
                       "minimizeButton", "maximizeButton", "closeButton"]
  
 ```
@@ -1362,7 +1362,7 @@ Same as [Layout.addMembers](Layout.md#method-layoutaddmembers). Note that in ord
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | newMembers | [Array of Canvas](#type-array-of-canvas)|[Canvas](#type-canvas) | false | — | array of canvases to be added or single Canvas |
-| position | [Integer](../reference_2.md#type-integer) | true | — | If passed, this specifies the insertion position between the existing members of the layout. If omitted, the canvas will be added at the last position |
+| position | [Number](#type-number) | true | — | position to add newMembers; if omitted newMembers will be added at the last position |
 
 **Flags**: A
 
@@ -1406,7 +1406,7 @@ Same as [Layout.addMember](Layout.md#method-layoutaddmember). Note that in order
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | newMember | [Canvas](#type-canvas) | false | — | the canvas object to be added to the layout |
-| position | [Integer](../reference_2.md#type-integer) | true | — | If passed, this specifies the insertion position between the existing members of the layout. If omitted, the canvas will be added at the last position |
+| position | [Integer](../reference_2.md#type-integer) | true | — | the position in the layout to place newMember (starts with 0); if omitted, it will be added at the last position |
 
 ### See Also
 

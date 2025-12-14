@@ -64,6 +64,18 @@ The [FormItem](FormItem.md#class-formitem) class to create when [DateRangeItem.a
 **Flags**: R
 
 ---
+## Attr: DateRangeItem.dateInputFormat
+
+### Description
+Format for direct user input of date values.
+
+If unset, the input format will be determined based on the specified [DateDisplayFormat](../reference.md#type-datedisplayformat) if possible, otherwise picked up from the Date class (see [DateUtil.setInputFormat](DateUtil.md#classmethod-dateutilsetinputformat)).
+
+**Deprecated**
+
+**Flags**: IR
+
+---
 ## Attr: DateRangeItem.allowRelativeDates
 
 ### Description
@@ -188,6 +200,16 @@ This DynamicForm contains the "from" and "to" fields the user will interact with
 **Flags**: R
 
 ---
+## Attr: DateRangeItem.dateDisplayFormat
+
+### Description
+Format for displaying dates in to the user. Defaults to the system-wide default established by [DateUtil.setNormalDisplayFormat](DateUtil.md#classmethod-dateutilsetnormaldisplayformat).
+
+**Deprecated**
+
+**Flags**: IR
+
+---
 ## Attr: DateRangeItem.innerTitleOrientation
 
 ### Description
@@ -245,7 +267,7 @@ Sets the [DateRangeItem.fromDate](#attr-daterangeitemfromdate) for this DateRang
 ## Method: DateRangeItem.setValue
 
 ### Description
-Sets the value for this dateRangeItem. The value parameter is a [DateRange](../reference_2.md#object-daterange) object that optionally includes both start and end values. If passed null, both start- and end-range values are cleared.
+Sets the value for this dateRangeItem. The value parameter is a [DateRange](../reference.md#object-daterange) object that optionally includes both start and end values. If passed null, both start- and end-range values are cleared.
 
 ### Parameters
 
@@ -303,7 +325,7 @@ A Criterion with an "and" [operator](../reference.md#type-operatorid) will be re
 ## Method: DateRangeItem.getValue
 
 ### Description
-Retrieves the current value of this dateRangeItem. The return value is a [DateRange](../reference_2.md#object-daterange) object that excludes start and end values if they aren't set.
+Retrieves the current value of this dateRangeItem. The return value is a [DateRange](../reference.md#object-daterange) object that excludes start and end values if they aren't set.
 
 ### Returns
 

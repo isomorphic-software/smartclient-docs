@@ -22,18 +22,6 @@ A comma-separated list of field names that must be present in criteria / advance
 **Flags**: IR
 
 ---
-## Attr: OperationBinding.headers
-
-### Description
-Applies to RestConnector dataSources ([serverType](DataSource.md#attr-datasourceservertype) "rest") only. This is an operationBinding-level override of [DataSource.headers](DataSource.md#attr-datasourceheaders) - see that property's documentation for details
-
-### Groups
-
-- serverRestConnector
-
-**Flags**: IR
-
----
 ## Attr: OperationBinding.recordName
 
 ### Description
@@ -53,9 +41,9 @@ When a DataSource has a WebService, `recordName` can also be set to the name of 
 ## Attr: OperationBinding.transformRawResponseScript
 
 ### Description
-**Applicable to [server-side REST DataSources](../kb_topics/serverRestConnector.md#kb-topic-server-side-rest-connector) only**
+**Applicable to [server-side REST DataSources](#serverrestdatasource) only**
 
-A scriptlet to be executed on the server after data has been fetched from the REST service by this operation, but before it is processed through templating. See [DataSource.transformRawResponseScript](DataSource.md#attr-datasourcetransformrawresponsescript) for further details.
+A scriptlet to be executed on the server after data has been fetched from the REST service by this operation, but before it is processed through [templating](#datasourceresponsetemplate). See [DataSource.transformRawResponseScript](DataSource.md#attr-datasourcetransformrawresponsescript) for further details.
 
 Note, unlike many OperationBinding-level properties, a `transformRawResponseScript` at the OperationBinding level does not hide a `transformRawResponseScript` defined at the DataSource level. Instead, if you define `transformRawResponseScript` against both the DataSource and the OperationBinding, **both** are run - first the DataSource-level script, then the OperationBinding-level one.
 
@@ -72,13 +60,6 @@ Note, unlike many OperationBinding-level properties, a `transformRawResponseScri
 Specifies, for this operationBinding only, the list of field names that should be returned to the client. Typically this will be a subset of the [DataSource.fields](DataSource.md#attr-datasourcefields), but note that this is not a requirement; `outputs` can include fields that are not defined in the DataSource's field list. In this case, the server will return extra fields even if [DataSource.dropExtraFields](DataSource.md#attr-datasourcedropextrafields) is true.
 
 You specify this property as a string containing a comma-separated list of field names (eg, "foo, bar, baz")
-
-Note that this setting overrides [DSRequest.outputs](DSRequest.md#attr-dsrequestoutputs) and [DataSourceField.outputWhen](DataSourceField.md#attr-datasourcefieldoutputwhen) setting, meaning fields listed in operationBinding.outputs will be returned to the client regardless of those settings.
-
-### See Also
-
-- [DataSourceField.outputWhen](DataSourceField.md#attr-datasourcefieldoutputwhen)
-- [DSRequest.outputs](DSRequest.md#attr-dsrequestoutputs)
 
 **Flags**: IR
 
@@ -128,20 +109,6 @@ See the documentation for [OperationBinding.customSQL](#attr-operationbindingcus
 - [OperationBinding.customSQL](#attr-operationbindingcustomsql)
 - [DataSource.useAnsiJoins](DataSource.md#attr-datasourceuseansijoins)
 - [OperationBinding.includeAnsiJoinsInTableClause](#attr-operationbindingincludeansijoinsintableclause)
-
-**Flags**: IR
-
----
-## Attr: OperationBinding.transformResponseScript
-
-### Description
-Scriptlet to be executed after the DataSource operation which is configured by this operationBinding. See [DataSource.transformResponseScript](DataSource.md#attr-datasourcetransformresponsescript) for further details.
-
-Note, unlike many OperationBinding-level properties, a `transformResponseScript` at the OperationBinding level does not hide a `transformResponseScript` defined at the DataSource level. Instead, if you define `transformResponseScript` against both the DataSource and the OperationBinding, **both** are run - first the DataSource-level script, then the OperationBinding-level one.
-
-### Groups
-
-- serverScript
 
 **Flags**: IR
 
@@ -209,21 +176,6 @@ The style of line-breaks to use in the exported output. See [LineBreakStyle](../
 **Flags**: IR
 
 ---
-## Attr: OperationBinding.multiInsertNonMatchingStrategy
-
-### Description
-For "add" operations on dataSources of [serverType](DataSource.md#attr-datasourceservertype) "sql" only, this property sets the multi-insert "non matching" strategy for this [operation](#class-operationbinding). Only has an effect if the [add request](DataSource.md#method-datasourceadddata) specifies a list of records as the data, and only if [multiInsertStrategy](#attr-operationbindingmultiinsertstrategy) is set to "multipleValues" either globally or at the [DSRequest](../reference_2.md#object-dsrequest), [OperationBinding](#class-operationbinding), or [DataSource](DataSource.md#class-datasource) level.
-
-Note that this setting overrides the equivalent [dataSource setting](DataSource.md#attr-datasourcemultiinsertnonmatchingstrategy), and can in turn be overridden at the [DSRequest level](DSRequest.md#attr-dsrequestmultiinsertnonmatchingstrategy)
-
-### See Also
-
-- [OperationBinding.multiInsertStrategy](#attr-operationbindingmultiinsertstrategy)
-- [OperationBinding.multiInsertBatchSize](#attr-operationbindingmultiinsertbatchsize)
-
-**Flags**: IRW
-
----
 ## Attr: OperationBinding.mail
 
 ### Description
@@ -267,35 +219,66 @@ NOTE: when [OperationBinding.dataFormat](#attr-operationbindingdataformat) is "i
 ### Description
 **This feature is available with Power or better licenses only.** See [smartclient.com/product](http://smartclient.com/product) for details.
 
-Alias for [OperationBinding.afterWhereClause](#attr-operationbindingafterwhereclause). Kept for backward compatibility. Same semantics and SQL insertion point. See the new attribute for full docs and examples.
+For a dataSource of [serverType](DataSource.md#attr-datasourceservertype) "sql", this property can be specified on an operationBinding to provide the server with a bespoke HAVING clause to use when constructing the SQL query to perform this operation. The property should be a valid expression in the syntax of the underlying database. The server will insert the text of this property immediately after the outer "HAVING" token:
 
-If both `groupWhereClause` and `afterWhereClause` are set, `afterWhereClause` is used.
+```
+   select <selectClause>
+     from ...
+    where ...
+ group by <groupClause>
+   having <groupWhereClause>
+ 
+```
+or after outer "WHERE" token if [OperationBinding.useHavingClause](#attr-operationbindingusehavingclause) was set to `false`:
+```
+ select *
+ from (select <selectClause> from ... where ... group by <groupClause>) work
+ where <groupWhereClause>
+ 
+```
+Note that care is required when using groupWhereClause to ensure that the selectClause contains all the the fields you are filtering by. Failure to do this correctly will result in a runtime SQL error.
 
-### See Also
+This property is only applicable to operationBindings of [operationType](#attr-operationbindingoperationtype) "fetch".
 
-- [OperationBinding.afterWhereClause](#attr-operationbindingafterwhereclause)
-- [OperationBinding.useHavingClause](#attr-operationbindingusehavingclause)
-- [OperationBinding.customSQL](#attr-operationbindingcustomsql)
+It fully supports [SQL Templating](#attr-operationbindingcustomsql) feature, for example:
 
-**Deprecated**
+```
+ <groupWhereClause>$defaultGroupWhereClause AND field_name = value </groupWhereClause>
+ 
+```
+See the documentation for [SQL Templating](#attr-operationbindingcustomsql) for more details and [Server Summaries](../kb_topics/serverSummaries.md#kb-topic-server-summaries) for how criteria is applied to aggregated fields. Also, see "Filtered summaries", "Aggregation & Custom SQL" and "Custom Aggregation Query" [Server Summaries samples](https://www.smartclient.com/smartclient-latest/showcase/?id=serverSummariesFolder) in Smartclient Showcase.
 
-**Flags**: IR
+#### "Standalone" groupWhereClause usage
 
----
-## Attr: OperationBinding.responseTemplate
+Normally groupWhereClause is used in the context of the Server Summaries feature, but it is possible to use it in non aggregated fetches as well. For example:
 
-### Description
-Applies to RestConnector dataSources ([serverType](DataSource.md#attr-datasourceservertype) "rest") only. This is an operationBinding-level override of the [DataSource.responseTemplate](DataSource.md#attr-datasourceresponsetemplate) - see that property's documentation for details
+```
+ <DataSource ID="order" serverType="sql" tableName="order">
+     <fields>
+         <field name="orderID" primaryKey="true" ... />
+         ...
+     </fields>
+     <operationBinding operationType="fetch">
+         <tableClause>$defaultTableClause JOIN orderItem oi on order.orderID = oi.orderID</tableClause>
+         <groupClause>$defaultSelectClause</groupClause>
+         <groupWhereClause>count(oi.orderID) > 1 AND sum(oi.unitPrice * oi.quantity) > 100</groupWhereClause>
+     <operationBinding>
+ </DataSource>
+ 
+```
+There's no builtin aggregation used in `operationBinding` above, but the regular "fetch" is limited by requiring every order to have multiple order items with amount greater than 100.
 
 ### Groups
 
-- serverRestConnector
+- customQuerying
+- serverSummaries
 
 ### See Also
 
-- [DataSource.responseTemplate](DataSource.md#attr-datasourceresponsetemplate)
-- [OperationBinding.transformResponseScript](#attr-operationbindingtransformresponsescript)
-- [OperationBinding.requestTemplate](#attr-operationbindingrequesttemplate)
+- [OperationBinding.customSQL](#attr-operationbindingcustomsql)
+- [OperationBinding.selectClause](#attr-operationbindingselectclause)
+- [OperationBinding.useHavingClause](#attr-operationbindingusehavingclause)
+- [OperationBinding.applyCriteriaBeforeAggregation](#attr-operationbindingapplycriteriabeforeaggregation)
 
 **Flags**: IR
 
@@ -320,7 +303,7 @@ To protect access to an entire operationType (eg, all "fetch" operations), decla
 ### Description
 This setting switches between "having" clause and sub-select approaches when generating aggregated SQL queries. It also affects how aggregated fields are referred in:
 
-*   generated [afterWhereClause](#attr-operationbindingafterwhereclause)
+*   generated [groupWhereClause](#attr-operationbindinggroupwhereclause)
 *   expressions generated by `SQLDataSource.getPartialHaving(...)` and `SQLDataSource.getHavingWithout(...)` server-side API
 *   expressions generated by `$sql.partialHaving(...)` and `$sql.havingWithout(...)` [Velocity context](../kb_topics/velocitySupport.md#kb-topic-velocity-context-variables) variables used in [SQL Temlating](../kb_topics/customQuerying.md#kb-topic-custom-querying-overview)
 
@@ -331,7 +314,7 @@ SQL query is generated using traditional "having" clause approach:
      from ...
     where ...
  group by <groupClause>
-   having <afterWhereClause>
+   having <groupWhereClause>
  
 ```
 Aggregated fields are referred by SQL expressions:
@@ -348,7 +331,7 @@ SQL query is generated using sub-select approach when main query becomes sub-sel
 ```
  select *
  from (select <selectClause> from ... where ... group by <groupClause>) work
- where <afterWhereClause>
+ where <groupWhereClause>
  
 ```
 Aggregated fields are referred by aliases they are selected by:
@@ -365,7 +348,7 @@ If `operationBinding.useHavingClause` is omitted this may be controlled by `sql.
 
 ### See Also
 
-- [OperationBinding.afterWhereClause](#attr-operationbindingafterwhereclause)
+- [OperationBinding.groupWhereClause](#attr-operationbindinggroupwhereclause)
 
 **Flags**: IR
 
@@ -401,7 +384,7 @@ Note that using customHQL affects paging implementation. If you use it, full dat
 ### Description
 **Elements of this feature are only available with Power or better licenses.** See [smartclient.com/product](http://smartclient.com/product) for details.
 
-A list of [DSRequestModifier](../reference_2.md#object-dsrequestmodifier)s that will be used to modify the criteria of each [DSRequest](../reference_2.md#object-dsrequest) that uses this operationBinding. Note that the criteria elements are applied to DSRequest criteria as follows:
+A list of [DSRequestModifier](../reference.md#object-dsrequestmodifier)s that will be used to modify the criteria of each [DSRequest](../reference.md#object-dsrequest) that uses this operationBinding. Note that the criteria elements are applied to DSRequest criteria as follows:
 
 *   **Simple criteria:** The field and value are just applied as an extra key/value pair in the criteria map, as long as the [operator](DSRequestModifier.md#attr-dsrequestmodifieroperator) attribute is left unset, or is set to "equals". For any other setting of `operator`, the criteria is first converted to the equivalent AdvancedCriteria and then processed as described below
 *   **AdvancedCriteria:** If the topmost operator is "and", we add the new criterion as an additional criterion directly in the existing list. Otherwise, we create a new top-level AdvancedCriteria with an operator of "and". This is then set to have two elements in its criteria: the previous top-level criteria and the new criterion.
@@ -474,18 +457,6 @@ Typically set once for the DataSource as a whole via [DataSource.callbackParam](
 ### See Also
 
 - [DataSource.callbackParam](DataSource.md#attr-datasourcecallbackparam)
-
-**Flags**: IR
-
----
-## Attr: OperationBinding.responseFormat
-
-### Description
-For a [RestConnector DataSource](../kb_topics/serverRestConnector.md#kb-topic-server-side-rest-connector), the response format to use for this specific operationBinding. Overriddes any [DataSource-level setting](DataSource.md#attr-datasourceresponseformat). Note, if `responseFormat` is not specified at either the DataSource or OperationBinding level, response processing will throw an exception.
-
-### Groups
-
-- serverRestConnector
 
 **Flags**: IR
 
@@ -574,7 +545,7 @@ Note that using customJQL affects paging implementation. If you use it, full dat
 ## Attr: OperationBinding.requestProperties
 
 ### Description
-Additional properties to pass through to the [DSRequest](../reference_2.md#object-dsrequest) created for this operation. Note that these will be cumulative with and will override on a per-property basis any properties set via [DataSource.requestProperties](DataSource.md#attr-datasourcerequestproperties).
+Additional properties to pass through to the [DSRequest](../reference.md#object-dsrequest) created for this operation. Note that these will be cumulative with and will override on a per-property basis any properties set via [DataSource.requestProperties](DataSource.md#attr-datasourcerequestproperties).
 
 These properties are applied before [DataSource.transformRequest](DataSource.md#method-datasourcetransformrequest) is called.
 
@@ -585,7 +556,7 @@ These properties are applied before [DataSource.transformRequest](DataSource.md#
 
 ### See Also
 
-- [DSRequest](../reference_2.md#object-dsrequest)
+- [DSRequest](../reference.md#object-dsrequest)
 - [DataSource.requestProperties](DataSource.md#attr-datasourcerequestproperties)
 
 **Flags**: IR
@@ -618,7 +589,7 @@ See the documentation for [OperationBinding.customSQL](#attr-operationbindingcus
 ## Attr: OperationBinding.summaryFunctions
 
 ### Description
-A mapping from field names to [summary functions](../reference_2.md#type-summaryfunction) to be applied to each field.
+A mapping from field names to [summary functions](../reference.md#type-summaryfunction) to be applied to each field.
 
 Valid only for an operation of type "fetch". See the [Server Summaries overview](../kb_topics/serverSummaries.md#kb-topic-server-summaries) for examples of usage.
 
@@ -633,64 +604,12 @@ Valid only for an operation of type "fetch". See the [Server Summaries overview]
 **Flags**: IR
 
 ---
-## Attr: OperationBinding.applySqlSuffixToRowCount
-
-### Description
-**This feature is available with Power or better licenses only.** See [smartclient.com/product](http://smartclient.com/product) for details.
-
-For operations on DataSources of [serverType](DataSource.md#attr-datasourceservertype) "sql" only, if [OperationBinding.sqlSuffix](#attr-operationbindingsqlsuffix) is specified at either operation or DataSource level, should that prefix also be applied to the rowcount query, if one is run? This property is true by default, meaning we will apply the suffix to both rowcount and main queries
-
-This property is ignored for non-SQL dataSources
-
-This property can also be specified at the [DataSource level](DataSource.md#attr-datasourceapplysqlsuffixtorowcount); any such value acts as a default for the dataSource, and will be overridden by an operationBinding-level setting
-
-### Groups
-
-- customQuerying
-
-### See Also
-
-- [OperationBinding.applySqlPrefixToRowCount](#attr-operationbindingapplysqlprefixtorowcount)
-
-**Flags**: IR
-
----
-## Attr: OperationBinding.cacheSyncTiming
-
-### Description
-The [cacheSyncTiming](../reference_2.md#type-cachesyncstrategy) to use for this operation. Overrides any [dataSource-level cacheSyncTiming](DataSource.md#attr-datasourcecachesynctiming)
-
-### Groups
-
-- cacheSynchronization
-
-### See Also
-
-- [OperationBinding.cacheSyncStrategy](#attr-operationbindingcachesyncstrategy)
-- [DataSource.cacheSyncTiming](DataSource.md#attr-datasourcecachesynctiming)
-- [DSRequest.cacheSyncTiming](DSRequest.md#attr-dsrequestcachesynctiming)
-
-**Flags**: IR
-
----
-## Attr: OperationBinding.requiresCompleteRESTResponse
-
-### Description
-Applies to RestConnector dataSources ([serverType](DataSource.md#attr-datasourceservertype) "rest") only. This is an operationBinding-level override of [DataSource.requiresCompleteRESTResponse](DataSource.md#attr-datasourcerequirescompleterestresponse) - see that property's documentation for details
-
-### Groups
-
-- serverRestConnector
-
-**Flags**: IR
-
----
 ## Attr: OperationBinding.methodArguments
 
 ### Description
 You can explicitly declare the arguments to be passed to [OperationBinding.serverMethod](#attr-operationbindingservermethod) using this attribute. This isn't required - in the absence of `methodArguments`, the DMI implementation will still automatically pass a stock set of arguments to your method (see the overview in [ServerObject](../reference_2.md#object-serverobject)), but specifying arguments gives you the ability to call pre-existing methods without adding SmartClient-specific code.
 
-The format for specifying `methodArguments` is as a comma separated list of VTL (Velocity Template Language) expressions. See the [VTL Reference](https://velocity.apache.org/engine/devel/vtl-reference.html) and [Velocity User Guide](https://velocity.apache.org/engine/2.3/user-guide.html) for an overview of how to use VTL.
+The format for specifying `methodArguments` is as a comma separated list of VTL (Velocity Template Language) expressions. See the [VTL Reference](https://velocity.apache.org/engine/devel/vtl-reference.html) and [Velocity User Guide](https://velocity.apache.org/engine/1.7/user-guide.html) for an overview of how to use VTL.
 
 The Velocity context is pre-populated with the following variables - you can pass these verbatim as arguments, or call methods on these objects and pass the resulting values:
 
@@ -756,18 +675,6 @@ This property is only applicable to DataSources of ["sql"](DataSource.md#attr-da
 **Flags**: IR
 
 ---
-## Attr: OperationBinding.csvDelimiter
-
-### Description
-Applies to RestConnector dataSources ([serverType](DataSource.md#attr-datasourceservertype) "rest") only. This is an operationBinding-level override of [DataSource.csvDelimiter](DataSource.md#attr-datasourcecsvdelimiter) - see that property's documentation for details
-
-### Groups
-
-- serverRestConnector
-
-**Flags**: IR
-
----
 ## Attr: OperationBinding.excludeCriteriaFields
 
 ### Description
@@ -818,18 +725,6 @@ For basic information on XML Namespaces and their use in XPath, try the followin
 **Flags**: IR
 
 ---
-## Attr: OperationBinding.httpMethod
-
-### Description
-Applies to RestConnector dataSources ([serverType](DataSource.md#attr-datasourceservertype) "rest") only. This is an operationBinding-level override of [DataSource.httpMethod](DataSource.md#attr-datasourcehttpmethod) - see that property's documentation for details
-
-### Groups
-
-- serverRestConnector
-
-**Flags**: IR
-
----
 ## Attr: OperationBinding.useForCacheSync
 
 ### Description
@@ -840,13 +735,11 @@ In order to work correctly with SmartClient's cache synchronization system, an o
 *   Able to complete its retrieval using no context other than the values of the primary key fields declared in the dataSource (these will be provided in the $criteria object passed to the operation)
 *   Returns the entire record, including any values that may require joins to other tables or other complexities
 
-This property is not applicable to the built-in [Hibernate](../kb_topics/hibernateIntegration.md#kb-topic-integration-with-hibernate) and [JPA](../kb_topics/jpaIntegration.md#kb-topic-integration-with-jpa) DataSources.
-
-Please also read the overview article on [cacheSynchronization](../kb_topics/cacheSynchronization.md#kb-topic-automatic-cache-synchronization) for full details of all the cache sync options
+This property is only applicable to DataSources of type "sql".
 
 ### Groups
 
-- cacheSynchronization
+- customQuerying
 
 ### See Also
 
@@ -874,122 +767,6 @@ Indicates that field-level declarative security rules are waived for rows that w
 **Flags**: IR
 
 ---
-## Attr: OperationBinding.sqlSuffix
-
-### Description
-**This feature is available with Power or better licenses only.** See [smartclient.com/product](http://smartclient.com/product) for details.
-
-For operations on DataSources of [serverType](DataSource.md#attr-datasourceservertype) "sql" only, some text to add right at the end of the query generated for this specific operation, after all other text. This can be plain text or a [Velocity template](../kb_topics/velocitySupport.md#kb-topic-velocity-context-variables). Like [OperationBinding.sqlPrefix](#attr-operationbindingsqlprefix), this property allows for non-standard SQL extensions that may be required to obtain some special, database-specific behavior. For example, Progress OpenEdge database can be given hints like `"WITH (NOLOCK)"`, that must appear after all other text.
-
-This property is ignored for non-SQL dataSources
-
-`sqlSuffix` can also be specified at the [DataSource level](DataSource.md#attr-datasourcesqlprefix); any such value acts as a default for the dataSource, and will be overridden by an operationBinding-level setting
-
-You can alternatively provide SQL suffix text programmatically, by overriding `getSQLSuffix()` in a [custom DataSource implementation](DataSource.md#attr-datasourceserverconstructor)
-
-### Groups
-
-- customQuerying
-
-**Flags**: IR
-
----
-## Attr: OperationBinding.transformRequestScript
-
-### Description
-Scriptlet to be executed prior to the DataSource operation which is configured by this operationBinding. See [DataSource.transformRequestScript](DataSource.md#attr-datasourcetransformrequestscript) for further details.
-
-Note, unlike many OperationBinding-level properties, a `transformRequestScript` at the OperationBinding level does not hide a `transformRequestScript` defined at the DataSource level. Instead, if you define `transformRequestScript` against both the DataSource and the OperationBinding, **both** are run - first the DataSource-level script, then the OperationBinding-level one.
-
-### Groups
-
-- serverScript
-
-**Flags**: IR
-
----
-## Attr: OperationBinding.afterWhereClause
-
-### Description
-**This feature is available with Power or better licenses only.** See [smartclient.com/product](http://smartclient.com/product) for details.
-
-For a dataSource of [serverType](DataSource.md#attr-datasourceservertype) "sql", this property can be specified on an operationBinding to provide the server with a bespoke HAVING clause to use when constructing the SQL query to perform this operation. The property should be a valid expression in the syntax of the underlying database. The server will insert the text of this property immediately after the outer "HAVING" token:
-
-```
-   select <selectClause>
-     from ...
-    where ...
- group by <groupClause>
-   having <afterWhereClause>
- 
-```
-or after outer "WHERE" token if [OperationBinding.useHavingClause](#attr-operationbindingusehavingclause) was set to `false`:
-```
- select *
- from (select <selectClause> from ... where ... group by <groupClause>) work
- where <afterWhereClause>
- 
-```
-Note that care is required when using afterWhereClause to ensure that the selectClause contains all the fields you are filtering by. Failure to do this correctly will result in a runtime SQL error.
-
-This property is only applicable to operationBindings of [operationType](#attr-operationbindingoperationtype) "fetch".
-
-It fully supports [SQL Templating](#attr-operationbindingcustomsql) feature, for example:
-
-```
- <afterWhereClause>$defaultAfterWhereClause AND field_name = value </afterWhereClause>
- 
-```
-See the documentation for [SQL Templating](#attr-operationbindingcustomsql) for more details and [Server Summaries](../kb_topics/serverSummaries.md#kb-topic-server-summaries) for how criteria is applied to aggregated fields. Also, see "Filtered summaries", "Aggregation & Custom SQL" and "Custom Aggregation Query" [Server Summaries samples](https://www.smartclient.com/smartclient-latest/showcase/?id=serverSummariesFolder) in Smartclient Showcase.
-
-#### "Standalone" afterWhereClause usage
-
-Normally afterWhereClause is used in the context of the Server Summaries feature, but it is possible to use it in non aggregated fetches as well. For example:
-
-```
- <DataSource ID="order" serverType="sql" tableName="order">
-     <fields>
-         <field name="orderID" primaryKey="true" ... />
-         ...
-     </fields>
-     <operationBinding operationType="fetch">
-         <tableClause>$defaultTableClause JOIN orderItem oi on order.orderID = oi.orderID</tableClause>
-         <groupClause>$defaultSelectClause</groupClause>
-         <afterWhereClause>count(oi.orderID) > 1 AND sum(oi.unitPrice * oi.quantity) > 100</afterWhereClause>
-     <operationBinding>
- </DataSource>
- 
-```
-There's no builtin aggregation used in `operationBinding` above, but the regular "fetch" is limited by requiring every order to have multiple order items with amount greater than 100.
-
-### Groups
-
-- customQuerying
-- serverSummaries
-
-### See Also
-
-- [OperationBinding.customSQL](#attr-operationbindingcustomsql)
-- [OperationBinding.selectClause](#attr-operationbindingselectclause)
-- [OperationBinding.useHavingClause](#attr-operationbindingusehavingclause)
-- [OperationBinding.applyCriteriaBeforeAggregation](#attr-operationbindingapplycriteriabeforeaggregation)
-- [DSRequest.afterCriteria](DSRequest.md#attr-dsrequestaftercriteria)
-
-**Flags**: IR
-
----
-## Attr: OperationBinding.suppressAutoMappings
-
-### Description
-Applies to RestConnector dataSources ([serverType](DataSource.md#attr-datasourceservertype) "rest") only. This is an operationBinding-level override of [DataSource.suppressAutoMappings](DataSource.md#attr-datasourcesuppressautomappings) - see that property's documentation for details
-
-### Groups
-
-- serverRestConnector
-
-**Flags**: IR
-
----
 ## Attr: OperationBinding.customFields
 
 ### Description
@@ -1010,33 +787,6 @@ This property is only applicable to DataSources of ["sql"](DataSource.md#attr-da
 - [OperationBinding.customValueFields](#attr-operationbindingcustomvaluefields)
 - [OperationBinding.customCriteriaFields](#attr-operationbindingcustomcriteriafields)
 - [OperationBinding.excludeCriteriaFields](#attr-operationbindingexcludecriteriafields)
-
-**Flags**: IR
-
----
-## Attr: OperationBinding.multiInsertBatchSize
-
-### Description
-For "add" operations on dataSources of [serverType](DataSource.md#attr-datasourceservertype) "sql" only, this property sets the multi-insert batch size for this [operation](#class-operationbinding). Only has an effect if the [add request](DataSource.md#method-datasourceadddata) specifies a list of records as the data, and only if [multiInsertStrategy](#attr-operationbindingmultiinsertstrategy) is set to "multipleValues" either globally or at the [DSRequest](../reference_2.md#object-dsrequest), [OperationBinding](#class-operationbinding), or [DataSource](DataSource.md#class-datasource) level.
-
-Note that this setting overrides the equivalent [dataSource setting](DataSource.md#attr-datasourcemultiinsertbatchsize), and can in turn be overridden at the [DSRequest level](DSRequest.md#attr-dsrequestmultiinsertbatchsize)
-
-### See Also
-
-- [OperationBinding.multiInsertStrategy](#attr-operationbindingmultiinsertstrategy)
-- [OperationBinding.multiInsertNonMatchingStrategy](#attr-operationbindingmultiinsertnonmatchingstrategy)
-
-**Flags**: IRW
-
----
-## Attr: OperationBinding.params
-
-### Description
-Applies to RestConnector dataSources ([serverType](DataSource.md#attr-datasourceservertype) "rest") only. This is an operationBinding-level override of [DataSource.params](DataSource.md#attr-datasourceparams) - see that property's documentation for details
-
-### Groups
-
-- serverRestConnector
 
 **Flags**: IR
 
@@ -1106,13 +856,11 @@ If set, every invocation of this operationBinding will invalidate the local cach
 ### Description
 For an operationBinding of [operationType](#attr-operationbindingoperationtype) "add" or "update", this property is the [operationId](#attr-operationbindingoperationid) of a "fetch" operationBinding to use for cache synchronization purposes (ie, to fetch the row most recently added or changed). This property, along with [useForCacheSync](#attr-operationbindinguseforcachesync) and [canSyncCache](#attr-operationbindingcansynccache) is provided so that you can use custom database operations without sacrificing the benefits of SmartClient's automatic cache synchronization.
 
-This property is not applicable to the built-in [Hibernate](../kb_topics/hibernateIntegration.md#kb-topic-integration-with-hibernate) and [JPA](../kb_topics/jpaIntegration.md#kb-topic-integration-with-jpa) DataSources.
-
-Please also read the overview article on [cacheSynchronization](../kb_topics/cacheSynchronization.md#kb-topic-automatic-cache-synchronization) for full details of all the cache sync options
+This property is only applicable to DataSources of type "sql".
 
 ### Groups
 
-- cacheSynchronization
+- customQuerying
 
 ### See Also
 
@@ -1206,24 +954,6 @@ However, if "add" or "update" operation explicitly declares [OperationBinding.ca
 **Flags**: IR
 
 ---
-## Attr: OperationBinding.requestTemplate
-
-### Description
-Applies to RestConnector dataSources ([serverType](DataSource.md#attr-datasourceservertype) "rest") only. This is an operationBinding-level override of the [DataSource.requestTemplate](DataSource.md#attr-datasourcerequesttemplate) - see that property's documentation for details
-
-### Groups
-
-- serverRestConnector
-
-### See Also
-
-- [DataSource.requestTemplate](DataSource.md#attr-datasourcerequesttemplate)
-- [OperationBinding.transformRequestScript](#attr-operationbindingtransformrequestscript)
-- [OperationBinding.responseTemplate](#attr-operationbindingresponsetemplate)
-
-**Flags**: IR
-
----
 ## Attr: OperationBinding.exportFilename
 
 ### Description
@@ -1248,35 +978,6 @@ Note that `useFlatFields` is not generally recommended for use with input messag
 **Flags**: IR
 
 ---
-## Attr: OperationBinding.cacheSyncStrategy
-
-### Description
-The [cacheSyncStrategy](../reference_2.md#type-cachesyncstrategy) to use for this operation. Overrides any [dataSource-level cacheSyncStrategy](DataSource.md#attr-datasourcecachesyncstrategy)
-
-### Groups
-
-- cacheSynchronization
-
-### See Also
-
-- [DataSource.cacheSyncStrategy](DataSource.md#attr-datasourcecachesyncstrategy)
-- [DSRequest.cacheSyncStrategy](DSRequest.md#attr-dsrequestcachesyncstrategy)
-
-**Flags**: IR
-
----
-## Attr: OperationBinding.xmlTag
-
-### Description
-Applies to RestConnector dataSources ([serverType](DataSource.md#attr-datasourceservertype) "rest") only. This is an operationBinding-level override of [DataSource.xmlTag](DataSource.md#attr-datasourcexmltag) - see that property's documentation for details
-
-### Groups
-
-- serverRestConnector
-
-**Flags**: IR
-
----
 ## Attr: OperationBinding.canSyncCache
 
 ### Description
@@ -1292,11 +993,11 @@ If any of these cases apply or if `canSyncCache` has been set false, the server 
 
 Alternatively, if the default re-selection behavior will not work but a customized SQL query would work, you can define that SQL operation as another operationBinding and use [OperationBinding.cacheSyncOperation](#attr-operationbindingcachesyncoperation) to declare that it should be used. Setting `cacheSyncOperation` implicitly sets `canCacheSync` to true.
 
-Note, setting this property to false inhibits cache synchronization for most DataSource types - it is not specific to SQL DataSources. However, it is not applicable to the built-in [Hibernate](../kb_topics/hibernateIntegration.md#kb-topic-integration-with-hibernate) and [JPA](../kb_topics/jpaIntegration.md#kb-topic-integration-with-jpa) DataSources. See the [cache sync overview](../kb_topics/cacheSynchronization.md#kb-topic-automatic-cache-synchronization) for further details.
+This property is only applicable to DataSources of type "sql".
 
 ### Groups
 
-- cacheSynchronization
+- customQuerying
 
 ### See Also
 
@@ -1422,28 +1123,6 @@ See the documentation for [OperationBinding.customSQL](#attr-operationbindingcus
 **Flags**: IR
 
 ---
-## Attr: OperationBinding.applySqlPrefixToRowCount
-
-### Description
-**This feature is available with Power or better licenses only.** See [smartclient.com/product](http://smartclient.com/product) for details.
-
-For operations on DataSources of [serverType](DataSource.md#attr-datasourceservertype) "sql" only, if [OperationBinding.sqlPrefix](#attr-operationbindingsqlprefix) is specified at either operation or DataSource level, should that prefix also be applied to the rowcount query, if one is run? This property is true by default, meaning we will apply the prefix to both rowcount and main queries
-
-This property is ignored for non-SQL dataSources
-
-This property can also be specified at the [DataSource level](DataSource.md#attr-datasourceapplysqlprefixtorowcount); any such value acts as a default for the dataSource, and will be overridden by an operationBinding-level setting
-
-### Groups
-
-- customQuerying
-
-### See Also
-
-- [OperationBinding.applySqlSuffixToRowCount](#attr-operationbindingapplysqlsuffixtorowcount)
-
-**Flags**: IR
-
----
 ## Attr: OperationBinding.skipRowCount
 
 ### Description
@@ -1512,36 +1191,6 @@ See the documentation for [OperationBinding.customSQL](#attr-operationbindingcus
 **Flags**: IR
 
 ---
-## Attr: OperationBinding.wrapInList
-
-### Description
-Applies to RestConnector dataSources ([serverType](DataSource.md#attr-datasourceservertype) "rest") only. This is an operationBinding-level override of [DataSource.wrapInList](DataSource.md#attr-datasourcewrapinlist) - see that property's documentation for details
-
-### Groups
-
-- serverRestConnector
-
-**Flags**: IR
-
----
-## Attr: OperationBinding.unionFields
-
-### Description
-Only applicable to "union" dataSources, this is a comma-separated list of the names of the dataSource fields that make up the union. This property overrides the DataSource-level setting of the same name.
-
-Note, this property can only be used to narrow the list of fields in the union, not to widen it. In other words, only fields that are included at the dataSource level - either by specifying an explicit [unionFields](DataSource.md#attr-datasourceunionfields) property or by automatically deriving a list of fields according to the [DataSource.defaultUnionFieldsStrategy](DataSource.md#attr-datasourcedefaultunionfieldsstrategy) - can be named in the operationBinding-level `unionFields` declaration.
-
-### Groups
-
-- unionDataSource
-
-### See Also
-
-- [DataSource.unionFields](DataSource.md#attr-datasourceunionfields)
-
-**Flags**: IR
-
----
 ## Attr: OperationBinding.useSubselectForRowCount
 
 ### Description
@@ -1578,33 +1227,6 @@ For dataSources of [serverType](DataSource.md#attr-datasourceservertype) "sql" a
 ### Groups
 
 - customQuerying
-
-**Flags**: IR
-
----
-## Attr: OperationBinding.multiInsertStrategy
-
-### Description
-For "add" operations on dataSources of [serverType](DataSource.md#attr-datasourceservertype) "sql" only, this property sets the multi-insert strategy for this [operation](#class-operationbinding). Only has an effect if the [add request](DataSource.md#method-datasourceadddata) specifies a list of records as the data.
-
-Note that this setting overrides the equivalent [dataSource setting](DataSource.md#attr-datasourcemultiinsertstrategy), and can in turn be overridden at the [DSRequest level](DSRequest.md#attr-dsrequestmultiinsertstrategy)
-
-### See Also
-
-- [OperationBinding.multiInsertBatchSize](#attr-operationbindingmultiinsertbatchsize)
-- [OperationBinding.multiInsertNonMatchingStrategy](#attr-operationbindingmultiinsertnonmatchingstrategy)
-
-**Flags**: IRW
-
----
-## Attr: OperationBinding.csvQuoteCharacter
-
-### Description
-Applies to RestConnector dataSources ([serverType](DataSource.md#attr-datasourceservertype) "rest") only. This is an operationBinding-level override of [DataSource.csvQuoteCharacter](DataSource.md#attr-datasourcecsvquotecharacter) - see that property's documentation for details
-
-### Groups
-
-- serverRestConnector
 
 **Flags**: IR
 
@@ -1767,7 +1389,7 @@ Using namedQuery affects paging implementation. If you use it, full data set is 
 ## Attr: OperationBinding.applyCriteriaBeforeAggregation
 
 ### Description
-If set to "true", all criteria for the DSRequest using [serverSummaries](#serversummaries) are applied before aggregation, and the [afterWhereClause](#attr-operationbindingafterwhereclause) is not generated.
+If set to "true", all criteria for the DSRequest using [serverSummaries](#serversummaries) are applied before aggregation, and the [groupWhereClause](#attr-operationbindinggroupwhereclause) is not generated.
 
 This property is only applicable if you are using the SQL DataSource, the other built-in types (Hibernate and JPA/JPA2) always perform filtering before summarization.
 
@@ -1781,7 +1403,7 @@ To apply this setting to a specific DSRequest, use the [DSRequest.applyCriteriaB
 
 ### See Also
 
-- [OperationBinding.afterWhereClause](#attr-operationbindingafterwhereclause)
+- [OperationBinding.groupWhereClause](#attr-operationbindinggroupwhereclause)
 - [DSRequest.applyCriteriaBeforeAggregation](DSRequest.md#attr-dsrequestapplycriteriabeforeaggregation)
 
 **Flags**: IR
@@ -1837,7 +1459,7 @@ Can be set for all operations of a given DataSource as DataSource.defaultParams.
 ### Description
 **Elements of this feature are only available with Power or better licenses.** See [smartclient.com/product](http://smartclient.com/product) for details.
 
-A list of [DSRequestModifier](../reference_2.md#object-dsrequestmodifier)s that will be used to modify the values object of each [DSRequest](../reference_2.md#object-dsrequest) that uses this operationBinding. See this example: *queuedAdd example*.
+A list of [DSRequestModifier](../reference.md#object-dsrequestmodifier)s that will be used to modify the values object of each [DSRequest](../reference.md#object-dsrequest) that uses this operationBinding. See this example: *queuedAdd example*.
 
 Below example of the xml as it should be defined in ds.xml: ``<operationBinding operationType="add">` `<values fieldName="orderID" value="$responseData.last('queuedAdd_order','add').orderID" />` `</operationBinding>``
 
@@ -1848,18 +1470,6 @@ Below example of the xml as it should be defined in ds.xml: ``<operationBinding 
 ### See Also
 
 - [OperationBinding.criteria](#attr-operationbindingcriteria)
-
-**Flags**: IR
-
----
-## Attr: OperationBinding.requestFormat
-
-### Description
-For a [RestConnector DataSource](../kb_topics/serverRestConnector.md#kb-topic-server-side-rest-connector), the request format to use for this specific operationBinding. Overriddes any [DataSource-level setting](DataSource.md#attr-datasourcerequestformat). Note, if `requestFormat` is not specified at either the DataSource or OperationBinding level, the request will be rejected.
-
-### Groups
-
-- serverRestConnector
 
 **Flags**: IR
 
@@ -1907,7 +1517,7 @@ Overrides the same setting at the [DataSource](DataSource.md#attr-datasourcegues
 ## Attr: OperationBinding.recordXPath
 
 ### Description
-For an XML or JSON, JSON or [RestConnector](../kb_topics/serverRestConnector.md#kb-topic-server-side-rest-connector) DataSource, an XPath expression used to retrieve the objects that will become DataSource records.
+For an XML or JSON DataSource, XPath expression used to retrieve the objects that will become DataSource records.
 
 For example, an "ItemSearch" web service might return a "Results" structure containing metadata along with the set of Items that one might want to display in a grid. An XPath expression like "/Results/Items" could be used to retrieve just the Items, which would then become DataSource records.
 
@@ -1984,37 +1594,13 @@ If explicitly set true or false, forces the use of a "hint" in the SQL we genera
 ### Description
 URL to contact to fulfill DSRequests for this operationBinding.
 
-`dataURL` is typically set as `DataSource.dataURL` rather than on each individual operationBinding. However, when using `dataURL` to configure the server side of a [RestConnector](../kb_topics/serverRestConnector.md#kb-topic-server-side-rest-connector), it is common to set `dataURL` at the operationBinding level, as described in the [DataSource-level dataURL](DataSource.md#attr-datasourcedataurl) documentation.
+`dataURL` is typically set as DataSource.dataURL rather than on each individual operationBinding.
 
 `dataURL` can be omitted for a DataSource using a Web Service ([DataSource.serviceNamespace](DataSource.md#attr-datasourceservicenamespace) is set).
 
 ### Groups
 
 - clientDataIntegration
-
-**Flags**: IR
-
----
-## Attr: OperationBinding.sqlPrefix
-
-### Description
-**This feature is available with Power or better licenses only.** See [smartclient.com/product](http://smartclient.com/product) for details.
-
-For operations on DataSources of [serverType](DataSource.md#attr-datasourceservertype) "sql" only, some text to add right at the beginning of the query generated for this specific operation, before all other text. This can be plain text or a [Velocity template](../kb_topics/velocitySupport.md#kb-topic-velocity-context-variables). Like [DataSource.sqlSuffix](DataSource.md#attr-datasourcesqlsuffix), this property allows for non-standard SQL extensions that may be required to obtain some special, database-specific behavior. For example, Oracle database supports hints specified in comments that appear before the main query text, like this:
-
-```
-    /* ALL_ROWS */  SELECT * FROM MyTable
- 
-```
-This property is ignored for non-SQL dataSources
-
-`sqlPrefix` can also be specified at the [DataSource level](DataSource.md#attr-datasourcesqlprefix); any such value acts as a default for the dataSource, and will be overridden by an operationBinding-level setting
-
-You can alternatively provide SQL prefix text programmatically, by overriding `getSQLPrefix()` in a [custom DataSource implementation](DataSource.md#attr-datasourceserverconstructor)
-
-### Groups
-
-- customQuerying
 
 **Flags**: IR
 
@@ -2152,19 +1738,6 @@ An update example:
 - [OperationBinding.customHQL](#attr-operationbindingcustomhql)
 - [OperationBinding.namedQuery](#attr-operationbindingnamedquery)
 - [DataSourceField.customSQL](DataSourceField.md#attr-datasourcefieldcustomsql)
-
-**Flags**: IR
-
----
-## Attr: OperationBinding.arrayCriteriaForceExact
-
-### Description
-Operation-level override for the DataSource-level [arrayCriteriaForceExact](DataSource.md#attr-datasourcearraycriteriaforceexact) flag. See the documentation for that flag for details.
-
-### Groups
-
-- clientDataIntegration
-- serverDataIntegration
 
 **Flags**: IR
 

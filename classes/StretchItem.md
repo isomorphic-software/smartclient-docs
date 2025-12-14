@@ -4,14 +4,6 @@
 
 ---
 
-## Attr: StretchItem.vSrc
-
-### Description
-The URL of the media file for this StretchItem if the parent [StretchImg](StretchImg.md#class-stretchimg) is [vertical](StretchImg.md#attr-stretchimgvertical) and [StretchItem.src](#attr-stretchitemsrc) is unset.
-
-**Flags**: IR
-
----
 ## Attr: StretchItem.src
 
 ### Description
@@ -46,14 +38,6 @@ The height of the image. This can either be a number (for the number of pixels t
 A string that is appended as a suffix to the StretchImg's [src](StretchImg.md#attr-stretchimgsrc) URL in order to fetch the media file for this StretchItem, if a separate [StretchItem.src](#attr-stretchitemsrc) is not provided. Note that the special name "blank", possibly suffixed by one or more digits which are used to differentiate blank items, means no image will be shown for this StretchItem.
 
 For example, for a StretchImg in "Over" state with a [StretchImg.src](StretchImg.md#attr-stretchimgsrc) of "button.png" and a name of "stretch", the resulting URL would be "button\_Over\_stretch.png".
-
-**Flags**: IR
-
----
-## Attr: StretchItem.hSrc
-
-### Description
-The URL of the media file for this StretchItem if the parent [StretchImg](StretchImg.md#class-stretchimg) is [not vertical](StretchImg.md#attr-stretchimgvertical) and [StretchItem.src](#attr-stretchitemsrc) is unset.
 
 **Flags**: IR
 

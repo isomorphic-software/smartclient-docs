@@ -124,7 +124,7 @@ The Class to use when creating a picker of [type "list"](#attr-picklistdatasetty
 ## Attr: PickList.optionFilterContext
 
 ### Description
-If this item has a specified `optionDataSource`, and this property is not null, this will be passed to the datasource as [DSRequest](../reference_2.md#object-dsrequest) properties when performing the filter operation on the dataSource to obtain the set of options for the list. This provides, among other capabilities, a way to trigger the server to return summary records.
+If this item has a specified `optionDataSource`, and this property is not null, this will be passed to the datasource as [DSRequest](../reference.md#object-dsrequest) properties when performing the filter operation on the dataSource to obtain the set of options for the list. This provides, among other capabilities, a way to trigger the server to return summary records.
 
 ### See Also
 
@@ -183,7 +183,7 @@ Maximum height to show the pick list before it starts to scroll. Note that by de
 ### Description
 Specifies one or more fields by which this item should be initially sorted. It can be a [field name](ListGridField.md#attr-listgridfieldname), or an array of field names - but note that, if multiple fields are supplied, then each will be sorted in the same [direction](ListGrid_1.md#attr-listgridsortdirection).
 
-For full sorting control, set [initialSort](#attr-picklistinitialsort) to a list of custom [sortSpecifiers](../reference_2.md#object-sortspecifier).
+For full sorting control, set [initialSort](#attr-picklistinitialsort) to a list of custom [sortSpecifiers](../reference.md#object-sortspecifier).
 
 This attribute can also be set to the index of a field in the fields array, but note that it will be converted to a string (field name) after initialization.
 
@@ -234,7 +234,7 @@ Message to display in the pickList if there's no data and [PickList.hideEmptyPic
 ## Attr: PickList.initialSort
 
 ### Description
-An array of [SortSpecifier](../reference_2.md#object-sortspecifier) objects used to set up the initial sort configuration for this pickList. If specified, this will be used instead of any [PickList.sortField](#attr-picklistsortfield) specified.
+An array of [SortSpecifier](../reference.md#object-sortspecifier) objects used to set up the initial sort configuration for this pickList. If specified, this will be used instead of any [PickList.sortField](#attr-picklistsortfield) specified.
 
 ### Groups
 
@@ -249,18 +249,6 @@ An array of [SortSpecifier](../reference_2.md#object-sortspecifier) objects used
 If this pickList contains no options, should it be hidden? If unset, default behavior is to allow the empty pickList to show if it is databound.
 
 **Flags**: IRW
-
----
-## Attr: PickList.pickListSeparateValuesBaseStyle
-
-### Description
-Base Style for the cells in the [separate list](#attr-picklistseparatevalueslist) displayed when [PickList.specialValues](#attr-picklistspecialvalues) is set and [SelectItem.separateSpecialValues](SelectItem.md#attr-selectitemseparatespecialvalues) is true. See [cellStyleSuffixes](../kb_topics/cellStyleSuffixes.md#kb-topic-cellstylesuffixes) for details on how stateful suffixes are combined with the pickListBaseStyle to generate stateful cell styles.
-
-### Groups
-
-- pickList
-
-**Flags**: IR
 
 ---
 ## Attr: PickList.pickList
@@ -723,7 +711,7 @@ Performs a fetch type operation on this item's DataSource to retrieve the set of
 *   `item` a pointer to the form item
 *   `dsResponse` the [DSResponse](DSResponse.md#class-dsresponse) returned by the server
 *   `data` the raw data returned by the server
-*   `dsRequest` the [DSRequest](../reference_2.md#object-dsrequest) sent to the server |
+*   `dsRequest` the [DSRequest](../reference.md#object-dsrequest) sent to the server |
 | requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | properties to apply to the dsRequest for this fetch. |
 
 ---
@@ -748,7 +736,7 @@ Behavior varies based on the configuration of this item, as follows:
 ### Description
 Returns the data to display in the pick list.
 
-The default implementation applies the criteria returned by [PickList.getPickListFilterCriteria](#method-picklistgetpicklistfiltercriteria) to the data returned by [PickList.getClientPickListData](#method-picklistgetclientpicklistdata). A record passes the filter if it has a matching value for all fields in the criteria object. Matching is performed according to [TextMatchStyle](../reference_2.md#type-textmatchstyle).
+The default implementation applies the criteria returned by [PickList.getPickListFilterCriteria](#method-picklistgetpicklistfiltercriteria) to the data returned by [PickList.getClientPickListData](#method-picklistgetclientpicklistdata). A record passes the filter if it has a matching value for all fields in the criteria object. Matching is performed according to [TextMatchStyle](../reference.md#type-textmatchstyle).
 
 If [PickList.showAllOptions](#attr-picklistshowalloptions) is set, all values are shown, with matching values shown below a [separator](#attr-picklistseparatorrows).
 

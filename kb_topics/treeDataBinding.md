@@ -22,7 +22,7 @@ For examples of this type of databinding, see the following SDK examples:
 
 In this mode, tree nodes are loaded on-demand the first time a user expands a folder. This approach is necessary for large trees. This functionality is provided by the [ResultTree](../classes/ResultTree.md#class-resulttree) class, which uses a [DataSource](../classes/DataSource.md#class-datasource) to load data from the server. Each DataSource Record becomes a [TreeNode](../reference_2.md#object-treenode).
 
-When the user expands a folder whose children have not yet been loaded from the server (or you programmatically call openFolder() on such a node), the client automatically sends a [DSRequest](../reference_2.md#object-dsrequest) to the server to ask for all immediate children of that node.
+When the user expands a folder whose children have not yet been loaded from the server (or you programmatically call openFolder() on such a node), the client automatically sends a [DSRequest](../reference.md#object-dsrequest) to the server to ask for all immediate children of that node.
 
 If you have a dataset that is ["parent-linked"](../reference.md#type-treemodeltype), that is, every node has a unique ID (the [Tree.idField](../classes/Tree.md#attr-treeidfield)) and also has a property with the unique ID of it's parent node (the [Tree.parentIdField](../classes/Tree.md#attr-treeparentidfield)) the tree can load child nodes by simply sending a DSRequest with appropriate [Criteria](../reference_2.md#type-criteria). Given a parent node with ID "225" in a tree where the [Tree.parentIdField](../classes/Tree.md#attr-treeparentidfield) is called "parentId", the criteria would be:
 
@@ -134,12 +134,12 @@ Before starting on implementing paging within sets of children, carefully consid
 
 ### Related
 
-- [TreeGrid.keepParentsOnFilter](../classes/TreeGrid.md#attr-treegridkeepparentsonfilter)
-- [TreeGrid.dataFetchMode](../classes/TreeGrid.md#attr-treegriddatafetchmode)
 - [DSRequest.keepParentsOnFilter](../classes/DSRequest.md#attr-dsrequestkeepparentsonfilter)
 - [ResultTree.data](../classes/ResultTree.md#attr-resulttreedata)
 - [ResultTree.fetchMode](../classes/ResultTree.md#attr-resulttreefetchmode)
 - [ResultTree.resultSize](../classes/ResultTree.md#attr-resulttreeresultsize)
 - [ResultTree.keepParentsOnFilter](../classes/ResultTree.md#attr-resulttreekeepparentsonfilter)
+- [TreeGrid.keepParentsOnFilter](../classes/TreeGrid.md#attr-treegridkeepparentsonfilter)
+- [TreeGrid.dataFetchMode](../classes/TreeGrid.md#attr-treegriddatafetchmode)
 
 ---

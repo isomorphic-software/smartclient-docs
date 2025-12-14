@@ -367,7 +367,7 @@ If you simply want side-by-side display with arbitrary proportions, and don't ca
 
 - [Canvas.width](Canvas.md#attr-canvaswidth)
 
-**Flags**: IRW
+**Flags**: IR
 
 ---
 ## Attr: SplitPane.backButton
@@ -450,11 +450,7 @@ If set, the `SplitPane` will automatically monitor selection changes in the [Spl
 
 If a pane is not a [DataBoundComponent](../reference.md#interface-databoundcomponent), but contains a component (selected via a breadth-first search), then that inner component will be monitored for selection changes instead. In either case, `autoNavigate` does nothing unless the monitored component has a valid [DataSource](DataSource.md#class-datasource) and there is a DataSource relationship declared between panes. Note that for [Layout](Layout.md#class-layout)s, the [members](Layout.md#attr-layoutmembers) will be searched when looking for a component rather than the [children](Canvas.md#attr-canvaschildren).
 
-Auto-navigation occurs after the [recordClick()](ListGrid_2.md#method-listgridrecordclick) or [selectionUpdated()](DataBoundComponent.md#method-databoundcomponentselectionupdated) method is called, so if you implement these methods, your code will run first. Importantly, if your methods call [fetchData()](ListGrid_2.md#method-listgridfetchdata), [setCriteria()](ListGrid_2.md#method-listgridsetcriteria), [DynamicForm.editRecord](DynamicForm.md#method-dynamicformeditrecord) or [DynamicForm.editNewRecord](DynamicForm.md#method-dynamicformeditnewrecord) on the target component, navigation will still occur, but duplicate calls to fetch related data, set data into the target, or start editing the record in the target will be skipped.
-
-The selection of the pane or pane inner component for monitoring is done only when the `SplitPane` is created, and when a new [SplitPane.navigationPane](#attr-splitpanenavigationpane) or [SplitPane.listPane](#attr-splitpanelistpane) is assigned, except when the `SplitPane` is in [edit mode](Canvas.md#method-canvasseteditmode) (e.g. when using [Reify](../kb_topics/reify.md#kb-topic-reify-overview)). where the component redetection logic gets run every time a pane's widget hierarchy changes. Changing the hierarchy under a pane at other times in a way that will affect the breadth-first selection of an inner component may lead to unexpected behavior.
-
-Note that only one inner component under each pane (or the pane itself) will be monitored, even if multiple inner components might satisfy the related-data requirement.
+The selection of the pane or pane inner component for monitoring is done only when the `SplitPane` is created, and when a new [SplitPane.navigationPane](#attr-splitpanenavigationpane) or [SplitPane.listPane](#attr-splitpanelistpane) is assigned, except when the `SplitPane` is in [edit mode](Canvas.md#method-canvasseteditmode) (e.g. when using [Reify](../kb_topics/reify.md#kb-topic-reify-overview)). where the component redetection logic gets run every time a pane's widget hierarchy changes.
 
 **Flags**: IR
 
@@ -681,15 +677,15 @@ For the target pane to load data, both the source pane and target pane must be [
 *   The two DataSources must have a Many-To-One relationship declared via [DataSourceField.foreignKey](DataSourceField.md#attr-datasourcefieldforeignkey), so that [ListGrid.fetchRelatedData](ListGrid_2.md#method-listgridfetchrelateddata) can be used on the target pane. A common example of this would be navigation from a source pane that's a [TreeGrid](TreeGrid.md#class-treegrid) to a [ListGrid](ListGrid_1.md#class-listgrid) target.
 *   The two DataSources must be the same, so that the record selected in the source pane can be displayed in the target pane via simply calling [setData()](DetailViewer.md#method-detailviewersetdata). This would apply, for example, if the source pane is a [ListGrid](ListGrid_1.md#class-listgrid) and the target is a [DynamicForm](DynamicForm.md#class-dynamicform), so that [editRecord()](DynamicForm.md#method-dynamicformeditrecord) gets called, or if the target is a [DetailViewer](DetailViewer.md#class-detailviewer).
 
-For purposes of this check, if the pane is not itself a component, we will use the first component we can find in a breath-first search of the hierarchy underneath it, skipping over [search forms](SearchForm.md#class-searchform). If the pane is itself a [search form](SearchForm.md#class-searchform), it will never load related data. Note that one or more records must be selected in the source component for related data to be loaded (which should be automatically true for [auto-navigation](#attr-splitpaneautonavigate)). and only one inner pane component (or the pane itself) will receive the related data, even if multiple inner components meet the requirements.
+For purposes of this check, if the pane is not itself a component, we will use the first component we can find in a breath-first search of the hierarchy underneath it. Note that one or more records must be selected in the source component for related data to be loaded (which should be automatically true for [auto-navigation](#attr-splitpaneautonavigate)).
 
 Even if we can't load related data into the target pane by the above rules, we'll still show the target pane if it's not already visible, except during [auto-navigation](#attr-splitpaneautonavigate).
 
-Defaults:
+The default `target` is "list" if the [listPane](#attr-splitpanelistpane) is present, otherwise "detail".
 
-*   The default `target` is "list" if the [listPane](#attr-splitpanelistpane) is present, otherwise "detail".
-*   The title applied to the target pane is based on [SplitPane.listPaneTitleTemplate](#attr-splitpanelistpanetitletemplate) if the target pane is the `listPane`, otherwise [SplitPane.detailPaneTitleTemplate](#attr-splitpanedetailpanetitletemplate).
-*   The source pane usually does not need to be specified: if the target pane is the `detailPane`, the default source pane is the `listPane` if present, otherwise the [SplitPane.navigationPane](#attr-splitpanenavigationpane). If the target pane is the `listPane`, the source pane is always the `navigationPane`.
+The title applied to the target pane is based on [SplitPane.listPaneTitleTemplate](#attr-splitpanelistpanetitletemplate) if the target pane is the `listPane`, otherwise [SplitPane.detailPaneTitleTemplate](#attr-splitpanedetailpanetitletemplate).
+
+The source pane usually does not need to be specified: if the target pane is the `detailPane`, the default source pane is the `listPane` if present, otherwise the [SplitPane.navigationPane](#attr-splitpanenavigationpane). If the target pane is the `listPane`, the source pane is always the `navigationPane`.
 
 ### Parameters
 
@@ -722,16 +718,6 @@ Updates the [detailToolButtons](#attr-splitpanedetailtoolbuttons) at runtime.
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | buttons | [Array of Canvas](#type-array-of-canvas) | false | — | new controls for the toolstrip. |
-
----
-## Method: SplitPane.getPageOrientation
-
-### Description
-Returns the current [PageOrientation](../reference.md#type-pageorientation). If [SplitPane.pageOrientation](#attr-splitpanepageorientation) has been set to a non-null value, it is returned; otherwise returns the current device orientation from [Page.getOrientation](Page.md#classmethod-pagegetorientation).
-
-### Returns
-
-`[PageOrientation](../reference.md#type-pageorientation)` — current page orientation
 
 ---
 ## Method: SplitPane.setShowLeftButton

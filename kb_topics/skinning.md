@@ -9,8 +9,6 @@
 ### Description
 Skinning (aka "theming" or "branding") is the process of modifying SmartClient's default look and feel to match the desired look and feel for your application. SmartClient supports an extremely powerful and simple skinning system that allows designers with a basic grasp of CSS and JSON to skin any SmartClient component.
 
-See the [Skin Editor overview](skinEditor.md#kb-topic-skin-editor) for information about the most modern approach to skinning a SmartClient application.
-
 #### Basics
 
 *   SmartClient components create their visual appearance by dynamically generating HTML, within the browser, using JavaScript.
@@ -19,19 +17,16 @@ See the [Skin Editor overview](skinEditor.md#kb-topic-skin-editor) for informati
 *   You can change the appearance of an individual SmartClient component by passing properties to [create()](../classes/Class.md#classmethod-classcreate), or you can skin all components of the same class at once, by using [addProperties()](../classes/Class.md#classmethod-classaddproperties) and [changeDefaults()](../classes/Class.md#classmethod-classchangedefaults) to change the defaults for the class.
 *   CSS is used to control details of appearance such as fonts, borders and background colors and gradients, but component properties are used to control layout and positioning of components. See [CSSStyleName](../reference.md#type-cssstylename) for more details about correct usage.
 *   A "skin" consists of:
-    *   `skin_styles.css` - a CSS stylesheet containing all CSS styles used by SmartClient components
-    *   `images/` - a directory tree of images organized by component
-    *   `load_skin.js` - a JavaScript file that loads the CSS stylesheet, applies the images and modifies any other component or framework default settings required for the skin
+    *   a single CSS stylesheet containing all CSS styles used by SmartClient components (`skin_styles.css`)
+    *   a single JavaScript file that sets component defaults (`load_skin.js`)
+    *   a directory tree of images organized by component
 *   The example skins that come with SmartClient are in `smartclientSDK/isomorphic/skins`. The standard directory layout for a skin is:
     ```
             skin_styles.css
             load_skin.js
             images/
-                Actions/
-                    add.png 
-                    ...
                 ListGrid/
-                    sort_ascending.png
+                    sort_ascending.gif
                     ...
                 Tab/
                 ... other directories containing
@@ -70,7 +65,7 @@ Possible settings are:
 *   "on" :  
     CSS3 mode will be used for all browsers
 
-For more control than the above settings provide, you can create a custom skin based on one of the above Flat skins and modify load\_skin.js - whether CSS3 mode is used is controlled by a JavaScript variable `useCSS3` defined in this file.
+For more control than the above settings provide, you can create a custom skin based on one of the above 3 skins and modify load\_skin.js - whether CSS3 mode is used is controlled by a JavaScript variable `useCSS3` defined in this file.
 
 #### Changing Density
 
@@ -113,8 +108,6 @@ Possible settings are:
     _(default setting)_ Spriting will be used in browsers that fully support it
 *   "off" :  
     Spriting will not be used
-
-**_Note - it is also possible to arrange arbitrary SVG graphics into a format which the framework can treat as a sprite_**, despite SVG not being images in the traditional sense. SVG graphics scale perfectly and, in the sprite format, can be re-used and re-colored at runtime without server trips, sizable DOM modifications or flickering. See the [SVG Symbols overview](svgSymbols.md#kb-topic-svg-symbols-overview) for more information.
 
 #### Modifying Skins
 #### Skin Editor

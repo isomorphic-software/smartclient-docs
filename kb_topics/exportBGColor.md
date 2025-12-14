@@ -7,7 +7,7 @@
 ## KB Topic: Exports & Cell Background Color
 
 ### Description
-Several APIs and settings influence the background color which will be used for spreadsheet cells when exporting to Excel/OpenOffice formats using [ListGrid.exportData](../classes/ListGrid_2.md#method-listgridexportdata) or [ListGrid.exportClientData](../classes/ListGrid_2.md#method-listgridexportclientdata). The following APIs are called in the order shown, so `hilite.backgroundColor` takes precedence over `exportDefaultBGColor`, for example.
+Several APIs and settings influence the background color which will be used for spreadsheet cells when exporting to Excel/OpenOffice formats using [ListGrid.exportData](../classes/ListGrid_2.md#method-listgridexportdata) or [ListGrid.exportClientData](../classes/ListGrid_1.md#method-listgridexportclientdata). The following APIs are called in the order shown, so `hilite.backgroundColor` takes precedence over `exportDefaultBGColor`, for example.
 
 1.  [getExportBGColor(rowNum, colNum, record)](../classes/ListGrid_2.md#method-listgridgetexportbgcolor)
 2.  [Hilite.backgroundColor](../classes/Hilite.md#attr-hilitebackgroundcolor)

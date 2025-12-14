@@ -57,7 +57,6 @@ Data Managers provide load-on-demand for datasets too large to be loaded on the 
 - [DataBoundComponent.removeOperation](../classes/DataBoundComponent.md#attr-databoundcomponentremoveoperation)
 - [DataBoundComponent.exportOperation](../classes/DataBoundComponent.md#attr-databoundcomponentexportoperation)
 - [DSRequest.operationId](../classes/DSRequest.md#attr-dsrequestoperationid)
-- [AdvancedCriterionSubquery.operationId](../classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubqueryoperationid)
 - [ValuesManager.addOperation](../classes/ValuesManager.md#attr-valuesmanageraddoperation)
 - [ValuesManager.updateOperation](../classes/ValuesManager.md#attr-valuesmanagerupdateoperation)
 - [ValuesManager.removeOperation](../classes/ValuesManager.md#attr-valuesmanagerremoveoperation)

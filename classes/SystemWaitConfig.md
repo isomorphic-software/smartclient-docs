@@ -7,7 +7,7 @@
 ## Attr: SystemWaitConfig.includeFileLoader
 
 ### Description
-Should the system wait for any outstanding [FileLoader](#classmethod-fileloaderloadfiles) requests? to complete before [AutoTest.isSystemDone](AutoTest.md#classmethod-autotestissystemdone) returns true?
+Should the system wait for any outstanding [FileLoader](#classmethod-fileloaderloadfiles) requests? to complete before [isSystemDone](#method-issystemdone) returns true?
 
 **Flags**: IR
 
@@ -25,7 +25,7 @@ If unset a default timeout of 30 seconds will be used.
 ## Attr: SystemWaitConfig.includeNetworkOperations
 
 ### Description
-Should the system wait for any outstanding [RPC Requests](RPCManager.md#class-rpcmanager) to complete before [AutoTest.isSystemDone](AutoTest.md#classmethod-autotestissystemdone) returns true?
+Should the system wait for any outstanding [RPC Requests](RPCManager.md#class-rpcmanager) to complete before [isSystemDone](#method-issystemdone) returns true?
 
 If not explicitly set, [AutoTest.implicitNetworkWait](AutoTest.md#classattr-autotestimplicitnetworkwait) will be consulted
 
@@ -35,7 +35,7 @@ If not explicitly set, [AutoTest.implicitNetworkWait](AutoTest.md#classattr-auto
 ## Attr: SystemWaitConfig.includeRedraws
 
 ### Description
-Should the system wait for any outstanding redraws to complete before [AutoTest.isSystemDone](AutoTest.md#classmethod-autotestissystemdone) returns true?
+Should the system wait for any outstanding redraws to complete before [isSystemDone](#method-issystemdone) returns true?
 
 **Flags**: IR
 
@@ -43,15 +43,7 @@ Should the system wait for any outstanding redraws to complete before [AutoTest.
 ## Attr: SystemWaitConfig.includeTimers
 
 ### Description
-Should the system wait for all outstanding registered [timer actions](Timer.md#classmethod-timersettimeout) to complete before [AutoTest.isSystemDone](AutoTest.md#classmethod-autotestissystemdone) returns true?
-
-**Flags**: IR
-
----
-## Attr: SystemWaitConfig.includeReflows
-
-### Description
-Should the system wait for all [Layouts](Layout.md#class-layout) to complete pending [reflows](Layout.md#method-layoutreflownow) before [AutoTest.isSystemDone](AutoTest.md#classmethod-autotestissystemdone) returns true?
+Should the system wait for all outstanding registered [timer actions](Timer.md#classmethod-timersettimeout) to complete before [isSystemDone](#method-issystemdone) returns true?
 
 **Flags**: IR
 

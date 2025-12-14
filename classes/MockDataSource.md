@@ -36,14 +36,6 @@ An alternative format of data consisting of an array of [Records](../reference.m
 **Flags**: IR
 
 ---
-## Attr: MockDataSource.mockDataPrimaryKey
-
-### Description
-Name of field in [MockDataSource.mockData](#attr-mockdatasourcemockdata) that should be used as the primary key. Otherwise a hidden primary key field will automatically be added with a type of 'sequence'.
-
-**Flags**: IR
-
----
 ## Attr: MockDataSource.mockDataFormat
 
 ### Description

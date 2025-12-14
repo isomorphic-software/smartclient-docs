@@ -12,16 +12,6 @@
 Simple interactive calendar interface used to pick a date. Used by the [DateItem](DateItem.md#class-dateitem) class.
 
 ---
-## Attr: DateChooser.navigationButtonHeight
-
-### Description
-Height of buttons in the [navigation area](#attr-datechoosernavigationlayout), used for navigating the [calendar view](#attr-datechooserdategrid). If unset, the default, buttons are sized by settings applied by the current skin.
-
-If this attribute is set to a value greater than [DateChooser.navigationLayoutHeight](#attr-datechoosernavigationlayoutheight), it will cause the layout to expand to match the button height.
-
-**Flags**: IR
-
----
 ## Attr: DateChooser.baseWeekdayStyle
 
 ### Description
@@ -120,20 +110,6 @@ Height of the header area (containing the navigation buttons) in pixels.
 
 ### Description
 CSS style to apply to navigation buttons and date display at the top of the component. If null, the CSS style specified in [DateChooser.baseButtonStyle](#attr-datechooserbasebuttonstyle) is used.
-
-**Flags**: IRW
-
----
-## Attr: DateChooser.endDate
-
-### Description
-Limits the selectable range of this DateChooser.
-
-If unset, the chooser's range-end is dictated by [endYear](#attr-datechooserendyear).
-
-### Groups
-
-- appearance
 
 **Flags**: IRW
 
@@ -310,14 +286,6 @@ A [ListGrid](ListGrid_1.md#class-listgrid) subclass, responsible for rendering t
 **Flags**: IR
 
 ---
-## Attr: DateChooser.menuItemStyle
-
-### Description
-Base CSS style applied to cells in the Year, Week and Month popup-menus. In some skins, this attribute is set to _dateChooserMenuItem_ which provides custom styles for items in these menus.
-
-**Flags**: IRW
-
----
 ## Attr: DateChooser.showCancelButton
 
 ### Description
@@ -338,8 +306,6 @@ Whether to show the [time field](#attr-datechoosertimeitem) for editing the time
 
 ### Description
 Height of the [navigation area](#attr-datechoosernavigationlayout), containing the various buttons for navigating the [calendar view](#attr-datechooserdategrid).
-
-If [DateChooser.navigationButtonHeight](#attr-datechoosernavigationbuttonheight) or the navigation buttons themselves specify a height taller than _navigationLayoutHeight_, this setting acts as a minimum height and the layout will expand to fit the buttons.
 
 **Flags**: IR
 
@@ -375,11 +341,7 @@ Height of the icon for the next year button
 ## Attr: DateChooser.endYear
 
 ### Description
-Latest year that may be selected.
-
-If set to null, no minimum year is enforced.
-
-If this chooser was opened by a [DateItem](DateItem.md#class-dateitem), the default is inherited from [DateItem.endDate](DateItem.md#attr-dateitemenddate). Otherwise, the default is 5 years after today.
+Latest year that may be selected. If this chooser was opened by a [DateItem](DateItem.md#class-dateitem), the default is inherited from [DateItem.endDate](DateItem.md#attr-dateitemenddate). Otherwise, the default is 5 years after today.
 
 When opened from a [RelativeDateItem](RelativeDateItem.md#class-relativedateitem), this property and [DateChooser.startYear](#attr-datechooserstartyear) are defaulted to null, and the year-picker shows years surrounding the current year, according to [startYearRange](#attr-datechooserstartyearrange) and [endYearRange](#attr-datechooserendyearrange).
 
@@ -442,20 +404,6 @@ When a DateChooser is configured for [a "datetime" value](#attr-datechoosertimei
 **Flags**: IR
 
 ---
-## Attr: DateChooser.startDate
-
-### Description
-Limits the selectable range of this DateChooser.
-
-If unset, the chooser's range-start is dictated by [startYear](#attr-datechooserstartyear).
-
-### Groups
-
-- appearance
-
-**Flags**: IRW
-
----
 ## Attr: DateChooser.cancelButton
 
 ### Description
@@ -507,11 +455,7 @@ An [AutoChild](../reference.md#type-autochild) [HLayout](../reference.md#class-h
 ## Attr: DateChooser.startYear
 
 ### Description
-Earliest year that may be selected.
-
-If set to null, no minimum year is enforced.
-
-If this chooser was opened by a [DateItem](DateItem.md#class-dateitem), the default is inherited from [DateItem.startDate](DateItem.md#attr-dateitemstartdate). Otherwise, the default is 10 years before today.
+Earliest year that may be selected. If this chooser was opened by a [DateItem](DateItem.md#class-dateitem), the default is inherited from [DateItem.startDate](DateItem.md#attr-dateitemstartdate). Otherwise, the default is 10 years before today.
 
 When opened from a [RelativeDateItem](RelativeDateItem.md#class-relativedateitem), this property and [DateChooser.endYear](#attr-datechooserendyear) are defaulted to null, and the year-picker shows years surrounding the current year, according to [startYearRange](#attr-datechooserstartyearrange) and [endYearRange](#attr-datechooserendyearrange).
 
@@ -658,14 +602,6 @@ The text appended to the style name when using [DateChooser.alternateWeekStyles]
 
 ### Description
 A button shown below the [calendar grid](../reference.md#class-dategrid) which, when clicked, navigates the calendar to today.
-
-**Flags**: IR
-
----
-## Attr: DateChooser.todayStyle
-
-### Description
-Additional styling for today's date.
 
 **Flags**: IR
 

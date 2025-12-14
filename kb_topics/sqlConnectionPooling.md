@@ -11,14 +11,14 @@
 
 SQLDataSource communicates with database products using [JDBC Connection objects](http://docs.oracle.com/javase/7/docs/api/java/sql/Connection.html). These Connections are provided by the individual database products' JDBC drivers; they either wrap the database's native mechanism for a client-server connection, or they implement a pure Java equivalent of the same thing. All read and update operations performed by SQL DataSource take place via one of these connections. Also, [SQL transactions](../classes/DataSource.md#attr-datasourceautojointransactions) are implemented by having the queue of related updates take place through the same connection, with a single commit (or rollback) at the end of the queue.
 
-Database connections are a limited resource, and they can also be expensive to acquire. For both of these reasons, SmartClient by default uses the Apache DBCP pooling library to maintain a pool of resuable connections; alternatively, we can use the HikariCP library for the same purpose - see below. Connections are borrowed from the pool as required, and returned to the pool when they are no longer needed, and the pooling library ensures that connections are only lent out to one borrowing process at any given time. This arrangement is efficient in terms of both connection acquisition speed and the number of connections required
+Database connections are a limited resource, and they can also be expensive to acquire. For both of these reasons, SmartClient by default uses the Apache DBCP pooling library to maintain a pool of resuable connections. Connections are borrowed from the pool as required, and returned to the pool when they are no longer needed, and the pooling library ensures that connections are only lent out to one borrowing process at any given time. This arrangement is efficient in terms of both connection acquisition speed and the number of connections required
 
 *   Reusing an existing connection is typically faster than asking the database for a new one; depending on the database, it can be much faster
 *   Reusing the same connections over and over means that applications require fewer connections to handle the same workload. Even busy applications handling hundreds of concurrent users typically require a much smaller number of pooled connections than might be thought at first glance
 
 For these reasons, we ship SmartClient with connection pooling switched on, and we recommend you leave it that way.
-#### Connection pool settings - DBCP
-You configure the behavior of DBCP-based SQL connection pooling with the following `server.properties` settings (note, many of these settings map directly to settings in the underlying DBCP library; you can find out more about their effects in the [DBCP docs](http://commons.apache.org/proper/commons-dbcp/configuration.html). Also note these settings are specific to DBCP and have no effect at all if you are using HikariCP as your connection pooling solution):
+#### Connection pool settings
+You configure the behavior of SQL connection pooling with the following `server.properties` settings (note, many of these settings map directly to settings in the underlying DBCP library; you can find out more about their effects in the [DBCP docs](http://commons.apache.org/proper/commons-dbcp/configuration.html)):
 
 | sql.pool.enabled | Set true/false to enable or disable the entire SQL connection pooling feature. Defaults to true |
 |---|---|
@@ -29,9 +29,9 @@ You configure the behavior of DBCP-based SQL connection pooling with the followi
 | sql.pool.testOnBorrow | If true, we attempt to validate the connection before lending it out. This validation involves checking if the connection is marked as closed, and also running a "pingTest" query if one is defined (see the section on per-database configuration, below). If validation fails, the connection is discarded and another one selected from the pool. Defaults to true |
 | sql.pool.testOnReturn | The same as testOnBorrow, but the checking occurs when the connection is returned to the pool rather than when we are about to lend it out. Defaults to false |
 | sql.pool.testWhileIdle | The same as testOnBorrow, but the checking is done by the idle connection evictor (see below) during its periodic inspection of the idle objects in the pool. Defaults to false |
-| sql.pool.timeBetweenEvictionRunsMillis | DBCP can optionally run an "idle connection evictor" thread, which periodically checks the pool for connections that have been idle for more than a threshold time, and "evicts" them from the pool (ie, closes and then discards them). The purpose of this is to keep the connection pool at the intended size, instead of allowing it to remain at whatever size it reached during the system's busiest time. Without an evictor, it would not be unusual to see the number of connections in the pool grow towards maxActive over time, or even beyond it if the pool is configured to grow when exhausted. If this is not what you want, configure an eviction thread. However, note that the eviction thread contends with the main pooling code for access to the idle connections; if you set the evictor to run very frequently, it can introduce performance issues.This property specifies the number of milliseconds to sleep between runs of the idle connection evictor. If set to a negative value, no evictor will be run. As shipped, this value is set to 30000, so the eviction thread runs every 30 seconds |
-| sql.pool.minEvictableIdleTimeMillis | The minimum time a connection may sit idle in the pool before it is eligible for eviction. If set to a negative value, connections will never be evicted due to the length of time they have sat idle (a connection will only be evicted if testWhileIdle is true and it fails validation). As shipped, this value is set to 120000, so connections that are idle for more than two minutes will become eligible for eviction |
-| sql.pool.numTestsPerEvictionRun | The number of connections to check during each eviction run. As shipped, this value is set to 5, so up to 5 connections will be checked by the evictor thread each time it wakes. Also, be aware that negative values of this setting are treated as the denominator in determining a fraction of the pool size, so -1 means check all connections, -2 means check half the connections, -3 means check a third, etc) |
+| sql.pool.timeBetweenEvictionRunsMillis | DBCP can optionally run an "idle connection evictor" thread, which periodically checks the pool for connections that have been idle for more than a threshold time, and "evicts" them from the pool (ie, closes and then discards them). The purpose of this is to keep the connection pool at the intended size, instead of allowing it to remain at whatever size it reached during the system's busiest time. Without an evictor, it would not be unusual to see the number of connections in the pool grow towards maxActive over time, or even beyond it if the pool is configured to grow when exhausted. If this is not what you want, configure an eviction thread. However, note that the eviction thread contends with the main pooling code for access to the idle connections; if you set the evictor to run very frequently, it can introduce performance issues.This property specifies the number of milliseconds to sleep between runs of the idle connection evictor. If set to a negative value, no evictor will be run. Defaults to -1 (ie, no eviction thread) |
+| sql.pool.minEvictableIdleTimeMillis | The minimum time a connection may sit idle in the pool before it is eligible for eviction. If set to a negative value, connections will never be evicted due to the length of time they have sat idle (a connection will only be evicted if testWhileIdle is true and it fails validation). Defaults to -1 |
+| sql.pool.numTestsPerEvictionRun | The number of connections to check during each eviction run. Defaults to -1, which means check all objects in the pool (this is not documented by Apache, but negative values are treated as the denominator in determining a fraction of the pool size, so -2 means check half the connections, -3 means check a third, etc) |
 
 In addition to the `sql.pool` configuration subtree, you can specify per-database configuration by adding the [dbName](../classes/DataSource.md#attr-datasourcedbname) to the property, like so:
 
@@ -51,39 +51,6 @@ There is also a configuration property outside the `sql.pool` and `sql.{DBNAME}.
      sql.db2database.pingTest: select 'x' from SYSIBM.SYSDUMMY1
  
 ```
-#### Connection pool settings - Hikari
-[HikariCP](https://github.com/brettwooldridge/HikariCP) is a popular lightweight JDBC connection pool library. The project's README describes its aims:
-
-_Fast, simple, reliable. HikariCP is a "zero-overhead" production ready JDBC connection pool_
-
-To configure SmartClient Server to use HikariCP rather than DBCP for connection pooling, set the following flag in your `server.properties` file:
-
-```
-    sql.pool.useHikari: true 
-```
-When you use Hikari directly in a Java project, there are a handful of mandatory configuration settings: `username`, `password`, and either `dataSourceClassName` or `jdbcUrl`. However, when using the Hikari support in SmartClient Server, SmartClient provides those settings to Hikari based on its own database settings, as configured through the [Admin Console](adminConsole.md#kb-topic-admin-console) or manually in properties in your `server.properties` file. So you should not provide those settings in your own Hikari configuration - if you do, they will be ignored, but there is also scope for conflicts if both `dataSourceClassName` and `jdbcUrl` end up in the configuration at the same time.
-
-One other thing to say about essential config is, some older DriverManager drivers require the name of the driver class in addition to the jdbc URL. Quoting from the Hikari docs:
-
-_When using this property with "old" drivers, you may also need to set the driverClassName property, but try it first without_
-
-If you find that you need to work with one of these "old" JDBC drivers where the driver classname is required, specify it as property "driver" of your regular SmartClient database config; if that property is specified at the SmartClient level, we will automatically provide it to the Hikari config, and if it is unset in the SmartClient config, we will leave it unset in the Hikari config. For example:
-
-```
-    sql.PostgreSQL.driver:org.postgresql.Driver 
-```
-For non-essential config: Hikari is less configurable than some other connection pools (by design), and the authors recommend that you leave the library with default configuration, such that minimum and maximum sizes are the same, so Hikari maintains a fixed-size pool. If you do want to alter Hikari's configuration, you can do so by adding properties to your `server.properties` that follow the pattern `sql.{dbName}.hikari.{hikari-property-name}`, where `{dbName}` is the name of a SmartClient [database configuration](dbConfigTool.md#kb-topic-database-configuration), and `{hikari-property-name}` is a valid Hikari configuration property, as documented on [the project's homepage](https://github.com/brettwooldridge/HikariCP#frequently-used). For example:
-```
-    # For the "PostgreSQL" database config, set maximum pool size to 10, minimum pool size to 5, 
-    # and retire connections after an hour
-    sql.PostgreSQL.hikari.maximumPoolSize: 10
-    sql.PostgreSQL.hikari.minimumIdle: 5
-    sql.PostgreSQL.hikari.maxLifetime: 360000 
-```
-**WARNING**: Take care that any Hikari config properties you set are valid properties documented on the project page linked to above. If you specify a property that Hikari doesn't know about, it won't just ignore it, it will throw Exceptions during initiation
-
-**WARNING**: When moving from DBCP to Hikari, be careful to set the maximum pool size large enough, using the `sql.{dbName}.hikari.maximumPoolSize` setting. This is especially important to avoid a problem the Hikari devs call "pool locking", if you have processes that run multiple database operations without combining them into a single transaction. In this scenario, the default DBCP config would grow the pool as required to accomodate more connections than the pool was sized for, but Hikari has no option to do this. Again, this is by design - the authors of Hikari discuss their views on pool sizing in [this article](https://github.com/brettwooldridge/HikariCP/wiki/About-Pool-Sizing). That article also specifically covers this issue of pool locking: [Direct link](https://github.com/brettwooldridge/HikariCP/wiki/About-Pool-Sizing#pool-locking)
-
 #### Troubleshooting issues related to connection pooling
 Many databases will automatically close inactive connections, which can interfere with connection pooling: if an application is not constantly using all of the connections in its pool, it may retrieve a closed connection from the pool.
 

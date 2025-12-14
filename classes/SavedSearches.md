@@ -21,7 +21,7 @@ User interface components for storing and retreiving saved searches are availabl
 You acquire the `SavedSearches` singleton via [SavedSearches.get](#classmethod-savedsearchesget) and you can configure defaults via [Class.addProperties](Class.md#method-classaddproperties) or [Class.changeDefaults](Class.md#classmethod-classchangedefaults).
 
 Saved searches are stored [serialized as JSON](JSONEncoder.md#class-jsonencoder) in [DataSource](DataSource.md#class-datasource) Records.  
-By default saved searches are stored in [HTML5 browser localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage) via automatically generated custom DataSources. In this mode the searches are only retained for a specific user on a particular machine, and searches cannot be shared with other users - but this approach is sufficient for many applications, works out of the box, does not require any storage and has no impact on scalability.
+By default saved searches are stored in HTML5 browser `localStorage` via automatically generated custom DataSources. In this mode the searches are only retained for a specific user on a particular machine, and searches cannot be shared with other users - but this approach is sufficient for many applications, works out of the box, does not require any storage and has no impact on scalability.
 
 For more capable saved search storage and retrieval, an explicit saved search dataSource backed by permanent storage such as an SQL database table may be specified.  
 Typically this is done by setting up the [SavedSearches.defaultDataSource](#attr-savedsearchesdefaultdatasource). This will store searches for all users and for every component and the same dataSource may even be used for multiple applications.  
@@ -82,13 +82,19 @@ Note that we'd recommend marking this operation as `requiresRole="admin"` on the
 
 #### Identifying components associated with Saved Searches
 
-Stored saved search records will have the `componentId` field set to the identifier returned by [SavedSearches.getSavedSearchId](#method-savedsearchesgetsavedsearchid) for a component. By default this method returns an identifer based on the a [local ID](Canvas.md#method-canvasgetlocalid) and [DataSource ID](DataBoundComponent.md#attr-databoundcomponentdatasource). This means that if you assign a unique ID to a component that saves searches, and don't change that ID, stored saved searches will always be associated with the component and its current DataSource.
+Stored SavedSearch records will have the `componentId` field set to the identifier returned by [SavedSearches.getSavedSearchId](#method-savedsearchesgetsavedsearchid) for a component.  
+By default this method returns a [minimal locator](AutoTest.md#classmethod-autotestgetminimallocator). This means that if you assign a unique ID to a component that saves searches, and don't change that ID, stored saved searches will always be associated with the component.
 
-If you don't set a unique global ID on the component, and your component isn't part of a Reify screen, and so doesn't have a separate [local ID](Canvas.md#method-canvasgetlocalid), the default saved search identifier is not guaranteed to be consistent across changes to your app, and in that case, previously stored searches will no longer be associated with the component.
+If you don't have a unique ID on the component, the minimal locator is not guaranteed to be consistent across changes to your page layout. While Minimal Locators have a good chance of being unaffected even if you refactor your UI, but there are cases where they may change and previously stored searches would no longer be associated with the component. See the [AutoTest.getMinimalLocator](AutoTest.md#classmethod-autotestgetminimallocator) docs for details.
 
-Alternatively you can bypass the [ID](Canvas.md#method-canvasgetlocalid) dependency altogether and define an explicit [DataBoundComponent.savedSearchId](DataBoundComponent.md#attr-databoundcomponentsavedsearchid). This allows you to define a stable identifier for storing saved searches without setting a component [ID](Canvas.md#attr-canvasid).
+Alternatively you can bypass minimal locator system altogether and define an explicit [DataBoundComponent.savedSearchId](DataBoundComponent.md#attr-databoundcomponentsavedsearchid). This allows you to define a stable identifier for storing saved searches without setting a component [ID](Canvas.md#attr-canvasid).
 
-Note that developers may explicitly change the [DataBoundComponent.savedSearchId](DataBoundComponent.md#attr-databoundcomponentsavedsearchid) at runtime. In this case, if the saved search ID changes, the component will be associated with a new set of saved searches. When an explicit `savedSearchId` is provided, it will not automatically be changed if a new DataSource is bound to the component. To keep the saved searches applicable to the current DataSource, developers may want to explicitly update `savedSearchId` in this case.
+Note that a component savedSearch ID string is not guaranteed to be immutable over a widget's lifespan.  
+Autotest minimal locators can change in various cases such as changing page structure or binding the component to a new DataSource.  
+Additionally developers may explicitly change the [DataBoundComponent.savedSearchId](DataBoundComponent.md#attr-databoundcomponentsavedsearchid) at runtime.
+
+In either case, if the saved search ID changes, the component will be associated with a new set of saved searches.  
+There are cases where this is desirable. For example if a compnent is bound to one dataSource, and then gets bound to a new dataSource where previously stored searches would no longer be applicable, developers may explicitly change the savedSearchId for the component.
 
 #### Security Concerns
 
@@ -99,9 +105,6 @@ If you provide your own [DataSource for storing searches](#attr-savedsearchesdef
 *   For logged in users with the [adminRole](#attr-savedsearchesadminrole), also allowing users to add, update and remove admin searches. What this means in concrete terms depends on whether the dataSource includes an [adminField](#attr-savedsearchesadminfield).  
     If an adminField exists, admin users are exempt from userId restrictions when editing or removing records where this field value is set to true. When adding a new record it is still recommended the admin user's own userId should be stored in the `userIdField`.  
     If no adminField exists, admin searches are identified by having the `userIdField` set to `null`. In this case admin users should be able to add, remove and edit records where the `userIdField` matches their own userId, or is null.
-
-If you are not providing your own [DataSource for storing searches](#attr-savedsearchesdefaultdatasource), searches will be stored to each user's browser LocalStorage. Developers should be aware that objects stored in LocalStorage are accessible by all applications deployed to the same host + port. This means that if you're loading multiple SmartClient applications from the save server they could potentially access each others' SavedSearches from localStorage, if the same userName and componentId exist in both applications.  
-This should not typically be an issue, as we default the [applicationId](#attr-savedsearchesapplicationid) value to the `window.location.pathname` which can't be shared by two applications deployed to the same server, but it could come up if [allowNullApplicationId](#attr-savedsearchesallownullapplicationid) was set to true.
 
 `searchName` field escaping: by default, any character is allowed in the `searchName` field, and `searchName` are [escaped](DataSourceField.md#attr-datasourcefieldescapehtml) when displayed by built-in UI components. If you provide your own UI for saved searches, you should escape the `searchName` field before displaying. Otherwise, users could render your application partly non-functional by using special characters or inline script, or a malicious admin could inject code into other user's browsers. If you prefer to just limit the `searchName` field to non-special characters, you can just add a [dataSourceField validator](DataSourceField.md#attr-datasourcefieldvalidators) to do this, and the built-in UIs for saved search will handle the validation error as expected (block the save or edit and tell the user what's wrong).
 
@@ -165,9 +168,7 @@ Type: "string" _(optional)_. This stores the `userId` of the user saving the sea
 ## Attr: SavedSearches.applicationIdField
 
 ### Description
-Type: "string" _(optional)_. This field exists to allow a single DataSource to be used across multiple applications without colliding on `componentId`. Set [SavedSearches.applicationId](#attr-savedsearchesapplicationid) to cause all search lookups to use `applicationId` as criteria, and all newly saved searches to store that `applicationId`.
-
-Note that if [SavedSearches.applicationId](#attr-savedsearchesapplicationid) is not explicitly set, the [window.location.pathname](https://www.w3schools.com/jsref/prop_loc_pathname.asp) will be used as a default. This behavior can be disabled by setting [SavedSearches.allowNullApplicationId](#attr-savedsearchesallownullapplicationid) to true.
+Type: "string" _(optional)_. This field exists to allow a single DataSource to be used across multiple applications without colliding on `componentId`. Set [SavedSearches.applicationId](#attr-savedsearchesapplicationid) to cause all search lookups to use `applicationId` as criteria, and all newly saved searches to store that `applicationId`
 
 **Flags**: RW
 
@@ -216,7 +217,7 @@ The applicationId that will be saved to ["applicationIdField"](#attr-savedsearch
 
 If no applicationId was specified, [SavedSearches.getApplicationId](#method-savedsearchesgetapplicationid) will return the current [window.location.pathname](https://www.w3schools.com/jsref/prop_loc_pathname.asp) by default. This behavior can be turned off by setting [allowNullApplicationId:true](#attr-savedsearchesallownullapplicationid).
 
-The `applicationId` allows the same dataSource to be used to store savedSearches for different applications. It also ensures that if no [explicit dataSource](#attr-savedsearchesdefaultdatasource) was specified, and searches are being stored to [browser local storage](#method-savedsearchesgetlocaldatasource), saved searches will be associated with the current application even if another application running under the same domain/port has a component with the same [componentId](#method-savedsearchesgetsavedsearchid).
+The `applicationId` allows the same dataSource to be used to store savedSearches for different applications. It also ensures that if [explicit dataSource](#attr-savedsearchesdefaultdatasource) was specified, and searches are being stored to [browser local storage](#method-savedsearchesgetlocaldatasource), saved searches will be associated with the current application even if another application running under the same domain/port has a component with the same [componentId](#method-savedsearchesgetsavedsearchid).
 
 **Flags**: RW
 
@@ -234,7 +235,7 @@ This is expected to be populated automatically when new search records are added
 ## Attr: SavedSearches.adminRole
 
 ### Description
-The name of the adminRole (used via [Authentication.hasRole](Authentication.md#classmethod-authenticationhasrole)) to check to see if the current user has admin privileges.
+The name of the adminRole (used via +link{Authentication.hasRole()) to check to see if the current user has admin privileges.
 
 **Flags**: RW
 
@@ -382,12 +383,14 @@ If there is no explicly specified dataSource for storing saved searches, it will
 
 The returned value is calculated as follows:
 
-*   If [DataBoundComponent.savedSearchId](DataBoundComponent.md#attr-databoundcomponentsavedsearchid) is set, this method will return the [SavedSearches.savedSearchIDPrefix](#attr-savedsearchessavedsearchidprefix) + [component.savedSearchId](DataBoundComponent.md#attr-databoundcomponentsavedsearchid).
-*   Otherwise, the component's [local ID](Canvas.md#method-canvasgetlocalid) (which falls back to the [global ID](Canvas.md#attr-canvasid) if no local ID is present) will be returned. If [DataBoundComponent.showSavedSearchesByDS](DataBoundComponent.md#attr-databoundcomponentshowsavedsearchesbyds) is set and the component has a DataSource, the method will instead return the local ID + ":" + the DataSource ID, where the delimiter avoids potential collisions otherwise possible.
+*   If [DataBoundComponent.savedSearchId](DataBoundComponent.md#attr-databoundcomponentsavedsearchid) is set, this method will return the [savedSearchIdPrefix](#savedsearchidprefix) + `component.savedSearchId`.
+*   Otherwise a [minimal locator](AutoTest.md#classmethod-autotestgetminimallocator) will be returned.  
+    Note that for components with an explicitly specified [ID](Canvas.md#attr-canvasid), this will just be the widget ID.
 
 Note: The returned ID string is not guaranteed to be immutable over a widget's lifespan.
 
-If no explicit component `savedSearchId` was set, the system will rely on the widget's local or global ID, which can change unless explicit due to app changes, and on the DataSource ID bound to the component, which may change at runtime. Since this property is used to identify the savedSearch records associated with this component, when it changes a different set of saved searches will be available to the user.
+If no explicit component `savedSearchId` was set, the system will rely on the AutoTest minimal locator which can change in various cases (a component may be reparented, or bound to a new DataSource, etc).  
+Since this property is used to identify the savedSearch records associated with this component, when it changes a different set of saved searches will be available to the user.
 
 If you want to control this explicitly, you can do so by setting an explicit [savedSearchId](DataBoundComponent.md#attr-databoundcomponentsavedsearchid). Changing the `savedSearchId` at runtime also allows you to deliberately associate a component with a new set of SavedSearches depending on application state. One common case where this might be desirable is if a component is bound to a dataSource and you want to bind to a new DataSource where the savedSearch criteria would not be applicable.
 

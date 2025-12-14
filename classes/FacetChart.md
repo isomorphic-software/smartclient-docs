@@ -153,20 +153,6 @@ Note that when color is being used to show values of the `colorScaleMetric` then
 
 See the *Color Scale Chart* SDK example.
 
-#### Three-Facet Bar and Column Charts
-
-Bar and Column charts support having three facets declared, unlike most other charts supporting data labels, which only allow two. With three facets, the first two are shown as [data label facets](#method-facetchartgetdatalabelfacet), as separate rows of labels, and the third facet is used as the [legend facet](#method-facetchartgetlegendfacet).
-
-You can use features such as [stacking](#attr-facetchartstacked) and [extra axes](#attr-facetchartextraaxissettings) with a three-facet Bar or Column chart, but certain chart settings are incompatible:
-
-*   [Zooming](#attr-facetchartcanzoom) isn't supported
-*   [Inline labels](#attr-facetchartshowinlinelabels) aren't supported
-*   The only mode supported for [label collapsing](#attr-facetchartlabelcollapsemode) is "sample".
-
-In addition, with a three-facet chart, you can only call [FacetChart.setChartType](#method-facetchartsetcharttype) to switch between Bar and Column charts. Switching to other types is not supported.
-
-Take a look at [this example](https://www.smartclient.com/smartclient-latest/showcase/?id=threeFacetBarChart) to see this feature in action.
-
 #### Notes on printing
 
 FacetCharts support printing on all supported desktop browsers. When using Pro Edition or better with the SmartClient Server Framework installed, charts can also be exported to PDF via [RPCManager.exportContent](RPCManager.md#classmethod-rpcmanagerexportcontent) or to images via [RPCManager.exportImage](RPCManager.md#classmethod-rpcmanagerexportimage).
@@ -519,7 +505,7 @@ Title for the `"Area"` item in the `"Chart Type"` submenu in the context menu.
 ## Attr: FacetChart.facetFields
 
 ### Description
-Specifies what [DataSource](DataSource.md#class-datasource) fields to use as the chart [FacetChart.facets](#attr-facetchartfacets) for a databound chart. If [FacetChart.facets](#attr-facetchartfacets) is also explicitly set, [FacetChart.facetFields](#attr-facetchartfacetfields) is definitive but [Facet](../reference_2.md#object-facet) properties will be picked up from [FacetChart.facets](#attr-facetchartfacets) also present in the [FacetChart.facetFields](#attr-facetchartfacetfields).
+Specifies what [DataSource](DataSource.md#class-datasource) fields to use as the chart [FacetChart.facets](#attr-facetchartfacets) for a databound chart. If [FacetChart.facets](#attr-facetchartfacets) is also explicitly set, [FacetChart.facetFields](#attr-facetchartfacetfields) is definitive but [Facet](Facet.md#class-facet) properties will be picked up from [FacetChart.facets](#attr-facetchartfacets) also present in the [FacetChart.facetFields](#attr-facetchartfacetfields).
 
 If neither this property nor [FacetChart.facets](#attr-facetchartfacets) is set, a databound chart will attempt to auto-derive [FacetChart.facetFields](#attr-facetchartfacetfields) from the DataSource fields. The first two text or text-derived fields in the DataSource will be assumed to be the [FacetChart.facetFields](#attr-facetchartfacetfields).
 
@@ -619,9 +605,7 @@ For single-facet charts, most chart types have a data label facet as the first f
 
 In all multi-facet charts, the data label facet is always first and the legend facet is second. In most chart types the data label facet and the legend facet may be swapped on the fly by the user clicking on the "Swap Facets" item of the context menu.
 
-In the case of [Bar and Column Charts](#class-facetchart), up to three facets are supported, where the first two facets in that case are taken as the data label facets, and the third facet as the legend facet. This works by positioning both data label facets on the same axis, in a way that clearly shows which inner facet values are associated with each outer facet value.
-
-For databound charts, [FacetChart.facetFields](#attr-facetchartfacetfields) may be specified instead of this property. If both are provided, [FacetChart.facetFields](#attr-facetchartfacetfields) is definitive but [Facet](../reference_2.md#object-facet) properties will be picked up from [FacetChart.facets](#attr-facetchartfacets) also present in the [FacetChart.facetFields](#attr-facetchartfacetfields).
+For databound charts, [FacetChart.facetFields](#attr-facetchartfacetfields) may be specified instead of this property. If both are provided, [FacetChart.facetFields](#attr-facetchartfacetfields) is definitive but [Facet](Facet.md#class-facet) properties will be picked up from [FacetChart.facets](#attr-facetchartfacets) also present in the [FacetChart.facetFields](#attr-facetchartfacetfields).
 
 **Flags**: IR
 
@@ -708,7 +692,7 @@ A [labelCollapseMode](#attr-facetchartlabelcollapsemode) is automatically enable
 ## Attr: FacetChart.showDataValuesMode
 
 ### Description
-Strategy for determining whether and when to show data-values - either in the chart, near the shape representing a value (above columns of a column chart for example, or adjacent to points in a line chart), in hovers, or some combination of both, including [automatic rotation](#attr-facetchartrotatedatavalues) where supported.
+Strategy for determining whether and when to show data-values - either in the chart, near the shape representing a value (above columns of a column chart for example, or adjacent to points in a line chart), in hovers, or some combination of both, including [automatic rotation](#facetchartrotatedatalabels) where supported.
 
 Depending on the chart type, there are different options for showing data-values - eg, [stacked-charts](#attr-facetchartstacked) cannot show values inline in the chart-body; column-charts can, and they can rotate titles if they're wider than their columns; pie charts can show some data-values in the chart but not others; all the types can show values in hovers.
 
@@ -844,18 +828,6 @@ Properties for rectangle that draws behind of a floating hover label that repres
 **Flags**: IR
 
 ---
-## Attr: FacetChart.dataLabelFacetsMargin
-
-### Description
-Determines separation between the set of inner data labels and the set of outer data labels for charts that support multiple data label facets. See the discussion of "Three Facet Bar and Column Charts" in the [overview](#class-facetchart).
-
-### Groups
-
-- labelsAndTitles
-
-**Flags**: IRW
-
----
 ## Attr: FacetChart.lowErrorMetric
 
 ### Description
@@ -947,7 +919,7 @@ Horizontal alignment of the chart's [legend widget](#attr-facetchartshowlegend).
 ## Attr: FacetChart.dataLineType
 
 ### Description
-How to draw lines between adjacent data points in Line and Scatter charts. See [DataLineType](../reference_2.md#type-datalinetype).
+How to draw lines between adjacent data points in Line and Scatter charts. See [DataLineType](../reference.md#type-datalinetype).
 
 Does not apply to boundary lines for shapes in Area or Radar plots.
 
@@ -1061,7 +1033,7 @@ For rectangular charts (bar, column, line), margin around the inside of the main
 ## Attr: FacetChart.showScatterLines
 
 ### Description
-Whether to draw lines between adjacent data points in "Scatter" plots. See also [DataLineType](../reference_2.md#type-datalinetype) for enabling smoothing.
+Whether to draw lines between adjacent data points in "Scatter" plots. See also [DataLineType](../reference.md#type-datalinetype) for enabling smoothing.
 
 **Flags**: IRW
 
@@ -1069,11 +1041,9 @@ Whether to draw lines between adjacent data points in "Scatter" plots. See also 
 ## Attr: FacetChart.brightenPercent
 
 ### Description
-When [FacetChart.highlightDataValues](#attr-facetcharthighlightdatavalues) is true, sets the percentage by which to brighten filled data-shapes in some [chart-types](#attr-facetchartcharttype) as the mouse is moved over the chart. Affects Bar, Column, Pie and Doughnut charts, and will brighten either the shape's fill-color or its border-color, depending on the value of [FacetChart.brightenAllOnHover](#attr-facetchartbrightenallonhover).
+Determines the percentage by which to brighten a data shape (filled area in area, bar, pie, or radar chart) when showing the associated data label due to [FacetChart.showDataValuesMode](#attr-facetchartshowdatavaluesmode). Legal values are between 0 and 100. inclusive.
 
-Valid values are between 0 and 100, inclusive.
-
-The property default may vary based on the currently loaded skin.
+The property default varies based on the currently loaded skin.
 
 ### See Also
 
@@ -1238,8 +1208,6 @@ Note that this setting has no impact on axis labeling, which always occurs with 
 - [FacetChart.centerTitle](#attr-facetchartcentertitle)
 - [FacetChart.autoScrollData](#attr-facetchartautoscrolldata)
 
-**Deprecated**
-
 **Flags**: IR
 
 ---
@@ -1261,20 +1229,6 @@ Properties for title label.
 For scatter charts only, the "id" of the metric facet value to use for the x-axis.
 
 The default x-axis metric is the second value of the metric facet.
-
-**Flags**: IR
-
----
-## Attr: FacetChart.fetchRequestProperties
-
-### Description
-If [FacetChart.autoFetchData](#attr-facetchartautofetchdata) is `true`, this attribute allows the developer to declaratively specify [DSRequest](../reference_2.md#object-dsrequest) properties for the initial [fetchData()](ListGrid_2.md#method-listgridfetchdata) call.
-
-Note that any properties governing more specific request attributes for the initial fetch (such as [FacetChart.autoFetchTextMatchStyle](#attr-facetchartautofetchtextmatchstyle) and initial sort specifiers) will be applied on top of this properties block.
-
-### Groups
-
-- databinding
 
 **Flags**: IR
 
@@ -1677,11 +1631,7 @@ By default, all ticks are shown as major ticks.
 ## Attr: FacetChart.brightenAllOnHover
 
 ### Description
-When [FacetChart.highlightDataValues](#attr-facetcharthighlightdatavalues) is true, should the whole draw-area of the data-value be brightened by [a percentage](#attr-facetchartbrightenpercent), or just its border?
-
-By default, only the border around the draw-area is brightened.
-
-Only affects Bar, Column, Pie and Doughnut [chart-types](#attr-facetchartcharttype).
+When hovering over a bar chart block, should the whole bar chart area be brightened Default behaviour is to just brighten the line color around the bar chart area
 
 **Flags**: IRW
 
@@ -1916,18 +1866,6 @@ Whether the selected range should be shown in a different style, which can be co
 **Flags**: IR
 
 ---
-## Attr: FacetChart.outerLabelFacetLineProperties
-
-### Description
-Properties for the lines drawn to show the span of outer data label facet values, if present.
-
-### Groups
-
-- labelsAndTitles
-
-**Flags**: IR
-
----
 ## Attr: FacetChart.clusterMarginRatio
 
 ### Description
@@ -2067,18 +2005,6 @@ Properties for lines that outline a data shape (in filled charts such as area or
 **Flags**: IR
 
 ---
-## Attr: FacetChart.dataLabelToValueAxisMargin
-
-### Description
-Margin between the edge of the chart and the data labels of the data label axis. This will default to the [chart margin](#attr-facetchartchartrectmargin) if unset and should not exceed it. Setting this property to some valid non-null value has the impact of moving the data labels towards to chart, away from the axis label.
-
-### Groups
-
-- labelsAndTitles
-
-**Flags**: IR
-
----
 ## Attr: FacetChart.expectedValueLineProperties
 
 ### Description
@@ -2162,7 +2088,7 @@ Causes labels for the X axis to be shown above the axis and to the right of the 
 ## Attr: FacetChart.titleAlign
 
 ### Description
-Horizontal alignment of the chart's [title](#attr-facetcharttitle) with respect to the the visible chart-width.
+Horizontal alignment of the chart's [title](#attr-facetcharttitle).
 
 ### Groups
 
@@ -2253,16 +2179,6 @@ Margin between [multiple value axes](#attr-facetchartextraaxismetrics).
 **Flags**: IR
 
 ---
-## Attr: FacetChart.highlightDataValues
-
-### Description
-Should the draw-area of nearby filled data-value shapes be highlighted as the mouse is moved over some [chart-types](#attr-facetchartcharttype)?
-
-When set to true, data-shapes in Bar, Column, Pie and Doughnut charts can be highlighted by [brightening](#attr-facetchartbrightenallonhover) their fill or border colors by a [percentage](#attr-facetchartbrightenpercent), and by applying a [shadow](#attr-facetchartdatavaluehovershadow) around them.
-
-**Flags**: IRW
-
----
 ## Attr: FacetChart.maxDataPointSize
 
 ### Description
@@ -2306,7 +2222,7 @@ Note that if this chart's data includes points that fall above this value, they 
 ### Description
 Defines the set of metrics that will be plotted as additional vertical axes. See the main [FacetChart](#class-facetchart) docs for an overview of how multi-axis charts are used.
 
-Each metric corresponds to different value property of the data records and superimposes its drawn data onto the chart rectangle. The value properties are called metrics, and they can be either the [FacetChart.valueProperty](#attr-facetchartvalueproperty) or the "id" of a [FacetValue](../reference.md#object-facetvalue) of the inlined [Facet](../reference_2.md#object-facet) (which is then called the metric facet). Each value axis has its own gradations that are shown as tick marks along the length of the axis. This property, extraAxisMetrics, specifies the metrics to use for additional value axes to the main value axis.
+Each metric corresponds to different value property of the data records and superimposes its drawn data onto the chart rectangle. The value properties are called metrics, and they can be either the [FacetChart.valueProperty](#attr-facetchartvalueproperty) or the "id" of a [FacetValue](../reference.md#object-facetvalue) of the inlined [Facet](Facet.md#class-facet) (which is then called the metric facet). Each value axis has its own gradations that are shown as tick marks along the length of the axis. This property, extraAxisMetrics, specifies the metrics to use for additional value axes to the main value axis.
 
 The additional value axis may have their own gradations, chart type, log scale, data colors and gradients, and other chart properties. These properties are specified with the [FacetChart.extraAxisSettings](#attr-facetchartextraaxissettings) property.
 
@@ -2340,7 +2256,7 @@ Whether to use logarithmic scaling for the [data point sizes](#attr-facetchartpo
 ## Attr: FacetChart.dataSource
 
 ### Description
-The DataSource that this component should bind to for default fields and for performing [DataSource requests](../reference_2.md#object-dsrequest).
+The DataSource that this component should bind to for default fields and for performing [DataSource requests](../reference.md#object-dsrequest).
 
 Can be specified as either a DataSource instance or the String ID of a DataSource.
 
@@ -2549,14 +2465,6 @@ Maximum distance from the \*outer radius\* of the nearest bubble when hover will
 **Flags**: IR
 
 ---
-## Attr: FacetChart.dataValueHoverShadow
-
-### Description
-When [FacetChart.highlightDataValues](#attr-facetcharthighlightdatavalues) is true, this attribute can be set to a [DrawItem shadow](../reference.md#object-shadow) to show around the draw-area of nearby filled data-value shapes as the mouse is moved around in Bar, Column, Pie and Doughnut [chart-types](#attr-facetchartcharttype).
-
-**Flags**: IRW
-
----
 ## Attr: FacetChart.pieStartAngle
 
 ### Description
@@ -2727,18 +2635,6 @@ Normally, ticks are not shown for the primary axis, since [gradation lines](#met
 ### Groups
 
 - ticks
-
-**Flags**: IRW
-
----
-## Attr: FacetChart.dataAxisLabelDelimiter
-
-### Description
-Determines how inner and outer data axis labels are separated for charts that support multiple data label facets. See the discussion of "Three Facet Bar and Column Charts" in the [overview](#class-facetchart).
-
-### Groups
-
-- labelsAndTitles
 
 **Flags**: IRW
 
@@ -3049,7 +2945,7 @@ Padding from edge of Y the Axis Label.
 ## Attr: FacetChart.autoFetchTextMatchStyle
 
 ### Description
-If [FacetChart.autoFetchData](#attr-facetchartautofetchdata) is `true`, this attribute allows the developer to specify a textMatchStyle for the initial [fetchData()](ListGrid_2.md#method-listgridfetchdata) call.
+If [FacetChart.autoFetchData](#attr-facetchartautofetchdata) is `true`, this attribute allows the developer to specify a textMatchStyle for the initial [fetchData()](ListGrid_1.md#method-listgridfetchdata) call.
 
 ### Groups
 
@@ -3355,8 +3251,6 @@ Note that alignment of the title itself is governed by [titleAlign](#attr-facetc
 - [FacetChart.centerLegend](#attr-facetchartcenterlegend)
 - [FacetChart.autoScrollData](#attr-facetchartautoscrolldata)
 
-**Deprecated**
-
 **Flags**: IR
 
 ---
@@ -3435,9 +3329,9 @@ The default y-axis metric is the first value of the metric facet.
 ## Attr: FacetChart.autoFetchData
 
 ### Description
-If true, when this component is first drawn, automatically call `this.fetchData()`. Criteria for this fetch may be picked up from [FacetChart.initialCriteria](#attr-facetchartinitialcriteria), and textMatchStyle may be specified via [autoFetchTextMatchStyle](ListGrid_1.md#attr-listgridautofetchtextmatchstyle). Additional request properties may be specified using [FacetChart.fetchRequestProperties](#attr-facetchartfetchrequestproperties).
+If true, when this component is first drawn, automatically call `this.fetchData()`. Criteria for this fetch may be picked up from [FacetChart.initialCriteria](#attr-facetchartinitialcriteria), and textMatchStyle may be specified via [autoFetchTextMatchStyle](ListGrid_1.md#attr-listgridautofetchtextmatchstyle).
 
-NOTE: if `autoFetchData` is set, calling [fetchData()](ListGrid_2.md#method-listgridfetchdata) before draw will cause two requests to be issued, one from the manual call to fetchData() and one from the autoFetchData setting. The second request will use only [FacetChart.initialCriteria](#attr-facetchartinitialcriteria) and not any other criteria or settings from the first request. Generally, turn off autoFetchData if you are going to manually call [fetchData()](ListGrid_2.md#method-listgridfetchdata) at any time. Note: If you are using saved searches - either via [SavedSearchItem](SavedSearchItem.md#class-savedsearchitem) or [ListGrid.saveDefaultSearch](ListGrid_1.md#attr-listgridsavedefaultsearch), autoFetchData will be automatically suspended and replaced with the saved criteria/view state, if applicable.
+NOTE: if `autoFetchData` is set, calling [fetchData()](ListGrid_1.md#method-listgridfetchdata) before draw will cause two requests to be issued, one from the manual call to fetchData() and one from the autoFetchData setting. The second request will use only [FacetChart.initialCriteria](#attr-facetchartinitialcriteria) and not any other criteria or settings from the first request. Generally, turn off autoFetchData if you are going to manually call [fetchData()](ListGrid_1.md#method-listgridfetchdata) at any time. Note: If you are using saved searches - either via [SavedSearchItem](SavedSearchItem.md#class-savedsearchitem) or [ListGrid.saveDefaultSearch](ListGrid_1.md#attr-listgridsavedefaultsearch), autoFetchData will be automatically suspended and replaced with the saved criteria/view state, if applicable.
 
 ### Groups
 
@@ -3445,7 +3339,7 @@ NOTE: if `autoFetchData` is set, calling [fetchData()](ListGrid_2.md#method-list
 
 ### See Also
 
-- [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata)
+- [ListGrid.fetchData](ListGrid_1.md#method-listgridfetchdata)
 
 **Flags**: IR
 
@@ -3751,7 +3645,7 @@ Provides a new data set to the chart after it has been created or drawn. The Fac
 ## Method: FacetChart.getLegendFacet
 
 ### Description
-Returns the [Facet](../reference_2.md#object-facet) in the list of [facets](#attr-facetchartfacets) whose [values](Facet.md#attr-facetvalues) are rendered in the chart's legend.
+Returns the [Facet](Facet.md#class-facet) in the list of [facets](#attr-facetchartfacets) whose [values](Facet.md#attr-facetvalues) are rendered in the chart's legend.
 
 Most single-facet charts do not have a legend facet. The exceptions are that single-facet Pie/Doughnut charts have a legend facet as the first facet and Bubble and Scatter charts may optionally have a legend facet as the second facet, after the metric facet.
 
@@ -3958,7 +3852,7 @@ Note that multiple foreign keys into the schema are supported by this method.
 | record | [ListGridRecord](#type-listgridrecord) | false | — | DataSource record |
 | schema | [Canvas](#type-canvas)|[DataSource](#type-datasource)|[ID](#type-id) | false | — | schema of the DataSource record, or DataBoundComponent already bound to that schema |
 | callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke on completion |
-| requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | additional properties to set on the DSRequest that will be issued |
+| requestProperties | [DSRequest](#type-dsrequest) | true | — | additional properties to set on the DSRequest that will be issued |
 
 ### Groups
 
@@ -4307,7 +4201,7 @@ Get a facet definition by facetId.
 
 ### See Also
 
-- [Facet](../reference_2.md#object-facet)
+- [Facet](Facet.md#class-facet)
 
 ---
 ## Method: FacetChart.setScaleStartColor
@@ -4509,7 +4403,6 @@ Fires when the user clicks on a data label, that is, a text label showing values
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | facetValue | [FacetValue](#type-facetvalue) | false | — | facetValue that was clicked, or null if click was in empty space |
-| facetValueId | [Any](#type-any) | false | — | id of the facetValue that was clicked. This is provided for convenience as it is already available in facetValue. |
 
 ---
 ## Method: FacetChart.getChartCenter
@@ -4625,7 +4518,7 @@ Method to change the current [dataLineType](../reference.md#type-charttype). Wil
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| dataLineType | [DataLineType](../reference_2.md#type-datalinetype) | false | — | ow to draw lines between adjacent data points in Line and Scatter charts |
+| dataLineType | [DataLineType](../reference.md#type-datalinetype) | false | — | ow to draw lines between adjacent data points in Line and Scatter charts |
 
 ---
 ## Method: FacetChart.formatFacetValueId
@@ -4779,7 +4672,7 @@ Additional DrawItems added in this method will appear underneath data elements s
 ### Description
 Returns the minimum cluster size (for clustered charts), or minimum bar thickness (for histogram or stacked charts) for the specified [data label\\n facet](#method-facetchartgetdatalabelfacet) value. Only applicable to a column, bar, or histogram chart. No default implementation. Both this minimum and [FacetChart.minBarThickness](#attr-facetchartminbarthickness) are used together to determine the effective minimum of the cluster or bar stack.
 
-Per-facet-value minimum cluster sizes aren't supported for [multi-axis](../reference_2.md#object-metricsettings) charts, in which multiple chart types are overlaid onto the same chart.
+Per-facet-value minimum cluster sizes aren't supported for [multi-axis](../reference.md#object-metricsettings) charts, in which multiple chart types are overlaid onto the same chart.
 
 Note that this method is simply an override point, since it has no default implementation.
 
@@ -4866,7 +4759,7 @@ The first argument, criteria, determines which metric is used to calculate the m
 ## Method: FacetChart.getDataLabelFacet
 
 ### Description
-Returns the [Facet](../reference_2.md#object-facet) in the list of [facets](#attr-facetchartfacets) whose [values](Facet.md#attr-facetvalues) are rendered as labels along the data axis of the chart or in the main chart area.
+Returns the [Facet](Facet.md#class-facet) in the list of [facets](#attr-facetchartfacets) whose [values](Facet.md#attr-facetvalues) are rendered as labels along the data axis of the chart or in the main chart area.
 
 Most single-facet charts and all multi-facet charts have the data label facet as their first facet. The exceptions are that single-facet Pie/Doughnut charts and Bubble and Scatter charts do not have data label facets.
 
@@ -5077,11 +4970,11 @@ This method takes an optional callback parameter (set to a [DSCallback](../refer
 
 In addition to the callback parameter for this method, developers can use [dataArrived()](ListGrid_2.md#method-listgriddataarrived) to be notified every time data is loaded.
 
-By default, this method assumes a [TextMatchStyle](../reference_2.md#type-textmatchstyle) of "exact"; that can be overridden by supplying a different value in the requestProperties parameter. See [DataBoundComponent.willFetchData](DataBoundComponent.md#method-databoundcomponentwillfetchdata);
+By default, this method assumes a [TextMatchStyle](../reference.md#type-textmatchstyle) of "exact"; that can be overridden by supplying a different value in the requestProperties parameter. See [DataBoundComponent.willFetchData](DataBoundComponent.md#method-databoundcomponentwillfetchdata);
 
 **Changing the request properties**
 
-Changes to [TextMatchStyle](../reference_2.md#type-textmatchstyle) made via `requestProperties` will be honored in combination with the fetch criteria, possibly invalidating cache and triggering a server request if needed, as documented for [willFetchData()](DataBoundComponent.md#method-databoundcomponentwillfetchdata). In contrast, changes to [operationId](DSRequest.md#attr-dsrequestoperationid) in the request properties will cause the [ResultSet](ResultSet.md#class-resultset) or [ResultTree](ResultTree.md#class-resulttree) to be rebuilt, always refetching from the server. However, changes to other request properties after the initial fetch won't be detected, and no fetch will get triggered based on that new request context.
+Changes to [TextMatchStyle](../reference.md#type-textmatchstyle) made via `requestProperties` will be honored in combination with the fetch criteria, possibly invalidating cache and triggering a server request if needed, as documented for [willFetchData()](DataBoundComponent.md#method-databoundcomponentwillfetchdata). In contrast, changes to [operationId](DSRequest.md#attr-dsrequestoperationid) in the request properties will cause the [ResultSet](ResultSet.md#class-resultset) or [ResultTree](ResultTree.md#class-resulttree) to be rebuilt, always refetching from the server. However, changes to other request properties after the initial fetch won't be detected, and no fetch will get triggered based on that new request context.
 
 To pick up such changes, we recommend that you call [setData(\[\])](#method-facetchartsetdata) (passing an empty array to ensure the data model is cleared), and then call this method to fetch again. If you try to do it by calling [invalidateCache()](ListGrid_2.md#method-listgridinvalidatecache), you may see duplicate fetches if you haven't already updated the data context by calling this method with the new request properties, and fail to do so before the component is [redrawn](Canvas.md#method-canvasredraw).
 
@@ -5091,7 +4984,7 @@ To pick up such changes, we recommend that you call [setData(\[\])](#method-face
 |------|------|----------|---------|-------------|
 | criteria | [Criteria](../reference_2.md#type-criteria) | true | — | Search criteria. If a [DynamicForm](DynamicForm.md#class-dynamicform) is passed in as this argument instead of a raw criteria object, will be derived by calling [DynamicForm.getValuesAsCriteria](DynamicForm.md#method-dynamicformgetvaluesascriteria) |
 | callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke when a fetch is complete. Fires only if server contact was required |
-| requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | additional properties to set on the DSRequest that will be issued |
+| requestProperties | [DSRequest](#type-dsrequest) | true | — | additional properties to set on the DSRequest that will be issued |
 
 ### Groups
 

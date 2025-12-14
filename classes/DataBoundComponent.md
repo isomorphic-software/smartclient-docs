@@ -9,7 +9,7 @@
 ### Description
 How to fetch and manage records retrieve from the server. See [FetchMode](../reference_2.md#type-fetchmode).
 
-This setting only applies to the [ResultSet](ResultSet.md#class-resultset) automatically created by calling [fetchData()](ListGrid_2.md#method-listgridfetchdata). If a pre-existing ResultSet is passed to setData() instead, it's existing setting for [ResultSet.fetchMode](ResultSet.md#attr-resultsetfetchmode) applies.
+This setting only applies to the [ResultSet](ResultSet.md#class-resultset) automatically created by calling [fetchData()](ListGrid_1.md#method-listgridfetchdata). If a pre-existing ResultSet is passed to setData() instead, it's existing setting for [ResultSet.fetchMode](ResultSet.md#attr-resultsetfetchmode) applies.
 
 ### Groups
 
@@ -51,18 +51,6 @@ This property supports [dynamicCriteria](../kb_topics/dynamicCriteria.md#kb-topi
 **Flags**: IR
 
 ---
-## Attr: DataBoundComponent.reapplyingAsyncFilterAndSortMessage
-
-### Description
-The HTML-format message displayed to users while asynchronous filters are being re-evaluated on a list of records.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
-
----
 ## Attr: DataBoundComponent.fieldEditorWindowTitle
 
 ### Description
@@ -77,21 +65,6 @@ Two dynamic variables are available - "builderType", either Formula or Summary, 
 - i18nMessages
 
 **Flags**: IRWA
-
----
-## Attr: DataBoundComponent.asyncErrorHoverProperties
-
-### Description
-Properties to use for a hover displaying information about a non-successful asynchronous operation.
-
-Only the properties mentioned on the documentation of [Hover.show](Hover.md#classmethod-hovershow) will have an effect.
-
-### Groups
-
-- fieldGeneration
-- pseudoFieldGeneration
-
-**Flags**: IRW
 
 ---
 ## Attr: DataBoundComponent.dragTrackerStyle
@@ -125,8 +98,6 @@ Adds an item to the header context menu allowing users to launch a dialog to def
 
 User-added hilites can be persisted via [DataBoundComponent.getHiliteState](#method-databoundcomponentgethilitestate) and [DataBoundComponent.setHiliteState](#method-databoundcomponentsethilitestate).
 
-To avoid undefined behavior, this property must be set to `false` if the same record objects, or the same [ResultSet](ResultSet.md#class-resultset) instances, are shared among multiple [DataBoundComponent](../reference.md#interface-databoundcomponent)s.
-
 ### Groups
 
 - hiliting
@@ -155,7 +126,7 @@ The message to display to the user if an export of a DataBoundComponent's data i
 
 ### See Also
 
-- [ListGrid.exportClientData](ListGrid_2.md#method-listgridexportclientdata)
+- [ListGrid.exportClientData](ListGrid_1.md#method-listgridexportclientdata)
 
 **Flags**: IRW
 
@@ -182,8 +153,6 @@ If the user picks an icon, the created hiliting rule will have [Hilite.icon](Hil
 Adds an item to the header context menu allowing users to launch a dialog to define a new field based on values present in other fields, using the [FormulaBuilder](FormulaBuilder.md#class-formulabuilder).
 
 User-added formula fields can be persisted via [ListGrid.getFieldState](ListGrid_2.md#method-listgridgetfieldstate) and [ListGrid.setFieldState](ListGrid_2.md#method-listgridsetfieldstate).
-
-To avoid undefined behavior, this property must be set to `false` if the same record objects, or the same [ResultSet](ResultSet.md#class-resultset) instances, are shared among multiple [DataBoundComponent](../reference.md#interface-databoundcomponent)s.
 
 ### Groups
 
@@ -233,18 +202,6 @@ A message to display to the user if server-side validation fails with an error b
 ### Groups
 
 - validation
-- i18nMessages
-
-**Flags**: IRW
-
----
-## Attr: DataBoundComponent.aiMaxRecordsMessage
-
-### Description
-The message to show when a user tries to use AI on a data set containing more than [DataBoundComponent.aiMaxRecords](#attr-databoundcomponentaimaxrecords) records.
-
-### Groups
-
 - i18nMessages
 
 **Flags**: IRW
@@ -358,21 +315,13 @@ The following [passthroughs](../kb_topics/autoChildUsage.md#kb-topic-using-autoc
 ## Attr: DataBoundComponent.dataSource
 
 ### Description
-The DataSource that this component should bind to for default fields and for performing [DataSource requests](../reference_2.md#object-dsrequest).
+The DataSource that this component should bind to for default fields and for performing [DataSource requests](../reference.md#object-dsrequest).
 
 Can be specified as either a DataSource instance or the String ID of a DataSource.
 
 ### Groups
 
 - databinding
-
-**Flags**: IRW
-
----
-## Attr: DataBoundComponent.aiSortFieldMaxRecords
-
-### Description
-The maximum number of records that can be processed with AIDE sort-via-AI.
 
 **Flags**: IRW
 
@@ -444,27 +393,6 @@ If this property is not defined, SmartClient defaults to returning the selection
 **Flags**: IRW
 
 ---
-## Attr: DataBoundComponent.defaultAsyncErrorHoverContents
-
-### Description
-For values that could not be asynchronously generated because of some error, the default hover message to display, if an error message is not available.
-
-Additional properties of the hover may be specified by setting [DataBoundComponent.asyncErrorHoverProperties](#attr-databoundcomponentasyncerrorhoverproperties).
-
-For now, only [ListGrid](ListGrid_1.md#class-listgrid) and subclasses support this setting, and [ListGrid.canHover](ListGrid_1.md#attr-listgridcanhover) and [ListGrid.showHover](ListGrid_1.md#attr-listgridshowhover) must be set to `true`.
-
-### Groups
-
-- fieldGeneration
-- i18nMessages
-
-### See Also
-
-- [DataBoundComponent.isValuePendingAsyncOrAsyncError](#method-databoundcomponentisvaluependingasyncorasyncerror)
-
-**Flags**: IRW
-
----
 ## Attr: DataBoundComponent.editSummaryFieldText
 
 ### Description
@@ -480,7 +408,7 @@ Text for a menu item allowing users to edit the formatter for a field
 ## Attr: DataBoundComponent.dataPageSize
 
 ### Description
-When using [data paging](#attr-databoundcomponentdatafetchmode), how many records to fetch at a time. If set to a positive integer, `dataPageSize` will override the default [resultSize](ResultSet.md#attr-resultsetresultsize) for ResultSets automatically created when you call [fetchData()](ListGrid_2.md#method-listgridfetchdata) (and similarly for the [resultSize](ResultTree.md#attr-resulttreeresultsize) of ResultTrees). Leaving `dataPageSize` at its default means to just use the default page size of the data container.
+When using [data paging](#attr-databoundcomponentdatafetchmode), how many records to fetch at a time. If set to a positive integer, `dataPageSize` will override the default [resultSize](ResultSet.md#attr-resultsetresultsize) for ResultSets automatically created when you call [fetchData()](ListGrid_1.md#method-listgridfetchdata) (and similarly for the [resultSize](ResultTree.md#attr-resulttreeresultsize) of ResultTrees). Leaving `dataPageSize` at its default means to just use the default page size of the data container.
 
 **Note** that regardless of the `dataPageSize` setting, a component will always fetch all of data that it needs to draw. Settings such as [showAllRecords:true](ListGrid_1.md#attr-listgridshowallrecords), [drawAllMaxCells](ListGrid_1.md#attr-listgriddrawallmaxcells) and [drawAheadRatio](ListGrid_1.md#attr-listgriddrawaheadratio) can cause more rows than the configured `dataPageSize` to be fetched.
 
@@ -520,7 +448,7 @@ The [Window](Window.md#class-window) used to edit calculated fields for this com
 ### Description
 A DataBoundComponent manipulates records with one or more fields, and `component.fields` tells the DataBoundComponent which fields to present, in what order, and how to present each field.
 
-When both `component.fields` and `[component.dataSource](#attr-databoundcomponentdatasource)` are set, any fields in `component.fields` with the same name as a DataSource field inherit properties of the DataSource field. This allows you to centralize data model information in the DataSource, but customize presentation of DataSource fields on a per-component basis. For example, in a ListGrid, a shorter title or format for a field might be chosen to save space.
+When both `component.fields` and `[component.dataSource](#attr-databoundcomponentdatasource)` are set, any fields in `component.fields` with the same name as a DataSource field inherit properties of the DataSource field. This allows you to centralize data model information in the DataSource, but customize presentation of DataSource fields on a per-component basic. For example, in a ListGrid, a shorter title or format for a field might be chosen to save space.
 
 By default, only fields specified on the component are shown, in the order specified on the component. The [DataBoundComponent.useAllDataSourceFields](#attr-databoundcomponentusealldatasourcefields) flag can be set to show all fields from the DataSource, with `component.fields` acting as field-by-field overrides and/or additional fields.
 
@@ -587,39 +515,6 @@ If set to null, duplicates will not be reported and the dragged duplicates will 
 **Flags**: IR
 
 ---
-## Attr: DataBoundComponent.asyncValueHoverContents
-
-### Description
-A message to display when hovering over a value that is being asynchronously generated.
-
-For now, only [ListGrid](ListGrid_1.md#class-listgrid) and subclasses support this setting, and [ListGrid.canHover](ListGrid_1.md#attr-listgridcanhover) and [ListGrid.showHover](ListGrid_1.md#attr-listgridshowhover) must be set to `true`.
-
-### Groups
-
-- fieldGeneration
-- i18nMessages
-
-### See Also
-
-- [DataBoundComponent.isValuePendingAsync](#method-databoundcomponentisvaluependingasync)
-- [ListGrid.pendingAsyncCellValue](ListGrid_1.md#attr-listgridpendingasynccellvalue)
-
-**Flags**: IRW
-
----
-## Attr: DataBoundComponent.aiMaxRecords
-
-### Description
-The maximum number of records that can be processed by AI Data Enhance processes.
-
-### See Also
-
-- [integratingAI](../kb_topics/integratingAI.md#kb-topic-integrating-ai-technology)
-- [DataBoundComponent.aiMaxRecordsMessage](#attr-databoundcomponentaimaxrecordsmessage)
-
-**Flags**: IRW
-
----
 ## Attr: DataBoundComponent.removeFormulaFieldText
 
 ### Description
@@ -642,20 +537,6 @@ Text for a menu item allowing users to remove a formula field
 - operations
 
 **Flags**: IRW
-
----
-## Attr: DataBoundComponent.showAsyncValues
-
-### Description
-When set to `true`, causes an "Async" suffix to be added to cell styles when the value is being asynchronously generated, and an "AsyncError" suffix to be added to cell styles when an error occurred during the asynchronous generation. The default setting is to show asynchronous values for generated fields in skins that support \*Async and \*AsyncError cell styles.
-
-For now, only [ListGrid](ListGrid_1.md#class-listgrid) and subclasses support this setting.
-
-### Groups
-
-- fieldGeneration
-
-**Flags**: IR
 
 ---
 ## Attr: DataBoundComponent.useFlatFields
@@ -848,9 +729,9 @@ For example, consider dragging "employees" to "teams", where "teams" has a field
 ## Attr: DataBoundComponent.autoFetchData
 
 ### Description
-If true, when this component is first drawn, automatically call `this.fetchData()`. Criteria for this fetch may be picked up from [DataBoundComponent.initialCriteria](#attr-databoundcomponentinitialcriteria), and textMatchStyle may be specified via [autoFetchTextMatchStyle](ListGrid_1.md#attr-listgridautofetchtextmatchstyle). Additional request properties may be specified using [DataBoundComponent.fetchRequestProperties](#attr-databoundcomponentfetchrequestproperties).
+If true, when this component is first drawn, automatically call `this.fetchData()`. Criteria for this fetch may be picked up from [DataBoundComponent.initialCriteria](#attr-databoundcomponentinitialcriteria), and textMatchStyle may be specified via [autoFetchTextMatchStyle](ListGrid_1.md#attr-listgridautofetchtextmatchstyle).
 
-NOTE: if `autoFetchData` is set, calling [fetchData()](ListGrid_2.md#method-listgridfetchdata) before draw will cause two requests to be issued, one from the manual call to fetchData() and one from the autoFetchData setting. The second request will use only [DataBoundComponent.initialCriteria](#attr-databoundcomponentinitialcriteria) and not any other criteria or settings from the first request. Generally, turn off autoFetchData if you are going to manually call [fetchData()](ListGrid_2.md#method-listgridfetchdata) at any time. Note: If you are using saved searches - either via [SavedSearchItem](SavedSearchItem.md#class-savedsearchitem) or [ListGrid.saveDefaultSearch](ListGrid_1.md#attr-listgridsavedefaultsearch), autoFetchData will be automatically suspended and replaced with the saved criteria/view state, if applicable.
+NOTE: if `autoFetchData` is set, calling [fetchData()](ListGrid_1.md#method-listgridfetchdata) before draw will cause two requests to be issued, one from the manual call to fetchData() and one from the autoFetchData setting. The second request will use only [DataBoundComponent.initialCriteria](#attr-databoundcomponentinitialcriteria) and not any other criteria or settings from the first request. Generally, turn off autoFetchData if you are going to manually call [fetchData()](ListGrid_1.md#method-listgridfetchdata) at any time. Note: If you are using saved searches - either via [SavedSearchItem](SavedSearchItem.md#class-savedsearchitem) or [ListGrid.saveDefaultSearch](ListGrid_1.md#attr-listgridsavedefaultsearch), autoFetchData will be automatically suspended and replaced with the saved criteria/view state, if applicable.
 
 ### Groups
 
@@ -858,7 +739,7 @@ NOTE: if `autoFetchData` is set, calling [fetchData()](ListGrid_2.md#method-list
 
 ### See Also
 
-- [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata)
+- [ListGrid.fetchData](ListGrid_1.md#method-listgridfetchdata)
 
 **Flags**: IR
 
@@ -917,18 +798,6 @@ The `hidden` property is used on DataSource fields to mark fields that are never
 
 ### Description
 If Summary rows exist for this component, whether to include them when exporting client data.
-
-**Flags**: IRW
-
----
-## Attr: DataBoundComponent.applyingAsyncFilterAndSortMessage
-
-### Description
-The HTML-format message displayed to users while asynchronous filters are being evaluated on a list of records.
-
-### Groups
-
-- i18nMessages
 
 **Flags**: IRW
 
@@ -1007,26 +876,6 @@ Marker that can be set on a record to flag that record as hilited. Should be set
 **Flags**: IRW
 
 ---
-## Attr: DataBoundComponent.searchForm
-
-### Description
-Specifies a form to automatically use as a search form for this component - that is, [form.getValuesAsCriteria()](DynamicForm.md#method-dynamicformgetvaluesascriteria) is called on the form and the criteria returned are additive with any criteria provided in other ways, such as via the [FilterEditor](ListGrid_1.md#attr-listgridfiltereditor) or [Advanced Filter Window](ListGrid_1.md#attr-listgridallowfilterwindow) of a [ListGrid](ListGrid_1.md#class-listgrid).
-
-For a discussion of the various filtering and criteria-management APIs and when to use them, see the [Grid Filtering overview](../kb_topics/gridFiltering.md#kb-topic-grid-filtering-overview).
-
-In particular, the component will automatically filter when the [search()](SearchForm.md#method-searchformsearch) or [submit()](DynamicForm.md#method-dynamicformsubmit) events fire on the form (happens if a [SubmitItem](../reference.md#class-submititem) is present and is pressed), and will automatically trigger filtering if Enter is pressed in the form, as though [searchOnEnter](SearchForm.md#attr-searchformsearchonenter) or [saveOnEnter](DynamicForm.md#attr-dynamicformsaveonenter) had been set.
-
-If [filterOnKeypress](#attr-databoundcomponentfilteronkeypress) is set to true, this component will also automatically watch for [SearchForm.criteriaChanged](SearchForm.md#method-searchformcriteriachanged), and filter whenever that event fires.
-
-The criteria from the specified `searchForm` will only be shown and edited in the external form; they will not be shown in other interfaces, such as in a ListGrid's builtin [FilterEditor](ListGrid_1.md#attr-listgridfiltereditor).
-
-### Groups
-
-- searchCriteria
-
-**Flags**: IRW
-
----
 ## Attr: DataBoundComponent.fetchOperation
 
 ### Description
@@ -1035,16 +884,6 @@ The criteria from the specified `searchForm` will only be shown and edited in th
 ### Groups
 
 - operations
-
-**Flags**: IRW
-
----
-## Attr: DataBoundComponent.aiCriterion
-
-### Description
-AI-generated criterion.
-
-If set, the criterion is considered to be AND'ed together with the [DataBoundComponent.implicitCriteria](#attr-databoundcomponentimplicitcriteria).
 
 **Flags**: IRW
 
@@ -1080,23 +919,13 @@ If a summary format string contains an invalid field reference, replace the refe
 ## Attr: DataBoundComponent.hiliteIconPosition
 
 ### Description
-When [hiliteIcons](#attr-databoundcomponenthiliteicons) are present, where the hilite icon will be placed relative to the field value. See [HiliteIconPosition](../reference_2.md#type-hiliteiconposition). Can be overridden at the field level.
+When [hiliteIcons](#attr-databoundcomponenthiliteicons) are present, where the hilite icon will be placed relative to the field value. See [HiliteIconPosition](../reference.md#type-hiliteiconposition). Can be overridden at the field level.
 
 ### Groups
 
 - hiliting
 
 **Flags**: IR
-
----
-## Attr: DataBoundComponent.showSavedSearchesByDS
-
-### Description
-Whether to associate saved searches by default with the current [DataSource](#attr-databoundcomponentdatasource) of a component when a [DataBoundComponent.savedSearchId](#attr-databoundcomponentsavedsearchid) is not provided. If this property is true, then when the DataSource is changed, existing saved searches will disappear and only be available if the DataSource is set back to its original value.
-
-If this property is false, saved searches will persist across DataSource changes so that searches that aren't applicable to the current DataSource might still be shown.
-
-**Flags**: IRA
 
 ---
 ## Attr: DataBoundComponent.dragRecategorize
@@ -1126,7 +955,7 @@ To control hilites showing in group summaries, see [showHilitesInGroupSummary](L
 ### Description
 Delay in milliseconds before fetching data.
 
-This setting only applies to the [ResultSet](ResultSet.md#class-resultset) automatically created by calling [fetchData()](ListGrid_2.md#method-listgridfetchdata). If a pre-existing ResultSet is passed to setData() instead, it's existing setting for [ResultSet.fetchDelay](ResultSet.md#attr-resultsetfetchdelay) applies.
+This setting only applies to the [ResultSet](ResultSet.md#class-resultset) automatically created by calling [fetchData()](ListGrid_1.md#method-listgridfetchdata). If a pre-existing ResultSet is passed to setData() instead, it's existing setting for [ResultSet.fetchDelay](ResultSet.md#attr-resultsetfetchdelay) applies.
 
 ### Groups
 
@@ -1153,18 +982,6 @@ The `detail` property is used on DataSource fields to mark fields that shouldn't
 **Flags**: IRW
 
 ---
-## Attr: DataBoundComponent.filterOnKeypress
-
-### Description
-When this attribute is true and this component has been assigned a [searchForm](#attr-databoundcomponentsearchform), data in this component is filtered automatically as users change values in that form.
-
-### Groups
-
-- searchCriteria
-
-**Flags**: IRW
-
----
 ## Attr: DataBoundComponent.canEditFieldAttribute
 
 ### Description
@@ -1173,14 +990,6 @@ If this component is bound to a dataSource, this attribute may be specified to c
 Note that if `canEdit` is explicitly specified on a field in the [DataBoundComponent.fields](#attr-databoundcomponentfields) array, that property will be respected in preference to the canEditAttribute value. (See [FormItem.canEdit](FormItem.md#attr-formitemcanedit), [ListGridField.canEdit](ListGridField.md#attr-listgridfieldcanedit)). Also note that individual dataBoundComponents may have additional logic around whether a field can be edited - for example [ListGrid.canEditCell](ListGrid_2.md#method-listgridcaneditcell) may be overridden.
 
 **Flags**: IRA
-
----
-## Attr: DataBoundComponent.sortViaAIMode
-
-### Description
-The AI service mode to use with sort-via-AI. If `null`, then sort-via-AI is not enabled.
-
-**Flags**: IR
 
 ---
 ## Attr: DataBoundComponent.hiliteIconRightPadding
@@ -1202,8 +1011,6 @@ Adds an item to the header context menu allowing users to launch a dialog to def
 
 User-added summary fields can be persisted via [ListGrid.getFieldState](ListGrid_2.md#method-listgridgetfieldstate) and [ListGrid.setFieldState](ListGrid_2.md#method-listgridsetfieldstate).
 
-To avoid undefined behavior, this property must be set to `false` if the same record objects, or the same [ResultSet](ResultSet.md#class-resultset) instances, are shared among multiple [DataBoundComponent](../reference.md#interface-databoundcomponent)s.
-
 ### Groups
 
 - summaryFields
@@ -1221,14 +1028,6 @@ How much padding should there be on the left of [hilite icons](#attr-databoundco
 - hiliting
 
 **Flags**: IRW
-
----
-## Attr: DataBoundComponent.aiPageSize
-
-### Description
-The maximum number of records to process in a single AI request. If the component is showing more records, additional AI requests are issued until all data has been processed.
-
-**Flags**: IRWA
 
 ---
 ## Attr: DataBoundComponent.exportAll
@@ -1285,37 +1084,27 @@ If this value is true and this component is databound, [DataBoundComponent.getDr
 ### Description
 Optional identifier for saved searches that should be applied to this component.
 
-By default [SavedSearches](SavedSearches.md#class-savedsearches) are associated with a component via its [local ID](Canvas.md#method-canvasgetlocalid) and [DataSource ID](#attr-databoundcomponentdatasource). This property allows developers to override this behavior and explicitly associate a component with a set of saved searches. This can provide a couple of benefits:  
+By default [SavedSearches](SavedSearches.md#class-savedsearches) are associated with a component via a [minimal locator](AutoTest.md#classmethod-autotestgetminimallocator). This property allows developers to override this behavior and explicitly associate a component with a set of saved searches. This can provide a couple of benefits:  
 Firstly this ensures that saved searches will be unambiguously associated with the particular component even if the page changes such that a stored minimal locator would no longer applied to the component, without requiring an explicit [Canvas.ID](Canvas.md#attr-canvasid).  
 Secondly this allows the same set of saved searches to be applied to more than one component on a page. This may be valueable for cases where the same information from the same dataSource is presented to users in multiple places.
 
 **Flags**: IRWA
 
 ---
-## ClassMethod: DataBoundComponent.requestsArePending
-
-### Description
-Returns whether there are any pending [DSRequest](../reference_2.md#object-dsrequest)s initiated by this [DataBoundComponent](../reference.md#interface-databoundcomponent). May not include any requests sent by directly calling the [DataSource](DataSource.md#class-datasource) APIs (rather than the DataBoundComponent APIs).
-
-### Returns
-
-`[Boolean](#type-boolean)` — true if one or more requests are pending, false otherwise.
-
----
 ## Method: DataBoundComponent.getSort
 
 ### Description
-Return the [SortSpecifier](../reference_2.md#object-sortspecifier)s representing the current sort configuration of this component.
+Return the [SortSpecifier](../reference.md#object-sortspecifier)s representing the current sort configuration of this component.
 
 ### Returns
 
-`[Array of SortSpecifier](#type-array-of-sortspecifier)` — sortSpecifiersA copy of the current sort specification for this component
+`[Array of SortSpecifier](#type-array-of-sortspecifier)` — sortSpecifiersThe current sort specification for this component
 
 ---
 ## Method: DataBoundComponent.findAll
 
 ### Description
-This API is equivalent to [List.findAll](List.md#method-listfindall) but searches for a matching record among already-loaded data only. Use [fetchData](ListGrid_2.md#method-listgridfetchdata) to load data from the server.
+This API is equivalent to [List.findAll](List.md#method-listfindall) but searches for a matching record among already-loaded data only. Use [fetchData](ListGrid_1.md#method-listgridfetchdata) to load data from the server.
 
 ### Parameters
 
@@ -1402,18 +1191,6 @@ See the [dragging](../reference.md#kb-topic-dragging) documentation for an overv
 - dragdrop
 
 ---
-## Method: DataBoundComponent.setAICriterion
-
-### Description
-Setter for [DataBoundComponent.aiCriterion](#attr-databoundcomponentaicriterion).
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| aiCriterion | [AdvancedCriteria](#type-advancedcriteria) | false | — | the new AI-generated criterion used to filter records. |
-
----
 ## Method: DataBoundComponent.selectAllRecords
 
 ### Description
@@ -1462,28 +1239,6 @@ Override in subclasses
 ### Returns
 
 `[String](#type-string)` — valuethe value of the titleField for the passed record
-
----
-## Method: DataBoundComponent.isValuePendingAsyncOrAsyncError
-
-### Description
-Determines whether the value for the given field in the given record is pending asynchronous generation in this `DataBoundComponent`, or an error occurred during that asynchronous generation.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| record | [Record](#type-record) | false | — | The record. |
-| field | [DBCField](#type-dbcfield) | false | — | The field. |
-
-### Returns
-
-`[Boolean](#type-boolean)` — `true` if the generation of the value is pending asynchronous generation, or an error occurred during that asynchronous generation; `false` otherwise.
-
-### See Also
-
-- [DataBoundComponent.isValuePendingAsync](#method-databoundcomponentisvaluependingasync)
-- [DataBoundComponent.isValueAsyncError](#method-databoundcomponentisvalueasyncerror)
 
 ---
 ## Method: DataBoundComponent.deselectAllRecords
@@ -1582,7 +1337,7 @@ This method may be overridden to customize this behavior. For example the follow
 ## Method: DataBoundComponent.findIndex
 
 ### Description
-This API is equivalent to [List.findIndex](List.md#method-listfindindex) but searches for a matching record among already-loaded data only. Use [fetchData](ListGrid_2.md#method-listgridfetchdata) to load data from the server.
+This API is equivalent to [List.findIndex](List.md#method-listfindindex) but searches for a matching record among already-loaded data only. Use [fetchData](ListGrid_1.md#method-listgridfetchdata) to load data from the server.
 
 ### Parameters
 
@@ -1602,16 +1357,16 @@ Compares the specified criteria with the current criteria applied to this compon
 
 This is equivalent to calling `this.data.willFetchData(...)`. Always returns true if this component is not showing a set of data from the dataSource.
 
-Note that to predict correctly the decision that will be made by filter/fetch, you'll need to pass the same [TextMatchStyle](../reference_2.md#type-textmatchstyle) that will be used by the future filter/fetch. Fetching manually (e.g. [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata)) will by default use "exact" while filtering (e.g. [ListGrid.filterData](ListGrid_2.md#method-listgridfilterdata)) will by default use "substring". If the component is configured for autofetch (i.e. [ListGrid.autoFetchData](ListGrid_1.md#attr-listgridautofetchdata): true), that will use [ListGrid.autoFetchTextMatchStyle](ListGrid_1.md#attr-listgridautofetchtextmatchstyle), which defaults to "substring". If nothing/null is passed for the style, this method assumes you want the style from the last filter/fetch.
+Note that to predict correctly the decision that will be made by filter/fetch, you'll need to pass the same [TextMatchStyle](../reference.md#type-textmatchstyle) that will be used by the future filter/fetch. Fetching manually (e.g. [ListGrid.fetchData](ListGrid_1.md#method-listgridfetchdata)) will by default use "exact" while filtering (e.g. [ListGrid.filterData](ListGrid_2.md#method-listgridfilterdata)) will by default use "substring". If the component is configured for autofetch (i.e. [ListGrid.autoFetchData](ListGrid_1.md#attr-listgridautofetchdata): true), that will use [ListGrid.autoFetchTextMatchStyle](ListGrid_1.md#attr-listgridautofetchtextmatchstyle), which defaults to "substring". If nothing/null is passed for the style, this method assumes you want the style from the last filter/fetch.
 
-To determine what [TextMatchStyle](../reference_2.md#type-textmatchstyle) is being used, check the RPC Tab of the [SmartClient Developer Console](../kb_topics/debugging.md#kb-topic-debugging) and check the relevant [DSRequest](../reference_2.md#object-dsrequest).
+To determine what [TextMatchStyle](../reference.md#type-textmatchstyle) is being used, check the RPC Tab of the [SmartClient Developer Console](../kb_topics/debugging.md#kb-topic-debugging) and check the relevant [DSRequest](../reference.md#object-dsrequest).
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | newCriteria | [Criteria](../reference_2.md#type-criteria) | false | — | new criteria to test. |
-| textMatchStyle | [TextMatchStyle](../reference_2.md#type-textmatchstyle) | true | — | New text match style. If not passed assumes textMatchStyle will not be modified. |
+| textMatchStyle | [TextMatchStyle](../reference.md#type-textmatchstyle) | true | — | New text match style. If not passed assumes textMatchStyle will not be modified. |
 
 ### Returns
 
@@ -1630,7 +1385,7 @@ To display custom drag tracker HTML, this method may be overridden - call [Event
 
 ### Returns
 
-`[Boolean](#type-boolean)` — returns false by default to suppress 'setDragTracker' on any ancestors of this component.
+`[boolean](../reference.md#type-boolean)` — returns false by default to suppress 'setDragTracker' on any ancestors of this component.
 
 ### Groups
 
@@ -1650,7 +1405,6 @@ Note that developers may wish to use [DataBoundComponent.selectRange](#method-da
 |------|------|----------|---------|-------------|
 | records | [Array of Record](#type-array-of-record)|[number](#type-number) | false | — | records (or row numbers) to select |
 | newState | [boolean](../reference.md#type-boolean) | true | — | new selection state (if null, defaults to true) |
-| rowNums | [Array of Integer](#type-array-of-integer)|[Integer](../reference_2.md#type-integer) | true | — | row numbers to select. Required for [multi-link trees](Tree.md#attr-treemultilinktree) unless row numbers are passed in the "records" param. If passed, the rowNums array should correspond to the records array (ie, rowNums\[0\] refers to the same object as records\[0\]) |
 
 ### Groups
 
@@ -1688,7 +1442,7 @@ Enable / disable a [hilite](#attr-databoundcomponenthilites)
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| hiliteID | [Identifier](../reference.md#type-identifier) | false | — | ID of hilite to enable |
+| hiliteID | [String](#type-string) | false | — | ID of hilite to enable |
 | enable | [boolean](../reference.md#type-boolean) | true | — | new enabled state to apply - if null, defaults to true |
 
 ### Groups
@@ -1769,7 +1523,7 @@ This is a synonym for `selectRange(startRow, endRow, false);`
 ## Method: DataBoundComponent.find
 
 ### Description
-This API is equivalent to [List.find](List.md#method-listfind) but searches for a matching record among already-loaded data only. Use [fetchData](ListGrid_2.md#method-listgridfetchdata) to load data from the server.
+This API is equivalent to [List.find](List.md#method-listfind) but searches for a matching record among already-loaded data only. Use [fetchData](ListGrid_1.md#method-listgridfetchdata) to load data from the server.
 
 ### Parameters
 
@@ -1799,7 +1553,7 @@ Sends the current filter criteria and sort direction to the server, then exports
 
 A variety of DSRequest settings, such as [exportAs](DSRequest.md#attr-dsrequestexportas) and [DSRequest.exportFilename](DSRequest.md#attr-dsrequestexportfilename), affect the exporting process: see [exportResults](DSRequest.md#attr-dsrequestexportresults) for further detail.
 
-Note that data exported via this method skips client-side fields defined only in the component, excludes any client-side formatting and relies on both the SmartClient server and server-side DataSources. To export client-data including client-only fields and with client-side formatting applied, see [exportClientData](ListGrid_2.md#method-listgridexportclientdata), which still requires the SmartClient server but does not rely on server-side DataSource definitions (.ds.xml files).
+Note that data exported via this method skips client-side fields defined only in the component, excludes any client-side formatting and relies on both the SmartClient server and server-side DataSources. To export client-data including client-only fields and with client-side formatting applied, see [exportClientData](ListGrid_1.md#method-listgridexportclientdata), which still requires the SmartClient server but does not rely on server-side DataSource definitions (.ds.xml files).
 
 For more information on exporting data, see [DataSource.exportData](DataSource.md#method-datasourceexportdata).
 
@@ -1807,7 +1561,7 @@ For more information on exporting data, see [DataSource.exportData](DataSource.m
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | additional properties to set on the DSRequest that will be issued |
+| requestProperties | [DSRequest](#type-dsrequest) | true | — | additional properties to set on the DSRequest that will be issued |
 | callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke on completion. Note that this parameter only applies where [DSRequest.exportToClient](DSRequest.md#attr-dsrequestexporttoclient) is explicitly set to false, because file downloads do not provide ordinary SmartClient callbacks |
 
 ### Groups
@@ -1822,19 +1576,19 @@ For more information on exporting data, see [DataSource.exportData](DataSource.m
 ## Method: DataBoundComponent.userAddedField
 
 ### Description
-Notification method fired when a generated field is added to this component via [DataBoundComponent.editFormulaField](#method-databoundcomponenteditformulafield) or [DataBoundComponent.editSummaryField](#method-databoundcomponenteditsummaryfield).
+Notification method fired when a user-generated field is added to this component via [DataBoundComponent.editFormulaField](#method-databoundcomponenteditformulafield) or [DataBoundComponent.editSummaryField](#method-databoundcomponenteditsummaryfield).
 
-Returning `false` from this method will prevent the field from being added. Note that this also provides an opportunity to modify the generated field object. Any changes made to the field parameter will show up when the field is displayed in the component.
+Returning false from this method will prevent the field being added at all. Note that this also provides an opportunity to modify the generated field object - any changes made to the field parameter will show up when the field is displayed in the ListGrid.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| field | [DBCField](#type-dbcfield) | false | — | User generated summary or formula field |
+| field | [ListGridField](#type-listgridfield) | false | — | User generated summary or formula field |
 
 ### Returns
 
-`[Boolean](#type-boolean)` — Return false to cancel the addition of the field
+`[boolean](../reference.md#type-boolean)` — Return false to cancel the addition of the field
 
 ### Groups
 
@@ -1860,7 +1614,6 @@ Synonym for `selectRecord(record, false)`
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | record | [Record](#type-record)|[number](#type-number) | false | — | record (or row number) to deselect |
-| rowNum | [Integer](../reference_2.md#type-integer) | true | — | row number to select. Required for [multi-link trees](Tree.md#attr-treemultilinktree) unless row number is passed in the "record" param |
 
 ### Groups
 
@@ -1907,6 +1660,16 @@ Enable all hilites.
 ### Groups
 
 - hiliting
+
+---
+## Method: DataBoundComponent.requestsArePending
+
+### Description
+Returns whether there are any pending [DSRequest](../reference.md#object-dsrequest)s initiated by this [DataBoundComponent](../reference.md#interface-databoundcomponent). May not include any requests sent by directly calling the [DataSource](DataSource.md#class-datasource) APIs (rather than the DataBoundComponent APIs).
+
+### Returns
+
+`[Boolean](#type-boolean)` — true if one or more requests are pending, false otherwise.
 
 ---
 ## Method: DataBoundComponent.getHilites
@@ -2012,19 +1775,17 @@ Method to display a [FormulaBuilder](FormulaBuilder.md#class-formulabuilder) to 
 ## Method: DataBoundComponent.getField
 
 ### Description
-Retrieves the definition of a field by a field index or field name.
-
-Note: In some `DataBoundComponent` types, this will only return fields that are visible or displayed.
+Return a field by a field index or field name.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| fieldId | [FieldName](../reference.md#type-fieldname)|[Number](#type-number) | false | — | field index or field name |
+| fieldID | [FieldName](../reference.md#type-fieldname)|[Number](#type-number) | false | — | field index or field.name |
 
 ### Returns
 
-`[DBCField](#type-dbcfield)` — Field definition
+`[Object](../reference.md#type-object)` — Field description
 
 ---
 ## Method: DataBoundComponent.setHilites
@@ -2059,45 +1820,12 @@ Method to display a [SummaryBuilder](SummaryBuilder.md#class-summarybuilder) to 
 - summaryFields
 
 ---
-## Method: DataBoundComponent.isValuePendingAsync
-
-### Description
-Determines whether the value for the given field in the given record is pending asynchronous generation in this `DataBoundComponent`.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| record | [Record](#type-record) | false | — | The record. |
-| field | [DBCField](#type-dbcfield) | false | — | The field. |
-
-### Returns
-
-`[Boolean](#type-boolean)` — `true` if the generation of the value is pending asynchronous generation; `false` otherwise.
-
-### See Also
-
-- [DataBoundComponent.isValuePendingAsyncOrAsyncError](#method-databoundcomponentisvaluependingasyncorasyncerror)
-
----
 ## Method: DataBoundComponent.askForSort
 
 ### Description
 Show a dialog to configure the sorting of multiple fields on this component. Calls through to [MultiSortDialog.askForSort](MultiSortDialog.md#classmethod-multisortdialogaskforsort), passing this component as the fieldSource and the current [sort-specification](#method-databoundcomponentgetsort) if there is one.
 
 The generated multiSortDialog can be customized via [DataBoundComponent.multiSortDialogDefaults](#attr-databoundcomponentmultisortdialogdefaults), [DataBoundComponent.multiSortDialogProperties](#attr-databoundcomponentmultisortdialogproperties).
-
----
-## Method: DataBoundComponent.userRemovedField
-
-### Description
-Notification method fired when a generated field is removed from this component by user action (for example, if the user clicks on the "Remove AI column" menu item of the grid header context menu).
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| field | [DBCField](#type-dbcfield) | false | — | The generated field that was removed. |
 
 ---
 ## Method: DataBoundComponent.deselectRecords
@@ -2114,7 +1842,6 @@ Note that developers may wish to use [DataBoundComponent.deselectRange](#method-
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | records | [Array of Record](#type-array-of-record)|[number](#type-number) | false | — | records (or row numbers) to deselect |
-| rowNums | [Array of Integer](#type-array-of-integer)|[Integer](../reference_2.md#type-integer) | true | — | row numbers to select. Required for [multi-link trees](Tree.md#attr-treemultilinktree) unless row numbers are passed in the "records" param. If passed, the rowNums array should correspond to the records array (ie, rowNums\[0\] refers to the same object as records\[0\]) |
 
 ### Groups
 
@@ -2242,13 +1969,13 @@ Used to restore previous state retrieved from the component by a call to [DataBo
 ## Method: DataBoundComponent.setSort
 
 ### Description
-Sort this component by a list of [SortSpecifier](../reference_2.md#object-sortspecifier)s. If the component's data is not a [ResultSet](ResultSet.md#class-resultset), only the first specifier is applied.
+Sort this component by a list of [SortSpecifier](../reference.md#object-sortspecifier)s. If the component's data is not a [ResultSet](ResultSet.md#class-resultset), only the first specifier is applied.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| sortSpecifiers | [Array of SortSpecifier](#type-array-of-sortspecifier) | false | — | List of [SortSpecifier](../reference_2.md#object-sortspecifier) objects, one per sort-field and direction |
+| sortSpecifiers | [Array of SortSpecifier](#type-array-of-sortspecifier) | false | — | List of [SortSpecifier](../reference.md#object-sortspecifier) objects, one per sort-field and direction |
 
 ---
 ## Method: DataBoundComponent.getSummaryFieldValue
@@ -2268,18 +1995,6 @@ Get the computed value of a [summary field](#attr-databoundcomponentcanaddsummar
 `[String](#type-string)` — formula result
 
 ---
-## Method: DataBoundComponent.setSearchForm
-
-### Description
-Setter for [DataBoundComponent.searchForm](#attr-databoundcomponentsearchform).
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| searchForm | [DynamicForm](#type-dynamicform)|[ValuesManager](#type-valuesmanager) | true | — | New search form. |
-
----
 ## Method: DataBoundComponent.isOffline
 
 ### Description
@@ -2292,37 +2007,6 @@ Returns true if the component's current data model is marked as offline. This do
 ### Groups
 
 - offlineGroup
-
----
-## Method: DataBoundComponent.setFieldTitle
-
-### Description
-Sets the title of the specified field.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| fieldId | [FieldName](../reference.md#type-fieldname)|[Field](#type-field) | false | — | The field to update. |
-| newTitle | [HTMLString](../reference.md#type-htmlstring) | false | — | The new title. |
-
----
-## Method: DataBoundComponent.getFieldTitle
-
-### Description
-Returns an [HTMLString](../reference.md#type-htmlstring) to use as the displayable title for the specified field.
-
-Even though a `Field` object has a [title](Field.md#attr-fieldtitle) property, this method should be used to obtain the field's title in the context of this field container, because the field container implementation may offer further customization of the field's title HTML.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| fieldId | [FieldName](../reference.md#type-fieldname) | false | — | The name or other identifier of the field. |
-
-### Returns
-
-`[HTMLString](../reference.md#type-htmlstring)` — The specified field's title.
 
 ---
 ## Method: DataBoundComponent.getDragData
@@ -2352,27 +2036,6 @@ NOTE: If this component is a [multi-linked](Tree.md#method-treeismultilinktree) 
 **Flags**: A
 
 ---
-## Method: DataBoundComponent.isValueAsyncError
-
-### Description
-Determines whether an error occurred during asynchronous generation of the value for the given field in the given record.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| record | [Record](#type-record) | false | — | The record. |
-| field | [DBCField](#type-dbcfield) | false | — | The field. |
-
-### Returns
-
-`[Boolean](#type-boolean)` — `true` if an error occurred during the asynchronous generation of the value; `false` otherwise.
-
-### See Also
-
-- [DataBoundComponent.isValuePendingAsyncOrAsyncError](#method-databoundcomponentisvaluependingasyncorasyncerror)
-
----
 ## Method: DataBoundComponent.anySelected
 
 ### Description
@@ -2396,7 +2059,7 @@ Disable a hilite
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| hiliteID | [Identifier](../reference.md#type-identifier) | false | — | ID of hilite to disable |
+| hiliteID | [String](#type-string) | false | — | ID of hilite to disable |
 
 ### Groups
 
@@ -2414,7 +2077,6 @@ Select/deselect a [Record](../reference.md#object-record) passed in explicitly, 
 |------|------|----------|---------|-------------|
 | record | [Record](#type-record)|[number](#type-number) | false | — | record (or row number) to select |
 | newState | [boolean](../reference.md#type-boolean) | true | — | new selection state (if null, defaults to true) |
-| rowNum | [Integer](../reference_2.md#type-integer) | true | — | row number to select. Required for [multi-link trees](Tree.md#attr-treemultilinktree) unless row number is passed in the "record" param |
 
 ### Groups
 
@@ -2484,7 +2146,7 @@ Override in subclasses to provide more specific behavior, for instance, when dat
 ## Method: DataBoundComponent.getFieldAlignments
 
 ### Description
-Returns an array of [field alignments](../reference_2.md#type-alignment) for this grid
+Returns an array of [field alignments](../reference.md#type-alignment) for this grid
 
 ### Returns
 
@@ -2540,7 +2202,7 @@ You can override this method if you need more complex setting of drop values tha
 ## Method: DataBoundComponent.findNextIndex
 
 ### Description
-This API is equivalent to [List.findNextIndex](List.md#method-listfindnextindex) but searches for a matching record among already-loaded data only. Use [fetchData](ListGrid_2.md#method-listgridfetchdata) to load data from the server.
+This API is equivalent to [List.findNextIndex](List.md#method-listfindnextindex) but searches for a matching record among already-loaded data only. Use [fetchData](ListGrid_1.md#method-listgridfetchdata) to load data from the server.
 
 ### Parameters
 
@@ -2565,7 +2227,6 @@ Select a single [Record](../reference.md#object-record) passed in explicitly, or
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | record | [Record](#type-record)|[number](#type-number) | false | — | record (or row number) to select |
-| rowNum | [Integer](../reference_2.md#type-integer) | true | — | row number to select. Required for [multi-link trees](Tree.md#attr-treemultilinktree) unless row number is passed in the "record" param |
 
 ### Groups
 
@@ -2593,6 +2254,6 @@ Note that, as a shorthand, for fields that are visible but have no other state-v
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | sparse | [Boolean](#type-boolean) | true | — | If true, field state will be omitted for hidden fields. |
-| returnObject | [Boolean](#type-boolean) | true | — | If true, will return an object instead of its string representation. |
+| return | [FieldState](../reference_2.md#type-fieldstate) | false | — | Current field state |
 
 ---

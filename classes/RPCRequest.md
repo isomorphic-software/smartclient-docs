@@ -14,18 +14,6 @@ This also effects components loaded via the [RPCManager.loadScreen](RPCManager.m
 **Flags**: IRWA
 
 ---
-## Attr: RPCRequest.isBackgroundRequest
-
-### Description
-Is this a background request?
-
-This attribute may be set to true for requests that do not interfere with the normal flow of user interaction within an application.
-
-Background requests are ignored by [AutoTest.waitForSystemDone](AutoTest.md#classmethod-autotestwaitforsystemdone), giving automated testing tools a way to identify specific operations that should not interfere with the flow of the test, without entirely disabling the ability to [wait for network operations](SystemWaitConfig.md#attr-systemwaitconfigincludenetworkoperations).
-
-**Flags**: IRW
-
----
 ## Attr: RPCRequest.useSimpleHttp
 
 ### Description
@@ -45,18 +33,12 @@ Setting `useSimpleHttp` to true also automatically sets [RPCRequest.serverOutput
 ### Description
 If enabled, causes the RPCRequest to download the requested resource as a file, either showing the browser's Save dialog or displaying the file-content in [a new browser window](#attr-rpcrequestdownloadtonewwindow).
 
-Download requests will use [transport](#attr-rpcrequesttransport): "hiddenFrame" by default.
+Download requests do not fire a callback.  
+By default the request will use [transport](#attr-rpcrequesttransport): "hiddenFrame". Developers may override this by explicitly setting `request.transport` to "xmlHttpRequest". This mode allows developers to send [RPCRequest.httpHeaders](#attr-rpcrequesthttpheaders) to the server, but has some drawbacks:
 
-In this mode, the download will be performed by a standard HTTP request issued by the browser. If [DSRequest.downloadToNewWindow](#attr-rpcrequestdownloadtonewwindow) is true, the request will be targeted against a new browser window, and if the resulting file can be displayed inline by the browser it will be. If [DSRequest.downloadToNewWindow](#attr-rpcrequestdownloadtonewwindow) is not true, or the browser cannot display the returned file inline, the browser will download the file and store it to the user's file system.
-
-Download requests with [transport](#attr-rpcrequesttransport): "hiddenFrame" do not fire any callbacks.
-
-If a developer explicitly sets `request.transport` to "xmlHttpRequest", the browser will instead use an XMLHttpRequest to download the data from the server. This mode differs from hiddenFrame downloads in various ways:
-
-*   Explicit [RPCRequest.httpHeaders](#attr-rpcrequesthttpheaders) may be sent to the server in this mode
-*   Instead of automatically downloading the response to the user's filesystem, the server response will be available as a [Blob](https://developer.mozilla.org/en-US/docs/Web/API/Blob), and the [RPCRequest.downloadCallback](#method-rpcrequestdownloadcallback) will be invoked, if specified.  
-    Returning `false` from the downloadCallback will suppress the default behavior of saving the file to the user's filesystem, giving developers an opportunity to take other actions, such as generating a data URL from the Blob.
-*   xmlHttpRequest download does not have a built-in progress bar to indicate download progress. Developers may make use of the [RPCRequest.xhr_onProgress](#method-rpcrequestxhr_onprogress) event to indicate download progress if required.
+*   xmlHttpRequest download does not have a built-in progress bar to indicate download progress
+*   The browser must hold the entire XHR response in memory, whereas with normal download data is streamed to disk or to another application
+*   This mode does not currently support [DSRequest.downloadToNewWindow](#attr-rpcrequestdownloadtonewwindow)
 
 **Flags**: IRWA
 
@@ -627,48 +609,5 @@ To enable this globally for all responses you can set `RPCManager.useStrictJSON`
 - [DSRequest.useStrictJSON](DSRequest.md#attr-dsrequestusestrictjson)
 
 **Flags**: IRWA
-
----
-## Method: RPCRequest.xhr_onProgress
-
-### Description
-Progress event notification fired repeatedly during requests with [RPCRequest.transport](#attr-rpcrequesttransport) set to `"xmlHttpRequest"`.
-
-This callback will be invoked from the native [XMLHttpRequest progress event](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/progress_event).
-
-This is typically useful to provide visual feedback to the user when a lengthy download is in progress.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| progressEvent | [Object](../reference.md#type-object) | false | — | The native [ProgressEvent](https://developer.mozilla.org/en-US/docs/Web/API/ProgressEvent) with attributes indicating the `loaded` content so far, and, if `Content-Length` headers were set on the response, the `total` download size. Note that this is a native event produced by the browser and SmartClient does not guarantee consistency for the event object, or the timing of the `onprogress` event notifications across browsers. |
-| request | [RPCRequest](#type-rpcrequest) | false | — | the request that initiated the download |
-
----
-## Method: RPCRequest.downloadCallback
-
-### Description
-Callback for [download requests](#attr-rpcrequestdownloadresult) with [RPCRequest.transport](#attr-rpcrequesttransport) set to `"xmlHttpRequest"`.
-
-This method will fire when a download request completes. If [DSRequest.willHandleError](#attr-rpcrequestwillhandleerror) is true it will fire on both successful completion or failure as reflected by the [DSResponse.status](DSResponse.md#attr-dsresponsestatus).
-
-By default, successful download requests will save the returned file to the filesystem. To suppress this behavior, return false from this callback. This allows you to take some other action such as generating a [data url](https://developer.mozilla.org/en-US/docs/web/http/basics_of_http/data_urls) to display media, etc.
-
-Note that for a successful download request, the `data` parameter will be a [Blob](https://developer.mozilla.org/en-US/docs/Web/API/Blob). For an unsuccessful download attempt, the data parameter typically contains the error message from the server. To invoke standard error handling, [RPCManager.runDefaultErrorHandling](RPCManager.md#classmethod-rpcmanagerrundefaulterrorhandling) may be called.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| response | [RPCResponse](#type-rpcresponse) | false | — | the response to the request |
-| data | [Object](../reference.md#type-object) | false | — | The Blob returned by the server, or error message if the download was unsuccessful |
-| fileName | [String](#type-string) | false | — | The file name for the downloaded file, derived from the [content-disposition header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Disposition). |
-| type | [String](#type-string) | false | — | the content type for the downloaded file, as specified by the [content-type header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Type). |
-| request | [RPCRequest](#type-rpcrequest) | false | — | the request that initiated the download |
-
-### Returns
-
-`[Boolean](#type-boolean)` — return false to suppress default behavior of saving the download file to the user's filesystem.
 
 ---

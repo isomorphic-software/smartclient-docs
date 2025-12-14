@@ -186,7 +186,7 @@ To use additional JPA configuration you have to set **`jpaConfig`** property in 
 ```
 **Transaction management:**
 
-*   Operating under [RPCManager](../classes/RPCManager.md#class-rpcmanager) (`[DSRequest](../reference_2.md#object-dsrequest)` has reference to `[RPCManager](../classes/RPCManager.md#class-rpcmanager)`):
+*   Operating under [RPCManager](../classes/RPCManager.md#class-rpcmanager) (`[DSRequest](../reference.md#object-dsrequest)` has reference to `[RPCManager](../classes/RPCManager.md#class-rpcmanager)`):
     
     *   If participating in automatic transactions:
         *   retrieves existing transaction from `[RPCManager](../classes/RPCManager.md#class-rpcmanager)` (if available);

@@ -221,7 +221,7 @@ Setter for [MiniDateRangeItem.autoValidate](#attr-minidaterangeitemautovalidate)
 ## Method: MiniDateRangeItem.getValue
 
 ### Description
-Retrieves the current value of this dateRangeItem. The return value is a [DateRange](../reference_2.md#object-daterange) object that excludes start and end values if they aren't set.
+Retrieves the current value of this dateRangeItem. The return value is a [DateRange](../reference.md#object-daterange) object that excludes start and end values if they aren't set.
 
 ### Returns
 
@@ -255,7 +255,7 @@ Returns true if the specified criterion contains:
 ## Method: MiniDateRangeItem.setValue
 
 ### Description
-Sets the value for this miniDateRangeItem. The value parameter is a [DateRange](../reference_2.md#object-daterange) object that optionally includes both start and end values.
+Sets the value for this miniDateRangeItem. The value parameter is a [DateRange](../reference.md#object-daterange) object that optionally includes both start and end values.
 
 ### Parameters
 

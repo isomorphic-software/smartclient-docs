@@ -42,14 +42,6 @@ Title used for the [MenuButton](MenuButton.md#class-menubutton).
 **Flags**: R
 
 ---
-## Attr: AdaptiveMenu.inlineSeparator
-
-### Description
-[ToolStripSeparator](../reference.md#class-toolstripseparator) to display when [isSeparator](MenuItem.md#attr-menuitemisseparator) is set for a [MenuItem](../reference_2.md#object-menuitem).
-
-**Flags**: R
-
----
 ## Attr: AdaptiveMenu.inlineSubmenuItem
 
 ### Description
@@ -78,8 +70,7 @@ When shown inline, items are rendered as different [AutoChild](../reference.md#t
 *   normal MenuItems render as the [AdaptiveMenu.inlineMenuItem](#attr-adaptivemenuinlinemenuitem), a [ToolStripButton](../reference.md#class-toolstripbutton) AutoChild
 *   MenuItems that have submenus render as the [AdaptiveMenu.inlineSubmenuItem](#attr-adaptivemenuinlinesubmenuitem), a [MenuButton](MenuButton.md#class-menubutton) AutoChild
 *   MenuItems with [showIconOnlyInline](MenuItem.md#attr-menuitemshowicononlyinline) set render as the [AdaptiveMenu.inlineImgButton](#attr-adaptivemenuinlineimgbutton), a [ToolStripButton](../reference.md#class-toolstripbutton) AutoChild
-*   MenuItems where [MenuItem.embeddedComponent](MenuItem.md#attr-menuitemembeddedcomponent) has been specified will have the embedded component displayed directly instead (no AutoChild involvement here). If the the control should have different appearance when inlined vs embedded in the menu, one way to achieve this is to detect whether the parent is a Menu when it is drawn.
-*   MenuItems with [isSeparator](MenuItem.md#attr-menuitemisseparator) set render as the [AdaptiveMenu.inlineSeparator](#attr-adaptivemenuinlineseparator), a [ToolStripSeparator](../reference.md#class-toolstripseparator) AutoChild
+*   MenuItems where [MenuItem.embeddedComponent](MenuItem.md#attr-menuitemembeddedcomponent) has been specified will have the embedded component displayed directly instead (no AutoChild involvement here). If the control should have different appearance when inlined vs embedded in the menu, one way to achieve this is to detect whether the parent is a Menu when it is drawn.
 
 **Flags**: IRW
 
@@ -133,8 +124,6 @@ Instance of the normal (non-Adaptive) [Menu](Menu.md#class-menu) class used to s
 ### Description
 Whether [separators](../reference.md#class-toolstripseparator) should be shown for inline menu items. True by default for horizontal [orientation](Layout.md#attr-layoutorientation), false for vertical.
 
-Note, to use explicit menu separators ([MenuItem.isSeparator](MenuItem.md#attr-menuitemisseparator)) which will also show in the ToolStrip, set this property `false` to avoid showing duplicate separators in the menu.
-
 **Flags**: IR
 
 ---
@@ -147,7 +136,7 @@ Note, to use explicit menu separators ([MenuItem.isSeparator](MenuItem.md#attr-m
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| items | [Array of MenuItem](#type-array-of-menuitem)|[MenuItem](#type-menuitem) | false | — | array of items to replace current items |
+| items | [Array of MenuItem](#type-array-of-menuitem)|[MenuItem](#type-menuitem) | false | — | array of menuItems to replace current menuItems |
 
 ---
 ## Method: AdaptiveMenu.setPartialInlining

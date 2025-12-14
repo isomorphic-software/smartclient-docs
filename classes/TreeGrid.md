@@ -158,20 +158,6 @@ For [Multi-link trees](Tree.md#method-treeismultilinktree) only, the message dis
 **Flags**: IR
 
 ---
-## Attr: TreeGrid.connectorIconWidth
-
-### Description
-Width in pixels of the connector-icons, that is, the icons which show the open or closed state of the node when using [connectors](#attr-treegridshowconnectors), typically a \[+\] or \[-\] symbol with connecting lines.
-
-If not specified, [TreeGrid.openerIconWidth](#attr-treegridopenericonwidth) is used instead.
-
-### Groups
-
-- treeIcons
-
-**Flags**: IRW
-
----
 ## Attr: TreeGrid.groupByField
 
 ### Description
@@ -236,24 +222,6 @@ Has no effect if fields are explicitly specified.
 This is a convenience setting to allow a TreeGrid to be created without specifying a field list. If fields are specified, refer to the documentation on property [TreeGrid.autoAssignTreeField](#attr-treegridautoassigntreefield) for a way to automatically have one of the fields be use as the tree field if no fields have [TreeGridField.treeField](TreeGridField.md#attr-treegridfieldtreefield) set.
 
 For databound treeGrids, if there is no explicit fields array specified, developers who wish to pick up all fields from the DataSource definition rather than displaying this single automatically generated tree field may either set this property to false, or set [TreeGrid.useAllDataSourceFields](#attr-treegridusealldatasourcefields) to `true`.
-
-**Flags**: IR
-
----
-## Attr: TreeGrid.childCannotBeItsOwnAncestorMessage
-
-### Description
-Message displayed when user attempts to drop a node into a parent that has the same ID as the dropped node somewhere in its ancestor chain (ie, the same node as the parent, or grandparent, and so on)
-
-### Groups
-
-- i18nMessages
-
-### See Also
-
-- [TreeGrid.canDragRecordsOut](#attr-treegridcandragrecordsout)
-- [TreeGrid.canAcceptDroppedRecords](#attr-treegridcanacceptdroppedrecords)
-- [TreeGrid.canReorderRecords](#attr-treegridcanreorderrecords)
 
 **Flags**: IR
 
@@ -369,7 +337,7 @@ Specifies the type of nodes displayed in the treeGrid.
 
 ### See Also
 
-- [DisplayNodeType](../reference_2.md#type-displaynodetype)
+- [DisplayNodeType](../reference.md#type-displaynodetype)
 
 **Flags**: IRW
 
@@ -377,29 +345,12 @@ Specifies the type of nodes displayed in the treeGrid.
 ## Attr: TreeGrid.openerImage
 
 ### Description
-The base filename or [stateful image block](../reference.md#object-scstatefulimgconfig) for the opener icon for folder nodes when "showConnectors" is false for this TreeGrid. The opener icon is displayed beside the folder icon in the Tree column for folder nodes. Clicking on this icon will toggle the open state of the folder.
-
-**When set to an [SCImgURL](../reference.md#type-scimgurl):** the stateful filenames for these icons are assembled from this base filename and the state of the node, as follows: If the openerImage is set to `{baseName}.{extension}`, `{baseName}_opened.{extension}` will be displayed next to opened folders, and `{baseName}_closed.{extension}` will be displayed next to closed folders, or if this page is in RTL mode, `{baseName}_opened_rtl.{extension}` and `{baseName}_closed_rtl.{extension}` will be used.
+The base filename of the opener icon for the folder node when 'showConnectors' is false for this TreeGrid.  
+The opener icon is displayed beside the folder icon in the Tree column for folder nodes. Clicking on this icon will toggle the open state of the folder.  
+The filenames for these icons are assembled from this base filename and the state of the node, as follows:  
+If the openerImage is set to `{baseName}.{extension}`, `{baseName}_opened.{extension}` will be displayed next to opened folders, and `{baseName}_closed.{extension}` will be displayed next to closed folders, or if this page is in RTL mode, `{baseName}_opened_rtl.{extension}` and `{baseName}_closed_rtl.{extension}` will be used.
 
 If [TreeGrid.showSelectedOpener](#attr-treegridshowselectedopener) is true the URL for selected nodes will append the string `"_selected"` to the image URLs described above. So for an openerImage set to `{baseName}.{extension}`, the URLs for selected records would be `{baseName}_opened_selected.{extension}`, `{baseName}_closed_selected.{extension}`, etc.
-
-**When set to an _SCStatefulImgConfig:_** _it should contain entries for the default _\_base_ state, as well as the custom states: _opened, closed, opened\_selected and closed\_selected_ (RTL styles are also available, see above). These entries may be set to any combination of supported src strings, including file-paths and sprite-strings._
-
-_The following code shows using [SVG Symbols](../kb_topics/svgSymbols.md#kb-topic-svg-symbols-overview) from a sprite-file:_
-
-```
-  openerImage: {
-      // _base state is required, although will not be displayed in this case 
-      _base: "sprite:svg:fileName.svg#arrowRight;size:12,12;",
-      // closed and closed_selected states - make the selected icon blue 
-      closed: "sprite:svg:fileName.svg#arrowRight;size:12,12;",
-      closed_selected: "sprite:svg:fileName.svg#arrowRight;size:12,12;color:blue;",
-      // opened and opened_selected states - make the selected icon blue
-      opened: "sprite:svg:fileName.svg#arrowDown;size:12,12;",
-      opened_selected: "sprite:svg:fileName.svg#arrowDown;size:12,12;color:blue;"
-  }
- 
-```
 
 ### Groups
 
@@ -498,38 +449,19 @@ If specified, the selection object for this list will use this property to mark 
 ## Attr: TreeGrid.keepParentsOnFilter
 
 ### Description
-If set, tree-based filtering is performed such that parent nodes are kept as long as they have children that match the filter criteria, even if the parents themselves do not match the filter criteria. If not set, filtering will exclude parent nodes not matching the criteria, and all nodes below them in the tree.
+If set, tree-based filtering is performed such that parent nodes are kept as long as they have children that match the filter criteria, even if the parents themselves do not match the filter criteria. If not set, filtering will exclude parent nodes not matching the criteria and all nodes below them in the tree.
 
-ResultTrees will default to [fetchMode:"local"](../reference_2.md#type-fetchmode) whenever `keepParentsOnFilter` is true, unless fetchMode was explicitly set to "paged" (see below). This allows the filtering logic to fetch a complete tree of nodes from the DataSource (or if loadDataOnDemand:true, a complete set of nodes under a given parent) and then filter the resulting data locally on the client.
+ResultTrees will default to [fetchMode:"local"](../reference_2.md#type-fetchmode) whenever `keepParentsOnFilter` is true, unless fetchMode was explicitly set to `"paged"` (see below). This allows the filtering logic to fetch a complete tree of nodes from the DataSource (or if [TreeGrid.loadDataOnDemand](#attr-treegridloaddataondemand):true, a complete set of nodes under a given parent) and then filter the resulting data locally on the client.
 
 This means that the server does not need to implement special tree filtering logic to support looking up nodes that match the specified criteria as well as ancestor nodes that may not.
 
-If some criteria _must_ be sent to the server in order to produce a valid tree of data, but `keepParentsOnFilter` is also required, the [ResultTree.serverFilterFields](ResultTree.md#attr-resulttreeserverfilterfields) attribute may be used to specify a list of field names that will be sent to the server whenever they are present in the criteria. Note that for the subset of criteria applied to these fields, `keepParentsInFilter` behavior will not occur without custom logic in the DataSource fetch operation.
+If some criteria _must_ be sent to the server in order to produce a valid tree of data, but `keepParentsInFilter` is also required, the [ResultTree.serverFilterFields](ResultTree.md#attr-resulttreeserverfilterfields) attribute may be used to specify a list of field names that will be sent to the server whenever they are present in the criteria. Note that for the subset of criteria applied to these fields, `keepParentsInFilter` behavior will not occur without custom logic in the DataSource fetch operation.
 
-If [FetchMode](../reference_2.md#type-fetchmode) is explicitly set to `"paged"`, it is not possible to implement `keepParentsOnFilter`, either by local filtering or with the automatic client-driven handling mentioned below. Support for `keepParentsOnFilter` for a paged ResultTree therefore also requires custom logic in the DataSource fetch operation. To support this a developer must ensure that their fetch operation returns the appropriate set of nodes - all nodes that match the specified criteria plus their ancestor nodes even if they do not match the specified criteria.
-
-#### keepParentsOnFilter with load-on-demand trees
-The combination of `keepParentsOnFilter` and [loadDataOnDemand](ResultTree.md#attr-resulttreeloaddataondemand) presents additional difficulties that require special handling. The problem is that in order to determine even the top-level folders, you have to examine every node in the entire tree. For example, say there is one top-level folder that has thousands of folders and nodes underneath it, and there is just one leaf node, 6 levels deep, that matches the filter criteria. You have to find out about that node, because it implies the top-level folder must be retained.
-
-So the server basically has to examine every node in the dataset to determine even what shows up at the top level of the tree. If it does not do this, parent nodes that don't match the filter criteria will be excluded from the tree, with the upshot that the child nodes that _do_ match the criteria will be inaccessible because nodes in load-on-demand trees are only loaded when their parent node is opened
-
-By default, SmartClient solves this with a client-driven implementation of this special handling. This algorithm involves finding the nodes that match the filter criteria - which we term **matching leaves** - and then recursively travelling back up the tree, determining the ancestors of the matching leaves - the so-called **dangling parents**. When we have traversed all the way back to the root node from every matching leaf, we have recorded every dangling parent and have what we term the **skeleton** of the tree. The skeleton is then added to fetch criteria whenever a load-on-demand fetch request is made, ensuring that we fetch both dangling parents and matching leaves.
-
-There are three ways this recursive traversal can be implemented:
-
-*   For dataSources that [support dynamic tree joins](DataSource.md#method-datasourcesupportsdynamictreejoins), we use the [additionalOutputs](DSRequest.md#attr-dsrequestadditionaloutputs) feature to declare self-joins that fetch multiple levels of parent in one query (the number of levels is configurable, see [ResultTree.matchingLeafJoinDepth](ResultTree.md#attr-resulttreematchingleafjoindepth)). Of SmartClient's built-in DataSource types, only SQLDataSource is currently capable of this approach
-*   For server-side dataSources that do not support self-joins, we combine individual single-level fetches into a [queue](RPCManager.md#classmethod-rpcmanagersendqueue), using [fieldValueExpressions](DSRequest.md#attr-dsrequestfieldvalueexpressions) with [responseData "allRecords"](DSRequestModifier.md#attr-dsrequestmodifiervalue) so that each fetch in the queue uses the output of the previous fetch as its criteria (so the first fetch returns the parents of the matching nodes, the second fetch returns the parents of those nodes, and so on). Again, the number of fetches per queue can be configured with the `matchingLeafJoinDepth` property. This approach works for any server-side DataSource implementation, including your own custom implementations
-*   For [client-side](DataSource.md#attr-datasourceclientonly) dataSources, which support neither self-joins not queueing, the algorithm simply makes as many single-level requests as necessary to build the entire skeleton. Note, this is exactly what would happen with previously-mentioned queueing approach, if you set `matchingLeafJoinDepth` to 1
-
-If you want to disable the automatic handling of `keepParentsOnFilter` on load-on-demand trees, see [ResultTree.serverKeepParentsOnFilter](ResultTree.md#attr-resulttreeserverkeepparentsonfilter)
+If [FetchMode](../reference_2.md#type-fetchmode) is explicitly set to `"paged"`, it is not possible to implement `keepParentsOnFilter` by local filtering. Support for `keepParentsOnFilter` for a paged ResultTree therefore also requires custom logic in the DataSource fetch operation. To support this a developer must ensure that their fetch operation returns the appropriate set of nodes - all nodes that match the specified criteria plus their ancestor nodes even if they do not match the specified criteria.
 
 ### Groups
 
 - treeDataBinding
-
-### See Also
-
-- [ResultTree.keepParentsOnFilterMaxNodes](ResultTree.md#attr-resulttreekeepparentsonfiltermaxnodes)
 
 **Flags**: IR
 
@@ -589,18 +521,6 @@ Visible title for the tree column (field).
 **Flags**: IR
 
 ---
-## Attr: TreeGrid.iconBaseStyle
-
-### Description
-The base CSS class to apply to icons used in this grid. Used to affect the colors of SVG graphics.
-
-### Groups
-
-- treeIcons
-
-**Flags**: IRW
-
----
 ## Attr: TreeGrid.treeRootValue
 
 ### Description
@@ -608,7 +528,7 @@ For databound trees, use this attribute to supply a [DataSourceField.rootValue](
 
 This property allows you to have a particular component navigate a tree starting from any given node as the root.
 
-This setting is invalid if [TreeGrid.keepParentsOnFilter](#attr-treegridkeepparentsonfilter) is set and [fetch-mode](#attr-treegriddatafetchmode) is set to anything other than ["paged"](../reference_2.md#type-fetchmode) - a root-value cannot be used in this case because there is no efficient way to load a subtree to include all parents. If `fetchMode` is specifically set to "paged", the [keepParentsOnFilter](DSRequest.md#attr-dsrequestkeepparentsonfilter) flag is set on the request so the server knows to use special filtering rules, but these rules are not built-in - the developer is responsible for this logic.
+This setting is invalid if [TreeGrid.keepParentsOnFilter](#attr-treegridkeepparentsonfilter) is set and [fetch-mode](#attr-treegriddatafetchmode) is set to anything other than ["paged"](#type-treefetchmode) - a root-value cannot be used in this case because there is no efficient way to load a subtree to include all parents. If `fetchMode` is specifically set to "paged", the [keepParentsOnFilter](DSRequest.md#attr-dsrequestkeepparentsonfilter) flag is set on the request so the server knows to use special filtering rules, but these rules are not built-in - the developer is responsible for this logic.
 
 ### Groups
 
@@ -659,7 +579,7 @@ fetchMode:"paged" enables paging for nodes that have very large numbers of child
 ## Attr: TreeGrid.connectorImage
 
 ### Description
-The base filename or [stateful image block](../reference.md#object-scstatefulimgconfig) for the connector icons shown when [TreeGrid.showConnectors](#attr-treegridshowconnectors) is true. Connector icons are rendered into the title field of each row and show the dotted hierarchy lines between siblings of the same parent node. For each node, a connector icon may be shown:
+The base filename for connector icons shown when [TreeGrid.showConnectors](#attr-treegridshowconnectors) is true. Connector icons are rendered into the title field of each row and show the dotted hierarchy lines between siblings of the same parent node. For each node, a connector icon may be shown:
 
 *   As an opener icon for folder nodes, next to the folder icon
 *   In place of an opener icon for leaf nodes, next to the leaf icon
@@ -667,7 +587,7 @@ The base filename or [stateful image block](../reference.md#object-scstatefulimg
 
 Note that [TreeGrid.showFullConnectors](#attr-treegridshowfullconnectors) governs whether connector lines will be displayed for all indent levels, or just for the innermost level of the tree.
 
-**When set to an [SCImgURL](../reference.md#type-scimgurl):** the stateful filenames for these icons are assembled from this base filename and the state of the node. Assuming the connectorImage is set to `{baseName}.{extension}`, the full set of images to be displayed will be:
+The filenames for these icons are assembled from this base filename and the state of the node. Assuming the connectorImage is set to `{baseName}.{extension}`, the full set of images to be displayed will be:
 
 `{baseName}_ancestor[_rtl].{extension}` if [TreeGrid.showFullConnectors](#attr-treegridshowfullconnectors) is true, this is the URL for the vertical continuation image to be displayed at the appropriate indent levels for ancestor nodes with subsequent children.
 
@@ -693,8 +613,6 @@ For folders with children. Note that if [TreeGrid.showFullConnectors](#attr-tree
 (Note '\[\_rtl\]' means that "\_rtl" will be attached if isRTL() is true for this widget).
 
 If [TreeGrid.showSelectedOpener](#attr-treegridshowselectedopener) is true the URL for selected nodes will append the string `"_selected"` to the image URLs described above. So for a connectorImage set to `{baseName}.{extension}`, the URLs for selected records would be `{baseName}_ancestor[_rtl]_selected.{extension}`, `{baseName}_single[_rtl]_selected.{extension}`, etc.
-
-**When set to an _SCStatefulImgConfig:_** _it should contain entries for the default _\_base_ state, as well as the custom states listed above. These entries may be set to any combination of supported src strings, including file-paths and sprite-strings._
 
 ### Groups
 
@@ -1263,14 +1181,6 @@ If [TreeGrid.showOpenIcons](#attr-treegridshowopenicons) is true, this suffix wi
 **Flags**: IR
 
 ---
-## Attr: TreeGrid.treeFieldMinWidth
-
-### Description
-Default [minimum width](ListGridField.md#attr-listgridfieldminwidth) for the [treeField](TreeGridField.md#attr-treegridfieldtreefield). If unset, the default minimum width will be derived from [minFieldWidth](ListGrid_1.md#attr-listgridminfieldwidth), like any every other field.
-
-**Flags**: IR
-
----
 ## Attr: TreeGrid.folderIcon
 
 ### Description
@@ -1350,7 +1260,7 @@ For a `TreeGrid` that uses a DataSource, these properties will be passed to the 
 ## Attr: TreeGrid.dataSource
 
 ### Description
-The DataSource that this component should bind to for default fields and for performing [DataSource requests](../reference_2.md#object-dsrequest).
+The DataSource that this component should bind to for default fields and for performing [DataSource requests](../reference.md#object-dsrequest).
 
 Can be specified as either a DataSource instance or the String ID of a DataSource.
 
@@ -1523,7 +1433,7 @@ Return the horizontal alignment for cell contents. Default implementation will a
 
 ### Returns
 
-`[Alignment](../reference_2.md#type-alignment)` — Horizontal alignment of cell contents: 'right', 'center', or 'left'
+`[Alignment](../reference.md#type-alignment)` — Horizontal alignment of cell contents: 'right', 'center', or 'left'
 
 ---
 ## Method: TreeGrid.recordDoubleClick
@@ -1571,7 +1481,7 @@ This method is called when a context click occurs on a folder record.
 
 ### Returns
 
-`[Boolean](#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### See Also
 
@@ -1638,7 +1548,7 @@ This method is called when a context click occurs on a leaf record.
 
 ### Returns
 
-`[Boolean](#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### See Also
 
@@ -1648,14 +1558,14 @@ This method is called when a context click occurs on a leaf record.
 ## Method: TreeGrid.setSelectedPaths
 
 ### Description
-Reset this grid's selection to match the [ListGridSelectedState](../reference_2.md#type-listgridselectedstate) object passed in.  
+Reset this grid's selection to match the [ListGridSelectedState](../reference.md#type-listgridselectedstate) object passed in.  
 Used to restore previous state retrieved from the grid by a call to [TreeGrid.getSelectedPaths](#method-treegridgetselectedpaths).
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| selectedPaths | [ListGridSelectedState](../reference_2.md#type-listgridselectedstate) | false | — | Object describing the desired selection state of the grid |
+| selectedPaths | [ListGridSelectedState](../reference.md#type-listgridselectedstate) | false | — | Object describing the desired selection state of the grid |
 
 ### Groups
 
@@ -1681,7 +1591,7 @@ This method is called when a context click occurs on a leaf or folder record. No
 
 ### Returns
 
-`[Boolean](#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### See Also
 
@@ -1751,8 +1661,8 @@ This method behaves exactly like [TreeGrid.fetchData](#method-treegridfetchdata)
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | criteria | [Criteria](../reference_2.md#type-criteria) | true | — | Search criteria. If a [DynamicForm](DynamicForm.md#class-dynamicform) is passed in as this argument instead of a raw criteria object, will be derived by calling [DynamicForm.getValuesAsCriteria](DynamicForm.md#method-dynamicformgetvaluesascriteria) |
-| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke when a fetch is complete. Fires only if server contact was required; see [fetchData()](ListGrid_2.md#method-listgridfetchdata) for details |
-| requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | for databound components only - optional additional properties to set on the DSRequest that will be issued |
+| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke when a fetch is complete. Fires only if server contact was required; see [fetchData()](ListGrid_1.md#method-listgridfetchdata) for details |
+| requestProperties | [DSRequest](#type-dsrequest) | true | — | for databound components only - optional additional properties to set on the DSRequest that will be issued |
 
 ### Groups
 
@@ -1794,7 +1704,7 @@ This method is called when a folder is closed either via the user manipulating t
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false to cancel the close, true to all it to proceed
+`[boolean](../reference.md#type-boolean)` — false to cancel the close, true to all it to proceed
 
 ---
 ## Method: TreeGrid.getDragTrackerIcon
@@ -1931,7 +1841,7 @@ Otherwise this method returns true.
 ### Description
 This override to [ListGrid.rowClick](ListGrid_2.md#method-listgridrowclick). This implementation calls through to the [TreeGrid.nodeClick](#method-treegridnodeclick), [TreeGrid.folderClick](#method-treegridfolderclick), [TreeGrid.leafClick](#method-treegridleafclick) methods, as appropriate unless the click was on the expand/collapse control of a folder - in which case those callbacks are not fired.
 
-Do not override this method unless you need a rowClick callback that fires even when the user clicks on the expand/collapse control. If you do override this method, be sure to call `return this.Super("rowClick", arguments);` at the end of your override to preserve other handlers that are called from the superclass (for example, [ListGrid.recordClick](ListGrid_2.md#method-listgridrecordclick).
+Do not override this method unless you need a rowClick callback that fires even when the user clicks on the expand/collapse control. If you do override this method, be sure to call `return this.Super("rowClick", arguments);` at the end of your override to preserver other handler that are called from the superclass (for example, [ListGrid.recordClick](ListGrid_2.md#method-listgridrecordclick).
 
 ### Parameters
 
@@ -1943,7 +1853,7 @@ Do not override this method unless you need a rowClick callback that fires even 
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false == cancel further event processing
+`[boolean](../reference.md#type-boolean)` — false == cancel further event processing
 
 ### Groups
 
@@ -1960,13 +1870,13 @@ Do not override this method unless you need a rowClick callback that fires even 
 ## Method: TreeGrid.getEventRow
 
 ### Description
-Returns the row number of the provided Y-coordinate, or the most recent mouse event if a Y-coordinate is not provided.
+Returns the row number of the most recent mouse event.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| y | [Integer](../reference_2.md#type-integer) | true | — | Y-coordinate relative to the top edge of the content to obtain the row number for. If not provided, then [Canvas.getOffsetY](Canvas.md#method-canvasgetoffsety) will be used. |
+| y | [Integer](../reference_2.md#type-integer) | true | — | optional y-coordinate to obtain row number, in lieu of the y coordinate of the last mouse event |
 
 ### Returns
 
@@ -2020,7 +1930,7 @@ When using invalidateCache() there is no need to also call fetchData() and in fa
 |------|------|----------|---------|-------------|
 | criteria | [Criteria](../reference_2.md#type-criteria) | true | — | Search criteria. If a [DynamicForm](DynamicForm.md#class-dynamicform) is passed in as this argument instead of a raw criteria object, will be derived by calling [DynamicForm.getValuesAsCriteria](DynamicForm.md#method-dynamicformgetvaluesascriteria) |
 | callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke when a fetch is complete. Fires only if server contact was required |
-| requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | additional properties to set on the DSRequest that will be issued |
+| requestProperties | [DSRequest](#type-dsrequest) | true | — | additional properties to set on the DSRequest that will be issued |
 
 ### Groups
 
@@ -2034,7 +1944,7 @@ When using invalidateCache() there is no need to also call fetchData() and in fa
 ## Method: TreeGrid.exportClientData
 
 ### Description
-Exports this component's data with client-side formatters applied, so is suitable for direct display to users. See [ListGrid.exportClientData](ListGrid_2.md#method-listgridexportclientdata) for details of the general requirements and restrictions when exporting client data.
+Exports this component's data with client-side formatters applied, so is suitable for direct display to users. See [ListGrid.exportClientData](ListGrid_1.md#method-listgridexportclientdata) for details of the general requirements and restrictions when exporting client data.
 
 The following notes apply when exporting client data from TreeGrids:
 
@@ -2056,7 +1966,7 @@ If your TreeGrid has custom formatters, formatted values will be exported by def
 
 ### See Also
 
-- [ListGrid.exportClientData](ListGrid_2.md#method-listgridexportclientdata)
+- [ListGrid.exportClientData](ListGrid_1.md#method-listgridexportclientdata)
 
 ---
 ## Method: TreeGrid.folderOpened
@@ -2073,7 +1983,7 @@ This method is called when a folder is opened either via the user manipulating t
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false to cancel the open, true to all it to proceed
+`[boolean](../reference.md#type-boolean)` — false to cancel the open, true to all it to proceed
 
 ---
 ## Method: TreeGrid.isOverExtraIcon
@@ -2110,12 +2020,12 @@ This method is called when a leaf or folder record is clicked on. Note that if y
 ## Method: TreeGrid.getSelectedPaths
 
 ### Description
-Returns a snapshot of the current selection within this treeGrid as a [ListGridSelectedState](../reference_2.md#type-listgridselectedstate) object.  
+Returns a snapshot of the current selection within this treeGrid as a [ListGridSelectedState](../reference.md#type-listgridselectedstate) object.  
 This object can be passed to [TreeGrid.setSelectedPaths](#method-treegridsetselectedpaths) to reset this grid's selection the current state (assuming the same data is present in the grid).
 
 ### Returns
 
-`[ListGridSelectedState](../reference_2.md#type-listgridselectedstate)` — current state of this grid's selection
+`[ListGridSelectedState](../reference.md#type-listgridselectedstate)` — current state of this grid's selection
 
 ### Groups
 
@@ -2238,7 +2148,7 @@ Notification method fired when the TreeGrid's data changes, for any reason. If o
 
 Examples of why data changed might be:
 
-*   a call to [addData()](ListGrid_2.md#method-listgridadddata), [updateData()](ListGrid_2.md#method-listgridupdatedata), or [removeData()](ListGrid_2.md#method-listgridremovedata)
+*   a call to [addData()](ListGrid_2.md#method-listgridadddata), [updateData()](ListGrid_1.md#method-listgridupdatedata), or [removeData()](ListGrid_2.md#method-listgridremovedata)
 *   [DataSource](DataSource.md#class-datasource) updates from the server for [ResultTree](ResultTree.md#class-resulttree) data (triggered by record editing, etc.)
 *   fetches arriving back from the server for [ResultTree](ResultTree.md#class-resulttree) data
 *   programmatic changes to [Tree](Tree.md#class-tree) data if made through APIs such as [Tree.add](Tree.md#method-treeadd), [Tree.remove](Tree.md#method-treeremove), etc.
@@ -2247,7 +2157,7 @@ Examples of why data changed might be:
 
 Calling [TreeGrid.setData](#method-treegridsetdata) doesn't call this notification directly, but it may fire if one of the above listed events is triggered (e.g. a server fetch for [ResultTree](ResultTree.md#class-resulttree) data).
 
-Note that the `operationType` parameter is optional and will be passed and contain the operation (e.g. "update") if this notification was triggered by a fetch, an [addData()](ListGrid_2.md#method-listgridadddata), [updateData()](ListGrid_2.md#method-listgridupdatedata), or [removeData()](ListGrid_2.md#method-listgridremovedata), or a [DataSource](DataSource.md#class-datasource) update for [ResultTree](ResultTree.md#class-resulttree) data (the first three reasons listed above) but otherwise will be undefined.
+Note that the `operationType` parameter is optional and will be passed and contain the operation (e.g. "update") if this notification was triggered by a fetch, an [addData()](ListGrid_2.md#method-listgridadddata), [updateData()](ListGrid_1.md#method-listgridupdatedata), or [removeData()](ListGrid_2.md#method-listgridremovedata), or a [DataSource](DataSource.md#class-datasource) update for [ResultTree](ResultTree.md#class-resulttree) data (the first three reasons listed above) but otherwise will be undefined.
 
 ### Parameters
 

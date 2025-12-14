@@ -27,7 +27,7 @@ Name of property that identifies a [NodeLocator](../reference_2.md#object-nodelo
 ## ClassAttr: Tree.LOADED
 
 ### Description
-A declared value of the enum type [LoadState](../reference_2.md#type-loadstate).
+A declared value of the enum type [LoadState](../reference.md#type-loadstate).
 
 **Flags**: R
 
@@ -35,7 +35,7 @@ A declared value of the enum type [LoadState](../reference_2.md#type-loadstate).
 ## ClassAttr: Tree.UNLOADED
 
 ### Description
-A declared value of the enum type [LoadState](../reference_2.md#type-loadstate).
+A declared value of the enum type [LoadState](../reference.md#type-loadstate).
 
 **Flags**: R
 
@@ -43,7 +43,7 @@ A declared value of the enum type [LoadState](../reference_2.md#type-loadstate).
 ## ClassAttr: Tree.LOADING
 
 ### Description
-A declared value of the enum type [LoadState](../reference_2.md#type-loadstate).
+A declared value of the enum type [LoadState](../reference.md#type-loadstate).
 
 **Flags**: R
 
@@ -51,7 +51,7 @@ A declared value of the enum type [LoadState](../reference_2.md#type-loadstate).
 ## ClassAttr: Tree.FOLDERS_LOADED
 
 ### Description
-A declared value of the enum type [LoadState](../reference_2.md#type-loadstate).
+A declared value of the enum type [LoadState](../reference.md#type-loadstate).
 
 **Flags**: R
 
@@ -59,7 +59,7 @@ A declared value of the enum type [LoadState](../reference_2.md#type-loadstate).
 ## ClassAttr: Tree.LOADED_PARTIAL_CHILDREN
 
 ### Description
-A declared value of the enum type [LoadState](../reference_2.md#type-loadstate).
+A declared value of the enum type [LoadState](../reference.md#type-loadstate).
 
 **Flags**: R
 
@@ -89,7 +89,7 @@ The name of the "position" field in this [multi-link tree](#attr-treelinkdata)'s
 ### Description
 If you are using the "parent" modelType and did not specify a root node via [Tree.root](#attr-treeroot) with an id ([Tree.idField](#attr-treeidfield)), then you can provide the root node's id via this property.
 
-This setting is invalid if [TreeGrid.keepParentsOnFilter](TreeGrid.md#attr-treegridkeepparentsonfilter) is set and [fetch-mode](TreeGrid.md#attr-treegriddatafetchmode) is set to anything other than ["paged"](../reference_2.md#type-fetchmode) - a root-value cannot be used in this case because there is no efficient way to load a subtree to include all parents. If `fetchMode` is specifically set to "paged", the rootValue is passed as criteria and the [keepParentsOnFilter](DSRequest.md#attr-dsrequestkeepparentsonfilter) flag is set on the request so the server knows to use special filtering rules, but these rules are not built-in - the developer is responsible for this logic.
+This setting is invalid if [TreeGrid.keepParentsOnFilter](TreeGrid.md#attr-treegridkeepparentsonfilter) is set and [fetch-mode](TreeGrid.md#attr-treegriddatafetchmode) is set to anything other than ["paged"](#type-treefetchmode) - a root-value cannot be used in this case because there is no efficient way to load a subtree to include all parents. If `fetchMode` is specifically set to "paged", the rootValue is passed as criteria and the [keepParentsOnFilter](DSRequest.md#attr-dsrequestkeepparentsonfilter) flag is set on the request so the server knows to use special filtering rules, but these rules are not built-in - the developer is responsible for this logic.
 
 See [Tree.data](#attr-treedata) for an example.
 
@@ -280,7 +280,7 @@ For [multi-link tree](#method-treeismultilinktree)s, we do not track open state 
 ## Attr: Tree.sortFoldersBeforeLeaves
 
 ### Description
-If [Tree.separateFolders](#attr-treeseparatefolders) is true, should folders be displayed above or below leaves? When set to `true` folders will appear above leaves when the `sortDirection` applied to the tree is ["ascending"](../reference_2.md#type-sortdirection)
+If [Tree.separateFolders](#attr-treeseparatefolders) is true, should folders be displayed above or below leaves? When set to `true` folders will appear above leaves when the `sortDirection` applied to the tree is ["ascending"](../reference.md#type-sortdirection)
 
 **Flags**: IRW
 
@@ -414,7 +414,7 @@ For a [multi-link tree](#attr-treemultilinktree), this property specifies the pa
 
 For a regular, non-multiLink tree, the `linkData` property is ignored.
 
-Minimally, the link data should include a node id, parent id and optionally the position of the child within that parent. To describe this multi-link tree:
+Minimally, the link data should include a node id, parent id and optionally the position of the child within that parent To describe this multi-link tree:
 
 ```
    foo
@@ -581,7 +581,7 @@ For load on demand trees (those that only have a partial representation client-s
 
 ### Returns
 
-`[Array of TreeNode](#type-array-of-treenode)` — List of immediate children that are folders
+`[List](#type-list)` — List of immediate children that are folders
 
 ---
 ## Method: Tree.getLeaves
@@ -599,7 +599,7 @@ For load on demand trees (those that only have a partial representation client-s
 
 ### Returns
 
-`[Array of TreeNode](#type-array-of-treenode)` — List of immediate children that are leaves.
+`[List](#type-list)` — List of immediate children that are leaves.
 
 ---
 ## Method: Tree.removeChildren
@@ -684,11 +684,11 @@ For load on demand trees (those that only have a partial representation client-s
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| node | [TreeNode](#type-treenode) | true | — | node in question (root node is assumed if none is specified) |
+| node | [TreeNode](#type-treenode) | true | — | node in question (the root node is assumed if none is specified) |
 
 ### Returns
 
-`[Array of TreeNode](#type-array-of-treenode)` — List of descendants of the node.
+`[List](#type-list)` — List of descendants of the node.
 
 ---
 ## Method: Tree.setSortFoldersBeforeLeaves
@@ -712,11 +712,11 @@ Returns a list of link{type:NodeLocator)s identifying all descendants of a node 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| node | [TreeNode](#type-treenode) | true | — | node in question (root node is assumed if none is specified) |
+| node | [TreeNode](#type-treenode) | true | — | node in question (the root node is assumed if none is specified) |
 
 ### Returns
 
-`[Array of TreeNode](#type-array-of-treenode)` — List of descendants of the node.
+`[List](#type-list)` — List of descendants of the node.
 
 ---
 ## Method: Tree.openFolders
@@ -918,11 +918,11 @@ For load on demand trees (those that only have a partial representation client-s
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| node | [TreeNode](#type-treenode) | true | — | node in question (root node is assumed if none specified) |
+| node | [TreeNode](#type-treenode) | true | — | node in question (the root node is assumed if none specified) |
 
 ### Returns
 
-`[Array of TreeNode](#type-array-of-treenode)` — List of descendants of the node that are leaves.
+`[List](#type-list)` — List of descendants of the node that are leaves.
 
 ---
 ## Method: Tree.unloadChildren
@@ -1019,14 +1019,6 @@ Like [Tree.findIndex](#method-treefindindex), but searches all tree nodes regard
 - find
 
 ---
-## Method: Tree.isInAncestorChain
-
-### Description
-Returns true if the passed-in node ID is already present in the parent's ancestor chain. This means that either the parent node itself, or its parent, grandparent, and so on, has the same ID as the one passed in. This method is used when linking new nodes into a tree, to ensure that we don't link in nodes that will lead to circular references by virtue of a node being its own parent (or its own child, depending which way round you prefer to think of it)
-
-Note that [multi-link trees](#method-treeismultilinktree) potentially have more than one ancestor chain for any given node, so this method returns true if the parameter ID is used by any node in any of the parent's ancestor chains.
-
----
 ## Method: Tree.dataChanged
 
 ### Description
@@ -1062,7 +1054,7 @@ What is the loadState of a given folder?
 
 ### Returns
 
-`[LoadState](../reference_2.md#type-loadstate)` — state of the node
+`[LoadState](../reference.md#type-loadstate)` — state of the node
 
 ### Groups
 
@@ -1143,11 +1135,11 @@ For load on demand trees (those that only have a partial representation client-s
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| node | [TreeNode](#type-treenode) | true | — | node in question (root node is assumed if none is specified) |
+| node | [TreeNode](#type-treenode) | true | — | node in question (the root node is assumed if none is specified) |
 
 ### Returns
 
-`[Array of TreeNode](#type-array-of-treenode)` — List of descendants of the node that are folders.
+`[List](#type-list)` — List of descendants of the node that are folders.
 
 ---
 ## Method: Tree.isLoaded
@@ -1202,23 +1194,14 @@ Find the node with the specified ID. Specifically, it returns the node whose idF
 ### Description
 Add a single node under the specified parent. See ["Modifying ResultTrees"](ResultTree.md#class-resulttree) when working with a `ResultTree` for limitations.
 
-#### Adding nodes to Multi-link trees
-[Multi-link trees](#attr-treemultilinktree) support ordering of nodes amongst their peers by setting the value of the [linkPositionField](#attr-treelinkpositionfield) in the associated [linkData](#attr-treelinkdata). Nodes can also be added at a specific index position in the child list via this API, but be aware that - like other kinds of [databound tree](ResultTree.md#class-resulttree) - nodes added using this API are not automatically persisted. Because of this, typically you would not use this API for a databound multi-link tree; you would instead [add a record](DataSource.md#method-datasourceadddata) to the tree's [linkDataSource](ResultTree.md#attr-resulttreelinkdatasource), and possibly also to its primary [dataSource](ResultTree.md#attr-resulttreedatasource), if this is an entirely new node that does not already exist elsewhere in the tree. [Cache synchronization](DataSource.md#method-datasourceupdatecaches) will then take care of linking the new node into the tree (or the existing node into a new position in the tree).
-
-That said, if you do choose to use this `add()` API to add a node to a multi-link tree, the following rules are used:
-
-*   If you specify a non-null "position" parameter on the `add()` call, that will be honored. So, for example, passing a position of 0 will always cause the new node to be inserted first in the list of its parent's children
-*   If no position parameter is provided, we will attempt to insert the new node at the position implied by the value of the `linkPositionField` in the parameter "linkRecord". So if you provide a value of 5 for that field in the linkRecord, the node will be inserted immediately before the first existing node in the parent's child list that has a position value of 5 or greater
-*   If there is no position parameter and no value for the `linkPositionField`, the new node will inserted at the end of the parent node's list of children
-
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | node | [TreeNode](#type-treenode) | false | — | node to add |
 | parent | [String](#type-string)|[TreeNode](#type-treenode) | false | — | Parent of the node being added. You can pass in either the [TreeNode](../reference_2.md#object-treenode) itself, or a path to the node (as a String), in which case a [Tree.find](#method-treefind) is performed to find the node. |
-| position | [number](#type-number) | true | — | Position of the new node in the children list. If not specified, the node will be added at the end of the list (this is not necessarily true for multi-link trees - see the discussion above) |
-| linkRecord | [Record](#type-record) | true | — | Optional record containing attributes associated with the link between the nodes, rather than either of the nodes themselves. Only applicable to [multi-link trees](#attr-treemultilinktree), and only required if you want to provide a [linkPositionField](#attr-treelinkpositionfield) value |
+| position | [number](#type-number) | true | — | Position of the new node in the children list. If not specified, the node will be added at the end of the list. |
+| linkRecord | [Record](#type-record) | true | — | Optional record containing attributes associated with the link between the nodes, rather than either of the nodes themselves. Only applicable to [multi-link trees](#attr-treemultilinktree) |
 
 ### Returns
 
@@ -1812,7 +1795,7 @@ Return true if the passed node is the root node.
 ### Description
 Returns all children of a node. If the node is a leaf, this method returns null.
 
-For databound trees the return value could be a [ResultSet](ResultSet.md#class-resultset) rather than a simple array - so it's important to access the return value using the [List](../reference_2.md#interface-list) interface instead of as a native Javascript Array. The case that a ResultSet may be returned can only happen if the tree is a [ResultTree](ResultTree.md#class-resulttree) and the [ResultTree.fetchMode](ResultTree.md#attr-resulttreefetchmode) is set to "paged".
+For databound trees the return value could be a [ResultSet](ResultSet.md#class-resultset) rather than a simple array - so it's important to access the return value using the [List](../reference.md#interface-list) interface instead of as a native Javascript Array. The case that a ResultSet may be returned can only happen if the tree is a [ResultTree](ResultTree.md#class-resulttree) and the [ResultTree.fetchMode](ResultTree.md#attr-resulttreefetchmode) is set to "paged".
 
 ### Parameters
 

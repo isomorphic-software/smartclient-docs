@@ -475,18 +475,6 @@ The dimension of the thumb parallel to the slider track.
 **Flags**: IRW
 
 ---
-## Attr: Slider.floatValueLabel
-
-### Description
-When set to true, causes the [value-label](#attr-slidervaluelabel) to float as a top-level component. In a [horizontal](#attr-slidervertical) Slider, this means the value-label will always be h-centered above the thumb and extend outside of the Slider, potentially occluding adjacent components or being clipped by the Page extents.
-
-When set to false, the value-label is a peer of the thumb and is clamped to the extents of the track. When those points are reached, the value-label will stop moving, and the arrow beneath it will instead reposition according to the current position of the thumb.
-
-**Deprecated**
-
-**Flags**: IR
-
----
 ## Attr: Slider.vThumbStyle
 
 ### Description
@@ -627,7 +615,7 @@ Sets the slider value to newValue and moves the slider thumb to the appropriate 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | newValue | [float](../reference.md#type-float) | false | — | the new value |
-| noAnimation | [boolean](../reference.md#type-boolean) | true | — | do not animate the slider thumb to the new value |
+| noAnimation | [boolean](../reference.md#type-boolean) | false | — | do not animate the slider thumb to the new value |
 
 ---
 ## Method: Slider.setLabelSpacing

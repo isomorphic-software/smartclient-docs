@@ -13,7 +13,7 @@ A DrawPane is a container for drawing bitmap and vector graphics using browser's
 
 To draw in a `DrawPane` you create [DrawLine](DrawLine.md#class-drawline)s, [DrawOval](DrawOval.md#class-drawoval)s, [DrawPath](DrawPath.md#class-drawpath)s and other [DrawItem](DrawItem.md#class-drawitem)-based components, and place them in the `DrawPane` via [DrawPane.drawItems](#attr-drawpanedrawitems) or add them incrementally via [DrawPane.addDrawItem](#method-drawpaneadddrawitem).
 
-`DrawItems` support a variety of common features, such as [gradient fills](../reference_2.md#object-gradient), [arrowheads](DrawItem.md#attr-drawitemstartarrow), events such as [click()](DrawItem.md#method-drawitemclick) and built-in [control knobs](DrawItem.md#attr-drawitemknobs) for end user resizing and manipulation of shapes.
+`DrawItems` support a variety of common features, such as [gradient fills](../reference.md#object-gradient), [arrowheads](DrawItem.md#attr-drawitemstartarrow), events such as [click()](DrawItem.md#method-drawitemclick) and built-in [control knobs](DrawItem.md#attr-drawitemknobs) for end user resizing and manipulation of shapes.
 
 Common shapes such as [rectangles](DrawRect.md#class-drawrect), [ovals](DrawOval.md#class-drawoval) and [triangles](../reference.md#class-drawtriangle) have dedicated DrawItem subclasses. For other shapes, consider:
 
@@ -45,17 +45,13 @@ There are three different coordinate systems involved when a DrawItem is drawn o
 
 The view port of the DrawPane is the rectangle in the global coordinate system from (0, 0) that is as wide as the DrawPane's [inner content width](Canvas.md#method-canvasgetinnercontentwidth) and as high as the DrawPane's [inner content height](Canvas.md#method-canvasgetinnercontentheight). Note: In the case of a [FacetChart](FacetChart.md#class-facetchart) showing a [zoom chart](FacetChart.md#attr-facetchartcanzoom), the view port height is decreased by the height of the zoom chart.
 
-One other coordinate system in use by a DrawPane when [drag-scrolling](#attr-drawpanecandragscroll) is enabled is the "viewbox coordinate system". The viewbox coordinate system is the drawing coordinate system with the [DrawPane.translate](#attr-drawpanetranslate) and [DrawPane.rotation](#attr-drawpanerotation) transforms applied. Use [drawingWidth](#attr-drawpanedrawingwidth) and [drawingHeight](#attr-drawpanedrawingheight) to control how much of the viewbox is available while panning.
+One other coordinate system in use by a DrawPane when [drag-scrolling](#attr-drawpanecandragscroll) is enabled is the "viewbox coordinate system". The viewbox coordinate system is the drawing coordinate system with the [DrawPane.translate](#attr-drawpanetranslate) and [DrawPane.zoomLevel](#attr-drawpanezoomlevel) transforms applied.
 
 ---
 ## Attr: DrawPane.drawingHeight
 
 ### Description
 When [canDragScroll](#attr-drawpanecandragscroll) is enabled, this is the height of the area in viewbox coordinates that can be accessed through drag-scrolling.
-
-### See Also
-
-- [DrawPane.getViewPortRectInViewBoxCoords](#method-drawpanegetviewportrectinviewboxcoords)
 
 **Flags**: IR
 
@@ -135,10 +131,6 @@ Global translation. This array has two numbers. The first number is the X transl
 
 ### Description
 When [canDragScroll](#attr-drawpanecandragscroll) is enabled, this is the width of the area in viewbox coordinates that can be accessed through drag-scrolling.
-
-### See Also
-
-- [DrawPane.getViewPortRectInViewBoxCoords](#method-drawpanegetviewportrectinviewboxcoords)
 
 **Flags**: IR
 
@@ -607,21 +599,6 @@ Sets the zoom on this `DrawPane` to the specified magnification, maintaining the
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | zoomLevel | [float](../reference.md#type-float) | false | — | Desired zoom level as a float where `1.0` is equivalent to 100% magnification. Must be greater than 0. |
-
----
-## Method: DrawPane.getViewPortRectInViewBoxCoords
-
-### Description
-Returns the rectangle defining the drawPane's viewport (where content can be shown) in the viewbox coordinate system (see the "Note on Coordinate Systems" in the documentation for [DrawPane](#class-drawpane)). This can be useful for knowing what the viewport is showing, relative to the drawPane's [DrawPane.drawingWidth](#attr-drawpanedrawingwidth) and [DrawPane.drawingHeight](#attr-drawpanedrawingheight).
-
-### Returns
-
-`[Array of double](#type-array-of-double)` — top, left, width, height of the viewport in viewbox coordinates
-
-### See Also
-
-- [DrawPane.drawingWidth](#attr-drawpanedrawingwidth)
-- [DrawPane.drawingHeight](#attr-drawpanedrawingheight)
 
 ---
 ## Method: DrawPane.createSimpleGradient

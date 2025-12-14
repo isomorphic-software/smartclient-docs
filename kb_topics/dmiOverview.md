@@ -54,10 +54,10 @@ RPC DMI also uses a [ServerObject](../reference_2.md#object-serverobject) config
 **Method Invocation**  
 SmartClient can pass a set of stock context variables to your DMI method and also performs some type adaptation logic to make this interface more flexible. For DataSource DMI, you can declare your method to take any number of the following types of arguments and they will be passed to you:
 
-*   jakarta.servlet.http.HttpServletRequest
-*   jakarta.servlet.http.HttpServletResponse
-*   jakarta.servlet.ServletContext
-*   jakarta.servlet.http.HttpSession
+*   javax.servlet.http.HttpServletRequest
+*   javax.servlet.http.HttpServletResponse
+*   javax.servlet.ServletContext
+*   javax.servlet.http.HttpSession
 *   com.isomorphic.rpc.RPCManager
 *   com.isomorphic.datasource.DSRequest
 *   com.isomorphic.servlet.RequestContext (from com.isomorphic.servlet)
@@ -101,10 +101,10 @@ The server-side implementation of the method invoked must have a signature that 
 
 In addition to the parameters explicitly passed from the client, your method signature can include some additional arguments to pick up information about the request passed in. If your server side method is declared with arguments of the following type they will be passed to your DMI method.
 
-*   jakarta.servlet.http.HttpServletRequest
-*   jakarta.servlet.http.HttpServletResponse
-*   jakarta.servlet.ServletContext
-*   jakarta.servlet.http.HttpSession
+*   javax.servlet.http.HttpServletRequest
+*   javax.servlet.http.HttpServletResponse
+*   javax.servlet.ServletContext
+*   javax.servlet.http.HttpSession
 *   com.isomorphic.rpc.RPCManager
 *   com.isomorphic.rpc.RPCRequest
 *   org.springframework.beans.factory.BeanFactory (when applicable)

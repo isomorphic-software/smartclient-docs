@@ -118,7 +118,7 @@ Given a date object, return the time associated with the date as a short string.
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | date | [Date](#type-date) | false | — | Date to convert to a time string. |
-| formatter | [TimeDisplayFormat](../reference_2.md#type-timedisplayformat)|[FormatString](../reference.md#type-formatstring)|[Function](#type-function) | true | — | Optional custom formatter to use. Will accept a function (which will be passed a pointer to the Date to format), a format string, or a string designating a standard formatter |
+| formatter | [TimeDisplayFormat](../reference.md#type-timedisplayformat)|[FormatString](../reference.md#type-formatstring)|[Function](#type-function) | true | — | Optional custom formatter to use. Will accept a function (which will be passed a pointer to the Date to format), a format string, or a string designating a standard formatter |
 | logicalTime | [boolean](../reference.md#type-boolean) | true | — | Is the date passed in a representation of a logical time value such as a value from a `"time"` type field on a dataSource or a datetime value? For datetime values the formatted string will respect any custom [display timezone](#classmethod-timesetdefaultdisplaytimezone). If not explicitly specified, the date passed in will be assumed to be a datetime unless it was created explicitly as a time via [Time.createLogicalTime](#classmethod-timecreatelogicaltime) or similar APIs. |
 
 ### See Also
@@ -145,7 +145,7 @@ Sets the default format for strings returned by [Time.toTime](#classmethod-timet
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| formatter | [TimeDisplayFormat](../reference_2.md#type-timedisplayformat)|[FormatString](../reference.md#type-formatstring)|[Function](#type-function) | false | — | Optional custom formatter to use. Will accept a function (which will be passed a pointer to the Date to format), a format string, or a string designating a standard formatter |
+| formatter | [TimeDisplayFormat](../reference.md#type-timedisplayformat)|[FormatString](../reference.md#type-formatstring)|[Function](#type-function) | false | — | Optional custom formatter to use. Will accept a function (which will be passed a pointer to the Date to format), a format string, or a string designating a standard formatter |
 
 ---
 ## ClassMethod: Time.createDate
@@ -228,7 +228,7 @@ Given a date object, return the time associated with the date as a formatted str
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | date | [Date](#type-date) | false | — | Date to convert to a time string. |
-| formatter | [TimeDisplayFormat](../reference_2.md#type-timedisplayformat)|[FormatString](../reference.md#type-formatstring)|[Function](#type-function) | true | — | Optional custom formatter to use. Will accept a function (which will be passed a pointer to the Date to format), a format string, or a string designating a standard formatter |
+| formatter | [TimeDisplayFormat](../reference.md#type-timedisplayformat)|[FormatString](../reference.md#type-formatstring)|[Function](#type-function) | true | — | Optional custom formatter to use. Will accept a function (which will be passed a pointer to the Date to format), a format string, or a string designating a standard formatter |
 | logicalTime | [boolean](../reference.md#type-boolean) | true | — | Is the date passed in a representation of a logical time value such as a value from a `"time"` type field on a dataSource or a datetime value? For datetime values the formatted string will respect any custom [display timezone](#classmethod-timesetdefaultdisplaytimezone). If not explicitly specified, the date passed in will be assumed to be a datetime unless it was created explicitly as a time via [Time.createLogicalTime](#classmethod-timecreatelogicaltime) or similar APIs. |
 
 ### See Also
@@ -245,7 +245,7 @@ Sets the default format for strings returned by [Time.toShortTime](#classmethod-
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| formatter | [TimeDisplayFormat](../reference_2.md#type-timedisplayformat)|[FormatString](../reference.md#type-formatstring)|[Function](#type-function) | false | — | Optional custom formatter to use. Will accept a function (which will be passed a pointer to the Date to format), a format string, or a string designating a standard formatter |
+| formatter | [TimeDisplayFormat](../reference.md#type-timedisplayformat)|[FormatString](../reference.md#type-formatstring)|[Function](#type-function) | false | — | Optional custom formatter to use. Will accept a function (which will be passed a pointer to the Date to format), a format string, or a string designating a standard formatter |
 
 ---
 ## ClassMethod: Time.compareTimes

@@ -114,34 +114,10 @@ Should a progress bar be shown to indicate progress through the tour?
 **Flags**: IR
 
 ---
-## Attr: TourWindow.cancelButtonPrompt
-
-### Description
-Prompt displayed in hover for cancel button.
-
-### Groups
-
-- appearance
-
-**Flags**: IR
-
----
 ## Attr: TourWindow.actionButtonURL
 
 ### Description
 URL to open in another tab or window when the the [TourWindow.actionButton](#attr-tourwindowactionbutton) is clicked. The normal [TourWindow.actionClick](#method-tourwindowactionclick) event is still called.
-
-**Flags**: IR
-
----
-## Attr: TourWindow.cancelButtonDisabled
-
-### Description
-Should cancel button be disabled?
-
-### Groups
-
-- appearance
 
 **Flags**: IR
 

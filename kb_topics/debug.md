@@ -9,8 +9,6 @@
 ### Description
 Support for debugging and logging
 
-See [debugging](debugging.md#kb-topic-debugging) for an overview of debugging in SmartClient
-
 ### Related
 
 - [isc.showConsole](../classes/isc.md#staticmethod-iscshowconsole)

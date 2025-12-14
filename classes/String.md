@@ -239,30 +239,6 @@ This prevents HTML-special characters like '<' and '>' from being interpreted as
 - stringProcessing
 
 ---
-## StaticMethod: String.formatAsOrdinalNumber
-
-### Description
-Formats the given integer `n` as an ordinal number string. For example:
-
-*   1 → "1st"
-*   \-12 → "-12th"
-*   82 → "82nd"
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| n | [Integer](../reference_2.md#type-integer) | false | — | the integer to format as an ordinal number string |
-
-### Returns
-
-`[String](#type-string)` — `n` formatted as an ordinal number string
-
-### Groups
-
-- i18nMessages
-
----
 ## StaticMethod: String.isValidID
 
 ### Description

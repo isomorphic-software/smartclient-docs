@@ -15,7 +15,7 @@ Whether to include custom-defined [SimpleTypes](SimpleType.md#class-simpletype).
 ## Attr: MockDSExportSettings.requestProperties
 
 ### Description
-The properties that will be specified on the [DSRequest](../reference_2.md#object-dsrequest) when fetching records. You can pass an array of different request properties matching the length of the `dsNames` param of [Reify.getMockDS](Reify.md#classmethod-reifygetmockds) or [Reify.showMockDS](Reify.md#classmethod-reifyshowmockds) if you want the fetch for each [DataSource](DataSource.md#class-datasource) made with different properties.
+The properties that will be specified on the [DSRequest](../reference.md#object-dsrequest) when fetching records. You can pass an array of different request properties matching the length of the `dsNames` param of [Reify.getMockDS](Reify.md#classmethod-reifygetmockds) or [Reify.showMockDS](Reify.md#classmethod-reifyshowmockds) if you want the fetch for each [DataSource](DataSource.md#class-datasource) made with different properties.
 
 **Flags**: IR
 

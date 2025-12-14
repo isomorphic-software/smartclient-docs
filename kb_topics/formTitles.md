@@ -11,7 +11,7 @@ Properties that affect form item title placement and styling.
 
 ### Related
 
-- [TitleOrientation](../reference_2.md#type-titleorientation)
+- [TitleOrientation](../reference.md#type-titleorientation)
 - [FilterBuilder.setTopOperatorAppearance](../classes/FilterBuilder.md#method-filterbuildersettopoperatorappearance)
 - [DynamicForm.setTitleOrientation](../classes/DynamicForm.md#method-dynamicformsettitleorientation)
 - [DataSource.requiredMessage](../classes/DataSource.md#attr-datasourcerequiredmessage)

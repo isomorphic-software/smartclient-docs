@@ -103,10 +103,6 @@ If no value is provided it will be defaulted to `true`.
 ### Description
 Applied directly to [TourConfirmStep.targetView](#attr-tourconfirmsteptargetview).
 
-### Groups
-
-- i18nMessages
-
 **Flags**: IR
 
 ---
@@ -114,10 +110,6 @@ Applied directly to [TourConfirmStep.targetView](#attr-tourconfirmsteptargetview
 
 ### Description
 Applied directly to [TourConfirmStep.targetView](#attr-tourconfirmsteptargetview).
-
-### Groups
-
-- i18nMessages
 
 **Flags**: IR
 

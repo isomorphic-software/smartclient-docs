@@ -45,8 +45,6 @@ If this MenuButton has a specified [accessKey](Canvas.md#attr-canvasaccesskey), 
 ### Description
 The menu drops down below the menu button. Set to false if the menu should appear above the menu button.
 
-Note that this setting may be ignored if it would cause the menu to be clipped by the browser viewport.
-
 ### Groups
 
 - menu

@@ -81,7 +81,7 @@ See [accessibility](../kb_topics/accessibility.md#kb-topic-accessibility--sectio
 ## Attr: SectionItem.itemIds
 
 ### Description
-[Names](FormItem.md#attr-formitemname) of the items that should be considered a member of this section.
+IDs of the items that should be considered a member of this section.
 
 **Flags**: IR
 

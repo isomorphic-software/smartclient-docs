@@ -7,7 +7,7 @@
 ## Class: ResultSet
 
 ### Description
-ResultSets are an implementation of the [List](../reference_2.md#interface-list) interface that automatically fetches DataSource records when items are requested from the List. ResultSets provide robust, customizable, high-performance cache management for ListGrids and other built-in SmartClient components, and can be used as cache managers by custom components.
+ResultSets are an implementation of the [List](../reference.md#interface-list) interface that automatically fetches DataSource records when items are requested from the List. ResultSets provide robust, customizable, high-performance cache management for ListGrids and other built-in SmartClient components, and can be used as cache managers by custom components.
 
 ResultSets manage data paging, that is, loading records in batches as the user navigates the data set. A ResultSet will switch to using client-side sorting and filtering when possible to improve responsiveness and reduce server load. ResultSets also participate in automatic cache synchronization, observing operations on DataSources and automatically updating their caches.
 
@@ -15,7 +15,7 @@ ResultSets manage data paging, that is, loading records in batches as the user n
 
 A ResultSet can be passed to any component that expects a List, and the List APIs can be called directly on the ResultSet as long as the caller is able to deal with asynchronous loading; see [ResultSet.getRange](#method-resultsetgetrange).
 
-Generally ResultSets do not need to be created directly, but are created by DataBound components as an automatic consequence of calling [DataBound Component Methods](../kb_topics/dataBoundComponentMethods.md#kb-topic-databound-component-methods). For example, the [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata) causes [ListGrid.data](ListGrid_1.md#attr-listgriddata) to become an automatically created `ResultSet` object. Automatically created ResultSets can be customized via properties on ListGrids such as [ListGrid.dataPageSize](ListGrid_1.md#attr-listgriddatapagesize) and [ListGrid.dataProperties](ListGrid_1.md#attr-listgriddataproperties). All ResultSets for a given DataSource may also be customized via setting [DataSource.resultSetClass](DataSource.md#attr-datasourceresultsetclass) to the name of a ResultSet [subclass](isc.md#staticmethod-iscdefineclass) in which [defaults have been changed](Class.md#classmethod-classaddproperties).
+Generally ResultSets do not need to be created directly, but are created by DataBound components as an automatic consequence of calling [DataBound Component Methods](../kb_topics/dataBoundComponentMethods.md#kb-topic-databound-component-methods). For example, the [ListGrid.fetchData](ListGrid_1.md#method-listgridfetchdata) causes [ListGrid.data](ListGrid_1.md#attr-listgriddata) to become an automatically created `ResultSet` object. Automatically created ResultSets can be customized via properties on ListGrids such as [ListGrid.dataPageSize](ListGrid_1.md#attr-listgriddatapagesize) and [ListGrid.dataProperties](ListGrid_1.md#attr-listgriddataproperties). All ResultSets for a given DataSource may also be customized via setting [DataSource.resultSetClass](DataSource.md#attr-datasourceresultsetclass) to the name of a ResultSet [subclass](isc.md#staticmethod-iscdefineclass) in which [defaults have been changed](Class.md#classmethod-classaddproperties).
 
 A ResultSet defaults to using data paging, setting [DSRequest.startRow](DSRequest.md#attr-dsrequeststartrow) and [DSRequest.endRow](DSRequest.md#attr-dsrequestendrow) in issued dsRequests. Server code may always return more rows than the ResultSet requests and the ResultSet will correctly integrate those rows based on [DSResponse.startRow](DSResponse.md#attr-dsresponsestartrow)/[endRow](DSResponse.md#attr-dsresponseendrow). Hence the server can always avoid paging mode by simply returning all matching rows.
 
@@ -30,7 +30,7 @@ A ResultSet can be created directly with just the ID of a [DataSource](DataSourc
 
 Directly created ResultSets are typically used by custom components, or as a means of managing datasets that will be used by several components.
 
-When created directly rather than via a dataBoundComponent, a newly created ResultSet will not issue it's first "fetch" [DSRequest](../reference_2.md#object-dsrequest) until data is accessed (for example, via [get()](#method-resultsetget)).
+When created directly rather than via a dataBoundComponent, a newly created ResultSet will not issue it's first "fetch" [DSRequest](../reference.md#object-dsrequest) until data is accessed (for example, via [get()](#method-resultsetget)).
 
 **Paging and total dataset length**
 
@@ -58,7 +58,7 @@ By default, client-side filtering interprets the [criteria](../reference_2.md#ty
 
 **Modifying ResultSets**
 
-Records cannot be directly added or removed from a ResultSet via [List](../reference_2.md#interface-list) APIs such as [removeAt()](List.md#method-listremoveat), unless it always filters locally, since this would break the consistency of server and client row numbering needed for data paging, and also create some issues with automatic cache synchronization. Set [modifiable](#attr-resultsetmodifiable) to enable the [List](../reference_2.md#interface-list) modification APIs on a [fetchMode](#attr-resultsetfetchmode):"local" ResultSet. Note that the special [FilteredList](FilteredList.md#class-filteredlist) class sets this property to allow developers to modify its data.
+Records cannot be directly added or removed from a ResultSet via [List](../reference.md#interface-list) APIs such as [removeAt()](List.md#method-listremoveat), unless it always filters locally, since this would break the consistency of server and client row numbering needed for data paging, and also create some issues with automatic cache synchronization. Set [modifiable](#attr-resultsetmodifiable) to enable the [List](../reference.md#interface-list) modification APIs on a [fetchMode](#attr-resultsetfetchmode):"local" ResultSet. Note that the special [FilteredList](FilteredList.md#class-filteredlist) class sets this property to allow developers to modify its data.
 
 Use [DataSource.addData](DataSource.md#method-datasourceadddata)/[removeData()](DataSource.md#method-datasourceremovedata) to add/remove rows from the [DataSource](DataSource.md#class-datasource), and the ResultSet will reflect the changes automatically. Alternatively, the [DataSource.updateCaches](DataSource.md#method-datasourceupdatecaches) method may be called to only update local caches of the DataSource in question, without generating any server traffic.
 
@@ -135,7 +135,7 @@ If `initialData` is complete and needs to be sorted or filtered, then don't pass
 ## Attr: ResultSet.reapplyUnchangedLocalFilter
 
 ### Description
-To avoid needless work, the ResultSet by default doesn't refilter the data when methods such as [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata) or [ListGrid.filterData](ListGrid_2.md#method-listgridfilterdata) are called with unchanged criteria. However, this property can be set true for backward compatibility to force refiltering if we're [filtering locally](#method-resultsetfilterlocaldata) and the criteria haven't changed. but are narrower than the criteria used to fetch the current cache.
+To avoid needless work, the ResultSet by default doesn't refilter the data when methods such as [ListGrid.fetchData](ListGrid_1.md#method-listgridfetchdata) or [ListGrid.filterData](ListGrid_2.md#method-listgridfilterdata) are called with unchanged criteria. However, this property can be set true for backward compatibility to force refiltering if we're [filtering locally](#method-resultsetfilterlocaldata) and the criteria haven't changed. but are narrower than the criteria used to fetch the current cache.
 
 Going forward, we may deprecate this property, so you should move to approach that doesn't require such notification in the case of unchanged criteria.
 
@@ -173,7 +173,7 @@ Applicable only with `fetchMode: "paged"`. When a paged ResultSet is asked for r
 ## Attr: ResultSet.rememberDynamicProgressiveLoading
 
 ### Description
-If [ResultSet.progressiveLoading](#attr-resultsetprogressiveloading) is not explicitly set, but the ResultSet recieves a response from the server where [DSResponse.progressiveLoading](DSResponse.md#attr-dsresponseprogressiveloading) is set to true, should subsequent requests for other rows in the same data set explicitly request progressiveLoading via [DSRequest.progressiveLoading](DSRequest.md#attr-dsrequestprogressiveloading), as long as the criteria are unchanged and the cache is not explicitly invalidated?
+If [ResultSet.progressiveLoading](#attr-resultsetprogressiveloading) is not explicitly set, but the resultset recieves a response from the server where [DSResponse.progressiveLoading](DSResponse.md#attr-dsresponseprogressiveloading) is set to true, should subsequent requests for other rows in the same data set explicitly request progressiveLoading via [DSRequest.progressiveLoading](DSRequest.md#attr-dsrequestprogressiveloading), as long as the criteria are unchanged and the cache is not explicitly invalidated?
 
 This property is useful for the case where the server side [DataSource.progressiveLoadingThreshold](DataSource.md#attr-datasourceprogressiveloadingthreshold) enabled progressive loading after the row-count query determined that the requested data set was very large. By explicitly [requesting progressive loading](DSRequest.md#attr-dsrequestprogressiveloading) for subsequent fetches the server is able to avoid an unnecessary and potentially expensive row-count query while returning other rows from the same data set.
 
@@ -222,11 +222,9 @@ One known case where modification can be useful is when an array has been passed
 ## Attr: ResultSet.progressiveLoading
 
 ### Description
-Sets [progressive loading mode](DataSource.md#attr-datasourceprogressiveloading) for this ResultSet. Any [DSRequest](../reference_2.md#object-dsrequest)s issued by this ResultSet will copy this setting onto the request, overriding the OperationBinding- and DataSource-level settings.
+Sets [progressive loading mode](DataSource.md#attr-datasourceprogressiveloading) for this ResultSet. Any [DSRequest](../reference.md#object-dsrequest)s issued by this ResultSet will copy this setting onto the request, overriding the OperationBinding- and DataSource-level settings.
 
 This setting is applied automatically by [DataBoundComponent](../reference.md#interface-databoundcomponent)s that have their own explicit setting for [progressiveLoading](DataBoundComponent.md#attr-databoundcomponentprogressiveloading)
-
-See also the [ResultSet.rememberDynamicProgressiveLoading](#attr-resultsetrememberdynamicprogressiveloading) attribute.
 
 ### Groups
 
@@ -240,24 +238,6 @@ See also the [ResultSet.rememberDynamicProgressiveLoading](#attr-resultsetrememb
 - [DataBoundComponent.progressiveLoading](DataBoundComponent.md#attr-databoundcomponentprogressiveloading)
 
 **Flags**: IRW
-
----
-## Attr: ResultSet.applyRowCountToLength
-
-### Description
-If [progressiveLoading](DataSource.md#attr-datasourceprogressiveloading) is active for a ResultSet we may not know the true size of the data set being displayed.
-
-However the exact length may be known thanks to [DSResponse.estimatedTotalRows](DSResponse.md#attr-dsresponseestimatedtotalrows) containing an exact row count, or due to an explicit [row count fetch](#method-resultsetfetchrowcount) having been performed.
-
-If we have an accurate, exact row count, should this be applied to our [length](#method-resultsetgetlength) automatically? Doing so means that if this ResultSet is displayed in a [ListGrid](ListGrid_1.md#class-listgrid), the scrollable area will reflect the true size of the data set and the user may drag-scroll all the way to the end of this data set. Depending on how the server side data storage is implemented and the generated request, requesting row ranges starting at a very large index can be expensive, so this is not always desirable.
-
-Note that developers may always explicitly tell a ResultSet the true size of its data set while progressive loading is active via [ResultSet.setFullLength](#method-resultsetsetfulllength)
-
-### Groups
-
-- rowRangeDisplay
-
-**Flags**: IRA
 
 ---
 ## Attr: ResultSet.fetchOperation
@@ -345,24 +325,6 @@ By default when the data of this ResultSet's dataSource is modified, the ResultS
 **Flags**: IRA
 
 ---
-## Attr: ResultSet.rowCountContext
-
-### Description
-Request properties for row-count fetch operations performed by [ResultSet.fetchRowCount](#method-resultsetfetchrowcount).
-
-The row-count fetch operation will ultimately be constructed as follows:
-
-*   Default operation properties will be constructed by combining the [ResultSet.rowCountContext](#attr-resultsetrowcountcontext) with the [resultSet context](#attr-resultsetrequestproperties), with rowCountContext properties taking precedence
-*   The operation will have type "fetch" and [DSRequest.startRow](DSRequest.md#attr-dsrequeststartrow) and [DSRequest.endRow](DSRequest.md#attr-dsrequestendrow) set to zero, and [DSRequest.progressiveLoading](DSRequest.md#attr-dsrequestprogressiveloading) will be explicitly set to false. The request will also have [DSRequest.showPrompt](RPCRequest.md#attr-rpcrequestshowprompt) set to [ResultSet.blockingRowCountFetch](#attr-resultsetblockingrowcountfetch) so user interactions can be blocked while the row count is actively being performed.
-*   To override these defaults or specify additional properties, developers may use the `dsRequest` parameter of the [ResultSet.fetchRowCount](#method-resultsetfetchrowcount) method.
-
-### Groups
-
-- rowRangeDisplay
-
-**Flags**: IRA
-
----
 ## Attr: ResultSet.updateCacheFromRequest
 
 ### Description
@@ -373,32 +335,6 @@ When a successful Add, Update or Remove type operation fires on this ResultSet's
 - cacheSync
 
 **Flags**: IRA
-
----
-## Attr: ResultSet.prerequisiteFieldGenerationNotSuccessfulErrorMessage
-
-### Description
-Error message used when the prerequisite generation of missing values in a field was not successful.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
-
----
-## Attr: ResultSet.rowCountOperation
-
-### Description
-The [operationId](DSRequest.md#attr-dsrequestoperationid) this ResultSet should use when performing a row-count fetch operation due to [ResultSet.fetchRowCount](#method-resultsetfetchrowcount).
-
-See also [ResultSet.rowCountContext](#attr-resultsetrowcountcontext)
-
-### Groups
-
-- rowRangeDisplay
-
-**Flags**: IR
 
 ---
 ## Attr: ResultSet.fetchMode
@@ -491,20 +427,6 @@ The intent of this delay is to avoid triggering many unnecessary fetches during 
 **Flags**: IRWA
 
 ---
-## Attr: ResultSet.autoFetchRowCount
-
-### Description
-If this ResultSet does not know its length due to [DataSource.progressiveLoading](DataSource.md#attr-datasourceprogressiveloading), should a [row count fetch](#method-resultsetfetchrowcount) automatically when data is loaded?
-
-The fetch will be issued when the first page of data arrives from the server as part of a progressive-loading response. If the cache is invalidated or the criteria change, a new row count fetch will be issued automatically when new data arrives that does not have an accurate row count.
-
-### Groups
-
-- rowCountDisplay
-
-**Flags**: IRW
-
----
 ## Attr: ResultSet.initialLength
 
 ### Description
@@ -518,18 +440,6 @@ To create a ResultSet with it's cache partly filled, see [ResultSet.initialData]
 - cacheSync
 
 **Flags**: IA
-
----
-## Attr: ResultSet.blockingRowCountFetch
-
-### Description
-Will the [row count fetch operation](#method-resultsetfetchrowcount) block user interaction by having [showPrompt:true](RPCRequest.md#attr-rpcrequestshowprompt)?
-
-### Groups
-
-- rowRangeDisplay
-
-**Flags**: IR
 
 ---
 ## Attr: ResultSet.alwaysRequestVisibleRows
@@ -563,7 +473,7 @@ Return the singleton marker object that is used as a placeholder for records tha
 ## Method: ResultSet.resort
 
 ### Description
-Forcibly resort this ResultSet by the current list of [SortSpecifier](../reference_2.md#object-sortspecifier)s.
+Forcibly resort this ResultSet by the current list of [SortSpecifier](../reference.md#object-sortspecifier)s.
 
 ---
 ## Method: ResultSet.rangeIsLoaded
@@ -681,7 +591,7 @@ Returns `false` if this is a paged data set, and the entire set of records that 
 ## Method: ResultSet.setSort
 
 ### Description
-Sort this ResultSet by the passed list of [SortSpecifier](../reference_2.md#object-sortspecifier)s.
+Sort this ResultSet by the passed list of [SortSpecifier](../reference.md#object-sortspecifier)s.
 
 If the ResultSet is already sorted and this method is called with an identical list of specifiers, this method will no-op. To cause data to be resorted with the same set of specifiers, use [resort()](#method-resultsetresort).
 
@@ -695,7 +605,7 @@ Notification fired when data has arrived from the server and has been successful
 
 When `dataArrived()` fires, an immediate call to `getRange()` with the `startRow` and `endRow` passed as arguments will return a List with no [loading markers](#classmethod-resultsetgetloadingmarker).
 
-Note that `dataArrived()` won't fire in the case of the owning component filtering with unchanged criteria (for example using [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata) or [ListGrid.filterData](ListGrid_2.md#method-listgridfilterdata)). To support backward compatibility, the property [ResultSet.reapplyUnchangedLocalFilter](#attr-resultsetreapplyunchangedlocalfilter) can be set to force `dataArrived()` to be called if the ResultSet is [filtering locally](#method-resultsetfilterlocaldata) and the criteria haven't changed but are narrower than the criteria used to fetch the current cache.
+Note that `dataArrived()` won't fire in the case of the owning component filtering with unchanged criteria (for example using [ListGrid.fetchData](ListGrid_1.md#method-listgridfetchdata) or [ListGrid.filterData](ListGrid_2.md#method-listgridfilterdata)). To support backward compatibility, the property [ResultSet.reapplyUnchangedLocalFilter](#attr-resultsetreapplyunchangedlocalfilter) can be set to force `dataArrived()` to be called if the ResultSet is [filtering locally](#method-resultsetfilterlocaldata) and the criteria haven't changed but are narrower than the criteria used to fetch the current cache.
 
 ### Parameters
 
@@ -765,33 +675,6 @@ Override this method or [DataSource.applyFilter](DataSource.md#method-datasource
 **Flags**: A
 
 ---
-## Method: ResultSet.fetchRowCount
-
-### Description
-For cases where the exact size of the data set is not known due to [progressiveLoading](DataSource.md#attr-datasourceprogressiveloading), this method may be used to issue an explicit fetch request to the data source, asking for an accurate row count for the criteria currently applied to this ResultSet. The row count will then be available via [ResultSet.getRowCount](#method-resultsetgetrowcount), and if [ResultSet.applyRowCountToLength](#attr-resultsetapplyrowcounttolength) is true, the [length](#method-resultsetgetlength) of the ResultSet will be updated to reflect the reported value.
-
-If the [criteria](#method-resultsetsetcriteria) for the ResultSet change while a row count fetch is in progress, the [rowCount](#method-resultsetgetrowcount) for the resultSet will not be updated. In this case the callback passed to this method will still fire, with the [criteriaChanged](Callbacks.md#method-callbacksrowcountcallback) parameter set to `true`
-
-Note the fetch request sent to the dataSource will have [DSRequest.progressiveLoading](DSRequest.md#attr-dsrequestprogressiveloading) explicitly set to false and [startRow:0](DSRequest.md#attr-dsrequeststartrow) and [endRow:0](DSRequest.md#attr-dsrequestendrow). See [ResultSet.rowCountContext](#attr-resultsetrowcountcontext) for full details of the request that will be sent to the dataSource.
-
-SmartClient server side dataSources will process such a request by calculating the row-count (for [serverType:"sql"](DataSource.md#attr-datasourceservertype), this means issuing a row-count database query), skipping any logic to retrieve actual data, and return a response with [progressiveLoading:false](DSResponse.md#attr-dsresponseprogressiveloading) and an accurate [DSResponse.totalRows](DSResponse.md#attr-dsresponsetotalrows).
-
-If this ResultSet is backed by a custom dataSource implementation, it is recommended that the dataSource either also returns a response with [progressiveLoading:false](DSResponse.md#attr-dsresponseprogressiveloading) and an accurate [DSResponse.totalRows](DSResponse.md#attr-dsresponsetotalrows), or uses the [DSResponse.estimatedTotalRows](DSResponse.md#attr-dsresponseestimatedtotalrows) attribute to indicate an accurate row count for the data set.
-
-The fetch issued by this method will be marked as a [background request](RPCRequest.md#attr-rpcrequestisbackgroundrequest).
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| callback | [RowCountCallback](#type-rowcountcallback) | true | — | Callback to fire when the fetch request completes. To retrieve details of the row-count that was retrieved from the server, use the `getRowCount()` and `getRowCountStatus()` methods. |
-| dsRequest | [DSRequest Properties](#type-dsrequest-properties) | true | — | Custom properties for the row count fetch request |
-
-### Groups
-
-- rowRangeDisplay
-
----
 ## Method: ResultSet.lengthIsKnown
 
 ### Description
@@ -811,7 +694,7 @@ Note: If [progressive loading](DataSource.md#attr-datasourceprogressiveloading) 
 ## Method: ResultSet.getCombinedCriteria
 
 ### Description
-Returns a copy of all [explicit](#attr-resultsetcriteria) and [implicit](#attr-resultsetimplicitcriteria) criteria currently applied to this `ResultSet`.
+Returns a copy of all [explicit](#attr-resultsetcriteria) and [implicit](#method-resultsetgetimplicitcriteria) criteria currently applied to this `ResultSet`.
 
 ### Returns
 
@@ -845,19 +728,19 @@ If this method is called when the [cache is incomplete](#method-resultsetallmatc
 
 ### Description
 Will changing the criteria for this resultSet require fetching new data from the server, or can the new criteria be satisfied from data already cached on the client?  
-Second `textMatchStyle` parameter determines whether a change of text-match style will require a server fetch - for example if filter is being changed between an exact match (from e.g: [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata)) and a substring match (from e.g: [ListGrid.filterData](ListGrid_2.md#method-listgridfilterdata)).  
-This method can be used to determine whether [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata) or [ListGrid.filterData](ListGrid_2.md#method-listgridfilterdata) would cause a server side fetch when passed a certain set of criteria.
+Second `textMatchStyle` parameter determines whether a change of text-match style will require a server fetch - for example if filter is being changed between an exact match (from e.g: [ListGrid.fetchData](ListGrid_1.md#method-listgridfetchdata)) and a substring match (from e.g: [ListGrid.filterData](ListGrid_2.md#method-listgridfilterdata)).  
+This method can be used to determine whether [ListGrid.fetchData](ListGrid_1.md#method-listgridfetchdata) or [ListGrid.filterData](ListGrid_2.md#method-listgridfilterdata) would cause a server side fetch when passed a certain set of criteria.
 
-Note that to predict correctly the decision that will be made by filter/fetch, you'll need to pass the same [TextMatchStyle](../reference_2.md#type-textmatchstyle) that will be used by the future filter/fetch. Fetching manually (e.g. [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata)) will by default use "exact" while filtering (e.g. [ListGrid.filterData](ListGrid_2.md#method-listgridfilterdata)) will by default use "substring". If the component is configured for autofetch (i.e. [ListGrid.autoFetchData](ListGrid_1.md#attr-listgridautofetchdata): true), that will use [ListGrid.autoFetchTextMatchStyle](ListGrid_1.md#attr-listgridautofetchtextmatchstyle), which defaults to "substring". If nothing/null is passed for the style, this method assumes you want the style from the last filter/fetch.
+Note that to predict correctly the decision that will be made by filter/fetch, you'll need to pass the same [TextMatchStyle](../reference.md#type-textmatchstyle) that will be used by the future filter/fetch. Fetching manually (e.g. [ListGrid.fetchData](ListGrid_1.md#method-listgridfetchdata)) will by default use "exact" while filtering (e.g. [ListGrid.filterData](ListGrid_2.md#method-listgridfilterdata)) will by default use "substring". If the component is configured for autofetch (i.e. [ListGrid.autoFetchData](ListGrid_1.md#attr-listgridautofetchdata): true), that will use [ListGrid.autoFetchTextMatchStyle](ListGrid_1.md#attr-listgridautofetchtextmatchstyle), which defaults to "substring". If nothing/null is passed for the style, this method assumes you want the style from the last filter/fetch.
 
-To determine what [TextMatchStyle](../reference_2.md#type-textmatchstyle) is being used, check the RPC Tab of the [SmartClient Developer Console](../kb_topics/debugging.md#kb-topic-debugging) and check the relevant [DSRequest](../reference_2.md#object-dsrequest).
+To determine what [TextMatchStyle](../reference.md#type-textmatchstyle) is being used, check the RPC Tab of the [SmartClient Developer Console](../kb_topics/debugging.md#kb-topic-debugging) and check the relevant [DSRequest](../reference.md#object-dsrequest).
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | newCriteria | [Criteria](../reference_2.md#type-criteria) | false | — | new criteria to test. |
-| textMatchStyle | [TextMatchStyle](../reference_2.md#type-textmatchstyle) | true | — | New text match style. If not passed, assumes textMatchStyle will not be modified. |
+| textMatchStyle | [TextMatchStyle](../reference.md#type-textmatchstyle) | true | — | New text match style. If not passed, assumes textMatchStyle will not be modified. |
 
 ### Returns
 
@@ -885,7 +768,7 @@ May also be specified as a ValueMap which maps property values to sortable value
 
 ### Returns
 
-`[ResultSet](#type-resultset)|[Array of Any](#type-array-of-any)` — this ResultSet
+`[List](#type-list)` — the list itself
 
 ### Groups
 
@@ -924,7 +807,7 @@ Override this method or [DataSource.compareCriteria](DataSource.md#method-dataso
 | newCriteria | [Criteria](../reference_2.md#type-criteria) | false | — | new filter criteria |
 | oldCriteria | [Criteria](../reference_2.md#type-criteria) | false | — | old filter criteria |
 | requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | dataSource request properties |
-| policy | [String](#type-string) | true | — | overrides [CriteriaPolicy](../reference_2.md#type-criteriapolicy) |
+| policy | [String](#type-string) | true | — | overrides [CriteriaPolicy](../reference.md#type-criteriapolicy) |
 
 ### Returns
 
@@ -932,7 +815,7 @@ Override this method or [DataSource.compareCriteria](DataSource.md#method-dataso
 
 ### See Also
 
-- [CriteriaPolicy](../reference_2.md#type-criteriapolicy)
+- [CriteriaPolicy](../reference.md#type-criteriapolicy)
 
 ---
 ## Method: ResultSet.findIndex
@@ -960,11 +843,11 @@ Like [List.findIndex](List.md#method-listfindindex). Checks only loaded rows and
 ## Method: ResultSet.getSort
 
 ### Description
-Return the current sort-specification for this ResultSet as an Array of [SortSpecifier](../reference_2.md#object-sortspecifier)s.
+Return the current sort-specification for this ResultSet as an Array of [SortSpecifier](../reference.md#object-sortspecifier)s.
 
 ### Returns
 
-`[Array of SortSpecifier](#type-array-of-sortspecifier)` — the list of [SortSpecifier](../reference_2.md#object-sortspecifier)s currently applied to this ResultSet
+`[Array of SortSpecifier](#type-array-of-sortspecifier)` — the list of [SortSpecifier](../reference.md#object-sortspecifier)s currently applied to this ResultSet
 
 ---
 ## Method: ResultSet.rowIsLoaded
@@ -1107,22 +990,6 @@ This method returns false if data is not loaded yet.
 - [ResultSet.getAllCachedRows](#method-resultsetgetallcachedrows)
 
 ---
-## Method: ResultSet.getRowCountStatus
-
-### Description
-This method indicates whether [ResultSet.getRowCount](#method-resultsetgetrowcount) reflects an accurate row-count for this data set. An accurate row count may not currently be available if [ResultSet.progressiveLoading](#attr-resultsetprogressiveloading) is active.
-
-See [RowCountStatus](../reference.md#type-rowcountstatus) for further details.
-
-### Returns
-
-`[RowCountStatus](../reference.md#type-rowcountstatus)` — Current row-count status for this grid
-
-### Groups
-
-- rowRangeDisplay
-
----
 ## Method: ResultSet.setCriteria
 
 ### Description
@@ -1132,7 +999,7 @@ Depending on the result of [ResultSet.compareCriteria](#method-resultsetcomparec
 
 The filter criteria can be changed while server fetches for data matching the old criteria are still outstanding. If this is the case, the ResultSet will make sure that any records received matching the old criteria are not added to the cache for the new criteria. Any callbacks for responses to the outstanding requests are fired as normal, and the responses' [totalRows](DSResponse.md#attr-dsresponsetotalrows) counts are kept (as they are still potentially meaningful to components using the ResultSet), but the response data is cleared so that it won't be used inadvertently as data matching the new criteria.
 
-Note: for simple Criteria, any field values in the criteria explicitly specified as null will be passed to the server. By default the server then returns only records whose value is null for that field. This differs from certain higher level methods such as [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata) which prune null criteria fields before performing a fetch operation.
+Note: for simple Criteria, any field values in the criteria explicitly specified as null will be passed to the server. By default the server then returns only records whose value is null for that field. This differs from certain higher level methods such as [ListGrid.fetchData](ListGrid_1.md#method-listgridfetchdata) which prune null criteria fields before performing a fetch operation.
 
 ### Parameters
 
@@ -1211,26 +1078,12 @@ Like [List.findAll](List.md#method-listfindall). Checks only loaded rows and wil
 - find
 
 ---
-## Method: ResultSet.getRowCount
-
-### Description
-This method retrieves the row-count for this data set. If progressive loading is active, this may differ from [ResultSet.getLength](#method-resultsetgetlength). See [ResultSet.getRowCountStatus](#method-resultsetgetrowcountstatus) for more information.
-
-### Returns
-
-`[int](../reference.md#type-int)` — Current row-count for this grid
-
-### Groups
-
-- rowRangeDisplay
-
----
 ## Method: ResultSet.unsort
 
 ### Description
 Clear any [sort specifiers](#method-resultsetsetsort) applied to this ResultSet, while maintaining the current order of records. This feature is not supported for all lists. This method returns true if supported.
 
-If a [paged resultSet](#attr-resultsetfetchmode) has a partial cache, the order of records in the local data must always match the order of records as provided by the [DataSource](DataSource.md#class-datasource) - otherwise the wrong set of records will be returned as new pages of data are fetched (in response to a user scrolling a ListGrid, for example).
+If a [paged resultSet](#resultsetdatafetchmode) has a partial cache, the order of records in the local data must always match the order of records as provided by the [DataSource](DataSource.md#class-datasource) - otherwise the wrong set of records will be returned as new pages of data are fetched (in response to a user scrolling a ListGrid, for example).
 
 It's therefore not possible to unsort a paged resultSet with a partial cache and maintain the current order of any loaded records. If this method is called on a resultSet in this state, it will always no-op and return false.
 
@@ -1263,20 +1116,6 @@ Records are returned in a new List but the Records within it are the same instan
 `[Array of Record](#type-array-of-record)` — the records in the cache, possibly null
 
 **Flags**: A
-
----
-## Method: ResultSet.getRowCountRange
-
-### Description
-If [ResultSet.getRowCountStatus](#method-resultsetgetrowcountstatus) is "range" this method will return a two element array containing the lower and upper bound for the rowCount. In all other cases it will return a two element array where the first element is the result of [ResultSet.getRowCount](#method-resultsetgetrowcount) and the second element is null
-
-### Returns
-
-`[Array of Integer](#type-array-of-integer)` — row count lower and upper bound
-
-### Groups
-
-- rowRangeDisplay
 
 ---
 ## Method: ResultSet.getCriteria

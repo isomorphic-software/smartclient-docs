@@ -14,28 +14,18 @@ Errors in a SmartClient application fall into two main categories:
 *   Validation errors, which arise as a result of rules in the application's business logic being broken. These are part of the normal operation of the system. A response with validation errors has a status of [RPCResponse.STATUS_VALIDATION_ERROR](../classes/RPCResponse.md#classattr-rpcresponsestatus_validation_error)
 *   Unrecoverable errors, which are errors with the system itself. These are not part of the normal operation of the system
 
-**Validation errors** occur when an [add](../classes/DataSource.md#method-datasourceadddata), or [update](../classes/DataSource.md#method-datasourceupdatedata) operation contains values that do not conform to [specified validation rules](../classes/DataSourceField.md#attr-datasourcefieldvalidators). When a user is [saving](../classes/DynamicForm.md#method-dynamicformsavedata) or [validating](../classes/DynamicForm.md#method-dynamicformvalidate) edits in a databound component such as a [DynamicForm](../classes/DynamicForm.md#class-dynamicform) or [canEdit:true ListGrid](../classes/ListGrid_1.md#attr-listgridcanedit), validation errors are handled by redrawing the component to display those errors to the user.
+**Validation errors** are treated differently from other errors, precisely because they are an expected part of the normal operation of the system. If [validation](../classes/DynamicForm.md#method-dynamicformvalidate) of a form results in errors, the form is redrawn to display those errors to the user. How the user sees those errors is completely configurable - for example, see the DynamicForm properties [showErrorIcons](../classes/DynamicForm.md#attr-dynamicformshowerroricons), [showErrorText](../classes/DynamicForm.md#attr-dynamicformshowerrortext), [showInlineErrors](../classes/DynamicForm.md#attr-dynamicformshowinlineerrors), and indeed most DynamicForm properties that contain the workd "Error" - but the default in most skins is to highlight the field with some kind of error icon, and provide the actual error text message in a floating box when the user hovers over the field.
 
-How the user sees those errors is completely configurable - for example, see the DynamicForm properties [showErrorIcons](../classes/DynamicForm.md#attr-dynamicformshowerroricons), [showErrorText](../classes/DynamicForm.md#attr-dynamicformshowerrortext), [showInlineErrors](../classes/DynamicForm.md#attr-dynamicformshowinlineerrors), and indeed most DynamicForm properties that contain the word "Error" - but the default in most skins is to highlight the field with some kind of error icon, and provide the actual error text message in a floating box when the user hovers over the field.
-
-Note that the centralized [RPCManager.handleError](../classes/RPCManager.md#classmethod-rpcmanagerhandleerror) method (see below) will not be invoked for validation errors that occurred while editing data in a component.
-
-Validation errors can also occur when application code directly invokes dataSource APIs to save data instead of calling [saveData()](../classes/DynamicForm.md#method-dynamicformsavedata) on an edit component. (See [DataSource.addData](../classes/DataSource.md#method-datasourceadddata), [DataSource.updateData](../classes/DataSource.md#method-datasourceupdatedata)). In this case, since there is no component in which validation errors can be displayed, [centralized error handling](../classes/RPCManager.md#classmethod-rpcmanagerhandleerror) **will** be invoked by default.
-
-In addition to validation errors, RPCRequests and DSRequests can fail due to errors with the system itself. For example:
+The remainder of this article concerns **unrecoverable errors**. These are errors with the system itself, for example:
 
 *   A network transport problem
 *   A server-side crash
 *   An update failed because a transaction was rolled back
 
-Errors like this can either be handled centrally, or you can choose to handle them in your regular callback code. The [RPCRequest.willHandleError](../classes/RPCRequest.md#attr-rpcrequestwillhandleerror) attribute determines whether or not central error handling will be invoked.
+Errors like this can either be handled centrally, or you can choose to handle them in your regular callback code. [DSRequest](../reference.md#object-dsrequest) calls default to centralized handling; [RPCRequest](../reference.md#object-rpcrequest) calls default to user error handling in the callback.
 
 **Centralized Error Handling**  
-If the status field for a request shows a failure, and `willHandleError` has not been set to true for, [RPCManager.handleError](../classes/RPCManager.md#classmethod-rpcmanagerhandleerror) will be invoked, (unless the error was a validation error occurring while editing data in a DataBoundComponent, as discussed above).
-
-By default, `RPCManager.handleError()` logs a warning and shows a dialog with the contents of the response's [data](../classes/RPCResponse.md#attr-rpcresponsedata) field (which is assumed to contain a meaningful description of the error that occurred). If you specified a callback in your request, it will **not** be called.
-
-This default behavior means that any SmartClient application has a basic handling mechanism for unrecoverable errors, without any code to write.
+If the status field shows a failure, the RPCManager will invoke [RPCManager.handleError](../classes/RPCManager.md#classmethod-rpcmanagerhandleerror). By default, this logs a warning and shows a dialog with the contents of the response's [data](../classes/RPCResponse.md#attr-rpcresponsedata) field (which is assumed to contain a meaningful description of the error that occurred). If you specified a callback in your request, it will **not** be called if the status shows a failure (see the section on custom error handling below for how to change this). This default arrangement means that any SmartClient application has a basic handling mechanism for unrecoverable errors, without any code to write.
 
 You can customize centralized error handling at two levels:
 
@@ -43,17 +33,11 @@ You can customize centralized error handling at two levels:
 *   Override [RPCManager.handleTransportError](../classes/RPCManager.md#classmethod-rpcmanagerhandletransporterror). This logic is called earlier than handleError, and it is called even when you are using custom error handling (discussed below). It is intended to allow your code to inspect the failed response early in the handling flow, to see if it is really unrecoverable. For example, a failure might have happened because of a temporary network problem, so resubmitting the request may be a valid thing to do to try to resolve the error. Note, as with handleError, this is a static class-level customization
 
 **Custom Error Handling**  
-As an alternative to handling errors centrally, you can handle them in your regular callback methods. To do this, specify [willHandleError](../classes/RPCRequest.md#attr-rpcrequestwillhandleerror) as a request property. When you do this, [RPCManager.handleError](../classes/RPCManager.md#classmethod-rpcmanagerhandleerror) is bypassed, and your callback is invoked as normal. If you want to invoke the default error handling logic in your callback, you can use [RPCManager.runDefaultErrorHandling](../classes/RPCManager.md#classmethod-rpcmanagerrundefaulterrorhandling)
+As an alternative to handling errors centrally, you can handle them in your regular callback methods. To do this, specify [willHandleError](../classes/RPCRequest.md#attr-rpcrequestwillhandleerror) as a request property. When you do this, centralized error handling is bypassed (as mentioned above, `handleTransportError()` will still be called) and your callback is invoked as normal. Your callback code determines that it is in error state by inspecting the status property on the response - if it is negative, there has been an error. Note that validation errors are treated specially, in that your callback is invoked, but the normal behavior of populating the field errors onto the form and redrawing it **also** takes place.
 
-_Note: if `handleTransportError()` was configured it **will** be called for error codes indicating a transport error even if `willHandleError` is true._
+Note, when you are handling errors in user callbacks, a negative status in the response indicates some sort of serious, unrecoverable error (except in the case of [RPCResponse.STATUS_VALIDATION_ERROR](../classes/RPCResponse.md#classattr-rpcresponsestatus_validation_error)). Therefore, ensure that your error handling code does not assume that the response will be properly formed or contain particular elements.
 
-For `willHandleError:true` requests, your callback code can determine that it is in error state by inspecting the status property on the response. Any value less than zero indicates an error. See the documented status codes such as [RPCResponse.STATUS_FAILURE](../classes/RPCResponse.md#classattr-rpcresponsestatus_failure) for more information on specific error codes that may be returned by the SmartClient server.
-
-Note that if validation failed for a save request on an edit component, setting `willHandleError` to true will cause your callback to be invoked, but the normal behavior of populating the field errors onto the form and redrawing it **also** takes place.
-
-Note, when you are handling errors in user callbacks, an error status other than [RPCResponse.STATUS_VALIDATION_ERROR](../classes/RPCResponse.md#classattr-rpcresponsestatus_validation_error) typically indicates some sort of serious, unrecoverable error. Therefore, ensure that your error handling code does not assume that the response will be properly formed or contain particular elements.
-
-You can specify `willHandleError` (or any other DSRequest/RPCRequest property) on a component request by providing the DSRequest Properties parameter. For example, on a [ListGrid.fetchData](../classes/ListGrid_2.md#method-listgridfetchdata):
+You can specify `willHandleError` (or any other DSRequest/RPCRequest property) on a component request by providing the DSRequest Properties parameter. For example, on a [ListGrid.fetchData](../classes/ListGrid_1.md#method-listgridfetchdata):
 
 ```
      listGrid.fetchData({}, function(dsResponse, data, dsRequest) {
@@ -71,22 +55,21 @@ The error status codes used by the framework are documented as class variables o
 **Errors indicating login is required**  
 Some of the framework error statuses indicate that login is required, typically because a user's HTTP session has timed out. The best way to handle this situation is to use the built-in [re-login flow](relogin.md#kb-topic-relogin) to automatically prompt users to log back in as required, and then resubmit the requests that triggered the login required response.
 
-**Errors during a file download**
+**Errors during a file download**  
+Any error that occurs during an operation that involves file download will not trigger [RPCManager.handleError](../classes/RPCManager.md#classmethod-rpcmanagerhandleerror) and the centralized error handling pathway. This includes:
 
-If the server responds to a [file download request](../classes/RPCRequest.md#attr-rpcrequestdownloadresult) with an error status code, standard error handling will be invoked.
-
-This includes:
-
-*   export operations such as [exportData()](../classes/ListGrid_2.md#method-listgridexportdata), [exportClientData()](../classes/ListGrid_2.md#method-listgridexportclientdata), or [exportContent()](../classes/RPCManager.md#classmethod-rpcmanagerexportcontent).
+*   export operations such as [exportData()](../classes/ListGrid_2.md#method-listgridexportdata), [exportClientData()](../classes/ListGrid_1.md#method-listgridexportclientdata), or [exportContent()](../classes/RPCManager.md#classmethod-rpcmanagerexportcontent).
 *   downloading of binary field values via [DataSource.downloadFile](../classes/DataSource.md#method-datasourcedownloadfile)
 *   custom download operations where the [RPCRequest.downloadResult](../classes/RPCRequest.md#attr-rpcrequestdownloadresult) flag is set
 
-However if a server encounters an error while [streaming a response](../classes/DSRequest.md#attr-dsrequeststreamresults) to the browser this will not trigger [RPCManager.handleError](../classes/RPCManager.md#classmethod-rpcmanagerhandleerror) and the centralized error handling pathway.
+.. and, in general, any situation where the browser's "Save As.." dialog appears to the user, or the user's browser launches a helper application to view a file (such as Microsoft Excel).
 
-Therefore if you have an error condition that could arise in the middle of a file download, best practice is to:
+If you have an error condition that could arise in the middle of a file download, best practice is to:
 
 *   _pre-validate the request_: do an ordinary, non-download request to check all common error conditions, before the request that actually initiates a download. This can avoid problems like a user who tries to download after their session has timed out, or tries to download a file that another user has deleted
 *   _return a valid file containing a user-friendly error message_: for example, if the download is for an Excel spreadsheet but the database was unexpectedly unavailable, return a valid spreadsheet containing just the error message.
+
+For built-in download operations such as `exportData()`, if your DataSource or custom logic throws an exception or returns an error `DSResponse`, the default behavior of the Server Framework is indeed to return a valid file containing the error message.
 
 **Unrecoverable server error handling**  
 Unrecoverable server `Exception` will be written to HTTP response as a warning containing the exception message. Depending on framework setting `servlet.sendStackTraceToClient` (boolean) exception stacktrace can also be included.

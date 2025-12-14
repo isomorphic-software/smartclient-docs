@@ -6,7 +6,7 @@
 
 ## Class: ComponentTask
 
-*Inherits from:* [Task](Task.md#class-task)
+*Inherits from:* [ProcessElement](ProcessElement.md#class-processelement)
 
 ### Description
 Base class for tasks that target SmartClient UI-specific operations.
@@ -14,22 +14,10 @@ Base class for tasks that target SmartClient UI-specific operations.
 Note: This task is not for direct use - use one of the subclasses instead.
 
 ---
-## Attr: ComponentTask.unsupportedComponentMessage
-
-### Description
-The default message to be reported with [getInvalidTaskMessage()](ProcessElement.md#method-processelementgetinvalidtaskmessage) when a target component type is not supported for the task.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IR
-
----
 ## Attr: ComponentTask.componentBaseClass
 
 ### Description
-Base class of components that this task targets. The [ComponentTask.componentId](#attr-componenttaskcomponentid) must be an instance of one of the classes.
+Base class of components that this task targets.
 
 **Flags**: IR
 
@@ -38,16 +26,6 @@ Base class of components that this task targets. The [ComponentTask.componentId]
 
 ### Description
 Must target components of this task have a DataSource?
-
-**Flags**: IR
-
----
-## Attr: ComponentTask.targetBaseClass
-
-### Description
-Base class of components and any required or optional scope that this task targets. The [ComponentTask.componentId](#attr-componenttaskcomponentid) may not be an instance itself but when combined with the additional scope (targetFieldName, targetSectionName, ...) the actual target must be an instance of one of the classes.
-
-This can be used by an editor to limit or verify the user's selection.
 
 **Flags**: IR
 

@@ -22,22 +22,6 @@ Properties to combine with the [FieldPicker](FieldPicker.md#class-fieldpicker) a
 **Flags**: IR
 
 ---
-## Attr: FilterClause.valueQueryButtonSize
-
-### Description
-The size of the buttons in each clause that allow Value-query functionality, such as [related-field](#attr-filterclausevaluequeryrelatedfieldbutton) and [aggregation](#attr-filterclausevaluequeryaggregatebutton) features, if they don't specify sizes.
-
-**Flags**: IR
-
----
-## Attr: FilterClause.valueQueryIconSize
-
-### Description
-The size of the icons in the buttons in each clause that allow Value-query functionality, such as [related-field](#attr-filterclausevaluequeryrelatedfieldbutton) and [aggregation](#attr-filterclausevaluequeryaggregatebutton) features, if they don't specify separate image-sizes.
-
-**Flags**: IR
-
----
 ## Attr: FilterClause.fieldPickerTitle
 
 ### Description
@@ -120,14 +104,6 @@ A hint to show in the value-item when using an operator that allows users to sel
 **Flags**: IR
 
 ---
-## Attr: FilterClause.valueQueryAggregateButton
-
-### Description
-The ImgButton that appears after each clause if [FilterBuilder.allowAggregates](FilterBuilder.md#attr-filterbuilderallowaggregates) is set.
-
-**Flags**: IR
-
----
 ## Attr: FilterClause.valueItemTitle
 
 ### Description
@@ -144,14 +120,6 @@ The title for the value-item.
 
 ### Description
 AutoChild for the [FormItem](FormItem.md#class-formitem) that allows a user to select the operator when creating filter clauses. Each clause will create an operatorPicker automatically. To customize this item, use [FilterClause.operatorPickerProperties](#attr-filterclauseoperatorpickerproperties)
-
-**Flags**: IR
-
----
-## Attr: FilterClause.valueQueryRelatedFieldButton
-
-### Description
-The ImgButton that appears after each clause if [FilterBuilder.allowAggregates](FilterBuilder.md#attr-filterbuilderallowaggregates) is set.
 
 **Flags**: IR
 

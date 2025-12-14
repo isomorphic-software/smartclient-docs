@@ -24,14 +24,6 @@ This component is an [AutoChild](../reference.md#type-autochild) and as such may
 **Flags**: IR
 
 ---
-## Attr: HiliteRule.removeIconSize
-
-### Description
-When set, dictates the size of the [remove button](#attr-hiliteruleremovebutton) shown for this HiliteRule.
-
-**Flags**: IR
-
----
 ## Attr: HiliteRule.backgroundColorTitle
 
 ### Description
@@ -62,14 +54,6 @@ The title for the Color picker field.
 AutoChild [FilterClause](FilterClause.md#class-filterclause) displaying the [formItems](FormItem.md#class-formitem) used to specify the criteria for this HiliteRule.
 
 This component is an [AutoChild](../reference.md#type-autochild) and as such may be customized via `hiliteRule.clauseProperties`.
-
-**Flags**: IR
-
----
-## Attr: HiliteRule.removeIconBaseStyle
-
-### Description
-CSS class to apply to the [remove button](#attr-hiliteruleremovebutton) shown for this HiliteRule.
 
 **Flags**: IR
 

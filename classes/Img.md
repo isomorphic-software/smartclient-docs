@@ -32,18 +32,6 @@ Prompt displayed in hover canvas if [showHover](Canvas.md#attr-canvasshowhover) 
 **Flags**: IRW
 
 ---
-## Attr: Img.imageSize
-
-### Description
-Convenience for setting the ${isc.DocUtils.linkForRef('attr:Img.imageWidth','imageWidth) and \\n ${isc.DocUtils.linkForRef('attr:Img.imageHeight','imageHeight\\')')} attributes to the same value, for cases where [Img.imageType](#attr-imgimagetype) settings would normally use the image's natural size (applies to [Img.imageType](#attr-imgimagetype) "center" and "normal" only).
-
-### Groups
-
-- appearance
-
-**Flags**: IR
-
----
 ## Attr: Img.src
 
 ### Description
@@ -71,7 +59,7 @@ Indicates whether the image should be tiled/cropped, stretched, or centered when
 ## Attr: Img.size
 
 ### Description
-Convenience for setting the ${isc.DocUtils.linkForRef('attr:StatefulCanvas.width','width) and ${isc.DocUtils.linkForRef('attr:StatefulCanvas.height','height\\')')} of this widget to the same value, at init time only. See [Img.imageSize](#attr-imgimagesize), or [Img.imageWidth](#attr-imgimagewidth) / [Img.imageHeight](#attr-imgimageheight), to control the size of the image itself for [Img.imageType](#attr-imgimagetype) settings that would normally use the image's natural size ("center" or "normal"), or where the image has no natural size, as with [SVG Symbols](../kb_topics/svgSymbols.md#kb-topic-svg-symbols-overview).
+Convenience for setting height and width to the same value, at init time only
 
 ### Groups
 

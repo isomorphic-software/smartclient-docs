@@ -31,7 +31,7 @@ A declared value of the enum type [State](../reference.md#type-state).
 ## ClassAttr: StatefulCanvas.CHECKBOX
 
 ### Description
-A declared value of the enum type [SelectionType](../reference_2.md#type-selectiontype).
+A declared value of the enum type [SelectionType](../reference.md#type-selectiontype).
 
 **Flags**: R
 
@@ -71,7 +71,7 @@ A declared value of the enum type [State](../reference.md#type-state).
 ## ClassAttr: StatefulCanvas.BUTTON
 
 ### Description
-A declared value of the enum type [SelectionType](../reference_2.md#type-selectiontype).
+A declared value of the enum type [SelectionType](../reference.md#type-selectiontype).
 
 **Flags**: R
 
@@ -87,7 +87,7 @@ A declared value of the enum type [State](../reference.md#type-state).
 ## ClassAttr: StatefulCanvas.RADIO
 
 ### Description
-A declared value of the enum type [SelectionType](../reference_2.md#type-selectiontype).
+A declared value of the enum type [SelectionType](../reference.md#type-selectiontype).
 
 **Flags**: R
 
@@ -473,20 +473,6 @@ When this property is set to true, this widget will create and show the [Statefu
 **Flags**: IRWA
 
 ---
-## Attr: StatefulCanvas.vIconStyle
-
-### Description
-Base CSS style applied to the icon image when [vertical](StretchImg.md#attr-stretchimgvertical) is set to true. If set, as the `StatefulCanvas` changes [state](#attr-statefulcanvasstate) and/or is [selected](#attr-statefulcanvasselected), suffixes will be appended to `vIconStyle` to form the className set on the image element.
-
-The [StatefulCanvas.iconStyle](#attr-statefulcanvasiconstyle) for details about stateful suffixes.
-
-### Groups
-
-- buttonIcon
-
-**Flags**: IRW
-
----
 ## Attr: StatefulCanvas.title
 
 ### Description
@@ -739,10 +725,6 @@ Overridden by StatefulCanvas to pick up [aria-label](#method-statefulcanvasgetar
 ### Description
 Return the 'actionType' for this canvas (radio / checkbox / button)
 
-### Returns
-
-`[SelectionType](../reference_2.md#type-selectiontype)` — the current action type
-
 ### Groups
 
 - state
@@ -927,12 +909,6 @@ Set this object to be selected or deselected.
 
 ### Description
 Update the 'actionType' for this canvas (radio / checkbox / button) If the canvas is currently selected, and the passed in actionType is 'button' this method will deselect the canvas.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| actionType | [SelectionType](../reference_2.md#type-selectiontype) | false | — | new action type |
 
 ### Groups
 

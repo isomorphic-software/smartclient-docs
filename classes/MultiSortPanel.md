@@ -9,9 +9,9 @@
 *Inherits from:* [Layout](Layout.md#class-layout)
 
 ### Description
-A widget that allows the user to set up complex sorting arrangements by defining a group of [SortSpecifier](../reference_2.md#object-sortspecifier)s.
+A widget that allows the user to set up complex sorting arrangements by defining a group of [SortSpecifier](../reference.md#object-sortspecifier)s.
 
-Each [SortSpecifier](../reference_2.md#object-sortspecifier) applies to a single property and direction - so, for instance, in a grid with two columns, `year` and `monthNumber`, you could sort first by `year` in descending order and then by `monthNumber` in ascending order. This would producing a grid sorted by year from largest (most recent) to smallest (least recent) and, within each year, by monthNumber from smallest (January) to largest (December).
+Each [SortSpecifier](../reference.md#object-sortspecifier) applies to a single property and direction - so, for instance, in a grid with two columns, `year` and `monthNumber`, you could sort first by `year` in descending order and then by `monthNumber` in ascending order. This would producing a grid sorted by year from largest (most recent) to smallest (least recent) and, within each year, by monthNumber from smallest (January) to largest (December).
 
 ---
 ## Attr: MultiSortPanel.otherSortLevelTitle
@@ -22,14 +22,6 @@ The title-text to appear in the first column for all sort-levels other than the 
 ### Groups
 
 - i18nMessages
-
-**Flags**: IR
-
----
-## Attr: MultiSortPanel.iconSize
-
-### Description
-The size for the images in the [Level Up](#attr-multisortpanellevelupbutton) and [Level Down](#attr-multisortpanelleveldownbutton) buttons.
 
 **Flags**: IR
 
@@ -159,7 +151,7 @@ The title-text to appear on the copyLevelButton
 ## Attr: MultiSortPanel.optionsGrid
 
 ### Description
-Automatically generated [ListGrid](ListGrid_1.md#class-listgrid) allowing the user to configure a set of [SortSpecifier](../reference_2.md#object-sortspecifier)s.
+Automatically generated [ListGrid](ListGrid_1.md#class-listgrid) allowing the user to configure a set of [SortSpecifier](../reference.md#object-sortspecifier)s.
 
 This component is an [AutoChild](../reference.md#type-autochild) and as such may be customized via `multiSortPanel.optionsGridProperties` and `multiSortPanel.optionsGridDefaults`.
 
@@ -254,18 +246,10 @@ The title-text to appear on the deleteLevelButton
 **Flags**: IR
 
 ---
-## Attr: MultiSortPanel.iconBaseStyle
-
-### Description
-A CSS style to apply to images in the [Level Up](#attr-multisortpanellevelupbutton) and [Level Down](#attr-multisortpanelleveldownbutton) buttons. This is a base style supporting suffixes for states, specifically "Over", "Down" and "Disabled", which are applied when [ImgButton](ImgButton.md#class-imgbutton) settings like [ImgButton.showRollOverIcon](ImgButton.md#attr-imgbuttonshowrollovericon) are applied to the icons.
-
-**Flags**: IR
-
----
 ## Method: MultiSortPanel.getSortLevel
 
 ### Description
-Return a [SortSpecifier](../reference_2.md#object-sortspecifier) object for the requested levelNum.
+Return a [SortSpecifier](../reference.md#object-sortspecifier) object for the requested levelNum.
 
 ### Parameters
 
@@ -281,7 +265,7 @@ Return a [SortSpecifier](../reference_2.md#object-sortspecifier) object for the 
 ## Method: MultiSortPanel.sortChanged
 
 ### Description
-Fired whenever the sort configuration changes. The single parameter is an array of [SortSpecifier](../reference_2.md#object-sortspecifier)s that represent the list of sort-levels as they appear after whatever change has occurred.
+Fired whenever the sort configuration changes. The single parameter is an array of [SortSpecifier](../reference.md#object-sortspecifier)s that represent the list of sort-levels as they appear after whatever change has occurred.
 
 ### Parameters
 
@@ -303,7 +287,7 @@ Return the number of levels of sorting that have been configured.
 ## Method: MultiSortPanel.getSort
 
 ### Description
-Returns all configured sorting levels, as an array of [SortSpecifier](../reference_2.md#object-sortspecifier)s.
+Returns all configured sorting levels, as an array of [SortSpecifier](../reference.md#object-sortspecifier)s.
 
 ### Returns
 
@@ -313,7 +297,7 @@ Returns all configured sorting levels, as an array of [SortSpecifier](../referen
 ## Method: MultiSortPanel.validate
 
 ### Description
-Validate that no two [SortSpecifier](../reference_2.md#object-sortspecifier)s sort on the same [property](../reference.md#attr-sortspecifierproperty).
+Validate that no two [SortSpecifier](../reference.md#object-sortspecifier)s sort on the same [property](../reference.md#attr-sortspecifierproperty).
 
 ### Returns
 

@@ -19,17 +19,17 @@ By default, editing is restricted to existing records. Setting [ListGrid.listEnd
 
 **Saving changes**
 
-Saving of changes is triggered automatically when the user navigates out of the row or cell being edited (based on [ListGrid.saveByCell](../classes/ListGrid_1.md#attr-listgridsavebycell)) or when the user ends editing. For a "mass update" interface, automatic saving of changes can be disabled entirely via [autoSaveEdits:false](../classes/ListGrid_1.md#attr-listgridautosaveedits), in which case a manual call to [saveEdits()](../classes/ListGrid_2.md#method-listgridsaveedits) or [saveAllEdits()](../classes/ListGrid_2.md#method-listgridsavealledits) is required to trigger saving.
+Saving of changes is triggered automatically when the user navigates out of the row or cell being edited (based on [ListGrid.saveByCell](../classes/ListGrid_1.md#attr-listgridsavebycell)) or when the user ends editing. For a "mass update" interface, automatic saving of changes can be disabled entirely via [autoSaveEdits:false](../classes/ListGrid_1.md#attr-listgridautosaveedits), in which case a manual call to [saveEdits()](../classes/ListGrid_2.md#method-listgridsaveedits) or [saveAllEdits()](../classes/ListGrid_1.md#method-listgridsavealledits) is required to trigger saving.
 
 If a grid has no DataSource, saving means that the properties of the [ListGridRecord](../reference_2.md#object-listgridrecord)s in [grid.data](../classes/ListGrid_1.md#attr-listgriddata) are directly changed.
 
-For a grid with a DataSource, saving will be accomplished by using DataSource "update" operations for existing records, and DataSource "add" operations for new records. If multiple records have been edited and [saveAllEdits()](../classes/ListGrid_2.md#method-listgridsavealledits) is called, [request queuing](../classes/RPCManager.md#classmethod-rpcmanagerstartqueue) will be automatically used to enable all edits to be saved in one HTTP turnaround (if using the SmartClient Server).
+For a grid with a DataSource, saving will be accomplished by using DataSource "update" operations for existing records, and DataSource "add" operations for new records. If multiple records have been edited and [saveAllEdits()](../classes/ListGrid_1.md#method-listgridsavealledits) is called, [request queuing](../classes/RPCManager.md#classmethod-rpcmanagerstartqueue) will be automatically used to enable all edits to be saved in one HTTP turnaround (if using the SmartClient Server).
 
 By default, a grid will send only updated fields and primaryKey fields as part of [DSRequest.data](../classes/DSRequest.md#attr-dsrequestdata) so that the server can discern which fields the user actually changed. However, the grid always includes the original field values in the dsRequest as [DSRequest.oldValues](../classes/DSRequest.md#attr-dsrequestoldvalues).
 
 Note that although it is possible to load DataSource data without actually declaring a [primaryKey field](../classes/DataSourceField.md#attr-datasourcefieldprimarykey), a primaryKey must be declared for editing and saving. The values of primaryKey fields is how SmartClient identifies the changed record to the server.
 
-**Saving edits in a sorted data set:** When a user updates or adds a record in a sorted listGrid, the data set may be automatically [unsorted](../classes/ListGrid_2.md#method-listgridunsort). When this happens, the sort indicator will be removed from sort field headers, and all rows will stay in their current positions, including edited records where the sort field value has been changed.  
+**Saving edits in a sorted data set:** When a user updates or adds a record in a sorted listGrid, the data set may be automatically [unsorted](../classes/ListGrid_1.md#method-listgridunsort). When this happens, the sort indicator will be removed from sort field headers, and all rows will stay in their current positions, including edited records where the sort field value has been changed.  
 Note that for a databound grid with a partial data set, a "true unsort" isn't possible without droppping the cache, as both client and server need to agree on the positions of rows. In this case the grid is marked as unsorted, and all visible rows stay in place until the next fetch occurs, at which point the cache is dropped and a truly unsorted data set retrieved from the server. Typically the next fetch would be caused by the user scrolling to a new position in the grid. Once that fetch occurs the positions of rows within the grid will be updated to match the positions of rows in the unsorted server-side data set, meaning if the user scrolled back to their previous position they may see a different set of records. (See also [ResultSet.updatePartialCache](../classes/ResultSet.md#attr-resultsetupdatepartialcache)).
 
 **Validation**
@@ -54,7 +54,7 @@ You can use [startEditing(_rowNum_, _colNum_)](../classes/ListGrid_2.md#method-l
 
 The term "editValues" means changes that the user has made to the dataset which have not been saved. The grid manages and stores editValues separately from the data itself in order to allow the user to revert to original values, and in order to enable to grid to send only updated fields to the server.
 
-Because editValues are stored separately, if you directly access the dataset (eg via `grid.getData().get()`) you will see the records without the user's unsaved changes. Many APIs exist for retrieving and managing editValues (search for editValue). For the common case of needing to access the record-as-edited, you can call [grid.getEditedRecord(rowNum)](../classes/ListGrid_2.md#method-listgridgeteditedrecord).
+Because editValues are stored separately, if you directly access the dataset (eg via `grid.getData().get()`) you will see the records without the user's unsaved changes. Many APIs exist for retrieving and managing editValues (search for editValue). For the common case of needing to access the record-as-edited, you can call [grid.getEditedRecord(rowNum)](../classes/ListGrid_1.md#method-listgridgeteditedrecord).
 
 When accessing and manipulating edited data, you should think carefully about whether you want to be working with the original data or with the edited version. Values entered by the user may not have been validated yet, or may have failed validation, hence you may find a String value in a field of type "date" or "int", which could cause naive formatters or totaling functions to crash.
 
@@ -84,15 +84,14 @@ However you _can_ create an editor with a [FormItem icon](../classes/FormItem.md
 
 ### Related
 
+- [InlineEditEvent](../reference.md#type-inlineeditevent)
+- [SearchEditorMode](../reference.md#type-searcheditormode)
 - [RowEndEditAction](../reference.md#type-rowendeditaction)
 - [EnterKeyEditAction](../reference.md#type-enterkeyeditaction)
 - [EscapeKeyEditAction](../reference.md#type-escapekeyeditaction)
 - [ArrowKeyEditAction](../reference.md#type-arrowkeyeditaction)
-- [EditCompletionEvent](../reference_2.md#type-editcompletionevent)
+- [EditCompletionEvent](../reference.md#type-editcompletionevent)
 - [ListGridEditEvent](../reference.md#type-listgrideditevent)
-- [InlineEditEvent](../reference.md#type-inlineeditevent)
-- [SearchEditorMode](../reference.md#type-searcheditormode)
-- [DataBoundComponent.fieldIsEditable](../classes/DataBoundComponent.md#method-databoundcomponentfieldiseditable)
 - [CubeGrid.setEditValue](../classes/CubeGrid.md#method-cubegridseteditvalue)
 - [CubeGrid.getEditValue](../classes/CubeGrid.md#method-cubegridgeteditvalue)
 - [CubeGrid.getEditedRecord](../classes/CubeGrid.md#method-cubegridgeteditedrecord)
@@ -105,6 +104,9 @@ However you _can_ create an editor with a [FormItem icon](../classes/FormItem.md
 - [CubeGrid.recordHasChanges](../classes/CubeGrid.md#method-cubegridrecordhaschanges)
 - [CubeGrid.hasChanges](../classes/CubeGrid.md#method-cubegridhaschanges)
 - [CubeGrid.saveAllEdits](../classes/CubeGrid.md#method-cubegridsavealledits)
+- [DataBoundComponent.fieldIsEditable](../classes/DataBoundComponent.md#method-databoundcomponentfieldiseditable)
+- [DynamicForm.getEditorType](../classes/DynamicForm.md#method-dynamicformgeteditortype)
+- [DynamicForm.fieldIsEditable](../classes/DynamicForm.md#method-dynamicformfieldiseditable)
 - [ListGridField.defaultDynamicValue](../classes/ListGridField.md#method-listgridfielddefaultdynamicvalue)
 - [ListGridField.editorEnter](../classes/ListGridField.md#method-listgridfieldeditorenter)
 - [ListGridField.editorExit](../classes/ListGridField.md#method-listgridfieldeditorexit)
@@ -128,7 +130,7 @@ However you _can_ create an editor with a [FormItem icon](../classes/FormItem.md
 - [ListGrid.startEditingNew](../classes/ListGrid_2.md#method-listgridstarteditingnew)
 - [ListGrid.getAllEditRows](../classes/ListGrid_2.md#method-listgridgetalleditrows)
 - [ListGrid.getEditValues](../classes/ListGrid_2.md#method-listgridgeteditvalues)
-- [ListGrid.getEditedRecord](../classes/ListGrid_2.md#method-listgridgeteditedrecord)
+- [ListGrid.getEditedRecord](../classes/ListGrid_1.md#method-listgridgeteditedrecord)
 - [ListGrid.getEditedCell](../classes/ListGrid_2.md#method-listgridgeteditedcell)
 - [ListGrid.setEditValue](../classes/ListGrid_2.md#method-listgridseteditvalue)
 - [ListGrid.getEditValue](../classes/ListGrid_2.md#method-listgridgeteditvalue)
@@ -143,9 +145,9 @@ However you _can_ create an editor with a [FormItem icon](../classes/FormItem.md
 - [ListGrid.discardEdits](../classes/ListGrid_2.md#method-listgriddiscardedits)
 - [ListGrid.saveEdits](../classes/ListGrid_2.md#method-listgridsaveedits)
 - [ListGrid.rowHasChanges](../classes/ListGrid_2.md#method-listgridrowhaschanges)
-- [ListGrid.hasChanges](../classes/ListGrid_2.md#method-listgridhaschanges)
+- [ListGrid.hasChanges](../classes/ListGrid_1.md#method-listgridhaschanges)
 - [ListGrid.cellHasChanges](../classes/ListGrid_2.md#method-listgridcellhaschanges)
-- [ListGrid.saveAllEdits](../classes/ListGrid_2.md#method-listgridsavealledits)
+- [ListGrid.saveAllEdits](../classes/ListGrid_1.md#method-listgridsavealledits)
 - [ListGrid.cellChanged](../classes/ListGrid_2.md#method-listgridcellchanged)
 - [ListGrid.editComplete](../classes/ListGrid_2.md#method-listgrideditcomplete)
 - [ListGrid.editFailed](../classes/ListGrid_1.md#method-listgrideditfailed)
@@ -156,8 +158,11 @@ However you _can_ create an editor with a [FormItem icon](../classes/FormItem.md
 - [ListGrid.formatEditorValue](../classes/ListGrid_2.md#method-listgridformateditorvalue)
 - [ListGrid.parseEditorValue](../classes/ListGrid_2.md#method-listgridparseeditorvalue)
 - [TreeGrid.startEditingNew](../classes/TreeGrid.md#method-treegridstarteditingnew)
-- [DynamicForm.getEditorType](../classes/DynamicForm.md#method-dynamicformgeteditortype)
-- [DynamicForm.fieldIsEditable](../classes/DynamicForm.md#method-dynamicformfieldiseditable)
+- [Calendar.eventSnapGap](../classes/Calendar.md#attr-calendareventsnapgap)
+- [Calendar.showQuickEventDialog](../classes/Calendar.md#attr-calendarshowquickeventdialog)
+- [Calendar.eventEditorFields](../classes/Calendar.md#attr-calendareventeditorfields)
+- [Calendar.eventEditorDateFieldTitle](../classes/Calendar.md#attr-calendareventeditordatefieldtitle)
+- [Calendar.eventDialogFields](../classes/Calendar.md#attr-calendareventdialogfields)
 - [ListGrid.recordCanRemoveProperty](../classes/ListGrid_1.md#attr-listgridrecordcanremoveproperty)
 - [ListGridRecord._canRemove](../classes/ListGridRecord.md#attr-listgridrecord_canremove)
 - [ListGrid.saveRequestProperties](../classes/ListGrid_1.md#attr-listgridsaverequestproperties)
@@ -210,10 +215,5 @@ However you _can_ create an editor with a [FormItem icon](../classes/FormItem.md
 - [ListGrid.enumCriteriaAsInitialValues](../classes/ListGrid_1.md#attr-listgridenumcriteriaasinitialvalues)
 - [ListGrid.longTextEditorThreshold](../classes/ListGrid_1.md#attr-listgridlongtexteditorthreshold)
 - [ListGrid.longTextEditorType](../classes/ListGrid_1.md#attr-listgridlongtexteditortype)
-- [Calendar.eventSnapGap](../classes/Calendar.md#attr-calendareventsnapgap)
-- [Calendar.showQuickEventDialog](../classes/Calendar.md#attr-calendarshowquickeventdialog)
-- [Calendar.eventEditorFields](../classes/Calendar.md#attr-calendareventeditorfields)
-- [Calendar.eventEditorDateFieldTitle](../classes/Calendar.md#attr-calendareventeditordatefieldtitle)
-- [Calendar.eventDialogFields](../classes/Calendar.md#attr-calendareventdialogfields)
 
 ---

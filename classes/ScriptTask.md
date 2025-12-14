@@ -17,7 +17,7 @@ Task that executes arbitrary code, either synchronous or asynchronous. Override 
 ### Description
 Whether the script task is asynchronous. A synchronous task is expected to return data directly from execute() and is considered complete once the execute() method exits.
 
-An asynchronous task is expected to start processing in execute(), and will not be considered complete [ScriptTask.setOutput](#method-scripttasksetoutput) is called.
+An asnychronous task is expected to start processing in execute(), and will not be considered complete until either [ScriptTask.setOutputData](#method-scripttasksetoutputdata) or [ScriptTask.setOutputRecord](#method-scripttasksetoutputrecord) is called.
 
 **Flags**: IR
 
@@ -27,46 +27,98 @@ An asynchronous task is expected to start processing in execute(), and will not 
 ### Description
 Does this processElement pass through output from the last executed task (i.e. transient state)?
 
-See [taskInputExpressions](../reference_2.md#type-taskinputexpression) for details on the transient state outputs.
+See [taskInputExpressions](../kb_topics/taskInputExpression.md#kb-topic-task-input-expressions) for details on the transient state outputs.
 
 Note that this property does not affect the task at all but is an indicator to the user and to the workflow editor of the behavior of the task as coded (See [Process.passThruTaskOutput](Process.md#method-processpassthrutaskoutput)).
 
 **Flags**: IR
 
 ---
+## Method: ScriptTask.getInputData
+
+### Description
+Get the inputs to this task as specified by [Task.inputField](Task.md#attr-taskinputfield).
+
+For a task with a [inputFieldList](Task.md#attr-taskinputfieldlist), use [ScriptTask.getInputRecord](#method-scripttaskgetinputrecord) to get access to other inputs.
+
+### Returns
+
+`[Any](#type-any)` — input data
+
+### Groups
+
+- taskIO
+
+---
+## Method: ScriptTask.getProcess
+
+### Description
+Get the process executing this task instance.
+
+### Returns
+
+`[Process](#type-process)` — the owning process
+
+---
 ## Method: ScriptTask.execute
 
 ### Description
-Execute the task. The return value, if not `undefined`, will be written as the output.
-
-For an asynchronous task, the return value is ignored and the task should call [ScriptTask.setOutput](#method-scripttasksetoutput) to continue the process with the next task.
+Execute the task.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | input | [Any](#type-any) | false | — | the task input |
-| inputRecord | [Record](#type-record) | false | — | the task input record if `inputs` is specified. See [taskIO](../kb_topics/taskIO.md#kb-topic-task-input--output) |
+| inputRecord | [Record](#type-record) | false | — | the task input record if an `inputFieldList` was specified. See [taskIO](../kb_topics/taskIO.md#kb-topic-task-input--output) |
 
 ### Returns
 
-`[Any](#type-any)` — the task output. For multiple field output, call [ScriptTask.setOutput](#method-scripttasksetoutput) instead, and return null
+`[Any](#type-any)` — the task output. For multiple field output, call [ScriptTask.setOutputRecord](#method-scripttasksetoutputrecord) instead, and return null
 
 ---
-## Method: ScriptTask.setOutput
+## Method: ScriptTask.setOutputRecord
 
 ### Description
-Sets the task output available to the next task via [Process.getLastTaskOutput](Process.md#method-processgetlasttaskoutput) or more commonly, with a [TaskInputExpression](../reference_2.md#type-taskinputexpression) property. If [outputFieldList](Task.md#attr-taskoutputfieldlist) is specified, the output will also be written to the specified fields in the process state (See [taskIO](../kb_topics/taskIO.md#kb-topic-task-input--output)).
-
-To have the output written as-is to the process state, see [bindOutput](ProcessElement.md#attr-processelementbindoutput).
-
-NOTE: for an [asynchronous task](#attr-scripttaskisasync), calling `setOutput()` indicates the task is complete.
+Set all outputs of the task as specified by the [outputFieldList](Task.md#attr-taskoutputfieldlist), by providing a Record.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| output | [Any](#type-any) | true | — | output record to provide to the next task |
+| outputRecord | [Record](#type-record) | false | — | output record |
+
+### Groups
+
+- taskIO
+
+---
+## Method: ScriptTask.getInputRecord
+
+### Description
+Get all inputs to the task as specified by the [inputFieldList](Task.md#attr-taskinputfieldlist), as a Record.
+
+### Returns
+
+`[Record](#type-record)` — input data
+
+### Groups
+
+- taskIO
+
+---
+## Method: ScriptTask.setOutputData
+
+### Description
+Set the task output as specified by [Task.outputField](Task.md#attr-taskoutputfield).
+
+NOTE: for an [asychronous task](#attr-scripttaskisasync), calling `setOutputData()` indicates the task is complete. For a task with [multiple outputs](Task.md#attr-taskoutputfieldlist), call [ScriptTask.setOutputRecord](#method-scripttasksetoutputrecord) instead.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| taskOutput | [Any](#type-any) | false | — | task output |
 
 ### Groups
 

@@ -137,7 +137,7 @@ Indicates whether the text of the offlineMessage property should be displayed if
 ## Attr: GridRenderer.cellHeight
 
 ### Description
-The default height of each cell in pixels.
+The default height of each row in pixels.
 
 ### Groups
 
@@ -754,7 +754,7 @@ Called when a row receives a mousedown event.
 
 ### Returns
 
-`[Boolean](#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -812,7 +812,7 @@ Called when a row receives a mouseup event.
 
 ### Returns
 
-`[Boolean](#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -836,7 +836,7 @@ Optional stringMethod to fire when the user hovers over a cell and the value is 
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false to suppress the standard hover
+`[boolean](../reference.md#type-boolean)` — false to suppress the standard hover
 
 ### Groups
 
@@ -923,13 +923,13 @@ Given a pointer to an element in the DOM, this method will check whether this el
 ## Method: GridRenderer.getEventRow
 
 ### Description
-Returns the row number of the provided Y-coordinate, or the most recent mouse event if a Y-coordinate is not provided.
+Returns the row number of the most recent mouse event.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| y | [Integer](../reference_2.md#type-integer) | true | — | Y-coordinate relative to the top edge of the content to obtain the row number for. If not provided, then [Canvas.getOffsetY](Canvas.md#method-canvasgetoffsety) will be used. |
+| y | [Integer](../reference_2.md#type-integer) | true | — | optional y-coordinate to obtain row number, in lieu of the y coordinate of the last mouse event |
 
 ### Returns
 
@@ -1015,7 +1015,7 @@ Called when a cell receives a mouseup event.
 
 ### Returns
 
-`[Boolean](#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -1085,7 +1085,7 @@ Called when (cell-based) selection changes within this grid.
 
 ### Returns
 
-`[Boolean](#type-boolean)` — Returning false will prevent the GridRenderer styling from being updated to reflect the selection change.
+`[boolean](../reference.md#type-boolean)` — Returning false will prevent the GridRenderer styling from being updated to reflect the selection change.
 
 ### Groups
 
@@ -1135,7 +1135,7 @@ Called when the mouse pointer leaves a cell
 
 ### Returns
 
-`[Boolean](#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -1235,7 +1235,7 @@ Called when the mouse hovers over a row if this.canHover is true. Returning fals
 
 ### Returns
 
-`[Boolean](#type-boolean)` — whether to cancel the event (default behavior of showing the hover)
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event (default behavior of showing the hover)
 
 ### Groups
 
@@ -1251,7 +1251,7 @@ Called when the mouse hovers over a row if this.canHover is true. Returning fals
 ## Method: GridRenderer.cellHover
 
 ### Description
-Called when the mouse hovers over a cell if `this.canHover` is `true`. Returning `false` will suppress the hover text from being shown if `showHover` is `true` for `this` or the field.
+Called when the mouse hovers over a cell if this.canHover is true. Returning false will suppress the hover text from being shown if this.showHover is true.
 
 ### Parameters
 
@@ -1263,7 +1263,7 @@ Called when the mouse hovers over a cell if `this.canHover` is `true`. Returning
 
 ### Returns
 
-`[Boolean](#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -1291,7 +1291,7 @@ Called when the mouse pointer leaves a row
 
 ### Returns
 
-`[Boolean](#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -1348,7 +1348,7 @@ If the grid is undrawn or the [GridRenderer.emptyMessage](#attr-gridrendererempt
 ### Description
 Refresh an entire row of cells without redrawing the grid.
 
-The cells' values, CSS classes, and CSS text will be refreshed, to the current values returned by getCellValue(), getCellStyle() and getCellCSSText(), respectively. Also, if displaying a standard hover (not a hover component), re-checks to see if the hover should continue to be displayed, hiding the hover if not, or updating the hover if so.
+The cells' values, CSS classes, and CSS text will be refreshed, to the current values returned by getCellValue(), getCellStyle() and getCellCSSText() respectively.
 
 ### Parameters
 
@@ -1455,7 +1455,7 @@ Called when a cell receives a double click event.
 
 ### Returns
 
-`[Boolean](#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -1479,7 +1479,7 @@ Called when the mouse pointer enters a row
 
 ### Returns
 
-`[Boolean](#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -1491,13 +1491,13 @@ Called when the mouse pointer enters a row
 ## Method: GridRenderer.getEventColumn
 
 ### Description
-Returns the column number of the provided X-coordinate, or the most recent mouse event if an X-coordinate is not provided.
+Returns the column number of the most recent mouse event.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| x | [Integer](../reference_2.md#type-integer) | true | — | X-coordinate relative to the left edge of the content to obtain the column number for. If not provided, then [Canvas.getOffsetX](Canvas.md#method-canvasgetoffsetx) will be used. |
+| x | [Integer](../reference_2.md#type-integer) | true | — | optional x-coordinate to obtain column number for, in lieu of the x coordinate of the last mouse event |
 
 ### Returns
 
@@ -1514,7 +1514,7 @@ Returns the column number of the provided X-coordinate, or the most recent mouse
 ### Description
 Refresh an individual cell without redrawing the grid.
 
-The cell's value, CSS class, and CSS text will be refreshed, to the current values returned by getCellValue(), getCellStyle(), and getCellCSSText(), respectively. Also, if displaying a standard hover (not a hover component), re-checks to see if the hover should continue to be displayed, hiding the hover if not, or updating the hover if so.
+The cell's value, CSS class, and CSS text will be refreshed, to the current values returned by getCellValue(), getCellStyle() and getCellCSSText() respectively.
 
 ### Parameters
 
@@ -1604,7 +1604,7 @@ Called when a row receives a click event.
 
 ### Returns
 
-`[Boolean](#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -1652,7 +1652,7 @@ Called when a row receives a contextclick event.
 
 ### Returns
 
-`[Boolean](#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -1723,7 +1723,7 @@ Called when a cell receives a mousedown event.
 
 ### Returns
 
-`[Boolean](#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -1747,7 +1747,7 @@ Called when the mouse pointer enters a cell
 
 ### Returns
 
-`[Boolean](#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -1839,7 +1839,7 @@ Called when a row receives a double click event.
 
 ### Returns
 
-`[Boolean](#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -1863,7 +1863,7 @@ Called when a cell receives a click event.
 
 ### Returns
 
-`[Boolean](#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -1908,7 +1908,7 @@ Called when a cell receives a contextclick event.
 
 ### Returns
 
-`[Boolean](#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 

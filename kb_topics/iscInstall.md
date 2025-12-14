@@ -23,4 +23,8 @@ Having run both of those commands, your newly created project will contain a [po
 
 Your project will also contain a README file containing a copy/paste command line for installing, deploying to and starting a local 'embedded' [Jetty](https://www.eclipse.org/jetty/) server, as well as detailed instructions for [Eclipse](https://help.eclipse.org/latest/index.jsp) integration, and even automated conversion to an [Ant](https://ant.apache.org) based build (complete with Ivy configuration). Isomorphic generally recommends starting with the Jetty command to see things working quickly before experimentation with other approaches. The plugin provides an [FAQ](http://github.smartclient.com/isc-maven-plugin/faq.html) for reference, and posting questions / issues to the public [forum](https://forums.smartclient.com) for help is always appropriate.
 
+### See Also
+
+- [spring4limits](spring4limits.md#kb-topic-spring-4--java-compatibility)
+
 ---

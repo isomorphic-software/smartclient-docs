@@ -9,9 +9,7 @@
 *Inherits from:* [ProcessElement](ProcessElement.md#class-processelement)
 
 ### Description
-Sends the specified message via email or [notification](Notify.md#class-notify).
-
-Email is sent using the [reifyMessaging](../kb_topics/reifyMessaging.md#kb-topic-reify-messaging) `isc_sendEmail` DataSource. Refer to [Mail overview](Mail.md#class-mail) to know how to set up access to an SMTP server.
+Sends an email using the [reifyMessaging](../kb_topics/reifyMessaging.md#kb-topic-reify-messaging) `isc_sendEmail` DataSource. Refer to [Mail overview](Mail.md#class-mail) to know how to set up access to an SMTP server.
 
 There is a matching Reify Workflow Editor task editor, [SendEmailTaskEditor](#class-sendemailtaskeditor), that can be enabled by [Reify.enableSendEmailTaskEditor](#attr-reifyenablesendemailtaskeditor).
 

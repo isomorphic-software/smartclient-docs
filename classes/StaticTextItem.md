@@ -56,22 +56,6 @@ See [shouldApplyHeightToTextBox()](FormItem.md#method-formitemshouldapplyheightt
 **Flags**: IRA
 
 ---
-## Attr: StaticTextItem.defaultValue
-
-### Description
-Overridden to assign class-appropriate type.
-
-### Groups
-
-- basics
-
-### See Also
-
-- [FormItem.defaultValue](FormItem.md#attr-formitemdefaultvalue)
-
-**Flags**: IRW
-
----
 ## Attr: StaticTextItem.editProxyConstructor
 
 ### Description

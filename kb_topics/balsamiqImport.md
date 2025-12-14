@@ -12,7 +12,7 @@
 *   speed up development by reusing all the careful layout work you did in Balsamiq
 *   use Balsamiq as a development tool for SmartClient, since you can re-import at any time or even continuously
 *   instantly create a fully interactive version of a Balsamiq mockup in any SmartClient skin
-*   offer such functionality to your end users as a means of extending your application (_requires [Reify Embedded license](http://smartclient.com/product)_)
+*   offer such functionality to your end users as a means of extending your application (_requires [Reify OEM license](http://smartclient.com/product)_)
 
 #### Using the tool
 

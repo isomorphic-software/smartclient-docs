@@ -207,7 +207,7 @@ In addition to this:
 [DynamicForm.errorOrientation](#attr-dynamicformerrororientation) controls where the error HTML should appear relative to form items. Therefore the combination of [DynamicForm.showErrorText](#attr-dynamicformshowerrortext)`:false` and [DynamicForm.errorOrientation](#attr-dynamicformerrororientation)`:"left"` creates a compact validation error display consisting of just an icon, to the left of the item with the error message available via a hover (similar appearance to ListGrid validation error display).  
 If `errorOrientation` is unset, the error orientation will default to "top" if [DynamicForm.linearMode](#attr-dynamicformlinearmode) is enabled (or [DynamicForm.linearOnMobile](#attr-dynamicformlinearonmobile) is true for mobile devices) and error text is not showing, "left" otherwise.
 
-`showErrorStyle` determines whether fields with validation errors should have special styling applied to them. Error styling is achieved by applying suffixes to existing styling applied to various parts of the form item. See [FormItemBaseStyle](../reference_2.md#type-formitembasestyle) for more on this.
+`showErrorStyle` determines whether fields with validation errors should have special styling applied to them. Error styling is achieved by applying suffixes to existing styling applied to various parts of the form item. See [FormItemBaseStyle](../reference.md#type-formitembasestyle) for more on this.
 
 ### Groups
 
@@ -326,7 +326,7 @@ Whether titles for form items should wrap. If not specified, titles will wrap by
 ## Attr: DynamicForm.timeFormatter
 
 ### Description
-Default [TimeDisplayFormat](../reference_2.md#type-timedisplayformat) for [type:"time"](FormItem.md#attr-formitemtype) field values displayed in this form.
+Default [TimeDisplayFormat](../reference.md#type-timedisplayformat) for [type:"time"](FormItem.md#attr-formitemtype) field values displayed in this form.
 
 Note that if specified, [FormItem.dateFormatter](FormItem.md#attr-formitemdateformatter) and [FormItem.timeFormatter](FormItem.md#attr-formitemtimeformatter) take precedence over the format specified at the component level.
 
@@ -348,7 +348,7 @@ May be overridden for individual items via [FormItem.showImageAsURL](FormItem.md
 ## Attr: DynamicForm.requiredRightTitleSuffix
 
 ### Description
-The string appended to the title of every required item in this form if [DynamicForm.hiliteRequiredFields](#attr-dynamicformhiliterequiredfields) is true and the [TitleOrientation](../reference_2.md#type-titleorientation) property is set to "right".
+The string appended to the title of every required item in this form if [DynamicForm.hiliteRequiredFields](#attr-dynamicformhiliterequiredfields) is true and the [TitleOrientation](../reference.md#type-titleorientation) property is set to "right".
 
 ### Groups
 
@@ -453,7 +453,7 @@ The required message for required field errors.
 ## Attr: DynamicForm.titlePrefix
 
 ### Description
-The string pre-pended to the title of every item in this form. See also [DynamicForm.requiredTitlePrefix](#attr-dynamicformrequiredtitleprefix) for fields that are required.
+The string pre-pended to the title of every item in this form. See also +{requiredTitlePrefix} for fields that are required.
 
 ### Groups
 
@@ -571,7 +571,7 @@ If [DynamicForm.showInlineErrors](#attr-dynamicformshowinlineerrors) is `false`,
 ## Attr: DynamicForm.titleSuffix
 
 ### Description
-The string appended to the title of every item in this form. See also [DynamicForm.requiredTitleSuffix](#attr-dynamicformrequiredtitlesuffix) for fields that are required.
+The string appended to the title of every item in this form. See also +{requiredTitleSuffix} for fields that are required.
 
 ### Groups
 
@@ -609,25 +609,13 @@ If the parent's height is just right so that the space taken by the unwanted hor
 ## Attr: DynamicForm.titleOrientation
 
 ### Description
-Default orientation for titles for items in this form. [TitleOrientation](../reference_2.md#type-titleorientation) lists valid options.
+Default orientation for titles for items in this form. [TitleOrientation](../reference.md#type-titleorientation) lists valid options.
 
 Note that titles on the left or right take up a cell in tabular [form layouts](../kb_topics/formLayout.md#kb-topic-form-layout), but titles on top do not.
 
 ### Groups
 
 - formTitles
-
-**Flags**: IRW
-
----
-## Attr: DynamicForm.linearHintWidth
-
-### Description
-When [DynamicForm.linearMode](#attr-dynamicformlinearmode) is true, this property sets the amount of space reserved for [hint-text](FormItem.md#attr-formitemhint) in formItems that set a hint. May be set to a pixel-size like 100 or a percentage, such as "30%".
-
-### Groups
-
-- formLayout
 
 **Flags**: IRW
 
@@ -729,7 +717,7 @@ The [DynamicForm.linearOnMobile](#attr-dynamicformlinearonmobile) attribute allo
 
 While `linearMode` is active, the form's table layout is determined using the following logic:
 
-*   If [TitleOrientation](../reference_2.md#type-titleorientation) is not explicitly specified, it will be defaulted to `top`, causing each item's title to appear above its element.  
+*   If [TitleOrientation](../reference.md#type-titleorientation) is not explicitly specified, it will be defaulted to `top`, causing each item's title to appear above its element.  
     **Note:** in linear mode, each item will have the same title orientation. The item-level [FormItem.titleOrientation](FormItem.md#attr-formitemtitleorientation) attribute will be ignored.
 *   For those items with a [hint](FormItem.md#attr-formitemhint) that support [showing the hint in the field](TextItem.md#attr-textitemshowhintinfield), `showHintInField` will be defaulted true if unset.
 *   For items showing validation errors inline, by default [error text](#attr-dynamicformshowerrortext) will be displayed, and errors will [be rendered above the item element](#attr-dynamicformerrororientation).
@@ -856,7 +844,7 @@ In addition to this:
 [DynamicForm.errorOrientation](#attr-dynamicformerrororientation) controls where the error HTML should appear relative to form items. Therefore the combination of [DynamicForm.showErrorText](#attr-dynamicformshowerrortext)`:false` and [DynamicForm.errorOrientation](#attr-dynamicformerrororientation)`:"left"` creates a compact validation error display consisting of just an icon, to the left of the item with the error message available via a hover (similar appearance to ListGrid validation error display).  
 If `errorOrientation` is unset, the error orientation will default to "top" if [DynamicForm.linearMode](#attr-dynamicformlinearmode) is enabled (or [DynamicForm.linearOnMobile](#attr-dynamicformlinearonmobile) is true for mobile devices) and error text is not showing, "left" otherwise.
 
-`showErrorStyle` determines whether fields with validation errors should have special styling applied to them. Error styling is achieved by applying suffixes to existing styling applied to various parts of the form item. See [FormItemBaseStyle](../reference_2.md#type-formitembasestyle) for more on this.
+`showErrorStyle` determines whether fields with validation errors should have special styling applied to them. Error styling is achieved by applying suffixes to existing styling applied to various parts of the form item. See [FormItemBaseStyle](../reference.md#type-formitembasestyle) for more on this.
 
 ### Groups
 
@@ -982,8 +970,6 @@ If `suppressValidationErrorCallback` is set to true, if a save attempt returns a
 ### Description
 Default [FormItem.readOnlyTextBoxStyle](FormItem.md#attr-formitemreadonlytextboxstyle) setting for items in this form.
 
-**Note:** The default style may vary depending on the skin.
-
 **Flags**: IRW
 
 ---
@@ -1000,7 +986,7 @@ Note that if `canEdit` is explicitly specified on a field in the [DataBoundCompo
 ## Attr: DynamicForm.dataSource
 
 ### Description
-The DataSource that this component should bind to for default fields and for performing [DataSource requests](../reference_2.md#object-dsrequest).
+The DataSource that this component should bind to for default fields and for performing [DataSource requests](../reference.md#object-dsrequest).
 
 Can be specified as either a DataSource instance or the String ID of a DataSource.
 
@@ -1062,7 +1048,7 @@ May be overridden at the form item level via [FormItem.selectOnFocus](FormItem.m
 ### Description
 How to fetch and manage records retrieve from the server. See [FetchMode](../reference_2.md#type-fetchmode).
 
-This setting only applies to the [ResultSet](ResultSet.md#class-resultset) automatically created by calling [fetchData()](ListGrid_2.md#method-listgridfetchdata). If a pre-existing ResultSet is passed to setData() instead, it's existing setting for [ResultSet.fetchMode](ResultSet.md#attr-resultsetfetchmode) applies.
+This setting only applies to the [ResultSet](ResultSet.md#class-resultset) automatically created by calling [fetchData()](ListGrid_1.md#method-listgridfetchdata). If a pre-existing ResultSet is passed to setData() instead, it's existing setting for [ResultSet.fetchMode](ResultSet.md#attr-resultsetfetchmode) applies.
 
 ### Groups
 
@@ -1102,7 +1088,7 @@ Note that form values are logical values, for example, the value of a [DateItem]
 ## Attr: DynamicForm.autoFetchTextMatchStyle
 
 ### Description
-If [DynamicForm.autoFetchData](#attr-dynamicformautofetchdata) is `true`, this attribute allows the developer to specify a textMatchStyle for the initial [fetchData()](ListGrid_2.md#method-listgridfetchdata) call.
+If [DynamicForm.autoFetchData](#attr-dynamicformautofetchdata) is `true`, this attribute allows the developer to specify a textMatchStyle for the initial [fetchData()](ListGrid_1.md#method-listgridfetchdata) call.
 
 ### Groups
 
@@ -1207,7 +1193,7 @@ In addition to this:
 [DynamicForm.errorOrientation](#attr-dynamicformerrororientation) controls where the error HTML should appear relative to form items. Therefore the combination of [DynamicForm.showErrorText](#attr-dynamicformshowerrortext)`:false` and [DynamicForm.errorOrientation](#attr-dynamicformerrororientation)`:"left"` creates a compact validation error display consisting of just an icon, to the left of the item with the error message available via a hover (similar appearance to ListGrid validation error display).  
 If `errorOrientation` is unset, the error orientation will default to "top" if [DynamicForm.linearMode](#attr-dynamicformlinearmode) is enabled (or [DynamicForm.linearOnMobile](#attr-dynamicformlinearonmobile) is true for mobile devices) and error text is not showing, "left" otherwise.
 
-`showErrorStyle` determines whether fields with validation errors should have special styling applied to them. Error styling is achieved by applying suffixes to existing styling applied to various parts of the form item. See [FormItemBaseStyle](../reference_2.md#type-formitembasestyle) for more on this.
+`showErrorStyle` determines whether fields with validation errors should have special styling applied to them. Error styling is achieved by applying suffixes to existing styling applied to various parts of the form item. See [FormItemBaseStyle](../reference.md#type-formitembasestyle) for more on this.
 
 ### Groups
 
@@ -1330,7 +1316,7 @@ Vertical text alignment for hovers shown for items
 ## Attr: DynamicForm.requiredRightTitlePrefix
 
 ### Description
-The string pre-pended to the title of every required item in this form if [DynamicForm.hiliteRequiredFields](#attr-dynamicformhiliterequiredfields) is true and the [TitleOrientation](../reference_2.md#type-titleorientation) property is set to "right".
+The string pre-pended to the title of every required item in this form if [DynamicForm.hiliteRequiredFields](#attr-dynamicformhiliterequiredfields) is true and the [TitleOrientation](../reference.md#type-titleorientation) property is set to "right".
 
 ### Groups
 
@@ -1427,9 +1413,9 @@ If no explicit formatter is specified at the field or component level, datetime 
 ## Attr: DynamicForm.autoFetchData
 
 ### Description
-If true, when this component is first drawn, automatically call `this.fetchData()`. Criteria for this fetch may be picked up from [DynamicForm.initialCriteria](#attr-dynamicforminitialcriteria), and textMatchStyle may be specified via [autoFetchTextMatchStyle](ListGrid_1.md#attr-listgridautofetchtextmatchstyle). Additional request properties may be specified using [DynamicForm.fetchRequestProperties](#attr-dynamicformfetchrequestproperties).
+If true, when this component is first drawn, automatically call `this.fetchData()`. Criteria for this fetch may be picked up from [DynamicForm.initialCriteria](#attr-dynamicforminitialcriteria), and textMatchStyle may be specified via [autoFetchTextMatchStyle](ListGrid_1.md#attr-listgridautofetchtextmatchstyle).
 
-NOTE: if `autoFetchData` is set, calling [fetchData()](ListGrid_2.md#method-listgridfetchdata) before draw will cause two requests to be issued, one from the manual call to fetchData() and one from the autoFetchData setting. The second request will use only [DynamicForm.initialCriteria](#attr-dynamicforminitialcriteria) and not any other criteria or settings from the first request. Generally, turn off autoFetchData if you are going to manually call [fetchData()](ListGrid_2.md#method-listgridfetchdata) at any time. Note: If you are using saved searches - either via [SavedSearchItem](SavedSearchItem.md#class-savedsearchitem) or [ListGrid.saveDefaultSearch](ListGrid_1.md#attr-listgridsavedefaultsearch), autoFetchData will be automatically suspended and replaced with the saved criteria/view state, if applicable.
+NOTE: if `autoFetchData` is set, calling [fetchData()](ListGrid_1.md#method-listgridfetchdata) before draw will cause two requests to be issued, one from the manual call to fetchData() and one from the autoFetchData setting. The second request will use only [DynamicForm.initialCriteria](#attr-dynamicforminitialcriteria) and not any other criteria or settings from the first request. Generally, turn off autoFetchData if you are going to manually call [fetchData()](ListGrid_1.md#method-listgridfetchdata) at any time. Note: If you are using saved searches - either via [SavedSearchItem](SavedSearchItem.md#class-savedsearchitem) or [ListGrid.saveDefaultSearch](ListGrid_1.md#attr-listgridsavedefaultsearch), autoFetchData will be automatically suspended and replaced with the saved criteria/view state, if applicable.
 
 ### Groups
 
@@ -1437,7 +1423,7 @@ NOTE: if `autoFetchData` is set, calling [fetchData()](ListGrid_2.md#method-list
 
 ### See Also
 
-- [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata)
+- [ListGrid.fetchData](ListGrid_1.md#method-listgridfetchdata)
 
 **Flags**: IR
 
@@ -1468,18 +1454,6 @@ CSS Style for hovers shown for items
 - [FormItem.hoverStyle](FormItem.md#attr-formitemhoverstyle)
 
 **Flags**: IRW
-
----
-## Attr: DynamicForm.initialSort
-
-### Description
-An array of [SortSpecifier](../reference_2.md#object-sortspecifier) objects used to set up the initial sort configuration for this form.
-
-### Groups
-
-- sorting
-
-**Flags**: IR
 
 ---
 ## Attr: DynamicForm.cellBorder
@@ -1523,7 +1497,7 @@ In addition to this:
 [DynamicForm.errorOrientation](#attr-dynamicformerrororientation) controls where the error HTML should appear relative to form items. Therefore the combination of [DynamicForm.showErrorText](#attr-dynamicformshowerrortext)`:false` and [DynamicForm.errorOrientation](#attr-dynamicformerrororientation)`:"left"` creates a compact validation error display consisting of just an icon, to the left of the item with the error message available via a hover (similar appearance to ListGrid validation error display).  
 If `errorOrientation` is unset, the error orientation will default to "top" if [DynamicForm.linearMode](#attr-dynamicformlinearmode) is enabled (or [DynamicForm.linearOnMobile](#attr-dynamicformlinearonmobile) is true for mobile devices) and error text is not showing, "left" otherwise.
 
-`showErrorStyle` determines whether fields with validation errors should have special styling applied to them. Error styling is achieved by applying suffixes to existing styling applied to various parts of the form item. See [FormItemBaseStyle](../reference_2.md#type-formitembasestyle) for more on this.
+`showErrorStyle` determines whether fields with validation errors should have special styling applied to them. Error styling is achieved by applying suffixes to existing styling applied to various parts of the form item. See [FormItemBaseStyle](../reference.md#type-formitembasestyle) for more on this.
 
 ### Groups
 
@@ -1638,20 +1612,6 @@ Note that this property can also be set at the item level or on each validator t
 - [FormItem.validateOnChange](FormItem.md#attr-formitemvalidateonchange)
 
 **Flags**: IRW
-
----
-## Attr: DynamicForm.fetchRequestProperties
-
-### Description
-If [DynamicForm.autoFetchData](#attr-dynamicformautofetchdata) is `true`, this attribute allows the developer to declaratively specify [DSRequest](../reference_2.md#object-dsrequest) properties for the initial [fetchData()](ListGrid_2.md#method-listgridfetchdata) call.
-
-Note that any properties governing more specific request attributes for the initial fetch (such as [DynamicForm.autoFetchTextMatchStyle](#attr-dynamicformautofetchtextmatchstyle) and initial sort specifiers) will be applied on top of this properties block.
-
-### Groups
-
-- databinding
-
-**Flags**: IR
 
 ---
 ## Attr: DynamicForm.numCols
@@ -1863,7 +1823,7 @@ Similar to [DynamicForm.getValuesAsCriteria](#method-dynamicformgetvaluesascrite
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| textMatchStyle | [TextMatchStyle](../reference_2.md#type-textmatchstyle) | true | — | If specified the text match style will be used to generate the appropriate `operator` for per field criteria. |
+| textMatchStyle | [TextMatchStyle](../reference.md#type-textmatchstyle) | true | — | If specified the text match style will be used to generate the appropriate `operator` for per field criteria. |
 
 ### Returns
 
@@ -1892,7 +1852,7 @@ Sets the [action](#attr-dynamicformaction) for this form.
 Returns the [DSOperationType](../reference.md#type-dsoperationtype) to be performed when [DynamicForm.saveData](#method-dynamicformsavedata) or [ValuesManager.saveData](ValuesManager.md#method-valuesmanagersavedata) is called.  
 Valid options are `"add"` or `"update"`.
 
-If a [DSRequest](../reference_2.md#object-dsrequest) configuration object is passed in containing an explicit operationType this will be returned. Otherwise [this.saveOperationType](#attr-dynamicformsaveoperationtype) will be returned if set. Note that `saveOperationType` is automatically set via calls to data binding methods such as [DynamicForm.editNewRecord](#method-dynamicformeditnewrecord), or it may be [set explicitly](#method-dynamicformsetsaveoperationtype).
+If a [DSRequest](../reference.md#object-dsrequest) configuration object is passed in containing an explicit operationType this will be returned. Otherwise [this.saveOperationType](#attr-dynamicformsaveoperationtype) will be returned if set. Note that `saveOperationType` is automatically set via calls to data binding methods such as [DynamicForm.editNewRecord](#method-dynamicformeditnewrecord), or it may be [set explicitly](#method-dynamicformsetsaveoperationtype).
 
 If no explicit saveOperationType is present, the system will use the following heuristic to determine the save operationType:
 
@@ -1953,12 +1913,12 @@ Fires after the keyPress handler on the FormItem itself, and only if the item di
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | item | [FormItem](#type-formitem) | false | — | the FormItem where the change event occurred |
-| keyName | [KeyName](../reference_2.md#type-keyname) | false | — | name of the key that was pressed (EG: "A", "Space") |
+| keyName | [KeyName](../reference.md#type-keyname) | false | — | name of the key that was pressed (EG: "A", "Space") |
 | characterValue | [number](#type-number) | false | — | numeric character value of the pressed key. |
 
 ### Returns
 
-`[Boolean](#type-boolean)` — return false to cancel the keyPress, or true to allow it
+`[boolean](../reference.md#type-boolean)` — return false to cancel the keyPress, or true to allow it
 
 ---
 ## Method: DynamicForm.getItem
@@ -2016,7 +1976,7 @@ Get the alignment for the title for some item. Default implementation is as foll
 
 ### Returns
 
-`[Alignment](../reference_2.md#type-alignment)` — alignment for title
+`[Alignment](../reference.md#type-alignment)` — alignment for title
 
 **Flags**: A
 
@@ -2127,7 +2087,7 @@ Where the 'errors' object is either a single string or an array of strings conta
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false from this method to suppress that behavior
+`[boolean](../reference.md#type-boolean)` — false from this method to suppress that behavior
 
 **Flags**: A
 
@@ -2344,7 +2304,7 @@ Note that it can be bad practice to cancel this method if the mouse is over the 
 
 ### Returns
 
-`[Boolean](#type-boolean)` — return false to cancel default behavior
+`[boolean](../reference.md#type-boolean)` — return false to cancel default behavior
 
 ### Groups
 
@@ -2376,8 +2336,6 @@ Differs from [DynamicForm.fetchData](#method-dynamicformfetchdata) in that a cas
 Retrieves the HTML to display in a hover canvas when the user holds the mousepointer over some item's value. Return null to suppress the hover canvas altogether.  
 Can be overridden by [FormItem.valueHoverHTML](FormItem.md#method-formitemvaluehoverhtml).
 
-This method is not called for items with [FormItem.canHover](FormItem.md#attr-formitemcanhover) set to false.
-
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
@@ -2390,7 +2348,6 @@ This method is not called for items with [FormItem.canHover](FormItem.md#attr-fo
 
 ### See Also
 
-- [FormItem.canHover](FormItem.md#attr-formitemcanhover)
 - [FormItem.valueHoverHTML](FormItem.md#method-formitemvaluehoverhtml)
 
 **Flags**: A
@@ -2468,7 +2425,7 @@ Setter for the [DynamicForm.readOnlyDisplay](#attr-dynamicformreadonlydisplay) a
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| appearance | [ReadOnlyDisplayAppearance](../reference_2.md#type-readonlydisplayappearance) | false | — | New read-only display appearance. |
+| appearance | [ReadOnlyDisplayAppearance](../reference.md#type-readonlydisplayappearance) | false | — | New read-only display appearance. |
 
 ---
 ## Method: DynamicForm.submit
@@ -2513,7 +2470,7 @@ Return the orientation of the title for a specific item or the default title ori
 
 ### Returns
 
-`[TitleOrientation](../reference_2.md#type-titleorientation)` — orientation of the title, or null if an item is passed and has no title
+`[TitleOrientation](../reference.md#type-titleorientation)` — orientation of the title, or null if an item is passed and has no title
 
 **Flags**: A
 
@@ -2672,13 +2629,13 @@ The showErrors parameter allows the errors to be displayed immediately. Alternat
 ## Method: DynamicForm.setTitleOrientation
 
 ### Description
-Modify this form's [TitleOrientation](../reference_2.md#type-titleorientation) at runtime
+Modify this form's [TitleOrientation](../reference.md#type-titleorientation) at runtime
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| orientation | [TitleOrientation](../reference_2.md#type-titleorientation) | false | — | new default item titleOrientation |
+| orientation | [TitleOrientation](../reference.md#type-titleorientation) | false | — | new default item titleOrientation |
 
 ### Groups
 
@@ -2895,7 +2852,7 @@ The returned search criteria will be a simple [Criteria](../reference_2.md#type-
 
 The criteria returned will be picked up from the current values for this form. For simple criteria, each form item simply maps its value to it's fieldName. See [FormItem.getCriterion](FormItem.md#method-formitemgetcriterion) for details on how form items generate advanced criteria. Note that any values or criteria specified via [DynamicForm.setValues](#method-dynamicformsetvalues) or [DynamicForm.setValuesAsCriteria](#method-dynamicformsetvaluesascriteria) which do not correspond to an item within the form will be combined with the live item values when criteria are generated.
 
-The returned criteria object can be used to filter data via methods such as [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata), [DataSource.fetchData](DataSource.md#method-datasourcefetchdata), or, for more advanced usage, [ResultSet.setCriteria](ResultSet.md#method-resultsetsetcriteria).
+The returned criteria object can be used to filter data via methods such as [ListGrid.fetchData](ListGrid_1.md#method-listgridfetchdata), [DataSource.fetchData](DataSource.md#method-datasourcefetchdata), or, for more advanced usage, [ResultSet.setCriteria](ResultSet.md#method-resultsetsetcriteria).
 
 Note that any form field which the user has left blank is omitted as criteria, that is, a blank field is assumed to mean "allow any value for this field" and not "this field must be blank". Examples of empty values include a blank text field or SelectItem with an empty selection.
 
@@ -2903,8 +2860,8 @@ Note that any form field which the user has left blank is omitted as criteria, t
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| advanced | [boolean](../reference.md#type-boolean) | true | — | if true, return an [AdvancedCriteria](../reference.md#object-advancedcriteria) object even if the form item values could be represented in a simple [Criterion](../reference_2.md#object-criterion) object. |
-| textMatchStyle | [TextMatchStyle](../reference_2.md#type-textmatchstyle) | true | — | This parameter may be passed to indicate whether the criteria are to be applied to a substring match (filter) or exact match (fetch). When advanced criteria are returned this parameter will cause the appropriate `operator` to be generated for individual fields' criterion clauses. |
+| advanced | [boolean](../reference.md#type-boolean) | false | — | if true, return an [AdvancedCriteria](../reference.md#object-advancedcriteria) object even if the form item values could be represented in a simple [Criterion](../reference_2.md#object-criterion) object. |
+| textMatchStyle | [TextMatchStyle](../reference.md#type-textmatchstyle) | true | — | This parameter may be passed to indicate whether the criteria are to be applied to a substring match (filter) or exact match (fetch). When advanced criteria are returned this parameter will cause the appropriate `operator` to be generated for individual fields' criterion clauses. |
 
 ### Returns
 
@@ -2957,7 +2914,7 @@ Validate and then save the form's current values to the [DataSource](DataSource.
 
 If client-side validators are defined, they are executed first, and if any errors are found the save is aborted and the form will show the errors.
 
-If client-side validation passes, a [DSRequest](../reference_2.md#object-dsrequest) will be sent, exactly as though [DataSource.addData](DataSource.md#method-datasourceadddata) or [DataSource.updateData](DataSource.md#method-datasourceupdatedata) had been called with ${isc.DocUtils.linkForRef('method:DynamicForm.getValues','the form\\'s values')} as data. The [DSRequest.operationType](DSRequest.md#attr-dsrequestoperationtype) will be either "update" or "add", depending on the current [DynamicForm.saveOperationType](#attr-dynamicformsaveoperationtype).
+If client-side validation passes, a [DSRequest](../reference.md#object-dsrequest) will be sent, exactly as though [DataSource.addData](DataSource.md#method-datasourceadddata) or [DataSource.updateData](DataSource.md#method-datasourceupdatedata) had been called with ${isc.DocUtils.linkForRef('method:DynamicForm.getValues','the form\\'s values')} as data. The [DSRequest.operationType](DSRequest.md#attr-dsrequestoperationtype) will be either "update" or "add", depending on the current [DynamicForm.saveOperationType](#attr-dynamicformsaveoperationtype).
 
 On either a client-side or server-side validation failure, validation errors will be displayed in the form. Visible items within a DynamicForm will be redrawn to display errors. Validation failure occurring on hidden items, or DataSource fields with no associated form items may be handled via [DynamicForm.handleHiddenValidationErrors](#method-dynamicformhandlehiddenvalidationerrors) or [ValuesManager.handleHiddenValidationErrors](ValuesManager.md#method-valuesmanagerhandlehiddenvalidationerrors).
 
@@ -3232,9 +3189,7 @@ This method will also call [DynamicForm.setSaveOperationType](#method-dynamicfor
 ### Description
 Retrieves the HTML to display in a hover canvas when the user holds the mouse pointer over some item. Return null to suppress the hover canvas altogether.  
 Default implementation returns the prompt for the item if defined.  
-Can be overridden via `item.itemHoverHTML()`.
-
-This method is not called for items with [FormItem.canHover](FormItem.md#attr-formitemcanhover) set to false.
+Can be overridden via `item.itemHoverHTML()`
 
 ### Parameters
 
@@ -3248,7 +3203,6 @@ This method is not called for items with [FormItem.canHover](FormItem.md#attr-fo
 
 ### See Also
 
-- [FormItem.canHover](FormItem.md#attr-formitemcanhover)
 - [FormItem.prompt](FormItem.md#attr-formitemprompt)
 - [FormItem.itemHoverHTML](FormItem.md#method-formitemitemhoverhtml)
 
@@ -3292,8 +3246,6 @@ Retrieves the HTML to display in a hover canvas when the user holds the mouse po
 Default implementation returns the prompt for the item if defined. If no prompt is defined and the item title is clipped, the item title will be shown in a hover by default.  
 Can be overridden by [FormItem.titleHoverHTML](FormItem.md#method-formitemtitlehoverhtml).
 
-This method is not called for items with [FormItem.canHover](FormItem.md#attr-formitemcanhover) set to false.
-
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
@@ -3310,7 +3262,6 @@ This method is not called for items with [FormItem.canHover](FormItem.md#attr-fo
 
 ### See Also
 
-- [FormItem.canHover](FormItem.md#attr-formitemcanhover)
 - [FormItem.prompt](FormItem.md#attr-formitemprompt)
 - [FormItem.titleHoverHTML](FormItem.md#method-formitemtitlehoverhtml)
 
@@ -3334,7 +3285,7 @@ Fires after the change() handler on the FormItem itself, and only if the item di
 
 ### Returns
 
-`[Boolean](#type-boolean)` — return false to cancel the change, or true to allow it
+`[boolean](../reference.md#type-boolean)` — return false to cancel the change, or true to allow it
 
 ---
 ## Method: DynamicForm.setCanEdit

@@ -40,22 +40,6 @@ Don't show the title for rich text items by default
 **Flags**: IR
 
 ---
-## Attr: RichTextItem.defaultValue
-
-### Description
-Overridden to assign class-appropriate type.
-
-### Groups
-
-- basics
-
-### See Also
-
-- [FormItem.defaultValue](FormItem.md#attr-formitemdefaultvalue)
-
-**Flags**: IRW
-
----
 ## Attr: RichTextItem.startRow
 
 ### Description

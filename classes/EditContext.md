@@ -241,7 +241,7 @@ Defines the mode of inclusion for components encountered during hoop selection w
 
 ### See Also
 
-- [HoopSelectionStyle](../reference_2.md#type-hoopselectionstyle)
+- [HoopSelectionStyle](../reference.md#type-hoopselectionstyle)
 
 **Flags**: IR
 
@@ -798,16 +798,6 @@ Does the [editNode](../reference.md#object-editnode) have a DataSource assigned?
 `[Boolean](#type-boolean)` — true if the editNode has a DataSource assigned
 
 ---
-## Method: EditContext.getAllEditNodeGlobals
-
-### Description
-Returns all global component IDs as a map of ID to [EditNode](../reference.md#object-editnode).
-
-### Returns
-
-`[Object](../reference.md#type-object)` — Map of global ID to EditNode for all components in the edit tree
-
----
 ## Method: EditContext.createPaletteNodeTree
 
 ### Description
@@ -1000,22 +990,6 @@ Gets the tree of editNodes being edited by this editContext. Standard tree trave
 ### Returns
 
 `[Tree](#type-tree)` — the tree of EditNodes
-
----
-## Method: EditContext.reorderNode
-
-### Description
-Moves an [EditNode](../reference.md#object-editnode) from one child index to another in the EditContext under the specified parent.
-
-No changes are made to the live objects.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| parentNode | [EditNode](#type-editnode) | false | — | parent to reorder child nodes |
-| index | [Integer](../reference_2.md#type-integer) | false | — | index within the parent's children array to be moved |
-| moveToIndex | [Integer](../reference_2.md#type-integer) | false | — | index within the parent's children array at which to place moved node |
 
 ---
 ## Method: EditContext.selectedEditNodesUpdated

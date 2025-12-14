@@ -7,7 +7,7 @@
 ## KB Topic: DataSource Facade pattern
 
 ### Description
-The DataSource Facade pattern means implementing a DataSource that fulfills its [DSRequests](../reference_2.md#object-dsrequest) by passing them on to another DataSource.
+The DataSource Facade pattern means implementing a DataSource that fulfills its [DSRequests](../reference.md#object-dsrequest) by passing them on to another DataSource.
 
 This can be useful for:
 

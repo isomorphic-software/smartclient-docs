@@ -9,14 +9,13 @@
 ### Description
 As with [stateful canvases](../classes/StatefulCanvas.md#method-statefulcanvasgetstatesuffix), grid cells support being styled to reflect the current state of the cell by generating a css styleName from the specified [baseStyle](../classes/ListGrid_1.md#attr-listgridbasestyle), plus stateful suffixes.
 
-There are six independent states, which are combined in the order given:
+There are four independent boolean states, which are combined in the order given:
 
 1.  "Disabled" : whether the cell is disabled; enable by setting the "enabled" flag on record returned by getCellRecord
 2.  "Selected" : whether cell is selected; enable by passing a Selection object as "selection"
 3.  "Over" : mouse is over this cell; enable with showRollovers
 4.  [Specified alternateRowSuffix](../classes/GridRenderer.md#attr-gridrendereralternaterowsuffix) ("Dark" by default) : alternating row color bands; enable with alternateRowStyles
 5.  [Specified alternateColumnSuffix](../classes/GridRenderer.md#attr-gridrendereralternatecolumnsuffix) ("AltCol" by default) : alternating column color bands; enable with alternateColumnStyles
-6.  "Async" or "AsyncError" if the cell's value is being asynchronously computed, or an error occurred during the asynchronous computation; these are enabled with [DataBoundComponent.showAsyncValues](../classes/DataBoundComponent.md#attr-databoundcomponentshowasyncvalues)
 
 This leads to the following set of standard style names:
 
@@ -43,7 +42,5 @@ This leads to the following set of standard style names:
 | baseStyle+Selected+Over+alternateRowSuffix | Style applied to selected, alternate row color band cells as the mouse rolls over them. | cellSelectedOverDark |
 | baseStyle+Selected+Over+alternateColumnSuffix | Style applied to selected, alternate column color band cells as the mouse rolls over them. | cellSelectedOverAltCol |
 | baseStyle+Selected+Over+alternateRowSuffix+alternateColumnSuffix | Style applied to selected, alternate row and column color band cells as the mouse rolls over them. | cellSelectedOverDarkAltCol |
-
-.. to which may be added "Async" or "AsyncError" suffixes.
 
 ---

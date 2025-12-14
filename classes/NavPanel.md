@@ -132,14 +132,6 @@ Members to add after the [NavPanel.navGrid](#attr-navpanelnavgrid) in the [NavPa
 **Flags**: I
 
 ---
-## Attr: NavPanel.autoOpenItems
-
-### Description
-When [NavPanel.isTree](#attr-navpanelistree) is true, should all nodes be opened automatically? Set to `false` to prevent nodes being opened by default.
-
-**Flags**: IR
-
----
 ## Attr: NavPanel.currentItemId
 
 ### Description

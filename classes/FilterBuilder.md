@@ -35,7 +35,7 @@ Properties to combine with the [FilterBuilder.operatorPicker](#attr-filterbuilde
 ## Attr: FilterBuilder.fieldDataSource
 
 ### Description
-If specified, the FilterBuilder will dynamically fetch DataSourceField definitions from this DataSource rather than using [FilterBuilder.dataSource](#attr-filterbuilderdatasource). May be specified as a DataSource instance or the String ID of a DataSource. The [FieldPicker](FieldPicker.md#class-fieldpicker) will default to being a [ComboBoxItem](ComboBoxItem.md#class-comboboxitem) rather than a [SelectItem](SelectItem.md#class-selectitem) so that the user will have type-ahead auto-completion.
+If specified, the FilterBuilder will dynamically fetch DataSourceField definitions from this DataSource rather than using [FilterBuilder.dataSource](#attr-filterbuilderdatasource). The [FieldPicker](FieldPicker.md#class-fieldpicker) will default to being a [ComboBoxItem](ComboBoxItem.md#class-comboboxitem) rather than a [SelectItem](SelectItem.md#class-selectitem) so that the user will have type-ahead auto-completion.
 
 The records returned from the `fieldDataSource` must have properties corresponding to a [DataSourceField](../reference_2.md#object-datasourcefield) definition, at a minimum, ["name"](DataSourceField.md#attr-datasourcefieldname) and ["type"](DataSourceField.md#attr-datasourcefieldtype). Any property legal on a DataSourceField is legal on the returned records, including [valueMap](DataSourceField.md#attr-datasourcefieldvaluemap).
 
@@ -154,18 +154,6 @@ Default logical operator for all top-level clauses in the FilterBuilder.
 May be able to be changed by the user via the UI, according to [TopOperatorAppearance](../reference.md#type-topoperatorappearance).
 
 **Flags**: IRW
-
----
-## Attr: FilterBuilder.valueQueryAggregateButtonPrompt
-
-### Description
-The hover prompt text for the dynamic value button.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IR
 
 ---
 ## Attr: FilterBuilder.topOperatorOptions
@@ -318,20 +306,6 @@ If set to false, the last clause cannot be removed.
 **Flags**: IR
 
 ---
-## Attr: FilterBuilder.allowAggregates
-
-### Description
-Should aggregates be allowed as either the field or value?
-
-**This feature is available with Power or better licenses only.** See [smartclient.com/product](http://smartclient.com/product) for details.
-
-### See Also
-
-- [FilterBuilder.allowRelatedRecordCriteria](#attr-filterbuilderallowrelatedrecordcriteria)
-
-**Flags**: IR
-
----
 ## Attr: FilterBuilder.modeSwitcher
 
 ### Description
@@ -348,22 +322,6 @@ Shows either [modeSwitcherSimpleMessage](#attr-filterbuildermodeswitchersimpleme
 DataSource this filter should use for field definitions and available [Operator](../reference.md#object-operator)s.
 
 **Flags**: IRW
-
----
-## Attr: FilterBuilder.aggregationDataSources
-
-### Description
-List of [DataSources](DataSource.md#class-datasource) to choose from when constructing a field or value sub-query if [FilterBuilder.allowAggregates](#attr-filterbuilderallowaggregates) is enabled. If not specified, the [filter DataSource](#attr-filterbuilderdatasource) plus all related DataSources are used.
-
-**Flags**: IR
-
----
-## Attr: FilterBuilder.iconBaseStyle
-
-### Description
-CSS class to apply to the [add](#attr-filterbuilderaddbutton) and [remove](#attr-filterbuilderremovebutton) clause buttons.
-
-**Flags**: IR
 
 ---
 ## Attr: FilterBuilder.modeSwitcherAdvancedMessage
@@ -490,26 +448,6 @@ HLayout of radioOperationForm and optional modeSwitcher.
 **Flags**: IR
 
 ---
-## Attr: FilterBuilder.valueQueryRelatedFieldButtonPrompt
-
-### Description
-The hover prompt text for the dynamic value button.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IR
-
----
-## Attr: FilterBuilder.specialValuesCSS
-
-### Description
-CSS text to be added to the styling for Related Field and Aggregate selections in the field name picker. By default, the choices are italicized.
-
-**Flags**: IR
-
----
 ## Attr: FilterBuilder.topOperatorTitle
 
 ### Description
@@ -575,30 +513,6 @@ If set, a button will be shown for each clause allowing it to be removed.
 **Flags**: IR
 
 ---
-## Attr: FilterBuilder.fieldQueryWindowTitle
-
-### Description
-The title for the window that opens when a field query is selected.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IR
-
----
-## Attr: FilterBuilder.allowRelatedRecordCriteria
-
-### Description
-Should related record criteria be allowed as either the field or value?
-
-This option is automatically enabled if [FilterBuilder.allowAggregates](#attr-filterbuilderallowaggregates) is `true` unless explicitly set to `false`.
-
-**This feature is available with Power or better licenses only.** See [smartclient.com/product](http://smartclient.com/product) for details.
-
-**Flags**: IR
-
----
 ## Attr: FilterBuilder.retainValuesAcrossFields
 
 ### Description
@@ -609,30 +523,6 @@ Note that, when switching between fields that have an optionDataSource or valueM
 **Flags**: IRW
 
 ---
-## Attr: FilterBuilder.valueQueryRelatedFieldPrefix
-
-### Description
-The prefix to be displayed before a related field valueQuery value in the clause.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IR
-
----
-## Attr: FilterBuilder.valueQueryAggregatePrefix
-
-### Description
-The prefix to be displayed before a aggregate valueQuery value in the clause.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IR
-
----
 ## Attr: FilterBuilder.matchAnyTitle
 
 ### Description
@@ -641,14 +531,6 @@ Title for the "Match Any" (or) operator when using [topOperatorAppearance](../re
 ### Groups
 
 - i18nMessages
-
-**Flags**: IR
-
----
-## Attr: FilterBuilder.iconSize
-
-### Description
-When set, dictates the size of the [add](#attr-filterbuilderaddbutton) and [remove](#attr-filterbuilderremovebutton) clause buttons.
 
 **Flags**: IR
 
@@ -677,22 +559,6 @@ If true (the default), show field titles in the drop-down box used to select a f
 
 ### Description
 Width for the field picker formItem displayed in clauses within this FilterBuilder.
-
-**Flags**: IR
-
----
-## Attr: FilterBuilder.valueQueryWindowTitle
-
-### Description
-The title for the window that opens when a value query is selected.
-
-This is a dynamic string - text within `${...}` are dynamic variables and will be evaluated as JS code when the message is displayed.
-
-Only one dynamic variable, fieldTitle, is available.
-
-### Groups
-
-- i18nMessages
 
 **Flags**: IR
 
@@ -772,7 +638,6 @@ Returns a human-readable string describing the clauses in this advanced criteria
 |------|------|----------|---------|-------------|
 | criteria | [AdvancedCriteria](#type-advancedcriteria)|[Criterion](#type-criterion) | false | — | Criteria to convert to a readable string |
 | dataSource | [DataSource](#type-datasource) | false | — | DataSource to provide definitions of operators |
-| criteriaOutputSettings | [CriteriaOutputSettings](#type-criteriaoutputsettings) | true | — | optional configuration settings for the output |
 
 ### Returns
 
@@ -866,16 +731,6 @@ Default behavior is to use the [Operator.editorType](Operator.md#attr-operatored
 ### Returns
 
 `[SCClassName](../reference.md#type-scclassname)` — SmartClient class to use (must be subclass of FormItem)
-
----
-## Method: FilterBuilder.getDataSource
-
-### Description
-Returns the [dataSource](#attr-filterbuilderdatasource) for this FilterBuilder.
-
-### Returns
-
-`[DataSource](#type-datasource)` — the DataSource for this FilterBuilder
 
 ---
 ## Method: FilterBuilder.setTopOperator

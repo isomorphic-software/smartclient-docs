@@ -19,7 +19,7 @@ This approach is in contrast to [Client-side Data Integration](clientDataIntegra
 
 **Server-side Request Processing**
 
-Client-side [DataBoundComponents](../reference.md#interface-databoundcomponent) will send [DSRequests](../reference_2.md#object-dsrequest) to the SmartClient Server as background communications transparent to the user. Integrating SmartClient's DataSource layer with your data model is a matter of handling these DSRequests and sending back DSResponses, in order to fulfill the 4 basic operations of the [DataSource Protocol](dataSourceOperations.md#kb-topic-datasource-operations).
+Client-side [DataBoundComponents](../reference.md#interface-databoundcomponent) will send [DSRequests](../reference.md#object-dsrequest) to the SmartClient Server as background communications transparent to the user. Integrating SmartClient's DataSource layer with your data model is a matter of handling these DSRequests and sending back DSResponses, in order to fulfill the 4 basic operations of the [DataSource Protocol](dataSourceOperations.md#kb-topic-datasource-operations).
 
 Out of the box, SmartClient is set up to route all DSRequests through a special servlet called `IDACall`.
 
@@ -83,7 +83,7 @@ For more information, see the [RPCManager documentation](../classes/RPCManager.m
 
 ### Related
 
-- [DSDataFormat](../reference_2.md#type-dsdataformat)
+- [DSDataFormat](../reference.md#type-dsdataformat)
 - [DSServerType](../reference_2.md#type-dsservertype)
 - [DataSource.dataFormat](../classes/DataSource.md#attr-datasourcedataformat)
 - [DataSource.dataProtocol](../classes/DataSource.md#attr-datasourcedataprotocol)
@@ -97,15 +97,11 @@ For more information, see the [RPCManager documentation](../classes/RPCManager.m
 - [OperationBinding.forceSort](../classes/OperationBinding.md#attr-operationbindingforcesort)
 - [DataSource.defaultSortField](../classes/DataSource.md#attr-datasourcedefaultsortfield)
 - [DataSource.defaultTextMatchStyle](../classes/DataSource.md#attr-datasourcedefaulttextmatchstyle)
-- [DataSource.arrayCriteriaForceExact](../classes/DataSource.md#attr-datasourcearraycriteriaforceexact)
-- [OperationBinding.arrayCriteriaForceExact](../classes/OperationBinding.md#attr-operationbindingarraycriteriaforceexact)
-- [DSRequest.arrayCriteriaForceExact](../classes/DSRequest.md#attr-dsrequestarraycriteriaforceexact)
 - [DataSource.defaultBooleanStorageStrategy](../classes/DataSource.md#attr-datasourcedefaultbooleanstoragestrategy)
 - [DataSource.useAnsiJoins](../classes/DataSource.md#attr-datasourceuseansijoins)
 - [DataSource.audit](../classes/DataSource.md#attr-datasourceaudit)
 - [DataSource.serverObject](../classes/DataSource.md#attr-datasourceserverobject)
 - [OperationBinding.requestProperties](../classes/OperationBinding.md#attr-operationbindingrequestproperties)
-- [DataSource.suppressManualAggregation](../classes/DataSource.md#attr-datasourcesuppressmanualaggregation)
 - [RestDataSource.dataProtocol](../classes/RestDataSource.md#attr-restdatasourcedataprotocol)
 
 ---

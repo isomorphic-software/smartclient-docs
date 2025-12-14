@@ -21,9 +21,7 @@ Within the [OpenFin](https://developers.openfin.co/of-docs/docs) environment, th
 
 Reloading of child windows is in general supported (but see [MultiWindow.autoCopyDataSources](#classattr-multiwindowautocopydatasources)), while reloading the [main window](#classmethod-multiwindowismainwindow) currently is not.
 
-### Groups
-
-- experimental
+**Note:** this is currently an experimental feature and not supported except by special arrangement.
 
 ---
 ## ClassAttr: MultiWindow.autoCopyDataSources

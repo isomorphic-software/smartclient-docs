@@ -62,16 +62,6 @@ Properties to be applied to the [editContext](#attr-editpaneeditcontext) when cr
 **Flags**: IR
 
 ---
-## Attr: EditPane.editMode
-
-### Description
-Enables/disables edit mode. Edit mode allows component addition, positioning and resizing which is the default.
-
-Note that a [PortalLayout](PortalLayout.md#class-portallayout) provides edit mode-style editing by default so `editMode` should be disabled for that case.
-
-**Flags**: IRW
-
----
 ## Attr: EditPane.showSelectedLabel
 
 ### Description

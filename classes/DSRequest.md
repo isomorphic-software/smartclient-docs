@@ -175,7 +175,7 @@ All non-spreadsheet export formats always use UTC. This setting also does not af
 ## Attr: DSRequest.exportNumbersAsFormattedString
 
 ### Description
-When exporting via [ListGrid.exportClientData](ListGrid_2.md#method-listgridexportclientdata) to an `XLS` or `OOXML` spreadsheet, forces numbers to export as a string rather than a true numerical value.
+When exporting via [ListGrid.exportClientData](ListGrid_1.md#method-listgridexportclientdata) to an `XLS` or `OOXML` spreadsheet, forces numbers to export as a string rather than a true numerical value.
 
 If a number is provided to a spreadsheet as a string, Excel or other spreadsheet applications may not recognize them as being numbers that are valid for use in numerical formulas, filters, etc.
 
@@ -190,19 +190,6 @@ If `exportNumbersAsFormattedString` is set to true, numbers will appear as strin
 ### See Also
 
 - [DataSourceField.exportFormat](DataSourceField.md#attr-datasourcefieldexportformat)
-
-**Flags**: IR
-
----
-## Attr: DSRequest.arrayCriteriaForceExact
-
-### Description
-DSRequest-level override for the DataSource-level [arrayCriteriaForceExact](DataSource.md#attr-datasourcearraycriteriaforceexact) flag. See the documentation for that flag for details.
-
-### Groups
-
-- clientDataIntegration
-- serverDataIntegration
 
 **Flags**: IR
 
@@ -237,14 +224,6 @@ Note that the `operationId` has special significance in terms of whether two DSR
 - operations
 
 **Flags**: IR
-
----
-## Attr: DSRequest.forceOuterJoins
-
-### Description
-For dataSources of [serverType](DataSource.md#attr-datasourceservertype) "sql" only, this property causes all JOINs in the generated SQL to be outer joins, for this request only. See [joinType](DataSourceField.md#attr-datasourcefieldjointype) for more details about outer join support in SmartClient
-
-**Flags**: IRW
 
 ---
 ## Attr: DSRequest.useFlatFields
@@ -366,13 +345,13 @@ This property is only applicable when [exportToFilesystem](#attr-dsrequestexport
 ## Attr: DSRequest.applyCriteriaBeforeAggregation
 
 ### Description
-If set to "true", all criteria for the DSRequest using [serverSummaries](#serversummaries) are applied before aggregation, and the [afterWhereClause](OperationBinding.md#attr-operationbindingafterwhereclause) is not generated.
+If set to "true", all criteria for the DSRequest using [serverSummaries](#serversummaries) are applied before aggregation, and the [groupWhereClause](OperationBinding.md#attr-operationbindinggroupwhereclause) is not generated.
 
 This behaves the same way as [OperationBinding.applyCriteriaBeforeAggregation](OperationBinding.md#attr-operationbindingapplycriteriabeforeaggregation), and if defined, overrides the OperationBinding-level setting for this specific DSRequest.
 
 ### See Also
 
-- [OperationBinding.afterWhereClause](OperationBinding.md#attr-operationbindingafterwhereclause)
+- [OperationBinding.groupWhereClause](OperationBinding.md#attr-operationbindinggroupwhereclause)
 - [OperationBinding.applyCriteriaBeforeAggregation](OperationBinding.md#attr-operationbindingapplycriteriabeforeaggregation)
 
 **Flags**: IR
@@ -394,38 +373,6 @@ This property can only be read. There is no meaning to setting this property you
 This property allows omitting column names from CSV and Excel exports (no effect on JSON or XML exports).
 
 **Flags**: IRW
-
----
-## Attr: DSRequest.multiInsertStrategy
-
-### Description
-For dataSources of [serverType](DataSource.md#attr-datasourceservertype) "sql" only, this property sets the multi-insert strategy for this specific [dsRequest](../reference_2.md#object-dsrequest). Only has an effect if this is an [add request](DataSource.md#method-datasourceadddata) that specifies a list of records as the data.
-
-Note that this setting overrides the equivalent [operationBinding setting](OperationBinding.md#attr-operationbindingmultiinsertstrategy) and [dataSource setting](DataSource.md#attr-datasourcemultiinsertstrategy)
-
-### See Also
-
-- [DSRequest.multiInsertBatchSize](#attr-dsrequestmultiinsertbatchsize)
-- [DSRequest.multiInsertNonMatchingStrategy](#attr-dsrequestmultiinsertnonmatchingstrategy)
-
-**Flags**: IRW
-
----
-## Attr: DSRequest.cacheSyncStrategy
-
-### Description
-The [cacheSyncStrategy](../reference_2.md#type-cachesyncstrategy) to use for this specific request. Overrides any [operation-level](OperationBinding.md#attr-operationbindingcachesyncstrategy) or [dataSource-level](DataSource.md#attr-datasourcecachesyncstrategy) `cacheSyncStrategy`
-
-### Groups
-
-- cacheSynchronization
-
-### See Also
-
-- [DataSource.cacheSyncStrategy](DataSource.md#attr-datasourcecachesyncstrategy)
-- [OperationBinding.cacheSyncStrategy](OperationBinding.md#attr-operationbindingcachesyncstrategy)
-
-**Flags**: IR
 
 ---
 ## Attr: DSRequest.componentId
@@ -450,8 +397,8 @@ The list of field names to export. If provided, the field list in the exported o
 If exportFields is not provided:
 
 *   If we are exporting via [exportData()](#attr-dsrequestexportdata), the field list in the exported output is every non-hidden field defined in the DataSource, in DataSource definition order
-*   If we are exporting via [exportClientData()](ListGrid_2.md#method-listgridexportclientdata) and we are not exporting to OOXML, or we are exporting to OOXML but we are not [streaming](#attr-dsrequestexportstreaming), the field list in the exported output is based on the client data sent up, taking every row into account (so if there is a value for field "foo" only in row 57, we will output a column "foo", the cells of which are empty except for row 57)
-*   If we are exporting via [exportClientData()](ListGrid_2.md#method-listgridexportclientdata) and we are exporting to OOXML and streaming is in force (the default for OOXML), the field list in the exported output is based on the client data sent up, taking just the first row into account (so if there is a value for field "foo" only in row 57, we will not output a column "foo" at all)
+*   If we are exporting via [exportClientData()](ListGrid_1.md#method-listgridexportclientdata) and we are not exporting to OOXML, or we are exporting to OOXML but we are not [streaming](#attr-dsrequestexportstreaming), the field list in the exported output is based on the client data sent up, taking every row into account (so if there is a value for field "foo" only in row 57, we will output a column "foo", the cells of which are empty except for row 57)
+*   If we are exporting via [exportClientData()](ListGrid_1.md#method-listgridexportclientdata) and we are exporting to OOXML and streaming is in force (the default for OOXML), the field list in the exported output is based on the client data sent up, taking just the first row into account (so if there is a value for field "foo" only in row 57, we will not output a column "foo" at all)
 
 **Flags**: IR
 
@@ -482,23 +429,6 @@ Note that this only applies to SOAP headers. General HTTP headers for requests m
 **Flags**: IRW
 
 ---
-## Attr: DSRequest.cacheSyncTiming
-
-### Description
-The [cacheSyncTiming](../reference_2.md#type-cachesynctiming) to use for this specific request. Overrides any [operation-level](OperationBinding.md#attr-operationbindingcachesynctiming) or [dataSource-level](DataSource.md#attr-datasourcecachesynctiming) `cacheSyncTiming`
-
-### Groups
-
-- cacheSynchronization
-
-### See Also
-
-- [DataSource.cacheSyncStrategy](DataSource.md#attr-datasourcecachesyncstrategy)
-- [OperationBinding.cacheSyncStrategy](OperationBinding.md#attr-operationbindingcachesyncstrategy)
-
-**Flags**: IR
-
----
 ## Attr: DSRequest.sortBy
 
 ### Description
@@ -508,7 +438,7 @@ To sort by multiple fields, an array of field names is also supported. For examp
 
 `[ "department", "-userName" ]`
 
-Additionally, this property supports an array of [SortSpecifier](../reference_2.md#object-sortspecifier) objects. Setting `sortBy` to the following SortSpecifier array results in the same multi-level sort mentioned above:
+Additionally, this property supports an array of [SortSpecifier](../reference.md#object-sortspecifier) objects. Setting `sortBy` to the following SortSpecifier array results in the same multi-level sort mentioned above:
 
 `[     { property: "department", direction: "ascending" },     { property: "userName", direction: "descending" }   ]`
 
@@ -550,7 +480,7 @@ This property can only be read. There is no meaning to setting this property you
 ## Attr: DSRequest.summaryFunctions
 
 ### Description
-A mapping from field names to [summary functions](../reference_2.md#type-summaryfunction) to be applied to each field.
+A mapping from field names to [summary functions](../reference.md#type-summaryfunction) to be applied to each field.
 
 Valid only for an operation of type "fetch". See the [Server Summaries overview](../kb_topics/serverSummaries.md#kb-topic-server-summaries) for examples of usage.
 
@@ -605,16 +535,6 @@ For example, when printing a very wide page, such as a grid with many columns or
 **Flags**: IR
 
 ---
-## Attr: DSRequest.writeToGeneratedFields
-
-### Description
-If set, indicates that the server will write values provided in the `DSRequest`'s values, for fields that it would normally auto-populate or allow to be generated by the persistence mechanism. This setting allows you to specify that client-provided values for, eg, a `creatorTimestamp` field should be honored, where ordinarily they would be ignored.
-
-See the [WriteToGeneratedFields](../reference.md#type-writetogeneratedfields) documentation for more information about valid settings
-
-**Flags**: IR
-
----
 ## Attr: DSRequest.streamResults
 
 ### Description
@@ -622,11 +542,11 @@ If true, results will be streamed on the server, rather than all records being r
 
 Although this property can be set without any particular concerns (small datasets can be streamed just as readily as large ones), bear in mind that although streaming enables the processing of very large datasets, processing and downloading very large datasets in a normal client/server flow will very rarely give an acceptable user experience. Streaming is of more practical use in a batch setting - for example, a disconnected [export](#attr-dsrequestexporttofilesystem).
 
-Note that streaming requires specific server support; of SmartClient's built-in DataSource types, only `SQLDataSource` is able to stream results. This property is ignored by other DataSource types. If you wish to implement the necessary server-side behavior to support streaming with a custom DataSource, see the server-side Javadocs for `DSResponse.hasNextRecord()` and `DSResponse.nextRecordAsObject()`.
+Note that streaming requires specific server support; of SmartClient's built-in DataSource types, only `SQLDataSource` is able to stream results. This property is ignored by other DataSource types. If you wish to implement the necessary server-side behavior to support streaming with a custom DataSource, see the the server-side Javadocs for `DSResponse.hasNextRecord()` and `DSResponse.nextRecordAsObject()`.
 
 See also the server-side documentation for `DSResponse`, `SQLDataSource` and `StreamingResponseIterator`.
 
-Note, that streaming results does not support fields with ["concat" summary function](../reference_2.md#type-summaryfunction) on non-Oracle databases. Such fields will be skipped.
+Note, that streaming results does not support fields with ["concat" summary function](../reference.md#type-summaryfunction) on non-Oracle databases. Such fields will be skipped.
 
 **Flags**: IR
 
@@ -670,7 +590,7 @@ This property is generally automatically populated, for example when calling `fe
 ### Description
 Data, such as search criteria or an updated record, to be acted upon. Contents differ by `operationType`, see [DataSource Operations](../kb_topics/dataSourceOperations.md#kb-topic-datasource-operations) for details.
 
-This field is generally filled in by passing the "data" argument to methods such as [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata).
+This field is generally filled in by passing the "data" argument to methods such as [ListGrid.fetchData](ListGrid_1.md#method-listgridfetchdata).
 
 **Flags**: IR
 
@@ -690,7 +610,7 @@ The `exportSpanTitleSeparator` property allows you to override the separator str
 ## Attr: DSRequest.exportDatesAsFormattedString
 
 ### Description
-When exporting via [ListGrid.exportClientData](ListGrid_2.md#method-listgridexportclientdata) to an `XLS` or `OOXML` spreadsheet, forces dates to export as a string rather than a true date value.
+When exporting via [ListGrid.exportClientData](ListGrid_1.md#method-listgridexportclientdata) to an `XLS` or `OOXML` spreadsheet, forces dates to export as a string rather than a true date value.
 
 If a date value is provided to a spreadsheet as a string, Excel or other spreadsheet applications may not recognize them as being date values that are valid for use in date-specific functions in formulas, filters, etc.
 
@@ -707,20 +627,6 @@ If `exportDatesAsFormattedString` is set to true, date fields will appear as str
 - [DataSourceField.exportFormat](DataSourceField.md#attr-datasourcefieldexportformat)
 
 **Flags**: IR
-
----
-## Attr: DSRequest.multiInsertNonMatchingStrategy
-
-### Description
-For dataSources of [serverType](DataSource.md#attr-datasourceservertype) "sql" only, this property sets the multi-insert "non matching" strategy for this specific [dsRequest](../reference_2.md#object-dsrequest). Only has an effect if this is an [add request](DataSource.md#method-datasourceadddata) that specifies a list of records as the data, and only if [multiInsertStrategy](#attr-dsrequestmultiinsertstrategy) is set to "multipleValues" either globally or at the [DSRequest](../reference_2.md#object-dsrequest), [OperationBinding](OperationBinding.md#class-operationbinding), or [DataSource](DataSource.md#class-datasource) level.
-
-Note that this setting overrides the equivalent [operationBinding setting](OperationBinding.md#attr-operationbindingmultiinsertnonmatchingstrategy) and [dataSource setting](DataSource.md#attr-datasourcemultiinsertnonmatchingstrategy)
-
-### See Also
-
-- [DSRequest.multiInsertStrategy](#attr-dsrequestmultiinsertstrategy)
-
-**Flags**: IRW
 
 ---
 ## Attr: DSRequest.exportResults
@@ -771,7 +677,7 @@ CSV Format
 ## Attr: DSRequest.exportData
 
 ### Description
-Only applies to request properties passed to [ListGrid.exportClientData](ListGrid_2.md#method-listgridexportclientdata). If specified this property contains an arbitrary set of data to be exported.
+Only applies to request properties passed to [ListGrid.exportClientData](ListGrid_1.md#method-listgridexportclientdata). If specified this property contains an arbitrary set of data to be exported.
 
 **Flags**: IR
 
@@ -812,15 +718,10 @@ The list of fields to return in the response, specified as a comma-separated str
 
 Note that you cannot use this property to request a _superset_ of the fields that would normally be returned, because that would be a security hole. It is possible to configure individual [OperationBinding](OperationBinding.md#class-operationbinding)s to return extra fields, but this must be done in the server's [DataSource](DataSource.md#class-datasource) descriptor; it cannot be altered on the fly from the client side.
 
-Also, this setting is overridden by the [DataSourceField.outputWhen](DataSourceField.md#attr-datasourcefieldoutputwhen) setting, meaning that if a field is listed in request.outputs, but does not match the type of condition of outputWhen setting, it won't be returned to the client.
-
-Further, this setting is overridden by the [ListGrid.fetchFields](ListGrid_1.md#attr-listgridfetchfields) setting, which will include all visible fields along with any fields it specifies.
-
 ### See Also
 
 - [OperationBinding.outputs](OperationBinding.md#attr-operationbindingoutputs)
 - [DSRequest.additionalOutputs](#attr-dsrequestadditionaloutputs)
-- [DataSourceField.outputWhen](DataSourceField.md#attr-datasourcefieldoutputwhen)
 
 **Flags**: IR
 
@@ -841,21 +742,6 @@ The format in which the data should be exported. Note that 'JSON' is not allowed
 **Flags**: IR
 
 ---
-## Attr: DSRequest.multiInsertBatchSize
-
-### Description
-For dataSources of [serverType](DataSource.md#attr-datasourceservertype) "sql" only, this property sets the multi-insert batch size for this specific [dsRequest](../reference_2.md#object-dsrequest). Only has an effect if this is an [add request](DataSource.md#method-datasourceadddata) that specifies a list of records as the data, and only if [multiInsertStrategy](#attr-dsrequestmultiinsertstrategy) is set to "multipleValues" either globally or at the [DSRequest](../reference_2.md#object-dsrequest), [OperationBinding](OperationBinding.md#class-operationbinding), or [DataSource](DataSource.md#class-datasource) level.
-
-Note that this setting overrides the equivalent [operationBinding setting](OperationBinding.md#attr-operationbindingmultiinsertbatchsize) and [dataSource setting](DataSource.md#attr-datasourcemultiinsertbatchsize)
-
-### See Also
-
-- [DSRequest.multiInsertStrategy](#attr-dsrequestmultiinsertstrategy)
-- [DSRequest.multiInsertNonMatchingStrategy](#attr-dsrequestmultiinsertnonmatchingstrategy)
-
-**Flags**: IRW
-
----
 ## Attr: DSRequest.exportPropertyIdentifier
 
 ### Description
@@ -864,7 +750,7 @@ Determines the [PropertyIdentifier](../reference.md#type-propertyidentifier) to 
 If this property is not set, the following defaults apply:
 
 *   If the export format is a native spreadsheet format (XLS or OOXML), localized field titles are used
-*   If the export format is CSV, XML or JSON and this is a client-driven export (ie it was initiated by a call to [exportClientData()](ListGrid_2.md#method-listgridexportclientdata)), localized field titles are used
+*   If the export format is CSV, XML or JSON and this is a client-driven export (ie it was initiated by a call to [exportClientData()](ListGrid_1.md#method-listgridexportclientdata)), localized field titles are used
 *   If the export format is CSV, XML or JSON and this is **not** a client-driven export, internal field names are used
 
 ### Groups
@@ -884,40 +770,6 @@ Note that if the request encounters an error (such as 500 server error), by defa
 ### Groups
 
 - errorHandling
-
-**Flags**: IR
-
----
-## Attr: DSRequest.afterCriteria
-
-### Description
-For requests that use [server summaries](../kb_topics/serverSummaries.md#kb-topic-server-summaries), this property defines _post-aggregation criteria_ — criteria that are applied _after_ grouping and summarization have occurred. Conceptually, it works like a SQL `HAVING` clause and allows you to restrict which grouped or summarized results are returned, based on the values of summary fields rather than raw data rows.
-
-Supported by the built-in SQL, Hibernate, and JPA DataSources.
-
-**Example:**  
-  
-Suppose the `avg` function is being applied to the `unitPrice` field on `supplyItem` records. Specifying `afterCriteria` with the condition `unitPrice < 5` will eliminate only those groups whose _average_ price is less than 5 — that is, it filters _after_ the aggregation step.
-
-In SQL terms:
-
-```
- SELECT category, AVG(unitPrice)
- FROM supplyItem
- WHERE ...                            -- regular criteria
- GROUP BY category
- HAVING AVG(unitPrice) < 5            -- afterCriteria
- 
-```
-For more details on aggregation and post-aggregation filtering, see the [Server Summaries Overview](../kb_topics/serverSummaries.md#kb-topic-server-summaries).
-
-### Groups
-
-- serverSummaries
-
-### See Also
-
-- [OperationBinding.afterWhereClause](OperationBinding.md#attr-operationbindingafterwhereclause)
 
 **Flags**: IR
 
@@ -947,7 +799,7 @@ It is possible to redirect the filesystem export to make use of an `OutputStream
 ### Description
 This flag has a different meaning depending on whether you are doing a client-driven or server-driven export.
 
-For [exportClientData()](ListGrid_2.md#method-listgridexportclientdata) calls (client-driven), ordinarily any fields that have a [displayField](ListGridField.md#attr-listgridfielddisplayfield) defined have the value of that displayField exported, rather than the underlying value in the [valueField](ListGridField.md#attr-listgridfieldvaluefield). If you set the `exportValueFields` property, we export both the underlying value and the displayField value.
+For [exportClientData()](ListGrid_1.md#method-listgridexportclientdata) calls (client-driven), ordinarily any fields that have a [displayField](ListGridField.md#attr-listgridfielddisplayfield) defined have the value of that displayField exported, rather than the underlying value in the [valueField](ListGridField.md#attr-listgridfieldvaluefield). If you set the `exportValueFields` property, we export both the underlying value and the displayField value.
 
 Again for `exportClientData()` calls, any fields that have a [valueMap](ListGridField.md#attr-listgridfieldvaluemap) defined ordinarily have the mapped value of the field exported, rather than the underlying data value. If you set the `exportValueFields` property, we instead export the underlying data value. Note, there is only one field in this scenario, not a `valueField` and a separate `displayField`, so we export **either** the underlying data value or the mapped value, not both as in the `displayField`/`valueField` case described above.
 

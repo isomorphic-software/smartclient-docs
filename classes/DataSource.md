@@ -146,24 +146,6 @@ The URL where the DataSourceLoader servlet has been installed. Defaults to the [
 **Flags**: RW
 
 ---
-## Attr: DataSource.canAggregate
-
-### Description
-By default, all DataSources are assumed to be capable of handling [serverSummaries](../kb_topics/serverSummaries.md#kb-topic-server-summaries) on fetch or filter type operations. This property may be set to `false` to indicate that this dataSource does not support serverSummaries.
-
-**NOTE:** If you specify this property in a DataSource descriptor (`.ds.xml` file), it is enforced on the server. This means that if you run a request containing serverSummaries against a DataSource that advertises itself as `canAggregate:false`, it will be rejected.
-
-### Groups
-
-- serverSummaries
-
-### See Also
-
-- [serverSummaries](../kb_topics/serverSummaries.md#kb-topic-server-summaries)
-
-**Flags**: IRWA
-
----
 ## Attr: DataSource.sqlUsePagingHint
 
 ### Description
@@ -178,24 +160,6 @@ Note this property is only applicable to [SQL](#attr-datasourceservertype) DataS
 ### See Also
 
 - [OperationBinding.sqlUsePagingHint](OperationBinding.md#attr-operationbindingsqlusepaginghint)
-
-**Flags**: IR
-
----
-## Attr: DataSource.suppressAutoMappings
-
-### Description
-Applies to RestConnector dataSources ([serverType](#attr-datasourceservertype) "rest") only, and is overridable per operationBinding (see [OperationBinding.requestTemplate](OperationBinding.md#attr-operationbindingrequesttemplate)).
-
-By default, if you have a [requestFormat](#attr-datasourcerequestformat) of "params", `RestConnector` will add your values or criteria as standard HTTP parameters to the the URL it generates for hitting the target REST server - this is described in more detail in the [RESTRequestFormat](../reference.md#type-restrequestformat) documentation.
-
-With a `requestFormat` of "json", `RestConnector` will generate a block of JSON from your criteria or values, again as described in the `RESTRequestFormat` docs
-
-You can switch off both of these behaviors by setting this property true
-
-### Groups
-
-- serverRestConnector
 
 **Flags**: IR
 
@@ -409,9 +373,7 @@ The following variables are available for DMI scriptlets:
 *   _criteria_: shortcut to DSRequest.getCriteria() (a Map)
 *   _values_: shortcut to DSRequest.getValues() (a Map)
 *   _oldValues_: shortcut to DSRequest.getOldValues() (a Map)
-*   _log_: an instance of `com.isomorphic.log.Logger`, so your scripts can log in the same manner as regular Java code
-*   _config_: an instance of `com.isomorphic.base.Config`, so your scripts have access to your `server.properties` settings
-*   _sqlConnection_: **SQLDataSource only**: the current SQLConnection object. If using [automatic transactions](#attr-datasourceautojointransactions) are enabled, this SQLConnection is in the context of the current transaction
+*   _sqlConnection_: **SQLDataSource only**: the current SQLConnection object. If using [automatic transactions](#attr-datasourceautojointransactions) are enabled, this SQLConnection is in the context of the current transaction.
 *   _rpcManager_: the current RPCManager
 *   _applicationContext_: the Spring ApplicationContext (when applicable)
 *   _beanFactory_: the Spring BeanFactory (when applicable)
@@ -607,21 +569,6 @@ Sets the XML namespace prefixes available for XPaths on a DataSource-wide basied
 **Flags**: IR
 
 ---
-## Attr: DataSource.multiInsertNonMatchingStrategy
-
-### Description
-For dataSources of [serverType](#attr-datasourceservertype) "sql" only, this property sets the multi-insert "non matching" strategy for add requests on this [dataSource](#class-datasource). Only has an effect if the [add request](#method-datasourceadddata) specifies a list of records as the data, and only if [multiInsertStrategy](#attr-datasourcemultiinsertstrategy) is set to "multipleValues" either globally or at the [DSRequest](../reference_2.md#object-dsrequest), [OperationBinding](OperationBinding.md#class-operationbinding), or [DataSource](#class-datasource) level. See the docs for [MultiInsertNonMatchingStrategy](../reference_2.md#type-multiinsertnonmatchingstrategy) for more information.
-
-Note that this setting (along with the other multi-insert properties, [multiInsertStrategy](#attr-datasourcemultiinsertstrategy) and [multiInsertBatchSize](#attr-datasourcemultiinsertbatchsize)) can be overridden at the [operationBinding level](OperationBinding.md#attr-operationbindingmultiinsertnonmatchingstrategy) and the [dsRequest level](DSRequest.md#attr-dsrequestmultiinsertnonmatchingstrategy). If you wish to configure multi-insert setting globally, see the documentation for [multiInsertStrategy](#attr-datasourcemultiinsertstrategy).
-
-### See Also
-
-- [DataSource.multiInsertStrategy](#attr-datasourcemultiinsertstrategy)
-- [DataSource.multiInsertBatchSize](#attr-datasourcemultiinsertbatchsize)
-
-**Flags**: IRW
-
----
 ## Attr: DataSource.requires
 
 ### Description
@@ -687,14 +634,6 @@ If [automatic file versioning](#attr-datasourcefileversionfield) is enabled for 
 **Flags**: IR
 
 ---
-## Attr: DataSource.allowDynamicTreeJoins
-
-### Description
-By default, custom dataSource implementations are assumed to be unable to support [dynamic tree joins](#method-datasourcesupportsdynamictreejoins). If you create a custom dataSource that can support such joins, set this flag to true
-
-**Flags**: IRWA
-
----
 ## Attr: DataSource.tagName
 
 ### Description
@@ -730,7 +669,7 @@ Only applies to dataSources which send requests to a server and have [DataSource
 ## Attr: DataSource.allowClientRequestedSummaries
 
 ### Description
-If a [DSRequest](../reference_2.md#object-dsrequest) arrives from the client that requests [server-calculated summaries](../kb_topics/serverSummaries.md#kb-topic-server-summaries), should it be allowed?
+If a [DSRequest](../reference.md#object-dsrequest) arrives from the client that requests [server-calculated summaries](../kb_topics/serverSummaries.md#kb-topic-server-summaries), should it be allowed?
 
 Note this setting **only** affects `dsRequests` that come from the browser (or another client). This setting has no effect on server summaries declared in .ds.xml files or summaries configured in DSRequests created programmatically on the server side, which are always allowed.
 
@@ -745,95 +684,6 @@ If client-requested summarization is allowed, but the server-side `<operationBin
 ### See Also
 
 - [DataSourceField.allowClientRequestedSummaries](DataSourceField.md#attr-datasourcefieldallowclientrequestedsummaries)
-
-**Flags**: IR
-
----
-## Attr: DataSource.responseTemplate
-
-### Description
-Applies to RestConnector dataSources ([serverType](#attr-datasourceservertype) "rest") only, and is overridable per operationBinding (see [OperationBinding.responseTemplate](OperationBinding.md#attr-operationbindingresponsetemplate)).
-
-If you have a [responseFormat](#attr-datasourceresponseformat) of "json" or "xml", this property allows you to specify a template for `RestConnector` to use in order to construct response data for the client, from the response data sent by the REST server. This allows you to use the full power of the Velocity Templating Language to perform mappings and other transformations, all declaratively. The process involves the following steps:
-
-1.  We parse the REST response text as either JSON or XML, depending on the `responseFormat`
-2.  If a [record-level XPath](#attr-datasourcerecordxpath) is declared, it is applied to the parsed REST response data
-3.  We parse the template as JSON and convert it into an internal object structure
-4.  Velocity templating is now performed on this structure, with the processed REST response data provided as context variables. Templates intended for use with multi-record datasets should be framed in terms of a single record - if the REST response data consists of multiple records, each record will be put through the template in turn
-5.  If the original request came from a remote client (eg, a browser-based UI), the same downstream serialization logic as used for all other DataSource types will serialize this processed structure in accordance with the [client-server dataFormat](#attr-datasourcedataformat) in use; this is completely separate from the `responseFormat` used to process the response from the REST server
-
-Note, if you provide a `responseTemplate`, it serves as the basis for the entire JSON or XML structure sent back the client, so you can include, omit, rename or transform values from the client request as required.
-
-#### Example template
-Consider a case where the REST server sends back this structure:
-```
- {
-      "ID": 1234,
-      "FOO": 27,
-      "BAR": "TRUE",
-      "ABC": "String Value"
- }
-```
-Or, equivalently for a `responseFormat` of XML (note, this would also require a [recordXPath](#attr-datasourcerecordxpath) of "/ITEM" to navigate to the subvalues):
-```
- <?xml version="1.0" encoding="UTF-8"?>
- <ITEM>
-     <ID>1234</ID>
-     <FOO>27</FOO>
-     <BAR>TRUE</BAR>
-     <ABC>String value</ABC>
- </ITEM>
-```
-You need to transform this into the record format required by your local dataSource, which looks like this:
-```
- {
-      id: 1234, // ID from the REST response
-      zoo: 27,  // FOO from the REST response
-      baz: true,  // BAR from the REST response
-      def: "String value"  // abc from the REST response
-      isTBD: false  // should be true if "def" == "TBD", otherwise false
- }
-```
-The following template would declaratively handle the necessary mappings from one format to the other:
-```
- <responseTemplate>
- { 
-      id: $restResponseData.ID,
-      zoo: $restResponseData.FOO,
-      baz: #if($restResponseData.BAR == "TRUE") true #else false #end,
-      def: "$restResponseData.ABC",
-      isTBD: #if($restResponseData.ABC == "TBD") true #else false #end
- }
- </responseTemplate>
-```
-Logically, it makes sense to express the template in JSON: XML is only the format of the data sent back by the remote REST server; by the time we come to apply the template, that XML has already been parsed into an internal memory structure based on Java Lists and Maps, and JSON is the simplest text-based analog of that data structure.
-
-However, if you have a [DataSource.requestFormat](#attr-datasourcerequestformat) of "xml", you will be expressing your [requestTemplate](#attr-datasourcerequesttemplate) in XML; again, this makes sense because the `requestTemplate` is a representation of the actual text we are going to send to the remote REST server, whereas the `responseTemplate` is not a direct representation of anything (post-templating, it will be serialized in the format that the _client_ requires, which unrelated to the format required by the remote REST server).
-
-Even though this difference makes sense, it may seem confusing or inconsistent to express the `requestTemplate` as XML and the `responseTemplate` as JSON, so when `requestFormat` is "xml", we support expressing the `responseTemplate` in either JSON or XML. So if you prefer, you could write this template in XML:
-
-```
- <responseTemplate><![CDATA[
-   <ITEM>
-      <id>$restResponseData.ID<is/id>
-      <zoo>$restResponseData.FOO</zoo>
-      <baz>#if($restResponseData.BAR == "TRUE") true #else false #end</baz>
-      <def>$restResponseData.ABC</def>
-      <isTBD>#if($restResponseData.ABC == "TBD") true #else false #end<isTBD>
-   </ITEM>
- ]]></responseTemplate>
-```
-See the [Velocity User Guide](https://velocity.apache.org/engine/2.3/user-guide.html) for full details of Velocity's templating features
-
-### Groups
-
-- serverRestConnector
-
-### See Also
-
-- [OperationBinding.responseTemplate](OperationBinding.md#attr-operationbindingresponsetemplate)
-- [DataSource.transformResponseScript](#attr-datasourcetransformresponsescript)
-- [DataSource.requestTemplate](#attr-datasourcerequesttemplate)
 
 **Flags**: IR
 
@@ -893,7 +743,7 @@ Sets the strategy this DataSource uses to translate Java enumerated types (objec
 ## Attr: DataSource.clientOnly
 
 ### Description
-A clientOnly DataSource simulates the behavior of a remote data store by manipulating a static dataset in memory as [DSRequests](../reference_2.md#object-dsrequest) are executed on it. Any changes are lost when the user reloads the page or navigates away.
+A clientOnly DataSource simulates the behavior of a remote data store by manipulating a static dataset in memory as [DSRequests](../reference.md#object-dsrequest) are executed on it. Any changes are lost when the user reloads the page or navigates away.
 
 A clientOnly DataSource will return responses asynchronously, just as a DataSource accessing remote data does. This allows a clientOnly DataSource to be used as a temporary placeholder while a real DataSource is being implemented - if a clientOnly DataSource is replaced by a DataSource that accesses a remote data store, UI code for components that used the clientOnly DataSource will not need be changed.
 
@@ -913,19 +763,7 @@ ClientOnly DataSources can be populated programmatically via [DataSource.cacheDa
 ## Attr: DataSource.ignoreTextMatchStyleCaseSensitive
 
 ### Description
-For fields on this dataSource that specify [ignoreTextMatchStyle](DataSourceField.md#attr-datasourcefieldignoretextmatchstyle) true, the prevailing textMatchStyle is ignored and SmartClient matches exact values. This property dictates whether that match is case-sensitive like the "exactCase" textMatchStyle, or case-insensitive like the "exact" textMatchStyle (the default). Please see the [TextMatchStyle documentation](../reference_2.md#type-textmatchstyle) for a discussion of the nuances of case-sensitive matching.
-
-**Flags**: IR
-
----
-## Attr: DataSource.responseFormat
-
-### Description
-For a [RestConnector DataSource](../kb_topics/serverRestConnector.md#kb-topic-server-side-rest-connector), the response format to use. Can be overridden at operationBinding level, see [OperationBinding.responseFormat](OperationBinding.md#attr-operationbindingresponseformat) Note, if `responseFormat` is not specified at either the DataSource or OperationBinding level, response processing will throw an exception.
-
-### Groups
-
-- serverRestConnector
+For fields on this dataSource that specify [ignoreTextMatchStyle](DataSourceField.md#attr-datasourcefieldignoretextmatchstyle) true, the prevailing textMatchStyle is ignored and SmartClient matches exact values. This property dictates whether that match is case-sensitive like the "exactCase" textMatchStyle, or case-insensitive like the "exact" textMatchStyle (the default). Please see the [TextMatchStyle documentation](../reference.md#type-textmatchstyle) for a discussion of the nuances of case-sensitive matching.
 
 **Flags**: IR
 
@@ -962,112 +800,6 @@ Decides under what conditions the [ResultSet](ResultSet.md#class-resultset) cach
 - [DataSource.compareCriteria](#method-datasourcecomparecriteria)
 
 **Flags**: IRWA
-
----
-## Attr: DataSource.requestTemplate
-
-### Description
-Applies to [RestConnector dataSources](../kb_topics/serverRestConnector.md#kb-topic-server-side-rest-connector) ([serverType](#attr-datasourceservertype) "rest") only, and is overridable per operationBinding (see [OperationBinding.requestTemplate](OperationBinding.md#attr-operationbindingrequesttemplate)).
-
-If you have a [requestFormat](#attr-datasourcerequestformat) of "json" or "xml", `RestConnector` will generate a block of JSON or XML, as appropriate, from your criteria or values, as described in the [RESTRequestFormat](../reference.md#type-restrequestformat) docs. You can also specify a `requestTemplate`, and `RestConnector` will use the template to drive the generation of the JSON or XML, so you can use the full power of the Velocity Templating Language to perform mappings and other transformations, all declaratively. The process involves the following steps:
-
-1.  We parse the template as JSON or XML, as appropriate, and convert it into an internal object structure
-2.  Velocity templating is now performed on this structure, with the [DSRequest](../reference_2.md#object-dsrequest) values and criteria as context variables
-3.  We serialize the result of this process back to JSON or XML
-
-Note, if you provide a `requestTemplate`, it serves as the basis for the entire JSON or XML structure sent to the REST server, so you can include, omit, rename or transform values from the client request as required. Also note, if the [dsRequest](../reference_2.md#object-dsrequest) has multiple valueSets (records), we will apply the template to each valueSet in turn, to construct a list for sending to the remote REST service (but note, this only works if the `requestFormat` is "json").
-
-#### Example templates
-Templates can make use of all of the conditional and iteration features of the Velocity Template Language, so can be used to perform some fairly sophisticated transformations. Consider a case where we have an update request with data like this sent from the client:
-```
- {
-      pk: 1234,
-      foo: 27,
-      bar: true,
-      abc: "String Value"
- }
-```
-This record contains all the information you need to send an update request to the remote REST server, but that server requires things in a different format, with different field names, different representations of boolean values, and an additional field whose value is derived. This record looks like this:
-```
- {
-      id: 1234, // pk from our client record
-      FOO: 27,  // foo from our client record
-      BAR: 1,  // bar from our client record, true == 1, false == 0
-      def: "String value"  // abc from our client record
-      isTBD: 0  // should be 1 if "def" == "TBD", otherwise 0
- }
-```
-The following template would declaratively handle the necessary mappings from one format to the other:
-```
- <requestTemplate>
- { 
-      "id": $values.pk,
-      "FOO": $values.foo,
-      "BAR": #if($values.bar) 1 #else 0 #end,
-      "def": "$values.abc",
-      "isTBD": #if($values.abc == "TBD") 1 #else 0 #end
- }
- </requestTemplate>
-```
-And the same thing in XML (this may require setting an [xmlTag](#attr-datasourcexmltag) and/or providing additional levels of containment to match the target server's structure - XML often requires more boilerplate than JSON):
-```
- <requestTemplate>
-   <record>
-      <id>$values.pk</id>
-      <FOO>$values.foo</FOO>
-      <BAR>#if($values.bar)1#else0#end</BAR>
-      <def>$values.abc</def>
-      <isTBD>#if($values.abc == "TBD")1#else0#end</isTBD>
-   </record>
- </requestTemplate>
-```
-Templates can also be used to flatten structured data. Say we have this incoming record:
-```
- {
-      customerId: 2770
-      name: "Snape Networks Inc",
-      contacts: [
-          {name: "Isaura Lopez", title: "IT Manager"},
-          {name: "Ngozi Okoduwa", title: "VP Procurement"},
-          {name: "Andrew Jenkins", title: "Buyer"}
-      ]
- }
-```
-The target REST server does not support a list of contact details, just two contact names:
-```
- {
-      Id: 2770, 
-      Name: "Snape Networks Inc",  
-      Contact1: "Isaura Lopez",
-      Contact2: "Ngozi Okoduwa"
- }
-```
-This transformation could be achieved with the following template:
-```
- <requestTemplate>
- { 
-      Id: $values.customerId,
-      Name: "$values.name",
-      #foreach ($contact in $values.contacts)
-        #if ($foreach.count > 2) #break  #end
-      Contact$foreach.count: "$contact.name"
-      #end
- }
- </requestTemplate>
-```
-See the [Velocity User Guide](https://velocity.apache.org/engine/2.3/user-guide.html) for full details of Velocity's templating features
-
-### Groups
-
-- serverRestConnector
-
-### See Also
-
-- [OperationBinding.requestTemplate](OperationBinding.md#attr-operationbindingrequesttemplate)
-- [DataSource.transformRequestScript](#attr-datasourcetransformrequestscript)
-- [DataSource.responseTemplate](#attr-datasourceresponsetemplate)
-
-**Flags**: IR
 
 ---
 ## Attr: DataSource.logSlowAdd
@@ -1204,7 +936,7 @@ When set, causes a [client-only](#attr-datasourceclientonly) or [DataSource.cach
 ### Description
 For an XML DataSource, URN of the WebService to use to invoke operations. This URN comes from the "targetNamespace" attribute of the <wsdl:definitions> element in a WSDL (Web Service Description Language) document, and serves as the unique identifier of the service.
 
-Having loaded a WebService using [XMLTools.loadWSDL](XMLTools.md#classmethod-xmltoolsloadwsdl), setting `serviceNamespace` combined with specifying [operationBindings](OperationBinding.md#class-operationbinding) that set [OperationBinding.wsOperation](OperationBinding.md#attr-operationbindingwsoperation) will cause a DataSource to invoke web service operations to fulfill DataSource requests ([DSRequests](../reference_2.md#object-dsrequest)).
+Having loaded a WebService using [XMLTools.loadWSDL](XMLTools.md#classmethod-xmltoolsloadwsdl), setting `serviceNamespace` combined with specifying [operationBindings](OperationBinding.md#class-operationbinding) that set [OperationBinding.wsOperation](OperationBinding.md#attr-operationbindingwsoperation) will cause a DataSource to invoke web service operations to fulfill DataSource requests ([DSRequests](../reference.md#object-dsrequest)).
 
 Setting `serviceNamespace` also defaults [dataURL](#attr-datasourcedataurl) to the service's location, [dataFormat](#attr-datasourcedataformat) to "xml" and [dataProtocol](OperationBinding.md#attr-operationbindingdataprotocol) to "soap".
 
@@ -1246,49 +978,6 @@ If the fileVersionField is not configured, no automatic file versioning will be 
 **Flags**: IR
 
 ---
-## Attr: DataSource.unionFields
-
-### Description
-Only applicable to "union" dataSources, this is a comma-separated list of the names of the dataSource fields that make up the union. This property is optional; if it is not supplied, SmartClient Server will derive a list of fields from the member dataSources (see [unionOf](#attr-datasourceunionof)), where name and data type match. See [defaultUnionFieldsStrategy](#attr-datasourcedefaultunionfieldsstrategy) for more details.
-
-Note, this setting is only useful for fields that are named the same on the member dataSources. For a more flexible and powerful way to define the unioned fields, that does not rely on field names being the same in member dataSources, you can use [field-level unionOf definitions](DataSourceField.md#attr-datasourcefieldunionof).
-
-### Groups
-
-- unionDataSource
-
-### See Also
-
-- [OperationBinding.unionFields](OperationBinding.md#attr-operationbindingunionfields)
-
-**Flags**: IR
-
----
-## Attr: DataSource.allowTemplateReferences
-
-### Description
-Indicates the mode to use for resolving templated references in this DataSource's configuration file. A "templated reference" is a reference that makes use of a special token to indicate it is a placeholder that should be replaced with a value derived from the `server.properties` file - in "`all`" mode, other relatively static context available to the Velocity engine can also be used - during DataSource initialization. You can place a templated reference inside any string property, anywhere in your `.ds.xml` file.
-
-Templated references are a simple, lightweight way to introduce a level of dynamism to DataSource configuration. For example, you could use a templated reference to dynamically set the [DataSource.dbName](#attr-datasourcedbname)
-
-If you need more extensive support for dynamic DataSources than can be provided with templated references, you can completely customize configuration on-the-fly using a Dynamic DataSource Generator - see the server-side API `com.isomorphic.datasource.DataSource.addDynamicDSGenerator()`
-
-The default value for this property is generally "`configOnly`" - any DataSource that extends `BasicDataSource`, including the built-in SQL, Hibernate and JPA DataSource implementations, will default to this setting. You can override this across the board by adding a setting like this to your `server.properties` file:
-
-```
-    dataSource.default.allowTemplateReferences: none
-    # or dataSource.default.allowTemplateReferences: all
- 
-```
-For [RestConnector](../kb_topics/serverRestConnector.md#kb-topic-server-side-rest-connector) DataSources ([serverType](#attr-datasourceservertype)s "rest" and "odata"), the default value for this property is "`all`", in keeping with that DataSource's extensive support for Velocity templating.
-
-### See Also
-
-- [DataSource.templateConfigToken](#attr-datasourcetemplateconfigtoken)
-
-**Flags**: IR
-
----
 ## Attr: DataSource.noNullUpdates
 
 ### Description
@@ -1313,80 +1002,6 @@ If set to "false", transformation of values for [multiple:true](DataSourceField.
 **Flags**: IR
 
 ---
-## Attr: DataSource.suppressManualAggregation
-
-### Description
-Indicates whether we should suppress automatic aggregation and grouping handling logic. As noted below, this property does not apply to DataSources of [serverType](#attr-datasourceservertype) "sql", "jpa" or "hibernate". By default, the framework applies a post-fetch in-memory operation to handle aggregation and grouping, as described in the [allowAggregation](#attr-datasourceallowaggregation) documentation. You can suppress this automatic behavior by setting this flag true.
-
-Note, this is primarily intended as a back-compatibility flag, to allow you to compensate for situations where your own custom DataSource implementations have their own aggregation handling, pre-dating the automatic in-memory aggregation feature. In this circumstance, set this flag true to retain the existing behavior. If you want to suppress the manual aggregation for **all** dataSources by default (you can still re-enable it per-DataSource if required, using this `suppressManualAggregation` flag), add the following to your `server.properties` file:
-
-```
-     datasource.suppress.manual.aggregation: true
- 
-```
-Also note, this flag is ignored for SQL, JPA and Hibernate DataSources; those DataSource types handle aggregation inherently, using the underlying persistence engine's query language. If for some reason you need to suppress inherent aggregation for a given DataSource, mark it `[allowAggregation](#attr-datasourceallowaggregation):false`
-
-### Groups
-
-- serverDataIntegration
-
-### See Also
-
-- [DataSource.allowAggregation](#attr-datasourceallowaggregation)
-
-**Flags**: IRA
-
----
-## Attr: DataSource.simplifyCriteriaListsToOrClause
-
-### Description
-For [SQL DataSources](../kb_topics/sqlDataSource.md#kb-topic-sql-datasources) only, this flag indicates that we should render List-valued criteria elements as a series of simple comparisons linked with "OR" operators, rather than an SQL "IN" operation. For example, given any of the following simple or advanced criteria definitions (which are equivalent):
-```
-    {myField: ["x","y","z"]}
-    {fieldName: "myField", operator:"equals", value: ["x","y","z"]}
-    {fieldName: "myField", operator:"inSet", value: ["x","y","z"]}
- 
-```
-We would generate an SQL WHERE clause similar to this:
-```
-    WHERE myField="x" OR myField="y" OR myField="z"
- 
-```
-This is as opposed to the default handling of List-valued criteria elements, which is to render them as a simple SQL "IN" comparison, if the field is of text or numeric type:
-```
-    WHERE myField IN("x","y","z") 
- 
-```
-**NOTE:** As mentioned above, the use of SQL "IN" by default is only for text and numeric fields; for any other field type, we always simplify a list in criteria to a series of OR comparisons, regardless of the setting of this flag. Also please note that this is intended as a backward-compatibility flag only, in case you have some special reason for wanting the OR-clause approach. The default use of "IN" leads to functionally equivalent but simpler SQL that may be more efficient or more easily optimized by some databases.
-
-It is possible to apply this setting as the default for all DataSources - just add the following setting to your `server.properties` file:
-
-```
-    sql.simplifyCriteriaListsToOrClause: true
- 
-```
-
-**Flags**: IRWA
-
----
-## Attr: DataSource.applySqlPrefixToRowCount
-
-### Description
-**This feature is available with Power or better licenses only.** See [smartclient.com/product](http://smartclient.com/product) for details.
-
-DataSource-level equivalent of [OperationBinding.applySqlPrefixToRowCount](OperationBinding.md#attr-operationbindingapplysqlprefixtorowcount)
-
-### Groups
-
-- customQuerying
-
-### See Also
-
-- [DataSource.applySqlSuffixToRowCount](#attr-datasourceapplysqlsuffixtorowcount)
-
-**Flags**: IR
-
----
 ## Attr: DataSource.enumConstantProperty
 
 ### Description
@@ -1400,11 +1015,11 @@ This property is only applicable if you are using the SmartClient server
 ## Attr: DataSource.transformRawResponseScript
 
 ### Description
-**Applicable to [server-side REST DataSources](../kb_topics/serverRestConnector.md#kb-topic-server-side-rest-connector) only**
+**Applicable to [server-side REST DataSources](#serverrestdatasource) only**
 
-A scriptlet to be executed on the server after data has been fetched from the REST service, but before it is processed through templating. The intention is that this scriptlet transforms the response data in some way, before that transformed data is passed through templating and further downstream transformation steps such as [record transformation](#attr-datasourcetransformresponsescript). If your use case does not involve templating, there is no difference between putting your transformation logic in this script, or putting it in a `transformResponseScript` - they are merely pre-templating and post-templating transformation opportunities, so if no templating is involved, they are conceptually the same thing. Accordingly, exactly the same variables are available to the `transformRawResponseScript` as to the [DataSource.transformResponseScript](#attr-datasourcetransformresponsescript) - see that property's documentation for details.
+A scriptlet to be executed on the server after data has been fetched from the REST service, but before it is processed through [templating](#datasourceresponsetemplate). The intention is that this scriptlet transforms the response data in some way, before that transformed data is passed through templating and further downstream transformation steps such as [record transformation](#attr-datasourcetransformresponsescript). If your use case does not involve templating, there is no difference between putting your transformation logic in this script, or putting it in a `transformResponseScript` - they are merely pre-templating and post-templating transformation opportunities, so if no templating is involved, they are conceptually the same thing. Accordingly, exactly the same variables are available to the `transformRawResponseScript` as to the [DataSource.transformResponseScript](#attr-datasourcetransformresponsescript) - see that property's documentation for details.
 
-Note, if you prefer a Java solution rather than placing scripts in your `.ds.xml` files, you can instead extend the Java `RestConnector` class and override its `transformRawResponse()` method. If you both override the Java method and provide a `transformRawResponseScript`, the Java method runs first and any transformations it makes will be visible to the script. See [serverConstructor](#attr-datasourceserverconstructor) for details of how to use a custom class to implement a DataSource server-side.
+Note, if you prefer a Java solution rather than placing scripts in your `.ds.xml` files, you can instead extend the Java `RESTDataSource` class and override its `transformRawResponse()` method. If you both override the Java method and provide a `transformRawResponseScript`, the Java method runs first and any transformations it makes will be visible to the script. See [serverConstructor](#attr-datasourceserverconstructor) for details of how to use a custom class to implement a DataSource server-side.
 
 ### Groups
 
@@ -1444,7 +1059,7 @@ Set this attribute if you need to send the dsRequest.parentNode to the server-si
 ### Description
 Applies to [SQL DataSources](../kb_topics/sqlDataSource.md#kb-topic-sql-datasources) only.
 
-If this attribute is set to a non-negative value, it acts as a hard safety limit for client-initiated [DSRequest](../reference_2.md#object-dsrequest)s for "all rows". If the server encounters more rows in a response than this safety limit, it will abort immediately with an Exception.
+If this attribute is set to a non-negative value, it acts as a hard safety limit for client-initiated [DSRequest](../reference.md#object-dsrequest)s for "all rows". If the server encounters more rows in a response than this safety limit, it will abort immediately with an Exception.
 
 **This attribute is not meant to be a regular application facility.** As mentioned above, it is a safety mechanism, intended primarily to prevent bugs in development from causing long delays or server Out Of Memory crashes by unintentionally issuing requests that fetch huge numbers of rows (eg, by failing to specify filter criteria).
 
@@ -1703,24 +1318,6 @@ Settings to use when discoverTree() is automatcially called because [DataSource.
 **Flags**: IR
 
 ---
-## Attr: DataSource.applySqlSuffixToRowCount
-
-### Description
-**This feature is available with Power or better licenses only.** See [smartclient.com/product](http://smartclient.com/product) for details.
-
-DataSource-level equivalent of [OperationBinding.applySqlSuffixToRowCount](OperationBinding.md#attr-operationbindingapplysqlsuffixtorowcount)
-
-### Groups
-
-- customQuerying
-
-### See Also
-
-- [DataSource.applySqlPrefixToRowCount](#attr-datasourceapplysqlprefixtorowcount)
-
-**Flags**: IR
-
----
 ## Attr: DataSource.auditDSConstructor
 
 ### Description
@@ -1735,45 +1332,6 @@ To simplify this intended usage, the string "sql" is allowed for `auditDSConstru
 **Flags**: IR
 
 ---
-## Attr: DataSource.cacheSyncTiming
-
-### Description
-The [cacheSyncTiming](../reference_2.md#type-cachesynctiming) to use for operations on this DataSource. Can be overridden at the [operation](OperationBinding.md#attr-operationbindingcachesynctiming) and [DSRequest](DSRequest.md#attr-dsrequestcachesynctiming) levels. The default value of null is the same as specifying "immediate".
-
-Note that `cacheSyncTiming` is not applicable to many common types of request, and is simply ignored for these request types. See the [CacheSyncTiming type documentation](../reference_2.md#type-cachesynctiming) for more details.
-
-### Groups
-
-- cacheSynchronization
-
-### See Also
-
-- [DataSource.cacheSyncStrategy](#attr-datasourcecachesyncstrategy)
-- [OperationBinding.cacheSyncTiming](OperationBinding.md#attr-operationbindingcachesynctiming)
-- [DSRequest.cacheSyncTiming](DSRequest.md#attr-dsrequestcachesynctiming)
-
-**Flags**: IR
-
----
-## Attr: DataSource.templateConfigToken
-
-### Description
-The special token to look for when trying to resolve template references when the [template references mode](#attr-datasourceallowtemplatereferences) is "`configOnly`". In this mode, the system looks for this token, followed by the strict pattern `["property_name"]` (single quotes are allowed instead of double quotes, but that is the only supoprted variation).
-
-By default the template token is "`$config`" because that is the token used for Velocity templating, and is thus familiar. If you need to use a different token - perhaps because the "$" symbol already has special significance in your system - you can do so by setting this property. For example, if you set `templateConfigToken="#conf"`, your templated references would look like this:
-
-```
-    someProperty="#conf['my.property.name']"
- 
-```
-
-### See Also
-
-- [DataSource.allowTemplateReferences](#attr-datasourceallowtemplatereferences)
-
-**Flags**: IR
-
----
 ## Attr: DataSource.enumOrdinalProperty
 
 ### Description
@@ -1784,26 +1342,12 @@ This property is only applicable if you are using the SmartClient server
 **Flags**: IA
 
 ---
-## Attr: DataSource.csvDelimiter
-
-### Description
-Applies to RestConnector dataSources ([serverType](#attr-datasourceservertype) "rest") only, and is overridable per operationBinding (see [OperationBinding.csvDelimiter](OperationBinding.md#attr-operationbindingcsvdelimiter)).
-
-This property specifies the character to recognise as the delimiter when parsing REST service responses where the [DataSource.responseFormat](#attr-datasourceresponseformat) is "csv"
-
-### Groups
-
-- serverRestConnector
-
-**Flags**: IR
-
----
 ## Attr: DataSource.useAnsiJoins
 
 ### Description
 For DataSources using the [SmartClient SQL engine](../kb_topics/sqlDataSource.md#kb-topic-sql-datasources) for persistence, whether to use ANSI-style joins (ie, joins implemented with JOIN directives in the table clause, as opposed to additional join expressions in the where clause). The default value of null has the same meaning as setting this flag to false.
 
-Note, outer joins (see [joinType](DataSourceField.md#attr-datasourcefieldjointype)) do not work with all supported database products unless you use ANSI joins. Other than that, the join strategies are equivalent.
+Note, outer joins (see [joinType](DataSourceField.md#attr-datasourcefieldjointype)) only work with certain database products if you choose not to use ANSI joins. Other than that, the join strategies are equivalent.
 
 If you wish to switch on ANSI-style joins for every DataSource, without the need to manually set this property on all of them, set [server.properties](../kb_topics/server_properties.md#kb-topic-serverproperties-file) flag `sql.useAnsiJoins` to true.
 
@@ -1814,29 +1358,6 @@ If you wish to switch on ANSI-style joins for every DataSource, without the need
 ### See Also
 
 - [OperationBinding.includeAnsiJoinsInTableClause](OperationBinding.md#attr-operationbindingincludeansijoinsintableclause)
-
-**Flags**: IR
-
----
-## Attr: DataSource.requiresCompleteRESTResponse
-
-### Description
-Applies to RestConnector dataSources ([serverType](#attr-datasourceservertype) "rest") only, and is overridable per operationBinding (see [OperationBinding.requiresCompleteRESTResponse](OperationBinding.md#attr-operationbindingrequirescompleterestresponse)).
-
-If true, this flag indicates that the DataSource requires access to the entire REST response, not just the data part configured by the [recordXPath](#attr-datasourcerecordxpath). This is often the case for REST services that send back useful metadata alongside the data itself. For example, some REST services limit the number of records that can be retrieved in one service call, and will return the total number of records actually available in some kind of metadata property.
-
-This is useful information that a DataSource can use in custom logic to return a richer response to the client. This custom logic can be written in Java in a [DMI method](../kb_topics/dmiOverview.md#kb-topic-direct-method-invocation) or [custom DataSource implementation](#attr-datasourceserverconstructor), or in any JSR223 scripting language, as a [server script](#attr-datasourcescript) or [response transformation script](#attr-datasourcetransformresponsescript).
-
-When this flag is true, the complete REST response is available to your server-side custom code as follows:
-
-*   For a DMI or custom dataSource implementation that invokes the `RestConnector` built-in logic by calling `execute()` on either the `DSRequest` or the `DataSource` itself (this would be a `super()` call for a custom impl), the `DSResponse` returned to your code will contain a property called "completeData"
-*   For a ``<script>`` or ``<transformResponseScript>``, a variable called "completeData" will be available to your script (completeData is also available as `dsResponse.completeData`)
-
-Note, for requests that came originally from a remote client, the "completeData" property of the `DSResponse` will be serialized and returned to the client. If you do not want this, your custom server code should remove that property from the `DSResponse` when it has finished with it.
-
-### Groups
-
-- serverRestConnector
 
 **Flags**: IR
 
@@ -1860,7 +1381,7 @@ If an operation should ever be non-blocking, methods that initiate DataSource re
 ## Attr: DataSource.defaultTextMatchStyle
 
 ### Description
-The default textMatchStyle to use for [DSRequest](../reference_2.md#object-dsrequest)s that do not explicitly state a [textMatchStyle](DSRequest.md#attr-dsrequesttextmatchstyle). Note, however, that DSRequests issued by [ListGrid](ListGrid_1.md#class-listgrid)s and other [components](../reference.md#interface-databoundcomponent) will generally have a setting for textMatchStyle on the component itself (see [ListGrid.autoFetchTextMatchStyle](ListGrid_1.md#attr-listgridautofetchtextmatchstyle), for example).
+The default textMatchStyle to use for [DSRequest](../reference.md#object-dsrequest)s that do not explicitly state a [textMatchStyle](DSRequest.md#attr-dsrequesttextmatchstyle). Note, however, that DSRequests issued by [ListGrid](ListGrid_1.md#class-listgrid)s and other [components](../reference.md#interface-databoundcomponent) will generally have a setting for textMatchStyle on the component itself (see [ListGrid.autoFetchTextMatchStyle](ListGrid_1.md#attr-listgridautofetchtextmatchstyle), for example).
 
 ### Groups
 
@@ -2015,53 +1536,10 @@ For DataSources using the [SmartClient SQL engine](../kb_topics/sqlDataSource.md
 **Flags**: IR
 
 ---
-## Attr: DataSource.unionOf
-
-### Description
-Only applicable to "union" dataSources, this is a comma-separated list of the names of the member dataSources that make up the union. If all the named dataSources are [SQL DataSource](../kb_topics/sqlDataSource.md#kb-topic-sql-datasources)s, or union dataSources whose members are SQL dataSurces, the union will be implemented purely in SQL, which is the most efficient thing to do.
-
-**Nesting Union DataSources**  
-It is valid for union DataSources to be nested inside other union DataSources; nesting is valid to any depth. If you are nesting union dataSources, bear in mind the following considerations:
-
-*   If you are renaming fields from underlying SQL DataSources in a union DataSource, and you then include that union DataSource as a nested element of another union DataSource, it is the renamed fields that should be referenced in the outer union DataSource. For example, if you have union DataSource "union1" that specifes a unioned field like this:
-    ```
-        <field name="c" unionOf="sqlDS1.a, sqlDS2.b" />
-    ```
-    If you want to then include dataSource "union1" as a member dataSource of another union dataSource, "union2", you need to refer to the field as "c", not "a" or "b":
-    ```
-        <field name="myField" unionOf="union1.c, sqlDS3.xyz" />
-    ```
-    SmartClient will follow the chain of field renames to ensure that the appropriate SQL-level fields are unioned together, and renamed consistently
-*   It is not an error to specify the same dataSource as a member of a union dataSource multiple times, but it is also not correct and may have performance implications. If you configure duplicate member dataSources directly, eg:
-    ```
-        <DataSource serverType="union" unionOf="sqlDS1,sqlDS2,sqlDS1">
-    ```
-    SmartClient will simply remove the duplicate entries. However, with nested union dataSources, it becomes possible to indirectly include the same member dataSource more than once. Eg:
-    ```
-        <DataSource ID="bigUnion" serverType="union" unionOf="union1,union2">
-    ```
-    and
-    ```
-        <DataSource ID="union1" serverType="union" unionOf="sqlDS1,sqlDS2">
-    ```
-    and
-    ```
-        <DataSource ID="union2" serverType="union" unionOf="sqlDS2,sqlDS3">
-    ```
-    You can see, dataSource "sqlDS2" is going to be included twice. This will result in the union DataSource generating SQL that fetches the rows from "sqlDS2" twice, but because of the way the SQL "UNION" keyword works, all the duplicate rows will be dropped. So the end result will be correct, but the system will have wasted time fetching and then dropping duplicate rows.
-*   The ability to nest union dataSources within other union dataSources introduces a whole category of extra considerations. For example, you need to make sure you do not set up self references or looping structures, and as mentioned above, field renaming becomes potentially more involved
-
-### Groups
-
-- unionDataSource
-
-**Flags**: IR
-
----
 ## Attr: DataSource.recordXPath
 
 ### Description
-See [OperationBinding.recordXPath](OperationBinding.md#attr-operationbindingrecordxpath). `recordXPath` can be specified directly on the DataSource for a simple read-only DataSource only capable of "fetch" operations, or on clientOnly DataSources using [testData](../kb_topics/testData.md#kb-topic-test-data), or on [RestConnector](../kb_topics/serverRestConnector.md#kb-topic-server-side-rest-connector) dataSources
+See [OperationBinding.recordXPath](OperationBinding.md#attr-operationbindingrecordxpath). `recordXPath` can be specified directly on the DataSource for a simple read-only DataSource only capable of "fetch" operations, or on clientOnly DataSources using $link{groupDef:testData}.
 
 ### Groups
 
@@ -2152,18 +1630,6 @@ To set a default `requestMaxRows` that will apply to all dataSources that do not
 **Flags**: IRW
 
 ---
-## Attr: DataSource.requestFormat
-
-### Description
-For a [RestConnector DataSource](../kb_topics/serverRestConnector.md#kb-topic-server-side-rest-connector), the request format to use when contacting the remote REST service. Can be overridden at operationBinding level, see [OperationBinding.requestFormat](OperationBinding.md#attr-operationbindingrequestformat). Note, if `requestFormat` is not specified at either the DataSource or OperationBinding level, the request will be rejected.
-
-### Groups
-
-- serverRestConnector
-
-**Flags**: IR
-
----
 ## Attr: DataSource.skipJSONValidation
 
 ### Description
@@ -2223,20 +1689,6 @@ See [DataSource.logSlowSQL](#attr-datasourcelogslowsql) for more details.
 **Flags**: IR
 
 ---
-## Attr: DataSource.allowRelatedFieldsInCriteria
-
-### Description
-This property indicates whether this DataSource supports referencees to related fields in criteria, either using qualified field names, or subqueries. See the [subquery filtering overview](../reference.md#object-advancedcriterionsubquery) for details. Note, only [AdvancedCriteria](../reference.md#object-advancedcriteria) can contain related fields.
-
-All server-side DataSource implementations provide a level of support for related fields in criteria, but only [SQL DataSources](../kb_topics/sqlDataSource.md#kb-topic-sql-datasources) can handle cases that require conditions to be considered simultaneously with a join to the outer dataSource.
-
-### See Also
-
-- [DataSource.allowRelatedFieldsInCriteria](#attr-datasourceallowrelatedfieldsincriteria)
-
-**Flags**: IRWA
-
----
 ## Attr: DataSource.isSampleDS
 
 ### Description
@@ -2273,42 +1725,6 @@ Also supported: one startsWith, multiple contains, one endsWith.
 **Flags**: IR
 
 ---
-## Attr: DataSource.cacheSyncStrategy
-
-### Description
-The [cacheSyncStrategy](../reference_2.md#type-cachesyncstrategy) to use for operations on this DataSource. Can be overridden at the [operation](OperationBinding.md#attr-operationbindingcachesyncstrategy) and [DSRequest](DSRequest.md#attr-dsrequestcachesyncstrategy) levels.
-
-If `cacheSyncStrategy` is not explicitly set for a `DataSource`, we will use the default strategy for this [DataSource type](#attr-datasourceservertype). The defaults as shipped, are:
-
-| Server Type | Strategy |
-|---|---|
-| sql | requestValuesPlusSequences |
-| hibernate | refetch |
-| jpa/jpa1 | refetch |
-| rest | responseValues |
-| generic | refetch |
-
-You can override these default strategies by adding a "`default.{server-type}.cache.sync.strategy`" setting to your `server.properties` file, like these examples:
-
-```
-    default.sql.cache.sync.strategy: refetch
-    default.rest.cache.sync.strategy: none
- 
-```
-Note that global `cacheSyncStrategy` settings are defaults only; SmartClient Server will override them intelligently in some circumstances. See the "CacheSyncStrategy" section of the [cache synchronization overview](../kb_topics/cacheSynchronization.md#kb-topic-automatic-cache-synchronization) for details of when and why we do this.
-
-### Groups
-
-- cacheSynchronization
-
-### See Also
-
-- [OperationBinding.cacheSyncStrategy](OperationBinding.md#attr-operationbindingcachesyncstrategy)
-- [DSRequest.cacheSyncStrategy](DSRequest.md#attr-dsrequestcachesyncstrategy)
-
-**Flags**: IR
-
----
 ## Attr: DataSource.titleField
 
 ### Description
@@ -2326,83 +1742,6 @@ If no field is found that matches any of the names above, then the first field i
 
 - titles
 - dsSpecialFields
-
-**Flags**: IR
-
----
-## Attr: DataSource.defaultUnionFieldsStrategy
-
-### Description
-Only applicable to "union" dataSources. Determines the strategy we adopt when automatically deriving a list of fields when no explicit [unionFields](#attr-datasourceunionfields) setting is provided. Note that explicit field declarations that include [unionOf](DataSourceField.md#attr-datasourcefieldunionof) definitions take precedence over whatever `defaultUnionFieldsStrategy` is defined. As an example of how this property affects field derivation, assume our unionDataSource specifies three member dataSources in its [unionOf](#attr-datasourceunionof) setting:
-
-*   **ds1** has fields **f1 (integer)**, **f2 (text)** and **f3 (boolean)**
-*   **ds2** has fields **f1 (integer)**, **f2 (text)** and **f4 (datetime)**
-*   **ds3** has fields **f1 (integer)**, **f2 (float)**, **f4 (datetime)** and **f5 (text)**
-
-Given this, the different unionFieldsStrategy settings would derive the following fields:
-
-*   **intersect** would give just **f1** (**f2** exists on every dataSource, but the data type is not the same in every case)
-*   **matching** would derive **f1** and **f4** - again, **f2** would be excluded because of the data type discrepancy. Records from **ds1** would contribute a null value for **f4**
-*   **all** would derive all fields except **f2**, excluded because of the data type discrepancy. Values for missing fields from any given dataSource would be null
-
-### Groups
-
-- unionDataSource
-
-### See Also
-
-- [OperationBinding.unionFields](OperationBinding.md#attr-operationbindingunionfields)
-
-**Flags**: IR
-
----
-## Attr: DataSource.multiInsertBatchSize
-
-### Description
-For dataSources of [serverType](#attr-datasourceservertype) "sql" only, this property sets the multi-insert batch size for add requests on this [dataSource](#class-datasource). Only has an effect if the [add request](#method-datasourceadddata) specifies a list of records as the data, and only if [multiInsertStrategy](#attr-datasourcemultiinsertstrategy) is set to "multipleValues", either globally or at the [DSRequest](../reference_2.md#object-dsrequest), [OperationBinding](OperationBinding.md#class-operationbinding), or [DataSource](#class-datasource) level.
-
-The multi-insert batch size determines the maximum number of `VALUES` clauses SmartClient Server will generate for a single `INSERT` operation. The optimum value for this setting depends on the underlying database, but typically larger batches yield better performance. if the number of records in the request exceeds the batch size, we break it up into however many batches are required. For example, if the batch size is 55 and the request contains 200 records, we would create 4 database `INSERT` operations - 3 with 55 `VALUES` clauses, and a final one with the remaining 35.
-
-Note that this setting (along with the other multi-insert properties, [multiInsertStrategy](#attr-datasourcemultiinsertstrategy) and [multiInsertNonMatchingStrategy](#attr-datasourcemultiinsertnonmatchingstrategy)) can be overridden at the [operationBinding level](OperationBinding.md#attr-operationbindingmultiinsertbatchsize) and the [dsRequest level](DSRequest.md#attr-dsrequestmultiinsertbatchsize). If you wish to configure multi-insert setting globally, see the documentation for [multiInsertStrategy](#attr-datasourcemultiinsertstrategy).
-
-### See Also
-
-- [DataSource.multiInsertStrategy](#attr-datasourcemultiinsertstrategy)
-- [DataSource.multiInsertNonMatchingStrategy](#attr-datasourcemultiinsertnonmatchingstrategy)
-
-**Flags**: IRW
-
----
-## Attr: DataSource.allowAggregation
-
-### Description
-This property indicates whether this DataSource supports aggregation/summarization and grouping of field values using the [summaryFunction](DSRequest.md#attr-dsrequestsummaryfunctions) mechanism. All the [built-in DataSource types](#attr-datasourceservertype) support aggregation by default: SQL, Hibernate and JPA DataSources support aggregation inherently, using the underlying persistence engine's query language. Other server-side implementations support aggregation and grouping as a post-fetch, in-memory operation; and because this in-memory aggregation happens after the DataSource has fetched data, and is transparent to the DataSource, it will also automatically apply to your own custom DataSource implementations without any effort, unless you switch it off (see [DataSource.suppressManualAggregation](#attr-datasourcesuppressmanualaggregation)).
-
-[clientOnly](#attr-datasourceclientonly) DataSources also support aggregation and grouping, using a similar approach to the server-side post-fetch aggregation described above (but running on the client, obviously).
-
-This property is intended as a means of preventing attempts to run aggregations on a given DataSource. For example, if you know that running aggregations on a particular DataSource can cause performance problems, you can set this flag false to disallow all aggregations on that DataSource. The only meaningful place to specify this property is in a DataSource descriptor (`.ds.xml` file), which will cause it to be enforced on the server. This means that if you run a fetch involving summaryFunctions at the [DSRequest](DSRequest.md#attr-dsrequestsummaryfunctions), [OperationBinding](OperationBinding.md#attr-operationbindingsummaryfunctions) or [field](DataSourceField.md#attr-datasourcefieldincludesummaryfunction) level, against a DataSource that advertises itself as `allowAggregation:false`, it will be rejected.
-
-### See Also
-
-- [DataSource.suppressManualAggregation](#attr-datasourcesuppressmanualaggregation)
-
-**Flags**: IRWA
-
----
-## Attr: DataSource.csvQuoteCharacter
-
-### Description
-Applies to RestConnector dataSources ([serverType](#attr-datasourceservertype) "rest") only, and is overridable per operationBinding (see [OperationBinding.csvQuoteCharacter](OperationBinding.md#attr-operationbindingcsvquotecharacter)).
-
-This property specifies the character to treat a string quotation mechanism when parsing REST service responses where the [DataSource.responseFormat](#attr-datasourceresponseformat) is "csv". Text in CSV responses does not have to quote string data, but many uses of CSV do quote strings because it allows text in the data to contain occurences of the [DataSource.csvDelimiter](#attr-datasourcecsvdelimiter). For example, if the `csvDelimiter` is the default value of ",", quoting allows the following text, which would otherwise be ambiguous:
-
-```
-   1,ABC,"This is a text string, with a comma in the middle"
-```
-
-### Groups
-
-- serverRestConnector
 
 **Flags**: IR
 
@@ -2447,7 +1786,7 @@ This can be set to a custom subclass of ResultSet that, for example, hangs onto 
 ### Description
 Allows you to specify SQL query execution time threshold in milliseconds, which if exceeded query is identified as "slow" and may be logged under specific logging category.
 
-This setting applies to all SQL queries, unless more specific thresholds are set using [DataSource.logSlowFetch](#attr-datasourcelogslowfetch), [DataSource.logSlowAdd](#attr-datasourcelogslowadd), [DataSource.logSlowUpdate](#attr-datasourcelogslowupdate), [DataSource.logSlowRemove](#attr-datasourcelogslowremove), [DataSource.logSlowCustom](#attr-datasourcelogslowcustom) or even more specific affecting just the operationBinding it is configured in your DS XML as operationBinding.logSlowSQL.
+This setting applies to all SQL queries, unless more specific thresholds are set using [DataSource.logSlowFetch](#attr-datasourcelogslowfetch), [DataSource.logSlowAdd](#attr-datasourcelogslowadd), [DataSource.logSlowUpdate](#attr-datasourcelogslowupdate), [DataSource.logSlowRemove](#attr-datasourcelogslowremove), [DataSource.logSlowCustom](#attr-datasourcelogslowcustom) or even more specific affecting just the operationBinding it is configured at: [operationBinding.logSlowSQL](#attr-operationbindinglogslowsql).
 
 If none of the thresholds above are set, global _sql.log.queriesSlowerThan_ [server.properties SQL setting](../kb_topics/sqlSettings.md#kb-topic-sql-database-settings-in-serverproperties) will be used.
 
@@ -2528,9 +1867,9 @@ Example of an audited DataSource (schematically):
  <DataSource audit="true" auditDSConstructor="package.AuditDS">
  <fields>....</fields>
  <addedAuditFields>
-      <addedAuditField name="altitude" type="float" />
-      <addedAuditField name="longitude" type="float" />
-      <addedAuditField name="logCorrelationId" type="text" />
+ 	 <addedAuditField name="altitude" type="float" />
+ 	 <addedAuditField name="longitude" type="float" />
+ 	 <addedAuditField name="logCorrelationId" type="text" />
  </addedAuditFields>
  </DataSource>
  
@@ -2604,8 +1943,6 @@ This property can be used in conjunction with [DataSource.ownerIdNullAccess](#at
 ### Description
 If we are [loading progressively](#attr-datasourceprogressiveloading), indicates the number of extra records SmartClient Server will advertise as being available, if it detects that there are more records to view (see [lookAhead](#attr-datasourcelookahead)). This property has no effect if we are not progressive-loading.
 
-Note that when viewing DataSource data in a ListGrid, it is not recommended to have the endGap be larger than the [ResultSet.resultSize](ResultSet.md#attr-resultsetresultsize). This can result in a situation where the entire range requested by the ResultSet is beyond the true end of the data set, with unpredictable results.
-
 ### Groups
 
 - progressiveLoading
@@ -2655,28 +1992,6 @@ Whether we store server responses for this DataSource into [browser-based offlin
 **Flags**: IRW
 
 ---
-## Attr: DataSource.params
-
-### Description
-Applies to RestConnector dataSources ([serverType](#attr-datasourceservertype) "rest") only, and is overridable per operationBinding (see [OperationBinding.params](OperationBinding.md#attr-operationbindingparams)).
-
-A list of key/value pairs to pass as URL parameters when constructing the query part of the REST service URL. These can include templating, as described in the [RestConnector overview](../kb_topics/serverRestConnector.md#kb-topic-server-side-rest-connector). For example:
-
-```
-    <params>
-      <customParam>$arbitraryVarInTemplateContext</customParam>
-      <userIdentifier>$config['rest.service.user.identifier']</userIdentifier>
-    </params>
-```
-Bear in mind that [requestFormat](#attr-datasourcerequestformat) "params" implies by default a behavior that automatically adds parameters corresponding to values and/or criteria (see the [RESTRequestFormat](../reference.md#type-restrequestformat) docs for details), so you would not normally use this property to specify parameters based on request values. Any params explicitly specified with the `params` property at DataSource of operationBinding level will be added to the auto-created list of params implied if `requestFormat` is "params".
-
-### Groups
-
-- serverRestConnector
-
-**Flags**: IR
-
----
 ## Attr: DataSource.projectFileKey
 
 ### Description
@@ -2705,41 +2020,6 @@ Allows you to specify ["update" operation](../reference.md#type-dsoperationtype)
 See [DataSource.logSlowSQL](#attr-datasourcelogslowsql) for more details.
 
 **Flags**: IR
-
----
-## Attr: DataSource.sampleData
-
-### Description
-An optional array of sample data records. These may be actual records from the data source or artificial data that is representative of records from the data source.
-
-AI may be provided this sample data when AI is asked to work with the data source, to give it a better idea of what the data in the data source "looks like".
-
-When defining the data source in a .ds.xml file (see [dataSourceDeclaration](../kb_topics/dataSourceDeclaration.md#kb-topic-creating-datasources)), it will likely be helpful to use the XMLSchema-Instance `type` attribute to be able to change the value type from the default (string) to boolean, int, float, date, etc. For example:
-
-```
- <sampleData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-   <country>
-     <continent>North America</continent>
-     <countryName>United States</countryName>
-     <countryCode>US</countryCode>
-     <area xsi:type="float">9372610</area>
-     <population xsi:type="int">266476278</population>
-     <gdp xsi:type="float">7247700</gdp>
-     <independence xsi:type="date">1776-07-04</independence>
-     <government>federal republic</government>
-     <capital>Washington</capital>
-     <member_g8 xsi:type="boolean">true</member_g8>
-   </country>
- ...
- 
-```
-
-### See Also
-
-- [DataSource.description](#attr-datasourcedescription)
-- [DataSourceField.description](DataSourceField.md#attr-datasourcefielddescription)
-
-**Flags**: IRW
 
 ---
 ## Attr: DataSource.useSpringTransaction
@@ -2820,79 +2100,6 @@ and then add a line like this to your server.properties:
 **Flags**: IR
 
 ---
-## Attr: DataSource.transformResponseScript
-
-### Description
-A scriptlet to be executed on the server after running any operation on this dataSource. The intention is that this scriptlet transforms the response data in some way. It is provided to allow complex, programmatic transformations without having to handle the operation in a [DMI](DMI.md#class-dmi) or [handler script](#attr-datasourcescript). To avoid confusion, it should be noted that, in many cases, you could instead write response transformation logic in a [script](#attr-datasourcescript) that first invokes execute() on the DSRequest to run the default behavior. The advantage of `transformResponseScript` is that it allows you partition any script logic appropriately, and is more self-documenting.
-
-If [OperationBinding.transformResponseScript](OperationBinding.md#attr-operationbindingtransformresponsescript) is also specified, it will be executed for the operation binding in question _in addition to_ and _after_ the DataSource-level script.
-
-All of the variables available in a normal [script](#attr-datasourcescript) are available to a `transformResponseScript`, but the framework also provides somes additional variables useful in the specific context of transforming response data:
-
-*   **dsResponse**The actual `DSResponse` object
-*   **responseObjects** is the response data as a list of objects, either Maps or Javabeans, depending on what data model you are using - see [beanClassName](#attr-datasourcebeanclassname). If the underlying response data is actually a single object, this is just that single object wrapped in a List
-*   **responseObject** is the response data as a single object. If the underlying response data is not a single object - ie, it is a list of objects - this will just be the first item in the list
-
-Additionally, if the dataSource is a [server-side RestConnector](../kb_topics/serverRestConnector.md#kb-topic-server-side-rest-connector), a number of additional variables are made available:
-
-*   **responseText** is the actual XML or JSON text returned by the REST service
-*   **completeData** is the entire REST response converted into a structure of Java Lists and Maps by parsing the JSON or XML text (note, only if the [requiresCompleteRESTResponse](#attr-datasourcerequirescompleterestresponse) flag is true)
-*   **responseRecords** is the REST response converted into a list of records, either by:
-    
-    *   Parsing a list-type response from the JSON or XML text returned by the REST service, or
-    *   Parsing the response and then applying the [recordXPath](#attr-datasourcerecordxpath), if a recordXPath is declared
-    
-    `responseRecords` is provided to the script as a List of Maps. If the dataSource expresses a responseTemplate, it is the list of records _after_ templating has been processed
-*   **responseRecordsBeforeTemplating** is the `responseRecords` as they were before the `responseTemplate` was applied. It is only present if the dataSource declares a `responseTemplate`
-
-Normally, both `responseObjects` and (for RESTDataSource only) `responseRecords` are "live". This means that any changes you make to them in your script will affect the underlying objects in the response data and be seen in downstream processing. This means that your script can modify things in place and does not need to return a value; this is the recommended approach.
-
-If your script _does_ return a value, we will assign that value as the response data on return from the script.
-
-**Warning:** It is advisable to explicitly return null if you do not wish to return a value. See the section "Returning values and JavaScript", which also applies to Groovy and some other JSR223 languages, in the [server scripting overview](../kb_topics/serverScript.md#kb-topic-server-scripting).
-
-Note, if you prefer a Java solution rather than placing scripts in your `.ds.xml` files, you can instead extend the Java `BasicDataSource` class and override its `transformResponse()` method. If you both override the Java method and provide a `transformResponseScript`, the Java method runs first and any transformations it makes will be visible to the script. See [serverConstructor](#attr-datasourceserverconstructor) for details of how to use a custom class to implement a DataSource server-side.
-
-### Groups
-
-- serverScript
-
-### See Also
-
-- [DataSource.script](#attr-datasourcescript)
-- [DataSource.transformRequestScript](#attr-datasourcetransformrequestscript)
-- [OperationBinding.transformResponseScript](OperationBinding.md#attr-operationbindingtransformresponsescript)
-- [DataSourceField.fieldValueScript](DataSourceField.md#attr-datasourcefieldfieldvaluescript)
-
-**Flags**: IR
-
----
-## Attr: DataSource.transformRequestScript
-
-### Description
-A scriptlet to be executed on the server prior to running any operation on this dataSource. The intention is that this scriptlet transforms the DSRequest in some way - probably its [criteria](DSRequest.md#attr-dsrequestdata) and/or [values](DSRequest.md#attr-dsrequestdata), but maybe something less obvious, such as adding to its templateContext Map - prior to running the operation proper. It is provided to allow more complex, programmatic transformations than is possible with declarative [DSRequestModifier](../reference_2.md#object-dsrequestmodifier)s, without having to handle the operation in a [DMI](DMI.md#class-dmi) or [handler script](#attr-datasourcescript). To avoid confusion, it should be noted that, in many cases, you could instead write request transformation logic in a [script](#attr-datasourcescript) and then have that script invoke execute() on the DSRequest to proceed with default behavior. The advantage of `transformRequestScript` is that it allows you partition any script logic appropriately, and is more self-documenting.
-
-If [OperationBinding.transformRequestScript](OperationBinding.md#attr-operationbindingtransformrequestscript) is also specified, it will be executed for the operation binding in question _in addtion to_ and _after_ the DataSource-level script.
-
-All of the variables available in a normal [script](#attr-datasourcescript) are available to a `transformRequestScript`, including the three you are most likely to use: `dsRequest`, `criteria` and `values`. All three of these variables are "live" - any changes you make to them will affect the underlying object and be seen in downstream processing. This means that your script can modify things in place and does not need to return a value; this is the recommended approach.
-
-If your script _does_ return a value, we will assign that value to criteria for a fetch or remove operation, and to values for an add or update operation. This may well be what you want, but it may not - this is why we recommend modifying in place and not returning a value.
-
-**Warning:** It is advisable to explicitly return null if you do not wish to return a value. See the section "Returning values and JavaScript", which also applies to Groovy and some other JSR223 languages, in the [server scripting overview](../kb_topics/serverScript.md#kb-topic-server-scripting).
-
-### Groups
-
-- serverScript
-
-### See Also
-
-- [DataSource.script](#attr-datasourcescript)
-- [DataSource.transformResponseScript](#attr-datasourcetransformresponsescript)
-- [OperationBinding.transformRequestScript](OperationBinding.md#attr-operationbindingtransformrequestscript)
-
-**Flags**: IR
-
----
 ## Attr: DataSource.cacheAcrossOperationIds
 
 ### Description
@@ -2935,20 +2142,6 @@ Default value of null means this DataSource will use the system-wide default, wh
 ### See Also
 
 - [OperationBinding.allowMultiUpdate](OperationBinding.md#attr-operationbindingallowmultiupdate)
-
-**Flags**: IR
-
----
-## Attr: DataSource.sqlSuffix
-
-### Description
-**This feature is available with Power or better licenses only.** See [smartclient.com/product](http://smartclient.com/product) for details.
-
-For DataSources of [serverType](#attr-datasourceservertype) "sql" only, some text to add right at the end of any generated query, after all other text. See the documentation for the [operationBinding level](OperationBinding.md#attr-operationbindingsqlsuffix) property for more detail.
-
-### Groups
-
-- customQuerying
 
 **Flags**: IR
 
@@ -3181,45 +2374,6 @@ When autoDeriveSchema is set, SQLDataSource will automatically discover foreignK
 **Flags**: IR
 
 ---
-## Attr: DataSource.serverConfig
-
-### Description
-Configuration settings that will be used purely on the the server-side. Any properties declared within a `serverConfig` block will be overlaid onto the regular dataSource configuration, such that any property declared in `serverConfig` takes priority, **but only on the server**; the client never sees the `serverConfig` block.
-
-`serverConfig` is primarily intended for use with the [RestConnector](../kb_topics/serverRestConnector.md#kb-topic-server-side-rest-connector), and is used for two related purposes. Firstly, it is a mechanism for declaring properties that only the server should see, to avoid information leakage to the client. Typical usages of this type would be things like [headers](#attr-datasourceheaders) and [params](#attr-datasourceparams) - things that are specific to `restConnector`'s communication with the remote REST server, and no business of the client's.
-
-Secondly, `serverConfig` is used in cases where you need the client and server to use different values for a property. The only property for which this definitely arises is [dataURL](#attr-datasourcedataurl) (and the [same property on the OperationBinding](OperationBinding.md#attr-operationbindingdataurl)), because `dataURL` is used both on the client, to configure the endpoint for server requests, and by `RestController` on the server to configure the target URL(s) for REST request(s). Thus, you should **always** specify a `dataURL` inside `serverConfig` if it is intended for use on the server-side by a `RestConnector` DataSource; failure to do so will cause the client to send its `DSRequest`s directly to the remote REST server, which obviously will not know how to handle them.
-
-Sub-objects will be merged such that properties declared in `serverConfig` replace the same properties declared in the regular sub-object, but properties that are missing in the `serverConfig` remain in the merged sub-object. For example:
-
-```
- <DataSource ... >
-
-   <operationBindings>
-     <operationBinding operationType="fetch" dataURL="specialIDACallURL" outputs="some,list,of,fields" /> 
-     <!-- the browser can see this, so this works for the extremely rare case that a DataSource should
-             contact different versions of the IDACall servlet for different operations.  The browser is
-              also aware of the limited outputs -->
-     </operationBindings>
-
-     <serverConfig>
-       <operationBindings>
-         <operationBinding operationType="fetch" dataURL="restServiceURL" /> 
-         <!-- this is the actual URL of the REST service to contact from the server.  The browser never sees this
-               so its version of "dataURL" is retained.  At the same time, the "outputs" from the browser-visible 
-               definition still apply, because the configs were merged -->
-       </operationBindings>
-     <serverConfig>
- 
-```
-
-### Groups
-
-- serverRestConnector
-
-**Flags**: IR
-
----
 ## Attr: DataSource.useSequences
 
 ### Description
@@ -3251,13 +2405,7 @@ By default, all DataSources are assumed to be capable of handling [AdvancedCrite
 ### Description
 **This property only applies to the built-in SQL DataSource provided in Pro and better editions of SmartClient**
 
-Defines the name of the schema we use to qualify the [tableName](#attr-datasourcetablename) in generated SQL. If you do not provide this property, we will try to use the SmartClient default schema for this [dbName](../kb_topics/dbConfigTool.md#kb-topic-database-configuration); you specify this for a given `dbName` in your `server.properties` file like this:
-
-```
-    sql.the_dbName.default.schema: myDefaultSchema
- 
-```
-If there is no DataSource-specific schema and no SmartClient default schema, table names will not be qualified in generated SQL, and thus the database default schema will be used. Support for multiple schemas (or schemata) varies quite significantly across the supported databases, as does the meaning of the phrase "default schema". In addition, some databases allow you to override the default schema in the JDBC connection URL, which is a preferable approach if all your tables are in the same (non-default) schema, because it makes the generated SQL simpler (no need to qualify every table)
+Defines the name of the schema we use to qualify the [tableName](#attr-datasourcetablename) in generated SQL. If you do not provide this property, table names will not be qualified in generated SQL, and thus the default schema will be used. Support for multiple schemas (or schemata) varies quite significantly across the supported databases, as does the meaning of the phrase "default schema". In addition, some databases allow you to override the default schema in the JDBC connection URL, which is a preferable approach if all your tables are in the same (non-default) schema.
 
 The following table provides information by product:
 
@@ -3285,20 +2433,6 @@ If [DataSource.noNullUpdates](#attr-datasourcenonullupdates) is set, the value t
 
 - [DataSource.noNullUpdates](#attr-datasourcenonullupdates)
 - [DataSourceField.nullReplacementValue](DataSourceField.md#attr-datasourcefieldnullreplacementvalue)
-
-**Flags**: IR
-
----
-## Attr: DataSource.xmlTag
-
-### Description
-Applies to RestConnector dataSources ([serverType](#attr-datasourceservertype) "rest") only, and is overridable per operationBinding (see [OperationBinding.xmlTag](OperationBinding.md#attr-operationbindingxmltag)).
-
-This property specifies the name of the enclosing tag when we are generating the XML block used to send context to a REST service where the [DataSource.requestFormat](#attr-datasourcerequestformat) is "xml"
-
-### Groups
-
-- serverRestConnector
 
 **Flags**: IR
 
@@ -3407,65 +2541,12 @@ Note, that `autoCreateAuditTable` attribute takes effect only if framework setti
 **Flags**: IR
 
 ---
-## Attr: DataSource.headers
-
-### Description
-Applies to RestConnector dataSources ([serverType](#attr-datasourceservertype) "rest") only, and is overridable per operationBinding (see [OperationBinding.headers](OperationBinding.md#attr-operationbindingheaders)).
-
-Some REST servers require special HTTP headers to be sent to provide state or authentication details; this property can be used to set up one or more headers to be sent with the REST request. Like other elements of RestConnector config, you typically define this property inside a [serverConfig](#attr-datasourceserverconfig) block to keep the details from leaking to clients. Also like other RestConnector config, you can include Velocity templates in your header definitions.
-
-Headers are simple key/value pairs, defined like this:
-
-```
-    <headers>
-        <My-Custom-Header>Some custom value</My-Custom-Header>
-        <Another-Special-Header>$config['special.header.value']</Another-Special-Header>
-    </headers>
-```
-Note, we automatically add a "Content-Type" header of either `application/json` or `application/xml` (depending on the [responseFormat](#attr-datasourceresponseformat)), unless you define one by hand in your DataSource's `headers` definition
-
-### Groups
-
-- serverRestConnector
-
-**Flags**: IR
-
----
 ## Attr: DataSource.serverOnly
 
 ### Description
 Setting a DataSource to be `serverOnly="true"` ensures that it will not be visible to the client. Any request through IDACall to this DataSource will return a failure response. Only requests which have been initiated on the server-side will be executed against this DataSource.
 
 **Flags**: IR
-
----
-## Attr: DataSource.multiInsertStrategy
-
-### Description
-For dataSources of [serverType](#attr-datasourceservertype) "sql" only, this property sets the multi-insert strategy for add requests on this [dataSource](#class-datasource). Only has an effect if the [add request](#method-datasourceadddata) specifies a list of records as the data. See the docs for [MultiInsertStrategy](../reference_2.md#type-multiinsertstrategy) for more information.
-
-Note that this setting (along with the other multi-insert properties, [multiInsertBatchSize](#attr-datasourcemultiinsertbatchsize) and [multiInsertNonMatchingStrategy](#attr-datasourcemultiinsertnonmatchingstrategy)) can be overridden at the [operationBinding level](OperationBinding.md#attr-operationbindingmultiinsertstrategy) and the [dsRequest level](DSRequest.md#attr-dsrequestmultiinsertstrategy). If you wish to configure multi-insert setting globally, you can add the following properties to your `server.properties` file:
-
-`sql.multi.insert.strategy` Global equivalent of [multiInsertStrategy](#attr-datasourcemultiinsertstrategy)  
-`sql.multi.insert.batchSize` Global equivalent of [multiInsertBatchSize](#attr-datasourcemultiinsertbatchsize)  
-`sql.multi.insert.non.matching.strategy` Global equivalent of [multiInsertNonMatchingStrategy](#attr-datasourcemultiinsertnonmatchingstrategy)
-
-Example `server.properties` settings:
-
-```
-   sql.multi.insert.strategy: multipleValues
-   sql.multi.insert.batchSize: 300
-   sql.multi.insert.non.matching.strategy: dropMissing
- 
-```
-See the "Batch inserting" paragraph of the [addData() documentation](#method-datasourceadddata) for a description of the multi-insert implementation.
-
-### See Also
-
-- [DataSource.multiInsertBatchSize](#attr-datasourcemultiinsertbatchsize)
-- [DataSource.multiInsertNonMatchingStrategy](#attr-datasourcemultiinsertnonmatchingstrategy)
-
-**Flags**: IRW
 
 ---
 ## Attr: DataSource.mockMode
@@ -3487,20 +2568,7 @@ DataSources can be loaded in `mockMode` via passing settings to [DataSource.load
 ## Attr: DataSource.description
 
 ### Description
-An optional description of the DataSource's content. It is not automatically exposed on any component, but it is useful for developer documentation, and as such it is included on any [OpenAPI specification](../kb_topics/openapiSupport.md#kb-topic-openapi-specification-oas-support) generated by the framework. Markdown is a commonly-used syntax, but you may also embed HTML content. When embedding HTML in the description in a .ds.xml file (see [dataSourceDeclaration](../kb_topics/dataSourceDeclaration.md#kb-topic-creating-datasources)), it is recommended to wrap the HTML in a CDATA tag.
-
-This description is also provided to AI when AI is asked to work with the data source. Best practices for the description are:
-
-*   Start with a plain language explanation of what the data source and records within it represent, their business concept or core purpose.
-*   Describe how the data source relates to other data sources in the application.
-*   Mention the approximate size of the data source and whether/when records are updated, added, and removed, as well as the approximate rates of updates, additions, and removals.
-*   Identify any known data issues or anomalies.
-
-In addition to the data source-level description, each field can be described via [DataSourceField.description](DataSourceField.md#attr-datasourcefielddescription).
-
-### See Also
-
-- [DataSource.sampleData](#attr-datasourcesampledata)
+An optional description of the DataSource's content. Not automatically exposed on any component, but useful for developer documentation, and as such is included on any [OpenAPI specification](../kb_topics/openapiSupport.md#kb-topic-openapi-specification-oas-support) generated by the framework. Markdown is a commonly used syntax, but you may also embed HTML content in a CDATA tag.
 
 **Flags**: IR
 
@@ -3571,7 +2639,7 @@ Note that there is no inherent support for millisecond precision in SmartClient 
 ## Attr: DataSource.requestProperties
 
 ### Description
-Additional properties to pass through to the [DSRequest](../reference_2.md#object-dsrequest)s made by this DataSource. This must be set before any [DSRequest](../reference_2.md#object-dsrequest)s are issued and before any component is bound to the DataSource.
+Additional properties to pass through to the [DSRequest](../reference.md#object-dsrequest)s made by this DataSource. This must be set before any [DSRequest](../reference.md#object-dsrequest)s are issued and before any component is bound to the DataSource.
 
 These properties are applied before [DataSource.transformRequest](#method-datasourcetransformrequest) is called.
 
@@ -3582,7 +2650,7 @@ These properties are applied before [DataSource.transformRequest](#method-dataso
 
 ### See Also
 
-- [DSRequest](../reference_2.md#object-dsrequest)
+- [DSRequest](../reference.md#object-dsrequest)
 - [OperationBinding.requestProperties](OperationBinding.md#attr-operationbindingrequestproperties)
 
 **Flags**: IRW
@@ -3612,71 +2680,6 @@ This feature can be disabled system-wide via setting `datasource.autoLinkFKs` to
 **Flags**: R
 
 ---
-## Attr: DataSource.sqlPrefix
-
-### Description
-**This feature is available with Power or better licenses only.** See [smartclient.com/product](http://smartclient.com/product) for details.
-
-For DataSources of [serverType](#attr-datasourceservertype) "sql" only, some text to add right at the beginning of any generated query, before all other text. See the documentation for the [operationBinding level](OperationBinding.md#attr-operationbindingsqlprefix) property for more detail.
-
-### Groups
-
-- customQuerying
-
-**Flags**: IR
-
----
-## Attr: DataSource.arrayCriteriaForceExact
-
-### Description
-With ordinary [simple criteria](../reference_2.md#type-criteria), it is possible to provide an array of values for a given field, which means "any of these values". For example:
-```
-  var criteria = {
-    field1 : "value1",
-    field2 : ["value2", "value3"]
- }
-```
-At first glance, this criteria appears to mean "select records where 'field1' is 'value1' and 'field2' is one of 'value2' or 'value3'". However, if the prevailing [textMatchStyle](DSRequest.md#attr-dsrequesttextmatchstyle) is "substring" - as it would be if, for example, you had issued a [filterData()](#method-datasourcefilterdata) call - then this criteria means "select records where 'field1' contains 'value1' somewhere, and 'field2' contains either 'value2' or 'value3'"
-
-Depending on your requirement, this may or may not be what you want, and you can control it by setting the `textMatchStyle` on your [DSRequest](../reference_2.md#object-dsrequest), or by setting a default `textMatchStyle` on the DataSource ([DataSource.defaultTextMatchStyle](#attr-datasourcedefaulttextmatchstyle)), or by specifying that the `textMatchStyle` should be ignored for certain fields ([DataSourceField.ignoreTextMatchStyle](DataSourceField.md#attr-datasourcefieldignoretextmatchstyle))
-
-However, a common use case is that you want "substring" style filtering on one or more single-valued fields, but exact matching on a list-valued field. For example, say you want a list of customers based in certain cities, with a name matching the substring "software":
-
-```
-  var criteria = {
-    name : "software",
-    city : ["York", "Newport", "Orleans"]
- }
-```
-Here, using substring matching on the "city" field is likely to give incorrect results, as it will match a number of US cities in addition to the three European cities intended (New York, Yorktown, New Orleans, Newport News, and probably others). And even if this is not an issue for your particular use case, and correct results can be obtained with a substring search, it is very likely to be more costly performance-wise than the exact value match that you really need (potentially much more costly).
-
-You could achieve exact matching in the above case by marking the "city" field as `ignoreTextMatchStyle:true`, but that would mean you couldn't perform substring searches on that field in other use cases where that might be desirable.
-
-In cases like this, SmartClient by default treats list-valued simple criteria as if `ignoreTextMatchStyle` is in force for that field. If you want to switch this behavior off, and have list-valued simple criteria handled with the prevailing `textMatchStyle`, set `arrayCriteriaForceExact` to false. It is also possible to set this flag per-operationBinding and per-DSRequest - see [OperationBinding.arrayCriteriaForceExact](OperationBinding.md#attr-operationbindingarraycriteriaforceexact) and [DSRequest.arrayCriteriaForceExact](DSRequest.md#attr-dsrequestarraycriteriaforceexact)
-
-If you want to switch this behavior off across the entire system, set the flag in your `server.properties` file:
-
-```
-     arrayCriteriaForceExact: false
- 
-```
-This will only have an effect for server-side DataSources; if you want to change this flag globally for [clientOnly](#attr-datasourceclientonly) dataSources, change the default in the client-side [DataSource](#class-datasource) class, like so:
-```
-     isc.DataSource.addProperties({arrayCriteriaForceExact: false});
- 
-```
-If you do change the global defaults, it is still possible to override per-dataSource or per-operationBinding, as described above.
-
-Note, all of this only applies to _simple_ criteria. If your dataSource [supports AdvancedCriteria](#method-datasourcesupportsadvancedcriteria), that gives you much finer and more complete control over the exact meaning of individual criterions.
-
-### Groups
-
-- clientDataIntegration
-- serverDataIntegration
-
-**Flags**: IR
-
----
 ## Attr: DataSource.auditChangedFieldsFieldLength
 
 ### Description
@@ -3690,18 +2693,6 @@ To set the changedFields field length for all DataSources that do not override t
 ```
 
 **Flags**: IR
-
----
-## Attr: DataSource.auth
-
-### Description
-For a [RestConnector DataSource](../kb_topics/serverRestConnector.md#kb-topic-server-side-rest-connector), authentication details for the REST service. Note, although RestConnector-specific details would typically be wrapped in a [serverConfig block](#attr-datasourceserverconfig) to prevent information leakage to the client, we automatically exclude the `auth` block even if it is not inside `serverConfig`, because this is information that is always sensitive, and never required on the client
-
-### Groups
-
-- serverRestConnector
-
-**Flags**: IRW
 
 ---
 ## Attr: DataSource.inheritanceMode
@@ -3772,18 +2763,6 @@ For DataSources with [auditing enabled](#attr-datasourceaudit), specifies the fi
 Default URL to contact to fulfill all DSRequests. Can also be set on a per-operationType basis via [OperationBinding.dataURL](OperationBinding.md#attr-operationbindingdataurl).
 
 NOTE: Best practice is to use the same `dataURL` for all DataSources which fulfill DSRequests via the server-side RPCManager API. Otherwise, cross-DataSource [operation queuing](RPCManager.md#classmethod-rpcmanagerstartqueue) will not be possible.
-
-#### dataURL and [RestConnector](../kb_topics/serverRestConnector.md#kb-topic-server-side-rest-connector)
-`dataURL` is also used to configure the address of the target REST server for a `RestConnector` DataSource. Typically this is done at the [operationBinding level](OperationBinding.md#attr-operationbindingdataurl), because the URLs of REST services often encode things about the service itself, like whether it is a fetch or an update. However, if your REST service does use the same URL for every service, or most services, you can configure it here at the DataSource level.
-
-As discussed in the [RestConnector overview](../kb_topics/serverRestConnector.md#kb-topic-server-side-rest-connector), many elements of `RestConnector` config can be Velocity templates, and `dataURL` is one such element. For example:
-
-```
-   <operationBinding operationType="fetch" operationId="fetchByPK">
-       <dataURL>$config['rest.server.base.url']/fetch/$criteria.pk</dataURL>
-   </operationBinding>
-```
-**NOTE:** Because the server-side `RestConnector` implementation uses the `dataURL` property to configure the address of the target REST server, and that property also has meaning on the client, if you are using a `RestConnector` DataSource, you should specify the `dataURL` of the target REST server inside the [serverConfig](#attr-datasourceserverconfig) block
 
 ### Groups
 
@@ -3930,20 +2909,6 @@ If you specify both [projectFileKey](#attr-datasourceprojectfilekey) and `projec
 **Flags**: IR
 
 ---
-## Attr: DataSource.allowCriteriaSubqueries
-
-### Description
-Controls whether [AdvancedCriteria subqueries](../reference.md#object-advancedcriterionsubquery) are permitted for this `DataSource`. Set this value `true` to always permit subqueries in criteria on this dataSource, and set it false to always disallow them.
-
-The default value of null means that we use the global setting, controlled by setting the `allowCriteriaSubqueries` flag in your `server.properties` file (this global flag is true by default))
-
-### Groups
-
-- advancedFilter
-
-**Flags**: IRW
-
----
 ## Attr: DataSource.ownerIdField
 
 ### Description
@@ -3951,11 +2916,11 @@ Requires that the currently authenticated user match the contents of this field,
 
 Note, the behaviors described below can be affected by the dataSource properties [ownerIdNullRole](#attr-datasourceowneridnullrole) and [ownerIdNullAccess](#attr-datasourceowneridnullaccess), so please read the documentation for those two properties in conjunction with this article.
 
-When a new row is added by a client-initiated [DSRequest](../reference_2.md#object-dsrequest), the ownerIdField will be automatically populated with the currently authenticated user (clobbering any value supplied by the client). Client-initiated attempts to update the ownerIdField will also be prevented.
+When a new row is added by a client-initiated [DSRequest](../reference.md#object-dsrequest), the ownerIdField will be automatically populated with the currently authenticated user (clobbering any value supplied by the client). Client-initiated attempts to update the ownerIdField will also be prevented.
 
 If you wish to set the ownerIdField to a different value via an "add" or "update" operation, you can do so in server-side DMI code (possibly consulting `DSRequest.getClientSuppliedValues()` to get the value that was clobbered).
 
-For client-initiated "fetch", "update" or "remove" operations, the server will modify client-supplied criteria so that only rows whose ownerIdField matches the currently authenticated user can be read, updated or deleted. For built-in DataSource types (SQL, Hibernate and JPA), the additional criteria required to match the `ownerIdField` field will ignore the prevailing [textMatchStyle](DSRequest.md#attr-dsrequesttextmatchstyle) and always use exact equality. If you have a custom or generic DataSource implementation, you will want to do the same thing, to avoid false positives on partial matches (eg, a user with name "a" gets records where the owner is any user with an "a" in the name). You can determine when this is necessary by looking for a [DSRequest](../reference_2.md#object-dsrequest) attribute called "restrictedOwnerIdField". For example, code similar to the following:
+For client-initiated "fetch", "update" or "remove" operations, the server will modify client-supplied criteria so that only rows whose ownerIdField matches the currently authenticated user can be read, updated or deleted. For built-in DataSource types (SQL, Hibernate and JPA), the additional criteria required to match the `ownerIdField` field will ignore the prevailing [textMatchStyle](DSRequest.md#attr-dsrequesttextmatchstyle) and always use exact equality. If you have a custom or generic DataSource implementation, you will want to do the same thing, to avoid false positives on partial matches (eg, a user with name "a" gets records where the owner is any user with an "a" in the name). You can determine when this is necessary by looking for a [DSRequest](../reference.md#object-dsrequest) attribute called "restrictedOwnerIdField". For example, code similar to the following:
 
 ```
 	String restrictedField = (String)dsRequest.getAttribute("restrictedOwnerIdField");
@@ -4033,29 +2998,6 @@ If you want to return your data in this format, you will need to explicitly set 
 **Flags**: IR
 
 ---
-## Attr: DataSource.httpMethod
-
-### Description
-Applies to RestConnector dataSources ([serverType](#attr-datasourceservertype) "rest") only, and is overridable per operationBinding (see [OperationBinding.httpMethod](OperationBinding.md#attr-operationbindinghttpmethod)).
-
-Allows you to configure the HTTP method to use for this DataSource. Since REST services typically use different HTTP methods for different types of operation - it is common to use GET for fetches and PUT for updates, for example - this property is more commonly set at the [operationBinding level](OperationBinding.md#attr-operationbindinghttpmethod) than at the DataSource level. See [this Mozilla article](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) for a list of valid HTTP methods.
-
-If this property is not provided at either DataSource or opBinding level, `RestConnector` uses a default HTTP method depending on the type of operation:
-
-| Operation type | HTTP Method |
-|---|---|
-| Fetch | GET |
-| Add | POST |
-| Update | PUT |
-| Remove | DELETE |
-
-### Groups
-
-- serverRestConnector
-
-**Flags**: IR
-
----
 ## Attr: DataSource.inheritsFrom
 
 ### Description
@@ -4078,20 +3020,6 @@ This feature can be used for:
 ### Groups
 
 - fields
-
-**Flags**: IR
-
----
-## Attr: DataSource.wrapInList
-
-### Description
-Applies to RestConnector dataSources ([serverType](#attr-datasourceservertype) "rest") only, and is overridable per operationBinding (see [OperationBinding.wrapInList](OperationBinding.md#attr-operationbindingwrapinlist)).
-
-When true, and the [requestFormat](#attr-datasourcerequestformat) is "json", and the [dsRequest](../reference_2.md#object-dsrequest) only contains a single valueSet, we will wrap that single valueSet in a list before sending to the remote REST server. This is useful if you have a remote service that wants data to be supplied as a list, even when there is only one entry in the list
-
-### Groups
-
-- serverRestConnector
 
 **Flags**: IR
 
@@ -4330,14 +3258,14 @@ If the parent DataSource is already loaded, calling `loadWithParents` will not a
 ## ClassMethod: DataSource.registerRecordSummaryFunction
 
 ### Description
-Register a new [RecordSummaryFunction](../reference_2.md#type-recordsummaryfunction). This will then be available by calling [DataSource.applyRecordSummaryFunction](#classmethod-datasourceapplyrecordsummaryfunction) and passing in the `functionName`, or by setting the [ListGridField.recordSummaryFunction](ListGridField.md#attr-listgridfieldrecordsummaryfunction) property of a summary field to `functionName`.
+Register a new standard [RecordSummaryFunction](../reference.md#type-recordsummaryfunction). This will then be available by calling [applySummaryFunction()](SimpleType.md#classmethod-simpletypeapplysummaryfunction) and passing in just the new method name.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| functionName | [String](#type-string) | false | — | identifier for the new record summary function |
-| summaryFunction | [Function](#type-function)|[StringMethod](../reference_2.md#type-stringmethod) | false | — | new summary function implementation. This method takes 3 parameters: `record` (the record for which the summary is being generated), `fields` (an array of the available fields) and `summaryField` (the summary field). |
+| methodName | [String](#type-string) | false | — | identifier for the new summary function |
+| summaryFunction | [Function](#type-function)|[StringMethod](../reference.md#type-stringmethod) | false | — | new summary function implementation. This method should take 3 parameters: `record` (the record for which the summary is being generated), `fields` (an array of fields to include in the generated summary) and `summaryField` (a pointer to the field in which the summary will be displayed \[may be null\]. |
 
 ---
 ## ClassMethod: DataSource.load
@@ -4366,28 +3294,11 @@ Converts criteria expressed in SmartClient's simple criteria format to an Advanc
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | criteria | [Criteria](../reference_2.md#type-criteria) | false | — | simple criteria |
-| textMatchStyle | [TextMatchStyle](../reference_2.md#type-textmatchstyle) | true | — | default style of matching text. Defaults to "substring" |
+| textMatchStyle | [TextMatchStyle](../reference.md#type-textmatchstyle) | true | — | default style of matching text. Defaults to "substring" |
 
 ### Returns
 
 `[AdvancedCriteria](#type-advancedcriteria)` — equivalent AdvancedCriteria object
-
----
-## ClassMethod: DataSource.getAggregationDescription
-
-### Description
-Returns a human-readable string describing the aggregation properties in the request: [DSRequest.groupBy](DSRequest.md#attr-dsrequestgroupby) and [DSRequest.summaryFunctions](DSRequest.md#attr-dsrequestsummaryfunctions).
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| subquery | [AdvancedCriterionSubquery](#type-advancedcriterionsubquery) | false | — | Subquery with aggregation to convert to a readable string |
-| dataSource | [DataSource](#type-datasource) | false | — | DataSource to provide field properties |
-
-### Returns
-
-`[String](#type-string)` — Human-readable string describing the aggregation in the passed request
 
 ---
 ## ClassMethod: DataSource.saveValueViaDataPath
@@ -4411,7 +3322,7 @@ This method will call the [updateAtomicValue()](SimpleType.md#method-simpletypeu
 ## ClassMethod: DataSource.getSortBy
 
 ### Description
-Given an array of [SortSpecifier](../reference_2.md#object-sortspecifier)s, return a simple list of Strings in the format expected by [DSRequest.sortBy](DSRequest.md#attr-dsrequestsortby).
+Given an array of [SortSpecifier](../reference.md#object-sortspecifier)s, return a simple list of Strings in the format expected by [DSRequest.sortBy](DSRequest.md#attr-dsrequestsortby).
 
 ### Parameters
 
@@ -4440,7 +3351,7 @@ Combines two criteria (either simple criteria objects or AdvancedCriteria) using
 | criteria1 | [Criteria](../reference_2.md#type-criteria) | false | — | first criteria object |
 | criteria2 | [Criteria](../reference_2.md#type-criteria) | false | — | second criteria object |
 | outerOperator | [CriteriaCombineOperator](../reference_2.md#type-criteriacombineoperator) | true | — | operator to use to combine the criteria. Defaults to "and" |
-| textMatchStyle | [TextMatchStyle](../reference_2.md#type-textmatchstyle) | true | — | style of matching text, if it is necessary to convert a simple criteria object to an AdvancedCriteria. Defaults to "substring" |
+| textMatchStyle | [TextMatchStyle](../reference.md#type-textmatchstyle) | true | — | style of matching text, if it is necessary to convert a simple criteria object to an AdvancedCriteria. Defaults to "substring" |
 
 ### Returns
 
@@ -4466,16 +3377,16 @@ This method will call the [updateAtomicValue()](SimpleType.md#method-simpletypeu
 ## ClassMethod: DataSource.applyRecordSummaryFunction
 
 ### Description
-Applies a [RecordSummaryFunction](../reference_2.md#type-recordsummaryfunction) to a record and returns the result.
+Applies a [RecordSummaryFunction](../reference.md#type-recordsummaryfunction) to a record and returns the result.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| summaryFunction | [RecordSummaryFunction](../reference_2.md#type-recordsummaryfunction) | false | — | The record summary function to execute. |
-| record | [Record](#type-record) | false | — | Record to retrieve a summary for. |
-| fields | [Array of Field](#type-array-of-field) | false | — | The available fields. |
-| summaryField | [DBCField](#type-dbcfield) | false | — | The summary field. |
+| summaryFunction | [SummaryFunction](../reference.md#type-summaryfunction) | false | — | Summary Function or identifier for registered recordSummaryFunction to execute. If passed in as an explicit function record, fields and summaryField parameters will be passed through to the function. |
+| record | [DataSourceRecord](#type-datasourcerecord) | false | — | Record to retrieve a summary for |
+| fields | [Array of DataSourceField](#type-array-of-datasourcefield) | false | — | Set of fields to include in the summary |
+| summaryField | [DataSourceField](#type-datasourcefield) | false | — | field in which this summary will be displayed. |
 
 ### Returns
 
@@ -4530,18 +3441,17 @@ Set the list of valid [OperatorId](../reference.md#type-operatorid)s for a given
 ## ClassMethod: DataSource.getSortSpecifiers
 
 ### Description
-Return an array of [SortSpecifier](../reference_2.md#object-sortspecifier)s, given an array of Strings in the format expected by [DSRequest.sortBy](DSRequest.md#attr-dsrequestsortby).
+Return an array of [SortSpecifier](../reference.md#object-sortspecifier)s, given an array of Strings in the format expected by [DSRequest.sortBy](DSRequest.md#attr-dsrequestsortby).
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | sortBy | [Array of String](#type-array-of-string) | false | — | A list of sortBy strings in the format expected by [DSRequest.sortBy](DSRequest.md#attr-dsrequestsortby) |
-| context | [DataSource](#type-datasource)|[DataBoundComponent](#type-databoundcomponent) | true | — | Context dataSource or component. |
 
 ### Returns
 
-`[Array of SortSpecifier](#type-array-of-sortspecifier)` — An array of [SortSpecifier](../reference_2.md#object-sortspecifier)s equivalent to the passed in string array
+`[Array of SortSpecifier](#type-array-of-sortspecifier)` — An array of [SortSpecifier](../reference.md#object-sortspecifier)s equivalent to the passed in string array
 
 ---
 ## ClassMethod: DataSource.get
@@ -4615,7 +3525,6 @@ Returns a human-readable string describing the clauses in this advanced criteria
 |------|------|----------|---------|-------------|
 | criteria | [AdvancedCriteria](#type-advancedcriteria)|[Criterion](#type-criterion) | false | — | Criteria to convert to a readable string |
 | dataSource | [DataSource](#type-datasource) | false | — | DataSource to provide definitions of operators |
-| criteriaOutputSettings | [CriteriaOutputSettings](#type-criteriaoutputsettings) | true | — | optional configuration settings for the output |
 
 ### Returns
 
@@ -4670,7 +3579,7 @@ Requires the SmartClient server, but does not rely on any server-side DataSource
 
 To export unformatted data, see [exportData](#method-datasourceexportdata) which does not include client-side formatters, but requires both the SmartClient server and the presence of server-side DataSources.
 
-Note that field [displayFormat](DataSourceField.md#attr-datasourcefielddateformatter) is honored for "date" and "datetime" fields when exporting direct to Excel; see the displayFormat docs for details.
+Note that field [displayFormat](DataSourceField.md#attr-datasourcefielddisplayformat) is honored for "date" and "datetime" fields when exporting direct to Excel; see the displayFormat docs for details.
 
 ### Parameters
 
@@ -4737,18 +3646,6 @@ By default, if [field.validOperators](DataSourceField.md#attr-datasourcefieldval
 ### Groups
 
 - advancedFilter
-
----
-## Method: DataSource.createAlias
-
-### Description
-Assigns an alias to this DataSource
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| alias | [String](#type-string) | false | — | The alias assigned to this DataSource. |
 
 ---
 ## Method: DataSource.xmlSerialize
@@ -4869,8 +3766,6 @@ Note that if [DataSourceField.format](DataSourceField.md#attr-datasourcefieldfor
 ### Description
 Perform an "update" DataSource operation against this DataSource, to update values in an existing DataSource record.
 
-If a callback was provided, it will be invoked when the operation completes successfully. If the operation fails, the callback will not be invoked unless [DSRequest.willHandleError](RPCRequest.md#attr-rpcrequestwillhandleerror) is true. See the [error handling overview](../kb_topics/errorHandling.md#kb-topic-error-handling-overview) for more information.
-
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
@@ -4887,7 +3782,7 @@ If a callback was provided, it will be invoked when the operation completes succ
 ## Method: DataSource.getDataProtocol
 
 ### Description
-Returns the appropriate [OperationBinding.dataProtocol](OperationBinding.md#attr-operationbindingdataprotocol) for a [DSRequest](../reference_2.md#object-dsrequest)
+Returns the appropriate [OperationBinding.dataProtocol](OperationBinding.md#attr-operationbindingdataprotocol) for a [DSRequest](../reference.md#object-dsrequest)
 
 ### Parameters
 
@@ -4949,7 +3844,7 @@ Get the list of [Operator](../reference.md#object-operator)s available for this 
 
 This valueMap is suitable for use in a UI for building queries, similar to the [FilterBuilder](FilterBuilder.md#class-filterbuilder), and optionally omits operators marked [Operator.hidden](Operator.md#attr-operatorhidden):true.
 
-It is also possible to have this function return only operators of a given [OperatorValueType](../reference_2.md#type-operatorvaluetype), or everything except operators of that type. This is useful, for example, if you want to return all the logical operators (like "and"), or everything except the logical operators.
+It is also possible to have this function return only operators of a given [OperatorValueType](../reference.md#type-operatorvaluetype), or everything except operators of that type. This is useful, for example, if you want to return all the logical operators (like "and"), or everything except the logical operators.
 
 ### Parameters
 
@@ -4957,8 +3852,8 @@ It is also possible to have this function return only operators of a given [Oper
 |------|------|----------|---------|-------------|
 | field | [String](#type-string)|[DataSourceField](#type-datasourcefield) | false | — | Field (or field name) to obtain operator map for. |
 | includeHidden | [boolean](../reference.md#type-boolean) | true | — | whether to include Operators marked hidden:true |
-| valueType | [OperatorValueType](../reference_2.md#type-operatorvaluetype) | true | — | If passed, returns only operators of this [OperatorValueType](../reference_2.md#type-operatorvaluetype) |
-| omitValueType | [boolean](../reference.md#type-boolean) | true | — | If set, reverses the meaning of the `valueType` parameter, so operators of that [OperatorValueType](../reference_2.md#type-operatorvaluetype) are the only ones omitted |
+| valueType | [OperatorValueType](../reference.md#type-operatorvaluetype) | true | — | If passed, returns only operators of this [OperatorValueType](../reference.md#type-operatorvaluetype) |
+| omitValueType | [boolean](../reference.md#type-boolean) | true | — | If set, reverses the meaning of the `valueType` parameter, so operators of that [OperatorValueType](../reference.md#type-operatorvaluetype) are the only ones omitted |
 
 ### Returns
 
@@ -5121,7 +4016,7 @@ Converts criteria expressed in SmartClient's simple criteria format to an Advanc
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | criteria | [Criteria](../reference_2.md#type-criteria) | false | — | simple criteria |
-| textMatchStyle | [TextMatchStyle](../reference_2.md#type-textmatchstyle) | true | — | default style of matching text. Defaults to the dataSource's defaultTextMatchStyle |
+| textMatchStyle | [TextMatchStyle](../reference.md#type-textmatchstyle) | true | — | default style of matching text. Defaults to the dataSource's defaultTextMatchStyle |
 
 ### Returns
 
@@ -5169,6 +4064,31 @@ If a specified field does not exist in the DataSource, it's assumed the values f
 `[Array of Record](#type-array-of-record)` — records derived from TSV
 
 ---
+## Method: DataSource.recordsFromXML
+
+### Description
+Transform a list of XML elements to DataSource records.
+
+`recordsFromXML()` will create a List of DataSource records in the form of JavaScript objects. The value for each field is extracted from the XML according to the rules described under [DataSourceField.valueXPath](DataSourceField.md#attr-datasourcefieldvaluexpath).
+
+Derived JavaScript values for each field will be the appropriate JavaScript type, eg, for a field of "date" type, the JS value will be a JavaScript Date object.
+
+Note that if the set of nodes exceeds [DataSource.resultBatchSize](#attr-datasourceresultbatchsize), this method will break the XML processing logic into multiple threads and therefore complete asynchronously. In this case the return value will be null, and the callback parameter must be used to process the extracted records.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| elements | [List of XMLElement](#type-list-of-xmlelement) | false | — | XML elements to transform, eg, the result of a call to [XMLTools.selectNodes](XMLTools.md#classmethod-xmltoolsselectnodes) |
+| callback | [Callback](../reference.md#type-callback) | false | — | Callback to fire when the transform completes. Takes a single parameter `records` - the array of DataSource records derived from the XML elements. |
+
+### Returns
+
+`[List](#type-list)` — List of DataSource records derived from the XML elements, or null if this method completed the XML processing asynchronously.
+
+**Flags**: A
+
+---
 ## Method: DataSource.dataChanged
 
 ### Description
@@ -5191,7 +4111,7 @@ Note: rather than overriding this method, we recommend using [observation](Class
 ### Description
 Exports arbitrary client-side data, with client-side formatters applied, so is suitable for direct display to users. This method can be used to export data formatted outside of any kind of visual component.
 
-If you do not specify an [operationId](OperationBinding.md#attr-operationbindingoperationid) in the `requestProperties` you pass to this method, it behaves exactly the same as the [static classMethod](#classmethod-datasourceexportclientdata) of the same name. If you do specify an `operationId`, the framework expects your DataSource to configure an [OperationBinding](OperationBinding.md#class-operationbinding) of [operationType](OperationBinding.md#attr-operationbindingoperationtype) "clientExport" with the same `operationId`. The framework will then send the `exportClientData` request via the ordinary [DSRequest](../reference_2.md#object-dsrequest) mechanism, which allows you to use normal framework features in the client data export.
+If you do not specify an [operationId](OperationBinding.md#attr-operationbindingoperationid) in the `requestProperties` you pass to this method, it behaves exactly the same as the [static classMethod](#classmethod-datasourceexportclientdata) of the same name. If you do specify an `operationId`, the framework expects your DataSource to configure an [OperationBinding](OperationBinding.md#class-operationbinding) of [operationType](OperationBinding.md#attr-operationbindingoperationtype) "clientExport" with the same `operationId`. The framework will then send the `exportClientData` request via the ordinary [DSRequest](../reference.md#object-dsrequest) mechanism, which allows you to use normal framework features in the client data export.
 
 For example, you could add a [DMI declaration](../kb_topics/dmiOverview.md#kb-topic-direct-method-invocation) to your `operationBinding`, which would allow you to write server-side code that intervenes in the export process - for instance, by calling the `getExportObject()` API to do something special with the export document, like saving it to a database table or sending it to an email list.
 
@@ -5199,7 +4119,7 @@ When you use the specific `operationId` version of this API, both the SmartClien
 
 To export unformatted data, see [exportData](#method-datasourceexportdata) which does not include client-side formatters, but requires both the SmartClient server and the presence of server-side DataSources.
 
-Note that field [displayFormat](DataSourceField.md#attr-datasourcefielddateformatter) is honored for "date" and "datetime" fields when exporting direct to Excel; see the displayFormat docs for details.
+Note that field [displayFormat](DataSourceField.md#attr-datasourcefielddisplayformat) is honored for "date" and "datetime" fields when exporting direct to Excel; see the displayFormat docs for details.
 
 ### Parameters
 
@@ -5389,7 +4309,7 @@ Does this dataSource support the specified "textMatchStyle" when performing a fi
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| textMatchStyle | [TextMatchStyle](../reference_2.md#type-textmatchstyle) | false | — | textMatchStyle to check. If passed a null value, assume an exact match is being requested. |
+| textMatchStyle | [TextMatchStyle](../reference.md#type-textmatchstyle) | false | — | textMatchStyle to check. If passed a null value, assume an exact match is being requested. |
 
 **Flags**: A
 
@@ -5478,9 +4398,9 @@ A new criteria object is returned with any criteria applicable to the specified 
 
 To avoid modifying an original criteria, use [DataSource.copyCriteria](#classmethod-datasourcecopycriteria) to make a copy to be passed in.
 
-By default the field-specific criteria returned will be in simple criteria format even if the criteria passed in was Advanced. Developers may suppress this conversion by passing in the `preserveAdvanced` parameter. Note that not every [criterion operator](../reference.md#type-operatorid) can be converted to a simple format. This method will only to convert field level criterion with operators that correspond to one of the available [textMatchStyle](../reference_2.md#type-textmatchstyle) options - namely `"equals"`, `"iEquals"` `"iContains"` or `"startsWith"`.
+By default the field-specific criteria returned will be in simple criteria format even if the criteria passed in was Advanced. Developers may suppress this conversion by passing in the `preserveAdvanced` parameter. Note that not every [criterion operator](../reference.md#type-operatorid) can be converted to a simple format. This method will only to convert field level criterion with operators that correspond to one of the available [textMatchStyle](../reference.md#type-textmatchstyle) options - namely `"equals"`, `"iEquals"` `"iContains"` or `"startsWith"`.
 
-This method will return an empty criteria object if it was unable to split the specified criteria by the specified fields.
+This method may return null if it was unable to split the specified criteria by the specified fields.
 
 ### Parameters
 
@@ -5522,7 +4442,7 @@ Perform a "fetch" DataSource operation against this DataSource, sending search c
 
 **NOTE:** do not attempt to override this method to create a custom DataSource. For a server-side custom DataSource, use the [DataSource.serverConstructor](#attr-datasourceserverconstructor) attribute, and the *Custom DataSource samples*. For a client-side custom DataSource, see [dataProtocol:"custom"](#attr-datasourcedataprotocol).
 
-In contrast to [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata), which creates a [ResultSet](ResultSet.md#class-resultset) to manage the returned data, calling `dataSource.fetchData()` provides the returned data in the callback as a simple JavaScript Array of JavaScript Objects. Calling `dataSource.fetchData()` does not automatically update any visual components or caches: code in the callback passed to `fetchData()` decides what to do with the returned data.
+In contrast to [ListGrid.fetchData](ListGrid_1.md#method-listgridfetchdata), which creates a [ResultSet](ResultSet.md#class-resultset) to manage the returned data, calling `dataSource.fetchData()` provides the returned data in the callback as a simple JavaScript Array of JavaScript Objects. Calling `dataSource.fetchData()` does not automatically update any visual components or caches: code in the callback passed to `fetchData()` decides what to do with the returned data.
 
 For example, given a ListGrid "myGrid" and a DataSource "employees", the following code would populate "myGrid" with data fetched from the DataSource:
 
@@ -5623,7 +4543,7 @@ Set the list of [OperatorId](../reference.md#type-operatorid)s valid for a given
 ## Method: DataSource.setClientOnly
 
 ### Description
-Switch into or out of clientOnly mode, taking the cache from the cacheAllData ResultSet if it exists.
+Switch into clientOnly mode, taking the cache from the cacheAllData ResultSet if it exists.
 
 ### Groups
 
@@ -5651,7 +4571,7 @@ Returns the path having the shortest distance between this and the given targetD
 ### Description
 For a dataSource using [client-side data integration](../kb_topics/clientDataIntegration.md#kb-topic-client-side-data-integration), return the data that should be sent to the [DataSource.dataURL](#attr-datasourcedataurl).
 
-By default, HTTP requests sent to non-SmartClient servers do not include DSRequest metadata such as [DSRequest.startRow](DSRequest.md#attr-dsrequeststartrow), [endRow](DSRequest.md#attr-dsrequestendrow), and [oldValues](DSRequest.md#attr-dsrequestoldvalues). Only the core [datasource protocol data](../kb_topics/dataSourceOperations.md#kb-topic-datasource-operations) is sent, such as the criteria passed to [fetchData()](ListGrid_2.md#method-listgridfetchdata) or the updated values submitted by [form.saveData()](DynamicForm.md#method-dynamicformsavedata).
+By default, HTTP requests sent to non-SmartClient servers do not include DSRequest metadata such as [DSRequest.startRow](DSRequest.md#attr-dsrequeststartrow), [endRow](DSRequest.md#attr-dsrequestendrow), and [oldValues](DSRequest.md#attr-dsrequestoldvalues). Only the core [datasource protocol data](../kb_topics/dataSourceOperations.md#kb-topic-datasource-operations) is sent, such as the criteria passed to [fetchData()](ListGrid_1.md#method-listgridfetchdata) or the updated values submitted by [form.saveData()](DynamicForm.md#method-dynamicformsavedata).
 
 transformRequest() allows you to transform dsRequest metadata into a format understood by your server and include it in the HTTP request, so that you can integrate DataSource features such as data paging with servers that support such features.
 
@@ -5720,7 +4640,7 @@ To cause all components that have cache managers to drop their caches, provide a
 
 As an alternative to calling `updateCaches()` directly, if updates to other DataSources occur as a result of server-side logic, you can use the server-side API DSResponse.addRelatedUpdate(DSResponse) (Pro Edition and above), which ultimately calls `updateCaches()` for you - see that method's documentation for details.
 
-**NOTE:** if `updateCaches` is called for a [clientOnly](#attr-datasourceclientonly) DataSource, it will update [DataSource.cacheData](#attr-datasourcecachedata) synchronously in addition to notifying all cache managers as normal.
+**NOTE:**: if `updateCaches` is called for a [clientOnly](#attr-datasourceclientonly) DataSource, it will update [DataSource.cacheData](#attr-datasourcecachedata) synchronously in addition to notifying all cache managers as normal.
 
 If a DataSource has [DataSource.cacheAllData](#attr-datasourcecachealldata) set and a full cache has been obtained, calling `updateCaches` will automatically update the cache.
 
@@ -5802,8 +4722,6 @@ This is identical to [DataSource.fetchData](#method-datasourcefetchdata) except 
 ### Description
 Perform a "remove" DataSource operation against this DataSource, to delete an existing DataSource record.
 
-If a callback was provided, it will be invoked when the operation completes successfully. If the operation fails, the callback will not be invoked unless [DSRequest.willHandleError](RPCRequest.md#attr-rpcrequestwillhandleerror) is true. See the [error handling overview](../kb_topics/errorHandling.md#kb-topic-error-handling-overview) for more information.
-
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
@@ -5820,54 +4738,16 @@ If a callback was provided, it will be invoked when the operation completes succ
 ## Method: DataSource.addData
 
 ### Description
-Perform an "add" DataSource operation against this DataSource, to create a new DataSource record. If a callback was provided, it will be invoked when the operation completes successfully.
-
-If the operation fails, the callback will not be invoked unless [DSRequest.willHandleError](RPCRequest.md#attr-rpcrequestwillhandleerror) is true. See the [error handling overview](../kb_topics/errorHandling.md#kb-topic-error-handling-overview) for more information.
+Perform an "add" DataSource operation against this DataSource, to create a new DataSource record.
 
 **NOTE:** do not use repeated calls to `addData()` to provide the initial dataset for a [clientOnly](#attr-datasourceclientonly) DataSource, instead, provide initial data via [DataSource.cacheData](#attr-datasourcecachedata). Using `addData()` for subsequent, incremental updates from sources like user editing is fine.
-
-#### Batch inserting
-`addData()` can be passed a [List](../reference_2.md#interface-list) of records to insert, rather than a single record. Actual support for this kind of multi-add is entirely dependent on the server-side DataSource implementation; only the built-in `SQLDataSource` has support for multi-add out-of-the-box. If you are using `SQLDataSource` (ie, your dataSource's [serverType](#attr-datasourceservertype) is "sql"), the default behavior of the server when it receives an "add" request with a list of records is to invoke a single-record add on the `DataSource` for each of the records in the provided list.
-
-However, you can also configure the server to generate a true "batch insert", and this will typically be significantly faster. Instead of generating multiple `INSERT` queries, `SQLDataSource` will generate a single `INSERT` with multiple `VALUES`, like so:
-
-```
-    INSERT INTO myDataSource (field1, field2, field3)
-        VALUES(97, 'test string', 117)
-        VALUES(1, 'Another test', 73)
-        . . .
-        VALUES(8056, 'Final record', 70707)
- 
-```
-Note, the Oracle database product does not support this syntax, so we implement batch insert in a different way - using subselects - with that one database. This difference is transparent from the perspective of a SmartClient developer, and is only mentioned for completeness.
-
-Batch inserting can be configured at the [DSRequest](../reference_2.md#object-dsrequest), [DataSource](#class-datasource) and [OperationBinding](OperationBinding.md#class-operationbinding) levels, and it can also be globally configured in `server.properties`. See the [multiInsertStrategy](#attr-datasourcemultiinsertstrategy) documentation for details.
-
-#### Cache Synchronization and Audit
-This optimized batch insert style of multi-record add only supports [cache synchronization](OperationBinding.md#attr-operationbindingcansynccache) in a limited way, because database products do not provide a reliable way to determine the generated keys of rows inserted in this way. We support cache synchronization of batch-inserted records only when
-
-*   The DataSource does not specify any "sequence" fields, and
-*   The `requestValuesPlusSequences` [cacheSyncStrategy](../reference_2.md#type-cachesyncstrategy) is in force
-
-We support [automatic audit](#attr-datasourceaudit) of batch-inserted records only when both of the above conditions are true, and the `sql.multi.insert.allowAudit` flag is set to `true` in your `server.properties` file.
-
-Additionally, be aware that any values missing from the original request data for whatever reason, will also be missing from both the cache-sync data and the audit records.
-
-"Simple" multi-record add, where each record is added with a discrete INSERT, does fully support cache-sync by default, but you may wish to consider turning it off when adding large numbers of records because the extra cache sync fetches can add significantly to the overall operation time (note, this only applies to the default "refetch" cache-sync strategy, so it does not affect the limited cache sync applicable to optimized batch inserts, described above). In fact, the elapsed time of a large multi-record `addData()` operation using "simple" multi-insert is more than doubled with "refecth" cache sync switched on, with all major databases, and it is significantly more than double on some of them. You can switch off cache sync for an operation by setting the [canSyncCache](OperationBinding.md#attr-operationbindingcansynccache) flag to `false` on your `OperationBinding`; alternatively, you can switch to `cacheSyncStrategy` "requestValuesPlusSequences" if that is an option for your use case (ie, you do not have database-generated field values, or can live without them). Note, auditing is not possible if cache sync is completely switched off.
-
-#### Additional notes
-Please note a couple of provisos about batch inserting; since batch insert has a specialized and quite narrow set of use cases, we do not currently plan to remove any of these restrictions
-
-*   It is not supported by all database products. The following databases have been tested and verified to work: MySQL/MariaDB, HSQLDB, Microsoft SQL Server, PostgreSQL Oracle and DB/2. Other databases may work, but we do not guaranteee it
-*   It is not properly supported with [SQL templating](../kb_topics/customQuerying.md#kb-topic-custom-querying-overview). If you try to make use of **$valuesClause** in a custom querying scenario where batch inserting is in force, you will only get the `valuesClause` applicable to the first valueSet. The same restriction applies to **$values** references in things like [custom SQL expressions](DataSourceField.md#attr-datasourcefieldcustominsertexpression)
-*   It does not fully support binary fields. We do support values being sent from the client for fields of type "binary" as Base64-encoded strings, and we also support server-side Java code adding `InputStream` objects to valueSets before the SQL subsystem sees them (for example, by using a [DMI](#attr-datasourceserverobject)). However, we do not support upload of real binary files in a multi-record "add" request, primarily because there is no clear way to discern which of the records the uploaded file(s) belong with
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | newRecord | [Record](#type-record) | false | — | new record |
-| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | Callback to invoke on completion. |
+| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke on completion |
 | requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | additional properties to set on the DSRequest that will be issued |
 
 ### Groups
@@ -5878,7 +4758,7 @@ Please note a couple of provisos about batch inserting; since batch insert has a
 ## Method: DataSource.cloneDSRequest
 
 ### Description
-Creates a shallow copy of the given [DSRequest](../reference_2.md#object-dsrequest). The request's [data](DSRequest.md#attr-dsrequestdata), if any, is shallow copied in the cloned request.
+Creates a shallow copy of the given [DSRequest](../reference.md#object-dsrequest). The request's [data](DSRequest.md#attr-dsrequestdata), if any, is shallow copied in the cloned request.
 
 The [callback](DSRequest.md#attr-dsrequestcallback) property of the given request is not copied into the cloned request.
 
@@ -5964,7 +4844,7 @@ This is an application override point only; there is no default implementation.
 
 ### Returns
 
-`[Boolean](#type-boolean)` — true to allow this response to be used, false to prevent it
+`[boolean](../reference.md#type-boolean)` — true to allow this response to be used, false to prevent it
 
 ### Groups
 
@@ -6170,7 +5050,7 @@ Given two sets of criteria, determine whether they are equivalent, the new crite
 
 Comparisons between [AdvancedCriteria](../reference.md#object-advancedcriteria) are made via recursively calling [Operator.compareCriteria](Operator.md#method-operatorcomparecriteria) for all criteria involved.
 
-For simple [Criteria](../reference_2.md#type-criteria), by default ([CriteriaPolicy](../reference_2.md#type-criteriapolicy):"dropOnShortening"), returns:
+For simple [Criteria](../reference_2.md#type-criteria), by default ([CriteriaPolicy](../reference.md#type-criteriapolicy):"dropOnShortening"), returns:
 
 *   \-1 if the new criteria has fewer properties than the old criteria (indicating that it isn't more restrictive)
 *   \-1 if the value for any property in the old criteria is an array and 1) the value for the same property in the new criteria isn't an array, or 2) is an array but of different length, or 3) the arrays do not contain the exact same set of objects (order can be different)
@@ -6179,7 +5059,7 @@ For simple [Criteria](../reference_2.md#type-criteria), by default ([CriteriaPol
 *   1 if none of the above are true and, for at least one of the properties, the respective criteria values are both strings, and the old criteria value is a substring of, and is shorter than, the new criteria value
 *   0 otherwise (indicating the sets of criteria are equivalent)
 
-For ([CriteriaPolicy](../reference_2.md#type-criteriapolicy):"dropOnChange"), returns:
+For ([CriteriaPolicy](../reference.md#type-criteriapolicy):"dropOnChange"), returns:
 
 *   \-1 if the two sets of criteria have a different number of properties
 *   \-1 if the value for any property in the old criteria is an array and 1) the value for the same property in the new criteria isn't an array, or 2) is an array but of different length, or 3) the arrays do not contain the exact same set of objects (order can be different)
@@ -6195,7 +5075,7 @@ This method is called by [ResultSet.compareCriteria](ResultSet.md#method-results
 | newCriteria | [Criteria](../reference_2.md#type-criteria) | false | — | new filter criteria |
 | oldCriteria | [Criteria](../reference_2.md#type-criteria) | false | — | previous filter criteria |
 | requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | dataSource request properties |
-| policy | [String](#type-string) | true | — | overrides [CriteriaPolicy](../reference_2.md#type-criteriapolicy) |
+| policy | [String](#type-string) | true | — | overrides [CriteriaPolicy](../reference.md#type-criteriapolicy) |
 
 ### Returns
 
@@ -6203,7 +5083,7 @@ This method is called by [ResultSet.compareCriteria](ResultSet.md#method-results
 
 ### See Also
 
-- [CriteriaPolicy](../reference_2.md#type-criteriapolicy)
+- [CriteriaPolicy](../reference.md#type-criteriapolicy)
 
 ---
 ## Method: DataSource.getTypeOperators
@@ -6372,7 +5252,7 @@ For a DataSource to support being passed AdvancedCriteria, it must be [clientOnl
 
 AdvancedCriteria are supported on the server for standard [SQL](../kb_topics/sqlDataSource.md#kb-topic-sql-datasources), [Hibernate](../kb_topics/hibernateIntegration.md#kb-topic-integration-with-hibernate) and [JPA](../kb_topics/jpaIntegration.md#kb-topic-integration-with-jpa) DataSources in SmartClient Enterprise or Power editions (not supported in SmartClient Pro).
 
-The framework assumes that custom dataSources support AdvancedCriteria; if you have a a custom DataSource implementation that does not support AdvancedCriteria, you can set the [DataSource.allowAdvancedCriteria](#attr-datasourceallowadvancedcriteria) property to false.
+The framework assumes that custom dataSources support AdvancedCriteria; if you have a a custom DataSOurce implementation that does not support AdvancedCriteria, you can set the [DataSource.allowAdvancedCriteria](#attr-datasourceallowadvancedcriteria) property to false.
 
 ### Returns
 
@@ -6396,30 +5276,6 @@ Given a fieldName and a dataValue, apply any [DataSourceField.valueMap](DataSour
 `[Any](#type-any)` — display value for the field
 
 ---
-## Method: DataSource.isCalculated
-
-### Description
-Does the specified field have its value dynamically calculated via [DataSourceField.formula](DataSourceField.md#attr-datasourcefieldformula) or other similar attributes?
-
-This method will return true for fields with the following attributes:
-
-*   [DataSourceField.formula](DataSourceField.md#attr-datasourcefieldformula)
-*   [DataSourceField.template](DataSourceField.md#attr-datasourcefieldtemplate)
-*   [DataSourceField.customSelectExpression](DataSourceField.md#attr-datasourcefieldcustomselectexpression)
-
-Or if the field has explicitly been marked as [calculated:true](DataSourceField.md#attr-datasourcefieldcalculated).
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| field | [DataSourceField](#type-datasourcefield)|[String](#type-string) | false | — | Field or fieldName |
-
-### Returns
-
-`[boolean](../reference.md#type-boolean)` — true if this is a field with dynamically calculated values
-
----
 ## Method: DataSource.handleError
 
 ### Description
@@ -6434,7 +5290,7 @@ If you define this method on a DataSource, it will be called whenever the server
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false to suppress [RPCManager.handleError](RPCManager.md#classmethod-rpcmanagerhandleerror)
+`[boolean](../reference.md#type-boolean)` — false to suppress [RPCManager.handleError](RPCManager.md#classmethod-rpcmanagerhandleerror)
 
 ### Groups
 
@@ -6562,20 +5418,6 @@ The new DataSource is returned via the "callback" argument. If [DataSource.cache
 | dataSourceProperties | [DataSource Properties](#type-datasource-properties) | true | — | optional properties to pass through to the clientOnly DS |
 
 ---
-## Method: DataSource.supportsDynamicTreeJoins
-
-### Description
-This method returns true for dataSources that support both self-joins and [additionalOutputs](DSRequest.md#attr-dsrequestadditionaloutputs). A "self-join" is a relation from a dataSource back to itself - for example a relation between a worker and his manager, both of whom are Employees. DataSources that can handle self-joins are able to create and navigate these relations, which are mostly useful for tree-type structures.
-
-Out of the box, only the built-in [SQL DataSource](../kb_topics/sqlDataSource.md#kb-topic-sql-datasources) implementation supports self-joins, and thus dynamic tree joins; neither [clientOnly](#attr-datasourceclientonly) nor the other server-side built-in DataSource implementations support them. If you create a custom DataSource implementation that can handle both of these features, you can set the [allowDynamicTreeJoins](#attr-datasourceallowdynamictreejoins) flag to true, which will cause supportsDynamicTreeJoins() to return true (and equally, you can set that flag explicitly to false to prevent the system from using dynamic tree joins for a given dataSource, even if it is able to use them)
-
-This method is called by the automatic [ResultTree.keepParentsOnFilter](ResultTree.md#attr-resulttreekeepparentsonfilter) algorithm to decide if it is possible to use self-referencing `additionalOutputs` to improve efficiency, and possibly performance.
-
-### Returns
-
-`[Boolean](#type-boolean)` — true if this dataSource supports both `additionalOutputs` and self-joins, otherwise false
-
----
 ## Method: DataSource.getPrimaryKeyFields
 
 ### Description
@@ -6598,7 +5440,7 @@ Get the list of [Operator](../reference.md#object-operator)s available for this 
 
 This valueMap is suitable for use in a UI for building queries, similar to the [FilterBuilder](FilterBuilder.md#class-filterbuilder), and optionally omits operators marked [Operator.hidden](Operator.md#attr-operatorhidden) : true.
 
-It is also possible to have this function return only operators of a given [OperatorValueType](../reference_2.md#type-operatorvaluetype), or everything except operators of that type. This is useful, for example, if you want to return all the logical operators (like "and"), or everything except the logical operators.
+It is also possible to have this function return only operators of a given [OperatorValueType](../reference.md#type-operatorvaluetype), or everything except operators of that type. This is useful, for example, if you want to return all the logical operators (like "and"), or everything except the logical operators.
 
 ### Parameters
 
@@ -6606,8 +5448,8 @@ It is also possible to have this function return only operators of a given [Oper
 |------|------|----------|---------|-------------|
 | type | [FieldType](../reference_2.md#type-fieldtype) | true | — | Type to obtain operator map for. Defaults to "text" if not passed. |
 | includeHidden | [boolean](../reference.md#type-boolean) | true | — | whether to include Operators marked hidden:true |
-| valueType | [OperatorValueType](../reference_2.md#type-operatorvaluetype) | true | — | If passed, returns only operators of this [OperatorValueType](../reference_2.md#type-operatorvaluetype) |
-| omitValueType | [boolean](../reference.md#type-boolean) | true | — | If set, reverses the meaning of the `valueType` parameter, so operators of that [OperatorValueType](../reference_2.md#type-operatorvaluetype) are the only ones omitted |
+| valueType | [OperatorValueType](../reference.md#type-operatorvaluetype) | true | — | If passed, returns only operators of this [OperatorValueType](../reference.md#type-operatorvaluetype) |
+| omitValueType | [boolean](../reference.md#type-boolean) | true | — | If set, reverses the meaning of the `valueType` parameter, so operators of that [OperatorValueType](../reference.md#type-operatorvaluetype) are the only ones omitted |
 
 ### Returns
 

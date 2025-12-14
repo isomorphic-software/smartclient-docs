@@ -10,14 +10,6 @@
 Class for encoding objects as JSON strings.
 
 ---
-## Attr: JSONEncoder.skipNullValues
-
-### Description
-If true, don't include properties with null values when encoding an object.
-
-**Flags**: IR
-
----
 ## Attr: JSONEncoder.strictQuoting
 
 ### Description
@@ -41,7 +33,7 @@ Encoding only where required produces slightly shorter, more readable output whi
 ## Attr: JSONEncoder.serializeInstances
 
 ### Description
-Controls the output of the JSONEncoder when instances of SmartClient classes (eg a ListGrid) are included in the data to be serialized. See [JSONInstanceSerializationMode](../reference_2.md#type-jsoninstanceserializationmode).
+Controls the output of the JSONEncoder when instances of SmartClient classes (eg a ListGrid) are included in the data to be serialized. See [JSONInstanceSerializationMode](../reference.md#type-jsoninstanceserializationmode).
 
 Note that the JSONEncoder does not support a format that will recreate the instance if passed to decode() or eval().
 
@@ -51,7 +43,7 @@ Note that the JSONEncoder does not support a format that will recreate the insta
 ## Attr: JSONEncoder.skipInternalProperties
 
 ### Description
-If true, don't show SmartClient internal properties when encoding an object.
+If true, don't show SmartClient internal properties when encoding and object.
 
 **Flags**: IR
 

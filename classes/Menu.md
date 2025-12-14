@@ -109,8 +109,7 @@ When using any `placement` setting that fills a portion of the screen or a panel
 ## Attr: Menu.submenuDisabledImage
 
 ### Description
-Default image to use for the submenu indicator when the item is disabled. The value can be either a regular [SCImgURL](../reference.md#type-scimgurl) which can specify _size:w,h;_, or an [ImgHTMLProperties](../reference_2.md#object-imghtmlproperties) object, specifying at least _src_, _width_ and _height_.
-
+Default image to use for the submenu indicator when item is disabled. Valid src, width and height must be specified. See [ImgProperties](../reference.md#object-imgproperties) for format.  
 If [Menu.submenuDirection](#attr-menusubmenudirection) is set to `"left"`, the image src will have the suffix `"_left"` appended to it.
 
 **Flags**: IR
@@ -189,8 +188,7 @@ When using a Tree or hierarchical DataSource as the menu's data, optional subcla
 ## Attr: Menu.submenuImage
 
 ### Description
-Default image to use for the submenu indicator. The value can be either a regular [SCImgURL](../reference.md#type-scimgurl) which can specify _size:w,h;_, or an [ImgHTMLProperties](../reference_2.md#object-imghtmlproperties) object, specifying at least _src_, _width_ and _height_.
-
+Default image to use for the submenu indicator. Valid src, width and height must be specified. See [ImgProperties](../reference.md#object-imgproperties) for format.  
 If [Menu.submenuDirection](#attr-menusubmenudirection) is set to `"left"`, the image src will have the suffix `"_left"` appended to it.
 
 **Flags**: IR
@@ -430,7 +428,7 @@ When false, when a menu item is chosen (via mouse click or keyboard), the menu i
 ## Attr: Menu.dataSource
 
 ### Description
-Optional DataSource to fetch menuItems and submenus from, instead of using [Menu.items](#attr-menuitems). May be specified as a DataSource instance or the String ID of a DataSource.
+Optional DataSource to fetch menuItems and submenus from, instead of using [Menu.items](#attr-menuitems).
 
 Data is tree-based in menus, so the provided DataSource should be set up for hierarchical fetching - see the [Tree Data Binding overview](../kb_topics/treeDataBinding.md#kb-topic-tree-databinding).
 
@@ -469,7 +467,7 @@ Explicitly disable alternateRecordStyles at the menu level by default so setting
 ## Attr: Menu.checkmarkDisabledImage
 
 ### Description
-Default image to display for [check-marked items](MenuItem.md#attr-menuitemchecked) when the item is disabled. The value can be either a regular [SCImgURL](../reference.md#type-scimgurl) which can specify _size:w,h;_, or an [ImgHTMLProperties](../reference_2.md#object-imghtmlproperties) object, specifying at least _src_, _width_ and _height_.
+Default image to display for disabled checkmarked items. See [ImgProperties](../reference.md#object-imgproperties) for format. Valid src, width and height must be specified.
 
 **Flags**: IR
 
@@ -599,7 +597,7 @@ Custom properties for the automatically generated title column.
 ## Attr: Menu.checkmarkImage
 
 ### Description
-Default image to display for [check-marked items](MenuItem.md#attr-menuitemchecked). The value can be either a regular [SCImgURL](../reference.md#type-scimgurl) which can specify _size:w,h;_, or an [ImgHTMLProperties](../reference_2.md#object-imghtmlproperties) object, specifying at least _src_, _width_ and _height_.
+Default image to display for checkmarked items. See [ImgProperties](../reference.md#object-imgproperties) for format. Valid src, width and height must be specified.
 
 **Flags**: IR
 
@@ -782,7 +780,7 @@ To retrieve the full set of items, including hidden items, use [Menu.getAllItems
 
 ### Returns
 
-`[Array of MenuItem](#type-array-of-menuitem)` — —
+`[List of MenuItem](#type-list-of-menuitem)` — —
 
 ---
 ## Method: Menu.setItemTitle
@@ -816,7 +814,7 @@ Executed when a menu item with no click handler is clicked by the user. This ite
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false if event processing should be stopped, true or null to continue
+`[boolean](../reference.md#type-boolean)` — false if event processing should be stopped, true to continue
 
 **Flags**: A
 
@@ -828,7 +826,7 @@ Retrieves the full set of items for this menu, including [hidden items](MenuItem
 
 ### Returns
 
-`[Array of MenuItem](#type-array-of-menuitem)` — —
+`[List of MenuItem](#type-list-of-menuitem)` — —
 
 ---
 ## Method: Menu.showSubmenu
@@ -947,7 +945,7 @@ Synonym for menu.getData()
 
 ### Returns
 
-`[Array of MenuItem](#type-array-of-menuitem)` — —
+`[List of MenuItem](#type-list-of-menuitem)` — —
 
 ---
 ## Method: Menu.setItemChecked

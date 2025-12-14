@@ -9,7 +9,7 @@
 ### Description
 The Authentication or [Auth](../reference.md#class-auth) class represents a convenient, standard place to keep information about the currently logged in user and their assigned user roles.
 
-The intended usage is that a server authentication system would require the user to log in, then provide data about the currently logged in user via [Authentication.setCurrentUser](#classmethod-authenticationsetcurrentuser) and [Authentication.setRoles](#classmethod-authenticationsetroles). This data is then available in the [Rule Scope](Canvas.md#attr-canvasrulescope) so that components can use it to enable or disable or hide themselves, via properties such as [FormItem.readOnlyWhen](FormItem.md#attr-formitemreadonlywhen).
+The intended usage is that a server authentication system would require the user to log in, then provide data about the currently logged in user via [Auth.setCurrentUser()](#classmethod-authenticationsetcurrentuser) and [Authentication.setRoles](#classmethod-authenticationsetroles). This data is then available in the [Rule Scope](Canvas.md#attr-canvasrulescope) so that components can use it to enable or disable or hide themselves, via properties such as [FormItem.readOnlyWhen](FormItem.md#attr-formitemreadonlywhen).
 
 The format for user records is not explicitly defined or restricted by the Authentication subsystem but we recommend using the format described by [Authentication.getUserSchema](#classmethod-authenticationgetuserschema).  
 Having a standardized user record allows application designers to rely on a well-known set of field names at design time, and then at deployment time when a particular authentication system is chosen, the deployer can simply fill in the standardized user record from the data that the chosen authentication system returns. This also allows authentication systems to be swapped out in the future without the need to change application code.
@@ -18,41 +18,6 @@ The DataSource returned by [Authentication.getUserSchema](#classmethod-authentic
 It is not intended to be used directly to store and retrieve user data, and while we recommend this format it is not a requirement that user records conform to it.
 
 There are no security implications to calling `setRoles()` or other APIs on the `Authentication` class. The provided data affects only client-side components. All actual security enforcement must be done server-side - see the QuickStart Guide, especially the sections on Declarative Security, to understand how role-based authorization can be used on the server.
-
-**Rule Context**
-
-The default ruleContext obtained from [Canvas.getRuleContext](Canvas.md#method-canvasgetrulecontext) includes a property for the current authentication information (based on [Authentication.getUserSchema](#classmethod-authenticationgetuserschema)):
-
-*   auth
-
-*   currentUser
-
-*   firstName
-*   lastName
-*   ... other fields in schema
-
-*   roles
-*   isSuperUser
-
-The default rule context would therefore include something like the following, expressed in JSON:
-```
- {
-  auth : {
-     currentUser : {
-        userId: "lisa",
-        firstName: "Lisa",
-        lastName: "Admin",
-        roles: "admin",
-        ..other properties..
-     },
-     roles : ['admin'],
-     isSuperUser : false
-  },
-  ..other properties..
- }
- 
-```
-Since the `currentUser` information is based on `getUserSchema()` any changes to the schema implemented as an override will be reflected in the rule context.
 
 ---
 ## ClassAttr: Authentication.logOutURL

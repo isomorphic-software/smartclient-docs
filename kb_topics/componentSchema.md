@@ -19,7 +19,7 @@ Declaring a component schema for your custom component allows you to:
 In its most basic form, a component schema for a custom subclass of ListGrid called "MyListGrid" looks like this:
 
 ```
- <DataSource serverType="component" ID="MyListGrid"
+ <DataSource serverType="component" ID="MyListGrid" 
              inheritsFrom="ListGrid" instanceConstructor="MyListGrid"/>
  
 ```

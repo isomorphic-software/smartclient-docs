@@ -25,7 +25,7 @@ For detailed information on working with dates, times and datetimes, see the [Da
 ## ClassAttr: DateItem.MONTH_YEAR
 
 ### Description
-A declared value of the enum type [DateItemSelectorFormat](../reference_2.md#type-dateitemselectorformat).
+A declared value of the enum type [DateItemSelectorFormat](../reference.md#type-dateitemselectorformat).
 
 **Flags**: R
 
@@ -33,7 +33,7 @@ A declared value of the enum type [DateItemSelectorFormat](../reference_2.md#typ
 ## ClassAttr: DateItem.YEAR_MONTH_DAY
 
 ### Description
-A declared value of the enum type [DateItemSelectorFormat](../reference_2.md#type-dateitemselectorformat).
+A declared value of the enum type [DateItemSelectorFormat](../reference.md#type-dateitemselectorformat).
 
 **Flags**: R
 
@@ -41,7 +41,7 @@ A declared value of the enum type [DateItemSelectorFormat](../reference_2.md#typ
 ## ClassAttr: DateItem.DAY_MONTH
 
 ### Description
-A declared value of the enum type [DateItemSelectorFormat](../reference_2.md#type-dateitemselectorformat).
+A declared value of the enum type [DateItemSelectorFormat](../reference.md#type-dateitemselectorformat).
 
 **Flags**: R
 
@@ -49,7 +49,7 @@ A declared value of the enum type [DateItemSelectorFormat](../reference_2.md#typ
 ## ClassAttr: DateItem.YEAR_MONTH
 
 ### Description
-A declared value of the enum type [DateItemSelectorFormat](../reference_2.md#type-dateitemselectorformat).
+A declared value of the enum type [DateItemSelectorFormat](../reference.md#type-dateitemselectorformat).
 
 **Flags**: R
 
@@ -57,7 +57,7 @@ A declared value of the enum type [DateItemSelectorFormat](../reference_2.md#typ
 ## ClassAttr: DateItem.MONTH_DAY
 
 ### Description
-A declared value of the enum type [DateItemSelectorFormat](../reference_2.md#type-dateitemselectorformat).
+A declared value of the enum type [DateItemSelectorFormat](../reference.md#type-dateitemselectorformat).
 
 **Flags**: R
 
@@ -65,7 +65,7 @@ A declared value of the enum type [DateItemSelectorFormat](../reference_2.md#typ
 ## ClassAttr: DateItem.MONTH_DAY_YEAR
 
 ### Description
-A declared value of the enum type [DateItemSelectorFormat](../reference_2.md#type-dateitemselectorformat).
+A declared value of the enum type [DateItemSelectorFormat](../reference.md#type-dateitemselectorformat).
 
 **Flags**: R
 
@@ -73,7 +73,7 @@ A declared value of the enum type [DateItemSelectorFormat](../reference_2.md#typ
 ## ClassAttr: DateItem.DAY_MONTH_YEAR
 
 ### Description
-A declared value of the enum type [DateItemSelectorFormat](../reference_2.md#type-dateitemselectorformat).
+A declared value of the enum type [DateItemSelectorFormat](../reference.md#type-dateitemselectorformat).
 
 **Flags**: R
 
@@ -91,7 +91,7 @@ This attribute does not have an effect if a native HTML5 date input is being use
 
 ### See Also
 
-- [dateItem.displayFormat](#dateitemdisplayformat)
+- [DateItem.displayFormat](#attr-dateitemdisplayformat)
 
 **Flags**: IRW
 
@@ -261,20 +261,16 @@ To control which selectors are visible and in what order, use [DateItem.selector
 ## Attr: DateItem.startDate
 
 ### Description
-The minimum date this item is intended to work with.
+Minimum date the selectors will allow the user to pick. The default value is January 1st, 10 years before the current year.
 
-The default value is January 1st, 10 years before the current year.
-
-The range specified by this setting and `endDate` must be enforced via a [dateRange validator](FormItem.md#attr-formitemvalidators). By default, a client-only validator is [automatically generated](#attr-dateitemgeneratevalidator) for you, unless you provide a customized one on this item or an associated [DataSourceField](../reference_2.md#object-datasourcefield). Note that changing this attribute after the item is drawn may result in item-validation.
-
-When [DateItem.useTextField](#attr-dateitemusetextfield) is true, dates are typed in and will be validated as usual, according to settings such as [validateOnChange](FormItem.md#attr-formitemvalidateonchange) and [validateOnExit](FormItem.md#attr-formitemvalidateonexit).
-
-When `useTextField` is false and the item is using separate [selectors](#attr-dateitemyearselector) for date-parts, validation behavior for rejecting out-of-range dates remains the same. However, setting `startDate` and `endDate` will not always prevent the user from temporarily picking invalid values. In particular:
+**NOTE:** by design, setting `startDate` and `endDate` will not always prevent the user from picking invalid values. In particular:
 
 *   the set of available days will only be restricted if the start and end dates fall within the same month
 *   the set of available months will only be restricted if the start and end dates fall within the same year
 
-This is **by design** as it allows the user to set the day, month and year in whatever order is convenient, rather than forcing them to pick in a specific order. As when `useTextField` is true, invalid dates are rejected as part of regular item validation, if a validator exists.
+This is **by design** as it allows the user to set the day, month and year in whatever order is convenient, rather than forcing them to pick in a specific order.
+
+For actual enforcement of a date being in correct range before data is submitted, a [Validator](Validator.md#class-validator) of type "dateRange" should always be declared.
 
 ### Groups
 
@@ -452,20 +448,6 @@ This attribute does not have an effect if a native HTML5 date input is being use
 **Flags**: IRW
 
 ---
-## Attr: DateItem.generateValidator
-
-### Description
-When this item has a [startDate](#attr-dateitemstartdate) or [endDate](#attr-dateitemenddate) specified, should it automatically generate a client-side [dateRange validator](FormItem.md#attr-formitemvalidators) to enforce them?
-
-When true, the default, the item will generate a dateRange validator automatically if the developer hasn't installed one but has set either date-range value.
-
-If a dateRange validator already exists, this attribute is non-functional - no automatic validator is generated, and no checks are made that the values in the developer-provided validator match the item's current start or end dates.
-
-Note that the validator generated by this attribute exists only on the FormItem, so it doesn't do any server enforcement and does not cause validation to happen in any other circumstance (eg, an unrelated grid used for editing). For consistent and pervasive enforcement, the validator should be declared on the [DataSourceField](../reference_2.md#object-datasourcefield).
-
-**Flags**: IR
-
----
 ## Attr: DateItem.showChooserFiscalYearPicker
 
 ### Description
@@ -477,7 +459,7 @@ When set to true, show a button that allows the calendar to be navigated by fisc
 ## Attr: DateItem.itemTitleOrientation
 
 ### Description
-When [useTextField](#attr-dateitemusetextfield) is false, the default orientation of titles for the [day](#attr-dateitemdayselector), [month](#attr-dateitemmonthselector) and [year](#attr-dateitemyearselector) selectors. [TitleOrientation](../reference_2.md#type-titleorientation) lists valid options.
+When [useTextField](#attr-dateitemusetextfield) is false, the default orientation of titles for the [day](#attr-dateitemdayselector), [month](#attr-dateitemmonthselector) and [year](#attr-dateitemyearselector) selectors. [TitleOrientation](../reference.md#type-titleorientation) lists valid options.
 
 Note that titles on the left or right take up a cell in tabular [form layouts](../kb_topics/formLayout.md#kb-topic-form-layout), but titles on top do not.
 
@@ -491,13 +473,9 @@ Note that titles on the left or right take up a cell in tabular [form layouts](.
 ## Attr: DateItem.endDate
 
 ### Description
-The maximum date this item is intended to work with.
+Maximum date the selectors will allow the user to pick. The default value is December 31st, 5 years after the current year.
 
-The default value is December 31st, 5 years after the current year.
-
-The range specified by this setting and `startDate` must be enforced via a [dateRange validator](FormItem.md#attr-formitemvalidators). By default, a client-only validator is [automatically generated](#attr-dateitemgeneratevalidator) for you, unless you provide a customized one on this item or an associated [DataSourceField](../reference_2.md#object-datasourcefield). Note that changing this attribute after the item is drawn may result in item-validation.
-
-See [DateItem.startDate](#attr-dateitemstartdate) and [DateItem.generateValidator](#attr-dateitemgeneratevalidator) for more information.
+See [DateItem.startDate](#attr-dateitemstartdate) for details on how this restriction works.
 
 ### Groups
 
@@ -667,28 +645,33 @@ Custom properties to apply to this dateItem's generated [DateItem.daySelector](#
 **Flags**: IRA
 
 ---
+## Attr: DateItem.displayFormat
+
+### Description
+If [DateItem.useTextField](#attr-dateitemusetextfield) is `true` this property can be used to customize the format in which dates are displayed.  
+Should be set to a standard [DateDisplayFormat](../reference.md#type-datedisplayformat) or a function which will return a formatted date string.
+
+If unset, the standard shortDate format as set up via [DateUtil.setShortDisplayFormat](DateUtil.md#classmethod-dateutilsetshortdisplayformat) will be used.
+
+**NOTE: you may need to update the [inputFormat](#attr-dateiteminputformat) to ensure the DateItem is able to parse user-entered date strings back into Dates**
+
+This attribute does not have an effect if a native HTML5 date input is being used. See [DateItem.browserInputType](#attr-dateitembrowserinputtype).
+
+### See Also
+
+- [DateItem.inputFormat](#attr-dateiteminputformat)
+
+**Deprecated**
+
+**Flags**: IRW
+
+---
 ## Attr: DateItem.pickerConstructor
 
 ### Description
 SmartClient class for the [FormItem.picker](FormItem.md#attr-formitempicker) autoChild displayed to allow the user to directly select dates.
 
 **Flags**: IR
-
----
-## Attr: DateItem.defaultValue
-
-### Description
-Overridden to assign class-appropriate type.
-
-### Groups
-
-- basics
-
-### See Also
-
-- [FormItem.defaultValue](FormItem.md#attr-formitemdefaultvalue)
-
-**Flags**: IRW
 
 ---
 ## Attr: DateItem.enforceDate
@@ -728,7 +711,7 @@ When [useTextField](#attr-dateitemusetextfield) is false, whether titles should 
 ## Attr: DateItem.selectorFormat
 
 ### Description
-If showing date selectors rather than the date text field (so when `this.useTextField` is false), this property allows customization of the order of the day, month and year selector fields. If unset, these fields will match the specified [DateItem.inputFormat](#attr-dateiteminputformat) for this item, but note that the attribute default will likely be set by [localization](../kb_topics/i18n.md#kb-topic-internationalization-and-localization) to a valid [DateItemSelectorFormat](../reference_2.md#type-dateitemselectorformat).
+If showing date selectors rather than the date text field (so when `this.useTextField` is false), this property allows customization of the order of the day, month and year selector fields. If unset, these fields will match the specified [DateItem.inputFormat](#attr-dateiteminputformat) for this item, but note that the attribute default will likely be set by [localization](../kb_topics/i18n.md#kb-topic-internationalization-and-localization) to a valid [DateItemSelectorFormat](../reference.md#type-dateitemselectorformat).
 
 Note: selectors may be omitted entirely by setting selectorFormat to (for example) `"MD"`. In this case the value for the omitted selector will match the [defaultValue](FormItem.md#attr-formitemdefaultvalue) specified for the item. For example, if the selector format is "MD" (month and day only), the year comes from the Date specified as the defaultValue.
 
@@ -950,7 +933,7 @@ Returning `false` will cancel this default behavior.
 
 ### Returns
 
-`[Boolean](#type-boolean)` — `false` to cancel the default behavior.
+`[boolean](../reference.md#type-boolean)` — `false` to cancel the default behavior.
 
 ---
 ## Method: DateItem.deselectValue

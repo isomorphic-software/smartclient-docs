@@ -85,7 +85,7 @@ Specifies the mechanism for locating the class instance on which to invoke the m
 ## Attr: ServerObject.visibleMethods
 
 ### Description
-When the [ServerObject](../reference_2.md#object-serverobject) appears in an .app.xml [Application declaration file](../kb_topics/applicationDeclaration.md#kb-topic-application-declaration-files) (for RPC DMI), this property specifies the list of [methods](../reference_2.md#object-visiblemethod) on the ServerObject that are callable from the client. Methods in the list can be the names of the exposed `ServerObject` APIs allowed to be called from the client or methods implemented right in the .app.xml file using the [inline server script](../kb_topics/serverScript.md#kb-topic-server-scripting). See the builtin.app.xml file in the /shared/app directory of the SDK for an example of a visibleMethods declaration block.
+When the [ServerObject](../reference_2.md#object-serverobject) appears in a .app.xml file (for RPC DMI), this property specifies the list of methods on the ServerObject that are callable from the client. See the builtin.app.xml file in the /shared/app directory of the SDK for an example of a visibleMethods declaration block.
 
 ### See Also
 

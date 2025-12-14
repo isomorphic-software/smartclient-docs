@@ -136,18 +136,6 @@ A declared value of the enum type [FieldAppearance](../reference_2.md#type-field
 **Flags**: R
 
 ---
-## ClassAttr: Validator.notARelativeDate
-
-### Description
-Default error message to display when the standard `isRelativeDate` type validator returns false.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRA
-
----
 ## ClassAttr: Validator.notADate
 
 ### Description
@@ -176,18 +164,6 @@ Default error message to display when validation fails for a field marked as req
 
 ### Description
 Default error message to display when standard `lengthRange` type validator returns false because the value passed in has more than `validator.max` characters. This is a dynamic string - text within `${...}` will be evaluated as JS code when the message is displayed, with `max` and `min` available as variables mapped to `validator.max` and `validator.min`.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRA
-
----
-## ClassAttr: Validator.notADateOrRelativeDate
-
-### Description
-Default error message to display when the standard `isDateOrRelativeDate` type validator returns false.
 
 ### Groups
 
@@ -311,14 +287,6 @@ If true, validator will be validated when each item's "change" handler is fired 
 Note that this property can also be set at the form/grid or field level; If true at any level and not explicitly false on the validator, the validator will be fired on change - displaying errors and rejecting the change on validation failure.
 
 **Flags**: IRW
-
----
-## Attr: Validator.otherField
-
-### Description
-For validators of type [matchesField](../reference.md#type-validatortype), specifies the name of the other field whose value this field must match.
-
-**Flags**: IR
 
 ---
 ## Attr: Validator.dependentFields
@@ -462,16 +430,6 @@ Because it's tricky to call arbitrary Java methods in Velocity, the following sp
 **Flags**: IR
 
 ---
-## Attr: Validator.checkComponentData
-
-### Description
-For a validator of type `"isUnique"` in a dataBoundComponent, under what circumstances should uniqueness checking be performed against the component's data set?
-
-Only applies to validators within a [multiple dataArity](DataBoundComponent.md#attr-databoundcomponentdataarity) component like a ListGrid.
-
-**Flags**: IR
-
----
 ## Attr: Validator.stopIfFalse
 
 ### Description
@@ -491,18 +449,6 @@ When set to true, values that equal the specified [Validator.min](#attr-validato
 
 - [Validator.min](#attr-validatormin)
 - [Validator.max](#attr-validatormax)
-
-**Flags**: IR
-
----
-## Attr: Validator.expression
-
-### Description
-For validators that use a regular expression or conditional logic, this property specifies the expression to evaluate.
-
-For [regexp](../reference.md#type-validatortype) validators, this should be a regular expression (as a string or RegExp object) that the value must match.
-
-For [requiredIf](../reference.md#type-validatortype) validators, this should be a [stringMethod](../kb_topics/stringMethods.md#kb-topic-string-methods-overview) that returns `true` if the field should be required. The function receives four parameters: `item` (the form item), `validator` (the validator object), `value` (the field value), and `record` (the form values).
 
 **Flags**: IR
 
@@ -650,7 +596,7 @@ Add several new validator types at once, as though [Validator.addValidatorDefini
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newDefinitions | [Object](../reference.md#type-object) | false | — | Set of validators to add. This parameter should be a JavaScript object where the property names are validator type names, and the property values are [ValidatorDefinition](../reference_2.md#object-validatordefinition)s. |
+| newDefinitions | [Object](../reference.md#type-object) | false | — | Set of validators to add. This parameter should be a JavaScript object where the property names are validator type names, and the property values are [ValidatorDefinition](../reference.md#object-validatordefinition)s. |
 
 ### Groups
 
@@ -716,7 +662,7 @@ Add a new validator type that can be specified as [Validator.type](#attr-validat
 Add a new validator type that can be specified as [Validator.type](#attr-validatortype) anywhere validators are declared, such as [DataSourceField.validators](DataSourceField.md#attr-datasourcefieldvalidators) or [FormItem.validators](FormItem.md#attr-formitemvalidators).  
 The `condition` argument should be a method of the same signature as [Validator.condition](#attr-validatorcondition).
 
-This method is essentially a shortcut for building a [ValidatorDefinition](../reference_2.md#object-validatordefinition) object and passing that to [Validator.addValidatorDefinition](#classmethod-validatoraddvalidatordefinition)
+This method is essentially a shortcut for building a [ValidatorDefinition](../reference.md#object-validatordefinition) object and passing that to [Validator.addValidatorDefinition](#classmethod-validatoraddvalidatordefinition)
 
 ### Parameters
 

@@ -88,14 +88,6 @@ The title-text to appear in the first column for the first group-level.
 **Flags**: IR
 
 ---
-## Attr: MultiGroupPanel.iconBaseStyle
-
-### Description
-A CSS style to apply to images in the [Level Up](#attr-multigrouppanellevelupbutton) and [Level Down](#attr-multigrouppanelleveldownbutton) buttons. This is a base style supporting suffixes for states, specifically "Over", "Down" and "Disabled", which are applied when [ImgButton](ImgButton.md#class-imgbutton) settings like [ImgButton.showRollOverIcon](ImgButton.md#attr-imgbuttonshowrollovericon) are applied to the icons.
-
-**Flags**: IR
-
----
 ## Attr: MultiGroupPanel.propertyFieldTitle
 
 ### Description
@@ -112,14 +104,6 @@ The title-text to appear in the header of the "property" field.
 
 ### Description
 The initial group configuration to show in the [optionsGrid](#attr-multigrouppaneloptionsgrid).
-
-**Flags**: IR
-
----
-## Attr: MultiGroupPanel.iconSize
-
-### Description
-The size for the images in the [Level Up](#attr-multigrouppanellevelupbutton) and [Level Down](#attr-multigrouppanelleveldownbutton) buttons.
 
 **Flags**: IR
 

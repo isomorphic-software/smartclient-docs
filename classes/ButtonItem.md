@@ -205,7 +205,7 @@ Called when a ButtonItem is clicked on.
 
 ### Returns
 
-`[Boolean](#type-boolean)` — Return false to cancel the click event. This will prevent the event from bubbling up, suppressing [click](Canvas.md#method-canvasclick) on the form containing this item.
+`[boolean](../reference.md#type-boolean)` — Return false to cancel the click event. This will prevent the event from bubbling up, suppressing [click](Canvas.md#method-canvasclick) on the form containing this item.
 
 ### Groups
 
@@ -221,7 +221,7 @@ Sets the (horizontal) alignment of this button's title.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| alignment | [Alignment](../reference_2.md#type-alignment) | false | — | new title alignment |
+| alignment | [Alignment](../reference.md#type-alignment) | false | — | new title alignment |
 
 ### Groups
 

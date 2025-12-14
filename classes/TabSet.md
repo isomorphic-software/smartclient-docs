@@ -126,7 +126,7 @@ Note that this property is only defined for certain skins, where it's needed. If
 ### Description
 Causes the [TabSet.addTabButton](#attr-tabsetaddtabbutton) to appear after the [TabSet.tabs](#attr-tabsettabs) and before the [TabSet.tabBarControls](#attr-tabsettabbarcontrols).
 
-There is no default behavior for what happens when the `addTabButton` is clicked. Add a handler for the [TabSet.addTabClick](#method-tabsetaddtabclick) event to implement a behavior.
+There is no default behavior for what happens when the `addTabButton` is clicked. Add a handler for the [TabSet.addTabClicked](#method-tabsetaddtabclicked) event to implement a behavior.
 
 **Flags**: IR
 
@@ -765,7 +765,7 @@ Thickness of tabBar, applies to either orientation (specifies height for horizon
 
 - tabBar
 
-**Flags**: IR
+**Flags**: IRW
 
 ---
 ## Attr: TabSet.editProxyConstructor
@@ -1080,7 +1080,7 @@ Optional handler to fire when a tab is deselected. Returning false will cancel t
 
 ### Returns
 
-`[Boolean](#type-boolean)` — return false to cancel the tab deselection
+`[boolean](../reference.md#type-boolean)` — return false to cancel the tab deselection
 
 ---
 ## Method: TabSet.getTabObject
@@ -1226,7 +1226,7 @@ Notification fired when the user right-clicks on a tab. Event may be cancelled b
 
 ### Returns
 
-`[Boolean](#type-boolean)` — return false to cancel default right-click behavior
+`[boolean](../reference.md#type-boolean)` — return false to cancel default right-click behavior
 
 ---
 ## Method: TabSet.getSelectedTab
@@ -1273,7 +1273,7 @@ Return false from this method to cancel the change.
 
 ### Returns
 
-`[Boolean](#type-boolean)` — return false to suppress the title change
+`[boolean](../reference.md#type-boolean)` — return false to suppress the title change
 
 ---
 ## Method: TabSet.removeTabs
@@ -1531,11 +1531,7 @@ Search for a tab that contains a pane.
 ## Method: TabSet.addTabClicked
 
 ### Description
-Click handler applied to the [TabSet.addTabButton](#attr-tabsetaddtabbutton).
-
-The default implementation will invoke [TabSet.addTabClick](#method-tabsetaddtabclick)
-
-**Deprecated**
+Event that fires when the [TabSet.addTabButton](#attr-tabsetaddtabbutton) is clicked. No default behavior.
 
 ---
 ## Method: TabSet.addTabs
@@ -1614,14 +1610,6 @@ Notification fired when a tab is selected. Note that this will only fire if this
 | ID | [GlobalId](../reference.md#type-globalid) | false | — | the ID of the newly selected tab |
 | tab | [Tab](#type-tab) | false | — | the tab object (not tab button instance) |
 | name | [TabName](../reference.md#type-tabname) | false | — | the name of the newly selected tab |
-
----
-## Method: TabSet.addTabClick
-
-### Description
-Notification method fired when the user clicks the [TabSet.addTabButton](#attr-tabsetaddtabbutton).
-
-No default implementation.
 
 ---
 ## Method: TabSet.tabIsVisible

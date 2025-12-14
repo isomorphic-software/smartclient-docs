@@ -52,14 +52,14 @@ Note that if "city" and "state" are represented as facets, they may look correct
 
 ### See Also
 
-- [Facet](../reference_2.md#object-facet)
+- [Facet](Facet.md#class-facet)
 - [FacetValue](../reference.md#object-facetvalue)
 
 ---
 ## ClassAttr: CubeGrid.ASCENDING
 
 ### Description
-A declared value of the enum type [FacetIndentDirection](../reference_2.md#type-facetindentdirection).
+A declared value of the enum type [FacetIndentDirection](../reference.md#type-facetindentdirection).
 
 **Flags**: R
 
@@ -67,7 +67,7 @@ A declared value of the enum type [FacetIndentDirection](../reference_2.md#type-
 ## ClassAttr: CubeGrid.DESCENDING
 
 ### Description
-A declared value of the enum type [FacetIndentDirection](../reference_2.md#type-facetindentdirection).
+A declared value of the enum type [FacetIndentDirection](../reference.md#type-facetindentdirection).
 
 **Flags**: R
 
@@ -816,7 +816,7 @@ This property need not be set and will automatically be constructed during widge
 ### See Also
 
 - [CubeGrid.getFacet](#method-cubegridgetfacet)
-- [Facet](../reference_2.md#object-facet)
+- [Facet](Facet.md#class-facet)
 - [CubeGrid.getFacetValue](#method-cubegridgetfacetvalue)
 - [FacetValue](../reference.md#object-facetvalue)
 
@@ -1118,7 +1118,7 @@ Determines whether cell values in the body can be selected.
 ## Attr: CubeGrid.autoFetchTextMatchStyle
 
 ### Description
-If [CubeGrid.autoFetchData](#attr-cubegridautofetchdata) is `true`, this attribute allows the developer to specify a textMatchStyle for the initial [fetchData()](ListGrid_2.md#method-listgridfetchdata) call.
+If [CubeGrid.autoFetchData](#attr-cubegridautofetchdata) is `true`, this attribute allows the developer to specify a textMatchStyle for the initial [fetchData()](ListGrid_1.md#method-listgridfetchdata) call.
 
 ### Groups
 
@@ -1312,20 +1312,6 @@ Title for the minimize-column menu item.
 **Flags**: IRW
 
 ---
-## Attr: CubeGrid.fetchRequestProperties
-
-### Description
-If [CubeGrid.autoFetchData](#attr-cubegridautofetchdata) is `true`, this attribute allows the developer to declaratively specify [DSRequest](../reference_2.md#object-dsrequest) properties for the initial [fetchData()](ListGrid_2.md#method-listgridfetchdata) call.
-
-Note that any properties governing more specific request attributes for the initial fetch (such as [CubeGrid.autoFetchTextMatchStyle](#attr-cubegridautofetchtextmatchstyle) and initial sort specifiers) will be applied on top of this properties block.
-
-### Groups
-
-- databinding
-
-**Flags**: IR
-
----
 ## Attr: CubeGrid.facetValueHoverStyle
 
 ### Description
@@ -1405,9 +1391,9 @@ Automatically size row headers to fit wrapped text.
 ## Attr: CubeGrid.autoFetchData
 
 ### Description
-If true, when this component is first drawn, automatically call `this.fetchData()`. Criteria for this fetch may be picked up from [initialCriteria](ListGrid_1.md#attr-listgridinitialcriteria), and textMatchStyle may be specified via [autoFetchTextMatchStyle](ListGrid_1.md#attr-listgridautofetchtextmatchstyle). Additional request properties may be specified using [CubeGrid.fetchRequestProperties](#attr-cubegridfetchrequestproperties).
+If true, when this component is first drawn, automatically call `this.fetchData()`. Criteria for this fetch may be picked up from [initialCriteria](ListGrid_1.md#attr-listgridinitialcriteria), and textMatchStyle may be specified via [autoFetchTextMatchStyle](ListGrid_1.md#attr-listgridautofetchtextmatchstyle).
 
-NOTE: if `autoFetchData` is set, calling [fetchData()](ListGrid_2.md#method-listgridfetchdata) before draw will cause two requests to be issued, one from the manual call to fetchData() and one from the autoFetchData setting. The second request will use only [initialCriteria](ListGrid_1.md#attr-listgridinitialcriteria) and not any other criteria or settings from the first request. Generally, turn off autoFetchData if you are going to manually call [fetchData()](ListGrid_2.md#method-listgridfetchdata) at any time. Note: If you are using saved searches - either via [SavedSearchItem](SavedSearchItem.md#class-savedsearchitem) or [ListGrid.saveDefaultSearch](ListGrid_1.md#attr-listgridsavedefaultsearch), autoFetchData will be automatically suspended and replaced with the saved criteria/view state, if applicable.
+NOTE: if `autoFetchData` is set, calling [fetchData()](ListGrid_1.md#method-listgridfetchdata) before draw will cause two requests to be issued, one from the manual call to fetchData() and one from the autoFetchData setting. The second request will use only [initialCriteria](ListGrid_1.md#attr-listgridinitialcriteria) and not any other criteria or settings from the first request. Generally, turn off autoFetchData if you are going to manually call [fetchData()](ListGrid_1.md#method-listgridfetchdata) at any time. Note: If you are using saved searches - either via [SavedSearchItem](SavedSearchItem.md#class-savedsearchitem) or [ListGrid.saveDefaultSearch](ListGrid_1.md#attr-listgridsavedefaultsearch), autoFetchData will be automatically suspended and replaced with the saved criteria/view state, if applicable.
 
 ### Groups
 
@@ -1415,7 +1401,7 @@ NOTE: if `autoFetchData` is set, calling [fetchData()](ListGrid_2.md#method-list
 
 ### See Also
 
-- [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata)
+- [ListGrid.fetchData](ListGrid_1.md#method-listgridfetchdata)
 
 **Flags**: IR
 
@@ -1559,7 +1545,7 @@ The export format will combine the column facet value titles, generating a singl
 
 ### See Also
 
-- [ListGrid.exportClientData](ListGrid_2.md#method-listgridexportclientdata)
+- [ListGrid.exportClientData](ListGrid_1.md#method-listgridexportclientdata)
 
 ---
 ## Method: CubeGrid.facetValueHover
@@ -1820,13 +1806,13 @@ Deselect cells that match a [FacetValueMap](../reference.md#object-facetvaluemap
 ## Method: CubeGrid.getEventRow
 
 ### Description
-Returns the row number of the provided Y-coordinate, or the most recent mouse event if a Y-coordinate is not provided.
+Returns the row number of the most recent mouse event.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| y | [Integer](../reference_2.md#type-integer) | true | — | Y-coordinate relative to the top edge of the content to obtain the row number for. If not provided, then [Canvas.getOffsetY](Canvas.md#method-canvasgetoffsety) will be used. |
+| y | [Integer](../reference_2.md#type-integer) | true | — | optional y-coordinate to obtain row number, in lieu of the y coordinate of the last mouse event |
 
 ### Returns
 
@@ -1961,7 +1947,7 @@ Return whether the specified CubeGrid field is open, taking into account both [c
 
 Note that if you don't already have a [FacetValueMap](../reference.md#object-facetvaluemap) to the field in question, you can get one by calling [CubeGrid.getRowHeaderFacetValues](#method-cubegridgetrowheaderfacetvalues) or [CubeGrid.getColumnHeaderFacetValues](#method-cubegridgetcolumnheaderfacetvalues),
 
-You can also construct a [FacetValueMap](../reference.md#object-facetvaluemap) on your own by using the [Facet.id](Facet.md#attr-facetid)s from [CubeGrid.rowFacets](#attr-cubegridrowfacets) or [CubeGrid.columnFacets](#attr-cubegridcolumnfacets) together with the [FacetValue.id](FacetValue.md#attr-facetvalueid)s of the [Facet.values](Facet.md#attr-facetvalues) for the row or column that you want to query. Given a [Facet.id](Facet.md#attr-facetid), you can use [CubeGrid.getFacet](#method-cubegridgetfacet) to obtain the correponding [Facet](../reference_2.md#object-facet).
+You can also construct a [FacetValueMap](../reference.md#object-facetvaluemap) on your own by using the [Facet.id](Facet.md#attr-facetid)s from [CubeGrid.rowFacets](#attr-cubegridrowfacets) or [CubeGrid.columnFacets](#attr-cubegridcolumnfacets) together with the [FacetValue.id](FacetValue.md#attr-facetvalueid)s of the [Facet.values](Facet.md#attr-facetvalues) for the row or column that you want to query. Given a [Facet.id](Facet.md#attr-facetid), you can use [CubeGrid.getFacet](#method-cubegridgetfacet) to obtain the correponding [Facet](Facet.md#class-facet).
 
 ### Parameters
 
@@ -2064,13 +2050,13 @@ Returns the current value of a cell. If the cell has an outstanding edit value, 
 ## Method: CubeGrid.getEventColumn
 
 ### Description
-Returns the column number of the provided X-coordinate, or the most recent mouse event if an X-coordinate is not provided.
+Returns the column number of the most recent mouse event.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| x | [Integer](../reference_2.md#type-integer) | true | — | X-coordinate relative to the left edge of the content to obtain the column number for. If not provided, then [Canvas.getOffsetX](Canvas.md#method-canvasgetoffsetx) will be used. |
+| x | [Integer](../reference_2.md#type-integer) | true | — | optional x-coordinate to obtain column number for, in lieu of the x coordinate of the last mouse event |
 
 ### Returns
 
@@ -2567,7 +2553,7 @@ Get a facet definition by facetId. Constant time.
 
 ### See Also
 
-- [Facet](../reference_2.md#object-facet)
+- [Facet](Facet.md#class-facet)
 
 ---
 ## Method: CubeGrid.closeColumn
@@ -2696,7 +2682,7 @@ Note this method does not hide the inline editors if they are showing - to expli
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| editCompletionEvent | [EditCompletionEvent](../reference_2.md#type-editcompletionevent) | true | — | Event used to complete cell editing. Optional, and defaults to `"programmatic"`. Can be used by the `callback` method to perform custom actions such as navigation when the save completes. |
+| editCompletionEvent | [EditCompletionEvent](../reference.md#type-editcompletionevent) | true | — | Event used to complete cell editing. Optional, and defaults to `"programmatic"`. Can be used by the `callback` method to perform custom actions such as navigation when the save completes. |
 | callback | [Callback](../reference.md#type-callback) | true | — | Callback to fire on completion of the saving process. If no edits were made or client-side validation fails the callback will be fired synchronously at the end of this method.  
 Takes the following parameters:  
 \- rowNum _(Number) edited row number_  
@@ -2727,7 +2713,7 @@ Set the align of a facet title (appears in facet label).
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | facetId | [Identifier](../reference.md#type-identifier) | false | — | facet to update |
-| align | [Alignment](../reference_2.md#type-alignment) | false | — | new alignment for facet title |
+| align | [Alignment](../reference.md#type-alignment) | false | — | new alignment for facet title |
 
 ### Groups
 
@@ -2852,7 +2838,7 @@ Set the align for the title for a facet value.
 |------|------|----------|---------|-------------|
 | facetId | [Identifier](../reference.md#type-identifier) | false | — | facet to update |
 | facetValueId | [Identifier](../reference.md#type-identifier) | false | — | facetValue to update |
-| align | [Alignment](../reference_2.md#type-alignment) | false | — | new alignment for facet value title |
+| align | [Alignment](../reference.md#type-alignment) | false | — | new alignment for facet value title |
 
 ### Groups
 
@@ -2913,7 +2899,7 @@ Return the pointer to a particular record by record and column number.
 ### See Also
 
 - [ListGrid.getRecord](ListGrid_2.md#method-listgridgetrecord)
-- [ListGrid.getEditedRecord](ListGrid_2.md#method-listgridgeteditedrecord)
+- [ListGrid.getEditedRecord](ListGrid_1.md#method-listgridgeteditedrecord)
 
 **Flags**: A
 

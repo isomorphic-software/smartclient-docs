@@ -40,14 +40,6 @@ By default doubleClicks are disabled for SectionHeaders. All mouse click events 
 **Flags**: IRA
 
 ---
-## Attr: SectionHeader.definingProperty
-
-### Description
-This attribute denotes the name of a property to use as a [getDefiningPropertyName()](Canvas.md#method-canvasgetdefiningpropertyname) for this property when generating and resolving [AutoTest locators with search segments](../reference_2.md#type-autotestlocator).
-
-**Flags**: IRWA
-
----
 ## Attr: SectionHeader.icon
 
 ### Description
@@ -137,7 +129,7 @@ Optional stringMethod to fire when the user hovers over this section header and 
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false to suppress the standard hover
+`[boolean](../reference.md#type-boolean)` — false to suppress the standard hover
 
 ### Groups
 

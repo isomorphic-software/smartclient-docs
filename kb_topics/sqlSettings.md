@@ -91,7 +91,7 @@ Mysql vs MariaDB: there is broad compatibility between these two databases as de
 #### Smartclient properties
 
 **`sql.mysql.optimizeCaseSensitiveCriteria`**  
-_This setting affects all **MySQL** connectors and it is set to **true** by default._ Depending on [textMatchStyle](../reference_2.md#type-textmatchstyle) case sensitivity in text criteria is achieved by using LIKE BINARY sql comparison operator, which does not use indexed search. Indexes are used with regular "=" comparison operator, which does not ensure case sensitivity. With big amounts of data indexes are critical, so in order to use them and still have case sensitivity supported this setting must be set to `true` (default). This way we would generate comparison expression like:  
+_This setting affects all **MySQL** connectors and it is set to **true** by default._ Depending on [textMatchStyle](../reference.md#type-textmatchstyle) case sensitivity in text criteria is achieved by using LIKE BINARY sql comparison operator, which does not use indexed search. Indexes are used with regular "=" comparison operator, which does not ensure case sensitivity. With big amounts of data indexes are critical, so in order to use them and still have case sensitivity supported this setting must be set to `true` (default). This way we would generate comparison expression like:  
 ``<field>` = `<value>` AND `<field>` LIKE BINARY `<value>``  
 where first part ensures efficient indexed search and second part adds case sensitivity to significantly reduced amounts of data. This would be more efficient without indexes as well, cause LIKE BINARY conversion would be performed on less rows anyway.  
 Setting this property to `false` would bring back the old behavior, when only LIKE BINARY comparison would be used, which would return same results, but much slower.
@@ -100,36 +100,24 @@ Setting this property to `false` would bring back the old behavior, when only LI
 By default SQL query is generated using traditional "having" clause approach:
 
 ```
-select <selectClause> from ... where ... group by <groupClause> having <afterWhereClause>
+select <selectClause> from ... where ... group by <groupClause> having <groupWhereClause>
 ```
 Setting `sql.MyDatabase.useHavingClause` to `false` makes SQL query use subselect approach when main query becomes subselect and then it is filtered in outer "where" clause:
 ```
-select * from (select <selectClause> from ... where ... group by <groupClause>) work where <afterWhereClause>
+select * from (select <selectClause> from ... where ... group by <groupClause>) work where <groupWhereClause>
 ```
 This may be overridden by setting [OperationBinding.useHavingClause](../classes/OperationBinding.md#attr-operationbindingusehavingclause).
 
-**`sql.likeIsCaseSensitive` and `sql.MyDatabase.likeIsCaseSensitive`**  
-The "LIKE" operator in the SQL standard is defined as being case-insensitive, however, some databases default to case-sensitive matching. This is not ultimately not technically in violation of the standard since the standard specifies that the comparison is based on the configured "collation" (the collation is basically the rules for comparing characters and deciding which is first when sorting).
+**`sql.forceInsensitivity` and `sql.MyDatabase.forceInsensitivity`**  
+These properties control [iContains](../reference.md#type-operatorid) case insensitive operator behavior. Set to `true` to force case insensitivity (see below) or `false` to rely on database `LIKE` operator directly. At the database level `iContains` comparison is performed by `LIKE` operator which may be case sensitive or case insensitive depending on the database or its configuration. For databases with case sensitive `LIKE` operator we are forcing case insensitivity by changing case on both comparison expression sides:
 
-If the default behavior of the LIKE operator is a case-sensitive comparison, then, to achieve a case-insensitive comparison, as required by [case insensitive operators](../reference.md#type-operatorid) such as iEquals, iContains and so forth, the SmartClient server must generate SQL that uses LOWER() or similar SQL functions to ensure case-insensitive comparison.
+`LOWER(table.column) LIKE LOWER('%Value%')`
 
-In databases where the default behavior of the "LIKE" operator is already case-insensitive comparison, explicit use of the LOWER() function can be slower - certain databases do not realize that this is a "no-op" and perform the query poorly (fail to use indices, etc).
+This approach has a downside of not using indexes, which is not efficient with big amounts of data. So, it is recommended to use direct `LIKE` comparison when possible, which Smartclient does by default for SQL Server and MySQL drivers, since their `LIKE` is case insensitive by default. Although it may depend on DB setup, for example in SQL Server it is controlled via database collation. So, configure accordingly to the database setup you're using, which can be done via:
 
-Note that above is true for the equality check as well, because usually databases treat the "LIKE" and "=" operators in the same way, i.e. either they both are case-sensitive or both are case-insensitive.
-
-Smartclient does its best to default this behavior for supported databases, so unless your database is configured to use other than the default "collation", nothing needs to be changed. In case you need to change the default behavior set `likeIsCaseSensitive` flag as follows:
-
-*   `likeIsCaseSensitive: true` enables Smartclient to convert both sides of comparison to lower/upper case to ensure case-insensitivity:  
-    `LOWER(table.column) = LOWER('Value')`  
-    and  
-    `LOWER(table.column) LIKE LOWER('%Value%')`
-*   `likeIsCaseSensitive: false` enables Smartclient to rely on database case-insensitivity and compare values directly:  
-    `table.column = 'Value'`  
-    and  
-    `table.column LIKE '%Value%'`
-
-**`sql.forceInsensitive` and `sql.MyDatabase.forceInsensitive`**  
-_**Deprecated.** Does the same as "likeIsCaseSensitive" described above, but will be removed soon. Please see "likeIsCaseSensitive" setting docs for the details what it affects exactly._
+*   system-wide `sql.forceInsensitive` property in server.properties
+*   Database config specific `sql.MyDatabase.forceInsensitive` property in server.properties
+*   [DataSourceField.sqlForceInsensitive](../classes/DataSourceField.md#attr-datasourcefieldsqlforceinsensitive) property for individual fields
 
 **`sql.aliasLengthLimit` and `sql.MyDatabase.aliasLengthLimit`**  
 These properties override the default table alias length limit when using features like [DataSourceField.includeVia](../classes/DataSourceField.md#attr-datasourcefieldincludevia) and [DataSourceField.otherFKs](../classes/DataSourceField.md#attr-datasourcefieldotherfks). Default alias length limit is set accordingly to the documentation for supported databases and defaults to 128 characters, except these databases:
@@ -155,7 +143,7 @@ When ILIKE is in use, Postgres is able to make use of indexes, which it does not
 ```
 
 **`sql.log.queriesSlowerThan`**  
-Allows you to specify SQL query execution time threshold in milliseconds (defaults to 10000), which if exceeded query is identified as "slow" and may be logged under specific logging category. See [DataSource.logSlowSQL](../classes/DataSource.md#attr-datasourcelogslowsql) for more details.
+Allows you to specify SQL query execution time threshold in milliseconds, which if exceeded query is identified as "slow" and may be logged under specific logging category. See [DataSource.logSlowSQL](../classes/DataSource.md#attr-datasourcelogslowsql) for more details.
 
 ### Related
 

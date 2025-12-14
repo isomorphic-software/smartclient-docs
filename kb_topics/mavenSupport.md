@@ -58,7 +58,7 @@ Following execution of the plugin's install or deploy goal, its [working directo
      
     ```
     
-3.  Generate a project (using LATEST as below, or the version installed for you in step 2). For example, If you used build number 13.0p in step 2, the version here should have the form 13.0-p`<date>`, where `<date>` is an eight digit date in the form of YYYYMMDD (e.g. 13.0-p20220525).
+3.  Generate a project (using LATEST as below, or the version installed for you in step 2)
     ```
       mvn archetype:generate \
         -DartifactId=my-application \

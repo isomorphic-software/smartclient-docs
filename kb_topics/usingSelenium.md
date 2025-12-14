@@ -7,11 +7,7 @@
 ## KB Topic: Using Selenium Scripts (Selenese)
 
 ### Description
-[Selenium](http://seleniumhq.org/) is a powerful and popular tool which can be used to test your SmartClient applications.
-
-_For an overview of Automated Testing in SmartClient, see the documentation [here](automatedTesting.md#kb-topic-automated-testing)._
-
-Selenium executes tests against your running application in a browser emulating user interaction and asserting various conditions. Selenium provides a record/playback tool for authoring tests without learning a test scripting language - we refer to these as Selenium scripts or _Selenese_. You must be familiar with [Selenium](http://seleniumhq.org/) and use of [Selenium IDE](http://seleniumhq.org/projects/ide/) before proceeding. Refer to the documentation on the Selenium site.
+[Selenium](http://seleniumhq.org/) is a powerful and popular tool which can be used to test your SmartClient applications. Selenium executes tests against your running application in a browser emulating user interaction and asserting various conditions. Selenium provides a record/playback tool for authoring tests without learning a test scripting language - we refer to these as Selenium scripts or _Selenese_. You must be familiar with [Selenium](http://seleniumhq.org/) and use of [Selenium IDE](http://seleniumhq.org/projects/ide/) before proceeding. Refer to the documentation on the Selenium site.
 
 **Note that Selenium IDE 3 for Firefox Quantum has been released, but only recently added plugin APIs that should eventually allow us to add support for our our custom locators and commands (replacing our JavaScript user extensions from Selenium IDE 2.9). For now, if you want to write Selenese as this section describes, you must use Selenium IDE 2.9, which can be installed in [Firefox 52 ESR](https://www.mozilla.org/en-US/firefox/organizations/), the extended-support release of Firefox which is still receiving updates at the time of this writing.**
 

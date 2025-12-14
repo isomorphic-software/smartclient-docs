@@ -206,22 +206,6 @@ Width for hilite icons for this field. Overrides [DetailViewer.hiliteIconSize](D
 **Flags**: IRW
 
 ---
-## Attr: DetailViewerField.userFormula
-
-### Description
-Formula definition for this field.
-
-**Flags**: IR
-
----
-## Attr: DetailViewerField.userSummary
-
-### Description
-Summary definition for this field.
-
-**Flags**: IR
-
----
 ## Attr: DetailViewerField.name
 
 ### Description
@@ -257,7 +241,11 @@ When a field specifies its [DetailViewerField.type](#attr-detailviewerfieldtype)
 ## Attr: DetailViewerField.title
 
 ### Description
-The title of the field as displayed on the left-hand side. If left unspecified, the title of the field is the [DetailViewerField.name](#attr-detailviewerfieldname) of the field.
+The title of the field as displayed on the left-hand side. If left unspecified, the title of the field is derived by looking up the value of [DetailViewer.fieldIdProperty](DetailViewer.md#attr-detailviewerfieldidproperty) on this field. So, by default, the title of a field is the value of its "name" property.
+
+### See Also
+
+- [DetailViewer.fieldIdProperty](DetailViewer.md#attr-detailviewerfieldidproperty)
 
 **Flags**: IR
 
@@ -477,7 +465,7 @@ This is the field-specific attribute. You may also set the emptyCellValue at the
 ## Attr: DetailViewerField.hiliteIconPosition
 
 ### Description
-When [DetailViewer.hiliteIcons](DetailViewer.md#attr-detailviewerhiliteicons) are present, where the hilite icon will be placed relative to the field value. See [HiliteIconPosition](../reference_2.md#type-hiliteiconposition). Overrides [DetailViewer.hiliteIconPosition](DetailViewer.md#attr-detailviewerhiliteiconposition)
+When [DetailViewer.hiliteIcons](DetailViewer.md#attr-detailviewerhiliteicons) are present, where the hilite icon will be placed relative to the field value. See [HiliteIconPosition](../reference.md#type-hiliteiconposition). Overrides [DetailViewer.hiliteIconPosition](DetailViewer.md#attr-detailviewerhiliteiconposition)
 
 ### Groups
 
@@ -514,7 +502,7 @@ This method can be specified either as a function or a string that will be auto-
 
 ### Returns
 
-`[Boolean](#type-boolean)` — true to show the field, false to not show it.
+`[boolean](../reference.md#type-boolean)` — true to show the field, false to not show it.
 
 ---
 ## Method: DetailViewerField.formatCellValue

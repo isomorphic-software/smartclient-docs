@@ -24,18 +24,6 @@ The description shown in a hover when [FormItem.showOldValueInHover](FormItem.md
 **Flags**: IRA
 
 ---
-## Attr: CheckboxItem.showValueIconFocusedAsOver
-
-### Description
-When [showValueIconFocused](#attr-checkboxitemshowvalueiconfocused) is set to true, this attribute determines the state-name to use for the 'FocusedOver' state - when true, 'FocusedOver' will use the 'Over' media/style, otherwise it will use the 'Focused' media/style.
-
-### Groups
-
-- valueIcons
-
-**Flags**: IRWA
-
----
 ## Attr: CheckboxItem.checkedImage
 
 ### Description
@@ -116,20 +104,6 @@ Width of the checkbox image.
 **Flags**: IRW
 
 ---
-## Attr: CheckboxItem.showValueIconFocused
-
-### Description
-When true, the icon is modified to reflect 'Focused' state.
-
-For the 'FocusedOver' state, the default is to reuse the "Over" state - if you want to retain the 'Focused' state instead, set [showValueIconFocusedAsOver](#attr-checkboxitemshowvalueiconfocusedasover) to false.
-
-### Groups
-
-- valueIcons
-
-**Flags**: IRWA
-
----
 ## Attr: CheckboxItem.showNullAsTrue
 
 ### Description
@@ -196,36 +170,6 @@ An optional base CSS style to apply to the checkbox image. If supplied, the base
 - [CheckboxItem.printBooleanBaseStyle](#attr-checkboxitemprintbooleanbasestyle)
 
 **Flags**: IRA
-
----
-## Attr: CheckboxItem.defaultValue
-
-### Description
-Overridden to assign class-appropriate type.
-
-### Groups
-
-- basics
-
-### See Also
-
-- [FormItem.defaultValue](FormItem.md#attr-formitemdefaultvalue)
-
-**Flags**: IRW
-
----
-## Attr: CheckboxItem.showValueIconError
-
-### Description
-Whether a separate "Error" state should be applied to icons when the item fails validation. If set to true and this item has validation errors, the icon-src will be suffixed _Error_. If physical states also apply, such as [_Over_](#attr-checkboxitemshowvalueiconover) or [_Disabled_](#attr-checkboxitemshowvalueicondisabled), these are appended - for example, _ErrorOver_ or _ErrorDisabled_.
-
-Note that valid images must be made available for these `Error` states.
-
-### Groups
-
-- valueIcons
-
-**Flags**: IRWA
 
 ---
 ## Attr: CheckboxItem.editProxyConstructor
@@ -424,7 +368,7 @@ Height of the checkbox image.
 ## Attr: CheckboxItem.labelAsTitle
 
 ### Description
-By default a checkboxItem sets [CheckboxItem.showTitle](#attr-checkboxitemshowtitle):true, and so takes up two cells with the default [TitleOrientation](../reference_2.md#type-titleorientation) of "left" (see [form layout\\n overview](../kb_topics/formLayout.md#kb-topic-form-layout)). However, the title cell is left blank by default, and the title specified by [FormItem.title](FormItem.md#attr-formitemtitle) is shown inside the formItem's cell instead, in an element called the "label".
+By default a checkboxItem sets [CheckboxItem.showTitle](#attr-checkboxitemshowtitle):true, and so takes up two cells with the default [TitleOrientation](../reference.md#type-titleorientation) of "left" (see [form layout\\n overview](../kb_topics/formLayout.md#kb-topic-form-layout)). However, the title cell is left blank by default, and the title specified by [FormItem.title](FormItem.md#attr-formitemtitle) is shown inside the formItem's cell instead, in an element called the "label".
 
 To instead show the title in it's original location, set `labelAsTitle:true`. You can also set [CheckboxItem.showLabel](#attr-checkboxitemshowlabel):false to suppress the label and/or title altogether.
 
@@ -535,6 +479,6 @@ The default behavior is that the [cellStyle](FormItem.md#attr-formitemcellstyle)
 
 ### Returns
 
-`[Boolean](#type-boolean)` — `false` to cancel the default behavior.
+`[boolean](../reference.md#type-boolean)` — `false` to cancel the default behavior.
 
 ---

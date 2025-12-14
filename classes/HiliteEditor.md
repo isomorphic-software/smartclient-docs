@@ -64,14 +64,6 @@ The title text for the [add advanced rule](#attr-hiliteeditoraddadvancedrulebutt
 **Flags**: IR
 
 ---
-## Attr: HiliteEditor.advancedRuleHeight
-
-### Description
-The default height of Advanced Hilite-Rules in the main editor.
-
-**Flags**: IR
-
----
 ## Attr: HiliteEditor.availableFieldsColumnTitle
 
 ### Description
@@ -97,7 +89,7 @@ This component is an [AutoChild](../reference.md#type-autochild) and as such may
 ## Attr: HiliteEditor.hiliteIcons
 
 ### Description
-Specifies a list of icons that can be used in [hilites](../reference_2.md#object-hilite).
+Specifies a list of icons that can be used in [hilites](../reference.md#object-hilite).
 
 `hiliteIcons` should be specified as an Array of [SCImgURL](../reference.md#type-scimgurl). When present, [HiliteRule](HiliteRule.md#class-hiliterule)s will offer the user a drop down for picking one of these icons.
 

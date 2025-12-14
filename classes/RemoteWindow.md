@@ -9,9 +9,7 @@
 ### Description
 Provides APIs that manipulate a SmartClient browser window. Within the [OpenFin](https://developers.openfin.co/of-docs/docs) environment, the underlying implementation is actually via the [OpenFinWindow](../reference.md#class-openfinwindow) class.
 
-### Groups
-
-- experimental
+**Note:** this is currently an experimental feature and not supported except by special arrangement
 
 ### See Also
 

@@ -29,6 +29,7 @@ Note: If the resulting string, after evaluating the dynamic string, will be used
 - [DynamicString](../reference_2.md#type-dynamicstring)
 - [AI.sendPrompt](../classes/AI.md#classmethod-aisendprompt)
 - [Canvas.dynamicContents](../classes/Canvas.md#attr-canvasdynamiccontents)
+- [HTMLFlow.dynamicContents](../classes/HTMLFlow.md#attr-htmlflowdynamiccontents)
 - [Label.dynamicContents](../classes/Label.md#attr-labeldynamiccontents)
 
 ---

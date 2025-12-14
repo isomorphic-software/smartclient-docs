@@ -7,7 +7,7 @@
 ## Class: SortSpecifierUtil
 
 ### Description
-Utilities for working with [SortSpecifier](../reference_2.md#object-sortspecifier) objects.
+Utilities for working with [SortSpecifier](../reference.md#object-sortspecifier) objects.
 
 ---
 ## ClassAttr: SortSpecifierUtil.descendingSortDescription

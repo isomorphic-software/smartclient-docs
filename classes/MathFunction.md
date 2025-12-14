@@ -20,9 +20,6 @@ The built-in functions cover all static functionality on the JavaScript Math obj
 *   **pow(value1,value2)**: value1 to the power of value2
 *   **sqrt(value)**: Square root of a value
 *   **dateAdd(value,interval,amount)**: Excel™-compatible dataAdd function: adds quantities of a time interval to a date value. Also supports being passed interval names, like "hour" or "week".
-*   **year(value)**: 4-digit integer that represents the year of a date.
-*   **month(value)**: 1-12 integer that represents the month of a date.
-*   **day(value)**: 1-31 integer that represents the day of month of a date.
 *   **toPrecision(value,precision)**: Format a number to a length of _precision_ digits, rounding or adding a decimal point and zero-padding as necessary. Note that the values 123, 12.3 and 1.23 have an equal precision of 3. Returns a formatted string and should be used as the outermost function call in a formula. For rounding, use _round()_.
 *   **toFixed(value,digits)**: Round or zero-pad a number to _digits_ decimal places. Returns a formatted string and should be used as the outermost function call in a formula. To round values or restrict precision, use _round()_ and _toPrecision()_ respectively.
 *   **sin(value)**: Sine of a value

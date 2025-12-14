@@ -153,13 +153,13 @@ Two lists are equal only if they have the same length and all contained items ar
 ## Method: Array.setSort
 
 ### Description
-Sort this Array by a list of [SortSpecifier](../reference_2.md#object-sortspecifier)s.
+Sort this Array by a list of [SortSpecifier](../reference.md#object-sortspecifier)s.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| sortSpecifiers | [Array of SortSpecifier](#type-array-of-sortspecifier) | false | — | the list of [SortSpecifier](../reference_2.md#object-sortspecifier)s to sort by |
+| sortSpecifiers | [Array of SortSpecifier](#type-array-of-sortspecifier) | false | — | the list of [SortSpecifier](../reference.md#object-sortspecifier)s to sort by |
 
 ### Returns
 
@@ -324,7 +324,7 @@ Note: you can specify that a subset range be added by passing start and end indi
 
 ### Returns
 
-`[List](#type-list)` — this list, to allow chaining of calls
+`[List](#type-list)` — list of items that were added
 
 ### Groups
 
@@ -844,17 +844,17 @@ Returns true if all values between the start and end indices are true.
 ## Method: Array.intersect
 
 ### Description
-Return the list of non-`null` items that are contained in this list and each of the argument list(s).
+Return the list of items that are in both this list and the passed-in list(s).
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| lists | [All List Arguments](#type-all-list-arguments) | false | — | Lists to intersect with. |
+| lists | [All List Arguments](#type-all-list-arguments) | false | — | lists to intersect with |
 
 ### Returns
 
-`[List](#type-list)` — A new list containing only the non-`null` items that are contained in this list and each of the argument list(s).
+`[List](#type-list)` — intersection
 
 ### Groups
 
@@ -924,7 +924,7 @@ Remove all instances of objects in the specified list from this list, sliding th
 
 ### Returns
 
-`[List](#type-list)` — this list, to allow chaining of calls
+`[List](#type-list)` — list of items passed in
 
 ### Groups
 
@@ -1033,7 +1033,7 @@ Add list of items list to this array at item pos. All items after array\[pos\] w
 
 ### Returns
 
-`[List](#type-list)` — this list, to allow chaining of calls
+`[Array](#type-array)` — the list of items that was added
 
 ### Groups
 

@@ -12,8 +12,8 @@ The [search operators](../reference.md#type-operatorid) use patterns like "foo\*
 *   "matchesPattern" Basic GLOB matching using wildcards.
 *   "iMatchesPattern" Basic GLOB matching using wildcards (case insensitive).
 *   "containsPattern" GLOB matching using wildcards. Value is considered to meet the criterion if it contains the pattern.
-*   "startsWithPattern" GLOB matching using wildcards. Value is considered to meet the criterion if it starts with the pattern.
-*   "endsWithPattern" GLOB matching using wildcards. Value is considered to meet the criterion if it starts with the pattern.
+*   "startsWithPattern" GLOB mathcing using wildcards. Value is considered to meet the criterion if it starts with the pattern.
+*   "endsWithPattern" GLOB mathcing using wildcards. Value is considered to meet the criterion if it starts with the pattern.
 *   "iContainsPattern" GLOB matching using wildcards. Value is considered to meet the criterion if it contains the pattern. Matching is case insensitive.
 *   "iStartsWithPattern" GLOB matching using wildcards. Value is considered to meet the criterion if it starts with the pattern. Matching is case insensitive.
 *   "iEndsWithPattern" GLOB matching using wildcards.Value is considered to meet the criterion if it ends with the pattern. Matching is case insensitive.

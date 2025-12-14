@@ -70,22 +70,6 @@ This attribute only applies to freeform text entry fields such as [TextItem](Tex
 **Flags**: IRW
 
 ---
-## Attr: TextAreaItem.defaultValue
-
-### Description
-Overridden to assign class-appropriate type.
-
-### Groups
-
-- basics
-
-### See Also
-
-- [FormItem.defaultValue](FormItem.md#attr-formitemdefaultvalue)
-
-**Flags**: IRW
-
----
 ## Attr: TextAreaItem.selectOnClick
 
 ### Description

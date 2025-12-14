@@ -19,8 +19,8 @@ An [HTMLString](../reference.md#type-htmlstring) to use as the displayable title
 
 Within a [DataBoundComponent](../reference.md#interface-databoundcomponent):
 
-*   A field's title may be set with [DataBoundComponent.setFieldTitle](DataBoundComponent.md#method-databoundcomponentsetfieldtitle).
-*   Always call the [DataBoundComponent.getFieldTitle](DataBoundComponent.md#method-databoundcomponentgetfieldtitle) method to obtain the field's title.
+*   A field's title may be set with [DataBoundComponent.setFieldTitle](#method-databoundcomponentsetfieldtitle).
+*   Always call the [DataBoundComponent.getFieldTitle](#method-databoundcomponentgetfieldtitle) method to obtain the field's title.
 
 ### See Also
 

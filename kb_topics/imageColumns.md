@@ -11,7 +11,7 @@ Columns that show images either as their only appearance or in addition to text.
 
 ### Related
 
-- [ListGrid.getValueIcon](../classes/ListGrid_2.md#method-listgridgetvalueicon)
+- [ListGrid.getValueIcon](../classes/ListGrid_1.md#method-listgridgetvalueicon)
 - [ListGrid.getEditorValueIcons](../classes/ListGrid_2.md#method-listgridgeteditorvalueicons)
 - [DetailViewerField.imageSize](../classes/DetailViewerField.md#attr-detailviewerfieldimagesize)
 - [DetailViewerField.imageWidth](../classes/DetailViewerField.md#attr-detailviewerfieldimagewidth)

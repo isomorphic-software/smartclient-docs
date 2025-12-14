@@ -17,7 +17,7 @@ A UserTask takes the following steps:
 *   Provide values to either a [DynamicForm](DynamicForm.md#class-dynamicform) designated as the [targetForm](#attr-usertasktargetform) or to a [ValuesManager](ValuesManager.md#class-valuesmanager) designated as the [targetVM](#attr-usertasktargetvm), via [setValues()](ValuesManager.md#method-valuesmanagersetvalues)
 *   Waits for notification of completion or cancellation. The UserTask is notified of completion if a [SubmitItem](../reference.md#class-submititem) is pressed in either the `targetForm` or any form that is a member of the `targetVM`. Likewise a [CancelItem](../reference.md#class-cancelitem) triggers cancellation. Direct calls to [DynamicForm.cancelEditing](DynamicForm.md#method-dynamicformcancelediting) or [DynamicForm.completeEditing](DynamicForm.md#method-dynamicformcompleteediting) achieve the same result.
 *   if cancellation occurs, the process continues to the [cancelElement](#attr-usertaskcancelelement) if specified. Otherwise the workflow is immediately finished.
-*   if completion occurs, values are retrieved from the form or valuesManager and applied to the process state based on [outputField](Task.md#attr-taskoutputfield), [outputFieldList](Task.md#attr-taskoutputfieldlist) or [inputs](Task.md#attr-taskinputs), in that order.
+*   if completion occurs, values are retrieved from the form or valuesManager and applied to the process state based on [outputField](Task.md#attr-taskoutputfield), [outputFieldList](Task.md#attr-taskoutputfieldlist) or [inputField](Task.md#attr-taskinputfield), in that order.
 
 ---
 ## Attr: UserTask.previousElement
@@ -82,7 +82,7 @@ An inline definition of the form. Can be used in place of [UserTask.targetView](
 ### Description
 Does this processElement pass through output from the last executed task (i.e. transient state)?
 
-See [taskInputExpressions](../reference_2.md#type-taskinputexpression) for details on the transient state outputs.
+See [taskInputExpressions](../kb_topics/taskInputExpression.md#kb-topic-task-input-expressions) for details on the transient state outputs.
 
 Note that this property does not affect the task at all but is an indicator to the user and to the workflow editor of the behavior of the task as coded (See [Process.passThruTaskOutput](Process.md#method-processpassthrutaskoutput)).
 
@@ -130,6 +130,6 @@ Finish editing and store edited values in [process state](Process.md#attr-proces
 ## Method: UserTask.cancelEditing
 
 ### Description
-Revert any changes made in a form and finish this userTask execution. [UserTask.cancelElement](#attr-usertaskcancelelement) will be processed as the next element of the current process.
+Revert any changes made in a form and finish this userTask execution. [UserTask.cancelElement](#attr-usertaskcancelelement) will be proceed as the next element of current process.
 
 ---

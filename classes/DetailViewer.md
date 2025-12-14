@@ -34,20 +34,6 @@ For example, specify \["decimalPad", "decimalPrecision"\] to allow end users to 
 **Flags**: IR
 
 ---
-## Attr: DetailViewer.fetchRequestProperties
-
-### Description
-If [DetailViewer.autoFetchData](#attr-detailviewerautofetchdata) is `true`, this attribute allows the developer to declaratively specify [DSRequest](../reference_2.md#object-dsrequest) properties for the initial [fetchData()](ListGrid_2.md#method-listgridfetchdata) call.
-
-Note that any properties governing more specific request attributes for the initial fetch (such as [autoFetchTextMatchStyle](#attr-databoundcomponentautofetchtextmatchstyle) and initial sort specifiers) will be applied on top of this properties block.
-
-### Groups
-
-- databinding
-
-**Flags**: IR
-
----
 ## Attr: DetailViewer.showDetailFields
 
 ### Description
@@ -143,7 +129,7 @@ Whether to show the field when the value is null
 ## Attr: DetailViewer.dataSource
 
 ### Description
-The DataSource that this component should bind to for default fields and for performing [DataSource requests](../reference_2.md#object-dsrequest).
+The DataSource that this component should bind to for default fields and for performing [DataSource requests](../reference.md#object-dsrequest).
 
 Can be specified as either a DataSource instance or the String ID of a DataSource.
 
@@ -219,9 +205,7 @@ Text to show for an empty cell
 ### Description
 Name of the field in the DetailViewerRecord which specifies the data property for that record.
 
-**Deprecated**
-
-**Flags**: R
+**Flags**: IRWA
 
 ---
 ## Attr: DetailViewer.labelStyle
@@ -498,7 +482,7 @@ If set, right-clicking on the DetailViewer will show a context menu that offers 
 ## Attr: DetailViewer.hiliteIconPosition
 
 ### Description
-When [hiliteIcons](#attr-detailviewerhiliteicons) are present, where the hilite icon will be placed relative to the field value. See [HiliteIconPosition](../reference_2.md#type-hiliteiconposition). Can be overridden at the field level.
+When [hiliteIcons](#attr-detailviewerhiliteicons) are present, where the hilite icon will be placed relative to the field value. See [HiliteIconPosition](../reference.md#type-hiliteiconposition). Can be overridden at the field level.
 
 ### Groups
 
@@ -634,9 +618,9 @@ Use [DetailViewerField.linkTextProperty](DetailViewerField.md#attr-detailviewerf
 ## Attr: DetailViewer.autoFetchData
 
 ### Description
-If true, when this component is first drawn, automatically call `this.fetchData()`. Criteria for this fetch may be picked up from [DetailViewer.initialCriteria](#attr-detailviewerinitialcriteria), and textMatchStyle may be specified via [autoFetchTextMatchStyle](ListGrid_1.md#attr-listgridautofetchtextmatchstyle). Additional request properties may be specified using [DetailViewer.fetchRequestProperties](#attr-detailviewerfetchrequestproperties).
+If true, when this component is first drawn, automatically call `this.fetchData()`. Criteria for this fetch may be picked up from [DetailViewer.initialCriteria](#attr-detailviewerinitialcriteria), and textMatchStyle may be specified via [autoFetchTextMatchStyle](ListGrid_1.md#attr-listgridautofetchtextmatchstyle).
 
-NOTE: if `autoFetchData` is set, calling [fetchData()](ListGrid_2.md#method-listgridfetchdata) before draw will cause two requests to be issued, one from the manual call to fetchData() and one from the autoFetchData setting. The second request will use only [DetailViewer.initialCriteria](#attr-detailviewerinitialcriteria) and not any other criteria or settings from the first request. Generally, turn off autoFetchData if you are going to manually call [fetchData()](ListGrid_2.md#method-listgridfetchdata) at any time. Note: If you are using saved searches - either via [SavedSearchItem](SavedSearchItem.md#class-savedsearchitem) or [ListGrid.saveDefaultSearch](ListGrid_1.md#attr-listgridsavedefaultsearch), autoFetchData will be automatically suspended and replaced with the saved criteria/view state, if applicable.
+NOTE: if `autoFetchData` is set, calling [fetchData()](ListGrid_1.md#method-listgridfetchdata) before draw will cause two requests to be issued, one from the manual call to fetchData() and one from the autoFetchData setting. The second request will use only [DetailViewer.initialCriteria](#attr-detailviewerinitialcriteria) and not any other criteria or settings from the first request. Generally, turn off autoFetchData if you are going to manually call [fetchData()](ListGrid_1.md#method-listgridfetchdata) at any time. Note: If you are using saved searches - either via [SavedSearchItem](SavedSearchItem.md#class-savedsearchitem) or [ListGrid.saveDefaultSearch](ListGrid_1.md#attr-listgridsavedefaultsearch), autoFetchData will be automatically suspended and replaced with the saved criteria/view state, if applicable.
 
 ### Groups
 
@@ -644,7 +628,7 @@ NOTE: if `autoFetchData` is set, calling [fetchData()](ListGrid_2.md#method-list
 
 ### See Also
 
-- [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata)
+- [ListGrid.fetchData](ListGrid_1.md#method-listgridfetchdata)
 
 **Flags**: IR
 
@@ -697,7 +681,7 @@ Returns true if this component is currently [exporting client data](#method-deta
 
 ### See Also
 
-- [ListGrid.exportClientData](ListGrid_2.md#method-listgridexportclientdata)
+- [ListGrid.exportClientData](ListGrid_1.md#method-listgridexportclientdata)
 
 ---
 ## Method: DetailViewer.getCellStyle
@@ -788,7 +772,7 @@ Sends the current filter criteria and sort direction to the server, then exports
 
 A variety of DSRequest settings, such as [exportAs](DSRequest.md#attr-dsrequestexportas) and [DSRequest.exportFilename](DSRequest.md#attr-dsrequestexportfilename), affect the exporting process: see [exportResults](DSRequest.md#attr-dsrequestexportresults) for further detail.
 
-Note that data exported via this method skips client-side fields defined only in the component, excludes any client-side formatting and relies on both the SmartClient server and server-side DataSources. To export client-data including client-only fields and with client-side formatting applied, see [exportClientData](ListGrid_2.md#method-listgridexportclientdata), which still requires the SmartClient server but does not rely on server-side DataSource definitions (.ds.xml files).
+Note that data exported via this method skips client-side fields defined only in the component, excludes any client-side formatting and relies on both the SmartClient server and server-side DataSources. To export client-data including client-only fields and with client-side formatting applied, see [exportClientData](ListGrid_1.md#method-listgridexportclientdata), which still requires the SmartClient server but does not rely on server-side DataSource definitions (.ds.xml files).
 
 For more information on exporting data, see [DataSource.exportData](DataSource.md#method-datasourceexportdata).
 
@@ -796,7 +780,7 @@ For more information on exporting data, see [DataSource.exportData](DataSource.m
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | additional properties to set on the DSRequest that will be issued |
+| requestProperties | [DSRequest](#type-dsrequest) | true | — | additional properties to set on the DSRequest that will be issued |
 | callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke on completion. Note that this parameter only applies where [DSRequest.exportToClient](DSRequest.md#attr-dsrequestexporttoclient) is explicitly set to false, because file downloads do not provide ordinary SmartClient callbacks |
 
 ### Groups
@@ -831,7 +815,7 @@ Note that since field-level `canEdit:true` settings override the form-level canE
 ## Method: DetailViewer.exportClientData
 
 ### Description
-Exports this component's data with client-side formatters applied, so is suitable for direct display to users. See [ListGrid.exportClientData](ListGrid_2.md#method-listgridexportclientdata) for details of the general requirements and restrictions when exporting client data.
+Exports this component's data with client-side formatters applied, so is suitable for direct display to users. See [ListGrid.exportClientData](ListGrid_1.md#method-listgridexportclientdata) for details of the general requirements and restrictions when exporting client data.
 
 The following notes apply when exporting client data from DetailViewers:
 
@@ -851,7 +835,7 @@ If your detailViewer has custom formatters, formatted values will be exported by
 
 ### See Also
 
-- [ListGrid.exportClientData](ListGrid_2.md#method-listgridexportclientdata)
+- [ListGrid.exportClientData](ListGrid_1.md#method-listgridexportclientdata)
 
 ---
 ## Method: DetailViewer.emptyMessageHTML

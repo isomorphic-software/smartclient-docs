@@ -91,9 +91,3 @@ The string to display in the body of a listGrid with an empty data array, if sho
 **Flags**: IRW
 
 ---
-## Method: PickListMenu.applySelection
-
-### Description
-When this PickListMenu is associated with a [FormItem](FormItem.md#class-formitem), this method applies the current selection from this PickList to the associated FormItem.
-
----

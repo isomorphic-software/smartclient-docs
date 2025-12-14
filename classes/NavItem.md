@@ -4,20 +4,6 @@
 
 ---
 
-## Attr: NavItem.enableWhen
-
-### Description
-Criteria to be evaluated to determine whether this NavItem should be disabled.
-
-A basic criteria uses textMatchStyle:"exact". When specified in [Component XML](../kb_topics/componentXML.md#kb-topic-component-xml) this property allows [shorthand formats](../kb_topics/xmlCriteriaShorthand.md#kb-topic-xmlcriteriashorthand) for defining criteria.
-
-### Groups
-
-- ruleCriteria
-
-**Flags**: IR
-
----
 ## Attr: NavItem.pane
 
 ### Description

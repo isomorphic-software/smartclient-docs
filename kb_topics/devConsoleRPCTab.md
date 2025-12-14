@@ -7,7 +7,7 @@
 ## KB Topic: The Developer Console RPC Tab
 
 ### Description
-The "RPC" tab of the SmartClient Developer Console allows you to track [RPCRequest](../reference.md#object-rpcrequest)s and [DSRequest](../reference_2.md#object-dsrequest)s sent from your application. Tracking is activated by checking the "Track RPCs" box at the top of the tab.
+The "RPC" tab of the SmartClient Developer Console allows you to track [RPCRequest](../reference.md#object-rpcrequest)s and [DSRequest](../reference.md#object-dsrequest)s sent from your application. Tracking is activated by checking the "Track RPCs" box at the top of the tab.
 
 The main "RPC History" list shows the transactions that have been sent from your application since the session began (since you checked the "Track RPCs" box or refreshed your browser, whichever happened most recently). Each entry in the list represents either a server roundtrip, a DSRequest to a clientOnly DataSource or a direct request to a webservice. [Request queues](../classes/RPCManager.md#classmethod-rpcmanagerstartqueue) are shown as separate entries, with the requests that made up the queue shown indented beneath it.
 
@@ -15,7 +15,7 @@ Each entry in the RPC History list shows useful diagnostic information, includin
 
 *   Whether the request was sent via a server-side proxy
 *   The URL of the request, or an indication that the request was client-only
-*   The type of request - [DSRequest](../reference_2.md#object-dsrequest), [RPCRequest](../reference.md#object-rpcrequest), [WSRequest](../reference_2.md#object-wsrequest) or [Queue](../classes/RPCManager.md#classmethod-rpcmanagerstartqueue)
+*   The type of request - [DSRequest](../reference.md#object-dsrequest), [RPCRequest](../reference.md#object-rpcrequest), [WSRequest](../reference_2.md#object-wsrequest) or [Queue](../classes/RPCManager.md#classmethod-rpcmanagerstartqueue)
 *   The DataSource name, operation type and operation ID
 *   The success/failure status of the request, if it has completed
 *   Basic timing information
@@ -24,7 +24,7 @@ In addition, clicking an entry in the RPC History list populates the "Request" a
 
 ## Detailed timing/profiling information
 
-SmartClient and SmartClient Server can gather detailed profiling information for a request/response roundtrip, and display it in the Developer Console. Note, the server-side information is only available for DSRequests, and only if you are using the SmartClient Server module. Extra levels of server-side detail are available if you are also using one of SmartClient Server's built-in DataSource types (note, at the time of writing this only applies to SQLDataSource). Note, detailed timing information is derived using the [RPCManager.getTimingData](../classes/RPCManager.md#classmethod-rpcmanagergettimingdata) API: you can programatically derive exactly the same timing metrics by calling that method from your own code
+SmartClient and SmartClient Server can gather detailed profiling information for a request/response roundtrip, and display it in the Developer Console. Note, the server-side information is only available for DSRequests, and only if you are using the SmartClient Server module. Extra levels of server-side detail are available if you are also using one of SmartClient Server's built-in DataSource types (note, at the time of writing this only applies to SQLDataSource). Note, detailed timing information is derived using the [RPCManager.getTimingData](#classmethod-rpcmanagergettimingdata) API: you can programatically derive exactly the same timing metrics by calling that method from your own code
 
 *   To enable detailed timings, either:
     *   Set debug log category "RpcTabTiming" to INFO level in "Logging Preferences" (see [debugging](debugging.md#kb-topic-debugging) for details)

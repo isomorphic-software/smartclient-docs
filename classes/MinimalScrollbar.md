@@ -85,14 +85,6 @@ Inset of the thumb relative to the track. An inset of N pixels means the thumb i
 **Flags**: IRA
 
 ---
-## Attr: MinimalScrollbar.endSpace
-
-### Description
-The number of pixels of dead space at each end of the scroll-track, beyond which the thumb cannot be dragged. When a [Canvas](Canvas.md#class-canvas) is showing both scrollbars, _endSpace_ is applied on top of the square area where the two scrollbars meet, so the two don't overlap.
-
-**Flags**: IRW
-
----
 ## Attr: MinimalScrollbar.scrollbarSize
 
 ### Description

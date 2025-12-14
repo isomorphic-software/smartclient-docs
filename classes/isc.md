@@ -4,6 +4,14 @@
 
 ---
 
+## ClassAttr: isc.ibute
+
+### Description
+listGrid.showDropLines Controls whether to show a drop-indicator during a drag and drop operation.
+
+**Flags**: IRW
+
+---
 ## StaticMethod: isc.warn
 
 ### Description
@@ -15,7 +23,7 @@ The callback will receive boolean true for an OK button click, or null if the Di
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| message | [HTMLString](../reference.md#type-htmlstring) | false | — | message to display |
+| message | [String](#type-string) | false | — | message to display |
 | callback | [Callback](../reference.md#type-callback) | true | — | Optional Callback to fire when the user dismisses the dialog. This has the single parameter 'value', indicating the value returned by the Warn dialog from 'okClick()' etc. |
 | properties | [Dialog Properties](#type-dialog-properties) | true | — | additional properties for the Dialog. To set [custom buttons](Dialog.md#attr-dialogbuttons) for the Dialog, set properties.buttons to an array of buttons eg: { buttons : \[Dialog.OK, Dialog.CANCEL\] } |
 
@@ -54,7 +62,7 @@ Use `"${loadingImage}"` to include [a loading image](Canvas.md#classattr-canvasl
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| message | [HTMLString](../reference.md#type-htmlstring) | false | — | message to display |
+| message | [String](#type-string) | false | — | message to display |
 | properties | [Dialog Properties](#type-dialog-properties) | true | — | additional properties for the Dialog, applied before the Dialog is shown |
 
 ### Groups
@@ -225,7 +233,7 @@ The callback will receive boolean true for a Yes button click, boolean false for
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| message | [HTMLString](../reference.md#type-htmlstring) | false | — | message to display |
+| message | [String](#type-string) | false | — | message to display |
 | callback | [Callback](../reference.md#type-callback) | true | — | Callback to fire when the user clicks a button to dismiss the dialog. This has the single parameter 'value', indicating the value returned by the Warn dialog from 'okClick()' etc. |
 | properties | [Dialog Properties](#type-dialog-properties) | true | — | additional properties for the Dialog. To set [custom buttons](Dialog.md#attr-dialogbuttons) for the Dialog, set properties.buttons to an array of buttons eg: { buttons : \[Dialog.OK, Dialog.CANCEL\] } |
 
@@ -272,7 +280,7 @@ Keyboard focus is automatically placed in the text entry field, and hitting the 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| message | [String](#type-string) | true | — | message to display. If not specified, defaults to "Please enter a value:". This default can be customized via [Dialog.ASK_FOR_VALUE_MESSAGE](Dialog.md#classattr-dialogask_for_value_message). |
+| message | [String](#type-string) | false | — | message to display |
 | callback | [Callback](../reference.md#type-callback) | true | — | Callback to fire when the user clicks a button to dismiss the dialog. This has the single parameter 'value', indicating the user entry, or null if cancel was pressed or the window closed |
 | properties | [Dialog Properties](#type-dialog-properties) | true | — | additional properties for the Dialog. To set [custom buttons](Dialog.md#attr-dialogbuttons) for the Dialog, set properties.buttons to an array of buttons eg: { buttons : \[Dialog.OK, Dialog.CANCEL\] } |
 
@@ -351,7 +359,7 @@ Note: this does not override the native window.confirm() method.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| message | [HTMLString](../reference.md#type-htmlstring) | false | — | message to display |
+| message | [String](#type-string) | false | — | message to display |
 | callback | [Callback](../reference.md#type-callback) | true | — | Callback to fire when the user clicks a button to dismiss the dialog. This has the single parameter 'value', indicating the value returned by the Warn dialog from 'okClick()' etc. |
 | properties | [Dialog Properties](#type-dialog-properties) | true | — | additional properties for the Dialog. To set [custom buttons](Dialog.md#attr-dialogbuttons) for the Dialog, set properties.buttons to an array of buttons eg: { buttons : \[Dialog.OK, Dialog.CANCEL\] } |
 
@@ -462,7 +470,7 @@ The callback will receive boolean true for an OK button click, or null if the Di
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| message | [HTMLString](../reference.md#type-htmlstring) | false | — | message to display |
+| message | [String](#type-string) | false | — | message to display |
 | callback | [Callback](../reference.md#type-callback) | true | — | Optional Callback to fire when the user dismisses the dialog. This has the single parameter 'value', indicating the value returned by the Warn dialog from 'okClick()' etc. |
 | properties | [Dialog Properties](#type-dialog-properties) | true | — | additional properties for the Dialog. To set [custom buttons](Dialog.md#attr-dialogbuttons) for the Dialog, set properties.buttons to an array of buttons eg: { buttons : \[Dialog.OK, Dialog.CANCEL\] } |
 
@@ -792,17 +800,6 @@ Does not handle looping references (will infinite loop).
 ### Description
 Shortcut for `isc.ClassFactory.overwriteClass()`.
 
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| className | [String](#type-string) | false | — | Name for the new class. |
-| superClass | [Class](#type-class)|[SCClassName](../reference.md#type-scclassname) | true | — | Optional SuperClass Class object or name |
-
-### Returns
-
-`[Class](#type-class)` — Returns the new Class object.
-
 ### See Also
 
 - [ClassFactory.overwriteClass](ClassFactory.md#classmethod-classfactoryoverwriteclass)
@@ -881,7 +878,7 @@ Creates an "error"-[type](AsyncOperationResult.md#attr-asyncoperationresulttype)
 ## StaticMethod: isc.addProperties
 
 ### Description
-Add all own properties and methods from any number of objects to a destination object, overwriting properties in the destination object.
+Add all properties and methods from any number of objects to a destination object, overwriting properties in the destination object.
 
 Common uses of `addProperties` include creating a shallow copy of an object:
 
@@ -946,7 +943,7 @@ Shortcut for `isc.ClassFactory.defineClass()`.
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | className | [String](#type-string) | false | — | Name for the new class. |
-| superClass | [Class](#type-class)|[SCClassName](../reference.md#type-scclassname) | true | — | Optional SuperClass Class object or name |
+| superClass | [Class](#type-class) | true | — | Optional SuperClass Class object or name |
 
 ### Returns
 

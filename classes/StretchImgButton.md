@@ -58,14 +58,6 @@ Note that for StretchImgButton instances, autoFit will occur horizontally only, 
 **Flags**: IRW
 
 ---
-## Attr: StretchImgButton.definingProperty
-
-### Description
-This attribute denotes the name of a property to use as a [getDefiningPropertyName()](Canvas.md#method-canvasgetdefiningpropertyname) for this property when generating and resolving [AutoTest locators with search segments](../reference_2.md#type-autotestlocator).
-
-**Flags**: IRWA
-
----
 ## Attr: StretchImgButton.labelHPad
 
 ### Description
@@ -635,7 +627,7 @@ Optional stringMethod to fire when the user hovers over this button and the titl
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false to suppress the standard hover
+`[boolean](../reference.md#type-boolean)` — false to suppress the standard hover
 
 ### Groups
 
@@ -667,10 +659,6 @@ Remove this widget from the specified mutually exclusive selection group with th
 
 ### Description
 Return the 'actionType' for this canvas (radio / checkbox / button)
-
-### Returns
-
-`[SelectionType](../reference_2.md#type-selectiontype)` — the current action type
 
 ### Groups
 
@@ -837,7 +825,7 @@ If this button is showing an [icon](#attr-stretchimgbuttonicon), a separate clic
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false to suppress the standard button click event
+`[boolean](../reference.md#type-boolean)` — false to suppress the standard button click event
 
 ### Groups
 
@@ -908,12 +896,6 @@ Returns the HTML that is displayed by the default [titleHover](#method-stretchim
 
 ### Description
 Update the 'actionType' for this canvas (radio / checkbox / button) If the canvas is currently selected, and the passed in actionType is 'button' this method will deselect the canvas.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| actionType | [SelectionType](../reference_2.md#type-selectiontype) | false | — | new action type |
 
 ### Groups
 

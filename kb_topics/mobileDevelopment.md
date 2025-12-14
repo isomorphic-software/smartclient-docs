@@ -99,7 +99,7 @@ Note that the various automatic behaviors triggered by flags on the [Browser](..
 
 #### Mobile look and feel
 
-We recommend using either the Shiva, Tahoe, Twilight, Stratus or Obsidian skins for applications that support mobile (or a custom skin based on one of these skins). These skins make maximum use of CSS3 to minimize the number of images that need to be loaded and the number of DOM elements used to create components.
+We recommend using either the Tahoe, Twilight, Stratus or Obsidian skins for applications that support mobile (or a custom skin based on one of these skins). These skins make maximum use of CSS3 to minimize the number of images that need to be loaded and the number of DOM elements used to create components.
 
 We also do **not** recommend attempting to mimic the native UI of each particular mobile platform, because:
 

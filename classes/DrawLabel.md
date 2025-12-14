@@ -31,7 +31,7 @@ This setting exists due to platform limitations in some versions of Internet Exp
 ## ClassAttr: DrawLabel.LEFT
 
 ### Description
-A declared value of the enum type [LabelAlignment](../reference_2.md#type-labelalignment).
+A declared value of the enum type [LabelAlignment](../reference.md#type-labelalignment).
 
 **Flags**: R
 
@@ -47,7 +47,7 @@ This setting exists due to platform limitations in some versions of Internet Exp
 ## ClassAttr: DrawLabel.CENTER
 
 ### Description
-A declared value of the enum type [LabelAlignment](../reference_2.md#type-labelalignment).
+A declared value of the enum type [LabelAlignment](../reference.md#type-labelalignment).
 
 **Flags**: R
 
@@ -63,7 +63,7 @@ This setting exists due to platform limitations in some versions of Internet Exp
 ## ClassAttr: DrawLabel.RIGHT
 
 ### Description
-A declared value of the enum type [LabelAlignment](../reference_2.md#type-labelalignment).
+A declared value of the enum type [LabelAlignment](../reference.md#type-labelalignment).
 
 **Flags**: R
 
@@ -71,7 +71,7 @@ A declared value of the enum type [LabelAlignment](../reference_2.md#type-labela
 ## ClassAttr: DrawLabel.END
 
 ### Description
-A declared value of the enum type [LabelAlignment](../reference_2.md#type-labelalignment).
+A declared value of the enum type [LabelAlignment](../reference.md#type-labelalignment).
 
 **Flags**: R
 
@@ -79,7 +79,7 @@ A declared value of the enum type [LabelAlignment](../reference_2.md#type-labela
 ## ClassAttr: DrawLabel.START
 
 ### Description
-A declared value of the enum type [LabelAlignment](../reference_2.md#type-labelalignment).
+A declared value of the enum type [LabelAlignment](../reference.md#type-labelalignment).
 
 **Flags**: R
 

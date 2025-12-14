@@ -162,7 +162,7 @@ Setter for [Reify.password](#classattr-reifypassword).
 ## ClassMethod: Reify.loadProject
 
 ### Description
-Loads projects from the [reify](../kb_topics/reify.md#kb-topic-reify-overview) server specified by [Reify.serverURL](#classattr-reifyserverurl) (or [LoadProjectSettings.serverURL](LoadProjectSettings.md#attr-loadprojectsettingsserverurl)) using the [ProjectLoaderServlet](../kb_topics/servletDetails.md#kb-topic-the-core-and-optional-smartclient-servlets), reachable at the relative path [Reify.projectLoaderPath](#classattr-reifyprojectloaderpath) (or [LoadProjectSettings.projectLoaderPath](LoadProjectSettings.md#attr-loadprojectsettingsprojectloaderpath)) underneath the server URL, and fires the given callback after the project has been cached. When a project is loaded, all of its DataSources and screens (except where explicitly overridden by settings) are also cached in the project.
+Loads projects from the Reify server specified by [Reify.serverURL](#classattr-reifyserverurl) (or [LoadProjectSettings.serverURL](LoadProjectSettings.md#attr-loadprojectsettingsserverurl)) using the [ProjectLoaderServlet](../kb_topics/servletDetails.md#kb-topic-the-core-and-optional-smartclient-servlets), reachable at the relative path [Reify.projectLoaderPath](#classattr-reifyprojectloaderpath) (or [LoadProjectSettings.projectLoaderPath](LoadProjectSettings.md#attr-loadprojectsettingsprojectloaderpath)) underneath the server URL, and fires the given callback after the project has been cached. When a project is loaded, all of its DataSources and screens (except where explicitly overridden by settings) are also cached in the project.
 
 See [RPCManager.loadProject](RPCManager.md#classmethod-rpcmanagerloadproject) for further details.
 
@@ -173,9 +173,5 @@ See [RPCManager.loadProject](RPCManager.md#classmethod-rpcmanagerloadproject) fo
 | projectNames | [String](#type-string) | false | — | Comma-separated string containing the names of project(s) to load. |
 | callback | [LoadProjectCallback](#type-loadprojectcallback) | false | — | Callback for notification of completion of project(s) loaded and screens cached. |
 | settings | [LoadProjectSettings](#type-loadprojectsettings) | false | — | Settings applicable to the loadProject operation. |
-
-### See Also
-
-- [Reify](#class-reify)
 
 ---

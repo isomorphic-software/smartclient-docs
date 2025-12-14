@@ -80,47 +80,6 @@ The default configuration for this object has the following attribute values:
 
 To change or add attributes we recommend using [Class.changeDefaults](Class.md#classmethod-classchangedefaults). Developers may also pass an explicit [LoadingIndicatorSettings](../reference.md#object-loadingindicatorsettings) configuration object to [FileLoader.showLoadingIndicator](#classmethod-fileloadershowloadingindicator) to override these settings at runtime.
 
-Note that the FileLoader is meant to be very tiny, so that it can be inserted into a context like a plain HTML login page and start loading SmartClient resources & your application code in the background. For this reason, the image used by this attribute does not support SVG symbols via the +link{@group:svgSymbols, SVG spriting system}, because that would require additional framework code to be loaded in advance.
-
-However, if you want an animated SVG loadingIndicator, you can do so with a regular .svg file and some CSS to animate it. For example, you could download FontAwesome's "spinner-solid.svg" and then apply and animate it with code like this below. Note that AI systems such as ChatGPT can help with generating keyframes for different animation effects.
-
-```
- // CSS
- .spinner {
-     width: 30px;
-     height: 30px;
- }
-
- .spinner img {
-     width: 100%;
-     height: 100%;
-     animation: spin 2s linear infinite;
- }
-
- @keyframes spin {
-     0% {
-         transform: rotate(0deg);
-     }
-     100% {
-         transform: rotate(360deg);
-     }
- }
- 
- JS
- 
- // apply animated CSS style, spinner-solid.svg icon and sizes for the SVG
- isc.FileLoader.changeDefaults("loadingIndicatorSettings", {
-     style: "spinner",
-     image: "spinner-solid.svg",
-     imageWidth: 30,
-     imageHeight: 30
- });
- 
- // to test
- isc.FileLoader.showLoadingIndicator();
- 
-```
-
 ### Groups
 
 - loadingIndicator

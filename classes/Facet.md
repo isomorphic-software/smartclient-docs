@@ -4,6 +4,12 @@
 
 ---
 
+## Class: Facet
+
+### Description
+Facet definition object made use of by the [CubeGrid](CubeGrid.md#class-cubegrid) and [FacetChart](FacetChart.md#class-facetchart) classes.
+
+---
 ## Attr: Facet.sortFoldersBeforeLeaves
 
 ### Description

@@ -83,8 +83,6 @@ An array of canvases that will be contained within this layout. You can set the 
 
 Height and width settings found on members are interpreted by the Layout according to the [layout policy](#attr-layoutvpolicy).
 
-As an alternative to providing Canvas instances, the `members` array may also contain Strings. A String will be assumed to be a global ID, and a Canvas with that ID will be used as the member. Additionally, some Layout subclasses interpret certain special String values as references to automatically generated components (AutoChildren). See [ToolStrip.members](ToolStrip.md#attr-toolstripmembers) and [ListGrid.gridComponents](ListGrid_1.md#attr-listgridgridcomponents) for examples.
-
 Note that it is valid to have null slots in the provided `members` Array, and the Layout will ignore those slots. This can be useful to keep code compact, for example, when constructing the `members` Array, you might use an expression that either returns a component or null depending on whether the component should be present. If the expression returns null, the null slot will be ignored by the Layout.
 
 **Flags**: IRW
@@ -344,7 +342,7 @@ If true when members are added / removed, they should be animated as they are sh
 ### Description
 Alignment of all members in this Layout on the length axis (vertical for a VLayout, horizontal for an HLayout). Defaults to "top" for vertical Layouts, and "left" for horizontal Layouts.
 
-Horizontal layouts should only be set to [Alignment](../reference_2.md#type-alignment), and vertical layouts to [VerticalAlignment](../reference.md#type-verticalalignment), otherwise they will be considered invalid values, and assigning an invalid value here will log a warning to the Developer Console.
+Horizontal layouts should only be set to [Alignment](../reference.md#type-alignment), and vertical layouts to [VerticalAlignment](../reference.md#type-verticalalignment), otherwise they will be considered invalid values, and assigning an invalid value here will log a warning to the Developer Console.
 
 For alignment on the breadth axis, see [Layout.defaultLayoutAlign](#attr-layoutdefaultlayoutalign) and [Canvas.layoutAlign](Canvas.md#attr-canvaslayoutalign).
 
@@ -594,11 +592,11 @@ See [Layout.minMemberLength](#attr-layoutminmemberlength).
 ### Description
 Layouts provide a default implementation of a drag and drop interaction. If you set [canAcceptDrop](Canvas.md#attr-canvascanacceptdrop):true and `canDropComponents:true` on a Layout, when a droppable Canvas ([canDrop:true](Canvas.md#attr-canvascandrop) is dragged over the layout, it will show a dropLine (a simple insertion line) at the drop location.
 
-When the drop occurs, [Layout.getDropComponent](#method-layoutgetdropcomponent) is invoked to determine which component should be added to the layout as a member at the location calculated by [Layout.getDropPosition](#method-layoutgetdropposition). By default this method will return the current drag target. This default behavior allows existing members to be reordered or external components that have [Canvas.canDragReposition](Canvas.md#attr-canvascandragreposition) (or [Canvas.canDrag](Canvas.md#attr-canvascandrag)) and [Canvas.canDrop](Canvas.md#attr-canvascandrop) set to `true` to be added to the Layout.
+When the drop occurs, the dragTarget (obtained using [EventHandler.getDragTarget](EventHandler.md#classmethod-eventhandlergetdragtarget)) is added as a member of this layout at the location shown by the dropLine (calculated by [Layout.getDropPosition](#method-layoutgetdropposition)). This default behavior allows either members or external components that have [Canvas.canDragReposition](Canvas.md#attr-canvascandragreposition) (or [Canvas.canDrag](Canvas.md#attr-canvascandrag)) and [Canvas.canDrop](Canvas.md#attr-canvascandrop) set to `true` to be added to or reordered within the Layout.
 
 You can control the thickness of the dropLine via [Layout.dropLineThickness](#attr-layoutdroplinethickness) and you can customize the style using css styling in the skin file (look for .layoutDropLine in skin\_styles.css for your skin).
 
-If you want to dynamically create a component to be added to the Layout in response to a drop event you can override [Layout.getDropComponent](#method-layoutgetdropcomponent), or for entirely custom behavior override the [drop event handler](#method-layoutdrop) as follows:
+If you want to dynamically create a component to be added to the Layout in response to a drop event you can do so as follows:
 
 ```
  isc.VLayout.create({
@@ -807,11 +805,11 @@ Returns true if the layout includes the specified canvas.
 ## Method: Layout.drop
 
 ### Description
-Layouts have built-in handling of component drag and drop. See the discussion in [Layout.canDropComponents](#attr-layoutcandropcomponents) on how it works. If you override this builtin implementation of drop() and you're using the built-in dropLine via [Layout.canDropComponents](#attr-layoutcandropcomponents):true, be sure to call [Layout.hideDropLine](#method-layouthidedropline) to hide the dropLine after doing your custom drop() handling.
+Layouts have built-in handling of component drag and drop. See the discussion in [Layout](#class-layout) on how it works. If you override this builtin implementation of drop() and you're using the built-in dropLine via [Layout.canDropComponents](#attr-layoutcandropcomponents):true, be sure to call [Layout.hideDropLine](#method-layouthidedropline) to hide the dropLine after doing your custom drop() handling.
 
 ### Returns
 
-`[Boolean](#type-boolean)` — Returning false will cancel the drop entirely
+`[boolean](../reference.md#type-boolean)` — Returning false will cancel the drop entirely
 
 **Flags**: A
 
@@ -1017,20 +1015,12 @@ When adding a member to a drawn Layout, the layout will not immediately reflow, 
 
 To force an immediate reflow in order to, for example, find out what size a newly added member has been assigned, call [Layout.reflowNow](#method-layoutreflownow).
 
-The `position` parameter specifies where the member (or members for [Layout.addMembers](#method-layoutaddmembers)) should be inserted within the existing members of this layout. You can think of this as the index of a gap between existing members. If `addMember()` is called with an existing member this may not be the same as the final index for the member after the method completes. If the member is being moved forwards, it will be removed and reinserted at the specified insertion position, meaning the final index will be `position-1`.
-
-For example, if a layout has a member `_myMember_` at index `n` within the members array,  
-  `layout.addMember(_myMember_, n+1);`  
-would attempt to insert the member directly after itself (which is a no-op) and  
-  `layout.addMember(_myMember_, n+2);`  
-places the member after the component that currently follows it in the members array. This will ultimately put `myMember` at index `n+1`.
-
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | newMember | [Canvas](#type-canvas) | false | — | the canvas object to be added to the layout |
-| position | [Integer](../reference_2.md#type-integer) | true | — | If passed, this specifies the insertion position between the existing members of the layout. If omitted, the canvas will be added at the last position |
+| position | [Integer](../reference_2.md#type-integer) | true | — | the position in the layout to place newMember (starts with 0); if omitted, it will be added at the last position |
 
 ### See Also
 
@@ -1059,7 +1049,7 @@ Add one or more canvases to the layout, optionally at a specific position. See [
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | newMembers | [Array of Canvas](#type-array-of-canvas)|[Canvas](#type-canvas) | false | — | array of canvases to be added or single Canvas |
-| position | [Integer](../reference_2.md#type-integer) | true | — | If passed, this specifies the insertion position between the existing members of the layout. If omitted, the canvas will be added at the last position |
+| position | [Number](#type-number) | true | — | position to add newMembers; if omitted newMembers will be added at the last position |
 
 ---
 ## Method: Layout.hideDropLine
@@ -1096,7 +1086,7 @@ Called only for Layouts which have a [layout policy](../reference_2.md#type-layo
 ### Description
 Changes the [Layout.align](#attr-layoutalign) for this Layout.
 
-Horizontal layouts should only be changed to [Alignment](../reference_2.md#type-alignment), and vertical layouts to [VerticalAlignment](../reference.md#type-verticalalignment), otherwise they will be considered invalid values, and assigning an invalid value here will log a warning to the Developer Console.
+Horizontal layouts should only be changed to [Alignment](../reference.md#type-alignment), and vertical layouts to [VerticalAlignment](../reference.md#type-verticalalignment), otherwise they will be considered invalid values, and assigning an invalid value here will log a warning to the Developer Console.
 
 For alignment on the breadth axis, see [Layout.defaultLayoutAlign](#attr-layoutdefaultlayoutalign) and [Canvas.layoutAlign](Canvas.md#attr-canvaslayoutalign).
 
@@ -1104,7 +1094,7 @@ For alignment on the breadth axis, see [Layout.defaultLayoutAlign](#attr-layoutd
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| align | [Alignment](../reference_2.md#type-alignment)|[VerticalAlignment](../reference.md#type-verticalalignment) | false | — | — |
+| align | [Alignment](../reference.md#type-alignment)|[VerticalAlignment](../reference.md#type-verticalalignment) | false | — | — |
 
 ---
 ## Method: Layout.layoutIsDirty

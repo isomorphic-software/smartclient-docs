@@ -9,9 +9,9 @@
 *Inherits from:* [ComponentTask](ComponentTask.md#class-componenttask)
 
 ### Description
-Sets the title of a tab, section, window, label, button, form control or facet chart.
+Sets the title of a tab, section, window, label, button or form control.
 
-For a label, button, window, or chart the [componentId](ComponentTask.md#attr-componenttaskcomponentid) specifies everything necessary to identify the target.
+For a label, button or window the [componentId](ComponentTask.md#attr-componenttaskcomponentid) specifies everything necessary to identify the target.
 
 For a tab, section or form control more information is needed. The [componentId](ComponentTask.md#attr-componenttaskcomponentid) identifies the container (i.e. TabSet, SectionStack or DynamicForm) and the individual component is specified as:
 
@@ -24,7 +24,6 @@ For a tab, section or form control more information is needed. The [componentId]
 - [TabSet.setTabTitle](TabSet.md#method-tabsetsettabtitle)
 - [SectionStack.setSectionTitle](SectionStack.md#method-sectionstacksetsectiontitle)
 - [Window.setTitle](Window.md#method-windowsettitle)
-- [FacetChart.title](FacetChart.md#attr-facetcharttitle)
 - [Label.setContents](Label.md#method-labelsetcontents)
 - [Button.setTitle](Button.md#method-buttonsettitle)
 - [FormItem.title](FormItem.md#attr-formitemtitle)

@@ -48,7 +48,6 @@ Several examples of Form Layout are available *here*.
 - [DynamicForm.linearOnMobile](../classes/DynamicForm.md#attr-dynamicformlinearonmobile)
 - [DynamicForm.numCols](../classes/DynamicForm.md#attr-dynamicformnumcols)
 - [DynamicForm.linearNumCols](../classes/DynamicForm.md#attr-dynamicformlinearnumcols)
-- [DynamicForm.linearHintWidth](../classes/DynamicForm.md#attr-dynamicformlinearhintwidth)
 - [DynamicForm.fixedColWidths](../classes/DynamicForm.md#attr-dynamicformfixedcolwidths)
 - [DynamicForm.colWidths](../classes/DynamicForm.md#attr-dynamicformcolwidths)
 - [DynamicForm.minColWidth](../classes/DynamicForm.md#attr-dynamicformmincolwidth)
@@ -71,8 +70,6 @@ Several examples of Form Layout are available *here*.
 - [ButtonItem.endRow](../classes/ButtonItem.md#attr-buttonitemendrow)
 - [SelectItem.height](../classes/SelectItem.md#attr-selectitemheight)
 - [TextAreaItem.staticHeight](../classes/TextAreaItem.md#attr-textareaitemstaticheight)
-- [ShuttleItem.width](../classes/ShuttleItem.md#attr-shuttleitemwidth)
-- [ShuttleItem.height](../classes/ShuttleItem.md#attr-shuttleitemheight)
 
 ### See Also
 

@@ -7,11 +7,7 @@
 ## Class: Project
 
 ### Description
-Represents a [reify](../kb_topics/reify.md#kb-topic-reify-overview) project loaded from the server via [RPCManager.loadProject](RPCManager.md#classmethod-rpcmanagerloadproject). A project contains cached screens and [DataSources](DataSource.md#class-datasource) that can be used to create actual screens by calling [Project.createScreen](#method-projectcreatescreen) or [Project.createStartScreen](#method-projectcreatestartscreen).
-
-### See Also
-
-- [Reify.loadProject](#method-reifyloadproject)
+Represents a Reify project loaded from the server via [RPCManager.loadProject](RPCManager.md#classmethod-rpcmanagerloadproject). A project contains cached screens and [DataSources](DataSource.md#class-datasource) that can be used to create actual screens by calling [Project.createScreen](#method-projectcreatescreen) or [Project.createStartScreen](#method-projectcreatestartscreen).
 
 ---
 ## ClassMethod: Project.get
@@ -39,7 +35,7 @@ Releases cached screens and [DataSources](DataSource.md#class-datasource) associ
 ## Method: Project.createScreen
 
 ### Description
-Creates a screen from screen definitions cached in the [Project](#class-project).
+Creates a screen from screen definitions cached in the project.
 
 ### Parameters
 

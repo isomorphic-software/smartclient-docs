@@ -80,18 +80,6 @@ Queuing example (server code: /rpcHandler.jsp):
 Please see this [separate article](../kb_topics/errorHandling.md#kb-topic-error-handling-overview) on error handling.
 
 ---
-## ClassAttr: RPCManager.keepParentsOnFilterMaxNodesExceededMessage
-
-### Description
-Default message displayed to the user when a databound [load-on-demand](ResultTree.md#attr-resulttreeloaddataondemand) [TreeGrid](TreeGrid.md#class-treegrid) is filtered while [keepParentsOnFilter](ResultTree.md#attr-resulttreekeepparentsonfilter) is in force, and the number of tree nodes matching the filter exceeds [keepParentsOnFilterMaxNodes](ResultTree.md#attr-resulttreekeepparentsonfiltermaxnodes)
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
-
----
 ## ClassAttr: RPCManager.timeoutErrorMessage
 
 ### Description
@@ -343,7 +331,7 @@ The default loginStatusCodeMarker is the following string: `"`<SCRIPT>`//'\"]]>>
 
 ### Description
 Default prompt displayed to the user while an operation is running to fetch data from the server.  
-Displayed as a result of [ListGrid.filterData](ListGrid_2.md#method-listgridfilterdata), [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata) and [ListGrid.clearCriteria](ListGrid_2.md#method-listgridclearcriteria) code paths.
+Displayed as a result of [ListGrid.filterData](ListGrid_2.md#method-listgridfilterdata), [ListGrid.fetchData](ListGrid_1.md#method-listgridfetchdata) and [ListGrid.clearCriteria](ListGrid_2.md#method-listgridclearcriteria) code paths.
 
 ### Groups
 
@@ -553,43 +541,6 @@ Returns true if a screen with the given name has already been cached by a call t
 - [LoadScreenSettings.cacheScreen](LoadScreenSettings.md#attr-loadscreensettingscachescreen)
 
 ---
-## ClassMethod: RPCManager.getTransactionDescription
-
-### Description
-Returns a brief description of the transaction in the following format for logging purposes: `"Transaction with _n_ operation(s). [dsName1.operationType; dsName2.operationType; ...]"`
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| transactionNum | [Integer](../reference_2.md#type-integer) | false | — | The number of the transaction to return timing data for |
-
-### Returns
-
-`[String](#type-string)` — transaction description
-
----
-## ClassMethod: RPCManager.addProcessingCompleteCallback
-
-### Description
-This method will register a callback to fire every time the processing of an RPC transaction is fully complete, including any [request-level](DSRequest.md#attr-dsrequestcallback) or [queue-level](#classmethod-rpcmanagersendqueue) user callbacks.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| callback | [Callback](../reference.md#type-callback) | false | — | Callback to fire when processing is complete. This takes a single parameter "transactionNum" |
-
-### Returns
-
-`[Integer](../reference_2.md#type-integer)` — Identifier for the registered callback. May be passed to [RPCManager.removeProcessingCompleteCallback](#classmethod-rpcmanagerremoveprocessingcompletecallback) to unregister this callback.
-
-### See Also
-
-- [RPCManager.removeProcessingCompleteCallback](#classmethod-rpcmanagerremoveprocessingcompletecallback)
-- [RPCManager.getTimingData](#classmethod-rpcmanagergettimingdata)
-
----
 ## ClassMethod: RPCManager.handleError
 
 ### Description
@@ -737,29 +688,6 @@ This method is a convenience wrapper on `RPCManager.sendRequest()` - it calls th
 - [RPCRequest](../reference.md#object-rpcrequest)
 
 ---
-## ClassMethod: RPCManager.getFormattedTimingData
-
-### Description
-Returns formatted text visualising the tree of timing data available from the [RPCManager.getTimingData](#classmethod-rpcmanagergettimingdata) API. Intended for use in log messages and other non-interactive, information-only settings. For more advanced usages, call `getTimingData()` and work directly with the tree structure that API returns.
-
-Please read the `getTimingData()` documentation for some important remarks about the availability of timing data, depending on where you are calling it from. These remarks apply equally to `getFormattedTimingData()`
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| transactionNum | [Integer](../reference_2.md#type-integer) | false | — | The number of the transaction to return timing data for |
-| callback | [FormattedTimingDataCallback](#type-formattedtimingdatacallback) | true | — | A callback to invoke, passing the formatted timing data. This parameter is optional, but it is necessary if timing data cannot be obtained synchronously, as described in the `getTimingData()` documentation |
-| operationNo | [Integer](../reference_2.md#type-integer) | true | — | Optionally, the index of a specific operation in the overall transaction. Only pass this parameter if you want to limit the returned data to a single request |
-| includeClient | [boolean](../reference.md#type-boolean) | true | — | Whether to include client-side timing data. Optional defaults to true |
-| includeServer | [boolean](../reference.md#type-boolean) | true | — | Whether to include server-side timing data. Optional, defaults to true |
-| maxDepth | [Integer](../reference_2.md#type-integer) | true | — | The maximum depth to descend into the tree. The lowest meaningful value for this parameter is 1 - anything less will simply cause the API to return an empty string. This parameter is optional; if it not passed, we default to "no limit" |
-
-### Returns
-
-`[String](#type-string)` — Formatted text visualising the tree of timing data, if the timing data can be retrieved synchronously
-
----
 ## ClassMethod: RPCManager.sendProxied
 
 ### Description
@@ -802,18 +730,6 @@ Runs the default error handling normally performed by [RPCManager.handleError](#
 ### See Also
 
 - [RPCManager.handleError](#classmethod-rpcmanagerhandleerror)
-
----
-## ClassMethod: RPCManager.removeProcessingCompleteCallback
-
-### Description
-Unregister the [processingComplete](#classmethod-rpcmanageraddprocessingcompletecallback) callback associated with the parameter index
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| index | [Integer](../reference_2.md#type-integer) | false | — | The identifying index returned from [RPCManager.addProcessingCompleteCallback](#classmethod-rpcmanageraddprocessingcompletecallback) |
 
 ---
 ## ClassMethod: RPCManager.sendRequest
@@ -895,18 +811,6 @@ Convenience method that returns the error status for a failed call to [RPCManage
 `[String](#type-string)` — the error status (null if no error)
 
 ---
-## ClassMethod: RPCManager.setTimingDataEnabled
-
-### Description
-Pass `true` or `false` to switch the gathering of timing metrics on and off programmatically. The timing data thus gathered can be viewed in the "Timing" section of the [Developer Console RPC tab](../kb_topics/devConsoleRPCTab.md#kb-topic-the-developer-console-rpc-tab), or retrieved by your own code by use of the [RPCManager.getTimingData](#classmethod-rpcmanagergettimingdata) API.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| enabled | [boolean](../reference.md#type-boolean) | false | — | Whether to switch timing data on or off |
-
----
 ## ClassMethod: RPCManager.exportContent
 
 ### Description
@@ -940,13 +844,6 @@ Requires the SmartClient server framework, but does not require use of server-ba
 
 You can also inject a small amount of CSS from the browser via [DSRequest.exportCSS](DSRequest.md#attr-dsrequestexportcss) - this is intended primarily for switching the page size on the fly, for exceptionally wide or tall exports.
 
-_**Note**_ that theoretically, it is possible to send custom HTML to the Smartclient server that attempts to include resources from the local server filesystem (predominantly images) and export them to PDF. To prevent this, there is a setting in [server.properties](../kb_topics/server_properties.md#kb-topic-serverproperties-file) named `contentExport.allowedResourceLocations` which lists URL/path segments used to determine what is allowed.  
-It is a semicolon-separated list of path segments that identify allowed resource locations for PDF exports. If a resource is not allowed, it will not be loaded into the PDF, and a warning will be logged in the server logs. The full path of the resource is checked to contain at least one of the allowed path segments listed here. This check is performed using a crude substring search, meaning if any string in this list is a substring of the provided URL, it is allowed. There is a special placeholder "{webRoot}" that represents the web root of the application. It will be replaced with the actual web root directory at runtime. Additionally, if this setting is entirely omitted, access to the local filesystem outside of the web root directory will not be allowed. For example:
-
-`contentExport.allowedResourceLocations:{webRoot}/skins/Tahoe/;localhost:8080/otherApp/;http://www.foo.bar`
-
-This would allow resources from anywhere inside the "Tahoe" skin directory, any URL from "otherApp" on localhost:8080, and any URL from the specified external HTTP address.
-
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
@@ -955,10 +852,22 @@ This would allow resources from anywhere inside the "Tahoe" skin directory, any 
 | requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | Request properties for the export to pdf object |
 
 ---
+## ClassMethod: RPCManager.removeOperationReplyCallback
+
+### Description
+Remove an operationReplyCallback registered via [RPCManager.addOperationReplyCallback](#classmethod-rpcmanageraddoperationreplycallback)
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| id | [Integer](../reference_2.md#type-integer) | false | — | Identifier for the registered callback returned from [RPCManager.addOperationReplyCallback](#classmethod-rpcmanageraddoperationreplycallback) |
+
+---
 ## ClassMethod: RPCManager.createScreen
 
 ### Description
-Creates a screen previously cached by a call to [RPCManager.cacheScreens](#classmethod-rpcmanagercachescreens). (Compare with [Project.createScreen](Project.md#method-projectcreatescreen) for [reify](../kb_topics/reify.md#kb-topic-reify-overview) projects.)
+Creates a screen previously cached by a call to [RPCManager.cacheScreens](#classmethod-rpcmanagercachescreens).
 
 As with [RPCManager.loadScreen](#classmethod-rpcmanagerloadscreen), the default behavior is to prevent any global widget IDs from being established, the returned Canvas will be the outermost component of the screen, and that Canvas will provide access to other widgets in the screen via [getByLocalId()](Canvas.md#method-canvasgetbylocalid)
 
@@ -1060,67 +969,6 @@ When projects are cached, they're made available via [Project.get](Project.md#cl
 | settings | [LoadProjectSettings](#type-loadprojectsettings) | false | — | Settings applicable to the loadProject operation. |
 
 ---
-## ClassMethod: RPCManager.getTimingData
-
-### Description
-Returns timing data gathered for the transaction number passed in. The timing data is an instance of [the SmartClient Tree class](Tree.md#class-tree), where parent nodes encapsulate the timings of their descendants. This timing data is what drives the "Timing" view of the [Developer Console RPC tab](../kb_topics/devConsoleRPCTab.md#kb-topic-the-developer-console-rpc-tab). Note, the returned `Tree` has [modelType](Tree.md#attr-treemodeltype) "children", so it can easily be traversed manually by simply following the nodes' "children" property recursively from the tree's "root" element.
-
-Each node in the tree contains the following properties:
-
-| name | A descriptive name |
-|---|---|
-| start | The start time, in milliseconds since the epoch, recorded by either the client or the server, depending on where this data was gathered. See the important notes at the bottom of the [Developer Console RPC](../kb_topics/devConsoleRPCTab.md#kb-topic-the-developer-console-rpc-tab) article regarding the relevance of the start and end time properties |
-| end | The end time, in milliseconds since the epoch. See start, above |
-| elapsed | The elapsed time in milliseconds for this operation |
-| children | The list of this node's direct children, if it has any |
-
-Note, if you call `getTimingData()` directly from a [DSRequest callback](DSRequest.md#attr-dsrequestcallback) or [queue callback](#classmethod-rpcmanagersendqueue), the timing data will be incomplete, because the queue at that point is incomplete (user callback processing is part of the processing that is being measured). To get around this, you can either move your `getTimingData()` call to thread-end by calling it on a 0ms delay:
-
-```
-    isc.RPCManager.sendQueue(function(data) {
-        // Don't call getTimingData() directly - hang it on a timer
-        isc.Timer.setTimeout(function() {
-            var timingData = isc.RPCManager.getTimingData(data[0].transactionNum);
-            // Process data here...
-        }, 0);
-    }); 
-```
-
-Alternatively, you can move your `getTimingData()` call into a "processing complete" callback, and register it with the [RPCManager.addProcessingCompleteCallback](#classmethod-rpcmanageraddprocessingcompletecallback) API. Processing complete callbacks fire when the transaction is fully complete, including any user callbacks.
-
-Also note, if you are using the [Developer Console](../kb_topics/debugging.md#kb-topic-debugging), timing data may not be available synchronously from your application code, so you will have to implement a callback function and pass it as the second parameter. This is inconvenient, but it is a browser restriction that we have no control over.
-
-If you call `getTimingData()` from your queue callback on a 0ms delay, or using a processing complete callback, as described above, the synchronous call is likely to work. If you introduce any kind of delay, or call `getTimingData()` in a way that is not synchronized with the transaction - for example, periodically on a timer, or in response to some user action - the synchronous call is likely to return an error message stating that the timing data is unavailable synchronously, and you should provide a callback. Again, all of this applies only if you have the SmartClient Developer Console open (and it applies equally to [getFormattedTimingData()](#classmethod-rpcmanagergetformattedtimingdata)).
-
-Here is an example of how to provide a callback to the function:
-
-```
-    isc.RPCManager.getTimingData(myTransactionNum, function(retval) {
-        var root = retval.root;
-        // Whatever processing of the timing data is required...
-    }, ... optional params if required ...);
- 
-```
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| transactionNum | [Integer](../reference_2.md#type-integer) | false | — | The number of the transaction to return timing data for |
-| callback | [TimingDataCallback](#type-timingdatacallback) | true | — | A callback to invoke, passing the timing data object tree. This parameter is optional, but it is necessary if timing data cannot be obtained synchronously, as described above |
-| operationNo | [Integer](../reference_2.md#type-integer) | true | — | Optionally, the index of a specific operation in the overall transaction. Only pass this parameter if you want to limit the returned data to a single request |
-| includeClient | [boolean](../reference.md#type-boolean) | true | — | Whether to include client-side timing data. Optional defaults to true |
-| includeServer | [boolean](../reference.md#type-boolean) | true | — | Whether to include server-side timing data. Optional, defaults to true |
-
-### Returns
-
-`[Object](../reference.md#type-object)` — the tree of timing data, as described in the above documentation
-
-### See Also
-
-- [RPCManager.getFormattedTimingData](#classmethod-rpcmanagergetformattedtimingdata)
-
----
 ## ClassMethod: RPCManager.getQueueTransactionId
 
 ### Description
@@ -1140,8 +988,6 @@ Loads the definitions of a set of screens saved in [Component XML](../kb_topics/
 
 Unlike [RPCManager.loadScreen](#classmethod-rpcmanagerloadscreen), `cacheScreens()` does not cause any UI components to be created or drawn, it just loads the definitions of the screens. This allows a subsequent, synchronous call to [RPCManager.createScreen](#classmethod-rpcmanagercreatescreen) to create the actual screen, rather than contacting the `ScreenLoader` servlet and showing a loading message.
 
-If you're using [reify](../kb_topics/reify.md#kb-topic-reify-overview), and the screens are part of a [Project](Project.md#class-project), you should use [Reify.loadProject](#method-reifyloadproject) to cache the screens instead of this method. See help topic [Reify For Developers](../kb_topics/reifyForDevelopers.md#kb-topic-reify-for-developers) for an overview of how you can integrate Reify into your development process.
-
 See [RPCManager.loadScreen](#classmethod-rpcmanagerloadscreen) for the meaning of the `locale` parameter.
 
 Calling `cacheScreens` twice with the same screenName will re-load the definition of that screen from the server such that subsequent calls to `createScreen()` will use the new definition.
@@ -1151,14 +997,9 @@ Calling `cacheScreens` twice with the same screenName will re-load the definitio
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | screenName | [Array of String](#type-array-of-string) | false | — | name of the screens to cache |
-| callback | [Function](#type-function) | true | — | callback for notification of screens being successfully cached |
+| callback | [Function](#type-function) | false | — | callback for notification of screens being successfully cached |
 | locale | [String](#type-string) | true | — | The name of a locale to use for resolving i18n tags in the component XML of the screen |
 | requestProperties | [RPCRequest Properties](#type-rpcrequest-properties) | true | — | optional properties for the request |
-
-### See Also
-
-- [reify](../kb_topics/reify.md#kb-topic-reify-overview)
-- [Project](Project.md#class-project)
 
 ---
 ## ClassMethod: RPCManager.requestsArePending
@@ -1186,7 +1027,7 @@ By default, components in the loaded screens that have [global IDs](Canvas.md#at
 
 When globals are being suppressed, the `screen` available in the callback will provide access to widgets that did not receive their global IDs via [Canvas.getByLocalId](Canvas.md#method-canvasgetbylocalid), and the `suppressedGlobals` available in the callback will be a mapping from suppressed global ID to the widget or other component that would have used that global ID if globals were not suppressed. In addition, any other `Canvas` loaded with the screen also provides access to any suppressed globals from the screen via `getByLocalId()`.
 
-To load multiple screens at once, use [Reify.loadProject](#method-reifyloadproject) if the screens are part of a [Project](Project.md#class-project), otherwise use [RPCManager.cacheScreens](#classmethod-rpcmanagercachescreens).
+To load multiple screens at once, use [RPCManager.cacheScreens](#classmethod-rpcmanagercachescreens) and [RPCManager.createScreen](#classmethod-rpcmanagercreatescreen) instead.
 
 Components in the screen will default to having [Canvas.autoDraw](Canvas.md#attr-canvasautodraw) set to false. This may be overridden by setting the [RPCRequest.suppressAutoDraw](RPCRequest.md#attr-rpcrequestsuppressautodraw) attribute explicitly to `false` on the request properties object.
 
@@ -1205,16 +1046,11 @@ This API assumes the ScreenLoaderServlet is installed at the default location - 
 | requestProperties | [RPCRequest Properties](#type-rpcrequest-properties) | true | — | optional properties for the request |
 | missingDSIsNotFatal | [Boolean](#type-boolean) | true | — | If true, server logic does not crash out if it cannot load a DataSource specified in the screen definition. Instead, a stub DataSource is returned, which consists of nothing except the ID and an `unableToLoad` flag, which client-side code can use to determine that the DataSource could not be loaded on the server. Optional, defaults to false (ie, a missing DataSource causes a crash by default) |
 
-### See Also
-
-- [Project](Project.md#class-project)
-- [reify](../kb_topics/reify.md#kb-topic-reify-overview)
-
 ---
 ## ClassMethod: RPCManager.startQueue
 
 ### Description
-Start queuing [DSRequests](../reference_2.md#object-dsrequest) and [RPCRequests](../reference.md#object-rpcrequest) system-wide, for later sending when RPCManager.sendQueue() is called, at which time all queued requests will be sent as a single, combined HTTP request.
+Start queuing [DSRequests](../reference.md#object-dsrequest) and [RPCRequests](../reference.md#object-rpcrequest) system-wide, for later sending when RPCManager.sendQueue() is called, at which time all queued requests will be sent as a single, combined HTTP request.
 
 Combining requests via queuing:
 
@@ -1230,13 +1066,13 @@ For all the reasons given above, it's extremely important to use DataSources tha
 
 **Order of Execution**
 
-When the SmartClient Server framework receives a queued request, it will process all requests, in order, in a single thread, before any response is sent to the client. All client-side actions related to queued requests, such as [callbacks firing](ListGrid_2.md#method-listgridfetchdata) on completion, likewise happen in queue order, after all server-side processing has taken place.
+When the SmartClient Server framework receives a queued request, it will process all requests, in order, in a single thread, before any response is sent to the client. All client-side actions related to queued requests, such as [callbacks firing](ListGrid_1.md#method-listgridfetchdata) on completion, likewise happen in queue order, after all server-side processing has taken place.
 
 Therefore when using queuing you can use the callback argument of [RPCManager.sendQueue](#classmethod-rpcmanagersendqueue) to detect that all operations have completed, which is much simpler than the logic needed to track multiple asynchronous operations and wait for all to complete.
 
 **Nested Queuing**
 
-In some cases you may wish to combine requests being sent by application logic with queued requests automatically sent by components. For example, you may want to call [ListGrid.saveAllEdits](ListGrid_2.md#method-listgridsavealledits) but also add an additional request to the same queue.
+In some cases you may wish to combine requests being sent by application logic with queued requests automatically sent by components. For example, you may want to call [ListGrid.saveAllEdits](ListGrid_1.md#method-listgridsavealledits) but also add an additional request to the same queue.
 
 To do this, just call `startQueue()` before `saveAllEdits()` (or whatever other API would also normally perform a queued request), then call `sendQueue()`. Framework features that use queuing will automatically notice that you have already started a queue, and will not automatically call `sendQueue()` in this case. You can implement the same behavior in your own reusable components by checking the return value of `startQueue()`, which tells you whether queuing is already active.
 

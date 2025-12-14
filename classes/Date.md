@@ -54,6 +54,32 @@ The appropriate day name will then be returned from [Date.getDayName](#method-da
 **Flags**: IRWA
 
 ---
+## ClassAttr: Date.shortDayNames
+
+### Description
+This property may be set to an array of names of days of the week.  
+For example:
+```
+ ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+ 
+```
+The appropriate day name will then be returned from [Date.getShortDayName](#method-dategetshortdayname), and may be used whenever SmartClient components display day-names (for example in the [DateItem class](DateItem.md#class-dateitem)).  
+Note: For US based applications the first item in the array should be the name for Sunday, then Monday, Tuesday, etc. For browsers with different locales this may vary. To determine the first day for some locale, you can run the following code:
+```
+    alert(new Date(2000, 0, 2).getDay());
+ 
+```
+You should see an alert with a number between zero and 6. This represents the numerical 'day' value for Sunday for your browser's locale, since Jan 2nd 2000 was a Sunday. Therefore if this code alerted the number 6, Sunday should appear last in your list of day-names, and Monday first.
+
+### Groups
+
+- i18nMessages
+
+**Deprecated**
+
+**Flags**: IRWA
+
+---
 ## ClassAttr: Date.monthNames
 
 ### Description
@@ -496,6 +522,28 @@ Sets the global fiscal calendar, which is used for all calls to getFiscalYear() 
 **Deprecated**
 
 ---
+## StaticMethod: Date.setNormalDisplayFormat
+
+### Description
+Set the default formatter for date objects to the method name passed in. After calling this method, subsequent calls to [Date.toNormalDate](#method-datetonormaldate) will return a string formatted according to this format specification. Note: this will be the standard long date format used by SmartClient components.
+
+The `format` parameter may be a [FormatString](../reference.md#type-formatstring), a [DateDisplayFormat](../reference.md#type-datedisplayformat) string, or a function. If passed a function, this function will be executed in the scope of the Date and should return the formatted string.  
+
+Initial default normalDisplayFormat is `"toLocaleString"`
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| format | [FormatString](../reference.md#type-formatstring)|[DateDisplayFormat](../reference.md#type-datedisplayformat)|[Function](#type-function) | false | — | new formatter |
+
+### Groups
+
+- dateFormatting
+
+**Deprecated**
+
+---
 ## StaticMethod: Date.combineLogicalDateAndTime
 
 ### Description
@@ -682,6 +730,50 @@ Sets the global attribute that dictates whether the [choosers](DateChooser.md#cl
 **Deprecated**
 
 ---
+## StaticMethod: Date.setShortDatetimeDisplayFormat
+
+### Description
+Set the default short format for datetime values. After calling this method, subsequent calls to [Date.toShortDateTime](#method-datetoshortdatetime) will return a string formatted according to this format specification. Note that this will be the standard datetime format used by SmartClient components.
+
+The `format` parameter may be a [FormatString](../reference.md#type-formatstring), a [DateDisplayFormat](../reference.md#type-datedisplayformat) string, or a function. If passed a function, this function will be executed in the scope of the Date and should return the formatted string.  
+
+Initial default format is `"toUSShortDatetime"`. See [http://en.wikipedia.org/wiki/Date\_format\_by\_country](http://en.wikipedia.org/wiki/Date_format_by_country) for a useful overview of standard date formats per country.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| format | [FormatString](../reference.md#type-formatstring)|[DateDisplayFormat](../reference.md#type-datedisplayformat)|[Function](#type-function) | false | — | new formatter |
+
+### Groups
+
+- dateFormatting
+
+**Deprecated**
+
+---
+## StaticMethod: Date.setShortDisplayFormat
+
+### Description
+Set the default short format for dates. After calling this method, subsequent calls to [Date.toShortDate](#method-datetoshortdate) will return a string formatted according to this format specification. Note that this will be the standard short date format used by SmartClient components.
+
+The `format` parameter may be a [FormatString](../reference.md#type-formatstring), a [DateDisplayFormat](../reference.md#type-datedisplayformat) string, or a function. If passed a function, this function will be executed in the scope of the Date and should return the formatted string.  
+
+Initial default shortDateFormat is `"toUSShortDate"`. This property is commonly modified for localization of applications. See [http://en.wikipedia.org/wiki/Date\_format\_by\_country](http://en.wikipedia.org/wiki/Date_format_by_country) for a useful overview of standard date formats per country.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| format | [FormatString](../reference.md#type-formatstring)|[DateDisplayFormat](../reference.md#type-datedisplayformat)|[Function](#type-function) | false | — | new formatter |
+
+### Groups
+
+- dateFormatting
+
+**Deprecated**
+
+---
 ## StaticMethod: Date.setShowChooserFiscalYearPickers
 
 ### Description
@@ -722,8 +814,8 @@ See [dateFormatAndStorage](../kb_topics/dateFormatAndStorage.md#kb-topic-date-an
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | hour | [Integer](../reference_2.md#type-integer)|[Date](#type-date) | false | — | integer hour (0-23) or a Date instance - if passed a Date instance, its time-elements are mapped to hour, minute and second parameters. Passing null is the same as passing `new Date()` |
-| minute | [Integer](../reference_2.md#type-integer) | true | — | minute (0-59) - defaults to zero or, if the `hour` parameter is a Date instance, the minutes from that Date instance |
-| second | [Integer](../reference_2.md#type-integer) | true | — | second (0-59) - defaults to zero or, if the `hour` parameter is a Date instance, the seconds from that Date |
+| minute | [Integer](../reference_2.md#type-integer) | false | — | minute (0-59) - defaults to zero or, if the `hour` parameter is a Date instance, the minutes from that Date instance |
+| second | [Integer](../reference_2.md#type-integer) | false | — | second (0-59) - defaults to zero or, if the `hour` parameter is a Date instance, the seconds from that Date |
 
 ### Returns
 
@@ -783,6 +875,35 @@ Sets a new default separator that will be used when formatting dates. By default
 **Deprecated**
 
 ---
+## StaticMethod: Date.setInputFormat
+
+### Description
+Sets up the default system-wide input format for strings being parsed into dates via `DateUtil.parseInput()`. This will effect how SmartClient components showing editable date or datetime fields parse user-entered values into live Date objects.
+
+The input format can be specified as a [DateInputFormat](../reference.md#type-dateinputformat) - a 3 character string like `"MDY"` indicating the order of the Month, Day and Year components of date strings.
+
+As an example - an input format of "MDY" would parse "01/02/1999" to Jan 2nd 1999  
+This standard parsing logic will also handle date-time strings such as "01/02/1999 08:45", or "01/02/1999 16:21:05".
+
+Notes:
+
+*   If the inputFormat is not explicitly set,the system automatically determines the standard input format will be based on the specified [DateUtil.shortDisplayFormat](DateUtil.md#classmethod-dateutilsetshortdisplayformat) wherever possible. For example if the short display format has been set to "toEuropeanShortDate" the input format will default to "DMY".
+*   The default date parsing functionality built into SmartClient will handle dates presented with any separator string, and can handle 1 or 2 digit day and month values, months formatted as [DateUtil.getMonthNames](#classmethod-dateutilgetmonthnames) or [DateUtil.getShortMonthNames](#classmethod-dateutilgetshortmonthnames), and 2 or 4 digit year values. This means that in many cases custom date display formats can be parsed back to Date values without the need for a custom parser function. However if more sophisticated parsing logic is required, a function may be passed into this method. In this case the parser function should be able to handle parsing date and datetime values formatted via [Date.toShortDate](#method-datetoshortdate) and [Date.toShortDateTime](#method-datetoshortdatetime).
+*   Date parsing and formatting logic may be overridden at the component level by setting properties directly on the component or field in question.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| format | [DateInputFormat](../reference.md#type-dateinputformat)|[Function](#type-function) | false | — | Default format for strings to be parsed into Dates. If this method is passed a function, it is expected to take a single parameter (the formatted date string), and return the appropriate Javascript Date object (or null if appropriate). |
+
+### See Also
+
+- [DateUtil.parseInput](DateUtil.md#classmethod-dateutilparseinput)
+
+**Deprecated**
+
+---
 ## StaticMethod: Date.getShortDayNames
 
 ### Description
@@ -815,6 +936,26 @@ Sets the days that are considered [weekend days](DateUtil.md#classattr-dateutilw
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | weekendDays | [Array of Integer](#type-array-of-integer) | false | — | the array of day-numbers to assign as weekend days |
+
+**Deprecated**
+
+---
+## StaticMethod: Date.setNormalDatetimeDisplayFormat
+
+### Description
+Set the default normal format for datetime values. After calling this method, subsequent calls to [Date.toNormalDatetime](#method-datetonormaldatetime) will return a string formatted according to this format specification. Note that this will be the standard datetime format used by SmartClient components.
+
+The `format` parameter may be a [FormatString](../reference.md#type-formatstring), a [DateDisplayFormat](../reference.md#type-datedisplayformat) string, or a function. If passed a function, this function will be executed in the scope of the Date and should return the formatted string.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| format | [FormatString](../reference.md#type-formatstring)|[DateDisplayFormat](../reference.md#type-datedisplayformat)|[Function](#type-function) | false | — | new formatter |
+
+### Groups
+
+- dateFormatting
 
 **Deprecated**
 
@@ -866,6 +1007,25 @@ Retrieves the default format for strings being parsed into dates via `DateUtil.p
 ### See Also
 
 - [DateUtil.setInputFormat](DateUtil.md#classmethod-dateutilsetinputformat)
+
+**Deprecated**
+
+---
+## StaticMethod: Date.getFiscalWeek
+
+### Description
+Returns a date's week-number, according to the fiscal calendar
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| date | [Date](#type-date) | false | — | the date to get the fiscal year for |
+| fiscalCalendar | [FiscalCalendar](#type-fiscalcalendar) | true | — | the object representing the starts of fiscal years |
+
+### Returns
+
+`[int](../reference.md#type-int)` — the fiscal week for the passed date
 
 **Deprecated**
 

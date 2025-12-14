@@ -89,14 +89,6 @@ In addition, if [StatefulCanvas.showRTLIcon](StatefulCanvas.md#attr-statefulcanv
 **Flags**: IRW
 
 ---
-## Attr: Button.definingProperty
-
-### Description
-This attribute denotes the name of a property to use as a [getDefiningPropertyName()](Canvas.md#method-canvasgetdefiningpropertyname) for this property when generating and resolving [AutoTest locators with search segments](../reference_2.md#type-autotestlocator).
-
-**Flags**: IRWA
-
----
 ## Attr: Button.showDisabled
 
 ### Description
@@ -750,7 +742,7 @@ Optional stringMethod to fire when the user hovers over this button and the titl
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false to suppress the standard hover
+`[boolean](../reference.md#type-boolean)` — false to suppress the standard hover
 
 ### Groups
 
@@ -788,12 +780,6 @@ Sets the base CSS style. As the component changes state and/or is selected, suff
 ### Description
 Update the 'actionType' for this canvas (radio / checkbox / button) If the canvas is currently selected, and the passed in actionType is 'button' this method will deselect the canvas.
 
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| actionType | [SelectionType](../reference_2.md#type-selectiontype) | false | — | new action type |
-
 ### Groups
 
 - state
@@ -816,10 +802,6 @@ Set whether the title of this button should be allowed to wrap if too long for t
 
 ### Description
 Return the 'actionType' for this canvas (radio / checkbox / button)
-
-### Returns
-
-`[SelectionType](../reference_2.md#type-selectiontype)` — the current action type
 
 ### Groups
 
@@ -861,7 +843,7 @@ If this button is showing an [icon](#attr-buttonicon), a separate click handler 
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false to suppress the standard button click event
+`[boolean](../reference.md#type-boolean)` — false to suppress the standard button click event
 
 ### Groups
 

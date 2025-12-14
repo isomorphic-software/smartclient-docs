@@ -43,9 +43,9 @@
 - [Canvas.snapAlignCandidates](../classes/Canvas.md#attr-canvassnapaligncandidates)
 - [Canvas.snapAlignCenterLineStyle](../classes/Canvas.md#attr-canvassnapaligncenterlinestyle)
 - [Canvas.snapAlignEdgeLineStyle](../classes/Canvas.md#attr-canvassnapalignedgelinestyle)
-- [GridRenderer.snapToCells](../classes/GridRenderer.md#attr-gridrenderersnaptocells)
-- [GridRenderer.snapInsideBorder](../classes/GridRenderer.md#attr-gridrenderersnapinsideborder)
 - [EditProxy.childrenSnapToGrid](../classes/EditProxy.md#attr-editproxychildrensnaptogrid)
 - [EditProxy.childrenSnapResizeToGrid](../classes/EditProxy.md#attr-editproxychildrensnapresizetogrid)
+- [GridRenderer.snapToCells](../classes/GridRenderer.md#attr-gridrenderersnaptocells)
+- [GridRenderer.snapInsideBorder](../classes/GridRenderer.md#attr-gridrenderersnapinsideborder)
 
 ---

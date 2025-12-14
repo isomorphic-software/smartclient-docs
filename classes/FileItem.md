@@ -19,7 +19,7 @@ See the [Upload Overview](../kb_topics/upload.md#kb-topic-uploading-files) for i
 
 **Read-only mode**
 
-For fields of type `"binary"` the raw data value will be displayed in the generated [FileItem.displayForm](#attr-fileitemdisplayform).
+For fields of type `"blob"` the raw data value will be displayed in the generated [FileItem.displayForm](#attr-fileitemdisplayform).
 
 For other fields, the [FileItem.displayCanvas](#attr-fileitemdisplaycanvas) will be displayed.
 
@@ -127,7 +127,7 @@ This information is "circa 2023" and may not apply to all devices.
 ## Attr: FileItem.displayItem
 
 ### Description
-The [StaticTextItem](StaticTextItem.md#class-statictextitem) created automatically and displayed in the [FileItem.displayForm](#attr-fileitemdisplayform) when [canEdit](FormItem.md#attr-formitemcanedit) is false and the field type is "binary".
+The [StaticTextItem](StaticTextItem.md#class-statictextitem) created automatically and displayed in the [FileItem.displayForm](#attr-fileitemdisplayform) when [canEdit](FormItem.md#attr-formitemcanedit) is false and the field type is "blob".
 
 This component is an [AutoChild](../reference.md#type-autochild) and as such may be customized via `fileItem.displayItemDefaults` and `fileItem.displayItemProperties`.
 
@@ -141,7 +141,7 @@ This component is an [AutoChild](../reference.md#type-autochild) and as such may
 ## Attr: FileItem.viewIconSrc
 
 ### Description
-Returns the name of the icon to use for the view functionality.
+Returns the URL for an Icon that will allow the file to be viewed.
 
 ### Groups
 
@@ -175,7 +175,7 @@ Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) fo
 ## Attr: FileItem.downloadIconSrc
 
 ### Description
-Returns the name of the icon to use for the download functionality.
+Returns the URL for an Icon that will allow the file to be downloaded
 
 ### Groups
 
@@ -187,7 +187,7 @@ Returns the name of the icon to use for the download functionality.
 ## Attr: FileItem.displayCanvas
 
 ### Description
-The [Canvas](Canvas.md#class-canvas) created automatically when [canEdit](FormItem.md#attr-formitemcanedit) is false and the field is of any type other than "binary".
+The [Canvas](Canvas.md#class-canvas) created automatically when [canEdit](FormItem.md#attr-formitemcanedit) is false and the field is of any type other than "blob".
 
 If the field is of type "imageFile", and [showFileInline](#attr-fileitemshowfileinline) is true, the contents of the canvas are set to HTML that streams the image file for display. Otherwise, the item renders icons that allow the file to be [viewed](#attr-fileitemviewiconsrc) or [downloaded](#attr-fileitemdownloadiconsrc).
 
@@ -250,7 +250,7 @@ Support is not full-cycle at the server - that is, there are server APIs for ret
 ## Attr: FileItem.displayForm
 
 ### Description
-The [DynamicForm](DynamicForm.md#class-dynamicform) created automatically when [canEdit](FormItem.md#attr-formitemcanedit) is false and the field is of type "binary". Displays a single [item](#attr-fileitemdisplayitem) for viewing the content of a binary file.
+The [DynamicForm](DynamicForm.md#class-dynamicform) created automatically when [canEdit](FormItem.md#attr-formitemcanedit) is false and the field is of type "blob". Displays a single [item](#attr-fileitemdisplayitem) for viewing the content of a blob file.
 
 This component is an [AutoChild](../reference.md#type-autochild) and as such may be customized via `fileItem.displayFormDefaults` and `fileItem.displayFormProperties`.
 

@@ -522,12 +522,6 @@ Enable or disable this object
 ### Description
 Update the 'actionType' for this canvas (radio / checkbox / button) If the canvas is currently selected, and the passed in actionType is 'button' this method will deselect the canvas.
 
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| actionType | [SelectionType](../reference_2.md#type-selectiontype) | false | — | new action type |
-
 ### Groups
 
 - state
@@ -617,7 +611,7 @@ Optional stringMethod to fire when the user hovers over this button and the titl
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false to suppress the standard hover
+`[boolean](../reference.md#type-boolean)` — false to suppress the standard hover
 
 ### Groups
 
@@ -632,10 +626,6 @@ Optional stringMethod to fire when the user hovers over this button and the titl
 
 ### Description
 Return the 'actionType' for this canvas (radio / checkbox / button)
-
-### Returns
-
-`[SelectionType](../reference_2.md#type-selectiontype)` — the current action type
 
 ### Groups
 

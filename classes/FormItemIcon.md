@@ -62,24 +62,6 @@ Base CSS style. If set, as the component changes state and/or is focused, suffix
 **Flags**: IRWA
 
 ---
-## Attr: FormItemIcon.showError
-
-### Description
-Whether this icon's image and/or [baseStyle](#attr-formitemiconbasestyle) should change to an appropriate _Error_ state when the item has validation errors.
-
-When set to true and the item has errors, appends _Error_ to the image src and/or `baseStyle`. If other physical states apply, such as _Over_, that state is also appended, reulting in a suffix of, for example, _ErrorOver_.
-
-### Groups
-
-- formIcons
-
-### See Also
-
-- [FormItem.showOverIcons](FormItem.md#attr-formitemshowovericons)
-
-**Flags**: IRWA
-
----
 ## Attr: FormItemIcon.showRTL
 
 ### Description
@@ -214,15 +196,12 @@ If set, this property will be displayed as a prompt (and tooltip text) for this 
 
 If unset the form item's `iconPrompt` property will be used instead.
 
-Has no effect when [FormItem.canHover](FormItem.md#attr-formitemcanhover) is set to false.
-
 ### Groups
 
 - formIcons
 
 ### See Also
 
-- [FormItem.canHover](FormItem.md#attr-formitemcanhover)
 - [FormItem.iconPrompt](FormItem.md#attr-formitemiconprompt)
 
 **Flags**: IRWA
@@ -425,16 +404,6 @@ Note if [FormItem.showOver](FormItem.md#attr-formitemshowover) is true and [Form
 **Flags**: IRWA
 
 ---
-## Attr: FormItemIcon.extraCSS
-
-### Description
-Additional CSS-text that overrides the icon's [FormItemIcon.baseStyle](#attr-formitemiconbasestyle), applying arbitrary styling to the icon's outer element.
-
-This is an advanced attribute - while it can be used to modify many properties, such as colors, font-style and border-radius, it should not be used to modify any property that may affect element-size, such as height, padding/margin or overflow.
-
-**Flags**: IRA
-
----
 ## Method: FormItemIcon.click
 
 ### Description
@@ -452,7 +421,7 @@ Return false to cancel this event. If this event is not cancelled by the icon-le
 
 ### Returns
 
-`[Boolean](#type-boolean)` — Return false to cancel the event.
+`[boolean](../reference.md#type-boolean)` — Return false to cancel the event.
 
 ### Groups
 
@@ -468,7 +437,7 @@ StringMethod action to fire when this icon has focus and receives a keypress eve
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| keyName | [KeyName](../reference_2.md#type-keyname) | false | — | Name of the key pressed |
+| keyName | [KeyName](../reference.md#type-keyname) | false | — | Name of the key pressed |
 | character | [Character](#type-character) | false | — | character produced by the keypress |
 | form | [DynamicForm](#type-dynamicform) | false | — | The Dynamic Form to which this icon's item belongs. |
 | item | [FormItem](#type-formitem) | false | — | The Form Item containing this icon |

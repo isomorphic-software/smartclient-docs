@@ -40,22 +40,6 @@ FormItemIcon properties applied to the [decreaseIcon](#attr-spinneritemdecreasei
 **Flags**: IR
 
 ---
-## Attr: SpinnerItem.defaultValue
-
-### Description
-Overridden to assign class-appropriate type.
-
-### Groups
-
-- basics
-
-### See Also
-
-- [FormItem.defaultValue](FormItem.md#attr-formitemdefaultvalue)
-
-**Flags**: IRW
-
----
 ## Attr: SpinnerItem.max
 
 ### Description

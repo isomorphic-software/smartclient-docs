@@ -7,7 +7,7 @@
 ## KB Topic: Integrating AI Technology
 
 ### Description
-AI technology is woven into the SmartClient Framework, not only at a base level, but also systemically. With only minimal changes to application code, surprisingly sophisticated, AI-powered enhancements can be enabled that have the ability to turn the users of your application into power users. For example, users of your application can use natural language to:
+AI technology is woven into the SmartClient framework, not only at a base level, but also systemically. With only minimal changes to application code, surprisingly sophisticated, AI-powered enhancements can be enabled that have the ability to turn the users of your application into power users. For example, users of your application can use natural language to:
 
 *   Filter a [ListGrid](../classes/ListGrid_1.md#class-listgrid) according to their description of the records to include or exclude.
 *   Add a custom field to a `ListGrid`, combining data from the underlying dataSource or augmenting the data with AI-provided knowledge.
@@ -59,7 +59,7 @@ Bedrock integration requies a couple of additional `server.properties` entries, 
 *   `**Bedrock.api.model**` As mentioned above, Bedrock itself is not an AI model, so you must provide the name of the model to use. This must be a valid modelId or ARN that you have access to through the AWS account associated with your API key. This is not a completely straightforward topic and you should consult AWS Bedrock documentation to work out the correct modelId or ARN to specify
 
 #### Adding your own AIEngine
-If the built-in [AI Engines](../classes/AIEngine.md#class-aiengine) aren't enough, even with Bedrock support, you can implement your own for the generative AI service that you would like to use, and [register](#classmethod-airegisterengine) it with the Framework. You can then set your engine's ID into [AI.defaultEngineId](../classes/AI.md#classattr-aidefaultengineid).
+If the built-in [AI Engines](../classes/AIEngine.md#class-aiengine) aren't enough, even with Bedrock support, you can implement your own for the generative AI service that you would like to use, and [register](#classmethod-airegisterengine) it with the framework. You can then set your engine's ID into [AI.defaultEngineId](../classes/AI.md#classattr-aidefaultengineid).
 
 You can also [unregister](#classmethod-aiunregisterengine) an engine, or grab the `AIEngine` instance of a built-in or manually registered engine by passing the ID to [AI.getEngine](../classes/AI.md#classmethod-aigetengine).
 
@@ -68,10 +68,10 @@ AI can be used to set up the view settings of a [ListGrid](../classes/ListGrid_1
 
 With each AI component view feature, there is an associated [AIServiceMode](../reference.md#type-aiservicemode) setting that controls the mode for how AI should respond to user requests:
 
-| Filtering | [filterViaAIMode](../classes/ListGrid_1.md#attr-listgridfilterviaaimode) |
+| Filtering | [filterViaAIMode](#listgridfilterviaaimode) |
 |---|---|
-| Sorting | [sortViaAIMode](../classes/DataBoundComponent.md#attr-databoundcomponentsortviaaimode) |
-| Hiliting | [hiliteViaAIMode](../classes/ListGrid_1.md#attr-listgridhiliteviaaimode) |
+| Sorting | [sortViaAIMode](#listgridsortviaaimode) |
+| Hiliting | [hiliteViaAIMode](#listgridhiliteviaaimode) |
 
 With respect to AI component views, the supported AI service modes are:
 
@@ -87,17 +87,6 @@ With respect to a particular [DataBoundComponent](../reference.md#interface-data
 *   AI must be enabled: [AI.isEnabled](../classes/AI.md#classmethod-aiisenabled)
 *   A globally-installed [DataSource](../classes/DataSource.md#class-datasource) with a primary key and [supporting AdvancedCriteria](../classes/DataSource.md#method-datasourcesupportsadvancedcriteria) must be set.
 *   The `DataSource` cannot have a composite primary key.
-*   The number of data-records must be known, and the total number of records must be less than the DBC's [aiMaxRecords](../classes/DataBoundComponent.md#attr-databoundcomponentaimaxrecords).
-
-#### Best Practices for Integrating AI
-SmartClient handles the process of assembling the context to AI automatically. There are, however, places where you can add application-specific context to improve AI's understanding of your application:
-
-*   [DataSource.description](../classes/DataSource.md#attr-datasourcedescription) - An overview description of the data source.
-*   [DataSource.sampleData](../classes/DataSource.md#attr-datasourcesampledata) - Example records that illustrate typical values, formats, and relationships in the data source.
-*   [DataSourceField.description](../classes/DataSourceField.md#attr-datasourcefielddescription) - A description of a particular data source field.
-
-See the linked APIs for guidance on the type of information to include in each attribute.
-
-**Important:** Providing inaccurate or misleading information in these attributes can degrade AI performance and produce poor results.
+*   The number of data-records must be known, and the total number of records must be less than the DBC's [aiMaxRecords](#databoundcomponentaimaxrecords).
 
 ---

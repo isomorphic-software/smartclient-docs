@@ -198,9 +198,8 @@ Overview of available mask characters
 
 The mask can also contain literals - arbitrary non editable characters to be displayed as part of the formatted text. Any character not matching one of the above mask characters will be considered a literal. To use one of the mask characters as a literal, it must be escaped with a pair of backslashes (\\\\). By default literals are formatting characters only and will not be saved as part of the item's value. This behavior is controlled via [TextItem.maskSaveLiterals](#attr-textitemmasksaveliterals).
 
-When a TextItem with a mask has focus, the formatted mask string will be displayed, with the [TextItem.maskPromptChar](#attr-textitemmaskpromptchar) displayed as a placeholder for characters that have not yet been entered.
-
-As the user types in the field, input will be restricted to the appropriate character class for each character, with uppercase/lowercase conversion occurring automatically. When focus is moved away from the field, the displayed value will be formatted to include any literals in the appropriate places, using [TextItem.maskPadChar](#attr-textitemmaskpadchar) as the placeholder character.
+When a TextItem with a mask has focus, the formatted mask string will be displayed, with the [TextItem.maskPromptChar](#attr-textitemmaskpromptchar) displayed as a placeholder for characters that have not yet been entered.  
+As the user types in the field, input will be restricted to the appropriate character class for each character, with uppercase/lowercase conversion occurring automatically. When focus is moved away from the field, the displayed value will be formatted to include any literals in the appropriate places.
 
 Sample masks:
 
@@ -295,12 +294,6 @@ Default height for text items.
 
 ### Description
 Character that is used to fill required empty [mask](#attr-textitemmask) positions to display text while control has no focus.
-
-For the default of space, but not any other character, the formatted text in the field will be truncated and mask literals not shown if no field value is present. If you want literals always shown for space, set `maskPadChar` to the non-breaking space character '\\u00A0'.
-
-### See Also
-
-- [TextItem.maskPromptChar](#attr-textitemmaskpromptchar)
 
 **Flags**: IRWA
 
@@ -465,10 +458,6 @@ When enabled, Mobile Safari displays "autocorrect bubbles" to suggest automatic 
 
 ### Description
 Character that is used to fill required empty [mask](#attr-textitemmask) positions to display text while control has focus.
-
-### See Also
-
-- [TextItem.maskPadChar](#attr-textitemmaskpadchar)
 
 **Flags**: IRWA
 
@@ -748,7 +737,7 @@ The default behavior is that the [titleStyle](FormItem.md#attr-formitemtitlestyl
 
 ### Returns
 
-`[Boolean](#type-boolean)` — `false` to cancel the default behavior.
+`[boolean](../reference.md#type-boolean)` — `false` to cancel the default behavior.
 
 ---
 ## Method: TextItem.transformPastedValue

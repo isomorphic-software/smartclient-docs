@@ -27,9 +27,9 @@ If you cannot easily detect changes to values in your Canvas, a workaround is to
 ### Description
 This text is shown as a tooltip prompt when the cursor hovers over this item.
 
-When the item is [read-only](FormItem.md#method-formitemsetcanedit) a different hover can be shown with [FormItem.readOnlyHover](FormItem.md#attr-formitemreadonlyhover). Or, when the item is [disabled](FormItem.md#attr-formitemdisabled) or read-only with [readOnlyDisplay:disabled](FormItem.md#attr-formitemreadonlydisplay) a different hover can be shown with [FormItem.disabledHover](FormItem.md#attr-formitemdisabledhover).
+When item is [read-only](FormItem.md#method-formitemsetcanedit) a different hover can be shown with [FormItem.readOnlyHover](FormItem.md#attr-formitemreadonlyhover). Or, when item is [disabled](FormItem.md#attr-formitemdisabled) or read-only with [readOnlyDisplay:disabled](FormItem.md#attr-formitemreadonlydisplay) a different hover can be shown with [FormItem.disabledHover](FormItem.md#attr-formitemdisabledhover).
 
-Note that when the form is [disabled](Canvas.md#attr-canvasdisabled), or when this item [suppresses hovers](FormItem.md#attr-formitemcanhover), this prompt will not be shown.
+Note that when the form is [disabled](Canvas.md#attr-canvasdisabled) this prompt will not be shown.
 
 ### Groups
 
@@ -195,7 +195,7 @@ Standard `CanvasItem`\-based form items may customize the default behavior. For 
 
 ### Returns
 
-`[Boolean](#type-boolean)` — `false` to cancel the default behavior.
+`[boolean](../reference.md#type-boolean)` — `false` to cancel the default behavior.
 
 ### See Also
 
@@ -259,11 +259,11 @@ Standard `CanvasItem`\-based form items may customize the default behavior.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| appearance | [ReadOnlyDisplayAppearance](../reference_2.md#type-readonlydisplayappearance) | false | — | new `readOnlyDisplay` value |
+| appearance | [ReadOnlyDisplayAppearance](../reference.md#type-readonlydisplayappearance) | false | — | new `readOnlyDisplay` value |
 
 ### Returns
 
-`[Boolean](#type-boolean)` — `false` to cancel the default behavior.
+`[boolean](../reference.md#type-boolean)` — `false` to cancel the default behavior.
 
 ### See Also
 

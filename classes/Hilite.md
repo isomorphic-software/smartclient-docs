@@ -21,13 +21,11 @@ If unset, hilite is applied to every field of the record.
 ## Attr: Hilite.id
 
 ### Description
-Unique ID for this hilite definition.
+Unique id for this hilite definition.
 
 For hilites that include [Hilite.criteria](#attr-hilitecriteria) this is not required.
 
-If you are explicitly marking records for hiliting, set [DataBoundComponent.hiliteProperty](DataBoundComponent.md#attr-databoundcomponenthiliteproperty) on the record to this ID.
-
-Note that the ID must be a valid JavaScript identifier, and in particular, setting the ID to a number is not supported.
+If you are explicitly marking records for hiliting, set [DataBoundComponent.hiliteProperty](DataBoundComponent.md#attr-databoundcomponenthiliteproperty) on the record to this id.
 
 ### Groups
 
@@ -180,8 +178,6 @@ HTML to pre-pend to cell values where this hilite is applied.
 
 ### Description
 Criteria defining what records this hilite should apply to.
-
-This property supports [dynamicCriteria](../kb_topics/dynamicCriteria.md#kb-topic-dynamiccriteria) - use [Criterion.valuePath](Criterion.md#attr-criterionvaluepath) to refer to values in the [Canvas.ruleScope](Canvas.md#attr-canvasrulescope).
 
 ### Groups
 

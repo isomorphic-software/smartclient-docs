@@ -121,7 +121,7 @@ Add list of items list to this array at item pos. All items after array\[pos\] w
 
 ### Returns
 
-`[List](#type-list)` — this list, to allow chaining of calls
+`[Array](#type-array)` — the list of items that was added
 
 ### Groups
 
@@ -141,7 +141,7 @@ Remove all instances of objects in the specified list from this list, sliding th
 
 ### Returns
 
-`[List](#type-list)` — this list, to allow chaining of calls
+`[List](#type-list)` — list of items passed in
 
 ### Groups
 
@@ -357,7 +357,7 @@ Note: you can specify that a subset range be added by passing start and end indi
 
 ### Returns
 
-`[List](#type-list)` — this list, to allow chaining of calls
+`[List](#type-list)` — list of items that were added
 
 ### Groups
 
@@ -565,17 +565,17 @@ If the length of the list is shortened, any elements past the new length of the 
 ## Method: List.intersect
 
 ### Description
-Return the list of non-`null` items that are contained in this list and each of the argument list(s).
+Return the list of items that are in both this list and the passed-in list(s).
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| lists | [All List Arguments](#type-all-list-arguments) | false | — | Lists to intersect with. |
+| lists | [All List Arguments](#type-all-list-arguments) | false | — | lists to intersect with |
 
 ### Returns
 
-`[List](#type-list)` — A new list containing only the non-`null` items that are contained in this list and each of the argument list(s).
+`[List](#type-list)` — intersection
 
 ### Groups
 

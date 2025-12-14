@@ -23,20 +23,6 @@ Callback reporting the result of a [RemoteWindow](RemoteWindow.md#class-remotewi
 | result | [Map](#type-map) | false | — | result |
 
 ---
-## Method: Callbacks.RunTaskCallback
-
-### Description
-Called when [Process.runTask](Process.md#method-processruntask) has finished executing the specified task.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| task | [Task](#type-task) | false | — | The task instance that was executed. |
-| process | [Process](#type-process) | false | — | The owning process instance. |
-| outputs | [Object](../reference.md#type-object) | false | — | Task outputs, if any (for [CoTTask](CoTTask.md#class-cottask), this is the final `$outputs` JSON). May be null if the task does not produce outputs. |
-
----
 ## Method: Callbacks.AsyncMultipleValuesGenerationResultCallback
 
 ### Description
@@ -135,18 +121,6 @@ Or
 A [Callback](../reference.md#type-callback) fired when [Sound.play](Sound.md#method-soundplay) completes.
 
 ---
-## Method: Callbacks.TimingDataCallback
-
-### Description
-Callback fired after a call to [RPCManager.getTimingData](RPCManager.md#classmethod-rpcmanagergettimingdata) to report gathered timing data.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| data | [Object](../reference.md#type-object) | false | — | The root object of the timing data tree (note, this is a plain JS object, not an instance of the SmartClient Tree class) |
-
----
 ## Method: Callbacks.MultiWindowEventCallback
 
 ### Description
@@ -177,13 +151,9 @@ Note that the event is simply an [OpenFin application event](https://developer.o
 | value | [Any](#type-any) | false | — | value to validate |
 | record | [Object](../reference.md#type-object) | false | — | Field values for record being validated. |
 | additionalContext | [Object](../reference.md#type-object) | false | — | Object containing extra context which may be useful to the condition function. Contains the following properties:  
-
-*   validatorDefinition: the [ValidatorDefinition](../reference_2.md#object-validatordefinition) for the validator being processed. This allows easy access to custom validator defintion properties while evaluating the condition.
-*   component: the DynamicForm or ListGrid being validated  
-    
-*   rowNum: the row number of the cell being validated (only if component is a ListGrid)  
-    
-*   colNum: the column number of the cell being validated (only if component is a ListGrid) |
+component: the DynamicForm or ListGrid being validated  
+rowNum: the row number of the cell being validated (only if component is a ListGrid)  
+colNum: the column number of the cell being validated (only if component is a ListGrid) |
 
 ### Returns
 
@@ -219,7 +189,7 @@ Callback fired when DataSource methods that send DSRequests complete (such as [D
 |------|------|----------|---------|-------------|
 | dsResponse | [DSResponse](#type-dsresponse) | false | — | a [DSResponse](DSResponse.md#class-dsresponse) instance with metadata about the returned data |
 | data | [Any](#type-any) | false | — | data returned to satisfy the DataSource request. See the [DataSource operations](../kb_topics/dataSourceOperations.md#kb-topic-datasource-operations) topic for expected results for each type of DataSource operation |
-| dsRequest | [DSRequest](#type-dsrequest) | false | — | the [DSRequest](../reference_2.md#object-dsrequest) that was sent. You can use [DSRequest.clientContext](DSRequest.md#attr-dsrequestclientcontext) to track state during the server turnaround. |
+| dsRequest | [DSRequest](#type-dsrequest) | false | — | the [DSRequest](../reference.md#object-dsrequest) that was sent. You can use [DSRequest.clientContext](DSRequest.md#attr-dsrequestclientcontext) to track state during the server turnaround. |
 
 ---
 ## Method: Callbacks.ExportImageCallback
@@ -311,7 +281,7 @@ Callback fired with the result of an asynchronous operation to generate a value.
 ## Method: Callbacks.RPCQueueCallback
 
 ### Description
-Callback to fire when a queue of requests sent via [RPCManager.sendQueue](RPCManager.md#classmethod-rpcmanagersendqueue) returns.
+Callback to fire when a queue of requests sent via {@link com.smartgwt.client.rpc.RPCManager#sendQueue(RPCQueueCallback)} returns.
 
 Note that the Array of RPCResponses passed to this callback will actually be DSResponse objects for any requests that were actually DSRequests.
 
@@ -339,24 +309,6 @@ A [Callback](../reference.md#type-callback) to evaluate when a Process has been 
 - [RPCResponse](RPCResponse.md#class-rpcresponse)
 
 ---
-## Method: Callbacks.EventErrorCallback
-
-### Description
-A [Callback](../reference.md#type-callback) called to report [event errors](EventStream.md#attr-eventstreamcaptureeventerrors) from an [active](EventStream.md#method-eventstreamstart) [EventStream](EventStream.md#class-eventstream) to a listener.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| data | [EventStreamData](#type-eventstreamdata) | false | — | A JavaScript object representing the current state of the stream; [events](EventStreamData.md#attr-eventstreamdataevents) will be an array of all retained [EventStreamEvent](../reference.md#object-eventstreamevent)s captured by the stream since the last time the callback was invoked, oldest first. The last array element should be the `EventStreamEvent` that triggered this call and have an [errorTrace](EventStreamEvent.md#attr-eventstreameventerrortrace). |
-| nEvents | [int](../reference.md#type-int) | false | — | The number of events captured by the stream since the last time the callback was invoked. Compare with [EventStreamData.nEvents](EventStreamData.md#attr-eventstreamdatanevents). |
-
-### See Also
-
-- [EventStream.maxSize](EventStream.md#attr-eventstreammaxsize)
-- [EventStream.setEventErrorListener](EventStream.md#method-eventstreamseteventerrorlistener)
-
----
 ## Method: Callbacks.ShowSectionCallback
 
 ### Description
@@ -374,7 +326,7 @@ A [Callback](../reference.md#type-callback) fired when [DataSource.hasFileVersio
 |------|------|----------|---------|-------------|
 | dsResponse | [DSResponse](#type-dsresponse) | false | — | A [DSResponse](DSResponse.md#class-dsresponse) instance with metadata about the returned data. |
 | data | [boolean](../reference.md#type-boolean) | false | — | Whether the file version exists. |
-| dsRequest | [DSRequest](#type-dsrequest) | false | — | The [DSRequest](../reference_2.md#object-dsrequest) that was sent. |
+| dsRequest | [DSRequest](#type-dsrequest) | false | — | The [DSRequest](../reference.md#object-dsrequest) that was sent. |
 
 ### Groups
 
@@ -404,7 +356,7 @@ A [Callback](../reference.md#type-callback) fired when [DataSource.hasFile](Data
 |------|------|----------|---------|-------------|
 | dsResponse | [DSResponse](#type-dsresponse) | false | — | A [DSResponse](DSResponse.md#class-dsresponse) instance with metadata about the returned data. |
 | data | [boolean](../reference.md#type-boolean) | false | — | Whether the file exists. |
-| dsRequest | [DSRequest](#type-dsrequest) | false | — | The [DSRequest](../reference_2.md#object-dsrequest) that was sent. |
+| dsRequest | [DSRequest](#type-dsrequest) | false | — | The [DSRequest](../reference.md#object-dsrequest) that was sent. |
 
 ### Groups
 
@@ -445,7 +397,7 @@ Callback fired when [DataSource.getFileVersion](DataSource.md#method-datasourceg
 |------|------|----------|---------|-------------|
 | dsResponse | [DSResponse](#type-dsresponse) | false | — | A [DSResponse](DSResponse.md#class-dsresponse) instance with metadata about the returned data. |
 | data | [String](#type-string) | false | — | The file contents, or null if there was an error (such as file not found). |
-| dsRequest | [DSRequest](#type-dsrequest) | false | — | The [DSRequest](../reference_2.md#object-dsrequest) that was sent. |
+| dsRequest | [DSRequest](#type-dsrequest) | false | — | The [DSRequest](../reference.md#object-dsrequest) that was sent. |
 
 ### Groups
 
@@ -478,18 +430,6 @@ If [LoadProjectSettings.willHandleError](LoadProjectSettings.md#attr-loadproject
 
 ### Description
 Callback to execute after the section has been expanded.
-
----
-## Method: Callbacks.FormattedTimingDataCallback
-
-### Description
-Callback fired after a call to [RPCManager.getFormattedTimingData](RPCManager.md#classmethod-rpcmanagergetformattedtimingdata) to report the formatted timing data.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| data | [String](#type-string) | false | — | The formatted timing data. |
 
 ---
 ## Method: Callbacks.TabIndexUpdatedCallback
@@ -551,7 +491,7 @@ Callback fired when [DataSource.getFile](DataSource.md#method-datasourcegetfile)
 |------|------|----------|---------|-------------|
 | dsResponse | [DSResponse](#type-dsresponse) | false | — | A [DSResponse](DSResponse.md#class-dsresponse) instance with metadata about the returned data. |
 | data | [String](#type-string) | false | — | The file contents, or null if there was an error (such as file not found). |
-| dsRequest | [DSRequest](#type-dsrequest) | false | — | The [DSRequest](../reference_2.md#object-dsrequest) that was sent. |
+| dsRequest | [DSRequest](#type-dsrequest) | false | — | The [DSRequest](../reference.md#object-dsrequest) that was sent. |
 
 ### Groups
 
@@ -631,36 +571,6 @@ Callback executed when a message is sent to a channel that you have [subscribed]
 Callback to execute after the section has been hidden.
 
 ---
-## Method: Callbacks.RowCountCallback
-
-### Description
-Callback fired when ResultSet.fetchRowCount() completes
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| resultSet | [ResultSet](#type-resultset) | false | — | the [ResultSet](ResultSet.md#class-resultset) resultSet that issued the row-count fetch request. |
-| dsResponse | [DSResponse](#type-dsresponse) | false | — | the [DSResponse](DSResponse.md#class-dsresponse) from the fetch request. May be null if the row count fetch was invalidated before the server responded |
-| invalidated | [boolean](../reference.md#type-boolean) | false | — | boolean indicating whether the rowCountFetch request was invalidated. This parameter will be true if, after the row count fetch request was issued, the criteria were changed, the cache was invalidated or the rowCount status has changed since the fetch was initiated. Calling [ResultSet.fetchRowCount](ResultSet.md#method-resultsetfetchrowcount) before a row count fetch has completed will also invalidate the previous row count fetch. In any of these cases the row count will not be updated by this fetch operation. |
-
-### Groups
-
-- rowRangeDisplay
-
----
-## Method: Callbacks.HiliteViaAIResultCallback
-
-### Description
-Callback fired asynchronously with the result of a [hilite-via-AI operation](#method-hiliteviaai).
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| result | [HiliteViaAIResult](#type-hiliteviaairesult) | false | — | The result. |
-
----
 ## Method: Callbacks.Function
 
 ### Description
@@ -677,18 +587,5 @@ Generic callback interface.
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | clientOnly | [DataSource](#type-datasource) | false | — | Client only Data Source. |
-
----
-## Method: Callbacks.SetValueByDisplayValueCallback
-
-### Description
-Callback fired when [FormItem.setValueByDisplayValue](FormItem.md#method-formitemsetvaluebydisplayvalue) completes.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| success | [boolean](../reference.md#type-boolean) | false | — | True if the value was successfully set, false otherwise |
-| value | [Any](#type-any) | false | — | If success is true, contains the mapped value that was set. If success is false, contains an error message string. |
 
 ---

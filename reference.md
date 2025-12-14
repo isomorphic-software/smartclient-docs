@@ -1,4 +1,4 @@
-# SmartClient API Reference
+# SmartClient API Reference (13.0)
 
 This is the central API reference for the SmartClient framework.
 ## Table of Contents
@@ -6,7 +6,7 @@ This is the central API reference for the SmartClient framework.
 ### Classes
 
 - [Class](classes/Class.md)
-  - [BaseWidget](classes/BaseWidget.md)
+  - [BaseWidget](#class-basewidget)
     - [Canvas](classes/Canvas.md)
       - [Layout](classes/Layout.md)
         - [VLayout](#class-vlayout)
@@ -21,25 +21,24 @@ This is the central API reference for the SmartClient framework.
               - [SelectionTreeMenu](#class-selectiontreemenu)
               - [MenuPalette](#class-menupalette)
             - [TableView](classes/TableView.md)
-            - [CalendarView](classes/CalendarView.md)
             - [RecordEditor](classes/RecordEditor.md)
+            - [CalendarView](classes/CalendarView.md)
             - [PickListMenu](classes/PickListMenu.md)
             - [ListPalette](#class-listpalette)
             - [DateGrid](#class-dategrid)
-          - [DateChooser](classes/DateChooser.md)
           - [SectionStack](classes/SectionStack.md)
+          - [DateChooser](classes/DateChooser.md)
           - [FormulaBuilder](classes/FormulaBuilder.md)
             - [SummaryBuilder](classes/SummaryBuilder.md)
               - [AIFieldBuilder](classes/AIFieldBuilder.md)
                 - [AISortFieldBuilder](#class-aisortfieldbuilder)
+          - [RichTextEditor](classes/RichTextEditor.md)
           - [RibbonGroup](classes/RibbonGroup.md)
             - [ToolStripGroup](#class-toolstripgroup)
-          - [RichTextEditor](classes/RichTextEditor.md)
           - [Reify](classes/Reify.md)
           - [EventCanvas](classes/EventCanvas.md)
             - [ZoneCanvas](#class-zonecanvas)
             - [IndicatorCanvas](#class-indicatorcanvas)
-          - [SeleneseRecorder](classes/SeleneseRecorder.md)
           - [FieldPicker](classes/FieldPicker.md)
           - [SavedSearchEditor](classes/SavedSearchEditor.md)
           - [HiliteEditor](classes/HiliteEditor.md)
@@ -50,7 +49,6 @@ This is the central API reference for the SmartClient framework.
         - [SplitPane](classes/SplitPane.md)
           - [NavPanel](classes/NavPanel.md)
           - [TriplePane](#class-triplepane)
-        - [PortalLayout](classes/PortalLayout.md)
         - [Window](classes/Window.md)
           - [ColorPicker](classes/ColorPicker.md)
           - [Dialog](classes/Dialog.md)
@@ -61,9 +59,9 @@ This is the central API reference for the SmartClient framework.
           - [MultiSortDialog](classes/MultiSortDialog.md)
           - [LoginDialog](classes/LoginDialog.md)
           - [MultiGroupDialog](classes/MultiGroupDialog.md)
-          - [DatabaseBrowser](classes/DatabaseBrowser.md)
           - [Portlet](classes/Portlet.md)
           - [ModalWindow](classes/ModalWindow.md)
+          - [DatabaseBrowser](classes/DatabaseBrowser.md)
           - [TourWindow](classes/TourWindow.md)
           - [HibernateBrowser](classes/HibernateBrowser.md)
           - [DateRangeDialog](classes/DateRangeDialog.md)
@@ -74,6 +72,7 @@ This is the central API reference for the SmartClient framework.
           - [InlineWindow](#class-inlinewindow)
           - [AIWindow](#class-aiwindow)
           - [AISortProgressDialog](#class-aisortprogressdialog)
+        - [PortalLayout](classes/PortalLayout.md)
         - [ColumnTree](classes/ColumnTree.md)
         - [FilterBuilder](classes/FilterBuilder.md)
         - [VStack](#class-vstack)
@@ -81,16 +80,14 @@ This is the central API reference for the SmartClient framework.
           - [AdvancedHiliteEditor](classes/AdvancedHiliteEditor.md)
           - [MultiFilePicker](#class-multifilepicker)
         - [HLayout](#class-hlayout)
-          - [Shuttle](classes/Shuttle.md)
           - [NavigationBar](classes/NavigationBar.md)
           - [ImgSectionHeader](classes/ImgSectionHeader.md)
           - [HiliteRule](classes/HiliteRule.md)
         - [Toolbar](classes/Toolbar.md)
           - [TabBar](classes/TabBar.md)
-            - [VerticalTabBar](#class-verticaltabbar)
           - [MenuBar](classes/MenuBar.md)
-        - [FilterClause](classes/FilterClause.md)
         - [MultiSortPanel](classes/MultiSortPanel.md)
+        - [FilterClause](classes/FilterClause.md)
         - [MultiGroupPanel](classes/MultiGroupPanel.md)
         - [ToolStrip](classes/ToolStrip.md)
           - [RibbonBar](classes/RibbonBar.md)
@@ -114,7 +111,6 @@ This is the central API reference for the SmartClient framework.
           - [TilePalette](#class-tilepalette)
         - [FlowLayout](#class-flowlayout)
       - [TabSet](classes/TabSet.md)
-        - [VerticalTabs](#class-verticaltabs)
       - [GridRenderer](classes/GridRenderer.md)
       - [EditPane](classes/EditPane.md)
       - [DetailViewer](classes/DetailViewer.md)
@@ -137,16 +133,13 @@ This is the central API reference for the SmartClient framework.
           - [Label](classes/Label.md)
             - [ViewLoader](classes/ViewLoader.md)
             - [SectionHeader](classes/SectionHeader.md)
-            - [RowRangeDisplay](classes/RowRangeDisplay.md)
             - [Placeholder](classes/Placeholder.md)
           - [MenuButton](classes/MenuButton.md)
             - [IMenuButton](classes/IMenuButton.md)
             - [TreeMenuButton](classes/TreeMenuButton.md)
               - [ITreeMenuButton](#class-itreemenubutton)
             - [ToolStripMenuButton](#class-toolstripmenubutton)
-            - [TextMenuButton](#class-textmenubutton)
           - [NavigationButton](classes/NavigationButton.md)
-          - [SecondaryButton](#class-secondarybutton)
           - [IButton](#class-ibutton)
           - [SimpleTabButton](#class-simpletabbutton)
           - [AutoFitButton](#class-autofitbutton)
@@ -158,11 +151,10 @@ This is the central API reference for the SmartClient framework.
             - [ToolStripResizer](#class-toolstripresizer)
           - [ToolStripSeparator](#class-toolstripseparator)
           - [MockupElement](#class-mockupelement)
-        - [ToggleSwitch](classes/ToggleSwitch.md)
         - [SimpleTile](classes/SimpleTile.md)
       - [Slider](classes/Slider.md)
       - [HTMLFlow](classes/HTMLFlow.md)
-        - [HTMLPane](classes/HTMLPane.md)
+        - [HTMLPane](#class-htmlpane)
       - [MinimalScrollbar](classes/MinimalScrollbar.md)
       - [EdgedCanvas](classes/EdgedCanvas.md)
       - [DrawKnob](classes/DrawKnob.md)
@@ -215,20 +207,16 @@ This is the central API reference for the SmartClient framework.
       - [FloatItem](#class-floatitem)
         - [DoubleItem](#class-doubleitem)
       - [AIAssistItem](#class-aiassistitem)
-      - [IntegerItem](#class-integeritem)
       - [PasswordItem](#class-passworditem)
+      - [IntegerItem](#class-integeritem)
       - [DataPathItem](#class-datapathitem)
     - [SelectItem](classes/SelectItem.md)
       - [SavedSearchItem](classes/SavedSearchItem.md)
       - [PresetCriteriaItem](classes/PresetCriteriaItem.md)
         - [PresetDateRangeItem](classes/PresetDateRangeItem.md)
+    - [TimeItem](classes/TimeItem.md)
     - [DateItem](classes/DateItem.md)
       - [DateTimeItem](classes/DateTimeItem.md)
-    - [TimeItem](classes/TimeItem.md)
-    - [StaticTextItem](classes/StaticTextItem.md)
-      - [MultiPickerItem](classes/MultiPickerItem.md)
-        - [SetFilterItem](classes/SetFilterItem.md)
-      - [MiniDateRangeItem](classes/MiniDateRangeItem.md)
     - [CanvasItem](classes/CanvasItem.md)
       - [RelativeDateItem](classes/RelativeDateItem.md)
       - [MultiComboBoxItem](classes/MultiComboBoxItem.md)
@@ -237,7 +225,6 @@ This is the central API reference for the SmartClient framework.
         - [ViewFileItem](#class-viewfileitem)
       - [PickTreeItem](classes/PickTreeItem.md)
         - [IPickTreeItem](#class-ipicktreeitem)
-      - [ShuttleItem](classes/ShuttleItem.md)
       - [MultiFileItem](classes/MultiFileItem.md)
       - [SliderItem](classes/SliderItem.md)
       - [ButtonItem](classes/ButtonItem.md)
@@ -245,12 +232,13 @@ This is the central API reference for the SmartClient framework.
         - [CancelItem](#class-cancelitem)
         - [ResetItem](#class-resetitem)
       - [SectionItem](classes/SectionItem.md)
-      - [RichTextItem](classes/RichTextItem.md)
       - [ToolbarItem](classes/ToolbarItem.md)
-      - [ToggleItem](#class-toggleitem)
+      - [RichTextItem](classes/RichTextItem.md)
     - [TextAreaItem](classes/TextAreaItem.md)
       - [AutoFitTextAreaItem](#class-autofittextareaitem)
     - [CheckboxItem](classes/CheckboxItem.md)
+    - [StaticTextItem](classes/StaticTextItem.md)
+      - [MiniDateRangeItem](classes/MiniDateRangeItem.md)
     - [RadioGroupItem](classes/RadioGroupItem.md)
     - [HiddenItem](classes/HiddenItem.md)
     - [HeaderItem](classes/HeaderItem.md)
@@ -262,74 +250,69 @@ This is the central API reference for the SmartClient framework.
       - [RadioItem](#class-radioitem)
     - [BooleanItem](#class-booleanitem)
   - [OperationBinding](classes/OperationBinding.md)
-  - [RPCManager](classes/RPCManager.md)
   - [Tree](classes/Tree.md)
     - [ResultTree](classes/ResultTree.md)
+  - [RPCManager](classes/RPCManager.md)
   - [ResultSet](classes/ResultSet.md)
     - [FilteredList](classes/FilteredList.md)
   - [ValuesManager](classes/ValuesManager.md)
   - [EditContext](classes/EditContext.md)
-  - [AutoTest](classes/AutoTest.md)
   - [DateUtil](classes/DateUtil.md)
   - [Page](classes/Page.md)
   - [SavedSearches](classes/SavedSearches.md)
-  - [Callbacks](classes/Callbacks.md)
+  - [AutoTest](classes/AutoTest.md)
   - [Validator](classes/Validator.md)
-  - [EventStream](classes/EventStream.md)
-  - [Process](classes/Process.md)
-    - [CoTProcess](classes/CoTProcess.md)
-      - [AUN](classes/AUN.md)
-    - [Tour](classes/Tour.md)
-      - [Tutorial](#class-tutorial)
+  - [EventHandler](classes/EventHandler.md)
+  - [Callbacks](classes/Callbacks.md)
   - [SimpleType](classes/SimpleType.md)
+  - [TabIndexManager](classes/TabIndexManager.md)
+  - [Log](classes/Log.md)
+  - [XMLTools](classes/XMLTools.md)
   - [ProcessElement](classes/ProcessElement.md)
     - [Task](classes/Task.md)
-      - [CoTTask](classes/CoTTask.md)
       - [UserTask](classes/UserTask.md)
         - [TourStep](classes/TourStep.md)
         - [TourConfirmStep](classes/TourConfirmStep.md)
-      - [DSRequestTask](classes/DSRequestTask.md)
+      - [ServiceTask](classes/ServiceTask.md)
         - [DSRemoveTask](#class-dsremovetask)
         - [DSUpdateTask](#class-dsupdatetask)
         - [DSFetchTask](#class-dsfetchtask)
         - [DSAddTask](#class-dsaddtask)
-      - [ComponentTask](classes/ComponentTask.md)
-        - [GridRemoveSelectedDataTask](classes/GridRemoveSelectedDataTask.md)
-        - [SetTitleTask](classes/SetTitleTask.md)
-        - [FormSaveDataTask](classes/FormSaveDataTask.md)
-        - [GridEditRecordTask](classes/GridEditRecordTask.md)
-        - [ShowHideTask](classes/ShowHideTask.md)
-        - [AddScreenTask](classes/AddScreenTask.md)
-        - [GridFetchDataTask](classes/GridFetchDataTask.md)
-        - [GetPropertiesTask](classes/GetPropertiesTask.md)
-        - [GridSelectRecordsTask](classes/GridSelectRecordsTask.md)
-        - [EnableDisableTask](classes/EnableDisableTask.md)
-        - [SetPropertiesTask](classes/SetPropertiesTask.md)
-        - [PrintCanvasTask](#class-printcanvastask)
-        - [FormSetValuesTask](#class-formsetvaluestask)
-        - [ShowNextToComponentTask](#class-shownexttocomponenttask)
-        - [FormValidateValuesTask](#class-formvalidatevaluestask)
-        - [FetchRelatedDataTask](#class-fetchrelateddatatask)
-        - [NavigateSplitPaneTask](#class-navigatesplitpanetask)
-        - [SetScreenDataTask](#class-setscreendatatask)
-        - [GridSetEditValueTask](#class-gridseteditvaluetask)
-        - [FormEditNewRecordTask](#class-formeditnewrecordtask)
-          - [FormEditRecordTask](#class-formeditrecordtask)
-        - [FormSetFieldValueTask](#class-formsetfieldvaluetask)
-        - [GridExportClientDataTask](#class-gridexportclientdatatask)
-        - [FormDisableFieldTask](#class-formdisablefieldtask)
-        - [GridViewSelectedDataTask](#class-gridviewselecteddatatask)
-        - [GridExportDataTask](#class-gridexportdatatask)
-        - [FormEditSelectedTask](#class-formeditselectedtask)
-        - [GridTransferDataTask](#class-gridtransferdatatask)
-        - [GridSaveAllEditsTask](#class-gridsavealleditstask)
-        - [GridDiscardAllEditsTask](#class-griddiscardalleditstask)
-        - [FormClearValuesTask](#class-formclearvaluestask)
-        - [FormResetValuesTask](#class-formresetvaluestask)
-        - [ShowComponentTask](#class-showcomponenttask)
-      - [StateTask](classes/StateTask.md)
       - [ScriptTask](classes/ScriptTask.md)
-        - [StartProcessTask](classes/StartProcessTask.md)
+        - [StartProcessTask](#class-startprocesstask)
+      - [StateTask](classes/StateTask.md)
+    - [ComponentTask](classes/ComponentTask.md)
+      - [GridRemoveSelectedDataTask](classes/GridRemoveSelectedDataTask.md)
+      - [SetTitleTask](classes/SetTitleTask.md)
+      - [FormSaveDataTask](classes/FormSaveDataTask.md)
+      - [GridEditRecordTask](classes/GridEditRecordTask.md)
+      - [ShowHideTask](classes/ShowHideTask.md)
+      - [AddScreenTask](classes/AddScreenTask.md)
+      - [GetPropertiesTask](classes/GetPropertiesTask.md)
+      - [GridSelectRecordsTask](classes/GridSelectRecordsTask.md)
+      - [SetPropertiesTask](classes/SetPropertiesTask.md)
+      - [FormSetValuesTask](#class-formsetvaluestask)
+      - [GridFetchDataTask](#class-gridfetchdatatask)
+      - [ShowNextToComponentTask](#class-shownexttocomponenttask)
+      - [FormValidateValuesTask](#class-formvalidatevaluestask)
+      - [FetchRelatedDataTask](#class-fetchrelateddatatask)
+      - [NavigateSplitPaneTask](#class-navigatesplitpanetask)
+      - [SetScreenDataTask](#class-setscreendatatask)
+      - [GridSetEditValueTask](#class-gridseteditvaluetask)
+      - [FormEditNewRecordTask](#class-formeditnewrecordtask)
+        - [FormEditRecordTask](#class-formeditrecordtask)
+      - [FormSetFieldValueTask](#class-formsetfieldvaluetask)
+      - [PrintCanvasTask](#class-printcanvastask)
+      - [GridExportClientDataTask](#class-gridexportclientdatatask)
+      - [FormDisableFieldTask](#class-formdisablefieldtask)
+      - [GridViewSelectedDataTask](#class-gridviewselecteddatatask)
+      - [GridExportDataTask](#class-gridexportdatatask)
+      - [FormEditSelectedTask](#class-formeditselectedtask)
+      - [GridTransferDataTask](#class-gridtransferdatatask)
+      - [GridSaveAllEditsTask](#class-gridsavealleditstask)
+      - [FormClearValuesTask](#class-formclearvaluestask)
+      - [FormResetValuesTask](#class-formresetvaluestask)
+      - [ShowComponentTask](#class-showcomponenttask)
     - [SendEmailTask](classes/SendEmailTask.md)
     - [DecisionTask](classes/DecisionTask.md)
       - [XORGateway](#class-xorgateway)
@@ -347,11 +330,11 @@ This is the central API reference for the SmartClient framework.
     - [LogOutTask](#class-logouttask)
     - [StartTransactionTask](#class-starttransactiontask)
     - [SendTransactionTask](#class-sendtransactiontask)
-  - [EventHandler](classes/EventHandler.md)
-  - [TabIndexManager](classes/TabIndexManager.md)
-  - [Log](classes/Log.md)
-  - [XMLTools](classes/XMLTools.md)
   - [Time](classes/Time.md)
+  - [Process](classes/Process.md)
+    - [Tour](classes/Tour.md)
+      - [Tutorial](#class-tutorial)
+    - [CoTProcess](classes/CoTProcess.md)
   - [Notify](classes/Notify.md)
   - [RPCResponse](classes/RPCResponse.md)
     - [DSResponse](classes/DSResponse.md)
@@ -380,16 +363,13 @@ This is the central API reference for the SmartClient framework.
       - [DrawPaneEditProxy](#class-drawpaneeditproxy)
     - [FormItemEditProxy](classes/FormItemEditProxy.md)
       - [SelectItemEditProxy](classes/SelectItemEditProxy.md)
-        - [SavedSearchItemEditProxy](#class-savedsearchitemeditproxy)
         - [RadioGroupItemEditProxy](#class-radiogroupitemeditproxy)
       - [TextItemEditProxy](classes/TextItemEditProxy.md)
         - [TextAreaItemEditProxy](#class-textareaitemeditproxy)
-        - [SectionItemEditProxy](#class-sectionitemeditproxy)
         - [BlurbItemEditProxy](#class-blurbitemeditproxy)
       - [CheckboxItemEditProxy](#class-checkboxitemeditproxy)
       - [ButtonItemEditProxy](#class-buttonitemeditproxy)
       - [DateItemEditProxy](classes/DateItemEditProxy.md)
-      - [ToolbarItemEditProxy](#class-toolbaritemeditproxy)
       - [FileItemEditProxy](#class-fileitemeditproxy)
     - [FacetChartEditProxy](classes/FacetChartEditProxy.md)
     - [DrawItemEditProxy](#class-drawitemeditproxy)
@@ -397,36 +377,32 @@ This is the central API reference for the SmartClient framework.
     - [LayoutResizeBarEditProxy](#class-layoutresizebareditproxy)
     - [ValuesManagerEditProxy](#class-valuesmanagereditproxy)
     - [HandPlacedContainerEditProxy](#class-handplacedcontainereditproxy)
-  - [Selection](classes/Selection.md)
   - [Operators](classes/Operators.md)
+  - [Selection](classes/Selection.md)
   - [Browser](classes/Browser.md)
   - [Mail](classes/Mail.md)
-  - [Hover](classes/Hover.md)
+  - [NumberUtil](classes/NumberUtil.md)
+  - [Facet](classes/Facet.md)
   - [Authentication](classes/Authentication.md)
     - [Auth](#class-auth)
-  - [NumberUtil](classes/NumberUtil.md)
   - [GroupingMessages](classes/GroupingMessages.md)
+  - [Hover](classes/Hover.md)
   - [RemoteWindow](classes/RemoteWindow.md)
     - [OpenFinWindow](#class-openfinwindow)
-  - [Media](classes/Media.md)
   - [Messaging](classes/Messaging.md)
   - [AI](classes/AI.md)
   - [Offline](classes/Offline.md)
-  - [StyleSheetHandler](classes/StyleSheetHandler.md)
   - [DMI](classes/DMI.md)
-  - [MathFunction](classes/MathFunction.md)
   - [MultiLinkSelection](classes/MultiLinkSelection.md)
   - [AsyncUtil](classes/AsyncUtil.md)
+  - [MathFunction](classes/MathFunction.md)
   - [JSONEncoder](classes/JSONEncoder.md)
-  - [VoiceAssist](classes/VoiceAssist.md)
   - [CellSelection](classes/CellSelection.md)
   - [CancellationController](classes/CancellationController.md)
   - [Project](classes/Project.md)
-  - [JSON](classes/JSON.md)
   - [SortSpecifierUtil](classes/SortSpecifierUtil.md)
   - [FontLoader](classes/FontLoader.md)
   - [SelectOtherItem](classes/SelectOtherItem.md)
-  - [Timer](classes/Timer.md)
   - [SelectionOutline](classes/SelectionOutline.md)
   - [TextSettings](classes/TextSettings.md)
     - [TextExportSettings](classes/TextExportSettings.md)
@@ -434,23 +410,18 @@ This is the central API reference for the SmartClient framework.
   - [AIEngine](classes/AIEngine.md)
   - [Comm](classes/Comm.md)
   - [SchemaSet](classes/SchemaSet.md)
+  - [CoTTask](classes/CoTTask.md)
+  - [Timer](classes/Timer.md)
+  - [JSON](classes/JSON.md)
   - [FieldPickerField](classes/FieldPickerField.md)
   - [SyntaxHiliter](#class-syntaxhiliter)
     - [XMLSyntaxHiliter](#class-xmlsyntaxhiliter)
     - [JSSyntaxHiliter](#class-jssyntaxhiliter)
-  - [WindowMaximizeButton](#class-windowmaximizebutton)
-  - [WindowMinimizeButton](#class-windowminimizebutton)
-  - [WindowCloseButton](#class-windowclosebutton)
-  - [WindowFooterSpacer](#class-windowfooterspacer)
-  - [WindowHeaderLabel](#class-windowheaderlabel)
-  - [WindowHeaderIcon](#class-windowheadericon)
-  - [WindowResizer](#class-windowresizer)
   - [QuartzManager](#class-quartzmanager)
-  - [HiddenPalette](#class-hiddenpalette)
   - [OpenFin](#class-openfin)
+  - [HiddenPalette](#class-hiddenpalette)
   - [RibbonGroupEditProxy](#class-ribbongroupeditproxy)
   - [ToolStripSeparatorEditProxy](#class-toolstripseparatoreditproxy)
-  - [React](#class-react)
   - [InstantUI](#class-instantui)
 - [AnswerEngineOperation](classes/AnswerEngineOperation.md)
 
@@ -459,7 +430,6 @@ This is the central API reference for the SmartClient framework.
 - [Accessibility / Section 508 compliance](kb_topics/accessibility.md)
 - [Admin Console](kb_topics/adminConsole.md)
 - [Advanced Filtering](kb_topics/advancedFilter.md)
-- [AIRetriesExhausted](kb_topics/AIRetriesExhausted.md)
 - [ancestry](#kb-topic-ancestry)
 - [Angular Integration](kb_topics/angularIntegration.md)
 - [Answer Engine](#kb-topic-answer-engine)
@@ -475,9 +445,8 @@ This is the central API reference for the SmartClient framework.
 - [Binary Fields](kb_topics/binaryFields.md)
 - [Supported Browsers](kb_topics/browserSupport.md)
 - [Native Browser Zoom Support](kb_topics/browserZoom.md)
-- [Built-in Grouping Modes](kb_topics/builtinGroupingModes.md)
+- [builtinGroupingModes](kb_topics/builtinGroupingModes.md)
 - [Button Icon](kb_topics/buttonIcon.md)
-- [Automatic Cache Synchronization](kb_topics/cacheSynchronization.md)
 - [Caching](kb_topics/caching.md)
 - [cellStyleSuffixes](kb_topics/cellStyleSuffixes.md)
 - [Client-side Data Integration](kb_topics/clientDataIntegration.md)
@@ -492,11 +461,9 @@ This is the central API reference for the SmartClient framework.
 - [Compression](kb_topics/compression.md)
 - [Handling concurrent edits in SmartClient DataSources](kb_topics/concurrentEdits.md)
 - [Component Containment and Hierarchy](kb_topics/containment.md)
-- [CoT](kb_topics/CoT.md)
 - [CoTExecutionModels](kb_topics/CoTExecutionModels.md)
 - [CoTHistory](kb_topics/CoTHistory.md)
-- [CoTMocking](kb_topics/CoTMocking.md)
-- [CoTPartialPrompt](kb_topics/CoTPartialPrompt.md)
+- [CoTMocking](#kb-topic-cotmocking)
 - [CoTPromptScope](kb_topics/CoTPromptScope.md)
 - [Criteria Editing](kb_topics/criteriaEditing.md)
 - [cues](#kb-topic-cues)
@@ -539,7 +506,6 @@ This is the central API reference for the SmartClient framework.
 - [eventBubbling](#kb-topic-eventbubbling)
 - [events](kb_topics/events.md)
 - [Copy and Paste with Excel](kb_topics/excelPasting.md)
-- [Experimental Features](kb_topics/experimental.md)
 - [Exports & Cell Background Color](kb_topics/exportBGColor.md)
 - [Exports & Formatting](kb_topics/exportFormatting.md)
 - [Feature Explorer Overview](kb_topics/featureExplorerOverview.md)
@@ -554,12 +520,10 @@ This is the central API reference for the SmartClient framework.
 - [Form Layout](kb_topics/formLayout.md)
 - [Form Titles](kb_topics/formTitles.md)
 - [formulaFields](kb_topics/formulaFields.md)
-- [DataSourceField formula functions](kb_topics/formulaFunction.md)
 - [Values Manager](#kb-topic-values-manager)
 - [Frozen Fields](kb_topics/frozenFields.md)
 - [Google Application Engine (GAE)](#kb-topic-google-application-engine-gae)
 - [Determining the size of a drawn canvas](kb_topics/gettingCanvasSize.md)
-- [GraalJS Polyglot API for DMI](kb_topics/graalPolyglotDMI.md)
 - [Grid Filtering Overview](kb_topics/gridFiltering.md)
 - [gridHeader](kb_topics/gridHeader.md)
 - [gridValidation](kb_topics/gridValidation.md)
@@ -572,8 +536,6 @@ This is the central API reference for the SmartClient framework.
 - [image](#kb-topic-image)
 - [imageColumns](kb_topics/imageColumns.md)
 - [images](kb_topics/images.md)
-- [Using includeVia with Composite Keys and domainKey](kb_topics/includeViaAndDomainKey.md)
-- [includeVia syntax](kb_topics/includeViaSyntax.md)
 - [Integrating AI Technology](kb_topics/integratingAI.md)
 - [Integrating into Existing Apps](kb_topics/integrationIntoExistingApps.md)
 - [Installing the SmartClient runtime](kb_topics/iscInstall.md)
@@ -600,8 +562,6 @@ This is the central API reference for the SmartClient framework.
 - [<isomorphic:loadWSDL>](kb_topics/loadWSDLTag.md)
 - [<isomorphic:loadXMLSchema>](kb_topics/loadXMLSchemaTag.md)
 - [Localized Number Formatting](#kb-topic-localized-number-formatting)
-- [Logging migration](kb_topics/loggingMigration.md)
-- [longEvents](#kb-topic-longevents)
 - [Manual JPA & Hibernate Integration](kb_topics/manualJpaHibernate.md)
 - [Maven Support](kb_topics/mavenSupport.md)
 - [Memory Leaks](kb_topics/memoryLeaks.md)
@@ -609,14 +569,11 @@ This is the central API reference for the SmartClient framework.
 - [Metadata Import](kb_topics/metadataImport.md)
 - [Mobile Application Development](kb_topics/mobileDevelopment.md)
 - [multiAutoChildren](#kb-topic-multiautochildren)
-- [Transparent Multi-Tenancy](kb_topics/multiTenancy.md)
 - [Network Performance](kb_topics/networkPerformance.md)
 - [Don't Misuse Frames](kb_topics/noFrames.md)
 - [.NET, PHP, Serverless Integration](kb_topics/nonJavaBackend.md)
 - [NPMJS Support](kb_topics/npmjs.md)
 - [Observation](#kb-topic-observation)
-- [Obtaining locators](#kb-topic-obtaining-locators)
-- [Server-side OData DataSource](kb_topics/odataDataSource.md)
 - [OpenAPI Specification (OAS) Support](kb_topics/openapiSupport.md)
 - [Operations Overview](kb_topics/operations.md)
 - [patternOperators](kb_topics/patternOperators.md)
@@ -624,16 +581,11 @@ This is the central API reference for the SmartClient framework.
 - [Integration with PhoneGap](kb_topics/phonegapIntegration.md)
 - [pickList](kb_topics/pickList.md)
 - [Platform Dependencies](kb_topics/platformDependencies.md)
-- [Writing AutoTests for multiple environments](kb_topics/portableAutoTests.md)
-- [Drag and Drop behavior within PortalLayouts](kb_topics/portalLayoutDrop.md)
 - [positioning](kb_topics/positioning.md)
 - [Printing](kb_topics/printing.md)
-- [Production Error Reporting](kb_topics/prodErrorReport.md)
 - [Progressive Loading](kb_topics/progressiveLoading.md)
 - [Prompting](#kb-topic-prompting)
 - [Quartz DataSources](kb_topics/quartzAdapters.md)
-- [Integrating Pre-Existing SmartClient Apps with React](kb_topics/reactIntegration.md)
-- [Using SmartClient with React](kb_topics/reactSupport.md)
 - [Registering Classes for Reflection](kb_topics/reflection.md)
 - [Reify Overview](kb_topics/reify.md)
 - [Reify OnSite: Adding Custom Workflow Tasks](kb_topics/reifyAddWorkflowTask.md)
@@ -643,15 +595,12 @@ This is the central API reference for the SmartClient framework.
 - [Importing from Reify](kb_topics/reifyMaven.md)
 - [Reify Messaging](kb_topics/reifyMessaging.md)
 - [Reify OnSite](kb_topics/reifyOnSite.md)
-- [Generating Reliable AutoTestLocators](kb_topics/reliableLocators.md)
 - [Relogin](kb_topics/relogin.md)
 - [Remote Debugging](kb_topics/remoteDebugging.md)
-- [Grid row-range and row-count display](kb_topics/rowRangeDisplay.md)
 - [rpcPrompt](#kb-topic-rpcprompt)
 - [Dynamic Rules](kb_topics/ruleCriteria.md)
 - [Safe Skinning](kb_topics/safeSkinning.md)
 - [scrolling](kb_topics/scrolling.md)
-- [Understanding scroll behavior](#kb-topic-understanding-scroll-behavior)
 - [Deploying the SmartClient SDK](kb_topics/sdkInstall.md)
 - [Selection](kb_topics/selection.md)
 - [server.properties file](kb_topics/server_properties.md)
@@ -659,22 +608,19 @@ This is the central API reference for the SmartClient framework.
 - [Notes on Server-side DataSource Implementations](kb_topics/serverDataSourceImplementation.md)
 - [Server Framework Initialization](kb_topics/serverInit.md)
 - [Server logging](kb_topics/serverLogging.md)
-- [Server-side REST Connector](kb_topics/serverRestConnector.md)
 - [Server Scripting](kb_topics/serverScript.md)
 - [Server Summaries](kb_topics/serverSummaries.md)
 - [The Core and Optional SmartClient servlets](kb_topics/servletDetails.md)
 - [Sharing Nodes](kb_topics/sharingNodes.md)
-- [Porting Showcase samples to React](kb_topics/showcasePorting.md)
 - [Simple Names mode](kb_topics/simpleNamesMode.md)
 - [sizing](kb_topics/sizing.md)
 - [Skin Editor](kb_topics/skinEditor.md)
 - [Skinning / Theming](kb_topics/skinning.md)
 - [skins](kb_topics/skins.md)
 - [SmartClient Architecture](kb_topics/smartArchitecture.md)
-- [Integrating SmartClient with Cypress](kb_topics/smartClientCypress.md)
-- [Integrating SmartClient with Playwright](kb_topics/smartClientPlaywright.md)
 - [snapGridDragging](kb_topics/snapGridDragging.md)
 - [snapPositioning](#kb-topic-snappositioning)
+- [Spring 4 / Java Compatibility](kb_topics/spring4limits.md)
 - [Integration with Spring](kb_topics/springIntegration.md)
 - [SQL Connection Pooling](kb_topics/sqlConnectionPooling.md)
 - [SQL DataSources](kb_topics/sqlDataSource.md)
@@ -684,14 +630,13 @@ This is the central API reference for the SmartClient framework.
 - [state](kb_topics/state.md)
 - [Stateful Images](kb_topics/statefulImages.md)
 - [statusCodes](kb_topics/statusCodes.md)
-- [StockIcons Overview](kb_topics/stockIcons.md)
 - [Strict Mode](kb_topics/strictMode.md)
 - [String Methods Overview](kb_topics/stringMethods.md)
 - [String Template Functions](kb_topics/stringTemplateFunctions.md)
 - [submitting](kb_topics/submitting.md)
 - [Sun's java-engine implementation - Notice and Disclaimer](kb_topics/sunNotice.md)
-- [SVG Symbols Overview](kb_topics/svgSymbols.md)
 - [Tab Order Overview](kb_topics/tabOrderOverview.md)
+- [Task Input Expressions](kb_topics/taskInputExpression.md)
 - [Task Input / Output](kb_topics/taskIO.md)
 - [Test Data](kb_topics/testData.md)
 - [TestRunner](kb_topics/testRunner.md)
@@ -703,10 +648,8 @@ This is the central API reference for the SmartClient framework.
 - [TreeGrid drag and drop](kb_topics/treeGridDrop.md)
 - [Troubleshooting thread deadlocks on the server](kb_topics/troubleshootingServerDeadlocks.md)
 - [TypeScript Support](kb_topics/typeScriptSupport.md)
-- [Union DataSources](kb_topics/unionDataSource.md)
 - [Handling Unsaved Records](kb_topics/unsavedRecords.md)
 - [Uploading Files](kb_topics/upload.md)
-- [RPC timing logs](#kb-topic-rpc-timing-logs)
 - [Using Selenium Scripts (Selenese)](kb_topics/usingSelenium.md)
 - [validation](kb_topics/validation.md)
 - [validatorExecution](#kb-topic-validatorexecution)
@@ -714,7 +657,6 @@ This is the central API reference for the SmartClient framework.
 - [values](#kb-topic-values)
 - [Velocity context variables](kb_topics/velocitySupport.md)
 - [visibility](kb_topics/visibility.md)
-- [Waiting for asynchronous actions](kb_topics/waitingForAsyncActions.md)
 - [Window Header](#kb-topic-window-header)
 - [Custom Server DataSources](kb_topics/writeCustomDataSource.md)
 - [WSDL Binding](kb_topics/wsdlBinding.md)
@@ -723,6 +665,12 @@ This is the central API reference for the SmartClient framework.
 - [<isomorphic:XML>](kb_topics/xmlTag.md)
 - [XSS and CSRF Security](kb_topics/xssAndCSRFSecurity.md)
 - [zIndex](#kb-topic-zindex)
+
+---
+## Class: BaseWidget
+
+### Description
+Base class for [Canvas](classes/Canvas.md#class-canvas) and [DrawItem](classes/DrawItem.md#class-drawitem).
 
 ---
 ## Class: VLayout
@@ -1220,51 +1168,34 @@ The NativeScrollbar widget will render in the browser as a native scrollbar, and
 To enable this for a component simply set [Canvas.showCustomScrollbars](classes/Canvas.md#attr-canvasshowcustomscrollbars) to true and set [Canvas.scrollbarConstructor](classes/Canvas.md#attr-canvasscrollbarconstructor) to `"NativeScrollbar"`
 
 ---
-## Class: PrintCanvasTask
+## Class: StartProcessTask
 
-*Inherits from:* [ComponentTask](classes/ComponentTask.md#class-componenttask)
+*Inherits from:* [ScriptTask](classes/ScriptTask.md#class-scripttask)
 
 ### Description
-Print canvas by showing print preview.
-
-### See Also
-
-- [Canvas.showPrintPreview](classes/Canvas.md#classmethod-canvasshowprintpreview)
-- [RPCManager.exportContent](classes/RPCManager.md#classmethod-rpcmanagerexportcontent)
+Task that executes another [Process](classes/Process.md#class-process) inside the current one. A process cannot be embedded within another process as a normal task element. Instead, a StartProcessTask is used to provide the input state, execute the inner process, then write the output back into the calling process state.
 
 ---
-## Attr: PrintCanvasTask.exportAsPdf
+## Attr: StartProcessTask.process
 
 ### Description
-Should the canvas contents be exported to a PDF file instead of a print preview?
-
-An export file name can be specified in [PrintCanvasTask.exportFilename](#attr-printcanvastaskexportfilename).
+The [Process](classes/Process.md#class-process) to be run by this task. Input state is created from [inputFieldList](classes/Task.md#attr-taskinputfieldlist) and container process state is updated from the inner process state using [outputFieldList](classes/Task.md#attr-taskoutputfieldlist).
 
 **Flags**: IR
 
 ---
-## Attr: PrintCanvasTask.printWindowProperties
+## Attr: StartProcessTask.isAsync
 
 ### Description
-Properties to apply to the generated print window.
+Not applicable to StartProcessTask.
 
-**Flags**: IR
+**Flags**: IRW
 
 ---
-## Attr: PrintCanvasTask.printProperties
+## Method: StartProcessTask.execute
 
 ### Description
-PrintProperties object for customizing the print HTML output.
-
-**Flags**: IR
-
----
-## Attr: PrintCanvasTask.exportFilename
-
-### Description
-Default name of the exported PDF file.
-
-**Flags**: IR
+Not applicable to StartProcessTask.
 
 ---
 ## Class: FormSetValuesTask
@@ -1284,7 +1215,7 @@ Set form values.
 ### Description
 Values to be set on the form.
 
-Data values prefixed with "$" will be treated as a [TaskInputExpression](reference_2.md#type-taskinputexpression). Use [FormSetValuesTask.fixedValues](#attr-formsetvaluestaskfixedvalues) for any values that start with "$" but should be treated as a literal.
+Data values prefixed with "$" will be treated as a [taskInputExpression](kb_topics/taskInputExpression.md#kb-topic-task-input-expressions). Use [FormSetValuesTask.fixedValues](#attr-formsetvaluestaskfixedvalues) for any values that start with "$" but should be treated as a literal.
 
 **Flags**: IR
 
@@ -1292,7 +1223,7 @@ Data values prefixed with "$" will be treated as a [TaskInputExpression](referen
 ## Attr: FormSetValuesTask.fixedValues
 
 ### Description
-Values to be combined with the data from the [DSRequestTask.values](classes/DSRequestTask.md#attr-dsrequesttaskvalues) if specified, via simple copying of fields, with explicitly specified [DSRequestTask.values](classes/DSRequestTask.md#attr-dsrequesttaskvalues) overriding `fixedValues`.
+Values to be combined with the data from the [ServiceTask.values](classes/ServiceTask.md#attr-servicetaskvalues) if specified, via simple copying of fields, with explicitly specified [ServiceTask.values](classes/ServiceTask.md#attr-servicetaskvalues) overriding `fixedValues`.
 
 **Flags**: IR
 
@@ -1369,6 +1300,42 @@ Option to save searches is disabled for treePalettes
 Option to show filter editor is disabled for treePalettes
 
 **Flags**: IRA
+
+---
+## Class: GridFetchDataTask
+
+*Inherits from:* [ComponentTask](classes/ComponentTask.md#class-componenttask)
+
+### Description
+Fetch data matching specified criteria into grid.
+
+### See Also
+
+- [ListGrid.fetchData](classes/ListGrid_1.md#method-listgridfetchdata)
+
+---
+## Attr: GridFetchDataTask.applyToImplicitCriteria
+
+### Description
+Should criteria be applied to the grid as [implicit criteria](classes/ListGrid_1.md#attr-listgridimplicitcriteria)? When criteria is applied this way, it is not shown to the user and cannot be changed by the user.
+
+**Flags**: IR
+
+---
+## Attr: GridFetchDataTask.requestProperties
+
+### Description
+Additional properties to set on the DSRequest that will be issued to perform the fetch or clear criteria.
+
+**Flags**: IR
+
+---
+## Attr: GridFetchDataTask.criteria
+
+### Description
+Criteria to use for fetch. If criteria is `null` or empty, the filter criteria of the grid will be cleared.
+
+**Flags**: IR
 
 ---
 ## Class: MultiFilePicker
@@ -1576,36 +1543,6 @@ WSDataSource supports all 4 DataSource operations (fetch, add, update, remove) a
 Note that WSDataSource is specifically designed for use with SmartClientOperations.wsdl. If you are trying to connect to a pre-existing WSDL service, start with just [DataSource](classes/DataSource.md#class-datasource), not WSDataSource, and see the [WSDL Integration](kb_topics/wsdlBinding.md#kb-topic-wsdl-binding) chapter for an overview.
 
 ---
-## Class: FloatItem
-
-*Inherits from:* [TextItem](classes/TextItem.md#class-textitem)
-
-### Description
-A TextItem for managing a text field that displays a floating point value. FloatItem is the default FormItem if the [FormItem.type](classes/FormItem.md#attr-formitemtype) is "float".
-
-FloatItem displays its value according to the [FormItem.decimalPrecision](classes/FormItem.md#attr-formitemdecimalprecision) and [FormItem.decimalPad](classes/FormItem.md#attr-formitemdecimalpad) properties of the FormItem. While the value is being edited, the item will display the value with its original precision and without extra zero-padding.
-
-### Groups
-
-- gwtFloatVsDouble
-
----
-## Attr: FloatItem.defaultValue
-
-### Description
-Overridden to assign class-appropriate type.
-
-### Groups
-
-- basics
-
-### See Also
-
-- [FormItem.defaultValue](classes/FormItem.md#attr-formitemdefaultvalue)
-
-**Flags**: IRW
-
----
 ## Class: SyntaxHiliter
 
 ### Description
@@ -1630,18 +1567,6 @@ Highlights the passed in source by applying span style elements to matched token
 ### Returns
 
 `[String](#type-string)` — the marked-up source as HTML
-
----
-## Class: ZoneCanvas
-
-*Inherits from:* [EventCanvas](classes/EventCanvas.md#class-eventcanvas)
-
-### Description
-A subclass of [EventCanvas](classes/EventCanvas.md#class-eventcanvas), used to render [styled areas](classes/Calendar.md#attr-calendarzones) in [calendar views](classes/CalendarView.md#class-calendarview).
-
-A ZoneCanvas is a semi-transparent canvas that highlights a portion of a calendar view, by rendering across a specific lane or all lanes and behind normal [events](classes/Calendar.md#attr-calendardata).
-
-By default, the canvas shows a bottom-aligned label containing the [zone name](classes/CalendarEvent.md#attr-calendareventname). Default styling is specified at the [calendar level](classes/Calendar.md#attr-calendarzonestylename) and can be overridden for [individual zones](classes/CalendarEvent.md#attr-calendareventstylename).
 
 ---
 ## Class: AIDataQuestionItem
@@ -1708,6 +1633,18 @@ Path to separator image.
 **Flags**: IR
 
 ---
+## Class: ZoneCanvas
+
+*Inherits from:* [EventCanvas](classes/EventCanvas.md#class-eventcanvas)
+
+### Description
+A subclass of [EventCanvas](classes/EventCanvas.md#class-eventcanvas), used to render [styled areas](classes/Calendar.md#attr-calendarzones) in [calendar views](classes/CalendarView.md#class-calendarview).
+
+A ZoneCanvas is a semi-transparent canvas that highlights a portion of a calendar view, by rendering across all lanes and behind normal [events](classes/Calendar.md#attr-calendardata).
+
+By default, the canvas shows a bottom-aligned label containing the [zone name](classes/CalendarEvent.md#attr-calendareventname). Default styling is specified at the [calendar level](classes/Calendar.md#attr-calendarzonestylename) and can be overridden for [individual zones](classes/CalendarEvent.md#attr-calendareventstylename).
+
+---
 ## Class: IndicatorCanvas
 
 *Inherits from:* [EventCanvas](classes/EventCanvas.md#class-eventcanvas)
@@ -1722,36 +1659,28 @@ By default, the canvas shows no label but does show a hover.
 Default styling is specified at the [calendar level](classes/Calendar.md#attr-calendarindicatorstylename) and can be overridden for [individual indicators](classes/CalendarEvent.md#attr-calendareventstylename).
 
 ---
-## Class: AISortFieldBuilder
+## Class: FormValidateValuesTask
 
-*Inherits from:* [AIFieldBuilder](classes/AIFieldBuilder.md#class-aifieldbuilder)
+*Inherits from:* [ComponentTask](classes/ComponentTask.md#class-componenttask)
 
 ### Description
-Shows an interface allowing a user to enter a description of how they would like the AI to sort the grid records. A new AI-generated field will be created from that and populated via AI. The description of an existing AI field may also be edited.
+Validate a form and show errors to user.
+
+### See Also
+
+- [DynamicForm.validate](classes/DynamicForm.md#method-dynamicformvalidate)
 
 ---
-## Attr: AISortFieldBuilder.instructionsTextStart
+## Attr: FormValidateValuesTask.passThruOutput
 
 ### Description
-Text providing instructions for using the `AISortFieldBuilder`.
+Does this processElement pass through output from the last executed task (i.e. transient state)?
 
-### Groups
+See [taskInputExpressions](kb_topics/taskInputExpression.md#kb-topic-task-input-expressions) for details on the transient state outputs.
 
-- i18nMessages
+Note that this property does not affect the task at all but is an indicator to the user and to the workflow editor of the behavior of the task as coded (See [Process.passThruTaskOutput](classes/Process.md#method-processpassthrutaskoutput)).
 
 **Flags**: IR
-
----
-## Attr: AISortFieldBuilder.titleFieldTitle
-
-### Description
-The [TextItem.title](classes/FormItem.md#attr-formitemtitle) of the [FormulaBuilder.titleField](classes/FormulaBuilder.md#attr-formulabuildertitlefield).
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRWA
 
 ---
 ## Class: ShowMessageTask
@@ -1784,30 +1713,6 @@ Message to display. To display a dynamic message see [ShowMessageTask.textFormul
 
 ### Description
 Message type.
-
-**Flags**: IR
-
----
-## Class: FormValidateValuesTask
-
-*Inherits from:* [ComponentTask](classes/ComponentTask.md#class-componenttask)
-
-### Description
-Validate a form and show errors to user.
-
-### See Also
-
-- [DynamicForm.validate](classes/DynamicForm.md#method-dynamicformvalidate)
-
----
-## Attr: FormValidateValuesTask.passThruOutput
-
-### Description
-Does this processElement pass through output from the last executed task (i.e. transient state)?
-
-See [taskInputExpressions](reference_2.md#type-taskinputexpression) for details on the transient state outputs.
-
-Note that this property does not affect the task at all but is an indicator to the user and to the workflow editor of the behavior of the task as coded (See [Process.passThruTaskOutput](classes/Process.md#method-processpassthrutaskoutput)).
 
 **Flags**: IR
 
@@ -2055,44 +1960,6 @@ A [DataContextBinding](#object-datacontextbinding) to be applied to the screen v
 **Flags**: IR
 
 ---
-## Class: DoubleItem
-
-*Inherits from:* [FloatItem](#class-floatitem)
-
-### Description
-TextForm item for managing a text field that displays a decimal value.
-
----
-## Attr: DoubleItem.defaultValue
-
-### Description
-Overridden to assign class-appropriate type.
-
-### Groups
-
-- basics
-
-### See Also
-
-- [FormItem.defaultValue](classes/FormItem.md#attr-formitemdefaultvalue)
-
-**Flags**: IRW
-
----
-## Method: DoubleItem.getValueAsDouble
-
-### Description
-Return the value tracked by this form item as a Double. If the value cannot be parsed to a valid double, null will be returned.
-
-### Returns
-
-`[Double](#type-double)` — the value of this element
-
-### See Also
-
-- [FormItem.getValue](classes/FormItem.md#method-formitemgetvalue)
-
----
 ## Class: ProcessSequence
 
 *Inherits from:* [ProcessElement](classes/ProcessElement.md#class-processelement)
@@ -2111,6 +1978,38 @@ The [ProcessElement](classes/ProcessElement.md#class-processelement)s in this se
 **Flags**: IR
 
 ---
+## Class: AISortFieldBuilder
+
+*Inherits from:* [AIFieldBuilder](classes/AIFieldBuilder.md#class-aifieldbuilder)
+
+### Description
+Shows an interface allowing a user to enter a description of how they would like the AI to sort the grid records. A new AI-generated field will be created from that and populated via AI. The description of an existing AI field may also be edited.
+
+---
+## Attr: AISortFieldBuilder.instructionsTextStart
+
+### Description
+Text providing instructions for using the `AISortFieldBuilder`.
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IR
+
+---
+## Attr: AISortFieldBuilder.titleFieldTitle
+
+### Description
+The text to display next to the "Title" field.
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IRWA
+
+---
 ## Class: GridSetEditValueTask
 
 *Inherits from:* [ComponentTask](classes/ComponentTask.md#class-componenttask)
@@ -2119,7 +2018,7 @@ The [ProcessElement](classes/ProcessElement.md#class-processelement)s in this se
 Sets the edit value of a given field. The targeted row is determined in the following order:
 
 1.  the current edit row
-2.  the selected rows
+2.  the first selected row
 3.  the first row in the grid
 4.  a new edit row
 
@@ -2144,30 +2043,6 @@ Target field in current edit row to be updated
 **Flags**: IR
 
 ---
-## Class: VerticalTabs
-
-*Inherits from:* [TabSet](classes/TabSet.md#class-tabset)
-
-### Description
-Simple subclass of [TabSet](classes/TabBar.md#class-tabbar), with vertical orientation and a custom skin style-set.
-
----
-## Attr: VerticalTabs.tabBarPosition
-
-### Description
-In this sublass of [TabSet](classes/TabSet.md#class-tabset), the [tabBar](classes/TabSet.md#attr-tabsettabbar) is always vertical, and this setting controls whether it appears on the "left" or "right" of the tab content.
-
-**Flags**: IR
-
----
-## Attr: VerticalTabs.vertical
-
-### Description
-This attribute is set to true and cannot be changed in this sublass of [TabSet](classes/TabSet.md#class-tabset).
-
-**Flags**: IR
-
----
 ## Class: Timeline
 
 *Inherits from:* [Calendar](classes/Calendar.md#class-calendar)
@@ -2176,6 +2051,30 @@ This attribute is set to true and cannot be changed in this sublass of [TabSet](
 Timeline is a trivial subclass of [Calendar](classes/Calendar.md#class-calendar) that configures the Calendar with settings typical for a standalone timeline view: hides the [day](classes/Calendar.md#attr-calendardayview), [week](classes/Calendar.md#attr-calendarweekview) and [month](classes/Calendar.md#attr-calendarmonthview) tabs and the [controls bar](classes/Calendar.md#attr-calendarcontrolsbar) by default.
 
 Note that the [Calendar module](kb_topics/loadingOptionalModules.md#kb-topic-loading-optional-modules) must be loaded to make use of the Timeline class.
+
+---
+## Class: FloatItem
+
+*Inherits from:* [TextItem](classes/TextItem.md#class-textitem)
+
+### Description
+A TextItem for managing a text field that displays a floating point value. FloatItem is the default FormItem if the [FormItem.type](classes/FormItem.md#attr-formitemtype) is "float".
+
+FloatItem displays its value according to the [FormItem.decimalPrecision](classes/FormItem.md#attr-formitemdecimalprecision) and [FormItem.decimalPad](classes/FormItem.md#attr-formitemdecimalpad) properties of the FormItem. While the value is being edited, the item will display the value with its original precision and without extra zero-padding.
+
+### Groups
+
+- gwtFloatVsDouble
+
+---
+## Class: HTMLPane
+
+*Inherits from:* [HTMLFlow](classes/HTMLFlow.md#class-htmlflow)
+
+### Description
+Use the HTMLPane component to display HTML content in a pane of specified size. If the HTML content is larger than the size of the pane, the pane will provide scrollbars for viewing clipped content.
+
+You can set the size of an HTMLPane directly via the width and height properties, or indirectly by placing the HTMLPane in a container component ([Layout](classes/Layout.md#class-layout), [Window](classes/Window.md#class-window), [SectionStack](classes/SectionStack.md#class-sectionstack), etc) that manages the sizes of its members.
 
 ---
 ## Class: IPickTreeItem
@@ -2239,7 +2138,7 @@ Start editing a new record.
 ### Description
 Initial values for new edit record.
 
-Data values prefixed with "$" will be treated as a [TaskInputExpression](reference_2.md#type-taskinputexpression) excluding "$input" and "$inputRecord" references.
+Data values prefixed with "$" will be treated as a [taskInputExpression](kb_topics/taskInputExpression.md#kb-topic-task-input-expressions) excluding "$input" and "$inputRecord" references.
 
 **Flags**: IR
 
@@ -2326,24 +2225,6 @@ A simple subclass of [Menu](classes/Menu.md#class-menu) created by [TreeMenuButt
 **Important Note**: this class is not directly usable except for skinning and for subclassing when setting [TreeMenuButton.treeMenuConstructor](classes/TreeMenuButton.md#attr-treemenubuttontreemenuconstructor) on a [TreeMenuButton](classes/TreeMenuButton.md#class-treemenubutton).
 
 ---
-## Class: WindowMaximizeButton
-
-### Description
-Marker class available in our [React JSX support](kb_topics/reactSupport.md#kb-topic-using-smartclient-with-react) and [Component XML](kb_topics/componentXML.md#kb-topic-component-xml) to indicate within the [Window.headerControls](classes/Window.md#attr-windowheadercontrols) that the header maximize button should be rendered. Note that an instance of this class is never drawn, and it's only made available in these cases to allow for a simple syntax where every header control can be declared as a class.
-
----
-## Class: WindowMinimizeButton
-
-### Description
-Marker class available in our [React JSX support](kb_topics/reactSupport.md#kb-topic-using-smartclient-with-react) and [Component XML](kb_topics/componentXML.md#kb-topic-component-xml) to indicate within the [Window.headerControls](classes/Window.md#attr-windowheadercontrols) that the header minimize button should be rendered. Note that an instance of this class is never drawn, and it's only made available in these cases to allow for a simple syntax where every header control can be declared as a class.
-
----
-## Class: WindowCloseButton
-
-### Description
-Marker class available in our [React JSX support](kb_topics/reactSupport.md#kb-topic-using-smartclient-with-react) and [Component XML](kb_topics/componentXML.md#kb-topic-component-xml) to indicate within the [Window.headerControls](classes/Window.md#attr-windowheadercontrols) that the header close button should be rendered. Note that an instance of this class is never drawn, and it's only made available in these cases to allow for a simple syntax where every header control can be declared as a class.
-
----
 ## Class: CancelItem
 
 *Inherits from:* [ButtonItem](classes/ButtonItem.md#class-buttonitem)
@@ -2358,30 +2239,6 @@ Button that cancels any changes in the form, by calling [DynamicForm.cancelEditi
 CancelItems show a title of `"Cancel"` by default. May be overridden.
 
 **Flags**: IRW
-
----
-## Class: WindowFooterSpacer
-
-### Description
-Marker class available in our [React JSX support](kb_topics/reactSupport.md#kb-topic-using-smartclient-with-react) and [Component XML](kb_topics/componentXML.md#kb-topic-component-xml) to indicate within the [Window.footerControls](classes/Window.md#attr-windowfootercontrols) that the footer spacer should be rendered. Note that an instance of this class is never drawn, and it's only made available in these cases to allow for a simple syntax where every footer control can be declared as a class.
-
----
-## Class: WindowHeaderLabel
-
-### Description
-Marker class available in our [React JSX support](kb_topics/reactSupport.md#kb-topic-using-smartclient-with-react) and [Component XML](kb_topics/componentXML.md#kb-topic-component-xml) to indicate within the [Window.headerControls](classes/Window.md#attr-windowheadercontrols) that the header label should be rendered. Note that an instance of this class is never drawn, and it's only made available in these cases to allow for a simple syntax where every header control can be declared as a class.
-
----
-## Class: WindowHeaderIcon
-
-### Description
-Marker class available in our [React JSX support](kb_topics/reactSupport.md#kb-topic-using-smartclient-with-react) and [Component XML](kb_topics/componentXML.md#kb-topic-component-xml) to indicate within the [Window.headerControls](classes/Window.md#attr-windowheadercontrols) that the header icon should be rendered. Note that an instance of this class is never drawn, and it's only made available in these cases to allow for a simple syntax where every header control can be declared as a class.
-
----
-## Class: WindowResizer
-
-### Description
-Marker class available in our [React JSX support](kb_topics/reactSupport.md#kb-topic-using-smartclient-with-react) and [Component XML](kb_topics/componentXML.md#kb-topic-component-xml) to indicate within the [Window.footerControls](classes/Window.md#attr-windowfootercontrols) that the footer resizer should be rendered. Note that an instance of this class is never drawn, and it's only made available in these cases to allow for a simple syntax where every footer control can be declared as a class.
 
 ---
 ## Class: FormSetFieldValueTask
@@ -2426,14 +2283,32 @@ Displays one of two UIs, according to the value of [showFileInline](classes/File
 - upload
 
 ---
-## Class: SecondaryButton
+## Class: PrintCanvasTask
 
-*Inherits from:* [Button](classes/Button.md#class-button)
+*Inherits from:* [ComponentTask](classes/ComponentTask.md#class-componenttask)
 
 ### Description
-A simple [Button](classes/Button.md#class-button) subclass with a de-emphasized appearance, applied by a separate [CSS style-series](classes/StatefulCanvas.md#attr-statefulcanvasbasestyle) named "secondaryButton".
+Print canvas by showing print preview.
 
-`SecondaryButton` is mostly intended for skinning purposes and the framework doesn't automatically use it anywhere - you should create instances directly if you want a secondary, de-emphasized appearance for buttons.
+### See Also
+
+- [Canvas.showPrintPreview](classes/Canvas.md#classmethod-canvasshowprintpreview)
+
+---
+## Attr: PrintCanvasTask.printWindowProperties
+
+### Description
+Properties to apply to the generated print window.
+
+**Flags**: IR
+
+---
+## Attr: PrintCanvasTask.printProperties
+
+### Description
+PrintProperties object for customizing the print HTML output.
+
+**Flags**: IR
 
 ---
 ## Class: ITreeMenuButton
@@ -2570,6 +2445,28 @@ Path to resizer image.
 **Flags**: IR
 
 ---
+## Class: DoubleItem
+
+*Inherits from:* [FloatItem](#class-floatitem)
+
+### Description
+TextForm item for managing a text field that displays a decimal value.
+
+---
+## Method: DoubleItem.getValueAsDouble
+
+### Description
+Return the value tracked by this form item as a Double. If the value cannot be parsed to a valid double, null will be returned.
+
+### Returns
+
+`[Double](#type-double)` — the value of this element
+
+### See Also
+
+- [FormItem.getValue](classes/FormItem.md#method-formitemgetvalue)
+
+---
 ## Class: GridExportClientDataTask
 
 *Inherits from:* [ComponentTask](classes/ComponentTask.md#class-componenttask)
@@ -2579,29 +2476,13 @@ Export data currently shown in a grid keeping all grid-specific formatting.
 
 ### See Also
 
-- [ListGrid.exportClientData](classes/ListGrid_2.md#method-listgridexportclientdata)
+- [ListGrid.exportClientData](classes/ListGrid_1.md#method-listgridexportclientdata)
 
 ---
 ## Attr: GridExportClientDataTask.requestProperties
 
 ### Description
 Additional properties to set on the DSRequest that will be issued to perform client-side export.
-
-**Flags**: IR
-
----
-## Class: ToggleItem
-
-*Inherits from:* [CanvasItem](classes/CanvasItem.md#class-canvasitem)
-
-### Description
-FormItem that uses a [ToggleSwitch](classes/ToggleSwitch.md#class-toggleswitch) component to present an interface for picking from either a continuous range or a range with a small number of discrete values.
-
----
-## Attr: ToggleItem.toggleConstructor
-
-### Description
-Constructor class for this item's [ToggleSwitch](classes/ToggleSwitch.md#class-toggleswitch).
 
 **Flags**: IR
 
@@ -2624,36 +2505,6 @@ This task is primarily used in the workflow editor to render a "no-op" task or a
 The IButton widget class is a class that implements the same APIs as the [Button](classes/Button.md#class-button) class. Depending on the current skin, `IButton`s may be on the [StretchImgButton](classes/StretchImgButton.md#class-stretchimgbutton) component, which renders via images, or may be based on the [Button](classes/Button.md#class-button) component, which renders via CSS styles.
 
 ---
-## Class: FormDisableFieldTask
-
-*Inherits from:* [ComponentTask](classes/ComponentTask.md#class-componenttask)
-
-### Description
-Disable or enable a form field.
-
-### See Also
-
-- [FormItem.setDisabled](classes/FormItem.md#method-formitemsetdisabled)
-
-**Deprecated**
-
----
-## Attr: FormDisableFieldTask.targetField
-
-### Description
-Field to show/hide.
-
-**Flags**: IR
-
----
-## Attr: FormDisableFieldTask.disable
-
-### Description
-Should the target form item be disabled?
-
-**Flags**: IR
-
----
 ## Class: FormEditProxy
 
 *Inherits from:* [CanvasEditProxy](#class-canvaseditproxy)
@@ -2672,6 +2523,34 @@ Should the target form item be disabled?
 Controls which parts of a [FormItem](classes/FormItem.md#class-formitem) respond to a click and result in selecting the component.
 
 **Flags**: IRW
+
+---
+## Class: FormDisableFieldTask
+
+*Inherits from:* [ComponentTask](classes/ComponentTask.md#class-componenttask)
+
+### Description
+Disable or enable a form field.
+
+### See Also
+
+- [FormItem.setDisabled](classes/FormItem.md#method-formitemsetdisabled)
+
+---
+## Attr: FormDisableFieldTask.targetField
+
+### Description
+Field to show/hide.
+
+**Flags**: IR
+
+---
+## Attr: FormDisableFieldTask.disable
+
+### Description
+Should the target form item be disabled?
+
+**Flags**: IR
 
 ---
 ## Class: GridViewSelectedDataTask
@@ -2810,7 +2689,7 @@ Save all changes in a grid which has auto-saving disabled. Before the save, any 
 ### See Also
 
 - [ListGrid.endEditing](classes/ListGrid_2.md#method-listgridendediting)
-- [ListGrid.saveAllEdits](classes/ListGrid_2.md#method-listgridsavealledits)
+- [ListGrid.saveAllEdits](classes/ListGrid_1.md#method-listgridsavealledits)
 
 ---
 ## Class: SimpleTabButton
@@ -2933,28 +2812,18 @@ The tour mode allows step configuration to be simplified by using the context to
 **Flags**: IRW
 
 ---
-## Class: IntegerItem
+## Class: OpenFinWindow
 
-*Inherits from:* [TextItem](classes/TextItem.md#class-textitem)
-
-### Description
-FormItem intended for inputting integer numbers.
-
----
-## Attr: IntegerItem.defaultValue
+*Inherits from:* [RemoteWindow](classes/RemoteWindow.md#class-remotewindow)
 
 ### Description
-Overridden to assign class-appropriate type.
+Provides a SmartClient wrapper around an [OpenFin](https://developers.openfin.co/of-docs/docs) window.
 
-### Groups
-
-- basics
+**Note:** this is currently an experimental feature and not supported except by special arrangement
 
 ### See Also
 
-- [FormItem.defaultValue](classes/FormItem.md#attr-formitemdefaultvalue)
-
-**Flags**: IRW
+- [OpenFin](#class-openfin)
 
 ---
 ## Class: LayoutSpacer
@@ -3001,16 +2870,12 @@ A button that automatically sizes to the length of its title. Implemented via th
 **Deprecated**
 
 ---
-## Class: SavedSearchItemEditProxy
-
-*Inherits from:* [SelectItemEditProxy](classes/SelectItemEditProxy.md#class-selectitemeditproxy)
+## Class: OpenFin
 
 ### Description
-[EditProxy](classes/EditProxy.md#class-editproxy) that handles [SavedSearchItems](classes/SavedSearchItem.md#class-savedsearchitem) when editMode is enabled.
+Contains [OpenFin](https://developers.openfin.co/of-docs/docs)\-specific code to implement [MultiWindow](classes/MultiWindow.md#class-multiwindow) for OpenFin via special calls to the OpenFin Application API.
 
-### Groups
-
-- devTools
+**Note:** this is currently an experimental feature and not supported except by special arrangement
 
 ---
 ## Class: RadioGroupItemEditProxy
@@ -3069,36 +2934,12 @@ Size of spacer. If not specified, spacer fills remaining space.
 Dialog informing user of the progress when doing an AI sort. When the AI sort field has been populated for all records, the dialog will auto-dismiss and the grid will be sorted by the newly added field.
 
 ---
-## Class: ToolbarItemEditProxy
-
-*Inherits from:* [FormItemEditProxy](classes/FormItemEditProxy.md#class-formitemeditproxy)
-
-### Description
-[EditProxy](classes/EditProxy.md#class-editproxy) that handles [ToolbarItems](classes/ToolbarItem.md#class-toolbaritem) when editMode is enabled.
-
-### Groups
-
-- devTools
-
----
 ## Class: LayoutResizeBarEditProxy
 
 *Inherits from:* [EditProxy](classes/EditProxy.md#class-editproxy)
 
 ### Description
 [EditProxy](classes/EditProxy.md#class-editproxy) that handles [LayoutResizeBar](classes/LayoutResizeBar.md#class-layoutresizebar) objects when editMode is enabled.
-
-### Groups
-
-- devTools
-
----
-## Class: SectionItemEditProxy
-
-*Inherits from:* [TextItemEditProxy](classes/TextItemEditProxy.md#class-textitemeditproxy)
-
-### Description
-[EditProxy](classes/EditProxy.md#class-editproxy) that handles [SectionItem](classes/SectionItem.md#class-sectionitem) when editMode is enabled.
 
 ### Groups
 
@@ -3135,14 +2976,6 @@ _NOTE: This class exists only for use with the SmartClient Feature Explorer and 
 ### Groups
 
 - devTools
-
----
-## Class: TextMenuButton
-
-*Inherits from:* [MenuButton](classes/MenuButton.md#class-menubutton)
-
-### Description
-A simple subclass of [MenuButton](classes/MenuButton.md#class-menubutton) that uses a separate CSS class to render as just stateful text and menu-icon, without background, borders or shadows.
 
 ---
 ## Class: BlurbItemEditProxy
@@ -3197,34 +3030,6 @@ A simple subclass of [RibbonGroup](classes/RibbonGroup.md#class-ribbongroup), wh
 
 ### Description
 Show user password reset dialog by opening the [Auth.resetPasswordURL](classes/Authentication.md#classattr-authenticationresetpasswordurl) in another tab or window.
-
----
-## Class: OpenFinWindow
-
-*Inherits from:* [RemoteWindow](classes/RemoteWindow.md#class-remotewindow)
-
-### Description
-Provides a SmartClient wrapper around an [OpenFin](https://developers.openfin.co/of-docs/docs) window.
-
-### Groups
-
-- experimental
-
-### See Also
-
-- [OpenFin](#class-openfin)
-
----
-## Class: GridDiscardAllEditsTask
-
-*Inherits from:* [ComponentTask](classes/ComponentTask.md#class-componenttask)
-
-### Description
-Discard all changes in a grid which has auto-saving disabled.
-
-### See Also
-
-- [ListGrid.discardAllEdits](classes/ListGrid_2.md#method-listgriddiscardalledits)
 
 ---
 ## Class: HiddenPalette
@@ -3351,16 +3156,6 @@ Another synonym is AbsoluteContainer.
 ### Groups
 
 - devTools
-
----
-## Class: OpenFin
-
-### Description
-Contains [OpenFin](https://developers.openfin.co/of-docs/docs)\-specific code to implement [MultiWindow](classes/MultiWindow.md#class-multiwindow) for OpenFin via special calls to the OpenFin Application API.
-
-### Groups
-
-- experimental
 
 ---
 ## Class: ImgEditProxy
@@ -3523,30 +3318,6 @@ Show a currently hidden component.
 Editor with a minimalist appearance, tuned for editing large numbers of properties in a constrained space.
 
 ---
-## Class: DSRemoveTask
-
-*Inherits from:* [DSRequestTask](classes/DSRequestTask.md#class-dsrequesttask)
-
-### Description
-A [DSRequestTask](classes/DSRequestTask.md#class-dsrequesttask) configured to perform a remove.
-
----
-## Class: DSUpdateTask
-
-*Inherits from:* [DSRequestTask](classes/DSRequestTask.md#class-dsrequesttask)
-
-### Description
-A [DSRequestTask](classes/DSRequestTask.md#class-dsrequesttask) configured to perform a update.
-
----
-## Class: DSFetchTask
-
-*Inherits from:* [DSRequestTask](classes/DSRequestTask.md#class-dsrequesttask)
-
-### Description
-A [DSRequestTask](classes/DSRequestTask.md#class-dsrequesttask) configured to perform a fetch.
-
----
 ## Class: IconButton
 
 *Inherits from:* [RibbonButton](classes/RibbonButton.md#class-ribbonbutton)
@@ -3557,12 +3328,20 @@ A simple subclass of [RibbonButton](classes/RibbonButton.md#class-ribbonbutton).
 **Deprecated**
 
 ---
-## Class: DSAddTask
+## Class: DSRemoveTask
 
-*Inherits from:* [DSRequestTask](classes/DSRequestTask.md#class-dsrequesttask)
+*Inherits from:* [ServiceTask](classes/ServiceTask.md#class-servicetask)
 
 ### Description
-A [DSRequestTask](classes/DSRequestTask.md#class-dsrequesttask) configured to perform an add.
+A [ServiceTask](classes/ServiceTask.md#class-servicetask) configured to perform a remove.
+
+---
+## Class: DSUpdateTask
+
+*Inherits from:* [ServiceTask](classes/ServiceTask.md#class-servicetask)
+
+### Description
+A [ServiceTask](classes/ServiceTask.md#class-servicetask) configured to perform a update.
 
 ---
 ## Class: Auth
@@ -3573,6 +3352,14 @@ A [DSRequestTask](classes/DSRequestTask.md#class-dsrequesttask) configured to pe
 Synonym for the [Authentication](classes/Authentication.md#class-authentication) class
 
 ---
+## Class: DSFetchTask
+
+*Inherits from:* [ServiceTask](classes/ServiceTask.md#class-servicetask)
+
+### Description
+A [ServiceTask](classes/ServiceTask.md#class-servicetask) configured to perform a fetch.
+
+---
 ## Class: PasswordItem
 
 *Inherits from:* [TextItem](classes/TextItem.md#class-textitem)
@@ -3581,12 +3368,12 @@ Synonym for the [Authentication](classes/Authentication.md#class-authentication)
 FormItem for password fields, where text input by the user should not be shown in readable text.
 
 ---
-## Class: VerticalTabBar
+## Class: DSAddTask
 
-*Inherits from:* [TabBar](classes/TabBar.md#class-tabbar)
+*Inherits from:* [ServiceTask](classes/ServiceTask.md#class-servicetask)
 
 ### Description
-Simple subclass of [TabBar](classes/TabBar.md#class-tabbar), with customized buttons.
+A [ServiceTask](classes/ServiceTask.md#class-servicetask) configured to perform an add.
 
 ---
 ## Class: DrawBlockConnector
@@ -3615,6 +3402,14 @@ A simple subclass of [RibbonMenuButton](#class-ribbonmenubutton).
 Boolean form item, implemented with customizable checkbox images
 
 ---
+## Class: IntegerItem
+
+*Inherits from:* [TextItem](classes/TextItem.md#class-textitem)
+
+### Description
+FormItem intended for inputting integer numbers.
+
+---
 ## Class: DateGrid
 
 *Inherits from:* [ListGrid](classes/ListGrid_1.md#class-listgrid)
@@ -3631,12 +3426,6 @@ A ListGrid subclass that manages calendar views.
 TextItem subclass for managing a DataPath
 
 ---
-## Class: React
-
-### Description
-Container for various helper methods used by our React wrapper classes.
-
----
 ## Class: InstantUI
 
 ### Description
@@ -3650,7 +3439,7 @@ Parent/child relationships
 
 ### Related
 
-- [DisplayNodeType](reference_2.md#type-displaynodetype)
+- [DisplayNodeType](#type-displaynodetype)
 
 ---
 ## KB Topic: Answer Engine
@@ -3702,7 +3491,7 @@ The baseLine is StretchImg that is placed along the edge of the TabBar that bord
 ## KB Topic: Component Binding
 
 ### Description
-Properties that control how a [DataBoundComponent](#interface-databoundcomponent) binds to this data source.
+Properties that control how a DataBound Component binds to this DataSource
 
 ### Related
 
@@ -3725,6 +3514,20 @@ When skinning basic FormItems like SelectItem and TextItem, consider that compou
 To avoid such side-effects, if you want to add styling to all SelectItems used in your application, you can create an application-specific subclass like MySelectItem and apply properties there.
 
 ---
+## KB Topic: CoTMocking
+
+### Description
+Facilities for testing CoT workflows without contacting an AI engine. Use [CoTProcess.mockMode](#attr-cotprocessmockmode) to set a process-wide default and [CoTTask.mockMode](#attr-cottaskmockmode) to opt individual tasks in or out.
+
+Precedence: a task’s setting overrides the process default:
+
+*   **task.mockMode:true** → this task mocks, even if the process is not mocking.
+*   **task.mockMode:false** → this task calls the real AI, even if the process is mocking.
+*   **task.mockMode:null** (or unset) → inherit [CoTProcess.mockMode](#attr-cotprocessmockmode).
+
+When mocking is in effect for a task, the framework calls [CoTTask.mockOutput](#method-cottaskmockoutput) (if defined), otherwise [CoTProcess.mockOutput](#method-cotprocessmockoutput). The returned Object is processed like real AI output (validation, history, state updates, routing).
+
+---
 ## KB Topic: cues
 
 ### Description
@@ -3741,11 +3544,11 @@ Visual hints for the user that something can be done to this object
 - [Canvas.opacity](classes/Canvas.md#attr-canvasopacity)
 - [Canvas.contextMenu](classes/Canvas.md#attr-canvascontextmenu)
 - [Canvas.menuConstructor](classes/Canvas.md#attr-canvasmenuconstructor)
-- [Button.iconCursor](classes/Button.md#attr-buttoniconcursor)
-- [Button.disabledIconCursor](classes/Button.md#attr-buttondisablediconcursor)
+- [DrawItem.contextMenu](classes/DrawItem.md#attr-drawitemcontextmenu)
 - [FormItemIcon.cursor](classes/FormItemIcon.md#attr-formitemiconcursor)
 - [FormItemIcon.disabledCursor](classes/FormItemIcon.md#attr-formitemicondisabledcursor)
-- [DrawItem.contextMenu](classes/DrawItem.md#attr-drawitemcontextmenu)
+- [Button.iconCursor](classes/Button.md#attr-buttoniconcursor)
+- [Button.disabledIconCursor](classes/Button.md#attr-buttondisablediconcursor)
 
 ---
 ## KB Topic: Data Changes
@@ -3773,11 +3576,10 @@ Rendering an object on the page.
 - [Canvas.isDirty](classes/Canvas.md#method-canvasisdirty)
 - [Canvas.markForRedraw](classes/Canvas.md#method-canvasmarkforredraw)
 - [Canvas.redraw](classes/Canvas.md#method-canvasredraw)
-- [ListGrid.markForRedraw](classes/ListGrid_2.md#method-listgridmarkforredraw)
 - [FormItem.getFieldName](classes/FormItem.md#method-formitemgetfieldname)
 - [FormItem.getTitle](classes/FormItem.md#method-formitemgettitle)
 - [FormItem.isDrawn](classes/FormItem.md#method-formitemisdrawn)
-- [BaseWidget.autoDraw](classes/BaseWidget.md#attr-basewidgetautodraw)
+- [ListGrid.markForRedraw](classes/ListGrid_2.md#method-listgridmarkforredraw)
 - [Canvas.autoDraw](classes/Canvas.md#attr-canvasautodraw)
 - [Canvas.redrawOnResize](classes/Canvas.md#attr-canvasredrawonresize)
 
@@ -3950,12 +3752,6 @@ These special types rely on the settings [NumberUtil.decimalSymbol](classes/Numb
 See [i18n](kb_topics/i18n.md#kb-topic-internationalization-and-localization) for more background on internationalization and loading language packs for the current locale.
 
 ---
-## KB Topic: longEvents
-
-### Description
-When events fill a day or span multiple days, it becomes impractical to view and interact with them in normal Calendar views. Users need a clear means of viewing and interacting with those events
-
----
 ## KB Topic: multiAutoChildren
 
 ### Description
@@ -3978,21 +3774,6 @@ Observation is the ability to take an action whenever a method is called.
 - [Class.observe](classes/Class.md#method-classobserve)
 - [Class.ignore](classes/Class.md#method-classignore)
 - [Class.isObserving](classes/Class.md#method-classisobserving)
-
----
-## KB Topic: Obtaining locators
-
-### Description
-A locator is a stable, framework-generated string that uniquely identifies a UI component or DOM element in an application.
-
-**Ways to obtain locators**
-
-1.  **Developer Console** — Open the console, enable "Show AutoTest Locators", then click a UI element to see its locator. Copy it from the console.
-2.  **Locator shortcut script** — Run a helper script like `AutoTest.installLocatorShortcut()`, then click an element while holding modifier keys to copy its locator to the clipboard.
-
-**Resolving locators**
-
-Use APIs like `AutoTest.getElement()` or `AutoTest.waitForElement()` to convert a locator back to a DOM element, with optional waiting for asynchronous operations to finish.
 
 ---
 ## KB Topic: Prompting
@@ -4039,18 +3820,6 @@ The properties in this group all deal with setting and styling a modal prompt du
 - [RPCRequest.promptDelay](classes/RPCRequest.md#attr-rpcrequestpromptdelay)
 
 ---
-## KB Topic: Understanding scroll behavior
-
-### Description
-Some UI frameworks automatically scroll elements into view before interacting with them. If components redraw during scroll (e.g., to render new list rows), the DOM may change mid-interaction.
-
-**Best practices**
-
-*   Ensure the target is already in view before triggering actions.
-*   Use programmatic scrolling when needed to position elements predictably.
-*   Account for custom scrollbars, which may require using framework-specific scrolling APIs rather than native browser scroll methods.
-
----
 ## KB Topic: snapPositioning
 
 ### Description
@@ -4083,24 +3852,6 @@ The direction in which text is expected to flow. Since the browser is responsibl
 - [Page.isRTL](classes/Page.md#classmethod-pageisrtl)
 
 ---
-## KB Topic: RPC timing logs
-
-### Description
-RPC (Remote Procedure Call) timing data helps identify performance bottlenecks in client-server interactions.
-
-**Key APIs**
-
-*   `RPCManager.setTimingDataEnabled()` — enables detailed timing collection.
-*   `RPCManager.addProcessingCompleteCallback()` — run code after each RPC completes.
-*   `RPCManager.getTransactionDescription()` — short description of a transaction.
-*   `RPCManager.getTimingData()` — returns structured timing data.
-*   `RPCManager.getFormattedTimingData()` — human-readable timing log.
-
-**Usage in testing**
-
-Log RPC timing info for transactions exceeding thresholds, and optionally fail tests that exceed defined limits.
-
----
 ## KB Topic: validatorExecution
 
 ### Description
@@ -4131,10 +3882,10 @@ Manipulating the values stored in the form.
 
 ### Related
 
-- [DetailViewer.valueAlign](classes/DetailViewer.md#attr-detailviewervaluealign)
 - [FormItem.changeOnKeypress](classes/FormItem.md#attr-formitemchangeonkeypress)
 - [TextItem.changeOnKeypress](classes/TextItem.md#attr-textitemchangeonkeypress)
 - [TextAreaItem.changeOnKeypress](classes/TextAreaItem.md#attr-textareaitemchangeonkeypress)
+- [DetailViewer.valueAlign](classes/DetailViewer.md#attr-detailviewervaluealign)
 
 ---
 ## KB Topic: Window Header
@@ -4177,20 +3928,6 @@ Object's "stacking order" above or below other objects
 - [DrawItem.bringToFront](classes/DrawItem.md#method-drawitembringtofront)
 - [DrawItem.sendToBack](classes/DrawItem.md#method-drawitemsendtoback)
 - [DrawItem.zIndex](classes/DrawItem.md#attr-drawitemzindex)
-
----
-## Type: AdminSearches
-
-### Description
-Policy for choosing between admin searches fetched from the DataSource vs. those declared locally on a component.
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| "preferSaved" | Combine both sets of records, but report the search record from the DataSource if two records have the same search name. |
-| "preferLocal" | Combine both sets of records, but report the search record from [adminSavedSearches](#attr-databoundcomponentadminsavedsearches) if two records have the same search name. |
-| "localOnly" | Only report the records from [adminSavedSearches](#attr-databoundcomponentadminsavedsearches). |
 
 ---
 ## Type: AIContentType
@@ -4275,6 +4012,24 @@ The amount of interaction with AI is lowest in AI Assist mode. AIDE requires mor
 - [integratingAI](kb_topics/integratingAI.md#kb-topic-integrating-ai-technology)
 
 ---
+## Type: Alignment
+
+### Description
+—
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| Canvas.CENTER | Center within container. |
+| Canvas.LEFT | Stick to left side of container. |
+| Canvas.RIGHT | Stick to right side of container. |
+
+### Groups
+
+- appearance
+
+---
 ## Type: AnimationAcceleration
 
 ### Description
@@ -4315,11 +4070,24 @@ What to do if the user hits Up or Down arrow key while editing a cell.
 | Value | Description |
 |-------|-------------|
 | "none" | The grid will take no special action when the user presses up or down arrow keys within an editor |
-| "editNext" | The grid will intercept up and down arrow keypresses and navigate to the next or previous edit row by generating an appropriate [EditCompletionEvent](reference_2.md#type-editcompletionevent) |
+| "editNext" | The grid will intercept up and down arrow keypresses and navigate to the next or previous edit row by generating an appropriate [EditCompletionEvent](#type-editcompletionevent) |
 
 ### Groups
 
 - editing
+
+---
+## Type: ArrowStyle
+
+### Description
+Supported styles for arrowheads.
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| "block" | Filled triangle. |
+| "open" | Two lines are drawn on each side of the path. |
 
 ---
 ## Type: AsyncOperationResultType
@@ -4428,110 +4196,6 @@ Selection model for [CubeGrid](classes/CubeGrid.md#class-cubegrid) indicating wh
 | "none" | Selecting row or column headers will not select cells in the body. |
 
 ---
-## Locator Structure
-
-[AutoTest locators](reference_2.md#type-autotestlocator) consist of a series of segments, delineated by "/" characters.
-
-Each segment identifies a step in a hierarchy from a root component to the target element. Individual segments may represent a Canvas, a FormItem, an interior DOM element or some other construction specific to the locator in question.
-
-Note that the segments in an AutoTestLocator do not necessarily match parent-child relationships in the widget hierarchy.
-
-**Root locator segment** The root component of a locator may designated in one of the following ways:
-
-*   **Component ID:** If a component has an explicitly specified [ID](classes/Canvas.md#attr-canvasid) this may be used along with the class of the widget to reliably identify it, regardless of where it is in the page's widget hierarchy.  
-    For example a VLayout with ID `"leftPane"` would be identified as:
-    
-    `//VLayout[ID="leftPane"]`
-    
-    Or, if [Canvas.locateByIDOnly](classes/Canvas.md#attr-canvaslocatebyidonly) is true, the class of the widget will not be recorded - the locator segment to identify the root will be just the widget ID prefixed by three slash characters - for example:
-    
-    `///leftPane`
-    
-*   **Locator Test Root:** Developers may designate a component within an application as the explicit [testRoot](classes/AutoTest.md#classmethod-autotestsettestroot). This component can then be referenced by the special root locator segment
-    
-    `//testRoot[]`
-    
-    This is useful for cases where a standard widget hierarchy may be dynamically rendered inside some component (such as a [screen](classes/RPCManager.md#classmethod-rpcmanagerloadscreen)) - see the [portableAutoTests](kb_topics/portableAutoTests.md#kb-topic-writing-autotests-for-multiple-environments) topic for more information
-    
-*   **Base Search Segment:** The AutoTest subsystem supports searching for components by a [defining property value](classes/Canvas.md#attr-canvasdefiningproperty). If a target element is not a descendant of a component with an explicitly specified ID, and is also not contained within the specified [testRoot](classes/AutoTest.md#classmethod-autotestsettestroot) for the application, but is contained within a component that has a specified [definingProperty value](classes/Canvas.md#attr-canvasdefiningproperty), this may be used to identify the root component for the locator.
-    
-    Base search segments are prefixed with `"//:"` and include the class name for the target component along with the defining property value.
-    
-    For example - [dataSource](classes/ListGrid_1.md#attr-listgriddatasource) is a defining property for ListGrids. The following locator would identify a ListGrid bound to a dataSource with the ID `"someDS"` wherever it appeared in the page's widget hierarchy:
-    
-    `//:ListGrid[dataSource="someDS"]`
-    
-    [AutoTest.getLocator](classes/AutoTest.md#classmethod-autotestgetlocator) will only generate a locator with a base search segment if the defining property value would unambiguously identify the base component within the application. The above locator would not be generated in an app with more than one visible ListGrid bound to `"someDS"`.
-    
-    Note that by default hidden and/or undrawn components are not considered when generating and resolving locator search segments, but the special `"?"` character indicates that both hidden and visible components must be considered when resolving a search segment.
-    
-    For example the locator `//:?ListGrid[dataSource="someDS"]` would retrieve a ListGrid bound to `"someDS"` whether visible or hidden.
-    
-    [AutoTest.getLocator](classes/AutoTest.md#classmethod-autotestgetlocator) will generate this locator format if the target element was hidden, or if passed the [searchSegmentsIncludeHidden](classes/AutoTestLocatorConfiguration.md#attr-autotestlocatorconfigurationsearchsegmentsincludehidden) attribute of the settings argument.
-    
-
-**Interior locator segments**
-
-In some cases a single segment may be sufficient to identify a target element or object on the page, but in most cases, the root component locator will be suffixed with a number of interior locator segments to identify the path from the root component to the target element.
-
-The format of individual segments within a locator will be different for different widget hierarchies and target elements. SmartClient does not exhaustively document every possible locator format for every widget, but the patterns used are consistent and can inform application design:
-
-*   **Named AutoChildren:** Named [autoChildren](kb_topics/autoChildren.md#kb-topic-autochildren) will be identified within their creator by their autoChild name - for example
-    
-    `//Window[ID="mainWindow"]/body`
-    
-    This happens regardless of the interim widget hierarchy between the creator and its auto-child.
-    
-*   **Explicit locatorChildren:** Components with an explicit [named locator child](classes/Canvas.md#method-canvassetlocatorparent) relationship will be identified within their locator parent by name. For example marking a member of a Layout with the locator child name `"myView"` might produce a locator like:
-    
-    `//VLayout[ID="mainLayout"]/myView`
-    
-    Once again, this is regardless of the interim widget hierarchy between the locator parent and its locator-child.
-    
-*   **Search Segments:** Interior search segments in a locator are prefixed with `"//"`. Interior search segments indicate that a component may be uniquely identified by a [defining property value](classes/Canvas.md#attr-canvasdefiningproperty) within the component identified by the previous segment in the locator.
-    
-    For example the following locator would search for a ListGrid bound to `"someDS"` within the body of a window with ID `"mainWindow"`:
-    
-    `//Window[ID="mainWindow"]/body//ListGrid[dataSource="someDS"]`
-    
-    Note that the [AutoTest.getLocator](classes/AutoTest.md#classmethod-autotestgetlocator) method will never return a locator with a search segment that is ambiguous in the current application.
-    
-    If the AutoTest system can uniquely identify a component by defining property across the app as a whole, it will typically be used as a base search segment. If not the system will find the highest-level ancestor containing only one descendant with the specified definingProperty, and ensure the previous segment in the locator identifies that ancestor. This ensures that the final locator string is as compact as possible while unambiguously identifying the target.
-    
-    As with base search segments, a `"?"` character is used to indicate that hidden or undrawn components should be considered when resolving search locators. For example the following locator:
-    
-    `//Window[ID="mainWindow"]/body//?ListGrid[dataSource="someDS"]`
-    
-    would include hidden listGrids when searching for the grid bound to the specified dataSource.
-    
-*   **Locator segment fallback attributes:** If a target element or component cannot be identified within its parent by a simple identifier such as autoChildName or defining property, the AutoTest subsystem will generate a segment containing one or more attributes to identify the target. When multiple attributes are recorded it allows the SmartClient framework to use several strategies to find the target. These additional locator segment attributes are referred to as "fallback attributes".
-    
-    For example a locator segment with a full set of fallback attributes identifying a member of a Layout might look like this:
-    
-    `VLayout[ID="mainLayout"]/member[Class=TreeGrid||index=1||length=3||classIndex=0||classLength=1||roleIndex=0||roleLength=1||scRole=tree]/`
-    
-    This specific segment indicates that the target component is a member of a layout. The target is a TreeGrid, and is the first of 3 members. It also indicates this is the only member TreeGrid in the members array \[indicated by the `classIndex` and `classLength` attributes\], and that it is the only member with [role](classes/Canvas.md#attr-canvasariarole) set to `"tree"`.
-    
-    The parent layout will use these _fallback attributes_ in the locator as necessary to find the appropriate member. If the layout has three members, and the first is a TreeGrid, the target may be resolved to this member with some confidence.
-    
-    If this is not the case, but there is exactly one TreeGrid in the members array, or exactly one element with `role` set to tree, it will fallback to those secondary locator strategies. If fallback locator strategies are used, a warning will be logged so developers are aware of any potentially incorrect locator parsing.
-    
-    Developers may influence how recorded locator attributes are resolved via properties on the locator parent. For Layouts this would include [Layout.locateMembersBy](classes/Layout.md#attr-layoutlocatemembersby) and [Layout.locateMembersType](classes/Layout.md#attr-layoutlocatememberstype).
-    
-    For brevity and readability, when generating locators, developers may choose whether or not to include multiple fallback attributes in locator segments by setting [useMinimalFallbackAttributes](classes/AutoTest.md#classattr-autotestuseminimalfallbackattributes) to false globally, or on the `settings` parameter passed to [AutoTest.getLocator](classes/AutoTest.md#classmethod-autotestgetlocator).
-    
-*   **Component interior locators:** Different SmartClient components have their own patterns for identifying significant elements in the DOM within their handles. For example, ListGrid cell elements are located by row and column data. Where appropriate, properties to control how component-interior locators behave will be documented on the class in question.
-
-### Groups
-
-- autoTest
-
-### See Also
-
-- [AutoTest](classes/AutoTest.md#class-autotest)
-- [automatedTesting](kb_topics/automatedTesting.md#kb-topic-automated-testing)
-
----
 ## Type: boolean
 
 ### Description
@@ -4560,8 +4224,8 @@ Indicates how a given Calendar Save was initiated - values are _dialog_, _editor
 
 | Value | Description |
 |-------|-------------|
-| "dialog" | the user saved via the [Calendar.eventDialog](classes/Calendar.md#attr-calendareventdialog) |
-| "editor" | the user saved via the [Calendar.eventEditor](classes/Calendar.md#attr-calendareventeditor) |
+| "dialog" | the user saved via the [eventDialog](#eventdialog) |
+| "editor" | the user saved via the [eventEditor](#eventeditor) |
 | "mouse" | the user moved or resized an [event](classes/EventCanvas.md#class-eventcanvas) with the mouse |
 
 ---
@@ -4668,6 +4332,24 @@ Passed as a parameter to [Canvas.showClickMask](classes/Canvas.md#method-canvass
 | "complex" | In addition to the 40 basic colors, the user can specify a color from anywhere in the spectrum, with an optional alpha component. |
 
 ---
+## Type: ConnectorOrientation
+
+### Description
+Supported styles of connector orientations.
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| "horizontal" | Tail segments are always horizontal; best for left-to-right connectors |
+| "vertical" | Tail segments are always vertical; best for top-to-bottom connectors |
+| "auto" | Tail segments flip orientation according to longer axis of bounding box: if the bounding box is wider than it is tall, center segment is vertical |
+
+### Groups
+
+- line
+
+---
 ## Type: ContentLayoutPolicy
 
 ### Description
@@ -4680,6 +4362,23 @@ Policy controlling how the window will manage content within its body.
 | Window.NONE | Window does not try to size members at all on either axis. Window body defaults to a Canvas if not autosizing. Otherwise a Layout is used with policies on both axes set to [LayoutPolicy](reference_2.md#type-layoutpolicy) "none". |
 | Window.VERTICAL | Window body defaults to VLayout behavior. (Body is actually just a Layout with [Layout.vertical](classes/Layout.md#attr-layoutvertical): true.) |
 | Window.HORIZONTAL | Window body defaults to HLayout behavior. (Body is actually just a Layout with [Layout.vertical](classes/Layout.md#attr-layoutvertical): false.) |
+
+---
+## Type: ContentsType
+
+### Description
+What type of content is found at the [HTMLFlow](classes/HTMLFlow.md#class-htmlflow)'s [contentsURL](classes/HTMLFlow.md#attr-htmlflowcontentsurl)?
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| "page" | the `contentsURL` is assumed to be a standalone HTML page, and is loaded in an IFRAME. |
+| "fragment" | the default setting - indicates that HTML loaded from the `contentsURL` is assumed to be an HTML fragment rather than a complete page. |
+
+### See Also
+
+- [HTMLFlow.contentsType](classes/HTMLFlow.md#attr-htmlflowcontentstype)
 
 ---
 ## Type: ControlName
@@ -4715,6 +4414,19 @@ Every `ControlName` is also the name of an [AutoChild](#type-autochild), so all 
 
 ### Description
 A number representing a horizontal or vertical offset from the origin of a [coordinate system](classes/DrawPane.md#class-drawpane) in the `DrawPane`. [DrawRect.left](classes/DrawRect.md#attr-drawrectleft) is an example of a [DrawItem](classes/DrawItem.md#class-drawitem) attribute that's a `Coordinate`. A `Coordinate` is not limited to integers except for [DrawingType](#type-drawingtype) "vml".
+
+---
+## Type: CriteriaPolicy
+
+### Description
+—
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| "dropOnChange" | Cache is dropped whenever criteria changes. |
+| "dropOnShortening" | Cache is retained as long as the only changes to criteria make the criteria more restrictive as determined by [ResultSet.compareCriteria](classes/ResultSet.md#method-resultsetcomparecriteria). |
 
 ---
 ## Type: CSSStyleName
@@ -4796,6 +4508,19 @@ You can use whatever cursors are valid for your deployment platforms, but keep i
 - [Canvas.cursor](classes/Canvas.md#attr-canvascursor)
 
 ---
+## Type: DataLineType
+
+### Description
+Algorithms for drawing lines between points.
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| "straight" | simple straight lines between points that are adjacent in the dataset |
+| "smooth" | smooth spline curve between points that are adjacent in the dataset |
+
+---
 ## Type: DataURLFormat
 
 ### Description
@@ -4813,9 +4538,6 @@ The data URL MIME type to use when [DrawPane.getDataURL](classes/DrawPane.md#met
 
 ### Description
 Valid display formats for dates. These strings are the names of formatters which can be passed to `DateUtil.setNormalDisplayFormat()` or `DateUtil.setShortDisplayFormat()` and will be subsequently used as default long or short formatters for date objects by SmartClient components.  
-
-Custom formatting can also be applied by passing a [FormatString](#type-formatstring) instead of a `DateDisplayFormat` string to [DateUtil.setNormalDisplayFormat](classes/DateUtil.md#classmethod-dateutilsetnormaldisplayformat) et al. See the `FormatString` docs for details.
-
 Default set of valid display formats is as follows:
 
 ### Values
@@ -4839,9 +4561,11 @@ _Example_: `2005/11/4` |
 _Example_: `2005/11/4 11:03` |
 | toSerializeableDate | Date in the format YYYY-MM-DD HH:MM:SS  
 _Example_: `2005-11-04 11:09:15` |
-| toDateStamp | Date in the format `<YYYYMMDD>`T`<HHMMSS>`Z _Example_: `20051104T111001Z`
+| toDateStamp | Date in the format `<YYYYMMDD>`T`<HHMMSS>`Z _Example_: `20051104T111001Z`  
+  
+Note: In addition to these standard formats, custom formatting can be set by passing a function directly to [DateUtil.setNormalDisplayFormat](classes/DateUtil.md#classmethod-dateutilsetnormaldisplayformat) et al. This function will then be executed whenever the appropriate formatter method is called \[eg [Date.toNormalDate](classes/Date.md#method-datetonormaldate)\], in the scope of the date instance in question.
 
-Note: In addition to these standard formats, custom formatting can be set by passing a function directly to [DateUtil.setNormalDisplayFormat](classes/DateUtil.md#classmethod-dateutilsetnormaldisplayformat) et al. This function will then be executed whenever the appropriate formatter method is called \[eg [Date.toNormalDate](classes/Date.md#method-datetonormaldate)\], in the scope of the date instance in question. |
+Custom formatting can also be applied by passing a [FormatString](#type-formatstring) instead of a `DateDisplayFormat` string to [DateUtil.setNormalDisplayFormat](classes/DateUtil.md#classmethod-dateutilsetnormaldisplayformat) et al. See the `FormatString` docs for details. |
 
 ---
 ## Type: DateEditingStyle
@@ -4868,6 +4592,24 @@ As an example - an input format of "MDY" would parse "01/02/1999" to Jan 2nd 199
 Note: In addition to these standard formats, a custom date string parser function may be passed directly to [DateUtil.setInputFormat](classes/DateUtil.md#classmethod-dateutilsetinputformat) or passed into [DateUtil.parseInput](classes/DateUtil.md#classmethod-dateutilparseinput) as the inputFormat parameter.
 
 ---
+## Type: DateItemSelectorFormat
+
+### Description
+Order of pickers and which pickers are present when using a DateItem with [DateItem.useTextField](classes/DateItem.md#attr-dateitemusetextfield) false.
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| DateItem.DAY_MONTH_YEAR | Output fields in day, month, year order. |
+| DateItem.MONTH_DAY_YEAR | Output fields in month, day, year order. |
+| DateItem.YEAR_MONTH_DAY | Output fields in year, month, day order. |
+| DateItem.DAY_MONTH | Output only day, month fields. |
+| DateItem.MONTH_DAY | Output only month, day fields. |
+| DateItem.YEAR_MONTH | Output only year, month fields. |
+| DateItem.MONTH_YEAR | Output only month, year fields. |
+
+---
 ## Type: DefaultQueryClause
 
 ### Description
@@ -4882,7 +4624,7 @@ The Velocity variable names of the "pieces" of SQL that SmartClient generates to
 | "$defaultAnsiJoinClause" | The [ansi join(s)](classes/DataSource.md#attr-datasourceuseansijoins) to join tables to select from, if enabled. |
 | "$defaultWhereClause" | The "where" condition, which will be derived from supplied criteria or a primary key value, depending on the type of operation |
 | "$defaultGroupClause" | For a fetch operation when using the [Server Summaries](kb_topics/serverSummaries.md#kb-topic-server-summaries) feature, "group by" part of aggregated query |
-| "$defaultAfterWhereClause" | For a fetch operation when using the [Server Summaries](kb_topics/serverSummaries.md#kb-topic-server-summaries) feature, "having" part of aggregated query (or outer "where" part if sub-select approach is used, see [OperationBinding.useHavingClause](classes/OperationBinding.md#attr-operationbindingusehavingclause) for more details) |
+| "$defaultGroupWhereClause" | For a fetch operation when using the [Server Summaries](kb_topics/serverSummaries.md#kb-topic-server-summaries) feature, "having" part of aggregated query (or outer "where" part if sub-select approach is used, see [OperationBinding.useHavingClause](classes/OperationBinding.md#attr-operationbindingusehavingclause) for more details) |
 | "$defaultValuesClause" | The column names to update and the update values, for an update or add operation |
 | "$defaultOrderClause" | The column names to sort by, for a fetch operation only |
 
@@ -4934,6 +4676,24 @@ All buttons added via `setButtons` will fire the [buttonClick event](classes/Dia
 | NO | Dismisses dialog by calling [Dialog.noClick](classes/Dialog.md#method-dialognoclick). Title derived from [Dialog.NO_BUTTON_TITLE](classes/Dialog.md#classattr-dialogno_button_title). |
 | CANCEL | Dismisses dialog by calling [Dialog.cancelClick](classes/Dialog.md#method-dialogcancelclick). Title derived from [Dialog.CANCEL_BUTTON_TITLE](classes/Dialog.md#classattr-dialogcancel_button_title). |
 | DONE | Dismisses dialog by calling [Dialog.doneClick](classes/Dialog.md#method-dialogdoneclick). Title derived from [Dialog.DONE_BUTTON_TITLE](classes/Dialog.md#classattr-dialogdone_button_title). |
+
+---
+## Type: DisplayNodeType
+
+### Description
+Flag passed to functions as displayNodeType, telling the function whether it should work on folders, leaves or both at once.
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| null/unset | operate on both folders and leaves |
+| "folders" | operate on folders only, ignoring leaves |
+| "leaves" | operate on leaves only, ignoring folders |
+
+### Groups
+
+- ancestry
 
 ---
 ## Type: Distance
@@ -5076,6 +4836,50 @@ The type of drawing back-end used by a [DrawPane](classes/DrawPane.md#class-draw
 Note that the *"circleto" Command example* can be very helpful when learning how to write "circleto" commands. |
 
 ---
+## Type: DSDataFormat
+
+### Description
+Indicates the format to be used for HTTP requests and responses when fulfilling DSRequests (eg, when [DataSource.fetchData](classes/DataSource.md#method-datasourcefetchdata) is called).
+
+Note that [request queuing](classes/RPCManager.md#classmethod-rpcmanagerstartqueue) is only available for "iscServer" requests.
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| "iscServer" | Make an HTTP request in a format recognized by the ISC server and expect ISC server response format. [Server-side integration](kb_topics/serverDataIntegration.md#kb-topic-server-datasource-integration) can then be used to connect to any kind of data store or web service. |
+| "xml" | Expect XML responses. Request format depends on the setting for [protocol](classes/OperationBinding.md#attr-operationbindingdataprotocol). This is the correct setting when consuming RSS feeds, XML web services (whether SOAP, REST, XML-RPC or custom format), and XML flat files directly from the browser.
+
+Values for "date", "time" or "datetime" fields in responses should be specified in the applicable [XML Schema date format](http://www.w3.org/TR/xmlschema-2/#dateTime). If no timezone is explicitly specified, dates / datetimes received by the client are assumed to be GMT. Note that "date" type fields represent logical dates and may omit time information entirely, and "time" type fields may omit date information. See [Date and Time Format and storage](kb_topics/dateFormatAndStorage.md#kb-topic-date-and-time-format-and-storage) for more information on how date values are serialized in requests sent to the server.
+
+A DSResponse will be derived from the returned XML via the process described under [DataSource.transformResponse](classes/DataSource.md#method-datasourcetransformresponse). |
+| "json" | Expect response in JSON [(Java Script Object Notation)](http://json.org) format, ready to be eval()'d. Response should either be a naked object literal:
+```
+     { "property":"value1", "property2" : "value2", ... }
+ 
+```
+or a string that evals to return a valid response object:
+```
+     var response = { "property":"value1", "property2" : "value2", ... }
+     response;
+ 
+```
+
+A DSResponse will be derived from the returned JSON via the process described under [DataSource.transformResponse](classes/DataSource.md#method-datasourcetransformresponse).
+
+As with `"xml"` responses, values for "date" or "datetime" fields should be specified as a String in [XML Schema date format](http://www.w3.org/TR/xmlschema-2/#dateTime) and may include a timezone. In the absence of a timezone they will be assumed to be GMT.
+
+Request format depends on the setting for [protocol](classes/OperationBinding.md#attr-operationbindingdataprotocol). See also [XJSONDataSource](classes/XJSONDataSource.md#class-xjsondatasource). |
+| "custom" | SmartClient will not attempt to parse the response, instead, [DataSource.transformResponse](classes/DataSource.md#method-datasourcetransformresponse) must be implemented. `transformResponse` will receive the "data" parameter as a String, and must parse this String into an Array of Objects, which should be set as [DSResponse.data](classes/DSResponse.md#attr-dsresponsedata). Request format depends on the setting for [protocol](classes/OperationBinding.md#attr-operationbindingdataprotocol).
+
+Note that, unlike either the "json" or "xml" settings of `dataFormat`, you are responsible for ensuring that parsed values are the correct type, for example, using the JavaScript built-ins `parseInt` and `parseFloat` on integer and decimal values respectively, and using `new Date()` to construct valid Dates. |
+
+### Groups
+
+- clientDataIntegration
+- serverDataIntegration
+
+---
 ## Type: DSInheritanceMode
 
 ### Description
@@ -5152,6 +4956,32 @@ An edge or corner of a rectange, or it's center. Used in APIs such as [Canvas.re
 Object used to specify custom edge sizes or offsets. Specified as an object where `defaultSize` will map to the default edge size or offset for the canvas ([Canvas.edgeSize](classes/Canvas.md#attr-canvasedgesize), or [Canvas.edgeOffset](classes/Canvas.md#attr-canvasedgeoffset) and `top`, `left`, `right` and `bottom` will map to the [edgeTop](classes/EdgedCanvas.md#attr-edgedcanvasedgetop)/[edgeOffsetTop](classes/EdgedCanvas.md#attr-edgedcanvasedgeoffsettop), [edgeLeft](classes/EdgedCanvas.md#attr-edgedcanvasedgeleft)/[edgeOffsetLeft](classes/EdgedCanvas.md#attr-edgedcanvasedgeoffsetleft), [edgeRight](classes/EdgedCanvas.md#attr-edgedcanvasedgeright)/[edgeOffsetRight](classes/EdgedCanvas.md#attr-edgedcanvasedgeoffsetright), and [edgeBottom](classes/EdgedCanvas.md#attr-edgedcanvasedgebottom)/[edgeOffsetBottom](classes/EdgedCanvas.md#attr-edgedcanvasedgeoffsetbottom) attributes on the paneContainer respectively. Note that not all these properties have to be set - if unset standard edge sizing rules will apply.
 
 ---
+## Type: EditCompletionEvent
+
+### Description
+What event / user interaction type caused cell editing to complete.
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| ListGrid.CLICK_OUTSIDE | User clicked outside editor during edit. |
+| ListGrid.CLICK | User started editing another row by clicking on it |
+| ListGrid.DOUBLE_CLICK | User started editing another row by double clicking |
+| ListGrid.ENTER_KEYPRESS | Enter pressed. |
+| ListGrid.ESCAPE_KEYPRESS | User pressed Escape. |
+| ListGrid.UP_ARROW_KEYPRESS | Up arrow key pressed. |
+| ListGrid.DOWN_ARROW_KEYPRESS | down arrow key. |
+| ListGrid.TAB_KEYPRESS | User pressed Tab. |
+| ListGrid.SHIFT_TAB_KEYPRESS | User pressed Shift+Tab. |
+| ListGrid.EDIT_FIELD_CHANGE | Edit moved to a different field (same row) |
+| ListGrid.PROGRAMMATIC | Edit completed via explicit function call |
+
+### Groups
+
+- editing
+
+---
 ## Type: EnterKeyEditAction
 
 ### Description
@@ -5201,6 +5031,45 @@ Mode for escaping text values when using [DataSource.recordsAsText](classes/Data
 |-------|-------------|
 | "double" | Literal double quotes in data values are doubled (""), as expected by Microsoft Excel when pasting text values |
 | "backslash" | double quotes in data values have a blackslash (\\) prepended, similar to String escaping in JavaScript and Java |
+
+---
+## Type: ExpansionMode
+
+### Description
+When [canExpandRecords](classes/ListGrid_1.md#attr-listgridcanexpandrecords) is true, ExpansionMode dictates the type of UI to be displayed in the expanded portion of the row.
+
+There are a number of builtin ExpansionModes and you can override [getExpansionComponent()](classes/ListGrid_1.md#method-listgridgetexpansioncomponent) to create your own expansion behaviors.
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| "detailField" | Show a single field's value in an [HTMLFlow](classes/HTMLFlow.md#class-htmlflow). Field to use is [ListGrid.detailField](classes/ListGrid_1.md#attr-listgriddetailfield). |
+| "details" | Show a [DetailViewer](classes/DetailViewer.md#class-detailviewer) displaying those fields from the record which are not already displayed in the grid. |
+| "related" | Show a separate [ListGrid](classes/ListGrid_1.md#class-listgrid) containing related-records. See [ListGridRecord.detailDS](classes/ListGridRecord.md#attr-listgridrecorddetailds) and [ListGrid.recordDetailDSProperty](classes/ListGrid_1.md#attr-listgridrecorddetaildsproperty) for more information. |
+| "editor" | Show a [DynamicForm](classes/DynamicForm.md#class-dynamicform) to edit those fields from the record which are not already present in the grid. If the record is collapsed with unsaved changes and [ListGrid.expansionEditorShowSaveDialog](classes/ListGrid_1.md#attr-listgridexpansioneditorshowsavedialog) is not set, Edits will be saved automatically, or stored as [editValues](kb_topics/editing.md#kb-topic-grid-editing) if [ListGrid.autoSaveEdits](classes/ListGrid_1.md#attr-listgridautosaveedits) is false. Otherwise, a confirmation dialog is displayed. Can optionally show a [save button](classes/ListGrid_1.md#attr-listgridshowexpansioneditorsavebutton) and [auto-collapse](classes/ListGrid_1.md#attr-listgridexpansioneditorcollapseonsave) when save is pressed. If a record fails validation on save and the field in question is not visible in the grid, the record is automatically expanded and validated to show the errors. |
+| "detailRelated" | Show a [DetailViewer](classes/DetailViewer.md#class-detailviewer) displaying those fields from the record not already displayed in the grid, together with a separate [ListGrid](classes/ListGrid_1.md#class-listgrid) containing related-records. |
+
+### Groups
+
+- expansionField
+
+---
+## Type: FacetIndentDirection
+
+### Description
+Specifies the direction of facet indenting for a [hierarchical](classes/Facet.md#attr-facetistree) facet.
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| CubeGrid.DESCENDING | means the top of the hierarchy renders highest (column facet) or leftmost (row facet). For example, the text for the top of a column facet hierarchy will be flush to the top of the header with the hierarchy expanded. |
+| CubeGrid.ASCENDING | means that the bottom of the hierarchy renders highest (column facet) or leftmost (row facet). |
+
+### See Also
+
+- [CubeGrid.vTreeFacetIndentDirection](classes/CubeGrid.md#attr-cubegridvtreefacetindentdirection)
 
 ---
 ## Type: FieldFilterMode
@@ -5303,7 +5172,7 @@ There are 3 possible contexts where a `FormatString` may be interpreted, and eac
 #### in-browser rendering & client-driven exports
 Almost complete support for Java's SimpleDateFormat/DecimalFormat, as described below, with some small extensions for formatting with awareness of a [FiscalCalendar](#object-fiscalcalendar).
 
-This category includes cases where code running in the browser does the rendering and the rendered result is passed to the server, such as [client-driven export](classes/ListGrid_2.md#method-listgridexportclientdata) and [PDF export of the printed view](classes/RPCManager.md#classmethod-rpcmanagerexportcontent).
+This category includes cases where code running in the browser does the rendering and the rendered result is passed to the server, such as [client-driven export](classes/ListGrid_1.md#method-listgridexportclientdata) and [PDF export of the printed view](classes/RPCManager.md#classmethod-rpcmanagerexportcontent).
 
 #### Excel export
 Almost the same as in-browser rendering, with minor limitations due to missing features in Excel. Exact differences are described under [DataSourceField.exportFormat](classes/DataSourceField.md#attr-datasourcefieldexportformat).
@@ -5439,6 +5308,27 @@ The context for which a data-value is being formatted.
 | hover | for transient display in a hover |
 
 ---
+## Type: FormItemBaseStyle
+
+### Description
+This string is the base CSS class name applied to a FormItem (or some part of a form item). See the [formItem styling overview](kb_topics/formItemStyling.md#kb-topic-formitem-styling) for more information about styling formItems.
+
+The specified style name will be modified as the 'state' of the form item changes. Developers should provide appropriately named CSS classes for each stateful style described below:
+
+*   If [FormItem.showPending](classes/FormItem.md#attr-formitemshowpending) is true, when the current value differs from the value that would be restored by a call to [DynamicForm.resetValues](classes/DynamicForm.md#method-dynamicformresetvalues), this style will have the suffix "Pending" appended to it.
+*   If [FormItem.showFocused](classes/FormItem.md#attr-formitemshowfocused) is true, when the form item receives focus, this style will have the suffix "Focused" appended to it.
+*   If [FormItem.showOver](classes/FormItem.md#attr-formitemshowover) is true, roll-over will be indicated by appending the suffix "Over" appended to the style name. This applies to the [textBoxStyle](classes/FormItem.md#attr-formitemtextboxstyle) and [controlStyle](classes/FormItem.md#attr-formitemcontrolstyle) only.
+*   If [FormItem.showErrorStyle](classes/FormItem.md#attr-formitemshowerrorstyle) is true, if the form item has errors, this style will have the suffix "Error" appended to it.
+*   If [FormItem.showDisabled](classes/FormItem.md#attr-formitemshowdisabled) is true, when the form item is disabled, this style will have the suffix "Disabled" appended to it.
+*   Finally, if [FormItem.showRTL](classes/FormItem.md#attr-formitemshowrtl) is true, when the form item is in RTL mode, this style will have the suffix "RTL" appended to it.
+
+So for example if the cellStyle for some form item is set to "formCell" and showFocused is true, when the form item receives focus, the form item's cell will have the "formCellFocused" style applied to it.
+
+### Groups
+
+- formItemStyling
+
+---
 ## Type: FormItemElementType
 
 ### Description
@@ -5526,6 +5416,51 @@ Possible values for the state of ListGrid groups when groupBy is called
 | "all" | open all groups |
 | "first" | open the first group |
 | "none" | start with all groups closed |
+
+---
+## Type: HashAlgorithm
+
+### Description
+Algorithms to use when hashing field values (see [DataSourceField.storeWithHash](classes/DataSourceField.md#attr-datasourcefieldstorewithhash))
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| "MD5" | Message Digest algorithm 5 |
+| "SHA" | Secure Hashing Algorithm (SHA-1) |
+| "bcrypt" | bcrypt is a password hashing function designed by Niels Provos and David Mazieres, based on the Blowfish cipher |
+
+---
+## Type: HiliteIconPosition
+
+### Description
+Where a [hilite icon](classes/DataBoundComponent.md#attr-databoundcomponenthiliteicons) will be placed relative to normal cell content.
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| "before" | icon will be placed before the normal cell contents |
+| "after" | icon will be placed after the normal cell contents |
+| "replace" | icon will be shown instead of the normal cell contents |
+
+### Groups
+
+- hiliting
+
+---
+## Type: HoopSelectionStyle
+
+### Description
+Hoop selection modes.
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| "encloses" | Components completely enclosed by the hoop are selected |
+| "intersects" | Components enclosed or intersected by the hoop are selected |
 
 ---
 ## Type: HoverMode
@@ -5619,6 +5554,23 @@ Event that will trigger inline editing. See [EditProxy.inlineEditEvent](classes/
 A whole number, for example, 5. Decimal numbers, for example 5.5, are not allowed. May not be null.
 
 ---
+## Type: JoinType
+
+### Description
+The type of join to make between two SQL tables when resolving [includeFrom](classes/DataSourceField.md#attr-datasourcefieldincludefrom) fields.
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| "inner" | A regular inner join, whereby rows are only included in the resultset where the join can be satisified, so a missing row in the table being joined to results in the entire row being omitted. |
+| "outer" | An outer join. All outer joins generated by SmartClient's SQL subsystem are left outer joins, meaning that every row in the join-from (or "left") table that matches the criteria is included, and missing rows in the join-to (or "right") table cause columns to be set to null. |
+
+### Groups
+
+- dataSourceRelations
+
+---
 ## Type: JSONDateFormat
 
 ### Description
@@ -5628,20 +5580,62 @@ Format for encoding dates in JSON. Note you can override [JSONEncoder.encodeDate
 
 | Value | Description |
 |-------|-------------|
-| "xmlSchema" | dates are encoded as a String in [XML Schema date format](http://www.w3.org/TR/xmlschema-2/#dateTime) in UTC, for example, "2005-08-02" for logical date fields or "2005-08-01T21:35:48.350" for `datetime` fields. See [Date format and\\n storage](kb_topics/dateFormatAndStorage.md#kb-topic-date-and-time-format-and-storage) for more information.  
-**Note.**If JSON containing xmlSchema-formatted date values is passed to [JSON.decodeSafe](classes/JSON.md#classmethod-jsondecodesafe) or [JSON.decodeSafeWithDates](classes/JSON.md#classmethod-jsondecodesafewithdates), these formatted date values will not be converted to actual date objects in the generated JavaScript object. Use logicalDateString instead. |
+| "xmlSchema" | dates are is encoded as a String in [XML Schema date format](http://www.w3.org/TR/xmlschema-2/#dateTime) in UTC, for example, "2005-08-02" for logical date fields or "2005-08-01T21:35:48.350" for `datetime` fields. See [Date format and\\n storage](kb_topics/dateFormatAndStorage.md#kb-topic-date-and-time-format-and-storage) for more information. |
 | "dateConstructor" | dates are encoded as raw JavaScript code for creating a Date object, that is:
 ```
         new Date(1238792738633)
         
 ```
-This is not strictly valid JSON, but if eval()d, will result in an identical date object, regardless of timezone. However, it does not preserve the distinction between logical dates vs full datetime values - use "logicalDateConstructor" mode for that.  
-**Note.**This format does not work with [JSON.decodeSafe](classes/JSON.md#classmethod-jsondecodesafe). If you need to use [JSON.decodeSafe](classes/JSON.md#classmethod-jsondecodesafe) and/or [JSON.decodeSafeWithDates](classes/JSON.md#classmethod-jsondecodesafewithdates), you will need to use _logicalDateString_ instead. |
+This is not strictly valid JSON, but if eval()d, will result in an identical date object, regardless of timezone. However, it does not preserve the distinction between logical dates vs full datetime values - use "logicalDateConstructor" mode for that. |
 | "logicalDateConstructor" | serializes Date instances in a way that preserves the distinction between logical dates, logical times, and full datetime values, as explained [here](kb_topics/dateFormatAndStorage.md#kb-topic-date-and-time-format-and-storage). Like 'dateConstructor' mode, this does not produce strictly valid JSON, and instead embeds JavaScript calls.
 
-In addition, unlike 'dateConstructor' mode, using eval() to reconstruct the original JavaScript objects will only work in the presence of SmartClient, and not just in a generic JavaScript interpreter.  
-**Note.**This format does not work with [JSON.decodeSafe](classes/JSON.md#classmethod-jsondecodesafe). If you need to use [JSON.decodeSafe](classes/JSON.md#classmethod-jsondecodesafe) and/or [JSON.decodeSafeWithDates](classes/JSON.md#classmethod-jsondecodesafewithdates), you will need to use _logicalDateString_ instead. |
-| "logicalDateString" | Dates are encoded as strings in a format that [JSON.decodeSafeWithDates](classes/JSON.md#classmethod-jsondecodesafewithdates) will recognize. This allows developers to round-trip date, time and datetime values to and from strict JSON. |
+In addition, unlike 'dateConstructor' mode, using eval() to reconstruct the original JavaScript objects will only work in the presence of SmartClient, and not just in a generic JavaScript interpreter. |
+
+---
+## Type: JSONInstanceSerializationMode
+
+### Description
+Controls the output of the JSONEncoder when instances of SmartClient classes (eg a ListGrid) are included in the data to be serialized.
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| "long" | instances will be shown as a specially formatted JSON listing the most relevant properties of the instance. Result is not expected to decode()/eval() successfully if instances are included. |
+| "short" | instances will be shown in a shorter format via a call to [isc.echoLeaf](classes/isc.md#staticmethod-iscecholeaf). Result is not expected to decode()/eval() successfully if instances are included. |
+| "skip" | no output will be shown for instances (as though they were not present in the data). Result should decode()/eval() successfully (depending on other settings) |
+
+---
+## Type: KeyName
+
+### Description
+Strings to identify the various keys on the keyboard.
+
+*   For alpha keys, the single (uppercase) character value is used, such as "Q"
+*   For Numeric keys, the number is used as in a single character string, like "1"
+*   Function keys are identified as `"f1"` - `"f12"`
+*   Non alpha-numeric character keys (such as the key for "\[" / "{") are identified by their unmodified character value (the value obtained by hitting the key without holding shift down), by default - exceptions are listed below.
+*   Additional key names:  
+    \- `Space`  
+    \- `Tab`  
+    \- `Enter`  
+    \- `Escape`  
+    \- `Backspace`  
+    \- `Insert`  
+    \- `Delete`  
+    \- `Arrow_Up`  
+    \- `Arrow_Down`  
+    \- `Arrow_Left`  
+    \- `Arrow_Right`  
+    \- `Home`  
+    \- `End`  
+    \- `Page_Up`  
+    \- `Page_Down`  
+    \- `Shift`  
+    \- `Ctrl`  
+    \- `Alt`
+
+\[Note: Some keys may not be available for capture on every platform\]
 
 ---
 ## Type: KnobType
@@ -5662,6 +5656,22 @@ Entries for the [DrawItem.knobs](classes/DrawItem.md#attr-drawitemknobs) array. 
 | "controlPoint1" | Display a draggable control knob along with a DrawLine indicating the angle between controlPoint1 and the startPoint. Dragging the knob will adjust controlPoint1. |
 | "controlPoint2" | Display a draggable control knob along with a DrawLine indicating the angle between controlPoint2 and the endPoint. Dragging the knob will adjust controlPoint2. |
 | "rotate" | Display a rotation knob above the top resize knob, allowing the user to rotate the item. See also [DrawItem.rotateKnob](classes/DrawItem.md#attr-drawitemrotateknob). |
+
+---
+## Type: LabelAlignment
+
+### Description
+—
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| DrawLabel.START | Justify label's left edge against its left coordinate (right in RTL configurations) |
+| DrawLabel.END | Justify label's right edge against its left coordinate (left in RTL configurations) |
+| DrawLabel.CENTER | Center label about its left coordinate |
+| DrawLabel.LEFT | Justify label's left edge against its left coordinate |
+| DrawLabel.RIGHT | Justify label's right edge against its left coordinate |
 
 ---
 ## Type: LabelCollapseMode
@@ -5781,6 +5791,25 @@ Supported styles of drawing lines.
 Note that the end result of a "single" fetch is exactly the same as fetching link data and nodes separately using "separate" mode; "separate" mode is also conceptually clearer since it emphasises the fact that nodes and link data are separate things. We provide "single" mode because, in some cases, it may be more efficient to fetch the two types of data together in a single database fetch, using [DataSourceField.includeFrom](classes/DataSourceField.md#attr-datasourcefieldincludefrom) or some other kind of join technique on the server. |
 
 ---
+## Type: ListGridComponent
+
+### Description
+Standard component-type displayed within a ListGrid, as contained by [ListGrid.gridComponents](classes/ListGrid_1.md#attr-listgridgridcomponents).
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| "filterEditor" | The standard filter-component displayed when [ListGrid.showFilterEditor](classes/ListGrid_1.md#attr-listgridshowfiltereditor) is true |
+| "header" | The header-component displayed when [ListGrid.showHeader](classes/ListGrid_1.md#attr-listgridshowheader) is true. |
+| "body" | The body component for the grid. |
+| "summaryRow" | The summary-row component displayed when [ListGrid.showGridSummary](classes/ListGrid_1.md#attr-listgridshowgridsummary) is true. |
+
+### Groups
+
+- appearance
+
+---
 ## Type: ListGridEditEvent
 
 ### Description
@@ -5889,6 +5918,16 @@ An object containing the stored grouping information for a listGrid. Note that t
 - viewState
 
 ---
+## Type: ListGridSelectedState
+
+### Description
+An object containing the stored selection information for a listGrid. Note that this object is not intended to be interrogated directly, but may be stored (for example) as a blob on the server for state persistence across sessions.
+
+### Groups
+
+- viewState
+
+---
 ## Type: ListGridSortState
 
 ### Description
@@ -5919,6 +5958,26 @@ An object containing the stored sort information for a listGrid. Note that this 
 ### Groups
 
 - viewState
+
+---
+## Type: LoadState
+
+### Description
+Trees that dynamically load nodes keep track of whether each node has loaded its children.
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| Tree.UNLOADED | children have not been loaded and are not loading |
+| Tree.LOADING | currently in the process of loading |
+| Tree.FOLDERS_LOADED | folders only are already loaded |
+| Tree.LOADED | already fully loaded |
+| Tree.LOADED_PARTIAL_CHILDREN | children form a ResultSet having only a partial cache (applies only to the "paged" [fetchMode](classes/ResultTree.md#attr-resulttreefetchmode)) |
+
+### Groups
+
+- loadState
 
 ---
 ## Type: LocatorTypeStrategy
@@ -5972,6 +6031,20 @@ Priority levels for log messages
 - [Class.logDebug](classes/Class.md#method-classlogdebug)
 
 ---
+## Type: MatchElementSizeMode
+
+### Description
+How should a canvas match its target [Canvas.htmlElement](classes/Canvas.md#attr-canvashtmlelement) size?
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| "matchElement" | canvas will be sized to match the element |
+| "sizeElement" | htmlElement should be sized to match the specified size of the canvas |
+| "none" | do not attempt to match the canvas / element size |
+
+---
 ## Type: MaxStackDismissMode
 
 ### Description
@@ -5994,7 +6067,7 @@ Simple string identifiers for standard menu fields.
 
 | Value | Description |
 |-------|-------------|
-| "icon" | Displays the icon field for the menu. This field contains the item's specified icon (if there is one), or if the item is checked, the checkmark icon for the item. |
+| "icon" | Displays the icon field for the menu. This field contains the items specified icon (if there is one), or if the item is checked, the checkmark icon for the item. |
 | "title" | Displays the item's title |
 | "key" | Displays the key field for the menu. This field contains the name or title of any shortcut keys for this menu item. |
 | "subMenu" | Field to display the submenu image for items that have a submenu. |
@@ -6037,6 +6110,20 @@ Whether the mock data is for a flat grid-like dataset or for a tree. If "grid" i
 | "jsMockDS" | serialize as JavaScript |
 
 ---
+## Type: MockDSExportValidatorMode
+
+### Description
+—
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| "all" | export all explicit, client-side validators |
+| "standard" | export all explicit, client-side standard (non-custom) validators |
+| "none" | export no validators |
+
+---
 ## Type: MultiAutoChild
 
 ### Description
@@ -6045,20 +6132,6 @@ Whether the mock data is for a flat grid-like dataset or for a tree. If "grid" i
 ### See Also
 
 - [multiAutoChildren](#kb-topic-multiautochildren)
-
----
-## Type: MultiPickerSelectionStyle
-
-### Description
-Governs whether a [MultiPickerItem](classes/MultiPickerItem.md#class-multipickeritem) displays selected and unselected option in a drop down pickList, or uses a [shuttle interface](classes/Shuttle.md#class-shuttle)
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| "pickList" | Options will be displayed in a [PickList](reference_2.md#interface-picklist) |
-| "shuttle" | Options will be displayed in a [Shuttle](classes/Shuttle.md#class-shuttle) |
-| "pickTree" | Options will be displayed in a [TreeGrid](classes/TreeGrid.md#class-treegrid). Only suitable for hierarchical data. |
 
 ---
 ## Type: MultipleAppearance
@@ -6281,15 +6354,15 @@ You can extend the list of operators with [DataSource.addSearchOperator](classes
 | "matchesPattern" | Basic GLOB matching using wildcards (see [DataSource.translatePatternOperators](classes/DataSource.md#attr-datasourcetranslatepatternoperators) for more information on available patterns) |
 | "iMatchesPattern" | Basic GLOB matching using wildcards (case insensitive) (see [DataSource.translatePatternOperators](classes/DataSource.md#attr-datasourcetranslatepatternoperators) for more information on available patterns) |
 | "containsPattern" | GLOB matching using wildcards. Value is considered to meet the criterion if it contains the pattern. See [DataSource.translatePatternOperators](classes/DataSource.md#attr-datasourcetranslatepatternoperators) for more information on available patterns) |
-| "startsWithPattern" | GLOB matching using wildcards. Value is considered to meet the criterion if it starts with the pattern.See [DataSource.translatePatternOperators](classes/DataSource.md#attr-datasourcetranslatepatternoperators) for more information on available patterns) |
-| "endsWithPattern" | GLOB matching using wildcards. Value is considered to meet the criterion if it starts with the pattern.See [DataSource.translatePatternOperators](classes/DataSource.md#attr-datasourcetranslatepatternoperators) for more information on available patterns) |
+| "startsWithPattern" | GLOB mathcing using wildcards. Value is considered to meet the criterion if it starts with the pattern.See [DataSource.translatePatternOperators](classes/DataSource.md#attr-datasourcetranslatepatternoperators) for more information on available patterns) |
+| "endsWithPattern" | GLOB mathcing using wildcards. Value is considered to meet the criterion if it starts with the pattern.See [DataSource.translatePatternOperators](classes/DataSource.md#attr-datasourcetranslatepatternoperators) for more information on available patterns) |
 | "iContainsPattern" | GLOB matching using wildcards. Value is considered to meet the criterion if it contains the pattern. Matching is case insensitive. See [DataSource.translatePatternOperators](classes/DataSource.md#attr-datasourcetranslatepatternoperators) for more information on available patterns) |
 | "iStartsWithPattern" | GLOB matching using wildcards. Value is considered to meet the criterion if it starts with the pattern. Matching is case insensitive.See [DataSource.translatePatternOperators](classes/DataSource.md#attr-datasourcetranslatepatternoperators) for more information on available patterns) |
 | "iEndsWithPattern" | GLOB matching using wildcards.Value is considered to meet the criterion if it ends with the pattern. Matching is case insensitive. See [DataSource.translatePatternOperators](classes/DataSource.md#attr-datasourcetranslatepatternoperators) for more information on available patterns) |
-| "regexp" | Regular expression match - built-in SQL only, JPA and Hibernate do not support regexp operator. Additionally, when using PostgreSQL, it is supported only starting from PostgreSQL version 9.3. |
-| "iregexp" | Regular expression match (case insensitive) - regexp operator limitations apply. |
+| "regexp" | Regular expression match |
+| "iregexp" | Regular expression match (case insensitive) |
 | "isBlank" | value is either null or the empty string. For numeric fields it behaves as isNull |
-| "notBlank" | value is neither null nor the empty string. For numeric fields it behaves as notNull |
+| "notBlank" | value is neither null nor the empty string ("") |
 | "isNull" | value is null |
 | "notNull" | value is non-null. Note empty string ("") is non-null |
 | "inSet" | value is in a set of values. Specify criterion.value as an Array |
@@ -6319,8 +6392,28 @@ You can extend the list of operators with [DataSource.addSearchOperator](classes
 | "or" | at least one subcriteria (criterion.criteria) is true |
 | "between" | shortcut for "greaterThan" + "lessThan" + "and". Specify criterion.start and criterion.end |
 | "betweenInclusive" | shortcut for "greaterOrEqual" + "lessOrEqual" + "and". Specify criterion.start and criterion.end |
-| "exists" | One or more related records exist (for [AdvancedCriteria subqueries](#object-advancedcriterionsubquery)). |
-| "notExists" | No related records exist (for [AdvancedCriteria subqueries](#object-advancedcriterionsubquery)). |
+
+### Groups
+
+- advancedFilter
+
+---
+## Type: OperatorValueType
+
+### Description
+Indicates the kind of value expected in a [Criterion](reference_2.md#object-criterion) that uses this operator.
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| "fieldType" | [Criterion.value](classes/Criterion.md#attr-criterionvalue) should contain a value of the same type as the field. |
+| "fieldName" | [Criterion.value](classes/Criterion.md#attr-criterionvalue) should be the name of another field in the record |
+| "none" | no criterion.value or other setting required (used for operators like isBlank or isNull). |
+| "criteria" | [Criterion.criteria](classes/Criterion.md#attr-criterioncriteria) should be an Array of criteria (used for logical operators like "and"). |
+| "valueRange" | [Criterion.start](classes/Criterion.md#attr-criterionstart) and [Criterion.end](classes/Criterion.md#attr-criterionend) should contain start and end values, both of the same type as the field. |
+| "valueSet" | [Criterion.value](classes/Criterion.md#attr-criterionvalue) should contain an Array of valid field values. |
+| "custom" | [Criterion.value](classes/Criterion.md#attr-criterionvalue) should contain a value which is not necessarily the same type as the field (used for regexp and similar operators). [Operator.editorType](classes/Operator.md#attr-operatoreditortype) can be specified as a FormItem to use to enter a value for the criterion. |
 
 ### Groups
 
@@ -6361,6 +6454,21 @@ Is this page being viewed in landscape or portrait orientation? Typically used w
 |-------|-------------|
 | "landscape" | Landscape orientation: page is wider than it is tall. |
 | "portrait" | Portrait orientation: page is taller than it is wide. |
+
+---
+## Type: PartialCommitOption
+
+### Description
+Action to take if a user attempts to save the dataset produced by a [BatchUploader](classes/BatchUploader.md#class-batchuploader) whilst it still contains errors.
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| "allow" | Silently allow the partial commit to proceed (note that this will result in the user losing those records that contain errors) |
+| "prevent" | Pop up a message window showing the [BatchUploader.partialCommitError](classes/BatchUploader.md#attr-batchuploaderpartialcommiterror) and prevent the partial commit |
+| "prompt" | Pop up a confirmation window with the [BatchUploader.partialCommitPrompt](classes/BatchUploader.md#attr-batchuploaderpartialcommitprompt) and allow the user to choose whether or not to proceed |
+| "retain" | Commit any records that are error-free and remove them from the grid. If any records had errors, leave them in the grid and leave the grid visible. If no records had errors, run normal cleanup as we would for "allow". This option allows the user to fix errors iteratively, rather than having to fix everything upfront before committing |
 
 ---
 ## Type: PercentBoxModel
@@ -6423,6 +6531,23 @@ Supported data point shapes for [FacetChart.pointShapes](classes/FacetChart.md#a
 | Triangle | — |
 
 ---
+## Type: Positioning
+
+### Description
+—
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| Canvas.ABSOLUTE | The canvas is absolutely positioned with respect to its parent. |
+| Canvas.RELATIVE | The canvas is relatively positioned according to the document flow. |
+
+### Groups
+
+- positioning
+
+---
 ## Type: PositiveInteger
 
 ### Description
@@ -6441,6 +6566,23 @@ A positive whole number or 0, for example, 5. Negative values are not allowed. N
 | never | Never try to automatically preserve the openState. Nodes will be initially open or closed based solely on the [Tree.openProperty](classes/Tree.md#attr-treeopenproperty) optionally set by the server. |
 | whenUnique | If either the [Tree.idField](classes/Tree.md#attr-treeidfield) or [Tree.nameProperty](classes/Tree.md#attr-treenameproperty) has been set on the Tree, (so that nodes have either unique ids or unique paths), preserve openState by respecting the [Tree.openProperty](classes/Tree.md#attr-treeopenproperty) set by the server, then applying the openState. |
 | always | Like "whenUnique" but automatically preserves openState even if nodes cannot be uniquely identified. This means that nodes at the same tree positions (eg 3rd child of 5th node under root) will be placed in the same openState, regardless of whether that node has anything to do with the node that previously was at that tree position. |
+
+---
+## Type: ProcessValueType
+
+### Description
+—
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| "string" | values that are not already strings are converted via toString() |
+| "boolean" | the strings "true" and "false" become boolean true and false. All other Strings non-empty String values are true, all numbers are true except 0, and all other non-null values are true |
+| "decimal" | values are converted via toString() and parsing as a decimal number. Invalid values trigger a transition to the [StateTask.failureElement](classes/StateTask.md#attr-statetaskfailureelement) |
+| "integer" | values are converted via toString(), parsing as a number, and rounding to nearest integer. Invalid values trigger a transition to the [StateTask.failureElement](classes/StateTask.md#attr-statetaskfailureelement) |
+| "record" | any input which is not already a Record or Map becomes null |
+| "array" | generic array type - will convert value to an array of the same type as the existing value |
 
 ---
 ## Type: Properties
@@ -6493,6 +6635,25 @@ A means of identifying the properties in an exported dataset - either the proper
 - dragdrop
 
 ---
+## Type: ReadOnlyDisplayAppearance
+
+### Description
+Dictates the appearance of form items when [FormItem.canEdit](classes/FormItem.md#attr-formitemcanedit) is set to `false`.
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| "static" | Item value should appear within the form as a static block of text, similar to the default appearance of a [StaticTextItem](classes/StaticTextItem.md#class-statictextitem). This appearance may be modified via [FormItem.readOnlyTextBoxStyle](classes/FormItem.md#attr-formitemreadonlytextboxstyle) and [FormItem.clipStaticValue](classes/FormItem.md#attr-formitemclipstaticvalue). |
+| "readOnly" | Item should appear unchanged, but user interaction to edit the item will be disallowed. Note that some interactions will be allowed, such as selecting text within a read-only [TextItem](classes/TextItem.md#class-textitem) for copy and paste. Exact implementation may vary by form item type. |
+| "disabled" | Item will appear disabled. |
+
+### See Also
+
+- [DynamicForm.readOnlyDisplay](classes/DynamicForm.md#attr-dynamicformreadonlydisplay)
+- [FormItem.readOnlyDisplay](classes/FormItem.md#attr-formitemreadonlydisplay)
+
+---
 ## Type: RecordDropPosition
 
 ### Description
@@ -6508,19 +6669,30 @@ Position of a [ListGrid.recordDrop](classes/ListGrid_2.md#method-listgridrecordd
 | ListGrid.NONE | Drop position is not over a record |
 
 ---
-## Type: RecordType
+## Type: RecordSummaryFunction
 
 ### Description
-Defines the various types of record that can be present in a [ListGrid](classes/ListGrid_1.md#class-listgrid).
+Function to produce a summary value based on field values within a record. Example usage is record-level summaries in ["summary" type ListGrid fields](#type-listgridfieldtype).
+
+SummaryFunctions may be specified in one of 2 ways:
+
+*   as an explicit function or executable [StringMethod](kb_topics/stringMethods.md#kb-topic-string-methods-overview). Takes 3 parameters:  
+    `record` the record for which the value is being calculated  
+    `fields` Array of listGridFields from which summaries should be calculated  
+    `summaryField` pointer to the summary type field on which the summary function is being run.
+*   As a registered RecordSummaryFunction identifier
+
+Note that [DataSource.registerRecordSummaryFunction](classes/DataSource.md#classmethod-datasourceregisterrecordsummaryfunction) may be used to expand the set of registered RecordSummaryFunctions.
 
 ### Values
 
 | Value | Description |
 |-------|-------------|
-| "normal" | regular data-records |
-| "groupHeader" | a special collapsable record containing related regular records |
-| "groupSummary" | a record showing summaries for all records in a parent groupNode |
-| "gridSummary" | a record showing summaries for all records in the grid |
+| sum | Iterates through each field, picking up the numeric field values from the record and summing them. |
+| avg | Iterates through each field, picking up the numeric field values from the record and calculating the mean value. |
+| max | Iterates through each field, picking up the numeric field values from the record and calculating the maximum value. |
+| min | Iterates through each field, picking up the numeric field values from the record and calculating the minimum value. |
+| multiplier | Iterates through each field, picking up the numeric field values from the record and multiplying them together. |
 
 ---
 ## Type: RelativeDateShortcut
@@ -6558,6 +6730,24 @@ Builtin options include
 - [RelativeDateString](reference_2.md#type-relativedatestring)
 
 ---
+## Type: ReorderPosition
+
+### Description
+Controls where a drag-item should be dropped in relation to the target row
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| ListGrid.BEFORE | Drop the drag-item before the target-row |
+| ListGrid.AFTER | Drop the drag-item after the target-row |
+| ListGrid.OVER | Drop the drag-item over (onto) the target-row |
+
+### Groups
+
+- dragdrop
+
+---
 ## Type: ResizeDirection
 
 ### Description
@@ -6569,151 +6759,6 @@ Builtin options include
 |-------|-------------|
 | "before" | resize bar targets the canvas before it in the layout |
 | "after" | resize bar targets the canvas after it in the layout |
-
----
-## Type: RESTRequestFormat
-
-### Description
-Indicates the request format to be used for a REST operation. Is only applicable to [RestConnector DataSources](kb_topics/serverRestConnector.md#kb-topic-server-side-rest-connector). Note for all of these `RESTRequestFormat` options, only simple key-value criteria are supported; to handle [AdvancedCriteria](#object-advancedcriteria), you can use a [requestTemplate](classes/DataSource.md#attr-datasourcerequesttemplate), or subclass `com.isomorphic.dataSource.RestConnector` and override the `applyValuesOrCriteriaToRequest()` method.
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| "params" | Indicates that context is provided to the target REST service by setting parameter values in the URL. With this request format, the [DSRequest](reference_2.md#object-dsrequest)'s values or criteria will be added to the [target dataURL](classes/DataSource.md#attr-datasourcedataurl) as standard HTTP parameters values as follows:
-
-*   For "add" and "update" requests the "values" will be added to the target URL (see the server-side Javadoc for `DSRequest.getValues()`)
-*   For "fetch" and "remove" requests, where the concept of "values" doesn't make sense, the "criteria" will be added to the target URL (see the server-side Javadoc for `DSRequest.getCriteria()`)
-
-So if we had a fetch request that specified criteria like this:
-```
-    {countryCode: "US", stateCode: "CA"}
- 
-```
-and a [dataURL](classes/OperationBinding.md#attr-operationbindingdataurl) like this:
-```
-    https://somerestservice.com/customer/fetch
- 
-```
-we would end up with a target URL like this:
-```
-    https://somerestservice.com/customer/fetch?countryCode=US&stateCode=CA
- 
-```
-Also, note that any explicitly declared [params](classes/DataSource.md#attr-datasourceparams) will also be added to the target URL as standard HTTP parameters, as well as the request values/criteria (if there are any name collisions, the request values/criteria take precedence).
-
-This format is often used to supply criteria to "fetch" operations, and primary-key values to "remove" operations. However, this is by no means a universal approach; different REST services adopt different approaches, there is no generally-accepted "right way" to handle things
-
-It is possible to suppress this automatic mapping - see [DataSource.suppressAutoMappings](classes/DataSource.md#attr-datasourcesuppressautomappings) |
-| "json" | Indicates that context is provided to the target REST service by providing a block of JSON-encoded text in the body of the HTTP request sent to the REST server. With this request format, `RestConnector` will render an incoming [DSRequest](reference_2.md#object-dsrequest)'s values or criteria as a JSON object; for "add" and "update" requests, the "values" will be used, and for "fetch" and "remove" operations, the criteria will be used (see the server-side Javadoc for `DSRequest.getCriteria()`).
-
-So if we had an add request with the following record:
-
-```
-    {
-       customerId: 7023,
-       customerName: "Bay Financials inc",
-       city: "San Francisco",
-       countryCode: "US", 
-       stateCode: "CA"
-    }
- 
-```
-those values would be included, in strict JSON form, in the body of the HTTP request that `RestConnector` sends to the REST webservice:
-```
-    {"customerId": 7023,"customerName": "Bay Financials inc",
-     "city: "San Francisco","countryCode": "US", "stateCode": "CA"}
- 
-```
-
-This format is most often used when you need to supply more extensive amounts of data, like entire records to "add" and "update" operations. However, as mentioned above, this is by no means a universal approach, and some REST services use URL parameters even when specifying entire records of data. Also, some REST services use XML rather than JSON
-
-Note, if there is a [requestTemplate](classes/DataSource.md#attr-datasourcerequesttemplate) in force, we use that to drive the content and format of the generated JSON block |
-| "xml" | Indicates that context is provided to the target REST service by providing a block of XML text in the body of the HTTP request sent to the REST server. With this request format, `RestConnector` will render an incoming [DSRequest](reference_2.md#object-dsrequest)'s values or criteria as a snippet of XML text; for "add" and "update" requests, the "values" will be used, and for "fetch" and "remove" operations, the criteria will be used (see the server-side Javadoc for `DSRequest.getCriteria()`). The name of the enclosing tag is specified in [DataSource.xmlTag](classes/DataSource.md#attr-datasourcexmltag).
-
-So if we had an add request with the following record:
-
-```
-    {
-       customerId: 7023,
-       customerName: "Bay Financials inc",
-       city: "San Francisco",
-       countryCode: "US", 
-       stateCode: "CA"
-    }
- 
-```
-those values would be included in the body of the HTTP request that `RestConnector` sends to the REST webservice (assuming the `xmlTag` is "customer"):
-```
-    <customer>
-        <customerId>7023</customerId>
-        <customerName>Bay Financials inc"</customerName>
-        <city>San Francisco</city>
-        <countryCode>US</countryCode>
-        <stateCode>CA"</stateCode>
-    </customer>
- 
-```
-
-Note, if there is a [requestTemplate](classes/DataSource.md#attr-datasourcerequesttemplate) in force, we use that to drive the content and format of the generated XML |
-
-### Groups
-
-- serverRestConnector
-
----
-## Type: RESTResponseFormat
-
-### Description
-Indicates the response format to be used for a REST operation. Is only applicable to [RestConnector DataSources](kb_topics/serverRestConnector.md#kb-topic-server-side-rest-connector).
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| "json" | Indicates that the REST service response is a valid [JSON](https://www.json.org/json-en.html) message. We will parse the response text as JSON, and the resulting object structure can be further processed with [XPaths](classes/DataSource.md#attr-datasourcerecordxpath), [templates](classes/DataSource.md#attr-datasourceresponsetemplate) and [scripting](classes/DataSource.md#attr-datasourcetransformresponsescript) |
-| "xml" | Indicates that the REST service response is an XML message. We will parse the response text as XML, and the resulting object structure can be further processed with XPaths, templates and scripting |
-| "csv" | Indicates that the the REST service response is in delimited text format in the body of the HTTP response. We will parse the response text as delimited flat text data, and the resulting object structure can be further processed with scripting. Note, we do not support XPaths because they do not make sense with flat data, and we also do not support templating of CSV responses. Record-level and field-level transformation scripts, however, are applicable, and field [nativeName](classes/DataSourceField.md#attr-datasourcefieldnativename)s are honored if the CSV text includes a header row
-
-`RestConnector` only supports a couple options for CSV-based REST services - see [DataSource.csvDelimiter](classes/DataSource.md#attr-datasourcecsvdelimiter) and [DataSource.csvQuoteCharacter](classes/DataSource.md#attr-datasourcecsvquotecharacter) |
-| "text" | Indicates that REST service response is to be treated simply as a piece of text, with no parsing or other processing attempted. Use this format for services that return simple strings or messages in some non-standard format; you can provide your own parsing logic in a [transformResponseScript](classes/DataSource.md#attr-datasourcetransformresponsescript) |
-
-### Groups
-
-- serverRestConnector
-
----
-## Type: RowCountStatus
-
-### Description
-Enumerated status indicating whether a ResultSet has an accurate [ResultSet.getRowCount](classes/ResultSet.md#method-resultsetgetrowcount) row count for the data set.
-
-This is a feature associated with [progressive loading of data](classes/DataSource.md#attr-datasourceprogressiveloading). When progressive loading is active, the [length](classes/ResultSet.md#method-resultsetgetlength) may not indicate the true size of the data set. In this case a different total row count may be maintained by the ResultSet data object and retrieved via [ResultSet.getRowCount](classes/ResultSet.md#method-resultsetgetrowcount). This status code indicates whether this row count is an exact value or not.
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| "exact" | The size of the data set is known and the current row count is accurate. This always will be the case if [progressiveLoading](classes/DataSource.md#attr-datasourceprogressiveloading) is not active. If progressiveLoading is active, we may have an accurate row count in the following scenarios:
-
-*   [ResultSet.setFullLength](classes/ResultSet.md#method-resultsetsetfulllength) was explicitly invoked to tell the resultSet its total length.  
-    In this case [ResultSet.getLength](classes/ResultSet.md#method-resultsetgetlength) will return the same value as [ResultSet.getRowCount](classes/ResultSet.md#method-resultsetgetrowcount)
-*   The user has scrolled all the way to the true end of the progressively loaded data set such that the length is now known.  
-    In this case [ResultSet.getLength](classes/ResultSet.md#method-resultsetgetlength) will return the same value as [ResultSet.getRowCount](classes/ResultSet.md#method-resultsetgetrowcount)
-*   A successful row count fetch was performed via [ResultSet.fetchRowCount](classes/ResultSet.md#method-resultsetfetchrowcount).  
-    In this case [ResultSet.getLength](classes/ResultSet.md#method-resultsetgetlength) will return the same value as [ResultSet.getRowCount](classes/ResultSet.md#method-resultsetgetrowcount) if [ResultSet.applyRowCountToLength](classes/ResultSet.md#attr-resultsetapplyrowcounttolength) is true, otherwise the values may differ.
-*   The dataSource fetch response to a request for rows within the resultSet included a [DSResponse.estimatedTotalRows](classes/DSResponse.md#attr-dsresponseestimatedtotalrows) value with an exact value  
-    In this case [ResultSet.getLength](classes/ResultSet.md#method-resultsetgetlength) will return the same value as [ResultSet.getRowCount](classes/ResultSet.md#method-resultsetgetrowcount) if [ResultSet.applyRowCountToLength](classes/ResultSet.md#attr-resultsetapplyrowcounttolength) is true, otherwise the values may differ. |
-| "unknown" | The current row count is unknown. This value indicates [ResultSet.lengthIsKnown](classes/ResultSet.md#method-resultsetlengthisknown) returns false. |
-| "loading" | This value indicates that the ResultSet is waiting for an active [row count fetch](classes/ResultSet.md#method-resultsetfetchrowcount) to complete. |
-| "minimum" | The current row count is a minimum - there are at least this many records in the data set. Note that when [progressiveLoading](classes/DataSource.md#attr-datasourceprogressiveloading) is active, this will be the status if no explicit [DSResponse.estimatedTotalRows](classes/DSResponse.md#attr-dsresponseestimatedtotalrows) was available, so [DSResponse.totalRows](classes/DSResponse.md#attr-dsresponsetotalrows) is a minimum, or if [DSResponse.estimatedTotalRows](classes/DSResponse.md#attr-dsresponseestimatedtotalrows) contained a value in the format `_"[rowCount]+"_`. |
-| "approximate" | The current row count is an approximation. This will be the status if [progressiveLoading](classes/DataSource.md#attr-datasourceprogressiveloading) is active and a fetch request contained an explicit [DSResponse.estimatedTotalRows](classes/DSResponse.md#attr-dsresponseestimatedtotalrows) in the format `_"~[rowCount]"_`. |
-| "maximum" | The current row count is a maximum - there are no more than this many records in the data set. This will be the status if [progressiveLoading](classes/DataSource.md#attr-datasourceprogressiveloading) is active and a fetch request contained an explicit [DSResponse.estimatedTotalRows](classes/DSResponse.md#attr-dsresponseestimatedtotalrows) in the format `_"-[rowCount]"_`. |
-| "range" | The data object knows the total number of records in the data set lies within a particular range. In this case [ListGrid.getRowCountRange](classes/ListGrid_2.md#method-listgridgetrowcountrange) may be used to retrieve the upper and lower bound of this range, and [ListGrid.getRowCount](classes/ListGrid_2.md#method-listgridgetrowcount) will return the lower bound. This will be the status if [progressiveLoading](classes/DataSource.md#attr-datasourceprogressiveloading) is active and a fetch request contained an explicit [DSResponse.estimatedTotalRows](classes/DSResponse.md#attr-dsresponseestimatedtotalrows) in the format `_"[minRowCount]-[maxRowCount]"_`. |
-
-### Groups
-
-- rowRangeDisplay
 
 ---
 ## Type: RowEndEditAction
@@ -6800,15 +6845,9 @@ Name of a SmartClient Class, that is, a Class that has been created via [isc.def
 ## Type: SCImgURL
 
 ### Description
-For properties that refer to images by URL, such as [Img.src](classes/Img.md#attr-imgsrc) and [Button.icon](classes/Button.md#attr-buttonicon), SmartClient provides various capabilities to allow for simpler and more uniform settings, and to allow applications to be restructured more easily.
+Properties that refer to images by URL, such as [Img.src](classes/Img.md#attr-imgsrc) and [Button.icon](classes/Button.md#attr-buttonicon), are specially interpreted in SmartClient to allow for simpler and more uniform image URLs, and to allow applications to be restructured more easily.
 
-**[StockIcons](reference_2.md#object-stockicon)**
-
-SmartClient defines a list of [known-icons](classes/Media.md#classmethod-mediagetstockiconnames) which can be used by name in src-strings. For example, setting a button's [icon](classes/Button.md#attr-buttonicon) property to "Edit" will show the [current image](classes/StockIcon.md#attr-stockiconsrc) mapped to the builtin StockIcon with that name. You can also modify the image currently assigned to the "Edit" icon by calling [Media.updateIconMapping("Edit", "new src")](classes/Media.md#classmethod-mediaupdateiconmapping).
-
-When using a StockIcon-name as a src, you may also include additional settings to extend the [StockIcon](classes/StockIcon.md#attr-stockiconsrc) if applicable. For example, a src of "Edit:size:24,24;" will take the "Edit" stockIcon's current src and, if that src represents a sprite-string, apply the additional size attributes and render the Edit icon at a larger size.
-
-These features are especially useful in combination with [SVG Symbols](kb_topics/svgSymbols.md#kb-topic-svg-symbols-overview) using runtime-styling, where colors can be easily modified on a per usage-basis, for example with "Edit:color:red;". **the application image directory**
+**the application image directory**
 
 When specifying URLs to image files via SmartClient component properties such as [StretchImg.src](classes/StretchImg.md#attr-stretchimgsrc), any relative path is assumed to be relative to the "application image directory" (`appImgDir`). The application image directory can be set via [Page.setAppImgDir](classes/Page.md#classmethod-pagesetappimgdir), and defaults to "images/", representing the typical practice of placing images in a subdirectory relative to the URL at which the application is accessed.
 
@@ -6829,79 +6868,34 @@ Some components that use a large number of images use `skinImgDir` to group them
 
 A custom subclass of TreeGrid can set `skinImgDir` to a different path, such as "/images/MyTreeGrid", to source all media from a different location.
 
-_TIPS:_
+TIPS:
 
-*   subcomponents do not automatically share the parent component's setting for skinImgDir. For example, the [Window.minimizeButton](classes/Window.md#attr-windowminimizebutton) has the default setting for "skinImgDir" ("images/"), so the [src](classes/Img.md#attr-imgsrc) property used with this component is set to "\[SKIN\]/Window/minimize.png" (in the "SmartClient" sample skin).
+*   subcomponents may not share the parent component's setting for skinImgDir. For example, the [Window.minimizeButton](classes/Window.md#attr-windowminimizebutton) has the default setting for "skinImgDir" ("images/"), so the [src](classes/Img.md#attr-imgsrc) property used with this component is set to "\[SKIN\]/Window/minimize.png" (in the "SmartClient" sample skin).
 *   for a particular image, the skinImgDir setting on the component may not be convenient. The prefix "\[SKINIMG\]" can be used to refer to `Page.getSkinDir() + "/images"` regardless of the setting for `skinImgDir`
-
-**Using a css class instead of an image URL**
-
-In some cases, instead of an explicit image URL, developers may wish to apply a named css class with a background-image to an image based component. This may be achieved by specifying your image URL in the format **"style:_`<styleName>`_"**.
-
-For example if your application loads the following css class:
-
-```
- .starImg {
-    width: 48px; height: 48px;
-    background: url(/images/star.gif) 0 0;    
- }
- 
-```
-It may be displayed in an Img component by setting [Img.src](classes/Img.md#attr-imgsrc) to `"style:startImg"`.
-
-**Sprited images**
-
-In addition to the `"style:..."` prefix for specifying a css class instead of a simple image URL, the prefix `"sprite:..."` may be used to specify properties required to extract an image from an image [sprite](https://www.w3schools.com/Css/css_image_sprites.asp).
-
-For details on how this format may be used, see the [SCSpriteConfig](#type-scspriteconfig) documentation.
 
 **Stateful image URLs**
 
-Many SmartClient components support changing their appearance to reflect their current "state" \[_"Focused"_, _"Disabled"_, etc\]. As such they may display different image media to reflect their current state.  
-See the [Stateful Images overview](kb_topics/statefulImages.md#kb-topic-stateful-images) for details on how image states are managed in SmartClient.
+Many image URLs in SmartClient are "stateful", meaning that the actual URL used to fetch an image will vary according to the component's state (eg, "Disabled"), generally, by adding a suffix to the image URL. See the [Skinning Overview](kb_topics/skinning.md#kb-topic-skinning--theming) for more information on statefulness and the [Img.src](classes/Img.md#attr-imgsrc) documentation for information on how stateful image URLs are formed.
 
 **SVG Images**
 
-_For more information about using stylable SVGs for spriting in a way that doesn't involve lots of file-loads or the flickering typically associated with modifying SVGs in-browser, see the [SVG Symbols Overview](kb_topics/svgSymbols.md#kb-topic-svg-symbols-overview)._
-
 If the URL represents an SVG image, you may specify `tag` as a query param to control whether it's rendered in an object or image tag, provided [Canvas.useImageForSVG](classes/Canvas.md#attr-canvasuseimageforsvg) isn't set. If that query param is present and has any value other than `object`, then the SVG image will be rendered in an image tag. Otherwise, it will be rendered in an object tag. For example, an `SCImgURL` of "circle.svg?tag=image" will render in an image tag.
-
-**the special "blank" constant**
-
-If you don't have to show any image for any reason or you need to reset the area where an image is, you can call _myImage.setSrc('blank')_ or set:
-
-```
- isc.Img.create({
-    ID: "myImage",
-    width:48, height:48,
-    src: "blank"
- })
- 
-```
-This will render an empty space, where the blank.gif image, that each skin has, will be used for this purpose.
 
 ---
 ## Type: SCSpriteConfig
 
 ### Description
-#### Using Sprites
 [Image sprites](https://www.w3schools.com/Css/css_image_sprites.asp) are a technique to minimize server http requests when displaying media to a user. Given a series of small images (icons, say), instead of having a separate image file be loaded for each icon, the server can provide a single large composite image to the client, and the client can use CSS to display sections of this larger image to the user.  
 See also the "spriting" discussion in the [skinning overview](kb_topics/skinning.md#kb-topic-skinning--theming) documentation.
 
-The SmartClient framework supports the `SCSpriteConfig` format for sprited images.
-
-Note that _SCSpriteConfig_ is just a special class of [image URL](#type-scimgurl), and as such any component attribute of type SCImgURL may be set to a sprite configuration.
-
-SCSpriteConfigs have the following format:  
+The SmartClient framework supports the `SCSpriteConfig` format for sprited images.  
+spriteConfigs have the following format:  
 `"sprite:_`<image URL>`_;offset:_`<Left>`,`<Top>`_;size:_`<Width>`,`<Height>`_;cssClass:_`<className>`_"`
 
 This format allows developers to specify the image source and the native size and offset of the sprite within the image.
 
-The media to load will be retrieved from the specified image URL. Standard [SCImgURL](#type-scimgurl) directory prefixes such as "\[SKIN\]" can be included in this URL.
-
-Developers may also specify [an image data URL](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URLs) - for example `"sprite:data:image/jpeg;base64,_`<data>`_;offset:-120,0;size:20,20;"`.
-
-An explicit URL is not required. Developers may instead specify a css class which can include an explicit `background-image` attribute.
+The media to load will be retrieved from the specified image URL. Standard [SCImgURL](#type-scimgurl) directory prefixes such as "\[SKIN\]" can be included in this URL.  
+An explicit URL is not required - developers may instead specify a css class which can include an explicit `background-image` attribute.
 
 The `offset:` property specifies the left and top coordinate to apply to the composite image element such that the desired sprite is visible. The `size:` property indicates the size of the sprite in pixels.  
 For example, a sprite configuration of _`"sprite:composite.png;offset:0,-20;size:20,20;"`_ would load the image file "composite.png", and display a 20 pixel square from it. The origin of the larger image would be offset vertically by -20px, so the sprite actually visible to the user would have its y-origin at 20px within the larger image.  
@@ -6912,7 +6906,7 @@ The `cssClass:` denotes the css class to apply to the rendered element displayin
 
 Sprites will scale automatically. If a spriteConfig is used to provide an image for an icon and some other property is used to configure the drawn size of the icon in question ([Button.iconSize](classes/Button.md#attr-buttoniconsize),for example), the sprite image will be scaled to render at the appropriate size.
 
-#### Sprited image configuration and "stateful" images
+**Sprited image configuration and "stateful" images**  
 Many image URLs in SmartClient are "stateful", meaning that variants of the image should be displayed to the user depending on the current state of the widget. (For example a custom button icon may be [displayed on roll over](classes/Button.md#attr-buttonshowrollovericon), or a selection checkbox icon in a treeGrid [may appear disabled](classes/TreeGrid.md#attr-treegridshowdisabledselectioncheckbox) for unselectable nodes).
 
 There are a couple of approaches to display stateful versions of sprited images.
@@ -6926,11 +6920,6 @@ As with standard [stateful images](kb_topics/statefulImages.md#kb-topic-stateful
 So if the state "Over" was applied to a sprite configuration of `"sprite:compositeImg.png;offset:100,100;size:20,20"`, the generated HTML would attempt to load an image from the URL `"compositeImg_Over.png"` (and display a sprite from that image with the specified size/offset).  
 If a class name was specified in the sprite, the stateful suffix would be appended with no leading underscore, similar to how [state suffixes](classes/StatefulCanvas.md#method-statefulcanvasgetstatesuffix) are applied to the `baseStyle` of a StatefulCanvas.  
 For example a sprite config of `"sprite:cssClass:buttonIcon"` would display styling from `"buttonIconOver"` when the "Over" state was applied.
-
-#### SVG sprites
-If you have a collection of SVG graphics, you can combine them into a single `<svg>` container, and then use the `sprite:` mechanism to access them as SVG _symbols_, which can be reused and re-colored at runtime without server traffic.
-
-See the [SVG Symbols overview](kb_topics/svgSymbols.md#kb-topic-svg-symbols-overview) for more information.
 
 ---
 ## Type: SearchEditorMode
@@ -7033,10 +7022,29 @@ Different styles of selection that a list, etc. might support
 - selection
 
 ---
+## Type: SelectionType
+
+### Description
+Controls how an object changes state when clicked
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| StatefulCanvas.BUTTON | object moves to "down" state temporarily (normal button) |
+| StatefulCanvas.CHECKBOX | object remains in "down" state until clicked again (checkbox) |
+| StatefulCanvas.RADIO | object moves to "down" state, causing another object to go up (radio) |
+
+### Groups
+
+- state
+- event handling
+
+---
 ## Type: SequenceMode
 
 ### Description
-The possible types of sequence handling SmartClient Server can apply. This refers to the technique used to obtain the primary keys of the most recent insert, which the product uses to enable [automatic cache synchronization](kb_topics/cacheSynchronization.md#kb-topic-automatic-cache-synchronization) (updating client-side components bound to a dataSource to reflect updates to that dataSource). Only applicable to [fields](reference_2.md#object-datasourcefield) of [type](reference_2.md#type-fieldtype) "sequence".
+The possible types of sequence handling SmartClient Server can apply. This refers to the technique used to obtain the primary keys of the most recent insert, which the product uses to enable automatic cache synchronization (updating client-side components bound to a dataSource to reflect updates to that dataSource). Only applicable to [fields](reference_2.md#object-datasourcefield) of [type](reference_2.md#type-fieldtype) "sequence".
 
 ### Values
 
@@ -7055,7 +7063,7 @@ Strategy for determining whether and when to show [formatted text labels](classe
 *   inChart - data-values are displayed in the chart-body close to their data-points - not all [chart-types](classes/FacetChart.md#attr-facetchartcharttype) support showing data-values in the chart-body, and none will show them all if data-density is such that the labels would overlap or extend beyond their available area
 *   inHover - as the mouse moves over the chart body, the data-value for the [nearest data-point](classes/FacetChart.md#method-facetchartgetnearestdrawnvalue) is displayed in a [label](classes/FacetChart.md#attr-facetcharthoverlabelproperties) floating near the shape it represents. When showing values in hovers, the visual element representing the data value is also emphasized by brightening or highlighting it (appearance differs by chart type).
 
-Support for showing data-values differs by [chart-type](classes/FacetChart.md#attr-facetchartcharttype); for example, [Stacked charts](classes/FacetChart.md#attr-facetchartstacked) cannot show data-values in the chart body; column charts can, and they can also [rotate values](classes/FacetChart.md#attr-facetchartrotatedatavalues) to fit if necessary; pie charts, can show just the data-values that fit inside their segments in the chart-body; all types can show data-values in hovers.
+Support for showing data-values differs by [chart-type](classes/FacetChart.md#attr-facetchartcharttype); for example, [Stacked charts](classes/FacetChart.md#attr-facetchartstacked) cannot show data-values in the chart body; [Column charts](#charttypecolumn) can, and they can also [rotate values](classes/FacetChart.md#attr-facetchartrotatedatavalues) to fit if necessary; pie charts, can show just the data-values that fit inside their segments in the chart-body; all types can show data-values in hovers.
 
 ### Values
 
@@ -7106,6 +7114,20 @@ Side of a component.
 | Canvas.BOTTOM | Bottom side |
 
 ---
+## Type: SkipJSONValidation
+
+### Description
+—
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| "full" | Skip validation for all fields. In this mode, valueXPaths and getFieldValue implementations are skipped. |
+| "partial" | Skip validation for fields with boolean, numeric, or string-drived types. Note that you must deliver all [DataSourceField.multiple](classes/DataSourceField.md#attr-datasourcefieldmultiple):true values as arrays. |
+| "none" | Always do validation. |
+
+---
 ## Type: SnapGridStyle
 
 ### Description
@@ -7117,6 +7139,23 @@ Side of a component.
 |-------|-------------|
 | "crosses" | show array of crosses to indicate snap points |
 | "lines" | show grid of lines to indicate snap points |
+
+---
+## Type: SortDirection
+
+### Description
+—
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| "ascending" | Sort in ascending order (e.g. A-Z; larger values later in the list) |
+| "descending" | Sort in descending order (e.g. Z-A; larger values earlier in the list) |
+
+### Groups
+
+- sorting
 
 ---
 ## Type: SQLPagingStrategy
@@ -7139,6 +7178,23 @@ The technique SmartClient Server's SQL DataSource should use to select a "page" 
 - [OperationBinding.sqlPaging](classes/OperationBinding.md#attr-operationbindingsqlpaging)
 
 ---
+## Type: SQLType
+
+### Description
+The types of custom query that can be handled by SmartClient's built-in "sql" and "hibernate" DataSources. Note, only applies to [OperationBinding.operationType](classes/OperationBinding.md#attr-operationbindingoperationtype) "custom".
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| "query" | The custom SQL or HQL is read-only |
+| "update" | The custom SQL or HQL updates data |
+
+### Groups
+
+- customQuerying
+
+---
 ## Type: StackDirection
 
 ### Description
@@ -7152,6 +7208,19 @@ The technique SmartClient Server's SQL DataSource should use to select a "page" 
 | "down" | older messages move down |
 | "right" | older messages move right |
 | "left" | older messages move left |
+
+---
+## Type: StackPersistence
+
+### Description
+—
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| "none" | older messages disappear as if unrelated |
+| "reset" | older messages have their duration timers reset so they stick around as long as the new message if they've got less time left than that message |
 
 ---
 ## Type: StandardControlGroup
@@ -7189,16 +7258,55 @@ Constants for the standard states for a StatefulCanvas.
 - state
 
 ---
-## Type: StatePath
+## Type: StringMethod
 
 ### Description
-A path expression indicating where a value in a nested Object should be extracted.
+A String containing a valid JavaScript expression that's automatically converted to a function with a return value matching the value of the last statement.
 
-A `StatePath` is a dot-delimited list of segments, where each segment is a property name. Any `segment` can end in an operator that provides additional details:
+See [stringMethods](kb_topics/stringMethods.md#kb-topic-string-methods-overview) for an example.
 
-*   `[]` – specifies an array index to extract
+---
+## Type: SummaryFunction
 
-This syntax is used in [Task.getInputRecord](classes/Task.md#method-taskgetinputrecord).
+### Description
+This is used for client-side or server-side summaries
+
+*   Client-side: Function to produce a summary value based on an array of records and a field definition. An example usage is the [listGrid summary row](classes/ListGrid_1.md#attr-listgridshowgridsummary), where a row is shown at the bottom of the listGrid containing summary information about each column.
+*   Server-side: Function used for getting summarized field value using [Server Summaries feature](kb_topics/serverSummaries.md#kb-topic-server-summaries) or when [Including values from multiple records](classes/DataSourceField.md#attr-datasourcefieldincludefrom)
+
+For the client-side SummaryFunctions may be specified in one of 2 ways:
+
+*   as an explicit function or executable [StringMethod](kb_topics/stringMethods.md#kb-topic-string-methods-overview), which will be passed `records` (an array of records) and `field` (the field definition for which the summary is required).
+*   as a standard SummaryFunction identifier
+
+For valid ways to configure SummaryFunctions to use server-side feature see the [Server Summaries overview](kb_topics/serverSummaries.md#kb-topic-server-summaries), including how to implement custom summary functions, not just builtin ones listed here (look for "Custom Aggregation" section).
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| sum | _Client:_ iterates through the set of records, picking up and summing all numeric values for the specified field. Returns null to indicate invalid summary value if any non numeric field values are encountered.  
+_Server:_ acts exactly like SQL SUM function. |
+| avg | _Client:_ iterates through the set of records, picking up all numeric values for the specified field and determining the mean value. Returns null to indicate invalid summary value if any non numeric field values are encountered.  
+_Server:_ acts exactly like SQL AVG function. |
+| max | _Client:_ iterates through the set of records, picking up all values for the specified field and finding the maximum value. Handles numeric fields and date/time/datetime type fields only. Returns null to indicate invalid summary value if any non numeric/date field values are encountered.  
+_Server:_ acts exactly like SQL MAX function. |
+| min | _Client:_ iterates through the set of records, picking up all values for the specified field and finding the minimum value. Handles numeric fields and date/time/datetime type fields only. Returns null to indicate invalid summary value if any non numeric field values are encountered.  
+_Server:_ acts exactly like SQL MIN function. |
+| multiplier | _Client:_ iterates through the set of records, picking up all numeric values for the specified field and multiplying them together. Returns null to indicate invalid summary value if any non numeric field values are encountered.  
+_Server:_ **not supported**. |
+| count | _Client:_ returns a numeric count of the total number of records passed in.  
+_Server:_ acts exactly like SQL COUNT function. |
+| title | _Client:_ returns `field.summaryValueTitle` if specified, otherwise `field.title`  
+_Server:_ **not supported**. |
+| first | _Client:_ Currently the same as the **min** function.  
+_Server:_ implemented as SQL MIN function. |
+| concat | _Client:_ iterates through the set of records, producing a string with each value concatenated to the end.  
+_Server:_ implemented as SQL CONCAT function. Supported only by SQLDataSource. Note that it is natively supported only by Oracle DB driver, other drivers perform additional query to fetch values for concatenation. See also [joinPrefix](classes/DataSourceField.md#attr-datasourcefieldjoinprefix), [joinString](classes/DataSourceField.md#attr-datasourcefieldjoinstring) and [joinSuffix](classes/DataSourceField.md#attr-datasourcefieldjoinsuffix) related datasource field attributes. |
+
+### Groups
+
+- serverSummaries
 
 ---
 ## Type: TableMode
@@ -7247,6 +7355,38 @@ An event that triggers title editing in a TabSet.
 | TextAreaItem.HARD | when the entered text reaches the edge of the text area, insert a line break |
 
 ---
+## Type: TextMatchStyle
+
+### Description
+For "fetch" operations, how simple search criteria should be interpreted for text fields (and to some extent numeric fields, see the notes below). For greater flexibility, use [AdvancedCriteria](#object-advancedcriteria).
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| "exact" | case-insensitive exact match ("foo" matches "foo" and "FoO", but not "FooBar") |
+| "exactCase" | case-sensitive exact match ("foo" matches only "foo") |
+| "substring" | case-insenstive substring match ("foo" matches "foobar" and "BarFoo") |
+| "startsWith" | case-insensitive prefix match ("foo" matches "FooBar" but not "BarFoo")
+
+textMatchStyle behavior is consistent across the client and all three of the built-in server DataSource implementations - SQL, Hibernate and JPA - to the maximum extent that is practical. Known inconsistencies, some of which can be tweaked with configuration settings, are described below
+
+*   textMatchStyle can be disabled for any individual field with the [DataSourceField.ignoreTextMatchStyle](classes/DataSourceField.md#attr-datasourcefieldignoretextmatchstyle) declaration. This behavior is consistent across client and server implementations, with the proviso that case-sensitive behavior is inherently inconsistent in the server-side implementations (see below for a more detailed discussion of this)
+*   textMatchStyle is forced to "exactCase" for [primaryKey](classes/DataSourceField.md#attr-datasourcefieldprimarykey) fields on `update` and `remove` operations, unless [OperationBinding.allowMultiUpdate](classes/OperationBinding.md#attr-operationbindingallowmultiupdate) is in force. This means that a normal update or remove operation - which is constrained by a unique primaryKey value or combination, to affect only a single data row - will use an equality match on all primaryKey fields. This is desirable because it makes index usage more likely. Note that this means the key values "foo" and "FOO" are distinct, which is a change from previous behavior. For most databases, this change will have no effect because most databases do not by default allow primaryKey values that only differ in case anyway - if a table has a row with a PK of "foo" and you try to insert a row with a PK of "FOO", most databases will fail with a constraint violation. However, if you are using a database hat allows key values that differ only in case, and you need to support this for some reason, you can switch the framework back to the previous behavior by setting property `allow.case.sensitive.pks` to `true` in your `server.properties` file. Note, we do not recommend this; in fact, we do not recommend the use of text primaryKey fields at all. Where you have control ,we would always recommend the use of automatically incrementing numeric sequence keys.
+*   textMatchStyle does not apply to boolean or temporal (date, datetime, time) [field types](classes/DataSourceField.md#attr-datasourcefieldtype). Such fields are always checked for equality. If you have a need for more complex matching, such as date-range checking, use AdvancedCriteria
+*   Critiera values for temporal fields **must** be real dates (Javascript `Date` objects on the client, instances of `java.util.Date` on the server). Attempting to match against a string or any other type of value will result in an "always fails" clause being generated. This behavior is how the client code has always worked, but is a change for the server-side DataSources, in the interests of consistency. The previous behavior was:
+    *   SQLDataSource used to attempt to match the date column to the criteria value provided; if that value was an appropriately-formatted string, that attempt _might_ have worked, but it would be database-specific. If you have an application that depends on this old behavior, you can switch it back on by adding the following to your `server.properties` file: `sql.temporal.fields.require.date.criteria: false`
+    *   HibernateDataSource and JPADataSource used to skip such clauses altogether, which results in the opposite behavior (there is an implied "always succeeds" clause, because the clause is not present in the query at all). If you have an application that depends on this old behavior, you can switch it back on by adding the following to your `server.properties` file: `jpa.temporal.fields.require.date.criteria: false` or `hibernate.temporal.fields.require.date.criteria: false`, as appropriate
+*   textMatchStyle does not apply to fields used in the joins generated to satisfy [includeFrom](classes/DataSourceField.md#attr-datasourcefieldincludefrom) declarations or entity relations in Hibernate or JPA. Again, such comparisons are always for equality
+*   textMatchStyle is applied to numeric fields **only** if the supplied criteria value is a string. So for a numeric field "myNumber", we will match 10, 100, 110 and 1000 if a criteria value of "10" (the quoted string) is supplied, but we will only match 10 if a criteria value of 10 (the actual number) is supplied
+    *   This is a change in behavior for the server-side DataSource implementations, in the interests of consistency with the client behavior. Previously, all three of the built-in DataSource implementations applied textMatchStyle to numeric fields regardless of the criteria value's type. If you have an application that depends on this old behavior, you can switch it back on by adding the following to your `server.properties` file: `sql.substring.numeric.criteria: true` or `hibernate.substring.numeric.criteria: true` or `jpa.substring.numeric.criteria: true`, as appropriate
+*   "exactCase" matching cannot be made consistent across all database providers because each database has its own idea of whether case-sensitive matching should be the default, and how to switch it on and off (if that is even possible)
+    *   Microsoft SQL Server must have case-sensitive matching enabled by setting a case-sensitive collation when the database is created (there are more fine-grained options, but we do not recommend them because of the scope for further inconsistency, where "exactCase" works correctly on table A but not on table B). See [MSDN](http://msdn.microsoft.com/en-us/library/ms175835.aspx) for details
+    *   HSQLDB has case sensitivity set with the `SET IGNORECASE` directive - [see here](http://www.hsqldb.org/doc/guide/ch09.html#set_ignorecase-section)
+    *   MySQL is case-insensitive, but since it provides an easy way to do per-query, case-sensitive matching in SQL, we work around it for that database, but **only** in SQL DataSources
+*   If you are using Hibernate or JPA, whether "exactCase" works as expected depends entirely on the underlying database. Unlike the SQL DataSource, where we have fine-grained control of the SQL that the database executes, we are constrained by what the ORM will allow. This prevents us from compensating for database quirks, like we do with MySQL's case-insensitivity in the SQL DataSource |
+
+---
 ## Type: TileLayoutPolicy
 
 ### Description
@@ -7268,6 +7408,51 @@ Tiles that do not specify a size will be sized to fill available space. |
 Tiles are never resized by the TileLayout and [TileLayout.tileSize](classes/TileLayout.md#attr-tilelayouttilesize) is ignored. |
 
 ---
+## Type: TimeDisplayFormat
+
+### Description
+String designating a standard time format for displaying the times associated with dates strings.
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| toTime | String will display with seconds and am/pm indicator:`[H]H:MM:SS am|pm`.  
+Example: `3:25:15 pm` |
+| to24HourTime | String will display with seconds in 24 hour time: `[H]H:MM:SS`.  
+Example: `15:25:15` |
+| toPaddedTime | String will display with seconds, with a 2 digit hour and am/pm indicator: `HH:MM:SS am|pm`  
+Example: `03:25:15 pm` |
+| toPadded24HourTime | String will display with seconds, with a 2 digit hour in 24 hour format: `HH:MM:SS`  
+Examples: `15:25:15`, `03:16:45` |
+| toShortTime | String will have no seconds and be in 12 hour format:`[H]H:MM am|pm`  
+Example: `3:25 pm` |
+| toShort24HourTime | String will have no seconds and be in 24 hour format: `[H]H:MM`  
+Example:`15:25` |
+| toShortPaddedTime | String will have no seconds and will display a 2 digit hour, in 12 hour clock format: `HH:MM am|pm`  
+Example: `03:25 pm` |
+| toShortPadded24HourTime | String will have no seconds and will display with a 2 digit hour in 24 hour clock format: `HH:MM`  
+Examples: `15:25`, `03:16` |
+
+---
+## Type: TitleAlign
+
+### Description
+Supported positioning of the chart Title.
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| "left" | Align to the left of the chart title header |
+| "center" | Align centrally in the chart title header |
+| "right" | Align to the right of the chart title header |
+
+### Groups
+
+- chartTitle
+
+---
 ## Type: TitleAutoFitRotationMode
 
 ### Description
@@ -7280,6 +7465,51 @@ Strategy for determining how to place maximum-sized labels for [DrawItem.titleAu
 | "never" | do not rotate |
 | "auto" | rotate only if doing so would allow label to be larger |
 | "always" | always rotate |
+
+---
+## Type: TitleOrientation
+
+### Description
+Orientation of titles relative to the FormItem being labeled. Can be set a the DynamicForm level as a default, or on individual items.
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| "left" | — |
+| "top" | — |
+| "right" | — |
+
+### Groups
+
+- formTitles
+
+### See Also
+
+- [DynamicForm.titleOrientation](classes/DynamicForm.md#attr-dynamicformtitleorientation)
+- [FormItem.titleOrientation](classes/FormItem.md#attr-formitemtitleorientation)
+
+---
+## Type: TitleRotationMode
+
+### Description
+The different ways in which the [titleLabel](classes/DrawItem.md#attr-drawitemtitlelabel) of a [DrawItem](classes/DrawItem.md#class-drawitem) can be rotated with the item.
+
+**NOTE:** The effect of the "withItemAlwaysUp" and "withLineAlwaysUp" settings is not affected by the global rotation, if any (see [DrawPane.rotation](classes/DrawPane.md#attr-drawpanerotation)).
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| "neverRotate" | the `titleLabel` is never rotated with the item. |
+| "withItem" | the `titleLabel` is rotated exactly to match the item's rotation (see [DrawItem.rotation](classes/DrawItem.md#attr-drawitemrotation)). |
+| "withItemAlwaysUp" | the `titleLabel` is rotated exactly to match the item's rotation, except that at certain rotations, the `titleLabel` is flipped by 180° so that the title text is never upside down. |
+| "withLine" | (applies only to [DrawLine](classes/DrawLine.md#class-drawline) and [DrawLinePath](classes/DrawLinePath.md#class-drawlinepath)) the `titleLabel` is rotated to match the line or center segment.
+
+If used on a `DrawItem` that is not a `DrawLine` or `DrawLinePath`, then the effect is the same as "withItem". |
+| "withLineAlwaysUp" | (applies only to [DrawLine](classes/DrawLine.md#class-drawline) and [DrawLinePath](classes/DrawLinePath.md#class-drawlinepath)) the `titleLabel` is rotated to match the line or center segment, except that at certain rotations, the `titleLabel` is flipped by 180° so that the title text is never upside down.
+
+If used on a `DrawItem` that is not a `DrawLine` or `DrawLinePath`, then the effect is the same as "withItemAlwaysUp". |
 
 ---
 ## Type: TopOperatorAppearance
@@ -7397,6 +7627,19 @@ The "parent" modelType is best for integrating with relational storage (because 
 A Uniform Resource Identifier string, as defined by [https://tools.ietf.org/html/rfc3986](https://tools.ietf.org/html/rfc3986).
 
 ---
+## Type: ValidationMode
+
+### Description
+Mode of validation used for running validation on partially entered data.
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| "full" | Assume provided data is complete and run all validation rules |
+| "partial" | Validate only the data values that are present ignoring the absence of required fields, validators that refer to fields that are not present, and any conditional validators dependent on fields that are not present. |
+
+---
 ## Type: ValidatorType
 
 ### Description
@@ -7475,6 +7718,13 @@ Note that the `errorMessage` for this validator will be evaluated as a dynamicSt
 | required | A non-empty value is required for this field to pass validation.
 
 In the case of a "binary" field, a non-empty file must be uploaded. |
+| readOnly | Disallows changes to this field, based on the [Validator.applyWhen](classes/Validator.md#attr-validatorapplywhen) condition.
+
+In addition to server-side enforcement, this validator will automatically cause editors for the field to become read-only, by rendering in a disabled appearance, readOnly appearance, or even by becoming hidden.
+
+The appearance of the read-only field can be controlled by validator.fieldAppearance. See [FieldAppearance](reference_2.md#type-fieldappearance) for choices. If `fieldAppearance` is not specified, the default is "readOnly". |
+| visibility | Change the visibility of this field. |
+| enable | Change the enable/disable state of this field. |
 | isUnique | Returns true if the value for this field is unique. The uniqueness check is performed across the whole DataSource unless you specify property `validator.criteriaFields` as a comma-separated string of field names; in that case, the uniqueness check is done in the context of those extra criteria, allowing you to check, for example, whether an employee number is unique for the department and location found on the record being validated. By default the uniqueness check is not case sensitive but this can be controlled through the [caseSensitive](classes/Validator.md#attr-validatorcasesensitive) attribute. You can specify the [operation](classes/DataSource.md#attr-datasourceoperationbindings) to use for the uniqueness check with the [operationId](classes/Validator.md#attr-validatoroperationid) attribute.
 
 Validators of this type have [requiresServer](classes/ValidatorDefinition.md#attr-validatordefinitionrequiresserver) set to `true` and do not run on the client, unless all of the following are true:
@@ -7539,6 +7789,21 @@ Enum used within the [FilterBuilder](classes/FilterBuilder.md#class-filterbuilde
 - appearance
 
 ---
+## Type: ViewName
+
+### Description
+The names of the Calendar views.
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| "day" | day view |
+| "week" | week view |
+| "month" | month view |
+| "timeline" | timeline view |
+
+---
 ## Type: ViewState
 
 ### Description
@@ -7562,18 +7827,6 @@ Settings for whether multiple sections can be in the expanded state simultaneous
 |-------|-------------|
 | "mutex" | Only one section can be expanded at a time. |
 | "multiple" | Multiple sections can be expanded at the same time, and will share space. |
-
----
-## Type: WriteToGeneratedFields
-
-### Description
-Indicates the category of "generated fields" the SmartClient Server should write values to, if defined on a [DSRequest](reference_2.md#object-dsrequest) - see [writeToGeneratedFields](classes/DSRequest.md#attr-dsrequestwritetogeneratedfields). At the time of writing we only support one such category, but this may be extended in the future.
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| "modifiersAndTimestamps" | Write `dsRequest`\-provided values for fields of type `modifier`, `creator`, `modifierTimestamp` and `creatorTimestamp` |
 
 ---
 ## Type: XMLDocument
@@ -7678,170 +7931,22 @@ When using the SmartClient Server, AdvancedCriteria created on the client and st
 - [ResultTree.useSimpleCriteriaLOD](classes/ResultTree.md#attr-resulttreeusesimplecriterialod)
 
 ---
-## Object: AdvancedCriterionSubquery
+## Object: AIContext
 
 ### Description
-A specialized subclass of [DSRequest](reference_2.md#object-dsrequest) that you use to declare the properties of a subquery (a [fieldQuery](classes/Criterion.md#attr-criterionfieldquery) or [valueQuery](classes/Criterion.md#attr-criterionvaluequery)) to be used in [AdvancedCriteria](#object-advancedcriteria). Subquery definitions are often very compact; only a few properties are permitted for a client-driven subquery (see "Restrictions on client-driven subqueries", below), and many use cases can be satisfied specifying just a [dataSource](classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubquerydatasource) and a [summary function](classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubquerysummaryfunctions).
-
-Criteria subquery definitions fall into two broad categories:
-
-*   **Aggregation**, where the subquery uses a [SummaryFunction](reference_2.md#type-summaryfunction) to aggregate or summarize a related dataset, and then filter on that aggregated or summarized value. For example, orders with more than 10 lines, customers with an average order value more than $1000, UK customers with an outstanding payment more than a week old, etc
-*   **Related value**, where the subquery selects a value (or, for `inSet`\-type clauses, a set of values) from a related dataSource and then filters on that value. For example, Products that were not ordered last month, Employees who are based in one of the North American offices, Orders that include a particular category of Product, etc
-
-In ideal circumstances - when both main and subquery [dataSource](classes/DataSource.md#class-datasource)s are [SQL DataSources](kb_topics/sqlDataSource.md#kb-topic-sql-datasources), and a number of other restrictions are satisfied - subqueries are implemented by incorporating their functionality into a larger overall SQL query, because this is the most efficient thing to do, and gives the best performance. See [canEmbedSQL](classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubquerycanembedsql) for a description of the rules and nuances around this.
-
-In cases where we cannot implement subqueries by embedding SQL, they are implemented by converting the subquery definitions into separate real `DSRequest`s, executing them, and then combining their results into the wider resultset.
-
-#### Subquery Overview
-Subqueries are used to derive a value to be compared as part of the main query, from a set of related data where there is no way to directly join to a single record (usually because the subquery is summarizing or extracting from a larger dataset). Each subquery must return a single value per record in the main query, because it going to be compared to a single value from each main record (this value either comes directly from the main record, or is derived via a `fieldQuery`)
-
-Because the nature of a subquery is that it is deriving a single value from multiple records, subqueries are often involved in some kind of aggregation (returning a record count, or the minimum value, for example). While this is the most common use of subqueries, it is not the only one - see the "Simple valueQuery" example below.
-
-Whether or not a subquery is aggregating multiple records, it typically needs to be constrained by a join to the outer query. For example, if you were looking for all customers that have placed more than $1000-worth of orders, you would use something like the "Simple aggregating subquery" below. As you will see, that example displays no explicit means of joining the subquery to the outer query, and yet one is obviously necessary because we are looking for the sum of "lineValue" customer-by-customer, not the total sum for all customers.
-
-This join from the subquery to the outer query is applied implicitly by SmartClient's SQL engine. It auto-discovers a Relation between the main dataSource and subquery dataSource by following [foreignKey](classes/DataSourceField.md#attr-datasourcefieldforeignkey) definitions from the subquery dataSource, until it finds a path to the main dataSource. This auto-discovery usually does the right thing, but there are two possibilities it does not address:
-
-*   There is no direct or indirect Relation from the subquery dataSource to the main dataSource. This is an unusual case for a subquery - most use use cases call for related dataSources - but valid cases are conceivable. To cope with this scenario, you set [queryFK](classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubqueryqueryfk) to the special value "`***none***`". Note, if SmartClient fails to find a path from the subquery dataSource to the main dataSource and `queryFK:"*none*"` has not been set, the framework will log a warning and the fetch will fail
-*   There is more than one direct or indirect Relation from the subquery dataSource to the main dataSource, and you want to use a different one from the one that was auto-discovered. Again, the solution is to explicitly name the [queryFK](classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubqueryqueryfk) - see the documentation for that property for details of the syntax
-
-Since SmartClient can only make use of a single value as output from a subquery, if your subquery returns multiple records, we will simply use the first. If the query returns multiple fields, you can specify the field to use as the subquery output with [queryOutput](classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubqueryqueryoutput). If the subquery returns more than one field and no `queryOutput` is specified, we will use the first aggregated ([summaryFunction](classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubquerysummaryfunctions)) field, or the first [grouped](classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubquerygroupby) field if there are no aggregated fields, or the [primaryKey](classes/DataSourceField.md#attr-datasourcefieldprimarykey) field if there are also no `groupBy` fields, or just the first numeric field failing all else. Note, however, that although we attempt to derive a sensible value, it never makes sense to return multiple records from a subquery, and it only really makes sense to return multiple fields if you explicitly identify the correct field with `queryOutput`. Ideally, for the sake of clarity, return a single record, and either have that record contain a single field, or specify `queryOutput`
-
-#### Restrictions on client-driven subqueries
-For security reasons, subqueries in [requests](reference_2.md#object-dsrequest) that came from the client-side are only permitted to specify a handful of properties. These properties are sufficient to allow the full power of the subquery feature to be used, without allowing any of the much broader set of general properties associated with the `DSRequest` superclass. The properties that can be set in a client-driven subquery are just those that are documented as direct properties of the `AdvancedCriterionSubquery` class - specifically [canEmbedSQL](classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubquerycanembedsql), [criteria](classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubquerycriteria), [dataSource](classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubquerydatasource), [groupBy](classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubquerygroupby), [operationId](classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubqueryoperationid), [queryFK](classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubqueryqueryfk), [queryOutput](classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubqueryqueryoutput), and [summaryFunctions](classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubquerysummaryfunctions)
-
-For `DSRequest`s that originally came from the server, it is possible to have a subquery that specifies any `DSRequest` property. Many of these would only have any relevance or effect if the subquery was run separately rather than embedded (as described above and in the [canEmbedSQL](classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubquerycanembedsql) doc). If you need to do this, look in the server Javadoc for `DSRequest.setAllowArbitrarySubqueries(boolean)`
-
-Finally, note that it is possible to switch off the ability to use subqueries altogether, either [per-DataSource](classes/DataSource.md#attr-datasourceallowcriteriasubqueries), or globally by setting the `allowCriteriaSubqueries` flag in your `server.properties` file:
-
-```
- allowCriteriaSubqueries: false
- 
-```
-
-#### `exists / notExists` operators
-The [`exists / notExists`](#type-operatorid) operators provide a concise way to filter records based on the existence (or absence) of related rows.
-
-When both main DataSource and suquery DataSource is backed by `SQLDataSource`, these operators are transformed into `EXISTS (...)` / `NOT EXISTS (...)` correlated subselects in the generated SQL. Non-SQL backends, as well as when [canEmbedSQL:false](classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubquerycanembedsql) is set for SQL backends, will execute subqueries as separate [DSRequests](reference_2.md#object-dsrequest) and apply their results manually.
-
-These operators must be used with a [fieldQuery](classes/Criterion.md#attr-criterionfieldquery):
-
-```
- // EXISTS: at least one related row matches the subquery
- { operator: "exists",
-   fieldQuery: { dataSource: "OrderLine", criteria: { /* ... */ } }
- }
- 
-```
-See full examples in the "Examples" section below.
-
-#### Examples
-Subqueries are quite hard to describe in narrative text, but the following examples demonstrate their use and should make things clearer
-
-#### Simple aggregating subquery
-This example uses a `fieldQuery` to select all Order records for customer 1234, where the order total (sum of all the order line values) is greater than $1000.
-```
- Order.fetchData({
-     _constructor: "AdvancedCriteria", operator: "and", criteria: [
-         {fieldName: "customerNumber", operator: "equals", value: 1234},
-         {
-              fieldQuery: {
-                  dataSource: "OrderLine",
-                  summaryFunctions: {lineValue: "sum"}
-              }, operator: "greaterThan", value: 1000
-         }
-     ] 
- });
- 
-```
-#### Simple valueQuery
-This example uses a `valueQuery` to derive the employeeNumber of a manager when we only know the email address of that manager, so we can find out who reports to her. This example shows how to use additional criteria within a subquery. It also demonstrates the relatively rare situation where no join to the outer dataSource is required (hence the declaration of `queryFK: "*none*"`)
-```
- Employee.fetchData({
-     _constructor: "AdvancedCriteria", operator: "and", criteria: [
-         {
-             fieldName: "reportsTo", 
-             operator: "equals",
-                 valueQuery: {
-                     dataSource: "Employee",
-                     queryFK: "*none*",
-                     criteria: { operator: "and", criteria: [
-                         {fieldName: "email", operator: "equals", value: "mpatterson@classicmodelcars.com"}
-                     ]
-                 }
-             }
-         }
-     ]
- });
- 
-```
-#### More complex aggregation example
-This example uses both a `fieldQuery` and a `valueQuery` to select all US-based customers who placed more orders in 2022 than they placed in 2021. Note, this is the number of orders, not the value, and the particular field that we add the "count" function to is not important (count is the same regardless of which field you count). We chose the orderNumber in this case, but that choice is arbitrary
-```
- Customer.fetchData({
-     _constructor: "AdvancedCriteria", operator: "and", criteria: [
-         {fieldName: "country", operator: "equals", value: "USA"},
-         {
-             fieldQuery: {
-                 dataSource: "Order",
-                 summaryFunctions : { orderNumber : "count" },
-                 criteria: {fieldName: "orderDate", operator: "iBetweenInclusive", 
-                                         start:new Date("2021-01-01"), end:new Date("2021-12-31")}
-             }, 
-             operator: "lessThan",
-             valueQuery: {
-                 dataSource: "Order",
-                 summaryFunctions : { orderNumber : "count" },
-                 criteria: {fieldName: "orderDate", operator: "iBetweenInclusive", 
-                                         start:new Date("2022-01-01"), end:new Date("2022-12-31")}
-             }
-         }
-     ]
- });
- 
-```
-#### `exists` / `notExists` operators
-Show customers with any Orders in 2024 (exists).
-```
- Customer.fetchData({
-   _constructor: "AdvancedCriteria", operator: "and", criteria: [
-     { operator: "exists",
-       fieldQuery: {
-         dataSource: "Order",
-         criteria: { fieldName: "orderDate", operator: "iBetweenInclusive",
-                     start: new Date("2024-01-01"), end: new Date("2024-12-31") }
-       }
-     }
-   ]
- });
- 
-```
-Products not ordered last month (notExists).
-```
- Product.fetchData({
-   _constructor: "AdvancedCriteria", operator: "and", criteria: [
-     { operator: "notExists",
-       fieldQuery: {
-         dataSource: "OrderLine",
-         criteria: { operator: "and", criteria: [
-           { fieldName: "orderDate", operator: "iBetweenInclusive",
-             start: startOfLastMonth, end: endOfLastMonth }
-         ]}
-       }
-     }
-   ]
- });
- 
-```
-
-### Groups
-
-- advancedFilter
+Context object for an AI process.
 
 ---
 ## Object: AIMessage
 
 ### Description
 An individual message in the list of [AIRequest.messages](classes/AIRequest.md#attr-airequestmessages) of an AI request.
+
+---
+## Object: AIProgressMessage
+
+### Description
+A message relating to progress made in an ongoing build-via-AI operation.
 
 ---
 ## Object: AIRequest
@@ -7854,6 +7959,18 @@ Represents a request to AI for a response.
 
 ### Description
 Configuration object for effect to apply during an animated show or hide.
+
+---
+## Object: Array
+
+### Description
+Generic extensions to JavaScript Arrays. You can call these on any Array.
+
+JavaScript's native Array is retrofitted to support the `List` API.
+
+### See Also
+
+- [List](#interface-list)
 
 ---
 ## Object: AsyncDataBoundOperationContext
@@ -7924,12 +8041,10 @@ The result of an asynchronous operation to generate a value.
 - fieldGeneration
 
 ---
-## Object: AutoTestLocatorConfiguration
+## Object: Boolean
 
 ### Description
-Configuration object for generating [AutoTestLocators](reference_2.md#type-autotestlocator).
-
-An AutoTestLocatorConfiguration may be passed to [AutoTest.getLocator](classes/AutoTest.md#classmethod-autotestgetlocator) to override default locator configuration settings.
+Boolean object. Attributes, parameters, or return values declared as `Boolean` may be null. Contrast with [boolean](#type-boolean).
 
 ---
 ## Object: BrowserWindowSettings
@@ -7938,10 +8053,20 @@ An AutoTestLocatorConfiguration may be passed to [AutoTest.getLocator](classes/A
 Allows specifying additional browser window settings when calling the underlying JavaScript or OpenFin call to create the child window in [MultiWindow.open](classes/MultiWindow.md#classmethod-multiwindowopen).
 
 ---
+## Object: BuildHilitesContext
+
+### Description
+—
+
+### See Also
+
+- [AI.buildHilites](#classmethod-aibuildhilites)
+
+---
 ## Object: BuildHilitesResponse
 
 ### Description
-Represents a response from AI to a request to build one or more [Hilite](reference_2.md#object-hilite) objects.
+Represents a response from AI to a request to build one or more [Hilite](#object-hilite) objects.
 
 ### See Also
 
@@ -7980,6 +8105,16 @@ Each CellRecord should be an object that minimally has a property named after ea
 Cell records can contain any other properties desired, such as cell ids, or values for facets not initially shown.
 
 ---
+## Object: ClassFactory
+
+### Description
+Sets up a real inheritance structure for Javascript objects. We separate out class objects from prototypes, so each gets its own inheritance chain. This allows us to set up superclass calls, maintain class vs. instance variables and more! The ClassFactory is a singleton object that holds the miscellaneous pieces of our inheritance mechanism. Your main interaction with the ClassFactory is to create new classes: `ClassFactory.defineClass("MyClass", "mySuperClass");`
+
+### See Also
+
+- [Class](classes/Class.md#class-class)
+
+---
 ## Object: ComponentSchemaField
 
 ### Description
@@ -8001,22 +8136,6 @@ Controls what class and instance substitutions, if any, are applied during a cal
 
 - [CreateScreenSettings.classSubstitutions](classes/CreateScreenSettings.md#attr-createscreensettingsclasssubstitutions)
 - [CreateScreenSettings.componentSubstitutions](classes/CreateScreenSettings.md#attr-createscreensettingscomponentsubstitutions)
-
----
-## Object: CriteriaOutputSettings
-
-### Description
-Settings for generation of AdvancedCriteria descriptions.
-
----
-## Object: CriterionValues
-
-### Description
-An object that contains information needed to evaluate an [operator](#object-operator) on a record.
-
-### Groups
-
-- advancedFilter
 
 ---
 ## Object: DataContext
@@ -8051,7 +8170,7 @@ For example, in JavaScript:
  
 ```
 
-When used within a Workflow [SetScreenDataTask](#class-setscreendatatask) or [AddScreenTask](classes/AddScreenTask.md#class-addscreentask), any applicable [TaskInputExpression](reference_2.md#type-taskinputexpression) can be used as a value.
+When used within a Workflow [SetScreenDataTask](#class-setscreendatatask) or [AddScreenTask](classes/AddScreenTask.md#class-addscreentask), any applicable [taskInputExpression](kb_topics/taskInputExpression.md#kb-topic-task-input-expressions) can be used as a value.
 
 To use a literal value that starts with one of the expressions described above, prefix the leading dollar sign ($) with a backslash (\\) (ex. "\\$ruleScope.goes.here") to prevent the value from being resolved as an expression.
 
@@ -8066,6 +8185,12 @@ Settings for a data question.
 - answerEngine
 
 ---
+## Object: DateRange
+
+### Description
+A JavaScript object specifying a range of dates. Values are [start](#attr-daterangestart) and [end](#attr-daterangeend). If either value is omitted, the range is assumed to be open-ended in that direction - so if dateRange.start is omitted, the range will include any date earlier than the value specified in dateRange.end.
+
+---
 ## Object: DBCField
 
 ### Description
@@ -8075,6 +8200,12 @@ Represents a field in a [DataBoundComponent](#interface-databoundcomponent).
 
 - [ListGridField](reference_2.md#object-listgridfield)
 - [DetailViewerField](#object-detailviewerfield)
+
+---
+## Object: DecisionBranch
+
+### Description
+Identifies a potential branch within a [MultiDecisionTask](classes/MultiDecisionTask.md#class-multidecisiontask). Each decision has a criteria and a target ProcessElement ID.
 
 ---
 ## Object: DetailViewerField
@@ -8114,6 +8245,72 @@ Each element in the data array above is an instance of DetailViewerRecord - noti
 Holds the information of a drawing command.
 
 ---
+## Object: DSRequest
+
+### Description
+Request sent to the server to initiate a [DataSource operation](kb_topics/dataSourceOperations.md#kb-topic-datasource-operations). All properties which are legal on [RPCRequest](#object-rpcrequest) are legal, in addition to the properties listed here.
+
+### See Also
+
+- [RPCRequest](#object-rpcrequest)
+
+---
+## Object: DSRequestModifier
+
+### Description
+An object that modifies a dsRequest based on several available values, including preceding responses from the same queue.
+
+**Some elements of this feature are only available with Power or better licenses.** See [smartclient.com/product](http://smartclient.com/product) for details.
+
+You provide a list of DSRequestModifiers as the [OperationBinding.criteria](classes/OperationBinding.md#attr-operationbindingcriteria) or [OperationBinding.values](classes/OperationBinding.md#attr-operationbindingvalues) of an [OperationBinding](classes/OperationBinding.md#class-operationbinding). The ability to modify a request based on responses to earlier requests in the same queue is called [transactionChaining](kb_topics/transactionChaining.md#kb-topic-transaction-chaining).
+
+A DSRequestModifier consists of a [fieldName](classes/DSRequestModifier.md#attr-dsrequestmodifierfieldname), usually a [value](classes/DSRequestModifier.md#attr-dsrequestmodifiervalue) and possibly an [operator](classes/DSRequestModifier.md#attr-dsrequestmodifieroperator) and [start](classes/DSRequestModifier.md#attr-dsrequestmodifierstart) and/or [end](classes/DSRequestModifier.md#attr-dsrequestmodifierend) values (applicable to advanced criteria only). The value, start and end settings can be static, or - with Power or better licenses - they can be expressions in the Velocity template language, which will be resolved at runtime, immediately before the DSRequest is executed.
+
+In addition to the standard [Velocity variables](kb_topics/velocitySupport.md#kb-topic-velocity-context-variables), special Velocity variables are available for the _value_ field when used in a `<values>` declaration - see [DSRequestModifier.value](classes/DSRequestModifier.md#attr-dsrequestmodifiervalue) for details.
+
+See below some examples of [OperationBinding.criteria](classes/OperationBinding.md#attr-operationbindingcriteria) declarations:
+
+```
+  <operationBindings>
+      <operationBinding operationType="fetch" operationId="...">
+          <criteria fieldName="lifeSpan" value="10"/>
+          <criteria fieldName="scientificName" value="Gazella thomsoni"/>
+      </operationBinding>
+      
+      <operationBinding operationType="fetch" operationId="...">
+          <criteria fieldName="lifeSpan" operator="greaterThan" value="10" />
+      </operationBinding>
+  
+      <operationBinding operationType="fetch" operationId="...">
+          <criteria _constructor="AdvancedCriteria" operator="or">
+              <criteria>
+                  <Criterion fieldName="lifeSpan" operator="greaterThan" value="10" />
+                  <Criterion fieldName="scientificName" operator="contains" value="Octopus" />
+              </criteria>
+          </criteria>
+      </operationBinding>
+  </operationBindings>
+ 
+```
+
+And an example of [OperationBinding.values](classes/OperationBinding.md#attr-operationbindingvalues) declarations:
+
+```
+ <operationBinding operationType="add">
+     <values fieldName="orderID" value="$responseData.last('queuedAdd_order','add').orderID" />
+ </operationBinding>
+ 
+```
+
+DSRequestModifiers are intended partly as a security mechanism, so like [Declarative Security](kb_topics/declarativeSecurity.md#kb-topic-declarative-security) features, they apply to requests from browsers, but by default do not apply to requests initiated by server code. To have DSRequestModifiers apply to a server-initiated DSRequest, use either setRPCManager() or setClientRequest().
+
+See the [Master/Detail Add Example](https://www.smartclient.com/smartclient-latest/showcase/?id=queuedAdd) to see this in action.
+
+### Groups
+
+- transactionChaining
+
+---
 ## Object: EditNode
 
 ### Description
@@ -8130,41 +8327,6 @@ An EditContext generally offers some means of editing EditNodes and, as edits ar
 
 ### Description
 Configuration object for [AutoTest.waitForElement](classes/AutoTest.md#classmethod-autotestwaitforelement)
-
----
-## Object: EventStreamData
-
-### Description
-A JavaScript object representing the state of a live [EventStream](classes/EventStream.md#class-eventstream) instance, including all captured events retained by the stream. When [EventStream.end](classes/EventStream.md#method-eventstreamend) is called to complete capturing, a `EventStreamData` object is returned.
-
-Note that `EventStreamData` is essentially JSON, except that dates remain JavaScript [Date](reference_2.md#object-date)s, rather than being converted to string format. This ensures that if you [serialize](classes/JSON.md#classmethod-jsonencode) the data and then [deserialize](classes/JSON.md#classmethod-jsondecode) it, dates round trip properly and time zone information is not lost.
-
-### Groups
-
-- experimental
-
-### See Also
-
-- [EventStreamEvent](#object-eventstreamevent)
-
----
-## Object: EventStreamEvent
-
-### Description
-A JavaScript object representing an event captured by a [EventStream](classes/EventStream.md#class-eventstream). `EventStreamEvent`s may represent DOM events (wrapped by the [EventHandler](classes/EventHandler.md#class-eventhandler)), or other operations such as [relogins](kb_topics/relogin.md#kb-topic-relogin) or [Reify](kb_topics/reify.md#kb-topic-reify-overview) file operations on screens and projects.
-
-An [eventType](classes/EventStreamEvent.md#attr-eventstreameventeventtype) should always be present, but not all properties will be present for a given `EventStreamEvent`, since their relevance depends on the `eventType`.
-
-In addition to the instance attributes documented for `EventStreamEvent`, if we're capturing [move events](classes/EventStream.md#attr-eventstreamcapturemoveevents) but not [drag events](classes/EventStream.md#attr-eventstreamcapturedragevents), the move event starting a drag will be tagged with the drag start `eventType` as a boolean attribute. So for example,
-
-```
-     dragResizeStart: true
-```
-might appear in the `EventStreamEvent` for a `mouseMove`, if it started a drag but we weren't capturing [drag events](classes/EventStream.md#attr-eventstreamcapturedragevents).
-
-### Groups
-
-- experimental
 
 ---
 ## Object: FacetValue
@@ -8221,6 +8383,12 @@ Form item icon descriptor objects used by Form Items to specify the appearance a
 - [FormItem.icons](classes/FormItem.md#attr-formitemicons)
 
 ---
+## Object: Gradient
+
+### Description
+Defines a simple gradient vertical gradient between [two](#attr-gradientstartcolor) [colors](#attr-gradientendcolor), or using [colorStops](#attr-gradientcolorstops). See [SimpleGradient](#object-simplegradient), [LinearGradient](#object-lineargradient) and [RadialGradient](#object-radialgradient) for further properties to define more advanced gradients.
+
+---
 ## Object: GroupNode
 
 ### Description
@@ -8233,6 +8401,30 @@ An auto-generated subclass of [TreeNode](reference_2.md#object-treenode) represe
 ### See Also
 
 - [ListGrid.groupBy](classes/ListGrid_2.md#method-listgridgroupby)
+
+---
+## Object: GroupSummary
+
+### Description
+Group Summary.
+
+---
+## Object: HeaderLevel
+
+### Description
+Defines one level of headers shown above the event area in a [Timeline](#class-timeline).
+
+---
+## Object: Hilite
+
+### Description
+An object representing a user-created and user-modifiable hilite, which can be created and edited with a [HiliteEditor](classes/HiliteEditor.md#class-hiliteeditor) either directly or via the [ListGrid.canEditHilites](classes/ListGrid_1.md#attr-listgridcanedithilites) behavior.
+
+See [hiliting](kb_topics/hiliting.md#kb-topic-hiliting) for an overview.
+
+### Groups
+
+- hiliting
 
 ---
 ## Object: History
@@ -8253,116 +8445,10 @@ Synthetic history entries are added to the browser history via [History.addHisto
 The [History.registerCallback](classes/History.md#staticmethod-historyregistercallback) allows the developer to register a callback method to fire when the user navigates to these generated history entries. This method will be fired with an appropriate history ID when the user hits the back-button or explicitly navigates to the URL generated for some synthetic history entry.
 
 ---
-## Object: IconSet
-
-### Description
-An object with a unique name that groups together [known images](classes/IconSet.md#attr-iconsetstockicons) as an array of [stockIcons](reference_2.md#object-stockicon) and/or [mappings](classes/IconSet.md#attr-iconsetmappings) from existing [stockIcon-names](classes/StockIcon.md#attr-stockiconname) to new [src-strings of any type](#type-scimgurl). Provides a means of applying an overlay that will replace many or all registered stockIcons, and/or install a set of custom stockIcons, in a single call.
-
-The framework ships with many builtin [StockIcons](classes/Media.md#classmethod-mediagetstockiconnames) and has two builtin IconSets that use them:
-
-*   "skin" - this is the default IconSet for skins - it doesn't apply any mappings, so it uses the StockIcon ${isc.DocUtils.linkForRef('attr:StockIcon.fromSrc','fromSrc\\'s')} and shows the icons from the skin's "images/" directory
-*   "svg\[:weight:style\]" - this _IconSet_ installs _mappings_ that replace all framework usage of on-disk image files with stylable [SVG symbols](kb_topics/svgSymbols.md#kb-topic-svg-symbols-overview), largely from a single .svg file. These SVG graphics are available at weights ranging from 100 to 700 and in _outlined_ and _filled_ styles. You choose among these by appending a weight and/or a style-name, "filled" or "outlined", each prefixed with a colon (":").
-
-These builtin IconSets may be used at runtime by passing their names directly to [Media.useMedia()](classes/Media.md#classmethod-mediausemedia).
-```
- // use the default media from the skin's images/ directory
- isc.Media.useMedia("skin")
-
- // use "svg", which requires either a weight or style 
-
- // no style - uses the default style "outlined"
- isc.Media.useMedia("svg:400")
- 
- // no weight - uses the default weight, "400"
- isc.Media.useMedia("svg:outlined")
- 
- // weight 500, style "filled"
- isc.Media.useMedia("svg:500:filled")
- 
-```
-Note that the "svg" IconSet requires skin-configuration changes to achieve sizing and scaling behavior that matches our Shiva skin.
-
-Developers may also create custom `IconSets` to define new StockIcons or map existing ones to new image-sources. A custom IconSet may be applied at runtime by passing it directly to [Media.useMedia()](classes/Media.md#classmethod-mediausemedia). This will [add the IconSet](classes/Media.md#classmethod-mediaaddiconset) to the [registered list](classes/Media.md#classattr-mediaiconsets), if it isn't already there, and then [add](classes/Media.md#classmethod-mediaaddstockicons) any [new stockIcons](classes/IconSet.md#attr-iconsetstockicons) it defines and apply its [mappings](classes/Media.md#classmethod-mediaupdateiconmappings) to modify the src-strings for existing icons, replacing all uses of each named stockIcon in your application.
-
-Typically, this will take effect immediately with no further action by the developer.
-
-If you define multiple [iconSets](classes/Media.md#classattr-mediaiconsets) with mappings, you can switch between them to change all your app-icons at runtime without any need for code-changes.
-
-Similarly, you can define multiple iconSets that only add new StockIcons for a certain part of your product, so they're only installed when that product-module is loaded, or affect only some of the registered _StockIcons_. Then, you can call _useMedia()_ multiple times, so you can compartmentalize your graphics into separate overlays, if that's beneficial.
-## Examples
-
-#### Example 1
-In this example, the "chevronIconSet" IconSet maps a bunch of builtin StockIcon-names to new target src-strings, replacing all uses of the original. This code maps the original PNG files to sprite-strings that use SVG Symbols from a custom file at _\[APP\]newMedia/svgSprite.svg_. The code only shows 4 icons being mapped, but you could equally map all of the builtin StockIcons in a single "overlay" IconSet, and that would replace all framework icons with customized ones.
-- // IconSet that maps the builtin Chevron StockIcons to new src-strings, which point to
-- // individual [SVG Symbols](kb_topics/svgSymbols.md#kb-topic-svg-symbols-overview) in a sprite file
-- var chevronIconSet = {
-- name: "chevronIconSet",
-- mappings: {
-- "Chevron\_Up": "sprite:svg:\[APP\]newMedia/svgSprite.svg#chevron\_up",
-- "Chevron\_Down": "sprite:svg:\[APP\]newMedia/svgSprite.svg#chevron\_down",
-- "Chevron\_Left": "sprite:svg:\[APP\]newMedia/svgSprite.svg#chevron\_left",
-- "Chevron\_Right": "sprite:svg:\[APP\]newMedia/svgSprite.svg#chevron\_right"
-- }
-- };
-- isc.Media.useMedia(chevronIconSet);
-#### Example 2
-In this example, the "logoIconSet" defines a few new StockIcons for existing image-paths.
-```
-  // IconSet that defines StockIcons for logo images in the application root
-  var logoIconSet = {
-      name: "logoIconSet",
-      stockIcons: [
-          {
-              name: "ProductLogo",
-              fromSrc: "[APP]productLogo.png",
-          },
-          {
-              name: "AccountsModuleLogo",
-              fromSrc: "[APP]accountsLogo.png",
-          },
-          {
-              name: "CalendarModuleLogo",
-              fromSrc: "[APP]calendarLogo.png",
-          }
-      ]
-  };
-
-  isc.Media.useMedia(logoIconSet);
- 
-```
-
-If your project bootstrap runs this code, you may then use the names of these new StockIcons in image-sources, such as [Button.icon](classes/Button.md#attr-buttonicon): "ProductLogo", and extend them as described [here](reference_2.md#object-stockicon), anywhere in your project. Any request for the StockIcon-names will render the associated **fromSrc**, since no [target src](classes/StockIcon.md#attr-stockiconsrc) has been set.
-
-#### Example 3
-If you support multiple skins in your project, you may have icons that look great on light-colored backgrounds, but need to be lighter in order to look good on dark backgrounds. To do that, you can create another IconSet that defines new src-string mappings for your StockIcons, and install it in the dark-skin's _load\_skin.js_ file, or other load-time code, after the first IconSet has been installed so the StockIcons are present.
-```
-  // IconSet that maps custom logo-StockIcons to lighter images in darker skins
-  var logoIconSetLight = {
-      name: "logoIconSetLight",
-      mappings: {
-          "ProductLogo": "[APP]productLogoLight.png"
-          "AccountsModuleLogo": "[APP]accountsLogoLight.png",
-          "CalendarModuleLogo": "[APP]calendarLogoLight.png",
-      }
-  };
-
-  isc.Media.useMedia(logoIconSetLight);
- 
-```
-When this code is run in a Dark skin, any requests from code for the original "\[APP\]productLogo.png" or it's StockIcon name "ProductLogo" will be automatically mapped to the new file, "\[APP\]productLogoLight.png".
-
-### Groups
-
-- media
-- stockIcons
-
----
 ## Object: ImgProperties
 
 ### Description
 A set of properties that can be used to create an image.
-
-**Deprecated**
 
 ---
 ## Object: isA
@@ -8403,10 +8489,36 @@ Lanes are typically used to show tasks assigned to different people, broadcasts 
 Definition of a linear gradient between two points, ([x1](#attr-lineargradientx1), [y1](#attr-lineargradienty1)) and ([x2](#attr-lineargradientx2), [y2](#attr-lineargradienty2)).
 
 ---
+## Object: ListProperties
+
+### Description
+Configuration of an HTML list in a [RichTextEditor](classes/RichTextEditor.md#class-richtexteditor).
+
+---
 ## Object: LoadingIndicatorSettings
 
 ### Description
 Set of properties to configure the loading indicator displayed by [FileLoader.showLoadingIndicator](classes/FileLoader.md#classmethod-fileloadershowloadingindicator)
+
+---
+## Object: MetricSettings
+
+### Description
+Defines a set of properties that are applicable to [additional value axes](classes/FacetChart.md#attr-facetchartextraaxismetrics) of a [FacetChart](classes/FacetChart.md#class-facetchart).
+
+These properties behave identically to the same-named properties of FacetChart. Two exceptions are the properties [gradationLineProperties](classes/MetricSettings.md#attr-metricsettingsgradationlineproperties) and [gradationZeroLineProperties](classes/MetricSettings.md#attr-metricsettingsgradationzerolineproperties) because they are used to draw tick marks along an extra value axis instead of lines through the chart rectangle. Also the default behavior of the [dataColors](classes/MetricSettings.md#attr-metricsettingsdatacolors) property is different, in that the default is to use unused colors from, and in the order of, the [main data colors array](classes/FacetChart.md#attr-facetchartdatacolors).
+
+The extra value axes that are not positioned directly adjacent to the [chart rect.](classes/FacetChart.md#attr-facetchartshowchartrect) of the FacetChart may additionally have an axis line to connect the gradation tick marks. Whether to draw this line is controlled by the [showAxisLine](classes/MetricSettings.md#attr-metricsettingsshowaxisline) property, and the properties of the line are specified using [axisLineProperties](classes/MetricSettings.md#attr-metricsettingsaxislineproperties). The default is to draw the axis lines whenever the chart rect. is drawn and to draw the line using the same properties as the lines of the chart rect. (for example, lineColor and lineWidth).
+
+The extra value axis charts may be [single- or multi-facet](classes/MetricSettings.md#attr-metricsettingsmultifacet) charts. If the underlying [data](classes/FacetChart.md#attr-facetchartdata) is multi-facet then the extra value axes may use the facet whose values are labelled on the data axis or the facet used to create the legend (the first and second facets, respectively). Both types of charts vary the first facet to get a data series to plot. Multi-facet charts also vary the second facet, but single-facet charts keep the second facet fixed at a constant [FacetValue](#object-facetvalue).
+
+The exact facet value to use for the second facet is specified using the [fixedFacetValue](classes/MetricSettings.md#attr-metricsettingsfixedfacetvalue) property.
+
+---
+## Object: MockDSExportSettings
+
+### Description
+Settings used to control the export or serialization of a [DataSource](classes/DataSource.md#class-datasource) by [Reify.getMockDS](classes/Reify.md#classmethod-reifygetmockds).
 
 ---
 ## Object: MultiWindowSettings
@@ -8476,18 +8588,6 @@ Various types of palettes ([ListPalette](#class-listpalette), [TreePalette](#cla
 Note that in a TreePalette, a PaletteNode is essentially a [TreeNode](reference_2.md#object-treenode) and can have properties expected for a TreeNode (eg, [showDropIcon](classes/TreeGrid.md#attr-treegridcustomicondropproperty)). Likewise a PaletteNode in a MenuPalette can have the properties of a [MenuItem](reference_2.md#object-menuitem), such as [MenuItem.enableIf](classes/MenuItem.md#method-menuitemenableif).
 
 ---
-## Object: PartialPromptConfig
-
-### Description
-Configuration for partial prompt generation specifying which fragments to omit.
-
-Used with [CoTProcess.getPartialPrompt](classes/CoTProcess.md#method-cotprocessgetpartialprompt) to generate prompts with selected fragments replaced by placeholders for debugging/logging purposes.
-
-### Groups
-
-- CoTPartialPrompt
-
----
 ## Object: PlaceholderDefaults
 
 ### Description
@@ -8498,10 +8598,22 @@ An object representing the configuration of the placeholder. When a placeholder 
 - devTools
 
 ---
+## Object: Point
+
+### Description
+X/Y position in pixels, specified as an Array with two members, for example: \[30, 50\]
+
+---
 ## Object: PointerSettings
 
 ### Description
 A set of properties that can be used to configure a [canvas pointer](classes/Canvas.md#attr-canvasshowpointer).
+
+---
+## Object: PortalPosition
+
+### Description
+Represents the position of a [Portlet](classes/Portlet.md#class-portlet) within a [PortalLayout](classes/PortalLayout.md#class-portallayout), indicating the column, row, and position within the row.
 
 ---
 ## Object: PromiseOutcome
@@ -8560,16 +8672,6 @@ A simple object representing the path for navigation from source to target DataS
 An object representing a relative date, useful for representing date ranges etc in criteria. RelativeDate objects may be created directly by SmartClient components such as the [RelativeDateItem](classes/RelativeDateItem.md#class-relativedateitem).
 
 RelativeDate objects will have `"_constructor"` set to `"RelativeDate"` and must have a specified [RelativeDate.value](#attr-relativedatevalue). Any other attributes are optional.
-
----
-## Object: RESTAuthentication
-
-### Description
-Authentication settings, applicable only to the [RestConnector](kb_topics/serverRestConnector.md#kb-topic-server-side-rest-connector)
-
-### Groups
-
-- serverRestConnector
 
 ---
 ## Object: RPCRequest
@@ -8644,22 +8746,6 @@ A section header (see [SectionStack.sectionHeaderClass](classes/SectionStack.md#
 Additional SectionHeader properties set on the SectionStackSection not explicitly documented, such as "iconAlign" or "prompt", are supported.
 
 ---
-## Object: SeleniumCommand
-
-### Description
-A JavaScript object representing a Selenium command in a Selenese script.
-
-### Groups
-
-- experimental
-
-### See Also
-
-- [EventStream.transformSelenese](#method-eventstreamtransformselenese)
-- [EventStream.getAsSeleneseHTML](classes/EventStream.md#method-eventstreamgetasselenesehtml)
-- [EventStream.getAsSeleneseCommands](classes/EventStream.md#method-eventstreamgetasselenesecommands)
-
----
 ## Object: SerializationContext
 
 ### Description
@@ -8686,6 +8772,20 @@ A class used to define a shadow used in a Draw`<Shape>` Types.
 
 ### Description
 Definition of a simple linear gradient defined by 2 colors and a [direction](#attr-simplegradientdirection).
+
+---
+## Object: SortSpecifier
+
+### Description
+An object that defines the details of a single sort operation.
+
+For simple sort specifiers, you can convert between a `SortSpecifier` and the corresponding string format required by [DSRequest.sortBy](classes/DSRequest.md#attr-dsrequestsortby) by calling [DataSource.getSortBy](classes/DataSource.md#classmethod-datasourcegetsortby) and [DataSource.getSortSpecifiers](classes/DataSource.md#classmethod-datasourcegetsortspecifiers).
+
+---
+## Object: String
+
+### Description
+Generic extensions to JavaScript Strings. You can call these on any String.
 
 ---
 ## Object: StyleGroup
@@ -8723,9 +8823,9 @@ Settings for use with [SimpleType.applySummaryFunction](classes/SimpleType.md#cl
 ### Description
 Configuration object for [AutoTest.isSystemDone](classes/AutoTest.md#classmethod-autotestissystemdone).
 
-Note that this format is extended by [SystemWaitConfig](#object-systemwaitconfig) and [ElementWaitConfig](#object-elementwaitconfig), used by [AutoTest.waitForSystemDone](classes/AutoTest.md#classmethod-autotestwaitforsystemdone) and [AutoTest.waitForElement](classes/AutoTest.md#classmethod-autotestwaitforelement).
+Note that this format is extended by [SystemWaitConfig](#object-systemwaitconfig) and [ElementWaitConfig](#object-elementwaitconfig), used by [AutoTest.waitForSystemDone](classes/AutoTest.md#classmethod-autotestwaitforsystemdone) and [AutoTest.waitForElementDone](#method-autotestwaitforelementdone).
 
-Note also that [AutoTest.waitForSystemDone](classes/AutoTest.md#classmethod-autotestwaitforsystemdone) may have different default configuration from [AutoTest.isSystemDone](classes/AutoTest.md#classmethod-autotestissystemdone) - the default behavior for each option is documented on the appropriate config object type for the method.
+Note also that [waitForSystemDone](#method-waitforsystemdone) may have different default configuration from [isSystemDone](#method-issystemdone) - the default behavior for each option is documented on the appropriate config object type for the method.
 
 ---
 ## Object: SystemWaitConfig
@@ -8759,12 +8859,6 @@ And in XML:
 ```
 
 ---
-## Object: TaskResultModifications
-
-### Description
-Result object for [Process.beforeTaskCommit](classes/Process.md#method-processbeforetaskcommit).
-
----
 ## Object: TileRecord
 
 ### Description
@@ -8785,38 +8879,26 @@ This class documents just those properties that are specific to TreeGridFields -
 - [ListGrid.setFields](classes/ListGrid_2.md#method-listgridsetfields)
 
 ---
-## Object: UISummary
-
-### Description
-Object summarizing a Canvas and its important nested Canvases for AI consumption. The object is hierarchical: each relevant child Canvas contributes its own UISummary at the appropriate location (children, members, or other properties containing child Canvases). This object is intended for instrumentation, analysis, or AI navigation purposes.
-
----
 ## Object: UserFormula
 
 ### Description
-An object representing a user-created formula.
+An object representing a user-created and user-modifiable formula, which can be created and edited with a [FormulaBuilder](classes/FormulaBuilder.md#class-formulabuilder) either directly or via the [ListGrid.canAddFormulaFields](classes/ListGrid_1.md#attr-listgridcanaddformulafields) behavior.
 
-Note that the current implementation of formulas simply executes the [text](classes/UserFormula.md#attr-userformulatext) as a JavaScript string after making special variables and methods available to the formula. It is safe to allow users to define formulas for themselves (since an end user can always execute whatever JavaScript they want via the browser's built-in developer tools), and is safe to allow formulas to be shared between trusted users. However it would not be safe to allow an untrusted user to create formulas that are shared to other users.
+Note that the current implementation of UserFormula simply executes [UserFormula.text](classes/UserFormula.md#attr-userformulatext) as a JavaScript string after making special variables and methods available to the formula. It is safe to allow users to define formulas for themselves (since an end user can always execute whatever JavaScript they want via the browser's built-in developer tools), and is safe to allow formulas to be shared between trusted users. However it would not be safe to allow an untrusted user to create formulas that are shared to other users.
 
-Also, while the current implementation would allow creation of a formula that calls JavaScript functions which are not part of the standard or custom [MathFunctions](classes/MathFunction.md#class-mathfunction), this behavior should not be relied upon, as future versions of the formula engine may prohibit such calls.
-
-[ListGrid](classes/ListGrid_1.md#class-listgrid)s additionally allow the formula to be user-modifiable, with the formula created and edited with a [FormulaBuilder](classes/FormulaBuilder.md#class-formulabuilder), either directly or via the [ListGrid.canAddFormulaFields](classes/ListGrid_1.md#attr-listgridcanaddformulafields) behavior.
-
-### Groups
-
-- fieldGeneration
+Also, while the current implementation would allow creation of a formula that calls JavaScript functions that are not part of the standard or custom [MathFunctions](classes/MathFunction.md#class-mathfunction), this should not be relied upon, as future versions of the formula engine may prohibit such calls.
 
 ---
 ## Object: UserSummary
 
 ### Description
-An object representing a user-created summary.
+An object representing a user-created and user-modifiable summary, which can be created and edited with a [SummaryBuilder](classes/SummaryBuilder.md#class-summarybuilder) either directly or via the [ListGrid.canAddSummaryFields](classes/ListGrid_1.md#attr-listgridcanaddsummaryfields) behavior.
 
-[ListGrid](classes/ListGrid_1.md#class-listgrid)s additionally allow the summary to be user-modifiable, with the summary created and edited with a [SummaryBuilder](classes/SummaryBuilder.md#class-summarybuilder), either directly or via the [ListGrid.canAddSummaryFields](classes/ListGrid_1.md#attr-listgridcanaddsummaryfields) behavior.
+---
+## Object: ValidatorDefinition
 
-### Groups
-
-- fieldGeneration
+### Description
+Validator definition for a built-in [Validator.type](classes/Validator.md#attr-validatortype).
 
 ---
 ## Interface: DataBoundComponent
@@ -8841,6 +8923,24 @@ The following non-visual components also support databinding:
 - [ValuesManager](classes/ValuesManager.md#class-valuesmanager)
 - [ResultSet](classes/ResultSet.md#class-resultset)
 - [ResultTree](classes/ResultTree.md#class-resulttree)
+
+---
+## Interface: List
+
+### Description
+An interface for an ordered collection of items.
+
+This is the interface that is expected by list-oriented display components such as the ListGrid. The JavaScript native Array object is retrofitted to support the List interface. Also, a valid List can be created by mixing the List interface into any class that supports:
+
+*   for read-only support: get(position), getLength()
+*   for modifiable support: set(position), addAt(object, position), removeAt(position)
+
+NOTE: this interface is compatible with the java.util.List interface, except that:
+
+*   for removal by index, removeAt() must be called instead of remove(). In Java, remove() is an overloaded method that takes either an int or Object, whereas in JavaScript, a Number is an Object.
+*   Iterators don't exist.
+
+Some methods from the Java List interface have been omitted from the documentation to avoid redundancy.
 
 ---
 ## Interface: Palette

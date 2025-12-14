@@ -31,7 +31,7 @@ Specifies the height of the image.
 ## Attr: ImgProperties.name
 
 ### Description
-Specifies the name of the image. This is an identifier unique to the canvas, and subsequent calls to `[Canvas.getImage](Canvas.md#method-canvasgetimage)` and `[Canvas.setImage](Canvas.md#method-canvassetimage)` with this name will act on the image object created using this `ImgProperties` object.
+Specifies the name of the image. This is an identifier unique to the canvas, and subsequent calls to `[Canvas.getImage](Canvas.md#method-canvasgetimage)` and `[Canvas.setImage](Canvas.md#method-canvassetimage)` with this name will act on the image object created using this ImgProperties object.
 
 **Flags**: IRW
 
@@ -59,7 +59,7 @@ Specifies the width of the image.
 ## Attr: ImgProperties.extraStuff
 
 ### Description
-Specifies the additional attributes to write in the tag. Event-related attributes should be added to [ImgProperties.eventStuff](#attr-imgpropertieseventstuff) instead to guarantee proper behavior when using SVG via regular .svg image files.
+Specifies the additional attributes to write in the tag. Event-related attributes should be added to [ImgProperties.eventStuff](#attr-imgpropertieseventstuff) instead to guarantee proper behavior when using SVG images.
 
 **Flags**: IRW
 

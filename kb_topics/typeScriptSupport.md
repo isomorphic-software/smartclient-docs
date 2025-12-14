@@ -172,5 +172,34 @@ Some things to keep in mind:
      
     ```
     See the *Grid as Chart Data Source* sample for a complete example.
+*   **String Methods Not Supported**: SmartClient's [String Method](stringMethods.md#kb-topic-string-methods-overview) feature, where event handlers can be specified as strings (e.g., `click: "doSomething()"`), is not supported in TypeScript because TypeScript cannot type-check code inside strings. Use arrow functions or regular functions instead:
+    ```
+     // JavaScript String Method (not supported in TypeScript):
+     isc.IButton.create({
+         click: "myGrid.fetchData()"
+     });
+    
+     // TypeScript - use arrow function:
+     isc.IButton.create({
+         click: () => myGrid.fetchData()
+     });
+     
+    ```
+    Note that arrow functions capture lexical `this`, which differs from string methods where `this` refers to the component. When you need to reference the component itself, use the component's ID or assign the result of `create()` to a variable:
+    ```
+     // String method with 'this' (not supported in TypeScript):
+     isc.IButton.create({
+         ID: "myButton",
+         click: "this.setTitle('Clicked')"
+     });
+    
+     // TypeScript - reference by ID:
+     declare var myButton: IButton;
+     isc.IButton.create({
+         ID: "myButton",
+         click: () => myButton.setTitle('Clicked')
+     });
+     
+    ```
 
 ---

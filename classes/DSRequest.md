@@ -103,7 +103,7 @@ See the [concurrentEdits](../kb_topics/concurrentEdits.md#kb-topic-handling-conc
 ## Attr: DSRequest.groupBy
 
 ### Description
-List of fields to group by when using [server-side summarization](../kb_topics/serverSummaries.md#kb-topic-server-summaries).
+Field or list of fields to group by when using [server-side summarization](../kb_topics/serverSummaries.md#kb-topic-server-summaries).
 
 Valid only for an operation of type "fetch". See the [Server Summaries overview](../kb_topics/serverSummaries.md#kb-topic-server-summaries) for details and examples of usage.
 
@@ -366,13 +366,13 @@ This property is only applicable when [exportToFilesystem](#attr-dsrequestexport
 ## Attr: DSRequest.applyCriteriaBeforeAggregation
 
 ### Description
-If set to "true", all criteria for the DSRequest using [serverSummaries](#serversummaries) are applied before aggregation, and the [afterWhereClause](OperationBinding.md#attr-operationbindingafterwhereclause) is not generated.
+If set to "true", all criteria for the DSRequest using [serverSummaries](#serversummaries) are applied before aggregation, and the [afterWhereClause](#attr-operationbindingafterwhereclause) is not generated.
 
 This behaves the same way as [OperationBinding.applyCriteriaBeforeAggregation](OperationBinding.md#attr-operationbindingapplycriteriabeforeaggregation), and if defined, overrides the OperationBinding-level setting for this specific DSRequest.
 
 ### See Also
 
-- [OperationBinding.afterWhereClause](OperationBinding.md#attr-operationbindingafterwhereclause)
+- [OperationBinding.afterWhereClause](#attr-operationbindingafterwhereclause)
 - [OperationBinding.applyCriteriaBeforeAggregation](OperationBinding.md#attr-operationbindingapplycriteriabeforeaggregation)
 
 **Flags**: IR
@@ -409,23 +409,6 @@ Note that this setting overrides the equivalent [operationBinding setting](Opera
 - [DSRequest.multiInsertNonMatchingStrategy](#attr-dsrequestmultiinsertnonmatchingstrategy)
 
 **Flags**: IRW
-
----
-## Attr: DSRequest.cacheSyncStrategy
-
-### Description
-The [cacheSyncStrategy](../reference_2.md#type-cachesyncstrategy) to use for this specific request. Overrides any [operation-level](OperationBinding.md#attr-operationbindingcachesyncstrategy) or [dataSource-level](DataSource.md#attr-datasourcecachesyncstrategy) `cacheSyncStrategy`
-
-### Groups
-
-- cacheSynchronization
-
-### See Also
-
-- [DataSource.cacheSyncStrategy](DataSource.md#attr-datasourcecachesyncstrategy)
-- [OperationBinding.cacheSyncStrategy](OperationBinding.md#attr-operationbindingcachesyncstrategy)
-
-**Flags**: IR
 
 ---
 ## Attr: DSRequest.componentId
@@ -480,23 +463,6 @@ SOAP headers typically contain request metadata such as a session id for authent
 Note that this only applies to SOAP headers. General HTTP headers for requests may be modified using [RPCRequest.httpHeaders](RPCRequest.md#attr-rpcrequesthttpheaders).
 
 **Flags**: IRW
-
----
-## Attr: DSRequest.cacheSyncTiming
-
-### Description
-The [cacheSyncTiming](../reference_2.md#type-cachesynctiming) to use for this specific request. Overrides any [operation-level](OperationBinding.md#attr-operationbindingcachesynctiming) or [dataSource-level](DataSource.md#attr-datasourcecachesynctiming) `cacheSyncTiming`
-
-### Groups
-
-- cacheSynchronization
-
-### See Also
-
-- [DataSource.cacheSyncStrategy](DataSource.md#attr-datasourcecachesyncstrategy)
-- [OperationBinding.cacheSyncStrategy](OperationBinding.md#attr-operationbindingcachesyncstrategy)
-
-**Flags**: IR
 
 ---
 ## Attr: DSRequest.sortBy
@@ -805,6 +771,23 @@ This is a per-request flag for explicitly controlling whether the cache is used 
 **Flags**: IRW
 
 ---
+## Attr: DSRequest.clientTimestamp
+
+### Description
+Timestamp recording when this request was created on the client, as epoch milliseconds, generated automatically.
+
+This timestamp is for client-side tracking only and is never sent to the server. It can be used to order requests chronologically, implement timeout logic, or filter queued changes by age when using [DataSource.queueChanges](DataSource.md#attr-datasourcequeuechanges).
+
+Note: This is distinct from any server-side timestamps that may be recorded for auditing or logging purposes.
+
+### See Also
+
+- [DataSource.queueChanges](DataSource.md#attr-datasourcequeuechanges)
+- [DataSource.pendingChanges](DataSource.md#attr-datasourcependingchanges)
+
+**Flags**: R
+
+---
 ## Attr: DSRequest.outputs
 
 ### Description
@@ -917,7 +900,7 @@ For more details on aggregation and post-aggregation filtering, see the [Server 
 
 ### See Also
 
-- [OperationBinding.afterWhereClause](OperationBinding.md#attr-operationbindingafterwhereclause)
+- [OperationBinding.afterWhereClause](#attr-operationbindingafterwhereclause)
 
 **Flags**: IR
 
@@ -1018,14 +1001,14 @@ Note, OOXML is the only native Excel format that supports streaming: when export
 A set of key:value pairs, mapping field names to expressions that will be evaluated server-side to derive a value for that field. This property allows for client-driven [Transaction Chaining](../kb_topics/transactionChaining.md#kb-topic-transaction-chaining), with some restrictions for security reasons:
 
 *   Normal [server-side Transaction Chaining settings](OperationBinding.md#attr-operationbindingvalues) for a field take precedence over this property, so server-defined rules cannot be overridden from the client
-*   Arbitrary Velocity expressions are not allowed in DSRequests sent from the client (`fieldValueExpressions` is also a valid property on a server-side DSRequest, and normal Velocity expressions _are_ allowed in that case - see the server-side Javadoc for `DSRequest.setFieldValueExpressions()`). For client-originated requests, only the following bindings are allowed - see the [Velocity overview](../kb_topics/velocitySupport.md#kb-topic-velocity-context-variables) for details of what these values mean:
+*   Arbitrary Velocity expressions are not allowed in DSRequests sent from the client (`fieldValueExpressions` is also a valid property on a server-side DSRequest, and normal Velocity expressions _are_ allowed in that case - see the server-side Javadoc for `DSRequest.setFieldValueExpressions()`). For client-originated requests, only the following bindings are allowed - see the [Velocity overview](#kb-topic-velocitysupport) for details of what these values mean:
     *   $currentDate
     *   $currentDateUTC
     *   $transactionDate
     *   $transactionDateUTC
     *   $userId
     *   $masterId - see [DSRequestModifier.value](DSRequestModifier.md#attr-dsrequestmodifiervalue) for details
-    *   References to specific fields in prior responses, via $responseData.first and $responseData.last, with or without parameters. For example, **$responseData.first("myDataSource", "fetch")\[0\].myField**. See the [Velocity overview](../kb_topics/velocitySupport.md#kb-topic-velocity-context-variables) for details of $responseData
+    *   References to specific fields in prior responses, via $responseData.first and $responseData.last, with or without parameters. For example, **$responseData.first("myDataSource", "fetch")\[0\].myField**. See the [Velocity overview](#kb-topic-velocitysupport) for details of $responseData
     *   References to certain metadata properties of prior responses, via $responses.first and $responses.last, with or without parameters. For example, **$responses.last("myDataSource", "fetch").totalRows**. Note that the only properties allowed in a client-driven `fieldValueExpression` are: "startRow", "endRow", "totalRows" and "status"; this restriction does not apply to server-driven `fieldValueExpressions`. See the Velocity overview for details of $responses
 *   Normal [declarative security rules](DataSourceField.md#attr-datasourcefieldeditrequiresrole) apply: if a field is not valid for writing, its `fieldValueExpression` will be ignored. Again, this only applies to client-originated requests.
 

@@ -122,7 +122,7 @@ The name of the [DataSource](DataSource.md#class-datasource) to use for this sub
 ## Attr: AdvancedCriterionSubquery.groupBy
 
 ### Description
-List of fields to group by when using [server-side summarization](../kb_topics/serverSummaries.md#kb-topic-server-summaries).
+Field or list of fields to group by when using [server-side summarization](../kb_topics/serverSummaries.md#kb-topic-server-summaries).
 
 Valid only for an operation of type "fetch". See the [Server Summaries overview](../kb_topics/serverSummaries.md#kb-topic-server-summaries) for details and examples of usage.
 

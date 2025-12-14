@@ -43,6 +43,8 @@ The new Class is returned by `defineClass`, is available as `isc._ClassName_` an
 
 See also [Super()](Class.md#method-classsuper) for calling superclass methods.
 
+For TypeScript usage with custom classes, see [typeScriptSupport](../kb_topics/typeScriptSupport.md#kb-topic-typescript-support).
+
 NOTE: `isc.defineClass()` also creates a new function `[class:isA](../reference.md#object-isa)._ClassName()_` object for identifying instances of this Class.
 
 ### Parameters

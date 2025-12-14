@@ -2408,6 +2408,13 @@ See the [dragging](../reference.md#kb-topic-dragging) documentation for an overv
 ### Description
 Overridden to disallow editing of the [name](TreeNode.md#attr-treenodename) field of this grid's data tree. Also disallows editing of the auto-generated tree field, which displays the result of [Tree.getTitle](Tree.md#method-treegettitle) on the node.
 
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| rowNum | [number](#type-number) | false | — | row number for the cell |
+| colNum | [number](#type-number) | false | — | column number of the cell |
+
 ### Returns
 
 `[Boolean](#type-boolean)` — Whether to allow editing this cell

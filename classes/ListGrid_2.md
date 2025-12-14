@@ -351,23 +351,6 @@ The returned value is never null, and can be freely modified.
 - editing
 
 ---
-## Method: ListGrid.fetchRowCount
-
-### Description
-For databound grids, method will fall through to [ResultSet.fetchRowCount](ResultSet.md#method-resultsetfetchrowcount), allowing developers to request an accurate row count from the dataSource when [progressive loading is active](DataSource.md#attr-datasourceprogressiveloading).
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| callback | [RowCountCallback](#type-rowcountcallback) | true | — | Callback to fire when the fetch request completes. To retrieve details of the row-count that was retrieved from the server, use the `getRowCount()` and `getRowCountStatus()` methods. |
-| dsRequest | [DSRequest Properties](#type-dsrequest-properties) | true | — | Custom properties for the row count fetch request |
-
-### Groups
-
-- rowRangeDisplay
-
----
 ## Method: ListGrid.hasChanges
 
 ### Description
@@ -390,6 +373,23 @@ The `ignorePendingValues` parameter may be used by developers who want to ignore
 ### Groups
 
 - editing
+
+---
+## Method: ListGrid.fetchRowCount
+
+### Description
+For databound grids, method will fall through to [ResultSet.fetchRowCount](ResultSet.md#method-resultsetfetchrowcount), allowing developers to request an accurate row count from the dataSource when [progressive loading is active](DataSource.md#attr-datasourceprogressiveloading).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| callback | [RowCountCallback](#type-rowcountcallback) | true | — | Callback to fire when the fetch request completes. To retrieve details of the row-count that was retrieved from the server, use the `getRowCount()` and `getRowCountStatus()` methods. |
+| dsRequest | [DSRequest Properties](#type-dsrequest-properties) | true | — | Custom properties for the row count fetch request |
+
+### Groups
+
+- rowRangeDisplay
 
 ---
 ## Method: ListGrid.rowOver
@@ -2075,20 +2075,6 @@ See [ListGrid.scrollToCell](#method-listgridscrolltocell) for a full description
 - scrolling
 
 ---
-## Method: ListGrid.getEditRow
-
-### Description
-Returns the index of the row being edited or null if there is no current edit row.
-
-### Returns
-
-`[int](../reference.md#type-int)` — index of the current edit row
-
-### Groups
-
-- editing
-
----
 ## Method: ListGrid.groupBy
 
 ### Description
@@ -2121,6 +2107,20 @@ Grouping is often an asynchronous operation, both because of automatic loading o
 ### Groups
 
 - grouping
+
+---
+## Method: ListGrid.getEditRow
+
+### Description
+Returns the index of the row being edited or null if there is no current edit row.
+
+### Returns
+
+`[int](../reference.md#type-int)` — index of the current edit row
+
+### Groups
+
+- editing
 
 ---
 ## Method: ListGrid.getRollUnderCanvas
@@ -3123,7 +3123,7 @@ Note that for editable grids, sorting is performed by underlying data values, no
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| sortSpecifiers | [Array of SortSpecifier](#type-array-of-sortspecifier) | false | — | Array of [SortSpecifier](../reference_2.md#object-sortspecifier) objects |
+| sortSpecifiers | [Array of SortSpecifier](#type-array-of-sortspecifier) | true | — | Array of [SortSpecifier](../reference_2.md#object-sortspecifier) objects. If not specified or empty, existing sort will be cleared. |
 
 **Flags**: A
 
@@ -3427,28 +3427,6 @@ Default implementation evaluates and returns [ListGrid.freezeFieldText](ListGrid
 - i18nMessages
 
 ---
-## Method: ListGrid.getSelectedRecords
-
-### Description
-Returns all selected records in this grid.
-
-**NOTE:** Records in the returned array should be treated as read-only and not modified.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| excludePartialSelections | [boolean](../reference.md#type-boolean) | true | — | When true, partially selected records will not be returned. Otherwise, both fully and partially selected records are returned. |
-
-### Returns
-
-`[Array of ListGridRecord](#type-array-of-listgridrecord)` — array of selected records, which will be empty if no record is selected.
-
-### Groups
-
-- selection
-
----
 ## Method: ListGrid.getColumnWidth
 
 ### Description
@@ -3470,6 +3448,28 @@ Return the width of a particular column.
 - positioning
 
 **Flags**: A
+
+---
+## Method: ListGrid.getSelectedRecords
+
+### Description
+Returns all selected records in this grid.
+
+**NOTE:** Records in the returned array should be treated as read-only and not modified.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| excludePartialSelections | [boolean](../reference.md#type-boolean) | true | — | When true, partially selected records will not be returned. Otherwise, both fully and partially selected records are returned. |
+
+### Returns
+
+`[Array of ListGridRecord](#type-array-of-listgridrecord)` — array of selected records, which will be empty if no record is selected.
+
+### Groups
+
+- selection
 
 ---
 ## Method: ListGrid.getDrawArea
@@ -5769,7 +5769,7 @@ Method to return the listGrid's [data](ListGrid_1.md#attr-listgriddata) object.
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — The data that is being displayed
+`[List of ListGridRecord](#type-list-of-listgridrecord)` — The data that is being displayed
 
 ### See Also
 
@@ -6975,6 +6975,18 @@ Identifies whether the passed-in field is the specially generated [expansionFiel
 - expansionField
 
 ---
+## Method: ListGrid.setShowCollapsedGroupSummary
+
+### Description
+Setter for [ListGrid.showCollapsedGroupSummary](ListGrid_1.md#attr-listgridshowcollapsedgroupsummary)
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| showCollapsedGroupSummary | [boolean](../reference.md#type-boolean) | false | — | new showCollapsedGroupSummary value |
+
+---
 ## Method: ListGrid.focusInFilterEditor
 
 ### Description
@@ -6989,18 +7001,6 @@ If the filter editor ([ListGrid.showFilterEditor](ListGrid_1.md#attr-listgridsho
 ### Groups
 
 - filterEditor
-
----
-## Method: ListGrid.setShowCollapsedGroupSummary
-
-### Description
-Setter for [ListGrid.showCollapsedGroupSummary](ListGrid_1.md#attr-listgridshowcollapsedgroupsummary)
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| showCollapsedGroupSummary | [boolean](../reference.md#type-boolean) | false | — | new showCollapsedGroupSummary value |
 
 ---
 ## Method: ListGrid.collapseRecord
@@ -7275,6 +7275,8 @@ Note: you should set [editorType](FormItem.md#attr-formitemeditortype) in the re
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | field | [ListGridField](#type-listgridfield) | false | — | field whose properties are needed |
+| editedRecord | [ListGridRecord](#type-listgridrecord) | false | — | record being edited |
+| rowNum | [Integer](../reference_2.md#type-integer) | false | — | row number of the cell being edited |
 
 ### Returns
 
@@ -7651,24 +7653,6 @@ Note that this width is the default width of "content" - it does not take into a
 `[int](../reference.md#type-int)` — default size required for the field's content.
 
 ---
-## Method: ListGrid.getSelectedRecord
-
-### Description
-Returns the first selected record in this grid.
-
-This method is appropriate if the [selectionType](ListGrid_1.md#attr-listgridselectiontype) is "single", or if you only care about the first selected record in a multiple-record selection. To access all selected records, use [ListGrid.getSelection](#method-listgridgetselection) instead.
-
-**NOTE:** If a record is returned, it should be treated as read-only and not modified.
-
-### Returns
-
-`[ListGridRecord](#type-listgridrecord)` — the first selected record, or null if no record is selected.
-
-### Groups
-
-- selection
-
----
 ## Method: ListGrid.clearRowErrors
 
 ### Description
@@ -7687,6 +7671,24 @@ Clear any stored validation errors for some row
 ### See Also
 
 - [ListGrid.setRowErrors](#method-listgridsetrowerrors)
+
+---
+## Method: ListGrid.getSelectedRecord
+
+### Description
+Returns the first selected record in this grid.
+
+This method is appropriate if the [selectionType](ListGrid_1.md#attr-listgridselectiontype) is "single", or if you only care about the first selected record in a multiple-record selection. To access all selected records, use [ListGrid.getSelection](#method-listgridgetselection) instead.
+
+**NOTE:** If a record is returned, it should be treated as read-only and not modified.
+
+### Returns
+
+`[ListGridRecord](#type-listgridrecord)` — the first selected record, or null if no record is selected.
+
+### Groups
+
+- selection
 
 ---
 ## Method: ListGrid.unmarkRecordRemoved
@@ -7895,7 +7897,7 @@ For more information on editing, see the [editing overview](../kb_topics/editing
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — Whether to allow editing this cell
+`[Boolean](#type-boolean)` — Whether to allow editing this cell
 
 ### Groups
 

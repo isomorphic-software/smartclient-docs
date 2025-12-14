@@ -882,7 +882,7 @@ Method to return the tileGrid's [data](#attr-tilegriddata) object.
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — The data that is being displayed
+`[Array of TileRecord](#type-array-of-tilerecord)` — The data that is being displayed
 
 ---
 ## Method: TileGrid.deselectRecord

@@ -46,7 +46,7 @@ Creates a screen from screen definitions cached in the [Project](#class-project)
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | screenName | [String](#type-string) | false | — | name of screen to create |
-| settings | [CreateScreenSettings](#type-createscreensettings)|[Array of String](#type-array-of-string) | true | — | widgets to allow to take their global IDs, or a widget remap config |
+| settings | [CreateScreenSettings](#type-createscreensettings)|[String](#type-string)|[Array of String](#type-array-of-string) | true | — | widgets to allow to take their global IDs, or a widget remap config |
 
 ### Returns
 
@@ -108,7 +108,7 @@ Creates screen from first definition cached in the project.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| settings | [CreateScreenSettings](#type-createscreensettings)|[Array of String](#type-array-of-string) | true | — | widgets to allow to take their global IDs, or a widget remap config |
+| settings | [CreateScreenSettings](#type-createscreensettings)|[String](#type-string)|[Array of String](#type-array-of-string) | true | — | widgets to allow to take their global IDs, or a widget remap config |
 
 ### Returns
 

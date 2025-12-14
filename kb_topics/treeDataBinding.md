@@ -134,12 +134,12 @@ Before starting on implementing paging within sets of children, carefully consid
 
 ### Related
 
-- [TreeGrid.keepParentsOnFilter](../classes/TreeGrid.md#attr-treegridkeepparentsonfilter)
-- [TreeGrid.dataFetchMode](../classes/TreeGrid.md#attr-treegriddatafetchmode)
 - [DSRequest.keepParentsOnFilter](../classes/DSRequest.md#attr-dsrequestkeepparentsonfilter)
 - [ResultTree.data](../classes/ResultTree.md#attr-resulttreedata)
 - [ResultTree.fetchMode](../classes/ResultTree.md#attr-resulttreefetchmode)
 - [ResultTree.resultSize](../classes/ResultTree.md#attr-resulttreeresultsize)
 - [ResultTree.keepParentsOnFilter](../classes/ResultTree.md#attr-resulttreekeepparentsonfilter)
+- [TreeGrid.keepParentsOnFilter](../classes/TreeGrid.md#attr-treegridkeepparentsonfilter)
+- [TreeGrid.dataFetchMode](../classes/TreeGrid.md#attr-treegriddatafetchmode)
 
 ---

@@ -494,6 +494,20 @@ Get the height of the user's screen, in pixels.
 `[number](#type-number)` — height of the user's screen
 
 ---
+## ClassMethod: Page.getIsomorphicDocsDir
+
+### Description
+Return the root directory for Isomorphic documentation and example files.
+
+### Returns
+
+`[String](#type-string)` — URL for root of documentation and example files.
+
+### Groups
+
+- files
+
+---
 ## ClassMethod: Page.getSampleThumbnailDir
 
 ### Description

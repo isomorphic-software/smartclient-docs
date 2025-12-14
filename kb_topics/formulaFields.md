@@ -42,6 +42,8 @@ Fields with values calculated from other fields in the grid.
 - [TestFunctionResult.errorText](../classes/TestFunctionResult.md#attr-testfunctionresulterrortext)
 - [TestFunctionResult.result](../classes/TestFunctionResult.md#attr-testfunctionresultresult)
 - [TestFunctionResult.record](../classes/TestFunctionResult.md#attr-testfunctionresultrecord)
+- [FormItem.formula](../classes/FormItem.md#attr-formitemformula)
+- [FormItem.textFormula](../classes/FormItem.md#attr-formitemtextformula)
 - [ListGrid.badFormulaResultValue](../classes/ListGrid_1.md#attr-listgridbadformularesultvalue)
 - [ListGrid.canAddFormulaFields](../classes/ListGrid_1.md#attr-listgridcanaddformulafields)
 - [FormulaBuilder.dataSource](../classes/FormulaBuilder.md#attr-formulabuilderdatasource)
@@ -68,7 +70,5 @@ Fields with values calculated from other fields in the grid.
 - [FormulaBuilder.autoTestDelay](../classes/FormulaBuilder.md#attr-formulabuilderautotestdelay)
 - [FormulaBuilder.testRecord](../classes/FormulaBuilder.md#attr-formulabuildertestrecord)
 - [SummaryBuilder.testRecord](../classes/SummaryBuilder.md#attr-summarybuildertestrecord)
-- [FormItem.formula](../classes/FormItem.md#attr-formitemformula)
-- [FormItem.textFormula](../classes/FormItem.md#attr-formitemtextformula)
 
 ---

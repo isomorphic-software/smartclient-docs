@@ -47,10 +47,6 @@ SmartClient supports a number of ways to declaratively map underlying data value
 
 - [CubeGrid.valueFormat](../classes/CubeGrid.md#attr-cubegridvalueformat)
 - [CubeGrid.valueExportFormat](../classes/CubeGrid.md#attr-cubegridvalueexportformat)
-- [DetailViewerField.format](../classes/DetailViewerField.md#attr-detailviewerfieldformat)
-- [DetailViewerField.exportFormat](../classes/DetailViewerField.md#attr-detailviewerfieldexportformat)
-- [ListGridField.format](../classes/ListGridField.md#attr-listgridfieldformat)
-- [ListGridField.exportFormat](../classes/ListGridField.md#attr-listgridfieldexportformat)
 - [SimpleType.format](../classes/SimpleType.md#attr-simpletypeformat)
 - [SimpleType.exportFormat](../classes/SimpleType.md#attr-simpletypeexportformat)
 - [DSRequest.exportRawValues](../classes/DSRequest.md#attr-dsrequestexportrawvalues)
@@ -59,5 +55,9 @@ SmartClient supports a number of ways to declaratively map underlying data value
 - [DSRequest.exportNumbersAsFormattedString](../classes/DSRequest.md#attr-dsrequestexportnumbersasformattedstring)
 - [DSRequest.exportTZ](../classes/DSRequest.md#attr-dsrequestexporttz)
 - [FormItem.exportFormat](../classes/FormItem.md#attr-formitemexportformat)
+- [DetailViewerField.format](../classes/DetailViewerField.md#attr-detailviewerfieldformat)
+- [DetailViewerField.exportFormat](../classes/DetailViewerField.md#attr-detailviewerfieldexportformat)
+- [ListGridField.format](../classes/ListGridField.md#attr-listgridfieldformat)
+- [ListGridField.exportFormat](../classes/ListGridField.md#attr-listgridfieldexportformat)
 
 ---

@@ -303,6 +303,18 @@ Server-side this string evaluates in a Velocity context where the variables $val
 **Flags**: IR
 
 ---
+## Attr: Validator.roundToPrecision
+
+### Description
+For validators of type "floatPrecision", when set to true, a value with more decimal places than [Validator.precision](#attr-validatorprecision) will be rounded to the specified precision rather than failing validation.
+
+### See Also
+
+- [Validator.precision](#attr-validatorprecision)
+
+**Flags**: IR
+
+---
 ## Attr: Validator.validateOnChange
 
 ### Description
@@ -419,7 +431,7 @@ For validators of type "serverCustom" only: a scriptlet in any supported JSR223 
 ```
 The scriptlet should return a boolean true or false value - failing to return a value will be considered a false result (validator failed). If your expression is syntactically invalid, an exception is thrown and the error message is displayed in the client.
 
-See [serverScript](../kb_topics/serverScript.md#kb-topic-server-scripting) for general information on Server Scripting and JSR223, and [velocitySupport](../kb_topics/velocitySupport.md#kb-topic-velocity-context-variables) for general information on Velocity support, and also see below for special rules for Velocity.
+See [serverScript](../kb_topics/serverScript.md#kb-topic-server-scripting) for general information on Server Scripting and JSR223, and [velocitySupport](#kb-topic-velocitysupport) for general information on Velocity support, and also see below for special rules for Velocity.
 
 **Available variables** The following variables are available in a `serverCondition`:
 
@@ -631,6 +643,18 @@ Indicates the maximum value for range-based validators. By default, range-valida
 
 ### Description
 To transform the incoming value that is validated into a different value or format set this property from [Validator.condition](#attr-validatorcondition) to the desired value.
+
+**Flags**: IR
+
+---
+## Attr: Validator.precision
+
+### Description
+For validators of type "floatPrecision", the `precision` attribute specifies the maximum number of decimal places allowed. If the value has more decimal places than specified and [Validator.roundToPrecision](#attr-validatorroundtoprecision) is set, the value will be rounded to the specified precision and validation will pass; otherwise validation fails.
+
+### See Also
+
+- [ValidatorType](../reference.md#type-validatortype)
 
 **Flags**: IR
 

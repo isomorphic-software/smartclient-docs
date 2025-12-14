@@ -331,8 +331,7 @@ Use `partialMode` to capture prompts using a partial mode, reducing log size by 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| options | [Object](../reference.md#type-object) | false | — | Configuration options for conversation logging |
-| options.partialMode | [String](#type-string)|[PartialPromptConfig](#type-partialpromptconfig) | true | — | Partial mode for captured prompts |
+| options | [Object](../reference.md#type-object) | true | — | Configuration options for conversation logging, with optional `partialMode` property (String or PartialPromptConfig). |
 
 ---
 ## Method: AUN.exportMarkdownLog
@@ -361,8 +360,7 @@ Note: When `partialMode` is specified, it takes precedence over the legacy omit\
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| options | [Object](../reference.md#type-object) | false | — | Configuration options for log export |
-| options.partialMode | [String](#type-string)|[PartialPromptConfig](#type-partialpromptconfig) | true | — | Partial prompt mode to apply |
+| options | [Object](../reference.md#type-object) | true | — | Configuration options for log export, with optional `partialMode` property (String or PartialPromptConfig). |
 
 ### Returns
 

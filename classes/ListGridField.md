@@ -1441,6 +1441,29 @@ If unset, default behavior is derived from [ListGrid.headerHoverWrap](ListGrid_1
 **Flags**: IRW
 
 ---
+## Attr: ListGridField.length
+
+### Description
+Maximum number of characters for this text field. This property is typically set on [DataSourceField.length](DataSourceField.md#attr-datasourcefieldlength) to enforce data integrity and trigger automatic validation. However, it can also be set on a ListGridField to control ListGrid-specific behaviors without affecting validation:
+
+*   **Default field width:** For text fields with no explicit [ListGridField.width](#attr-listgridfieldwidth) and `length` less than 15, a default pixel width is calculated as `length * 7`, subject to [ListGridField.minWidth](#attr-listgridfieldminwidth) and [ListGrid.minFieldWidth](ListGrid_1.md#attr-listgridminfieldwidth).
+*   **Auto-fit field selection:** When [ListGrid.autoFitFieldWidths](ListGrid_1.md#attr-listgridautofitfieldwidths) causes the grid to choose a field to expand, fields with `length` below [autoFitExpandLengthThreshold](#listgridautofitexpandlengththreshold) (default 10) are skipped in favor of fields with longer or unspecified length.
+
+Note: Setting `length` on a ListGridField does **not** trigger validation. To enforce maximum character limits, set [DataSourceField.length](DataSourceField.md#attr-datasourcefieldlength) on the DataSource field, which enables both server and client validation.
+
+### Groups
+
+- appearance
+
+### See Also
+
+- [DataSourceField.length](DataSourceField.md#attr-datasourcefieldlength)
+- [ListGridField.width](#attr-listgridfieldwidth)
+- [ListGrid.autoFitFieldWidths](ListGrid_1.md#attr-listgridautofitfieldwidths)
+
+**Flags**: IR
+
+---
 ## Attr: ListGridField.defaultGroupingMode
 
 ### Description

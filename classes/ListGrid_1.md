@@ -1106,6 +1106,14 @@ Height of the error icon, if we're showing icons when validation errors occur.
 **Flags**: IRW
 
 ---
+## Attr: ListGrid.filterWindowFilter
+
+### Description
+Instance of [FilterBuilder](FilterBuilder.md#class-filterbuilder) shown in [ListGrid.filterWindow](#attr-listgridfilterwindow) by [ListGrid.showFilterWindow](#method-listgridshowfilterwindow). See [ListGrid.filterWindow](#attr-listgridfilterwindow) for more information on the filter defaults and changing them.
+
+**Flags**: IR
+
+---
 ## Attr: ListGrid.useCopyPasteShortcuts
 
 ### Description
@@ -1121,14 +1129,6 @@ For ListGrids with [canSelectCells:true](#attr-listgridcanselectcells), enabling
 If this property is unset, default behavior will enable these shortcuts if [ListGrid.canSelectCells](#attr-listgridcanselectcells) is true, and [ListGrid.canDragSelectText](#attr-listgridcandragselecttext) and [ListGrid.selectCellTextOnClick](#attr-listgridselectcelltextonclick) are both false, so as to minimize the chances of interfering with native copy and paste of cell content.
 
 **Flags**: IRW
-
----
-## Attr: ListGrid.filterWindowFilter
-
-### Description
-Instance of [FilterBuilder](FilterBuilder.md#class-filterbuilder) shown in [ListGrid.filterWindow](#attr-listgridfilterwindow) by [ListGrid.showFilterWindow](#method-listgridshowfilterwindow). See [ListGrid.filterWindow](#attr-listgridfilterwindow) for more information on the filter defaults and changing them.
-
-**Flags**: IR
 
 ---
 ## Attr: ListGrid.autoFitWidthApproach
@@ -3322,6 +3322,22 @@ When set to false, clicking a record's [expansion field](#attr-listgridexpansion
 **Flags**: IRW
 
 ---
+## Attr: ListGrid.showHoverComponents
+
+### Description
+When set to true and canHover is also true, shows a widget hovering at the mouse point.
+
+A number of builtin modes are provided - see [ListGrid.hoverMode](#attr-listgridhovermode). Note, if a `hoverMode` is set but `showHoverComponents` is left null, it will default to true.
+
+Also supported at the [field-level](ListGridField.md#attr-listgridfieldshowhovercomponents).
+
+### Groups
+
+- hoverComponents
+
+**Flags**: IRW
+
+---
 ## Attr: ListGrid.checkboxFieldFalseImage
 
 ### Description
@@ -3339,22 +3355,6 @@ If [ListGrid.selectionAppearance](#attr-listgridselectionappearance) is set to `
 - [ListGrid.printCheckboxFieldFalseImage](#attr-listgridprintcheckboxfieldfalseimage)
 
 **Flags**: IRWA
-
----
-## Attr: ListGrid.showHoverComponents
-
-### Description
-When set to true and canHover is also true, shows a widget hovering at the mouse point.
-
-A number of builtin modes are provided - see [ListGrid.hoverMode](#attr-listgridhovermode). Note, if a `hoverMode` is set but `showHoverComponents` is left null, it will default to true.
-
-Also supported at the [field-level](ListGridField.md#attr-listgridfieldshowhovercomponents).
-
-### Groups
-
-- hoverComponents
-
-**Flags**: IRW
 
 ---
 ## Attr: ListGrid.instantScrollTrackRedraw
@@ -3886,6 +3886,18 @@ Note that you can also provide your own implementation of [ListGrid.getCellCSSTe
 **Flags**: IRW
 
 ---
+## Attr: ListGrid.aiHiliteWindow
+
+### Description
+Instance of [AIWindow](../reference.md#class-aiwindow) that allows a user to enter a description of how they would like the AI to filter this grid.
+
+### Groups
+
+- ai
+
+**Flags**: IR
+
+---
 ## Attr: ListGrid.fetchRequestProperties
 
 ### Description
@@ -3896,18 +3908,6 @@ Note that any properties governing more specific request attributes for the init
 ### Groups
 
 - databinding
-
-**Flags**: IR
-
----
-## Attr: ListGrid.aiHiliteWindow
-
-### Description
-Instance of [AIWindow](../reference.md#class-aiwindow) that allows a user to enter a description of how they would like the AI to filter this grid.
-
-### Groups
-
-- ai
 
 **Flags**: IR
 
@@ -5965,6 +5965,18 @@ For editable listGrids, outstanding unsaved edits when the user performs a new f
 **Flags**: IRW
 
 ---
+## Attr: ListGrid.unknownRowCountDisplayValue
+
+### Description
+Value to return from [ListGrid.getFormattedRowCount](ListGrid_2.md#method-listgridgetformattedrowcount) when the row count is unknown
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IRW
+
+---
 ## Attr: ListGrid.headerMenuButtonHeight
 
 ### Description
@@ -5979,18 +5991,6 @@ If [ListGrid.showHeaderMenuButton](#attr-listgridshowheadermenubutton) is true, 
 - [ListGrid.rotatedHeaderMenuButtonHeight](#attr-listgridrotatedheadermenubuttonheight)
 
 **Flags**: IRA
-
----
-## Attr: ListGrid.unknownRowCountDisplayValue
-
-### Description
-Value to return from [ListGrid.getFormattedRowCount](ListGrid_2.md#method-listgridgetformattedrowcount) when the row count is unknown
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
 
 ---
 ## Attr: ListGrid.headerMenuButtonIconHeight
@@ -6262,18 +6262,6 @@ An automatically generated field that can be dragged to drag the current selecti
 **Flags**: IR
 
 ---
-## Attr: ListGrid.warnOnRemovalMessage
-
-### Description
-Warning message to show the user on a click on the 'remove' icon if [ListGrid.canRemoveRecords](#attr-listgridcanremoverecords) is true and [ListGrid.warnOnRemoval](#attr-listgridwarnonremoval) is true.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
-
----
 ## Attr: ListGrid.rowRangeDisplayStyle
 
 ### Description
@@ -6282,6 +6270,18 @@ How should the [ListGrid.getFormattedRowRange](ListGrid_2.md#method-listgridgetf
 ### Groups
 
 - rowRangeDisplay
+
+**Flags**: IRW
+
+---
+## Attr: ListGrid.warnOnRemovalMessage
+
+### Description
+Warning message to show the user on a click on the 'remove' icon if [ListGrid.canRemoveRecords](#attr-listgridcanremoverecords) is true and [ListGrid.warnOnRemoval](#attr-listgridwarnonremoval) is true.
+
+### Groups
+
+- i18nMessages
 
 **Flags**: IRW
 
@@ -6414,18 +6414,6 @@ If set, the [ListGrid.checkboxFieldPartialImage](#attr-listgridcheckboxfieldpart
 **Flags**: IRWA
 
 ---
-## Attr: ListGrid.defaultDateTimeFieldWidth
-
-### Description
-Default width for datetime type fields. See [ListGrid.autoFitDateFields](#attr-listgridautofitdatefields) for details on how this property is used.
-
-### Groups
-
-- autoFitFields
-
-**Flags**: IRW
-
----
 ## Attr: ListGrid.showHeader
 
 ### Description
@@ -6435,6 +6423,18 @@ Should we show the header for this ListGrid?
 
 - gridHeader
 - appearance
+
+**Flags**: IRW
+
+---
+## Attr: ListGrid.defaultDateTimeFieldWidth
+
+### Description
+Default width for datetime type fields. See [ListGrid.autoFitDateFields](#attr-listgridautofitdatefields) for details on how this property is used.
+
+### Groups
+
+- autoFitFields
 
 **Flags**: IRW
 
@@ -8385,24 +8385,6 @@ Header shadow will only be displayed if [css shadows](Canvas.md#attr-canvasusecs
 **Flags**: IRW
 
 ---
-## Attr: ListGrid.normalBaseStyle
-
-### Description
-"Normal" baseStyle for this listGrid. Only applies if [ListGrid.baseStyle](#attr-listgridbasestyle) is set to null.
-
-If `baseStyle` is unset, this property will be used as a base cell style if the grid is showing fixed height rows, and the specified cellHeight matches [ListGrid.normalCellHeight](#attr-listgridnormalcellheight) (and in Internet Explorer, [ListGrid.fastCellUpdates](#attr-listgridfastcellupdates) is false). Otherwise [ListGrid.tallBaseStyle](#attr-listgridtallbasestyle) will be used.
-
-Having separate styles defined for fixed vs. variable height rows allows the developer to specify css which is designed to render at a specific height (typically using background images, which won't scale), without breaking support for styling rows of variable height.
-
-See [cellStyleSuffixes](../kb_topics/cellStyleSuffixes.md#kb-topic-cellstylesuffixes) for details on how stateful suffixes are combined with the base style to generate stateful cell styles.
-
-### See Also
-
-- [ListGrid.getBaseStyle](ListGrid_2.md#method-listgridgetbasestyle)
-
-**Flags**: IR
-
----
 ## Attr: ListGrid.listEndEditAction
 
 ### Description
@@ -8420,6 +8402,24 @@ See the [Grid Editing overview](../kb_topics/editing.md#kb-topic-grid-editing) a
 - editing
 
 **Flags**: IRW
+
+---
+## Attr: ListGrid.normalBaseStyle
+
+### Description
+"Normal" baseStyle for this listGrid. Only applies if [ListGrid.baseStyle](#attr-listgridbasestyle) is set to null.
+
+If `baseStyle` is unset, this property will be used as a base cell style if the grid is showing fixed height rows, and the specified cellHeight matches [ListGrid.normalCellHeight](#attr-listgridnormalcellheight) (and in Internet Explorer, [ListGrid.fastCellUpdates](#attr-listgridfastcellupdates) is false). Otherwise [ListGrid.tallBaseStyle](#attr-listgridtallbasestyle) will be used.
+
+Having separate styles defined for fixed vs. variable height rows allows the developer to specify css which is designed to render at a specific height (typically using background images, which won't scale), without breaking support for styling rows of variable height.
+
+See [cellStyleSuffixes](../kb_topics/cellStyleSuffixes.md#kb-topic-cellstylesuffixes) for details on how stateful suffixes are combined with the base style to generate stateful cell styles.
+
+### See Also
+
+- [ListGrid.getBaseStyle](ListGrid_2.md#method-listgridgetbasestyle)
+
+**Flags**: IR
 
 ---
 ## Attr: ListGrid.printCheckboxFieldTrueImage

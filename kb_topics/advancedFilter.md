@@ -35,8 +35,6 @@ For a full list of operators, see [OperatorId](../reference.md#type-operatorid).
 - [AdvancedCriterionSubquery](../reference.md#object-advancedcriterionsubquery)
 - [Operator](../reference.md#object-operator)
 - [CriterionValues](../reference.md#object-criterionvalues)
-- [ListGridField.allowFilterExpressions](../classes/ListGridField.md#attr-listgridfieldallowfilterexpressions)
-- [ListGrid.allowFilterExpressions](../classes/ListGrid_1.md#attr-listgridallowfilterexpressions)
 - [SimpleType.validOperators](../classes/SimpleType.md#attr-simpletypevalidoperators)
 - [SimpleType.defaultOperator](../classes/SimpleType.md#attr-simpletypedefaultoperator)
 - [AdvancedCriteria.strictSQLFiltering](../reference.md#attr-advancedcriteriastrictsqlfiltering)
@@ -74,5 +72,7 @@ For a full list of operators, see [OperatorId](../reference.md#type-operatorid).
 - [FormItem.allowExpressions](../classes/FormItem.md#attr-formitemallowexpressions)
 - [FormItem.validOperators](../classes/FormItem.md#attr-formitemvalidoperators)
 - [FormItem.defaultOperator](../classes/FormItem.md#attr-formitemdefaultoperator)
+- [ListGridField.allowFilterExpressions](../classes/ListGridField.md#attr-listgridfieldallowfilterexpressions)
+- [ListGrid.allowFilterExpressions](../classes/ListGrid_1.md#attr-listgridallowfilterexpressions)
 
 ---

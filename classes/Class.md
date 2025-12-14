@@ -132,6 +132,23 @@ In ComponentXML dynamicProperties can be intialized as:
 **Flags**: IR
 
 ---
+## Attr: Class.ID
+
+### Description
+Global identifier for referring to a Class instance in JavaScript. If you specify this property at initialization, the instance will be available as a global variable via the ID.
+
+Not all Class subclasses support this property. The following commonly-used subclasses support global IDs:
+
+*   [Canvas](Canvas.md#class-canvas) and all visual widget subclasses
+*   [DataSource](DataSource.md#class-datasource)
+*   [Tree](Tree.md#class-tree)
+*   [ValuesManager](ValuesManager.md#class-valuesmanager)
+*   [ResultSet](ResultSet.md#class-resultset)
+*   [ResultTree](ResultTree.md#class-resulttree)
+
+**Flags**: IR
+
+---
 ## Attr: Class.addPropertiesOnCreate
 
 ### Description
@@ -445,6 +462,10 @@ Gets a named property from the instance defaults for this object.
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | property | [String](#type-string) | false | — | name of the property to return |
+
+### Returns
+
+`[Any](#type-any)` — the value of the property from instance defaults
 
 ---
 ## ClassMethod: Class.logIsWarnEnabled

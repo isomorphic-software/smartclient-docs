@@ -48,7 +48,7 @@ The AutoTest class provides utilities to wait for asynchronous actions, includin
 *   [AutoTest.waitForSystemDone](#classmethod-autotestwaitforsystemdone): this method will wait for any outstanding asynchronous system operations to complete and then fire the specified callback.
 *   [AutoTest.isSystemDone](#classmethod-autotestissystemdone): this method may be called to check whether there are currently any outstanding asynchronous system operations.
 
-Note that SmartClient's support for integrating with high level tools such as [Playwright](../kb_topics/smartClientPlaywright.md#kb-topic-integrating-smartclient-with-playwright), [Cypress](../kb_topics/smartClientCypress.md#kb-topic-integrating-smartclient-with-cypress) and [Selenium](../kb_topics/usingSelenium.md#kb-topic-using-selenium-scripts-selenese) automatically makes use of these APIs.
+Note that SmartClient's support for integrating with high level tools such as [Cypress](../kb_topics/smartClientCypress.md#kb-topic-integrating-smartclient-with-cypress) and [Selenium](../kb_topics/usingSelenium.md#kb-topic-using-selenium-scripts-selenese) automatically makes use of these APIs.
 
 ### Groups
 
@@ -477,26 +477,6 @@ For example:
 ### Returns
 
 `[Object](../reference.md#type-object)` — value associated with SC object if any, otherwise undefined
-
-### Groups
-
-- autoTest
-
----
-## ClassMethod: AutoTest.locateFormItemFromDOMElement
-
-### Description
-Given an element in the DOM, returns the FormItem containing this element, or null if the element is not contained in any FormItem.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| element | [DOMElement](#type-domelement) | false | — | DOM element within in the page |
-
-### Returns
-
-`[FormItem](#type-formitem)` — formItem containing the element, or null if none apply
 
 ### Groups
 

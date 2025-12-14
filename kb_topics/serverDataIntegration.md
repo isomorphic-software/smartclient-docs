@@ -19,7 +19,7 @@ This approach is in contrast to [Client-side Data Integration](clientDataIntegra
 
 **Server-side Request Processing**
 
-Client-side [DataBoundComponents](../reference.md#interface-databoundcomponent) will send [DSRequests](../reference_2.md#object-dsrequest) to the SmartClient Server as background communications transparent to the user. Integrating SmartClient's DataSource layer with your data model is a matter of handling these DSRequests and sending back DSResponses, in order to fulfill the 4 basic operations of the [DataSource Protocol](dataSourceOperations.md#kb-topic-datasource-operations).
+Client-side [DataBoundComponents](../reference.md#interface-databoundcomponent) will send [DSRequests](../reference.md#object-dsrequest) to the SmartClient Server as background communications transparent to the user. Integrating SmartClient's DataSource layer with your data model is a matter of handling these DSRequests and sending back DSResponses, in order to fulfill the 4 basic operations of the [DataSource Protocol](dataSourceOperations.md#kb-topic-datasource-operations).
 
 Out of the box, SmartClient is set up to route all DSRequests through a special servlet called `IDACall`.
 

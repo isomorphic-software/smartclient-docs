@@ -950,7 +950,7 @@ Returning `false` will cancel this default behavior.
 
 ### Returns
 
-`[Boolean](#type-boolean)` — `false` to cancel the default behavior.
+`[boolean](../reference.md#type-boolean)` — `false` to cancel the default behavior.
 
 ---
 ## Method: DateItem.deselectValue

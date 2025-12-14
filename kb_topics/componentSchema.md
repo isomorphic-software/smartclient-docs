@@ -19,7 +19,7 @@ Declaring a component schema for your custom component allows you to:
 In its most basic form, a component schema for a custom subclass of ListGrid called "MyListGrid" looks like this:
 
 ```
- <DataSource serverType="component" ID="MyListGrid"
+ <DataSource serverType="component" ID="MyListGrid" 
              inheritsFrom="ListGrid" instanceConstructor="MyListGrid"/>
  
 ```
@@ -81,8 +81,6 @@ If a user working within the Reify then added ListGrid to the page and used the 
 
 ### Related
 
-- [ComponentSchemaField](../reference.md#object-componentschemafield)
-- [ComponentSchema](../reference.md#class-componentschema)
 - [DataSourceField.xmlAttribute](../classes/DataSourceField.md#attr-datasourcefieldxmlattribute)
 - [DataSourceField.childTagName](../classes/DataSourceField.md#attr-datasourcefieldchildtagname)
 - [DataSourceField.propertiesOnly](../classes/DataSourceField.md#attr-datasourcefieldpropertiesonly)

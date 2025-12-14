@@ -61,7 +61,7 @@ You can register the CompressionFilter anywhere in your filter chain, but be awa
 
 Automatic Compression of DSRequest, RPCRequest and DataSourceLoader responses
 
-By default, SmartClient Server compresses the responses to all [DSRequest](../reference_2.md#object-dsrequest)s, [RPCRequest](../reference.md#object-rpcrequest)s and `DataSourceLoader` requests, whether or not the `CompressionFilter` is registered. If you want to switch off this automatic compression, add the following line to your `server.properties` file:
+By default, SmartClient Server compresses the responses to all [DSRequest](../reference.md#object-dsrequest)s, [RPCRequest](../reference.md#object-rpcrequest)s and `DataSourceLoader` requests, whether or not the `CompressionFilter` is registered. If you want to switch off this automatic compression, add the following line to your `server.properties` file:
 
 ```
     servlet.compress: false

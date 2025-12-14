@@ -13,7 +13,7 @@ Use the HTMLFlow component to display HTML content that should expand to its nat
 
 HTML content can be specified directly via [HTMLFlow.contents](#attr-htmlflowcontents), or loaded from a URL via the property [HTMLFlow.contentsURL](#attr-htmlflowcontentsurl). This method of loading is for simple HTML content only; SmartClient components should be loaded via the [ViewLoader](ViewLoader.md#class-viewloader) class.
 
-HTMLFlows are typically used to render snippets of HTML directly in the document rather than holding a complete HTML page, as the component can only size to fit HTML content it renders directly into the DOM. If you are looking to display a complete HTML page, you will need to modify the default [Overflow](../reference.md#type-overflow) and [HTMLFlow.defaultHeight](#attr-htmlflowdefaultheight), or use the [HTMLPane](HTMLPane.md#class-htmlpane) class
+HTMLFlows are typically used to render snippets of HTML directly in the document rather than holding a complete HTML page, as the component can only size to fit HTML content it renders directly into the DOM. If you are looking to display a complete HTML page, you will need to modify the default [Overflow](../reference.md#type-overflow) and [defaultHeight](#defaultheight), or use the [HTMLPane](HTMLPane.md#class-htmlpane) class
 
 NOTE: Since the size of an HTMLFlow component is determined by its HTML contents, this component will draw at varying sizes if given content of varying size. When using HTMLFlow components within a Layout, consider what will happen if the HTMLFlow renders at various sizes. An HTMLFlow which can expand should be placed in a container where other components can render smaller, where the container is allowed to scroll, or where there is padding to expand into.
 

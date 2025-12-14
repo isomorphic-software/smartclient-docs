@@ -402,7 +402,6 @@ The root node of the returned [Tree](Tree.md#class-tree) will be a PaletteNode d
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | editNode | [EditNode](#type-editnode) | false | — | root editNode to make Tree of PaletteNodes from |
-| removeAutoIDs | [Boolean](#type-boolean) | false | — | should ID and autoID defaults be removed? |
 
 ### Returns
 

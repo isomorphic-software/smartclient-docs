@@ -4,14 +4,6 @@
 
 ---
 
-## Attr: SystemDoneConfig.includeReflows
-
-### Description
-Should the system wait for all [Layouts](Layout.md#class-layout) to complete pending [reflows](Layout.md#method-layoutreflownow) before [AutoTest.isSystemDone](AutoTest.md#classmethod-autotestissystemdone) returns true?
-
-**Flags**: IR
-
----
 ## Attr: SystemDoneConfig.includeNetworkOperations
 
 ### Description

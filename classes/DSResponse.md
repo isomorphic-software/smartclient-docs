@@ -9,7 +9,7 @@
 *Inherits from:* [RPCResponse](RPCResponse.md#class-rpcresponse)
 
 ### Description
-Response sent by the server in response to a [DataSource request](../reference_2.md#object-dsrequest). Contains all the properties available on the basic [RPCResponse](RPCResponse.md#class-rpcresponse), in addition to the properties listed here.
+Response sent by the server in response to a [DataSource request](../reference.md#object-dsrequest). Contains all the properties available on the basic [RPCResponse](RPCResponse.md#class-rpcresponse), in addition to the properties listed here.
 
 ---
 ## Attr: DSResponse.offlineTimestamp
@@ -81,11 +81,11 @@ This attribute may be set for responses where [progressive loading](DataSource.m
 
 This value may be validly set to a String in the following format:
 
-*   "500+": There are at least 500 records.
-*   "-500": There are fewer than 500 records.
-*   "450-500": There are between 450 and 500 records.
-*   "~500": There are approximately 500 records.
-*   "500": There are exactly 500 records.
+*   "500+": There are at least 500 records
+*   "-500": There are fewer than 500 records
+*   "450-500": There are between 450 and 500 records
+*   "~500": There are approximately 500 records
+*   "500": There are exactly than 500 records
 
 If you are using a SmartClient server side dataSource that supports the [DataSource.progressiveLoadingThreshold](DataSource.md#attr-datasourceprogressiveloadingthreshold) feature, this property will be populated automatically to an exact value if a row count query was performed and the result exceeded the progressiveLoadingThreshold causing progressiveLoading to be enabled.
 
@@ -111,7 +111,7 @@ Note that startRow and endRow are zero-based, inclusive at the beginning and exc
 ## Attr: DSResponse.clientContext
 
 ### Description
-The [DSRequest.clientContext](DSRequest.md#attr-dsrequestclientcontext) object as set on the [DSRequest](../reference_2.md#object-dsrequest).
+The [DSRequest.clientContext](DSRequest.md#attr-dsrequestclientcontext) object as set on the [DSRequest](../reference.md#object-dsrequest).
 
 ### See Also
 

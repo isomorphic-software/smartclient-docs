@@ -17,11 +17,11 @@ However, Spring's DispatchServlet, Handler chain, and Controller architecture is
 
 **Existing Spring Application**
 
-As discussed under the general [server integration](clientServerIntegration.md#kb-topic-client-server-integration) topic, integrating SmartClient into your application involves finding a way to provide data that fulfills the [DataSource requests](../reference_2.md#object-dsrequest) sent by SmartClient components.
+As discussed under the general [server integration](clientServerIntegration.md#kb-topic-client-server-integration) topic, integrating SmartClient into your application involves finding a way to provide data that fulfills the [DataSource requests](../reference.md#object-dsrequest) sent by SmartClient components.
 
 There are 2 approaches for integrating SmartClient into an existing Spring application:
 
-*   **call Spring beans via SmartClient DMI or custom DataSources** \[Recommended\]: use SmartClient Direct Method Invocation (DMI) to map [DataSource requests](../reference_2.md#object-dsrequest) to beans managed by Spring, via [ServerObject.lookupStyle](../classes/ServerObject.md#attr-serverobjectlookupstyle):"spring". Return data to the browser by either simply returning it from your method, or via creating a DSResponse and calling DSResponse.setData() (server-side method). Or, use a similar approach based on custom DataSource implementations where the [serverConstructor](../classes/DataSource.md#attr-datasourceserverconstructor) is of the pattern **"spring:{bean\_name}"**
+*   **call Spring beans via SmartClient DMI or custom DataSources** \[Recommended\]: use SmartClient Direct Method Invocation (DMI) to map [DataSource requests](../reference.md#object-dsrequest) to beans managed by Spring, via [ServerObject.lookupStyle](../classes/ServerObject.md#attr-serverobjectlookupstyle):"spring". Return data to the browser by either simply returning it from your method, or via creating a DSResponse and calling DSResponse.setData() (server-side method). Or, use a similar approach based on custom DataSource implementations where the [serverConstructor](../classes/DataSource.md#attr-datasourceserverconstructor) is of the pattern **"spring:{bean\_name}"**
     
     This is the easiest method and produces the best result. A Collection of Java Beans, such as EJB or Hibernate-managed beans, can be directly returned to SmartClient as the result of a DMI method, without the need to create an intervening [Data Transfer Object](http://en.wikipedia.org/wiki/Data_transfer_object) to express which fields should be delivered to the browser - instead, only the fields declared on the DataSource are returned to the browser (see [dropExtraFields](../classes/DataSource.md#attr-datasourcedropextrafields). In this integration scenario, the majority of the features of the SmartClient Server framework still apply - see this [overview](featuresCustomPersistence.md#kb-topic-server-features-and-custom-persistence).
     
@@ -74,7 +74,7 @@ This lets you use Spring's DispatchServlet, Handler chain and Controller archite
 
 You can make DMI's participate in Spring's transaction management scheme by setting the [useSpringTransaction](../classes/DataSource.md#attr-datasourceusespringtransaction) flag on your DataSources or [OperationBinding](../classes/OperationBinding.md#class-operationbinding)s. This makes your DMI method(s) transactional, and ensures that any DSRequests and Spring DAO operations executed within that DMI use the same Spring-managed transaction. See the documentation for `useSpringTransaction` for more details.
 
-In Power Edition and above, SmartClient Server has its own transaction management system. This allows you to send [queues](../classes/RPCManager.md#classmethod-rpcmanagerstartqueue) of [DSRequest](../reference_2.md#object-dsrequest)s to the server, and the entire queue will be treated as a single database transaction. This is **not** the same thing as Spring transaction integration: SmartClient's built-in transaction management works across an entire queue of DSRequests, whereas Spring transactions are specific to a Java method that has been marked `@Transactional` - the transaction starts and ends when the method starts and ends.
+In Power Edition and above, SmartClient Server has its own transaction management system. This allows you to send [queues](../classes/RPCManager.md#classmethod-rpcmanagerstartqueue) of [DSRequest](../reference.md#object-dsrequest)s to the server, and the entire queue will be treated as a single database transaction. This is **not** the same thing as Spring transaction integration: SmartClient's built-in transaction management works across an entire queue of DSRequests, whereas Spring transactions are specific to a Java method that has been marked `@Transactional` - the transaction starts and ends when the method starts and ends.
 
 It is possible to have an entire SmartClient queue - including any `@Transactional` DMIs that contain both Spring DAO operations and DSRequests - use the same Spring-managed transaction. To do this:
 
@@ -108,7 +108,7 @@ The [Spring](https://spring.io/projects/spring-framework#learn) 5 framework inte
 
 The [Spring](https://spring.io/projects/spring-framework#learn) 5 ships with [Hibernate](https://hibernate.org/) 5 support only, i.e. without built-in Hibernate 3 and 4 support it used to have.
 
-SmartClient provides "bridges" that allow Spring 5 to be used with Hibernate 3 or 4. To use this combination, include either `isomorphic_spring_hibernate-core-6.5.3.Final.jar` for Hibernate 3 support or `isomorphic_spring_hibernate4.jar` for Hibernate 4 support.
+SmartClient provides "bridges" that allow Spring 5 to be used with Hibernate 3 or 4. To use this combination, include either `isomorphic_spring_hibernate3.jar` for Hibernate 3 support or `isomorphic_spring_hibernate4.jar` for Hibernate 4 support.
 
 Smartclient bridge classes are based on Spring 4.3.26 `org.springframework.orm.hibernate3` and `org.springframework.orm.hibernate4` packages and are placed in corresponding packages: `com.isomorphic.springhibernate3` and `com.isomorphic.springhibernate4`. So, for example, to configure managed Hibernate SessionFactory `**com.isomorphic.springhibernate3**.LocalSessionFactoryBean` class should be used instead of `org.springframework.orm.hibernate3.LocalSessionFactoryBean` class:
 
@@ -129,19 +129,19 @@ With pre JDK8, you cannot use Spring 5 (according to [Spring docs](https://githu
 
 To remove Spring from the SmartClient server all Spring JARs must be removed from your WEB-INF/lib server directory:
 
-*   spring-aop-6.1.15.jar
-*   spring-beans-6.1.15.jar
-*   spring-context-6.1.15.jar
+*   spring-aop-5.3.9.jar
+*   spring-beans-5.3.9.jar
+*   spring-context-5.3.9.jar
 *   spring-context-support-5.3.9.jar
-*   spring-core-6.1.15.jar
-*   spring-expression-6.1.15.jar
-*   spring-jdbc-6.1.15.jar
-*   spring-orm-6.1.15.jar
-*   spring-tx-6.1.15.jar
-*   spring-web-6.1.15.jar
-*   spring-webmvc-6.1.15.jar
+*   spring-core-5.3.9.jar
+*   spring-expression-5.3.9.jar
+*   spring-jdbc-5.3.9.jar
+*   spring-orm-5.3.9.jar
+*   spring-tx-5.3.9.jar
+*   spring-web-5.3.9.jar
+*   spring-webmvc-5.3.9.jar
 *   isomorphic\_spring.jar
-*   isomorphic\_spring\_hibernate-core-6.5.3.Final.jar
+*   isomorphic\_spring\_hibernate3.jar
 *   isomorphic\_spring\_hibernate4.jar
 
 and Spring configuration must be removed from your WEB-INF/web.xml:

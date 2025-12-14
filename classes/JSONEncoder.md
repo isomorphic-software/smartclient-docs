@@ -41,7 +41,7 @@ Encoding only where required produces slightly shorter, more readable output whi
 ## Attr: JSONEncoder.serializeInstances
 
 ### Description
-Controls the output of the JSONEncoder when instances of SmartClient classes (eg a ListGrid) are included in the data to be serialized. See [JSONInstanceSerializationMode](../reference_2.md#type-jsoninstanceserializationmode).
+Controls the output of the JSONEncoder when instances of SmartClient classes (eg a ListGrid) are included in the data to be serialized. See [JSONInstanceSerializationMode](../reference.md#type-jsoninstanceserializationmode).
 
 Note that the JSONEncoder does not support a format that will recreate the instance if passed to decode() or eval().
 

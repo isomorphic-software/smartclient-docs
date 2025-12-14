@@ -41,7 +41,7 @@ The form will be [cleared](DynamicForm.md#method-dynamicformclearvalues) after a
 ### Description
 Does this processElement pass through output from the last executed task (i.e. transient state)?
 
-See [taskInputExpressions](../reference_2.md#type-taskinputexpression) for details on the transient state outputs.
+See [taskInputExpressions](../kb_topics/taskInputExpression.md#kb-topic-task-input-expressions) for details on the transient state outputs.
 
 Note that this property does not affect the task at all but is an indicator to the user and to the workflow editor of the behavior of the task as coded (See [Process.passThruTaskOutput](Process.md#method-processpassthrutaskoutput)).
 

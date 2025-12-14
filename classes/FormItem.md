@@ -257,8 +257,6 @@ CSS class for the "hint" string.
 ### Description
 The DynamicForm picks a field renderer based on the type of the field (and sometimes other attributes of the field).
 
-In addition to the standard [FormItemType](../reference.md#type-formitemtype) values, this property also accepts the name of any [FormItem](#class-formitem) subclass (e.g., "ButtonItem", "CheckboxItem") or a shorthand lowercase version (e.g., "button", "checkbox"). When a class name or shorthand is provided, it acts as a shortcut for setting [FormItem.editorType](#attr-formitemeditortype).
-
 ### Groups
 
 - appearance
@@ -3015,7 +3013,7 @@ In a databound form, if [FormItem.displayField](#attr-formitemdisplayfield) is s
 
 - [FormItem.invalidateDisplayValueCache](#method-formiteminvalidatedisplayvaluecache)
 
-**Flags**: IRW
+**Flags**: IR
 
 ---
 ## Attr: FormItem.valueIcons
@@ -3418,11 +3416,11 @@ Returns a [FormItemIcon](../reference.md#object-formitemicon) for a standard pic
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | pickerName | [PickerIconName](../reference.md#type-pickericonname) | false | — | Name of picker icon |
-| properties | [FormItemIcon Properties](#type-formitemicon-properties) | true | — | Properties to apply to new picker icon |
+| properties | [FormItemIcon](#type-formitemicon) | true | — | Properties to apply to new picker icon |
 
 ### Returns
 
-`[FormItemIcon Properties](#type-formitemicon-properties)` — the icon for picker
+`[FormItemIcon](#type-formitemicon)` — the icon for picker
 
 ---
 ## Method: FormItem.show
@@ -3720,7 +3718,7 @@ Notification method fired when the user double-clicks the title for this item
 
 ### Returns
 
-`[Boolean](#type-boolean)` — Return false to cancel the doubleclick event. This will prevent the event from bubbling up, suppressing [doubleClick](Canvas.md#method-canvasdoubleclick) on the form containing this item.
+`[boolean](../reference.md#type-boolean)` — Return false to cancel the doubleclick event. This will prevent the event from bubbling up, suppressing [doubleClick](Canvas.md#method-canvasdoubleclick) on the form containing this item.
 
 ---
 ## Method: FormItem.canEditCriterion
@@ -3774,11 +3772,11 @@ StringMethod fired in response to a keydown while focused in this form item.
 |------|------|----------|---------|-------------|
 | item | [FormItem](#type-formitem) | false | — | Item over which the keydown occurred |
 | form | [DynamicForm](#type-dynamicform) | false | — | Pointer to the item's form |
-| keyName | [KeyName](../reference_2.md#type-keyname) | false | — | Name of the key pressed (Example: `"A"`, `"Enter"`) |
+| keyName | [KeyName](../reference.md#type-keyname) | false | — | Name of the key pressed (Example: `"A"`, `"Enter"`) |
 
 ### Returns
 
-`[Boolean](#type-boolean)` — return false to attempt to cancel the event. Note for general purpose APIs for managing whether user input is allowed, use [FormItem.change](#method-formitemchange) or [FormItem.transformInput](#method-formitemtransforminput) instead.
+`[boolean](../reference.md#type-boolean)` — return false to attempt to cancel the event. Note for general purpose APIs for managing whether user input is allowed, use [FormItem.change](#method-formitemchange) or [FormItem.transformInput](#method-formitemtransforminput) instead.
 
 ### Groups
 
@@ -4048,7 +4046,7 @@ Note that it can be bad practice to cancel this method if the mouse is over the 
 
 ### Returns
 
-`[Boolean](#type-boolean)` — return false to cancel default behavior
+`[boolean](../reference.md#type-boolean)` — return false to cancel default behavior
 
 ### Groups
 
@@ -4081,12 +4079,12 @@ StringMethod fired when the user presses a key while focused in this form item.
 |------|------|----------|---------|-------------|
 | item | [FormItem](#type-formitem) | false | — | Item over which the keypress occurred |
 | form | [DynamicForm](#type-dynamicform) | false | — | Pointer to the item's form |
-| keyName | [KeyName](../reference_2.md#type-keyname) | false | — | Name of the key pressed (Example: `"A"`, `"Enter"`) |
+| keyName | [KeyName](../reference.md#type-keyname) | false | — | Name of the key pressed (Example: `"A"`, `"Enter"`) |
 | characterValue | [number](#type-number) | false | — | If this was a character key, this is the numeric value for the character |
 
 ### Returns
 
-`[Boolean](#type-boolean)` — return false to attempt to cancel the event. Note for general purpose APIs for managing whether user input is allowed, use [FormItem.change](#method-formitemchange) or [FormItem.transformInput](#method-formitemtransforminput) instead.
+`[boolean](../reference.md#type-boolean)` — return false to attempt to cancel the event. Note for general purpose APIs for managing whether user input is allowed, use [FormItem.change](#method-formitemchange) or [FormItem.transformInput](#method-formitemtransforminput) instead.
 
 ### Groups
 
@@ -4119,11 +4117,11 @@ StringMethod fired in response to a keyup while focused in this form item.
 |------|------|----------|---------|-------------|
 | item | [FormItem](#type-formitem) | false | — | Item over which the keyup occurred |
 | form | [DynamicForm](#type-dynamicform) | false | — | Pointer to the item's form |
-| keyName | [KeyName](../reference_2.md#type-keyname) | false | — | Name of the key pressed (Example: `"A"`, `"Enter"`) |
+| keyName | [KeyName](../reference.md#type-keyname) | false | — | Name of the key pressed (Example: `"A"`, `"Enter"`) |
 
 ### Returns
 
-`[Boolean](#type-boolean)` — return false to attempt to cancel the event. Note for general purpose APIs for managing whether user input is allowed, use [FormItem.change](#method-formitemchange) or [FormItem.transformInput](#method-formitemtransforminput) instead.
+`[boolean](../reference.md#type-boolean)` — return false to attempt to cancel the event. Note for general purpose APIs for managing whether user input is allowed, use [FormItem.change](#method-formitemchange) or [FormItem.transformInput](#method-formitemtransforminput) instead.
 
 ### Groups
 
@@ -4139,7 +4137,7 @@ StringMethod. Default action to fire when an icon has keyboard focus and the use
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| keyName | [KeyName](../reference_2.md#type-keyname) | false | — | name of the key pressed |
+| keyName | [KeyName](../reference.md#type-keyname) | false | — | name of the key pressed |
 | character | [Character](#type-character) | false | — | character produced by the keypress |
 | form | [DynamicForm](#type-dynamicform) | false | — | a pointer to this item's form |
 | item | [FormItem](#type-formitem) | false | — | a pointer to this form item |
@@ -4391,7 +4389,7 @@ This event may be cancelled by returning false to suppress the [FormItem.click](
 
 ### Returns
 
-`[Boolean](#type-boolean)` — return false to cancel this event
+`[boolean](../reference.md#type-boolean)` — return false to cancel this event
 
 ### Groups
 
@@ -4432,7 +4430,7 @@ Called when this FormItem is double-clicked.
 
 ### Returns
 
-`[Boolean](#type-boolean)` — Return false to cancel the doubleClick event. This will prevent the event from bubbling up, suppressing [doubleClick](Canvas.md#method-canvasdoubleclick) on the form containing this item.
+`[boolean](../reference.md#type-boolean)` — Return false to cancel the doubleClick event. This will prevent the event from bubbling up, suppressing [doubleClick](Canvas.md#method-canvasdoubleclick) on the form containing this item.
 
 ### Groups
 
@@ -4635,7 +4633,7 @@ Notification method fires when the user clicks a [value icon](#attr-formitemvalu
 
 ### Returns
 
-`[Boolean](#type-boolean)` — Return false to suppress standard click handling for the item.
+`[boolean](../reference.md#type-boolean)` — Return false to suppress standard click handling for the item.
 
 ---
 ## Method: FormItem.shouldStopKeyPressBubbling
@@ -4653,12 +4651,12 @@ Developers may override this method to allow the form to react to certain keypre
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| keyName | [KeyName](../reference_2.md#type-keyname) | false | — | name of the key pressed |
+| keyName | [KeyName](../reference.md#type-keyname) | false | — | name of the key pressed |
 | characterValue | [number](#type-number) | false | — | If this was a character key, this is the numeric value for the character |
 
 ### Returns
 
-`[Boolean](#type-boolean)` — return true to prevent bubbling of the pressed key.
+`[boolean](../reference.md#type-boolean)` — return true to prevent bubbling of the pressed key.
 
 **Flags**: A
 
@@ -4915,7 +4913,7 @@ Notification method fired when the user clicks the title for this item
 
 ### Returns
 
-`[Boolean](#type-boolean)` — Return false to cancel the click event. This will prevent the event from bubbling up, suppressing [click](Canvas.md#method-canvasclick) on the form containing this item.
+`[boolean](../reference.md#type-boolean)` — Return false to cancel the click event. This will prevent the event from bubbling up, suppressing [click](Canvas.md#method-canvasclick) on the form containing this item.
 
 ---
 ## Method: FormItem.setHint
@@ -5052,7 +5050,7 @@ The default implementation will call [FormItem.showPicker](#method-formitemshowp
 
 ### Returns
 
-`[Boolean](#type-boolean)` — Return false to cancel the event.
+`[boolean](../reference.md#type-boolean)` — Return false to cancel the event.
 
 ### Groups
 
@@ -5126,7 +5124,7 @@ Note that for FormItems that have a [ValueMap](../reference_2.md#type-valuemap) 
 ### Description
 Expression evaluated to determine the [FormItem.defaultValue](#attr-formitemdefaultvalue) when no value is provided for this item.
 
-_formItem.defaultDynamicValue_ may be specified as a method or [sting of script](../reference_2.md#type-stringmethod) to evaluate. It should return a calculated default value for the item.
+_formItem.defaultDynamicValue_ may be specified as a method or [sting of script](../reference.md#type-stringmethod) to evaluate. It should return a calculated default value for the item.
 
 If you don't need dynamic evaluation, you can just use `item.defaultValue`.
 
@@ -5151,23 +5149,6 @@ If you don't need dynamic evaluation, you can just use `item.defaultValue`.
 - [FormItem.defaultValue](#attr-formitemdefaultvalue)
 
 **Flags**: A
-
----
-## Method: FormItem.setValueByDisplayValue
-
-### Description
-Sets the form item's value by looking up the corresponding value field from a display value. Requires [FormItem.displayField](#attr-formitemdisplayfield) and [FormItem.valueField](#attr-formitemvaluefield) to be configured.
-
-The method first checks the local valueMap and optionDataSource cache via [FormItem.mapDisplayToValue](#method-formitemmapdisplaytovalue). If no cached mapping is found, it fetches from the [FormItem.optionDataSource](#attr-formitemoptiondatasource) using the display value as criteria.
-
-This method is asynchronous when fetching from the optionDataSource. Use the callback parameter to be notified when the operation completes.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| displayValue | [Any](#type-any) | false | — | The display value to look up |
-| callback | [SetValueByDisplayValueCallback](#type-setvaluebydisplayvaluecallback) | true | — | Callback fired when the operation completes |
 
 ---
 ## Method: FormItem.hasAdvancedCriteria
@@ -5220,7 +5201,7 @@ Change/Changed notifications vs _"...When"_ rules: the `change` and `changed` ev
 
 ### Returns
 
-`[Boolean](#type-boolean)` — In your handler, return false to cancel the change, true or null to allow the change
+`[boolean](../reference.md#type-boolean)` — In your handler, return false to cancel the change, true to allow the change
 
 ### Groups
 
@@ -5716,12 +5697,12 @@ Note: `click()` is available on StaticTextItem, BlurbItems, ButtonItem, and deri
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| form | [DynamicForm](#type-dynamicform) | true | — | the managing DynamicForm instance |
-| item | [FormItem](#type-formitem) | true | — | the form item itself (also available as "this") |
+| form | [DynamicForm](#type-dynamicform) | false | — | the managing DynamicForm instance |
+| item | [FormItem](#type-formitem) | false | — | the form item itself (also available as "this") |
 
 ### Returns
 
-`[Boolean](#type-boolean)` — Return false to cancel the click event. This will prevent the event from bubbling up, suppressing [click](Canvas.md#method-canvasclick) on the form containing this item.
+`[boolean](../reference.md#type-boolean)` — Return false to cancel the click event. This will prevent the event from bubbling up, suppressing [click](Canvas.md#method-canvasclick) on the form containing this item.
 
 ### Groups
 
@@ -5789,7 +5770,7 @@ The pendingStatusChanged() notification method is typically used by [CanvasItem]
 
 ### Returns
 
-`[Boolean](#type-boolean)` — `false` to cancel the default behavior.
+`[boolean](../reference.md#type-boolean)` — `false` to cancel the default behavior.
 
 **Flags**: A
 

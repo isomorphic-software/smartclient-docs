@@ -1,4 +1,4 @@
-# SmartClient API Reference (Part 2 of 2)
+# SmartClient API Reference (13.1) (Part 2 of 2)
 
 [← Back to Part 1](reference.md)
 
@@ -35,25 +35,6 @@ String specifying effect to apply during an animated show or hide.
 | "wipe" | content is revealed or wiped as the widget grows or shrinks |
 | "fade" | widget's opacity smoothly fades into or out of view |
 | "fly" | widget moves into position from offscreen |
-
----
-## Type: AnimationCallback
-
-### Description
-A [Callback](#type-callback) to fire when an animation completes. The callback receives a single `earlyFinish` parameter which is true if the animation was cut short (for example by a call to a non-animated API that changes the same property).
-
----
-## Type: ArrowStyle
-
-### Description
-Supported styles for arrowheads.
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| "block" | Filled triangle. |
-| "open" | Two lines are drawn on each side of the path. |
 
 ---
 ## Type: Autofit
@@ -177,9 +158,7 @@ This is the most complete and foolproof way to get cache sync data, because we p
 | "requestValuesPlusSequences" | Obtain cache sync values by merging the request values on top of the request's [oldValues](classes/DSRequest.md#attr-dsrequestoldvalues). If the DataSource contains [primary key fields](classes/DataSource.md#method-datasourcegetprimarykeyfields) of type `sequence`, the framework will then attempt to obtain values for those fields - see [sequenceMode](#type-sequencemode) - and merge those values into the cache sync data as well. This strategy avoids a data refetch, which may be a significant performance gain (though please see the note in the `sequenceMode` documentation regarding Oracle as a special case in this regard). Despite the name, this strategy is also suitable and effective for situations where your keys are not sequences - for example, when they are GUIDs or when they are user-entered codes. In this case, we simply do not attempt to resolve sequence values, and since the key values are already included in the request values, everything works
 
 Note, if no `oldValues` are available and the updated record is [incomplete](classes/DataSource.md#attr-datasourcesparseupdates), or if the combination of `oldValues` and values is missing a value for a [required field](classes/DataSourceField.md#attr-datasourcefieldrequired) for any other reason, this strategy will return incomplete cache sync data. For details of what we do in these circumstances, see the "CacheSyncStrategy" section of the [cache synchronization overview](kb_topics/cacheSynchronization.md#kb-topic-automatic-cache-synchronization) |
-| "responseValues" | This strategy simply returns the data returned by the add or update operation, as the cache sync data. This only makes sense for `DataSource` types that return a value for an update operation. This may include generic DataSources and `RestConnector`s, depending entirely on what the implementation returns. It specifically does not include [SQL DataSources](kb_topics/sqlDataSource.md#kb-topic-sql-datasources), because SQL/JDBC update operations do not return a value (other than the number of affected records).
-
-This is the default strategy for [RestConnector](kb_topics/serverRestConnector.md#kb-topic-server-side-rest-connector)s, because it was the default way we did cache sync for that DataSource type before `CacheSyncStrategy` was introduced (and also because it is the ideal strategy for REST services that return the record-as-updated). See [DataSource.cacheSyncStrategy](classes/DataSource.md#attr-datasourcecachesyncstrategy) for details of how to change the default strategy for a given dataSource type. |
+| "responseValues" | This strategy simply returns the data returned by the add or update operation, as the cache sync data. This only makes sense for `DataSource` types that return a value for an update operation. This may include generic DataSources , depending entirely on what the implementation returns. It specifically does not include [SQL DataSources](kb_topics/sqlDataSource.md#kb-topic-sql-datasources), because SQL/JDBC update operations do not return a value (other than the number of affected records). |
 | "none" | This strategy does not attempt to derive cache sync data at all. No response data is sent back to the caller, and the response is marked for [cache invalidation](classes/DSResponse.md#attr-dsresponseinvalidatecache) |
 
 ### See Also
@@ -404,19 +383,6 @@ Note that when working with [FacetChart](classes/FacetChart.md#class-facetchart)
 A String of CSS that can be added directly to a `style` attribute.
 
 ---
-## Type: DataLineType
-
-### Description
-Algorithms for drawing lines between points.
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| "straight" | simple straight lines between points that are adjacent in the dataset |
-| "smooth" | smooth spline curve between points that are adjacent in the dataset |
-
----
 ## Type: DataPath
 
 ### Description
@@ -433,7 +399,7 @@ _*   If a subobject exists just to bundle several related fields together, and i
     
     It may seem like a good idea to work with a single hierarchical order object, where the "deliveryAddress" attribute is set to a sub-object that matches the structure defined in the "address" dataSource. DataPaths could be used to extract individual address fields for editing in a form alongside other fields from the order, and edits would be saved via a simple "add" or "update" operation, passing in the modified nested data object.
     
-    In fact, this has a number of disadvantages. Since there is no call to the "update" operation on the "address" subobject, the address will be modified without the normal features of a dataSource update. You can't specify [security rules](classes/DataSource.md#attr-datasourcerequiresauthentication), [DMI](kb_topics/dmiOverview.md#kb-topic-direct-method-invocation) logic, [request modifiers](reference_2.md#object-dsrequestmodifier), and no logging or [auditing](classes/DataSource.md#attr-datasourceaudit) will run.  
+    In fact, this has a number of disadvantages. Since there is no call to the "update" operation on the "address" subobject, the address will be modified without the normal features of a dataSource update. You can't specify [security rules](classes/DataSource.md#attr-datasourcerequiresauthentication), [DMI](kb_topics/dmiOverview.md#kb-topic-direct-method-invocation) logic, [request modifiers](#object-dsrequestmodifier), and no logging or [auditing](classes/DataSource.md#attr-datasourceaudit) will run.  
     The same "bypassing" problem occurs, in perhaps worse form, if a subobject does not yet exist and the framework creates it automatically, skipping a DataSource "add" operation that may have established defaults, not been allowed for the user, etc.
     
     Loading and saving nested data objects as a single hierarchical block also offers no advantages in terms of performance or simplicity.  
@@ -513,34 +479,6 @@ Nested canvases can also have dataPaths specified, which will similarly be combi
 ### See Also
 
 - [Canvas.ruleScope](classes/Canvas.md#attr-canvasrulescope)
-
----
-## Type: DataSourceTemplateReferenceMode
-
-### Description
-Indicates the mode to use for resolving templated references in a DataSource's configuration file. See [DataSource.allowTemplateReferences](classes/DataSource.md#attr-datasourceallowtemplatereferences) for an overview of configuration templating.
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| "none" | Indicates that no resolution of templated references should be done |
-| "configOnly" | Indicates that a simple find-and-replace process should resolve templated references. In this mode, the system looks for references strictly like the one below, and replaces them with the referenced property from your `server.properties` file. So if your `server.properties` file contained an entry like this:
-```
-     database.name: MyDatabase
- 
-```
-the below example would cause `dbName` to be resolved as `MyDatabase`
-```
-     dbName="$config['database.name']"
- 
-```
-(Note, you can use a different token than "`$config`" if you need to - see [templateConfigToken](classes/DataSource.md#attr-datasourcetemplateconfigtoken)) |
-| "all" | Indicates that full Velocity processing will be used to resolve templated references. This allows you to use all of Velocity's template-handling features - for example, conditional blocks and iteration - and so is more powerful than the simple "configOnly" option above. Note, however, that this templating is necessarily limited by the fact that it takes place during DataSource initialization, when there is not a lot of context available for templating purposes - you have the "`$config`" object, as with "configOnly", and some of the other variables listed in the [Velocity overview](kb_topics/velocitySupport.md#kb-topic-velocity-context-variables), but nothing relating to [DSRequest](reference_2.md#object-dsrequest)s |
-
-### See Also
-
-- [DataSource.templateConfigToken](classes/DataSource.md#attr-datasourcetemplateconfigtoken)
 
 ---
 ## Type: DateFieldLayout
@@ -668,7 +606,7 @@ The parameters available in the DSCallback expression are:
 
 *   dsResponse: a [DSResponse](classes/DSResponse.md#class-dsresponse) instance with metadata about the returned data
 *   data: data returned to satisfy the DataSource request. See the [DataSource operations](kb_topics/dataSourceOperations.md#kb-topic-datasource-operations) topic for expected results for each type of DataSource operation
-*   dsRequest: the [DSRequest](reference_2.md#object-dsrequest) that was sent. You can use [DSRequest.clientContext](classes/DSRequest.md#attr-dsrequestclientcontext) to track state during the server turnaround.
+*   dsRequest: the [DSRequest](#object-dsrequest) that was sent. You can use [DSRequest.clientContext](classes/DSRequest.md#attr-dsrequestclientcontext) to track state during the server turnaround.
 
 For example, if you had a DynamicForm with ID "myForm" and you wanted to retrieve a record from a DataSource "myUsers", where each record has a "userId" field:
 ```
@@ -785,8 +723,6 @@ If you use a Java-based persistence layer not provided by SmartClient, such as E
 | "hibernate" | Use Hibernate, either using a real mapped bean or by automatically generating a Hibernate configuration based on a SmartClient DataSource file (_dataSourceID_.ds.xml). See [hibernateIntegration](kb_topics/hibernateIntegration.md#kb-topic-integration-with-hibernate) for details. |
 | "jpa" | Use SmartClient's built-in JPA 2.0 connector. |
 | "jpa1" | Use SmartClient's built-in JPA 1.0 connector. |
-| "rest" | Use SmartClient's built-in [RestConnector](kb_topics/serverRestConnector.md#kb-topic-server-side-rest-connector), which can connect to many different types of REST webservice |
-| "odata" | Use SmartClient's built-in [OData DataSource](kb_topics/odataDataSource.md#kb-topic-server-side-odata-datasource). This is a specialized subclass of the `RestConnector` which adds functionality for REST webservices that follow the [OData protocol](https://www.odata.org/) |
 | "generic" | Requests will be delivered to the server and you are expected to write Java code to create a valid response. Throws an error if the server side method dsRequest.execute() is called. This is appropriate if you intend an entirely custom implementation, and you want an error thrown if there is an attempt to call an operation you have not implemented. |
 | "projectFile" | Requests will be delivered to the server and processed as [FileSource operations](kb_topics/fileSource.md#kb-topic-filesource-operations), using directories or other DataSources which you configure via [DataSource.projectFileKey](classes/DataSource.md#attr-datasourceprojectfilekey) or [DataSource.projectFileLocations](classes/DataSource.md#attr-datasourceprojectfilelocations) |
 | "union" | Use SmartClient's built-in [unionDataSource](kb_topics/unionDataSource.md#kb-topic-union-datasources), which assimilates records from multiple member dataSources |
@@ -794,42 +730,6 @@ If you use a Java-based persistence layer not provided by SmartClient, such as E
 ### Groups
 
 - serverDataIntegration
-
----
-## Type: DynamicString
-
-### Description
-A [dynamic string](kb_topics/dynamicStrings.md#kb-topic-dynamic-strings).
-
-### Groups
-
-- dynamicStrings
-
----
-## Type: EditCompletionEvent
-
-### Description
-What event / user interaction type caused cell editing to complete.
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| ListGrid.CLICK_OUTSIDE | User clicked outside editor during edit. |
-| ListGrid.CLICK | User started editing another row by clicking on it |
-| ListGrid.DOUBLE_CLICK | User started editing another row by double clicking |
-| ListGrid.ENTER_KEYPRESS | Enter pressed. |
-| ListGrid.ESCAPE_KEYPRESS | User pressed Escape. |
-| ListGrid.UP_ARROW_KEYPRESS | Up arrow key pressed. |
-| ListGrid.DOWN_ARROW_KEYPRESS | down arrow key. |
-| ListGrid.TAB_KEYPRESS | User pressed Tab. |
-| ListGrid.SHIFT_TAB_KEYPRESS | User pressed Shift+Tab. |
-| ListGrid.EDIT_FIELD_CHANGE | Edit moved to a different field (same row) |
-| ListGrid.PROGRAMMATIC | Edit completed via explicit function call |
-
-### Groups
-
-- editing
 
 ---
 ## Type: ElementWaitStyle
@@ -950,7 +850,7 @@ Method to use for displaying the exported data.
 ## Type: ExportFormat
 
 ### Description
-One of the supported formats for data-export. If you are doing a [client export](classes/ListGrid_2.md#method-listgridexportclientdata) to one of the native spreadsheet formats (xls or ooxml), we also export [hilite-based](reference_2.md#object-hilite) coloring. So, if Hilites are causing a particular cell to be rendered as green text on a blue background, the corresponding cell in the exported spreadsheet document will also be colored that way.
+One of the supported formats for data-export. If you are doing a [client export](classes/ListGrid_2.md#method-listgridexportclientdata) to one of the native spreadsheet formats (xls or ooxml), we also export [hilite-based](#object-hilite) coloring. So, if Hilites are causing a particular cell to be rendered as green text on a blue background, the corresponding cell in the exported spreadsheet document will also be colored that way.
 
 ### Values
 
@@ -1133,20 +1033,6 @@ and adding "#" and "\*" to the regular expressions above would allow for users t
 - [FormItemType](#type-formitemtype)
 
 ---
-## Type: FilteredSelectAllAction
-
-### Description
-Governs how the [MultiPickerItem](classes/MultiPickerItem.md#class-multipickeritem) "Select All" and "Deselect All" buttons should act when the user has filtered the set of visible options in the list.
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| "disable" | The buttons auto-disable when the list of options is filtered. |
-| "all" | Ignore filtering: Always select or deselect the entire set of options including those not currently visible in the filtered list. This option is only available if the entire set of data has been loaded in the client. |
-| "whenLoaded" | If the entire (filtered) list is loaded, both Select All and Clear are functional and will update the selection for all items in the filtered list. If a partial list is loaded, these buttons will be disabled. |
-
----
 ## Type: FireStyle
 
 ### Description
@@ -1215,41 +1101,6 @@ Type of change to the [ListGrid.groupTree](classes/ListGrid_1.md#attr-listgridgr
 ### See Also
 
 - [ListGrid.groupTreeChanged](classes/ListGrid_2.md#method-listgridgrouptreechanged)
-
----
-## Type: HashAlgorithm
-
-### Description
-Algorithms to use when hashing field values (see [DataSourceField.storeWithHash](classes/DataSourceField.md#attr-datasourcefieldstorewithhash)). Note that the `MD5` and `SHA` algorithms are deprecated as secure hashes since they are vulnerable to collisions created by an attacker with current technology, though they may still be useful in detecting corruption due to faulty transmission or storage.
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| "MD5" | Message Digest algorithm. _Deprecated as a secure hash._ |
-| "SHA" | Secure Hashing Algorithm (SHA-1). _Deprecated as a secure hash._ |
-| "SHA-256" | Secure Hashing Algorithm (SHA-256). |
-| "SHA-512" | Secure Hashing Algorithm (SHA-512). |
-| "bcrypt" | bcrypt is a password hashing function designed by Niels Provos and David Mazieres, based on the Blowfish cipher. |
-| "none" | Don't hash values. Can be specified to avoid the default algorithm. |
-
----
-## Type: HiliteIconPosition
-
-### Description
-Where a [hilite icon](classes/DataBoundComponent.md#attr-databoundcomponenthiliteicons) will be placed relative to normal cell content.
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| "before" | icon will be placed before the normal cell contents |
-| "after" | icon will be placed after the normal cell contents |
-| "replace" | icon will be shown instead of the normal cell contents |
-
-### Groups
-
-- hiliting
 
 ---
 ## Type: HoopSelectionStyle
@@ -1324,23 +1175,6 @@ A whole number, for example, 5. Decimal numbers, for example 5.5, are not allowe
 - [PositiveInteger](#type-positiveinteger)
 
 ---
-## Type: JoinType
-
-### Description
-The type of join to make between two SQL tables when resolving [includeFrom](classes/DataSourceField.md#attr-datasourcefieldincludefrom) fields.
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| "inner" | A regular inner join, whereby rows are only included in the resultset where the join can be satisified, so a missing row in the table being joined to results in the entire row being omitted. |
-| "outer" | An outer join. All outer joins generated by SmartClient's SQL subsystem are left outer joins, meaning that every row in the join-from (or "left") table that matches the criteria is included, and missing rows in the join-to (or "right") table cause columns to be set to null. |
-
-### Groups
-
-- dataSourceRelations
-
----
 ## Type: JSONCircularReferenceMode
 
 ### Description
@@ -1353,52 +1187,6 @@ What the [JSONEncoder](classes/JSONEncoder.md#class-jsonencoder) should do when 
 | "omit" | circular references in Arrays will be represented as a null entry, and objects will have a property with a null value |
 | "marker" | leave a string marker, the [JSONEncoder.circularReferenceMarker](classes/JSONEncoder.md#attr-jsonencodercircularreferencemarker), wherever a circular reference is found |
 | "path" | leave a string marker _followed by_ the path to the first occurrence of the circular reference from the top of the object tree that was serialized. This potentially allows the original object graph to be reconstructed. |
-
----
-## Type: JSONInstanceSerializationMode
-
-### Description
-Controls the output of the JSONEncoder when instances of SmartClient classes (eg a ListGrid) are included in the data to be serialized.
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| "long" | instances will be shown as a specially formatted JSON listing the most relevant properties of the instance. Result is not expected to decode()/eval() successfully if instances are included. |
-| "short" | instances will be shown in a shorter format via a call to [isc.echoLeaf](classes/isc.md#staticmethod-iscecholeaf). Result is not expected to decode()/eval() successfully if instances are included. |
-| "skip" | no output will be shown for instances (as though they were not present in the data). Result should decode()/eval() successfully (depending on other settings) |
-
----
-## Type: KeyName
-
-### Description
-Strings to identify the various keys on the keyboard.
-
-*   For alpha keys, the single (uppercase) character value is used, such as "Q"
-*   For Numeric keys, the number is used as in a single character string, like "1"
-*   Function keys are identified as `"f1"` - `"f12"`
-*   Non alpha-numeric character keys (such as the key for "\[" / "{") are identified by their unmodified character value (the value obtained by hitting the key without holding shift down), by default - exceptions are listed below.
-*   Additional key names:  
-    \- `Space`  
-    \- `Tab`  
-    \- `Enter`  
-    \- `Escape`  
-    \- `Backspace`  
-    \- `Insert`  
-    \- `Delete`  
-    \- `Arrow_Up`  
-    \- `Arrow_Down`  
-    \- `Arrow_Left`  
-    \- `Arrow_Right`  
-    \- `Home`  
-    \- `End`  
-    \- `Page_Up`  
-    \- `Page_Down`  
-    \- `Shift`  
-    \- `Ctrl`  
-    \- `Alt`
-
-\[Note: Some keys may not be available for capture on every platform\]
 
 ---
 ## Type: LabelAlignment
@@ -1485,25 +1273,6 @@ In addition, components may declare that they have [adaptive sizing](classes/Can
 ### See Also
 
 - [Layout.minBreadthMember](classes/Layout.md#attr-layoutminbreadthmember)
-
----
-## Type: ListGridComponent
-
-### Description
-Standard component-type displayed within a ListGrid, as contained by [ListGrid.gridComponents](classes/ListGrid_1.md#attr-listgridgridcomponents).
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| "filterEditor" | The standard filter-component displayed when [ListGrid.showFilterEditor](classes/ListGrid_1.md#attr-listgridshowfiltereditor) is true |
-| "header" | The header-component displayed when [ListGrid.showHeader](classes/ListGrid_1.md#attr-listgridshowheader) is true. |
-| "body" | The body component for the grid. |
-| "summaryRow" | The summary-row component displayed when [ListGrid.showGridSummary](classes/ListGrid_1.md#attr-listgridshowgridsummary) is true. |
-
-### Groups
-
-- appearance
 
 ---
 ## Type: ListGridFieldState
@@ -1596,26 +1365,6 @@ The style of list item marker for a list.
 | "servletError" | — |
 
 ---
-## Type: LoadState
-
-### Description
-Trees that dynamically load nodes keep track of whether each node has loaded its children.
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| Tree.UNLOADED | children have not been loaded and are not loading |
-| Tree.LOADING | currently in the process of loading |
-| Tree.FOLDERS_LOADED | folders only are already loaded |
-| Tree.LOADED | already fully loaded |
-| Tree.LOADED_PARTIAL_CHILDREN | children form a ResultSet having only a partial cache (applies only to the "paged" [fetchMode](classes/ResultTree.md#attr-resulttreefetchmode)) |
-
-### Groups
-
-- loadState
-
----
 ## Type: LocatorAttributeType
 
 ### Description
@@ -1689,20 +1438,6 @@ Operators that can evaluate a set of criteria and produce a combined result.
 | "and" | true if all criteria are true |
 | "or" | true if any criteria are true |
 | "not" | true if all criteria are false |
-
----
-## Type: MatchElementSizeMode
-
-### Description
-How should a canvas match its target [Canvas.htmlElement](classes/Canvas.md#attr-canvashtmlelement) size?
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| "matchElement" | canvas will be sized to match the element |
-| "sizeElement" | htmlElement should be sized to match the specified size of the canvas |
-| "none" | do not attempt to match the canvas / element size |
 
 ---
 ## Type: MinimalScrollbarContrastSuffix
@@ -1974,21 +1709,6 @@ Possible placements for pop-up choosers, menus, dialogs or other temporary UIs, 
 | "none" | this setting disables all panelPlacement sizing and positioning logic. Explicitly specified size and positioning will be used. |
 
 ---
-## Type: PartialCommitOption
-
-### Description
-Action to take if a user attempts to save the dataset produced by a [BatchUploader](classes/BatchUploader.md#class-batchuploader) whilst it still contains errors.
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| "allow" | Silently allow the partial commit to proceed (note that this will result in the user losing those records that contain errors) |
-| "prevent" | Pop up a message window showing the [BatchUploader.partialCommitError](classes/BatchUploader.md#attr-batchuploaderpartialcommiterror) and prevent the partial commit |
-| "prompt" | Pop up a confirmation window with the [BatchUploader.partialCommitPrompt](classes/BatchUploader.md#attr-batchuploaderpartialcommitprompt) and allow the user to choose whether or not to proceed |
-| "retain" | Commit any records that are error-free and remove them from the grid. If any records had errors, leave them in the grid and leave the grid visible. If no records had errors, run normal cleanup as we would for "allow". This option allows the user to fix errors iteratively, rather than having to fix everything upfront before committing |
-
----
 ## Type: Positioning
 
 ### Description
@@ -2119,21 +1839,21 @@ Controls the style of TableView record display
 ### Description
 Function to produce a summary value based on field values within a record. Example usage is record-level summaries in ["summary" type ListGrid fields](#type-listgridfieldtype).
 
-Record summary functions may be specified in one of two ways:
+SummaryFunctions may be specified in one of 2 ways:
 
 *   as an explicit function or executable [StringMethod](kb_topics/stringMethods.md#kb-topic-string-methods-overview). Takes 3 parameters:  
     `record` the record for which the value is being calculated  
     `fields` Array of listGridFields from which summaries should be calculated  
     `summaryField` pointer to the summary type field on which the summary function is being run.
-*   The identifier of such a function or string method, either built-in or registered via [DataSource.registerRecordSummaryFunction](classes/DataSource.md#classmethod-datasourceregisterrecordsummaryfunction)
+*   As a registered RecordSummaryFunction identifier
 
-[DataSource.registerRecordSummaryFunction](classes/DataSource.md#classmethod-datasourceregisterrecordsummaryfunction) may be used to expand the set of registered record summary functions.
+Note that [DataSource.registerRecordSummaryFunction](classes/DataSource.md#classmethod-datasourceregisterrecordsummaryfunction) may be used to expand the set of registered RecordSummaryFunctions.
 
 ### Values
 
 | Value | Description |
 |-------|-------------|
-| sum | Iterates through each field, picking up the numeric field values from the record and summing them. This is the default if [ListGridField.recordSummaryFunction](classes/ListGridField.md#attr-listgridfieldrecordsummaryfunction) is not specified and [ListGridField.getRecordSummary](classes/ListGridField.md#method-listgridfieldgetrecordsummary) is not implemented. |
+| sum | Iterates through each field, picking up the numeric field values from the record and summing them. |
 | avg | Iterates through each field, picking up the numeric field values from the record and calculating the mean value. |
 | max | Iterates through each field, picking up the numeric field values from the record and calculating the maximum value. |
 | min | Iterates through each field, picking up the numeric field values from the record and calculating the minimum value. |
@@ -2191,24 +1911,6 @@ This format is very flexible. Here are a few example relative date strings:
 - [RelativeDateShortcut](#type-relativedateshortcut)
 
 ---
-## Type: ReorderPosition
-
-### Description
-Controls where a drag-item should be dropped in relation to the target row
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| ListGrid.BEFORE | Drop the drag-item before the target-row |
-| ListGrid.AFTER | Drop the drag-item after the target-row |
-| ListGrid.OVER | Drop the drag-item over (onto) the target-row |
-
-### Groups
-
-- dragdrop
-
----
 ## Type: ResizeKnobPoint
 
 ### Description
@@ -2226,24 +1928,6 @@ Specifies the position of a resize knob with respect to its draw item.
 | "B" | Centered on the bottom edge |
 | "R" | Centered on the left edge |
 | "L" | Centered on thie right edge |
-
----
-## Type: RESTAuthenticationType
-
-### Description
-Enumeration of the supported authentication types for the [RestConnector](kb_topics/serverRestConnector.md#kb-topic-server-side-rest-connector) implementation. Note, all of these authentication types are secure, but only if you use HTTPS
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| "basic" | Use a "Basic" HTTP Authorization header. Requires both a [username](classes/RESTAuthentication.md#attr-restauthenticationusername) and a [password](classes/RESTAuthentication.md#attr-restauthenticationpassword), which are combined and Base64-encoded in the HTTP request header. Note, you can also use this auth type for services that allow for Basic authentication using a combination of user and long-lived API key (ie, an API key or token that is generated by the auth server and is used instead of a password for this particular client application, but does not need to be regularly renewed) |
-| "bearerToken" | Use a "Bearer" HTTP Authorization header with a bearer token obtained from an OAuth 2.0 client credentials server or other auth scheme that can generate bearer tokens (also known as API tokens or API keys). This auth type can handle both long-lived tokens, such as API keys that are generated once for an application and never change, and so-called "access tokens" that are only valid for a limited period of time - usually no more than a few hours - and must be refreshed when they expire. See [RESTAuthentication.dataSource](classes/RESTAuthentication.md#attr-restauthenticationdatasource) |
-| "authHeader" | Use a manually-constructed HTTP Authorization header. This auth type requires an [authentication dataSource](classes/RESTAuthentication.md#attr-restauthenticationdatasource) that returns a record containing a well-formed Authorization header value in a field called "authorizationHeader" (this can be overridden, see the authentication dataSource docs mentioned above) |
-
-### Groups
-
-- serverRestConnector
 
 ---
 ## Type: RowRangeDisplayStyle
@@ -2305,25 +1989,6 @@ Enum to indicate selection change notification types. Used by [ListGrid.reselect
 | "selectionUpdated" | [selectionChanged()](classes/ListGrid_2.md#method-listgridselectionchanged) and [selectionUpdated()](classes/ListGrid_2.md#method-listgridselectionupdated) should both fire. |
 
 ---
-## Type: SelectionType
-
-### Description
-Controls how an object changes state when clicked
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| StatefulCanvas.BUTTON | object moves to "down" state temporarily (normal button) |
-| StatefulCanvas.CHECKBOX | object remains in "down" state until clicked again (checkbox) |
-| StatefulCanvas.RADIO | object moves to "down" state, causing another object to go up (radio) |
-
-### Groups
-
-- state
-- event handling
-
----
 ## Type: SelectItemsMode
 
 ### Description
@@ -2353,57 +2018,6 @@ Controls whether and when individual items are selected when clicking on a form 
 ### Groups
 
 - communication
-
----
-## Type: SetterPath
-
-### Description
-A path expression indicating where and how a nested Object should be updated.
-
-A `SetterPath` is a dot-delimited list of segments, where each segment is a property name. The `SetterPath` can end in an operator that controls how the property update is done:
-
-*   `[]` – append to an Array (creates the Array if missing)
-*   `{}` – deep merge into an Object, overwriting existing keys
-*   `{?}` – deep merge into an Object, preserving existing keys (non-clobbering)
-
-This syntax is used in [Task.setState](classes/Task.md#method-tasksetstate)/[Process.setStateVariable](classes/Process.md#method-processsetstatevariable).
-
-Missing objects and Arrays are created as needed unless [strictPaths](classes/Task.md#attr-taskstrictpaths) is set, either in the specific API call, or on the [task](classes/Task.md#attr-taskstrictpaths) or [process](classes/Process.md#attr-processstrictpaths) involved. When `strictPaths` is enabled, attempting to traverse through a non-object/Array or a missing segment throws an error instead.
-
-#### Examples
-Assume `process.state` starts as:
-```
- {
-     currentDS: {
-         fields: [ { name:"orderId", type:"integer" } ],
-         defaults: { timezone:"UTC" }
-     }
- }
- 
-```
-
-*   **Append**  
-    `"currentDS.fields[]": { name:"orderDate", type:"date" }`  
-    Result: `fields` gains a new element at the end.
-*   **Deep merge (clobber)**  
-    `"currentDS.defaults{}": { timezone:"PST", dateFormat:"YYYY-MM-DD" }`  
-    Result: `timezone` is overwritten to "PST"; `dateFormat` is added.
-*   **Deep merge (non-clobber)**  
-    `"currentDS.defaults{?}": { timezone:"PST", locale:"en-US" }`  
-    Result: existing `timezone:"UTC"` is preserved; `locale` is added.
-
----
-## Type: SettledPromiseStatus
-
-### Description
-The eventual state of a settled [Promise](reference_2.md#object-promise).
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| "fulfilled" | The `Promise` fulfilled with a value. |
-| "rejected" | The `Promise` rejected with a reason. |
 
 ---
 ## Type: SkipJSONValidation
@@ -2457,23 +2071,6 @@ Do we display an arrow for the sorted field ?
 - sorting
 
 ---
-## Type: SQLType
-
-### Description
-The types of custom query that can be handled by SmartClient's built-in "sql" and "hibernate" DataSources. Note, only applies to [OperationBinding.operationType](classes/OperationBinding.md#attr-operationbindingoperationtype) "custom".
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| "query" | The custom SQL or HQL is read-only |
-| "update" | The custom SQL or HQL updates data |
-
-### Groups
-
-- customQuerying
-
----
 ## Type: StackPersistence
 
 ### Description
@@ -2485,14 +2082,6 @@ The types of custom query that can be handled by SmartClient's built-in "sql" an
 |-------|-------------|
 | "none" | older messages disappear as if unrelated |
 | "reset" | older messages have their duration timers reset so they stick around as long as the new message if they've got less time left than that message |
-
----
-## Type: StringMethod
-
-### Description
-A String containing a valid JavaScript expression that's automatically converted to a function with a return value matching the value of the last statement.
-
-See [stringMethods](kb_topics/stringMethods.md#kb-topic-string-methods-overview) for an example.
 
 ---
 ## Type: SummaryFunction
@@ -2518,26 +2107,10 @@ For valid ways to configure SummaryFunctions to use server-side feature see the 
 _Server:_ acts exactly like SQL SUM function. |
 | avg | _Client:_ iterates through the set of records, picking up all numeric values for the specified field and determining the mean value. Returns null to indicate invalid summary value if any non numeric field values are encountered.  
 _Server:_ acts exactly like SQL AVG function. |
-| max | _Client:_ iterates through the set of records, picking up all non-null values for the specified field and finding the maximum value, where comparison between values is made:
-
-1.  via [SimpleType.compareValues](classes/SimpleType.md#method-simpletypecomparevalues) if defined for the field's [type](classes/Field.md#attr-fieldtype)
-2.  via [DateUtil.compareLogicalDates](classes/DateUtil.md#classmethod-dateutilcomparelogicaldates) if the field type inherits from "date"
-3.  via comparison as [logical times](classes/Time.md#classmethod-timecreatelogicaltime) if the field type inherits from "time"
-4.  via [DateUtil.compareDates](classes/DateUtil.md#classmethod-dateutilcomparedates) for two values that are both [Date](reference_2.md#object-date)s
-5.  otherwise, using traditional methods
-
-Returns null to indicate an invalid summary value or when all source values are null. For best results, ensure that the [Field.type](classes/Field.md#attr-fieldtype) is correctly set.  
-_Server:_ acts exactly like the SQL MAX aggregate function. |
-| min | _Client:_ iterates through the set of records, picking up all non-null values for the specified field and finding the minimum value, where comparison between values is made:
-
-1.  via [SimpleType.compareValues](classes/SimpleType.md#method-simpletypecomparevalues) if defined for the field's [type](classes/Field.md#attr-fieldtype)
-2.  via [DateUtil.compareLogicalDates](classes/DateUtil.md#classmethod-dateutilcomparelogicaldates) if the field type inherits from "date"
-3.  via comparison as [logical times](classes/Time.md#classmethod-timecreatelogicaltime) if the field type inherits from "time"
-4.  via [DateUtil.compareDates](classes/DateUtil.md#classmethod-dateutilcomparedates) for two values that are both [Date](reference_2.md#object-date)s
-5.  otherwise, using traditional methods
-
-Returns null to indicate an invalid summary value or when all source values are null. For best results, ensure that the [Field.type](classes/Field.md#attr-fieldtype) is correctly set.  
-_Server:_ acts exactly like the SQL MIN aggregate function. |
+| max | _Client:_ iterates through the set of records, picking up all values for the specified field and finding the maximum value. Handles numeric fields and date/time/datetime type fields only. Returns null to indicate invalid summary value if any non numeric/date field values are encountered.  
+_Server:_ acts exactly like SQL MAX function. |
+| min | _Client:_ iterates through the set of records, picking up all values for the specified field and finding the minimum value. Handles numeric fields and date/time/datetime type fields only. Returns null to indicate invalid summary value if any non numeric field values are encountered.  
+_Server:_ acts exactly like SQL MIN function. |
 | multiplier | _Client:_ iterates through the set of records, picking up all numeric values for the specified field and multiplying them together. Returns null to indicate invalid summary value if any non numeric field values are encountered.  
 _Server:_ **not supported**. |
 | count | _Client:_ returns a numeric count of the total number of records passed in.  
@@ -2554,68 +2127,6 @@ _Server:_ The same approach as for "concat", and with the same restrictons and l
 ### Groups
 
 - serverSummaries
-
----
-## Type: TaskInputExpression
-
-### Description
-A TaskInputExpression is a way to specify a value in the declarative workflow system ([Process](classes/Process.md#class-process) / [Task](classes/Task.md#class-task)) that is derived from the running [process state](classes/Process.md#attr-processstate), the [output](classes/Task.md#method-tasksetoutput) of a previous task in the process, or from global context such as [ruleScope](classes/Process.md#attr-processrulescope).
-
-For example, in [FormEditNewRecordTask](#class-formeditnewrecordtask), `taskInputExpressions` are allowed in the [initialValues](#attr-formeditnewrecordtaskinitialvalues) specified for the task, making it very easy to build a process that fetches data from the server and populates a form with that data.
-
-Similarly, in [GridFetchDataTask](classes/GridFetchDataTask.md#class-gridfetchdatatask), `taskInputExpressions` are allowed in the [criteria](classes/GridFetchDataTask.md#attr-gridfetchdatataskcriteria) specified for the task, as the [Criterion.value](classes/Criterion.md#attr-criterionvalue) for any criterion.
-
-`TaskInputExpressions` are designed to be visual-tool-friendly so that it's easy to visually wire together processes in the [Workflow Editor](kb_topics/reifyAddWorkflowTask.md#kb-topic-reify-onsite-adding-custom-workflow-tasks).
-
-A TaskInputExpression is a String prefixed with "$input", "$inputRecord", "$ruleScope", "$state" or "$last" followed by an optional dot-separated hierarchical path, which can specify either an atomic data value (String, Number) or Record from the input data. For example, if the [Process.state](classes/Process.md#attr-processstate) represented in JSON were:
-
-```
- {
-    orderId:5,
-    orderItems: [
-       {name:"Pencils", quantity:3, itemId:2344}
-    ],
-    orderUser: { name:"Henry Winkle", address:"...", ... }
- }
- 
-```
-.. and a task specified an `inputs` of "orderId" and an inputFieldList of "orderItems","orderUser", then:
-
-*   $input is the value 5
-*   $inputRecord.orderUser.name is "Henry Winkle"
-*   $inputRecord.orderItems\[0\] is the first orderItems Record ({name:"Pencils", ... })
-
-"$ruleScope" can be used to pull values from a [ruleScope](classes/Canvas.md#attr-canvasrulescope) [ruleContext](classes/Canvas.md#method-canvasgetrulecontext) when configured in [Process.ruleScope](classes/Process.md#attr-processrulescope).
-
-*   $ruleScope.property references the ruleContext "property" field
-
-Two others sources of input are "$state" and "$last". The former references the contents of the [Process.state](classes/Process.md#attr-processstate) and the latter the [transient state](classes/Process.md#attr-processstate).
-
-*   $state is the full contents of the process state
-*   $state.orderId is the "orderId" field of the process state (5 from the example above)
-*   $last is the full output of the previous task executed in the process
-*   $last.property is the "property" field of the previous task executed in the process
-*   $last\[service\].property or $last\[DSRequestTask\].property references the last "DSRequestTask" output in the "property" field
-*   $ruleScope.property references the ruleScope "property" field
-
-The last two sources of input are "$lastRequest" and "$lastResponse". These are the objects `dsRequest` and `dsResponse` representing the last [DSRequestTask](classes/DSRequestTask.md#class-dsrequesttask), [DSFetchTask](#class-dsfetchtask), [DSAddTask](#class-dsaddtask), [DSUpdateTask](#class-dsupdatetask) or [DSRemoveTask](#class-dsremovetask) DataSource operation as returned in the operation's [callback](reference_2.md#type-dscallback). A common usage would be to reference $lastResponse.totalRows to know how many rows were returned from a fetch.
-
-#### Transient state outputs
-Most tasks pass the output from the _previous_ task as their output (i.e. passed through) making it easy to refer to earlier output without referencing the task type. Tasks that work with records or interact with the user, however, typically provide task-specific output as detailed below:
-
-*   **DSRequestTask**: the contents of dsResponse.data.
-*   **ScriptTask**: the result of [execute()](classes/ScriptTask.md#method-scripttaskexecute) or, for an asynchronous task, the value passed to [setOutput()](classes/ScriptTask.md#method-scripttasksetoutput).
-*   **StateTask**: the value assigned to the outputField.
-*   **UserTask**: the values of the targetForm or targetVM when the task completes.
-*   **AskForValueTask**: an object with "value" and "canceled" properties.
-*   **FetchRelatedDataTask**: the first fetched record.
-*   **GridFetchDataTask**: the contents of dsResponse.data.
-*   **GridTransferSelectedTask**: the first transfered record.
-*   **GridSelectRecordsTask**: on a select, the set of newly selected records, even if other records are also selected. On a deselect, the entire set of de-selected records.
-*   **FetchRelatedDataTask**: the first fetched related record.
-*   **FormSaveDataTask**: an object with "valuesValid" and "errors" properties.
-*   **FormValidateValuesTask**: an object with "valuesValid" and "errors" properties.
-*   **GetPropertiesTask**: an object with selected properties and values retrieved.
 
 ---
 ## Type: TextMatchStyle
@@ -2711,24 +2222,6 @@ An enum of time-units available for use with the [RelativeDateItem](classes/Rela
 | "year" | a year time-unit |
 
 ---
-## Type: TitleAlign
-
-### Description
-Supported positioning of the chart Title.
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| "left" | Align to the left of the chart title header |
-| "center" | Align centrally in the chart title header |
-| "right" | Align to the right of the chart title header |
-
-### Groups
-
-- chartTitle
-
----
 ## Type: TitleOrientation
 
 ### Description
@@ -2750,28 +2243,6 @@ Orientation of titles relative to the FormItem being labeled. Can be set a the D
 
 - [DynamicForm.titleOrientation](classes/DynamicForm.md#attr-dynamicformtitleorientation)
 - [FormItem.titleOrientation](classes/FormItem.md#attr-formitemtitleorientation)
-
----
-## Type: TitleRotationMode
-
-### Description
-The different ways in which the [titleLabel](classes/DrawItem.md#attr-drawitemtitlelabel) of a [DrawItem](classes/DrawItem.md#class-drawitem) can be rotated with the item.
-
-**NOTE:** The effect of the "withItemAlwaysUp" and "withLineAlwaysUp" settings is not affected by the global rotation, if any (see [DrawPane.rotation](classes/DrawPane.md#attr-drawpanerotation)).
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| "neverRotate" | the `titleLabel` is never rotated with the item. |
-| "withItem" | the `titleLabel` is rotated exactly to match the item's rotation (see [DrawItem.rotation](classes/DrawItem.md#attr-drawitemrotation)). |
-| "withItemAlwaysUp" | the `titleLabel` is rotated exactly to match the item's rotation, except that at certain rotations, the `titleLabel` is flipped by 180° so that the title text is never upside down. |
-| "withLine" | (applies only to [DrawLine](classes/DrawLine.md#class-drawline) and [DrawLinePath](classes/DrawLinePath.md#class-drawlinepath)) the `titleLabel` is rotated to match the line or center segment.
-
-If used on a `DrawItem` that is not a `DrawLine` or `DrawLinePath`, then the effect is the same as "withItem". |
-| "withLineAlwaysUp" | (applies only to [DrawLine](classes/DrawLine.md#class-drawline) and [DrawLinePath](classes/DrawLinePath.md#class-drawlinepath)) the `titleLabel` is rotated to match the line or center segment, except that at certain rotations, the `titleLabel` is flipped by 180° so that the title text is never upside down.
-
-If used on a `DrawItem` that is not a `DrawLine` or `DrawLinePath`, then the effect is the same as "withItemAlwaysUp". |
 
 ---
 ## Type: TreeGridOpenState
@@ -2806,19 +2277,6 @@ The strategy used when auto-deriving the fields that make up a UnionDataSource, 
 
 ### Description
 A Uniform Resource Locator string, as defined by [https://www.w3.org/Addressing/URL/url-spec.html](https://www.w3.org/Addressing/URL/url-spec.html). For example, "https://www.smartclient.com/product/" is a valid `URL`.
-
----
-## Type: ValidationMode
-
-### Description
-Mode of validation used for running validation on partially entered data.
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| "full" | Assume provided data is complete and run all validation rules |
-| "partial" | Validate only the data values that are present ignoring the absence of required fields, validators that refer to fields that are not present, and any conditional validators dependent on fields that are not present. |
 
 ---
 ## Type: ValueClass
@@ -2863,21 +2321,6 @@ Note that a `VelocityExpression` must often evaluate to a particular type of val
 ### Groups
 
 - velocitySupport
-
----
-## Type: ViewName
-
-### Description
-The names of the Calendar views.
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| "day" | day view |
-| "week" | week view |
-| "month" | month view |
-| "timeline" | timeline view |
 
 ---
 ## Type: Visibility
@@ -2929,16 +2372,6 @@ The names of the Calendar views.
 - zoom
 
 ---
-## Object: AdaptiveMenuItem
-
-### Description
-Object extending [MenuItem](reference_2.md#object-menuitem) and specifying an item in an [AdaptiveMenu](classes/AdaptiveMenu.md#class-adaptivemenu). As with `MenuItems` each `AdaptiveMenuItem` can have a [title](classes/MenuItem.md#attr-menuitemtitle), [icon](classes/MenuItem.md#attr-menuitemicon), [shortcut keys](classes/MenuItem.md#attr-menuitemkeys), optional [MenuItem.submenu](classes/MenuItem.md#attr-menuitemsubmenu) and various other settings, including arbitrary widgets via [MenuItem.embeddedComponent](classes/MenuItem.md#attr-menuitemembeddedcomponent).
-
-Additionally, an `AdaptiveMenuItem` may be displayed either as an item in a regular [Menu](classes/Menu.md#class-menu) or as a [button in a toolstrip](classes/AdaptiveMenu.md#attr-adaptivemenuinlinemenuitem) and will adapt it's appearance according to layout and available space.
-
-As a result of that behavior, the _menu_ parameter passed to methods like [AdaptiveMenuItem.click](classes/AdaptiveMenuItem.md#method-adaptivemenuitemclick) may be null if this item is not currently displayed in a menu. In such cases, developers may call [item.getAdaptiveMenu()](classes/AdaptiveMenuItem.md#method-adaptivemenuitemgetadaptivemenu).
-
----
 ## Object: AIContext
 
 ### Description
@@ -2949,6 +2382,10 @@ Context object for an AI process.
 
 ### Description
 Settings that configure requests to AI to generate the values for a field.
+
+### See Also
+
+- [AI.buildAIFieldRequest](classes/AI.md#classmethod-aibuildaifieldrequest)
 
 ---
 ## Object: AIHoverRequest
@@ -2969,22 +2406,46 @@ A message relating to progress made in an ongoing build-via-AI operation.
 Represents a response from AI.
 
 ---
-## Object: Array
-
-### Description
-Generic extensions to JavaScript Arrays. You can call these on any Array.
-
-JavaScript's native Array is retrofitted to support the `List` API.
-
-### See Also
-
-- [List](reference_2.md#interface-list)
-
----
 ## Object: Boolean
 
 ### Description
 Boolean object. Attributes, parameters, or return values declared as `Boolean` may be null. Contrast with [boolean](#type-boolean).
+
+---
+## Object: BuildAIFieldRequestRequest
+
+### Description
+Builds an [AIFieldRequest](reference_2.md#object-aifieldrequest) from a [UserAIRequest](reference_2.md#object-userairequest) containing a natural language description of the per-record values to generate for a new AI-generated field.
+
+### See Also
+
+- [AI.buildAIFieldRequest](classes/AI.md#classmethod-aibuildaifieldrequest)
+
+---
+## Object: BuildCriterionContext
+
+### Description
+—
+
+### See Also
+
+- [AI.buildCriterion](classes/AI.md#classmethod-aibuildcriterion)
+
+---
+## Object: BuildCriterionRequest
+
+### Description
+Builds an [AdvancedCriteria](#object-advancedcriteria) object from a [UserAIRequest](reference_2.md#object-userairequest) containing a natural language description of a filter.
+
+### See Also
+
+- [AI.buildCriterion](classes/AI.md#classmethod-aibuildcriterion)
+
+---
+## Object: BuildDataBoundUIViaAIRequest
+
+### Description
+Represents a request to AI for data-bound UI elements.
 
 ---
 ## Object: BuildHilitesContext
@@ -2994,7 +2455,13 @@ Boolean object. Attributes, parameters, or return values declared as `Boolean` m
 
 ### See Also
 
-- [AI.buildHilites](#classmethod-aibuildhilites)
+- [AI.buildHilites](classes/AI.md#classmethod-aibuildhilites)
+
+---
+## Object: BuildUIViaAIRequest
+
+### Description
+Represents a request to AI for UI elements.
 
 ---
 ## Object: ClassFactory
@@ -3013,18 +2480,6 @@ Sets up a real inheritance structure for Javascript objects. We separate out cla
 An object containing properties that is used in Gradient types
 
 ---
-## Object: CoTHistoryEntry
-
-### Description
-Any serializable JavaScript Object can be added to the history via [CoTProcess.addHistory](classes/CoTProcess.md#method-cotprocessaddhistory). See [CoTHistory](kb_topics/CoTHistory.md#kb-topic-cothistory) for details on what automatic entries are created by built-in features and how history is used in prompt assembly.
-
----
-## Object: CoTTransition
-
-### Description
-Declares an allowed transition to another task.
-
----
 ## Object: Criterion
 
 ### Description
@@ -3032,29 +2487,13 @@ An object representing a criterion to apply to a record.
 
 A criterion is part of the definition of an [AdvancedCriteria](#object-advancedcriteria) object, which is used to filter records according to search criteria.
 
-A criterion consists of an [Criterion.operator](classes/Criterion.md#attr-criterionoperator) and typically a [fieldName](classes/DataSourceField.md#attr-datasourcefieldname) from a [Record](#object-record) and a [value](classes/Criterion.md#attr-criterionvalue) to compare to. However some operators either don't require a value (eg, isNull) or act on other criteria rather than directly on a [Record](#object-record)'s fields (eg, the "and" and "or" logical operators). Also, it is possible to specify a [Criterion.fieldQuery](classes/Criterion.md#attr-criterionfieldquery) instead of a `fieldName` and/or a [Criterion.valueQuery](classes/Criterion.md#attr-criterionvaluequery) instead of a `value`
+A criterion consists of an [Criterion.operator](classes/Criterion.md#attr-criterionoperator) and typically a [fieldName](classes/DataSourceField.md#attr-datasourcefieldname) from a [Record](#object-record) and a [value](classes/Criterion.md#attr-criterionvalue) to compare to. However some operators either don't require a value (eg, isNull) or act on other criteria rather than directly on a [Record](#object-record)'s fields (eg, the "and" and "or" logical operators).
 
 A shortcut form is also allowed where only `fieldName` and `value` values are provided. In this case the `operator` is assumed to be "equals".
 
 ### Groups
 
 - advancedFilter
-
----
-## Object: DataQuestion
-
-### Description
-Represents a data question and either the steps taken in attempting to answer it or the result.
-
-### Groups
-
-- answerEngine
-
----
-## Object: DataQuestionResult
-
-### Description
-The result of the data question.
 
 ---
 ## Object: DataSourceField
@@ -3069,12 +2508,6 @@ Metadata about a DataSourceField, including its type and validators.
 Extensions to the Date class, including added static methods on the Date object, and additional instance methods available on all date instances.
 
 ---
-## Object: DateRange
-
-### Description
-A JavaScript object specifying a range of dates. Values are [start](#attr-daterangestart) and [end](#attr-daterangeend). If either value is omitted, the range is assumed to be open-ended in that direction - so if dateRange.start is omitted, the range will include any date earlier than the value specified in dateRange.end.
-
----
 ## Object: DebugOverflowSettings
 
 ### Description
@@ -3086,12 +2519,6 @@ The general approach is that we track a maximum of [maxTrackedOverflows](classes
 
 - [Canvas.startDebuggingOverflow](classes/Canvas.md#classmethod-canvasstartdebuggingoverflow)
 - [Canvas.stopDebuggingOverflow](classes/Canvas.md#classmethod-canvasstopdebuggingoverflow)
-
----
-## Object: DecisionBranch
-
-### Description
-Identifies a potential branch within a [MultiDecisionTask](classes/MultiDecisionTask.md#class-multidecisiontask). Each decision has a criteria and a target ProcessElement ID.
 
 ---
 ## Object: DiscoverTreeSettings
@@ -3134,78 +2561,6 @@ Settings to control optional [DataSource loading](classes/DataSource.md#classmet
 ### See Also
 
 - [DataSource.load](classes/DataSource.md#classmethod-datasourceload)
-
----
-## Object: DSRequest
-
-### Description
-Request sent to the server to initiate a [DataSource operation](kb_topics/dataSourceOperations.md#kb-topic-datasource-operations). All properties which are legal on [RPCRequest](#object-rpcrequest) are legal, in addition to the properties listed here.
-
-### See Also
-
-- [RPCRequest](#object-rpcrequest)
-
----
-## Object: DSRequestModifier
-
-### Description
-An object that modifies a dsRequest based on several available values, including preceding responses from the same queue.
-
-**Some elements of this feature are only available with Power or better licenses.** See [smartclient.com/product](http://smartclient.com/product) for details.
-
-You provide a list of DSRequestModifiers as the [OperationBinding.criteria](classes/OperationBinding.md#attr-operationbindingcriteria) or [OperationBinding.values](classes/OperationBinding.md#attr-operationbindingvalues) of an [OperationBinding](classes/OperationBinding.md#class-operationbinding). The ability to modify a request based on responses to earlier requests in the same queue is called [transactionChaining](kb_topics/transactionChaining.md#kb-topic-transaction-chaining).
-
-A DSRequestModifier consists of a [fieldName](classes/DSRequestModifier.md#attr-dsrequestmodifierfieldname), usually a [value](classes/DSRequestModifier.md#attr-dsrequestmodifiervalue) and possibly an [operator](classes/DSRequestModifier.md#attr-dsrequestmodifieroperator) and [start](classes/DSRequestModifier.md#attr-dsrequestmodifierstart) and/or [end](classes/DSRequestModifier.md#attr-dsrequestmodifierend) values (applicable to advanced criteria only). The value, start and end settings can be static, or - with Power or better licenses - they can be expressions in the Velocity template language, which will be resolved at runtime, immediately before the DSRequest is executed.
-
-In addition to the standard [Velocity variables](kb_topics/velocitySupport.md#kb-topic-velocity-context-variables), special Velocity variables are available for the _value_ field when used in a `<values>` declaration - see [DSRequestModifier.value](classes/DSRequestModifier.md#attr-dsrequestmodifiervalue) for details.
-
-See below some examples of [OperationBinding.criteria](classes/OperationBinding.md#attr-operationbindingcriteria) declarations:
-
-```
-  <operationBindings>
-      <operationBinding operationType="fetch" operationId="...">
-          <criteria fieldName="lifeSpan" value="10"/>
-          <criteria fieldName="scientificName" value="Gazella thomsoni"/>
-      </operationBinding>
-      
-      <operationBinding operationType="fetch" operationId="...">
-          <criteria fieldName="lifeSpan" operator="greaterThan" value="10" />
-      </operationBinding>
-  
-      <operationBinding operationType="fetch" operationId="...">
-          <criteria _constructor="AdvancedCriteria" operator="or">
-              <criteria>
-                  <Criterion fieldName="lifeSpan" operator="greaterThan" value="10" />
-                  <Criterion fieldName="scientificName" operator="contains" value="Octopus" />
-              </criteria>
-          </criteria>
-      </operationBinding>
-  </operationBindings>
- 
-```
-
-And an example of [OperationBinding.values](classes/OperationBinding.md#attr-operationbindingvalues) declarations:
-
-```
- <operationBinding operationType="add">
-     <values fieldName="orderID" value="$responseData.last('queuedAdd_order','add').orderID" />
- </operationBinding>
- 
-```
-
-DSRequestModifiers are intended partly as a security mechanism, so like [Declarative Security](kb_topics/declarativeSecurity.md#kb-topic-declarative-security) features, they apply to requests from browsers, but by default do not apply to requests initiated by server code. To have DSRequestModifiers apply to a server-initiated DSRequest, use either setRPCManager() or setClientRequest().
-
-See the [Master/Detail Add Example](https://www.smartclient.com/smartclient-latest/showcase/?id=queuedAdd) to see this in action.
-
-### Groups
-
-- transactionChaining
-
----
-## Object: Facet
-
-### Description
-Facet definition object made use of by the [CubeGrid](classes/CubeGrid.md#class-cubegrid) and [FacetChart](classes/FacetChart.md#class-facetchart) classes.
 
 ---
 ## Object: Field
@@ -3253,12 +2608,6 @@ You can also load the FileLoader itself dynamically - see [FileLoader.ensureLoad
 Note: You can also reference this class via the alias isc.FL
 
 ---
-## Object: FilterViaAISettings
-
-### Description
-Settings to use for filtering a [DataBoundComponent](#interface-databoundcomponent) via AI.
-
----
 ## Object: FiscalYear
 
 ### Description
@@ -3295,12 +2644,6 @@ A Javascript object defining the details of a single group operation. Used by th
 - grouping
 
 ---
-## Object: GroupSummary
-
-### Description
-Group Summary.
-
----
 ## Object: HeaderLevel
 
 ### Description
@@ -3319,30 +2662,6 @@ In addition to the properties documented here, all other properties specified on
 ### Groups
 
 - headerSpan
-
----
-## Object: Hilite
-
-### Description
-An object representing a user-created and user-modifiable hilite, which can be created and edited with a [HiliteEditor](classes/HiliteEditor.md#class-hiliteeditor) either directly or via the [ListGrid.canEditHilites](classes/ListGrid_1.md#attr-listgridcanedithilites) behavior.
-
-See [hiliting](kb_topics/hiliting.md#kb-topic-hiliting) for an overview.
-
-### Groups
-
-- hiliting
-
----
-## Object: HiliteViaAIResult
-
-### Description
-The result of a hilite-via-AI operation.
-
----
-## Object: HiliteViaAISettings
-
-### Description
-Settings to use for hiliting a [DataBoundComponent](#interface-databoundcomponent) via AI.
 
 ---
 ## Object: ImgHTMLProperties
@@ -3406,12 +2725,6 @@ Note however that simply assigning a value to a record won't cause the display t
 See the attributes in the API tab for the full list of special properties on ListGridRecords that will affect the grid's behavior.
 
 ---
-## Object: ListProperties
-
-### Description
-Configuration of an HTML list in a [RichTextEditor](classes/RichTextEditor.md#class-richtexteditor).
-
----
 ## Object: LoadProjectSettings
 
 ### Description
@@ -3464,20 +2777,6 @@ As another option, here's a sample of a Menu in [Component XML](kb_topics/compon
 Opaque message identifier for messages shown by the [Notify](classes/Notify.md#class-notify) class
 
 ---
-## Object: MetricSettings
-
-### Description
-Defines a set of properties that are applicable to [additional value axes](classes/FacetChart.md#attr-facetchartextraaxismetrics) of a [FacetChart](classes/FacetChart.md#class-facetchart).
-
-These properties behave identically to the same-named properties of FacetChart. Two exceptions are the properties [gradationLineProperties](classes/MetricSettings.md#attr-metricsettingsgradationlineproperties) and [gradationZeroLineProperties](classes/MetricSettings.md#attr-metricsettingsgradationzerolineproperties) because they are used to draw tick marks along an extra value axis instead of lines through the chart rectangle. Also the default behavior of the [dataColors](classes/MetricSettings.md#attr-metricsettingsdatacolors) property is different, in that the default is to use unused colors from, and in the order of, the [main data colors array](classes/FacetChart.md#attr-facetchartdatacolors).
-
-The extra value axes that are not positioned directly adjacent to the [chart rect.](classes/FacetChart.md#attr-facetchartshowchartrect) of the FacetChart may additionally have an axis line to connect the gradation tick marks. Whether to draw this line is controlled by the [showAxisLine](classes/MetricSettings.md#attr-metricsettingsshowaxisline) property, and the properties of the line are specified using [axisLineProperties](classes/MetricSettings.md#attr-metricsettingsaxislineproperties). The default is to draw the axis lines whenever the chart rect. is drawn and to draw the line using the same properties as the lines of the chart rect. (for example, lineColor and lineWidth).
-
-The extra value axis charts may be [single- or multi-facet](classes/MetricSettings.md#attr-metricsettingsmultifacet) charts. If the underlying [data](classes/FacetChart.md#attr-facetchartdata) is multi-facet then the extra value axes may use the facet whose values are labelled on the data axis or the facet used to create the legend (the first and second facets, respectively). Both types of charts vary the first facet to get a data series to plot. Multi-facet charts also vary the second facet, but single-facet charts keep the second facet fixed at a constant [FacetValue](#object-facetvalue).
-
-The exact facet value to use for the second facet is specified using the [fixedFacetValue](classes/MetricSettings.md#attr-metricsettingsfixedfacetvalue) property.
-
----
 ## Object: MockDSExportSettings
 
 ### Description
@@ -3494,12 +2793,6 @@ Encapsulates state of a [NavigationBar](classes/NavigationBar.md#class-navigatio
 
 ### Description
 An object containing sufficient context to unambiguously identify a single node in the tree. For normal trees, the node itself - or its ID - is sufficient for this purpose, but for [multi-link trees](classes/Tree.md#method-treeismultilinktree), we also need to know the node's parent, and its position within that parent. For cases where we need to propagate change back up the node's parent chain, in order to maintain a given parent node's openList, the node, parent and position are not enough context; for those cases, we need either the node's position in the tree's openList, or a full path to the node. `NodeLocator` objects contain this extra context, and can be passed to APIs such as [Tree.openFolder](classes/Tree.md#method-treeopenfolder), which would ordinarily accept a parameter of type [TreeNode](reference_2.md#object-treenode).
-
----
-## Object: Point
-
-### Description
-X/Y position in pixels, specified as an Array with two members, for example: \[30, 50\]
 
 ---
 ## Object: PortalPosition
@@ -3555,7 +2848,7 @@ An object used to configure how Selenese is generated by [EventStream.getAsSelen
 ### Description
 The ServerObject tells the ISC server how to find or create a server-side object involved in [DMI](kb_topics/dmiOverview.md#kb-topic-direct-method-invocation) (Direct Method Invocation).
 
-A ServerObject declaration appears in the XML definition of a [DataSource](classes/DataSource.md#class-datasource) (for responding to [DSRequest](reference_2.md#object-dsrequest)s) or in an Application configuration file (.app.xml) for responding to [RPCRequest](#object-rpcrequest)s.
+A ServerObject declaration appears in the XML definition of a [DataSource](classes/DataSource.md#class-datasource) (for responding to [DSRequest](#object-dsrequest)s) or in an Application configuration file (.app.xml) for responding to [RPCRequest](#object-rpcrequest)s.
 
 NOTE: Please take note of the points made in [this discussion](kb_topics/serverDataSourceImplementation.md#kb-topic-notes-on-server-side-datasource-implementations) of caching and thread-safety issues in server-side DataSources.
 
@@ -3568,14 +2861,6 @@ NOTE: Please take note of the points made in [this discussion](kb_topics/serverD
 
 ### Description
 Represents a request to AI from a single [source](#type-aimessagesource) in some context.
-
----
-## Object: SortSpecifier
-
-### Description
-An object that defines the details of a single sort operation.
-
-For simple sort specifiers, you can convert between a `SortSpecifier` and the corresponding string format required by [DSRequest.sortBy](classes/DSRequest.md#attr-dsrequestsortby) by calling [DataSource.getSortBy](classes/DataSource.md#classmethod-datasourcegetsortby) and [DataSource.getSortSpecifiers](classes/DataSource.md#classmethod-datasourcegetsortspecifiers).
 
 ---
 ## Object: StockIcon
@@ -3663,6 +2948,26 @@ An object representing one of the image segments displayed by a [StretchImg](cla
 Generic extensions to JavaScript Strings. You can call these on any String.
 
 ---
+## Object: SummarizeRecordsContext
+
+### Description
+Context for an ongoing record summarization operation.
+
+---
+## Object: SummarizeRecordsRequest
+
+### Description
+Represents a request to AI to generate summaries of records, using data in the records, relevant general knowledge, and reasonable inferences from the data. Summaries may include relevant supplemental information for each record.
+
+The provided [SummarizeRecordsRequest.records](classes/SummarizeRecordsRequest.md#attr-summarizerecordsrequestrecords) are split into batches of varying lengths (see [SummarizeRecordsRequest.maxRecordsPerBatch](classes/SummarizeRecordsRequest.md#attr-summarizerecordsrequestmaxrecordsperbatch)). For each batch, a [SummarizeRecordsPartialResult](#object-summarizerecordspartialresult) will be generated with either information about the reason for a non-successful outcome, or the generated summaries for records in the batch.
+
+---
+## Object: SummarizeValueRequest
+
+### Description
+Represents a request to AI to generate a summary of an individual value.
+
+---
 ## Object: SystemAIRequest
 
 ### Description
@@ -3703,24 +3008,12 @@ Every node in the tree is represented by a TreeNode object which is an object li
 When a Tree is supplied as [TreeGrid.data](classes/TreeGrid.md#attr-treegriddata) to [TreeGrid](classes/TreeGrid.md#class-treegrid), you can also set properties from [ListGridRecord](reference_2.md#object-listgridrecord) on the TreeNode (e.g. setting [ListGridRecord.enabled](classes/ListGridRecord.md#attr-listgridrecordenabled):`false` on the node).
 
 ---
-## Object: UISummarySettings
-
-### Description
-Settings that control how a widget UI Summary is built.
-
----
 ## Object: UserAIRequest
 
 ### Description
 Represents a user-specified and user-modifiable request to AI in some context. For example, the user's request may be in the context of AI-assisted filtering of a [ListGrid](classes/ListGrid_1.md#class-listgrid); in such a context, the user's request is their description of which records they would like to see.
 
 The user's request is combined with other messages, data, and instructions provided by the framework to create [AIRequest](#object-airequest)s that are sent to the AI engine for the purpose of fulfilling the user's request.
-
----
-## Object: ValidatorDefinition
-
-### Description
-Validator definition for a built-in [Validator.type](classes/Validator.md#attr-validatortype).
 
 ---
 ## Object: VisibleMethod

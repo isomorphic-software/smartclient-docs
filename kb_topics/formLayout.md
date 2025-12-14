@@ -71,8 +71,6 @@ Several examples of Form Layout are available *here*.
 - [ButtonItem.endRow](../classes/ButtonItem.md#attr-buttonitemendrow)
 - [SelectItem.height](../classes/SelectItem.md#attr-selectitemheight)
 - [TextAreaItem.staticHeight](../classes/TextAreaItem.md#attr-textareaitemstaticheight)
-- [ShuttleItem.width](../classes/ShuttleItem.md#attr-shuttleitemwidth)
-- [ShuttleItem.height](../classes/ShuttleItem.md#attr-shuttleitemheight)
 
 ### See Also
 

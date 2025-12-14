@@ -84,17 +84,10 @@ The SmartClient framework offers a number of configurable mitigations for this p
 
 For this reason, `HibernateDataSource` and `JPADataSource` install a special `CacheSyncStrategy` implementation under the `refetch` name, that just does nothing, leaving the response data returned by the update operation unchanged.
 
-#### RestConnector
-[RestConnector](serverRestConnector.md#kb-topic-server-side-rest-connector) supports all four of the default cache sync strategies. Note that `refetch` involves a second round-trip to the REST service, so may be a performance concern.
-
-`requestValuesPlusSequences` attempts to extract the values for any missing [primaryKey fields](../classes/DataSource.md#method-datasourcegetprimarykeyfields) from the response sent by the REST service to the add or update request, so it is obviously only of use if the REST service returns such values.
-
-`responseValues`, the default strategy for `RestConnector`, just uses the response data sent by the REST service to the update or add request. Again, this is only usable if the REST service returns such data, but if it does, this strategy is ideal.
-
 #### Custom/Generic DataSources
 In addition to the built-in DataSource types listed above, you can of course write your own [custom dataSource](writeCustomDataSource.md#kb-topic-custom-server-datasources) implementations. These custom DataSources will participate in cache sync like any other:
 
-*   You can specify a `cacheSyncStrategy` on the [DataSource](../classes/DataSource.md#class-datasource), [operationBinding](../classes/OperationBinding.md#class-operationbinding) or [dsRequest](../reference_2.md#object-dsrequest)
+*   You can specify a `cacheSyncStrategy` on the [DataSource](../classes/DataSource.md#class-datasource), [operationBinding](../classes/OperationBinding.md#class-operationbinding) or [dsRequest](../reference.md#object-dsrequest)
 *   The default strategy for a custom dataSource is "`responseValues`", because that was the prevailing behavior for custom DataSources before `cacheSyncStrategy` was introduced
 *   If you want to use "`refetch`" (ie, you override the default in your `server.properties`, or set the strategy explicitly on your DataSource or operation binding), you must implement a fetch operation, and if your dataSource has fields of type "sequence", your fetch mechanism must be able to resolve the values of such fields
 

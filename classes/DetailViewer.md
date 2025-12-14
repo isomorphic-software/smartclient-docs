@@ -37,7 +37,7 @@ For example, specify \["decimalPad", "decimalPrecision"\] to allow end users to 
 ## Attr: DetailViewer.fetchRequestProperties
 
 ### Description
-If [DetailViewer.autoFetchData](#attr-detailviewerautofetchdata) is `true`, this attribute allows the developer to declaratively specify [DSRequest](../reference_2.md#object-dsrequest) properties for the initial [fetchData()](ListGrid_2.md#method-listgridfetchdata) call.
+If [DetailViewer.autoFetchData](#attr-detailviewerautofetchdata) is `true`, this attribute allows the developer to declaratively specify [DSRequest](../reference.md#object-dsrequest) properties for the initial [fetchData()](ListGrid_2.md#method-listgridfetchdata) call.
 
 Note that any properties governing more specific request attributes for the initial fetch (such as [autoFetchTextMatchStyle](#attr-databoundcomponentautofetchtextmatchstyle) and initial sort specifiers) will be applied on top of this properties block.
 
@@ -143,7 +143,7 @@ Whether to show the field when the value is null
 ## Attr: DetailViewer.dataSource
 
 ### Description
-The DataSource that this component should bind to for default fields and for performing [DataSource requests](../reference_2.md#object-dsrequest).
+The DataSource that this component should bind to for default fields and for performing [DataSource requests](../reference.md#object-dsrequest).
 
 Can be specified as either a DataSource instance or the String ID of a DataSource.
 
@@ -498,7 +498,7 @@ If set, right-clicking on the DetailViewer will show a context menu that offers 
 ## Attr: DetailViewer.hiliteIconPosition
 
 ### Description
-When [hiliteIcons](#attr-detailviewerhiliteicons) are present, where the hilite icon will be placed relative to the field value. See [HiliteIconPosition](../reference_2.md#type-hiliteiconposition). Can be overridden at the field level.
+When [hiliteIcons](#attr-detailviewerhiliteicons) are present, where the hilite icon will be placed relative to the field value. See [HiliteIconPosition](../reference.md#type-hiliteiconposition). Can be overridden at the field level.
 
 ### Groups
 
@@ -796,7 +796,7 @@ For more information on exporting data, see [DataSource.exportData](DataSource.m
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | additional properties to set on the DSRequest that will be issued |
+| requestProperties | [DSRequest](#type-dsrequest) | true | — | additional properties to set on the DSRequest that will be issued |
 | callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke on completion. Note that this parameter only applies where [DSRequest.exportToClient](DSRequest.md#attr-dsrequestexporttoclient) is explicitly set to false, because file downloads do not provide ordinary SmartClient callbacks |
 
 ### Groups

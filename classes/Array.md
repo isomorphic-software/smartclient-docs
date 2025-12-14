@@ -153,13 +153,13 @@ Two lists are equal only if they have the same length and all contained items ar
 ## Method: Array.setSort
 
 ### Description
-Sort this Array by a list of [SortSpecifier](../reference_2.md#object-sortspecifier)s.
+Sort this Array by a list of [SortSpecifier](../reference.md#object-sortspecifier)s.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| sortSpecifiers | [Array of SortSpecifier](#type-array-of-sortspecifier) | false | — | the list of [SortSpecifier](../reference_2.md#object-sortspecifier)s to sort by |
+| sortSpecifiers | [Array of SortSpecifier](#type-array-of-sortspecifier) | false | — | the list of [SortSpecifier](../reference.md#object-sortspecifier)s to sort by |
 
 ### Returns
 

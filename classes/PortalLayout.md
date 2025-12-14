@@ -9,7 +9,7 @@
 *Inherits from:* [Layout](Layout.md#class-layout)
 
 ### Description
-A PortalLayout is a special subclass of Layout designed to display [Portlet](Portlet.md#class-portlet) windows. A PortalLayout displays Portlets in columns and supports drag-drop interaction for moving Portlets around within the PortalLayout. Portlets may be drag-reordered within columns, dragged into other columns, or dragged next to other Portlets to sit next to them horizontally within a column. See [portalLayoutDrop](../kb_topics/portalLayoutDrop.md#kb-topic-drag-and-drop-behavior-within-portallayouts) for a discussion of drag and drop behavior within PortalLayouts.
+A PortalLayout is a special subclass of Layout designed to display [Portlet](Portlet.md#class-portlet) windows. A PortalLayout displays Portlets in columns and supports drag-drop interaction for moving Portlets around within the PortalLayout. Portlets may be drag-reordered within columns, dragged into other columns, or dragged next to other Portlets to sit next to them horizontally within a column.
 
 ---
 ## Attr: PortalLayout.numColumns
@@ -22,18 +22,6 @@ Initial number of columns to show in this PortalLayout. Note that after initiali
 - [PortalLayout.portlets](#attr-portallayoutportlets)
 
 **Flags**: IR
-
----
-## Attr: PortalLayout.canAddColumns
-
-### Description
-Can the user add columns to this PortalLayout?
-
-Columns may be added via the [column menu](#attr-portallayoutshowcolumnmenus), or by dragging a portlet and dropping next to an existing column, if [PortalLayout.dropTypes](#attr-portallayoutdroptypes) includes the drop type for the portlet.
-
-Note that if [PortalLayout.removeEmptyColumns](#attr-portallayoutremoveemptycolumns) is true, when the user drags every portlet out of a portalLayout column, the column will be removed automatically.
-
-**Flags**: IRW
 
 ---
 ## Attr: PortalLayout.overflow
@@ -315,67 +303,20 @@ Controls whether the last [Portlet](Portlet.md#class-portlet) in a column will b
 **Flags**: IRW
 
 ---
-## Attr: PortalLayout.portletHDropOffset
-
-### Description
-This property is used to determine the appropriate drop target for a component being dropped within this PortalLayout.
-
-If [PortalLayout.canAddColumns](#attr-portallayoutcanaddcolumns) is true and the user hovers within `portletHDropOffset` pixels of the left or right edge of a column, the drop will be interpreted as a request to add a new column adjacent to that column.
-
-If the user instead hovers within `portletHDropOffset` pixels of the left or right edge of a Portlet within an existing row, the drop will be interpreted as an attempt to insert the new Portlet into that row, next to the targeted Portlet.
-
-When a Portlet is at the edge of a column (i.e., the first or last Portlet in a row), these horizontal drop zones overlap. In this case, the column-level drop zone is evaluated first: if the pointer is within the outermost offset, the drop will add a new column. If the pointer is within the next offset (further inside the Portlet), the drop will add the new Portlet to the existing row.
-
-Finally, if the user drops outside both horizontal offsets (i.e., farther away from the edge), the drop will be interpreted as an attempt to add a new row—either above or below the current row, depending on the vertical position of the pointer.
-
-**Flags**: IRW
-
----
-## Attr: PortalLayout.canAcceptDrop
-
-### Description
-Drop is enabled for PortalLayouts by default. See [PortalLayout.dropTypes](#attr-portallayoutdroptypes) and [portalLayoutDrop](../kb_topics/portalLayoutDrop.md#kb-topic-drag-and-drop-behavior-within-portallayouts) for more information about PortalLayout drop behavior.
-
-### Groups
-
-- portalLayoutDrop
-
-**Flags**: IRW
-
----
 ## Attr: PortalLayout.dropTypes
 
 ### Description
-This property may be explicitly specified to restrict which [target dragTypes](Canvas.md#attr-canvasdragtype) may be dropped directly onto the PortalLayout. See the related [PortalLayout.portletDropTypes](#attr-portallayoutportletdroptypes) property for how to restrict dropping portlets into a portalLayout and its sub-components (rows and columns).
-
-If this property is not explicitly specified, drop behavior will be as follows when the user drops directly on the portalLayout outside any PortalColumns, or within the [PortalLayout.portletHDropOffset](#attr-portallayoutportlethdropoffset) of an existing column.
-
-*   Drop will be allowed for targets with [dragType:"PortalColumn"](Canvas.md#attr-canvasdragtype). This allows the user to reorder portal columns by dragging using the column header.
-*   If [PortalLayout.canAddColumns](#attr-portallayoutcanaddcolumns) is true, drop will also be allowed for other components that match the [PortalLayout.portletDropTypes](#attr-portallayoutportletdroptypes) for the PortalLayout, if specified. If [PortalLayout.portletDropTypes](#attr-portallayoutportletdroptypes) is unspecified, all other components may be dropped.  
-    This allows the user to add columns to the portal layout by dropping components outside of any existing columns. If the dropped components are not instances of [Portlet](Portlet.md#class-portlet), a Portlet will be automatically created to contain them.  
-    Note that if [PortalLayout.portletDropTypes](#attr-portallayoutportletdroptypes) is specified, drop will be disallowed for any component whose dragType is not included in the portletDropTypes list, and is not `"PortalColumn"`
-
-Developers may further restrict this behavior by specifying explicit dropTypes for the portalLayout. If you want to disallow adding new columns by dropping, but still have the user be able to add new columns with the [column menus](#attr-portallayoutshowcolumnmenus), set [PortalLayout.canAddColumns](#attr-portallayoutcanaddcolumns) to true and specify portalLayout.dropTypes as simply `["PortalColumn"]`.
+`dropTypes` is set to `["PortalColumn"]` in order to allow the dragging of columns within the `PortalLayout`. To control `dropTypes` when [Portlets](Portlet.md#class-portlet) or other components are dragged into the `PortalLayout`, use [portletDropTypes](#attr-portallayoutportletdroptypes) instead.
 
 ### Groups
 
-- portalLayoutDrop
+- dragdrop
 
 ### See Also
 
 - [PortalLayout.portletDropTypes](#attr-portallayoutportletdroptypes)
 
 **Flags**: IR
-
----
-## Attr: PortalLayout.removeEmptyColumns
-
-### Description
-Should empty columns automatically be removed when all portlets are removed from a column?
-
-If true, when a portlet is removed from a column that didn't contain any other portlets, the column will be removed from the portalLayout. This is true if the portlet was removed via user action such as dragging the portlet into a different column, or if it was removed programatically, for example via a call to [PortalLayout.addPortlet](#method-portallayoutaddportlet) which specified a different column.
-
-**Flags**: IRW
 
 ---
 ## Attr: PortalLayout.rowLayout
@@ -434,16 +375,6 @@ If `canStretchColumnWidths` is turned off, then individual rows will scroll hori
 **Flags**: IRWA
 
 ---
-## Attr: PortalLayout.portlet
-
-### Description
-[MultiAutoChild](../reference.md#type-multiautochild) configuration for Portlets that will be automatically generated when the user drops a non-Portlet component into a PortalLayout.
-
-Use standard autoChild pattern to customize the appearance and behavior of these standard generated portlet instances.
-
-**Flags**: IRA
-
----
 ## Attr: PortalLayout.column
 
 ### Description
@@ -462,24 +393,18 @@ The column includes a menu, if [showColumnMenus](#attr-portallayoutshowcolumnmen
 ## Method: PortalLayout.willAcceptPortletDrop
 
 ### Description
-This method will be invoked to determine whether a dragged [Portlet](Portlet.md#class-portlet) or other component can be dropped into this `PortalLayout` at the specified position.
+Returns true if the dragged [Portlet](Portlet.md#class-portlet), or other component, can be dropped onto this `PortalLayout` (other components would be auto-wrapped in a `Portlet`).
 
-The method will be called with the appropriate parameters from [Canvas.willAcceptDrop](Canvas.md#method-canvaswillacceptdrop) when the user attempts to drop within the PortalLayout or its subcomponents.
-
-The default implementation acts like [Canvas.willAcceptDrop](Canvas.md#method-canvaswillacceptdrop), checking the [PortalLayout.dropTypes](#attr-portallayoutdroptypes) of the appropriate subcomponent, which will be derived from the [PortalLayout.portletDropTypes](#attr-portallayoutportletdroptypes) by default.
-
-This method may be overridden to control Portlet drop capabilities based on custom logic.
-
-See [portalLayoutDrop](../kb_topics/portalLayoutDrop.md#kb-topic-drag-and-drop-behavior-within-portallayouts) for an overview of Portlet drop behaviors within a PortalLayout.
+The default implementation acts like [Canvas.willAcceptDrop](Canvas.md#method-canvaswillacceptdrop), except applying [portletDropTypes](#attr-portallayoutportletdroptypes) rather than [dropTypes](#attr-portallayoutdroptypes). You can subclass to apply other (or additional) criteria
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | dragTarget | [Canvas](#type-canvas) | false | — | The [Portlet](Portlet.md#class-portlet), or other component, being dragged |
-| colNum | [int](../reference.md#type-int) | false | — | indicates the target column number for the portlet to be added to. |
-| rowNum | [int](../reference.md#type-int) | true | — | indicates the row number being dropped on within the target column. If this parameter is not passed, the user is attempting to add a new column by dropping outside any existing column. |
-| dropPosition | [int](../reference.md#type-int) | true | — | Drop position within an existing row. If this parameter is not passed, the user is attempting to add a new row by dropping above or below any existing row. |
+| colNum | [int](../reference.md#type-int) | false | — | indicates which column the portlet would be dropped on. |
+| rowNum | [int](../reference.md#type-int) | false | — | indicates the row number being dropped on. |
+| dropPosition | [int](../reference.md#type-int) | true | — | Drop position within an existing row. If the dropPosition is null, then that means that a new row will be created. |
 
 ### Returns
 
@@ -487,7 +412,7 @@ See [portalLayoutDrop](../kb_topics/portalLayoutDrop.md#kb-topic-drag-and-drop-b
 
 ### Groups
 
-- portalLayoutDrop
+- dragdrop
 
 ### See Also
 
@@ -531,16 +456,6 @@ Returns a multi-level array of the [Portlets](Portlet.md#class-portlet) in this 
 ### See Also
 
 - [PortalLayout.getPortlets](#method-portallayoutgetportlets)
-
----
-## Method: PortalLayout.willAcceptDrop
-
-### Description
-This method has been overridden to support drag-reorder of PortalColumns, and adding of new rows by dropping directly on the PortalLayout, as described in [PortalLayout.dropTypes](#attr-portallayoutdroptypes)
-
-### Returns
-
-`[Boolean](#type-boolean)` — true if the widget object being dragged can be dropped on this widget, false if it cannot (and `drop()` should not bubble), null to permit `drop()` to bubble to parent elements
 
 ---
 ## Method: PortalLayout.setShowColumnMenus
@@ -726,16 +641,20 @@ Notification method called after a portlet has been minimized (whether by user a
 - [PortalLayout.willMinimizePortlet](#method-portallayoutwillminimizeportlet)
 
 ---
-## Method: PortalLayout.setCanAddColumns
+## Method: PortalLayout.setColumnPreventUnderflow
 
 ### Description
-Sets [PortalLayout.canAddColumns](#attr-portallayoutcanaddcolumns).
+Sets [preventColumnUnderflow](#attr-portallayoutpreventcolumnunderflow) and reflows the layout to implement it.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| canAddColumns | [Boolean](#type-boolean) | false | — | The new value for `canAddColumns`. |
+| preventColumnUnderflow | [boolean](../reference.md#type-boolean) | false | — | Whether to stretch the last [Portlet](Portlet.md#class-portlet) in a column to fill the column's height. |
+
+### Groups
+
+- sizing
 
 ---
 ## Method: PortalLayout.setPortletDropTypes
@@ -850,22 +769,6 @@ Return false to cancel the action.
 - [PortalLayout.portletsChanged](#method-portallayoutportletschanged)
 
 ---
-## Method: PortalLayout.setPreventColumnUnderflow
-
-### Description
-Sets [preventColumnUnderflow](#attr-portallayoutpreventcolumnunderflow) and reflows the layout to implement it.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| preventColumnUnderflow | [boolean](../reference.md#type-boolean) | false | — | Whether to stretch the last [Portlet](Portlet.md#class-portlet) in a column to fill the column's height. |
-
-### Groups
-
-- sizing
-
----
 ## Method: PortalLayout.setColumnSpacing
 
 ### Description
@@ -895,20 +798,20 @@ This method is called when the user drops components into the rows or columns of
 
 Overriding this method allows you to modify drop behaviour when creating or reordering portlets via drag & drop. You can return the dragTarget for the standard behavior, or null to cancel the drop.
 
-Otherwise, return the component you want to be dropped (as for [Layout.getDropComponent](Layout.md#method-layoutgetdropcomponent)). You will generally want to return a [Portlet](Portlet.md#class-portlet) or subclass. However, you can return any [Canvas](Canvas.md#class-canvas), and it will automatically be wrapped in a [Portlet](#attr-portallayoutportlet) if necessary.
+Otherwise, return the component you want to be dropped (as for [Layout.getDropComponent](Layout.md#method-layoutgetdropcomponent)). You will generally want to return a [Portlet](Portlet.md#class-portlet) or subclass. However, you can return any [Canvas](Canvas.md#class-canvas), and it will automatically be wrapped in a Portlet if necessary.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | dragTarget | [Canvas](#type-canvas) | false | — | drag target |
-| colNum | [int](../reference.md#type-int) | false | — | indicates the index of the column the portlet is being dropped on. Note that if a new column will be created (`rowNum` is `null`), then this will be the index of the new column, but it doesn't exist, yet. |
-| rowNum | [Integer](../reference_2.md#type-integer) | true | — | indicates the index of the row being dropped on. If the `rowNum` is `null`, a new column will be created to contain the portlet. |
-| dropPosition | [Integer](../reference_2.md#type-integer) | true | — | Drop position within an existing row. If the `dropPosition` is `null`, a new row will be created to contain the portlet. |
+| colNum | [int](../reference.md#type-int) | false | — | indicates which column the portlet is being dropped on. |
+| rowNum | [int](../reference.md#type-int) | false | — | indicates the row number being dropped on. |
+| dropPosition | [int](../reference.md#type-int) | true | — | Drop position within an existing row. If the dropPosition is null, then that means that a new row will be created. |
 
 ### Returns
 
-`[Canvas](#type-canvas)` — drop-component or custom Portlet to embed in the portalLayout. Returning `null` will cancel the drop.
+`[Canvas](#type-canvas)` — drop-component or custom Portlet to embed in the portalLayout. Returning null will cancel the drop.
 
 ### See Also
 
@@ -959,7 +862,7 @@ Adds a [Portlet](Portlet.md#class-portlet) instance to this portalLayout in the 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| portlet | [Canvas](#type-canvas) | false | — | Portlet to add to this layout. If the component passed in is not an instance of [Portlet](Portlet.md#class-portlet) a [portlet auto child](#attr-portallayoutportlet) will be automatically created to hold the component and added to the layout at the appropriate position. |
+| portlet | [Portlet](#type-portlet) | false | — | Portlet to add to this layout. |
 | colNum | [Integer](../reference_2.md#type-integer) | true | — | Column in which the Portlet should be added. If unspecified, portlet will be added to the first column. If specified, but the specified column does not exist, a column is automatically added at the specified colNum index. |
 | rowWithinCol | [Integer](../reference_2.md#type-integer) | true | — | Row-position within the specified column for this portlet. If unspecified defaults to zero - the portlet will be added to the top of the column. By default a new row will be added to the column for the portlet. Use the `positionInExistingRow` parameter to add the portlet to an existing row. |
 | positionInExistingRow | [Integer](../reference_2.md#type-integer) | true | — | Position within an existing row in the column. If this parameter is passed, this portlet will be added to the existing row at `rowWithinCol`, at the specified position. This allows developers to place multiple portlets side by side on a row within the column.  

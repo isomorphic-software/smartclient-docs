@@ -129,7 +129,7 @@ This property supports [dynamicCriteria](../kb_topics/dynamicCriteria.md#kb-topi
 ## Attr: Calendar.dataSource
 
 ### Description
-The DataSource that this component should bind to for default fields and for performing [DataSource requests](../reference_2.md#object-dsrequest).
+The DataSource that this component should bind to for default fields and for performing [DataSource requests](../reference.md#object-dsrequest).
 
 Can be specified as either a DataSource instance or the String ID of a DataSource.
 
@@ -737,7 +737,7 @@ The title for the edit button in the quick [quick event dialog](#attr-calendarev
 ## Attr: Calendar.overlapSortSpecifiers
 
 ### Description
-A set of [sort-specifiers](../reference_2.md#object-sortspecifier) for customizing the render order of events that overlap.
+A set of [sort-specifiers](../reference.md#object-sortspecifier) for customizing the render order of events that overlap.
 
 In [timelines](../reference.md#class-timeline), this dictates the vertical rendering order of overlapped events in each [lane](../reference.md#object-lane).
 
@@ -1306,7 +1306,7 @@ If unset, the default is taken from the current locale.
 ### Description
 When true, causes [layouts](#attr-calendarcolumnlayout) to be added to each column in vertical views. In this mode, eventCanvases are stacked in these layouts, filling width and auto-sizing vertically to content, rather than being placed, sized and overlapped according to their times.
 
-Because times are ignored in this mode, various behaviors are switched off automatically; for example, the [time-column](#attr-calendarshowlabelcolumn) is hidden, [zones](#attr-calendarzones) are not supported and event-canvases cannot be [resized](#attr-calendarcanresizeevents) or rendered [on-demand](#attr-calendarrendereventsondemand).
+Because times are ignored in this mode, various behaviors are switched off automatically; for example, the [time-column](#attr-calendarshowlabelcolumn) is hidden and event-canvases cannot be [resized](#attr-calendarcanresizeevents) or rendered [on-demand](#attr-calendarrendereventsondemand).
 
 ### Groups
 
@@ -1566,6 +1566,16 @@ When set to true, causes [Timelines](#attr-calendartimelineview) to highlight th
 **Flags**: IRW
 
 ---
+## Attr: Calendar.showEventDescriptions
+
+### Description
+When rendering the [canvas](#attr-calendareventcanvas) for an event, whether to show the [body area](EventCanvas.md#attr-eventcanvasshowbody), typically containing brief details of the event - [by default](#method-calendargeteventbodyhtml), [its description](#attr-calendardescriptionfield).
+
+The default is true - if set to false, the event's [header](EventCanvas.md#attr-eventcanvasshowheader) will fill the canvas.
+
+**Flags**: IR
+
+---
 ## Attr: Calendar.weekViewTitle
 
 ### Description
@@ -1574,16 +1584,6 @@ The title for the [week view](#attr-calendarweekview).
 ### Groups
 
 - i18nMessages
-
-**Flags**: IR
-
----
-## Attr: Calendar.showEventDescriptions
-
-### Description
-When rendering the [canvas](#attr-calendareventcanvas) for an event, whether to show the [body area](EventCanvas.md#attr-eventcanvasshowbody), typically containing brief details of the event - [by default](#method-calendargeteventbodyhtml), [its description](#attr-calendardescriptionfield).
-
-The default is true - if set to false, the event's [header](EventCanvas.md#attr-eventcanvasshowheader) will fill the canvas.
 
 **Flags**: IR
 
@@ -1840,6 +1840,14 @@ In [indicator lines](#attr-calendarindicators) are showing, this attribute affec
 **Flags**: IR
 
 ---
+## Attr: Calendar.backButtonIconSrc
+
+### Description
+The icon to show in the [month-button](#attr-calendarmonthbutton) on Handsets when the [month view](#attr-calendarmonthview) is the current visible view.
+
+**Flags**: IR
+
+---
 ## Attr: Calendar.showViewHovers
 
 ### Description
@@ -1848,14 +1856,6 @@ When set to true, the default value, causes the Calendar to show customizable ho
 See [showEventHovers](#attr-calendarshoweventhovers), [showZoneHovers](#attr-calendarshowzonehovers), [showHeaderHovers](#attr-calendarshowheaderhovers), [showCellHovers](#attr-calendarshowcellhovers), [showLaneFieldHovers](#attr-calendarshowlanefieldhovers), [showDragHovers](#attr-calendarshowdraghovers) for further configuration options.
 
 **Flags**: IRW
-
----
-## Attr: Calendar.backButtonIconSrc
-
-### Description
-The icon to show in the [month-button](#attr-calendarmonthbutton) on Handsets when the [month view](#attr-calendarmonthview) is the current visible view.
-
-**Flags**: IR
 
 ---
 ## Attr: Calendar.monthMoreEventsLinkTitle
@@ -1947,7 +1947,7 @@ Note that, when [Calendar.otherDayClickNavigation](#attr-calendarotherdayclickna
 ## Attr: Calendar.showZones
 
 ### Description
-Set to true to render any defined [zones](#attr-calendarzones) in views other than [Month](#attr-calendarmonthview).
+Set to true to render any defined [zones](#attr-calendarzones) into [timeline views](#attr-calendartimelineview).
 
 **Flags**: IRW
 
@@ -2358,11 +2358,7 @@ The content of the hover is determined by a call to [Calendar.getDragHoverHTML](
 ## Attr: Calendar.zones
 
 ### Description
-An array of CalendarEvent instances representing pre-defined periods of time to be highlighted in [timelines](#attr-calendartimelineview) and in [day](#attr-calendardayview) or [week](#attr-calendarweekview) views. Each zone renders out a [zone canvas](../reference.md#class-zonecanvas), a special, non-interactive subclass of [EventCanvas](EventCanvas.md#class-eventcanvas), which draws behind any normal, interactive events in the zorder.
-
-In timelines, a `zone` with a [lane-field](#attr-calendarlanenamefield) set will fill that lane vertically - otherwise, it will span all rows vertically. In a DayView showing vertical [day-lanes](#attr-calendarshowdaylanes), a `zone` with a lane-field set will span its date-column horizontally - otherwise, it will span all columns horizontally. In other vertical views, zones span only the time-slots covered by their dates. In a week-view, for example, a Zone from 12 noon on Monday to 1pm on Friday will only cover those time-slots on each of the days.
-
-When vertical views are configured to stack the events vertically in their [date-columns](#attr-calendarshowcolumnlayouts), zones are not supported because that mode does not have time-slots.
+An array of CalendarEvent instances representing pre-defined periods of time to be highlighted in [timeline views](#attr-calendartimelineview). Each zone renders out a [zone canvas](../reference.md#class-zonecanvas), a special, non-interactive subclass of [EventCanvas](EventCanvas.md#class-eventcanvas), which spans all lanes and draws behind any normal, interactive events in the zorder.
 
 The default [style](#attr-calendarzonestylename) for these components renders them semi-transparent and with a bottom-aligned title label.
 
@@ -2999,7 +2995,7 @@ Implement this method to intercept the automatic removal of data. You can return
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false to cancel the removal
+`[boolean](../reference.md#type-boolean)` — false to cancel the removal
 
 ### Groups
 
@@ -3131,7 +3127,7 @@ Called when an event is moved via dragging by a user. Return false to disallow t
 
 ### Returns
 
-`[Boolean](#type-boolean)` — return false to disallow the move.
+`[boolean](../reference.md#type-boolean)` — return false to disallow the move.
 
 ### Groups
 
@@ -3224,7 +3220,7 @@ Not called if the day falls outside the current month and [Calendar.showOtherDay
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false to cancel the default action
+`[boolean](../reference.md#type-boolean)` — false to cancel the default action
 
 ### Groups
 
@@ -3335,9 +3331,9 @@ When [canGroupLanes](#attr-calendarcangrouplanes) is true, this method allows th
 ## Method: Calendar.shouldDisableDate
 
 ### Description
-Returns true if the passed date should be considered disabled, potentially in a particular [View](CalendarView.md#class-calendarview) or [Lane](#attr-calendarlanes). Disabled dates don't allow events to be created by clicking on them, and drag operations that would start or end on such dates are also disallowed.
+Returns true if the passed date should be considered disabled. Disabled dates don't allow events to be created by clicking on them, and drag operations that would start or end on such dates are also disallowed.
 
-The default implementation returns true for dates that fall on a [weekend](DateUtil.md#classmethod-dateutilgetweekenddays), when [disableWeekends](#attr-calendardisableweekends) is true, and for dates that are covered by a [Zone](#attr-calendarzones) with its disabled attribute set to true.
+The default implementation returns false only for dates that fall on a [weekend](DateUtil.md#classmethod-dateutilgetweekenddays).
 
 ### Parameters
 
@@ -3345,7 +3341,6 @@ The default implementation returns true for dates that fall on a [weekend](DateU
 |------|------|----------|---------|-------------|
 | date | [Date](#type-date) | false | — | a Date instance |
 | view | [CalendarView](#type-calendarview) | true | — | the view the date appears in |
-| lane | [String](#type-string) | true | — | in view's that show lanes, the name of the lane |
 
 ### Returns
 
@@ -3366,7 +3361,7 @@ Callback fired when the mouse is clicked in a background-cell, ie, one without a
 
 ### Returns
 
-`[Boolean](#type-boolean)` — return false to cancel the default behavior of creating a new event at the selected location and showing its editor.
+`[boolean](../reference.md#type-boolean)` — return false to cancel the default behavior of creating a new event at the selected location and showing its editor.
 
 ---
 ## Method: Calendar.setIndicators
@@ -3430,7 +3425,7 @@ Not called if the day falls outside the current month and [Calendar.showOtherDay
 
 ### Returns
 
-`[Boolean](#type-boolean)` — return false to cancel the action
+`[boolean](../reference.md#type-boolean)` — return false to cancel the action
 
 ### Groups
 
@@ -3440,13 +3435,13 @@ Not called if the day falls outside the current month and [Calendar.showOtherDay
 ## Method: Calendar.getView
 
 ### Description
-Returns the [view](CalendarView.md#class-calendarview) with the passed [name](../reference_2.md#type-viewname).
+Returns the [view](CalendarView.md#class-calendarview) with the passed [name](../reference.md#type-viewname).
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| viewName | [ViewName](../reference_2.md#type-viewname) | false | — | the name of the CalendarView to return |
+| viewName | [ViewName](../reference.md#type-viewname) | false | — | the name of the CalendarView to return |
 
 ### Returns
 
@@ -3747,7 +3742,7 @@ By default, a dialog appears showing details for the event, and offering the abi
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | event | [CalendarEvent](#type-calendarevent) | false | — | event that was clicked on |
-| viewName | [ViewName](../reference_2.md#type-viewname) | false | — | view where the event's canvas was clicked |
+| viewName | [ViewName](../reference.md#type-viewname) | false | — | view where the event's canvas was clicked |
 
 ### Returns
 
@@ -3821,7 +3816,7 @@ Callback fired when the mouse button is depressed over a background-cell, ie, on
 
 ### Returns
 
-`[Boolean](#type-boolean)` — return false to suppress default behavior of allowing sweep selection via dragging.
+`[boolean](../reference.md#type-boolean)` — return false to suppress default behavior of allowing sweep selection via dragging.
 
 ---
 ## Method: Calendar.indicatorClick
@@ -3834,7 +3829,7 @@ Called whenever an [IndicatorCanvas](../reference.md#class-indicatorcanvas) is c
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | indicatorEvent | [CalendarEvent](#type-calendarevent) | false | — | indicator that was clicked on |
-| viewName | [ViewName](../reference_2.md#type-viewname) | false | — | view where the event's canvas was clicked |
+| viewName | [ViewName](../reference.md#type-viewname) | false | — | view where the event's canvas was clicked |
 
 ### Returns
 
@@ -3850,7 +3845,7 @@ Notification that fires whenever the current view changes via the [mainView tabs
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| viewName | [ViewName](../reference_2.md#type-viewname) | false | — | the name of the current view after the change |
+| viewName | [ViewName](../reference.md#type-viewname) | false | — | the name of the current view after the change |
 
 ---
 ## Method: Calendar.selectTab
@@ -4092,11 +4087,11 @@ Sets the currently visible view.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| viewName | [ViewName](../reference_2.md#type-viewname) | false | — | The name of the view that should be made visible. |
+| viewName | [ViewName](../reference.md#type-viewname) | false | — | The name of the view that should be made visible. |
 
 ### Returns
 
-`[ViewName](../reference_2.md#type-viewname)` — The name of the visible view.
+`[ViewName](../reference.md#type-viewname)` — The name of the visible view.
 
 ---
 ## Method: Calendar.backgroundMouseUp
@@ -4113,7 +4108,7 @@ Notification method fired when the mouse button is released over a background-ce
 
 ### Returns
 
-`[Boolean](#type-boolean)` — return false to suppress default behavior of showing a dialog to add a new event with the passed dates.
+`[boolean](../reference.md#type-boolean)` — return false to suppress default behavior of showing a dialog to add a new event with the passed dates.
 
 ---
 ## Method: Calendar.next
@@ -4384,14 +4379,14 @@ Adds a new [indicator](#attr-calendarindicators) to the calendar.
 ## Method: Calendar.zoneClick
 
 ### Description
-Called whenever a [ZoneCanvas](../reference.md#class-zonecanvas) is clicked in views other than [Month](#attr-calendarmonthview). There is no default implementation.
+Called whenever a [ZoneCanvas](../reference.md#class-zonecanvas) is clicked in the [timelineView](#attr-calendartimelineview). There is no default implementation.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | zoneEvent | [CalendarEvent](#type-calendarevent) | false | — | zone that was clicked on |
-| viewName | [ViewName](../reference_2.md#type-viewname) | false | — | view where the event's canvas was clicked |
+| viewName | [ViewName](../reference.md#type-viewname) | false | — | view where the event's canvas was clicked |
 
 ### Returns
 
@@ -4540,7 +4535,7 @@ To pick up such changes, we recommend that you call [setData(\[\])](#method-cale
 |------|------|----------|---------|-------------|
 | criteria | [Criteria](../reference_2.md#type-criteria) | true | — | Search criteria. If a [DynamicForm](DynamicForm.md#class-dynamicform) is passed in as this argument instead of a raw criteria object, will be derived by calling [DynamicForm.getValuesAsCriteria](DynamicForm.md#method-dynamicformgetvaluesascriteria) |
 | callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke when a fetch is complete. Fires only if server contact was required |
-| requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | additional properties to set on the DSRequest that will be issued |
+| requestProperties | [DSRequest](#type-dsrequest) | true | — | additional properties to set on the DSRequest that will be issued |
 
 ### Groups
 
@@ -4648,7 +4643,7 @@ Called when an event is resized with the mouse. The passed date value is the new
 
 ### Returns
 
-`[Boolean](#type-boolean)` — return false to disallow the resize
+`[boolean](../reference.md#type-boolean)` — return false to disallow the resize
 
 ### Groups
 
@@ -4800,7 +4795,7 @@ Get the name of the visible view. Returns one of 'day', 'week', 'month' or 'time
 
 ### Returns
 
-`[ViewName](../reference_2.md#type-viewname)` — The name of the currently visible view.
+`[ViewName](../reference.md#type-viewname)` — The name of the currently visible view.
 
 ---
 ## Method: Calendar.eventsRendered
@@ -4913,7 +4908,7 @@ For a discussion of the various filtering and criteria-management APIs and when 
 |------|------|----------|---------|-------------|
 | criteria | [Criteria](../reference_2.md#type-criteria) | true | — | Search criteria. If a [DynamicForm](DynamicForm.md#class-dynamicform) is passed in as this argument instead of a raw criteria object, will be derived by calling [DynamicForm.getValuesAsCriteria](DynamicForm.md#method-dynamicformgetvaluesascriteria) |
 | callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke when a fetch is complete. Fires only if server contact was required; see [fetchData()](ListGrid_2.md#method-listgridfetchdata) for details |
-| requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | for databound components only - optional additional properties to set on the DSRequest that will be issued |
+| requestProperties | [DSRequest](#type-dsrequest) | true | — | for databound components only - optional additional properties to set on the DSRequest that will be issued |
 
 ### Groups
 

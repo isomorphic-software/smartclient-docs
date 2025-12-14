@@ -519,7 +519,7 @@ Title for the `"Area"` item in the `"Chart Type"` submenu in the context menu.
 ## Attr: FacetChart.facetFields
 
 ### Description
-Specifies what [DataSource](DataSource.md#class-datasource) fields to use as the chart [FacetChart.facets](#attr-facetchartfacets) for a databound chart. If [FacetChart.facets](#attr-facetchartfacets) is also explicitly set, [FacetChart.facetFields](#attr-facetchartfacetfields) is definitive but [Facet](../reference_2.md#object-facet) properties will be picked up from [FacetChart.facets](#attr-facetchartfacets) also present in the [FacetChart.facetFields](#attr-facetchartfacetfields).
+Specifies what [DataSource](DataSource.md#class-datasource) fields to use as the chart [FacetChart.facets](#attr-facetchartfacets) for a databound chart. If [FacetChart.facets](#attr-facetchartfacets) is also explicitly set, [FacetChart.facetFields](#attr-facetchartfacetfields) is definitive but [Facet](Facet.md#class-facet) properties will be picked up from [FacetChart.facets](#attr-facetchartfacets) also present in the [FacetChart.facetFields](#attr-facetchartfacetfields).
 
 If neither this property nor [FacetChart.facets](#attr-facetchartfacets) is set, a databound chart will attempt to auto-derive [FacetChart.facetFields](#attr-facetchartfacetfields) from the DataSource fields. The first two text or text-derived fields in the DataSource will be assumed to be the [FacetChart.facetFields](#attr-facetchartfacetfields).
 
@@ -621,7 +621,7 @@ In all multi-facet charts, the data label facet is always first and the legend f
 
 In the case of [Bar and Column Charts](#class-facetchart), up to three facets are supported, where the first two facets in that case are taken as the data label facets, and the third facet as the legend facet. This works by positioning both data label facets on the same axis, in a way that clearly shows which inner facet values are associated with each outer facet value.
 
-For databound charts, [FacetChart.facetFields](#attr-facetchartfacetfields) may be specified instead of this property. If both are provided, [FacetChart.facetFields](#attr-facetchartfacetfields) is definitive but [Facet](../reference_2.md#object-facet) properties will be picked up from [FacetChart.facets](#attr-facetchartfacets) also present in the [FacetChart.facetFields](#attr-facetchartfacetfields).
+For databound charts, [FacetChart.facetFields](#attr-facetchartfacetfields) may be specified instead of this property. If both are provided, [FacetChart.facetFields](#attr-facetchartfacetfields) is definitive but [Facet](Facet.md#class-facet) properties will be picked up from [FacetChart.facets](#attr-facetchartfacets) also present in the [FacetChart.facetFields](#attr-facetchartfacetfields).
 
 **Flags**: IR
 
@@ -947,7 +947,7 @@ Horizontal alignment of the chart's [legend widget](#attr-facetchartshowlegend).
 ## Attr: FacetChart.dataLineType
 
 ### Description
-How to draw lines between adjacent data points in Line and Scatter charts. See [DataLineType](../reference_2.md#type-datalinetype).
+How to draw lines between adjacent data points in Line and Scatter charts. See [DataLineType](../reference.md#type-datalinetype).
 
 Does not apply to boundary lines for shapes in Area or Radar plots.
 
@@ -1061,7 +1061,7 @@ For rectangular charts (bar, column, line), margin around the inside of the main
 ## Attr: FacetChart.showScatterLines
 
 ### Description
-Whether to draw lines between adjacent data points in "Scatter" plots. See also [DataLineType](../reference_2.md#type-datalinetype) for enabling smoothing.
+Whether to draw lines between adjacent data points in "Scatter" plots. See also [DataLineType](../reference.md#type-datalinetype) for enabling smoothing.
 
 **Flags**: IRW
 
@@ -1268,7 +1268,7 @@ The default x-axis metric is the second value of the metric facet.
 ## Attr: FacetChart.fetchRequestProperties
 
 ### Description
-If [FacetChart.autoFetchData](#attr-facetchartautofetchdata) is `true`, this attribute allows the developer to declaratively specify [DSRequest](../reference_2.md#object-dsrequest) properties for the initial [fetchData()](ListGrid_2.md#method-listgridfetchdata) call.
+If [FacetChart.autoFetchData](#attr-facetchartautofetchdata) is `true`, this attribute allows the developer to declaratively specify [DSRequest](../reference.md#object-dsrequest) properties for the initial [fetchData()](ListGrid_2.md#method-listgridfetchdata) call.
 
 Note that any properties governing more specific request attributes for the initial fetch (such as [FacetChart.autoFetchTextMatchStyle](#attr-facetchartautofetchtextmatchstyle) and initial sort specifiers) will be applied on top of this properties block.
 
@@ -2306,7 +2306,7 @@ Note that if this chart's data includes points that fall above this value, they 
 ### Description
 Defines the set of metrics that will be plotted as additional vertical axes. See the main [FacetChart](#class-facetchart) docs for an overview of how multi-axis charts are used.
 
-Each metric corresponds to different value property of the data records and superimposes its drawn data onto the chart rectangle. The value properties are called metrics, and they can be either the [FacetChart.valueProperty](#attr-facetchartvalueproperty) or the "id" of a [FacetValue](../reference.md#object-facetvalue) of the inlined [Facet](../reference_2.md#object-facet) (which is then called the metric facet). Each value axis has its own gradations that are shown as tick marks along the length of the axis. This property, extraAxisMetrics, specifies the metrics to use for additional value axes to the main value axis.
+Each metric corresponds to different value property of the data records and superimposes its drawn data onto the chart rectangle. The value properties are called metrics, and they can be either the [FacetChart.valueProperty](#attr-facetchartvalueproperty) or the "id" of a [FacetValue](../reference.md#object-facetvalue) of the inlined [Facet](Facet.md#class-facet) (which is then called the metric facet). Each value axis has its own gradations that are shown as tick marks along the length of the axis. This property, extraAxisMetrics, specifies the metrics to use for additional value axes to the main value axis.
 
 The additional value axis may have their own gradations, chart type, log scale, data colors and gradients, and other chart properties. These properties are specified with the [FacetChart.extraAxisSettings](#attr-facetchartextraaxissettings) property.
 
@@ -2340,7 +2340,7 @@ Whether to use logarithmic scaling for the [data point sizes](#attr-facetchartpo
 ## Attr: FacetChart.dataSource
 
 ### Description
-The DataSource that this component should bind to for default fields and for performing [DataSource requests](../reference_2.md#object-dsrequest).
+The DataSource that this component should bind to for default fields and for performing [DataSource requests](../reference.md#object-dsrequest).
 
 Can be specified as either a DataSource instance or the String ID of a DataSource.
 
@@ -3751,7 +3751,7 @@ Provides a new data set to the chart after it has been created or drawn. The Fac
 ## Method: FacetChart.getLegendFacet
 
 ### Description
-Returns the [Facet](../reference_2.md#object-facet) in the list of [facets](#attr-facetchartfacets) whose [values](Facet.md#attr-facetvalues) are rendered in the chart's legend.
+Returns the [Facet](Facet.md#class-facet) in the list of [facets](#attr-facetchartfacets) whose [values](Facet.md#attr-facetvalues) are rendered in the chart's legend.
 
 Most single-facet charts do not have a legend facet. The exceptions are that single-facet Pie/Doughnut charts have a legend facet as the first facet and Bubble and Scatter charts may optionally have a legend facet as the second facet, after the metric facet.
 
@@ -3958,7 +3958,7 @@ Note that multiple foreign keys into the schema are supported by this method.
 | record | [ListGridRecord](#type-listgridrecord) | false | — | DataSource record |
 | schema | [Canvas](#type-canvas)|[DataSource](#type-datasource)|[ID](#type-id) | false | — | schema of the DataSource record, or DataBoundComponent already bound to that schema |
 | callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke on completion |
-| requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | additional properties to set on the DSRequest that will be issued |
+| requestProperties | [DSRequest](#type-dsrequest) | true | — | additional properties to set on the DSRequest that will be issued |
 
 ### Groups
 
@@ -4307,7 +4307,7 @@ Get a facet definition by facetId.
 
 ### See Also
 
-- [Facet](../reference_2.md#object-facet)
+- [Facet](Facet.md#class-facet)
 
 ---
 ## Method: FacetChart.setScaleStartColor
@@ -4625,7 +4625,7 @@ Method to change the current [dataLineType](../reference.md#type-charttype). Wil
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| dataLineType | [DataLineType](../reference_2.md#type-datalinetype) | false | — | ow to draw lines between adjacent data points in Line and Scatter charts |
+| dataLineType | [DataLineType](../reference.md#type-datalinetype) | false | — | ow to draw lines between adjacent data points in Line and Scatter charts |
 
 ---
 ## Method: FacetChart.formatFacetValueId
@@ -4779,7 +4779,7 @@ Additional DrawItems added in this method will appear underneath data elements s
 ### Description
 Returns the minimum cluster size (for clustered charts), or minimum bar thickness (for histogram or stacked charts) for the specified [data label\\n facet](#method-facetchartgetdatalabelfacet) value. Only applicable to a column, bar, or histogram chart. No default implementation. Both this minimum and [FacetChart.minBarThickness](#attr-facetchartminbarthickness) are used together to determine the effective minimum of the cluster or bar stack.
 
-Per-facet-value minimum cluster sizes aren't supported for [multi-axis](../reference_2.md#object-metricsettings) charts, in which multiple chart types are overlaid onto the same chart.
+Per-facet-value minimum cluster sizes aren't supported for [multi-axis](../reference.md#object-metricsettings) charts, in which multiple chart types are overlaid onto the same chart.
 
 Note that this method is simply an override point, since it has no default implementation.
 
@@ -4866,7 +4866,7 @@ The first argument, criteria, determines which metric is used to calculate the m
 ## Method: FacetChart.getDataLabelFacet
 
 ### Description
-Returns the [Facet](../reference_2.md#object-facet) in the list of [facets](#attr-facetchartfacets) whose [values](Facet.md#attr-facetvalues) are rendered as labels along the data axis of the chart or in the main chart area.
+Returns the [Facet](Facet.md#class-facet) in the list of [facets](#attr-facetchartfacets) whose [values](Facet.md#attr-facetvalues) are rendered as labels along the data axis of the chart or in the main chart area.
 
 Most single-facet charts and all multi-facet charts have the data label facet as their first facet. The exceptions are that single-facet Pie/Doughnut charts and Bubble and Scatter charts do not have data label facets.
 
@@ -5091,7 +5091,7 @@ To pick up such changes, we recommend that you call [setData(\[\])](#method-face
 |------|------|----------|---------|-------------|
 | criteria | [Criteria](../reference_2.md#type-criteria) | true | — | Search criteria. If a [DynamicForm](DynamicForm.md#class-dynamicform) is passed in as this argument instead of a raw criteria object, will be derived by calling [DynamicForm.getValuesAsCriteria](DynamicForm.md#method-dynamicformgetvaluesascriteria) |
 | callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke when a fetch is complete. Fires only if server contact was required |
-| requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | additional properties to set on the DSRequest that will be issued |
+| requestProperties | [DSRequest](#type-dsrequest) | true | — | additional properties to set on the DSRequest that will be issued |
 
 ### Groups
 

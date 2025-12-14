@@ -9,11 +9,6 @@
 ### Description
 SmartClient supports automated testing with a variety of tools. See the [AutoTest](../classes/AutoTest.md#class-autotest) class for information about how to generate and resolve [AutoTestLocators](../reference_2.md#type-autotestlocator) and other utilities within the SmartClient framework related to generating automated tests.
 
-#### Playwright
-SmartClient applications work smoothly with [Playwright](https://playwright.dev/).
-
-The SDK package provides an example `commands.js` file that defines [Playwright fixtures and helpers](https://playwright.dev/docs/test-fixtures) designed to locate and interact with SmartClient components, automatically handle asynchronous operations, record performance data, and more. For step-by-step guidance on using Playwright with SmartClient, see [Integrating SmartClient with Playwright](smartClientPlaywright.md#kb-topic-integrating-smartclient-with-playwright).
-
 #### Cypress
 SmartClient applications integrate seamlessly with [Cypress](https://www.cypress.io/).
 

@@ -22,20 +22,20 @@ Values manually provided to the ruleScope with [Canvas.provideRuleContext](../cl
 
 ### Related
 
-- [Canvas.visibleWhen](../classes/Canvas.md#attr-canvasvisiblewhen)
-- [Canvas.enableWhen](../classes/Canvas.md#attr-canvasenablewhen)
-- [ListGridField.visibleWhen](../classes/ListGridField.md#attr-listgridfieldvisiblewhen)
-- [ListGridField.enableWhen](../classes/ListGridField.md#attr-listgridfieldenablewhen)
-- [MenuItem.enableWhen](../classes/MenuItem.md#attr-menuitemenablewhen)
-- [MenuItem.visibleWhen](../classes/MenuItem.md#attr-menuitemvisiblewhen)
-- [NavItem.enableWhen](../classes/NavItem.md#attr-navitemenablewhen)
 - [Tab.visibleWhen](../classes/Tab.md#attr-tabvisiblewhen)
 - [Tab.enableWhen](../classes/Tab.md#attr-tabenablewhen)
+- [Canvas.visibleWhen](../classes/Canvas.md#attr-canvasvisiblewhen)
+- [Canvas.enableWhen](../classes/Canvas.md#attr-canvasenablewhen)
 - [FormItem.requiredWhen](../classes/FormItem.md#attr-formitemrequiredwhen)
 - [FormItem.visibleWhen](../classes/FormItem.md#attr-formitemvisiblewhen)
 - [FormItem.readOnlyWhen](../classes/FormItem.md#attr-formitemreadonlywhen)
 - [FormItemIcon.enableWhen](../classes/FormItemIcon.md#attr-formitemiconenablewhen)
 - [FormItemIcon.visibleWhen](../classes/FormItemIcon.md#attr-formitemiconvisiblewhen)
 - [ButtonItem.enableWhen](../classes/ButtonItem.md#attr-buttonitemenablewhen)
+- [NavItem.enableWhen](../classes/NavItem.md#attr-navitemenablewhen)
+- [ListGridField.visibleWhen](../classes/ListGridField.md#attr-listgridfieldvisiblewhen)
+- [ListGridField.enableWhen](../classes/ListGridField.md#attr-listgridfieldenablewhen)
+- [MenuItem.enableWhen](../classes/MenuItem.md#attr-menuitemenablewhen)
+- [MenuItem.visibleWhen](../classes/MenuItem.md#attr-menuitemvisiblewhen)
 
 ---

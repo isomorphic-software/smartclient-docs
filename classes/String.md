@@ -210,35 +210,6 @@ Returns true if this string contains the specified substring.
 - stringProcessing
 
 ---
-## Method: String.asHTML
-
-### Description
-Convert plain text into into displayable HTML.
-
-This prevents HTML-special characters like '<' and '>' from being interpreted as tags, and preserves line breaks and extra spacing.
-
-```
-    converts         to
-    --------         ---------------------------
-    &                &amp;
-    <                &lt;
-    >                &gt;
-    \r,\n,\r\n1space <BR>&nbsp;
-    \r,\n,\r\n       <BR>
-    \t               &nbsp;&nbsp;&nbsp;&nbsp;
-    2 spaces         1space&nbsp;
- 
-```
-
-### Returns
-
-`[HTMLString](../reference.md#type-htmlstring)` — string of HTML with tags in the original HTML escaped.
-
-### Groups
-
-- stringProcessing
-
----
 ## StaticMethod: String.formatAsOrdinalNumber
 
 ### Description

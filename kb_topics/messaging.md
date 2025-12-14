@@ -215,25 +215,6 @@ Note that this not something configurable from the familiar server properties fi
 
 *   For best performance on legacy browsers (Internet Explorer pre-8.0), we recommend forwarding the messaging connections to an HTTP 1.0 server. Otherwise, because older Internet Explorer browsers use no more than 2 concurrent connections to the same web server, with the Messaging connection open, all other connections will execute serially. This means that something like a data fetch might be held up until all images on the page have finished loading.
 
-#### Security
-
-You can limit access to Realtime Messages on a channel-by-channel basis by subclassing the Servlet Container filter [MessagingAuthFilter](https://smartclient.com/smartgwtee-latest/server/javadoc/com/isomorphic/messaging/MessagingAuthFilter.html) and overriding the [authenticate()](https://smartclient.com/smartgwtee-latest/server/javadoc/com/isomorphic/messaging/MessagingAuthFilter.html#authenticate-java.lang.String-jakarta.servlet.http.HttpServletRequest-) method to return true only for those channels that the request should be able to access.
-
-To deploy your filter, add it to your servlet container's `web.xml` file. A sample filter declaration using `MessagingAuthFilter` is included in the web.xml shipped with SmartClient. Your declaration might look something like:
-
-```
-<filter>
-     <filter-name>CorpMessagingAuthFilter</filter-name>
-     <filter-class>com.worldship.bigapp.CorpMessagingAuthFilter</filter-class>
- </filter>
- <filter-mapping>
-     <filter-name>CorpMessagingAuthFilter</filter-name>
-     <url-pattern>/isomorphic/websocket///</url-pattern>
-     <url-pattern>/isomorphic/messaging///</url-pattern>
- </filter-mapping>
-```
-if you've written `CorpMessagingAuthFilter` to extend `MessagingAuthFilter` as described.
-
 ### Related
 
 - [Messaging.send](../classes/Messaging.md#classmethod-messagingsend)

@@ -72,6 +72,16 @@ This component is an [AutoChild](../reference.md#type-autochild) and as such may
 **Flags**: RA
 
 ---
+## Attr: MultiGroupDialog.optionsGrid
+
+### Description
+Automatically generated [ListGrid](ListGrid_1.md#class-listgrid) allowing the user to configure a set of [GroupSpecifier](../reference_2.md#object-groupspecifier)s.
+
+This component is an [AutoChild](../reference.md#type-autochild) and as such may be customized via `multiGroupPanel.optionsGridProperties` and `multiGroupPanel.optionsGridDefaults`.
+
+**Flags**: IR
+
+---
 ## Attr: MultiGroupDialog.propertyFieldTitle
 
 ### Description
@@ -82,16 +92,6 @@ Note, this is a passthrough property which, when set, is passed through to the [
 ### Groups
 
 - i18nMessages
-
-**Flags**: IR
-
----
-## Attr: MultiGroupDialog.optionsGrid
-
-### Description
-Automatically generated [ListGrid](ListGrid_1.md#class-listgrid) allowing the user to configure a set of [GroupSpecifier](../reference_2.md#object-groupspecifier)s.
-
-This component is an [AutoChild](../reference.md#type-autochild) and as such may be customized via `multiGroupPanel.optionsGridProperties` and `multiGroupPanel.optionsGridDefaults`.
 
 **Flags**: IR
 

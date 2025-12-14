@@ -477,7 +477,7 @@ This is the field-specific attribute. You may also set the emptyCellValue at the
 ## Attr: DetailViewerField.hiliteIconPosition
 
 ### Description
-When [DetailViewer.hiliteIcons](DetailViewer.md#attr-detailviewerhiliteicons) are present, where the hilite icon will be placed relative to the field value. See [HiliteIconPosition](../reference_2.md#type-hiliteiconposition). Overrides [DetailViewer.hiliteIconPosition](DetailViewer.md#attr-detailviewerhiliteiconposition)
+When [DetailViewer.hiliteIcons](DetailViewer.md#attr-detailviewerhiliteicons) are present, where the hilite icon will be placed relative to the field value. See [HiliteIconPosition](../reference.md#type-hiliteiconposition). Overrides [DetailViewer.hiliteIconPosition](DetailViewer.md#attr-detailviewerhiliteiconposition)
 
 ### Groups
 
@@ -514,7 +514,7 @@ This method can be specified either as a function or a string that will be auto-
 
 ### Returns
 
-`[Boolean](#type-boolean)` — true to show the field, false to not show it.
+`[boolean](../reference.md#type-boolean)` — true to show the field, false to not show it.
 
 ---
 ## Method: DetailViewerField.formatCellValue

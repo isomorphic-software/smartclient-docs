@@ -10,6 +10,19 @@
 This object cannot be used; it exists for documentation purposes only as a place to put documentation for callback methods, such as the callback for [DataSource.fetchData()](#method-callbacksdscallback).
 
 ---
+## Method: Callbacks.BuildHilitesResponseCallback
+
+### Description
+Callback fired with the result of a request to build one or more [Hilite](../reference.md#object-hilite) objects.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| buildResponse | [BuildHilitesResponse](#type-buildhilitesresponse) | false | — | The response. |
+| buildRequest | [BuildHilitesRequest](#type-buildhilitesrequest) | false | — | The original request. |
+
+---
 ## Method: Callbacks.RemoteWindowMapCallback
 
 ### Description
@@ -23,18 +36,17 @@ Callback reporting the result of a [RemoteWindow](RemoteWindow.md#class-remotewi
 | result | [Map](#type-map) | false | — | result |
 
 ---
-## Method: Callbacks.RunTaskCallback
+## Method: Callbacks.SummarizeRecordsResultCallback
 
 ### Description
-Called when [Process.runTask](Process.md#method-processruntask) has finished executing the specified task.
+Callback [fired](Class.md#classmethod-classfirecallback) with the result of a record summarization operation.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| task | [Task](#type-task) | false | — | The task instance that was executed. |
-| process | [Process](#type-process) | false | — | The owning process instance. |
-| outputs | [Object](../reference.md#type-object) | false | — | Task outputs, if any (for [CoTTask](CoTTask.md#class-cottask), this is the final `$outputs` JSON). May be null if the task does not produce outputs. |
+| result | [SummarizeRecordsResult](#type-summarizerecordsresult) | false | — | The result. |
+| request | [SummarizeRecordsRequest](#type-summarizerecordsrequest) | false | — | The original request. |
 
 ---
 ## Method: Callbacks.AsyncMultipleValuesGenerationResultCallback
@@ -76,6 +88,32 @@ Callback fired when a response is received from an AI engine.
 | aiRequest | [AIRequest](#type-airequest) | false | — | The original request. |
 
 ---
+## Method: Callbacks.SummarizeValueResultCallback
+
+### Description
+Callback called with the result of a value summarization operation.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| result | [SummarizeValueResult](#type-summarizevalueresult) | false | — | The result for the request. |
+| request | [SummarizeValueRequest](#type-summarizevaluerequest) | false | — | The request. |
+
+---
+## Method: Callbacks.BuildAIFieldRequestResponseCallback
+
+### Description
+Callback fired with the result of a request to build an [AIFieldRequest](../reference_2.md#object-aifieldrequest) object.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| buildResponse | [BuildAIFieldRequestResponse](#type-buildaifieldrequestresponse) | false | — | The response. |
+| buildRequest | [BuildAIFieldRequestRequest](#type-buildaifieldrequestrequest) | false | — | The original request. |
+
+---
 ## Method: Callbacks.AIProgressCallback
 
 ### Description
@@ -89,6 +127,24 @@ Callback called with progress information about an ongoing AI process.
 | numStepsCompleted | [Integer](../reference_2.md#type-integer) | false | — | — |
 | estimatedNumTotalSteps | [Integer](../reference_2.md#type-integer) | false | — | — |
 | newMessages | [Array of AIProgressMessage](#type-array-of-aiprogressmessage) | false | — | Any additional messages about the progress that has been made since the last invocation of the progress callback. This may be `null` or an empty array, if, for example, only the `numStepsCompleted` is being updated. |
+
+---
+## Method: Callbacks.BuildUIViaAICustomValidator
+
+### Description
+When "custom" is included among the [BuildUIViaAIRequest.validationTypes](BuildUIViaAIRequest.md#attr-builduiviaairequestvalidationtypes), this is a callback that will be called to continue validating and/or correcting the response from the AI to the build-UI-via-AI request. This callback will not be called if the build-UI process fails before reaching custom validation.
+
+The [BuildUIViaAIRequest.maxRetries](BuildViaAIRequest.md#attr-buildviaairequestmaxretries) limit is not applied during the running of the custom validator; any AI requests that the custom validator makes will not be affected by this setting of the build-UI-via-AI request.
+
+An implementation of this function must always call the provided callback with the working response, possibly modified according to the result of custom validation.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| buildContext | [BuildUIViaAIContext](#type-builduiviaaicontext) | false | — | Read-only context for the ongoing build-UI-via-AI operation. |
+| validationContext | [Any](#type-any) | false | — | The validationContext object supplied by a previous try of the validator. |
+| callback | [BuildUIViaAICustomValidationResultCallback](#type-builduiviaaicustomvalidationresultcallback) | false | — | The callback to call with the result of custom validation. |
 
 ---
 ## Method: Callbacks.RPCCallback
@@ -147,6 +203,19 @@ Callback fired after a call to [RPCManager.getTimingData](RPCManager.md#classmet
 | data | [Object](../reference.md#type-object) | false | — | The root object of the timing data tree (note, this is a plain JS object, not an instance of the SmartClient Tree class) |
 
 ---
+## Method: Callbacks.SummarizeRecordsPartialResultCallback
+
+### Description
+Callback [fired](Class.md#classmethod-classfirecallback) with the result for each batch of records in a record summarization operation.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| partialResult | [SummarizeRecordsPartialResult](#type-summarizerecordspartialresult) | false | — | the result for a batch of records. |
+| context | [SummarizeRecordsContext](#type-summarizerecordscontext) | false | — | context for the ongoing record summarization operation. |
+
+---
 ## Method: Callbacks.MultiWindowEventCallback
 
 ### Description
@@ -178,7 +247,7 @@ Note that the event is simply an [OpenFin application event](https://developer.o
 | record | [Object](../reference.md#type-object) | false | — | Field values for record being validated. |
 | additionalContext | [Object](../reference.md#type-object) | false | — | Object containing extra context which may be useful to the condition function. Contains the following properties:  
 
-*   validatorDefinition: the [ValidatorDefinition](../reference_2.md#object-validatordefinition) for the validator being processed. This allows easy access to custom validator defintion properties while evaluating the condition.
+*   validatorDefinition: the [ValidatorDefinition](../reference.md#object-validatordefinition) for the validator being processed. This allows easy access to custom validator defintion properties while evaluating the condition.
 *   component: the DynamicForm or ListGrid being validated  
     
 *   rowNum: the row number of the cell being validated (only if component is a ListGrid)  
@@ -208,6 +277,19 @@ A typical implementation will shift focus to some native element associated with
 `[boolean](../reference.md#type-boolean)` — Return true if focus could be successfully moved to the desired target. Returning false indicates the target could not accept focus and will often cause the TabIndexManager to find the next registered target and attempt to shift focus there.
 
 ---
+## Method: Callbacks.SuggestRecordSummaryTitleCallback
+
+### Description
+Callback fired with the result of a request to suggest an appropriate title for a new field that will contain AI-generated record summaries.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| result | [SuggestRecordSummaryTitleResult](#type-suggestrecordsummarytitleresult) | false | — | The result. |
+| request | [SuggestRecordSummaryTitleRequest](#type-suggestrecordsummarytitlerequest) | false | — | The original request. |
+
+---
 ## Method: Callbacks.DSCallback
 
 ### Description
@@ -219,7 +301,7 @@ Callback fired when DataSource methods that send DSRequests complete (such as [D
 |------|------|----------|---------|-------------|
 | dsResponse | [DSResponse](#type-dsresponse) | false | — | a [DSResponse](DSResponse.md#class-dsresponse) instance with metadata about the returned data |
 | data | [Any](#type-any) | false | — | data returned to satisfy the DataSource request. See the [DataSource operations](../kb_topics/dataSourceOperations.md#kb-topic-datasource-operations) topic for expected results for each type of DataSource operation |
-| dsRequest | [DSRequest](#type-dsrequest) | false | — | the [DSRequest](../reference_2.md#object-dsrequest) that was sent. You can use [DSRequest.clientContext](DSRequest.md#attr-dsrequestclientcontext) to track state during the server turnaround. |
+| dsRequest | [DSRequest](#type-dsrequest) | false | — | the [DSRequest](../reference.md#object-dsrequest) that was sent. You can use [DSRequest.clientContext](DSRequest.md#attr-dsrequestclientcontext) to track state during the server turnaround. |
 
 ---
 ## Method: Callbacks.ExportImageCallback
@@ -294,6 +376,19 @@ Callback reporting the result of a boolean [RemoteWindow](RemoteWindow.md#class-
 |------|------|----------|---------|-------------|
 | remoteWindow | [RemoteWindow](#type-remotewindow) | false | — | window affected |
 | result | [Boolean](#type-boolean) | false | — | result |
+
+---
+## Method: Callbacks.ApplyAIFilterResponseCallback
+
+### Description
+Callback fired with the result of a request to evaluate an "aiFilter" [AdvancedCriteria](../reference.md#object-advancedcriteria).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| applyResponse | [ApplyAIFilterResponse](#type-applyaifilterresponse) | false | — | The response. |
+| applyRequest | [ApplyAIFilterRequest](#type-applyaifilterrequest) | false | — | The original request. |
 
 ---
 ## Method: Callbacks.AsyncSingleValueGenerationResultCallback
@@ -374,11 +469,24 @@ A [Callback](../reference.md#type-callback) fired when [DataSource.hasFileVersio
 |------|------|----------|---------|-------------|
 | dsResponse | [DSResponse](#type-dsresponse) | false | — | A [DSResponse](DSResponse.md#class-dsresponse) instance with metadata about the returned data. |
 | data | [boolean](../reference.md#type-boolean) | false | — | Whether the file version exists. |
-| dsRequest | [DSRequest](#type-dsrequest) | false | — | The [DSRequest](../reference_2.md#object-dsrequest) that was sent. |
+| dsRequest | [DSRequest](#type-dsrequest) | false | — | The [DSRequest](../reference.md#object-dsrequest) that was sent. |
 
 ### Groups
 
 - fileSource
+
+---
+## Method: Callbacks.BuildCriterionResponseCallback
+
+### Description
+Callback fired with the result of a request to build an [AdvancedCriteria](../reference.md#object-advancedcriteria) object.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| buildResponse | [BuildCriterionResponse](#type-buildcriterionresponse) | false | — | The response. |
+| buildRequest | [BuildCriterionRequest](#type-buildcriterionrequest) | false | — | The original request. |
 
 ---
 ## Method: Callbacks.PaletteNodeCallback
@@ -393,6 +501,19 @@ Callback fired with the [PaletteNodes](../reference.md#object-palettenode) obtai
 | paletteNodes | [Array of PaletteNode](#type-array-of-palettenode) | false | — | an array of PaletteNodes |
 
 ---
+## Method: Callbacks.BuildUIViaAIResponseCallback
+
+### Description
+Callback fired with the response to a request to build UI via AI.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| buildResponse | [BuildUIViaAIResponse](#type-builduiviaairesponse) | false | — | The response. |
+| buildRequest | [BuildUIViaAIRequest](#type-builduiviaairequest) | false | — | The original request. |
+
+---
 ## Method: Callbacks.HasFileCallback
 
 ### Description
@@ -404,7 +525,7 @@ A [Callback](../reference.md#type-callback) fired when [DataSource.hasFile](Data
 |------|------|----------|---------|-------------|
 | dsResponse | [DSResponse](#type-dsresponse) | false | — | A [DSResponse](DSResponse.md#class-dsresponse) instance with metadata about the returned data. |
 | data | [boolean](../reference.md#type-boolean) | false | — | Whether the file exists. |
-| dsRequest | [DSRequest](#type-dsrequest) | false | — | The [DSRequest](../reference_2.md#object-dsrequest) that was sent. |
+| dsRequest | [DSRequest](#type-dsrequest) | false | — | The [DSRequest](../reference.md#object-dsrequest) that was sent. |
 
 ### Groups
 
@@ -415,23 +536,6 @@ A [Callback](../reference.md#type-callback) fired when [DataSource.hasFile](Data
 
 ### Description
 A [Callback](../reference.md#type-callback) fired when [Sound.load](Sound.md#method-soundload) completes.
-
----
-## Method: Callbacks.AskDataQuestionResultCallback
-
-### Description
-Callback fired with the result of asking AI to answer a data question.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| result | [DataQuestionResult](#type-dataquestionresult) | false | — | The result. |
-| dataQuestion | [DataQuestion](#type-dataquestion) | false | — | The data question. |
-
-### Groups
-
-- answerEngine
 
 ---
 ## Method: Callbacks.GetFileVersionCallback
@@ -445,7 +549,7 @@ Callback fired when [DataSource.getFileVersion](DataSource.md#method-datasourceg
 |------|------|----------|---------|-------------|
 | dsResponse | [DSResponse](#type-dsresponse) | false | — | A [DSResponse](DSResponse.md#class-dsresponse) instance with metadata about the returned data. |
 | data | [String](#type-string) | false | — | The file contents, or null if there was an error (such as file not found). |
-| dsRequest | [DSRequest](#type-dsrequest) | false | — | The [DSRequest](../reference_2.md#object-dsrequest) that was sent. |
+| dsRequest | [DSRequest](#type-dsrequest) | false | — | The [DSRequest](../reference.md#object-dsrequest) that was sent. |
 
 ### Groups
 
@@ -551,7 +655,7 @@ Callback fired when [DataSource.getFile](DataSource.md#method-datasourcegetfile)
 |------|------|----------|---------|-------------|
 | dsResponse | [DSResponse](#type-dsresponse) | false | — | A [DSResponse](DSResponse.md#class-dsresponse) instance with metadata about the returned data. |
 | data | [String](#type-string) | false | — | The file contents, or null if there was an error (such as file not found). |
-| dsRequest | [DSRequest](#type-dsrequest) | false | — | The [DSRequest](../reference_2.md#object-dsrequest) that was sent. |
+| dsRequest | [DSRequest](#type-dsrequest) | false | — | The [DSRequest](../reference.md#object-dsrequest) that was sent. |
 
 ### Groups
 
@@ -631,6 +735,19 @@ Callback executed when a message is sent to a channel that you have [subscribed]
 Callback to execute after the section has been hidden.
 
 ---
+## Method: Callbacks.BuildUIViaAICustomValidationResultCallback
+
+### Description
+This will be provided to a [Callbacks.BuildUIViaAICustomValidator](#method-callbacksbuilduiviaaicustomvalidator) to continue the build-UI process after performing the custom validation.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| workingResponse | [BuildUIViaAIResponse](#type-builduiviaairesponse) | false | — | The working response, modified according to the result of custom validation. |
+| validationContext | [Any](#type-any) | false | — | Any object or value to pass to the next invocation of the validator on retry. |
+
+---
 ## Method: Callbacks.RowCountCallback
 
 ### Description
@@ -649,18 +766,6 @@ Callback fired when ResultSet.fetchRowCount() completes
 - rowRangeDisplay
 
 ---
-## Method: Callbacks.HiliteViaAIResultCallback
-
-### Description
-Callback fired asynchronously with the result of a [hilite-via-AI operation](#method-hiliteviaai).
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| result | [HiliteViaAIResult](#type-hiliteviaairesult) | false | — | The result. |
-
----
 ## Method: Callbacks.Function
 
 ### Description
@@ -677,18 +782,5 @@ Generic callback interface.
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | clientOnly | [DataSource](#type-datasource) | false | — | Client only Data Source. |
-
----
-## Method: Callbacks.SetValueByDisplayValueCallback
-
-### Description
-Callback fired when [FormItem.setValueByDisplayValue](FormItem.md#method-formitemsetvaluebydisplayvalue) completes.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| success | [boolean](../reference.md#type-boolean) | false | — | True if the value was successfully set, false otherwise |
-| value | [Any](#type-any) | false | — | If success is true, contains the mapped value that was set. If success is false, contains an error message string. |
 
 ---

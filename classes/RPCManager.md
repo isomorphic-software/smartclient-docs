@@ -80,18 +80,6 @@ Queuing example (server code: /rpcHandler.jsp):
 Please see this [separate article](../kb_topics/errorHandling.md#kb-topic-error-handling-overview) on error handling.
 
 ---
-## ClassAttr: RPCManager.keepParentsOnFilterMaxNodesExceededMessage
-
-### Description
-Default message displayed to the user when a databound [load-on-demand](ResultTree.md#attr-resulttreeloaddataondemand) [TreeGrid](TreeGrid.md#class-treegrid) is filtered while [keepParentsOnFilter](ResultTree.md#attr-resulttreekeepparentsonfilter) is in force, and the number of tree nodes matching the filter exceeds [keepParentsOnFilterMaxNodes](ResultTree.md#attr-resulttreekeepparentsonfiltermaxnodes)
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
-
----
 ## ClassAttr: RPCManager.timeoutErrorMessage
 
 ### Description
@@ -1151,7 +1139,7 @@ Calling `cacheScreens` twice with the same screenName will re-load the definitio
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | screenName | [Array of String](#type-array-of-string) | false | — | name of the screens to cache |
-| callback | [Function](#type-function) | true | — | callback for notification of screens being successfully cached |
+| callback | [Function](#type-function) | false | — | callback for notification of screens being successfully cached |
 | locale | [String](#type-string) | true | — | The name of a locale to use for resolving i18n tags in the component XML of the screen |
 | requestProperties | [RPCRequest Properties](#type-rpcrequest-properties) | true | — | optional properties for the request |
 
@@ -1214,7 +1202,7 @@ This API assumes the ScreenLoaderServlet is installed at the default location - 
 ## ClassMethod: RPCManager.startQueue
 
 ### Description
-Start queuing [DSRequests](../reference_2.md#object-dsrequest) and [RPCRequests](../reference.md#object-rpcrequest) system-wide, for later sending when RPCManager.sendQueue() is called, at which time all queued requests will be sent as a single, combined HTTP request.
+Start queuing [DSRequests](../reference.md#object-dsrequest) and [RPCRequests](../reference.md#object-rpcrequest) system-wide, for later sending when RPCManager.sendQueue() is called, at which time all queued requests will be sent as a single, combined HTTP request.
 
 Combining requests via queuing:
 

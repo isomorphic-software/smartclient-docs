@@ -303,7 +303,7 @@ Clears an action registered to fire on a specific a keyPress event via the [Page
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| actionID | [KeyName](../reference_2.md#type-keyname) | false | — | Name of key to clear registry entries for. |
+| actionID | [KeyName](../reference.md#type-keyname) | false | — | Name of key to clear registry entries for. |
 | target | [Object](../reference.md#type-object) | true | — | target specified when the action was registered for the key. |
 
 ### Groups
@@ -638,7 +638,7 @@ This differs from calling [Page.setEvent](#classmethod-pagesetevent) with the `"
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | key | [KeyIdentifier](#type-keyidentifier) | false | — | key name or identifier object. |
-| action | [StringMethod](../reference_2.md#type-stringmethod)|[Function](#type-function) | false | — | Action to fire when key is pressed. This can be a string of script to evaluate or a javascript function.  
+| action | [StringMethod](../reference.md#type-stringmethod)|[Function](#type-function) | false | — | Action to fire when key is pressed. This can be a string of script to evaluate or a javascript function.  
 This action will be passed 2 parameters: The name of the key pressed will be available as the first parameter or `key` keyword. The target passed into this method will be available as the second parameter or `target` keyword. |
 | target | [Any](#type-any) | true | — | If specified this object will be made available to the action fired as a parameter. |
 

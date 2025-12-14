@@ -58,7 +58,7 @@ You can also use them within individual clauses in order to customize a clause w
  
 ```
 #### Server Summaries & SQL Templating
-When using the [Server Summaries](serverSummaries.md#kb-topic-server-summaries) feature to get aggregated results, there are additional automatically generated and replaceable clauses [groupClause](../classes/OperationBinding.md#attr-operationbindinggroupclause) and [afterWhereClause](../classes/OperationBinding.md#attr-operationbindingafterwhereclause). See the "SQL Templating & Aggregation" section of the [Server Summaries](serverSummaries.md#kb-topic-server-summaries) overview for more information.
+When using the [Server Summaries](serverSummaries.md#kb-topic-server-summaries) feature to get aggregated results, there are additional automatically generated and replaceable clauses [groupClause](../classes/OperationBinding.md#attr-operationbindinggroupclause) and [groupWhereClause](../classes/OperationBinding.md#attr-operationbindinggroupwhereclause). See the "SQL Templating & Aggregation" section of the [Server Summaries](serverSummaries.md#kb-topic-server-summaries) overview for more information.
 #### Mixing SQL Templating and custom Java Logic
 You can use both SQL Templating and custom Java logic added via [DMI](../classes/DMI.md#class-dmi) in the same operationBinding. Your DMI method is called before SQL is generated, and the SQL template will be evaluated and the actual SQL operation performed only when you call dsRequest.execute(). Or, you can use a [custom DataSource](../classes/DataSource.md#attr-datasourceserverconstructor) that extends `SQLDataSource`; your overrides of, eg, `executeFetch()` will be called, and the SQL operation performed only when you call, eg, `super.executeFetch(dsRequest)`
 
@@ -220,13 +220,13 @@ There's a possibility to use customized SQL together with auto generated joins, 
 ### Related
 
 - [DefaultQueryClause](../reference.md#type-defaultqueryclause)
-- [SQLType](../reference_2.md#type-sqltype)
+- [SQLType](../reference.md#type-sqltype)
 - [OperationBinding.selectClause](../classes/OperationBinding.md#attr-operationbindingselectclause)
 - [OperationBinding.tableClause](../classes/OperationBinding.md#attr-operationbindingtableclause)
 - [OperationBinding.ansiJoinClause](../classes/OperationBinding.md#attr-operationbindingansijoinclause)
 - [OperationBinding.whereClause](../classes/OperationBinding.md#attr-operationbindingwhereclause)
 - [OperationBinding.groupClause](../classes/OperationBinding.md#attr-operationbindinggroupclause)
-- [OperationBinding.afterWhereClause](../classes/OperationBinding.md#attr-operationbindingafterwhereclause)
+- [OperationBinding.groupWhereClause](../classes/OperationBinding.md#attr-operationbindinggroupwhereclause)
 - [OperationBinding.orderClause](../classes/OperationBinding.md#attr-operationbindingorderclause)
 - [OperationBinding.valuesClause](../classes/OperationBinding.md#attr-operationbindingvaluesclause)
 - [OperationBinding.customSQL](../classes/OperationBinding.md#attr-operationbindingcustomsql)
@@ -234,10 +234,6 @@ There's a possibility to use customized SQL together with auto generated joins, 
 - [OperationBinding.sqlPrefix](../classes/OperationBinding.md#attr-operationbindingsqlprefix)
 - [DataSource.sqlSuffix](../classes/DataSource.md#attr-datasourcesqlsuffix)
 - [OperationBinding.sqlSuffix](../classes/OperationBinding.md#attr-operationbindingsqlsuffix)
-- [DataSource.applySqlPrefixToRowCount](../classes/DataSource.md#attr-datasourceapplysqlprefixtorowcount)
-- [OperationBinding.applySqlPrefixToRowCount](../classes/OperationBinding.md#attr-operationbindingapplysqlprefixtorowcount)
-- [DataSource.applySqlSuffixToRowCount](../classes/DataSource.md#attr-datasourceapplysqlsuffixtorowcount)
-- [OperationBinding.applySqlSuffixToRowCount](../classes/OperationBinding.md#attr-operationbindingapplysqlsuffixtorowcount)
 - [OperationBinding.customHQL](../classes/OperationBinding.md#attr-operationbindingcustomhql)
 - [OperationBinding.customJQL](../classes/OperationBinding.md#attr-operationbindingcustomjql)
 - [OperationBinding.namedQuery](../classes/OperationBinding.md#attr-operationbindingnamedquery)

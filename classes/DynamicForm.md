@@ -1000,7 +1000,7 @@ Note that if `canEdit` is explicitly specified on a field in the [DataBoundCompo
 ## Attr: DynamicForm.dataSource
 
 ### Description
-The DataSource that this component should bind to for default fields and for performing [DataSource requests](../reference_2.md#object-dsrequest).
+The DataSource that this component should bind to for default fields and for performing [DataSource requests](../reference.md#object-dsrequest).
 
 Can be specified as either a DataSource instance or the String ID of a DataSource.
 
@@ -1473,7 +1473,7 @@ CSS Style for hovers shown for items
 ## Attr: DynamicForm.initialSort
 
 ### Description
-An array of [SortSpecifier](../reference_2.md#object-sortspecifier) objects used to set up the initial sort configuration for this form.
+An array of [SortSpecifier](../reference.md#object-sortspecifier) objects used to set up the initial sort configuration for this form.
 
 ### Groups
 
@@ -1643,7 +1643,7 @@ Note that this property can also be set at the item level or on each validator t
 ## Attr: DynamicForm.fetchRequestProperties
 
 ### Description
-If [DynamicForm.autoFetchData](#attr-dynamicformautofetchdata) is `true`, this attribute allows the developer to declaratively specify [DSRequest](../reference_2.md#object-dsrequest) properties for the initial [fetchData()](ListGrid_2.md#method-listgridfetchdata) call.
+If [DynamicForm.autoFetchData](#attr-dynamicformautofetchdata) is `true`, this attribute allows the developer to declaratively specify [DSRequest](../reference.md#object-dsrequest) properties for the initial [fetchData()](ListGrid_2.md#method-listgridfetchdata) call.
 
 Note that any properties governing more specific request attributes for the initial fetch (such as [DynamicForm.autoFetchTextMatchStyle](#attr-dynamicformautofetchtextmatchstyle) and initial sort specifiers) will be applied on top of this properties block.
 
@@ -1892,7 +1892,7 @@ Sets the [action](#attr-dynamicformaction) for this form.
 Returns the [DSOperationType](../reference.md#type-dsoperationtype) to be performed when [DynamicForm.saveData](#method-dynamicformsavedata) or [ValuesManager.saveData](ValuesManager.md#method-valuesmanagersavedata) is called.  
 Valid options are `"add"` or `"update"`.
 
-If a [DSRequest](../reference_2.md#object-dsrequest) configuration object is passed in containing an explicit operationType this will be returned. Otherwise [this.saveOperationType](#attr-dynamicformsaveoperationtype) will be returned if set. Note that `saveOperationType` is automatically set via calls to data binding methods such as [DynamicForm.editNewRecord](#method-dynamicformeditnewrecord), or it may be [set explicitly](#method-dynamicformsetsaveoperationtype).
+If a [DSRequest](../reference.md#object-dsrequest) configuration object is passed in containing an explicit operationType this will be returned. Otherwise [this.saveOperationType](#attr-dynamicformsaveoperationtype) will be returned if set. Note that `saveOperationType` is automatically set via calls to data binding methods such as [DynamicForm.editNewRecord](#method-dynamicformeditnewrecord), or it may be [set explicitly](#method-dynamicformsetsaveoperationtype).
 
 If no explicit saveOperationType is present, the system will use the following heuristic to determine the save operationType:
 
@@ -1953,12 +1953,12 @@ Fires after the keyPress handler on the FormItem itself, and only if the item di
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | item | [FormItem](#type-formitem) | false | — | the FormItem where the change event occurred |
-| keyName | [KeyName](../reference_2.md#type-keyname) | false | — | name of the key that was pressed (EG: "A", "Space") |
+| keyName | [KeyName](../reference.md#type-keyname) | false | — | name of the key that was pressed (EG: "A", "Space") |
 | characterValue | [number](#type-number) | false | — | numeric character value of the pressed key. |
 
 ### Returns
 
-`[Boolean](#type-boolean)` — return false to cancel the keyPress, or true to allow it
+`[boolean](../reference.md#type-boolean)` — return false to cancel the keyPress, or true to allow it
 
 ---
 ## Method: DynamicForm.getItem
@@ -2127,7 +2127,7 @@ Where the 'errors' object is either a single string or an array of strings conta
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false from this method to suppress that behavior
+`[boolean](../reference.md#type-boolean)` — false from this method to suppress that behavior
 
 **Flags**: A
 
@@ -2344,7 +2344,7 @@ Note that it can be bad practice to cancel this method if the mouse is over the 
 
 ### Returns
 
-`[Boolean](#type-boolean)` — return false to cancel default behavior
+`[boolean](../reference.md#type-boolean)` — return false to cancel default behavior
 
 ### Groups
 
@@ -2903,7 +2903,7 @@ Note that any form field which the user has left blank is omitted as criteria, t
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| advanced | [boolean](../reference.md#type-boolean) | true | — | if true, return an [AdvancedCriteria](../reference.md#object-advancedcriteria) object even if the form item values could be represented in a simple [Criterion](../reference_2.md#object-criterion) object. |
+| advanced | [boolean](../reference.md#type-boolean) | false | — | if true, return an [AdvancedCriteria](../reference.md#object-advancedcriteria) object even if the form item values could be represented in a simple [Criterion](../reference_2.md#object-criterion) object. |
 | textMatchStyle | [TextMatchStyle](../reference_2.md#type-textmatchstyle) | true | — | This parameter may be passed to indicate whether the criteria are to be applied to a substring match (filter) or exact match (fetch). When advanced criteria are returned this parameter will cause the appropriate `operator` to be generated for individual fields' criterion clauses. |
 
 ### Returns
@@ -2957,7 +2957,7 @@ Validate and then save the form's current values to the [DataSource](DataSource.
 
 If client-side validators are defined, they are executed first, and if any errors are found the save is aborted and the form will show the errors.
 
-If client-side validation passes, a [DSRequest](../reference_2.md#object-dsrequest) will be sent, exactly as though [DataSource.addData](DataSource.md#method-datasourceadddata) or [DataSource.updateData](DataSource.md#method-datasourceupdatedata) had been called with ${isc.DocUtils.linkForRef('method:DynamicForm.getValues','the form\\'s values')} as data. The [DSRequest.operationType](DSRequest.md#attr-dsrequestoperationtype) will be either "update" or "add", depending on the current [DynamicForm.saveOperationType](#attr-dynamicformsaveoperationtype).
+If client-side validation passes, a [DSRequest](../reference.md#object-dsrequest) will be sent, exactly as though [DataSource.addData](DataSource.md#method-datasourceadddata) or [DataSource.updateData](DataSource.md#method-datasourceupdatedata) had been called with ${isc.DocUtils.linkForRef('method:DynamicForm.getValues','the form\\'s values')} as data. The [DSRequest.operationType](DSRequest.md#attr-dsrequestoperationtype) will be either "update" or "add", depending on the current [DynamicForm.saveOperationType](#attr-dynamicformsaveoperationtype).
 
 On either a client-side or server-side validation failure, validation errors will be displayed in the form. Visible items within a DynamicForm will be redrawn to display errors. Validation failure occurring on hidden items, or DataSource fields with no associated form items may be handled via [DynamicForm.handleHiddenValidationErrors](#method-dynamicformhandlehiddenvalidationerrors) or [ValuesManager.handleHiddenValidationErrors](ValuesManager.md#method-valuesmanagerhandlehiddenvalidationerrors).
 
@@ -3334,7 +3334,7 @@ Fires after the change() handler on the FormItem itself, and only if the item di
 
 ### Returns
 
-`[Boolean](#type-boolean)` — return false to cancel the change, or true to allow it
+`[boolean](../reference.md#type-boolean)` — return false to cancel the change, or true to allow it
 
 ---
 ## Method: DynamicForm.setCanEdit

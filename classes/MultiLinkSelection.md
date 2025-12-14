@@ -44,7 +44,7 @@ Deselect a particular node occurence. Note if you do not pass a [NodeLocator](..
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | node | [TreeNode](#type-treenode)|[NodeLocator](#type-nodelocator) | false | — | node to deselect, or a NodeLocator that identifies it |
-| recordNum | [Integer](../reference_2.md#type-integer) | true | — | Optional index into the underlying Tree's openList (which will be the same as the record number in a [TreeGrid](TreeGrid.md#class-treegrid)). Required if the "node" param is not a NodeLocator |
+| recordNum | [Integer](../reference_2.md#type-integer) | true | — | Optional index into the underlying Tree's openList (which will be the same as the record number in a [TreeGrid](TreeGrid.md#class-treegrid)) |
 
 ### Returns
 
@@ -79,7 +79,7 @@ Select a particular node occurence. Note if you do not pass a [NodeLocator](../r
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | node | [TreeNode](#type-treenode)|[NodeLocator](#type-nodelocator) | false | — | node to select, or a NodeLocator that identifies it |
-| recordNum | [Integer](../reference_2.md#type-integer) | true | — | Optional index into the underlying Tree's openList (which will be the same as the record number in a [TreeGrid](TreeGrid.md#class-treegrid)). Required if the "node" param is not a NodeLocator |
+| recordNum | [Integer](../reference_2.md#type-integer) | true | — | Optional index into the underlying Tree's openList (which will be the same as the record number in a [TreeGrid](TreeGrid.md#class-treegrid)) |
 
 ### Returns
 
@@ -100,7 +100,7 @@ Select a single node occurence and deselect everything else. Note if you do not 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | node | [TreeNode](#type-treenode)|[NodeLocator](#type-nodelocator) | false | — | node to select, or a NodeLocator that identifies it |
-| recordNum | [Integer](../reference_2.md#type-integer) | true | — | Optional index into the underlying Tree's openList (which will be the same as the record number in a [TreeGrid](TreeGrid.md#class-treegrid)). Required if the "node" param is not a NodeLocator |
+| recordNum | [Integer](../reference_2.md#type-integer) | true | — | Optional index into the underlying Tree's openList (which will be the same as the record number in a [TreeGrid](TreeGrid.md#class-treegrid)) |
 
 ### Returns
 

@@ -430,7 +430,7 @@ When false, when a menu item is chosen (via mouse click or keyboard), the menu i
 ## Attr: Menu.dataSource
 
 ### Description
-Optional DataSource to fetch menuItems and submenus from, instead of using [Menu.items](#attr-menuitems). May be specified as a DataSource instance or the String ID of a DataSource.
+Optional DataSource to fetch menuItems and submenus from, instead of using [Menu.items](#attr-menuitems).
 
 Data is tree-based in menus, so the provided DataSource should be set up for hierarchical fetching - see the [Tree Data Binding overview](../kb_topics/treeDataBinding.md#kb-topic-tree-databinding).
 
@@ -816,7 +816,7 @@ Executed when a menu item with no click handler is clicked by the user. This ite
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false if event processing should be stopped, true or null to continue
+`[boolean](../reference.md#type-boolean)` — false if event processing should be stopped, true to continue
 
 **Flags**: A
 

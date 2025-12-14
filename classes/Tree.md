@@ -27,7 +27,7 @@ Name of property that identifies a [NodeLocator](../reference_2.md#object-nodelo
 ## ClassAttr: Tree.LOADED
 
 ### Description
-A declared value of the enum type [LoadState](../reference_2.md#type-loadstate).
+A declared value of the enum type [LoadState](../reference.md#type-loadstate).
 
 **Flags**: R
 
@@ -35,7 +35,7 @@ A declared value of the enum type [LoadState](../reference_2.md#type-loadstate).
 ## ClassAttr: Tree.UNLOADED
 
 ### Description
-A declared value of the enum type [LoadState](../reference_2.md#type-loadstate).
+A declared value of the enum type [LoadState](../reference.md#type-loadstate).
 
 **Flags**: R
 
@@ -43,7 +43,7 @@ A declared value of the enum type [LoadState](../reference_2.md#type-loadstate).
 ## ClassAttr: Tree.LOADING
 
 ### Description
-A declared value of the enum type [LoadState](../reference_2.md#type-loadstate).
+A declared value of the enum type [LoadState](../reference.md#type-loadstate).
 
 **Flags**: R
 
@@ -51,7 +51,7 @@ A declared value of the enum type [LoadState](../reference_2.md#type-loadstate).
 ## ClassAttr: Tree.FOLDERS_LOADED
 
 ### Description
-A declared value of the enum type [LoadState](../reference_2.md#type-loadstate).
+A declared value of the enum type [LoadState](../reference.md#type-loadstate).
 
 **Flags**: R
 
@@ -59,7 +59,7 @@ A declared value of the enum type [LoadState](../reference_2.md#type-loadstate).
 ## ClassAttr: Tree.LOADED_PARTIAL_CHILDREN
 
 ### Description
-A declared value of the enum type [LoadState](../reference_2.md#type-loadstate).
+A declared value of the enum type [LoadState](../reference.md#type-loadstate).
 
 **Flags**: R
 
@@ -1062,7 +1062,7 @@ What is the loadState of a given folder?
 
 ### Returns
 
-`[LoadState](../reference_2.md#type-loadstate)` — state of the node
+`[LoadState](../reference.md#type-loadstate)` — state of the node
 
 ### Groups
 

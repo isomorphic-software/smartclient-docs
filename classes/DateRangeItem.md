@@ -245,7 +245,7 @@ Sets the [DateRangeItem.fromDate](#attr-daterangeitemfromdate) for this DateRang
 ## Method: DateRangeItem.setValue
 
 ### Description
-Sets the value for this dateRangeItem. The value parameter is a [DateRange](../reference_2.md#object-daterange) object that optionally includes both start and end values. If passed null, both start- and end-range values are cleared.
+Sets the value for this dateRangeItem. The value parameter is a [DateRange](../reference.md#object-daterange) object that optionally includes both start and end values. If passed null, both start- and end-range values are cleared.
 
 ### Parameters
 
@@ -303,7 +303,7 @@ A Criterion with an "and" [operator](../reference.md#type-operatorid) will be re
 ## Method: DateRangeItem.getValue
 
 ### Description
-Retrieves the current value of this dateRangeItem. The return value is a [DateRange](../reference_2.md#object-daterange) object that excludes start and end values if they aren't set.
+Retrieves the current value of this dateRangeItem. The return value is a [DateRange](../reference.md#object-daterange) object that excludes start and end values if they aren't set.
 
 ### Returns
 

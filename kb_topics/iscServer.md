@@ -84,7 +84,7 @@ Both serverType:"sql" and serverType:"hibernate" support the field-operator-valu
 
 The SmartClient Server provides a standardized request and response protocol designed for data-oriented "CRUD" operations (create, retrieve, update, delete).
 
-This standardized protocol automatically handles [request metadata](../reference_2.md#object-dsrequest) (paging parameters, requested sort order, original values of data being modified) and [response metadata](../classes/DSResponse.md#class-dsresponse) (error handling, cache management, session expiration etc).
+This standardized protocol automatically handles [request metadata](../reference.md#object-dsrequest) (paging parameters, requested sort order, original values of data being modified) and [response metadata](../classes/DSResponse.md#class-dsresponse) (error handling, cache management, session expiration etc).
 
 This standardized protocol avoids developers in different groups inventing their own incompatible and redundant request/response protocols, and allows developers to more easily learn code they didn't author.
 

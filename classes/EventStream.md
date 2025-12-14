@@ -7,7 +7,7 @@
 ## Class: EventStream
 
 ### Description
-A `EventStream` captures event details as JavaScript objects as they are handled by the [EventHandler](EventHandler.md#class-eventhandler). The event target [canvas](Canvas.md#class-canvas) ID and [class name](Class.md#method-classgetclassname) as well the [locator](../reference_2.md#type-autotestlocator) are included, as available. Event-specific data (for example, the [KeyName](../reference_2.md#type-keyname) for keyboard events) are also included where appropriate. See [EventStreamEvent](../reference.md#object-eventstreamevent) for more information.
+A `EventStream` captures event details as JavaScript objects as they are handled by the [EventHandler](EventHandler.md#class-eventhandler). The event target [canvas](Canvas.md#class-canvas) ID and [class name](Class.md#method-classgetclassname) as well the [locator](../reference_2.md#type-autotestlocator) are included, as available. Event-specific data (for example, the [KeyName](../reference.md#type-keyname) for keyboard events) are also included where appropriate. See [EventStreamEvent](../reference.md#object-eventstreamevent) for more information.
 
 You can configure the stream to capture most DOM event types and other useful events, such as [relogins](../kb_topics/relogin.md#kb-topic-relogin) and JavaScript errors that are triggered by events:
 
@@ -39,18 +39,6 @@ A `EventStream` will start capturing events as soon as it's created by default, 
 
 - [EventHandler](EventHandler.md#class-eventhandler)
 - [RPCManager](RPCManager.md#class-rpcmanager)
-
----
-## ClassAttr: EventStream.skipVerifyEvents
-
-### Description
-When true, "verify" events will be skipped during event execution via [EventStream.runEvents](#classmethod-eventstreamrunevents). This allows running event streams for their side effects without failing on verification failures.
-
-### Groups
-
-- autoTest
-
-**Flags**: IRW
 
 ---
 ## Attr: EventStream.collapseMoveEvents
@@ -239,202 +227,6 @@ Maximum number of events that will be stored by this `EventStream`. After `maxSi
 **Flags**: IR
 
 ---
-## ClassMethod: EventStream.getCypressEventScript
-
-### Description
-Generates a Cypress command snippet for a single event using our custom SC commands.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| event | [EventStreamEvent](#type-eventstreamevent) | false | — | The event to translate into a Cypress command. |
-
-### Returns
-
-`[String](#type-string)` — A snippet like 'cy.getSC(locator).click()' or '.dblclick()', assuming our custom commands are loaded.
-
-### Groups
-
-- smartClientCypress
-- autoTest
-
-### See Also
-
-- [EventStream.getCypressScriptFromData](#classmethod-eventstreamgetcypressscriptfromdata)
-
----
-## ClassMethod: EventStream.evaluateVerifyEvent
-
-### Description
-Evaluates a "verify" event to check if the specified condition is met. A verify event can check component existence, data criteria, formulas, or custom scripts.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| event | [EventStreamEvent](#type-eventstreamevent) | false | — | The verify event to evaluate with structure: - eventType: "verify" (required) - locator: AutoTest locator for target component (required) - description: Human-readable description (optional) - dataTarget: "data" | "selection" | "properties" (defaults to "data" for DBCs, "properties" otherwise) - criteria: AdvancedCriteria to match against dataTarget - matchType: "any" | "all" | "none" | "exact" | "one" (default "any") - matchCount: Expected count for matchType:"exact" (default 1) - formula: {text: "formula expression"} to evaluate - value: Expected value for formula/script comparison - operator: "equals" | "notEquals" | "greaterThan" | "lessThan" | "between" (default "equals") - script: Arbitrary script to run for verification - timeout: Max time to wait for verification (milliseconds, default 5000) |
-| ruleScope | [Object](../reference.md#type-object) | true | — | Optional ruleScope for formula/criteria evaluation |
-
-### Returns
-
-`[Object](../reference.md#type-object)` — Result object with structure: - success: (Boolean) True if verification passed - error: (String) Error message if verification failed - actual: (Any) Actual value that was checked - expected: (Any) Expected value for comparison
-
-### Groups
-
-- autoTest
-
----
-## ClassMethod: EventStream.getPlaywrightScriptFromData
-
-### Description
-Translates an array of EventStreamEvent objects into an array of Playwright command strings. Each command is formatted with 'await' for async execution.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| events | [Array of EventStreamEvent](#type-array-of-eventstreamevent) | false | — | Array of events to convert. |
-
-### Returns
-
-`[Array of String](#type-array-of-string)` — List of Playwright command snippets.
-
-### Groups
-
-- smartClientPlaywright
-- autoTest
-
-### See Also
-
-- [EventStream.getPlaywrightEventScript](#classmethod-eventstreamgetplaywrighteventscript)
-- [EventStream.getPlaywrightScript](#classmethod-eventstreamgetplaywrightscript)
-
----
-## ClassMethod: EventStream.runEvents
-
-### Description
-Replays a sequence of recorded events in the live UI and logs each step.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| events | [Array of EventStreamEvent](#type-array-of-eventstreamevent) | false | — | Events to replay one by one. |
-| speed | [Number](#type-number) | false | — | Milliseconds delay between each event. |
-| textAreaLog | [TextAreaItem](#type-textareaitem) | false | — | Component where outcomes will be logged. |
-| callback | [Function](#type-function) | false | — | Invoked once all events have been processed. |
-
-### Groups
-
-- smartClientCypress
-- autoTest
-
-### See Also
-
-- [EventStream.getCypressScript](#method-eventstreamgetcypressscript)
-
----
-## ClassMethod: EventStream.getPlaywrightScript
-
-### Description
-Builds a full Playwright test file by framing event commands in test.describe/test blocks. It adds a beforeEach with page.goto, viewport setup, optional waits, and then the test steps. All commands are properly async/await formatted for Playwright's asynchronous API.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| eventStream | [Array of EventStreamEvent](#type-array-of-eventstreamevent) | false | — | Array of events to convert. |
-| targetUrl | [String](#type-string) | true | — | URL to visit in beforeEach; defaults to current page. |
-| testName | [String](#type-string) | true | — | Name of the test() block; defaults to "Test". |
-| testDescription | [String](#type-string) | true | — | Description of the test.describe() block; defaults to "Testing". |
-
-### Returns
-
-`[String](#type-string)` — Complete Playwright spec code ready to paste into a \`.spec.js\`.
-
-### Groups
-
-- smartClientPlaywright
-- autoTest
-
-### See Also
-
-- [EventStream.getPlaywrightEventScript](#classmethod-eventstreamgetplaywrighteventscript)
-- [EventStream.getPlaywrightScriptFromData](#classmethod-eventstreamgetplaywrightscriptfromdata)
-
----
-## ClassMethod: EventStream.getPlaywrightEventScript
-
-### Description
-Generates a Playwright command snippet for a single event using our custom SC commands. Playwright commands are async, so all commands include 'await' and use page.\* methods.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| event | [EventStreamEvent](#type-eventstreamevent) | false | — | The event to translate into a Playwright command. |
-
-### Returns
-
-`[String](#type-string)` — A snippet like 'await page.clickSC(locator)' or 'await page.dblclickSC(locator)', assuming our custom commands are loaded.
-
-### Groups
-
-- smartClientPlaywright
-- autoTest
-
-### See Also
-
-- [EventStream.getPlaywrightScriptFromData](#classmethod-eventstreamgetplaywrightscriptfromdata)
-
----
-## ClassMethod: EventStream.getCypressScriptFromData
-
-### Description
-Translates an array of EventStreamEvent objects into an array of Cypress command strings.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| events | [Array of EventStreamEvent](#type-array-of-eventstreamevent) | false | — | Array of events to convert. |
-
-### Returns
-
-`[Array of String](#type-array-of-string)` — List of Cypress command snippets.
-
-### Groups
-
-- smartClientCypress
-- autoTest
-
-### See Also
-
-- [EventStream.getCypressEventScript](#classmethod-eventstreamgetcypresseventscript)
-- [EventStream.getCypressScript](#method-eventstreamgetcypressscript)
-
----
-## ClassMethod: EventStream.getEventDescription
-
-### Description
-Returns a human-readable description of an event action for logging purposes. Used during Mock Mode test generation to show what action is being taken.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| event | [EventStreamEvent](#type-eventstreamevent) | false | — | The event to describe. |
-
-### Returns
-
-`[String](#type-string)` — A description like "Taking action 'click' on component" or "Taking action 'keyPress' (Enter) on component"
-
-### Groups
-
-- autoTest
-
----
 ## Method: EventStream.end
 
 ### Description
@@ -471,35 +263,6 @@ Just as when retrieving the Selenese as HTML, if a [EventStream.transformSelenes
 
 - automatedTesting
 - experimental
-
----
-## Method: EventStream.getCypressScript
-
-### Description
-Builds a full Cypress test file by framing event commands in describe/it blocks. It adds a beforeEach with cy.visit, viewport setup, optional waits, and then the test steps.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| eventStream | [EventStream](#type-eventstream) | false | — | Stream of events to convert. |
-| targetUrl | [String](#type-string) | true | — | URL to visit in beforeEach; defaults to current page. |
-| testName | [String](#type-string) | true | — | Name of the it() block; defaults to "Test". |
-| testDescription | [String](#type-string) | true | — | Description of the describe() block; defaults to "Testing". |
-
-### Returns
-
-`[String](#type-string)` — Complete Cypress spec code ready to paste into a \`.spec.js\`.
-
-### Groups
-
-- smartClientCypress
-- autoTest
-
-### See Also
-
-- [EventStream.getCypressEventScript](#classmethod-eventstreamgetcypresseventscript)
-- [EventStream.getCypressScriptFromData](#classmethod-eventstreamgetcypressscriptfromdata)
 
 ---
 ## Method: EventStream.start
@@ -565,10 +328,6 @@ Installs a callback that will be called when the EventStream reports an [event e
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | callback | [EventErrorCallback](#type-eventerrorcallback) | false | — | Callback to fire when the stream encounters an event error, subject to the reporting interval |
-
-### Groups
-
-- prodErrorReport
 
 ### See Also
 

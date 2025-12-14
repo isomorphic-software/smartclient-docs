@@ -7,7 +7,7 @@
 ## KB Topic: Transaction Chaining
 
 ### Description
-_Transaction Chaining_ allows [queues](../classes/RPCManager.md#classmethod-rpcmanagerstartqueue) of [DSRequest](../reference_2.md#object-dsrequest)s to be "chained" together, such that later `DSRequests` in the queue can use the results of previous requests in the queue. This allows you to declaratively handle various situations where information only becomes available during the processing of a queue.
+_Transaction Chaining_ allows [queues](../classes/RPCManager.md#classmethod-rpcmanagerstartqueue) of [DSRequest](../reference.md#object-dsrequest)s to be "chained" together, such that later `DSRequests` in the queue can use the results of previous requests in the queue. This allows you to declaratively handle various situations where information only becomes available during the processing of a queue.
 
 To see an example of server-driven transaction chaining used to commit a mixed transaction of an `Order` and related `OrderItem`s, see the [Master/Detail Add](https://www.smartclient.com/smartclient-latest/showcase/?id=queuedAdd) sample.
 
@@ -19,7 +19,7 @@ You could resolve this programmatically - for example, you could use DMIs to sto
 
 As another example, consider an application that allows a user to submit a free-form question which must be persisted to the database like a normal update, but which should initially show the user a list of previously-provided answers that appear to be relevant. The operation that handles the add of the question categorizes it by analyzing the text, and the category is added to the record inserted into the database, and thus to the record returned in the response. Now, via transaction chaining, a "fetch" operation later in the queue can pick up the newly assigned category and use it in criteria to fetch the list of related answers.
 
-Transaction Chaining is implemented by specifying [DSRequestModifier](../reference_2.md#object-dsrequestmodifier)s in [OperationBinding.values](../classes/OperationBinding.md#attr-operationbindingvalues) and [OperationBinding.criteria](../classes/OperationBinding.md#attr-operationbindingcriteria). These two properties provide a general means of declaratively modifying DSRequests server-side, and transaction chaining is only one of their uses. They can also be used, for example, to implement security rules, by adding the currently-authorized user to the criteria of all fetch requests.
+Transaction Chaining is implemented by specifying [DSRequestModifier](../reference.md#object-dsrequestmodifier)s in [OperationBinding.values](../classes/OperationBinding.md#attr-operationbindingvalues) and [OperationBinding.criteria](../classes/OperationBinding.md#attr-operationbindingcriteria). These two properties provide a general means of declaratively modifying DSRequests server-side, and transaction chaining is only one of their uses. They can also be used, for example, to implement security rules, by adding the currently-authorized user to the criteria of all fetch requests.
 
 Specifically for transaction chaining, you specify `criteria` and/or `values` entries on the `operationBinding` where the [value](../classes/DSRequestModifier.md#attr-dsrequestmodifiervalue) property references the **$responseData** Velocity context variable - see the "value" link for more details. Alternatively, you can use the `RPCManager` APIs `getFirstResponse()` and `getLastResponse()` to get access to the same information, either programmatically from DMI or custom DataSource Java code, or in [JSR 223 scripts](serverScript.md#kb-topic-server-scripting), or in Velocity expressions via the **$rpc** context variable.
 
@@ -55,7 +55,7 @@ Transaction chaining is supported when using transactions standalone. Every requ
 
 ### Related
 
-- [DSRequestModifier](../reference_2.md#object-dsrequestmodifier)
+- [DSRequestModifier](../reference.md#object-dsrequestmodifier)
 - [DSRequest.fieldValueExpressions](../classes/DSRequest.md#attr-dsrequestfieldvalueexpressions)
 - [DSRequestModifier.value](../classes/DSRequestModifier.md#attr-dsrequestmodifiervalue)
 - [DSRequestModifier.start](../classes/DSRequestModifier.md#attr-dsrequestmodifierstart)

@@ -27,6 +27,7 @@ Every distributed SmartClient skin contains an "Unsupported Browser" page. This 
 
 |  | Browser/Version | Operating System(s) |
 |---|---|---|
+|  | Internet Explorer ${IE_versions} | ${IE_platforms} |
 |  | Edge ${Edge_versions} | ${Edge_platforms} |
 |  | Firefox ${Firefox_versions} | ${Firefox_platforms} |
 |  | Safari ${Safari_versions} | ${Safari_platforms} |

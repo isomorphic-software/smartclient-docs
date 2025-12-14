@@ -366,13 +366,13 @@ This property is only applicable when [exportToFilesystem](#attr-dsrequestexport
 ## Attr: DSRequest.applyCriteriaBeforeAggregation
 
 ### Description
-If set to "true", all criteria for the DSRequest using [serverSummaries](#serversummaries) are applied before aggregation, and the [afterWhereClause](OperationBinding.md#attr-operationbindingafterwhereclause) is not generated.
+If set to "true", all criteria for the DSRequest using [serverSummaries](#serversummaries) are applied before aggregation, and the [groupWhereClause](OperationBinding.md#attr-operationbindinggroupwhereclause) is not generated.
 
 This behaves the same way as [OperationBinding.applyCriteriaBeforeAggregation](OperationBinding.md#attr-operationbindingapplycriteriabeforeaggregation), and if defined, overrides the OperationBinding-level setting for this specific DSRequest.
 
 ### See Also
 
-- [OperationBinding.afterWhereClause](OperationBinding.md#attr-operationbindingafterwhereclause)
+- [OperationBinding.groupWhereClause](OperationBinding.md#attr-operationbindinggroupwhereclause)
 - [OperationBinding.applyCriteriaBeforeAggregation](OperationBinding.md#attr-operationbindingapplycriteriabeforeaggregation)
 
 **Flags**: IR
@@ -399,7 +399,7 @@ This property allows omitting column names from CSV and Excel exports (no effect
 ## Attr: DSRequest.multiInsertStrategy
 
 ### Description
-For dataSources of [serverType](DataSource.md#attr-datasourceservertype) "sql" only, this property sets the multi-insert strategy for this specific [dsRequest](../reference_2.md#object-dsrequest). Only has an effect if this is an [add request](DataSource.md#method-datasourceadddata) that specifies a list of records as the data.
+For dataSources of [serverType](DataSource.md#attr-datasourceservertype) "sql" only, this property sets the multi-insert strategy for this specific [dsRequest](../reference.md#object-dsrequest). Only has an effect if this is an [add request](DataSource.md#method-datasourceadddata) that specifies a list of records as the data.
 
 Note that this setting overrides the equivalent [operationBinding setting](OperationBinding.md#attr-operationbindingmultiinsertstrategy) and [dataSource setting](DataSource.md#attr-datasourcemultiinsertstrategy)
 
@@ -508,7 +508,7 @@ To sort by multiple fields, an array of field names is also supported. For examp
 
 `[ "department", "-userName" ]`
 
-Additionally, this property supports an array of [SortSpecifier](../reference_2.md#object-sortspecifier) objects. Setting `sortBy` to the following SortSpecifier array results in the same multi-level sort mentioned above:
+Additionally, this property supports an array of [SortSpecifier](../reference.md#object-sortspecifier) objects. Setting `sortBy` to the following SortSpecifier array results in the same multi-level sort mentioned above:
 
 `[     { property: "department", direction: "ascending" },     { property: "userName", direction: "descending" }   ]`
 
@@ -712,7 +712,7 @@ If `exportDatesAsFormattedString` is set to true, date fields will appear as str
 ## Attr: DSRequest.multiInsertNonMatchingStrategy
 
 ### Description
-For dataSources of [serverType](DataSource.md#attr-datasourceservertype) "sql" only, this property sets the multi-insert "non matching" strategy for this specific [dsRequest](../reference_2.md#object-dsrequest). Only has an effect if this is an [add request](DataSource.md#method-datasourceadddata) that specifies a list of records as the data, and only if [multiInsertStrategy](#attr-dsrequestmultiinsertstrategy) is set to "multipleValues" either globally or at the [DSRequest](../reference_2.md#object-dsrequest), [OperationBinding](OperationBinding.md#class-operationbinding), or [DataSource](DataSource.md#class-datasource) level.
+For dataSources of [serverType](DataSource.md#attr-datasourceservertype) "sql" only, this property sets the multi-insert "non matching" strategy for this specific [dsRequest](../reference.md#object-dsrequest). Only has an effect if this is an [add request](DataSource.md#method-datasourceadddata) that specifies a list of records as the data, and only if [multiInsertStrategy](#attr-dsrequestmultiinsertstrategy) is set to "multipleValues" either globally or at the [DSRequest](../reference.md#object-dsrequest), [OperationBinding](OperationBinding.md#class-operationbinding), or [DataSource](DataSource.md#class-datasource) level.
 
 Note that this setting overrides the equivalent [operationBinding setting](OperationBinding.md#attr-operationbindingmultiinsertnonmatchingstrategy) and [dataSource setting](DataSource.md#attr-datasourcemultiinsertnonmatchingstrategy)
 
@@ -844,7 +844,7 @@ The format in which the data should be exported. Note that 'JSON' is not allowed
 ## Attr: DSRequest.multiInsertBatchSize
 
 ### Description
-For dataSources of [serverType](DataSource.md#attr-datasourceservertype) "sql" only, this property sets the multi-insert batch size for this specific [dsRequest](../reference_2.md#object-dsrequest). Only has an effect if this is an [add request](DataSource.md#method-datasourceadddata) that specifies a list of records as the data, and only if [multiInsertStrategy](#attr-dsrequestmultiinsertstrategy) is set to "multipleValues" either globally or at the [DSRequest](../reference_2.md#object-dsrequest), [OperationBinding](OperationBinding.md#class-operationbinding), or [DataSource](DataSource.md#class-datasource) level.
+For dataSources of [serverType](DataSource.md#attr-datasourceservertype) "sql" only, this property sets the multi-insert batch size for this specific [dsRequest](../reference.md#object-dsrequest). Only has an effect if this is an [add request](DataSource.md#method-datasourceadddata) that specifies a list of records as the data, and only if [multiInsertStrategy](#attr-dsrequestmultiinsertstrategy) is set to "multipleValues" either globally or at the [DSRequest](../reference.md#object-dsrequest), [OperationBinding](OperationBinding.md#class-operationbinding), or [DataSource](DataSource.md#class-datasource) level.
 
 Note that this setting overrides the equivalent [operationBinding setting](OperationBinding.md#attr-operationbindingmultiinsertbatchsize) and [dataSource setting](DataSource.md#attr-datasourcemultiinsertbatchsize)
 
@@ -884,40 +884,6 @@ Note that if the request encounters an error (such as 500 server error), by defa
 ### Groups
 
 - errorHandling
-
-**Flags**: IR
-
----
-## Attr: DSRequest.afterCriteria
-
-### Description
-For requests that use [server summaries](../kb_topics/serverSummaries.md#kb-topic-server-summaries), this property defines _post-aggregation criteria_ — criteria that are applied _after_ grouping and summarization have occurred. Conceptually, it works like a SQL `HAVING` clause and allows you to restrict which grouped or summarized results are returned, based on the values of summary fields rather than raw data rows.
-
-Supported by the built-in SQL, Hibernate, and JPA DataSources.
-
-**Example:**  
-  
-Suppose the `avg` function is being applied to the `unitPrice` field on `supplyItem` records. Specifying `afterCriteria` with the condition `unitPrice < 5` will eliminate only those groups whose _average_ price is less than 5 — that is, it filters _after_ the aggregation step.
-
-In SQL terms:
-
-```
- SELECT category, AVG(unitPrice)
- FROM supplyItem
- WHERE ...                            -- regular criteria
- GROUP BY category
- HAVING AVG(unitPrice) < 5            -- afterCriteria
- 
-```
-For more details on aggregation and post-aggregation filtering, see the [Server Summaries Overview](../kb_topics/serverSummaries.md#kb-topic-server-summaries).
-
-### Groups
-
-- serverSummaries
-
-### See Also
-
-- [OperationBinding.afterWhereClause](OperationBinding.md#attr-operationbindingafterwhereclause)
 
 **Flags**: IR
 

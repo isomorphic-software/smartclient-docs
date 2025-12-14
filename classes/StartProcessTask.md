@@ -15,9 +15,9 @@ Task that executes another [Process](Process.md#class-process) inside the curren
 ## Attr: StartProcessTask.process
 
 ### Description
-The [Process](Process.md#class-process) to be run by this task. Input state is created from [inputFieldList](Task.md#attr-taskinputfieldlist) and the container process state is updated from the inner process state using [outputFieldList](Task.md#attr-taskoutputfieldlist).
+The [Process](Process.md#class-process) to be run by this task. Input state is created from [inputFieldList](Task.md#attr-taskinputfieldlist) and container process state is updated from the inner process state using [outputFieldList](Task.md#attr-taskoutputfieldlist).
 
-This property can be an instance of the target process or an ID. For an ID, the process will be looked up in your screen if this task is part of one and, otherwise, it will be looked up globally via [getCurrentProcess()](ProcessElement.md#method-processelementgetcurrentprocess).
+This property can be an instance of the target process or an ID. For an ID, the process will be looked up in your screen if this task is part of one and, otherwise, it will be looked up globally via [Process.getProcess](Process.md#classmethod-processgetprocess).
 
 **Flags**: IRW
 

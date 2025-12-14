@@ -121,18 +121,6 @@ The ID of the default [AIEngine](AIEngine.md#class-aiengine) to use.
 **Flags**: RW
 
 ---
-## ClassAttr: AI.maxActiveAnswerEngineOperations
-
-### Description
-The maximum number of Answer Engine operations that can be active (not paused and not canceled) at any given time.
-
-### Groups
-
-- answerEngine
-
-**Flags**: RW
-
----
 ## ClassAttr: AI.aiNotAbleToProcessRequestErrorMessage
 
 ### Description
@@ -165,20 +153,82 @@ The defualt maximum number of retries for any one particular request to AI.
 **Flags**: RW
 
 ---
-## ClassMethod: AI.resumeDataQuestion
+## ClassMethod: AI.summarizeValue
 
 ### Description
-Resumes a data question if paused.
+Requests that available AI engine(s) be used to generate a summary of a value according to a natural language description of how to summarize the value.
+
+See [AI.asyncSummarizeValue](#classmethod-aiasyncsummarizevalue) for a [Promise](../reference_2.md#object-promise)-based version of this class method.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| questionId | [String](#type-string) | false | — | The ID of the data question to resume. |
+| request | [SummarizeValueRequest](#type-summarizevaluerequest) | false | — | The request. |
+| callback | [SummarizeValueResultCallback](#type-summarizevalueresultcallback) | false | — | The callback to fire with the [SummarizeValueResult](../reference.md#object-summarizevalueresult). |
 
-### Groups
+---
+## ClassMethod: AI.asyncSummarizeValue
 
-- answerEngine
+### Description
+Requests that available AI engine(s) be used to generate a summary of a value according to a natural language description of how to summarize the value.
+
+See [AI.summarizeValue](#classmethod-aisummarizevalue) for a callback-based version of this class method.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| request | [SummarizeValueRequest](#type-summarizevaluerequest) | false | — | The request. |
+
+### Returns
+
+`[Promise](#type-promise)` — A `Promise` for a [SummarizeValueResult](../reference.md#object-summarizevalueresult). This `Promise` resolves if the summarize value operation is successful ([SummarizeValueResult.type](AsyncOperationResult.md#attr-asyncoperationresulttype) is "success"); otherwise it rejects.
+
+---
+## ClassMethod: AI.asyncSuggestRecordSummaryTitle
+
+### Description
+Requests that available [AIEngine](AIEngine.md#class-aiengine)(s) be used to suggest an appropriate title for a new field that will contain AI-generated record summaries.
+
+See [AI.suggestRecordSummaryTitle](#classmethod-aisuggestrecordsummarytitle) for a callback-based version of this class method.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| request | [SuggestRecordSummaryTitleRequest](#type-suggestrecordsummarytitlerequest) | false | — | The request. |
+
+### Returns
+
+`[Promise](#type-promise)` — A `Promise` for a [SuggestRecordSummaryTitleResult](../reference.md#object-suggestrecordsummarytitleresult). This `Promise` resolves if the suggest-title operation is successful ([SuggestRecordSummaryTitleResult.type](AsyncOperationResult.md#attr-asyncoperationresulttype) is "success"); otherwise it rejects.
+
+---
+## ClassMethod: AI.suggestRecordSummaryTitle
+
+### Description
+Requests that available [AIEngine](AIEngine.md#class-aiengine)(s) be used to suggest an appropriate title for a new field that will contain AI-generated record summaries.
+
+See [AI.asyncSuggestRecordSummaryTitle](#classmethod-aiasyncsuggestrecordsummarytitle) for a [Promise](../reference_2.md#object-promise)-based version of this class method.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| request | [SuggestRecordSummaryTitleRequest](#type-suggestrecordsummarytitlerequest) | false | — | The request. |
+| callback | [SuggestRecordSummaryTitleCallback](#type-suggestrecordsummarytitlecallback) | false | — | The callback to [fire](Class.md#classmethod-classfirecallback) with the result. |
+
+---
+## ClassMethod: AI.clearAIFilterCaches
+
+### Description
+Removes information for all records to which an "aiFilter" [AdvancedCriteria](../reference.md#object-advancedcriteria) has been applied.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| aiCriterion | [AdvancedCriteria](#type-advancedcriteria) | false | — | The "aiFilter" `AdvancedCriteria` to update. |
 
 ---
 ## ClassMethod: AI.isEnabled
@@ -196,59 +246,209 @@ Determines whether AI support is enabled. [AI.disabled](#classattr-aidisabled) m
 - [AI.defaultEngineId](#classattr-aidefaultengineid)
 
 ---
-## ClassMethod: AI.sendPrompt
+## ClassMethod: AI.buildDataBoundUI
 
 ### Description
-Evaluates the given [dynamic string](../kb_topics/dynamicStrings.md#kb-topic-dynamic-strings) to form a prompt string that is then sent as the request to the default AI engine.
-
-Within `dynamicString`, any evaluated JavaScript expressions have access to all of the values in the `context` ValueMap.
+Requests that available AI engine(s) be used to build data-bound UI component(s) according to a user's description of what they would like to build.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| dynamicString | [DynamicString](../reference_2.md#type-dynamicstring) | false | — | A dynamic string. |
-| context | [ValueMap](../reference_2.md#type-valuemap) | false | — | A map from each in-scope [Identifier](../reference.md#type-identifier) to its value. |
-| callback | [AIResponseCallback](#type-airesponsecallback) | false | — | The callback to fire with the response from AI. |
-
-### Groups
-
-- dynamicStrings
+| buildRequest | [BuildDataBoundUIViaAIRequest](#type-builddatabounduiviaairequest) | false | — | The request to AI to build data-bound UI. |
+| callback | [BuildUIViaAIResponseCallback](#type-builduiviaairesponsecallback) | false | — | The callback to call with the result. |
 
 ---
-## ClassMethod: AI.pauseDataQuestion
+## ClassMethod: AI.buildHilites
 
 ### Description
-Pauses a data question if not already paused or canceled.
+Requests that available AI engine(s) be used to build one or more [Hilite](../reference.md#object-hilite) objects according to the user's natural language description of hilite criteria and styling to apply.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| questionId | [String](#type-string) | false | — | The ID of the data question to pause. |
-
-### Groups
-
-- answerEngine
+| buildRequest | [BuildHilitesRequest](#type-buildhilitesrequest) | false | — | The request to AI to build `Hilite` object(s). |
+| callback | [BuildHilitesResponseCallback](#type-buildhilitesresponsecallback) | false | — | The callback to call with the result. |
 
 ---
-## ClassMethod: AI.askDataQuestion
+## ClassMethod: AI.unregisterEngine
 
 ### Description
-Asks AI to answer a question about the data of the application.
+Unregisters an [AIEngine](AIEngine.md#class-aiengine) specified by its ID.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| question | [String](#type-string)|[UserAIRequest](#type-userairequest) | false | — | The text of the end-user's question or their request for an answer to a data question. |
-| dataSources | [Array of DataSource](#type-array-of-datasource)|[Array of GlobalId](#type-array-of-globalid) | true | — | The available data sources. All data sources in the array must have a global ID. If `null`, then the array of all DataSources available to the AI module is used. |
-| settings | [DataQuestionSettings](#type-dataquestionsettings) | true | — | Settings to use when answering the data question. |
-| callback | [AskDataQuestionResultCallback](#type-askdataquestionresultcallback) | true | — | The callback to call with the result. |
+| engineId | [String](#type-string) | false | — | the ID of the `AIEngine` to unregister. |
 
-### Groups
+### Returns
 
-- answerEngine
+`[boolean](../reference.md#type-boolean)` — `true` if the `AIEngine` was successfully unregistered; `false` otherwise.
+
+### See Also
+
+- [AI.registerEngine](#classmethod-airegisterengine)
+
+---
+## ClassMethod: AI.asyncReapplyAIFilter
+
+### Description
+Requests that available AI engine(s) be used to re-evaluate an "aiFilter" [AdvancedCriteria](../reference.md#object-advancedcriteria) on a list of updated records.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| reapplyRequest | [ReapplyAIFilterRequest](#type-reapplyaifilterrequest) | false | — | The request to AI to re-evaluate an "aiFilter" [AdvancedCriteria](../reference.md#object-advancedcriteria). |
+
+### Returns
+
+`[Promise](#type-promise)` — A Promise for a [ReapplyAIFilterResponse](../reference.md#object-reapplyaifilterresponse). If the [ReapplyAIFilterResponse.type](AsyncOperationResult.md#attr-asyncoperationresulttype) is "success", then the returned Promise is resolved; otherwise, the returned Promise is rejected.
+
+---
+## ClassMethod: AI.buildAIFieldRequest
+
+### Description
+Requests that available AI engine(s) be used to build an [AIFieldRequest](../reference_2.md#object-aifieldrequest) from a natural language description of the per-record values to generate for a new AI-generated field.
+
+See [AI.asyncBuildAIFieldRequest](#classmethod-aiasyncbuildaifieldrequest) for a [Promise](../reference_2.md#object-promise)-based version of this class method.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| buildRequest | [BuildAIFieldRequestRequest](#type-buildaifieldrequestrequest) | false | — | The request. |
+| callback | [BuildAIFieldRequestResponseCallback](#type-buildaifieldrequestresponsecallback) | false | — | The callback to [fire](Class.md#classmethod-classfirecallback) with the result. |
+
+---
+## ClassMethod: AI.isAIFieldRequestNumerical
+
+### Description
+Returns `true` if the given [AIFieldRequest](../reference_2.md#object-aifieldrequest) is numerical (its [valueClass](AIFieldRequest.md#attr-aifieldrequestvalueclass) is "ordinal", "interval", or "ratio"); `false` otherwise.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| aiFieldRequest | [AIFieldRequest](#type-aifieldrequest) | false | — | The `AIFieldRequest` to test. |
+
+### Returns
+
+`[Boolean](#type-boolean)` — `true` if and only if the given `AIFieldRequest` is numerical.
+
+---
+## ClassMethod: AI.summarizeRecords
+
+### Description
+Requests that available AI engine(s) be used to generate summaries of records according to the user's natural language description of how to summarize each record.
+
+See [AI.asyncSummarizeRecords](#classmethod-aiasyncsummarizerecords) for a [Promise](../reference_2.md#object-promise)-based version of this class method.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| request | [SummarizeRecordsRequest](#type-summarizerecordsrequest) | false | — | The request. |
+| partialResultCallback | [SummarizeRecordsPartialResultCallback](#type-summarizerecordspartialresultcallback) | true | — | The callback to [fire](Class.md#classmethod-classfirecallback) with each partial result. |
+| callback | [SummarizeRecordsResultCallback](#type-summarizerecordsresultcallback) | false | — | The callback to fire with the result. |
+
+---
+## ClassMethod: AI.applyAIFilter
+
+### Description
+Requests that available AI engine(s) be used to evaluate an "aiFilter" [AdvancedCriteria](../reference.md#object-advancedcriteria) on a list of records.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| applyRequest | [ApplyAIFilterRequest](#type-applyaifilterrequest) | false | — | The request to AI to evaluate an "aiFilter" `AdvancedCriteria`. |
+| callback | [ApplyAIFilterResponseCallback](#type-applyaifilterresponsecallback) | false | — | The callback to call with the result. |
+
+---
+## ClassMethod: AI.asyncSummarizeRecords
+
+### Description
+Requests that available AI engine(s) be used to generate summaries of records according to the user's natural language description of how to summarize each record.
+
+See [AI.summarizeRecords](#classmethod-aisummarizerecords) for a callback-based version of this class method.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| request | [SummarizeRecordsRequest](#type-summarizerecordsrequest) | false | — | The request. |
+| partialResultCallback | [SummarizeRecordsPartialResultCallback](#type-summarizerecordspartialresultcallback) | true | — | The callback to [fire](Class.md#classmethod-classfirecallback) with each partial result. |
+
+### Returns
+
+`[Promise](#type-promise)` — A `Promise` for a [SummarizeRecordsResult](../reference.md#object-summarizerecordsresult).
+
+---
+## ClassMethod: AI.asyncBuildAIFieldRequest
+
+### Description
+Requests that available AI engine(s) be used to build an [AIFieldRequest](../reference_2.md#object-aifieldrequest) from a natural language description of the per-record values to generate for a new AI-generated field.
+
+See [AI.buildAIFieldRequest](#classmethod-aibuildaifieldrequest) for a callback-based version of this class method.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| buildRequest | [BuildAIFieldRequestRequest](#type-buildaifieldrequestrequest) | false | — | The request. |
+
+### Returns
+
+`[Promise](#type-promise)` — A `Promise` for a [BuildAIFieldRequestResponse](../reference.md#object-buildaifieldrequestresponse). This `Promise` resolves if the build operation is successful ([BuildAIFieldRequestResponse.type](AsyncOperationResult.md#attr-asyncoperationresulttype) is "success"); otherwise it rejects.
+
+---
+## ClassMethod: AI.removeFromAIFilterCaches
+
+### Description
+Removes information for the given records from an "aiFilter" [AdvancedCriteria](../reference.md#object-advancedcriteria).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| aiCriterion | [AdvancedCriteria](#type-advancedcriteria) | false | — | The "aiFilter" `AdvancedCriteria` to update. |
+| records | [Array of Record](#type-array-of-record) | false | — | The records, about which any information held in `aiCriterion` will be removed. |
+
+---
+## ClassMethod: AI.registerEngine
+
+### Description
+Registers the given [AIEngine](AIEngine.md#class-aiengine).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| engine | [AIEngine](#type-aiengine) | false | — | The `AIEngine` to register. |
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — `true` if the `AIEngine` was successfully registered; `false` otherwise.
+
+### See Also
+
+- [AI.unregisterEngine](#classmethod-aiunregisterengine)
+
+---
+## ClassMethod: AI.buildCriterion
+
+### Description
+Requests that available AI engine(s) be used to build an [AdvancedCriteria](../reference.md#object-advancedcriteria) object according to the user's natural language description of a filter.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| buildRequest | [BuildCriterionRequest](#type-buildcriterionrequest) | false | — | The request. |
+| callback | [BuildCriterionResponseCallback](#type-buildcriterionresponsecallback) | false | — | The callback to [fire](Class.md#classmethod-classfirecallback) with the result. |
 
 ---
 ## ClassMethod: AI.getEngine
@@ -265,21 +465,5 @@ Returns the [AIEngine](AIEngine.md#class-aiengine) having the given engine ID.
 ### Returns
 
 `[AIEngine](#type-aiengine)` — the `AIEngine`, or `null` if the `AIEngine` could not be found.
-
----
-## ClassMethod: AI.cancelDataQuestion
-
-### Description
-Cancels a data question if not already canceled.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| questionId | [String](#type-string) | false | — | The ID of the data question to cancel. |
-
-### Groups
-
-- answerEngine
 
 ---

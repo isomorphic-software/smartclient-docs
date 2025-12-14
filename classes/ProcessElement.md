@@ -25,7 +25,7 @@ Note that since this property applies to an instance of a task that could be use
 ### Description
 Does this processElement pass through output from the last executed task (i.e. transient state)?
 
-See [taskInputExpressions](../reference_2.md#type-taskinputexpression) for details on the transient state outputs.
+See [taskInputExpressions](../kb_topics/taskInputExpression.md#kb-topic-task-input-expressions) for details on the transient state outputs.
 
 Note that this property does not affect the task at all but is an indicator to the user and to the workflow editor of the behavior of the task as coded (See [Process.passThruTaskOutput](Process.md#method-processpassthrutaskoutput)).
 
@@ -83,7 +83,7 @@ Note that it is up to each task determine what effect mock mode has.
 ### Description
 Does this processElement support being called multiple times for multiple records in the [last task output](Process.md#method-processsettaskoutput)?
 
-By default a processElement is [executed](#method-processelementexecuteelement) exactly once, however, for a task that can process records from the last task output it can be useful to handle each incoming record individually. Setting this property indicates to the [process](Process.md#class-process) that if the last task output is an array, it should be executed once per value in the array. Normal processing of [taskInputExpressions](../reference_2.md#type-taskinputexpression) or use of [Process.getLastTaskOutput](Process.md#method-processgetlasttaskoutput) will have exactly one record except uses of the output for criteria values where the full output is used at once.
+By default a processElement is [executed](#method-processelementexecuteelement) exactly once, however, for a task that can process records from the last task output it can be useful to handle each incoming record individually. Setting this property indicates to the [process](Process.md#class-process) that if the last task output is an array, it should be executed once per value in the array. Normal processing of [taskInputExpressions](../kb_topics/taskInputExpression.md#kb-topic-task-input-expressions) or use of [Process.getLastTaskOutput](Process.md#method-processgetlasttaskoutput) will have exactly one record except uses of the output for criteria values where the full output is used at once.
 
 Processing of the task can determine that multiple incoming records should not result in multiple calls and set [ProcessElement.forceSingle](#attr-processelementforcesingle). For example, a task that uses last task output for a criteria or for values should set `forceSingle=true` when a criteria is used because multiple calls do not make sense.
 
@@ -135,7 +135,7 @@ When [ProcessElement.waitFor](#attr-processelementwaitfor) or [Process.defaultWa
 ### Description
 When set, the output of the task will be automatically bound to the specified value in the [process state](Process.md#attr-processstate).
 
-See [taskInputExpressions](../reference_2.md#type-taskinputexpression) for details on the transient state outputs.
+See [taskInputExpressions](../kb_topics/taskInputExpression.md#kb-topic-task-input-expressions) for details on the transient state outputs.
 
 **Flags**: IR
 
@@ -224,7 +224,7 @@ There are a number of helper methods to make this easier listed below.
 ## Method: ProcessElement.updateGlobalIDInCriteria
 
 ### Description
-Updates [AdvancedCriteria](../reference.md#object-advancedcriteria) [Criterion](../reference_2.md#object-criterion) [TaskInputExpression](../reference_2.md#type-taskinputexpression) values containing ruleScope references.
+Updates [AdvancedCriteria](../reference.md#object-advancedcriteria) [Criterion](../reference_2.md#object-criterion) [taskInputExpression](../kb_topics/taskInputExpression.md#kb-topic-task-input-expressions) values containing ruleScope references.
 
 This method is a helper to implement task-specific [ProcessElement.updateGlobalIDReferences](#method-processelementupdateglobalidreferences).
 
@@ -250,7 +250,7 @@ Returns the workflow task editor type to be used edit instances of this type of 
 ## Method: ProcessElement.updateLastElementInValueProperty
 
 ### Description
-Updates a [TaskInputExpression](../reference_2.md#type-taskinputexpression) property value containing $last references. Any implicit reference to the last task is updated to reference a last task of a specified `taskType`.
+Updates a [taskInputExpression](../kb_topics/taskInputExpression.md#kb-topic-task-input-expressions) property value containing $last references. Any implicit reference to the last task is updated to reference a last task of a specified `taskType`.
 
 For example, a value of "$last.sequenceNo" would be replaced with "$last\[fetch\].sequenceNo" if the taskType is "fetch". Existing "$last\[...\]" references are left as-is.
 
@@ -271,7 +271,7 @@ This method is a helper to implement task-specific [ProcessElement.updateLastEle
 ## Method: ProcessElement.updateLastElementInCriteria
 
 ### Description
-Updates [AdvancedCriteria](../reference.md#object-advancedcriteria) [Criterion](../reference_2.md#object-criterion) [TaskInputExpression](../reference_2.md#type-taskinputexpression) values containing $last references. Any implicit reference to the last task is updated to reference a last task of a specified `taskType`.
+Updates [AdvancedCriteria](../reference.md#object-advancedcriteria) [Criterion](../reference_2.md#object-criterion) [taskInputExpression](../kb_topics/taskInputExpression.md#kb-topic-task-input-expressions) values containing $last references. Any implicit reference to the last task is updated to reference a last task of a specified `taskType`.
 
 For example, a value of "$last.sequenceNo" would be replaced with "$last\[fetch\].sequenceNo" if the taskType is "fetch". Existing "$last\[...\]" references are left as-is.
 
@@ -309,7 +309,7 @@ Resolves a [UserSummary](../reference.md#object-usersummary) value against the c
 ## Method: ProcessElement.getDynamicValue
 
 ### Description
-Resolves a dynamic value as [taskInputExpressions](../reference_2.md#type-taskinputexpression) or returns the value as-is.
+Resolves a dynamic value as [taskInputExpressions](../kb_topics/taskInputExpression.md#kb-topic-task-input-expressions) or returns the value as-is.
 
 ### Parameters
 
@@ -326,7 +326,7 @@ Resolves a dynamic value as [taskInputExpressions](../reference_2.md#type-taskin
 ## Method: ProcessElement.updateGlobalIDInValues
 
 ### Description
-Updates a set of [TaskInputExpression](../reference_2.md#type-taskinputexpression) values containing ruleScope references.
+Updates a set of [taskInputExpression](../kb_topics/taskInputExpression.md#kb-topic-task-input-expressions) values containing ruleScope references.
 
 This method is a helper to implement task-specific [ProcessElement.updateGlobalIDReferences](#method-processelementupdateglobalidreferences).
 
@@ -385,7 +385,7 @@ If this processElement is not [valid](#method-processelementisvalid), returns th
 ## Method: ProcessElement.executeElement
 
 ### Description
-Method called by [Process](Process.md#class-process) to have the processElement perform its work. There is no default implementation by ProcessElement, however, all the system-provided subclasses do implement this method. An implementation or override of this method is one possible customization point. Some classes like [ScriptTask](ScriptTask.md#class-scripttask) perform other means to add customization. For ScriptTask, custom code is expected to handle the [ScriptTask.execute](ScriptTask.md#method-scripttaskexecute) method instead.
+Method called by [Process](Process.md#class-process) to have the processElement perform its work. There is no default implementation by ProcessElement, however, all of the system-provided subclasses do implement this method. An implementation or override of this method is one possible customization point. Some classes like [ScriptTask](ScriptTask.md#class-scripttask) perform other means to add customization. For ScriptTask, custom code is expected to handle the [ScriptTask.execute](ScriptTask.md#method-scripttaskexecute) method instead.
 
 Any implementation of this method must return `true` if all the work this element needed to perform was completed. Return `false` if additional work is being performed asynchronously and the process should be paused until element restarts it. Once asynchronous work is complete the task must call [Process.start](Process.md#method-processstart) to restart the workflow with the next task.
 
@@ -397,7 +397,7 @@ Any implementation of this method must return `true` if all the work this elemen
 
 ### Returns
 
-`[Boolean](#type-boolean)` — return true if all the work this element needed to perform was completed. Return false if additional work is being performed asynchronously, and the process should be paused until an element restarts it.
+`[Boolean](#type-boolean)` — return true if all the work this element needed to perform was completed. Return false if additional work is being performed asynchronously and the process should be paused until element restarts it.
 
 ---
 ## Method: ProcessElement.isValid
@@ -425,7 +425,7 @@ Default implementation calls [ProcessElement.getInvalidTaskMessage](#method-proc
 ## Method: ProcessElement.updateGlobalIDInValueProperty
 
 ### Description
-Updates a [TaskInputExpression](../reference_2.md#type-taskinputexpression) property value containing ruleScope references.
+Updates a [taskInputExpression](../kb_topics/taskInputExpression.md#kb-topic-task-input-expressions) property value containing ruleScope references.
 
 This method is a helper to implement task-specific [ProcessElement.updateGlobalIDReferences](#method-processelementupdateglobalidreferences).
 
@@ -469,7 +469,7 @@ The default implementation returns nothing. Subclasses that add new potential co
 ## Method: ProcessElement.updateLastElementInValues
 
 ### Description
-Updates a set of [TaskInputExpression](../reference_2.md#type-taskinputexpression) values containing $last references. Any implicit reference to the last task is updated to reference a last task of a specified `taskType`.
+Updates a set of [taskInputExpression](../kb_topics/taskInputExpression.md#kb-topic-task-input-expressions) values containing $last references. Any implicit reference to the last task is updated to reference a last task of a specified `taskType`.
 
 For example, a value of "$last.sequenceNo" would be replaced with "$last\[fetch\].sequenceNo" if the taskType is "fetch". Existing "$last\[...\]" references are left as-is.
 
@@ -504,7 +504,7 @@ StringMethod called when a processElement completes. Typically used to clear tra
 ### Description
 Update references to a binding $last within properties of this processElement. This method is not called as part of workflow execution but is used by the [WorkflowEditor](#class-workfloweditor) to adjust last task references as new tasks are inserted.
 
-Each processElement or Task that has properties supporting [taskInputExpressions](../reference_2.md#type-taskinputexpression) using the $last syntax must be able to update its references on demand by overriding this method or defer to its superclass.
+Each processElement or Task that has properties supporting [taskInputExpressions](../kb_topics/taskInputExpression.md#kb-topic-task-input-expressions) using the $last syntax must be able to update its references on demand by overriding this method or defer to its superclass.
 
 There are a number of helper methods to make this easier listed below.
 
@@ -524,28 +524,6 @@ There are a number of helper methods to make this easier listed below.
 - [ProcessElement.updateLastElementInValueProperty](#method-processelementupdatelastelementinvalueproperty)
 - [ProcessElement.updateLastElementInValues](#method-processelementupdatelastelementinvalues)
 - [ProcessElement.updateLastElementInCriteria](#method-processelementupdatelastelementincriteria)
-
----
-## Method: ProcessElement.getCurrentProcess
-
-### Description
-Returns the [process](Process.md#class-process) executing this task instance.
-
-### Returns
-
-`[Process](#type-process)` — the owning process
-
----
-## Method: ProcessElement.setCurrentProcess
-
-### Description
-Sets the [process](Process.md#class-process) executing this task instance making it available for [ProcessElement.getCurrentProcess](#method-processelementgetcurrentprocess).
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| process | [Process](#type-process) | false | — | the owning process |
 
 ---
 ## Method: ProcessElement.updateGlobalIDInTextFormula

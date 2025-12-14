@@ -9,7 +9,7 @@
 *Inherits from:* [Window](Window.md#class-window)
 
 ### Description
-Custom subclass of Window configured to be embedded within a [PortalLayout](PortalLayout.md#class-portallayout).
+Custom subclass of Window configured to be embedded within a PortalLayout.
 
 ---
 ## Attr: Portlet.minWidth

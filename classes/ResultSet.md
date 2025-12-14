@@ -30,7 +30,7 @@ A ResultSet can be created directly with just the ID of a [DataSource](DataSourc
 
 Directly created ResultSets are typically used by custom components, or as a means of managing datasets that will be used by several components.
 
-When created directly rather than via a dataBoundComponent, a newly created ResultSet will not issue it's first "fetch" [DSRequest](../reference_2.md#object-dsrequest) until data is accessed (for example, via [get()](#method-resultsetget)).
+When created directly rather than via a dataBoundComponent, a newly created ResultSet will not issue it's first "fetch" [DSRequest](../reference.md#object-dsrequest) until data is accessed (for example, via [get()](#method-resultsetget)).
 
 **Paging and total dataset length**
 
@@ -222,7 +222,7 @@ One known case where modification can be useful is when an array has been passed
 ## Attr: ResultSet.progressiveLoading
 
 ### Description
-Sets [progressive loading mode](DataSource.md#attr-datasourceprogressiveloading) for this ResultSet. Any [DSRequest](../reference_2.md#object-dsrequest)s issued by this ResultSet will copy this setting onto the request, overriding the OperationBinding- and DataSource-level settings.
+Sets [progressive loading mode](DataSource.md#attr-datasourceprogressiveloading) for this ResultSet. Any [DSRequest](../reference.md#object-dsrequest)s issued by this ResultSet will copy this setting onto the request, overriding the OperationBinding- and DataSource-level settings.
 
 This setting is applied automatically by [DataBoundComponent](../reference.md#interface-databoundcomponent)s that have their own explicit setting for [progressiveLoading](DataBoundComponent.md#attr-databoundcomponentprogressiveloading)
 
@@ -563,7 +563,7 @@ Return the singleton marker object that is used as a placeholder for records tha
 ## Method: ResultSet.resort
 
 ### Description
-Forcibly resort this ResultSet by the current list of [SortSpecifier](../reference_2.md#object-sortspecifier)s.
+Forcibly resort this ResultSet by the current list of [SortSpecifier](../reference.md#object-sortspecifier)s.
 
 ---
 ## Method: ResultSet.rangeIsLoaded
@@ -681,7 +681,7 @@ Returns `false` if this is a paged data set, and the entire set of records that 
 ## Method: ResultSet.setSort
 
 ### Description
-Sort this ResultSet by the passed list of [SortSpecifier](../reference_2.md#object-sortspecifier)s.
+Sort this ResultSet by the passed list of [SortSpecifier](../reference.md#object-sortspecifier)s.
 
 If the ResultSet is already sorted and this method is called with an identical list of specifiers, this method will no-op. To cause data to be resorted with the same set of specifiers, use [resort()](#method-resultsetresort).
 
@@ -850,7 +850,7 @@ This method can be used to determine whether [ListGrid.fetchData](ListGrid_2.md#
 
 Note that to predict correctly the decision that will be made by filter/fetch, you'll need to pass the same [TextMatchStyle](../reference_2.md#type-textmatchstyle) that will be used by the future filter/fetch. Fetching manually (e.g. [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata)) will by default use "exact" while filtering (e.g. [ListGrid.filterData](ListGrid_2.md#method-listgridfilterdata)) will by default use "substring". If the component is configured for autofetch (i.e. [ListGrid.autoFetchData](ListGrid_1.md#attr-listgridautofetchdata): true), that will use [ListGrid.autoFetchTextMatchStyle](ListGrid_1.md#attr-listgridautofetchtextmatchstyle), which defaults to "substring". If nothing/null is passed for the style, this method assumes you want the style from the last filter/fetch.
 
-To determine what [TextMatchStyle](../reference_2.md#type-textmatchstyle) is being used, check the RPC Tab of the [SmartClient Developer Console](../kb_topics/debugging.md#kb-topic-debugging) and check the relevant [DSRequest](../reference_2.md#object-dsrequest).
+To determine what [TextMatchStyle](../reference_2.md#type-textmatchstyle) is being used, check the RPC Tab of the [SmartClient Developer Console](../kb_topics/debugging.md#kb-topic-debugging) and check the relevant [DSRequest](../reference.md#object-dsrequest).
 
 ### Parameters
 
@@ -885,7 +885,7 @@ May also be specified as a ValueMap which maps property values to sortable value
 
 ### Returns
 
-`[ResultSet](#type-resultset)|[Array of Any](#type-array-of-any)` — this ResultSet
+`[ResultSet](#type-resultset)` — this ResultSet
 
 ### Groups
 
@@ -960,11 +960,11 @@ Like [List.findIndex](List.md#method-listfindindex). Checks only loaded rows and
 ## Method: ResultSet.getSort
 
 ### Description
-Return the current sort-specification for this ResultSet as an Array of [SortSpecifier](../reference_2.md#object-sortspecifier)s.
+Return the current sort-specification for this ResultSet as an Array of [SortSpecifier](../reference.md#object-sortspecifier)s.
 
 ### Returns
 
-`[Array of SortSpecifier](#type-array-of-sortspecifier)` — the list of [SortSpecifier](../reference_2.md#object-sortspecifier)s currently applied to this ResultSet
+`[Array of SortSpecifier](#type-array-of-sortspecifier)` — the list of [SortSpecifier](../reference.md#object-sortspecifier)s currently applied to this ResultSet
 
 ---
 ## Method: ResultSet.rowIsLoaded

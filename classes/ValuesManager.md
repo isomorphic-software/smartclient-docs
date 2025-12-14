@@ -569,7 +569,7 @@ Where the 'errors' object is either a single string or an array of strings conta
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false from this method to suppress that behavior
+`[boolean](../reference.md#type-boolean)` — false from this method to suppress that behavior
 
 **Flags**: A
 
@@ -790,7 +790,7 @@ Validate and then save the form's current values to the [DataSource](DataSource.
 
 If client-side validators are defined, they are executed first, and if any errors are found the save is aborted and the form will show the errors.
 
-If client-side validation passes, a [DSRequest](../reference_2.md#object-dsrequest) will be sent, exactly as though [DataSource.addData](DataSource.md#method-datasourceadddata) or [DataSource.updateData](DataSource.md#method-datasourceupdatedata) had been called with ${isc.DocUtils.linkForRef('method:DynamicForm.getValues','the form\\'s values')} as data. The [DSRequest.operationType](DSRequest.md#attr-dsrequestoperationtype) will be either "update" or "add", depending on the current [DynamicForm.saveOperationType](DynamicForm.md#attr-dynamicformsaveoperationtype).
+If client-side validation passes, a [DSRequest](../reference.md#object-dsrequest) will be sent, exactly as though [DataSource.addData](DataSource.md#method-datasourceadddata) or [DataSource.updateData](DataSource.md#method-datasourceupdatedata) had been called with ${isc.DocUtils.linkForRef('method:DynamicForm.getValues','the form\\'s values')} as data. The [DSRequest.operationType](DSRequest.md#attr-dsrequestoperationtype) will be either "update" or "add", depending on the current [DynamicForm.saveOperationType](DynamicForm.md#attr-dynamicformsaveoperationtype).
 
 On either a client-side or server-side validation failure, validation errors will be displayed in the form. Visible items within a DynamicForm will be redrawn to display errors. Validation failure occurring on hidden items, or DataSource fields with no associated form items may be handled via [DynamicForm.handleHiddenValidationErrors](DynamicForm.md#method-dynamicformhandlehiddenvalidationerrors) or [ValuesManager.handleHiddenValidationErrors](#method-valuesmanagerhandlehiddenvalidationerrors).
 
@@ -1247,7 +1247,7 @@ Adds validation errors to the existing set of errors for the field in question. 
 Returns the [DSOperationType](../reference.md#type-dsoperationtype) to be performed when [DynamicForm.saveData](DynamicForm.md#method-dynamicformsavedata) or [ValuesManager.saveData](#method-valuesmanagersavedata) is called.  
 Valid options are `"add"` or `"update"`.
 
-If a [DSRequest](../reference_2.md#object-dsrequest) configuration object is passed in containing an explicit operationType this will be returned. Otherwise [this.saveOperationType](DynamicForm.md#attr-dynamicformsaveoperationtype) will be returned if set. Note that `saveOperationType` is automatically set via calls to data binding methods such as [DynamicForm.editNewRecord](DynamicForm.md#method-dynamicformeditnewrecord), or it may be [set explicitly](DynamicForm.md#method-dynamicformsetsaveoperationtype).
+If a [DSRequest](../reference.md#object-dsrequest) configuration object is passed in containing an explicit operationType this will be returned. Otherwise [this.saveOperationType](DynamicForm.md#attr-dynamicformsaveoperationtype) will be returned if set. Note that `saveOperationType` is automatically set via calls to data binding methods such as [DynamicForm.editNewRecord](DynamicForm.md#method-dynamicformeditnewrecord), or it may be [set explicitly](DynamicForm.md#method-dynamicformsetsaveoperationtype).
 
 If no explicit saveOperationType is present, the system will use the following heuristic to determine the save operationType:
 

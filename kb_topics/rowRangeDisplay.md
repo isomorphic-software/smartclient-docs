@@ -19,8 +19,13 @@ As an alternative to using the `rowRangeDisplay` autoChild, developers may also 
 
 ### Related
 
-- [RowRangeDisplayStyle](../reference_2.md#type-rowrangedisplaystyle)
 - [RowCountStatus](../reference.md#type-rowcountstatus)
+- [RowRangeDisplayStyle](../reference_2.md#type-rowrangedisplaystyle)
+- [ResultSet.getRowCountStatus](../classes/ResultSet.md#method-resultsetgetrowcountstatus)
+- [ResultSet.getRowCount](../classes/ResultSet.md#method-resultsetgetrowcount)
+- [ResultSet.getRowCountRange](../classes/ResultSet.md#method-resultsetgetrowcountrange)
+- [Callbacks.RowCountCallback](../classes/Callbacks.md#method-callbacksrowcountcallback)
+- [ResultSet.fetchRowCount](../classes/ResultSet.md#method-resultsetfetchrowcount)
 - [ListGrid.getRowRangeDisplay](../classes/ListGrid_2.md#method-listgridgetrowrangedisplay)
 - [ListGrid.getRowRangeDisplayValue](../classes/ListGrid_2.md#method-listgridgetrowrangedisplayvalue)
 - [ListGrid.getFormattedRowCount](../classes/ListGrid_2.md#method-listgridgetformattedrowcount)
@@ -29,12 +34,11 @@ As an alternative to using the `rowRangeDisplay` autoChild, developers may also 
 - [ListGrid.getRowCountStatus](../classes/ListGrid_1.md#method-listgridgetrowcountstatus)
 - [ListGrid.fetchRowCount](../classes/ListGrid_2.md#method-listgridfetchrowcount)
 - [RowRangeDisplay.setSourceGrid](../classes/RowRangeDisplay.md#method-rowrangedisplaysetsourcegrid)
-- [ResultSet.getRowCountStatus](../classes/ResultSet.md#method-resultsetgetrowcountstatus)
-- [ResultSet.getRowCount](../classes/ResultSet.md#method-resultsetgetrowcount)
-- [ResultSet.getRowCountRange](../classes/ResultSet.md#method-resultsetgetrowcountrange)
-- [Callbacks.RowCountCallback](../classes/Callbacks.md#method-callbacksrowcountcallback)
-- [ResultSet.fetchRowCount](../classes/ResultSet.md#method-resultsetfetchrowcount)
 - [RowRangeDisplay](../classes/RowRangeDisplay.md#class-rowrangedisplay)
+- [ResultSet.applyRowCountToLength](../classes/ResultSet.md#attr-resultsetapplyrowcounttolength)
+- [ResultSet.rowCountOperation](../classes/ResultSet.md#attr-resultsetrowcountoperation)
+- [ResultSet.rowCountContext](../classes/ResultSet.md#attr-resultsetrowcountcontext)
+- [ResultSet.blockingRowCountFetch](../classes/ResultSet.md#attr-resultsetblockingrowcountfetch)
 - [ListGrid.rowRangeDisplay](../classes/ListGrid_1.md#attr-listgridrowrangedisplay)
 - [ListGrid.canRequestRowCount](../classes/ListGrid_1.md#attr-listgridcanrequestrowcount)
 - [ListGrid.applyRowCountToLength](../classes/ListGrid_1.md#attr-listgridapplyrowcounttolength)
@@ -55,9 +59,5 @@ As an alternative to using the `rowRangeDisplay` autoChild, developers may also 
 - [RowRangeDisplay.sourceGrid](../classes/RowRangeDisplay.md#attr-rowrangedisplaysourcegrid)
 - [RowRangeDisplay.canRequestRowCount](../classes/RowRangeDisplay.md#attr-rowrangedisplaycanrequestrowcount)
 - [RowRangeDisplay.interactiveStyleName](../classes/RowRangeDisplay.md#attr-rowrangedisplayinteractivestylename)
-- [ResultSet.applyRowCountToLength](../classes/ResultSet.md#attr-resultsetapplyrowcounttolength)
-- [ResultSet.rowCountOperation](../classes/ResultSet.md#attr-resultsetrowcountoperation)
-- [ResultSet.rowCountContext](../classes/ResultSet.md#attr-resultsetrowcountcontext)
-- [ResultSet.blockingRowCountFetch](../classes/ResultSet.md#attr-resultsetblockingrowcountfetch)
 
 ---

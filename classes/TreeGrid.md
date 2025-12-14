@@ -506,30 +506,11 @@ This means that the server does not need to implement special tree filtering log
 
 If some criteria _must_ be sent to the server in order to produce a valid tree of data, but `keepParentsOnFilter` is also required, the [ResultTree.serverFilterFields](ResultTree.md#attr-resulttreeserverfilterfields) attribute may be used to specify a list of field names that will be sent to the server whenever they are present in the criteria. Note that for the subset of criteria applied to these fields, `keepParentsInFilter` behavior will not occur without custom logic in the DataSource fetch operation.
 
-If [FetchMode](../reference_2.md#type-fetchmode) is explicitly set to `"paged"`, it is not possible to implement `keepParentsOnFilter`, either by local filtering or with the automatic client-driven handling mentioned below. Support for `keepParentsOnFilter` for a paged ResultTree therefore also requires custom logic in the DataSource fetch operation. To support this a developer must ensure that their fetch operation returns the appropriate set of nodes - all nodes that match the specified criteria plus their ancestor nodes even if they do not match the specified criteria.
-
-#### keepParentsOnFilter with load-on-demand trees
-The combination of `keepParentsOnFilter` and [loadDataOnDemand](ResultTree.md#attr-resulttreeloaddataondemand) presents additional difficulties that require special handling. The problem is that in order to determine even the top-level folders, you have to examine every node in the entire tree. For example, say there is one top-level folder that has thousands of folders and nodes underneath it, and there is just one leaf node, 6 levels deep, that matches the filter criteria. You have to find out about that node, because it implies the top-level folder must be retained.
-
-So the server basically has to examine every node in the dataset to determine even what shows up at the top level of the tree. If it does not do this, parent nodes that don't match the filter criteria will be excluded from the tree, with the upshot that the child nodes that _do_ match the criteria will be inaccessible because nodes in load-on-demand trees are only loaded when their parent node is opened
-
-By default, SmartClient solves this with a client-driven implementation of this special handling. This algorithm involves finding the nodes that match the filter criteria - which we term **matching leaves** - and then recursively travelling back up the tree, determining the ancestors of the matching leaves - the so-called **dangling parents**. When we have traversed all the way back to the root node from every matching leaf, we have recorded every dangling parent and have what we term the **skeleton** of the tree. The skeleton is then added to fetch criteria whenever a load-on-demand fetch request is made, ensuring that we fetch both dangling parents and matching leaves.
-
-There are three ways this recursive traversal can be implemented:
-
-*   For dataSources that [support dynamic tree joins](DataSource.md#method-datasourcesupportsdynamictreejoins), we use the [additionalOutputs](DSRequest.md#attr-dsrequestadditionaloutputs) feature to declare self-joins that fetch multiple levels of parent in one query (the number of levels is configurable, see [ResultTree.matchingLeafJoinDepth](ResultTree.md#attr-resulttreematchingleafjoindepth)). Of SmartClient's built-in DataSource types, only SQLDataSource is currently capable of this approach
-*   For server-side dataSources that do not support self-joins, we combine individual single-level fetches into a [queue](RPCManager.md#classmethod-rpcmanagersendqueue), using [fieldValueExpressions](DSRequest.md#attr-dsrequestfieldvalueexpressions) with [responseData "allRecords"](DSRequestModifier.md#attr-dsrequestmodifiervalue) so that each fetch in the queue uses the output of the previous fetch as its criteria (so the first fetch returns the parents of the matching nodes, the second fetch returns the parents of those nodes, and so on). Again, the number of fetches per queue can be configured with the `matchingLeafJoinDepth` property. This approach works for any server-side DataSource implementation, including your own custom implementations
-*   For [client-side](DataSource.md#attr-datasourceclientonly) dataSources, which support neither self-joins not queueing, the algorithm simply makes as many single-level requests as necessary to build the entire skeleton. Note, this is exactly what would happen with previously-mentioned queueing approach, if you set `matchingLeafJoinDepth` to 1
-
-If you want to disable the automatic handling of `keepParentsOnFilter` on load-on-demand trees, see [ResultTree.serverKeepParentsOnFilter](ResultTree.md#attr-resulttreeserverkeepparentsonfilter)
+If [FetchMode](../reference_2.md#type-fetchmode) is explicitly set to `"paged"`, it is not possible to implement `keepParentsOnFilter` by local filtering. Support for `keepParentsOnFilter` for a paged ResultTree therefore also requires custom logic in the DataSource fetch operation. To support this a developer must ensure that their fetch operation returns the appropriate set of nodes - all nodes that match the specified criteria plus their ancestor nodes even if they do not match the specified criteria.
 
 ### Groups
 
 - treeDataBinding
-
-### See Also
-
-- [ResultTree.keepParentsOnFilterMaxNodes](ResultTree.md#attr-resulttreekeepparentsonfiltermaxnodes)
 
 **Flags**: IR
 
@@ -1350,7 +1331,7 @@ For a `TreeGrid` that uses a DataSource, these properties will be passed to the 
 ## Attr: TreeGrid.dataSource
 
 ### Description
-The DataSource that this component should bind to for default fields and for performing [DataSource requests](../reference_2.md#object-dsrequest).
+The DataSource that this component should bind to for default fields and for performing [DataSource requests](../reference.md#object-dsrequest).
 
 Can be specified as either a DataSource instance or the String ID of a DataSource.
 
@@ -1571,7 +1552,7 @@ This method is called when a context click occurs on a folder record.
 
 ### Returns
 
-`[Boolean](#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### See Also
 
@@ -1638,7 +1619,7 @@ This method is called when a context click occurs on a leaf record.
 
 ### Returns
 
-`[Boolean](#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### See Also
 
@@ -1681,7 +1662,7 @@ This method is called when a context click occurs on a leaf or folder record. No
 
 ### Returns
 
-`[Boolean](#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### See Also
 
@@ -1752,7 +1733,7 @@ This method behaves exactly like [TreeGrid.fetchData](#method-treegridfetchdata)
 |------|------|----------|---------|-------------|
 | criteria | [Criteria](../reference_2.md#type-criteria) | true | — | Search criteria. If a [DynamicForm](DynamicForm.md#class-dynamicform) is passed in as this argument instead of a raw criteria object, will be derived by calling [DynamicForm.getValuesAsCriteria](DynamicForm.md#method-dynamicformgetvaluesascriteria) |
 | callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke when a fetch is complete. Fires only if server contact was required; see [fetchData()](ListGrid_2.md#method-listgridfetchdata) for details |
-| requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | for databound components only - optional additional properties to set on the DSRequest that will be issued |
+| requestProperties | [DSRequest](#type-dsrequest) | true | — | for databound components only - optional additional properties to set on the DSRequest that will be issued |
 
 ### Groups
 
@@ -1794,7 +1775,7 @@ This method is called when a folder is closed either via the user manipulating t
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false to cancel the close, true to all it to proceed
+`[boolean](../reference.md#type-boolean)` — false to cancel the close, true to all it to proceed
 
 ---
 ## Method: TreeGrid.getDragTrackerIcon
@@ -1943,7 +1924,7 @@ Do not override this method unless you need a rowClick callback that fires even 
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false == cancel further event processing
+`[boolean](../reference.md#type-boolean)` — false == cancel further event processing
 
 ### Groups
 
@@ -2020,7 +2001,7 @@ When using invalidateCache() there is no need to also call fetchData() and in fa
 |------|------|----------|---------|-------------|
 | criteria | [Criteria](../reference_2.md#type-criteria) | true | — | Search criteria. If a [DynamicForm](DynamicForm.md#class-dynamicform) is passed in as this argument instead of a raw criteria object, will be derived by calling [DynamicForm.getValuesAsCriteria](DynamicForm.md#method-dynamicformgetvaluesascriteria) |
 | callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke when a fetch is complete. Fires only if server contact was required |
-| requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | additional properties to set on the DSRequest that will be issued |
+| requestProperties | [DSRequest](#type-dsrequest) | true | — | additional properties to set on the DSRequest that will be issued |
 
 ### Groups
 
@@ -2073,7 +2054,7 @@ This method is called when a folder is opened either via the user manipulating t
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false to cancel the open, true to all it to proceed
+`[boolean](../reference.md#type-boolean)` — false to cancel the open, true to all it to proceed
 
 ---
 ## Method: TreeGrid.isOverExtraIcon

@@ -42,7 +42,7 @@ Notification method executed whenever the end user uses the HiliteEditor to chan
 ## Method: ListGrid.getDataSource
 
 ### Description
-The DataSource that this component should bind to for default fields and for performing [DataSource requests](../reference_2.md#object-dsrequest).
+The DataSource that this component should bind to for default fields and for performing [DataSource requests](../reference.md#object-dsrequest).
 
 ### Returns
 
@@ -175,7 +175,7 @@ Updates the [ListGridField.hideOnTablet](ListGridField.md#attr-listgridfieldhide
 ## Method: ListGrid.setSortState
 
 ### Description
-Reset this grid's sort state (sort field and direction or list of [SortSpecifier](../reference_2.md#object-sortspecifier)s) to match the [ListGridSortState](../reference.md#type-listgridsortstate) object passed in.  
+Reset this grid's sort state (sort field and direction or list of [SortSpecifier](../reference.md#object-sortspecifier)s) to match the [ListGridSortState](../reference.md#type-listgridsortstate) object passed in.  
 Used to restore previous state retrieved from the grid by a call to [ListGrid.getSortState](#method-listgridgetsortstate).
 
 ### Parameters
@@ -351,23 +351,6 @@ The returned value is never null, and can be freely modified.
 - editing
 
 ---
-## Method: ListGrid.fetchRowCount
-
-### Description
-For databound grids, method will fall through to [ResultSet.fetchRowCount](ResultSet.md#method-resultsetfetchrowcount), allowing developers to request an accurate row count from the dataSource when [progressive loading is active](DataSource.md#attr-datasourceprogressiveloading).
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| callback | [RowCountCallback](#type-rowcountcallback) | true | — | Callback to fire when the fetch request completes. To retrieve details of the row-count that was retrieved from the server, use the `getRowCount()` and `getRowCountStatus()` methods. |
-| dsRequest | [DSRequest Properties](#type-dsrequest-properties) | true | — | Custom properties for the row count fetch request |
-
-### Groups
-
-- rowRangeDisplay
-
----
 ## Method: ListGrid.hasChanges
 
 ### Description
@@ -392,6 +375,23 @@ The `ignorePendingValues` parameter may be used by developers who want to ignore
 - editing
 
 ---
+## Method: ListGrid.fetchRowCount
+
+### Description
+For databound grids, method will fall through to [ResultSet.fetchRowCount](ResultSet.md#method-resultsetfetchrowcount), allowing developers to request an accurate row count from the dataSource when [progressive loading is active](DataSource.md#attr-datasourceprogressiveloading).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| callback | [RowCountCallback](#type-rowcountcallback) | true | — | Callback to fire when the fetch request completes. To retrieve details of the row-count that was retrieved from the server, use the `getRowCount()` and `getRowCountStatus()` methods. |
+| dsRequest | [DSRequest Properties](#type-dsrequest-properties) | true | — | Custom properties for the row count fetch request |
+
+### Groups
+
+- rowRangeDisplay
+
+---
 ## Method: ListGrid.rowOver
 
 ### Description
@@ -407,7 +407,7 @@ Called when the mouse pointer enters a row
 
 ### Returns
 
-`[Boolean](#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -468,7 +468,7 @@ The second parameter is only applicable if [ListGrid.showRecordComponentsByCell]
 
 ### Returns
 
-`[Boolean](#type-boolean)` — return false to cancel showRecordComponent behavior
+`[boolean](../reference.md#type-boolean)` — return false to cancel showRecordComponent behavior
 
 ### Groups
 
@@ -499,7 +499,7 @@ Notification method fired when the user clicks on the corner [sort button](ListG
 
 ### Returns
 
-`[Boolean](#type-boolean)` — return false to suppress the sort
+`[boolean](../reference.md#type-boolean)` — return false to suppress the sort
 
 ### Groups
 
@@ -567,6 +567,20 @@ To get the Array of all fields, including fields that are not currently visible 
 `[Array of ListGridField](#type-array-of-listgridfield)` — Array of all currently visible fields
 
 ---
+## Method: ListGrid.setUserAIFilterRequest
+
+### Description
+If filter-via-AI is enabled (see [ListGrid.filterViaAIMode](ListGrid_1.md#attr-listgridfilterviaaimode)), this utility method first calls [AI.buildCriterion](AI.md#classmethod-aibuildcriterion) to build [AdvancedCriteria](../reference.md#object-advancedcriteria) for the user's request, then sets this grid's filter criteria.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| userAIFilterRequest | [UserAIRequest](#type-userairequest) | false | — | the user's natural language description of a filter. |
+| buildRequestProperties | [BuildCriterionRequest Properties](#type-buildcriterionrequest-properties) | true | — | request properties to use. Note that [userAIRequest](../reference.md#attr-buildcriterionrequestuserairequest) will be overridden by `userAIFilterRequest`, [dataSource](../reference.md#attr-buildcriterionrequestdatasource) will be overridden by this grid's [DataSource](DataSource.md#class-datasource), and [mode](../reference.md#attr-buildcriterionrequestmode) will be overridden by [ListGrid.filterViaAIMode](ListGrid_1.md#attr-listgridfilterviaaimode). |
+| callback | [BuildCriterionResponseCallback](#type-buildcriterionresponsecallback) | true | — | optional callback to fire. |
+
+---
 ## Method: ListGrid.setBodyOverflow
 
 ### Description
@@ -611,7 +625,7 @@ Called when (cell-based) selection changes within this grid.
 
 ### Returns
 
-`[Boolean](#type-boolean)` — Returning false will prevent the GridRenderer styling from being updated to reflect the selection change.
+`[boolean](../reference.md#type-boolean)` — Returning false will prevent the GridRenderer styling from being updated to reflect the selection change.
 
 ### Groups
 
@@ -765,7 +779,7 @@ To pick up such changes, we recommend that you call [setData(\[\])](#method-list
 |------|------|----------|---------|-------------|
 | criteria | [Criteria](../reference_2.md#type-criteria) | true | — | Search criteria. If a [DynamicForm](DynamicForm.md#class-dynamicform) is passed in as this argument instead of a raw criteria object, will be derived by calling [DynamicForm.getValuesAsCriteria](DynamicForm.md#method-dynamicformgetvaluesascriteria) |
 | callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke when a fetch is complete. Fires only if server contact was required |
-| requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | additional properties to set on the DSRequest that will be issued |
+| requestProperties | [DSRequest](#type-dsrequest) | true | — | additional properties to set on the DSRequest that will be issued |
 
 ### Groups
 
@@ -961,7 +975,7 @@ See [addSort()](#method-listgridaddsort) and [toggleSort()](#method-listgridtogg
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| sortSpecifiers | [Array of SortSpecifier](#type-array-of-sortspecifier) | false | — | Array of [SortSpecifier](../reference_2.md#object-sortspecifier) objects |
+| sortSpecifiers | [Array of SortSpecifier](#type-array-of-sortspecifier) | false | — | Array of [SortSpecifier](../reference.md#object-sortspecifier) objects |
 
 **Flags**: A
 
@@ -990,20 +1004,6 @@ Given a rowNum and a colNum or fieldName, determine whether we currently have st
 
 - [ListGrid.hasErrors](#method-listgridhaserrors)
 - [ListGrid.rowHasErrors](#method-listgridrowhaserrors)
-
----
-## Method: ListGrid.hiliteViaAI
-
-### Description
-If hilite-via-AI is enabled (see [ListGrid.canHiliteViaAI](ListGrid_1.md#attr-listgridcanhiliteviaai)), asks AI to hilite the grid according to the given natural language description of the hilite(s) to apply.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| prompt | [String](#type-string) | false | — | The natural language description of hilite(s). |
-| settings | [HiliteViaAISettings](#type-hiliteviaaisettings) | true | — | Optional settings to use. |
-| callback | [HiliteViaAIResultCallback](#type-hiliteviaairesultcallback) | true | — | Optional callback to fire with the result. |
 
 ---
 ## Method: ListGrid.getFieldNum
@@ -1169,7 +1169,7 @@ Called when a cell receives a double click event.
 
 ### Returns
 
-`[Boolean](#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -1253,7 +1253,7 @@ You can alternatively use [ListGridField.cellChanged](ListGridField.md#method-li
 ## Method: ListGrid.getRecordSummary
 
 ### Description
-Provides access to the summary (see ["summary"-type](../reference.md#type-listgridfieldtype) fields) value of the record for other fields when called from inside the body of [ListGridField.getRecordSummary](ListGridField.md#method-listgridfieldgetrecordsummary) (since they're not available directly off the record). The behavior is undefined if not called from inside the [ListGridField.getRecordSummary](ListGridField.md#method-listgridfieldgetrecordsummary) method, or if the summary field has generated dependencies.
+Provides access to the summary (see [summary-type](../reference.md#type-listgridfieldtype) fields) value of the record for other fields when called from inside the body of [ListGridField.getRecordSummary](ListGridField.md#method-listgridfieldgetrecordsummary) (since they're not available directly off the record). The behavior is unspecified if not called from inside the [ListGridField.getRecordSummary](ListGridField.md#method-listgridfieldgetrecordsummary) method.
 
 ### Parameters
 
@@ -1282,7 +1282,6 @@ Note that this method selects records unconditionally, allowing multiple selecte
 |------|------|----------|---------|-------------|
 | record | [Record](#type-record)|[number](#type-number) | false | — | record (or row number) to select |
 | newState | [boolean](../reference.md#type-boolean) | true | — | new selection state (if null, defaults to true) |
-| rowNum | [Integer](../reference_2.md#type-integer) | true | — | row number to select. Required for [multi-link trees](Tree.md#attr-treemultilinktree) unless row number is passed in the "record" param |
 
 ### Groups
 
@@ -1346,7 +1345,7 @@ Note that multiple foreign keys into the schema are supported by this method.
 | record | [ListGridRecord](#type-listgridrecord) | false | — | DataSource record |
 | schema | [Canvas](#type-canvas)|[DataSource](#type-datasource)|[ID](#type-id) | false | — | schema of the DataSource record, or DataBoundComponent already bound to that schema |
 | callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke on completion |
-| requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | additional properties to set on the DSRequest that will be issued |
+| requestProperties | [DSRequest](#type-dsrequest) | true | — | additional properties to set on the DSRequest that will be issued |
 
 ### Groups
 
@@ -1459,7 +1458,7 @@ Note that the majority of keyboard handling for a ListGrid is performed by [List
 
 ### Returns
 
-`[Boolean](#type-boolean)` — return false to cancel
+`[boolean](../reference.md#type-boolean)` — return false to cancel
 
 ---
 ## Method: ListGrid.editComplete
@@ -1477,7 +1476,7 @@ No default implementation.
 | colNum | [number](#type-number) | false | — | index of the column that was saved, if applicable |
 | newValues | [Object](../reference.md#type-object)|[Record](#type-record) | false | — | new values that were saved |
 | oldValues | [Record](#type-record) | false | — | the complete original values from before the save occurred |
-| editCompletionEvent | [EditCompletionEvent](../reference_2.md#type-editcompletionevent) | false | — | Event that led to the save |
+| editCompletionEvent | [EditCompletionEvent](../reference.md#type-editcompletionevent) | false | — | Event that led to the save |
 | dsResponse | [DSResponse](#type-dsresponse) | true | — | for DataSource saves, DSResponse object returned |
 
 ### Groups
@@ -1589,7 +1588,7 @@ Called when the mouse pointer leaves a row
 
 ### Returns
 
-`[Boolean](#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -1750,7 +1749,7 @@ For more information on editing, see the [editing overview](../kb_topics/editing
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| editCompletionEvent | [EditCompletionEvent](../reference_2.md#type-editcompletionevent) | true | — | Event used to complete cell editing. Optional, and defaults to `"programmatic"`. Can be used by the `callback` method to perform custom actions such as navigation when the save completes. |
+| editCompletionEvent | [EditCompletionEvent](../reference.md#type-editcompletionevent) | true | — | Event used to complete cell editing. Optional, and defaults to `"programmatic"`. Can be used by the `callback` method to perform custom actions such as navigation when the save completes. |
 | callback | [Callback](../reference.md#type-callback) | true | — | Callback to fire on completion of the saving process. If no edits were made or client-side validation fails the callback will be fired synchronously at the end of this method.  
 Takes the following parameters:  
 \- rowNum _(Number) edited row number_  
@@ -1785,7 +1784,7 @@ Called when a row receives a contextclick event.
 
 ### Returns
 
-`[Boolean](#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -1878,7 +1877,7 @@ Clear the current criteria used to filter data. This method clears filter-values
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke on completion |
-| requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | additional properties to set on the DSRequest that will be issued |
+| requestProperties | [DSRequest](#type-dsrequest) | true | — | additional properties to set on the DSRequest that will be issued |
 
 ### Groups
 
@@ -1937,7 +1936,7 @@ If [ListGrid.canSelectCells](ListGrid_1.md#attr-listgridcanselectcells) is set t
 
 ### Returns
 
-`[Boolean](#type-boolean)` — return false to disallow selection
+`[boolean](../reference.md#type-boolean)` — return false to disallow selection
 
 **Flags**: A
 
@@ -2075,20 +2074,6 @@ See [ListGrid.scrollToCell](#method-listgridscrolltocell) for a full description
 - scrolling
 
 ---
-## Method: ListGrid.getEditRow
-
-### Description
-Returns the index of the row being edited or null if there is no current edit row.
-
-### Returns
-
-`[int](../reference.md#type-int)` — index of the current edit row
-
-### Groups
-
-- editing
-
----
 ## Method: ListGrid.groupBy
 
 ### Description
@@ -2121,6 +2106,20 @@ Grouping is often an asynchronous operation, both because of automatic loading o
 ### Groups
 
 - grouping
+
+---
+## Method: ListGrid.getEditRow
+
+### Description
+Returns the index of the row being edited or null if there is no current edit row.
+
+### Returns
+
+`[int](../reference.md#type-int)` — index of the current edit row
+
+### Groups
+
+- editing
 
 ---
 ## Method: ListGrid.getRollUnderCanvas
@@ -2198,7 +2197,7 @@ For a discussion of the various filtering and criteria-management APIs and when 
 |------|------|----------|---------|-------------|
 | criteria | [Criteria](../reference_2.md#type-criteria) | true | — | Search criteria. If a [DynamicForm](DynamicForm.md#class-dynamicform) is passed in as this argument instead of a raw criteria object, will be derived by calling [DynamicForm.getValuesAsCriteria](DynamicForm.md#method-dynamicformgetvaluesascriteria) |
 | callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke when a fetch is complete. Fires only if server contact was required; see [fetchData()](#method-listgridfetchdata) for details |
-| requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | for databound components only - optional additional properties to set on the DSRequest that will be issued |
+| requestProperties | [DSRequest](#type-dsrequest) | true | — | for databound components only - optional additional properties to set on the DSRequest that will be issued |
 
 ### Groups
 
@@ -2302,7 +2301,7 @@ Called when the mouse pointer leaves a cell
 
 ### Returns
 
-`[Boolean](#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -2498,7 +2497,7 @@ Optional stringMethod to fire when the user hovers over a cell and the value is 
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false to suppress the standard hover
+`[boolean](../reference.md#type-boolean)` — false to suppress the standard hover
 
 ### Groups
 
@@ -2536,7 +2535,7 @@ This object can be passed to [ListGrid.setGroupState](#method-listgridsetgroupst
 ## Method: ListGrid.getSortSpecifier
 
 ### Description
-Returns the [SortSpecifier](../reference_2.md#object-sortspecifier) for the passed fieldName, or null if the field is not sorted.
+Returns the [SortSpecifier](../reference.md#object-sortspecifier) for the passed fieldName, or null if the field is not sorted.
 
 ### Parameters
 
@@ -2753,7 +2752,7 @@ For more information on exporting data, see [DataSource.exportData](DataSource.m
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | additional properties to set on the DSRequest that will be issued |
+| requestProperties | [DSRequest](#type-dsrequest) | true | — | additional properties to set on the DSRequest that will be issued |
 | callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke on completion. Note that this parameter only applies where [DSRequest.exportToClient](DSRequest.md#attr-dsrequestexporttoclient) is explicitly set to false, because file downloads do not provide ordinary SmartClient callbacks |
 
 ### Groups
@@ -2796,7 +2795,7 @@ Called when the mouse hovers over a cell if `this.canHover` is `true`. Returning
 
 ### Returns
 
-`[Boolean](#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -3045,7 +3044,7 @@ Setter for [GridRenderer.fastCellUpdates](GridRenderer.md#attr-gridrendererfastc
 ## Method: ListGrid.markRecordsRemoved
 
 ### Description
-Marks an array of records deleted such that a later call to [ListGrid.saveEdits](#method-listgridsaveedits) or [ListGrid.saveAllEdits](#method-listgridsavealledits) will cause a "remove" [DSRequest](../reference_2.md#object-dsrequest) to be submitted.
+Marks an array of records deleted such that a later call to [ListGrid.saveEdits](#method-listgridsaveedits) or [ListGrid.saveAllEdits](#method-listgridsavealledits) will cause a "remove" [DSRequest](../reference.md#object-dsrequest) to be submitted.
 
 This method is similar to [ListGrid.markRecordRemoved](#method-listgridmarkrecordremoved) but should be more efficient in avoiding unneeded duplicate refreshes due to the multiple records getting marked.
 
@@ -3111,7 +3110,7 @@ This method has no effect if no specific operator has been set on the field, eit
 ### Description
 Sort the grid on one or more fields.
 
-Pass in an array of [SortSpecifier](../reference_2.md#object-sortspecifier)s to have the grid's data sorted by the fields in each [specifier.property](../reference.md#attr-sortspecifierproperty) and in the directions specified. The grid can be sorted by any combination of fields, including fields specified in the fields array, whether visible or hidden, and [unused fields from the\\n underlying dataSource](DataSource.md#attr-datasourcefields), if there is one.
+Pass in an array of [SortSpecifier](../reference.md#object-sortspecifier)s to have the grid's data sorted by the fields in each [specifier.property](../reference.md#attr-sortspecifierproperty) and in the directions specified. The grid can be sorted by any combination of fields, including fields specified in the fields array, whether visible or hidden, and [unused fields from the\\n underlying dataSource](DataSource.md#attr-datasourcefields), if there is one.
 
 If multiple fields are sorted, those that are visible show a directional icon and a small [sort-numeral](ListGrid_1.md#attr-listgridsortnumeralstyle) indicating that field's index in the sort configuration.
 
@@ -3123,7 +3122,7 @@ Note that for editable grids, sorting is performed by underlying data values, no
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| sortSpecifiers | [Array of SortSpecifier](#type-array-of-sortspecifier) | false | — | Array of [SortSpecifier](../reference_2.md#object-sortspecifier) objects |
+| sortSpecifiers | [Array of SortSpecifier](#type-array-of-sortspecifier) | false | — | Array of [SortSpecifier](../reference.md#object-sortspecifier) objects |
 
 **Flags**: A
 
@@ -3181,7 +3180,7 @@ This is a synonym for `selectRange(startRow, endRow, false);`
 ### Description
 How should "Up" and "Down" arrow keypresses be handled when the user is editing an item in the grid.
 
-Returning "none" will cause the grid to take no action and allow default up/down arrow key behavior within the editor to proceed. Returning "editNext" will create an appropriate [EditCompletionEvent](../reference_2.md#type-editcompletionevent) (_"arrow\_up"_ or _"arrow\_down"_ and cause the grid to start editing the previous or next row).
+Returning "none" will cause the grid to take no action and allow default up/down arrow key behavior within the editor to proceed. Returning "editNext" will create an appropriate [EditCompletionEvent](../reference.md#type-editcompletionevent) (_"arrow\_up"_ or _"arrow\_down"_ and cause the grid to start editing the previous or next row).
 
 Default behavior varies by item type. For items where up and down arrows have significant functionality to the editor this method returns _"none"_, allowing that standard behavior to proceed. This includes:  
 \- Multi line editors (such as TextAreaItems)  
@@ -3196,7 +3195,7 @@ To override these defaults, developers may specify an explicit arrowKeyEditActio
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | item | [FormItem](#type-formitem) | false | — | Edit item receiving the up or down arrow keypress event |
-| keyName | [KeyName](../reference_2.md#type-keyname) | false | — | Key pressed (one of "Arrow\_Up" or "Arrow\_Down") |
+| keyName | [KeyName](../reference.md#type-keyname) | false | — | Key pressed (one of "Arrow\_Up" or "Arrow\_Down") |
 
 ### Returns
 
@@ -3218,7 +3217,7 @@ Called when a cell receives a mousedown event.
 
 ### Returns
 
-`[Boolean](#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -3323,14 +3322,14 @@ When there are no rows in the grid, getDropIndex() returns zero.
 
 If parameter _recordNum_ is not passed, the current event row is used, see [ListGrid.getEventRow](#method-listgridgeteventrow).
 
-Parameter [reorderPosition](../reference_2.md#type-reorderposition) indicates where the drop-item should appear in relation to the row at index _recordNum_. If no reorderPosition is provided, it is calculated based on the physical position of the mouse in the drop-target row when the drop occurs; if the mouse is in the top half of a row, the drop-index is before _recordNum_. Otherwise, the drop-index is after _recordNum_.
+Parameter [reorderPosition](../reference.md#type-reorderposition) indicates where the drop-item should appear in relation to the row at index _recordNum_. If no reorderPosition is provided, it is calculated based on the physical position of the mouse in the drop-target row when the drop occurs; if the mouse is in the top half of a row, the drop-index is before _recordNum_. Otherwise, the drop-index is after _recordNum_.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | recordNum | [number](#type-number) | true | — | Index of the record to drop onto |
-| reorderPosition | [ReorderPosition](../reference_2.md#type-reorderposition) | true | — | Where to drop in relation to _recordNum_ |
+| reorderPosition | [ReorderPosition](../reference.md#type-reorderposition) | true | — | Where to drop in relation to _recordNum_ |
 
 ### Returns
 
@@ -3427,28 +3426,6 @@ Default implementation evaluates and returns [ListGrid.freezeFieldText](ListGrid
 - i18nMessages
 
 ---
-## Method: ListGrid.getSelectedRecords
-
-### Description
-Returns all selected records in this grid.
-
-**NOTE:** Records in the returned array should be treated as read-only and not modified.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| excludePartialSelections | [boolean](../reference.md#type-boolean) | true | — | When true, partially selected records will not be returned. Otherwise, both fully and partially selected records are returned. |
-
-### Returns
-
-`[Array of ListGridRecord](#type-array-of-listgridrecord)` — array of selected records, which will be empty if no record is selected.
-
-### Groups
-
-- selection
-
----
 ## Method: ListGrid.getColumnWidth
 
 ### Description
@@ -3470,6 +3447,28 @@ Return the width of a particular column.
 - positioning
 
 **Flags**: A
+
+---
+## Method: ListGrid.getSelectedRecords
+
+### Description
+Returns all selected records in this grid.
+
+**NOTE:** Records in the returned array should be treated as read-only and not modified.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| excludePartialSelections | [boolean](../reference.md#type-boolean) | true | — | When true, partially selected records will not be returned. Otherwise, both fully and partially selected records are returned. |
+
+### Returns
+
+`[Array of ListGridRecord](#type-array-of-listgridrecord)` — array of selected records, which will be empty if no record is selected.
+
+### Groups
+
+- selection
 
 ---
 ## Method: ListGrid.getDrawArea
@@ -3605,7 +3604,7 @@ Optional stringMethod to fire when the user hovers over the error icon of a cell
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false to suppress the standard error message hover
+`[boolean](../reference.md#type-boolean)` — false to suppress the standard error message hover
 
 ### Groups
 
@@ -3672,7 +3671,7 @@ Called when the mouse hovers over a row if this.canHover is true. Returning fals
 
 ### Returns
 
-`[Boolean](#type-boolean)` — whether to cancel the event (default behavior of showing the hover)
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event (default behavior of showing the hover)
 
 ### Groups
 
@@ -3864,7 +3863,7 @@ Note that returning false from this method will not prevent any specified [ListG
 
 ### Returns
 
-`[Boolean](#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -3940,7 +3939,7 @@ Called when the mouse pointer enters a cell
 
 ### Returns
 
-`[Boolean](#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -4227,7 +4226,7 @@ To display custom drag tracker HTML, this method may be overridden - call [Event
 
 ### Returns
 
-`[Boolean](#type-boolean)` — returns false by default to suppress 'setDragTracker' on any ancestors of this component.
+`[boolean](../reference.md#type-boolean)` — returns false by default to suppress 'setDragTracker' on any ancestors of this component.
 
 ### Groups
 
@@ -4249,7 +4248,7 @@ Setter for [ListGrid.showGroupSummaryInHeader](ListGrid_1.md#attr-listgridshowgr
 ## Method: ListGrid.addSort
 
 ### Description
-Adds another [SortSpecifier](../reference_2.md#object-sortspecifier) to this grid's sort configuration and resorts.
+Adds another [SortSpecifier](../reference.md#object-sortspecifier) to this grid's sort configuration and resorts.
 
 ### Parameters
 
@@ -4620,7 +4619,7 @@ Update the [HeaderSpan.headerBaseStyle](HeaderSpan.md#attr-headerspanheaderbases
 ## Method: ListGrid.clearSort
 
 ### Description
-This method clears any existing sort on this grid by calling [ListGrid.setSort](#method-listgridsetsort) with a null parameter. The internal list of [SortSpecifier](../reference_2.md#object-sortspecifier)s is removed and the grid is unsorted.
+This method clears any existing sort on this grid by calling [ListGrid.setSort](#method-listgridsetsort) with a null parameter. The internal list of [SortSpecifier](../reference.md#object-sortspecifier)s is removed and the grid is unsorted.
 
 **Flags**: A
 
@@ -4692,7 +4691,7 @@ This is equivalent to calling `this.data.willFetchData(...)`. Always returns tru
 
 Note that to predict correctly the decision that will be made by filter/fetch, you'll need to pass the same [TextMatchStyle](../reference_2.md#type-textmatchstyle) that will be used by the future filter/fetch. Fetching manually (e.g. [ListGrid.fetchData](#method-listgridfetchdata)) will by default use "exact" while filtering (e.g. [ListGrid.filterData](#method-listgridfilterdata)) will by default use "substring". If the component is configured for autofetch (i.e. [ListGrid.autoFetchData](ListGrid_1.md#attr-listgridautofetchdata): true), that will use [ListGrid.autoFetchTextMatchStyle](ListGrid_1.md#attr-listgridautofetchtextmatchstyle), which defaults to "substring". If nothing/null is passed for the style, this method assumes you want the style from the last filter/fetch.
 
-To determine what [TextMatchStyle](../reference_2.md#type-textmatchstyle) is being used, check the RPC Tab of the [SmartClient Developer Console](../kb_topics/debugging.md#kb-topic-debugging) and check the relevant [DSRequest](../reference_2.md#object-dsrequest).
+To determine what [TextMatchStyle](../reference_2.md#type-textmatchstyle) is being used, check the RPC Tab of the [SmartClient Developer Console](../kb_topics/debugging.md#kb-topic-debugging) and check the relevant [DSRequest](../reference.md#object-dsrequest).
 
 ### Parameters
 
@@ -4768,7 +4767,7 @@ Note this method will not be called at all if [ListGrid.canSelectCells](ListGrid
 
 ### Returns
 
-`[Boolean](#type-boolean)` — return false to disallow selection
+`[boolean](../reference.md#type-boolean)` — return false to disallow selection
 
 ---
 ## Method: ListGrid.getSortFieldCount
@@ -4894,7 +4893,7 @@ Called when a row receives a mouseup event.
 
 ### Returns
 
-`[Boolean](#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -5170,7 +5169,6 @@ Note that developers may wish to use [ListGrid.deselectRange](#method-listgridde
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | records | [Array of Record](#type-array-of-record)|[number](#type-number) | false | — | records (or row numbers) to deselect |
-| rowNums | [Array of Integer](#type-array-of-integer)|[Integer](../reference_2.md#type-integer) | true | — | row numbers to select. Required for [multi-link trees](Tree.md#attr-treemultilinktree) unless row numbers are passed in the "records" param. If passed, the rowNums array should correspond to the records array (ie, rowNums\[0\] refers to the same object as records\[0\]) |
 
 ### Groups
 
@@ -5313,7 +5311,6 @@ Synonym for `selectRecord(record, false)`
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | record | [Record](#type-record)|[number](#type-number) | false | — | record (or row number) to deselect |
-| rowNum | [Integer](../reference_2.md#type-integer) | true | — | row number to select. Required for [multi-link trees](Tree.md#attr-treemultilinktree) unless row number is passed in the "record" param |
 
 ### Groups
 
@@ -5495,7 +5492,7 @@ Can be overridden at the field level as field.editorExit.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| editCompletionEvent | [EditCompletionEvent](../reference_2.md#type-editcompletionevent) | false | — | How was the edit completion fired? |
+| editCompletionEvent | [EditCompletionEvent](../reference.md#type-editcompletionevent) | false | — | How was the edit completion fired? |
 | record | [ListGridRecord](#type-listgridrecord) | false | — | record for the cell being edited |
 | newValue | [Any](#type-any) | false | — | new edit value for the cell being edited. Note that if the user has not made any changes this will be undefined |
 | rowNum | [number](#type-number) | false | — | row number for the cell |
@@ -5503,7 +5500,7 @@ Can be overridden at the field level as field.editorExit.
 
 ### Returns
 
-`[Boolean](#type-boolean)` — Returning false from this method will cancel the default behavior (for example saving the row) and leave the editor visible and focus in this edit cell.
+`[boolean](../reference.md#type-boolean)` — Returning false from this method will cancel the default behavior (for example saving the row) and leave the editor visible and focus in this edit cell.
 
 ### Groups
 
@@ -5599,7 +5596,7 @@ or, to ensure the specified [ListGrid.autoFetchTextMatchStyle](ListGrid_1.md#att
 
 ### Returns
 
-`[Boolean](#type-boolean)` — returning false will suppress the filter from occurring
+`[boolean](../reference.md#type-boolean)` — returning false will suppress the filter from occurring
 
 ### See Also
 
@@ -5762,20 +5759,6 @@ Returns the original, ungrouped data in the grid. If the grid is ungrouped, retu
 - grouping
 
 ---
-## Method: ListGrid.getData
-
-### Description
-Method to return the listGrid's [data](ListGrid_1.md#attr-listgriddata) object.
-
-### Returns
-
-`[Object](../reference.md#type-object)` — The data that is being displayed
-
-### See Also
-
-- [ListGrid.getOriginalData](#method-listgridgetoriginaldata)
-
----
 ## Method: ListGrid.getTotalRows
 
 ### Description
@@ -5858,7 +5841,7 @@ Called when a row receives a mousedown event.
 
 ### Returns
 
-`[Boolean](#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -6027,7 +6010,7 @@ To do something specific if a particular field is double clicked, add a recordDo
 
 ### Returns
 
-`[Boolean](#type-boolean)` — return false to cancel event bubbling
+`[boolean](../reference.md#type-boolean)` — return false to cancel event bubbling
 
 ### Groups
 
@@ -6160,7 +6143,7 @@ For a grid with no DataSource or where `saveLocally` is true, the data removal i
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to fire when each record has been removed |
-| requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | additional properties to set on the DSRequest that will be issued |
+| requestProperties | [DSRequest](#type-dsrequest) | true | — | additional properties to set on the DSRequest that will be issued |
 | queueCallback | [RPCQueueCallback](#type-rpcqueuecallback) | true | — | callback to fire after all selected data has been removed |
 
 ### Groups
@@ -6323,7 +6306,6 @@ Select a single [Record](../reference.md#object-record) passed in explicitly, or
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | record | [Record](#type-record)|[number](#type-number) | false | — | record (or row number) to select |
-| rowNum | [Integer](../reference_2.md#type-integer) | true | — | row number to select. Required for [multi-link trees](Tree.md#attr-treemultilinktree) unless row number is passed in the "record" param |
 
 ### Groups
 
@@ -6883,7 +6865,7 @@ See also [ListGrid.getRollOverCanvas](#method-listgridgetrollovercanvas).
 ## Method: ListGrid.getSort
 
 ### Description
-Returns the current [SortSpecifiers](../reference_2.md#object-sortspecifier) for this ListGrid. Will return null if this grid has never been sorted (and has no specified [ListGrid.initialSort](ListGrid_1.md#attr-listgridinitialsort) or [ListGrid.sortField](ListGrid_1.md#attr-listgridsortfield)).
+Returns the current [SortSpecifiers](../reference.md#object-sortspecifier) for this ListGrid. Will return null if this grid has never been sorted (and has no specified [ListGrid.initialSort](ListGrid_1.md#attr-listgridinitialsort) or [ListGrid.sortField](ListGrid_1.md#attr-listgridsortfield)).
 
 Note that if sorting was applied via [ListGrid.sort](#method-listgridsort) \[rather than [ListGrid.setSort](#method-listgridsetsort)\] the sortSpecifiers returned will have been created based on the specified sort field / direction passed into [ListGrid.sort](#method-listgridsort).
 
@@ -6907,14 +6889,14 @@ Return false from this method to cancel the default behavior (Saving / cancellin
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| editCompletionEvent | [EditCompletionEvent](../reference_2.md#type-editcompletionevent) | false | — | How was the edit completion fired? |
+| editCompletionEvent | [EditCompletionEvent](../reference.md#type-editcompletionevent) | false | — | How was the edit completion fired? |
 | record | [ListGridRecord](#type-listgridrecord) | false | — | record for the cell being edited |
 | newValues | [Object](../reference.md#type-object) | false | — | new values for the record \[Note that fields that have not been edited will not be included in this object\] |
 | rowNum | [number](#type-number) | false | — | row number for the row being left |
 
 ### Returns
 
-`[Boolean](#type-boolean)` — Returning false from this method will cancel the default behavior (for example saving the row) and leave the editor visible and focus in this edit cell.
+`[boolean](../reference.md#type-boolean)` — Returning false from this method will cancel the default behavior (for example saving the row) and leave the editor visible and focus in this edit cell.
 
 ### Groups
 
@@ -6943,7 +6925,7 @@ Note that this method is not called when the data is regrouped, either [programm
 
 ### Returns
 
-`[Boolean](#type-boolean)` — return false to cancel grouping on the passed specification
+`[boolean](../reference.md#type-boolean)` — return false to cancel grouping on the passed specification
 
 ### Groups
 
@@ -6975,6 +6957,18 @@ Identifies whether the passed-in field is the specially generated [expansionFiel
 - expansionField
 
 ---
+## Method: ListGrid.setShowCollapsedGroupSummary
+
+### Description
+Setter for [ListGrid.showCollapsedGroupSummary](ListGrid_1.md#attr-listgridshowcollapsedgroupsummary)
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| showCollapsedGroupSummary | [boolean](../reference.md#type-boolean) | false | — | new showCollapsedGroupSummary value |
+
+---
 ## Method: ListGrid.focusInFilterEditor
 
 ### Description
@@ -6989,18 +6983,6 @@ If the filter editor ([ListGrid.showFilterEditor](ListGrid_1.md#attr-listgridsho
 ### Groups
 
 - filterEditor
-
----
-## Method: ListGrid.setShowCollapsedGroupSummary
-
-### Description
-Setter for [ListGrid.showCollapsedGroupSummary](ListGrid_1.md#attr-listgridshowcollapsedgroupsummary)
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| showCollapsedGroupSummary | [boolean](../reference.md#type-boolean) | false | — | new showCollapsedGroupSummary value |
 
 ---
 ## Method: ListGrid.collapseRecord
@@ -7098,7 +7080,7 @@ In general - bear in mind that this is an advanced usage and if there is an equi
 ### Description
 Optional notification fired when either user or framework code calls [setSort()](#method-listgridsetsort). This notification fires before the default behavior; return false from the handler to cancel the default behavior. Note, the notification is fired before the default functionality, but _after_ prechecks have completed; your method will only be called if the default behavior would have been called. For example, if there are pending edits and the user does not confirm that these should be saved, normal sorting would not have gone ahead, so equally your handler will not be called.
 
-The default `setSort()` method does two things to reflect the set of [sortSpecifier](../reference_2.md#object-sortspecifier)s passed to it:
+The default `setSort()` method does two things to reflect the set of [sortSpecifier](../reference.md#object-sortspecifier)s passed to it:
 
 *   Change the grid UI (show directional arrows, numerals to indicate sort priority, etc)
 *   Actually sort the grid data
@@ -7116,11 +7098,11 @@ If your reason for implementing a custom `setSortHandler()` is to inhibit or rep
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| sortSpecifiers | [Array of SortSpecifier](#type-array-of-sortspecifier) | false | — | Array of [SortSpecifier](../reference_2.md#object-sortspecifier) objects |
+| sortSpecifiers | [Array of SortSpecifier](#type-array-of-sortspecifier) | false | — | Array of [SortSpecifier](../reference.md#object-sortspecifier) objects |
 
 ### Returns
 
-`[Boolean](#type-boolean)` — return false to cancel the default setSort() behavior
+`[boolean](../reference.md#type-boolean)` — return false to cancel the default setSort() behavior
 
 **Flags**: A
 
@@ -7369,7 +7351,7 @@ Default implementation handles navigating between records with arrow keys, and a
 
 ### Returns
 
-`[Boolean](#type-boolean)` — return false to cancel
+`[boolean](../reference.md#type-boolean)` — return false to cancel
 
 ---
 ## Method: ListGrid.groupSortNormalizer
@@ -7482,13 +7464,13 @@ If you need such ground-up recalculation, consider re-creating the grid as a who
 ## Method: ListGrid.toggleSort
 
 ### Description
-Toggles the sort direction of the field having the specified name, and re-sorts the grid. If the grid is not already sorted by the field, then a sort specifier for the field will be added.
+Toggles the sort-direction of the field with the passed name and resorts the grid.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| fieldName | [String](#type-string) | false | — | The name of a field, either visible, hidden or existing only in the dataSource |
+| fieldName | [String](#type-string) | false | — | The name of a field, visible, hidden or existing only in the dataSource |
 
 ### Groups
 
@@ -7583,7 +7565,7 @@ Notification method fired when the user right-clicks on the corner [sort button]
 
 ### Returns
 
-`[Boolean](#type-boolean)` — return false to suppress the context menu
+`[boolean](../reference.md#type-boolean)` — return false to suppress the context menu
 
 ### Groups
 
@@ -7651,24 +7633,6 @@ Note that this width is the default width of "content" - it does not take into a
 `[int](../reference.md#type-int)` — default size required for the field's content.
 
 ---
-## Method: ListGrid.getSelectedRecord
-
-### Description
-Returns the first selected record in this grid.
-
-This method is appropriate if the [selectionType](ListGrid_1.md#attr-listgridselectiontype) is "single", or if you only care about the first selected record in a multiple-record selection. To access all selected records, use [ListGrid.getSelection](#method-listgridgetselection) instead.
-
-**NOTE:** If a record is returned, it should be treated as read-only and not modified.
-
-### Returns
-
-`[ListGridRecord](#type-listgridrecord)` — the first selected record, or null if no record is selected.
-
-### Groups
-
-- selection
-
----
 ## Method: ListGrid.clearRowErrors
 
 ### Description
@@ -7687,6 +7651,24 @@ Clear any stored validation errors for some row
 ### See Also
 
 - [ListGrid.setRowErrors](#method-listgridsetrowerrors)
+
+---
+## Method: ListGrid.getSelectedRecord
+
+### Description
+Returns the first selected record in this grid.
+
+This method is appropriate if the [selectionType](ListGrid_1.md#attr-listgridselectiontype) is "single", or if you only care about the first selected record in a multiple-record selection. To access all selected records, use [ListGrid.getSelection](#method-listgridgetselection) instead.
+
+**NOTE:** If a record is returned, it should be treated as read-only and not modified.
+
+### Returns
+
+`[ListGridRecord](#type-listgridrecord)` — the first selected record, or null if no record is selected.
+
+### Groups
+
+- selection
 
 ---
 ## Method: ListGrid.unmarkRecordRemoved
@@ -7751,7 +7733,6 @@ Note that developers may wish to use [ListGrid.selectRange](#method-listgridsele
 |------|------|----------|---------|-------------|
 | records | [Array of Record](#type-array-of-record)|[number](#type-number) | false | — | records (or row numbers) to select |
 | newState | [boolean](../reference.md#type-boolean) | true | — | new selection state (if null, defaults to true) |
-| rowNums | [Array of Integer](#type-array-of-integer)|[Integer](../reference_2.md#type-integer) | true | — | row numbers to select. Required for [multi-link trees](Tree.md#attr-treemultilinktree) unless row numbers are passed in the "records" param. If passed, the rowNums array should correspond to the records array (ie, rowNums\[0\] refers to the same object as records\[0\]) |
 
 ### Groups
 
@@ -7854,7 +7835,7 @@ Can this cell be edited?
 The default implementation of `canEditCell()` respects the various property settings affecting editability:
 
 *   [field.canEdit](ListGridField.md#attr-listgridfieldcanedit) can be set to disable editing for a field
-*   If the grid is bound to a dataSource, the [canEditFieldAttribute](DataBoundComponent.md#attr-databoundcomponentcaneditfieldattribute) value on the dataSource field may enable / disable editing
+*   If the grid is bound to a dataSource, the [ListGrid.canEditFieldAttribute](ListGrid_1.md#attr-listgridcaneditfieldattribute) value on the dataSource field may enable / disable editing
 *   a record with the [recordEditProperty](ListGrid_1.md#attr-listgridrecordeditproperty) set to false is not editable
 *   disabled records are not editable
 
@@ -7914,19 +7895,6 @@ Cancel the current edit without saving.
 - editing
 
 ---
-## Method: ListGrid.filterViaAI
-
-### Description
-If filter-via-AI is enabled (see [ListGrid.filterViaAIMode](ListGrid_1.md#attr-listgridfilterviaaimode)), asks AI to filter the grid according to the given natual language description of a filter.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| prompt | [String](#type-string) | false | — | The natual language description of a filter. |
-| settings | [FilterViaAISettings](#type-filterviaaisettings) | true | — | Optional settings to use. |
-
----
 ## Method: ListGrid.deselectAllRecords
 
 ### Description
@@ -7977,7 +7945,7 @@ Sort the grid's data to reflect the parameter sortSpecifiers.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| sortSpecifiers | [Array of SortSpecifier](#type-array-of-sortspecifier) | false | — | Array of [SortSpecifier](../reference_2.md#object-sortspecifier) objects |
+| sortSpecifiers | [Array of SortSpecifier](#type-array-of-sortspecifier) | false | — | Array of [SortSpecifier](../reference.md#object-sortspecifier) objects |
 
 **Flags**: A
 
@@ -8129,7 +8097,7 @@ Callback fired when the user starts editing a new row.
 ## Method: ListGrid.markRecordRemoved
 
 ### Description
-Marks a record deleted such that a later call to [ListGrid.saveEdits](#method-listgridsaveedits) or [ListGrid.saveAllEdits](#method-listgridsavealledits) will cause a "remove" [DSRequest](../reference_2.md#object-dsrequest) to be submitted.
+Marks a record deleted such that a later call to [ListGrid.saveEdits](#method-listgridsaveedits) or [ListGrid.saveAllEdits](#method-listgridsavealledits) will cause a "remove" [DSRequest](../reference.md#object-dsrequest) to be submitted.
 
 A removed record is disabled and non-editable, and uses [ListGrid.removedCSSText](ListGrid_1.md#attr-listgridremovedcsstext) for its CSS style, which by default will show strikethrough text.
 
@@ -8327,7 +8295,7 @@ Called when a cell receives a mouseup event.
 
 ### Returns
 
-`[Boolean](#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 

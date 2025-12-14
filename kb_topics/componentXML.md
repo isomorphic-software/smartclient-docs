@@ -136,7 +136,7 @@ To take a simple example, this is how you would declare an `Action` to display a
    <ListGrid dataSource="Customer" autoID="customerGrid">
       ...
      <recordClick>
-       <Action target="customerDetailViewer" name="viewSelectedData" mapping="viewer"/>
+       <Action target="customerDetailGrid" name="viewSelectedData" mapping="viewer"/>
      </recordClick>
    </ListGrid>
  

@@ -28,7 +28,7 @@ A declared value of the enum type [RecordDropAppearance](../reference_2.md#type-
 ## ClassAttr: ListGrid.UP_ARROW_KEYPRESS
 
 ### Description
-A declared value of the enum type [EditCompletionEvent](../reference_2.md#type-editcompletionevent).
+A declared value of the enum type [EditCompletionEvent](../reference.md#type-editcompletionevent).
 
 **Flags**: R
 
@@ -60,7 +60,7 @@ A declared value of the enum type [RecordDropAppearance](../reference_2.md#type-
 ## ClassAttr: ListGrid.SHIFT_TAB_KEYPRESS
 
 ### Description
-A declared value of the enum type [EditCompletionEvent](../reference_2.md#type-editcompletionevent).
+A declared value of the enum type [EditCompletionEvent](../reference.md#type-editcompletionevent).
 
 **Flags**: R
 
@@ -68,7 +68,7 @@ A declared value of the enum type [EditCompletionEvent](../reference_2.md#type-e
 ## ClassAttr: ListGrid.CLICK_OUTSIDE
 
 ### Description
-A declared value of the enum type [EditCompletionEvent](../reference_2.md#type-editcompletionevent).
+A declared value of the enum type [EditCompletionEvent](../reference.md#type-editcompletionevent).
 
 **Flags**: R
 
@@ -76,7 +76,7 @@ A declared value of the enum type [EditCompletionEvent](../reference_2.md#type-e
 ## ClassAttr: ListGrid.ENTER_KEYPRESS
 
 ### Description
-A declared value of the enum type [EditCompletionEvent](../reference_2.md#type-editcompletionevent).
+A declared value of the enum type [EditCompletionEvent](../reference.md#type-editcompletionevent).
 
 **Flags**: R
 
@@ -84,7 +84,7 @@ A declared value of the enum type [EditCompletionEvent](../reference_2.md#type-e
 ## ClassAttr: ListGrid.CLICK
 
 ### Description
-A declared value of the enum type [EditCompletionEvent](../reference_2.md#type-editcompletionevent).
+A declared value of the enum type [EditCompletionEvent](../reference.md#type-editcompletionevent).
 
 **Flags**: R
 
@@ -92,7 +92,7 @@ A declared value of the enum type [EditCompletionEvent](../reference_2.md#type-e
 ## ClassAttr: ListGrid.ESCAPE_KEYPRESS
 
 ### Description
-A declared value of the enum type [EditCompletionEvent](../reference_2.md#type-editcompletionevent).
+A declared value of the enum type [EditCompletionEvent](../reference.md#type-editcompletionevent).
 
 **Flags**: R
 
@@ -100,7 +100,7 @@ A declared value of the enum type [EditCompletionEvent](../reference_2.md#type-e
 ## ClassAttr: ListGrid.OVER
 
 ### Description
-A declared value of the enum types [RecordDropPosition](../reference.md#type-recorddropposition), [ReorderPosition](../reference_2.md#type-reorderposition) and [RecordDropAppearance](../reference_2.md#type-recorddropappearance).
+A declared value of the enum types [RecordDropPosition](../reference.md#type-recorddropposition), [ReorderPosition](../reference.md#type-reorderposition) and [RecordDropAppearance](../reference_2.md#type-recorddropappearance).
 
 **Flags**: R
 
@@ -108,7 +108,7 @@ A declared value of the enum types [RecordDropPosition](../reference.md#type-rec
 ## ClassAttr: ListGrid.DOUBLE_CLICK
 
 ### Description
-A declared value of the enum type [EditCompletionEvent](../reference_2.md#type-editcompletionevent).
+A declared value of the enum type [EditCompletionEvent](../reference.md#type-editcompletionevent).
 
 **Flags**: R
 
@@ -116,7 +116,7 @@ A declared value of the enum type [EditCompletionEvent](../reference_2.md#type-e
 ## ClassAttr: ListGrid.PROGRAMMATIC
 
 ### Description
-A declared value of the enum type [EditCompletionEvent](../reference_2.md#type-editcompletionevent).
+A declared value of the enum type [EditCompletionEvent](../reference.md#type-editcompletionevent).
 
 **Flags**: R
 
@@ -124,7 +124,7 @@ A declared value of the enum type [EditCompletionEvent](../reference_2.md#type-e
 ## ClassAttr: ListGrid.BEFORE
 
 ### Description
-A declared value of the enum types [RecordDropPosition](../reference.md#type-recorddropposition) and [ReorderPosition](../reference_2.md#type-reorderposition).
+A declared value of the enum types [RecordDropPosition](../reference.md#type-recorddropposition) and [ReorderPosition](../reference.md#type-reorderposition).
 
 **Flags**: R
 
@@ -148,7 +148,7 @@ A declared value of the enum type [RecordDropAppearance](../reference_2.md#type-
 ## ClassAttr: ListGrid.EDIT_FIELD_CHANGE
 
 ### Description
-A declared value of the enum type [EditCompletionEvent](../reference_2.md#type-editcompletionevent).
+A declared value of the enum type [EditCompletionEvent](../reference.md#type-editcompletionevent).
 
 **Flags**: R
 
@@ -164,7 +164,7 @@ A declared value of the enum type [RecordDropPosition](../reference.md#type-reco
 ## ClassAttr: ListGrid.DOWN_ARROW_KEYPRESS
 
 ### Description
-A declared value of the enum type [EditCompletionEvent](../reference_2.md#type-editcompletionevent).
+A declared value of the enum type [EditCompletionEvent](../reference.md#type-editcompletionevent).
 
 **Flags**: R
 
@@ -172,7 +172,7 @@ A declared value of the enum type [EditCompletionEvent](../reference_2.md#type-e
 ## ClassAttr: ListGrid.AFTER
 
 ### Description
-A declared value of the enum types [RecordDropPosition](../reference.md#type-recorddropposition) and [ReorderPosition](../reference_2.md#type-reorderposition).
+A declared value of the enum types [RecordDropPosition](../reference.md#type-recorddropposition) and [ReorderPosition](../reference.md#type-reorderposition).
 
 **Flags**: R
 
@@ -180,7 +180,7 @@ A declared value of the enum types [RecordDropPosition](../reference.md#type-rec
 ## ClassAttr: ListGrid.TAB_KEYPRESS
 
 ### Description
-A declared value of the enum type [EditCompletionEvent](../reference_2.md#type-editcompletionevent).
+A declared value of the enum type [EditCompletionEvent](../reference.md#type-editcompletionevent).
 
 **Flags**: R
 
@@ -836,16 +836,6 @@ If [ListGrid.autoFitData](#attr-listgridautofitdata) is set to `"vertical"` or `
 **Flags**: IRW
 
 ---
-## Attr: ListGrid.canAddAISummaryFields
-
-### Description
-Adds an item to the header context menu allowing users to launch a dialog to define a new field based on an AI summary of the entire record.
-
-AI summary fields can be persisted via [ListGrid.getFieldState](ListGrid_2.md#method-listgridgetfieldstate) and [ListGrid.setFieldState](ListGrid_2.md#method-listgridsetfieldstate).
-
-**Flags**: IRW
-
----
 ## Attr: ListGrid.criteriaIndicatorColor
 
 ### Description
@@ -891,18 +881,6 @@ Denotes the name of a property that can be set on records to display a custom st
 
 - [ListGrid.getCellStyle](ListGrid_2.md#method-listgridgetcellstyle)
 - [ListGrid.recordBaseStyleProperty](#attr-listgridrecordbasestyleproperty)
-
-**Flags**: IRW
-
----
-## Attr: ListGrid.canConfigureViaAI
-
-### Description
-Whether to show the [Configure via AI](#attr-listgridconfigureviaaitext) menu-item, which allows users to task the AI with performing multiple advanced configuration steps, such as grouping, hiliting and filtering, by entering plain-text commands.
-
-### Groups
-
-- ai
 
 **Flags**: IRW
 
@@ -1085,7 +1063,7 @@ Note: Unlike [ListGrid.autoFitMaxWidth](#attr-listgridautofitmaxwidth), this pro
 ### Description
 Hilites to be applied to the data for this grid. See [hiliting](../kb_topics/hiliting.md#kb-topic-hiliting).
 
-It is undefined behavior to share the same record objects, or the same [ResultSet](ResultSet.md#class-resultset) instances, among multiple grids if one of the grid's fields specifies a [userFormula](ListGridField.md#attr-listgridfielduserformula), [userSummary](ListGridField.md#attr-listgridfieldusersummary), [aiFieldPrompt](ListGridField.md#attr-listgridfieldaifieldprompt), or [aiHoverRequest](ListGridField.md#attr-listgridfieldaihoverrequest), or if one of the grids has a [Hilite](../reference_2.md#object-hilite) with an asynchronous filter in the hilite's [criteria](Hilite.md#attr-hilitecriteria).
+It is undefined behavior to share the same record objects, or the same [ResultSet](ResultSet.md#class-resultset) instances, among multiple grids if one of the grid's fields specifies a [userFormula](ListGridField.md#attr-listgridfielduserformula), [userSummary](ListGridField.md#attr-listgridfieldusersummary), [aiFieldRequest](ListGridField.md#attr-listgridfieldaifieldrequest), or [aiHoverRequest](ListGridField.md#attr-listgridfieldaihoverrequest), or if one of the grids has a [Hilite](../reference_2.md#object-hilite) with an asynchronous filter in the hilite's [criteria](Hilite.md#attr-hilitecriteria).
 
 ### Groups
 
@@ -3156,7 +3134,7 @@ Height for the filterEditor, if shown.
 ### Description
 Minimum number of milliseconds to wait before retrying to generate hover contents via AI.
 
-The results of [SummarizeValueRequest](#object-summarizevaluerequest)s generated from a field's [aiHoverRequest](ListGridField.md#attr-listgridfieldaihoverrequest) are cached, whether it was a successful or non-successful result. In the case of a non-successful result, the message therefrom will be displayed to the user for this configurable number of milliseconds before another request is made to try to generate the hover contents.
+The results of [SummarizeValueRequest](../reference_2.md#object-summarizevaluerequest)s generated from a field's [aiHoverRequest](ListGridField.md#attr-listgridfieldaihoverrequest) are cached, whether it was a successful or non-successful result. In the case of a non-successful result, the message therefrom will be displayed to the user for this configurable number of milliseconds before another request is made to try to generate the hover contents.
 
 **Flags**: IRW
 
@@ -7324,7 +7302,7 @@ This property may be set to customize the vertical alignment for the hover shown
 ## Attr: ListGrid.filterViaAIMode
 
 ### Description
-If filtering of the grid is enabled and AI [is enabled](AI.md#classmethod-aiisenabled), filtering-via-AI can be enabled by setting the [AIServiceMode](../reference.md#type-aiservicemode) to use.
+If filtering of the grid is enabled, filtering-via-AI can also be enabled by setting the [AIServiceMode](../reference.md#type-aiservicemode) to use.
 
 **Flags**: IR
 
@@ -7510,19 +7488,6 @@ For a ListGrid, this property applies when [grouping](#attr-listgridcangroupby) 
 ### See Also
 
 - [TreeGrid.getAnimateFolderMaxRows](TreeGrid.md#method-treegridgetanimatefoldermaxrows)
-
-**Flags**: IRW
-
----
-## Attr: ListGrid.configureViaAIText
-
-### Description
-Title for the menu-item displayed in this component's header context-menu when [ListGrid.canConfigureViaAI](#attr-listgridcanconfigureviaai) is tru.
-
-### Groups
-
-- ai
-- i18nMessages
 
 **Flags**: IRW
 
@@ -7948,6 +7913,16 @@ When using [data paging](#attr-listgriddatafetchmode), how many records to fetch
 - [ResultSet.resultSize](ResultSet.md#attr-resultsetresultsize)
 
 **Flags**: IRW
+
+---
+## Attr: ListGrid.canEditFieldAttribute
+
+### Description
+If this component is bound to a dataSource, this attribute may be specified to customize what fields from the dataSource may be edited by default. For example the [SearchForm](SearchForm.md#class-searchform) class has this attribute set to `"canFilter"` which allows search forms to edit dataSource fields marked as `canEdit:false` (but not those marked as `canFilter:false`).
+
+Note that if `canEdit` is explicitly specified on a field in the [DataBoundComponent.fields](DataBoundComponent.md#attr-databoundcomponentfields) array, that property will be respected in preference to the canEditAttribute value. (See [FormItem.canEdit](FormItem.md#attr-formitemcanedit), [ListGridField.canEdit](ListGridField.md#attr-listgridfieldcanedit)). Also note that individual dataBoundComponents may have additional logic around whether a field can be edited - for example [ListGrid.canEditCell](ListGrid_2.md#method-listgridcaneditcell) may be overridden.
+
+**Flags**: IRA
 
 ---
 ## Attr: ListGrid.screenReaderWriteRowLabelledBy
@@ -8972,7 +8947,7 @@ If [ListGrid.showHeaderShadow](#attr-listgridshowheadershadow) is true, the [Can
 ## Attr: ListGrid.searchForm
 
 ### Description
-When declared, the specified form is automatically used as a search form for this grid. May be specified as a DynamicForm/ValuesManager instance or the String ID of one. that is, [form.getValuesAsCriteria()](DynamicForm.md#method-dynamicformgetvaluesascriteria) is called and the criteria returned are additive with any criteria present in the [FilterEditor](#attr-listgridfiltereditor) or [Filter Window](#attr-listgridallowfilterwindow).
+When declared, the specified form is automatically used as a search form for this grid, that is, [form.getValuesAsCriteria()](DynamicForm.md#method-dynamicformgetvaluesascriteria) is called and the criteria returned are additive with any criteria present in the [FilterEditor](#attr-listgridfiltereditor) or [Filter Window](#attr-listgridallowfilterwindow).
 
 For a discussion of the various filtering and criteria-management APIs and when to use them, see the [Grid Filtering overview](../kb_topics/gridFiltering.md#kb-topic-grid-filtering-overview).
 
@@ -9615,7 +9590,7 @@ Optional stringMethod to fire when the mouse moves over the error icon of a cell
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false to suppress the default behavior (show a standard error message hover)
+`[boolean](../reference.md#type-boolean)` — false to suppress the default behavior (show a standard error message hover)
 
 ### Groups
 
@@ -9709,7 +9684,7 @@ The default implementation of editFailed does nothing for normal validation erro
 | colNum | [number](#type-number) | false | — | index of the column where the edit failed, if applicable |
 | newValues | [Object](../reference.md#type-object)|[Record](#type-record) | false | — | new values that we attempted to save |
 | oldValues | [Record](#type-record) | false | — | the complete original values from before the save occurred |
-| editCompletionEvent | [EditCompletionEvent](../reference_2.md#type-editcompletionevent) | false | — | Edit completion event that led to the save attempt |
+| editCompletionEvent | [EditCompletionEvent](../reference.md#type-editcompletionevent) | false | — | Edit completion event that led to the save attempt |
 | dsResponse | [DSResponse](#type-dsresponse) | true | — | DSResponse, for saves through a DataSource |
 
 ### Groups
@@ -9732,7 +9707,7 @@ Called when a cell receives a contextclick event.
 
 ### Returns
 
-`[Boolean](#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -9816,7 +9791,7 @@ Optional stringMethod to fire when the mouse moves off the error icon of a cell 
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false to suppress the standard behavior (clear the standard error message hover if it is showing)
+`[boolean](../reference.md#type-boolean)` — false to suppress the standard behavior (clear the standard error message hover if it is showing)
 
 ### Groups
 

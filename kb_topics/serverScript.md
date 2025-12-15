@@ -129,7 +129,7 @@ You can import Java libraries by placing a `<scriptImport>` tag immediately befo
 There is also a system-wide set of default imports:
 ```
  java.util.*
- javaxjakarta.servlet.http.*
+ jakarta.servlet.http.*
  com.isomorphic.base.Config
  com.isomorphic.util.*
  com.isomorphic.datasource.*
@@ -247,14 +247,14 @@ For this reason, we recommend using Groovy as a scripting language in cases wher
 
 #### Javascript
 
-In versions of Java up to JDK 14, there is a Javascript implmentation - Nashorn - built into the JVM. This was removed in version 15, but at the same time, OpenJDK made a standalone version of Nashorn available. Since this standalone version works without problems in pre-15 JDKs (ie, it does not clash with the built-in Nashorn), we ship it as part of the product. This means that Javascript is an option out-of-the-box, regardless of the Java version you are using (assuming you are not using a version earlier than 1.6)
+In versions of Java up to JDK 14, there is a Javascript implmentation - Nashorn - built into the JVM. This was removed in version 15, but at the same time, OpenJDK made a standalone version of Nashorn available. Since this standalone version works without problems in pre-15 JDKs (ie, it does not clash with the built-in Nashorn), you can install it in your project without issues. However, note that it requires at least JDK 11, which is why we do not ship it as part of the product in this version. You can obtain the standalone Nashorn implementation here: [https://github.com/openjdk/nashorn](https://github.com/openjdk/nashorn)
 
 An alternative to the standalone Nashorn implementation is to switch from the regular Oracle or OpenJDK JVM, to GraalVM, detailed below. And there are other options too: Mozilla Rhino is still maintained and does work with SmartClient's scripting feature (though it is slow and lacking in features compared to Nashorn); non-Oracle JVMs may implement other Javascript engines; and JSR223 is an open standard so there is nothing to stop people from creating their own ScriptEngine implementations based on whichever Javascript engine they favor. From a SmartClient server-scripting perspective, if a script is marked with a `language` of "javascript", "Javascript", JavaScript" or "ecmascript", we try to find an engine registered with any of those short names (ie, if the language is "JavaScript" but there is no ScriptEngine registered with that short name, we will also try "javascript", "Javascript" and "ecmascript" before giving up).
 
 #### GraalVM
 GraalVM is Oracle's "polyglot" VM, which has support for Javascript as a first-class language. You can use GraalVM instead of a regular JVM (the JVM core of it is OpenJDK), and access its Javascript support through a JSR223 interface (there are more direct ways to use Javascript in GraalVM, but this is how you use it with SmartClient's scripting feature). This approach works fine with SmartClient's scripting support, and moreover it is **much** faster than the Nashorn engine. In fact, it has the same tiny call overhead as Groovy - about 80 microseconds in local testing - and so is suitable for use in even the most intensive use cases where we previously have recommended that only Groovy should be used.
 
-However, this very significant reduction in call overhead - from around 15ms per call in Nashorn in our local testing, to under 0.1ms in GraalJS - comes at the cost of reduced flexibility in importing Java classes. By default, SmartClient server scripts written in Javascript automatically import a number of useful or commonly-used Java packages - for example, `java.util.*`, `com.isomorphic.util.*` and `javaxjakarta.servlet.http.*`. This ability to import whole packages is a Mozilla Rhino compatibility feature that is discouraged by the GraalVM team, and if you use it, call overhead times increase dramatically, to the point where there is no performance advantage over Nashorn.
+However, this very significant reduction in call overhead - from around 15ms per call in Nashorn in our local testing, to under 0.1ms in GraalJS - comes at the cost of reduced flexibility in importing Java classes. By default, SmartClient server scripts written in Javascript automatically import a number of useful or commonly-used Java packages - for example, `java.util.*`, `com.isomorphic.util.*` and `jakarta.servlet.http.*`. This ability to import whole packages is a Mozilla Rhino compatibility feature that is discouraged by the GraalVM team, and if you use it, call overhead times increase dramatically, to the point where there is no performance advantage over Nashorn.
 
 For this reason, we support switching off Mozilla compatibility via a `server.properties` flag:
 
@@ -274,18 +274,7 @@ If you set that flag true, server scripts written in Javascript will:
 
 At the time of writing, GraalVM is available based on OpenJDK 17, 21 and 23, though there are also older versions still downloadable based on JDK 11; if you use the OpenJDK 11 version, or you continue to deploy the standalone nashorn-core library mentioned above, this means you have both Nashorn and GraalJS available. In this case, there are conflicting registrations - a number of variations on "javascript", "js" and "ecmascript" are registered for both Nashorn and GraalVM. In our testing, the GraalVM registrations always win in this situation, but if you want to be absolutely sure of picking up a particular engine, specify lanaguage "nashorn" for Nashorn and "graal.js" for GraalJS. GraalVM homepage: [https://www.graalvm.org/](https://www.graalvm.org/)
 
-It is also possible to implement GraalJS (the Javascript engine from GraalVM) directly on a regular Oracle or OpenJDK JVM (though note, in local testing we saw some but not all of the performance advantages of switching to the full GraalVM - call overheads are reduced to sub-millisecond, but do not get near the ~100 microsecond overhead that we saw with the full GraalVM). Implementing GraalJS on a regular JVM requires adding the following JARs from the GraalVM project (all available from Maven Central):
-
-*   **org.graalvm.js**: js-scriptengine, js-language
-*   **org.graalvm.polyglot**: polyglot
-*   **org.graalvm.truffle**: truffle-api, truffle-runtime, truffle-compiler
-*   **org.graalvm.regex**: regex
-*   **org.graalvm.sdk**: collections, nativeimage, word
-*   **org.graalvm.shadowed**: icu4j
-
-See [javaModuleDependencies](javaModuleDependencies.md#kb-topic-java-module-dependencies) for the complete list.
-
-By default, references to Java classes and objects will not work from GraalJS scripts. This is a deliberate part of GraalVM's "secure by default" approach. It is possible to relax this by adding various security-related context flags, but SmartClient does not currently support that level of configuration. Instead, you will need to add the command-line flag `-Dpolyglot.js.nashorn-compat=true` to your servlet engine startup; this flag is an alternative way to relax Graal's default security lockdown and enables the `Java.type()` API used by Nashorn scripts. For further information, see [https://www.graalvm.org/latest/reference-manual/js/RunOnJDK](https://www.graalvm.org/latest/reference-manual/js/RunOnJDK) and [https://www.graalvm.org/latest/reference-manual/js/NashornMigrationGuide](https://www.graalvm.org/latest/reference-manual/js/NashornMigrationGuide)
+It is also possible to implement GraalJS (the Javascript engine from GraalVM) directly on a regular Oracle or OpenJDK JVM (though note, in local testing we saw some but not all of the performance advantages of switching to the full GraalVM - call overheads are reduced to sub-millisecond, but do not get near the ~100 microsecond overhead that we saw with the full GraalVM). Implementing GraalJS on a regular JVM is largely a matter of just adding the applicable JAR files to your application, though by default, references to Java classes and objects will not work. This is a deliberate part of GraalVM's "secure by default" approach. It is possible to relax this by adding various security-related context flags, but SmartClient does not currently support that level of configuration. Instead, you will need to add the command-line flag `-Dpolyglot.js.nashorn-compat=true` to your servlet engine startup; this flag is an alternative way to relax Graal's default security lockdown. For further information, see [https://www.graalvm.org/latest/reference-manual/js/RunOnJDK](https://www.graalvm.org/latest/reference-manual/js/RunOnJDK) and [https://www.graalvm.org/latest/reference-manual/js/NashornMigrationGuide](https://www.graalvm.org/latest/reference-manual/js/NashornMigrationGuide)
 
 ### Related
 

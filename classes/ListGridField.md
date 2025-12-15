@@ -227,7 +227,7 @@ If this field has an optionDataSource specified and [autoFetchDisplayMap](#attr-
 ### Description
 If this listGrid has any fields of type `"summary"` and this field will be [included](#attr-listgridfieldincludeinrecordsummary) in summary calculations by default, this attribute provides an opportunity to explicitly specify which summary fields the record should be displayed in.
 
-Specified as an array of fieldNames. If set, this field value will only be included for record summary value calculations for summary fields whose name is included in this array.
+Specified as an array of fieldNames. If set, this field value will only be included for record summary value calculations for summary fields who's name is included in this array.
 
 **Flags**: IR
 
@@ -921,33 +921,11 @@ This property also governes the hoverDelay for the header button. Developers wis
 ## Attr: ListGridField.enableWhen
 
 ### Description
-[Rule Criteria](../kb_topics/ruleCriteria.md#kb-topic-dynamic-rules) to be evaluated that controls whether this field will be enabled.
+[Rule Criteria](../kb_topics/ruleCriteria.md#kb-topic-dynamic-rules) to be evaluated to determine whether this field should be enabled.
 
-When the criteria evaluates to false, the field is disabled:
+When a field is disabled, the field header is disabled as are the cells for the field. If the field is normally editable, it cannot be edited while disabled.
 
-*   The field header is disabled. Users cannot sort, resize, reorder, open the header context menu, or otherwise interact with the header.
-*   The field’s cells are disabled for interaction. If the field is normally editable, it cannot be edited while disabled.
-*   The field remains visible; to hide a field use visible, showIf, or visibleWhen.
-
-What still works while disabled
-
-*   Normal clicks that begin row editing still enter edit mode for the record, but the disabled field will not present an editor.
-*   Normal row/record selection and navigation still work (for example, clicking cells to select rows).
-
-Scope and re-evaluation
-
-*   The rule is evaluated in the ListGrid’s ruleScope. When values in the ruleScope change, the rule is re-evaluated and the field’s enabled/disabled state updates accordingly.
-
-Notes
-
-*   Applies to the entire field (column). It does not provide per-record or per-cell enablement.
-*   Use visibleWhen to control visibility instead of enablement.
-*   Disabling affects user interaction on the field header and contents; programmatic API calls can still modify data unless your application logic prevents it.
-
-Typical uses
-
-*   Temporarily disable a column’s interactions until prerequisites are met (for example, a filter or selection is required).
-*   Prevent edits to a column based on user role or application state while keeping the column visible.
+This criteria is dynamic and will be renterpreted each time the rule context changes.
 
 ### Groups
 
@@ -1441,29 +1419,6 @@ If unset, default behavior is derived from [ListGrid.headerHoverWrap](ListGrid_1
 **Flags**: IRW
 
 ---
-## Attr: ListGridField.length
-
-### Description
-Maximum number of characters for this text field. This property is typically set on [DataSourceField.length](DataSourceField.md#attr-datasourcefieldlength) to enforce data integrity and trigger automatic validation. However, it can also be set on a ListGridField to control ListGrid-specific behaviors without affecting validation:
-
-*   **Default field width:** For text fields with no explicit [ListGridField.width](#attr-listgridfieldwidth) and `length` less than 15, a default pixel width is calculated as `length * 7`, subject to [ListGridField.minWidth](#attr-listgridfieldminwidth) and [ListGrid.minFieldWidth](ListGrid_1.md#attr-listgridminfieldwidth).
-*   **Auto-fit field selection:** When [ListGrid.autoFitFieldWidths](ListGrid_1.md#attr-listgridautofitfieldwidths) causes the grid to choose a field to expand, fields with `length` below [autoFitExpandLengthThreshold](#listgridautofitexpandlengththreshold) (default 10) are skipped in favor of fields with longer or unspecified length.
-
-Note: Setting `length` on a ListGridField does **not** trigger validation. To enforce maximum character limits, set [DataSourceField.length](DataSourceField.md#attr-datasourcefieldlength) on the DataSource field, which enables both server and client validation.
-
-### Groups
-
-- appearance
-
-### See Also
-
-- [DataSourceField.length](DataSourceField.md#attr-datasourcefieldlength)
-- [ListGridField.width](#attr-listgridfieldwidth)
-- [ListGrid.autoFitFieldWidths](ListGrid_1.md#attr-listgridautofitfieldwidths)
-
-**Flags**: IR
-
----
 ## Attr: ListGridField.defaultGroupingMode
 
 ### Description
@@ -1530,8 +1485,6 @@ Specifies the [ListGridField.optionDataSource](#attr-listgridfieldoptiondatasour
 If no `optionDataSource` is defined for the field and [ListGridField.displayValueFromRecord](#attr-listgridfielddisplayvaluefromrecord) is not set to `false`, the cell will display the displayField value for the current record instead of the underlying value for this field. This approach can be used for situations where field values need a stored-value-to-displayed-value mapping, but the set of all possible values is too large to load as a [ValueMap](../reference_2.md#type-valuemap) - see [ListGridField.optionDataSource](#attr-listgridfieldoptiondatasource) for more details on this approach. Note that if this field is editable this will also be applied to this field's editors. *This sample* illustrates this approach achieved via a server-side SQL join.
 
 The display value for a record with a specified `displayField` can be picked up via [ListGrid.getDisplayValue](ListGrid_2.md#method-listgridgetdisplayvalue).
-
-Unless [ListGridField.sortByDisplayField](#attr-listgridfieldsortbydisplayfield) is explicitly set to `false`, sorting by this field will sort by the display field value instead.
 
 ### Groups
 
@@ -1836,6 +1789,20 @@ Groups will be formed based on ranges of values of size `groupGranularity`. For 
 **Flags**: IR
 
 ---
+## Attr: ListGridField.aiFieldRequest
+
+### Description
+The settings that configure requests to AI to generate the values for this field. This can be set by the application directly or created and edited by the user with an [AIFieldBuilder](AIFieldBuilder.md#class-aifieldbuilder), either directly or via the grid header menu items to add an AI summary or sort field (see [ListGrid.canAddAISummaryFields](DataBoundComponent.md#attr-databoundcomponentcanaddaisummaryfields)).
+
+Note that setting an `aiFieldRequest` will cause the default value of [ListGridField.escapeHTML](#attr-listgridfieldescapehtml) to be `true`.
+
+### See Also
+
+- [ListGridField.canEditAISummary](#attr-listgridfieldcaneditaisummary)
+
+**Flags**: IR
+
+---
 ## Attr: ListGridField.hideOnPhone
 
 ### Description
@@ -1922,7 +1889,7 @@ Also, while the current implementation would allow creation of a formula that ca
 
 To change this field's formula, either call [ListGrid.setUserFormula](ListGrid_2.md#method-listgridsetuserformula) with a new `UserFormula` object or call [ListGrid.setUserFormulaText](ListGrid_2.md#method-listgridsetuserformulatext) to change just the [UserFormula.text](UserFormula.md#attr-userformulatext).
 
-It is undefined behavior to share the same record objects, or the same [ResultSet](ResultSet.md#class-resultset) instances, among multiple grids if one of the grid's fields specifies a `userFormula`, [userSummary](#attr-listgridfieldusersummary), [aiFieldPrompt](#attr-listgridfieldaifieldprompt), or [aiHoverRequest](#attr-listgridfieldaihoverrequest), or if one of the grids has a [Hilite](../reference_2.md#object-hilite) with an asynchronous filter in the hilite's [criteria](Hilite.md#attr-hilitecriteria).
+It is undefined behavior to share the same record objects, or the same [ResultSet](ResultSet.md#class-resultset) instances, among multiple grids if one of the grid's fields specifies a `userFormula`, [userSummary](#attr-listgridfieldusersummary), [aiFieldRequest](#attr-listgridfieldaifieldrequest), or [aiHoverRequest](#attr-listgridfieldaihoverrequest), or if one of the grids has a [Hilite](../reference_2.md#object-hilite) with an asynchronous filter in the hilite's [criteria](Hilite.md#attr-hilitecriteria).
 
 ### Groups
 
@@ -1976,7 +1943,7 @@ If `groupingModes` are present and [grouping is enabled](ListGrid_1.md#attr-list
 
 The user may also choose to group records without specifying a grouping mode, in this case, the [ListGridField.defaultGroupingMode](#attr-listgridfielddefaultgroupingmode) is used.
 
-Note that `getGroupValue`, `groupingModes` et al can be specified on [SimpleType](SimpleType.md#class-simpletype) declarations. See this list of [builtin grouping modes](../kb_topics/builtinGroupingModes.md#kb-topic-built-in-grouping-modes) for more information.
+Note that `getGroupValue`, `groupingModes` et al can be specified on [SimpleType](SimpleType.md#class-simpletype) declarations. See this list of [builtin grouping modes](../kb_topics/builtinGroupingModes.md#kb-topic-builtingroupingmodes) for more information.
 
 ### Groups
 
@@ -2067,18 +2034,6 @@ Also supported at the [ListGrid-level](ListGrid_1.md#attr-listgridshowhovercompo
 - hoverComponents
 
 **Flags**: IRW
-
----
-## Attr: ListGridField.aiFieldPrompt
-
-### Description
-The prompt to send to AI to generate the field's values.
-
-Setting this property causes the field to be AI-generated, and the default value of [ListGridField.escapeHTML](#attr-listgridfieldescapehtml) will be `true`.
-
-AI must be enabled in the application. See [AI.isEnabled](AI.md#classmethod-aiisenabled).
-
-**Flags**: IR
 
 ---
 ## Attr: ListGridField.prompt
@@ -2357,7 +2312,7 @@ Advanced applications that wish to save summaries separately from a grid's [view
 
 To change this field's summary definition, either call [ListGrid.setUserSummary](ListGrid_2.md#method-listgridsetusersummary) with a new `UserSummary` object or call [ListGrid.setUserSummaryText](ListGrid_2.md#method-listgridsetusersummarytext) to change just the [UserSummary.text](UserSummary.md#attr-usersummarytext).
 
-It is undefined behavior to share the same record objects, or the same [ResultSet](ResultSet.md#class-resultset) instances, among multiple grids if one of the grid's fields specifies a `userSummary`, [userFormula](#attr-listgridfielduserformula), [aiFieldPrompt](#attr-listgridfieldaifieldprompt), or [aiHoverRequest](#attr-listgridfieldaihoverrequest), or if one of the grids has a [Hilite](../reference_2.md#object-hilite) with an asynchronous filter in the hilite's [criteria](Hilite.md#attr-hilitecriteria).
+It is undefined behavior to share the same record objects, or the same [ResultSet](ResultSet.md#class-resultset) instances, among multiple grids if one of the grid's fields specifies a `userSummary`, [userFormula](#attr-listgridfielduserformula), [aiFieldRequest](#attr-listgridfieldaifieldrequest), or [aiHoverRequest](#attr-listgridfieldaihoverrequest), or if one of the grids has a [Hilite](../reference_2.md#object-hilite) with an asynchronous filter in the hilite's [criteria](Hilite.md#attr-hilitecriteria).
 
 ### Groups
 
@@ -2464,7 +2419,7 @@ If unset, default behavior is derived from [ListGrid.headerHoverWidth](ListGrid_
 ### Description
 By default HTML values in ListGrid cells will be interpreted by the browser. Setting this flag to `true` will cause HTML characters to be escaped, meaning the raw value of the field (for example `"`<b>`AAA`</b>`"`) is displayed to the user rather than being interpreted as HTML (for example `"**AAA**"`)
 
-If this field has an [ListGridField.aiFieldPrompt](#attr-listgridfieldaifieldprompt), then the default value of this setting is `true`.
+If this field has an [ListGridField.aiFieldRequest](#attr-listgridfieldaifieldrequest), then the default value of this setting is `true`.
 
 ### See Also
 
@@ -2614,7 +2569,7 @@ If not explicitly specified, see [ListGrid.getIconCursor](ListGrid_2.md#method-l
 ## Attr: ListGridField.canEdit
 
 ### Description
-This property establishes default editability for the field. May be overridden by setting the 'canEdit' property at the listGrid level. If not explicitly set and this grid is bound to a dataSource, the [ListGrid.canEditFieldAttribute](DataBoundComponent.md#attr-databoundcomponentcaneditfieldattribute) may be used to set default editability at the field level.
+This property establishes default editability for the field. May be overridden by setting the 'canEdit' property at the listGrid level. If not explicitly set and this grid is bound to a dataSource, the [ListGrid.canEditFieldAttribute](ListGrid_1.md#attr-listgridcaneditfieldattribute) may be used to set default editability at the field level.
 
 An override of [ListGrid.canEditCell](ListGrid_2.md#method-listgridcaneditcell) can be used for more dynamic control over whether fields can be edited.
 
@@ -2877,11 +2832,9 @@ Note: this formatter will not be applied to the values displayed in cells being 
 ## Method: ListGridField.getRecordSummary
 
 ### Description
-Only applies to ["summary"-type](../reference.md#type-listgridfieldtype) fields. If specified, this method will be called to generate the record summary value to be displayed for each row in this field. When this method is called, current values for other record summary fields have not necessarily been stored on the record, but are accessible via [ListGrid.getRecordSummary](ListGrid_2.md#method-listgridgetrecordsummary).
+Only applies to [summary-type](../reference.md#type-listgridfieldtype) fields. If specified, this method will be called to generate the record summary value to be displayed for each row in this field. When this method is called, current values for other [summary-type](../reference.md#type-listgridfieldtype) fields have not yet been stored on the record, but are accessible via [ListGrid.getRecordSummary](ListGrid_2.md#method-listgridgetrecordsummary).
 
-The grid is passed to be able to evaluate dependency record summary values via ListGrid.getRecordSummary(). Other than that, the properties and state of the grid should not be used in the implementation of this method. To do so would be a source of undefined behavior.
-
-Note that if implemented, this is called instead of making use of the [ListGridField.recordSummaryFunction](#attr-listgridfieldrecordsummaryfunction).
+Note that if specified, this is called instead of making use of the [ListGridField.recordSummaryFunction](#attr-listgridfieldrecordsummaryfunction).
 
 If [ListGrid.showGridSummary](ListGrid_1.md#attr-listgridshowgridsummary) or [ListGrid.showGroupSummary](ListGrid_1.md#attr-listgridshowgroupsummary) is true, this field's value in the summary row\[s\] will still be calculated by calling this method. In this case, the record object passed in will contain summary values for each field. If custom handling is required for this case, it may be detected by checking the record object's [ListGridRecord.isGroupSummary](ListGridRecord.md#attr-listgridrecordisgroupsummary) and [ListGridRecord.isGridSummary](ListGridRecord.md#attr-listgridrecordisgridsummary) attributes.
 
@@ -2945,7 +2898,7 @@ Return false from this method to cancel the default behavior (Saving / cancellin
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| editCompletionEvent | [EditCompletionEvent](../reference_2.md#type-editcompletionevent) | false | — | What interaction triggered this edit cell exit |
+| editCompletionEvent | [EditCompletionEvent](../reference.md#type-editcompletionevent) | false | — | What interaction triggered this edit cell exit |
 | record | [ListGridRecord](#type-listgridrecord) | false | — | record for the cell being edited |
 | newValue | [Any](#type-any) | false | — | new edit value for the cell being edited. Note that if the user has not made any changes this will be undefined |
 | rowNum | [int](../reference.md#type-int) | false | — | row number for the cell |
@@ -2954,7 +2907,7 @@ Return false from this method to cancel the default behavior (Saving / cancellin
 
 ### Returns
 
-`[Boolean](#type-boolean)` — Returning false from this method will cancel the default behavior (for example saving the row) and leave the editor visible and focus in this edit cell.
+`[boolean](../reference.md#type-boolean)` — Returning false from this method will cancel the default behavior (for example saving the row) and leave the editor visible and focus in this edit cell.
 
 ### Groups
 

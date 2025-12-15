@@ -171,7 +171,7 @@ Whether a confirmation message should be shown when a user removes a saved searc
 ## Attr: SavedSearchItem.targetComponent
 
 ### Description
-Component that saved searches should apply to. May be specified as a DataBoundComponent instance or the String ID of one. When set, whenever [SavedSearchItem.searchChanged](#method-savedsearchitemsearchchanged) fires, the search is automatically applied to the `targetComponent` unless the `searchChanged` event is cancelled.
+Component that saved searches should apply to. When set, whenever [SavedSearchItem.searchChanged](#method-savedsearchitemsearchchanged) fires, the search is automatically applied to the `targetComponent` unless the `searchChanged` event is cancelled.
 
 To avoid leaking local storage, saving searches will not be allowed for the target grid unless it specifies [savedSearchId](DataBoundComponent.md#attr-databoundcomponentsavedsearchid), or an explicit [local or global ID](Canvas.md#method-canvasgetlocalid) is present.
 

@@ -500,10 +500,6 @@ If specified, the selection object for this list will use this property to mark 
 ### Description
 If set, tree-based filtering is performed such that parent nodes are kept as long as they have children that match the filter criteria, even if the parents themselves do not match the filter criteria. If not set, filtering will exclude parent nodes not matching the criteria, and all nodes below them in the tree.
 
-ResultTrees will default to [fetchMode:"local"](../reference_2.md#type-fetchmode) whenever `keepParentsOnFilter` is true, unless fetchMode was explicitly set to "paged" (see below). This allows the filtering logic to fetch a complete tree of nodes from the DataSource (or if loadDataOnDemand:true, a complete set of nodes under a given parent) and then filter the resulting data locally on the client.
-
-This means that the server does not need to implement special tree filtering logic to support looking up nodes that match the specified criteria as well as ancestor nodes that may not.
-
 If some criteria _must_ be sent to the server in order to produce a valid tree of data, but `keepParentsOnFilter` is also required, the [ResultTree.serverFilterFields](ResultTree.md#attr-resulttreeserverfilterfields) attribute may be used to specify a list of field names that will be sent to the server whenever they are present in the criteria. Note that for the subset of criteria applied to these fields, `keepParentsInFilter` behavior will not occur without custom logic in the DataSource fetch operation.
 
 If [FetchMode](../reference_2.md#type-fetchmode) is explicitly set to `"paged"`, it is not possible to implement `keepParentsOnFilter`, either by local filtering or with the automatic client-driven handling mentioned below. Support for `keepParentsOnFilter` for a paged ResultTree therefore also requires custom logic in the DataSource fetch operation. To support this a developer must ensure that their fetch operation returns the appropriate set of nodes - all nodes that match the specified criteria plus their ancestor nodes even if they do not match the specified criteria.
@@ -1571,7 +1567,7 @@ This method is called when a context click occurs on a folder record.
 
 ### Returns
 
-`[Boolean](#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### See Also
 
@@ -1638,7 +1634,7 @@ This method is called when a context click occurs on a leaf record.
 
 ### Returns
 
-`[Boolean](#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### See Also
 
@@ -1681,7 +1677,7 @@ This method is called when a context click occurs on a leaf or folder record. No
 
 ### Returns
 
-`[Boolean](#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### See Also
 
@@ -1752,7 +1748,7 @@ This method behaves exactly like [TreeGrid.fetchData](#method-treegridfetchdata)
 |------|------|----------|---------|-------------|
 | criteria | [Criteria](../reference_2.md#type-criteria) | true | — | Search criteria. If a [DynamicForm](DynamicForm.md#class-dynamicform) is passed in as this argument instead of a raw criteria object, will be derived by calling [DynamicForm.getValuesAsCriteria](DynamicForm.md#method-dynamicformgetvaluesascriteria) |
 | callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke when a fetch is complete. Fires only if server contact was required; see [fetchData()](ListGrid_2.md#method-listgridfetchdata) for details |
-| requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | for databound components only - optional additional properties to set on the DSRequest that will be issued |
+| requestProperties | [DSRequest](#type-dsrequest) | true | — | for databound components only - optional additional properties to set on the DSRequest that will be issued |
 
 ### Groups
 
@@ -1794,7 +1790,7 @@ This method is called when a folder is closed either via the user manipulating t
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false to cancel the close, true to all it to proceed
+`[boolean](../reference.md#type-boolean)` — false to cancel the close, true to all it to proceed
 
 ---
 ## Method: TreeGrid.getDragTrackerIcon
@@ -1943,7 +1939,7 @@ Do not override this method unless you need a rowClick callback that fires even 
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false == cancel further event processing
+`[boolean](../reference.md#type-boolean)` — false == cancel further event processing
 
 ### Groups
 
@@ -2020,7 +2016,7 @@ When using invalidateCache() there is no need to also call fetchData() and in fa
 |------|------|----------|---------|-------------|
 | criteria | [Criteria](../reference_2.md#type-criteria) | true | — | Search criteria. If a [DynamicForm](DynamicForm.md#class-dynamicform) is passed in as this argument instead of a raw criteria object, will be derived by calling [DynamicForm.getValuesAsCriteria](DynamicForm.md#method-dynamicformgetvaluesascriteria) |
 | callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke when a fetch is complete. Fires only if server contact was required |
-| requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | additional properties to set on the DSRequest that will be issued |
+| requestProperties | [DSRequest](#type-dsrequest) | true | — | additional properties to set on the DSRequest that will be issued |
 
 ### Groups
 
@@ -2073,7 +2069,7 @@ This method is called when a folder is opened either via the user manipulating t
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false to cancel the open, true to all it to proceed
+`[boolean](../reference.md#type-boolean)` — false to cancel the open, true to all it to proceed
 
 ---
 ## Method: TreeGrid.isOverExtraIcon
@@ -2407,13 +2403,6 @@ See the [dragging](../reference.md#kb-topic-dragging) documentation for an overv
 
 ### Description
 Overridden to disallow editing of the [name](TreeNode.md#attr-treenodename) field of this grid's data tree. Also disallows editing of the auto-generated tree field, which displays the result of [Tree.getTitle](Tree.md#method-treegettitle) on the node.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| rowNum | [number](#type-number) | false | — | row number for the cell |
-| colNum | [number](#type-number) | false | — | column number of the cell |
 
 ### Returns
 

@@ -303,18 +303,6 @@ Server-side this string evaluates in a Velocity context where the variables $val
 **Flags**: IR
 
 ---
-## Attr: Validator.roundToPrecision
-
-### Description
-For validators of type "floatPrecision", when set to true, a value with more decimal places than [Validator.precision](#attr-validatorprecision) will be rounded to the specified precision rather than failing validation.
-
-### See Also
-
-- [Validator.precision](#attr-validatorprecision)
-
-**Flags**: IR
-
----
 ## Attr: Validator.validateOnChange
 
 ### Description
@@ -323,14 +311,6 @@ If true, validator will be validated when each item's "change" handler is fired 
 Note that this property can also be set at the form/grid or field level; If true at any level and not explicitly false on the validator, the validator will be fired on change - displaying errors and rejecting the change on validation failure.
 
 **Flags**: IRW
-
----
-## Attr: Validator.otherField
-
-### Description
-For validators of type [matchesField](../reference.md#type-validatortype), specifies the name of the other field whose value this field must match.
-
-**Flags**: IR
 
 ---
 ## Attr: Validator.dependentFields
@@ -507,18 +487,6 @@ When set to true, values that equal the specified [Validator.min](#attr-validato
 **Flags**: IR
 
 ---
-## Attr: Validator.expression
-
-### Description
-For validators that use a regular expression or conditional logic, this property specifies the expression to evaluate.
-
-For [regexp](../reference.md#type-validatortype) validators, this should be a regular expression (as a string or RegExp object) that the value must match.
-
-For [requiredIf](../reference.md#type-validatortype) validators, this should be a [stringMethod](../kb_topics/stringMethods.md#kb-topic-string-methods-overview) that returns `true` if the field should be required. The function receives four parameters: `item` (the form item), `validator` (the validator object), `value` (the field value), and `record` (the form values).
-
-**Flags**: IR
-
----
 ## Attr: Validator.type
 
 ### Description
@@ -643,18 +611,6 @@ Indicates the maximum value for range-based validators. By default, range-valida
 
 ### Description
 To transform the incoming value that is validated into a different value or format set this property from [Validator.condition](#attr-validatorcondition) to the desired value.
-
-**Flags**: IR
-
----
-## Attr: Validator.precision
-
-### Description
-For validators of type "floatPrecision", the `precision` attribute specifies the maximum number of decimal places allowed. If the value has more decimal places than specified and [Validator.roundToPrecision](#attr-validatorroundtoprecision) is set, the value will be rounded to the specified precision and validation will pass; otherwise validation fails.
-
-### See Also
-
-- [ValidatorType](../reference.md#type-validatortype)
 
 **Flags**: IR
 

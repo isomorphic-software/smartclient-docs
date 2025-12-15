@@ -213,7 +213,7 @@ Get a facet definition by facetId.
 
 ### See Also
 
-- [Facet](../reference_2.md#object-facet)
+- [Facet](Facet.md#class-facet)
 
 ---
 ## Method: Chart.getFacetValue

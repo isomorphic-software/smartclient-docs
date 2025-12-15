@@ -118,54 +118,6 @@ amount of time between idle messages (msec)
 **Flags**: IRWA
 
 ---
-## ClassAttr: EventHandler.mouseDownEvent
-
-### Description
-Snapshot of the [EventHandler.lastEvent](#classattr-eventhandlerlastevent) object taken when the most recent mouseDown occurred. Useful for calculating drag offsets relative to the original click position.
-
-### Groups
-
-- events
-
-**Flags**: IRWA
-
----
-## ClassAttr: EventHandler.lastEvent
-
-### Description
-Last event that was processed by our event system. We store the properties of the event in a separate object so we can access them uniformly on both platforms and so we can remember characteristics of the last event we've seen even when we're not in the script context of this event.  
-  
-To access properties of the last event, use:
-
-*   isc.EventHandler.getLastEvent()
-*   isc.EventHandler.getX()
-*   isc.EventHandler.getY()
-*   isc.EventHandler.getScreenX()
-*   isc.EventHandler.getScreenY()
-*   isc.EventHandler.getButtonNum()
-*   isc.EventHandler.leftButtonDown()
-*   isc.EventHandler.rightButtonDown()
-*   isc.EventHandler.getKey()
-*   isc.EventHandler.getKeyEventCharacterValue()
-*   isc.EventHandler.getKeyEventCharacter()
-*   isc.EventHandler.shiftKeyDown()
-*   isc.EventHandler.ctrlKeyDown()
-*   isc.EventHandler.altKeyDown()
-*   isc.EventHandler.metaKeyDown()
-*   isc.EventHandler.modifierKeyDown()
-
-### Groups
-
-- events
-
-### See Also
-
-- [EventHandler.getMouseEventProperties](#classmethod-eventhandlergetmouseeventproperties)
-- [EventHandler.getKeyEventProperties](#classmethod-eventhandlergetkeyeventproperties)
-
-**Flags**: IRWA
-
----
 ## ClassAttr: EventHandler.showNoDropIndicator
 
 ### Description

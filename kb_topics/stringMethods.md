@@ -33,23 +33,6 @@ Since leafClick is a [StringMethod](../reference_2.md#type-stringmethod), howeve
  
 ```
 
-**TypeScript Limitation**
-
-When using SmartClient with TypeScript, string methods cannot be used because TypeScript's type system cannot express that a property accepts either a function OR a string in configuration objects, while still being callable as a function on component instances.
-
-In TypeScript code, always use arrow functions instead of string methods:
-
-```
- isc.TreeGrid.create({
-     ...
-     leafClick: (viewer, leaf, recordNum) => {
-         if (leaf.name == 'zoo') { alert(1); } else { alert(2); }
-     }
- });
- 
-```
-Note that arrow functions capture the lexical `this`, so if your string method used `this` to reference the component, you should instead reference the component by its ID or via a variable.
-
 ### See Also
 
 - [Class.registerStringMethods](../classes/Class.md#classmethod-classregisterstringmethods)

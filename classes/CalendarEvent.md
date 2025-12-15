@@ -110,14 +110,6 @@ Note that the recommended approach for styling events is to set a [custom CSS st
 **Flags**: IRW
 
 ---
-## Attr: CalendarEvent.disabled
-
-### Description
-For a CalendarEvent that represents a [styled zone](Calendar.md#attr-calendarzones), this attribute causes date-cells behind this zone to be disabled, meaning that events cannot be created or moved there with the mouse.
-
-**Flags**: IRW
-
----
 ## Attr: CalendarEvent.borderColor
 
 ### Description

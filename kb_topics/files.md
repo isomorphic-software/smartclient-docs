@@ -35,7 +35,6 @@ The two main URL settings relevant to file loading are:
 - [Page.getSampleThumbnailDir](../classes/Page.md#classmethod-pagegetsamplethumbnaildir)
 - [Page.setSamplePhotoDir](../classes/Page.md#classmethod-pagesetsamplephotodir)
 - [Page.getSamplePhotoDir](../classes/Page.md#classmethod-pagegetsamplephotodir)
-- [Page.getIsomorphicDocsDir](../classes/Page.md#classmethod-pagegetisomorphicdocsdir)
 - [Page.getImgURL](../classes/Page.md#classmethod-pagegetimgurl)
 - [Page.getURL](../classes/Page.md#classmethod-pagegeturl)
 - [Page.loadStyleSheet](../classes/Page.md#classmethod-pageloadstylesheet)

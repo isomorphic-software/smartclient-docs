@@ -434,7 +434,6 @@ Properties defining an object's appearance
 - [ListGridField.width](../classes/ListGridField.md#attr-listgridfieldwidth)
 - [ListGridField.minWidth](../classes/ListGridField.md#attr-listgridfieldminwidth)
 - [ListGridField.maxWidth](../classes/ListGridField.md#attr-listgridfieldmaxwidth)
-- [ListGridField.length](../classes/ListGridField.md#attr-listgridfieldlength)
 - [ListGridField.align](../classes/ListGridField.md#attr-listgridfieldalign)
 - [ListGridField.headerBaseStyle](../classes/ListGridField.md#attr-listgridfieldheaderbasestyle)
 - [ListGridField.spannedHeaderBaseStyle](../classes/ListGridField.md#attr-listgridfieldspannedheaderbasestyle)

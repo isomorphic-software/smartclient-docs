@@ -1958,7 +1958,7 @@ Fires after the keyPress handler on the FormItem itself, and only if the item di
 
 ### Returns
 
-`[Boolean](#type-boolean)` — return false to cancel the keyPress, or true to allow it
+`[boolean](../reference.md#type-boolean)` — return false to cancel the keyPress, or true to allow it
 
 ---
 ## Method: DynamicForm.getItem
@@ -2127,7 +2127,7 @@ Where the 'errors' object is either a single string or an array of strings conta
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false from this method to suppress that behavior
+`[boolean](../reference.md#type-boolean)` — false from this method to suppress that behavior
 
 **Flags**: A
 
@@ -2344,7 +2344,7 @@ Note that it can be bad practice to cancel this method if the mouse is over the 
 
 ### Returns
 
-`[Boolean](#type-boolean)` — return false to cancel default behavior
+`[boolean](../reference.md#type-boolean)` — return false to cancel default behavior
 
 ### Groups
 
@@ -2903,7 +2903,7 @@ Note that any form field which the user has left blank is omitted as criteria, t
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| advanced | [boolean](../reference.md#type-boolean) | true | — | if true, return an [AdvancedCriteria](../reference.md#object-advancedcriteria) object even if the form item values could be represented in a simple [Criterion](../reference_2.md#object-criterion) object. |
+| advanced | [boolean](../reference.md#type-boolean) | false | — | if true, return an [AdvancedCriteria](../reference.md#object-advancedcriteria) object even if the form item values could be represented in a simple [Criterion](../reference_2.md#object-criterion) object. |
 | textMatchStyle | [TextMatchStyle](../reference_2.md#type-textmatchstyle) | true | — | This parameter may be passed to indicate whether the criteria are to be applied to a substring match (filter) or exact match (fetch). When advanced criteria are returned this parameter will cause the appropriate `operator` to be generated for individual fields' criterion clauses. |
 
 ### Returns
@@ -3334,7 +3334,7 @@ Fires after the change() handler on the FormItem itself, and only if the item di
 
 ### Returns
 
-`[Boolean](#type-boolean)` — return false to cancel the change, or true to allow it
+`[boolean](../reference.md#type-boolean)` — return false to cancel the change, or true to allow it
 
 ---
 ## Method: DynamicForm.setCanEdit

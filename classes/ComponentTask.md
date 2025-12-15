@@ -6,7 +6,7 @@
 
 ## Class: ComponentTask
 
-*Inherits from:* [Task](Task.md#class-task)
+*Inherits from:* [ProcessElement](ProcessElement.md#class-processelement)
 
 ### Description
 Base class for tasks that target SmartClient UI-specific operations.

@@ -526,7 +526,7 @@ Update the 'actionType' for this canvas (radio / checkbox / button) If the canva
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| actionType | [SelectionType](../reference_2.md#type-selectiontype) | false | — | new action type |
+| actionType | [SelectionType](../reference.md#type-selectiontype) | false | — | new action type |
 
 ### Groups
 
@@ -617,7 +617,7 @@ Optional stringMethod to fire when the user hovers over this button and the titl
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false to suppress the standard hover
+`[boolean](../reference.md#type-boolean)` — false to suppress the standard hover
 
 ### Groups
 
@@ -635,7 +635,7 @@ Return the 'actionType' for this canvas (radio / checkbox / button)
 
 ### Returns
 
-`[SelectionType](../reference_2.md#type-selectiontype)` — the current action type
+`[SelectionType](../reference.md#type-selectiontype)` — the current action type
 
 ### Groups
 

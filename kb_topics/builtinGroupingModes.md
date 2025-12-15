@@ -1,10 +1,10 @@
-# Built-in Grouping Modes
+# builtinGroupingModes
 
 [← Back to API Index](../reference.md)
 
 ---
 
-## KB Topic: Built-in Grouping Modes
+## KB Topic: builtinGroupingModes
 
 ### Description
 [SimpleTypes](../classes/SimpleType.md#class-simpletype) support a mechanism for arranging values into groups.

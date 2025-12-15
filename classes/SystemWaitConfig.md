@@ -48,11 +48,3 @@ Should the system wait for all outstanding registered [timer actions](Timer.md#c
 **Flags**: IR
 
 ---
-## Attr: SystemWaitConfig.includeReflows
-
-### Description
-Should the system wait for all [Layouts](Layout.md#class-layout) to complete pending [reflows](Layout.md#method-layoutreflownow) before [AutoTest.isSystemDone](AutoTest.md#classmethod-autotestissystemdone) returns true?
-
-**Flags**: IR
-
----

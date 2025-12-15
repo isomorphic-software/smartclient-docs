@@ -81,11 +81,11 @@ This attribute may be set for responses where [progressive loading](DataSource.m
 
 This value may be validly set to a String in the following format:
 
-*   "500+": There are at least 500 records.
-*   "-500": There are fewer than 500 records.
-*   "450-500": There are between 450 and 500 records.
-*   "~500": There are approximately 500 records.
-*   "500": There are exactly 500 records.
+*   "500+": There are at least 500 records
+*   "-500": There are fewer than 500 records
+*   "450-500": There are between 450 and 500 records
+*   "~500": There are approximately 500 records
+*   "500": There are exactly than 500 records
 
 If you are using a SmartClient server side dataSource that supports the [DataSource.progressiveLoadingThreshold](DataSource.md#attr-datasourceprogressiveloadingthreshold) feature, this property will be populated automatically to an exact value if a row count query was performed and the result exceeded the progressiveLoadingThreshold causing progressiveLoading to be enabled.
 

@@ -100,11 +100,11 @@ Setting this property to `false` would bring back the old behavior, when only LI
 By default SQL query is generated using traditional "having" clause approach:
 
 ```
-select <selectClause> from ... where ... group by <groupClause> having <afterWhereClause>
+select <selectClause> from ... where ... group by <groupClause> having <groupWhereClause>
 ```
 Setting `sql.MyDatabase.useHavingClause` to `false` makes SQL query use subselect approach when main query becomes subselect and then it is filtered in outer "where" clause:
 ```
-select * from (select <selectClause> from ... where ... group by <groupClause>) work where <afterWhereClause>
+select * from (select <selectClause> from ... where ... group by <groupClause>) work where <groupWhereClause>
 ```
 This may be overridden by setting [OperationBinding.useHavingClause](../classes/OperationBinding.md#attr-operationbindingusehavingclause).
 

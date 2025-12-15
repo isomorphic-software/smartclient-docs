@@ -6,7 +6,7 @@
 
 ## Class: DrawItem
 
-*Inherits from:* [BaseWidget](BaseWidget.md#class-basewidget)
+*Inherits from:* [BaseWidget](../reference.md#class-basewidget)
 
 ### Description
 Base class for graphical elements drawn in a DrawPane. All properties and methods documented here are available on all DrawItems unless otherwise specified.
@@ -787,7 +787,7 @@ If [canHover](#attr-drawitemcanhover) is true for this DrawItem, the hover() str
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false to cancel the hover event.
+`[boolean](../reference.md#type-boolean)` — false to cancel the hover event.
 
 ### Groups
 
@@ -848,7 +848,7 @@ Note that if this item is part of a [DrawGroup](DrawGroup.md#class-drawgroup), t
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false to cancel drag action.
+`[boolean](../reference.md#type-boolean)` — false to cancel drag action.
 
 ### Groups
 
@@ -925,7 +925,7 @@ Note that if this item is part of a [DrawGroup](DrawGroup.md#class-drawgroup), t
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false to cancel drag interaction.
+`[boolean](../reference.md#type-boolean)` — false to cancel drag interaction.
 
 ### Groups
 
@@ -1079,7 +1079,7 @@ Note that if this item is part of a [DrawGroup](DrawGroup.md#class-drawgroup), t
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false to cancel drag interaction.
+`[boolean](../reference.md#type-boolean)` — false to cancel drag interaction.
 
 ### Groups
 

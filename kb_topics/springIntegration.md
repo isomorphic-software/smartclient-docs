@@ -108,7 +108,7 @@ The [Spring](https://spring.io/projects/spring-framework#learn) 5 framework inte
 
 The [Spring](https://spring.io/projects/spring-framework#learn) 5 ships with [Hibernate](https://hibernate.org/) 5 support only, i.e. without built-in Hibernate 3 and 4 support it used to have.
 
-SmartClient provides "bridges" that allow Spring 5 to be used with Hibernate 3 or 4. To use this combination, include either `isomorphic_spring_hibernate-core-6.5.3.Final.jar` for Hibernate 3 support or `isomorphic_spring_hibernate4.jar` for Hibernate 4 support.
+SmartClient provides "bridges" that allow Spring 5 to be used with Hibernate 3 or 4. To use this combination, include either `isomorphic_spring_hibernate3.jar` for Hibernate 3 support or `isomorphic_spring_hibernate4.jar` for Hibernate 4 support.
 
 Smartclient bridge classes are based on Spring 4.3.26 `org.springframework.orm.hibernate3` and `org.springframework.orm.hibernate4` packages and are placed in corresponding packages: `com.isomorphic.springhibernate3` and `com.isomorphic.springhibernate4`. So, for example, to configure managed Hibernate SessionFactory `**com.isomorphic.springhibernate3**.LocalSessionFactoryBean` class should be used instead of `org.springframework.orm.hibernate3.LocalSessionFactoryBean` class:
 
@@ -129,19 +129,19 @@ With pre JDK8, you cannot use Spring 5 (according to [Spring docs](https://githu
 
 To remove Spring from the SmartClient server all Spring JARs must be removed from your WEB-INF/lib server directory:
 
-*   spring-aop-6.1.15.jar
-*   spring-beans-6.1.15.jar
-*   spring-context-6.1.15.jar
+*   spring-aop-5.3.9.jar
+*   spring-beans-5.3.9.jar
+*   spring-context-5.3.9.jar
 *   spring-context-support-5.3.9.jar
-*   spring-core-6.1.15.jar
-*   spring-expression-6.1.15.jar
-*   spring-jdbc-6.1.15.jar
-*   spring-orm-6.1.15.jar
-*   spring-tx-6.1.15.jar
-*   spring-web-6.1.15.jar
-*   spring-webmvc-6.1.15.jar
+*   spring-core-5.3.9.jar
+*   spring-expression-5.3.9.jar
+*   spring-jdbc-5.3.9.jar
+*   spring-orm-5.3.9.jar
+*   spring-tx-5.3.9.jar
+*   spring-web-5.3.9.jar
+*   spring-webmvc-5.3.9.jar
 *   isomorphic\_spring.jar
-*   isomorphic\_spring\_hibernate-core-6.5.3.Final.jar
+*   isomorphic\_spring\_hibernate3.jar
 *   isomorphic\_spring\_hibernate4.jar
 
 and Spring configuration must be removed from your WEB-INF/web.xml:

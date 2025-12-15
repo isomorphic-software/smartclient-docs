@@ -50,18 +50,6 @@ selectionStyle:"shuttle" is not supported for SetFilterItem
 **Flags**: IR
 
 ---
-## Attr: SetFilterItem.pickListFields
-
-### Description
-Optional list of fields for the [MultiPickerItem.pickList](MultiPickerItem.md#attr-multipickeritempicklist). This property may be used to customize the appearance of the field / fields in the pickList.
-
-If not explicitly specified, pick list fields will be generated automatically to show the display field (or value field if there is no display field) for each option.
-
-Note that if [SetFilterItem.canExpand](#attr-setfilteritemcanexpand) is true, developers should use [SetFilterItem.expandedPickListFields](#attr-setfilteritemexpandedpicklistfields) to specify the set of fields to display in the expanded view.
-
-**Flags**: IR
-
----
 ## Attr: SetFilterItem.sourceList
 
 ### Description

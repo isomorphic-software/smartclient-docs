@@ -975,7 +975,7 @@ Instead of `globals`, you may instead pass a [substitution configuration](../ref
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | screenName | [String](#type-string) | false | — | name of the screen to create |
-| settings | [CreateScreenSettings](#type-createscreensettings)|[String](#type-string)|[Array of String](#type-array-of-string) | true | — | widgets to allow to take their global IDs, or a widget remap config |
+| settings | [CreateScreenSettings](#type-createscreensettings)|[Array of String](#type-array-of-string) | true | — | widgets to allow to take their global IDs, or a widget remap config |
 
 ### Returns
 
@@ -1150,8 +1150,8 @@ Calling `cacheScreens` twice with the same screenName will re-load the definitio
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| screenName | [String](#type-string)|[Array of String](#type-array-of-string) | false | — | name of the screens to cache |
-| callback | [Function](#type-function) | true | — | callback for notification of screens being successfully cached |
+| screenName | [Array of String](#type-array-of-string) | false | — | name of the screens to cache |
+| callback | [Function](#type-function) | false | — | callback for notification of screens being successfully cached |
 | locale | [String](#type-string) | true | — | The name of a locale to use for resolving i18n tags in the component XML of the screen |
 | requestProperties | [RPCRequest Properties](#type-rpcrequest-properties) | true | — | optional properties for the request |
 
@@ -1200,7 +1200,7 @@ This API assumes the ScreenLoaderServlet is installed at the default location - 
 |------|------|----------|---------|-------------|
 | screenName | [String](#type-string) | false | — | name of the screen to load |
 | callback | [LoadScreenCallback](#type-loadscreencallback) | false | — | callback for notification of screen being loaded |
-| settings | [String](#type-string)|[Array of String](#type-array-of-string)|[LoadScreenSettings](#type-loadscreensettings) | true | — | widgets to allow to take their global IDs, or load settings |
+| settings | [Array of String](#type-array-of-string)|[LoadScreenSettings](#type-loadscreensettings) | true | — | widgets to allow to take their global IDs, or load settings |
 | locale | [String](#type-string) | true | — | The name of a locale to use for resolving i18n tags in the component XML of the screen |
 | requestProperties | [RPCRequest Properties](#type-rpcrequest-properties) | true | — | optional properties for the request |
 | missingDSIsNotFatal | [Boolean](#type-boolean) | true | — | If true, server logic does not crash out if it cannot load a DataSource specified in the screen definition. Instead, a stub DataSource is returned, which consists of nothing except the ID and an `unableToLoad` flag, which client-side code can use to determine that the DataSource could not be loaded on the server. Optional, defaults to false (ie, a missing DataSource causes a crash by default) |

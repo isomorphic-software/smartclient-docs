@@ -438,18 +438,6 @@ This only applies to selectionStyle "pickList".
 **Flags**: IR
 
 ---
-## Attr: MultiPickerItem.pickListFields
-
-### Description
-Optional list of fields for the [MultiPickerItem.pickList](#attr-multipickeritempicklist). This property may be used to customize the appearance of the field / fields in the pickList.
-
-If not explicitly specified, pick list fields will be generated automatically to show the display field (or value field if there is no display field) for each option.
-
-Note that if [MultiPickerItem.canExpand](#attr-multipickeritemcanexpand) is true, developers should use [MultiPickerItem.expandedPickListFields](#attr-multipickeritemexpandedpicklistfields) to specify the set of fields to display in the expanded view.
-
-**Flags**: IR
-
----
 ## Attr: MultiPickerItem.sortField
 
 ### Description

@@ -1,4 +1,4 @@
-# SmartClient API Reference (15.0) (Part 2 of 2)
+# SmartClient API Reference (14.0) (Part 2 of 2)
 
 [← Back to Part 1](reference.md)
 
@@ -35,12 +35,6 @@ String specifying effect to apply during an animated show or hide.
 | "wipe" | content is revealed or wiped as the widget grows or shrinks |
 | "fade" | widget's opacity smoothly fades into or out of view |
 | "fly" | widget moves into position from offscreen |
-
----
-## Type: AnimationCallback
-
-### Description
-A [Callback](#type-callback) to fire when an animation completes. The callback receives a single `earlyFinish` parameter which is true if the animation was cut short (for example by a call to a non-animated API that changes the same property).
 
 ---
 ## Type: ArrowStyle
@@ -794,42 +788,6 @@ If you use a Java-based persistence layer not provided by SmartClient, such as E
 ### Groups
 
 - serverDataIntegration
-
----
-## Type: DynamicString
-
-### Description
-A [dynamic string](kb_topics/dynamicStrings.md#kb-topic-dynamic-strings).
-
-### Groups
-
-- dynamicStrings
-
----
-## Type: EditCompletionEvent
-
-### Description
-What event / user interaction type caused cell editing to complete.
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| ListGrid.CLICK_OUTSIDE | User clicked outside editor during edit. |
-| ListGrid.CLICK | User started editing another row by clicking on it |
-| ListGrid.DOUBLE_CLICK | User started editing another row by double clicking |
-| ListGrid.ENTER_KEYPRESS | Enter pressed. |
-| ListGrid.ESCAPE_KEYPRESS | User pressed Escape. |
-| ListGrid.UP_ARROW_KEYPRESS | Up arrow key pressed. |
-| ListGrid.DOWN_ARROW_KEYPRESS | down arrow key. |
-| ListGrid.TAB_KEYPRESS | User pressed Tab. |
-| ListGrid.SHIFT_TAB_KEYPRESS | User pressed Shift+Tab. |
-| ListGrid.EDIT_FIELD_CHANGE | Edit moved to a different field (same row) |
-| ListGrid.PROGRAMMATIC | Edit completed via explicit function call |
-
-### Groups
-
-- editing
 
 ---
 ## Type: ElementWaitStyle
@@ -2072,21 +2030,21 @@ Controls the style of TableView record display
 ### Description
 Function to produce a summary value based on field values within a record. Example usage is record-level summaries in ["summary" type ListGrid fields](#type-listgridfieldtype).
 
-Record summary functions may be specified in one of two ways:
+SummaryFunctions may be specified in one of 2 ways:
 
 *   as an explicit function or executable [StringMethod](kb_topics/stringMethods.md#kb-topic-string-methods-overview). Takes 3 parameters:  
     `record` the record for which the value is being calculated  
     `fields` Array of listGridFields from which summaries should be calculated  
     `summaryField` pointer to the summary type field on which the summary function is being run.
-*   The identifier of such a function or string method, either built-in or registered via [DataSource.registerRecordSummaryFunction](classes/DataSource.md#classmethod-datasourceregisterrecordsummaryfunction)
+*   As a registered RecordSummaryFunction identifier
 
-[DataSource.registerRecordSummaryFunction](classes/DataSource.md#classmethod-datasourceregisterrecordsummaryfunction) may be used to expand the set of registered record summary functions.
+Note that [DataSource.registerRecordSummaryFunction](classes/DataSource.md#classmethod-datasourceregisterrecordsummaryfunction) may be used to expand the set of registered RecordSummaryFunctions.
 
 ### Values
 
 | Value | Description |
 |-------|-------------|
-| sum | Iterates through each field, picking up the numeric field values from the record and summing them. This is the default if [ListGridField.recordSummaryFunction](classes/ListGridField.md#attr-listgridfieldrecordsummaryfunction) is not specified and [ListGridField.getRecordSummary](classes/ListGridField.md#method-listgridfieldgetrecordsummary) is not implemented. |
+| sum | Iterates through each field, picking up the numeric field values from the record and summing them. |
 | avg | Iterates through each field, picking up the numeric field values from the record and calculating the mean value. |
 | max | Iterates through each field, picking up the numeric field values from the record and calculating the maximum value. |
 | min | Iterates through each field, picking up the numeric field values from the record and calculating the minimum value. |
@@ -2142,24 +2100,6 @@ This format is very flexible. Here are a few example relative date strings:
 ### See Also
 
 - [RelativeDateShortcut](#type-relativedateshortcut)
-
----
-## Type: ReorderPosition
-
-### Description
-Controls where a drag-item should be dropped in relation to the target row
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| ListGrid.BEFORE | Drop the drag-item before the target-row |
-| ListGrid.AFTER | Drop the drag-item after the target-row |
-| ListGrid.OVER | Drop the drag-item over (onto) the target-row |
-
-### Groups
-
-- dragdrop
 
 ---
 ## Type: ResizeKnobPoint
@@ -2258,25 +2198,6 @@ Enum to indicate selection change notification types. Used by [ListGrid.reselect
 | "selectionUpdated" | [selectionChanged()](classes/ListGrid_2.md#method-listgridselectionchanged) and [selectionUpdated()](classes/ListGrid_2.md#method-listgridselectionupdated) should both fire. |
 
 ---
-## Type: SelectionType
-
-### Description
-Controls how an object changes state when clicked
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| StatefulCanvas.BUTTON | object moves to "down" state temporarily (normal button) |
-| StatefulCanvas.CHECKBOX | object remains in "down" state until clicked again (checkbox) |
-| StatefulCanvas.RADIO | object moves to "down" state, causing another object to go up (radio) |
-
-### Groups
-
-- state
-- event handling
-
----
 ## Type: SelectItemsMode
 
 ### Description
@@ -2306,57 +2227,6 @@ Controls whether and when individual items are selected when clicking on a form 
 ### Groups
 
 - communication
-
----
-## Type: SetterPath
-
-### Description
-A path expression indicating where and how a nested Object should be updated.
-
-A `SetterPath` is a dot-delimited list of segments, where each segment is a property name. The `SetterPath` can end in an operator that controls how the property update is done:
-
-*   `[]` – append to an Array (creates the Array if missing)
-*   `{}` – deep merge into an Object, overwriting existing keys
-*   `{?}` – deep merge into an Object, preserving existing keys (non-clobbering)
-
-This syntax is used in [Task.setState](classes/Task.md#method-tasksetstate)/[Process.setStateVariable](classes/Process.md#method-processsetstatevariable).
-
-Missing objects and Arrays are created as needed unless [strictPaths](classes/Task.md#attr-taskstrictpaths) is set, either in the specific API call, or on the [task](classes/Task.md#attr-taskstrictpaths) or [process](classes/Process.md#attr-processstrictpaths) involved. When `strictPaths` is enabled, attempting to traverse through a non-object/Array or a missing segment throws an error instead.
-
-#### Examples
-Assume `process.state` starts as:
-```
- {
-     currentDS: {
-         fields: [ { name:"orderId", type:"integer" } ],
-         defaults: { timezone:"UTC" }
-     }
- }
- 
-```
-
-*   **Append**  
-    `"currentDS.fields[]": { name:"orderDate", type:"date" }`  
-    Result: `fields` gains a new element at the end.
-*   **Deep merge (clobber)**  
-    `"currentDS.defaults{}": { timezone:"PST", dateFormat:"YYYY-MM-DD" }`  
-    Result: `timezone` is overwritten to "PST"; `dateFormat` is added.
-*   **Deep merge (non-clobber)**  
-    `"currentDS.defaults{?}": { timezone:"PST", locale:"en-US" }`  
-    Result: existing `timezone:"UTC"` is preserved; `locale` is added.
-
----
-## Type: SettledPromiseStatus
-
-### Description
-The eventual state of a settled [Promise](reference_2.md#object-promise).
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| "fulfilled" | The `Promise` fulfilled with a value. |
-| "rejected" | The `Promise` rejected with a reason. |
 
 ---
 ## Type: SkipJSONValidation
@@ -2454,26 +2324,10 @@ For valid ways to configure SummaryFunctions to use server-side feature see the 
 _Server:_ acts exactly like SQL SUM function. |
 | avg | _Client:_ iterates through the set of records, picking up all numeric values for the specified field and determining the mean value. Returns null to indicate invalid summary value if any non numeric field values are encountered.  
 _Server:_ acts exactly like SQL AVG function. |
-| max | _Client:_ iterates through the set of records, picking up all non-null values for the specified field and finding the maximum value, where comparison between values is made:
-
-1.  via [SimpleType.compareValues](classes/SimpleType.md#method-simpletypecomparevalues) if defined for the field's [type](classes/Field.md#attr-fieldtype)
-2.  via [DateUtil.compareLogicalDates](classes/DateUtil.md#classmethod-dateutilcomparelogicaldates) if the field type inherits from "date"
-3.  via comparison as [logical times](classes/Time.md#classmethod-timecreatelogicaltime) if the field type inherits from "time"
-4.  via [DateUtil.compareDates](classes/DateUtil.md#classmethod-dateutilcomparedates) for two values that are both [Date](reference_2.md#object-date)s
-5.  otherwise, using traditional methods
-
-Returns null to indicate an invalid summary value or when all source values are null. For best results, ensure that the [Field.type](classes/Field.md#attr-fieldtype) is correctly set.  
-_Server:_ acts exactly like the SQL MAX aggregate function. |
-| min | _Client:_ iterates through the set of records, picking up all non-null values for the specified field and finding the minimum value, where comparison between values is made:
-
-1.  via [SimpleType.compareValues](classes/SimpleType.md#method-simpletypecomparevalues) if defined for the field's [type](classes/Field.md#attr-fieldtype)
-2.  via [DateUtil.compareLogicalDates](classes/DateUtil.md#classmethod-dateutilcomparelogicaldates) if the field type inherits from "date"
-3.  via comparison as [logical times](classes/Time.md#classmethod-timecreatelogicaltime) if the field type inherits from "time"
-4.  via [DateUtil.compareDates](classes/DateUtil.md#classmethod-dateutilcomparedates) for two values that are both [Date](reference_2.md#object-date)s
-5.  otherwise, using traditional methods
-
-Returns null to indicate an invalid summary value or when all source values are null. For best results, ensure that the [Field.type](classes/Field.md#attr-fieldtype) is correctly set.  
-_Server:_ acts exactly like the SQL MIN aggregate function. |
+| max | _Client:_ iterates through the set of records, picking up all values for the specified field and finding the maximum value. Handles numeric fields and date/time/datetime type fields only. Returns null to indicate invalid summary value if any non numeric/date field values are encountered.  
+_Server:_ acts exactly like SQL MAX function. |
+| min | _Client:_ iterates through the set of records, picking up all values for the specified field and finding the minimum value. Handles numeric fields and date/time/datetime type fields only. Returns null to indicate invalid summary value if any non numeric field values are encountered.  
+_Server:_ acts exactly like SQL MIN function. |
 | multiplier | _Client:_ iterates through the set of records, picking up all numeric values for the specified field and multiplying them together. Returns null to indicate invalid summary value if any non numeric field values are encountered.  
 _Server:_ **not supported**. |
 | count | _Client:_ returns a numeric count of the total number of records passed in.  
@@ -2490,68 +2344,6 @@ _Server:_ The same approach as for "concat", and with the same restrictons and l
 ### Groups
 
 - serverSummaries
-
----
-## Type: TaskInputExpression
-
-### Description
-A TaskInputExpression is a way to specify a value in the declarative workflow system ([Process](classes/Process.md#class-process) / [Task](classes/Task.md#class-task)) that is derived from the running [process state](classes/Process.md#attr-processstate), the [output](classes/Task.md#method-tasksetoutput) of a previous task in the process, or from global context such as [ruleScope](classes/Process.md#attr-processrulescope).
-
-For example, in [FormEditNewRecordTask](#class-formeditnewrecordtask), `taskInputExpressions` are allowed in the [initialValues](#attr-formeditnewrecordtaskinitialvalues) specified for the task, making it very easy to build a process that fetches data from the server and populates a form with that data.
-
-Similarly, in [GridFetchDataTask](classes/GridFetchDataTask.md#class-gridfetchdatatask), `taskInputExpressions` are allowed in the [criteria](classes/GridFetchDataTask.md#attr-gridfetchdatataskcriteria) specified for the task, as the [Criterion.value](classes/Criterion.md#attr-criterionvalue) for any criterion.
-
-`TaskInputExpressions` are designed to be visual-tool-friendly so that it's easy to visually wire together processes in the [Workflow Editor](kb_topics/reifyAddWorkflowTask.md#kb-topic-reify-onsite-adding-custom-workflow-tasks).
-
-A TaskInputExpression is a String prefixed with "$input", "$inputRecord", "$ruleScope", "$state" or "$last" followed by an optional dot-separated hierarchical path, which can specify either an atomic data value (String, Number) or Record from the input data. For example, if the [Process.state](classes/Process.md#attr-processstate) represented in JSON were:
-
-```
- {
-    orderId:5,
-    orderItems: [
-       {name:"Pencils", quantity:3, itemId:2344}
-    ],
-    orderUser: { name:"Henry Winkle", address:"...", ... }
- }
- 
-```
-.. and a task specified an `inputs` of "orderId" and an inputFieldList of "orderItems","orderUser", then:
-
-*   $input is the value 5
-*   $inputRecord.orderUser.name is "Henry Winkle"
-*   $inputRecord.orderItems\[0\] is the first orderItems Record ({name:"Pencils", ... })
-
-"$ruleScope" can be used to pull values from a [ruleScope](classes/Canvas.md#attr-canvasrulescope) [ruleContext](classes/Canvas.md#method-canvasgetrulecontext) when configured in [Process.ruleScope](classes/Process.md#attr-processrulescope).
-
-*   $ruleScope.property references the ruleContext "property" field
-
-Two others sources of input are "$state" and "$last". The former references the contents of the [Process.state](classes/Process.md#attr-processstate) and the latter the [transient state](classes/Process.md#attr-processstate).
-
-*   $state is the full contents of the process state
-*   $state.orderId is the "orderId" field of the process state (5 from the example above)
-*   $last is the full output of the previous task executed in the process
-*   $last.property is the "property" field of the previous task executed in the process
-*   $last\[service\].property or $last\[DSRequestTask\].property references the last "DSRequestTask" output in the "property" field
-*   $ruleScope.property references the ruleScope "property" field
-
-The last two sources of input are "$lastRequest" and "$lastResponse". These are the objects `dsRequest` and `dsResponse` representing the last [DSRequestTask](classes/DSRequestTask.md#class-dsrequesttask), [DSFetchTask](#class-dsfetchtask), [DSAddTask](#class-dsaddtask), [DSUpdateTask](#class-dsupdatetask) or [DSRemoveTask](#class-dsremovetask) DataSource operation as returned in the operation's [callback](reference_2.md#type-dscallback). A common usage would be to reference $lastResponse.totalRows to know how many rows were returned from a fetch.
-
-#### Transient state outputs
-Most tasks pass the output from the _previous_ task as their output (i.e. passed through) making it easy to refer to earlier output without referencing the task type. Tasks that work with records or interact with the user, however, typically provide task-specific output as detailed below:
-
-*   **DSRequestTask**: the contents of dsResponse.data.
-*   **ScriptTask**: the result of [execute()](classes/ScriptTask.md#method-scripttaskexecute) or, for an asynchronous task, the value passed to [setOutput()](classes/ScriptTask.md#method-scripttasksetoutput).
-*   **StateTask**: the value assigned to the outputField.
-*   **UserTask**: the values of the targetForm or targetVM when the task completes.
-*   **AskForValueTask**: an object with "value" and "canceled" properties.
-*   **FetchRelatedDataTask**: the first fetched record.
-*   **GridFetchDataTask**: the contents of dsResponse.data.
-*   **GridTransferSelectedTask**: the first transfered record.
-*   **GridSelectRecordsTask**: on a select, the set of newly selected records, even if other records are also selected. On a deselect, the entire set of de-selected records.
-*   **FetchRelatedDataTask**: the first fetched related record.
-*   **FormSaveDataTask**: an object with "valuesValid" and "errors" properties.
-*   **FormValidateValuesTask**: an object with "valuesValid" and "errors" properties.
-*   **GetPropertiesTask**: an object with selected properties and values retrieved.
 
 ---
 ## Type: TextMatchStyle
@@ -2864,6 +2656,10 @@ Context object for an AI process.
 ### Description
 Settings that configure requests to AI to generate the values for a field.
 
+### See Also
+
+- [AI.buildAIFieldRequest](classes/AI.md#classmethod-aibuildaifieldrequest)
+
 ---
 ## Object: AIHoverRequest
 
@@ -2881,6 +2677,16 @@ A message relating to progress made in an ongoing build-via-AI operation.
 
 ### Description
 Represents a response from AI.
+
+---
+## Object: ApplyAIFilterRequest
+
+### Description
+Represents a request to AI to evaluate an "aiFilter" [AdvancedCriteria](#object-advancedcriteria) on a list of records.
+
+### See Also
+
+- [AI.applyAIFilter](classes/AI.md#classmethod-aiapplyaifilter)
 
 ---
 ## Object: Array
@@ -2901,6 +2707,42 @@ JavaScript's native Array is retrofitted to support the `List` API.
 Boolean object. Attributes, parameters, or return values declared as `Boolean` may be null. Contrast with [boolean](#type-boolean).
 
 ---
+## Object: BuildAIFieldRequestRequest
+
+### Description
+Builds an [AIFieldRequest](reference_2.md#object-aifieldrequest) from a [UserAIRequest](reference_2.md#object-userairequest) containing a natural language description of the per-record values to generate for a new AI-generated field.
+
+### See Also
+
+- [AI.buildAIFieldRequest](classes/AI.md#classmethod-aibuildaifieldrequest)
+
+---
+## Object: BuildCriterionContext
+
+### Description
+—
+
+### See Also
+
+- [AI.buildCriterion](classes/AI.md#classmethod-aibuildcriterion)
+
+---
+## Object: BuildCriterionRequest
+
+### Description
+Builds an [AdvancedCriteria](#object-advancedcriteria) object from a [UserAIRequest](reference_2.md#object-userairequest) containing a natural language description of a filter.
+
+### See Also
+
+- [AI.buildCriterion](classes/AI.md#classmethod-aibuildcriterion)
+
+---
+## Object: BuildDataBoundUIViaAIRequest
+
+### Description
+Represents a request to AI for data-bound UI elements.
+
+---
 ## Object: BuildHilitesContext
 
 ### Description
@@ -2908,7 +2750,13 @@ Boolean object. Attributes, parameters, or return values declared as `Boolean` m
 
 ### See Also
 
-- [AI.buildHilites](#classmethod-aibuildhilites)
+- [AI.buildHilites](classes/AI.md#classmethod-aibuildhilites)
+
+---
+## Object: BuildUIViaAIRequest
+
+### Description
+Represents a request to AI for UI elements.
 
 ---
 ## Object: ClassFactory
@@ -2927,18 +2775,6 @@ Sets up a real inheritance structure for Javascript objects. We separate out cla
 An object containing properties that is used in Gradient types
 
 ---
-## Object: CoTHistoryEntry
-
-### Description
-Any serializable JavaScript Object can be added to the history via [CoTProcess.addHistory](classes/CoTProcess.md#method-cotprocessaddhistory). See [CoTHistory](kb_topics/CoTHistory.md#kb-topic-cothistory) for details on what automatic entries are created by built-in features and how history is used in prompt assembly.
-
----
-## Object: CoTTransition
-
-### Description
-Declares an allowed transition to another task.
-
----
 ## Object: Criterion
 
 ### Description
@@ -2953,22 +2789,6 @@ A shortcut form is also allowed where only `fieldName` and `value` values are pr
 ### Groups
 
 - advancedFilter
-
----
-## Object: DataQuestion
-
-### Description
-Represents a data question and either the steps taken in attempting to answer it or the result.
-
-### Groups
-
-- answerEngine
-
----
-## Object: DataQuestionResult
-
-### Description
-The result of the data question.
 
 ---
 ## Object: DataSourceField
@@ -3000,12 +2820,6 @@ The general approach is that we track a maximum of [maxTrackedOverflows](classes
 
 - [Canvas.startDebuggingOverflow](classes/Canvas.md#classmethod-canvasstartdebuggingoverflow)
 - [Canvas.stopDebuggingOverflow](classes/Canvas.md#classmethod-canvasstopdebuggingoverflow)
-
----
-## Object: DecisionBranch
-
-### Description
-Identifies a potential branch within a [MultiDecisionTask](classes/MultiDecisionTask.md#class-multidecisiontask). Each decision has a criteria and a target ProcessElement ID.
 
 ---
 ## Object: DiscoverTreeSettings
@@ -3116,12 +2930,6 @@ See the [Master/Detail Add Example](https://www.smartclient.com/smartclient-late
 - transactionChaining
 
 ---
-## Object: Facet
-
-### Description
-Facet definition object made use of by the [CubeGrid](classes/CubeGrid.md#class-cubegrid) and [FacetChart](classes/FacetChart.md#class-facetchart) classes.
-
----
 ## Object: Field
 
 ### Description
@@ -3167,12 +2975,6 @@ You can also load the FileLoader itself dynamically - see [FileLoader.ensureLoad
 Note: You can also reference this class via the alias isc.FL
 
 ---
-## Object: FilterViaAISettings
-
-### Description
-Settings to use for filtering a [DataBoundComponent](#interface-databoundcomponent) via AI.
-
----
 ## Object: FiscalYear
 
 ### Description
@@ -3196,7 +2998,7 @@ Represents a sector on the gauge.
 ## Object: Gradient
 
 ### Description
-Defines a simple gradient vertical gradient between [two](classes/Gradient.md#attr-gradientstartcolor) [colors](classes/Gradient.md#attr-gradientendcolor), or using [colorStops](classes/Gradient.md#attr-gradientcolorstops). See [SimpleGradient](#object-simplegradient), [LinearGradient](#object-lineargradient) and [RadialGradient](#object-radialgradient) for further properties to define more advanced gradients.
+Defines a simple gradient vertical gradient between [two](#attr-gradientstartcolor) [colors](#attr-gradientendcolor), or using [colorStops](#attr-gradientcolorstops). See [SimpleGradient](#object-simplegradient), [LinearGradient](#object-lineargradient) and [RadialGradient](#object-radialgradient) for further properties to define more advanced gradients.
 
 ---
 ## Object: GroupSpecifier
@@ -3207,12 +3009,6 @@ A Javascript object defining the details of a single group operation. Used by th
 ### Groups
 
 - grouping
-
----
-## Object: GroupSummary
-
-### Description
-Group Summary.
 
 ---
 ## Object: HeaderLevel
@@ -3245,18 +3041,6 @@ See [hiliting](kb_topics/hiliting.md#kb-topic-hiliting) for an overview.
 ### Groups
 
 - hiliting
-
----
-## Object: HiliteViaAIResult
-
-### Description
-The result of a hilite-via-AI operation.
-
----
-## Object: HiliteViaAISettings
-
-### Description
-Settings to use for hiliting a [DataBoundComponent](#interface-databoundcomponent) via AI.
 
 ---
 ## Object: ImgHTMLProperties
@@ -3318,12 +3102,6 @@ A ListGridRecord is always an ordinary JavaScript Object regardless of how the g
 Note however that simply assigning a value to a record won't cause the display to be automatically refreshed - [ListGrid.refreshCell](classes/ListGrid_2.md#method-listgridrefreshcell) needs to be called. Also, consider [editValues vs saved values](kb_topics/editing.md#kb-topic-grid-editing) when directly modifying ListGridRecords.
 
 See the attributes in the API tab for the full list of special properties on ListGridRecords that will affect the grid's behavior.
-
----
-## Object: ListProperties
-
-### Description
-Configuration of an HTML list in a [RichTextEditor](classes/RichTextEditor.md#class-richtexteditor).
 
 ---
 ## Object: LoadProjectSettings
@@ -3577,6 +3355,26 @@ An object representing one of the image segments displayed by a [StretchImg](cla
 Generic extensions to JavaScript Strings. You can call these on any String.
 
 ---
+## Object: SummarizeRecordsContext
+
+### Description
+Context for an ongoing record summarization operation.
+
+---
+## Object: SummarizeRecordsRequest
+
+### Description
+Represents a request to AI to generate summaries of records, using data in the records, relevant general knowledge, and reasonable inferences from the data. Summaries may include relevant supplemental information for each record.
+
+The provided [SummarizeRecordsRequest.records](classes/SummarizeRecordsRequest.md#attr-summarizerecordsrequestrecords) are split into batches of varying lengths (see [SummarizeRecordsRequest.maxRecordsPerBatch](classes/SummarizeRecordsRequest.md#attr-summarizerecordsrequestmaxrecordsperbatch)). For each batch, a [SummarizeRecordsPartialResult](#object-summarizerecordspartialresult) will be generated with either information about the reason for a non-successful outcome, or the generated summaries for records in the batch.
+
+---
+## Object: SummarizeValueRequest
+
+### Description
+Represents a request to AI to generate a summary of an individual value.
+
+---
 ## Object: SystemAIRequest
 
 ### Description
@@ -3615,12 +3413,6 @@ Because TestFunctionResult is always an ordinary JavaScript Object, it supports 
 Every node in the tree is represented by a TreeNode object which is an object literal with a set of properties that configure the node.
 
 When a Tree is supplied as [TreeGrid.data](classes/TreeGrid.md#attr-treegriddata) to [TreeGrid](classes/TreeGrid.md#class-treegrid), you can also set properties from [ListGridRecord](reference_2.md#object-listgridrecord) on the TreeNode (e.g. setting [ListGridRecord.enabled](classes/ListGridRecord.md#attr-listgridrecordenabled):`false` on the node).
-
----
-## Object: UISummarySettings
-
-### Description
-Settings that control how a widget UI Summary is built.
 
 ---
 ## Object: UserAIRequest

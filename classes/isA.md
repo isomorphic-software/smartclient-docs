@@ -152,30 +152,12 @@ Is `object` an Array with no items?
 `[boolean](../reference.md#type-boolean)` — true == `object` is an empty array
 
 ---
-## StaticMethod: isA.nonemptyArray
-
-### Description
-Is `object` an array with at least one item?
-
-Note: `null`, `undefined`, and empty slots in an array are still considered an item.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| object | [Any](#type-any) | false | — | The object or value to test. |
-
-### Returns
-
-`[boolean](../reference.md#type-boolean)` — `true` if `object` is an array with at least one item; `false` otherwise (i.e. `object` isn't an array, or it has no items)
-
----
 ## StaticMethod: isA.Object
 
 ### Description
-Returns whether the passed value is a non-`null` Object.
+Returns whether the passed value is a non-null Object.
 
-Returns `false` for values that are numbers, strings, booleans, functions or are `null` or `undefined`. (Note: Returns `true` for the wrapper types, e.g. `new String("some string")`.)
+Returns false for values that are Numbers, Strings, Booleans, Functions or are null or undefined.
 
 Returns true for Object, Array, Regular Expression, Date and other kinds of native objects which are considered to extend from window.Object.
 

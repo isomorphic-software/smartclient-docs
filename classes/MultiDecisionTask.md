@@ -15,7 +15,7 @@ Chooses a next element in a [Process](Process.md#class-process) by evaluating a 
 ## Attr: MultiDecisionTask.decisionList
 
 ### Description
-List of [DecisionBranchs](../reference_2.md#object-decisionbranch) to be processed to find the first with matching criteria. The specified [DecisionBranch.targetTask](DecisionBranch.md#attr-decisionbranchtargettask) is then used to identify the the next element.
+List of [DecisionBranchs](../reference.md#object-decisionbranch) to be processed to find the first with matching criteria. The specified [DecisionBranch.targetTask](DecisionBranch.md#attr-decisionbranchtargettask) is then used to identify the the next element.
 
 If no criteria is matched the next element is [MultiDecisionTask.defaultElement](#attr-multidecisiontaskdefaultelement) or the workflow is finished.
 

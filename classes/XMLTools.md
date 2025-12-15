@@ -176,9 +176,9 @@ NOTE: required fields: the XML Schema concept of "required" for an attribute or 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | schemaURL | [URL](../reference_2.md#type-url) | false | — | URL to load the schema from |
-| callback | [Callback](../reference.md#type-callback) | true | — | signature is callback(schemaSet) |
-| requestProperties | [RPCRequest Properties](#type-rpcrequest-properties) | true | — | additional properties to set on the RPCRequest that will be issued |
-| autoLoadImports | [boolean](../reference.md#type-boolean) | true | — | if set, xsd:import statements will be processed automatically to load dependent XSD files where a "location" is specified. The callback will not fire until all dependencies have been loaded |
+| callback | [Callback](../reference.md#type-callback) | false | — | signature is callback(schemaSet) |
+| requestProperties | [RPCRequest](#type-rpcrequest) | false | — | additional properties to set on the RPCRequest that will be issued |
+| autoLoadImports | [boolean](../reference.md#type-boolean) | false | — | if set, xsd:import statements will be processed automatically to load dependent XSD files where a "location" is specified. The callback will not fire until all dependencies have been loaded |
 
 ### Groups
 
@@ -294,9 +294,9 @@ Platform notes:
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | wsdlURL | [URL](../reference_2.md#type-url) | false | — | URL to load the WSDL file from |
-| callback | [Callback](../reference.md#type-callback) | true | — | signature is callback(service) |
-| requestProperties | [RPCRequest](#type-rpcrequest) | true | — | additional properties to set on the RPCRequest that will be issued |
-| autoLoadImports | [boolean](../reference.md#type-boolean) | true | — | if set, xsd:import statements will be processed automatically to load dependent XSD files where a "location" is specified. The callback will not fire until all dependencies have been loaded |
+| callback | [Callback](../reference.md#type-callback) | false | — | signature is callback(service) |
+| requestProperties | [RPCRequest](#type-rpcrequest) | false | — | additional properties to set on the RPCRequest that will be issued |
+| autoLoadImports | [boolean](../reference.md#type-boolean) | false | — | if set, xsd:import statements will be processed automatically to load dependent XSD files where a "location" is specified. The callback will not fire until all dependencies have been loaded |
 
 ### Groups
 

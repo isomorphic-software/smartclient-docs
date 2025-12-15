@@ -90,7 +90,7 @@ However you _can_ create an editor with a [FormItem icon](../classes/FormItem.md
 - [EnterKeyEditAction](../reference.md#type-enterkeyeditaction)
 - [EscapeKeyEditAction](../reference.md#type-escapekeyeditaction)
 - [ArrowKeyEditAction](../reference.md#type-arrowkeyeditaction)
-- [EditCompletionEvent](../reference_2.md#type-editcompletionevent)
+- [EditCompletionEvent](../reference.md#type-editcompletionevent)
 - [ListGridEditEvent](../reference.md#type-listgrideditevent)
 - [CubeGrid.setEditValue](../classes/CubeGrid.md#method-cubegridseteditvalue)
 - [CubeGrid.getEditValue](../classes/CubeGrid.md#method-cubegridgeteditvalue)

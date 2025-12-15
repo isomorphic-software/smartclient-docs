@@ -159,47 +159,6 @@ You can alternatively set `editorType="ComboBoxItem"` on the "managerId" field t
 
 The [Include Summary Function](#attr-datasourcefieldincludesummaryfunction) feature is used for including from a related DataSource where there are multiple related records. It applies a [SummaryFunction](../reference_2.md#type-summaryfunction) to the related records aggregating them into single value. It is regularly used on directly included fields, but it supports indirect inclusions as well, when entire `includeFrom`+`includeSummaryFunction` setup is included from another DataSource. See [DataSourceField.includeSummaryFunction](#attr-datasourcefieldincludesummaryfunction) docs for more details.
 
-For best results, ensure that the field with `includeFrom` has its [DataSourceField.type](#attr-datasourcefieldtype) explicitly set to the included field's `type`.
-
-**`includeFrom` combined with `[multiple](#attr-datasourcefieldmultiple):true`**
-
-If you specify `[multiple](#attr-datasourcefieldmultiple):true` on an `includeFrom` field, it has one of two quite different meanings:
-
-1.  It is including a field which is itself marked `multiple:true`, across a regular many-to-one or one-to-one [relation](../kb_topics/dataSourceRelations.md#kb-topic-relations). In this case, the value of the included field is likely to be a flattened list of text values stored in a regular text field - see [DataSourceField.multipleStorage](#attr-datasourcefieldmultiplestorage)
-2.  It is including multiple related values across a one-to-many or many-to-many relation
-
-The first of these is exactly the same as any other regular `includeFrom`, except that it will have normal `multiple:true` processing applied to the included value, so the client sees a true list of values rather than a flat string of text.
-
-The second is more involved. With this type of `includeFrom` we will actually fetch multiple records from the included DataSource. You should read the **One-to-many** and **Many-to-many** sections of the [relations overview](../kb_topics/dataSourceRelations.md#kb-topic-relations) to make sure you understand how these relation types work, but essentially you declare a [foreignKey](#attr-datasourcefieldforeignkey) on a field that is also marked `multiple:true`, and this causes SmartClient to return a list of key values that your client-side code can use to obtain the related records (some SmartClient UI components will do this automatically).
-
-Once one of these relation types is in place, it is also possible to declare `includeFrom` fields that make use of the relation to include fields other than the identifying key field, for convenience. For example, if a **Country** dataSource declared a one-to-many relation to a **City** dataSource, like this:
-
-```
-     <field name="majorCities" multiple="true" foreignKey="City.cityId" />
- 
-```
-The same dataSource could make use of that relation to include the names of all related cities for convenience, so you can show a list of "Major Cities" against each country without having to go back to the server and fetch the actual City records. The declaration would look like this:
-```
-     <field name="cityNames" multiple="true" includeFrom="City.cityName" />
- 
-```
-With **Many-to-many** related includeFroms - which require a "middle" dataSource, and thus a three-part `foreignKey` declaration - you may specify either the entire inclusion path, or just the endpoint. For example, if your **Country** dataSource has a many-to-many relation with a **River** dataSource - necessary, because most countries contain more than one river, and many rivers flow through more than one country - via the following `foreignKey` definition:
-```
-     <field name="rivers" multiple="true" foreignKey="CountryRivers.Rivers.riverId" />
- 
-```
-you could `includeFrom` the list of related river names with either this:
-```
-     <field name="riverNames" multiple="true" includeFrom="CountryRivers.Rivers.name" />
- 
-```
-or slightly simpler, this:
-```
-     <field name="riverNames" multiple="true" includeFrom="Rivers.name" />
- 
-```
-If just the endpoint is specified, SmartClient will figure out the remainder of the path based on the available `foreignKey`s; if there is ambiguity that makes this impossible - ie, two `foreignKey` fields that target the same endpoint via different paths - you can either specify the entire include path in the `includeFrom` definition, or declare an [includeVia](#attr-datasourcefieldincludevia) setting on the field.
-
 ### Groups
 
 - dataSourceRelations
@@ -395,24 +354,7 @@ With this Excel limitation in mind, it makes sense to just go with the default b
 ## Attr: DataSourceField.description
 
 ### Description
-An optional description of the DataSourceField's meaning. It is not automatically exposed on any component, but it is useful for developer documentation, and as such it is included on any [OpenAPI specification](../kb_topics/openapiSupport.md#kb-topic-openapi-specification-oas-support) generated by the framework. Markdown is a commonly-used syntax, but you may also embed HTML content. When embedding HTML in the description in a .ds.xml file (see [dataSourceDeclaration](../kb_topics/dataSourceDeclaration.md#kb-topic-creating-datasources)), it is recommended to wrap the HTML in a CDATA tag.
-
-This description is also provided to AI when AI is asked to work with the field. Best practices for the description are:
-
-*   Start with a plain language explanation of what the field represents in the real world, its business concept or core purpose. For example: `order_subtotal` might be "Total price of the customer's order before tax and shipping."
-*   If the field involves time, clarify what moment in time the value applies to, and how the value relates to other timestamps in the record. For example: `updated_timestamp` might be "The last time when any value of the record was updated. Always greater or equal to 'created\_timestamp'."
-*   If a numeric field, clearly identify the units if there are any.
-*   When not [required](#attr-datasourcefieldrequired) (i.e. the value may be `NULL`), describe the interpretation of a `NULL` value. Does the absence of a value have a specific meaning, or does it mean that the data is not available, unknown, or pending?
-*   If values are constrained within a certain range or domain, identify the bounds or possible values.
-*   If values take a certain format, identify this format and fully describe each part.
-*   Include descriptions of how the field relates to or depends on others.
-*   Give a brief note about how the field is populated. This might include the source of the data, formula(s) used to calculate the value, and the frequency and timing of updates.
-
-Sample values in the description may be appropriate, but a better practice is to provide [sampleData](DataSource.md#attr-datasourcesampledata) on the data source, which show AI sample values in the context of complete record(s) from the data source.
-
-### See Also
-
-- [DataSource.description](DataSource.md#attr-datasourcedescription)
+An optional description of the DataSourceField's meaning. Not automatically exposed on any component, but useful for developer documentation, and as such is included on any [OpenAPI specification](../kb_topics/openapiSupport.md#kb-topic-openapi-specification-oas-support) generated by the framework. Markdown is a commonly used syntax, but you may also embed HTML content in a CDATA tag.
 
 **Flags**: IRW
 
@@ -1073,7 +1015,7 @@ Note that `template` fields may make use of [formula fields](#attr-datasourcefie
 ## Attr: DataSourceField.primaryKey
 
 ### Description
-If set to `true`, indicates **either** that this field holds a value unique across all records in this data source, **or** that it is one of a number of fields marked as primary keys, and the combination of the values held in all of those fields is unique across all records in the data source. Note that the latter usage - so-called "composite" or "multipart" keys - is intended for support of legacy databases only: if you are able to choose an approach, Isomorphic recommends the use of one `primaryKey` field per data source, and ideally this field should be of [type](#attr-datasourcefieldtype) "sequence". If you have control of the underlying tables, there is nothing to stop you from adding a field like this (a so-called "synthetic" or "surrogate" key), even for tables that already have a set of columns that could combine to make a composite key (a so-called "natural" key). Also, it is neither necessary nor correct to use a composite primaryKey because you want to enforce uniqueness across that combination of fields. You can achieve that by declaring a unique constraint in the table schema, or use an [isUnique](../reference.md#type-validatortype) validator with `validator.criteriaFields`, or both; there is no need to use a composite key to enforce uniqueness.
+Indicates **either** that this field holds a value unique across all records in this DataSource, **or** that it is one of a number of fields marked as primary keys, and the combination of the values held in all of those fields is unique across all records in the DataSource. Note that the latter usage - so-called "composite" or "multipart" keys - is intended for support of legacy databases only: if you are able to choose an approach, Isomorphic recommends the use of one `primaryKey` field per DataSource, and ideally this field should be of [type](#attr-datasourcefieldtype) "sequence". If you have control of the underlying tables, there is nothing to stop you from adding a field like this (a so-called "synthetic" or "surrogate" key), even for tables that already have a set of columns that could combine to make a composite key (a so-called "natural" key). Also, it is neither necessary nor correct to use a composite primaryKey because you want to enforce uniqueness across that combination of fields. You can achieve that by declaring a unique constraint in the table schema, or use an [isUnique](../reference.md#type-validatortype) validator with `validator.criteriaFields`, or both; there is no need to use a composite key to enforce uniqueness
 
 Note that composite primaryKeys are not supported in tree-structured datasets ([Tree](Tree.md#class-tree) and [ResultTree](ResultTree.md#class-resulttree)) or components ([TreeGrid](TreeGrid.md#class-treegrid), [ColumnTree](ColumnTree.md#class-columntree)). Tree-structured data requires that nodes have a unique [idField](Tree.md#attr-treeidfield), with the parent/child relationship expressed through the [parentIdField](Tree.md#attr-treeparentidfield). This implies that binding a Tree to a DataSource requires that the DataSource have a singular primaryKey, and that the primaryKey field is also the idField, as described in the [tree databinding overview](../kb_topics/treeDataBinding.md#kb-topic-tree-databinding)
 
@@ -1304,22 +1246,6 @@ The [TextItem.enforceLength](TextItem.md#attr-textitemenforcelength) attribute c
 **Flags**: IR
 
 ---
-## Attr: DataSourceField.target
-
-### Description
-For fields of [type](#attr-datasourcefieldtype) "link", specifies the target window for the link. The value is passed as the `target` attribute of the anchor tag used to render the link. Typical values include "\_blank" to open in a new window/tab, "\_self" for the current window, or "\_parent" for the parent frame.
-
-This can be overridden at the component level via [ListGridField.target](ListGridField.md#attr-listgridfieldtarget) or [DetailViewerField.target](DetailViewerField.md#attr-detailviewerfieldtarget).
-
-### See Also
-
-- [DataSourceField.type](#attr-datasourcefieldtype)
-- [ListGridField.target](ListGridField.md#attr-listgridfieldtarget)
-- [DetailViewerField.target](DetailViewerField.md#attr-detailviewerfieldtarget)
-
-**Flags**: IR
-
----
 ## Attr: DataSourceField.dateFormatter
 
 ### Description
@@ -1332,43 +1258,6 @@ Note that this property is also honored when exporting directly to Excel spreads
 - appearance
 
 **Flags**: IRWA
-
----
-## Attr: DataSourceField.valueOperation
-
-### Description
-**Note:** Currently, this feature only works with [SQL DataSources](../kb_topics/sqlDataSource.md#kb-topic-sql-datasources)
-
-This property allows you to name an [operationBinding](OperationBinding.md#class-operationbinding) on a [related DataSource](../kb_topics/dataSourceRelations.md#kb-topic-relations) that should be executed to obtain a value for this field. The format of the property is
-
-```
-      dataSourceId.operationId.fieldName
- 
-```
-The `fieldName` is used to disambiguate in case the operation returns more than one value and it is required, even if the operation only returns a single field
-
-Typically, `valueOperation` names an operation that uses a [summaryFunction](OperationBinding.md#attr-operationbindingsummaryfunctions) to produce a single aggregated value from a DataSource with a one-to-many or many-to-many relation with this DataSource. Some examples of when `valueOperation` is appropriate:
-
-*   To obtain a total order value from the OrderLines on an Order
-*   To obtain the number of Employees reporting to a given manager
-*   To obtain the date of the most recent Order for a given Customer
-*   To obtain the average population of all Cities in a given Country
-
-Note, SmartClient will convert the sub-operation into inline SQL, for maximum efficiency.
-
-Because `valueOperations` are deriving a simple field value for a single field, they should return a single scalar value of the same type as the field. **Note that the requirement to return a single record is a strict one**: with most databases, failing to observe it will result in a SQL error, because most databases do not allow row limiting in the kind of subqueries we generate to implement `valueOperation` - so-called _correlated scalar subqueries_. MySQL is an exception in this, and with that one database we **do** limit the subquery to 1 row; but it is still better to ensure that the subquery can only return a single row (note, all [SummaryFunction](../reference_2.md#type-summaryfunction)s automatically return a single value)
-
-However, we do tolerate data type discrepancies; in cases where the data types do not match, we attempt the most obvious conversion. For example, if the `valueOperation` field is of type "boolean" but the operation returns a number, we will convert 0 to false and any other number to true; this allows you to create boolean "virtual fields" that answer questions like "Has this Employee booked any orders this month?". With other data types, we will stringify the response value (if the field type is `text`), or parse the result of calling `toString()` on the response object (if the field is of a numeric type).
-
-NOTE: Although `valueOperation` can be used to derive any singular value from any related dataSource, it is intended primarily as a mechanism for including summarized values across one-to-many or many-to-many relations. In cases where you want to go "the other way" and derive a value across a many-to-one or one-to-one relation, you would generally use [includeFrom](#attr-datasourcefieldincludefrom), which is conceptually simpler and more direct.
-
-### See Also
-
-- [AdvancedCriterionSubquery](../reference.md#object-advancedcriterionsubquery)
-- [DataSourceField.includeFrom](#attr-datasourcefieldincludefrom)
-- [OperationBinding.summaryFunctions](OperationBinding.md#attr-operationbindingsummaryfunctions)
-
-**Flags**: IRA
 
 ---
 ## Attr: DataSourceField.valueMapEnum
@@ -1694,9 +1583,6 @@ In example below, fields "sourceCurrencySymbol", "currency" and "currencySymbol"
 ```
 Additionally there are two server logging categories that may be set to DEBUG level to log details of the entire `includeFrom` setup. Specifically `com.isomorphic.sql.SQLDataSource.Alias` category enables logging for all fields with `includeFrom`, exact direct or indirect include path to the target field, includeVia/aliases used and `com.isomorphic.sql.SQLDataSource.FK` category additionally enables logging for the foreign key fields relations are based on.
 
-#### Extended `includeVia` syntax
-In complex cases involving composite foreign keys or indirect relation chains (multi-step paths across multiple DataSources), `includeVia` supports an extended syntax that allows explicit control over how relationships are resolved. See [includeViaSyntax](../kb_topics/includeViaSyntax.md#kb-topic-includevia-syntax) for more details.
-
 ### Groups
 
 - dataSourceRelations
@@ -1704,7 +1590,6 @@ In complex cases involving composite foreign keys or indirect relation chains (m
 ### See Also
 
 - [DataSourceField.relatedTableAlias](#attr-datasourcefieldrelatedtablealias)
-- [advancedIncludeVia](#advancedincludevia)
 
 **Flags**: IR
 
@@ -2246,28 +2131,6 @@ Note that this setting wins over [DataSource.requiredMessage](DataSource.md#attr
 **Flags**: IRW
 
 ---
-## Attr: DataSourceField.pluralTitle
-
-### Description
-User-visible plural name for this field.
-
-For example, for an "orderID" field in an "orderItem" DataSource, a plural title of "Orders" may be appropriate.
-
-Defaults to `field.title` + "s" if not specified.
-
-This can be set on a field to override the DataSource's [DataSource.pluralTitle](DataSource.md#attr-datasourcepluraltitle) when the field refers to a related DataSource whose pluralTitle is unset or needs a different value in the current context (e.g. a more compact label).
-
-### Groups
-
-- titles
-
-### See Also
-
-- [DataSource.pluralTitle](DataSource.md#attr-datasourcepluraltitle)
-
-**Flags**: IR
-
----
 ## Attr: DataSourceField.multipleValueSeparator
 
 ### Description
@@ -2308,7 +2171,7 @@ If `field.formula` is set, this field's value in records will be calculated dyna
 
 `DataSourceField.formula` is supported for [SQL DataSources](../reference_2.md#type-dsservertype) and for [clientOnly dataSources](DataSource.md#attr-datasourceclientonly) only.
 
-Valid formula expressions may reference other field values directly by field name, or may reference the record object itself. Formula expressions may make use of standard [FormulaFunctions](../kb_topics/formulaFunction.md#kb-topic-datasourcefield-formula-functions).
+Valid formula expressions may reference other field values directly by field name, or may reference the record object itself. Formula expressions may make use of standard [FormulaFunctions](#type-formulafunction).
 
 For example, given a dataSource with two numeric fields "population" and "area" you could easily add a "populationDensity" field with the following formula:
 
@@ -2535,7 +2398,7 @@ If true, this property indicates that this field will hold an explicit array of 
 ### Description
 Indicates that this field should always be Array-valued. If the value derived from [XML or JSON data](DataSource.md#attr-datasourcedataformat) is singular, it will be wrapped in an Array.
 
-JPA and Hibernate DataSources use `multiple:true` as part of the declaration of One-To-Many and Many-to-Many relations - see [jpaHibernateRelations](../kb_topics/jpaHibernateRelations.md#kb-topic-jpa--hibernate-relations) for details. On fields that also declare a [foreignKey](#attr-datasourcefieldforeignkey) `multiple:true` also indicates that this field is participating in a one-to-many or many-to-many relation - see [dataSourceRelations](../kb_topics/dataSourceRelations.md#kb-topic-relations) for details.
+On fields that also declare a [foreignKey](#attr-datasourcefieldforeignkey) `multiple:true` also indicates that this field is participating in a one-to-many or many-to-many relation - see [dataSourceRelations](../kb_topics/dataSourceRelations.md#kb-topic-relations) for details.
 
 #### Criteria on multiple:true fields: client-side filtering
 
@@ -2555,7 +2418,7 @@ For the `inSet` operator, the field matches if there is any intersection between
 
 Values for multiple:true fields appear as Java Lists when received in server code such as a DMI. The SmartClient Server supports simple storage of values that are multiple:true, controlled via the [DataSourceField.multipleStorage](#attr-datasourcefieldmultiplestorage) setting.
 
-For server-side behavior of relation fields that are multiple:true, see +link{group:dataSourceRelations); for the specifics of JPA and Hibernate relation fields that are multiple:true, see [jpaHibernateRelations](../kb_topics/jpaHibernateRelations.md#kb-topic-jpa--hibernate-relations).
+For server-side behavior of JPA and Hibernate relation fields that are multiple:true, see [jpaHibernateRelations](../kb_topics/jpaHibernateRelations.md#kb-topic-jpa--hibernate-relations).
 
 For non-relation fields, the SmartClient Server supports simple storage of values that are multiple:true, controlled via the [DataSourceField.multipleStorage](#attr-datasourcefieldmultiplestorage) setting, with some limited support for server-side filtering, as described in the [DataSourceField.multipleStorage](#attr-datasourcefieldmultiplestorage) docs.
 

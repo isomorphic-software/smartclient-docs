@@ -42,21 +42,6 @@ That's it, we're done configuring the environment.
 
 Note: Tests recorded using Selenium IDE can be played back programmatically (e.g. from a test harness) using [SeleneseRunner](server/javadoc/com/isomorphic/webdriver/SeleneseRunner.html), a simulation tool that executes Selenese against SmartClient's WebDriver wrappers. This is required because Selenium 3 no longer supports executing Selenese using custom user extensions, as it no longer contains much of the Selenium RC code base.
 
-Alternatively, tests can be played back using the Playwright-based `selenese-runner.js`, located in `tools/playwright/`. This runner executes Selenese HTML test files using Playwright and SmartClient's AutoTest locator system. It automatically waits for SmartClient system quiescence after each command, matching the behavior of the Java SeleneseRunner.
-
-To use the Playwright runner, first install Playwright via npm:
-
-```
-     npm install playwright
- 
-```
-Then run tests from the `tools/playwright/` directory:
-```
-     node selenese-runner.js --baseUrl=http://localhost:8080 --tests=/path/to/test.rctest.html
- 
-```
-Multiple test files can be specified, and results are output in JUnit XML format for integration with CI/CD systems. Run with `--help` to see all available options.
-
 **Recording Selenium tests with Selenium IDE**
 
 Once you have your application running in Firefox, open Selenium IDE from the Tools ==> Selenium IDE menu option. If the Selenium IDE is in record mode, then clicking or carrying out other operations like typing in a text field with automatically record the appropriate Selenium commands with the SmartClient locator. In most cases there's no need for you to manually enter the locator, the recorder does this for you! In fact, not only do the provided user extension files record your clicks, drag operations, and typing in the browser--they also try to ensure that your script executes each operation only when the SmartClient widgets it depends upon exist and are ready to be interacted with. This ensures that when the test script is executed, then even if one or more triggered operations are asynchronous (delayed), it behaves as expected.

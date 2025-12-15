@@ -535,6 +535,6 @@ The default behavior is that the [cellStyle](FormItem.md#attr-formitemcellstyle)
 
 ### Returns
 
-`[Boolean](#type-boolean)` — `false` to cancel the default behavior.
+`[boolean](../reference.md#type-boolean)` — `false` to cancel the default behavior.
 
 ---

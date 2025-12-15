@@ -1306,7 +1306,7 @@ If unset, the default is taken from the current locale.
 ### Description
 When true, causes [layouts](#attr-calendarcolumnlayout) to be added to each column in vertical views. In this mode, eventCanvases are stacked in these layouts, filling width and auto-sizing vertically to content, rather than being placed, sized and overlapped according to their times.
 
-Because times are ignored in this mode, various behaviors are switched off automatically; for example, the [time-column](#attr-calendarshowlabelcolumn) is hidden, [zones](#attr-calendarzones) are not supported and event-canvases cannot be [resized](#attr-calendarcanresizeevents) or rendered [on-demand](#attr-calendarrendereventsondemand).
+Because times are ignored in this mode, various behaviors are switched off automatically; for example, the [time-column](#attr-calendarshowlabelcolumn) is hidden and event-canvases cannot be [resized](#attr-calendarcanresizeevents) or rendered [on-demand](#attr-calendarrendereventsondemand).
 
 ### Groups
 
@@ -1947,7 +1947,7 @@ Note that, when [Calendar.otherDayClickNavigation](#attr-calendarotherdayclickna
 ## Attr: Calendar.showZones
 
 ### Description
-Set to true to render any defined [zones](#attr-calendarzones) in views other than [Month](#attr-calendarmonthview).
+Set to true to render any defined [zones](#attr-calendarzones) into [timeline views](#attr-calendartimelineview).
 
 **Flags**: IRW
 
@@ -2358,11 +2358,7 @@ The content of the hover is determined by a call to [Calendar.getDragHoverHTML](
 ## Attr: Calendar.zones
 
 ### Description
-An array of CalendarEvent instances representing pre-defined periods of time to be highlighted in [timelines](#attr-calendartimelineview) and in [day](#attr-calendardayview) or [week](#attr-calendarweekview) views. Each zone renders out a [zone canvas](../reference.md#class-zonecanvas), a special, non-interactive subclass of [EventCanvas](EventCanvas.md#class-eventcanvas), which draws behind any normal, interactive events in the zorder.
-
-In timelines, a `zone` with a [lane-field](#attr-calendarlanenamefield) set will fill that lane vertically - otherwise, it will span all rows vertically. In a DayView showing vertical [day-lanes](#attr-calendarshowdaylanes), a `zone` with a lane-field set will span its date-column horizontally - otherwise, it will span all columns horizontally. In other vertical views, zones span only the time-slots covered by their dates. In a week-view, for example, a Zone from 12 noon on Monday to 1pm on Friday will only cover those time-slots on each of the days.
-
-When vertical views are configured to stack the events vertically in their [date-columns](#attr-calendarshowcolumnlayouts), zones are not supported because that mode does not have time-slots.
+An array of CalendarEvent instances representing pre-defined periods of time to be highlighted in [timeline views](#attr-calendartimelineview). Each zone renders out a [zone canvas](../reference.md#class-zonecanvas), a special, non-interactive subclass of [EventCanvas](EventCanvas.md#class-eventcanvas), which spans all lanes and draws behind any normal, interactive events in the zorder.
 
 The default [style](#attr-calendarzonestylename) for these components renders them semi-transparent and with a bottom-aligned title label.
 
@@ -2999,7 +2995,7 @@ Implement this method to intercept the automatic removal of data. You can return
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false to cancel the removal
+`[boolean](../reference.md#type-boolean)` — false to cancel the removal
 
 ### Groups
 
@@ -3131,7 +3127,7 @@ Called when an event is moved via dragging by a user. Return false to disallow t
 
 ### Returns
 
-`[Boolean](#type-boolean)` — return false to disallow the move.
+`[boolean](../reference.md#type-boolean)` — return false to disallow the move.
 
 ### Groups
 
@@ -3224,7 +3220,7 @@ Not called if the day falls outside the current month and [Calendar.showOtherDay
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false to cancel the default action
+`[boolean](../reference.md#type-boolean)` — false to cancel the default action
 
 ### Groups
 
@@ -3335,9 +3331,9 @@ When [canGroupLanes](#attr-calendarcangrouplanes) is true, this method allows th
 ## Method: Calendar.shouldDisableDate
 
 ### Description
-Returns true if the passed date should be considered disabled, potentially in a particular [View](CalendarView.md#class-calendarview) or [Lane](#attr-calendarlanes). Disabled dates don't allow events to be created by clicking on them, and drag operations that would start or end on such dates are also disallowed.
+Returns true if the passed date should be considered disabled. Disabled dates don't allow events to be created by clicking on them, and drag operations that would start or end on such dates are also disallowed.
 
-The default implementation returns true for dates that fall on a [weekend](DateUtil.md#classmethod-dateutilgetweekenddays), when [disableWeekends](#attr-calendardisableweekends) is true, and for dates that are covered by a [Zone](#attr-calendarzones) with its disabled attribute set to true.
+The default implementation returns false only for dates that fall on a [weekend](DateUtil.md#classmethod-dateutilgetweekenddays).
 
 ### Parameters
 
@@ -3345,7 +3341,6 @@ The default implementation returns true for dates that fall on a [weekend](DateU
 |------|------|----------|---------|-------------|
 | date | [Date](#type-date) | false | — | a Date instance |
 | view | [CalendarView](#type-calendarview) | true | — | the view the date appears in |
-| lane | [String](#type-string) | true | — | in view's that show lanes, the name of the lane |
 
 ### Returns
 
@@ -3366,7 +3361,7 @@ Callback fired when the mouse is clicked in a background-cell, ie, one without a
 
 ### Returns
 
-`[Boolean](#type-boolean)` — return false to cancel the default behavior of creating a new event at the selected location and showing its editor.
+`[boolean](../reference.md#type-boolean)` — return false to cancel the default behavior of creating a new event at the selected location and showing its editor.
 
 ---
 ## Method: Calendar.setIndicators
@@ -3430,7 +3425,7 @@ Not called if the day falls outside the current month and [Calendar.showOtherDay
 
 ### Returns
 
-`[Boolean](#type-boolean)` — return false to cancel the action
+`[boolean](../reference.md#type-boolean)` — return false to cancel the action
 
 ### Groups
 
@@ -3821,7 +3816,7 @@ Callback fired when the mouse button is depressed over a background-cell, ie, on
 
 ### Returns
 
-`[Boolean](#type-boolean)` — return false to suppress default behavior of allowing sweep selection via dragging.
+`[boolean](../reference.md#type-boolean)` — return false to suppress default behavior of allowing sweep selection via dragging.
 
 ---
 ## Method: Calendar.indicatorClick
@@ -4113,7 +4108,7 @@ Notification method fired when the mouse button is released over a background-ce
 
 ### Returns
 
-`[Boolean](#type-boolean)` — return false to suppress default behavior of showing a dialog to add a new event with the passed dates.
+`[boolean](../reference.md#type-boolean)` — return false to suppress default behavior of showing a dialog to add a new event with the passed dates.
 
 ---
 ## Method: Calendar.next
@@ -4384,7 +4379,7 @@ Adds a new [indicator](#attr-calendarindicators) to the calendar.
 ## Method: Calendar.zoneClick
 
 ### Description
-Called whenever a [ZoneCanvas](../reference.md#class-zonecanvas) is clicked in views other than [Month](#attr-calendarmonthview). There is no default implementation.
+Called whenever a [ZoneCanvas](../reference.md#class-zonecanvas) is clicked in the [timelineView](#attr-calendartimelineview). There is no default implementation.
 
 ### Parameters
 
@@ -4540,7 +4535,7 @@ To pick up such changes, we recommend that you call [setData(\[\])](#method-cale
 |------|------|----------|---------|-------------|
 | criteria | [Criteria](../reference_2.md#type-criteria) | true | — | Search criteria. If a [DynamicForm](DynamicForm.md#class-dynamicform) is passed in as this argument instead of a raw criteria object, will be derived by calling [DynamicForm.getValuesAsCriteria](DynamicForm.md#method-dynamicformgetvaluesascriteria) |
 | callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke when a fetch is complete. Fires only if server contact was required |
-| requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | additional properties to set on the DSRequest that will be issued |
+| requestProperties | [DSRequest](#type-dsrequest) | true | — | additional properties to set on the DSRequest that will be issued |
 
 ### Groups
 
@@ -4648,7 +4643,7 @@ Called when an event is resized with the mouse. The passed date value is the new
 
 ### Returns
 
-`[Boolean](#type-boolean)` — return false to disallow the resize
+`[boolean](../reference.md#type-boolean)` — return false to disallow the resize
 
 ### Groups
 
@@ -4913,7 +4908,7 @@ For a discussion of the various filtering and criteria-management APIs and when 
 |------|------|----------|---------|-------------|
 | criteria | [Criteria](../reference_2.md#type-criteria) | true | — | Search criteria. If a [DynamicForm](DynamicForm.md#class-dynamicform) is passed in as this argument instead of a raw criteria object, will be derived by calling [DynamicForm.getValuesAsCriteria](DynamicForm.md#method-dynamicformgetvaluesascriteria) |
 | callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke when a fetch is complete. Fires only if server contact was required; see [fetchData()](ListGrid_2.md#method-listgridfetchdata) for details |
-| requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | for databound components only - optional additional properties to set on the DSRequest that will be issued |
+| requestProperties | [DSRequest](#type-dsrequest) | true | — | for databound components only - optional additional properties to set on the DSRequest that will be issued |
 
 ### Groups
 

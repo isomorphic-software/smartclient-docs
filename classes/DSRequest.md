@@ -103,7 +103,7 @@ See the [concurrentEdits](../kb_topics/concurrentEdits.md#kb-topic-handling-conc
 ## Attr: DSRequest.groupBy
 
 ### Description
-Field or list of fields to group by when using [server-side summarization](../kb_topics/serverSummaries.md#kb-topic-server-summaries).
+List of fields to group by when using [server-side summarization](../kb_topics/serverSummaries.md#kb-topic-server-summaries).
 
 Valid only for an operation of type "fetch". See the [Server Summaries overview](../kb_topics/serverSummaries.md#kb-topic-server-summaries) for details and examples of usage.
 
@@ -366,13 +366,13 @@ This property is only applicable when [exportToFilesystem](#attr-dsrequestexport
 ## Attr: DSRequest.applyCriteriaBeforeAggregation
 
 ### Description
-If set to "true", all criteria for the DSRequest using [serverSummaries](#serversummaries) are applied before aggregation, and the [afterWhereClause](#attr-operationbindingafterwhereclause) is not generated.
+If set to "true", all criteria for the DSRequest using [serverSummaries](#serversummaries) are applied before aggregation, and the [groupWhereClause](#attr-operationbindinggroupwhereclause) is not generated.
 
 This behaves the same way as [OperationBinding.applyCriteriaBeforeAggregation](OperationBinding.md#attr-operationbindingapplycriteriabeforeaggregation), and if defined, overrides the OperationBinding-level setting for this specific DSRequest.
 
 ### See Also
 
-- [OperationBinding.afterWhereClause](#attr-operationbindingafterwhereclause)
+- [OperationBinding.groupWhereClause](#attr-operationbindinggroupwhereclause)
 - [OperationBinding.applyCriteriaBeforeAggregation](OperationBinding.md#attr-operationbindingapplycriteriabeforeaggregation)
 
 **Flags**: IR
@@ -771,23 +771,6 @@ This is a per-request flag for explicitly controlling whether the cache is used 
 **Flags**: IRW
 
 ---
-## Attr: DSRequest.clientTimestamp
-
-### Description
-Timestamp recording when this request was created on the client, as epoch milliseconds, generated automatically.
-
-This timestamp is for client-side tracking only and is never sent to the server. It can be used to order requests chronologically, implement timeout logic, or filter queued changes by age when using [DataSource.queueChanges](DataSource.md#attr-datasourcequeuechanges).
-
-Note: This is distinct from any server-side timestamps that may be recorded for auditing or logging purposes.
-
-### See Also
-
-- [DataSource.queueChanges](DataSource.md#attr-datasourcequeuechanges)
-- [DataSource.pendingChanges](DataSource.md#attr-datasourcependingchanges)
-
-**Flags**: R
-
----
 ## Attr: DSRequest.outputs
 
 ### Description
@@ -867,40 +850,6 @@ Note that if the request encounters an error (such as 500 server error), by defa
 ### Groups
 
 - errorHandling
-
-**Flags**: IR
-
----
-## Attr: DSRequest.afterCriteria
-
-### Description
-For requests that use [server summaries](../kb_topics/serverSummaries.md#kb-topic-server-summaries), this property defines _post-aggregation criteria_ — criteria that are applied _after_ grouping and summarization have occurred. Conceptually, it works like a SQL `HAVING` clause and allows you to restrict which grouped or summarized results are returned, based on the values of summary fields rather than raw data rows.
-
-Supported by the built-in SQL, Hibernate, and JPA DataSources.
-
-**Example:**  
-  
-Suppose the `avg` function is being applied to the `unitPrice` field on `supplyItem` records. Specifying `afterCriteria` with the condition `unitPrice < 5` will eliminate only those groups whose _average_ price is less than 5 — that is, it filters _after_ the aggregation step.
-
-In SQL terms:
-
-```
- SELECT category, AVG(unitPrice)
- FROM supplyItem
- WHERE ...                            -- regular criteria
- GROUP BY category
- HAVING AVG(unitPrice) < 5            -- afterCriteria
- 
-```
-For more details on aggregation and post-aggregation filtering, see the [Server Summaries Overview](../kb_topics/serverSummaries.md#kb-topic-server-summaries).
-
-### Groups
-
-- serverSummaries
-
-### See Also
-
-- [OperationBinding.afterWhereClause](#attr-operationbindingafterwhereclause)
 
 **Flags**: IR
 

@@ -1252,7 +1252,7 @@ If set to "false", transformation of values for [multiple:true](DataSourceField.
 ## Attr: DataSource.suppressManualAggregation
 
 ### Description
-Indicates whether we should suppress automatic aggregation and grouping handling logic. As noted below, this property does not apply to DataSources of [serverType](#attr-datasourceservertype) "sql", "jpa" or "hibernate". By default, the framework applies a post-fetch in-memory operation to handle aggregation and grouping, as described in the [allowAggregation](#attr-datasourceallowaggregation) documentation. You can suppress this automatic behavior by setting this flag true.
+For DataSources of [serverType](#attr-datasourceservertype) "generic" only, indicates whether we should suppress automatic aggregation and grouping handling logic. By default, the framework applies a post-fetch in-memory operation to handle aggregation and grouping, as described in the [allowAggregation](#attr-datasourceallowaggregation) documentation. You can suppress this automatic behavior by setting this flag true.
 
 Note, this is primarily intended as a back-compatibility flag, to allow you to compensate for situations where your own custom DataSource implementations have their own aggregation handling, pre-dating the automatic in-memory aggregation feature. In this circumstance, set this flag true to retain the existing behavior. If you want to suppress the manual aggregation for **all** dataSources by default (you can still re-enable it per-DataSource if required, using this `suppressManualAggregation` flag), add the following to your `server.properties` file:
 
@@ -1405,25 +1405,6 @@ When using the "scriptInclude" transport, be sure to set [DataSource.callbackPar
 - [DataSource.callbackParam](#attr-datasourcecallbackparam)
 
 **Flags**: IR
-
----
-## Attr: DataSource.pendingChanges
-
-### Description
-Read-only array of DSRequests that have been queued while [DataSource.queueChanges](#attr-datasourcequeuechanges) is enabled. Each entry is a standard DSRequest with operationType "add", "update", or "remove".
-
-Use [DSRequest.requestId](DSRequest.md#attr-dsrequestrequestid) to identify specific requests and [DSRequest.clientTimestamp](DSRequest.md#attr-dsrequestclienttimestamp) to filter by age.
-
-**This array is strictly read-only.** Do not modify it directly - any direct modifications will be ignored or cause undefined behavior. Use [DataSource.discardQueuedChanges](#method-datasourcediscardqueuedchanges) to remove requests or [DataSource.commitQueuedChanges](#method-datasourcecommitqueuedchanges) to send them to the server.
-
-Requests are ordered chronologically (oldest first).
-
-### See Also
-
-- [DataSource.queueChanges](#attr-datasourcequeuechanges)
-- [DataSource.discardQueuedChanges](#method-datasourcediscardqueuedchanges)
-
-**Flags**: R
 
 ---
 ## Attr: DataSource.dropExtraFields
@@ -1895,10 +1876,6 @@ Defaults to `dataSource.title` + "s".
 
 - titles
 
-### See Also
-
-- [DataSourceField.pluralTitle](DataSourceField.md#attr-datasourcefieldpluraltitle)
-
 **Flags**: IR
 
 ---
@@ -1921,7 +1898,7 @@ For DataSources using the [SmartClient SQL engine](../kb_topics/sqlDataSource.md
 ## Attr: DataSource.recordXPath
 
 ### Description
-See [OperationBinding.recordXPath](OperationBinding.md#attr-operationbindingrecordxpath). `recordXPath` can be specified directly on the DataSource for a simple read-only DataSource only capable of "fetch" operations, or on clientOnly DataSources using [testData](../kb_topics/testData.md#kb-topic-test-data), or on [RestConnector](../kb_topics/serverRestConnector.md#kb-topic-server-side-rest-connector) dataSources
+See [OperationBinding.recordXPath](OperationBinding.md#attr-operationbindingrecordxpath). `recordXPath` can be specified directly on the DataSource for a simple read-only DataSource only capable of "fetch" operations, on clientOnly DataSources using [testData](../kb_topics/testData.md#kb-topic-test-data), or on [RestConnector](../kb_topics/serverRestConnector.md#kb-topic-server-side-rest-connector) dataSources
 
 ### Groups
 
@@ -2313,45 +2290,6 @@ Note, the ability to set this property per-DataSource is only provided to allow 
 **Flags**: IRA
 
 ---
-## Attr: DataSource.queueChanges
-
-### Description
-When true, modification operations (add, update, remove) are intercepted at the client, validated using client-side validators only, and queued in memory rather than being sent to the server. Fetch operations continue normally but results are automatically adjusted to reflect any queued changes.
-
-This mode serves two primary purposes:
-
-*   **Test Mocking**: Automated tests can perform add/update/remove operations that appear to succeed without actually modifying server data. This allows tests to be re-run repeatedly against a stable dataset.
-*   **Offline Operation**: Applications can continue to function when the server is unreachable, with changes queued for later synchronization when connectivity is restored.
-
-When a modification is attempted with queueChanges enabled:
-
-1.  Client-side validation runs normally
-2.  If validation passes, the DSRequest is added to [DataSource.pendingChanges](#attr-datasourcependingchanges)
-3.  A successful DSResponse is immediately returned to the calling code
-4.  The [DataSource.pendingChangesChanged](#method-datasourcependingchangeschanged) notification fires
-
-When a fetch is performed:
-
-1.  The dsRequest startRow/endRow are adjusted to account for pending adds/removes
-2.  The request proceeds normally (to server, clientOnly cache, etc.)
-3.  The response is modified to incorporate queued adds, updates, and removes
-
-Queued changes can be inspected via [DataSource.pendingChanges](#attr-datasourcependingchanges), discarded via [DataSource.discardQueuedChanges](#method-datasourcediscardqueuedchanges), or committed via [DataSource.commitQueuedChanges](#method-datasourcecommitqueuedchanges).
-
-**Interaction with clientOnly**: queueChanges operates early in the request pipeline, modifying the DSRequest before any branching for clientOnly vs server operations. No special coordination is needed - clientOnly DataSources work transparently with queueChanges enabled.
-
-**Memory Management**: Queued changes are held in memory. For long-running applications or tests that perform many modifications, use [DataSource.discardQueuedChanges](#method-datasourcediscardqueuedchanges) periodically to prevent unbounded memory growth.
-
-### See Also
-
-- [DataSource.pendingChanges](#attr-datasourcependingchanges)
-- [DataSource.discardQueuedChanges](#method-datasourcediscardqueuedchanges)
-- [DataSource.commitQueuedChanges](#method-datasourcecommitqueuedchanges)
-- [DataSource.pendingChangesChanged](#method-datasourcependingchangeschanged)
-
-**Flags**: IRW
-
----
 ## Attr: DataSource.addedAuditFields
 
 ### Description
@@ -2542,41 +2480,6 @@ Allows you to specify ["update" operation](../reference.md#type-dsoperationtype)
 See [DataSource.logSlowSQL](#attr-datasourcelogslowsql) for more details.
 
 **Flags**: IR
-
----
-## Attr: DataSource.sampleData
-
-### Description
-An optional array of sample data records. These may be actual records from the data source or artificial data that is representative of records from the data source.
-
-AI may be provided this sample data when AI is asked to work with the data source, to give it a better idea of what the data in the data source "looks like".
-
-When defining the data source in a .ds.xml file (see [dataSourceDeclaration](../kb_topics/dataSourceDeclaration.md#kb-topic-creating-datasources)), it will likely be helpful to use the XMLSchema-Instance `type` attribute to be able to change the value type from the default (string) to boolean, int, float, date, etc. For example:
-
-```
- <sampleData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-   <country>
-     <continent>North America</continent>
-     <countryName>United States</countryName>
-     <countryCode>US</countryCode>
-     <area xsi:type="float">9372610</area>
-     <population xsi:type="int">266476278</population>
-     <gdp xsi:type="float">7247700</gdp>
-     <independence xsi:type="date">1776-07-04</independence>
-     <government>federal republic</government>
-     <capital>Washington</capital>
-     <member_g8 xsi:type="boolean">true</member_g8>
-   </country>
- ...
- 
-```
-
-### See Also
-
-- [DataSource.description](#attr-datasourcedescription)
-- [DataSourceField.description](DataSourceField.md#attr-datasourcefielddescription)
-
-**Flags**: IRW
 
 ---
 ## Attr: DataSource.transformResponseScript
@@ -3232,20 +3135,7 @@ DataSources can be loaded in `mockMode` via passing settings to [DataSource.load
 ## Attr: DataSource.description
 
 ### Description
-An optional description of the DataSource's content. It is not automatically exposed on any component, but it is useful for developer documentation, and as such it is included on any [OpenAPI specification](../kb_topics/openapiSupport.md#kb-topic-openapi-specification-oas-support) generated by the framework. Markdown is a commonly-used syntax, but you may also embed HTML content. When embedding HTML in the description in a .ds.xml file (see [dataSourceDeclaration](../kb_topics/dataSourceDeclaration.md#kb-topic-creating-datasources)), it is recommended to wrap the HTML in a CDATA tag.
-
-This description is also provided to AI when AI is asked to work with the data source. Best practices for the description are:
-
-*   Start with a plain language explanation of what the data source and records within it represent, their business concept or core purpose.
-*   Describe how the data source relates to other data sources in the application.
-*   Mention the approximate size of the data source and whether/when records are updated, added, and removed, as well as the approximate rates of updates, additions, and removals.
-*   Identify any known data issues or anomalies.
-
-In addition to the data source-level description, each field can be described via [DataSourceField.description](DataSourceField.md#attr-datasourcefielddescription).
-
-### See Also
-
-- [DataSource.sampleData](#attr-datasourcesampledata)
+An optional description of the DataSource's content. Not automatically exposed on any component, but useful for developer documentation, and as such is included on any [OpenAPI specification](../kb_topics/openapiSupport.md#kb-topic-openapi-specification-oas-support) generated by the framework. Markdown is a commonly used syntax, but you may also embed HTML content in a CDATA tag.
 
 **Flags**: IR
 
@@ -3897,22 +3787,6 @@ Unlike [DataSource.titleField](#attr-datasourcetitlefield), dataField is not aut
 **Flags**: IR
 
 ---
-## ClassMethod: DataSource.discardAllQueuedChanges
-
-### Description
-Discards queued changes across ALL DataSources. Useful for test cleanup.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| criteria | [Criteria](../reference_2.md#type-criteria)|[AdvancedCriteria](#type-advancedcriteria) | true | — | Optional filter |
-
-### Returns
-
-`[int](../reference.md#type-int)` — Total requests discarded across all DataSources
-
----
 ## ClassMethod: DataSource.makeFileSpec
 
 ### Description
@@ -3938,22 +3812,15 @@ Converts a file path to a [FileSpec](../reference.md#object-filespec).
 ### Description
 Lookup a DataSource by ID.
 
-If the DataSource is not yet loaded and a callback is provided, the DataSource will be loaded from the server and the callback will be fired with the DataSource as its single argument.
-
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | ID | [GlobalId](../reference.md#type-globalid) | false | — | DataSource ID |
-| callback | [Callback](../reference.md#type-callback) | true | — | callback to fire when the DataSource is loaded. The callback receives the loaded [DataSource](#class-datasource) as its single parameter. |
 
 ### Returns
 
 `[DataSource](#type-datasource)` — the DataSource with this ID, if loaded, otherwise null.
-
-### See Also
-
-- [DataSource.get](#classmethod-datasourceget)
 
 ---
 ## ClassMethod: DataSource.flattenCriteria
@@ -4084,14 +3951,14 @@ If the parent DataSource is already loaded, calling `loadWithParents` will not a
 ## ClassMethod: DataSource.registerRecordSummaryFunction
 
 ### Description
-Register a new [RecordSummaryFunction](../reference_2.md#type-recordsummaryfunction). This will then be available by calling [DataSource.applyRecordSummaryFunction](#classmethod-datasourceapplyrecordsummaryfunction) and passing in the `functionName`, or by setting the [ListGridField.recordSummaryFunction](ListGridField.md#attr-listgridfieldrecordsummaryfunction) property of a summary field to `functionName`.
+Register a new standard [RecordSummaryFunction](../reference_2.md#type-recordsummaryfunction). This will then be available by calling [applySummaryFunction()](SimpleType.md#classmethod-simpletypeapplysummaryfunction) and passing in just the new method name.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| functionName | [String](#type-string) | false | — | identifier for the new record summary function |
-| summaryFunction | [Function](#type-function)|[StringMethod](../reference_2.md#type-stringmethod) | false | — | new summary function implementation. This method takes 3 parameters: `record` (the record for which the summary is being generated), `fields` (an array of the available fields) and `summaryField` (the summary field). |
+| methodName | [String](#type-string) | false | — | identifier for the new summary function |
+| summaryFunction | [Function](#type-function)|[StringMethod](../reference_2.md#type-stringmethod) | false | — | new summary function implementation. This method should take 3 parameters: `record` (the record for which the summary is being generated), `fields` (an array of fields to include in the generated summary) and `summaryField` (a pointer to the field in which the summary will be displayed \[may be null\]. |
 
 ---
 ## ClassMethod: DataSource.load
@@ -4226,10 +4093,10 @@ Applies a [RecordSummaryFunction](../reference_2.md#type-recordsummaryfunction) 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| summaryFunction | [RecordSummaryFunction](../reference_2.md#type-recordsummaryfunction) | false | — | The record summary function to execute. |
-| record | [Record](#type-record) | false | — | Record to retrieve a summary for. |
-| fields | [Array of Field](#type-array-of-field) | false | — | The available fields. |
-| summaryField | [DBCField](#type-dbcfield) | false | — | The summary field. |
+| summaryFunction | [SummaryFunction](../reference_2.md#type-summaryfunction) | false | — | Summary Function or identifier for registered recordSummaryFunction to execute. If passed in as an explicit function record, fields and summaryField parameters will be passed through to the function. |
+| record | [DataSourceRecord](#type-datasourcerecord) | false | — | Record to retrieve a summary for |
+| fields | [Array of DataSourceField](#type-array-of-datasourcefield) | false | — | Set of fields to include in the summary |
+| summaryField | [DataSourceField](#type-datasourcefield) | false | — | field in which this summary will be displayed. |
 
 ### Returns
 
@@ -4308,25 +4175,10 @@ Synonym of [DataSource.getDataSource](#classmethod-datasourcegetdatasource): Loo
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | ID | [GlobalId](../reference.md#type-globalid) | false | — | DataSource ID |
-| callback | [Callback](../reference.md#type-callback) | true | — | callback to fire when the DataSource is loaded. The callback receives the loaded [DataSource](#class-datasource) as its single parameter. |
 
 ### Returns
 
 `[DataSource](#type-datasource)` — the DataSource with this ID, if loaded, otherwise null.
-
-### See Also
-
-- [DataSource.getDataSource](#classmethod-datasourcegetdatasource)
-
----
-## ClassMethod: DataSource.getAllQueuedChanges
-
-### Description
-Returns queued changes from ALL DataSources.
-
-### Returns
-
-`[Object](../reference.md#type-object)` — Map of dataSourceId -> Array of DSRequest
 
 ---
 ## ClassMethod: DataSource.copyCriteria
@@ -4484,19 +4336,6 @@ The following approach is taken:
 ### Groups
 
 - title
-
----
-## ClassMethod: DataSource.commitAllQueuedChanges
-
-### Description
-Commits queued changes across ALL DataSources, in dependency order if relationships exist, otherwise alphabetically by ID.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| criteria | [Criteria](../reference_2.md#type-criteria)|[AdvancedCriteria](#type-advancedcriteria) | true | — | Optional filter |
-| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | Called when all commits complete or any fails |
 
 ---
 ## Method: DataSource.getFieldOperators
@@ -4873,32 +4712,6 @@ Retrieves the list of fields declared on this DataSource.
 `[Array of FieldName](#type-array-of-fieldname)` — names of all fields declared on this DataSource
 
 ---
-## Method: DataSource.findSortPosition
-
-### Description
-Finds the position where a record would be inserted into a sorted array to maintain sort order, or determines whether the record sorts before, after, or within the array.
-
-This method uses binary search for efficiency and supports multi-field sorting via [SortSpecifier](../reference_2.md#object-sortspecifier)s. It leverages the existing [DataSource.compareValues](#method-datasourcecomparevalues) for type-aware comparison of field values.
-
-The return value indicates not just the numeric position but also:
-
-*   **position**: The index where the record would be inserted (0 to array.length)
-*   **relative**: One of "before" (sorts before entire array), "after" (sorts after entire array), or "within" (sorts somewhere in the middle)
-*   **ambiguous**: True if the record compares equal to existing records on all sort fields, meaning its exact position cannot be determined
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| record | [Record](#type-record) | false | — | The record to find the position for |
-| sortedArray | [Array of Record](#type-array-of-record) | false | — | The array to search, must already be sorted by the same sort specifiers |
-| sortSpecifiers | [Array of SortSpecifier](#type-array-of-sortspecifier)|[Array of String](#type-array-of-string) | false | — | Sort specifications, either as SortSpecifier objects or as strings in dsRequest.sortBy format (e.g., "-fieldName" for descending) |
-
-### Returns
-
-`[Object](../reference.md#type-object)` — Object with properties: position (int), relative (String), ambiguous (boolean)
-
----
 ## Method: DataSource.validateData
 
 ### Description
@@ -4934,21 +4747,6 @@ Converts criteria expressed in SmartClient's simple criteria format to an Advanc
 ### Returns
 
 `[AdvancedCriteria](#type-advancedcriteria)` — equivalent AdvancedCriteria object
-
----
-## Method: DataSource.pendingChangesChanged
-
-### Description
-Notification fired whenever [DataSource.pendingChanges](#attr-datasourcependingchanges) is modified.
-
-Override to update UI elements that display pending change count or status.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| changeType | [String](#type-string) | false | — | One of "added", "discarded", or "committed" |
-| affectedRequests | [Array of DSRequest](#type-array-of-dsrequest) | false | — | The requests that were added/discarded/committed |
 
 ---
 ## Method: DataSource.cloneDSResponse
@@ -5115,27 +4913,6 @@ Gets the contents of a file stored in this DataSource.
 ### Groups
 
 - fileSource
-
----
-## Method: DataSource.commitQueuedChanges
-
-### Description
-Sends queued requests to the server, removing them from [DataSource.pendingChanges](#attr-datasourcependingchanges) as each is successfully committed.
-
-Requests are sent in chronological order. If a request fails server validation, the commit stops and the callback receives the failure information.
-
-Accepts standard [Criteria](../reference_2.md#type-criteria) or [AdvancedCriteria](../reference.md#object-advancedcriteria) to filter which requests to commit (same syntax as [DataSource.discardQueuedChanges](#method-datasourcediscardqueuedchanges)).
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| criteria | [Criteria](../reference_2.md#type-criteria)|[AdvancedCriteria](#type-advancedcriteria) | true | — | Optional filter for which requests to commit |
-| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | Called when commit completes or fails |
-
-### See Also
-
-- [DataSource.pendingChanges](#attr-datasourcependingchanges)
 
 ---
 ## Method: DataSource.copyRecord
@@ -5564,7 +5341,7 @@ To cause all components that have cache managers to drop their caches, provide a
 
 As an alternative to calling `updateCaches()` directly, if updates to other DataSources occur as a result of server-side logic, you can use the server-side API DSResponse.addRelatedUpdate(DSResponse) (Pro Edition and above), which ultimately calls `updateCaches()` for you - see that method's documentation for details.
 
-**NOTE:** if `updateCaches` is called for a [clientOnly](#attr-datasourceclientonly) DataSource, it will update [DataSource.cacheData](#attr-datasourcecachedata) synchronously in addition to notifying all cache managers as normal.
+**NOTE:**: if `updateCaches` is called for a [clientOnly](#attr-datasourceclientonly) DataSource, it will update [DataSource.cacheData](#attr-datasourcecachedata) synchronously in addition to notifying all cache managers as normal.
 
 If a DataSource has [DataSource.cacheAllData](#attr-datasourcecachealldata) set and a full cache has been obtained, calling `updateCaches` will automatically update the cache.
 
@@ -5808,7 +5585,7 @@ This is an application override point only; there is no default implementation.
 
 ### Returns
 
-`[Boolean](#type-boolean)` — true to allow this response to be used, false to prevent it
+`[boolean](../reference.md#type-boolean)` — true to allow this response to be used, false to prevent it
 
 ### Groups
 
@@ -6207,48 +5984,6 @@ If you call this method on a DataSource with a composite primary key - ie, one w
 | requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | additional properties to set on the DSRequest that will be issued |
 
 ---
-## Method: DataSource.discardQueuedChanges
-
-### Description
-Removes queued requests from [DataSource.pendingChanges](#attr-datasourcependingchanges) without sending them to the server.
-
-Accepts standard [Criteria](../reference_2.md#type-criteria) or [AdvancedCriteria](../reference.md#object-advancedcriteria) to filter which requests to discard, matched against DSRequest fields. Common filters:
-
-```
- // Discard all
- ds.discardQueuedChanges();
-
- // Discard by operation type
- ds.discardQueuedChanges({ operationType: "add" });
-
- // Discard specific request
- ds.discardQueuedChanges({ requestId: "employees_request47" });
-
- // Discard requests older than a date
- ds.discardQueuedChanges({
-     _constructor: "AdvancedCriteria",
-     fieldName: "clientTimestamp",
-     operator: "lessThan",
-     value: cutoffDate
- });
- 
-```
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| criteria | [Criteria](../reference_2.md#type-criteria)|[AdvancedCriteria](#type-advancedcriteria) | true | — | Optional filter for which requests to discard |
-
-### Returns
-
-`[int](../reference.md#type-int)` — Number of requests discarded
-
-### See Also
-
-- [DataSource.pendingChanges](#attr-datasourcependingchanges)
-
----
 ## Method: DataSource.supportsAdvancedCriteria
 
 ### Description
@@ -6320,7 +6055,7 @@ If you define this method on a DataSource, it will be called whenever the server
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false to suppress [RPCManager.handleError](RPCManager.md#classmethod-rpcmanagerhandleerror)
+`[boolean](../reference.md#type-boolean)` — false to suppress [RPCManager.handleError](RPCManager.md#classmethod-rpcmanagerhandleerror)
 
 ### Groups
 

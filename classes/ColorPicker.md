@@ -501,12 +501,8 @@ The optional second parameter to this method indicates whether the shared picker
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| properties | [Object](../reference.md#type-object) | true | — | Properties to apply to the global ColorPicker object |
+| properties | [Object](../reference.md#type-object) | false | — | Properties to apply to the global ColorPicker object |
 | keepCurrentState | [boolean](../reference.md#type-boolean) | true | — | Should we keep the current state? If false (or not provided), revert to default state |
-
-### Returns
-
-`[ColorPicker](#type-colorpicker)` — the shared ColorPicker instance
 
 ---
 ## Method: ColorPicker.getRed

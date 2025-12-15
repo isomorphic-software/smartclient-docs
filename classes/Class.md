@@ -132,23 +132,6 @@ In ComponentXML dynamicProperties can be intialized as:
 **Flags**: IR
 
 ---
-## Attr: Class.ID
-
-### Description
-Global identifier for referring to a Class instance in JavaScript. If you specify this property at initialization, the instance will be available as a global variable via the ID.
-
-Not all Class subclasses support this property. The following commonly-used subclasses support global IDs:
-
-*   [Canvas](Canvas.md#class-canvas) and all visual widget subclasses
-*   [DataSource](DataSource.md#class-datasource)
-*   [Tree](Tree.md#class-tree)
-*   [ValuesManager](ValuesManager.md#class-valuesmanager)
-*   [ResultSet](ResultSet.md#class-resultset)
-*   [ResultTree](ResultTree.md#class-resulttree)
-
-**Flags**: IR
-
----
 ## Attr: Class.addPropertiesOnCreate
 
 ### Description
@@ -177,7 +160,7 @@ Substitute title to use for a title-less, unnamed field.
 
 - i18nMessages
 
-**Flags**: IRW
+**Flags**: RW
 
 ---
 ## Attr: Class.creator
@@ -205,7 +188,7 @@ Substitute title to use for an unknown field.
 
 - i18nMessages
 
-**Flags**: IRW
+**Flags**: RW
 
 ---
 ## ClassMethod: Class.changeDefaults
@@ -386,29 +369,6 @@ Note the `arguments` object is required in most cases for this method to functio
 - debug
 
 ---
-## ClassMethod: Class.registerTemplates
-
-### Description
-Registers a set of named template functions under a given template type (for example, "default" or "email").
-
-Templates are stored in the class object and prototype inheritance is maintained along the class hierarchy. Subclasses can override templates without mutating their superclass, add new ones, and rely on late binding so templates can be defined at any point.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| templates | [Object](../reference.md#type-object) | false | — | Object mapping template names to template functions. |
-| type | [String](#type-string) | true | — | The namespace type for the templates. Defaults to "default". |
-
-### Groups
-
-- stringTemplateFunctions
-
-### See Also
-
-- [stringTemplateFunctions](../kb_topics/stringTemplateFunctions.md#kb-topic-string-template-functions)
-
----
 ## ClassMethod: Class.setDefaultLogPriority
 
 ### Description
@@ -462,10 +422,6 @@ Gets a named property from the instance defaults for this object.
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | property | [String](#type-string) | false | — | name of the property to return |
-
-### Returns
-
-`[Any](#type-any)` — the value of the property from instance defaults
 
 ---
 ## ClassMethod: Class.logIsWarnEnabled
@@ -523,33 +479,6 @@ Mark this class as a framework class (member of the SmartClient framework). Sets
 ### Groups
 
 - autoTest
-
----
-## ClassMethod: Class.render
-
-### Description
-Renders a template by name from the "default" template namespace type.
-
-Shared template utilities (`sc` and `json`) are automatically initialized and passed in. The template executes with `this` bound to the class object.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| templateName | [String](#type-string) | false | — | The name of the template to render, from the "default" namespace type. |
-| state | [Object](../reference.md#type-object) | false | — | Input state passed to the template function. |
-
-### Returns
-
-`[String](#type-string)` — Rendered string output, or an empty string if the template function was not found, or an exception occurred during execution of the template function.
-
-### Groups
-
-- stringTemplateFunctions
-
-### See Also
-
-- [stringTemplateFunctions](../kb_topics/stringTemplateFunctions.md#kb-topic-string-template-functions)
 
 ---
 ## ClassMethod: Class.evaluate
@@ -845,9 +774,10 @@ A method named log_Priority_ exists for each priority level, on every ISC Class 
 Returns a "stack trace" - one line per method in the current call stack, showing the method name and any parameters passed. This function is available as a static on every ISC Class and as an instance method on every instance of an ISC Class.  
 General best practice is to call the method as "this.getStackTrace" whenever "this" is an instance, or call the static classMethod on the [Log](Log.md#class-log) class otherwise.
 
-If the current thread was started by a [timer](Timer.md#classmethod-timersettimeout), you can [enable debug-level logging for the "timerTrace" log category](../kb_topics/debugging.md#kb-topic-debugging) to also include the stack trace leading up to the setTimeout call in most cases.
+Platform Notes: In Mozilla Firefox, if Firebug is enabled, a stack trace will be logged to the firebug console in addition to the standard stack trace string returned by this method.  
+In browsers other than Internet Explorer a complete stack trace may not be available - this occurs when a function is re-entrant (meaning it calls itself). In this case the stack will terminate with text indicating where the recursive function call occurred.
 
-See [debugging](../kb_topics/debugging.md#kb-topic-debugging) for further information.
+See [debugging](../kb_topics/debugging.md#kb-topic-debugging) for further information information.
 
 ### Returns
 
@@ -856,7 +786,6 @@ See [debugging](../kb_topics/debugging.md#kb-topic-debugging) for further inform
 ### Groups
 
 - debug
-- prodErrorReport
 
 ---
 ## ClassMethod: Class.delayCall
@@ -987,31 +916,6 @@ These properties can then be accessed as MyClass.property, or for functions, cal
 ### Returns
 
 `[Object](../reference.md#type-object)` — the class after properties have been added to it
-
----
-## ClassMethod: Class.getTemplate
-
-### Description
-Retrieves a registered template function by name and type.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| name | [String](#type-string) | false | — | The template name to look up. |
-| type | [String](#type-string) | true | — | The namespace type (defaults to "default"). |
-
-### Returns
-
-`[Function](#type-function)` — The registered template function, or `null` if not found.
-
-### Groups
-
-- stringTemplateFunctions
-
-### See Also
-
-- [stringTemplateFunctions](../kb_topics/stringTemplateFunctions.md#kb-topic-string-template-functions)
 
 ---
 ## ClassMethod: Class.getClassName
@@ -1301,9 +1205,10 @@ As with logDebug, category is defaulted to the current className. Use this metho
 Returns a "stack trace" - one line per method in the current call stack, showing the method name and any parameters passed. This function is available as a static on every ISC Class and as an instance method on every instance of an ISC Class.  
 General best practice is to call the method as "this.getStackTrace" whenever "this" is an instance, or call the static classMethod on the [Log](Log.md#class-log) class otherwise.
 
-If the current thread was started by a [timer](Timer.md#classmethod-timersettimeout), you can [enable debug-level logging for the "timerTrace" log category](../kb_topics/debugging.md#kb-topic-debugging) to also include the stack trace leading up to the setTimeout call in most cases.
+Platform Notes: In Mozilla Firefox, if Firebug is enabled, a stack trace will be logged to the firebug console in addition to the standard stack trace string returned by this method.  
+In browsers other than Internet Explorer a complete stack trace may not be available - this occurs when a function is re-entrant (meaning it calls itself). In this case the stack will terminate with text indicating where the recursive function call occurred.
 
-See [debugging](../kb_topics/debugging.md#kb-topic-debugging) for further information.
+See [debugging](../kb_topics/debugging.md#kb-topic-debugging) for further information information.
 
 ### Returns
 
@@ -1312,7 +1217,6 @@ See [debugging](../kb_topics/debugging.md#kb-topic-debugging) for further inform
 ### Groups
 
 - debug
-- prodErrorReport
 
 ---
 ## Method: Class.addPropertyList

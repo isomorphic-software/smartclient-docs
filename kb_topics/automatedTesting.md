@@ -9,31 +9,28 @@
 ### Description
 SmartClient supports automated testing with a variety of tools. See the [AutoTest](../classes/AutoTest.md#class-autotest) class for information about how to generate and resolve [AutoTestLocators](../reference_2.md#type-autotestlocator) and other utilities within the SmartClient framework related to generating automated tests.
 
-#### Playwright
-SmartClient applications work smoothly with [Playwright](https://playwright.dev/).
-
-The SDK package provides an example `commands.js` file that defines [Playwright fixtures and helpers](https://playwright.dev/docs/test-fixtures) designed to locate and interact with SmartClient components, automatically handle asynchronous operations, record performance data, and more. For step-by-step guidance on using Playwright with SmartClient, see [Integrating SmartClient with Playwright](smartClientPlaywright.md#kb-topic-integrating-smartclient-with-playwright).
-
 #### Cypress
 SmartClient applications integrate seamlessly with [Cypress](https://www.cypress.io/).
 
 The SDK package includes a sample `commands.js` configuration file with custom [cypress commands](https://docs.cypress.io/api/cypress-api/custom-commands) to identify and interact with SmartClient components, seamlessly wait for asynchronous operations, recording timing data and more. See the [Cypress integration overview](smartClientCypress.md#kb-topic-integrating-smartclient-with-cypress) for details on how to use Cypress with SmartClient.
 
-#### Selenese
+#### Selenium / Selenese
 
-Selenese is a simple HTML table-based test format that can be authored without programming skills. SmartClient provides enhanced Selenese commands and locators for reliable interaction with SmartClient widgets.
+SmartClient includes free support for [Selenium](https://docs.seleniumhq.org/) for robust recording and playback of tests, including the ability to record on one browser and play back on others, via [Selenese](https://www.seleniumhq.org/docs/02_selenium_ide.jsp#selenium-commands-selenese) enhanced with SmartClient-specific locators and commands that provide a stable means of locating SmartClient widgets and ensuring they're ready for interaction.
 
-**Playwright-based Selenese Runner (Recommended)**
+To write Selenese, we recommend Selenium IDE 2.9, which is compatible with [Firefox 52 ESR](https://www.mozilla.org/en-US/firefox/organizations/), and can directly load our user extensions, located in the `smartclientSDK/tools/selenium/` directory. A user guide explaining how to create and interactively run selenese with the IDE can be found [here](usingSelenium.md#kb-topic-using-selenium-scripts-selenese). Selenium IDE 3, which requires Firefox Quantum, has just released support for plugins that should allow the eventual migration of our user extensions, but for now only Selenium IDE 2.9 can load SmartClient locator and command extensions.
 
-The recommended approach for executing Selenese tests is the Playwright-based `selenese-runner.js`, located in `tools/playwright/`. This runner requires only Node.js and Playwright (no Java or Selenium installation), automatically waits for SmartClient system quiescence after each command, and outputs JUnit XML for CI/CD integration.
+**SeleneseRunner**
 
-**Java-based SeleneseRunner**
+For automated testing, SmartClient provides [SeleneseRunner](server/javadoc/com/isomorphic/webdriver/SeleneseRunner.html), a tool that executes SmartClient-enhanced Selenese created by Selenium IDE via emulation, since Selenium 3 no longer supports the Selenium RC APIs and thus can't execute Selenese that requires custom user extensions. Internally, `SeleneseRunner` makes use of the APIs in our WebDriver wrappers to resolve locators properly and execute SmartClient-enhanced Selenese.
 
-For Java-based environments, SmartClient provides [SeleneseRunner](server/javadoc/com/isomorphic/webdriver/SeleneseRunner.html), which executes Selenese via WebDriver. This runner can also convert Selenese to Java/JUnit code.
+`SeleneseRunner` can be used to:
 
-**Recording Selenese**
+*   execute Selenese directly from the command line
+*   execute Selenese from inside a Java program (eg, as part of a JUnit test)
+*   convert a Selenese test to Java code (as a JUnit test)
 
-Selenese tests can be recorded using Selenium IDE. See [Using\\n Selenium](usingSelenium.md#kb-topic-using-selenium-scripts-selenese) for setup instructions. Note that while Selenium IDE 2.9 (with Firefox 52 ESR) provides the best recording experience with SmartClient extensions, recorded tests can be executed via the Playwright runner without any Selenium installation.
+See the server-side JavaDoc linked above for more information on how to use these features.
 
 #### TestRunner
 
@@ -41,21 +38,23 @@ Selenese tests can be recorded using Selenium IDE. See [Using\\n Selenium](using
 
 #### Selenium WebDriver
 
-WebDriver uses browser-specific drivers to enable Selenium interaction. SmartClient provides WebDriver support with the same custom locator strategies and commands as Selenese.
+WebDriver, supported since Selenium 2, uses a different basic architecture in which a driver is added to each browser to enable Selenium interaction, instead of doing so from JavaScript.
 
-For most use cases, we recommend Playwright or Cypress over WebDriver, as they provide a more modern development experience. WebDriver remains useful for teams with existing Java/Selenium infrastructure or specific integration requirements.
+Support for WebDriver-based testing for SmartClient is now available with the same custom locator strategies and custom commands as we provide for Selenese. **However, we continue to recommend Selenese rather than WebDriver-based Selenium, because Webdriver requires Java programming skills.** Tests created in Selenium IDE and stored in Selenese can be executed by a variety of tools without requiring Java skills, including our own [testRunner](testRunner.md#kb-topic-testrunner). Most ways of running WebDriver tests involve Java coding skills or at least the ability to work with a Java IDE. This tends to mean that all QA personnel must either have Java skills or drain the time of Java developers on repetitive tasks.
+
+Ultimately, our current recommendation is to use Selenium IDE and Selenese exclusively or at least primarily. If there are critically important tests that you can only build via WebDriver, use WebDriver for those tests only, or use manual testing for those tests.
 
 **WebDriver Usage**
 
-You can use Selenium IDE to record tests, then use `SeleneseRunner` to convert the Selenese to Java code that uses SmartClient locators and our WebDriver wrappers.
+When using WebDriver, we recommend using Selenum IDE as a starting point to record and store tests. You can then call `SeleneseRunner` to convert that Selenese to Java code that uses SmartClient locators and invokes the appropriate APIs on our WebDriver wrappers.
 
-To retrieve locators for hand-written tests, use [AutoTest.installLocatorShortcut](../classes/AutoTest.md#classmethod-autotestinstalllocatorshortcut) (key-combo plus click) or [AutoTest.getLocator](../classes/AutoTest.md#classmethod-autotestgetlocator) from the [Developer Console](debugging.md#kb-topic-debugging).
+Once you become familiar with what code is generated for common interactions, you may want to write tests directly without using Selenium IDE. In this case, you can retrieve locators for specific elements in a couple of ways. The [AutoTest.installLocatorShortcut](../classes/AutoTest.md#classmethod-autotestinstalllocatorshortcut) method allows developers to retieve a locator for the element under the mouse via a simple key-combo plus click. Alternatively you can use [AutoTest](../classes/AutoTest.md#class-autotest) APIs, such as [AutoTest.getLocator](../classes/AutoTest.md#classmethod-autotestgetlocator), which takes a [Canvas](../classes/Canvas.md#class-canvas) or DOM element, to get the locators you need. These can be invoked by evaluating script while a SmartClient page is loaded (from the [Developer Console](debugging.md#kb-topic-debugging) or from the native browser console).
 
-**NOTE:** Do not use Selenium IDE's built-in WebDriver export feature; it doesn't support custom commands or locators. Use `SeleneseRunner` instead.
+**NOTE:** Selenium IDE has an option to export tests as WebDriver-compatible code. **Do not use** this feature, it exports useless code that doesn't understand custom commands, custom locators, or other key features of Selenium IDE. Use `SeleneseRunner` instead.
 
 **WebDriver Classes overview**
 
-For certain tests it can make sense to use WebDriver Java support directly.
+Storing and executing Selenese tests recorded in the Selenium IDE is recommended as the primary approach for using WebDriver. However, for certain rare tests it can make sense to use WebDriver Java support directly.
 
 SmartClient support for WebDriver is based around 3 different Java classes:
 

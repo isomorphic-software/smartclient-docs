@@ -27,7 +27,6 @@ The list of databases known to work with the built-in SQL logic is as follows:
 |  | Oracle ${Oracle_versions} |  |
 |  | PostgreSQL ${PostgreSQL_versions} |  |
 |  | Progress OpenEdge ${OpenEdge_versions} (Note, DDL via JDBC operations are restricted by the product itself) |  |
-|  | Snowflake ${Snowflake_versions} |  |
 
 We also support a generic SQL92 database connection which works for basic CRUD operations with any database product that supports standard SQL92 syntax and data types, plus a couple of widely-implemented features that are not actually part of the standard. Specifically, this means we do not support:
 

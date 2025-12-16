@@ -65,7 +65,7 @@ Select a database to update [DatabaseBrowser.dbName](#attr-databasebrowserdbname
 ## Attr: DatabaseBrowser.schemaTree
 
 ### Description
-Instance of ListGrid used to display the database schema. This grid makes use of an +link{listGrid.canExpandRecords,expansion component) to show columns for each table.
+Instance of ListGrid used to display the database schema (ie, the list of tables). This grid makes use of an +link{listGrid.canExpandRecords,expansion component) to show columns for each table.
 
 **Flags**: IR
 
@@ -188,6 +188,20 @@ Instance of Button used to cancel this dialog.
 
 ### Description
 A title to show in the header button of the DatabaseBrowser's schema tree. If not set, defaults to the name of the connected database
+
+**Flags**: IR
+
+---
+## Attr: DatabaseBrowser.schemaDataSource
+
+### Description
+DataSource to retrieve the list of schemas from a database.
+
+If not explicitly specified, a dataSource will be automatically created for you and will invoke the special BuiltInRPC method `getSchemas()` to retrieve the set defined set of tables and views for the selected database.
+
+See [server_properties](../kb_topics/server_properties.md#kb-topic-serverproperties-file) for details on how to enable access to BuiltInRPC utility methods.
+
+To allow custom behavior retrieving the set of schemas within a database, you can provide your own explicitly specified DataSource to retrieve connections. At a minimum this DataSource have must have field `schemaName`
 
 **Flags**: IR
 

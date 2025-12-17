@@ -152,6 +152,24 @@ Is `object` an Array with no items?
 `[boolean](../reference.md#type-boolean)` — true == `object` is an empty array
 
 ---
+## StaticMethod: isA.nonemptyArray
+
+### Description
+Is `object` an array with at least one item?
+
+Note: `null`, `undefined`, and empty slots in an array are still considered an item.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| object | [Any](#type-any) | false | — | The object or value to test. |
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — `true` if `object` is an array with at least one item; `false` otherwise (i.e. `object` isn't an array, or it has no items)
+
+---
 ## StaticMethod: isA.Object
 
 ### Description

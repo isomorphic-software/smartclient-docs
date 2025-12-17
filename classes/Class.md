@@ -369,6 +369,29 @@ Note the `arguments` object is required in most cases for this method to functio
 - debug
 
 ---
+## ClassMethod: Class.registerTemplates
+
+### Description
+Registers a set of named template functions under a given template type (for example, "default" or "email").
+
+Templates are stored in the class object and prototype inheritance is maintained along the class hierarchy. Subclasses can override templates without mutating their superclass, add new ones, and rely on late binding so templates can be defined at any point.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| templates | [Object](../reference.md#type-object) | false | — | Object mapping template names to template functions. |
+| type | [String](#type-string) | true | — | The namespace type for the templates. Defaults to "default". |
+
+### Groups
+
+- stringTemplateFunctions
+
+### See Also
+
+- [stringTemplateFunctions](../kb_topics/stringTemplateFunctions.md#kb-topic-string-template-functions)
+
+---
 ## ClassMethod: Class.setDefaultLogPriority
 
 ### Description
@@ -479,6 +502,33 @@ Mark this class as a framework class (member of the SmartClient framework). Sets
 ### Groups
 
 - autoTest
+
+---
+## ClassMethod: Class.render
+
+### Description
+Renders a template by name from the "default" template namespace type.
+
+Shared template utilities (`sc` and `json`) are automatically initialized and passed in. The template executes with `this` bound to the class object.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| templateName | [String](#type-string) | false | — | The name of the template to render, from the "default" namespace type. |
+| state | [Object](../reference.md#type-object) | false | — | Input state passed to the template function. |
+
+### Returns
+
+`[String](#type-string)` — Rendered string output, or an empty string if the template function was not found, or an exception occurred during execution of the template function.
+
+### Groups
+
+- stringTemplateFunctions
+
+### See Also
+
+- [stringTemplateFunctions](../kb_topics/stringTemplateFunctions.md#kb-topic-string-template-functions)
 
 ---
 ## ClassMethod: Class.evaluate
@@ -916,6 +966,31 @@ These properties can then be accessed as MyClass.property, or for functions, cal
 ### Returns
 
 `[Object](../reference.md#type-object)` — the class after properties have been added to it
+
+---
+## ClassMethod: Class.getTemplate
+
+### Description
+Retrieves a registered template function by name and type.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| name | [String](#type-string) | false | — | The template name to look up. |
+| type | [String](#type-string) | true | — | The namespace type (defaults to "default"). |
+
+### Returns
+
+`[Function](#type-function)` — The registered template function, or `null` if not found.
+
+### Groups
+
+- stringTemplateFunctions
+
+### See Also
+
+- [stringTemplateFunctions](../kb_topics/stringTemplateFunctions.md#kb-topic-string-template-functions)
 
 ---
 ## ClassMethod: Class.getClassName

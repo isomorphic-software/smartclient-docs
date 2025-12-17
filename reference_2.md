@@ -714,6 +714,16 @@ If you use a Java-based persistence layer not provided by SmartClient, such as E
 - serverDataIntegration
 
 ---
+## Type: DynamicString
+
+### Description
+A [dynamic string](kb_topics/dynamicStrings.md#kb-topic-dynamic-strings).
+
+### Groups
+
+- dynamicStrings
+
+---
 ## Type: ElementWaitStyle
 
 ### Description

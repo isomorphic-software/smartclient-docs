@@ -18,6 +18,14 @@ Note, the DatabaseBrowser (and SmartClient's SQL features generally) does not su
 To make matters worse, some of the more long-established mainstream databases (Oracle, DB2, some less common ones) use the word "catalog" in their documentation to mean "system metadata", which is completely different from the SQL-92 definition. Since catalogs in the SQL-92 sense are nearly always either redundant or missing, and depending on the database in use there may also be a confusing collision of terminology, SmartClient does not provide explicit support for them.
 
 ---
+## Attr: DatabaseBrowser.schemaCriteria
+
+### Description
+Optional criteria to pass to the [DatabaseBrowser.schemaDataSource](#attr-databasebrowserschemadatasource) when retrieving the list of schemas for a selected database. Note, this criteria is in addition to the criteria implied by the current [dbName](#attr-databasebrowserdbname)
+
+**Flags**: IR
+
+---
 ## Attr: DatabaseBrowser.schemaPickerForm
 
 ### Description
@@ -28,6 +36,14 @@ Select a schema in the picklist to update the selected schema and display the ta
 Note, if the [schema](#attr-databasebrowserschema) property is set when the `DatabaseBrowser` is created, the schemaPicker shows the schema name, but is set read only so the user cannot change the selection.
 
 **Flags**: IR
+
+---
+## Attr: DatabaseBrowser.schemaFetchOperation
+
+### Description
+Optional [OperationBinding.operationId](OperationBinding.md#attr-operationbindingoperationid) to pass to the [DatabaseBrowser.schemaDataSource](#attr-databasebrowserschemadatasource) when retrieving the list of schemas for a selected database.
+
+**Flags**: IRA
 
 ---
 ## Attr: DatabaseBrowser.selectButton
@@ -67,7 +83,7 @@ Finally, to allow completely custom behavior retrieving the set of tables within
 ## Attr: DatabaseBrowser.tableCriteria
 
 ### Description
-Optional criteria to pass to the [DatabaseBrowser.tableDataSource](#attr-databasebrowsertabledatasource) when retrieving the set of tables and views for a selected database.
+Optional criteria to pass to the [DatabaseBrowser.tableDataSource](#attr-databasebrowsertabledatasource) when retrieving the set of tables and views for a selected database. Note, this criteria is in addition to the criteria implied by the current [dbName](#attr-databasebrowserdbname) and [schema](#attr-databasebrowserschema) (if any), and any criteria the user has entered into the table list widget's filterEditor
 
 **Flags**: IR
 
@@ -210,6 +226,14 @@ Optional dsRequest configuration for the fetch operation when retrieving the set
 **Flags**: IR
 
 ---
+## Attr: DatabaseBrowser.schemaFetchRequestProperties
+
+### Description
+Optional dsRequest configuration for the fetch operation when retrieving the list of schemas for a selected database.
+
+**Flags**: IR
+
+---
 ## Attr: DatabaseBrowser.dbCriteria
 
 ### Description
@@ -247,7 +271,7 @@ We ship a default dataSource implementation, and we recommend that you use it in
 
 If you wish to use this DS implementation, set `schemaDataSource` to "DBBrowser\_schemas" (the DBBrowser\_\* dataSource definitions are shipped in the SmartClient SDK inside /shared/ds - you must ensure that these are deployed to the same location - or another valid dataSouirce location - in your deployed app)
 
-Finally, to allow completely custom behavior retrieving the set of schemas within a database, you can provide your own DataSource implementation to retrieve schema names. At a minimum this DataSource have must have fields `dbName` and `schemaName`.
+Finally, to allow completely custom behavior retrieving the set of schemas within a database, you can provide your own DataSource implementation to retrieve schema names. At a minimum this DataSource have must have fields `dbName` and `schemaName`. The request to retrieve schemas may be customized via [DatabaseBrowser.schemaCriteria](#attr-databasebrowserschemacriteria), [DatabaseBrowser.schemaFetchOperation](#attr-databasebrowserschemafetchoperation) and [DatabaseBrowser.schemaFetchRequestProperties](#attr-databasebrowserschemafetchrequestproperties).
 
 **Flags**: IR
 

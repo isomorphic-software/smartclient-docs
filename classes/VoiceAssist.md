@@ -105,7 +105,8 @@ Enables the VoiceAssist module - once enabled, a user may triple-tap the [speech
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| key | [String](#type-string) | false | — | optional different key to use for VoiceAssist - use with care |
+| doPermissionChecks | [Boolean](#type-boolean) | true | — | when true, performs permissions checks as part of this call - otherwise, checks are performed when user starts VoiceAssist, by triple-tapping the [voiceAssist.speechKey](#voiceassistspeechkey) |
+| key | [String](#type-string) | true | — | optional different key to use for VoiceAssist - use with care |
 
 **Flags**: A
 

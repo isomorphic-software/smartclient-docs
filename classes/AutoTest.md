@@ -264,6 +264,7 @@ Depending on your application configuration, it is possible that this method wil
 Returns whether the canvas associated with the given DOM element is in a consistent state with no pending operations. Returns null if the argument is not valid or isn't associated with an element representing a valid canvas. Otherwise, returns true or false according as the conditions below are all satisfied:
 
 *   page has finished loading
+*   canvas is drawn
 *   canvas isn't dirty
 *   canvas has no queued overflow operations
 *   canvas is not animating

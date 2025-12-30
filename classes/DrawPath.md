@@ -12,16 +12,6 @@
 Draws a multi-segment line.
 
 ---
-## Attr: DrawPath.showTitleLabelBackground
-
-### Description
-If the [titleLabel](DrawItem.md#attr-drawitemtitlelabel) is showing, should the [titleLabelBackground](DrawItem.md#attr-drawitemtitlelabelbackground) be created and placed behind the `titleLabel`?
-
-This defaults to true for [DrawSector](DrawSector.md#class-drawsector)s and shapes that are not commonly filled (e.g. [DrawLine](DrawLine.md#class-drawline)s).
-
-**Flags**: IRA
-
----
 ## Attr: DrawPath.points
 
 ### Description
@@ -42,6 +32,16 @@ DrawPath only supports the "move" knob type.
 **Flags**: IR
 
 ---
+## Attr: DrawPath.showTitleLabelBackground
+
+### Description
+If the [titleLabel](DrawItem.md#attr-drawitemtitlelabel) is showing, should the [titleLabelBackground](DrawItem.md#attr-drawitemtitlelabelbackground) be created and placed behind the `titleLabel`?
+
+This defaults to true for [DrawSector](DrawSector.md#class-drawsector)s and shapes that are not commonly filled (e.g. [DrawLine](DrawLine.md#class-drawline)s).
+
+**Flags**: IRA
+
+---
 ## Method: DrawPath.getBoundingBox
 
 ### Description
@@ -50,6 +50,16 @@ Returns the min, max points
 ### Returns
 
 `[Array of double](#type-array-of-double)` — x1, y1, x2, y2 coordinates
+
+---
+## Method: DrawPath.getCenter
+
+### Description
+Get the mean center of the path.
+
+### Returns
+
+`[Point](#type-point)` — the mean center
 
 ---
 ## Method: DrawPath.resizeBy
@@ -102,15 +112,5 @@ Move all points in the path such that the first point ends up at the specified c
 |------|------|----------|---------|-------------|
 | left | [Integer](../reference_2.md#type-integer) | false | — | new left coordinate in pixels |
 | top | [Integer](../reference_2.md#type-integer) | false | — | new top coordinate in pixels |
-
----
-## Method: DrawPath.getCenter
-
-### Description
-Get the mean center of the path.
-
-### Returns
-
-`[Point](#type-point)` — the mean center
 
 ---

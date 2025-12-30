@@ -24,6 +24,14 @@ The [DrawItem](DrawItem.md#class-drawitem) instance rendered into this DrawKnob'
 **Flags**: R
 
 ---
+## Attr: DrawKnob.drawPane
+
+### Description
+[DrawPane](DrawPane.md#class-drawpane) into which this DrawKnob's [DrawKnob.knobShape](#attr-drawknobknobshape) will be rendered.
+
+**Flags**: IR
+
+---
 ## Attr: DrawKnob.y
 
 ### Description
@@ -46,14 +54,6 @@ Default properties for this component's [DrawKnob.knobShape](#attr-drawknobknobs
 As with any auto-child defaults block, use [Class.changeDefaults](Class.md#classmethod-classchangedefaults) to modify this object.
 
 **Flags**: IRA
-
----
-## Attr: DrawKnob.drawPane
-
-### Description
-[DrawPane](DrawPane.md#class-drawpane) into which this DrawKnob's [DrawKnob.knobShape](#attr-drawknobknobshape) will be rendered.
-
-**Flags**: IR
 
 ---
 ## Attr: DrawKnob.x

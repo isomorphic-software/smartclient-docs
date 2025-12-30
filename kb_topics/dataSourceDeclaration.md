@@ -50,7 +50,7 @@ DataSources defined in XML are loaded by using the `DataSourceLoader` servlet pr
 Alternatively, in JSP environments, XML DataSources can be loaded via a special JSP tag supported by the SmartClient Server:
 
 ```
-     <%@ taglib uri="http://www.smartclient.com/taglib" prefix="isomorphic" %>
+     <%@ taglib uri="/WEB-INF/iscTaglib.xml" prefix="isomorphic" %>
      ...
      <SCRIPT>
      <isomorphic:loadDS ID="supplyItem"/>
@@ -58,10 +58,7 @@ Alternatively, in JSP environments, XML DataSources can be loaded via a special 
  
 ```
 
-When loading an XML DataSource, by default, the ISC Server will look for a file named ``<dataSourceId>`.ds.xml` in the `project.datasources` directory as configured in `[webroot]/WEB-INF/classes/server.properties` . By default this may be set to `/shared/ds` or `/WEB-INF/ds` under webroot.  
-The location of this directory can be changed, or individual DataSources can be placed in arbitrary locations. For more information, see the documentation for [server.properties](server_properties.md#kb-topic-serverproperties-file)
-
-The directory containing dataSource defintions should not be made publicly accessible via the webserver. DataSource configuration files can contain sensitive data that should only be read by the server. When loading a dataSource via the `loadDS` tag or by hitting the `DataSourceLoader` servlet such data will not be passed to the client.
+When loading an XML DataSource, by default, the ISC Server will look for a file named ``<dataSourceId>`.ds.xml` in the `/shared/ds` subdirectory under webroot. The location of this directory can be changed, or individual DataSources can be placed in arbitrary locations. For more information, see [\[webroot\]/WEB-INF/classes/server.properties](../reference.md#kb-topic-serverproperties-file).
 
 XML DataSources can also be generated on the fly in case the entire DataSource or portions of it are based on dynamic data. See the server API com.isomorphic.DataSource.addDynamicDSGenerator().
 

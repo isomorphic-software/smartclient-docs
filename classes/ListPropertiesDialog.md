@@ -24,6 +24,18 @@ The Cancel button. When clicked, the [cancelClick](#method-listpropertiesdialogc
 **Flags**: R
 
 ---
+## Attr: ListPropertiesDialog.title
+
+### Description
+The title of this ListPropertiesDialog.
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IR
+
+---
 ## Attr: ListPropertiesDialog.applyButton
 
 ### Description
@@ -40,18 +52,6 @@ The Apply button. When clicked, the [applyClick](#method-listpropertiesdialogapp
 The [ListPropertiesPane](ListPropertiesPane.md#class-listpropertiespane) contained by this ListPropertiesDialog.
 
 **Flags**: R
-
----
-## Attr: ListPropertiesDialog.title
-
-### Description
-The title of this ListPropertiesDialog.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IR
 
 ---
 ## Attr: ListPropertiesDialog.cancelButtonTitle

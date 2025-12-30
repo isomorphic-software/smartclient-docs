@@ -14,7 +14,7 @@ Direct submission of forms to a target URL
 ### Related
 
 - [FormMethod](../reference.md#type-formmethod)
-- [Encoding](../reference_2.md#type-encoding)
+- [Encoding](../reference.md#type-encoding)
 - [DynamicForm.cancel](../classes/DynamicForm.md#method-dynamicformcancel)
 - [ValuesManager.cancel](../classes/ValuesManager.md#method-valuesmanagercancel)
 - [DynamicForm.submitForm](../classes/DynamicForm.md#method-dynamicformsubmitform)

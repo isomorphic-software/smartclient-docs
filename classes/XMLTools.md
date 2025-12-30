@@ -10,6 +10,40 @@
 Utility methods for dealing with XML elements, XML Schema, WSDL files, XSLT, and other XML-related functionality.
 
 ---
+## ClassMethod: XMLTools.toJS
+
+### Description
+Translates an XML fragment to JavaScript collections. This method works just like the server-side method XML.toJS(Element, Writer):
+
+*   Elements become JavaScript Objects with each attribute becoming a property
+*   Subelements with just text (no child elements or attributes) become properties
+*   Subelements with child elements or attributes become sub objects
+
+For example, if you pass the following fragment to this method:
+```
+ <foo bar="zoo">
+       <x>y</x>
+ </foo>
+ 
+```
+You will get back the following JS structure:
+```
+ { bar:"zoo", x:"y"}
+ 
+```
+All atomic property values will be of String type. Use [DataSource.recordsFromXML](DataSource.md#method-datasourcerecordsfromxml) to do schema-driven XML to JS transform, which can produce correctly typed values.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| element | [XMLElement](../reference.md#type-xmlelement)|[XMLDocument](../reference.md#type-xmldocument) | false | — | The element to transform to JS |
+
+### Returns
+
+`[Object](../reference_2.md#type-object)` — The resulting JavaScript collection.
+
+---
 ## ClassMethod: XMLTools.selectNodes
 
 ### Description
@@ -112,7 +146,7 @@ Details of the XPath -> Objects mapping:
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| object | [Object](../reference.md#type-object) | false | — | Object to select results from |
+| object | [Object](../reference_2.md#type-object) | false | — | Object to select results from |
 | xPath | [String](#type-string) | false | — | XPath expression |
 
 ### Returns
@@ -133,7 +167,7 @@ Relaying through the origin server requires that the ISC HttpProxyServlet be ins
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| URL | [URL](../reference_2.md#type-url) | false | — | URL to load the schema from |
+| URL | [URL](../reference.md#type-url) | false | — | URL to load the schema from |
 | callback | [Callback](../reference.md#type-callback) | false | — | callback to fire when the XML is loaded. Signature is callback(xmlDoc, xmlText) |
 | requestProperties | [RPCRequest](#type-rpcrequest) | true | — | additional properties to set on the RPCRequest that will be issued |
 
@@ -149,6 +183,28 @@ Though redundant, the [Namespaces in XML spec allows](http://www.w3.org/TR/REC-x
 xmlns:xml="http://www.w3.org/XML/1998/namespace"
 ```
 MSXML does not allow the 'xml' namespace prefix to be declared, and will raise the XML parse error: The namespace prefix is not allowed to start with the reserved string "xml". Microsoft has disclosed this bug as a Normative Variation in MSXML: [http://msdn.microsoft.com/en-us/library/ff460535(v=vs.85).aspx](http://msdn.microsoft.com/en-us/library/ff460535\(v=vs.85\).aspx). A framework-level work around is used by default in [XMLTools.parseXML](#classmethod-xmltoolsparsexml) where if the string `xmlns:xml="http://www.w3.org/XML/1998/namespace"` or `xmlns:xml='http://www.w3.org/XML/1998/namespace'` is found in the first 1000 characters of the `xmlText` parameter to parseXML(), then these two strings are removed from `xmlText` wherever they appear. This work around may be disabled by calling disableIEXMLHackaround() at any time before parseXML() is called.
+
+---
+## ClassMethod: XMLTools.serializeToString
+
+### Description
+Takes an XMLDocument and returns it as a String.
+
+This method is not supported on the Safari web browser versions prior to 3.0.3.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| inputDocument | [XMLDocument](../reference.md#type-xmldocument) | false | — | XML document to apply the transform to |
+
+### Returns
+
+`[String](#type-string)` — XML document as a String
+
+### Groups
+
+- xmlTransform
 
 ---
 ## ClassMethod: XMLTools.loadXMLSchema
@@ -175,16 +231,39 @@ NOTE: required fields: the XML Schema concept of "required" for an attribute or 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| schemaURL | [URL](../reference_2.md#type-url) | false | — | URL to load the schema from |
-| callback | [Callback](../reference.md#type-callback) | true | — | signature is callback(schemaSet) |
-| requestProperties | [RPCRequest Properties](#type-rpcrequest-properties) | true | — | additional properties to set on the RPCRequest that will be issued |
-| autoLoadImports | [boolean](../reference.md#type-boolean) | true | — | if set, xsd:import statements will be processed automatically to load dependent XSD files where a "location" is specified. The callback will not fire until all dependencies have been loaded |
+| schemaURL | [URL](../reference.md#type-url) | false | — | URL to load the schema from |
+| callback | [Callback](../reference.md#type-callback) | false | — | signature is callback(schemaSet) |
+| requestProperties | [RPCRequest](#type-rpcrequest) | false | — | additional properties to set on the RPCRequest that will be issued |
+| autoLoadImports | [boolean](../reference.md#type-boolean) | false | — | if set, xsd:import statements will be processed automatically to load dependent XSD files where a "location" is specified. The callback will not fire until all dependencies have been loaded |
 
 ### Groups
 
 - xmlSchema
 
 **Flags**: A
+
+---
+## ClassMethod: XMLTools.transformNodes
+
+### Description
+Apply an XSLT Stylesheet to an XML Document.
+
+This method cannot currently be supported on the Safari web browser versions prior to 3.0.3.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| inputDocument | [XMLDocument](../reference.md#type-xmldocument) | false | — | XML document to apply the transform to |
+| styleSheet | [XMLDocument](../reference.md#type-xmldocument) | false | — | XSLT stylesheet to use for transform |
+
+### Returns
+
+`[String](#type-string)` — stylesheet output
+
+### Groups
+
+- xmlTransform
 
 ---
 ## ClassMethod: XMLTools.selectNumber
@@ -293,94 +372,15 @@ Platform notes:
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| wsdlURL | [URL](../reference_2.md#type-url) | false | — | URL to load the WSDL file from |
-| callback | [Callback](../reference.md#type-callback) | true | — | signature is callback(service) |
-| requestProperties | [RPCRequest](#type-rpcrequest) | true | — | additional properties to set on the RPCRequest that will be issued |
-| autoLoadImports | [boolean](../reference.md#type-boolean) | true | — | if set, xsd:import statements will be processed automatically to load dependent XSD files where a "location" is specified. The callback will not fire until all dependencies have been loaded |
+| wsdlURL | [URL](../reference.md#type-url) | false | — | URL to load the WSDL file from |
+| callback | [Callback](../reference.md#type-callback) | false | — | signature is callback(service) |
+| requestProperties | [RPCRequest](#type-rpcrequest) | false | — | additional properties to set on the RPCRequest that will be issued |
+| autoLoadImports | [boolean](../reference.md#type-boolean) | false | — | if set, xsd:import statements will be processed automatically to load dependent XSD files where a "location" is specified. The callback will not fire until all dependencies have been loaded |
 
 ### Groups
 
 - xmlSchema
 
 **Flags**: A
-
----
-## ClassMethod: XMLTools.toJS
-
-### Description
-Translates an XML fragment to JavaScript collections. This method works just like the server-side method XML.toJS(Element, Writer):
-
-*   Elements become JavaScript Objects with each attribute becoming a property
-*   Subelements with just text (no child elements or attributes) become properties
-*   Subelements with child elements or attributes become sub objects
-
-For example, if you pass the following fragment to this method:
-```
- <foo bar="zoo">
-       <x>y</x>
- </foo>
- 
-```
-You will get back the following JS structure:
-```
- { bar:"zoo", x:"y"}
- 
-```
-All atomic property values will be of String type. Use [DataSource.recordsFromXML](#method-datasourcerecordsfromxml) to do schema-driven XML to JS transform, which can produce correctly typed values.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| element | [XMLElement](../reference.md#type-xmlelement)|[XMLDocument](../reference.md#type-xmldocument) | false | — | The element to transform to JS |
-
-### Returns
-
-`[Object](../reference.md#type-object)` — The resulting JavaScript collection.
-
----
-## ClassMethod: XMLTools.serializeToString
-
-### Description
-Takes an XMLDocument and returns it as a String.
-
-This method is not supported on the Safari web browser versions prior to 3.0.3.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| inputDocument | [XMLDocument](../reference.md#type-xmldocument) | false | — | XML document to apply the transform to |
-
-### Returns
-
-`[String](#type-string)` — XML document as a String
-
-### Groups
-
-- xmlTransform
-
----
-## ClassMethod: XMLTools.transformNodes
-
-### Description
-Apply an XSLT Stylesheet to an XML Document.
-
-This method cannot currently be supported on the Safari web browser versions prior to 3.0.3.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| inputDocument | [XMLDocument](../reference.md#type-xmldocument) | false | — | XML document to apply the transform to |
-| styleSheet | [XMLDocument](../reference.md#type-xmldocument) | false | — | XSLT stylesheet to use for transform |
-
-### Returns
-
-`[String](#type-string)` — stylesheet output
-
-### Groups
-
-- xmlTransform
 
 ---

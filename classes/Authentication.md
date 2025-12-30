@@ -19,41 +19,6 @@ It is not intended to be used directly to store and retrieve user data, and whil
 
 There are no security implications to calling `setRoles()` or other APIs on the `Authentication` class. The provided data affects only client-side components. All actual security enforcement must be done server-side - see the QuickStart Guide, especially the sections on Declarative Security, to understand how role-based authorization can be used on the server.
 
-**Rule Context**
-
-The default ruleContext obtained from [Canvas.getRuleContext](Canvas.md#method-canvasgetrulecontext) includes a property for the current authentication information (based on [Authentication.getUserSchema](#classmethod-authenticationgetuserschema)):
-
-*   auth
-
-*   currentUser
-
-*   firstName
-*   lastName
-*   ... other fields in schema
-
-*   roles
-*   isSuperUser
-
-The default rule context would therefore include something like the following, expressed in JSON:
-```
- {
-  auth : {
-     currentUser : {
-        userId: "lisa",
-        firstName: "Lisa",
-        lastName: "Admin",
-        roles: "admin",
-        ..other properties..
-     },
-     roles : ['admin'],
-     isSuperUser : false
-  },
-  ..other properties..
- }
- 
-```
-Since the `currentUser` information is based on `getUserSchema()` any changes to the schema implemented as an override will be reflected in the rule context.
-
 ---
 ## ClassAttr: Authentication.logOutURL
 
@@ -77,6 +42,18 @@ This is a dynamic string - text within `${...}` are dynamic variables and will b
 The dynamic variables available are the fields in the [Authentication.getCurrentUser](#classmethod-authenticationgetcurrentuser) record.
 
 **Flags**: IR
+
+---
+## ClassMethod: Authentication.getCurrentUser
+
+### Description
+Returns the current user specified by [Authentication.setCurrentUser](#classmethod-authenticationsetcurrentuser).
+
+This method returns the user record currently available in the [Canvas.ruleScope](Canvas.md#attr-canvasrulescope) as "auth.currentUser".
+
+### Returns
+
+`[Record](#type-record)` — Record with attributes detailing the current user
 
 ---
 ## ClassMethod: Authentication.setAvailableRoles
@@ -105,14 +82,20 @@ Set up the current user. This method makes the user record available in the [Can
 | user | [Record](#type-record) | false | — | Record with attributes detailing the current user |
 
 ---
-## ClassMethod: Authentication.getCurrentUserId
+## ClassMethod: Authentication.setRoles
 
 ### Description
-Convenience method to return the `"userId"` attribute of the [current user](#classmethod-authenticationgetcurrentuser) if there is one.
+Set the user roles for the current user. Roles may be retrieved via [Authentication.getRoles](#classmethod-authenticationgetroles).
 
-### Returns
+Calling setRoles() makes the specified set of user roles available in the [Canvas.ruleScope](Canvas.md#attr-canvasrulescope) as a top-level property "userRoles", so that it can be used in criteria such as [Canvas.visibleWhen](Canvas.md#attr-canvasvisiblewhen) or [FormItem.readOnlyWhen](FormItem.md#attr-formitemreadonlywhen).
 
-`[String](#type-string)` — userId attribute of the [current user record](#classmethod-authenticationgetcurrentuser) if there is one.
+Note that if this current user has been [marked as a super-user](#classmethod-authenticationsetsuperuser), [Authentication.getRoles](#classmethod-authenticationgetroles) will return the full set of available roles rather than the set of roles specified here.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| roles | [Array of String](#type-array-of-string) | false | — | set of roles which apply to the current user |
 
 ---
 ## ClassMethod: Authentication.setSuperUser
@@ -159,66 +142,6 @@ The schema contains the following fields:
 `[DataSource](#type-datasource)` — user schema dataSource
 
 ---
-## ClassMethod: Authentication.getRoles
-
-### Description
-Returns the current set of user roles. For [super users](#classmethod-authenticationsetsuperuser) this will be the intersection of any roles specified by [Authentication.setRoles](#classmethod-authenticationsetroles) and the full set of [available roles](#classmethod-authenticationsetavailableroles) - otherwise it will be the set of roles specified by [Authentication.setRoles](#classmethod-authenticationsetroles).
-
-Current set of user roles are available in the [Canvas.ruleScope](Canvas.md#attr-canvasrulescope) as a top-level property "userRoles", so that it can be used in criteria such as [Canvas.visibleWhen](Canvas.md#attr-canvasvisiblewhen) or [FormItem.readOnlyWhen](FormItem.md#attr-formitemreadonlywhen).
-
-### Returns
-
-`[Array of String](#type-array-of-string)` — set of roles which apply to the current user
-
----
-## ClassMethod: Authentication.getCurrentUser
-
-### Description
-Returns the current user specified by [Authentication.setCurrentUser](#classmethod-authenticationsetcurrentuser).
-
-This method returns the user record currently available in the [Canvas.ruleScope](Canvas.md#attr-canvasrulescope) as "auth.currentUser".
-
-### Returns
-
-`[Record](#type-record)` — Record with attributes detailing the current user
-
----
-## ClassMethod: Authentication.hasRole
-
-### Description
-Is the current user assigned to the specified role?
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| role | [String](#type-string) | false | — | role to check in current roles |
-
-### Returns
-
-`[Boolean](#type-boolean)` — true if the user has the role in its [Authentication.getRoles](#classmethod-authenticationgetroles) list; false otherwise
-
-### See Also
-
-- [Authentication.getRoles](#classmethod-authenticationgetroles)
-
----
-## ClassMethod: Authentication.setRoles
-
-### Description
-Set the user roles for the current user. Roles may be retrieved via [Authentication.getRoles](#classmethod-authenticationgetroles).
-
-Calling setRoles() makes the specified set of user roles available in the [Canvas.ruleScope](Canvas.md#attr-canvasrulescope) as a top-level property "userRoles", so that it can be used in criteria such as [Canvas.visibleWhen](Canvas.md#attr-canvasvisiblewhen) or [FormItem.readOnlyWhen](FormItem.md#attr-formitemreadonlywhen).
-
-Note that if this current user has been [marked as a super-user](#classmethod-authenticationsetsuperuser), [Authentication.getRoles](#classmethod-authenticationgetroles) will return the full set of available roles rather than the set of roles specified here.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| roles | [Array of String](#type-array-of-string) | false | — | set of roles which apply to the current user |
-
----
 ## ClassMethod: Authentication.isSuperUser
 
 ### Description
@@ -229,5 +152,17 @@ Has the current user been marked as a super-user via [Authentication.setSuperUse
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | isSuperUser | [Boolean](#type-boolean) | false | — | New super user status |
+
+---
+## ClassMethod: Authentication.getRoles
+
+### Description
+Returns the current set of user roles. For [super users](#classmethod-authenticationsetsuperuser) this will be the intersection of any roles specified by [Authentication.setRoles](#classmethod-authenticationsetroles) and the full set of [available roles](#classmethod-authenticationsetavailableroles) - otherwise it will be the set of roles specified by [Authentication.setRoles](#classmethod-authenticationsetroles).
+
+Current set of user roles are available in the [Canvas.ruleScope](Canvas.md#attr-canvasrulescope) as a top-level property "userRoles", so that it can be used in criteria such as [Canvas.visibleWhen](Canvas.md#attr-canvasvisiblewhen) or [FormItem.readOnlyWhen](FormItem.md#attr-formitemreadonlywhen).
+
+### Returns
+
+`[Array of String](#type-array-of-string)` — set of roles which apply to the current user
 
 ---

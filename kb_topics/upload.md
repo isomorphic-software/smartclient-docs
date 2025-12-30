@@ -22,7 +22,7 @@ To use SmartClient's client-server upload system, you use a DataSource field of 
 
 When you call [DynamicForm.saveData](../classes/DynamicForm.md#method-dynamicformsavedata) on a DynamicForm containing a FileItem, SmartClient processes the save identically to a saveData() call that did not include a file upload:
 
-*   if you are using the built-in SQL connectors via serverType:"sql", the file will be saved to SQL as described under [field type "binary"](../reference_2.md#type-fieldtype).
+*   if you are using the built-in SQL connectors via serverType:"sql", the file will be saved to SQL as described under [field type "binary"](../reference.md#type-fieldtype).
 *   if you have server-side business logic, the inbound request may be routed to your business logic via RPCManager dispatch or DMI declarations as normal, your business logic will receive a normal DSRequest, and you are expected to provide a normal DSResponse.
 
 Client-side callbacks, such as the callback passed to saveData(), fire normally.
@@ -34,7 +34,7 @@ Note when adding a new record using this pattern, if you have a binary field mar
 
 **Restricting upload sizes**
 
-The server framework includes mechanisms for setting maximum allowable file sizes. The first, applied using [global configuration properties](server_properties.md#kb-topic-serverproperties-file), is meant to prevent an end user from uploading a file large enough to cause memory issues on the server.
+The server framework includes mechanisms for setting maximum allowable file sizes. The first, applied using [global configuration properties](../reference.md#kb-topic-serverproperties-file), is meant to prevent an end user from uploading a file large enough to cause memory issues on the server.
 
 To configure the maximum allowed size of a single uploaded file (disabled by default), set the **fileUpload.maxFileSize** property's value (in bytes):
 
@@ -57,6 +57,8 @@ When a [FileItem](../classes/FileItem.md#class-fileitem) or [UploadItem](../clas
 **Processing File Uploads with server-side business logic**
 
 Server-side business logic that processes file uploads may retrieve upload files via the server side API dsRequest.getUploadedFile(_fieldName_). The uploaded file is returned as an instance of ISCFileItem, which provides access to a Java InputStream as well as metadata about the file (size, name). See the server-side JavaDoc (com.isomorphic.\*) for details.
+
+NOTE: request processing engines such as Struts may parse the inbound request before SmartClient receives it. If you are creating an RPCManager object inside of a Struts Action and the file being uploaded is not available via `dsRequest.getUploadedFile()`, this is likely to be the problem, and you should remove Struts from the processing of the upload.
 
 Server-side validation errors may be provided, including validation errors for the uploaded file (such as too large or invalid content), and will be displayed in the form that attempted an upload.
 

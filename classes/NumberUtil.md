@@ -10,42 +10,22 @@
 Static singleton class containing APIs for interacting with Numbers.
 
 ---
-## ClassAttr: NumberUtil.groupingFormat
-
-### Description
-The grouping-format for numbers
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IR
-
----
-## ClassAttr: NumberUtil.negativeSymbol
-
-### Description
-The negative symbol to use when formatting numbers
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IR
-
----
-## ClassAttr: NumberUtil.currencySymbolLast
-
-### Description
-If true, show any currency symbol after the number when formatting numbers. If false, show any currency symbol before the number
-
-**Flags**: IR
-
----
 ## ClassAttr: NumberUtil.decimalSymbol
 
 ### Description
 The decimal symbol to use when formatting numbers
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IR
+
+---
+## ClassAttr: NumberUtil.groupingFormat
+
+### Description
+The grouping-format for numbers
 
 ### Groups
 
@@ -66,10 +46,22 @@ The currency symbol to use when formatting numbers
 **Flags**: IR
 
 ---
+## ClassAttr: NumberUtil.negativeSymbol
+
+### Description
+The negative symbol to use when formatting numbers
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IR
+
+---
 ## ClassAttr: NumberUtil.negativeFormat
 
 ### Description
-The format to use when formatting negative numbers. Supported values are: 1 = before, 2 = after, 3 = beforeSpace, 4 = afterSpace, 5 = parens
+The format to use when formatting nagative numbers. Supported values are: 1 = before, 2 = after, 3 = beforeSpace, 4 = afterSpace, 5 = parens
 
 ### Groups
 
@@ -137,7 +129,7 @@ Return the passed number as a currency-formatted string, or an empty string if n
 | currencyChar | [String](#type-string) | true | — | Currency symbol, default taken from the locale and can be set to an empty string. If not passed and missing from the locale, defaults to `"$"`. |
 | decimalChar | [String](#type-string) | true | — | Decimal separator symbol, default taken from the locale. If if not passed and missing from the locale, defaults to `"."`. |
 | padDecimal | [boolean](../reference.md#type-boolean) | true | — | Should decimal portion be padded out to two digits? True by default. |
-| currencyCharLast | [boolean](../reference.md#type-boolean) | true | — | Should the currency symbol be shown at the end of the string? If unspecified, and not defined in the locale, it will prefix the number. |
+| currencyCharLast | [boolean](../reference.md#type-boolean) | true | — | Should the currency symbol be shown at the end of the string? If unspecified, it will prefix the number. |
 
 ### Returns
 
@@ -164,66 +156,6 @@ If given a numeric string (that is, a non-empty string which converts to a numbe
 `[Any](#type-any)` — an integer, if possible, otherwise the input unchanged
 
 ---
-## ClassMethod: NumberUtil.parseInt
-
-### Description
-Parse string that contains integer number. This method correctly handles locale based separators and currency symbol.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| string | [String](#type-string) | false | — | the string to parse |
-
-### Returns
-
-`[Number](#type-number)` — parsed number as a Number
-
----
-## ClassMethod: NumberUtil.stringify
-
-### Description
-Return the passed number as a string padded out to digits length.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| number | [number](#type-number) | false | — | Number object to stringify |
-| digits | [number](#type-number) | true | — | Number of digits to pad to. (Default is 2) |
-
-### Returns
-
-`[String](#type-string)` — Padded string version of the number
-
-### Groups
-
-- stringProcessing
-
----
-## ClassMethod: NumberUtil.isBetween
-
-### Description
-Returns true if the number parameter falls between the 'first' and 'second' parameters.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| number | [number](#type-number) | false | — | Number object to be evaluated |
-| first | [number](#type-number) | true | — | Number at the lower boundary |
-| second | [number](#type-number) | true | — | Number at the upper boundary |
-| inclusive | [number](#type-number) | true | — | Whether or not the numbers at either end of the boundary should be included in the comparison |
-
-### Returns
-
-`[Boolean](#type-boolean)` — True if the given `number` falls inside the given range, false otherwise @example n = 3; bool = n.isBetween(3, 3, 6, true); // true
-
-### Groups
-
-- stringProcessing
-
----
 ## ClassMethod: NumberUtil.clamp
 
 ### Description
@@ -247,6 +179,22 @@ Returns a clamped number between a min and max.
 ### Returns
 
 `[Number](#type-number)` — the clamped number
+
+---
+## ClassMethod: NumberUtil.parseInt
+
+### Description
+Parse string that contains integer number. This method correctly handles locale based separators and currency symbol.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| string | [String](#type-string) | false | — | the string to parse |
+
+### Returns
+
+`[Number](#type-number)` — parsed number as a Number
 
 ---
 ## ClassMethod: NumberUtil.parseFloat
@@ -282,6 +230,27 @@ Format the passed number as a US Dollar currency string. Returns empty string if
 `[String](#type-string)` — formatted number
 
 ---
+## ClassMethod: NumberUtil.stringify
+
+### Description
+Return the passed number as a string padded out to digits length.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| number | [number](#type-number) | false | — | Number object to stringify |
+| digits | [number](#type-number) | true | — | Number of digits to pad to. (Default is 2) |
+
+### Returns
+
+`[String](#type-string)` — Padded string version of the number
+
+### Groups
+
+- stringProcessing
+
+---
 ## ClassMethod: NumberUtil.toLocalizedString
 
 ### Description
@@ -306,5 +275,28 @@ Format the passed number for readability, with:
 ### Returns
 
 `[String](#type-string)` — formatted number or empty string if not passed a number.
+
+---
+## ClassMethod: NumberUtil.isBetween
+
+### Description
+Returns true if the number parameter falls between the 'first' and 'second' parameters.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| number | [number](#type-number) | false | — | Number object to be evaluated |
+| first | [number](#type-number) | true | — | Number at the lower boundary |
+| second | [number](#type-number) | true | — | Number at the upper boundary |
+| inclusive | [number](#type-number) | true | — | Whether or not the numbers at either end of the boundary should be included in the comparison |
+
+### Returns
+
+`[Boolean](#type-boolean)` — True if the given `number` falls inside the given range, false otherwise @example n = 3; bool = n.isBetween(3, 3, 6, true); // true
+
+### Groups
+
+- stringProcessing
 
 ---

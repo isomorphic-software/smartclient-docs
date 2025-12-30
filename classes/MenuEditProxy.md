@@ -33,7 +33,7 @@ Updates the component's menu.
 
 Lines starting with "--", "==" or "title:" are considered titles for the MenuButtons. The menuItem definitions follow the title to define the menu contents.
 
-Each menuItem title is entered on its own line. A keyTitle can follow the title separated by a comma. A leading "x" or "o" marks the menuItem as checked. MenuItems can be marked as disabled with a leading or trailing dash (-). A sub-menu is indicated with a trailing >. Any line consisting entirely of one or more dashes (-) or equals (=) indicates a separator line.
+Each menuItem title is entered on its own line. A keyTitle can follow the title separated by a comma. A leading "x" or "o" marks the menuItem as checked. MenuItems can be marked as disabled with a leading or trailing dash (-). A sub-menu is indicated with a trailing >. Any line consisting entirely of one or more dashes (-) or equals (=) indicates a separator line.
 
 ### Parameters
 

@@ -24,76 +24,6 @@ Hilite style to apply to the title for this facetValue.
 **Flags**: IR
 
 ---
-## Attr: FacetValue.selectionBoundary
-
-### Description
-Selection boundary determining what facets / facetValues can be selected together by drag selection / shift+click selection.
-
-**Note:** This property is specific to [CubeGrids](CubeGrid.md#class-cubegrid).
-
-**Flags**: IR
-
----
-## Attr: FacetValue.collapsed
-
-### Description
-For tree facets, initial collapse state for this node. Defaults to [Facet.collapsed](Facet.md#attr-facetcollapsed).
-
-**Note:** This property is specific to [CubeGrids](CubeGrid.md#class-cubegrid).
-
-**Flags**: IR
-
----
-## Attr: FacetValue.width
-
-### Description
-Width of the cube grid facetValue in pixels.
-
-**Note:** This property is specific to [CubeGrids](CubeGrid.md#class-cubegrid).
-
-**Flags**: IR
-
----
-## Attr: FacetValue.cellAlign
-
-### Description
-Default alignment of cells (in the body) for this facetValue.
-
-**Note:** This property is specific to [CubeGrids](CubeGrid.md#class-cubegrid) (see, for example, [CubeGrid.cellAlign](CubeGrid.md#attr-cubegridcellalign)).
-
-**Flags**: IR
-
----
-## Attr: FacetValue.align
-
-### Description
-Default alignment for facet label title and cells for this facetValue. Can be overridden by setting titleAlign or cellAlign on the facetValue.
-
-**Note:** This property is specific to [CubeGrids](CubeGrid.md#class-cubegrid) (see, for example, [CubeGrid.facetValueAlign](CubeGrid.md#attr-cubegridfacetvaluealign)).
-
-**Flags**: IR
-
----
-## Attr: FacetValue.borderBefore
-
-### Description
-CSS line style to apply as a border before this facetValue.
-
-**Note:** This property is specific to [CubeGrids](CubeGrid.md#class-cubegrid).
-
-**Flags**: IR
-
----
-## Attr: FacetValue.canCollapse
-
-### Description
-For individual parent facetValues within a hierarchical facet, this flag controls whether an expand/collapse control will be shown.
-
-**Note:** This property is specific to [CubeGrids](CubeGrid.md#class-cubegrid) (see, for example, [CubeGrid.canCollapseFacets](CubeGrid.md#attr-cubegridcancollapsefacets)).
-
-**Flags**: IR
-
----
 ## Attr: FacetValue.id
 
 ### Description
@@ -108,6 +38,16 @@ id of this facetValue. Any string or number.
 User-visible title of this facetValue. Shown on the field header.
 
 **Flags**: IRW
+
+---
+## Attr: FacetValue.selectionBoundary
+
+### Description
+Selection boundary determining what facets / facetValues can be selected together by drag selection / shift+click selection.
+
+**Note:** This property is specific to [CubeGrids](CubeGrid.md#class-cubegrid).
+
+**Flags**: IR
 
 ---
 ## Attr: FacetValue.canEdit
@@ -140,12 +80,42 @@ CSS line style to apply as a border after this facetValue.
 **Flags**: IR
 
 ---
+## Attr: FacetValue.collapsed
+
+### Description
+For tree facets, initial collapse state for this node. Defaults to [Facet.collapsed](Facet.md#attr-facetcollapsed).
+
+**Note:** This property is specific to [CubeGrids](CubeGrid.md#class-cubegrid).
+
+**Flags**: IR
+
+---
+## Attr: FacetValue.width
+
+### Description
+Width of the cube grid facetValue in pixels.
+
+**Note:** This property is specific to [CubeGrids](CubeGrid.md#class-cubegrid).
+
+**Flags**: IR
+
+---
 ## Attr: FacetValue.minimized
 
 ### Description
 Initial [minimize state](CubeGrid.md#attr-cubegridcanminimizefacets) for this node. Defaults to [Facet.minimized](Facet.md#attr-facetminimized).
 
 **Note:** This property is specific to [CubeGrids](CubeGrid.md#class-cubegrid).
+
+**Flags**: IR
+
+---
+## Attr: FacetValue.cellAlign
+
+### Description
+Default alignment of cells (in the body) for this facetValue.
+
+**Note:** This property is specific to [CubeGrids](CubeGrid.md#class-cubegrid) (see, for example, [CubeGrid.cellAlign](CubeGrid.md#attr-cubegridcellalign)).
 
 **Flags**: IR
 
@@ -158,6 +128,36 @@ For tree facets ([facet.isTree](Facet.md#attr-facetistree)), id of this facetVal
 **Note:** This property is specific to [CubeGrids](CubeGrid.md#class-cubegrid).
 
 **Flags**: IRA
+
+---
+## Attr: FacetValue.align
+
+### Description
+Default alignment for facet label title and cells for this facetValue. Can be overridden by setting titleAlign or cellAlign on the facetValue.
+
+**Note:** This property is specific to [CubeGrids](CubeGrid.md#class-cubegrid) (see, for example, [CubeGrid.facetValueAlign](CubeGrid.md#attr-cubegridfacetvaluealign)).
+
+**Flags**: IR
+
+---
+## Attr: FacetValue.borderBefore
+
+### Description
+CSS line style to apply as a border before this facetValue.
+
+**Note:** This property is specific to [CubeGrids](CubeGrid.md#class-cubegrid).
+
+**Flags**: IR
+
+---
+## Attr: FacetValue.canCollapse
+
+### Description
+For individual parent facetValues within a hierarchical facet, this flag controls whether an expand/collapse control will be shown.
+
+**Note:** This property is specific to [CubeGrids](CubeGrid.md#class-cubegrid) (see, for example, [CubeGrid.canCollapseFacets](CubeGrid.md#attr-cubegridcancollapsefacets)).
+
+**Flags**: IR
 
 ---
 ## Method: FacetValue.formatCellValue
@@ -199,7 +199,7 @@ Can only be set on the [metric facet](CubeGrid.md#attr-cubegridmetricfacetid) or
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | viewer | [CubeGrid](#type-cubegrid) | false | — | this facetValue's CubeGrid |
-| record | [Object](../reference.md#type-object) | false | — | cell record |
+| record | [Object](../reference_2.md#type-object) | false | — | cell record |
 | rowNum | [number](#type-number) | false | — | row value for the cell |
 | colNum | [number](#type-number) | false | — | column value for the cell |
 

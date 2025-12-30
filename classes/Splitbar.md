@@ -33,6 +33,18 @@ If [Splitbar.showGrip](#attr-splitbarshowgrip) is true, this property determines
 **Flags**: IRA
 
 ---
+## Attr: Splitbar.gripImgSuffix
+
+### Description
+Suffix used the 'grip' image if [StretchImg.showGrip](StretchImg.md#attr-stretchimgshowgrip) is true.
+
+### Groups
+
+- grip
+
+**Flags**: IRA
+
+---
 ## Attr: Splitbar.canCollapse
 
 ### Description
@@ -58,6 +70,18 @@ Base URL for the image if [StretchImg.vertical](StretchImg.md#attr-stretchimgver
 - [StretchImg.vSrc](StretchImg.md#attr-stretchimgvsrc)
 
 **Flags**: IR
+
+---
+## Attr: Splitbar.showRollOverGrip
+
+### Description
+If [StretchImg.showGrip](StretchImg.md#attr-stretchimgshowgrip) is true, this property determines whether to show the 'Over' state on the grip image when the user rolls over on this widget. Has no effect if [StatefulCanvas.showRollOver](StatefulCanvas.md#attr-statefulcanvasshowrollover) is false.
+
+### Groups
+
+- grip
+
+**Flags**: IRA
 
 ---
 ## Attr: Splitbar.showDownGrip
@@ -96,104 +120,6 @@ Is the [Splitbar.target](#attr-splitbartarget) being shown before or after the b
 **Flags**: IRWA
 
 ---
-## Attr: Splitbar.canCollapseOnTap
-
-### Description
-If [canCollapse](#attr-splitbarcancollapse) is `true`, should a tap result in collapsing/uncollapsing the [target](#attr-splitbartarget)?
-
-**Flags**: IRW
-
----
-## Attr: Splitbar.capSize
-
-### Description
-If the default items are used, capSize is the size in pixels of the first and last images in this stretchImg.
-
-### Groups
-
-- appearance
-
-**Flags**: IR
-
----
-## Attr: Splitbar.src
-
-### Description
-The base URL for the image.
-
-The [State](../reference.md#type-state) for the component will be combined with this URL using the same approach as described in [Img.src](Img.md#attr-imgsrc). Then the image segment [name](StretchItem.md#attr-stretchitemname) as specified by each [StretchItem](../reference_2.md#object-stretchitem) is added.
-
-For example, for a stretchImg in "Over" state with a `src` of "button.png" and a segment name of "stretch", the resulting URL would be "button\_Over\_stretch.png".
-
-### Groups
-
-- appearance
-
-### See Also
-
-- [StretchImg.hSrc](StretchImg.md#attr-stretchimghsrc)
-- [StretchImg.vSrc](StretchImg.md#attr-stretchimgvsrc)
-
-**Flags**: IR
-
----
-## Attr: Splitbar.skinImgDir
-
-### Description
-Default directory for skin images (those defined by the class), relative to the Page-wide [skinDir](Page.md#classmethod-pagegetskindir).
-
-### Groups
-
-- images
-
-**Flags**: IR
-
----
-## Attr: Splitbar.vertical
-
-### Description
-Is this split bar vertically orientated?  
-When a `Splitbar` is created by a layout to be the resizeBar for some member of the layout, the `vertical` property will be set to `true` if the layout is horizontal, meaning this resizeBar will be taller than it is wide, and will allow horizontal resizing of the member.
-
-**Flags**: R
-
----
-## Attr: Splitbar.hResizeCursor
-
-### Description
-Cursor to display if this Splitbar is to be used for horizontal resize of widgets.
-
-### Groups
-
-- cursor
-
-**Flags**: IR
-
----
-## Attr: Splitbar.gripImgSuffix
-
-### Description
-Suffix used the 'grip' image if [StretchImg.showGrip](StretchImg.md#attr-stretchimgshowgrip) is true.
-
-### Groups
-
-- grip
-
-**Flags**: IRA
-
----
-## Attr: Splitbar.showRollOverGrip
-
-### Description
-If [StretchImg.showGrip](StretchImg.md#attr-stretchimgshowgrip) is true, this property determines whether to show the 'Over' state on the grip image when the user rolls over on this widget. Has no effect if [StatefulCanvas.showRollOver](StatefulCanvas.md#attr-statefulcanvasshowrollover) is false.
-
-### Groups
-
-- grip
-
-**Flags**: IRA
-
----
 ## Attr: Splitbar.target
 
 ### Description
@@ -216,6 +142,14 @@ Should we show a "grip" image floating above the center of this widget?
 **Flags**: IRA
 
 ---
+## Attr: Splitbar.canCollapseOnTap
+
+### Description
+If [canCollapse](#attr-splitbarcancollapse) is `true`, should a tap result in collapsing/uncollapsing the [target](#attr-splitbartarget)?
+
+**Flags**: IRW
+
+---
 ## Attr: Splitbar.cursor
 
 ### Description
@@ -234,6 +168,39 @@ Splitbars' cursors are set at init time based on whether they are to be used for
 Grip length in pixels (the long icon axis, perpendicular to the Layout direction).
 
 If unset, grip will assume the natural length of image.
+
+**Flags**: IR
+
+---
+## Attr: Splitbar.capSize
+
+### Description
+If the default items are used, capSize is the size in pixels of the first and last images in this stretchImg.
+
+### Groups
+
+- appearance
+
+**Flags**: IR
+
+---
+## Attr: Splitbar.src
+
+### Description
+The base URL for the image.
+
+The [State](../reference.md#type-state) for the component will be combined with this URL using the same approach as described in [Img.src](Img.md#attr-imgsrc). Then the image segment [name](StretchItem.md#attr-stretchitemname) as specified by each [StretchItem](../reference.md#object-stretchitem) is added.
+
+For example, for a stretchImg in "Over" state with a `src` of "button.png" and a segment name of "stretch", the resulting URL would be "button\_Over\_stretch.png".
+
+### Groups
+
+- appearance
+
+### See Also
+
+- [StretchImg.hSrc](StretchImg.md#attr-stretchimghsrc)
+- [StretchImg.vSrc](StretchImg.md#attr-stretchimgvsrc)
 
 **Flags**: IR
 
@@ -262,6 +229,27 @@ If unset, grip will assume the natural breadth of image.
 **Flags**: IR
 
 ---
+## Attr: Splitbar.skinImgDir
+
+### Description
+Default directory for skin images (those defined by the class), relative to the Page-wide [skinDir](Page.md#classmethod-pagegetskindir).
+
+### Groups
+
+- images
+
+**Flags**: IR
+
+---
+## Attr: Splitbar.vertical
+
+### Description
+Is this split bar vertically orientated?  
+When a `Splitbar` is created by a layout to be the resizeBar for some member of the layout, the `vertical` property will be set to `true` if the layout is horizontal, meaning this resizeBar will be taller than it is wide, and will allow horizontal resizing of the member.
+
+**Flags**: R
+
+---
 ## Attr: Splitbar.canDrag
 
 ### Description
@@ -283,6 +271,18 @@ Base URL for the image if [StretchImg.vertical](StretchImg.md#attr-stretchimgver
 
 - [StretchImg.src](StretchImg.md#attr-stretchimgsrc)
 - [StretchImg.vSrc](StretchImg.md#attr-stretchimgvsrc)
+
+**Flags**: IR
+
+---
+## Attr: Splitbar.hResizeCursor
+
+### Description
+Cursor to display if this Splitbar is to be used for horizontal resize of widgets.
+
+### Groups
+
+- cursor
 
 **Flags**: IR
 

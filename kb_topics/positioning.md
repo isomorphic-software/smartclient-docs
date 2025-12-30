@@ -11,9 +11,12 @@ Horizontal and vertical location on the page
 
 ### Related
 
-- [Positioning](../reference_2.md#type-positioning)
+- [Positioning](../reference.md#type-positioning)
+- [Canvas.setSnapTo](../classes/Canvas.md#method-canvassetsnapto)
+- [Canvas.getSnapTo](../classes/Canvas.md#method-canvasgetsnapto)
+- [Canvas.setSnapEdge](../classes/Canvas.md#method-canvassetsnapedge)
+- [Canvas.getSnapEdge](../classes/Canvas.md#method-canvasgetsnapedge)
 - [Canvas.setRect](../classes/Canvas.md#method-canvassetrect)
-- [Canvas.getRect](../classes/Canvas.md#method-canvasgetrect)
 - [Canvas.getLeft](../classes/Canvas.md#method-canvasgetleft)
 - [Canvas.setLeft](../classes/Canvas.md#method-canvassetleft)
 - [Canvas.getTop](../classes/Canvas.md#method-canvasgettop)
@@ -40,6 +43,8 @@ Horizontal and vertical location on the page
 - [Canvas.getOffsetY](../classes/Canvas.md#method-canvasgetoffsety)
 - [Canvas.moveBy](../classes/Canvas.md#method-canvasmoveby)
 - [Canvas.moveTo](../classes/Canvas.md#method-canvasmoveto)
+- [Canvas.getVSnapOrigin](../classes/Canvas.md#method-canvasgetvsnaporigin)
+- [Canvas.getHSnapOrigin](../classes/Canvas.md#method-canvasgethsnaporigin)
 - [Canvas.placeNear](../classes/Canvas.md#method-canvasplacenear)
 - [Canvas.setOverflow](../classes/Canvas.md#method-canvassetoverflow)
 - [DrawItem.getPageLeft](../classes/DrawItem.md#method-drawitemgetpageleft)
@@ -62,7 +67,7 @@ Horizontal and vertical location on the page
 - [ListGrid.getRowTop](../classes/ListGrid_2.md#method-listgridgetrowtop)
 - [ListGrid.getRowPageTop](../classes/ListGrid_2.md#method-listgridgetrowpagetop)
 - [ListGrid.getColumnLeft](../classes/ListGrid_2.md#method-listgridgetcolumnleft)
-- [ListGrid.getColumnPageLeft](../classes/ListGrid_2.md#method-listgridgetcolumnpageleft)
+- [ListGrid.getColumnPageLeft](../classes/ListGrid_1.md#method-listgridgetcolumnpageleft)
 - [ListGrid.getColumnWidth](../classes/ListGrid_2.md#method-listgridgetcolumnwidth)
 - [ListGrid.getCellPageRect](../classes/ListGrid_2.md#method-listgridgetcellpagerect)
 - [ListGrid.getDrawnRowHeight](../classes/ListGrid_1.md#method-listgridgetdrawnrowheight)

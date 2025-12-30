@@ -52,6 +52,18 @@ The `valueMap` of the combo box.
 **Flags**: IRW
 
 ---
+## Attr: MultiComboBoxItem.optionOperationId
+
+### Description
+If this item has a specified `optionDataSource`, this attribute may be set to specify an explicit [DSRequest.operationId](DSRequest.md#attr-dsrequestoperationid) when performing a fetch against the option dataSource to pick up display value mapping.
+
+### Groups
+
+- databinding
+
+**Flags**: IR
+
+---
 ## Attr: MultiComboBoxItem.deselectedButtonStyle
 
 ### Description
@@ -120,6 +132,36 @@ The Class to use when creating a picker of [type "tree"](PickList.md#attr-pickli
 **Flags**: IR
 
 ---
+## Attr: MultiComboBoxItem.layoutStyle
+
+### Description
+Specifies the layout style of the combo box and the buttons in the MultiComboBoxItem. Available values are "flow" (the default), "horizontal", "horizontalReverse", "vertical", and "verticalReverse".
+
+*   **"flow"**:  The buttons appear to the left of the combo box. When there is no more room, the combo box and/or buttons flow onto a new line. The buttons autoFit by default.
+*   **"horizontal"**:  The combo box appears on right and buttons are horizontally stacked directly left of it. The buttons must autofit.
+*   **"horizontalReverse"**:  Like "horizontal" but the combo box appears on the left. The buttons must autofit.
+*   **"vertical"**:  The combo box appears on top and buttons are stacked beneath it. Buttons do not autofit by default.
+*   **"verticalReverse"**:  Like "vertical" but the combo box appears at bottom. The buttons do not autofit by default.
+
+**Flags**: IRW
+
+---
+## Attr: MultiComboBoxItem.comboForm
+
+### Description
+The [DynamicForm](DynamicForm.md#class-dynamicform) holding the [comboBox](#attr-multicomboboxitemcombobox).
+
+**Flags**: RA
+
+---
+## Attr: MultiComboBoxItem.rootNodeId
+
+### Description
+When this item is showing a [tree-based picker](PickList.md#attr-picklistdatasettype), this is the [id](SelectItem.md#attr-selectitemvaluefield) of the record to use as the [root](Tree.md#attr-treerootvalue) node.
+
+**Flags**: IRW
+
+---
 ## Attr: MultiComboBoxItem.displayField
 
 ### Description
@@ -164,6 +206,16 @@ Note that
 **Flags**: IR
 
 ---
+## Attr: MultiComboBoxItem.comboBoxWidth
+
+### Description
+Specifies the size of the combo box field.
+
+Note that this attribute only has an effect in "flow", "horizontal", and "horizontalReverse" [modes](#attr-multicomboboxitemlayoutstyle). In the other modes, the combo box is as wide as the overall MultiComboBoxItem.
+
+**Flags**: IRW
+
+---
 ## Attr: MultiComboBoxItem.autoFitButtons
 
 ### Description
@@ -182,58 +234,6 @@ Should the MultiComboBoxItem fetch data from the [data source](#attr-multicombob
 - [ComboBoxItem.autoFetchData](ComboBoxItem.md#attr-comboboxitemautofetchdata)
 
 **Flags**: IR
-
----
-## Attr: MultiComboBoxItem.optionOperationId
-
-### Description
-If this item has a specified `optionDataSource`, this attribute may be set to specify an explicit [DSRequest.operationId](DSRequest.md#attr-dsrequestoperationid) when performing a fetch against the option dataSource to pick up display value mapping.
-
-### Groups
-
-- databinding
-
-**Flags**: IR
-
----
-## Attr: MultiComboBoxItem.layoutStyle
-
-### Description
-Specifies the layout style of the combo box and the buttons in the MultiComboBoxItem. Available values are "flow" (the default), "horizontal", "horizontalReverse", "vertical", and "verticalReverse".
-
-*   **"flow"**:  The buttons appear to the left of the combo box. When there is no more room, the combo box and/or buttons flow onto a new line. The buttons autoFit by default.
-*   **"horizontal"**:  The combo box appears on right and buttons are horizontally stacked directly left of it. The buttons must autofit.
-*   **"horizontalReverse"**:  Like "horizontal" but the combo box appears on the left. The buttons must autofit.
-*   **"vertical"**:  The combo box appears on top and buttons are stacked beneath it. Buttons do not autofit by default.
-*   **"verticalReverse"**:  Like "vertical" but the combo box appears at bottom. The buttons do not autofit by default.
-
-**Flags**: IRW
-
----
-## Attr: MultiComboBoxItem.comboForm
-
-### Description
-The [DynamicForm](DynamicForm.md#class-dynamicform) holding the [comboBox](#attr-multicomboboxitemcombobox).
-
-**Flags**: RA
-
----
-## Attr: MultiComboBoxItem.rootNodeId
-
-### Description
-When this item is showing a [tree-based picker](PickList.md#attr-picklistdatasettype), this is the [id](SelectItem.md#attr-selectitemvaluefield) of the record to use as the [root](Tree.md#attr-treerootvalue) node.
-
-**Flags**: IRW
-
----
-## Attr: MultiComboBoxItem.comboBoxWidth
-
-### Description
-Specifies the size of the combo box field.
-
-Note that this attribute only has an effect in "flow", "horizontal", and "horizontalReverse" [modes](#attr-multicomboboxitemlayoutstyle). In the other modes, the combo box is as wide as the overall MultiComboBoxItem.
-
-**Flags**: IRW
 
 ---
 ## Attr: MultiComboBoxItem.autoOpenTree
@@ -292,6 +292,22 @@ The layout used to arrange the [comboForm](#attr-multicomboboxitemcomboform) and
 **Flags**: RA
 
 ---
+## Method: MultiComboBoxItem.setLayoutStyle
+
+### Description
+—
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| layoutStyle | [MultiComboBoxLayoutStyle](../reference.md#type-multicomboboxlayoutstyle) | false | — | the new layout style |
+
+### See Also
+
+- [MultiComboBoxItem.layoutStyle](#attr-multicomboboxitemlayoutstyle)
+
+---
 ## Method: MultiComboBoxItem.pendingStatusChanged
 
 ### Description
@@ -316,7 +332,7 @@ Returning `false` will cancel this default behavior.
 
 ### Returns
 
-`[Boolean](#type-boolean)` — `false` to cancel the default behavior.
+`[boolean](../reference.md#type-boolean)` — `false` to cancel the default behavior.
 
 ---
 ## Method: MultiComboBoxItem.showValue
@@ -334,22 +350,6 @@ The value of a MultiComboBoxItem to the form is an array of valueField values co
 | dataValue | [Any](#type-any) | false | — | underlying data value for the item |
 | form | [DynamicForm](#type-dynamicform) | false | — | the dynamicForm in which this item is contained |
 | item | [CanvasItem](#type-canvasitem) | false | — | the live form item instance |
-
----
-## Method: MultiComboBoxItem.setLayoutStyle
-
-### Description
-—
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| layoutStyle | [MultiComboBoxLayoutStyle](../reference_2.md#type-multicomboboxlayoutstyle) | false | — | the new layout style |
-
-### See Also
-
-- [MultiComboBoxItem.layoutStyle](#attr-multicomboboxitemlayoutstyle)
 
 ---
 ## Method: MultiComboBoxItem.setAutoFitButtons

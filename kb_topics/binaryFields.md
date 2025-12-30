@@ -15,7 +15,7 @@ UI components such as [ListGrid](../classes/ListGrid_1.md#class-listgrid) and [F
 
 If you would like to obtain a URL to the binary data (for example to use as [Img.src](../classes/Img.md#attr-imgsrc)), you can use the [DataSource.getFileURL](../classes/DataSource.md#method-datasourcegetfileurl) API.
 
-As covered under the ["binary" field type description](../reference_2.md#type-fieldtype), binary fields imply 3 other related metadata fields named after the binary field, which store the file size, file name and date of creation. Typically you do not need to add these fields to the dataSource yourself, because the SmartClient Server will implicitly create them if they do not exist. You only need to declare one or more of these fields yourself if you need non-default settings - for example, if you have a need to support filenames longer than 255 characters. If you do need non-default settings, simply declare the metadata field(s) in the normal way. If you do this, note that you become responsible for ensuring that the fields are correctly declared: in particular, you must ensure that you declare the correct type for each field (`text`, `integer` and `datetime` for `_filename`, `_filesize` and `_date_created`, respectively)
+As covered under the ["binary" field type description](../reference.md#type-fieldtype), binary fields imply 3 other related metadata fields named after the binary field, which store the file size, file name and date of creation. Typically you do not need to add these fields to the dataSource yourself, because the SmartClient Server will implicitly create them if they do not exist. You only need to declare one or more of these fields yourself if you need non-default settings - for example, if you have a need to support filenames longer than 255 characters. If you do need non-default settings, simply declare the metadata field(s) in the normal way. If you do this, note that you become responsible for ensuring that the fields are correctly declared: in particular, you must ensure that you declare the correct type for each field (`text`, `integer` and `datetime` for `_filename`, `_filesize` and `_date_created`, respectively)
 
 When using one of the built-in server DataSource types (SQL, JPA, Hibernate), these metadata fields, UI controls and APIs will work with no special effort - just declare a binary field. For JPA or Hibernate the Java getter/setter for the binary field must be of type byte\[\] or Byte\[\] (this is imposed by the ORM system); if you are using the SQL DataSource, no additional declarations are required unless you are using [DataSource.beanClassName](../classes/DataSource.md#attr-datasourcebeanclassname), in which case you must add getters/setters of type InputStream, or one of the types listed for JPA/Hibernate.
 
@@ -27,7 +27,7 @@ If writing a custom DataSource or writing a [DMI](../classes/DMI.md#class-dmi), 
 
 For example, you could return a Java bean with a getter method which returns a byte\[\], and which is named after the binaryField using Java Beans conventions: `get_FieldName_()`. Or, return a Java Map where a byte\[\] is stored under a key named the same as the binary field's name.
 
-As discussed under [FieldType](../reference_2.md#type-fieldtype), additional metadata fields are implied when you declare a binary field. Returning a value for the "\_filesize" field will allow the browser to show progress of the download. Returning a value for the "\_filename" field will cause the downloaded file to be named after the "\_filename" value.
+As discussed under [FieldType](../reference.md#type-fieldtype), additional metadata fields are implied when you declare a binary field. Returning a value for the "\_filesize" field will allow the browser to show progress of the download. Returning a value for the "\_filename" field will cause the downloaded file to be named after the "\_filename" value.
 
 Refer to *this example* to see how this case works.
 
@@ -43,11 +43,9 @@ Refer to *this example* to see how this case works.
 
 For an ordinary "fetch" operation, it's generally useless to return data for a binary field, because in most cases code running in the browser would not be able to do anything with a binary value (such as invoke a PDF viewing plugin). For this reason the SmartClient Server will automatically omit values of type InputStream, byte\[\] or Blob during a normal "fetch".
 
-However you can deliver the binary data to the browser by transforming it to a Base64-encoded String by setting [DataSourceField.encodeInResponse](../classes/DataSourceField.md#attr-datasourcefieldencodeinresponse) on your `<field>` declaration. When this flag is set, the server automatically encodes binary values (InputStream, byte\[\], or Byte\[\]) as base64 strings before sending them to the client.
+However you can deliver the binary data to the browser by transforming it to a Base64-encoded String by setting [DataSourceField.encodeInResponse](../classes/DataSourceField.md#attr-datasourcefieldencodeinresponse) on your `<field>` declaration. This can be used with certain browser features such as [image data URIs](https://www.google.com/search?q=image+data+uri), but note that some older browsers (notably IE7 and earlier) do not support data URIs.
 
-On the client side, when a binary field has an actual value, the value will be a string containing the base64-encoded data. To display this data as an image, you need to provide custom rendering logic that constructs [data URIs](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs) from the base64 strings. For example, in a [ListGrid](../classes/ListGrid_1.md#class-listgrid), use [ListGridField.formatCellValue](../classes/ListGridField.md#method-listgridfieldformatcellvalue) to render thumbnails, and in a [DynamicForm](../classes/DynamicForm.md#class-dynamicform), use a custom [CanvasItem](../classes/CanvasItem.md#class-canvasitem) that generates image HTML from the base64 data.
-
-Refer to *this example* to see how to implement custom rendering for base64-encoded image data.
+Refer to *this example* to see how this case works.
 
 **Downloads unrelated to binary fields**
 

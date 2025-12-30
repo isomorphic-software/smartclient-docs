@@ -12,28 +12,6 @@
 DrawItem that renders cubic bezier curves.
 
 ---
-## Attr: DrawCurve.controlPoint1
-
-### Description
-First cubic bezier control point.
-
-**Flags**: IRW
-
----
-## Attr: DrawCurve.lineCap
-
-### Description
-Style of drawing the endpoints of a line.
-
-Note that for dashed and dotted lines, the lineCap style affects each dash or dot.
-
-### Groups
-
-- line
-
-**Flags**: IRW
-
----
 ## Attr: DrawCurve.endPoint
 
 ### Description
@@ -64,6 +42,14 @@ DrawCurve supports the "startPoint", "endPoint", "controlPoint1", and "controlPo
 - [DrawItem.knobs](DrawItem.md#attr-drawitemknobs)
 
 **Flags**: IR
+
+---
+## Attr: DrawCurve.controlPoint1
+
+### Description
+First cubic bezier control point.
+
+**Flags**: IRW
 
 ---
 ## Attr: DrawCurve.startPoint
@@ -98,6 +84,20 @@ If this item is showing "controlPoint1" [control knobs](DrawItem.md#attr-drawite
 **Flags**: IR
 
 ---
+## Attr: DrawCurve.lineCap
+
+### Description
+Style of drawing the endpoints of a line.
+
+Note that for dashed and dotted lines, the lineCap style affects each dash or dot.
+
+### Groups
+
+- line
+
+**Flags**: IRW
+
+---
 ## Method: DrawCurve.setStartPoint
 
 ### Description
@@ -109,6 +109,19 @@ Update the startPoint
 |------|------|----------|---------|-------------|
 | left | [Coordinate](../reference.md#type-coordinate) | false | — | left coordinate for start point, in pixels |
 | top | [Coordinate](../reference.md#type-coordinate) | false | — | top coordinate for start point, in pixels |
+
+---
+## Method: DrawCurve.setControlPoint2
+
+### Description
+Updates the second cubic Bézier control point.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| left | [Coordinate](../reference.md#type-coordinate) | false | — | left coordinate for control point, in pixels |
+| top | [Coordinate](../reference.md#type-coordinate) | false | — | top coordinate for control point, in pixels |
 
 ---
 ## Method: DrawCurve.getBoundingBox
@@ -147,32 +160,6 @@ Move the start point, end point, and control points of the curve such that the [
 | y | [Integer](../reference_2.md#type-integer) | false | — | new y coordinate in pixels |
 
 ---
-## Method: DrawCurve.moveBy
-
-### Description
-Increment start, end and control points of this curve
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| x | [Distance](../reference.md#type-distance) | false | — | new x coordinate in pixels |
-| y | [Distance](../reference.md#type-distance) | false | — | new y coordinate in pixels |
-
----
-## Method: DrawCurve.setControlPoint2
-
-### Description
-Updates the second cubic Bézier control point.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| left | [Coordinate](../reference.md#type-coordinate) | false | — | left coordinate for control point, in pixels |
-| top | [Coordinate](../reference.md#type-coordinate) | false | — | top coordinate for control point, in pixels |
-
----
 ## Method: DrawCurve.setControlPoint1
 
 ### Description
@@ -194,5 +181,18 @@ Get the center point of the rectangle from the curve's [startPoint](#attr-drawcu
 ### Returns
 
 `[Point](#type-point)` — the center point
+
+---
+## Method: DrawCurve.moveBy
+
+### Description
+Increment start, end and control points of this curve
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| x | [Distance](../reference.md#type-distance) | false | — | new x coordinate in pixels |
+| y | [Distance](../reference.md#type-distance) | false | — | new y coordinate in pixels |
 
 ---

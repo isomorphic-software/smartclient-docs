@@ -27,7 +27,7 @@ Whether created components should have their "ID" or "name" property automatical
 ## Method: Palette.makeEditNode
 
 ### Description
-Given a [PaletteNode](../reference.md#object-palettenode), make an [EditNode](../reference.md#object-editnode) from it by creating a [liveObject](EditNode.md#attr-editnodeliveobject) from the [PaletteNode.defaults](PaletteNode.md#attr-palettenodedefaults) and copying presentation properties (eg [title](PaletteNode.md#attr-palettenodetitle) to the editNode.
+Given a [PaletteNode](../reference_2.md#object-palettenode), make an [EditNode](../reference.md#object-editnode) from it by creating a [liveObject](EditNode.md#attr-editnodeliveobject) from the [PaletteNode.defaults](PaletteNode.md#attr-palettenodedefaults) and copying presentation properties (eg [title](PaletteNode.md#attr-palettenodetitle) to the editNode.
 
 If `editNodeProperties` is specified as an object on on the paletteNode, each property in this object will also be copied across to the editNode.
 
@@ -36,7 +36,6 @@ If `editNodeProperties` is specified as an object on on the paletteNode, each pr
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | paletteNode | [PaletteNode](#type-palettenode) | false | — | paletteNode to create from |
-| editContext | [EditContext](#type-editcontext) | true | — | the [EditContext](EditContext.md#class-editcontext) where the node will be added. Only required in +{EditContext.screenMode,screenMode}. |
 
 ### Returns
 

@@ -10,6 +10,16 @@
 Provides information about the page you're loaded in. We define "page" here to be roughly equivalent to the browser window or frame the libraries have been loaded in.
 
 ---
+## ClassAttr: Page.suppressBackspaceNavigation
+
+### Description
+By default most modern browsers will navigate back one page when the user hits the backspace key.
+
+Setting this attribute to true will suppress this native behavior. Alternatively, developers can explicitly return `false` from the keyPress event (either via event handlers applied to specific widgets, or via [Page.registerKey](#classmethod-pageregisterkey) for example) to suppress the native navigation behavior.
+
+**Flags**: IRWA
+
+---
 ## ClassAttr: Page.defaultUnsupportedBrowserURL
 
 ### Description
@@ -82,16 +92,6 @@ Action to take when [Page.checkBrowserAndRedirect](#classmethod-pagecheckbrowser
 **Flags**: IRA
 
 ---
-## ClassAttr: Page.suppressBackspaceNavigation
-
-### Description
-By default most modern browsers will navigate back one page when the user hits the backspace key.
-
-Setting this attribute to true will suppress this native behavior. Alternatively, developers can explicitly return `false` from the keyPress event (either via event handlers applied to specific widgets, or via [Page.registerKey](#classmethod-pageregisterkey) for example) to suppress the native navigation behavior.
-
-**Flags**: IRWA
-
----
 ## ClassMethod: Page.setIsomorphicDir
 
 ### Description
@@ -124,16 +124,6 @@ Return the root directory for Isomorphic-specific files.
 - files
 
 ---
-## ClassMethod: Page.isDarkSkin
-
-### Description
-Returns true if the current skin has a dark background and light text, false otherwise.
-
-### Returns
-
-`[Boolean](#type-boolean)` — true if the current skin has a dark background and light text
-
----
 ## ClassMethod: Page.ignore
 
 ### Description
@@ -146,366 +136,6 @@ This method is available as `isc.Page.ignore()` or just `isc.ignore()`
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | observerID | [String](#type-string) | false | — | ID returned from [Page.observe](#classmethod-pageobserve) call we want to clear |
-
----
-## ClassMethod: Page.isAddVersionToSkinCSS
-
-### Description
-Returns true if add version to skin CSS is currently turned on.
-
-### Returns
-
-`[Boolean](#type-boolean)` — true == add version to skin CSS is turned on
-
-### Groups
-
-- skins
-- files
-
----
-## ClassMethod: Page.setTitle
-
-### Description
-Set the title of the page, which is typically shown as part of the browser window title
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| title | [String](#type-string) | false | — | the browser page title |
-
----
-## ClassMethod: Page.getAppFilesDir
-
-### Description
-Returns the directory for application-specific files (other than images).
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| URL | [String](#type-string) | true | — | New app files URL. |
-
-### Groups
-
-- files
-- images
-
----
-## ClassMethod: Page.getSkinImgDir
-
-### Description
-Return the directory for a skin image.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| imgDir | [URL](../reference_2.md#type-url) | true | — | Partial URL (relative to Page.\_skinDir) where the image lives. If not supplied, will use "images/" |
-
-### Returns
-
-`[String](#type-string)` — URL for page-specific images.
-
-### Groups
-
-- files
-- images
-
----
-## ClassMethod: Page.setAppFilesDir
-
-### Description
-Specify the directory for miscellaneous app-specific files **other than** images, such as [HTML fragments](HTMLFlow.md#attr-htmlflowcontentsurl), [loadable views](ViewLoader.md#class-viewloader), XML or JSON flat data files, videos, etc.
-
-This URL also becomes available via the prefix "\[APPFILES\]" for [RPCRequest.actionURL](RPCRequest.md#attr-rpcrequestactionurl).
-
-Defaults to the value of [Page.getAppDir](#classmethod-pagegetappdir), that is, the current directory.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| URL | [String](#type-string) | true | — | New app files URL. |
-
-### Groups
-
-- files
-- images
-
----
-## ClassMethod: Page.getWidth
-
-### Description
-Get the width of the visible portion of the window, not including browser chrome or the scrollbar area.
-
-See also [Page.getOrientation](#classmethod-pagegetorientation).
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| wd | [Object](../reference.md#type-object) | true | — | the window object |
-
-### Returns
-
-`[number](#type-number)` — width of the page
-
-### Groups
-
-- sizing
-
----
-## ClassMethod: Page.loadStyleSheet
-
-### Description
-Load a styleSheet for this application. The styleSheetURL parameter can use any special directories, eg:  
-  `Page.loadStylesheet("[SKIN]/skin_styles.css")`  
-or  
-  `Page.loadStylesheet("[APP]/app_styles.css")`.
-
-If you don't specify a special directory, the app directory will be assumed.
-
-Note: If the document's ONLOAD handler has already fired, this will have no effect.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| styleSheetURL | [URL](../reference_2.md#type-url) | false | — | URL to the stylesheet. |
-
-### Groups
-
-- skins
-- files
-- images
-
----
-## ClassMethod: Page.scrollTo
-
-### Description
-Scroll the window to a specified top and left coordinate.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| left | [number](#type-number) | false | — | new left coordinate for window |
-| top | [number](#type-number) | false | — | new top coordinate for window |
-
----
-## ClassMethod: Page.unregisterKey
-
-### Description
-Clears an action registered to fire on a specific a keyPress event via the [Page.registerKey](#classmethod-pageregisterkey) method.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| actionID | [KeyName](../reference_2.md#type-keyname) | false | — | Name of key to clear registry entries for. |
-| target | [Object](../reference.md#type-object) | true | — | target specified when the action was registered for the key. |
-
-### Groups
-
-- KeyRegistry
-
-### See Also
-
-- [Page.registerKey](#classmethod-pageregisterkey)
-
----
-## ClassMethod: Page.goBack
-
-### Description
-Go back in the browser's history.  
-  
-If the history is empty and the window.opener is set, we assume we're a child window and just close the window.
-
----
-## ClassMethod: Page.getScrollWidth
-
-### Description
-Get the width of the window contents as they have been drawn. If the page scrolls, this may be larger than the [Page.getWidth](#classmethod-pagegetwidth).
-
-### Returns
-
-`[number](#type-number)` — width of the page as drawn
-
-### Groups
-
-- sizing
-
----
-## ClassMethod: Page.isRTL
-
-### Description
-Return whether the page text direction is right to left. If you set "DIR=RTL" in the BODY tag of the page, then this method will return true. If you set "DIR=LTR" then this method will return false.
-
-### Returns
-
-`[Boolean](#type-boolean)` — true if Page text direction is RTL, false otherwise
-
-### Groups
-
-- textDirection
-- appearance
-
----
-## ClassMethod: Page.getOrientation
-
-### Description
-Is the current page wider than it is tall ("landscape" orientation) or the reverse ("portrait" orientation). Note that the [orientationChange page event](../reference_2.md#type-pageevent) will be fired whenever the page orientation changes.
-
-This method is typically useful for apps developed for display on mobile devices, though it will also return a valid value when running against a desktop browser. See also [this discussion](../kb_topics/mobileDevelopment.md#kb-topic-mobile-application-development) on building applications for mobile devices
-
-### Returns
-
-`[PageOrientation](../reference.md#type-pageorientation)` — current page orientation
-
-### Groups
-
-- mobileDevelopment
-
----
-## ClassMethod: Page.setAppImgDir
-
-### Description
-Specify the directory for app-specific images.
-
-This becomes the default location where any SmartClient component will load images from unless the special "\[SKIN\]" prefix is used to indicate that an image is part of a skin.
-
-Default is "\[APP\]images/"
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| URL | [String](#type-string) | true | — | New imgDir URL. |
-
-### Groups
-
-- files
-- images
-
----
-## ClassMethod: Page.moveTo
-
-### Description
-Move the window to a specified top and left in screen coordinates.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| left | [number](#type-number) | false | — | new left coordinate for window |
-| top | [number](#type-number) | false | — | new top coordinate for window |
-
----
-## ClassMethod: Page.clearEvent
-
-### Description
-Clear event(s) under the given eventType.
-
-To clear all events, omit the ID parameter. To clear a specific event, pass the ID that was returned by Page.setEvent().
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| eventType | [PageEvent](../reference_2.md#type-pageevent) | false | — | event type to clear |
-| ID | [number](#type-number) | true | — | ID of the event to clear. If not specified, all events in eventType will be cleared. |
-
-### Groups
-
-- EventRegistry
-
-### See Also
-
-- [EventHandler](EventHandler.md#class-eventhandler)
-
----
-## ClassMethod: Page.getSampleImgDir
-
-### Description
-Return the dir for Showcase-sample images which differ by skin.
-
-### Returns
-
-`[String](#type-string)` — the dir for Showcase-sample images in the current skin.
-
-### Groups
-
-- files
-
----
-## ClassMethod: Page.waitFor
-
-### Description
-Wait for a method to fire on an object.
-
-`waitFor` is similar [observation](Class.md#method-classobserve), but fires once only.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| object | [Object](../reference.md#type-object) | false | — | any SmartClient object, eg, a ListGrid |
-| methodName | [String](#type-string) | false | — | name of a method on that object |
-| callback | [Function](#type-function) | false | — | Callback to fire when the observed method completes |
-| timeout | [Number](#type-number) | true | — | Optional timeout period (in milliseconds). If you want a timeout, you must also provide a timeoutCallback |
-| timeoutCallback | [Function](#type-function) | true | — | Callback to fire if the timeout period elapses before the observed method completes |
-
-### Returns
-
-`[boolean](../reference.md#type-boolean)` — whether observation succeeded. Observation may fail due to null object, non-existent method or similar bad parameters
-
----
-## ClassMethod: Page.getURL
-
-### Description
-Return a full URL for a relative path that uses a special prefix such as "\[APPFILES\]" or "\[SKIN\]".
-
-For images, use [Page.getImgURL](#classmethod-pagegetimgurl) instead.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| fileName | [String](#type-string) | false | — | Local file name for the image. |
-
-### Returns
-
-`[String](#type-string)` — URL for the image.
-
-### Groups
-
-- files
-- images
-
----
-## ClassMethod: Page.getScreenHeight
-
-### Description
-Get the height of the user's screen, in pixels.
-
-### Returns
-
-`[number](#type-number)` — height of the user's screen
-
----
-## ClassMethod: Page.getIsomorphicDocsDir
-
-### Description
-Return the root directory for Isomorphic documentation and example files.
-
-### Returns
-
-`[String](#type-string)` — URL for root of documentation and example files.
-
-### Groups
-
-- files
 
 ---
 ## ClassMethod: Page.getSampleThumbnailDir
@@ -525,6 +155,21 @@ Return the dir for skin-specific sample-thumbnails in the product Showcase.
 
 ### Groups
 
+- files
+
+---
+## ClassMethod: Page.isAddVersionToSkinCSS
+
+### Description
+Returns true if add version to skin CSS is currently turned on.
+
+### Returns
+
+`[Boolean](#type-boolean)` — true == add version to skin CSS is turned on
+
+### Groups
+
+- skins
 - files
 
 ---
@@ -549,12 +194,35 @@ To use a skin image, start the URL with "\[SKIN\]". Any other relative URL is as
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| src | [SCImgURL](../reference.md#type-scimgurl) | false | — | Local file name for the image. |
+| src | [SCImgURL](../reference_2.md#type-scimgurl) | false | — | Local file name for the image. |
 | imgDir | [String](#type-string) | true | — | User-specified image directory, local to |
 
 ### Returns
 
 `[String](#type-string)` — URL for the image.
+
+### Groups
+
+- files
+- images
+
+---
+## ClassMethod: Page.setTitle
+
+### Description
+Set the title of the page, which is typically shown as part of the browser window title
+
+---
+## ClassMethod: Page.getAppFilesDir
+
+### Description
+Returns the directory for application-specific files (other than images).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| URL | [String](#type-string) | true | — | New app files URL. |
 
 ### Groups
 
@@ -652,7 +320,7 @@ This differs from calling [Page.setEvent](#classmethod-pagesetevent) with the `"
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | key | [KeyIdentifier](#type-keyidentifier) | false | — | key name or identifier object. |
-| action | [StringMethod](../reference_2.md#type-stringmethod)|[Function](#type-function) | false | — | Action to fire when key is pressed. This can be a string of script to evaluate or a javascript function.  
+| action | [String](#type-string) | false | — | Action to fire when key is pressed. This can be a string of script to evaluate or a javascript function.  
 This action will be passed 2 parameters: The name of the key pressed will be available as the first parameter or `key` keyword. The target passed into this method will be available as the second parameter or `target` keyword. |
 | target | [Any](#type-any) | true | — | If specified this object will be made available to the action fired as a parameter. |
 
@@ -665,6 +333,27 @@ This action will be passed 2 parameters: The name of the key pressed will be ava
 - [Canvas.keyPress](Canvas.md#method-canvaskeypress)
 - [Page.setEvent](#classmethod-pagesetevent)
 - [Page.unregisterKey](#classmethod-pageunregisterkey)
+
+---
+## ClassMethod: Page.getSkinImgDir
+
+### Description
+Return the directory for a skin image.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| imgDir | [URL](../reference.md#type-url) | true | — | Partial URL (relative to Page.\_skinDir) where the image lives. If not supplied, will use "images/" |
+
+### Returns
+
+`[String](#type-string)` — URL for page-specific images.
+
+### Groups
+
+- files
+- images
 
 ---
 ## ClassMethod: Page.setAddVersionToSkinCSS
@@ -710,7 +399,7 @@ See also [Page.getOrientation](#classmethod-pagegetorientation).
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| wd | [Object](../reference.md#type-object) | true | — | the window object |
+| wd | [Object](../reference_2.md#type-object) | true | — | the window object |
 
 ### Returns
 
@@ -719,6 +408,87 @@ See also [Page.getOrientation](#classmethod-pagegetorientation).
 ### Groups
 
 - sizing
+
+---
+## ClassMethod: Page.setAppFilesDir
+
+### Description
+Specify the directory for miscellaneous app-specific files **other than** images, such as [HTML fragments](HTMLFlow.md#attr-htmlflowcontentsurl), [loadable views](ViewLoader.md#class-viewloader), XML or JSON flat data files, videos, etc.
+
+This URL also becomes available via the prefix "\[APPFILES\]" for [RPCRequest.actionURL](RPCRequest.md#attr-rpcrequestactionurl).
+
+Defaults to the value of [Page.getAppDir](#classmethod-pagegetappdir), that is, the current directory.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| URL | [String](#type-string) | true | — | New app files URL. |
+
+### Groups
+
+- files
+- images
+
+---
+## ClassMethod: Page.getWidth
+
+### Description
+Get the width of the visible portion of the window, not including browser chrome or the scrollbar area.
+
+See also [Page.getOrientation](#classmethod-pagegetorientation).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| wd | [Object](../reference_2.md#type-object) | true | — | the window object |
+
+### Returns
+
+`[number](#type-number)` — width of the page
+
+### Groups
+
+- sizing
+
+---
+## ClassMethod: Page.loadStyleSheet
+
+### Description
+Load a styleSheet for this application. The styleSheetURL parameter can use any special directories, eg:  
+  `Page.loadStylesheet("[SKIN]/skin_styles.css")`  
+or  
+  `Page.loadStylesheet("[APP]/app_styles.css")`.
+
+If you don't specify a special directory, the app directory will be assumed.
+
+Note: If the document's ONLOAD handler has already fired, this will have no effect.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| styleSheetURL | [URL](../reference.md#type-url) | false | — | URL to the stylesheet. |
+
+### Groups
+
+- skins
+- files
+- images
+
+---
+## ClassMethod: Page.scrollTo
+
+### Description
+Scroll the window to a specified top and left coordinate.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| left | [number](#type-number) | false | — | new left coordinate for window |
+| top | [number](#type-number) | false | — | new top coordinate for window |
 
 ---
 ## ClassMethod: Page.updateViewport
@@ -753,6 +523,27 @@ _Note:_ Modifying the width/height or initial scale of the viewport has two user
 - [mobileDevelopment](../kb_topics/mobileDevelopment.md#kb-topic-mobile-application-development)
 
 ---
+## ClassMethod: Page.unregisterKey
+
+### Description
+Clears an action registered to fire on a specific a keyPress event via the [Page.registerKey](#classmethod-pageregisterkey) method.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| actionID | [KeyName](../reference.md#type-keyname) | false | — | Name of key to clear registry entries for. |
+| target | [Object](../reference_2.md#type-object) | true | — | target specified when the action was registered for the key. |
+
+### Groups
+
+- KeyRegistry
+
+### See Also
+
+- [Page.registerKey](#classmethod-pageregisterkey)
+
+---
 ## ClassMethod: Page.getToolsImgDir
 
 ### Description
@@ -765,6 +556,28 @@ Return the images directory used by Isomorphic-supplied tools.
 ### Groups
 
 - files
+
+---
+## ClassMethod: Page.goBack
+
+### Description
+Go back in the browser's history.  
+  
+If the history is empty and the window.opener is set, we assume we're a child window and just close the window.
+
+---
+## ClassMethod: Page.getScrollWidth
+
+### Description
+Get the width of the window contents as they have been drawn. If the page scrolls, this may be larger than the [Page.getWidth](#classmethod-pagegetwidth).
+
+### Returns
+
+`[number](#type-number)` — width of the page as drawn
+
+### Groups
+
+- sizing
 
 ---
 ## ClassMethod: Page.getScrollTop
@@ -810,7 +623,7 @@ Capturing events on widgets can be done by setting one of the event methods avai
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| eventType | [PageEvent](../reference_2.md#type-pageevent) | false | — | event type to register for ("mouseDown", "load", etc) |
+| eventType | [PageEvent](../reference.md#type-pageevent) | false | — | event type to register for ("mouseDown", "load", etc) |
 | action | [String](#type-string) | false | — | string to be eval'd when event fires (function) function to be executed when event fires (object) an object to call on which a method named "page" + eventType will be called |
 | fireStyle | [FireStyle](../reference_2.md#type-firestyle) | true | — | Flag to set automatic removal of the event after it fires one or more times |
 | functionName | [String](#type-string) | true | — | optional - if an object was passed in as the second parameter, this is a name of a method to call on that object. |
@@ -849,7 +662,7 @@ While cleaning up observations that are no longer required is always good practi
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| object | [Object](../reference.md#type-object) | false | — | Object to observe. This may be any JavaScript object with the specified target method, including native arrays, and instances of SmartClient classes such as [Canvas](Canvas.md#class-canvas). |
+| object | [Object](../reference_2.md#type-object) | false | — | Object to observe. This may be any JavaScript object with the specified target method, including native arrays, and instances of SmartClient classes such as [Canvas](Canvas.md#class-canvas). |
 | methodName | [String](#type-string) | false | — | Name of the method to observe. Every time this method is invoked on the target object the specified action will fire (after the default implementation completes). |
 | action | [Function](#type-function)|[String](#type-string) | false | — | Action to take when the observed method is invoked.  
 If `action` is a string to execute, certain keywords are available for context:
@@ -863,6 +676,21 @@ If `action` is a function, the arguments for the original method will also be pa
 ### Returns
 
 `[String](#type-string)` — Identifier for the observation. Pass this to [Page.ignore](#classmethod-pageignore) to stop observing the method in question.
+
+---
+## ClassMethod: Page.isRTL
+
+### Description
+Return whether the page text direction is right to left. If you set "DIR=RTL" in the BODY tag of the page, then this method will return true. If you set "DIR=LTR" then this method will return false.
+
+### Returns
+
+`[Boolean](#type-boolean)` — true if Page text direction is RTL, false otherwise
+
+### Groups
+
+- textDirection
+- appearance
 
 ---
 ## ClassMethod: Page.waitForMultiple
@@ -920,6 +748,22 @@ This method is commonly called as part of the [skinning](../kb_topics/skinning.m
 **Deprecated**
 
 ---
+## ClassMethod: Page.getOrientation
+
+### Description
+Is the current page wider than it is tall ("landscape" orientation) or the reverse ("portrait" orientation). Note that the [orientationChange page event](../reference.md#type-pageevent) will be fired whenever the page orientation changes.
+
+This method is typically useful for apps developed for display on mobile devices, though it will also return a valid value when running against a desktop browser. See also [this discussion](../kb_topics/mobileDevelopment.md#kb-topic-mobile-application-development) on building applications for mobile devices
+
+### Returns
+
+`[PageOrientation](../reference.md#type-pageorientation)` — current page orientation
+
+### Groups
+
+- mobileDevelopment
+
+---
 ## ClassMethod: Page.resizeTo
 
 ### Description
@@ -935,6 +779,40 @@ Resize the outer portion of the window to a specific width and height.
 ### Groups
 
 - sizing
+
+---
+## ClassMethod: Page.setAppImgDir
+
+### Description
+Specify the directory for app-specific images.
+
+This becomes the default location where any SmartClient component will load images from unless the special "\[SKIN\]" prefix is used to indicate that an image is part of a skin.
+
+Default is "\[APP\]images/"
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| URL | [String](#type-string) | true | — | New imgDir URL. |
+
+### Groups
+
+- files
+- images
+
+---
+## ClassMethod: Page.moveTo
+
+### Description
+Move the window to a specified top and left in screen coordinates.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| left | [number](#type-number) | false | — | new left coordinate for window |
+| top | [number](#type-number) | false | — | new top coordinate for window |
 
 ---
 ## ClassMethod: Page.setSkinDir
@@ -987,6 +865,29 @@ Specify the dir for skin-specific sample-thumbnails in the product Showcase.
 - files
 
 ---
+## ClassMethod: Page.clearEvent
+
+### Description
+Clear event(s) under the given eventType.
+
+To clear all events, omit the ID parameter. To clear a specific event, pass the ID that was returned by Page.setEvent().
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| eventType | [PageEvent](../reference.md#type-pageevent) | false | — | event type to clear |
+| ID | [number](#type-number) | true | — | ID of the event to clear. If not specified, all events in eventType will be cleared. |
+
+### Groups
+
+- EventRegistry
+
+### See Also
+
+- [EventHandler](EventHandler.md#class-eventhandler)
+
+---
 ## ClassMethod: Page.getScrollLeft
 
 ### Description
@@ -1036,6 +937,42 @@ Specify the dir for skin-specific sample-photos in the product Showcase.
 - files
 
 ---
+## ClassMethod: Page.getSampleImgDir
+
+### Description
+Return the dir for Showcase-sample images which differ by skin.
+
+### Returns
+
+`[String](#type-string)` — the dir for Showcase-sample images in the current skin.
+
+### Groups
+
+- files
+
+---
+## ClassMethod: Page.waitFor
+
+### Description
+Wait for a method to fire on an object.
+
+`waitFor` is similar [observation](Class.md#method-classobserve), but fires once only.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| object | [Object](../reference_2.md#type-object) | false | — | any SmartClient object, eg, a ListGrid |
+| methodName | [String](#type-string) | false | — | name of a method on that object |
+| callback | [Function](#type-function) | false | — | Callback to fire when the observed method completes |
+| timeout | [Number](#type-number) | true | — | Optional timeout period (in milliseconds). If you want a timeout, you must also provide a timeoutCallback |
+| timeoutCallback | [Function](#type-function) | true | — | Callback to fire if the timeout period elapses before the observed method completes |
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — whether observation succeeded. Observation may fail due to null object, non-existent method or similar bad parameters
+
+---
 ## ClassMethod: Page.getScreenWidth
 
 ### Description
@@ -1044,6 +981,39 @@ Get the width of the user's screen, in pixels.
 ### Returns
 
 `[number](#type-number)` — width of the user's screen
+
+---
+## ClassMethod: Page.getURL
+
+### Description
+Return a full URL for a relative path that uses a special prefix such as "\[APPFILES\]" or "\[SKIN\]".
+
+For images, use [Page.getImgURL](#classmethod-pagegetimgurl) instead.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| fileName | [String](#type-string) | false | — | Local file name for the image. |
+
+### Returns
+
+`[String](#type-string)` — URL for the image.
+
+### Groups
+
+- files
+- images
+
+---
+## ClassMethod: Page.getScreenHeight
+
+### Description
+Get the height of the user's screen, in pixels.
+
+### Returns
+
+`[number](#type-number)` — height of the user's screen
 
 ---
 ## ClassMethod: Page.setIsomorphicToolsDir

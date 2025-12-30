@@ -10,102 +10,6 @@
 Grouping titles that will be displayed when data is grouped in a [ListGrid](ListGrid_1.md#class-listgrid).
 
 ---
-## ClassAttr: GroupingMessages.byMillisecondsTitle
-
-### Description
-Title to use for the menu option which groups a time field by milliseconds.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
-
----
-## ClassAttr: GroupingMessages.byWeekAndYearTitle
-
-### Description
-Title to use for the menu option which groups a date field by week number and year. All values that are in the same week in a given year are grouped together.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
-
----
-## ClassAttr: GroupingMessages.byDayOfWeekAndYearTitle
-
-### Description
-Title to use for the menu option which groups a date field by specific day of week. All values that are in the same week and day of a given year are grouped together.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
-
----
-## ClassAttr: GroupingMessages.upcomingTodayTitle
-
-### Description
-When a [ListGrid](ListGrid_1.md#class-listgrid) is grouped by a date field in 'Upcoming' mode, this is the group title for all records in which the grouped date field occurs today, relative to the current date.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
-
----
-## ClassAttr: GroupingMessages.byDayOfMonthTitle
-
-### Description
-Title to use for the menu option which groups a date field by day of month, across all months and years. For example, all values that are on day 25 of any month in any year are grouped together.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
-
----
-## ClassAttr: GroupingMessages.byYearTitle
-
-### Description
-Title to use for the menu option which groups a date field by year.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
-
----
-## ClassAttr: GroupingMessages.byDayTitle
-
-### Description
-Title to use for the menu option which groups a date field by day of week, across all weeks and years. For example, all values that are on any Tuesday are grouped together.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
-
----
-## ClassAttr: GroupingMessages.timezoneSecondsSuffix
-
-### Description
-Suffix to append to the timezoneSeconds grouping mode
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
-
----
 ## ClassAttr: GroupingMessages.byDateTitle
 
 ### Description
@@ -122,6 +26,18 @@ Title to use for the menu option which groups a date field by specific dates. Al
 
 ### Description
 Suffix to append to the timezoneMinutes grouping mode
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IRW
+
+---
+## ClassAttr: GroupingMessages.byMillisecondsTitle
+
+### Description
+Title to use for the menu option which groups a time field by milliseconds.
 
 ### Groups
 
@@ -202,6 +118,30 @@ When a [ListGrid](ListGrid_1.md#class-listgrid) is grouped by a date field in 'U
 **Flags**: IRW
 
 ---
+## ClassAttr: GroupingMessages.byWeekAndYearTitle
+
+### Description
+Title to use for the menu option which groups a date field by week number and year. All values that are in the same week in a given year are grouped together.
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IRW
+
+---
+## ClassAttr: GroupingMessages.byDayOfWeekAndYearTitle
+
+### Description
+Title to use for the menu option which groups a date field by specific day of week. All values that are in the same week and day of a given year are grouped together.
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IRW
+
+---
 ## ClassAttr: GroupingMessages.byMonthTitle
 
 ### Description
@@ -254,6 +194,30 @@ When a [ListGrid](ListGrid_1.md#class-listgrid) is grouped by a date field in 'U
 
 ### Description
 When a [ListGrid](ListGrid_1.md#class-listgrid) is grouped by a date field in 'Upcoming' mode, this is the group title for all records in which the grouped date field occurs next month, relative to the current date.
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IRW
+
+---
+## ClassAttr: GroupingMessages.upcomingTodayTitle
+
+### Description
+When a [ListGrid](ListGrid_1.md#class-listgrid) is grouped by a date field in 'Upcoming' mode, this is the group title for all records in which the grouped date field occurs today, relative to the current date.
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IRW
+
+---
+## ClassAttr: GroupingMessages.byDayOfMonthTitle
+
+### Description
+Title to use for the menu option which groups a date field by day of month, across all months and years. For example, all values that are on day 25 of any month in any year are grouped together.
 
 ### Groups
 
@@ -334,6 +298,30 @@ Title to use for the menu option which groups a date field by quarter and year. 
 **Flags**: IRW
 
 ---
+## ClassAttr: GroupingMessages.byYearTitle
+
+### Description
+Title to use for the menu option which groups a date field by year.
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IRW
+
+---
+## ClassAttr: GroupingMessages.byDayTitle
+
+### Description
+Title to use for the menu option which groups a date field by day of week, across all weeks and years. For example, all values that are on any Tuesday are grouped together.
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IRW
+
+---
 ## ClassAttr: GroupingMessages.byWeekTitle
 
 ### Description
@@ -362,6 +350,18 @@ Title to use for the menu option which groups a time field by hours.
 
 ### Description
 Title to use for the menu option which groups a time field by minutes.
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IRW
+
+---
+## ClassAttr: GroupingMessages.timezoneSecondsSuffix
+
+### Description
+Suffix to append to the timezoneSeconds grouping mode
 
 ### Groups
 

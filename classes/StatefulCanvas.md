@@ -28,10 +28,34 @@ A declared value of the enum type [State](../reference.md#type-state).
 **Flags**: R
 
 ---
+## ClassAttr: StatefulCanvas.STATE_DISABLED
+
+### Description
+A declared value of the enum type [State](../reference.md#type-state).
+
+**Flags**: R
+
+---
+## ClassAttr: StatefulCanvas.BUTTON
+
+### Description
+A declared value of the enum type [SelectionType](../reference.md#type-selectiontype).
+
+**Flags**: R
+
+---
 ## ClassAttr: StatefulCanvas.CHECKBOX
 
 ### Description
-A declared value of the enum type [SelectionType](../reference_2.md#type-selectiontype).
+A declared value of the enum type [SelectionType](../reference.md#type-selectiontype).
+
+**Flags**: R
+
+---
+## ClassAttr: StatefulCanvas.STATE_UP
+
+### Description
+A declared value of the enum type [State](../reference.md#type-state).
 
 **Flags**: R
 
@@ -52,6 +76,14 @@ A declared value of the enum type [Selected](../reference.md#type-selected).
 **Flags**: R
 
 ---
+## ClassAttr: StatefulCanvas.RADIO
+
+### Description
+A declared value of the enum type [SelectionType](../reference.md#type-selectiontype).
+
+**Flags**: R
+
+---
 ## ClassAttr: StatefulCanvas.STATE_OVER
 
 ### Description
@@ -60,36 +92,16 @@ A declared value of the enum type [State](../reference.md#type-state).
 **Flags**: R
 
 ---
-## ClassAttr: StatefulCanvas.STATE_DISABLED
+## Attr: StatefulCanvas.showSelectedIcon
 
 ### Description
-A declared value of the enum type [State](../reference.md#type-state).
+If using an icon for this button, whether to switch the icon image when the button becomes selected.
 
-**Flags**: R
+### Groups
 
----
-## ClassAttr: StatefulCanvas.BUTTON
+- buttonIcon
 
-### Description
-A declared value of the enum type [SelectionType](../reference_2.md#type-selectiontype).
-
-**Flags**: R
-
----
-## ClassAttr: StatefulCanvas.STATE_UP
-
-### Description
-A declared value of the enum type [State](../reference.md#type-state).
-
-**Flags**: R
-
----
-## ClassAttr: StatefulCanvas.RADIO
-
-### Description
-A declared value of the enum type [SelectionType](../reference_2.md#type-selectiontype).
-
-**Flags**: R
+**Flags**: IR
 
 ---
 ## Attr: StatefulCanvas.iconHeight
@@ -132,208 +144,9 @@ For [Img](Img.md#class-img) or [StretchImg](StretchImg.md#class-stretchimg) base
 ### Description
 If true, this widget will fire [showContextMenu()](Canvas.md#method-canvasshowcontextmenu) to show the [context menu](Canvas.md#attr-canvascontextmenu) if one is defined, rather than [click()](Canvas.md#method-canvasclick), when the left mouse is clicked.
 
-Note that this property has a different interpretation in [IconButton](../reference.md#class-iconbutton) as [IconButton.showMenuOnClick](RibbonButton.md#attr-ribbonbuttonshowmenuonclick).
-
-### Groups
-
-- menu
+Note that this property has a different interpretation in [IconButton](IconButton.md#class-iconbutton) as [IconButton.showMenuOnClick](IconButton.md#attr-iconbuttonshowmenuonclick).
 
 **Flags**: IRW
-
----
-## Attr: StatefulCanvas.showDisabledIcon
-
-### Description
-If using an icon for this button, whether to switch the icon image if the button becomes disabled.
-
-### Groups
-
-- buttonIcon
-
-**Flags**: IR
-
----
-## Attr: StatefulCanvas.radioGroup
-
-### Description
-String identifier for this canvas's mutually exclusive selection group.
-
-### Groups
-
-- state
-- event handling
-
-**Flags**: IRWA
-
----
-## Attr: StatefulCanvas.iconStyle
-
-### Description
-Base CSS style applied to the icon image. If set, as the `StatefulCanvas` changes [state](#attr-statefulcanvasstate) and/or is [selected](#attr-statefulcanvasselected), suffixes will be appended to `iconStyle` to form the className set on the image element.
-
-The following table lists out the standard set of suffixes which may be appended:
-
-| CSS Class Applied | Description |
-|---|---|
-| iconStyle | Default CSS style |
-| iconStyle+Selected | Applied when [StatefulCanvas.selected](#attr-statefulcanvasselected) and [StatefulCanvas.showSelectedIcon](#attr-statefulcanvasshowselectedicon) are true. |
-| iconStyle+Focused | Applied when the component has keyboard focus, if [StatefulCanvas.showFocusedIcon](#attr-statefulcanvasshowfocusedicon) is true, and [StatefulCanvas.showFocusedAsOver](#attr-statefulcanvasshowfocusedasover) is not true. |
-| iconStyle+Over | Applied when [StatefulCanvas.showRollOverIcon](#attr-statefulcanvasshowrollovericon) is set to true and either the user rolls over the component or [StatefulCanvas.showFocusedAsOver](#attr-statefulcanvasshowfocusedasover) is true and the component has keyboard focus. |
-| iconStyle+Down | Applied when the user presses the mouse button on the component if [StatefulCanvas.showDownIcon](#attr-statefulcanvasshowdownicon) is set to true |
-| iconStyle+Disabled | Applied when the component is [disabled](Canvas.md#attr-canvasdisabled) if [StatefulCanvas.showDisabledIcon](#attr-statefulcanvasshowdisabledicon) is true. |
-| Combined styles |
-| iconStyle+SelectedFocused | Combined Selected and focused styling |
-| iconStyle+SelectedOver | Combined Selected and rollOver styling |
-| iconStyle+FocusedOver | Combined Focused and rollOver styling |
-| iconStyle+SelectedFocusedOver | Combined Selected, Focused and rollOver styling |
-| iconStyle+SelectedDown | Combined Selected and mouse-down styling |
-| iconStyle+FocusedDown | Combined Focused and mouse-down styling |
-| iconStyle+SelectedFocusedDown | Combined Selected, Focused and mouse-down styling |
-| iconStyle+SelectedDisabled | Combined Selected and Disabled styling |
-
-In addition, if [StatefulCanvas.showRTLIcon](#attr-statefulcanvasshowrtlicon) is true, then in RTL mode, a final "RTL" suffix will be appended.
-
-### Groups
-
-- buttonIcon
-
-**Flags**: IRW
-
----
-## Attr: StatefulCanvas.showFocusedAsOver
-
-### Description
-If [showFocused](#attr-statefulcanvasshowfocused) is true for this widget, should the `"over"` state be used to indicate the widget as focused. If set to false, a separate `"focused"` state will be used.
-
-### Groups
-
-- state
-
-**Flags**: IRW
-
----
-## Attr: StatefulCanvas.showRollOver
-
-### Description
-Should we visibly change state when the mouse goes over this object?
-
-### Groups
-
-- state
-
-**Flags**: IRW
-
----
-## Attr: StatefulCanvas.align
-
-### Description
-Horizontal alignment of this component's title.
-
-### Groups
-
-- appearance
-
-**Flags**: IRW
-
----
-## Attr: StatefulCanvas.overCanvas
-
-### Description
-Auto generated child widget to be shown when the user rolls over this canvas if [StatefulCanvas.showOverCanvas](#attr-statefulcanvasshowovercanvas) is true. See documentation for [AutoChild](../reference.md#type-autochild) for information on how to customize this canvas.
-
-**Flags**: R
-
----
-## Attr: StatefulCanvas.showDisabled
-
-### Description
-Should we visibly change state when disabled?
-
-### Groups
-
-- state
-
-**Flags**: IRW
-
----
-## Attr: StatefulCanvas.redrawOnStateChange
-
-### Description
-Whether this widget needs to redraw to reflect state change
-
-### Groups
-
-- state
-
-**Flags**: IRWA
-
----
-## Attr: StatefulCanvas.showFocusedIcon
-
-### Description
-If using an icon for this button, whether to switch the icon image when the button receives focus.
-
-If [StatefulCanvas.showFocusedAsOver](#attr-statefulcanvasshowfocusedasover) is true, the `"Over"` icon will be displayed when the canvas has focus, otherwise a separate `"Focused"` icon will be displayed
-
-### Groups
-
-- buttonIcon
-
-**Flags**: IR
-
----
-## Attr: StatefulCanvas.showFocus
-
-### Description
-Should we visibly change state when the canvas receives focus? Note that by default the `over` state is used to indicate focus.
-
-### Groups
-
-- state
-
-**Deprecated**
-
-**Flags**: IRW
-
----
-## Attr: StatefulCanvas.showFocused
-
-### Description
-Should we visibly change state when the canvas receives focus? If [StatefulCanvas.showFocusedAsOver](#attr-statefulcanvasshowfocusedasover) is `true`, then **`"over"`** will be used to indicate focus. Otherwise a separate **`"focused"`** state will be used.
-
-### Groups
-
-- state
-
-**Flags**: IRW
-
----
-## Attr: StatefulCanvas.iconSize
-
-### Description
-Size in pixels of the icon image.
-
-The [iconWidth](#attr-statefulcanvasiconwidth) and [iconHeight](#attr-statefulcanvasiconheight) properties can be used to configure width and height separately.
-
-Note: When configuring the properties of a `StatefulCanvas` (or derivative) [AutoChild](../reference.md#type-autochild), it is best to set the `iconWidth` and `iconHeight` to the same value rather than setting an `iconSize`. This is because certain skins or customizations thereto might set the `iconWidth` and `iconHeight`, making the customization of the AutoChild's `iconSize` ineffective.
-
-### Groups
-
-- buttonIcon
-
-**Flags**: IR
-
----
-## Attr: StatefulCanvas.showSelectedIcon
-
-### Description
-If using an icon for this button, whether to switch the icon image when the button becomes selected.
-
-### Groups
-
-- buttonIcon
-
-**Flags**: IR
 
 ---
 ## Attr: StatefulCanvas.icon
@@ -350,6 +163,18 @@ Note that the string "blank" is a valid setting for this attribute and will alwa
 - buttonIcon
 
 **Flags**: IRW
+
+---
+## Attr: StatefulCanvas.showDisabledIcon
+
+### Description
+If using an icon for this button, whether to switch the icon image if the button becomes disabled.
+
+### Groups
+
+- buttonIcon
+
+**Flags**: IR
 
 ---
 ## Attr: StatefulCanvas.overCanvasConstructor
@@ -398,6 +223,19 @@ If using an icon for this button, whether to switch the icon image on mouse roll
 **Flags**: IR
 
 ---
+## Attr: StatefulCanvas.radioGroup
+
+### Description
+String identifier for this canvas's mutually exclusive selection group.
+
+### Groups
+
+- state
+- event handling
+
+**Flags**: IRWA
+
+---
 ## Attr: StatefulCanvas.actionType
 
 ### Description
@@ -407,6 +245,40 @@ Behavior on state changes -- BUTTON, RADIO or CHECKBOX
 
 - state
 - event handling
+
+**Flags**: IRW
+
+---
+## Attr: StatefulCanvas.iconStyle
+
+### Description
+Base CSS style applied to the icon image. If set, as the `StatefulCanvas` changes [state](#attr-statefulcanvasstate) and/or is [selected](#attr-statefulcanvasselected), suffixes will be appended to `iconStyle` to form the className set on the image element.
+
+The following table lists out the standard set of suffixes which may be appended:
+
+| CSS Class Applied | Description |
+|---|---|
+| iconStyle | Default CSS style |
+| iconStyle+Selected | Applied when [StatefulCanvas.selected](#attr-statefulcanvasselected) and [StatefulCanvas.showSelectedIcon](#attr-statefulcanvasshowselectedicon) are true. |
+| iconStyle+Focused | Applied when the component has keyboard focus, if [StatefulCanvas.showFocusedIcon](#attr-statefulcanvasshowfocusedicon) is true, and [StatefulCanvas.showFocusedAsOver](#attr-statefulcanvasshowfocusedasover) is not true. |
+| iconStyle+Over | Applied when [StatefulCanvas.showRollOverIcon](#attr-statefulcanvasshowrollovericon) is set to true and either the user rolls over the component or [StatefulCanvas.showFocusedAsOver](#attr-statefulcanvasshowfocusedasover) is true and the component has keyboard focus. |
+| iconStyle+Down | Applied when the user presses the mouse button on the component if [StatefulCanvas.showDownIcon](#attr-statefulcanvasshowdownicon) is set to true |
+| iconStyle+Disabled | Applied when the component is [disabled](Canvas.md#attr-canvasdisabled) if [StatefulCanvas.showDisabledIcon](#attr-statefulcanvasshowdisabledicon) is true. |
+| Combined styles |
+| iconStyle+SelectedFocused | Combined Selected and focused styling |
+| iconStyle+SelectedOver | Combined Selected and rollOver styling |
+| iconStyle+FocusedOver | Combined Focused and rollOver styling |
+| iconStyle+SelectedFocusedOver | Combined Selected, Focused and rollOver styling |
+| iconStyle+SelectedDown | Combined Selected and mouse-down styling |
+| iconStyle+FocusedDown | Combined Focused and mouse-down styling |
+| iconStyle+SelectedFocusedDown | Combined Selected, Focused and mouse-down styling |
+| iconStyle+SelectedDisabled | Combined Selected and Disabled styling |
+
+In addition, if [StatefulCanvas.showRTLIcon](#attr-statefulcanvasshowrtlicon) is true, then in RTL mode, a final "RTL" suffix will be appended.
+
+### Groups
+
+- buttonIcon
 
 **Flags**: IRW
 
@@ -425,6 +297,18 @@ Note that if [StatefulCanvas.autoFit](#attr-statefulcanvasautofit) is set on non
 ### See Also
 
 - [StatefulCanvas.autoFit](#attr-statefulcanvasautofit)
+
+**Flags**: IRW
+
+---
+## Attr: StatefulCanvas.showFocusedAsOver
+
+### Description
+If [showFocused](#attr-statefulcanvasshowfocused) is true for this widget, should the `"over"` state be used to indicate the widget as focused. If set to false, a separate `"focused"` state will be used.
+
+### Groups
+
+- state
 
 **Flags**: IRW
 
@@ -455,10 +339,34 @@ Note that for StretchImgButton instances, autoFit will occur horizontally only, 
 **Flags**: IRW
 
 ---
+## Attr: StatefulCanvas.showRollOver
+
+### Description
+Should we visibly change state when the mouse goes over this object?
+
+### Groups
+
+- state
+
+**Flags**: IRW
+
+---
+## Attr: StatefulCanvas.align
+
+### Description
+Horizontal alignment of this component's title.
+
+### Groups
+
+- appearance
+
+**Flags**: IRW
+
+---
 ## Attr: StatefulCanvas.ariaLabel
 
 ### Description
-If specified this property returns the [aria-label](#method-statefulcanvasgetarialabel) attribute to write out in [screenReaderMode](isc.md#staticmethod-iscsetscreenreadermode).
+If specified this property returns the `aria-label` attribute to write out as part of [getAriaState()](Canvas.md#method-canvasgetariastate) in [screenReaderMode](isc.md#staticmethod-iscsetscreenreadermode).
 
 If unset, aria-label will default to [this.prompt](Canvas.md#attr-canvasprompt) if specified, otherwise [this.title](#attr-statefulcanvastitle).
 
@@ -473,18 +381,12 @@ When this property is set to true, this widget will create and show the [Statefu
 **Flags**: IRWA
 
 ---
-## Attr: StatefulCanvas.vIconStyle
+## Attr: StatefulCanvas.overCanvas
 
 ### Description
-Base CSS style applied to the icon image when [vertical](StretchImg.md#attr-stretchimgvertical) is set to true. If set, as the `StatefulCanvas` changes [state](#attr-statefulcanvasstate) and/or is [selected](#attr-statefulcanvasselected), suffixes will be appended to `vIconStyle` to form the className set on the image element.
+Auto generated child widget to be shown when the user rolls over this canvas if [StatefulCanvas.showOverCanvas](#attr-statefulcanvasshowovercanvas) is true. See documentation for [AutoChild](../reference.md#type-autochild) for information on how to customize this canvas.
 
-The [StatefulCanvas.iconStyle](#attr-statefulcanvasiconstyle) for details about stateful suffixes.
-
-### Groups
-
-- buttonIcon
-
-**Flags**: IRW
+**Flags**: R
 
 ---
 ## Attr: StatefulCanvas.title
@@ -529,16 +431,6 @@ Note that if [StatefulCanvas.autoFit](#attr-statefulcanvasautofit) is set, this 
 **Flags**: IRW
 
 ---
-## Attr: StatefulCanvas.styleName
-
-### Description
-StatefulCanvases are styled by combining [StatefulCanvas.baseStyle](#attr-statefulcanvasbasestyle) with [State](../reference.md#type-state) to build a composite css style name. In most cases, `statefulCanvas.styleName` will have no effect on statefulCanvas styling and should not be used.
-
-If the `baseStyle` is not explicitly specified for a class, the `styleName` will be used as a default baseStyle. Other than that, this attribute will be ignored.
-
-**Flags**: IRW
-
----
 ## Attr: StatefulCanvas.showDown
 
 ### Description
@@ -563,6 +455,44 @@ If this button is showing an icon should it appear to the left or right of the t
 **Flags**: IR
 
 ---
+## Attr: StatefulCanvas.showDisabled
+
+### Description
+Should we visibly change state when disabled?
+
+### Groups
+
+- state
+
+**Flags**: IRW
+
+---
+## Attr: StatefulCanvas.redrawOnStateChange
+
+### Description
+Whether this widget needs to redraw to reflect state change
+
+### Groups
+
+- state
+
+**Flags**: IRWA
+
+---
+## Attr: StatefulCanvas.showFocusedIcon
+
+### Description
+If using an icon for this button, whether to switch the icon image when the button receives focus.
+
+If [StatefulCanvas.showFocusedAsOver](#attr-statefulcanvasshowfocusedasover) is true, the `"Over"` icon will be displayed when the canvas has focus, otherwise a separate `"Focused"` icon will be displayed
+
+### Groups
+
+- buttonIcon
+
+**Flags**: IR
+
+---
 ## Attr: StatefulCanvas.showDownIcon
 
 ### Description
@@ -579,8 +509,6 @@ If using an icon for this button, whether to switch the icon image when the mous
 
 ### Description
 Base CSS style className applied to the component.
-
-Note that if specified, this property takes precedence over any specified [StatefulCanvas.styleName](#attr-statefulcanvasstylename). If unset, the `styleName` will be used as a default `baseStyle` value.
 
 As the component changes [StatefulCanvas.state](#attr-statefulcanvasstate) and/or is selected, suffixes will be added to the base style. In some cases more than one suffix will be appended to reflect a combined state ("Selected" + "Disabled", for example).
 
@@ -617,8 +545,6 @@ then applying that style to the button with [overflow](Canvas.md#attr-canvasover
 *   The translation transform required along the x-axis is roughly (width - height) / 2, but may need slight offsetting for optimal centering.
 *   We've explicitly avoided describing an approach based on CSS "writing-mode", since support is incomplete and bugs are present in popular browsers such as Firefox and Safari that would prevent it from being used without Framework assistance.
 
-Note on css-margins: Developers should be aware that the css "margin" property is unreliable for certain subclasses of StatefulCanvas, including [buttons](Button.md#class-button). Developers may use the explicit [Canvas.margin](Canvas.md#attr-canvasmargin) property to specify button margins, or for a button within a layout, consider the layout properties [Layout.layoutMargin](Layout.md#attr-layoutlayoutmargin), [Layout.membersMargin](Layout.md#attr-layoutmembersmargin)
-
 **Flags**: IRW
 
 ---
@@ -632,6 +558,20 @@ Pixels between icon and title text.
 - buttonIcon
 
 **Flags**: IR
+
+---
+## Attr: StatefulCanvas.showFocus
+
+### Description
+Should we visibly change state when the canvas receives focus? Note that by default the `over` state is used to indicate focus.
+
+### Groups
+
+- state
+
+**Deprecated**
+
+**Flags**: IRW
 
 ---
 ## Attr: StatefulCanvas.editProxyConstructor
@@ -660,6 +600,67 @@ Should horizontal alignment-related attributes [align](#attr-statefulcanvasalign
 - RTL
 
 **Flags**: IRWA
+
+---
+## Attr: StatefulCanvas.showFocused
+
+### Description
+Should we visibly change state when the canvas receives focus? If [StatefulCanvas.showFocusedAsOver](#attr-statefulcanvasshowfocusedasover) is `true`, then **`"over"`** will be used to indicate focus. Otherwise a separate **`"focused"`** state will be used.
+
+### Groups
+
+- state
+
+**Flags**: IRW
+
+---
+## Attr: StatefulCanvas.iconSize
+
+### Description
+Size in pixels of the icon image.
+
+The [iconWidth](#attr-statefulcanvasiconwidth) and [iconHeight](#attr-statefulcanvasiconheight) properties can be used to configure width and height separately.
+
+Note: When configuring the properties of a `StatefulCanvas` (or derivative) [AutoChild](../reference.md#type-autochild), it is best to set the `iconWidth` and `iconHeight` to the same value rather than setting an `iconSize`. This is because certain skins or customizations thereto might set the `iconWidth` and `iconHeight`, making the customization of the AutoChild's `iconSize` ineffective.
+
+### Groups
+
+- buttonIcon
+
+**Flags**: IR
+
+---
+## Method: StatefulCanvas.setDisabled
+
+### Description
+Enable or disable this object
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| disabled | [boolean](../reference.md#type-boolean) | false | — | true if this widget is to be disabled |
+
+### Groups
+
+- enable
+- state
+
+---
+## Method: StatefulCanvas.setSelected
+
+### Description
+Set this object to be selected or deselected.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| newIsSelected | [boolean](../reference.md#type-boolean) | false | — | new boolean value of whether or not the object is selected. |
+
+### Groups
+
+- state
 
 ---
 ## Method: StatefulCanvas.getStateSuffix
@@ -720,28 +721,10 @@ Setter for [ignoreRTL](#attr-statefulcanvasignorertl).
 **Flags**: A
 
 ---
-## Method: StatefulCanvas.getAriaStateDefaults
-
-### Description
-Retrieves dynamically calculated default [ARIA state mapping](Canvas.md#attr-canvasariastate) properties for this canvas. These will be combined with explicitly specified aria state as described in [Canvas.getAriaState](Canvas.md#method-canvasgetariastate).
-
-Overridden by StatefulCanvas to pick up [aria-label](#method-statefulcanvasgetarialabel).
-
-### Returns
-
-`[Object](../reference.md#type-object)` — dynamically calculated default aria state properties
-
-**Flags**: A
-
----
 ## Method: StatefulCanvas.getActionType
 
 ### Description
 Return the 'actionType' for this canvas (radio / checkbox / button)
-
-### Returns
-
-`[SelectionType](../reference_2.md#type-selectiontype)` — the current action type
 
 ### Groups
 
@@ -777,6 +760,19 @@ Remove this widget from the specified mutually exclusive selection group with th
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | groupID | [String](#type-string) | true | — | \- optional radio group ID (to ensure the widget is removed from the appropriate group. |
+
+### Groups
+
+- state
+- event handling
+
+**Flags**: A
+
+---
+## Method: StatefulCanvas.setActionType
+
+### Description
+Update the 'actionType' for this canvas (radio / checkbox / button) If the canvas is currently selected, and the passed in actionType is 'button' this method will deselect the canvas.
 
 ### Groups
 
@@ -836,112 +832,6 @@ Default is to simply return this.title.
 **Flags**: A
 
 ---
-## Method: StatefulCanvas.getAriaLabel
-
-### Description
-Method to return the `aria-label` for this component (see [StatefulCanvas.getAriaStateDefaults](#method-statefulcanvasgetariastatedefaults)).
-
-Returns [StatefulCanvas.ariaLabel](#attr-statefulcanvasarialabel) if specified, otherwise [prompt](Canvas.md#attr-canvasprompt), otherwise [StatefulCanvas.title](#attr-statefulcanvastitle)
-
-### Returns
-
-`[String](#type-string)` — aria label value
-
----
-## Method: StatefulCanvas.setIcon
-
-### Description
-Change the icon being shown next to the title text.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| icon | [SCImgURL](../reference.md#type-scimgurl) | false | — | URL of new icon |
-
-### Groups
-
-- buttonIcon
-
----
-## Method: StatefulCanvas.getState
-
-### Description
-Return the state of this StatefulCanvas
-
-### Returns
-
-`[State](../reference.md#type-state)` — —
-
-### Groups
-
-- state
-
-**Flags**: A
-
----
-## Method: StatefulCanvas.deselect
-
-### Description
-Deselect this object.
-
-### Groups
-
-- state
-
----
-## Method: StatefulCanvas.setDisabled
-
-### Description
-Enable or disable this object
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| disabled | [boolean](../reference.md#type-boolean) | false | — | true if this widget is to be disabled |
-
-### Groups
-
-- enable
-- state
-
----
-## Method: StatefulCanvas.setSelected
-
-### Description
-Set this object to be selected or deselected.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| newIsSelected | [boolean](../reference.md#type-boolean) | false | — | new boolean value of whether or not the object is selected. |
-
-### Groups
-
-- state
-
----
-## Method: StatefulCanvas.setActionType
-
-### Description
-Update the 'actionType' for this canvas (radio / checkbox / button) If the canvas is currently selected, and the passed in actionType is 'button' this method will deselect the canvas.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| actionType | [SelectionType](../reference_2.md#type-selectiontype) | false | — | new action type |
-
-### Groups
-
-- state
-- event handling
-
-**Flags**: A
-
----
 ## Method: StatefulCanvas.setIconOrientation
 
 ### Description
@@ -977,6 +867,22 @@ Sets the [state](#attr-statefulcanvasstate) of this object, changing its appeara
 **Flags**: A
 
 ---
+## Method: StatefulCanvas.setIcon
+
+### Description
+Change the icon being shown next to the title text.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| icon | [SCImgURL](../reference_2.md#type-scimgurl) | false | — | URL of new icon |
+
+### Groups
+
+- buttonIcon
+
+---
 ## Method: StatefulCanvas.setIconStyle
 
 ### Description
@@ -1006,5 +912,31 @@ Add this widget to the specified mutually exclusive selection group with the ID 
 - event handling
 
 **Flags**: A
+
+---
+## Method: StatefulCanvas.getState
+
+### Description
+Return the state of this StatefulCanvas
+
+### Returns
+
+`[State](../reference.md#type-state)` — —
+
+### Groups
+
+- state
+
+**Flags**: A
+
+---
+## Method: StatefulCanvas.deselect
+
+### Description
+Deselect this object.
+
+### Groups
+
+- state
 
 ---

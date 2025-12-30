@@ -9,9 +9,9 @@
 *Inherits from:* [FormItem](FormItem.md#class-formitem)
 
 ### Description
-A [FormItem](FormItem.md#class-formitem) for editing [logical-time](DateUtil.md#classmethod-dateutilcreatelogicaltime) values, which are Date instances where only the time-portion is relevant.
+FormItem for editing times in a text field or via a set of selector components.
 
-The item renders with one of two appearances, depending on the value of [TimeItem.useTextField](#attr-timeitemusetextfield) - when set to true, the default appearance, times are edited directly as text-values. In this mode, values are formatted according to [TimeItem.timeFormatter](#attr-timeitemtimeformatter), with defaults coming from [TimeItem.timeFormatter24Hour](#attr-timeitemtimeformatter24hour) and [TimeItem.timeFormatter12Hour](#attr-timeitemtimeformatter12hour), depending on the value of [use24HourTime](#attr-timeitemuse24hourtime). See also [Time.setNormalDisplayFormat](Time.md#classmethod-timesetnormaldisplayformat) for system-wide settings.
+The display format for this field may be set by [TimeItem.timeFormatter](#attr-timeitemtimeformatter). Defaults are picked up from [TimeItem.timeFormatter24Hour](#attr-timeitemtimeformatter24hour) and [TimeItem.timeFormatter12Hour](#attr-timeitemtimeformatter12hour). See also [Time.setNormalDisplayFormat](Time.md#classmethod-timesetnormaldisplayformat) for system-wide settings.
 
 TimeItem automatically accepts both 12 and 24 hour time as well as partial times and a variety of possible time value separators. Examples:
 
@@ -28,15 +28,37 @@ TimeItem automatically accepts both 12 and 24 hour time as well as partial times
  
 ```
 
-When `useTextField` is set to false, the item provides separate pickers for [hour](#attr-timeitemhouritem), [minute](#attr-timeitemminuteitem) and [second](#attr-timeitemseconditem) values. By default, the pickers edit times in [24-hour format](#attr-timeitemuse24hourtime), meaning the `hourItem` shows values from 0-23. When [use24HourTime](#attr-timeitemuse24hourtime) is set to false, the `hourItem` is limited to a range of 1-12, and the [am/pm picker](#attr-timeitemampmitem) is displayed. Note that [getValue()](FormItem.md#method-formitemgetvalue) always returns a Date instance that represents a [logical-time](DateUtil.md#classmethod-dateutilcreatelogicaltime) in 24-hour format.
-
 Values entered by the user are stored as JavaScript `Date` objects in local time. The day, month and year values of this `Date` object are not relevant and should be ignored.
 
 By default, when used in a [SearchForm](SearchForm.md#class-searchform) or as a field in a [ListGrid](ListGrid_1.md#class-listgrid)'s [filter editor](ListGrid_1.md#attr-listgridshowfiltereditor), TimeItems will automatically generate AdvancedCriteria - for example, entering "11:00" into the item will generate a [betweenInclusive](../reference.md#type-operatorid) Criterion that selects all times between 11:00:00 and 11:59:59. If the form is databound and the DataSource is marked as being [allowAdvancedCriteria](DataSource.md#attr-datasourceallowadvancedcriteria):false, the criteria generated will be simple, checking for data with logical time values equal to the displayed value.
 
-To edit [logical-Date values](DateUtil.md#classmethod-dateutilcreatelogicaldate), see [DateItem](DateItem.md#class-dateitem), and to edit [datetime values](DateUtil.md#classmethod-dateutilcreatedatetime), see [DateTimeItem](DateTimeItem.md#class-datetimeitem). For [relative-date features](../reference_2.md#type-relativedatestring), see [RelativeDateItem](RelativeDateItem.md#class-relativedateitem).
+---
+## Attr: TimeItem.use24HourTime
 
-For detailed information on working with dates, times and datetimes, see the [Date and Time Format and Storage overview](../kb_topics/dateFormatAndStorage.md#kb-topic-date-and-time-format-and-storage).
+### Description
+Whether to enforce 24-hour time in the UI. If unset, assumes to the [global default](Time.md#classattr-timeuse24hourtime).
+
+**Flags**: IRW
+
+---
+## Attr: TimeItem.millisecondValues
+
+### Description
+An array of values to make available in the [millisecond picker](#attr-timeitemmilliseconditem) when [useTextField](#attr-timeitemusetextfield) is false.
+
+Used for specifying a limited set of valid Millisecond values, or when using the TimeItem to record duration, rather than time per-se.
+
+See [millisecondMinValue](#attr-timeitemmillisecondminvalue), [millisecondMaxValue](#attr-timeitemmillisecondmaxvalue) and [millisecondIncrement](#attr-timeitemmillisecondincrement) for another method of controlling the content in the millisecond picker.
+
+**Flags**: IRW
+
+---
+## Attr: TimeItem.showHourItem
+
+### Description
+Controls whether to display the [TimeItem.hourItem](#attr-timeitemhouritem) when [TimeItem.useTextField](#attr-timeitemusetextfield) is false.
+
+**Flags**: IRW
 
 ---
 ## Attr: TimeItem.millisecondIncrement
@@ -63,6 +85,18 @@ See also [hourMaxValue](#attr-timeitemhourmaxvalue) and [hourIncrement](#attr-ti
 
 ### Description
 When [useTextField](#attr-timeitemusetextfield) is false and [secondValues](#attr-timeitemsecondvalues) is unset, this attribute specifies the increment to use when generating entries for the second picker. For example, if this attribute is set to 5, the second picker will contain only every fifth value between the [secondMinValue](#attr-timeitemsecondminvalue) and [secondMaxValue](#attr-timeitemsecondmaxvalue).
+
+**Flags**: IRW
+
+---
+## Attr: TimeItem.secondItemTitle
+
+### Description
+Title to show for the [second picker](#attr-timeitemseconditem).
+
+### Groups
+
+- i18nMessages
 
 **Flags**: IRW
 
@@ -95,6 +129,18 @@ Controls whether to display the [TimeItem.millisecondItem](#attr-timeitemmillise
 **Flags**: IRW
 
 ---
+## Attr: TimeItem.displayFormat
+
+### Description
+What format should this item's time string be presented in?
+
+This attribute does not have an effect if a native HTML5 time input is being used. See [TimeItem.browserInputType](#attr-timeitembrowserinputtype).
+
+**Deprecated**
+
+**Flags**: IRW
+
+---
 ## Attr: TimeItem.minuteItemProperties
 
 ### Description
@@ -115,22 +161,31 @@ See [hourMinValue](#attr-timeitemhourminvalue), [hourMaxValue](#attr-timeitemhou
 **Flags**: IRW
 
 ---
+## Attr: TimeItem.showHintInField
+
+### Description
+If [useTextField](#attr-timeitemusetextfield) is true and a [hint](FormItem.md#attr-formitemhint) is set, should the hint be shown within the field?
+
+Note that when using a native HTML5 time input (see [TimeItem.browserInputType](#attr-timeitembrowserinputtype)), in-field hints are currently supported, but future browser changes might not allow in-field hints to be supported. Therefore, it is safest to _not_ use in-field hints in conjunction with a native HTML5 time input.
+
+To change this attribute after being drawn, it is necessary to call [FormItem.redraw](FormItem.md#method-formitemredraw) or redraw the form.
+
+### Groups
+
+- appearance
+
+### See Also
+
+- [FormItem.hint](FormItem.md#attr-formitemhint)
+- [TimeItem.usePlaceholderForHint](#attr-timeitemuseplaceholderforhint)
+
+**Flags**: IRWA
+
+---
 ## Attr: TimeItem.textBoxStyle
 
 ### Description
 Base CSS class for this item's text box. If specified this style will be applied to the [TimeItem.textField](#attr-timeitemtextfield) if [TimeItem.useTextField](#attr-timeitemusetextfield) is set to `true`.
-
-**Flags**: IRW
-
----
-## Attr: TimeItem.itemTitleAlign
-
-### Description
-When [useTextField](#attr-timeitemusetextfield) is false, the default title-alignment of child-items such as the [hour](#attr-timeitemhouritem), [minute](#attr-timeitemminuteitem) and [second](#attr-timeitemseconditem) pickers, within their cells.
-
-### Groups
-
-- formTitles
 
 **Flags**: IRW
 
@@ -155,10 +210,54 @@ Custom properties to apply to this timeItem's generated [AM/PM picker](#attr-tim
 **Flags**: IRA
 
 ---
+## Attr: TimeItem.secondValues
+
+### Description
+An array of values to make available in the [second picker](#attr-timeitemseconditem) when [useTextField](#attr-timeitemusetextfield) is false.
+
+Used for specifying a limited set of valid Second values, or when using the TimeItem to record duration, rather than time per-se.
+
+See [secondMinValue](#attr-timeitemsecondminvalue), [secondMaxValue](#attr-timeitemsecondmaxvalue) and [secondIncrement](#attr-timeitemsecondincrement) for another method of controlling the content in the second picker.
+
+**Flags**: IRW
+
+---
+## Attr: TimeItem.hourIncrement
+
+### Description
+When [useTextField](#attr-timeitemusetextfield) is false and [hourValues](#attr-timeitemhourvalues) is unset, this attribute specifies the increment to use when generating entries for the hour picker. For example, if this attribute is set to 5, the hour picker will contain only every fifth value between the [hourMinValue](#attr-timeitemhourminvalue) and [hourMaxValue](#attr-timeitemhourmaxvalue).
+
+**Flags**: IRW
+
+---
+## Attr: TimeItem.millisecondMaxValue
+
+### Description
+When [useTextField](#attr-timeitemusetextfield) is false and [millisecondValues](#attr-timeitemmillisecondvalues) is unset, this attribute specifies the maximum value present in the millisecond picker.
+
+Used for specifying a limited set of valid Millisecond values, or when using the TimeItem to record duration, rather than time per-se. The default is 999.
+
+See also [millisecondMinValue](#attr-timeitemmillisecondminvalue) and [millisecondIncrement](#attr-timeitemmillisecondincrement).
+
+**Flags**: IRW
+
+---
 ## Attr: TimeItem.showSecondItem
 
 ### Description
 Controls whether to display the [TimeItem.secondItem](#attr-timeitemseconditem) when [TimeItem.useTextField](#attr-timeitemusetextfield) is false.
+
+**Flags**: IRW
+
+---
+## Attr: TimeItem.ampmItemTitle
+
+### Description
+Title to show for the [AM/PM picker](#attr-timeitemampmitem).
+
+### Groups
+
+- i18nMessages
 
 **Flags**: IRW
 
@@ -183,6 +282,26 @@ Custom properties to apply to the [text field](#attr-timeitemtextfield) generate
 **Flags**: IRA
 
 ---
+## Attr: TimeItem.minuteIncrement
+
+### Description
+When [useTextField](#attr-timeitemusetextfield) is false and [minuteValues](#attr-timeitemminutevalues) is unset, this attribute specifies the increment to use when generating entries for the minute picker. For example, if this attribute is set to 5, the minute picker will contain only every fifth value between the [minuteMinValue](#attr-timeitemminuteminvalue) and [minuteMaxValue](#attr-timeitemminutemaxvalue).
+
+**Flags**: IRW
+
+---
+## Attr: TimeItem.minuteItemPrompt
+
+### Description
+The hover prompt to show for the [minute picker](#attr-timeitemminuteitem).
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IRW
+
+---
 ## Attr: TimeItem.showMinuteItem
 
 ### Description
@@ -201,6 +320,18 @@ This attribute does not have an effect if a native HTML5 time input is being use
 **Flags**: IRW
 
 ---
+## Attr: TimeItem.minuteMinValue
+
+### Description
+When [useTextField](#attr-timeitemusetextfield) is false and [minuteValues](#attr-timeitemminutevalues) is unset, this attribute specifies the minimum value present in the minute picker.
+
+Used for specifying a limited set of valid Minute values, or when using the TimeItem to record duration, rather than time per-se. The default is zero in all cases.
+
+See also [minuteMaxValue](#attr-timeitemminutemaxvalue) and [minuteIncrement](#attr-timeitemminuteincrement).
+
+**Flags**: IRW
+
+---
 ## Attr: TimeItem.secondMinValue
 
 ### Description
@@ -209,6 +340,18 @@ When [useTextField](#attr-timeitemusetextfield) is false and [secondValues](#att
 Used for specifying a limited set of valid Second values, or when using the TimeItem to record duration, rather than time per-se. The default is zero in all cases.
 
 See also [secondMaxValue](#attr-timeitemsecondmaxvalue) and [secondIncrement](#attr-timeitemsecondincrement).
+
+**Flags**: IRW
+
+---
+## Attr: TimeItem.millisecondMinValue
+
+### Description
+When [useTextField](#attr-timeitemusetextfield) is false and [millisecondValues](#attr-timeitemmillisecondvalues) is unset, this attribute specifies the minimum value present in the millisecond picker.
+
+Used for specifying a limited set of valid Millisecond values, or when using the TimeItem to record duration, rather than time per-se. The default is zero in all cases.
+
+See also [millisecondMaxValue](#attr-timeitemmillisecondmaxvalue) and [millisecondIncrement](#attr-timeitemmillisecondincrement).
 
 **Flags**: IRW
 
@@ -281,6 +424,22 @@ Text field to hold the entire time in "type in" format, if [useTextField](#attr-
 **Flags**: R
 
 ---
+## Attr: TimeItem.millisecondItemProperties
+
+### Description
+Custom properties to apply to this timeItem's generated [millisecond picker](#attr-timeitemmilliseconditem).
+
+**Flags**: IRA
+
+---
+## Attr: TimeItem.millisecondItem
+
+### Description
+Select item to hold the milliseconds portion of the time or [duration](#method-timeitemgetduration) when [useTextField](#attr-timeitemusetextfield) is false.
+
+**Flags**: R
+
+---
 ## Attr: TimeItem.millisecondItemTitle
 
 ### Description
@@ -309,16 +468,26 @@ This setting does not apply to hints that are [shown in field](TextItem.md#attr-
 **Flags**: IR
 
 ---
-## Attr: TimeItem.itemTitleOrientation
+## Attr: TimeItem.hourMaxValue
 
 ### Description
-When [useTextField](#attr-timeitemusetextfield) is false, the default orientation of titles for child-items, such as the [hour](#attr-timeitemhouritem), [minute](#attr-timeitemminuteitem) and [second](#attr-timeitemseconditem) pickers. [TitleOrientation](../reference_2.md#type-titleorientation) lists valid options.
+When [useTextField](#attr-timeitemusetextfield) is false and [hourValues](#attr-timeitemhourvalues) is unset, this attribute specifies the maximum value present in the hour picker.
 
-Note that titles on the left or right take up a cell in tabular [form layouts](../kb_topics/formLayout.md#kb-topic-form-layout), but titles on top do not.
+Used for specifying a limited set of valid Hour values, or when using the TimeItem to record duration, rather than time per-se. The default is 11 or 23, according to the value of [use24HourTime](#attr-timeitemuse24hourtime) and [timeFormatter](#attr-timeitemtimeformatter).
+
+See also [hourMinValue](#attr-timeitemhourminvalue) and [hourIncrement](#attr-timeitemhourincrement).
+
+**Flags**: IRW
+
+---
+## Attr: TimeItem.invalidTimeStringMessage
+
+### Description
+Validation error message to display if the user enters an invalid time string.
 
 ### Groups
 
-- formTitles
+- i18nMessages
 
 **Flags**: IRW
 
@@ -343,215 +512,6 @@ If [TimeItem.useTextField](#attr-timeitemusetextfield) is true, and [TimeItem.us
 May be overridden via an explicitly specified [TimeItem.timeFormatter](#attr-timeitemtimeformatter).
 
 This attribute does not have an effect if a native HTML5 time input is being used. See [TimeItem.browserInputType](#attr-timeitembrowserinputtype).
-
-**Flags**: IRW
-
----
-## Attr: TimeItem.secondItemProperties
-
-### Description
-Custom properties to apply to this timeItem's generated [seconds picker](#attr-timeitemseconditem).
-
-**Flags**: IRA
-
----
-## Attr: TimeItem.use24HourTime
-
-### Description
-Whether to enforce 24-hour time in the UI. If unset, assumes to the [global default](Time.md#classattr-timeuse24hourtime).
-
-**Flags**: IRW
-
----
-## Attr: TimeItem.millisecondValues
-
-### Description
-An array of values to make available in the [millisecond picker](#attr-timeitemmilliseconditem) when [useTextField](#attr-timeitemusetextfield) is false.
-
-Used for specifying a limited set of valid Millisecond values, or when using the TimeItem to record duration, rather than time per-se.
-
-See [millisecondMinValue](#attr-timeitemmillisecondminvalue), [millisecondMaxValue](#attr-timeitemmillisecondmaxvalue) and [millisecondIncrement](#attr-timeitemmillisecondincrement) for another method of controlling the content in the millisecond picker.
-
-**Flags**: IRW
-
----
-## Attr: TimeItem.showHourItem
-
-### Description
-Controls whether to display the [TimeItem.hourItem](#attr-timeitemhouritem) when [TimeItem.useTextField](#attr-timeitemusetextfield) is false.
-
-**Flags**: IRW
-
----
-## Attr: TimeItem.secondItemTitle
-
-### Description
-Title to show for the [second picker](#attr-timeitemseconditem).
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
-
----
-## Attr: TimeItem.showHintInField
-
-### Description
-If [useTextField](#attr-timeitemusetextfield) is true and a [hint](FormItem.md#attr-formitemhint) is set, should the hint be shown within the field?
-
-Note that when using a native HTML5 time input (see [TimeItem.browserInputType](#attr-timeitembrowserinputtype)), in-field hints are currently supported, but future browser changes might not allow in-field hints to be supported. Therefore, it is safest to _not_ use in-field hints in conjunction with a native HTML5 time input.
-
-To change this attribute after being drawn, it is necessary to call [FormItem.redraw](FormItem.md#method-formitemredraw) or redraw the form.
-
-### Groups
-
-- appearance
-
-### See Also
-
-- [FormItem.hint](FormItem.md#attr-formitemhint)
-- [TimeItem.usePlaceholderForHint](#attr-timeitemuseplaceholderforhint)
-
-**Flags**: IRW
-
----
-## Attr: TimeItem.secondValues
-
-### Description
-An array of values to make available in the [second picker](#attr-timeitemseconditem) when [useTextField](#attr-timeitemusetextfield) is false.
-
-Used for specifying a limited set of valid Second values, or when using the TimeItem to record duration, rather than time per-se.
-
-See [secondMinValue](#attr-timeitemsecondminvalue), [secondMaxValue](#attr-timeitemsecondmaxvalue) and [secondIncrement](#attr-timeitemsecondincrement) for another method of controlling the content in the second picker.
-
-**Flags**: IRW
-
----
-## Attr: TimeItem.hourIncrement
-
-### Description
-When [useTextField](#attr-timeitemusetextfield) is false and [hourValues](#attr-timeitemhourvalues) is unset, this attribute specifies the increment to use when generating entries for the hour picker. For example, if this attribute is set to 5, the hour picker will contain only every fifth value between the [hourMinValue](#attr-timeitemhourminvalue) and [hourMaxValue](#attr-timeitemhourmaxvalue).
-
-**Flags**: IRW
-
----
-## Attr: TimeItem.millisecondMaxValue
-
-### Description
-When [useTextField](#attr-timeitemusetextfield) is false and [millisecondValues](#attr-timeitemmillisecondvalues) is unset, this attribute specifies the maximum value present in the millisecond picker.
-
-Used for specifying a limited set of valid Millisecond values, or when using the TimeItem to record duration, rather than time per-se. The default is 999.
-
-See also [millisecondMinValue](#attr-timeitemmillisecondminvalue) and [millisecondIncrement](#attr-timeitemmillisecondincrement).
-
-**Flags**: IRW
-
----
-## Attr: TimeItem.ampmItemTitle
-
-### Description
-Title to show for the [AM/PM picker](#attr-timeitemampmitem).
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
-
----
-## Attr: TimeItem.minuteIncrement
-
-### Description
-When [useTextField](#attr-timeitemusetextfield) is false and [minuteValues](#attr-timeitemminutevalues) is unset, this attribute specifies the increment to use when generating entries for the minute picker. For example, if this attribute is set to 5, the minute picker will contain only every fifth value between the [minuteMinValue](#attr-timeitemminuteminvalue) and [minuteMaxValue](#attr-timeitemminutemaxvalue).
-
-**Flags**: IRW
-
----
-## Attr: TimeItem.minuteItemPrompt
-
-### Description
-The hover prompt to show for the [minute picker](#attr-timeitemminuteitem).
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
-
----
-## Attr: TimeItem.minuteMinValue
-
-### Description
-When [useTextField](#attr-timeitemusetextfield) is false and [minuteValues](#attr-timeitemminutevalues) is unset, this attribute specifies the minimum value present in the minute picker.
-
-Used for specifying a limited set of valid Minute values, or when using the TimeItem to record duration, rather than time per-se. The default is zero in all cases.
-
-See also [minuteMaxValue](#attr-timeitemminutemaxvalue) and [minuteIncrement](#attr-timeitemminuteincrement).
-
-**Flags**: IRW
-
----
-## Attr: TimeItem.millisecondMinValue
-
-### Description
-When [useTextField](#attr-timeitemusetextfield) is false and [millisecondValues](#attr-timeitemmillisecondvalues) is unset, this attribute specifies the minimum value present in the millisecond picker.
-
-Used for specifying a limited set of valid Millisecond values, or when using the TimeItem to record duration, rather than time per-se. The default is zero in all cases.
-
-See also [millisecondMaxValue](#attr-timeitemmillisecondmaxvalue) and [millisecondIncrement](#attr-timeitemmillisecondincrement).
-
-**Flags**: IRW
-
----
-## Attr: TimeItem.millisecondItemProperties
-
-### Description
-Custom properties to apply to this timeItem's generated [millisecond picker](#attr-timeitemmilliseconditem).
-
-**Flags**: IRA
-
----
-## Attr: TimeItem.millisecondItem
-
-### Description
-Select item to hold the milliseconds portion of the time or [duration](#method-timeitemgetduration) when [useTextField](#attr-timeitemusetextfield) is false.
-
-**Flags**: R
-
----
-## Attr: TimeItem.showItemTitles
-
-### Description
-When [useTextField](#attr-timeitemusetextfield) is false, whether titles should be shown for for child-items in this TimeItem. By default, `showItemTitles` is true, and titles are displayed [above the items](FormItem.md#attr-formitemtitleorientation).
-
-### Groups
-
-- formTitles
-
-**Flags**: IRW
-
----
-## Attr: TimeItem.hourMaxValue
-
-### Description
-When [useTextField](#attr-timeitemusetextfield) is false and [hourValues](#attr-timeitemhourvalues) is unset, this attribute specifies the maximum value present in the hour picker.
-
-Used for specifying a limited set of valid Hour values, or when using the TimeItem to record duration, rather than time per-se. The default is 11 or 23, according to the value of [use24HourTime](#attr-timeitemuse24hourtime) and [timeFormatter](#attr-timeitemtimeformatter).
-
-See also [hourMinValue](#attr-timeitemhourminvalue) and [hourIncrement](#attr-timeitemhourincrement).
-
-**Flags**: IRW
-
----
-## Attr: TimeItem.invalidTimeStringMessage
-
-### Description
-Validation error message to display if the user enters an invalid time string.
-
-### Groups
-
-- i18nMessages
 
 **Flags**: IRW
 
@@ -737,6 +697,14 @@ See [minuteMinValue](#attr-timeitemminuteminvalue), [minuteMaxValue](#attr-timei
 **Flags**: IRW
 
 ---
+## Attr: TimeItem.secondItemProperties
+
+### Description
+Custom properties to apply to this timeItem's generated [seconds picker](#attr-timeitemseconditem).
+
+**Flags**: IRA
+
+---
 ## Attr: TimeItem.hourItemTitle
 
 ### Description
@@ -770,6 +738,12 @@ If [TimeItem.useTextField](#attr-timeitemusetextfield) is true, falls through to
 | end | [int](../reference.md#type-int) | false | — | character index for end of new selection |
 
 ---
+## Method: TimeItem.selectValue
+
+### Description
+If [TimeItem.useTextField](#attr-timeitemusetextfield) is true, falls through to standard [selectValue()](TextItem.md#method-textitemselectvalue) implementation on this items freeform text entry field. Otherwise has no effect.
+
+---
 ## Method: TimeItem.setValue
 
 ### Description
@@ -787,19 +761,29 @@ NOTE: for valueMap'd items, newValue should be data value not displayed value
 ## Method: TimeItem.getDuration
 
 ### Description
-When [useTextField](#attr-timeitemusetextfield) is set to false, this method returns the value of the time expressed as a duration in the [timeUnit](../reference_2.md#type-timeunit) provided. If no timeUnit is passed, the default is the smallest unit for which a picker is visible.
+When [useTextField](#attr-timeitemusetextfield) is set to false, this method returns the value of the time expressed as a duration in the [timeUnit](../reference.md#type-timeunit) provided. If no timeUnit is passed, the default is the smallest unit for which a picker is visible.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| timeUnit | [TimeUnit](../reference_2.md#type-timeunit) | true | — | the unit of the return value |
+| timeUnit | [TimeUnit](../reference.md#type-timeunit) | true | — | the unit of the return value |
 
 ### Returns
 
 `[int](../reference.md#type-int)` — the item's value, expressed as a duration in the TimeUnit passed
 
 **Flags**: A
+
+---
+## Method: TimeItem.getEnteredValue
+
+### Description
+Returns the raw text value typed into this items text field if [TimeItem.useTextField](#attr-timeitemusetextfield) is true (otherwise returns the result of this.getValue()).
+
+### Returns
+
+`[String](#type-string)` — value the user entered
 
 ---
 ## Method: TimeItem.getMillisecondValues
@@ -812,113 +796,6 @@ Returns an array of the current valid millisecond values, whether set directly a
 `[Array of Number](#type-array-of-number)` — array of available Millisecond values
 
 **Flags**: A
-
----
-## Method: TimeItem.setMinutes
-
-### Description
-Set the minute value of this TimeItem. If the item value has not been initialized with [setValue()](#method-timeitemsetvalue), the hour will be established to current hour.
-
-You can use [setValue()](#method-timeitemsetvalue) to set both hours and minutes at the same time.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| minutes | [Number](#type-number) | false | — | new minutes value for this TimeItem. |
-
-**Flags**: A
-
----
-## Method: TimeItem.pendingStatusChanged
-
-### Description
-Notification method called when [showPending](FormItem.md#attr-formitemshowpending) is enabled and this time item should either clear or show its pending visual state.
-
-The default behavior is that the [titleStyle](FormItem.md#attr-formitemtitlestyle) and [cellStyle](FormItem.md#attr-formitemcellstyle) are updated to include/exclude the "Pending" suffix. In addition, when displayed in the pending state:
-
-*   If [useTextField](#attr-timeitemusetextfield) is `true`, then the "Pending" suffix will be appended to the [textBoxStyle](FormItem.md#attr-formitemtextboxstyle) applied to the [textField](#attr-timeitemtextfield); otherwise
-*   (`useTextField` is `false`) the color of the [hourItem](#attr-timeitemhouritem), [minuteItem](#attr-timeitemminuteitem), [secondItem](#attr-timeitemseconditem), [millisecondItem](#attr-timeitemmilliseconditem), and/or [ampmItem](#attr-timeitemampmitem) will change when the hour, minute, second, millisecond, or whether the time is AM or PM is different, respectively.
-
-Returning `false` will cancel this default behavior.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| form | [DynamicForm](#type-dynamicform) | false | — | the managing `DynamicForm` instance. |
-| item | [FormItem](#type-formitem) | false | — | the form item itself (also available as "this"). |
-| pendingStatus | [boolean](../reference.md#type-boolean) | false | — | `true` if the item should show its pending visual state; `false` otherwise. |
-| newValue | [Any](#type-any) | false | — | the current form item value. |
-| value | [Any](#type-any) | false | — | the value that would be restored by a call to [DynamicForm.resetValues](DynamicForm.md#method-dynamicformresetvalues). |
-
-### Returns
-
-`[Boolean](#type-boolean)` — `false` to cancel the default behavior.
-
----
-## Method: TimeItem.setMinuteValues
-
-### Description
-Sets the array of valid [minute values](#attr-timeitemminutevalues) to use when [useTextField](#attr-timeitemusetextfield) is false.
-
-Used for limiting available valid Minute values, or when using the TimeItem to record duration, rather than time per-se.
-
-See [minuteMinValue](#attr-timeitemminuteminvalue), [minuteMaxValue](#attr-timeitemminutemaxvalue) and [minuteIncrement](#attr-timeitemminuteincrement) for another method of controlling the content in the minute picker.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| values | [Array of Number](#type-array-of-number) | false | — | array of available Minute values |
-
-**Flags**: A
-
----
-## Method: TimeItem.setHourValues
-
-### Description
-Sets the array of valid [hour values](#attr-timeitemhourvalues) to use when [useTextField](#attr-timeitemusetextfield) is false.
-
-Used for limiting available valid Hour values, or when using the TimeItem to record duration, rather than time per-se.
-
-See [hourMinValue](#attr-timeitemhourminvalue), [hourMaxValue](#attr-timeitemhourmaxvalue) and [hourIncrement](#attr-timeitemhourincrement) for another method of controlling the content in the hour picker.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| values | [Array of Number](#type-array-of-number) | false | — | array of available Hour values |
-
-**Flags**: A
-
----
-## Method: TimeItem.getHourValues
-
-### Description
-Returns an array of the current valid hour values, whether set directly as [TimeItem.hourValues](#attr-timeitemhourvalues) or generated according to [hourMinValue](#attr-timeitemhourminvalue), [hourMaxValue](#attr-timeitemhourmaxvalue) and [hourIncrement](#attr-timeitemhourincrement).
-
-### Returns
-
-`[Array of Number](#type-array-of-number)` — array of available Hour values
-
-**Flags**: A
-
----
-## Method: TimeItem.selectValue
-
-### Description
-If [TimeItem.useTextField](#attr-timeitemusetextfield) is true, falls through to standard [selectValue()](TextItem.md#method-textitemselectvalue) implementation on this items freeform text entry field. Otherwise has no effect.
-
----
-## Method: TimeItem.getEnteredValue
-
-### Description
-Returns the raw text value typed into this items text field if [TimeItem.useTextField](#attr-timeitemusetextfield) is true (otherwise returns the result of this.getValue()).
-
-### Returns
-
-`[String](#type-string)` — value the user entered
 
 ---
 ## Method: TimeItem.setHours
@@ -959,6 +836,22 @@ Returns an array of the current valid second values, whether set directly as [Ti
 **Flags**: A
 
 ---
+## Method: TimeItem.setMinutes
+
+### Description
+Set the minute value of this TimeItem. If the item value has not been initialized with [setValue()](#method-timeitemsetvalue), the hour will be established to current hour.
+
+You can use [setValue()](#method-timeitemsetvalue) to set both hours and minutes at the same time.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| minutes | [Number](#type-number) | false | — | new minutes value for this TimeItem. |
+
+**Flags**: A
+
+---
 ## Method: TimeItem.setSecondValues
 
 ### Description
@@ -975,6 +868,33 @@ See [secondMinValue](#attr-timeitemsecondminvalue), [secondMaxValue](#attr-timei
 | values | [Array of Number](#type-array-of-number) | false | — | array of available Second values |
 
 **Flags**: A
+
+---
+## Method: TimeItem.pendingStatusChanged
+
+### Description
+Notification method called when [showPending](FormItem.md#attr-formitemshowpending) is enabled and this time item should either clear or show its pending visual state.
+
+The default behavior is that the [titleStyle](FormItem.md#attr-formitemtitlestyle) and [cellStyle](FormItem.md#attr-formitemcellstyle) are updated to include/exclude the "Pending" suffix. In addition, when displayed in the pending state:
+
+*   If [useTextField](#attr-timeitemusetextfield) is `true`, then the "Pending" suffix will be appended to the [textBoxStyle](FormItem.md#attr-formitemtextboxstyle) applied to the [textField](#attr-timeitemtextfield); otherwise
+*   (`useTextField` is `false`) the color of the [hourItem](#attr-timeitemhouritem), [minuteItem](#attr-timeitemminuteitem), [secondItem](#attr-timeitemseconditem), [millisecondItem](#attr-timeitemmilliseconditem), and/or [ampmItem](#attr-timeitemampmitem) will change when the hour, minute, second, millisecond, or whether the time is AM or PM is different, respectively.
+
+Returning `false` will cancel this default behavior.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| form | [DynamicForm](#type-dynamicform) | false | — | the managing `DynamicForm` instance. |
+| item | [FormItem](#type-formitem) | false | — | the form item itself (also available as "this"). |
+| pendingStatus | [boolean](../reference.md#type-boolean) | false | — | `true` if the item should show its pending visual state; `false` otherwise. |
+| newValue | [Any](#type-any) | false | — | the current form item value. |
+| value | [Any](#type-any) | false | — | the value that would be restored by a call to [DynamicForm.resetValues](DynamicForm.md#method-dynamicformresetvalues). |
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — `false` to cancel the default behavior.
 
 ---
 ## Method: TimeItem.getMinuteValues
@@ -1003,6 +923,42 @@ Set the milliseconds value of this TimeItem.
 **Flags**: A
 
 ---
+## Method: TimeItem.setMinuteValues
+
+### Description
+Sets the array of valid [minute values](#attr-timeitemminutevalues) to use when [useTextField](#attr-timeitemusetextfield) is false.
+
+Used for limiting available valid Minute values, or when using the TimeItem to record duration, rather than time per-se.
+
+See [minuteMinValue](#attr-timeitemminuteminvalue), [minuteMaxValue](#attr-timeitemminutemaxvalue) and [minuteIncrement](#attr-timeitemminuteincrement) for another method of controlling the content in the minute picker.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| values | [Array of Number](#type-array-of-number) | false | — | array of available Minute values |
+
+**Flags**: A
+
+---
+## Method: TimeItem.setHourValues
+
+### Description
+Sets the array of valid [hour values](#attr-timeitemhourvalues) to use when [useTextField](#attr-timeitemusetextfield) is false.
+
+Used for limiting available valid Hour values, or when using the TimeItem to record duration, rather than time per-se.
+
+See [hourMinValue](#attr-timeitemhourminvalue), [hourMaxValue](#attr-timeitemhourmaxvalue) and [hourIncrement](#attr-timeitemhourincrement) for another method of controlling the content in the hour picker.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| values | [Array of Number](#type-array-of-number) | false | — | array of available Hour values |
+
+**Flags**: A
+
+---
 ## Method: TimeItem.deselectValue
 
 ### Description
@@ -1025,6 +981,18 @@ Set the seconds value of this TimeItem.
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | seconds | [Number](#type-number) | false | — | new seconds value for this TimeItem. |
+
+**Flags**: A
+
+---
+## Method: TimeItem.getHourValues
+
+### Description
+Returns an array of the current valid hour values, whether set directly as [TimeItem.hourValues](#attr-timeitemhourvalues) or generated according to [hourMinValue](#attr-timeitemhourminvalue), [hourMaxValue](#attr-timeitemhourmaxvalue) and [hourIncrement](#attr-timeitemhourincrement).
+
+### Returns
+
+`[Array of Number](#type-array-of-number)` — array of available Hour values
 
 **Flags**: A
 

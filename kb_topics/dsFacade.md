@@ -7,7 +7,7 @@
 ## KB Topic: DataSource Facade pattern
 
 ### Description
-The DataSource Facade pattern means implementing a DataSource that fulfills its [DSRequests](../reference_2.md#object-dsrequest) by passing them on to another DataSource.
+The DataSource Facade pattern means implementing a DataSource that fulfills its [DSRequests](../reference.md#object-dsrequest) by passing them on to another DataSource.
 
 This can be useful for:
 
@@ -20,12 +20,8 @@ This facade pattern can be implemented either server-side or client-side:
 
 *   server-side (SmartClient Pro or better), implement a custom DataSource (see QuickStart Guide) and implement the server-side API DataSource.execute() by calling DataSource.execute() on some other DataSource, then return the DSResponse that results.
 *   client-side, use [dataProtocol:"clientCustom"](../classes/DataSource.md#attr-datasourcedataprotocol). The [FacadeDataSource](../classes/FacadeDataSource.md#class-facadedatasource) provides a specific implementation that is useful for testing purposes. Alternative, the code below shows the simplest possible code for the facade pattern when implemented client-side via `dataProtocol:"clientCustom"` - requests are forwarded to another DataSource, and the responses are returned completely unchanged.
-*   When changes are made to the primary DataSource, DBCs that are using the facadeDataSource will not automatically update caches, since they are bound to the facadeDataSource and not to the primary DataSource which was changed. To fix this, add a call to `facadeDataSource.updateCaches()` as shown below
 
 ```
- supplyItem.dataChanged = function (dsResponse, dsRequest) {
-     facadeDataSource.updateCaches(dsResponse);
- }
  var facadeDataSource = isc.DataSource.create({
      dataProtocol: "clientCustom",
      inheritsFrom: "supplyItem",

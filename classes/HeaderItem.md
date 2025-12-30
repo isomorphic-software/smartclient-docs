@@ -14,38 +14,6 @@ FormItem for showing a header within a DynamicForm.
 Set the `defaultValue` of this item to the HTML you want to embed in the form.
 
 ---
-## Attr: HeaderItem.editProxyConstructor
-
-### Description
-Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas.md#method-canvasseteditmode).
-
-**Flags**: IR
-
----
-## Attr: HeaderItem.endRow
-
-### Description
-these items are in a row by themselves by default
-
-### Groups
-
-- appearance
-
-**Flags**: IRW
-
----
-## Attr: HeaderItem.applyAlignToText
-
-### Description
-If the [textAlign](FormItem.md#attr-formitemtextalign) is unset, should the [align](#attr-headeritemalign) setting, if set, be used for this `HeaderItem`'s `textAlign`?
-
-### Groups
-
-- appearance
-
-**Flags**: IRA
-
----
 ## Attr: HeaderItem.colSpan
 
 ### Description
@@ -100,6 +68,14 @@ Header text
 **Flags**: IRW
 
 ---
+## Attr: HeaderItem.editProxyConstructor
+
+### Description
+Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas.md#method-canvasseteditmode).
+
+**Flags**: IR
+
+---
 ## Attr: HeaderItem.startRow
 
 ### Description
@@ -120,6 +96,18 @@ Should the user be able to select the text in this item?
 **Flags**: IRW
 
 ---
+## Attr: HeaderItem.endRow
+
+### Description
+these items are in a row by themselves by default
+
+### Groups
+
+- appearance
+
+**Flags**: IRW
+
+---
 ## Attr: HeaderItem.textBoxStyle
 
 ### Description
@@ -130,5 +118,17 @@ Base CSS class for this item
 - appearance
 
 **Flags**: IRW
+
+---
+## Attr: HeaderItem.applyAlignToText
+
+### Description
+If the [textAlign](FormItem.md#attr-formitemtextalign) is unset, should the [align](#attr-headeritemalign) setting, if set, be used for this `HeaderItem`'s `textAlign`?
+
+### Groups
+
+- appearance
+
+**Flags**: IRA
 
 ---

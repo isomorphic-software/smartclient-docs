@@ -12,6 +12,14 @@
 A "double slider" allowing the user to select a range via two draggable thumbs.
 
 ---
+## Attr: RangeSlider.startThumb
+
+### Description
+Thumb for the start of the range.
+
+**Flags**: IR
+
+---
 ## Attr: RangeSlider.vertical
 
 ### Description
@@ -28,12 +36,36 @@ Set the minimum value (left/top of slider).
 **Flags**: IRW
 
 ---
+## Attr: RangeSlider.scrollbar
+
+### Description
+Optional Scrollbar shown as a second way of adjusting the range.
+
+**Flags**: IR
+
+---
 ## Attr: RangeSlider.track
 
 ### Description
 Optional track of the RangeSlider. Set `showTrack` false to avoid showing a track so the RangeSlider can be superimposed over something else.
 
 **Flags**: IR
+
+---
+## Attr: RangeSlider.endValue
+
+### Description
+The end of the selected range.
+
+**Flags**: IRW
+
+---
+## Attr: RangeSlider.maxValue
+
+### Description
+Set the maximum value (right/bottom of slider).
+
+**Flags**: IRW
 
 ---
 ## Attr: RangeSlider.baseStyle
@@ -69,38 +101,6 @@ The beginning of the selected range.
 Thumb for the end of the range
 
 **Flags**: IR
-
----
-## Attr: RangeSlider.startThumb
-
-### Description
-Thumb for the start of the range.
-
-**Flags**: IR
-
----
-## Attr: RangeSlider.scrollbar
-
-### Description
-Optional Scrollbar shown as a second way of adjusting the range.
-
-**Flags**: IR
-
----
-## Attr: RangeSlider.endValue
-
-### Description
-The end of the selected range.
-
-**Flags**: IRW
-
----
-## Attr: RangeSlider.maxValue
-
-### Description
-Set the maximum value (right/bottom of slider).
-
-**Flags**: IRW
 
 ---
 ## Method: RangeSlider.changed

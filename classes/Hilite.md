@@ -21,13 +21,11 @@ If unset, hilite is applied to every field of the record.
 ## Attr: Hilite.id
 
 ### Description
-Unique ID for this hilite definition.
+Unique id for this hilite definition.
 
 For hilites that include [Hilite.criteria](#attr-hilitecriteria) this is not required.
 
-If you are explicitly marking records for hiliting, set [DataBoundComponent.hiliteProperty](DataBoundComponent.md#attr-databoundcomponenthiliteproperty) on the record to this ID.
-
-Note that the ID must be a valid JavaScript identifier, and in particular, setting the ID to a number is not supported.
+If you are explicitly marking records for hiliting, set [DataBoundComponent.hiliteProperty](DataBoundComponent.md#attr-databoundcomponenthiliteproperty) on the record to this id.
 
 ### Groups
 
@@ -44,6 +42,22 @@ URL of an icon to show when this hilite is applied to a cell. Position of the ic
 ### Groups
 
 - hiliting
+
+**Flags**: IR
+
+---
+## Attr: Hilite.htmlValue
+
+### Description
+Value to show **in place of** the actual value from the record, for a record that matches this hilite.
+
+This can be used to take ranges of numeric values and simplify them to "Low", "Medium", "High" or similar textual values, translate very small or very large values to "Outlier" or "Negligible", and similar use cases.
+
+### Groups
+
+- hiliting
+
+**Deprecated**
 
 **Flags**: IR
 
@@ -98,36 +112,6 @@ User-visible title for this hilite. Used for interfaces such as menus that can e
 **Flags**: IRW
 
 ---
-## Attr: Hilite.disabled
-
-### Description
-Whether this hilite is currently disabled.
-
-Hilites can be programmatically enabled and disabled via [DataBoundComponent.enableHilite](DataBoundComponent.md#method-databoundcomponentenablehilite).
-
-### Groups
-
-- hiliting
-
-**Flags**: IRW
-
----
-## Attr: Hilite.htmlValue
-
-### Description
-Value to show **in place of** the actual value from the record, for a record that matches this hilite.
-
-This can be used to take ranges of numeric values and simplify them to "Low", "Medium", "High" or similar textual values, translate very small or very large values to "Outlier" or "Negligible", and similar use cases.
-
-### Groups
-
-- hiliting
-
-**Deprecated**
-
-**Flags**: IR
-
----
 ## Attr: Hilite.backgroundColor
 
 ### Description
@@ -150,6 +134,20 @@ Can highlight be edited from header context menu? Setting attribute to `false` p
 - hiliting
 
 **Flags**: IR
+
+---
+## Attr: Hilite.disabled
+
+### Description
+Whether this hilite is currently disabled.
+
+Hilites can be programmatically enabled and disabled via [DataBoundComponent.enableHilite](DataBoundComponent.md#method-databoundcomponentenablehilite).
+
+### Groups
+
+- hiliting
+
+**Flags**: IRW
 
 ---
 ## Attr: Hilite.textColor
@@ -180,8 +178,6 @@ HTML to pre-pend to cell values where this hilite is applied.
 
 ### Description
 Criteria defining what records this hilite should apply to.
-
-This property supports [dynamicCriteria](../kb_topics/dynamicCriteria.md#kb-topic-dynamiccriteria) - use [Criterion.valuePath](Criterion.md#attr-criterionvaluepath) to refer to values in the [Canvas.ruleScope](Canvas.md#attr-canvasrulescope).
 
 ### Groups
 

@@ -1,26 +1,78 @@
-# Installing the SmartClient runtime
+# Deploying SmartClient
 
 [← Back to API Index](../reference.md)
 
 ---
 
-## KB Topic: Installing the SmartClient runtime
+## KB Topic: Deploying SmartClient
 
 ### Description
-The SmartClient framework is distributed with both client and server components. JavaScript components run on the client, in the browser, and integrate with optional server components that run in a standards-compliant [web container](https://docs.oracle.com/javaee/5/tutorial/doc/bnabo.html), like [Tomcat](https://tomcat.apache.org/index.html). Client components don't necessarily require the server, but server components are designed to make many complicated tasks trivial. See the SmartClient [feature matrix](https://www.smartclient.com/product/) for details.
+Isomorphic currently recommends leveraging the [support for Maven](mavenSupport.md#kb-topic-maven-support), for those who are comfortable with it, as it dramatically simplifies initial installs, acquiring patched builds, and upgrading to new versions.
 
-In all cases, Isomorphic strongly recommends using some form of [dependency management](https://devopedia.org/dependency-manager) in your project, as it dramatically simplifies framework installation and upgrades. Those not using the SmartClient server might consider using the built-in [support for Node Package Manager](npmjs.md#kb-topic-npmjs-support), but most teams with Java experience are at least familiar with [Maven](https://maven.apache.org/guides/index.html) so SmartClient also [includes support](mavenSupport.md#kb-topic-maven-support) for publishing both client and server components to a Maven repository. Note that your project doesn't necessarily need to be built with Maven, it just needs to be able to retrieve its dependencies from that repository. [Gradle](https://gradle.org) and [Ivy](http://ant.apache.org/ivy/index.html) are two popular alternatives, for example.
+For those unable or unwilling to do so, however, this overview serves as a how-to for installing SmartClient into your web application. Evaluators are urged to use the SmartClient SDK with the embedded tomcat servlet engine during evaluation rather than pursue installation into an existing web application up front, however, reading this document and the related [server\\n integration](clientServerIntegration.md#kb-topic-client-server-integration) materials is recommended to get an overview.
 
-Those who might prefer to evaluate SmartClient using a self-contained SDK, or still wish to manage the installation manually should refer to the separate documentation topic covering the [SDK Installation](sdkInstall.md#kb-topic-deploying-the-smartclient-sdk). The rest of this overview touches briefly on context, tips, and tricks for those who want to follow best practices but may not necessarily have experience with Java web application development or with Maven.
+SmartClient has two pieces - the client components that run in the browser and the server components that run in a J2SE-compatible container. You don't need to use a Java back-end to use SmartClient, but the SDK comes with some examples that assume the presence of the Java back-end and, for some examples, a SQL Database. If you will be using SmartClient with a Java back-end, see below for the list of J2SE application servers supported by the Java implementation of the SmartClient server.
 
-["Maven is a software project management and comprehension tool"](https://maven.apache.org/what-is-maven.html), whose key features include [a mechanism for dependency resolution](https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html) as recommended above. In short, Maven attempts to retrieve these resources first from a local [repository](https://maven.apache.org/guides/introduction/introduction-to-repositories.html). If the resource isn't found, it attempts to retrieve it from one or more remote repositories, and caches it for subsequent attempts.
+The SDK contains two top-level directories: `smartclientSDK` and `smartclientRuntime`. The `smartclientSDK` directory contains the embedded servlet engine, embedded database, examples, and documentation. The `smartclientRuntime` directory contains just the client and server components of the SmartClient product - use the contents of this directory when deploying SmartClient into your application environment.
 
-Most open source Java libraries can be found on the (remote) [Maven Central](https://search.maven.org) repository, which requires no configuration to use. Occasionally, however, the library you need isn't published to any public repository, and you'll need to [install it locally](https://maven.apache.org/guides/mini/guide-3rd-party-jars-local.html) or [deploy it to a remote repository](https://maven.apache.org/guides/mini/guide-3rd-party-jars-remote.html). Most environments should be using a remote repository [provided by a repository manager](https://maven.apache.org/repository-management.html) set up and maintained by your organization.
+**Client integration**
 
-SmartClient is not published to any public repository, and so will need to be installed or deployed before you're able to use it in any project. This can be quite tedious when it has to be done for as many [artifacts](https://www.smartclient.com/smartclient-release/isomorphic/system/reference/mavendoc/maven-usage.html) as are provided in current distributions, so [an open source Maven "Plugin"](http://github.smartclient.com/isc-maven-plugin/) is made available with [install](http://github.smartclient.com/isc-maven-plugin/install-mojo.html) and [deploy](http://github.smartclient.com/isc-maven-plugin/deploy-mojo.html) goals that each are capable of downloading, unpacking, and installing or deploying [Patch & Development Builds](https://www.smartclient.com/builds/index.jsp) in a single step. After Maven has been [downloaded](https://maven.apache.org/download.cgi), [installed](https://maven.apache.org/install.html), and [configured](http://github.smartclient.com/isc-maven-plugin/examples/configuration.html) (some configuration required for other than LGPL or EVAL SmartClient builds), this whole process takes no more than a few minutes on a reasonably fast network. Refer to [mavenSupport](mavenSupport.md#kb-topic-maven-support) documentation for a command that you can copy and paste to install the most recent evaluation version of SmartClient, and another to get you started by [generating a skeleton project](https://maven.apache.org/archetype/maven-archetype-plugin/usage.html) from a [Maven archetype](https://maven.apache.org/archetype/index.html), or template.
+To install the client-side portion of SmartClient, simply copy the `isomorphic` directory from the smartclientRuntime webroot to the webroot of your application. Having done this you can use SmartClient components on your pages regardless of the technologies used on your back-end and you can bind to server-side componentry backed by arbitrary technology - see the _Data Integration_ section of the [clientServerIntegration](clientServerIntegration.md#kb-topic-client-server-integration) section for more information.
 
-Having run both of those commands, your newly created project will contain a [pom.xml file](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html), which details among other things the libraries, or dependencies, needed to compile, package, and run the app. In this case, you'll find a reference to the version of SmartClient you used to create the project. To upgrade, you'll just change the value of the ${smartclient.version} property to reflect another build number that you've installed or deployed using the process outlined above and rebuild. To add another JAR to your project, you just add the dependency to your POM. To add one of the SmartClient [optional modules](loadingOptionalModules.md#kb-topic-loading-optional-modules), for example, you'd first use the plugin to install / deploy it to your own repository and then add the appropriate block to your POM's dependencies section.
+**Server integration**
 
-Your project will also contain a README file containing a copy/paste command line for installing, deploying to and starting a local 'embedded' [Jetty](https://www.eclipse.org/jetty/) server, as well as detailed instructions for [Eclipse](https://help.eclipse.org/latest/index.jsp) integration, and even automated conversion to an [Ant](https://ant.apache.org) based build (complete with Ivy configuration). Isomorphic generally recommends starting with the Jetty command to see things working quickly before experimentation with other approaches. The plugin provides an [FAQ](http://github.smartclient.com/isc-maven-plugin/faq.html) for reference, and posting questions / issues to the public [forum](https://forums.smartclient.com) for help is always appropriate.
+Note: Some of the instructions below ask you to copy files into the WEB-INF/classes folder. If you're using an IDE such as Eclipse that attempts to manage the WEB-INF/classes folder, we recommend that you copy these files to the src/ directory of your project (next to the top-level folder for your java namespace) such that your IDE auto-deploys them to the WEB-INF/classes folder. We have seen cases of tools like Eclipse periodically deleting files that are checked into to WEB-INF/classes directly.
+
+*   Copy all files from the WEB-INF/lib directory of the smartclientRuntime to your WEB-INF/lib. The set of libs in the smartclientRuntime/WEB-INF/lib folder is a minimal set; smartclient**SDK**/WEB-INF/lib contains all other .jars you might need, including third-party libraries bundled for convenience. See [Java Module Dependencies](javaModuleDependencies.md#kb-topic-java-module-dependencies) for details of the .JAR files that comprise the SmartClient Server, and their dependencies on various third-party libraries. Generally, if there are conflicts with the versions of third-party libraries you want to use, you can use the versions you want - SmartClient has minimal dependencies on these libraries.
+*   Copy the WEB-INF/classes/log4j.isc.config.xml from the smartclientRuntime to your WEB-INF/classes directory. This file contains the SmartClient server log configuration. See [serverLogging](serverLogging.md#kb-topic-server-logging) for information on server-side logging and how to configure it.
+*   Copy the [WEB-INF/classes/server.properties](../reference.md#kb-topic-serverproperties-file) from the smartclientRuntime to your WEB-INF/classes directory. This file contains settings for basic file locations such the location of webroot, the SmartClient SQL engine and DMI. The version under smartclientRuntime has a basic, secure configuration. See the version of [server.properties](../reference.md#kb-topic-serverproperties-file) under the smartclientSDK directory for sample SQL and other settings.
+*   Copy the WEB-INF/iscTaglib.xml from the smartclientRuntime to your WEB-INF directory. This file enables the use of custom SmartClient tags in your JSPs.
+*   Merge portions of the WEB-INF/web.xml into your application's web.xml. To use SmartClient JSP tags like `<loadISC>`, you'll need to merge the <jsp-config> section from web.xml. Also there are some mandatory and optional servlets and filters to merge - see below.
+*   **Power and Enterprise Editions only**. Copy the shared/ds/batchUpload.ds.xml file to the same location in your target webapp directory. This file is a utility DataSource that is used to provide the initial upload functionality of the [BatchUploader](#class-batchuploader) component - strictly speaking, you only need to perform this step if you intend to use that component.
+
+See [Core and Optional SmartClient servlets](servletDetails.md#kb-topic-the-core-and-optional-smartclient-servlets) for details of additional changes you may need to make to your applications `web.xml` file. See [Java Module Dependencies](javaModuleDependencies.md#kb-topic-java-module-dependencies) for details of the .JAR files that comprise the SmartClient Server, and their dependencies on various third-party libraries.
+
+**Multiple Applications / WARs**
+
+To integrate the server portion of SmartClient, you need to follow the steps below for each application (WAR) that uses SmartClient. Note that, if installing into an environment that uses multiple WARs, installation of SmartClient JARs into a directory shared by multiple applications is not supported. Installation of a separate WAR with client-side SmartClient modules for maintaining cache coherence across applications using the same version of ISC is supported - contact Isomorphic support for more details on how to set that up.
+
+**Troubleshooting**
+
+This section covers some common problems with possible solutions. You may also need to refer to the documentation for your specific application server, web server, or database. If you experience any problems installing and configuring SmartClient in your environment, please post on the [SmartClient forums](http://forums.smartclient.com/) for assistance.
+
+| Problem | Possible Causes | Solution |
+|---|---|---|
+| Browser displays a generic "page cannot be displayed" or "unable to locate the server" message. | Servlet engine not started. | Start your application server. |
+| Missing/incorrect port for servlet engine in URL. | Check the startup messages, logs, or documentation for the servlet engine to determine what port it is using. |
+| Host name is incorrect. | Check whether other pages on the host can be accessed. Try the base URL http://[host name]:[port number] to see whether the servlet engine or webserver is functioning. |
+| Browser displays a 404 or other page/file not found error. | Incorrect URL. | Check for errors in the URL, including capitalization. |
+| Server error: taglib not defined | Missing iscTaglib.xml or iscTaglib.xml not referenced in web.xml | Copy WEB-INF/iscTaglib.xml from smartclientRuntime to your deployment WEB-INF directory and make sure that you have merged the <jsp-config> section from the smartclientRuntime web.xml |
+| ClassNotFound or other Java Exceptions in the server log. | Missing JAR files | Verify every required .jar has been copied into the WEB-INF/lib directory of your deployment. Use [these docs](javaModuleDependencies.md#kb-topic-java-module-dependencies) to double-check. If in doubt, copy every available .jar, verify this is working, then trim off .jars you are definitely not using. |
+| "isc" is not defined JS error | Incorrect URLs to SmartClient modules | Use View Source to look at SCRIPT includes (e.g. for ISC_Core.js), try those URLs directly in the browser to verify the files are correctly deployed |
+
+**Caching Considerations**
+
+When upgrading from one SmartClient release to the next, you want to make sure that the user picks up the new version on next access, but you also want to keep the ISC modules cacheable so they're not refetched on every access.
+
+SmartClient deals with this problem by appending a version string as a query parameter to each module load directive. This is done by the <isomorphic:loadISC> and <isomorphic:loadModules> tags automatically. As long as you make sure that the file that contains these tags is non-cacheable, you will get the desired behavior.
+
+**Supported J2SE/J2EE Containers**
+
+Below is the list of J2SE/J2EE containers that have been tested to be compatible with this version of SmartClient. Installation in these containers is supported for deployment by Isomorphic. If your application server is not on this list, please contact us at the [SmartClient forums](http://forums.smartclient.com) to see if we can support your deployment. In general, the Java portion of ISC should work on servlet containers that comply with servlet specification version 2.3 and up and utilize a JVM no older than version 1.7. Older, currently supported versions require Java 1.6, but support for even older JVMs may be possible via special [contract with Isomorphic](https://www.smartclient.com/services/index.jsp#consulting).
+
+Supported J2SE/J2EE Containers:
+
+|  | Apache Tomcat ${Apache_Tomcat_versions} |  |
+|---|---|---|
+|  | Apache Geronimo ${Apache_Geronimo_versions} |  |
+|  | Apache TomEE ${Apache_TomEE_versions} |  |
+|  | Oracle WebLogic ${Oracle_WebLogic_versions} |  |
+|  | Caucho Resin ${Caucho_Resin_versions} |  |
+|  | IBM WebSphere ${IBM_WebSphere_versions} |  |
+|  | IBM WebSphere Community Edition ${IBM_WebSphere_Community_Edition_versions} |  |
+|  | JBoss ${JBoss_versions} |  |
+|  | WildFly ${WildFly_versions} |  |
+|  | Mortbay Jetty ${Mortbay_Jetty_versions} |  |
+|  | Glassfish ${Glassfish_versions} |  |
 
 ---

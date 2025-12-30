@@ -4,6 +4,16 @@
 
 ---
 
+## Attr: MetricSettings.dataColors
+
+### Description
+An array of colors to use for a series of visual elements representing data (eg columns, bars, pie slices), any of which may be adjacent to any other.
+
+Colors must be in the format of a leading hash (#) plus 6 hexadecimal digits, for example, "#FFFFFF" is white, "#FF0000" is pure red.
+
+**Flags**: IRW
+
+---
 ## Attr: MetricSettings.filled
 
 ### Description
@@ -13,10 +23,6 @@ If unset, fills will be automatically used when there are multiple facets and st
 
 You can explicitly set filled:false to create multi-facet Line or Radar charts where translucent regions overlap, or filled:true to fill in a single-facet Line or Radar chart.
 
-### Groups
-
-- chartType
-
 **Flags**: IRW
 
 ---
@@ -24,10 +30,6 @@ You can explicitly set filled:false to create multi-facet Line or Radar charts w
 
 ### Description
 Properties for the gradation line drawn for zero (slightly thicker by default).
-
-### Groups
-
-- gradations
 
 **Flags**: IR
 
@@ -42,10 +44,30 @@ Logarithmic scale charts show an equivalent percentage increase as equivalent di
 **Flags**: IR
 
 ---
+## Attr: MetricSettings.proportional
+
+### Description
+For multi-facet charts, render data values as a proportion of the sum of all data values that have the same label.
+
+Gradation labels will be switched to show percentage instead of absolute values.
+
+This setting is valid only for Column, Bar, Area and Radar chart types and only in [stacked](#attr-metricsettingsstacked) mode. Stacked columns will be as tall as the chart rect and stacked bars will be as wide as the chart rect. Area and Radar charts will be completely filled except for facet values where all values are 0.
+
+**Flags**: IRW
+
+---
 ## Attr: MetricSettings.fixedFacetValue
 
 ### Description
 For a [single-facet](#attr-metricsettingsmultifacet) chart of an extra value axis, this property provides a constant facet value for the second facet. By varying the value of the other facet in multi-facet data, the chart obtains the series of values to plot. The default facet value is the first facet value of the second facet.
+
+**Flags**: IR
+
+---
+## Attr: MetricSettings.gradationLabelProperties
+
+### Description
+Properties for gradation labels
 
 **Flags**: IR
 
@@ -58,10 +80,42 @@ Whether to show an axis line for this extra value axis if it is not placed direc
 **Flags**: IR
 
 ---
+## Attr: MetricSettings.valueAxisLabelProperties
+
+### Description
+Properties for labels of value axis.
+
+**Flags**: IR
+
+---
+## Attr: MetricSettings.showValueAxisLabel
+
+### Description
+Whether to show the [valueTitle](#attr-metricsettingsvaluetitle) (or, in the case of [proportional rendering mode](#attr-metricsettingsproportional), [MetricSettings.proportionalAxisLabel](#attr-metricsettingsproportionalaxislabel)) as a label on this extra value axis.
+
+**Flags**: IR
+
+---
 ## Attr: MetricSettings.valueLineProperties
 
 ### Description
 Properties for a "value line" - a line shows where a particular discrete value is placed, eg, vertical lines connecting points of a line chart to the X axis, or radial lines in a Radar chart.
+
+**Flags**: IR
+
+---
+## Attr: MetricSettings.dataShapeProperties
+
+### Description
+Properties for data shapes (filled areas in area or radar charts).
+
+**Flags**: IR
+
+---
+## Attr: MetricSettings.minDataSpreadPercent
+
+### Description
+Same as [FacetChart.minDataSpreadPercent](FacetChart.md#attr-facetchartmindataspreadpercent) but affects only one metric. Default of null means that the chart-wide setting `facetChart.minDataSpreadPercent` will be used.
 
 **Flags**: IR
 
@@ -71,11 +125,15 @@ Properties for a "value line" - a line shows where a particular discrete value i
 ### Description
 Properties for shadows.
 
-### Groups
-
-- appearance
-
 **Flags**: IR
+
+---
+## Attr: MetricSettings.stacked
+
+### Description
+If the [ChartType](../reference.md#type-charttype) is "Column" then the metric settings may include a setting for [FacetChart.stacked](FacetChart.md#attr-facetchartstacked).
+
+**Flags**: IRW
 
 ---
 ## Attr: MetricSettings.gradationLineProperties
@@ -83,9 +141,13 @@ Properties for shadows.
 ### Description
 Properties for gradation lines
 
-### Groups
+**Flags**: IR
 
-- gradations
+---
+## Attr: MetricSettings.showAxis
+
+### Description
+Whether to show the extra value axis.
 
 **Flags**: IR
 
@@ -98,6 +160,22 @@ Default title for the value axis label when the chart is in [proportional render
 ### Groups
 
 - i18nMessages
+
+**Flags**: IR
+
+---
+## Attr: MetricSettings.logBase
+
+### Description
+When [MetricSettings.useLogGradations](#attr-metricsettingsuseloggradations), base value for logarithmic gradation lines. Gradation lines will be shown at every power of this value plus intervening values specified by [MetricSettings.logGradations](#attr-metricsettingsloggradations).
+
+**Flags**: IR
+
+---
+## Attr: MetricSettings.dataPointProperties
+
+### Description
+Common properties to apply for all data points (see [MetricSettings.showDataPoints](#attr-metricsettingsshowdatapoints)).
 
 **Flags**: IR
 
@@ -126,6 +204,16 @@ Properties for lines that outline a data shape (in filled charts such as area or
 **Flags**: IR
 
 ---
+## Attr: MetricSettings.showDataPoints
+
+### Description
+For Line, Area, Radar, Scatter or Bubble charts, whether to show data points for each individual data value.
+
+If shown, the [MetricSettings.pointClick](#method-metricsettingspointclick) and [MetricSettings.getPointHoverHTML](#method-metricsettingsgetpointhoverhtml) APIs can be used to create interactivity.
+
+**Flags**: IR
+
+---
 ## Attr: MetricSettings.dataGradients
 
 ### Description
@@ -139,10 +227,6 @@ A dictionary of gradients to use for a series of visual elements representing da
 ### Description
 Whether to automatically show shadows for various charts.
 
-### Groups
-
-- appearance
-
 **Flags**: IR
 
 ---
@@ -150,10 +234,6 @@ Whether to automatically show shadows for various charts.
 
 ### Description
 Size in pixels for data points drawn for line, area, radar and other chart types.
-
-### Groups
-
-- chartProperties
 
 **Flags**: IR
 
@@ -167,171 +247,7 @@ Calculates nearest value based on [FacetChart.getNearestDrawnValue](FacetChart.m
 
 The data value will be formatted using [FacetChart.formatDataValue](FacetChart.md#method-facetchartformatdatavalue). The label's appearance is controlled by [FacetChart.hoverLabelProperties](FacetChart.md#attr-facetcharthoverlabelproperties).
 
-### Groups
-
-- appearance
-
 **Deprecated**
-
-**Flags**: IR
-
----
-## Attr: MetricSettings.matchGradations
-
-### Description
-When this property is set to the metric of another MetricSettings object, the extra value axis and chart corresponding to these settings will use the same scale for the gradations as the extra value axis and chart of the other MetricSettings object. The value of `matchGradations` can only be one of the metrics of the metric facet whose values will be displayed by the chart.
-
-### See Also
-
-- [FacetChart.extraAxisMetrics](FacetChart.md#attr-facetchartextraaxismetrics)
-
-**Flags**: IR
-
----
-## Attr: MetricSettings.chartType
-
-### Description
-See [ChartType](../reference.md#type-charttype) for a list of known types - Column, Bar, Line, Pie, Doughnut, Area, Radar, and Histogram charts are supported.
-
-### Groups
-
-- chartType
-
-**Flags**: IRW
-
----
-## Attr: MetricSettings.axisStartValue
-
-### Description
-Same as [FacetChart.axisStartValue](FacetChart.md#attr-facetchartaxisstartvalue) but affects only one metric.
-
-**Flags**: IR
-
----
-## Attr: MetricSettings.dataColors
-
-### Description
-An array of colors to use for a series of visual elements representing data (eg columns, bars, pie slices), any of which may be adjacent to any other.
-
-Colors must be in the format of a leading hash (#) plus 6 hexadecimal digits, for example, "#FFFFFF" is white, "#FF0000" is pure red.
-
-**Flags**: IRW
-
----
-## Attr: MetricSettings.proportional
-
-### Description
-For multi-facet charts, render data values as a proportion of the sum of all data values that have the same label.
-
-Gradation labels will be switched to show percentage instead of absolute values.
-
-This setting is valid only for Column, Bar, Area and Radar chart types and only in [stacked](#attr-metricsettingsstacked) mode. Stacked columns will be as tall as the chart rect and stacked bars will be as wide as the chart rect. Area and Radar charts will be completely filled except for facet values where all values are 0.
-
-**Flags**: IRW
-
----
-## Attr: MetricSettings.gradationLabelProperties
-
-### Description
-Properties for gradation labels
-
-### Groups
-
-- gradations
-
-**Flags**: IR
-
----
-## Attr: MetricSettings.valueAxisLabelProperties
-
-### Description
-Properties for labels of value axis.
-
-### Groups
-
-- labelsAndTitles
-
-**Flags**: IR
-
----
-## Attr: MetricSettings.showValueAxisLabel
-
-### Description
-Whether to show the [valueTitle](#attr-metricsettingsvaluetitle) (or, in the case of [proportional rendering mode](#attr-metricsettingsproportional), [MetricSettings.proportionalAxisLabel](#attr-metricsettingsproportionalaxislabel)) as a label on this extra value axis.
-
-**Flags**: IR
-
----
-## Attr: MetricSettings.dataShapeProperties
-
-### Description
-Properties for data shapes (filled areas in area or radar charts).
-
-**Flags**: IR
-
----
-## Attr: MetricSettings.minDataSpreadPercent
-
-### Description
-Same as [FacetChart.minDataSpreadPercent](FacetChart.md#attr-facetchartmindataspreadpercent) but affects only one metric. Default of null means that the chart-wide setting `facetChart.minDataSpreadPercent` will be used.
-
-**Flags**: IR
-
----
-## Attr: MetricSettings.stacked
-
-### Description
-If the [ChartType](../reference.md#type-charttype) is "Column" then the metric settings may include a setting for [FacetChart.stacked](FacetChart.md#attr-facetchartstacked).
-
-### Groups
-
-- chartType
-
-**Flags**: IRW
-
----
-## Attr: MetricSettings.showAxis
-
-### Description
-Whether to show the extra value axis.
-
-**Flags**: IR
-
----
-## Attr: MetricSettings.logBase
-
-### Description
-When [MetricSettings.useLogGradations](#attr-metricsettingsuseloggradations), base value for logarithmic gradation lines. Gradation lines will be shown at every power of this value plus intervening values specified by [MetricSettings.logGradations](#attr-metricsettingsloggradations).
-
-### Groups
-
-- gradations
-
-**Flags**: IR
-
----
-## Attr: MetricSettings.dataPointProperties
-
-### Description
-Common properties to apply for all data points (see [MetricSettings.showDataPoints](#attr-metricsettingsshowdatapoints)).
-
-### Groups
-
-- dataPoints
-
-**Flags**: IR
-
----
-## Attr: MetricSettings.showDataPoints
-
-### Description
-For Line, Area, Radar, Scatter or Bubble charts, whether to show data points for each individual data value.
-
-If shown, the [MetricSettings.pointClick](#method-metricsettingspointclick) and [MetricSettings.getPointHoverHTML](#method-metricsettingsgetpointhoverhtml) APIs can be used to create interactivity.
-
-### Groups
-
-- chartProperties
 
 **Flags**: IR
 
@@ -342,10 +258,6 @@ If shown, the [MetricSettings.pointClick](#method-metricsettingspointclick) and 
 Whether to use classic logarithmic gradations, where each order of magnitude is shown as a gradation as well as a few intervening lines. Gradations also begin and end on an order of magnitude. For example, 1,2,4,6,8,10,20,40,60,80,100.
 
 Default gradations can be overridden via [MetricSettings.logBase](#attr-metricsettingslogbase) and [MetricSettings.logGradations](#attr-metricsettingsloggradations).
-
-### Groups
-
-- gradations
 
 **Flags**: IR
 
@@ -374,6 +286,26 @@ The [FacetChart.decimalPrecision](FacetChart.md#attr-facetchartdecimalprecision)
 **Flags**: IR
 
 ---
+## Attr: MetricSettings.matchGradations
+
+### Description
+When this property is set to the metric of another MetricSettings object, the extra value axis and chart corresponding to these settings will use the same scale for the gradations as the extra value axis and chart of the other MetricSettings object. The value of `matchGradations` can only be one of the metrics of the metric facet whose values will be displayed by the chart.
+
+### See Also
+
+- [FacetChart.extraAxisMetrics](FacetChart.md#attr-facetchartextraaxismetrics)
+
+**Flags**: IR
+
+---
+## Attr: MetricSettings.chartType
+
+### Description
+See [ChartType](../reference.md#type-charttype) for a list of known types - Column, Bar, Line, Pie, Doughnut, Area, Radar, and Histogram charts are supported.
+
+**Flags**: IRW
+
+---
 ## Attr: MetricSettings.showDataValues
 
 ### Description
@@ -383,11 +315,15 @@ If set to false, then data values will not be shown.
 
 If set to true, data values will be shown unless the data density is high enough that labels will potentially overlap, in which case, data values will not be shown and hovers will be shown instead, in the same way as [MetricSettings.showValueOnHover](#attr-metricsettingsshowvalueonhover) shows hovers.
 
-### Groups
-
-- labelsAndTitles
-
 **Deprecated**
+
+**Flags**: IR
+
+---
+## Attr: MetricSettings.axisStartValue
+
+### Description
+Same as [FacetChart.axisStartValue](FacetChart.md#attr-facetchartaxisstartvalue) but affects only one metric.
 
 **Flags**: IR
 
@@ -404,10 +340,6 @@ Whether this extra value axis plots values while varying the facet values of jus
 
 ### Description
 A label for the data values, such as "Sales in Thousands", typically used as the label for the value axis.
-
-### Groups
-
-- labelsAndTitles
 
 **Flags**: IR
 
@@ -433,109 +365,7 @@ Or base 2:
  
 ```
 
-### Groups
-
-- gradations
-
 **Flags**: IR
-
----
-## Method: MetricSettings.setStacked
-
-### Description
-Method to change [stacked](#attr-metricsettingsstacked). Use null to apply a default value for the current [chartType](../reference.md#type-charttype).
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| stacked | [Boolean](#type-boolean) | false | — | new value |
-
-### Groups
-
-- chartType
-
----
-## Method: MetricSettings.getPointHoverHTML
-
-### Description
-When [MetricSettings.showDataPoints](#attr-metricsettingsshowdatapoints) is true and the mouse hovers over a point, this method is called and may return HTML to show in a hover.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| value | [float](../reference.md#type-float) | false | — | the value at the point |
-| record | [Record](#type-record) | false | — | the record at the point |
-| metricId | [String](#type-string) | false | — | the ID of the metric at the point |
-
-### Returns
-
-`[String](#type-string)` — String of HTML to show in a hover
-
----
-## Method: MetricSettings.getDataGradient
-
-### Description
-Get a gradient from the [MetricSettings.dataGradients](#attr-metricsettingsdatagradients) Array.
-
-Override to provide a dynamic gradient generation scheme.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| index | [Number](#type-number) | false | — | index of the legend facet value to be colored |
-| facetValueId | [String](#type-string)|[Number](#type-number)|[Date](#type-date) | false | — | id of the legend facet value to be colored |
-| purpose | [String](#type-string) | false | — | purpose for the requested gradient - such as "legend", "line", "area", "points", etc. |
-
-### Returns
-
-`[String](#type-string)` — the gradient identifier
-
----
-## Method: MetricSettings.formatAxisValue
-
-### Description
-Return the text string to display in [gradation labels](#attr-metricsettingsgradationlabelproperties) given the raw value for the metric to show on the value axis. This formatter will only be called if the axis has gradation labels, meaning labels drawn at regular intervals not associated with any particular facet value.
-
-Note that the rendering of values in hovers or via [MetricSettings.showDataValues](#attr-metricsettingsshowdatavalues) is handled by [MetricSettings.formatDataValue](#method-metricsettingsformatdatavalue).
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| value | [Any](#type-any) | false | — | raw value of the metric |
-
-### Returns
-
-`[String](#type-string)` — the text to display.
-
-### Groups
-
-- display_values
-
-### See Also
-
-- [FacetChart.formatAxisValue](FacetChart.md#method-facetchartformataxisvalue)
-
----
-## Method: MetricSettings.setChartType
-
-### Description
-Method to change the current [chartType](../reference.md#type-charttype). Will redraw the chart if drawn. Will use default settings for the new chart type for [stacked](#attr-metricsettingsstacked) and [filled](#attr-metricsettingsfilled) if those values are null.
-
-Note that for [multi-axis](FacetChart.md#attr-facetchartextraaxismetrics) charts this method changes the `chartType` for the main value axis only.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| chartType | [ChartType](../reference.md#type-charttype) | false | — | new chart type |
-
-### Groups
-
-- chartType
 
 ---
 ## Method: MetricSettings.getDataLineWidth
@@ -568,7 +398,7 @@ Note that this method is simply an override point, since it has no default imple
 ### Description
 Return the text string to display in labels [in the chart-body or in hovers](FacetChart.md#attr-facetchartshowdatavaluesmode) given the raw value for the metric displayed on the value axis.
 
-This method may also be passed the [context](../reference.md#type-formattingcontext) for which the value is being formatted, the record associated with the value and the id of its [facet](FacetChart.md#attr-facetchartfacets).
+This method may also be passed the [context](../reference_2.md#type-formattingcontext) for which the value is being formatted, the record associated with the value and the id of its [facet](FacetChart.md#attr-facetchartfacets).
 
 Note that the rendering of values for gradation labels is handled by [MetricSettings.formatAxisValue](#method-metricsettingsformataxisvalue).
 
@@ -605,6 +435,18 @@ If the [chartType](FacetChart.md#attr-facetchartcharttype) is "Area", "Bubble", 
 ### Returns
 
 `[float](../reference.md#type-float)` — the Y coordinate where the passed data value would be drawn.
+
+---
+## Method: MetricSettings.setStacked
+
+### Description
+Method to change [stacked](#attr-metricsettingsstacked). Use null to apply a default value for the current [chartType](../reference.md#type-charttype).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| stacked | [Boolean](#type-boolean) | false | — | new value |
 
 ---
 ## Method: MetricSettings.pointClick
@@ -675,11 +517,7 @@ Setter for [MetricSettings.proportional](#attr-metricsettingsproportional).
 ### Description
 Get a color from the [MetricSettings.dataColors](#attr-metricsettingsdatacolors) Array.
 
-Override to provide a dynamic color generation scheme.
-
-In most cases, the method is passed the associated data Record, which can be used to retrieve the value being processed.
-
-Must return a color in the format of a leading hash (#) plus 6 hexadecimal digits as specified for [MetricSettings.dataColors](#attr-metricsettingsdatacolors).
+Override to provide a dynamic color generation scheme - must return a color in the format of of a leading hash (#) plus 6 hexadecimal digits as specified for [MetricSettings.dataColors](#attr-metricsettingsdatacolors).
 
 ### Parameters
 
@@ -710,9 +548,23 @@ This is only allowed to be called when [FacetChart.chartDrawn](FacetChart.md#met
 
 `[Array of float](#type-array-of-float)` — an array of gradation values used in the current chart.
 
-### Groups
+---
+## Method: MetricSettings.getPointHoverHTML
 
-- gradations
+### Description
+When [MetricSettings.showDataPoints](#attr-metricsettingsshowdatapoints) is true and the mouse hovers over a point, this method is called and may return HTML to show in a hover.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| value | [float](../reference.md#type-float) | false | — | the value at the point |
+| record | [Record](#type-record) | false | — | the record at the point |
+| metricId | [String](#type-string) | false | — | the ID of the metric at the point |
+
+### Returns
+
+`[String](#type-string)` — String of HTML to show in a hover
 
 ---
 ## Method: MetricSettings.getXCoord
@@ -748,8 +600,64 @@ Method to change [filled](#attr-metricsettingsfilled). Use null to apply a defau
 |------|------|----------|---------|-------------|
 | filled | [Boolean](#type-boolean) | false | — | new value |
 
+---
+## Method: MetricSettings.getDataGradient
+
+### Description
+Get a gradient from the [MetricSettings.dataGradients](#attr-metricsettingsdatagradients) Array.
+
+Override to provide a dynamic gradient generation scheme.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| index | [Number](#type-number) | false | — | index of the legend facet value to be colored |
+| facetValueId | [String](#type-string)|[Number](#type-number)|[Date](#type-date) | false | — | id of the legend facet value to be colored |
+| purpose | [String](#type-string) | false | — | purpose for the requested gradient - such as "legend", "line", "area", "points", etc. |
+
+### Returns
+
+`[String](#type-string)` — the gradient identifier
+
+---
+## Method: MetricSettings.formatAxisValue
+
+### Description
+Return the text string to display in [gradation labels](#attr-metricsettingsgradationlabelproperties) given the raw value for the metric to show on the value axis. This formatter will only be called if the axis has gradation labels, meaning labels drawn at regular intervals not associated with any particular facet value.
+
+Note that the rendering of values in hovers or via [MetricSettings.showDataValues](#attr-metricsettingsshowdatavalues) is handled by [MetricSettings.formatDataValue](#method-metricsettingsformatdatavalue).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| value | [Any](#type-any) | false | — | raw value of the metric |
+
+### Returns
+
+`[String](#type-string)` — the text to display.
+
 ### Groups
 
-- chartType
+- display_values
+
+### See Also
+
+- [FacetChart.formatAxisValue](FacetChart.md#method-facetchartformataxisvalue)
+
+---
+## Method: MetricSettings.setChartType
+
+### Description
+Method to change the current [chartType](../reference.md#type-charttype). Will redraw the chart if drawn. Will use default settings for the new chart type for [stacked](#attr-metricsettingsstacked) and [filled](#attr-metricsettingsfilled) if those values are null.
+
+Note that for [multi-axis](FacetChart.md#attr-facetchartextraaxismetrics) charts this method changes the `chartType` for the main value axis only.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| chartType | [ChartType](../reference.md#type-charttype) | false | — | new chart type |
 
 ---

@@ -20,6 +20,14 @@ A declared value of the enum type [CharacterCasing](../reference.md#type-charact
 **Flags**: R
 
 ---
+## ClassAttr: TextItem.UPPER
+
+### Description
+A declared value of the enum type [CharacterCasing](../reference.md#type-charactercasing).
+
+**Flags**: R
+
+---
 ## ClassAttr: TextItem.DEFAULT
 
 ### Description
@@ -38,12 +46,28 @@ Note that this is an advanced property and in most cases developers do not need 
 **Flags**: IRA
 
 ---
-## ClassAttr: TextItem.UPPER
+## Attr: TextItem.selectOnFocus
 
 ### Description
-A declared value of the enum type [CharacterCasing](../reference.md#type-charactercasing).
+Allows the [selectOnFocus](DynamicForm.md#attr-dynamicformselectonfocus) behavior to be configured on a per-FormItem basis. Normally all items in a form default to the value of [DynamicForm.selectOnFocus](DynamicForm.md#attr-dynamicformselectonfocus).
 
-**Flags**: R
+### Groups
+
+- focus
+
+**Flags**: IRW
+
+---
+## Attr: TextItem.height
+
+### Description
+Default height for text items.
+
+### Groups
+
+- appearance
+
+**Flags**: IRW
 
 ---
 ## Attr: TextItem.width
@@ -58,6 +82,14 @@ Default width for fields.
 **Flags**: IRW
 
 ---
+## Attr: TextItem.maskOverwriteMode
+
+### Description
+During entry into a [masked field](#attr-textitemmask), should keystrokes overwrite current position value? By default new keystrokes are inserted into the field.
+
+**Flags**: IRWA
+
+---
 ## Attr: TextItem.escapeHTML
 
 ### Description
@@ -68,14 +100,6 @@ By default HTML characters will be escaped when [canEdit](FormItem.md#attr-formi
 - appearance
 
 **Flags**: IRW
-
----
-## Attr: TextItem.maskOverwriteMode
-
-### Description
-During entry into a [masked field](#attr-textitemmask), should keystrokes overwrite current position value? By default new keystrokes are inserted into the field.
-
-**Flags**: IRWA
 
 ---
 ## Attr: TextItem.selectOnClick
@@ -120,187 +144,10 @@ See also [DataSourceField.length](DataSourceField.md#attr-datasourcefieldlength)
 **Flags**: IRW
 
 ---
-## Attr: TextItem.keyPressFilter
-
-### Description
-Sets a keypress filter regular expression to limit valid characters that can be entered by the user. If defined, keys that match the regular expression are allowed; all others are suppressed. The filter is applied after character casing, if defined.
-
-Note: keypress filtering cannot be used at the same time as a [TextItem.mask](#attr-textitemmask).
-
-### See Also
-
-- [TextItem.characterCasing](#attr-textitemcharactercasing)
-
-**Flags**: IRWA
-
----
-## Attr: TextItem.maskSaveLiterals
-
-### Description
-Should entered [mask](#attr-textitemmask) value be saved with embedded literals?
-
-**Flags**: IRWA
-
----
-## Attr: TextItem.formatOnBlur
-
-### Description
-With `formatOnBlur` enabled, this textItem will format its value according to the rules described in [FormItem.mapValueToDisplay](FormItem.md#method-formitemmapvaluetodisplay) as long as the item does not have focus. Once the user puts focus into the item the formatter will be removed. This provides a simple way for developers to show a nicely formatted display value in a freeform text field, without the need for an explicit [FormItem.formatEditorValue](FormItem.md#method-formitemformateditorvalue) and [FormItem.parseEditorValue](FormItem.md#method-formitemparseeditorvalue) pair.
-
-**Flags**: IRW
-
----
-## Attr: TextItem.browserAutoCapitalize
-
-### Description
-—
-
-**Flags**: IRA
-
----
-## Attr: TextItem.changeOnKeypress
-
-### Description
-Should this form item fire its [change](FormItem.md#method-formitemchange) handler (and store its value in the form) on every keypress? Set to `false` to suppress the 'change' handler firing (and the value stored) on every keypress.
-
-Note: If `false`, the value returned by [getValue](FormItem.md#method-formitemgetvalue) will not reflect the value displayed in the form item element as long as focus is in the form item element.
-
-### Groups
-
-- eventHandling
-- values
-
-**Flags**: IRW
-
----
-## Attr: TextItem.mask
-
-### Description
-Input mask used to restrict and format text within this item.
-
-Overview of available mask characters
-
-| Character | Description |
-|---|---|
-| 0 | Digit (0 through 9) or plus [+] or minus [-] signs |
-| 9 | Digit or space |
-| # | Digit |
-| L | Letter (A through Z) |
-| ? | Letter (A through Z) or space |
-| A | Letter or digit |
-| a | Letter or digit |
-| C | Any character or space |
-|  |
-| < | Causes all characters that follow to be converted to lowercase |
-| > | Causes all characters that follow to be converted to uppercase |
-|  |
-| [ ... ] | Square brakets denote the start and end of a custom regular expression character set or range. |
-
-The mask can also contain literals - arbitrary non editable characters to be displayed as part of the formatted text. Any character not matching one of the above mask characters will be considered a literal. To use one of the mask characters as a literal, it must be escaped with a pair of backslashes (\\\\). By default literals are formatting characters only and will not be saved as part of the item's value. This behavior is controlled via [TextItem.maskSaveLiterals](#attr-textitemmasksaveliterals).
-
-When a TextItem with a mask has focus, the formatted mask string will be displayed, with the [TextItem.maskPromptChar](#attr-textitemmaskpromptchar) displayed as a placeholder for characters that have not yet been entered.
-
-As the user types in the field, input will be restricted to the appropriate character class for each character, with uppercase/lowercase conversion occurring automatically. When focus is moved away from the field, the displayed value will be formatted to include any literals in the appropriate places, using [TextItem.maskPadChar](#attr-textitemmaskpadchar) as the placeholder character.
-
-Sample masks:
-
-*   Phone number: (###) ###-####
-*   Social Security number: ###-##-####
-*   First name: >?<??????????
-*   Date: ##/##/####
-*   State: >LL
-
-Custom mask characters can be defined by standard regular expression character set or range. For example, a hexadecimal color code mask could be:
-
-*   Color: \\\\#>\[0-9A-F\]\[0-9A-F\]\[0-9A-F\]\[0-9A-F\]\[0-9A-F\]\[0-9A-F\]
-
-Note: input mask cannot be used at the same time as a [TextItem.keyPressFilter](#attr-textitemkeypressfilter). Also note that this property is not supported for [ComboBoxItem](ComboBoxItem.md#class-comboboxitem) or [SpinnerItem](SpinnerItem.md#class-spinneritem), or for items with [TextItem.browserInputType](#attr-textitembrowserinputtype) set to "digits" or "number".
-
-### See Also
-
-- [TextItem.keyPressFilter](#attr-textitemkeypressfilter)
-
-**Flags**: IRWA
-
----
-## Attr: TextItem.showInputElement
-
-### Description
-When set to false, prevents this item's input element from being written into the DOM. If there are [valueIcons](FormItem.md#attr-formitemvalueicons) or a [picker icon](FormItem.md#attr-formitemshowpickericon), these are displayed as normal, and the item will auto-sizing to that content if its [width](FormItem.md#attr-formitemwidth) is set to null.
-
-**Flags**: IRWA
-
----
-## Attr: TextItem.suppressBrowserClearIcon
-
-### Description
-This attribute currently only has an effect in Internet Explorer. That browser will dynamically add a native "clear" icon to _`<input type="text" >`_ elements when the user enters a value. Setting `suppressBrowserClearIcon` to `true` will write out HTML to suppress this icon. This can be particularly useful for items which define their own clear icon as in *this sample*.
-
-If this property is not set at the item level, [DynamicForm.suppressBrowserClearIcons](DynamicForm.md#attr-dynamicformsuppressbrowserclearicons) will be used instead.
-
-Note that as an alternative to using this feature, the icon may also be suppressed (or have other styling applied to it) directly via CSS, using the `::-ms-clear` css pseudo-element (proprietary Internet Explorer feature).
-
-Implementation note: This feature makes use of the automatically generated [TextItem.suppressClearIconClassName](#classattr-textitemsuppresscleariconclassname) css class.
-
-**Flags**: IRW
-
----
-## Attr: TextItem.printFullText
-
-### Description
-When generating a print-view of the component containing this TextItem, should the form item expand to accommodate its value? If set to false the text box will not expand to fit its content in the print view, instead showing exactly as it does in the live form.
-
-### Groups
-
-- printing
-
-**Flags**: IRW
-
----
-## Attr: TextItem.enforceLength
-
-### Description
-If a [TextItem.length](#attr-textitemlength) is specified for this item, should user input be limited to the specified length? If set to true, user input and values passed to [setValue()](FormItem.md#method-formitemsetvalue) will be trimmed to the specified length. Otherwise values exceeding the specified length will raise an error on validation.
-
-Note that having this value set to true limits user interactivity in some ways. For example users would be unable to paste a longer string into the field for editing without seeing it be truncated.
-
-**Flags**: IRW
-
----
-## Attr: TextItem.selectOnFocus
-
-### Description
-Allows the [selectOnFocus](DynamicForm.md#attr-dynamicformselectonfocus) behavior to be configured on a per-FormItem basis. Normally all items in a form default to the value of [DynamicForm.selectOnFocus](DynamicForm.md#attr-dynamicformselectonfocus).
-
-### Groups
-
-- focus
-
-**Flags**: IRW
-
----
-## Attr: TextItem.height
-
-### Description
-Default height for text items.
-
-### Groups
-
-- appearance
-
-**Flags**: IRW
-
----
 ## Attr: TextItem.maskPadChar
 
 ### Description
 Character that is used to fill required empty [mask](#attr-textitemmask) positions to display text while control has no focus.
-
-For the default of space, but not any other character, the formatted text in the field will be truncated and mask literals not shown if no field value is present. If you want literals always shown for space, set `maskPadChar` to the non-breaking space character '\\u00A0'.
-
-### See Also
-
-- [TextItem.maskPromptChar](#attr-textitemmaskpromptchar)
 
 **Flags**: IRWA
 
@@ -466,10 +313,6 @@ When enabled, Mobile Safari displays "autocorrect bubbles" to suggest automatic 
 ### Description
 Character that is used to fill required empty [mask](#attr-textitemmask) positions to display text while control has focus.
 
-### See Also
-
-- [TextItem.maskPadChar](#attr-textitemmaskpadchar)
-
 **Flags**: IRWA
 
 ---
@@ -501,6 +344,20 @@ Note: character casing cannot be used at the same time as a [TextItem.mask](#att
 **Flags**: IRWA
 
 ---
+## Attr: TextItem.keyPressFilter
+
+### Description
+Sets a keypress filter regular expression to limit valid characters that can be entered by the user. If defined, keys that match the regular expression are allowed; all others are suppressed. The filter is applied after character casing, if defined.
+
+Note: keypress filtering cannot be used at the same time as a [TextItem.mask](#attr-textitemmask).
+
+### See Also
+
+- [TextItem.characterCasing](#attr-textitemcharactercasing)
+
+**Flags**: IRWA
+
+---
 ## Attr: TextItem.showHintInField
 
 ### Description
@@ -521,8 +378,6 @@ The in-field hint can be styled with CSS for the `textBoxStyle` + "Hint" / "Hint
 }
 ```
 
-In [DynamicForm.linearMode](DynamicForm.md#attr-dynamicformlinearmode), this property will be defaulted true if left unset.
-
 ### Groups
 
 - appearance
@@ -532,7 +387,31 @@ In [DynamicForm.linearMode](DynamicForm.md#attr-dynamicformlinearmode), this pro
 - [FormItem.hint](FormItem.md#attr-formitemhint)
 - [TextItem.usePlaceholderForHint](#attr-textitemuseplaceholderforhint)
 
+**Flags**: IRWA
+
+---
+## Attr: TextItem.maskSaveLiterals
+
+### Description
+Should entered [mask](#attr-textitemmask) value be saved with embedded literals?
+
+**Flags**: IRWA
+
+---
+## Attr: TextItem.formatOnBlur
+
+### Description
+With `formatOnBlur` enabled, this textItem will format its value according to the rules described in [FormItem.mapValueToDisplay](FormItem.md#method-formitemmapvaluetodisplay) as long as the item does not have focus. Once the user puts focus into the item the formatter will be removed. This provides a simple way for developers to show a nicely formatted display value in a freeform text field, without the need for an explicit [FormItem.formatEditorValue](FormItem.md#method-formitemformateditorvalue) and [FormItem.parseEditorValue](FormItem.md#method-formitemparseeditorvalue) pair.
+
 **Flags**: IRW
+
+---
+## Attr: TextItem.browserAutoCapitalize
+
+### Description
+—
+
+**Flags**: IRA
 
 ---
 ## Attr: TextItem.editProxyConstructor
@@ -543,10 +422,108 @@ Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) fo
 **Flags**: IR
 
 ---
+## Attr: TextItem.changeOnKeypress
+
+### Description
+Should this form item fire its [change](FormItem.md#method-formitemchange) handler (and store its value in the form) on every keypress? Set to `false` to suppress the 'change' handler firing (and the value stored) on every keypress.
+
+Note: If `false`, the value returned by [getValue](FormItem.md#method-formitemgetvalue) will not reflect the value displayed in the form item element as long as focus is in the form item element.
+
+### Groups
+
+- eventHandling
+- values
+
+**Flags**: IRW
+
+---
+## Attr: TextItem.mask
+
+### Description
+Input mask used to restrict and format text within this item.
+
+Overview of available mask characters
+
+| Character | Description |
+|---|---|
+| 0 | Digit (0 through 9) or plus [+] or minus [-] signs |
+| 9 | Digit or space |
+| # | Digit |
+| L | Letter (A through Z) |
+| ? | Letter (A through Z) or space |
+| A | Letter or digit |
+| a | Letter or digit |
+| C | Any character or space |
+|  |
+| < | Causes all characters that follow to be converted to lowercase |
+| > | Causes all characters that follow to be converted to uppercase |
+|  |
+| [ ... ] | Square brakets denote the start and end of a custom regular expression character set or range. |
+
+The mask can also contain literals - arbitrary non editable characters to be displayed as part of the formatted text. Any character not matching one of the above mask characters will be considered a literal. To use one of the mask characters as a literal, it must be escaped with a pair of backslashes (\\\\). By default literals are formatting characters only and will not be saved as part of the item's value. This behavior is controlled via [TextItem.maskSaveLiterals](#attr-textitemmasksaveliterals).
+
+When a TextItem with a mask has focus, the formatted mask string will be displayed, with the [TextItem.maskPromptChar](#attr-textitemmaskpromptchar) displayed as a placeholder for characters that have not yet been entered.  
+As the user types in the field, input will be restricted to the appropriate character class for each character, with uppercase/lowercase conversion occurring automatically. When focus is moved away from the field, the displayed value will be formatted to include any literals in the appropriate places.
+
+Sample masks:
+
+*   Phone number: (###) ###-####
+*   Social Security number: ###-##-####
+*   First name: >?<??????????
+*   Date: ##/##/####
+*   State: >LL
+
+Custom mask characters can be defined by standard regular expression character set or range. For example, a hexadecimal color code mask could be:
+
+*   Color: \\\\#>\[0-9A-F\]\[0-9A-F\]\[0-9A-F\]\[0-9A-F\]\[0-9A-F\]\[0-9A-F\]
+
+Note: input mask cannot be used at the same time as a [TextItem.keyPressFilter](#attr-textitemkeypressfilter). Also note that this property is not supported for [ComboBoxItem](ComboBoxItem.md#class-comboboxitem) or [SpinnerItem](SpinnerItem.md#class-spinneritem), or for items with [TextItem.browserInputType](#attr-textitembrowserinputtype) set to "digits" or "number".
+
+### See Also
+
+- [TextItem.keyPressFilter](#attr-textitemkeypressfilter)
+
+**Flags**: IRWA
+
+---
+## Attr: TextItem.showInputElement
+
+### Description
+When set to false, prevents this item's input element from being written into the DOM. If there are [valueIcons](FormItem.md#attr-formitemvalueicons) or a [picker icon](FormItem.md#attr-formitemshowpickericon), these are displayed as normal, and the item will auto-sizing to that content if its [width](FormItem.md#attr-formitemwidth) is set to null.
+
+**Flags**: IRWA
+
+---
 ## Attr: TextItem.saveOnEnter
 
 ### Description
 Text items will submit their containing form on enter keypress if [saveOnEnter](DynamicForm.md#attr-dynamicformsaveonenter) is true. Setting this property to `false` will disable this behavior.
+
+**Flags**: IRW
+
+---
+## Attr: TextItem.suppressBrowserClearIcon
+
+### Description
+This attribute currently only has an effect in Internet Explorer. That browser will dynamically add a native "clear" icon to _`<input type="text" >`_ elements when the user enters a value. Setting `suppressBrowserClearIcon` to `true` will write out HTML to suppress this icon. This can be particularly useful for items which define their own clear icon as in *this sample*.
+
+If this property is not set at the item level, [DynamicForm.suppressBrowserClearIcons](DynamicForm.md#attr-dynamicformsuppressbrowserclearicons) will be used instead.
+
+Note that as an alternative to using this feature, the icon may also be suppressed (or have other styling applied to it) directly via CSS, using the `::-ms-clear` css pseudo-element (proprietary Internet Explorer feature).
+
+Implementation note: This feature makes use of the automatically generated [TextItem.suppressClearIconClassName](#classattr-textitemsuppresscleariconclassname) css class.
+
+**Flags**: IRW
+
+---
+## Attr: TextItem.printFullText
+
+### Description
+When generating a print-view of the component containing this TextItem, should the form item expand to accommodate its value? If set to false the text box will not expand to fit its content in the print view, instead showing exactly as it does in the live form.
+
+### Groups
+
+- printing
 
 **Flags**: IRW
 
@@ -586,59 +563,14 @@ Note that a call to [setValue(null)](FormItem.md#method-formitemsetvalue) or [se
 **Flags**: IRW
 
 ---
-## Method: TextItem.shouldFetchMissingValue
+## Attr: TextItem.enforceLength
 
 ### Description
-If this field has a specified [optionDataSource](FormItem.md#attr-formitemoptiondatasource), should we perform a fetch against that dataSource to find the record that matches this field's value?
+If a [TextItem.length](#attr-textitemlength) is specified for this item, should user input be limited to the specified length? If set to true, user input and values passed to [setValue()](FormItem.md#method-formitemsetvalue) will be trimmed to the specified length. Otherwise values exceeding the specified length will raise an error on validation.
 
-For textItems this method will return false if the item is [editable](FormItem.md#attr-formitemcanedit) unless [FormItem.alwaysFetchMissingValues](FormItem.md#attr-formitemalwaysfetchmissingvalues) is true, even if there is a specified [displayField](FormItem.md#attr-formitemdisplayfield). We do this as, for a freeform text-entry field with a specified displayField, the correct behavior when the user enters an unrecognized value is somewhat ambiguous. The user could have entered a complete display-field value, in which case it might be appropriate to issue a fetch against the display-field of the optionDataSource, and set the underlying item value.  
-If a match was not found though, we necessarily treat the entered value as the new "dataValue" for the field. Should we then issue a second fetch against the optionDataSource comparing the user-entered value with the value-field of the dataSource?
+Note that having this value set to true limits user interactivity in some ways. For example users would be unable to paste a longer string into the field for editing without seeing it be truncated.
 
-There are still cases where it could make sense to issue the fetch against the dataSource, and developers who want this behavior can set [alwaysFetchMissingValues](FormItem.md#attr-formitemalwaysfetchmissingvalues) to true.
-
-See [FormItem.shouldFetchMissingValue](FormItem.md#method-formitemshouldfetchmissingvalue) for how this method behaves for other item types.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| newValue | [Any](#type-any) | false | — | The new data value of the item. |
-
-### Returns
-
-`[Boolean](#type-boolean)` — should we fetch the record matching the new value from the item's optionDataSource?
-
----
-## Method: TextItem.selectValue
-
-### Description
-Put focus in this item and select the entire value. Only applies to text based items
-
----
-## Method: TextItem.getEnteredValue
-
-### Description
-Returns the raw text value that currently appears in the text field, which can differ from [FormItem.getValue](FormItem.md#method-formitemgetvalue) in various cases - for example:
-
-*   for items that constrain the value range, such as a [DateItem](DateItem.md#class-dateitem) with [enforceDate](DateItem.md#attr-dateitemenforcedate):true, or a [ComboBoxItem](ComboBoxItem.md#class-comboboxitem) with [addUnknownValues](ComboBoxItem.md#attr-comboboxitemaddunknownvalues):false
-*   for items with a defined valueMap or edit value formatter and parser functions which converts display value to data value
-*   while the item has focus if [changeOnKeypress](#attr-textitemchangeonkeypress) is false
-
-### Returns
-
-`[String](#type-string)` — current entered value
-
----
-## Method: TextItem.setSuppressBrowserClearIcon
-
-### Description
-Setter for the [TextItem.suppressBrowserClearIcon](#attr-textitemsuppressbrowserclearicon)
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| newValue | [Boolean](#type-boolean) | false | — | new value for suppressBrowserClearIcon |
+**Flags**: IRW
 
 ---
 ## Method: TextItem.setKeyPressFilter
@@ -748,7 +680,62 @@ The default behavior is that the [titleStyle](FormItem.md#attr-formitemtitlestyl
 
 ### Returns
 
-`[Boolean](#type-boolean)` — `false` to cancel the default behavior.
+`[boolean](../reference.md#type-boolean)` — `false` to cancel the default behavior.
+
+---
+## Method: TextItem.shouldFetchMissingValue
+
+### Description
+If this field has a specified [optionDataSource](FormItem.md#attr-formitemoptiondatasource), should we perform a fetch against that dataSource to find the record that matches this field's value?
+
+For textItems this method will return false if the item is [editable](FormItem.md#attr-formitemcanedit) unless [FormItem.alwaysFetchMissingValues](FormItem.md#attr-formitemalwaysfetchmissingvalues) is true, even if there is a specified [displayField](FormItem.md#attr-formitemdisplayfield). We do this as, for a freeform text-entry field with a specified displayField, the correct behavior when the user enters an unrecognized value is somewhat ambiguous. The user could have entered a complete display-field value, in which case it might be appropriate to issue a fetch against the display-field of the optionDataSource, and set the underlying item value.  
+If a match was not found though, we necessarily treat the entered value as the new "dataValue" for the field. Should we then issue a second fetch against the optionDataSource comparing the user-entered value with the value-field of the dataSource?
+
+There are still cases where it could make sense to issue the fetch against the dataSource, and developers who want this behavior can set [alwaysFetchMissingValues](FormItem.md#attr-formitemalwaysfetchmissingvalues) to true.
+
+See [FormItem.shouldFetchMissingValue](FormItem.md#method-formitemshouldfetchmissingvalue) for how this method behaves for other item types.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| newValue | [Any](#type-any) | false | — | The new data value of the item. |
+
+### Returns
+
+`[Boolean](#type-boolean)` — should we fetch the record matching the new value from the item's optionDataSource?
+
+---
+## Method: TextItem.selectValue
+
+### Description
+Put focus in this item and select the entire value. Only applies to text based items
+
+---
+## Method: TextItem.getEnteredValue
+
+### Description
+Returns the raw text value that currently appears in the text field, which can differ from [FormItem.getValue](FormItem.md#method-formitemgetvalue) in various cases - for example:
+
+*   for items that constrain the value range, such as a [DateItem](DateItem.md#class-dateitem) with [enforceDate](DateItem.md#attr-dateitemenforcedate):true, or a [ComboBoxItem](ComboBoxItem.md#class-comboboxitem) with [addUnknownValues](ComboBoxItem.md#attr-comboboxitemaddunknownvalues):false
+*   for items with a defined valueMap or edit value formatter and parser functions which converts display value to data value
+*   while the item has focus if [changeOnKeypress](#attr-textitemchangeonkeypress) is false
+
+### Returns
+
+`[String](#type-string)` — current entered value
+
+---
+## Method: TextItem.setSuppressBrowserClearIcon
+
+### Description
+Setter for the [TextItem.suppressBrowserClearIcon](#attr-textitemsuppressbrowserclearicon)
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| newValue | [Boolean](#type-boolean) | false | — | new value for suppressBrowserClearIcon |
 
 ---
 ## Method: TextItem.transformPastedValue

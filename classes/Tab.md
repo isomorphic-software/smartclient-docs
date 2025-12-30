@@ -33,16 +33,32 @@ After the TabSet has been created, you can change a tab's `prompt` property by c
 **Flags**: IR
 
 ---
-## Attr: Tab.visibleWhen
+## Attr: Tab.disabled
 
 ### Description
-Criteria to be evaluated to determine whether this Tab should be visible.
+If specified, this tab will initially be rendered in a disabled state. To enable or disable tabs on the fly use the [TabSet.enableTab](TabSet.md#method-tabsetenabletab), and [TabSet.disableTab](TabSet.md#method-tabsetdisabletab). methods.
 
-A basic criteria uses textMatchStyle:"exact". When specified in [Component XML](../kb_topics/componentXML.md#kb-topic-component-xml) this property allows [shorthand formats](../kb_topics/xmlCriteriaShorthand.md#kb-topic-xmlcriteriashorthand) for defining criteria.
+**Flags**: IR
 
-### Groups
+---
+## Attr: Tab.icon
 
-- ruleCriteria
+### Description
+If specified, this tab will show an icon next to the tab title.
+
+**NOTE:** if you enable [closeable tabs](TabSet.md#attr-tabsetcanclosetabs), `tab.icon` is used for the close icon. [TabSet.canCloseTabs](TabSet.md#attr-tabsetcanclosetabs) describes a workaround to enable both a `closeIcon` and a second icon to be shown.
+
+Use [TabSet.tabIconClick](TabSet.md#method-tabsettabiconclick) to add an event handler specifically for clicks on the icon.
+
+If a tab [becomes disabled](#attr-tabdisabled), a different icon will be loaded by adding a suffix to the image name (see [Button.icon](Button.md#attr-buttonicon)).
+
+You should specify a size for the icon via [Tab.iconSize](#attr-tabiconsize) or [Tab.iconWidth](#attr-tabiconwidth) and [Tab.iconHeight](#attr-tabiconheight). Without an explicitly specified size, tabs may be drawn overlapping or with gaps the first time a page is loaded, because the icon is not cached and therefore its size isn't known.
+
+After the TabSet has been created, you can change a tab's `icon` property by calling [TabSet.setTabIcon](TabSet.md#method-tabsetsettabicon).
+
+### See Also
+
+- [TabSet.tabIconClick](TabSet.md#method-tabsettabiconclick)
 
 **Flags**: IR
 
@@ -61,6 +77,16 @@ After the TabSet has been created, you can change a tab's `canClose` property by
 ### See Also
 
 - [TabSet.closeClick](TabSet.md#method-tabsetcloseclick)
+
+**Flags**: IR
+
+---
+## Attr: Tab.iconSize
+
+### Description
+If [Tab.icon](#attr-tabicon) is specified, this property may be used to specify a size for the icon. Per side sizing may be specified instead via [Tab.iconWidth](#attr-tabiconwidth) and [Tab.iconHeight](#attr-tabiconheight).
+
+After the TabSet has been created, you can change a tab's `iconSize` property by calling [TabSet.setTabProperties](TabSet.md#method-tabsetsettabproperties).
 
 **Flags**: IR
 
@@ -100,67 +126,6 @@ After the TabSet has been created, you can change a tab's `iconHeight` property 
 If [Tab.icon](#attr-tabicon) is specified, this property may be used to specify a width for the icon.
 
 After the TabSet has been created, you can change a tab's `iconWidth` property by calling [TabSet.setTabProperties](TabSet.md#method-tabsetsettabproperties).
-
-**Flags**: IR
-
----
-## Attr: Tab.hidden
-
-### Description
-If specified this tab will be hidden by default. To show and hide tabs at runtime use [TabSet.showTab](TabSet.md#method-tabsetshowtab) and [TabSet.hideTab](TabSet.md#method-tabsethidetab)
-
-**Flags**: IRW
-
----
-## Attr: Tab.canAdaptWidth
-
-### Description
-If enabled, the tab will collapse to show just its icon when showing the title would cause overflow of a containing [TabBar](TabBar.md#class-tabbar). While collapsed, the tab will show its title on hover, unless an explicit hover has been specified such as by [Tab.prompt](#attr-tabprompt).
-
-### See Also
-
-- [Button.canAdaptWidth](Button.md#attr-buttoncanadaptwidth)
-- [Canvas.canAdaptWidth](Canvas.md#attr-canvascanadaptwidth)
-
-**Flags**: IR
-
----
-## Attr: Tab.disabled
-
-### Description
-If specified, this tab will initially be rendered in a disabled state. To enable or disable tabs on the fly use the [TabSet.enableTab](TabSet.md#method-tabsetenabletab), and [TabSet.disableTab](TabSet.md#method-tabsetdisabletab). methods.
-
-**Flags**: IR
-
----
-## Attr: Tab.icon
-
-### Description
-If specified, this tab will show an icon next to the tab title.
-
-**NOTE:** if you enable [closeable tabs](TabSet.md#attr-tabsetcanclosetabs), `tab.icon` is used for the close icon. [TabSet.canCloseTabs](TabSet.md#attr-tabsetcanclosetabs) describes a workaround to enable both a `closeIcon` and a second icon to be shown.
-
-Use [TabSet.tabIconClick](TabSet.md#method-tabsettabiconclick) to add an event handler specifically for clicks on the icon.
-
-If a tab [becomes disabled](#attr-tabdisabled), a different icon will be loaded by adding a suffix to the image name (see [Button.icon](Button.md#attr-buttonicon)).
-
-You should specify a size for the icon via [Tab.iconSize](#attr-tabiconsize) or [Tab.iconWidth](#attr-tabiconwidth) and [Tab.iconHeight](#attr-tabiconheight). Without an explicitly specified size, tabs may be drawn overlapping or with gaps the first time a page is loaded, because the icon is not cached and therefore its size isn't known.
-
-After the TabSet has been created, you can change a tab's `icon` property by calling [TabSet.setTabIcon](TabSet.md#method-tabsetsettabicon).
-
-### See Also
-
-- [TabSet.tabIconClick](TabSet.md#method-tabsettabiconclick)
-
-**Flags**: IR
-
----
-## Attr: Tab.iconSize
-
-### Description
-If [Tab.icon](#attr-tabicon) is specified, this property may be used to specify a size for the icon. Per side sizing may be specified instead via [Tab.iconWidth](#attr-tabiconwidth) and [Tab.iconHeight](#attr-tabiconheight).
-
-After the TabSet has been created, you can change a tab's `iconSize` property by calling [TabSet.setTabProperties](TabSet.md#method-tabsetsettabproperties).
 
 **Flags**: IR
 
@@ -237,6 +202,19 @@ Specifies the title of the this tab. To change the title after the TabSet has be
 **Flags**: IR
 
 ---
+## Attr: Tab.canAdaptWidth
+
+### Description
+If enabled, the tab will collapse to show just its icon when showing the title would cause overflow of a containing [TabBar](TabBar.md#class-tabbar). While collapsed, the tab will show its title on hover, unless an explicit hover has been specified such as by [Tab.prompt](#attr-tabprompt).
+
+### See Also
+
+- [Button.canAdaptWidth](Button.md#attr-buttoncanadaptwidth)
+- [Canvas.canAdaptWidth](Canvas.md#attr-canvascanadaptwidth)
+
+**Flags**: IR
+
+---
 ## Attr: Tab.closeIconSize
 
 ### Description
@@ -266,9 +244,9 @@ After the TabSet has been created, you can change a tab's `width` property by ca
 ## Attr: Tab.enableWhen
 
 ### Description
-Criteria to be evaluated to determine whether this Tab should be enabled.
+Criteria to be evaluated to determine whether this Tab should be enabled. Re-evaluated whenever data in the [tab.ruleScope](Canvas.md#attr-canvasrulescope) changes.
 
-A basic criteria uses textMatchStyle:"exact". When specified in [Component XML](../kb_topics/componentXML.md#kb-topic-component-xml) this property allows [shorthand formats](../kb_topics/xmlCriteriaShorthand.md#kb-topic-xmlcriteriashorthand) for defining criteria.
+It works the same as [Canvas.enableWhen](Canvas.md#attr-canvasenablewhen)
 
 ### Groups
 
@@ -296,7 +274,7 @@ Optional handler to fire when a tab is deselected. Returning false will cancel t
 
 ### Returns
 
-`[Boolean](#type-boolean)` — return `false` to cancel the tab selection
+`[boolean](../reference.md#type-boolean)` — return `false` to cancel the tab selection
 
 ### See Also
 

@@ -9,71 +9,7 @@
 *Inherits from:* [Window](Window.md#class-window)
 
 ### Description
-Custom subclass of Window configured to be embedded within a [PortalLayout](PortalLayout.md#class-portallayout).
-
----
-## Attr: Portlet.minWidth
-
-### Description
-Specifies a minimum width for the Portlet.
-
-### See Also
-
-- [Canvas.minWidth](Canvas.md#attr-canvasminwidth)
-
-**Flags**: IRW
-
----
-## Attr: Portlet.minHeight
-
-### Description
-Specifies a minimum height for the Portlet. The height of rows within a [PortalLayout](PortalLayout.md#class-portallayout) will be adjusted to take into account the minHeight of all the Portlets in that row.
-
-### See Also
-
-- [Canvas.minHeight](Canvas.md#attr-canvasminheight)
-
-**Flags**: IRW
-
----
-## Attr: Portlet.closeConfirmationMessage
-
-### Description
-Confirmation message to show the user when closing portlets if [Portlet.showCloseConfirmationMessage](#attr-portletshowcloseconfirmationmessage) is true.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
-
----
-## Attr: Portlet.rowHeight
-
-### Description
-If you set the rowHeight of a Portlet before adding it to a [PortalLayout](PortalLayout.md#class-portallayout), then the height will be used when creating the new row. If adding the Portlet to an existing row (or dragging it there), the Portlet's rowHeight will be used if the row's height has not already been specified. However, if you set the rowHeight of a Portlet after adding it to the PortalLayout, then the height of the entire row will always be adjusted to match.
-
-You can also just specify [height](Canvas.md#attr-canvasheight) when initializing a Portlet, and it will be applied to the rowHeight when added to a PortalLayout. However, changing the Portlet's height after initialization will not affect the row.
-
-Note that getting the rowHeight will indicate the rowHeight specified for this Portlet, not the actual height of the row it is in.
-
-### Groups
-
-- sizing
-
-**Flags**: IRW
-
----
-## Attr: Portlet.closeConfirmationDialogProperties
-
-### Description
-If specified, this properties block will be passed to [isc.confirm](isc.md#staticmethod-iscconfirm) as the properties parameter when the [Portlet.closeConfirmationMessage](#attr-portletcloseconfirmationmessage) is shown, allowing developers to customize the appear of the confirmation dialog (modifying its title, etc).
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
+Custom subclass of Window configured to be embedded within a PortalLayout.
 
 ---
 ## Attr: Portlet.canDrop
@@ -113,6 +49,30 @@ if you want to allow some [Portlets](#class-portlet) to be dropped on a [PortalL
 **Flags**: IRWA
 
 ---
+## Attr: Portlet.minWidth
+
+### Description
+Specifies a minimum width for the Portlet.
+
+### See Also
+
+- [Canvas.minWidth](Canvas.md#attr-canvasminwidth)
+
+**Flags**: IRW
+
+---
+## Attr: Portlet.minHeight
+
+### Description
+Specifies a minimum height for the Portlet. The height of rows within a [PortalLayout](PortalLayout.md#class-portallayout) will be adjusted to take into account the minHeight of all the Portlets in that row.
+
+### See Also
+
+- [Canvas.minHeight](Canvas.md#attr-canvasminheight)
+
+**Flags**: IRW
+
+---
 ## Attr: Portlet.editProxyConstructor
 
 ### Description
@@ -121,10 +81,50 @@ Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) fo
 **Flags**: IR
 
 ---
+## Attr: Portlet.closeConfirmationMessage
+
+### Description
+Confirmation message to show the user when closing portlets if [Portlet.showCloseConfirmationMessage](#attr-portletshowcloseconfirmationmessage) is true.
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IRW
+
+---
 ## Attr: Portlet.showCloseConfirmationMessage
 
 ### Description
 If true, [Portlet.closeConfirmationMessage](#attr-portletcloseconfirmationmessage) will be displayed before portlets are closed
+
+**Flags**: IRW
+
+---
+## Attr: Portlet.rowHeight
+
+### Description
+If you set the rowHeight of a Portlet before adding it to a [PortalLayout](PortalLayout.md#class-portallayout), then the height will be used when creating the new row. If adding the Portlet to an existing row (or dragging it there), the Portlet's rowHeight will be used if the row's height has not already been specified. However, if you set the rowHeight of a Portlet after adding it to the PortalLayout, then the height of the entire row will always be adjusted to match.
+
+You can also just specify [height](Canvas.md#attr-canvasheight) when initializing a Portlet, and it will be applied to the rowHeight when added to a PortalLayout. However, changing the Portlet's height after initialization will not affect the row.
+
+Note that getting the rowHeight will indicate the rowHeight specified for this Portlet, not the actual height of the row it is in.
+
+### Groups
+
+- sizing
+
+**Flags**: IRW
+
+---
+## Attr: Portlet.closeConfirmationDialogProperties
+
+### Description
+If specified, this properties block will be passed to [isc.confirm](isc.md#staticmethod-iscconfirm) as the properties parameter when the [Portlet.closeConfirmationMessage](#attr-portletcloseconfirmationmessage) is shown, allowing developers to customize the appear of the confirmation dialog (modifying its title, etc).
+
+### Groups
+
+- i18nMessages
 
 **Flags**: IRW
 
@@ -152,38 +152,6 @@ Gets the position of the Portlet within its [PortalLayout](PortalLayout.md#class
 ### Returns
 
 `[PortalPosition](#type-portalposition)` — the position of the Portlet
-
----
-## Method: Portlet.close
-
-### Description
-`close()` method overridden to show [Portlet.closeConfirmationMessage](#attr-portletcloseconfirmationmessage) to the user before removing the portlet from the PortalLayout via [PortalLayout.removePortlet](PortalLayout.md#method-portallayoutremoveportlet)
-
----
-## Method: Portlet.setRowHeight
-
-### Description
-Sets the height of the Portlet's row (and, thus, indirectly sets the Portlet's own height). Use this instead of using [Portlet.setHeight](#method-portletsetheight) directly.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| height | [Number](#type-number) | false | — | new height |
-
-### Groups
-
-- sizing
-
----
-## Method: Portlet.getPortalLayout
-
-### Description
-Gets the [PortalLayout](PortalLayout.md#class-portallayout) which encloses this Portlet (or null, if none).
-
-### Returns
-
-`[PortalLayout](#type-portallayout)` — the PortalLayout enclosing this Portlet
 
 ---
 ## Method: Portlet.setHeight
@@ -217,5 +185,37 @@ Override this method if you want other actions to be taken. Custom implementatio
 ### Returns
 
 `[Boolean](#type-boolean)` — Return false to cancel bubbling the click event
+
+---
+## Method: Portlet.close
+
+### Description
+`close()` method overridden to show [Portlet.closeConfirmationMessage](#attr-portletcloseconfirmationmessage) to the user before removing the portlet from the PortalLayout via [PortalLayout.removePortlet](PortalLayout.md#method-portallayoutremoveportlet)
+
+---
+## Method: Portlet.setRowHeight
+
+### Description
+Sets the height of the Portlet's row (and, thus, indirectly sets the Portlet's own height). Use this instead of using [Portlet.setHeight](#method-portletsetheight) directly.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| height | [Number](#type-number) | false | — | new height |
+
+### Groups
+
+- sizing
+
+---
+## Method: Portlet.getPortalLayout
+
+### Description
+Gets the [PortalLayout](PortalLayout.md#class-portallayout) which encloses this Portlet (or null, if none).
+
+### Returns
+
+`[PortalLayout](#type-portallayout)` — the PortalLayout enclosing this Portlet
 
 ---

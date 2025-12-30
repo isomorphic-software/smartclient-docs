@@ -18,9 +18,9 @@ The Developer Console can be opened by calling `isc.showConsole()` on any page i
 3\. Label the bookmark as "Show Console".  
 4\. Consider adding this to the Bookmarks Toolbar. This allows one-click access to the Console from any SmartClient application.
 
-Note that in most modern browsers you can also evaluate `isc.showConsole()` directly from your native browser developer tools / console.
+Note: For most browsers you can evaluate javascript directly from the browser URL bar by entering `javascript:_string to evaluate_` directly in the URL bar, so setting up a bookmark is not strictly necessary. For Firefox 6 and above, this feature has been disallowed, but the bookmark approach will still work. Alternatively developers could use [Firefox Scratchpad](http://blog.mozilla.com/devtools/2011/08/15/introducing-scratchpad/) to launch the console.
 
-Basic information on the features of the Developer Console can be found in the QuickStart Guide. For information about the "RPC" tab of the Developer Console and the request profiling information it can provide, see [the Developer Console RPC tab](devConsoleRPCTab.md#kb-topic-the-developer-console-rpc-tab). The Developer Console features a [DataSources tab](dataSourcesTab.md#kb-topic-datasources-tab) to allow you to view and edit the available DataSources. The Develper Console also supports debugging of remote pages (very useful for mobile devices) - see [remoteDebugging](remoteDebugging.md#kb-topic-remote-debugging) for more information. The remainder of this topic focuses on use of the log system and related debugging facilities.
+Basic information on the features of the Developer Console can be found in the QuickStart Guide. For information about the "RPC" tab of the Developer Console and the request profiling information it can provide, see [the Developer Console RPC tab](devConsoleRPCTab.md#kb-topic-the-developer-console-rpc-tab). The Develper Console also supports debugging of remote pages (very useful for mobile devices) - see [remoteDebugging](remoteDebugging.md#kb-topic-remote-debugging) for more information. The remainder of this topic focuses on use of the log system and related debugging facilities.
 
 The Developer Console contains a "Results" pane that displays a list of diagnostic messages logged by the SmartClient framework. The "Logging Preferences" menu lets you enable and disable SmartClient's built-in diagnostics in several categories. Because important diagnostic messages may be logged at any time, you should have the Developer Console open whenever you are working with SmartClient (and you should bookmark the "javascript:" expression above to make this easier).
 
@@ -37,21 +37,13 @@ Occurred at 11:59:25 local time and 806 milliseconds. It's priority was `INFO`, 
 
 Each logging _category_ has a _priority_ associated with it. If a message's priority is lower than the current priority for the category it is logged in, the message will be suppressed (will not appear in the "Results" pane).
 
-Logging priorities for each log category may be configured in a running app using the Developer Console via the Logging Preferences menu. Click "More.." to see an extensive list of diagnostic log categories. Hover over each category name to see a description of what kind of messages are logged in the category.
-
-Developers may also use [Log.setLogPriority](../classes/Log.md#classmethod-logsetlogpriority) to configure log priorities programmatically.
-
-To add your own logs to the Developer Console, use [Class.logWarn](../classes/Class.md#method-classlogwarn), [Class.logInfo](../classes/Class.md#method-classloginfo) and related methods.
-
-Developers may also generate stack traces directly via [Log.getStackTrace](../classes/Log.md#classmethod-loggetstacktrace)
-
-If the current thread was started by a [timer](../classes/Timer.md#classmethod-timersettimeout), you can enable debug-level logging for the "timerTrace" log category to also include the stack trace leading up to the setTimeout call in most cases.
+It is critical to be familiar with the diagnostic categories built-in to SmartClient - you will use them in most debugging sessions. Open the Logging Preferences menu and select "More.." to see a list of diagnostic log categories. Hover over each category name to see a description of what kind of messages are logged in the category.
 
 #### Debugging JavaScript Errors
 
-Javascript errors will typically be reported in the Developer Console. Wherever possible a stack trace will be included which can help determine the cause of the error.
+Javascript errors will typically be reported in the Developer Console. Wherever possible a stack trace will be included which can help determine the cause of the error. In addition to this, recent versions of the Firefox browser (versions 6.0 and above) ship with some useful development tools including the Error Console for reporting errors. We also recommend Console2 and Firebug for debugging in Firefox.
 
-Stack traces from the Developer Console Explorer should _always_ be included in issue reports sent to Isomorphic Software, if at all possible.
+When JavaScript errors occur, SmartClient is usually able to report full stack traces in the Developer Console. This can be invaluable when your code triggers a JavaScript error in the SmartClient libraries themselves, or when it is unclear how your code is being called. Stack traces from the Developer Console Explorer should _always_ be included in issue reports sent to Isomorphic Software, if at all possible.
 
 #### Avoiding JavaScript Validation Errors from the Framework
 
@@ -106,7 +98,7 @@ Always include:
 
 Then, include **either** a standalone test case (see below), **or**:
 
-*   For JS errors, Stack traces as covered under "Debugging JavaScript Errors" above
+*   For JS errors, Stack traces from Firebug (for Firefox) or the Developer Console (for IE), as covered under "Debugging JavaScript Errors" above
 *   What server platform and [databinding approach](clientServerIntegration.md#kb-topic-client-server-integration) you are using, if applicable
 *   contents of the SmartClient Developer Console "Log messages" area, with appropriate diagnostic categories set the DEBUG or INFO level (see "Built-in Diagnostics" above)
 *   for any problem involving server contact, the complete server-side log for the request that fails or produces unexpected results
@@ -175,7 +167,7 @@ The core log methods (`logDebug()`, `logInfo()`, `logWarn()`) and the "echo" fac
      });
  
 ```
-The special value "this" is not always set to a SmartClient component, for example, in some kinds of callbacks (eg [fetchData()](../classes/ListGrid_2.md#method-listgridfetchdata)). When in doubt, use these methods via the Log class as `isc.Log.logWarn()`.
+The special value "this" is not always set to a SmartClient component, for example, in some kinds of callbacks (eg [fetchData()](../classes/ListGrid_1.md#method-listgridfetchdata)). When in doubt, use these methods via the Log class as `isc.Log.logWarn()`.
 
 **Find the source of logs** Sometimes, you will see a log message with a warning, usage error or other unusual condition, and it won't be clear how your code is causing the log to appear. In these situations, you can use [Log.traceLogMessage](../classes/Log.md#classmethod-logtracelogmessage) to request that a stack trace is logged whether that specific message appears. **Logging performance**
 

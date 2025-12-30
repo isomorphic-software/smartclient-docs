@@ -4,10 +4,12 @@
 
 ---
 
-## Attr: StretchItem.vSrc
+## Attr: StretchItem.height
 
 ### Description
-The URL of the media file for this StretchItem if the parent [StretchImg](StretchImg.md#class-stretchimg) is [vertical](StretchImg.md#attr-stretchimgvertical) and [StretchItem.src](#attr-stretchitemsrc) is unset.
+The height of the image. This can either be a number (for the number of pixels tall), the string "\*" (remaining space, divided amongst all items that specify height:"\*"), or the name of a property on the StretchImg component, such as "capSize" for the StretchImg's [capSize](StretchImg.md#attr-stretchimgcapsize).
+
+**NOTE:** The height is only used if the StretchImg stacks its images vertically ([StretchImg.vertical](StretchImg.md#attr-stretchimgvertical) is true).
 
 **Flags**: IR
 
@@ -16,26 +18,6 @@ The URL of the media file for this StretchItem if the parent [StretchImg](Stretc
 
 ### Description
 The URL of the media file for this StretchItem.
-
-**Flags**: IR
-
----
-## Attr: StretchItem.width
-
-### Description
-The width of the image. This can either be a number (for the number of pixels wide), the string "\*" (remaining space, divided amongst all items that specify width:"\*"), or the name of a property on the StretchImg component, such as "capSize" for the StretchImg's [capSize](StretchImg.md#attr-stretchimgcapsize).
-
-**NOTE:** The width is only used if the StretchImg stacks its images horizontally ([StretchImg.vertical](StretchImg.md#attr-stretchimgvertical) is false).
-
-**Flags**: IR
-
----
-## Attr: StretchItem.height
-
-### Description
-The height of the image. This can either be a number (for the number of pixels tall), the string "\*" (remaining space, divided amongst all items that specify height:"\*"), or the name of a property on the StretchImg component, such as "capSize" for the StretchImg's [capSize](StretchImg.md#attr-stretchimgcapsize).
-
-**NOTE:** The height is only used if the StretchImg stacks its images vertically ([StretchImg.vertical](StretchImg.md#attr-stretchimgvertical) is true).
 
 **Flags**: IR
 
@@ -50,10 +32,12 @@ For example, for a StretchImg in "Over" state with a [StretchImg.src](StretchImg
 **Flags**: IR
 
 ---
-## Attr: StretchItem.hSrc
+## Attr: StretchItem.width
 
 ### Description
-The URL of the media file for this StretchItem if the parent [StretchImg](StretchImg.md#class-stretchimg) is [not vertical](StretchImg.md#attr-stretchimgvertical) and [StretchItem.src](#attr-stretchitemsrc) is unset.
+The width of the image. This can either be a number (for the number of pixels wide), the string "\*" (remaining space, divided amongst all items that specify width:"\*"), or the name of a property on the StretchImg component, such as "capSize" for the StretchImg's [capSize](StretchImg.md#attr-stretchimgcapsize).
+
+**NOTE:** The width is only used if the StretchImg stacks its images horizontally ([StretchImg.vertical](StretchImg.md#attr-stretchimgvertical) is false).
 
 **Flags**: IR
 

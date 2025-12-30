@@ -12,7 +12,42 @@
 Form item for selecting a color via a pop-up [ColorPicker](ColorPicker.md#class-colorpicker).
 
 ---
+## Attr: ColorItem.defaultPickerMode
+
+### Description
+The [defaultPickMode](ColorPicker.md#attr-colorpickerdefaultpickmode) for the [ColorPicker](ColorPicker.md#class-colorpicker) associated with this `ColorItem`.
+
+### See Also
+
+- [ColorPicker.defaultPickMode](ColorPicker.md#attr-colorpickerdefaultpickmode)
+
+**Flags**: IR
+
+---
 ## Attr: ColorItem.pickerIconWidth
+
+### Description
+If [showPickerIcon](#attr-coloritemshowpickericon) is true for this item, this property governs the size of the picker icon. If unset, the picker icon will be sized as a square to fit in the available height for the icon.
+
+Note that if spriting is being used, and the image to be displayed is specified using css properties such as `background-image`, `background-size`, changing this value may result in an unexpected appearance as the image will not scale.  
+Scaleable spriting can be achieved using the [SCSpriteConfig](../reference.md#type-scspriteconfig) format. See the section on spriting in the [skinning overview](../kb_topics/skinning.md#kb-topic-skinning--theming) for further information.
+
+### Groups
+
+- pickerIcon
+
+**Flags**: IRW
+
+---
+## Attr: ColorItem.showPickerIcon
+
+### Description
+Should the pick button icon be shown for choosing colors from a ColorPicker
+
+**Flags**: IRW
+
+---
+## Attr: ColorItem.pickerIconHeight
 
 ### Description
 If [showPickerIcon](#attr-coloritemshowpickericon) is true for this item, this property governs the size of the picker icon. If unset, the picker icon will be sized as a square to fit in the available height for the icon.
@@ -61,41 +96,6 @@ Prompt to show when the user hovers the mouse over the picker icon.
 - i18nMessages
 
 **Flags**: IR
-
----
-## Attr: ColorItem.defaultPickerMode
-
-### Description
-The [defaultPickMode](ColorPicker.md#attr-colorpickerdefaultpickmode) for the [ColorPicker](ColorPicker.md#class-colorpicker) associated with this `ColorItem`.
-
-### See Also
-
-- [ColorPicker.defaultPickMode](ColorPicker.md#attr-colorpickerdefaultpickmode)
-
-**Flags**: IR
-
----
-## Attr: ColorItem.showPickerIcon
-
-### Description
-Should the pick button icon be shown for choosing colors from a ColorPicker
-
-**Flags**: IRW
-
----
-## Attr: ColorItem.pickerIconHeight
-
-### Description
-If [showPickerIcon](#attr-coloritemshowpickericon) is true for this item, this property governs the size of the picker icon. If unset, the picker icon will be sized as a square to fit in the available height for the icon.
-
-Note that if spriting is being used, and the image to be displayed is specified using css properties such as `background-image`, `background-size`, changing this value may result in an unexpected appearance as the image will not scale.  
-Scaleable spriting can be achieved using the [SCSpriteConfig](../reference.md#type-scspriteconfig) format. See the section on spriting in the [skinning overview](../kb_topics/skinning.md#kb-topic-skinning--theming) for further information.
-
-### Groups
-
-- pickerIcon
-
-**Flags**: IRW
 
 ---
 ## Attr: ColorItem.supportsTransparency

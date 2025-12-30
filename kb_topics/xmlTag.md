@@ -7,8 +7,6 @@
 ## KB Topic: <isomorphic:XML>
 
 ### Description
-See [jspTags](../reference.md#kb-topic-smartclient-jsp-tags)
-
 _produces:_ JavaScript
 
 This tag converts SmartClient UI components declaratively specified in the body of the tag to JavaScript for execution in the browser.

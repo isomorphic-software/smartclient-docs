@@ -14,210 +14,6 @@ This also effects components loaded via the [RPCManager.loadScreen](RPCManager.m
 **Flags**: IRWA
 
 ---
-## Attr: RPCRequest.isBackgroundRequest
-
-### Description
-Is this a background request?
-
-This attribute may be set to true for requests that do not interfere with the normal flow of user interaction within an application.
-
-Background requests are ignored by [AutoTest.waitForSystemDone](AutoTest.md#classmethod-autotestwaitforsystemdone), giving automated testing tools a way to identify specific operations that should not interfere with the flow of the test, without entirely disabling the ability to [wait for network operations](SystemWaitConfig.md#attr-systemwaitconfigincludenetworkoperations).
-
-**Flags**: IRW
-
----
-## Attr: RPCRequest.useSimpleHttp
-
-### Description
-When set to true, assume the request is not going to the SmartClient server, and hence send a simple HTTP request that does not use SmartClient-specific request encoding.
-
-Values specified in [RPCRequest.params](#attr-rpcrequestparams) are sent to to the server as HTTP request parameters. If [RPCRequest.httpMethod](#attr-rpcrequesthttpmethod) is "GET", parameters appear in the request URL, otherwise if httpMethod is "POST", parameters are encoded in the request body (exactly like an HTML form does). These parameters are then accessible via typical server-side APIs for retrieving HTTP parameters, eg, servletRequest.getParameter(paramName) in Java Servlets.
-
-Note that if [RPCRequest.httpMethod](#attr-rpcrequesthttpmethod) method is POST and [RPCRequest.data](#attr-rpcrequestdata) is supplied, [RPCRequest.data](#attr-rpcrequestdata) is assumed to be a string to post as the HTTP request body, and [RPCRequest.params](#attr-rpcrequestparams) are sent as URL parameters instead. This usage is for sending custom request bodies such as the XML payloads used for SOAP. In this case, [RPCRequest.contentType](#attr-rpcrequestcontenttype) is typically also set to indicate the content type of the request body.
-
-Setting `useSimpleHttp` to true also automatically sets [RPCRequest.serverOutputAsString](#attr-rpcrequestserveroutputasstring) to true as well.
-
-**Flags**: IRWA
-
----
-## Attr: RPCRequest.downloadResult
-
-### Description
-If enabled, causes the RPCRequest to download the requested resource as a file, either showing the browser's Save dialog or displaying the file-content in [a new browser window](#attr-rpcrequestdownloadtonewwindow).
-
-Download requests will use [transport](#attr-rpcrequesttransport): "hiddenFrame" by default.
-
-In this mode, the download will be performed by a standard HTTP request issued by the browser. If [DSRequest.downloadToNewWindow](#attr-rpcrequestdownloadtonewwindow) is true, the request will be targeted against a new browser window, and if the resulting file can be displayed inline by the browser it will be. If [DSRequest.downloadToNewWindow](#attr-rpcrequestdownloadtonewwindow) is not true, or the browser cannot display the returned file inline, the browser will download the file and store it to the user's file system.
-
-Download requests with [transport](#attr-rpcrequesttransport): "hiddenFrame" do not fire any callbacks.
-
-If a developer explicitly sets `request.transport` to "xmlHttpRequest", the browser will instead use an XMLHttpRequest to download the data from the server. This mode differs from hiddenFrame downloads in various ways:
-
-*   Explicit [RPCRequest.httpHeaders](#attr-rpcrequesthttpheaders) may be sent to the server in this mode
-*   Instead of automatically downloading the response to the user's filesystem, the server response will be available as a [Blob](https://developer.mozilla.org/en-US/docs/Web/API/Blob), and the [RPCRequest.downloadCallback](#method-rpcrequestdownloadcallback) will be invoked, if specified.  
-    Returning `false` from the downloadCallback will suppress the default behavior of saving the file to the user's filesystem, giving developers an opportunity to take other actions, such as generating a data URL from the Blob.
-*   xmlHttpRequest download does not have a built-in progress bar to indicate download progress. Developers may make use of the [RPCRequest.xhr_onProgress](#method-rpcrequestxhr_onprogress) event to indicate download progress if required.
-
-**Flags**: IRWA
-
----
-## Attr: RPCRequest.downloadToNewWindow
-
-### Description
-When [downloadResult](#attr-rpcrequestdownloadresult) is true, setting this attribute to true causes the content of the downloaded file to be displayed in a new browser window.
-
-Note that this setting is currently incompatible with [transport:"xmlHttpRequest"](#attr-rpcrequesttransport). See the [downloadResult](#attr-rpcrequestdownloadresult) documentation for more details on xmlHttpRequest downloads
-
-**Flags**: IRWA
-
----
-## Attr: RPCRequest.serverOutputAsString
-
-### Description
-Setting this flag makes the body of the HTTP response available as a String in the [RPCRequest.callback](#attr-rpcrequestcallback) as [RPCResponse.data](RPCResponse.md#attr-rpcresponsedata). This is typically only useful if you are sending a request that will **not** be received by the SmartClient Java Server, however in that case, set [RPCRequest.useSimpleHttp](#attr-rpcrequestusesimplehttp):true instead, which implies `serverOutputAsString:true`.
-
-`serverOutputAsString:true` allows you to, for example, load the contents of static files off your webserver into a string for processing on the client with no server support. The [RPCRequest.actionURL](#attr-rpcrequestactionurl) must be in the same domain as the current page for this to work.
-
-This feature relies on the XMLHttpRequest object which can be disabled by end-users in some supported browsers. See [platformDependencies](../kb_topics/platformDependencies.md#kb-topic-platform-dependencies) for more information.
-
-Generally this API is used for either [non-Java backends](../kb_topics/nonJavaBackend.md#kb-topic-net-php-serverless-integration) or for advanced usage such as content that requires processing before it can be used in SmartClient components (such as client-side web scraping). Note that SmartClient provides higher-level APIs for loading common types of data, see eg [HTMLFlow](HTMLFlow.md#class-htmlflow) for HTML content, [ViewLoader](ViewLoader.md#class-viewloader) for loading SmartClient components, [XMLTools.loadXML](XMLTools.md#classmethod-xmltoolsloadxml) for loading XML, [RPCRequest.evalResult](#attr-rpcrequestevalresult) for loading [JSON](http://www.json.org/), and [DataSource](DataSource.md#class-datasource) for loading structured data in various formats.
-
-**Flags**: IRWA
-
----
-## Attr: RPCRequest.useCursorTracker
-
-### Description
-If true, an image is shown to the right of the cursor when [RPCRequest.promptStyle](#attr-rpcrequestpromptstyle) is set to "cursor", otherwise the cursor itself is modified via css to the value of [RPCRequest.promptCursor](#attr-rpcrequestpromptcursor).
-
-If left unspecified, the default value is set by [RPCManager.useCursorTracker](RPCManager.md#classattr-rpcmanagerusecursortracker).
-
-### Groups
-
-- rpcPrompt
-
-### See Also
-
-- [RPCManager.useCursorTracker](RPCManager.md#classattr-rpcmanagerusecursortracker)
-
-**Flags**: IRW
-
----
-## Attr: RPCRequest.httpHeaders
-
-### Description
-HTTP headers to send, as a Object mapping Header name -> Header value, eg  
-{ "Content-Type" : "text/xml" }
-
-Valid with the xmlHttpRequest [transport](#attr-rpcrequesttransport) only.
-
-**Flags**: IRW
-
----
-## Attr: RPCRequest.bypassCache
-
-### Description
-For xmlHttp transport + httpMethod: "GET" only, set to true to force a conditional GET request even if the browser thinks it has a current cached response.
-
-**Flags**: IRWA
-
----
-## Attr: RPCRequest.paramsOnly
-
-### Description
-When set to true, assume the request is not going to the SmartClient server, and hence send a simple HTTP request. Values specified in [RPCRequest.params](#attr-rpcrequestparams) are sent to to the server as HTTP request parameters. If [RPCRequest.httpMethod](#attr-rpcrequesthttpmethod) method is POST and [RPCRequest.data](#attr-rpcrequestdata) is supplied, it is assumed to be a string to post as the HTTP requestBody.
-
-Setting this to true automatically defaults [RPCRequest.serverOutputAsString](#attr-rpcrequestserveroutputasstring) to true as well.
-
-**Deprecated**
-
-**Flags**: IRWA
-
----
-## Attr: RPCRequest.httpProxyURL
-
-### Description
-The proxy URL to use for this request (if [RPCRequest.useHttpProxy](#attr-rpcrequestusehttpproxy) is set for this request). If unset, the value of [RPCManager.httpProxyURL](RPCManager.md#classattr-rpcmanagerhttpproxyurl) will be used instead.
-
-### See Also
-
-- [RPCManager.httpProxyURL](RPCManager.md#classattr-rpcmanagerhttpproxyurl)
-
-**Flags**: IR
-
----
-## Attr: RPCRequest.promptCursor
-
-### Description
-Controls the cursor shown when [RPCManager.promptStyle](RPCManager.md#classattr-rpcmanagerpromptstyle) is set to `"cursor"` for this request only. Defaults to [RPCManager.promptCursor](RPCManager.md#classattr-rpcmanagerpromptcursor).
-
-### Groups
-
-- rpcPrompt
-
-### See Also
-
-- [RPCManager.promptCursor](RPCManager.md#classattr-rpcmanagerpromptcursor)
-
-**Flags**: IRW
-
----
-## Attr: RPCRequest.ignoreTimeout
-
-### Description
-When set to true, no reply is expected from the server. However, if a reply is received, it will be processed.
-
-Note: setting this to true, forces [RPCRequest.sendNoQueue](#attr-rpcrequestsendnoqueue) to `true` for this request.
-
-**Flags**: IRWA
-
----
-## Attr: RPCRequest.allowIE9Leak
-
-### Description
-Advanced flag to avoid a potential memory leak in Internet Explorer 9 for requests with JSON formatted responses.
-
-This attribute may be set to `false` to explicitly enable the workaround described [here](RPCManager.md#classattr-rpcmanagerallowie9leak) for this request, avoiding a potential memory leak in Internet Explorer 9.
-
-This workaround has a limitation in that if parsing the JSON response generates certain object types including JavaScript `Date` or `function` objects, attempts to interact with these objects can subsequently lead to a JavaScript error with the message `"Can't execute code from a freed script"`.
-
-This workaround therefore may not be suitable for all transactions or dataSources within a given application.
-
-This property may also be set globally within an application (via [RPCManager.allowIE9Leak](RPCManager.md#classattr-rpcmanagerallowie9leak))\_.
-
-Note: This memory leak and workaround is discussed further in the online [SmartClient FAQ](http://forums.smartclient.com/showthread.php?t=8159).
-
-**Flags**: IRA
-
----
-## Attr: RPCRequest.sendNoQueue
-
-### Description
-When set to true, this request is sent to the server immediately, bypassing any current queue.
-
-**Flags**: IRWA
-
----
-## Attr: RPCRequest.contentType
-
-### Description
-Valid with the xmlHttpRequest transport only and only when [RPCRequest.httpMethod](#attr-rpcrequesthttpmethod) is set to "POST".
-
-**Flags**: IRW
-
----
-## Attr: RPCRequest.omitNullMapValuesInResponse
-
-### Description
-If enabled, the server omits any key/value pairs in map that have null values from the response. This can reduce the size of the response when many fields have null values.
-
-To enable this globally for all responses you can set RPCManager.omitNullMapValuesInResponse in [server.properties](../kb_topics/server_properties.md#kb-topic-serverproperties-file).
-
-Note that [SQL DataSources](../kb_topics/sqlDataSource.md#kb-topic-sql-datasources) don't add nulls to results for null values so this flag does nothing in that case.
-
-**Flags**: IRWA
-
----
 ## Attr: RPCRequest.useXmlHttpRequest
 
 ### Description
@@ -257,6 +53,35 @@ See also the error handling section in the [RPCManager](RPCManager.md#class-rpcm
 **Flags**: IRW
 
 ---
+## Attr: RPCRequest.useSimpleHttp
+
+### Description
+When set to true, assume the request is not going to the SmartClient server, and hence send a simple HTTP request that does not use SmartClient-specific request encoding.
+
+Values specified in [RPCRequest.params](#attr-rpcrequestparams) are sent to to the server as HTTP request parameters. If [RPCRequest.httpMethod](#attr-rpcrequesthttpmethod) is "GET", parameters appear in the request URL, otherwise if httpMethod is "POST", parameters are encoded in the request body (exactly like an HTML form does). These parameters are then accessible via typical server-side APIs for retrieving HTTP parameters, eg, servletRequest.getParameter(paramName) in Java Servlets.
+
+Note that if [RPCRequest.httpMethod](#attr-rpcrequesthttpmethod) method is POST and [RPCRequest.data](#attr-rpcrequestdata) is supplied, [RPCRequest.data](#attr-rpcrequestdata) is assumed to be a string to post as the HTTP request body, and [RPCRequest.params](#attr-rpcrequestparams) are sent as URL parameters instead. This usage is for sending custom request bodies such as the XML payloads used for SOAP. In this case, [RPCRequest.contentType](#attr-rpcrequestcontenttype) is typically also set to indicate the content type of the request body.
+
+Setting `useSimpleHttp` to true also automatically sets [RPCRequest.serverOutputAsString](#attr-rpcrequestserveroutputasstring) to true as well.
+
+**Flags**: IRWA
+
+---
+## Attr: RPCRequest.downloadResult
+
+### Description
+If enabled, causes the RPCRequest to download the requested resource as a file, either showing the browser's Save dialog or displaying the file-content in [a new browser window](#attr-rpcrequestdownloadtonewwindow).
+
+Download requests do not fire a callback.  
+By default the request will use [transport](#attr-rpcrequesttransport): "hiddenFrame". Developers may override this by explicitly setting `request.transport` to "xmlHttpRequest". This mode allows developers to send [RPCRequest.httpHeaders](#attr-rpcrequesthttpheaders) to the server, but has some drawbacks:
+
+*   xmlHttpRequest download does not have a built-in progress bar to indicate download progress
+*   The browser must hold the entire XHR response in memory, whereas with normal download data is streamed to disk or to another application
+*   This mode does not currently support [RPCRequest.downloadToNewWindow](#attr-rpcrequestdownloadtonewwindow)
+
+**Flags**: IRWA
+
+---
 ## Attr: RPCRequest.transport
 
 ### Description
@@ -271,6 +96,16 @@ If you specify the `xmlHttpRequest` transport and it is not available, a warning
 ### See Also
 
 - [RPCManager.defaultTransport](RPCManager.md#classattr-rpcmanagerdefaulttransport)
+
+**Flags**: IRWA
+
+---
+## Attr: RPCRequest.downloadToNewWindow
+
+### Description
+When [downloadResult](#attr-rpcrequestdownloadresult) is true, setting this attribute to true causes the content of the downloaded file to be displayed in a new browser window.
+
+Note that this setting is currently incompatible with [transport:"xmlHttpRequest"](#attr-rpcrequesttransport). See the [downloadResult](#attr-rpcrequestdownloadresult) documentation for more details on xmlHttpRequest downloads
 
 **Flags**: IRWA
 
@@ -329,13 +164,25 @@ If you expect to receive a response to your RPC request, you can specify a callb
 
 Note that if the request encounters an error (such as 500 server error), by default the callback will **not** be fired, instead, [RPCManager.handleError](RPCManager.md#classmethod-rpcmanagerhandleerror) is called to invoke the default system-wide error handling. Set [RPCRequest.willHandleError](#attr-rpcrequestwillhandleerror):true to have your callback invoked regardless of whether there are errors, however, make sure your callback properly handles malformed responses when [RPCResponse.status](RPCResponse.md#attr-rpcresponsestatus) is non-zero. See the [error handling overview](../kb_topics/errorHandling.md#kb-topic-error-handling-overview) for more details.
 
-This callback will not be invoked for [RPCRequest.downloadResult](#attr-rpcrequestdownloadresult) download requests.
-
 ### Groups
 
 - errorHandling
 
 **Flags**: IRW
+
+---
+## Attr: RPCRequest.serverOutputAsString
+
+### Description
+Setting this flag makes the body of the HTTP response available as a String in the [RPCRequest.callback](#attr-rpcrequestcallback) as [RPCResponse.data](RPCResponse.md#attr-rpcresponsedata). This is typically only useful if you are sending a request that will **not** be received by the SmartClient Java Server, however in that case, set [RPCRequest.useSimpleHttp](#attr-rpcrequestusesimplehttp):true instead, which implies `serverOutputAsString:true`.
+
+`serverOutputAsString:true` allows you to, for example, load the contents of static files off your webserver into a string for processing on the client with no server support. The [RPCRequest.actionURL](#attr-rpcrequestactionurl) must be in the same domain as the current page for this to work.
+
+This feature relies on the XMLHttpRequest object which can be disabled by end-users in some supported browsers. See [platformDependencies](../kb_topics/platformDependencies.md#kb-topic-platform-dependencies) for more information.
+
+Generally this API is used for either [non-Java backends](../kb_topics/nonJavaBackend.md#kb-topic-net-php-serverless-integration) or for advanced usage such as content that requires processing before it can be used in SmartClient components (such as client-side web scraping). Note that SmartClient provides higher-level APIs for loading common types of data, see eg [HTMLFlow](HTMLFlow.md#class-htmlflow) for HTML content, [ViewLoader](ViewLoader.md#class-viewloader) for loading SmartClient components, [XMLTools.loadXML](XMLTools.md#classmethod-xmltoolsloadxml) for loading XML, [RPCRequest.evalResult](#attr-rpcrequestevalresult) for loading [JSON](http://www.json.org/), and [DataSource](DataSource.md#class-datasource) for loading structured data in various formats.
+
+**Flags**: IRWA
 
 ---
 ## Attr: RPCRequest.showPrompt
@@ -359,10 +206,28 @@ If promptStyle is set to "cursor" for the request that specified showPrompt: tru
 **Flags**: IRW
 
 ---
+## Attr: RPCRequest.useCursorTracker
+
+### Description
+If true, an image is shown to the right of the cursor when [RPCRequest.promptStyle](#attr-rpcrequestpromptstyle) is set to "cursor", otherwise the cursor itself is modified via css to the value of [RPCRequest.promptCursor](#attr-rpcrequestpromptcursor).
+
+If left unspecified, the default value is set by [RPCManager.useCursorTracker](RPCManager.md#classattr-rpcmanagerusecursortracker).
+
+### Groups
+
+- rpcPrompt
+
+### See Also
+
+- [RPCManager.useCursorTracker](RPCManager.md#classattr-rpcmanagerusecursortracker)
+
+**Flags**: IRW
+
+---
 ## Attr: RPCRequest.callbackParam
 
 ### Description
-For use only with the [scriptInclude](../reference.md#type-rpctransport) transport, this attribute specifies the name of the URL parameter which is used to specify the callback function that the server is expected to call by writing out JavaScript code. The actual function to call is automatically generated and differs for every request (to allow concurrency).
+For use only with the [scriptInclude](../reference_2.md#type-rpctransport) transport, this attribute specifies the name of the URL parameter which is used to specify the callback function that the server is expected to call by writing out JavaScript code. The actual function to call is automatically generated and differs for every request (to allow concurrency).
 
 For example, with `callbackParam` set to it's default value of "callback", the server might be contacted with a URL like:
 
@@ -452,6 +317,17 @@ This feature relies on the XMLHttpRequest object which can be disabled by end-us
 **Flags**: IRWA
 
 ---
+## Attr: RPCRequest.httpHeaders
+
+### Description
+HTTP headers to send, as a Object mapping Header name -> Header value, eg  
+{ "Content-Type" : "text/xml" }
+
+Valid with the xmlHttpRequest [transport](#attr-rpcrequesttransport) only.
+
+**Flags**: IRW
+
+---
 ## Attr: RPCRequest.httpMethod
 
 ### Description
@@ -537,18 +413,42 @@ When **not** communicating with the SmartClient server, `rpcRequest.data` become
 **Flags**: IRW
 
 ---
-## Attr: RPCRequest.reportDownloadErrorsAsDocuments
+## Attr: RPCRequest.bypassCache
 
 ### Description
-Whether errors during download should be reported inside the document, rather than through the [normal mechanism](RPCResponse.md#attr-rpcresponsestatus). If unset, this will be defaulted from [RPCManager.reportDownloadErrorsAsDocuments](RPCManager.md#classattr-rpcmanagerreportdownloaderrorsasdocuments).
+For xmlHttp transport + httpMethod: "GET" only, set to true to force a conditional GET request even if the browser thinks it has a current cached response.
 
-**Flags**: IRW
+**Flags**: IRWA
+
+---
+## Attr: RPCRequest.paramsOnly
+
+### Description
+When set to true, assume the request is not going to the SmartClient server, and hence send a simple HTTP request. Values specified in [RPCRequest.params](#attr-rpcrequestparams) are sent to to the server as HTTP request parameters. If [RPCRequest.httpMethod](#attr-rpcrequesthttpmethod) method is POST and [RPCRequest.data](#attr-rpcrequestdata) is supplied, it is assumed to be a string to post as the HTTP requestBody.
+
+Setting this to true automatically defaults [RPCRequest.serverOutputAsString](#attr-rpcrequestserveroutputasstring) to true as well.
+
+**Deprecated**
+
+**Flags**: IRWA
+
+---
+## Attr: RPCRequest.httpProxyURL
+
+### Description
+The proxy URL to use for this request (if [RPCRequest.useHttpProxy](#attr-rpcrequestusehttpproxy) is set for this request). If unset, the value of [RPCManager.httpProxyURL](RPCManager.md#classattr-rpcmanagerhttpproxyurl) will be used instead.
+
+### See Also
+
+- [RPCManager.httpProxyURL](RPCManager.md#classattr-rpcmanagerhttpproxyurl)
+
+**Flags**: IR
 
 ---
 ## Attr: RPCRequest.withCredentials
 
 ### Description
-In browsers that support [Cross-Origin Resource Sharing](https://fetch.spec.whatwg.org/#http-cors-protocol) and [XMLHttpRequest 2](http://caniuse.com/#feat=xhr2), and where the service at the [actionURL](#attr-rpcrequestactionurl) allows the origin to send credentials (see `Access-Control-Allow-Credentials`), should user credentials such as cookies, HTTP authentication, and client-side SSL certificates be sent with the actual CORS request?
+In browsers that support [Cross-Origin Resource Sharing](http://www.w3.org/TR/cors/) and [XMLHttpRequest 2](http://caniuse.com/#feat=xhr2), and where the service at the [actionURL](#attr-rpcrequestactionurl) allows the origin to send credentials (see [`Access-Control-Allow-Credentials`](http://www.w3.org/TR/cors/#access-control-allow-credentials-response-header)), should [user credentials](http://www.w3.org/TR/cors/#user-credentials) such as cookies, HTTP authentication, and client-side SSL certificates be sent with the actual CORS request?
 
 This setting only applies when the request [transport](#attr-rpcrequesttransport) is "xmlHttpRequest".
 
@@ -587,6 +487,32 @@ If enabled and request is applied to [RPCManager.cacheScreens](RPCManager.md#cla
 **Flags**: IR
 
 ---
+## Attr: RPCRequest.promptCursor
+
+### Description
+Controls the cursor shown when [RPCManager.promptStyle](RPCManager.md#classattr-rpcmanagerpromptstyle) is set to `"cursor"` for this request only. Defaults to [RPCManager.promptCursor](RPCManager.md#classattr-rpcmanagerpromptcursor).
+
+### Groups
+
+- rpcPrompt
+
+### See Also
+
+- [RPCManager.promptCursor](RPCManager.md#classattr-rpcmanagerpromptcursor)
+
+**Flags**: IRW
+
+---
+## Attr: RPCRequest.ignoreTimeout
+
+### Description
+When set to true, no reply is expected from the server. However, if a reply is received, it will be processed.
+
+Note: setting this to true, forces [RPCRequest.sendNoQueue](#attr-rpcrequestsendnoqueue) to `true` for this request.
+
+**Flags**: IRWA
+
+---
 ## Attr: RPCRequest.evalVars
 
 ### Description
@@ -615,12 +541,30 @@ The `clientContext` is useful for holding onto state that will be used when the 
 **Flags**: IRW
 
 ---
+## Attr: RPCRequest.allowIE9Leak
+
+### Description
+Advanced flag to avoid a potential memory leak in Internet Explorer 9 for requests with JSON formatted responses.
+
+This attribute may be set to `false` to explicitly enable the workaround described [here](RPCManager.md#classattr-rpcmanagerallowie9leak) for this request, avoiding a potential memory leak in Internet Explorer 9.
+
+This workaround has a limitation in that if parsing the JSON response generates certain object types including JavaScript `Date` or `function` objects, attempts to interact with these objects can subsequently lead to a JavaScript error with the message `"Can't execute code from a freed script"`.
+
+This workaround therefore may not be suitable for all transactions or dataSources within a given application.
+
+This property may also be set globally within an application (via [RPCManager.allowIE9Leak](RPCManager.md#classattr-rpcmanagerallowie9leak))\_.
+
+Note: This memory leak and workaround is discussed further in the online [SmartClient FAQ](http://forums.smartclient.com/showthread.php?t=8159).
+
+**Flags**: IRA
+
+---
 ## Attr: RPCRequest.useStrictJSON
 
 ### Description
 If set true, tells the server to use strict JSON format when serializing the response data. If set false, tells the server to use a more permissive encoding that is still valid JS, but is not technically valid JSON. The default value of null tells the server to use the default global setting (see below).
 
-To enable this globally for all responses you can set `RPCManager.useStrictJSON` in [server.properties](../kb_topics/server_properties.md#kb-topic-serverproperties-file). If the global flag is not set either way in `server.properties`, it defaults to false.
+To enable this globally for all responses you can set `RPCManager.useStrictJSON` in [server.properties](../reference.md#kb-topic-serverproperties-file). If the global flag is not set either way in `server.properties`, it defaults to false.
 
 ### See Also
 
@@ -629,46 +573,31 @@ To enable this globally for all responses you can set `RPCManager.useStrictJSON`
 **Flags**: IRWA
 
 ---
-## Method: RPCRequest.xhr_onProgress
+## Attr: RPCRequest.sendNoQueue
 
 ### Description
-Progress event notification fired repeatedly during requests with [RPCRequest.transport](#attr-rpcrequesttransport) set to `"xmlHttpRequest"`.
+When set to true, this request is sent to the server immediately, bypassing any current queue.
 
-This callback will be invoked from the native [XMLHttpRequest progress event](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/progress_event).
-
-This is typically useful to provide visual feedback to the user when a lengthy download is in progress.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| progressEvent | [Object](../reference.md#type-object) | false | — | The native [ProgressEvent](https://developer.mozilla.org/en-US/docs/Web/API/ProgressEvent) with attributes indicating the `loaded` content so far, and, if `Content-Length` headers were set on the response, the `total` download size. Note that this is a native event produced by the browser and SmartClient does not guarantee consistency for the event object, or the timing of the `onprogress` event notifications across browsers. |
-| request | [RPCRequest](#type-rpcrequest) | false | — | the request that initiated the download |
+**Flags**: IRWA
 
 ---
-## Method: RPCRequest.downloadCallback
+## Attr: RPCRequest.contentType
 
 ### Description
-Callback for [download requests](#attr-rpcrequestdownloadresult) with [RPCRequest.transport](#attr-rpcrequesttransport) set to `"xmlHttpRequest"`.
+Valid with the xmlHttpRequest transport only and only when [RPCRequest.httpMethod](#attr-rpcrequesthttpmethod) is set to "POST".
 
-This method will fire when a download request completes. If [DSRequest.willHandleError](#attr-rpcrequestwillhandleerror) is true it will fire on both successful completion or failure as reflected by the [DSResponse.status](DSResponse.md#attr-dsresponsestatus).
+**Flags**: IRW
 
-By default, successful download requests will save the returned file to the filesystem. To suppress this behavior, return false from this callback. This allows you to take some other action such as generating a [data url](https://developer.mozilla.org/en-US/docs/web/http/basics_of_http/data_urls) to display media, etc.
+---
+## Attr: RPCRequest.omitNullMapValuesInResponse
 
-Note that for a successful download request, the `data` parameter will be a [Blob](https://developer.mozilla.org/en-US/docs/Web/API/Blob). For an unsuccessful download attempt, the data parameter typically contains the error message from the server. To invoke standard error handling, [RPCManager.runDefaultErrorHandling](RPCManager.md#classmethod-rpcmanagerrundefaulterrorhandling) may be called.
+### Description
+If enabled, the server omits any key/value pairs in map that have null values from the response. This can reduce the size of the response when many fields have null values.
 
-### Parameters
+To enable this globally for all responses you can set RPCManager.omitNullMapValuesInResponse in [server.properties](../reference.md#kb-topic-serverproperties-file).
 
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| response | [RPCResponse](#type-rpcresponse) | false | — | the response to the request |
-| data | [Object](../reference.md#type-object) | false | — | The Blob returned by the server, or error message if the download was unsuccessful |
-| fileName | [String](#type-string) | false | — | The file name for the downloaded file, derived from the [content-disposition header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Disposition). |
-| type | [String](#type-string) | false | — | the content type for the downloaded file, as specified by the [content-type header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Type). |
-| request | [RPCRequest](#type-rpcrequest) | false | — | the request that initiated the download |
+Note that [SQL DataSources](../kb_topics/sqlDataSource.md#kb-topic-sql-datasources) don't add nulls to results for null values so this flag does nothing in that case.
 
-### Returns
-
-`[Boolean](#type-boolean)` — return false to suppress default behavior of saving the download file to the user's filesystem.
+**Flags**: IRWA
 
 ---

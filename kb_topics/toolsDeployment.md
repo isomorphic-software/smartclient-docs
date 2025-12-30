@@ -10,8 +10,8 @@
 SmartClient provides a number of tools:
 
 *   [adminConsole](adminConsole.md#kb-topic-admin-console)
-*   [dbConfigTool](dbConfigTool.md#kb-topic-database-configuration)
-*   [reify](reify.md#kb-topic-reify-overview)
+*   [dbConfigTool](dbConfigTool.md#kb-topic-database-configuration-tools)
+*   [visualBuilder](visualBuilder.md#kb-topic-visual-builder)
 *   [balsamiqImport](balsamiqImport.md#kb-topic-mockup-importer)
 *   [Developer Console](debugging.md#kb-topic-debugging)
 
@@ -21,7 +21,7 @@ To deploy the tools simply copy the `tools` directory into your deployment. Ther
 
 These tools are, by default, available to anyone and enable access to all "BuiltinRPCs" and the Filesystem DataSource so they should only be deployed into a trusted environment. Alternately, the tools can easily be restricted to administrators or end users by protecting the `tools` path with normal authentication and authorization mechanisms on the web server.
 
-More fine-grained access control can be installed by updating each tool's `xxxOperations.jsp` file (ex. tools/adminConsoleOperations.jsp). These files are responsible for enabling builtinRPC and FileSystem DataSource access. Individual BuiltinRPC methods can be restricted, for example, such that some users are allowed to load screens but not save any changes. See comments within each file for an example of restricting this access. See the server-side Javadocs for methods provided by `BuiltinRPC`.
+More fine-grained access control can be installed by updating each tool's `xxxOperations.jsp` file (ex. tools/adminConsoleOperations.jsp, tools/visualBuilder/vbOperations.jsp). These files are responsible for enabling builtinRPC and FileSystem DataSource access. Individual BuiltinRPC methods can be restricted, for example, such that some users are allowed to load screens but not save any changes. See comments within each file for an example of restricting this access. See the server-side Javadocs for methods provided by `BuiltinRPC`.
 
 Note that the tools provides a "live" interface to the provided DataSources. In other words, if a DataSource supports saving and a tool enables editing, real saves will be initiated.
 

@@ -12,14 +12,40 @@
 IMenuButton based version of the [MenuButton](MenuButton.md#class-menubutton) class.
 
 ---
+## Attr: IMenuButton.height
+
+### Description
+Default height of the button.
+
+**Flags**: IRW
+
+---
+## Attr: IMenuButton.menu
+
+### Description
+The menu to show.
+
+For a menu button with no menu (menu: null) the up/down arrow image can be suppressed by setting [showMenuButtonImage](MenuButton.md#attr-menubuttonshowmenubuttonimage): `false`.
+
+**Flags**: IRW
+
+---
 ## Attr: IMenuButton.autoDestroyMenu
 
 ### Description
 If this menuButton is [destroyed](Canvas.md#method-canvasdestroy), should it also destroy its [MenuButton.menu](MenuButton.md#attr-menubuttonmenu)?
 
+**Flags**: IRW
+
+---
+## Attr: IMenuButton.title
+
+### Description
+Default title for the button.
+
 ### Groups
 
-- menu
+- i18nMessages
 
 **Flags**: IRW
 
@@ -40,62 +66,10 @@ If this MenuButton has a specified [accessKey](Canvas.md#attr-canvasaccesskey), 
 **Flags**: IR
 
 ---
-## Attr: IMenuButton.showMenuBelow
-
-### Description
-The menu drops down below the menu button. Set to false if the menu should appear above the menu button.
-
-Note that this setting may be ignored if it would cause the menu to be clipped by the browser viewport.
-
-### Groups
-
-- menu
-
-**Flags**: IRW
-
----
-## Attr: IMenuButton.height
-
-### Description
-Default height of the button.
-
-**Flags**: IRW
-
----
-## Attr: IMenuButton.menu
-
-### Description
-The menu to show.
-
-For a menu button with no menu (menu: null) the up/down arrow image can be suppressed by setting [showMenuButtonImage](MenuButton.md#attr-menubuttonshowmenubuttonimage): `false`.
-
-### Groups
-
-- menu
-
-**Flags**: IRW
-
----
-## Attr: IMenuButton.title
-
-### Description
-Default title for the button.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
-
----
 ## Attr: IMenuButton.menuButtonImage
 
 ### Description
 Image for menu button indicating that the button expands a menu. This image is shown for menus expanding down from the button. Menu direction is controlled by [MenuButton.showMenuBelow](MenuButton.md#attr-menubuttonshowmenubelow).
-
-### Groups
-
-- menu
 
 ### See Also
 
@@ -104,14 +78,18 @@ Image for menu button indicating that the button expands a menu. This image is s
 **Flags**: IRA
 
 ---
+## Attr: IMenuButton.showMenuBelow
+
+### Description
+The menu drops down below the menu button. Set to false if the menu should appear above the menu button.
+
+**Flags**: IRW
+
+---
 ## Attr: IMenuButton.showMenuButtonImage
 
 ### Description
 Show menu button image (up / down arrowhead) for this menu button.
-
-### Groups
-
-- menu
 
 **Flags**: IR
 
@@ -121,10 +99,6 @@ Show menu button image (up / down arrowhead) for this menu button.
 ### Description
 The horizontal alignment of this button's menu, in relation to the button. When unset, default behavior is to align the right edges of button and menu if the page is in RTL mode, and the left edges otherwise.
 
-### Groups
-
-- menu
-
 **Flags**: IR
 
 ---
@@ -132,10 +106,6 @@ The horizontal alignment of this button's menu, in relation to the button. When 
 
 ### Description
 Image for menu button indicating that the button expands a menu. This image is shown for menus expanding up from the button. Menu direction is controlled by [MenuButton.showMenuBelow](MenuButton.md#attr-menubuttonshowmenubelow).
-
-### Groups
-
-- menu
 
 ### See Also
 
@@ -147,17 +117,13 @@ Image for menu button indicating that the button expands a menu. This image is s
 ## Method: IMenuButton.setShowMenuBelow
 
 ### Description
-Setter for the 'showMenuButtonBelow' property - determines whether the menu will be shown above or below the `MenuButton`.
+Setter for the 'showMenuButtonBelow' property - determines whether the menu will be shown above or below the menubutton.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| below | [boolean](../reference.md#type-boolean) | false | — | True if the menu should be shown below the `MenuButton`. |
-
-### Groups
-
-- menu
+| below | [boolean](../reference.md#type-boolean) | false | — | True if the menu should be shown below the menubutton. |
 
 ---
 ## Method: IMenuButton.setShowMenuButtonImage
@@ -170,9 +136,5 @@ Setter for the 'showMenuButtonImage' property - shows/hides the menu button imag
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | show | [boolean](../reference.md#type-boolean) | false | — | Should the image be shown |
-
-### Groups
-
-- menu
 
 ---

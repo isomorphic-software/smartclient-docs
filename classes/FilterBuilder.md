@@ -32,272 +32,6 @@ Properties to combine with the [FilterBuilder.operatorPicker](#attr-filterbuilde
 **Flags**: IR
 
 ---
-## Attr: FilterBuilder.fieldDataSource
-
-### Description
-If specified, the FilterBuilder will dynamically fetch DataSourceField definitions from this DataSource rather than using [FilterBuilder.dataSource](#attr-filterbuilderdatasource). May be specified as a DataSource instance or the String ID of a DataSource. The [FieldPicker](FieldPicker.md#class-fieldpicker) will default to being a [ComboBoxItem](ComboBoxItem.md#class-comboboxitem) rather than a [SelectItem](SelectItem.md#class-selectitem) so that the user will have type-ahead auto-completion.
-
-The records returned from the `fieldDataSource` must have properties corresponding to a [DataSourceField](../reference_2.md#object-datasourcefield) definition, at a minimum, ["name"](DataSourceField.md#attr-datasourcefieldname) and ["type"](DataSourceField.md#attr-datasourcefieldtype). Any property legal on a DataSourceField is legal on the returned records, including [valueMap](DataSourceField.md#attr-datasourcefieldvaluemap).
-
-Even when a `fieldDataSource` is specified, [FilterBuilder.dataSource](#attr-filterbuilderdatasource) may still be specified in order to control the list of [valid operators](DataSource.md#method-datasourcesettypeoperators) for each field.
-
-**Flags**: IR
-
----
-## Attr: FilterBuilder.showLastRemoveButton
-
-### Description
-If set to false and showing clause [remove buttons](#attr-filterbuildershowremovebutton) and [the last clause cannot be removed](#attr-filterbuilderallowempty) the remove clause button will be hidden.
-
-**Flags**: IR
-
----
-## Attr: FilterBuilder.inlineAndTitle
-
-### Description
-Title for the "And" operator (only applicable to the "inline" appearance)
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IR
-
----
-## Attr: FilterBuilder.defaultSubClauseOperator
-
-### Description
-Default operator for subclauses added via the [FilterBuilder.subClauseButton](#attr-filterbuildersubclausebutton).
-
-**Flags**: IR
-
----
-## Attr: FilterBuilder.radioOptions
-
-### Description
-Logical operators to allow if we have a [TopOperatorAppearance](../reference.md#type-topoperatorappearance) of "radio".
-
-**Deprecated**
-
-**Flags**: IR
-
----
-## Attr: FilterBuilder.radioOperatorTitle
-
-### Description
-The title for the Operator RadioGroupItem displayed in the [FilterBuilder.radioOperatorForm](#attr-filterbuilderradiooperatorform).
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IR
-
----
-## Attr: FilterBuilder.topOperatorAppearance
-
-### Description
-How to display and edit the [top-level operator](#attr-filterbuildertopoperator) for this FilterBuilder.
-
-See [TopOperatorAppearance](../reference.md#type-topoperatorappearance) for a list of options.
-
-**Flags**: IRW
-
----
-## Attr: FilterBuilder.showHiddenFields
-
-### Description
-By default only non-hidden fields are shown for selection. To include hidden fields for selection set this property to `true`.
-
-**Flags**: IR
-
----
-## Attr: FilterBuilder.removeButton
-
-### Description
-The removal ImgButton that appears before each clause if [FilterBuilder.showRemoveButton](#attr-filterbuildershowremovebutton) is set.
-
-**Flags**: IR
-
----
-## Attr: FilterBuilder.allowedFields
-
-### Description
-List of explicit fields for user field selection. If not specified, the list of fields is derived from the [dataSource](#attr-filterbuilderdatasource).
-
-Note: this property is not a security feature as it only controls the UI. To consistently limit searchability for certain fields use [canFilter](DataSourceField.md#attr-datasourcefieldcanfilter).
-
-### See Also
-
-- [FilterBuilder.showHiddenFields](#attr-filterbuildershowhiddenfields)
-
-**Flags**: IR
-
----
-## Attr: FilterBuilder.rangeSeparator
-
-### Description
-For operators that check that a value is within a range, text to show between the start and end input fields for specifying the limits of the range.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IR
-
----
-## Attr: FilterBuilder.topOperator
-
-### Description
-Default logical operator for all top-level clauses in the FilterBuilder.
-
-May be able to be changed by the user via the UI, according to [TopOperatorAppearance](../reference.md#type-topoperatorappearance).
-
-**Flags**: IRW
-
----
-## Attr: FilterBuilder.valueQueryAggregateButtonPrompt
-
-### Description
-The hover prompt text for the dynamic value button.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IR
-
----
-## Attr: FilterBuilder.topOperatorOptions
-
-### Description
-Logical operators to allow for [TopOperatorAppearance](../reference.md#type-topoperatorappearance)s of "radio" and "bracket".
-
-Note that this list may be further limited according to the [available operators](DataSource.md#method-datasourcegettypeoperatormap) returned by the [DataSource](DataSource.md#class-datasource).
-
-**Flags**: IR
-
----
-## Attr: FilterBuilder.operatorPickerTitle
-
-### Description
-The title for the operator-picker select-item.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IR
-
----
-## Attr: FilterBuilder.showSubClauseButton
-
-### Description
-Whether to show a button that allows the user to add subclauses. Defaults to false if the [TopOperatorAppearance](../reference.md#type-topoperatorappearance) is "radio" or "inline", true in all other cases.
-
-**Flags**: IR
-
----
-## Attr: FilterBuilder.fieldPickerTitle
-
-### Description
-The title for the [field-picker](#attr-filterbuilderfieldpicker) select-item.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IR
-
----
-## Attr: FilterBuilder.missingFieldPrompt
-
-### Description
-The message to display next to fieldNames that do not exist in the available dataSource.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IR
-
----
-## Attr: FilterBuilder.modeSwitcherSimpleMessage
-
-### Description
-Title for the "Simple Mode.." mode switcher label (only applicable to the "bracket" appearance).
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IR
-
----
-## Attr: FilterBuilder.clauseStack
-
-### Description
-VStack of all clauses that are part of this FilterBuilder
-
-**Flags**: IR
-
----
-## Attr: FilterBuilder.showAddButton
-
-### Description
-If set, a button will be shown underneath all current clauses allowing a new clause to be added.
-
-**Flags**: IR
-
----
-## Attr: FilterBuilder.saveOnEnter
-
-### Description
-If true, when the user hits the Enter key while focused in a text-item in this FilterBuilder, we automatically invoke the user-supplied [FilterBuilder.search](#method-filterbuildersearch) method.
-
-**Flags**: IR
-
----
-## Attr: FilterBuilder.addButtonPrompt
-
-### Description
-The hover prompt text for the add button.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IR
-
----
-## Attr: FilterBuilder.validateOnChange
-
-### Description
-If true (the default), validates each entered value when it changes, to make sure it is a a valid value of its type (valid string, number, and so on). No other validation is carried out. If you switch this property off, it is still possible to validate the `FilterBuilder` by calling [FilterBuilder.validate](#method-filterbuildervalidate) from your own code.
-
-**Flags**: IR
-
----
-## Attr: FilterBuilder.showSelectionCheckbox
-
-### Description
-If true, causes a CheckboxItem to appear to the left of each clause in "inline" [appearance](../reference.md#type-topoperatorappearance). This checkbox allows the user to select individual clauses so that, for example, clauses can be removed from the filterBuilder by application code. This property is ignored for appearances other than "inline".
-
-**Flags**: IR
-
----
-## Attr: FilterBuilder.lastClausePrompt
-
-### Description
-The hover prompt text for the remove button in the last remaining clause, when [allowEmpty](#attr-filterbuilderallowempty) is false.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
-
----
 ## Attr: FilterBuilder.subClauseButtonTitle
 
 ### Description
@@ -318,16 +52,14 @@ If set to false, the last clause cannot be removed.
 **Flags**: IR
 
 ---
-## Attr: FilterBuilder.allowAggregates
+## Attr: FilterBuilder.fieldDataSource
 
 ### Description
-Should aggregates be allowed as either the field or value?
+If specified, the FilterBuilder will dynamically fetch DataSourceField definitions from this DataSource rather than using [FilterBuilder.dataSource](#attr-filterbuilderdatasource). The [FieldPicker](FieldPicker.md#class-fieldpicker) will default to being a [ComboBoxItem](ComboBoxItem.md#class-comboboxitem) rather than a [SelectItem](SelectItem.md#class-selectitem) so that the user will have type-ahead auto-completion.
 
-**This feature is available with Power or better licenses only.** See [smartclient.com/product](http://smartclient.com/product) for details.
+The records returned from the `fieldDataSource` must have properties corresponding to a [DataSourceField](../reference.md#object-datasourcefield) definition, at a minimum, ["name"](DataSourceField.md#attr-datasourcefieldname) and ["type"](DataSourceField.md#attr-datasourcefieldtype). Any property legal on a DataSourceField is legal on the returned records, including [valueMap](DataSourceField.md#attr-datasourcefieldvaluemap).
 
-### See Also
-
-- [FilterBuilder.allowRelatedRecordCriteria](#attr-filterbuilderallowrelatedrecordcriteria)
+Even when a `fieldDataSource` is specified, [FilterBuilder.dataSource](#attr-filterbuilderdatasource) may still be specified in order to control the list of [valid operators](DataSource.md#method-datasourcesettypeoperators) for each field.
 
 **Flags**: IR
 
@@ -345,25 +77,9 @@ Shows either [modeSwitcherSimpleMessage](#attr-filterbuildermodeswitchersimpleme
 ## Attr: FilterBuilder.dataSource
 
 ### Description
-DataSource this filter should use for field definitions and available [Operator](../reference.md#object-operator)s.
+DataSource this filter should use for field definitions and available [Operator](../reference_2.md#object-operator)s.
 
 **Flags**: IRW
-
----
-## Attr: FilterBuilder.aggregationDataSources
-
-### Description
-List of [DataSources](DataSource.md#class-datasource) to choose from when constructing a field or value sub-query if [FilterBuilder.allowAggregates](#attr-filterbuilderallowaggregates) is enabled. If not specified, the [filter DataSource](#attr-filterbuilderdatasource) plus all related DataSources are used.
-
-**Flags**: IR
-
----
-## Attr: FilterBuilder.iconBaseStyle
-
-### Description
-CSS class to apply to the [add](#attr-filterbuilderaddbutton) and [remove](#attr-filterbuilderremovebutton) clause buttons.
-
-**Flags**: IR
 
 ---
 ## Attr: FilterBuilder.modeSwitcherAdvancedMessage
@@ -419,7 +135,7 @@ Initial criteria.
 
 When initialized with criteria, appropriate clauses for editing the provided criteria will be automatically generated.
 
-Note that empty or partial criteria are allowed, for example, criteria that specify [Criterion.fieldName](Criterion.md#attr-criterionfieldname) only will generate an expression with the operator not chosen yet, and a [Criterion](../reference_2.md#object-criterion) with a logical operator ("and" or "or") but not [subcriteria](Criterion.md#attr-criterioncriteria) defined will generate an empty subclause.
+Note that empty or partial criteria are allowed, for example, criteria that specify [Criterion.fieldName](Criterion.md#attr-criterionfieldname) only will generate an expression with the operator not chosen yet, and a [Criterion](../reference.md#object-criterion) with a logical operator ("and" or "or") but not [subcriteria](Criterion.md#attr-criterioncriteria) defined will generate an empty subclause.
 
 **Flags**: IRW
 
@@ -432,10 +148,18 @@ Width for the [FilterBuilder.topOperatorItem](#attr-filterbuildertopoperatoritem
 **Flags**: IR
 
 ---
+## Attr: FilterBuilder.showLastRemoveButton
+
+### Description
+If set to false and showing clause [remove buttons](#attr-filterbuildershowremovebutton) and [the last clause cannot be removed](#attr-filterbuilderallowempty) the remove clause button will be hidden.
+
+**Flags**: IR
+
+---
 ## Attr: FilterBuilder.subClauseButton
 
 ### Description
-Button allowing the user to add subclauses grouped by a [LogicalOperator](../reference_2.md#type-logicaloperator).
+Button allowing the user to add subclauses grouped by a [LogicalOperator](../reference.md#type-logicaloperator).
 
 **Flags**: IR
 
@@ -448,10 +172,70 @@ An ImgButton that allows new clauses to be added if [FilterBuilder.showAddButton
 **Flags**: IR
 
 ---
+## Attr: FilterBuilder.inlineAndTitle
+
+### Description
+Title for the "And" operator (only applicable to the "inline" appearance)
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IR
+
+---
 ## Attr: FilterBuilder.sortFields
 
 ### Description
 Should the [FieldPicker](FieldPicker.md#class-fieldpicker) items be sorted alphabetically in the drop down list.
+
+**Flags**: IR
+
+---
+## Attr: FilterBuilder.defaultSubClauseOperator
+
+### Description
+Default operator for subclauses added via the [FilterBuilder.subClauseButton](#attr-filterbuildersubclausebutton).
+
+**Flags**: IR
+
+---
+## Attr: FilterBuilder.radioOptions
+
+### Description
+Logical operators to allow if we have a [TopOperatorAppearance](../reference.md#type-topoperatorappearance) of "radio".
+
+**Deprecated**
+
+**Flags**: IR
+
+---
+## Attr: FilterBuilder.radioOperatorTitle
+
+### Description
+The title for the Operator RadioGroupItem displayed in the [FilterBuilder.radioOperatorForm](#attr-filterbuilderradiooperatorform).
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IR
+
+---
+## Attr: FilterBuilder.topOperatorAppearance
+
+### Description
+How to display and edit the [top-level operator](#attr-filterbuildertopoperator) for this FilterBuilder.
+
+See [TopOperatorAppearance](../reference.md#type-topoperatorappearance) for a list of options.
+
+**Flags**: IRW
+
+---
+## Attr: FilterBuilder.showHiddenFields
+
+### Description
+By default only non-hidden fields are shown for selection. To include hidden fields for selection set this property to `true`.
 
 **Flags**: IR
 
@@ -467,7 +251,7 @@ AutoChild for the [FormItem](FormItem.md#class-formitem) that allows a user to s
 ## Attr: FilterBuilder.radioOperatorForm
 
 ### Description
-With [TopOperatorAppearance](../reference.md#type-topoperatorappearance):"radio", form that appears above the stack of clauses and allows picking the [LogicalOperator](../reference_2.md#type-logicaloperator) for the overall FilterBuilder.
+With [TopOperatorAppearance](../reference.md#type-topoperatorappearance):"radio", form that appears above the stack of clauses and allows picking the [LogicalOperator](../reference.md#type-logicaloperator) for the overall FilterBuilder.
 
 By default, consists of a simple RadioGroupItem.
 
@@ -482,18 +266,32 @@ Properties to combine with the [FieldPicker](FieldPicker.md#class-fieldpicker) a
 **Flags**: IR
 
 ---
-## Attr: FilterBuilder.radioOperatorLayout
+## Attr: FilterBuilder.removeButton
 
 ### Description
-HLayout of radioOperationForm and optional modeSwitcher.
+The removal ImgButton that appears before each clause if [FilterBuilder.showRemoveButton](#attr-filterbuildershowremovebutton) is set.
 
 **Flags**: IR
 
 ---
-## Attr: FilterBuilder.valueQueryRelatedFieldButtonPrompt
+## Attr: FilterBuilder.allowedFields
 
 ### Description
-The hover prompt text for the dynamic value button.
+List of explicit fields for user field selection. If not specified, the list of fields is derived from the [dataSource](#attr-filterbuilderdatasource).
+
+Note: this property is not a security feature as it only controls the UI. To consistently limit searchability for certain fields use [canFilter](DataSourceField.md#attr-datasourcefieldcanfilter).
+
+### See Also
+
+- [FilterBuilder.showHiddenFields](#attr-filterbuildershowhiddenfields)
+
+**Flags**: IR
+
+---
+## Attr: FilterBuilder.rangeSeparator
+
+### Description
+For operators that check that a value is within a range, text to show between the start and end input fields for specifying the limits of the range.
 
 ### Groups
 
@@ -502,10 +300,20 @@ The hover prompt text for the dynamic value button.
 **Flags**: IR
 
 ---
-## Attr: FilterBuilder.specialValuesCSS
+## Attr: FilterBuilder.topOperator
 
 ### Description
-CSS text to be added to the styling for Related Field and Aggregate selections in the field name picker. By default, the choices are italicized.
+Default logical operator for all top-level clauses in the FilterBuilder.
+
+May be able to be changed by the user via the UI, according to [TopOperatorAppearance](../reference.md#type-topoperatorappearance).
+
+**Flags**: IRW
+
+---
+## Attr: FilterBuilder.radioOperatorLayout
+
+### Description
+HLayout of radioOperationForm and optional modeSwitcher.
 
 **Flags**: IR
 
@@ -518,6 +326,16 @@ The title for the left-aligned Operator selectItem in the [FilterBuilder.topOper
 ### Groups
 
 - i18nMessages
+
+**Flags**: IR
+
+---
+## Attr: FilterBuilder.topOperatorOptions
+
+### Description
+Logical operators to allow for [TopOperatorAppearance](../reference.md#type-topoperatorappearance)s of "radio" and "bracket".
+
+Note that this list may be further limited according to the [available operators](DataSource.md#method-datasourcegettypeoperatormap) returned by the [DataSource](DataSource.md#class-datasource).
 
 **Flags**: IR
 
@@ -555,10 +373,42 @@ If showModeSwitcher is set and topOperatorAppearance is unset:
 **Flags**: IR
 
 ---
+## Attr: FilterBuilder.operatorPickerTitle
+
+### Description
+The title for the operator-picker select-item.
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IR
+
+---
 ## Attr: FilterBuilder.inlineOrTitle
 
 ### Description
 Title for the "Or" operator (only applicable to the "inline" appearance)
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IR
+
+---
+## Attr: FilterBuilder.showSubClauseButton
+
+### Description
+Whether to show a button that allows the user to add subclauses. Defaults to false if the [TopOperatorAppearance](../reference.md#type-topoperatorappearance) is "radio" or "inline", true in all other cases.
+
+**Flags**: IR
+
+---
+## Attr: FilterBuilder.fieldPickerTitle
+
+### Description
+The title for the [field-picker](#attr-filterbuilderfieldpicker) select-item.
 
 ### Groups
 
@@ -575,10 +425,10 @@ If set, a button will be shown for each clause allowing it to be removed.
 **Flags**: IR
 
 ---
-## Attr: FilterBuilder.fieldQueryWindowTitle
+## Attr: FilterBuilder.missingFieldPrompt
 
 ### Description
-The title for the window that opens when a field query is selected.
+The message to display next to fieldNames that do not exist in the available dataSource.
 
 ### Groups
 
@@ -587,14 +437,14 @@ The title for the window that opens when a field query is selected.
 **Flags**: IR
 
 ---
-## Attr: FilterBuilder.allowRelatedRecordCriteria
+## Attr: FilterBuilder.modeSwitcherSimpleMessage
 
 ### Description
-Should related record criteria be allowed as either the field or value?
+Title for the "Simple Mode.." mode switcher label (only applicable to the "bracket" appearance).
 
-This option is automatically enabled if [FilterBuilder.allowAggregates](#attr-filterbuilderallowaggregates) is `true` unless explicitly set to `false`.
+### Groups
 
-**This feature is available with Power or better licenses only.** See [smartclient.com/product](http://smartclient.com/product) for details.
+- i18nMessages
 
 **Flags**: IR
 
@@ -609,26 +459,10 @@ Note that, when switching between fields that have an optionDataSource or valueM
 **Flags**: IRW
 
 ---
-## Attr: FilterBuilder.valueQueryRelatedFieldPrefix
+## Attr: FilterBuilder.clauseStack
 
 ### Description
-The prefix to be displayed before a related field valueQuery value in the clause.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IR
-
----
-## Attr: FilterBuilder.valueQueryAggregatePrefix
-
-### Description
-The prefix to be displayed before a aggregate valueQuery value in the clause.
-
-### Groups
-
-- i18nMessages
+VStack of all clauses that are part of this FilterBuilder
 
 **Flags**: IR
 
@@ -645,10 +479,10 @@ Title for the "Match Any" (or) operator when using [topOperatorAppearance](../re
 **Flags**: IR
 
 ---
-## Attr: FilterBuilder.iconSize
+## Attr: FilterBuilder.showAddButton
 
 ### Description
-When set, dictates the size of the [add](#attr-filterbuilderaddbutton) and [remove](#attr-filterbuilderremovebutton) clause buttons.
+If set, a button will be shown underneath all current clauses allowing a new clause to be added.
 
 **Flags**: IR
 
@@ -656,11 +490,19 @@ When set, dictates the size of the [add](#attr-filterbuilderaddbutton) and [remo
 ## Attr: FilterBuilder.topOperatorForm
 
 ### Description
-With [TopOperatorAppearance](../reference.md#type-topoperatorappearance) "bracket" and "inline", a form that appears to the left of the stack of clauses and allows picking the [LogicalOperator](../reference_2.md#type-logicaloperator) for the overall FilterBuilder (or for that specific FilterClause, in the case of "inline")
+With [TopOperatorAppearance](../reference.md#type-topoperatorappearance) "bracket" and "inline", a form that appears to the left of the stack of clauses and allows picking the [LogicalOperator](../reference.md#type-logicaloperator) for the overall FilterBuilder (or for that specific FilterClause, in the case of "inline")
 
 By default, consists of a CheckboxItem if [FilterBuilder.showSelectionCheckbox](#attr-filterbuildershowselectioncheckbox) is true, and a simple SelectItem containing the available logical operators.
 
 If this FilterBuilder shows nested sub-clauses, the same defaults will be applied to the top-operator item for each sub-clause.
+
+**Flags**: IR
+
+---
+## Attr: FilterBuilder.saveOnEnter
+
+### Description
+If true, when the user hits the Enter key while focused in a text-item in this FilterBuilder, we automatically invoke the user-supplied [FilterBuilder.search](#method-filterbuildersearch) method.
 
 **Flags**: IR
 
@@ -681,14 +523,20 @@ Width for the field picker formItem displayed in clauses within this FilterBuild
 **Flags**: IR
 
 ---
-## Attr: FilterBuilder.valueQueryWindowTitle
+## Attr: FilterBuilder.topOperatorItem
 
 ### Description
-The title for the window that opens when a value query is selected.
+Automatically generated SelectItem autoChild shown in the [FilterBuilder.topOperatorForm](#attr-filterbuildertopoperatorform). Developers may customize this item using the standard autoChild pattern (by modifying `topOperatorItemDefaults` and `topOperatorItemProperties`).
 
-This is a dynamic string - text within `${...}` are dynamic variables and will be evaluated as JS code when the message is displayed.
+If this FilterBuilder shows nested sub-clauses, the same defaults will be applied to the top-operator item for each sub-clause.
 
-Only one dynamic variable, fieldTitle, is available.
+**Flags**: IR
+
+---
+## Attr: FilterBuilder.addButtonPrompt
+
+### Description
+The hover prompt text for the add button.
 
 ### Groups
 
@@ -697,12 +545,10 @@ Only one dynamic variable, fieldTitle, is available.
 **Flags**: IR
 
 ---
-## Attr: FilterBuilder.topOperatorItem
+## Attr: FilterBuilder.validateOnChange
 
 ### Description
-Automatically generated SelectItem autoChild shown in the [FilterBuilder.topOperatorForm](#attr-filterbuildertopoperatorform). Developers may customize this item using the standard autoChild pattern (by modifying `topOperatorItemDefaults` and `topOperatorItemProperties`).
-
-If this FilterBuilder shows nested sub-clauses, the same defaults will be applied to the top-operator item for each sub-clause.
+If true (the default), validates each entered value when it changes, to make sure it is a a valid value of its type (valid string, number, and so on). No other validation is carried out. If you switch this property off, it is still possible to validate the `FilterBuilder` by calling [FilterBuilder.validate](#method-filterbuildervalidate) from your own code.
 
 **Flags**: IR
 
@@ -741,6 +587,26 @@ The hover prompt text for the remove button.
 **Flags**: IR
 
 ---
+## Attr: FilterBuilder.showSelectionCheckbox
+
+### Description
+If true, causes a CheckboxItem to appear to the left of each clause in "inline" [appearance](../reference.md#type-topoperatorappearance). This checkbox allows the user to select individual clauses so that, for example, clauses can be removed from the filterBuilder by application code. This property is ignored for appearances other than "inline".
+
+**Flags**: IR
+
+---
+## Attr: FilterBuilder.lastClausePrompt
+
+### Description
+The hover prompt text for the remove button in the last remaining clause, when [allowEmpty](#attr-filterbuilderallowempty) is false.
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IRW
+
+---
 ## Attr: FilterBuilder.subClauseButtonPrompt
 
 ### Description
@@ -772,7 +638,6 @@ Returns a human-readable string describing the clauses in this advanced criteria
 |------|------|----------|---------|-------------|
 | criteria | [AdvancedCriteria](#type-advancedcriteria)|[Criterion](#type-criterion) | false | — | Criteria to convert to a readable string |
 | dataSource | [DataSource](#type-datasource) | false | — | DataSource to provide definitions of operators |
-| criteriaOutputSettings | [CriteriaOutputSettings](#type-criteriaoutputsettings) | true | — | optional configuration settings for the output |
 
 ### Returns
 
@@ -791,6 +656,24 @@ Clear all current criteria.
 Handler fired when there is a change() event fired on any FormItem within the filterBuilder.
 
 ---
+## Method: FilterBuilder.setTopOperatorAppearance
+
+### Description
+Modify [TopOperatorAppearance](../reference.md#type-topoperatorappearance) at runtime.
+
+Note that when changing from "bracket" to "radio" mode the criteria will be flattened by calling [DataSource.flattenCriteria](DataSource.md#classmethod-datasourceflattencriteria) which could result in a logical change to the criteria.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| appearance | [TopOperatorAppearance](../reference.md#type-topoperatorappearance) | false | — | new topOperatorAppearance |
+
+### Groups
+
+- formTitles
+
+---
 ## Method: FilterBuilder.addCriterion
 
 ### Description
@@ -801,6 +684,28 @@ Add a new criterion, including recursively adding sub-criteria for a criterion t
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | criterion | [Criterion](#type-criterion) | false | — | new criterion to be added |
+
+---
+## Method: FilterBuilder.validate
+
+### Description
+Validate the clauses of this FilterBuilder.
+
+### Returns
+
+`[Boolean](#type-boolean)` — true if all clauses are valid, false otherwise
+
+---
+## Method: FilterBuilder.removeClause
+
+### Description
+Remove a clause this FilterBuilder is currently showing.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| clause | [FilterClause](#type-filterclause) | false | — | clause as retrieved from filterBuilder.clauses |
 
 ---
 ## Method: FilterBuilder.search
@@ -849,6 +754,16 @@ Get the criteria entered by the user.
 `[AdvancedCriteria](#type-advancedcriteria)` — —
 
 ---
+## Method: FilterBuilder.getSelectedClauses
+
+### Description
+Returns the list of this FilterBuilder's FilterClauses that are currently selected. A clause is "selected" if the user has checked the checkbox next to it; therefore, this method always returns an empty list unless the [showSelectionCheckbox](#attr-filterbuildershowselectioncheckbox) property is set. This method is only applicable where [TopOperatorAppearance](../reference.md#type-topoperatorappearance) is "inline" (because that is the only appearance that supports `showSelectionCheckbox`)
+
+### Returns
+
+`[Array of FilterClause](#type-array-of-filterclause)` — The list of selected clauses
+
+---
 ## Method: FilterBuilder.getEditorType
 
 ### Description
@@ -868,16 +783,6 @@ Default behavior is to use the [Operator.editorType](Operator.md#attr-operatored
 `[SCClassName](../reference.md#type-scclassname)` — SmartClient class to use (must be subclass of FormItem)
 
 ---
-## Method: FilterBuilder.getDataSource
-
-### Description
-Returns the [dataSource](#attr-filterbuilderdatasource) for this FilterBuilder.
-
-### Returns
-
-`[DataSource](#type-datasource)` — the DataSource for this FilterBuilder
-
----
 ## Method: FilterBuilder.setTopOperator
 
 ### Description
@@ -887,7 +792,7 @@ Programmatically change the [FilterBuilder.topOperator](#attr-filterbuildertopop
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| operator | [LogicalOperator](../reference_2.md#type-logicaloperator) | false | — | new top-level operator |
+| operator | [LogicalOperator](../reference.md#type-logicaloperator) | false | — | new top-level operator |
 
 ---
 ## Method: FilterBuilder.addClause
@@ -906,82 +811,6 @@ If you want to use the standard field/operator/value interface but provide a cus
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | filterClause | [FilterClause](#type-filterclause) | false | — | A [FilterClause](FilterClause.md#class-filterclause) instance |
-
----
-## Method: FilterBuilder.getFilterDescription
-
-### Description
-Returns a human-readable string describing the clauses in this filterBuilder.
-
-### Returns
-
-`[String](#type-string)` — Human-readable string describing the clauses in the passed criteria
-
----
-## Method: FilterBuilder.setCriteria
-
-### Description
-Set new criteria for editing.
-
-An interface for editing the provided criteria will be generated identically to what happens when initialized with [Criteria](../reference_2.md#type-criteria).
-
-Any existing criteria entered by the user will be discarded.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| criteria | [AdvancedCriteria](#type-advancedcriteria) | false | — | new criteria. Pass null or {} to effectively reset the filterBuilder to it's initial state when no criteria are specified |
-
----
-## Method: FilterBuilder.setTopOperatorAppearance
-
-### Description
-Modify [TopOperatorAppearance](../reference.md#type-topoperatorappearance) at runtime.
-
-Note that when changing from "bracket" to "radio" mode the criteria will be flattened by calling [DataSource.flattenCriteria](DataSource.md#classmethod-datasourceflattencriteria) which could result in a logical change to the criteria.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| appearance | [TopOperatorAppearance](../reference.md#type-topoperatorappearance) | false | — | new topOperatorAppearance |
-
-### Groups
-
-- formTitles
-
----
-## Method: FilterBuilder.validate
-
-### Description
-Validate the clauses of this FilterBuilder.
-
-### Returns
-
-`[Boolean](#type-boolean)` — true if all clauses are valid, false otherwise
-
----
-## Method: FilterBuilder.removeClause
-
-### Description
-Remove a clause this FilterBuilder is currently showing.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| clause | [FilterClause](#type-filterclause) | false | — | clause as retrieved from filterBuilder.clauses |
-
----
-## Method: FilterBuilder.getSelectedClauses
-
-### Description
-Returns the list of this FilterBuilder's FilterClauses that are currently selected. A clause is "selected" if the user has checked the checkbox next to it; therefore, this method always returns an empty list unless the [showSelectionCheckbox](#attr-filterbuildershowselectioncheckbox) property is set. This method is only applicable where [TopOperatorAppearance](../reference.md#type-topoperatorappearance) is "inline" (because that is the only appearance that supports `showSelectionCheckbox`)
-
-### Returns
-
-`[Array of FilterClause](#type-array-of-filterclause)` — The list of selected clauses
 
 ---
 ## Method: FilterBuilder.getChildFilters
@@ -1005,7 +834,7 @@ Note that the [Operator.valueType](Operator.md#attr-operatorvaluetype) impacts w
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| type | [FieldType](../reference_2.md#type-fieldtype) | false | — | type of the DataSource field for this filter row |
+| type | [FieldType](../reference.md#type-fieldtype) | false | — | type of the DataSource field for this filter row |
 | fieldName | [String](#type-string) | false | — | name of the DataSource field for this filter row |
 | operatorId | [OperatorId](../reference.md#type-operatorid) | false | — | [OperatorId](../reference.md#type-operatorid) for the chosen operator |
 | itemType | [ValueItemType](../reference.md#type-valueitemtype) | false | — | What valueItem is being generated. |
@@ -1013,5 +842,31 @@ Note that the [Operator.valueType](Operator.md#attr-operatorvaluetype) impacts w
 ### Returns
 
 `[FormItem Properties](#type-formitem-properties)` — properties for the value field
+
+---
+## Method: FilterBuilder.getFilterDescription
+
+### Description
+Returns a human-readable string describing the clauses in this filterBuilder.
+
+### Returns
+
+`[String](#type-string)` — Human-readable string describing the clauses in the passed criteria
+
+---
+## Method: FilterBuilder.setCriteria
+
+### Description
+Set new criteria for editing.
+
+An interface for editing the provided criteria will be generated identically to what happens when initialized with [Criteria](../reference.md#type-criteria).
+
+Any existing criteria entered by the user will be discarded.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| criteria | [AdvancedCriteria](#type-advancedcriteria) | false | — | new criteria. Pass null or {} to effectively reset the filterBuilder to it's initial state when no criteria are specified |
 
 ---

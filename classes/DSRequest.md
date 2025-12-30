@@ -53,7 +53,7 @@ Fields should be specified in the format `"localFieldName!relatedDataSourceID.re
 
 Note that as with [DataSourceField.includeFrom](DataSourceField.md#attr-datasourcefieldincludefrom), the related dataSource must be linked to the primary datasource via a foreignKey relationship.
 
-Note additionalOutputs sent in request from the browser can be completely disabled in [server.properties](../kb_topics/server_properties.md#kb-topic-serverproperties-file) by setting `datasource.allowClientAdditionalOutputs`:
+Note additionalOutputs sent in request from the browser can be completely disabled in [server.properties](../reference.md#kb-topic-serverproperties-file) by setting `datasource.allowClientAdditionalOutputs`:
 
 ```
      datasource.allowClientAdditionalOutputs: false
@@ -64,6 +64,36 @@ In this case [DSRequest.additionalOutputs](#attr-dsrequestadditionaloutputs) sen
 **Flags**: IRA
 
 ---
+## Attr: DSRequest.sortBy
+
+### Description
+Field name to sortBy, prefixed with optional "-" indicating descending sort. For example, to sort by the field "userName" in ascending order, set `sortBy` to just "userName". For descending sort on "userName", set `sortBy` to "-userName".
+
+To sort by multiple fields, an array of field names is also supported. For example, to sort by the field "department" in ascending order, followed by the field "userName" in descending order, set `sortBy` to:
+
+`[ "department", "-userName" ]`
+
+Additionally, this property supports an array of [SortSpecifier](../reference.md#object-sortspecifier) objects. Setting `sortBy` to the following SortSpecifier array results in the same multi-level sort mentioned above:
+
+`[     { property: "department", direction: "ascending" },     { property: "userName", direction: "descending" }   ]`
+
+**Flags**: IR
+
+---
+## Attr: DSRequest.linkDataFetchOperation
+
+### Description
+For a databound [multi-link tree](Tree.md#method-treeismultilinktree), this is the `operationId` to use for the separate fetch on the [ResultTree.linkDataSource](ResultTree.md#attr-resulttreelinkdatasource) that will be generated if [LinkDataFetchMode](../reference.md#type-linkdatafetchmode) is "separate". This property overrides the [linkDataFetchOperation](ResultTree.md#attr-resulttreelinkdatafetchoperation) property on [ResultTree](ResultTree.md#class-resulttree), for this fetch only.
+
+Ignored if this DSRequest is not a fetch against a multi-link tree.
+
+### Groups
+
+- multiLinkTree
+
+**Flags**: IR
+
+---
 ## Attr: DSRequest.textMatchStyle
 
 ### Description
@@ -72,6 +102,14 @@ For "fetch" operations, how search criteria should be interpreted for text field
 This property defaults to the value of [DataSource.defaultTextMatchStyle](DataSource.md#attr-datasourcedefaulttextmatchstyle) if it is not explicitly provided on the `DSRequest`. Note, however, that DSRequests issued by [ListGrid](ListGrid_1.md#class-listgrid)s and other [components](../reference.md#interface-databoundcomponent) will generally have a setting for textMatchStyle on the component itself (see [ListGrid.autoFetchTextMatchStyle](ListGrid_1.md#attr-listgridautofetchtextmatchstyle), for example).
 
 This setting is respected by the built-in server-side connectors for SQL, JPA and Hibernate. A custom server-side DataSource implementation should generally respect this flag as well, or server-side filtering will not match client-side filtering, which will require [disabling client-side filtering](ResultSet.md#attr-resultsetuseclientfiltering), a huge performance loss.
+
+**Flags**: IR
+
+---
+## Attr: DSRequest.pendingAdd
+
+### Description
+Indicates that a validation request is being made for a record that will ultimately be saved with an "add" request, as opposed to an "update" request. This context is necessary for some validators because the nature of the validation depends on whether we are adding or updating a record. The system sets this flag when processing interim validations, such as those fired when [DynamicForm.validateOnChange](DynamicForm.md#attr-dynamicformvalidateonchange) is in force.
 
 **Flags**: IR
 
@@ -95,7 +133,73 @@ The server can compare the `oldValues` to the most recent stored values in order
 
 In applications where a policy of "last update wins" is not appropriate when updating certain fields, special UI can be shown for this case. For example, on detecting concurrent edit, the server may send back a special `dsResponse.status` code that the client application detects, offering the user a choice of proceeding with the operation, discarding edits, or reconciling new and old values in a special interface.
 
-See the [concurrentEdits](../kb_topics/concurrentEdits.md#kb-topic-handling-concurrent-edits-in-smartclient-datasources) overview for more on handling concurrent edits in SmartClient DataSources.
+**Flags**: IR
+
+---
+## Attr: DSRequest.resultTree
+
+### Description
+For advanced use in integrating trees that [load data on demand](ResultTree.md#attr-resulttreeloaddataondemand) with web services, the ResultTree that issued this "fetch" DSRequest is automatically made available as the `resultTree` property.
+
+This property can only be read. There is no meaning to setting this property yourself.
+
+**Flags**: R
+
+---
+## Attr: DSRequest.summaryFunctions
+
+### Description
+A mapping from field names to [summary functions](../reference.md#type-summaryfunction) to be applied to each field.
+
+Valid only for an operation of type "fetch". See the [Server Summaries overview](../kb_topics/serverSummaries.md#kb-topic-server-summaries) for examples of usage.
+
+### Groups
+
+- serverSummaries
+
+### See Also
+
+- [DSRequest.groupBy](#attr-dsrequestgroupby)
+
+**Flags**: IR
+
+---
+## Attr: DSRequest.exportImageFormat
+
+### Description
+The image format in which the SVG graphic should be exported.
+
+**Flags**: IR
+
+---
+## Attr: DSRequest.exportFooter
+
+### Description
+Optional text to appear at the end of the file.
+
+**Flags**: IR
+
+---
+## Attr: DSRequest.exportFilename
+
+### Description
+The name of the file to save the exported data into. If [exportToFilesystem](#attr-dsrequestexporttofilesystem) is set, this is the name of the file the server creates on its filesystem. If [exportToClient](#attr-dsrequestexporttoclient) is set, this is the filename that will appear to the browser.
+
+If the exportFilename that you specify does not include an extension, one will be added to it based on the [ExportFormat](../reference.md#type-exportformat) specified by [DSRequest.exportAs](#attr-dsrequestexportas). Filename is forced to have the correct extension to work around bugs in IE, but if you don't want the filename to be manipulated, use "custom" [exportFormat](../reference.md#type-exportformat), see example.
+
+### See Also
+
+- [DSRequest.exportPath](#attr-dsrequestexportpath)
+
+**Flags**: IR
+
+---
+## Attr: DSRequest.exportCSS
+
+### Description
+When using [RPCManager.exportContent](RPCManager.md#classmethod-rpcmanagerexportcontent) to produce a .pdf from a SmartClient UI, this property allows dynamic CSS to be passed to the server. Since the `exportContent()` system already provides a way to specify a custom skin or additional stylesheet for export, `exportCSS` should only be used for small bits of CSS that are necessarily dynamic.
+
+For example, when printing a very wide page, such as a grid with many columns or a very wide chart, you could send the string "@page {size: A4 landscape; }" as `exportCSS` to cause the generated PDF to use landscape mode, so that all content fits without clipping.
 
 **Flags**: IR
 
@@ -103,7 +207,7 @@ See the [concurrentEdits](../kb_topics/concurrentEdits.md#kb-topic-handling-conc
 ## Attr: DSRequest.groupBy
 
 ### Description
-Field or list of fields to group by when using [server-side summarization](../kb_topics/serverSummaries.md#kb-topic-server-summaries).
+List of fields to group by when using [server-side summarization](../kb_topics/serverSummaries.md#kb-topic-server-summaries).
 
 Valid only for an operation of type "fetch". See the [Server Summaries overview](../kb_topics/serverSummaries.md#kb-topic-server-summaries) for details and examples of usage.
 
@@ -114,6 +218,38 @@ Valid only for an operation of type "fetch". See the [Server Summaries overview]
 ### See Also
 
 - [DSRequest.summaryFunctions](#attr-dsrequestsummaryfunctions)
+
+**Flags**: IR
+
+---
+## Attr: DSRequest.streamResults
+
+### Description
+If true, results will be streamed on the server, rather than all records being read into server memory at once; this approach is appropriate for retrieving or exporting large datasets without swamping the server.
+
+Although this property can be set without any particular concerns (small datasets can be streamed just as readily as large ones), bear in mind that although streaming enables the processing of very large datasets, processing and downloading very large datasets in a normal client/server flow will very rarely give an acceptable user experience. Streaming is of more practical use in a batch setting - for example, a disconnected [export](#attr-dsrequestexporttofilesystem).
+
+Note that streaming requires specific server support; of SmartClient's built-in DataSource types, only `SQLDataSource` is able to stream results. This property is ignored by other DataSource types. If you wish to implement the necessary server-side behavior to support streaming with a custom DataSource, see the the server-side Javadocs for `DSResponse.hasNextRecord()` and `DSResponse.nextRecordAsObject()`.
+
+See also the server-side documentation for `DSResponse`, `SQLDataSource` and `StreamingResponseIterator`.
+
+Note, that streaming results does not support fields with ["concat" summary function](../reference.md#type-summaryfunction) on non-Oracle databases. Such fields will be skipped.
+
+**Flags**: IR
+
+---
+## Attr: DSRequest.lineBreakStyle
+
+### Description
+The style of line-breaks to use in the exported output. See [LineBreakStyle](../reference_2.md#type-linebreakstyle) for more information.
+
+**Flags**: IR
+
+---
+## Attr: DSRequest.exportHeader
+
+### Description
+Optional text to appear at the beginning of the file.
 
 **Flags**: IR
 
@@ -134,13 +270,21 @@ Currently, no built-in server-side connectors (SQL, JPA, Hibernate) implement su
 **Flags**: IRW
 
 ---
+## Attr: DSRequest.exportTitleSeparatorChar
+
+### Description
+The character with which to replace spaces in field-titles when exporting to XML. If not specified in the request, the server uses "".
+
+**Flags**: IR
+
+---
 ## Attr: DSRequest.clientContext
 
 ### Description
 An object to be held onto for the duration of the DSRequest turnaround to track application-specific context.
 
-When a DataSource request completes, the `clientContext` is available in the [DSCallback](../reference_2.md#type-dscallback) as `dsResponse.clientContext`. The `clientContext` is never sent to the server.  
-The `clientContext` is useful for holding onto state that will be used when the [DSCallback](../reference_2.md#type-dscallback) fires, such as the name of a component that will receive the returned data.
+When a DataSource request completes, the `clientContext` is available in the [DSCallback](../reference.md#type-dscallback) as `dsResponse.clientContext`. The `clientContext` is never sent to the server.  
+The `clientContext` is useful for holding onto state that will be used when the [DSCallback](../reference.md#type-dscallback) fires, such as the name of a component that will receive the returned data.
 
 ### See Also
 
@@ -153,7 +297,7 @@ The `clientContext` is useful for holding onto state that will be used when the 
 ## Attr: DSRequest.exportTZ
 
 ### Description
-For server-side export with [ExportFormat](../reference_2.md#type-exportformat) "xls" or "ooxml" only, timezone to use when saving values from [FieldType](../reference_2.md#type-fieldtype) "datetime" to the spreadsheet.
+For server-side export with [ExportFormat](../reference.md#type-exportformat) "xls" or "ooxml" only, timezone to use when saving values from [FieldType](../reference.md#type-fieldtype) "datetime" to the spreadsheet.
 
 This setting exists because MS Excel™ has no concept of providing a true datetime value that is timezone-independent and will display in the local timezone where the Excel program is launched. This setting sets the timezone of the Excel workbook, so that it will display dates in the same timezone regardless of the local timezone where the Excel program is launched. Alternative approach is to set [exportDatesAsFormattedString=true](#attr-dsrequestexportdatesasformattedstring) telling datetime values must be provided as a rendered string, which implies rendering in a particular timezone when the spreadsheet is generated.
 
@@ -175,7 +319,7 @@ All non-spreadsheet export formats always use UTC. This setting also does not af
 ## Attr: DSRequest.exportNumbersAsFormattedString
 
 ### Description
-When exporting via [ListGrid.exportClientData](ListGrid_2.md#method-listgridexportclientdata) to an `XLS` or `OOXML` spreadsheet, forces numbers to export as a string rather than a true numerical value.
+When exporting via [ListGrid.exportClientData](ListGrid_1.md#method-listgridexportclientdata) to an `XLS` or `OOXML` spreadsheet, forces numbers to export as a string rather than a true numerical value.
 
 If a number is provided to a spreadsheet as a string, Excel or other spreadsheet applications may not recognize them as being numbers that are valid for use in numerical formulas, filters, etc.
 
@@ -194,15 +338,22 @@ If `exportNumbersAsFormattedString` is set to true, numbers will appear as strin
 **Flags**: IR
 
 ---
-## Attr: DSRequest.arrayCriteriaForceExact
+## Attr: DSRequest.operationType
 
 ### Description
-DSRequest-level override for the DataSource-level [arrayCriteriaForceExact](DataSource.md#attr-datasourcearraycriteriaforceexact) flag. See the documentation for that flag for details.
+Type of operation being performed: "fetch", "add", "remove", "update" or "custom".
 
-### Groups
+This property is generally automatically populated, for example when calling `fetchData()` on a DataSource or DataBound component the operationType is automatically set to "fetch". Note that "custom" operations are never generated automatically, they are always fired by your code.
 
-- clientDataIntegration
-- serverDataIntegration
+**Flags**: IR
+
+---
+## Attr: DSRequest.data
+
+### Description
+Data, such as search criteria or an updated record, to be acted upon. Contents differ by `operationType`, see [DataSource Operations](../kb_topics/dataSourceOperations.md#kb-topic-datasource-operations) for details.
+
+This field is generally filled in by passing the "data" argument to methods such as [ListGrid.fetchData](ListGrid_1.md#method-listgridfetchdata).
 
 **Flags**: IR
 
@@ -210,7 +361,7 @@ DSRequest-level override for the DataSource-level [arrayCriteriaForceExact](Data
 ## Attr: DSRequest.requestId
 
 ### Description
-Automatically generated unique ID for this request. This ID will be required by developers making use of the ["clientCustom" dataProtocol](../reference_2.md#type-dsprotocol).
+Automatically generated unique ID for this request. This ID will be required by developers making use of the ["clientCustom" dataProtocol](../reference.md#type-dsprotocol).
 
 **Flags**: RA
 
@@ -239,12 +390,83 @@ Note that the `operationId` has special significance in terms of whether two DSR
 **Flags**: IR
 
 ---
-## Attr: DSRequest.forceOuterJoins
+## Attr: DSRequest.exportSpanTitleSeparator
 
 ### Description
-For dataSources of [serverType](DataSource.md#attr-datasourceservertype) "sql" only, this property causes all JOINs in the generated SQL to be outer joins, for this request only. See [joinType](DataSourceField.md#attr-datasourcefieldjointype) for more details about outer join support in SmartClient
+When you export a [ListGrid](ListGrid_1.md#class-listgrid) that has [headerSpans](ListGrid_1.md#attr-listgridheaderspans) defined and [DSRequest.exportShowHeaderSpanTitles](#attr-dsrequestexportshowheaderspantitles) is true, the behavior is dependent on the export type. Direct exports to Excel formats (both XLS and OOXML) place the headerSpans in merged cells in the spreadsheet, giving the same visual effect as the original ListGrid. This is not possible with exports to CSV format; instead, we alter the exported headers so that they contain the titles of the ancestor headerSpan(s).
 
-**Flags**: IRW
+For example, if you had a field titled "Population" inside a headerSpan titled "National", nested inside another headerSpan titled "Demographics", that would result in the exported field being titled "Demographics - National - Population".
+
+The `exportSpanTitleSeparator` property allows you to override the separator string used when constructing these amalgamated headers.
+
+**Flags**: IR
+
+---
+## Attr: DSRequest.exportDatesAsFormattedString
+
+### Description
+When exporting via [ListGrid.exportClientData](ListGrid_1.md#method-listgridexportclientdata) to an `XLS` or `OOXML` spreadsheet, forces dates to export as a string rather than a true date value.
+
+If a date value is provided to a spreadsheet as a string, Excel or other spreadsheet applications may not recognize them as being date values that are valid for use in date-specific functions in formulas, filters, etc.
+
+For this reason, the default behavior of `exportClientData` is to provide date values to the spreadsheet as true date values. If [Format Strings](../reference.md#type-formatstring) are provided via properties like [dataSourceField.format](DataSourceField.md#attr-datasourcefieldformat) these will be translated to Excel / OpenOffice format strings and used when generating spreadsheets. Other formatting logic, such as [cell formatters](ListGridField.md#method-listgridfieldformatcellvalue), will not be used since they cannot be automatically translated to an Excel format string. If no translatable format string is available, date values will be provided to the spreadsheet with no formatter and the spreadsheet program's default formatting for date values will be used.
+
+If `exportDatesAsFormattedString` is set to true, date fields will appear as strings that exactly match the formatting shown in the [DataBoundComponent](../reference.md#interface-databoundcomponent). As noted above, this means the spreadsheet program will not recognize the value as a date.
+
+### Groups
+
+- exportFormatting
+
+### See Also
+
+- [DataSourceField.exportFormat](DataSourceField.md#attr-datasourcefieldexportformat)
+
+**Flags**: IR
+
+---
+## Attr: DSRequest.exportResults
+
+### Description
+When set, causes the results of the DSRequest to be exported to a file, whose name and format are indicated by [DSRequest.exportFilename](#attr-dsrequestexportfilename) and [DSRequest.exportAs](#attr-dsrequestexportas) respectively. When no exportFilename is provided, the default is _Results.csv_ and the default value of exportAs is _csv_.
+
+The export field-list can also be configured, see [DSRequest.exportFields](#attr-dsrequestexportfields). Formats for exported date and numeric are controlled by several settings - see [exportFormatting](../kb_topics/exportFormatting.md#kb-topic-exports--formatting) for an overview.
+
+Once the operation completes, [DSRequest.exportDisplay](#attr-dsrequestexportdisplay) specifies whether the exported data should be downloaded to the file-system or displayed in a new window. The default value of exportDisplay is "download" which displays the Save As dialog. See [ExportDisplay](../reference.md#type-exportdisplay) for more information.
+
+You can configure the style of [line-breaks](../reference_2.md#type-linebreakstyle) to use when generating the output, the [delimiter](#attr-dsrequestexportdelimiter) to use when exporting to CSV and the [separator-character](#attr-dsrequestexporttitleseparatorchar) to use in field-titles when exporting to XML.
+
+Additionally, you can output arbitrary text before and after the exported data by setting [exportHeader](#attr-dsrequestexportheader) and [exportFooter](#attr-dsrequestexportfooter).
+
+Note that for security reasons, an export initiated using dsRequest properties does not provide support for JSON format (see [this post](http://forums.smartclient.com/showthread.php?t=235) for more detail). However, you can use operationBinding.exportAs:"json" in a server-side .ds.xml file to force JSON export to be allowed.
+
+As well as setting dsRequest.exportResults and related properties, exports can be initiated in two other ways, via [OperationBinding](OperationBinding.md#class-operationbinding)s and via custom server code which sets export-related properties on the [DSResponse](DSResponse.md#class-dsresponse). Both of those methods support exporting to JSON format.
+
+**Format Examples** XML format
+
+```
+     <List>
+         <Object>
+             <id>10101</id>
+             <displayName>Record 10101</displayName>
+         </Object>
+    </List>
+ 
+```
+JSON Format
+```
+     [
+         { id: 10101, displayName: "Record 10101" }
+     ]
+ 
+```
+CSV Format
+```
+     id,displayName
+     10101,"Record 10101"
+ 
+```
+
+**Flags**: IR
 
 ---
 ## Attr: DSRequest.useFlatFields
@@ -309,469 +531,10 @@ Note that `useFlatFields` is not generally recommended for use with XML input me
 **Flags**: IR
 
 ---
-## Attr: DSRequest.exportImageQuality
-
-### Description
-If exporting in [JPEG format](../reference_2.md#type-exportimageformat), the output JPEG quality level. This is a number from 0 to 1, with 1 representing the best quality and 0 representing the least quality but smallest file size.
-
-**Flags**: IR
-
----
-## Attr: DSRequest.exportRawValues
-
-### Description
-Whether formatting settings should be applied to data being exported. Default behavior and the effect of setting of `exportRawValues` is described in the [Export Formatting overview](../kb_topics/exportFormatting.md#kb-topic-exports--formatting).
-
-### Groups
-
-- exportFormatting
-
-**Flags**: IRW
-
----
-## Attr: DSRequest.exportDelimiter
-
-### Description
-The character to use as a field-separator in CSV exports. The default delimiter is comma.
-
-**Flags**: IR
-
----
-## Attr: DSRequest.useStrictJSON
-
-### Description
-Should the HTTP response to this request be formatted using the strict JSON subset of the javascript language? If set to true, responses returned by the server should match the format described [here](http://www.json.org/js.html).
-
-Only applies to requests sent a server with [DataSource.dataFormat](DataSource.md#attr-datasourcedataformat) set to "json" or "iscServer".
-
-**Flags**: IR
-
----
-## Attr: DSRequest.exportPath
-
-### Description
-If [exportToFilesystem](#attr-dsrequestexporttofilesystem) is set, optionally specifies a path to use when saving the file. This path is relative to the default export path, which is set using the [server.properties](../kb_topics/server_properties.md#kb-topic-serverproperties-file) setting `export.location`; this is the project webRoot by default. For example, with the default setting of `export.location`, an `exportPath` of `"shared/ds"` and an [exportFilename](#attr-dsrequestexportfilename) of `"exportedData.csv"`, SmartClient Server would export to file `$webRoot/shared/ds/exportedData.csv`.
-
-If you do not specify this property, SmartClient Server will export to the file indicated by `exportFilename` directly in the default export location.
-
-This property is only applicable when [exportToFilesystem](#attr-dsrequestexporttofilesystem) is set.
-
-### See Also
-
-- [DSRequest.exportFilename](#attr-dsrequestexportfilename)
-
-**Flags**: IR
-
----
-## Attr: DSRequest.applyCriteriaBeforeAggregation
-
-### Description
-If set to "true", all criteria for the DSRequest using [serverSummaries](#serversummaries) are applied before aggregation, and the [afterWhereClause](OperationBinding.md#attr-operationbindingafterwhereclause) is not generated.
-
-This behaves the same way as [OperationBinding.applyCriteriaBeforeAggregation](OperationBinding.md#attr-operationbindingapplycriteriabeforeaggregation), and if defined, overrides the OperationBinding-level setting for this specific DSRequest.
-
-### See Also
-
-- [OperationBinding.afterWhereClause](OperationBinding.md#attr-operationbindingafterwhereclause)
-- [OperationBinding.applyCriteriaBeforeAggregation](OperationBinding.md#attr-operationbindingapplycriteriabeforeaggregation)
-
-**Flags**: IR
-
----
-## Attr: DSRequest.resultSet
-
-### Description
-For advanced use in integrating dataset paging with web services, the ResultSet that issued this "fetch" DSRequest is automatically made available as the `resultSet` property.
-
-This property can only be read. There is no meaning to setting this property yourself.
-
-**Flags**: R
-
----
-## Attr: DSRequest.exportHeaderless
-
-### Description
-This property allows omitting column names from CSV and Excel exports (no effect on JSON or XML exports).
-
-**Flags**: IRW
-
----
-## Attr: DSRequest.multiInsertStrategy
-
-### Description
-For dataSources of [serverType](DataSource.md#attr-datasourceservertype) "sql" only, this property sets the multi-insert strategy for this specific [dsRequest](../reference_2.md#object-dsrequest). Only has an effect if this is an [add request](DataSource.md#method-datasourceadddata) that specifies a list of records as the data.
-
-Note that this setting overrides the equivalent [operationBinding setting](OperationBinding.md#attr-operationbindingmultiinsertstrategy) and [dataSource setting](DataSource.md#attr-datasourcemultiinsertstrategy)
-
-### See Also
-
-- [DSRequest.multiInsertBatchSize](#attr-dsrequestmultiinsertbatchsize)
-- [DSRequest.multiInsertNonMatchingStrategy](#attr-dsrequestmultiinsertnonmatchingstrategy)
-
-**Flags**: IRW
-
----
-## Attr: DSRequest.cacheSyncStrategy
-
-### Description
-The [cacheSyncStrategy](../reference_2.md#type-cachesyncstrategy) to use for this specific request. Overrides any [operation-level](OperationBinding.md#attr-operationbindingcachesyncstrategy) or [dataSource-level](DataSource.md#attr-datasourcecachesyncstrategy) `cacheSyncStrategy`
-
-### Groups
-
-- cacheSynchronization
-
-### See Also
-
-- [DataSource.cacheSyncStrategy](DataSource.md#attr-datasourcecachesyncstrategy)
-- [OperationBinding.cacheSyncStrategy](OperationBinding.md#attr-operationbindingcachesyncstrategy)
-
-**Flags**: IR
-
----
-## Attr: DSRequest.componentId
-
-### Description
-For requests submitted by a [DataBoundComponent](../reference.md#interface-databoundcomponent), the [Canvas.ID](Canvas.md#attr-canvasid) of the submitting component.
-
-This ID will be present for operations including automatic saves by a ListGrid [during editing](../kb_topics/editing.md#kb-topic-grid-editing), or calls to [form.saveData()](DynamicForm.md#method-dynamicformsavedata). It will not be present for a direct call to a DataSource method such as [DataSource.fetchData](DataSource.md#method-datasourcefetchdata).
-
-Note this is the component's **String** ID - you can retrieve the component itself via [Canvas.getById](Canvas.md#classmethod-canvasgetbyid).
-
-This property should be used for debugging purposes only - do not use it to trigger differences in server-side behavior, instead, use [DSRequest.operationId](#attr-dsrequestoperationid) because only `operationId` is considered when assessing [request equivalence](../kb_topics/dsRequestEquivalence.md#kb-topic-dsrequestequivalence).
-
-**Flags**: IR
-
----
-## Attr: DSRequest.exportFields
-
-### Description
-The list of field names to export. If provided, the field list in the exported output is limited and sorted as per the list.
-
-If exportFields is not provided:
-
-*   If we are exporting via [exportData()](#attr-dsrequestexportdata), the field list in the exported output is every non-hidden field defined in the DataSource, in DataSource definition order
-*   If we are exporting via [exportClientData()](ListGrid_2.md#method-listgridexportclientdata) and we are not exporting to OOXML, or we are exporting to OOXML but we are not [streaming](#attr-dsrequestexportstreaming), the field list in the exported output is based on the client data sent up, taking every row into account (so if there is a value for field "foo" only in row 57, we will output a column "foo", the cells of which are empty except for row 57)
-*   If we are exporting via [exportClientData()](ListGrid_2.md#method-listgridexportclientdata) and we are exporting to OOXML and streaming is in force (the default for OOXML), the field list in the exported output is based on the client data sent up, taking just the first row into account (so if there is a value for field "foo" only in row 57, we will not output a column "foo" at all)
-
-**Flags**: IR
-
----
-## Attr: DSRequest.parentNode
-
-### Description
-For advanced use in integrating trees that [load data on demand](TreeGrid.md#attr-treegridloaddataondemand) with web services, `parentNode` is automatically set in "fetch" DSRequests issued by a databound TreeGrid that is loading children for that `parentNode`.
-
-This is sometimes needed if a web service requires that additional properties beyond the ID of the parentNode must be passed in order to accomplished level-by-level loading. A custom implementation of [DataSource.transformRequest](DataSource.md#method-datasourcetransformrequest) can access dsRequest.parentNode and add any such properties to [DSRequest.data](#attr-dsrequestdata).
-
-`parentNode` will also be automatically set by a TreeGrid performing databound reparenting of nodes, as implemented by [TreeGrid.folderDrop](TreeGrid.md#method-treegridfolderdrop).
-
-This property can only be read. There is no meaning to setting this property yourself.
-
-**Flags**: R
-
----
-## Attr: DSRequest.headerData
-
-### Description
-For DataSources using SOAP messaging with a WSDL web service, data to be serialized to form SOAP headers, as a map from the header part name to the data. See [WSRequest.headerData](WSRequest.md#attr-wsrequestheaderdata) for more information.
-
-SOAP headers typically contain request metadata such as a session id for authentication, and so `dsRequest.headerData` is typically populated by [DataSource.transformRequest](DataSource.md#method-datasourcetransformrequest), or, for data that applies to every request sent to the server, by [WebService.getHeaderData](WebService.md#method-webservicegetheaderdata).
-
-Note that this only applies to SOAP headers. General HTTP headers for requests may be modified using [RPCRequest.httpHeaders](RPCRequest.md#attr-rpcrequesthttpheaders).
-
-**Flags**: IRW
-
----
-## Attr: DSRequest.cacheSyncTiming
-
-### Description
-The [cacheSyncTiming](../reference_2.md#type-cachesynctiming) to use for this specific request. Overrides any [operation-level](OperationBinding.md#attr-operationbindingcachesynctiming) or [dataSource-level](DataSource.md#attr-datasourcecachesynctiming) `cacheSyncTiming`
-
-### Groups
-
-- cacheSynchronization
-
-### See Also
-
-- [DataSource.cacheSyncStrategy](DataSource.md#attr-datasourcecachesyncstrategy)
-- [OperationBinding.cacheSyncStrategy](OperationBinding.md#attr-operationbindingcachesyncstrategy)
-
-**Flags**: IR
-
----
-## Attr: DSRequest.sortBy
-
-### Description
-Field name to sortBy, prefixed with optional "-" indicating descending sort. For example, to sort by the field "userName" in ascending order, set `sortBy` to just "userName". For descending sort on "userName", set `sortBy` to "-userName".
-
-To sort by multiple fields, an array of field names is also supported. For example, to sort by the field "department" in ascending order, followed by the field "userName" in descending order, set `sortBy` to:
-
-`[ "department", "-userName" ]`
-
-Additionally, this property supports an array of [SortSpecifier](../reference_2.md#object-sortspecifier) objects. Setting `sortBy` to the following SortSpecifier array results in the same multi-level sort mentioned above:
-
-`[     { property: "department", direction: "ascending" },     { property: "userName", direction: "descending" }   ]`
-
-**Flags**: IR
-
----
-## Attr: DSRequest.linkDataFetchOperation
-
-### Description
-For a databound [multi-link tree](Tree.md#method-treeismultilinktree), this is the `operationId` to use for the separate fetch on the [ResultTree.linkDataSource](ResultTree.md#attr-resulttreelinkdatasource) that will be generated if [LinkDataFetchMode](../reference.md#type-linkdatafetchmode) is "separate". This property overrides the [linkDataFetchOperation](ResultTree.md#attr-resulttreelinkdatafetchoperation) property on [ResultTree](ResultTree.md#class-resulttree), for this fetch only.
-
-Ignored if this DSRequest is not a fetch against a multi-link tree.
-
-### Groups
-
-- multiLinkTree
-
-**Flags**: IR
-
----
-## Attr: DSRequest.pendingAdd
-
-### Description
-Indicates that a validation request is being made for a record that will ultimately be saved with an "add" request, as opposed to an "update" request. This context is necessary for some validators because the nature of the validation depends on whether we are adding or updating a record. The system sets this flag when processing interim validations, such as those fired when [DynamicForm.validateOnChange](DynamicForm.md#attr-dynamicformvalidateonchange) is in force.
-
-**Flags**: IR
-
----
-## Attr: DSRequest.resultTree
-
-### Description
-For advanced use in integrating trees that [load data on demand](ResultTree.md#attr-resulttreeloaddataondemand) with web services, the ResultTree that issued this "fetch" DSRequest is automatically made available as the `resultTree` property.
-
-This property can only be read. There is no meaning to setting this property yourself.
-
-**Flags**: R
-
----
-## Attr: DSRequest.summaryFunctions
-
-### Description
-A mapping from field names to [summary functions](../reference_2.md#type-summaryfunction) to be applied to each field.
-
-Valid only for an operation of type "fetch". See the [Server Summaries overview](../kb_topics/serverSummaries.md#kb-topic-server-summaries) for examples of usage.
-
-### Groups
-
-- serverSummaries
-
-### See Also
-
-- [DSRequest.groupBy](#attr-dsrequestgroupby)
-
-**Flags**: IR
-
----
-## Attr: DSRequest.exportImageFormat
-
-### Description
-The image format in which the SVG graphic should be exported.
-
-**Flags**: IR
-
----
-## Attr: DSRequest.exportFooter
-
-### Description
-Optional text to appear at the end of the file.
-
-**Flags**: IR
-
----
-## Attr: DSRequest.exportFilename
-
-### Description
-The name of the file to save the exported data into. If [exportToFilesystem](#attr-dsrequestexporttofilesystem) is set, this is the name of the file the server creates on its filesystem. If [exportToClient](#attr-dsrequestexporttoclient) is set, this is the filename that will appear to the browser.
-
-If the exportFilename that you specify does not include an extension, one will be added to it based on the [ExportFormat](../reference_2.md#type-exportformat) specified by [DSRequest.exportAs](#attr-dsrequestexportas). Filename is forced to have the correct extension to work around bugs in IE, but if you don't want the filename to be manipulated, use "custom" [exportFormat](../reference_2.md#type-exportformat), see example.
-
-### See Also
-
-- [DSRequest.exportPath](#attr-dsrequestexportpath)
-
-**Flags**: IR
-
----
-## Attr: DSRequest.exportCSS
-
-### Description
-When using [RPCManager.exportContent](RPCManager.md#classmethod-rpcmanagerexportcontent) to produce a .pdf from a SmartClient UI, this property allows dynamic CSS to be passed to the server. Since the `exportContent()` system already provides a way to specify a custom skin or additional stylesheet for export, `exportCSS` should only be used for small bits of CSS that are necessarily dynamic.
-
-For example, when printing a very wide page, such as a grid with many columns or a very wide chart, you could send the string "@page {size: A4 landscape; }" as `exportCSS` to cause the generated PDF to use landscape mode, so that all content fits without clipping.
-
-**Flags**: IR
-
----
-## Attr: DSRequest.writeToGeneratedFields
-
-### Description
-If set, indicates that the server will write values provided in the `DSRequest`'s values, for fields that it would normally auto-populate or allow to be generated by the persistence mechanism. This setting allows you to specify that client-provided values for, eg, a `creatorTimestamp` field should be honored, where ordinarily they would be ignored.
-
-See the [WriteToGeneratedFields](../reference.md#type-writetogeneratedfields) documentation for more information about valid settings
-
-**Flags**: IR
-
----
-## Attr: DSRequest.streamResults
-
-### Description
-If true, results will be streamed on the server, rather than all records being read into server memory at once; this approach is appropriate for retrieving or exporting large datasets without swamping the server.
-
-Although this property can be set without any particular concerns (small datasets can be streamed just as readily as large ones), bear in mind that although streaming enables the processing of very large datasets, processing and downloading very large datasets in a normal client/server flow will very rarely give an acceptable user experience. Streaming is of more practical use in a batch setting - for example, a disconnected [export](#attr-dsrequestexporttofilesystem).
-
-Note that streaming requires specific server support; of SmartClient's built-in DataSource types, only `SQLDataSource` is able to stream results. This property is ignored by other DataSource types. If you wish to implement the necessary server-side behavior to support streaming with a custom DataSource, see the server-side Javadocs for `DSResponse.hasNextRecord()` and `DSResponse.nextRecordAsObject()`.
-
-See also the server-side documentation for `DSResponse`, `SQLDataSource` and `StreamingResponseIterator`.
-
-Note, that streaming results does not support fields with ["concat" summary function](../reference_2.md#type-summaryfunction) on non-Oracle databases. Such fields will be skipped.
-
-**Flags**: IR
-
----
-## Attr: DSRequest.lineBreakStyle
-
-### Description
-The style of line-breaks to use in the exported output. See [LineBreakStyle](../reference.md#type-linebreakstyle) for more information.
-
-**Flags**: IR
-
----
-## Attr: DSRequest.exportHeader
-
-### Description
-Optional text to appear at the beginning of the file.
-
-**Flags**: IR
-
----
-## Attr: DSRequest.exportTitleSeparatorChar
-
-### Description
-The character with which to replace spaces in field-titles when exporting to XML. If not specified in the request, the server uses "".
-
-**Flags**: IR
-
----
-## Attr: DSRequest.operationType
-
-### Description
-Type of operation being performed: "fetch", "add", "remove", "update" or "custom".
-
-This property is generally automatically populated, for example when calling `fetchData()` on a DataSource or DataBound component the operationType is automatically set to "fetch". Note that "custom" operations are never generated automatically, they are always fired by your code.
-
-**Flags**: IR
-
----
-## Attr: DSRequest.data
-
-### Description
-Data, such as search criteria or an updated record, to be acted upon. Contents differ by `operationType`, see [DataSource Operations](../kb_topics/dataSourceOperations.md#kb-topic-datasource-operations) for details.
-
-This field is generally filled in by passing the "data" argument to methods such as [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata).
-
-**Flags**: IR
-
----
-## Attr: DSRequest.exportSpanTitleSeparator
-
-### Description
-When you export a [ListGrid](ListGrid_1.md#class-listgrid) that has [headerSpans](ListGrid_1.md#attr-listgridheaderspans) defined and [DSRequest.exportShowHeaderSpanTitles](#attr-dsrequestexportshowheaderspantitles) is true, the behavior is dependent on the export type. Direct exports to Excel formats (both XLS and OOXML) place the headerSpans in merged cells in the spreadsheet, giving the same visual effect as the original ListGrid. This is not possible with exports to CSV format; instead, we alter the exported headers so that they contain the titles of the ancestor headerSpan(s).
-
-For example, if you had a field titled "Population" inside a headerSpan titled "National", nested inside another headerSpan titled "Demographics", that would result in the exported field being titled "Demographics - National - Population".
-
-The `exportSpanTitleSeparator` property allows you to override the separator string used when constructing these amalgamated headers.
-
-**Flags**: IR
-
----
-## Attr: DSRequest.exportDatesAsFormattedString
-
-### Description
-When exporting via [ListGrid.exportClientData](ListGrid_2.md#method-listgridexportclientdata) to an `XLS` or `OOXML` spreadsheet, forces dates to export as a string rather than a true date value.
-
-If a date value is provided to a spreadsheet as a string, Excel or other spreadsheet applications may not recognize them as being date values that are valid for use in date-specific functions in formulas, filters, etc.
-
-For this reason, the default behavior of `exportClientData` is to provide date values to the spreadsheet as true date values. If [Format Strings](../reference.md#type-formatstring) are provided via properties like [dataSourceField.format](DataSourceField.md#attr-datasourcefieldformat) these will be translated to Excel / OpenOffice format strings and used when generating spreadsheets. Other formatting logic, such as [cell formatters](ListGridField.md#method-listgridfieldformatcellvalue), will not be used since they cannot be automatically translated to an Excel format string. If no translatable format string is available, date values will be provided to the spreadsheet with no formatter and the spreadsheet program's default formatting for date values will be used.
-
-If `exportDatesAsFormattedString` is set to true, date fields will appear as strings that exactly match the formatting shown in the [DataBoundComponent](../reference.md#interface-databoundcomponent). As noted above, this means the spreadsheet program will not recognize the value as a date.
-
-### Groups
-
-- exportFormatting
-
-### See Also
-
-- [DataSourceField.exportFormat](DataSourceField.md#attr-datasourcefieldexportformat)
-
-**Flags**: IR
-
----
-## Attr: DSRequest.multiInsertNonMatchingStrategy
-
-### Description
-For dataSources of [serverType](DataSource.md#attr-datasourceservertype) "sql" only, this property sets the multi-insert "non matching" strategy for this specific [dsRequest](../reference_2.md#object-dsrequest). Only has an effect if this is an [add request](DataSource.md#method-datasourceadddata) that specifies a list of records as the data, and only if [multiInsertStrategy](#attr-dsrequestmultiinsertstrategy) is set to "multipleValues" either globally or at the [DSRequest](../reference_2.md#object-dsrequest), [OperationBinding](OperationBinding.md#class-operationbinding), or [DataSource](DataSource.md#class-datasource) level.
-
-Note that this setting overrides the equivalent [operationBinding setting](OperationBinding.md#attr-operationbindingmultiinsertnonmatchingstrategy) and [dataSource setting](DataSource.md#attr-datasourcemultiinsertnonmatchingstrategy)
-
-### See Also
-
-- [DSRequest.multiInsertStrategy](#attr-dsrequestmultiinsertstrategy)
-
-**Flags**: IRW
-
----
-## Attr: DSRequest.exportResults
-
-### Description
-When set, causes the results of the DSRequest to be exported to a file, whose name and format are indicated by [DSRequest.exportFilename](#attr-dsrequestexportfilename) and [DSRequest.exportAs](#attr-dsrequestexportas) respectively. When no exportFilename is provided, the default is _Results.csv_ and the default value of exportAs is _csv_.
-
-The export field-list can also be configured, see [DSRequest.exportFields](#attr-dsrequestexportfields). Formats for exported date and numeric are controlled by several settings - see [exportFormatting](../kb_topics/exportFormatting.md#kb-topic-exports--formatting) for an overview.
-
-Once the operation completes, [DSRequest.exportDisplay](#attr-dsrequestexportdisplay) specifies whether the exported data should be downloaded to the file-system or displayed in a new window. The default value of exportDisplay is "download" which displays the Save As dialog. See [ExportDisplay](../reference_2.md#type-exportdisplay) for more information.
-
-You can configure the style of [line-breaks](../reference.md#type-linebreakstyle) to use when generating the output, the [delimiter](#attr-dsrequestexportdelimiter) to use when exporting to CSV and the [separator-character](#attr-dsrequestexporttitleseparatorchar) to use in field-titles when exporting to XML.
-
-Additionally, you can output arbitrary text before and after the exported data by setting [exportHeader](#attr-dsrequestexportheader) and [exportFooter](#attr-dsrequestexportfooter).
-
-Note that for security reasons, an export initiated using dsRequest properties does not provide support for JSON format (see [this post](http://forums.smartclient.com/showthread.php?t=235) for more detail). However, you can use operationBinding.exportAs:"json" in a server-side .ds.xml file to force JSON export to be allowed.
-
-As well as setting dsRequest.exportResults and related properties, exports can be initiated in two other ways, via [OperationBinding](OperationBinding.md#class-operationbinding)s and via custom server code which sets export-related properties on the [DSResponse](DSResponse.md#class-dsresponse). Both of those methods support exporting to JSON format.
-
-**Format Examples** XML format
-
-```
-     <List>
-         <Object>
-             <id>10101</id>
-             <displayName>Record 10101</displayName>
-         </Object>
-    </List>
- 
-```
-JSON Format
-```
-     [
-         { id: 10101, displayName: "Record 10101" }
-     ]
- 
-```
-CSV Format
-```
-     id,displayName
-     10101,"Record 10101"
- 
-```
-
-**Flags**: IR
-
----
 ## Attr: DSRequest.exportData
 
 ### Description
-Only applies to request properties passed to [ListGrid.exportClientData](ListGrid_2.md#method-listgridexportclientdata). If specified this property contains an arbitrary set of data to be exported.
+Only applies to request properties passed to [ListGrid.exportClientData](ListGrid_1.md#method-listgridexportclientdata). If specified this property contains an arbitrary set of data to be exported.
 
 **Flags**: IR
 
@@ -805,23 +568,6 @@ This is a per-request flag for explicitly controlling whether the cache is used 
 **Flags**: IRW
 
 ---
-## Attr: DSRequest.clientTimestamp
-
-### Description
-Timestamp recording when this request was created on the client, as epoch milliseconds, generated automatically.
-
-This timestamp is for client-side tracking only and is never sent to the server. It can be used to order requests chronologically, implement timeout logic, or filter queued changes by age when using [DataSource.queueChanges](DataSource.md#attr-datasourcequeuechanges).
-
-Note: This is distinct from any server-side timestamps that may be recorded for auditing or logging purposes.
-
-### See Also
-
-- [DataSource.queueChanges](DataSource.md#attr-datasourcequeuechanges)
-- [DataSource.pendingChanges](DataSource.md#attr-datasourcependingchanges)
-
-**Flags**: R
-
----
 ## Attr: DSRequest.outputs
 
 ### Description
@@ -829,15 +575,10 @@ The list of fields to return in the response, specified as a comma-separated str
 
 Note that you cannot use this property to request a _superset_ of the fields that would normally be returned, because that would be a security hole. It is possible to configure individual [OperationBinding](OperationBinding.md#class-operationbinding)s to return extra fields, but this must be done in the server's [DataSource](DataSource.md#class-datasource) descriptor; it cannot be altered on the fly from the client side.
 
-Also, this setting is overridden by the [DataSourceField.outputWhen](DataSourceField.md#attr-datasourcefieldoutputwhen) setting, meaning that if a field is listed in request.outputs, but does not match the type of condition of outputWhen setting, it won't be returned to the client.
-
-Further, this setting is overridden by the [ListGrid.fetchFields](ListGrid_1.md#attr-listgridfetchfields) setting, which will include all visible fields along with any fields it specifies.
-
 ### See Also
 
 - [OperationBinding.outputs](OperationBinding.md#attr-operationbindingoutputs)
 - [DSRequest.additionalOutputs](#attr-dsrequestadditionaloutputs)
-- [DataSourceField.outputWhen](DataSourceField.md#attr-datasourcefieldoutputwhen)
 
 **Flags**: IR
 
@@ -845,7 +586,35 @@ Further, this setting is overridden by the [ListGrid.fetchFields](ListGrid_1.md#
 ## Attr: DSRequest.exportDisplay
 
 ### Description
-Specifies whether the exported data will be downloaded as an attachment or displayed in a new browser window. See [ExportDisplay](../reference_2.md#type-exportdisplay) for more information.
+Specifies whether the exported data will be downloaded as an attachment or displayed in a new browser window. See [ExportDisplay](../reference.md#type-exportdisplay) for more information.
+
+**Flags**: IR
+
+---
+## Attr: DSRequest.exportImageQuality
+
+### Description
+If exporting in [JPEG format](../reference.md#type-exportimageformat), the output JPEG quality level. This is a number from 0 to 1, with 1 representing the best quality and 0 representing the least quality but smallest file size.
+
+**Flags**: IR
+
+---
+## Attr: DSRequest.exportRawValues
+
+### Description
+Whether formatting settings should be applied to data being exported. Default behavior and the effect of setting of `exportRawValues` is described in the [Export Formatting overview](../kb_topics/exportFormatting.md#kb-topic-exports--formatting).
+
+### Groups
+
+- exportFormatting
+
+**Flags**: IRW
+
+---
+## Attr: DSRequest.exportDelimiter
+
+### Description
+The character to use as a field-separator in CSV exports. The default delimiter is comma.
 
 **Flags**: IR
 
@@ -853,22 +622,51 @@ Specifies whether the exported data will be downloaded as an attachment or displ
 ## Attr: DSRequest.exportAs
 
 ### Description
-The format in which the data should be exported. Note that 'JSON' is not allowed as a client-side option. See [ExportFormat](../reference_2.md#type-exportformat) for more information.
+The format in which the data should be exported. Note that 'JSON' is not allowed as a client-side option. See [ExportFormat](../reference.md#type-exportformat) for more information.
 
 **Flags**: IR
 
 ---
-## Attr: DSRequest.multiInsertBatchSize
+## Attr: DSRequest.useStrictJSON
 
 ### Description
-For dataSources of [serverType](DataSource.md#attr-datasourceservertype) "sql" only, this property sets the multi-insert batch size for this specific [dsRequest](../reference_2.md#object-dsrequest). Only has an effect if this is an [add request](DataSource.md#method-datasourceadddata) that specifies a list of records as the data, and only if [multiInsertStrategy](#attr-dsrequestmultiinsertstrategy) is set to "multipleValues" either globally or at the [DSRequest](../reference_2.md#object-dsrequest), [OperationBinding](OperationBinding.md#class-operationbinding), or [DataSource](DataSource.md#class-datasource) level.
+Should the HTTP response to this request be formatted using the strict JSON subset of the javascript language? If set to true, responses returned by the server should match the format described [here](http://www.json.org/js.html).
 
-Note that this setting overrides the equivalent [operationBinding setting](OperationBinding.md#attr-operationbindingmultiinsertbatchsize) and [dataSource setting](DataSource.md#attr-datasourcemultiinsertbatchsize)
+Only applies to requests sent a server with [DataSource.dataFormat](DataSource.md#attr-datasourcedataformat) set to "json" or "iscServer".
+
+**Flags**: IR
+
+---
+## Attr: DSRequest.exportPath
+
+### Description
+If [exportToFilesystem](#attr-dsrequestexporttofilesystem) is set, optionally specifies a path to use when saving the file. This path is relative to the default export path, which is set using the [server.properties](../reference.md#kb-topic-serverproperties-file) setting `export.location`; this is the project webRoot by default. For example, with the default setting of `export.location`, an `exportPath` of `"shared/ds"` and an [exportFilename](#attr-dsrequestexportfilename) of `"exportedData.csv"`, SmartClient Server would export to file `$webRoot/shared/ds/exportedData.csv`.
+
+If you do not specify this property, SmartClient Server will export to the file indicated by `exportFilename` directly in the default export location.
+
+This property is only applicable when [exportToFilesystem](#attr-dsrequestexporttofilesystem) is set.
 
 ### See Also
 
-- [DSRequest.multiInsertStrategy](#attr-dsrequestmultiinsertstrategy)
-- [DSRequest.multiInsertNonMatchingStrategy](#attr-dsrequestmultiinsertnonmatchingstrategy)
+- [DSRequest.exportFilename](#attr-dsrequestexportfilename)
+
+**Flags**: IR
+
+---
+## Attr: DSRequest.resultSet
+
+### Description
+For advanced use in integrating dataset paging with web services, the ResultSet that issued this "fetch" DSRequest is automatically made available as the `resultSet` property.
+
+This property can only be read. There is no meaning to setting this property yourself.
+
+**Flags**: R
+
+---
+## Attr: DSRequest.exportHeaderless
+
+### Description
+This property allows omitting column names from CSV and Excel exports (no effect on JSON or XML exports).
 
 **Flags**: IRW
 
@@ -881,7 +679,7 @@ Determines the [PropertyIdentifier](../reference.md#type-propertyidentifier) to 
 If this property is not set, the following defaults apply:
 
 *   If the export format is a native spreadsheet format (XLS or OOXML), localized field titles are used
-*   If the export format is CSV, XML or JSON and this is a client-driven export (ie it was initiated by a call to [exportClientData()](ListGrid_2.md#method-listgridexportclientdata)), localized field titles are used
+*   If the export format is CSV, XML or JSON and this is a client-driven export (ie it was initiated by a call to [exportClientData()](ListGrid_1.md#method-listgridexportclientdata)), localized field titles are used
 *   If the export format is CSV, XML or JSON and this is **not** a client-driven export, internal field names are used
 
 ### Groups
@@ -905,36 +703,16 @@ Note that if the request encounters an error (such as 500 server error), by defa
 **Flags**: IR
 
 ---
-## Attr: DSRequest.afterCriteria
+## Attr: DSRequest.componentId
 
 ### Description
-For requests that use [server summaries](../kb_topics/serverSummaries.md#kb-topic-server-summaries), this property defines _post-aggregation criteria_ — criteria that are applied _after_ grouping and summarization have occurred. Conceptually, it works like a SQL `HAVING` clause and allows you to restrict which grouped or summarized results are returned, based on the values of summary fields rather than raw data rows.
+For requests submitted by a [DataBoundComponent](../reference.md#interface-databoundcomponent), the [Canvas.ID](Canvas.md#attr-canvasid) of the submitting component.
 
-Supported by the built-in SQL, Hibernate, and JPA DataSources.
+This ID will be present for operations including automatic saves by a ListGrid [during editing](../kb_topics/editing.md#kb-topic-grid-editing), or calls to [form.saveData()](DynamicForm.md#method-dynamicformsavedata). It will not be present for a direct call to a DataSource method such as [DataSource.fetchData](DataSource.md#method-datasourcefetchdata).
 
-**Example:**  
-  
-Suppose the `avg` function is being applied to the `unitPrice` field on `supplyItem` records. Specifying `afterCriteria` with the condition `unitPrice < 5` will eliminate only those groups whose _average_ price is less than 5 — that is, it filters _after_ the aggregation step.
+Note this is the component's **String** ID - you can retrieve the component itself via [Canvas.getById](Canvas.md#classmethod-canvasgetbyid).
 
-In SQL terms:
-
-```
- SELECT category, AVG(unitPrice)
- FROM supplyItem
- WHERE ...                            -- regular criteria
- GROUP BY category
- HAVING AVG(unitPrice) < 5            -- afterCriteria
- 
-```
-For more details on aggregation and post-aggregation filtering, see the [Server Summaries Overview](../kb_topics/serverSummaries.md#kb-topic-server-summaries).
-
-### Groups
-
-- serverSummaries
-
-### See Also
-
-- [OperationBinding.afterWhereClause](OperationBinding.md#attr-operationbindingafterwhereclause)
+This property should be used for debugging purposes only - do not use it to trigger differences in server-side behavior, instead, use [DSRequest.operationId](#attr-dsrequestoperationid) because only `operationId` is considered when assessing [request equivalence](../kb_topics/dsRequestEquivalence.md#kb-topic-dsrequestequivalence).
 
 **Flags**: IR
 
@@ -959,12 +737,26 @@ It is possible to redirect the filesystem export to make use of an `OutputStream
 **Flags**: IR
 
 ---
+## Attr: DSRequest.exportFields
+
+### Description
+The list of field names to export. If provided, the field list in the exported output is limited and sorted as per the list.
+
+If exportFields is not provided:
+
+*   If we are exporting via [exportData()](#attr-dsrequestexportdata), the field list in the exported output is every non-hidden field defined in the DataSource, in DataSource definition order
+*   If we are exporting via [exportClientData()](ListGrid_1.md#method-listgridexportclientdata) and we are not exporting to OOXML, or we are exporting to OOXML but we are not [streaming](#attr-dsrequestexportstreaming), the field list in the exported output is based on the client data sent up, taking every row into account (so if there is a value for field "foo" only in row 57, we will output a column "foo", the cells of which are empty except for row 57)
+*   If we are exporting via [exportClientData()](ListGrid_1.md#method-listgridexportclientdata) and we are exporting to OOXML and streaming is in force (the default for OOXML), the field list in the exported output is based on the client data sent up, taking just the first row into account (so if there is a value for field "foo" only in row 57, we will not output a column "foo" at all)
+
+**Flags**: IR
+
+---
 ## Attr: DSRequest.exportValueFields
 
 ### Description
 This flag has a different meaning depending on whether you are doing a client-driven or server-driven export.
 
-For [exportClientData()](ListGrid_2.md#method-listgridexportclientdata) calls (client-driven), ordinarily any fields that have a [displayField](ListGridField.md#attr-listgridfielddisplayfield) defined have the value of that displayField exported, rather than the underlying value in the [valueField](ListGridField.md#attr-listgridfieldvaluefield). If you set the `exportValueFields` property, we export both the underlying value and the displayField value.
+For [exportClientData()](ListGrid_1.md#method-listgridexportclientdata) calls (client-driven), ordinarily any fields that have a [displayField](ListGridField.md#attr-listgridfielddisplayfield) defined have the value of that displayField exported, rather than the underlying value in the [valueField](ListGridField.md#attr-listgridfieldvaluefield). If you set the `exportValueFields` property, we export both the underlying value and the displayField value.
 
 Again for `exportClientData()` calls, any fields that have a [valueMap](ListGridField.md#attr-listgridfieldvaluemap) defined ordinarily have the mapped value of the field exported, rather than the underlying data value. If you set the `exportValueFields` property, we instead export the underlying data value. Note, there is only one field in this scenario, not a `valueField` and a separate `displayField`, so we export **either** the underlying data value or the mapped value, not both as in the `displayField`/`valueField` case described above.
 
@@ -975,14 +767,18 @@ For `exportData()` calls, if we encounter a field that has an in-record [display
 **Flags**: IR
 
 ---
-## Attr: DSRequest.dataSource
+## Attr: DSRequest.parentNode
 
 ### Description
-DataSource this DSRequest will act on.
+For advanced use in integrating trees that [load data on demand](TreeGrid.md#attr-treegridloaddataondemand) with web services, `parentNode` is automatically set in "fetch" DSRequests issued by a databound TreeGrid that is loading children for that `parentNode`.
 
-This property is generally automatically populated, for example when calling [DataSource.fetchData](DataSource.md#method-datasourcefetchdata) the dataSource property is set to the target DataSource.
+This is sometimes needed if a web service requires that additional properties beyond the ID of the parentNode must be passed in order to accomplished level-by-level loading. A custom implementation of [DataSource.transformRequest](DataSource.md#method-datasourcetransformrequest) can access dsRequest.parentNode and add any such properties to [DSRequest.data](#attr-dsrequestdata).
 
-**Flags**: IR
+`parentNode` will also be automatically set by a TreeGrid performing databound reparenting of nodes, as implemented by [TreeGrid.folderDrop](TreeGrid.md#method-treegridfolderdrop).
+
+This property can only be read. There is no meaning to setting this property yourself.
+
+**Flags**: R
 
 ---
 ## Attr: DSRequest.progressiveLoading
@@ -1003,6 +799,16 @@ Note that this setting applies only to fetch requests - it has no effect if spec
 - [OperationBinding.progressiveLoading](OperationBinding.md#attr-operationbindingprogressiveloading)
 
 **Flags**: IRW
+
+---
+## Attr: DSRequest.dataSource
+
+### Description
+DataSource this DSRequest will act on.
+
+This property is generally automatically populated, for example when calling [DataSource.fetchData](DataSource.md#method-datasourcefetchdata) the dataSource property is set to the target DataSource.
+
+**Flags**: IR
 
 ---
 ## Attr: DSRequest.useFlatHeaderFields
@@ -1035,14 +841,14 @@ Note, OOXML is the only native Excel format that supports streaming: when export
 A set of key:value pairs, mapping field names to expressions that will be evaluated server-side to derive a value for that field. This property allows for client-driven [Transaction Chaining](../kb_topics/transactionChaining.md#kb-topic-transaction-chaining), with some restrictions for security reasons:
 
 *   Normal [server-side Transaction Chaining settings](OperationBinding.md#attr-operationbindingvalues) for a field take precedence over this property, so server-defined rules cannot be overridden from the client
-*   Arbitrary Velocity expressions are not allowed in DSRequests sent from the client (`fieldValueExpressions` is also a valid property on a server-side DSRequest, and normal Velocity expressions _are_ allowed in that case - see the server-side Javadoc for `DSRequest.setFieldValueExpressions()`). For client-originated requests, only the following bindings are allowed - see the [Velocity overview](../kb_topics/velocitySupport.md#kb-topic-velocity-context-variables) for details of what these values mean:
+*   Arbitrary Velocity expressions are not allowed in DSRequests sent from the client (`fieldValueExpressions` is also a valid property on a server-side DSRequest, and normal Velocity expressions _are_ allowed in that case - see the server-side Javadoc for `DSRequest.setFieldValueExpressions()`). For client-originated requests, only the following bindings are allowed - see the [Velocity overview](#kb-topic-velocitysupport) for details of what these values mean:
     *   $currentDate
     *   $currentDateUTC
     *   $transactionDate
     *   $transactionDateUTC
     *   $userId
     *   $masterId - see [DSRequestModifier.value](DSRequestModifier.md#attr-dsrequestmodifiervalue) for details
-    *   References to specific fields in prior responses, via $responseData.first and $responseData.last, with or without parameters. For example, **$responseData.first("myDataSource", "fetch")\[0\].myField**. See the [Velocity overview](../kb_topics/velocitySupport.md#kb-topic-velocity-context-variables) for details of $responseData
+    *   References to specific fields in prior responses, via $responseData.first and $responseData.last, with or without parameters. For example, **$responseData.first("myDataSource", "fetch")\[0\].myField**. See the [Velocity overview](#kb-topic-velocitysupport) for details of $responseData
     *   References to certain metadata properties of prior responses, via $responses.first and $responses.last, with or without parameters. For example, **$responses.last("myDataSource", "fetch").totalRows**. Note that the only properties allowed in a client-driven `fieldValueExpression` are: "startRow", "endRow", "totalRows" and "status"; this restriction does not apply to server-driven `fieldValueExpressions`. See the Velocity overview for details of $responses
 *   Normal [declarative security rules](DataSourceField.md#attr-datasourcefieldeditrequiresrole) apply: if a field is not valid for writing, its `fieldValueExpression` will be ignored. Again, this only applies to client-originated requests.
 
@@ -1058,6 +864,18 @@ Note, it is possible to globally disable `fieldValueExpression` in client-origin
 **Flags**: IRW
 
 ---
+## Attr: DSRequest.headerData
+
+### Description
+For DataSources using SOAP messaging with a WSDL web service, data to be serialized to form SOAP headers, as a map from the header part name to the data. See [WSRequest.headerData](WSRequest.md#attr-wsrequestheaderdata) for more information.
+
+SOAP headers typically contain request metadata such as a session id for authentication, and so `dsRequest.headerData` is typically populated by [DataSource.transformRequest](DataSource.md#method-datasourcetransformrequest), or, for data that applies to every request sent to the server, by [WebService.getHeaderData](WebService.md#method-webservicegetheaderdata).
+
+Note that this only applies to SOAP headers. General HTTP headers for requests may be modified using [RPCRequest.httpHeaders](RPCRequest.md#attr-rpcrequesthttpheaders).
+
+**Flags**: IRW
+
+---
 ## Attr: DSRequest.dataProtocol
 
 ### Description
@@ -1065,7 +883,7 @@ Note, it is possible to globally disable `fieldValueExpression` in client-origin
 
 **Note:** Typically developers should use [operation bindings](DataSource.md#attr-datasourceoperationbindings) to specify an explicit data protocol for a request.
 
-One exception: advanced developers may wish to have a custom [request transformer](DataSource.md#method-datasourcetransformrequest) with entirely client-side handling for some requests. This may be achieved by setting the request's `dataProtocol` to ["clientCustom"](../reference_2.md#type-dsprotocol) within transformRequest, and also triggering application code which will fire [DataSource.processResponse](DataSource.md#method-datasourceprocessresponse) when complete.
+One exception: advanced developers may wish to have a custom [request transformer](DataSource.md#method-datasourcetransformrequest) with entirely client-side handling for some requests. This may be achieved by setting the request's `dataProtocol` to ["clientCustom"](../reference.md#type-dsprotocol) within transformRequest, and also triggering application code which will fire [DataSource.processResponse](DataSource.md#method-datasourceprocessresponse) when complete.
 
 The [DataSource.getDataProtocol](DataSource.md#method-datasourcegetdataprotocol) method may be used to determine what data protocol will be used to handle a specific request based on this property (if set), otherwise the settings at the [operationBinding](OperationBinding.md#attr-operationbindingdataprotocol) or [dataSource](DataSource.md#attr-datasourcedataprotocol) levels.
 

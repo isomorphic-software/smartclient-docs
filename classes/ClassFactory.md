@@ -9,17 +9,6 @@
 ### Description
 Intentionally clobber an existing SmartClient Class, if it already exists. Works identically to [ClassFactory.defineClass](#classmethod-classfactorydefineclass), except that no warning is logged to the console.
 
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| className | [String](#type-string) | false | — | Name for the new class. |
-| superClass | [Class](#type-class)|[SCClassName](../reference.md#type-scclassname) | true | — | Optional SuperClass Class object or name |
-
-### Returns
-
-`[Class](#type-class)` — Returns the new Class object.
-
 ---
 ## ClassMethod: ClassFactory.defineClass
 
@@ -43,8 +32,6 @@ The new Class is returned by `defineClass`, is available as `isc._ClassName_` an
 
 See also [Super()](Class.md#method-classsuper) for calling superclass methods.
 
-For TypeScript usage with custom classes, see [typeScriptSupport](../kb_topics/typeScriptSupport.md#kb-topic-typescript-support).
-
 NOTE: `isc.defineClass()` also creates a new function `[class:isA](../reference.md#object-isa)._ClassName()_` object for identifying instances of this Class.
 
 ### Parameters
@@ -52,7 +39,7 @@ NOTE: `isc.defineClass()` also creates a new function `[class:isA](../reference.
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | className | [String](#type-string) | false | — | Name for the new class. |
-| superClass | [Class](#type-class)|[SCClassName](../reference.md#type-scclassname) | true | — | Optional SuperClass Class object or name |
+| superClass | [Class](#type-class) | true | — | Optional SuperClass Class object or name |
 
 ### Returns
 
@@ -85,9 +72,9 @@ Given the name of a class, create an instance of that class.
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | className | [String](#type-string) | false | — | Name of a class. (ClassObject) Actual class object to use. |
-| props | [Object](../reference.md#type-object) | true | — | Properties to apply to the instance. |
-| props2 | [Object](../reference.md#type-object) | true | — | More properties to apply to the instance. |
-| props3 | [Object](../reference.md#type-object) | true | — | Yet more properties to apply to the instance. |
+| props | [Object](../reference_2.md#type-object) | true | — | Properties to apply to the instance. |
+| props2 | [Object](../reference_2.md#type-object) | true | — | More properties to apply to the instance. |
+| props3 | [Object](../reference_2.md#type-object) | true | — | Yet more properties to apply to the instance. |
 
 ### Returns
 

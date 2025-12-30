@@ -12,6 +12,31 @@
 Navigation control implemented as a horizontal layout showing back and forward controls and a title.
 
 ---
+## Attr: NavigationBar.rightButton
+
+### Description
+The button displayed to the right of the title in this NavigationBar. By default this will be a [NavigationButton](NavigationButton.md#class-navigationbutton) with [direction](NavigationButton.md#attr-navigationbuttondirection) set to `"forward"`.
+
+The following [passthroughs](../kb_topics/autoChildUsage.md#kb-topic-using-autochildren) apply:
+
+*   [rightButtonTitle](#attr-navigationbarrightbuttontitle) for [Button.title](Button.md#attr-buttontitle)
+*   [rightButtonIcon](#attr-navigationbarrightbuttonicon) for [Button.icon](Button.md#attr-buttonicon)
+
+### See Also
+
+- [NavigationBar.showRightButton](#attr-navigationbarshowrightbutton)
+
+**Flags**: IR
+
+---
+## Attr: NavigationBar.shortLeftButtonTitle
+
+### Description
+Short title to display for the left button title if there is not enough room to show the title for the navigation bar. Setting to null or an empty string ("") will avoid a shortened title ever being used. See [NavigationBar.title](#attr-navigationbartitle) for a full description.
+
+**Flags**: IRW
+
+---
 ## Attr: NavigationBar.rightButtonTitle
 
 ### Description
@@ -32,71 +57,6 @@ Note also that when animation is enabled, certain AutoChild defaults and propert
 **Flags**: IRA
 
 ---
-## Attr: NavigationBar.showLeftButton
-
-### Description
-If set to `false`, then the [leftButton](#attr-navigationbarleftbutton) is not shown.
-
-**Flags**: IRW
-
----
-## Attr: NavigationBar.titleLabel
-
-### Description
-The AutoChild label used to display the [title](#attr-navigationbartitle) in this NavigationBar.
-
-**Flags**: IR
-
----
-## Attr: NavigationBar.iconBaseStyle
-
-### Description
-A CSS style to apply to images in the [left](#attr-navigationbarleftbutton) and [right](#attr-navigationbarrightbutton) buttons. This is a base style supporting suffixes for states, specifically "Over", "Down" and "Disabled", which are applied when [ImgButton](ImgButton.md#class-imgbutton) settings like [ImgButton.showRollOverIcon](ImgButton.md#attr-imgbuttonshowrollovericon) are applied to the icons.
-
-**Flags**: IR
-
----
-## Attr: NavigationBar.rightButtonIcon
-
-### Description
-[Icon](Button.md#attr-buttonicon) for the [rightButton](#attr-navigationbarrightbutton).
-
-**Flags**: IRW
-
----
-## Attr: NavigationBar.rightButton
-
-### Description
-The button displayed to the right of the title in this NavigationBar. By default this will be a [NavigationButton](NavigationButton.md#class-navigationbutton) with [direction](NavigationButton.md#attr-navigationbuttondirection) set to `"forward"`.
-
-The following [passthroughs](../kb_topics/autoChildUsage.md#kb-topic-using-autochildren) apply:
-
-*   [rightButtonTitle](#attr-navigationbarrightbuttontitle) for [Button.title](Button.md#attr-buttontitle)
-*   [rightButtonIcon](#attr-navigationbarrightbuttonicon) for [Button.icon](Button.md#attr-buttonicon)
-
-### See Also
-
-- [NavigationBar.showRightButton](#attr-navigationbarshowrightbutton)
-
-**Flags**: IR
-
----
-## Attr: NavigationBar.iconSize
-
-### Description
-Default size for icons in the [left](#attr-navigationbarleftbutton) and [right](#attr-navigationbarrightbutton) buttons in this `NavigationBar`.
-
-**Flags**: IRW
-
----
-## Attr: NavigationBar.shortLeftButtonTitle
-
-### Description
-Short title to display for the left button title if there is not enough room to show the title for the navigation bar. Setting to null or an empty string ("") will avoid a shortened title ever being used. See [NavigationBar.title](#attr-navigationbartitle) for a full description.
-
-**Flags**: IRW
-
----
 ## Attr: NavigationBar.leftButtonTitle
 
 ### Description
@@ -109,6 +69,14 @@ Short title to display for the left button title if there is not enough room to 
 
 ### Description
 If set, the left button title will never be omitted in an attempt to fit the full title. See the documentation of [NavigationBar.title](#attr-navigationbartitle) for details.
+
+**Flags**: IRW
+
+---
+## Attr: NavigationBar.showLeftButton
+
+### Description
+If set to `false`, then the [leftButton](#attr-navigationbarleftbutton) is not shown.
 
 **Flags**: IRW
 
@@ -158,6 +126,22 @@ AutoChild of type [MiniNavControl](../reference.md#class-mininavcontrol). Not sh
 
 ### Description
 An arbitrary component that will be placed where the [miniNavControl](#attr-navigationbarmininavcontrol) AutoChild would normally be placed (see [miniNavAlign](#attr-navigationbarmininavalign)).
+
+**Flags**: IRW
+
+---
+## Attr: NavigationBar.titleLabel
+
+### Description
+The AutoChild label used to display the [title](#attr-navigationbartitle) in this NavigationBar.
+
+**Flags**: IR
+
+---
+## Attr: NavigationBar.rightButtonIcon
+
+### Description
+[Icon](Button.md#attr-buttonicon) for the [rightButton](#attr-navigationbarrightbutton).
 
 **Flags**: IRW
 
@@ -213,6 +197,18 @@ Maximum amount in pixels that the title will be placed off center in an effort t
 **Flags**: IR
 
 ---
+## Method: NavigationBar.setLeftButtonTitle
+
+### Description
+Setter for [leftButtonTitle](#attr-navigationbarleftbuttontitle).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| newTitle | [HTMLString](../reference.md#type-htmlstring) | false | — | new title HTML for the left button. |
+
+---
 ## Method: NavigationBar.setShowRightButton
 
 ### Description
@@ -225,6 +221,18 @@ Show or hide the [rightButton](#attr-navigationbarrightbutton). The `rightButton
 | show | [Boolean](#type-boolean) | false | — | if `false`, then the `rightButton` will be hidden. If unset or `true` then the `rightButton` will be shown as long as it is a member of the `controls` array. |
 
 ---
+## Method: NavigationBar.setTitle
+
+### Description
+Updates the [title](#attr-navigationbartitle) for this `NavigationBar`.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| newTitle | [HTMLString](../reference.md#type-htmlstring) | false | — | new title HTML. |
+
+---
 ## Method: NavigationBar.navigationClick
 
 ### Description
@@ -235,6 +243,18 @@ Notification method fired when the user clicks the [NavigationBar.leftButton](#a
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | direction | [NavigationDirection](../reference.md#type-navigationdirection) | false | — | direction in which the user is attempting to navigate |
+
+---
+## Method: NavigationBar.setRightButtonIcon
+
+### Description
+Setter for [rightButtonIcon](#attr-navigationbarrightbuttonicon).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| newIcon | [SCImgURL](../reference_2.md#type-scimgurl) | false | — | new icon for the right button. |
 
 ---
 ## Method: NavigationBar.setAlwaysShowLeftButtonTitle
@@ -255,6 +275,18 @@ Setter for [alwaysShowLeftButtonTitle](#attr-navigationbaralwaysshowleftbuttonti
 Notification method fired when the up button on the [miniNavControl](#attr-navigationbarmininavcontrol) is clicked.
 
 ---
+## Method: NavigationBar.setRightButtonTitle
+
+### Description
+Setter for [rightButtonTitle](#attr-navigationbarrightbuttontitle).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| newTitle | [HTMLString](../reference.md#type-htmlstring) | false | — | new title HTML for the right button. |
+
+---
 ## Method: NavigationBar.setCustomNavControl
 
 ### Description
@@ -271,6 +303,18 @@ Setter to update the [NavigationBar.customNavControl](#attr-navigationbarcustomn
 
 ### Description
 Notification method fired when the down button on the [miniNavControl](#attr-navigationbarmininavcontrol) is clicked.
+
+---
+## Method: NavigationBar.setLeftButtonIcon
+
+### Description
+Setter for [leftButtonIcon](#attr-navigationbarleftbuttonicon).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| newIcon | [SCImgURL](../reference_2.md#type-scimgurl) | false | — | new icon for left button. |
 
 ---
 ## Method: NavigationBar.setShortLeftButtonTitle
@@ -310,65 +354,5 @@ Show or hide the [leftButton](#attr-navigationbarleftbutton). The `leftButton` m
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | show | [Boolean](#type-boolean) | false | — | if `false`, then the `leftButton` will be hidden. If unset or `true` then the `leftButton` will be shown as long as it is a member of the `controls` array. |
-
----
-## Method: NavigationBar.setLeftButtonTitle
-
-### Description
-Setter for [leftButtonTitle](#attr-navigationbarleftbuttontitle).
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| newTitle | [HTMLString](../reference.md#type-htmlstring) | false | — | new title HTML for the left button. |
-
----
-## Method: NavigationBar.setTitle
-
-### Description
-Updates the [title](#attr-navigationbartitle) for this `NavigationBar`.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| newTitle | [HTMLString](../reference.md#type-htmlstring) | false | — | new title HTML. |
-
----
-## Method: NavigationBar.setRightButtonIcon
-
-### Description
-Setter for [rightButtonIcon](#attr-navigationbarrightbuttonicon).
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| newIcon | [SCImgURL](../reference.md#type-scimgurl) | false | — | new icon for the right button. |
-
----
-## Method: NavigationBar.setRightButtonTitle
-
-### Description
-Setter for [rightButtonTitle](#attr-navigationbarrightbuttontitle).
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| newTitle | [HTMLString](../reference.md#type-htmlstring) | false | — | new title HTML for the right button. |
-
----
-## Method: NavigationBar.setLeftButtonIcon
-
-### Description
-Setter for [leftButtonIcon](#attr-navigationbarleftbuttonicon).
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| newIcon | [SCImgURL](../reference.md#type-scimgurl) | false | — | new icon for left button. |
 
 ---

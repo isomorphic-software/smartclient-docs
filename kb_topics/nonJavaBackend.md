@@ -11,11 +11,11 @@ While SmartClient's extensive server features are lost if you cannot install the
 
 #### Installation
 
-As described in [_Deploying SmartClient_](iscInstall.md#kb-topic-installing-the-smartclient-runtime), for a client-only integration, installation consists of just copying a directory of JavaScript and media files to your webserver.
+As described in [_Deploying SmartClient_](iscInstall.md#kb-topic-deploying-smartclient), for a client-only integration, installation consists of just copying a directory of JavaScript and media files to your webserver.
 
 #### Creating Components
 
-SmartClient components can be included in any .html page, including dynamically generated pages produced by .php or .asp files. The standard SmartClient libraries can be included in the page as follows, and [optional modules](loadingOptionalModules.md#kb-topic-loading-optional-modules) can be loaded in the same way:
+SmartClient components can be included in any .html page, including dynamically generated pages produced by .php or .asp files. The SmartClient libraries can be included in the page as follows:
 
 ```
  <HTML><HEAD>
@@ -25,10 +25,7 @@ SmartClient components can be included in any .html page, including dynamically 
  <SCRIPT SRC=../isomorphic/system/modules/ISC_Containers.js></SCRIPT>
  <SCRIPT SRC=../isomorphic/system/modules/ISC_Grids.js></SCRIPT>
  <SCRIPT SRC=../isomorphic/system/modules/ISC_Forms.js></SCRIPT>
- <SCRIPT SRC=../isomorphic/system/modules/ISC_RichTextEditor.js></SCRIPT>
- <SCRIPT SRC=../isomorphic/system/modules/ISC_Drawing.js></SCRIPT>
  <SCRIPT SRC=../isomorphic/system/modules/ISC_DataBinding.js></SCRIPT>
- <SCRIPT SRC=../isomorphic/system/modules/ISC_Calendar.js></SCRIPT>
  <SCRIPT SRC=../isomorphic/skins/SmartClient/load_skin.js></SCRIPT>
  </HEAD><BODY>
  ...

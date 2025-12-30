@@ -12,14 +12,6 @@
 ISC Abstraction for ActiveX controls
 
 ---
-## Attr: ActiveXControl.uuid
-
-### Description
-Set this to the uuid of your Active X control - ISC will then generate the appropriate classID entry for you.
-
-**Flags**: IR
-
----
 ## Attr: ActiveXControl.codeBase
 
 ### Description
@@ -45,6 +37,14 @@ Sets the 'id' attribute on the object. If a name is not provided it will be auto
 
 ### Description
 A map of key/value pairs to pass to the Active X control as parameters.
+
+**Flags**: IR
+
+---
+## Attr: ActiveXControl.uuid
+
+### Description
+Set this to the uuid of your Active X control - ISC will then generate the appropriate classID entry for you.
 
 **Flags**: IR
 

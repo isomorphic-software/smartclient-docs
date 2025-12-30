@@ -16,14 +16,6 @@
 - devTools
 
 ---
-## Method: SelectItemEditProxy.getInlineEditText
-
-### Description
-Returns the text based on the current component state to be edited inline. Called by the [EditProxy.inlineEditForm](EditProxy.md#attr-editproxyinlineeditform) to obtain the starting edit value.
-
-Returns the component's valueMap one-per-line as specified in [FormItemEditProxy.valueMapDisplaySeparatorChar](FormItemEditProxy.md#attr-formitemeditproxyvaluemapdisplayseparatorchar). Current value(s) is indicated with [FormItemEditProxy.valueMapSelectedChar](FormItemEditProxy.md#attr-formitemeditproxyvaluemapselectedchar).
-
----
 ## Method: SelectItemEditProxy.setInlineEditText
 
 ### Description
@@ -36,5 +28,13 @@ Updates the component's valueMap and current value.
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | newValue | [String](#type-string) | false | — | the new component valueMap |
+
+---
+## Method: SelectItemEditProxy.getInlineEditText
+
+### Description
+Returns the text based on the current component state to be edited inline. Called by the [EditProxy.inlineEditForm](EditProxy.md#attr-editproxyinlineeditform) to obtain the starting edit value.
+
+Returns the component's valueMap one-per-line as specified in [FormItemEditProxy.valueMapDisplaySeparatorChar](FormItemEditProxy.md#attr-formitemeditproxyvaluemapdisplayseparatorchar). Current value(s) is indicated with [FormItemEditProxy.valueMapSelectedChar](FormItemEditProxy.md#attr-formitemeditproxyvaluemapselectedchar).
 
 ---

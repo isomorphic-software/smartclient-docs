@@ -18,22 +18,10 @@ Some examples:
 *   inputFieldList: \["a","b"\], outputField: \["c","d"\] - copies "a" and "b" to "c" and "d" respectively.
 
 ---
-## Attr: StateTask.fieldListsLengthMismatchMessage
-
-### Description
-The default message to be reported with [getInvalidTaskMessage()](ProcessElement.md#method-processelementgetinvalidtaskmessage) when the `inputFieldList` and `outputFieldList` properties do not have the same length.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IR
-
----
 ## Attr: StateTask.value
 
 ### Description
-If a stateTask does not declare [inputs](Task.md#attr-taskinputs), it must declare a `value` which should be assigned to the output field.
+If a stateTask does not declare [inputField](Task.md#attr-taskinputfield), it must declare a `value` which should be assigned to the output field.
 
 See [StateTask.type](#attr-statetasktype) for how the value is interpreted.
 
@@ -53,9 +41,9 @@ ID of the next sequence or element to proceed to if a failure condition arises, 
 ### Description
 Type of the value for stateTask.outputField.
 
-This can be used in conjunction with [StateTask.value](#attr-statetaskvalue) to declare the type of the value, or can be used to convert the type of the [inputs](Task.md#attr-taskinputs) to the declared type.
+This can be used in conjunction with [StateTask.value](#attr-statetaskvalue) to declare the type of the value, or can be used to convert the type of the [inputField](Task.md#attr-taskinputfield) to the declared type.
 
-If no type is declared, the value from an inputs is unchanged or provided via a call to setValue() is unchanged.
+If no type is declared, the value from an inputField is unchanged or provided via a call to setValue() is unchanged.
 
 A value specified for `stateTask.value` via an attribute in [componentXML](../kb_topics/componentXML.md#kb-topic-component-xml) (see [Process.loadProcess](Process.md#classmethod-processloadprocess)) is treated as a boolean if it is the exact string "true" or "false", treated as a "decimal" or "integer" if it parsable as a valid number, otherwise treated as a String. If these heuristics don't work in your case, just declare the type explicitly via `stateTask.type`.
 
@@ -69,11 +57,7 @@ A value of "record" type or "array" type can be declared in Component XML using 
 ## Attr: StateTask.passThruOutput
 
 ### Description
-Does this processElement pass through output from the last executed task (i.e. transient state)?
-
-See [taskInputExpressions](../reference_2.md#type-taskinputexpression) for details on the transient state outputs.
-
-Note that this property does not affect the task at all but is an indicator to the user and to the workflow editor of the behavior of the task as coded (See [Process.passThruTaskOutput](Process.md#method-processpassthrutaskoutput)).
+Does this processElement pass through output from the last executed task (i.e. transient state)? See [taskInputExpressions](../kb_topics/taskInputExpression.md#kb-topic-task-input-expressions) for details on the transient state.
 
 **Flags**: IR
 

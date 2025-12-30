@@ -12,6 +12,18 @@
 Displays one or more records "horizontally" with one property per line.
 
 ---
+## Attr: DetailViewer.cellStyle
+
+### Description
+CSS style for a normal value
+
+### Groups
+
+- appearance
+
+**Flags**: IRW
+
+---
 ## Attr: DetailViewer.hiliteIconRightPadding
 
 ### Description
@@ -24,26 +36,24 @@ How much padding should there be on the right of [hilite icons](#attr-detailview
 **Flags**: IRW
 
 ---
+## Attr: DetailViewer.printLabelStyle
+
+### Description
+Optional CSS style for a label cell in printable HTML for this component. If unset [DetailViewer.labelStyle](#attr-detailviewerlabelstyle) will be used for printing as well as normal presentation.
+
+### Groups
+
+- printing
+
+**Flags**: IRW
+
+---
 ## Attr: DetailViewer.fieldPickerFieldProperties
 
 ### Description
 Names of properties on [DetailViewerField](../reference.md#object-detailviewerfield) for which the [FieldPicker](FieldPicker.md#class-fieldpicker) should show an editing interface, for convenience.
 
 For example, specify \["decimalPad", "decimalPrecision"\] to allow end users to modify [DetailViewerField.decimalPad](DetailViewerField.md#attr-detailviewerfielddecimalpad) and [DetailViewerField.decimalPrecision](DetailViewerField.md#attr-detailviewerfielddecimalprecision) respectively.
-
-**Flags**: IR
-
----
-## Attr: DetailViewer.fetchRequestProperties
-
-### Description
-If [DetailViewer.autoFetchData](#attr-detailviewerautofetchdata) is `true`, this attribute allows the developer to declaratively specify [DSRequest](../reference_2.md#object-dsrequest) properties for the initial [fetchData()](ListGrid_2.md#method-listgridfetchdata) call.
-
-Note that any properties governing more specific request attributes for the initial fetch (such as [autoFetchTextMatchStyle](#attr-databoundcomponentautofetchtextmatchstyle) and initial sort specifiers) will be applied on top of this properties block.
-
-### Groups
-
-- databinding
 
 **Flags**: IR
 
@@ -86,6 +96,18 @@ CSS style to display this message in
 **Flags**: IRWA
 
 ---
+## Attr: DetailViewer.dataFetchMode
+
+### Description
+DetailViewers do not yet support paging, and will fetch and render all available records.
+
+### Groups
+
+- databinding
+
+**Flags**: IRW
+
+---
 ## Attr: DetailViewer.valueAlign
 
 ### Description
@@ -96,6 +118,14 @@ Horizontal alignment of values in this viewer. If unspecified, defaults to `"rig
 - values
 
 **Flags**: IRW
+
+---
+## Attr: DetailViewer.fieldPickerWindow
+
+### Description
+Instance of [FieldPickerWindow](FieldPickerWindow.md#class-fieldpickerwindow) used if [DetailViewer.canPickFields](#attr-detailviewercanpickfields) is set.
+
+**Flags**: IR
 
 ---
 ## Attr: DetailViewer.labelPrefix
@@ -128,244 +158,6 @@ Default width and height of [hilite icons](#attr-detailviewerhiliteicons) for th
 **Flags**: IRW
 
 ---
-## Attr: DetailViewer.showEmptyField
-
-### Description
-Whether to show the field when the value is null
-
-### Groups
-
-- appearance
-
-**Flags**: IRWA
-
----
-## Attr: DetailViewer.dataSource
-
-### Description
-The DataSource that this component should bind to for default fields and for performing [DataSource requests](../reference_2.md#object-dsrequest).
-
-Can be specified as either a DataSource instance or the String ID of a DataSource.
-
-### Groups
-
-- databinding
-
-**Flags**: IRW
-
----
-## Attr: DetailViewer.printHeaderStyle
-
-### Description
-Optional CSS style for a header in printable HTML for this component. If unset [DetailViewer.headerStyle](#attr-detailviewerheaderstyle) will be used for printing as well as normal presentation.
-
-### Groups
-
-- printing
-
-**Flags**: IRW
-
----
-## Attr: DetailViewer.hiliteIcons
-
-### Description
-Specifies a list of icons that can be used in [hilites](DataBoundComponent.md#method-databoundcomponentedithilites).
-
-`hiliteIcons` should be specified as an Array of [SCImgURL](../reference.md#type-scimgurl). When present, the hilite editing interface shown when [DataBoundComponent.editHilites](DataBoundComponent.md#method-databoundcomponentedithilites) is called will offer the user a drop down for picking one of these icons when defining either a simple or advanced hilite rule.
-
-If the user picks an icon, the created hiliting rule will have [Hilite.icon](Hilite.md#attr-hiliteicon) set to the chosen icon. [DataBoundComponent.hiliteIconPosition](DataBoundComponent.md#attr-databoundcomponenthiliteiconposition) controls where the icon will appear for that field -- the default is that it appears in front of the normal cell content. This can also be overridden at the field level.
-
-### Groups
-
-- hiliting
-
-**Flags**: IR
-
----
-## Attr: DetailViewer.dataArity
-
-### Description
-A DetailViewer is a [dataArity](DataBoundComponent.md#attr-databoundcomponentdataarity):either component by default which means data population from [Canvas.dataContext](Canvas.md#attr-canvasdatacontext) will be treated like a DynamicForm (i.e. single). However, by explicitly marking an instance of DetailViewer as `dataArity:multiple`, `dataContext` population will be treated similarly to a ListGrid.
-
-**Flags**: IRWA
-
----
-## Attr: DetailViewer.wrapLabel
-
-### Description
-Should the label be allowed to wrap, or be fixed to one line no matter how long
-
-### Groups
-
-- labels
-
-**Flags**: IRW
-
----
-## Attr: DetailViewer.emptyCellValue
-
-### Description
-Text to show for an empty cell
-
-### Groups
-
-- appearance
-
-**Flags**: IRWA
-
----
-## Attr: DetailViewer.fieldIdProperty
-
-### Description
-Name of the field in the DetailViewerRecord which specifies the data property for that record.
-
-**Deprecated**
-
-**Flags**: R
-
----
-## Attr: DetailViewer.labelStyle
-
-### Description
-CSS style for a normal detail label
-
-### Groups
-
-- appearance
-
-**Flags**: IRW
-
----
-## Attr: DetailViewer.recordsPerBlock
-
-### Description
-The number of records to display in a block. A block is a horizontal row on a page containing one or more records, as specified by the value of recordsPerBlock. The height of a block is equal to the height of a single record. The default setting of 1 causes each record to appear by itself in a vertical row. Setting recordsPerBlock to 2 would cause records to appear side by side in groups of two. Use a value of "\*" to indicate all records.
-
-### Groups
-
-- appearance
-
-**Flags**: IRW
-
----
-## Attr: DetailViewer.hiliteIconLeftPadding
-
-### Description
-How much padding should there be on the left of [hilite icons](#attr-detailviewerhiliteicons) by default? Can be overridden at the field level
-
-### Groups
-
-- hiliting
-
-**Flags**: IRW
-
----
-## Attr: DetailViewer.rowHeight
-
-### Description
-Height of rows rendered by the DetailViewer. Acts as a minimum - the DetailViewer never clips values. This attribute can be set as null.
-
-**Flags**: IRW
-
----
-## Attr: DetailViewer.fields
-
-### Description
-An array of field objects, specifying the order and type of fields to display in this DetailViewer. In DetailViewers, the fields specify rows.
-
-**Flags**: IRW
-
----
-## Attr: DetailViewer.hiliteIconHeight
-
-### Description
-Height for hilite icons for this listGrid. Overrides [hiliteIconSize](#attr-detailviewerhiliteiconsize). Can be overridden at the field level
-
-### Groups
-
-- hiliting
-
-**Flags**: IRW
-
----
-## Attr: DetailViewer.styleName
-
-### Description
-CSS style for the component as a whole.
-
-### Groups
-
-- appearance
-
-**Flags**: IRW
-
----
-## Attr: DetailViewer.implicitCriteria
-
-### Description
-Criteria that are never shown to or edited by the user and are cumulative with any criteria provided via [DataBoundComponent.initialCriteria](DataBoundComponent.md#attr-databoundcomponentinitialcriteria) and related methods.
-
-This property supports [dynamicCriteria](../kb_topics/dynamicCriteria.md#kb-topic-dynamiccriteria) - use [Criterion.valuePath](Criterion.md#attr-criterionvaluepath) to refer to values in the [Canvas.ruleScope](Canvas.md#attr-canvasrulescope).
-
-**Flags**: IRW
-
----
-## Attr: DetailViewer.labelSuffix
-
-### Description
-text to put after a label
-
-### Groups
-
-- labels
-
-**Flags**: IRW
-
----
-## Attr: DetailViewer.cellStyle
-
-### Description
-CSS style for a normal value
-
-### Groups
-
-- appearance
-
-**Flags**: IRW
-
----
-## Attr: DetailViewer.printLabelStyle
-
-### Description
-Optional CSS style for a label cell in printable HTML for this component. If unset [DetailViewer.labelStyle](#attr-detailviewerlabelstyle) will be used for printing as well as normal presentation.
-
-### Groups
-
-- printing
-
-**Flags**: IRW
-
----
-## Attr: DetailViewer.dataFetchMode
-
-### Description
-DetailViewers do not yet support paging, and will fetch and render all available records.
-
-### Groups
-
-- databinding
-
-**Flags**: IRW
-
----
-## Attr: DetailViewer.fieldPickerWindow
-
-### Description
-Instance of [FieldPickerWindow](FieldPickerWindow.md#class-fieldpickerwindow) used if [DetailViewer.canPickFields](#attr-detailviewercanpickfields) is set.
-
-**Flags**: IR
-
----
 ## Attr: DetailViewer.showEmptyMessage
 
 ### Description
@@ -378,6 +170,18 @@ Show [DetailViewer.emptyMessage](#attr-detailvieweremptymessage) when there is n
 ### See Also
 
 - [DetailViewer.emptyMessage](#attr-detailvieweremptymessage)
+
+**Flags**: IRWA
+
+---
+## Attr: DetailViewer.showEmptyField
+
+### Description
+Whether to show the field when the value is null
+
+### Groups
+
+- appearance
 
 **Flags**: IRWA
 
@@ -412,6 +216,20 @@ CSS style for a header
 **Flags**: IRW
 
 ---
+## Attr: DetailViewer.dataSource
+
+### Description
+The DataSource that this component should bind to for default fields and for performing [DataSource requests](../reference.md#object-dsrequest).
+
+Can be specified as either a DataSource instance or the String ID of a DataSource.
+
+### Groups
+
+- databinding
+
+**Flags**: IRW
+
+---
 ## Attr: DetailViewer.blockStyle
 
 ### Description
@@ -422,6 +240,34 @@ CSS style for each block (one record's worth of data).
 - appearance
 
 **Flags**: IRW
+
+---
+## Attr: DetailViewer.printHeaderStyle
+
+### Description
+Optional CSS style for a header in printable HTML for this component. If unset [DetailViewer.headerStyle](#attr-detailviewerheaderstyle) will be used for printing as well as normal presentation.
+
+### Groups
+
+- printing
+
+**Flags**: IRW
+
+---
+## Attr: DetailViewer.hiliteIcons
+
+### Description
+Specifies a list of icons that can be used in [hilites](DataBoundComponent.md#method-databoundcomponentedithilites).
+
+`hiliteIcons` should be specified as an Array of [SCImgURL](../reference_2.md#type-scimgurl). When present, the hilite editing interface shown when [DataBoundComponent.editHilites](DataBoundComponent.md#method-databoundcomponentedithilites) is called will offer the user a drop down for picking one of these icons when defining either a simple or advanced hilite rule.
+
+If the user picks an icon, the created hiliting rule will have [Hilite.icon](Hilite.md#attr-hiliteicon) set to the chosen icon. [DataBoundComponent.hiliteIconPosition](DataBoundComponent.md#attr-databoundcomponenthiliteiconposition) controls where the icon will appear for that field -- the default is that it appears in front of the normal cell content. This can also be overridden at the field level.
+
+### Groups
+
+- hiliting
+
+**Flags**: IR
 
 ---
 ## Attr: DetailViewer.separatorStyle
@@ -495,16 +341,40 @@ If set, right-clicking on the DetailViewer will show a context menu that offers 
 **Flags**: IR
 
 ---
+## Attr: DetailViewer.wrapLabel
+
+### Description
+Should the label be allowed to wrap, or be fixed to one line no matter how long
+
+### Groups
+
+- labels
+
+**Flags**: IRW
+
+---
 ## Attr: DetailViewer.hiliteIconPosition
 
 ### Description
-When [hiliteIcons](#attr-detailviewerhiliteicons) are present, where the hilite icon will be placed relative to the field value. See [HiliteIconPosition](../reference_2.md#type-hiliteiconposition). Can be overridden at the field level.
+When [hiliteIcons](#attr-detailviewerhiliteicons) are present, where the hilite icon will be placed relative to the field value. See [HiliteIconPosition](../reference.md#type-hiliteiconposition). Can be overridden at the field level.
 
 ### Groups
 
 - hiliting
 
 **Flags**: IR
+
+---
+## Attr: DetailViewer.emptyCellValue
+
+### Description
+Text to show for an empty cell
+
+### Groups
+
+- appearance
+
+**Flags**: IRWA
 
 ---
 ## Attr: DetailViewer.data
@@ -531,6 +401,14 @@ Horizontal alignment of value-labels in this viewer. If unspecified, defaults to
 **Flags**: IRW
 
 ---
+## Attr: DetailViewer.fieldIdProperty
+
+### Description
+Name of the field in the DetailViewerRecord which specifies the data property for that record.
+
+**Flags**: IRWA
+
+---
 ## Attr: DetailViewer.blockSeparator
 
 ### Description
@@ -539,6 +417,42 @@ A string (HTML acceptable) that will be written to a page to separate blocks.
 ### Groups
 
 - appearance
+
+**Flags**: IRW
+
+---
+## Attr: DetailViewer.labelStyle
+
+### Description
+CSS style for a normal detail label
+
+### Groups
+
+- appearance
+
+**Flags**: IRW
+
+---
+## Attr: DetailViewer.recordsPerBlock
+
+### Description
+The number of records to display in a block. A block is a horizontal row on a page containing one or more records, as specified by the value of recordsPerBlock. The height of a block is equal to the height of a single record. The default setting of 1 causes each record to appear by itself in a vertical row. Setting recordsPerBlock to 2 would cause records to appear side by side in groups of two. Use a value of "\*" to indicate all records.
+
+### Groups
+
+- appearance
+
+**Flags**: IRW
+
+---
+## Attr: DetailViewer.hiliteIconLeftPadding
+
+### Description
+How much padding should there be on the left of [hilite icons](#attr-detailviewerhiliteicons) by default? Can be overridden at the field level
+
+### Groups
+
+- hiliting
 
 **Flags**: IRW
 
@@ -601,11 +515,51 @@ CSS style to use for the [DetailViewer.loadingMessage](#attr-detailviewerloading
 **Flags**: IRWA
 
 ---
+## Attr: DetailViewer.rowHeight
+
+### Description
+Height of rows rendered by the DetailViewer. Acts as a minimum - the DetailViewer never clips values. This attribute can be set as null.
+
+**Flags**: IRW
+
+---
 ## Attr: DetailViewer.timeFormatter
 
 ### Description
 Display format to use for fields specified as type 'time'. May also be specified at the field level via [DetailViewerField.timeFormatter](DetailViewerField.md#attr-detailviewerfieldtimeformatter).  
 If unset, time fields will be formatted based on the system wide [Time.setNormalDisplayFormat](Time.md#classmethod-timesetnormaldisplayformat)
+
+### Groups
+
+- appearance
+
+**Flags**: IRW
+
+---
+## Attr: DetailViewer.fields
+
+### Description
+An array of field objects, specifying the order and type of fields to display in this DetailViewer. In DetailViewers, the fields specify rows.
+
+**Flags**: IRW
+
+---
+## Attr: DetailViewer.hiliteIconHeight
+
+### Description
+Height for hilite icons for this listGrid. Overrides [hiliteIconSize](#attr-detailviewerhiliteiconsize). Can be overridden at the field level
+
+### Groups
+
+- hiliting
+
+**Flags**: IRW
+
+---
+## Attr: DetailViewer.styleName
+
+### Description
+CSS style for the component as a whole.
 
 ### Groups
 
@@ -631,12 +585,20 @@ Use [DetailViewerField.linkTextProperty](DetailViewerField.md#attr-detailviewerf
 **Flags**: IRW
 
 ---
+## Attr: DetailViewer.implicitCriteria
+
+### Description
+Criteria that are never shown to or edited by the user and are cumulative with any criteria provided via [DataBoundComponent.initialCriteria](DataBoundComponent.md#attr-databoundcomponentinitialcriteria) and related methods
+
+**Flags**: IRW
+
+---
 ## Attr: DetailViewer.autoFetchData
 
 ### Description
-If true, when this component is first drawn, automatically call `this.fetchData()`. Criteria for this fetch may be picked up from [DetailViewer.initialCriteria](#attr-detailviewerinitialcriteria), and textMatchStyle may be specified via [autoFetchTextMatchStyle](ListGrid_1.md#attr-listgridautofetchtextmatchstyle). Additional request properties may be specified using [DetailViewer.fetchRequestProperties](#attr-detailviewerfetchrequestproperties).
+If true, when this component is first drawn, automatically call `this.fetchData()`. Criteria for this fetch may be picked up from [DetailViewer.initialCriteria](#attr-detailviewerinitialcriteria), and textMatchStyle may be specified via [autoFetchTextMatchStyle](ListGrid_1.md#attr-listgridautofetchtextmatchstyle).
 
-NOTE: if `autoFetchData` is set, calling [fetchData()](ListGrid_2.md#method-listgridfetchdata) before draw will cause two requests to be issued, one from the manual call to fetchData() and one from the autoFetchData setting. The second request will use only [DetailViewer.initialCriteria](#attr-detailviewerinitialcriteria) and not any other criteria or settings from the first request. Generally, turn off autoFetchData if you are going to manually call [fetchData()](ListGrid_2.md#method-listgridfetchdata) at any time. Note: If you are using saved searches - either via [SavedSearchItem](SavedSearchItem.md#class-savedsearchitem) or [ListGrid.saveDefaultSearch](ListGrid_1.md#attr-listgridsavedefaultsearch), autoFetchData will be automatically suspended and replaced with the saved criteria/view state, if applicable.
+NOTE: if `autoFetchData` is set, calling [fetchData()](ListGrid_1.md#method-listgridfetchdata) before draw will cause two requests to be issued, one from the manual call to fetchData() and one from the autoFetchData setting. The second request will use only [DetailViewer.initialCriteria](#attr-detailviewerinitialcriteria) and not any other criteria or settings from the first request. Generally, turn off autoFetchData if you are going to manually call [fetchData()](ListGrid_1.md#method-listgridfetchdata) at any time.
 
 ### Groups
 
@@ -644,9 +606,64 @@ NOTE: if `autoFetchData` is set, calling [fetchData()](ListGrid_2.md#method-list
 
 ### See Also
 
-- [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata)
+- [ListGrid.fetchData](ListGrid_1.md#method-listgridfetchdata)
 
 **Flags**: IR
+
+---
+## Attr: DetailViewer.labelSuffix
+
+### Description
+text to put after a label
+
+### Groups
+
+- labels
+
+**Flags**: IRW
+
+---
+## Method: DetailViewer.exportData
+
+### Description
+Sends the current filter criteria and sort direction to the server, then exports data in the requested [exportFormat](DSRequest.md#attr-dsrequestexportas).
+
+A variety of DSRequest settings, such as [exportAs](DSRequest.md#attr-dsrequestexportas) and [DSRequest.exportFilename](DSRequest.md#attr-dsrequestexportfilename), affect the exporting process: see [exportResults](DSRequest.md#attr-dsrequestexportresults) for further detail.
+
+Note that data exported via this method skips client-side fields defined only in the component, excludes any client-side formatting and relies on both the SmartClient server and server-side DataSources. To export client-data including client-only fields and with client-side formatting applied, see [exportClientData](ListGrid_1.md#method-listgridexportclientdata), which still requires the SmartClient server but does not rely on server-side DataSource definitions (.ds.xml files).
+
+For more information on exporting data, see [DataSource.exportData](DataSource.md#method-datasourceexportdata).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| requestProperties | [DSRequest](#type-dsrequest) | true | — | additional properties to set on the DSRequest that will be issued |
+| callback | [DSCallback](../reference.md#type-dscallback) | true | — | callback to invoke on completion. Note that this parameter only applies where [DSRequest.exportToClient](DSRequest.md#attr-dsrequestexporttoclient) is explicitly set to false, because file downloads do not provide ordinary SmartClient callbacks |
+
+### Groups
+
+- dataBoundComponentMethods
+
+### See Also
+
+- [exportFormatting](../kb_topics/exportFormatting.md#kb-topic-exports--formatting)
+
+---
+## Method: DetailViewer.viewSelectedData
+
+### Description
+Displays the currently selected record(s) of the selectionComponent widget (typically a listGrid) in the detailViewer.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| selectionComponent | [ListGrid](#type-listgrid)|[TileGrid](#type-tilegrid)|[ID](#type-id) | false | — | the ListGrid or TileGrid or ID of a [ListGrid](ListGrid_1.md#class-listgrid)/[TileGrid](TileGrid.md#class-tilegrid) whose currently selected record(s) is/are to be edited |
+
+### Groups
+
+- dataBoundComponentMethods
 
 ---
 ## Method: DetailViewer.fieldIsVisible
@@ -697,7 +714,7 @@ Returns true if this component is currently [exporting client data](#method-deta
 
 ### See Also
 
-- [ListGrid.exportClientData](ListGrid_2.md#method-listgridexportclientdata)
+- [ListGrid.exportClientData](ListGrid_1.md#method-listgridexportclientdata)
 
 ---
 ## Method: DetailViewer.getCellStyle
@@ -756,82 +773,10 @@ Sets the data displayed by this detail viewer.
 | newData | [Array of DetailViewerRecord[]](#type-array-of-detailviewerrecord)|[Array of Record[]](#type-array-of-record)|[RecordList](#type-recordlist) | false | — | new data to be displayed |
 
 ---
-## Method: DetailViewer.fetchRelatedData
-
-### Description
-Based on the relationship between the DataSource this component is bound to and the DataSource specified as the "schema" argument, call fetchData() to retrieve records in this data set that are related to the passed-in record.
-
-Relationships between DataSources are declared via [DataSourceField.foreignKey](DataSourceField.md#attr-datasourcefieldforeignkey).
-
-For example, given two related DataSources "orders" and "orderItems", where we want to fetch the "orderItems" that belong to a given "order". "orderItems" should declare a field that is a [foreignKey](DataSourceField.md#attr-datasourcefieldforeignkey) to the "orders" table (for example, it might be named "orderId" with foreignKey="orders.id"). Then, to load the records related to a given "order", call fetchRelatedData() on the component bound to "orderItems", pass the "orders" DataSource as the "schema" and pass a record from the "orders" DataSource as the "record" argument.
-
-**Note:** When you expect a large number of records to be returned it is not recommended to display these in the DetailViewer as it doesn't have the same level of support for large datasets as the [ListGrid](ListGrid_1.md#class-listgrid).
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| record | [ListGridRecord](#type-listgridrecord) | false | — | DataSource record |
-| schema | [Canvas](#type-canvas)|[DataSource](#type-datasource)|[ID](#type-id) | false | — | schema of the DataSource record, or DataBoundComponent already bound to that schema |
-| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke on completion |
-| requestProperties | [DSRequest](#type-dsrequest) | true | — | additional properties to set on the DSRequest that will be issued |
-
-### Groups
-
-- dataBoundComponentMethods
-
----
-## Method: DetailViewer.exportData
-
-### Description
-Sends the current filter criteria and sort direction to the server, then exports data in the requested [exportFormat](DSRequest.md#attr-dsrequestexportas).
-
-A variety of DSRequest settings, such as [exportAs](DSRequest.md#attr-dsrequestexportas) and [DSRequest.exportFilename](DSRequest.md#attr-dsrequestexportfilename), affect the exporting process: see [exportResults](DSRequest.md#attr-dsrequestexportresults) for further detail.
-
-Note that data exported via this method skips client-side fields defined only in the component, excludes any client-side formatting and relies on both the SmartClient server and server-side DataSources. To export client-data including client-only fields and with client-side formatting applied, see [exportClientData](ListGrid_2.md#method-listgridexportclientdata), which still requires the SmartClient server but does not rely on server-side DataSource definitions (.ds.xml files).
-
-For more information on exporting data, see [DataSource.exportData](DataSource.md#method-datasourceexportdata).
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | additional properties to set on the DSRequest that will be issued |
-| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke on completion. Note that this parameter only applies where [DSRequest.exportToClient](DSRequest.md#attr-dsrequestexporttoclient) is explicitly set to false, because file downloads do not provide ordinary SmartClient callbacks |
-
-### Groups
-
-- dataBoundComponentMethods
-
-### See Also
-
-- [exportFormatting](../kb_topics/exportFormatting.md#kb-topic-exports--formatting)
-
----
-## Method: DetailViewer.viewSelectedData
-
-### Description
-Displays the currently selected record(s) of the selectionComponent widget (typically a listGrid) in this component.
-
-For a DynamicForm the first record of the selection is shown after the form is placed into [read-only mode](DynamicForm.md#attr-dynamicformcanedit). A subsequent call to [DynamicForm.editRecord](DynamicForm.md#method-dynamicformeditrecord) or similar will return the form to editability.
-
-Note that since field-level `canEdit:true` settings override the form-level canEdit setting the automatic change to read-only may not change every field.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| selectionComponent | [ListGrid](#type-listgrid)|[TileGrid](#type-tilegrid)|[ID](#type-id) | false | — | the ListGrid or TileGrid or ID of a [ListGrid](ListGrid_1.md#class-listgrid)/[TileGrid](TileGrid.md#class-tilegrid) whose currently selected record(s) is/are to be viewed |
-
-### Groups
-
-- dataBoundComponentMethods
-
----
 ## Method: DetailViewer.exportClientData
 
 ### Description
-Exports this component's data with client-side formatters applied, so is suitable for direct display to users. See [ListGrid.exportClientData](ListGrid_2.md#method-listgridexportclientdata) for details of the general requirements and restrictions when exporting client data.
+Exports this component's data with client-side formatters applied, so is suitable for direct display to users. See [ListGrid.exportClientData](ListGrid_1.md#method-listgridexportclientdata) for details of the general requirements and restrictions when exporting client data.
 
 The following notes apply when exporting client data from DetailViewers:
 
@@ -851,7 +796,7 @@ If your detailViewer has custom formatters, formatted values will be exported by
 
 ### See Also
 
-- [ListGrid.exportClientData](ListGrid_2.md#method-listgridexportclientdata)
+- [ListGrid.exportClientData](ListGrid_1.md#method-listgridexportclientdata)
 
 ---
 ## Method: DetailViewer.emptyMessageHTML
@@ -884,7 +829,7 @@ Return CSS text for styling this cell, which will be applied in addition to the 
 
 ### Returns
 
-`[CSSText](../reference_2.md#type-csstext)` — CSS text to add to this cell
+`[CSSText](../reference.md#type-csstext)` — CSS text to add to this cell
 
 ### Groups
 
@@ -937,5 +882,30 @@ Optional method to format the value to display for cells in this DetailViewer. N
 | value | [String](#type-string) | false | — | the raw value of the cell (may be formatted by [DetailViewerField.formatCellValue](DetailViewerField.md#method-detailviewerfieldformatcellvalue) |
 | record | [DetailViewerRecord](#type-detailviewerrecord) | false | — | the record being displayed |
 | field | [DetailViewerField](#type-detailviewerfield) | false | — | the field being displayed |
+
+---
+## Method: DetailViewer.fetchRelatedData
+
+### Description
+Based on the relationship between the DataSource this component is bound to and the DataSource specified as the "schema" argument, call fetchData() to retrieve records in this data set that are related to the passed-in record.
+
+Relationships between DataSources are declared via [DataSourceField.foreignKey](DataSourceField.md#attr-datasourcefieldforeignkey).
+
+For example, given two related DataSources "orders" and "orderItems", where we want to fetch the "orderItems" that belong to a given "order". "orderItems" should declare a field that is a [foreignKey](DataSourceField.md#attr-datasourcefieldforeignkey) to the "orders" table (for example, it might be named "orderId" with foreignKey="orders.id"). Then, to load the records related to a given "order", call fetchRelatedData() on the component bound to "orderItems", pass the "orders" DataSource as the "schema" and pass a record from the "orders" DataSource as the "record" argument.
+
+**Note:** When you expect a large number of records to be returned it is not recommended to display these in the DetailViewer as it doesn't have the same level of support for large datasets as the [ListGrid](ListGrid_1.md#class-listgrid).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| record | [ListGridRecord](#type-listgridrecord) | false | — | DataSource record |
+| schema | [Canvas](#type-canvas)|[DataSource](#type-datasource)|[ID](#type-id) | false | — | schema of the DataSource record, or DataBoundComponent already bound to that schema |
+| callback | [DSCallback](../reference.md#type-dscallback) | true | — | callback to invoke on completion |
+| requestProperties | [DSRequest](#type-dsrequest) | true | — | additional properties to set on the DSRequest that will be issued |
+
+### Groups
+
+- dataBoundComponentMethods
 
 ---

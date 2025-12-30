@@ -21,11 +21,7 @@ A specialized subclass of [ImgButton](ImgButton.md#class-imgbutton) designed to 
 ### Description
 If true, this widget will fire [showContextMenu()](Canvas.md#method-canvasshowcontextmenu) to show the [context menu](Canvas.md#attr-canvascontextmenu) if one is defined, rather than [click()](Canvas.md#method-canvasclick), when the left mouse is clicked.
 
-Note that this property has a different interpretation in [IconButton](../reference.md#class-iconbutton) as [IconButton.showMenuOnClick](RibbonButton.md#attr-ribbonbuttonshowmenuonclick).
-
-### Groups
-
-- menu
+Note that this property has a different interpretation in [IconButton](IconButton.md#class-iconbutton) as [IconButton.showMenuOnClick](IconButton.md#attr-iconbuttonshowmenuonclick).
 
 **Flags**: IRW
 

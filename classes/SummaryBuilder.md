@@ -11,63 +11,13 @@
 ### Description
 Shows an interface allowing a user to create or edit fields by typing simple format-strings into a text field. The format-strings can include the values of other fields and additional text as required.
 
-Available values for the format-string are determined by the DataSource fields, and are given simple single-letter aliases (such as "A", "B", ...) similar to column names in Excel. The set of available values is shown in the [FormulaBuilder.fieldKey](FormulaBuilder.md#attr-formulabuilderfieldkey) as a simple mapping between the [field title](DataSourceField.md#attr-datasourcefieldtitle) and its short name.
+Available values for the format-string are determined by the DataSource fields, and are given simple single-letter aliases (such as "A", "B", ...) similar to column names in Excel. The set of available values is shown in the [FormulaBuilder.fieldKey](FormulaBuilder.md#attr-formulabuilderfieldkey) as a simple mapping between the [field title](DataSourceField.md#attr-datasourcefieldtitle) and it's short name.
 
 To include a field in the format-string, prefix it with a hash sign (#).
 
 ### Groups
 
 - summaryFields
-
----
-## Attr: SummaryBuilder.testButtonHoverContents_cantTest
-
-### Description
-Hover contents to display for the [testButton](FormulaBuilder.md#attr-formulabuildertestbutton) when this `SummaryBuilder` is unable to run a test.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
-
----
-## Attr: SummaryBuilder.showHelpIcon
-
-### Description
-Whether to show the help icon that appears after the [SummaryBuilder.formulaField](#attr-summarybuilderformulafield).
-
-### Groups
-
-- summaryFields
-
-**Flags**: IR
-
----
-## Attr: SummaryBuilder.testButtonHoverContents
-
-### Description
-Hover contents to display for the [testButton](FormulaBuilder.md#attr-formulabuildertestbutton).
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
-
----
-## Attr: SummaryBuilder.fields
-
-### Description
-DataSource providing the available fields for the SummaryBuilder.
-
-By default the SummaryBuilder will include all fields. Set [SummaryBuilder.fields](#attr-summarybuilderfields) to override this.
-
-### Groups
-
-- summaryFields
-
-**Flags**: IRW
 
 ---
 ## Attr: SummaryBuilder.builderTypeText
@@ -156,6 +106,18 @@ Text label for the checkbox that allows the user to automatically hide the field
 **Flags**: IRW
 
 ---
+## Attr: SummaryBuilder.showHelpIcon
+
+### Description
+Whether to show the help icon that appears after the [SummaryBuilder.formulaField](#attr-summarybuilderformulafield).
+
+### Groups
+
+- summaryFields
+
+**Flags**: IR
+
+---
 ## Attr: SummaryBuilder.field
 
 ### Description
@@ -216,6 +178,20 @@ If not specified, the selected record in the component that launched the Summary
 - formulaFields
 
 **Flags**: IRA
+
+---
+## Attr: SummaryBuilder.fields
+
+### Description
+DataSource providing the available fields for the SummaryBuilder.
+
+By default the SummaryBuilder will include all fields. Set [SummaryBuilder.fields](#attr-summarybuilderfields) to override this.
+
+### Groups
+
+- summaryFields
+
+**Flags**: IRW
 
 ---
 ## Method: SummaryBuilder.fireOnClose

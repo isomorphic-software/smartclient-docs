@@ -12,36 +12,6 @@
 The Progressbar widget class extends the StretchImg class to implement image-based progress bars (graphical bars whose lengths represent percentages, typically of task completion).
 
 ---
-## Attr: Progressbar.length
-
-### Description
-Length of the progressbar in pixels. This is effectively height for a vertical progressbar, or width for a horizontal progressbar.
-
-This property must be set instead of setting `width` or `height`.
-
-### Groups
-
-- appearance
-
-**Flags**: IRW
-
----
-## Attr: Progressbar.editProxyConstructor
-
-### Description
-Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas.md#method-canvasseteditmode).
-
-**Flags**: IR
-
----
-## Attr: Progressbar.baseStyle
-
-### Description
-[Base style](StatefulCanvas.md#attr-statefulcanvasbasestyle) for this Progressbar. Only used when [useCssStyles](#attr-progressbarusecssstyles) is true.
-
-**Flags**: IR
-
----
 ## Attr: Progressbar.percentDone
 
 ### Description
@@ -108,38 +78,34 @@ This property must be set instead of setting `width` or `height`.
 **Flags**: IR
 
 ---
-## Method: Progressbar.getLength
+## Attr: Progressbar.length
 
 ### Description
-Returns the current width of a horizontal progressbar, or height of a vertical progressbar.
+Length of the progressbar in pixels. This is effectively height for a vertical progressbar, or width for a horizontal progressbar.
 
-### Returns
+This property must be set instead of setting `width` or `height`.
 
-`[Number](#type-number)` — the length of the progressbar
+### Groups
+
+- appearance
+
+**Flags**: IRW
 
 ---
-## Method: Progressbar.setLength
+## Attr: Progressbar.editProxyConstructor
 
 ### Description
-Sets the length of the progressbar to newLength. This is the width of a horizontal progressbar, or the height of a vertical progressbar.
+Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas.md#method-canvasseteditmode).
 
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| newLength | [Number](#type-number) | false | — | the new length of the progressbar |
+**Flags**: IR
 
 ---
-## Method: Progressbar.setPercentDone
+## Attr: Progressbar.baseStyle
 
 ### Description
-Sets percentDone to newPercent.
+[Base style](StatefulCanvas.md#attr-statefulcanvasbasestyle) for this Progressbar. Only used when [useCssStyles](#attr-progressbarusecssstyles) is true.
 
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| newPercent | [number](#type-number) | false | — | percent to show as done (0-100) |
+**Flags**: IR
 
 ---
 ## Method: Progressbar.percentChanged
@@ -154,6 +120,16 @@ This method is called when the percentDone value changes. Observe this method to
 **Flags**: A
 
 ---
+## Method: Progressbar.getLength
+
+### Description
+Returns the current width of a horizontal progressbar, or height of a vertical progressbar.
+
+### Returns
+
+`[Number](#type-number)` — the length of the progressbar
+
+---
 ## Method: Progressbar.setBreadth
 
 ### Description
@@ -166,18 +142,16 @@ Sets the breadth of the progressbar to newLength. This is the height of a horizo
 | newBreadth | [number](#type-number) | false | — | the new breadth of the progressbar |
 
 ---
-## Method: Progressbar.getAriaStateDefaults
+## Method: Progressbar.setLength
 
 ### Description
-Retrieves dynamically calculated default [ARIA state mapping](Canvas.md#attr-canvasariastate) properties for this canvas. These will be combined with explicitly specified aria state as described in [Canvas.getAriaState](Canvas.md#method-canvasgetariastate).
+Sets the length of the progressbar to newLength. This is the width of a horizontal progressbar, or the height of a vertical progressbar.
 
-Overridden by Progressbar to pick up aria-valuenow.
+### Parameters
 
-### Returns
-
-`[Object](../reference.md#type-object)` — dynamically calculated default aria state properties
-
-**Flags**: A
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| newLength | [Number](#type-number) | false | — | the new length of the progressbar |
 
 ---
 ## Method: Progressbar.getBreadth
@@ -188,5 +162,17 @@ Returns the current height of a horizontal progressbar, or width of a vertical p
 ### Returns
 
 `[number](#type-number)` — the breadth of the progressbar
+
+---
+## Method: Progressbar.setPercentDone
+
+### Description
+Sets percentDone to newPercent.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| newPercent | [number](#type-number) | false | — | percent to show as done (0-100) |
 
 ---

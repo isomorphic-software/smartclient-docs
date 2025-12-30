@@ -7,8 +7,6 @@
 ## KB Topic: <isomorphic:loadXMLSchema>
 
 ### Description
-See [jspTags](../reference.md#kb-topic-smartclient-jsp-tags)
-
 _produces:_ JavaScript
 
 Load an XML Schema (.xsd) file and create a [SchemaSet](../classes/SchemaSet.md#class-schemaset) object representing the loaded definitions. This tag works just like [XMLTools.loadXMLSchema](../classes/XMLTools.md#classmethod-xmltoolsloadxmlschema), except it's synchronous and the result is server-cacheable.

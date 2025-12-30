@@ -44,6 +44,16 @@ Version of FusionCharts to assume. If version is "2.3", different names are used
 **Flags**: IR
 
 ---
+## Attr: FusionChart.dataColors
+
+### Description
+An array of colors to use for a series of visual elements representing data (eg columns, bars, pie slices), any of which may be adjacent to any other.
+
+Colors are expressed as hexadecimal RRGGBB Strings **with no leading '#' character**.
+
+**Flags**: IR
+
+---
 ## Attr: FusionChart.chartsBaseURL
 
 ### Description
@@ -52,16 +62,6 @@ Base URL where FusionCharts are installed. SmartClient expects to find the Fusio
 The default value indicates that SmartClient will look for a FusionCharts directory parallel to the "isomorphic/" directory.
 
 Note that the URL formation logic automatically compensates for various inconsistencies and typos in the default names for the chart .swf files, as well as differences between FusionCharts 2.3 and 3.0. The chart .swf files should be left exactly as found in the FusionCharts distribution. If you have renamed the charts for other purposes, you can set [FusionChart.chartURL](#attr-fusionchartcharturl) to the full path to any given chart type.
-
-**Flags**: IR
-
----
-## Attr: FusionChart.dataColors
-
-### Description
-An array of colors to use for a series of visual elements representing data (eg columns, bars, pie slices), any of which may be adjacent to any other.
-
-Colors are expressed as hexadecimal RRGGBB Strings **with no leading '#' character**.
 
 **Flags**: IR
 

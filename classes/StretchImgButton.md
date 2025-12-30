@@ -26,177 +26,6 @@ If using an icon for this button, whether to switch the icon image on mouse roll
 **Flags**: IR
 
 ---
-## Attr: StretchImgButton.height
-
-### Description
-Size for this component's vertical dimension. See [Canvas.height](Canvas.md#attr-canvasheight) for more details.
-
-Note that if [StatefulCanvas.autoFit](StatefulCanvas.md#attr-statefulcanvasautofit) is set on non-[StretchImgButton](#class-stretchimgbutton) instances, this property will be ignored so that the widget is always sized just large enough to accommodate the title.
-
-### Groups
-
-- sizing
-
-### See Also
-
-- [StatefulCanvas.autoFit](StatefulCanvas.md#attr-statefulcanvasautofit)
-
-**Flags**: IRW
-
----
-## Attr: StretchImgButton.autoFit
-
-### Description
-If true, ignore the specified size of this widget and always size just large enough to accommodate the title. If `setWidth()` is explicitly called on an autoFit:true button, autoFit will be reset to `false`.
-
-Note that for StretchImgButton instances, autoFit will occur horizontally only, as unpredictable vertical sizing is likely to distort the media. If you do want vertical auto-fit, this can be achieved by simply setting a small height, and having overflow:"visible"
-
-### Groups
-
-- sizing
-
-**Flags**: IRW
-
----
-## Attr: StretchImgButton.definingProperty
-
-### Description
-This attribute denotes the name of a property to use as a [getDefiningPropertyName()](Canvas.md#method-canvasgetdefiningpropertyname) for this property when generating and resolving [AutoTest locators with search segments](../reference_2.md#type-autotestlocator).
-
-**Flags**: IRWA
-
----
-## Attr: StretchImgButton.labelHPad
-
-### Description
-The padding for a StretchImgButton's label is determined as follows.
-
-If `labelHPad` is set it will specify the horizontal padding applied to the label. Similarly if `labelVPad` is set it will specify the vertical padding for the label, regardless of the button's [vertical](#attr-stretchimgbuttonvertical) setting.
-
-Otherwise `labelLengthPad` can be set to specify the label padding along the length axis (ie: horizontal padding if [StretchImgButton.vertical](#attr-stretchimgbuttonvertical) is false, otherwise vertical padding), and `labelBreadthPad` can be set to specify the label padding along the other axis.
-
-Otherwise the padding on the length axis will match the [StretchImgButton.capSize](#attr-stretchimgbuttoncapsize) and will be set to zero on the breadth axis.
-
-So by default the label will be sized to match the center image of the StretchImgButton, but these settings allow the label to partially or wholly overlap the caps.
-
-**Flags**: IRW
-
----
-## Attr: StretchImgButton.iconWidth
-
-### Description
-Width in pixels of the icon image.
-
-If unset, defaults to [iconSize](StatefulCanvas.md#attr-statefulcanvasiconsize).
-
-### Groups
-
-- buttonIcon
-
-**Flags**: IR
-
----
-## Attr: StretchImgButton.align
-
-### Description
-Horizontal alignment of this component's title.
-
-### Groups
-
-- appearance
-
-**Flags**: IRW
-
----
-## Attr: StretchImgButton.wrap
-
-### Description
-Should the title for this button wrap? If unset, default behavior is to allow wrapping if this.vertical is true, otherwise disallow wrapping
-
-**Flags**: IRW
-
----
-## Attr: StretchImgButton.title
-
-### Description
-The title HTML to display in this button.
-
-### Groups
-
-- basics
-
-**Flags**: IRW
-
----
-## Attr: StretchImgButton.src
-
-### Description
-Base URL for the image. By default, StretchImgButtons consist of three image parts: A start image (displayed at the top or left), a scalable central image and an end image displayed at the bottom or right.
-
-The images displayed in the stretchImgButton are derived from this property in the following way:
-
-*   When the button is in its standard state the suffixes "\_start", "\_end" and "\_stretch" are applied to the src (before the file extension), so by default the images displayed will be "button\_start.gif" (sized to be `this.capSize` by the specified width of the stretchImgButton), "button\_stretch.gif" (stretched to the necessary width) and "button\_end.gif" (sized the same as the start image).
-*   As the button's state changes, the images will have suffixes appended **before** the "\_start" / "\_end" / "\_stretch" to represent the button state. See [Img.src](Img.md#attr-imgsrc) for an overview of how states are combined into a compound URL.
-
-For example the center piece of a selected stretchImgButton with the mouse hovering over it might have the URL: `"button_Selected_Down_stretch.gif"`.
-
-Media should be present for each possible state of the \_start, \_end and \_stretch images.
-
-**Flags**: IRW
-
----
-## Attr: StretchImgButton.iconSpacing
-
-### Description
-Pixels between icon and title text.
-
-### Groups
-
-- buttonIcon
-
-**Flags**: IR
-
----
-## Attr: StretchImgButton.labelVPad
-
-### Description
-The padding for a StretchImgButton's label is determined as follows.
-
-If `labelHPad` is set it will specify the horizontal padding applied to the label. Similarly if `labelVPad` is set it will specify the vertical padding for the label, regardless of the button's [vertical](#attr-stretchimgbuttonvertical) setting.
-
-Otherwise `labelLengthPad` can be set to specify the label padding along the length axis (ie: horizontal padding if [StretchImgButton.vertical](#attr-stretchimgbuttonvertical) is false, otherwise vertical padding), and `labelBreadthPad` can be set to specify the label padding along the other axis.
-
-Otherwise the padding on the length axis will match the [StretchImgButton.capSize](#attr-stretchimgbuttoncapsize) and will be set to zero on the breadth axis.
-
-So by default the label will be sized to match the center image of the StretchImgButton, but these settings allow the label to partially or wholly overlap the caps.
-
-**Flags**: IRW
-
----
-## Attr: StretchImgButton.showDown
-
-### Description
-Should we visibly change state when the mouse goes down in this object?
-
-### Groups
-
-- state
-
-**Flags**: IRW
-
----
-## Attr: StretchImgButton.showFocused
-
-### Description
-Should we visibly change state when the canvas receives focus? If [StatefulCanvas.showFocusedAsOver](StatefulCanvas.md#attr-statefulcanvasshowfocusedasover) is `true`, then **`"over"`** will be used to indicate focus. Otherwise a separate **`"focused"`** state will be used.
-
-### Groups
-
-- state
-
-**Flags**: IRW
-
----
 ## Attr: StretchImgButton.icon
 
 ### Description
@@ -239,6 +68,54 @@ Should we visibly change state when the canvas receives focus? Note that by defa
 **Flags**: IRW
 
 ---
+## Attr: StretchImgButton.height
+
+### Description
+Size for this component's vertical dimension. See [Canvas.height](Canvas.md#attr-canvasheight) for more details.
+
+Note that if [StatefulCanvas.autoFit](StatefulCanvas.md#attr-statefulcanvasautofit) is set on non-[StretchImgButton](#class-stretchimgbutton) instances, this property will be ignored so that the widget is always sized just large enough to accommodate the title.
+
+### Groups
+
+- sizing
+
+### See Also
+
+- [StatefulCanvas.autoFit](StatefulCanvas.md#attr-statefulcanvasautofit)
+
+**Flags**: IRW
+
+---
+## Attr: StretchImgButton.autoFit
+
+### Description
+If true, ignore the specified size of this widget and always size just large enough to accommodate the title. If `setWidth()` is explicitly called on an autoFit:true button, autoFit will be reset to `false`.
+
+Note that for StretchImgButton instances, autoFit will occur horizontally only, as unpredictable vertical sizing is likely to distort the media. If you do want vertical auto-fit, this can be achieved by simply setting a small height, and having overflow:"visible"
+
+### Groups
+
+- sizing
+
+**Flags**: IRW
+
+---
+## Attr: StretchImgButton.labelHPad
+
+### Description
+The padding for a StretchImgButton's label is determined as follows.
+
+If `labelHPad` is set it will specify the horizontal padding applied to the label. Similarly if `labelVPad` is set it will specify the vertical padding for the label, regardless of the button's [vertical](#attr-stretchimgbuttonvertical) setting.
+
+Otherwise `labelLengthPad` can be set to specify the label padding along the length axis (ie: horizontal padding if [StretchImgButton.vertical](#attr-stretchimgbuttonvertical) is false, otherwise vertical padding), and `labelBreadthPad` can be set to specify the label padding along the other axis.
+
+Otherwise the padding on the length axis will match the [StretchImgButton.capSize](#attr-stretchimgbuttoncapsize) and will be set to zero on the breadth axis.
+
+So by default the label will be sized to match the center image of the StretchImgButton, but these settings allow the label to partially or wholly overlap the caps.
+
+**Flags**: IRW
+
+---
 ## Attr: StretchImgButton.showSelectedIcon
 
 ### Description
@@ -249,6 +126,32 @@ If using an icon for this button, whether to switch the icon image when the butt
 - buttonIcon
 
 **Flags**: IR
+
+---
+## Attr: StretchImgButton.iconWidth
+
+### Description
+Width in pixels of the icon image.
+
+If unset, defaults to [iconSize](StatefulCanvas.md#attr-statefulcanvasiconsize).
+
+### Groups
+
+- buttonIcon
+
+**Flags**: IR
+
+---
+## Attr: StretchImgButton.align
+
+### Description
+Horizontal alignment of this component's title.
+
+### Groups
+
+- appearance
+
+**Flags**: IRW
 
 ---
 ## Attr: StretchImgButton.iconOrientation
@@ -300,6 +203,14 @@ If true and the title is clipped, then a hover containing the full title of this
 **Flags**: IRW
 
 ---
+## Attr: StretchImgButton.wrap
+
+### Description
+Should the title for this button wrap? If unset, default behavior is to allow wrapping if this.vertical is true, otherwise disallow wrapping
+
+**Flags**: IRW
+
+---
 ## Attr: StretchImgButton.radioGroup
 
 ### Description
@@ -318,6 +229,18 @@ String identifier for this canvas's mutually exclusive selection group.
 ### Description
 Determines whether any specified [title](StatefulCanvas.md#method-statefulcanvasgettitle) will be displayed for this component.  
 Applies to Image-based components only, where the title will be rendered out in a label floating over the component
+
+**Flags**: IRW
+
+---
+## Attr: StretchImgButton.title
+
+### Description
+The title HTML to display in this button.
+
+### Groups
+
+- basics
 
 **Flags**: IRW
 
@@ -358,6 +281,23 @@ So by default the label will be sized to match the center image of the StretchIm
 CSS style applied to the title text only. Defaults to [StretchImgButton.baseStyle](#attr-stretchimgbuttonbasestyle) when unset.
 
 With a separate `titleStyle` and [StretchImgButton.baseStyle](#attr-stretchimgbuttonbasestyle) set, you can provide a backgroundColor via `baseStyle` that will allow translucent .png media to be "tinted" by the underlying background color, so that a single set of media can provide range of color options. In this usage, the `titleStyle` should generally not specify a background color as this would block out the media that appears behind the title.
+
+**Flags**: IRW
+
+---
+## Attr: StretchImgButton.src
+
+### Description
+Base URL for the image. By default, StretchImgButtons consist of three image parts: A start image (displayed at the top or left), a scalable central image and an end image displayed at the bottom or right.
+
+The images displayed in the stretchImgButton are derived from this property in the following way:
+
+*   When the button is in its standard state the suffixes "\_start", "\_end" and "\_stretch" are applied to the src (before the file extension), so by default the images displayed will be "button\_start.gif" (sized to be `this.capSize` by the specified width of the stretchImgButton), "button\_stretch.gif" (stretched to the necessary width) and "button\_end.gif" (sized the same as the start image).
+*   As the button's state changes, the images will have suffixes appended **before** the "\_start" / "\_end" / "\_stretch" to represent the button state. See [Img.src](Img.md#attr-imgsrc) for an overview of how states are combined into a compound URL.
+
+For example the center piece of a selected stretchImgButton with the mouse hovering over it might have the URL: `"button_Selected_Down_stretch.gif"`.
+
+Media should be present for each possible state of the \_start, \_end and \_stretch images.
 
 **Flags**: IRW
 
@@ -431,6 +371,18 @@ Should we visibly change state when the mouse goes over this object?
 - state
 
 **Flags**: IRW
+
+---
+## Attr: StretchImgButton.iconSpacing
+
+### Description
+Pixels between icon and title text.
+
+### Groups
+
+- buttonIcon
+
+**Flags**: IR
 
 ---
 ## Attr: StretchImgButton.capSize
@@ -507,11 +459,39 @@ So by default the label will be sized to match the center image of the StretchIm
 **Flags**: IRW
 
 ---
+## Attr: StretchImgButton.labelVPad
+
+### Description
+The padding for a StretchImgButton's label is determined as follows.
+
+If `labelHPad` is set it will specify the horizontal padding applied to the label. Similarly if `labelVPad` is set it will specify the vertical padding for the label, regardless of the button's [vertical](#attr-stretchimgbuttonvertical) setting.
+
+Otherwise `labelLengthPad` can be set to specify the label padding along the length axis (ie: horizontal padding if [StretchImgButton.vertical](#attr-stretchimgbuttonvertical) is false, otherwise vertical padding), and `labelBreadthPad` can be set to specify the label padding along the other axis.
+
+Otherwise the padding on the length axis will match the [StretchImgButton.capSize](#attr-stretchimgbuttoncapsize) and will be set to zero on the breadth axis.
+
+So by default the label will be sized to match the center image of the StretchImgButton, but these settings allow the label to partially or wholly overlap the caps.
+
+**Flags**: IRW
+
+---
 ## Attr: StretchImgButton.hiliteAccessKey
 
 ### Description
 If set to true, if the [title](StatefulCanvas.md#attr-statefulcanvastitle) of this button contains the specified [accessKey](Canvas.md#attr-canvasaccesskey), when the title is displayed to the user it will be modified to include HTML to underline the accessKey.  
 Note that this property may cause titles that include HTML (rather than simple strings) to be inappropriately modified, so should be disabled if your title string includes HTML characters.
+
+**Flags**: IRW
+
+---
+## Attr: StretchImgButton.showDown
+
+### Description
+Should we visibly change state when the mouse goes down in this object?
+
+### Groups
+
+- state
 
 **Flags**: IRW
 
@@ -532,8 +512,6 @@ Vertical alignment of this component's title.
 
 ### Description
 Base CSS style className applied to the component.
-
-Note that if specified, this property takes precedence over any specified [StatefulCanvas.styleName](StatefulCanvas.md#attr-statefulcanvasstylename). If unset, the `styleName` will be used as a default `baseStyle` value.
 
 As the component changes [StatefulCanvas.state](StatefulCanvas.md#attr-statefulcanvasstate) and/or is selected, suffixes will be added to the base style. In some cases more than one suffix will be appended to reflect a combined state ("Selected" + "Disabled", for example).
 
@@ -570,8 +548,6 @@ then applying that style to the button with [overflow](Canvas.md#attr-canvasover
 *   The translation transform required along the x-axis is roughly (width - height) / 2, but may need slight offsetting for optimal centering.
 *   We've explicitly avoided describing an approach based on CSS "writing-mode", since support is incomplete and bugs are present in popular browsers such as Firefox and Safari that would prevent it from being used without Framework assistance.
 
-Note on css-margins: Developers should be aware that the css "margin" property is unreliable for certain subclasses of StatefulCanvas, including [buttons](Button.md#class-button). Developers may use the explicit [Canvas.margin](Canvas.md#attr-canvasmargin) property to specify button margins, or for a button within a layout, consider the layout properties [Layout.layoutMargin](Layout.md#attr-layoutlayoutmargin), [Layout.membersMargin](Layout.md#attr-layoutmembersmargin)
-
 **Flags**: IRW
 
 ---
@@ -597,6 +573,18 @@ Whether this component is selected. For some components, selection affects appea
 **Flags**: IRW
 
 ---
+## Attr: StretchImgButton.showFocused
+
+### Description
+Should we visibly change state when the canvas receives focus? If [StatefulCanvas.showFocusedAsOver](StatefulCanvas.md#attr-statefulcanvasshowfocusedasover) is `true`, then **`"over"`** will be used to indicate focus. Otherwise a separate **`"focused"`** state will be used.
+
+### Groups
+
+- state
+
+**Flags**: IRW
+
+---
 ## Method: StretchImgButton.addToRadioGroup
 
 ### Description
@@ -612,6 +600,18 @@ Add this widget to the specified mutually exclusive selection group with the ID 
 
 - state
 - event handling
+
+---
+## Method: StretchImgButton.setBaseStyle
+
+### Description
+Sets the base CSS style. As the component changes state and/or is selected, suffixes will be added to the base style.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| style | [CSSStyleName](../reference.md#type-cssstylename) | false | — | new base style |
 
 ---
 ## Method: StretchImgButton.getState
@@ -635,7 +635,7 @@ Optional stringMethod to fire when the user hovers over this button and the titl
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false to suppress the standard hover
+`[boolean](../reference.md#type-boolean)` — false to suppress the standard hover
 
 ### Groups
 
@@ -668,10 +668,6 @@ Remove this widget from the specified mutually exclusive selection group with th
 ### Description
 Return the 'actionType' for this canvas (radio / checkbox / button)
 
-### Returns
-
-`[SelectionType](../reference_2.md#type-selectiontype)` — the current action type
-
 ### Groups
 
 - state
@@ -682,6 +678,80 @@ Return the 'actionType' for this canvas (radio / checkbox / button)
 
 ### Description
 This property contains the default 'action' for the Button to fire when activated.
+
+---
+## Method: StretchImgButton.iconClick
+
+### Description
+If this button is showing an [icon](#attr-stretchimgbuttonicon), a separate click handler for the icon may be defined as `this.iconClick`. Returning false will suppress the standard button click handling code.
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — false to suppress the standard button click event
+
+### Groups
+
+- buttonIcon
+
+---
+## Method: StretchImgButton.setIconOrientation
+
+### Description
+Changes the orientation of the icon relative to the text of the button.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| orientation | [String](#type-string) | false | — | The new orientation of the icon relative to the text of the button. |
+
+### Groups
+
+- buttonIcon
+
+---
+## Method: StretchImgButton.setTitleStyle
+
+### Description
+Sets the [StretchImgButton.titleStyle](#attr-stretchimgbuttontitlestyle), which is applied to the title text.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| style | [CSSStyleName](../reference.md#type-cssstylename) | false | — | new title style |
+
+---
+## Method: StretchImgButton.setIcon
+
+### Description
+Change the icon being shown next to the title text.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| icon | [SCImgURL](../reference_2.md#type-scimgurl) | false | — | URL of new icon |
+
+### Groups
+
+- buttonIcon
+
+---
+## Method: StretchImgButton.titleHoverHTML
+
+### Description
+Returns the HTML that is displayed by the default [titleHover](#method-stretchimgbuttontitlehover) handler. Return null or an empty string to cancel the hover.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| defaultHTML | [HTMLString](../reference.md#type-htmlstring) | false | — | the HTML that would have been displayed by default |
+
+### Returns
+
+`[HTMLString](../reference.md#type-htmlstring)` — HTML to be displayed in the hover. If null or an empty string, then the hover is canceled.
 
 ---
 ## Method: StretchImgButton.isSelected
@@ -760,7 +830,7 @@ setter for [StretchImgButton.labelSkinImgDir](#attr-stretchimgbuttonlabelskinimg
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| URL | [URL](../reference_2.md#type-url) | false | — | new skin img dir to apply to the label holding title text for this widget. |
+| URL | [URL](../reference.md#type-url) | false | — | new skin img dir to apply to the label holding title text for this widget. |
 
 ---
 ## Method: StretchImgButton.setAutoFit
@@ -818,102 +888,10 @@ Is the title of this button clipped?
 **Flags**: A
 
 ---
-## Method: StretchImgButton.setBaseStyle
-
-### Description
-Sets the base CSS style. As the component changes state and/or is selected, suffixes will be added to the base style.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| style | [CSSStyleName](../reference.md#type-cssstylename) | false | — | new base style |
-
----
-## Method: StretchImgButton.iconClick
-
-### Description
-If this button is showing an [icon](#attr-stretchimgbuttonicon), a separate click handler for the icon may be defined as `this.iconClick`. Returning false will suppress the standard button click handling code.
-
-### Returns
-
-`[Boolean](#type-boolean)` — false to suppress the standard button click event
-
-### Groups
-
-- buttonIcon
-
----
-## Method: StretchImgButton.setIconOrientation
-
-### Description
-Changes the orientation of the icon relative to the text of the button.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| orientation | [String](#type-string) | false | — | The new orientation of the icon relative to the text of the button. |
-
-### Groups
-
-- buttonIcon
-
----
-## Method: StretchImgButton.setTitleStyle
-
-### Description
-Sets the [StretchImgButton.titleStyle](#attr-stretchimgbuttontitlestyle), which is applied to the title text.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| style | [CSSStyleName](../reference.md#type-cssstylename) | false | — | new title style |
-
----
-## Method: StretchImgButton.setIcon
-
-### Description
-Change the icon being shown next to the title text.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| icon | [SCImgURL](../reference.md#type-scimgurl) | false | — | URL of new icon |
-
-### Groups
-
-- buttonIcon
-
----
-## Method: StretchImgButton.titleHoverHTML
-
-### Description
-Returns the HTML that is displayed by the default [titleHover](#method-stretchimgbuttontitlehover) handler. Return null or an empty string to cancel the hover.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| defaultHTML | [HTMLString](../reference.md#type-htmlstring) | false | — | the HTML that would have been displayed by default |
-
-### Returns
-
-`[HTMLString](../reference.md#type-htmlstring)` — HTML to be displayed in the hover. If null or an empty string, then the hover is canceled.
-
----
 ## Method: StretchImgButton.setActionType
 
 ### Description
 Update the 'actionType' for this canvas (radio / checkbox / button) If the canvas is currently selected, and the passed in actionType is 'button' this method will deselect the canvas.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| actionType | [SelectionType](../reference_2.md#type-selectiontype) | false | — | new action type |
 
 ### Groups
 

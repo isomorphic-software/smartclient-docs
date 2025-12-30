@@ -34,7 +34,7 @@ You can use isc.Event as an alias for isc.EventHandler.
 
 ### See Also
 
-- [PageEvent](../reference_2.md#type-pageevent)
+- [PageEvent](../reference.md#type-pageevent)
 - [Page.setEvent](Page.md#classmethod-pagesetevent)
 - [Page.clearEvent](Page.md#classmethod-pageclearevent)
 - [Canvas#methods#widgetEvents](#class-canvas-methods-widgetevents)
@@ -110,62 +110,6 @@ Constant containing the full set of edges a component may be resized from. When 
 **Flags**: IR
 
 ---
-## ClassAttr: EventHandler.IDLE_DELAY
-
-### Description
-amount of time between idle messages (msec)
-
-**Flags**: IRWA
-
----
-## ClassAttr: EventHandler.mouseDownEvent
-
-### Description
-Snapshot of the [EventHandler.lastEvent](#classattr-eventhandlerlastevent) object taken when the most recent mouseDown occurred. Useful for calculating drag offsets relative to the original click position.
-
-### Groups
-
-- events
-
-**Flags**: IRWA
-
----
-## ClassAttr: EventHandler.lastEvent
-
-### Description
-Last event that was processed by our event system. We store the properties of the event in a separate object so we can access them uniformly on both platforms and so we can remember characteristics of the last event we've seen even when we're not in the script context of this event.  
-  
-To access properties of the last event, use:
-
-*   isc.EventHandler.getLastEvent()
-*   isc.EventHandler.getX()
-*   isc.EventHandler.getY()
-*   isc.EventHandler.getScreenX()
-*   isc.EventHandler.getScreenY()
-*   isc.EventHandler.getButtonNum()
-*   isc.EventHandler.leftButtonDown()
-*   isc.EventHandler.rightButtonDown()
-*   isc.EventHandler.getKey()
-*   isc.EventHandler.getKeyEventCharacterValue()
-*   isc.EventHandler.getKeyEventCharacter()
-*   isc.EventHandler.shiftKeyDown()
-*   isc.EventHandler.ctrlKeyDown()
-*   isc.EventHandler.altKeyDown()
-*   isc.EventHandler.metaKeyDown()
-*   isc.EventHandler.modifierKeyDown()
-
-### Groups
-
-- events
-
-### See Also
-
-- [EventHandler.getMouseEventProperties](#classmethod-eventhandlergetmouseeventproperties)
-- [EventHandler.getKeyEventProperties](#classmethod-eventhandlergetkeyeventproperties)
-
-**Flags**: IRWA
-
----
 ## ClassAttr: EventHandler.showNoDropIndicator
 
 ### Description
@@ -176,6 +120,14 @@ This property can be modified at runtime, meaning a developer could choose to sh
 Note that when this property is false, developers may still use the [Canvas.dropMove](Canvas.md#method-canvasdropmove) handler for potential drop targets and use [Canvas.setCursor](Canvas.md#method-canvassetcursor) to explicitly indicate invalid drop areas within a widget. This is the approach used by default for [TreeGrid](TreeGrid.md#class-treegrid) drag/drop interactions, for example.
 
 **Flags**: IRW
+
+---
+## ClassAttr: EventHandler.IDLE_DELAY
+
+### Description
+amount of time between idle messages (msec)
+
+**Flags**: IRWA
 
 ---
 ## ClassMethod: EventHandler.setDragOffset
@@ -205,6 +157,20 @@ Your canvas can call this method to set the initial drag offset to whatever you 
 ### See Also
 
 - [Canvas.dragStart](Canvas.md#method-canvasdragstart)
+
+---
+## ClassMethod: EventHandler.getX
+
+### Description
+Return the page-relative X (horizontal) coordinate of an event.
+
+### Returns
+
+`[int](../reference.md#type-int)` — x-coordinate in page coordinate space
+
+### Groups
+
+- mouseEvents
 
 ---
 ## ClassMethod: EventHandler.rightButtonDown
@@ -307,11 +273,7 @@ Returns a numeric value indicating how far the mouse wheel was rotated / the mag
 ## ClassMethod: EventHandler.getKeyEventCharacter
 
 ### Description
-Returns the character for a keypress event, derived from the [event.characterValue](#classmethod-eventhandlergetkeyeventcharactervalue).
-
-Only available on keyPress events, and only for character (or ascii control) keys.
-
-See the [Keyboard Events Overview](../kb_topics/keyboardEvents.md#kb-topic-keyboard-events) for related APIs and more information on keyboard event handling in SmartClient.
+Return the character for the current key being pressed. Note that this is only set reliably for keyPress events on character keys.
 
 ### Returns
 
@@ -320,6 +282,20 @@ See the [Keyboard Events Overview](../kb_topics/keyboardEvents.md#kb-topic-keybo
 ### Groups
 
 - keyboardEvents
+
+---
+## ClassMethod: EventHandler.getTarget
+
+### Description
+Return the canvas that is the target of the mouse event. Returns null if no canvas found.
+
+### Returns
+
+`[Canvas](#type-canvas)` — event target canvas
+
+### Groups
+
+- mouseEvents
 
 ---
 ## ClassMethod: EventHandler.getNativeDragData
@@ -331,7 +307,59 @@ Can only be called during the [Canvas.drop](Canvas.md#method-canvasdrop) event (
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — data made available in the foreign frame
+`[Object](../reference_2.md#type-object)` — data made available in the foreign frame
+
+---
+## ClassMethod: EventHandler.getKey
+
+### Description
+Return the name of the key for the event passed in. Note that this is only set reliably for keyboard events.
+
+### Returns
+
+`[KeyName](../reference.md#type-keyname)` — Key Name
+
+### Groups
+
+- keyboardEvents
+
+---
+## ClassMethod: EventHandler.targetIsMasked
+
+### Description
+Return whether this Canvas is masked by a clickMask (see [Canvas.showClickMask](Canvas.md#method-canvasshowclickmask)).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| target | [Canvas](#type-canvas) | false | — | widget to check |
+
+### Returns
+
+`[Boolean](#type-boolean)` — true if masked, false if not masked.
+
+### Groups
+
+- clickMask
+
+**Flags**: A
+
+---
+## ClassMethod: EventHandler.getDragRect
+
+### Description
+During a drag with [dragAppearance](Canvas.md#attr-canvasdragappearance) of either "target" or "outline", returns the page-relative coordinates of whatever element is being dragged.
+
+Calling this method allows you to write drag and drop logic that works identically even if `dragAppearance` is subsequently changed.
+
+### Returns
+
+`[Rect](#type-rect)` — global (page-relative) coordinates and size of the dragged element, as a 4-element array \[left,top,width,height\], or null if not dragging
+
+### Groups
+
+- dragdrop
 
 ---
 ## ClassMethod: EventHandler.setDragTrackerImage
@@ -351,7 +379,7 @@ Can only be called during the [Canvas.dragStart](Canvas.md#method-canvasdragstar
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| src | [SCImgURL](../reference.md#type-scimgurl) | false | — | image source |
+| src | [SCImgURL](../reference_2.md#type-scimgurl) | false | — | image source |
 | x | [int](../reference.md#type-int) | true | — | offset-x from the mouse cursor |
 | y | [int](../reference.md#type-int) | true | — | offset-y from the mouse cursor |
 
@@ -375,7 +403,7 @@ Do not pass in sensitive data (e.g. passwords, auth/session tokens, credit card 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| data | [Object](../reference.md#type-object)|[String](#type-string) | false | — | data to make available to foreign frames |
+| data | [Object](../reference_2.md#type-object)|[String](#type-string) | false | — | data to make available to foreign frames |
 | strData | [String](#type-string) | true | — | text data to set. This is the text that users may see if the drag is dropped into an external application such as Notepad or a non-SmartClient/Smart GWT web application. |
 
 ---
@@ -396,11 +424,7 @@ Return true if the alt (option) key is being held down. Note that this is only s
 ## ClassMethod: EventHandler.getKeyEventCharacterValue
 
 ### Description
-Returns the numeric characterValue reported by the browser.
-
-Only available on keyPress events, and only for character (or ascii control) keys.
-
-See the [Keyboard Events Overview](../kb_topics/keyboardEvents.md#kb-topic-keyboard-events) for related APIs and more information on keyboard event handling in SmartClient.
+Returns the numeric characterValue reported by the browser. Only available on keyPress events, and only for character (or ascii control) keys
 
 ### Returns
 
@@ -409,165 +433,6 @@ See the [Keyboard Events Overview](../kb_topics/keyboardEvents.md#kb-topic-keybo
 ### Groups
 
 - keyboardEvents
-
----
-## ClassMethod: EventHandler.getFocusCanvas
-
-### Description
-Method to return the [canvasFocus:true](Canvas.md#attr-canvascanfocus) canvas with current keyboard focus.
-
-### Returns
-
-`[Canvas](#type-canvas)` — Current focus canvas
-
----
-## ClassMethod: EventHandler.getNativeMouseTarget
-
-### Description
-Returns the natively reported target (or source) DOM element for the current mouse event. **NOTE:** SmartClient cannot guarantee that the same element will be reported in all browser/platform configurations for all event types. If you wish to make use of this value, we recommend testing your use case in all target browser configurations.
-
-### Returns
-
-`[DOMElement](#type-domelement)` — native DOM element over which the mouse event occurred
-
-**Flags**: A
-
----
-## ClassMethod: EventHandler.ctrlKeyDown
-
-### Description
-Return true if the control key is being held down. Note that this is only set reliably for keyboard events.
-
-### Returns
-
-`[Boolean](#type-boolean)` — true == control key is down
-
-### Groups
-
-- keyboardEvents
-
----
-## ClassMethod: EventHandler.getReportedKey
-
-### Description
-This method is a synonym for [EventHandler.getKeyEventKey](#classmethod-eventhandlergetkeyeventkey)
-
-### Returns
-
-`[String](#type-string)` — Native event.key for the current keyboard event.
-
-### Groups
-
-- keyboardEvents
-
----
-## ClassMethod: EventHandler.getX
-
-### Description
-Return the page-relative X (horizontal) coordinate of an event.
-
-### Returns
-
-`[int](../reference.md#type-int)` — x-coordinate in page coordinate space
-
-### Groups
-
-- mouseEvents
-
----
-## ClassMethod: EventHandler.getTarget
-
-### Description
-Return the canvas that is the target of the mouse event. Returns null if no canvas found.
-
-### Returns
-
-`[Canvas](#type-canvas)` — event target canvas
-
-### Groups
-
-- mouseEvents
-
----
-## ClassMethod: EventHandler.getKey
-
-### Description
-Return the name of the key for the current event.  
-Note that this is only set reliably for keyboard events.
-
-This method returns a calculated key name for the current key. See [KeyName](../reference_2.md#type-keyname) for a list of all possible key names.
-
-Note: this differs from the natively reported [event.key](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key) value for the event. To retrieve that value, use [EventHandler.getKeyEventKey](#classmethod-eventhandlergetkeyeventkey) rather than this method.
-
-See the [Keyboard Events Overview](../kb_topics/keyboardEvents.md#kb-topic-keyboard-events) for related APIs and more information on keyboard event handling in SmartClient.
-
-### Returns
-
-`[KeyName](../reference_2.md#type-keyname)` — Key Name
-
-### Groups
-
-- keyboardEvents
-
----
-## ClassMethod: EventHandler.targetIsMasked
-
-### Description
-Return whether this Canvas is masked by a clickMask (see [Canvas.showClickMask](Canvas.md#method-canvasshowclickmask)).
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| target | [Canvas](#type-canvas) | false | — | widget to check. |
-
-### Returns
-
-`[Boolean](#type-boolean)` — true if masked, false if not masked.
-
-### Groups
-
-- clickMask
-
-**Flags**: A
-
----
-## ClassMethod: EventHandler.getKeyEventKey
-
-### Description
-Return the natively reported [event.key](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key) value for the current event.
-
-Note that this differs from [EventHandler.getKey](#classmethod-eventhandlergetkey) in a couple of important ways:
-
-*   The actual key values returned for specific keys differ in a number of ways. For example alpha characters keys are natively reported as either upper or lower case depending on what would actually by typed, (whereas [getKey()](#classmethod-eventhandlergetkey) is always uppercase for alpha keys) and the reported name for various 'named' keys (such as the arrow keys differ).  
-    The full set of native key names is available [here](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values), and the SmartClient key names is available [here](../reference_2.md#type-keyname).
-*   `EventHandler.getKeyEventKey()` simply provides access to the `event.key` value. As such the reported values are generated by the browser itself and SmartClient has no control over whether they may vary by browser, etc.
-
-See the [Keyboard Events Overview](../kb_topics/keyboardEvents.md#kb-topic-keyboard-events) for related APIs and more information on keyboard event handling in SmartClient.
-
-### Returns
-
-`[String](#type-string)` — Native event.key for the current keyboard event.
-
-### Groups
-
-- keyboardEvents
-
----
-## ClassMethod: EventHandler.getDragRect
-
-### Description
-During a drag with [dragAppearance](Canvas.md#attr-canvasdragappearance) of either "target" or "outline", returns the page-relative coordinates of whatever element is being dragged.
-
-Calling this method allows you to write drag and drop logic that works identically even if `dragAppearance` is subsequently changed.
-
-### Returns
-
-`[Rect](#type-rect)` — global (page-relative) coordinates and size of the dragged element, as a 4-element array \[left,top,width,height\], or null if not dragging
-
-### Groups
-
-- dragdrop
 
 ---
 ## ClassMethod: EventHandler.shiftKeyDown
@@ -629,22 +494,14 @@ Your canvas can use this routine to set the drag tracker to whatever HTML you wa
 - dragTracker
 
 ---
-## ClassMethod: EventHandler.getKeyEventCode
+## ClassMethod: EventHandler.getFocusCanvas
 
 ### Description
-Return the natively reported [event.code](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/code) value for the current event (keyboard) event.
-
-Note that `EventHandler.getReportedKey()` simply provides access to the `event.code` value reported by the browser. SmartClient has no control over whether these values are accurate or vary by browser.
-
-See the [Keyboard Events Overview](../kb_topics/keyboardEvents.md#kb-topic-keyboard-events) for related APIs and more information on keyboard event handling in SmartClient.
+Method to return the [canvasFocus:true](Canvas.md#attr-canvascanfocus) canvas with current keyboard focus.
 
 ### Returns
 
-`[String](#type-string)` — Native event.code for the current keyboard event.
-
-### Groups
-
-- keyboardEvents
+`[Canvas](#type-canvas)` — Current focus canvas
 
 ---
 ## ClassMethod: EventHandler.getWheelDelta
@@ -661,6 +518,32 @@ Developers should also be aware that some browsers and operating systems allow t
 `[float](../reference.md#type-float)` — numeric value indicating how far the mouse wheel was rotated.
 
 **Deprecated**
+
+---
+## ClassMethod: EventHandler.getNativeMouseTarget
+
+### Description
+Returns the natively reported target (or source) DOM element for the current mouse event. **NOTE:** SmartClient cannot guarantee that the same element will be reported in all browser/platform configurations for all event types. If you wish to make use of this value, we recommend testing your use case in all target browser configurations.
+
+### Returns
+
+`[DOMElement](#type-domelement)` — native DOM element over which the mouse event occurred
+
+**Flags**: A
+
+---
+## ClassMethod: EventHandler.ctrlKeyDown
+
+### Description
+Return true if the control key is being held down. Note that this is only set reliably for keyboard events.
+
+### Returns
+
+`[Boolean](#type-boolean)` — true == control key is down
+
+### Groups
+
+- keyboardEvents
 
 ---
 ## ClassMethod: EventHandler.getWheelDeltaY

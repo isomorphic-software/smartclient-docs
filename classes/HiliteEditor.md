@@ -14,6 +14,18 @@ A widget for defining and editing a set of [hilite rules](HiliteRule.md#class-hi
 _**Important Note:** this class should not be used directly - it is exposed purely for [i18n reasons.](../kb_topics/i18nMessages.md#kb-topic-i18n-messages)_
 
 ---
+## Attr: HiliteEditor.hiliteIcons
+
+### Description
+Specifies a list of icons that can be used in [hilites](../reference.md#object-hilite).
+
+`hiliteIcons` should be specified as an Array of [SCImgURL](../reference_2.md#type-scimgurl). When present, [HiliteRule](HiliteRule.md#class-hiliterule)s will offer the user a drop down for picking one of these icons.
+
+If the user picks an icon, the created hiliting rule will have [Hilite.icon](Hilite.md#attr-hiliteicon) set to the chosen icon. [ListGridField.hiliteIconPosition](ListGridField.md#attr-listgridfieldhiliteiconposition) controls where the icon will appear for that field -- the default is that it appears in front of the normal cell content.
+
+**Flags**: IRW
+
+---
 ## Attr: HiliteEditor.hiliteRule
 
 ### Description
@@ -30,6 +42,18 @@ This component is an [AutoChild](../reference.md#type-autochild) and as such may
 AutoChild [ListGrid](ListGrid_1.md#class-listgrid) showing the list of fields to create hilites for.
 
 This component is an [AutoChild](../reference.md#type-autochild) and as such may be customized via `hiliteEditor.fieldListProperties`.
+
+**Flags**: IR
+
+---
+## Attr: HiliteEditor.cancelButtonTitle
+
+### Description
+The title text for the [cancel button](#attr-hiliteeditorcancelbutton).
+
+### Groups
+
+- i18nMessages
 
 **Flags**: IR
 
@@ -64,10 +88,14 @@ The title text for the [add advanced rule](#attr-hiliteeditoraddadvancedrulebutt
 **Flags**: IR
 
 ---
-## Attr: HiliteEditor.advancedRuleHeight
+## Attr: HiliteEditor.saveButtonTitle
 
 ### Description
-The default height of Advanced Hilite-Rules in the main editor.
+The title text for the [saveButton](#attr-hiliteeditorsavebutton).
+
+### Groups
+
+- i18nMessages
 
 **Flags**: IR
 
@@ -84,58 +112,22 @@ The title for the 'Available Fields' column in the [fieldList](#attr-hiliteedito
 **Flags**: IR
 
 ---
-## Attr: HiliteEditor.cancelButton
-
-### Description
-AutoChild [ImgButton](ImgButton.md#class-imgbutton) that cancels this editor without saving any changes, firing the [callback](#attr-hiliteeditorcallback) with a null parameter.
-
-This component is an [AutoChild](../reference.md#type-autochild) and as such may be customized via `hiliteEditor.cancelButtonProperties`.
-
-**Flags**: IR
-
----
-## Attr: HiliteEditor.hiliteIcons
-
-### Description
-Specifies a list of icons that can be used in [hilites](../reference_2.md#object-hilite).
-
-`hiliteIcons` should be specified as an Array of [SCImgURL](../reference.md#type-scimgurl). When present, [HiliteRule](HiliteRule.md#class-hiliterule)s will offer the user a drop down for picking one of these icons.
-
-If the user picks an icon, the created hiliting rule will have [Hilite.icon](Hilite.md#attr-hiliteicon) set to the chosen icon. [ListGridField.hiliteIconPosition](ListGridField.md#attr-listgridfieldhiliteiconposition) controls where the icon will appear for that field -- the default is that it appears in front of the normal cell content.
-
-**Flags**: IRW
-
----
-## Attr: HiliteEditor.cancelButtonTitle
-
-### Description
-The title text for the [cancel button](#attr-hiliteeditorcancelbutton).
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IR
-
----
-## Attr: HiliteEditor.saveButtonTitle
-
-### Description
-The title text for the [saveButton](#attr-hiliteeditorsavebutton).
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IR
-
----
 ## Attr: HiliteEditor.saveButton
 
 ### Description
 AutoChild [ImgButton](ImgButton.md#class-imgbutton) that saves the hilites in this editor and fires the [callback](#attr-hiliteeditorcallback).
 
 This component is an [AutoChild](../reference.md#type-autochild) and as such may be customized via `hiliteEditor.saveButtonProperties`.
+
+**Flags**: IR
+
+---
+## Attr: HiliteEditor.cancelButton
+
+### Description
+AutoChild [ImgButton](ImgButton.md#class-imgbutton) that cancels this editor without saving any changes, firing the [callback](#attr-hiliteeditorcallback) with a null parameter.
+
+This component is an [AutoChild](../reference.md#type-autochild) and as such may be customized via `hiliteEditor.cancelButtonProperties`.
 
 **Flags**: IR
 

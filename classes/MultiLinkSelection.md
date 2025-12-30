@@ -34,6 +34,27 @@ Returns the selected nodes in this grid as a list of [NodeLocator](../reference_
 - selection
 
 ---
+## Method: MultiLinkSelection.select
+
+### Description
+Select a particular node occurence. Note if you do not pass a [NodeLocator](../reference_2.md#object-nodelocator), the recordNum parameter is required.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| node | [TreeNode](#type-treenode)|[NodeLocator](#type-nodelocator) | false | — | node to select, or a NodeLocator that identifies it |
+| recordNum | [Integer](../reference_2.md#type-integer) | true | — | Optional index into the underlying Tree's openList (which will be the same as the record number in a [TreeGrid](TreeGrid.md#class-treegrid)) |
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — true == selection actually changed, false == no change
+
+### Groups
+
+- selection
+
+---
 ## Method: MultiLinkSelection.deselect
 
 ### Description
@@ -44,7 +65,7 @@ Deselect a particular node occurence. Note if you do not pass a [NodeLocator](..
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | node | [TreeNode](#type-treenode)|[NodeLocator](#type-nodelocator) | false | — | node to deselect, or a NodeLocator that identifies it |
-| recordNum | [Integer](../reference_2.md#type-integer) | true | — | Optional index into the underlying Tree's openList (which will be the same as the record number in a [TreeGrid](TreeGrid.md#class-treegrid)). Required if the "node" param is not a NodeLocator |
+| recordNum | [Integer](../reference_2.md#type-integer) | true | — | Optional index into the underlying Tree's openList (which will be the same as the record number in a [TreeGrid](TreeGrid.md#class-treegrid)) |
 
 ### Returns
 
@@ -69,27 +90,6 @@ Returns the selected nodes in this grid as a direct array of records. Contrast t
 - selection
 
 ---
-## Method: MultiLinkSelection.select
-
-### Description
-Select a particular node occurence. Note if you do not pass a [NodeLocator](../reference_2.md#object-nodelocator), the recordNum parameter is required.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| node | [TreeNode](#type-treenode)|[NodeLocator](#type-nodelocator) | false | — | node to select, or a NodeLocator that identifies it |
-| recordNum | [Integer](../reference_2.md#type-integer) | true | — | Optional index into the underlying Tree's openList (which will be the same as the record number in a [TreeGrid](TreeGrid.md#class-treegrid)). Required if the "node" param is not a NodeLocator |
-
-### Returns
-
-`[boolean](../reference.md#type-boolean)` — true == selection actually changed, false == no change
-
-### Groups
-
-- selection
-
----
 ## Method: MultiLinkSelection.selectSingle
 
 ### Description
@@ -100,7 +100,7 @@ Select a single node occurence and deselect everything else. Note if you do not 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | node | [TreeNode](#type-treenode)|[NodeLocator](#type-nodelocator) | false | — | node to select, or a NodeLocator that identifies it |
-| recordNum | [Integer](../reference_2.md#type-integer) | true | — | Optional index into the underlying Tree's openList (which will be the same as the record number in a [TreeGrid](TreeGrid.md#class-treegrid)). Required if the "node" param is not a NodeLocator |
+| recordNum | [Integer](../reference_2.md#type-integer) | true | — | Optional index into the underlying Tree's openList (which will be the same as the record number in a [TreeGrid](TreeGrid.md#class-treegrid)) |
 
 ### Returns
 

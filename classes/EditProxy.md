@@ -14,64 +14,6 @@ An EditProxy is attached to an editable component when editMode is enabled. This
 - devTools
 
 ---
-## Attr: EditProxy.useCopyPasteShortcuts
-
-### Description
-Whether to enable keyboard shortcuts to [copy](EditContext.md#method-editcontextcopyeditnodes) and [paste](EditContext.md#method-editcontextpasteeditnodes) `editNodes`.
-
-Enabled by default if [selection of children](#attr-editproxycanselectchildren) is also enabled.
-
-For pasting, if [EditContext.allowNestedDrops](EditContext.md#attr-editcontextallownesteddrops) is enabled, only one editNode is selected and it is a valid container for the contents of the clipboard, editNodes will be pasted as new children of the selected container. Otherwise, they will be pasted at the root level of the [editNodeTree](EditContext.md#method-editcontextgeteditnodetree).
-
-`useCopyPasteShortcuts` may only be set on the root `editNode` within any one [editNodeTree](EditContext.md#method-editcontextgeteditnodetree).
-
-**Flags**: IR
-
----
-## Attr: EditProxy.canSelectChildren
-
-### Description
-Whether to allow selection of the children of this [EditNode](../reference.md#object-editnode). The appearance and behavior of selected components is controlled by [SelectedAppearance](../reference.md#type-selectedappearance), or centrally across an [EditContext](EditContext.md#class-editcontext) via [EditContext.selectedAppearance](EditContext.md#attr-editcontextselectedappearance).
-
-Individual children can be marked non-selectable via setting [EditProxy.canSelect](#attr-editproxycanselect) to `false`.
-
-Use the [EditContext](EditContext.md#class-editcontext) to access and manipulate the currently selected set of EditNodes, via APIs such as [EditContext.getSelectedEditNode](EditContext.md#method-editcontextgetselectededitnode), [EditContext.selectSingleEditNode](EditContext.md#method-editcontextselectsingleeditnode) and [EditContext.selectedEditNodesUpdated](EditContext.md#method-editcontextselectededitnodesupdated).
-
-### See Also
-
-- [EditContext.canSelectEditNodes](EditContext.md#attr-editcontextcanselecteditnodes)
-
-**Flags**: IRW
-
----
-## Attr: EditProxy.allowNestedDrops
-
-### Description
-This property acts as a component-specific override for the [EditContext.allowNestedDrops](EditContext.md#attr-editcontextallownesteddrops) property. Unless explicitly set to false, the [EditContext.allowNestedDrops](EditContext.md#attr-editcontextallownesteddrops) controls whether a drop can be made into this component.
-
-**Flags**: IR
-
----
-## Attr: EditProxy.showDragHandle
-
-### Description
-Should drag handles or thumb be shown when this component is selected? These are shown unless this property is set to `false`.
-
-**Flags**: IR
-
----
-## Attr: EditProxy.inlineEditEvent
-
-### Description
-Event that triggers inline editing, showing the [EditProxy.inlineEditForm](#attr-editproxyinlineeditform), which consists of a single text input (single or multi-line according to [EditProxy.inlineEditMultiline](#attr-editproxyinlineeditmultiline)) shown in the [EditProxy.inlineEditForm](#attr-editproxyinlineeditform) AutoChild.
-
-The initial value in the form comes from [EditProxy.getInlineEditText](#method-editproxygetinlineedittext) and is applied via [EditProxy.setInlineEditText](#method-editproxysetinlineedittext).
-
-Many [EditProxy](#class-editproxy) subclasses have built-in modes for inline editing.
-
-**Flags**: IR
-
----
 ## Attr: EditProxy.hoopSelector
 
 ### Description
@@ -86,10 +28,6 @@ Common customization properties can be provided by [EditContext.hoopSelectorProp
 
 ### Description
 If not null the [Canvas.childrenSnapToGrid](Canvas.md#attr-canvaschildrensnaptogrid) on the component represented by this EditProxy is set to this value only while in edit mode. This allows snapToGrid functionality to be enforced during edit mode but not when live.
-
-### Groups
-
-- snapGridDragging
 
 **Flags**: IRW
 
@@ -106,10 +44,6 @@ Instructions that appear below the text entry area if inline editing is enabled.
 
 ### Description
 If not null the [Canvas.childrenSnapResizeToGrid](Canvas.md#attr-canvaschildrensnapresizetogrid) on the component represented by this EditProxy is set to this value only while in edit mode. This allows snapResizeToGrid functionality to be enforced during edit mode but not when live.
-
-### Groups
-
-- snapGridDragging
 
 **Flags**: IRW
 
@@ -130,6 +64,20 @@ Mask color applied to [editMask](#attr-editproxyeditmask) of selected component 
 ### See Also
 
 - [EditProxy.selectedTintOpacity](#attr-editproxyselectedtintopacity)
+
+**Flags**: IR
+
+---
+## Attr: EditProxy.useCopyPasteShortcuts
+
+### Description
+Whether to enable keyboard shortcuts to [copy](EditContext.md#method-editcontextcopyeditnodes) and [paste](EditContext.md#method-editcontextpasteeditnodes) `editNodes`.
+
+Enabled by default if [selection of children](#attr-editproxycanselectchildren) is also enabled.
+
+For pasting, if [EditContext.allowNestedDrops](EditContext.md#attr-editcontextallownesteddrops) is enabled, only one editNode is selected and it is a valid container for the contents of the clipboard, editNodes will be pasted as new children of the selected container. Otherwise, they will be pasted at the root level of the [editNodeTree](EditContext.md#method-editcontextgeteditnodetree).
+
+`useCopyPasteShortcuts` may only be set on the root `editNode` within any one [editNodeTree](EditContext.md#method-editcontextgeteditnodetree).
 
 **Flags**: IR
 
@@ -247,6 +195,30 @@ When child nodes are added to an EditContext, should they be masked by setting [
 **Flags**: IR
 
 ---
+## Attr: EditProxy.canSelectChildren
+
+### Description
+Whether to allow selection of the children of this [EditNode](../reference.md#object-editnode). The appearance and behavior of selected components is controlled by [SelectedAppearance](../reference_2.md#type-selectedappearance), or centrally across an [EditContext](EditContext.md#class-editcontext) via [EditContext.selectedAppearance](EditContext.md#attr-editcontextselectedappearance).
+
+Individual children can be marked non-selectable via setting [EditProxy.canSelect](#attr-editproxycanselect) to `false`.
+
+Use the [EditContext](EditContext.md#class-editcontext) to access and manipulate the currently selected set of EditNodes, via APIs such as [EditContext.getSelectedEditNode](EditContext.md#method-editcontextgetselectededitnode), [EditContext.selectSingleEditNode](EditContext.md#method-editcontextselectsingleeditnode) and [EditContext.selectedEditNodesUpdated](EditContext.md#method-editcontextselectededitnodesupdated).
+
+### See Also
+
+- [EditContext.canSelectEditNodes](EditContext.md#attr-editcontextcanselecteditnodes)
+
+**Flags**: IRW
+
+---
+## Attr: EditProxy.allowNestedDrops
+
+### Description
+This property acts as a component-specific override for the [EditContext.allowNestedDrops](EditContext.md#attr-editcontextallownesteddrops) property. Unless explicitly set to false, the [EditContext.allowNestedDrops](EditContext.md#attr-editcontextallownesteddrops) controls whether a drop can be made into this component.
+
+**Flags**: IR
+
+---
 ## Attr: EditProxy.inlineEditInstructionLabel
 
 ### Description
@@ -265,6 +237,14 @@ If this property is not set it will enabled when added to an EditContext if its 
 **Flags**: IR
 
 ---
+## Attr: EditProxy.showDragHandle
+
+### Description
+Should drag handles or thumb be shown when this component is selected? These are shown unless this property is set to `false`.
+
+**Flags**: IR
+
+---
 ## Attr: EditProxy.persistCoordinates
 
 ### Description
@@ -277,28 +257,16 @@ All coordinate persisting can be disabled with [EditContext.persistCoordinates](
 **Flags**: IRW
 
 ---
-## Method: EditProxy.showSelectedAppearance
+## Attr: EditProxy.inlineEditEvent
 
 ### Description
-This method applies the [selectedAppearance](#attr-editproxyselectedappearance) to the selected component or resets it to the non-selected appearance. Override this method to create a custom appearance.
+Event that triggers inline editing, showing the [EditProxy.inlineEditForm](#attr-editproxyinlineeditform), which consists of a single text input (single or multi-line according to [EditProxy.inlineEditMultiline](#attr-editproxyinlineeditmultiline)) shown in the [EditProxy.inlineEditForm](#attr-editproxyinlineeditform) AutoChild.
 
-### Parameters
+The initial value in the form comes from [EditProxy.getInlineEditText](#method-editproxygetinlineedittext) and is applied via [EditProxy.setInlineEditText](#method-editproxysetinlineedittext).
 
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| show | [boolean](../reference.md#type-boolean) | false | — | true to show component as selected, false otherwise |
+Many [EditProxy](#class-editproxy) subclasses have built-in modes for inline editing.
 
----
-## Method: EditProxy.startInlineEditing
-
-### Description
-Manual means of triggering inline editing. See [InlineEditEvent](../reference.md#type-inlineeditevent).
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| appendChar | [String](#type-string) | true | — | optional String to append to current value as editing starts |
+**Flags**: IR
 
 ---
 ## Method: EditProxy.setInlineEditText
@@ -335,5 +303,29 @@ Setter for [canSelectChildren](#attr-editproxycanselectchildren).
 Returns the text based on the current component state to be edited inline. Called by the [EditProxy.inlineEditForm](#attr-editproxyinlineeditform) to obtain the starting edit value.
 
 For a canvas with `isGroup` enabled, the `groupTitle` is returned. Otherwise the `contents` is returned.
+
+---
+## Method: EditProxy.showSelectedAppearance
+
+### Description
+This method applies the [selectedAppearance](#attr-editproxyselectedappearance) to the selected component or resets it to the non-selected appearance. Override this method to create a custom appearance.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| show | [boolean](../reference.md#type-boolean) | false | — | true to show component as selected, false otherwise |
+
+---
+## Method: EditProxy.startInlineEditing
+
+### Description
+Manual means of triggering inline editing. See [InlineEditEvent](../reference.md#type-inlineeditevent).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| appendChar | [String](#type-string) | true | — | optional String to append to current value as editing starts |
 
 ---

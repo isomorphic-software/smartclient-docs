@@ -9,9 +9,17 @@
 ### Description
 A UI component that can participate in a DynamicForm, allowing editing or display of one of the [values tracked by the form](DynamicForm.md#attr-dynamicformvalues).
 
-FormItems are never created via the [create()](Class.md#classmethod-classcreate) method, instead, an Array of plain [JavaScript objects](../reference.md#type-object) are passed as [DynamicForm.items](DynamicForm.md#attr-dynamicformitems) when the form is created.
+FormItems are never created via the [create()](Class.md#classmethod-classcreate) method, instead, an Array of plain [JavaScript objects](../reference_2.md#type-object) are passed as [DynamicForm.items](DynamicForm.md#attr-dynamicformitems) when the form is created.
 
 See the [DynamicForm](DynamicForm.md#class-dynamicform) documentation for details and sample code.
+
+---
+## ClassAttr: FormItem.defaultPickerIconSpace
+
+### Description
+Default [hspace](FormItemIcon.md#attr-formitemiconhspace) value for pickers created by [FormItem.getPickerIcon](#classmethod-formitemgetpickericon).
+
+**Flags**: IR
 
 ---
 ## ClassAttr: FormItem.defaultPickerIconHeight
@@ -22,12 +30,34 @@ Default [height](FormItemIcon.md#attr-formitemiconheight) value for pickers crea
 **Flags**: IR
 
 ---
-## ClassAttr: FormItem.defaultPickerIconSpace
+## Attr: FormItem.updateTextBoxOnOver
 
 ### Description
-Default [hspace](FormItemIcon.md#attr-formitemiconhspace) value for pickers created by [FormItem.getPickerIcon](#classmethod-formitemgetpickericon).
+If [FormItem.showOver](#attr-formitemshowover) is true, setting this property to false will explicitly disable showing the "Over" state for the TextBox element of this item.
 
-**Flags**: IR
+### Groups
+
+- formItemStyling
+
+### See Also
+
+- [FormItem.showOver](#attr-formitemshowover)
+
+**Flags**: IRWA
+
+---
+## Attr: FormItem.showIconsOnFocus
+
+### Description
+Show the [FormItem.icons](#attr-formitemicons) when the item gets focus, and hide them when it loses focus. Can be overridden at the icon level by [FormItemIcon.showOnFocus](FormItemIcon.md#attr-formitemiconshowonfocus).
+
+Note that icons marked as disabled will not be shown on focus even if this flag is true by default. This may be overridden by [FormItem.showDisabledIconsOnFocus](#attr-formitemshowdisablediconsonfocus).
+
+### Groups
+
+- formIcons
+
+**Flags**: IRWA
 
 ---
 ## Attr: FormItem.editProxyConstructor
@@ -64,22 +94,98 @@ See [DataSourceField.foreignDisplayField](DataSourceField.md#attr-datasourcefiel
 **Flags**: IR
 
 ---
-## Attr: FormItem.hoverPersist
+## Attr: FormItem.validators
 
 ### Description
-Allows interaction with hovers when the cursor is positioned over them.
+Validators for this form item.
 
-Overrides the [same attribute](Canvas.md#attr-canvashoverpersist) on the parent form.
+**Note:** these validators will only be run on the client; to do real client-server validation, validators must be specified via [DataSourceField.validators](DataSourceField.md#attr-datasourcefieldvalidators).
+
+**Flags**: IR
+
+---
+## Attr: FormItem.alwaysShowControlBox
+
+### Description
+A formItem showing a [pickerIcon](#attr-formitemshowpickericon) will always write out a "control box" around the text box and picker icon. This is an HTML element styled using the specified [FormItem.controlStyle](#attr-formitemcontrolstyle).
+
+This attribute controls whether the control box should be written out even if the picker icon is not being shown. If unset, default behavior will write out a control table if [FormItem.showPickerIcon](#attr-formitemshowpickericon) is true and the icon is not suppressed via [FormItemIcon.showIf](FormItemIcon.md#method-formitemiconshowif). This means the control table can be written out with no visible picker if [FormItem.showPickerIconOnFocus](#attr-formitemshowpickericononfocus) is true and the item does not have focus.
+
+This attribute is useful for developers who wish to rely on styling specified via the [FormItem.controlStyle](#attr-formitemcontrolstyle) even while the picker icon is not visible.
+
+See the [form item styling overview](../kb_topics/formItemStyling.md#kb-topic-formitem-styling) for details of the control table and other styling options.
+
+**Flags**: IRA
+
+---
+## Attr: FormItem.rowSpan
+
+### Description
+Number of rows that this item spans
 
 ### Groups
 
-- hovers
-
-### See Also
-
-- [FormItem.hoverFocusKey](#attr-formitemhoverfocuskey)
+- formLayout
 
 **Flags**: IRW
+
+---
+## Attr: FormItem.criteriaField
+
+### Description
+When using [FormItem.operator](#attr-formitemoperator), the name of the DataSource field for the [Criterion](../reference.md#object-criterion) this FormItem generates. If not specified, defaults to [FormItem.name](#attr-formitemname).
+
+Generally, because `criteriaField` defaults to `item.name`, you don't need to specify it. However, if more than one FormItem specifies criteria for the same DataSource field, they will need unique values for [FormItem.name](#attr-formitemname) but should set [FormItem.criteriaField](#attr-formitemcriteriafield) to the name of DataSource field they both target.
+
+For example, if two DateItems are used to provide a min and max date for a single field called "joinDate", set [FormItem.criteriaField](#attr-formitemcriteriafield) to "joinDate" on both fields but give the fields distinct names (eg "minDate" and "maxDate") and use those names for any programmatic access, such as [DynamicForm.setValue](DynamicForm.md#method-dynamicformsetvalue).
+
+**Flags**: IR
+
+---
+## Attr: FormItem.accessKey
+
+### Description
+If specified this governs the HTML accessKey for the item.
+
+This should be set to a character - when a user hits the html accessKey modifier for the browser, plus this character, focus will be given to the item. The accessKey modifier can vary by browser and platform.
+
+The following list of default behavior is for reference only, developers should also consult browser documentation for additional information.
+
+*   **Internet Explorer (all platforms)**: `Alt` + _accessKey_
+*   **Mozilla Firefox (Windows, Unix)**: `Alt+Shift` + _accessKey_
+*   **Mozilla Firefox (Mac)**: `Ctrl+Opt` + _accessKey_
+*   **Chrome and Safari (Windows, Unix)**: `Alt` + _accessKey_
+*   **Chrome and Safari (Mac)**: `Ctrl+Opt` + _accessKey_
+
+### Groups
+
+- focus
+
+**Flags**: IRW
+
+---
+## Attr: FormItem.cellStyle
+
+### Description
+CSS style applied to the form item as a whole, including the text element, any icons, and any hint text for the item. Applied to the cell containing the form item.
+
+See [formItemStyling](../kb_topics/formItemStyling.md#kb-topic-formitem-styling) for an overview of formItem styling, and the [CompoundFormItem_skinning](../reference.md#kb-topic-compoundformitem_skinning) discussion for special skinning considerations.
+
+### Groups
+
+- formItemStyling
+
+**Flags**: IRW
+
+---
+## Attr: FormItem.applyHeightToTextBox
+
+### Description
+If [FormItem.height](#attr-formitemheight) is specified, should it be applied to the item's text box element?
+
+If unset, behavior is determined as described in [FormItem.shouldApplyHeightToTextBox](#method-formitemshouldapplyheighttotextbox)
+
+**Flags**: IRA
 
 ---
 ## Attr: FormItem.showValueIconOnly
@@ -91,7 +197,7 @@ If [FormItem.valueIcons](#attr-formitemvalueicons) is set, this property may be 
 
 - valueIcons
 
-**Flags**: IRW
+**Flags**: IRWA
 
 ---
 ## Attr: FormItem.optionTextMatchStyle
@@ -105,18 +211,6 @@ If this item has a specified `optionDataSource`, this property determines the te
 - searchCriteria
 
 **Flags**: IRA
-
----
-## Attr: FormItem.linearEndRow
-
-### Description
-Specifies [FormItem.endRow](#attr-formitemendrow) for an item in [linearMode](DynamicForm.md#attr-dynamicformlinearmode), overriding the default of `true` in that mode.
-
-### Groups
-
-- formLayout
-
-**Flags**: IRW
 
 ---
 ## Attr: FormItem.validateOnChange
@@ -173,6 +267,35 @@ Top coordinate of this item in pixels. Applies only when the containing DynamicF
 **Flags**: IRWA
 
 ---
+## Attr: FormItem.useLocalDisplayFieldValue
+
+### Description
+If [FormItem.displayField](#attr-formitemdisplayfield) is specified for a field, should the display value for the field be picked up from the [record currently being edited](DynamicForm.md#method-dynamicformgetvalues)?
+
+This behavior is typically valuable for dataBound components where the displayField is specified at the DataSourceField level. See [DataSourceField.displayField](DataSourceField.md#attr-datasourcefielddisplayfield) for more on this.
+
+Note that for DataSources backed by the [SmartClient server](../kb_topics/serverDataIntegration.md#kb-topic-server-datasource-integration), fields with a specified [DataSourceField.foreignKey](DataSourceField.md#attr-datasourcefieldforeignkey) and [DataSourceField.displayField](DataSourceField.md#attr-datasourcefielddisplayfield) will automatically have this property set to true if not explicitly set to false in the dataSource configuration.
+
+Otherwise, if not explicitly set, local display value will be used unless:
+
+*   This item has an explicitly specified optionDataSource, rather than deriving its optionDataSource from a specified [DataSourceField.foreignKey](DataSourceField.md#attr-datasourcefieldforeignkey) specification
+*   The [FormItem.name](#attr-formitemname) differs from the [valueField](#method-formitemgetvaluefieldname) for the item
+
+**Flags**: IR
+
+---
+## Attr: FormItem.suppressValueIcon
+
+### Description
+If [FormItem.valueIcons](#attr-formitemvalueicons) is set, this property may be set to prevent the value icons from showing up next to the form items value
+
+### Groups
+
+- valueIcons
+
+**Flags**: IRWA
+
+---
 ## Attr: FormItem.valueIconWidth
 
 ### Description
@@ -190,20 +313,14 @@ If [FormItem.valueIcons](#attr-formitemvalueicons) is specified, use this proper
 **Flags**: IRW
 
 ---
-## Attr: FormItem.linearColSpan
+## Attr: FormItem.containerWidget
 
 ### Description
-Specifies a column span for an item in [linearMode](DynamicForm.md#attr-dynamicformlinearmode), overriding the default value of "\*" in that mode.
+A Read-Only pointer to the SmartClient canvas that holds this form item. In most cases this will be the [DynamicForm](#attr-formitemform) containing the item but in some cases editable components handle writing out form items directly. An example of this is [Grid Editing](../kb_topics/editing.md#kb-topic-grid-editing) - when a listGrid shows per-field editors, the `containerWidget` for each item will be the listGrid body.
 
-### Groups
+Note that even if the `containerWidget` is not a DynamicForm, a DynamicForm will still exist for the item (available as [FormItem.form](#attr-formitemform)), allowing access to standard APIs such as [DynamicForm.getValues](DynamicForm.md#method-dynamicformgetvalues)
 
-- formLayout
-
-### See Also
-
-- [FormItem.colSpan](#attr-formitemcolspan)
-
-**Flags**: IRW
+**Flags**: RA
 
 ---
 ## Attr: FormItem.printTextBoxStyle
@@ -220,6 +337,18 @@ To override this behavior, developers may also specify a custom print style for 
 - formItemStyling
 
 **Flags**: IRW
+
+---
+## Attr: FormItem.showHint
+
+### Description
+If a hint is defined for this form item, should it be shown?
+
+### Groups
+
+- appearance
+
+**Flags**: IRWA
 
 ---
 ## Attr: FormItem.picker
@@ -252,12 +381,20 @@ CSS class for the "hint" string.
 **Flags**: IR
 
 ---
+## Attr: FormItem.canSelectText
+
+### Description
+For items showing a text value, should the user be able to select the text in this item?
+
+For [canEdit:false](#attr-formitemcanedit) items, see [FormItem.readOnlyCanSelectText](#attr-formitemreadonlycanselecttext)
+
+**Flags**: IRW
+
+---
 ## Attr: FormItem.type
 
 ### Description
 The DynamicForm picks a field renderer based on the type of the field (and sometimes other attributes of the field).
-
-In addition to the standard [FormItemType](../reference.md#type-formitemtype) values, this property also accepts the name of any [FormItem](#class-formitem) subclass (e.g., "ButtonItem", "CheckboxItem") or a shorthand lowercase version (e.g., "button", "checkbox"). When a class name or shorthand is provided, it acts as a shortcut for setting [FormItem.editorType](#attr-formitemeditortype).
 
 ### Groups
 
@@ -265,10 +402,18 @@ In addition to the standard [FormItemType](../reference.md#type-formitemtype) va
 
 ### See Also
 
-- [FormItemType](../reference.md#type-formitemtype)
-- [FieldType](../reference_2.md#type-fieldtype)
+- [FormItemType](../reference_2.md#type-formitemtype)
+- [FieldType](../reference.md#type-fieldtype)
 
 **Flags**: IR
+
+---
+## Attr: FormItem.storeDisplayValues
+
+### Description
+If specified, this overrides the [DynamicForm.storeDisplayValues](DynamicForm.md#attr-dynamicformstoredisplayvalues) property for this field.
+
+**Flags**: IRA
 
 ---
 ## Attr: FormItem.value
@@ -306,6 +451,39 @@ Left coordinate of this item in pixels. Applies only when the containing Dynamic
 **Flags**: IRWA
 
 ---
+## Attr: FormItem.errorIconWidth
+
+### Description
+Height of the error icon, if we're showing icons when validation errors occur.
+
+### Groups
+
+- errorIcon
+
+### See Also
+
+- [FormItem.showErrorIcon](#attr-formitemshowerroricon)
+
+**Flags**: IRW
+
+---
+## Attr: FormItem.valueIconHeight
+
+### Description
+If [FormItem.valueIcons](#attr-formitemvalueicons) is specified, use this property to specify a height for the value icon written out.
+
+### Groups
+
+- valueIcons
+
+### See Also
+
+- [FormItem.valueIconWidth](#attr-formitemvalueiconwidth)
+- [FormItem.valueIconSize](#attr-formitemvalueiconsize)
+
+**Flags**: IRW
+
+---
 ## Attr: FormItem.pickerIconPrompt
 
 ### Description
@@ -317,6 +495,51 @@ Prompt to show when the user hovers the mouse over the picker icon.
 - i18nMessages
 
 **Flags**: IR
+
+---
+## Attr: FormItem.tabIndex
+
+### Description
+TabIndex for the form item within the form, which controls the order in which controls are visited when the user hits the tab or shift-tab keys to navigate between items.
+
+tabIndex is automatically assigned as the order that items appear in the [DynamicForm.items](DynamicForm.md#attr-dynamicformitems) list.
+
+To specify the tabindex of an item within the page as a whole (not just this form), use [FormItem.globalTabIndex](#attr-formitemglobaltabindex) instead.
+
+### Groups
+
+- focus
+
+**Flags**: IRW
+
+---
+## Attr: FormItem.selectOnClick
+
+### Description
+Allows the [selectOnClick](DynamicForm.md#attr-dynamicformselectonclick) behavior to be configured on a per-FormItem basis. Normally all items in a form default to the value of [DynamicForm.selectOnClick](DynamicForm.md#attr-dynamicformselectonclick).
+
+### Groups
+
+- focus
+
+**Flags**: IRW
+
+---
+## Attr: FormItem.valueIconSize
+
+### Description
+If [FormItem.valueIcons](#attr-formitemvalueicons) is specified, this property may be used to specify both the width and height of the icon written out. Note that [FormItem.valueIconWidth](#attr-formitemvalueiconwidth) and [FormItem.valueIconHeight](#attr-formitemvalueiconheight) take precedence over this value, if specified.
+
+### Groups
+
+- valueIcons
+
+### See Also
+
+- [FormItem.valueIconWidth](#attr-formitemvalueiconwidth)
+- [FormItem.valueIconHeight](#attr-formitemvalueiconheight)
+
+**Flags**: IRW
 
 ---
 ## Attr: FormItem.autoComplete
@@ -345,6 +568,30 @@ Should this arise, developers can avoid this by making the initial log in interf
 **Flags**: IRW
 
 ---
+## Attr: FormItem.nullOriginalValueText
+
+### Description
+Text shown as the value in the [FormItem.originalValueMessage](#attr-formitemoriginalvaluemessage) when [showOldValueInHover](#attr-formitemshowoldvalueinhover) is enabled, and when the value has been modified but was originally unset.
+
+**Flags**: IRWA
+
+---
+## Attr: FormItem.hoverVAlign
+
+### Description
+Vertical text alignment for text displayed in this item's hover canvas, if shown.
+
+### Groups
+
+- Hovers
+
+### See Also
+
+- [DynamicForm.itemHoverVAlign](DynamicForm.md#attr-dynamicformitemhovervalign)
+
+**Flags**: IRW
+
+---
 ## Attr: FormItem.defaultOperator
 
 ### Description
@@ -355,6 +602,70 @@ The default search-operator for this item when it or its form allow [filter-expr
 - advancedFilter
 
 **Flags**: IR
+
+---
+## Attr: FormItem.hidden
+
+### Description
+Should this form item be hidden? Setting this property to `true` on an item configuration will have the same effect as having a [FormItem.showIf](#method-formitemshowif) implementation which returns `false`.
+
+Note this differs slightly from [DataSourceField.hidden](DataSourceField.md#attr-datasourcefieldhidden). That property will cause the field in question to be omitted entirely from databound components by default. A dataSourceField with `hidden` set to `true` can still be displayed in a DynamicForm either by being explicitly included in the specified [items array](DynamicForm.md#attr-dynamicformitems), or by having [DataBoundComponent.showHiddenFields](DataBoundComponent.md#attr-databoundcomponentshowhiddenfields) set to true. In this case, this property will not be inherited onto the FormItem instance, meaning the item will be visible in the form even though the `hidden` property was set to true on the dataSourceField configuration object.
+
+**Flags**: IR
+
+---
+## Attr: FormItem.showFocusedPickerIcon
+
+### Description
+If [FormItem.showPickerIcon](#attr-formitemshowpickericon) is true for this item, should the picker icon show a focused image when the form item has focus?
+
+### Groups
+
+- pickerIcon
+
+**Flags**: IRW
+
+---
+## Attr: FormItem.hoverStyle
+
+### Description
+Explicit CSS Style for any hover shown for this item.
+
+### Groups
+
+- Hovers
+
+### See Also
+
+- [DynamicForm.itemHoverStyle](DynamicForm.md#attr-dynamicformitemhoverstyle)
+
+**Flags**: IRW
+
+---
+## Attr: FormItem.showIcons
+
+### Description
+Set to false to suppress writing out any [FormItem.icons](#attr-formitemicons) for this item.
+
+### Groups
+
+- formIcons
+
+**Flags**: IRWA
+
+---
+## Attr: FormItem.titleAlign
+
+### Description
+Alignment of this item's title in its cell.
+
+If null, dynamically set according to text direction.
+
+### Groups
+
+- title
+
+**Flags**: IRW
 
 ---
 ## Attr: FormItem.titleErrorClassName
@@ -376,15 +687,11 @@ CSS class for a form item's title when a validation error is showing.
 ### Description
 Number of columns that this item spans.
 
-The `colSpan` setting does not include the title shown for items with [FormItem.showTitle](#attr-formitemshowtitle):true, so the effective `colSpan` is one higher than this setting for items that are showing a title and whose [TitleOrientation](../reference_2.md#type-titleorientation) is either "left" or "right".
+The `colSpan` setting does not include the title shown for items with [FormItem.showTitle](#attr-formitemshowtitle):true, so the effective `colSpan` is one higher than this setting for items that are showing a title and whose [TitleOrientation](../reference.md#type-titleorientation) is either "left" or "right".
 
 ### Groups
 
 - formLayout
-
-### See Also
-
-- [FormItem.linearColSpan](#attr-formitemlinearcolspan)
 
 **Flags**: IRW
 
@@ -405,15 +712,59 @@ Notes:
 **Flags**: IRWA
 
 ---
+## Attr: FormItem.loadingDisplayValue
+
+### Description
+Value shown in field when [fetchMissingValues](#attr-formitemfetchmissingvalues) is active and a fetch is pending. The field is read-only while a fetch is pending.
+
+Set to `null` to show actual value until display value is loaded.
+
+### Groups
+
+- display_values
+- i18nMessages
+
+**Flags**: IRW
+
+---
 ## Attr: FormItem.dataPath
 
 ### Description
 dataPath for this item. Allows the user to edit details nested data structures in a flat set of form fields
 
-**NOTE: the dataPath feature is intended to help certain legacy architectures, such as systems that work in terms of exchanging large messages with several different entity types in one message, and are incapable of providing separate access to each entity type.  
-See the [DataPath overview](../reference_2.md#type-datapath) for more information.**
-
 Note that an item must have a valid dataPath or [name](#attr-formitemname) in order for its value to be validated and/or saved.
+
+**Flags**: IR
+
+---
+## Attr: FormItem.useDisabledHintStyleForReadOnly
+
+### Description
+By default, [read-only](#attr-formitemcanedit) fields use the same style name as editable fields for in-field hints, unless they are [disabled](#method-formitemisdisabled) or configured to use a disabled [ReadOnlyDisplayAppearance](../reference.md#type-readonlydisplayappearance). This is described under [TextItem.showHintInField](TextItem.md#attr-textitemshowhintinfield)
+
+If `useDisabledHintStyleForReadOnly` is set, the "HintDisabled" style will be used for read-only fields regardless of their `ReadOnlyDisplayAppearance`. This allows you to use a different in-field hint style for read-only fields without having to use a general disabled appearance for those fields
+
+### Groups
+
+- appearance
+
+**Flags**: IRW
+
+---
+## Attr: FormItem.minHintWidth
+
+### Description
+If this item is showing a [FormItem.hint](#attr-formitemhint), this setting specifies how much horizontal space is made available for rendering the hint text by default. Typically this reflects how much space the hint text takes up before it wraps.
+
+Note that the presence of a hint may cause a form item to expand horizontally past its specified [FormItem.width](#attr-formitemwidth). This property value acts as a minimum - if the hint text can not wrap within this width (either due to [FormItem.wrapHintText](#attr-formitemwraphinttext) being set to `false`, or due to it containing long, un-wrappable content), it will further expand to take up the space it needs.
+
+If unset this property will be picked up from the [DynamicForm.minHintWidth](DynamicForm.md#attr-dynamicformminhintwidth) setting.
+
+This setting does not apply to hints that are [shown in field](TextItem.md#attr-textitemshowhintinfield).
+
+### See Also
+
+- [FormItem.wrapHintText](#attr-formitemwraphinttext)
 
 **Flags**: IR
 
@@ -426,6 +777,36 @@ Prefix to apply to the beginning of any [FormItem.valueIcons](#attr-formitemvalu
 ### Groups
 
 - valueIcons
+
+**Flags**: IRWA
+
+---
+## Attr: FormItem.useAdvancedCriteria
+
+### Description
+Should this form item always produce an [AdvancedCriteria](../reference.md#object-advancedcriteria) sub criterion object? When set to true, causes [hasAdvancedCriteria](#method-formitemhasadvancedcriteria) to return true. Can also be set at the [ListGrid](ListGrid_1.md#attr-listgriduseadvancedcriteria) level.
+
+### Groups
+
+- criteriaEditing
+
+**Flags**: IRW
+
+---
+## Attr: FormItem.showDisabled
+
+### Description
+When this item is disabled, should it be re-styled to indicate its disabled state?
+
+See [formItemStyling](../kb_topics/formItemStyling.md#kb-topic-formitem-styling) for more details on formItem styling.
+
+### Groups
+
+- formItemStyling
+
+### See Also
+
+- [FormItem.cellStyle](#attr-formitemcellstyle)
 
 **Flags**: IRWA
 
@@ -444,6 +825,22 @@ Text alignment for text displayed in this item's hover canvas, if shown.
 - [DynamicForm.itemHoverAlign](DynamicForm.md#attr-dynamicformitemhoveralign)
 
 **Flags**: IRW
+
+---
+## Attr: FormItem.required
+
+### Description
+Whether a non-empty value is required for this field to pass validation.
+
+If the user does not fill in the required field, the error message to be shown will be taken from these properties in the following order: [FormItem.requiredMessage](#attr-formitemrequiredmessage), [DynamicForm.requiredMessage](DynamicForm.md#attr-dynamicformrequiredmessage), [DataSource.requiredMessage](DataSource.md#attr-datasourcerequiredmessage), [Validator.requiredField](Validator.md#classattr-validatorrequiredfield).
+
+**Note:** if specified on a FormItem, `required` is only enforced on the client. `required` should generally be specified on a [DataSourceField](../reference.md#object-datasourcefield).
+
+### Groups
+
+- validation
+
+**Flags**: IR
 
 ---
 ## Attr: FormItem.textFormula
@@ -476,6 +873,23 @@ The original unpadded value is always shown when the value is edited.
 ### Groups
 
 - appearance
+
+**Flags**: IRW
+
+---
+## Attr: FormItem.pickerIconStyle
+
+### Description
+Base CSS class name for a form item's picker icon cell. If unset, inherits from this item's [controlStyle](#attr-formitemcontrolstyle).
+
+### Groups
+
+- pickerIcon
+- formItemStyling
+
+### See Also
+
+- [FormItem.cellStyle](#attr-formitemcellstyle)
 
 **Flags**: IRW
 
@@ -538,10 +952,14 @@ Has no effect if [DynamicForm.itemLayout](DynamicForm.md#attr-dynamicformitemlay
 **Flags**: IRW
 
 ---
-## Attr: FormItem.wrapStaticValue
+## Attr: FormItem.title
 
 ### Description
-If this item is [read-only](#method-formitemgetcanedit) and is using [readOnlyDisplay](#attr-formitemreadonlydisplay) "static", should the item value wrap?
+User visible title for this form item.
+
+### Groups
+
+- basics
 
 **Flags**: IRW
 
@@ -562,1625 +980,6 @@ If the `textBoxStyle` is changed at runtime, [updateState()](#method-formitemupd
 ### See Also
 
 - [FormItem.cellStyle](#attr-formitemcellstyle)
-
-**Flags**: IRW
-
----
-## Attr: FormItem.showFocusedIcons
-
-### Description
-If we're showing icons, should we change their image source to the appropriate _focused_ source when this item has focus? Can be overridden on a per icon basis by the formItemIcon `showFocused` property.
-
-### Groups
-
-- formIcons
-
-**Flags**: IRWA
-
----
-## Attr: FormItem.browserInputType
-
-### Description
-Form item input type - governs which keyboard should be displayed for mobile devices (supported on iPhone / iPad)
-
-**Flags**: IRA
-
----
-## Attr: FormItem.iconBaseStyle
-
-### Description
-Fallback base CSS class to apply to this item's [FormItem.icons](#attr-formitemicons) if they don't specify a [baseStyle](FormItemIcon.md#attr-formitemiconbasestyle) or provide a sprite-based [src string](FormItemIcon.md#attr-formitemiconsrc) that specifies a `cssClass`.
-
-### Groups
-
-- formItemStyling
-
-**Flags**: IRW
-
----
-## Attr: FormItem.emptyDisplayValue
-
-### Description
-Text to display when this form item has a null or undefined value.
-
-If the formItem has a databound pickList, and its [FormItem.displayField](#attr-formitemdisplayfield) or [FormItem.valueField](#attr-formitemvaluefield) (if the former isn't set) has an undefined [emptyCellValue](ListGridField.md#attr-listgridfieldemptycellvalue) setting, that field's `emptyCellValue` will automatically be set to the `emptyDisplayValue`.
-
-### Groups
-
-- display_values
-
-**Flags**: IRW
-
----
-## Attr: FormItem.errorMessageWidth
-
-### Description
-When [DynamicForm.showInlineErrors](DynamicForm.md#attr-dynamicformshowinlineerrors) and [FormItem.showErrorText](#attr-formitemshowerrortext) are both true and [FormItem.errorOrientation](#attr-formitemerrororientation) is "left" or "right", errorMessageWidth is the amount to reduce the width of the editor to accommodate the error message and icon.
-
-### Groups
-
-- validation
-
-**Flags**: IRW
-
----
-## Attr: FormItem.iconHSpace
-
-### Description
-Horizontal space (in px) to leave between form item icons. The space appears either on the left or right of each icon. May be overridden at the icon level via [FormItemIcon.hspace](FormItemIcon.md#attr-formitemiconhspace). Must be non-negative.
-
-### Groups
-
-- formIcons
-
-**Flags**: IR
-
----
-## Attr: FormItem.titleVAlign
-
-### Description
-Vertical alignment of this item's title in its cell. Only applies when [FormItem.titleOrientation](#attr-formitemtitleorientation) is `"left"` or `"right"`.
-
-### Groups
-
-- title
-
-**Flags**: IRW
-
----
-## Attr: FormItem.requiredMessage
-
-### Description
-The required message for required field errors.
-
-### Groups
-
-- validation
-
-**Flags**: IRW
-
----
-## Attr: FormItem.showOldValueInHover
-
-### Description
-Causes the original value to be shown to the end user when the user hovers over the FormItem as such (when the [FormItem.itemHover](#method-formitemitemhover) event would fire).
-
-When [FormItem.showOldValueInHover](#attr-formitemshowoldvalueinhover) and the form's [DynamicForm.showOldValueInHover](DynamicForm.md#attr-dynamicformshowoldvalueinhover) are both unset, defaults to the value of [FormItem.showPending](#attr-formitemshowpending).
-
-The message shown is controlled by [FormItem.originalValueMessage](#attr-formitemoriginalvaluemessage), unless the item is [disabled](#attr-formitemdisabled) and [disabledHover](#attr-formitemdisabledhover) is set - in this case, the hover shows the `disabledHover` HTML.
-
-If the item [suppresses hovers](#attr-formitemcanhover), nothing will be shown.
-
-**Flags**: IRWA
-
----
-## Attr: FormItem.showClippedValueOnHover
-
-### Description
-If true and the value is clipped, then a hover containing the full value of this item is enabled.
-
-The [FormItem.valueHover](#method-formitemvaluehover) method is called before the hover is displayed, allowing the hover to be canceled if desired. The HTML shown in the hover can be customized by overriding [FormItem.valueHoverHTML](#method-formitemvaluehoverhtml).
-
-If the item [suppresses hovers](#attr-formitemcanhover), nothing will be shown.
-
-### Groups
-
-- Hovers
-
-**Flags**: IRW
-
----
-## Attr: FormItem.updatePickerIconOnOver
-
-### Description
-If [FormItem.showOver](#attr-formitemshowover) is true, setting this property to false will explicitly disable showing the "Over" state for the PickerIcon of this item (if present)
-
-### Groups
-
-- formItemStyling
-
-### See Also
-
-- [FormItem.showOver](#attr-formitemshowover)
-
-**Flags**: IRWA
-
----
-## Attr: FormItem.wrapTitle
-
-### Description
-If specified determines whether this items title should wrap. Overrides [wrapItemTitles](DynamicForm.md#attr-dynamicformwrapitemtitles) at the DynamicForm level.
-
-### Groups
-
-- title
-
-**Flags**: IRW
-
----
-## Attr: FormItem.valueDeselectedCSSText
-
-### Description
-Custom CSS text to be applied to values that have been deleted, when [showDeletions](#attr-formitemshowdeletions) is enabled.
-
-**Flags**: IRA
-
----
-## Attr: FormItem.name
-
-### Description
-Name for this form field. Must be unique within the form as well as a valid JavaScript identifier - see [FieldName](../reference.md#type-fieldname) for details and how to check for validity.
-
-The FormItem's name determines the name of the property it edits within the form.
-
-Note that an item must have a valid name or [dataPath](#attr-formitemdatapath) in order for its value to be validated and/or saved.
-
-### Groups
-
-- basics
-
-**Flags**: IR
-
----
-## Attr: FormItem.readOnlyControlStyle
-
-### Description
-Modified [control style](#attr-formitemcontrolstyle) to apply when this item is [read-only](#method-formitemgetcanedit) and is using [readOnlyDisplay](#attr-formitemreadonlydisplay) "static".
-
-**Flags**: IRW
-
----
-## Attr: FormItem.titleClassName
-
-### Description
-CSS class for the form item's title.
-
-### Groups
-
-- title
-
-**Deprecated**
-
-**Flags**: IR
-
----
-## Attr: FormItem.align
-
-### Description
-Alignment of this item in its cell. Note that the alignment of text / content within this item is controlled separately via [FormItem.textAlign](#attr-formitemtextalign) (typically `textAlign` applies to items showing a "textBox", such as a [TextItem](TextItem.md#class-textitem) or [SelectItem](SelectItem.md#class-selectitem), as well as text-only form item types such as [StaticTextItem](StaticTextItem.md#class-statictextitem) and [HeaderItem](HeaderItem.md#class-headeritem)). If [applyAlignToText](#attr-formitemapplyaligntotext) is true, then the `textAlign` setting, if unset, will default to the `align` setting if set.
-
-### Groups
-
-- appearance
-
-### See Also
-
-- [FormItem.applyAlignToText](#attr-formitemapplyaligntotext)
-
-**Flags**: IRW
-
----
-## Attr: FormItem.errorOrientation
-
-### Description
-If [DynamicForm.showInlineErrors](DynamicForm.md#attr-dynamicformshowinlineerrors) is true, where should the error icon and text appear relative to the form item itself. Valid options are `"top"`, `"bottom"`, `"left"` or `"right"`.  
-If unset the orientation will be derived from [DynamicForm.errorOrientation](DynamicForm.md#attr-dynamicformerrororientation).
-
-### Groups
-
-- validation
-- appearance
-
-**Flags**: IRW
-
----
-## Attr: FormItem.formula
-
-### Description
-Formula to be used to calculate the numeric value of this FormItem. For a field of type "text" (or subtypes) [FormItem.textFormula](#attr-formitemtextformula) is used instead.
-
-Available fields for use in the formula are the current [rule context](Canvas.md#attr-canvasrulescope). The formula is re-evaluated every time the rule context changes.
-
-Values calculated by the formula will always replace the current value of a non-editable field. For an editable field, the current value will be replaced if the end user has not changed the value since the last time it was computed by the formula, or if the value of the field is invalid according to declared [validators](#attr-formitemvalidators).
-
-Note: A FormItem using a formula must have a [FormItem.name](#attr-formitemname) defined. [FormItem.shouldSaveValue](#attr-formitemshouldsavevalue) can be set to `false` to prevent the formula field from storing the calculated value into the form's values.
-
-### Groups
-
-- formulaFields
-
-**Flags**: IR
-
----
-## Attr: FormItem.defaultIconSrc
-
-### Description
-Default icon image source. Specify as the partial URL to an image, relative to the imgDir of this component. To specify image source for a specific icon use the `icon.src` property.  
-If this item is drawn in the disabled state, the url will be modified by adding "\_Disabled" to get a disabled state image for the icon. If `icon.showOver` is true, this url will be modified by adding "\_Over" to get an over state image for the icon.
-
-[Spriting](../kb_topics/skinning.md#kb-topic-skinning--theming) can be used for this image, by setting this property to a [SCSpriteConfig](../reference.md#type-scspriteconfig) formatted string.
-
-### Groups
-
-- formIcons
-
-**Flags**: IRWA
-
----
-## Attr: FormItem.saveOnEnter
-
-### Description
-Set this to true to allow the parent form to save it's data when 'Enter' is pressed on this formItem and [saveOnEnter](DynamicForm.md#attr-dynamicformsaveonenter) is true on the parent form.
-
-**Flags**: IRW
-
----
-## Attr: FormItem.emptyValueIcon
-
-### Description
-This property allows the developer to specify an icon to display when this item has no value. It is configured in the same way as any other valueIcon (see [FormItem.valueIcons](#attr-formitemvalueicons))
-
-### Groups
-
-- valueIcons
-
-**Flags**: IRW
-
----
-## Attr: FormItem.visible
-
-### Description
-Whether this item is currently visible.
-
-`visible` can only be set on creation. After creation, use [FormItem.show](#method-formitemshow) and [FormItem.hide](#method-formitemhide) to manipulate visibility.
-
-### Groups
-
-- appearance
-
-**Flags**: IRW
-
----
-## Attr: FormItem.staticHeight
-
-### Description
-Height of the FormItem when `canEdit` is false and `readOnlyDisplay` is "static". The normal [FormItem.height](#attr-formitemheight) is used if this property is not set.
-
-### Groups
-
-- formLayout
-
-### See Also
-
-- [FormItem.height](#attr-formitemheight)
-
-**Flags**: IR
-
----
-## Attr: FormItem.prompt
-
-### Description
-This text is shown as a tooltip prompt when the cursor hovers over this item.
-
-When the item is [read-only](#method-formitemsetcanedit) a different hover can be shown with [FormItem.readOnlyHover](#attr-formitemreadonlyhover). Or, when the item is [disabled](#attr-formitemdisabled) or read-only with [readOnlyDisplay:disabled](#attr-formitemreadonlydisplay) a different hover can be shown with [FormItem.disabledHover](#attr-formitemdisabledhover).
-
-Note that when the form is [disabled](Canvas.md#attr-canvasdisabled), or when this item [suppresses hovers](#attr-formitemcanhover), this prompt will not be shown.
-
-### Groups
-
-- basics
-
-**Flags**: IRW
-
----
-## Attr: FormItem.showErrorIcon
-
-### Description
-[showErrorIcons](DynamicForm.md#attr-dynamicformshowerroricons), [showErrorText](DynamicForm.md#attr-dynamicformshowerrortext), [errorOrientation](DynamicForm.md#attr-dynamicformerrororientation), and [showErrorStyle](DynamicForm.md#attr-dynamicformshowerrorstyle) control how validation errors are displayed when they are displayed inline in the form (next to the form item where there is a validation error). To instead display all errors at the top of the form, set [showInlineErrors](DynamicForm.md#attr-dynamicformshowinlineerrors):false.
-
-`showErrorIcons`, `showErrorText`, `errorOrientation` and `showErrorStyle` are all boolean properties, and can be set on a DynamicForm to control the behavior form-wide, or set on individual FormItems.
-
-The HTML displayed next to a form item with errors is generated by [FormItem.getErrorHTML](#method-formitemgeterrorhtml). The default implementation of that method respects `showErrorIcons` and `showErrorText` as follows:
-
-`showErrorIcons`, or `showErrorIcon` at the FormItem level controls whether an error icon should appear next to fields which have validation errors. The icon's appearance is governed by [FormItem.errorIconSrc](#attr-formitemerroriconsrc), [FormItem.errorIconWidth](#attr-formitemerroriconwidth) and [FormItem.errorIconHeight](#attr-formitemerroriconheight)
-
-`showErrorText` determines whether the text of the validation error should be displayed next to fields which have validation errors. The attribute [DynamicForm.showTitlesWithErrorMessages](DynamicForm.md#attr-dynamicformshowtitleswitherrormessages) may be set to prefix error messages with the form item's title + `":"` (may be desired if the item has [FormItem.showTitle](#attr-formitemshowtitle) set to false).  
-If `showErrorText` is unset, the error text will be shown if [DynamicForm.linearMode](DynamicForm.md#attr-dynamicformlinearmode) is true (or [DynamicForm.linearOnMobile](DynamicForm.md#attr-dynamicformlinearonmobile) is true for mobile devices), otherwise it will not be shown.
-
-In addition to this:
-
-[DynamicForm.errorOrientation](DynamicForm.md#attr-dynamicformerrororientation) controls where the error HTML should appear relative to form items. Therefore the combination of [FormItem.showErrorText](#attr-formitemshowerrortext)`:false` and [FormItem.errorOrientation](#attr-formitemerrororientation)`:"left"` creates a compact validation error display consisting of just an icon, to the left of the item with the error message available via a hover (similar appearance to ListGrid validation error display).  
-If `errorOrientation` is unset, the error orientation will default to "top" if [DynamicForm.linearMode](DynamicForm.md#attr-dynamicformlinearmode) is enabled (or [DynamicForm.linearOnMobile](DynamicForm.md#attr-dynamicformlinearonmobile) is true for mobile devices) and error text is not showing, "left" otherwise.
-
-`showErrorStyle` determines whether fields with validation errors should have special styling applied to them. Error styling is achieved by applying suffixes to existing styling applied to various parts of the form item. See [FormItemBaseStyle](../reference_2.md#type-formitembasestyle) for more on this.
-
-### Groups
-
-- errorIcon
-- validation
-- appearance
-
-**Flags**: IRW
-
----
-## Attr: FormItem.optionFilterContext
-
-### Description
-If this item has a specified `optionDataSource`, and this property is not null, the context is passed to the dataSource as [RPCRequest](../reference.md#object-rpcrequest) properties when performing fetch operations on the dataSource to obtain a data-value to display-value mapping, and when fetching for grid-based pickers.
-
-This attribute is a direct shortcut for setting fetch-request properties via `item.pickerProperties.dataProperties.requestProperties`.
-
-**Flags**: IRA
-
----
-## Attr: FormItem.showRTL
-
-### Description
-When this item is in RTL mode, should its style name include an "RTL" suffix?
-
-### Groups
-
-- RTL
-- appearance
-
-### See Also
-
-- [FormItem.cellStyle](#attr-formitemcellstyle)
-
-**Flags**: IRA
-
----
-## Attr: FormItem.readOnlyTextBoxStyle
-
-### Description
-Base text box style to apply when this item is [read-only](#method-formitemgetcanedit) and is using [readOnlyDisplay](#attr-formitemreadonlydisplay) "static". If set, overrides the form-level [DynamicForm.readOnlyTextBoxStyle](DynamicForm.md#attr-dynamicformreadonlytextboxstyle) default.
-
-### See Also
-
-- [DynamicForm.readOnlyTextBoxStyle](DynamicForm.md#attr-dynamicformreadonlytextboxstyle)
-
-**Flags**: IRW
-
----
-## Attr: FormItem.hoverHeight
-
-### Description
-Option to specify a height for any hover shown for this item.
-
-### Groups
-
-- Hovers
-
-### See Also
-
-- [DynamicForm.itemHoverHeight](DynamicForm.md#attr-dynamicformitemhoverheight)
-
-**Flags**: IRW
-
----
-## Attr: FormItem.stopOnError
-
-### Description
-Indicates that if validation fails, the user should not be allowed to exit the field - focus will be forced back into the field until the error is corrected.
-
-This property defaults to [DynamicForm.stopOnError](DynamicForm.md#attr-dynamicformstoponerror) if unset.
-
-Enabling this property also implies [FormItem.validateOnExit](#attr-formitemvalidateonexit) is automatically enabled. If there are server-based validators on this item, setting this property also implies that [FormItem.synchronousValidation](#attr-formitemsynchronousvalidation) is forced on.
-
-**Flags**: IR
-
----
-## Attr: FormItem.requiredRightTitlePrefix
-
-### Description
-The string prepended to this item's title if it is required and the [TitleOrientation](../reference_2.md#type-titleorientation) property is set to "right". The [DynamicForm.requiredRightTitlePrefix](DynamicForm.md#attr-dynamicformrequiredrighttitleprefix) is used by default.
-
-### Groups
-
-- title
-
-### See Also
-
-- [FormItem.requiredRightTitleSuffix](#attr-formitemrequiredrighttitlesuffix)
-
-**Flags**: IRW
-
----
-## Attr: FormItem.alwaysFetchMissingValues
-
-### Description
-If this form item has a specified [FormItem.optionDataSource](#attr-formitemoptiondatasource) and [FormItem.fetchMissingValues](#attr-formitemfetchmissingvalues) is true, when the item value changes, a fetch will be performed against the optionDataSource to retrieve the related record if [FormItem.displayField](#attr-formitemdisplayfield) is specified and the new item value is not present in any valueMap explicitly specified on the item.
-
-Setting this property to true means that a fetch will occur against the optionDataSource to retrieve the related record even if [FormItem.displayField](#attr-formitemdisplayfield) is unset, or the item has a valueMap which explicitly contains this field's value.
-
-An example of a use case where this might be set would be if [FormItem.formatValue](#method-formitemformatvalue) or [FormItem.formatEditorValue](#method-formitemformateditorvalue) were written to display properties from the [selected record](#method-formitemgetselectedrecord).
-
-Note - for efficiency we cache the associated record once a fetch has been performed, meaning if the value changes, then reverts to a previously seen value, we do not kick off an additional fetch even if this property is true. If necessary this cache may be explicitly invalidated via a call to [FormItem.invalidateDisplayValueCache](#method-formiteminvalidatedisplayvaluecache)
-
-### Groups
-
-- display_values
-
-**Flags**: IRWA
-
----
-## Attr: FormItem.errorIconHeight
-
-### Description
-Height of the error icon, if we're showing icons when validation errors occur.
-
-### Groups
-
-- errorIcon
-
-### See Also
-
-- [FormItem.showErrorIcon](#attr-formitemshowerroricon)
-
-**Flags**: IRW
-
----
-## Attr: FormItem.validateOnExit
-
-### Description
-If true, form items will be validated when each item's "editorExit" handler is fired as well as when the entire form is submitted or validated.
-
-Note that this property can also be set at the form level. If true at either level the validator will be fired on editorExit.
-
-### See Also
-
-- [DynamicForm.validateOnExit](DynamicForm.md#attr-dynamicformvalidateonexit)
-
-**Flags**: IRW
-
----
-## Attr: FormItem.synchronousValidation
-
-### Description
-If enabled, whenever validation is triggered and a request to the server is required, user interactivity will be blocked until the request returns. Can be set for the entire form or individual FormItems.
-
-If false, the form will try to avoid blocking user interaction until it is strictly required. That is until the user attempts to use a FormItem whose state could be affected by a server request that has not yet returned.
-
-**Flags**: IR
-
----
-## Attr: FormItem.showPickerIcon
-
-### Description
-Should we show a special 'picker' [icon](../reference.md#object-formitemicon) for this form item? Picker icons are customizable via [pickerIconProperties](#attr-formitempickericonproperties). By default they will be rendered inside the form item's ["control box"](#attr-formitemcontrolstyle) area. By default clicking the pickerIcon will call [FormItem.showPicker](#method-formitemshowpicker).
-
-### Groups
-
-- pickerIcon
-
-**Flags**: IRW
-
----
-## Attr: FormItem.showErrorIconInline
-
-### Description
-When set to true, this attribute renders the [error-icon](#attr-formitemerroriconsrc) [inline](FormItemIcon.md#attr-formitemiconinline) in the FormItem, next to other icons, instead of in a separate error-element outside of the item's main editor. When rendering the error-icon inline, the [error-text](#attr-formitemshowerrortext) is not displayed but is available in the icon's hover.
-
-[Icon-properties](../reference.md#object-formitemicon) can be applied to the error-icon via [errorIconProperties](#attr-formitemerroriconproperties).
-
-**Flags**: IRA
-
----
-## Attr: FormItem.wrapHintText
-
-### Description
-If this item is showing a [FormItem.hint](#attr-formitemhint), should the hint text be allowed to wrap? Setting this property to `false` will render the hint on a single line without wrapping, expanding the width required to render the item if necessary.
-
-If unset this property will be picked up from the [DynamicForm.wrapHintText](DynamicForm.md#attr-dynamicformwraphinttext) setting.
-
-This setting does not apply to hints that are [shown in field](TextItem.md#attr-textitemshowhintinfield).
-
-### See Also
-
-- [FormItem.minHintWidth](#attr-formitemminhintwidth)
-
-**Flags**: IR
-
----
-## Attr: FormItem.valueIconLeftPadding
-
-### Description
-If we're showing a value icon, this attribute governs the amount of space between the icon and the start edge of the form item cell.
-
-**NOTE:** In RTL mode, the valueIconLeftPadding is applied to the _right_ of the value icon.
-
-### Groups
-
-- valueIcons
-
-### See Also
-
-- [FormItem.valueIcons](#attr-formitemvalueicons)
-
-**Flags**: IRW
-
----
-## Attr: FormItem.iconPrompt
-
-### Description
-Default prompt (and tooltip-text) for icons.
-
-If [canHover](#attr-formitemcanhover) is set to false, this prompt will not be shown.
-
-### Groups
-
-- formIcons
-
-**Flags**: IRWA
-
----
-## Attr: FormItem.ariaState
-
-### Description
-ARIA state mappings for this formItem. Usually this does not need to be manually set - see [accessibility](../kb_topics/accessibility.md#kb-topic-accessibility--section-508-compliance).
-
-This attribute should be set to a mapping of aria state-names to values - for example to have the "aria-multiline" property be present with a value "true", you'd specify:
-
-```
-  { multiline : true }
- 
-```
-
-### Groups
-
-- accessibility
-
-**Flags**: IRWA
-
----
-## Attr: FormItem.implicitSaveOnBlur
-
-### Description
-If set to true, this item's value will be saved immediately when its "editorExit" handler is fired. This attribute works separately from [implicitSave](#attr-formitemimplicitsave), which causes saves during editing, after a [short delay](DynamicForm.md#attr-dynamicformimplicitsavedelay), and when the entire form is submitted.
-
-**Flags**: IRW
-
----
-## Attr: FormItem.pickerIconSrc
-
-### Description
-If [showPickerIcon](#attr-formitemshowpickericon) is true for this item, this property governs the [src](FormItemIcon.md#attr-formitemiconsrc) of the picker icon image to be displayed.
-
-[Spriting](../kb_topics/skinning.md#kb-topic-skinning--theming) can be used for this image, by setting this property to a [SCSpriteConfig](../reference.md#type-scspriteconfig) formatted string.
-
-### Groups
-
-- pickerIcon
-
-**Flags**: IRWA
-
----
-## Attr: FormItem.errorIconSrc
-
-### Description
-URL of the image to show as an error icon, if we're showing icons when validation errors occur.
-
-### Groups
-
-- errorIcon
-
-### See Also
-
-- [FormItem.showErrorIcon](#attr-formitemshowerroricon)
-
-**Flags**: IRW
-
----
-## Attr: FormItem.controlStyle
-
-### Description
-Base CSS class name for a form item's "control box". This is an HTML element which contains the text box and picker icon for the item.
-
-See [FormItem.alwaysShowControlBox](#attr-formitemalwaysshowcontrolbox) for details on when the control box is written out.
-
-See [formItemStyling](../kb_topics/formItemStyling.md#kb-topic-formitem-styling) for an overview of formItem styling, and the [CompoundFormItem_skinning](../reference.md#kb-topic-compoundformitem_skinning) discussion for special skinning considerations.
-
-### Groups
-
-- formItemStyling
-- pickerIcon
-
-### See Also
-
-- [FormItem.cellStyle](#attr-formitemcellstyle)
-
-**Flags**: IRW
-
----
-## Attr: FormItem.ID
-
-### Description
-Global identifier for referring to the formItem in JavaScript. The ID property is optional if you do not need to refer to the widget from JavaScript, or can refer to it indirectly (for example, via `form.getItem("_itemName_")`).
-
-An internal, unique ID will automatically be created upon instantiation for any formItem where one is not provided.
-
-### Groups
-
-- basics
-
-**Flags**: IRW
-
----
-## Attr: FormItem.allowExpressions
-
-### Description
-For a form that produces filter criteria (see [form.getValuesAsCriteria()](DynamicForm.md#method-dynamicformgetvaluesascriteria)), allows the user to type in simple expressions to cause filtering with that operator. For example, entering ">5" means values greater than 5, and ">0 and <5" means values between 0 and 5.
-
-The following table lists character sequences that can be entered as a prefix to a value, and the corresponding [operator](../reference.md#type-operatorid) that will be used.
-
-| Prefix | Operator |
-|---|---|
-| < | lessThan |
-| > | greaterThan |
-| <= | lessThanOrEqual |
-| >= | greaterThanOrEqual |
-| someValue...someValue | betweenInclusive |
-| ! | notEqual |
-| ^ | startsWith |
-| \| | endsWith |
-| !^ | notStartsWith plus logical not |
-| !@ | notEndsWith plus logical not |
-| ~ | contains |
-| !~ | notContains |
-| $ | isBlank |
-| !$ | notBlank |
-| # | isNull |
-| !# | isNotNull |
-| == | exact match (for fields where 'contains' is the default) |
-
-Two further special notations are allowed:
-
-*   /_regex_/ means the value is taken as a regular expression and applied via the "regexp" operator
-*   \=._fieldName_ means the value should match the value of another field. Either the user-visible title of the field (field.title) or the field's name (field.name) may be used.
-
-In all cases, if an operator is disallowed for the field (via [field.validOperators](DataSourceField.md#attr-datasourcefieldvalidoperators) at either the dataSource or field level), the operator character is ignored (treated as part of a literal value).
-
-By default, the case-insensitive version of the operator is used (eg, startsWith will actually use "iStartsWith"). To avoid this, explicitly set item.operator (the default operator) to any case sensitive operator (eg "equals" or "contains") and case sensitive operators will be used for user-entered expressions.
-
-Compound expressions (including "and" and "or") are allowed only for numeric or date/time types.
-
-Note that if the user does not type a prefix or use other special notation as described above, the operator specified via [FormItem.operator](#attr-formitemoperator) is used, or if `formItem.operator` is unspecified, a default operator chosen as described under [FormItem.operator](#attr-formitemoperator).
-
-Also note that whatever you enter will be used literally, including any whitespace characters. For example if you input '== China ' then ' China ' will be the value.
-
-The `allowExpression` behavior can be enabled for every field in a form via [DynamicForm.allowExpressions](DynamicForm.md#attr-dynamicformallowexpressions).
-
-Finally, note that, like [FormItem.operator](#attr-formitemoperator), enabling `allowExpressions:true` causes [form.getValuesAsCriteria()](DynamicForm.md#method-dynamicformgetvaluesascriteria)) to return [AdvancedCriteria](../reference.md#object-advancedcriteria).
-
-### Groups
-
-- advancedFilter
-
-**Flags**: IRW
-
----
-## Attr: FormItem.readOnlyDisplay
-
-### Description
-If this item is [read-only](#method-formitemgetcanedit), how should this item be displayed to the user? If set, overrides the form-level [DynamicForm.readOnlyDisplay](DynamicForm.md#attr-dynamicformreadonlydisplay) default.
-
-### Groups
-
-- appearance
-- readOnly
-
-### See Also
-
-- [DynamicForm.readOnlyDisplay](DynamicForm.md#attr-dynamicformreadonlydisplay)
-
-**Flags**: IRW
-
----
-## Attr: FormItem.height
-
-### Description
-Height of the FormItem. Can be either a number indicating a fixed height in pixels, a percentage indicating a percentage of the overall form's height, or "\*" indicating take whatever remaining space is available. See the [formLayout](../kb_topics/formLayout.md#kb-topic-form-layout) overview for details.
-
-For form items having a [picker icon](#attr-formitemshowpickericon) (e.g. [SelectItem](SelectItem.md#class-selectitem), [ComboBoxItem](ComboBoxItem.md#class-comboboxitem)) and [SpinnerItem](SpinnerItem.md#class-spinneritem)s, if there is no explicit [FormItem.pickerIconHeight](#attr-formitempickericonheight), the pickerIcon will be sized to match the available space based on the specified item height.  
-Note that if spriting is being used, and the image to be displayed in these icons is specified using css properties such as `background-image`, `background-size`, changing this value may result in an unexpected appearance as the image will not scale.  
-Scaleable spriting can be achieved using the [SCSpriteConfig](../reference.md#type-scspriteconfig) format. See the section on spriting in the [skinning overview](../kb_topics/skinning.md#kb-topic-skinning--theming) for further information.  
-Alternatively, the [pickerIconStyle](#attr-formitempickericonstyle) could be changed to a custom CSS style name, and in the case of [SpinnerItem](SpinnerItem.md#class-spinneritem)s, the [baseStyle](FormItemIcon.md#attr-formitemiconbasestyle) and [src](FormItemIcon.md#attr-formitemiconsrc) of the [SpinnerItem.increaseIcon](SpinnerItem.md#attr-spinneritemincreaseicon) and [SpinnerItem.decreaseIcon](SpinnerItem.md#attr-spinneritemdecreaseicon) AutoChildren could be customized.
-
-Note that when FormItem is rendered as read-only with `readOnlyDisplay` as "static" the property [FormItem.staticHeight](#attr-formitemstaticheight) is used instead.
-
-### Groups
-
-- formLayout
-
-### See Also
-
-- [formLayout](../kb_topics/formLayout.md#kb-topic-form-layout)
-- [FormItem.width](#attr-formitemwidth)
-- [DynamicForm.itemLayout](DynamicForm.md#attr-dynamicformitemlayout)
-
-**Flags**: IRW
-
----
-## Attr: FormItem.hoverDelay
-
-### Description
-If specified, this is the number of milliseconds to wait between the user rolling over this form item, and triggering any hover action for it.  
-If not specified `this.form.itemHoverDelay` will be used instead.
-
-### Groups
-
-- Hovers
-
-**Flags**: IRWA
-
----
-## Attr: FormItem.hoverFocusKey
-
-### Description
-This attribute gives users a way to pin this item's hover in place so they can interact with it (scroll it, click embedded links, etc).
-
-Overrides the [same attribute](Canvas.md#attr-canvashoverfocuskey) on the parent form.
-
-### Groups
-
-- hovers
-
-### See Also
-
-- [FormItem.hoverPersist](#attr-formitemhoverpersist)
-
-**Flags**: IRW
-
----
-## Attr: FormItem.showDisabledIconsOnFocus
-
-### Description
-If [FormItem.showIconsOnFocus](#attr-formitemshowiconsonfocus) is true, should icons marked as disabled be shown on focus?
-
-Default setting is `false` - it is not commonly desirable to present a user with a disabled icon on focus.
-
-Can be overridden at the icon level by [FormItemIcon.showDisabledOnFocus](FormItemIcon.md#attr-formitemiconshowdisabledonfocus)
-
-### Groups
-
-- formIcons
-
-**Flags**: IRWA
-
----
-## Attr: FormItem.pickerIconProperties
-
-### Description
-If [showPickerIcon](#attr-formitemshowpickericon) is true for this item, this block of properties will be applied to the pickerIcon. Allows for advanced customization of this icon.
-
-### Groups
-
-- pickerIcon
-
-**Flags**: IRWA
-
----
-## Attr: FormItem.applyAlignToText
-
-### Description
-If the [textAlign](#attr-formitemtextalign) is unset, should the [align](#attr-formitemalign) setting, if set, be used for this item's `textAlign`?
-
-`applyAlignToText` defaults to false for most form item types. It defaults to true for [StaticTextItem](StaticTextItem.md#class-statictextitem) and [HeaderItem](HeaderItem.md#class-headeritem), which are text-based form item types that do not have a natural distinction between the item and its cell.
-
-### Groups
-
-- appearance
-
-**Flags**: IRA
-
----
-## Attr: FormItem.showDeletions
-
-### Description
-For items that support [multiple values](SelectItem.md#attr-selectitemmultiple), this causes distinct CSS styling to be applied to values that the user has unselected.
-
-Only allowed when [showPending](#attr-formitemshowpending) is `true`. Defaults to the form-level [DynamicForm.showDeletions](DynamicForm.md#attr-dynamicformshowdeletions) setting if set; otherwise, to the value of `showPending`.
-
-Only supported for [MultiComboBoxItem](MultiComboBoxItem.md#class-multicomboboxitem) and for [SelectItem](SelectItem.md#class-selectitem) when [multiple:true](SelectItem.md#attr-selectitemmultiple) is set. The specific default behaviors are:
-
-*   For `MultiComboBoxItem`, buttons corresponding to deleted values (also called "deselected buttons") will be disabled and have their [Button.baseStyle](Button.md#attr-buttonbasestyle) set to [MultiComboBoxItem.deselectedButtonStyle](MultiComboBoxItem.md#attr-multicomboboxitemdeselectedbuttonstyle).
-*   For a multiple `SelectItem`, [FormItem.valueDeselectedCSSText](#attr-formitemvaluedeselectedcsstext) is applied to any deleted value in the text box. In addition, "Deselected" is appended to the cells' [ListGrid.baseStyle](ListGrid_1.md#attr-listgridbasestyle) for cells in the pickList menu corresponding to deleted values.
-
-**NOTE:** When a value is shown as deleted, this is not reflected to screen readers, and screen readers are instructed to ignore the deleted value. Therefore, it is not advisable to design a UI where it is necessary for the user to know whether a value is shown as deleted in order to work with the form.
-
-### See Also
-
-- [DynamicForm.showDeletions](DynamicForm.md#attr-dynamicformshowdeletions)
-
-**Flags**: IRA
-
----
-## Attr: FormItem.validOperators
-
-### Description
-Array of valid filtering operators (eg "greaterThan") that are legal for this FormItem.
-
-Applies only to form/formItem when [FormItem.allowExpressions](#attr-formitemallowexpressions) is true, allowing the user to input expressions.
-
-### Groups
-
-- advancedFilter
-
-**Flags**: IR
-
----
-## Attr: FormItem.valueIconRightPadding
-
-### Description
-If we're showing a value icon, this attribute governs the amount of space between the icon and the value text.
-
-**NOTE:** In RTL mode, the valueIconRightPadding is applied to the _left_ of the value icon.
-
-### Groups
-
-- valueIcons
-
-### See Also
-
-- [FormItem.valueIcons](#attr-formitemvalueicons)
-
-**Flags**: IRW
-
----
-## Attr: FormItem.visibleWhen
-
-### Description
-Criteria to be evaluated to determine whether this FormItem should be visible.
-
-Criteria are evaluated against the ${isc.DocUtils.linkForRef('method:DynamicForm.getValues','form\\'s current values')} as well as the current [rule context](Canvas.md#attr-canvasrulescope). Criteria are re-evaluated every time form values or the rule context changes, whether by end user action or by programmatic calls.
-
-If both [FormItem.showIf](#method-formitemshowif) and `visibleWhen` are specified, `visibleWhen` is ignored.
-
-A basic criteria uses textMatchStyle:"exact". When specified in [Component XML](../kb_topics/componentXML.md#kb-topic-component-xml) this property allows [shorthand formats](../kb_topics/xmlCriteriaShorthand.md#kb-topic-xmlcriteriashorthand) for defining criteria.
-
-Note: A FormItem using visibleWhen must have a [FormItem.name](#attr-formitemname) defined. [FormItem.shouldSaveValue](#attr-formitemshouldsavevalue) can be set to `false` to prevent the field from storing its value into the form's values.
-
-### Groups
-
-- ruleCriteria
-- appearance
-
-**Flags**: IR
-
----
-## Attr: FormItem.autoCompleteKeywords
-
-### Description
-Set of autocompletion keywords to be used with the native "autocomplete" attribute, in accordance with the [HTML5 Autofill specification](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill).
-
-When autoCompleteKeywords are provided, the [FormItem.autoComplete](#attr-formitemautocomplete) setting is ignored.
-
-### Groups
-
-- autoComplete
-
-**Flags**: IR
-
----
-## Attr: FormItem.implicitSave
-
-### Description
-When true, indicates that changes to this item will cause an automatic save on a [delay](DynamicForm.md#attr-dynamicformimplicitsavedelay), as well as when the entire form is submitted. If implicitSaveOnBlur is set to true on either this [formItem](#attr-formitemimplicitsaveonblur) or it's [form](DynamicForm.md#attr-dynamicformimplicitsaveonblur), changes will also be automatically saved immediately on editorExit.
-
-**Flags**: IRW
-
----
-## Attr: FormItem.showErrorText
-
-### Description
-[showErrorIcons](DynamicForm.md#attr-dynamicformshowerroricons), [showErrorText](DynamicForm.md#attr-dynamicformshowerrortext), [errorOrientation](DynamicForm.md#attr-dynamicformerrororientation), and [showErrorStyle](DynamicForm.md#attr-dynamicformshowerrorstyle) control how validation errors are displayed when they are displayed inline in the form (next to the form item where there is a validation error). To instead display all errors at the top of the form, set [showInlineErrors](DynamicForm.md#attr-dynamicformshowinlineerrors):false.
-
-`showErrorIcons`, `showErrorText`, `errorOrientation` and `showErrorStyle` are all boolean properties, and can be set on a DynamicForm to control the behavior form-wide, or set on individual FormItems.
-
-The HTML displayed next to a form item with errors is generated by [FormItem.getErrorHTML](#method-formitemgeterrorhtml). The default implementation of that method respects `showErrorIcons` and `showErrorText` as follows:
-
-`showErrorIcons`, or `showErrorIcon` at the FormItem level controls whether an error icon should appear next to fields which have validation errors. The icon's appearance is governed by [FormItem.errorIconSrc](#attr-formitemerroriconsrc), [FormItem.errorIconWidth](#attr-formitemerroriconwidth) and [FormItem.errorIconHeight](#attr-formitemerroriconheight)
-
-`showErrorText` determines whether the text of the validation error should be displayed next to fields which have validation errors. The attribute [DynamicForm.showTitlesWithErrorMessages](DynamicForm.md#attr-dynamicformshowtitleswitherrormessages) may be set to prefix error messages with the form item's title + `":"` (may be desired if the item has [FormItem.showTitle](#attr-formitemshowtitle) set to false).  
-If `showErrorText` is unset, the error text will be shown if [DynamicForm.linearMode](DynamicForm.md#attr-dynamicformlinearmode) is true (or [DynamicForm.linearOnMobile](DynamicForm.md#attr-dynamicformlinearonmobile) is true for mobile devices), otherwise it will not be shown.
-
-In addition to this:
-
-[DynamicForm.errorOrientation](DynamicForm.md#attr-dynamicformerrororientation) controls where the error HTML should appear relative to form items. Therefore the combination of [FormItem.showErrorText](#attr-formitemshowerrortext)`:false` and [FormItem.errorOrientation](#attr-formitemerrororientation)`:"left"` creates a compact validation error display consisting of just an icon, to the left of the item with the error message available via a hover (similar appearance to ListGrid validation error display).  
-If `errorOrientation` is unset, the error orientation will default to "top" if [DynamicForm.linearMode](DynamicForm.md#attr-dynamicformlinearmode) is enabled (or [DynamicForm.linearOnMobile](DynamicForm.md#attr-dynamicformlinearonmobile) is true for mobile devices) and error text is not showing, "left" otherwise.
-
-`showErrorStyle` determines whether fields with validation errors should have special styling applied to them. Error styling is achieved by applying suffixes to existing styling applied to various parts of the form item. See [FormItemBaseStyle](../reference_2.md#type-formitembasestyle) for more on this.
-
-### Groups
-
-- validation
-- appearance
-
-**Flags**: IRW
-
----
-## Attr: FormItem.showImageAsURL
-
-### Description
-For fields of [type:"image"](../reference.md#type-formitemtype), if the field is non editable, and being displayed with [readOnlyDisplay:"static"](#attr-formitemreadonlydisplay), should the value (URL) be displayed as text, or should an image be rendered?
-
-If unset, [DynamicForm.showImageAsURL](DynamicForm.md#attr-dynamicformshowimageasurl) will be consulted instead.
-
-**Flags**: IRW
-
----
-## Attr: FormItem.globalTabIndex
-
-### Description
-TabIndex for the form item within the page. Takes precedence over any local tab index specified as [item.tabIndex](#attr-formitemtabindex).
-
-Use of this API is **extremely** advanced and essentially implies taking over management of tab index assignment for all components on the page.
-
-### Groups
-
-- focus
-
-**Flags**: IRWA
-
----
-## Attr: FormItem.readOnlyCanSelectText
-
-### Description
-For items showing a text value with [FormItem.canEdit](#attr-formitemcanedit) set to false, should the user be able to select the text in the item?
-
-Default behavior allows selection if [FormItem.readOnlyDisplay](#attr-formitemreadonlydisplay) is `"static"` or `"readOnly"` \[but not `"disabled"`\]. Developers may add or remove ReadOnlyDisplayAppearance values to change this behavior.
-
-Note that this does not apply to [disabled items](#attr-formitemdisabled), where text selection is never enabled
-
-**Flags**: IRW
-
----
-## Attr: FormItem.updateTextBoxOnOver
-
-### Description
-If [FormItem.showOver](#attr-formitemshowover) is true, setting this property to false will explicitly disable showing the "Over" state for the TextBox element of this item.
-
-### Groups
-
-- formItemStyling
-
-### See Also
-
-- [FormItem.showOver](#attr-formitemshowover)
-
-**Flags**: IRWA
-
----
-## Attr: FormItem.showIconsOnFocus
-
-### Description
-Show the [FormItem.icons](#attr-formitemicons) when the item gets focus, and hide them when it loses focus. Can be overridden at the icon level by [FormItemIcon.showOnFocus](FormItemIcon.md#attr-formitemiconshowonfocus).
-
-Note that icons marked as disabled will not be shown on focus even if this flag is true by default. This may be overridden by [FormItem.showDisabledIconsOnFocus](#attr-formitemshowdisablediconsonfocus).
-
-### Groups
-
-- formIcons
-
-**Flags**: IRWA
-
----
-## Attr: FormItem.linearStartRow
-
-### Description
-Specifies [FormItem.startRow](#attr-formitemstartrow) for an item in [linearMode](DynamicForm.md#attr-dynamicformlinearmode), overriding the default of `false` in that mode.
-
-### Groups
-
-- formLayout
-
-**Flags**: IRW
-
----
-## Attr: FormItem.validators
-
-### Description
-Validators for this form item.
-
-**Note:** these validators will only be run on the client; to do real client-server validation, validators must be specified via [DataSourceField.validators](DataSourceField.md#attr-datasourcefieldvalidators).
-
-**Flags**: IR
-
----
-## Attr: FormItem.alwaysShowControlBox
-
-### Description
-A formItem showing a [pickerIcon](#attr-formitemshowpickericon) will always write out a "control box" around the text box and picker icon. This is an HTML element styled using the specified [FormItem.controlStyle](#attr-formitemcontrolstyle).
-
-This attribute controls whether the control box should be written out even if the picker icon is not being shown. If unset, default behavior will write out a control table if [FormItem.showPickerIcon](#attr-formitemshowpickericon) is true and the icon is not suppressed via [FormItemIcon.showIf](FormItemIcon.md#method-formitemiconshowif). This means the control table can be written out with no visible picker if [FormItem.showPickerIconOnFocus](#attr-formitemshowpickericononfocus) is true and the item does not have focus.
-
-This attribute is useful for developers who wish to rely on styling specified via the [FormItem.controlStyle](#attr-formitemcontrolstyle) even while the picker icon is not visible.
-
-See the [form item styling overview](../kb_topics/formItemStyling.md#kb-topic-formitem-styling) for details of the control table and other styling options.
-
-**Flags**: IRA
-
----
-## Attr: FormItem.rowSpan
-
-### Description
-Number of rows that this item spans
-
-### Groups
-
-- formLayout
-
-**Flags**: IRW
-
----
-## Attr: FormItem.criteriaField
-
-### Description
-When using [FormItem.operator](#attr-formitemoperator), the name of the DataSource field for the [Criterion](../reference_2.md#object-criterion) this FormItem generates. If not specified, defaults to [FormItem.name](#attr-formitemname).
-
-Generally, because `criteriaField` defaults to `item.name`, you don't need to specify it. However, if more than one FormItem specifies criteria for the same DataSource field, they will need unique values for [FormItem.name](#attr-formitemname) but should set [FormItem.criteriaField](#attr-formitemcriteriafield) to the name of DataSource field they both target.
-
-For example, if two DateItems are used to provide a min and max date for a single field called "joinDate", set [FormItem.criteriaField](#attr-formitemcriteriafield) to "joinDate" on both fields but give the fields distinct names (eg "minDate" and "maxDate") and use those names for any programmatic access, such as [DynamicForm.setValue](DynamicForm.md#method-dynamicformsetvalue).
-
-**Flags**: IR
-
----
-## Attr: FormItem.accessKey
-
-### Description
-If specified this governs the HTML accessKey for the item.
-
-This should be set to a character - when a user hits the html accessKey modifier for the browser, plus this character, focus will be given to the item. The accessKey modifier can vary by browser and platform.
-
-The following list of default behavior is for reference only, developers should also consult browser documentation for additional information.
-
-*   **Internet Explorer (all platforms)**: `Alt` + _accessKey_
-*   **Mozilla Firefox (Windows, Unix)**: `Alt+Shift` + _accessKey_
-*   **Mozilla Firefox (Mac)**: `Ctrl+Opt` + _accessKey_
-*   **Chrome and Safari (Windows, Unix)**: `Alt` + _accessKey_
-*   **Chrome and Safari (Mac)**: `Ctrl+Opt` + _accessKey_
-
-### Groups
-
-- focus
-
-**Flags**: IRW
-
----
-## Attr: FormItem.requiredTitlePrefix
-
-### Description
-The string prepended to this item's title if it is required. The [DynamicForm.requiredTitlePrefix](DynamicForm.md#attr-dynamicformrequiredtitleprefix) is used by default.
-
-### Groups
-
-- title
-
-### See Also
-
-- [FormItem.requiredTitleSuffix](#attr-formitemrequiredtitlesuffix)
-
-**Flags**: IRW
-
----
-## Attr: FormItem.cellStyle
-
-### Description
-CSS style applied to the form item as a whole, including the text element, any icons, and any hint text for the item. Applied to the cell containing the form item.
-
-See [formItemStyling](../kb_topics/formItemStyling.md#kb-topic-formitem-styling) for an overview of formItem styling, and the [CompoundFormItem_skinning](../reference.md#kb-topic-compoundformitem_skinning) discussion for special skinning considerations.
-
-### Groups
-
-- formItemStyling
-
-**Flags**: IRW
-
----
-## Attr: FormItem.applyHeightToTextBox
-
-### Description
-If [FormItem.height](#attr-formitemheight) is specified, should it be applied to the item's text box element?
-
-If unset, behavior is determined as described in [FormItem.shouldApplyHeightToTextBox](#method-formitemshouldapplyheighttotextbox)
-
-**Flags**: IRA
-
----
-## Attr: FormItem.useLocalDisplayFieldValue
-
-### Description
-If [FormItem.displayField](#attr-formitemdisplayfield) is specified for a field, should the display value for the field be picked up from the [record currently being edited](DynamicForm.md#method-dynamicformgetvalues)?
-
-This behavior is typically valuable for dataBound components where the displayField is specified at the DataSourceField level. See [DataSourceField.displayField](DataSourceField.md#attr-datasourcefielddisplayfield) for more on this.
-
-Note that for DataSources backed by the [SmartClient server](../kb_topics/serverDataIntegration.md#kb-topic-server-datasource-integration), fields with a specified [DataSourceField.foreignKey](DataSourceField.md#attr-datasourcefieldforeignkey) and [DataSourceField.displayField](DataSourceField.md#attr-datasourcefielddisplayfield) will automatically have this property set to true if not explicitly set to false in the dataSource configuration.
-
-Otherwise, if not explicitly set, local display value will be used unless:
-
-*   This item has an explicitly specified optionDataSource, rather than deriving its optionDataSource from a specified [DataSourceField.foreignKey](DataSourceField.md#attr-datasourcefieldforeignkey) specification
-*   The [FormItem.name](#attr-formitemname) differs from the [valueField](#method-formitemgetvaluefieldname) for the item
-
-**Flags**: IR
-
----
-## Attr: FormItem.rightTitlePrefix
-
-### Description
-The string prepended to this item's title when its titleOrientation is set to "right". The [DynamicForm.rightTitlePrefix](DynamicForm.md#attr-dynamicformrighttitleprefix) is used by default.
-
-### Groups
-
-- title
-
-### See Also
-
-- [FormItem.rightTitleSuffix](#attr-formitemrighttitlesuffix)
-
-**Flags**: IRW
-
----
-## Attr: FormItem.suppressValueIcon
-
-### Description
-If [FormItem.valueIcons](#attr-formitemvalueicons) is set, this property may be set to prevent the value icons from showing up next to the form items value
-
-### Groups
-
-- valueIcons
-
-**Flags**: IRWA
-
----
-## Attr: FormItem.containerWidget
-
-### Description
-A Read-Only pointer to the SmartClient canvas that holds this form item. In most cases this will be the [DynamicForm](#attr-formitemform) containing the item but in some cases editable components handle writing out form items directly. An example of this is [Grid Editing](../kb_topics/editing.md#kb-topic-grid-editing) - when a listGrid shows per-field editors, the `containerWidget` for each item will be the listGrid body.
-
-Note that even if the `containerWidget` is not a DynamicForm, a DynamicForm will still exist for the item (available as [FormItem.form](#attr-formitemform)), allowing access to standard APIs such as [DynamicForm.getValues](DynamicForm.md#method-dynamicformgetvalues)
-
-**Flags**: RA
-
----
-## Attr: FormItem.showHint
-
-### Description
-If a hint is defined for this form item, should it be shown?
-
-### Groups
-
-- appearance
-
-**Flags**: IRWA
-
----
-## Attr: FormItem.canSelectText
-
-### Description
-For items showing a text value, should the user be able to select the text in this item?
-
-For [canEdit:false](#attr-formitemcanedit) items, see [FormItem.readOnlyCanSelectText](#attr-formitemreadonlycanselecttext)
-
-**Flags**: IRW
-
----
-## Attr: FormItem.storeDisplayValues
-
-### Description
-If specified, this overrides the [DynamicForm.storeDisplayValues](DynamicForm.md#attr-dynamicformstoredisplayvalues) property for this field.
-
-**Flags**: IRA
-
----
-## Attr: FormItem.errorIconWidth
-
-### Description
-Height of the error icon, if we're showing icons when validation errors occur.
-
-### Groups
-
-- errorIcon
-
-### See Also
-
-- [FormItem.showErrorIcon](#attr-formitemshowerroricon)
-
-**Flags**: IRW
-
----
-## Attr: FormItem.valueIconHeight
-
-### Description
-If [FormItem.valueIcons](#attr-formitemvalueicons) is specified, use this property to specify a height for the value icon written out.
-
-### Groups
-
-- valueIcons
-
-### See Also
-
-- [FormItem.valueIconWidth](#attr-formitemvalueiconwidth)
-- [FormItem.valueIconSize](#attr-formitemvalueiconsize)
-
-**Flags**: IRW
-
----
-## Attr: FormItem.tabIndex
-
-### Description
-TabIndex for the form item within the form, which controls the order in which controls are visited when the user hits the tab or shift-tab keys to navigate between items.
-
-tabIndex is automatically assigned as the order that items appear in the [DynamicForm.items](DynamicForm.md#attr-dynamicformitems) list.
-
-To specify the tabindex of an item within the page as a whole (not just this form), use [FormItem.globalTabIndex](#attr-formitemglobaltabindex) instead.
-
-### Groups
-
-- focus
-
-**Flags**: IRW
-
----
-## Attr: FormItem.selectOnClick
-
-### Description
-Allows the [selectOnClick](DynamicForm.md#attr-dynamicformselectonclick) behavior to be configured on a per-FormItem basis. Normally all items in a form default to the value of [DynamicForm.selectOnClick](DynamicForm.md#attr-dynamicformselectonclick).
-
-### Groups
-
-- focus
-
-**Flags**: IRW
-
----
-## Attr: FormItem.valueIconSize
-
-### Description
-If [FormItem.valueIcons](#attr-formitemvalueicons) is specified, this property may be used to specify both the width and height of the icon written out. Note that [FormItem.valueIconWidth](#attr-formitemvalueiconwidth) and [FormItem.valueIconHeight](#attr-formitemvalueiconheight) take precedence over this value, if specified.
-
-### Groups
-
-- valueIcons
-
-### See Also
-
-- [FormItem.valueIconWidth](#attr-formitemvalueiconwidth)
-- [FormItem.valueIconHeight](#attr-formitemvalueiconheight)
-
-**Flags**: IRW
-
----
-## Attr: FormItem.rightTitleSuffix
-
-### Description
-The string appended to this item's title when its titleOrientation is set to "right". The [DynamicForm.rightTitleSuffix](DynamicForm.md#attr-dynamicformrighttitlesuffix) is used by default.
-
-### Groups
-
-- title
-
-### See Also
-
-- [FormItem.rightTitlePrefix](#attr-formitemrighttitleprefix)
-
-**Flags**: IRW
-
----
-## Attr: FormItem.nullOriginalValueText
-
-### Description
-Text shown as the value in the [FormItem.originalValueMessage](#attr-formitemoriginalvaluemessage) when [showOldValueInHover](#attr-formitemshowoldvalueinhover) is enabled, and when the value has been modified but was originally unset.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRWA
-
----
-## Attr: FormItem.hoverVAlign
-
-### Description
-Vertical text alignment for text displayed in this item's hover canvas, if shown.
-
-### Groups
-
-- Hovers
-
-### See Also
-
-- [DynamicForm.itemHoverVAlign](DynamicForm.md#attr-dynamicformitemhovervalign)
-
-**Flags**: IRW
-
----
-## Attr: FormItem.hidden
-
-### Description
-Should this form item be hidden? Setting this property to `true` on an item configuration will have the same effect as having a [FormItem.showIf](#method-formitemshowif) implementation which returns `false`.
-
-Note this differs slightly from [DataSourceField.hidden](DataSourceField.md#attr-datasourcefieldhidden). That property will cause the field in question to be omitted entirely from databound components by default. A dataSourceField with `hidden` set to `true` can still be displayed in a DynamicForm either by being explicitly included in the specified [items array](DynamicForm.md#attr-dynamicformitems), or by having [DataBoundComponent.showHiddenFields](DataBoundComponent.md#attr-databoundcomponentshowhiddenfields) set to true. In this case, this property will not be inherited onto the FormItem instance, meaning the item will be visible in the form even though the `hidden` property was set to true on the dataSourceField configuration object.
-
-**Flags**: IR
-
----
-## Attr: FormItem.showFocusedPickerIcon
-
-### Description
-If [FormItem.showPickerIcon](#attr-formitemshowpickericon) is true for this item, should the picker icon show a focused image when the form item has focus?
-
-### Groups
-
-- pickerIcon
-
-**Flags**: IRW
-
----
-## Attr: FormItem.requiredTitleSuffix
-
-### Description
-The string appended to this item's title if it is required. The [DynamicForm.requiredTitleSuffix](DynamicForm.md#attr-dynamicformrequiredtitlesuffix) is used by default.
-
-### Groups
-
-- title
-
-### See Also
-
-- [FormItem.requiredTitlePrefix](#attr-formitemrequiredtitleprefix)
-
-**Flags**: IRW
-
----
-## Attr: FormItem.hoverStyle
-
-### Description
-Explicit CSS Style for any hover shown for this item.
-
-### Groups
-
-- Hovers
-
-### See Also
-
-- [DynamicForm.itemHoverStyle](DynamicForm.md#attr-dynamicformitemhoverstyle)
-
-**Flags**: IRW
-
----
-## Attr: FormItem.showIcons
-
-### Description
-Set to false to suppress writing out any [FormItem.icons](#attr-formitemicons) for this item.
-
-### Groups
-
-- formIcons
-
-**Flags**: IRWA
-
----
-## Attr: FormItem.titleAlign
-
-### Description
-Alignment of this item's title in its cell.
-
-If null, dynamically set according to text direction.
-
-### Groups
-
-- title
-
-**Flags**: IRW
-
----
-## Attr: FormItem.loadingDisplayValue
-
-### Description
-Value shown in field when [fetchMissingValues](#attr-formitemfetchmissingvalues) is active and a fetch is pending. The field is read-only while a fetch is pending.
-
-Set to `null` to show actual value until display value is loaded.
-
-### Groups
-
-- display_values
-- i18nMessages
-
-**Flags**: IRW
-
----
-## Attr: FormItem.useDisabledHintStyleForReadOnly
-
-### Description
-By default, [read-only](#attr-formitemcanedit) fields use the same style name as editable fields for in-field hints, unless they are [disabled](#method-formitemisdisabled) or configured to use a disabled [ReadOnlyDisplayAppearance](../reference_2.md#type-readonlydisplayappearance). This is described under [TextItem.showHintInField](TextItem.md#attr-textitemshowhintinfield)
-
-If `useDisabledHintStyleForReadOnly` is set, the "HintDisabled" style will be used for read-only fields regardless of their `ReadOnlyDisplayAppearance`. This allows you to use a different in-field hint style for read-only fields without having to use a general disabled appearance for those fields
-
-### Groups
-
-- appearance
-
-**Flags**: IRW
-
----
-## Attr: FormItem.linearWidth
-
-### Description
-Specifies a width for an item in [linearMode](DynamicForm.md#attr-dynamicformlinearmode), overriding the default width of "\*" in that mode.
-
-### Groups
-
-- formLayout
-
-### See Also
-
-- [FormItem.width](#attr-formitemwidth)
-
-**Flags**: IRW
-
----
-## Attr: FormItem.minHintWidth
-
-### Description
-If this item is showing a [FormItem.hint](#attr-formitemhint), this setting specifies how much horizontal space is made available for rendering the hint text by default. Typically this reflects how much space the hint text takes up before it wraps.
-
-Note that the presence of a hint may cause a form item to expand horizontally past its specified [FormItem.width](#attr-formitemwidth). This property value acts as a minimum - if the hint text can not wrap within this width (either due to [FormItem.wrapHintText](#attr-formitemwraphinttext) being set to `false`, or due to it containing long, un-wrappable content), it will further expand to take up the space it needs.
-
-If unset this property will be picked up from the [DynamicForm.minHintWidth](DynamicForm.md#attr-dynamicformminhintwidth) setting.
-
-This setting does not apply to hints that are [shown in field](TextItem.md#attr-textitemshowhintinfield).
-
-### See Also
-
-- [FormItem.wrapHintText](#attr-formitemwraphinttext)
-
-**Flags**: IR
-
----
-## Attr: FormItem.useAdvancedCriteria
-
-### Description
-Should this form item always produce an [AdvancedCriteria](../reference.md#object-advancedcriteria) sub criterion object? When set to true, causes [hasAdvancedCriteria](#method-formitemhasadvancedcriteria) to return true. Can also be set at the [ListGrid](ListGrid_1.md#attr-listgriduseadvancedcriteria) level.
-
-### Groups
-
-- criteriaEditing
-
-**Flags**: IRW
-
----
-## Attr: FormItem.showDisabled
-
-### Description
-When this item is disabled, should it be re-styled to indicate its disabled state?
-
-See [formItemStyling](../kb_topics/formItemStyling.md#kb-topic-formitem-styling) for more details on formItem styling.
-
-### Groups
-
-- formItemStyling
-
-### See Also
-
-- [FormItem.cellStyle](#attr-formitemcellstyle)
-
-**Flags**: IRWA
-
----
-## Attr: FormItem.requiredRightTitleSuffix
-
-### Description
-The string appended to this item's title if it is required and the [TitleOrientation](../reference_2.md#type-titleorientation) property is set to "right". The +link(DynamicForm.requiredRightTitleSuffix) is used by default.
-
-### Groups
-
-- title
-
-### See Also
-
-- [FormItem.requiredRightTitlePrefix](#attr-formitemrequiredrighttitleprefix)
-
-**Flags**: IRW
-
----
-## Attr: FormItem.titlePrefix
-
-### Description
-The string prepended to this item's title. The [DynamicForm.titlePrefix](DynamicForm.md#attr-dynamicformtitleprefix) is used by default.
-
-### Groups
-
-- title
-
-### See Also
-
-- [FormItem.titleSuffix](#attr-formitemtitlesuffix)
-
-**Flags**: IRW
-
----
-## Attr: FormItem.required
-
-### Description
-Whether a non-empty value is required for this field to pass validation.
-
-If the user does not fill in the required field, the error message to be shown will be taken from these properties in the following order: [FormItem.requiredMessage](#attr-formitemrequiredmessage), [DynamicForm.requiredMessage](DynamicForm.md#attr-dynamicformrequiredmessage), [DataSource.requiredMessage](DataSource.md#attr-datasourcerequiredmessage), [Validator.requiredField](Validator.md#classattr-validatorrequiredfield).
-
-**Note:** if specified on a FormItem, `required` is only enforced on the client. `required` should generally be specified on a [DataSourceField](../reference_2.md#object-datasourcefield).
-
-### Groups
-
-- validation
-
-**Flags**: IR
-
----
-## Attr: FormItem.pickerIconStyle
-
-### Description
-Base CSS class name for a form item's picker icon cell. If unset, inherits from this item's [controlStyle](#attr-formitemcontrolstyle).
-
-### Groups
-
-- pickerIcon
-- formItemStyling
-
-### See Also
-
-- [FormItem.cellStyle](#attr-formitemcellstyle)
-
-**Flags**: IRW
-
----
-## Attr: FormItem.canHover
-
-### Description
-Indicates whether hovers can be shown for this item. When set to false, suppresses all hovers, including those for the [item in general](#method-formitemitemhoverhtml), or for its [value](#method-formitemvaluehoverhtml) or [title](#method-formitemtitlehoverhtml).
-
-For finer control over suppressing hovers, see [itemHover](#method-formitemitemhover), [titleHover](#method-formitemtitlehover) and [valueHover](#method-formitemvaluehover).
-
-### Groups
-
-- Hovers
-
-### See Also
-
-- [FormItem.prompt](#attr-formitemprompt)
-- [FormItem.itemHover](#method-formitemitemhover)
-- [FormItem.titleHover](#method-formitemtitlehover)
-- [FormItem.valueHover](#method-formitemvaluehover)
-
-**Flags**: IRW
-
----
-## Attr: FormItem.title
-
-### Description
-User visible title for this form item.
-
-### Groups
-
-- basics
 
 **Flags**: IRW
 
@@ -2209,6 +1008,18 @@ Base CSS stylename for a form item's title when generating print HTML for the it
 - printing
 
 **Flags**: IRW
+
+---
+## Attr: FormItem.showFocusedIcons
+
+### Description
+If we're showing icons, should we change their image source to the appropriate _focused_ source when this item has focus? Can be overridden on a per icon basis by the formItemIcon `showFocused` property.
+
+### Groups
+
+- formIcons
+
+**Flags**: IRWA
 
 ---
 ## Attr: FormItem.destroyed
@@ -2245,6 +1056,14 @@ CSS class for a form item's cell in the form layout
 **Deprecated**
 
 **Flags**: IR
+
+---
+## Attr: FormItem.browserInputType
+
+### Description
+Form item input type - governs which keyboard should be displayed for mobile devices (supported on iPhone / iPad)
+
+**Flags**: IRA
 
 ---
 ## Attr: FormItem.showFocused
@@ -2305,10 +1124,23 @@ See the [formLayout](../kb_topics/formLayout.md#kb-topic-form-layout) overview f
 
 ### See Also
 
-- [FormItem.linearWidth](#attr-formitemlinearwidth)
 - [formLayout](../kb_topics/formLayout.md#kb-topic-form-layout)
 - [FormItem.height](#attr-formitemheight)
 - [DynamicForm.itemLayout](DynamicForm.md#attr-dynamicformitemlayout)
+
+**Flags**: IRW
+
+---
+## Attr: FormItem.emptyDisplayValue
+
+### Description
+Text to display when this form item has a null or undefined value.
+
+If the formItem has a databound pickList, and its [FormItem.displayField](#attr-formitemdisplayfield) or [FormItem.valueField](#attr-formitemvaluefield) (if the former isn't set) has an undefined [emptyCellValue](ListGridField.md#attr-listgridfieldemptycellvalue) setting, that field's `emptyCellValue` will automatically be set to the `emptyDisplayValue`.
+
+### Groups
+
+- display_values
 
 **Flags**: IRW
 
@@ -2325,16 +1157,6 @@ Suffix to apply to the end of any [FormItem.valueIcons](#attr-formitemvalueicons
 **Flags**: IRWA
 
 ---
-## Attr: FormItem.extraTextBoxCSS
-
-### Description
-Additional CSS-text that overrides the item's [FormItem.textBoxStyle](#attr-formitemtextboxstyle), applying arbitrary custom styling to the textBox.
-
-This is an advanced attribute - while it can be used to modify many properties, such as colors, font-style and border-radius, it should not be used to modify any property that may affect element-size, such as height, padding/margin or overflow.
-
-**Flags**: IRA
-
----
 ## Attr: FormItem.icons
 
 ### Description
@@ -2346,7 +1168,19 @@ An array of descriptor objects for icons to display in a line after this form it
 
 ### See Also
 
-- [FormItemIcon](../reference.md#object-formitemicon)
+- [FormItemIcon](../reference_2.md#object-formitemicon)
+
+**Flags**: IRW
+
+---
+## Attr: FormItem.errorMessageWidth
+
+### Description
+When [DynamicForm.showInlineErrors](DynamicForm.md#attr-dynamicformshowinlineerrors) and [FormItem.showErrorText](#attr-formitemshowerrortext) are both true and [FormItem.errorOrientation](#attr-formitemerrororientation) is "left" or "right", errorMessageWidth is the amount to reduce the width of the editor to accommodate the error message and icon.
+
+### Groups
+
+- validation
 
 **Flags**: IRW
 
@@ -2356,9 +1190,21 @@ An array of descriptor objects for icons to display in a line after this form it
 ### Description
 This text is shown as a tooltip prompt when the cursor hovers over this item and the item is [read-only](#method-formitemsetcanedit).
 
-Note that when the form is [disabled](Canvas.md#attr-canvasdisabled), or when this item [suppresses hovers](#attr-formitemcanhover), nothing will be shown.
+Note that when the form is [disabled](Canvas.md#attr-canvasdisabled) this prompt will not be shown.
 
 **Flags**: IRW
+
+---
+## Attr: FormItem.iconHSpace
+
+### Description
+Horizontal space (in px) to leave between form item icons. The space appears either on the left or right of each icon. May be overridden at the icon level via [FormItemIcon.hspace](FormItemIcon.md#attr-formitemiconhspace). Must be non-negative.
+
+### Groups
+
+- formIcons
+
+**Flags**: IR
 
 ---
 ## Attr: FormItem.titleColSpan
@@ -2366,7 +1212,7 @@ Note that when the form is [disabled](Canvas.md#attr-canvasdisabled), or when th
 ### Description
 Number of columns that this item's title spans.
 
-This setting only applies for items that are showing a title and whose [TitleOrientation](../reference_2.md#type-titleorientation) is either "left" or "right".
+This setting only applies for items that are showing a title and whose [TitleOrientation](../reference.md#type-titleorientation) is either "left" or "right".
 
 ### Groups
 
@@ -2407,26 +1253,72 @@ CSS class for the "hint" string. For items that support [TextItem.showHintInFiel
 **Flags**: IRW
 
 ---
+## Attr: FormItem.titleVAlign
+
+### Description
+Vertical alignment of this item's title in its cell. Only applies when [FormItem.titleOrientation](#attr-formitemtitleorientation) is `"left"` or `"right"`.
+
+### Groups
+
+- title
+
+**Flags**: IRW
+
+---
+## Attr: FormItem.requiredMessage
+
+### Description
+The required message for required field errors.
+
+### Groups
+
+- validation
+
+**Flags**: IRW
+
+---
+## Attr: FormItem.showOldValueInHover
+
+### Description
+Causes the original value to be shown to the end user when the user hovers over the FormItem as such (when the [FormItem.itemHover](#method-formitemitemhover) event would fire).
+
+When [FormItem.showOldValueInHover](#attr-formitemshowoldvalueinhover) and the form's [DynamicForm.showOldValueInHover](DynamicForm.md#attr-dynamicformshowoldvalueinhover) are both unset, defaults to the value of [FormItem.showPending](#attr-formitemshowpending).
+
+The message shown is controlled by [FormItem.originalValueMessage](#attr-formitemoriginalvaluemessage), unless the item is [disabled](#attr-formitemdisabled) and [disabledHover](#attr-formitemdisabledhover) is set - in this case, the hover shows the `disabledHover` HTML.
+
+**Flags**: IRWA
+
+---
+## Attr: FormItem.showClippedValueOnHover
+
+### Description
+If true and the value is clipped, then a hover containing the full value of this item is enabled.
+
+The [FormItem.valueHover](#method-formitemvaluehover) method is called before the hover is displayed, allowing the hover to be canceled if desired. The HTML shown in the hover can be customized by overriding [FormItem.valueHoverHTML](#method-formitemvaluehoverhtml).
+
+### Groups
+
+- Hovers
+
+**Flags**: IRW
+
+---
 ## Attr: FormItem.showErrorStyle
 
 ### Description
-[showErrorIcons](DynamicForm.md#attr-dynamicformshowerroricons), [showErrorText](DynamicForm.md#attr-dynamicformshowerrortext), [errorOrientation](DynamicForm.md#attr-dynamicformerrororientation), and [showErrorStyle](DynamicForm.md#attr-dynamicformshowerrorstyle) control how validation errors are displayed when they are displayed inline in the form (next to the form item where there is a validation error). To instead display all errors at the top of the form, set [showInlineErrors](DynamicForm.md#attr-dynamicformshowinlineerrors):false.
+[showErrorIcons](DynamicForm.md#attr-dynamicformshowerroricons), [showErrorText](DynamicForm.md#attr-dynamicformshowerrortext), and [showErrorStyle](DynamicForm.md#attr-dynamicformshowerrorstyle) control how validation errors are displayed when they are displayed inline in the form (next to the form item where there is a validation error). To instead display all errors at the top of the form, set [showInlineErrors](DynamicForm.md#attr-dynamicformshowinlineerrors):false.
 
-`showErrorIcons`, `showErrorText`, `errorOrientation` and `showErrorStyle` are all boolean properties, and can be set on a DynamicForm to control the behavior form-wide, or set on individual FormItems.
+`showErrorIcons`, `showErrorText` and `showErrorStyle` are all boolean properties, and can be set on a DynamicForm to control the behavior form-wide, or set on individual FormItems.
 
 The HTML displayed next to a form item with errors is generated by [FormItem.getErrorHTML](#method-formitemgeterrorhtml). The default implementation of that method respects `showErrorIcons` and `showErrorText` as follows:
 
 `showErrorIcons`, or `showErrorIcon` at the FormItem level controls whether an error icon should appear next to fields which have validation errors. The icon's appearance is governed by [FormItem.errorIconSrc](#attr-formitemerroriconsrc), [FormItem.errorIconWidth](#attr-formitemerroriconwidth) and [FormItem.errorIconHeight](#attr-formitemerroriconheight)
 
-`showErrorText` determines whether the text of the validation error should be displayed next to fields which have validation errors. The attribute [DynamicForm.showTitlesWithErrorMessages](DynamicForm.md#attr-dynamicformshowtitleswitherrormessages) may be set to prefix error messages with the form item's title + `":"` (may be desired if the item has [FormItem.showTitle](#attr-formitemshowtitle) set to false).  
-If `showErrorText` is unset, the error text will be shown if [DynamicForm.linearMode](DynamicForm.md#attr-dynamicformlinearmode) is true (or [DynamicForm.linearOnMobile](DynamicForm.md#attr-dynamicformlinearonmobile) is true for mobile devices), otherwise it will not be shown.
+`showErrorText` determines whether the text of the validation error should be displayed next to fields which have validation errors. The attribute [DynamicForm.showTitlesWithErrorMessages](DynamicForm.md#attr-dynamicformshowtitleswitherrormessages) may be set to prefix error messages with the form item's title + `":"` (may be desired if the item has [FormItem.showTitle](#attr-formitemshowtitle) set to false).
 
-In addition to this:
+[DynamicForm.errorOrientation](DynamicForm.md#attr-dynamicformerrororientation) controls where the error HTML should appear relative to form items. Therefore the combination of [FormItem.showErrorText](#attr-formitemshowerrortext)`:false` and [FormItem.errorOrientation](#attr-formitemerrororientation)`:"left"` creates a compact validation error display consisting of just an icon, to the left of the item with the error message available via a hover (similar appearance to ListGrid validation error display).
 
-[DynamicForm.errorOrientation](DynamicForm.md#attr-dynamicformerrororientation) controls where the error HTML should appear relative to form items. Therefore the combination of [FormItem.showErrorText](#attr-formitemshowerrortext)`:false` and [FormItem.errorOrientation](#attr-formitemerrororientation)`:"left"` creates a compact validation error display consisting of just an icon, to the left of the item with the error message available via a hover (similar appearance to ListGrid validation error display).  
-If `errorOrientation` is unset, the error orientation will default to "top" if [DynamicForm.linearMode](DynamicForm.md#attr-dynamicformlinearmode) is enabled (or [DynamicForm.linearOnMobile](DynamicForm.md#attr-dynamicformlinearonmobile) is true for mobile devices) and error text is not showing, "left" otherwise.
-
-`showErrorStyle` determines whether fields with validation errors should have special styling applied to them. Error styling is achieved by applying suffixes to existing styling applied to various parts of the form item. See [FormItemBaseStyle](../reference_2.md#type-formitembasestyle) for more on this.
+In addition to this, `showErrorStyle` determines whether fields with validation errors should have special styling applied to them. Error styling is achieved by applying suffixes to existing styling applied to various parts of the form item. See [FormItemBaseStyle](../reference.md#type-formitembasestyle) for more on this.
 
 ### Groups
 
@@ -2536,14 +1428,89 @@ CSS class for a form item's cell when a validation error is showing.
 **Flags**: IR
 
 ---
+## Attr: FormItem.updatePickerIconOnOver
+
+### Description
+If [FormItem.showOver](#attr-formitemshowover) is true, setting this property to false will explicitly disable showing the "Over" state for the PickerIcon of this item (if present)
+
+### Groups
+
+- formItemStyling
+
+### See Also
+
+- [FormItem.showOver](#attr-formitemshowover)
+
+**Flags**: IRWA
+
+---
+## Attr: FormItem.wrapTitle
+
+### Description
+If specified determines whether this items title should wrap. Overrides [wrapItemTitles](DynamicForm.md#attr-dynamicformwrapitemtitles) at the DynamicForm level.
+
+### Groups
+
+- title
+
+**Flags**: IRW
+
+---
+## Attr: FormItem.valueDeselectedCSSText
+
+### Description
+Custom CSS text to be applied to values that have been deleted, when [showDeletions](#attr-formitemshowdeletions) is enabled.
+
+**Flags**: IRA
+
+---
+## Attr: FormItem.displayFormat
+
+### Description
+Fields of type `"date"` or `"time"` will be edited using a [DateItem](DateItem.md#class-dateitem) or [TimeItem](TimeItem.md#class-timeitem) by default.
+
+However this can be overridden - for `canEdit:false` fields, a [StaticTextItem](StaticTextItem.md#class-statictextitem) is used by default, and the developer can always specify a custom [FormItem.editorType](#attr-formitemeditortype) as well as [data type](#attr-formitemtype).
+
+For fields of type `"date"`, set this property to a valid [DateDisplayFormat](../reference.md#type-datedisplayformat) to specify how the date should be formatted.  
+For fields of type `"time"`, set this property to a valid [TimeDisplayFormat](../reference.md#type-timedisplayformat) to specify how the time should be formatted.  
+Note that if [FormItem.dateFormatter](#attr-formitemdateformatter) or [FormItem.timeFormatter](#attr-formitemtimeformatter) are specified they will take precedence over this setting.
+
+If this field is of type `"date"` and is editable, the [FormItem.inputFormat](#attr-formiteminputformat) may be used to specify how user-edited date strings will be parsed.
+
+### See Also
+
+- [FormItem.format](#attr-formitemformat)
+- [FormItem.inputFormat](#attr-formiteminputformat)
+- [FormItem.dateFormatter](#attr-formitemdateformatter)
+- [FormItem.timeFormatter](#attr-formitemtimeformatter)
+
+**Deprecated**
+
+**Flags**: IRWA
+
+---
+## Attr: FormItem.name
+
+### Description
+Name for this form field. Must be unique within the form as well as a valid JavaScript identifier - see [FieldName](../reference.md#type-fieldname) for details and how to check for validity.
+
+The FormItem's name determines the name of the property it edits within the form.
+
+Note that an item must have a valid name or [dataPath](#attr-formitemdatapath) in order for its value to be validated and/or saved.
+
+### Groups
+
+- basics
+
+**Flags**: IR
+
+---
 ## Attr: FormItem.showClippedTitleOnHover
 
 ### Description
 If true and the title is clipped, then a hover containing the full title of this item is enabled.
 
 The [FormItem.titleHover](#method-formitemtitlehover) method is called before the hover is displayed, allowing the hover to be canceled if desired. The HTML shown in the hover can be customized by overriding [FormItem.titleHoverHTML](#method-formitemtitlehoverhtml).
-
-If the item [suppresses hovers](#attr-formitemcanhover), nothing will be shown.
 
 ### Groups
 
@@ -2552,18 +1519,46 @@ If the item [suppresses hovers](#attr-formitemcanhover), nothing will be shown.
 **Flags**: IRW
 
 ---
+## Attr: FormItem.titleClassName
+
+### Description
+CSS class for the form item's title.
+
+### Groups
+
+- title
+
+**Deprecated**
+
+**Flags**: IR
+
+---
+## Attr: FormItem.align
+
+### Description
+Alignment of this item in its cell. Note that the alignment of text / content within this item is controlled separately via [FormItem.textAlign](#attr-formitemtextalign) (typically `textAlign` applies to items showing a "textBox", such as a [TextItem](TextItem.md#class-textitem) or [SelectItem](SelectItem.md#class-selectitem), as well as text-only form item types such as [StaticTextItem](StaticTextItem.md#class-statictextitem) and [HeaderItem](HeaderItem.md#class-headeritem)). If [applyAlignToText](#attr-formitemapplyaligntotext) is true, then the `textAlign` setting, if unset, will default to the `align` setting if set.
+
+### Groups
+
+- appearance
+
+### See Also
+
+- [FormItem.applyAlignToText](#attr-formitemapplyaligntotext)
+
+**Flags**: IRW
+
+---
 ## Attr: FormItem.showPending
 
 ### Description
-When set to `true`, this property adds the optional "Pending" suffix to the CSS styles applied to the widget if the current value of the item differs from the value that would be restored by invoking [DynamicForm.resetValues](DynamicForm.md#method-dynamicformresetvalues). See [FormItemBaseStyle](../reference_2.md#type-formitembasestyle) for details.
+When `true`, causes the "Pending" optional suffix to be added if the item's current value differs from the value that would be restored by a call to [DynamicForm.resetValues](DynamicForm.md#method-dynamicformresetvalues).
 
 [shouldSaveValue](#attr-formitemshouldsavevalue) must be `true` for this setting to have an effect.
 
 Styling of the value is updated only after the [FormItem.change](#method-formitemchange) event is processed, so depending on the value of [changeOnKeypress](#attr-formitemchangeonkeypress), styling may be updated immediately on keystroke or only when the user leaves the field.
 
 Default styling is provided for the Enterprise, EnterpriseBlue, and Graphite skins only. `showPending` should not be enabled for an item when using a skin without default styling unless the default [FormItem.pendingStatusChanged](#method-formitempendingstatuschanged) behavior is canceled and a custom pending visual state is implemented by the item.
-
-On the other hand, when set to `true` and if [FormItem.canHover](#attr-formitemcanhover) is also true, a hover will appear, displaying the old value and controlled by [FormItem.showOldValueInHover](#attr-formitemshowoldvalueinhover), [FormItem.originalValueMessage](#attr-formitemoriginalvaluemessage) and [FormItem.nullOriginalValueText](#attr-formitemnulloriginalvaluetext). Additionally, if the new value is [clipped](#attr-formitemshowclippedvalueonhover), it will be shown in the hover as well.
 
 **NOTE:** Whether an item is shown as pending is not reflected to screen readers. Therefore, it is not advisable to design a UI where it is necessary for the user to know whether an item is shown as pending in order to work with the form.
 
@@ -2583,21 +1578,54 @@ Whether this item should always start a new row in the form layout.
 
 - formLayout
 
-### See Also
+**Flags**: IRW
 
-- [FormItem.linearStartRow](#attr-formitemlinearstartrow)
+---
+## Attr: FormItem.errorOrientation
+
+### Description
+If [DynamicForm.showInlineErrors](DynamicForm.md#attr-dynamicformshowinlineerrors) is true, where should the error icon and text appear relative to the form item itself. Valid options are `"top"`, `"bottom"`, `"left"` or `"right"`.  
+If unset the orientation will be derived from [DynamicForm.errorOrientation](DynamicForm.md#attr-dynamicformerrororientation).
+
+### Groups
+
+- validation
+- appearance
 
 **Flags**: IRW
 
 ---
-## Attr: FormItem.extraControlTableCSS
+## Attr: FormItem.formula
 
 ### Description
-Additional CSS-text that overrides the item's [FormItem.controlStyle](#attr-formitemcontrolstyle), applying arbitrary custom styling to the outer control-table that contains both textBox and icons.
+Formula to be used to calculate the numeric value of this FormItem. For a field of type "text" (or subtypes) [FormItem.textFormula](#attr-formitemtextformula) is used instead.
 
-This is an advanced attribute - while it can be used to modify many properties, such as colors, font-style and border-radius, it should not be used to modify any property that may affect element-size, such as height, padding/margin or overflow.
+Available fields for use in the formula are the current [rule context](Canvas.md#attr-canvasrulescope). The formula is re-evaluated every time the rule context changes.
 
-**Flags**: IRA
+Values calculated by the formula will always replace the current value of a non-editable field. For an editable field, the current value will be replaced if the end user has not changed the value since the last time it was computed by the formula, or if the value of the field is invalid according to declared [validators](#attr-formitemvalidators).
+
+Note: A FormItem using a formula must have a [FormItem.name](#attr-formitemname) defined. [FormItem.shouldSaveValue](#attr-formitemshouldsavevalue) can be set to `false` to prevent the formula field from storing the calculated value into the form's values.
+
+### Groups
+
+- formulaFields
+
+**Flags**: IR
+
+---
+## Attr: FormItem.defaultIconSrc
+
+### Description
+Default icon image source. Specify as the partial URL to an image, relative to the imgDir of this component. To specify image source for a specific icon use the `icon.src` property.  
+If this item is drawn in the disabled state, the url will be modified by adding "\_Disabled" to get a disabled state image for the icon. If `icon.showOver` is true, this url will be modified by adding "\_Over" to get an over state image for the icon.
+
+[Spriting](../kb_topics/skinning.md#kb-topic-skinning--theming) can be used for this image, by setting this property to a [SCSpriteConfig](../reference.md#type-scspriteconfig) formatted string.
+
+### Groups
+
+- formIcons
+
+**Flags**: IRWA
 
 ---
 ## Attr: FormItem.rejectInvalidValueOnChange
@@ -2620,12 +1648,32 @@ How should icons be aligned vertically for this form item.
 **Flags**: IRWA
 
 ---
+## Attr: FormItem.saveOnEnter
+
+### Description
+Set this to true to allow the parent form to save it's data when 'Enter' is pressed on this formItem and [saveOnEnter](DynamicForm.md#attr-dynamicformsaveonenter) is true on the parent form.
+
+**Flags**: IRW
+
+---
+## Attr: FormItem.emptyValueIcon
+
+### Description
+This property allows the developer to specify an icon to display when this item has no value. It is configured in the same way as any other valueIcon (see [FormItem.valueIcons](#attr-formitemvalueicons))
+
+### Groups
+
+- valueIcons
+
+**Flags**: IRW
+
+---
 ## Attr: FormItem.editorType
 
 ### Description
 Name of the FormItem to use for editing, eg "TextItem" or "SelectItem".
 
-The type of FormItem to use for editing is normally derived automatically from [field.type](#attr-formitemtype), which is the data type of the field, by the rules explained [here](../reference.md#type-formitemtype).
+The type of FormItem to use for editing is normally derived automatically from [field.type](#attr-formitemtype), which is the data type of the field, by the rules explained [here](../reference_2.md#type-formitemtype).
 
 ### Groups
 
@@ -2633,19 +1681,33 @@ The type of FormItem to use for editing is normally derived automatically from [
 
 ### See Also
 
-- [FormItemType](../reference.md#type-formitemtype)
-- [FieldType](../reference_2.md#type-fieldtype)
+- [FormItemType](../reference_2.md#type-formitemtype)
+- [FieldType](../reference.md#type-fieldtype)
 
 **Flags**: IR
+
+---
+## Attr: FormItem.visible
+
+### Description
+Whether this item is currently visible.
+
+`visible` can only be set on creation. After creation, use [FormItem.show](#method-formitemshow) and [FormItem.hide](#method-formitemhide) to manipulate visibility.
+
+### Groups
+
+- appearance
+
+**Flags**: IRW
 
 ---
 ## Attr: FormItem.optionCriteria
 
 ### Description
-If this item has a specified `optionDataSource`, this property may be used to specify criteria to pass to the datasource when performing the fetch operation on the dataSource to obtain a data-value to display-value mapping.
+If this item has a specified `optionDataSource`, and this property may be used to specify criteria to pass to the datasource when performing the fetch operation on the dataSource to obtain a data-value to display-value mapping.
 
 The criteria generated for this fetch will consist of the specified optionCriteria, combined with criteria required to identify the current item value.  
-For example, if a developer's use case was a DataSource of user records, with [FormItem.valueField](#attr-formitemvaluefield) set to _"userID"_" and [FormItem.displayField](#attr-formitemdisplayfield) set to _"userName"_, the generated criteria to retrieve the display value for the item would look for an exact match between the current item value and the userID field in the dataSource. The _optionCriteria_ would allow additional restrictions on this fetch (searching for records matching some other _"region"_ field, say).  
+For example, if a developer's use case was DataSource of user records, with [FormItem.valueField](#attr-formitemvaluefield) set to _"userID"_" and [FormItem.displayField](#attr-formitemdisplayfield) set to _"userName"_, the generated criteria to retrieve the display value for the item would look for an exact match between the current item value and the userID field in the dataSource. The _optionCriteria_ would allow additional restrictions on this fetch (searching for records matching some other _"region"_ field, say).  
 The sub-criterion containing the current valueField value will always look for an exact match (rather than any kind of substring match), so if [FormItem.optionTextMatchStyle](#attr-formitemoptiontextmatchstyle) is set to something other than "exact", developers may expect to see AdvancedCriteria passed to the server
 
 This property supports [dynamicCriteria](../kb_topics/dynamicCriteria.md#kb-topic-dynamiccriteria) - use [Criterion.valuePath](Criterion.md#attr-criterionvaluepath) to refer to values in the [Canvas.ruleScope](Canvas.md#attr-canvasrulescope). Criteria are re-evaluated when the [rule context](Canvas.md#method-canvasgetrulecontext) changes.
@@ -2656,6 +1718,72 @@ This property supports [dynamicCriteria](../kb_topics/dynamicCriteria.md#kb-topi
 - searchCriteria
 
 **Flags**: IR
+
+---
+## Attr: FormItem.staticHeight
+
+### Description
+Height of the FormItem when `canEdit` is false and `readOnlyDisplay` is "static". The normal [FormItem.height](#attr-formitemheight) is used if this property is not set.
+
+### Groups
+
+- formLayout
+
+### See Also
+
+- [FormItem.height](#attr-formitemheight)
+
+**Flags**: IR
+
+---
+## Attr: FormItem.prompt
+
+### Description
+This text is shown as a tooltip prompt when the cursor hovers over this item.
+
+When item is [read-only](#method-formitemsetcanedit) a different hover can be shown with [FormItem.readOnlyHover](#attr-formitemreadonlyhover). Or, when item is [disabled](#attr-formitemdisabled) or read-only with [readOnlyDisplay:disabled](#attr-formitemreadonlydisplay) a different hover can be shown with [FormItem.disabledHover](#attr-formitemdisabledhover).
+
+Note that when the form is [disabled](Canvas.md#attr-canvasdisabled) this prompt will not be shown.
+
+### Groups
+
+- basics
+
+**Flags**: IRW
+
+---
+## Attr: FormItem.showErrorIcon
+
+### Description
+[showErrorIcons](DynamicForm.md#attr-dynamicformshowerroricons), [showErrorText](DynamicForm.md#attr-dynamicformshowerrortext), and [showErrorStyle](DynamicForm.md#attr-dynamicformshowerrorstyle) control how validation errors are displayed when they are displayed inline in the form (next to the form item where there is a validation error). To instead display all errors at the top of the form, set [showInlineErrors](DynamicForm.md#attr-dynamicformshowinlineerrors):false.
+
+`showErrorIcons`, `showErrorText` and `showErrorStyle` are all boolean properties, and can be set on a DynamicForm to control the behavior form-wide, or set on individual FormItems.
+
+The HTML displayed next to a form item with errors is generated by [FormItem.getErrorHTML](#method-formitemgeterrorhtml). The default implementation of that method respects `showErrorIcons` and `showErrorText` as follows:
+
+`showErrorIcons`, or `showErrorIcon` at the FormItem level controls whether an error icon should appear next to fields which have validation errors. The icon's appearance is governed by [FormItem.errorIconSrc](#attr-formitemerroriconsrc), [FormItem.errorIconWidth](#attr-formitemerroriconwidth) and [FormItem.errorIconHeight](#attr-formitemerroriconheight)
+
+`showErrorText` determines whether the text of the validation error should be displayed next to fields which have validation errors. The attribute [DynamicForm.showTitlesWithErrorMessages](DynamicForm.md#attr-dynamicformshowtitleswitherrormessages) may be set to prefix error messages with the form item's title + `":"` (may be desired if the item has [FormItem.showTitle](#attr-formitemshowtitle) set to false).
+
+[DynamicForm.errorOrientation](DynamicForm.md#attr-dynamicformerrororientation) controls where the error HTML should appear relative to form items. Therefore the combination of [FormItem.showErrorText](#attr-formitemshowerrortext)`:false` and [FormItem.errorOrientation](#attr-formitemerrororientation)`:"left"` creates a compact validation error display consisting of just an icon, to the left of the item with the error message available via a hover (similar appearance to ListGrid validation error display).
+
+In addition to this, `showErrorStyle` determines whether fields with validation errors should have special styling applied to them. Error styling is achieved by applying suffixes to existing styling applied to various parts of the form item. See [FormItemBaseStyle](../reference.md#type-formitembasestyle) for more on this.
+
+### Groups
+
+- errorIcon
+- validation
+- appearance
+
+**Flags**: IRW
+
+---
+## Attr: FormItem.optionFilterContext
+
+### Description
+If this item has a specified `optionDataSource`, and this property is not null, this will be passed to the datasource as [RPCRequest](../reference.md#object-rpcrequest) properties when performing the fetch operation on the dataSource to obtain a data-value to display-value mapping
+
+**Flags**: IRA
 
 ---
 ## Attr: FormItem.filterLocally
@@ -2688,7 +1816,7 @@ If not explicitly supplied, the valueField name will be derived as described in 
 ## Attr: FormItem.titleOrientation
 
 ### Description
-On which side of this item should the title be placed. [TitleOrientation](../reference_2.md#type-titleorientation) lists valid options.
+On which side of this item should the title be placed. [TitleOrientation](../reference.md#type-titleorientation) lists valid options.
 
 Note that titles on the left or right take up a cell in tabular [form layouts](../kb_topics/formLayout.md#kb-topic-form-layout), but titles on top do not.
 
@@ -2730,7 +1858,7 @@ Default properties for the picker.
 
 `item.operator` can be used to create a form that offers search functions such as numeric range filtering, without the more advanced user interface of the [FilterBuilder](FilterBuilder.md#class-filterbuilder). For example, two SpinnerItems could be created with `formItem.operator` set to "greaterThan" and "lessThan" respectively to enable filtering by a numeric range.
 
-When `item.operator` is set for any FormItem in a form, `form.getValuesAsCriteria()` will return an [AdvancedCriteria](../reference.md#object-advancedcriteria) object instead of a normal [Criteria](../reference_2.md#type-criteria) object. Each FormItem will produce one [Criterion](../reference_2.md#object-criterion) affecting the DataSource field specified by [FormItem.criteriaField](#attr-formitemcriteriafield). The criteria produced by the FormItems will be grouped under the logical operator provided by [DynamicForm.operator](DynamicForm.md#attr-dynamicformoperator).
+When `item.operator` is set for any FormItem in a form, `form.getValuesAsCriteria()` will return an [AdvancedCriteria](../reference.md#object-advancedcriteria) object instead of a normal [Criteria](../reference.md#type-criteria) object. Each FormItem will produce one [Criterion](../reference.md#object-criterion) affecting the DataSource field specified by [FormItem.criteriaField](#attr-formitemcriteriafield). The criteria produced by the FormItems will be grouped under the logical operator provided by [DynamicForm.operator](DynamicForm.md#attr-dynamicformoperator).
 
 If `operator` is set for some fields but not others, the default operator is "equals" for fields with a valueMap or an optionDataSource, and for fields of type "enum" (or of a type that inherits from "enum"). The default operator for all other fields is controlled by [DynamicForm.defaultSearchOperator](DynamicForm.md#attr-dynamicformdefaultsearchoperator).
 
@@ -2759,6 +1887,51 @@ See also [DataSourceField.valueMap](DataSourceField.md#attr-datasourcefieldvalue
 **Flags**: IRW
 
 ---
+## Attr: FormItem.showRTL
+
+### Description
+When this item is in RTL mode, should its style name include an "RTL" suffix?
+
+### Groups
+
+- RTL
+- appearance
+
+### See Also
+
+- [FormItem.cellStyle](#attr-formitemcellstyle)
+
+**Flags**: IRA
+
+---
+## Attr: FormItem.readOnlyTextBoxStyle
+
+### Description
+Base text box style to apply when this item is [read-only](#method-formitemgetcanedit) and is using [readOnlyDisplay](#attr-formitemreadonlydisplay) "static". If set, overrides the form-level [DynamicForm.readOnlyTextBoxStyle](DynamicForm.md#attr-dynamicformreadonlytextboxstyle) default.
+
+### See Also
+
+- [DynamicForm.readOnlyTextBoxStyle](DynamicForm.md#attr-dynamicformreadonlytextboxstyle)
+
+**Flags**: IRW
+
+---
+## Attr: FormItem.hoverHeight
+
+### Description
+Option to specify a height for any hover shown for this item.
+
+### Groups
+
+- Hovers
+
+### See Also
+
+- [DynamicForm.itemHoverHeight](DynamicForm.md#attr-dynamicformitemhoverheight)
+
+**Flags**: IRW
+
+---
 ## Attr: FormItem.readOnlyWhen
 
 ### Description
@@ -2766,7 +1939,7 @@ Criteria to be evaluated to determine whether this FormItem should be made [read
 
 Criteria are evaluated against the ${isc.DocUtils.linkForRef('method:DynamicForm.getValues','form\\'s current values')} as well as the current [rule context](Canvas.md#attr-canvasrulescope). Criteria are re-evaluated every time form values or the rule context changes, whether by end user action or by programmatic calls.
 
-A basic criteria uses textMatchStyle:"exact". When specified in [Component XML](../kb_topics/componentXML.md#kb-topic-component-xml) this property allows [shorthand formats](../kb_topics/xmlCriteriaShorthand.md#kb-topic-xmlcriteriashorthand) for defining criteria.
+A basic criteria uses textMatchStyle:"exact". When specified in [Component XML](../kb_topics/componentXML.md#kb-topic-component-xml) this property allows [shorthand formats](../reference.md#kb-topic-xmlcriteriashorthand) for defining criteria.
 
 Note: A FormItem using readOnlyWhen must have a [FormItem.name](#attr-formitemname) defined. [FormItem.shouldSaveValue](#attr-formitemshouldsavevalue) can be set to `false` to prevent the field from storing its value into the form's values.
 
@@ -2818,12 +1991,22 @@ Note: Some items provide a user interface allowing the user to explicitly clear 
 **Flags**: IRW
 
 ---
+## Attr: FormItem.stopOnError
+
+### Description
+Indicates that if validation fails, the user should not be allowed to exit the field - focus will be forced back into the field until the error is corrected.
+
+This property defaults to [DynamicForm.stopOnError](DynamicForm.md#attr-dynamicformstoponerror) if unset.
+
+Enabling this property also implies [FormItem.validateOnExit](#attr-formitemvalidateonexit) is automatically enabled. If there are server-based validators on this item, setting this property also implies that [FormItem.synchronousValidation](#attr-formitemsynchronousvalidation) is forced on.
+
+**Flags**: IR
+
+---
 ## Attr: FormItem.titleStyle
 
 ### Description
-Base CSS class name for a regular form-item's title. Note that this is a [FormItemBaseStyle](../reference_2.md#type-formitembasestyle) so will pick up stateful suffixes on focus, disabled state change etc. by default.
-
-When the [title](#attr-formitemtitle) is shown [above](#attr-formitemtitleorientation) the item, the title element is given the [verticalTitleStyle](#attr-formitemverticaltitlestyle) if it's set, as it is in some skins - otherwise, it will fall back to `titleStyle`.
+Base CSS class name for a form item's title. Note that this is a [FormItemBaseStyle](../reference.md#type-formitembasestyle) so will pick up stateful suffixes on focus, disabled state change etc. by default.
 
 Note the appearance of the title is also affected by [DynamicForm.titlePrefix](DynamicForm.md#attr-dynamicformtitleprefix)/[titleSuffix](DynamicForm.md#attr-dynamicformtitlesuffix) and [DynamicForm.requiredTitlePrefix](DynamicForm.md#attr-dynamicformrequiredtitleprefix)/[requiredTitleSuffix](DynamicForm.md#attr-dynamicformrequiredtitlesuffix).
 
@@ -2863,6 +2046,24 @@ Note - for efficiency we cache the associated record once a fetch has been perfo
 **Flags**: IRWA
 
 ---
+## Attr: FormItem.alwaysFetchMissingValues
+
+### Description
+If this form item has a specified [FormItem.optionDataSource](#attr-formitemoptiondatasource) and [FormItem.fetchMissingValues](#attr-formitemfetchmissingvalues) is true, when the item value changes, a fetch will be performed against the optionDataSource to retrieve the related record if [FormItem.displayField](#attr-formitemdisplayfield) is specified and the new item value is not present in any valueMap explicitly specified on the item.
+
+Setting this property to true means that a fetch will occur against the optionDataSource to retrieve the related record even if [FormItem.displayField](#attr-formitemdisplayfield) is unset, or the item has a valueMap which explicitly contains this field's value.
+
+An example of a use case where this might be set would be if [FormItem.formatValue](#method-formitemformatvalue) or [FormItem.formatEditorValue](#method-formitemformateditorvalue) were written to display properties from the [selected record](#method-formitemgetselectedrecord).
+
+Note - for efficiency we cache the associated record once a fetch has been performed, meaning if the value changes, then reverts to a previously seen value, we do not kick off an additional fetch even if this property is true. If necessary this cache may be explicitly invalidated via a call to [FormItem.invalidateDisplayValueCache](#method-formiteminvalidatedisplayvaluecache)
+
+### Groups
+
+- display_values
+
+**Flags**: IRWA
+
+---
 ## Attr: FormItem.canEditOpaqueValues
 
 ### Description
@@ -2898,6 +2099,22 @@ If we're showing icons, should we change their image source to the appropriate _
 **Flags**: IRWA
 
 ---
+## Attr: FormItem.errorIconHeight
+
+### Description
+Height of the error icon, if we're showing icons when validation errors occur.
+
+### Groups
+
+- errorIcon
+
+### See Also
+
+- [FormItem.showErrorIcon](#attr-formitemshowerroricon)
+
+**Flags**: IRW
+
+---
 ## Attr: FormItem.pickerIconHeight
 
 ### Description
@@ -2913,6 +2130,30 @@ Scaleable spriting can be achieved using the [SCSpriteConfig](../reference.md#ty
 **Flags**: IRWA
 
 ---
+## Attr: FormItem.validateOnExit
+
+### Description
+If true, form items will be validated when each item's "editorExit" handler is fired as well as when the entire form is submitted or validated.
+
+Note that this property can also be set at the form level. If true at either level the validator will be fired on editorExit.
+
+### See Also
+
+- [DynamicForm.validateOnExit](DynamicForm.md#attr-dynamicformvalidateonexit)
+
+**Flags**: IRW
+
+---
+## Attr: FormItem.synchronousValidation
+
+### Description
+If enabled, whenever validation is triggered and a request to the server is required, user interactivity will be blocked until the request returns. Can be set for the entire form or individual FormItems.
+
+If false, the form will try to avoid blocking user interaction until it is strictly required. That is until the user attempts to use a FormItem whose state could be affected by a server request that has not yet returned.
+
+**Flags**: IR
+
+---
 ## Attr: FormItem.requiredWhen
 
 ### Description
@@ -2920,7 +2161,7 @@ Criteria to be evaluated to determine whether this FormItem should be [required]
 
 Criteria are evaluated against the ${isc.DocUtils.linkForRef('method:DynamicForm.getValues','form\\'s current values')} as well as the current [rule context](Canvas.md#attr-canvasrulescope). Criteria are re-evaluated every time form values or the rule context changes, whether by end user action or by programmatic calls.
 
-A basic criteria uses textMatchStyle:"exact". When specified in [Component XML](../kb_topics/componentXML.md#kb-topic-component-xml) this property allows [shorthand formats](../kb_topics/xmlCriteriaShorthand.md#kb-topic-xmlcriteriashorthand) for defining criteria.
+A basic criteria uses textMatchStyle:"exact". When specified in [Component XML](../kb_topics/componentXML.md#kb-topic-component-xml) this property allows [shorthand formats](../reference.md#kb-topic-xmlcriteriashorthand) for defining criteria.
 
 Note: A FormItem using requiredWhen must have a [FormItem.name](#attr-formitemname) defined.
 
@@ -2932,6 +2173,18 @@ Note: A FormItem using requiredWhen must have a [FormItem.name](#attr-formitemna
 **Flags**: IR
 
 ---
+## Attr: FormItem.showPickerIcon
+
+### Description
+Should we show a special 'picker' [icon](../reference_2.md#object-formitemicon) for this form item? Picker icons are customizable via [pickerIconProperties](#attr-formitempickericonproperties). By default they will be rendered inside the form item's ["control box"](#attr-formitemcontrolstyle) area. By default clicking the pickerIcon will call [FormItem.showPicker](#method-formitemshowpicker).
+
+### Groups
+
+- pickerIcon
+
+**Flags**: IRW
+
+---
 ## Attr: FormItem.multipleValueSeparator
 
 ### Description
@@ -2940,6 +2193,22 @@ If this item is displaying multiple values, this property will be the string tha
 ### Groups
 
 - display_values
+
+**Flags**: IR
+
+---
+## Attr: FormItem.wrapHintText
+
+### Description
+If this item is showing a [FormItem.hint](#attr-formitemhint), should the hint text be allowed to wrap? Setting this property to `false` will render the hint on a single line without wrapping, expanding the width required to render the item if necessary.
+
+If unset this property will be picked up from the [DynamicForm.wrapHintText](DynamicForm.md#attr-dynamicformwraphinttext) setting.
+
+This setting does not apply to hints that are [shown in field](TextItem.md#attr-textitemshowhintinfield).
+
+### See Also
+
+- [FormItem.minHintWidth](#attr-formitemminhintwidth)
 
 **Flags**: IR
 
@@ -2999,7 +2268,7 @@ Null by default - if set to true or false, overrides [DynamicForm.clipItemTitles
 ## Attr: FormItem.optionDataSource
 
 ### Description
-If set, this FormItem will map stored values to display values as though a [ValueMap](../reference_2.md#type-valuemap) were specified, by fetching records from the specified `optionDataSource` and extracting the [valueField](#attr-formitemvaluefield) and [displayField](#attr-formitemdisplayfield) in loaded records, to derive one valueMap entry per record loaded from the optionDataSource.
+If set, this FormItem will map stored values to display values as though a [ValueMap](../reference.md#type-valuemap) were specified, by fetching records from the specified `optionDataSource` and extracting the [valueField](#attr-formitemvaluefield) and [displayField](#attr-formitemdisplayfield) in loaded records, to derive one valueMap entry per record loaded from the optionDataSource.
 
 With the default setting of [fetchMissingValues](#attr-formitemfetchmissingvalues), fetches will be initiated against the optionDataSource any time the FormItem has a non-null value and no corresponding display value is available. This includes when the form is first initialized, as well as any subsequent calls to [FormItem.setValue](#method-formitemsetvalue), such as may happen when [DynamicForm.editRecord](DynamicForm.md#method-dynamicformeditrecord) is called. Retrieved values are automatically cached by the FormItem.
 
@@ -3015,13 +2284,13 @@ In a databound form, if [FormItem.displayField](#attr-formitemdisplayfield) is s
 
 - [FormItem.invalidateDisplayValueCache](#method-formiteminvalidatedisplayvaluecache)
 
-**Flags**: IRW
+**Flags**: IR
 
 ---
 ## Attr: FormItem.valueIcons
 
 ### Description
-A mapping of logical form item values to [SCImgURL](../reference.md#type-scimgurl)s or the special value "blank", which means that no image will be displayed. If specified, when the form item is set to the value in question, an icon will be displayed with the appropriate source URL.
+A mapping of logical form item values to [SCImgURL](../reference_2.md#type-scimgurl)s or the special value "blank", which means that no image will be displayed. If specified, when the form item is set to the value in question, an icon will be displayed with the appropriate source URL.
 
 ### Groups
 
@@ -3032,6 +2301,36 @@ A mapping of logical form item values to [SCImgURL](../reference.md#type-scimgur
 - [FormItem.getValueIcon](#method-formitemgetvalueicon)
 
 **Flags**: IRW
+
+---
+## Attr: FormItem.valueIconLeftPadding
+
+### Description
+If we're showing a value icon, this attribute governs the amount of space between the icon and the start edge of the form item cell.
+
+**NOTE:** In RTL mode, the valueIconLeftPadding is applied to the _right_ of the value icon.
+
+### Groups
+
+- valueIcons
+
+### See Also
+
+- [FormItem.valueIcons](#attr-formitemvalueicons)
+
+**Flags**: IRW
+
+---
+## Attr: FormItem.iconPrompt
+
+### Description
+Default prompt (and tooltip-text) for icons.
+
+### Groups
+
+- formIcons
+
+**Flags**: IRWA
 
 ---
 ## Attr: FormItem.iconHeight
@@ -3053,7 +2352,85 @@ This text is shown as a tooltip prompt when the cursor hovers over this item and
 
 You can also override [itemHoverHTML](#method-formitemitemhoverhtml) on the item to show a custom hover, whether or not the item is disabled.
 
-Note that when the form is [disabled](Canvas.md#attr-canvasdisabled), or when this item [suppresses hovers](#attr-formitemcanhover), nothing will be shown.
+Note that when the form itself is [disabled](Canvas.md#attr-canvasdisabled), no prompt will be shown.
+
+**Flags**: IRW
+
+---
+## Attr: FormItem.ariaState
+
+### Description
+ARIA state mappings for this formItem. Usually this does not need to be manually set - see [accessibility](../kb_topics/accessibility.md#kb-topic-accessibility--section-508-compliance).
+
+This attribute should be set to a mapping of aria state-names to values - for example to have the "aria-multiline" property be present with a value "true", you'd specify:
+
+```
+  { multiline : true }
+ 
+```
+
+### Groups
+
+- accessibility
+
+**Flags**: IRWA
+
+---
+## Attr: FormItem.implicitSaveOnBlur
+
+### Description
+If set to true, this item's value will be saved immediately when its "editorExit" handler is fired. This attribute works separately from [implicitSave](#attr-formitemimplicitsave), which causes saves during editing, after a [short delay](DynamicForm.md#attr-dynamicformimplicitsavedelay), and when the entire form is submitted.
+
+**Flags**: IRW
+
+---
+## Attr: FormItem.pickerIconSrc
+
+### Description
+If [showPickerIcon](#attr-formitemshowpickericon) is true for this item, this property governs the [src](FormItemIcon.md#attr-formitemiconsrc) of the picker icon image to be displayed.
+
+[Spriting](../kb_topics/skinning.md#kb-topic-skinning--theming) can be used for this image, by setting this property to a [SCSpriteConfig](../reference.md#type-scspriteconfig) formatted string.
+
+### Groups
+
+- pickerIcon
+
+**Flags**: IRWA
+
+---
+## Attr: FormItem.errorIconSrc
+
+### Description
+URL of the image to show as an error icon, if we're showing icons when validation errors occur.
+
+### Groups
+
+- errorIcon
+
+### See Also
+
+- [FormItem.showErrorIcon](#attr-formitemshowerroricon)
+
+**Flags**: IRW
+
+---
+## Attr: FormItem.controlStyle
+
+### Description
+Base CSS class name for a form item's "control box". This is an HTML element which contains the text box and picker icon for the item.
+
+See [FormItem.alwaysShowControlBox](#attr-formitemalwaysshowcontrolbox) for details on when the control box is written out.
+
+See [formItemStyling](../kb_topics/formItemStyling.md#kb-topic-formitem-styling) for an overview of formItem styling, and the [CompoundFormItem_skinning](../reference.md#kb-topic-compoundformitem_skinning) discussion for special skinning considerations.
+
+### Groups
+
+- formItemStyling
+- pickerIcon
+
+### See Also
+
+- [FormItem.cellStyle](#attr-formitemcellstyle)
 
 **Flags**: IRW
 
@@ -3072,6 +2449,20 @@ Note that if this form item has tabIndex -1, neither the form item nor the icons
 - formIcons
 
 **Flags**: IRWA
+
+---
+## Attr: FormItem.ID
+
+### Description
+Global identifier for referring to the formItem in JavaScript. The ID property is optional if you do not need to refer to the widget from JavaScript, or can refer to it indirectly (for example, via `form.getItem("_itemName_")`).
+
+An internal, unique ID will automatically be created upon instantiation for any formItem where one is not provided.
+
+### Groups
+
+- basics
+
+**Flags**: IRW
 
 ---
 ## Attr: FormItem.originalValueMessage
@@ -3103,7 +2494,7 @@ If unset, and the locator has no specified name, default behavior is to identify
 
 ### See Also
 
-- [LocatorStrategy](../reference_2.md#type-locatorstrategy)
+- [LocatorStrategy](../reference.md#type-locatorstrategy)
 
 **Flags**: IRWA
 
@@ -3177,6 +2568,59 @@ If unspecified, a timeFormatter may be defined [at the component level](DynamicF
 **Flags**: IRWA
 
 ---
+## Attr: FormItem.allowExpressions
+
+### Description
+For a form that produces filter criteria (see [form.getValuesAsCriteria()](DynamicForm.md#method-dynamicformgetvaluesascriteria)), allows the user to type in simple expressions to cause filtering with that operator. For example, entering ">5" means values greater than 5, and ">0 and <5" means values between 0 and 5.
+
+The following table lists character sequences that can be entered as a prefix to a value, and the corresponding [operator](../reference.md#type-operatorid) that will be used.
+
+| Prefix | Operator |
+|---|---|
+| < | lessThan |
+| > | greaterThan |
+| <= | lessThanOrEqual |
+| >= | greaterThanOrEqual |
+| someValue...someValue | betweenInclusive |
+| ! | notEqual |
+| ^ | startsWith |
+| \| | endsWith |
+| !^ | notStartsWith plus logical not |
+| !@ | notEndsWith plus logical not |
+| ~ | contains |
+| !~ | notContains |
+| $ | isBlank |
+| !$ | notBlank |
+| # | isNull |
+| !# | isNotNull |
+| == | exact match (for fields where 'contains' is the default) |
+
+Two further special notations are allowed:
+
+*   /_regex_/ means the value is taken as a regular expression and applied via the "regexp" operator
+*   \=._fieldName_ means the value should match the value of another field. Either the user-visible title of the field (field.title) or the field's name (field.name) may be used.
+
+In all cases, if an operator is disallowed for the field (via [field.validOperators](DataSourceField.md#attr-datasourcefieldvalidoperators) at either the dataSource or field level), the operator character is ignored (treated as part of a literal value).
+
+By default, the case-insensitive version of the operator is used (eg, startsWith will actually use "iStartsWith"). To avoid this, explicitly set item.operator (the default operator) to any case sensitive operator (eg "equals" or "contains") and case sensitive operators will be used for user-entered expressions.
+
+Compound expressions (including "and" and "or") are allowed only for numeric or date/time types.
+
+Note that if the user does not type a prefix or use other special notation as described above, the operator specified via [FormItem.operator](#attr-formitemoperator) is used, or if `formItem.operator` is unspecified, a default operator chosen as described under [FormItem.operator](#attr-formitemoperator).
+
+Also note that whatever you enter will be used literally, including any whitespace characters. For example if you input '== China ' then ' China ' will be the value.
+
+The `allowExpression` behavior can be enabled for every field in a form via [DynamicForm.allowExpressions](DynamicForm.md#attr-dynamicformallowexpressions).
+
+Finally, note that, like [FormItem.operator](#attr-formitemoperator), enabling `allowExpressions:true` causes [form.getValuesAsCriteria()](DynamicForm.md#method-dynamicformgetvaluesascriteria)) to return [AdvancedCriteria](../reference.md#object-advancedcriteria).
+
+### Groups
+
+- advancedFilter
+
+**Flags**: IRW
+
+---
 ## Attr: FormItem.endRow
 
 ### Description
@@ -3186,25 +2630,22 @@ Whether this item should end the row it's in in the form layout
 
 - formLayout
 
-### See Also
-
-- [FormItem.linearEndRow](#attr-formitemlinearendrow)
-
 **Flags**: IRW
 
 ---
-## Attr: FormItem.titleSuffix
+## Attr: FormItem.readOnlyDisplay
 
 ### Description
-The string appended to this item's title. The [DynamicForm.titleSuffix](DynamicForm.md#attr-dynamicformtitlesuffix) is used by default.
+If this item is [read-only](#method-formitemgetcanedit), how should this item be displayed to the user? If set, overrides the form-level [DynamicForm.readOnlyDisplay](DynamicForm.md#attr-dynamicformreadonlydisplay) default.
 
 ### Groups
 
-- title
+- appearance
+- readOnly
 
 ### See Also
 
-- [FormItem.requiredTitleSuffix](#attr-formitemrequiredtitlesuffix)
+- [DynamicForm.readOnlyDisplay](DynamicForm.md#attr-dynamicformreadonlydisplay)
 
 **Flags**: IRW
 
@@ -3219,6 +2660,44 @@ If this item has a specified `optionDataSource`, this attribute may be set to sp
 - databinding
 
 **Flags**: IRA
+
+---
+## Attr: FormItem.height
+
+### Description
+Height of the FormItem. Can be either a number indicating a fixed height in pixels, a percentage indicating a percentage of the overall form's height, or "\*" indicating take whatever remaining space is available. See the [formLayout](../kb_topics/formLayout.md#kb-topic-form-layout) overview for details.
+
+For form items having a [picker icon](#attr-formitemshowpickericon) (e.g. [SelectItem](SelectItem.md#class-selectitem), [ComboBoxItem](ComboBoxItem.md#class-comboboxitem)) and [SpinnerItem](SpinnerItem.md#class-spinneritem)s, if there is no explicit [FormItem.pickerIconHeight](#attr-formitempickericonheight), the pickerIcon will be sized to match the available space based on the specified item height.  
+Note that if spriting is being used, and the image to be displayed in these icons is specified using css properties such as `background-image`, `background-size`, changing this value may result in an unexpected appearance as the image will not scale.  
+Scaleable spriting can be achieved using the [SCSpriteConfig](../reference.md#type-scspriteconfig) format. See the section on spriting in the [skinning overview](../kb_topics/skinning.md#kb-topic-skinning--theming) for further information.  
+Alternatively, the [pickerIconStyle](#attr-formitempickericonstyle) could be changed to a custom CSS style name, and in the case of [SpinnerItem](SpinnerItem.md#class-spinneritem)s, the [baseStyle](FormItemIcon.md#attr-formitemiconbasestyle) and [src](FormItemIcon.md#attr-formitemiconsrc) of the [SpinnerItem.increaseIcon](SpinnerItem.md#attr-spinneritemincreaseicon) and [SpinnerItem.decreaseIcon](SpinnerItem.md#attr-spinneritemdecreaseicon) AutoChildren could be customized.
+
+Note that when FormItem is rendered as read-only with `readOnlyDisplay` as "static" the property [FormItem.staticHeight](#attr-formitemstaticheight) is used instead.
+
+### Groups
+
+- formLayout
+
+### See Also
+
+- [formLayout](../kb_topics/formLayout.md#kb-topic-form-layout)
+- [FormItem.width](#attr-formitemwidth)
+- [DynamicForm.itemLayout](DynamicForm.md#attr-dynamicformitemlayout)
+
+**Flags**: IRW
+
+---
+## Attr: FormItem.hoverDelay
+
+### Description
+If specified, this is the number of milliseconds to wait between the user rolling over this form item, and triggering any hover action for it.  
+If not specified `this.form.itemHoverDelay` will be used instead.
+
+### Groups
+
+- Hovers
+
+**Flags**: IRWA
 
 ---
 ## Attr: FormItem.decimalPrecision
@@ -3239,6 +2718,34 @@ A number is always shown with its original precision when edited.
 **Flags**: IRW
 
 ---
+## Attr: FormItem.showDisabledIconsOnFocus
+
+### Description
+If [FormItem.showIconsOnFocus](#attr-formitemshowiconsonfocus) is true, should icons marked as disabled be shown on focus?
+
+Default setting is `false` - it is not commonly desirable to present a user with a disabled icon on focus.
+
+Can be overridden at the icon level by [FormItemIcon.showDisabledOnFocus](FormItemIcon.md#attr-formitemiconshowdisabledonfocus)
+
+### Groups
+
+- formIcons
+
+**Flags**: IRWA
+
+---
+## Attr: FormItem.pickerIconProperties
+
+### Description
+If [showPickerIcon](#attr-formitemshowpickericon) is true for this item, this block of properties will be applied to the pickerIcon. Allows for advanced customization of this icon.
+
+### Groups
+
+- pickerIcon
+
+**Flags**: IRWA
+
+---
 ## Attr: FormItem.printReadOnlyTextBoxStyle
 
 ### Description
@@ -3250,6 +2757,73 @@ If specified this will take precedence over [FormItem.printTextBoxStyle](#attr-f
 
 - printing
 - formItemStyling
+
+**Flags**: IRW
+
+---
+## Attr: FormItem.applyAlignToText
+
+### Description
+If the [textAlign](#attr-formitemtextalign) is unset, should the [align](#attr-formitemalign) setting, if set, be used for this item's `textAlign`?
+
+`applyAlignToText` defaults to false for most form item types. It defaults to true for [StaticTextItem](StaticTextItem.md#class-statictextitem) and [HeaderItem](HeaderItem.md#class-headeritem), which are text-based form item types that do not have a natural distinction between the item and its cell.
+
+### Groups
+
+- appearance
+
+**Flags**: IRA
+
+---
+## Attr: FormItem.showDeletions
+
+### Description
+For items that support [multiple values](SelectItem.md#attr-selectitemmultiple), this causes distinct CSS styling to be applied to values that the user has unselected.
+
+Only allowed when [showPending](#attr-formitemshowpending) is `true`. Defaults to the form-level [DynamicForm.showDeletions](DynamicForm.md#attr-dynamicformshowdeletions) setting if set; otherwise, to the value of `showPending`.
+
+Only supported for [MultiComboBoxItem](MultiComboBoxItem.md#class-multicomboboxitem) and for [SelectItem](SelectItem.md#class-selectitem) when [multiple:true](SelectItem.md#attr-selectitemmultiple) is set. The specific default behaviors are:
+
+*   For `MultiComboBoxItem`, buttons corresponding to deleted values (also called "deselected buttons") will be disabled and have their [Button.baseStyle](Button.md#attr-buttonbasestyle) set to [MultiComboBoxItem.deselectedButtonStyle](MultiComboBoxItem.md#attr-multicomboboxitemdeselectedbuttonstyle).
+*   For a multiple `SelectItem`, [FormItem.valueDeselectedCSSText](#attr-formitemvaluedeselectedcsstext) is applied to any deleted value in the text box. In addition, "Deselected" is appended to the cells' [ListGrid.baseStyle](ListGrid_1.md#attr-listgridbasestyle) for cells in the pickList menu corresponding to deleted values.
+
+**NOTE:** When a value is shown as deleted, this is not reflected to screen readers, and screen readers are instructed to ignore the deleted value. Therefore, it is not advisable to design a UI where it is necessary for the user to know whether a value is shown as deleted in order to work with the form.
+
+### See Also
+
+- [DynamicForm.showDeletions](DynamicForm.md#attr-dynamicformshowdeletions)
+
+**Flags**: IRA
+
+---
+## Attr: FormItem.validOperators
+
+### Description
+Array of valid filtering operators (eg "greaterThan") that are legal for this FormItem.
+
+Applies only to form/formItem when [FormItem.allowExpressions](#attr-formitemallowexpressions) is true, allowing the user to input expressions.
+
+### Groups
+
+- advancedFilter
+
+**Flags**: IR
+
+---
+## Attr: FormItem.valueIconRightPadding
+
+### Description
+If we're showing a value icon, this attribute governs the amount of space between the icon and the value text.
+
+**NOTE:** In RTL mode, the valueIconRightPadding is applied to the _left_ of the value icon.
+
+### Groups
+
+- valueIcons
+
+### See Also
+
+- [FormItem.valueIcons](#attr-formitemvalueicons)
 
 **Flags**: IRW
 
@@ -3280,6 +2854,41 @@ Note that not all items can be disabled, and not all browsers show an obvious di
 **Flags**: IRW
 
 ---
+## Attr: FormItem.visibleWhen
+
+### Description
+Criteria to be evaluated to determine whether this FormItem should be visible.
+
+Criteria are evaluated against the ${isc.DocUtils.linkForRef('method:DynamicForm.getValues','form\\'s current values')} as well as the current [rule context](Canvas.md#attr-canvasrulescope). Criteria are re-evaluated every time form values or the rule context changes, whether by end user action or by programmatic calls.
+
+If both [FormItem.showIf](#method-formitemshowif) and `visibleWhen` are specified, `visibleWhen` is ignored.
+
+A basic criteria uses textMatchStyle:"exact". When specified in [Component XML](../kb_topics/componentXML.md#kb-topic-component-xml) this property allows [shorthand formats](../reference.md#kb-topic-xmlcriteriashorthand) for defining criteria.
+
+Note: A FormItem using visibleWhen must have a [FormItem.name](#attr-formitemname) defined. [FormItem.shouldSaveValue](#attr-formitemshouldsavevalue) can be set to `false` to prevent the field from storing its value into the form's values.
+
+### Groups
+
+- ruleCriteria
+- appearance
+
+**Flags**: IR
+
+---
+## Attr: FormItem.autoCompleteKeywords
+
+### Description
+Set of autocompletion keywords to be used with the native "autocomplete" attribute, in accordance with the [HTML5 Autofill specification](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill).
+
+When autoCompleteKeywords are provided, the [FormItem.autoComplete](#attr-formitemautocomplete) setting is ignored.
+
+### Groups
+
+- autoComplete
+
+**Flags**: IR
+
+---
 ## Attr: FormItem.clipStaticValue
 
 ### Description
@@ -3290,6 +2899,39 @@ If this item is [read-only](#method-formitemgetcanedit) and is using [readOnlyDi
 - [DynamicForm.clipStaticValue](DynamicForm.md#attr-dynamicformclipstaticvalue)
 
 **Flags**: IR
+
+---
+## Attr: FormItem.implicitSave
+
+### Description
+When true, indicates that changes to this item will cause an automatic save on a [delay](DynamicForm.md#attr-dynamicformimplicitsavedelay), as well as when the entire form is submitted. If implicitSaveOnBlur is set to true on either this [formItem](#attr-formitemimplicitsaveonblur) or it's [form](DynamicForm.md#attr-dynamicformimplicitsaveonblur), changes will also be automatically saved immediately on editorExit.
+
+**Flags**: IRW
+
+---
+## Attr: FormItem.showErrorText
+
+### Description
+[showErrorIcons](DynamicForm.md#attr-dynamicformshowerroricons), [showErrorText](DynamicForm.md#attr-dynamicformshowerrortext), and [showErrorStyle](DynamicForm.md#attr-dynamicformshowerrorstyle) control how validation errors are displayed when they are displayed inline in the form (next to the form item where there is a validation error). To instead display all errors at the top of the form, set [showInlineErrors](DynamicForm.md#attr-dynamicformshowinlineerrors):false.
+
+`showErrorIcons`, `showErrorText` and `showErrorStyle` are all boolean properties, and can be set on a DynamicForm to control the behavior form-wide, or set on individual FormItems.
+
+The HTML displayed next to a form item with errors is generated by [FormItem.getErrorHTML](#method-formitemgeterrorhtml). The default implementation of that method respects `showErrorIcons` and `showErrorText` as follows:
+
+`showErrorIcons`, or `showErrorIcon` at the FormItem level controls whether an error icon should appear next to fields which have validation errors. The icon's appearance is governed by [FormItem.errorIconSrc](#attr-formitemerroriconsrc), [FormItem.errorIconWidth](#attr-formitemerroriconwidth) and [FormItem.errorIconHeight](#attr-formitemerroriconheight)
+
+`showErrorText` determines whether the text of the validation error should be displayed next to fields which have validation errors. The attribute [DynamicForm.showTitlesWithErrorMessages](DynamicForm.md#attr-dynamicformshowtitleswitherrormessages) may be set to prefix error messages with the form item's title + `":"` (may be desired if the item has [FormItem.showTitle](#attr-formitemshowtitle) set to false).
+
+[DynamicForm.errorOrientation](DynamicForm.md#attr-dynamicformerrororientation) controls where the error HTML should appear relative to form items. Therefore the combination of [FormItem.showErrorText](#attr-formitemshowerrortext)`:false` and [FormItem.errorOrientation](#attr-formitemerrororientation)`:"left"` creates a compact validation error display consisting of just an icon, to the left of the item with the error message available via a hover (similar appearance to ListGrid validation error display).
+
+In addition to this, `showErrorStyle` determines whether fields with validation errors should have special styling applied to them. Error styling is achieved by applying suffixes to existing styling applied to various parts of the form item. See [FormItemBaseStyle](../reference.md#type-formitembasestyle) for more on this.
+
+### Groups
+
+- validation
+- appearance
+
+**Flags**: IRW
 
 ---
 ## Attr: FormItem.redrawOnChange
@@ -3316,6 +2958,30 @@ Allows the [selectOnFocus](DynamicForm.md#attr-dynamicformselectonfocus) behavio
 **Flags**: IRW
 
 ---
+## Attr: FormItem.showImageAsURL
+
+### Description
+For fields of [type:"image"](../reference_2.md#type-formitemtype), if the field is non editable, and being displayed with [readOnlyDisplay:"static"](#attr-formitemreadonlydisplay), should the value (URL) be displayed as text, or should an image be rendered?
+
+If unset, [DynamicForm.showImageAsURL](DynamicForm.md#attr-dynamicformshowimageasurl) will be consulted instead.
+
+**Flags**: IRW
+
+---
+## Attr: FormItem.globalTabIndex
+
+### Description
+TabIndex for the form item within the page. Takes precedence over any local tab index specified as [item.tabIndex](#attr-formitemtabindex).
+
+Use of this API is **extremely** advanced and essentially implies taking over management of tab index assignment for all components on the page.
+
+### Groups
+
+- focus
+
+**Flags**: IRWA
+
+---
 ## Attr: FormItem.pickerIconDefaults
 
 ### Description
@@ -3326,14 +2992,6 @@ Block of default properties to apply to the pickerIcon for this widget. Intended
 - pickerIcon
 
 **Flags**: IRWA
-
----
-## Attr: FormItem.errorIconProperties
-
-### Description
-[Icon-properties](../reference.md#object-formitemicon) to apply to the [error-icon](#attr-formitemshowerroricon) when [FormItem.showErrorIconInline](#attr-formitemshowerroriconinline) is true.
-
-**Flags**: IRA
 
 ---
 ## Attr: FormItem.showOver
@@ -3367,6 +3025,18 @@ Custom CSS text to be applied to cells with pending edits that have not yet been
 **Flags**: IRWA
 
 ---
+## Attr: FormItem.readOnlyCanSelectText
+
+### Description
+For items showing a text value with [FormItem.canEdit](#attr-formitemcanedit) set to false, should the user be able to select the text in the item?
+
+Default behavior allows selection if [FormItem.readOnlyDisplay](#attr-formitemreadonlydisplay) is `"static"` or `"readOnly"` \[but not `"disabled"`\]. Developers may add or remove ReadOnlyDisplayAppearance values to change this behavior.
+
+Note that this does not apply to [disabled items](#attr-formitemdisabled), where text selection is never enabled
+
+**Flags**: IRW
+
+---
 ## Attr: FormItem.canFocus
 
 ### Description
@@ -3388,7 +3058,7 @@ Read-only appearance may be specified via [FormItem.readOnlyDisplay](#attr-formi
 
 Note that for forms bound to a [DataSource](DataSource.md#class-datasource), if this property is not explicitly set at the item level, its default value will match the [DynamicForm.canEditFieldAttribute](DynamicForm.md#attr-dynamicformcaneditfieldattribute) on the associated dataSource field.
 
-Developers should also be aware that the [FormItem.readOnlyDisplay](#attr-formitemreadonlydisplay) attribute is unrelated to the [DataSourceField.readOnlyEditorType](DataSourceField.md#attr-datasourcefieldreadonlyeditortype) attribute. When a DynamicForm is first bound to a dataSource, for [canEdit:false](DataSourceField.md#attr-datasourcefieldcanedit) DataSourceFields, [DataSourceField.readOnlyEditorType](DataSourceField.md#attr-datasourcefieldreadonlyeditortype) will determine what [FormItemType](../reference.md#type-formitemtype) should be created for the field. Once created, a FormItem's type can not be changed. Setting [FormItem.canEdit](#attr-formitemcanedit) at runtime will simply change the appearance of the item to allow or disallow editing of the item.
+Developers should also be aware that the [FormItem.readOnlyDisplay](#attr-formitemreadonlydisplay) attribute is unrelated to the [DataSourceField.readOnlyEditorType](DataSourceField.md#attr-datasourcefieldreadonlyeditortype) attribute. When a DynamicForm is first bound to a dataSource, for [canEdit:false](DataSourceField.md#attr-datasourcefieldcanedit) DataSourceFields, [DataSourceField.readOnlyEditorType](DataSourceField.md#attr-datasourcefieldreadonlyeditortype) will determine what [FormItemType](../reference_2.md#type-formitemtype) should be created for the field. Once created, a FormItem's type can not be changed. Setting [FormItem.canEdit](#attr-formitemcanedit) at runtime will simply change the appearance of the item to allow or disallow editing of the item.
 
 ### Groups
 
@@ -3411,18 +3081,58 @@ FormItem.create() should never be called directly, instead, create a [DynamicFor
 ## ClassMethod: FormItem.getPickerIcon
 
 ### Description
-Returns a [FormItemIcon](../reference.md#object-formitemicon) for a standard picker with skin-specific settings.
+Returns a [FormItemIcon](../reference_2.md#object-formitemicon) for a standard picker with skin-specific settings.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | pickerName | [PickerIconName](../reference.md#type-pickericonname) | false | — | Name of picker icon |
-| properties | [FormItemIcon Properties](#type-formitemicon-properties) | true | — | Properties to apply to new picker icon |
+| properties | [FormItemIcon](#type-formitemicon) | true | — | Properties to apply to new picker icon |
 
 ### Returns
 
-`[FormItemIcon Properties](#type-formitemicon-properties)` — the icon for picker
+`[FormItemIcon](#type-formitemicon)` — the icon for picker
+
+---
+## Method: FormItem.getVisibleTitleWidth
+
+### Description
+Returns the visible width of this item's title in px. If that is not applicable (for example, the form item has no title) or cannot be determined (for example, the form is not drawn), returns 0.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| labelOnly | [Boolean](#type-boolean) | false | — | If true, returns the visible width of the title text only; if false (the default) returns the width of the title cell |
+
+### Returns
+
+`[number](#type-number)` — width of the form item's title in px
+
+### Groups
+
+- sizing
+
+**Flags**: A
+
+---
+## Method: FormItem.editorEnter
+
+### Description
+Notification method fired when the user enters this formItem. Differs from [FormItem.focus](#method-formitemfocus) in that while `focus` and `blur` may fire multiple as the user navigates sub elements of an item (such as interacting with a pick list), `editorEnter` will typically fire once when the user starts to edit this item as a whole, and once when the user moves onto a different item or component
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| form | [DynamicForm](#type-dynamicform) | false | — | form containing this item |
+| item | [FormItem](#type-formitem) | false | — | form item recieving focus |
+| value | [Any](#type-any) | false | — | current item value. |
+
+### Groups
+
+- eventHandling
 
 ---
 ## Method: FormItem.show
@@ -3431,6 +3141,36 @@ Returns a [FormItemIcon](../reference.md#object-formitemicon) for a standard pic
 Show this form item.
 
 This will cause the form to redraw. If this item had an item.showIf expression, it will be destroyed.
+
+---
+## Method: FormItem.disable
+
+### Description
+Set this item to be disabled at runtime.
+
+### Groups
+
+- enable
+
+### See Also
+
+- [FormItem.disabled](#attr-formitemdisabled)
+
+---
+## Method: FormItem.setErrors
+
+### Description
+Set the error message(s) for this item
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| errors | [String](#type-string)|[Array of String](#type-array-of-string) | false | — | error message(s) |
+
+### Groups
+
+- errorHandling
 
 ---
 ## Method: FormItem.getPageTop
@@ -3492,8 +3232,6 @@ If defined, this method should return the HTML to display in a hover canvas when
 
 If not defined, [DynamicForm.titleHoverHTML](DynamicForm.md#method-dynamicformtitlehoverhtml) will be evaluated to determine hover content instead.
 
-If [FormItem.canHover](#attr-formitemcanhover) is set to false, this method is not called.
-
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
@@ -3511,7 +3249,6 @@ If [FormItem.canHover](#attr-formitemcanhover) is set to false, this method is n
 
 ### See Also
 
-- [FormItem.canHover](#attr-formitemcanhover)
 - [FormItem.prompt](#attr-formitemprompt)
 - [FormItem.titleHover](#method-formitemtitlehover)
 - [FormItem.itemHoverHTML](#method-formitemitemhoverhtml)
@@ -3589,6 +3326,46 @@ If this formItem is part of a [ListGrid](ListGrid_1.md#class-listgrid)'s [inline
 `[Integer](../reference_2.md#type-integer)` — The grid column number being edited by this formItem, or null, as described above
 
 ---
+## Method: FormItem.getCanFocus
+
+### Description
+Returns true for items that can accept keyboard focus such as data items ([TextItems](TextItem.md#class-textitem), [TextAreaItems](TextAreaItem.md#class-textareaitem), etc), [CanvasItems](CanvasItem.md#class-canvasitem) with a focusable canvas, or items where [FormItem.canFocus](#attr-formitemcanfocus) was explicitly set to true.
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — true if the form item is visible
+
+### Groups
+
+- focus
+
+---
+## Method: FormItem.getPixelHeight
+
+### Description
+Returns the specified [FormItem.height](#attr-formitemheight) of this formItem in pixels. For heights specified as a percentage value or `"*"`, the pixel height may not be available prior to the item being drawn. In cases where the height has not yet been resolved to a pixel value, this method will return `-1`.
+
+### Returns
+
+`[int](../reference.md#type-int)` — Specified height resolved to a pixel value.
+
+---
+## Method: FormItem.getSelectedRecord
+
+### Description
+Get the record returned from the [FormItem.optionDataSource](#attr-formitemoptiondatasource) when [fetchMissingValues](#attr-formitemfetchmissingvalues) is true, and the missing value is fetched.
+
+[FormItem.fetchMissingValues](#attr-formitemfetchmissingvalues) kicks off the fetch when the form item is initialized with a non null value or when setValue() is called on the item. Note that this method will return null before the fetch completes, or if no record is found in the optionDataSource matching the underlying value.
+
+### Returns
+
+`[ListGridRecord](#type-listgridrecord)` — selected record
+
+### Groups
+
+- display_values
+
+---
 ## Method: FormItem.hideIcon
 
 ### Description
@@ -3601,18 +3378,44 @@ This method will hide some icon in this item's [FormItem.icons](#attr-formitemic
 | icon | [Identifier](../reference.md#type-identifier) | false | — | [name](FormItemIcon.md#attr-formitemiconname) of the icon to be hidden. |
 
 ---
-## Method: FormItem.getValueAsFloat
+## Method: FormItem.shouldApplyHeightToTextBox
 
 ### Description
-Return the value tracked by this form item as a Float. If the value cannot be parsed to a valid float, null will be returned.
+If [FormItem.height](#attr-formitemheight) is specified, should it be applied to the item's text box element? If this method returns false, the text box will not have an explicit height applied, though the containing cell will be sized to accommodate any specified height.
+
+This is used in cases where the text box does not have distinctive styling (for example in standard [StaticTextItem](StaticTextItem.md#class-statictextitem)s). As the textBox has no explicit height, it fits the content. Since the text box is not visually distinct to the user, this makes [FormItem.vAlign](#attr-formitemvalign) behave as expected with the text value of the item being vertically aligned within the cell.
+
+Default implementation will return [FormItem.applyHeightToTextBox](#attr-formitemapplyheighttotextbox) if explicitly set otherwise `false` if [FormItem.readOnlyDisplay](#attr-formitemreadonlydisplay) is set to `"static"` and the item is [not editable](#method-formitemgetcanedit), otherwise true.
 
 ### Returns
 
-`[Float](../reference.md#type-float)` — value of this element
+`[boolean](../reference.md#type-boolean)` — true if the height should be written into the items' text box.
 
-### See Also
+**Flags**: A
 
-- [FormItem.getValue](#method-formitemgetvalue)
+---
+## Method: FormItem.setLeft
+
+### Description
+For a form with [itemLayout](DynamicForm.md#attr-dynamicformitemlayout):"absolute" only, set the left coordinate of this form item.
+
+Causes the form to redraw.
+
+**Flags**: A
+
+---
+## Method: FormItem.getPageLeft
+
+### Description
+Returns the drawn page-left coordinate of this form item in pixels.
+
+### Returns
+
+`[int](../reference.md#type-int)` — page-left coordinate in px
+
+### Groups
+
+- positioning
 
 ---
 ## Method: FormItem.getIconTabPosition
@@ -3625,6 +3428,26 @@ Default implementation returns the index of the icon in the icons array, (plus o
 ### Returns
 
 `[Integer](../reference_2.md#type-integer)` — desired position in the tab-order within this item's sub-elements
+
+---
+## Method: FormItem.isDisabled
+
+### Description
+Is this item disabled?
+
+### Returns
+
+`[Boolean](#type-boolean)` — disabledtrue if this item is be disabled
+
+### Groups
+
+- enable
+
+### See Also
+
+- [FormItem.disabled](#attr-formitemdisabled)
+
+**Flags**: A
 
 ---
 ## Method: FormItem.hide
@@ -3651,6 +3474,16 @@ Return the name for the this formItem.
 **Flags**: A
 
 ---
+## Method: FormItem.getPixelWidth
+
+### Description
+Returns the specified [FormItem.width](#attr-formitemwidth) of this formItem in pixels. For widths specified as a percentage value or `"*"`, the pixel width may not be available prior to the item being drawn. In cases where the width has not yet been resolved to a pixel value, this method will return `-1`.
+
+### Returns
+
+`[int](../reference.md#type-int)` — Specified width resolved to a pixel value.
+
+---
 ## Method: FormItem.getValueIcon
 
 ### Description
@@ -3660,7 +3493,7 @@ The special value "blank" means that no image will be displayed. This is typical
 
 Takes precedence over [FormItem.valueIcons](#attr-formitemvalueicons)
 
-The returned [SCImgURL](../reference.md#type-scimgurl), if not `null` or "blank", will be suffixed with [FormItem.imageURLSuffix](#attr-formitemimageurlsuffix).
+The returned [SCImgURL](../reference_2.md#type-scimgurl), if not `null` or "blank", will be suffixed with [FormItem.imageURLSuffix](#attr-formitemimageurlsuffix).
 
 ### Parameters
 
@@ -3670,7 +3503,7 @@ The returned [SCImgURL](../reference.md#type-scimgurl), if not `null` or "blank"
 
 ### Returns
 
-`[SCImgURL](../reference.md#type-scimgurl)` — the image source or `null` if no value icon should be displayed.
+`[SCImgURL](../reference_2.md#type-scimgurl)` — the image source or `null` if no value icon should be displayed.
 
 ### Groups
 
@@ -3679,6 +3512,35 @@ The returned [SCImgURL](../reference.md#type-scimgurl), if not `null` or "blank"
 ### See Also
 
 - [FormItem.getPrintValueIcon](#method-formitemgetprintvalueicon)
+
+---
+## Method: FormItem.titleClick
+
+### Description
+Notification method fired when the user clicks the title for this item
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| form | [DynamicForm](#type-dynamicform) | false | — | the managing DynamicForm instance |
+| item | [FormItem](#type-formitem) | false | — | the form item whose title was clicked |
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — Return false to cancel the click event. This will prevent the event from bubbling up, suppressing [click](Canvas.md#method-canvasclick) on the form containing this item.
+
+---
+## Method: FormItem.setHint
+
+### Description
+Sets the [hint](#attr-formitemhint) for this item.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| newHint | [HTMLString](../reference.md#type-htmlstring) | false | — | new hint for the item. |
 
 ---
 ## Method: FormItem.focusInItem
@@ -3690,6 +3552,38 @@ Move the keyboard focus into this item's focusable element
 
 - eventHandling
 - focus
+
+---
+## Method: FormItem.getDisplayFieldName
+
+### Description
+Returns the `displayField` for this item.
+
+Behavior varies based on the configuration of this item, as follows:
+
+*   If this item has an [FormItem.optionDataSource](#attr-formitemoptiondatasource) and an explicit [FormItem.foreignDisplayField](#attr-formitemforeigndisplayfield) is specified, this will be returned.
+*   Otherwise if an explicit [FormItem.displayField](#attr-formitemdisplayfield) is specified it will be returned by default. If the `displayField` was specified on the underlying dataSource field, and no matching field is present in the [FormItem.optionDataSource](#attr-formitemoptiondatasource) for the item, we avoid returning the specified displayField value and instead return the title field of the option DataSource. We do this to avoid confusion for the case where the displayField is intended as a display-field value for showing another field value within the same record in the underlying dataSource only.
+*   If no explicit foreignDisplayField or displayField specification was found, and the [FormItem.valueField](#attr-formitemvaluefield) for this item is hidden in the [FormItem.optionDataSource](#attr-formitemoptiondatasource), this method will return the title field for the `optionDataSource`.
+
+### Returns
+
+`[FieldName](../reference.md#type-fieldname)` — display field name, or null if there is no separate display field to use.
+
+---
+## Method: FormItem.redraw
+
+### Description
+Redraw this form item.
+
+Depending on the item and the [FormItem.containerWidget](#attr-formitemcontainerwidget) it's embedded in, this may redraw this particular item or require a redraw of all items in the form.
+
+Do not call this method unless the documentation directs you to do so. Calling `redraw()` unnecessarily has significant performance consequences.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| reason | [String](#type-string) | true | — | optional reason for performing the redraw, which may appear in diagnostic logs if enabled |
 
 ---
 ## Method: FormItem.setValue
@@ -3706,6 +3600,42 @@ NOTE: for valueMap'd items, newValue should be data value not displayed value
 | newValue | [Any](#type-any) | false | — | value to set the element to |
 
 ---
+## Method: FormItem.setShowDisabled
+
+### Description
+Setter method for [FormItem.showDisabled](#attr-formitemshowdisabled)
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| showDisabled | [boolean](../reference.md#type-boolean) | false | — | new showDisabled setting |
+
+---
+## Method: FormItem.setPrompt
+
+### Description
+Sets the [prompt](#attr-formitemprompt) for this item.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| newPrompt | [HTMLString](../reference.md#type-htmlstring) | false | — | new prompt for the item. |
+
+---
+## Method: FormItem.shouldSaveOnEnter
+
+### Description
+Returns true if 'Enter' key presses in this formItem should allow a saveOnEnter: true parent form to save it's data. The default implementation returns the value of [FormItem.saveOnEnter](#attr-formitemsaveonenter) or false if that property is unset.
+
+### Returns
+
+`[Boolean](#type-boolean)` — boolean indicating whether saving should be allowed to proceed
+
+**Flags**: A
+
+---
 ## Method: FormItem.titleDoubleClick
 
 ### Description
@@ -3720,7 +3650,17 @@ Notification method fired when the user double-clicks the title for this item
 
 ### Returns
 
-`[Boolean](#type-boolean)` — Return false to cancel the doubleclick event. This will prevent the event from bubbling up, suppressing [doubleClick](Canvas.md#method-canvasdoubleclick) on the form containing this item.
+`[boolean](../reference.md#type-boolean)` — Return false to cancel the doubleclick event. This will prevent the event from bubbling up, suppressing [doubleClick](Canvas.md#method-canvasdoubleclick) on the form containing this item.
+
+---
+## Method: FormItem.getCursorPosition
+
+### Description
+For text-based items, this method returns the index of the start of the current selection if the item currently has the focus (if no text is selected, this equates to the current position of the text editing cursor). See [TextItem.getSelectionRange](TextItem.md#method-textitemgetselectionrange) for details of what is returned if the item does not have the focus (note, it is important to read this documentation, because the behavior when the item does not have the focus varies by browser)
+
+### Returns
+
+`[Integer](../reference_2.md#type-integer)` — Index of the current or past selection's start point
 
 ---
 ## Method: FormItem.canEditCriterion
@@ -3774,15 +3714,42 @@ StringMethod fired in response to a keydown while focused in this form item.
 |------|------|----------|---------|-------------|
 | item | [FormItem](#type-formitem) | false | — | Item over which the keydown occurred |
 | form | [DynamicForm](#type-dynamicform) | false | — | Pointer to the item's form |
-| keyName | [KeyName](../reference_2.md#type-keyname) | false | — | Name of the key pressed (Example: `"A"`, `"Enter"`) |
+| keyName | [KeyName](../reference.md#type-keyname) | false | — | Name of the key pressed (Example: `"A"`, `"Enter"`) |
 
 ### Returns
 
-`[Boolean](#type-boolean)` — return false to attempt to cancel the event. Note for general purpose APIs for managing whether user input is allowed, use [FormItem.change](#method-formitemchange) or [FormItem.transformInput](#method-formitemtransforminput) instead.
+`[boolean](../reference.md#type-boolean)` — return false to attempt to cancel the event. Note for general purpose APIs for managing whether user input is allowed, use [FormItem.change](#method-formitemchange) or [FormItem.transformInput](#method-formitemtransforminput) instead.
 
 ### Groups
 
 - eventHandling
+
+---
+## Method: FormItem.getCustomState
+
+### Description
+Optional method to retrieve a custom state suffix to append to the style name that is applied to some element of a formItem - see [FormItemBaseStyle](../reference.md#type-formitembasestyle) for more information on how state-based FormItem style names are derived.
+
+If this method exists on a formItem, the framework will call it, passing in the state suffix it has derived. Your `getCustomState()` implementation can make use of this derived state or ignore it. For example, if you wanted two different types of focus styling depending on some factor unrelated to focus, you would probably make use of the incoming "Focused" state and return something like "Focused1" or "Focused2". On the other hand, if you want your custom state to just override whatever the system derived, you would ignore the incoming state. Finally, if you do not wish to provide a custom style for this formItem element at this time - for example, you are only interested in providing a custom "textBox" style and this call is for a "cell" element type - your `getCustomStyle()` method should just return the state it was passed.
+
+This method is an advanced API, and you should only provide an implementation of it if you have specialized styling requirements. If you do implement it, note that it will be called very frequently, from rendering code: if your custom logic does significant processing, it could introduce a system-wide performance problem.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| elementType | [FormItemElementType](../reference.md#type-formitemelementtype) | false | — | The element type to return a custom state for |
+| derivedState | [String](#type-string) | false | — | The state suffix the system derived |
+
+### Returns
+
+`[String](#type-string)` — custom state suffix to use for the parameter elementType for this FormItem
+
+### See Also
+
+- [FormItemBaseStyle](../reference.md#type-formitembasestyle)
+
+**Flags**: A
 
 ---
 ## Method: FormItem.selectedRecordChanged
@@ -3818,6 +3785,46 @@ Returns this item's value with any valueMap applied to it - the value as current
 - valueMap
 
 ---
+## Method: FormItem.pickerIconClick
+
+### Description
+Notification method called when the [picker icon](#attr-formitemshowpickericon) is clicked. This method will fire after the [FormItemIcon.click](FormItemIcon.md#method-formitemiconclick) handler for the [pickerIcon](#attr-formitempickericonproperties). If the event is not cancelled, the standard [FormItem.iconClick](#method-formitemiconclick) will also fire.
+
+The default implementation will call [FormItem.showPicker](#method-formitemshowpicker).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| form | [DynamicForm](#type-dynamicform) | false | — | the DynamicForm containing the picker icon's item. |
+| item | [FormItem](#type-formitem) | false | — | the FormItem containing the picker icon. |
+| pickerIcon | [FormItemIcon](#type-formitemicon) | false | — | the picker icon. |
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — Return false to cancel the event.
+
+### Groups
+
+- pickerIcon
+
+---
+## Method: FormItem.getVisibleHeight
+
+### Description
+Output the drawn height for this item in pixels. Note: this is only reliable after this item has been written out into the DOM.
+
+### Returns
+
+`[Integer](../reference_2.md#type-integer)` — height of the form item
+
+### Groups
+
+- sizing
+
+**Flags**: A
+
+---
 ## Method: FormItem.getTop
 
 ### Description
@@ -3833,6 +3840,36 @@ Returns the top coordinate of the form item in pixels. Note that this method is 
 - sizing
 
 ---
+## Method: FormItem.enable
+
+### Description
+Set this item to be enabled at runtime.
+
+### Groups
+
+- enable
+
+### See Also
+
+- [FormItem.disabled](#attr-formitemdisabled)
+
+---
+## Method: FormItem.getErrors
+
+### Description
+Return the validation errors in the form associated with this item, if any. Errors will be returned as either a string (single error message) or an array of strings (multiple error messages).
+
+### Returns
+
+`[String](#type-string)|[Array of String](#type-array-of-string)` — Error message(s) for this item.
+
+### Groups
+
+- errors
+
+**Flags**: A
+
+---
 ## Method: FormItem.showIf
 
 ### Description
@@ -3842,7 +3879,7 @@ Expression that's evaluated to see if an item should be dynamically hidden.
 
 Note that explicit calls to [FormItem.show](#method-formitemshow) or [FormItem.hide](#method-formitemhide) will will wipe out the `showIf` expression.
 
-Alternatively, you can use [Criteria](../reference_2.md#type-criteria) to declare when a FormItem is visible via [FormItem.visibleWhen](#attr-formitemvisiblewhen).
+Alternatively, you can use [Criteria](../reference.md#type-criteria) to declare when a FormItem is visible via [FormItem.visibleWhen](#attr-formitemvisiblewhen).
 
 ### Parameters
 
@@ -3851,11 +3888,53 @@ Alternatively, you can use [Criteria](../reference_2.md#type-criteria) to declar
 | item | [FormItem](#type-formitem) | false | — | the form item itself (also available as "this") |
 | value | [Any](#type-any) | false | — | current value of the form item |
 | form | [DynamicForm](#type-dynamicform) | false | — | the managing DynamicForm instance |
-| values | [Object](../reference.md#type-object) | false | — | the current set of values for the form as a whole |
+| values | [Object](../reference_2.md#type-object) | false | — | the current set of values for the form as a whole |
 
 ### Returns
 
 `[boolean](../reference.md#type-boolean)` — whether the item should be shown
+
+**Flags**: A
+
+---
+## Method: FormItem.getValue
+
+### Description
+Return the value tracked by this form item.
+
+Note that for FormItems that have a [ValueMap](../reference.md#type-valuemap) or where a [formatter](#method-formitemformatvalue) has been defined, `getValue()` returns the underlying value of the FormItem, not the displayed value.
+
+### Returns
+
+`[Any](#type-any)` — value of this element
+
+### Groups
+
+- formValues
+
+---
+## Method: FormItem.defaultDynamicValue
+
+### Description
+Expression evaluated to determine the [FormItem.defaultValue](#attr-formitemdefaultvalue) when no value is provided for this item.
+
+If you don't need dynamic evaluation, you can just use `item.defaultValue`.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| item | [FormItem](#type-formitem) | false | — | the form item itself (also available as "this") |
+| form | [DynamicForm](#type-dynamicform) | false | — | the managing DynamicForm instance |
+| values | [Object](../reference_2.md#type-object) | false | — | the current set of values for the form as a whole |
+
+### Groups
+
+- formValues
+
+### See Also
+
+- [FormItem.defaultValue](#attr-formitemdefaultvalue)
 
 **Flags**: A
 
@@ -3869,7 +3948,7 @@ Takes an icon definition object, and returns the height for that icon in px.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| icon | [Object](../reference.md#type-object) | false | — | icon definition object for this item. |
+| icon | [Object](../reference_2.md#type-object) | false | — | icon definition object for this item. |
 
 ### Returns
 
@@ -3885,7 +3964,7 @@ Takes an icon definition object, and returns the height for that icon in px.
 ## Method: FormItem.addIcon
 
 ### Description
-Adds a [FormItemIcon](../reference.md#object-formitemicon) to this item. If the optional index parameter is not passed, the icon is added to the end of the existing [icon list](#attr-formitemicons).
+Adds a [FormItemIcon](../reference_2.md#object-formitemicon) to this item. If the optional index parameter is not passed, the icon is added to the end of the existing [icon list](#attr-formitemicons).
 
 If the passed icon already exists in the [icon list](#attr-formitemicons), by [name](FormItemIcon.md#attr-formitemiconname), the original icon is moved to the new index and no new icon is added.
 
@@ -3906,8 +3985,6 @@ If the passed icon already exists in the [icon list](#attr-formitemicons), by [n
 ### Description
 Optional stringMethod to fire when the user hovers over this item's value. Return false to suppress default behavior of showing a hover canvas containing the HTML returned by [FormItem.valueHoverHTML](#method-formitemvaluehoverhtml) / [DynamicForm.valueHoverHTML](DynamicForm.md#method-dynamicformvaluehoverhtml).
 
-If [FormItem.canHover](#attr-formitemcanhover) is set to false, this method is not called.
-
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
@@ -3924,6 +4001,22 @@ If [FormItem.canHover](#attr-formitemcanhover) is set to false, this method is n
 - [FormItem.itemHover](#method-formitemitemhover)
 
 **Flags**: A
+
+---
+## Method: FormItem.hasAdvancedCriteria
+
+### Description
+Does this form item produce an [AdvancedCriteria](../reference.md#object-advancedcriteria) sub criterion object? If this method returns true, [DynamicForm.getValuesAsCriteria](DynamicForm.md#method-dynamicformgetvaluesascriteria) on the form containing this item will always return an [AdvancedCriteria](../reference.md#object-advancedcriteria) object, calling [FormItem.getCriterion](#method-formitemgetcriterion) on each item to retrieve the individual criteria.
+
+Default implementation will return `true` if [FormItem.operator](#attr-formitemoperator) is explicitly specified.
+
+### Returns
+
+`[Boolean](#type-boolean)` — true if this item will return an AdvancedCriteria sub-criterion.
+
+### Groups
+
+- criteriaEditing
 
 ---
 ## Method: FormItem.setShowIconsOnFocus
@@ -3958,6 +4051,47 @@ Sets [FormItem.showPickerIconOnFocus](#attr-formitemshowpickericononfocus) and c
 - formIcons
 
 ---
+## Method: FormItem.getPickerIconTabPosition
+
+### Description
+Returns the desired tab-position of the picker icon with respect to other focusable sub-elements for this formItem.
+
+Default implementation returns zero, making the picker the first focusable element after the items text box.
+
+### Returns
+
+`[Integer](../reference_2.md#type-integer)` — desired position in the tab-order within this item's sub-elements
+
+---
+## Method: FormItem.change
+
+### Description
+Called when a FormItem's value is about to change as the result of user interaction. This method fires after the user performed an action that would change the value of this field, but before the element itself is changed.
+
+Returning false cancels the change. Note that if what you want to do is **transform** the user's input, for example, automatically change separator characters to a standard separator character, you should implement [transformInput](#method-formitemtransforminput) rather than using a combination of change() and setValue() to accomplish the same thing. Returning false from `change` is intended for rejecting input entirely, such as typing invalid characters.
+
+Note that if you ask the form for the current value in this handler, you will get the old value because the change has not yet been committed. The new value is available as a parameter to this method.
+
+Change/Changed notifications vs _"...When"_ rules: the `change` and `changed` events only fire when an end user modifies a field value. If you are trying to dynamically control the visibility or enabled state of other components in response to these events, consider instead using properties such as [Canvas.visibleWhen](Canvas.md#attr-canvasvisiblewhen), [item.readOnlyWhen](#attr-formitemreadonlywhen), [Canvas.enableWhen](Canvas.md#attr-canvasenablewhen) on the target component. (Similar properties are available on [FormItem](#class-formitem), [Canvas](Canvas.md#class-canvas), [MenuItem](../reference.md#object-menuitem) and other components).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| form | [DynamicForm](#type-dynamicform) | false | — | the managing DynamicForm instance |
+| item | [FormItem](#type-formitem) | false | — | the form item itself (also available as "this") |
+| value | [Any](#type-any) | false | — | The new value of the form item |
+| oldValue | [Any](#type-any) | false | — | The previous value of the form item |
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — In your handler, return false to cancel the change, true to allow the change
+
+### Groups
+
+- eventHandling
+
+---
 ## Method: FormItem.setCriterion
 
 ### Description
@@ -3989,7 +4123,7 @@ Note that calling this method for a [ButtonItem](ButtonItem.md#class-buttonitem)
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| appearance | [ReadOnlyDisplayAppearance](../reference_2.md#type-readonlydisplayappearance) | false | — | new `readOnlyDisplay` value. |
+| appearance | [ReadOnlyDisplayAppearance](../reference.md#type-readonlydisplayappearance) | false | — | new `readOnlyDisplay` value. |
 
 ---
 ## Method: FormItem.isDrawn
@@ -4004,6 +4138,21 @@ Returns true if this item has been written out into the DOM.
 ### Groups
 
 - drawing
+
+---
+## Method: FormItem.getRect
+
+### Description
+Return the coordinates of this object as a 4 element array.
+
+### Returns
+
+`[Array](#type-array)` — \[left, top, width, height\]
+
+### Groups
+
+- positioning
+- sizing
 
 ---
 ## Method: FormItem.getWidth
@@ -4037,7 +4186,7 @@ Causes the form to redraw.
 ### Description
 Called when the mouse is right-clicked anywhere in this formItem. If the implementation returns false, default browser behavior is cancelled.
 
-Note that it can be bad practice to cancel this method if the mouse is over the data element for the item, because doing so would replace the builtin browser-default menus that users may expect. You can use [DynamicForm.getEventItemInfo](DynamicForm.md#method-dynamicformgeteventiteminfo) to return an [info object](../reference_2.md#object-formitemeventinfo) that can be used to determine which part of the item is under the mouse.
+Note that it can be bad practice to cancel this method if the mouse is over the data element for the item, because doing so would replace the builtin browser-default menus that users may expect. You can use [DynamicForm.getEventItemInfo](DynamicForm.md#method-dynamicformgeteventiteminfo) to return an [info object](../reference.md#object-formitemeventinfo) that can be used to determine which part of the item is under the mouse.
 
 ### Parameters
 
@@ -4048,1198 +4197,11 @@ Note that it can be bad practice to cancel this method if the mouse is over the 
 
 ### Returns
 
-`[Boolean](#type-boolean)` — return false to cancel default behavior
+`[boolean](../reference.md#type-boolean)` — return false to cancel default behavior
 
 ### Groups
 
 - eventHandling
-
----
-## Method: FormItem.getPageRect
-
-### Description
-Return the page-level coordinates of this object as a 4 element array.
-
-### Returns
-
-`[Array](#type-array)` — \[left, top, width, height\]
-
-### Groups
-
-- positioning
-- sizing
-
----
-## Method: FormItem.keyPress
-
-### Description
-StringMethod fired when the user presses a key while focused in this form item.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| item | [FormItem](#type-formitem) | false | — | Item over which the keypress occurred |
-| form | [DynamicForm](#type-dynamicform) | false | — | Pointer to the item's form |
-| keyName | [KeyName](../reference_2.md#type-keyname) | false | — | Name of the key pressed (Example: `"A"`, `"Enter"`) |
-| characterValue | [number](#type-number) | false | — | If this was a character key, this is the numeric value for the character |
-
-### Returns
-
-`[Boolean](#type-boolean)` — return false to attempt to cancel the event. Note for general purpose APIs for managing whether user input is allowed, use [FormItem.change](#method-formitemchange) or [FormItem.transformInput](#method-formitemtransforminput) instead.
-
-### Groups
-
-- eventHandling
-
----
-## Method: FormItem.getLeft
-
-### Description
-Returns the left coordinate of this form item in pixels. Note that this method is only reliable after the item has been drawn.
-
-### Returns
-
-`[int](../reference.md#type-int)` — left coordinate within the form in pixels\\
-
-### Groups
-
-- positioning
-- sizing
-
----
-## Method: FormItem.keyUp
-
-### Description
-StringMethod fired in response to a keyup while focused in this form item.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| item | [FormItem](#type-formitem) | false | — | Item over which the keyup occurred |
-| form | [DynamicForm](#type-dynamicform) | false | — | Pointer to the item's form |
-| keyName | [KeyName](../reference_2.md#type-keyname) | false | — | Name of the key pressed (Example: `"A"`, `"Enter"`) |
-
-### Returns
-
-`[Boolean](#type-boolean)` — return false to attempt to cancel the event. Note for general purpose APIs for managing whether user input is allowed, use [FormItem.change](#method-formitemchange) or [FormItem.transformInput](#method-formitemtransforminput) instead.
-
-### Groups
-
-- eventHandling
-
----
-## Method: FormItem.iconKeyPress
-
-### Description
-StringMethod. Default action to fire when an icon has keyboard focus and the user types a key. May be overridden by setting `keyPress` on the form item icon directly.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| keyName | [KeyName](../reference_2.md#type-keyname) | false | — | name of the key pressed |
-| character | [Character](#type-character) | false | — | character produced by the keypress |
-| form | [DynamicForm](#type-dynamicform) | false | — | a pointer to this item's form |
-| item | [FormItem](#type-formitem) | false | — | a pointer to this form item |
-| icon | [FormItemIcon](#type-formitemicon) | false | — | a pointer to the icon that received the click event. |
-
-### Groups
-
-- formIcons
-
----
-## Method: FormItem.formatValue
-
-### Description
-Allows customization of how the FormItem's stored value is formatted for display. If you are considering using this method, you should first consider using [FormItem.format](#attr-formitemformat), which provides for simple and flexible declarative formatting of dates, times and numbers, without the need to write formatting code.
-
-By default, this formatter will only be applied to static displays such as [StaticTextItem](StaticTextItem.md#class-statictextitem) or [SelectItem](SelectItem.md#class-selectitem), and does not apply to values displayed in a freely editable text entry field (such as a [TextItem](TextItem.md#class-textitem) or [TextAreaItem](TextAreaItem.md#class-textareaitem)).
-
-To define formatting logic for editable text, developers may:
-
-*   set [TextItem.formatOnBlur](TextItem.md#attr-textitemformatonblur) to true, which causes the static formatter to be applied while the item does not have focus, and then be cleared when the user moves focus to the text field
-*   use [FormItem.formatEditorValue](#method-formitemformateditorvalue) and supply a corresponding [FormItem.parseEditorValue](#method-formitemparseeditorvalue) that can convert a formatted and subsequently user-edited value back to a stored value.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| value | [Any](#type-any) | false | — | Underlying data value to format. May be null. |
-| record | [ListGridRecord](#type-listgridrecord) | false | — | The record currently being edited by this form. Essentially the form's current values object. |
-| form | [DynamicForm](#type-dynamicform) | false | — | pointer to the DynamicForm |
-| item | [FormItem](#type-formitem) | false | — | pointer to the FormItem |
-
-### Returns
-
-`[String](#type-string)` — Display value to show.
-
----
-## Method: FormItem.removeIcon
-
-### Description
-Given an icon's [name](FormItemIcon.md#attr-formitemiconname), remove it from this item.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| icon | [Identifier](../reference.md#type-identifier) | false | — | the name of the icon to remove |
-
-### Returns
-
-`[boolean](../reference.md#type-boolean)` — true if an icon was removed, false otherwise
-
----
-## Method: FormItem.stopHover
-
-### Description
-This method is fired when the user rolls off this item (or the title for this item) and will clear any hover canvas shown by the item.
-
-### Groups
-
-- Hovers
-
-**Flags**: A
-
----
-## Method: FormItem.setCanEdit
-
-### Description
-Is this form item editable (canEdit:true) or read-only (canEdit:false)? Setting the form item to non-editable causes it to render as read-only, using the appearance specified via [FormItem.readOnlyDisplay](#attr-formitemreadonlydisplay).
-
-The default appearance for canEdit:false items (`readOnlyDisplay:"readOnly"`) differs from the disabled state in that the form item is not rendered with disabled styling and most form items will allow copying of the contents while read-only but do not while disabled.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| canEdit | [Boolean](#type-boolean) | false | — | Can this form item be edited? |
-
-### Groups
-
-- readOnly
-
-### See Also
-
-- [FormItem.canEdit](#attr-formitemcanedit)
-- [FormItem.setDisabled](#method-formitemsetdisabled)
-
----
-## Method: FormItem.valueHoverHTML
-
-### Description
-If defined, this method should return the HTML to display in a hover canvas when the user holds the mousepointer over this item's value. Return null to suppress the hover canvas altogether.
-
-If not defined, [DynamicForm.valueHoverHTML](DynamicForm.md#method-dynamicformvaluehoverhtml) will be evaluated to determine hover content instead.
-
-If [FormItem.canHover](#attr-formitemcanhover) is set to false, this method is not called.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| item | [FormItem](#type-formitem) | false | — | Pointer to this item |
-| form | [DynamicForm](#type-dynamicform) | false | — | This items form |
-
-### Returns
-
-`[HTMLString](../reference.md#type-htmlstring)` — HTML to be displayed in the hover
-
-### Groups
-
-- Hovers
-
-### See Also
-
-- [FormItem.canHover](#attr-formitemcanhover)
-- [FormItem.showClippedValueOnHover](#attr-formitemshowclippedvalueonhover)
-- [FormItem.itemHoverHTML](#method-formitemitemhoverhtml)
-- [FormItem.titleHoverHTML](#method-formitemtitlehoverhtml)
-
-**Flags**: A
-
----
-## Method: FormItem.setTabIndex
-
-### Description
-Setter for [FormItem.tabIndex](#attr-formitemtabindex).
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| tabIndex | [Integer](../reference_2.md#type-integer) | false | — | new tabIndex for the item |
-
----
-## Method: FormItem.validate
-
-### Description
-Validate this item.
-
-### Returns
-
-`[Boolean](#type-boolean)` — returns true if validation was successful (no errors encountered), false otherwise.
-
----
-## Method: FormItem.disableIcon
-
-### Description
-This method will disable some icon in this item's [FormItem.icons](#attr-formitemicons) array, if it is currently enabled.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| icon | [Identifier](../reference.md#type-identifier) | false | — | [name](FormItemIcon.md#attr-formitemiconname) of the icon to be disabled. |
-
-### Groups
-
-- enable
-
-### See Also
-
-- [FormItemIcon.disabled](FormItemIcon.md#attr-formitemicondisabled)
-
----
-## Method: FormItem.focus
-
-### Description
-Called when this FormItem receives focus.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| form | [DynamicForm](#type-dynamicform) | false | — | the managing DynamicForm instance |
-| item | [FormItem](#type-formitem) | false | — | the form item itself (also available as "this") |
-
-### Groups
-
-- eventHandling
-
----
-## Method: FormItem.setDisabled
-
-### Description
-Set this item to be enabled or disabled at runtime.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| disabled | [boolean](../reference.md#type-boolean) | false | — | true if this item should be disabled |
-
-### Groups
-
-- enable
-
-### See Also
-
-- [FormItem.disabled](#attr-formitemdisabled)
-- [FormItem.setCanEdit](#method-formitemsetcanedit)
-
-**Flags**: A
-
----
-## Method: FormItem.valueClipped
-
-### Description
-Is the value clipped?
-
-The form item must have value clipping enabled. If a form item type supports the clipValue attribute, then clipValue must be true. [TextItem](TextItem.md#class-textitem)s and derivatives (e.g. [SpinnerItem](SpinnerItem.md#class-spinneritem)) automatically clip their values.
-
-### Returns
-
-`[boolean](../reference.md#type-boolean)` — true if the value is clipped; false otherwise.
-
----
-## Method: FormItem.blur
-
-### Description
-Called when this FormItem loses focus.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| form | [DynamicForm](#type-dynamicform) | false | — | the managing DynamicForm instance |
-| item | [FormItem](#type-formitem) | false | — | the form item itself (also available as "this") |
-
-### Groups
-
-- eventHandling
-
----
-## Method: FormItem.iconClick
-
-### Description
-Notification method called when the user clicks on a form item icon.
-
-The icon's [FormItemIcon.click](FormItemIcon.md#method-formitemiconclick) method if any is called first. Then, if the clicked icon is the [picker icon](#attr-formitemshowpickericon), the [FormItem.pickerIconClick](#method-formitempickericonclick) method is called. Then, this method is called.
-
-This event may be cancelled by returning false to suppress the [FormItem.click](#method-formitemclick) handler from also firing in response to the user interaction.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| form | [DynamicForm](#type-dynamicform) | false | — | a pointer to this item's form |
-| item | [FormItem](#type-formitem) | false | — | a pointer to this form item |
-| icon | [FormItemIcon](#type-formitemicon) | false | — | a pointer to the icon that received the click event. |
-
-### Returns
-
-`[Boolean](#type-boolean)` — return false to cancel this event
-
-### Groups
-
-- formIcons
-
----
-## Method: FormItem.changed
-
-### Description
-Called when a FormItem's value has been changed as the result of user interaction. This method fires after the newly specified value has been stored.
-
-Change/Changed notifications vs _"...When"_ rules: the `change` and `changed` events only fire when an end user modifies a field value. If you are trying to dynamically control the visibility or enabled state of other components in response to these events, consider instead using properties such as [Canvas.visibleWhen](Canvas.md#attr-canvasvisiblewhen), [item.readOnlyWhen](#attr-formitemreadonlywhen), [Canvas.enableWhen](Canvas.md#attr-canvasenablewhen) on the target component. (Similar properties are available on [FormItem](#class-formitem), [Canvas](Canvas.md#class-canvas), [MenuItem](../reference_2.md#object-menuitem) and other components).
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| form | [DynamicForm](#type-dynamicform) | false | — | the managing DynamicForm instance |
-| item | [FormItem](#type-formitem) | false | — | the form item itself (also available as "this") |
-| value | [Any](#type-any) | false | — | The current value (after the change). |
-
-### Groups
-
-- eventHandling
-
----
-## Method: FormItem.doubleClick
-
-### Description
-Called when this FormItem is double-clicked.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| form | [DynamicForm](#type-dynamicform) | false | — | the managing DynamicForm instance |
-| item | [FormItem](#type-formitem) | false | — | the form item itself (also available as "this") |
-
-### Returns
-
-`[Boolean](#type-boolean)` — Return false to cancel the doubleClick event. This will prevent the event from bubbling up, suppressing [doubleClick](Canvas.md#method-canvasdoubleclick) on the form containing this item.
-
-### Groups
-
-- eventHandling
-
----
-## Method: FormItem.focusAfterItem
-
-### Description
-Shifts focus to the next focusable element after this item, skipping any elements nested inside the tabbing group for this item, such as sub-elements, nested canvases in a CanvasItem, or icons.
-
-This method makes use of the [TabIndexManager.shiftFocusAfterGroup](TabIndexManager.md#classmethod-tabindexmanagershiftfocusaftergroup) method to request focus be changed to the next registered entry. By default standard focusable SmartClient UI elements, including Canvases, FormItems, FormItemIcons, etc are registered with the TabIndexManager in the appropriate order, and will accept focus if [focusable](Canvas.md#attr-canvascanfocus), and not [disabled](#attr-formitemdisabled) or [masked](Canvas.md#method-canvasshowclickmask).
-
-Canvases support a similar method: [Canvas.focusAfterGroup](Canvas.md#method-canvasfocusaftergroup).
-
-**NOTE:** Focusable elements created directly in the raw HTML bootstrap or by application code will not be passed focus by this method unless they have also been explicitly registered with the TabIndexManager. See the [tabOrderOverview](../kb_topics/tabOrderOverview.md#kb-topic-tab-order-overview) for more information.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| forward | [boolean](../reference.md#type-boolean) | false | — | direction to shift focus - true to move forward, false to move backwards (as with a shift+tab interaction). |
-
-### Groups
-
-- focus
-
----
-## Method: FormItem.getCriterion
-
-### Description
-Override this method if you need to provide a specialized criterion from this formItem when creating an AdvancedCriteria via [DynamicForm.getValuesAsCriteria](DynamicForm.md#method-dynamicformgetvaluesascriteria).
-
-This API is provided to allow you to specify a more complex criterion than the "field-operator-value" criterions that are built-in. Note that the built-in behavior is generally quite flexible and powerful enough for most requirements. An example of a case where you might want to override this method is if you wanted to implement a date range selection (ie, date > x AND date < y) on a form that was combining its other criteria fields with an "or" operator.
-
-Note that this method is part of the criteria editing subsystem: if overridden, it is likely that you will want to also override [FormItem.hasAdvancedCriteria](#method-formitemhasadvancedcriteria) to ensure this method is called by the form, and to support editing of existing advanced criteria you may also need to override [FormItem.canEditCriterion](#method-formitemcaneditcriterion) and [FormItem.setCriterion](#method-formitemsetcriterion).
-
-The default implementation will return a criterion including the form item value, fieldName and specified [FormItem.operator](#attr-formitemoperator), or a default operator derived from the form item data type if no explicit operator is specified.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| textMatchStyle | [TextMatchStyle](../reference_2.md#type-textmatchstyle) | true | — | If passed assume the textMatchStyle will be used when performing a fetch operation with these criteria. This may impact the criterion's operator property. |
-
-### Returns
-
-`[Criterion](#type-criterion)` — criterion object based on this fields current edited value(s).
-
-### Groups
-
-- criteriaEditing
-
-**Flags**: A
-
----
-## Method: FormItem.formatEditorValue
-
-### Description
-Allows customization of how the FormItem's stored value is formatted for display in an editable text entry area, such as a [TextItem](TextItem.md#class-textitem) [TextAreaItem](TextAreaItem.md#class-textareaitem). For display values which will not be directly editable by the user, use [FormItem.formatValue](#method-formitemformatvalue) instead.
-
-When customizing how values are displayed during editing, it is almost always necessary to provide a [FormItem.parseEditorValue](#method-formitemparseeditorvalue) as well, in order to convert a formatted and subsequently user-edited value back to a stored value.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| value | [Any](#type-any) | false | — | Underlying data value to format. May be null. |
-| record | [ListGridRecord](#type-listgridrecord) | false | — | The record currently being edited by this form. Essentially the form's current values object. |
-| form | [DynamicForm](#type-dynamicform) | false | — | pointer to the DynamicForm |
-| item | [FormItem](#type-formitem) | false | — | pointer to the FormItem |
-
-### Returns
-
-`[String](#type-string)` — display value to show in the editor.
-
----
-## Method: FormItem.transformInput
-
-### Description
-Called when a FormItem's value is about to change as the result of user interaction. This method fires after the user performed an action that would change the value of this field, and allows the developer to modify / reformat the value before it gets validated / saved. Fires before [FormItem.change](#method-formitemchange).
-
-Return the reformatted value.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| form | [DynamicForm](#type-dynamicform) | false | — | the managing DynamicForm instance |
-| item | [FormItem](#type-formitem) | false | — | the form item itself (also available as "this") |
-| value | [Any](#type-any) | false | — | The new value of the form item |
-| oldValue | [Any](#type-any) | false | — | The previous (current) value of the form item |
-
-### Returns
-
-`[Any](#type-any)` — The desired new value for the form item
-
----
-## Method: FormItem.itemHover
-
-### Description
-Optional stringMethod to fire when the user hovers over this item. Return false to suppress default behavior of showing a hover canvas containing the HTML returned by `formItem.itemHoverHTML()` / `form.itemHoverHTML()`.
-
-If [FormItem.canHover](#attr-formitemcanhover) is set to false, this method is not called.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| item | [FormItem](#type-formitem) | false | — | Pointer to this item |
-| form | [DynamicForm](#type-dynamicform) | false | — | This items form |
-
-### Groups
-
-- Hovers
-
-### See Also
-
-- [FormItem.titleHover](#method-formitemtitlehover)
-- [FormItem.itemHoverHTML](#method-formitemitemhoverhtml)
-
-**Flags**: A
-
----
-## Method: FormItem.isInGrid
-
-### Description
-Returns true if this item's [containerWidget](#attr-formitemcontainerwidget) is a [GridRenderer](GridRenderer.md#class-gridrenderer) or GridRenderer subclass
-
-### Returns
-
-`[Boolean](#type-boolean)` — whether the item's container is a GridRenderer (and thus ultimately a ListGrid)
-
----
-## Method: FormItem.getPrintValueIcon
-
-### Description
-If implemented, this stringMethod is called when [printing](../kb_topics/printing.md#kb-topic-printing) to obtain the image source for an icon to be displayed for the current form item value. The special value "blank" means that no image will be displayed.
-
-Implementing `getPrintValueIcon()` may be useful in order to swap out the value icon with a more printer-friendly image (perhaps a grayscale-only image). Another use is to avoid spriting when printing. Value icon spriting may be problematic when printing because browsers typically default to not printing background images.
-
-Takes precedence over [FormItem.valueIcons](#attr-formitemvalueicons) and [FormItem.getValueIcon](#method-formitemgetvalueicon) when printing.
-
-The returned [SCImgURL](../reference.md#type-scimgurl), if not `null` or "blank", will be suffixed with [FormItem.imageURLSuffix](#attr-formitemimageurlsuffix).
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| value | [Any](#type-any) | false | — | value of the item. |
-
-### Returns
-
-`[SCImgURL](../reference.md#type-scimgurl)` — the image source or `null` if no value icon should be displayed.
-
-### Groups
-
-- valueIcons
-- printing
-
-### See Also
-
-- [FormItem.getValueIcon](#method-formitemgetvalueicon)
-
----
-## Method: FormItem.getListGrid
-
-### Description
-If this item is being used to edit cells in a ListGrid (see [FormItem.isInGrid](#method-formitemisingrid)), this method returns the grid in question.
-
-### Returns
-
-`[ListGrid](#type-listgrid)` — For listGrid edit items, the listGrid containing the item. Will return null for items that are edit items of a listGrid.
-
----
-## Method: FormItem.setHintStyle
-
-### Description
-Set the hintStyle for this item
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| hintStyle | [CSSStyleName](../reference.md#type-cssstylename) | false | — | new style for hint text |
-
----
-## Method: FormItem.valueIconClick
-
-### Description
-Notification method fires when the user clicks a [value icon](#attr-formitemvalueicons) for this item.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| form | [DynamicForm](#type-dynamicform) | false | — | the form containing this item |
-| item | [FormItem](#type-formitem) | false | — | the FormItem containing the valueIcon |
-| value | [Any](#type-any) | false | — | the current value of the item. |
-
-### Returns
-
-`[Boolean](#type-boolean)` — Return false to suppress standard click handling for the item.
-
----
-## Method: FormItem.shouldStopKeyPressBubbling
-
-### Description
-Should some keypress event on this item be prevented from bubbling (such that the containing form and ancestors do not receive the event).
-
-This method is called after standard item keypress handlers when the user presses a key while focused in this item. Returning true will suppress bubbling of the event to the containing form. This is useful to avoid having the form react to key events which "have meaning" to the focused item.
-
-Default implementation varies by item type. In short character keys are suppressed for all editable fields, as are keys which will modify the current state of the field ("Arrow" keys for moving around free form text editors, etc).
-
-Developers may override this method to allow the form to react to certain keypresses, for example allowing scrolling of the form when the user presses the arrow keys, but they should be aware that doing so could lead to confusing user experience if the keypress will also move the position of the caret within a text box (say). Note that when this method returns true, no [keyPress](Canvas.md#method-canvaskeypress) event will fire on the form for the key pressed. However developers will still receive the separate [DynamicForm.itemKeyPress](DynamicForm.md#method-dynamicformitemkeypress) event.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| keyName | [KeyName](../reference_2.md#type-keyname) | false | — | name of the key pressed |
-| characterValue | [number](#type-number) | false | — | If this was a character key, this is the numeric value for the character |
-
-### Returns
-
-`[Boolean](#type-boolean)` — return true to prevent bubbling of the pressed key.
-
-**Flags**: A
-
----
-## Method: FormItem.applyFormula
-
-### Description
-Manually sets this FormItem to the result of [FormItem.formula](#attr-formitemformula) or [FormItem.textFormula](#attr-formitemtextformula). Formulas are normally automatically recomputed and the result automatically applied to the FormItem according to the rules described under [FormItem.formula](#attr-formitemformula). `applyFormula()` exists to cover any rare cases where these rules are not correct.
-
-Calling `applyFormula()` has no effect if no [FormItem.formula](#attr-formitemformula) or [FormItem.textFormula](#attr-formitemtextformula) is configured for this FormItem.
-
----
-## Method: FormItem.getTitle
-
-### Description
-Returns the title HTML for this item.
-
-### Returns
-
-`[HTMLString](../reference.md#type-htmlstring)` — title for the formItem
-
-### Groups
-
-- drawing
-
-**Flags**: A
-
----
-## Method: FormItem.itemHoverHTML
-
-### Description
-If defined, this method should return the HTML to display in a hover canvas when the user holds the mousepointer over this item. Return null to suppress the hover canvas altogether.
-
-If not defined, `dynamicForm.itemHoverHTML()` will be evaluated to determine hover content instead.
-
-If [FormItem.canHover](#attr-formitemcanhover) is set to false, this method is not called.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| item | [FormItem](#type-formitem) | false | — | Pointer to this item |
-| form | [DynamicForm](#type-dynamicform) | false | — | This items form |
-
-### Returns
-
-`[HTMLString](../reference.md#type-htmlstring)` — HTML to be displayed in the hover
-
-### Groups
-
-- Hovers
-
-### See Also
-
-- [FormItem.canHover](#attr-formitemcanhover)
-- [FormItem.prompt](#attr-formitemprompt)
-- [FormItem.itemHover](#method-formitemitemhover)
-- [FormItem.titleHoverHTML](#method-formitemtitlehoverhtml)
-
-**Flags**: A
-
----
-## Method: FormItem.getVisibleTitleWidth
-
-### Description
-Returns the visible width of this item's title in px. If that is not applicable (for example, the form item has no title) or cannot be determined (for example, the form is not drawn), returns 0.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| labelOnly | [Boolean](#type-boolean) | false | — | If true, returns the visible width of the title text only; if false (the default) returns the width of the title cell |
-
-### Returns
-
-`[number](#type-number)` — width of the form item's title in px
-
-### Groups
-
-- sizing
-
-**Flags**: A
-
----
-## Method: FormItem.editorEnter
-
-### Description
-Notification method fired when the user enters this formItem. Differs from [FormItem.focus](#method-formitemfocus) in that while `focus` and `blur` may fire multiple as the user navigates sub elements of an item (such as interacting with a pick list), `editorEnter` will typically fire once when the user starts to edit this item as a whole, and once when the user moves onto a different item or component
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| form | [DynamicForm](#type-dynamicform) | false | — | form containing this item |
-| item | [FormItem](#type-formitem) | false | — | form item recieving focus |
-| value | [Any](#type-any) | false | — | current item value. |
-
-### Groups
-
-- eventHandling
-
----
-## Method: FormItem.disable
-
-### Description
-Set this item to be disabled at runtime.
-
-### Groups
-
-- enable
-
-### See Also
-
-- [FormItem.disabled](#attr-formitemdisabled)
-
----
-## Method: FormItem.setErrors
-
-### Description
-Set the error message(s) for this item
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| errors | [String](#type-string)|[Array of String](#type-array-of-string) | false | — | error message(s) |
-
-### Groups
-
-- errorHandling
-
----
-## Method: FormItem.getCanFocus
-
-### Description
-Returns true for items that can accept keyboard focus such as data items ([TextItems](TextItem.md#class-textitem), [TextAreaItems](TextAreaItem.md#class-textareaitem), etc), [CanvasItems](CanvasItem.md#class-canvasitem) with a focusable canvas, or items where [FormItem.canFocus](#attr-formitemcanfocus) was explicitly set to true.
-
-### Returns
-
-`[boolean](../reference.md#type-boolean)` — true if the form item is visible
-
-### Groups
-
-- focus
-
----
-## Method: FormItem.getPixelHeight
-
-### Description
-Returns the specified [FormItem.height](#attr-formitemheight) of this formItem in pixels. For heights specified as a percentage value or `"*"`, the pixel height may not be available prior to the item being drawn. In cases where the height has not yet been resolved to a pixel value, this method will return `-1`.
-
-### Returns
-
-`[int](../reference.md#type-int)` — Specified height resolved to a pixel value.
-
----
-## Method: FormItem.getSelectedRecord
-
-### Description
-Get the record returned from the [FormItem.optionDataSource](#attr-formitemoptiondatasource) when [fetchMissingValues](#attr-formitemfetchmissingvalues) is true, and the missing value is fetched.
-
-[FormItem.fetchMissingValues](#attr-formitemfetchmissingvalues) kicks off the fetch when the form item is initialized with a non null value or when setValue() is called on the item. Note that this method will return null before the fetch completes, or if no record is found in the optionDataSource matching the underlying value.
-
-### Returns
-
-`[ListGridRecord](#type-listgridrecord)` — selected record
-
-### Groups
-
-- display_values
-
----
-## Method: FormItem.shouldApplyHeightToTextBox
-
-### Description
-If [FormItem.height](#attr-formitemheight) is specified, should it be applied to the item's text box element? If this method returns false, the text box will not have an explicit height applied, though the containing cell will be sized to accommodate any specified height.
-
-This is used in cases where the text box does not have distinctive styling (for example in standard [StaticTextItem](StaticTextItem.md#class-statictextitem)s). As the textBox has no explicit height, it fits the content. Since the text box is not visually distinct to the user, this makes [FormItem.vAlign](#attr-formitemvalign) behave as expected with the text value of the item being vertically aligned within the cell.
-
-Default implementation will return [FormItem.applyHeightToTextBox](#attr-formitemapplyheighttotextbox) if explicitly set otherwise `false` if [FormItem.readOnlyDisplay](#attr-formitemreadonlydisplay) is set to `"static"` and the item is [not editable](#method-formitemgetcanedit), otherwise true.
-
-### Returns
-
-`[boolean](../reference.md#type-boolean)` — true if the height should be written into the items' text box.
-
-**Flags**: A
-
----
-## Method: FormItem.setLeft
-
-### Description
-For a form with [itemLayout](DynamicForm.md#attr-dynamicformitemlayout):"absolute" only, set the left coordinate of this form item.
-
-Causes the form to redraw.
-
-**Flags**: A
-
----
-## Method: FormItem.getPageLeft
-
-### Description
-Returns the drawn page-left coordinate of this form item in pixels.
-
-### Returns
-
-`[int](../reference.md#type-int)` — page-left coordinate in px
-
-### Groups
-
-- positioning
-
----
-## Method: FormItem.isDisabled
-
-### Description
-Is this item disabled?
-
-### Returns
-
-`[Boolean](#type-boolean)` — disabledtrue if this item is be disabled
-
-### Groups
-
-- enable
-
-### See Also
-
-- [FormItem.disabled](#attr-formitemdisabled)
-
-**Flags**: A
-
----
-## Method: FormItem.getPixelWidth
-
-### Description
-Returns the specified [FormItem.width](#attr-formitemwidth) of this formItem in pixels. For widths specified as a percentage value or `"*"`, the pixel width may not be available prior to the item being drawn. In cases where the width has not yet been resolved to a pixel value, this method will return `-1`.
-
-### Returns
-
-`[int](../reference.md#type-int)` — Specified width resolved to a pixel value.
-
----
-## Method: FormItem.titleClick
-
-### Description
-Notification method fired when the user clicks the title for this item
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| form | [DynamicForm](#type-dynamicform) | false | — | the managing DynamicForm instance |
-| item | [FormItem](#type-formitem) | false | — | the form item whose title was clicked |
-
-### Returns
-
-`[Boolean](#type-boolean)` — Return false to cancel the click event. This will prevent the event from bubbling up, suppressing [click](Canvas.md#method-canvasclick) on the form containing this item.
-
----
-## Method: FormItem.setHint
-
-### Description
-Sets the [hint](#attr-formitemhint) for this item.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| newHint | [HTMLString](../reference.md#type-htmlstring) | false | — | new hint for the item. |
-
----
-## Method: FormItem.getDisplayFieldName
-
-### Description
-Returns the `displayField` for this item.
-
-Behavior varies based on the configuration of this item, as follows:
-
-*   If this item has an [FormItem.optionDataSource](#attr-formitemoptiondatasource) and an explicit [FormItem.foreignDisplayField](#attr-formitemforeigndisplayfield) is specified, this will be returned.
-*   Otherwise if an explicit [FormItem.displayField](#attr-formitemdisplayfield) is specified it will be returned by default. If the `displayField` was specified on the underlying dataSource field, and no matching field is present in the [FormItem.optionDataSource](#attr-formitemoptiondatasource) for the item, we avoid returning the specified displayField value and instead return the title field of the option DataSource. We do this to avoid confusion for the case where the displayField is intended as a display-field value for showing another field value within the same record in the underlying dataSource only.
-*   If no explicit foreignDisplay or displayField specification was found, and the [FormItem.valueField](#attr-formitemvaluefield) for this item is hidden in the [FormItem.optionDataSource](#attr-formitemoptiondatasource), this method will return the title field for the `optionDataSource`.
-
-### Returns
-
-`[FieldName](../reference.md#type-fieldname)` — display field name, or null if there is no separate display field to use.
-
----
-## Method: FormItem.redraw
-
-### Description
-Redraw this form item.
-
-Depending on the item and the [FormItem.containerWidget](#attr-formitemcontainerwidget) it's embedded in, this may redraw this particular item or require a redraw of all items in the form.
-
-Do not call this method unless the documentation directs you to do so. Calling `redraw()` unnecessarily has significant performance consequences.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| reason | [String](#type-string) | true | — | optional reason for performing the redraw, which may appear in diagnostic logs if enabled |
-
----
-## Method: FormItem.setShowDisabled
-
-### Description
-Setter method for [FormItem.showDisabled](#attr-formitemshowdisabled)
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| showDisabled | [boolean](../reference.md#type-boolean) | false | — | new showDisabled setting |
-
----
-## Method: FormItem.setPrompt
-
-### Description
-Sets the [prompt](#attr-formitemprompt) for this item.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| newPrompt | [HTMLString](../reference.md#type-htmlstring) | false | — | new prompt for the item. |
-
----
-## Method: FormItem.shouldSaveOnEnter
-
-### Description
-Returns true if 'Enter' key presses in this formItem should allow a saveOnEnter: true parent form to save it's data. The default implementation returns the value of [FormItem.saveOnEnter](#attr-formitemsaveonenter) or false if that property is unset.
-
-### Returns
-
-`[Boolean](#type-boolean)` — boolean indicating whether saving should be allowed to proceed
-
-**Flags**: A
-
----
-## Method: FormItem.getCursorPosition
-
-### Description
-For text-based items, this method returns the index of the start of the current selection if the item currently has the focus (if no text is selected, this equates to the current position of the text editing cursor). See [TextItem.getSelectionRange](TextItem.md#method-textitemgetselectionrange) for details of what is returned if the item does not have the focus (note, it is important to read this documentation, because the behavior when the item does not have the focus varies by browser)
-
-### Returns
-
-`[Integer](../reference_2.md#type-integer)` — Index of the current or past selection's start point
-
----
-## Method: FormItem.getCustomState
-
-### Description
-Optional method to retrieve a custom state suffix to append to the style name that is applied to some element of a formItem - see [FormItemBaseStyle](../reference_2.md#type-formitembasestyle) for more information on how state-based FormItem style names are derived.
-
-If this method exists on a formItem, the framework will call it, passing in the state suffix it has derived. Your `getCustomState()` implementation can make use of this derived state or ignore it. For example, if you wanted two different types of focus styling depending on some factor unrelated to focus, you would probably make use of the incoming "Focused" state and return something like "Focused1" or "Focused2". On the other hand, if you want your custom state to just override whatever the system derived, you would ignore the incoming state. Finally, if you do not wish to provide a custom style for this formItem element at this time - for example, you are only interested in providing a custom "textBox" style and this call is for a "cell" element type - your `getCustomStyle()` method should just return the state it was passed.
-
-This method is an advanced API, and you should only provide an implementation of it if you have specialized styling requirements. If you do implement it, note that it will be called very frequently, from rendering code: if your custom logic does significant processing, it could introduce a system-wide performance problem.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| elementType | [FormItemElementType](../reference.md#type-formitemelementtype) | false | — | The element type to return a custom state for |
-| derivedState | [String](#type-string) | false | — | The state suffix the system derived |
-
-### Returns
-
-`[String](#type-string)` — custom state suffix to use for the parameter elementType for this FormItem
-
-### See Also
-
-- [FormItemBaseStyle](../reference_2.md#type-formitembasestyle)
-
-**Flags**: A
-
----
-## Method: FormItem.pickerIconClick
-
-### Description
-Notification method called when the [picker icon](#attr-formitemshowpickericon) is clicked. This method will fire after the [FormItemIcon.click](FormItemIcon.md#method-formitemiconclick) handler for the [pickerIcon](#attr-formitempickericonproperties). If the event is not cancelled, the standard [FormItem.iconClick](#method-formitemiconclick) will also fire.
-
-The default implementation will call [FormItem.showPicker](#method-formitemshowpicker).
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| form | [DynamicForm](#type-dynamicform) | false | — | the DynamicForm containing the picker icon's item. |
-| item | [FormItem](#type-formitem) | false | — | the FormItem containing the picker icon. |
-| pickerIcon | [FormItemIcon](#type-formitemicon) | false | — | the picker icon. |
-
-### Returns
-
-`[Boolean](#type-boolean)` — Return false to cancel the event.
-
-### Groups
-
-- pickerIcon
-
----
-## Method: FormItem.getVisibleHeight
-
-### Description
-Output the drawn height for this item in pixels. Note: this is only reliable after this item has been written out into the DOM.
-
-### Returns
-
-`[Integer](../reference_2.md#type-integer)` — height of the form item
-
-### Groups
-
-- sizing
-
-**Flags**: A
-
----
-## Method: FormItem.enable
-
-### Description
-Set this item to be enabled at runtime.
-
-### Groups
-
-- enable
-
-### See Also
-
-- [FormItem.disabled](#attr-formitemdisabled)
-
----
-## Method: FormItem.getErrors
-
-### Description
-Return the validation errors in the form associated with this item, if any. Errors will be returned as either a string (single error message) or an array of strings (multiple error messages).
-
-### Returns
-
-`[String](#type-string)|[Array of String](#type-array-of-string)` — Error message(s) for this item.
-
-### Groups
-
-- errors
-
-**Flags**: A
-
----
-## Method: FormItem.getValue
-
-### Description
-Return the value tracked by this form item.
-
-Note that for FormItems that have a [ValueMap](../reference_2.md#type-valuemap) or where a [formatter](#method-formitemformatvalue) has been defined, `getValue()` returns the underlying value of the FormItem, not the displayed value.
-
-### Returns
-
-`[Any](#type-any)` — value of this element
-
-### Groups
-
-- formValues
-
----
-## Method: FormItem.defaultDynamicValue
-
-### Description
-Expression evaluated to determine the [FormItem.defaultValue](#attr-formitemdefaultvalue) when no value is provided for this item.
-
-_formItem.defaultDynamicValue_ may be specified as a method or [sting of script](../reference_2.md#type-stringmethod) to evaluate. It should return a calculated default value for the item.
-
-If you don't need dynamic evaluation, you can just use `item.defaultValue`.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| item | [FormItem](#type-formitem) | false | — | the form item itself (also available as "this") |
-| form | [DynamicForm](#type-dynamicform) | false | — | the managing DynamicForm instance |
-| values | [Object](../reference.md#type-object) | false | — | the current set of values for the form as a whole |
-
-### Returns
-
-`[Any](#type-any)` — dynamically calculated default value for this item
-
-### Groups
-
-- formValues
-
-### See Also
-
-- [FormItem.defaultValue](#attr-formitemdefaultvalue)
-
-**Flags**: A
-
----
-## Method: FormItem.setValueByDisplayValue
-
-### Description
-Sets the form item's value by looking up the corresponding value field from a display value. Requires [FormItem.displayField](#attr-formitemdisplayfield) and [FormItem.valueField](#attr-formitemvaluefield) to be configured.
-
-The method first checks the local valueMap and optionDataSource cache via [FormItem.mapDisplayToValue](#method-formitemmapdisplaytovalue). If no cached mapping is found, it fetches from the [FormItem.optionDataSource](#attr-formitemoptiondatasource) using the display value as criteria.
-
-This method is asynchronous when fetching from the optionDataSource. Use the callback parameter to be notified when the operation completes.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| displayValue | [Any](#type-any) | false | — | The display value to look up |
-| callback | [SetValueByDisplayValueCallback](#type-setvaluebydisplayvaluecallback) | true | — | Callback fired when the operation completes |
-
----
-## Method: FormItem.hasAdvancedCriteria
-
-### Description
-Does this form item produce an [AdvancedCriteria](../reference.md#object-advancedcriteria) sub criterion object? If this method returns true, [DynamicForm.getValuesAsCriteria](DynamicForm.md#method-dynamicformgetvaluesascriteria) on the form containing this item will always return an [AdvancedCriteria](../reference.md#object-advancedcriteria) object, calling [FormItem.getCriterion](#method-formitemgetcriterion) on each item to retrieve the individual criteria.
-
-Default implementation will return `true` if [FormItem.operator](#attr-formitemoperator) is explicitly specified.
-
-### Returns
-
-`[Boolean](#type-boolean)` — true if this item will return an AdvancedCriteria sub-criterion.
-
-### Groups
-
-- criteriaEditing
-
----
-## Method: FormItem.getPickerIconTabPosition
-
-### Description
-Returns the desired tab-position of the picker icon with respect to other focusable sub-elements for this formItem.
-
-Default implementation returns zero, making the picker the first focusable element after the items text box.
-
-### Returns
-
-`[Integer](../reference_2.md#type-integer)` — desired position in the tab-order within this item's sub-elements
-
----
-## Method: FormItem.change
-
-### Description
-Called when a FormItem's value is about to change as the result of user interaction. This method fires after the user performed an action that would change the value of this field, but before the element itself is changed.
-
-Returning false cancels the change. Note that if what you want to do is **transform** the user's input, for example, automatically change separator characters to a standard separator character, you should implement [transformInput](#method-formitemtransforminput) rather than using a combination of change() and setValue() to accomplish the same thing. Returning false from `change` is intended for rejecting input entirely, such as typing invalid characters.
-
-Note that if you ask the form for the current value in this handler, you will get the old value because the change has not yet been committed. The new value is available as a parameter to this method.
-
-Change/Changed notifications vs _"...When"_ rules: the `change` and `changed` events only fire when an end user modifies a field value. If you are trying to dynamically control the visibility or enabled state of other components in response to these events, consider instead using properties such as [Canvas.visibleWhen](Canvas.md#attr-canvasvisiblewhen), [item.readOnlyWhen](#attr-formitemreadonlywhen), [Canvas.enableWhen](Canvas.md#attr-canvasenablewhen) on the target component. (Similar properties are available on [FormItem](#class-formitem), [Canvas](Canvas.md#class-canvas), [MenuItem](../reference_2.md#object-menuitem) and other components).
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| form | [DynamicForm](#type-dynamicform) | false | — | the managing DynamicForm instance |
-| item | [FormItem](#type-formitem) | false | — | the form item itself (also available as "this") |
-| value | [Any](#type-any) | false | — | The new value of the form item |
-| oldValue | [Any](#type-any) | false | — | The previous value of the form item |
-
-### Returns
-
-`[Boolean](#type-boolean)` — In your handler, return false to cancel the change, true or null to allow the change
-
-### Groups
-
-- eventHandling
-
----
-## Method: FormItem.getRect
-
-### Description
-Return the coordinates of this object as a 4 element array.
-
-### Returns
-
-`[Array](#type-array)` — \[left, top, width, height\]
-
-### Groups
-
-- positioning
-- sizing
 
 ---
 ## Method: FormItem.getIconWidth
@@ -5251,7 +4213,7 @@ Takes an icon definition object, and returns the width for that icon in px.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| icon | [Object](../reference.md#type-object) | false | — | icon definition object for this item. |
+| icon | [Object](../reference_2.md#type-object) | false | — | icon definition object for this item. |
 
 ### Returns
 
@@ -5287,6 +4249,21 @@ Set an icon as enabled or disabled at runtime.
 **Flags**: A
 
 ---
+## Method: FormItem.getPageRect
+
+### Description
+Return the page-level coordinates of this object as a 4 element array.
+
+### Returns
+
+`[Array](#type-array)` — \[left, top, width, height\]
+
+### Groups
+
+- positioning
+- sizing
+
+---
 ## Method: FormItem.blurItem
 
 ### Description
@@ -5296,6 +4273,29 @@ Takes focus from this form item's focusable element.
 
 - eventHandling
 - focus
+
+---
+## Method: FormItem.keyPress
+
+### Description
+StringMethod fired when the user presses a key while focused in this form item.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| item | [FormItem](#type-formitem) | false | — | Item over which the keypress occurred |
+| form | [DynamicForm](#type-dynamicform) | false | — | Pointer to the item's form |
+| keyName | [KeyName](../reference.md#type-keyname) | false | — | Name of the key pressed (Example: `"A"`, `"Enter"`) |
+| characterValue | [number](#type-number) | false | — | If this was a character key, this is the numeric value for the character |
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — return false to attempt to cancel the event. Note for general purpose APIs for managing whether user input is allowed, use [FormItem.change](#method-formitemchange) or [FormItem.transformInput](#method-formitemtransforminput) instead.
+
+### Groups
+
+- eventHandling
 
 ---
 ## Method: FormItem.showIcon
@@ -5324,6 +4324,90 @@ Return the value tracked by this form item as an Integer. If the value cannot be
 ### See Also
 
 - [FormItem.getValue](#method-formitemgetvalue)
+- [FormItem.getValueAsLong()](#method-formitemgetvalueaslong)
+
+---
+## Method: FormItem.getLeft
+
+### Description
+Returns the left coordinate of this form item in pixels. Note that this method is only reliable after the item has been drawn.
+
+### Returns
+
+`[int](../reference.md#type-int)` — left coordinate within the form in pixels\\
+
+### Groups
+
+- positioning
+- sizing
+
+---
+## Method: FormItem.keyUp
+
+### Description
+StringMethod fired in response to a keyup while focused in this form item.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| item | [FormItem](#type-formitem) | false | — | Item over which the keyup occurred |
+| form | [DynamicForm](#type-dynamicform) | false | — | Pointer to the item's form |
+| keyName | [KeyName](../reference.md#type-keyname) | false | — | Name of the key pressed (Example: `"A"`, `"Enter"`) |
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — return false to attempt to cancel the event. Note for general purpose APIs for managing whether user input is allowed, use [FormItem.change](#method-formitemchange) or [FormItem.transformInput](#method-formitemtransforminput) instead.
+
+### Groups
+
+- eventHandling
+
+---
+## Method: FormItem.iconKeyPress
+
+### Description
+StringMethod. Default action to fire when an icon has keyboard focus and the user types a key. May be overridden by setting `keyPress` on the form item icon directly.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| keyName | [KeyName](../reference.md#type-keyname) | false | — | name of the key pressed |
+| character | [Character](#type-character) | false | — | character produced by the keypress |
+| form | [DynamicForm](#type-dynamicform) | false | — | a pointer to this item's form |
+| item | [FormItem](#type-formitem) | false | — | a pointer to this form item |
+| icon | [FormItemIcon](#type-formitemicon) | false | — | a pointer to the icon that received the click event. |
+
+### Groups
+
+- formIcons
+
+---
+## Method: FormItem.formatValue
+
+### Description
+Allows customization of how the FormItem's stored value is formatted for display. If you are considering using this method, you should first consider using [FormItem.format](#attr-formitemformat), which provides for simple and flexible declarative formatting of dates, times and numbers, without the need to write formatting code.
+
+By default, this formatter will only be applied to static displays such as [StaticTextItem](StaticTextItem.md#class-statictextitem) or [SelectItem](SelectItem.md#class-selectitem), and does not apply to values displayed in a freely editable text entry field (such as a [TextItem](TextItem.md#class-textitem) or [TextAreaItem](TextAreaItem.md#class-textareaitem)).
+
+To define formatting logic for editable text, developers may:
+
+*   set [TextItem.formatOnBlur](TextItem.md#attr-textitemformatonblur) to true, which causes the static formatter to be applied while the item does not have focus, and then be cleared when the user moves focus to the text field
+*   use [FormItem.formatEditorValue](#method-formitemformateditorvalue) and supply a corresponding [FormItem.parseEditorValue](#method-formitemparseeditorvalue) that can convert a formatted and subsequently user-edited value back to a stored value.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| value | [Any](#type-any) | false | — | Underlying data value to format. May be null. |
+| record | [ListGridRecord](#type-listgridrecord) | false | — | The record currently being edited by this form. Essentially the form's current values object. |
+| form | [DynamicForm](#type-dynamicform) | false | — | pointer to the DynamicForm |
+| item | [FormItem](#type-formitem) | false | — | pointer to the FormItem |
+
+### Returns
+
+`[String](#type-string)` — Display value to show.
 
 ---
 ## Method: FormItem.showPicker
@@ -5374,6 +4458,22 @@ Return whether this item currently has any validation errors as a result of a pr
 - errorHandling
 
 ---
+## Method: FormItem.removeIcon
+
+### Description
+Given an icon's [name](FormItemIcon.md#attr-formitemiconname), remove it from this item.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| icon | [Identifier](../reference.md#type-identifier) | false | — | the name of the icon to remove |
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — true if an icon was removed, false otherwise
+
+---
 ## Method: FormItem.getPrintValueIconStyle
 
 ### Description
@@ -5411,8 +4511,6 @@ Is this form item editable or read-only?
 
 This setting differs from the enabled/disabled state in that most form items will allow copying of the contents while read-only but do not while disabled.
 
-**Important note:** this method is not intended as an override point to make an item conditionally read-only. It is not called at the appropriate times to serve as a dynamic control over editability. Developers may instead use [readOnlyWhen rules](#attr-formitemreadonlywhen) to dynamically control editability of items.
-
 ### Returns
 
 `[boolean](../reference.md#type-boolean)` — true if editable
@@ -5442,6 +4540,70 @@ This method will enable some icon in this item's [FormItem.icons](#attr-formitem
 - [FormItemIcon.disabled](FormItemIcon.md#attr-formitemicondisabled)
 
 ---
+## Method: FormItem.stopHover
+
+### Description
+This method is fired when the user rolls off this item (or the title for this item) and will clear any hover canvas shown by the item.
+
+### Groups
+
+- Hovers
+
+**Flags**: A
+
+---
+## Method: FormItem.setCanEdit
+
+### Description
+Is this form item editable (canEdit:true) or read-only (canEdit:false)? Setting the form item to non-editable causes it to render as read-only, using the appearance specified via [FormItem.readOnlyDisplay](#attr-formitemreadonlydisplay).
+
+The default appearance for canEdit:false items (`readOnlyDisplay:"readOnly"`) differs from the disabled state in that the form item is not rendered with disabled styling and most form items will allow copying of the contents while read-only but do not while disabled.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| canEdit | [Boolean](#type-boolean) | false | — | Can this form item be edited? |
+
+### Groups
+
+- readOnly
+
+### See Also
+
+- [FormItem.canEdit](#attr-formitemcanedit)
+- [FormItem.setDisabled](#method-formitemsetdisabled)
+
+---
+## Method: FormItem.valueHoverHTML
+
+### Description
+If defined, this method should return the HTML to display in a hover canvas when the user holds the mousepointer over this item's value. Return null to suppress the hover canvas altogether.
+
+If not defined, [DynamicForm.valueHoverHTML](DynamicForm.md#method-dynamicformvaluehoverhtml) will be evaluated to determine hover content instead.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| item | [FormItem](#type-formitem) | false | — | Pointer to this item |
+| form | [DynamicForm](#type-dynamicform) | false | — | This items form |
+
+### Returns
+
+`[HTMLString](../reference.md#type-htmlstring)` — HTML to be displayed in the hover
+
+### Groups
+
+- Hovers
+
+### See Also
+
+- [FormItem.showClippedValueOnHover](#attr-formitemshowclippedvalueonhover)
+
+**Flags**: A
+
+---
 ## Method: FormItem.mapValueToDisplay
 
 ### Description
@@ -5450,7 +4612,7 @@ Given a value for this FormItem, return the value to be displayed.
 This method is called by the framework to derive a display value for a given data value in a FormItem. Your own code can call this method if you need to programmatically obtain the display value (for example, to display in a hover prompt or error message). However, it is **not** intended as an override point, and you should not treat it as one. There are several supported ways to apply custom formatting to your form values:
 
 *   If you want to apply a consistent custom format to every instance of a given [SimpleType](SimpleType.md#class-simpletype), specify a [format](SimpleType.md#attr-simpletypeformat) on the SimpleType. This is the most general approach. Note, this is a static formatter: it will only affect the format of values the user can interact with if [TextItem.formatOnBlur](TextItem.md#attr-textitemformatonblur) is set
-*   If you want to apply a consistent custom format to a [DataSource-described field](../reference_2.md#object-datasourcefield), the best approach is [DataSourceField.format](DataSourceField.md#attr-datasourcefieldformat). This overrides SimpleType-level formatting and, again, is static formatting
+*   If you want to apply a consistent custom format to a [DataSource-described field](../reference.md#object-datasourcefield), the best approach is [DataSourceField.format](DataSourceField.md#attr-datasourcefieldformat). This overrides SimpleType-level formatting and, again, is static formatting
 *   For a FormItem that is not DataSource-described, or for special formats that should only be used on a particular form, [format](#attr-formitemformat) can also be declared for individual FormItems. This overrides DataSource-level formatting
 *   For temporal values, you can declare [dateFormatter](#attr-formitemdateformatter) and [timeFormatter](#attr-formitemtimeformatter) at both `FormItem` and [DynamicForm](DynamicForm.md#class-dynamicform) levels. Generally, however, we recommend the generic declarative [format](#attr-formitemformat) as the simpler approach
 *   If you want to apply a specialized format that cannot be expressed declaratively, use [formatValue()](#method-formitemformatvalue) for static-valued items like [StaticTextItem](StaticTextItem.md#class-statictextitem) or [SelectItem](SelectItem.md#class-selectitem), and [formatEditorValue()](#method-formitemformateditorvalue) for other types of FormItem
@@ -5514,6 +4676,48 @@ Output the HTML for an error message in a form element. Default behavior respect
 **Flags**: A
 
 ---
+## Method: FormItem.setTabIndex
+
+### Description
+Setter for [FormItem.tabIndex](#attr-formitemtabindex).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| tabIndex | [Integer](../reference_2.md#type-integer) | false | — | new tabIndex for the item |
+
+---
+## Method: FormItem.validate
+
+### Description
+Validate this item.
+
+### Returns
+
+`[Boolean](#type-boolean)` — returns true if validation was successful (no errors encountered), false otherwise.
+
+---
+## Method: FormItem.disableIcon
+
+### Description
+This method will disable some icon in this item's [FormItem.icons](#attr-formitemicons) array, if it is currently enabled.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| icon | [Identifier](../reference.md#type-identifier) | false | — | [name](FormItemIcon.md#attr-formitemiconname) of the icon to be disabled. |
+
+### Groups
+
+- enable
+
+### See Also
+
+- [FormItemIcon.disabled](FormItemIcon.md#attr-formitemicondisabled)
+
+---
 ## Method: FormItem.editorExit
 
 ### Description
@@ -5542,6 +4746,46 @@ Clear all error messages for this item
 - errorHandling
 
 ---
+## Method: FormItem.focus
+
+### Description
+Called when this FormItem receives focus.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| form | [DynamicForm](#type-dynamicform) | false | — | the managing DynamicForm instance |
+| item | [FormItem](#type-formitem) | false | — | the form item itself (also available as "this") |
+
+### Groups
+
+- eventHandling
+
+---
+## Method: FormItem.setDisabled
+
+### Description
+Set this item to be enabled or disabled at runtime.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| disabled | [boolean](../reference.md#type-boolean) | false | — | true if this item should be disabled |
+
+### Groups
+
+- enable
+
+### See Also
+
+- [FormItem.disabled](#attr-formitemdisabled)
+- [FormItem.setCanEdit](#method-formitemsetcanedit)
+
+**Flags**: A
+
+---
 ## Method: FormItem.setOptionDataSource
 
 ### Description
@@ -5565,7 +4809,7 @@ Set the valueMap for this item.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| valueMap | [Array](#type-array)|[Object](../reference.md#type-object) | false | — | new valueMap |
+| valueMap | [Array](#type-array)|[Object](../reference_2.md#type-object) | false | — | new valueMap |
 
 ### Groups
 
@@ -5582,8 +4826,6 @@ Set the valueMap for this item.
 
 ### Description
 Optional stringMethod to fire when the user hovers over this item's title. Return false to suppress default behavior of showing a hover canvas containing the HTML returned by `formItem.titleHoverHTML()` / `form.titleHoverHTML()`.
-
-If [FormItem.canHover](#attr-formitemcanhover) is set to false, this method is not called.
 
 ### Parameters
 
@@ -5621,7 +4863,7 @@ Store (and optionally show) a value for this form item.
 
 This method will fire standard [FormItem.change](#method-formitemchange) and [DynamicForm.itemChanged](DynamicForm.md#method-dynamicformitemchanged) handlers, and store the value passed in such that subsequent calls to [FormItem.getValue](#method-formitemgetvalue) or [DynamicForm.getValue](DynamicForm.md#method-dynamicformgetvalue) will return the new value for this item.
 
-This method is intended to provide a way for custom formItems - most commonly [canvasItems](CanvasItem.md#class-canvasitem) - to provide a new interface to the user, allowing them to manipulate the item's value, for example in an embedded [CanvasItem.canvas](CanvasItem.md#attr-canvasitemcanvas), or a pop-up dialog launched from an [icon](../reference.md#object-formitemicon), etc. Developers should call this method when the user interacts with this custom interface in order to store the changed value.
+This method is intended to provide a way for custom formItems - most commonly [canvasItems](CanvasItem.md#class-canvasitem) - to provide a new interface to the user, allowing them to manipulate the item's value, for example in an embedded [CanvasItem.canvas](CanvasItem.md#attr-canvasitemcanvas), or a pop-up dialog launched from an [icon](../reference_2.md#object-formitemicon), etc. Developers should call this method when the user interacts with this custom interface in order to store the changed value.
 
 [shouldSaveValue](CanvasItem.md#attr-canvasitemshouldsavevalue) for CanvasItems is false by default. Custom CanvasItems will need to override shouldSaveValue to true if the values stored via this API should be included in the form's [getValues()](DynamicForm.md#method-dynamicformgetvalues) and saved with the form when [saveData()](DynamicForm.md#method-dynamicformsavedata) is called.
 
@@ -5670,7 +4912,7 @@ Setter for [FormItem.cellStyle](#attr-formitemcellstyle).
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newCellStyle | [FormItemBaseStyle](../reference_2.md#type-formitembasestyle) | false | — | the new `cellStyle` value. |
+| newCellStyle | [FormItemBaseStyle](../reference.md#type-formitembasestyle) | false | — | the new `cellStyle` value. |
 
 ### Groups
 
@@ -5695,6 +4937,61 @@ Returns true if this formItem has the keyboard focus. Note that in Internet Expl
 `[Boolean](#type-boolean)` — whether this formItem has the keyboard focus
 
 ---
+## Method: FormItem.valueClipped
+
+### Description
+Is the value clipped?
+
+The form item must have value clipping enabled. If a form item type supports the clipValue attribute, then clipValue must be true. [TextItem](TextItem.md#class-textitem)s and derivatives (e.g. [SpinnerItem](SpinnerItem.md#class-spinneritem)) automatically clip their values.
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — true if the value is clipped; false otherwise.
+
+---
+## Method: FormItem.blur
+
+### Description
+Called when this FormItem loses focus.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| form | [DynamicForm](#type-dynamicform) | false | — | the managing DynamicForm instance |
+| item | [FormItem](#type-formitem) | false | — | the form item itself (also available as "this") |
+
+### Groups
+
+- eventHandling
+
+---
+## Method: FormItem.iconClick
+
+### Description
+Notification method called when the user clicks on a form item icon.
+
+The icon's [FormItemIcon.click](FormItemIcon.md#method-formitemiconclick) method if any is called first. Then, if the clicked icon is the [picker icon](#attr-formitemshowpickericon), the [FormItem.pickerIconClick](#method-formitempickericonclick) method is called. Then, this method is called.
+
+This event may be cancelled by returning false to suppress the [FormItem.click](#method-formitemclick) handler from also firing in response to the user interaction.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| form | [DynamicForm](#type-dynamicform) | false | — | a pointer to this item's form |
+| item | [FormItem](#type-formitem) | false | — | a pointer to this form item |
+| icon | [FormItemIcon](#type-formitemicon) | false | — | a pointer to the icon that received the click event. |
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — return false to cancel this event
+
+### Groups
+
+- formIcons
+
+---
 ## Method: FormItem.getVAlign
 
 ### Description
@@ -5716,12 +5013,32 @@ Note: `click()` is available on StaticTextItem, BlurbItems, ButtonItem, and deri
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| form | [DynamicForm](#type-dynamicform) | true | — | the managing DynamicForm instance |
-| item | [FormItem](#type-formitem) | true | — | the form item itself (also available as "this") |
+| form | [DynamicForm](#type-dynamicform) | false | — | the managing DynamicForm instance |
+| item | [FormItem](#type-formitem) | false | — | the form item itself (also available as "this") |
 
 ### Returns
 
-`[Boolean](#type-boolean)` — Return false to cancel the click event. This will prevent the event from bubbling up, suppressing [click](Canvas.md#method-canvasclick) on the form containing this item.
+`[boolean](../reference.md#type-boolean)` — Return false to cancel the click event. This will prevent the event from bubbling up, suppressing [click](Canvas.md#method-canvasclick) on the form containing this item.
+
+### Groups
+
+- eventHandling
+
+---
+## Method: FormItem.changed
+
+### Description
+Called when a FormItem's value has been changed as the result of user interaction. This method fires after the newly specified value has been stored.
+
+Change/Changed notifications vs _"...When"_ rules: the `change` and `changed` events only fire when an end user modifies a field value. If you are trying to dynamically control the visibility or enabled state of other components in response to these events, consider instead using properties such as [Canvas.visibleWhen](Canvas.md#attr-canvasvisiblewhen), [item.readOnlyWhen](#attr-formitemreadonlywhen), [Canvas.enableWhen](Canvas.md#attr-canvasenablewhen) on the target component. (Similar properties are available on [FormItem](#class-formitem), [Canvas](Canvas.md#class-canvas), [MenuItem](../reference.md#object-menuitem) and other components).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| form | [DynamicForm](#type-dynamicform) | false | — | the managing DynamicForm instance |
+| item | [FormItem](#type-formitem) | false | — | the form item itself (also available as "this") |
+| value | [Any](#type-any) | false | — | The current value (after the change). |
 
 ### Groups
 
@@ -5740,6 +5057,49 @@ Return true if the form item is currently visible. Note that like the similar [C
 ### Groups
 
 - visibility
+
+---
+## Method: FormItem.doubleClick
+
+### Description
+Called when this FormItem is double-clicked.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| form | [DynamicForm](#type-dynamicform) | false | — | the managing DynamicForm instance |
+| item | [FormItem](#type-formitem) | false | — | the form item itself (also available as "this") |
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — Return false to cancel the doubleClick event. This will prevent the event from bubbling up, suppressing [doubleClick](Canvas.md#method-canvasdoubleclick) on the form containing this item.
+
+### Groups
+
+- eventHandling
+
+---
+## Method: FormItem.focusAfterItem
+
+### Description
+Shifts focus to the next focusable element after this item, skipping any elements nested inside the tabbing group for this item, such as sub-elements, nested canvases in a CanvasItem, or icons.
+
+This method makes use of the [TabIndexManager.shiftFocusAfterGroup](TabIndexManager.md#classmethod-tabindexmanagershiftfocusaftergroup) method to request focus be changed to the next registered entry. By default standard focusable SmartClient UI elements, including Canvases, FormItems, FormItemIcons, etc are registered with the TabIndexManager in the appropriate order, and will accept focus if [focusable](Canvas.md#attr-canvascanfocus), and not [disabled](#attr-formitemdisabled) or [masked](Canvas.md#method-canvasshowclickmask).
+
+Canvases support a similar method: [Canvas.focusAfterGroup](Canvas.md#method-canvasfocusaftergroup).
+
+**NOTE:** Focusable elements created directly in the raw HTML bootstrap or by application code will not be passed focus by this method unless they have also been explicitly registered with the TabIndexManager. See the [tabOrderOverview](../kb_topics/tabOrderOverview.md#kb-topic-tab-order-overview) for more information.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| forward | [boolean](../reference.md#type-boolean) | false | — | direction to shift focus - true to move forward, false to move backwards (as with a shift+tab interaction). |
+
+### Groups
+
+- focus
 
 ---
 ## Method: FormItem.isPasteEvent
@@ -5789,9 +5149,58 @@ The pendingStatusChanged() notification method is typically used by [CanvasItem]
 
 ### Returns
 
-`[Boolean](#type-boolean)` — `false` to cancel the default behavior.
+`[boolean](../reference.md#type-boolean)` — `false` to cancel the default behavior.
 
 **Flags**: A
+
+---
+## Method: FormItem.getCriterion
+
+### Description
+Override this method if you need to provide a specialized criterion from this formItem when creating an AdvancedCriteria via [DynamicForm.getValuesAsCriteria](DynamicForm.md#method-dynamicformgetvaluesascriteria).
+
+This API is provided to allow you to specify a more complex criterion than the "field-operator-value" criterions that are built-in. Note that the built-in behavior is generally quite flexible and powerful enough for most requirements. An example of a case where you might want to override this method is if you wanted to implement a date range selection (ie, date > x AND date < y) on a form that was combining its other criteria fields with an "or" operator.
+
+Note that this method is part of the criteria editing subsystem: if overridden, it is likely that you will want to also override [FormItem.hasAdvancedCriteria](#method-formitemhasadvancedcriteria) to ensure this method is called by the form, and to support editing of existing advanced criteria you may also need to override [FormItem.canEditCriterion](#method-formitemcaneditcriterion) and [FormItem.setCriterion](#method-formitemsetcriterion).
+
+The default implementation will return a criterion including the form item value, fieldName and specified [FormItem.operator](#attr-formitemoperator), or a default operator derived from the form item data type if no explicit operator is specified.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| textMatchStyle | [TextMatchStyle](../reference.md#type-textmatchstyle) | true | — | If passed assume the textMatchStyle will be used when performing a fetch operation with these criteria. This may impact the criterion's operator property. |
+
+### Returns
+
+`[Criterion](#type-criterion)` — criterion object based on this fields current edited value(s).
+
+### Groups
+
+- criteriaEditing
+
+**Flags**: A
+
+---
+## Method: FormItem.formatEditorValue
+
+### Description
+Allows customization of how the FormItem's stored value is formatted for display in an editable text entry area, such as a [TextItem](TextItem.md#class-textitem) [TextAreaItem](TextAreaItem.md#class-textareaitem). For display values which will not be directly editable by the user, use [FormItem.formatValue](#method-formitemformatvalue) instead.
+
+When customizing how values are displayed during editing, it is almost always necessary to provide a [FormItem.parseEditorValue](#method-formitemparseeditorvalue) as well, in order to convert a formatted and subsequently user-edited value back to a stored value.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| value | [Any](#type-any) | false | — | Underlying data value to format. May be null. |
+| record | [ListGridRecord](#type-listgridrecord) | false | — | The record currently being edited by this form. Essentially the form's current values object. |
+| form | [DynamicForm](#type-dynamicform) | false | — | pointer to the DynamicForm |
+| item | [FormItem](#type-formitem) | false | — | pointer to the FormItem |
+
+### Returns
+
+`[String](#type-string)` — display value to show in the editor.
 
 ---
 ## Method: FormItem.isCutEvent
@@ -5802,6 +5211,51 @@ Is the user performing a native "cut" event to modify the value of a freeform te
 ### Returns
 
 `[boolean](../reference.md#type-boolean)` — true if this is a cut event.
+
+---
+## Method: FormItem.transformInput
+
+### Description
+Called when a FormItem's value is about to change as the result of user interaction. This method fires after the user performed an action that would change the value of this field, and allows the developer to modify / reformat the value before it gets validated / saved. Fires before [FormItem.change](#method-formitemchange).
+
+Return the reformatted value.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| form | [DynamicForm](#type-dynamicform) | false | — | the managing DynamicForm instance |
+| item | [FormItem](#type-formitem) | false | — | the form item itself (also available as "this") |
+| value | [Any](#type-any) | false | — | The new value of the form item |
+| oldValue | [Any](#type-any) | false | — | The previous (current) value of the form item |
+
+### Returns
+
+`[Any](#type-any)` — The desired new value for the form item
+
+---
+## Method: FormItem.itemHover
+
+### Description
+Optional stringMethod to fire when the user hovers over this item. Return false to suppress default behavior of showing a hover canvas containing the HTML returned by `formItem.itemHoverHTML()` / `form.itemHoverHTML()`.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| item | [FormItem](#type-formitem) | false | — | Pointer to this item |
+| form | [DynamicForm](#type-dynamicform) | false | — | This items form |
+
+### Groups
+
+- Hovers
+
+### See Also
+
+- [FormItem.titleHover](#method-formitemtitlehover)
+- [FormItem.itemHoverHTML](#method-formitemitemhoverhtml)
+
+**Flags**: A
 
 ---
 ## Method: FormItem.getValueFieldName
@@ -5818,6 +5272,47 @@ If unset, if a [foreignKey relationship](DataSourceField.md#attr-datasourcefield
 ### Groups
 
 - display_values
+
+---
+## Method: FormItem.isInGrid
+
+### Description
+Returns true if this item's [containerWidget](#attr-formitemcontainerwidget) is a [GridRenderer](GridRenderer.md#class-gridrenderer) or GridRenderer subclass
+
+### Returns
+
+`[Boolean](#type-boolean)` — whether the item's container is a GridRenderer (and thus ultimately a ListGrid)
+
+---
+## Method: FormItem.getPrintValueIcon
+
+### Description
+If implemented, this stringMethod is called when [printing](../kb_topics/printing.md#kb-topic-printing) to obtain the image source for an icon to be displayed for the current form item value. The special value "blank" means that no image will be displayed.
+
+Implementing `getPrintValueIcon()` may be useful in order to swap out the value icon with a more printer-friendly image (perhaps a grayscale-only image). Another use is to avoid spriting when printing. Value icon spriting may be problematic when printing because browsers typically default to not printing background images.
+
+Takes precedence over [FormItem.valueIcons](#attr-formitemvalueicons) and [FormItem.getValueIcon](#method-formitemgetvalueicon) when printing.
+
+The returned [SCImgURL](../reference_2.md#type-scimgurl), if not `null` or "blank", will be suffixed with [FormItem.imageURLSuffix](#attr-formitemimageurlsuffix).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| value | [Any](#type-any) | false | — | value of the item. |
+
+### Returns
+
+`[SCImgURL](../reference_2.md#type-scimgurl)` — the image source or `null` if no value icon should be displayed.
+
+### Groups
+
+- valueIcons
+- printing
+
+### See Also
+
+- [FormItem.getValueIcon](#method-formitemgetvalueicon)
 
 ---
 ## Method: FormItem.getIcon
@@ -5843,9 +5338,82 @@ Return the fully-qualified dataPath for the this formItem (ie, the dataPath expr
 
 ### Returns
 
-`[DataPath](../reference_2.md#type-datapath)` — Fully-qualified dataPath for this form item
+`[DataPath](../reference.md#type-datapath)` — Fully-qualified dataPath for this form item
 
 **Flags**: A
+
+---
+## Method: FormItem.getListGrid
+
+### Description
+If this item is being used to edit cells in a ListGrid (see [FormItem.isInGrid](#method-formitemisingrid)), this method returns the grid in question.
+
+### Returns
+
+`[ListGrid](#type-listgrid)` — For listGrid edit items, the listGrid containing the item. Will return null for items that are edit items of a listGrid.
+
+---
+## Method: FormItem.setHintStyle
+
+### Description
+Set the hintStyle for this item
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| hintStyle | [CSSStyleName](../reference.md#type-cssstylename) | false | — | new style for hint text |
+
+---
+## Method: FormItem.valueIconClick
+
+### Description
+Notification method fires when the user clicks a [value icon](#attr-formitemvalueicons) for this item.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| form | [DynamicForm](#type-dynamicform) | false | — | the form containing this item |
+| item | [FormItem](#type-formitem) | false | — | the FormItem containing the valueIcon |
+| value | [Any](#type-any) | false | — | the current value of the item. |
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — Return false to suppress standard click handling for the item.
+
+---
+## Method: FormItem.shouldStopKeyPressBubbling
+
+### Description
+Should some keypress event on this item be prevented from bubbling (such that the containing form and ancestors do not receive the event).
+
+This method is called after standard item keypress handlers when the user presses a key while focused in this item. Returning true will suppress bubbling of the event to the containing form. This is useful to avoid having the form react to key events which "have meaning" to the focused item.
+
+Default implementation varies by item type. In short character keys are suppressed for all editable fields, as are keys which will modify the current state of the field ("Arrow" keys for moving around free form text editors, etc).
+
+Developers may override this method to allow the form to react to certain keypresses, for example allowing scrolling of the form when the user presses the arrow keys, but they should be aware that doing so could lead to confusing user experience if the keypress will also move the position of the caret within a text box (say). Note that when this method returns true, no [keyPress](Canvas.md#method-canvaskeypress) event will fire on the form for the key pressed. However developers will still receive the separate [DynamicForm.itemKeyPress](DynamicForm.md#method-dynamicformitemkeypress) event.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| keyName | [KeyName](../reference.md#type-keyname) | false | — | name of the key pressed |
+| characterValue | [number](#type-number) | false | — | If this was a character key, this is the numeric value for the character |
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — return true to prevent bubbling of the pressed key.
+
+**Flags**: A
+
+---
+## Method: FormItem.applyFormula
+
+### Description
+Manually sets this FormItem to the result of [FormItem.formula](#attr-formitemformula) or [FormItem.textFormula](#attr-formitemtextformula). Formulas are normally automatically recomputed and the result automatically applied to the FormItem according to the rules described under [FormItem.formula](#attr-formitemformula). `applyFormula()` exists to cover any rare cases where these rules are not correct.
+
+Calling `applyFormula()` has no effect if no [FormItem.formula](#attr-formitemformula) or [FormItem.textFormula](#attr-formitemtextformula) is configured for this FormItem.
 
 ---
 ## Method: FormItem.getDataPath
@@ -5855,7 +5423,23 @@ Return the dataPath for the this formItem.
 
 ### Returns
 
-`[DataPath](../reference_2.md#type-datapath)` — dataPath for this form item
+`[DataPath](../reference.md#type-datapath)` — dataPath for this form item
+
+**Flags**: A
+
+---
+## Method: FormItem.getTitle
+
+### Description
+Returns the title HTML for this item.
+
+### Returns
+
+`[HTMLString](../reference.md#type-htmlstring)` — title for the formItem
+
+### Groups
+
+- drawing
 
 **Flags**: A
 
@@ -5876,6 +5460,37 @@ This method explicitly invalidates this cache of optionDataSource data, and if t
 - display_values
 
 ---
+## Method: FormItem.itemHoverHTML
+
+### Description
+If defined, this method should return the HTML to display in a hover canvas when the user holds the mousepointer over this item. Return null to suppress the hover canvas altogether.
+
+If not defined, `dynamicForm.itemHoverHTML()` will be evaluated to determine hover content instead.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| item | [FormItem](#type-formitem) | false | — | Pointer to this item |
+| form | [DynamicForm](#type-dynamicform) | false | — | This items form |
+
+### Returns
+
+`[HTMLString](../reference.md#type-htmlstring)` — HTML to be displayed in the hover
+
+### Groups
+
+- Hovers
+
+### See Also
+
+- [FormItem.prompt](#attr-formitemprompt)
+- [FormItem.itemHover](#method-formitemitemhover)
+- [FormItem.titleHoverHTML](#method-formitemtitlehoverhtml)
+
+**Flags**: A
+
+---
 ## Method: FormItem.setValueIcons
 
 ### Description
@@ -5885,7 +5500,7 @@ Sets the [valueIcons](#attr-formitemvalueicons) for this item.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| map | [Object](../reference.md#type-object) | false | — | mapping of logical values for this item to icon src [SCImgURL](../reference.md#type-scimgurl)s or the special value "blank". |
+| map | [Object](../reference_2.md#type-object) | false | — | mapping of logical values for this item to icon src [SCImgURL](../reference_2.md#type-scimgurl)s or the special value "blank". |
 
 ### Groups
 

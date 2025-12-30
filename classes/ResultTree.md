@@ -13,21 +13,11 @@ ResultTrees are an implementation of the [Tree](Tree.md#class-tree) API, used to
 
 **Modifying ResultTrees**
 
-`ResultTree` nodes cannot be directly added or removed from a [paged](#attr-resulttreefetchmode) `ResultTree` via [Tree](Tree.md#class-tree) APIs such as [Tree.add](Tree.md#method-treeadd) or [Tree.remove](Tree.md#method-treeremove), since such trees are considered to be read-only by virtue of containing [ResultSet](ResultSet.md#class-resultset)s, which are read-only data structures. Even in other [FetchMode](../reference_2.md#type-fetchmode)s, calling such APIs will only update the local cache of the ResultTree, rather than triggering any server traffict to update the DataSource.
+`ResultTree` nodes cannot be directly added or removed from a [paged](#attr-resulttreefetchmode) `ResultTree` via [Tree](Tree.md#class-tree) APIs such as [Tree.add](Tree.md#method-treeadd) or [Tree.remove](Tree.md#method-treeremove), since such trees are considered to be read-only by virtue of containing [ResultSet](ResultSet.md#class-resultset)s, which are read-only data structures. Even in other [FetchMode](../reference.md#type-fetchmode)s, calling such APIs will only update the local cache of the ResultTree, rather than triggering any server traffict to update the DataSource.
 
 Use [DataSource.addData](DataSource.md#method-datasourceadddata)/[removeData()](DataSource.md#method-datasourceremovedata) to add/remove rows from the [DataSource](DataSource.md#class-datasource), and the `ResultTree` will reflect the changes automatically. Alternatively, the [DataSource.updateCaches](DataSource.md#method-datasourceupdatecaches) method may be called to only update local caches of the DataSource in question, without generating any server traffic.
 
 To create a locally modifiable cache of records from a DataSource, you can use [DataSource.fetchData](DataSource.md#method-datasourcefetchdata) to retrieve a List of records which can be modified directly, or you can create a client-only [DataSource](DataSource.md#class-datasource) from the retrieved data to share a modifiable cache between several DataBoundComponents.
-
----
-## Attr: ResultTree.serverKeepParentsOnFilter
-
-### Description
-If true, indicates that your own server code will handle the complexities associated with the combination of [keepParentsOnFilter](#attr-resulttreekeepparentsonfilter) and [loadDataOnDemand](#attr-resulttreeloaddataondemand). If this flag is true and your server code does _not_ handle those complexities, the results are undefined, but most likely you will simply exclude non-matching parents if your tree is load-on-demand, which effectively means that filtering will be broken.
-
-If this flag is not set, SmartClient will use its own automatic client-driven algorithm to ensure that `keepParentsOnFilter` is honored on load-on-demand trees. See the `keepParentsOnFilter` overview for details
-
-**Flags**: IRW
 
 ---
 ## Attr: ResultTree.sendNullParentInLinkDataCriteria
@@ -54,119 +44,6 @@ Options are:
 *   "none" - no nodes are opened automatically
 *   "root" - opens the [top-level node](#attr-resulttreerootnode) - in databound trees, this node is always hidden
 *   "all" - when [loading data on demand](#attr-resulttreeloaddataondemand), opens the [top-level node](#attr-resulttreerootnode) and all of it's direct descendants - otherwise, opens all loaded nodes
-
-**Flags**: IRW
-
----
-## Attr: ResultTree.matchingLeafJoinDepth
-
-### Description
-This property allows you to specify the number of ancestor levels SmartClient attempts to retrieve with each request, when using the built-in support for [keepParentsOnFilter](#attr-resulttreekeepparentsonfilter) on [loadDataOnDemand](#attr-resulttreeloaddataondemand) trees. See the `keepParentsOnFilter` overview for details.
-
-**Flags**: IRW
-
----
-## Attr: ResultTree.autoPreserveOpenState
-
-### Description
-Controls what happens to the ["open state"](#method-resulttreegetopenstate) - the set of nodes opened or closed by the end user after tree data is loaded - when an entirely new tree of nodes is loaded from the server, as a consequence of calling [ResultTree.invalidateCache](#method-resulttreeinvalidatecache) or of changing criteria such that the current cache of nodes is dropped.
-
-**Flags**: IRW
-
----
-## Attr: ResultTree.canReturnOpenFolders
-
-### Description
-When using [fetchMode:"paged"](../reference_2.md#type-fetchmode) and providing multiple levels of the tree in one DSResponse, this property specifies the default value assumed for the [ResultTree.canReturnOpenSubfoldersProperty](#attr-resulttreecanreturnopensubfoldersproperty) when no value for that property is provided for a node.
-
-**Flags**: IR
-
----
-## Attr: ResultTree.disableCacheSync
-
-### Description
-By default when the data of this ResultTree's dataSource is modified, the ResultTree will be updated to display these changes. Set this flag to true to disable this behavior.
-
-### Groups
-
-- cacheSync
-
-**Flags**: IRA
-
----
-## Attr: ResultTree.linkDataFetchMode
-
-### Description
-The fetch mode for this tree's link data; ignored if this is not a [multi-link tree](Tree.md#method-treeismultilinktree)
-
-### Groups
-
-- multiLinkTree
-
-**Flags**: IR
-
----
-## Attr: ResultTree.useSimpleCriteriaLOD
-
-### Description
-Whether or not we should skip promotion of a simple criteria to an [AdvancedCriteria](../reference.md#object-advancedcriteria) when sending the [DSRequest](../reference_2.md#object-dsrequest) to load the children of a node in a [ResultTree.loadDataOnDemand](#attr-resulttreeloaddataondemand) or [fetchMode:"paged"](#attr-resulttreefetchmode) `ResultTree`. If the [DSRequest.textMatchStyle](DSRequest.md#attr-dsrequesttextmatchstyle) is not "exact", we normally convert the simple criteria to an [AdvancedCriteria](../reference.md#object-advancedcriteria) for correctness in matching the node name, but setting this property to `true` will allow that to be skipped for backcompat with older releases.
-
-### See Also
-
-- [TreeGrid.autoFetchTextMatchStyle](TreeGrid.md#attr-treegridautofetchtextmatchstyle)
-- [DataSource.defaultTextMatchStyle](DataSource.md#attr-datasourcedefaulttextmatchstyle)
-
-**Flags**: IRWA
-
----
-## Attr: ResultTree.loadDataOnDemand
-
-### Description
-Does this resultTree load data incrementally as folders within the tree are opened, or is it all loaded in a single request? Must be true if [ResultTree.fetchMode](#attr-resulttreefetchmode) is "paged"
-
-See the [keepParentsOnFilter](#attr-resulttreekeepparentsonfilter) overview for special considerations when filtering a load-on-demand tree
-
-### See Also
-
-- [TreeGrid.loadDataOnDemand](TreeGrid.md#attr-treegridloaddataondemand)
-- [ResultTree.useSimpleCriteriaLOD](#attr-resulttreeusesimplecriterialod)
-
-**Flags**: IR
-
----
-## Attr: ResultTree.fetchMode
-
-### Description
-Mode of fetching records from server.
-
-fetchMode:"local" implies that local filtering will always be performed. See [ResultTree.keepParentsOnFilter](#attr-resulttreekeepparentsonfilter) for additional filtering details.
-
-fetchMode:"basic" or "paged" implies that if search criteria change, the entire tree will be discarded and re-fetched from the server. When retrieving the replacement tree data, the default behavior will be to preserve the [openState](#method-resulttreegetopenstate) for any nodes that the server returns which were previously opened by the user. Note that this implies that if [ResultTree.loadDataOnDemand](#attr-resulttreeloaddataondemand) is enabled and the server returns only root-level nodes, open state will be preserved only for root-level nodes, and children of open root-level nodes will be immediately fetched from the server if they are not included in the server's initial response.
-
-fetchMode:"paged" enables paging for nodes that have very large numbers of children. Whenever the children of a folder are loaded, the `resultTree` will set [DSRequest.startRow](DSRequest.md#attr-dsrequeststartrow) and [endRow](DSRequest.md#attr-dsrequestendrow) when requesting children from the DataSource, and will manage loading of further children on demand, similar to how a [ResultSet](ResultSet.md#class-resultset) manages paging for lists. For a deeper discussion see the **Paging large sets of children** section of the [treeDataBinding](../kb_topics/treeDataBinding.md#kb-topic-tree-databinding) overview.
-
-### Groups
-
-- treeDataBinding
-
-### See Also
-
-- [ResultTree.loadDataOnDemand](#attr-resulttreeloaddataondemand)
-- [ResultTree.useSimpleCriteriaLOD](#attr-resulttreeusesimplecriterialod)
-
-**Flags**: IR
-
----
-## Attr: ResultTree.linkDataFetchOperation
-
-### Description
-The [operationId](DSRequest.md#attr-dsrequestoperationid) this `ResultTree` should use when performing fetch operations on its [ResultTree.linkDataSource](#attr-resulttreelinkdatasource). Has no effect if this is not a [multi-link tree](Tree.md#method-treeismultilinktree)
-
-Note, this value can be overridden by [DSRequest.linkDataFetchOperation](DSRequest.md#attr-dsrequestlinkdatafetchoperation) when calling `fetchData()` on the component (e.g. [TreeGrid.fetchData](TreeGrid.md#method-treegridfetchdata)) directly from application code.
-
-### Groups
-
-- multiLinkTree
 
 **Flags**: IRW
 
@@ -229,9 +106,37 @@ Please note the following:
 ## Attr: ResultTree.childCountProperty
 
 ### Description
-When using [fetchMode:"paged"](../reference_2.md#type-fetchmode) and providing multiple levels of the tree in one DSResponse, `childCountProperty` must be set for any folders that include only a partial list of children. For a deeper discussion see the **Paging large sets of children** section of the [treeDataBinding](../kb_topics/treeDataBinding.md#kb-topic-tree-databinding) overview.
+When using [fetchMode:"paged"](../reference.md#type-fetchmode) and providing multiple levels of the tree in one DSResponse, `childCountProperty` must be set for any folders that include only a partial list of children. For a deeper discussion see the **Paging large sets of children** section of the [treeDataBinding](../kb_topics/treeDataBinding.md#kb-topic-tree-databinding) overview.
 
 **Flags**: IR
+
+---
+## Attr: ResultTree.autoPreserveOpenState
+
+### Description
+Controls what happens to the ["open state"](#method-resulttreegetopenstate) - the set of nodes opened or closed by the end user after tree data is loaded - when an entirely new tree of nodes is loaded from the server, as a consequence of calling [ResultTree.invalidateCache](#method-resulttreeinvalidatecache) or of changing criteria such that the current cache of nodes is dropped.
+
+**Flags**: IRW
+
+---
+## Attr: ResultTree.canReturnOpenFolders
+
+### Description
+When using [fetchMode:"paged"](../reference.md#type-fetchmode) and providing multiple levels of the tree in one DSResponse, this property specifies the default value assumed for the [ResultTree.canReturnOpenSubfoldersProperty](#attr-resulttreecanreturnopensubfoldersproperty) when no value for that property is provided for a node.
+
+**Flags**: IR
+
+---
+## Attr: ResultTree.disableCacheSync
+
+### Description
+By default when the data of this ResultTree's dataSource is modified, the ResultTree will be updated to display these changes. Set this flag to true to disable this behavior.
+
+### Groups
+
+- cacheSync
+
+**Flags**: IRA
 
 ---
 ## Attr: ResultTree.linkDataSource
@@ -337,7 +242,7 @@ Because the initial data is treated exactly as though it were returned from the 
 ### See Also
 
 - [Tree.data](Tree.md#attr-treedata)
-- [TreeNode](../reference_2.md#object-treenode)
+- [TreeNode](../reference.md#object-treenode)
 
 **Flags**: IRA
 
@@ -345,27 +250,9 @@ Because the initial data is treated exactly as though it were returned from the 
 ## Attr: ResultTree.serverFilterFields
 
 ### Description
-For [fetchMode:"local"](../reference_2.md#type-fetchmode) ResultTrees, this property lists field names that will be sent to the server if they are present in the criteria.
-
-This property may be used to ensure a dataSource receives the necessary criteria to populate a ResultTree's data, and also support [ResultTree.keepParentsOnFilter](#attr-resulttreekeepparentsonfilter).
-
-Note that for some AdvancedCriteria it will not be possible to extract the subcriteria that apply to certain fields. See [DataSource.splitCriteria](DataSource.md#method-datasourcesplitcriteria) for details on how serverFilterFields-applicable subcriteria are extracted from the specified criteria for the tree.
+When [ResultTree.keepParentsOnFilter](#attr-resulttreekeepparentsonfilter) is enabled for [fetchMode:"local"](../reference.md#type-fetchmode) ResultTrees, this property lists field names that will be sent to the server if they are present in the criteria.
 
 **Flags**: IR
-
----
-## Attr: ResultTree.keepParentsOnFilterMaxNodes
-
-### Description
-When a tree specifies the combination of [keepParentsOnFilter](#attr-resulttreekeepparentsonfilter) and [loadDataOnDemand](#attr-resulttreeloaddataondemand), SmartClient by default automatically fetches the "skeleton" of the filtered tree - see the `keepParentsOnFilter` overview for details, including the definition of "skeleton" and other relevant terminology
-
-A problem can arise with this approach if the user enters overly inclusive filter criteria. For example, say you have a 200,000 row dataset and the user chooses to apply a filter of "a". Chances are that is going to include the majority of the nodes in the tree, which would be OK because this is a load-on-demand tree. However, because we will build, cache and then pass around the list of id's of the dangling parents, this may become a performance issue. A lot depends on the nature of your data - this will be much less of an issue for shallow trees with lots of leaf nodes relative to parents, compared to deep trees with a lot of dangling parents to record.
-
-If the user tries to filter the TreeGrid such that there are more matching nodes than is allowed by this setting, the system will truncate the fetch and show the warning message defined in [RPCManager.keepParentsOnFilterMaxNodesExceededMessage](RPCManager.md#classattr-rpcmanagerkeepparentsonfiltermaxnodesexceededmessage). Since the cached node-list is derived from bottom to top, this truncation of the fetch process will usually mean we have not yet derived any top-level nodes. This in turn means that the tree will appear to be empty.
-
-Setting this property to a suitable value for your specific use case is an application tuning exercise, finding the right balance between usability and performance. To remove the node limit altogether, set this property to -1. However, if you have a load-on-demand tree over a large dataset, we do not recommend that you remove the limit completely, as it can lead to serious problems on both the client and server, as the application tries to cope with criteria that contains huge numbers of id's.
-
-**Flags**: IRW
 
 ---
 ## Attr: ResultTree.criteria
@@ -415,10 +302,22 @@ If the "parent" modelType is used, you can provide the initial parent-linked dat
 **Flags**: IRWA
 
 ---
+## Attr: ResultTree.linkDataFetchMode
+
+### Description
+The fetch mode for this tree's link data; ignored if this is not a [multi-link tree](Tree.md#method-treeismultilinktree)
+
+### Groups
+
+- multiLinkTree
+
+**Flags**: IR
+
+---
 ## Attr: ResultTree.canReturnOpenSubfoldersProperty
 
 ### Description
-When using [fetchMode:"paged"](../reference_2.md#type-fetchmode) and providing multiple levels of the tree in one DSResponse, `canReturnOpenSubfoldersProperty` may be set on any folder to indicate whether child folders might be returned by the server already open. If the property is set to false on a folder then subfolders of that folder are never allowed to be returned already open. This enables the paging mechanism to be more efficient in the amount of data that it requests from the server.
+When using [fetchMode:"paged"](../reference.md#type-fetchmode) and providing multiple levels of the tree in one DSResponse, `canReturnOpenSubfoldersProperty` may be set on any folder to indicate whether child folders might be returned by the server already open. If the property is set to false on a folder then subfolders of that folder are never allowed to be returned already open. This enables the paging mechanism to be more efficient in the amount of data that it requests from the server.
 
 For example, setting the `canReturnOpenSubfoldersProperty` value to `false` on a node is appropriate if the server-side code determines that the the node's children consist of entirely leaf nodes.
 
@@ -483,6 +382,32 @@ If [ResultTree.autoUpdateSiblingNodesOnDrag](#attr-resulttreeautoupdatesiblingno
 **Flags**: IRW
 
 ---
+## Attr: ResultTree.useSimpleCriteriaLOD
+
+### Description
+Whether or not we should skip promotion of a simple criteria to an [AdvancedCriteria](../reference.md#object-advancedcriteria) when sending the [DSRequest](../reference.md#object-dsrequest) to load the children of a node in a [ResultTree.loadDataOnDemand](#attr-resulttreeloaddataondemand) or [fetchMode:"paged"](#attr-resulttreefetchmode) `ResultTree`. If the [DSRequest.textMatchStyle](DSRequest.md#attr-dsrequesttextmatchstyle) is not "exact", we normally convert the simple criteria to an [AdvancedCriteria](../reference.md#object-advancedcriteria) for correctness in matching the node name, but setting this property to `true` will allow that to be skipped for backcompat with older releases.
+
+### See Also
+
+- [TreeGrid.autoFetchTextMatchStyle](TreeGrid.md#attr-treegridautofetchtextmatchstyle)
+- [DataSource.defaultTextMatchStyle](DataSource.md#attr-datasourcedefaulttextmatchstyle)
+
+**Flags**: IRWA
+
+---
+## Attr: ResultTree.loadDataOnDemand
+
+### Description
+Does this resultTree load data incrementally as folders within the tree are opened, or is it all loaded in a single request? Must be true if [ResultTree.fetchMode](#attr-resulttreefetchmode) is "paged".
+
+### See Also
+
+- [TreeGrid.loadDataOnDemand](TreeGrid.md#attr-treegridloaddataondemand)
+- [ResultTree.useSimpleCriteriaLOD](#attr-resulttreeusesimplecriterialod)
+
+**Flags**: IR
+
+---
 ## Attr: ResultTree.rootNode
 
 ### Description
@@ -496,30 +421,31 @@ May be overridden via [TreeGrid.treeRootValue](TreeGrid.md#attr-treegridtreeroot
 ## Attr: ResultTree.keepParentsOnFilter
 
 ### Description
-If set, tree-based filtering is performed such that parent nodes are kept as long as they have children that match the filter criteria, even if the parents themselves do not match the filter criteria. If not set, filtering will exclude parent nodes not matching the criteria, and all nodes below them in the tree.
+If set, tree-based filtering is performed such that parent nodes are kept as long as they have children that match the filter criteria, even if the parents themselves do not match the filter criteria. If not set, filtering will exclude parent nodes not matching the criteria and all nodes below it in the tree.
 
-ResultTrees will default to [fetchMode:"local"](../reference_2.md#type-fetchmode) whenever `keepParentsOnFilter` is true, unless fetchMode was explicitly set to "paged" (see below). This allows the filtering logic to fetch a complete tree of nodes from the DataSource (or if loadDataOnDemand:true, a complete set of nodes under a given parent) and then filter the resulting data locally on the client.
+When `keepParentsOnFilter` is enabled for paged ResultTrees, server-side filtering is required.
 
-This means that the server does not need to implement special tree filtering logic to support looking up nodes that match the specified criteria as well as ancestor nodes that may not.
+When enabled for non-paged trees, [fetchMode:"local"](../reference.md#type-fetchmode) is automatically enabled so that all filtering behavior shifts to the client-side and full criteria are no longer sent to the server. Instead, server fetches will always load all nodes, or with [ResultTree.loadDataOnDemand](#attr-resulttreeloaddataondemand):true, will always load all nodes under a given parent. This means that the server does not need to implement special tree filtering logic.
 
-If some criteria _must_ be sent to the server in order to produce a valid tree of data, but `keepParentsOnFilter` is also required, the [ResultTree.serverFilterFields](#attr-resulttreeserverfilterfields) attribute may be used to specify a list of field names that will be sent to the server whenever they are present in the criteria. Note that for the subset of criteria applied to these fields, `keepParentsInFilter` behavior will not occur without custom logic in the DataSource fetch operation.
+Optionally, [ResultTree.serverFilterFields](#attr-resulttreeserverfilterfields) can be set to a list of field names that will be sent to the server whenever they are present in the criteria.
 
-If [FetchMode](../reference_2.md#type-fetchmode) is explicitly set to `"paged"`, it is not possible to implement `keepParentsOnFilter`, either by local filtering or with the automatic client-driven handling mentioned below. Support for `keepParentsOnFilter` for a paged ResultTree therefore also requires custom logic in the DataSource fetch operation. To support this a developer must ensure that their fetch operation returns the appropriate set of nodes - all nodes that match the specified criteria plus their ancestor nodes even if they do not match the specified criteria.
+### Groups
 
-#### keepParentsOnFilter with load-on-demand trees
-The combination of `keepParentsOnFilter` and [loadDataOnDemand](#attr-resulttreeloaddataondemand) presents additional difficulties that require special handling. The problem is that in order to determine even the top-level folders, you have to examine every node in the entire tree. For example, say there is one top-level folder that has thousands of folders and nodes underneath it, and there is just one leaf node, 6 levels deep, that matches the filter criteria. You have to find out about that node, because it implies the top-level folder must be retained.
+- treeDataBinding
 
-So the server basically has to examine every node in the dataset to determine even what shows up at the top level of the tree. If it does not do this, parent nodes that don't match the filter criteria will be excluded from the tree, with the upshot that the child nodes that _do_ match the criteria will be inaccessible because nodes in load-on-demand trees are only loaded when their parent node is opened
+**Flags**: IR
 
-By default, SmartClient solves this with a client-driven implementation of this special handling. This algorithm involves finding the nodes that match the filter criteria - which we term **matching leaves** - and then recursively travelling back up the tree, determining the ancestors of the matching leaves - the so-called **dangling parents**. When we have traversed all the way back to the root node from every matching leaf, we have recorded every dangling parent and have what we term the **skeleton** of the tree. The skeleton is then added to fetch criteria whenever a load-on-demand fetch request is made, ensuring that we fetch both dangling parents and matching leaves.
+---
+## Attr: ResultTree.fetchMode
 
-There are three ways this recursive traversal can be implemented:
+### Description
+Mode of fetching records from server.
 
-*   For dataSources that [support dynamic tree joins](DataSource.md#method-datasourcesupportsdynamictreejoins), we use the [additionalOutputs](DSRequest.md#attr-dsrequestadditionaloutputs) feature to declare self-joins that fetch multiple levels of parent in one query (the number of levels is configurable, see [ResultTree.matchingLeafJoinDepth](#attr-resulttreematchingleafjoindepth)). Of SmartClient's built-in DataSource types, only SQLDataSource is currently capable of this approach
-*   For server-side dataSources that do not support self-joins, we combine individual single-level fetches into a [queue](RPCManager.md#classmethod-rpcmanagersendqueue), using [fieldValueExpressions](DSRequest.md#attr-dsrequestfieldvalueexpressions) with [responseData "allRecords"](DSRequestModifier.md#attr-dsrequestmodifiervalue) so that each fetch in the queue uses the output of the previous fetch as its criteria (so the first fetch returns the parents of the matching nodes, the second fetch returns the parents of those nodes, and so on). Again, the number of fetches per queue can be configured with the `matchingLeafJoinDepth` property. This approach works for any server-side DataSource implementation, including your own custom implementations
-*   For [client-side](DataSource.md#attr-datasourceclientonly) dataSources, which support neither self-joins not queueing, the algorithm simply makes as many single-level requests as necessary to build the entire skeleton. Note, this is exactly what would happen with previously-mentioned queueing approach, if you set `matchingLeafJoinDepth` to 1
+fetchMode:"local" implies that local filtering will always be performed. See [ResultTree.keepParentsOnFilter](#attr-resulttreekeepparentsonfilter) for additional filtering details.
 
-If you want to disable the automatic handling of `keepParentsOnFilter` on load-on-demand trees, see [ResultTree.serverKeepParentsOnFilter](#attr-resulttreeserverkeepparentsonfilter)
+fetchMode:"basic" or "paged" implies that if search criteria change, the entire tree will be discarded and re-fetched from the server. When retrieving the replacement tree data, the default behavior will be to preserve the [openState](#method-resulttreegetopenstate) for any nodes that the server returns which were previously opened by the user. Note that this implies that if [ResultTree.loadDataOnDemand](#attr-resulttreeloaddataondemand) is enabled and the server returns only root-level nodes, open state will be preserved only for root-level nodes, and children of open root-level nodes will be immediately fetched from the server if they are not included in the server's initial response.
+
+fetchMode:"paged" enables paging for nodes that have very large numbers of children. Whenever the children of a folder are loaded, the `resultTree` will set [DSRequest.startRow](DSRequest.md#attr-dsrequeststartrow) and [endRow](DSRequest.md#attr-dsrequestendrow) when requesting children from the DataSource, and will manage loading of further children on demand, similar to how a [ResultSet](ResultSet.md#class-resultset) manages paging for lists. For a deeper discussion see the **Paging large sets of children** section of the [treeDataBinding](../kb_topics/treeDataBinding.md#kb-topic-tree-databinding) overview.
 
 ### Groups
 
@@ -527,7 +453,8 @@ If you want to disable the automatic handling of `keepParentsOnFilter` on load-o
 
 ### See Also
 
-- [ResultTree.keepParentsOnFilterMaxNodes](#attr-resulttreekeepparentsonfiltermaxnodes)
+- [ResultTree.loadDataOnDemand](#attr-resulttreeloaddataondemand)
+- [ResultTree.useSimpleCriteriaLOD](#attr-resulttreeusesimplecriterialod)
 
 **Flags**: IR
 
@@ -535,11 +462,11 @@ If you want to disable the automatic handling of `keepParentsOnFilter` on load-o
 ## Attr: ResultTree.progressiveLoading
 
 ### Description
-Sets [progressive loading mode](DataSource.md#attr-datasourceprogressiveloading) for this ResultTree. The ResultTree will copy this setting onto the [DSRequest](../reference_2.md#object-dsrequest)s that it issues, overriding the OperationBinding- and DataSource-level settings, in cases where the use of progressive loading does not affect the correctness of the tree's paging algorithm.
+Sets [progressive loading mode](DataSource.md#attr-datasourceprogressiveloading) for this ResultTree. The ResultTree will copy this setting onto the [DSRequest](../reference.md#object-dsrequest)s that it issues, overriding the OperationBinding- and DataSource-level settings, in cases where the use of progressive loading does not affect the correctness of the tree's paging algorithm.
 
 This setting is applied automatically by [DataBoundComponent](../reference.md#interface-databoundcomponent)s that have their own explicit setting for [progressiveLoading](DataBoundComponent.md#attr-databoundcomponentprogressiveloading).
 
-**Note:** This property only has an effect for [fetchMode:"paged"](../reference_2.md#type-fetchmode) ResultTrees.
+**Note:** This property only has an effect for [fetchMode:"paged"](../reference.md#type-fetchmode) ResultTrees.
 
 ### Groups
 
@@ -579,6 +506,40 @@ What [DataSource](DataSource.md#class-datasource) is this resultTree associated 
 **Flags**: IR
 
 ---
+## Attr: ResultTree.linkDataFetchOperation
+
+### Description
+The [operationId](DSRequest.md#attr-dsrequestoperationid) this `ResultTree` should use when performing fetch operations on its [ResultTree.linkDataSource](#attr-resulttreelinkdatasource). Has no effect if this is not a [multi-link tree](Tree.md#method-treeismultilinktree)
+
+Note, this value can be overridden by [DSRequest.linkDataFetchOperation](DSRequest.md#attr-dsrequestlinkdatafetchoperation) when calling `fetchData()` on the component (e.g. [TreeGrid.fetchData](TreeGrid.md#method-treegridfetchdata)) directly from application code.
+
+### Groups
+
+- multiLinkTree
+
+**Flags**: IRW
+
+---
+## Method: ResultTree.getOpenState
+
+### Description
+Returns a snapshot of the current open state of this tree's data as a [TreeGridOpenState](../reference.md#type-treegridopenstate) object.
+
+This object can be passed to [ResultTree.setOpenState](#method-resulttreesetopenstate) or [TreeGrid.setOpenState](TreeGrid.md#method-treegridsetopenstate) to open the same set of folders within the tree's data (assuming the nodes are still present in the data).
+
+### Returns
+
+`[TreeGridOpenState](../reference.md#type-treegridopenstate)` — current open state for the grid.
+
+### Groups
+
+- viewState
+
+### See Also
+
+- [ResultTree.setOpenState](#method-resulttreesetopenstate)
+
+---
 ## Method: ResultTree.willFetchData
 
 ### Description
@@ -590,11 +551,23 @@ This method can be used to determine whether [TreeGrid.fetchData](TreeGrid.md#me
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newCriteria | [Criteria](../reference_2.md#type-criteria) | false | — | new criteria to test. |
+| newCriteria | [Criteria](../reference.md#type-criteria) | false | — | new criteria to test. |
 
 ### Returns
 
 `[Boolean](#type-boolean)` — true if server fetch would be required to satisfy new criteria.
+
+---
+## Method: ResultTree.invalidateCache
+
+### Description
+Manually invalidate this ResultTree's cache.
+
+Generally a ResultTree will observe and incorporate updates to the DataSource that provides its records, but when this is not possible, `invalidateCache()` allows manual cache invalidation.
+
+Components bound to this ResultTree will typically re-request the currently visible portion of the dataset, causing the ResultTree to re-fetch data from the server.
+
+**Flags**: A
 
 ---
 ## Method: ResultTree.setCriteria
@@ -612,7 +585,7 @@ Note: if criteria is being split to retrieve server criteria portion and the cri
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newCriteria | [Criteria](../reference_2.md#type-criteria) | false | — | the filter criteria |
+| newCriteria | [Criteria](../reference.md#type-criteria) | false | — | the filter criteria |
 
 ---
 ## Method: ResultTree.compareCriteria
@@ -620,7 +593,7 @@ Note: if criteria is being split to retrieve server criteria portion and the cri
 ### Description
 Default behavior is to call [DataSource.compareCriteria](DataSource.md#method-datasourcecomparecriteria) to determine whether new criteria is equivalent to the old criteria (returns 0) or not.
 
-See [DataSource.compareCriteria](DataSource.md#method-datasourcecomparecriteria) for a full explanation of the default behavior. The [CriteriaPolicy](../reference_2.md#type-criteriapolicy) used is "dropOnChange".
+See [DataSource.compareCriteria](DataSource.md#method-datasourcecomparecriteria) for a full explanation of the default behavior. The [CriteriaPolicy](../reference.md#type-criteriapolicy) used is "dropOnChange".
 
 Override this method or [DataSource.compareCriteria](DataSource.md#method-datasourcecomparecriteria) to implement your own client-side filtering behavior.
 
@@ -628,8 +601,8 @@ Override this method or [DataSource.compareCriteria](DataSource.md#method-dataso
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newCriteria | [Criteria](../reference_2.md#type-criteria) | false | — | new filter criteria |
-| oldCriteria | [Criteria](../reference_2.md#type-criteria) | false | — | old filter criteria |
+| newCriteria | [Criteria](../reference.md#type-criteria) | false | — | new filter criteria |
+| oldCriteria | [Criteria](../reference.md#type-criteria) | false | — | old filter criteria |
 | requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | dataSource request properties |
 
 ### Returns
@@ -638,72 +611,7 @@ Override this method or [DataSource.compareCriteria](DataSource.md#method-dataso
 
 ### See Also
 
-- [CriteriaPolicy](../reference_2.md#type-criteriapolicy)
-
----
-## Method: ResultTree.dataArrived
-
-### Description
-This callback fires whenever the resultTree receives new nodes from the server, after the new nodes have been integrated into the tree.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| parentNode | [TreeNode](#type-treenode) | false | — | The parentNode for which children were just loaded |
-
----
-## Method: ResultTree.get
-
-### Description
-Get the item in the openList at a particular position.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| pos | [Number](#type-number) | false | — | position of the node to get |
-
-### Returns
-
-`[TreeNode](#type-treenode)` — node at that position
-
-### Groups
-
-- openList
-- Items
-
----
-## Method: ResultTree.getOpenState
-
-### Description
-Returns a snapshot of the current open state of this tree's data as a [TreeGridOpenState](../reference_2.md#type-treegridopenstate) object.
-
-This object can be passed to [ResultTree.setOpenState](#method-resulttreesetopenstate) or [TreeGrid.setOpenState](TreeGrid.md#method-treegridsetopenstate) to open the same set of folders within the tree's data (assuming the nodes are still present in the data).
-
-### Returns
-
-`[TreeGridOpenState](../reference_2.md#type-treegridopenstate)` — current open state for the grid.
-
-### Groups
-
-- viewState
-
-### See Also
-
-- [ResultTree.setOpenState](#method-resulttreesetopenstate)
-
----
-## Method: ResultTree.invalidateCache
-
-### Description
-Manually invalidate this ResultTree's cache.
-
-Generally a ResultTree will observe and incorporate updates to the DataSource that provides its records, but when this is not possible, `invalidateCache()` allows manual cache invalidation.
-
-Components bound to this ResultTree will typically re-request the currently visible portion of the dataset, causing the ResultTree to re-fetch data from the server.
-
-**Flags**: A
+- [CriteriaPolicy](../reference.md#type-criteriapolicy)
 
 ---
 ## Method: ResultTree.unloadChildren
@@ -722,6 +630,18 @@ Unload the children of a folder, returning the folder to the "unloaded" state.
 - loadState
 
 **Deprecated**
+
+---
+## Method: ResultTree.dataArrived
+
+### Description
+This callback fires whenever the resultTree receives new nodes from the server, after the new nodes have been integrated into the tree.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| parentNode | [TreeNode](#type-treenode) | false | — | The parentNode for which children were just loaded |
 
 ---
 ## Method: ResultTree.setChildren
@@ -774,16 +694,6 @@ Get a range of items from the open list
 - Items
 
 ---
-## Method: ResultTree.getCombinedCriteria
-
-### Description
-Returns a copy of all [explicit](#attr-resulttreecriteria) and [implicit](#method-resulttreegetimplicitcriteria) criteria currently applied to this `ResultTree`.
-
-### Returns
-
-`[Criteria](../reference_2.md#type-criteria)|[AdvancedCriteria](#type-advancedcriteria)` — combined criteria
-
----
 ## Method: ResultTree.loadChildren
 
 ### Description
@@ -796,7 +706,7 @@ For a databound tree this will trigger a fetch against the Tree's DataSource.
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | node | [TreeNode](#type-treenode) | false | — | node in question |
-| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | Optional callback (stringMethod) to fire when loading completes. Has a single param `node` - the node whose children have been loaded, and is fired in the scope of the Tree. |
+| callback | [DSCallback](../reference.md#type-dscallback) | true | — | Optional callback (stringMethod) to fire when loading completes. Has a single param `node` - the node whose children have been loaded, and is fired in the scope of the Tree. |
 
 ### Groups
 
@@ -817,7 +727,7 @@ Override this method or [Tree.getFilteredTree](Tree.md#method-treegetfilteredtre
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | tree | [Tree](#type-tree) | false | — | the source tree to be filtered |
-| criteria | [Criteria](../reference_2.md#type-criteria) | false | — | the filter criteria |
+| criteria | [Criteria](../reference.md#type-criteria) | false | — | the filter criteria |
 | filterMode | [TreeFilterMode](../reference.md#type-treefiltermode) | false | — | mode to use for filtering |
 | dataSource | [DataSource](#type-datasource) | false | — | dataSource for filtering if the Tree does not already have one |
 | requestProperties | [DSRequest](#type-dsrequest) | true | — | Request properties block. This allows developers to specify properties that would impact the filter such as [DSRequest.textMatchStyle](DSRequest.md#attr-dsrequesttextmatchstyle) |
@@ -829,10 +739,31 @@ Override this method or [Tree.getFilteredTree](Tree.md#method-treegetfilteredtre
 **Flags**: A
 
 ---
+## Method: ResultTree.get
+
+### Description
+Get the item in the openList at a particular position.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| pos | [Number](#type-number) | false | — | position of the node to get |
+
+### Returns
+
+`[TreeNode](#type-treenode)` — node at that position
+
+### Groups
+
+- openList
+- Items
+
+---
 ## Method: ResultTree.setOpenState
 
 ### Description
-Reset the set of open folders within this tree's data to match the [TreeGridOpenState](../reference_2.md#type-treegridopenstate) object passed in.
+Reset the set of open folders within this tree's data to match the [TreeGridOpenState](../reference.md#type-treegridopenstate) object passed in.
 
 Used to restore previous state retrieved from the tree by a call to [ResultTree.getOpenState](#method-resulttreegetopenstate).
 
@@ -840,7 +771,7 @@ Used to restore previous state retrieved from the tree by a call to [ResultTree.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| openState | [TreeGridOpenState](../reference_2.md#type-treegridopenstate) | false | — | Object describing the desired set of open folders. |
+| openState | [TreeGridOpenState](../reference.md#type-treegridopenstate) | false | — | Object describing the desired set of open folders. |
 
 ### Groups
 

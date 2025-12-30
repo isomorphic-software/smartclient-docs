@@ -1,21 +1,18 @@
-# Database Configuration
+# Database Configuration Tools
 
 [← Back to API Index](../reference.md)
 
 ---
 
-## KB Topic: Database Configuration
+## KB Topic: Database Configuration Tools
 
 ### Description
-DataSources that use SmartClient's built-in [SQL engine](sqlDataSource.md#kb-topic-sql-datasources) refer to configuration settings from the [server.properties](server_properties.md#kb-topic-serverproperties-file) file for database access.
-
-Developers may make use of the [Admin Console tool](adminConsole.md#kb-topic-admin-console) to set up database configuration blocks, or they may add configuration settings to `server.properties` by hand. Note that you should restart your servlet engine after changing this file.
+The database configuration tool allows you to configure database access for DataSources that use SmartClient's built-in [SQL engine](sqlDataSource.md#kb-topic-sql-datasources). You can either use the Database Tools via the [Admin Console UI](adminConsole.md#kb-topic-admin-console) or directly specify equivalent properties in your [server.properties](../reference.md#kb-topic-serverproperties-file) file (see "Manually specifying.." below).
 
 **Manually specifying database connection settings**
 
-Within an application deployment, the [server.properties](server_properties.md#kb-topic-serverproperties-file) file resides in the `WEB-INF/classes` directory.
+The Admin Console maintains settings in the [server.properties](../reference.md#kb-topic-serverproperties-file) file, found in your application's `WEB-INF/classes` directory. If you prefer, you can maintain these settings by directly editing that file. You should restart your servlet engine after changing this file.
 
-For each database, configuration settings within this file are prefixed with `"sql._`<dbName>`_"`.  
 For example, the following settings are the defaults in a new SmartClient installation for a MySQL server; they are approximately correct for a MySQL server running on the same machine as the servlet engine and listening on the default MySQL port. For details of what each of these properties means, check [this page](sqlSettings.md#kb-topic-sql-database-settings-in-serverproperties).
 
 ```
@@ -39,7 +36,7 @@ Note the distinction here between database _type_ and database _name_. Database 
 
 Database name is just an arbitrary name for a particular database connection, and it is embedded in the property names immediately after the `sql` prefix. In this example it happens to be very similar to the database type - "Mysql" as opposed to "mysql" - but in fact the name has no significance and could be any string. When referring to specific database connections in your [DataSources](../classes/DataSource.md#class-datasource) with the [dbName](../classes/DataSource.md#attr-datasourcedbname) property, it is the database _name_ you use.
 
-NOTE: It is common for DataSources to not specify `dbName`. In this case, the default database is used. To specify the default database manually in [server.properties](server_properties.md#kb-topic-serverproperties-file), set `sql.defaultDatabase`, using database name. So, to set our example connection from above as the default:
+NOTE: It is common for DataSources to not specify `dbName`. In this case, the default database is used. To specify the default database manually in [server.properties](../reference.md#kb-topic-serverproperties-file), set `sql.defaultDatabase`, using database name. So, to set our example connection from above as the default:
 
 ```
    sql.defaultDatabase: Mysql
@@ -48,7 +45,7 @@ NOTE: It is common for DataSources to not specify `dbName`. In this case, the de
 
 **Manually specifying JNDI settings**
 
-Instead of specifying database connection parameters directly in [server.properties](server_properties.md#kb-topic-serverproperties-file), it is possible to connect to a database that is configured as a JNDI resource in your application server. Assume you have an Oracle JNDI resource with the name "jndiTest", configured similar to this in Tomcat:
+Instead of specifying database connection parameters directly in [server.properties](../reference.md#kb-topic-serverproperties-file), it is possible to connect to a database that is configured as a JNDI resource in your application server. Assume you have an Oracle JNDI resource with the name "jndiTest", configured similar to this in Tomcat:
 
 ```
    <Resource name="jdbc/jndiTest"
@@ -70,10 +67,14 @@ The minimal set of properties required to create a SmartClient database connecti
  
 ```
 
+**Test Data**
+
+There is an "Add Test Data" button in the tab that allows you to upload CSV, JSON or XML [test data](testData.md#kb-topic-test-data), and have it permanently stored as XML.
+
+For examples on how to set up test data see the [Test Data](testData.md#kb-topic-test-data) page.
+
 ### See Also
 
-- [adminConsole](adminConsole.md#kb-topic-admin-console)
-- [server_properties](server_properties.md#kb-topic-serverproperties-file)
 - [sqlConnectionPooling](sqlConnectionPooling.md#kb-topic-sql-connection-pooling)
 - [testData](testData.md#kb-topic-test-data)
 

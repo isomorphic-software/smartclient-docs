@@ -15,6 +15,7 @@ _Core Functionality_
 *   IDACall servlet - **required** for [DMI](dmiOverview.md#kb-topic-direct-method-invocation), built-in RPC operations and built-in DataSource operations to work. All databound examples in the SDK use this servlet. If you're planning on using a custom actionURL for all your RPC requests, then you don't need this servlet.
 *   FileDownload servlet - required for serving the Isomorphic framework code compressed and with caching headers as well as for serving skin images with caching headers. It is highly recommended that you use this for production but is not required.
 *   PreCache servlet - loads resources into memory on container startup. Not required, but if you exclude this servlet there may be a slow response to the very first request.
+*   jsp-config section - the iscTaglib registration block is required to use `<isomorphic>` tags, and the \*.isc and \*.rpc mappings. These are optional, if you want to use these as handy development tools.
 
 _Optional Functionality_
 

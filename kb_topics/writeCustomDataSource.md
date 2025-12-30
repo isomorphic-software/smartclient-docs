@@ -36,7 +36,7 @@ A DataSource descriptor is an XML file with the special suffix `.ds.xml`. The de
 
 One property that is always required for a custom DataSource is [serverConstructor](../classes/DataSource.md#attr-datasourceserverconstructor). This fully-qualified class name tells SmartClient what to instantiate when data operations for this DataSource arrive on the server - in other words, it is how you tell SmartClient to use your custom class. In the *ORM DataSource example*, on the `ormDataSource_country` tab, you will see how we use this property to tie the `ormDataSource_country` DataSource _instance_ to the `ormDataSource` DataSource _implementation_.
 
-Finally, if your data model is based on Javabeans, or on POJOs that broadly follow the Javabean conventions (basically, if they have private state variables accessible via public getters and setters), SmartClient can automatically generate basic DataSource definitions for your beans that will only need minimal change (ie, specifying a `serverConstructor`) to be fully operational. Both the *Reify Javabean Wizard* and the Batch DataSource Generator can create DataSource descriptors from existing beans.
+Finally, if your data model is based on Javabeans, or on POJOs that broadly follow the Javabean conventions (basically, if they have private state variables accessible via public getters and setters), SmartClient can automatically generate basic DataSource definitions for your beans that will only need minimal change (ie, specifying a `serverConstructor`) to be fully operational. Both the *Visual Builder Javabean Wizard* and the Batch DataSource Generator can create DataSource descriptors from existing beans.
 
 **Server framework features relevant to custom DataSources**
 

@@ -57,11 +57,11 @@ Note that you can use the [loadDMIStubsTag](../kb_topics/loadDMIStubsTag.md#kb-t
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| appID | [String](#type-string)|[Object](../reference.md#type-object) | false | — | the appID (.app.xml file to look in) or comprehensive request object as documented above. |
+| appID | [String](#type-string)|[Object](../reference_2.md#type-object) | false | — | the appID (.app.xml file to look in) or comprehensive request object as documented above. |
 | className | [String](#type-string) | false | — | [ServerObject.className](ServerObject.md#attr-serverobjectclassname) or [ServerObject.ID](ServerObject.md#attr-serverobjectid) |
 | methodName | [String](#type-string) | false | — | the name of the method to call on the serverObject |
-| args | [Any](#type-any) | true | — | The next N-1 params specify arguments to the server-side method. |
-| callback | [RPCCallback](#type-rpccallback) | true | — | The callback of the response. If you do not want a callback, you must specify a `null` value for this parameter when using the first signature (documented above). |
+| args | [Any](#type-any) | false | — | The next N-1 params specify arguments to the server-side method. |
+| callback | [RPCCallback](#type-rpccallback) | false | — | The callback of the response. If you do not want a callback, you must specify a `null` value for this parameter when using the first signature (documented above). |
 
 ### Returns
 
@@ -96,7 +96,7 @@ Note that because the entirety of the request is encoded in the URL, there is an
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| appID | [String](#type-string)|[Object](../reference.md#type-object) | false | — | the appID (.app.xml file to look in) or comprehensive request object as documented above. |
+| appID | [String](#type-string)|[Object](../reference_2.md#type-object) | false | — | the appID (.app.xml file to look in) or comprehensive request object as documented above. |
 | className | [String](#type-string) | false | — | [ServerObject.className](ServerObject.md#attr-serverobjectclassname) or [ServerObject.ID](ServerObject.md#attr-serverobjectid) |
 | methodName | [String](#type-string) | false | — | the name of the method to call on the serverObject |
 | args | [Any](#type-any) | true | — | The next N-1 params specify arguments to the server-side method. |

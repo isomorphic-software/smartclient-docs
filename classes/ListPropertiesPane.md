@@ -42,20 +42,20 @@ The [title](FormItem.md#attr-formitemtitle) of the [startNumberField](#attr-list
 **Flags**: IR
 
 ---
+## Attr: ListPropertiesPane.sampleTile
+
+### Description
+Tile used to demonstrate each bullet style.
+
+**Flags**: R
+
+---
 ## Attr: ListPropertiesPane.startNumberField
 
 ### Description
 [SpinnerItem](SpinnerItem.md#class-spinneritem) used to modify the starting value of the list.
 
 [startNumberFieldTitle](#attr-listpropertiespanestartnumberfieldtitle) is a [passthrough](../kb_topics/autoChildUsage.md#kb-topic-using-autochildren) for the field's [title](FormItem.md#attr-formitemtitle).
-
-**Flags**: R
-
----
-## Attr: ListPropertiesPane.sampleTile
-
-### Description
-Tile used to demonstrate each bullet style.
 
 **Flags**: R
 

@@ -12,6 +12,22 @@
 FormItem for rich text (HTML) editing. Makes use of a [RichTextEditor](RichTextEditor.md#class-richtexteditor) as the editing interface.
 
 ---
+## Attr: RichTextItem.startRow
+
+### Description
+By default RichTextItems take up an entire row
+
+**Flags**: IRW
+
+---
+## Attr: RichTextItem.endRow
+
+### Description
+By default RichTextItems take up an entire row
+
+**Flags**: IRW
+
+---
 ## Attr: RichTextItem.shouldSaveValue
 
 ### Description
@@ -32,52 +48,20 @@ Note that
 **Flags**: IR
 
 ---
-## Attr: RichTextItem.showTitle
-
-### Description
-Don't show the title for rich text items by default
-
-**Flags**: IR
-
----
-## Attr: RichTextItem.defaultValue
-
-### Description
-Overridden to assign class-appropriate type.
-
-### Groups
-
-- basics
-
-### See Also
-
-- [FormItem.defaultValue](FormItem.md#attr-formitemdefaultvalue)
-
-**Flags**: IRW
-
----
-## Attr: RichTextItem.startRow
-
-### Description
-By default RichTextItems take up an entire row
-
-**Flags**: IRW
-
----
-## Attr: RichTextItem.endRow
-
-### Description
-By default RichTextItems take up an entire row
-
-**Flags**: IRW
-
----
 ## Attr: RichTextItem.controlGroups
 
 ### Description
 [RichTextEditor.controlGroups](RichTextEditor.md#attr-richtexteditorcontrolgroups) to display for this editor. Each controlGroup should be a property set either on this item or on the RichTextEditor prototype and should be set to an array of [ControlName](../reference.md#type-controlname)s.
 
 **Flags**: IA
+
+---
+## Attr: RichTextItem.showTitle
+
+### Description
+Don't show the title for rich text items by default
+
+**Flags**: IR
 
 ---
 ## Attr: RichTextItem.colSpan

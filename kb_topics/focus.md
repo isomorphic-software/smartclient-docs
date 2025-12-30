@@ -32,7 +32,6 @@ A widget normally receives focus by being clicked on or tabbed to.
 - [Canvas.TAB_INDEX_FLOOR](../classes/Canvas.md#classattr-canvastab_index_floor)
 - [Window.canFocusInHeaderButtons](../classes/Window.md#attr-windowcanfocusinheaderbuttons)
 - [Canvas.canFocus](../classes/Canvas.md#attr-canvascanfocus)
-- [Canvas.showFocusOutline](../classes/Canvas.md#attr-canvasshowfocusoutline)
 - [Canvas.tabIndex](../classes/Canvas.md#attr-canvastabindex)
 - [Canvas.accessKey](../classes/Canvas.md#attr-canvasaccesskey)
 - [DynamicForm.autoFocus](../classes/DynamicForm.md#attr-dynamicformautofocus)

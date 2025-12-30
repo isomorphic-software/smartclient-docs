@@ -153,6 +153,6 @@ A view may incorporate multiple components, each of which requires data. In the 
 
 If an application has many hundreds of views, but only a handful of views are used by a given user in a typical session, for the fastest loading performance you should consider loading only the most commonly used views initially then loading further views on demand.
 
-You can use [FileLoader.loadJSFiles](../classes/FileLoader.md#classmethod-fileloaderloadjsfiles) to load a set of JavaScript files compromising an application module that defines a set of related views. The loaded JavaScript files may define new component classes and new DataSources in addition to defining new views and their associated logic.
+You can use [FileLoader.loadJSFiles](../classes/FileLoader.md#staticmethod-fileloaderloadjsfiles) to load a set of JavaScript files compromising an application module that defines a set of related views. The loaded JavaScript files may define new component classes and new DataSources in addition to defining new views and their associated logic.
 
 ---

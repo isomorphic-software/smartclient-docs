@@ -19,6 +19,27 @@ To specify the resizeBar class for some layout, use the [Layout.resizeBarClass](
 - [Splitbar](Splitbar.md#class-splitbar)
 
 ---
+## Attr: ImgSplitbar.skinImgDir
+
+### Description
+Default directory for skin images (those defined by the class), relative to the Page-wide [skinDir](Page.md#classmethod-pagegetskindir).
+
+### Groups
+
+- images
+
+**Flags**: IR
+
+---
+## Attr: ImgSplitbar.vertical
+
+### Description
+Is this split bar vertically orientated?  
+When a `Splitbar` is created by a layout to be the resizeBar for some member of the layout, the `vertical` property will be set to `true` if the layout is horizontal, meaning this resizeBar will be taller than it is wide, and will allow horizontal resizing of the member.
+
+**Flags**: R
+
+---
 ## Attr: ImgSplitbar.src
 
 ### Description
@@ -65,35 +86,6 @@ Default src to display when [ImgSplitbar.vertical](#attr-imgsplitbarvertical) is
 **Flags**: IR
 
 ---
-## Attr: ImgSplitbar.canDrag
-
-### Description
-`canDrag` set to true to allow dragging of the split bar. Dragging the Splitbar will resize it's [target](Splitbar.md#attr-splitbartarget)
-
-**Flags**: IRW
-
----
-## Attr: ImgSplitbar.skinImgDir
-
-### Description
-Default directory for skin images (those defined by the class), relative to the Page-wide [skinDir](Page.md#classmethod-pagegetskindir).
-
-### Groups
-
-- images
-
-**Flags**: IR
-
----
-## Attr: ImgSplitbar.vertical
-
-### Description
-Is this split bar vertically orientated?  
-When a `Splitbar` is created by a layout to be the resizeBar for some member of the layout, the `vertical` property will be set to `true` if the layout is horizontal, meaning this resizeBar will be taller than it is wide, and will allow horizontal resizing of the member.
-
-**Flags**: R
-
----
 ## Attr: ImgSplitbar.target
 
 ### Description
@@ -102,5 +94,13 @@ When a `Splitbar` is created by a layout, the `target` property of the Splitbar 
 See [Layout.resizeBarClass](Layout.md#attr-layoutresizebarclass), [Canvas.showResizeBar](Canvas.md#attr-canvasshowresizebar) and [Canvas.resizeBarTarget](Canvas.md#attr-canvasresizebartarget) for details on configuring the resize bars shown in Layouts.
 
 **Flags**: R
+
+---
+## Attr: ImgSplitbar.canDrag
+
+### Description
+`canDrag` set to true to allow dragging of the split bar. Dragging the Splitbar will resize it's [target](Splitbar.md#attr-splitbartarget)
+
+**Flags**: IRW
 
 ---

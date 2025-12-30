@@ -12,14 +12,6 @@ True if the event occurred over the form's [single error item](DynamicForm.md#at
 **Flags**: R
 
 ---
-## Attr: FormItemEventInfo.item
-
-### Description
-Item over which the event occurred.
-
-**Flags**: R
-
----
 ## Attr: FormItemEventInfo.overTitle
 
 ### Description
@@ -34,6 +26,14 @@ True if the event occurred over the item's title.
 If this event occurred over a formItemIcon this attribute contains the [FormItemIcon.name](FormItemIcon.md#attr-formitemiconname) for the icon.
 
 **Flags**: IR
+
+---
+## Attr: FormItemEventInfo.item
+
+### Description
+Item over which the event occurred.
+
+**Flags**: R
 
 ---
 ## Attr: FormItemEventInfo.overTextBox

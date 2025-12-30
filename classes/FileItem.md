@@ -19,7 +19,7 @@ See the [Upload Overview](../kb_topics/upload.md#kb-topic-uploading-files) for i
 
 **Read-only mode**
 
-For fields of type `"binary"` the raw data value will be displayed in the generated [FileItem.displayForm](#attr-fileitemdisplayform).
+For fields of type `"blob"` the raw data value will be displayed in the generated [FileItem.displayForm](#attr-fileitemdisplayform).
 
 For other fields, the [FileItem.displayCanvas](#attr-fileitemdisplaycanvas) will be displayed.
 
@@ -30,6 +30,42 @@ Otherwise, the displayCanvas will render out [View](#attr-fileitemviewiconsrc) a
 ### Groups
 
 - upload
+
+---
+## Attr: FileItem.editProxyConstructor
+
+### Description
+Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas.md#method-canvasseteditmode).
+
+**Flags**: IR
+
+---
+## Attr: FileItem.downloadIconSrc
+
+### Description
+Returns the URL for an Icon that will allow the file to be downloaded
+
+### Groups
+
+- images
+
+**Flags**: IR
+
+---
+## Attr: FileItem.displayCanvas
+
+### Description
+The [Canvas](Canvas.md#class-canvas) created automatically when [canEdit](FormItem.md#attr-formitemcanedit) is false and the field is of any type other than "blob".
+
+If the field is of type "imageFile", and [showFileInline](#attr-fileitemshowfileinline) is true, the contents of the canvas are set to HTML that streams the image file for display. Otherwise, the item renders icons that allow the file to be [viewed](#attr-fileitemviewiconsrc) or [downloaded](#attr-fileitemdownloadiconsrc).
+
+This component is an [AutoChild](../reference.md#type-autochild) and as such may be customized via `fileItem.displayCanvasDefaults` and `fileItem.displayCanvasProperties`.
+
+### Groups
+
+- upload
+
+**Flags**: RA
 
 ---
 ## Attr: FileItem.uploadItem
@@ -127,71 +163,9 @@ This information is "circa 2023" and may not apply to all devices.
 ## Attr: FileItem.displayItem
 
 ### Description
-The [StaticTextItem](StaticTextItem.md#class-statictextitem) created automatically and displayed in the [FileItem.displayForm](#attr-fileitemdisplayform) when [canEdit](FormItem.md#attr-formitemcanedit) is false and the field type is "binary".
+The [StaticTextItem](StaticTextItem.md#class-statictextitem) created automatically and displayed in the [FileItem.displayForm](#attr-fileitemdisplayform) when [canEdit](FormItem.md#attr-formitemcanedit) is false and the field type is "blob".
 
 This component is an [AutoChild](../reference.md#type-autochild) and as such may be customized via `fileItem.displayItemDefaults` and `fileItem.displayItemProperties`.
-
-### Groups
-
-- upload
-
-**Flags**: RA
-
----
-## Attr: FileItem.viewIconSrc
-
-### Description
-Returns the name of the icon to use for the view functionality.
-
-### Groups
-
-- images
-
-**Flags**: IR
-
----
-## Attr: FileItem.accept
-
-### Description
-A comma-separated list of valid MIME types, used as a filter for the file picker window.
-
-Note that this property makes use of the HTML `accept` attribute, and so relies on the browser to perform the desired filtering. For further study, see:
-
-*   [HTML `<input>` accept Attribute](https://www.w3schools.com/TAGS/att_input_accept.asp)
-*   [The Input (Form Input) element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input)
-*   [File input 'accept' attribute - is it useful?](https://stackoverflow.com/questions/181214/file-input-accept-attribute-is-it-useful)
-
-**Flags**: IR
-
----
-## Attr: FileItem.editProxyConstructor
-
-### Description
-Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas.md#method-canvasseteditmode).
-
-**Flags**: IR
-
----
-## Attr: FileItem.downloadIconSrc
-
-### Description
-Returns the name of the icon to use for the download functionality.
-
-### Groups
-
-- images
-
-**Flags**: IR
-
----
-## Attr: FileItem.displayCanvas
-
-### Description
-The [Canvas](Canvas.md#class-canvas) created automatically when [canEdit](FormItem.md#attr-formitemcanedit) is false and the field is of any type other than "binary".
-
-If the field is of type "imageFile", and [showFileInline](#attr-fileitemshowfileinline) is true, the contents of the canvas are set to HTML that streams the image file for display. Otherwise, the item renders icons that allow the file to be [viewed](#attr-fileitemviewiconsrc) or [downloaded](#attr-fileitemdownloadiconsrc).
-
-This component is an [AutoChild](../reference.md#type-autochild) and as such may be customized via `fileItem.displayCanvasDefaults` and `fileItem.displayCanvasProperties`.
 
 ### Groups
 
@@ -204,6 +178,18 @@ This component is an [AutoChild](../reference.md#type-autochild) and as such may
 
 ### Description
 Indicates whether to stream the image and display it inline or to display the View and Download icons.
+
+**Flags**: IR
+
+---
+## Attr: FileItem.viewIconSrc
+
+### Description
+Returns the URL for an Icon that will allow the file to be viewed.
+
+### Groups
+
+- images
 
 **Flags**: IR
 
@@ -250,7 +236,7 @@ Support is not full-cycle at the server - that is, there are server APIs for ret
 ## Attr: FileItem.displayForm
 
 ### Description
-The [DynamicForm](DynamicForm.md#class-dynamicform) created automatically when [canEdit](FormItem.md#attr-formitemcanedit) is false and the field is of type "binary". Displays a single [item](#attr-fileitemdisplayitem) for viewing the content of a binary file.
+The [DynamicForm](DynamicForm.md#class-dynamicform) created automatically when [canEdit](FormItem.md#attr-formitemcanedit) is false and the field is of type "blob". Displays a single [item](#attr-fileitemdisplayitem) for viewing the content of a blob file.
 
 This component is an [AutoChild](../reference.md#type-autochild) and as such may be customized via `fileItem.displayFormDefaults` and `fileItem.displayFormProperties`.
 
@@ -259,6 +245,20 @@ This component is an [AutoChild](../reference.md#type-autochild) and as such may
 - upload
 
 **Flags**: RA
+
+---
+## Attr: FileItem.accept
+
+### Description
+A comma-separated list of valid MIME types, used as a filter for the file picker window.
+
+Note that this property makes use of the HTML `accept` attribute, and so relies on the browser to perform the desired filtering. For further study, see:
+
+*   [HTML `<input>` accept Attribute](https://www.w3schools.com/TAGS/att_input_accept.asp)
+*   [The Input (Form Input) element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input)
+*   [File input 'accept' attribute - is it useful?](https://stackoverflow.com/questions/181214/file-input-accept-attribute-is-it-useful)
+
+**Flags**: IR
 
 ---
 ## Method: FileItem.setMultiple

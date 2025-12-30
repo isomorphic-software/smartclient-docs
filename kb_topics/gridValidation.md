@@ -19,7 +19,7 @@ In addition to this standard behavior developers can add custom errors to fields
 - [ListGrid.validateCell](../classes/ListGrid_2.md#method-listgridvalidatecell)
 - [ListGrid.getRequiredFieldMessage](../classes/ListGrid_2.md#method-listgridgetrequiredfieldmessage)
 - [ListGrid.hasErrors](../classes/ListGrid_2.md#method-listgridhaserrors)
-- [ListGrid.rowHasErrors](../classes/ListGrid_2.md#method-listgridrowhaserrors)
+- [ListGrid.rowHasErrors](../classes/ListGrid_1.md#method-listgridrowhaserrors)
 - [ListGrid.cellHasErrors](../classes/ListGrid_2.md#method-listgridcellhaserrors)
 - [ListGrid.getRowErrors](../classes/ListGrid_2.md#method-listgridgetrowerrors)
 - [ListGrid.getCellErrors](../classes/ListGrid_2.md#method-listgridgetcellerrors)

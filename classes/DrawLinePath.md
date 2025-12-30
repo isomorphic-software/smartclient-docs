@@ -24,6 +24,16 @@ The ConnectorOrientation controlling the orientation and behavior of this line's
 **Flags**: IR
 
 ---
+## Attr: DrawLinePath.showTitleLabelBackground
+
+### Description
+If the [titleLabel](DrawItem.md#attr-drawitemtitlelabel) is showing, should the [titleLabelBackground](DrawItem.md#attr-drawitemtitlelabelbackground) be created and placed behind the `titleLabel`?
+
+This defaults to true for [DrawSector](DrawSector.md#class-drawsector)s and shapes that are not commonly filled (e.g. [DrawLine](DrawLine.md#class-drawline)s).
+
+**Flags**: IRA
+
+---
 ## Attr: DrawLinePath.startTop
 
 ### Description
@@ -38,40 +48,6 @@ Starting top coordinate of the line. Overrides top coordinate of [DrawLinePath.s
 Style of arrow head to draw at the end of the line or path.
 
 **Flags**: IRW
-
----
-## Attr: DrawLinePath.endTop
-
-### Description
-Ending top coordinate of the line. Overrides top coordinate of [DrawLinePath.endPoint](#attr-drawlinepathendpoint) if both are set.
-
-**Flags**: IR
-
----
-## Attr: DrawLinePath.controlPoint1
-
-### Description
-The point at which the leading tail segment joins the connecting center segment.
-
-**Flags**: IRW
-
----
-## Attr: DrawLinePath.startLeft
-
-### Description
-Starting left coordinate of the line. Overrides left coordinate of [DrawLinePath.startPoint](#attr-drawlinepathstartpoint) if both are set.
-
-**Flags**: IR
-
----
-## Attr: DrawLinePath.showTitleLabelBackground
-
-### Description
-If the [titleLabel](DrawItem.md#attr-drawitemtitlelabel) is showing, should the [titleLabelBackground](DrawItem.md#attr-drawitemtitlelabelbackground) be created and placed behind the `titleLabel`?
-
-This defaults to true for [DrawSector](DrawSector.md#class-drawsector)s and shapes that are not commonly filled (e.g. [DrawLine](DrawLine.md#class-drawline)s).
-
-**Flags**: IRA
 
 ---
 ## Attr: DrawLinePath.endPoint
@@ -108,6 +84,22 @@ DrawLinePath supports the "startPoint", "endPoint", "controlPoint1", and "contro
 **Flags**: IR
 
 ---
+## Attr: DrawLinePath.endTop
+
+### Description
+Ending top coordinate of the line. Overrides top coordinate of [DrawLinePath.endPoint](#attr-drawlinepathendpoint) if both are set.
+
+**Flags**: IR
+
+---
+## Attr: DrawLinePath.controlPoint1
+
+### Description
+The point at which the leading tail segment joins the connecting center segment.
+
+**Flags**: IRW
+
+---
 ## Attr: DrawLinePath.connectorStyle
 
 ### Description
@@ -116,6 +108,14 @@ The ConnectorStyle controlling the presentation and behavior of this line's tail
 ### Groups
 
 - line
+
+**Flags**: IR
+
+---
+## Attr: DrawLinePath.startLeft
+
+### Description
+Starting left coordinate of the line. Overrides left coordinate of [DrawLinePath.startPoint](#attr-drawlinepathstartpoint) if both are set.
 
 **Flags**: IR
 
@@ -175,6 +175,29 @@ Moves the line path such that the [DrawLinePath.startPoint](#attr-drawlinepathst
 | top | [Integer](../reference_2.md#type-integer) | false | — | new top coordinate in pixels |
 
 ---
+## Method: DrawLinePath.getBoundingBox
+
+### Description
+Returns the startPoint, endPoint
+
+### Returns
+
+`[Array of double](#type-array-of-double)` — x1, y1, x2, y2 coordinates
+
+---
+## Method: DrawLinePath.setEndPoint
+
+### Description
+Update the endPoint
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| left | [Coordinate](../reference.md#type-coordinate) | false | — | left coordinate for end point, in pixels |
+| top | [Coordinate](../reference.md#type-coordinate) | false | — | top coordinate for end point, in pixels |
+
+---
 ## Method: DrawLinePath.setStartPoint
 
 ### Description
@@ -212,29 +235,6 @@ Sets the coordinates of the controlPoint2 knob and by extension the coordinates 
 |------|------|----------|---------|-------------|
 | left | [Coordinate](../reference.md#type-coordinate) | false | — | left coordinate for start point, in pixels |
 | top | [Coordinate](../reference.md#type-coordinate) | false | — | top coordinate for start point, in pixels |
-
----
-## Method: DrawLinePath.getBoundingBox
-
-### Description
-Returns the startPoint, endPoint
-
-### Returns
-
-`[Array of double](#type-array-of-double)` — x1, y1, x2, y2 coordinates
-
----
-## Method: DrawLinePath.setEndPoint
-
-### Description
-Update the endPoint
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| left | [Coordinate](../reference.md#type-coordinate) | false | — | left coordinate for end point, in pixels |
-| top | [Coordinate](../reference.md#type-coordinate) | false | — | top coordinate for end point, in pixels |
 
 ---
 ## Method: DrawLinePath.setControlPoint1

@@ -40,6 +40,30 @@ The title for the "Cancel" button on this dialog.
 **Flags**: IR
 
 ---
+## Attr: DateRangeDialog.okButtonTitle
+
+### Description
+The title for the "OK" button on this dialog.
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IR
+
+---
+## Attr: DateRangeDialog.headerTitle
+
+### Description
+The title to display in the header-bar of this Dialog.
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IR
+
+---
 ## Attr: DateRangeDialog.okButton
 
 ### Description
@@ -68,30 +92,6 @@ Button used for cancelling the dialog. Note that, since this is an [AutoChild](.
 **Flags**: IR
 
 ---
-## Attr: DateRangeDialog.okButtonTitle
-
-### Description
-The title for the "OK" button on this dialog.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IR
-
----
-## Attr: DateRangeDialog.headerTitle
-
-### Description
-The title to display in the header-bar of this Dialog.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IR
-
----
 ## ClassMethod: DateRangeDialog.askForRange
 
 ### Description
@@ -104,6 +104,6 @@ Helper method to launch a DateRangeDialog to have a date range input by the user
 | allowRelativeDates | [boolean](../reference.md#type-boolean) | false | — | whether to allow relative date entry via [RelativeDateItem](RelativeDateItem.md#class-relativedateitem)s, default true |
 | rangeItemProperties | [DateRangeItem Properties](#type-daterangeitem-properties) | false | — | properties for the DateRangeItem |
 | windowProperties | [DateRangeDialog Properties](#type-daterangedialog-properties) | false | — | properties for the Window |
-| callback | [DateRangeCallback](#type-daterangecallback) | false | — | method to fire once user has input values, with a single parameter "criterion" of type [Criterion](../reference_2.md#object-criterion) |
+| callback | [DateRangeCallback](#type-daterangecallback) | false | — | method to fire once user has input values, with a single parameter "criterion" of type [Criterion](../reference.md#object-criterion) |
 
 ---

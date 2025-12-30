@@ -17,6 +17,6 @@ Once a SmartClient JSF page has loaded, SmartClient components will request data
 
 #### Incorporating server-side JSF components into a SmartClient JSF page
 
-An [HTMLFlow](../classes/HTMLFlow.md#class-htmlflow) or [HTMLPane](../classes/HTMLPane.md#class-htmlpane) component can be used to incorporate server-generated content within a SmartClient-based page. With [contentsType](../classes/HTMLFlow.md#attr-htmlflowcontentstype) set to "page", the HTMLPane/Flow will act like a standalone page-within-a-page (via a SmartClient-managed HTML IFRAME element), allowing interactive server-side JSF components to participate normally, with limitations as discussed under the documentation for [contentsType](../classes/HTMLFlow.md#attr-htmlflowcontentstype).
+An [HTMLFlow](../classes/HTMLFlow.md#class-htmlflow) or [HTMLPane](../reference.md#class-htmlpane) component can be used to incorporate server-generated content within a SmartClient-based page. With [contentsType](../classes/HTMLFlow.md#attr-htmlflowcontentstype) set to "page", the HTMLPane/Flow will act like a standalone page-within-a-page (via a SmartClient-managed HTML IFRAME element), allowing interactive server-side JSF components to participate normally, with limitations as discussed under the documentation for [contentsType](../classes/HTMLFlow.md#attr-htmlflowcontentstype).
 
 ---

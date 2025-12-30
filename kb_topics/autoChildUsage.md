@@ -9,8 +9,6 @@
 ### Description
 An AutoChild is an automatically generated subcomponent that a parent component creates to handle part of its presentation or functionality. An example is the [Window](../classes/Window.md#class-window) component and its subcomponent the [header](../classes/Window.md#attr-windowheader).
 
-_Note: This overview describes how to customize subcomponents created using the autoChild system in existing classes. To learn how to create autoChildren within your own classes see the documentation [here](autoChildren.md#kb-topic-autochildren)._
-
 AutoChildren support a standard set of properties that can be used to customize or skin them. The names of these properties are derived from the name of the AutoChild itself. These properties will generally not be separately documented for every AutoChild unless there are special usage instructions; the existence of the properties is implied whenever you see an AutoChild documented.
 
 The properties affecting AutoChildren are:
@@ -39,7 +37,7 @@ Defaults that will be applied to the AutoChild created by any instance of the pa
 
 **name + "Constructor"** (eg headerConstructor)
 
-SmartClient Class of the component to be created. An advanced option, this property should generally only be used to customize system-generated autoChildren when there is documentation encouraging you to do so. For example, [ListGrid](../classes/ListGrid_1.md#class-listgrid) offers the ability to use simple CSS-based headers or more complex [StretchImg](../classes/StretchImg.md#class-stretchimg) based headers via [ListGrid.headerButtonConstructor](../classes/ListGrid_1.md#attr-listgridheaderbuttonconstructor). The constructor can also be specified using the `_constructor` property in the defaults for the AutoChild. If both `_name_Constructor` and `_constructor` are specified, the explicit `_name_Constructor` will be used.
+SmartClient Class of the component to be created. An advanced option, this property should generally only be used when there is documentation encouraging you to do so. For example, [ListGrid](../classes/ListGrid_1.md#class-listgrid) offers the ability to use simple CSS-based headers or more complex [StretchImg](../classes/StretchImg.md#class-stretchimg) based headers via [ListGrid.headerButtonConstructor](../classes/ListGrid_1.md#attr-listgridheaderbuttonconstructor). The constructor can also be specified using the `_constructor` property in the defaults for the AutoChild.
 
 The AutoChild system can be used to create both [direct children](../classes/Canvas.md#attr-canvaschildren) and indirect children (children of children). For example, the [minimizeButton](../classes/Window.md#attr-windowminimizebutton) of the Window is also an autoChild, even though it is actually located within the window header.
 
@@ -67,8 +65,5 @@ For a component "Window" with an AutoChild named "header", if you create a Windo
 Unless documented otherwise, an AutoChild should be considered an internal part of a component. Always configure AutoChildren by APIs on the parent component when they exist. It makes sense to access an AutoChild for troubleshooting purposes or for workarounds, but in general, an AutoChild's type, behavior, and internal structure are subject to change without notice in future SmartClient versions.
 
 Accessing an AutoChild may give you a way to make a dynamic change to a component that is not otherwise supported by the parent component (for example, changing a text label where there is no setter on the parent). Before using this approach, consider whether simply recreating the parent component from scratch is a viable option. This approach is more than fast enough for most smaller components, and will not create a reliance on unsupported APIs.
-
-#### Multi-AutoChildren
-In some cases, rather than creating a single named autoChild, such as a Window header, a component will use the autoChild pattern to create an arbitrary number of children with common appearance and behavior. An example of this is the [TileGrid](../classes/TileGrid.md#class-tilegrid) which creates multiple [tiles](../classes/TileGrid.md#attr-tilegridtile). In this paradigm, each automatically generated child will pick up the appropriate constructor, properties and defaults from the documented auto child name but will not be available as `creator.[autoChildName]` after creation and setting `show_AutoChildName_` will typically have no effect.
 
 ---

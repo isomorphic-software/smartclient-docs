@@ -36,7 +36,7 @@ For Hibernate integration where Java beans have been explicitly declared, Hibern
 You can provide Hibernate configuration to the SmartClient server in three ways:
 
 *   You can place a traditional `hibernate.cfg.xml` file somewhere on the classpath
-*   You can have SmartClient look up a Hibernate `Configuration` to use. This works in the same way as a [ServerObject](../reference_2.md#object-serverobject), and in fact makes use of the ServerObject code, though note that lookupStyle "attribute" is not supported. To look up a configuration, add ServerObject-compliant properties to your [server.properties](server_properties.md#kb-topic-serverproperties-file) file, prefixed with `hibernate.config`. For example:
+*   You can have SmartClient look up a Hibernate `Configuration` to use. This works in the same way as a [ServerObject](../reference_2.md#object-serverobject), and in fact makes use of the ServerObject code, though note that lookupStyle "attribute" is not supported. To look up a configuration, add ServerObject-compliant properties to your [server.properties](../reference.md#kb-topic-serverproperties-file) file, prefixed with `hibernate.config`. For example:
     ```
             hibernate.config.lookupStyle: spring
             hibernate.config.bean: mySessionFactory

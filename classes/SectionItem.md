@@ -18,10 +18,12 @@ To make a form where only one section is expanded at a time, set [DynamicForm.se
 - [DynamicForm.sectionVisibilityMode](DynamicForm.md#attr-dynamicformsectionvisibilitymode)
 
 ---
-## Attr: SectionItem.editProxyConstructor
+## Attr: SectionItem.canTabToHeader
 
 ### Description
-Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas.md#method-canvasseteditmode).
+If true, the header for this Section will be included in the page's tab order for accessibility. May also be set at the [DynamicForm](DynamicForm.md#class-dynamicform) level via [DynamicForm.canTabToSectionHeaders](DynamicForm.md#attr-dynamicformcantabtosectionheaders).
+
+See [accessibility](../kb_topics/accessibility.md#kb-topic-accessibility--section-508-compliance).
 
 **Flags**: IR
 
@@ -50,6 +52,14 @@ Name of the Canvas subclass to use as a header that labels the section and allow
 **Flags**: IRA
 
 ---
+## Attr: SectionItem.itemIds
+
+### Description
+IDs of the items that should be considered a member of this section.
+
+**Flags**: IR
+
+---
 ## Attr: SectionItem.sectionVisible
 
 ### Description
@@ -66,24 +76,6 @@ Whether this form section should initially be visible.
 Section items show their `value` as title text for the section. Therefore the simplest way to specify this text on the form item directly is via the `defaultValue` attribute.
 
 **Flags**: IRW
-
----
-## Attr: SectionItem.canTabToHeader
-
-### Description
-If true, the header for this Section will be included in the page's tab order for accessibility. May also be set at the [DynamicForm](DynamicForm.md#class-dynamicform) level via [DynamicForm.canTabToSectionHeaders](DynamicForm.md#attr-dynamicformcantabtosectionheaders).
-
-See [accessibility](../kb_topics/accessibility.md#kb-topic-accessibility--section-508-compliance).
-
-**Flags**: IR
-
----
-## Attr: SectionItem.itemIds
-
-### Description
-[Names](FormItem.md#attr-formitemname) of the items that should be considered a member of this section.
-
-**Flags**: IR
 
 ---
 ## Method: SectionItem.isExpanded

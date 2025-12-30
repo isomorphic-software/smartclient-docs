@@ -29,6 +29,19 @@ Explicitly sets this session into online mode. This setting will override whatev
 - [Offline.useNativeOfflineDetection](#classmethod-offlineusenativeofflinedetection)
 
 ---
+## ClassMethod: Offline.useNativeOfflineDetection
+
+### Description
+Tells the Offline system to query the browser for the current online/offline state. Calling this method switches off the explicit offline mode setting switched on by calling [Offline.goOnline](#classmethod-offlinegoonline) or [Offline.goOffline](#classmethod-offlinegooffline).
+
+It is important to note that browsers vary quite considerably in their ability to detect that they are offline. Many older browsers simply can't do it; HTML5 browsers expose the `navigator.onLine` property, but each browser's implementation is different. Some browsers have a manual "Work Offline" mode which allows the user to make the decision, and SmartClient provides an equivalent mechanism with the `goOffline` and `goOnline` methods. Generally speaking, these methods are more reliable than allowing the browser to decide whether your application is offline.
+
+### See Also
+
+- [Offline.goOnline](#classmethod-offlinegoonline)
+- [Offline.goOffline](#classmethod-offlinegooffline)
+
+---
 ## ClassMethod: Offline.remove
 
 ### Description
@@ -44,19 +57,6 @@ Removes the key/value pair mapped by the passed-in key from browser-local storag
 
 - [Offline.put](#classmethod-offlineput)
 - [Offline.get](#classmethod-offlineget)
-
----
-## ClassMethod: Offline.useNativeOfflineDetection
-
-### Description
-Tells the Offline system to query the browser for the current online/offline state. Calling this method switches off the explicit offline mode setting switched on by calling [Offline.goOnline](#classmethod-offlinegoonline) or [Offline.goOffline](#classmethod-offlinegooffline).
-
-It is important to note that browsers vary quite considerably in their ability to detect that they are offline. Many older browsers simply can't do it; HTML5 browsers expose the `navigator.onLine` property, but each browser's implementation is different. Some browsers have a manual "Work Offline" mode which allows the user to make the decision, and SmartClient provides an equivalent mechanism with the `goOffline` and `goOnline` methods. Generally speaking, these methods are more reliable than allowing the browser to decide whether your application is offline.
-
-### See Also
-
-- [Offline.goOnline](#classmethod-offlinegoonline)
-- [Offline.goOffline](#classmethod-offlinegooffline)
 
 ---
 ## ClassMethod: Offline.get
@@ -111,7 +111,7 @@ Returns true if the current browser session is offline (ie, not connected to a n
 ### Description
 Stores the passed-in value in browser-local storage, mapped to the passed-in key. If there is no room left to store the value, we discard values from the offline store, oldest first, until there is room to store the value. If you don't want this behavior, explicitly pass false in the `recycleEntries` parameter.
 
-Note that limitations in the underlying storage engines mean that only primitive values - Strings, numbers and booleans - can be stored. If you wish to store an Array or Object, you will have to serialize it to JSON or XML first, and then `eval` it after retrieval to turn it back into an object. This is important because, upon retrieval, all the values will be of String type. Additionally, if you want to preserve Date values, we recommend using JSONEncoder.
+Note that limitations in the underlying storage engines mean that only primitive values - Strings, numbers and booleans - can be stored. If you wish to store an Array or Object, you will have to serialize it to JSON first, and then `eval` it after retrieval to turn it back into an object.
 
 **Note:** This method throws an exception if it could not store the value (either because storage is full and recycleEntries was false, or because the value to store is simply too large)
 

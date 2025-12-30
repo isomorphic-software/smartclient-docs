@@ -105,6 +105,20 @@ Height for this uploadItem. Note that SmartClient will not apply this size to th
 **Flags**: IRW
 
 ---
+## Attr: UploadItem.accept
+
+### Description
+A comma-separated list of valid MIME types, used as a filter for the file picker window.
+
+Note that this property makes use of the HTML `accept` attribute, and so relies on the browser to perform the desired filtering. For further study, see:
+
+*   [HTML `<input>` accept Attribute](https://www.w3schools.com/TAGS/att_input_accept.asp)
+*   [The Input (Form Input) element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input)
+*   [File input 'accept' attribute - is it useful?](https://stackoverflow.com/questions/181214/file-input-accept-attribute-is-it-useful)
+
+**Flags**: IR
+
+---
 ## Attr: UploadItem.width
 
 ### Description
@@ -148,20 +162,6 @@ Support is not full-cycle at the server - that is, there are server APIs for ret
     return dsResponse;
  
 ```
-
-**Flags**: IR
-
----
-## Attr: UploadItem.accept
-
-### Description
-A comma-separated list of valid MIME types, used as a filter for the file picker window.
-
-Note that this property makes use of the HTML `accept` attribute, and so relies on the browser to perform the desired filtering. For further study, see:
-
-*   [HTML `<input>` accept Attribute](https://www.w3schools.com/TAGS/att_input_accept.asp)
-*   [The Input (Form Input) element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input)
-*   [File input 'accept' attribute - is it useful?](https://stackoverflow.com/questions/181214/file-input-accept-attribute-is-it-useful)
 
 **Flags**: IR
 

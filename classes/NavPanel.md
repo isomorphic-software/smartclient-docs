@@ -18,26 +18,18 @@ Because NavPanel extends [SplitPane](SplitPane.md#class-splitpane), it automatic
 Note that `NavPanel` is a fairly simple component to replicate by composing other SmartClient widgets. If you need a component that looks roughly like a `NavPanel` but will require lots of visual and behavioral customization, consider using the underlying components directly instead of deeply customizing the `NavPanel` class. A `NavPanel` is essentially just a [TreeGrid](TreeGrid.md#class-treegrid) and [Deck](Deck.md#class-deck) in a [SplitPane](SplitPane.md#class-splitpane), with a [recordClick](ListGrid_2.md#method-listgridrecordclick) handler to call [Deck.setCurrentPane](Deck.md#method-decksetcurrentpane) with a component ID stored as an attribute of each Record.
 
 ---
+## Attr: NavPanel.headerStyle
+
+### Description
+CSS style used when [NavItem.isHeader](NavItem.md#attr-navitemisheader) is set on an item. May be overridden for a specific header item by [NavItem.customStyle](NavItem.md#attr-navitemcustomstyle).
+
+**Flags**: IR
+
+---
 ## Attr: NavPanel.navGrid
 
 ### Description
 The [TreeGrid](TreeGrid.md#class-treegrid) used to display [NavItem](../reference.md#object-navitem)s.
-
-**Flags**: IR
-
----
-## Attr: NavPanel.navLayout
-
-### Description
-The layout serving as the [navigationPane](SplitPane.md#attr-splitpanenavigationpane) of this panel. By default it contains only the [NavPanel.navGrid](#attr-navpanelnavgrid), but other members can be added before or after, respectively, via [NavPanel.navBeforeMembers](#attr-navpanelnavbeforemembers) and [NavPanel.navAfterMembers](#attr-navpanelnavaftermembers).
-
-**Flags**: IR
-
----
-## Attr: NavPanel.deckStyle
-
-### Description
-CSS style for the [NavPanel.navDeck](#attr-navpanelnavdeck).
 
 **Flags**: IR
 
@@ -70,12 +62,14 @@ The [Deck](Deck.md#class-deck) area where components specified via [NavItem.pane
 **Flags**: IR
 
 ---
-## Attr: NavPanel.navBeforeMembers
+## Attr: NavPanel.currentItemId
 
 ### Description
-Members to add before the [NavPanel.navGrid](#attr-navpanelnavgrid) in the [NavPanel.navLayout](#attr-navpanelnavlayout) when the panel is first drawn.
+The ID of the current [NavItem](../reference.md#object-navitem) whose [pane](NavItem.md#attr-navitempane) is showing in the [navDeck](#attr-navpanelnavdeck). The `NavItem` must be an item of this `NavPanel` if set.
 
-**Flags**: I
+The ID of a `NavItem` is the item's [NavItem.id](NavItem.md#attr-navitemid) if set; otherwise, it is the ID of the item's [NavItem.pane](NavItem.md#attr-navitempane), though `currentItemId` may be initialized to either identifier.
+
+**Flags**: IRW
 
 ---
 ## Attr: NavPanel.defaultToFirstItem
@@ -96,56 +90,6 @@ A separator between navigation items can be created by setting [NavItem.isSepara
 Each non-separator and non-header `NavItem` specifies a component to be displayed in the [NavPanel.navDeck](#attr-navpanelnavdeck) via [NavItem.pane](NavItem.md#attr-navitempane).
 
 `NavItem`s can also be individually styled via [ListGridRecord._baseStyle](ListGridRecord.md#attr-listgridrecord_basestyle) or [NavItem.customStyle](NavItem.md#attr-navitemcustomstyle).
-
-**Flags**: IRW
-
----
-## Attr: NavPanel.headerStyle
-
-### Description
-CSS style used when [NavItem.isHeader](NavItem.md#attr-navitemisheader) is set on an item. May be overridden for a specific header item by [NavItem.customStyle](NavItem.md#attr-navitemcustomstyle).
-
-**Flags**: IR
-
----
-## Attr: NavPanel.navItemBaseStyle
-
-### Description
-Pass through to set the [basestyle](ListGrid_1.md#attr-listgridbasestyle) on the [NavPanel.navGrid](#attr-navpanelnavgrid) autoChild.
-
-### Groups
-
-- appearance
-
-### See Also
-
-- [ListGrid.getBaseStyle](ListGrid_2.md#method-listgridgetbasestyle)
-
-**Flags**: IR
-
----
-## Attr: NavPanel.navAfterMembers
-
-### Description
-Members to add after the [NavPanel.navGrid](#attr-navpanelnavgrid) in the [NavPanel.navLayout](#attr-navpanelnavlayout) when the panel is first drawn.
-
-**Flags**: I
-
----
-## Attr: NavPanel.autoOpenItems
-
-### Description
-When [NavPanel.isTree](#attr-navpanelistree) is true, should all nodes be opened automatically? Set to `false` to prevent nodes being opened by default.
-
-**Flags**: IR
-
----
-## Attr: NavPanel.currentItemId
-
-### Description
-The ID of the current [NavItem](../reference.md#object-navitem) whose [pane](NavItem.md#attr-navitempane) is showing in the [navDeck](#attr-navpanelnavdeck). The `NavItem` must be an item of this `NavPanel` if set.
-
-The ID of a `NavItem` is the item's [NavItem.id](NavItem.md#attr-navitemid) if set; otherwise, it is the ID of the item's [NavItem.pane](NavItem.md#attr-navitempane), though `currentItemId` may be initialized to either identifier.
 
 **Flags**: IRW
 

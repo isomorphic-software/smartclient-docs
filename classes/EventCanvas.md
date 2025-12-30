@@ -36,6 +36,14 @@ When set to true, shows a [small icon](Calendar.md#attr-calendareventcanvasconte
 **Flags**: IRW
 
 ---
+## Attr: EventCanvas.showHeader
+
+### Description
+Renders a header DIV above the main body of the event, an area of limited height, styled to stand out from the main [body](#attr-eventcanvasshowbody) of the event, and typically showing a [name](CalendarEvent.md#attr-calendareventname) or title - like a Window. This header area can be styled via [EventCanvas.headerStyle](#attr-eventcanvasheaderstyle) and the HTML it shows is retrieved from a call to [getHeaderHTML()](#method-eventcanvasgetheaderhtml). The default is taken from [Calendar.showEventHeaders](Calendar.md#attr-calendarshoweventheaders).
+
+**Flags**: IRW
+
+---
 ## Attr: EventCanvas.showBody
 
 ### Description
@@ -52,40 +60,6 @@ CSS class for the [body area](#attr-eventcanvasshowbody) of the EventCanvas. If 
 ### Groups
 
 - appearance
-
-**Flags**: IRW
-
----
-## Attr: EventCanvas.showLabel
-
-### Description
-When set to true, the [header text](#method-eventcanvasgetheaderhtml) for the associated event is not rendered inside the eventCanvas itself.
-
-Instead, it is rendered in it's own [label](#attr-eventcanvaslabel) and shown as a peer of this eventCanvas, immediately outside of it.
-
-**Flags**: IRW
-
----
-## Attr: EventCanvas.calendar
-
-### Description
-The [Calendar](Calendar.md#class-calendar) in which this EventCanvas is being rendered.
-
-**Flags**: IR
-
----
-## Attr: EventCanvas.gripper
-
-### Description
-When [showGripper](#attr-eventcanvasshowgripper) is true, this is the component that will be rendered adjacent to the canvas and allow the canvas to be moved with the mouse.
-
-**Flags**: IRW
-
----
-## Attr: EventCanvas.showHeader
-
-### Description
-Renders a header DIV above the main body of the event, an area of limited height, styled to stand out from the main [body](#attr-eventcanvasshowbody) of the event, and typically showing a [name](CalendarEvent.md#attr-calendareventname) or title - like a Window. This header area can be styled via [EventCanvas.headerStyle](#attr-eventcanvasheaderstyle) and the HTML it shows is retrieved from a call to [getHeaderHTML()](#method-eventcanvasgetheaderhtml). The default is taken from [Calendar.showEventHeaders](Calendar.md#attr-calendarshoweventheaders).
 
 **Flags**: IRW
 
@@ -138,6 +112,16 @@ When [showLabel](#attr-eventcanvasshowlabel) is true, this autoChild is used to 
 **Flags**: IRW
 
 ---
+## Attr: EventCanvas.showLabel
+
+### Description
+When set to true, the [header text](#method-eventcanvasgetheaderhtml) for the associated event is not rendered inside the eventCanvas itself.
+
+Instead, it is rendered in it's own [label](#attr-eventcanvaslabel) and shown as a peer of this eventCanvas, immediately outside of it.
+
+**Flags**: IRW
+
+---
 ## Attr: EventCanvas.isZoneCanvas
 
 ### Description
@@ -180,12 +164,28 @@ Whether the [header area](#attr-eventcanvasshowheader) should autosize verticall
 **Flags**: IRW
 
 ---
+## Attr: EventCanvas.calendar
+
+### Description
+The [Calendar](Calendar.md#class-calendar) in which this EventCanvas is being rendered.
+
+**Flags**: IR
+
+---
 ## Attr: EventCanvas.isIndicatorCanvas
 
 ### Description
 Readonly property dictating whether this is a special [IndicatorCanvas](../reference.md#class-indicatorcanvas) subclass.
 
 **Flags**: R
+
+---
+## Attr: EventCanvas.gripper
+
+### Description
+When [showGripper](#attr-eventcanvasshowgripper) is true, this is the component that will be rendered adjacent to the canvas and allow the canvas to be moved with the mouse.
+
+**Flags**: IRW
 
 ---
 ## Attr: EventCanvas.styleName

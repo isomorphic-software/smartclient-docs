@@ -11,15 +11,15 @@ As covered in the _QuickStart Guide_ Chapter 4, _Coding_, SmartClient components
 
 **Referring to previously defined components**
 
-To refer to another component by ID in XML, use `<Canvas withID=/>`. For example:
+To refer to another component by ID in XML, use `<Canvas ref=/>`. For example:
 
 ```
  <Canvas ID="myCanvas"/>
  <Canvas ID="myCanvas2"/>
  <VLayout>
      <members>
-         <Canvas withID="myCanvas"/>
-         <Canvas withID="myCanvas2"/>
+         <Canvas ref="myCanvas"/>
+         <Canvas ref="myCanvas2"/>
      </members>
  </VLayout>
  
@@ -27,11 +27,11 @@ To refer to another component by ID in XML, use `<Canvas withID=/>`. For example
 
 #### Loading screens stored in Component XML
 
-Save your Component XML as a file called _screenName_.ui.xml under _webroot_/shared/ui/. Placing your .ui.xml file in this directory makes it visible to the system; the location of this directory can be configured in [server.properties](server_properties.md#kb-topic-serverproperties-file) by setting the _project.ui_ property. _screenName_ can be any valid identifier (no spaces, dashes or periods - underscores OK).
+Save your Component XML as a file called _screenName_.ui.xml under _webroot_/shared/ui/. Placing your .ui.xml file in this directory makes it visible to the system; the location of this directory can be configured in [server.properties](../reference.md#kb-topic-serverproperties-file) by setting the _project.ui_ property. _screenName_ can be any valid identifier (no spaces, dashes or periods - underscores OK).
 
 If you have multiple top-level tags (eg, your code is similar to the example above under "Referring to previousy defined components") use `<isomorphicXML>` as a top-level container tag - this has no impact on processing and is just an idiom to make your file valid XML, since XML does not allow multiple top-level tags in a document.
 
-Component XML screens are then loaded using the ScreenLoaderServlet. The default SDK comes with this servlet already registered at _projectBase_/isomorphic/screenLoader . If you've modified web.xml or only included some of the default servlets, you may need to add it now - see the [Installation Instructions](iscInstall.md#kb-topic-installing-the-smartclient-runtime) .
+Component XML screens are then loaded using the ScreenLoaderServlet. The default SDK comes with this servlet already registered at _projectBase_/isomorphic/screenLoader . If you've modified web.xml or only included some of the default servlets, you may need to add it now - see the [Installation Instructions](iscInstall.md#kb-topic-deploying-smartclient) .
 
 To create an application that consists of _just_ the imported mockup, just add a `<script src>` tag pointing to the ScreenLoader servlet and referring to the _screenName_ you used when you saved your file. For example, if your application launches from a directory next to the "isomorphic" directory from the SDK:
 
@@ -57,7 +57,7 @@ Note that, like all component XML properties, the `width` property can be specif
 
 **Embedding Methods**
 
-For [StringMethods](stringMethods.md#kb-topic-string-methods-overview) such as [ListGrid.recordClick](../classes/ListGrid_2.md#method-listgridrecordclick), JavaScript code can be used as an ordinary element value:
+For [StringMethods](../reference.md#kb-topic-string-methods-overview) such as [ListGrid.recordClick](../classes/ListGrid_2.md#method-listgridrecordclick), JavaScript code can be used as an ordinary element value:
 
 ```
  <ListGrid>
@@ -115,74 +115,20 @@ You can also add a loaded screen to an existing layout container. For example, p
     existingLayout.addMember(isc.Canvas.getById("componentId"));
  
 ```
-Component XML files can also refer to components you have created programmatically, and incorporate them into layouts. For example, if you have created a ListGrid component with ID "theGrid", you could refer to that grid using a ``<Canvas withID=""/>`` tag, which can be used anywhere a Canvas is expected. For example:
+Component XML files can also refer to components you have created programmatically, and incorporate them into layouts. For example, if you have created a ListGrid component with ID "theGrid", you could refer to that grid using a ``<Canvas ref=""/>`` tag, which can be used anywhere a Canvas is expected. For example:
 ```
  <VLayout ... >
      <members>
-           <Canvas withID="theGrid"/>
+           <Canvas ref="theGrid"/>
      </members>
  </VLayout>
  
 ```
 Note that this approach requires that the referenced component has been created **before** `loadScreen` is called.
 
-#### Declarative Actions
-
-Component XML files can declare `Action`s to take in response to events. An `Action` is a declarative method call on this or some other component, with or without parameters. Being declarative, actions have some advantages over procedural code: they make your application easier to understand and easier to maintain, and they allow tools such as Reify to understand and edit your event handling logic.
-
-To take a simple example, this is how you would declare an `Action` to display a record in a [DetailViewer](../classes/DetailViewer.md#class-detailviewer) when that record is clicked in a [ListGrid](../classes/ListGrid_1.md#class-listgrid).
-
-```
-   <ListGrid dataSource="Customer" autoID="customerGrid">
-      ...
-     <recordClick>
-       <Action target="customerDetailViewer" name="viewSelectedData" mapping="viewer"/>
-     </recordClick>
-   </ListGrid>
- 
-```
-The three elements of this declaration:
-
-*   **target** is the global ID of the component on which the action will be called
-*   **name** is the name of the method to call
-*   **mapping** is an optional definition of the parameters to pass to the method. See the separate section on parameters below
-
-`target` and `name` are both required attributes of any `Action`, and they must be valid. If `target` does not refer to a valid component, or `name` is not the name of a valid method on that component, you will generate a runtime error. Note, the rules around describing valid actions in the _**Declaring Events and Actions**_ section of the [componentSchema](componentSchema.md#kb-topic-component-schema) article apply to Reify only. When building applications through Reify, only methods marked `action="true"` will appear in the list of valid actions for a given target component. However, _any_ documented method can be called as an `Action` in manually-created Component XML, as can any registered [string method](stringMethods.md#kb-topic-string-methods-overview),
-
-Event handlers can also invoke [workflow processes](../classes/Process.md#class-process), which are a special kind of multi-step `Action`. You specify a workflow process like this (see the [Process documentation](../classes/Process.md#class-process) for details of what goes inside the ``<Process>`` tag)
-
-```
-   <ListGrid dataSource="Customer" autoID="customerGrid">
-      ...
-     <recordClick>
-       <Process>
-          ...
-       </Process>
-     </recordClick>
-   </ListGrid>
- 
-```
-
-Finally, you are not limited to one `Action` per event: you can declare any number of `Action`s and/or `Process`es inside an event handler declaration.
-
-#### Parameters and Actions
-
-Parameters are defined in an `Action` declaration in the `mapping` attribute. This attribute is optional; if the target action method does not require parameters, this attribute can be omitted. If provided, `mapping` should be a comma-separated list of values. Each of these values is either:
-
-*   A variable name
-*   The special variable `this`, which is a reference to the source component (ie, the component upon which the `Action` is being defined)
-*   A literal, like 'foo' or 17. Note, string literals must be enclosed in quotes, or they will be interpreted as variable names
-*   A valid Javascript expression, like `new Date()`
-
-Of these, the most interesting and most commonly-used are the first two. `Action`s are declared inside event handler declarations that correspond to SmartClient event methods. These methods are passed parameters, and these parameters are available, via the `mapping`, to any contained `Action`. Providing the correct mapping requires that you know the name of the parameter you are interested in, and this information is present in the documentation.
-
-To take the above example, we want to call `viewSelectedData()` on the [DetailViewer](../classes/DetailViewer.md#class-detailviewer), so looking at the documentation for [DetailViewer.viewSelectedData](../classes/DetailViewer.md#method-detailviewerviewselecteddata), we can see that it takes a single parameter of type [ListGrid](../classes/ListGrid_1.md#class-listgrid) or [TileGrid](../classes/TileGrid.md#class-tilegrid), or the ID of a `ListGrid` or `TileGrid`. This parameter tells the `DetailViewer` which component's selected data to show, so we want to pass in the `ListGrid` itself, the component we are declaring this `Action` on.
-
-One way to do this would be to use a mapping of `"this"`. As you can see from the example above, though, there is another way. If we look at the documentation for the event method wrapping our `Action` - [ListGrid.recordClick](../classes/ListGrid_2.md#method-listgridrecordclick) - we will see that it is passed a number of parameters, the first of which is a pointer to the `ListGrid` itself. As the documentation shows, this parameter is called "viewer". Therefore, we can use a `mapping` of "viewer". If we were declaring an `Action` to call a method that requires a [Record](../reference.md#object-record) parameter, we can look at the documentation for `recordClick()` again and note that it is also passed the record just clicked, in a parameter called `record`. So our mapping for that `Action` would be "record".
-
 #### Component XML and global IDs
 
-A Component XML screen created in Reify or via the [Balsamiq importer](balsamiqImport.md#kb-topic-mockup-importer) will assign global IDs to all components generated from your mockup so that you can retrieve them by ID to add event handlers and call APIs. However if you build an application out of multiple screens built at different times, these IDs can collide, which will cause components to overwrite each other as they each try to use the same ID.
+A Component XML screen created in Visual Builder or via the [Balsamiq importer](balsamiqImport.md#kb-topic-mockup-importer) will assign global IDs to all components generated from your mockup so that you can retrieve them by ID to add event handlers and call APIs. However if you build an application out of multiple screens built at different times, these IDs can collide, which will cause components to overwrite each other as they each try to use the same ID.
 
 To solve this, the [RPCManager.loadScreen](../classes/RPCManager.md#classmethod-rpcmanagerloadscreen) API will _ignore_ global IDs on loaded components, assigning them sequential generated IDs instead (which will never collide). Instead of using global IDs, the callback for _loadScreen()_ will automatically provide you with the outermost component of a loaded screen, and that outermost component will provide access to other components by their original IDs via [Canvas.getByLocalId](../classes/Canvas.md#method-canvasgetbylocalid).
 
@@ -230,7 +176,7 @@ In the provided example we register a DynamicScreenGenerator which will be calle
 While registering a DynamicScreenGenerator is the first choice since is compatible with ScreenLoaderServlet's ability to load several screens in a single HTTPRequest, there are two additional ways to load Component XML screens - you can create a .jsp that uses the JSP tags that come with the SDK:
 
 ```
-    <%@ taglib uri="http://www.smartclient.com/taglib" prefix="isomorphic" %>
+    <%@ taglib uri="/WEB-INF/iscTaglib.xml" prefix="isomorphic" %>
     <isomorphic:XML>
        ... Component XML ...
     </isomorphic:XML>
@@ -307,6 +253,6 @@ By using the `<ListGrid>` tag you advertise that properties should be interprete
 
 #### Component Schema
 
-Instead of using the `constructor` and `xsi:type` attributes for custom components and custom properties, you can create a [componentSchema](componentSchema.md#kb-topic-component-schema) that describes the custom component. Declaring a component schema allows you to use your component just like the built-in SmartClient components, and also allows your component to be used within [Reify](reify.md#kb-topic-reify-overview).
+Instead of using the `constructor` and `xsi:type` attributes for custom components and custom properties, you can create a [componentSchema](componentSchema.md#kb-topic-component-schema) that describes the custom component. Declaring a component schema allows you to use your component just like the built-in SmartClient components, and also allows your component to be used within [visualBuilder](visualBuilder.md#kb-topic-visual-builder).
 
 ---

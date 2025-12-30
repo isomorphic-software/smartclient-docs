@@ -11,7 +11,7 @@
 ### Description
 Labels display a small amount of [alignable](#attr-labelalign) [text](#attr-labelcontents) with optional [icon](#attr-labelicon) and [autoFit](#attr-labelautofit).
 
-For a general-purpose container for HTML content, use [HTMLFlow](HTMLFlow.md#class-htmlflow) or [HTMLPane](HTMLPane.md#class-htmlpane) instead.
+For a general-purpose container for HTML content, use [HTMLFlow](HTMLFlow.md#class-htmlflow) or [HTMLPane](../reference.md#class-htmlpane) instead.
 
 ---
 ## Attr: Label.valign
@@ -40,84 +40,6 @@ If unset, defaults to [iconSize](StatefulCanvas.md#attr-statefulcanvasiconsize).
 **Flags**: IR
 
 ---
-## Attr: Label.iconSpacing
-
-### Description
-Pixels between icon and title text.
-
-### Groups
-
-- buttonIcon
-
-**Flags**: IR
-
----
-## Attr: Label.showDisabledIcon
-
-### Description
-If using an icon for this button, whether to switch the icon image if the button becomes disabled.
-
-### Groups
-
-- buttonIcon
-
-**Flags**: IR
-
----
-## Attr: Label.editProxyConstructor
-
-### Description
-Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas.md#method-canvasseteditmode).
-
-**Flags**: IR
-
----
-## Attr: Label.showFocusedIcon
-
-### Description
-If using an icon for this button, whether to switch the icon image when the button receives focus.
-
-If [StatefulCanvas.showFocusedAsOver](StatefulCanvas.md#attr-statefulcanvasshowfocusedasover) is true, the `"Over"` icon will be displayed when the canvas has focus, otherwise a separate `"Focused"` icon will be displayed
-
-### Groups
-
-- buttonIcon
-
-**Flags**: IR
-
----
-## Attr: Label.showDownIcon
-
-### Description
-If using an icon for this button, whether to switch the icon image when the mouse goes down on the button.
-
-### Groups
-
-- buttonIcon
-
-**Flags**: IR
-
----
-## Attr: Label.styleName
-
-### Description
-Set the CSS class for this widget. For a Label, this is equivalent to setting [Button.baseStyle](Button.md#attr-buttonbasestyle).
-
-**Flags**: IRW
-
----
-## Attr: Label.iconAlign
-
-### Description
-If this button is showing an icon should it be right or left aligned?
-
-### Groups
-
-- buttonIcon
-
-**Flags**: IR
-
----
 ## Attr: Label.iconSize
 
 ### Description
@@ -126,6 +48,18 @@ Size in pixels of the icon image.
 The [iconWidth](StatefulCanvas.md#attr-statefulcanvasiconwidth) and [iconHeight](StatefulCanvas.md#attr-statefulcanvasiconheight) properties can be used to configure width and height separately.
 
 Note: When configuring the properties of a `StatefulCanvas` (or derivative) [AutoChild](../reference.md#type-autochild), it is best to set the `iconWidth` and `iconHeight` to the same value rather than setting an `iconSize`. This is because certain skins or customizations thereto might set the `iconWidth` and `iconHeight`, making the customization of the AutoChild's `iconSize` ineffective.
+
+### Groups
+
+- buttonIcon
+
+**Flags**: IR
+
+---
+## Attr: Label.iconSpacing
+
+### Description
+Pixels between icon and title text.
 
 ### Groups
 
@@ -153,8 +87,7 @@ The contents of a canvas or label widget. Any HTML string is acceptable.
 ## Attr: Label.dynamicContents
 
 ### Description
-Dynamic contents allows the contents string to be treated as a simple but powerful template. When this attribute is set to `true`, JavaScript expressions may be embedded within the contents string, using the format:  
-`${_[JavaScript to evaluate]_}`.
+Dynamic contents allows the contents string to be treated as a simple but powerful template. When this attribute is set to true, JavaScript expressions may be embedded within the contents string, using the format: `${_[JavaScript to evaluate]_}`.
 
 For example, to include the current date in a templated message, `canvas.contents` could be set to:  
 `"Today's date is `<b>`${new Date().toUSShortDate()}`</b>`"`
@@ -167,12 +100,11 @@ Notes:
 
 *   Calling markForRedraw() on the canvas will evaluate any embedded expressions.
 *   Multiple such expressions may be embedded within the contents string for a component.
-*   If an error occurs during evaluation, a warning is logged to the [Developer Console](../kb_topics/debugging.md#kb-topic-debugging) and an empty string will be substituted.
+*   If an error occurs during evaluation, a warning is logged to the [Developer Console](../kb_topics/debugging.md#kb-topic-debugging) and the error string will be embedded in place of the expected value in the Canvas.
 
 ### Groups
 
 - contents
-- dynamicStrings
 
 ### See Also
 
@@ -276,6 +208,26 @@ Note that if [StatefulCanvas.autoFit](StatefulCanvas.md#attr-statefulcanvasautof
 **Flags**: IRW
 
 ---
+## Attr: Label.showDisabledIcon
+
+### Description
+If using an icon for this button, whether to switch the icon image if the button becomes disabled.
+
+### Groups
+
+- buttonIcon
+
+**Flags**: IR
+
+---
+## Attr: Label.editProxyConstructor
+
+### Description
+Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas.md#method-canvasseteditmode).
+
+**Flags**: IR
+
+---
 ## Attr: Label.width
 
 ### Description
@@ -290,6 +242,40 @@ Note that if [StatefulCanvas.autoFit](StatefulCanvas.md#attr-statefulcanvasautof
 ### See Also
 
 - [StatefulCanvas.autoFit](StatefulCanvas.md#attr-statefulcanvasautofit)
+
+**Flags**: IRW
+
+---
+## Attr: Label.showFocusedIcon
+
+### Description
+If using an icon for this button, whether to switch the icon image when the button receives focus.
+
+If [StatefulCanvas.showFocusedAsOver](StatefulCanvas.md#attr-statefulcanvasshowfocusedasover) is true, the `"Over"` icon will be displayed when the canvas has focus, otherwise a separate `"Focused"` icon will be displayed
+
+### Groups
+
+- buttonIcon
+
+**Flags**: IR
+
+---
+## Attr: Label.showDownIcon
+
+### Description
+If using an icon for this button, whether to switch the icon image when the mouse goes down on the button.
+
+### Groups
+
+- buttonIcon
+
+**Flags**: IR
+
+---
+## Attr: Label.styleName
+
+### Description
+Set the CSS class for this widget. For a Label, this is equivalent to setting [Button.baseStyle](Button.md#attr-buttonbasestyle).
 
 **Flags**: IRW
 
@@ -322,30 +308,16 @@ If using an icon for this button, whether to switch the icon image when the butt
 **Flags**: IR
 
 ---
-## Method: Label.setStyleName
+## Attr: Label.iconAlign
 
 ### Description
-Dynamically change the CSS class for this widget. For a Label, this is equivalent to [setBaseStyle()](StatefulCanvas.md#method-statefulcanvassetbasestyle).
+If this button is showing an icon should it be right or left aligned?
 
-### Parameters
+### Groups
 
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| newStyle | [CSSStyleName](../reference.md#type-cssstylename) | false | — | new CSS style name |
+- buttonIcon
 
----
-## Method: Label.setContents
-
-### Description
-Changes the contents of a widget to newContents, an HTML string.
-
-When [dynamicContents](Canvas.md#attr-canvasdynamiccontents) is set, `setContents()` can also be called with no arguments to cause contents to be re-evaluated.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| newContents | [HTMLString](../reference.md#type-htmlstring) | true | — | an HTML string to be set as the contents of this widget |
+**Flags**: IR
 
 ---
 ## Method: Label.setIconOrientation
@@ -364,6 +336,18 @@ Changes the orientation of the icon relative to the text of the button.
 - buttonIcon
 
 ---
+## Method: Label.setStyleName
+
+### Description
+Dynamically change the CSS class for this widget. For a Label, this is equivalent to [setBaseStyle()](StatefulCanvas.md#method-statefulcanvassetbasestyle).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| newStyle | [CSSStyleName](../reference.md#type-cssstylename) | false | — | new CSS style name |
+
+---
 ## Method: Label.setIcon
 
 ### Description
@@ -373,10 +357,24 @@ Change the icon being shown next to the title text.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| icon | [SCImgURL](../reference.md#type-scimgurl) | false | — | URL of new icon |
+| icon | [SCImgURL](../reference_2.md#type-scimgurl) | false | — | URL of new icon |
 
 ### Groups
 
 - buttonIcon
+
+---
+## Method: Label.setContents
+
+### Description
+Changes the contents of a widget to newContents, an HTML string.
+
+When [dynamicContents](Canvas.md#attr-canvasdynamiccontents) is set, `setContents()` can also be called with no arguments to cause contents to be re-evaluated.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| newContents | [HTMLString](../reference.md#type-htmlstring) | true | — | an HTML string to be set as the contents of this widget |
 
 ---

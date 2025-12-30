@@ -45,14 +45,6 @@ If [Splitbar.showGrip](Splitbar.md#attr-splitbarshowgrip) is true, this property
 **Flags**: IRA
 
 ---
-## Attr: Snapbar.gripImgSuffix
-
-### Description
-Overridden from [Splitbar.gripImgSuffix](Splitbar.md#attr-splitbargripimgsuffix) to simplify providing custom grip media for this widget.
-
-**Flags**: IRA
-
----
 ## Attr: Snapbar.showGrip
 
 ### Description
@@ -73,6 +65,14 @@ If [StretchImg.showGrip](StretchImg.md#attr-stretchimgshowgrip) is true, this pr
 ### Groups
 
 - grip
+
+**Flags**: IRA
+
+---
+## Attr: Snapbar.gripImgSuffix
+
+### Description
+Overridden from [Splitbar.gripImgSuffix](Splitbar.md#attr-splitbargripimgsuffix) to simplify providing custom grip media for this widget.
 
 **Flags**: IRA
 

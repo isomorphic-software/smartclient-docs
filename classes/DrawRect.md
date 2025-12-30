@@ -20,6 +20,14 @@ Top coordinate in pixels relative to the [local coordinate system](DrawPane.md#c
 **Flags**: IRW
 
 ---
+## Attr: DrawRect.left
+
+### Description
+Left coordinate in pixels relative to the [local coordinate system](DrawPane.md#class-drawpane).
+
+**Flags**: IRW
+
+---
 ## Attr: DrawRect.height
 
 ### Description
@@ -40,6 +48,14 @@ The mode in which the [titleLabel](DrawItem.md#attr-drawitemtitlelabel) (if show
 **Flags**: IRA
 
 ---
+## Attr: DrawRect.rounding
+
+### Description
+Rounding of corners, from 0 (square corners) to 1.0 (shorter edge is a semicircle).
+
+**Flags**: IR
+
+---
 ## Attr: DrawRect.lineCap
 
 ### Description
@@ -54,28 +70,24 @@ Note that for dashed and dotted lines, the lineCap style affects each dash or do
 **Flags**: IRW
 
 ---
-## Attr: DrawRect.left
-
-### Description
-Left coordinate in pixels relative to the [local coordinate system](DrawPane.md#class-drawpane).
-
-**Flags**: IRW
-
----
-## Attr: DrawRect.rounding
-
-### Description
-Rounding of corners, from 0 (square corners) to 1.0 (shorter edge is a semicircle).
-
-**Flags**: IR
-
----
 ## Attr: DrawRect.width
 
 ### Description
 Width in pixels relative to the [local coordinate system](DrawPane.md#class-drawpane).
 
 **Flags**: IRW
+
+---
+## Method: DrawRect.setHeight
+
+### Description
+Set the height of the drawRect
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| height | [Distance](../reference.md#type-distance) | false | — | new height |
 
 ---
 ## Method: DrawRect.isPointInPath
@@ -118,43 +130,6 @@ Returns the top, left, top+height, left+width
 `[Array of double](#type-array-of-double)` — x1, y1, x2, y2 coordinates
 
 ---
-## Method: DrawRect.setRect
-
-### Description
-Move and resize the drawRect to match the specified coordinates and size.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| left | [Integer](../reference_2.md#type-integer) | false | — | new left coordinate |
-| top | [Integer](../reference_2.md#type-integer) | false | — | new top coordinate |
-| width | [Integer](../reference_2.md#type-integer) | false | — | new width |
-| height | [Integer](../reference_2.md#type-integer) | false | — | new height |
-
----
-## Method: DrawRect.getCenter
-
-### Description
-Get the center point of the rectangle.
-
-### Returns
-
-`[Point](#type-point)` — the center point
-
----
-## Method: DrawRect.setHeight
-
-### Description
-Set the height of the drawRect
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| height | [Distance](../reference.md#type-distance) | false | — | new height |
-
----
 ## Method: DrawRect.resizeTo
 
 ### Description
@@ -191,6 +166,31 @@ Set the top coordinate of the drawRect
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | top | [Coordinate](../reference.md#type-coordinate) | false | — | new top coordinate |
+
+---
+## Method: DrawRect.setRect
+
+### Description
+Move and resize the drawRect to match the specified coordinates and size.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| left | [Integer](../reference_2.md#type-integer) | false | — | new left coordinate |
+| top | [Integer](../reference_2.md#type-integer) | false | — | new top coordinate |
+| width | [Integer](../reference_2.md#type-integer) | false | — | new width |
+| height | [Integer](../reference_2.md#type-integer) | false | — | new height |
+
+---
+## Method: DrawRect.getCenter
+
+### Description
+Get the center point of the rectangle.
+
+### Returns
+
+`[Point](#type-point)` — the center point
 
 ---
 ## Method: DrawRect.moveBy

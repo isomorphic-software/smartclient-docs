@@ -12,6 +12,18 @@ The Real-Time Messaging module creates a channel for messages to be sent from th
 See [Messaging overview](../kb_topics/messaging.md#kb-topic-real-time-messaging) for information.
 
 ---
+## ClassAttr: Messaging.useWebSocket
+
+### Description
+Whether to attempt to use the WebSocket protocol for Realtime Messaging. Enabled by default. You must be running JDK 1.7+ on the server with a container that supports webSocket (most modern containers do). When enabled, the webSocket protocol is preferred and tried first, but a failure to initially connect using webSockets causes the client to fall back to standard http push.
+
+Because of this fall-back behavior, it is safe to leave this option enabled unless you know of conditions with your deployments that will prevent proper functioning of this protocol. One such situation is having your app server sit behind a reverse proxy that does not handle the webSocket (wss://) protocol. Certain older firewalls and L4 switches may also disallow it.
+
+Note that once a successful connection using the webSocket protocol is established, the protocol is marked as available and will be used until the client browser page is reloaded (at which point it will again be preferred, but backed off if the initial connection fails).
+
+**Flags**: IR
+
+---
 ## ClassAttr: Messaging.websocketURL
 
 ### Description
@@ -22,12 +34,10 @@ This URL must ultimately start with ws:// or wss://, but you may specify this va
 **Flags**: IR
 
 ---
-## ClassAttr: Messaging.fallBackToComet
+## ClassAttr: Messaging.connectTimeout
 
 ### Description
-Whether or not to fall back to Comet if [WebSocket](#classattr-messagingusewebsocket) communication fails, and has never succeeded since page load. Once WebSocket communication succeeds, we never fall back.
-
-If we're not falling back to Comet, we'll reattempt connecting via WebSockets if we time out trying to open a WebSocket connection, or an open WebSocket reports an error.
+Number of milliseconds to wait when initiating a server connection before dropping the attempt and trying again.
 
 **Flags**: IR
 
@@ -36,26 +46,6 @@ If we're not falling back to Comet, we'll reattempt connecting via WebSockets if
 
 ### Description
 URL where the MessagingServlet has been installed. See the server-side JavaDoc for details on the MessagingServlet.
-
-**Flags**: IR
-
----
-## ClassAttr: Messaging.useWebSocket
-
-### Description
-Whether to attempt to use the WebSocket protocol for Realtime Messaging. Enabled by default. When enabled, the webSocket protocol is preferred and tried first, but a failure to initially connect using webSockets causes the client to fall back to http push.
-
-See [Messaging overview](../kb_topics/messaging.md#kb-topic-real-time-messaging) for more detail on messaging protocols.
-
-Note that once a successful connection using the webSocket protocol is established, the protocol is marked as available and will be used until the client browser page is reloaded (at which point it will again be preferred, but backed off if the initial connection fails).
-
-**Flags**: IR
-
----
-## ClassAttr: Messaging.connectTimeout
-
-### Description
-Number of milliseconds to wait when initiating a server connection before dropping the attempt and trying again.
 
 **Flags**: IR
 
@@ -109,30 +99,6 @@ This will cause a reconnect to the server - for this reason we defer the actual 
 - messaging
 
 ---
-## ClassMethod: Messaging.disconnect
-
-### Description
-Sever the connection to the server and stop receiving messages.
-
-### Groups
-
-- messaging
-
----
-## ClassMethod: Messaging.getSubscribedChannels
-
-### Description
-Returns an array of identifiers for all currently subscribed channels on this client
-
-### Returns
-
-`[Array of String](#type-array-of-string)` — —
-
-### Groups
-
-- messaging
-
----
 ## ClassMethod: Messaging.send
 
 ### Description
@@ -153,6 +119,16 @@ Data can be any nested structure of primitive types (String, Date, Number) or co
 - messaging
 
 ---
+## ClassMethod: Messaging.disconnect
+
+### Description
+Sever the connection to the server and stop receiving messages.
+
+### Groups
+
+- messaging
+
+---
 ## ClassMethod: Messaging.connectionUp
 
 ### Description
@@ -163,6 +139,20 @@ Called when the messaging connection allowing the server to send messages to the
 
 ### Description
 Called when the messaging connection allowing the server to send messages to the client is disconnected. This can occur either when you explicitly disconnect the connection or if a keepalive packet from the server does not arrive on time. This latter is defined as the `messaging.keepaliveInterval` plus the `messaging.keepaliveReestablishDelay`. With default settings, a maximum of 4 seconds will elapse between the connection actually going down and you receiving this callback.
+
+---
+## ClassMethod: Messaging.getSubscribedChannels
+
+### Description
+Returns an array of identifiers for all currently subscribed channels on this client
+
+### Returns
+
+`[Array of String](#type-array-of-string)` — —
+
+### Groups
+
+- messaging
 
 ---
 ## ClassMethod: Messaging.connected

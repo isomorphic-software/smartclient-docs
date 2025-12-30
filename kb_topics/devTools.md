@@ -25,7 +25,7 @@ To achieve this, user-editable components are created via a special pattern (not
 
 The main components and behaviors involved in Dashboards & Tools are covered in brief below - each of these points is covered in more detail in further sections:
 
-*   User-editable components are created by [Palettes](../reference.md#interface-palette). `Palettes` create components from [PaletteNodes](../reference.md#object-palettenode), which are [data records](../reference.md#object-record) containing the component's class and default settings. Some `Palettes` provide an end user UI for creating components (eg drag a node from a Tree).
+*   User-editable components are created by [Palettes](../reference.md#interface-palette). `Palettes` create components from [PaletteNodes](../reference_2.md#object-palettenode), which are [data records](../reference.md#object-record) containing the component's class and default settings. Some `Palettes` provide an end user UI for creating components (eg drag a node from a Tree).
 *   An editable component created by a `Palette` is represented by an [EditNode](../reference.md#object-editnode), which tracks the created component along with the data necessary to save and re-create the component.
 *   An [EditContext](../classes/EditContext.md#class-editcontext) manages a list or [Tree](../classes/Tree.md#class-tree) of [EditNodes](../reference.md#object-editnode), and provides APIs for serializing and restoring `EditNodes` to and from XML and JSON, and updating the nodes as users make changes.
 *   Many UI components have ["edit mode"](../classes/Canvas.md#method-canvasseteditmode) behaviors. When "edit mode" is enabled, when an end user interacts with the component, the component will save changes to its [EditNode](../reference.md#object-editnode) or to child [EditNodes](../reference.md#object-editnode) in the [EditContext](../classes/EditContext.md#class-editcontext). For example, [PortalLayout](../classes/PortalLayout.md#class-portallayout) can track and persist changes to the placement and size of portlets made by end users. `EditMode` behaviors are implemented by [EditProxies](../classes/EditProxy.md#class-editproxy), and different edit mode behaviors can be turned on and off for different kinds of tools.
@@ -35,11 +35,11 @@ A simple tool based on the Dashboards & Tools framework would typically consist 
 *   one or more `Palettes` showing components that the user can create
 *   a main editing area where you can drag things from a [Palette](../reference.md#interface-palette) to create them. The editing area is just an ordinary UI component that has been placed into "edit mode" and provided with an `EditContext`. Depending on the type of tool, the main editing area might be a [DrawPane](../classes/DrawPane.md#class-drawpane) (for diagrams), a [DynamicForm](../classes/DynamicForm.md#class-dynamicform) (for a form builder) or various other widgets.
 *   Buttons, Menus and pop-up dialogs that act on the currently selected widget. Dashboards & Tools has [built-in UI](../classes/EditProxy.md#attr-editproxycanselectchildren) for selecting one or more of the components being edited. [EditContext.getSelectedEditNode](../classes/EditContext.md#method-editcontextgetselectededitnode) provides the current edit node, and [EditContext.setNodeProperties](../classes/EditContext.md#method-editcontextsetnodeproperties) lets you manipulate its persisted state.
-*   Buttons, Menus and pop-up dialogs providing the ability to load or save. These would use APIs on `EditContext` to [obtain XML or JSON Strings](../classes/EditContext.md#method-editcontextserializeeditnodes) representing the data to be saved, as well as to [restore saved state](../classes/EditContext.md#method-editcontextaddpalettenodesfromxml) from such Strings. DataSources can be used to store whatever is being edited: the serialized form is just an XML or JSON String, so it can be stored as an ordinary [DataSourceField](../reference_2.md#object-datasourcefield) value.
+*   Buttons, Menus and pop-up dialogs providing the ability to load or save. These would use APIs on `EditContext` to [obtain XML or JSON Strings](../classes/EditContext.md#method-editcontextserializeeditnodes) representing the data to be saved, as well as to [restore saved state](../classes/EditContext.md#method-editcontextaddpalettenodesfromxml) from such Strings. DataSources can be used to store whatever is being edited: the serialized form is just an XML or JSON String, so it can be stored as an ordinary [DataSourceField](../reference.md#object-datasourcefield) value.
 
 #### Creating editable components: `Palettes`
 
-User-editable components are created by [Palettes](../reference.md#interface-palette). `Palettes` create components from [PaletteNodes](../reference.md#object-palettenode), which are [data records](../reference.md#object-record) containing the component's class and default settings.
+User-editable components are created by [Palettes](../reference.md#interface-palette). `Palettes` create components from [PaletteNodes](../reference_2.md#object-palettenode), which are [data records](../reference.md#object-record) containing the component's class and default settings.
 
 Most types of `palettes` provide a UI for an end user to create components from `paletteNodes`. For example, a [TreePalette](../reference.md#class-treepalette) presents a hierarchical set of `paletteNodes` as a tree, and allows end users to drag nodes out in order to create components. All `palettes` also support [programmatic creation of components](../classes/Palette.md#method-palettemakeeditnode) from `paletteNodes`.
 
@@ -51,7 +51,7 @@ When a component is created from a `paletteNode`, an [EditNode](../reference.md#
 
 An [EditContext](../classes/EditContext.md#class-editcontext) manages a [Tree](../classes/Tree.md#class-tree) of [EditNodes](../reference.md#object-editnode), and provides APIs for serializing and restoring `EditNodes` and updating the tree of nodes.
 
-When an `EditNode` is added to an EditContext, typically it is immediately placed into ["Edit Mode"](../classes/Canvas.md#method-canvasseteditmode) (see [EditContext.autoEditNewNodes](../classes/EditContext.md#attr-editcontextautoeditnewnodes) for how this can be controlled). In Edit Mode, components introduce special behaviors, such as the ability to directly edit the titles of [Tab](../reference.md#object-tab)s in a [TabSet](../classes/TabSet.md#class-tabset) by double-clicking, or support for dragging new [FormItem](../classes/FormItem.md#class-formitem)s into a [DynamicForm](../classes/DynamicForm.md#class-dynamicform). Changes made while a component is in Edit Mode are saved to the component's [EditNode](../reference.md#object-editnode), in [EditNode.defaults](../classes/EditNode.md#attr-editnodedefaults).
+When an `EditNode` is added to an EditContext, typically it is immediately placed into ["Edit Mode"](../classes/Canvas.md#method-canvasseteditmode) (see [EditContext.autoEditNewNodes](../classes/EditContext.md#attr-editcontextautoeditnewnodes) for how this can be controlled). In Edit Mode, components introduce special behaviors, such as the ability to directly edit the titles of [Tab](../reference_2.md#object-tab)s in a [TabSet](../classes/TabSet.md#class-tabset) by double-clicking, or support for dragging new [FormItem](../classes/FormItem.md#class-formitem)s into a [DynamicForm](../classes/DynamicForm.md#class-dynamicform). Changes made while a component is in Edit Mode are saved to the component's [EditNode](../reference.md#object-editnode), in [EditNode.defaults](../classes/EditNode.md#attr-editnodedefaults).
 
 Each component that has `editMode` features has a corresponding [EditProxy](../classes/EditProxy.md#class-editproxy) that implements those features. A component's `EditProxy` is automatically created when a component [goes into edit mode](../classes/Canvas.md#method-canvasseteditmode), and overrides the normal behavior of the component. By configuring the `EditProxy` for a component, you configure what behaviors the component will have when in edit mode, and which specific actions on the component will cause changes to be saved to its `EditNode`.
 
@@ -61,7 +61,7 @@ You can configure which EditProxy behaviors are active via [PaletteNode.editProx
 
 #### EditContext & Trees of EditNodes
 
-The `EditContext` has the capability to manage a `Tree` of `EditNodes` in order to enable tools that create a hierarchy of SmartClient components. When you use [EditContext.addNode](../classes/EditContext.md#method-editcontextaddnode) and add a new EditNode underneath another EditNode, the EditContext will automatically try to determine how the parent and child are related and actually call APIs on the widgets to establish a relationship, such as a Tab being added to a TabSet, or a FormItem being added to a DynamicForm. The EditContext uses the same approach as is used for Reify Drag and Drop - see [Reify overview](reify.md#kb-topic-reify-overview) for details.
+The `EditContext` has the capability to manage a `Tree` of `EditNodes` in order to enable tools that create a hierarchy of SmartClient components. When you use [EditContext.addNode](../classes/EditContext.md#method-editcontextaddnode) and add a new EditNode underneath another EditNode, the EditContext will automatically try to determine how the parent and child are related and actually call APIs on the widgets to establish a relationship, such as a Tab being added to a TabSet, or a FormItem being added to a DynamicForm. The EditContext uses the same approach as is used for Visual Builder Drag and Drop - see [Visual Builder overview](visualBuilder.md#kb-topic-visual-builder) for details.
 
 Note that many if not most kinds of tools use only a flat list of EditNodes - for example, in a collage editor, photos may sometimes be stacked on top of each other, but a parent/child relationship in the sense of [Canvas.children](../classes/Canvas.md#attr-canvaschildren) is not established by doing so. Likewise, although the *Mockup Editor sample* allows end users to create mockups using SmartClient components, the components never truly become children of other components. Instead, as is typical of most mockup tools, hierarchy is achieved visually by simply placing a component on top of another and within its bounding rectangle.
 
@@ -118,21 +118,17 @@ _HTML tag:_
 - [MenuPalette](../reference.md#class-menupalette)
 - [EditPane](../classes/EditPane.md#class-editpane)
 - [EditTree](../classes/EditTree.md#class-edittree)
-- [Placeholder](../classes/Placeholder.md#class-placeholder)
-- [PlaceholderDefaults](../reference.md#object-placeholderdefaults)
 - [EditProxy](../classes/EditProxy.md#class-editproxy)
 - [ValuesManagerEditProxy](../reference.md#class-valuesmanagereditproxy)
 - [CanvasEditProxy](../reference.md#class-canvaseditproxy)
-- [HandPlacedContainerEditProxy](../reference.md#class-handplacedcontainereditproxy)
+- [AbsoluteContainerEditProxy](../reference.md#class-absolutecontainereditproxy)
 - [LayoutEditProxy](../reference.md#class-layouteditproxy)
 - [LayoutResizeBarEditProxy](../reference.md#class-layoutresizebareditproxy)
 - [SplitPaneEditProxy](../reference.md#class-splitpaneeditproxy)
 - [TabSetEditProxy](../classes/TabSetEditProxy.md#class-tabseteditproxy)
 - [StatefulCanvasEditProxy](../reference.md#class-statefulcanvaseditproxy)
-- [RibbonButtonEditProxy](../reference.md#class-ribbonbuttoneditproxy)
 - [ImgEditProxy](../reference.md#class-imgeditproxy)
 - [ToolStripSeparatorEditProxy](../reference.md#class-toolstripseparatoreditproxy)
-- [RibbonGroupEditProxy](../reference.md#class-ribbongroupeditproxy)
 - [LabelEditProxy](../reference.md#class-labeleditproxy)
 - [HeaderEditProxy](../reference.md#class-headereditproxy)
 - [ProgressbarEditProxy](../reference.md#class-progressbareditproxy)
@@ -141,28 +137,21 @@ _HTML tag:_
 - [MenuEditProxy](../classes/MenuEditProxy.md#class-menueditproxy)
 - [SectionStackEditProxy](../reference.md#class-sectionstackeditproxy)
 - [SectionStackSectionEditProxy](../reference.md#class-sectionstacksectioneditproxy)
-- [ScreenLoaderEditProxy](../reference.md#class-screenloadereditproxy)
 - [FormEditProxy](../reference.md#class-formeditproxy)
 - [FormItemEditProxy](../classes/FormItemEditProxy.md#class-formitemeditproxy)
 - [FileItemEditProxy](../reference.md#class-fileitemeditproxy)
 - [TextItemEditProxy](../classes/TextItemEditProxy.md#class-textitemeditproxy)
-- [BlurbItemEditProxy](../reference.md#class-blurbitemeditproxy)
 - [TextAreaItemEditProxy](../reference.md#class-textareaitemeditproxy)
 - [ButtonItemEditProxy](../reference.md#class-buttonitemeditproxy)
-- [ToolbarItemEditProxy](../reference.md#class-toolbaritemeditproxy)
 - [SelectItemEditProxy](../classes/SelectItemEditProxy.md#class-selectitemeditproxy)
-- [SavedSearchItemEditProxy](../reference.md#class-savedsearchitemeditproxy)
 - [RadioGroupItemEditProxy](../reference.md#class-radiogroupitemeditproxy)
 - [CheckboxItemEditProxy](../reference.md#class-checkboxitemeditproxy)
 - [DateItemEditProxy](../classes/DateItemEditProxy.md#class-dateitemeditproxy)
-- [SectionItemEditProxy](../reference.md#class-sectionitemeditproxy)
 - [GridEditProxy](../classes/GridEditProxy.md#class-grideditproxy)
-- [TileGridEditProxy](../reference.md#class-tilegrideditproxy)
 - [DrawPaneEditProxy](../reference.md#class-drawpaneeditproxy)
 - [DrawItemEditProxy](../reference.md#class-drawitemeditproxy)
 - [DrawLabelEditProxy](../reference.md#class-drawlabeleditproxy)
 - [FacetChartEditProxy](../classes/FacetChartEditProxy.md#class-facetcharteditproxy)
-- [EditContext.screenMode](../classes/EditContext.md#classattr-editcontextscreenmode)
 - [EditContext.editNodePasteOffset](../classes/EditContext.md#classattr-editcontexteditnodepasteoffset)
 - [EditContext.rootComponent](../classes/EditContext.md#attr-editcontextrootcomponent)
 - [Palette.generateNames](../classes/Palette.md#attr-palettegeneratenames)

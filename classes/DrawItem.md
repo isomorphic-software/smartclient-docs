@@ -6,7 +6,7 @@
 
 ## Class: DrawItem
 
-*Inherits from:* [BaseWidget](BaseWidget.md#class-basewidget)
+*Inherits from:* [BaseWidget](../reference.md#class-basewidget)
 
 ### Description
 Base class for graphical elements drawn in a DrawPane. All properties and methods documented here are available on all DrawItems unless otherwise specified.
@@ -58,6 +58,16 @@ Array of control knobs to display for this item. Each [KnobType](../reference.md
 **Flags**: IR
 
 ---
+## Attr: DrawItem.proportionalResizeModifiers
+
+### Description
+If [DrawItem.proportionalResizing](#attr-drawitemproportionalresizing) is set to "modifier" or "modifierOff" then proportional resizing of the DrawItem is activated or deactivated, respectively, whenever at least one key in this set of modifier keys is pressed.
+
+The keys allowed in this set are: "Alt", "Ctrl", and "Shift". If this set of keys is empty then proportional resizing is always used if `proportionalResizing` is "modifier" and is never used if `proportionalResizing` is "modifierOff" .
+
+**Flags**: IR
+
+---
 ## Attr: DrawItem.zIndex
 
 ### Description
@@ -74,6 +84,20 @@ When the `DrawPane`'s [drawingType](DrawPane.md#attr-drawpanedrawingtype) is "bi
 - zIndex
 
 **Flags**: IR
+
+---
+## Attr: DrawItem.moveKnobOffset
+
+### Description
+If this item is showing a `"move"` [control knob](#attr-drawitemknobs), this attribute allows you to specify an offset in pixels from the [DrawItem.moveKnobPoint](#attr-drawitemmoveknobpoint) for the move knob. Offset should be specified as a 2-element array of \[left offset, top offset\].
+
+This offset overrides the built-in offset used when showing both resize and move knobs.
+
+### See Also
+
+- [DrawItem.moveKnobPoint](#attr-drawitemmoveknobpoint)
+
+**Flags**: IRWA
 
 ---
 ## Attr: DrawItem.fillOpacity
@@ -134,6 +158,16 @@ Line color
 **Flags**: IRW
 
 ---
+## Attr: DrawItem.drawPane
+
+### Description
+[DrawPane](DrawPane.md#class-drawpane) this drawItem should draw in.
+
+If this item has a [DrawGroup](DrawGroup.md#class-drawgroup), the drawGroup's drawPane is automatically used.
+
+**Flags**: IRW
+
+---
 ## Attr: DrawItem.destroying
 
 ### Description
@@ -156,10 +190,18 @@ The resize and move knobs show at the same position by default. However, when bo
 **Flags**: IR
 
 ---
+## Attr: DrawItem.destroyed
+
+### Description
+Flag indicating a drawItem has been destroyed, similar to [Canvas.destroyed](Canvas.md#attr-canvasdestroyed).
+
+**Flags**: RA
+
+---
 ## Attr: DrawItem.titleLabel
 
 ### Description
-When a non-null [title](#attr-drawitemtitle) is set, this AutoChild is created automatically and positioned at the [center](#method-drawitemgetcenter) of this `DrawItem` . The `titleLabel` moves with this `DrawItem` and, depending on [titleRotationMode](../reference_2.md#type-titlerotationmode), can rotate with this `DrawItem` as well.
+When a non-null [title](#attr-drawitemtitle) is set, this AutoChild is created automatically and positioned at the [center](#method-drawitemgetcenter) of this `DrawItem` . The `titleLabel` moves with this `DrawItem` and, depending on [titleRotationMode](../reference.md#type-titlerotationmode), can rotate with this `DrawItem` as well.
 
 The following [passthrough](../kb_topics/autoChildUsage.md#kb-topic-using-autochildren) applies:  
 [title](#attr-drawitemtitle) for [DrawLabel.contents](DrawLabel.md#attr-drawlabelcontents).
@@ -173,12 +215,20 @@ Related to the `titleLabel` is the [titleLabelBackground](#attr-drawitemtitlelab
 **Flags**: RA
 
 ---
+## Attr: DrawItem.titleLabelPadding
+
+### Description
+If the [titleLabelBackground](#attr-drawitemtitlelabelbackground) is visible, how much padding should be left between the bounds of the [titleLabel](#attr-drawitemtitlelabel) and the edges of the `titleLabelBackground`?
+
+**Flags**: IRA
+
+---
 ## Attr: DrawItem.titleAutoFit
 
 ### Description
 Whether the [DrawItem.titleLabel](#attr-drawitemtitlelabel) should be scaled to the maximum possible size that fits inside the bounds of this item. Currently only [DrawRect](DrawRect.md#class-drawrect)s and [DrawPolygon](DrawPolygon.md#class-drawpolygon)s with 90 degree angles are supported.
 
-Note that [DrawItem.titleAutoFit](#attr-drawitemtitleautofit) isn't supported for rotated, sheared, or scaled [DrawItem](#class-drawitem)s, and that therefore the value of [TitleRotationMode](../reference_2.md#type-titlerotationmode), which relates to rotation of the item, is ignored when this property is set. However, we do support having the label automatically rotate to run vertically if there's more space - see [DrawItem.titleAutoFitRotationMode](#attr-drawitemtitleautofitrotationmode).
+Note that [DrawItem.titleAutoFit](#attr-drawitemtitleautofit) isn't supported for rotated, sheared, or scaled [DrawItem](#class-drawitem)s, and that therefore the value of [TitleRotationMode](../reference.md#type-titlerotationmode), which relates to rotation of the item, is ignored when this property is set. However, we do support having the label automatically rotate to run vertically if there's more space - see [DrawItem.titleAutoFitRotationMode](#attr-drawitemtitleautofitrotationmode).
 
 ### See Also
 
@@ -204,12 +254,56 @@ If `this.canHover` is true, how long should the mouse be kept over this widget b
 **Flags**: IRW
 
 ---
+## Attr: DrawItem.cursor
+
+### Description
+If set, specifies the cursor to display when the mouse pointer is over this DrawItem.
+
+**Flags**: IRWA
+
+---
 ## Attr: DrawItem.rotation
 
 ### Description
 Rotation in degrees about the [center point](#method-drawitemgetcenter). The positive direction is clockwise.
 
 **Flags**: IR
+
+---
+## Attr: DrawItem.titleAutoFitMargin
+
+### Description
+Specifies margin between label and item edges when using [DrawItem.titleAutoFit](#attr-drawitemtitleautofit).
+
+### See Also
+
+- [DrawItem.titleLabel](#attr-drawitemtitlelabel)
+
+**Flags**: IR
+
+---
+## Attr: DrawItem.dragStartDistance
+
+### Description
+Number of pixels the cursor needs to move before the EventHandler starts a drag operation.
+
+### Groups
+
+- dragdrop
+
+**Flags**: IRWA
+
+---
+## Attr: DrawItem.prompt
+
+### Description
+Default [hover HTML](#method-drawitemgethoverhtml) that is displayed in the global hover canvas if the user hovers over this DrawItem and [showHover](#attr-drawitemshowhover) is true.
+
+### Groups
+
+- hovers
+
+**Flags**: IRW
 
 ---
 ## Attr: DrawItem.xShearFactor
@@ -239,7 +333,7 @@ Fill gradient to use for shapes. If a string it uses the gradient identifier par
 
 ### See Also
 
-- [Gradient](../reference_2.md#object-gradient)
+- [Gradient](../reference.md#object-gradient)
 
 **Flags**: IRW
 
@@ -280,6 +374,14 @@ When set to a non-null value (including an empty string), the [titleLabel](#attr
 **Flags**: IRWA
 
 ---
+## Attr: DrawItem.moveKnob
+
+### Description
+If this item is showing "move" [control knobs](#attr-drawitemknobs), this attribute specifies the AutoChild for the [DrawKnob](DrawKnob.md#class-drawknob) that allows a user to move the DrawItem with help of a knob located at [DrawItem.moveKnobPoint](#attr-drawitemmoveknobpoint). Default move knob shape is green circle.
+
+**Flags**: IR
+
+---
 ## Attr: DrawItem.showResizeOutline
 
 ### Description
@@ -292,12 +394,44 @@ If this item is showing "resize" [control knobs](#attr-drawitemknobs) will the r
 **Flags**: IRW
 
 ---
+## Attr: DrawItem.fillColor
+
+### Description
+Fill color to use for shapes. The default of 'null' is transparent.
+
+### Groups
+
+- fill
+
+**Flags**: IRW
+
+---
+## Attr: DrawItem.titleLabelBackground
+
+### Description
+When the [titleLabel](#attr-drawitemtitlelabel) is showing and [showTitleLabelBackground](#attr-drawitemshowtitlelabelbackground) is `true`, this [DrawRect](DrawRect.md#class-drawrect) AutoChild is created and placed behind the `titleLabel`.
+
+### See Also
+
+- [DrawItem.titleLabelPadding](#attr-drawitemtitlelabelpadding)
+
+**Flags**: RA
+
+---
 ## Attr: DrawItem.startArrow
 
 ### Description
 Style of arrow head to draw at the beginning of the line or path.
 
 **Flags**: IRW
+
+---
+## Attr: DrawItem.resizeOutline
+
+### Description
+If this item is showing "resize" [control knobs](#attr-drawitemknobs), this attribute specifies the AutoChild for the [DrawRect](DrawRect.md#class-drawrect) that draws a rectangle frame which connects all resize knobs of current DrawItem.
+
+**Flags**: R
 
 ---
 ## Attr: DrawItem.titleRotationMode
@@ -328,253 +462,6 @@ Should events inside this DrawItem be attributed to it regardless of which pixel
 **Flags**: IRA
 
 ---
-## Attr: DrawItem.shapeData
-
-### Description
-An opaque object specifying the local transformation that should be applied to this `DrawItem`, obtained through a call to [DrawItem.getShapeData](#method-drawitemgetshapedata).
-
-**Note:** if this property is specified, you should avoid also specifying a [DrawItem.translate](#attr-drawitemtranslate), [DrawItem.scale](#attr-drawitemscale), [DrawItem.xShearFactor](#attr-drawitemxshearfactor), [DrawItem.yShearFactor](#attr-drawitemyshearfactor), or [DrawItem.rotation](#attr-drawitemrotation).
-
-**Flags**: I
-
----
-## Attr: DrawItem.cornerResizeKnob
-
-### Description
-If this item is showing "resize" [control knobs](#attr-drawitemknobs), this attribute specifies the MultiAutoChild for the [DrawKnob](DrawKnob.md#class-drawknob) that allows a user to resize the DrawItem with help of knobs located at corners of a bounding rectangle of current DrawItem. The default shape is a light teal circle.
-
-**Flags**: IR
-
----
-## Attr: DrawItem.scale
-
-### Description
-Array holds 2 values representing scaling along x and y dimensions.
-
-**Flags**: IRA
-
----
-## Attr: DrawItem.lineCap
-
-### Description
-Style of drawing the endpoints of a line.
-
-Note that for dashed and dotted lines, the lineCap style affects each dash or dot.
-
-### Groups
-
-- line
-
-**Flags**: IRW
-
----
-## Attr: DrawItem.lineWidth
-
-### Description
-Pixel width for lines.
-
-### Groups
-
-- line
-
-**Flags**: IRW
-
----
-## Attr: DrawItem.rotateKnob
-
-### Description
-If this item is showing "rotate" [control knobs](#attr-drawitemknobs), this attribute specifies the AutoChild for the [DrawKnob](DrawKnob.md#class-drawknob) that allows a user to rotate the DrawItem with help of a knob located above. Default rotate knob shape is green circle.
-
-**Flags**: IR
-
----
-## Attr: DrawItem.useSimpleTransform
-
-### Description
-If true, when a DrawItem is [moved](#method-drawitemmoveto) or [resized](#method-drawitemresizeto), the transform is applied by manipulating the shape coordinates, if possible, rather than by introducing scaling, shearing, rotation, or translation. This is only supported currently for [DrawRect](DrawRect.md#class-drawrect), [DrawOval](DrawOval.md#class-drawoval), [DrawDiamond](DrawDiamond.md#class-drawdiamond), [DrawImage](DrawImage.md#class-drawimage), and [DrawLabel](DrawLabel.md#class-drawlabel), and only if no shearing is already present. Further, it's only possible to keep the transform simple if both axes are scaled by the same amount during the resize (or end up at the same scale if the DrawItem is already scaled unevenly), unless the rotation angle is a multiple of 90 degrees.
-
-For [DrawPolygon](DrawPolygon.md#class-drawpolygon) and other shapes not based on a box (top/left/width/height), we can't safely just modify coordinates to effect a resize as we can do for [DrawRect](DrawRect.md#class-drawrect) (and similar), so resizing will normally introduce or modify the transform, potentially introducing scaling or shearing, rather than modifying coordinates. For such [DrawItem](#class-drawitem)s, we avoid trying to manipulate the coordinates, in part, because there's a danger that the floating point error may accumulate over time and warp the shape.
-
-### See Also
-
-- [DrawItem.moveTo](#method-drawitemmoveto)
-- [DrawItem.moveBy](#method-drawitemmoveby)
-- [DrawItem.resizeTo](#method-drawitemresizeto)
-- [DrawItem.resizeBy](#method-drawitemresizeby)
-
-**Flags**: IRWA
-
----
-## Attr: DrawItem.canHover
-
-### Description
-Will this DrawItem fire hover events when the user hovers over it?
-
-### Groups
-
-- hovers
-
-### See Also
-
-- [DrawItem.showHover](#attr-drawitemshowhover)
-
-**Flags**: IRW
-
----
-## Attr: DrawItem.lineOpacity
-
-### Description
-Opacity for lines, as a number between 0 (transparent) and 1 (opaque).
-
-### Groups
-
-- line
-
-**Flags**: IRW
-
----
-## Attr: DrawItem.endKnob
-
-### Description
-If this item is showing "endPoint" [control knobs](#attr-drawitemknobs), this attribute specifies the AutoChild for the [DrawKnob](DrawKnob.md#class-drawknob) for end point of current drawItem.
-
-**Flags**: IR
-
----
-## Attr: DrawItem.proportionalResizeModifiers
-
-### Description
-If [DrawItem.proportionalResizing](#attr-drawitemproportionalresizing) is set to "modifier" or "modifierOff" then proportional resizing of the DrawItem is activated or deactivated, respectively, whenever at least one key in this set of modifier keys is pressed.
-
-The keys allowed in this set are: "Alt", "Ctrl", and "Shift". If this set of keys is empty then proportional resizing is always used if `proportionalResizing` is "modifier" and is never used if `proportionalResizing` is "modifierOff" .
-
-**Flags**: IR
-
----
-## Attr: DrawItem.moveKnobOffset
-
-### Description
-If this item is showing a `"move"` [control knob](#attr-drawitemknobs), this attribute allows you to specify an offset in pixels from the [DrawItem.moveKnobPoint](#attr-drawitemmoveknobpoint) for the move knob. Offset should be specified as a 2-element array of \[left offset, top offset\].
-
-This offset overrides the built-in offset used when showing both resize and move knobs.
-
-### See Also
-
-- [DrawItem.moveKnobPoint](#attr-drawitemmoveknobpoint)
-
-**Flags**: IRWA
-
----
-## Attr: DrawItem.drawPane
-
-### Description
-[DrawPane](DrawPane.md#class-drawpane) or [global ID](Canvas.md#method-canvasgetid) of the DrawPane this drawItem should draw in.
-
-If this item has a [DrawGroup](DrawGroup.md#class-drawgroup), the drawGroup's drawPane is automatically used.
-
-**Flags**: IRW
-
----
-## Attr: DrawItem.destroyed
-
-### Description
-Flag indicating a drawItem has been destroyed, similar to [Canvas.destroyed](Canvas.md#attr-canvasdestroyed).
-
-**Flags**: RA
-
----
-## Attr: DrawItem.titleLabelPadding
-
-### Description
-If the [titleLabelBackground](#attr-drawitemtitlelabelbackground) is visible, how much padding should be left between the bounds of the [titleLabel](#attr-drawitemtitlelabel) and the edges of the `titleLabelBackground`?
-
-**Flags**: IRA
-
----
-## Attr: DrawItem.cursor
-
-### Description
-If set, specifies the cursor to display when the mouse pointer is over this DrawItem.
-
-**Flags**: IRWA
-
----
-## Attr: DrawItem.titleAutoFitMargin
-
-### Description
-Specifies margin between label and item edges when using [DrawItem.titleAutoFit](#attr-drawitemtitleautofit).
-
-### See Also
-
-- [DrawItem.titleLabel](#attr-drawitemtitlelabel)
-
-**Flags**: IR
-
----
-## Attr: DrawItem.dragStartDistance
-
-### Description
-Number of pixels the cursor needs to move before the EventHandler starts a drag operation.
-
-### Groups
-
-- dragdrop
-
-**Flags**: IRWA
-
----
-## Attr: DrawItem.prompt
-
-### Description
-Default [hover HTML](#method-drawitemgethoverhtml) that is displayed in the global hover canvas if the user hovers over this DrawItem and [showHover](#attr-drawitemshowhover) is true.
-
-### Groups
-
-- hovers
-
-**Flags**: IRW
-
----
-## Attr: DrawItem.moveKnob
-
-### Description
-If this item is showing "move" [control knobs](#attr-drawitemknobs), this attribute specifies the AutoChild for the [DrawKnob](DrawKnob.md#class-drawknob) that allows a user to move the DrawItem with help of a knob located at [DrawItem.moveKnobPoint](#attr-drawitemmoveknobpoint). Default move knob shape is green circle.
-
-**Flags**: IR
-
----
-## Attr: DrawItem.fillColor
-
-### Description
-Fill color to use for shapes. The default of 'null' is transparent.
-
-### Groups
-
-- fill
-
-**Flags**: IRW
-
----
-## Attr: DrawItem.titleLabelBackground
-
-### Description
-When the [titleLabel](#attr-drawitemtitlelabel) is showing and [showTitleLabelBackground](#attr-drawitemshowtitlelabelbackground) is `true`, this [DrawRect](DrawRect.md#class-drawrect) AutoChild is created and placed behind the `titleLabel`.
-
-### See Also
-
-- [DrawItem.titleLabelPadding](#attr-drawitemtitlelabelpadding)
-
-**Flags**: RA
-
----
-## Attr: DrawItem.resizeOutline
-
-### Description
-If this item is showing "resize" [control knobs](#attr-drawitemknobs), this attribute specifies the AutoChild for the [DrawRect](DrawRect.md#class-drawrect) that draws a rectangle frame which connects all resize knobs of current DrawItem.
-
-**Flags**: R
-
----
 ## Attr: DrawItem.yShearFactor
 
 ### Description
@@ -589,6 +476,16 @@ The slope of a y-shearing transformation applied to this DrawItem. Each point in
 Is this DrawItem draggable? If true, then the DrawItem can be drag-repositioned by the user.
 
 **Flags**: IRWA
+
+---
+## Attr: DrawItem.shapeData
+
+### Description
+An opaque object specifying the local transformation that should be applied to this `DrawItem`, obtained through a call to [DrawItem.getShapeData](#method-drawitemgetshapedata).
+
+**Note:** if this property is specified, you should avoid also specifying a [DrawItem.translate](#attr-drawitemtranslate), [DrawItem.scale](#attr-drawitemscale), [DrawItem.xShearFactor](#attr-drawitemxshearfactor), [DrawItem.yShearFactor](#attr-drawitemyshearfactor), or [DrawItem.rotation](#attr-drawitemrotation).
+
+**Flags**: I
 
 ---
 ## Attr: DrawItem.startKnob
@@ -627,6 +524,22 @@ This defaults to true for [DrawSector](DrawSector.md#class-drawsector)s and shap
 **Flags**: IRA
 
 ---
+## Attr: DrawItem.cornerResizeKnob
+
+### Description
+If this item is showing "resize" [control knobs](#attr-drawitemknobs), this attribute specifies the MultiAutoChild for the [DrawKnob](DrawKnob.md#class-drawknob) that allows a user to resize the DrawItem with help of knobs located at corners of a bounding rectangle of current DrawItem. The default shape is a light teal circle.
+
+**Flags**: IR
+
+---
+## Attr: DrawItem.scale
+
+### Description
+Array holds 2 values representing scaling along x and y dimensions.
+
+**Flags**: IRA
+
+---
 ## Attr: DrawItem.endArrow
 
 ### Description
@@ -651,12 +564,79 @@ Shadow used for all DrawItem subtypes.
 **Flags**: IRW
 
 ---
+## Attr: DrawItem.lineCap
+
+### Description
+Style of drawing the endpoints of a line.
+
+Note that for dashed and dotted lines, the lineCap style affects each dash or dot.
+
+### Groups
+
+- line
+
+**Flags**: IRW
+
+---
+## Attr: DrawItem.lineWidth
+
+### Description
+Pixel width for lines.
+
+### Groups
+
+- line
+
+**Flags**: IRW
+
+---
+## Attr: DrawItem.rotateKnob
+
+### Description
+If this item is showing "rotate" [control knobs](#attr-drawitemknobs), this attribute specifies the AutoChild for the [DrawKnob](DrawKnob.md#class-drawknob) that allows a user to rotate the DrawItem with help of a knob located above. Default rotate knob shape is green circle.
+
+**Flags**: IR
+
+---
 ## Attr: DrawItem.editProxyConstructor
 
 ### Description
 Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas.md#method-canvasseteditmode).
 
 **Flags**: IR
+
+---
+## Attr: DrawItem.useSimpleTransform
+
+### Description
+If true, when a DrawItem is [moved](#method-drawitemmoveto) or [resized](#method-drawitemresizeto), the transform is applied by manipulating the shape coordinates, if possible, rather than by introducing scaling, shearing, rotation, or translation. This is only supported currently for [DrawRect](DrawRect.md#class-drawrect), [DrawOval](DrawOval.md#class-drawoval), [DrawDiamond](DrawDiamond.md#class-drawdiamond), [DrawImage](DrawImage.md#class-drawimage), and [DrawLabel](DrawLabel.md#class-drawlabel), and only if no shearing is already present. Further, it's only possible to keep the transform simple if both axes are scaled by the same amount during the resize (or end up at the same scale if the DrawItem is already scaled unevenly), unless the rotation angle is a multiple of 90 degrees.
+
+For [DrawPolygon](DrawPolygon.md#class-drawpolygon) and other shapes not based on a box (top/left/width/height), we can't safely just modify coordinates to effect a resize as we can do for [DrawRect](DrawRect.md#class-drawrect) (and similar), so resizing will normally introduce or modify the transform, potentially introducing scaling or shearing, rather than modifying coordinates. For such [DrawItem](#class-drawitem)s, we avoid trying to manipulate the coordinates, in part, because there's a danger that the floating point error may accumulate over time and warp the shape.
+
+### See Also
+
+- [DrawItem.moveTo](#method-drawitemmoveto)
+- [DrawItem.moveBy](#method-drawitemmoveby)
+- [DrawItem.resizeTo](#method-drawitemresizeto)
+- [DrawItem.resizeBy](#method-drawitemresizeby)
+
+**Flags**: IRWA
+
+---
+## Attr: DrawItem.canHover
+
+### Description
+Will this DrawItem fire hover events when the user hovers over it?
+
+### Groups
+
+- hovers
+
+### See Also
+
+- [DrawItem.showHover](#attr-drawitemshowhover)
+
+**Flags**: IRW
 
 ---
 ## Attr: DrawItem.proportionalResizing
@@ -667,6 +647,26 @@ This property specifies the conditions for when proportional resizing is used.
 By default the DrawItem is forced to only resize proportionally while any modifier key specified in [DrawItem.proportionalResizeModifiers](#attr-drawitemproportionalresizemodifiers) is pressed. For example, the DrawItem will change its width and height by the same percentage as long as the "Shift" key is held down.
 
 Note that this property only has an effect if the DrawItem is showing "resize" [control knobs](#attr-drawitemknobs).
+
+**Flags**: IR
+
+---
+## Attr: DrawItem.lineOpacity
+
+### Description
+Opacity for lines, as a number between 0 (transparent) and 1 (opaque).
+
+### Groups
+
+- line
+
+**Flags**: IRW
+
+---
+## Attr: DrawItem.endKnob
+
+### Description
+If this item is showing "endPoint" [control knobs](#attr-drawitemknobs), this attribute specifies the AutoChild for the [DrawKnob](DrawKnob.md#class-drawknob) for end point of current drawItem.
 
 **Flags**: IR
 
@@ -688,6 +688,27 @@ Computes the angle in degrees from the positive X axis to the difference vector 
 ### Returns
 
 `[double](../reference.md#type-double)` — the angle in degrees, in the range \[0, 360).
+
+---
+## Method: DrawItem.dragStop
+
+### Description
+Notification fired when the user stops dragging this DrawItem. Will only fire if [canDrag](#attr-drawitemcandrag) is true.
+
+Note that if this item is part of a [DrawGroup](DrawGroup.md#class-drawgroup), then the group's [useGroupRect](DrawGroup.md#attr-drawgroupusegrouprect) setting affects whether this item receives the notification. If useGroupRect is true, then this item will _not_ receive the notification. Otherwise, the item receives the notification and notification bubbles up to the group.
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — false to cancel drag interaction.
+
+### Groups
+
+- widgetEvents
+
+### See Also
+
+- [Canvas.getOffsetX](Canvas.md#method-canvasgetoffsetx)
+- [Canvas.getOffsetY](Canvas.md#method-canvasgetoffsety)
 
 ---
 ## Method: DrawItem.scaleBy
@@ -714,13 +735,65 @@ Set the arrowhead at the beginning of this path.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| arrowStyle | [ArrowStyle](../reference_2.md#type-arrowstyle) | false | — | style of arrow to use |
+| arrowStyle | [ArrowStyle](../reference.md#type-arrowstyle) | false | — | style of arrow to use |
+
+---
+## Method: DrawItem.setFillOpacity
+
+### Description
+Update fillOpacity for this drawItem.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| opacity | [float](../reference.md#type-float) | false | — | new opacity, as a number between 0 (transparent) and 1 (opaque). |
 
 ---
 ## Method: DrawItem.showAllKnobs
 
 ### Description
 Shows all supported control knobs for this drawItem. Updates [DrawItem.knobs](#attr-drawitemknobs) to include the supported knobTypes and if necessary draws out the appropriate control knobs.
+
+---
+## Method: DrawItem.drawStart
+
+### Description
+Called when we start drawing for this DrawItem to the [DrawItem.drawPane](#attr-drawitemdrawpane)'s underlying HTML5 `<canvas>` element. Only called if the [DrawingType](../reference.md#type-drawingtype) is "bitmap".
+
+There is no default implementation of this method.
+
+**Flags**: A
+
+---
+## Method: DrawItem.moveBy
+
+### Description
+Move the shape by the specified deltas for the left and top coordinate.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| dX | [int](../reference.md#type-int) | false | — | change to left coordinate in pixels |
+| dY | [int](../reference.md#type-int) | false | — | change to top coordinate in pixels |
+
+---
+## Method: DrawItem.setPropertyValue
+
+### Description
+Sets a property on this DrawItem, calling the appropriate setter method if one is found and is [supported](Class.md#classmethod-classismethodsupported).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| propertyName | [String](#type-string) | false | — | name of the property to set |
+| newValue | [Any](#type-any) | false | — | new value for the property |
+
+### See Also
+
+- [Class.setProperty](Class.md#method-classsetproperty)
 
 ---
 ## Method: DrawItem.setMoveKnobOffset
@@ -735,6 +808,22 @@ Setter for [DrawItem.moveKnobOffset](#attr-drawitemmoveknoboffset).
 | newMoveKnobOffset | [Array of int](#type-array-of-int)[] | true | — | the new move knob offset. This is a 2-element array of \[left offset, top offset\]. If null, then `[0,0]` is assumed. |
 
 **Flags**: A
+
+---
+## Method: DrawItem.getBoundingBox
+
+### Description
+Calculates the bounding box of the shape in the [local coordinate system](DrawPane.md#class-drawpane).
+
+Note that the bounding box of the shape when transformed into the global coordinate system is available from the method [DrawItem.getResizeBoundingBox](#method-drawitemgetresizeboundingbox).
+
+### Returns
+
+`[Array of double](#type-array-of-double)` — the x1, y1, x2, y2 coordinates. When the width and height are both positive, point (x1, y1) is the top-left point of the bounding box and point (x2, y2) is the bottom-right point of the bounding box.
+
+### See Also
+
+- [DrawPane](DrawPane.md#class-drawpane)
 
 ---
 ## Method: DrawItem.setLineWidth
@@ -780,385 +869,6 @@ Computes the angle in degrees from the positive X axis to the difference vector 
 `[double](../reference.md#type-double)` — the angle in degrees, in the range \[0, 360).
 
 ---
-## Method: DrawItem.hover
-
-### Description
-If [canHover](#attr-drawitemcanhover) is true for this DrawItem, the hover() string method will be fired when the user hovers over this DrawItem. If this method returns false, it will suppress the default behavior of showing a hover canvas if [showHover](#attr-drawitemshowhover) is true.
-
-### Returns
-
-`[Boolean](#type-boolean)` — false to cancel the hover event.
-
-### Groups
-
-- hovers
-
----
-## Method: DrawItem.setZIndex
-
-### Description
-Setter for [DrawItem.zIndex](#attr-drawitemzindex).
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| newZIndex | [Integer](../reference_2.md#type-integer) | false | — | new `zIndex`. If null and this draw item is already in a `DrawPane` or `DrawGroup`, then this item's zIndex will be set to the next higher auto-assigned zIndex.
-
-Note that when setting draw items' zIndexes via this advanced API, the application should take over management of all draw items' zIndexes, and [bringToFront()](#method-drawitembringtofront) / [sendToBack()](#method-drawitemsendtoback) should not be used, as those APIs assume automatic management of zIndexes. |
-
-### Groups
-
-- zIndex
-
-**Flags**: A
-
----
-## Method: DrawItem.supportsStartArrow
-
-### Description
-Does this DrawItem [support](Class.md#classmethod-classismethodsupported) [DrawItem.setStartArrow](#method-drawitemsetstartarrow)? For example, this is false for [DrawRect](DrawRect.md#class-drawrect) and [DrawOval](DrawOval.md#class-drawoval), and true for [DrawLine](DrawLine.md#class-drawline).
-
-### Returns
-
-`[boolean](../reference.md#type-boolean)` — whether setStartArrow() is supported by this DrawItem.
-
-**Flags**: A
-
----
-## Method: DrawItem.resizeTo
-
-### Description
-Resize to the specified size
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| width | [Integer](../reference_2.md#type-integer) | false | — | new width |
-| height | [Integer](../reference_2.md#type-integer) | false | — | new height |
-
----
-## Method: DrawItem.dragStart
-
-### Description
-Notification fired when the user starts to drag this DrawItem. Will only fire if [canDrag](#attr-drawitemcandrag) is true.
-
-Note that if this item is part of a [DrawGroup](DrawGroup.md#class-drawgroup), then the group's [useGroupRect](DrawGroup.md#attr-drawgroupusegrouprect) setting affects whether this item receives the notification. If useGroupRect is true, then this item will _not_ receive the notification. Otherwise, the item receives the notification and notification bubbles up to the group.
-
-### Returns
-
-`[Boolean](#type-boolean)` — false to cancel drag action.
-
-### Groups
-
-- widgetEvents
-
-### See Also
-
-- [Canvas.getOffsetX](Canvas.md#method-canvasgetoffsetx)
-- [Canvas.getOffsetY](Canvas.md#method-canvasgetoffsety)
-
----
-## Method: DrawItem.bringToFront
-
-### Description
-Places this draw item at the top of the stacking order so that it appears in front of other draw items in the same [DrawPane](DrawPane.md#class-drawpane) or [DrawGroup](DrawGroup.md#class-drawgroup).
-
-When the `DrawPane`'s [drawingType](DrawPane.md#attr-drawpanedrawingtype) is "bitmap", [DrawItem.zIndex](#attr-drawitemzindex), bringToFront(), and [DrawItem.sendToBack](#method-drawitemsendtoback) are not supported for [DrawLabel](DrawLabel.md#class-drawlabel)s on iOS due to platform limitations.
-
-### Groups
-
-- zIndex
-
-### See Also
-
-- [DrawItem.sendToBack](#method-drawitemsendtoback)
-- [DrawItem.setZIndex](#method-drawitemsetzindex)
-
----
-## Method: DrawItem.setShadow
-
-### Description
-Update shadow for this drawItem.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| shadow | [Shadow](#type-shadow) | false | — | new shadow |
-
----
-## Method: DrawItem.isInBounds
-
-### Description
-Returns true if the given point in the drawing coordinate system, when converted to coordinates in this DrawItem's local coordinate system, is within the [bounding box](#method-drawitemgetboundingbox) of this DrawItem's shape.
-
-This method can be used to quickly check whether the given point is definitely _not_ within the DrawItem shape. To check whether the point is within the DrawItem shape, use the slower but exact [DrawItem.isPointInPath](#method-drawitemispointinpath) method.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| x | [int](../reference.md#type-int) | false | — | X coordinate of the point in the drawing coordinate system. |
-| y | [int](../reference.md#type-int) | false | — | Y coordinate of the point in the drawing coordinate system. |
-
-### Returns
-
-`[boolean](../reference.md#type-boolean)` — —
-
----
-## Method: DrawItem.erase
-
-### Description
-Erase this drawItem's visual representation and remove it from its DrawGroup (if any) and DrawPane.
-
-To re-draw the item within the DrawPane, call [DrawItem.draw](#method-drawitemdraw) again, or use [DrawPane.addDrawItem](DrawPane.md#method-drawpaneadddrawitem) to move to another DrawGroup.
-
----
-## Method: DrawItem.dragMove
-
-### Description
-Notification fired for every mouseMove event triggered while the user is dragging this DrawItem. Will only fire if [canDrag](#attr-drawitemcandrag) is true.
-
-Note that if this item is part of a [DrawGroup](DrawGroup.md#class-drawgroup), then the group's [useGroupRect](DrawGroup.md#attr-drawgroupusegrouprect) setting affects whether this item receives the notification. If useGroupRect is true, then this item will _not_ receive the notification. Otherwise, the item receives the notification and notification bubbles up to the group.
-
-### Returns
-
-`[Boolean](#type-boolean)` — false to cancel drag interaction.
-
-### Groups
-
-- widgetEvents
-
-### See Also
-
-- [Canvas.getOffsetX](Canvas.md#method-canvasgetoffsetx)
-- [Canvas.getOffsetY](Canvas.md#method-canvasgetoffsety)
-
----
-## Method: DrawItem.show
-
-### Description
-Make this drawItem visible.
-
----
-## Method: DrawItem.setLineCap
-
-### Description
-Update lineCap for this drawItem.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| cap | [LineCap](../reference.md#type-linecap) | false | — | new lineCap to use |
-
----
-## Method: DrawItem.rotateBy
-
-### Description
-Rotate the shape by the relative rotation in degrees
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| degrees | [float](../reference.md#type-float) | false | — | number of degrees to rotate from current orientation. |
-
----
-## Method: DrawItem.resizeBy
-
-### Description
-Resize the shape by the specified deltas.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| dX | [int](../reference.md#type-int) | false | — | number of pixels to resize by horizontally |
-| dY | [int](../reference.md#type-int) | false | — | number of pixels to resize by vertically |
-
----
-## Method: DrawItem.getHoverHTML
-
-### Description
-If [showHover](#attr-drawitemshowhover) is true, when the user holds the mouse over this DrawItem for long enough to trigger a hover event, a hover canvas is shown by default. This method returns the contents of that hover canvas. Default implementation returns [prompt](#attr-drawitemprompt) - override for custom hover HTML. Note that returning `null` or an empty string will suppress the hover canvas altogether.
-
-### Returns
-
-`[HTMLString](../reference.md#type-htmlstring)` — the HTML to show in the hover
-
-### Groups
-
-- hovers
-
----
-## Method: DrawItem.mouseDown
-
-### Description
-Notification fired when the user presses the left mouse button on this DrawItem.
-
-Note that if this item is part of a [DrawGroup](DrawGroup.md#class-drawgroup), then the group's [useGroupRect](DrawGroup.md#attr-drawgroupusegrouprect) setting affects whether this item receives the notification. If useGroupRect is true, then this item will _not_ receive the notification. Otherwise, the item receives the notification and notification bubbles up to the group.
-
-### Returns
-
-`[Boolean](#type-boolean)` — false to prevent this event from bubbling to this widget's parent, true or undefined to bubble.
-
-### Groups
-
-- widgetEvents
-
-### See Also
-
-- [Canvas.getOffsetX](Canvas.md#method-canvasgetoffsetx)
-- [Canvas.getOffsetY](Canvas.md#method-canvasgetoffsety)
-
----
-## Method: DrawItem.rotateTo
-
-### Description
-Rotate the shape by the absolute rotation in degrees
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| degrees | [float](../reference.md#type-float) | false | — | number of degrees to rotate |
-
----
-## Method: DrawItem.hideAllKnobs
-
-### Description
-Hides all control knobs for this drawItem. Updates [DrawItem.knobs](#attr-drawitemknobs) to remove all knobTypes and clears any drawn knobs.
-
----
-## Method: DrawItem.getShapeData
-
-### Description
-Returns an opaque JavaScript object representing the current local transformation applied to the DrawItem's local coordinates, as defined by [DrawItem.translate](#attr-drawitemtranslate), [DrawItem.scale](#attr-drawitemscale), [DrawItem.xShearFactor](#attr-drawitemxshearfactor), [DrawItem.yShearFactor](#attr-drawitemyshearfactor), and [DrawItem.rotation](#attr-drawitemrotation). The object may be serialized and deserialized as JSON, and passed into the constructor block as [DrawItem.shapeData](#attr-drawitemshapedata) to restore the local transformation.
-
-**Note:** this doesn't include any sepatate configuration, such as for a [DrawRect](DrawRect.md#class-drawrect) the current values of [left](DrawRect.md#attr-drawrectleft), [top](DrawRect.md#attr-drawrecttop), [width](DrawRect.md#attr-drawrectwidth), or [height](DrawRect.md#attr-drawrectheight).
-
-### Returns
-
-`[Object](../reference.md#type-object)` — opaque tranformation data
-
-### See Also
-
-- [JSON.encode](JSON.md#classmethod-jsonencode)
-
----
-## Method: DrawItem.mouseMove
-
-### Description
-Notification fired when the user moves the mouse over this DrawItem.
-
-Note that if this item is part of a [DrawGroup](DrawGroup.md#class-drawgroup), then the group's [useGroupRect](DrawGroup.md#attr-drawgroupusegrouprect) setting affects whether this item receives the notification. If useGroupRect is true, then this item will _not_ receive the notification. Otherwise, the item receives the notification and notification bubbles up to the group.
-
-### Returns
-
-`[Boolean](#type-boolean)` — false to prevent this event from bubbling to this widget's parent, true or undefined to bubble.
-
-### Groups
-
-- widgetEvents
-
-### See Also
-
-- [Canvas.getOffsetX](Canvas.md#method-canvasgetoffsetx)
-- [Canvas.getOffsetY](Canvas.md#method-canvasgetoffsety)
-
----
-## Method: DrawItem.dragStop
-
-### Description
-Notification fired when the user stops dragging this DrawItem. Will only fire if [canDrag](#attr-drawitemcandrag) is true.
-
-Note that if this item is part of a [DrawGroup](DrawGroup.md#class-drawgroup), then the group's [useGroupRect](DrawGroup.md#attr-drawgroupusegrouprect) setting affects whether this item receives the notification. If useGroupRect is true, then this item will _not_ receive the notification. Otherwise, the item receives the notification and notification bubbles up to the group.
-
-### Returns
-
-`[Boolean](#type-boolean)` — false to cancel drag interaction.
-
-### Groups
-
-- widgetEvents
-
-### See Also
-
-- [Canvas.getOffsetX](Canvas.md#method-canvasgetoffsetx)
-- [Canvas.getOffsetY](Canvas.md#method-canvasgetoffsety)
-
----
-## Method: DrawItem.setFillOpacity
-
-### Description
-Update fillOpacity for this drawItem.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| opacity | [float](../reference.md#type-float) | false | — | new opacity, as a number between 0 (transparent) and 1 (opaque). |
-
----
-## Method: DrawItem.drawStart
-
-### Description
-Called when we start drawing for this DrawItem to the [DrawItem.drawPane](#attr-drawitemdrawpane)'s underlying HTML5 `<canvas>` element. Only called if the [DrawingType](../reference.md#type-drawingtype) is "bitmap".
-
-There is no default implementation of this method.
-
-**Flags**: A
-
----
-## Method: DrawItem.moveBy
-
-### Description
-Move the shape by the specified deltas for the left and top coordinate.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| dX | [int](../reference.md#type-int) | false | — | change to left coordinate in pixels |
-| dY | [int](../reference.md#type-int) | false | — | change to top coordinate in pixels |
-
----
-## Method: DrawItem.setPropertyValue
-
-### Description
-Sets a property on this DrawItem, calling the appropriate setter method if one is found and is [supported](Class.md#classmethod-classismethodsupported).
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| propertyName | [String](#type-string) | false | — | name of the property to set |
-| newValue | [Any](#type-any) | false | — | new value for the property |
-
-### See Also
-
-- [Class.setProperty](Class.md#method-classsetproperty)
-
----
-## Method: DrawItem.getBoundingBox
-
-### Description
-Calculates the bounding box of the shape in the [local coordinate system](DrawPane.md#class-drawpane).
-
-Note that the bounding box of the shape when transformed into the global coordinate system is available from the method [DrawItem.getResizeBoundingBox](#method-drawitemgetresizeboundingbox).
-
-### Returns
-
-`[Array of double](#type-array-of-double)` — the x1, y1, x2, y2 coordinates. When the width and height are both positive, point (x1, y1) is the top-left point of the bounding box and point (x2, y2) is the bottom-right point of the bounding box.
-
-### See Also
-
-- [DrawPane](DrawPane.md#class-drawpane)
-
----
 ## Method: DrawItem.setEndArrow
 
 ### Description
@@ -1170,7 +880,7 @@ Set the arrowhead at the end of this path.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| arrowStyle | [ArrowStyle](../reference_2.md#type-arrowstyle) | false | — | style of arrow to use |
+| arrowStyle | [ArrowStyle](../reference.md#type-arrowstyle) | false | — | style of arrow to use |
 
 ---
 ## Method: DrawItem.setDrawPane
@@ -1182,7 +892,21 @@ Setter for [drawPane](#attr-drawitemdrawpane).
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| drawPane | [DrawPane](#type-drawpane)|[String](#type-string) | false | — | new value for `this.drawPane`. |
+| drawPane | [DrawPane](#type-drawpane) | false | — | new value for `this.drawPane`. |
+
+---
+## Method: DrawItem.hover
+
+### Description
+If [canHover](#attr-drawitemcanhover) is true for this DrawItem, the hover() string method will be fired when the user hovers over this DrawItem. If this method returns false, it will suppress the default behavior of showing a hover canvas if [showHover](#attr-drawitemshowhover) is true.
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — false to cancel the hover event.
+
+### Groups
+
+- hovers
 
 ---
 ## Method: DrawItem.moved
@@ -1248,6 +972,26 @@ Returns the page-relative top coordinate of the widget on the page, in pixels
 **Flags**: A
 
 ---
+## Method: DrawItem.setZIndex
+
+### Description
+Setter for [DrawItem.zIndex](#attr-drawitemzindex).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| newZIndex | [Integer](../reference_2.md#type-integer) | false | — | new `zIndex`. If null and this draw item is already in a `DrawPane` or `DrawGroup`, then this item's zIndex will be set to the next higher auto-assigned zIndex.
+
+Note that when setting draw items' zIndexes via this advanced API, the application should take over management of all draw items' zIndexes, and [bringToFront()](#method-drawitembringtofront) / [sendToBack()](#method-drawitemsendtoback) should not be used, as those APIs assume automatic management of zIndexes. |
+
+### Groups
+
+- zIndex
+
+**Flags**: A
+
+---
 ## Method: DrawItem.hideKnobs
 
 ### Description
@@ -1304,6 +1048,52 @@ Note that if this item is part of a [DrawGroup](DrawGroup.md#class-drawgroup), t
 - [Canvas.getOffsetY](Canvas.md#method-canvasgetoffsety)
 
 ---
+## Method: DrawItem.supportsStartArrow
+
+### Description
+Does this DrawItem [support](Class.md#classmethod-classismethodsupported) [DrawItem.setStartArrow](#method-drawitemsetstartarrow)? For example, this is false for [DrawRect](DrawRect.md#class-drawrect) and [DrawOval](DrawOval.md#class-drawoval), and true for [DrawLine](DrawLine.md#class-drawline).
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — whether setStartArrow() is supported by this DrawItem.
+
+**Flags**: A
+
+---
+## Method: DrawItem.resizeTo
+
+### Description
+Resize to the specified size
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| width | [Integer](../reference_2.md#type-integer) | false | — | new width |
+| height | [Integer](../reference_2.md#type-integer) | false | — | new height |
+
+---
+## Method: DrawItem.dragStart
+
+### Description
+Notification fired when the user starts to drag this DrawItem. Will only fire if [canDrag](#attr-drawitemcandrag) is true.
+
+Note that if this item is part of a [DrawGroup](DrawGroup.md#class-drawgroup), then the group's [useGroupRect](DrawGroup.md#attr-drawgroupusegrouprect) setting affects whether this item receives the notification. If useGroupRect is true, then this item will _not_ receive the notification. Otherwise, the item receives the notification and notification bubbles up to the group.
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — false to cancel drag action.
+
+### Groups
+
+- widgetEvents
+
+### See Also
+
+- [Canvas.getOffsetX](Canvas.md#method-canvasgetoffsetx)
+- [Canvas.getOffsetY](Canvas.md#method-canvasgetoffsety)
+
+---
 ## Method: DrawItem.getResizeBoundingBox
 
 ### Description
@@ -1318,6 +1108,35 @@ Calculates the bounding box of the shape reflected by the [resize outline](#attr
 - [DrawItem.getBoundingBox](#method-drawitemgetboundingbox)
 
 ---
+## Method: DrawItem.bringToFront
+
+### Description
+Places this draw item at the top of the stacking order so that it appears in front of other draw items in the same [DrawPane](DrawPane.md#class-drawpane) or [DrawGroup](DrawGroup.md#class-drawgroup).
+
+When the `DrawPane`'s [drawingType](DrawPane.md#attr-drawpanedrawingtype) is "bitmap", [DrawItem.zIndex](#attr-drawitemzindex), bringToFront(), and [DrawItem.sendToBack](#method-drawitemsendtoback) are not supported for [DrawLabel](DrawLabel.md#class-drawlabel)s on iOS due to platform limitations.
+
+### Groups
+
+- zIndex
+
+### See Also
+
+- [DrawItem.sendToBack](#method-drawitemsendtoback)
+- [DrawItem.setZIndex](#method-drawitemsetzindex)
+
+---
+## Method: DrawItem.setShadow
+
+### Description
+Update shadow for this drawItem.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| shadow | [Shadow](#type-shadow) | false | — | new shadow |
+
+---
 ## Method: DrawItem.setFillGradient
 
 ### Description
@@ -1328,6 +1147,25 @@ Update fillGradient for this drawItem.
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | gradient | [Gradient](#type-gradient) | false | — | new gradient to use. Pass null for transparent. |
+
+---
+## Method: DrawItem.isInBounds
+
+### Description
+Returns true if the given point in the drawing coordinate system, when converted to coordinates in this DrawItem's local coordinate system, is within the [bounding box](#method-drawitemgetboundingbox) of this DrawItem's shape.
+
+This method can be used to quickly check whether the given point is definitely _not_ within the DrawItem shape. To check whether the point is within the DrawItem shape, use the slower but exact [DrawItem.isPointInPath](#method-drawitemispointinpath) method.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| x | [int](../reference.md#type-int) | false | — | X coordinate of the point in the drawing coordinate system. |
+| y | [int](../reference.md#type-int) | false | — | Y coordinate of the point in the drawing coordinate system. |
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — —
 
 ---
 ## Method: DrawItem.mouseOut
@@ -1376,12 +1214,47 @@ Returns the [zIndex](#attr-drawitemzindex) of this draw item.
 - zIndex
 
 ---
+## Method: DrawItem.erase
+
+### Description
+Erase this drawItem's visual representation and remove it from its DrawGroup (if any) and DrawPane.
+
+To re-draw the item within the DrawPane, call [DrawItem.draw](#method-drawitemdraw) again, or use [DrawPane.addDrawItem](DrawPane.md#method-drawpaneadddrawitem) to move to another DrawGroup.
+
+---
+## Method: DrawItem.dragMove
+
+### Description
+Notification fired for every mouseMove event triggered while the user is dragging this DrawItem. Will only fire if [canDrag](#attr-drawitemcandrag) is true.
+
+Note that if this item is part of a [DrawGroup](DrawGroup.md#class-drawgroup), then the group's [useGroupRect](DrawGroup.md#attr-drawgroupusegrouprect) setting affects whether this item receives the notification. If useGroupRect is true, then this item will _not_ receive the notification. Otherwise, the item receives the notification and notification bubbles up to the group.
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — false to cancel drag interaction.
+
+### Groups
+
+- widgetEvents
+
+### See Also
+
+- [Canvas.getOffsetX](Canvas.md#method-canvasgetoffsetx)
+- [Canvas.getOffsetY](Canvas.md#method-canvasgetoffsety)
+
+---
 ## Method: DrawItem.getSvgString
 
 ### Description
 Generates a string containing the SVG source of this DrawItem.
 
 **NOTE:** The generated SVG source assumes that the default namespace is `http://www.w3.org/2000/svg` and that namespace prefix `xlink` refers to namespace name `http://www.w3.org/1999/xlink`.
+
+---
+## Method: DrawItem.show
+
+### Description
+Make this drawItem visible.
 
 ---
 ## Method: DrawItem.showKnobs
@@ -1394,26 +1267,6 @@ Shows a set of control knobs for this drawItem. Updates [DrawItem.knobs](#attr-d
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | knobType | [KnobType](../reference.md#type-knobtype)|[Array of KnobType](#type-array-of-knobtype) | false | — | knobs to show |
-
----
-## Method: DrawItem.doubleClick
-
-### Description
-Notification fired when the user clicks on this DrawItem twice in rapid succession (within the [DrawPane](DrawPane.md#class-drawpane)'s [doubleClickDelay](Canvas.md#attr-canvasdoubleclickdelay) by default) in this object.
-
-Note that if this item is part of a [DrawGroup](DrawGroup.md#class-drawgroup), then the group's [useGroupRect](DrawGroup.md#attr-drawgroupusegrouprect) setting affects whether this item receives the notification. If useGroupRect is true, then this item will _not_ receive the notification. Otherwise, the item receives the notification and notification bubbles up to the group.
-
-### Returns
-
-`[Boolean](#type-boolean)` — false to prevent this event from bubbling to this widget's parent, true or undefined to bubble.
-
-### Groups
-
-- widgetEvents
-
-### See Also
-
-- [Canvas.doubleClickDelay](Canvas.md#attr-canvasdoubleclickdelay)
 
 ---
 ## Method: DrawItem.sendToBack
@@ -1431,6 +1284,30 @@ When the `DrawPane`'s [drawingType](DrawPane.md#attr-drawpanedrawingtype) is "bi
 
 - [DrawItem.bringToFront](#method-drawitembringtofront)
 - [DrawItem.setZIndex](#method-drawitemsetzindex)
+
+---
+## Method: DrawItem.setLineCap
+
+### Description
+Update lineCap for this drawItem.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| cap | [LineCap](../reference.md#type-linecap) | false | — | new lineCap to use |
+
+---
+## Method: DrawItem.rotateBy
+
+### Description
+Rotate the shape by the relative rotation in degrees
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| degrees | [float](../reference.md#type-float) | false | — | number of degrees to rotate from current orientation. |
 
 ---
 ## Method: DrawItem.dragResizeMove
@@ -1558,6 +1435,33 @@ Update fillColor for this drawItem.
 | color | [CSSColor](../reference_2.md#type-csscolor) | false | — | new fillColor to use. Pass null for transparent. |
 
 ---
+## Method: DrawItem.resizeBy
+
+### Description
+Resize the shape by the specified deltas.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| dX | [int](../reference.md#type-int) | false | — | number of pixels to resize by horizontally |
+| dY | [int](../reference.md#type-int) | false | — | number of pixels to resize by vertically |
+
+---
+## Method: DrawItem.getHoverHTML
+
+### Description
+If [showHover](#attr-drawitemshowhover) is true, when the user holds the mouse over this DrawItem for long enough to trigger a hover event, a hover canvas is shown by default. This method returns the contents of that hover canvas. Default implementation returns [prompt](#attr-drawitemprompt) - override for custom hover HTML. Note that returning `null` or an empty string will suppress the hover canvas altogether.
+
+### Returns
+
+`[HTMLString](../reference.md#type-htmlstring)` — the HTML to show in the hover
+
+### Groups
+
+- hovers
+
+---
 ## Method: DrawItem.moveTo
 
 ### Description
@@ -1614,6 +1518,45 @@ Permanently destroys this DrawItem, similar to [Canvas.destroy](Canvas.md#method
 - [memoryLeaks](../kb_topics/memoryLeaks.md#kb-topic-memory-leaks)
 
 ---
+## Method: DrawItem.mouseDown
+
+### Description
+Notification fired when the user presses the left mouse button on this DrawItem.
+
+Note that if this item is part of a [DrawGroup](DrawGroup.md#class-drawgroup), then the group's [useGroupRect](DrawGroup.md#attr-drawgroupusegrouprect) setting affects whether this item receives the notification. If useGroupRect is true, then this item will _not_ receive the notification. Otherwise, the item receives the notification and notification bubbles up to the group.
+
+### Returns
+
+`[Boolean](#type-boolean)` — false to prevent this event from bubbling to this widget's parent, true or undefined to bubble.
+
+### Groups
+
+- widgetEvents
+
+### See Also
+
+- [Canvas.getOffsetX](Canvas.md#method-canvasgetoffsetx)
+- [Canvas.getOffsetY](Canvas.md#method-canvasgetoffsety)
+
+---
+## Method: DrawItem.rotateTo
+
+### Description
+Rotate the shape by the absolute rotation in degrees
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| degrees | [float](../reference.md#type-float) | false | — | number of degrees to rotate |
+
+---
+## Method: DrawItem.hideAllKnobs
+
+### Description
+Hides all control knobs for this drawItem. Updates [DrawItem.knobs](#attr-drawitemknobs) to remove all knobTypes and clears any drawn knobs.
+
+---
 ## Method: DrawItem.draw
 
 ### Description
@@ -1660,5 +1603,42 @@ Note that if this item is part of a [DrawGroup](DrawGroup.md#class-drawgroup), t
 
 ### Description
 Hide this drawItem.
+
+---
+## Method: DrawItem.getShapeData
+
+### Description
+Returns an opaque JavaScript object representing the current local transformation applied to the DrawItem's local coordinates, as defined by [DrawItem.translate](#attr-drawitemtranslate), [DrawItem.scale](#attr-drawitemscale), [DrawItem.xShearFactor](#attr-drawitemxshearfactor), [DrawItem.yShearFactor](#attr-drawitemyshearfactor), and [DrawItem.rotation](#attr-drawitemrotation). The object may be serialized and deserialized as JSON, and passed into the constructor block as [DrawItem.shapeData](#attr-drawitemshapedata) to restore the local transformation.
+
+**Note:** this doesn't include any sepatate configuration, such as for a [DrawRect](DrawRect.md#class-drawrect) the current values of [left](DrawRect.md#attr-drawrectleft), [top](DrawRect.md#attr-drawrecttop), [width](DrawRect.md#attr-drawrectwidth), or [height](DrawRect.md#attr-drawrectheight).
+
+### Returns
+
+`[Object](../reference_2.md#type-object)` — opaque tranformation data
+
+### See Also
+
+- [JSON.encode](JSON.md#classmethod-jsonencode)
+
+---
+## Method: DrawItem.mouseMove
+
+### Description
+Notification fired when the user moves the mouse over this DrawItem.
+
+Note that if this item is part of a [DrawGroup](DrawGroup.md#class-drawgroup), then the group's [useGroupRect](DrawGroup.md#attr-drawgroupusegrouprect) setting affects whether this item receives the notification. If useGroupRect is true, then this item will _not_ receive the notification. Otherwise, the item receives the notification and notification bubbles up to the group.
+
+### Returns
+
+`[Boolean](#type-boolean)` — false to prevent this event from bubbling to this widget's parent, true or undefined to bubble.
+
+### Groups
+
+- widgetEvents
+
+### See Also
+
+- [Canvas.getOffsetX](Canvas.md#method-canvasgetoffsetx)
+- [Canvas.getOffsetY](Canvas.md#method-canvasgetoffsety)
 
 ---

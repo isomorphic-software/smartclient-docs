@@ -9,20 +9,13 @@
 *Inherits from:* [DataSource](DataSource.md#class-datasource)
 
 ### Description
-_**NOTE:** This article discusses SmartClient's client-side REST client implementation. It should not be confused with the server-side [RestConnector](../kb_topics/serverRestConnector.md#kb-topic-server-side-rest-connector); this client-side dataSource is intended for cases where you are creating the server API and thus have control over the format and protocols used, but you do not wish to use the SmartClient Server for some reason. The server-side implementation is intended for cases where you need to connect to existing third-party REST APIs (which, despite the impression that "REST" is a standardized approach, vary significantly from one to the other in their details)_
-
-The client-side RestDataSource implements the 4 core DataSource operations using a simple protocol of XML or JSON requests and responses sent over HTTP, which can be easily fulfilled by any HTTP server technology.
+The RestDataSource implements the 4 core DataSource operations using a simple protocol of XML or JSON requests and responses sent over HTTP, which can be easily fulfilled by any HTTP server technology.
 
 RestDataSource is named for the [REST](http://www.google.com/search?hl=en&q=REST+HTTP) (REpresentational State Transfer) pattern, which in brief says that simple messages passed over HTTP is a sufficient protocol for many web applications, without the need for further protocols such as WSDL or SOAP.
 
 A RestDataSource is used just like a normal DataSource. RestDataSources are pre-configured, using the general-purpose databinding facilities of DataSources, to expect a particular format for responses and to send requests in a specific format. These request and response formats represent Isomorphic's recommended best practices for binding SmartClient to backends which do not already support a similar, pre-existing request and response format and where the SmartClient Java Server cannot be used.
 
-If you have a pre-existing REST or WSDL service which is difficult to change, consider adapting SmartClient to the existing service instead, by starting with a normal [DataSource](DataSource.md#class-datasource) and either
-
-*   Uusing the [client-side data integration](../kb_topics/clientDataIntegration.md#kb-topic-client-side-data-integration) facilities to create a mapping between SmartClient's [DSRequest](../reference_2.md#object-dsrequest) and [DSResponse](DSResponse.md#class-dsresponse) objects and the message formats of your existing services, **OR**
-*   Using the highly configurable server-side [RestConnector](../kb_topics/serverRestConnector.md#kb-topic-server-side-rest-connector) to adapt regular client-server DataSource requests/responses to and from the formats required by the remote REST service (server-side data integration)
-
-**NOTE**: do **not** begin this process by creating or subclassing RestDataSource; for a **pre-existing** service which is unrelated to the protocol documented for `RestDataSource`, start by configuring or subclassing [DataSource](DataSource.md#class-datasource) instead.
+If you have a pre-existing REST or WSDL service which is difficult to change, consider adapting SmartClient to the existing service instead, by starting with a normal [DataSource](DataSource.md#class-datasource) and using the [client-side data integration](../kb_topics/clientDataIntegration.md#kb-topic-client-side-data-integration) facilities to create a mapping between SmartClient's [DSRequest](../reference.md#object-dsrequest) and [DSResponse](DSResponse.md#class-dsresponse) objects and the message formats of your existing services. **NOTE**: do **not** begin this process by creating or subclassing RestDataSource; for a **pre-existing** service which is unrelated to the protocol documented for RestDataSource, start by configuring or subclassing [DataSource](DataSource.md#class-datasource) instead.
 
 RestDataSource is typically used with PHP, Ruby, Python, Perl or custom server technologies, and represents an alternative to installing the SmartClient Server in a Java technology stack, or using [WSDL-based binding](../kb_topics/wsdlBinding.md#kb-topic-wsdl-binding) with .NET or other WSDL-capable technologies. Note that SmartClient Server also provides built-in support for the REST protocol via its RESTHandler servlet; this is primarily to allow non-SmartClient clients to make use of DataSource operations. If you particularly wished to do so, you could use RestDataSource to make a SmartClient app talk to the SmartClient Server using REST rather than the proprietary wire format normally used when communicating with SmartClient Server (this is how we are able to write automated tests for the RESTHandler servlet). However, doing this provides no benefit, imposes a number of inconveniences, and makes a handful of server-based features less useful ([field-level declarative security](DataSourceField.md#attr-datasourcefieldviewrequiresauthentication), for example), so we strongly recommend that you do _not_ do this; it is only mentioned here for completeness while we are discussing REST.
 
@@ -197,7 +190,7 @@ Example URL constructed with the metaDataPrefix set to `"_"` (the default):
 
 In this case the server would be able to separate the request's data from the meta data via the `"_"` prefix.
 
-If data is sent to the server via the `"postMessage"` dataProtocol, the data will be serialized as an XML or JSON message according to the `dataFormat` setting. Both XML and JSON messages will contain request metadata such as startRow and endRow, and will appear exactly as though the subset of the [DSRequest](../reference_2.md#object-dsrequest) that is meaningful to the server had been passed to [DataSource.xmlSerialize](DataSource.md#method-datasourcexmlserialize) or [JSON.encode](JSON.md#classmethod-jsonencode) respectively.
+If data is sent to the server via the `"postMessage"` dataProtocol, the data will be serialized as an XML or JSON message according to the `dataFormat` setting. Both XML and JSON messages will contain request metadata such as startRow and endRow, and will appear exactly as though the subset of the [DSRequest](../reference.md#object-dsrequest) that is meaningful to the server had been passed to [DataSource.xmlSerialize](DataSource.md#method-datasourcexmlserialize) or [JSON.encode](JSON.md#classmethod-jsonencode) respectively.
 
 An example of an XML message might look like this:
 
@@ -401,7 +394,7 @@ And the same message in JSON format:
              dataSource:"countryDS", 
              operationType:"update", 
              data: {
-                 pk: 1,
+                 pk: 1
                  countryName: "Edited Value",
                  capital: "Edited Value",
                  continent: "Edited Value"
@@ -412,7 +405,7 @@ And the same message in JSON format:
              data: {
                  pk: 2,
                  capital: "Edited Value",
-                 population: 123456
+                 popuilation: 123456
              }
          }]
      }
@@ -550,12 +543,47 @@ Default URL to contact to fulfill all DSRequests. RestDataSources also allow per
 **Flags**: IR
 
 ---
+## Attr: RestDataSource.dataProtocol
+
+### Description
+Rather than setting [DataSource.dataProtocol](DataSource.md#attr-datasourcedataprotocol), to control the format in which inputs are sent to the dataURL, you must specify a replacement [OperationBinding](OperationBinding.md#class-operationbinding) and specify [OperationBinding.dataProtocol](OperationBinding.md#attr-operationbindingdataprotocol) on that `operationBinding`.
+
+This is because `RestDataSource` specifies default `operationBindings` for all operationTypes - see [RestDataSource.operationBindings](#attr-restdatasourceoperationbindings).
+
+### Groups
+
+- clientDataIntegration
+- serverDataIntegration
+
+**Flags**: IR
+
+---
+## Attr: RestDataSource.removeDataURL
+
+### Description
+Custom [dataURL](DataSource.md#attr-datasourcedataurl) for [DSRequests](../reference.md#object-dsrequest) with [operationType](DSRequest.md#attr-dsrequestoperationtype) "remove".
+
+See [RestDataSource.dataURL](#attr-restdatasourcedataurl) to configure a single URL for all requests, which is required to support [RPCManager.startQueue](RPCManager.md#classmethod-rpcmanagerstartqueue).
+
+**Flags**: IR
+
+---
 ## Attr: RestDataSource.fetchDataURL
 
 ### Description
-Custom [dataURL](DataSource.md#attr-datasourcedataurl) for [DSRequests](../reference_2.md#object-dsrequest) with [operationType](DSRequest.md#attr-dsrequestoperationtype) "fetch".
+Custom [dataURL](DataSource.md#attr-datasourcedataurl) for [DSRequests](../reference.md#object-dsrequest) with [operationType](DSRequest.md#attr-dsrequestoperationtype) "fetch".
 
 Use [RestDataSource.dataURL](#attr-restdatasourcedataurl) to configure a single URL for all requests, which is required to support [RPCManager.startQueue](RPCManager.md#classmethod-rpcmanagerstartqueue).
+
+**Flags**: IR
+
+---
+## Attr: RestDataSource.updateDataURL
+
+### Description
+Custom [dataURL](DataSource.md#attr-datasourcedataurl) for [DSRequests](../reference.md#object-dsrequest) with [operationType](DSRequest.md#attr-dsrequestoperationtype) "update".
+
+See [RestDataSource.dataURL](#attr-restdatasourcedataurl) to configure a single URL for all requests, which is required to support [RPCManager.startQueue](RPCManager.md#classmethod-rpcmanagerstartqueue).
 
 **Flags**: IR
 
@@ -568,13 +596,25 @@ If [RestDataSource.sendMetaData](#attr-restdatasourcesendmetadata) is true, this
 **Flags**: IR
 
 ---
+## Attr: RestDataSource.jsonSuffix
+
+### Description
+Allows you to specify an arbitrary suffix string to apply to all json format responses sent from the server to this application. The client will expect to find this suffix on any JSON response received for this DataSource, and will strip it off before evaluating the response text.
+
+The default suffix is "//isc\_JSONResponseEnd".
+
+### See Also
+
+- [RestDataSource.jsonPrefix](#attr-restdatasourcejsonprefix)
+
+**Flags**: IRW
+
+---
 ## Attr: RestDataSource.sendMetaData
 
 ### Description
 Should operation meta data be included when assembling parameters to send to the server? If true, meta data parameters will be prefixed with the [RestDataSource.metaDataPrefix](#attr-restdatasourcemetadataprefix).  
 Applies to operations where OperationBinding.dataProtocol is set to `"getParams"` or `"postParams"` only.
-
-See [RestDataSource.transformRequest](#method-restdatasourcetransformrequest) to review the list of default metadata fields. In case you need to add additional parameters to the dsRequest object, you can do it via [RPCRequest.params](RPCRequest.md#attr-rpcrequestparams).
 
 **Flags**: IR
 
@@ -582,7 +622,7 @@ See [RestDataSource.transformRequest](#method-restdatasourcetransformrequest) to
 ## Attr: RestDataSource.addDataURL
 
 ### Description
-Custom [dataURL](DataSource.md#attr-datasourcedataurl) for [DSRequests](../reference_2.md#object-dsrequest) with [operationType](DSRequest.md#attr-dsrequestoperationtype) "add".
+Custom [dataURL](DataSource.md#attr-datasourcedataurl) for [DSRequests](../reference.md#object-dsrequest) with [operationType](DSRequest.md#attr-dsrequestoperationtype) "add".
 
 See [RestDataSource.dataURL](#attr-restdatasourcedataurl) to configure a single URL for all requests, which is required to support [RPCManager.startQueue](RPCManager.md#classmethod-rpcmanagerstartqueue).
 
@@ -730,55 +770,6 @@ The default value will pick up data from a response structured as follows:
 ```
 
 **Flags**: IR
-
----
-## Attr: RestDataSource.dataProtocol
-
-### Description
-Rather than setting [DataSource.dataProtocol](DataSource.md#attr-datasourcedataprotocol), to control the format in which inputs are sent to the dataURL, you must specify a replacement [OperationBinding](OperationBinding.md#class-operationbinding) and specify [OperationBinding.dataProtocol](OperationBinding.md#attr-operationbindingdataprotocol) on that `operationBinding`.
-
-This is because `RestDataSource` specifies default `operationBindings` for all operationTypes - see [RestDataSource.operationBindings](#attr-restdatasourceoperationbindings).
-
-### Groups
-
-- clientDataIntegration
-- serverDataIntegration
-
-**Flags**: IR
-
----
-## Attr: RestDataSource.removeDataURL
-
-### Description
-Custom [dataURL](DataSource.md#attr-datasourcedataurl) for [DSRequests](../reference_2.md#object-dsrequest) with [operationType](DSRequest.md#attr-dsrequestoperationtype) "remove".
-
-See [RestDataSource.dataURL](#attr-restdatasourcedataurl) to configure a single URL for all requests, which is required to support [RPCManager.startQueue](RPCManager.md#classmethod-rpcmanagerstartqueue).
-
-**Flags**: IR
-
----
-## Attr: RestDataSource.updateDataURL
-
-### Description
-Custom [dataURL](DataSource.md#attr-datasourcedataurl) for [DSRequests](../reference_2.md#object-dsrequest) with [operationType](DSRequest.md#attr-dsrequestoperationtype) "update".
-
-See [RestDataSource.dataURL](#attr-restdatasourcedataurl) to configure a single URL for all requests, which is required to support [RPCManager.startQueue](RPCManager.md#classmethod-rpcmanagerstartqueue).
-
-**Flags**: IR
-
----
-## Attr: RestDataSource.jsonSuffix
-
-### Description
-Allows you to specify an arbitrary suffix string to apply to all json format responses sent from the server to this application. The client will expect to find this suffix on any JSON response received for this DataSource, and will strip it off before evaluating the response text.
-
-The default suffix is "//isc\_JSONResponseEnd".
-
-### See Also
-
-- [RestDataSource.jsonPrefix](#attr-restdatasourcejsonprefix)
-
-**Flags**: IRW
 
 ---
 ## Method: RestDataSource.transformRequest

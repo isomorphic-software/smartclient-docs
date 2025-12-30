@@ -27,31 +27,7 @@ Name of property that identifies a [NodeLocator](../reference_2.md#object-nodelo
 ## ClassAttr: Tree.LOADED
 
 ### Description
-A declared value of the enum type [LoadState](../reference_2.md#type-loadstate).
-
-**Flags**: R
-
----
-## ClassAttr: Tree.UNLOADED
-
-### Description
-A declared value of the enum type [LoadState](../reference_2.md#type-loadstate).
-
-**Flags**: R
-
----
-## ClassAttr: Tree.LOADING
-
-### Description
-A declared value of the enum type [LoadState](../reference_2.md#type-loadstate).
-
-**Flags**: R
-
----
-## ClassAttr: Tree.FOLDERS_LOADED
-
-### Description
-A declared value of the enum type [LoadState](../reference_2.md#type-loadstate).
+A declared value of the enum type [LoadState](../reference.md#type-loadstate).
 
 **Flags**: R
 
@@ -59,15 +35,63 @@ A declared value of the enum type [LoadState](../reference_2.md#type-loadstate).
 ## ClassAttr: Tree.LOADED_PARTIAL_CHILDREN
 
 ### Description
-A declared value of the enum type [LoadState](../reference_2.md#type-loadstate).
+A declared value of the enum type [LoadState](../reference.md#type-loadstate).
 
 **Flags**: R
+
+---
+## ClassAttr: Tree.UNLOADED
+
+### Description
+A declared value of the enum type [LoadState](../reference.md#type-loadstate).
+
+**Flags**: R
+
+---
+## ClassAttr: Tree.LOADING
+
+### Description
+A declared value of the enum type [LoadState](../reference.md#type-loadstate).
+
+**Flags**: R
+
+---
+## ClassAttr: Tree.FOLDERS_LOADED
+
+### Description
+A declared value of the enum type [LoadState](../reference.md#type-loadstate).
+
+**Flags**: R
+
+---
+## Attr: Tree.showRoot
+
+### Description
+Controls whether the implicit root node is returned as part of the visible tree, specifically, whether it is returned in [Tree.getOpenList](#method-treegetopenlist), which is the API view components typically use to get the list of visible nodes.
+
+Default is to have the root node be implicit and not included in the open list, which means that the visible tree begins with the children of root. This allows multiple nodes to appear at the top level of the tree.
+
+You can set `showRoot:true` to show the single, logical root node as the only top-level node. This property is only meaningful for Trees where you supplied a value for [Tree.root](#attr-treeroot), otherwise, you will see an automatically generated root node that is meaningless to the user.
+
+**Flags**: IRW
 
 ---
 ## Attr: Tree.titleProperty
 
 ### Description
-Name of the property on a [TreeNode](../reference_2.md#object-treenode) that holds the title of the node as it should be shown to the user. Default value is "title". See [TreeNode.title](TreeNode.md#attr-treenodetitle) for usage.
+Name of the property on a [TreeNode](../reference.md#object-treenode) that holds the title of the node as it should be shown to the user. Default value is "title". See [TreeNode.title](TreeNode.md#attr-treenodetitle) for usage.
+
+**Flags**: IRW
+
+---
+## Attr: Tree.nameProperty
+
+### Description
+Name of the property on a [TreeNode](../reference.md#object-treenode) that holds a name for the node that is unique among its immediate siblings, thus allowing a unique path to be used to identify the node, similar to a file system. Default value is "name". See [TreeNode.name](TreeNode.md#attr-treenodename) for usage.
+
+### See Also
+
+- [TreeNode.name](TreeNode.md#attr-treenodename)
 
 **Flags**: IRW
 
@@ -75,7 +99,7 @@ Name of the property on a [TreeNode](../reference_2.md#object-treenode) that hol
 ## Attr: Tree.linkPositionField
 
 ### Description
-The name of the "position" field in this [multi-link tree](#attr-treelinkdata)'s link data. Ignored if this tree is not a multi-link tree. Note, these values are only used to order the nodes within a parent - so a node with link position -123 will appear before a node with link position 87, but that is the only significance of the link position values
+The name of the "position" field in this [multi-link tree](#attr-treelinkdata)'s link data. Ignored if this tree is not a multi-link tree
 
 ### Groups
 
@@ -87,11 +111,7 @@ The name of the "position" field in this [multi-link tree](#attr-treelinkdata)'s
 ## Attr: Tree.rootValue
 
 ### Description
-If you are using the "parent" modelType and did not specify a root node via [Tree.root](#attr-treeroot) with an id ([Tree.idField](#attr-treeidfield)), then you can provide the root node's id via this property.
-
-This setting is invalid if [TreeGrid.keepParentsOnFilter](TreeGrid.md#attr-treegridkeepparentsonfilter) is set and [fetch-mode](TreeGrid.md#attr-treegriddatafetchmode) is set to anything other than ["paged"](../reference_2.md#type-fetchmode) - a root-value cannot be used in this case because there is no efficient way to load a subtree to include all parents. If `fetchMode` is specifically set to "paged", the rootValue is passed as criteria and the [keepParentsOnFilter](DSRequest.md#attr-dsrequestkeepparentsonfilter) flag is set on the request so the server knows to use special filtering rules, but these rules are not built-in - the developer is responsible for this logic.
-
-See [Tree.data](#attr-treedata) for an example.
+If you are using the "parent" modelType and did not specify a root node via [Tree.root](#attr-treeroot) with an id ([Tree.idField](#attr-treeidfield)), then you can provide the root node's id via this property. See the example in [Tree.data](#attr-treedata) for more info.
 
 ### See Also
 
@@ -110,6 +130,21 @@ Nodes that have children or have the [Tree.isFolderProperty](#attr-treeisfolderp
 See also [ResultTree.defaultIsFolder](ResultTree.md#attr-resulttreedefaultisfolder) for more details on how `defaultIsFolder` interacts with [loading data on demand](TreeGrid.md#attr-treegridloaddataondemand).
 
 **Flags**: IR
+
+---
+## Attr: Tree.modelType
+
+### Description
+Selects the model used to construct the tree representation. See [TreeModelType](../reference.md#type-treemodeltype) for the available options and their implications.
+
+If the "parent" modelType is used, you can provide the initial parent-linked data set to the tree via the [Tree.data](#attr-treedata) attribute. If the "children" modelType is used, you can provide the initial tree structure to the Tree via the [Tree.root](#attr-treeroot) attribute.
+
+### See Also
+
+- [Tree.data](#attr-treedata)
+- [Tree.root](#attr-treeroot)
+
+**Flags**: IRWA
 
 ---
 ## Attr: Tree.data
@@ -168,7 +203,7 @@ For `modelType:"children"` trees, the data passed in will be assumed to be an ar
 ### See Also
 
 - [Tree.modelType](#attr-treemodeltype)
-- [TreeNode](../reference_2.md#object-treenode)
+- [TreeNode](../reference.md#object-treenode)
 
 **Flags**: IR
 
@@ -216,7 +251,7 @@ The pathDelim is used only by [Tree.getPath](#method-treegetpath) and [Tree.find
 ## Attr: Tree.idField
 
 ### Description
-Name of the property on a [TreeNode](../reference_2.md#object-treenode) that holds an id for the node which is unique across the entire Tree. Required for all nodes for trees with modelType "parent". Default value is "id". See [TreeNode.id](TreeNode.md#attr-treenodeid) for usage.
+Name of the property on a [TreeNode](../reference.md#object-treenode) that holds an id for the node which is unique across the entire Tree. Required for all nodes for trees with modelType "parent". Default value is "id". See [TreeNode.id](TreeNode.md#attr-treenodeid) for usage.
 
 ### See Also
 
@@ -225,12 +260,38 @@ Name of the property on a [TreeNode](../reference_2.md#object-treenode) that hol
 **Flags**: IRA
 
 ---
+## Attr: Tree.separateFolders
+
+### Description
+Should folders be sorted separately from leaves or should nodes be ordered according to their sort field value regardless of whether the node is a leaf or folder?
+
+### See Also
+
+- [Tree.sortFoldersBeforeLeaves](#attr-treesortfoldersbeforeleaves)
+
+**Flags**: IRW
+
+---
 ## Attr: Tree.defaultNodeTitle
 
 ### Description
 Title assigned to nodes without a [Tree.titleProperty](#attr-treetitleproperty) value or a [Tree.nameProperty](#attr-treenameproperty) value.
 
 **Flags**: IRW
+
+---
+## Attr: Tree.multiLinkTree
+
+### Description
+If true, indicates this is a "multiLink" tree - ie, one that can contain the same node in more than one place. Note, multiLink trees **must** use the "parent" [model type](#attr-treemodeltype)
+
+See [Tree.linkData](#attr-treelinkdata) and [ResultTree.linkDataSource](ResultTree.md#attr-resulttreelinkdatasource) for further details of multiLink trees.
+
+### Groups
+
+- multiLinkTree
+
+**Flags**: IR
 
 ---
 ## Attr: Tree.dataSource
@@ -257,97 +318,6 @@ A [DataSource](DataSource.md#class-datasource) is required when filtering a tree
 If true, the root node is automatically opened when the tree is created or [Tree.setRoot](#method-treesetroot) is called.
 
 **Flags**: IRW
-
----
-## Attr: Tree.openProperty
-
-### Description
-The property consulted by the default implementation of [Tree.isOpen](#method-treeisopen) to determine if the node is open or not. By default, this property is auto-generated for you, but you can set it to a custom value if you want to declaratively specify this state, but be careful - if you display this Tree in multiple TreeGrids at the same time, the open state will not be tracked independently - see [sharingNodes](../kb_topics/sharingNodes.md#kb-topic-sharing-nodes) for more info on this.
-
-For [multi-link tree](#method-treeismultilinktree)s, we do not track open state on the nodes themselves, because this would mean that multiple instances of a node in the tree would open and close in lockstep. Instead, open state is tracked in an internal index structure, and the `openProperty` is not used at all.
-
-### Groups
-
-- openList
-
-### See Also
-
-- [sharingNodes](../kb_topics/sharingNodes.md#kb-topic-sharing-nodes)
-
-**Flags**: IRWA
-
----
-## Attr: Tree.sortFoldersBeforeLeaves
-
-### Description
-If [Tree.separateFolders](#attr-treeseparatefolders) is true, should folders be displayed above or below leaves? When set to `true` folders will appear above leaves when the `sortDirection` applied to the tree is ["ascending"](../reference_2.md#type-sortdirection)
-
-**Flags**: IRW
-
----
-## Attr: Tree.showRoot
-
-### Description
-Controls whether the implicit root node is returned as part of the visible tree, specifically, whether it is returned in [Tree.getOpenList](#method-treegetopenlist), which is the API view components typically use to get the list of visible nodes.
-
-Default is to have the root node be implicit and not included in the open list, which means that the visible tree begins with the children of root. This allows multiple nodes to appear at the top level of the tree.
-
-You can set `showRoot:true` to show the single, logical root node as the only top-level node. This property is only meaningful for Trees where you supplied a value for [Tree.root](#attr-treeroot), otherwise, you will see an automatically generated root node that is meaningless to the user.
-
-**Flags**: IRW
-
----
-## Attr: Tree.nameProperty
-
-### Description
-Name of the property on a [TreeNode](../reference_2.md#object-treenode) that holds a name for the node that is unique among its immediate siblings, thus allowing a unique path to be used to identify the node, similar to a file system. Default value is "name". See [TreeNode.name](TreeNode.md#attr-treenodename) for usage.
-
-### See Also
-
-- [TreeNode.name](TreeNode.md#attr-treenodename)
-
-**Flags**: IRW
-
----
-## Attr: Tree.modelType
-
-### Description
-Selects the model used to construct the tree representation. See [TreeModelType](../reference.md#type-treemodeltype) for the available options and their implications.
-
-If the "parent" modelType is used, you can provide the initial parent-linked data set to the tree via the [Tree.data](#attr-treedata) attribute. If the "children" modelType is used, you can provide the initial tree structure to the Tree via the [Tree.root](#attr-treeroot) attribute.
-
-### See Also
-
-- [Tree.data](#attr-treedata)
-- [Tree.root](#attr-treeroot)
-
-**Flags**: IRWA
-
----
-## Attr: Tree.separateFolders
-
-### Description
-Should folders be sorted separately from leaves or should nodes be ordered according to their sort field value regardless of whether the node is a leaf or folder?
-
-### See Also
-
-- [Tree.sortFoldersBeforeLeaves](#attr-treesortfoldersbeforeleaves)
-
-**Flags**: IRW
-
----
-## Attr: Tree.multiLinkTree
-
-### Description
-If true, indicates this is a "multiLink" tree - ie, one that can contain the same node in more than one place. Note, multiLink trees **must** use the "parent" [model type](#attr-treemodeltype)
-
-See [Tree.linkData](#attr-treelinkdata) and [ResultTree.linkDataSource](ResultTree.md#attr-resulttreelinkdatasource) for further details of multiLink trees.
-
-### Groups
-
-- multiLinkTree
-
-**Flags**: IR
 
 ---
 ## Attr: Tree.discardParentlessNodes
@@ -407,6 +377,24 @@ Note: if you initialize a Tree with no `root` value, a root node will be auto-cr
 **Flags**: IRW
 
 ---
+## Attr: Tree.openProperty
+
+### Description
+The property consulted by the default implementation of [Tree.isOpen](#method-treeisopen) to determine if the node is open or not. By default, this property is auto-generated for you, but you can set it to a custom value if you want to declaratively specify this state, but be careful - if you display this Tree in multiple TreeGrids at the same time, the open state will not be tracked independently - see [sharingNodes](../kb_topics/sharingNodes.md#kb-topic-sharing-nodes) for more info on this.
+
+For [multi-link tree](#method-treeismultilinktree)s, we do not track open state on the nodes themselves, because this would mean that multiple instances of a node in the tree would open and close in lockstep. Instead, open state is tracked in an internal index structure, and the `openProperty` is not used at all.
+
+### Groups
+
+- openList
+
+### See Also
+
+- [sharingNodes](../kb_topics/sharingNodes.md#kb-topic-sharing-nodes)
+
+**Flags**: IRWA
+
+---
 ## Attr: Tree.linkData
 
 ### Description
@@ -414,7 +402,7 @@ For a [multi-link tree](#attr-treemultilinktree), this property specifies the pa
 
 For a regular, non-multiLink tree, the `linkData` property is ignored.
 
-Minimally, the link data should include a node id, parent id and optionally the position of the child within that parent. To describe this multi-link tree:
+Minimally, the link data should include a node id, parent id and optionally the position of the child within that parent To describe this multi-link tree:
 
 ```
    foo
@@ -482,6 +470,14 @@ For trees with the modelType "children", this property specifies the name of the
 **Flags**: IRW
 
 ---
+## Attr: Tree.sortFoldersBeforeLeaves
+
+### Description
+If [Tree.separateFolders](#attr-treeseparatefolders) is true, should folders be displayed above or below leaves? When set to `true` folders will appear above leaves when the `sortDirection` applied to the tree is ["ascending"](../reference.md#type-sortdirection)
+
+**Flags**: IRW
+
+---
 ## Attr: Tree.isFolderProperty
 
 ### Description
@@ -492,6 +488,20 @@ Name of property that defines whether a node is a folder. By default this is set
 - [TreeNode.isFolder](TreeNode.md#attr-treenodeisfolder)
 
 **Flags**: IRW
+
+---
+## ClassMethod: Tree.discoverTree
+
+### Description
+given a hierarchy of objects with children under mixed names, heuristically discover the property that holds children and copy it to a single, uniform childrenProperty. Label each discovered child with a configurable "typeProperty" set to the value of the property that held the children.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| nodes | [Array of TreeNode](#type-array-of-treenode) | false | — | list of nodes to link into the tree. |
+| settings | [DiscoverTreeSettings](#type-discovertreesettings) | false | — | configures how the tree will be explored |
+| parentChildrenField | [String](#type-string) | false | — | — |
 
 ---
 ## ClassMethod: Tree.findChildrenProperty
@@ -509,564 +519,6 @@ heuristically find a property that appears to contain child objects. Searches th
 ### Returns
 
 `[String](#type-string)` — the name of the property that holds the children
-
----
-## ClassMethod: Tree.discoverTree
-
-### Description
-given a hierarchy of objects with children under mixed names, heuristically discover the property that holds children and copy it to a single, uniform childrenProperty. Label each discovered child with a configurable "typeProperty" set to the value of the property that held the children.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| nodes | [Array of TreeNode](#type-array-of-treenode) | false | — | list of nodes to link into the tree. |
-| settings | [DiscoverTreeSettings](#type-discovertreesettings) | false | — | configures how the tree will be explored |
-| parentChildrenField | [String](#type-string) | false | — | — |
-
----
-## Method: Tree.remove
-
-### Description
-Removes a node, along with all its children. See ["Modifying ResultTrees"](ResultTree.md#class-resulttree) when working with a `ResultTree` for limitations. Note, if this is a [multi-link tree](#method-treeismultilinktree), you must pass in a [NodeLocator](../reference_2.md#object-nodelocator) rather than a node or id.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| node | [TreeNode](#type-treenode)|[String](#type-string)|[Integer](../reference_2.md#type-integer)|[NodeLocator](#type-nodelocator) | false | — | node to remove, or the node's ID, or a NodeLocator |
-
-### Returns
-
-`[Boolean](#type-boolean)` — true if the tree was changed as a result of this call
-
----
-## Method: Tree.getParents
-
-### Description
-Given a node, return an array of the node's ancestors, with the immediate parent first, then the grandparent, and so on. The node itself is not included in the result. For example, for the following tree:
-```
- root
-   foo
-     bar
- 
-```
-Calling `tree.getParents(bar)` would return: `[foo, root]`. Note that the returned array will contain references to the nodes, not the names.
-
-Note, for reasons of backwards compatibility, if you pass this method a `TreeNode` instance on a [multi-link tree](#method-treeismultilinktree), it will return an array representing one path through the node's ancestors, which is unlikely to be useful. To get the ancestor chain of a specific node occurence, you must pass a [NodeLocator](../reference_2.md#object-nodelocator) that specifies the full ID-based path to that occurence. If what you actually want is a list of the node's direct parents, see [Tree.getMultiLinkParents](#method-treegetmultilinkparents).
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| node | [TreeNode](#type-treenode)|[NodeLocator](#type-nodelocator) | false | — | node in question, or a NodeLocator |
-
-### Returns
-
-`[Array](#type-array)` — array of node's parents
-
----
-## Method: Tree.getFolders
-
-### Description
-Returns all the first-level folders of a node.  
-  
-For load on demand trees (those that only have a partial representation client-side), this method will return only nodes that have already been loaded from the server.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| node | [TreeNode](#type-treenode) | false | — | node in question |
-
-### Returns
-
-`[Array of TreeNode](#type-array-of-treenode)` — List of immediate children that are folders
-
----
-## Method: Tree.getLeaves
-
-### Description
-Return all the first-level leaves of a node.  
-  
-For load on demand trees (those that only have a partial representation client-side), this method will return only nodes that have already been loaded from the server.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| node | [TreeNode](#type-treenode) | false | — | node in question |
-
-### Returns
-
-`[Array of TreeNode](#type-array-of-treenode)` — List of immediate children that are leaves.
-
----
-## Method: Tree.removeChildren
-
-### Description
-Removes all children of the node and sets it to a loaded state. For non-[ResultTree](ResultTree.md#class-resulttree)s, or non-[paged](ResultTree.md#attr-resulttreefetchmode) `ResultTree`s, [Tree.add](#method-treeadd) or [Tree.addList](#method-treeaddlist) can then be used to provide new children. For [paged](ResultTree.md#attr-resulttreefetchmode) `ResultTrees`, [DataSource.updateCaches](DataSource.md#method-datasourceupdatecaches) must be used to insert nodes into the cache as local data, since such `ResultTree`s are considered read-only, and [Tree.add](#method-treeadd) and [Tree.addList](#method-treeaddlist) are not perrmitted.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| node | [TreeNode](#type-treenode) | false | — | folder in question |
-
-### Groups
-
-- loadState
-
-### See Also
-
-- [Tree.getLoadState](#method-treegetloadstate)
-- [Tree.reloadChildren](#method-treereloadchildren)
-
----
-## Method: Tree.hasLeaves
-
-### Description
-Return whether this node has any children that are leaves.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| node | [TreeNode](#type-treenode) | false | — | node in question |
-
-### Returns
-
-`[Boolean](#type-boolean)` — true if the node has children that are leaves
-
----
-## Method: Tree.addList
-
-### Description
-Add a list of nodes to some parent. See ["Modifying ResultTrees"](ResultTree.md#class-resulttree) when working with a `ResultTree` for limitations.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| nodeList | [List of TreeNode](#type-list-of-treenode) | false | — | The list of nodes to add |
-| parent | [String](#type-string)|[TreeNode](#type-treenode) | false | — | Parent of the nodes being added. You can pass in either the [TreeNode](../reference_2.md#object-treenode) itself, or a path to the node (as a String), in which case a [Tree.find](#method-treefind) is performed to find the node. |
-| position | [number](#type-number) | true | — | Position of the new nodes in the children list. If not specified, the nodes will be added at the end of the list. |
-
-### Returns
-
-`[List](#type-list)` — List of added nodes.
-
-### See Also
-
-- [sharingNodes](../kb_topics/sharingNodes.md#kb-topic-sharing-nodes)
-
----
-## Method: Tree.openAll
-
-### Description
-Open all nodes under a particular node.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| node | [TreeNode](#type-treenode)|[String](#type-string)|[Integer](../reference_2.md#type-integer)|[NodeLocator](#type-nodelocator) | true | — | node from which to open folders, or the node's ID, or a NodeLocator object (if not specified, the root node is used) |
-
----
-## Method: Tree.getDescendants
-
-### Description
-Returns the list of all descendants of a node. Note: this method can be very slow, especially on large trees because it assembles a list of all descendants recursively. Generally, [Tree.find](#method-treefind) in combination with [Tree.getChildren](#method-treegetchildren) will be much faster.  
-  
-For load on demand trees (those that only have a partial representation client-side), this method will return only nodes that have already been loaded from the server.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| node | [TreeNode](#type-treenode) | true | — | node in question (root node is assumed if none is specified) |
-
-### Returns
-
-`[Array of TreeNode](#type-array-of-treenode)` — List of descendants of the node.
-
----
-## Method: Tree.setSortFoldersBeforeLeaves
-
-### Description
-Setter for [Tree.sortFoldersBeforeLeaves](#attr-treesortfoldersbeforeleaves).
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| sortFoldersBeforeLeaves | [Boolean](#type-boolean) | false | — | new `sortFoldersBeforeLeaves` value |
-
----
-## Method: Tree.getDescendantNodeLocators
-
-### Description
-Returns a list of link{type:NodeLocator)s identifying all descendants of a node (identified by the parameter `NodeLocator`). This method is the equivalent of [getDescendants()](#method-treegetdescendants), but for [multi-link trees](#method-treeismultilinktree). The list of descendant nodes returned from both methods is identical - a node's descendants are the same regardless of where or how many times that node appears in the tree - but the `NodeLocator`s returned by this method provide additional context that allows you to determine particular occurences of descendant nodes. This is necessary for some use cases - for example, when trying to determine if a particular node occurence is open, or selected.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| node | [TreeNode](#type-treenode) | true | — | node in question (root node is assumed if none is specified) |
-
-### Returns
-
-`[Array of TreeNode](#type-array-of-treenode)` — List of descendants of the node.
-
----
-## Method: Tree.openFolders
-
-### Description
-Open a set of folders, specified by path or as pointers to nodes.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| nodeList | [List of TreeNode](#type-list-of-treenode) | false | — | List of nodes or node paths or NodeLocators |
-
-### See Also
-
-- [ResultTree.dataArrived](ResultTree.md#method-resulttreedataarrived)
-
----
-## Method: Tree.getTitle
-
-### Description
-Return the title of a node -- the name as it should be presented to the user. This method works as follows:
-
-*   If a [Tree.titleProperty](#attr-treetitleproperty) is set on the node, the value of that property is returned.
-*   Otherwise, if the [Tree.nameProperty](#attr-treenameproperty) is set on the node, that value is returned, minus any trailing [Tree.pathDelim](#attr-treepathdelim).
-*   Finally, if none of the above yielded a title, the value of [Tree.defaultNodeTitle](#attr-treedefaultnodetitle) is returned.
-
-You can override this method to return the title of your choice for a given node.  
-  
-To override the title for an auto-constructed tree (for example, in a databound TreeGrid), override [TreeGrid.getNodeTitle](TreeGrid.md#method-treegridgetnodetitle) instead.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| node | [TreeNode](#type-treenode) | false | — | node for which the title is being requested |
-
-### Returns
-
-`[String](#type-string)` — title to display
-
-### See Also
-
-- [TreeGrid.getNodeTitle](TreeGrid.md#method-treegridgetnodetitle)
-
----
-## Method: Tree.getMultiLinkParents
-
-### Description
-For [multiLink trees](#method-treeismultilinktree), returns the array of this node's direct parents (the actual node objects, not the IDs). For non-multiLink trees, returns an array containing the single parent of this node. See also [Tree.getParentsAndPositions](#method-treegetparentsandpositions).
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| node | [TreeNode](#type-treenode) | false | — | node in question |
-
-### Returns
-
-`[Array of TreeNode](#type-array-of-treenode)` — the parents of this node
-
----
-## Method: Tree.getFilteredTree
-
-### Description
-Filters this tree by the provided criteria, returning a new Tree containing just the nodes that match the criteria.
-
-If `filterMode` is "keepParents", parents are retained if any of their children match the criteria even if those parents do not match the criteria.
-
-Note that the [DataSource](DataSource.md#class-datasource) argument is **required** if one is not [already specified](DataSource.md#class-datasource) on the tree.
-
-If you want a [TreeGrid](TreeGrid.md#class-treegrid) with local tree data that supports filtering, please consider using a [TreeGrid](TreeGrid.md#class-treegrid) bound to a [client-only DataSource](DataSource.md#attr-datasourceclientonly) rather than writing your own code to filter the tree's data with this method.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| criteria | [Criteria](../reference_2.md#type-criteria)|[AdvancedCriteria](#type-advancedcriteria) | false | — | criteria to filter by |
-| filterMode | [TreeFilterMode](../reference.md#type-treefiltermode) | true | — | mode to use for filtering, defaults to "strict" |
-| dataSource | [DataSource](#type-datasource) | true | — | dataSource to use for filtering, if this Tree does not already have one |
-| requestProperties | [DSRequest](#type-dsrequest) | true | — | Request properties block. This allows developers to specify properties that would impact the filter such as [DSRequest.textMatchStyle](DSRequest.md#attr-dsrequesttextmatchstyle) |
-
-### Returns
-
-`[Tree](#type-tree)` — filtered tree
-
-### Groups
-
-- treeFilter
-
-### See Also
-
-- [ListGrid.setCriteria](ListGrid_2.md#method-listgridsetcriteria)
-- [TreeGrid.filterData](TreeGrid.md#method-treegridfilterdata)
-- [ResultTree](ResultTree.md#class-resulttree)
-
----
-## Method: Tree.closeFolder
-
-### Description
-Closes a folder. Note, for [multi-link tree](#method-treeismultilinktree)s, passing a `NodeLocator` is the only unambiguous way to specify the node.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| node | [TreeNode](#type-treenode)|[String](#type-string)|[Integer](../reference_2.md#type-integer)|[NodeLocator](#type-nodelocator) | false | — | the node to open, or its ID, or a NodeLocator object |
-
----
-## Method: Tree.getChildrenResultSet
-
-### Description
-Returns a ResultSet that provides access to any partially-loaded children of a node. If the node is a leaf, this method returns null.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| node | [TreeNode](#type-treenode) | false | — | The node whose children you want to fetch. |
-
-### Returns
-
-`[ResultSet](#type-resultset)` — List of children for the node, including an empty ResultSet if the node has no children. For a leaf, returns null.
-
-### See Also
-
-- [Tree.getChildren](#method-treegetchildren)
-- [Tree.allChildrenLoaded](#method-treeallchildrenloaded)
-
----
-## Method: Tree.isDescendantOf
-
-### Description
-Is one node a descendant of the other?
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| child | [TreeNode](#type-treenode) | false | — | child node |
-| parent | [TreeNode](#type-treenode) | false | — | parent node |
-
-### Returns
-
-`[Boolean](#type-boolean)` — true == parent is an ancestor of child
-
----
-## Method: Tree.linkNodes
-
-### Description
-Adds an array of tree nodes into a Tree of [Tree.modelType](#attr-treemodeltype) "parent".
-
-The provided TreeNodes must contain, at a minimum, a field containing a unique ID for the node (specified by [Tree.idField](#attr-treeidfield)) and a field containing the ID of the node's parent node (specified by [Tree.parentIdField](#attr-treeparentidfield)).
-
-This method handles receiving a mixture of leaf nodes and parent nodes, even out of order and with any tree depth.
-
-Nodes may be passed with the [Tree.childrenProperty](#attr-treechildrenproperty) already populated with an Array of children that should also be added to the Tree, and this is automatically handled.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| nodes | [Array of TreeNode](#type-array-of-treenode) | false | — | list of nodes to link into the tree. |
-
-### See Also
-
-- [Tree.data](#attr-treedata)
-- [Tree.modelType](#attr-treemodeltype)
-
----
-## Method: Tree.getParentPath
-
-### Description
-Given a node, return the path to its parent. This works just like [Tree.getPath](#method-treegetpath) except the node itself is not reported as part of the path.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| node | [TreeNode](#type-treenode) | false | — | node in question |
-
-### Returns
-
-`[String](#type-string)` — path to the node's parent
-
-### See Also
-
-- [Tree.getPath](#method-treegetpath)
-
----
-## Method: Tree.getDescendantLeaves
-
-### Description
-Returns the list of all descendants of a node that are leaves. This works just like [Tree.getDescendants](#method-treegetdescendants), except folders are not part of the returned list. Folders are still recursed into, just not returned. Like [Tree.getDescendants](#method-treegetdescendants), this method can be very slow for large trees. Generally, [Tree.find](#method-treefind) in combination with [Tree.getLeaves](#method-treegetleaves) will be much faster.  
-  
-For load on demand trees (those that only have a partial representation client-side), this method will return only nodes that have already been loaded from the server.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| node | [TreeNode](#type-treenode) | true | — | node in question (root node is assumed if none specified) |
-
-### Returns
-
-`[Array of TreeNode](#type-array-of-treenode)` — List of descendants of the node that are leaves.
-
----
-## Method: Tree.unloadChildren
-
-### Description
-Unload the children of a folder, returning the folder to the "unloaded" state.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| node | [TreeNode](#type-treenode) | false | — | folder in question |
-
-### Groups
-
-- loadState
-
-**Deprecated**
-
----
-## Method: Tree.isMultiLinkTree
-
-### Description
-Returns true if this is a _multi-link_ tree - ie, one that can contain the same node in more than one place. Otherwise, returns false. The default implementation simply returns the value of the `multiLinkTree` flag
-
-See [Tree.linkData](#attr-treelinkdata) and [ResultTree.linkDataSource](ResultTree.md#attr-resulttreelinkdatasource) for further details of multiLink trees.
-
----
-## Method: Tree.hasChildren
-
-### Description
-Returns true if this node has any children.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| node | [TreeNode](#type-treenode) | false | — | node in question |
-
-### Returns
-
-`[Boolean](#type-boolean)` — true if the node has children
-
----
-## Method: Tree.getNodeLocator
-
-### Description
-For a [multi-link tree](#method-treeismultilinktree), this method returns the [nodeLocator](../reference_2.md#object-nodelocator) associated with the particular occurence of the node at the specified index within the current [open list](#method-treegetopenlist) of nodes in the tree. Not applicable to non-multilink trees (always returns null)
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| recordIndex | [Integer](../reference_2.md#type-integer) | false | — | position of a node occurence within the open list of the tree |
-
-### Returns
-
-`[NodeLocator](#type-nodelocator)` — NodeLocator unambiguously identifying the specific node occurence
-
----
-## Method: Tree.getLength
-
-### Description
-Returns the number of items in the current open list.
-
-### Returns
-
-`[number](#type-number)` — number of items in open list
-
-### See Also
-
-- [Tree.getOpenList](#method-treegetopenlist)
-
----
-## Method: Tree.findNodeIndex
-
-### Description
-Like [Tree.findIndex](#method-treefindindex), but searches all tree nodes regardless of their open/closed state.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| propertyName | [String](#type-string)|[Object](../reference.md#type-object)|[AdvancedCriteria](#type-advancedcriteria) | false | — | property to match, or if an Object is passed, set of properties and values to match |
-| value | [Any](#type-any) | true | — | value to compare against (if propertyName is a string) |
-
-### Returns
-
-`[int](../reference.md#type-int)` — index of the first matching Object or -1 if not found
-
-### Groups
-
-- access
-- find
-
----
-## Method: Tree.isInAncestorChain
-
-### Description
-Returns true if the passed-in node ID is already present in the parent's ancestor chain. This means that either the parent node itself, or its parent, grandparent, and so on, has the same ID as the one passed in. This method is used when linking new nodes into a tree, to ensure that we don't link in nodes that will lead to circular references by virtue of a node being its own parent (or its own child, depending which way round you prefer to think of it)
-
-Note that [multi-link trees](#method-treeismultilinktree) potentially have more than one ancestor chain for any given node, so this method returns true if the parameter ID is used by any node in any of the parent's ancestor chains.
-
----
-## Method: Tree.dataChanged
-
-### Description
-Called when the structure of this tree is changed in any way. Intended to be observed.  
-  
-Note that on a big change (many items being added or deleted) this may be called multiple times
-
-**Flags**: A
-
----
-## Method: Tree.closeAll
-
-### Description
-Close all nodes under a particular node
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| node | [TreeNode](#type-treenode)|[NodeLocator](#type-nodelocator) | true | — | node from which to close folders (if not specified, the root node is used). If this is a [multi-link tree](#method-treeismultilinktree), you must provide a [NodeLocator](../reference_2.md#object-nodelocator) for any node other than the root node |
-
----
-## Method: Tree.getLoadState
-
-### Description
-What is the loadState of a given folder?
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| node | [TreeNode](#type-treenode) | false | — | folder in question |
-
-### Returns
-
-`[LoadState](../reference_2.md#type-loadstate)` — state of the node
-
-### Groups
-
-- loadState
 
 ---
 ## Method: Tree.isOpen
@@ -1122,6 +574,47 @@ Open a particular node. Note, for [multi-link tree](#method-treeismultilinktree)
 - [ResultTree.dataArrived](ResultTree.md#method-resulttreedataarrived)
 
 ---
+## Method: Tree.remove
+
+### Description
+Removes a node, along with all its children. See ["Modifying ResultTrees"](ResultTree.md#class-resulttree) when working with a `ResultTree` for limitations. Note, if this is a [multi-link tree](#method-treeismultilinktree), you must pass in a [NodeLocator](../reference_2.md#object-nodelocator) rather than a node or id.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| node | [TreeNode](#type-treenode)|[String](#type-string)|[Integer](../reference_2.md#type-integer)|[NodeLocator](#type-nodelocator) | false | — | node to remove, or the node's ID, or a NodeLocator |
+
+### Returns
+
+`[Boolean](#type-boolean)` — true if the tree was changed as a result of this call
+
+---
+## Method: Tree.getParents
+
+### Description
+Given a node, return an array of the node's ancestors, with the immediate parent first, then the grandparent, and so on. The node itself is not included in the result. For example, for the following tree:
+```
+ root
+   foo
+     bar
+ 
+```
+Calling `tree.getParents(bar)` would return: `[foo, root]`. Note that the returned array will contain references to the nodes, not the names.
+
+Note, for reasons of backwards compatibility, if you pass this method a `TreeNode` instance on a [multi-link tree](#method-treeismultilinktree), it will return an array representing one path through the node's ancestors, which is unlikely to be useful. To get the ancestor chain of a specific node occurence, you must pass a [NodeLocator](../reference_2.md#object-nodelocator) that specifies the full ID-based path to that occurence. If what you actually want is a list of the node's direct parents, see [Tree.getMultiLinkParents](#method-treegetmultilinkparents).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| node | [TreeNode](#type-treenode)|[NodeLocator](#type-nodelocator) | false | — | node in question, or a NodeLocator |
+
+### Returns
+
+`[Array](#type-array)` — array of node's parents
+
+---
 ## Method: Tree.getRoot
 
 ### Description
@@ -1143,11 +636,29 @@ For load on demand trees (those that only have a partial representation client-s
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| node | [TreeNode](#type-treenode) | true | — | node in question (root node is assumed if none is specified) |
+| node | [TreeNode](#type-treenode) | true | — | node in question (the root node is assumed if none is specified) |
 
 ### Returns
 
-`[Array of TreeNode](#type-array-of-treenode)` — List of descendants of the node that are folders.
+`[List](#type-list)` — List of descendants of the node that are folders.
+
+---
+## Method: Tree.getFolders
+
+### Description
+Returns all the first-level folders of a node.  
+  
+For load on demand trees (those that only have a partial representation client-side), this method will return only nodes that have already been loaded from the server.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| node | [TreeNode](#type-treenode) | false | — | node in question |
+
+### Returns
+
+`[List](#type-list)` — List of immediate children that are folders
 
 ---
 ## Method: Tree.isLoaded
@@ -1183,7 +694,7 @@ Find the node with the specified ID. Specifically, it returns the node whose idF
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — node with appropriate ID, or null if not found.
+`[Object](../reference_2.md#type-object)` — node with appropriate ID, or null if not found.
 
 ### Groups
 
@@ -1202,23 +713,14 @@ Find the node with the specified ID. Specifically, it returns the node whose idF
 ### Description
 Add a single node under the specified parent. See ["Modifying ResultTrees"](ResultTree.md#class-resulttree) when working with a `ResultTree` for limitations.
 
-#### Adding nodes to Multi-link trees
-[Multi-link trees](#attr-treemultilinktree) support ordering of nodes amongst their peers by setting the value of the [linkPositionField](#attr-treelinkpositionfield) in the associated [linkData](#attr-treelinkdata). Nodes can also be added at a specific index position in the child list via this API, but be aware that - like other kinds of [databound tree](ResultTree.md#class-resulttree) - nodes added using this API are not automatically persisted. Because of this, typically you would not use this API for a databound multi-link tree; you would instead [add a record](DataSource.md#method-datasourceadddata) to the tree's [linkDataSource](ResultTree.md#attr-resulttreelinkdatasource), and possibly also to its primary [dataSource](ResultTree.md#attr-resulttreedatasource), if this is an entirely new node that does not already exist elsewhere in the tree. [Cache synchronization](DataSource.md#method-datasourceupdatecaches) will then take care of linking the new node into the tree (or the existing node into a new position in the tree).
-
-That said, if you do choose to use this `add()` API to add a node to a multi-link tree, the following rules are used:
-
-*   If you specify a non-null "position" parameter on the `add()` call, that will be honored. So, for example, passing a position of 0 will always cause the new node to be inserted first in the list of its parent's children
-*   If no position parameter is provided, we will attempt to insert the new node at the position implied by the value of the `linkPositionField` in the parameter "linkRecord". So if you provide a value of 5 for that field in the linkRecord, the node will be inserted immediately before the first existing node in the parent's child list that has a position value of 5 or greater
-*   If there is no position parameter and no value for the `linkPositionField`, the new node will inserted at the end of the parent node's list of children
-
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | node | [TreeNode](#type-treenode) | false | — | node to add |
-| parent | [String](#type-string)|[TreeNode](#type-treenode) | false | — | Parent of the node being added. You can pass in either the [TreeNode](../reference_2.md#object-treenode) itself, or a path to the node (as a String), in which case a [Tree.find](#method-treefind) is performed to find the node. |
-| position | [number](#type-number) | true | — | Position of the new node in the children list. If not specified, the node will be added at the end of the list (this is not necessarily true for multi-link trees - see the discussion above) |
-| linkRecord | [Record](#type-record) | true | — | Optional record containing attributes associated with the link between the nodes, rather than either of the nodes themselves. Only applicable to [multi-link trees](#attr-treemultilinktree), and only required if you want to provide a [linkPositionField](#attr-treelinkpositionfield) value |
+| parent | [String](#type-string)|[TreeNode](#type-treenode) | false | — | Parent of the node being added. You can pass in either the [TreeNode](../reference.md#object-treenode) itself, or a path to the node (as a String), in which case a [Tree.find](#method-treefind) is performed to find the node. |
+| position | [number](#type-number) | true | — | Position of the new node in the children list. If not specified, the node will be added at the end of the list. |
+| linkRecord | [Record](#type-record) | true | — | Optional record containing attributes associated with the link between the nodes, rather than either of the nodes themselves. Only applicable to [multi-link trees](#attr-treemultilinktree) |
 
 ### Returns
 
@@ -1230,14 +732,32 @@ That said, if you do choose to use this `add()` API to add a node to a multi-lin
 - [Tree.addList](#method-treeaddlist)
 
 ---
+## Method: Tree.getLeaves
+
+### Description
+Return all the first-level leaves of a node.  
+  
+For load on demand trees (those that only have a partial representation client-side), this method will return only nodes that have already been loaded from the server.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| node | [TreeNode](#type-treenode) | false | — | node in question |
+
+### Returns
+
+`[List](#type-list)` — List of immediate children that are leaves.
+
+---
 ## Method: Tree.isFolder
 
 ### Description
 Determines whether a particular node is a folder. The logic works as follows:  
   
 
-*   If the [TreeNode](../reference_2.md#object-treenode) has a value for the [Tree.isFolderProperty](#attr-treeisfolderproperty) ([TreeNode.isFolder](TreeNode.md#attr-treenodeisfolder) by default) that value is returned.
-*   Next, the existence of the [Tree.childrenProperty](#attr-treechildrenproperty) (by default [TreeNode.children](TreeNode.md#attr-treenodechildren)) is checked on the [TreeNode](../reference_2.md#object-treenode). If the node has the children property defined (regardless of whether it actually has any children), then isFolder() returns true for that node.
+*   If the [TreeNode](../reference.md#object-treenode) has a value for the [Tree.isFolderProperty](#attr-treeisfolderproperty) ([TreeNode.isFolder](TreeNode.md#attr-treenodeisfolder) by default) that value is returned.
+*   Next, the existence of the [Tree.childrenProperty](#attr-treechildrenproperty) (by default [TreeNode.children](TreeNode.md#attr-treenodechildren)) is checked on the [TreeNode](../reference.md#object-treenode). If the node has the children property defined (regardless of whether it actually has any children), then isFolder() returns true for that node.
 
 You can override this method to provide your own interpretation of what constitutes a folder. However, you cannot change the return value for a node after the associated folder is loaded.
 
@@ -1268,6 +788,43 @@ If the passed in node is a leaf, this method returns null.
 ### Returns
 
 `[List of TreeNode](#type-list-of-treenode)` — flattened list of open nodes
+
+---
+## Method: Tree.removeChildren
+
+### Description
+Removes all children of the node and sets it to a loaded state. For non-[ResultTree](ResultTree.md#class-resulttree)s, or non-[paged](ResultTree.md#attr-resulttreefetchmode) `ResultTree`s, [Tree.add](#method-treeadd) or [Tree.addList](#method-treeaddlist) can then be used to provide new children. For [paged](ResultTree.md#attr-resulttreefetchmode) `ResultTrees`, [DataSource.updateCaches](DataSource.md#method-datasourceupdatecaches) must be used to insert nodes into the cache as local data, since such `ResultTree`s are considered read-only, and [Tree.add](#method-treeadd) and [Tree.addList](#method-treeaddlist) are not perrmitted.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| node | [TreeNode](#type-treenode) | false | — | folder in question |
+
+### Groups
+
+- loadState
+
+### See Also
+
+- [Tree.getLoadState](#method-treegetloadstate)
+- [Tree.reloadChildren](#method-treereloadchildren)
+
+---
+## Method: Tree.hasLeaves
+
+### Description
+Return whether this node has any children that are leaves.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| node | [TreeNode](#type-treenode) | false | — | node in question |
+
+### Returns
+
+`[Boolean](#type-boolean)` — true if the node has children that are leaves
 
 ---
 ## Method: Tree.getPathForOpenListIndex
@@ -1302,6 +859,70 @@ Returns a [NodeLocator](../reference_2.md#object-nodelocator) object suitable fo
 | position | [Integer](../reference_2.md#type-integer) | false | — | the child node's position within the parent |
 | path | [String](#type-string) | false | — | the full path to the child node |
 | openListIndex | [Integer](../reference_2.md#type-integer) | true | — | the index of the node occurence in the tree's current openList. This is the same as the record index of the node in an associated [TreeGrid](TreeGrid.md#class-treegrid) |
+
+---
+## Method: Tree.addList
+
+### Description
+Add a list of nodes to some parent. See ["Modifying ResultTrees"](ResultTree.md#class-resulttree) when working with a `ResultTree` for limitations.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| nodeList | [List of TreeNode](#type-list-of-treenode) | false | — | The list of nodes to add |
+| parent | [String](#type-string)|[TreeNode](#type-treenode) | false | — | Parent of the nodes being added. You can pass in either the [TreeNode](../reference.md#object-treenode) itself, or a path to the node (as a String), in which case a [Tree.find](#method-treefind) is performed to find the node. |
+| position | [number](#type-number) | true | — | Position of the new nodes in the children list. If not specified, the nodes will be added at the end of the list. |
+
+### Returns
+
+`[List](#type-list)` — List of added nodes.
+
+### See Also
+
+- [sharingNodes](../kb_topics/sharingNodes.md#kb-topic-sharing-nodes)
+
+---
+## Method: Tree.openAll
+
+### Description
+Open all nodes under a particular node.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| node | [TreeNode](#type-treenode)|[String](#type-string)|[Integer](../reference_2.md#type-integer)|[NodeLocator](#type-nodelocator) | true | — | node from which to open folders, or the node's ID, or a NodeLocator object (if not specified, the root node is used) |
+
+---
+## Method: Tree.getDescendants
+
+### Description
+Returns the list of all descendants of a node. Note: this method can be very slow, especially on large trees because it assembles a list of all descendants recursively. Generally, [Tree.find](#method-treefind) in combination with [Tree.getChildren](#method-treegetchildren) will be much faster.  
+  
+For load on demand trees (those that only have a partial representation client-side), this method will return only nodes that have already been loaded from the server.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| node | [TreeNode](#type-treenode) | true | — | node in question (the root node is assumed if none is specified) |
+
+### Returns
+
+`[List](#type-list)` — List of descendants of the node.
+
+---
+## Method: Tree.setSortFoldersBeforeLeaves
+
+### Description
+Setter for [Tree.sortFoldersBeforeLeaves](#attr-treesortfoldersbeforeleaves).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| sortFoldersBeforeLeaves | [Boolean](#type-boolean) | false | — | new `sortFoldersBeforeLeaves` value |
 
 ---
 ## Method: Tree.getParent
@@ -1340,7 +961,7 @@ var currentUserRecord = recordList.findNextIndex(0, function (record, i, recordL
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | startIndex | [int](../reference.md#type-int) | false | — | first index to consider. |
-| propertyName | [String](#type-string)|[Function](#type-function)|[Object](../reference.md#type-object)|[AdvancedCriteria](#type-advancedcriteria) | false | — | property to match; or, if a function is passed, the predicate function to call; or, if an object is passed, set of properties and values to match. |
+| propertyName | [String](#type-string)|[Function](#type-function)|[Object](../reference_2.md#type-object)|[AdvancedCriteria](#type-advancedcriteria) | false | — | property to match; or, if a function is passed, the predicate function to call; or, if an object is passed, set of properties and values to match. |
 | value | [Any](#type-any) | true | — | value to compare against (if `propertyName` is a string) or the value of `this` when the predicate function is invoked (if `propertyName` is a function) |
 | endIndex | [int](../reference.md#type-int) | true | — | last index to consider (inclusive). |
 
@@ -1352,6 +973,38 @@ var currentUserRecord = recordList.findNextIndex(0, function (record, i, recordL
 
 - access
 - find
+
+---
+## Method: Tree.getDescendantNodeLocators
+
+### Description
+Returns a list of link{type:NodeLocator)s identifying all descendants of a node (identified by the parameter `NodeLocator`). This method is the equivalent of [getDescendants()](#method-treegetdescendants), but for [multi-link trees](#method-treeismultilinktree). The list of descendant nodes returned from both methods is identical - a node's descendants are the same regardless of where or how many times that node appears in the tree - but the `NodeLocator`s returned by this method provide additional context that allows you to determine particular occurences of descendant nodes. This is necessary for some use cases - for example, when trying to determine if a particular node occurence is open, or selected.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| node | [TreeNode](#type-treenode) | true | — | node in question (the root node is assumed if none is specified) |
+
+### Returns
+
+`[List](#type-list)` — List of descendants of the node.
+
+---
+## Method: Tree.openFolders
+
+### Description
+Open a set of folders, specified by path or as pointers to nodes.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| nodeList | [List of TreeNode](#type-list-of-treenode) | false | — | List of nodes or node paths or NodeLocators |
+
+### See Also
+
+- [ResultTree.dataArrived](ResultTree.md#method-resulttreedataarrived)
 
 ---
 ## Method: Tree.getParentsAndPositions
@@ -1419,6 +1072,34 @@ Create a copy of tree. If includeData is `true`, the tree nodes are copied. Othe
 - creation
 
 ---
+## Method: Tree.getTitle
+
+### Description
+Return the title of a node -- the name as it should be presented to the user. This method works as follows:
+
+*   If a [Tree.titleProperty](#attr-treetitleproperty) is set on the node, the value of that property is returned.
+*   Otherwise, if the [Tree.nameProperty](#attr-treenameproperty) is set on the node, that value is returned, minus any trailing [Tree.pathDelim](#attr-treepathdelim).
+*   Finally, if none of the above yielded a title, the value of [Tree.defaultNodeTitle](#attr-treedefaultnodetitle) is returned.
+
+You can override this method to return the title of your choice for a given node.  
+  
+To override the title for an auto-constructed tree (for example, in a databound TreeGrid), override [TreeGrid.getNodeTitle](TreeGrid.md#method-treegridgetnodetitle) instead.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| node | [TreeNode](#type-treenode) | false | — | node for which the title is being requested |
+
+### Returns
+
+`[String](#type-string)` — title to display
+
+### See Also
+
+- [TreeGrid.getNodeTitle](TreeGrid.md#method-treegridgetnodetitle)
+
+---
 ## Method: Tree.find
 
 ### Description
@@ -1454,7 +1135,7 @@ When searching by path, trailing path delimiters are ignored. So for example `tr
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — the node matching the supplied criteria or null if not found
+`[Object](../reference_2.md#type-object)` — the node matching the supplied criteria or null if not found
 
 ### Groups
 
@@ -1465,6 +1146,57 @@ When searching by path, trailing path delimiters are ignored. So for example `tr
 - [Tree.root](#attr-treeroot)
 - [Tree.pathDelim](#attr-treepathdelim)
 - [Tree.nameProperty](#attr-treenameproperty)
+
+---
+## Method: Tree.getMultiLinkParents
+
+### Description
+For [multiLink trees](#method-treeismultilinktree), returns the array of this node's direct parents (the actual node objects, not the IDs). For non-multiLink trees, returns an array containing the single parent of this node. See also [Tree.getParentsAndPositions](#method-treegetparentsandpositions).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| node | [TreeNode](#type-treenode) | false | — | node in question |
+
+### Returns
+
+`[Array of TreeNode](#type-array-of-treenode)` — the parents of this node
+
+---
+## Method: Tree.getFilteredTree
+
+### Description
+Filters this tree by the provided criteria, returning a new Tree containing just the nodes that match the criteria.
+
+If `filterMode` is "keepParents", parents are retained if any of their children match the criteria even if those parents do not match the criteria.
+
+Note that the [DataSource](DataSource.md#class-datasource) argument is **required** if one is not [already specified](DataSource.md#class-datasource) on the tree.
+
+If you want a [TreeGrid](TreeGrid.md#class-treegrid) with local tree data that supports filtering, please consider using a [TreeGrid](TreeGrid.md#class-treegrid) bound to a [client-only DataSource](DataSource.md#attr-datasourceclientonly) rather than writing your own code to filter the tree's data with this method.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| criteria | [Criteria](../reference.md#type-criteria)|[AdvancedCriteria](#type-advancedcriteria) | false | — | criteria to filter by |
+| filterMode | [TreeFilterMode](../reference.md#type-treefiltermode) | true | — | mode to use for filtering, defaults to "strict" |
+| dataSource | [DataSource](#type-datasource) | true | — | dataSource to use for filtering, if this Tree does not already have one |
+| requestProperties | [DSRequest](#type-dsrequest) | true | — | Request properties block. This allows developers to specify properties that would impact the filter such as [DSRequest.textMatchStyle](DSRequest.md#attr-dsrequesttextmatchstyle) |
+
+### Returns
+
+`[Tree](#type-tree)` — filtered tree
+
+### Groups
+
+- treeFilter
+
+### See Also
+
+- [ListGrid.setCriteria](ListGrid_1.md#method-listgridsetcriteria)
+- [TreeGrid.filterData](TreeGrid.md#method-treegridfilterdata)
+- [ResultTree](ResultTree.md#class-resulttree)
 
 ---
 ## Method: Tree.getLevel
@@ -1506,7 +1238,7 @@ Like [Tree.findNextIndex](#method-treefindnextindex), but includes both open and
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | startIndex | [int](../reference.md#type-int) | false | — | first index to consider. |
-| propertyName | [String](#type-string)|[Function](#type-function)|[Object](../reference.md#type-object)|[AdvancedCriteria](#type-advancedcriteria) | false | — | property to match; or, if a function is passed, the predicate function to call; or, if an object is passed, set of properties and values to match. |
+| propertyName | [String](#type-string)|[Function](#type-function)|[Object](../reference_2.md#type-object)|[AdvancedCriteria](#type-advancedcriteria) | false | — | property to match; or, if a function is passed, the predicate function to call; or, if an object is passed, set of properties and values to match. |
 | value | [Any](#type-any) | true | — | value to compare against (if `propertyName` is a string) or the value of `this` when the predicate function is invoked (if `propertyName` is a function) |
 | endIndex | [int](../reference.md#type-int) | true | — | last index to consider (inclusive). |
 
@@ -1532,11 +1264,23 @@ For a databound tree this will trigger a fetch against the Tree's DataSource.
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | node | [TreeNode](#type-treenode) | false | — | node in question |
-| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | Optional callback (stringMethod) to fire when loading completes. Has a single param `node` - the node whose children have been loaded, and is fired in the scope of the Tree. |
+| callback | [DSCallback](../reference.md#type-dscallback) | true | — | Optional callback (stringMethod) to fire when loading completes. Has a single param `node` - the node whose children have been loaded, and is fired in the scope of the Tree. |
 
 ### Groups
 
 - loadState
+
+---
+## Method: Tree.closeFolder
+
+### Description
+Closes a folder. Note, for [multi-link tree](#method-treeismultilinktree)s, passing a `NodeLocator` is the only unambiguous way to specify the node.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| node | [TreeNode](#type-treenode)|[String](#type-string)|[Integer](../reference_2.md#type-integer)|[NodeLocator](#type-nodelocator) | false | — | the node to open, or its ID, or a NodeLocator object |
 
 ---
 ## Method: Tree.setChildren
@@ -1626,6 +1370,27 @@ Return true if this this node has any children that are folders.
 `[Boolean](#type-boolean)` — true if the node has children that are folders
 
 ---
+## Method: Tree.getChildrenResultSet
+
+### Description
+Returns a ResultSet that provides access to any partially-loaded children of a node. If the node is a leaf, this method returns null.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| node | [TreeNode](#type-treenode) | false | — | The node whose children you want to fetch. |
+
+### Returns
+
+`[ResultSet](#type-resultset)` — List of children for the node, including an empty ResultSet if the node has no children. For a leaf, returns null.
+
+### See Also
+
+- [Tree.getChildren](#method-treegetchildren)
+- [Tree.allChildrenLoaded](#method-treeallchildrenloaded)
+
+---
 ## Method: Tree.getAllNodes
 
 ### Description
@@ -1640,6 +1405,23 @@ Get all the nodes that exist in the tree under a particular node, as a flat list
 ### Returns
 
 `[Array of TreeNode](#type-array-of-treenode)` — all the nodes that exist in the tree
+
+---
+## Method: Tree.isDescendantOf
+
+### Description
+Is one node a descendant of the other?
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| child | [TreeNode](#type-treenode) | false | — | child node |
+| parent | [TreeNode](#type-treenode) | false | — | parent node |
+
+### Returns
+
+`[Boolean](#type-boolean)` — true == parent is an ancestor of child
 
 ---
 ## Method: Tree.removeList
@@ -1658,6 +1440,67 @@ Remove a list of nodes (not necessarily from the same parent), and all children 
 `[boolean](../reference.md#type-boolean)` — true if the tree was changed as a result of this call
 
 ---
+## Method: Tree.linkNodes
+
+### Description
+Adds an array of tree nodes into a Tree of [Tree.modelType](#attr-treemodeltype) "parent".
+
+The provided TreeNodes must contain, at a minimum, a field containing a unique ID for the node (specified by [Tree.idField](#attr-treeidfield)) and a field containing the ID of the node's parent node (specified by [Tree.parentIdField](#attr-treeparentidfield)).
+
+This method handles receiving a mixture of leaf nodes and parent nodes, even out of order and with any tree depth.
+
+Nodes may be passed with the [Tree.childrenProperty](#attr-treechildrenproperty) already populated with an Array of children that should also be added to the Tree, and this is automatically handled.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| nodes | [Array of TreeNode](#type-array-of-treenode) | false | — | list of nodes to link into the tree. |
+
+### See Also
+
+- [Tree.data](#attr-treedata)
+- [Tree.modelType](#attr-treemodeltype)
+
+---
+## Method: Tree.getParentPath
+
+### Description
+Given a node, return the path to its parent. This works just like [Tree.getPath](#method-treegetpath) except the node itself is not reported as part of the path.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| node | [TreeNode](#type-treenode) | false | — | node in question |
+
+### Returns
+
+`[String](#type-string)` — path to the node's parent
+
+### See Also
+
+- [Tree.getPath](#method-treegetpath)
+
+---
+## Method: Tree.getDescendantLeaves
+
+### Description
+Returns the list of all descendants of a node that are leaves. This works just like [Tree.getDescendants](#method-treegetdescendants), except folders are not part of the returned list. Folders are still recursed into, just not returned. Like [Tree.getDescendants](#method-treegetdescendants), this method can be very slow for large trees. Generally, [Tree.find](#method-treefind) in combination with [Tree.getLeaves](#method-treegetleaves) will be much faster.  
+  
+For load on demand trees (those that only have a partial representation client-side), this method will return only nodes that have already been loaded from the server.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| node | [TreeNode](#type-treenode) | true | — | node in question (the root node is assumed if none specified) |
+
+### Returns
+
+`[List](#type-list)` — List of descendants of the node that are leaves.
+
+---
 ## Method: Tree.closeFolders
 
 ### Description
@@ -1668,6 +1511,64 @@ Close a set of folders, specified by path or as pointers to nodes.
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | nodeList | [List of TreeNode](#type-list-of-treenode) | false | — | List of nodes or node paths or NodeLocators |
+
+---
+## Method: Tree.unloadChildren
+
+### Description
+Unload the children of a folder, returning the folder to the "unloaded" state.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| node | [TreeNode](#type-treenode) | false | — | folder in question |
+
+### Groups
+
+- loadState
+
+**Deprecated**
+
+---
+## Method: Tree.isMultiLinkTree
+
+### Description
+Returns true if this is a _multi-link_ tree - ie, one that can contain the same node in more than one place. Otherwise, returns false. The default implementation simply returns the value of the `multiLinkTree` flag
+
+See [Tree.linkData](#attr-treelinkdata) and [ResultTree.linkDataSource](ResultTree.md#attr-resulttreelinkdatasource) for further details of multiLink trees.
+
+---
+## Method: Tree.hasChildren
+
+### Description
+Returns true if this node has any children.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| node | [TreeNode](#type-treenode) | false | — | node in question |
+
+### Returns
+
+`[Boolean](#type-boolean)` — true if the node has children
+
+---
+## Method: Tree.getNodeLocator
+
+### Description
+For a [multi-link tree](#method-treeismultilinktree), this method returns the [nodeLocator](../reference_2.md#object-nodelocator) associated with the particular occurence of the node at the specified index within the current [open list](#method-treegetopenlist) of nodes in the tree. Not applicable to non-multilink trees (always returns null)
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| recordIndex | [Integer](../reference_2.md#type-integer) | false | — | position of a node occurence within the open list of the tree |
+
+### Returns
+
+`[NodeLocator](#type-nodelocator)` — NodeLocator unambiguously identifying the specific node occurence
 
 ---
 ## Method: Tree.getName
@@ -1686,6 +1587,20 @@ Get the 'name' of a node. This is node\[[Tree.nameProperty](#attr-treenameproper
 `[String](#type-string)` — name of the node
 
 ---
+## Method: Tree.getLength
+
+### Description
+Returns the number of items in the current open list.
+
+### Returns
+
+`[number](#type-number)` — number of items in open list
+
+### See Also
+
+- [Tree.getOpenList](#method-treegetopenlist)
+
+---
 ## Method: Tree.findIndex
 
 ### Description
@@ -1695,7 +1610,7 @@ Like [List.findIndex](List.md#method-listfindindex), but operates only on the li
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| propertyName | [String](#type-string)|[Object](../reference.md#type-object)|[AdvancedCriteria](#type-advancedcriteria) | false | — | property to match, or if an Object is passed, set of properties and values to match |
+| propertyName | [String](#type-string)|[Object](../reference_2.md#type-object)|[AdvancedCriteria](#type-advancedcriteria) | false | — | property to match, or if an Object is passed, set of properties and values to match |
 | value | [Any](#type-any) | true | — | value to compare against (if propertyName is a string) |
 
 ### Returns
@@ -1732,6 +1647,28 @@ Returns -1 if not found.
 ### Groups
 
 - access
+
+---
+## Method: Tree.findNodeIndex
+
+### Description
+Like [Tree.findIndex](#method-treefindindex), but searches all tree nodes regardless of their open/closed state.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| propertyName | [String](#type-string)|[Object](../reference_2.md#type-object)|[AdvancedCriteria](#type-advancedcriteria) | false | — | property to match, or if an Object is passed, set of properties and values to match |
+| value | [Any](#type-any) | true | — | value to compare against (if propertyName is a string) |
+
+### Returns
+
+`[int](../reference.md#type-int)` — index of the first matching Object or -1 if not found
+
+### Groups
+
+- access
+- find
 
 ---
 ## Method: Tree.getPath
@@ -1791,6 +1728,16 @@ Setter for [Tree.showRoot](#attr-treeshowroot).
 | showRoot | [Boolean](#type-boolean) | false | — | new `showRoot` value |
 
 ---
+## Method: Tree.dataChanged
+
+### Description
+Called when the structure of this tree is changed in any way. Intended to be observed.  
+  
+Note that on a big change (many items being added or deleted) this may be called multiple times
+
+**Flags**: A
+
+---
 ## Method: Tree.isRoot
 
 ### Description
@@ -1812,7 +1759,7 @@ Return true if the passed node is the root node.
 ### Description
 Returns all children of a node. If the node is a leaf, this method returns null.
 
-For databound trees the return value could be a [ResultSet](ResultSet.md#class-resultset) rather than a simple array - so it's important to access the return value using the [List](../reference_2.md#interface-list) interface instead of as a native Javascript Array. The case that a ResultSet may be returned can only happen if the tree is a [ResultTree](ResultTree.md#class-resulttree) and the [ResultTree.fetchMode](ResultTree.md#attr-resulttreefetchmode) is set to "paged".
+For databound trees the return value could be a [ResultSet](ResultSet.md#class-resultset) rather than a simple array - so it's important to access the return value using the [List](../reference.md#interface-list) interface instead of as a native Javascript Array. The case that a ResultSet may be returned can only happen if the tree is a [ResultTree](ResultTree.md#class-resulttree) and the [ResultTree.fetchMode](ResultTree.md#attr-resulttreefetchmode) is set to "paged".
 
 ### Parameters
 
@@ -1846,6 +1793,18 @@ Returns true if "parent" is the parent of "node". This is straightforward and de
 `[Boolean](#type-boolean)` — true if "parent" is a parent of "node"; otherwise false
 
 ---
+## Method: Tree.closeAll
+
+### Description
+Close all nodes under a particular node
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| node | [TreeNode](#type-treenode)|[NodeLocator](#type-nodelocator) | true | — | node from which to close folders (if not specified, the root node is used). If this is a [multi-link tree](#method-treeismultilinktree), you must provide a [NodeLocator](../reference_2.md#object-nodelocator) for any node other than the root node |
+
+---
 ## Method: Tree.move
 
 ### Description
@@ -1858,6 +1817,26 @@ Moves the specified node to a new parent.
 | node | [TreeNode](#type-treenode) | false | — | node to move |
 | newParent | [TreeNode](#type-treenode) | false | — | new parent to move the node to |
 | position | [Integer](../reference_2.md#type-integer) | true | — | Position of the new node in the children list. If not specified, the node will be added at the end of the list. |
+
+---
+## Method: Tree.getLoadState
+
+### Description
+What is the loadState of a given folder?
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| node | [TreeNode](#type-treenode) | false | — | folder in question |
+
+### Returns
+
+`[LoadState](../reference.md#type-loadstate)` — state of the node
+
+### Groups
+
+- loadState
 
 ---
 ## Method: Tree.allChildrenLoaded

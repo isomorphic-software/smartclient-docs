@@ -10,14 +10,6 @@
 Class for encoding objects as JSON strings.
 
 ---
-## Attr: JSONEncoder.skipNullValues
-
-### Description
-If true, don't include properties with null values when encoding an object.
-
-**Flags**: IR
-
----
 ## Attr: JSONEncoder.strictQuoting
 
 ### Description
@@ -34,24 +26,6 @@ Encoding only where required produces slightly shorter, more readable output whi
  
 ```
 .. but is not understood by many server-side JSON parser implementations.
-
-**Flags**: IR
-
----
-## Attr: JSONEncoder.serializeInstances
-
-### Description
-Controls the output of the JSONEncoder when instances of SmartClient classes (eg a ListGrid) are included in the data to be serialized. See [JSONInstanceSerializationMode](../reference_2.md#type-jsoninstanceserializationmode).
-
-Note that the JSONEncoder does not support a format that will recreate the instance if passed to decode() or eval().
-
-**Flags**: IR
-
----
-## Attr: JSONEncoder.skipInternalProperties
-
-### Description
-If true, don't show SmartClient internal properties when encoding an object.
 
 **Flags**: IR
 
@@ -80,12 +54,30 @@ Format for encoding JavaScript Date values in JSON. See [JSONDateFormat](../refe
 **Flags**: IR
 
 ---
+## Attr: JSONEncoder.serializeInstances
+
+### Description
+Controls the output of the JSONEncoder when instances of SmartClient classes (eg a ListGrid) are included in the data to be serialized. See [JSONInstanceSerializationMode](../reference.md#type-jsoninstanceserializationmode).
+
+Note that the JSONEncoder does not support a format that will recreate the instance if passed to decode() or eval().
+
+**Flags**: IR
+
+---
 ## Attr: JSONEncoder.showDebugOutput
 
 ### Description
 If objects that cannot be serialized to JSON are encountered during serialization, show a placeholder rather than just omitting them.
 
 The resulting String will not be valid JSON and so cannot be decoded/eval()'d
+
+**Flags**: IR
+
+---
+## Attr: JSONEncoder.skipInternalProperties
+
+### Description
+If true, don't show SmartClient internal properties when encoding and object.
 
 **Flags**: IR
 
@@ -108,6 +100,24 @@ The string marker used to represent circular references. See [JSONEncoder.circul
 **Flags**: IR
 
 ---
+## Method: JSONEncoder.encodeDate
+
+### Description
+Encode a JavaScript Date value.
+
+By default, follows the [JSONEncoder.dateFormat](#attr-jsonencoderdateformat) setting. Override to do custom encoding.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| theDate | [Date](#type-date) | false | — | JavaScript date object to be serialized |
+
+### Returns
+
+`[String](#type-string)` — value to be included in result. **If this value is intended to appear as a String it should include quotes (")**
+
+---
 ## Method: JSONEncoder.encode
 
 ### Description
@@ -126,23 +136,5 @@ Note that using the String produced by this API with [JSON.decode](JSON.md#class
 ### Returns
 
 `[String](#type-string)` — object encoded as a JSON String
-
----
-## Method: JSONEncoder.encodeDate
-
-### Description
-Encode a JavaScript Date value.
-
-By default, follows the [JSONEncoder.dateFormat](#attr-jsonencoderdateformat) setting. Override to do custom encoding.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| theDate | [Date](#type-date) | false | — | JavaScript date object to be serialized |
-
-### Returns
-
-`[String](#type-string)` — value to be included in result. **If this value is intended to appear as a String it should include quotes (")**
 
 ---

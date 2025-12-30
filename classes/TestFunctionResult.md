@@ -4,6 +4,20 @@
 
 ---
 
+## Attr: TestFunctionResult.failedGeneration
+
+### Description
+Set to true if there is a syntax error in the formula or summary being checked.
+
+When set to true, [TestFunctionResult.errorText](#attr-testfunctionresulterrortext) contains the exception message.
+
+### Groups
+
+- formulaFields
+
+**Flags**: IRW
+
+---
 ## Attr: TestFunctionResult.record
 
 ### Description
@@ -32,20 +46,6 @@ When a formula or summary format is valid, _result_ contains the result returned
 
 ### Description
 If the formula or summary format caused a JavaScript error, this contains the JavaScript error text.
-
-### Groups
-
-- formulaFields
-
-**Flags**: IRW
-
----
-## Attr: TestFunctionResult.failedGeneration
-
-### Description
-Set to true if there is a syntax error in the formula or summary being checked.
-
-When set to true, [TestFunctionResult.errorText](#attr-testfunctionresulterrortext) contains the exception message.
 
 ### Groups
 

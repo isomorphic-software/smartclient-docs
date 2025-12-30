@@ -9,7 +9,7 @@
 ### Description
 The SmartClient Server is a set of Java libraries, servlets and tools that provide the key server-side components needed to build a complete application in the modern web architecture.
 
-The SmartClient Server can be [integrated](iscInstall.md#kb-topic-installing-the-smartclient-runtime) into any pre-existing Java application, and is designed to rapidly connect SmartClient visual components to pre-existing Java business logic or persistence engines. SmartClient's Ajax request processing facilities can be easily integrated into [Spring controllers](springIntegration.md#kb-topic-integration-with-spring) or custom servlets and JSPs.
+The SmartClient Server can be [integrated](iscInstall.md#kb-topic-deploying-smartclient) into any pre-existing Java application, and is designed to rapidly connect SmartClient visual components to pre-existing Java business logic or persistence engines. SmartClient's Ajax request processing facilities can be easily integrated into Struts Actions, [Spring controllers](springIntegration.md#kb-topic-integration-with-spring), or custom servlets and JSPs.
 
 Alternatively, the SmartClient Server provides a complete SQL and Hibernate-based persistence engine for new applications, with out-of-the-box servlets for processing Ajax data requests.
 
@@ -46,23 +46,9 @@ Any request transmitted to the SmartClient Server can be combined into a "queue"
 *   guaranteed in-order processing of operations
 *   more efficient network usage
 
-#### HTTP Response Headers for Top-Level Status Reporting
+#### Visual Builder
 
-In addition to the existing SmartClient Server status reporting protocols, we have introduced HTTP response headers to provide top-level status reporting. These headers report status for both single requests and "queues" of requests transmitted as a single HTTP request:
-
-**x-isc-server-status**: This header provides a single response status for individual requests. In the context of a "queue" of requests, it reports the status of the first "failure" response for non transactional "queues" of requests and general [STATUS\_FAILURE](../classes/RPCResponse.md#classattr-rpcresponsestatus_failure) for the transactional "queue" of requests.  
-**x-isc-server-queue-status**: This header contains a comma-separated array of statuses. For single responses, it contains just one status. However, in the case of a "queue" of requests, it holds a comma-separated array of statuses, providing statuses for the entire "queue."
-
-These headers report [RPC Response status codes](statusCodes.md#kb-topic-statuscodes), for example headers:  
-`x-isc-server-status: -4`  
-`x-isc-server-queue-status: 0,0,0,-4,0`  
-report [STATUS\_VALIDATION\_ERROR](../classes/RPCResponse.md#classattr-rpcresponsestatus_validation_error) for one of requests in the "queue" of submitted requests.
-
-These headers serve multiple purposes, including aiding in test scenarios by allowing you to access server status information without relying on the undocumented details of the iscServer protocol, which are subject to change without prior notice. Additionally, when dealing with download and export requests, these headers enable client-side code to skip the extraction of text from a blob in order to capture error responses efficiently.
-
-#### Reify
-
-[Reify](reify.md#kb-topic-reify-overview) is included with the SmartClient Server, and uses server features such as automatic SQL binding to provide a rapid prototyping environment.
+[Visual Builder](visualBuilder.md#kb-topic-visual-builder) is included with the SmartClient Server, and uses server features such as automatic SQL binding to provide a rapid prototyping environment.
 
 #### Automatic Bi-directional Java < - > JavaScript serialization and translation
 
@@ -84,9 +70,9 @@ Both serverType:"sql" and serverType:"hibernate" support the field-operator-valu
 
 The SmartClient Server provides a standardized request and response protocol designed for data-oriented "CRUD" operations (create, retrieve, update, delete).
 
-This standardized protocol automatically handles [request metadata](../reference_2.md#object-dsrequest) (paging parameters, requested sort order, original values of data being modified) and [response metadata](../classes/DSResponse.md#class-dsresponse) (error handling, cache management, session expiration etc).
+This standardized protocol automatically handles [request metadata](../reference.md#object-dsrequest) (paging parameters, requested sort order, original values of data being modified) and [response metadata](../classes/DSResponse.md#class-dsresponse) (error handling, cache management, session expiration etc).
 
-This standardized protocol avoids developers in different groups inventing their own incompatible and redundant request/response protocols, and allows developers to more easily learn code they didn't author.
+Similar to the impact of Struts on early web applications, this standardized protocol avoids developers in different groups inventing their own incompatible and redundant request/response protocols, and allows developers to more easily learn code they didn't author.
 
 #### Bi-directional XPath binding to Java Objects
 

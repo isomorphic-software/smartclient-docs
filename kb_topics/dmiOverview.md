@@ -35,9 +35,7 @@ For example, the following Datasource DMI declaration would route "fetch" operat
 ```
 Method overloading is not supported - there must be exactly one method on the target class with the name specified in [OperationBinding.serverMethod](../classes/OperationBinding.md#attr-operationbindingservermethod). The method must be public, but can be either an instance or static method. If no operationBinding is specified or the operationBinding does not specify a `serverMethod` then it defaults to the name of the operation (eg "fetch").
 
-By default, the DSResponse data sent back by DataSource DMIs is filtered to just the set of fields specified on the DataSource. This allows you to simply return beans that potentially have getter methods for fields other than are defined in the DataSource without that (potentially private) data being sent to the client. If you want to disable this functionality, you can do so on a per-operation basis by setting [ServerObject.dropExtraFields](../classes/ServerObject.md#attr-serverobjectdropextrafields), on a per-DataSource level by setting [DataSource.dropExtraFields](../classes/DataSource.md#attr-datasourcedropextrafields), or globally by setting the config parameter `DMI.dropExtraFields` to `false` in [\[webroot\]/WEB-INF/classes/server.properties](server_properties.md#kb-topic-serverproperties-file).
-
-Non-DMI DSResponse data for Hibernate and JPA datasources is, by default, filtered to just the set of fields specified on the DataSource to avoid unintentional lazy loading too much of a data model. For the rest of non-DMI operations DSResponse data is, by default, not filtered in this manner for backward compatibility reasons. If you want to enable this type of filtering for non-DMI DSResponse data, you can do so by setting the config parameter `DSResponse.dropExtraFields` to `true` in [\[webroot\]/WEB-INF/classes/server.properties](server_properties.md#kb-topic-serverproperties-file). `DMI.dropExtraFields` and `DSResponse.dropExtraFields` can be enabled/disabled independently of each other - that is, setting one does not side-effect the other. [server.properties](server_properties.md#kb-topic-serverproperties-file) settings can be overridden by an explicit setting in [DataSource.dropExtraFields](../classes/DataSource.md#attr-datasourcedropextrafields) which in turn can be overridden by an explicit setting in [ServerObject.dropExtraFields](../classes/ServerObject.md#attr-serverobjectdropextrafields) (this last one for DMI only since non-DMI operations don't have a serverObject context).
+By default, the DSResponse data sent back by DataSource DMIs is filtered to just the set of fields specified on the DataSource. This allows you to simply return beans that potentially have getter methods for fields other than are defined in the DataSource without that (potentially private) data being sent to the client. If you want to disable this functionality, you can do so on a per-operation basis by setting [ServerObject.dropExtraFields](../classes/ServerObject.md#attr-serverobjectdropextrafields), on a per-DataSource level by setting [DataSource.dropExtraFields](../classes/DataSource.md#attr-datasourcedropextrafields), or globally by setting the config parameter `DMI.dropExtraFields` to `false` in [\[webroot\]/WEB-INF/classes/server.properties](../reference.md#kb-topic-serverproperties-file). Non-DMI DSResponse data is, by default, not filtered in this manner for backward compatibility reasons. If you want to enable this type of filtering for non-DMI DSResponse data, you can do so by setting the config parameter `DSResponse.dropExtraFields` to `true` in [\[webroot\]/WEB-INF/classes/server.properties](../reference.md#kb-topic-serverproperties-file). `DMI.dropExtraFields` and `DSResponse.dropExtraFields` can be enabled/disabled independently of each other - that is, setting one does not side-effect the other. [server.properties](../reference.md#kb-topic-serverproperties-file) settings can be overridden by an explicit setting in [DataSource.dropExtraFields](../classes/DataSource.md#attr-datasourcedropextrafields) which in turn can be overridden by an explicit setting in [ServerObject.dropExtraFields](../classes/ServerObject.md#attr-serverobjectdropextrafields) (this last one for DMI only since non-DMI operations don't have a serverObject context).
 
 **DataSource DMI and regular RPCManager dispatch**  
 It is possible to use DMI to incorporate your own code into what is otherwise the regular process flow of an ordinary, non-DMI DataSource request. This is particularly valuable if you are using the built-in SQL or Hibernate DataSources, because it allows you to inject extra functionality (validations, processing steps, messages to other systems, anything you can code) into a fetch or update request that is otherwise handled for you by the SmartClient Server.
@@ -54,10 +52,10 @@ RPC DMI also uses a [ServerObject](../reference_2.md#object-serverobject) config
 **Method Invocation**  
 SmartClient can pass a set of stock context variables to your DMI method and also performs some type adaptation logic to make this interface more flexible. For DataSource DMI, you can declare your method to take any number of the following types of arguments and they will be passed to you:
 
-*   jakarta.servlet.http.HttpServletRequest
-*   jakarta.servlet.http.HttpServletResponse
-*   jakarta.servlet.ServletContext
-*   jakarta.servlet.http.HttpSession
+*   javax.servlet.http.HttpServletRequest
+*   javax.servlet.http.HttpServletResponse
+*   javax.servlet.ServletContext
+*   javax.servlet.http.HttpSession
 *   com.isomorphic.rpc.RPCManager
 *   com.isomorphic.datasource.DSRequest
 *   com.isomorphic.servlet.RequestContext (from com.isomorphic.servlet)
@@ -101,10 +99,10 @@ The server-side implementation of the method invoked must have a signature that 
 
 In addition to the parameters explicitly passed from the client, your method signature can include some additional arguments to pick up information about the request passed in. If your server side method is declared with arguments of the following type they will be passed to your DMI method.
 
-*   jakarta.servlet.http.HttpServletRequest
-*   jakarta.servlet.http.HttpServletResponse
-*   jakarta.servlet.ServletContext
-*   jakarta.servlet.http.HttpSession
+*   javax.servlet.http.HttpServletRequest
+*   javax.servlet.http.HttpServletResponse
+*   javax.servlet.ServletContext
+*   javax.servlet.http.HttpSession
 *   com.isomorphic.rpc.RPCManager
 *   com.isomorphic.rpc.RPCRequest
 *   org.springframework.beans.factory.BeanFactory (when applicable)

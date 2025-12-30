@@ -34,18 +34,6 @@ The title displayed for the frozen property
 **Flags**: IR
 
 ---
-## ClassAttr: FieldPickerField.decimalPadTitle
-
-### Description
-The title displayed for the decimalPad property
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IR
-
----
 ## ClassAttr: FieldPickerField.cellAlignTitle
 
 ### Description
@@ -62,6 +50,18 @@ The title displayed for the cellAlign property
 
 ### Description
 The title displayed for the precision property
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IR
+
+---
+## ClassAttr: FieldPickerField.decimalPadTitle
+
+### Description
+The title displayed for the decimalPad property
 
 ### Groups
 

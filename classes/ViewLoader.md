@@ -43,14 +43,6 @@ Selects the HTTP method that will be used when fetching content. Valid values ar
 **Flags**: IRW
 
 ---
-## Attr: ViewLoader.viewRPCProperties
-
-### Description
-RPCRequest properties to be sent with every RPCRequest issued by the ViewLoader. Very advanced; could be used to, for example, set HTTP headers.
-
-**Flags**: IRA
-
----
 ## Attr: ViewLoader.allowCaching
 
 ### Description
@@ -89,6 +81,14 @@ Message to show while the view is loading. Use `"${loadingImage}"` to include [a
 **Flags**: IR
 
 ---
+## Attr: ViewLoader.viewRPCProperties
+
+### Description
+RPCRequest properties to be sent with every RPCRequest issued by the ViewLoader. Very advanced; could be used to, for example, set HTTP headers.
+
+**Flags**: IRA
+
+---
 ## Method: ViewLoader.getView
 
 ### Description
@@ -119,7 +119,7 @@ This method is called from the response processing pipeline. If you want to prov
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false to suppress further response processing
+`[boolean](../reference.md#type-boolean)` — false to suppress further response processing
 
 ### Groups
 
@@ -137,8 +137,8 @@ Can also be called with no arguments to reload the view from the existing [ViewL
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| url | [URL](../reference_2.md#type-url) | true | — | URL to retrieve view from |
-| params | [Object](../reference.md#type-object) | true | — | Parameters to send to the viewURL. Merged with `component.viewURLParams` if both are set. |
+| url | [URL](../reference.md#type-url) | true | — | URL to retrieve view from |
+| params | [Object](../reference_2.md#type-object) | true | — | Parameters to send to the viewURL. Merged with `component.viewURLParams` if both are set. |
 | rpcProperties | [RPCRequest Properties](#type-rpcrequest-properties) | true | — | Additional properties for the RPCRequest sent by the ViewLoader. Very advanced; could be used to, for example, set HTTP headers. |
 
 ### Groups

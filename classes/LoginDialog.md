@@ -82,6 +82,14 @@ Default title for login button in the dialog displayed by [isc.showLoginDialog](
 **Flags**: IRW
 
 ---
+## Attr: LoginDialog.showCloseButton
+
+### Description
+Do not set LoginDialog.showCloseButton; it is controlled by the [LoginDialog.dismissable](#attr-logindialogdismissable) property.
+
+**Flags**: IRW
+
+---
 ## Attr: LoginDialog.passwordItemTitle
 
 ### Description
@@ -90,10 +98,26 @@ Specifies the title of the "passwordItem" field of the [LoginDialog.loginForm](#
 **Flags**: IR
 
 ---
+## Attr: LoginDialog.items
+
+### Description
+Specifies the dialog contents. By default, the dialog only contains [LoginDialog.loginForm](#attr-logindialogloginform). If desired, additional widgets may be placed before/after the loginForm. To specify these widgets as [autoChildren](../kb_topics/autoChildren.md#kb-topic-autochildren), use the syntax "autoChild:_childName_" [as used for panes/items of\\n Tabs/SectionStacks](../kb_topics/autoChildren.md#kb-topic-autochildren).
+
+**Flags**: IR
+
+---
 ## Attr: LoginDialog.errorMessage
 
 ### Description
 Specifies the default error message displayed on the login form when authentication fails.
+
+**Flags**: IR
+
+---
+## Attr: LoginDialog.loginFailureItem
+
+### Description
+Field item containing login error message (if required) in [LoginDialog.loginForm](#attr-logindialogloginform).
 
 **Flags**: IR
 
@@ -139,10 +163,58 @@ Specifies the contents of the login submission button of the [LoginDialog.loginF
 **Flags**: IR
 
 ---
+## Attr: LoginDialog.formFields
+
+### Description
+Customizes the fields present in the dialog, or specifies new fields to be present, in the same manner as with [DynamicForm.fields](DynamicForm.md#attr-dynamicformfields).
+
+### See Also
+
+- [DataBoundComponent.fields](DataBoundComponent.md#attr-databoundcomponentfields)
+
+**Flags**: IR
+
+---
 ## Attr: LoginDialog.showLostPasswordLink
 
 ### Description
 If true, display a [LinkItem](LinkItem.md#class-linkitem) ([LoginDialog.lostPasswordItem](#attr-logindialoglostpassworditem)) meant for the user to click if the account's credentials are forgotten. The text of the link is controlled by [LoginDialog.lostPasswordItemTitle](#attr-logindialoglostpassworditemtitle). If clicked, the link will fire [LoginDialog.lostPassword](#method-logindialoglostpassword).
+
+**Flags**: IR
+
+---
+## Attr: LoginDialog.lostPasswordItemTitle
+
+### Description
+Specifies the contents of the password request button (if configured) on the [LoginDialog.loginForm](#attr-logindialogloginform).
+
+**Flags**: IR
+
+---
+## Attr: LoginDialog.registrationItemTitle
+
+### Description
+Specifies the contents of the registration link (if configured) on the [LoginDialog.loginForm](#attr-logindialogloginform).
+
+**Flags**: IR
+
+---
+## Attr: LoginDialog.loginButton
+
+### Description
+Login submission button in [LoginDialog.loginForm](#attr-logindialogloginform).
+
+### See Also
+
+- [LoginDialog.loginButtonTitle](#attr-logindialogloginbuttontitle)
+
+**Flags**: IR
+
+---
+## Attr: LoginDialog.allowBlankPassword
+
+### Description
+If true, the login form will allow blank passwords to be submitted. Otherwise the form fails to be validated until the user enters at least one character into the password field.
 
 **Flags**: IR
 
@@ -160,6 +232,14 @@ To handle a user click as a physical link to another page, set [defaultValue](Fo
 
 - [LoginDialog.showRegistrationLink](#attr-logindialogshowregistrationlink)
 - [LoginDialog.registrationItemTitle](#attr-logindialogregistrationitemtitle)
+
+**Flags**: IR
+
+---
+## Attr: LoginDialog.usernameItemTitle
+
+### Description
+Specifies the title of the "usernameItem" field of the [LoginDialog.loginForm](#attr-logindialogloginform).
 
 **Flags**: IR
 
@@ -225,86 +305,6 @@ Specifies the title of the dialog box.
 **Flags**: IR
 
 ---
-## Attr: LoginDialog.showCloseButton
-
-### Description
-Do not set LoginDialog.showCloseButton; it is controlled by the [LoginDialog.dismissable](#attr-logindialogdismissable) property.
-
-**Flags**: IRW
-
----
-## Attr: LoginDialog.items
-
-### Description
-Specifies the dialog contents. By default, the dialog only contains [LoginDialog.loginForm](#attr-logindialogloginform). If desired, additional widgets may be placed before/after the loginForm. To specify these widgets as [autoChildren](../kb_topics/autoChildren.md#kb-topic-autochildren), use the syntax "autoChild:_childName_" [as used for panes/items of\\n Tabs/SectionStacks](../kb_topics/autoChildren.md#kb-topic-autochildren).
-
-**Flags**: IR
-
----
-## Attr: LoginDialog.loginFailureItem
-
-### Description
-Field item containing login error message (if required) in [LoginDialog.loginForm](#attr-logindialogloginform).
-
-**Flags**: IR
-
----
-## Attr: LoginDialog.formFields
-
-### Description
-Customizes the fields present in the dialog, or specifies new fields to be present, in the same manner as with [DynamicForm.fields](DynamicForm.md#attr-dynamicformfields).
-
-### See Also
-
-- [DataBoundComponent.fields](DataBoundComponent.md#attr-databoundcomponentfields)
-
-**Flags**: IR
-
----
-## Attr: LoginDialog.lostPasswordItemTitle
-
-### Description
-Specifies the contents of the password request button (if configured) on the [LoginDialog.loginForm](#attr-logindialogloginform).
-
-**Flags**: IR
-
----
-## Attr: LoginDialog.registrationItemTitle
-
-### Description
-Specifies the contents of the registration link (if configured) on the [LoginDialog.loginForm](#attr-logindialogloginform).
-
-**Flags**: IR
-
----
-## Attr: LoginDialog.loginButton
-
-### Description
-Login submission button in [LoginDialog.loginForm](#attr-logindialogloginform).
-
-### See Also
-
-- [LoginDialog.loginButtonTitle](#attr-logindialogloginbuttontitle)
-
-**Flags**: IR
-
----
-## Attr: LoginDialog.allowBlankPassword
-
-### Description
-If true, the login form will allow blank passwords to be submitted. Otherwise the form fails to be validated until the user enters at least one character into the password field.
-
-**Flags**: IR
-
----
-## Attr: LoginDialog.usernameItemTitle
-
-### Description
-Specifies the title of the "usernameItem" field of the [LoginDialog.loginForm](#attr-logindialogloginform).
-
-**Flags**: IR
-
----
 ## Method: LoginDialog.loginFunc
 
 ### Description
@@ -341,7 +341,7 @@ The following code shows typical usage. This code assumes you have created a glo
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| credentials | [Object](../reference.md#type-object) | false | — | Login credentials supplied by the user |
+| credentials | [Object](../reference_2.md#type-object) | false | — | Login credentials supplied by the user |
 | dialogCallback | [Function](#type-function) | false | — | Function that must be called once the login transaction completes |
 
 ---
@@ -354,7 +354,7 @@ Called if the user clicks on the [registration link](#attr-logindialogregistrati
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| values | [Object](../reference.md#type-object) | false | — | Current values of form fields |
+| values | [Object](../reference_2.md#type-object) | false | — | Current values of form fields |
 | form | [DynamicForm](#type-dynamicform) | false | — | Form on which the link was clicked |
 
 ---
@@ -367,7 +367,7 @@ Called if the user clicks on the ["Lost Password"](#attr-logindialoglostpassword
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| values | [Object](../reference.md#type-object) | false | — | Current values of form fields |
+| values | [Object](../reference_2.md#type-object) | false | — | Current values of form fields |
 | form | [DynamicForm](#type-dynamicform) | false | — | Form on which the link was clicked |
 
 ---

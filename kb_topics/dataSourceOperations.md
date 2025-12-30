@@ -25,17 +25,17 @@ If you are using [client-side data integration](clientDataIntegration.md#kb-topi
 **add**
 
 *   Request data: new record, as an Object
-*   Response data: new record as stored, as an Object or Array of one Object
+*   Response data: new record as stored, as an Object
 
 **update**
 
 *   Request data: primary keys of record to update, and new values (or just complete updated record), as an Object
-*   Response data: new record as stored, as an Object or Array of one Object
+*   Response data: new record as stored, as an Object
 
 **remove**
 
 *   Request data: primary keys of record to delete, as an Object
-*   Response data: minimally the primary keys of deleted record (can be complete record), as an Object or Array of one Object
+*   Response data: minimally the primary keys of deleted record (can be complete record), as an Object
 
 **custom**
 

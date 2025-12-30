@@ -30,9 +30,8 @@ Developers performing global styling modifications for formItems should also be 
 
 ### Related
 
-- [FormItemBaseStyle](../reference_2.md#type-formitembasestyle)
+- [FormItemBaseStyle](../reference.md#type-formitembasestyle)
 - [FormItem.cellHeight](../classes/FormItem.md#attr-formitemcellheight)
-- [FormItem.iconBaseStyle](../classes/FormItem.md#attr-formitemiconbasestyle)
 - [FormItem.showFocused](../classes/FormItem.md#attr-formitemshowfocused)
 - [FormItem.showOver](../classes/FormItem.md#attr-formitemshowover)
 - [FormItem.updateTextBoxOnOver](../classes/FormItem.md#attr-formitemupdatetextboxonover)

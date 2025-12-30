@@ -41,240 +41,6 @@ If true, even non-matching options will be shown, with configurable [separator r
 **Flags**: IR
 
 ---
-## Attr: PickList.pickListWidth
-
-### Description
-Default width to show the pickList. If not specified, the width of this form item's element will be used instead.
-
-Note that this is a minimum value - by default if the values displayed in this pickList are wider than the specified width the list will expand to accommodate them.
-
-### Groups
-
-- pickList
-
-**Flags**: IRW
-
----
-## Attr: PickList.singleClickFolderToggle
-
-### Description
-When this item is showing a [tree-based picker](#attr-picklistdatasettype), the default behavior is for folder open-state to be toggled by double-clicking. Set this attribute to true to toggle folders on a single-click instead.
-
-Note: when set to true, users can only choose leaf-nodes, since clicking folders would simply toggle them.
-
-**Flags**: IR
-
----
-## Attr: PickList.rootNodeId
-
-### Description
-When this item is showing a [tree-based picker](#attr-picklistdatasettype), this is the [id](SelectItem.md#attr-selectitemvaluefield) of the record to use as the [root](Tree.md#attr-treerootvalue) node.
-
-**Flags**: IRW
-
----
-## Attr: PickList.useClientFiltering
-
-### Description
-For [databound](#attr-picklistoptiondatasource) items, this property will be passed to the generated ResultSet data object for the pickList as [ResultSet.useClientFiltering](ResultSet.md#attr-resultsetuseclientfiltering). Setting to false will disable filtering on the client and ensure criteria are always passed to the DataSource directly.
-
-**Flags**: IRA
-
----
-## Attr: PickList.filterLocally
-
-### Description
-If `filterLocally` is set for this item, and this item is showing options from a dataSource, fetch the entire set of options from the server, and use these values to map the item value to the appropriate display value. Also use `"local"` type filtering on drop down list of options.
-
-This means data will only be fetched once from the server, and then filtered on the client.
-
-Note - when this property is set to `false`, filtering will still be performed on the client if a complete set of data for some criteria has been cached by a fetch, and a subsequent fetch has more restrictive criteria. To explicitly disable client-side filtering set the [PickList.useClientFiltering](#attr-picklistuseclientfiltering) property to false.
-
-### See Also
-
-- [FormItem.filterLocally](FormItem.md#attr-formitemfilterlocally)
-
-**Flags**: IRA
-
----
-## Attr: PickList.pickListAnimationTime
-
-### Description
-If [PickList.animatePickList](#attr-picklistanimatepicklist) is true, this attribute specifies the millisecond duration of the animation effect.
-
-### Groups
-
-- pickList
-
-**Flags**: IRWA
-
----
-## Attr: PickList.pickListConstructor
-
-### Description
-The Class to use when creating a picker of [type "list"](#attr-picklistdatasettype) for a FormItem. Must be a subclass of the builtin default, [PickListMenu](PickListMenu.md#class-picklistmenu).
-
-### Groups
-
-- pickList
-
-**Flags**: IR
-
----
-## Attr: PickList.optionFilterContext
-
-### Description
-If this item has a specified `optionDataSource`, and this property is not null, this will be passed to the datasource as [DSRequest](../reference_2.md#object-dsrequest) properties when performing the filter operation on the dataSource to obtain the set of options for the list. This provides, among other capabilities, a way to trigger the server to return summary records.
-
-### See Also
-
-- [serverSummaries](../kb_topics/serverSummaries.md#kb-topic-server-summaries)
-
-**Flags**: IRA
-
----
-## Attr: PickList.emptyPickListHeight
-
-### Description
-Height for an empty pick list (showing the empty message), if the pick list has no records and [PickList.hideEmptyPickList](#attr-picklisthideemptypicklist) is `false`.
-
-**Flags**: IRW
-
----
-## Attr: PickList.valueField
-
-### Description
-If this form item maps data values to display values by retrieving the [FormItem.displayField](FormItem.md#attr-formitemdisplayfield) values from an [optionDataSource](FormItem.md#attr-formitemoptiondatasource), this property denotes the the field to use as the underlying data value in records from the optionDataSource.  
-If not explicitly supplied, the valueField name will be derived as described in [FormItem.getValueFieldName](FormItem.md#method-formitemgetvaluefieldname).
-
-### Groups
-
-- databinding
-
-**Flags**: IRA
-
----
-## Attr: PickList.pickListTallBaseStyle
-
-### Description
-Optional [tallBaseStyle](ListGrid_1.md#attr-listgridtallbasestyle) for pickList cells. If unset, [PickList.pickListBaseStyle](#attr-picklistpicklistbasestyle) will be applied to all cells.
-
-### Groups
-
-- pickList
-
-**Flags**: IR
-
----
-## Attr: PickList.pickListHeight
-
-### Description
-Maximum height to show the pick list before it starts to scroll. Note that by default the pickList will be sized to the height required by its content so it will be taller when more rows are available as selectable options
-
-### Groups
-
-- pickList
-
-**Flags**: IRW
-
----
-## Attr: PickList.sortField
-
-### Description
-Specifies one or more fields by which this item should be initially sorted. It can be a [field name](ListGridField.md#attr-listgridfieldname), or an array of field names - but note that, if multiple fields are supplied, then each will be sorted in the same [direction](ListGrid_1.md#attr-listgridsortdirection).
-
-For full sorting control, set [initialSort](#attr-picklistinitialsort) to a list of custom [sortSpecifiers](../reference_2.md#object-sortspecifier).
-
-This attribute can also be set to the index of a field in the fields array, but note that it will be converted to a string (field name) after initialization.
-
-### Groups
-
-- sorting
-
-**Flags**: IR
-
----
-## Attr: PickList.dataSetType
-
-### Description
-Whether to show the picker as a flat list, or a collapsible tree.
-
-The default value, "list", will use an instance of the [pickListConstructor](#attr-picklistpicklistconstructor) as the picker - "tree" will show an instance of [pickTreeConstructor](#attr-picklistpicktreeconstructor).
-
-**Flags**: IR
-
----
-## Attr: PickList.valueIconField
-
-### Description
-For Databound formItems, this property determines which column [FormItem.valueIcons](FormItem.md#attr-formitemvalueicons) should show up in for this formItem's pickList.  
-If unset, valueIcons show up in the [PickList.displayField](#attr-picklistdisplayfield) column if specified, otherwise the [PickList.valueField](#attr-picklistvaluefield) column.  
-In most cases only the `displayField` or `valueField` will be visible. This property is typically only required if custom [PickList.pickListFields](#attr-picklistpicklistfields) have been specified for this item.
-
-### See Also
-
-- [FormItem.valueIcons](FormItem.md#attr-formitemvalueicons)
-- [PickList.pickListFields](#attr-picklistpicklistfields)
-
-**Flags**: IRWA
-
----
-## Attr: PickList.emptyPickListMessage
-
-### Description
-Message to display in the pickList if there's no data and [PickList.hideEmptyPickList](#attr-picklisthideemptypicklist) is `false`.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRWA
-
----
-## Attr: PickList.initialSort
-
-### Description
-An array of [SortSpecifier](../reference_2.md#object-sortspecifier) objects used to set up the initial sort configuration for this pickList. If specified, this will be used instead of any [PickList.sortField](#attr-picklistsortfield) specified.
-
-### Groups
-
-- sorting
-
-**Flags**: IR
-
----
-## Attr: PickList.hideEmptyPickList
-
-### Description
-If this pickList contains no options, should it be hidden? If unset, default behavior is to allow the empty pickList to show if it is databound.
-
-**Flags**: IRW
-
----
-## Attr: PickList.pickListSeparateValuesBaseStyle
-
-### Description
-Base Style for the cells in the [separate list](#attr-picklistseparatevalueslist) displayed when [PickList.specialValues](#attr-picklistspecialvalues) is set and [SelectItem.separateSpecialValues](SelectItem.md#attr-selectitemseparatespecialvalues) is true. See [cellStyleSuffixes](../kb_topics/cellStyleSuffixes.md#kb-topic-cellstylesuffixes) for details on how stateful suffixes are combined with the pickListBaseStyle to generate stateful cell styles.
-
-### Groups
-
-- pickList
-
-**Flags**: IR
-
----
-## Attr: PickList.pickList
-
-### Description
-ListGrid-based AutoChild created by the system to display a list of pickable options for this item.
-
-The pickList is automatically generated and displayed by the system when necessary. It may be customized via properties such as [PickList.pickListConstructor](#attr-picklistpicklistconstructor), [PickList.pickTreeConstructor](#attr-picklistpicktreeconstructor), [PickList.pickListProperties](#attr-picklistpicklistproperties) and more. See the [PickList overview](../reference_2.md#interface-picklist) for more information.
-
-Accessing the generated pickList at runtime is an advanced usage. In most cases developers should not modify this generated component directly but should instead use attributes on the formItem to configure it.
-
-**Flags**: RA
-
----
 ## Attr: PickList.separatorRows
 
 ### Description
@@ -309,6 +75,30 @@ NOTE: When enabled, [getSelectedRecord](FormItem.md#method-formitemgetselectedre
 **Flags**: IRA
 
 ---
+## Attr: PickList.pickListWidth
+
+### Description
+Default width to show the pickList. If not specified, the width of this form item's element will be used instead.
+
+Note that this is a minimum value - by default if the values displayed in this pickList are wider than the specified width the list will expand to accomodate them.
+
+### Groups
+
+- pickList
+
+**Flags**: IRW
+
+---
+## Attr: PickList.singleClickFolderToggle
+
+### Description
+When this item is showing a [tree-based picker](#attr-picklistdatasettype), the default behavior is for folder open-state to be toggled by double-clicking. Set this attribute to true to toggle folders on a single-click instead.
+
+Note: when set to true, users can only choose leaf-nodes, since clicking folders would simply toggle them.
+
+**Flags**: IR
+
+---
 ## Attr: PickList.autoOpenTree
 
 ### Description
@@ -321,12 +111,88 @@ When this item is showing a [tree-based picker](#attr-picklistdatasettype), whic
 **Flags**: IRW
 
 ---
+## Attr: PickList.rootNodeId
+
+### Description
+When this item is showing a [tree-based picker](#attr-picklistdatasettype), this is the [id](SelectItem.md#attr-selectitemvaluefield) of the record to use as the [root](Tree.md#attr-treerootvalue) node.
+
+**Flags**: IRW
+
+---
+## Attr: PickList.useClientFiltering
+
+### Description
+For [databound](#attr-picklistoptiondatasource) items, this property will be passed to the generated ResultSet data object for the pickList as [ResultSet.useClientFiltering](ResultSet.md#attr-resultsetuseclientfiltering). Setting to false will disable filtering on the client and ensure criteria are always passed to the DataSource directly.
+
+**Flags**: IRA
+
+---
+## Attr: PickList.filterLocally
+
+### Description
+If `filterLocally` is set for this item, and this item is showing options from a dataSource, fetch the entire set of options from the server, and use these values to map the item value to the appropriate display value. Also use `"local"` type filtering on drop down list of options.
+
+This means data will only be fetched once from the server, and then filtered on the client.
+
+Note - when this property is set to `false`, filtering will still be performed on the client if a complete set of data for some criteria has been cached by a fetch, and a subsequent fetch has more restrictive criteria. To explicitly disable client-side filtering set the [PickList.useClientFiltering](#attr-picklistuseclientfiltering) property to false.
+
+### See Also
+
+- [FormItem.filterLocally](FormItem.md#attr-formitemfilterlocally)
+
+**Flags**: IRA
+
+---
 ## Attr: PickList.pickTreeConstructor
 
 ### Description
 The Class to use when creating a picker of [type "tree"](#attr-picklistdatasettype) for a FormItem. Must be a subclass of the builtin default, [PickTreeMenu](../reference.md#class-picktreemenu).
 
 **Flags**: IR
+
+---
+## Attr: PickList.pickListAnimationTime
+
+### Description
+If [PickList.animatePickList](#attr-picklistanimatepicklist) is true, this attribute specifies the millisecond duration of the animation effect.
+
+### Groups
+
+- pickList
+
+**Flags**: IRWA
+
+---
+## Attr: PickList.pickListConstructor
+
+### Description
+The Class to use when creating a picker of [type "list"](#attr-picklistdatasettype) for a FormItem. Must be a subclass of the builtin default, [PickListMenu](PickListMenu.md#class-picklistmenu).
+
+### Groups
+
+- pickList
+
+**Flags**: IR
+
+---
+## Attr: PickList.optionFilterContext
+
+### Description
+If this item has a specified `optionDataSource`, and this property is not null, this will be passed to the datasource as [DSRequest](../reference.md#object-dsrequest) properties when performing the filter operation on the dataSource to obtain the set of options for the list. This provides, among other capabilities, a way to trigger the server to return summary records.
+
+### See Also
+
+- [serverSummaries](../kb_topics/serverSummaries.md#kb-topic-server-summaries)
+
+**Flags**: IRA
+
+---
+## Attr: PickList.emptyPickListHeight
+
+### Description
+Height for an empty pick list (showing the empty message), if the pick list has no records and [PickList.hideEmptyPickList](#attr-picklisthideemptypicklist) is `false`.
+
+**Flags**: IRW
 
 ---
 ## Attr: PickList.pickListBaseStyle
@@ -341,6 +207,19 @@ Note: if [PickList.pickListTallBaseStyle](#attr-picklistpicklisttallbasestyle) i
 - pickList
 
 **Flags**: IR
+
+---
+## Attr: PickList.valueField
+
+### Description
+If this form item maps data values to display values by retrieving the [FormItem.displayField](FormItem.md#attr-formitemdisplayfield) values from an [optionDataSource](FormItem.md#attr-formitemoptiondatasource), this property denotes the the field to use as the underlying data value in records from the optionDataSource.  
+If not explicitly supplied, the valueField name will be derived as described in [FormItem.getValueFieldName](FormItem.md#method-formitemgetvaluefieldname).
+
+### Groups
+
+- databinding
+
+**Flags**: IRA
 
 ---
 ## Attr: PickList.pickListHeaderHeight
@@ -398,6 +277,18 @@ For a ComboBox or other pickList that accepts user-entered criteria, how many mi
 **Flags**: IRWA
 
 ---
+## Attr: PickList.pickListTallBaseStyle
+
+### Description
+Optional [tallBaseStyle](ListGrid_1.md#attr-listgridtallbasestyle) for pickList cells. If unset, [PickList.pickListBaseStyle](#attr-picklistpicklistbasestyle) will be applied to all cells.
+
+### Groups
+
+- pickList
+
+**Flags**: IR
+
+---
 ## Attr: PickList.pickListApplyRowNumberStyle
 
 ### Description
@@ -440,7 +331,7 @@ If this property is unset, we display the [PickList.displayField](#attr-picklist
 
 If there are multiple fields, column headers will be shown for each field, the height of which can be customized via the [PickList.pickListHeaderHeight](#attr-picklistpicklistheaderheight) attribute.
 
-Each field to display should be specified as a [ListGridField](../reference_2.md#object-listgridfield) object. Note that unlike in [listGrids](ListGrid_1.md#class-listgrid), dataSource fields marked as [hidden:true](DataSourceField.md#attr-datasourcefieldhidden) will be hidden by default in pickLists. To override this behavior, ensure that you specify an explicit value for [showIf](ListGridField.md#method-listgridfieldshowif).
+Each field to display should be specified as a [ListGridField](../reference.md#object-listgridfield) object. Note that unlike in [listGrids](ListGrid_1.md#class-listgrid), dataSource fields marked as [hidden:true](DataSourceField.md#attr-datasourcefieldhidden) will be hidden by default in pickLists. To override this behavior, ensure that you specify an explicit value for [showIf](ListGridField.md#method-listgridfieldshowif).
 
 ### Groups
 
@@ -464,6 +355,34 @@ If this item has a databound pickList (for example [PickList.optionDataSource](#
 - pickList
 
 **Flags**: IRWA
+
+---
+## Attr: PickList.pickListHeight
+
+### Description
+Maximum height to show the pick list before it starts to scroll. Note that by default the pickList will be sized to the height required by its content so it will be taller when more rows are available as selectable options
+
+### Groups
+
+- pickList
+
+**Flags**: IRW
+
+---
+## Attr: PickList.sortField
+
+### Description
+Specifies one or more fields by which this item should be initially sorted. It can be a [field name](ListGridField.md#attr-listgridfieldname), or an array of field names - but note that, if multiple fields are supplied, then each will be sorted in the same [direction](ListGrid_1.md#attr-listgridsortdirection).
+
+For full sorting control, set [initialSort](#attr-picklistinitialsort) to a list of custom [sortSpecifiers](../reference.md#object-sortspecifier).
+
+This attribute can also be set to the index of a field in the fields array, but note that it will be converted to a string (field name) after initialization.
+
+### Groups
+
+- sorting
+
+**Flags**: IR
 
 ---
 ## Attr: PickList.cachePickListResults
@@ -500,12 +419,37 @@ For a non-databound pickList, `textMatchStyle` is applied by [filterClientPickLi
 **Flags**: IR
 
 ---
+## Attr: PickList.dataSetType
+
+### Description
+Whether to show the picker as a flat list, or a collapsible tree.
+
+The default value, "list", will use an instance of the [pickListConstructor](#attr-picklistpicklistconstructor) as the picker - "tree" will show an instance of [pickTreeConstructor](#attr-picklistpicktreeconstructor).
+
+**Flags**: IR
+
+---
+## Attr: PickList.valueIconField
+
+### Description
+For Databound formItems, this property determines which column [FormItem.valueIcons](FormItem.md#attr-formitemvalueicons) should show up in for this formItem's pickList.  
+If unset, valueIcons show up in the [PickList.displayField](#attr-picklistdisplayfield) column if specified, otherwise the [PickList.valueField](#attr-picklistvaluefield) column.  
+In most cases only the `displayField` or `valueField` will be visible. This property is typically only required if custom [PickList.pickListFields](#attr-picklistpicklistfields) have been specified for this item.
+
+### See Also
+
+- [FormItem.valueIcons](FormItem.md#attr-formitemvalueicons)
+- [PickList.pickListFields](#attr-picklistpicklistfields)
+
+**Flags**: IRWA
+
+---
 ## Attr: PickList.specialValues
 
 ### Description
-A set of "special" values such as "All", "None" or "Invalid" that do not appear in the normal [ValueMap](../reference_2.md#type-valuemap) or in the data returned by the [PickList.optionDataSource](#attr-picklistoptiondatasource).
+A set of "special" values such as "All", "None" or "Invalid" that do not appear in the normal [ValueMap](../reference.md#type-valuemap) or in the data returned by the [PickList.optionDataSource](#attr-picklistoptiondatasource).
 
-Like other uses of [ValueMap](../reference_2.md#type-valuemap), either a list of values or a mapping from stored to display value can be provided.
+Like other uses of [ValueMap](../reference.md#type-valuemap), either a list of values or a mapping from stored to display value can be provided.
 
 These values can either be shown at the top of the list of values (in the order specified), or can be shown in a separate, non-scrolling region - the setting [separateSpecialValues](SelectItem.md#attr-selectitemseparatespecialvalues) controls this. Note that data paging can only be used if `separateSpecialValues` is enabled.
 
@@ -516,6 +460,30 @@ If `specialValues` are configured, [allowEmptyValue](SelectItem.md#attr-selectit
 Also, if an [PickList.optionDataSource](#attr-picklistoptiondatasource) is used, [PickList.specialValues](#attr-picklistspecialvalues) that appear in the normal dataset _will_ be updated by automatic [cache synchronization](../reference.md#kb-topic-cachesync) (if the [PickList.displayField](#attr-picklistdisplayfield) is updated). However when using a distinct [PickList.valueField](#attr-picklistvaluefield) and [PickList.displayField](#attr-picklistdisplayfield), you are required to provide [PickList.specialValues](#attr-picklistspecialvalues) as a map (there is no support for [fetchMissingValues](FormItem.md#attr-formitemfetchmissingvalues) automatically fetching appropriate display values).
 
 Note that specialValues are not supported in conjunction with [MultiComboBoxItem](MultiComboBoxItem.md#class-multicomboboxitem). Whereas with [selectItem.multiple:true](SelectItem.md#attr-selectitemmultiple), specialValues will never be normal values that may be selected. So, specialValues should have options such as "Select All", "Select None" and others.
+
+**Flags**: IR
+
+---
+## Attr: PickList.emptyPickListMessage
+
+### Description
+Message to display in the pickList if there's no data and [PickList.hideEmptyPickList](#attr-picklisthideemptypicklist) is `false`.
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IRWA
+
+---
+## Attr: PickList.initialSort
+
+### Description
+An array of [SortSpecifier](../reference.md#object-sortspecifier) objects used to set up the initial sort configuration for this pickList. If specified, this will be used instead of any [PickList.sortField](#attr-picklistsortfield) specified.
+
+### Groups
+
+- sorting
 
 **Flags**: IR
 
@@ -547,11 +515,19 @@ If this item is part of a databound form, and has a specified `valueMap`, by def
 ## Attr: PickList.pickListMaxWidth
 
 ### Description
-Maximum width for this item's pickList. By default if the values displayed in this pickList are wider than the specified [PickList.pickListWidth](#attr-picklistpicklistwidth) the pickList will render wide enough to accommodate them. This property allows the developer to limit how wide the pickList will render.
+Maximum width for this item's pickList. By default if the values displayed in this pickList are wider than the specified [PickList.pickListWidth](#attr-picklistpicklistwidth) the pickList will render wide enough to accomodate them. This property allows the developer to limit how wide the pickList will render.
 
 ### Groups
 
 - pickList
+
+**Flags**: IRW
+
+---
+## Attr: PickList.hideEmptyPickList
+
+### Description
+If this pickList contains no options, should it be hidden? If unset, default behavior is to allow the empty pickList to show if it is databound.
 
 **Flags**: IRW
 
@@ -564,8 +540,6 @@ If set, this FormItem will derive data to show in the PickList by fetching recor
 The data will be retrieved via a "fetch" operation on the DataSource, passing the [PickList.pickListCriteria](#attr-picklistpicklistcriteria) (if set) as criteria, and passing [PickList.optionFilterContext](#attr-picklistoptionfiltercontext) (if set) as DSRequest Properties.
 
 The fetch will be triggered when the pickList is first shown, or, you can set [autoFetchData:true](SelectItem.md#attr-selectitemautofetchdata) to fetch when the FormItem is first drawn.
-
-The pickList will not re-fetch its options each time it is opened, unless the pickList criteria have changed. Developers who want to explicitly force a new fetch can achieve this by overriding [PickList.getPickListFilterCriteria](#method-picklistgetpicklistfiltercriteria) to dynamically generate criteria that change whenever appropriate. For example, to force a new fetch every time the pickList is shown, the generated criteria could include a subcriterion for some arbitrary field with _operator_ `notEqual` and _value_ set to a something that will change each time the method runs, such as a date-stamp.
 
 Note that providing an initial value when [fetchMissingValues](FormItem.md#attr-formitemfetchmissingvalues) is enabled, or enabling [defaultToFirstOption](SelectItem.md#attr-selectitemdefaulttofirstoption), can also cause a fetch to be initiated immediately upon form creation. You can also call [PickList.fetchData](#method-picklistfetchdata) at any time to manually trigger a fetch.
 
@@ -629,37 +603,6 @@ If this item is showing a dataBound pickList, this notification method will be f
 | data | [ResultSet](#type-resultset) | false | — | pointer to this pickList's data |
 
 ---
-## Method: PickList.getPickListFilterCriteria
-
-### Description
-[StringMethod](../kb_topics/stringMethods.md#kb-topic-string-methods-overview) to return a set of filter criteria to be applied to the data displayed in the pickList when it is shown.
-
-If this is a databound item the criteria will be passed as criteria to [DataSource.fetchData](DataSource.md#method-datasourcefetchdata). Otherwise an equivalent client-side filter will be performed on the data returned by [PickList.getClientPickListData](#method-picklistgetclientpicklistdata).
-
-By default combines [FormItem.optionCriteria](FormItem.md#attr-formitemoptioncriteria) with [PickList.pickListCriteria](#attr-picklistpicklistcriteria) if specified, otherwise an empty set of criteria so all records will be displayed.
-
-Note that if no [optionCriteria](FormItem.md#attr-formitemoptioncriteria) are present and [pickListCriteria](#attr-picklistpicklistcriteria) were specified as a simple criteria object rather than an [AdvancedCriteria](../reference.md#object-advancedcriteria), the generated fetch operation to populate the pickList will contain these simple criteria (and [pickList.textMatchStyle](#attr-picklisttextmatchstyle) will determine how these criteria are interpreted).  
-However if [optionCriteria](FormItem.md#attr-formitemoptioncriteria) are specified as a simple criteria object, an [AdvancedCriteria](../reference.md#object-advancedcriteria) object may be generated for the fetch even if pickListCriteria are not present, or also defined in simple criteria object format. See [PickList.useOptionTextMatchStyleInPickList](#attr-picklistuseoptiontextmatchstyleinpicklist) for details.
-
-### Returns
-
-`[Criteria](../reference_2.md#type-criteria)` — criteria to be used for databound or local filtering
-
-**Flags**: A
-
----
-## Method: PickList.getOptionDataSource
-
-### Description
-PickLists can derive their data directly from a valueMap, or retrieve data from a dataSource to display as options.
-
-This method will return the dataSource used to populate the pickList, or null if none is specified (implies this list will derive its data from the valueMap for the item). Default implementation will return [PickList.optionDataSource](#attr-picklistoptiondatasource) if specified, otherwise if this is a field with a specified `foreignKey` in a databound form, returns the dataSource for the `foreignKey`. Otherwise picks up `this.form.dataSource` if set.
-
-### Returns
-
-`[DataSource](#type-datasource)` — DataSource to use for fetching options
-
----
 ## Method: PickList.getClientPickListData
 
 ### Description
@@ -692,6 +635,25 @@ Due to the valueMap, these records will appear as a two row pickList displayed a
 **Flags**: A
 
 ---
+## Method: PickList.getPickListFilterCriteria
+
+### Description
+[StringMethod](../reference.md#kb-topic-string-methods-overview) to return a set of filter criteria to be applied to the data displayed in the pickList when it is shown.
+
+If this is a databound item the criteria will be passed as criteria to [DataSource.fetchData](DataSource.md#method-datasourcefetchdata). Otherwise an equivalent client-side filter will be performed on the data returned by [PickList.getClientPickListData](#method-picklistgetclientpicklistdata).
+
+By default combines [FormItem.optionCriteria](FormItem.md#attr-formitemoptioncriteria) with [PickList.pickListCriteria](#attr-picklistpicklistcriteria) if specified, otherwise an empty set of criteria so all records will be displayed.
+
+Note that if no [optionCriteria](FormItem.md#attr-formitemoptioncriteria) are present and [pickListCriteria](#attr-picklistpicklistcriteria) were specified as a simple criteria object rather than an [AdvancedCriteria](../reference.md#object-advancedcriteria), the generated fetch operation to populate the pickList will contain these simple criteria (and [pickList.textMatchStyle](#attr-picklisttextmatchstyle) will determine how these criteria are interpreted).  
+However if [optionCriteria](FormItem.md#attr-formitemoptioncriteria) are specified as a simple criteria object, an [AdvancedCriteria](../reference.md#object-advancedcriteria) object may be generated for the fetch even if pickListCriteria are not present, or also defined in simple criteria object format. See [PickList.useOptionTextMatchStyleInPickList](#attr-picklistuseoptiontextmatchstyleinpicklist) for details.
+
+### Returns
+
+`[Criteria](../reference.md#type-criteria)` — criteria to be used for databound or local filtering
+
+**Flags**: A
+
+---
 ## Method: PickList.getValueFieldName
 
 ### Description
@@ -718,12 +680,12 @@ Performs a fetch type operation on this item's DataSource to retrieve the set of
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | Callback to fire when the fetch completes. Callback will fire with 4 parameters:
+| callback | [DSCallback](../reference.md#type-dscallback) | true | — | Callback to fire when the fetch completes. Callback will fire with 4 parameters:
 
 *   `item` a pointer to the form item
 *   `dsResponse` the [DSResponse](DSResponse.md#class-dsresponse) returned by the server
 *   `data` the raw data returned by the server
-*   `dsRequest` the [DSRequest](../reference_2.md#object-dsrequest) sent to the server |
+*   `dsRequest` the [DSRequest](../reference.md#object-dsrequest) sent to the server |
 | requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | properties to apply to the dsRequest for this fetch. |
 
 ---
@@ -736,7 +698,7 @@ Behavior varies based on the configuration of this item, as follows:
 
 *   If this item has an [PickList.optionDataSource](#attr-picklistoptiondatasource) and an explicit [FormItem.foreignDisplayField](FormItem.md#attr-formitemforeigndisplayfield) is specified, this will be returned.
 *   Otherwise if an explicit [PickList.displayField](#attr-picklistdisplayfield) is specified it will be returned by default. If the `displayField` was specified on the underlying dataSource field, and no matching field is present in the [PickList.optionDataSource](#attr-picklistoptiondatasource) for the item, we avoid returning the specified displayField value and instead return the title field of the option DataSource. We do this to avoid confusion for the case where the displayField is intended as a display-field value for showing another field value within the same record in the underlying dataSource only.
-*   If no explicit foreignDisplay or displayField specification was found, and the [FormItem.valueField](FormItem.md#attr-formitemvaluefield) for this item is hidden in the [FormItem.optionDataSource](FormItem.md#attr-formitemoptiondatasource), this method will return the title field for the `optionDataSource`.
+*   If no explicit foreignDisplayField or displayField specification was found, and the [FormItem.valueField](FormItem.md#attr-formitemvaluefield) for this item is hidden in the [FormItem.optionDataSource](FormItem.md#attr-formitemoptiondatasource), this method will return the title field for the `optionDataSource`.
 
 ### Returns
 
@@ -748,12 +710,24 @@ Behavior varies based on the configuration of this item, as follows:
 ### Description
 Returns the data to display in the pick list.
 
-The default implementation applies the criteria returned by [PickList.getPickListFilterCriteria](#method-picklistgetpicklistfiltercriteria) to the data returned by [PickList.getClientPickListData](#method-picklistgetclientpicklistdata). A record passes the filter if it has a matching value for all fields in the criteria object. Matching is performed according to [TextMatchStyle](../reference_2.md#type-textmatchstyle).
+The default implementation applies the criteria returned by [PickList.getPickListFilterCriteria](#method-picklistgetpicklistfiltercriteria) to the data returned by [PickList.getClientPickListData](#method-picklistgetclientpicklistdata). A record passes the filter if it has a matching value for all fields in the criteria object. Matching is performed according to [TextMatchStyle](../reference.md#type-textmatchstyle).
 
 If [PickList.showAllOptions](#attr-picklistshowalloptions) is set, all values are shown, with matching values shown below a [separator](#attr-picklistseparatorrows).
 
 ### Returns
 
 `[Array of ListGridRecord](#type-array-of-listgridrecord)` — array of record objects to display in the pickList
+
+---
+## Method: PickList.getOptionDataSource
+
+### Description
+PickLists can derive their data directly from a valueMap, or retrieve data from a dataSource to display as options.
+
+This method will return the dataSource used to populate the pickList, or null if none is specified (implies this list will derive its data from the valueMap for the item). Default implementation will return [PickList.optionDataSource](#attr-picklistoptiondatasource) if specified, otherwise if this is a field with a specified `foreignKey` in a databound form, returns the dataSource for the `foreignKey`. Otherwise picks up `this.form.dataSource` if set.
+
+### Returns
+
+`[DataSource](#type-datasource)` — DataSource to use for fetching options
 
 ---

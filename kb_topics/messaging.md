@@ -9,7 +9,7 @@
 ### Description
 The optional Real-Time Messaging (RTM) module for SmartClient allows browser-based web applications to:
 
-*   publish and subscribe to client-server messaging channels
+*   publish and subscribe to HTTP messaging channels
 *   send and receive messages via server push, for "real-time" updates without polling
 
 For examples of publish and subscribe messaging, see: *Portfolio Grid* and *Stock Chart*
@@ -52,29 +52,14 @@ Server-side RTM interfaces are provided by the following classes in com.isomorph
 | public ISCMessage nextMessage(long timeout) throws Exception; |
 | ISCSubscriberSimple concrete implementation of ISubscriber. send() adds message to a queue and nextMessage() retrieves them. |
 
-#### Data Protocols
-The Realtime Messaging subsystem supports real-time communication between client and server using either [WebSockets](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API) or [Comet \[HTTP Server Push\]](https://en.wikipedia.org/wiki/Comet_\(programming\)).
-
-WebSockets is preferred as the non-websockets implementation requires a persistent connection to the server, and browsers are mandated by the HTTP protocol spec to limit connections to a single host to 6. This becomes significant if an application with Messaging connections is opened in multiple browser windows or tabs. The application can be significantly slowed down as as connections are used up by messaging, meaning the app's non-messaging operations will start slowing down and blocking as fewer connections are available for parallel operations.
-
-Both client and server are configured to [use WebSockets by default](../classes/Messaging.md#classattr-messagingusewebsocket) if supported. If the server does not respond correctly to WebSocket requests, the framework will automatically detect this and silently back off to using Comet. The Messaging APIs are not impacted in any way by the protocol being used, so this process is invisible to end users and to application code.
-
-Some cases that may cause WebSockets to be unavailable include:
-
-*   Firewalls configured to block the webSocket connnections
-*   Proxies / reverse proxies that haven't been configured to handle the webSocket (wss://) protocol
-*   Older servlet engines that don't support websockets
-
-If you're unsure which protocol is being used by a running application, you can use the native browser developer tools to watch for network requests against the [Messaging.websocketURL](../classes/Messaging.md#classattr-messagingwebsocketurl) and [Messaging.messagingURL](../classes/Messaging.md#classattr-messagingmessagingurl).  
-If you're unsure _why_ Web Sockets are not being used in your application we'd recommend enabling DEBUG level server-side logging for com.isomorphic.messaging. This should report details on the framework's attempts to set up a websocket listener during server startup.
-#### Server Configuration
+#### Configuration
 
 The SmartClient message dispatcher can operate in simple mode or enterprise mode:
 
 *   Simple mode uses an in-memory messaging delivery system with no message persistence, and can operate only in the context of a single JVM
 *   Enterprise mode uses Java Message Service (JMS) as the messaging backend, and can operate in a clustered environment
 
-The default settings will use the Simple Mode (no JMS). To use JMS, set the following in [server.properties](server_properties.md#kb-topic-serverproperties-file):
+The default settings will use the Simple Mode (no JMS). To use JMS, set the following in [server.properties](../reference.md#kb-topic-serverproperties-file):
 ```
  # Use com.isomorphic.messaging.JMSMessageDispatcher for JMS-backed messaging
  messaging.dispatcherImplementer: com.isomorphic.messaging.JMSMessageDispatcher 
@@ -186,53 +171,12 @@ The following properties that control Messaging can also be set via server.prope
         messaging.jms.jndiPrefix: jms
         messaging.jms.topicConnectionFactory: TopicConnectionFactory
         messaging.jms.queueConnectionFactory: QueueConnectionFactory
+ 
 ```
-
-#### Servlet Container WebSocket Configuration
-
-Some websocket configuration must be done at the level of the servlet container, such as Tomcat (included in our SDK), Jetty, etc. This includes the setting of the maximum supported text and binary message sizes.
-
-For this, we've added a section to the file `WEB-INF/web-tomcat.xml` included in the SDK:
-
-```
- <!-- maximum text message size -->
- <context-param>
-     <param-name>org.apache.tomcat.websocket.textBufferSize</param-name>
-     <param-value>262144</param-value>
- </context-param>
-
- <!-- maximum binary message size -->
- <context-param>
-     <param-name>org.apache.tomcat.websocket.binaryBufferSize</param-name>
-     <param-value>262144</param-value>
- </context-param>
-```
-If you're not using our stock Embedded Tomcat and web-tomcat.xml file you'll need to apply equivalent changes to your own servlet container.
-
-Note that this not something configurable from the familiar server properties file because our server properties are not accessible from the servlet container's initialization code.
 
 #### Tips
 
 *   For best performance on legacy browsers (Internet Explorer pre-8.0), we recommend forwarding the messaging connections to an HTTP 1.0 server. Otherwise, because older Internet Explorer browsers use no more than 2 concurrent connections to the same web server, with the Messaging connection open, all other connections will execute serially. This means that something like a data fetch might be held up until all images on the page have finished loading.
-
-#### Security
-
-You can limit access to Realtime Messages on a channel-by-channel basis by subclassing the Servlet Container filter [MessagingAuthFilter](https://smartclient.com/smartgwtee-latest/server/javadoc/com/isomorphic/messaging/MessagingAuthFilter.html) and overriding the [authenticate()](https://smartclient.com/smartgwtee-latest/server/javadoc/com/isomorphic/messaging/MessagingAuthFilter.html#authenticate-java.lang.String-jakarta.servlet.http.HttpServletRequest-) method to return true only for those channels that the request should be able to access.
-
-To deploy your filter, add it to your servlet container's `web.xml` file. A sample filter declaration using `MessagingAuthFilter` is included in the web.xml shipped with SmartClient. Your declaration might look something like:
-
-```
-<filter>
-     <filter-name>CorpMessagingAuthFilter</filter-name>
-     <filter-class>com.worldship.bigapp.CorpMessagingAuthFilter</filter-class>
- </filter>
- <filter-mapping>
-     <filter-name>CorpMessagingAuthFilter</filter-name>
-     <url-pattern>/isomorphic/websocket///</url-pattern>
-     <url-pattern>/isomorphic/messaging///</url-pattern>
- </filter-mapping>
-```
-if you've written `CorpMessagingAuthFilter` to extend `MessagingAuthFilter` as described.
 
 ### Related
 

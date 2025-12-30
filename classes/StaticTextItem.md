@@ -24,54 +24,6 @@ If the [textAlign](FormItem.md#attr-formitemtextalign) is unset, should the [ali
 **Flags**: IRA
 
 ---
-## Attr: StaticTextItem.canSelectText
-
-### Description
-Should the user be able to select the text in this item?
-
-**Flags**: IRW
-
----
-## Attr: StaticTextItem.wrap
-
-### Description
-If true, item contents can wrap. If false, all the contents should appear on a single line.
-
-### Groups
-
-- appearance
-
-**Flags**: IRW
-
----
-## Attr: StaticTextItem.applyHeightToTextBox
-
-### Description
-If [FormItem.height](FormItem.md#attr-formitemheight) is specified, should it be applied to the item's text box element?
-
-Overridden to be `false` for StaticTextItems by default.
-
-See [shouldApplyHeightToTextBox()](FormItem.md#method-formitemshouldapplyheighttotextbox) for more information.
-
-**Flags**: IRA
-
----
-## Attr: StaticTextItem.defaultValue
-
-### Description
-Overridden to assign class-appropriate type.
-
-### Groups
-
-- basics
-
-### See Also
-
-- [FormItem.defaultValue](FormItem.md#attr-formitemdefaultvalue)
-
-**Flags**: IRW
-
----
 ## Attr: StaticTextItem.editProxyConstructor
 
 ### Description
@@ -96,6 +48,26 @@ If true, text that exceeds the specified size of the form item will be clipped. 
 
 ### Description
 By default HTML values in a staticTextItem will be interpreted by the browser. Setting this flag to true causes HTML characters to be escaped, meaning the raw value of the field (for example `"`<b>`AAA`</b>`"`) is displayed to the user rather than the interpreted HTML (for example `"**AAA**"`)
+
+### Groups
+
+- appearance
+
+**Flags**: IRW
+
+---
+## Attr: StaticTextItem.canSelectText
+
+### Description
+Should the user be able to select the text in this item?
+
+**Flags**: IRW
+
+---
+## Attr: StaticTextItem.wrap
+
+### Description
+If true, item contents can wrap. If false, all the contents should appear on a single line.
 
 ### Groups
 
@@ -139,6 +111,18 @@ Specify any valid [DateDisplayFormat](../reference.md#type-datedisplayformat) to
 - [FormItem.timeFormatter](FormItem.md#attr-formitemtimeformatter)
 
 **Flags**: IRWA
+
+---
+## Attr: StaticTextItem.applyHeightToTextBox
+
+### Description
+If [FormItem.height](FormItem.md#attr-formitemheight) is specified, should it be applied to the item's text box element?
+
+Overridden to be `false` for StaticTextItems by default.
+
+See [shouldApplyHeightToTextBox()](FormItem.md#method-formitemshouldapplyheighttotextbox) for more information.
+
+**Flags**: IRA
 
 ---
 ## Attr: StaticTextItem.textBoxStyle

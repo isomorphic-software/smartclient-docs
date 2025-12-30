@@ -17,11 +17,6 @@ To enable SmartClient to detect that session timeout has occurred, a special mar
 
 If your authentication system will redirect to a login page when a user's session is timed out, it's sufficient to simply embed the `loginRequiredMarker` in the login page. The `loginRequiredMarker` is valid HTML and will have no effect on the behavior or appearance of the page. The `loginRequiredMarker` is found in smartclientSDK/isomorphic/login/loginRequiredMarker.html in your SDK. Simply copy the contents of this file verbatim into your login page anywhere inside the `<body>` tag; it does not need to be customized in any way for your application.
 
-The HTML snippet in loginRequiredMarker.html consists of two parts:
-
-*   It includes the [RPCManager.loginRequiredMarker](../classes/RPCManager.md#classattr-rpcmanagerloginrequiredmarker). Responses to standard [xmlHttpRequest transport](../classes/RPCRequest.md#attr-rpcrequesttransport) RPC requests will be scanned for this marker and kick off the [loginRequired flow](../classes/RPCManager.md#classmethod-rpcmanagerloginrequired) automatically.
-*   For [hiddenFrame transport](../classes/RPCRequest.md#attr-rpcrequesttransport) request, it also includes some JavaScript to explicitly notify the RPCManager in the SmartClient app running in the parent frame or opener window that login is required.
-
 If it's a problem to modify the login page (even with a marker that has no effect on appearance or behavior), see if you can configure your authentication system to return a special response specifically for background requests for data. By default, when using the SmartClient Server Framework, all such requests go to the [RPCManager.actionURL](../classes/RPCManager.md#classattr-rpcmanageractionurl) and include an HTTP query parameter "isc\_rpc=1"; various authentication systems can be configured to detect these requests and handle them separately. One approach is to simply copy loginRequiredMarker.html into your application in an area not protected by authentication and redirect to it when a background data request with an expired session is detected.
 
 #### Handling session timeout
@@ -60,7 +55,6 @@ Note also that there is no requirement that the relogin process blocks user inte
 - [RPCManager.loginRequiredMarker](../classes/RPCManager.md#classattr-rpcmanagerloginrequiredmarker)
 - [RPCManager.loginSuccessMarker](../classes/RPCManager.md#classattr-rpcmanagerloginsuccessmarker)
 - [RPCManager.maxLoginAttemptsExceededMarker](../classes/RPCManager.md#classattr-rpcmanagermaxloginattemptsexceededmarker)
-- [RPCManager.reloginCommFailureMessage](../classes/RPCManager.md#classattr-rpcmanagerrelogincommfailuremessage)
 - [RPCRequest.containsCredentials](../classes/RPCRequest.md#attr-rpcrequestcontainscredentials)
 
 ---

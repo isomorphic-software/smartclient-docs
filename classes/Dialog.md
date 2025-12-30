@@ -35,80 +35,6 @@ This is an example of creating a custom dialog:
 ```
 
 ---
-## ClassAttr: Dialog.ASK_TITLE
-
-### Description
-Default title for the dialog displayed in response to the [isc.ask](isc.md#staticmethod-iscask) method. Note that a custom title can be specified as the `title` attribute of the `properties` parameter passed to that method.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
-
----
-## ClassAttr: Dialog.Ask
-
-### Description
-A singleton Dialog instance that will be shown in response to a [isc.askForValue](isc.md#staticmethod-iscaskforvalue) call. Notes:  
-Because this is a singleton object, properties set on the Ask object directly will persist each time it is shown.  
-Developers should use the `askForValue()` method to show this object rather than manipulating the Dialog directly.
-
-### Groups
-
-- Prompting
-
-### See Also
-
-- [isc.askForValue](isc.md#staticmethod-iscaskforvalue)
-
-**Flags**: A
-
----
-## ClassAttr: Dialog.YES_BUTTON_TITLE
-
-### Description
-Title for the `"Yes"` button.
-
-### Groups
-
-- i18nMessages
-
-### See Also
-
-- [DialogButtons](../reference.md#type-dialogbuttons)
-
-**Flags**: IRW
-
----
-## ClassAttr: Dialog.ASK_FOR_VALUE_MESSAGE
-
-### Description
-Default message for the dialog displayed by [isc.askForValue](isc.md#staticmethod-iscaskforvalue). A custom message can alternatively be specified as the `message` parameter passed to that method.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
-
----
-## ClassAttr: Dialog.DONE_BUTTON_TITLE
-
-### Description
-Title for the `"Done"` button.
-
-### Groups
-
-- i18nMessages
-
-### See Also
-
-- [DialogButtons](../reference.md#type-dialogbuttons)
-
-**Flags**: IRW
-
----
 ## ClassAttr: Dialog.NO_BUTTON_TITLE
 
 ### Description
@@ -120,7 +46,7 @@ Title for the `"No"` button.
 
 ### See Also
 
-- [DialogButtons](../reference.md#type-dialogbuttons)
+- [DialogButtons](../reference_2.md#type-dialogbuttons)
 
 **Flags**: IRW
 
@@ -162,6 +88,52 @@ Developers should use the `warn()` or `ask()` methods to show and hide this obje
 **Flags**: A
 
 ---
+## ClassAttr: Dialog.ASK_TITLE
+
+### Description
+Default title for the dialog displayed in response to the [isc.ask](isc.md#staticmethod-iscask) method. Note that a custom title can be specified as the `title` attribute of the `properties` parameter passed to that method.
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IRW
+
+---
+## ClassAttr: Dialog.Ask
+
+### Description
+A singleton Dialog instance that will be shown in response to a [isc.askForValue](isc.md#staticmethod-iscaskforvalue) call. Notes:  
+Because this is a singleton object, properties set on the Ask object directly will persist each time it is shown.  
+Developers should use the `askForValue()` method to show this object rather than manipulating the Dialog directly.
+
+### Groups
+
+- Prompting
+
+### See Also
+
+- [isc.askForValue](isc.md#staticmethod-iscaskforvalue)
+
+**Flags**: A
+
+---
+## ClassAttr: Dialog.YES_BUTTON_TITLE
+
+### Description
+Title for the `"Yes"` button.
+
+### Groups
+
+- i18nMessages
+
+### See Also
+
+- [DialogButtons](../reference_2.md#type-dialogbuttons)
+
+**Flags**: IRW
+
+---
 ## ClassAttr: Dialog.APPLY_BUTTON_TITLE
 
 ### Description
@@ -173,7 +145,7 @@ Title for the `"Apply"` button.
 
 ### See Also
 
-- [DialogButtons](../reference.md#type-dialogbuttons)
+- [DialogButtons](../reference_2.md#type-dialogbuttons)
 
 **Flags**: IRW
 
@@ -225,7 +197,7 @@ Title for the `"OK"` button.
 
 ### See Also
 
-- [DialogButtons](../reference.md#type-dialogbuttons)
+- [DialogButtons](../reference_2.md#type-dialogbuttons)
 
 **Flags**: IRW
 
@@ -241,7 +213,7 @@ Title for the `"Cancel"` button.
 
 ### See Also
 
-- [DialogButtons](../reference.md#type-dialogbuttons)
+- [DialogButtons](../reference_2.md#type-dialogbuttons)
 
 **Flags**: IRW
 
@@ -268,6 +240,22 @@ Developers should use the `showPrompt()` and `clearPrompt()` methods to show and
 **Flags**: A
 
 ---
+## ClassAttr: Dialog.DONE_BUTTON_TITLE
+
+### Description
+Title for the `"Done"` button.
+
+### Groups
+
+- i18nMessages
+
+### See Also
+
+- [DialogButtons](../reference_2.md#type-dialogbuttons)
+
+**Flags**: IRW
+
+---
 ## Attr: Dialog.styleName
 
 ### Description
@@ -278,6 +266,14 @@ Style of the Dialog background
 - appearance
 
 **Flags**: IRW
+
+---
+## Attr: Dialog.toolbarButtons
+
+### Description
+This is a synonym for [Dialog.buttons](#attr-dialogbuttons)
+
+**Flags**: IR
 
 ---
 ## Attr: Dialog.messageStyle
@@ -300,6 +296,19 @@ Style to apply to the message text shown in the center of the dialog
 **Flags**: IR
 
 ---
+## Attr: Dialog.showToolbar
+
+### Description
+Whether to show a toolbar of buttons at the bottom of the Dialog. Default of null will cause the value to be resolved automatically to true or false when the Dialog is first drawn according as [Dialog.toolbarButtons](#attr-dialogtoolbarbuttons) contains buttons or not.
+
+### Groups
+
+- appearance
+- toolbar
+
+**Flags**: IR
+
+---
 ## Attr: Dialog.message
 
 ### Description
@@ -311,7 +320,7 @@ The message string may contain "${loadingImage}", if so, the standard loading sp
 
 The message will be styled with the [Dialog.messageStyle](#attr-dialogmessagestyle).
 
-**Flags**: IRW
+**Flags**: IR
 
 ---
 ## Attr: Dialog.autoFocus
@@ -337,6 +346,47 @@ Size of the icon to show in this dialog.
 **Flags**: IR
 
 ---
+## Attr: Dialog.askIcon
+
+### Description
+Icon to show in the [isc.ask](isc.md#staticmethod-iscask) dialog.
+
+**Flags**: IR
+
+---
+## Attr: Dialog.sayIcon
+
+### Description
+Icon to show in the [isc.say](isc.md#staticmethod-iscsay) dialog.
+
+**Flags**: IR
+
+---
+## Attr: Dialog.buttons
+
+### Description
+Array of Buttons to show in the [toolbar](#attr-dialogshowtoolbar), if shown.
+
+The set of buttons to use is typically set by calling one of the shortcuts such as [isc.say](isc.md#staticmethod-iscsay) or [isc.confirm](isc.md#staticmethod-iscconfirm) . A custom set of buttons can be passed to these shortcuts methods via the "properties" argument, or to a directly created Dialog.
+
+In both cases, a mixture of [built-in buttons](../reference_2.md#type-dialogbuttons), custom buttons, and other components (such as a [LayoutSpacer](../reference.md#class-layoutspacer)) can be passed. Built-in buttons can be referred to as `isc.Dialog.OK`, for example:
+
+```
+ isc.Dialog.create({
+    buttons:[
+       isc.Dialog.OK,
+       isc.Dialog.CANCEL,
+       isc.LayoutSpacer.create({width:50}),
+       { title:"Not now", click:"doSomething()" }
+    ]
+ })
+ 
+```
+Built-in buttons will call standard methods on the Dialog itself, such as [Dialog.cancelClick](#method-dialogcancelclick), as explained in the [list of built-in buttons](../reference_2.md#type-dialogbuttons).
+
+**Flags**: IR
+
+---
 ## Attr: Dialog.messageStack
 
 ### Description
@@ -349,6 +399,27 @@ AutoChild that combines [Dialog.message](#attr-dialogmessage) and [Dialog.icon](
 
 ### Description
 AutoChild that shows [Dialog.message](#attr-dialogmessage).
+
+**Flags**: IR
+
+---
+## Attr: Dialog.autoFocusButton
+
+### Description
+If a toolbar is showing and [autoFocus](#attr-dialogautofocus) is enabled, which button should receive initial focus.
+
+### Groups
+
+- appearance
+- toolbar
+
+**Flags**: IR
+
+---
+## Attr: Dialog.warnIcon
+
+### Description
+Icon to show in the [isc.warn](isc.md#staticmethod-iscwarn) dialog.
 
 **Flags**: IR
 
@@ -385,97 +456,6 @@ AutoChild that shows [Dialog.icon](#attr-dialogicon).
 **Flags**: IR
 
 ---
-## Attr: Dialog.toolbarButtons
-
-### Description
-This is a synonym for [Dialog.buttons](#attr-dialogbuttons)
-
-**Flags**: IR
-
----
-## Attr: Dialog.iconStyle
-
-### Description
-Specifies the CSS style if the [Dialog.icon](#attr-dialogicon) in this Dialog.
-
-**Flags**: IR
-
----
-## Attr: Dialog.showToolbar
-
-### Description
-Whether to show a toolbar of buttons at the bottom of the Dialog. Default of null will cause the value to be resolved automatically to true or false when the Dialog is first drawn according as [Dialog.toolbarButtons](#attr-dialogtoolbarbuttons) contains buttons or not.
-
-### Groups
-
-- appearance
-- toolbar
-
-**Flags**: IR
-
----
-## Attr: Dialog.askIcon
-
-### Description
-Icon to show in the [isc.ask](isc.md#staticmethod-iscask) dialog.
-
-**Flags**: IR
-
----
-## Attr: Dialog.sayIcon
-
-### Description
-Icon to show in the [isc.say](isc.md#staticmethod-iscsay) dialog.
-
-**Flags**: IR
-
----
-## Attr: Dialog.buttons
-
-### Description
-Array of Buttons to show in the [toolbar](#attr-dialogshowtoolbar), if shown.
-
-The set of buttons to use is typically set by calling one of the shortcuts such as [isc.say](isc.md#staticmethod-iscsay) or [isc.confirm](isc.md#staticmethod-iscconfirm) . A custom set of buttons can be passed to these shortcuts methods via the "properties" argument, or to a directly created Dialog.
-
-In both cases, a mixture of [built-in buttons](../reference.md#type-dialogbuttons), custom buttons, and other components (such as a [LayoutSpacer](../reference.md#class-layoutspacer)) can be passed. Built-in buttons can be referred to as `isc.Dialog.OK`, for example:
-
-```
- isc.Dialog.create({
-    buttons:[
-       isc.Dialog.OK,
-       isc.Dialog.CANCEL,
-       isc.LayoutSpacer.create({width:50}),
-       { title:"Not now", click:"doSomething()" }
-    ]
- })
- 
-```
-Built-in buttons will call standard methods on the Dialog itself, such as [Dialog.cancelClick](#method-dialogcancelclick), as explained in the [list of built-in buttons](../reference.md#type-dialogbuttons).
-
-**Flags**: IR
-
----
-## Attr: Dialog.autoFocusButton
-
-### Description
-If a toolbar is showing and [autoFocus](#attr-dialogautofocus) is enabled, which button should receive initial focus.
-
-### Groups
-
-- appearance
-- toolbar
-
-**Flags**: IR
-
----
-## Attr: Dialog.warnIcon
-
-### Description
-Icon to show in the [isc.warn](isc.md#staticmethod-iscwarn) dialog.
-
-**Flags**: IR
-
----
 ## Method: Dialog.closeClick
 
 ### Description
@@ -502,46 +482,6 @@ Set the buttons for the toolbar displayed in this dialog. Synonym for [Dialog.se
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | newButtons | [Array of Button](#type-array-of-button)|[Array of Button Properties](#type-array-of-button-properties) | false | null | buttons for the toolbar |
-
----
-## Method: Dialog.applyClick
-
-### Description
-Handle a click on the 'apply' button of this Dialog. Default implementation is to call `saveData()`, but NOT close the Dialog.
-
-### Groups
-
-- buttons
-
-### See Also
-
-- [DialogButtons](../reference.md#type-dialogbuttons)
-
----
-## Method: Dialog.setToolbarButtons
-
-### Description
-Set the [Dialog.toolbarButtons](#attr-dialogtoolbarbuttons) for this dialog. Synonym for [Dialog.setButtons](#method-dialogsetbuttons).
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| newButtons | [Array of Button](#type-array-of-button)|[Array of Button Properties](#type-array-of-button-properties) | false | null | buttons for the toolbar |
-
----
-## Method: Dialog.cancelClick
-
-### Description
-Handle a click on the 'cancel' button of this Dialog. Default implementation is to return null and hide the Dialog. Override to do something else.
-
-### Groups
-
-- buttons
-
-### See Also
-
-- [DialogButtons](../reference.md#type-dialogbuttons)
 
 ---
 ## Method: Dialog.saveData
@@ -572,7 +512,7 @@ Handle a click on the 'ok' button of this Dialog. Default implementation is to c
 
 ### See Also
 
-- [DialogButtons](../reference.md#type-dialogbuttons)
+- [DialogButtons](../reference_2.md#type-dialogbuttons)
 
 ---
 ## Method: Dialog.doneClick
@@ -586,7 +526,21 @@ Handle a click on the 'done' button of this Dialog. Default implementation is to
 
 ### See Also
 
-- [DialogButtons](../reference.md#type-dialogbuttons)
+- [DialogButtons](../reference_2.md#type-dialogbuttons)
+
+---
+## Method: Dialog.applyClick
+
+### Description
+Handle a click on the 'apply' button of this Dialog. Default implementation is to call `saveData()`, but NOT close the Dialog.
+
+### Groups
+
+- buttons
+
+### See Also
+
+- [DialogButtons](../reference_2.md#type-dialogbuttons)
 
 ---
 ## Method: Dialog.buttonClick
@@ -606,16 +560,16 @@ Fires when any button in this Dialog's toolbar is clicked. Default implementatio
 - buttons
 
 ---
-## Method: Dialog.setMessage
+## Method: Dialog.setToolbarButtons
 
 ### Description
-Method to update the message on this Dialog.
+Set the [Dialog.toolbarButtons](#attr-dialogtoolbarbuttons) for this dialog. Synonym for [Dialog.setButtons](#method-dialogsetbuttons).
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newMessage | [HTMLString](../reference.md#type-htmlstring) | false | — | new message to show |
+| newButtons | [Array of Button](#type-array-of-button)|[Array of Button Properties](#type-array-of-button-properties) | false | null | buttons for the toolbar |
 
 ---
 ## Method: Dialog.yesClick
@@ -629,7 +583,21 @@ Handle a click on the 'yes' button of this Dialog. Default implementation is to 
 
 ### See Also
 
-- [DialogButtons](../reference.md#type-dialogbuttons)
+- [DialogButtons](../reference_2.md#type-dialogbuttons)
+
+---
+## Method: Dialog.cancelClick
+
+### Description
+Handle a click on the 'cancel' button of this Dialog. Default implementation is to return null and hide the Dialog. Override to do something else.
+
+### Groups
+
+- buttons
+
+### See Also
+
+- [DialogButtons](../reference_2.md#type-dialogbuttons)
 
 ---
 ## Method: Dialog.noClick
@@ -643,6 +611,6 @@ Handle a click on the 'no' button of this Dialog. Default implementation is to r
 
 ### See Also
 
-- [DialogButtons](../reference.md#type-dialogbuttons)
+- [DialogButtons](../reference_2.md#type-dialogbuttons)
 
 ---

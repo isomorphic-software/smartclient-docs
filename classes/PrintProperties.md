@@ -4,14 +4,10 @@
 
 ---
 
-## Attr: PrintProperties.omitControls
+## Attr: PrintProperties.includeControls
 
 ### Description
-An array of Strings indicating the classNames of controls that should be omitted from printing. By default, `omitControls` includes all button-based controls, menus and similar interactive controls that are typically useless in printed output.
-
-All subclasses of the specified classes are also omitted.
-
-See also [PrintProperties.includeControls](#attr-printpropertiesincludecontrols).
+An array of Strings indicating the classNames of controls that should be specifically included when printing, even if a superclass is listed in [PrintProperties.omitControls](#attr-printpropertiesomitcontrols).
 
 ### Groups
 
@@ -20,10 +16,14 @@ See also [PrintProperties.includeControls](#attr-printpropertiesincludecontrols)
 **Flags**: IR
 
 ---
-## Attr: PrintProperties.includeControls
+## Attr: PrintProperties.omitControls
 
 ### Description
-An array of Strings indicating the classNames of controls that should be specifically included when printing, even if a superclass is listed in [PrintProperties.omitControls](#attr-printpropertiesomitcontrols).
+An array of Strings indicating the classNames of controls that should be omitted from printing. By default, `omitControls` includes all button-based controls, menus and similar interactive controls that are typically useless in printed output.
+
+All subclasses of the specified classes are also omitted.
+
+See also [PrintProperties.includeControls](#attr-printpropertiesincludecontrols).
 
 ### Groups
 

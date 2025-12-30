@@ -9,7 +9,7 @@
 ### Description
 An atomic type such as a string or number, that is generally stored, displayed and manipulated as a single value.
 
-SimpleTypes can be [created](#classmethod-simpletypecreate) at any time, and subsequently referred to as a [field type](Field.md#attr-fieldtype) in [DataSources](DataSource.md#class-datasource) and [DataBoundComponents](../reference.md#interface-databoundcomponent). This allows you to define [validation](#attr-simpletypevalidators), [formatting](#method-simpletypenormaldisplayformatter) and [editing](#attr-simpletypeeditortype) behaviors for a type to be reused across all [DataBoundComponents](../reference.md#interface-databoundcomponent).
+SimpleTypes can be created at any time, and subsequently referred to as a [field type](DataSourceField.md#attr-datasourcefieldtype) in [DataSources](DataSource.md#class-datasource) and [DataBoundComponents](../reference.md#interface-databoundcomponent). This allows you to define [validation](#attr-simpletypevalidators), [formatting](#method-simpletypenormaldisplayformatter) and [editing](#attr-simpletypeeditortype) behaviors for a type to be reused across all [DataBoundComponents](../reference.md#interface-databoundcomponent).
 
 The SimpleType class also allows data to be stored in some opaque format but treated as simple atomic values as far as SmartClient components are concerned by implementing [SimpleType.getAtomicValue](#method-simpletypegetatomicvalue) and [SimpleType.updateAtomicValue](#method-simpletypeupdateatomicvalue) methods. For example, if some record has a field value set to a javascript object with the following properties:
 
@@ -19,7 +19,7 @@ The SimpleType class also allows data to be stored in some opaque format but tre
 ```
 this value could be treated as a simple string by defining a SimpleType with [SimpleType.inheritsFrom](#attr-simpletypeinheritsfrom) set to `"text"` and a custom `getAtomicValue()` method that simply extracted the _"stringValue"_ attribute from the data object. DataBoundComponents would then display the string value, and use it for sorting and other standard databinding features.
 
-Note that the term "simpleType" is used in the same sense as in [XML Schema](http://www.w3.org/TR/xmlschema-0/), and [XMLTools.loadXMLSchema](XMLTools.md#classmethod-xmltoolsloadxmlschema) will create new SimpleType definitions.
+Note that the term "simpleType" is used in the same sense as in [http://www.w3.org/TR/xmlschema-0/](XML Schema), and [XMLTools.loadXMLSchema](XMLTools.md#classmethod-xmltoolsloadxmlschema) will create new SimpleType definitions.
 
 When using the SmartClient Server, SimpleTypes can be defined server-side, and should be defined server-side if validators are going to be declared so that the server will enforce validation. To define server-side SimpleTypes using Component XML you should create file {typeName}.type.xml in the following format:
 
@@ -32,7 +32,7 @@ When using the SmartClient Server, SimpleTypes can be defined server-side, and s
    </SimpleType>
  
 ```
-.. and place this file alongside your DataSource files (.ds.xml) files - in any of folders listed in `project.datasources` property in [server.properties](../kb_topics/server_properties.md#kb-topic-serverproperties-file).
+.. and place this file alongside your DataSource files (.ds.xml) files - in any of folders listed in `project.datasources` property in [server.properties](../reference.md#kb-topic-serverproperties-file).
 
 SimpleTypes can be loaded via DataSourceLoader or [loadDS JSP tags](../kb_topics/loadDSTag.md#kb-topic-isomorphicloadds) and should be loaded **before** the definitions of any DataSources that use them (so generally put all SimpleType definitions first).
 
@@ -66,22 +66,12 @@ Note that formatters must be added to the SimpleType definition **before** any D
 An example is *here*.
 
 ---
-## Attr: SimpleType.readOnlyDisplay
-
-### Description
-Default [readOnlyDisplay](FormItem.md#attr-formitemreadonlydisplay) for fields of this type.
-
-For more sophisticated management of read-only behavior, see [SimpleType.readOnlyEditorType](#attr-simpletypereadonlyeditortype).
-
-**Flags**: IR
-
----
 ## Attr: SimpleType.groupingModes
 
 ### Description
 A set of key-value pairs that represent the names and titles of the grouping modes available to values of this type, for use in components that support grouping.
 
-Some types provide a set of builtin groupingModes, as covered [here](../kb_topics/builtinGroupingModes.md#kb-topic-built-in-grouping-modes).
+Some types provide a set of builtin groupingModes, as covered [here](../kb_topics/builtinGroupingModes.md#kb-topic-builtingroupingmodes).
 
 Use [SimpleType.getGroupValue](#method-simpletypegetgroupvalue) and [SimpleType.getGroupTitle](#method-simpletypegetgrouptitle) to implement custom grouping logic for each of the grouping modes you provide.
 
@@ -98,6 +88,14 @@ Validators, if any, will be combined. All other SimpleType properties default to
 **Flags**: IR
 
 ---
+## Attr: SimpleType.defaultGroupingMode
+
+### Description
+In components that support grouping, the default mode from the available [groupingModes](#attr-simpletypegroupingmodes) to use when grouping values of this type.
+
+**Flags**: IRW
+
+---
 ## Attr: SimpleType.name
 
 ### Description
@@ -109,77 +107,13 @@ Name of the type, used to refer to the type from [field.type](DataSourceField.md
 ## Attr: SimpleType.validOperators
 
 ### Description
-Set of [search-operators](../reference.md#type-operatorid) valid for this `SimpleType`.
+Set of search operators valid for this type.
 
 If not specified, the [inherited](#attr-simpletypeinheritsfrom) type's operators will be used, finally defaulting to the default operators for the basic types (eg, integer).
 
 ### Groups
 
 - advancedFilter
-
-**Flags**: IR
-
----
-## Attr: SimpleType.readOnlyEditorType
-
-### Description
-Classname of the FormItem that should be used to display values of this type when a field is marked as [canEdit false](DataSourceField.md#attr-datasourcefieldcanedit) and the field is displayed in an editor type component like a DynamicForm.
-
-May be overridden by [DataSourceField.readOnlyEditorType](DataSourceField.md#attr-datasourcefieldreadonlyeditortype).
-
-**Flags**: IR
-
----
-## Attr: SimpleType.canFilter
-
-### Description
-Default value for [DataSourceField.canFilter](DataSourceField.md#attr-datasourcefieldcanfilter) for fields of this type.
-
-This impacts client-side behavior only and may be used to explicitly enable editing in filter interfaces, even if [editing is disabled](#attr-simpletypecanedit).
-
-This property is set to true for the "sequence" SimpleType by default.
-
-**Flags**: IR
-
----
-## Attr: SimpleType.editorType
-
-### Description
-Classname of the FormItem that should be the default for editing values of this type (eg "SelectItem").
-
-You can create a simple custom FormItem by adding default [FormItem.icons](FormItem.md#attr-formitemicons) that launch custom value picking dialogs (an example is in the _QuickStart Guide_, Chapter 9, _Extending SmartClient_). By setting simpleType.editorType to the name of your custom FormItem, forms will automatically use the custom FormItem, as will grids performing [inline editing](ListGrid_1.md#attr-listgridcanedit).
-
-**Flags**: IR
-
----
-## Attr: SimpleType.valueMap
-
-### Description
-List of legal values for this type, like [DataSourceField.valueMap](DataSourceField.md#attr-datasourcefieldvaluemap).
-
-### Groups
-
-- dataType
-
-**Flags**: IR
-
----
-## Attr: SimpleType.defaultGroupingMode
-
-### Description
-In components that support grouping, the default mode from the available [groupingModes](#attr-simpletypegroupingmodes) to use when grouping values of this type.
-
-**Flags**: IRW
-
----
-## Attr: SimpleType.canEdit
-
-### Description
-Default value for [DataSourceField.canEdit](DataSourceField.md#attr-datasourcefieldcanedit) for fields of this type.
-
-This impacts client-side behavior only and is a way to simply disallow editing of this field type by default within [editors](FormItem.md#attr-formitemcanedit).
-
-This property is set to false for the "sequence" SimpleType by default.
 
 **Flags**: IR
 
@@ -192,6 +126,16 @@ This property is set to false for the "sequence" SimpleType by default.
 ### Groups
 
 - exportFormatting
+
+**Flags**: IR
+
+---
+## Attr: SimpleType.readOnlyEditorType
+
+### Description
+Classname of the FormItem that should be used to display values of this type when a field is marked as [canEdit false](DataSourceField.md#attr-datasourcefieldcanedit) and the field is displayed in an editor type component like a DynamicForm.
+
+May be overridden by [DataSourceField.readOnlyEditorType](DataSourceField.md#attr-datasourcefieldreadonlyeditortype).
 
 **Flags**: IR
 
@@ -217,7 +161,7 @@ These are properties that are essentially copied onto any DataSourceField where 
 ## Attr: SimpleType.defaultOperator
 
 ### Description
-The default [search-operator](../reference.md#type-operatorid) for this data-type.
+The default search-operator for this data-type.
 
 ### Groups
 
@@ -238,6 +182,16 @@ The default [search-operator](../reference.md#type-operatorid) for this data-typ
 **Flags**: IR
 
 ---
+## Attr: SimpleType.editorType
+
+### Description
+Classname of the FormItem that should be the default for editing values of this type (eg "SelectItem").
+
+You can create a simple custom FormItem by adding default [FormItem.icons](FormItem.md#attr-formitemicons) that launch custom value picking dialogs (an example is in the _QuickStart Guide_, Chapter 9, _Extending SmartClient_). By setting simpleType.editorType to the name of your custom FormItem, forms will automatically use the custom FormItem, as will grids performing [inline editing](ListGrid_1.md#attr-listgridcanedit).
+
+**Flags**: IR
+
+---
 ## Attr: SimpleType.validators
 
 ### Description
@@ -248,6 +202,54 @@ Validators to apply to value of this type.
 - validation
 
 **Flags**: IR
+
+---
+## Attr: SimpleType.valueMap
+
+### Description
+List of legal values for this type, like [DataSourceField.valueMap](DataSourceField.md#attr-datasourcefieldvaluemap).
+
+### Groups
+
+- dataType
+
+**Flags**: IR
+
+---
+## ClassMethod: SimpleType.setDefaultSummaryFunction
+
+### Description
+Set up a default summary function for some field type.
+
+Note that the following default summary functions are set up when SmartClient initializes:  
+\- `"integer"` defaults to `"sum"`  
+\- `"float"` defaults to `"sum"`.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| typeName | [String](#type-string) | false | — | type name |
+| summaryFunction | [SummaryFunction](../reference.md#type-summaryfunction) | false | — | summary function to set as the default for this data type. |
+
+---
+## ClassMethod: SimpleType.registerSummaryFunction
+
+### Description
+Registers a new [SummaryFunction](../reference.md#type-summaryfunction) by name. After calling this method, developers may specify the name passed in as a standard summaryFunction (for example in [ListGridField.summaryFunction](ListGridField.md#attr-listgridfieldsummaryfunction)).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| functionName | [String](#type-string) | false | — | name for the newly registered summaryFunction |
+| method | [Function](#type-function) | false | — | New summary function. This function should take 2 parameters
+
+*   `records`: an array of records for which a summary must be generated
+*   `field`: a field definition
+*   `summaryConfig`: summary configuration (see [SummaryConfiguration](../reference.md#object-summaryconfiguration))
+
+and return a summary value for the field across the records. |
 
 ---
 ## ClassMethod: SimpleType.getType
@@ -266,44 +268,6 @@ Retrieve a simpleType definition by type name
 `[SimpleType](#type-simpletype)` — simple type object
 
 ---
-## ClassMethod: SimpleType.setDefaultSummaryFunction
-
-### Description
-Set up a default summary function for some field type.
-
-Note that the following default summary functions are set up when SmartClient initializes:  
-\- `"integer"` defaults to `"sum"`  
-\- `"float"` defaults to `"sum"`.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| typeName | [String](#type-string) | false | — | type name |
-| summaryFunction | [SummaryFunction](../reference_2.md#type-summaryfunction) | false | — | summary function to set as the default for this data type. |
-
----
-## ClassMethod: SimpleType.registerSummaryFunction
-
-### Description
-Registers a new [SummaryFunction](../reference_2.md#type-summaryfunction) by name. After calling this method, developers may specify the name passed in as a standard summaryFunction (for example in [ListGridField.summaryFunction](ListGridField.md#attr-listgridfieldsummaryfunction)).
-
-You may override built-in summary functions; however, the summary value type should still be the same (for example, the 'count' summary function should still result in an integer summary value). Also, if a replacement summary function implementation departs significantly from the standard behavior, AI-generated aggregated data fetches may be negatively impacted, because AI is not aware of the non-standard behavior.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| functionName | [String](#type-string) | false | — | name for the newly registered summaryFunction |
-| method | [Function](#type-function) | false | — | New summary function. This function should take 2 parameters
-
-*   `records`: an array of records for which a summary must be generated
-*   `field`: a field definition
-*   `summaryConfig`: summary configuration (see [SummaryConfiguration](../reference.md#object-summaryconfiguration))
-
-and return a summary value for the field across the records. |
-
----
 ## ClassMethod: SimpleType.getDefaultSummaryFunction
 
 ### Description
@@ -317,13 +281,13 @@ Retrieves the default summary function for some field type.
 
 ### Returns
 
-`[SummaryFunction](../reference_2.md#type-summaryfunction)` — default summary function for this data type.
+`[SummaryFunction](../reference.md#type-summaryfunction)` — default summary function for this data type.
 
 ---
 ## ClassMethod: SimpleType.applySummaryFunction
 
 ### Description
-Applies a [SummaryFunction](../reference_2.md#type-summaryfunction) to an array of records
+Applies a [SummaryFunction](../reference.md#type-summaryfunction) to an array of records
 
 ### Parameters
 
@@ -331,30 +295,12 @@ Applies a [SummaryFunction](../reference_2.md#type-summaryfunction) to an array 
 |------|------|----------|---------|-------------|
 | records | [Array of Objects](#type-array-of-objects) | false | — | set of records to retrieve a summary value for |
 | field | [DataSourceField](#type-datasourcefield) | false | — | field for which we're picking up a summary value |
-| summaryFunction | [SummaryFunction](../reference_2.md#type-summaryfunction) | false | — | SummaryFunction to apply to the records in order to retrieve the summary value. May be specified as an explicit function or string of script to execute, or a built-in or [registered](#classmethod-simpletyperegistersummaryfunction) SummaryFunction identifier |
+| summaryFunction | [SummaryFunction](../reference.md#type-summaryfunction) | false | — | SummaryFunction to apply to the records in order to retrieve the summary value. May be specified as an explicit function or string of script to execute, or a SummaryFunction identifier |
 | summaryConfig | [SummaryConfiguration](#type-summaryconfiguration) | false | — | config that affects summary calculation |
 
 ### Returns
 
 `[Any](#type-any)` — summary value generated from the applied SummaryFunction
-
----
-## ClassMethod: SimpleType.create
-
-### Description
-Creates and registers a new `SimpleType`, allowing the newly-created type to be used as a [Field.type](Field.md#attr-fieldtype).
-
-See [Class.create](Class.md#classmethod-classcreate) for more details about the create() class method.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| arguments 0-N | [Any](#type-any) | true | — | Any arguments passed will be passed along to the init() routine of the instance. Unless [Class.addPropertiesOnCreate](Class.md#attr-classaddpropertiesoncreate) is set to false, any arguments passed to this method must be of type Object. |
-
-### Returns
-
-`[Object](../reference.md#type-object)` — New instance of this class, whose init() routine has already been called
 
 ---
 ## Method: SimpleType.getGroupValue
@@ -368,7 +314,7 @@ Returns a group value appropriate for the passed record, field and value, in the
 |------|------|----------|---------|-------------|
 | value | [Any](#type-any) | false | — | the record value to return a group value for |
 | record | [Record](#type-record) | false | — | the record containing the passed value |
-| field | [Object](../reference.md#type-object) | false | — | the field relating to the value to be processed |
+| field | [Object](../reference_2.md#type-object) | false | — | the field relating to the value to be processed |
 | fieldName | [String](#type-string) | false | — | the name of the field relating to the value to be processed |
 | component | [Canvas](#type-canvas) | false | — | the component, usually a [ListGrid](ListGrid_1.md#class-listgrid), containing the passed record |
 
@@ -427,7 +373,7 @@ Returns a string value appropriate for the title of the group containing the pas
 |------|------|----------|---------|-------------|
 | value | [Any](#type-any) | false | — | the record value to return a group title for |
 | record | [Record](#type-record) | false | — | the record containing the passed group value |
-| field | [Object](../reference.md#type-object) | false | — | the field relating to the value to be processed |
+| field | [Object](../reference_2.md#type-object) | false | — | the field relating to the value to be processed |
 | fieldName | [String](#type-string) | false | — | the name of the field relating to the value to be processed |
 | component | [Canvas](#type-canvas) | false | — | the component, usually a [ListGrid](ListGrid_1.md#class-listgrid), containing the passed record |
 
@@ -450,9 +396,9 @@ A formatter can make itself configurable on a per-component or per-field basis b
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | value | [Any](#type-any) | false | — | value to be formatted |
-| field | [Field](#type-field) | true | — | field descriptor from the component calling the formatter, if applicable. Depending on the calling component, this could be a [ListGridField](../reference_2.md#object-listgridfield), [TreeGridField](../reference.md#object-treegridfield), etc |
+| field | [Field](#type-field) | true | — | field descriptor from the component calling the formatter, if applicable. Depending on the calling component, this could be a [ListGridField](../reference.md#object-listgridfield), [TreeGridField](../reference.md#object-treegridfield), etc |
 | component | [DataBoundComponent](#type-databoundcomponent) | true | — | component calling this formatter, if applicable |
-| record | [Object](../reference.md#type-object) | true | — | Full record, if applicable |
+| record | [Object](../reference_2.md#type-object) | true | — | Full record, if applicable |
 
 ---
 ## Method: SimpleType.editFormatter
@@ -492,7 +438,7 @@ The "reason" parameter is passed by the framework to indicate why it is asking f
 *   "formula" Retrieving the value for use in a formula calculation
 *   "vm\_getValue" Retrieving the value from [ValuesManager.getValue](ValuesManager.md#method-valuesmanagergetvalue)
 *   "validate" Retrieving the value for validation, or setting the value if validation caused it to change
-*   "compare" Retrieving the "old" or "new" value from [ListGrid.cellHasChanges](ListGrid_2.md#method-listgridcellhaschanges)
+*   "compare" Retrieving the "old" or "new" value from [ListGrid.cellHasChanges](ListGrid_1.md#method-listgridcellhaschanges)
 *   "getRawValue" Retrieving the raw value of a [ListGrid](ListGrid_1.md#class-listgrid) cell
 *   "criteria" Setting the value from [DynamicForm.setValuesAsCriteria](DynamicForm.md#method-dynamicformsetvaluesascriteria)
 *   "updateValue" Setting the value from internal methods of [DynamicForm](DynamicForm.md#class-dynamicform) or [ValuesManager](ValuesManager.md#class-valuesmanager)
@@ -542,7 +488,7 @@ Returns the set of [grouping modes](#attr-simpletypegroupingmodes) available for
 
 ### Returns
 
-`[ValueMap](../reference_2.md#type-valuemap)` — the set of grouping modes available for this type
+`[ValueMap](../reference.md#type-valuemap)` — the set of grouping modes available for this type
 
 ---
 ## Method: SimpleType.normalDisplayFormatter
@@ -561,6 +507,6 @@ A formatter can make itself configurable on a per-component or per-field basis b
 | value | [Any](#type-any) | false | — | value to be formatted |
 | field | [Field](#type-field) | true | — | field descriptor from the component calling the formatter, if applicable. Depending on the calling component, this could be a [FormItem](FormItem.md#class-formitem), [DetailViewerField](../reference.md#object-detailviewerfield), etc |
 | component | [DataBoundComponent](#type-databoundcomponent) | true | — | component calling this formatter, if applicable |
-| record | [Object](../reference.md#type-object) | true | — | Full record, if applicable |
+| record | [Object](../reference_2.md#type-object) | true | — | Full record, if applicable |
 
 ---

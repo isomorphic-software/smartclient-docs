@@ -31,15 +31,7 @@ Balsamiq publishes documentation of the grid format [here](https://docs.balsamiq
 
 MockData can also be provided as XML, CSV or JSON text by setting [MockDataFormat](../reference_2.md#type-mockdataformat) to the correct format.
 
-An alternative format of data consisting of an array of [Records](../reference.md#object-record) can also be provided. In this case the records are converted to "grid" [format](../reference.md#type-mockdatatype).
-
-**Flags**: IR
-
----
-## Attr: MockDataSource.mockDataPrimaryKey
-
-### Description
-Name of field in [MockDataSource.mockData](#attr-mockdatasourcemockdata) that should be used as the primary key. Otherwise a hidden primary key field will automatically be added with a type of 'sequence'.
+An alternative format of data consisting of an array of [Records](../reference.md#object-record) can also be provided. In this case the records are converted to "grid" [format](../reference_2.md#type-mockdatatype).
 
 **Flags**: IR
 
@@ -55,7 +47,7 @@ Format of data provided in [MockDataSource.mockData](#attr-mockdatasourcemockdat
 ## Attr: MockDataSource.mockDataType
 
 ### Description
-When [MockDataSource.mockDataFormat](#attr-mockdatasourcemockdataformat) is "mock", whether [MockDataSource.mockData](#attr-mockdatasourcemockdata) is in the "grid" or "tree" format. See [MockDataType](../reference.md#type-mockdatatype).
+When [MockDataSource.mockDataFormat](#attr-mockdatasourcemockdataformat) is "mock", whether [MockDataSource.mockData](#attr-mockdatasourcemockdata) is in the "grid" or "tree" format. See [MockDataType](../reference_2.md#type-mockdatatype).
 
 If not specified, the type will be detected from the data.
 

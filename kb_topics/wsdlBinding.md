@@ -23,9 +23,9 @@ To bind a component to a web service operation, call
 
   [WebService.getFetchDS(_operationName,elementName_)](../classes/WebService.md#method-webservicegetfetchds)
 
-to obtain a DataSource which describes the structure of an XML element or XML Schema type named _elementName_, which appears in the response message for the operation named _operationName_. A component bound to this DataSource will show fields corresponding to the structure of the chosen XML element or type, that is, one field per subelement or attribute. [fetchData()](../classes/ListGrid_2.md#method-listgridfetchdata) called on this DataSource (or on a component bound to it) will invoke the specified web service operation, using the [Criteria](../reference_2.md#type-criteria) passed to fetchData() to fill out the input message via [DataSource.xmlSerialize](../classes/DataSource.md#method-datasourcexmlserialize), and using the specified XML element from the response message as data.
+to obtain a DataSource which describes the structure of an XML element or XML Schema type named _elementName_, which appears in the response message for the operation named _operationName_. A component bound to this DataSource will show fields corresponding to the structure of the chosen XML element or type, that is, one field per subelement or attribute. [fetchData()](../classes/ListGrid_1.md#method-listgridfetchdata) called on this DataSource (or on a component bound to it) will invoke the specified web service operation, using the [Criteria](../reference.md#type-criteria) passed to fetchData() to fill out the input message via [DataSource.xmlSerialize](../classes/DataSource.md#method-datasourcexmlserialize), and using the specified XML element from the response message as data.
 
-Similarly, [WebService.getInputDS(_operationName_)](../classes/WebService.md#method-webservicegetinputds) returns a DataSource suitable for binding to a form that a user will fill out to provide inputs to the specified web service operation. Typical use is to let the user fill in the form, then pass the results of [form.getValues()](../classes/DynamicForm.md#method-dynamicformgetvalues) to [fetchData()](../classes/ListGrid_2.md#method-listgridfetchdata) as criteria.
+Similarly, [WebService.getInputDS(_operationName_)](../classes/WebService.md#method-webservicegetinputds) returns a DataSource suitable for binding to a form that a user will fill out to provide inputs to the specified web service operation. Typical use is to let the user fill in the form, then pass the results of [form.getValues()](../classes/DynamicForm.md#method-dynamicformgetvalues) to [fetchData()](../classes/ListGrid_1.md#method-listgridfetchdata) as criteria.
 
 If the input message to the web service has extra nesting, consider using the [useFlatFields](../classes/OperationBinding.md#attr-operationbindinguseflatfields) property to simplify the inputs required for `fetchData()`, and/or to simplify form databinding via [component.useFlatFields](../classes/DataBoundComponent.md#attr-databoundcomponentuseflatfields).
 
@@ -110,7 +110,7 @@ To implement a web service **starting from a WSDL file**:
 
 *   In the .NET framework, you will use the Web Services Description Language Tool [(wsdl.exe)](http://www.google.com/search?q=wsdl.exe) to generate C# stubs that you will add business logic to
 *   In Java, [Apache Axis](http://ws.apache.org/axis/) can be used to generate Java stubs for implementing a web service
-*   In Perl, the `SOAP:Lite` module can be used to implement web services without code generation
+*   In Perl, the [SOAP:Lite](http://soaplite.com) module can be used to implement web services without code generation
 *   for PHP, the NuSoap module can likewise be used to implement web services without code generation
 
 ### Related

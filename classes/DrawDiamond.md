@@ -12,6 +12,22 @@
 DrawItem subclass to render diamond shapes
 
 ---
+## Attr: DrawDiamond.left
+
+### Description
+Left coordinate of the diamond. This is the X coordinate of the western point of the diamond.
+
+**Flags**: IRW
+
+---
+## Attr: DrawDiamond.height
+
+### Description
+Height of the diamond. Must be non-negative.
+
+**Flags**: IRW
+
+---
 ## Attr: DrawDiamond.titleRotationMode
 
 ### Description
@@ -36,22 +52,6 @@ Top coordinate of the diamond. This is the Y coordinate of the northern point of
 
 ### Description
 Width of the diamond. Must be non-negative.
-
-**Flags**: IRW
-
----
-## Attr: DrawDiamond.left
-
-### Description
-Left coordinate of the diamond. This is the X coordinate of the western point of the diamond.
-
-**Flags**: IRW
-
----
-## Attr: DrawDiamond.height
-
-### Description
-Height of the diamond. Must be non-negative.
 
 **Flags**: IRW
 

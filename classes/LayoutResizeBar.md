@@ -19,16 +19,6 @@ Note that this class extends whatever class is specified as the prototype defaul
 - [Canvas.resizeBarTarget](Canvas.md#attr-canvasresizebartarget)
 
 ---
-## Attr: LayoutResizeBar.canCollapse
-
-### Description
-If this property is true, a click on the Splitbar will collapse its [target](Splitbar.md#attr-splitbartarget), hiding it and shifting the Splitbar and other members of the layout across to fill the newly available space. If the target is already hidden a click will expand it again (showing it at its normal size).
-
-Note that on touch devices, to enable collapsing/uncollapsing the `target` in response to a tap, [canCollapseOnTap](Splitbar.md#attr-splitbarcancollapseontap) must be set to `true`.
-
-**Flags**: IRW
-
----
 ## Attr: LayoutResizeBar.resizeDirection
 
 ### Description
@@ -45,6 +35,16 @@ Compare this property with the corresponding setting [Canvas.resizeBarTarget](Ca
 Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas.md#method-canvasseteditmode).
 
 **Flags**: IR
+
+---
+## Attr: LayoutResizeBar.canCollapse
+
+### Description
+If this property is true, a click on the Splitbar will collapse its [target](Splitbar.md#attr-splitbartarget), hiding it and shifting the Splitbar and other members of the layout across to fill the newly available space. If the target is already hidden a click will expand it again (showing it at its normal size).
+
+Note that on touch devices, to enable collapsing/uncollapsing the `target` in response to a tap, [canCollapseOnTap](Splitbar.md#attr-splitbarcancollapseontap) must be set to `true`.
+
+**Flags**: IRW
 
 ---
 ## Method: LayoutResizeBar.setResizeDirection

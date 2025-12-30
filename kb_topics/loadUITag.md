@@ -7,8 +7,6 @@
 ## KB Topic: <isomorphic:loadUI>
 
 ### Description
-See [jspTags](../reference.md#kb-topic-smartclient-jsp-tags)
-
 _produces:_ JavaScript
 
 This tag converts SmartClient UI components declaratively specified in an XML "UI" file to JavaScript for execution in the browser.

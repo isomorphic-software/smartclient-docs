@@ -12,66 +12,6 @@ All [ChartTypes](../reference.md#type-charttype) that are supported by this clas
 **Flags**: R
 
 ---
-## Attr: Chart.stacked
-
-### Description
-Whether to use stacking for charts where this makes sense (bar, column, line and radar charts). If stacked is not set and two facets are supplied, clustering is assumed.
-
-**Flags**: IR
-
----
-## Attr: Chart.chartType
-
-### Description
-Type of chart to draw, see [ChartType](../reference.md#type-charttype) for a list of known types.
-
-**Flags**: IRW
-
----
-## Attr: Chart.subTitle
-
-### Description
-Subtitle for the chart as a whole, typically used to describe fixed facet values (such as "for Q1, 1999").
-
-The subTitle should appear under the title in less emphasized text.
-
-**Flags**: IR
-
----
-## Attr: Chart.valueProperty
-
-### Description
-Property in each record that holds a data value.
-
-Not used if there is an inline facet, see [Chart.data](#attr-chartdata).
-
-**Flags**: IR
-
----
-## Attr: Chart.shouldAnimateShow
-
-### Description
-Whether the chart should animate when shown (eg, bars or columns grow into place)
-
-### Groups
-
-- chartAppearance
-
-**Flags**: IR
-
----
-## Attr: Chart.labelValues
-
-### Description
-Whether to show labels on each individual value (bar, column or line point)
-
-### Groups
-
-- chartAppearance
-
-**Flags**: IR
-
----
 ## Attr: Chart.facets
 
 ### Description
@@ -156,6 +96,14 @@ Comparing between the formats, the "standard model" format treats all facets ide
 **Flags**: IR
 
 ---
+## Attr: Chart.stacked
+
+### Description
+Whether to use stacking for charts where this makes sense (bar, column, line and radar charts). If stacked is not set and two facets are supplied, clustering is assumed.
+
+**Flags**: IR
+
+---
 ## Attr: Chart.title
 
 ### Description
@@ -180,6 +128,58 @@ Whether to show chart in a 3D appearance, for charts that support this.
 
 ### Description
 A label for the data values, such as "Sales in Thousands", typically used as the label for the value axis.
+
+**Flags**: IR
+
+---
+## Attr: Chart.chartType
+
+### Description
+Type of chart to draw, see [ChartType](../reference.md#type-charttype) for a list of known types.
+
+**Flags**: IRW
+
+---
+## Attr: Chart.subTitle
+
+### Description
+Subtitle for the chart as a whole, typically used to describe fixed facet values (such as "for Q1, 1999").
+
+The subTitle should appear under the title in less emphasized text.
+
+**Flags**: IR
+
+---
+## Attr: Chart.valueProperty
+
+### Description
+Property in each record that holds a data value.
+
+Not used if there is an inline facet, see [Chart.data](#attr-chartdata).
+
+**Flags**: IR
+
+---
+## Attr: Chart.shouldAnimateShow
+
+### Description
+Whether the chart should animate when shown (eg, bars or columns grow into place)
+
+### Groups
+
+- chartAppearance
+
+**Flags**: IR
+
+---
+## Attr: Chart.labelValues
+
+### Description
+Whether to show labels on each individual value (bar, column or line point)
+
+### Groups
+
+- chartAppearance
 
 **Flags**: IR
 
@@ -213,28 +213,7 @@ Get a facet definition by facetId.
 
 ### See Also
 
-- [Facet](../reference_2.md#object-facet)
-
----
-## Method: Chart.getFacetValue
-
-### Description
-Get facet value definition by facetId and facetValueId.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| facetId | [String](#type-string) | false | — | the id of the facet to retrieve |
-| facetValueId | [String](#type-string) | false | — | the id of the facet value to retrieve |
-
-### Returns
-
-`[FacetValue](#type-facetvalue)` — the FacetValue if found, or null
-
-### See Also
-
-- [FacetValue](../reference.md#object-facetvalue)
+- [Facet](Facet.md#class-facet)
 
 ---
 ## Method: Chart.setupChart
@@ -261,5 +240,26 @@ As a special case, if [Chart.data](#attr-chartdata) is a single Object and the o
 ### Returns
 
 `[Any](#type-any)` — matching value from the dataset, or null if no value exists
+
+---
+## Method: Chart.getFacetValue
+
+### Description
+Get facet value definition by facetId and facetValueId.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| facetId | [String](#type-string) | false | — | the id of the facet to retrieve |
+| facetValueId | [String](#type-string) | false | — | the id of the facet value to retrieve |
+
+### Returns
+
+`[FacetValue](#type-facetvalue)` — the FacetValue if found, or null
+
+### See Also
+
+- [FacetValue](../reference.md#object-facetvalue)
 
 ---

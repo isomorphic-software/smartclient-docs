@@ -7,8 +7,6 @@
 ## KB Topic: <isomorphic:loadDMIStubs>
 
 ### Description
-See [jspTags](../reference.md#kb-topic-smartclient-jsp-tags)
-
 _produces:_ JavaScript
 
 Creates global bindings for all serverObjects defined in the `rpcBindings` section of the .app.xml file specified by the `ID` or `name` attribute of this tag. Once you've loaded your `rpcBindings` using this tag, you can call methods on the `ServerObjects` defined there directly. For example, you can load the example.app.xml (located in /shared/app directory of the webRoot of the SDK) like this:
@@ -52,7 +50,7 @@ As with [DMI.call](../classes/DMI.md#classmethod-dmicall), the last argument mus
 _value format_: String - name of .app.xml file to load (minus the .app.xml extension)  
 _default value_: NONE
 
-This attribute specifies the name of the file that contains the rpcBindings to load. UI files are located in `[webroot]/shared/app` by default. This location is changeable in [\[webroot\]/WEB-INF/classes/server.properties](server_properties.md#kb-topic-serverproperties-file) by setting the config parameter `project.apps` to the directory where your .app.xml files are located. We recommend that for prototyping, at least, you use the default directory.
+This attribute specifies the name of the file that contains the rpcBindings to load. UI files are located in `[webroot]/shared/app` by default. This location is changeable in [\[webroot\]/WEB-INF/classes/server.properties](../reference.md#kb-topic-serverproperties-file) by setting the config parameter `project.apps` to the directory where your .app.xml files are located. We recommend that for prototyping, at least, you use the default directory.
 
 ### See Also
 

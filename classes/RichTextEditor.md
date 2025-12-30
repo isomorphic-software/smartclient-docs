@@ -14,6 +14,26 @@ RichTextEditing component. Provides a rich-text editing area along with UI for e
 The HTML generated from this component may vary by browser, and, as with any HTML value created on the client, we recommend values be sanitized on the server before storing and displaying to other users.
 
 ---
+## Attr: RichTextEditor.justifyPrompt
+
+### Description
+The prompt for the built-in [justify](../reference.md#type-controlname) control.
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IRW
+
+---
+## Attr: RichTextEditor.moveFocusOnTab
+
+### Description
+If the user presses the "Tab" key, should focus be taken from this editor? If set to `false` a "Tab" keypress will cause a Tab character to be inserted into the text, and focus will be left in the edit area.
+
+**Flags**: IRW
+
+---
 ## Attr: RichTextEditor.toolbar
 
 ### Description
@@ -26,6 +46,18 @@ Layout used to contain each of the [RichTextEditor.controlGroups](#attr-richtext
 
 ### Description
 The prompt for the built-in [backgroundColor](../reference.md#type-controlname) control.
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IRW
+
+---
+## Attr: RichTextEditor.alignCenterPrompt
+
+### Description
+The prompt for the built-in [alignCenter](../reference.md#type-controlname) control.
 
 ### Groups
 
@@ -50,10 +82,34 @@ The [AutoChild](../reference.md#type-autochild) [SelectItem](SelectItem.md#class
 **Flags**: IR
 
 ---
+## Attr: RichTextEditor.alignLeftPrompt
+
+### Description
+The prompt for the built-in [alignLeft](../reference.md#type-controlname) control.
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IRW
+
+---
 ## Attr: RichTextEditor.pasteSelectionPrompt
 
 ### Description
 The prompt for the built-in [pasteSelection](../reference.md#type-controlname) control.
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IRW
+
+---
+## Attr: RichTextEditor.colorPrompt
+
+### Description
+The prompt for the built-in [color](../reference.md#type-controlname) control.
 
 ### Groups
 
@@ -74,174 +130,6 @@ The background color for the toolbar.
 
 ### Description
 The prompt for the built-in [strikethroughSelection](../reference.md#type-controlname) control.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
-
----
-## Attr: RichTextEditor.listPropertiesWarningText
-
-### Description
-The warning message displayed in a dialog when a user tries to configure a list without first putting the cursor in an appropriate place.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
-
----
-## Attr: RichTextEditor.colorControls
-
-### Description
-Control group for modifying text color / background color. Consists of an array of [ControlName](../reference.md#type-controlname)s and/or [Canvas](Canvas.md#class-canvas) instances. To display this group of controls for some RichTextEditor, include `"formatControls"` in the [RichTextEditor.controlGroups](#attr-richtexteditorcontrolgroups) array.
-
-**Flags**: IRA
-
----
-## Attr: RichTextEditor.fontSizeSelectorPrompt
-
-### Description
-The prompt for the built-in [font-size selector](#attr-richtexteditorfontsizeselectoritem).
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
-
----
-## Attr: RichTextEditor.alignRightPrompt
-
-### Description
-The prompt for the built-in [alignRight](../reference.md#type-controlname) control.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
-
----
-## Attr: RichTextEditor.italicSelectionPrompt
-
-### Description
-The prompt for the built-in [italicSelection](../reference.md#type-controlname) control.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
-
----
-## Attr: RichTextEditor.cutSelectionPrompt
-
-### Description
-The prompt for the built-in [cutSelection](../reference.md#type-controlname) control.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
-
----
-## Attr: RichTextEditor.orderedListPrompt
-
-### Description
-The prompt for the built-in [orderedList](../reference.md#type-controlname) control.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
-
----
-## Attr: RichTextEditor.useDesignMode
-
-### Description
-Should this editor use a separate IFRAME with special cross-browser support for editing HTML content? In SmartClient versions 13.0 and later, this feature is switched off on account of better modern browser support for contentEditable containers.
-
-**Flags**: IRA
-
----
-## Attr: RichTextEditor.outdentPrompt
-
-### Description
-The prompt for the built-in [outdent](../reference.md#type-controlname) control.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
-
----
-## Attr: RichTextEditor.unorderedListPrompt
-
-### Description
-The prompt for the built-in [unorderedList](../reference.md#type-controlname) control.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
-
----
-## Attr: RichTextEditor.justifyPrompt
-
-### Description
-The prompt for the built-in [justify](../reference.md#type-controlname) control.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
-
----
-## Attr: RichTextEditor.moveFocusOnTab
-
-### Description
-If the user presses the "Tab" key, should focus be taken from this editor? If set to `false` a "Tab" keypress will cause a Tab character to be inserted into the text, and focus will be left in the edit area.
-
-**Flags**: IRW
-
----
-## Attr: RichTextEditor.alignCenterPrompt
-
-### Description
-The prompt for the built-in [alignCenter](../reference.md#type-controlname) control.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
-
----
-## Attr: RichTextEditor.alignLeftPrompt
-
-### Description
-The prompt for the built-in [alignLeft](../reference.md#type-controlname) control.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
-
----
-## Attr: RichTextEditor.colorPrompt
-
-### Description
-The prompt for the built-in [color](../reference.md#type-controlname) control.
 
 ### Groups
 
@@ -285,6 +173,18 @@ The prompt for the built-in [font selector](#attr-richtexteditorfontselectoritem
 Layout used to contain all of the [toolbar](#attr-richtexteditortoolbar) AutoChildren that contain the [RichTextEditor.controlGroups](#attr-richtexteditorcontrolgroups).
 
 **Flags**: R
+
+---
+## Attr: RichTextEditor.listPropertiesWarningText
+
+### Description
+The warning message displayed in a dialog when a user tries to configure a list without first putting the cursor in an appropriate place.
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IRW
 
 ---
 ## Attr: RichTextEditor.formatControls
@@ -337,10 +237,30 @@ For each control group name, this\[controlGroupName\] should be defined as an ar
 **Flags**: IRA
 
 ---
+## Attr: RichTextEditor.colorControls
+
+### Description
+Control group for modifying text color / background color. Consists of an array of [ControlName](../reference.md#type-controlname)s and/or [Canvas](Canvas.md#class-canvas) instances. To display this group of controls for some RichTextEditor, include `"formatControls"` in the [RichTextEditor.controlGroups](#attr-richtexteditorcontrolgroups) array.
+
+**Flags**: IRA
+
+---
 ## Attr: RichTextEditor.listPropertiesPrompt
 
 ### Description
 The prompt for the built-in [listProperties](../reference.md#type-controlname) control.
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IRW
+
+---
+## Attr: RichTextEditor.fontSizeSelectorPrompt
+
+### Description
+The prompt for the built-in [font-size selector](#attr-richtexteditorfontsizeselectoritem).
 
 ### Groups
 
@@ -361,6 +281,18 @@ The prompt for the built-in [underlineSelection](../reference.md#type-controlnam
 **Flags**: IRW
 
 ---
+## Attr: RichTextEditor.alignRightPrompt
+
+### Description
+The prompt for the built-in [alignRight](../reference.md#type-controlname) control.
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IRW
+
+---
 ## Attr: RichTextEditor.fontControls
 
 ### Description
@@ -369,12 +301,48 @@ Default font control group. Consists of an array of [ControlName](../reference.m
 **Flags**: IRA
 
 ---
+## Attr: RichTextEditor.italicSelectionPrompt
+
+### Description
+The prompt for the built-in [italicSelection](../reference.md#type-controlname) control.
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IRW
+
+---
+## Attr: RichTextEditor.cutSelectionPrompt
+
+### Description
+The prompt for the built-in [cutSelection](../reference.md#type-controlname) control.
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IRW
+
+---
 ## Attr: RichTextEditor.styleControls
 
 ### Description
 Default text styling control group. Consists of an array of [ControlName](../reference.md#type-controlname)s and/or [Canvas](Canvas.md#class-canvas) instances. To display this group of controls for some RichTextEditor, include `"styleControls"` in the [RichTextEditor.controlGroups](#attr-richtexteditorcontrolgroups) array.
 
 **Flags**: IRA
+
+---
+## Attr: RichTextEditor.orderedListPrompt
+
+### Description
+The prompt for the built-in [orderedList](../reference.md#type-controlname) control.
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IRW
 
 ---
 ## Attr: RichTextEditor.listPropertiesDialog
@@ -393,12 +361,32 @@ Initial value for the edit area. Use `getValue()` and `setValue()` to update at 
 **Flags**: IRW
 
 ---
+## Attr: RichTextEditor.useDesignMode
+
+### Description
+Should this editor use a separate IFRAME with special cross-browser support for editing HTML content? By default, the value is auto-detected according to browser details. If set to false, the editor falls back to normal browser contentEditable behavior, which may differ between browsers.
+
+**Flags**: IRA
+
+---
 ## Attr: RichTextEditor.styleWithCSS
 
 ### Description
 When true, applies style attributes in markup instead of presentation elements.
 
 **Flags**: IRA
+
+---
+## Attr: RichTextEditor.outdentPrompt
+
+### Description
+The prompt for the built-in [outdent](../reference.md#type-controlname) control.
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IRW
 
 ---
 ## Attr: RichTextEditor.boldSelectionPrompt
@@ -419,6 +407,18 @@ The prompt for the built-in [boldSelection](../reference.md#type-controlname) co
 The [AutoChild](../reference.md#type-autochild) [SelectItem](SelectItem.md#class-selectitem) used for choosing the font-size to apply to the current selection.
 
 **Flags**: IR
+
+---
+## Attr: RichTextEditor.unorderedListPrompt
+
+### Description
+The prompt for the built-in [unorderedList](../reference.md#type-controlname) control.
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IRW
 
 ---
 ## Attr: RichTextEditor.fontNames
@@ -452,12 +452,6 @@ Does this browser support the full RichTextEditor feature set. Returns false for
 Retrieves the current value of the edit area.
 
 ---
-## Method: RichTextEditor.doWarn
-
-### Description
-Display a warning if Rich Text Editing is not fully supported in this browser. Default behavior logs a warning to the developer console - Override this if a user-visible warning is required
-
----
 ## Method: RichTextEditor.setMoveFocusOnTab
 
 ### Description
@@ -468,5 +462,11 @@ Setter for [RichTextEditor.moveFocusOnTab](#attr-richtexteditormovefocusontab).
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | moveFocusOnTab | [boolean](../reference.md#type-boolean) | false | — | new value for moveFocusOnTab |
+
+---
+## Method: RichTextEditor.doWarn
+
+### Description
+Display a warning if Rich Text Editing is not fully supported in this browser. Default behavior logs a warning to the developer console - Override this if a user-visible warning is required
 
 ---

@@ -7,7 +7,7 @@
 ## KB Topic: SQL Database Settings in server.properties
 
 ### Description
-Although the Admin Console provides a UI to let you to configure database access for DataSources that use SmartClient's built-in [SQL engine](sqlDataSource.md#kb-topic-sql-datasources), it is also possible to configure these DataSources with manual entries in your [server.properties](server_properties.md#kb-topic-serverproperties-file) file.
+Although the Admin Console provides a UI to let you to configure database access for DataSources that use SmartClient's built-in [SQL engine](sqlDataSource.md#kb-topic-sql-datasources), it is also possible to configure these DataSources with manual entries in your [server.properties](../reference.md#kb-topic-serverproperties-file) file.
 
 When you manually configure a DataSource like this, you do so by maintaining a set of properties with names structured like this:
 
@@ -72,11 +72,7 @@ Indicates how the JDBC connection will be created or looked up; the value of thi
 
 **dataSource** - the driver is an instance of `javax.sql.DataSource` and should be instantiated by SmartClient Server  
 **driverManager** - the driver is an instance of `java.sql.DriverManager`  
-**jndi** - the driver is an instance of `javax.sql.DataSource` and should be looked up using JNDI  
-**spring** - the driver is an instance of `javax.sql.DataSource` and should be obtained from the Spring context using bean id defined in `sql.MyDatabase.spring.dataSourceBean` setting. For example:  
-_sql.MyDatabase.database.type: mysql_  
-_sql.MyDatabase.interface.type: spring_  
-_sql.MyDatabase.spring.dataSourceBean: springDataSourceBeanId_
+**jndi** - the driver is an instance of `javax.sql.DataSource` and should be looked up using JNDI
 
 `**sql.MyDatabase.driver.url**`  
 For configurations where `sql.MyDatabase.interface.type` is "driverManager", this property allows you to manually enter the URL we use to connect to the database. If this property is not provided, we build the URL from other settings such as `sql.MyDatabase.driver.serverName` and `sql.MyDatabase.driver.databaseName`.
@@ -84,55 +80,18 @@ For configurations where `sql.MyDatabase.interface.type` is "driverManager", thi
 **Other properties**  
 Different JDBC drivers support different properties to support product-specific quirks and features. You can often specify these properties by embedding them as parameters in the URL used to connect to the database.
 
-Alternatively, any subproperty you set on the "driver" in server.properties is applied to the JDBC driver object via Reflection. For example, the MySQL JDBC driver supports a property "useUnicode", which forces the database to use Unicode character encoding. If `sql.MyDatabase.driver` is `com.mysql.jdbc.jdbc2.optional.MysqlDataSource`, setting `sql.MyDatabase.driver.useUnicode` to true means we'll attempt to call `setUseUnicode(true)` on this class. This would have exactly the same effect as defining the connection URL manually and specifying the parameter `useUnicode=true`.
-
-Mysql vs MariaDB: there is broad compatibility between these two databases as described in [https://mariadb.com/kb/en/library/mariadb-vs-mysql-compatibility/](https://mariadb.com/kb/en/library/mariadb-vs-mysql-compatibility/). Within the bounds of that compatibility matrix, you can use database.type 'mysql' and 'mariadb' interchangeably, and likewise with the drivers that you use. However for future compatibility it is recommended that you use `database.type: mariadb` for MariaDB. This will ensure that as MariaDB implements new features and backompat breaking changes, your application won't run into any gotchas because the SmartClient server logic will automatically use the right feature set to accomplish documented behavior.
+Alternatively, any subproperty you set on the "driver" in server.properties is applied to the JDBC driver object via Reflection. For example, the MySQL JDBC driver supports a property "useUnicode", which forces the database to use Unicode character encoding. If `sql.MyDatabase.driver` is `com.mysql.jdbc.jdbc2.optional.MysqlDataSource`, setting `sql.MyDatabase.driver.useUnicode` to true means we'll attempt to call `setUseUnicode(true)` on this class. This would have exactly the same effect as defining the connection URL manually and specifying the parameter `useUnicode=true` Mysql vs MariaDB: there is broad compatibility between these two databases as described in [https://mariadb.com/kb/en/library/mariadb-vs-mysql-compatibility/](https://mariadb.com/kb/en/library/mariadb-vs-mysql-compatibility/). Within the bounds of that compatibility matrix, you can use database.type 'mysql' and 'mariadb' interchangeably, and likewise with the drivers that you use. However for future compatibility it is recommended that you use `database.type: mariadb` for MariaDB. This will ensure that as MariaDB implements new features and backompat breaking changes, your application won't run into any gotchas because the SmartClient server logic will automatically use the right feature set to accomplish documented behavior.
 
 #### Smartclient properties
 
 **`sql.mysql.optimizeCaseSensitiveCriteria`**  
-_This setting affects all **MySQL** connectors and it is set to **true** by default._ Depending on [textMatchStyle](../reference_2.md#type-textmatchstyle) case sensitivity in text criteria is achieved by using LIKE BINARY sql comparison operator, which does not use indexed search. Indexes are used with regular "=" comparison operator, which does not ensure case sensitivity. With big amounts of data indexes are critical, so in order to use them and still have case sensitivity supported this setting must be set to `true` (default). This way we would generate comparison expression like:  
+_This setting affects all **MySQL** connectors and it is set to **true** by default._ Depending on [textMatchStyle](../reference.md#type-textmatchstyle) case sensitivity in text criteria is achieved by using LIKE BINARY sql comparison operator, which does not use indexed search. Indexes are used with regular "=" comparison operator, which does not ensure case sensitivity. With big amounts of data indexes are critical, so in order to use them and still have case sensitivity supported this setting must be set to `true` (default). This way we would generate comparison expression like:  
 ``<field>` = `<value>` AND `<field>` LIKE BINARY `<value>``  
 where first part ensures efficient indexed search and second part adds case sensitivity to significantly reduced amounts of data. This would be more efficient without indexes as well, cause LIKE BINARY conversion would be performed on less rows anyway.  
 Setting this property to `false` would bring back the old behavior, when only LIKE BINARY comparison would be used, which would return same results, but much slower.
 
-**`sql.MyDatabase.useHavingClause`**  
-By default SQL query is generated using traditional "having" clause approach:
-
-```
-select <selectClause> from ... where ... group by <groupClause> having <afterWhereClause>
-```
-Setting `sql.MyDatabase.useHavingClause` to `false` makes SQL query use subselect approach when main query becomes subselect and then it is filtered in outer "where" clause:
-```
-select * from (select <selectClause> from ... where ... group by <groupClause>) work where <afterWhereClause>
-```
-This may be overridden by setting [OperationBinding.useHavingClause](../classes/OperationBinding.md#attr-operationbindingusehavingclause).
-
-**`sql.likeIsCaseSensitive` and `sql.MyDatabase.likeIsCaseSensitive`**  
-The "LIKE" operator in the SQL standard is defined as being case-insensitive, however, some databases default to case-sensitive matching. This is not ultimately not technically in violation of the standard since the standard specifies that the comparison is based on the configured "collation" (the collation is basically the rules for comparing characters and deciding which is first when sorting).
-
-If the default behavior of the LIKE operator is a case-sensitive comparison, then, to achieve a case-insensitive comparison, as required by [case insensitive operators](../reference.md#type-operatorid) such as iEquals, iContains and so forth, the SmartClient server must generate SQL that uses LOWER() or similar SQL functions to ensure case-insensitive comparison.
-
-In databases where the default behavior of the "LIKE" operator is already case-insensitive comparison, explicit use of the LOWER() function can be slower - certain databases do not realize that this is a "no-op" and perform the query poorly (fail to use indices, etc).
-
-Note that above is true for the equality check as well, because usually databases treat the "LIKE" and "=" operators in the same way, i.e. either they both are case-sensitive or both are case-insensitive.
-
-Smartclient does its best to default this behavior for supported databases, so unless your database is configured to use other than the default "collation", nothing needs to be changed. In case you need to change the default behavior set `likeIsCaseSensitive` flag as follows:
-
-*   `likeIsCaseSensitive: true` enables Smartclient to convert both sides of comparison to lower/upper case to ensure case-insensitivity:  
-    `LOWER(table.column) = LOWER('Value')`  
-    and  
-    `LOWER(table.column) LIKE LOWER('%Value%')`
-*   `likeIsCaseSensitive: false` enables Smartclient to rely on database case-insensitivity and compare values directly:  
-    `table.column = 'Value'`  
-    and  
-    `table.column LIKE '%Value%'`
-
-**`sql.forceInsensitive` and `sql.MyDatabase.forceInsensitive`**  
-_**Deprecated.** Does the same as "likeIsCaseSensitive" described above, but will be removed soon. Please see "likeIsCaseSensitive" setting docs for the details what it affects exactly._
-
 **`sql.aliasLengthLimit` and `sql.MyDatabase.aliasLengthLimit`**  
-These properties override the default table alias length limit when using features like [DataSourceField.includeVia](../classes/DataSourceField.md#attr-datasourcefieldincludevia) and [DataSourceField.otherFKs](../classes/DataSourceField.md#attr-datasourcefieldotherfks). Default alias length limit is set accordingly to the documentation for supported databases and defaults to 128 characters, except these databases:
+These properties override the default table alias length limit when using features like [DataSourceField.includeVia](../classes/DataSourceField.md#attr-datasourcefieldincludevia). Default alias length limit is set accordingly to the documentation for supported databases and defaults to 128 characters, except these databases:
 
 | firebirdsql | 63 |
 |---|---|
@@ -153,12 +112,5 @@ When ILIKE is in use, Postgres is able to make use of indexes, which it does not
 ```
  WHERE someField ILIKE 'United%'
 ```
-
-**`sql.log.queriesSlowerThan`**  
-Allows you to specify SQL query execution time threshold in milliseconds (defaults to 10000), which if exceeded query is identified as "slow" and may be logged under specific logging category. See [DataSource.logSlowSQL](../classes/DataSource.md#attr-datasourcelogslowsql) for more details.
-
-### Related
-
-- [DataSourceField.sqlForceInsensitive](../classes/DataSourceField.md#attr-datasourcefieldsqlforceinsensitive)
 
 ---

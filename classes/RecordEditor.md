@@ -25,7 +25,7 @@ The RecordEditor class exists as a helper class for ListGrids, used to provide a
 ### Description
 [Icon](Button.md#attr-buttonicon) to show on the [RecordEditor.actionButton](#attr-recordeditoractionbutton) if this component is being used as a [ListGrid.filterEditor](ListGrid_1.md#attr-listgridfiltereditor).
 
-Note that this [SCImgURL](../reference.md#type-scimgurl) will be resolved using the [RecordEditor.skinImgDir](#attr-recordeditorskinimgdir) defined for the RecordEditor.
+Note that this [SCImgURL](../reference_2.md#type-scimgurl) will be resolved using the [RecordEditor.skinImgDir](#attr-recordeditorskinimgdir) defined for the RecordEditor.
 
 **Flags**: IR
 
@@ -62,6 +62,14 @@ See [cellStyleSuffixes](../kb_topics/cellStyleSuffixes.md#kb-topic-cellstylesuff
 **Flags**: IR
 
 ---
+## Attr: RecordEditor.recordSummaryBaseStyle
+
+### Description
+If showing any record summary fields (IE: fields of [type:"summary"](../reference.md#type-listgridfieldtype)), this attribute specifies a custom base style to apply to cells in the summary field
+
+**Flags**: IR
+
+---
 ## Attr: RecordEditor.actionButton
 
 ### Description
@@ -90,22 +98,6 @@ Should non-editable fields within this record-editor always display the [empty c
 This setting allows developers to easily account for the fact that a custom formatter for empty cells in a listGrid is often not appropriate to display in the filter editor for a `canFilter:false` field with no specified criterion.
 
 **Flags**: IRA
-
----
-## Attr: RecordEditor.canSaveSearches
-
-### Description
-CanSaveSearches is explicitly disabled for RecordEditors by default.
-
-**Flags**: IR
-
----
-## Attr: RecordEditor.recordSummaryBaseStyle
-
-### Description
-If showing any record summary fields (IE: fields of [type:"summary"](../reference.md#type-listgridfieldtype)), this attribute specifies a custom base style to apply to cells in the summary field
-
-**Flags**: IR
 
 ---
 ## Method: RecordEditor.performAction

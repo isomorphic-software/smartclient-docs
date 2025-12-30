@@ -7,7 +7,7 @@
 ## KB Topic: ComboBoxItem PickList Filtering
 
 ### Description
-The criteria used to decide which options should appear in the drop-down [PickList](../reference_2.md#interface-picklist) shown by a ComboBox are determined as follows.
+The criteria used to decide which options should appear in the drop-down [PickList](../reference.md#interface-picklist) shown by a ComboBox are determined as follows.
 
 While the user is typing in a value, the [ComboBoxItem.getPickListFilterCriteria](../classes/ComboBoxItem.md#method-comboboxitemgetpicklistfiltercriteria) method will return the typed-in value as part of the criteria, so that only matching values are shown. Matching is determined by the [textMatchStyle](../classes/ComboBoxItem.md#attr-comboboxitemtextmatchstyle). Note that the [ComboBoxItem.filterFields](../classes/ComboBoxItem.md#attr-comboboxitemfilterfields) attribute may be used to determine which fields filtering is performed against for databound comboBoxItems.
 

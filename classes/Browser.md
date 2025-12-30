@@ -9,8 +9,6 @@
 ### Description
 The `Browser` class contains various class attributes that indicate basic properties of the browser and whether certain features are enabled.
 
-These flags represent a "best effort" at browser detection based on the user agent string and other indicators. Browser detection is inherently imperfect - browsers may spoof their user agent, new browser versions may change behavior, and unusual browser configurations may not be detected correctly. These properties should not be considered a fully supported API for all edge cases - applications with unusual browser compatibility requirements may need to implement their own detection logic.
-
 ---
 ## ClassAttr: Browser.isSupported
 
@@ -44,22 +42,20 @@ The value of this variable is only meaningful on touch devices.
 **Flags**: RW
 
 ---
+## ClassAttr: Browser.supportsDualInput
+
+### Description
+Does the browser support both mouse and touch input?
+
+**Flags**: RW
+
+---
 ## ClassAttr: Browser.isDesktop
 
 ### Description
 Is the application running in a desktop browser? This is true if [Browser.isTablet](#classattr-browseristablet) and [Browser.isHandset](#classattr-browserishandset) are both `false`.
 
 **Flags**: RW
-
----
-## ClassAttr: Browser.allowsNewFunction
-
-### Description
-Whether `new Function()` is allowed. This is true by default, but if the page has a CSP (Content Security Policy) header with a `script-src` directive that omits `'unsafe-eval'`, `new Function()` throws an EvalError.
-
-CSP's `'unsafe-eval'` controls all string-to-code evaluation methods identically, so when this flag is false, `eval()`, `setTimeout(string)`, and `setInterval(string)` are also blocked.
-
-**Flags**: RA
 
 ---
 ## ClassAttr: Browser.useCSS3
@@ -70,56 +66,6 @@ Whether the current browser supports CSS3 and whether SmartClient is configured 
 If isc\_css3Mode is "on" then useCSS3 is set to true. If isc\_css3Mode is set to "supported", "partialSupport", or is unset, then useCSS3 is set to true only if the browser is a WebKit-based browser, Firefox, IE 9 in standards mode, or IE 10+. If isc\_css3Mode is set to "off" then useCSS3 is set to false.
 
 **Flags**: R
-
----
-## ClassAttr: Browser.isIE
-
-### Description
-Are we in Internet Explorer?
-
-**Flags**: R
-
----
-## ClassAttr: Browser.isOpenFin
-
-### Description
-Are we in an [OpenFin](https://developers.openfin.co/of-docs/docs) environment? See class [OpenFin](../reference.md#class-openfin) for ways to call OpenFin methods from within SmartClient.
-
-**Flags**: R
-
----
-## ClassAttr: Browser.isMultiWindow
-
-### Description
-Are the [MultiWindow](MultiWindow.md#class-multiwindow) APIs supported and cross-window optimizations enabled? By default this is true in the [main window](MultiWindow.md#classmethod-multiwindowismainwindow) if [OpenFin](#classattr-browserisopenfin) is loaded, false otherwise. In [child windows](MultiWindow.md#classmethod-multiwindowopen), this property is read-only, and assumes the value from the main window.
-
-**Note:** [MultiWindow](MultiWindow.md#class-multiwindow) is currently an experimental feature and not supported except by special arrangement
-
-**Flags**: RW
-
----
-## ClassAttr: Browser.hasNativeDrag
-
-### Description
-Does this browser support native HTML5 drag and drop? This is false on touch devices and on IE/Edge Legacy due to limitations in their native drag implementations.
-
-**Flags**: R
-
----
-## ClassAttr: Browser.version
-
-### Description
-Browser major version number (integer: 4, 5, etc).
-
-**Flags**: R
-
----
-## ClassAttr: Browser.supportsDualInput
-
-### Description
-Does the browser support both mouse and touch input?
-
-**Flags**: RW
 
 ---
 ## ClassAttr: Browser.useHighPerformanceGridTimings
@@ -174,22 +120,6 @@ Note that setting `Browser.isTablet` might affect the values of [Browser.isDeskt
 **Flags**: A
 
 ---
-## ClassMethod: Browser.setIsMultiWindow
-
-### Description
-Sets a non-default value for [Browser.isMultiWindow](#classattr-browserismultiwindow), such as enabling it even if [OpenFin](#classattr-browserisopenfin) isn't present.
-
-Note that this method may only be called from the [main window](MultiWindow.md#classmethod-multiwindowismainwindow), and only once.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| isMultiWindow | [boolean](../reference.md#type-boolean) | false | — | new setting for `Browser.isMultiWindow`. |
-
-**Flags**: A
-
----
 ## ClassMethod: Browser.setIsTouch
 
 ### Description
@@ -204,26 +134,6 @@ Note that setting `Browser.isTouch` might affect the values of [Browser.isDeskto
 | isTouch | [boolean](../reference.md#type-boolean) | false | — | new setting for `Browser.isTablet`. |
 
 **Flags**: A
-
----
-## ClassMethod: Browser.hasSessionStorage
-
-### Description
-Returns whether sessionStorage is accessible in the current environment. This method performs a one-time check and caches the result. In CSP sandbox environments without 'allow-same-origin', sessionStorage access throws a SecurityError.
-
-### Returns
-
-`[boolean](../reference.md#type-boolean)` — true if sessionStorage is accessible, false otherwise
-
----
-## ClassMethod: Browser.hasLocalStorage
-
-### Description
-Returns whether localStorage is accessible in the current environment. This method performs a one-time check and caches the result. In CSP sandbox environments without 'allow-same-origin', localStorage access throws a SecurityError.
-
-### Returns
-
-`[boolean](../reference.md#type-boolean)` — true if localStorage is accessible, false otherwise
 
 ---
 ## ClassMethod: Browser.setIsHandset

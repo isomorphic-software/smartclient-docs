@@ -4,6 +4,18 @@
 
 ---
 
+## Attr: Operator.symbol
+
+### Description
+The text use when using this operator as an [expression](FormItem.md#attr-formitemallowexpressions) in a FormItem.
+
+### Groups
+
+- advancedFilter
+
+**Flags**: IR
+
+---
 ## Attr: Operator.hidden
 
 ### Description
@@ -44,10 +56,24 @@ Name of a property on the [Operators](Operators.md#class-operators) class that p
 **Flags**: IR
 
 ---
+## Attr: Operator.requiresServer
+
+### Description
+Whether this operator needs to be executed on the server side.
+
+This implies that if a [Criterion](../reference.md#object-criterion) using this operator is either introduced into [criteria](../reference.md#object-advancedcriteria) or is changed, the server will need to be contacted to perform filtering.
+
+### Groups
+
+- advancedFilter
+
+**Flags**: IR
+
+---
 ## Attr: Operator.ID
 
 ### Description
-Unique id for an operator, which appears within [AdvancedCriteria](../reference.md#object-advancedcriteria) as the [Operator](../reference.md#object-operator) property.
+Unique id for an operator, which appears within [AdvancedCriteria](../reference.md#object-advancedcriteria) as the [Operator](../reference_2.md#object-operator) property.
 
 A list of built-in identifiers is [here](../reference.md#type-operatorid).
 
@@ -86,48 +112,10 @@ To simplify internationalization by separating titles from operator code, you ca
 **Flags**: IR
 
 ---
-## Attr: Operator.editorType
-
-### Description
-For an operator with [Operator.valueType](#attr-operatorvaluetype):"custom", indicates what kind of FormItem to use to provide a user interface for creating a valid [Criterion](../reference_2.md#object-criterion). The default of `null` means an ordinary TextItem is fine.
-
-### Groups
-
-- advancedFilter
-
-**Flags**: IR
-
----
-## Attr: Operator.symbol
-
-### Description
-The text use when using this operator as an [expression](FormItem.md#attr-formitemallowexpressions) in a FormItem.
-
-### Groups
-
-- advancedFilter
-
-**Flags**: IR
-
----
-## Attr: Operator.requiresServer
-
-### Description
-Whether this operator needs to be executed on the server side.
-
-This implies that if a [Criterion](../reference_2.md#object-criterion) using this operator is either introduced into [criteria](../reference.md#object-advancedcriteria) or is changed, the server will need to be contacted to perform filtering.
-
-### Groups
-
-- advancedFilter
-
-**Flags**: IR
-
----
 ## Attr: Operator.valueType
 
 ### Description
-Indicates the kind of value expected in a [Criterion](../reference_2.md#object-criterion) that uses this operator. [OperatorValueType](../reference_2.md#type-operatorvaluetype) lists possibilities.
+Indicates the kind of value expected in a [Criterion](../reference.md#object-criterion) that uses this operator. [OperatorValueType](../reference.md#type-operatorvaluetype) lists possibilities.
 
 The default of `null` is equivalent to "fieldType", indicating that [Criterion.value](Criterion.md#attr-criterionvalue) is expected to contain a value of the same type as the field indicated by [Criterion.fieldName](Criterion.md#attr-criterionfieldname).
 
@@ -162,6 +150,48 @@ Name of a property on the [Operators](Operators.md#class-operators) class that p
 - advancedFilter
 
 **Flags**: IR
+
+---
+## Attr: Operator.editorType
+
+### Description
+For an operator with [Operator.valueType](#attr-operatorvaluetype):"custom", indicates what kind of FormItem to use to provide a user interface for creating a valid [Criterion](../reference.md#object-criterion). The default of `null` means an ordinary TextItem is fine.
+
+### Groups
+
+- advancedFilter
+
+**Flags**: IR
+
+---
+## Method: Operator.condition
+
+### Description
+Method which actually evaluates whether a given record meets a [Criterion](../reference.md#object-criterion).
+
+For operators that act on [sub-criteria](Criterion.md#attr-criterioncriteria), call [DataSource.evaluateCriterion](DataSource.md#method-datasourceevaluatecriterion) to evaluate sub-criteria.
+
+Because criteria are sometimes applied to user-entered data that has not been validated, a robust `condition()` function should expect that data found in a [Record](../reference.md#object-record) may be null, NaN, not the correct type (eg "NA" for a type:"date" field) or otherwise out of the expected range.
+
+Note that an Operator has access both to the [Criterion](../reference.md#object-criterion) object, allowing operators that act on more than one field or perform calculations, and access to the [Operator](../reference_2.md#object-operator) object itself, allowing a `condition()` function to be shared across a range of related operators with different [OperatorId](../reference.md#type-operatorid)s.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| value | [Any](#type-any) | false | — | value from the field supplied as [Criterion.fieldName](Criterion.md#attr-criterionfieldname), if applicable |
+| record | [Record](#type-record) | false | — | record being evaluated |
+| fieldName | [Any](#type-any) | false | — | fieldName supplied as [Criterion.fieldName](Criterion.md#attr-criterionfieldname), if applicable |
+| criterion | [Criterion](#type-criterion) | false | — | criterion definition |
+| operator | [Operator](#type-operator) | false | — | operator definition |
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — whether the field passes this criteria
+
+### Groups
+
+- advancedFilter
 
 ---
 ## Method: Operator.compareCriteria
@@ -208,34 +238,5 @@ If not implemented, returns the result of calling [getCriterion()](FormItem.md#m
 ### Returns
 
 `[Criterion](#type-criterion)` — —
-
----
-## Method: Operator.condition
-
-### Description
-Method which actually evaluates whether a given record meets a [Criterion](../reference_2.md#object-criterion).
-
-For operators that act on [sub-criteria](Criterion.md#attr-criterioncriteria), call [DataSource.evaluateCriterion](DataSource.md#method-datasourceevaluatecriterion) to evaluate sub-criteria.
-
-Because criteria are sometimes applied to user-entered data that has not been validated, a robust `condition()` function should expect that data found in a [Record](../reference.md#object-record) may be null, NaN, not the correct type (eg "NA" for a type:"date" field) or otherwise out of the expected range.
-
-Note that `this` is the [Operator](../reference.md#object-operator) object, allowing a `condition()` function to be shared across a range of related operators with different [OperatorId](../reference.md#type-operatorid)s.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| fieldName | [String](#type-string) | false | — | the [Criterion.fieldName](Criterion.md#attr-criterionfieldname) |
-| value | [Any](#type-any) | false | — | value of the record at [Criterion.fieldName](Criterion.md#attr-criterionfieldname), if applicable |
-| criterionValues | [CriterionValues](#type-criterionvalues) | false | — | the [CriterionValues](../reference.md#object-criterionvalues) |
-| dataSource | [DataSource](#type-datasource) | false | — | the [DataSource](DataSource.md#class-datasource) performing the evaluation |
-
-### Returns
-
-`[boolean](../reference.md#type-boolean)` — whether the record passes the `Criterion`
-
-### Groups
-
-- advancedFilter
 
 ---

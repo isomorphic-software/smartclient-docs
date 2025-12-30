@@ -26,102 +26,6 @@ Allows the size of the corner segment to be set independently of the [Scrollbar.
 **Flags**: IR
 
 ---
-## Attr: Scrollbar.trackStartImg
-
-### Description
-The StretchItem for the start of a scrollbar track. The default is: `{ name:"track_start", width:"trackStartSize", height:"trackStartSize" }`
-
-**Flags**: IR
-
----
-## Attr: Scrollbar.skinImgDir
-
-### Description
-Where are the skin images for the Scrollbar. This is local to the [overall skin directory](Page.md#classmethod-pagegetskindir).
-
-### Groups
-
-- images
-
-**Flags**: IRA
-
----
-## Attr: Scrollbar.endImg
-
-### Description
-The StretchItem for the end of a scrollbar (the "scroll down" or "scroll right" button image). The default is: `{ name:"end", width:"btnSize", height:"btnSize" }`
-
-**Flags**: IR
-
----
-## Attr: Scrollbar.scrollTarget
-
-### Description
-The widget whose contents should be scrolled by this scrollbar. The scrollbar thumb is sized according to the amount of visible vs. scrollable content in this widget.
-
-**Flags**: IRWA
-
----
-## Attr: Scrollbar.btnSize
-
-### Description
-The size of the square buttons (arrows) at the ends of this scrollbar. This overrides [Canvas.scrollbarSize](Canvas.md#attr-canvasscrollbarsize) to set the width of a vertical scrollbar or the height of a horizontal scrollbar. If not set it will default to [Canvas.scrollbarSize](Canvas.md#attr-canvasscrollbarsize).
-
-### Groups
-
-- track
-
-**Flags**: IRW
-
----
-## Attr: Scrollbar.trackImg
-
-### Description
-The StretchItem for the middle part of a scrollbar track, which usually takes up the majority of the width or height of the scrollbar. The default is: `{ name:"track", width:"*", height:"*" }`
-
-**Flags**: IR
-
----
-## Attr: Scrollbar.cornerImg
-
-### Description
-The StretchItem for the corner between vertical and horizontal scrollbars. The width and height are determined automatically, so [StretchItem.width](StretchItem.md#attr-stretchitemwidth) and [StretchItem.height](StretchItem.md#attr-stretchitemheight) set on the cornerImg StretchItem are ignored. The default is: `{ name:"corner" }`
-
-**Flags**: IR
-
----
-## Attr: Scrollbar.trackEndWidth
-
-### Description
-The minimum pixel width of the track end segments (if enabled with showTrackEnds).
-
-### Groups
-
-- track
-
-**Flags**: IRA
-
----
-## Attr: Scrollbar.autoEnable
-
-### Description
-If true, this scrollbar will automatically enable when the scrollTarget is scrollable (i.e., when the contents of the scrollTarget exceed its clip size in the direction relevant to this scrollbar), and automatically disable when the scrollTarget is not scrollable. Set this property to false for full manual control over a scrollbar's enabled state.
-
-**Flags**: IRWA
-
----
-## Attr: Scrollbar.showCorner
-
-### Description
-If true, displays a corner piece at the bottom end of a vertical scrollbar, or the right end of a horizontal scrollbar. This is typically set only when both horizontal and vertical scrollbars are displayed and about the same corner.
-
-### Groups
-
-- corner
-
-**Flags**: IRA
-
----
 ## Attr: Scrollbar.trackEndHeight
 
 ### Description
@@ -176,6 +80,14 @@ Inset of the thumb relative to the track. An inset of N pixels means the thumb i
 - thumb
 
 **Flags**: IRA
+
+---
+## Attr: Scrollbar.trackStartImg
+
+### Description
+The StretchItem for the start of a scrollbar track. The default is: `{ name:"track_start", width:"trackStartSize", height:"trackStartSize" }`
+
+**Flags**: IR
 
 ---
 ## Attr: Scrollbar.showTrackEnds
@@ -278,6 +190,74 @@ Base URL for the images used for the vertical scrollbar track and end buttons. S
 **Flags**: IR
 
 ---
+## Attr: Scrollbar.skinImgDir
+
+### Description
+Where are the skin images for the Scrollbar. This is local to the [overall skin directory](Page.md#classmethod-pagegetskindir).
+
+### Groups
+
+- images
+
+**Flags**: IRA
+
+---
+## Attr: Scrollbar.endImg
+
+### Description
+The StretchItem for the end of a scrollbar (the "scroll down" or "scroll right" button image). The default is: `{ name:"end", width:"btnSize", height:"btnSize" }`
+
+**Flags**: IR
+
+---
+## Attr: Scrollbar.scrollTarget
+
+### Description
+The widget whose contents should be scrolled by this scrollbar. The scrollbar thumb is sized according to the amount of visible vs. scrollable content in this widget.
+
+**Flags**: IRWA
+
+---
+## Attr: Scrollbar.btnSize
+
+### Description
+The size of the square buttons (arrows) at the ends of this scrollbar. This overrides [Canvas.scrollbarSize](Canvas.md#attr-canvasscrollbarsize) to set the width of a vertical scrollbar or the height of a horizontal scrollbar. If not set it will default to [Canvas.scrollbarSize](Canvas.md#attr-canvasscrollbarsize).
+
+### Groups
+
+- track
+
+**Flags**: IRW
+
+---
+## Attr: Scrollbar.trackImg
+
+### Description
+The StretchItem for the middle part of a scrollbar track, which usually takes up the majority of the width or height of the scrollbar. The default is: `{ name:"track", width:"*", height:"*" }`
+
+**Flags**: IR
+
+---
+## Attr: Scrollbar.cornerImg
+
+### Description
+The StretchItem for the corner between vertical and horizontal scrollbars. The width and height are determined automatically, so [StretchItem.width](StretchItem.md#attr-stretchitemwidth) and [StretchItem.height](StretchItem.md#attr-stretchitemheight) set on the cornerImg StretchItem are ignored. The default is: `{ name:"corner" }`
+
+**Flags**: IR
+
+---
+## Attr: Scrollbar.trackEndWidth
+
+### Description
+The minimum pixel width of the track end segments (if enabled with showTrackEnds).
+
+### Groups
+
+- track
+
+**Flags**: IRA
+
+---
 ## Attr: Scrollbar.thumbOverlap
 
 ### Description
@@ -298,6 +278,26 @@ The minimum pixel size of the draggable thumb regardless of how large the scroll
 ### Groups
 
 - thumb
+
+**Flags**: IRA
+
+---
+## Attr: Scrollbar.autoEnable
+
+### Description
+If true, this scrollbar will automatically enable when the scrollTarget is scrollable (i.e., when the contents of the scrollTarget exceed its clip size in the direction relevant to this scrollbar), and automatically disable when the scrollTarget is not scrollable. Set this property to false for full manual control over a scrollbar's enabled state.
+
+**Flags**: IRWA
+
+---
+## Attr: Scrollbar.showCorner
+
+### Description
+If true, displays a corner piece at the bottom end of a vertical scrollbar, or the right end of a horizontal scrollbar. This is typically set only when both horizontal and vertical scrollbars are displayed and about the same corner.
+
+### Groups
+
+- corner
 
 **Flags**: IRA
 

@@ -12,6 +12,14 @@
 Specially styled Button subclass used by the [NavigationBar](NavigationBar.md#class-navigationbar) class.
 
 ---
+## Attr: NavigationButton.forwardBaseStyle
+
+### Description
+Base style for navigation buttons where [Direction](../reference.md#type-direction) is set to `"forward"`
+
+**Flags**: IRW
+
+---
 ## Attr: NavigationButton.direction
 
 ### Description
@@ -20,18 +28,10 @@ Navigation direction for this button. If set to `"forward"` or `"back"` the spec
 **Flags**: IRW
 
 ---
-## Attr: NavigationButton.forwardBaseStyle
-
-### Description
-Base style for navigation buttons where [Direction](../reference_2.md#type-direction) is set to `"forward"`
-
-**Flags**: IRW
-
----
 ## Attr: NavigationButton.backBaseStyle
 
 ### Description
-Base style for navigation buttons where [Direction](../reference_2.md#type-direction) is set to `"back"`
+Base style for navigation buttons where [Direction](../reference.md#type-direction) is set to `"back"`
 
 **Flags**: IRW
 

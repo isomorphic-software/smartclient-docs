@@ -44,16 +44,6 @@ Array of points of the polygon, specified in the [local coordinate system](DrawP
 **Flags**: IRW
 
 ---
-## Attr: DrawPolygon.showTitleLabelBackground
-
-### Description
-If the [titleLabel](DrawItem.md#attr-drawitemtitlelabel) is showing, should the [titleLabelBackground](DrawItem.md#attr-drawitemtitlelabelbackground) be created and placed behind the `titleLabel`?
-
-This defaults to true for [DrawSector](DrawSector.md#class-drawsector)s and shapes that are not commonly filled (e.g. [DrawLine](DrawLine.md#class-drawline)s).
-
-**Flags**: IRA
-
----
 ## Attr: DrawPolygon.titleRotationMode
 
 ### Description
@@ -62,6 +52,16 @@ The mode in which the [titleLabel](DrawItem.md#attr-drawitemtitlelabel) (if show
 ### See Also
 
 - [DrawItem.title](DrawItem.md#attr-drawitemtitle)
+
+**Flags**: IRA
+
+---
+## Attr: DrawPolygon.showTitleLabelBackground
+
+### Description
+If the [titleLabel](DrawItem.md#attr-drawitemtitlelabel) is showing, should the [titleLabelBackground](DrawItem.md#attr-drawitemtitlelabelbackground) be created and placed behind the `titleLabel`?
+
+This defaults to true for [DrawSector](DrawSector.md#class-drawsector)s and shapes that are not commonly filled (e.g. [DrawLine](DrawLine.md#class-drawline)s).
 
 **Flags**: IRA
 

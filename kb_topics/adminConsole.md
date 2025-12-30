@@ -7,28 +7,23 @@
 ## KB Topic: Admin Console
 
 ### Description
-The Admin Console is a tool for configuring database access, importing and exporting server-backed SmartClient DataSources, and performing other tasks.
+The admin console groups together heap of other tools into one user interface in order to make it easier to find and work with these tools. It also provides you with links to some tools which do not fit into the admin console but are standalone tools.
 
-It can be found at _tools/adminConsole.jsp_ within the SmartClient SDKPackage, so if you're running your servlet engine on localhost:8080, it can be reached at  
-[http://localhost:8080/tools/adminConsole.jsp](http://localhost:8080/tools/adminConsole.jsp)
+NOTE: To use the Admin Console, you must have the Isomorphic SmartClient package installed and your servlet engine started. Direct your browser to the following URL to access the Admin Console:
 
-_Features:_
+  [http://localhost:8080/tools/adminConsole.jsp](http://localhost:8080/tools/adminConsole.jsp)
+
+The common default servlet engine port 8080 is used in the URL given above. Adjust your URL as necessary if you are using a different port and replace localhost with the machine name running the servlet engine if you are accessing it from a remote machine.
+
+The Admin Console UI comes with a number of tabs at the top, each representing a different tool, below you will find a description of what each tab/tool offers.
 
 **Database Configuration**
 
-This tab allows you to configure SQL database connetions. This is an alternative to adding SQL configuration blocks directly to [server.properties](server_properties.md#kb-topic-serverproperties-file) by hand. See the [database configuration](dbConfigTool.md#kb-topic-database-configuration) documentation for more details.
-
-**View DataSources**
-
-The [DataSource Navigator](dataSourcesTab.md#kb-topic-datasources-tab) lets you view the available DataSources in dedicated sections, where you can also edit and export records.
+On this tab you will be able to see any available JNDI connections. If you aren't using JNDI, you can use the GUI to enter and test JDBC settings. Both ConnectionManager and JDBC DataSource settings are supported. Once you've got a working connection, set it as the default connection using the "Set as Default" button.
 
 **Import DataSources**
 
-This tab allows you to generate and populate database tables from DataSource definitions.
-
-All DataSources defined in XML (as described [here](dataSourceDeclaration.md#kb-topic-creating-datasources)) are displayed in a list. Developers may select any dataSource to see details of the dataSource and preview its data if any exists.
-
-For DataSources of [type](../reference_2.md#type-dsservertype) `"sql"` or `"hibernate"`, the buttons at the bottom of this tab allow users to create a new database table for the DataSources. Test data may be imported test data, either from an existing [test data file](../classes/DataSource.md#attr-datasourcetestdata) or by uploading [CSV, JSON or XML formatted data](testData.md#kb-topic-test-data).
+The database configuration tool allows you to configure database access for DataSources that use SmartClient's built-in [SQL engine](sqlDataSource.md#kb-topic-sql-datasources). See [database configuration tool](dbConfigTool.md#kb-topic-database-configuration-tools) for a more in depth explaination of this tool.
 
 **Server Logs**
 
@@ -36,15 +31,15 @@ Just like in the [Developer Console](debugging.md#kb-topic-debugging) this will 
 
 **SQL Browser**
 
-On this tab you will be able to browse your SQL databases and see the data in their tables. You may also create DataSources from those tables and save them to disk, at the location specified by a `project.datasources.generated` [config property](server_properties.md#kb-topic-serverproperties-file) (by default the same as the `project.datasources` property).
+On this tab you will be able to browse your SQL databases and see the data in their tables.
 
 **Scheduler**
 
-With the [scheduler tool](quartzAdapters.md#kb-topic-quartz-datasources) you can view, schedule, trigger and pause arbitrary [Quartz](http://www.quartz-scheduler.org) jobs. Requires the Isomorphic Scheduler server library and an [initialized](https://www.quartz-scheduler.org/documentation/2.4.0-SNAPSHOT/cookbook/ServletInitScheduler.html) / [configured](https://www.quartz-scheduler.org/documentation/2.4.0-SNAPSHOT/configuration.html) Quartz Scheduler.
+With the scheduler tool you can view, trigger and paus any of your Quartz jobs.
 
 **Other Tools**
 
-Here you will find links to some other standalone development tools.
+Here you will find links to other useful tools which are not appropriate to put into a tab in the Admin Console.
 
 ### See Also
 

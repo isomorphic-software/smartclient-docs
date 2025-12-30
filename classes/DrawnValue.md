@@ -12,6 +12,14 @@ For bar and column charts, thickness of the bar representing this data value.
 **Flags**: IR
 
 ---
+## Attr: DrawnValue.radius
+
+### Description
+For pie mode only, the radius of the segment for the data value.
+
+**Flags**: IR
+
+---
 ## Attr: DrawnValue.record
 
 ### Description
@@ -58,14 +66,6 @@ For pie mode only, start angle of the segment for the data value.
 
 ### Description
 For pie mode only, start angle of the segment for the data value.
-
-**Flags**: IR
-
----
-## Attr: DrawnValue.radius
-
-### Description
-For pie mode only, the radius of the segment for the data value.
 
 **Flags**: IR
 

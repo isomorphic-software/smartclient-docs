@@ -24,7 +24,7 @@ The [ListGrid.frozenFieldsMaxWidth](../classes/ListGrid_1.md#attr-listgridfrozen
 Troubleshooting tip: If you encounter misalignment between rows in frozen and unfrozen columns, this is likely due to one of the following causes:
 
 *   Inconsistent border/padding: all cells in a row in a table must have the same top and bottom border thickness, and all cells in a column must have the same horizontal border and padding width, or the table is invalid, with no clear rules for rendering it. The HTML/CSS spec doesn't say what to do in this situation, and browser engines behave inconsistently.
-*   For grids with [fixedRecordHeights:true](../classes/ListGrid_1.md#attr-listgridfixedrecordheights), the cell contents, inclusive of border and padding, needs to be less than your configured [ListGrid.cellHeight](../classes/ListGrid_1.md#attr-listgridcellheight), or you need to set [ListGrid.enforceVClipping](../classes/ListGrid_1.md#attr-listgridenforcevclipping) to cause us to clip it as necessary. Breaking this rule can cause misalignment between rows in frozen and unfrozen columns as some fields have cells with taller content. (This does not apply for grids with `fixedRecordHeights` set to false).
+*   For grids with [fixedRecordHeights:true](#fixedrecordheights), the cell contents, inclusive of border and padding, needs to be less than your configured [ListGrid.cellHeight](../classes/ListGrid_1.md#attr-listgridcellheight), or you need to set [enforceVClipping](#enforcevclipping) to cause us to clip it as necessary. Breaking this rule can cause misalignment between rows in frozen and unfrozen columns as some fields have cells with taller content. (This does not apply for grids with `fixedRecordHeights` set to false).
 
 ### Related
 

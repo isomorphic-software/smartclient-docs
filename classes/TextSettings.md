@@ -10,6 +10,14 @@
 Common base class of [TextImportSettings](TextImportSettings.md#class-textimportsettings).
 
 ---
+## Attr: TextSettings.lineSeparator
+
+### Description
+Separator between Records. For import, default of null means that either the Unix/Mac format of just a newline ("\\n") or the typical DOS/Windows format of a carriage return and newline ("\\r\\n") will be accepted. For export, overridden in [TextExportSettings](TextExportSettings.md#class-textexportsettings).
+
+**Flags**: IR
+
+---
 ## Attr: TextSettings.fieldList
 
 ### Description
@@ -22,14 +30,6 @@ For import, names of DataSource fields to use to parse values, in order.
 If `fieldList` is unset, DataSource fields are used, in order.
 
 If more values exist in a given Record than the listed fields or than all DataSource fields, remaining values are ignored.
-
-**Flags**: IR
-
----
-## Attr: TextSettings.lineSeparator
-
-### Description
-Separator between Records. For import, default of null means that either the Unix/Mac format of just a newline ("\\n") or the typical DOS/Windows format of a carriage return and newline ("\\r\\n") will be accepted. For export, overridden in [TextExportSettings](TextExportSettings.md#class-textexportsettings).
 
 **Flags**: IR
 

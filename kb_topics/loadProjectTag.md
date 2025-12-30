@@ -7,8 +7,6 @@
 ## KB Topic: <isomorphic:loadProject>
 
 ### Description
-See [jspTags](../reference.md#kb-topic-smartclient-jsp-tags)
-
 _produces:_ JavaScript
 
 This tag inserts JavaScript to load the screens that are part of the project.

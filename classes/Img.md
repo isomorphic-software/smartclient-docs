@@ -12,12 +12,40 @@
 The Img widget class implements a simple widget that displays a single image.
 
 ---
+## Attr: Img.imageWidth
+
+### Description
+Explicit size for the image, for [Img.imageType](#attr-imgimagetype) settings that would normally use the image's natural size (applies to [Img.imageType](#attr-imgimagetype) "center" and "normal" only).
+
+### Groups
+
+- appearance
+
+**Flags**: IR
+
+---
 ## Attr: Img.usePNGFix
 
 ### Description
 If false, never apply the png fix needed in Internet Explorer to make png transparency work correctly.
 
 **Flags**: IR
+
+---
+## Attr: Img.showImageRollOver
+
+### Description
+Should the image be updated on rollOver as described in [statefulImages](../kb_topics/statefulImages.md#kb-topic-stateful-images)?
+
+If not explicitly set, behavior is as follows:  
+If [Img.src](#attr-imgsrc) is specified as a string, [Img.showRollOver](#attr-imgshowrollover) will be used to determine whether to show a roll-over image.  
+If [Img.src](#attr-imgsrc) is specified as a [SCStatefulImgConfig](../reference.md#object-scstatefulimgconfig), the appropriate [SCStatefulImgConfig.Over](SCStatefulImgConfig.md#attr-scstatefulimgconfigover) state image will be displayed if defined.
+
+### Groups
+
+- state
+
+**Flags**: IRW
 
 ---
 ## Attr: Img.prompt
@@ -30,18 +58,6 @@ Prompt displayed in hover canvas if [showHover](Canvas.md#attr-canvasshowhover) 
 - hovers
 
 **Flags**: IRW
-
----
-## Attr: Img.imageSize
-
-### Description
-Convenience for setting the ${isc.DocUtils.linkForRef('attr:Img.imageWidth','imageWidth) and \\n ${isc.DocUtils.linkForRef('attr:Img.imageHeight','imageHeight\\')')} attributes to the same value, for cases where [Img.imageType](#attr-imgimagetype) settings would normally use the image's natural size (applies to [Img.imageType](#attr-imgimagetype) "center" and "normal" only).
-
-### Groups
-
-- appearance
-
-**Flags**: IR
 
 ---
 ## Attr: Img.src
@@ -68,16 +84,58 @@ Indicates whether the image should be tiled/cropped, stretched, or centered when
 **Flags**: IRW
 
 ---
+## Attr: Img.showTitle
+
+### Description
+Determines whether any specified [title](StatefulCanvas.md#method-statefulcanvasgettitle) will be displayed for this component.  
+Applies to Image-based components only, where the title will be rendered out in a label floating over the component
+
+**Flags**: IRWA
+
+---
 ## Attr: Img.size
 
 ### Description
-Convenience for setting the ${isc.DocUtils.linkForRef('attr:StatefulCanvas.width','width) and ${isc.DocUtils.linkForRef('attr:StatefulCanvas.height','height\\')')} of this widget to the same value, at init time only. See [Img.imageSize](#attr-imgimagesize), or [Img.imageWidth](#attr-imgimagewidth) / [Img.imageHeight](#attr-imgimageheight), to control the size of the image itself for [Img.imageType](#attr-imgimagetype) settings that would normally use the image's natural size ("center" or "normal"), or where the image has no natural size, as with [SVG Symbols](../kb_topics/svgSymbols.md#kb-topic-svg-symbols-overview).
+Convenience for setting height and width to the same value, at init time only
 
 ### Groups
 
 - sizing
 
 **Flags**: IR
+
+---
+## Attr: Img.showFocused
+
+### Description
+Should we visibly change state when the canvas receives focus? If [StatefulCanvas.showFocusedAsOver](StatefulCanvas.md#attr-statefulcanvasshowfocusedasover) is `true`, then **`"over"`** will be used to indicate focus. Otherwise a separate **`"focused"`** state will be used.
+
+This will impact the [styling](StatefulCanvas.md#attr-statefulcanvasbasestyle) of the component on focus. It may also impact the [image being displayed](#attr-imgsrc) - see also [Img.showImageFocused](#attr-imgshowimagefocused).
+
+### Groups
+
+- state
+
+**Flags**: IRW
+
+---
+## Attr: Img.showImageFocused
+
+### Description
+Should the image be updated on focus as described in [statefulImages](../kb_topics/statefulImages.md#kb-topic-stateful-images)?
+
+If not explicitly set, behavior is as follows:  
+If [Img.src](#attr-imgsrc) is specified as a string, [Img.showFocused](#attr-imgshowfocused) will be used to determine whether to show a focused image.  
+If [Img.src](#attr-imgsrc) is specified as a [SCStatefulImgConfig](../reference.md#object-scstatefulimgconfig), the appropriate [SCStatefulImgConfig.Over](SCStatefulImgConfig.md#attr-scstatefulimgconfigover) state image will be displayed if defined.
+
+Note that if [Img.src](#attr-imgsrc) is defined as a string, the "Over" media may be used to indicate a focused state. See [Img.showFocusedAsOver](#attr-imgshowfocusedasover) and [Img.showImageFocusedAsOver](#attr-imgshowimagefocusedasover).  
+This is not the case for components with [Img.src](#attr-imgsrc) defined as a [SCStatefulImgConfig](../reference.md#object-scstatefulimgconfig) configuration.
+
+### Groups
+
+- state
+
+**Flags**: IRW
 
 ---
 ## Attr: Img.showImageDown
@@ -94,6 +152,16 @@ If [Img.src](#attr-imgsrc) is specified as a [SCStatefulImgConfig](../reference.
 - state
 
 **Flags**: IRW
+
+---
+## Attr: Img.name
+
+### Description
+The value of this attribute is specified as the value of the 'name' attribute in the resulting HTML.
+
+Note: this attribute is ignored if the imageType is set to "tile"
+
+**Flags**: IA
 
 ---
 ## Attr: Img.showDisabled
@@ -160,6 +228,47 @@ Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) fo
 **Flags**: IR
 
 ---
+## Attr: Img.imageHeight
+
+### Description
+Explicit size for the image, for [Img.imageType](#attr-imgimagetype) settings that would normally use the image's natural size (applies to [Img.imageType](#attr-imgimagetype) "center" and "normal" only).
+
+### Groups
+
+- appearance
+
+**Flags**: IR
+
+---
+## Attr: Img.showFocusedAsOver
+
+### Description
+If [showFocused](StatefulCanvas.md#attr-statefulcanvasshowfocused) is true for this widget, should the `"over"` state be used to indicate the widget as focused. If set to false, a separate `"focused"` state will be used.
+
+This property effects the css styling for the focused state.  
+If [Img.src](#attr-imgsrc) is specified as a string it will also cause the "Over" media to be displayed to indicate focus, unless explicitly overridden by [Img.showImageFocusedAsOver](#attr-imgshowimagefocusedasover). Note that this has no impact on the image to be displayed if [Img.src](#attr-imgsrc) is specified as a [SCStatefulImgConfig](../reference.md#object-scstatefulimgconfig).
+
+### Groups
+
+- state
+
+**Flags**: IRW
+
+---
+## Attr: Img.showImageFocusedAsOver
+
+### Description
+If [Img.src](#attr-imgsrc) is defined as a string, and this component is configured to [show focused state images](#attr-imgshowimagefocused), this property will cause the `"over"` state image to be used to indicate focused state. (If unset, [Img.showFocusedAsOver](#attr-imgshowfocusedasover) will be consulted instead).
+
+Note that this has no impact on the image to be displayed if [Img.src](#attr-imgsrc) is specified as a [SCStatefulImgConfig](../reference.md#object-scstatefulimgconfig).
+
+### Groups
+
+- state
+
+**Flags**: IRW
+
+---
 ## Attr: Img.activeAreaHTML
 
 ### Description
@@ -203,139 +312,6 @@ To set alt text _and_ ensure a hover prompt shows up in all browsers, developers
 **Flags**: IRW
 
 ---
-## Attr: Img.imageWidth
-
-### Description
-Explicit size for the image, for [Img.imageType](#attr-imgimagetype) settings that would normally use the image's natural size (applies to [Img.imageType](#attr-imgimagetype) "center" and "normal" only).
-
-### Groups
-
-- appearance
-
-**Flags**: IR
-
----
-## Attr: Img.showImageRollOver
-
-### Description
-Should the image be updated on rollOver as described in [statefulImages](../kb_topics/statefulImages.md#kb-topic-stateful-images)?
-
-If not explicitly set, behavior is as follows:  
-If [Img.src](#attr-imgsrc) is specified as a string, [Img.showRollOver](#attr-imgshowrollover) will be used to determine whether to show a roll-over image.  
-If [Img.src](#attr-imgsrc) is specified as a [SCStatefulImgConfig](../reference.md#object-scstatefulimgconfig), the appropriate [SCStatefulImgConfig.Over](SCStatefulImgConfig.md#attr-scstatefulimgconfigover) state image will be displayed if defined.
-
-### Groups
-
-- state
-
-**Flags**: IRW
-
----
-## Attr: Img.showTitle
-
-### Description
-Determines whether any specified [title](StatefulCanvas.md#method-statefulcanvasgettitle) will be displayed for this component.  
-Applies to Image-based components only, where the title will be rendered out in a label floating over the component
-
-**Flags**: IRWA
-
----
-## Attr: Img.showFocused
-
-### Description
-Should we visibly change state when the canvas receives focus? If [StatefulCanvas.showFocusedAsOver](StatefulCanvas.md#attr-statefulcanvasshowfocusedasover) is `true`, then **`"over"`** will be used to indicate focus. Otherwise a separate **`"focused"`** state will be used.
-
-This will impact the [styling](StatefulCanvas.md#attr-statefulcanvasbasestyle) of the component on focus. It may also impact the [image being displayed](#attr-imgsrc) - see also [Img.showImageFocused](#attr-imgshowimagefocused).
-
-### Groups
-
-- state
-
-**Flags**: IRW
-
----
-## Attr: Img.showImageFocused
-
-### Description
-Should the image be updated on focus as described in [statefulImages](../kb_topics/statefulImages.md#kb-topic-stateful-images)?
-
-If not explicitly set, behavior is as follows:  
-If [Img.src](#attr-imgsrc) is specified as a string, [Img.showFocused](#attr-imgshowfocused) will be used to determine whether to show a focused image.  
-If [Img.src](#attr-imgsrc) is specified as a [SCStatefulImgConfig](../reference.md#object-scstatefulimgconfig), the appropriate [SCStatefulImgConfig.Over](SCStatefulImgConfig.md#attr-scstatefulimgconfigover) state image will be displayed if defined.
-
-Note that if [Img.src](#attr-imgsrc) is defined as a string, the "Over" media may be used to indicate a focused state. See [Img.showFocusedAsOver](#attr-imgshowfocusedasover) and [Img.showImageFocusedAsOver](#attr-imgshowimagefocusedasover).  
-This is not the case for components with [Img.src](#attr-imgsrc) defined as a [SCStatefulImgConfig](../reference.md#object-scstatefulimgconfig) configuration.
-
-### Groups
-
-- state
-
-**Flags**: IRW
-
----
-## Attr: Img.name
-
-### Description
-The value of this attribute is specified as the value of the 'name' attribute in the resulting HTML.
-
-Note: this attribute is ignored if the imageType is set to "tile"
-
-**Flags**: IA
-
----
-## Attr: Img.imageHeight
-
-### Description
-Explicit size for the image, for [Img.imageType](#attr-imgimagetype) settings that would normally use the image's natural size (applies to [Img.imageType](#attr-imgimagetype) "center" and "normal" only).
-
-### Groups
-
-- appearance
-
-**Flags**: IR
-
----
-## Attr: Img.showFocusedAsOver
-
-### Description
-If [showFocused](StatefulCanvas.md#attr-statefulcanvasshowfocused) is true for this widget, should the `"over"` state be used to indicate the widget as focused. If set to false, a separate `"focused"` state will be used.
-
-This property effects the css styling for the focused state.  
-If [Img.src](#attr-imgsrc) is specified as a string it will also cause the "Over" media to be displayed to indicate focus, unless explicitly overridden by [Img.showImageFocusedAsOver](#attr-imgshowimagefocusedasover). Note that this has no impact on the image to be displayed if [Img.src](#attr-imgsrc) is specified as a [SCStatefulImgConfig](../reference.md#object-scstatefulimgconfig).
-
-### Groups
-
-- state
-
-**Flags**: IRW
-
----
-## Attr: Img.showImageFocusedAsOver
-
-### Description
-If [Img.src](#attr-imgsrc) is defined as a string, and this component is configured to [show focused state images](#attr-imgshowimagefocused), this property will cause the `"over"` state image to be used to indicate focused state. (If unset, [Img.showFocusedAsOver](#attr-imgshowfocusedasover) will be consulted instead).
-
-Note that this has no impact on the image to be displayed if [Img.src](#attr-imgsrc) is specified as a [SCStatefulImgConfig](../reference.md#object-scstatefulimgconfig).
-
-### Groups
-
-- state
-
-**Flags**: IRW
-
----
-## Method: Img.setImageType
-
-### Description
-Change the style of image rendering.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| imageType | [ImageStyle](../reference.md#type-imagestyle) | false | — | new style of image rendering |
-
----
 ## Method: Img.getHoverHTML
 
 ### Description
@@ -358,6 +334,18 @@ If [Img.altText](#attr-imgalttext) and [Img.prompt](#attr-imgprompt) are set thi
 - [Canvas.showHover](Canvas.md#attr-canvasshowhover)
 
 ---
+## Method: Img.setImageType
+
+### Description
+Change the style of image rendering.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| imageType | [ImageStyle](../reference.md#type-imagestyle) | false | — | new style of image rendering |
+
+---
 ## Method: Img.setSrc
 
 ### Description
@@ -369,7 +357,7 @@ Does nothing if the src has not changed - if `src` has not changed but other sta
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| URL | [SCImgURL](../reference.md#type-scimgurl) | false | — | new URL for the image |
+| URL | [SCImgURL](../reference_2.md#type-scimgurl) | false | — | new URL for the image |
 
 ### Groups
 

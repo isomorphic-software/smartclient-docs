@@ -81,12 +81,32 @@ Note only top-level Windows (Windows without parents) can be modal.
 **Flags**: IRW
 
 ---
+## Attr: Window.closeButton
+
+### Description
+Button show in the header that will close this Window by calling [Window.closeClick](#method-windowcloseclick).
+
+**Flags**: R
+
+---
 ## Attr: Window.restoreButton
 
 ### Description
 ImgButton that restores the Window via [Window.restore](#method-windowrestore).
 
 **Flags**: R
+
+---
+## Attr: Window.placement
+
+### Description
+Where should the window be placed on the screen? Valid settings include `"fillScreen"`, `"fillPanel"`, `"halfScreen"` and `"none"`
+
+If not explicitly specified, default is to use [PanelPlacement](../reference.md#type-panelplacement) "fillScreen" if [Browser.isHandset](Browser.md#classattr-browserishandset), and "none" for non-handset devices.
+
+If `window.placement` is something other than `"none"`, sizing and positioning settings (either explicit left, top, width, height settings or the [Window.autoCenter](#attr-windowautocenter) and [Window.autoSize](#attr-windowautosize) features) will have no effect.
+
+**Flags**: IR
 
 ---
 ## Attr: Window.maximizeButton
@@ -97,6 +117,63 @@ Button that will make this Window fill the browser via [Window.maximize](#method
 **Flags**: R
 
 ---
+## Attr: Window.modalMaskStyle
+
+### Description
+Specifies the CSS style for the modal mask.
+
+### Groups
+
+- modal
+- appearance
+
+### See Also
+
+- [Window.modalMask](#attr-windowmodalmask)
+
+**Flags**: IR
+
+---
+## Attr: Window.showStatusBar
+
+### Description
+If true, show a statusBar for this Window, including resizer. Note that the status bar will only be displayed if the footer is showing for the window ([Window.showFooter](#attr-windowshowfooter)).
+
+### Groups
+
+- windowMembers
+- appearance
+- footer
+
+**Flags**: IRW
+
+---
+## Attr: Window.showShadow
+
+### Description
+Whether to show a drop shadow for this Canvas.
+
+Developers should be aware that the drop shadow is drawn outside the specified width and height of the widget meaning a widget with shadows takes up a little more space than it otherwise would. A full screen canvas with showShadow set to true as this would be likely to cause browser scrollbars to appear - developers can handle this by either setting this property to false on full-screen widgets, or by setting overflow to "hidden" on the `<body>` element browser-level scrolling is never intended to occur.
+
+`showShadow` dynamically defaults to false when the [Window.placement](#attr-windowplacement) setting indicates the Window will be filling a portion of the screen or a panel.
+
+**Flags**: IR
+
+---
+## Attr: Window.showTitle
+
+### Description
+Show a title (typically just text) on the header for this window.
+
+### Groups
+
+- windowHeader
+- appearance
+- headerLabel
+
+**Flags**: IRW
+
+---
 ## Attr: Window.headerControls
 
 ### Description
@@ -105,7 +182,7 @@ Array of members to show in the Window header.
 The default value of `headerControls` is an Array of Strings listing the standard header controls in their default order:
 
 ```
-    headerControls : ["headerIcon", "headerLabel",
+    headerControls : ["headerIcon", "headerLabel", 
                       "minimizeButton", "maximizeButton", "closeButton"]
  
 ```
@@ -139,6 +216,20 @@ To define `headerControls` in Component XML a special set of components are used
 **Flags**: IR
 
 ---
+## Attr: Window.showBody
+
+### Description
+If true, draw the body contents when this Window is drawn.
+
+### Groups
+
+- windowMembers
+- appearance
+- body
+
+**Flags**: IRWA
+
+---
 ## Attr: Window.hiliteHeaderSrc
 
 ### Description
@@ -160,6 +251,30 @@ Img background component for the header, for gradient or image-based display
 **Flags**: R
 
 ---
+## Attr: Window.showHeader
+
+### Description
+If true, show a [Window.header](#attr-windowheader) for this Window.
+
+Note that in certain Smartclient skins [Window.showHeaderBackground](#attr-windowshowheaderbackground) may be set to `false` and the header's appearance implemented as part of the window's [edge media](Canvas.md#attr-canvasshowedges). In this case suppressing the header can be achieved by overriding the edge media as well as setting this property to false. For example, to create a headerless window with a similar appearance to a [Menu](Menu.md#class-menu) in the `_TreeFrog_` skin, the following attributes could be used:
+
+```
+      showHeader:false,
+      edgeImage:"[SKIN]/Menu/m.png",
+      edgeSize:10, edgeTop:17, edgeBottom:17,
+      edgeCenterBackgroundColor:"#F7F7F7"
+ 
+```
+
+### Groups
+
+- windowMembers
+- appearance
+- header
+
+**Flags**: IR
+
+---
 ## Attr: Window.fillSpaceStyleName
 
 ### Description
@@ -168,12 +283,67 @@ Alternative style for the window used whenever [Window.placement](#attr-windowpl
 **Flags**: IR
 
 ---
+## Attr: Window.modalMask
+
+### Description
+A ScreenSpan instance used to darken the rest of a page when a modal window is active. To use, set [Window.showModalMask](#attr-windowshowmodalmask) to true, add a CSS style "modalMask" to the active skin (generally with background-color set), and adjust [Window.modalMaskOpacity](#attr-windowmodalmaskopacity).
+
+### Groups
+
+- modal
+- appearance
+
+**Flags**: R
+
+---
 ## Attr: Window.headerIcon
 
 ### Description
 Header icon shown at left end of header by default.
 
 **Flags**: R
+
+---
+## Attr: Window.src
+
+### Description
+A URL to load as content for the Window's body. If specified, this attribute will take precedence over the items attribute.
+
+Note that setting window.src is essentially a shortcut for setting [Window.items](#attr-windowitems) to a single HTMLflow with a specified [contentsURL](HTMLFlow.md#attr-htmlflowcontentsurl).
+
+### Groups
+
+- appearance
+- body
+
+### See Also
+
+- [Window.contentsType](#attr-windowcontentstype)
+
+**Flags**: IRW
+
+---
+## Attr: Window.maximized
+
+### Description
+Is this window maximized. If true at init time, the window will be drawn maximized. To set this property at runtime use [Window.maximize](#method-windowmaximize) or [Window.restore](#method-windowrestore).
+
+### Groups
+
+- appearance
+- header
+
+**Flags**: IRW
+
+---
+## Attr: Window.bringToFrontOnMouseUp
+
+### Description
+Should this window automatically be shown at the top of the page's z-order and be brought to front via [Canvas.bringToFront](Canvas.md#method-canvasbringtofront) whenever the user clicks it?
+
+If [Window.isModal](#attr-windowismodal) is true for this window, this setting will have no effect - we always bring the window to the front on initial display and on mouseDown. By default we also do this for non-modal windows (which matches user expectation for most standard interfaces - think of switching between OS-level application windows), but this may be disabled for cases where it is not appropriate by setting this attribute to `false`
+
+**Flags**: IRW
 
 ---
 ## Attr: Window.title
@@ -208,6 +378,20 @@ If unset default behavior depends on whether a close / cancel button is visible 
 **Flags**: IRW
 
 ---
+## Attr: Window.showResizer
+
+### Description
+If true, show a button in the lower right corner that allows users to resize the Window. Note that the resizer will only be displayed if the footer is showing for the window ([Window.showFooter](#attr-windowshowfooter)) and [Window.canDragResize](#attr-windowcandragresize) is true.
+
+### Groups
+
+- windowMembers
+- appearance
+- dragging
+
+**Flags**: IRW
+
+---
 ## Attr: Window.body
 
 ### Description
@@ -222,6 +406,25 @@ The following [passthroughs](../kb_topics/autoChildUsage.md#kb-topic-using-autoc
 **Flags**: R
 
 ---
+## Attr: Window.headerIconDefaults
+
+### Description
+This is an object literal property block specifying the various properties of the headerIcon - the icon that appears at the top left of the window and is by default the Isomorphic logo. Overrideable defaults are as follows:
+
+*   width - default to `16` and specifies the width of the headerIcon.
+*   height - default to `14` and specifies the height of the headerIcon.
+*   src - defaults to `"[SKIN]/Window/minimize.gif"` and specifies the image for the headerIcon.
+
+You can override the the above properties by calling [Class.changeDefaults](Class.md#classmethod-classchangedefaults).
+
+### Groups
+
+- appearance
+- header
+
+**Flags**: IRWA
+
+---
 ## Attr: Window.showHeaderBackground
 
 ### Description
@@ -234,6 +437,41 @@ If set to true the image source is derived from [Window.headerSrc](#attr-windowh
 - header
 
 **Flags**: IRA
+
+---
+## Attr: Window.minimizeButton
+
+### Description
+ImgButton shown in the header that will minimize this Window by calling [Window.minimize](#method-windowminimize).
+
+**Flags**: R
+
+---
+## Attr: Window.bodyDefaults
+
+### Description
+Default properties for the body of the Window  
+You can change the class-level bodyDefaults for all Windows by changing this item or set instance.body to be another object of properties to override for your instance only
+
+### Groups
+
+- appearance
+- body
+
+**Flags**: IRWA
+
+---
+## Attr: Window.canFocusInHeaderButtons
+
+### Description
+If true, the user can give the header buttons focus (see [Window.minimizeButton](#attr-windowminimizebutton), [Window.maximizeButton](#attr-windowmaximizebutton), [Window.restoreButton](#attr-windowrestorebutton) and [Window.closeButton](#attr-windowclosebutton)).
+
+### Groups
+
+- focus
+- header
+
+**Flags**: IRWA
 
 ---
 ## Attr: Window.bodyConstructor
@@ -253,6 +491,32 @@ Note that if this property is overridden for some window, the specified construc
 **Flags**: IRWA
 
 ---
+## Attr: Window.minimizeHeight
+
+### Description
+Height for the window when minimized. If unset the window will shrink to the height of the header, if present, otherwise [this.defaultMinimizeHeight](#attr-windowdefaultminimizeheight)
+
+### Groups
+
+- appearance
+- minimize
+
+**Flags**: IRWA
+
+---
+## Attr: Window.headerSrc
+
+### Description
+If [Window.showHeaderBackground](#attr-windowshowheaderbackground) is `true`, this property provides the URL of the background image for the header.
+
+### Groups
+
+- appearance
+- header
+
+**Flags**: IRWA
+
+---
 ## Attr: Window.header
 
 ### Description
@@ -264,6 +528,19 @@ The following [passthroughs](../kb_topics/autoChildUsage.md#kb-topic-using-autoc
 *   [printHeaderStyle](#attr-windowprintheaderstyle) for the `styleName` to use when printing.
 
 **Flags**: R
+
+---
+## Attr: Window.headerStyle
+
+### Description
+Style for the Window header.
+
+### Groups
+
+- appearance
+- header
+
+**Flags**: IRWA
 
 ---
 ## Attr: Window.hiliteBodyColor
@@ -331,6 +608,40 @@ Should this window minimize, maximize, and restore as an animation, or as a simp
 **Flags**: IRWA
 
 ---
+## Attr: Window.footer
+
+### Description
+Optional footer for the window, providing space for controls such as the resizer and status bar.
+
+**Flags**: R
+
+---
+## Attr: Window.footerHeight
+
+### Description
+The height of the footer, in pixels.
+
+### Groups
+
+- appearance
+- footer
+
+**Flags**: IR
+
+---
+## Attr: Window.minimized
+
+### Description
+Is this window minimized. If true at init time, the window will be drawn minimized. To set this property at runtime use [Window.minimize](#method-windowminimize) or [Window.restore](#method-windowrestore).
+
+### Groups
+
+- appearance
+- header
+
+**Flags**: IRW
+
+---
 ## Attr: Window.minimizeAcceleration
 
 ### Description
@@ -376,6 +687,14 @@ If there is no header, the `defaultMinimizeHeight` will be used instead.
 **Flags**: IRWA
 
 ---
+## Attr: Window.editProxyConstructor
+
+### Description
+Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas.md#method-canvasseteditmode).
+
+**Flags**: IR
+
+---
 ## Attr: Window.canDragResize
 
 ### Description
@@ -391,497 +710,6 @@ Can the window be drag-resized? If true the window may be drag resized from its 
 - [Window.showResizer](#attr-windowshowresizer)
 
 **Flags**: IRW
-
----
-## Attr: Window.resizer
-
-### Description
-ImgButton-based resizer, shown in the footer.
-
-**Flags**: R
-
----
-## Attr: Window.useBackMask
-
-### Description
-By default Windows show a [backMask](Canvas.md#attr-canvasusebackmask) in Internet Explorer versions predating Internet Explorer 9. This is a workaround for a native browser issue whereby certain DOM elements such as `IFRAME`s (whether rendered within SmartClient components via features such as [contentsURL](HTMLFlow.md#attr-htmlflowcontentsurl) or explicitly written into the HTML of the page) will not be properly occluded by DOM elements which overlap them but have a higher z-index.
-
-A side-effect of this is that the [opacity](Canvas.md#attr-canvasopacity) can not be modified for the entire window. Developers may disable the backmask in order to support opacity in IE versions less than 9 by setting this property to false, however you should be aware that in doing this there is a potential for the "burn through" problem described above.
-
-**Flags**: IRA
-
----
-## Attr: Window.keepInParentRect
-
-### Description
-Constrains drag-resizing and drag-repositioning of this canvas to either the rect of its parent (if set to true) or an arbitrary rect based on its parent (if set to a \[Left,Top,Width,Height\] rect array). In the latter mode you may use negative offsets for left/top and a width/height greater than the visible or scroll width of the parent to allow positioning beyond the confines of the parent.
-
-If this canvas has no parent, constrains dragging to within the browser window.
-
-Affects target and outline dragAppearance, not tracker.
-
-Note: keepInParentRect affects only user drag interactions, not programmatic moves.
-
-Example use cases:  
-`keepInParentRect: true` - confine to parent  
-`keepInParentRect: [0, 0, 500, 500]` - confine to top left 500x500 region within parent  
-`keepInParentRect: [0, 0, 10000, 10000]` - in combination with overflow: "auto", confine to parent, but allow moving off the right and bottom of the parent to force scrolling (and hence enlarge the scrollWidth of the parent).
-
-### Groups
-
-- dragdrop
-
-### See Also
-
-- [Window.canDragReposition](#attr-windowcandragreposition)
-
-**Flags**: IRWA
-
----
-## Attr: Window.showModalMask
-
-### Description
-If true, displays a translucent mask over the rest of the page when a modal window is displayed.
-
-### Groups
-
-- modal
-- appearance
-
-### See Also
-
-- [Window.modalMask](#attr-windowmodalmask)
-
-**Flags**: IR
-
----
-## Attr: Window.dismissOnOutsideClick
-
-### Description
-If true, a click outside the bounds of the Window will have the same effect as pressing its cancel button.  
-**Note:** Applies only to modal windows.
-
-### Groups
-
-- modal
-
-### See Also
-
-- [Window.isModal](#attr-windowismodal)
-
-**Flags**: IRW
-
----
-## Attr: Window.showFooter
-
-### Description
-If true, show a footer for this Window, including resizer, statusBar, etc. This setting is commonly overridden for skinning purposes.
-
-### Groups
-
-- windowMembers
-- appearance
-- footer
-
-**Flags**: IRW
-
----
-## Attr: Window.showMaximizeButton
-
-### Description
-If true, show a maximize button in the header - clicking it maximizes the Window
-
-### Groups
-
-- windowHeader
-- appearance
-- header
-
-**Flags**: IRW
-
----
-## Attr: Window.canDragReposition
-
-### Description
-If true, this Window may be moved around by the user by dragging on the Window header. Note that if the header is not showing, the Window can't be drag-repositioned regardless of this setting.
-
-### Groups
-
-- dragging
-
-### See Also
-
-- [Window.showHeader](#attr-windowshowheader)
-
-**Flags**: IRW
-
----
-## Attr: Window.statusBar
-
-### Description
-Simple Canvas-based status bar, shown in the footer. [Window.setStatus](#method-windowsetstatus) can be used to show text here.
-
-**Flags**: R
-
----
-## Attr: Window.headerLabel
-
-### Description
-Label that shows Window title in header.
-
-The following [passthrough](../kb_topics/autoChildUsage.md#kb-topic-using-autochildren) applies: [title](#attr-windowtitle) for [Label.contents](Label.md#attr-labelcontents).
-
-**Flags**: R
-
----
-## Attr: Window.minimizeTime
-
-### Description
-If this window is minimizeable, and animateMinimize is true, what should the duration of the minimize / maximize be (in ms)? If unset defaults to `canvas.animationTime`.
-
-### Groups
-
-- appearance
-- header
-- animation
-
-**Flags**: IRWA
-
----
-## Attr: Window.headerLabelDefaults
-
-### Description
-This is an object literal property block specifying various properties of the header label that displays the [Window.title](#attr-windowtitle). Overrideable defaults are as follows:
-
-*   styleName- defaults to `"windowHeaderText"` and specifies the css style that is used to render the [Window.title](#attr-windowtitle) text.
-
-You can override the the above properties by calling [Class.changeDefaults](Class.md#classmethod-classchangedefaults).
-
-### Groups
-
-- appearance
-- headerLabel
-
-**Flags**: IRWA
-
----
-## Attr: Window.closeButton
-
-### Description
-Button show in the header that will close this Window by calling [Window.closeClick](#method-windowcloseclick).
-
-**Flags**: R
-
----
-## Attr: Window.placement
-
-### Description
-Where should the window be placed on the screen? Valid settings include `"fillScreen"`, `"fillPanel"`, `"halfScreen"` and `"none"`
-
-If not explicitly specified, default is to use [PanelPlacement](../reference_2.md#type-panelplacement) "fillScreen" if [Browser.isHandset](Browser.md#classattr-browserishandset), and "none" for non-handset devices.
-
-If `window.placement` is something other than `"none"`, sizing and positioning settings (either explicit left, top, width, height settings or the [Window.autoCenter](#attr-windowautocenter) and [Window.autoSize](#attr-windowautosize) features) will have no effect.
-
-**Flags**: IR
-
----
-## Attr: Window.modalMaskStyle
-
-### Description
-Specifies the CSS style for the modal mask.
-
-### Groups
-
-- modal
-- appearance
-
-### See Also
-
-- [Window.modalMask](#attr-windowmodalmask)
-
-**Flags**: IR
-
----
-## Attr: Window.showStatusBar
-
-### Description
-If true, show a statusBar for this Window, including resizer. Note that the status bar will only be displayed if the footer is showing for the window ([Window.showFooter](#attr-windowshowfooter)).
-
-### Groups
-
-- windowMembers
-- appearance
-- footer
-
-**Flags**: IRW
-
----
-## Attr: Window.showShadow
-
-### Description
-Whether to show a drop shadow for this Canvas.
-
-Developers should be aware that the drop shadow is drawn outside the specified width and height of the widget meaning a widget with shadows takes up a little more space than it otherwise would. A full screen canvas with showShadow set to true as this would be likely to cause browser scrollbars to appear - developers can handle this by either setting this property to false on full-screen widgets, or by setting overflow to "hidden" on the `<body>` element browser-level scrolling is never intended to occur.
-
-`showShadow` dynamically defaults to false when the [Window.placement](#attr-windowplacement) setting indicates the Window will be filling a portion of the screen or a panel.
-
-**Flags**: IR
-
----
-## Attr: Window.showTitle
-
-### Description
-Show a title (typically just text) on the header for this window.
-
-### Groups
-
-- windowHeader
-- appearance
-- headerLabel
-
-**Flags**: IRW
-
----
-## Attr: Window.showBody
-
-### Description
-If true, draw the body contents when this Window is drawn.
-
-### Groups
-
-- windowMembers
-- appearance
-- body
-
-**Flags**: IRWA
-
----
-## Attr: Window.showHeader
-
-### Description
-If true, show a [Window.header](#attr-windowheader) for this Window.
-
-Note that in certain Smartclient skins [Window.showHeaderBackground](#attr-windowshowheaderbackground) may be set to `false` and the header's appearance implemented as part of the window's [edge media](Canvas.md#attr-canvasshowedges). In this case suppressing the header can be achieved by overriding the edge media as well as setting this property to false. For example, to create a headerless window with a similar appearance to a [Menu](Menu.md#class-menu) in the `_TreeFrog_` skin, the following attributes could be used:
-
-```
-      showHeader:false,
-      edgeImage:"[SKIN]/Menu/m.png",
-      edgeSize:10, edgeTop:17, edgeBottom:17,
-      edgeCenterBackgroundColor:"#F7F7F7"
- 
-```
-
-### Groups
-
-- windowMembers
-- appearance
-- header
-
-**Flags**: IR
-
----
-## Attr: Window.modalMask
-
-### Description
-A ScreenSpan instance used to darken the rest of a page when a modal window is active. To use, set [Window.showModalMask](#attr-windowshowmodalmask) to true, add a CSS style "modalMask" to the active skin (generally with background-color set), and adjust [Window.modalMaskOpacity](#attr-windowmodalmaskopacity).
-
-### Groups
-
-- modal
-- appearance
-
-**Flags**: R
-
----
-## Attr: Window.src
-
-### Description
-A URL to load as content for the Window's body. If specified, this attribute will take precedence over the items attribute.
-
-Note that setting window.src is essentially a shortcut for setting [Window.items](#attr-windowitems) to a single HTMLflow with a specified [contentsURL](HTMLFlow.md#attr-htmlflowcontentsurl).
-
-### Groups
-
-- appearance
-- body
-
-### See Also
-
-- [Window.contentsType](#attr-windowcontentstype)
-
-**Flags**: IRW
-
----
-## Attr: Window.maximized
-
-### Description
-Is this window maximized. If true at init time, the window will be drawn maximized. To set this property at runtime use [Window.maximize](#method-windowmaximize) or [Window.restore](#method-windowrestore).
-
-### Groups
-
-- appearance
-- header
-
-**Flags**: IRW
-
----
-## Attr: Window.bringToFrontOnMouseUp
-
-### Description
-Should this window automatically be shown at the top of the page's z-order and be brought to front via [Canvas.bringToFront](Canvas.md#method-canvasbringtofront) whenever the user clicks it?
-
-If [Window.isModal](#attr-windowismodal) is true for this window, this setting will have no effect - we always bring the window to the front on initial display and on mouseDown. By default we also do this for non-modal windows (which matches user expectation for most standard interfaces - think of switching between OS-level application windows), but this may be disabled for cases where it is not appropriate by setting this attribute to `false`
-
-**Flags**: IRW
-
----
-## Attr: Window.showResizer
-
-### Description
-If true, show a button in the lower right corner that allows users to resize the Window. Note that the resizer will only be displayed if the footer is showing for the window ([Window.showFooter](#attr-windowshowfooter)) and [Window.canDragResize](#attr-windowcandragresize) is true.
-
-### Groups
-
-- windowMembers
-- appearance
-- dragging
-
-**Flags**: IRW
-
----
-## Attr: Window.headerIconDefaults
-
-### Description
-This is an object literal property block specifying the various properties of the headerIcon - the icon that appears at the top left of the window and is by default the Isomorphic logo. Overrideable defaults are as follows:
-
-*   width - default to `16` and specifies the width of the headerIcon.
-*   height - default to `14` and specifies the height of the headerIcon.
-*   src - defaults to `"[SKIN]/Window/minimize.gif"` and specifies the image for the headerIcon.
-
-You can override the the above properties by calling [Class.changeDefaults](Class.md#classmethod-classchangedefaults).
-
-### Groups
-
-- appearance
-- header
-
-**Flags**: IRWA
-
----
-## Attr: Window.minimizeButton
-
-### Description
-ImgButton shown in the header that will minimize this Window by calling [Window.minimize](#method-windowminimize).
-
-**Flags**: R
-
----
-## Attr: Window.bodyDefaults
-
-### Description
-Default properties for the body of the Window  
-You can change the class-level bodyDefaults for all Windows by changing this item or set instance.body to be another object of properties to override for your instance only
-
-### Groups
-
-- appearance
-- body
-
-**Flags**: IRWA
-
----
-## Attr: Window.canFocusInHeaderButtons
-
-### Description
-If true, the user can give the header buttons focus (see [Window.minimizeButton](#attr-windowminimizebutton), [Window.maximizeButton](#attr-windowmaximizebutton), [Window.restoreButton](#attr-windowrestorebutton) and [Window.closeButton](#attr-windowclosebutton)).
-
-### Groups
-
-- focus
-- header
-
-**Flags**: IRWA
-
----
-## Attr: Window.minimizeHeight
-
-### Description
-Height for the window when minimized. If unset the window will shrink to the height of the header, if present, otherwise [this.defaultMinimizeHeight](#attr-windowdefaultminimizeheight)
-
-### Groups
-
-- appearance
-- minimize
-
-**Flags**: IRWA
-
----
-## Attr: Window.headerSrc
-
-### Description
-If [Window.showHeaderBackground](#attr-windowshowheaderbackground) is `true`, this property provides the URL of the background image for the header.
-
-### Groups
-
-- appearance
-- header
-
-**Flags**: IRWA
-
----
-## Attr: Window.headerStyle
-
-### Description
-Style for the Window header.
-
-### Groups
-
-- appearance
-- header
-
-**Flags**: IRWA
-
----
-## Attr: Window.footer
-
-### Description
-Optional footer for the window, providing space for controls such as the resizer and status bar.
-
-**Flags**: R
-
----
-## Attr: Window.footerHeight
-
-### Description
-The height of the footer, in pixels.
-
-### Groups
-
-- appearance
-- footer
-
-**Flags**: IR
-
----
-## Attr: Window.minimized
-
-### Description
-Is this window minimized. If true at init time, the window will be drawn minimized. To set this property at runtime use [Window.minimize](#method-windowminimize) or [Window.restore](#method-windowrestore).
-
-### Groups
-
-- appearance
-- header
-
-**Flags**: IRW
-
----
-## Attr: Window.editProxyConstructor
-
-### Description
-Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas.md#method-canvasseteditmode).
-
-**Flags**: IR
 
 ---
 ## Attr: Window.showHeaderIcon
@@ -940,10 +768,72 @@ This property on [Window](#class-window) overrides the default defined by [Canva
 **Flags**: IRWA
 
 ---
+## Attr: Window.resizer
+
+### Description
+ImgButton-based resizer, shown in the footer.
+
+**Flags**: R
+
+---
+## Attr: Window.useBackMask
+
+### Description
+By default Windows show a [backMask](Canvas.md#attr-canvasusebackmask) in Internet Explorer versions predating Internet Explorer 9. This is a workaround for a native browser issue whereby certain DOM elements such as `IFRAME`s (whether rendered within SmartClient components via features such as [contentsURL](HTMLFlow.md#attr-htmlflowcontentsurl) or explicitly written into the HTML of the page) will not be properly occluded by DOM elements which overlap them but have a higher z-index.
+
+A side-effect of this is that the [opacity](Canvas.md#attr-canvasopacity) can not be modified for the entire window. Developers may disable the backmask in order to support opacity in IE versions less than 9 by setting this property to false, however you should be aware that in doing this there is a potential for the "burn through" problem described above.
+
+**Flags**: IRA
+
+---
 ## Attr: Window.modalMaskOpacity
 
 ### Description
 Controls the opacity of the modal mask displayed behind modal windows.
+
+### Groups
+
+- modal
+- appearance
+
+### See Also
+
+- [Window.modalMask](#attr-windowmodalmask)
+
+**Flags**: IR
+
+---
+## Attr: Window.keepInParentRect
+
+### Description
+Constrains drag-resizing and drag-repositioning of this canvas to either the rect of its parent (if set to true) or an arbitrary rect based on its parent (if set to a \[Left,Top,Width,Height\] rect array). In the latter mode you may use negative offsets for left/top and a width/height greater than the visible or scroll width of the parent to allow positioning beyond the confines of the parent.
+
+If this canvas has no parent, constrains dragging to within the browser window.
+
+Affects target and outline dragAppearance, not tracker.
+
+Note: keepInParentRect affects only user drag interactions, not programmatic moves.
+
+Example use cases:  
+`keepInParentRect: true` - confine to parent  
+`keepInParentRect: [0, 0, 500, 500]` - confine to top left 500x500 region within parent  
+`keepInParentRect: [0, 0, 10000, 10000]` - in combination with overflow: "auto", confine to parent, but allow moving off the right and bottom of the parent to force scrolling (and hence enlarge the scrollWidth of the parent).
+
+### Groups
+
+- dragdrop
+
+### See Also
+
+- [Window.canDragReposition](#attr-windowcandragreposition)
+
+**Flags**: IRWA
+
+---
+## Attr: Window.showModalMask
+
+### Description
+If true, displays a translucent mask over the rest of the page when a modal window is displayed.
 
 ### Groups
 
@@ -971,12 +861,57 @@ If true, show a minimize button in the header--clicking it minimizes the Window.
 **Flags**: IRW
 
 ---
+## Attr: Window.dismissOnOutsideClick
+
+### Description
+If true, a click outside the bounds of the Window will have the same effect as pressing its cancel button.  
+**Note:** Applies only to modal windows.
+
+### Groups
+
+- modal
+
+### See Also
+
+- [Window.isModal](#attr-windowismodal)
+
+**Flags**: IRW
+
+---
+## Attr: Window.showFooter
+
+### Description
+If true, show a footer for this Window, including resizer, statusBar, etc. This setting is commonly overridden for skinning purposes.
+
+### Groups
+
+- windowMembers
+- appearance
+- footer
+
+**Flags**: IRW
+
+---
 ## Attr: Window.showEdges
 
 ### Description
 `showEdges` dynamically defaults to false when the [Window.placement](#attr-windowplacement) setting indicates the Window will be filling a portion of the screen or a panel.
 
 **Flags**: IR
+
+---
+## Attr: Window.showMaximizeButton
+
+### Description
+If true, show a maximize button in the header - clicking it maximizes the Window
+
+### Groups
+
+- windowHeader
+- appearance
+- header
+
+**Flags**: IRW
 
 ---
 ## Attr: Window.opacity
@@ -1024,6 +959,54 @@ If true, the window is resized automatically to accommodate the contents of the 
 **Flags**: IRW
 
 ---
+## Attr: Window.canDragReposition
+
+### Description
+If true, this Window may be moved around by the user by dragging on the Window header. Note that if the header is not showing, the Window can't be drag-repositioned regardless of this setting.
+
+### Groups
+
+- dragging
+
+### See Also
+
+- [Window.showHeader](#attr-windowshowheader)
+
+**Flags**: IRW
+
+---
+## Attr: Window.statusBar
+
+### Description
+Simple Canvas-based status bar, shown in the footer. [Window.setStatus](#method-windowsetstatus) can be used to show text here.
+
+**Flags**: R
+
+---
+## Attr: Window.headerLabel
+
+### Description
+Label that shows Window title in header.
+
+The following [passthrough](../kb_topics/autoChildUsage.md#kb-topic-using-autochildren) applies: [title](#attr-windowtitle) for [Label.contents](Label.md#attr-labelcontents).
+
+**Flags**: R
+
+---
+## Attr: Window.minimizeTime
+
+### Description
+If this window is minimizeable, and animateMinimize is true, what should the duration of the minimize / maximize be (in ms)? If unset defaults to `canvas.animationTime`.
+
+### Groups
+
+- appearance
+- header
+- animation
+
+**Flags**: IRWA
+
+---
 ## Attr: Window.printHeaderStyle
 
 ### Description
@@ -1037,7 +1020,7 @@ CSS Style for header in printed output
 ### Description
 If true, this Window widget will automatically be centered on the page when shown. If false, it will show up in the last position it was placed (either programmatically, or by user interaction).
 
-**Note:** If an auto-centering Window is either programmatically moved or dragged by an end user, auto-centering behavior is automatically turned off. To manually center a Window, you can use [Window.centerInPage](#method-windowcenterinpage). Auto-centering will also be disabled if you pass an explicit [left](Canvas.md#attr-canvasleft) or [top](Canvas.md#attr-canvastop) value at [create time](Class.md#classmethod-classcreate).
+**Note:** If an auto-centering Window is either programmatically moved or dragged by an end user, auto-centering behavior is automatically turned off. To manually center a Window, you can use [Window.centerInPage](#method-windowcenterinpage).
 
 ### Groups
 
@@ -1057,6 +1040,23 @@ Text to show in the status bar of the window (if one is visible)
 - appearance
 
 **Flags**: IRW
+
+---
+## Attr: Window.headerLabelDefaults
+
+### Description
+This is an object literal property block specifying various properties of the header label that displays the [Window.title](#attr-windowtitle). Overrideable defaults are as follows:
+
+*   styleName- defaults to `"windowHeaderText"` and specifies the css style that is used to render the [Window.title](#attr-windowtitle) text.
+
+You can override the the above properties by calling [Class.changeDefaults](Class.md#classmethod-classchangedefaults).
+
+### Groups
+
+- appearance
+- headerLabel
+
+**Flags**: IRWA
 
 ---
 ## Attr: Window.bodyStyle
@@ -1103,6 +1103,29 @@ Setter for [headerStyle](#attr-windowheaderstyle).
 | newHeaderStyle | [CSSStyleName](../reference.md#type-cssstylename) | false | — | new [styleName](Canvas.md#attr-canvasstylename) for the [header](#attr-windowheader). |
 
 ---
+## Method: Window.restore
+
+### Description
+Restores the window to its specified height and width after a call to [Window.minimize](#method-windowminimize) or [Window.maximize](#method-windowmaximize). Called from a click on the restore button shown in place of the minimize or maximize button when the window is minimized or maximized.  
+Resizing will occur as an animation if [Window.animateMinimize](#attr-windowanimateminimize) is true.
+
+---
+## Method: Window.setStatus
+
+### Description
+Sets the text in the status bar of the window, redrawing if necessary.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| statusString | [String](#type-string) | false | — | new text for the status bar |
+
+### Groups
+
+- appearance
+
+---
 ## Method: Window.setBodyStyle
 
 ### Description
@@ -1113,6 +1136,35 @@ Setter for [bodyStyle](#attr-windowbodystyle).
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | newBodyStyle | [CSSStyleName](../reference.md#type-cssstylename) | false | — | new [styleName](Canvas.md#attr-canvasstylename) for the [body](#attr-windowbody). |
+
+---
+## Method: Window.addMembers
+
+### Description
+Same as [Layout.addMembers](Layout.md#method-layoutaddmembers). Note that in order to add items to [Window.body](#attr-windowbody), you use [Window.addItem](#method-windowadditem) rather than `addMembers`. Adding a member to a Window adds the member as a sibling to the header, body and other built-in Window subcomponents.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| newMembers | [Array of Canvas](#type-array-of-canvas)|[Canvas](#type-canvas) | false | — | array of canvases to be added or single Canvas |
+| position | [Number](#type-number) | true | — | position to add newMembers; if omitted newMembers will be added at the last position |
+
+**Flags**: A
+
+---
+## Method: Window.flash
+
+### Description
+Makes the window header flash if it's visible; if there's no header, or the header is hidden, makes the window body flash instead.
+
+This method is executed when users click outside the bounds of a modal window so they'll notice that they have to do something with the window.
+
+### Groups
+
+- modal
+
+**Flags**: A
 
 ---
 ## Method: Window.centerInPage
@@ -1165,16 +1217,12 @@ Removes a widget from the body area of the window.
 **Flags**: A
 
 ---
-## Method: Window.setAutoCenter
+## Method: Window.maximize
 
 ### Description
-Setter for the [Window.autoCenter](#attr-windowautocenter) attribute.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| autoCenter | [boolean](../reference.md#type-boolean) | false | — | new value for autoCenter |
+Maximize the window. Fired when the user clicks the maximize button if [this.showMaximizeButton](#attr-windowshowmaximizebutton) is true.  
+Default implementation moves the window to `0, 0` and resizes the window to `"100%"` on both axes, so it will fill the browser window (or the parent of the Window instance, if appropriate).  
+If [animateMinimize](#attr-windowanimateminimize) is true, the maximize will be animated. A restore button will be displayed in place of the maximize button when the window is maximized.
 
 ---
 ## Method: Window.closeClick
@@ -1202,6 +1250,13 @@ Dynamically update [Window.showHeaderIcon](#attr-windowshowheadericon) to show /
 
 - [Window.headerControls](#attr-windowheadercontrols)
 - [Window.showHeaderIcon](#attr-windowshowheadericon)
+
+---
+## Method: Window.minimize
+
+### Description
+Minimize the window. Fired when the user clicks the minimize button if [this.showMinimizeButton](#attr-windowshowminimizebutton) is true.  
+Default implementation shrinks the window to just the height of the header bar, hiding the body. If [animateMinimize](#attr-windowanimateminimize) is true, the resize will be animated. A restore button will be displayed in place of the minimize button when the window is minimized.
 
 ---
 ## Method: Window.setShowTitle
@@ -1245,6 +1300,54 @@ Default behavior: if [Window.dismissOnEscape](#attr-windowdismissonescape) is se
 `[Boolean](#type-boolean)` — true if the window should be dismissed when the user hits escape
 
 ---
+## Method: Window.addMember
+
+### Description
+Same as [Layout.addMember](Layout.md#method-layoutaddmember). Note that in order to add items to [Window.body](#attr-windowbody), you use [Window.addItem](#method-windowadditem) rather than `addMember`. Adding a member to a Window adds the member as a sibling to the header, body and other built-in Window subcomponents.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| newMember | [Canvas](#type-canvas) | false | — | the canvas object to be added to the layout |
+| position | [Integer](../reference_2.md#type-integer) | true | — | the position in the layout to place newMember (starts with 0); if omitted, it will be added at the last position |
+
+### See Also
+
+- [Window.addMembers](#method-windowaddmembers)
+
+**Flags**: A
+
+---
+## Method: Window.setHiliteBodyColor
+
+### Description
+Setter for [hiliteBodyColor](#attr-windowhilitebodycolor).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| newHiliteBodyColor | [CSSColor](../reference_2.md#type-csscolor) | false | — | new `hiliteBodyColor`. |
+
+---
+## Method: Window.setSrc
+
+### Description
+Sets the URL of the contents to display in the body of the window, redrawing if necessary.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| url | [String](#type-string) | false | — | URL of new contents to be displayed in the window body |
+
+### Groups
+
+- appearance
+- body
+
+---
 ## Method: Window.addItems
 
 ### Description
@@ -1284,6 +1387,28 @@ Dynamically update [Window.showCloseButton](#attr-windowshowclosebutton) to show
 
 - [Window.headerControls](#attr-windowheadercontrols)
 - [Window.showCloseButton](#attr-windowshowclosebutton)
+
+---
+## Method: Window.addItem
+
+### Description
+Adds a widget to the body area of the window.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| item | [Canvas](#type-canvas) | false | — | the widget to be added |
+
+### Returns
+
+`[Array](#type-array)` — array of widgets added
+
+### Groups
+
+- windowItems
+
+**Flags**: A
 
 ---
 ## Method: Window.setBodyColor
@@ -1327,143 +1452,6 @@ Removes an array of widgets from the window.
 ### Groups
 
 - windowItems
-
----
-## Method: Window.restore
-
-### Description
-Restores the window to its specified height and width after a call to [Window.minimize](#method-windowminimize) or [Window.maximize](#method-windowmaximize). Called from a click on the restore button shown in place of the minimize or maximize button when the window is minimized or maximized.  
-Resizing will occur as an animation if [Window.animateMinimize](#attr-windowanimateminimize) is true.
-
----
-## Method: Window.setStatus
-
-### Description
-Sets the text in the status bar of the window, redrawing if necessary.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| statusString | [String](#type-string) | false | — | new text for the status bar |
-
-### Groups
-
-- appearance
-
----
-## Method: Window.addMembers
-
-### Description
-Same as [Layout.addMembers](Layout.md#method-layoutaddmembers). Note that in order to add items to [Window.body](#attr-windowbody), you use [Window.addItem](#method-windowadditem) rather than `addMembers`. Adding a member to a Window adds the member as a sibling to the header, body and other built-in Window subcomponents.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| newMembers | [Array of Canvas](#type-array-of-canvas)|[Canvas](#type-canvas) | false | — | array of canvases to be added or single Canvas |
-| position | [Integer](../reference_2.md#type-integer) | true | — | If passed, this specifies the insertion position between the existing members of the layout. If omitted, the canvas will be added at the last position |
-
-**Flags**: A
-
----
-## Method: Window.flash
-
-### Description
-Makes the window header flash if it's visible; if there's no header, or the header is hidden, makes the window body flash instead.
-
-This method is executed when users click outside the bounds of a modal window so they'll notice that they have to do something with the window.
-
-### Groups
-
-- modal
-
-**Flags**: A
-
----
-## Method: Window.maximize
-
-### Description
-Maximize the window. Fired when the user clicks the maximize button if [this.showMaximizeButton](#attr-windowshowmaximizebutton) is true.  
-Default implementation moves the window to `0, 0` and resizes the window to `"100%"` on both axes, so it will fill the browser window (or the parent of the Window instance, if appropriate).  
-If [animateMinimize](#attr-windowanimateminimize) is true, the maximize will be animated. A restore button will be displayed in place of the maximize button when the window is maximized.
-
----
-## Method: Window.minimize
-
-### Description
-Minimize the window. Fired when the user clicks the minimize button if [this.showMinimizeButton](#attr-windowshowminimizebutton) is true.  
-Default implementation shrinks the window to just the height of the header bar, hiding the body. If [animateMinimize](#attr-windowanimateminimize) is true, the resize will be animated. A restore button will be displayed in place of the minimize button when the window is minimized.
-
----
-## Method: Window.addMember
-
-### Description
-Same as [Layout.addMember](Layout.md#method-layoutaddmember). Note that in order to add items to [Window.body](#attr-windowbody), you use [Window.addItem](#method-windowadditem) rather than `addMember`. Adding a member to a Window adds the member as a sibling to the header, body and other built-in Window subcomponents.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| newMember | [Canvas](#type-canvas) | false | — | the canvas object to be added to the layout |
-| position | [Integer](../reference_2.md#type-integer) | true | — | If passed, this specifies the insertion position between the existing members of the layout. If omitted, the canvas will be added at the last position |
-
-### See Also
-
-- [Window.addMembers](#method-windowaddmembers)
-
-**Flags**: A
-
----
-## Method: Window.setHiliteBodyColor
-
-### Description
-Setter for [hiliteBodyColor](#attr-windowhilitebodycolor).
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| newHiliteBodyColor | [CSSColor](../reference_2.md#type-csscolor) | false | — | new `hiliteBodyColor`. |
-
----
-## Method: Window.setSrc
-
-### Description
-Sets the URL of the contents to display in the body of the window, redrawing if necessary.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| url | [String](#type-string) | false | — | URL of new contents to be displayed in the window body |
-
-### Groups
-
-- appearance
-- body
-
----
-## Method: Window.addItem
-
-### Description
-Adds a widget to the body area of the window.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| item | [Canvas](#type-canvas) | false | — | the widget to be added |
-
-### Returns
-
-`[Array](#type-array)` — array of widgets added
-
-### Groups
-
-- windowItems
-
-**Flags**: A
 
 ---
 ## Method: Window.setShowMinimizeButton

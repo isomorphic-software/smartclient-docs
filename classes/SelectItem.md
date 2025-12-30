@@ -33,6 +33,22 @@ NOTE: When enabled, [getSelectedRecord](FormItem.md#method-formitemgetselectedre
 **Flags**: IRA
 
 ---
+## Attr: SelectItem.pickerExitButton
+
+### Description
+[NavigationButton](NavigationButton.md#class-navigationbutton) to dismiss the picker interface, created when [SelectItem.pickListPlacement](#attr-selectitempicklistplacement) indicates that the search interface takes over the entire panel or screen.
+
+The following [passthroughs](../kb_topics/autoChildUsage.md#kb-topic-using-autochildren) apply:
+
+*   [pickerExitButtonTitle](#attr-selectitempickerexitbuttontitle) for [Button.title](Button.md#attr-buttontitle)
+
+### Groups
+
+- panelPlacement
+
+**Flags**: IR
+
+---
 ## Attr: SelectItem.showFocused
 
 ### Description
@@ -49,6 +65,18 @@ See [formItemStyling](../kb_topics/formItemStyling.md#kb-topic-formitem-styling)
 - [FormItem.cellStyle](FormItem.md#attr-formitemcellstyle)
 
 **Flags**: IRWA
+
+---
+## Attr: SelectItem.iconPlacement
+
+### Description
+For PickList items with [PickListItemIconPlacement](../reference.md#type-picklistitemiconplacement) set such that the pickList does not render near-origin, should specified [icons](FormItem.md#attr-formitemicons) be rendered inline within the formItem itself, or within the [pickerNavigationBar](ComboBoxItem.md#attr-comboboxitempickernavigationbar).
+
+May be overridden at the icon level via [FormItemIcon.iconPlacement](FormItemIcon.md#attr-formitemiconiconplacement).
+
+For mobile browsing with limited available screen space, icons rendered in the navigation bar may be easier for the user to interact with.
+
+**Flags**: IR
 
 ---
 ## Attr: SelectItem.pickerExitButtonTitle
@@ -72,370 +100,6 @@ How large should the pick button be rendered?
 **Deprecated**
 
 **Flags**: IRWA
-
----
-## Attr: SelectItem.pickListFields
-
-### Description
-This property allows the developer to specify which field\[s\] will be displayed in the drop down list of options.
-
-Only applies to databound pickLists (see [PickList.optionDataSource](PickList.md#attr-picklistoptiondatasource), or pickLists with custom data set up via the advanced [PickList.getClientPickListData](PickList.md#method-picklistgetclientpicklistdata) method.
-
-If this property is unset, we display the [PickList.displayField](PickList.md#attr-picklistdisplayfield), if specified, otherwise the [PickList.valueField](PickList.md#attr-picklistvaluefield).
-
-If there are multiple fields, column headers will be shown for each field, the height of which can be customized via the [PickList.pickListHeaderHeight](PickList.md#attr-picklistpicklistheaderheight) attribute.
-
-Each field to display should be specified as a [ListGridField](../reference_2.md#object-listgridfield) object. Note that unlike in [listGrids](ListGrid_1.md#class-listgrid), dataSource fields marked as [hidden:true](DataSourceField.md#attr-datasourcefieldhidden) will be hidden by default in pickLists. To override this behavior, ensure that you specify an explicit value for [showIf](ListGridField.md#method-listgridfieldshowif).
-
-### Groups
-
-- pickList
-
-### See Also
-
-- [SelectItem.valueField](#attr-selectitemvaluefield)
-- [PickList.pickListHeaderHeight](PickList.md#attr-picklistpicklistheaderheight)
-
-**Flags**: IRA
-
----
-## Attr: SelectItem.filterLocally
-
-### Description
-If `filterLocally` is set for this item, and this item is showing options from a dataSource, fetch the entire set of options from the server, and use these values to map the item value to the appropriate display value. Also use `"local"` type filtering on drop down list of options.
-
-This means data will only be fetched once from the server, and then filtered on the client.
-
-Note - when this property is set to `false`, filtering will still be performed on the client if a complete set of data for some criteria has been cached by a fetch, and a subsequent fetch has more restrictive criteria. To explicitly disable client-side filtering set the [SelectItem.useClientFiltering](#attr-selectitemuseclientfiltering) property to false.
-
-### See Also
-
-- [FormItem.filterLocally](FormItem.md#attr-formitemfilterlocally)
-
-**Flags**: IRA
-
----
-## Attr: SelectItem.pickerNavigationBar
-
-### Description
-[NavigationBar](NavigationBar.md#class-navigationbar) created when [SelectItem.pickListPlacement](#attr-selectitempicklistplacement) indicates that the search interface takes over the entire panel or screen.
-
-### Groups
-
-- panelPlacement
-
-**Flags**: IR
-
----
-## Attr: SelectItem.showHintInField
-
-### Description
-If showing a hint for this form item, should it be shown within the field?
-
-CSS style for the hint is [SelectItem.textBoxStyle](#attr-selectitemtextboxstyle) with the suffix "Hint" appended to it.
-
-### Groups
-
-- appearance
-
-### See Also
-
-- [FormItem.hint](FormItem.md#attr-formitemhint)
-
-**Flags**: IRW
-
----
-## Attr: SelectItem.optionFilterContext
-
-### Description
-If this item has a specified `optionDataSource`, and this property is not null, this will be passed to the datasource as [DSRequest](../reference_2.md#object-dsrequest) properties when performing the filter operation on the dataSource to obtain the set of options for the list. This provides, among other capabilities, a way to trigger the server to return summary records.
-
-### See Also
-
-- [serverSummaries](../kb_topics/serverSummaries.md#kb-topic-server-summaries)
-
-**Flags**: IRA
-
----
-## Attr: SelectItem.pickerClearButtonTitle
-
-### Description
-The title for the [SelectItem.pickerClearButton](#attr-selectitempickerclearbutton).
-
-### Groups
-
-- i18nMessages
-- panelPlacement
-
-**Flags**: IR
-
----
-## Attr: SelectItem.pickButtonSrc
-
-### Description
-Source for image to show for the pick button
-
-**Deprecated**
-
-**Flags**: IRWA
-
----
-## Attr: SelectItem.valueField
-
-### Description
-If this form item maps data values to display values by retrieving the [FormItem.displayField](FormItem.md#attr-formitemdisplayfield) values from an [optionDataSource](FormItem.md#attr-formitemoptiondatasource), this property denotes the the field to use as the underlying data value in records from the optionDataSource.  
-If not explicitly supplied, the valueField name will be derived as described in [FormItem.getValueFieldName](FormItem.md#method-formitemgetvaluefieldname).
-
-### Groups
-
-- databinding
-
-**Flags**: IRW
-
----
-## Attr: SelectItem.cachePickListResults
-
-### Description
-For databound pickLists (see [PickList.optionDataSource](PickList.md#attr-picklistoptiondatasource)), by default SmartClient will cache and re-use datasets shown by pickLists in an LRU (least recently used) caching pattern.
-
-Setting this flag to false avoids this caching for situations where it is too aggressive.
-
-**Flags**: IR
-
----
-## Attr: SelectItem.textBoxStyle
-
-### Description
-Base CSS class name for a form item's text box element.
-
-See [formItemStyling](../kb_topics/formItemStyling.md#kb-topic-formitem-styling) for an overview of formItem styling, and the [CompoundFormItem_skinning](../reference.md#kb-topic-compoundformitem_skinning) discussion for special skinning considerations.
-
-If the `textBoxStyle` is changed at runtime, [updateState()](FormItem.md#method-formitemupdatestate) must be called to update the visual state of this item.
-
-### Groups
-
-- appearance
-
-### See Also
-
-- [FormItem.cellStyle](FormItem.md#attr-formitemcellstyle)
-
-**Flags**: IRA
-
----
-## Attr: SelectItem.pickListPlacement
-
-### Description
-Controls where the [PickList](../reference_2.md#interface-picklist) is placed. Can be specified as a [PanelPlacement](../reference_2.md#type-panelplacement) or a specific widget that should be filled (by specifying an actual Canvas or [Canvas.ID](Canvas.md#attr-canvasid)).
-
-Default behavior is to `"fillPanel"` if [Browser.isHandset](Browser.md#classattr-browserishandset) or [Browser.isTablet](Browser.md#classattr-browseristablet), to better accommodate the smaller screen real estate and less precise pointing ability on such devices.
-
-When filling the whole screen, part of the screen or a specific panel, the expanded interface is created as a [standard FormItem picker](FormItem.md#attr-formitempicker), and incorporates a [navigation bar](#attr-selectitempickernavigationbar) and [done button](#attr-selectitempickerexitbutton) that hides the expanded interface.
-
-### Groups
-
-- panelPlacement
-
-**Flags**: IR
-
----
-## Attr: SelectItem.addUnknownValues
-
-### Description
-If this item's value is set (via [SelectItem.setValue](#method-selectitemsetvalue) or similar) to a value which is not present in the [ValueMap](../reference_2.md#type-valuemap), should the value be rejected.
-
-If set to `false` the setValue() call will have no effect if the value is not a valid option.
-
-If set to `true` the item's value will be updated to the new value, and the value will be added to the set of options displayed in the pick-list until the next call to [SelectItem.setValueMap](#method-selectitemsetvaluemap) or [SelectItem.setValue](#method-selectitemsetvalue).
-
-Exception: If the value is set to `null` but there is no null entry in the valueMap for this item, setting `addUnknownValues` to true will not cause a null option to show up at the top of the select item pickList. Whether an empty option is shown in the pickList is governed by [SelectItem.allowEmptyValue](#attr-selectitemallowemptyvalue) instead.
-
-Note that this property has no effect if the selectItem has a specified [SelectItem.optionDataSource](#attr-selectitemoptiondatasource). If [SelectItem.setValue](#method-selectitemsetvalue) is called on a databound SelectItem and the new value does not match any loaded options, the value will be accepted, but not added to the options displayed in the pickList. Also note that if a [SelectItem.displayField](#attr-selectitemdisplayfield) exists, a fetch will be performed in an attempt to retrieve a valid display value, as described under [FormItem.fetchMissingValues](FormItem.md#attr-formitemfetchmissingvalues). If specified the [FormItem.loadingDisplayValue](FormItem.md#attr-formitemloadingdisplayvalue) will be displayed while the fetch is in progress, and then the real value (mapped to a display field value if a matching record was found) will be displayed when the fetch completes.
-
-**Flags**: IRWA
-
----
-## Attr: SelectItem.dataSetType
-
-### Description
-Whether to show the picker as a flat list, or a collapsible tree.
-
-The default value, "list", will use an instance of the [pickListConstructor](PickList.md#attr-picklistpicklistconstructor) as the picker - "tree" will show an instance of [pickTreeConstructor](PickList.md#attr-picklistpicktreeconstructor).
-
-**Flags**: IR
-
----
-## Attr: SelectItem.openOnSpace
-
-### Description
-Causes the PickList to open when the spacebar is pressed, default false.
-
-For native OS widgets, space opens the PickList on Macs, but not on Windows. Consider using this setting if your users are almost entirely Mac users, or enabling it only for users running MacOS.
-
-However, before using this setting, consider that it means that Spacebar will not be able to be used for another purpose when focus is in a SelectItem.
-
-**Flags**: IRW
-
----
-## Attr: SelectItem.rootNodeId
-
-### Description
-When this item is showing a [tree-based picker](PickList.md#attr-picklistdatasettype), this is the [id](#attr-selectitemvaluefield) of the record to use as the [root](Tree.md#attr-treerootvalue) node.
-
-**Flags**: IRW
-
----
-## Attr: SelectItem.hiliteTextColor
-
-### Description
-Text color to apply to the select item's selected value when the SelectItem receives focus, if `hiliteOnFocus` is true.
-
-**Deprecated**
-
-**Flags**: IRWA
-
----
-## Attr: SelectItem.initialSort
-
-### Description
-An array of [SortSpecifier](../reference_2.md#object-sortspecifier) objects used to set up the initial sort configuration for this pickList. If specified, this will be used instead of any [PickList.sortField](PickList.md#attr-picklistsortfield) specified.
-
-### Groups
-
-- sorting
-
-**Flags**: IR
-
----
-## Attr: SelectItem.singleClickFolderToggle
-
-### Description
-When this item is showing a [tree-based picker](PickList.md#attr-picklistdatasettype), the default behavior is for folder open-state to be toggled by double-clicking. Set this attribute to true to toggle folders on a single-click instead.
-
-Note: when set to true, users can only choose leaf-nodes, since clicking folders would simply toggle them.
-
-**Flags**: IRW
-
----
-## Attr: SelectItem.defaultToFirstOption
-
-### Description
-Select the first option as the default value for this SelectItem.
-
-If options are derived from a dataSource, the first value returned by the server will be used, otherwise the first value in the valueMap. Note that setting this property to true will trigger a fetch at soon as the form is created, because the form will try to establish a default value at that time.
-
-If enabled, this setting overrides [SelectItem.defaultValue](#attr-selectitemdefaultvalue) and [SelectItem.defaultDynamicValue](#method-selectitemdefaultdynamicvalue).
-
-### Groups
-
-- formValues
-
-**Flags**: IRW
-
----
-## Attr: SelectItem.escapeHTML
-
-### Description
-By default HTML values in a selectItem will be interpreted by the browser. Setting this flag to true will causes HTML characters to be escaped, meaning the raw value of the field (for example `"`<b>`AAA`</b>`"`) is displayed to the user rather than the interpreted HTML (for example `"**AAA**"`)
-
-### Groups
-
-- appearance
-
-**Flags**: IRW
-
----
-## Attr: SelectItem.pickerIconWidth
-
-### Description
-If [showPickerIcon](#attr-selectitemshowpickericon) is true for this item, this property governs the size of the picker icon. If unset, the picker icon will be sized as a square to fit in the available height for the icon.
-
-Note that if spriting is being used, and the image to be displayed is specified using css properties such as `background-image`, `background-size`, changing this value may result in an unexpected appearance as the image will not scale.  
-Scaleable spriting can be achieved using the [SCSpriteConfig](../reference.md#type-scspriteconfig) format. See the section on spriting in the [skinning overview](../kb_topics/skinning.md#kb-topic-skinning--theming) for further information.
-
-### Groups
-
-- pickerIcon
-
-**Flags**: IRWA
-
----
-## Attr: SelectItem.hiliteColor
-
-### Description
-Background color to apply to the select item's selected value when the SelectItem receives focus, if `hiliteOnFocus` is true.
-
-**Deprecated**
-
-**Flags**: IRWA
-
----
-## Attr: SelectItem.pickerClearButton
-
-### Description
-[NavigationButton](NavigationButton.md#class-navigationbutton) to clear the picker value, created when [SelectItem.pickListPlacement](#attr-selectitempicklistplacement) indicates that the search interface takes over the entire panel or screen.
-
-This button will only be shown if [SelectItem.allowEmptyValue](#attr-selectitemallowemptyvalue) is true.
-
-The following [passthroughs](../kb_topics/autoChildUsage.md#kb-topic-using-autochildren) apply:
-
-*   [pickerClearButtonTitle](#attr-selectitempickerclearbuttontitle) for [Button.title](Button.md#attr-buttontitle)
-
-### Groups
-
-- panelPlacement
-
-**Flags**: IR
-
----
-## Attr: SelectItem.optionDataSource
-
-### Description
-If set, this FormItem will derive data to show in the PickList by fetching records from the specified `optionDataSource`. The fetched data will be used as a [valueMap](FormItem.md#attr-formitemvaluemap) by extracting the [valueField](FormItem.md#attr-formitemvaluefield) and [displayField](FormItem.md#attr-formitemdisplayfield) in the loaded records, to derive one valueMap entry per record loaded from the optionDataSource. Multiple fields from the fetched data may be shown in the pickList by setting [SelectItem.pickListFields](#attr-selectitempicklistfields).
-
-The data will be retrieved via a "fetch" operation on the DataSource, passing the [PickList.pickListCriteria](PickList.md#attr-picklistpicklistcriteria) (if set) as criteria, and passing [SelectItem.optionFilterContext](#attr-selectitemoptionfiltercontext) (if set) as DSRequest Properties.
-
-The fetch will be triggered when the pickList is first shown, or, you can set [autoFetchData:true](#attr-selectitemautofetchdata) to fetch when the FormItem is first drawn.
-
-The pickList will not re-fetch its options each time it is opened, unless the pickList criteria have changed. Developers who want to explicitly force a new fetch can achieve this by overriding [PickList.getPickListFilterCriteria](PickList.md#method-picklistgetpicklistfiltercriteria) to dynamically generate criteria that change whenever appropriate. For example, to force a new fetch every time the pickList is shown, the generated criteria could include a subcriterion for some arbitrary field with _operator_ `notEqual` and _value_ set to a something that will change each time the method runs, such as a date-stamp.
-
-Note that providing an initial value when [fetchMissingValues](FormItem.md#attr-formitemfetchmissingvalues) is enabled, or enabling [defaultToFirstOption](#attr-selectitemdefaulttofirstoption), can also cause a fetch to be initiated immediately upon form creation. You can also call [PickList.fetchData](PickList.md#method-picklistfetchdata) at any time to manually trigger a fetch.
-
-Data paging is automatically enabled if the optionDataSource supports it. As the pickList is scrolled by the user, requests for additional data will be automatically issued.
-
-For a pickList attached to a [ComboBoxItem](ComboBoxItem.md#class-comboboxitem), new fetches are issued as the user types, with criteria set as described under [ComboBoxItem.getPickListFilterCriteria](ComboBoxItem.md#method-comboboxitemgetpicklistfiltercriteria). If your dataSource is not capable of filtering results by search criteria (eg, the dataSource is backed by an XML flat file), you can set [SelectItem.filterLocally](#attr-selectitemfilterlocally) to have the entire dataset loaded up front and filtering performed in the browser. This disables data paging.
-
-Note that if a normal, static [valueMap](FormItem.md#attr-formitemvaluemap) is **also** specified for the field (either directly in the form item or as part of the field definition in the dataSource), it will be preferred to the data derived from the optionDataSource for whatever mappings are present.
-
-**Flags**: IR
-
----
-## Attr: SelectItem.pickerExitButton
-
-### Description
-[NavigationButton](NavigationButton.md#class-navigationbutton) to dismiss the picker interface, created when [SelectItem.pickListPlacement](#attr-selectitempicklistplacement) indicates that the search interface takes over the entire panel or screen.
-
-The following [passthroughs](../kb_topics/autoChildUsage.md#kb-topic-using-autochildren) apply:
-
-*   [pickerExitButtonTitle](#attr-selectitempickerexitbuttontitle) for [Button.title](Button.md#attr-buttontitle)
-
-### Groups
-
-- panelPlacement
-
-**Flags**: IR
-
----
-## Attr: SelectItem.iconPlacement
-
-### Description
-For PickList items with [PickListItemIconPlacement](../reference.md#type-picklistitemiconplacement) set such that the pickList does not render near-origin, should specified [icons](FormItem.md#attr-formitemicons) be rendered inline within the formItem itself, or within the [pickerNavigationBar](ComboBoxItem.md#attr-comboboxitempickernavigationbar).
-
-May be overridden at the icon level via [FormItemIcon.iconPlacement](FormItemIcon.md#attr-formitemiconiconplacement).
-
-For mobile browsing with limited available screen space, icons rendered in the navigation bar may be easier for the user to interact with.
-
-**Flags**: IR
 
 ---
 ## Attr: SelectItem.showOptionsFromDataSource
@@ -475,7 +139,7 @@ See [formItemStyling](../kb_topics/formItemStyling.md#kb-topic-formitem-styling)
 
 - [FormItem.cellStyle](FormItem.md#attr-formitemcellstyle)
 
-**Flags**: IRA
+**Flags**: IRW
 
 ---
 ## Attr: SelectItem.updateControlOnOver
@@ -502,18 +166,6 @@ The Class to use when creating a picker of [type "tree"](PickList.md#attr-pickli
 **Flags**: IR
 
 ---
-## Attr: SelectItem.pickList
-
-### Description
-ListGrid-based AutoChild created by the system to display a list of pickable options for this item.
-
-The pickList is automatically generated and displayed by the system when necessary. It may be customized via properties such as [SelectItem.pickListConstructor](#attr-selectitempicklistconstructor), [SelectItem.pickTreeConstructor](#attr-selectitempicktreeconstructor), [SelectItem.pickListProperties](#attr-selectitempicklistproperties) and more. See the [PickList overview](../reference_2.md#interface-picklist) for more information.
-
-Accessing the generated pickList at runtime is an advanced usage. In most cases developers should not modify this generated component directly but should instead use attributes on the formItem to configure it.
-
-**Flags**: RA
-
----
 ## Attr: SelectItem.saveOnEnter
 
 ### Description
@@ -534,6 +186,47 @@ The default is true in order to allow the user to select a value via keyboard in
 ### See Also
 
 - [PickList.optionDataSource](PickList.md#attr-picklistoptiondatasource)
+
+**Flags**: IRA
+
+---
+## Attr: SelectItem.pickListFields
+
+### Description
+This property allows the developer to specify which field\[s\] will be displayed in the drop down list of options.
+
+Only applies to databound pickLists (see [PickList.optionDataSource](PickList.md#attr-picklistoptiondatasource), or pickLists with custom data set up via the advanced [PickList.getClientPickListData](PickList.md#method-picklistgetclientpicklistdata) method.
+
+If this property is unset, we display the [PickList.displayField](PickList.md#attr-picklistdisplayfield), if specified, otherwise the [PickList.valueField](PickList.md#attr-picklistvaluefield).
+
+If there are multiple fields, column headers will be shown for each field, the height of which can be customized via the [PickList.pickListHeaderHeight](PickList.md#attr-picklistpicklistheaderheight) attribute.
+
+Each field to display should be specified as a [ListGridField](../reference.md#object-listgridfield) object. Note that unlike in [listGrids](ListGrid_1.md#class-listgrid), dataSource fields marked as [hidden:true](DataSourceField.md#attr-datasourcefieldhidden) will be hidden by default in pickLists. To override this behavior, ensure that you specify an explicit value for [showIf](ListGridField.md#method-listgridfieldshowif).
+
+### Groups
+
+- pickList
+
+### See Also
+
+- [SelectItem.valueField](#attr-selectitemvaluefield)
+- [PickList.pickListHeaderHeight](PickList.md#attr-picklistpicklistheaderheight)
+
+**Flags**: IRA
+
+---
+## Attr: SelectItem.filterLocally
+
+### Description
+If `filterLocally` is set for this item, and this item is showing options from a dataSource, fetch the entire set of options from the server, and use these values to map the item value to the appropriate display value. Also use `"local"` type filtering on drop down list of options.
+
+This means data will only be fetched once from the server, and then filtered on the client.
+
+Note - when this property is set to `false`, filtering will still be performed on the client if a complete set of data for some criteria has been cached by a fetch, and a subsequent fetch has more restrictive criteria. To explicitly disable client-side filtering set the [SelectItem.useClientFiltering](#attr-selectitemuseclientfiltering) property to false.
+
+### See Also
+
+- [FormItem.filterLocally](FormItem.md#attr-formitemfilterlocally)
 
 **Flags**: IRA
 
@@ -586,10 +279,22 @@ If this item has a databound pickList (for example [PickList.optionDataSource](P
 **Flags**: IRWA
 
 ---
+## Attr: SelectItem.pickerNavigationBar
+
+### Description
+[NavigationBar](NavigationBar.md#class-navigationbar) created when [SelectItem.pickListPlacement](#attr-selectitempicklistplacement) indicates that the search interface takes over the entire panel or screen.
+
+### Groups
+
+- panelPlacement
+
+**Flags**: IR
+
+---
 ## Attr: SelectItem.progressiveLoading
 
 ### Description
-Indicates whether or not this SelectItem will load its list of options [progressively](DataSource.md#attr-datasourceprogressiveloading). This property is copied onto the underlying [PickList](../reference_2.md#interface-picklist).
+Indicates whether or not this SelectItem will load its list of options [progressively](DataSource.md#attr-datasourceprogressiveloading). This property is copied onto the underlying [PickList](../reference.md#interface-picklist).
 
 ### Groups
 
@@ -608,6 +313,24 @@ Indicates whether or not this SelectItem will load its list of options [progress
 Static default value for this SelectItem. To default to the first option use [SelectItem.defaultToFirstOption](#attr-selectitemdefaulttofirstoption) instead.
 
 **Flags**: IRW
+
+---
+## Attr: SelectItem.showHintInField
+
+### Description
+If showing a hint for this form item, should it be shown within the field?
+
+CSS style for the hint is [SelectItem.textBoxStyle](#attr-selectitemtextboxstyle) with the suffix "Hint" appended to it.
+
+### Groups
+
+- appearance
+
+### See Also
+
+- [FormItem.hint](FormItem.md#attr-formitemhint)
+
+**Flags**: IRWA
 
 ---
 ## Attr: SelectItem.displayField
@@ -647,12 +370,37 @@ If a displayField is specified for a freeform text based item (such as a [ComboB
 **Flags**: IRW
 
 ---
+## Attr: SelectItem.optionFilterContext
+
+### Description
+If this item has a specified `optionDataSource`, and this property is not null, this will be passed to the datasource as [DSRequest](../reference.md#object-dsrequest) properties when performing the filter operation on the dataSource to obtain the set of options for the list. This provides, among other capabilities, a way to trigger the server to return summary records.
+
+### See Also
+
+- [serverSummaries](../kb_topics/serverSummaries.md#kb-topic-server-summaries)
+
+**Flags**: IRA
+
+---
+## Attr: SelectItem.pickerClearButtonTitle
+
+### Description
+The title for the [SelectItem.pickerClearButton](#attr-selectitempickerclearbutton).
+
+### Groups
+
+- i18nMessages
+- panelPlacement
+
+**Flags**: IR
+
+---
 ## Attr: SelectItem.sortField
 
 ### Description
 Specifies one or more fields by which this item should be initially sorted. It can be a [field name](ListGridField.md#attr-listgridfieldname), or an array of field names - but note that, if multiple fields are supplied, then each will be sorted in the same [direction](ListGrid_1.md#attr-listgridsortdirection).
 
-For full sorting control, set [initialSort](PickList.md#attr-picklistinitialsort) to a list of custom [sortSpecifiers](../reference_2.md#object-sortspecifier).
+For full sorting control, set [initialSort](PickList.md#attr-picklistinitialsort) to a list of custom [sortSpecifiers](../reference.md#object-sortspecifier).
 
 This attribute can also be set to the index of a field in the fields array, but note that it will be converted to a string (field name) after initialization.
 
@@ -661,6 +409,29 @@ This attribute can also be set to the index of a field in the fields array, but 
 - sorting
 
 **Flags**: IR
+
+---
+## Attr: SelectItem.pickButtonSrc
+
+### Description
+Source for image to show for the pick button
+
+**Deprecated**
+
+**Flags**: IRWA
+
+---
+## Attr: SelectItem.valueField
+
+### Description
+If this form item maps data values to display values by retrieving the [FormItem.displayField](FormItem.md#attr-formitemdisplayfield) values from an [optionDataSource](FormItem.md#attr-formitemoptiondatasource), this property denotes the the field to use as the underlying data value in records from the optionDataSource.  
+If not explicitly supplied, the valueField name will be derived as described in [FormItem.getValueFieldName](FormItem.md#method-formitemgetvaluefieldname).
+
+### Groups
+
+- databinding
+
+**Flags**: IRW
 
 ---
 ## Attr: SelectItem.canSelectText
@@ -674,9 +445,9 @@ By default SelectItems do not allow users to select the text of the selected val
 ## Attr: SelectItem.specialValues
 
 ### Description
-A set of "special" values such as "All", "None" or "Invalid" that do not appear in the normal [ValueMap](../reference_2.md#type-valuemap) or in the data returned by the [SelectItem.optionDataSource](#attr-selectitemoptiondatasource).
+A set of "special" values such as "All", "None" or "Invalid" that do not appear in the normal [ValueMap](../reference.md#type-valuemap) or in the data returned by the [SelectItem.optionDataSource](#attr-selectitemoptiondatasource).
 
-Like other uses of [ValueMap](../reference_2.md#type-valuemap), either a list of values or a mapping from stored to display value can be provided.
+Like other uses of [ValueMap](../reference.md#type-valuemap), either a list of values or a mapping from stored to display value can be provided.
 
 These values can either be shown at the top of the list of values (in the order specified), or can be shown in a separate, non-scrolling region - the setting [separateSpecialValues](#attr-selectitemseparatespecialvalues) controls this. Note that data paging can only be used if `separateSpecialValues` is enabled.
 
@@ -687,6 +458,16 @@ If `specialValues` are configured, [allowEmptyValue](#attr-selectitemallowemptyv
 Also, if an [SelectItem.optionDataSource](#attr-selectitemoptiondatasource) is used, [SelectItem.specialValues](#attr-selectitemspecialvalues) that appear in the normal dataset _will_ be updated by automatic [cache synchronization](../reference.md#kb-topic-cachesync) (if the [SelectItem.displayField](#attr-selectitemdisplayfield) is updated). However when using a distinct [SelectItem.valueField](#attr-selectitemvaluefield) and [SelectItem.displayField](#attr-selectitemdisplayfield), you are required to provide [SelectItem.specialValues](#attr-selectitemspecialvalues) as a map (there is no support for [fetchMissingValues](FormItem.md#attr-formitemfetchmissingvalues) automatically fetching appropriate display values).
 
 Note that specialValues are not supported in conjunction with [MultiComboBoxItem](MultiComboBoxItem.md#class-multicomboboxitem). Whereas with [selectItem.multiple:true](#attr-selectitemmultiple), specialValues will never be normal values that may be selected. So, specialValues should have options such as "Select All", "Select None" and others.
+
+**Flags**: IR
+
+---
+## Attr: SelectItem.cachePickListResults
+
+### Description
+For databound pickLists (see [PickList.optionDataSource](PickList.md#attr-picklistoptiondatasource)), by default SmartClient will cache and re-use datasets shown by pickLists in an LRU (least recently used) caching pattern.
+
+Setting this flag to false avoids this caching for situations where it is too aggressive.
 
 **Flags**: IR
 
@@ -707,6 +488,26 @@ See also [SelectItem.specialValues](#attr-selectitemspecialvalues) as a way of p
 - formValues
 
 **Flags**: IR
+
+---
+## Attr: SelectItem.textBoxStyle
+
+### Description
+Base CSS class name for a form item's text box element.
+
+See [formItemStyling](../kb_topics/formItemStyling.md#kb-topic-formitem-styling) for an overview of formItem styling, and the [CompoundFormItem_skinning](../reference.md#kb-topic-compoundformitem_skinning) discussion for special skinning considerations.
+
+If the `textBoxStyle` is changed at runtime, [updateState()](FormItem.md#method-formitemupdatestate) must be called to update the visual state of this item.
+
+### Groups
+
+- appearance
+
+### See Also
+
+- [FormItem.cellStyle](FormItem.md#attr-formitemcellstyle)
+
+**Flags**: IRW
 
 ---
 ## Attr: SelectItem.height
@@ -762,6 +563,22 @@ If [FormItem.showOver](FormItem.md#attr-formitemshowover) is true, setting this 
 **Flags**: IRWA
 
 ---
+## Attr: SelectItem.pickListPlacement
+
+### Description
+Controls where the [PickList](../reference.md#interface-picklist) is placed. Can be specified as a [PanelPlacement](../reference.md#type-panelplacement) or a specific widget that should be filled (by specifying an actual Canvas or [Canvas.ID](Canvas.md#attr-canvasid)).
+
+Default behavior is to `"fillPanel"` if [Browser.isHandset](Browser.md#classattr-browserishandset) or [Browser.isTablet](Browser.md#classattr-browseristablet), to better accomodate the smaller screen real estate and less precise pointing ability on such devices.
+
+When filling the whole screen, part of the screen or a specific panel, the expanded interface is created as a [standard FormItem picker](FormItem.md#attr-formitempicker), and incorporates a [navigation bar](#attr-selectitempickernavigationbar) and [done button](#attr-selectitempickerexitbutton) that hides the expanded interface.
+
+### Groups
+
+- panelPlacement
+
+**Flags**: IR
+
+---
 ## Attr: SelectItem.editProxyConstructor
 
 ### Description
@@ -802,6 +619,44 @@ If this item has a specified `optionDataSource`, this attribute may be set to sp
 **Flags**: IR
 
 ---
+## Attr: SelectItem.addUnknownValues
+
+### Description
+If this item's value is set (via [SelectItem.setValue](#method-selectitemsetvalue) or similar) to a value which is not present in the [ValueMap](../reference.md#type-valuemap), should the value be rejected.
+
+If set to `false` the setValue() call will have no effect if the value is not a valid option.
+
+If set to `true` the item's value will be updated to the new value, and the value will be added to the set of options displayed in the pick-list until the next call to [SelectItem.setValueMap](#method-selectitemsetvaluemap) or [SelectItem.setValue](#method-selectitemsetvalue).
+
+Exception: If the value is set to `null` but there is no null entry in the valueMap for this item, setting `addUnknownValues` to true will not cause a null option to show up at the top of the select item pickList. Whether an empty option is shown in the pickList is governed by [SelectItem.allowEmptyValue](#attr-selectitemallowemptyvalue) instead.
+
+Note that this property has no effect if the selectItem has a specified [SelectItem.optionDataSource](#attr-selectitemoptiondatasource). If [SelectItem.setValue](#method-selectitemsetvalue) is called on a databound SelectItem and the new value does not match any loaded options, the value will be accepted, but not added to the options displayed in the pickList. Also note that if a [SelectItem.displayField](#attr-selectitemdisplayfield) exists, a fetch will be performed in an attempt to retrieve a valid display value, as described under [FormItem.fetchMissingValues](FormItem.md#attr-formitemfetchmissingvalues). If specified the [FormItem.loadingDisplayValue](FormItem.md#attr-formitemloadingdisplayvalue) will be displayed while the fetch is in progress, and then the real value (mapped to a display field value if a matching record was found) will be displayed when the fetch completes.
+
+**Flags**: IRWA
+
+---
+## Attr: SelectItem.dataSetType
+
+### Description
+Whether to show the picker as a flat list, or a collapsible tree.
+
+The default value, "list", will use an instance of the [pickListConstructor](PickList.md#attr-picklistpicklistconstructor) as the picker - "tree" will show an instance of [pickTreeConstructor](PickList.md#attr-picklistpicktreeconstructor).
+
+**Flags**: IR
+
+---
+## Attr: SelectItem.openOnSpace
+
+### Description
+Causes the PickList to open when the spacebar is pressed, default false.
+
+For native OS widgets, space opens the PickList on Macs, but not on Windows. Consider using this setting if your users are almost entirely Mac users, or enabling it only for users running MacOS.
+
+However, before using this setting, consider that it means that Spacebar will not be able to be used for another purpose when focus is in a SelectItem.
+
+**Flags**: IRW
+
+---
 ## Attr: SelectItem.emptyDisplayValue
 
 ### Description
@@ -816,6 +671,14 @@ If the formItem has a databound pickList, and its [FormItem.displayField](FormIt
 **Flags**: IRW
 
 ---
+## Attr: SelectItem.rootNodeId
+
+### Description
+When this item is showing a [tree-based picker](PickList.md#attr-picklistdatasettype), this is the [id](#attr-selectitemvaluefield) of the record to use as the [root](Tree.md#attr-treerootvalue) node.
+
+**Flags**: IRW
+
+---
 ## Attr: SelectItem.emptyPickListMessage
 
 ### Description
@@ -824,6 +687,16 @@ Empty message to display in the selectItem if [PickList.hideEmptyPickList](PickL
 ### Groups
 
 - i18nMessages
+
+**Flags**: IRWA
+
+---
+## Attr: SelectItem.hiliteTextColor
+
+### Description
+Text color to apply to the select item's selected value when the SelectItem receives focus, if `hiliteOnFocus` is true.
+
+**Deprecated**
 
 **Flags**: IRWA
 
@@ -874,7 +747,7 @@ Scaleable spriting can be achieved using the [SCSpriteConfig](../reference.md#ty
 ## Attr: SelectItem.showPickerIcon
 
 ### Description
-Should we show a special 'picker' [icon](../reference.md#object-formitemicon) for this form item? Picker icons are customizable via [pickerIconProperties](FormItem.md#attr-formitempickericonproperties). By default they will be rendered inside the form item's ["control box"](FormItem.md#attr-formitemcontrolstyle) area. By default clicking the pickerIcon will call [FormItem.showPicker](FormItem.md#method-formitemshowpicker).
+Should we show a special 'picker' [icon](../reference_2.md#object-formitemicon) for this form item? Picker icons are customizable via [pickerIconProperties](FormItem.md#attr-formitempickericonproperties). By default they will be rendered inside the form item's ["control box"](FormItem.md#attr-formitemcontrolstyle) area. By default clicking the pickerIcon will call [FormItem.showPicker](FormItem.md#method-formitemshowpicker).
 
 ### Groups
 
@@ -883,10 +756,48 @@ Should we show a special 'picker' [icon](../reference.md#object-formitemicon) fo
 **Flags**: IRW
 
 ---
+## Attr: SelectItem.initialSort
+
+### Description
+An array of [SortSpecifier](../reference.md#object-sortspecifier) objects used to set up the initial sort configuration for this pickList. If specified, this will be used instead of any [PickList.sortField](PickList.md#attr-picklistsortfield) specified.
+
+### Groups
+
+- sorting
+
+**Flags**: IR
+
+---
+## Attr: SelectItem.singleClickFolderToggle
+
+### Description
+When this item is showing a [tree-based picker](PickList.md#attr-picklistdatasettype), the default behavior is for folder open-state to be toggled by double-clicking. Set this attribute to true to toggle folders on a single-click instead.
+
+Note: when set to true, users can only choose leaf-nodes, since clicking folders would simply toggle them.
+
+**Flags**: IRW
+
+---
 ## Attr: SelectItem.allowMultiCharSearch
 
 ### Description
 By default, if multiple keys are pressed in quick succession, a SelectItem will buffer them together and use the resulting multi-char string when searching. Set this attribute to false to force the item to match only one character at a time.
+
+**Flags**: IRW
+
+---
+## Attr: SelectItem.defaultToFirstOption
+
+### Description
+Select the first option as the default value for this SelectItem.
+
+If options are derived from a dataSource, the first value returned by the server will be used, otherwise the first value in the valueMap. Note that setting this property to true will trigger a fetch at soon as the form is created, because the form will try to establish a default value at that time.
+
+If enabled, this setting overrides [SelectItem.defaultValue](#attr-selectitemdefaultvalue) and [SelectItem.defaultDynamicValue](#method-selectitemdefaultdynamicvalue).
+
+### Groups
+
+- formValues
 
 **Flags**: IRW
 
@@ -901,6 +812,18 @@ For native OS widgets, the down arrow changes the value of a select on Windows, 
 **Flags**: IRW
 
 ---
+## Attr: SelectItem.escapeHTML
+
+### Description
+By default HTML values in a selectItem will be interpreted by the browser. Setting this flag to true will causes HTML characters to be escaped, meaning the raw value of the field (for example `"`<b>`AAA`</b>`"`) is displayed to the user rather than the interpreted HTML (for example `"**AAA**"`)
+
+### Groups
+
+- appearance
+
+**Flags**: IRW
+
+---
 ## Attr: SelectItem.pickerIconSrc
 
 ### Description
@@ -911,6 +834,31 @@ When [spriting](../kb_topics/skinning.md#kb-topic-skinning--theming) is enabled,
 ### Groups
 
 - pickerIcon
+
+**Flags**: IRWA
+
+---
+## Attr: SelectItem.pickerIconWidth
+
+### Description
+If [showPickerIcon](#attr-selectitemshowpickericon) is true for this item, this property governs the size of the picker icon. If unset, the picker icon will be sized as a square to fit in the available height for the icon.
+
+Note that if spriting is being used, and the image to be displayed is specified using css properties such as `background-image`, `background-size`, changing this value may result in an unexpected appearance as the image will not scale.  
+Scaleable spriting can be achieved using the [SCSpriteConfig](../reference.md#type-scspriteconfig) format. See the section on spriting in the [skinning overview](../kb_topics/skinning.md#kb-topic-skinning--theming) for further information.
+
+### Groups
+
+- pickerIcon
+
+**Flags**: IRWA
+
+---
+## Attr: SelectItem.hiliteColor
+
+### Description
+Background color to apply to the select item's selected value when the SelectItem receives focus, if `hiliteOnFocus` is true.
+
+**Deprecated**
 
 **Flags**: IRWA
 
@@ -952,6 +900,24 @@ How large should the pick button be rendered?
 **Flags**: IRWA
 
 ---
+## Attr: SelectItem.pickerClearButton
+
+### Description
+[NavigationButton](NavigationButton.md#class-navigationbutton) to clear the picker value, created when [SelectItem.pickListPlacement](#attr-selectitempicklistplacement) indicates that the search interface takes over the entire panel or screen.
+
+This button will only be shown if [SelectItem.allowEmptyValue](#attr-selectitemallowemptyvalue) is true.
+
+The following [passthroughs](../kb_topics/autoChildUsage.md#kb-topic-using-autochildren) apply:
+
+*   [pickerClearButtonTitle](#attr-selectitempickerclearbuttontitle) for [Button.title](Button.md#attr-buttontitle)
+
+### Groups
+
+- panelPlacement
+
+**Flags**: IR
+
+---
 ## Attr: SelectItem.autoOpenTree
 
 ### Description
@@ -977,8 +943,6 @@ When this value is true, we disable doubleClick events by default, instead issui
 
 Note: `multiple:true` SelectItems with multipleAppearance:"grid" do not currently support optionDataSource binding. You can get around this by calling [DataSource.fetchData](DataSource.md#method-datasourcefetchdata) directly and calling [dsResponse.data.getValueMap()](List.md#method-listgetvaluemap) to obtain a valueMap.
 
-If the `multiple` attribute is not explicitly specified, it will default to `false`, unless thie item has a specified [valueMap](FormItem.md#attr-formitemvaluemap) and is part of a [filter interface](SearchForm.md#class-searchform) with [SearchForm.useMultiSelectForValueMaps](SearchForm.md#attr-searchformusemultiselectforvaluemaps) set to true.
-
 ### Groups
 
 - formValues
@@ -987,22 +951,48 @@ If the `multiple` attribute is not explicitly specified, it will default to `fal
 **Flags**: IRW
 
 ---
+## Attr: SelectItem.optionDataSource
+
+### Description
+If set, this FormItem will derive data to show in the PickList by fetching records from the specified `optionDataSource`. The fetched data will be used as a [valueMap](FormItem.md#attr-formitemvaluemap) by extracting the [valueField](FormItem.md#attr-formitemvaluefield) and [displayField](FormItem.md#attr-formitemdisplayfield) in the loaded records, to derive one valueMap entry per record loaded from the optionDataSource. Multiple fields from the fetched data may be shown in the pickList by setting [SelectItem.pickListFields](#attr-selectitempicklistfields).
+
+The data will be retrieved via a "fetch" operation on the DataSource, passing the [PickList.pickListCriteria](PickList.md#attr-picklistpicklistcriteria) (if set) as criteria, and passing [SelectItem.optionFilterContext](#attr-selectitemoptionfiltercontext) (if set) as DSRequest Properties.
+
+The fetch will be triggered when the pickList is first shown, or, you can set [autoFetchData:true](#attr-selectitemautofetchdata) to fetch when the FormItem is first drawn.
+
+Note that providing an initial value when [fetchMissingValues](FormItem.md#attr-formitemfetchmissingvalues) is enabled, or enabling [defaultToFirstOption](#attr-selectitemdefaulttofirstoption), can also cause a fetch to be initiated immediately upon form creation. You can also call [PickList.fetchData](PickList.md#method-picklistfetchdata) at any time to manually trigger a fetch.
+
+Data paging is automatically enabled if the optionDataSource supports it. As the pickList is scrolled by the user, requests for additional data will be automatically issued.
+
+For a pickList attached to a [ComboBoxItem](ComboBoxItem.md#class-comboboxitem), new fetches are issued as the user types, with criteria set as described under [ComboBoxItem.getPickListFilterCriteria](ComboBoxItem.md#method-comboboxitemgetpicklistfiltercriteria). If your dataSource is not capable of filtering results by search criteria (eg, the dataSource is backed by an XML flat file), you can set [SelectItem.filterLocally](#attr-selectitemfilterlocally) to have the entire dataset loaded up front and filtering performed in the browser. This disables data paging.
+
+Note that if a normal, static [valueMap](FormItem.md#attr-formitemvaluemap) is **also** specified for the field (either directly in the form item or as part of the field definition in the dataSource), it will be preferred to the data derived from the optionDataSource for whatever mappings are present.
+
+**Flags**: IRA
+
+---
 ## Method: SelectItem.defaultDynamicValue
 
 ### Description
 Expression evaluated to determine the [SelectItem.defaultValue](#attr-selectitemdefaultvalue) when no value is provided for this item. To default to the first option use [SelectItem.defaultToFirstOption](#attr-selectitemdefaulttofirstoption) instead.
 
-### Parameters
+**Flags**: A
 
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| item | [FormItem](#type-formitem) | false | — | the form item itself (also available as "this") |
-| form | [DynamicForm](#type-dynamicform) | false | — | the managing DynamicForm instance |
-| values | [Object](../reference.md#type-object) | false | — | the current set of values for the form as a whole |
+---
+## Method: SelectItem.getDisplayFieldName
+
+### Description
+Returns the `displayField` for this item.
+
+Behavior varies based on the configuration of this item, as follows:
+
+*   If this item has an [SelectItem.optionDataSource](#attr-selectitemoptiondatasource) and an explicit [FormItem.foreignDisplayField](FormItem.md#attr-formitemforeigndisplayfield) is specified, this will be returned.
+*   Otherwise if an explicit [SelectItem.displayField](#attr-selectitemdisplayfield) is specified it will be returned by default. If the `displayField` was specified on the underlying dataSource field, and no matching field is present in the [SelectItem.optionDataSource](#attr-selectitemoptiondatasource) for the item, we avoid returning the specified displayField value and instead return the title field of the option DataSource. We do this to avoid confusion for the case where the displayField is intended as a display-field value for showing another field value within the same record in the underlying dataSource only.
+*   If no explicit foreignDisplayField or displayField specification was found, and the [FormItem.valueField](FormItem.md#attr-formitemvaluefield) for this item is hidden in the [FormItem.optionDataSource](FormItem.md#attr-formitemoptiondatasource), this method will return the title field for the `optionDataSource`.
 
 ### Returns
 
-`[Any](#type-any)` — dynamically calculated default value for this item
+`[FieldName](../reference.md#type-fieldname)` — display field name, or null if there is no separate display field to use.
 
 **Flags**: A
 
@@ -1035,6 +1025,14 @@ For a SelectItem with an [SelectItem.optionDataSource](#attr-selectitemoptiondat
 `[Array of ListGridRecord](#type-array-of-listgridrecord)` — the list of selected records, or null if none are selected
 
 ---
+## Method: SelectItem.showPicker
+
+### Description
+Method to show a picker for this item. By default this method is called if the user clicks on a [pickerIcon](#attr-selectitemshowpickericon). May also be called programmatically.
+
+Overridden from the default [FormItem.showPicker](FormItem.md#method-formitemshowpicker) implementation to show the [PickList](../reference.md#interface-picklist)
+
+---
 ## Method: SelectItem.dataArrived
 
 ### Description
@@ -1047,65 +1045,6 @@ If this item is showing a dataBound pickList, this notification method will be f
 | startRow | [int](../reference.md#type-int) | false | — | index of first row returned by the server |
 | endRow | [int](../reference.md#type-int) | false | — | index of last row returned by the server |
 | data | [ResultSet](#type-resultset) | false | — | pointer to this pickList's data |
-
----
-## Method: SelectItem.fetchData
-
-### Description
-Only applies to databound items (see [PickList.optionDataSource](PickList.md#attr-picklistoptiondatasource)).  
-Performs a fetch type operation on this item's DataSource to retrieve the set of valid options for the item, based on the current [PickList.pickListCriteria](PickList.md#attr-picklistpicklistcriteria).
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | Callback to fire when the fetch completes. Callback will fire with 4 parameters:
-
-*   `item` a pointer to the form item
-*   `dsResponse` the [DSResponse](DSResponse.md#class-dsresponse) returned by the server
-*   `data` the raw data returned by the server
-*   `dsRequest` the [DSRequest](../reference_2.md#object-dsrequest) sent to the server |
-| requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | properties to apply to the dsRequest for this fetch. |
-
----
-## Method: SelectItem.setValue
-
-### Description
-Set the value of the form item to the value passed in
-
-NOTE: for valueMap'd items, newValue should be data value not displayed value
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| newValue | [Any](#type-any) | false | — | value to set the element to |
-
----
-## Method: SelectItem.getDisplayFieldName
-
-### Description
-Returns the `displayField` for this item.
-
-Behavior varies based on the configuration of this item, as follows:
-
-*   If this item has an [SelectItem.optionDataSource](#attr-selectitemoptiondatasource) and an explicit [FormItem.foreignDisplayField](FormItem.md#attr-formitemforeigndisplayfield) is specified, this will be returned.
-*   Otherwise if an explicit [SelectItem.displayField](#attr-selectitemdisplayfield) is specified it will be returned by default. If the `displayField` was specified on the underlying dataSource field, and no matching field is present in the [SelectItem.optionDataSource](#attr-selectitemoptiondatasource) for the item, we avoid returning the specified displayField value and instead return the title field of the option DataSource. We do this to avoid confusion for the case where the displayField is intended as a display-field value for showing another field value within the same record in the underlying dataSource only.
-*   If no explicit foreignDisplay or displayField specification was found, and the [FormItem.valueField](FormItem.md#attr-formitemvaluefield) for this item is hidden in the [FormItem.optionDataSource](FormItem.md#attr-formitemoptiondatasource), this method will return the title field for the `optionDataSource`.
-
-### Returns
-
-`[FieldName](../reference.md#type-fieldname)` — display field name, or null if there is no separate display field to use.
-
-**Flags**: A
-
----
-## Method: SelectItem.showPicker
-
-### Description
-Method to show a picker for this item. By default this method is called if the user clicks on a [pickerIcon](#attr-selectitemshowpickericon). May also be called programmatically.
-
-Overridden from the default [FormItem.showPicker](FormItem.md#method-formitemshowpicker) implementation to show the [PickList](../reference_2.md#interface-picklist)
 
 ---
 ## Method: SelectItem.pendingStatusChanged
@@ -1127,7 +1066,7 @@ The default behavior is that the [titleStyle](FormItem.md#attr-formitemtitlestyl
 
 ### Returns
 
-`[Boolean](#type-boolean)` — `false` to cancel the default behavior.
+`[boolean](../reference.md#type-boolean)` — `false` to cancel the default behavior.
 
 ---
 ## Method: SelectItem.setValueMap
@@ -1139,7 +1078,7 @@ Set the valueMap for this item.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| valueMap | [Array](#type-array)|[Object](../reference.md#type-object) | false | — | new valueMap |
+| valueMap | [Array](#type-array)|[Object](../reference_2.md#type-object) | false | — | new valueMap |
 
 ### Groups
 
@@ -1148,6 +1087,39 @@ Set the valueMap for this item.
 ### See Also
 
 - [FormItem.valueMap](FormItem.md#attr-formitemvaluemap)
+
+---
+## Method: SelectItem.fetchData
+
+### Description
+Only applies to databound items (see [PickList.optionDataSource](PickList.md#attr-picklistoptiondatasource)).  
+Performs a fetch type operation on this item's DataSource to retrieve the set of valid options for the item, based on the current [PickList.pickListCriteria](PickList.md#attr-picklistpicklistcriteria).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| callback | [DSCallback](../reference.md#type-dscallback) | true | — | Callback to fire when the fetch completes. Callback will fire with 4 parameters:
+
+*   `item` a pointer to the form item
+*   `dsResponse` the [DSResponse](DSResponse.md#class-dsresponse) returned by the server
+*   `data` the raw data returned by the server
+*   `dsRequest` the [DSRequest](../reference.md#object-dsrequest) sent to the server |
+| requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | properties to apply to the dsRequest for this fetch. |
+
+---
+## Method: SelectItem.setValue
+
+### Description
+Set the value of the form item to the value passed in
+
+NOTE: for valueMap'd items, newValue should be data value not displayed value
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| newValue | [Any](#type-any) | false | — | value to set the element to |
 
 ---
 ## Method: SelectItem.getSelectedRecord

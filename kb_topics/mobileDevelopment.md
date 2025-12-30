@@ -35,7 +35,7 @@ Many SmartClient components automatically change their behavior and/or appearanc
 *   [Menu](../classes/Menu.md#class-menu) components likewise fill the entire screen or a major portion, and offer submenu navigation via a slide-in animation and back button instead of displaying the origin menu and submenu simultaneously
 *   [Calendar](../classes/Calendar.md#attr-calendarminimalui) eliminates the tabs normally used to switch between Day, Week and Month view, instead using device pivot to switch between Day and Week views and offering a compact link to Month view
 *   Windows and Dialogs fill the screen by default and remove rounded edges to save space
-*   many controls implement an expanded hit area for clicks or drags so that finger touches that are technically outside of the drawn area of the control still activate the control. This accommodates the imprecision of finger touches as compared to mouse clicks, while still showing the same compact appearance as is used for desktop interfaces. This includes the [Slider](../classes/Slider.md#class-slider) thumb, [Window.headerControls](../classes/Window.md#attr-windowheadercontrols), [edge-based resizing](../classes/Canvas.md#attr-canvasresizefrom), and many other controls.
+*   many controls implement an expanded hit area for clicks or drags so that finger touches that are technically outside of the drawn area of the control still activate the control. This accomodates the imprecision of finger touches as compared to mouse clicks, while still showing the same compact appearance as is used for desktop interfaces. This includes the [Slider](../classes/Slider.md#class-slider) thumb, [Window.headerControls](../classes/Window.md#attr-windowheadercontrols), [edge-based resizing](../classes/Canvas.md#attr-canvasresizefrom), and many other controls.
 *   [SpinnerItem](../classes/SpinnerItem.md#class-spinneritem) switches to side-by-side +/- controls instead of the very small, vertically stacked +/- control typical of desktop interfaces
 *   [AdaptiveMenu](../classes/AdaptiveMenu.md#class-adaptivemenu) can either display menu items inline, or in a drop-down, or mix the two modes according to available space.
 
@@ -99,7 +99,7 @@ Note that the various automatic behaviors triggered by flags on the [Browser](..
 
 #### Mobile look and feel
 
-We recommend using either the Shiva, Tahoe, Twilight, Stratus or Obsidian skins for applications that support mobile (or a custom skin based on one of these skins). These skins make maximum use of CSS3 to minimize the number of images that need to be loaded and the number of DOM elements used to create components.
+We recommend using either the Tahoe, Stratus or Obsidian skins for applications that support mobile (or a custom skin based on one of these skins). These skins make maximum use of CSS3 to minimize the number of images that need to be loaded and the number of DOM elements used to create components.
 
 We also do **not** recommend attempting to mimic the native UI of each particular mobile platform, because:
 
@@ -134,14 +134,14 @@ When a SmartClient application loads, by default a viewport `<meta>` tag is adde
 ```
 For more information on the mobile device viewport, see:
 
-*   [Using the viewport meta tag to control layout on mobile browsers \[MDN\]](https://developer.mozilla.org/en-US/docs/Web/HTML/Viewport_meta_tag)
-*   [Responsive Web Design - The Viewport \[w3schools\]](https://www.w3schools.com/css/css_rwd_viewport.asp)
+*   [Configuring the Viewport - Safari Web Content Guide](http://developer.apple.com/safari/library/documentation/AppleApplications/Reference/SafariWebContent/UsingtheViewport/UsingtheViewport.html)
+*   [Using the viewport meta tag to control layout on mobile browsers - MDN](https://developer.mozilla.org/en-US/docs/Mozilla/Mobile/Viewport_meta_tag)
 
 #### Orientation Change & Screen Size
 
 When orientation changes, this is treated identically to resizing the browser on a desktop machine. If you've already created a UI that fills the browser and makes good use of available screen space for desktop browsers, the same behaviors will automatically apply when your application runs on mobile devices and the device is pivoted.
 
-If you want to build specialized interfaces that respond to device orientation, the [Page.getOrientation](../classes/Page.md#classmethod-pagegetorientation) API may be used to determine the current orientation of the application, and [the page orientationChange event](../reference_2.md#type-pageevent) will fire whenever the user rotates the screen allowing applications or components to directly respond to the user pivoting their device.
+If you want to build specialized interfaces that respond to device orientation, the [Page.getOrientation](../classes/Page.md#classmethod-pagegetorientation) API may be used to determine the current orientation of the application, and [the page orientationChange event](../reference.md#type-pageevent) will fire whenever the user rotates the screen allowing applications or components to directly respond to the user pivoting their device.
 
 #### Launching native helper apps (phone, facetime, maps..)
 
@@ -150,7 +150,7 @@ Generally, all that's required to launch native mobile apps is to create an ordi
 ```
    <a href="tel:8675309">Call Jenny</a>
 ```
-You can provide HTML like this as [HTMLFlow.contents](../classes/HTMLFlow.md#attr-htmlflowcontents). Or use a field of [type:"link"](../reference_2.md#type-fieldtype) to cause various [DataBoundComponents](../reference.md#interface-databoundcomponent) to render a DataSourceField value as a clickable URL.
+You can provide HTML like this as [HTMLFlow.contents](../classes/HTMLFlow.md#attr-htmlflowcontents). Or use a field of [type:"link"](../reference.md#type-fieldtype) to cause various [DataBoundComponents](../reference.md#interface-databoundcomponent) to render a DataSourceField value as a clickable URL.
 
 The URL prefixes that are valid for iOS are documented [at Apple.com](https://developer.apple.com/library/ios/featuredarticles/iPhoneURLScheme_Reference/Introduction/Introduction.html#//apple_ref/doc/uid/TP40007899-CH1-SW1). Typically, the same prefixes also work for Android, Windows Phone and others.
 

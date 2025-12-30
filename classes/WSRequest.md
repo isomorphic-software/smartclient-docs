@@ -4,24 +4,6 @@
 
 ---
 
-## Attr: WSRequest.xmlNamespaces
-
-### Description
-Optional object declaring namespace prefixes for use in evaluating the `resultType` parameter of [WebService.callOperation](WebService.md#method-webservicecalloperation), if resultType is an XPath.
-
-Format is identical to [OperationBinding.xmlNamespaces](OperationBinding.md#attr-operationbindingxmlnamespaces), and default namespaces bindings are also identical.
-
-**Flags**: IR
-
----
-## Attr: WSRequest.wsOperation
-
-### Description
-Name of the web service operation to invoke.
-
-**Flags**: IR
-
----
 ## Attr: WSRequest.data
 
 ### Description
@@ -92,6 +74,16 @@ Note that `useFlatFields` is not generally recommended for use with XML input me
 **Flags**: IR
 
 ---
+## Attr: WSRequest.xmlNamespaces
+
+### Description
+Optional object declaring namespace prefixes for use in evaluating the `resultType` parameter of [WebService.callOperation](WebService.md#method-webservicecalloperation), if resultType is an XPath.
+
+Format is identical to [OperationBinding.xmlNamespaces](OperationBinding.md#attr-operationbindingxmlnamespaces), and default namespaces bindings are also identical.
+
+**Flags**: IR
+
+---
 ## Attr: WSRequest.headerData
 
 ### Description
@@ -109,6 +101,14 @@ Data to be serialized to form the SOAP headers, as a map from the header part na
  
 ```
 The provided data will be serialized to XML by the [SOAP header schema](WebService.md#method-webservicegetinputheaderschema) via [DataSource.xmlSerialize](DataSource.md#method-datasourcexmlserialize)
+
+**Flags**: IR
+
+---
+## Attr: WSRequest.wsOperation
+
+### Description
+Name of the web service operation to invoke.
 
 **Flags**: IR
 

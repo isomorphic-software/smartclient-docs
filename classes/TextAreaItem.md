@@ -12,7 +12,7 @@
 Class for editable multi-line text areas (uses HTML ``<TEXTAREA>`` object)
 
 ---
-## ClassAttr: TextAreaItem.HARD
+## ClassAttr: TextAreaItem.SOFT
 
 ### Description
 A declared value of the enum type [TEXTAREA\_WRAP](../reference.md#type-textarea_wrap).
@@ -20,7 +20,7 @@ A declared value of the enum type [TEXTAREA\_WRAP](../reference.md#type-textarea
 **Flags**: R
 
 ---
-## ClassAttr: TextAreaItem.SOFT
+## ClassAttr: TextAreaItem.HARD
 
 ### Description
 A declared value of the enum type [TEXTAREA\_WRAP](../reference.md#type-textarea_wrap).
@@ -34,6 +34,18 @@ A declared value of the enum type [TEXTAREA\_WRAP](../reference.md#type-textarea
 A declared value of the enum type [TEXTAREA\_WRAP](../reference.md#type-textarea_wrap).
 
 **Flags**: R
+
+---
+## Attr: TextAreaItem.iconVAlign
+
+### Description
+Align icons with the top edge of text area icons by default.
+
+### Groups
+
+- formIcons
+
+**Flags**: IR
 
 ---
 ## Attr: TextAreaItem.selectOnFocus
@@ -68,140 +80,6 @@ Does the current formItem support native cut and paste events?
 This attribute only applies to freeform text entry fields such as [TextItem](TextItem.md#class-textitem) and [TextAreaItem](#class-textareaitem), and only if [TextAreaItem.changeOnKeypress](#attr-textareaitemchangeonkeypress) is true. If true, developers can detect the user editing the value via cut or paste interactions (triggered from keyboard shortcuts or the native browser menu options) using the [FormItem.isCutEvent](FormItem.md#method-formitemiscutevent) and [FormItem.isPasteEvent](FormItem.md#method-formitemispasteevent) methods. This allows custom cut/paste handling to be added to the various change notification flow methods including [FormItem.change](FormItem.md#method-formitemchange), and [FormItem.transformInput](FormItem.md#method-formitemtransforminput).
 
 **Flags**: IRW
-
----
-## Attr: TextAreaItem.defaultValue
-
-### Description
-Overridden to assign class-appropriate type.
-
-### Groups
-
-- basics
-
-### See Also
-
-- [FormItem.defaultValue](FormItem.md#attr-formitemdefaultvalue)
-
-**Flags**: IRW
-
----
-## Attr: TextAreaItem.selectOnClick
-
-### Description
-Allows the [selectOnClick](DynamicForm.md#attr-dynamicformselectonclick) behavior to be configured on a per-FormItem basis. Normally all items in a form default to the value of [DynamicForm.selectOnClick](DynamicForm.md#attr-dynamicformselectonclick).
-
-### Groups
-
-- focus
-
-**Flags**: IRW
-
----
-## Attr: TextAreaItem.formatOnBlur
-
-### Description
-With `formatOnBlur` enabled, this textAreaItem will format its value according to the rules described in [FormItem.mapValueToDisplay](FormItem.md#method-formitemmapvaluetodisplay) as long as the item does not have focus. Once the user puts focus into the item the formatter will be removed. This provides a simple way for developers to show a nicely formatted display value in a freeform text field, without the need for an explicit [FormItem.formatEditorValue](FormItem.md#method-formitemformateditorvalue) and [FormItem.parseEditorValue](FormItem.md#method-formitemparseeditorvalue) pair.
-
-**Flags**: IRW
-
----
-## Attr: TextAreaItem.wrap
-
-### Description
-Text wrapping style.
-
-### Groups
-
-- appearance
-
-**Flags**: IRW
-
----
-## Attr: TextAreaItem.pickerIconHeight
-
-### Description
-TextAreaItem has an explicit pickerIconHeight as we don't want the picker icon, if shown, to size itself to match the height of the item.
-
-**Flags**: IRW
-
----
-## Attr: TextAreaItem.height
-
-### Description
-Default height of this item
-
-Note that when item is rendered as read-only with `readOnlyDisplay` as "static" the property [FormItem.staticHeight](FormItem.md#attr-formitemstaticheight) is used instead.
-
-### Groups
-
-- appearance
-
-**Flags**: IRW
-
----
-## Attr: TextAreaItem.width
-
-### Description
-default width of this item
-
-### Groups
-
-- appearance
-
-**Flags**: IRW
-
----
-## Attr: TextAreaItem.enforceLength
-
-### Description
-If a [TextAreaItem.length](#attr-textareaitemlength) is specified for this item, should user input be limited to the specified length? If set to true, user input and values passed to [setValue()](FormItem.md#method-formitemsetvalue) will be trimmed to the specified length. Otherwise values exceeding the specified length will raise an error on validation.
-
-Note that having this value set to true limits user interactivity in some ways. For example users would be unable to paste a longer string into the field for editing without seeing it be truncated. Given how text areas are typically used to edit longer values than non-wrapping [TextItem](TextItem.md#class-textitem)s, this value is false by default for textAreaItems.
-
-**Flags**: IRW
-
----
-## Attr: TextAreaItem.emptyStringValue
-
-### Description
-How should an empty string entered by the user be stored? This value is typically set to `null` or `""`.
-
-Note that a call to [setValue(null)](FormItem.md#method-formitemsetvalue) or [setValue("")](FormItem.md#method-formitemsetvalue) automatically updates this property to ensure that "empty" values are stored in a consistent format.
-
-### Groups
-
-- formValues
-
-**Flags**: IRW
-
----
-## Attr: TextAreaItem.staticHeight
-
-### Description
-Height of the FormItem when `canEdit` is false and `readOnlyDisplay` is "static". The normal [TextAreaItem.height](#attr-textareaitemheight) is used if this property is not set.
-
-### Groups
-
-- formLayout
-
-### See Also
-
-- [TextAreaItem.height](#attr-textareaitemheight)
-
-**Flags**: IR
-
----
-## Attr: TextAreaItem.iconVAlign
-
-### Description
-Align icons with the top edge of text area icons by default.
-
-### Groups
-
-- formIcons
-
-**Flags**: IR
 
 ---
 ## Attr: TextAreaItem.usePlaceholderForHint
@@ -349,8 +227,6 @@ The in-field hint can be styled with CSS for the `textBoxStyle` + "Hint" / "Hint
 }
 ```
 
-In [DynamicForm.linearMode](DynamicForm.md#attr-dynamicformlinearmode), this property will be defaulted true if left unset.
-
 ### Groups
 
 - appearance
@@ -360,7 +236,7 @@ In [DynamicForm.linearMode](DynamicForm.md#attr-dynamicformlinearmode), this pro
 - [FormItem.hint](FormItem.md#attr-formitemhint)
 - [TextAreaItem.usePlaceholderForHint](#attr-textareaitemuseplaceholderforhint)
 
-**Flags**: IRW
+**Flags**: IRWA
 
 ---
 ## Attr: TextAreaItem.editProxyConstructor
@@ -431,6 +307,18 @@ See also [DataSourceField.length](DataSourceField.md#attr-datasourcefieldlength)
 **Flags**: IRW
 
 ---
+## Attr: TextAreaItem.selectOnClick
+
+### Description
+Allows the [selectOnClick](DynamicForm.md#attr-dynamicformselectonclick) behavior to be configured on a per-FormItem basis. Normally all items in a form default to the value of [DynamicForm.selectOnClick](DynamicForm.md#attr-dynamicformselectonclick).
+
+### Groups
+
+- focus
+
+**Flags**: IRW
+
+---
 ## Attr: TextAreaItem.printFullText
 
 ### Description
@@ -451,12 +339,119 @@ When generating a print-view of the component containing this TextArea, should t
 **Flags**: IRA
 
 ---
+## Attr: TextAreaItem.formatOnBlur
+
+### Description
+With `formatOnBlur` enabled, this textAreaItem will format its value according to the rules described in [FormItem.mapValueToDisplay](FormItem.md#method-formitemmapvaluetodisplay) as long as the item does not have focus. Once the user puts focus into the item the formatter will be removed. This provides a simple way for developers to show a nicely formatted display value in a freeform text field, without the need for an explicit [FormItem.formatEditorValue](FormItem.md#method-formitemformateditorvalue) and [FormItem.parseEditorValue](FormItem.md#method-formitemparseeditorvalue) pair.
+
+**Flags**: IRW
+
+---
+## Attr: TextAreaItem.wrap
+
+### Description
+Text wrapping style.
+
+### Groups
+
+- appearance
+
+**Flags**: IRW
+
+---
+## Attr: TextAreaItem.pickerIconHeight
+
+### Description
+TextAreaItem has an explicit pickerIconHeight as we don't want the picker icon, if shown, to size itself to match the height of the item.
+
+**Flags**: IRW
+
+---
+## Attr: TextAreaItem.height
+
+### Description
+Default height of this item
+
+Note that when item is rendered as read-only with `readOnlyDisplay` as "static" the property [FormItem.staticHeight](FormItem.md#attr-formitemstaticheight) is used instead.
+
+### Groups
+
+- appearance
+
+**Flags**: IRW
+
+---
+## Attr: TextAreaItem.width
+
+### Description
+default width of this item
+
+### Groups
+
+- appearance
+
+**Flags**: IRW
+
+---
 ## Attr: TextAreaItem.showInputElement
 
 ### Description
 When set to false, prevents this item's input element from being written into the DOM. If there are [valueIcons](FormItem.md#attr-formitemvalueicons) or a [picker icon](FormItem.md#attr-formitemshowpickericon), these are displayed as normal, and the item will auto-sizing to that content if its [width](FormItem.md#attr-formitemwidth) is set to null.
 
 **Flags**: IRWA
+
+---
+## Attr: TextAreaItem.enforceLength
+
+### Description
+If a [TextAreaItem.length](#attr-textareaitemlength) is specified for this item, should user input be limited to the specified length? If set to true, user input and values passed to [setValue()](FormItem.md#method-formitemsetvalue) will be trimmed to the specified length. Otherwise values exceeding the specified length will raise an error on validation.
+
+Note that having this value set to true limits user interactivity in some ways. For example users would be unable to paste a longer string into the field for editing without seeing it be truncated. Given how text areas are typically used to edit longer values than non-wrapping [TextItem](TextItem.md#class-textitem)s, this value is false by default for textAreaItems.
+
+**Flags**: IRW
+
+---
+## Attr: TextAreaItem.emptyStringValue
+
+### Description
+How should an empty string entered by the user be stored? This value is typically set to `null` or `""`.
+
+Note that a call to [setValue(null)](FormItem.md#method-formitemsetvalue) or [setValue("")](FormItem.md#method-formitemsetvalue) automatically updates this property to ensure that "empty" values are stored in a consistent format.
+
+### Groups
+
+- formValues
+
+**Flags**: IRW
+
+---
+## Attr: TextAreaItem.staticHeight
+
+### Description
+Height of the FormItem when `canEdit` is false and `readOnlyDisplay` is "static". The normal [TextAreaItem.height](#attr-textareaitemheight) is used if this property is not set.
+
+### Groups
+
+- formLayout
+
+### See Also
+
+- [TextAreaItem.height](#attr-textareaitemheight)
+
+**Flags**: IR
+
+---
+## Method: TextAreaItem.setSelectionRange
+
+### Description
+Puts focus into this form item and selects characters between the given indices. Only applies to drawn text based items.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| start | [int](../reference.md#type-int) | false | — | selection starting character index |
+| end | [int](../reference.md#type-int) | false | — | end of selection character index |
 
 ---
 ## Method: TextAreaItem.transformPastedValue
@@ -485,19 +480,6 @@ Notification fired in response to a clipboard "paste" event on freeform text ite
 
 ### Description
 Put focus in this item and select the entire value. Only applies to text based items
-
----
-## Method: TextAreaItem.setSelectionRange
-
-### Description
-Puts focus into this form item and selects characters between the given indices. Only applies to drawn text based items.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| start | [int](../reference.md#type-int) | false | — | selection starting character index |
-| end | [int](../reference.md#type-int) | false | — | end of selection character index |
 
 ---
 ## Method: TextAreaItem.deselectValue

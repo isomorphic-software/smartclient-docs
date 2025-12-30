@@ -36,7 +36,7 @@ A declared value of the enum type [SelectionStyle](../reference.md#type-selectio
 **Flags**: R
 
 ---
-## ClassAttr: Selection.SIMPLE
+## ClassAttr: Selection.SINGLE
 
 ### Description
 A declared value of the enum type [SelectionStyle](../reference.md#type-selectionstyle).
@@ -44,7 +44,7 @@ A declared value of the enum type [SelectionStyle](../reference.md#type-selectio
 **Flags**: R
 
 ---
-## ClassAttr: Selection.SINGLE
+## ClassAttr: Selection.SIMPLE
 
 ### Description
 A declared value of the enum type [SelectionStyle](../reference.md#type-selectionstyle).
@@ -93,11 +93,56 @@ Return true if a particular item is selected
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| item | [Object](../reference.md#type-object) | false | — | object to check |
+| item | [Object](../reference_2.md#type-object) | false | — | object to check |
 
 ### Returns
 
 `[boolean](../reference.md#type-boolean)` — true == object is selected, false == object is not selected
+
+### Groups
+
+- selection
+
+---
+## Method: Selection.setSelected
+
+### Description
+Select or deselect a particular item.  
+  
+All other selection routines go through this one, so by observing this routine you can monitor all selection changes.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| item | [Object](../reference_2.md#type-object) | false | — | object to select |
+| newState | [boolean](../reference.md#type-boolean) | false | — | turn selection on or off |
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — true == selection actually changed, false == no change
+
+### Groups
+
+- selection
+
+**Flags**: A
+
+---
+## Method: Selection.selectList
+
+### Description
+Select an array of items (subset of the entire list)
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| list | [Array of Object](#type-array-of-object)[] | false | — | array of objects to select |
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — true == selection actually changed, false == no change
 
 ### Groups
 
@@ -113,7 +158,7 @@ When using tree-oriented selection modes like [TreeGrid.cascadeSelection](TreeGr
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| item | [Object](../reference.md#type-object) | false | — | object to check |
+| item | [Object](../reference_2.md#type-object) | false | — | object to check |
 
 ### Returns
 
@@ -124,17 +169,70 @@ When using tree-oriented selection modes like [TreeGrid.cascadeSelection](TreeGr
 - selection
 
 ---
+## Method: Selection.selectSingle
+
+### Description
+Select a single item and deselect everything else
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| item | [Object](../reference_2.md#type-object) | false | — | object to select |
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — true == selection actually changed, false == no change
+
+### Groups
+
+- selection
+
+---
+## Method: Selection.getLength
+
+### Description
+Returns the number of selected records.
+
+### Returns
+
+`[int](../reference.md#type-int)` — number of selected records
+
+### Groups
+
+- selection
+
+---
+## Method: Selection.deselect
+
+### Description
+Deselect a particular item
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| item | [Object](../reference_2.md#type-object) | false | — | object to select |
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — true == selection actually changed, false == no change
+
+### Groups
+
+- selection
+
+---
 ## Method: Selection.deselectList
 
 ### Description
-Deselect an array of items (subset of the entire list). Equivalent to calling +link{Selection.selectList(),selectList(list, false)
+Deselect an array of items (subset of the entire list)
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | list | [Array of Object](#type-array-of-object)[] | false | — | array of objects to select |
-| rowNums | [Array of Object](#type-array-of-object)[] | false | — | array of objects to select |
 
 ### Returns
 
@@ -176,7 +274,21 @@ Select a particular item
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| item | [Object](../reference.md#type-object) | false | — | object to select |
+| item | [Object](../reference_2.md#type-object) | false | — | object to select |
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — true == selection actually changed, false == no change
+
+### Groups
+
+- selection
+
+---
+## Method: Selection.deselectAll
+
+### Description
+Deselect ALL records of the list
 
 ### Returns
 
@@ -228,6 +340,24 @@ Deselect range of records from `start` to `end`, non-inclusive
 - selection
 
 ---
+## Method: Selection.getSelectedRecord
+
+### Description
+Return the first item in the list that is selected.  
+  
+Note that this should only be used if you know that one only one item may be selected, or you really don't care about items after the first one.  
+  
+To get all selected objects, use `[Selection.getSelection](#method-selectiongetselection)`
+
+### Returns
+
+`[Object](../reference_2.md#type-object)` — first selected record, or null if nothing selected
+
+### Groups
+
+- selection
+
+---
 ## Method: Selection.anySelected
 
 ### Description
@@ -256,160 +386,6 @@ Whether multiple items are selected
 - selection
 
 ---
-## Method: Selection.selectItem
-
-### Description
-Select a particular item by its position in the list
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| position | [number](#type-number) | false | — | index of the item to be selected |
-
-### Returns
-
-`[boolean](../reference.md#type-boolean)` — true == selection actually changed, false == no change
-
-### Groups
-
-- selection
-
----
-## Method: Selection.setSelected
-
-### Description
-Select or deselect a particular item.  
-  
-All other selection routines go through this one, so by observing this routine you can monitor all selection changes.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| item | [Object](../reference.md#type-object) | false | — | object to select |
-| newState | [boolean](../reference.md#type-boolean) | false | — | turn selection on or off |
-| recordNum | [Integer](../reference_2.md#type-integer) | false | — | The record number to select. Only used in the case of selection in a [multi-link tree](Tree.md#attr-treemultilinktree), where the node itself is not enough to unambiguously identify an occurrence in the tree |
-
-### Returns
-
-`[boolean](../reference.md#type-boolean)` — true == selection actually changed, false == no change
-
-### Groups
-
-- selection
-
-**Flags**: A
-
----
-## Method: Selection.selectList
-
-### Description
-Select an array of items (subset of the entire list)
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| list | [Array of Object](#type-array-of-object) | false | — | array of objects to select or deselect |
-| newState | [Boolean](#type-boolean) | true | — | true to select objects, false to deselect. Defaults to true |
-| rowNums | [Array of Integer](#type-array-of-integer) | true | — | optional array of row numbers corresponding to the objects in the "list" param. Required for [multi-link trees](Tree.md#attr-treemultilinktree), unless "list" contains [NodeLocator](../reference_2.md#object-nodelocator)s rather than records |
-
-### Returns
-
-`[boolean](../reference.md#type-boolean)` — true == selection actually changed, false == no change
-
-### Groups
-
-- selection
-
----
-## Method: Selection.selectSingle
-
-### Description
-Select a single item and deselect everything else
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| item | [Object](../reference.md#type-object) | false | — | object to select |
-
-### Returns
-
-`[boolean](../reference.md#type-boolean)` — true == selection actually changed, false == no change
-
-### Groups
-
-- selection
-
----
-## Method: Selection.getLength
-
-### Description
-Returns the number of selected records.
-
-### Returns
-
-`[int](../reference.md#type-int)` — number of selected records
-
-### Groups
-
-- selection
-
----
-## Method: Selection.deselect
-
-### Description
-Deselect a particular item
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| item | [Object](../reference.md#type-object) | false | — | object to select |
-
-### Returns
-
-`[boolean](../reference.md#type-boolean)` — true == selection actually changed, false == no change
-
-### Groups
-
-- selection
-
----
-## Method: Selection.deselectAll
-
-### Description
-Deselect ALL records of the list
-
-### Returns
-
-`[boolean](../reference.md#type-boolean)` — true == selection actually changed, false == no change
-
-### Groups
-
-- selection
-
----
-## Method: Selection.getSelectedRecord
-
-### Description
-Return the first item in the list that is selected.  
-  
-Note that this should only be used if you know that one only one item may be selected, or you really don't care about items after the first one.  
-  
-To get all selected objects, use `[Selection.getSelection](#method-selectiongetselection)`
-
-### Returns
-
-`[Object](../reference.md#type-object)` — first selected record, or null if nothing selected
-
-### Groups
-
-- selection
-
----
 ## Method: Selection.getSelection
 
 ### Description
@@ -424,6 +400,26 @@ Return an ordered array of all of the selected items
 ### Returns
 
 `[Array](#type-array)` — list of selected items
+
+### Groups
+
+- selection
+
+---
+## Method: Selection.selectItem
+
+### Description
+Select a particular item by its position in the list
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| position | [number](#type-number) | false | — | index of the item to be selected |
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — true == selection actually changed, false == no change
 
 ### Groups
 

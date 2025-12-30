@@ -12,6 +12,14 @@
 SectionHeader class based on an HLayout with [StretchImg](StretchImg.md#class-stretchimg) background.
 
 ---
+## Attr: ImgSectionHeader.controlsLayout
+
+### Description
+A [Layout](Layout.md#class-layout) containing specified [ImgSectionHeader.controls](#attr-imgsectionheadercontrols) if any. Sets [Layout.membersMargin](Layout.md#attr-layoutmembersmargin):5, [Layout.defaultLayoutAlign](Layout.md#attr-layoutdefaultlayoutalign):"center", and RTL-sensitive [Layout.align](Layout.md#attr-layoutalign) (right by default).
+
+**Flags**: IR
+
+---
 ## Attr: ImgSectionHeader.clipTitle
 
 ### Description
@@ -38,6 +46,20 @@ Note that the string "blank" is a valid setting for this attribute and will alwa
 **Flags**: IRW
 
 ---
+## Attr: ImgSectionHeader.iconWidth
+
+### Description
+Width in pixels of the icon image.
+
+If unset, defaults to [iconSize](StatefulCanvas.md#attr-statefulcanvasiconsize).
+
+### Groups
+
+- buttonIcon
+
+**Flags**: IR
+
+---
 ## Attr: ImgSectionHeader.background
 
 ### Description
@@ -50,52 +72,6 @@ Background of the section header, based on a [StretchImg](StretchImg.md#class-st
 
 ### Description
 If this button is showing an icon should it appear to the left or right of the title? valid options are `"left"` and `"right"`.
-
-### Groups
-
-- buttonIcon
-
-**Flags**: IR
-
----
-## Attr: ImgSectionHeader.showClippedTitleOnHover
-
-### Description
-If true and the title is clipped, then a hover containing the full title of this section header is enabled.
-
-### Groups
-
-- hovers
-
-**Flags**: IRW
-
----
-## Attr: ImgSectionHeader.prompt
-
-### Description
-Prompt displayed in hover canvas if [showHover](Canvas.md#attr-canvasshowhover) is true.
-
-### Groups
-
-- hovers
-
-**Flags**: IRW
-
----
-## Attr: ImgSectionHeader.controlsLayout
-
-### Description
-A [Layout](Layout.md#class-layout) containing specified [ImgSectionHeader.controls](#attr-imgsectionheadercontrols) if any. Sets [Layout.membersMargin](Layout.md#attr-layoutmembersmargin):5, [Layout.defaultLayoutAlign](Layout.md#attr-layoutdefaultlayoutalign):"center", and RTL-sensitive [Layout.align](Layout.md#attr-layoutalign) (right by default).
-
-**Flags**: IR
-
----
-## Attr: ImgSectionHeader.iconWidth
-
-### Description
-Width in pixels of the icon image.
-
-If unset, defaults to [iconSize](StatefulCanvas.md#attr-statefulcanvasiconsize).
 
 ### Groups
 
@@ -122,6 +98,18 @@ Note that this is an init-time property. If you need to dynamically change what 
 By default doubleClicks are disabled for SectionHeaders. All mouse click events will be handled as single clicks. Set this property to `false` to enable standard double-click handling.
 
 **Flags**: IRA
+
+---
+## Attr: ImgSectionHeader.showClippedTitleOnHover
+
+### Description
+If true and the title is clipped, then a hover containing the full title of this section header is enabled.
+
+### Groups
+
+- hovers
+
+**Flags**: IRW
 
 ---
 ## Attr: ImgSectionHeader.iconSize
@@ -174,6 +162,18 @@ Title to show for the section
 **Flags**: IRW
 
 ---
+## Attr: ImgSectionHeader.prompt
+
+### Description
+Prompt displayed in hover canvas if [showHover](Canvas.md#attr-canvasshowhover) is true.
+
+### Groups
+
+- hovers
+
+**Flags**: IRW
+
+---
 ## Method: ImgSectionHeader.titleHover
 
 ### Description
@@ -181,7 +181,7 @@ Optional stringMethod to fire when the user hovers over this section header and 
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false to suppress the standard hover
+`[boolean](../reference.md#type-boolean)` — false to suppress the standard hover
 
 ### Groups
 
@@ -202,31 +202,7 @@ Change the icon being shown for the header.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| icon | [SCImgURL](../reference.md#type-scimgurl) | false | — | URL of new icon |
-
----
-## Method: ImgSectionHeader.setIconOrientation
-
-### Description
-If this header is showing an icon should it appear to the left or right of the title? Valid options are "left" and "right".
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| orientation | [String](#type-string) | false | — | the new orientation |
-
----
-## Method: ImgSectionHeader.setPrompt
-
-### Description
-Sets the text shown as a tooltip for the header.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| prompt | [HTMLString](../reference.md#type-htmlstring) | false | — | the new tooltip |
+| icon | [SCImgURL](../reference_2.md#type-scimgurl) | false | — | URL of new icon |
 
 ---
 ## Method: ImgSectionHeader.getSectionStack
@@ -281,5 +257,29 @@ Sets the horizontal alignment of the title.
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | align | [String](#type-string) | false | — | the new alignment |
+
+---
+## Method: ImgSectionHeader.setIconOrientation
+
+### Description
+If this header is showing an icon should it appear to the left or right of the title? Valid options are "left" and "right".
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| orientation | [String](#type-string) | false | — | the new orientation |
+
+---
+## Method: ImgSectionHeader.setPrompt
+
+### Description
+Sets the text shown as a tooltip for the header.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| prompt | [HTMLString](../reference.md#type-htmlstring) | false | — | the new tooltip |
 
 ---

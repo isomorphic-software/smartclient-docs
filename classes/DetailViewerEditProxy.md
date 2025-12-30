@@ -16,6 +16,18 @@
 - devTools
 
 ---
+## Attr: DetailViewerEditProxy.dataSeparatorChar
+
+### Description
+If [inline editing](EditProxy.md#attr-editproxyinlineeditevent) for this viewer edits the [DetailViewer.data](DetailViewer.md#attr-detailviewerdata), character that should be used as a separator between values, or between pairs of field name vs values if the user is entering such a [ValueMap](../reference.md#type-valuemap) using the [dataDisplaySeparatorChar](#attr-detailviewereditproxydatadisplayseparatorchar).
+
+If [EditProxy.inlineEditMultiline](EditProxy.md#attr-editproxyinlineeditmultiline) is enabled, newlines will be used as value separators and the `dataSeparatorChar`
+
+The [dataEscapeChar](#attr-detailviewereditproxydataescapechar) can be used to enter the separator char as part of a field name or value.
+
+**Flags**: IR
+
+---
 ## Attr: DetailViewerEditProxy.dataEscapeChar
 
 ### Description
@@ -29,7 +41,7 @@ Repeat this character twice to enter it literally. For example, with the default
 ## Attr: DetailViewerEditProxy.dataDisplaySeparatorChar
 
 ### Description
-If [inline editing](EditProxy.md#attr-editproxyinlineeditevent) for this viewer edits the [DetailViewer.data](DetailViewer.md#attr-detailviewerdata), character that should be used as a separator for entering [ValueMap](../reference_2.md#type-valuemap)-style entries that map from a field name to a value.
+If [inline editing](EditProxy.md#attr-editproxyinlineeditevent) for this viewer edits the [DetailViewer.data](DetailViewer.md#attr-detailviewerdata), character that should be used as a separator for entering [ValueMap](../reference.md#type-valuemap)-style entries that map from a field name to a value.
 
 With the default of ":", the following input:
 
@@ -70,16 +82,12 @@ Set `dataDisplaySeparatorChar` to null to prevent entry of values - user input w
 **Flags**: IR
 
 ---
-## Attr: DetailViewerEditProxy.dataSeparatorChar
+## Method: DetailViewerEditProxy.getInlineEditText
 
 ### Description
-If [inline editing](EditProxy.md#attr-editproxyinlineeditevent) for this viewer edits the [DetailViewer.data](DetailViewer.md#attr-detailviewerdata), character that should be used as a separator between values, or between pairs of field name vs values if the user is entering such a [ValueMap](../reference_2.md#type-valuemap) using the [dataDisplaySeparatorChar](#attr-detailviewereditproxydatadisplayseparatorchar).
+Returns the text based on the current component state to be edited inline. Called by the [EditProxy.inlineEditForm](EditProxy.md#attr-editproxyinlineeditform) to obtain the starting edit value.
 
-If [EditProxy.inlineEditMultiline](EditProxy.md#attr-editproxyinlineeditmultiline) is enabled, newlines will be used as value separators and the `dataSeparatorChar`
-
-The [dataEscapeChar](#attr-detailviewereditproxydataescapechar) can be used to enter the separator char as part of a field name or value.
-
-**Flags**: IR
+Returns the component's data one-field-per-line as specified in [DetailViewerEditProxy.dataDisplaySeparatorChar](#attr-detailviewereditproxydatadisplayseparatorchar).
 
 ---
 ## Method: DetailViewerEditProxy.setInlineEditText
@@ -94,13 +102,5 @@ Updates the component's `data` and `fields`.
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | newValue | [String](#type-string) | false | — | the new component data |
-
----
-## Method: DetailViewerEditProxy.getInlineEditText
-
-### Description
-Returns the text based on the current component state to be edited inline. Called by the [EditProxy.inlineEditForm](EditProxy.md#attr-editproxyinlineeditform) to obtain the starting edit value.
-
-Returns the component's data one-field-per-line as specified in [DetailViewerEditProxy.dataDisplaySeparatorChar](#attr-detailviewereditproxydatadisplayseparatorchar).
 
 ---

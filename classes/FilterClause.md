@@ -22,18 +22,10 @@ Properties to combine with the [FieldPicker](FieldPicker.md#class-fieldpicker) a
 **Flags**: IR
 
 ---
-## Attr: FilterClause.valueQueryButtonSize
+## Attr: FilterClause.removeButton
 
 ### Description
-The size of the buttons in each clause that allow Value-query functionality, such as [related-field](#attr-filterclausevaluequeryrelatedfieldbutton) and [aggregation](#attr-filterclausevaluequeryaggregatebutton) features, if they don't specify sizes.
-
-**Flags**: IR
-
----
-## Attr: FilterClause.valueQueryIconSize
-
-### Description
-The size of the icons in the buttons in each clause that allow Value-query functionality, such as [related-field](#attr-filterclausevaluequeryrelatedfieldbutton) and [aggregation](#attr-filterclausevaluequeryaggregatebutton) features, if they don't specify separate image-sizes.
+The clause removal ImgButton that appears before this clause if [FilterClause.showRemoveButton](#attr-filterclauseshowremovebutton) is set.
 
 **Flags**: IR
 
@@ -62,6 +54,18 @@ The title for the operator-picker select-item.
 **Flags**: IR
 
 ---
+## Attr: FilterClause.removeButtonPrompt
+
+### Description
+The hover prompt text for the remove button.
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IR
+
+---
 ## Attr: FilterClause.operatorPickerProperties
 
 ### Description
@@ -78,6 +82,14 @@ If true (the default), validates the entered value when it changes, to make sure
 **Flags**: IR
 
 ---
+## Attr: FilterClause.clause
+
+### Description
+AutoChild containing the UI for the filter-properties in this FilterClause.
+
+**Flags**: IR
+
+---
 ## Attr: FilterClause.valueSetHint
 
 ### Description
@@ -86,100 +98,6 @@ A hint to show in the value-item when using an operator that takes an array of v
 ### Groups
 
 - i18nMessages
-
-**Flags**: IR
-
----
-## Attr: FilterClause.showFieldTitles
-
-### Description
-If true (the default), show field titles in the drop-down box used to select a field for querying. If false, show actual field names instead.
-
-**Flags**: IR
-
----
-## Attr: FilterClause.fieldPicker
-
-### Description
-AutoChild for the [FormItem](FormItem.md#class-formitem) that allows a user to pick a DataSource field when creating filter clauses.
-
-This will be a [SelectItem](SelectItem.md#class-selectitem) by default, or a [ComboBoxItem](ComboBoxItem.md#class-comboboxitem) if [FilterBuilder.fieldDataSource](FilterBuilder.md#attr-filterbuilderfielddatasource) has been specified.
-
-**Flags**: IR
-
----
-## Attr: FilterClause.valueItemListHint
-
-### Description
-A hint to show in the value-item when using an operator that allows users to select values from a list.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IR
-
----
-## Attr: FilterClause.valueQueryAggregateButton
-
-### Description
-The ImgButton that appears after each clause if [FilterBuilder.allowAggregates](FilterBuilder.md#attr-filterbuilderallowaggregates) is set.
-
-**Flags**: IR
-
----
-## Attr: FilterClause.valueItemTitle
-
-### Description
-The title for the value-item.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IR
-
----
-## Attr: FilterClause.operatorPicker
-
-### Description
-AutoChild for the [FormItem](FormItem.md#class-formitem) that allows a user to select the operator when creating filter clauses. Each clause will create an operatorPicker automatically. To customize this item, use [FilterClause.operatorPickerProperties](#attr-filterclauseoperatorpickerproperties)
-
-**Flags**: IR
-
----
-## Attr: FilterClause.valueQueryRelatedFieldButton
-
-### Description
-The ImgButton that appears after each clause if [FilterBuilder.allowAggregates](FilterBuilder.md#attr-filterbuilderallowaggregates) is set.
-
-**Flags**: IR
-
----
-## Attr: FilterClause.removeButton
-
-### Description
-The clause removal ImgButton that appears before this clause if [FilterClause.showRemoveButton](#attr-filterclauseshowremovebutton) is set.
-
-**Flags**: IR
-
----
-## Attr: FilterClause.removeButtonPrompt
-
-### Description
-The hover prompt text for the remove button.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IR
-
----
-## Attr: FilterClause.clause
-
-### Description
-AutoChild containing the UI for the filter-properties in this FilterClause.
 
 **Flags**: IR
 
@@ -204,6 +122,14 @@ A hint to show in the value-item when using an operator that takes user-entered 
 **Flags**: IR
 
 ---
+## Attr: FilterClause.showFieldTitles
+
+### Description
+If true (the default), show field titles in the drop-down box used to select a field for querying. If false, show actual field names instead.
+
+**Flags**: IR
+
+---
 ## Attr: FilterClause.criterion
 
 ### Description
@@ -214,6 +140,28 @@ When initialized with a criterion, the clause will be automatically set up for e
 Note that an empty or partial criterion is allowed, for example, it may specify [Criterion.fieldName](Criterion.md#attr-criterionfieldname) only and will generate an expression with the operator not chosen.
 
 **Flags**: IRW
+
+---
+## Attr: FilterClause.fieldPicker
+
+### Description
+AutoChild for the [FormItem](FormItem.md#class-formitem) that allows a user to pick a DataSource field when creating filter clauses.
+
+This will be a [SelectItem](SelectItem.md#class-selectitem) by default, or a [ComboBoxItem](ComboBoxItem.md#class-comboboxitem) if [FilterBuilder.fieldDataSource](FilterBuilder.md#attr-filterbuilderfielddatasource) has been specified.
+
+**Flags**: IR
+
+---
+## Attr: FilterClause.valueItemListHint
+
+### Description
+A hint to show in the value-item when using an operator that allows users to select values from a list.
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IR
 
 ---
 ## Attr: FilterClause.valueItemFieldHint
@@ -228,6 +176,26 @@ A hint to show in the value-item when using an operator that allows users to sel
 **Flags**: IR
 
 ---
+## Attr: FilterClause.valueItemTitle
+
+### Description
+The title for the value-item.
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IR
+
+---
+## Attr: FilterClause.operatorPicker
+
+### Description
+AutoChild for the [FormItem](FormItem.md#class-formitem) that allows a user to select the operator when creating filter clauses. Each clause will create an operatorPicker automatically. To customize this item, use [FilterClause.operatorPickerProperties](#attr-filterclauseoperatorpickerproperties)
+
+**Flags**: IR
+
+---
 ## Method: FilterClause.getCriterion
 
 ### Description
@@ -235,13 +203,7 @@ Return the criterion specified by this FilterClause.
 
 ### Returns
 
-`[Criteria](../reference_2.md#type-criteria)` — The single criterion for this FilterClause
-
----
-## Method: FilterClause.getFilterBuilder
-
-### Description
-Returns the [filterBuilder](FilterBuilder.md#class-filterbuilder) containing this clause, or null if this filterClause is not embedded in a filterBuilder.
+`[Criteria](../reference.md#type-criteria)` — The single criterion for this FilterClause
 
 ---
 ## Method: FilterClause.getValueFieldProperties
@@ -257,7 +219,7 @@ Note that the [Operator.valueType](Operator.md#attr-operatorvaluetype) impacts w
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| type | [FieldType](../reference_2.md#type-fieldtype) | false | — | type of the DataSource field for this filter row |
+| type | [FieldType](../reference.md#type-fieldtype) | false | — | type of the DataSource field for this filter row |
 | fieldName | [String](#type-string) | false | — | name of the DataSource field for this filter row |
 | operatorId | [OperatorId](../reference.md#type-operatorid) | false | — | [OperatorId](../reference.md#type-operatorid) for the chosen operator |
 | itemType | [ValueItemType](../reference.md#type-valueitemtype) | false | — | What valueItem is being generated. |
@@ -281,6 +243,12 @@ Validate this clause.
 
 ### Description
 Remove this clause by destroy()ing it.
+
+---
+## Method: FilterClause.getFilterBuilder
+
+### Description
+Returns the [filterBuilder](FilterBuilder.md#class-filterbuilder) containing this clause, or null if this filterClause is not embedded in a filterBuilder.
 
 ---
 ## Method: FilterClause.getFieldOperators

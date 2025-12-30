@@ -11,7 +11,7 @@ Properties that affect form item title placement and styling.
 
 ### Related
 
-- [TitleOrientation](../reference_2.md#type-titleorientation)
+- [TitleOrientation](../reference.md#type-titleorientation)
 - [FilterBuilder.setTopOperatorAppearance](../classes/FilterBuilder.md#method-filterbuildersettopoperatorappearance)
 - [DynamicForm.setTitleOrientation](../classes/DynamicForm.md#method-dynamicformsettitleorientation)
 - [DataSource.requiredMessage](../classes/DataSource.md#attr-datasourcerequiredmessage)
@@ -29,11 +29,5 @@ Properties that affect form item title placement and styling.
 - [DynamicForm.requiredTitleSuffix](../classes/DynamicForm.md#attr-dynamicformrequiredtitlesuffix)
 - [DynamicForm.requiredRightTitleSuffix](../classes/DynamicForm.md#attr-dynamicformrequiredrighttitlesuffix)
 - [DynamicForm.requiredMessage](../classes/DynamicForm.md#attr-dynamicformrequiredmessage)
-- [DateItem.showItemTitles](../classes/DateItem.md#attr-dateitemshowitemtitles)
-- [DateItem.itemTitleOrientation](../classes/DateItem.md#attr-dateitemitemtitleorientation)
-- [DateItem.itemTitleAlign](../classes/DateItem.md#attr-dateitemitemtitlealign)
-- [TimeItem.showItemTitles](../classes/TimeItem.md#attr-timeitemshowitemtitles)
-- [TimeItem.itemTitleOrientation](../classes/TimeItem.md#attr-timeitemitemtitleorientation)
-- [TimeItem.itemTitleAlign](../classes/TimeItem.md#attr-timeitemitemtitlealign)
 
 ---

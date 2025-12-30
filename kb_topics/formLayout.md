@@ -35,20 +35,12 @@ Forms often contain labels, data values, or instructional text which can vary in
 2.  Place the form in a Layout along with a component that can render any specified size, such as a [ListGrid](../classes/ListGrid_1.md#class-listgrid). In this case, the Layout will automatically shrink the grid in order to accommodate the form.
 3.  Ensure that the form can always render at a designed minimum size by reducing the number of cases of variable-sized text, and testing remaining cases across all supported skins. For example, move help text into hovers on help icons, or clip long text values at a maximum length and provide a hover to see the rest.
 
-**Adaptive Layout**
-
-To have various automatic adjustments made to render your form items in a single column, you can use [linearMode](../classes/DynamicForm.md#attr-dynamicformlinearmode). Importantly, you can have this mode automatically applied to a form on [handset devices](../classes/Browser.md#classattr-browserishandset) by setting [linearOnMobile](../classes/DynamicForm.md#attr-dynamicformlinearonmobile) true. For further details and the properties that are available to customize this mode, see the [linearMode](../classes/DynamicForm.md#attr-dynamicformlinearmode) documentation.
-
 Several examples of Form Layout are available *here*.
 
 ### Related
 
 - [DynamicForm.itemLayout](../classes/DynamicForm.md#attr-dynamicformitemlayout)
-- [DynamicForm.linearMode](../classes/DynamicForm.md#attr-dynamicformlinearmode)
-- [DynamicForm.linearOnMobile](../classes/DynamicForm.md#attr-dynamicformlinearonmobile)
 - [DynamicForm.numCols](../classes/DynamicForm.md#attr-dynamicformnumcols)
-- [DynamicForm.linearNumCols](../classes/DynamicForm.md#attr-dynamicformlinearnumcols)
-- [DynamicForm.linearHintWidth](../classes/DynamicForm.md#attr-dynamicformlinearhintwidth)
 - [DynamicForm.fixedColWidths](../classes/DynamicForm.md#attr-dynamicformfixedcolwidths)
 - [DynamicForm.colWidths](../classes/DynamicForm.md#attr-dynamicformcolwidths)
 - [DynamicForm.minColWidth](../classes/DynamicForm.md#attr-dynamicformmincolwidth)
@@ -56,23 +48,17 @@ Several examples of Form Layout are available *here*.
 - [DynamicForm.cellBorder](../classes/DynamicForm.md#attr-dynamicformcellborder)
 - [DynamicForm.sectionVisibilityMode](../classes/DynamicForm.md#attr-dynamicformsectionvisibilitymode)
 - [FormItem.width](../classes/FormItem.md#attr-formitemwidth)
-- [FormItem.linearWidth](../classes/FormItem.md#attr-formitemlinearwidth)
 - [FormItem.height](../classes/FormItem.md#attr-formitemheight)
 - [FormItem.staticHeight](../classes/FormItem.md#attr-formitemstaticheight)
 - [FormItem.titleColSpan](../classes/FormItem.md#attr-formitemtitlecolspan)
 - [FormItem.colSpan](../classes/FormItem.md#attr-formitemcolspan)
-- [FormItem.linearColSpan](../classes/FormItem.md#attr-formitemlinearcolspan)
 - [FormItem.rowSpan](../classes/FormItem.md#attr-formitemrowspan)
 - [FormItem.startRow](../classes/FormItem.md#attr-formitemstartrow)
 - [FormItem.endRow](../classes/FormItem.md#attr-formitemendrow)
-- [FormItem.linearStartRow](../classes/FormItem.md#attr-formitemlinearstartrow)
-- [FormItem.linearEndRow](../classes/FormItem.md#attr-formitemlinearendrow)
 - [ButtonItem.startRow](../classes/ButtonItem.md#attr-buttonitemstartrow)
 - [ButtonItem.endRow](../classes/ButtonItem.md#attr-buttonitemendrow)
 - [SelectItem.height](../classes/SelectItem.md#attr-selectitemheight)
 - [TextAreaItem.staticHeight](../classes/TextAreaItem.md#attr-textareaitemstaticheight)
-- [ShuttleItem.width](../classes/ShuttleItem.md#attr-shuttleitemwidth)
-- [ShuttleItem.height](../classes/ShuttleItem.md#attr-shuttleitemheight)
 
 ### See Also
 

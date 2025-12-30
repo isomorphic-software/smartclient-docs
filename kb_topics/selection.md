@@ -13,7 +13,6 @@ Only applicable to a [DataBoundComponent](../reference.md#interface-databoundcom
 
 ### Related
 
-- [CellRecordMode](../reference_2.md#type-cellrecordmode)
 - [SelectionStyle](../reference.md#type-selectionstyle)
 - [CubeGrid.getEventRow](../classes/CubeGrid.md#method-cubegridgeteventrow)
 - [CubeGrid.getEventColumn](../classes/CubeGrid.md#method-cubegridgeteventcolumn)
@@ -42,7 +41,7 @@ Only applicable to a [DataBoundComponent](../reference.md#interface-databoundcom
 - [CubeGrid.cellSelectionChanged](../classes/CubeGrid.md#method-cubegridcellselectionchanged)
 - [ListGrid.getSelectedRecord](../classes/ListGrid_2.md#method-listgridgetselectedrecord)
 - [ListGrid.getSelectedRecords](../classes/ListGrid_2.md#method-listgridgetselectedrecords)
-- [ListGrid.isSelected](../classes/ListGrid_2.md#method-listgridisselected)
+- [ListGrid.isSelected](../classes/ListGrid_1.md#method-listgridisselected)
 - [ListGrid.isPartiallySelected](../classes/ListGrid_2.md#method-listgridispartiallyselected)
 - [DataBoundComponent.selectRecord](../classes/DataBoundComponent.md#method-databoundcomponentselectrecord)
 - [DataBoundComponent.selectSingleRecord](../classes/DataBoundComponent.md#method-databoundcomponentselectsinglerecord)
@@ -98,7 +97,7 @@ Only applicable to a [DataBoundComponent](../reference.md#interface-databoundcom
 - [ListGrid.deselectRange](../classes/ListGrid_2.md#method-listgriddeselectrange)
 - [ListGrid.anySelected](../classes/ListGrid_1.md#method-listgridanyselected)
 - [ListGrid.selectSingleRecord](../classes/ListGrid_2.md#method-listgridselectsinglerecord)
-- [ListGrid.cellSelectionChanged](../classes/ListGrid_2.md#method-listgridcellselectionchanged)
+- [ListGrid.cellSelectionChanged](../classes/ListGrid_1.md#method-listgridcellselectionchanged)
 - [ListGrid.selectionChanged](../classes/ListGrid_2.md#method-listgridselectionchanged)
 - [ListGrid.selectionUpdated](../classes/ListGrid_2.md#method-listgridselectionupdated)
 - [ListGrid.getSelection](../classes/ListGrid_2.md#method-listgridgetselection)

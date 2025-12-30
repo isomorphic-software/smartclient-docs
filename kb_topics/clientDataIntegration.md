@@ -21,7 +21,7 @@ This approach is called Client-Side Data Integration, which means:
 
 The [RestDataSource](../classes/RestDataSource.md#class-restdatasource) provides a complete XML or JSON-based protocol that supports all of the features of SmartClient's databinding layer (data paging, queuing/batching of requests for transactions, nested AdvancedCriteria, server-side validation errors, automatic cache synchronization, etc). To use the RestDataSource, simply write server code that can parse RestDataSource requests and produce the required responses; example requests and responses are [provided](../classes/RestDataSource.md#class-restdatasource).
 
-The SmartClient public wiki contains examples of integration with [.NET's ASP.NET MVC](http://wiki.smartclient.com/display/Main/Integrating+with+ASP.Net+MVC) as well as [PHP with Doctrine](https://isomorphic.atlassian.net/wiki/spaces/Main/pages/524974/Integrating+with+PHP+Doctrine).
+The SmartClient public wiki contains examples of integration with [.NET's ASP.NET MVC](http://wiki.smartclient.com/display/Main/Integrating+with+ASP.Net+MVC) as well as [PHP with Doctrine](http://wiki.smartclient.com/pages/viewpage.action?pageId=1442411).
 
 #### Consuming Existing XML and JSON formats
 
@@ -114,8 +114,8 @@ See the *XML* and *JSON* versions of the transformResponse() example for an exam
 
 ### Related
 
-- [DSDataFormat](../reference_2.md#type-dsdataformat)
-- [DSProtocol](../reference_2.md#type-dsprotocol)
+- [DSDataFormat](../reference.md#type-dsdataformat)
+- [DSProtocol](../reference.md#type-dsprotocol)
 - [Callbacks.GetFieldValueCallback](../classes/Callbacks.md#method-callbacksgetfieldvaluecallback)
 - [DataSource.dataFormat](../classes/DataSource.md#attr-datasourcedataformat)
 - [DataSource.dataProtocol](../classes/DataSource.md#attr-datasourcedataprotocol)
@@ -132,9 +132,6 @@ See the *XML* and *JSON* versions of the transformResponse() example for an exam
 - [DataSource.dataURL](../classes/DataSource.md#attr-datasourcedataurl)
 - [DataSource.tagName](../classes/DataSource.md#attr-datasourcetagname)
 - [DataSource.defaultTextMatchStyle](../classes/DataSource.md#attr-datasourcedefaulttextmatchstyle)
-- [DataSource.arrayCriteriaForceExact](../classes/DataSource.md#attr-datasourcearraycriteriaforceexact)
-- [OperationBinding.arrayCriteriaForceExact](../classes/OperationBinding.md#attr-operationbindingarraycriteriaforceexact)
-- [DSRequest.arrayCriteriaForceExact](../classes/DSRequest.md#attr-dsrequestarraycriteriaforceexact)
 - [DataSourceField.valueXPath](../classes/DataSourceField.md#attr-datasourcefieldvaluexpath)
 - [DataSourceField.valueWriteXPath](../classes/DataSourceField.md#attr-datasourcefieldvaluewritexpath)
 - [DataSourceField.getFieldValue](../classes/DataSourceField.md#attr-datasourcefieldgetfieldvalue)

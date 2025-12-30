@@ -7,8 +7,6 @@
 ## KB Topic: <isomorphic:loadDS>
 
 ### Description
-See [jspTags](../reference.md#kb-topic-smartclient-jsp-tags)
-
 _produces:_ JavaScript
 
 This tag converts a SmartClient DataSource or SimpleType defined in XML to JavaScript for use in databinding on the client (browser).
@@ -26,8 +24,7 @@ Note that this JSP tag must be surrounded by `<SCRIPT>` tags in the JSP because 
 _value format_: String - ID of datasource or simpleType to load  
 _default value_: NONE
 
-This attribute specifies the name of the dataSource or simpleType that you wish to load. DataSources are located in `[webroot]/shared/ds` or `[webroot]/WEB-INF/ds` by default. This location is changeable in `[webroot]/WEB-INF/classes/server.properties` by setting the config parameter `project.datasources` to the directory where your dataSources are located.  
-We recommend that for prototyping, at least, you use the default directory.  
+This attribute specifies the name of the dataSource or simpleType that you wish to load. DataSources are located in `[webroot]/shared/ds` by default. This location is changeable in `[webroot]/WEB-INF/classes/server.properties` by setting the config parameter `project.datasources` to the directory where your dataSources are located. We recommend that for prototyping, at least, you use the default directory.
 
 For example:
 

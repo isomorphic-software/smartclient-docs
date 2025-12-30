@@ -12,6 +12,22 @@
 DrawItem subclass to render line segments.
 
 ---
+## Attr: DrawLine.endPoint
+
+### Description
+End point of the line
+
+**Flags**: IRW
+
+---
+## Attr: DrawLine.startLeft
+
+### Description
+Starting left coordinate of the line. Overrides left coordinate of [DrawLine.startPoint](#attr-drawlinestartpoint) if both are set.
+
+**Flags**: IR
+
+---
 ## Attr: DrawLine.startPoint
 
 ### Description
@@ -24,6 +40,22 @@ Start point of the line
 
 ### Description
 Ending left coordinate of the line. Overrides left coordinate of [DrawLine.endPoint](#attr-drawlineendpoint) if both are set.
+
+**Flags**: IR
+
+---
+## Attr: DrawLine.endTop
+
+### Description
+Ending top coordinate of the line. Overrides top coordinate of [DrawLine.endPoint](#attr-drawlineendpoint) if both are set.
+
+**Flags**: IR
+
+---
+## Attr: DrawLine.startTop
+
+### Description
+Starting top coordinate of the line. Overrides top coordinate of [DrawLine.startPoint](#attr-drawlinestartpoint) if both are set.
 
 **Flags**: IR
 
@@ -50,38 +82,6 @@ The mode in which the [titleLabel](DrawItem.md#attr-drawitemtitlelabel) (if show
 **Flags**: IRA
 
 ---
-## Attr: DrawLine.endPoint
-
-### Description
-End point of the line
-
-**Flags**: IRW
-
----
-## Attr: DrawLine.startLeft
-
-### Description
-Starting left coordinate of the line. Overrides left coordinate of [DrawLine.startPoint](#attr-drawlinestartpoint) if both are set.
-
-**Flags**: IR
-
----
-## Attr: DrawLine.endTop
-
-### Description
-Ending top coordinate of the line. Overrides top coordinate of [DrawLine.endPoint](#attr-drawlineendpoint) if both are set.
-
-**Flags**: IR
-
----
-## Attr: DrawLine.startTop
-
-### Description
-Starting top coordinate of the line. Overrides top coordinate of [DrawLine.startPoint](#attr-drawlinestartpoint) if both are set.
-
-**Flags**: IR
-
----
 ## Attr: DrawLine.showTitleLabelBackground
 
 ### Description
@@ -90,6 +90,19 @@ If the [titleLabel](DrawItem.md#attr-drawitemtitlelabel) is showing, should the 
 This defaults to true for [DrawSector](DrawSector.md#class-drawsector)s and shapes that are not commonly filled (e.g. [DrawLine](#class-drawline)s).
 
 **Flags**: IRA
+
+---
+## Method: DrawLine.setEndPoint
+
+### Description
+Update the endPoint
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| left | [Coordinate](../reference.md#type-coordinate) | false | — | left coordinate for end point, in pixels |
+| top | [Coordinate](../reference.md#type-coordinate) | false | — | top coordinate for end point, in pixels |
 
 ---
 ## Method: DrawLine.moveBy
@@ -118,6 +131,19 @@ Update the startPoint
 | top | [Coordinate](../reference.md#type-coordinate) | false | — | top coordinate for start point, in pixels |
 
 ---
+## Method: DrawLine.moveStartPointTo
+
+### Description
+Move both the start and end points of the line such that the [DrawLine.startPoint](#attr-drawlinestartpoint) ends up at the specified coordinate and the line length and angle are unchanged.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| left | [Integer](../reference_2.md#type-integer) | false | — | new left coordinate in pixels |
+| top | [Integer](../reference_2.md#type-integer) | false | — | new top coordinate in pixels |
+
+---
 ## Method: DrawLine.getBoundingBox
 
 ### Description
@@ -136,32 +162,6 @@ Get the midpoint of the line.
 ### Returns
 
 `[Point](#type-point)` — the midpoint
-
----
-## Method: DrawLine.setEndPoint
-
-### Description
-Update the endPoint
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| left | [Coordinate](../reference.md#type-coordinate) | false | — | left coordinate for end point, in pixels |
-| top | [Coordinate](../reference.md#type-coordinate) | false | — | top coordinate for end point, in pixels |
-
----
-## Method: DrawLine.moveStartPointTo
-
-### Description
-Move both the start and end points of the line such that the [DrawLine.startPoint](#attr-drawlinestartpoint) ends up at the specified coordinate and the line length and angle are unchanged.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| left | [Integer](../reference_2.md#type-integer) | false | — | new left coordinate in pixels |
-| top | [Integer](../reference_2.md#type-integer) | false | — | new top coordinate in pixels |
 
 ---
 ## Method: DrawLine.isPointInPath

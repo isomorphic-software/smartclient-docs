@@ -19,7 +19,7 @@ Criteria to be evaluated to determine whether this item should be enabled. This 
 
 Criteria are evaluated against the ${isc.DocUtils.linkForRef('method:DynamicForm.getValues','form\\'s current values')} as well as the current [rule context](Canvas.md#attr-canvasrulescope). Criteria are re-evaluated every time form values or the rule context changes, whether by end user action or by programmatic calls.
 
-A basic criteria uses textMatchStyle:"exact". When specified in [Component XML](../kb_topics/componentXML.md#kb-topic-component-xml) this property allows [shorthand formats](../kb_topics/xmlCriteriaShorthand.md#kb-topic-xmlcriteriashorthand) for defining criteria.
+A basic criteria uses textMatchStyle:"exact". When specified in [Component XML](../kb_topics/componentXML.md#kb-topic-component-xml) this property allows [shorthand formats](../reference.md#kb-topic-xmlcriteriashorthand) for defining criteria.
 
 Note: A ButtonItem using enableWhen must have a [name](FormItem.md#attr-formitemname) defined. [shouldSaveValue](CanvasItem.md#attr-canvasitemshouldsavevalue) can be set to `false` to prevent the field from storing its value into the form's values.
 
@@ -28,66 +28,6 @@ Note: A ButtonItem using enableWhen must have a [name](FormItem.md#attr-formitem
 - ruleCriteria
 
 **Flags**: IR
-
----
-## Attr: ButtonItem.button
-
-### Description
-This item is an autoChild generated [Canvas](Canvas.md#class-canvas) displayed by the ButtonItem and is an instance of [Button](Button.md#class-button) by defaut, cuztomizeable via the [ButtonItem.buttonConstructor](#attr-buttonitembuttonconstructor) attribute.
-
-**Flags**: R
-
----
-## Attr: ButtonItem.buttonProperties
-
-### Description
-Custom Properties to apply to our button item.
-
-**Flags**: IRA
-
----
-## Attr: ButtonItem.endRow
-
-### Description
-These items are in a row by themselves by default
-
-### Groups
-
-- formLayout
-
-**Flags**: IRW
-
----
-## Attr: ButtonItem.autoFit
-
-### Description
-Should the button auto fit to its title. Maps to [Button.autoFit](Button.md#attr-buttonautofit) attribute. Note that if an explicit width or height is specified for this item, it will be respected, disabling autoFit behavior
-
-**Flags**: IR
-
----
-## Attr: ButtonItem.height
-
-### Description
-By default buttonItems are sized to match their content (see [ButtonItem.autoFit](#attr-buttonitemautofit)). Specifying an explicit size for the button will disable this behavior.
-
-### Groups
-
-- appearance
-
-**Flags**: IRW
-
----
-## Attr: ButtonItem.baseStyle
-
-### Description
-Optional `baseStyle` will be applied to the button.
-
-### Groups
-
-- appearance
-
-**Flags**: IRW
 
 ---
 ## Attr: ButtonItem.buttonTitleAlign
@@ -155,6 +95,42 @@ If this item is [read-only](FormItem.md#method-formitemgetcanedit), how should t
 **Flags**: IRW
 
 ---
+## Attr: ButtonItem.button
+
+### Description
+This item is an autoChild generated [Canvas](Canvas.md#class-canvas) displayed by the ButtonItem and is an instance of [Button](Button.md#class-button) by defaut, cuztomizeable via the [ButtonItem.buttonConstructor](#attr-buttonitembuttonconstructor) attribute.
+
+**Flags**: R
+
+---
+## Attr: ButtonItem.buttonProperties
+
+### Description
+Custom Properties to apply to our button item.
+
+**Flags**: IRA
+
+---
+## Attr: ButtonItem.endRow
+
+### Description
+These items are in a row by themselves by default
+
+### Groups
+
+- formLayout
+
+**Flags**: IRW
+
+---
+## Attr: ButtonItem.autoFit
+
+### Description
+Should the button auto fit to its title. Maps to [Button.autoFit](Button.md#attr-buttonautofit) attribute. Note that if an explicit width or height is specified for this item, it will be respected, disabling autoFit behavior
+
+**Flags**: IR
+
+---
 ## Attr: ButtonItem.startRow
 
 ### Description
@@ -167,10 +143,34 @@ These items are in a row by themselves by default
 **Flags**: IRW
 
 ---
+## Attr: ButtonItem.height
+
+### Description
+By default buttonItems are sized to match their content (see [ButtonItem.autoFit](#attr-buttonitemautofit)). Specifying an explicit size for the button will disable this behavior.
+
+### Groups
+
+- appearance
+
+**Flags**: IRW
+
+---
 ## Attr: ButtonItem.showTitle
 
 ### Description
 Buttons do not show a title by default.
+
+### Groups
+
+- appearance
+
+**Flags**: IRW
+
+---
+## Attr: ButtonItem.baseStyle
+
+### Description
+Optional `baseStyle` will be applied to the button.
 
 ### Groups
 
@@ -191,6 +191,22 @@ Sets showFocusedAsOver.
 | showFocusedAsOver | [boolean](../reference.md#type-boolean) | false | — | — |
 
 ---
+## Method: ButtonItem.setTitle
+
+### Description
+Set the title.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| newTitle | [String](#type-string) | false | — | new title |
+
+### Groups
+
+- appearance
+
+---
 ## Method: ButtonItem.click
 
 ### Description
@@ -205,7 +221,7 @@ Called when a ButtonItem is clicked on.
 
 ### Returns
 
-`[Boolean](#type-boolean)` — Return false to cancel the click event. This will prevent the event from bubbling up, suppressing [click](Canvas.md#method-canvasclick) on the form containing this item.
+`[boolean](../reference.md#type-boolean)` — Return false to cancel the click event. This will prevent the event from bubbling up, suppressing [click](Canvas.md#method-canvasclick) on the form containing this item.
 
 ### Groups
 
@@ -221,26 +237,10 @@ Sets the (horizontal) alignment of this button's title.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| alignment | [Alignment](../reference_2.md#type-alignment) | false | — | new title alignment |
+| alignment | [Alignment](../reference.md#type-alignment) | false | — | new title alignment |
 
 ### Groups
 
 - positioning
-
----
-## Method: ButtonItem.setTitle
-
-### Description
-Set the title.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| newTitle | [String](#type-string) | false | — | new title |
-
-### Groups
-
-- appearance
 
 ---

@@ -4,18 +4,26 @@
 
 ---
 
-## Attr: Facet.sortFoldersBeforeLeaves
+## Class: Facet
 
 ### Description
-If [Facet.separateFolders](#attr-facetseparatefolders) is true, should folders be displayed above or below leaves? When set to `true` folders will appear above leaves unless the data order has been reversed by setting [Facet.showParentsLast](#attr-facetshowparentslast) to `true`.
-
-**Flags**: IR
+Facet definition object made use of by the [CubeGrid](CubeGrid.md#class-cubegrid) and [FacetChart](FacetChart.md#class-facetchart) classes.
 
 ---
 ## Attr: Facet.collapsed
 
 ### Description
 For tree facets, default collapse state for parent nodes.
+
+**Note:** This property is specific to [CubeGrids](CubeGrid.md#class-cubegrid).
+
+**Flags**: IR
+
+---
+## Attr: Facet.borderAfter
+
+### Description
+CSS line style to apply as a border after this facet, eg "1px dashed blue"
 
 **Note:** This property is specific to [CubeGrids](CubeGrid.md#class-cubegrid).
 
@@ -32,98 +40,6 @@ Default alignment of cells (in the body) for this facet.
 ### See Also
 
 - [CubeGrid.cellAlign](CubeGrid.md#attr-cubegridcellalign)
-
-**Flags**: IR
-
----
-## Attr: Facet.width
-
-### Description
-Integer number of pixels. For row facets, width of headers.
-
-**Note:** This property is specific to [CubeGrids](CubeGrid.md#class-cubegrid).
-
-### See Also
-
-- [CubeGrid.defaultFacetWidth](CubeGrid.md#attr-cubegriddefaultfacetwidth)
-
-**Flags**: IR
-
----
-## Attr: Facet.labelHeight
-
-### Description
-Integer number of pixels. For column facets other than the innermost, specifies the height of the header. For row facets, specifies the height of the row containing that row facet's label (which is the same row containing the innermost column facet if one or more column facets are present).
-
-If this property conflicts with a [Facet.height](#attr-facetheight), the greater of the two properties will be used for determining the height of the affected row.
-
-**Note:** This property is specific to [CubeGrids](CubeGrid.md#class-cubegrid).
-
-**Flags**: IR
-
----
-## Attr: Facet.summaryTitle
-
-### Description
-Title for facet summary.
-
-**Note:** This property is specific to [CubeGrids](CubeGrid.md#class-cubegrid).
-
-**Flags**: IR
-
----
-## Attr: Facet.rollupValue
-
-### Description
-facetValueId of the rollup facetValue for this facet.
-
-**Note:** This property is specific to [CubeGrids](CubeGrid.md#class-cubegrid). See [CubeGrid.rollupValue](CubeGrid.md#attr-cubegridrollupvalue).
-
-**Flags**: IR
-
----
-## Attr: Facet.minimized
-
-### Description
-Default [minimize state](CubeGrid.md#attr-cubegridcanminimizefacets) for parent nodes.
-
-**Note:** This property is specific to [CubeGrids](CubeGrid.md#class-cubegrid).
-
-**Flags**: IR
-
----
-## Attr: Facet.id
-
-### Description
-id of this facet. Any string or number.
-
-**Flags**: IR
-
----
-## Attr: Facet.synchColumnLayout
-
-### Description
-If true, treat all values in this facet as a facetValueGroup - causes synched header reorder and resize.
-
-**Note:** This property is specific to [CubeGrids](CubeGrid.md#class-cubegrid) and is only supported when all of a facet's values are used.
-
-**Flags**: IR
-
----
-## Attr: Facet.title
-
-### Description
-User-visible title of this facet. Shown on the facet label in the CubeGrid.
-
-**Flags**: IRW
-
----
-## Attr: Facet.borderAfter
-
-### Description
-CSS line style to apply as a border after this facet, eg "1px dashed blue"
-
-**Note:** This property is specific to [CubeGrids](CubeGrid.md#class-cubegrid).
 
 **Flags**: IR
 
@@ -170,15 +86,16 @@ Controls indenting for a [hierarchical](#attr-facetistree) column facet if set n
 **Flags**: IR
 
 ---
-## Attr: Facet.separateFolders
+## Attr: Facet.width
 
 ### Description
-Should folders in the facet tree be sorted separately from leaves or should the facet values retain their data order regardless of whether a value is a leaf or folder in the tree?
+Integer number of pixels. For row facets, width of headers.
+
+**Note:** This property is specific to [CubeGrids](CubeGrid.md#class-cubegrid).
 
 ### See Also
 
-- [Facet.showParentsLast](#attr-facetshowparentslast)
-- [Facet.sortFoldersBeforeLeaves](#attr-facetsortfoldersbeforeleaves)
+- [CubeGrid.defaultFacetWidth](CubeGrid.md#attr-cubegriddefaultfacetwidth)
 
 **Flags**: IR
 
@@ -189,6 +106,28 @@ Should folders in the facet tree be sorted separately from leaves or should the 
 Integer number of pixels. For column facets, specifies the height of header. Has no effect on row facets.
 
 If this property conflicts with a [Facet.labelHeight](#attr-facetlabelheight), the greater of the two properties will be used for determining the height of the affected row.
+
+**Note:** This property is specific to [CubeGrids](CubeGrid.md#class-cubegrid).
+
+**Flags**: IR
+
+---
+## Attr: Facet.labelHeight
+
+### Description
+Integer number of pixels. For column facets other than the innermost, specifies the height of the header. For row facets, specifies the height of the row containing that row facet's label (which is the same row containing the innermost column facet if one or more column facets are present).
+
+If this property conflicts with a [Facet.height](#attr-facetheight), the greater of the two properties will be used for determining the height of the affected row.
+
+**Note:** This property is specific to [CubeGrids](CubeGrid.md#class-cubegrid).
+
+**Flags**: IR
+
+---
+## Attr: Facet.summaryTitle
+
+### Description
+Title for facet summary.
 
 **Note:** This property is specific to [CubeGrids](CubeGrid.md#class-cubegrid).
 
@@ -213,6 +152,26 @@ For tree facets, whether expand/collapse controls should be shown.
 **Flags**: IR
 
 ---
+## Attr: Facet.rollupValue
+
+### Description
+facetValueId of the rollup facetValue for this facet.
+
+**Note:** This property is specific to [CubeGrids](CubeGrid.md#class-cubegrid). See [CubeGrid.rollupValue](CubeGrid.md#attr-cubegridrollupvalue).
+
+**Flags**: IR
+
+---
+## Attr: Facet.minimized
+
+### Description
+Default [minimize state](CubeGrid.md#attr-cubegridcanminimizefacets) for parent nodes.
+
+**Note:** This property is specific to [CubeGrids](CubeGrid.md#class-cubegrid).
+
+**Flags**: IR
+
+---
 ## Attr: Facet.titleAlign
 
 ### Description
@@ -230,7 +189,33 @@ Alignment of facet label title.
 ## Attr: Facet.inlinedValues
 
 ### Description
-When applied to a [Chart](../reference_2.md#interface-chart), does the chart's data contain multiple values per record for this facet. See [Chart.data](Chart.md#attr-chartdata) for a full overview of `inlinedValues` behavior.
+When applied to a [Chart](../reference.md#interface-chart), does the chart's data contain multiple values per record for this facet. See [Chart.data](Chart.md#attr-chartdata) for a full overview of `inlinedValues` behavior.
+
+**Flags**: IRW
+
+---
+## Attr: Facet.id
+
+### Description
+id of this facet. Any string or number.
+
+**Flags**: IR
+
+---
+## Attr: Facet.synchColumnLayout
+
+### Description
+If true, treat all values in this facet as a facetValueGroup - causes synched header reorder and resize.
+
+**Note:** This property is specific to [CubeGrids](CubeGrid.md#class-cubegrid) and is only supported when all of a facet's values are used.
+
+**Flags**: IR
+
+---
+## Attr: Facet.title
+
+### Description
+User-visible title of this facet. Shown on the facet label in the CubeGrid.
 
 **Flags**: IRW
 
@@ -247,11 +232,6 @@ The CubeGrid's [load on demand](CubeGrid.md#attr-cubegriddatasource) system auto
 Initial open/close state can be controlled via [facet.collapsed](#attr-facetcollapsed) and [FacetValue.collapsed](FacetValue.md#attr-facetvaluecollapsed).
 
 **Note:** This property is specific to [CubeGrids](CubeGrid.md#class-cubegrid).
-
-### See Also
-
-- [Facet.showParentsLast](#attr-facetshowparentslast)
-- [Facet.separateFolders](#attr-facetseparatefolders)
 
 **Flags**: IR
 

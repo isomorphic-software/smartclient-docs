@@ -22,7 +22,7 @@ To use JPA, set serverType="jpa" in your .ds.xml file, then set [beanClassName](
 ```
 [DataSource.autoDeriveSchema](../classes/DataSource.md#attr-datasourceautoderiveschema) is supported for deriving DataSource fields from JPA entities automatically (except with JPA 1.0; see below).
 
-Full support is provided for executing simple [Criteria](../reference_2.md#type-criteria), with [AdvancedCriteria](../reference.md#object-advancedcriteria) supported if you have Power Edition or above. However, note that there are limitations with case sensitive search in MySQL since MySQL automatically uses the 'like' operator in a case-insensitive manner and JPA does not correct this. See [MySQL Reference Manual :: C.5.5.1 Case Sensitivity in String Searches](http://dev.mysql.com/doc/refman/5.5/en/case-sensitivity.html) for more information.
+Full support is provided for executing simple [Criteria](../reference.md#type-criteria), with [AdvancedCriteria](../reference.md#object-advancedcriteria) supported if you have Power Edition or above. However, note that there are limitations with case sensitive search in MySQL since MySQL automatically uses the 'like' operator in a case-insensitive manner and JPA does not correct this. See [MySQL Reference Manual :: C.5.5.1 Case Sensitivity in String Searches](http://dev.mysql.com/doc/refman/5.5/en/case-sensitivity.html) for more information.
 
 If create a custom DataSource based on the built-in JPA functionality, subclass `com.isomorphic.jpa.JPA2DataSource`.
 
@@ -61,17 +61,17 @@ To use JPA 1.0, set serverType="jpa1" instead. JPA 1.0 does not support [DataSou
 
 #### JPA transactions
 
-JPA provides three mechanisms for transactions: for JEE applications JPA provides integration with JTA (Bean Managed Transactions and Container Managed Transactions); for JSE applications JPA has a native `EntityTransaction` implementation (Locally Managed Transactions). Spring framework is another popular way for declaring transactions in application. The transaction mechanism should be configured in the [server.properties](server_properties.md#kb-topic-serverproperties-file) file by setting property **`jpa.emfProvider`** to the fully qualified class name of the provider (implementation of `com.isomorphic.jpa.EMFProviderInterface`). SmartClient comes with five implementations:
+JPA provides three mechanisms for transactions: for JEE applications JPA provides integration with JTA (Bean Managed Transactions and Container Managed Transactions); for JSE applications JPA has a native `EntityTransaction` implementation (Locally Managed Transactions). Spring framework is another popular way for declaring transactions in application. The transaction mechanism should be configured in the [server.properties](../reference.md#kb-topic-serverproperties-file) file by setting property **`jpa.emfProvider`** to the fully qualified class name of the provider (implementation of `com.isomorphic.jpa.EMFProviderInterface`). SmartClient comes with five implementations:
 
 *   **`com.isomorphic.jpa.EMFProviderLMT`** - for Locally Managed Transactions. Every fetch or DML operation starts a new transaction and commits after successful execution.  
-    This implementation reads the **`jpa.persistenceUnitName`** property from the [server.properties](server_properties.md#kb-topic-serverproperties-file) file. The value of this property needs to be set to the name of the persistence unit configured in `persistence.xml` file. For example:
+    This implementation reads the **`jpa.persistenceUnitName`** property from the [server.properties](../reference.md#kb-topic-serverproperties-file) file. The value of this property needs to be set to the name of the persistence unit configured in `persistence.xml` file. For example:
     ```
      jpa.persistenceUnitName: PERSISTENCE_UNIT_NAME
           
     ```
     
 *   **`com.isomorphic.jpa.EMFProviderBMT`** - for Bean Managed Transactions. Every fetch or DML operation acquires the transaction object from the container and starts it.  
-    This implementation reads two properties from the [server.properties](server_properties.md#kb-topic-serverproperties-file) file: **`jpa.entityManager`** and **`jpa.entityManagerFactory`** containing appropriate resource name references configured in `/WEB-INF/web.xml`. Configuration example:
+    This implementation reads two properties from the [server.properties](../reference.md#kb-topic-serverproperties-file) file: **`jpa.entityManager`** and **`jpa.entityManagerFactory`** containing appropriate resource name references configured in `/WEB-INF/web.xml`. Configuration example:
     ```
      <!-- EntityManager resource reference name declaration -->
      <persistence-context-ref>
@@ -92,7 +92,7 @@ JPA provides three mechanisms for transactions: for JEE applications JPA provide
     ```
     
 *   **`com.isomorphic.jpa.EMFProviderCMT`** - for Container Managed Transactions. Every fetch or DML operation acquires the transaction object from the JEE container. After successful method execution the container commits the transaction. In case of execution failure `tx.setRollbackOnly()` is used to notify container to rollback the transaction.  
-    This implementation reads two properties from the [server.properties](server_properties.md#kb-topic-serverproperties-file) file: **`jpa.entityManager`** and **`jpa.entityManagerFactory`** containing appropriate resource name references configured in `/META-INF/ejb-jar.xml`. Configuration example:
+    This implementation reads two properties from the [server.properties](../reference.md#kb-topic-serverproperties-file) file: **`jpa.entityManager`** and **`jpa.entityManagerFactory`** containing appropriate resource name references configured in `/META-INF/ejb-jar.xml`. Configuration example:
     ```
      <?xml version="1.0" encoding="UTF-8"?>
      <ejb-jar
@@ -122,14 +122,14 @@ JPA provides three mechanisms for transactions: for JEE applications JPA provide
     ```
     
 *   **`com.isomorphic.jpa.EMFProviderNoTransactions`** - transactions are not used.  
-    From the [server.properties](server_properties.md#kb-topic-serverproperties-file) file this implementation reads the **`jpa.persistenceUnitName`** property which must containt the name of persistence unit configured in `persistence.xml` file. For example:
+    From the [server.properties](../reference.md#kb-topic-serverproperties-file) file this implementation reads the **`jpa.persistenceUnitName`** property which must containt the name of persistence unit configured in `persistence.xml` file. For example:
     ```
      jpa.persistenceUnitName: PERSISTENCE_UNIT_NAME
           
     ```
     
 *   **`com.isomorphic.jpa.EMFProviderSpring`** - for Spring Framework managed Transactions. Every fetch or DML operation acquires the transaction object from the Spring Application Context.  
-    This implementation reads two properties from the [server.properties](server_properties.md#kb-topic-serverproperties-file) file: **`jpa.entityManagerFactory`** and **`jpa.transaction`** containing appropriate bean names configured in Spring Application Context. You have to declare additional bean in your Spring Application Context to allow SmartClient to acquire reference to context. Configuration example:
+    This implementation reads two properties from the [server.properties](../reference.md#kb-topic-serverproperties-file) file: **`jpa.entityManagerFactory`** and **`jpa.transaction`** containing appropriate bean names configured in Spring Application Context. You have to declare additional bean in your Spring Application Context to allow SmartClient to acquire reference to context. Configuration example:
     ```
      <!-- SpringApplicationContextProvider bean definition required to get access to application context. -->
      <bean id="springApplicationContextProvider" class="com.isomorphic.spring.SpringApplicationContextProvider" />
@@ -169,7 +169,7 @@ You can set **`jpa.emfProvider`** to your own implementation of `com.isomorphic.
 
 **Additional configurations:**
 
-In case you have several persistence units defined in your `persistence.xml` you can have additional configurations in [server.properties](server_properties.md#kb-topic-serverproperties-file) file. Additional configurations (prefixed with **`jpa.`**) should have name, **`emfProvider`** property and other properties required by specified EMF provider implementation. For example:
+In case you have several persistence units defined in your `persistence.xml` you can have additional configurations in [server.properties](../reference.md#kb-topic-serverproperties-file) file. Additional configurations (prefixed with **`jpa.`**) should have name, **`emfProvider`** property and other properties required by specified EMF provider implementation. For example:
 
 ```
  jpa.configName.emfProvider: com.isomorphic.jpa.EMFProviderLMT
@@ -186,7 +186,7 @@ To use additional JPA configuration you have to set **`jpaConfig`** property in 
 ```
 **Transaction management:**
 
-*   Operating under [RPCManager](../classes/RPCManager.md#class-rpcmanager) (`[DSRequest](../reference_2.md#object-dsrequest)` has reference to `[RPCManager](../classes/RPCManager.md#class-rpcmanager)`):
+*   Operating under [RPCManager](../classes/RPCManager.md#class-rpcmanager) (`[DSRequest](../reference.md#object-dsrequest)` has reference to `[RPCManager](../classes/RPCManager.md#class-rpcmanager)`):
     
     *   If participating in automatic transactions:
         *   retrieves existing transaction from `[RPCManager](../classes/RPCManager.md#class-rpcmanager)` (if available);

@@ -12,7 +12,35 @@
 Item for picking a number. Includes arrow buttons to increase / decrease the value
 
 ---
+## Attr: SpinnerItem.min
+
+### Description
+Minimum valid value for this item. If this and [max](#attr-spinneritemmax) are both null or unspecified, then [SpinnerItem.getNextValue](#method-spinneritemgetnextvalue) and [SpinnerItem.getPreviousValue](#method-spinneritemgetpreviousvalue) are used to increase or decrease the value and these methods are also used to determine the minimum value.
+
+**Flags**: IRW
+
+---
 ## Attr: SpinnerItem.mask
+
+### Description
+Not applicable to a SpinnerItem.
+
+**Flags**: IRWA
+
+---
+## Attr: SpinnerItem.increaseIcon
+
+### Description
+In [stacked mode](#attr-spinneritemwritestackedicons), the icon to increase the spinner's value (an up arrow by default). This icon is generated automatically using the [AutoChild](../reference.md#type-autochild) pattern. For skinning purposes, `increaseIconDefaults` may be modified using [changeDefaults()](Class.md#classmethod-classchangedefaults).
+
+If sizes for the increase and decrease icons are not explicitly specified in their autoChild configuration, they will be derived from the specified [SpinnerItem.stackedIconsHeight](#attr-spinneritemstackediconsheight) and [SpinnerItem.stackedIconsWidth](#attr-spinneritemstackediconswidth) properties.
+
+See the [skinning overview](../kb_topics/skinning.md#kb-topic-skinning--theming) for details on how to provide a sprited image for these icons.
+
+**Flags**: R
+
+---
+## Attr: SpinnerItem.maskSaveLiterals
 
 ### Description
 Not applicable to a SpinnerItem.
@@ -38,96 +66,6 @@ FormItemIcon properties applied to the [decreaseIcon](#attr-spinneritemdecreasei
 - appearance
 
 **Flags**: IR
-
----
-## Attr: SpinnerItem.defaultValue
-
-### Description
-Overridden to assign class-appropriate type.
-
-### Groups
-
-- basics
-
-### See Also
-
-- [FormItem.defaultValue](FormItem.md#attr-formitemdefaultvalue)
-
-**Flags**: IRW
-
----
-## Attr: SpinnerItem.max
-
-### Description
-Maximum valid value for this item. If this and [min](#attr-spinneritemmin) are both null or unspecified, then [SpinnerItem.getNextValue](#method-spinneritemgetnextvalue) and [SpinnerItem.getPreviousValue](#method-spinneritemgetpreviousvalue) are used to increase or decrease the value and these methods are also used to determine the maximum value.
-
-**Flags**: IRW
-
----
-## Attr: SpinnerItem.step
-
-### Description
-How much should the value be incremented / decremented when the user hits the icons to increase / decrease the value?
-
-When overriding [SpinnerItem.getNextValue](#method-spinneritemgetnextvalue) and/or [SpinnerItem.getPreviousValue](#method-spinneritemgetpreviousvalue), the sign of the step value determines whether these methods are expected to induce monotonically increasing or decreasing functions.
-
-**Flags**: IRW
-
----
-## Attr: SpinnerItem.maskOverwriteMode
-
-### Description
-Not applicable to a SpinnerItem.
-
-**Flags**: IRWA
-
----
-## Attr: SpinnerItem.unstackedPrintTextBoxStyle
-
-### Description
-In [unstacked mode](#attr-spinneritemwritestackedicons), the base CSS class name for the `SpinnerItem`'s text box element when printed. If unset, then [SpinnerItem.unstackedTextBoxStyle](#attr-spinneritemunstackedtextboxstyle) is used.
-
-### Groups
-
-- appearance
-
-**Flags**: IR
-
----
-## Attr: SpinnerItem.maskPromptChar
-
-### Description
-Not applicable to a SpinnerItem.
-
-**Flags**: IRWA
-
----
-## Attr: SpinnerItem.min
-
-### Description
-Minimum valid value for this item. If this and [max](#attr-spinneritemmax) are both null or unspecified, then [SpinnerItem.getNextValue](#method-spinneritemgetnextvalue) and [SpinnerItem.getPreviousValue](#method-spinneritemgetpreviousvalue) are used to increase or decrease the value and these methods are also used to determine the minimum value.
-
-**Flags**: IRW
-
----
-## Attr: SpinnerItem.increaseIcon
-
-### Description
-In [stacked mode](#attr-spinneritemwritestackedicons), the icon to increase the spinner's value (an up arrow by default). This icon is generated automatically using the [AutoChild](../reference.md#type-autochild) pattern. For skinning purposes, `increaseIconDefaults` may be modified using [changeDefaults()](Class.md#classmethod-classchangedefaults).
-
-If sizes for the increase and decrease icons are not explicitly specified in their autoChild configuration, they will be derived from the specified [SpinnerItem.stackedIconsHeight](#attr-spinneritemstackediconsheight) and [SpinnerItem.stackedIconsWidth](#attr-spinneritemstackediconswidth) properties.
-
-See the [skinning overview](../kb_topics/skinning.md#kb-topic-skinning--theming) for details on how to provide a sprited image for these icons.
-
-**Flags**: R
-
----
-## Attr: SpinnerItem.maskSaveLiterals
-
-### Description
-Not applicable to a SpinnerItem.
-
-**Flags**: IRWA
 
 ---
 ## Attr: SpinnerItem.increaseIconProperties
@@ -158,6 +96,14 @@ Not applicable to a SpinnerItem.
 **Flags**: IRWA
 
 ---
+## Attr: SpinnerItem.max
+
+### Description
+Maximum valid value for this item. If this and [min](#attr-spinneritemmin) are both null or unspecified, then [SpinnerItem.getNextValue](#method-spinneritemgetnextvalue) and [SpinnerItem.getPreviousValue](#method-spinneritemgetpreviousvalue) are used to increase or decrease the value and these methods are also used to determine the maximum value.
+
+**Flags**: IRW
+
+---
 ## Attr: SpinnerItem.decreaseIcon
 
 ### Description
@@ -182,6 +128,16 @@ When [spriting](../kb_topics/skinning.md#kb-topic-skinning--theming) is enabled,
 **Flags**: R
 
 ---
+## Attr: SpinnerItem.step
+
+### Description
+How much should the value be incremented / decremented when the user hits the icons to increase / decrease the value?
+
+When overriding [SpinnerItem.getNextValue](#method-spinneritemgetnextvalue) and/or [SpinnerItem.getPreviousValue](#method-spinneritemgetpreviousvalue), the sign of the step value determines whether these methods are expected to induce monotonically increasing or decreasing functions.
+
+**Flags**: IRW
+
+---
 ## Attr: SpinnerItem.unstackedTextBoxStyle
 
 ### Description
@@ -194,6 +150,34 @@ NOTE: See the [CompoundFormItem_skinning](../reference.md#kb-topic-compoundformi
 - appearance
 
 **Flags**: IR
+
+---
+## Attr: SpinnerItem.maskOverwriteMode
+
+### Description
+Not applicable to a SpinnerItem.
+
+**Flags**: IRWA
+
+---
+## Attr: SpinnerItem.unstackedPrintTextBoxStyle
+
+### Description
+In [unstacked mode](#attr-spinneritemwritestackedicons), the base CSS class name for the `SpinnerItem`'s text box element when printed. If unset, then [SpinnerItem.unstackedTextBoxStyle](#attr-spinneritemunstackedtextboxstyle) is used.
+
+### Groups
+
+- appearance
+
+**Flags**: IR
+
+---
+## Attr: SpinnerItem.maskPromptChar
+
+### Description
+Not applicable to a SpinnerItem.
+
+**Flags**: IRWA
 
 ---
 ## Attr: SpinnerItem.writeStackedIcons

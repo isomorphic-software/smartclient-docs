@@ -97,10 +97,64 @@ Indicates that an operation binding configured to require [OperationBinding.requ
 **Flags**: R
 
 ---
+## ClassAttr: RPCResponse.STATUS_OFFLINE
+
+### Description
+Indicates that the browser is currently offline, and that we do not hold a cached response for the request.
+
+### Groups
+
+- statusCodes
+- constant
+- offlineGroup
+
+### See Also
+
+- [RPCRequest](../reference.md#object-rpcrequest)
+
+**Flags**: R
+
+---
 ## ClassAttr: RPCResponse.STATUS_UPDATE_WITHOUT_PK_ERROR
 
 ### Description
 Indicates that the client attempted an update or remove operation without providing primary key field(s)
+
+### Groups
+
+- statusCodes
+- constant
+
+### See Also
+
+- [RPCRequest](../reference.md#object-rpcrequest)
+
+**Flags**: R
+
+---
+## ClassAttr: RPCResponse.STATUS_SUCCESS
+
+### Description
+Indicates successful completion of the request. This is the default status and is automatically used by the RPCResponse on the server unless you override it with setStatus().  
+  
+See the error handling section in [RPCManager documentation](RPCManager.md#class-rpcmanager) for more information.
+
+### Groups
+
+- statusCodes
+- constant
+
+### See Also
+
+- [RPCRequest](../reference.md#object-rpcrequest)
+
+**Flags**: R
+
+---
+## ClassAttr: RPCResponse.STATUS_FAILURE
+
+### Description
+Indicates a generic failure on the server. See the error handling section in [RPCManager documentation](RPCManager.md#class-rpcmanager) for more information.
 
 ### Groups
 
@@ -138,105 +192,6 @@ In Jetty, you can update or create war/WEB-INF/jetty-web.xml, adding a section l
 
 *   security software installed on the server or network that erroneously detects some kind of exploit attempt, if its behavior is to just strip the POST data but allow the rest of the request through (SiteMinder is one product known to do this)
 *   incorrectly written filter servlets that drop POST'd data
-
-### Groups
-
-- statusCodes
-- constant
-
-### See Also
-
-- [RPCRequest](../reference.md#object-rpcrequest)
-
-**Flags**: R
-
----
-## ClassAttr: RPCResponse.STATUS_CRITERIA_REQUIRED_ERROR
-
-### Description
-—
-
-### Groups
-
-- statusCodes
-- constant
-
-**Deprecated**
-
-**Flags**: R
-
----
-## ClassAttr: RPCResponse.STATUS_UNKNOWN_HOST_ERROR
-
-### Description
-This response code only occurs when using the HTTP proxy. It is issued by the proxy servlet when the target host is unknown (ie, cannot be resolved through DNS). This response probably indicates that you are attempting to contact a nonexistent server (though it might mean that you have DNS problems).
-
-### Groups
-
-- statusCodes
-- constant
-
-**Flags**: R
-
----
-## ClassAttr: RPCResponse.STATUS_LOGIN_INCORRECT
-
-### Description
-Indicates that the RPC has been intercepted by an authenticator that requires the user to log in.
-
-### Groups
-
-- statusCodes
-- constant
-
-### See Also
-
-- [RPCRequest](../reference.md#object-rpcrequest)
-
-**Flags**: R
-
----
-## ClassAttr: RPCResponse.STATUS_OFFLINE
-
-### Description
-Indicates that the browser is currently offline, and that we do not hold a cached response for the request.
-
-### Groups
-
-- statusCodes
-- constant
-- offlineGroup
-
-### See Also
-
-- [RPCRequest](../reference.md#object-rpcrequest)
-
-**Flags**: R
-
----
-## ClassAttr: RPCResponse.STATUS_SUCCESS
-
-### Description
-Indicates successful completion of the request. This is the default status and is automatically used by the RPCResponse on the server unless you override it with setStatus().  
-  
-See the error handling section in [RPCManager documentation](RPCManager.md#class-rpcmanager) for more information.
-
-### Groups
-
-- statusCodes
-- constant
-
-### See Also
-
-- [RPCRequest](../reference.md#object-rpcrequest)
-
-**Flags**: R
-
----
-## ClassAttr: RPCResponse.STATUS_FAILURE
-
-### Description
-Indicates a generic failure on the server. See the error handling section in [RPCManager documentation](RPCManager.md#class-rpcmanager) for more information.
 
 ### Groups
 
@@ -299,6 +254,21 @@ Indicates that the request was either never attempted or was rolled back, becaus
 **Flags**: R
 
 ---
+## ClassAttr: RPCResponse.STATUS_CRITERIA_REQUIRED_ERROR
+
+### Description
+—
+
+### Groups
+
+- statusCodes
+- constant
+
+**Deprecated**
+
+**Flags**: R
+
+---
 ## ClassAttr: RPCResponse.STATUS_SERVER_TIMEOUT
 
 ### Description
@@ -346,6 +316,19 @@ This response code only occurs when using the HTTP proxy. It is issued by the pr
 **Flags**: R
 
 ---
+## ClassAttr: RPCResponse.STATUS_UNKNOWN_HOST_ERROR
+
+### Description
+This response code only occurs when using the HTTP proxy. It is issued by the proxy servlet when the target host is unknown (ie, cannot be resolved through DNS). This response probably indicates that you are attempting to contact a nonexistent server (though it might mean that you have DNS problems).
+
+### Groups
+
+- statusCodes
+- constant
+
+**Flags**: R
+
+---
 ## ClassAttr: RPCResponse.STATUS_VALIDATION_ERROR
 
 ### Description
@@ -382,6 +365,33 @@ Applications do not directly set this status code, instead, to trigger the relog
 **Flags**: R
 
 ---
+## ClassAttr: RPCResponse.STATUS_LOGIN_INCORRECT
+
+### Description
+Indicates that the RPC has been intercepted by an authenticator that requires the user to log in.
+
+### Groups
+
+- statusCodes
+- constant
+
+### See Also
+
+- [RPCRequest](../reference.md#object-rpcrequest)
+
+**Flags**: R
+
+---
+## Attr: RPCResponse.httpHeaders
+
+### Description
+HTTP headers returned by the server as a map from header name to header value.
+
+Headers are available only when the default [RPCTransport](../reference_2.md#type-rpctransport) "xmlHttpRequest" is in use, and browsers may limit access to headers for cross-domain requests or in other security-sensitive scenarios.
+
+**Flags**: R
+
+---
 ## Attr: RPCResponse.clientContext
 
 ### Description
@@ -397,7 +407,19 @@ The [RPCRequest.clientContext](RPCRequest.md#attr-rpcrequestclientcontext) objec
 ## Attr: RPCResponse.httpResponseText
 
 ### Description
-The actual text of the HTTP response. Only available when the default [RPCTransport](../reference.md#type-rpctransport) "xmlHttpRequest" transport is in use,
+The actual text of the HTTP response. Only available when the default [RPCTransport](../reference_2.md#type-rpctransport) "xmlHttpRequest" transport is in use,
+
+**Flags**: R
+
+---
+## Attr: RPCResponse.data
+
+### Description
+The data sent by the server.
+
+When communicating with the SmartClient server, rpcResponse.data is the data passed to the server-side method RPCResponse.setData() by your Java code. This data is translated into JavaScript objects by the rules described under [RPCRequest.data](RPCRequest.md#attr-rpcrequestdata).
+
+When not communicating with the SmartClient server rpcResponse.data contains the raw HTTP response body. See [RPCRequest.useSimpleHttp](RPCRequest.md#attr-rpcrequestusesimplehttp), [RPCRequest.serverOutputAsString](RPCRequest.md#attr-rpcrequestserveroutputasstring), [RPCRequest.evalResult](RPCRequest.md#attr-rpcrequestevalresult) for details.
 
 **Flags**: R
 
@@ -413,33 +435,7 @@ When not using the SmartClient server, the RPCManager makes no assumptions about
 
 With or without the SmartClient server, the [relogin](../kb_topics/relogin.md#kb-topic-relogin) status codes (such as [RPCResponse.STATUS_LOGIN_REQUIRED](#classattr-rpcresponsestatus_login_required)) are triggered whenever special markers, such as the loginRequiredMarker, appear in the body of the response. See the [Relogin\\n Overview](../kb_topics/relogin.md#kb-topic-relogin) for details.
 
-### See Also
-
-- [RPCRequest.reportDownloadErrorsAsDocuments](RPCRequest.md#attr-rpcrequestreportdownloaderrorsasdocuments)
-
 **Flags**: IR
-
----
-## Attr: RPCResponse.httpHeaders
-
-### Description
-HTTP headers returned by the server as a map from header name to header value.
-
-Headers are available only when the default [RPCTransport](../reference.md#type-rpctransport) "xmlHttpRequest" is in use, and browsers may limit access to headers for cross-domain requests or in other security-sensitive scenarios.
-
-**Flags**: R
-
----
-## Attr: RPCResponse.data
-
-### Description
-The data sent by the server.
-
-When communicating with the SmartClient server, rpcResponse.data is the data passed to the server-side method RPCResponse.setData() by your Java code. This data is translated into JavaScript objects by the rules described under [RPCRequest.data](RPCRequest.md#attr-rpcrequestdata).
-
-When not communicating with the SmartClient server rpcResponse.data contains the raw HTTP response body. See [RPCRequest.useSimpleHttp](RPCRequest.md#attr-rpcrequestusesimplehttp), [RPCRequest.serverOutputAsString](RPCRequest.md#attr-rpcrequestserveroutputasstring), [RPCRequest.evalResult](RPCRequest.md#attr-rpcrequestevalresult) for details.
-
-**Flags**: R
 
 ---
 ## Attr: RPCResponse.httpResponseCode

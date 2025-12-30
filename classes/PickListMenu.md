@@ -9,25 +9,21 @@
 *Inherits from:* [ListGrid](ListGrid_1.md#class-listgrid)
 
 ### Description
-[ListGrid](ListGrid_1.md#class-listgrid) subclass used, by default, by FormItems which implement [PickList](../reference_2.md#interface-picklist) to display a [flat list](PickList.md#attr-picklistdatasettype) of selectable options.
+[ListGrid](ListGrid_1.md#class-listgrid) subclass used, by default, by FormItems which implement [PickList](../reference.md#interface-picklist) to display a [flat list](PickList.md#attr-picklistdatasettype) of selectable options.
 
 Can be subclassed, customized and assigned to FormItems via the [pickListConstructor](ComboBoxItem.md#attr-comboboxitempicklistconstructor) attribute.
 
 ---
-## Attr: PickListMenu.canSaveSearches
+## Attr: PickListMenu.styleName
 
 ### Description
-Option to save searches is disabled for PickListMenus
+Default CSS class for the ListGrid as a whole.
 
-**Flags**: IRA
+### Groups
 
----
-## Attr: PickListMenu.canShowFilterEditor
+- appearance
 
-### Description
-Option to show filter editor is disabled for pickListMenus by default
-
-**Flags**: IRA
+**Flags**: IRW
 
 ---
 ## Attr: PickListMenu.normalCellHeight
@@ -62,18 +58,6 @@ CSS style used for the body of this grid. If applying a background-color to the 
 **Flags**: IRW
 
 ---
-## Attr: PickListMenu.styleName
-
-### Description
-Default CSS class for the ListGrid as a whole.
-
-### Groups
-
-- appearance
-
-**Flags**: IRW
-
----
 ## Attr: PickListMenu.emptyMessage
 
 ### Description
@@ -89,11 +73,5 @@ The string to display in the body of a listGrid with an empty data array, if sho
 - [GridRenderer.emptyMessageStyle](GridRenderer.md#attr-gridrendereremptymessagestyle)
 
 **Flags**: IRW
-
----
-## Method: PickListMenu.applySelection
-
-### Description
-When this PickListMenu is associated with a [FormItem](FormItem.md#class-formitem), this method applies the current selection from this PickList to the associated FormItem.
 
 ---

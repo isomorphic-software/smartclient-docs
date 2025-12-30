@@ -52,14 +52,14 @@ Note that if "city" and "state" are represented as facets, they may look correct
 
 ### See Also
 
-- [Facet](../reference_2.md#object-facet)
+- [Facet](Facet.md#class-facet)
 - [FacetValue](../reference.md#object-facetvalue)
 
 ---
 ## ClassAttr: CubeGrid.ASCENDING
 
 ### Description
-A declared value of the enum type [FacetIndentDirection](../reference_2.md#type-facetindentdirection).
+A declared value of the enum type [FacetIndentDirection](../reference.md#type-facetindentdirection).
 
 **Flags**: R
 
@@ -67,7 +67,7 @@ A declared value of the enum type [FacetIndentDirection](../reference_2.md#type-
 ## ClassAttr: CubeGrid.DESCENDING
 
 ### Description
-A declared value of the enum type [FacetIndentDirection](../reference_2.md#type-facetindentdirection).
+A declared value of the enum type [FacetIndentDirection](../reference.md#type-facetindentdirection).
 
 **Flags**: R
 
@@ -116,6 +116,41 @@ This last point is required because there is no way to determine whether a row i
 **Flags**: IR
 
 ---
+## Attr: CubeGrid.rowHeaderGridMode
+
+### Description
+If enabled row headers for this cubeGrid will be rendered using a [GridRenderer](GridRenderer.md#class-gridrenderer) component. This improves performance for very large cubeGrids.
+
+Note that this attribute must be set for hierarchical row facets to be indented properly.
+
+### See Also
+
+- [CubeGrid.rowFacets](#attr-cubegridrowfacets)
+- [CubeGrid.canCollapseFacets](#attr-cubegridcancollapsefacets)
+
+**Flags**: IRA
+
+---
+## Attr: CubeGrid.sortDirection
+
+### Description
+Direction of sorting if sortedFacet or sortedFacetValues is specified.
+
+**Flags**: IRW
+
+---
+## Attr: CubeGrid.facetValueAlign
+
+### Description
+Default alignment for facet values (in headers).
+
+### Groups
+
+- gridLayout
+
+**Flags**: IRW
+
+---
 ## Attr: CubeGrid.indentVTreeFacets
 
 ### Description
@@ -142,24 +177,12 @@ Determines whether row or column facetValue headers can be selected.
 **Flags**: IRW
 
 ---
-## Attr: CubeGrid.showHoverTipsTitle
-
-### Description
-Title for the show hover tips menu item.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
-
----
 ## Attr: CubeGrid.dataSource
 
 ### Description
 DataSource to use to fetch CubeGrid data.
 
-The DataSource should have a field named after each facetId. The CubeGrid will submit requests for data as DataSource "fetch" operations that request [cellRecords](../reference.md#object-cellrecord) only for currently visible area (including [drawAheadRatio](ListGrid_1.md#attr-listgriddrawaheadratio)). The [Criteria](../reference_2.md#type-criteria) passed in each fetch operation will be a [FacetValueMap](../reference.md#object-facetvaluemap) that corresponds to a rectangular swath of cells the CubeGrid needs data for, for example:
+The DataSource should have a field named after each facetId. The CubeGrid will submit requests for data as DataSource "fetch" operations that request [cellRecords](../reference.md#object-cellrecord) only for currently visible area (including [drawAheadRatio](ListGrid_1.md#attr-listgriddrawaheadratio)). The [Criteria](../reference.md#type-criteria) passed in each fetch operation will be a [FacetValueMap](../reference.md#object-facetvaluemap) that corresponds to a rectangular swath of cells the CubeGrid needs data for, for example:
 
 ```
       { region:"west", product:["chair", "table"], timePeriod:"Q1 2004" }
@@ -188,568 +211,6 @@ Minimum width for the body of this cubeGrid.
 - gridLayout
 
 **Flags**: IRWA
-
----
-## Attr: CubeGrid.rowFacets
-
-### Description
-The list of [ids](Facet.md#attr-facetid) for facets that will appear to the left of the body.
-
-### Groups
-
-- facetLayout
-
-### See Also
-
-- [CubeGrid.rowHeaderGridMode](#attr-cubegridrowheadergridmode)
-
-**Flags**: IR
-
----
-## Attr: CubeGrid.valueProperty
-
-### Description
-Name of the property in a cell record that holds the cell value.
-
-**Flags**: IR
-
----
-## Attr: CubeGrid.canResizeColumns
-
-### Description
-If true, body columns can be resized via the innermost column headers.
-
-### Groups
-
-- gridLayout
-
-**Flags**: IRW
-
----
-## Attr: CubeGrid.vTreeFacetIndent
-
-### Description
-Determines how many pixels to move for each level when [hierarchical](Facet.md#attr-facetistree) column facets are being [indented](#attr-cubegridindentvtreefacets).
-
-### See Also
-
-- [CubeGrid.indentVTreeFacets](#attr-cubegridindentvtreefacets)
-
-**Flags**: IR
-
----
-## Attr: CubeGrid.chartItemTitle
-
-### Description
-Title for the Chart menu item.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
-
----
-## Attr: CubeGrid.showAllHighlightsTitle
-
-### Description
-Title for the show all highlights menu item.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
-
----
-## Attr: CubeGrid.colHeaderLabelBaseStyle
-
-### Description
-[baseStyle](Button.md#attr-buttonbasestyle) for the facet-label buttons above this grid's column headers.
-
-### Groups
-
-- appearance
-
-**Flags**: IR
-
----
-## Attr: CubeGrid.autoSelectValues
-
-### Description
-Whether to select cells in the body when row or column headers are selected.
-
-**Flags**: IR
-
----
-## Attr: CubeGrid.maximizeColumnTitle
-
-### Description
-Title for the maximize-column menu item.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
-
----
-## Attr: CubeGrid.canMoveFacets
-
-### Description
-Whether row and column facets can be rearranged by the user, by dragging and dropping the facet labels.
-
-### Groups
-
-- facetLayout
-
-**Flags**: IRW
-
----
-## Attr: CubeGrid.exportColumnFacetTextColor
-
-### Description
-Sets the text color for the column headers of the cube.
-
-**Flags**: IR
-
----
-## Attr: CubeGrid.facetLabelHoverAlign
-
-### Description
-Allows the developer to override the horizontal text alignment of hover tips shown for facetLabels. If unspecified the hover canvas content alignment will be set by `this.hoverAlign` if specified.
-
-### Groups
-
-- hoverTips
-
-### See Also
-
-- [Canvas.hoverAlign](Canvas.md#attr-canvashoveralign)
-
-**Flags**: IRWA
-
----
-## Attr: CubeGrid.chartTypeTitle
-
-### Description
-Title for the chart-type control.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
-
----
-## Attr: CubeGrid.styleName
-
-### Description
-CSS class for the CubeGrid as a whole
-
-### Groups
-
-- appearance
-
-**Flags**: IRW
-
----
-## Attr: CubeGrid.highlightCellTitle
-
-### Description
-Title for the cell highlight menu item.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
-
----
-## Attr: CubeGrid.facetLabelHoverVAlign
-
-### Description
-Allows the developer to override the vertical text alignment of hover tips shown for facetLabels. If unspecified the hover canvas content alignment will be set by `this.hoverVAlign` if specified.
-
-### Groups
-
-- hoverTips
-
-### See Also
-
-- [Canvas.hoverVAlign](Canvas.md#attr-canvashovervalign)
-
-**Flags**: IRWA
-
----
-## Attr: CubeGrid.renameFacetValueTitle
-
-### Description
-Title for the Rename menu item.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
-
----
-## Attr: CubeGrid.noHighlightsTitle
-
-### Description
-Title for the menu item that clears highlights.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
-
----
-## Attr: CubeGrid.saveByCell
-
-### Description
-CubeGrids only support editing by cell.
-
-### Groups
-
-- cellEditing
-
-**Flags**: R
-
----
-## Attr: CubeGrid.highlightTitle
-
-### Description
-Title for the highlight menu item.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
-
----
-## Attr: CubeGrid.canSortFacets
-
-### Description
-If true, sort controls will be shown on FacetHeaders.
-
-When clicked, sort controls call [CubeGrid.sortByFacetId](#method-cubegridsortbyfacetid).
-
-**Flags**: IRW
-
----
-## Attr: CubeGrid.exportFacetBGColor
-
-### Description
-Sets the background color for the row and column headers of the cube, if not otherwise set by a more specific property. (see [exportRowFacetBGColor()](#attr-cubegridexportrowfacetbgcolor) and [exportColumnFacetBGColor()](#attr-cubegridexportcolumnfacetbgcolor)). See also [exportBGColor](../kb_topics/exportBGColor.md#kb-topic-exports--cell-background-color).
-
-**Flags**: IR
-
----
-## Attr: CubeGrid.controlReorderHandleTitle
-
-### Description
-Title for the resizeHandle control.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
-
----
-## Attr: CubeGrid.chartDialogTitle
-
-### Description
-Title for the Chart dialog.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
-
----
-## Attr: CubeGrid.valueTitle
-
-### Description
-A label for the data values shown in cells, such as "Sales in Thousands", typically used when the CubeGrid must generate a description for a cell value or set of cell values.
-
-For example, in a CubeGrid showing "Revenue" by region and product, a cell with a CellRecord like:
-
-```
- 
- {product:"chairs", region:"northwest", _value:"$5k"}
- 
-```
-Should be described as "Revenue for Chairs for Northwest Region", not "Chairs for Revenue for Northwest Region".
-
-For CubeGrids that show multiple types of values at once (eg both "Revenue" and "Income") see [CubeGrid.metricFacetId](#attr-cubegridmetricfacetid).
-
-**Flags**: IR
-
----
-## Attr: CubeGrid.exportRowFacetBGColor
-
-### Description
-Sets the background color for the row headers of the cube. See also [exportBGColor](../kb_topics/exportBGColor.md#kb-topic-exports--cell-background-color).
-
-**Flags**: IR
-
----
-## Attr: CubeGrid.facetValueContextItems
-
-### Description
-Array of MenuItem to replace the default menu. Call [CubeGrid.getDefaultFacetValueContextItems](#method-cubegridgetdefaultfacetvaluecontextitems) to get a default set of items to start with.
-
-**Flags**: IRW
-
----
-## Attr: CubeGrid.facetValueHoverVAlign
-
-### Description
-Allows the developer to override the vertical text alignment of hover tips shown for facet values. If unspecified the hover canvas content alignment will be set by `this.hoverVAlign` if specified.
-
-### Groups
-
-- hoverTips
-
-### See Also
-
-- [Canvas.hoverVAlign](Canvas.md#attr-canvashovervalign)
-
-**Flags**: IRWA
-
----
-## Attr: CubeGrid.canReorderColumns
-
-### Description
-If true, body columns can be reordered via the innermost column headers.
-
-### Groups
-
-- facetLayout
-
-**Flags**: IRW
-
----
-## Attr: CubeGrid.autoFitFieldWidths
-
-### Description
-This property is not supported for `CubeGrid`.
-
-Consider setting explicit widths via [FacetValue.width](FacetValue.md#attr-facetvaluewidth) or [CubeGrid.defaultFacetWidth](#attr-cubegriddefaultfacetwidth).
-
-### Groups
-
-- autoFitFields
-
-**Flags**: IR
-
----
-## Attr: CubeGrid.exportFacetSeparatorString
-
-### Description
-Default separator string used by [CubeGrid.exportClientData](#method-cubegridexportclientdata) to separate column and row facet value titles.
-
-**Flags**: IRWA
-
----
-## Attr: CubeGrid.chartType
-
-### Description
-Default type of chart to plot.
-
-**Flags**: IRW
-
----
-## Attr: CubeGrid.data
-
-### Description
-An array of "cellRecords", each of which represents data for one cell of the body area.
-
-### See Also
-
-- [CubeGrid.fixedFacetValues](#attr-cubegridfixedfacetvalues)
-
-**Flags**: IRW
-
----
-## Attr: CubeGrid.controlMaximizeTitle
-
-### Description
-Title for the maximize control.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
-
----
-## Attr: CubeGrid.canSortData
-
-### Description
-If true, sort controls will be shown on facet values.
-
-When clicked, sort controls call [CubeGrid.sortByFacetValues](#method-cubegridsortbyfacetvalues).
-
-**Flags**: IRW
-
----
-## Attr: CubeGrid.hideEmptyAxis
-
-### Description
-With [CubeGrid.hideEmptyFacetValues](#attr-cubegridhideemptyfacetvalues), controls on which axis hiding of empty values is applied, "row" (only empty rows are hidden), "column" (only empty columns are hidden) or both (the default).
-
-### Groups
-
-- facetLayout
-
-**Flags**: IR
-
----
-## Attr: CubeGrid.hilites
-
-### Description
-Hilites to be applied to the data for this component. See [hiliting](../kb_topics/hiliting.md#kb-topic-hiliting).
-
-### Groups
-
-- hiliting
-
-**Flags**: IRW
-
----
-## Attr: CubeGrid.renameFacetValueMessage
-
-### Description
-Message displayed when renaming a facet value.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
-
----
-## Attr: CubeGrid.canMinimizeFacets
-
-### Description
-If true, when multiple facets are shown on a side, all facetValues in the second level of headers or higher will show controls to "minimize" the values of the next facet. Minimizing means showing only one, or very few, of the next facet's values.
-
-Set [FacetValue.isMinimizeValue](FacetValue.md#attr-facetvalueisminimizevalue) to indicate which facetValues should be shown when a facet is minimized.
-
-### Groups
-
-- facetExpansion
-
-**Flags**: IRW
-
----
-## Attr: CubeGrid.vTreeFacetIndentDirection
-
-### Description
-Determines layout of facet value titles in each column facet being [indented](#attr-cubegridindentvtreefacets).
-
-### See Also
-
-- [CubeGrid.indentVTreeFacets](#attr-cubegridindentvtreefacets)
-
-**Flags**: IRW
-
----
-## Attr: CubeGrid.rollupValue
-
-### Description
-facetValueId of the default rollupValue for each facet. Can be overridden per facet via facet.rollupValue.
-
-**Flags**: IR
-
----
-## Attr: CubeGrid.showHighlightsTitle
-
-### Description
-Title for the show highlights menu item.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
-
----
-## Attr: CubeGrid.autoFitColumnTitle
-
-### Description
-Title for the auto-fit column menu item.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
-
----
-## Attr: CubeGrid.canEdit
-
-### Description
-Whether cells can be edited in this grid. Can be overridden on a per-facetValue basis.
-
-### Groups
-
-- cellEditing
-
-**Flags**: IRW
-
----
-## Attr: CubeGrid.rowHeaderGridMode
-
-### Description
-If enabled row headers for this cubeGrid will be rendered using a [GridRenderer](GridRenderer.md#class-gridrenderer) component. This improves performance for very large cubeGrids.
-
-Note that this attribute must be set for hierarchical row facets to be indented properly.
-
-### See Also
-
-- [CubeGrid.rowFacets](#attr-cubegridrowfacets)
-- [CubeGrid.canCollapseFacets](#attr-cubegridcancollapsefacets)
-
-**Flags**: IRA
-
----
-## Attr: CubeGrid.controlSortDownTitle
-
-### Description
-Title for the sort-down control.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
-
----
-## Attr: CubeGrid.sortDirection
-
-### Description
-Direction of sorting if sortedFacet or sortedFacetValues is specified.
-
-**Flags**: IRW
-
----
-## Attr: CubeGrid.facetValueAlign
-
-### Description
-Default alignment for facet values (in headers).
-
-### Groups
-
-- gridLayout
-
-**Flags**: IRW
 
 ---
 ## Attr: CubeGrid.valueExportFormat
@@ -784,24 +245,28 @@ Sets the text color for the row and column headers of the cube, if not otherwise
 **Flags**: IR
 
 ---
-## Attr: CubeGrid.controlCloseTitle
-
-### Description
-Title for the close control.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
-
----
 ## Attr: CubeGrid.autoSelectHeaders
 
 ### Description
 If true, when multiple facets appear on one side in a nested headers presentation, the selection state of parent/child headers are automatically kept in sync.
 
 **Flags**: IRW
+
+---
+## Attr: CubeGrid.rowFacets
+
+### Description
+The list of [ids](Facet.md#attr-facetid) for facets that will appear to the left of the body.
+
+### Groups
+
+- facetLayout
+
+### See Also
+
+- [CubeGrid.rowHeaderGridMode](#attr-cubegridrowheadergridmode)
+
+**Flags**: IR
 
 ---
 ## Attr: CubeGrid.facets
@@ -816,7 +281,7 @@ This property need not be set and will automatically be constructed during widge
 ### See Also
 
 - [CubeGrid.getFacet](#method-cubegridgetfacet)
-- [Facet](../reference_2.md#object-facet)
+- [Facet](Facet.md#class-facet)
 - [CubeGrid.getFacetValue](#method-cubegridgetfacetvalue)
 - [FacetValue](../reference.md#object-facetvalue)
 
@@ -861,6 +326,14 @@ If true, hierarchical facets will show expand/collapse controls to allow the use
 **Flags**: IR
 
 ---
+## Attr: CubeGrid.valueProperty
+
+### Description
+Name of the property in a cell record that holds the cell value.
+
+**Flags**: IR
+
+---
 ## Attr: CubeGrid.rowHeaderBaseStyle
 
 ### Description
@@ -877,6 +350,18 @@ If true, hierarchical facets will show expand/collapse controls to allow the use
 
 ### Description
 Default align for cell values (in body).
+
+### Groups
+
+- gridLayout
+
+**Flags**: IRW
+
+---
+## Attr: CubeGrid.canResizeColumns
+
+### Description
+If true, body columns can be resized via the innermost column headers.
 
 ### Groups
 
@@ -905,6 +390,38 @@ Whether to allow text wrapping on facet titles.
 **Flags**: IRW
 
 ---
+## Attr: CubeGrid.vTreeFacetIndent
+
+### Description
+Determines how many pixels to move for each level when [hierarchical](Facet.md#attr-facetistree) column facets are being [indented](#attr-cubegridindentvtreefacets).
+
+### See Also
+
+- [CubeGrid.indentVTreeFacets](#attr-cubegridindentvtreefacets)
+
+**Flags**: IR
+
+---
+## Attr: CubeGrid.colHeaderLabelBaseStyle
+
+### Description
+[baseStyle](Button.md#attr-buttonbasestyle) for the facet-label buttons above this grid's column headers.
+
+### Groups
+
+- appearance
+
+**Flags**: IR
+
+---
+## Attr: CubeGrid.autoSelectValues
+
+### Description
+Whether to select cells in the body when row or column headers are selected.
+
+**Flags**: IR
+
+---
 ## Attr: CubeGrid.bodyStyleName
 
 ### Description
@@ -913,6 +430,18 @@ CSS class for the CubeGrid body
 ### Groups
 
 - appearance
+
+**Flags**: IRW
+
+---
+## Attr: CubeGrid.canMoveFacets
+
+### Description
+Whether row and column facets can be rearranged by the user, by dragging and dropping the facet labels.
+
+### Groups
+
+- facetLayout
 
 **Flags**: IRW
 
@@ -929,6 +458,14 @@ If true, allow columns in the grid body to be minimized (reduced to the width of
 **Flags**: IRW
 
 ---
+## Attr: CubeGrid.exportColumnFacetTextColor
+
+### Description
+Sets the text color for the column headers of the cube.
+
+**Flags**: IR
+
+---
 ## Attr: CubeGrid.showFacetContextMenus
 
 ### Description
@@ -937,28 +474,20 @@ If true, show facet label context menus with some built-in operations. Otherwise
 **Flags**: IRW
 
 ---
-## Attr: CubeGrid.controlMinimizeTitle
+## Attr: CubeGrid.facetLabelHoverAlign
 
 ### Description
-Title for the minimize control.
+Allows the developer to override the horizontal text alignment of hover tips shown for facetLabels. If unspecified the hover canvas content alignment will be set by `this.hoverAlign` if specified.
 
 ### Groups
 
-- i18nMessages
+- hoverTips
 
-**Flags**: IRW
+### See Also
 
----
-## Attr: CubeGrid.hideAllHighlightsTitle
+- [Canvas.hoverAlign](Canvas.md#attr-canvashoveralign)
 
-### Description
-Title for the hide all highlights menu item.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
+**Flags**: IRWA
 
 ---
 ## Attr: CubeGrid.colHeaderBaseStyle
@@ -995,6 +524,18 @@ Default width of inner column headers.
 **Flags**: IRW
 
 ---
+## Attr: CubeGrid.styleName
+
+### Description
+CSS class for the CubeGrid as a whole
+
+### Groups
+
+- appearance
+
+**Flags**: IRW
+
+---
 ## Attr: CubeGrid.cellIdProperty
 
 ### Description
@@ -1015,16 +556,20 @@ Minimum height for the body of this cubeGrid.
 **Flags**: IRWA
 
 ---
-## Attr: CubeGrid.chartStackedTitle
+## Attr: CubeGrid.facetLabelHoverVAlign
 
 ### Description
-Title for the stacked chart item.
+Allows the developer to override the vertical text alignment of hover tips shown for facetLabels. If unspecified the hover canvas content alignment will be set by `this.hoverVAlign` if specified.
 
 ### Groups
 
-- i18nMessages
+- hoverTips
 
-**Flags**: IRW
+### See Also
+
+- [Canvas.hoverVAlign](Canvas.md#attr-canvashovervalign)
+
+**Flags**: IRWA
 
 ---
 ## Attr: CubeGrid.facetValueHoverAlign
@@ -1041,6 +586,18 @@ Allows the developer to override the horizontal text alignment of hover tips sho
 - [Canvas.hoverAlign](Canvas.md#attr-canvashoveralign)
 
 **Flags**: IRWA
+
+---
+## Attr: CubeGrid.saveByCell
+
+### Description
+CubeGrids only support editing by cell.
+
+### Groups
+
+- cellEditing
+
+**Flags**: R
 
 ---
 ## Attr: CubeGrid.alternateRecordStyles
@@ -1067,6 +624,16 @@ Whether to pad titles so they aren't flush with header borders.
 **Flags**: IRW
 
 ---
+## Attr: CubeGrid.canSortFacets
+
+### Description
+If true, sort controls will be shown on FacetHeaders.
+
+When clicked, sort controls call [CubeGrid.sortByFacetId](#method-cubegridsortbyfacetid).
+
+**Flags**: IRW
+
+---
 ## Attr: CubeGrid.exportRowFacetTextColor
 
 ### Description
@@ -1075,10 +642,45 @@ Sets the text color for the row headers of the cube.
 **Flags**: IR
 
 ---
+## Attr: CubeGrid.exportFacetBGColor
+
+### Description
+Sets the background color for the row and column headers of the cube, if not otherwise set by a more specific property. (see [exportRowFacetBGColor()](#attr-cubegridexportrowfacetbgcolor) and [exportColumnFacetBGColor()](#attr-cubegridexportcolumnfacetbgcolor)). See also [exportBGColor](../kb_topics/exportBGColor.md#kb-topic-exports--cell-background-color).
+
+**Flags**: IR
+
+---
 ## Attr: CubeGrid.rotateHeaderTitles
 
 ### Description
 This property is not supported for `CubeGrid`.
+
+**Flags**: IR
+
+---
+## Attr: CubeGrid.valueTitle
+
+### Description
+A label for the data values shown in cells, such as "Sales in Thousands", typically used when the CubeGrid must generate a description for a cell value or set of cell values.
+
+For example, in a CubeGrid showing "Revenue" by region and product, a cell with a CellRecord like:
+
+```
+ 
+ {product:"chairs", region:"northwest", _value:"$5k"}
+ 
+```
+Should be described as "Revenue for Chairs for Northwest Region", not "Chairs for Revenue for Northwest Region".
+
+For CubeGrids that show multiple types of values at once (eg both "Revenue" and "Income") see [CubeGrid.metricFacetId](#attr-cubegridmetricfacetid).
+
+**Flags**: IR
+
+---
+## Attr: CubeGrid.exportRowFacetBGColor
+
+### Description
+Sets the background color for the row headers of the cube. See also [exportBGColor](../kb_topics/exportBGColor.md#kb-topic-exports--cell-background-color).
 
 **Flags**: IR
 
@@ -1107,6 +709,14 @@ For [touch browsers](Browser.md#classattr-browseristouch), `canDragSelect` defau
 **Flags**: IR
 
 ---
+## Attr: CubeGrid.facetValueContextItems
+
+### Description
+Array of MenuItem to replace the default menu. Call [CubeGrid.getDefaultFacetValueContextItems](#method-cubegridgetdefaultfacetvaluecontextitems) to get a default set of items to start with.
+
+**Flags**: IRW
+
+---
 ## Attr: CubeGrid.canSelectValues
 
 ### Description
@@ -1115,16 +725,74 @@ Determines whether cell values in the body can be selected.
 **Flags**: IRW
 
 ---
+## Attr: CubeGrid.facetValueHoverVAlign
+
+### Description
+Allows the developer to override the vertical text alignment of hover tips shown for facet values. If unspecified the hover canvas content alignment will be set by `this.hoverVAlign` if specified.
+
+### Groups
+
+- hoverTips
+
+### See Also
+
+- [Canvas.hoverVAlign](Canvas.md#attr-canvashovervalign)
+
+**Flags**: IRWA
+
+---
 ## Attr: CubeGrid.autoFetchTextMatchStyle
 
 ### Description
-If [CubeGrid.autoFetchData](#attr-cubegridautofetchdata) is `true`, this attribute allows the developer to specify a textMatchStyle for the initial [fetchData()](ListGrid_2.md#method-listgridfetchdata) call.
+If [CubeGrid.autoFetchData](#attr-cubegridautofetchdata) is `true`, this attribute allows the developer to specify a textMatchStyle for the initial [fetchData()](ListGrid_1.md#method-listgridfetchdata) call.
 
 ### Groups
 
 - databinding
 
 **Flags**: IR
+
+---
+## Attr: CubeGrid.canReorderColumns
+
+### Description
+If true, body columns can be reordered via the innermost column headers.
+
+### Groups
+
+- facetLayout
+
+**Flags**: IRW
+
+---
+## Attr: CubeGrid.autoFitFieldWidths
+
+### Description
+This property is not supported for `CubeGrid`.
+
+Consider setting explicit widths via [FacetValue.width](FacetValue.md#attr-facetvaluewidth) or [CubeGrid.defaultFacetWidth](#attr-cubegriddefaultfacetwidth).
+
+### Groups
+
+- autoFitFields
+
+**Flags**: IR
+
+---
+## Attr: CubeGrid.exportFacetSeparatorString
+
+### Description
+Default separator string used by [CubeGrid.exportClientData](#method-cubegridexportclientdata) to separate column and row facet value titles.
+
+**Flags**: IRWA
+
+---
+## Attr: CubeGrid.chartType
+
+### Description
+Default type of chart to plot.
+
+**Flags**: IRW
 
 ---
 ## Attr: CubeGrid.columnFacets
@@ -1139,14 +807,14 @@ The list of [ids](Facet.md#attr-facetid) for facets that will appear on top of t
 **Flags**: IR
 
 ---
-## Attr: CubeGrid.controlSortUpTitle
+## Attr: CubeGrid.data
 
 ### Description
-Title for the sort-up control.
+An array of "cellRecords", each of which represents data for one cell of the body area.
 
-### Groups
+### See Also
 
-- i18nMessages
+- [CubeGrid.fixedFacetValues](#attr-cubegridfixedfacetvalues)
 
 **Flags**: IRW
 
@@ -1178,9 +846,19 @@ If specified and `this.showHover` is true, this is the default width to apply to
 ## Attr: CubeGrid.chartConstructor
 
 ### Description
-Name of the SmartClient Class to be used when creating charts. Must support the [Chart](../reference_2.md#interface-chart) interface.
+Name of the SmartClient Class to be used when creating charts. Must support the [Chart](../reference.md#interface-chart) interface.
 
 **Flags**: IR
+
+---
+## Attr: CubeGrid.canSortData
+
+### Description
+If true, sort controls will be shown on facet values.
+
+When clicked, sort controls call [CubeGrid.sortByFacetValues](#method-cubegridsortbyfacetvalues).
+
+**Flags**: IRW
 
 ---
 ## Attr: CubeGrid.facetLabelHoverHeight
@@ -1199,14 +877,26 @@ If specified and `this.showHover` is true, this is the default height to apply t
 **Flags**: IRWA
 
 ---
-## Attr: CubeGrid.highlightSelectionTitle
+## Attr: CubeGrid.hideEmptyAxis
 
 ### Description
-Title for the selection highlight menu item.
+With [CubeGrid.hideEmptyFacetValues](#attr-cubegridhideemptyfacetvalues), controls on which axis hiding of empty values is applied, "row" (only empty rows are hidden), "column" (only empty columns are hidden) or both (the default).
 
 ### Groups
 
-- i18nMessages
+- facetLayout
+
+**Flags**: IR
+
+---
+## Attr: CubeGrid.hilites
+
+### Description
+Hilites to be applied to the data for this component. See [hiliting](../kb_topics/hiliting.md#kb-topic-hiliting).
+
+### Groups
+
+- hiliting
 
 **Flags**: IRW
 
@@ -1227,14 +917,16 @@ If specified and `this.showHover` is true, this is the default width to apply to
 **Flags**: IRWA
 
 ---
-## Attr: CubeGrid.fieldVisibilitySubmenuTitle
+## Attr: CubeGrid.canMinimizeFacets
 
 ### Description
-Title for the Field-visibility submenu item.
+If true, when multiple facets are shown on a side, all facetValues in the second level of headers or higher will show controls to "minimize" the values of the next facet. Minimizing means showing only one, or very few, of the next facet's values.
+
+Set [FacetValue.isMinimizeValue](FacetValue.md#attr-facetvalueisminimizevalue) to indicate which facetValues should be shown when a facet is minimized.
 
 ### Groups
 
-- i18nMessages
+- facetExpansion
 
 **Flags**: IRW
 
@@ -1243,6 +935,18 @@ Title for the Field-visibility submenu item.
 
 ### Description
 If set to true, context menu items will be included on the cells and headers providing the user with an option to create a chart of the cubeGrid's data set. See [CubeGrid.makeChart](#method-cubegridmakechart) for more information.
+
+**Flags**: IRW
+
+---
+## Attr: CubeGrid.vTreeFacetIndentDirection
+
+### Description
+Determines layout of facet value titles in each column facet being [indented](#attr-cubegridindentvtreefacets).
+
+### See Also
+
+- [CubeGrid.indentVTreeFacets](#attr-cubegridindentvtreefacets)
 
 **Flags**: IRW
 
@@ -1287,6 +991,14 @@ Default directory for skin images (those defined by the class), relative to the 
 **Flags**: IR
 
 ---
+## Attr: CubeGrid.rollupValue
+
+### Description
+facetValueId of the default rollupValue for each facet. Can be overridden per facet via facet.rollupValue.
+
+**Flags**: IR
+
+---
 ## Attr: CubeGrid.fixedFacetValues
 
 ### Description
@@ -1296,32 +1008,6 @@ A [FacetValueMap](../reference.md#object-facetvaluemap) describing the set of fa
 
 - [CubeGrid.addFacet](#method-cubegridaddfacet)
 - [CubeGrid.removeFacet](#method-cubegridremovefacet)
-
-**Flags**: IR
-
----
-## Attr: CubeGrid.minimizeColumnTitle
-
-### Description
-Title for the minimize-column menu item.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
-
----
-## Attr: CubeGrid.fetchRequestProperties
-
-### Description
-If [CubeGrid.autoFetchData](#attr-cubegridautofetchdata) is `true`, this attribute allows the developer to declaratively specify [DSRequest](../reference_2.md#object-dsrequest) properties for the initial [fetchData()](ListGrid_2.md#method-listgridfetchdata) call.
-
-Note that any properties governing more specific request attributes for the initial fetch (such as [CubeGrid.autoFetchTextMatchStyle](#attr-cubegridautofetchtextmatchstyle) and initial sort specifiers) will be applied on top of this properties block.
-
-### Groups
-
-- databinding
 
 **Flags**: IR
 
@@ -1405,9 +1091,9 @@ Automatically size row headers to fit wrapped text.
 ## Attr: CubeGrid.autoFetchData
 
 ### Description
-If true, when this component is first drawn, automatically call `this.fetchData()`. Criteria for this fetch may be picked up from [initialCriteria](ListGrid_1.md#attr-listgridinitialcriteria), and textMatchStyle may be specified via [autoFetchTextMatchStyle](ListGrid_1.md#attr-listgridautofetchtextmatchstyle). Additional request properties may be specified using [CubeGrid.fetchRequestProperties](#attr-cubegridfetchrequestproperties).
+If true, when this component is first drawn, automatically call `this.fetchData()`. Criteria for this fetch may be picked up from [initialCriteria](ListGrid_1.md#attr-listgridinitialcriteria), and textMatchStyle may be specified via [autoFetchTextMatchStyle](ListGrid_1.md#attr-listgridautofetchtextmatchstyle).
 
-NOTE: if `autoFetchData` is set, calling [fetchData()](ListGrid_2.md#method-listgridfetchdata) before draw will cause two requests to be issued, one from the manual call to fetchData() and one from the autoFetchData setting. The second request will use only [initialCriteria](ListGrid_1.md#attr-listgridinitialcriteria) and not any other criteria or settings from the first request. Generally, turn off autoFetchData if you are going to manually call [fetchData()](ListGrid_2.md#method-listgridfetchdata) at any time. Note: If you are using saved searches - either via [SavedSearchItem](SavedSearchItem.md#class-savedsearchitem) or [ListGrid.saveDefaultSearch](ListGrid_1.md#attr-listgridsavedefaultsearch), autoFetchData will be automatically suspended and replaced with the saved criteria/view state, if applicable.
+NOTE: if `autoFetchData` is set, calling [fetchData()](ListGrid_1.md#method-listgridfetchdata) before draw will cause two requests to be issued, one from the manual call to fetchData() and one from the autoFetchData setting. The second request will use only [initialCriteria](ListGrid_1.md#attr-listgridinitialcriteria) and not any other criteria or settings from the first request. Generally, turn off autoFetchData if you are going to manually call [fetchData()](ListGrid_1.md#method-listgridfetchdata) at any time.
 
 ### Groups
 
@@ -1415,9 +1101,105 @@ NOTE: if `autoFetchData` is set, calling [fetchData()](ListGrid_2.md#method-list
 
 ### See Also
 
-- [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata)
+- [ListGrid.fetchData](ListGrid_1.md#method-listgridfetchdata)
 
 **Flags**: IR
+
+---
+## Attr: CubeGrid.canEdit
+
+### Description
+Whether cells can be edited in this grid. Can be overridden on a per-facetValue basis.
+
+### Groups
+
+- cellEditing
+
+**Flags**: IRW
+
+---
+## Method: CubeGrid.getColumnFacetValues
+
+### Description
+Return a [FacetValueMap](../reference.md#object-facetvaluemap) indicating the facet values for a specific column in the grid.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| colNum | [number](#type-number) | false | — | index of the column |
+
+### Returns
+
+`[FacetValueMap](#type-facetvaluemap)` — facet values for the specified column. Returns null if the specified column is not present in the grid.
+
+---
+## Method: CubeGrid.getCellRow
+
+### Description
+Given a record in this grid, this method returns the rowNum on which the record is displayed.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| cellRecord | [CellRecord](#type-cellrecord) | false | — | record to find coordinates for |
+
+### Returns
+
+`[int](../reference.md#type-int)` — Row number for the record. Returns -1 if the record is not found.
+
+---
+## Method: CubeGrid.closeFacet
+
+### Description
+Handler fired when facet is closed  
+_methodType_ handler
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| facetId | [String](#type-string) | false | — | ID of facet that was closed |
+
+### Groups
+
+- columnControls
+
+---
+## Method: CubeGrid.facetValueHoverHTML
+
+### Description
+Get the HTML for the facetValue button hover. Default implementation returns null.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| facetValues | [FacetValueMap](#type-facetvaluemap) | false | — | facetValues object for the button |
+
+### Groups
+
+- hoverTips
+
+---
+## Method: CubeGrid.getViewState
+
+### Description
+**Note**: This is a ListGrid feature which is inapplicable on this class.
+
+### Returns
+
+`[ListGridViewState](../reference.md#type-listgridviewstate)` — current view state for the grid.
+
+### Groups
+
+- viewState
+
+### See Also
+
+- [ListGridViewState](../reference.md#type-listgridviewstate)
+- [ListGrid.setViewState](ListGrid_2.md#method-listgridsetviewstate)
 
 ---
 ## Method: CubeGrid.collapseField
@@ -1461,14 +1243,59 @@ _methodType_ getter
 - selection
 
 ---
+## Method: CubeGrid.autoSizeFacet
+
+### Description
+auto-size the header facet horizontally
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| facetId | [String](#type-string) | false | — | ID of facet to resize. |
+
+---
+## Method: CubeGrid.getFacet
+
+### Description
+Get a facet definition by facetId. Constant time.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| facetId | [String](#type-string) | false | — | the id of the facet to retrieve |
+
+### Returns
+
+`[Facet](#type-facet)` — the Facet if found, or null
+
+### See Also
+
+- [Facet](Facet.md#class-facet)
+
+---
+## Method: CubeGrid.closeColumn
+
+### Description
+Handler fired when column is closed  
+_methodType_ handler
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| headerFacetValues | [FacetValue Object](#type-facetvalue-object) | false | — | FacetValues for the appropriate col. |
+
+### Groups
+
+- columnControls
+
+---
 ## Method: CubeGrid.recordHasChanges
 
 ### Description
 If this cubeGrid can be edited, this method will return true if the record passed in has been edited, but the edits have not yet been saved to the CubeGrid's data object.
-
-Note that if this grid is bound to a [dataSource](ListGrid_1.md#attr-listgriddatasource), and an asynchronous save has been submitted, this method will compare the local edit values against the submitted values by default, returning false (no changes), if they match. This is useful for detecting whether the user is actively editing values and hasn't yet committed them.
-
-The `ignorePendingValues` parameter may be used by developers who want to ignore this case and simply compare edit values against the record in the local data set.
 
 ### Parameters
 
@@ -1476,7 +1303,6 @@ The `ignorePendingValues` parameter may be used by developers who want to ignore
 |------|------|----------|---------|-------------|
 | rowNum | [number](#type-number) | false | — | row index of record to check for changes |
 | colNum | [number](#type-number) | false | — | column index of the record to check for changes |
-| ignorePendingValues | [Boolean](#type-boolean) | true | — | If true, this method will compare the current edit values against the underlying records in the dataset, not taking pending edit values into account |
 
 ### Returns
 
@@ -1523,6 +1349,22 @@ _methodType_ action
 - selection
 
 ---
+## Method: CubeGrid.getCellColumn
+
+### Description
+Given a record in this grid, this method returns the colNum in which the record is displayed.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| cellRecord | [CellRecord](#type-cellrecord) | false | — | record to find coordinates for |
+
+### Returns
+
+`[int](../reference.md#type-int)` — Column number for the record. Returns -1 if the record is not found.
+
+---
 ## Method: CubeGrid.getRowHeaderFacetValues
 
 ### Description
@@ -1551,7 +1393,7 @@ The export format will combine the column facet value titles, generating a singl
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| settings | [Object](../reference.md#type-object) | false | — | contains configuration settings for the export, including:
+| settings | [Object](../reference_2.md#type-object) | false | — | contains configuration settings for the export, including:
 
 *   facetSeparatorString (String) - if specified, the separator to use in favor of [CubeGrid.exportFacetSeparatorString](#attr-cubegridexportfacetseparatorstring) when combining titles from multiple facet values. |
 | requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | Request properties for the export. |
@@ -1559,7 +1401,21 @@ The export format will combine the column facet value titles, generating a singl
 
 ### See Also
 
-- [ListGrid.exportClientData](ListGrid_2.md#method-listgridexportclientdata)
+- [ListGrid.exportClientData](ListGrid_1.md#method-listgridexportclientdata)
+
+---
+## Method: CubeGrid.hasChanges
+
+### Description
+Determines whether any cells in this cubeGrid have been edited but not yet saved to the underlying data set.
+
+### Returns
+
+`[Boolean](#type-boolean)` — true if any record in the grid has been edited but not yet saved
+
+### Groups
+
+- editing
 
 ---
 ## Method: CubeGrid.facetValueHover
@@ -1576,6 +1432,22 @@ StringMethod handler fired when mouse hovers over a facetValue button in a heade
 ### Groups
 
 - events
+
+---
+## Method: CubeGrid.setHilites
+
+### Description
+Only supported on ListGrid for now.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| hilites | [Array of Hilite](#type-array-of-hilite) | false | — | Array of hilite objects |
+
+### Groups
+
+- hiliting
 
 ---
 ## Method: CubeGrid.expandField
@@ -1705,6 +1577,26 @@ Given a record in this grid, this method returns the coordinates of the cell in 
 `[Array](#type-array)` — 2 element array containing `[rowNum,colNum]` for the cell, or `null` if the record is not found.
 
 ---
+## Method: CubeGrid.setViewState
+
+### Description
+**Note**: This is a ListGrid feature which is inapplicable on this class.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| viewState | [ListGridViewState](../reference.md#type-listgridviewstate) | false | — | Object describing the desired view state for the grid |
+
+### Groups
+
+- viewState
+
+### See Also
+
+- [ListGrid.getViewState](ListGrid_2.md#method-listgridgetviewstate)
+
+---
 ## Method: CubeGrid.getBaseStyle
 
 ### Description
@@ -1789,16 +1681,116 @@ Returns the current set of unsaved edits for a given row being edited.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| valuesID | [number](#type-number)|[Object](../reference.md#type-object) | false | — | rowNum of the record being edited, or an Object containing values for all the record's primary keys |
+| valuesID | [number](#type-number)|[Object](../reference_2.md#type-object) | false | — | rowNum of the record being edited, or an Object containing values for all the record's primary keys |
 | colNum | [number](#type-number) | false | — | colNum of the record being edited. Only required if valuesID is passed in as a rowNum. |
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — Current editValues object for the row. This contains the current edit values in {fieldName1:value1, fieldName2:value2} format.
+`[Object](../reference_2.md#type-object)` — Current editValues object for the row. This contains the current edit values in {fieldName1:value1, fieldName2:value2} format.
 
 ### Groups
 
 - editing
+
+---
+## Method: CubeGrid.facetLabelOut
+
+### Description
+StringMethod handler fired when mouseout occurs over a facet label
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| facetId | [String](#type-string) | false | — | ID of the appropriate facet |
+
+### Groups
+
+- events
+
+---
+## Method: CubeGrid.saveEdits
+
+### Description
+Validates and saves edits for some cell. If rowNum and colNum are not passed in, the current edit cell will be saved.
+
+The 'callback' parameter provides a notification when the save attempt completes. Cases under which the callback will fire are:
+
+*   Save completed successfully
+*   No changes to the edited cell, so save not required
+*   Validation failure occurred on the client or on the server
+
+Note that if no rowNum/colNum were passed in and the editor is not showing for the cell, the callback will NOT fire - in this case, the method is a no-op.
+
+Other, standard callbacks such as [editComplete()](ListGrid_2.md#method-listgrideditcomplete), [editFailed()](ListGrid_1.md#method-listgrideditfailed) and [cellChanged()](ListGrid_2.md#method-listgridcellchanged) will fire normally.
+
+Note this method does not hide the inline editors if they are showing - to explicitly save and end editing, use the method 'endEditing()'
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| editCompletionEvent | [EditCompletionEvent](../reference.md#type-editcompletionevent) | true | — | Event used to complete cell editing. Optional, and defaults to `"programmatic"`. Can be used by the `callback` method to perform custom actions such as navigation when the save completes. |
+| callback | [Callback](../reference.md#type-callback) | true | — | Callback to fire on completion of the saving process. If no edits were made or client-side validation fails the callback will be fired synchronously at the end of this method.  
+Takes the following parameters:  
+\- rowNum _(Number) edited row number_  
+\- colNum _(Number) edited column number_  
+\- editCompletionEvent _(EditCompletionEvent) event passed in (defaults to `"programmatic"`)_  
+\- success _(boolean) false if the save was unable to complete due to a validation failure or server-side error._ |
+| rowNum | [number](#type-number) | true | — | Which row should be saved. If unspecified the current edit row is saved by default. Note that if there is no current edit cell this method will no op. |
+| colNum | [number](#type-number) | true | — | Which row should be saved. If unspecified the current edit column is saved by default. Note that if there is no current edit cell this method will no op. |
+
+### Groups
+
+- editing
+
+### See Also
+
+- [ListGrid.endEditing](ListGrid_2.md#method-listgridendediting)
+
+**Flags**: A
+
+---
+## Method: CubeGrid.setFacetTitleAlign
+
+### Description
+Set the align of a facet title (appears in facet label).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| facetId | [Identifier](../reference.md#type-identifier) | false | — | facet to update |
+| align | [Alignment](../reference.md#type-alignment) | false | — | new alignment for facet title |
+
+### Groups
+
+- gridLayout
+
+---
+## Method: CubeGrid.dataArrived
+
+### Description
+Notification method fired when new data arrives from the server to be displayed in this CubeGrid. For example in response to the user openng a collapsed facet, or as a result of an initial fetch request for all data from a CubeGrid where [CubeGrid.facets](#attr-cubegridfacets) is not set and there is no initial data. Only applies to databound CubeGrids.
+
+**Flags**: A
+
+---
+## Method: CubeGrid.getColumnHeaderFacetValues
+
+### Description
+Return a [FacetValueMap](../reference.md#object-facetvaluemap) of the facet values for the column field at the specified level containing the requested column number. Note that outer column fields may span several grid columns.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| colNum | [int](../reference.md#type-int) | false | — | 0-based index into the grid columns (and inner column header fields) |
+| level | [int](../reference.md#type-int) | false | — | target header level; 0 represents the outer column header |
+
+### Returns
+
+`[FacetValueMap](#type-facetvaluemap)` — facet values for the targeted column header field
 
 ---
 ## Method: CubeGrid.deselectCells
@@ -1817,16 +1809,76 @@ Deselect cells that match a [FacetValueMap](../reference.md#object-facetvaluemap
 - selection
 
 ---
-## Method: CubeGrid.getEventRow
+## Method: CubeGrid.toggleFieldOpenState
 
 ### Description
-Returns the row number of the provided Y-coordinate, or the most recent mouse event if a Y-coordinate is not provided.
+Toggles the open state of the specified field. No-ops if it's not showing.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| y | [Integer](../reference_2.md#type-integer) | true | — | Y-coordinate relative to the top edge of the content to obtain the row number for. If not provided, then [Canvas.getOffsetY](Canvas.md#method-canvasgetoffsety) will be used. |
+| facetValueMap | [FacetValueMap](#type-facetvaluemap) | false | — | field specified as a facetValueMap |
+
+### Returns
+
+`[Boolean](#type-boolean)` — whether specified field's open state was toggled
+
+---
+## Method: CubeGrid.getDefaultFacetValueContextItems
+
+### Description
+Returns a default set of items, which can be updated/modified, and then assigned to [CubeGrid.facetValueContextItems](#attr-cubegridfacetvaluecontextitems) to be used in the context menu of the appropriate header button.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| facetValues | [FacetValueMap](#type-facetvaluemap) | false | — | FacetValueMap for the appropriate header button |
+
+### Returns
+
+`[Array of MenuItem](#type-array-of-menuitem)` — Return standard context menu items for these facet values.
+
+---
+## Method: CubeGrid.getColumnFacetLayout
+
+### Description
+Get the current heights of the column facets, as an object of the form:
+```
+ [ {facetId:facetId, height:currentHeight}, ... ]
+ 
+```
+
+### Returns
+
+`[Array](#type-array)` — array of {facetId:facetId, height:height} objects
+
+### Groups
+
+- facetLayout
+
+---
+## Method: CubeGrid.selectAllCells
+
+### Description
+Select all cells.
+
+### Groups
+
+- selection
+
+---
+## Method: CubeGrid.getEventRow
+
+### Description
+Returns the row number of the most recent mouse event.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| y | [Integer](../reference_2.md#type-integer) | true | — | optional y-coordinate to obtain row number, in lieu of the y coordinate of the last mouse event |
 
 ### Returns
 
@@ -1862,6 +1914,46 @@ Get the current visual order and width for the facet values of a facet or facetV
 - facetLayout
 
 ---
+## Method: CubeGrid.hiliteCellList
+
+### Description
+Apply a hilite to an array of cells.  
+_methodType_ action
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| cellObjList | [Array of Cell Object](#type-array-of-cell-object) | false | — | cells to hilite |
+| hiliteID | [String](#type-string) | false | — | ID of hilite to apply to cells |
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — true if the cells were successfully hilited.
+
+### Groups
+
+- hiliting
+
+---
+## Method: CubeGrid.setFacetValueTitleAlign
+
+### Description
+Set the align for the title for a facet value.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| facetId | [Identifier](../reference.md#type-identifier) | false | — | facet to update |
+| facetValueId | [Identifier](../reference.md#type-identifier) | false | — | facetValue to update |
+| align | [Alignment](../reference.md#type-alignment) | false | — | new alignment for facet value title |
+
+### Groups
+
+- gridLayout
+
+---
 ## Method: CubeGrid.fixedFacetValueChanged
 
 ### Description
@@ -1877,6 +1969,41 @@ Notification fired when a fixed facet value is set for some facet.
 ### See Also
 
 - [CubeGrid.setFixedFacetValue](#method-cubegridsetfixedfacetvalue)
+
+---
+## Method: CubeGrid.facetRemoved
+
+### Description
+Notification fired when a facet is removed.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| facetId | [String](#type-string) | false | — | facetId that was removed |
+
+### Groups
+
+- facetLayout
+
+### See Also
+
+- [CubeGrid.facetAdded](#method-cubegridfacetadded)
+
+---
+## Method: CubeGrid.anyCellSelected
+
+### Description
+Determine whether any cells are selected in this cubeGrid.  
+_methodType_ tester
+
+### Returns
+
+`[Boolean](#type-boolean)` — true if any cells are selected
+
+### Groups
+
+- selection
 
 ---
 ## Method: CubeGrid.addFacet
@@ -1915,6 +2042,30 @@ _methodType_ getter
 - selection
 
 ---
+## Method: CubeGrid.getCellRecord
+
+### Description
+Return the pointer to a particular record by record and column number.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| rowNum | [number](#type-number) | false | — | row index of record to return. |
+| colNum | [number](#type-number) | false | — | column index of record to return. |
+
+### Returns
+
+`[ListGridRecord](#type-listgridrecord)` — Record object for the row.
+
+### See Also
+
+- [ListGrid.getRecord](ListGrid_2.md#method-listgridgetrecord)
+- [ListGrid.getEditedRecord](ListGrid_1.md#method-listgridgeteditedrecord)
+
+**Flags**: A
+
+---
 ## Method: CubeGrid.selectAllFacetValues
 
 ### Description
@@ -1927,6 +2078,35 @@ _methodType_ action
 |------|------|----------|---------|-------------|
 | facetId | [String](#type-string) | true | — | ID of facet - if null, selects all headerbars' headers |
 | newState | [Boolean](#type-boolean) | true | — | new selection state - if null defaults to true |
+
+### Groups
+
+- selection
+
+---
+## Method: CubeGrid.discardAllEdits
+
+### Description
+—
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| records | [Array of Array of int](#type-array-of-array-of-int) | true | — | allows you to specify which cell(s) to drop edits for. Each record should be identified as an array containing `[rowNum,colNum]` |
+| dontHideEditor | [boolean](../reference.md#type-boolean) | true | — | By default this method will hide the editor if it is currently showing for any row in the grid. Passing in this parameter will leave the editor visible (and just reset the edit values underneath the editor). |
+
+### Groups
+
+- editing
+
+**Flags**: A
+
+---
+## Method: CubeGrid.deselectAllCells
+
+### Description
+Deselect all cells.
 
 ### Groups
 
@@ -1954,6 +2134,43 @@ Notification fired when a facet is moved.
 - [CubeGrid.facetAdded](#method-cubegridfacetadded)
 
 ---
+## Method: CubeGrid.showFacetValues
+
+### Description
+Shows the specified field if it was previsouly hidden. No-ops if it's already showing.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| facetValueMap | [FacetValueMap](#type-facetvaluemap) | false | — | field specified as a facetValueMap |
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — whether specified field was actually shown
+
+---
+## Method: CubeGrid.getEditValue
+
+### Description
+Returns the current temporary locally stored edit value for a cell being edited. Note this is the [valueProperty](#attr-cubegridvalueproperty) that will be saved for the cell in question.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| rowNum | [number](#type-number) | false | — | index of the row for which the editValue should be returned |
+| colNum | [number](#type-number) | false | — | index of the column for which value should be returned |
+
+### Returns
+
+`[Any](#type-any)` — edit value for the cell
+
+### Groups
+
+- editing
+
+---
 ## Method: CubeGrid.isFieldOpen
 
 ### Description
@@ -1961,7 +2178,7 @@ Return whether the specified CubeGrid field is open, taking into account both [c
 
 Note that if you don't already have a [FacetValueMap](../reference.md#object-facetvaluemap) to the field in question, you can get one by calling [CubeGrid.getRowHeaderFacetValues](#method-cubegridgetrowheaderfacetvalues) or [CubeGrid.getColumnHeaderFacetValues](#method-cubegridgetcolumnheaderfacetvalues),
 
-You can also construct a [FacetValueMap](../reference.md#object-facetvaluemap) on your own by using the [Facet.id](Facet.md#attr-facetid)s from [CubeGrid.rowFacets](#attr-cubegridrowfacets) or [CubeGrid.columnFacets](#attr-cubegridcolumnfacets) together with the [FacetValue.id](FacetValue.md#attr-facetvalueid)s of the [Facet.values](Facet.md#attr-facetvalues) for the row or column that you want to query. Given a [Facet.id](Facet.md#attr-facetid), you can use [CubeGrid.getFacet](#method-cubegridgetfacet) to obtain the correponding [Facet](../reference_2.md#object-facet).
+You can also construct a [FacetValueMap](../reference.md#object-facetvaluemap) on your own by using the [Facet.id](Facet.md#attr-facetid)s from [CubeGrid.rowFacets](#attr-cubegridrowfacets) or [CubeGrid.columnFacets](#attr-cubegridcolumnfacets) together with the [FacetValue.id](FacetValue.md#attr-facetvalueid)s of the [Facet.values](Facet.md#attr-facetvalues) for the row or column that you want to query. Given a [Facet.id](Facet.md#attr-facetid), you can use [CubeGrid.getFacet](#method-cubegridgetfacet) to obtain the correponding [Facet](Facet.md#class-facet).
 
 ### Parameters
 
@@ -1972,6 +2189,65 @@ You can also construct a [FacetValueMap](../reference.md#object-facetvaluemap) o
 ### Returns
 
 `[Boolean](#type-boolean)` — whether field is open
+
+---
+## Method: CubeGrid.deselectAllFacetValues
+
+### Description
+Deselect all headers in a headerBar (specified by facetId) or all headerBars (if no facetId).  
+_methodType_ action
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| facetId | [String](#type-string) | true | — | ID of facet - if null, selects all headerbars' headers |
+
+### Groups
+
+- selection
+
+---
+## Method: CubeGrid.addRowFacet
+
+### Description
+Add a row facet to the view at index "index". Handles the facet already being in the view (does a pivot).  
+  
+The facet being added should currently have a fixed facet value (unless it's already part of the view), which will be removed from cubeGrid.fixedFacetValues.  
+_methodType_ action
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| facetId | [Identifier](../reference.md#type-identifier) | false | — | facetId to add. Definition must have been provided at init time. |
+| index | [Integer](../reference_2.md#type-integer) | true | — | index to add the facet at. 0 = outermost (default innermost) |
+
+### Groups
+
+- facetLayout
+
+### See Also
+
+- [CubeGrid.removeFacet](#method-cubegridremovefacet)
+- [CubeGrid.fixedFacetValues](#attr-cubegridfixedfacetvalues)
+
+---
+## Method: CubeGrid.facetLabelHoverHTML
+
+### Description
+Get the HTML for the facet label hover. Default implementation returns null.  
+_methodType_ callback
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| facetId | [String](#type-string) | false | — | ID for the facet |
+
+### Groups
+
+- hoverTips
 
 ---
 ## Method: CubeGrid.facetValueContextClick
@@ -2019,7 +2295,24 @@ Note that only the [this.valueProperty](#attr-cubegridvalueproperty) of the obje
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | cell | [Array of number](#type-array-of-number) | false | — | 2 element array of the form `[rowNum,colNum]` indicating the record being edited |
-| values | [Object](../reference.md#type-object) | false | — | New values for the record |
+| values | [Object](../reference_2.md#type-object) | false | — | New values for the record |
+
+---
+## Method: CubeGrid.facetValueSelectionChanged
+
+### Description
+Handler/Notification function for facetValue selection change (no default implementation).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| facetValues | [FacetValueMap](#type-facetvaluemap) | false | — | facetValues with new selection state |
+| newState | [boolean](../reference.md#type-boolean) | false | — | new selection state |
+
+### Groups
+
+- selection
 
 ---
 ## Method: CubeGrid.setFacetValueTitle
@@ -2049,7 +2342,7 @@ Returns the current value of a cell. If the cell has an outstanding edit value, 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| record | [number](#type-number)|[Object](../reference.md#type-object) | false | — | rowNum of the record being edited, or an Object containing values for all the record's primary keys |
+| record | [number](#type-number)|[Object](../reference_2.md#type-object) | false | — | rowNum of the record being edited, or an Object containing values for all the record's primary keys |
 | colNum | [number](#type-number) | false | — | colNum of the cell. Only required if the first parameter is a rowNum |
 
 ### Returns
@@ -2061,16 +2354,30 @@ Returns the current value of a cell. If the cell has an outstanding edit value, 
 - editing
 
 ---
+## Method: CubeGrid.getAllEditCells
+
+### Description
+Method to determine which records currently have pending (unsubmitted) edits. Returns an array of 2 element arrays indicating the `[rowNum,colNum]` of the cells in question.
+
+### Returns
+
+`[Array](#type-array)` — Array of `[rowNum,colNum]` arrays for cells with edit values pending submission.
+
+### Groups
+
+- editing
+
+---
 ## Method: CubeGrid.getEventColumn
 
 ### Description
-Returns the column number of the provided X-coordinate, or the most recent mouse event if an X-coordinate is not provided.
+Returns the column number of the most recent mouse event.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| x | [Integer](../reference_2.md#type-integer) | true | — | X-coordinate relative to the left edge of the content to obtain the column number for. If not provided, then [Canvas.getOffsetX](Canvas.md#method-canvasgetoffsetx) will be used. |
+| x | [Integer](../reference_2.md#type-integer) | true | — | optional x-coordinate to obtain column number for, in lieu of the x coordinate of the last mouse event |
 
 ### Returns
 
@@ -2093,12 +2400,12 @@ The returned value is never null, and can be freely modified.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| valuesID | [number](#type-number)|[Object](../reference.md#type-object) | false | — | rowNum of the record being edited, or an Object containing values for all the record's primary keys |
+| valuesID | [number](#type-number)|[Object](../reference_2.md#type-object) | false | — | rowNum of the record being edited, or an Object containing values for all the record's primary keys |
 | colNum | [number](#type-number) | true | — | colNum of the record being edited. Only required if the records rowNum is passed in as the first parameter |
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — A copy of the record with unsaved edits included
+`[Object](../reference_2.md#type-object)` — A copy of the record with unsaved edits included
 
 ### Groups
 
@@ -2116,6 +2423,67 @@ _methodType_ action
 - selection
 
 ---
+## Method: CubeGrid.setFixedFacetValue
+
+### Description
+Modify fixedFacetValues for this cubeGrid.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| facetId | [Identifier](../reference.md#type-identifier) | false | — | facetId |
+| fixedFacetValueId | [Identifier](../reference.md#type-identifier) | false | — | New fixed value for the facet, to be added to [CubeGrid.fixedFacetValues](#attr-cubegridfixedfacetvalues). Default is the rollup value for the facet. |
+
+### Groups
+
+- facetLayout
+
+---
+## Method: CubeGrid.getFacetValue
+
+### Description
+Get a facet value definition by facetId and facetValueId. Constant time.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| facetId | [String](#type-string) | false | — | the id of the facet to retrieve |
+| facetValueId | [String](#type-string) | false | — | the id of the facet value to retrieve |
+
+### Returns
+
+`[FacetValue](#type-facetvalue)` — the FacetValue if found, or null
+
+### See Also
+
+- [FacetValue](../reference.md#object-facetvalue)
+
+---
+## Method: CubeGrid.hiliteCell
+
+### Description
+Apply a hilite to a specific cell. Note: can be called either as hiliteCell(cellObject, hiliteID) or hiliteCell(row, column, hiliteID)  
+_methodType_ action
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| cellObj | [Cell Object](#type-cell-object)|[Row number](#type-row-number) | false | — | cell to hilite / row of cell to hilite |
+| hiliteID | [String](#type-string)|[Column number](#type-column-number) | false | — | hilite ID / column of cell to hilite |
+| alternateHiliteID | [String](#type-string) | true | — | optional third parameter - hilite ID. |
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — true if the cell was successfully hilited.
+
+### Groups
+
+- hiliting
+
+---
 ## Method: CubeGrid.deselectFacetValues
 
 ### Description
@@ -2131,6 +2499,64 @@ _methodType_ action
 ### Groups
 
 - selection
+
+---
+## Method: CubeGrid.selectCell
+
+### Description
+Select / deselect a single cell - accepts cell ID or [CellRecord](../reference.md#object-cellrecord).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| cell | [CellRecord](#type-cellrecord)|[ID](#type-id) | false | — | cell to select / deselect |
+| newState | [boolean](../reference.md#type-boolean) | true | — | new selection state (if null, defaults to true) |
+
+### Groups
+
+- selection
+
+---
+## Method: CubeGrid.addColumnFacet
+
+### Description
+Add a column facet to the view at index "index". Handles the facet already being in the view (does a pivot).  
+  
+The facet being added should currently have a fixed facet value (unless it's already part of the view), which will be removed from cubeGrid.fixedFacetValues.  
+_methodType_ action
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| facetId | [Identifier](../reference.md#type-identifier) | false | — | facetId to add. Definition must have been provided at init time. |
+| index | [Integer](../reference_2.md#type-integer) | true | — | index to add the facet at. 0 = outermost (default innermost) |
+
+### Groups
+
+- facetLayout
+
+### See Also
+
+- [CubeGrid.removeFacet](#method-cubegridremovefacet)
+- [CubeGrid.fixedFacetValues](#attr-cubegridfixedfacetvalues)
+
+---
+## Method: CubeGrid.hideFacetValues
+
+### Description
+Hides the specified field if it is currently visible. No-ops if it's already hidden.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| facetValueMap | [FacetValueMap](#type-facetvaluemap) | false | — | field specified as a facetValueMap |
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — whether specified field was actually hidden
 
 ---
 ## Method: CubeGrid.getSelectedFacetValues
@@ -2173,6 +2599,26 @@ Note that cubeGrids display one record per cell - the value passed in should be 
 - editing
 
 **Flags**: A
+
+---
+## Method: CubeGrid.facetAdded
+
+### Description
+Notification fired when a new facet is added.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| facetId | [String](#type-string) | false | — | facetId that was added |
+
+### Groups
+
+- facetLayout
+
+### See Also
+
+- [CubeGrid.facetRemoved](#method-cubegridfacetremoved)
 
 ---
 ## Method: CubeGrid.cellIsSelected
@@ -2286,6 +2732,60 @@ _methodType_ action
 - selection
 
 ---
+## Method: CubeGrid.setEnableCharting
+
+### Description
+Setter for the [CubeGrid.enableCharting](#attr-cubegridenablecharting) attribute.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| enableCharting | [boolean](../reference.md#type-boolean) | false | — | — |
+
+---
+## Method: CubeGrid.saveAllEdits
+
+### Description
+Save a number of outstanding edits for this CubeGrid. If no cells are specified, all outstanding edits will be saved
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| cells | [Array of Array of int](#type-array-of-array-of-int) | true | — | optionally specify which cells to save. Each cell should be specified as a 2 element array in the format `[rowNum,colNum]`. |
+| saveCallback | [Callback](../reference.md#type-callback) | true | — | If specified this callback will be fired on a successful save of the specified rows. Note that if there are no pending edits to be saved this callback will not fire - you can check for this condition using [CubeGrid.hasChanges](#method-cubegridhaschanges) or [CubeGrid.recordHasChanges](#method-cubegridrecordhaschanges). |
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — true if a save has been initiated (at least one row had changes, passed client-side validation, and a save has been attempted). False otherwise
+
+### Groups
+
+- editing
+
+---
+## Method: CubeGrid.clearEditValue
+
+### Description
+Clear a field value being tracked as an unsaved user edit for some cell.
+
+The saved record value will be displayed in the the appropriate cell instead.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| editValuesID | [number](#type-number)|[Object](../reference_2.md#type-object) | false | — | Row number, primary keys object for the record, or editValues object |
+| colNum | [number](#type-number) | true | — | Column number for the cell in question. Only required if the first parameter is a row number. |
+
+### Groups
+
+- editing
+
+**Flags**: A
+
+---
 ## Method: CubeGrid.makeChart
 
 ### Description
@@ -2299,7 +2799,7 @@ One, two or more variableFacets may be passed. Two variable facets for a column 
 |------|------|----------|---------|-------------|
 | fixedFacetValues | [FacetValueMap](#type-facetvaluemap) | false | — | set of facet values to hold constant. Pass null to chart the entire dataset. |
 | variableFacets | [Array of FacetId](#type-array-of-facetid) | false | — | set of facets to be charted |
-| chartProperties | [Chart Properties](#type-chart-properties) | false | — | properties to pass through to the created [Chart](../reference_2.md#interface-chart) |
+| chartProperties | [Chart Properties](#type-chart-properties) | false | — | properties to pass through to the created [Chart](../reference.md#interface-chart) |
 
 ### Returns
 
@@ -2339,6 +2839,22 @@ StringMethod handler fired when mouseout occurs for a facetValues header button
 - events
 
 ---
+## Method: CubeGrid.facetContextClick
+
+### Description
+StringMethod handler fired when the user right clicks on a facet label.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| facetId | [String](#type-string) | false | — | ID of facet |
+
+### Groups
+
+- events
+
+---
 ## Method: CubeGrid.deselectCell
 
 ### Description
@@ -2349,6 +2865,27 @@ Deselect a single cell - accepts cell ID or cell record.
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | cell | [CellRecord](#type-cellrecord)|[ID](#type-id) | false | — | cell to deselect |
+
+### Groups
+
+- selection
+
+---
+## Method: CubeGrid.cellSelectionChanged
+
+### Description
+Handler/Notification function for cell selection change May update header button styles.  
+_methodType_ handler
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| cellList | [Array of CellRecord](#type-array-of-cellrecord) | false | — | array of cells with new selection state |
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — —
 
 ### Groups
 
@@ -2387,6 +2924,55 @@ In addition to this, [getCellCSSText()](GridRenderer.md#method-gridrenderergetce
 - appearance
 
 ---
+## Method: CubeGrid.sortByFacetId
+
+### Description
+Called when a sort control is clicked on a FacetHeader. Does nothing by default.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| facetId | [String](#type-string) | false | — | ID of facet to sort |
+| sortDirection | [boolean](../reference.md#type-boolean) | false | — | true for ascending |
+
+### Groups
+
+- columnControls
+
+---
+## Method: CubeGrid.loadAllRecords
+
+### Description
+This method is not currently supported for this grid-type. See [ListGrid.loadAllRecords](ListGrid_2.md#method-listgridloadallrecords) for more information.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| maxRecords | [Integer](../reference_2.md#type-integer) | true | — | optional maximum record count - if passed, no fetch takes place if maxRecords is below the known length of the data |
+| callback | [DSCallback](../reference.md#type-dscallback) | true | — | callback to fire if a fetch is issued - if all data was already loaded, the callback is fired with no parameters |
+
+### Returns
+
+`[Boolean](#type-boolean)` — true if a fetch was made or was not needed - false otherwise
+
+---
+## Method: CubeGrid.getSelectedCellIds
+
+### Description
+Returns an array of the IDs of all selected cell records.  
+_methodType_ getter
+
+### Returns
+
+`[Array of String](#type-array-of-string)` — array of the selected cell IDs
+
+### Groups
+
+- selection
+
+---
 ## Method: CubeGrid.facetValueOver
 
 ### Description
@@ -2397,6 +2983,22 @@ StringMethod handler fired when mouseover occurs over a facetValues header butto
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | facetValues | [FacetValueMap](#type-facetvaluemap) | false | — | FacetValueMap for the appropriate header button |
+
+### Groups
+
+- events
+
+---
+## Method: CubeGrid.facetLabelOver
+
+### Description
+StringMethod handler fired when mouseover occurs over a facet label
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| facetId | [String](#type-string) | false | — | ID of the appropriate facet |
 
 ### Groups
 
@@ -2452,920 +3054,5 @@ _methodType_ tester
 ### Groups
 
 - selection
-
----
-## Method: CubeGrid.getColumnFacetValues
-
-### Description
-Return a [FacetValueMap](../reference.md#object-facetvaluemap) indicating the facet values for a specific column in the grid.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| colNum | [number](#type-number) | false | — | index of the column |
-
-### Returns
-
-`[FacetValueMap](#type-facetvaluemap)` — facet values for the specified column. Returns null if the specified column is not present in the grid.
-
----
-## Method: CubeGrid.getCellRow
-
-### Description
-Given a record in this grid, this method returns the rowNum on which the record is displayed.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| cellRecord | [CellRecord](#type-cellrecord) | false | — | record to find coordinates for |
-
-### Returns
-
-`[int](../reference.md#type-int)` — Row number for the record. Returns -1 if the record is not found.
-
----
-## Method: CubeGrid.closeFacet
-
-### Description
-Handler fired when facet is closed  
-_methodType_ handler
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| facetId | [String](#type-string) | false | — | ID of facet that was closed |
-
-### Groups
-
-- columnControls
-
----
-## Method: CubeGrid.facetValueHoverHTML
-
-### Description
-Get the HTML for the facetValue button hover. Default implementation returns null.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| facetValues | [FacetValueMap](#type-facetvaluemap) | false | — | facetValues object for the button |
-
-### Groups
-
-- hoverTips
-
----
-## Method: CubeGrid.getViewState
-
-### Description
-**Note**: This is a ListGrid feature which is inapplicable on this class.
-
-### Returns
-
-`[ListGridViewState](../reference_2.md#type-listgridviewstate)` — current view state for the grid.
-
-### Groups
-
-- viewState
-
-### See Also
-
-- [ListGridViewState](../reference_2.md#type-listgridviewstate)
-- [ListGrid.setViewState](ListGrid_2.md#method-listgridsetviewstate)
-
----
-## Method: CubeGrid.autoSizeFacet
-
-### Description
-auto-size the header facet horizontally
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| facetId | [String](#type-string) | false | — | ID of facet to resize. |
-
----
-## Method: CubeGrid.getFacet
-
-### Description
-Get a facet definition by facetId. Constant time.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| facetId | [String](#type-string) | false | — | the id of the facet to retrieve |
-
-### Returns
-
-`[Facet](#type-facet)` — the Facet if found, or null
-
-### See Also
-
-- [Facet](../reference_2.md#object-facet)
-
----
-## Method: CubeGrid.closeColumn
-
-### Description
-Handler fired when column is closed  
-_methodType_ handler
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| headerFacetValues | [FacetValue Object](#type-facetvalue-object) | false | — | FacetValues for the appropriate col. |
-
-### Groups
-
-- columnControls
-
----
-## Method: CubeGrid.getCellColumn
-
-### Description
-Given a record in this grid, this method returns the colNum in which the record is displayed.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| cellRecord | [CellRecord](#type-cellrecord) | false | — | record to find coordinates for |
-
-### Returns
-
-`[int](../reference.md#type-int)` — Column number for the record. Returns -1 if the record is not found.
-
----
-## Method: CubeGrid.hasChanges
-
-### Description
-Determines whether any cells in this cubeGrid have been edited but not yet saved to the underlying data set. Note that for asynchronous saves, this method will return false if the current edit values match any submitted (but not yet saved) values. This behavior can be turned off with the `ignorePendingValues` parameter.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| ignorePendingValues | [Boolean](#type-boolean) | true | — | If true, this method will compare the current edit values against the underlying records in the dataset, not taking pending edit values into account |
-
-### Returns
-
-`[Boolean](#type-boolean)` — true if any record in the grid has been edited but not yet saved
-
-### Groups
-
-- editing
-
----
-## Method: CubeGrid.setHilites
-
-### Description
-Only supported on ListGrid for now.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| hilites | [Array of Hilite](#type-array-of-hilite) | false | — | Array of hilite objects |
-
-### Groups
-
-- hiliting
-
----
-## Method: CubeGrid.setViewState
-
-### Description
-**Note**: This is a ListGrid feature which is inapplicable on this class.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| viewState | [ListGridViewState](../reference_2.md#type-listgridviewstate) | false | — | Object describing the desired view state for the grid |
-
-### Groups
-
-- viewState
-
-### See Also
-
-- [ListGrid.getViewState](ListGrid_2.md#method-listgridgetviewstate)
-
----
-## Method: CubeGrid.facetLabelOut
-
-### Description
-StringMethod handler fired when mouseout occurs over a facet label
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| facetId | [String](#type-string) | false | — | ID of the appropriate facet |
-
-### Groups
-
-- events
-
----
-## Method: CubeGrid.saveEdits
-
-### Description
-Validates and saves edits for some cell. If rowNum and colNum are not passed in, the current edit cell will be saved.
-
-The 'callback' parameter provides a notification when the save attempt completes. Cases under which the callback will fire are:
-
-*   Save completed successfully
-*   No changes to the edited cell, so save not required
-*   Validation failure occurred on the client or on the server
-
-Note that if no rowNum/colNum were passed in and the editor is not showing for the cell, the callback will NOT fire - in this case, the method is a no-op.
-
-Other, standard callbacks such as [editComplete()](ListGrid_2.md#method-listgrideditcomplete), [editFailed()](ListGrid_1.md#method-listgrideditfailed) and [cellChanged()](ListGrid_2.md#method-listgridcellchanged) will fire normally.
-
-Note this method does not hide the inline editors if they are showing - to explicitly save and end editing, use the method 'endEditing()'
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| editCompletionEvent | [EditCompletionEvent](../reference_2.md#type-editcompletionevent) | true | — | Event used to complete cell editing. Optional, and defaults to `"programmatic"`. Can be used by the `callback` method to perform custom actions such as navigation when the save completes. |
-| callback | [Callback](../reference.md#type-callback) | true | — | Callback to fire on completion of the saving process. If no edits were made or client-side validation fails the callback will be fired synchronously at the end of this method.  
-Takes the following parameters:  
-\- rowNum _(Number) edited row number_  
-\- colNum _(Number) edited column number_  
-\- editCompletionEvent _(EditCompletionEvent) event passed in (defaults to `"programmatic"`)_  
-\- success _(boolean) false if the save was unable to complete due to a validation failure or server-side error._ |
-| rowNum | [number](#type-number) | true | — | Which row should be saved. If unspecified the current edit row is saved by default. Note that if there is no current edit cell this method will no op. |
-| colNum | [number](#type-number) | true | — | Which row should be saved. If unspecified the current edit column is saved by default. Note that if there is no current edit cell this method will no op. |
-
-### Groups
-
-- editing
-
-### See Also
-
-- [ListGrid.endEditing](ListGrid_2.md#method-listgridendediting)
-
-**Flags**: A
-
----
-## Method: CubeGrid.setFacetTitleAlign
-
-### Description
-Set the align of a facet title (appears in facet label).
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| facetId | [Identifier](../reference.md#type-identifier) | false | — | facet to update |
-| align | [Alignment](../reference_2.md#type-alignment) | false | — | new alignment for facet title |
-
-### Groups
-
-- gridLayout
-
----
-## Method: CubeGrid.dataArrived
-
-### Description
-Notification method fired when new data arrives from the server to be displayed in this CubeGrid. For example in response to the user openng a collapsed facet, or as a result of an initial fetch request for all data from a CubeGrid where [CubeGrid.facets](#attr-cubegridfacets) is not set and there is no initial data. Only applies to databound CubeGrids.
-
-**Flags**: A
-
----
-## Method: CubeGrid.getColumnHeaderFacetValues
-
-### Description
-Return a [FacetValueMap](../reference.md#object-facetvaluemap) of the facet values for the column field at the specified level containing the requested column number. Note that outer column fields may span several grid columns.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| colNum | [int](../reference.md#type-int) | false | — | 0-based index into the grid columns (and inner column header fields) |
-| level | [int](../reference.md#type-int) | false | — | target header level; 0 represents the outer column header |
-
-### Returns
-
-`[FacetValueMap](#type-facetvaluemap)` — facet values for the targeted column header field
-
----
-## Method: CubeGrid.toggleFieldOpenState
-
-### Description
-Toggles the open state of the specified field. No-ops if it's not showing.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| facetValueMap | [FacetValueMap](#type-facetvaluemap) | false | — | field specified as a facetValueMap |
-
-### Returns
-
-`[Boolean](#type-boolean)` — whether specified field's open state was toggled
-
----
-## Method: CubeGrid.getDefaultFacetValueContextItems
-
-### Description
-Returns a default set of items, which can be updated/modified, and then assigned to [CubeGrid.facetValueContextItems](#attr-cubegridfacetvaluecontextitems) to be used in the context menu of the appropriate header button.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| facetValues | [FacetValueMap](#type-facetvaluemap) | false | — | FacetValueMap for the appropriate header button |
-
-### Returns
-
-`[Array of MenuItem](#type-array-of-menuitem)` — Return standard context menu items for these facet values.
-
----
-## Method: CubeGrid.getColumnFacetLayout
-
-### Description
-Get the current heights of the column facets, as an object of the form:
-```
- [ {facetId:facetId, height:currentHeight}, ... ]
- 
-```
-
-### Returns
-
-`[Array](#type-array)` — array of {facetId:facetId, height:height} objects
-
-### Groups
-
-- facetLayout
-
----
-## Method: CubeGrid.selectAllCells
-
-### Description
-Select all cells.
-
-### Groups
-
-- selection
-
----
-## Method: CubeGrid.hiliteCellList
-
-### Description
-Apply a hilite to an array of cells.  
-_methodType_ action
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| cellObjList | [Array of Cell Object](#type-array-of-cell-object) | false | — | cells to hilite |
-| hiliteID | [String](#type-string) | false | — | ID of hilite to apply to cells |
-
-### Returns
-
-`[boolean](../reference.md#type-boolean)` — true if the cells were successfully hilited.
-
-### Groups
-
-- hiliting
-
----
-## Method: CubeGrid.setFacetValueTitleAlign
-
-### Description
-Set the align for the title for a facet value.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| facetId | [Identifier](../reference.md#type-identifier) | false | — | facet to update |
-| facetValueId | [Identifier](../reference.md#type-identifier) | false | — | facetValue to update |
-| align | [Alignment](../reference_2.md#type-alignment) | false | — | new alignment for facet value title |
-
-### Groups
-
-- gridLayout
-
----
-## Method: CubeGrid.facetRemoved
-
-### Description
-Notification fired when a facet is removed.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| facetId | [String](#type-string) | false | — | facetId that was removed |
-
-### Groups
-
-- facetLayout
-
-### See Also
-
-- [CubeGrid.facetAdded](#method-cubegridfacetadded)
-
----
-## Method: CubeGrid.anyCellSelected
-
-### Description
-Determine whether any cells are selected in this cubeGrid.  
-_methodType_ tester
-
-### Returns
-
-`[Boolean](#type-boolean)` — true if any cells are selected
-
-### Groups
-
-- selection
-
----
-## Method: CubeGrid.getCellRecord
-
-### Description
-Return the pointer to a particular record by record and column number.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| rowNum | [number](#type-number) | false | — | row index of record to return. |
-| colNum | [number](#type-number) | false | — | column index of record to return. |
-
-### Returns
-
-`[ListGridRecord](#type-listgridrecord)` — Record object for the row.
-
-### See Also
-
-- [ListGrid.getRecord](ListGrid_2.md#method-listgridgetrecord)
-- [ListGrid.getEditedRecord](ListGrid_2.md#method-listgridgeteditedrecord)
-
-**Flags**: A
-
----
-## Method: CubeGrid.discardAllEdits
-
-### Description
-—
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| records | [Array of Array of int](#type-array-of-array-of-int) | true | — | allows you to specify which cell(s) to drop edits for. Each record should be identified as an array containing `[rowNum,colNum]` |
-| dontHideEditor | [boolean](../reference.md#type-boolean) | true | — | By default this method will hide the editor if it is currently showing for any row in the grid. Passing in this parameter will leave the editor visible (and just reset the edit values underneath the editor). |
-
-### Groups
-
-- editing
-
-**Flags**: A
-
----
-## Method: CubeGrid.deselectAllCells
-
-### Description
-Deselect all cells.
-
-### Groups
-
-- selection
-
----
-## Method: CubeGrid.showFacetValues
-
-### Description
-Shows the specified field if it was previsouly hidden. No-ops if it's already showing.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| facetValueMap | [FacetValueMap](#type-facetvaluemap) | false | — | field specified as a facetValueMap |
-
-### Returns
-
-`[boolean](../reference.md#type-boolean)` — whether specified field was actually shown
-
----
-## Method: CubeGrid.getEditValue
-
-### Description
-Returns the current temporary locally stored edit value for a cell being edited. Note this is the [valueProperty](#attr-cubegridvalueproperty) that will be saved for the cell in question.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| rowNum | [number](#type-number) | false | — | index of the row for which the editValue should be returned |
-| colNum | [number](#type-number) | false | — | index of the column for which value should be returned |
-
-### Returns
-
-`[Any](#type-any)` — edit value for the cell
-
-### Groups
-
-- editing
-
----
-## Method: CubeGrid.deselectAllFacetValues
-
-### Description
-Deselect all headers in a headerBar (specified by facetId) or all headerBars (if no facetId).  
-_methodType_ action
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| facetId | [String](#type-string) | true | — | ID of facet - if null, selects all headerbars' headers |
-
-### Groups
-
-- selection
-
----
-## Method: CubeGrid.addRowFacet
-
-### Description
-Add a row facet to the view at index "index". Handles the facet already being in the view (does a pivot).  
-  
-The facet being added should currently have a fixed facet value (unless it's already part of the view), which will be removed from cubeGrid.fixedFacetValues.  
-_methodType_ action
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| facetId | [Identifier](../reference.md#type-identifier) | false | — | facetId to add. Definition must have been provided at init time. |
-| index | [Integer](../reference_2.md#type-integer) | true | — | index to add the facet at. 0 = outermost (default innermost) |
-
-### Groups
-
-- facetLayout
-
-### See Also
-
-- [CubeGrid.removeFacet](#method-cubegridremovefacet)
-- [CubeGrid.fixedFacetValues](#attr-cubegridfixedfacetvalues)
-
----
-## Method: CubeGrid.facetLabelHoverHTML
-
-### Description
-Get the HTML for the facet label hover. Default implementation returns null.  
-_methodType_ callback
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| facetId | [String](#type-string) | false | — | ID for the facet |
-
-### Groups
-
-- hoverTips
-
----
-## Method: CubeGrid.facetValueSelectionChanged
-
-### Description
-Handler/Notification function for facetValue selection change (no default implementation).
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| facetValues | [FacetValueMap](#type-facetvaluemap) | false | — | facetValues with new selection state |
-| newState | [boolean](../reference.md#type-boolean) | false | — | new selection state |
-
-### Groups
-
-- selection
-
----
-## Method: CubeGrid.getAllEditCells
-
-### Description
-Method to determine which records currently have pending (unsubmitted) edits. Returns an array of 2 element arrays indicating the `[rowNum,colNum]` of the cells in question.
-
-### Returns
-
-`[Array](#type-array)` — Array of `[rowNum,colNum]` arrays for cells with edit values pending submission.
-
-### Groups
-
-- editing
-
----
-## Method: CubeGrid.setFixedFacetValue
-
-### Description
-Modify fixedFacetValues for this cubeGrid.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| facetId | [Identifier](../reference.md#type-identifier) | false | — | facetId |
-| fixedFacetValueId | [Identifier](../reference.md#type-identifier) | false | — | New fixed value for the facet, to be added to [CubeGrid.fixedFacetValues](#attr-cubegridfixedfacetvalues). Default is the rollup value for the facet. |
-
-### Groups
-
-- facetLayout
-
----
-## Method: CubeGrid.getFacetValue
-
-### Description
-Get a facet value definition by facetId and facetValueId. Constant time.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| facetId | [String](#type-string) | false | — | the id of the facet to retrieve |
-| facetValueId | [String](#type-string) | false | — | the id of the facet value to retrieve |
-
-### Returns
-
-`[FacetValue](#type-facetvalue)` — the FacetValue if found, or null
-
-### See Also
-
-- [FacetValue](../reference.md#object-facetvalue)
-
----
-## Method: CubeGrid.hiliteCell
-
-### Description
-Apply a hilite to a specific cell. Note: can be called either as hiliteCell(cellObject, hiliteID) or hiliteCell(row, column, hiliteID)  
-_methodType_ action
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| cellObj | [Cell Object](#type-cell-object)|[Row number](#type-row-number) | false | — | cell to hilite / row of cell to hilite |
-| hiliteID | [String](#type-string)|[Column number](#type-column-number) | false | — | hilite ID / column of cell to hilite |
-| alternateHiliteID | [String](#type-string) | true | — | optional third parameter - hilite ID. |
-
-### Returns
-
-`[boolean](../reference.md#type-boolean)` — true if the cell was successfully hilited.
-
-### Groups
-
-- hiliting
-
----
-## Method: CubeGrid.selectCell
-
-### Description
-Select / deselect a single cell - accepts cell ID or [CellRecord](../reference.md#object-cellrecord).
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| cell | [CellRecord](#type-cellrecord)|[ID](#type-id) | false | — | cell to select / deselect |
-| newState | [boolean](../reference.md#type-boolean) | true | — | new selection state (if null, defaults to true) |
-
-### Groups
-
-- selection
-
----
-## Method: CubeGrid.addColumnFacet
-
-### Description
-Add a column facet to the view at index "index". Handles the facet already being in the view (does a pivot).  
-  
-The facet being added should currently have a fixed facet value (unless it's already part of the view), which will be removed from cubeGrid.fixedFacetValues.  
-_methodType_ action
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| facetId | [Identifier](../reference.md#type-identifier) | false | — | facetId to add. Definition must have been provided at init time. |
-| index | [Integer](../reference_2.md#type-integer) | true | — | index to add the facet at. 0 = outermost (default innermost) |
-
-### Groups
-
-- facetLayout
-
-### See Also
-
-- [CubeGrid.removeFacet](#method-cubegridremovefacet)
-- [CubeGrid.fixedFacetValues](#attr-cubegridfixedfacetvalues)
-
----
-## Method: CubeGrid.hideFacetValues
-
-### Description
-Hides the specified field if it is currently visible. No-ops if it's already hidden.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| facetValueMap | [FacetValueMap](#type-facetvaluemap) | false | — | field specified as a facetValueMap |
-
-### Returns
-
-`[boolean](../reference.md#type-boolean)` — whether specified field was actually hidden
-
----
-## Method: CubeGrid.facetAdded
-
-### Description
-Notification fired when a new facet is added.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| facetId | [String](#type-string) | false | — | facetId that was added |
-
-### Groups
-
-- facetLayout
-
-### See Also
-
-- [CubeGrid.facetRemoved](#method-cubegridfacetremoved)
-
----
-## Method: CubeGrid.setEnableCharting
-
-### Description
-Setter for the [CubeGrid.enableCharting](#attr-cubegridenablecharting) attribute.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| enableCharting | [boolean](../reference.md#type-boolean) | false | — | — |
-
----
-## Method: CubeGrid.saveAllEdits
-
-### Description
-Save a number of outstanding edits for this CubeGrid. If no cells are specified, all outstanding edits will be saved
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| cells | [Array of Array of int](#type-array-of-array-of-int) | true | — | optionally specify which cells to save. Each cell should be specified as a 2 element array in the format `[rowNum,colNum]`. |
-| saveCallback | [Callback](../reference.md#type-callback) | true | — | If specified this callback will be fired on a successful save of the specified rows. Note that if there are no pending edits to be saved this callback will not fire - you can check for this condition using [CubeGrid.hasChanges](#method-cubegridhaschanges) or [CubeGrid.recordHasChanges](#method-cubegridrecordhaschanges). |
-
-### Returns
-
-`[boolean](../reference.md#type-boolean)` — true if a save has been initiated (at least one row had changes, passed client-side validation, and a save has been attempted). False otherwise
-
-### Groups
-
-- editing
-
----
-## Method: CubeGrid.clearEditValue
-
-### Description
-Clear a field value being tracked as an unsaved user edit for some cell.
-
-The saved record value will be displayed in the the appropriate cell instead.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| editValuesID | [number](#type-number)|[Object](../reference.md#type-object) | false | — | Row number, primary keys object for the record, or editValues object |
-| colNum | [number](#type-number) | true | — | Column number for the cell in question. Only required if the first parameter is a row number. |
-
-### Groups
-
-- editing
-
-**Flags**: A
-
----
-## Method: CubeGrid.facetContextClick
-
-### Description
-StringMethod handler fired when the user right clicks on a facet label.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| facetId | [String](#type-string) | false | — | ID of facet |
-
-### Groups
-
-- events
-
----
-## Method: CubeGrid.cellSelectionChanged
-
-### Description
-Handler/Notification function for cell selection change May update header button styles.  
-_methodType_ handler
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| cellList | [Array of CellRecord](#type-array-of-cellrecord) | false | — | array of cells with new selection state |
-
-### Returns
-
-`[boolean](../reference.md#type-boolean)` — —
-
-### Groups
-
-- selection
-
----
-## Method: CubeGrid.sortByFacetId
-
-### Description
-Called when a sort control is clicked on a FacetHeader. Does nothing by default.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| facetId | [String](#type-string) | false | — | ID of facet to sort |
-| sortDirection | [boolean](../reference.md#type-boolean) | false | — | true for ascending |
-
-### Groups
-
-- columnControls
-
----
-## Method: CubeGrid.loadAllRecords
-
-### Description
-This method is not currently supported for this grid-type. See [ListGrid.loadAllRecords](ListGrid_2.md#method-listgridloadallrecords) for more information.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| maxRecords | [Integer](../reference_2.md#type-integer) | true | — | optional maximum record count - if passed, no fetch takes place if maxRecords is below the known length of the data |
-| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to fire if a fetch is issued - if all data was already loaded, the callback is fired with no parameters |
-
-### Returns
-
-`[Boolean](#type-boolean)` — true if a fetch was made or was not needed - false otherwise
-
----
-## Method: CubeGrid.getSelectedCellIds
-
-### Description
-Returns an array of the IDs of all selected cell records.  
-_methodType_ getter
-
-### Returns
-
-`[Array of String](#type-array-of-string)` — array of the selected cell IDs
-
-### Groups
-
-- selection
-
----
-## Method: CubeGrid.facetLabelOver
-
-### Description
-StringMethod handler fired when mouseover occurs over a facet label
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| facetId | [String](#type-string) | false | — | ID of the appropriate facet |
-
-### Groups
-
-- events
 
 ---

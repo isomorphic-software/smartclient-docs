@@ -12,6 +12,14 @@
 Simple subclass of button associated with a menu widget (gets shown below the button).
 
 ---
+## Attr: MenuButton.showMenuButtonImage
+
+### Description
+Show menu button image (up / down arrowhead) for this menu button.
+
+**Flags**: IR
+
+---
 ## Attr: MenuButton.title
 
 ### Description
@@ -31,71 +39,7 @@ The menu to show.
 
 For a menu button with no menu (menu: null) the up/down arrow image can be suppressed by setting [showMenuButtonImage](#attr-menubuttonshowmenubuttonimage): `false`.
 
-### Groups
-
-- menu
-
 **Flags**: IRW
-
----
-## Attr: MenuButton.menuButtonImage
-
-### Description
-Image for menu button indicating that the button expands a menu. This image is shown for menus expanding down from the button. Menu direction is controlled by [MenuButton.showMenuBelow](#attr-menubuttonshowmenubelow).
-
-### Groups
-
-- menu
-
-### See Also
-
-- [MenuButton.menuButtonImageUp](#attr-menubuttonmenubuttonimageup)
-
-**Flags**: IRA
-
----
-## Attr: MenuButton.rollOverMenuHideDelay
-
-### Description
-When [showMenuOnRollOver](#attr-menubuttonshowmenuonrollover) is true, this is the delay in milliseconds before the menu is automatically hidden following mouseOut.
-
-### Groups
-
-- menu
-
-**Flags**: IR
-
----
-## Attr: MenuButton.menuAnimationEffect
-
-### Description
-Allows you to specify an animation effect to apply to the menu when it is being shown. Valid options are "none" (no animation), "fade", "slide" and "wipe". If unspecified falls through to `menu.showAnimationEffect`
-
-**Flags**: IRWA
-
----
-## Attr: MenuButton.autoDestroyMenu
-
-### Description
-If this menuButton is [destroyed](Canvas.md#method-canvasdestroy), should it also destroy its [MenuButton.menu](#attr-menubuttonmenu)?
-
-### Groups
-
-- menu
-
-**Flags**: IRW
-
----
-## Attr: MenuButton.showMenuButtonImage
-
-### Description
-Show menu button image (up / down arrowhead) for this menu button.
-
-### Groups
-
-- menu
-
-**Flags**: IR
 
 ---
 ## Attr: MenuButton.icon
@@ -112,18 +56,38 @@ You could add an icon via the [MenuButton.title](#attr-menubuttontitle) property
 **Flags**: IRW
 
 ---
+## Attr: MenuButton.menuButtonImage
+
+### Description
+Image for menu button indicating that the button expands a menu. This image is shown for menus expanding down from the button. Menu direction is controlled by [MenuButton.showMenuBelow](#attr-menubuttonshowmenubelow).
+
+### See Also
+
+- [MenuButton.menuButtonImageUp](#attr-menubuttonmenubuttonimageup)
+
+**Flags**: IRA
+
+---
 ## Attr: MenuButton.menuButtonImageUp
 
 ### Description
 Image for menu button indicating that the button expands a menu. This image is shown for menus expanding up from the button. Menu direction is controlled by [MenuButton.showMenuBelow](#attr-menubuttonshowmenubelow).
 
-### Groups
-
-- menu
-
 ### See Also
 
 - [MenuButton.menuButtonImage](#attr-menubuttonmenubuttonimage)
+
+**Flags**: IRA
+
+---
+## Attr: MenuButton.rollOverMenuHideDelay
+
+### Description
+When [showMenuOnRollOver](#attr-menubuttonshowmenuonrollover) is true, this is the delay in milliseconds before the menu is automatically hidden following mouseOut.
+
+### Groups
+
+- appearance
 
 **Flags**: IRA
 
@@ -152,6 +116,22 @@ Default height of the button.
 **Flags**: IRW
 
 ---
+## Attr: MenuButton.menuAnimationEffect
+
+### Description
+Allows you to specify an animation effect to apply to the menu when it is being shown. Valid options are "none" (no animation), "fade", "slide" and "wipe". If unspecified falls through to `menu.showAnimationEffect`
+
+**Flags**: IRWA
+
+---
+## Attr: MenuButton.autoDestroyMenu
+
+### Description
+If this menuButton is [destroyed](Canvas.md#method-canvasdestroy), should it also destroy its [MenuButton.menu](#attr-menubuttonmenu)?
+
+**Flags**: IRW
+
+---
 ## Attr: MenuButton.showMenuOnRollOver
 
 ### Description
@@ -161,21 +141,15 @@ When enabled, menus used with this `MenuButton` should not be used with any othe
 
 ### Groups
 
-- menu
+- appearance
 
-**Flags**: IR
+**Flags**: IRA
 
 ---
 ## Attr: MenuButton.showMenuBelow
 
 ### Description
 The menu drops down below the menu button. Set to false if the menu should appear above the menu button.
-
-Note that this setting may be ignored if it would cause the menu to be clipped by the browser viewport.
-
-### Groups
-
-- menu
 
 **Flags**: IRW
 
@@ -185,27 +159,19 @@ Note that this setting may be ignored if it would cause the menu to be clipped b
 ### Description
 The horizontal alignment of this button's menu, in relation to the button. When unset, default behavior is to align the right edges of button and menu if the page is in RTL mode, and the left edges otherwise.
 
-### Groups
-
-- menu
-
 **Flags**: IR
 
 ---
 ## Method: MenuButton.setShowMenuBelow
 
 ### Description
-Setter for the 'showMenuButtonBelow' property - determines whether the menu will be shown above or below the `MenuButton`.
+Setter for the 'showMenuButtonBelow' property - determines whether the menu will be shown above or below the menubutton.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| below | [boolean](../reference.md#type-boolean) | false | — | True if the menu should be shown below the `MenuButton`. |
-
-### Groups
-
-- menu
+| below | [boolean](../reference.md#type-boolean) | false | — | True if the menu should be shown below the menubutton. |
 
 ---
 ## Method: MenuButton.setShowMenuButtonImage
@@ -219,14 +185,10 @@ Setter for the 'showMenuButtonImage' property - shows/hides the menu button imag
 |------|------|----------|---------|-------------|
 | show | [boolean](../reference.md#type-boolean) | false | — | Should the image be shown |
 
-### Groups
-
-- menu
-
 ---
 ## Method: MenuButton.showMenu
 
 ### Description
-Programmatically forces this MenuButton to show it's menu.
+Programmaticly forces this MenuButton to show it's menu.
 
 ---

@@ -31,6 +31,18 @@ Note that standard cell hovers override clipped value hovers. Thus, to enable cl
 **Flags**: IRWA
 
 ---
+## Attr: GridRenderer.cellPadding
+
+### Description
+The amount of empty space, in pixels, surrounding each value in its cell.
+
+### Groups
+
+- cellStyling
+
+**Flags**: IRW
+
+---
 ## Attr: GridRenderer.baseStyle
 
 ### Description
@@ -60,6 +72,24 @@ Value to show in empty cells (when getCellValue returns null).
 **Flags**: IRW
 
 ---
+## Attr: GridRenderer.emptyMessage
+
+### Description
+The string to display in the body of a listGrid with an empty data array, if showEmptyMessage is true.
+
+### Groups
+
+- emptyMessage
+- i18nMessages
+
+### See Also
+
+- [GridRenderer.showEmptyMessage](#attr-gridrenderershowemptymessage)
+- [GridRenderer.emptyMessageStyle](#attr-gridrendereremptymessagestyle)
+
+**Flags**: IRW
+
+---
 ## Attr: GridRenderer.showHover
 
 ### Description
@@ -73,6 +103,18 @@ If true, and canHover is also true, when the user hovers over a cell, hover text
 
 - [GridRenderer.canHover](#attr-gridrenderercanhover)
 - [GridRenderer.cellHoverHTML](#method-gridrenderercellhoverhtml)
+
+**Flags**: RW
+
+---
+## Attr: GridRenderer.canSelectOnRightMouse
+
+### Description
+If true, rightMouseDown events will fire 'selectOnRightMouseDown()' for the appropriate cells.
+
+### Groups
+
+- events
 
 **Flags**: RW
 
@@ -97,6 +139,16 @@ The number of consecutive columns to draw in the same style before alternating, 
 **Flags**: IRW
 
 ---
+## Attr: GridRenderer.virtualScrolling
+
+### Description
+When incremental rendering is switched on and there are variable record heights, the virtual scrolling mechanism manages the differences in scroll height calculations due to the unknown sizes of unrendered rows to make the scrollbar and viewport appear correctly.
+
+virtualScrolling is switched on automatically when fixedRowHeights is false but you should switch it on any time there are variable record heights.
+
+**Flags**: IRA
+
+---
 ## Attr: GridRenderer.drawAllMaxCells
 
 ### Description
@@ -113,6 +165,46 @@ The `drawAllMaxCells` setting prevents incremental rendering from being used in 
 ### Groups
 
 - performance
+
+**Flags**: IRWA
+
+---
+## Attr: GridRenderer.alternateColumnStyles
+
+### Description
+Whether alternating columns (or blocks of columns, depending on [GridRenderer.alternateColumnFrequency](#attr-gridrendereralternatecolumnfrequency)) should be drawn in alternating styles, in order to create a vertical "ledger" effect for easier reading.
+
+If enabled, the cell style for alternate rows will have the [GridRenderer.alternateColumnSuffix](#attr-gridrendereralternatecolumnsuffix) appended to it. See also [GridRenderer.alternateRowStyles](#attr-gridrendereralternaterowstyles).
+
+### Groups
+
+- cellStyling
+
+**Flags**: IRW
+
+---
+## Attr: GridRenderer.instantScrollTrackRedraw
+
+### Description
+If true, if the user clicks on the scroll buttons at the end of the track or clicks once on the scroll track, there will be an instant redraw of the grid content so that the user doesn't see any blank space. For drag scrolling or other types of scrolling, the [GridRenderer.scrollRedrawDelay](#attr-gridrendererscrollredrawdelay) applies.
+
+### Groups
+
+- performance
+
+**Flags**: IRW
+
+---
+## Attr: GridRenderer.fixedColumnWidths
+
+### Description
+Should we horizontally clip cell contents, or allow columns to expand horizontally to show all contents?  
+  
+If we allow columns to expand, the column width is treated as a minimum.
+
+### Groups
+
+- sizing
 
 **Flags**: IRWA
 
@@ -137,7 +229,7 @@ Indicates whether the text of the offlineMessage property should be displayed if
 ## Attr: GridRenderer.cellHeight
 
 ### Description
-The default height of each cell in pixels.
+The default height of each row in pixels.
 
 ### Groups
 
@@ -146,6 +238,43 @@ The default height of each cell in pixels.
 ### See Also
 
 - [GridRenderer.getRowHeight](#method-gridrenderergetrowheight)
+
+**Flags**: IRW
+
+---
+## Attr: GridRenderer.snapToCells
+
+### Description
+Should drag-and-drop operations snap the dragged object into line with the nearest cell?
+
+### Groups
+
+- dragdrop
+
+**Flags**: IRW
+
+---
+## Attr: GridRenderer.offlineMessageStyle
+
+### Description
+The CSS style name applied to the offlineMessage string if displayed.
+
+### Groups
+
+- emptyMessage
+- offlineGroup
+
+**Flags**: IRW
+
+---
+## Attr: GridRenderer.emptyMessageStyle
+
+### Description
+The CSS style name applied to the emptyMessage string if displayed.
+
+### Groups
+
+- emptyMessage
 
 **Flags**: IRW
 
@@ -191,6 +320,22 @@ See also [GridRenderer.instantScrollTrackRedraw](#attr-gridrendererinstantscroll
 - scrolling
 
 **Flags**: IRW
+
+---
+## Attr: GridRenderer.drawAheadRatio
+
+### Description
+How far should we render rows ahead of the currently visible area? This is expressed as a ratio from viewport size to rendered area size.
+
+Tweaking drawAheadRatio allows you to make tradeoffs between continuous scrolling speed vs initial render time and render time when scrolling by large amounts.
+
+NOTE: Only applies when showAllRows is false.
+
+### Groups
+
+- performance
+
+**Flags**: IRWA
 
 ---
 ## Attr: GridRenderer.scrollWheelRedrawDelay
@@ -245,6 +390,44 @@ If enabled, the cell style for alternate rows will have the [GridRenderer.altern
 **Flags**: IRW
 
 ---
+## Attr: GridRenderer.dragScrollRedrawDelay
+
+### Description
+Like [GridRenderer.scrollRedrawDelay](#attr-gridrendererscrollredrawdelay), but applies when the component is being drag-scrolled (via a scrollbar). This value is typically set higher than [GridRenderer.scrollRedrawDelay](#attr-gridrendererscrollredrawdelay) to avoid too many concurrent fetches to the server for [ResultSet](ResultSet.md#class-resultset)-backed components since it's quite easy to induce such a case with a scrollbar and a grid bound to a large databaset.
+
+### Groups
+
+- performance
+- scrolling
+
+**Flags**: IRW
+
+---
+## Attr: GridRenderer.touchScrollRedrawDelay
+
+### Description
+In [touch browsers](Browser.md#classattr-browseristouch), the time in milliseconds to wait after a scroll before redrawing. In non-touch browsers, the [scrollRedrawDelay](#attr-gridrendererscrollredrawdelay) or [scrollWheelRedrawDelay](#attr-gridrendererscrollwheelredrawdelay) is used instead.
+
+### Groups
+
+- performance
+- scrolling
+
+**Flags**: IRW
+
+---
+## Attr: GridRenderer.quickDrawAheadRatio
+
+### Description
+Alternative to [GridRenderer.drawAheadRatio](#attr-gridrendererdrawaheadratio), to be used when the user is rapidly changing the grids viewport (for example drag scrolling through the grid). If unspecified [GridRenderer.drawAheadRatio](#attr-gridrendererdrawaheadratio) will be used in all cases
+
+### Groups
+
+- performance
+
+**Flags**: IRWA
+
+---
 ## Attr: GridRenderer.snapInsideBorder
 
 ### Description
@@ -252,7 +435,7 @@ If true, snap-to-cell drops will snap the dropped object inside the selected cel
 
 ### Groups
 
-- snapGridDragging
+- dragdrop
 
 ### See Also
 
@@ -340,6 +523,49 @@ NOTE: in order to create a valid grid, you must either provide a totalRows value
 **Flags**: IRW
 
 ---
+## Attr: GridRenderer.alternateRowSuffix
+
+### Description
+Suffix to append to [alternate rows](#attr-gridrendereralternaterowstyles). Note that if [GridRenderer.alternateColumnStyles](#attr-gridrendereralternatecolumnstyles) is enabled, cells which fall into both an alternate row and column will have both suffixes appended - for example `"cellDarkAltCol"`.
+
+### Groups
+
+- cellStyling
+
+**Flags**: IRW
+
+---
+## Attr: GridRenderer.offlineMessage
+
+### Description
+The string to display in the body of a listGrid with an empty data array, if showOfflineMessage is true and the data array is empty because we are offline and there is no suitable cached response
+
+### Groups
+
+- offlineGroup
+- emptyMessage
+- i18nMessages
+
+### See Also
+
+- [GridRenderer.showOfflineMessage](#attr-gridrenderershowofflinemessage)
+- [GridRenderer.offlineMessageStyle](#attr-gridrendererofflinemessagestyle)
+
+**Flags**: IRW
+
+---
+## Attr: GridRenderer.emptyMessageTableStyle
+
+### Description
+CSS styleName for the table as a whole if we're showing the empty message
+
+### Groups
+
+- emptyMessage
+
+**Flags**: IRW
+
+---
 ## Attr: GridRenderer.fastCellUpdates
 
 ### Description
@@ -410,232 +636,6 @@ If we allow rows to expand, the row height as derived from [getRowHeight()](#met
 **Flags**: IRWA
 
 ---
-## Attr: GridRenderer.cellPadding
-
-### Description
-The amount of empty space, in pixels, surrounding each value in its cell.
-
-### Groups
-
-- cellStyling
-
-**Flags**: IRW
-
----
-## Attr: GridRenderer.emptyMessage
-
-### Description
-The string to display in the body of a listGrid with an empty data array, if showEmptyMessage is true.
-
-### Groups
-
-- emptyMessage
-- i18nMessages
-
-### See Also
-
-- [GridRenderer.showEmptyMessage](#attr-gridrenderershowemptymessage)
-- [GridRenderer.emptyMessageStyle](#attr-gridrendereremptymessagestyle)
-
-**Flags**: IRW
-
----
-## Attr: GridRenderer.canSelectOnRightMouse
-
-### Description
-If true, rightMouseDown events will fire 'selectOnRightMouseDown()' for the appropriate cells.
-
-### Groups
-
-- events
-
-**Flags**: RW
-
----
-## Attr: GridRenderer.virtualScrolling
-
-### Description
-When incremental rendering is switched on and there are variable record heights, the virtual scrolling mechanism manages the differences in scroll height calculations due to the unknown sizes of unrendered rows to make the scrollbar and viewport appear correctly.
-
-virtualScrolling is switched on automatically when fixedRowHeights is false but you should switch it on any time there are variable record heights.
-
-**Flags**: IRA
-
----
-## Attr: GridRenderer.alternateColumnStyles
-
-### Description
-Whether alternating columns (or blocks of columns, depending on [GridRenderer.alternateColumnFrequency](#attr-gridrendereralternatecolumnfrequency)) should be drawn in alternating styles, in order to create a vertical "ledger" effect for easier reading.
-
-If enabled, the cell style for alternate rows will have the [GridRenderer.alternateColumnSuffix](#attr-gridrendereralternatecolumnsuffix) appended to it. See also [GridRenderer.alternateRowStyles](#attr-gridrendereralternaterowstyles).
-
-### Groups
-
-- cellStyling
-
-**Flags**: IRW
-
----
-## Attr: GridRenderer.instantScrollTrackRedraw
-
-### Description
-If true, if the user clicks on the scroll buttons at the end of the track or clicks once on the scroll track, there will be an instant redraw of the grid content so that the user doesn't see any blank space. For drag scrolling or other types of scrolling, the [GridRenderer.scrollRedrawDelay](#attr-gridrendererscrollredrawdelay) applies.
-
-### Groups
-
-- performance
-
-**Flags**: IRW
-
----
-## Attr: GridRenderer.fixedColumnWidths
-
-### Description
-Should we horizontally clip cell contents, or allow columns to expand horizontally to show all contents?  
-  
-If we allow columns to expand, the column width is treated as a minimum.
-
-### Groups
-
-- sizing
-
-**Flags**: IRWA
-
----
-## Attr: GridRenderer.snapToCells
-
-### Description
-Should drag-and-drop operations snap the dragged object into line with the nearest cell?
-
-### Groups
-
-- snapGridDragging
-
-**Flags**: IRW
-
----
-## Attr: GridRenderer.offlineMessageStyle
-
-### Description
-The CSS style name applied to the offlineMessage string if displayed.
-
-### Groups
-
-- emptyMessage
-- offlineGroup
-
-**Flags**: IRW
-
----
-## Attr: GridRenderer.emptyMessageStyle
-
-### Description
-The CSS style name applied to the emptyMessage string if displayed.
-
-### Groups
-
-- emptyMessage
-
-**Flags**: IRW
-
----
-## Attr: GridRenderer.drawAheadRatio
-
-### Description
-How far should we render rows ahead of the currently visible area? This is expressed as a ratio from viewport size to rendered area size.
-
-Tweaking drawAheadRatio allows you to make tradeoffs between continuous scrolling speed vs initial render time and render time when scrolling by large amounts.
-
-NOTE: Only applies when showAllRows is false.
-
-### Groups
-
-- performance
-
-**Flags**: IRWA
-
----
-## Attr: GridRenderer.dragScrollRedrawDelay
-
-### Description
-Like [GridRenderer.scrollRedrawDelay](#attr-gridrendererscrollredrawdelay), but applies when the component is being drag-scrolled (via a scrollbar). This value is typically set higher than [GridRenderer.scrollRedrawDelay](#attr-gridrendererscrollredrawdelay) to avoid too many concurrent fetches to the server for [ResultSet](ResultSet.md#class-resultset)-backed components since it's quite easy to induce such a case with a scrollbar and a grid bound to a large databaset.
-
-### Groups
-
-- performance
-- scrolling
-
-**Flags**: IRW
-
----
-## Attr: GridRenderer.touchScrollRedrawDelay
-
-### Description
-In [touch browsers](Browser.md#classattr-browseristouch), the time in milliseconds to wait after a scroll before redrawing. In non-touch browsers, the [scrollRedrawDelay](#attr-gridrendererscrollredrawdelay) or [scrollWheelRedrawDelay](#attr-gridrendererscrollwheelredrawdelay) is used instead.
-
-### Groups
-
-- performance
-- scrolling
-
-**Flags**: IRW
-
----
-## Attr: GridRenderer.quickDrawAheadRatio
-
-### Description
-Alternative to [GridRenderer.drawAheadRatio](#attr-gridrendererdrawaheadratio), to be used when the user is rapidly changing the grids viewport (for example drag scrolling through the grid). If unspecified [GridRenderer.drawAheadRatio](#attr-gridrendererdrawaheadratio) will be used in all cases
-
-### Groups
-
-- performance
-
-**Flags**: IRWA
-
----
-## Attr: GridRenderer.alternateRowSuffix
-
-### Description
-Suffix to append to [alternate rows](#attr-gridrendereralternaterowstyles). Note that if [GridRenderer.alternateColumnStyles](#attr-gridrendereralternatecolumnstyles) is enabled, cells which fall into both an alternate row and column will have both suffixes appended - for example `"cellDarkAltCol"`.
-
-### Groups
-
-- cellStyling
-
-**Flags**: IRW
-
----
-## Attr: GridRenderer.offlineMessage
-
-### Description
-The string to display in the body of a listGrid with an empty data array, if showOfflineMessage is true and the data array is empty because we are offline and there is no suitable cached response
-
-### Groups
-
-- offlineGroup
-- emptyMessage
-- i18nMessages
-
-### See Also
-
-- [GridRenderer.showOfflineMessage](#attr-gridrenderershowofflinemessage)
-- [GridRenderer.offlineMessageStyle](#attr-gridrendererofflinemessagestyle)
-
-**Flags**: IRW
-
----
-## Attr: GridRenderer.emptyMessageTableStyle
-
-### Description
-CSS styleName for the table as a whole if we're showing the empty message
-
-### Groups
-
-- emptyMessage
-
-**Flags**: IRW
-
----
 ## Attr: GridRenderer.writeOutRowElementId
 
 ### Description
@@ -647,6 +647,58 @@ Note that if [screen reader mode](isc.md#staticmethod-iscsetscreenreadermode) is
 The default generated [WAI-ARIA markup](ListGrid_1.md#attr-listgridariarole) for listGrids makes use of DOM IDs to identify rows and cells in various cases.
 
 **Flags**: IRW
+
+---
+## Method: GridRenderer.cellHover
+
+### Description
+Called when the mouse hovers over a cell if this.canHover is true. Returning false will suppress the hover text from being shown if this.showHover is true.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| record | [ListGridRecord](#type-listgridrecord) | false | — | cell record as returned by getCellRecord |
+| rowNum | [number](#type-number) | false | — | row number for the cell |
+| colNum | [number](#type-number) | false | — | column number of the cell |
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
+
+### Groups
+
+- events
+
+### See Also
+
+- [GridRenderer.canHover](#attr-gridrenderercanhover)
+
+**Flags**: A
+
+---
+## Method: GridRenderer.rowOut
+
+### Description
+Called when the mouse pointer leaves a row
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| record | [ListGridRecord](#type-listgridrecord) | false | — | cell record as returned by getCellRecord |
+| rowNum | [number](#type-number) | false | — | row number for the cell |
+| colNum | [number](#type-number) | false | — | column number of the cell |
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
+
+### Groups
+
+- events
+
+**Flags**: A
 
 ---
 ## Method: GridRenderer.refreshCellStyle
@@ -672,6 +724,24 @@ The cell's contents (as returned by getCellValue()) will **not** be refreshed. T
 ### See Also
 
 - [GridRenderer.refreshCell](#method-gridrendererrefreshcell)
+
+---
+## Method: GridRenderer.findRowNum
+
+### Description
+Given a record displayed in this grid, find and return the rowNum in which the record appears.
+
+As with [GridRenderer.getCellRecord](#method-gridrenderergetcellrecord) implementing this method is optional as a valid grid may be created without any notion of records.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| record | [ListGridRecord](#type-listgridrecord) | false | — | cell record as returned by getCellRecord |
+
+### Returns
+
+`[number](#type-number)` — index of the row containing the record or -1 if not found
 
 ---
 ## Method: GridRenderer.getCellElementId
@@ -718,6 +788,31 @@ If records will be variable height, you should switch on [virtualScrolling](#att
 `[number](#type-number)` — height in pixels
 
 ---
+## Method: GridRenderer.getNearestRowToEvent
+
+### Description
+Returns the nearest row to the event coordinates
+
+### Groups
+
+- events
+- selection
+
+---
+## Method: GridRenderer.getDrawnRows
+
+### Description
+Get the rows that are currently drawn (exist in the DOM), as an array of \[firstRowNum, lastRowNum\].
+
+The drawn rows differ from the [visibleRows](#method-gridrenderergetvisiblerows) because of [drawAhead](#attr-gridrendererdrawaheadratio). The drawn rows are the appropriate range to consider if you need to, eg, using [GridRenderer.refreshCell](#method-gridrendererrefreshcell) to update all the cells in a column.
+
+If the grid is undrawn or the [GridRenderer.emptyMessage](#attr-gridrendereremptymessage) is currently shown, returns \[null,null\];
+
+### Returns
+
+`[Array](#type-array)` — —
+
+---
 ## Method: GridRenderer.getCellRecord
 
 ### Description
@@ -736,7 +831,45 @@ If you do implement `getCellRecord`, the value you return is passed to you as th
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — record for this cell
+`[Object](../reference_2.md#type-object)` — record for this cell
+
+---
+## Method: GridRenderer.refreshRow
+
+### Description
+Refresh an entire row of cells without redrawing the grid.
+
+The cells' values, CSS classes, and CSS text will be refreshed, to the current values returned by getCellValue(), getCellStyle() and getCellCSSText() respectively.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| rowNum | [number](#type-number) | false | — | row number of cell to refresh |
+
+### Groups
+
+- appearance
+
+### See Also
+
+- [GridRenderer.refreshCellStyle](#method-gridrendererrefreshcellstyle)
+- [GridRenderer.refreshCell](#method-gridrendererrefreshcell)
+
+**Flags**: A
+
+---
+## Method: GridRenderer.setColumnWidth
+
+### Description
+Sets the width of a single column.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| colNum | [number](#type-number) | false | — | the number of the column to resize |
+| newWidth | [number](#type-number) | false | — | the new width |
 
 ---
 ## Method: GridRenderer.rowMouseDown
@@ -754,13 +887,49 @@ Called when a row receives a mousedown event.
 
 ### Returns
 
-`[Boolean](#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 
 - events
 
 **Flags**: A
+
+---
+## Method: GridRenderer.getRowTop
+
+### Description
+Returns the top coordinate for a given row number, relative to the top of body content. Use [GridRenderer.getRowPageTop](#method-gridrenderergetrowpagetop) for a page-relative coordinate.
+
+This method is reliable only for rows that are currently drawn, which is generally only rows that are visible in the viewport. If row heights vary (see `fixedRowHeights`), coordinates for rows that are not currently shown are rough approximations.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| rowNum | [int](../reference.md#type-int) | false | — | — |
+
+### Returns
+
+`[int](../reference.md#type-int)` — Y-coordinate
+
+### Groups
+
+- positioning
+
+**Flags**: A
+
+---
+## Method: GridRenderer.setFastCellUpdates
+
+### Description
+Setter for [GridRenderer.fastCellUpdates](#attr-gridrendererfastcellupdates). Has no effect in browsers other than Internet Explorer.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| fastCellUpdates | [boolean](../reference.md#type-boolean) | false | — | whether to enable fastCellUpdates. |
 
 ---
 ## Method: GridRenderer.getCellValue
@@ -779,6 +948,123 @@ Return the HTML to display in this cell. Implementing this is required to get a 
 ### Returns
 
 `[String](#type-string)` — HTML to display in this cell
+
+---
+## Method: GridRenderer.getColumnPageLeft
+
+### Description
+Return the left coordinate for a given column number as a GLOBAL coordinate
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| colNum | [Integer](../reference_2.md#type-integer) | false | — | number of the column |
+
+### Returns
+
+`[Integer](../reference_2.md#type-integer)` — page left offset of the passed colNum, or null if undrawn or no such column
+
+### Groups
+
+- sizing
+- positioning
+
+**Flags**: A
+
+---
+## Method: GridRenderer.cellDoubleClick
+
+### Description
+Called when a cell receives a double click event.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| record | [ListGridRecord](#type-listgridrecord) | false | — | Record object returned from getCellRecord() |
+| rowNum | [number](#type-number) | false | — | row number for the cell |
+| colNum | [number](#type-number) | false | — | column number of the cell |
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
+
+### Groups
+
+- events
+
+**Flags**: A
+
+---
+## Method: GridRenderer.rowOver
+
+### Description
+Called when the mouse pointer enters a row
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| record | [ListGridRecord](#type-listgridrecord) | false | — | cell record as returned by getCellRecord |
+| rowNum | [number](#type-number) | false | — | row number for the cell |
+| colNum | [number](#type-number) | false | — | column number of the cell |
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
+
+### Groups
+
+- events
+
+**Flags**: A
+
+---
+## Method: GridRenderer.getEventColumn
+
+### Description
+Returns the column number of the most recent mouse event.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| x | [Integer](../reference_2.md#type-integer) | true | — | optional x-coordinate to obtain column number for, in lieu of the x coordinate of the last mouse event |
+
+### Returns
+
+`[int](../reference.md#type-int)` — column number, or -2 if beyond last drawn column
+
+### Groups
+
+- events
+- selection
+
+---
+## Method: GridRenderer.refreshCell
+
+### Description
+Refresh an individual cell without redrawing the grid.
+
+The cell's value, CSS class, and CSS text will be refreshed, to the current values returned by getCellValue(), getCellStyle() and getCellCSSText() respectively.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| rowNum | [number](#type-number) | false | — | row number of cell to refresh |
+| colNum | [number](#type-number) | false | — | column number of cell to refresh |
+
+### Groups
+
+- appearance
+
+### See Also
+
+- [GridRenderer.refreshCellStyle](#method-gridrendererrefreshcellstyle)
+
+**Flags**: A
 
 ---
 ## Method: GridRenderer.getTotalRows
@@ -812,13 +1098,45 @@ Called when a row receives a mouseup event.
 
 ### Returns
 
-`[Boolean](#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 
 - events
 
 **Flags**: A
+
+---
+## Method: GridRenderer.getCellStyle
+
+### Description
+Return the CSS class for a cell. By default this method has the following implementation:  
+\- return any custom style for the record ([GridRenderer.recordCustomStyleProperty](#attr-gridrendererrecordcustomstyleproperty)) if defined.  
+\- create a style name based on the result of [GridRenderer.getBaseStyle](#method-gridrenderergetbasestyle) and the state of the record using the rules described in [cellStyleSuffixes](../kb_topics/cellStyleSuffixes.md#kb-topic-cellstylesuffixes).
+
+Cell Styles are customizable by:
+
+*   attaching a custom style to a record by setting `record[this.recordCustomStyleProperty]` to some valid CSS style name.
+*   modifying the base style returned by getBaseStyle() \[see that method for further documentation on this\]
+*   overriding this function
+
+In addition to this, [getCellCSSText()](#method-gridrenderergetcellcsstext) may be overriden to provide custom cssText to apply on top of the styling attributes derived from the named style.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| record | [ListGridRecord](#type-listgridrecord) | false | — | record object for this row and column |
+| rowNum | [number](#type-number) | false | — | number of the row |
+| colNum | [number](#type-number) | false | — | number of the column |
+
+### Returns
+
+`[CSSStyleName](../reference.md#type-cssstylename)` — CSS style for this cell
+
+### Groups
+
+- appearance
 
 ---
 ## Method: GridRenderer.cellValueHover
@@ -836,7 +1154,7 @@ Optional stringMethod to fire when the user hovers over a cell and the value is 
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false to suppress the standard hover
+`[boolean](../reference.md#type-boolean)` — false to suppress the standard hover
 
 ### Groups
 
@@ -874,6 +1192,77 @@ When using incremental rendering, the `rowNum` param represents the rowNum in vi
 **Flags**: A
 
 ---
+## Method: GridRenderer.getCellRowSpan
+
+### Description
+When using [row spanning](#method-gridrenderergetrowspan), returns the number of cells spanned by the cell at the given coordinates.
+
+If the passed coordinates are in the middle of a series of spanned cells, the row span of the spanning cell is returned. For example, if row 2 col 0 spans 3 cells, calls to `getCellRowSpan()` for row 2 col 0, row 3 col 0, row 4 col 0 will all return 3.
+
+This method returns row span information for the current rendered cells. In contrast, if the grid is about to be redrawn, a call to `getRowSpan()` may return row span values for how the grid is about to be drawn. Also, user-provided getRowSpan() functions are not required to operate properly when called outside of the grid rendering loop.
+
+**Note:** This method is a utility method for developers - it is not called directly by the grid rendering path and therefore is not intended for override. To set up custom row-spanning behavior, override [GridRenderer.getRowSpan](#method-gridrenderergetrowspan) instead.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| rowNum | [int](../reference.md#type-int) | false | — | row number of cell to return the row span for |
+| colNum | [int](../reference.md#type-int) | false | — | column number of cell to return the row span for |
+
+### Returns
+
+`[int](../reference.md#type-int)` — number of cells spanned by the cell that spans through these coordinates
+
+---
+## Method: GridRenderer.rowClick
+
+### Description
+Called when a row receives a click event.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| record | [ListGridRecord](#type-listgridrecord) | false | — | Record object returned from getCellRecord() |
+| rowNum | [number](#type-number) | false | — | row number for the cell |
+| colNum | [number](#type-number) | false | — | column number of the cell |
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
+
+### Groups
+
+- events
+
+**Flags**: A
+
+---
+## Method: GridRenderer.cellIsEnabled
+
+### Description
+Whether this cell should be considered enabled. Affects whether events will fire for the cell, and the default styling behavior in getCellStyle.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| rowNum | [number](#type-number) | false | — | row number for the cell |
+| colNum | [number](#type-number) | false | — | column number of the cell |
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — whether this record is enabled or not
+
+### Groups
+
+- selection
+- appearance
+
+**Flags**: A
+
+---
 ## Method: GridRenderer.getBaseStyle
 
 ### Description
@@ -894,6 +1283,101 @@ Return the base stylename for this cell. Default implementation just returns thi
 ### See Also
 
 - [GridRenderer.getCellStyle](#method-gridrenderergetcellstyle)
+
+**Flags**: A
+
+---
+## Method: GridRenderer.rowContextClick
+
+### Description
+Called when a row receives a contextclick event.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| record | [ListGridRecord](#type-listgridrecord) | false | — | cell record as returned by getCellRecord() |
+| rowNum | [number](#type-number) | false | — | row number for the cell |
+| colNum | [number](#type-number) | false | — | column number of the cell |
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
+
+### Groups
+
+- events
+
+**Flags**: A
+
+---
+## Method: GridRenderer.getCellPageRect
+
+### Description
+Returns the page offsets and size of the cell at the passed row and column. If auto-sizing is enabled, sizes are not definitive until the grid has finished drawing, so calling this method before drawing completes will return the configured column sizes.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| rowNum | [number](#type-number) | false | — | row index of the cell |
+| colNum | [number](#type-number) | false | — | column index of the cell |
+
+### Returns
+
+`[Array of Integer](#type-array-of-integer)` — the page rect of the passed cell
+
+### Groups
+
+- sizing
+- positioning
+
+**Flags**: A
+
+---
+## Method: GridRenderer.getColumnLeft
+
+### Description
+Return the left coordinate (in local coordinate space) of a particular column.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| colNum | [Integer](../reference_2.md#type-integer) | false | — | number of the column |
+
+### Returns
+
+`[Integer](../reference_2.md#type-integer)` — left coordinate of the passed colNum
+
+### Groups
+
+- sizing
+- positioning
+
+**Flags**: A
+
+---
+## Method: GridRenderer.cellMouseDown
+
+### Description
+Called when a cell receives a mousedown event.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| record | [ListGridRecord](#type-listgridrecord) | false | — | cell record as returned by getCellRecord() |
+| rowNum | [number](#type-number) | false | — | row number for the cell |
+| colNum | [number](#type-number) | false | — | column number of the cell |
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
+
+### Groups
+
+- events
 
 **Flags**: A
 
@@ -923,13 +1407,13 @@ Given a pointer to an element in the DOM, this method will check whether this el
 ## Method: GridRenderer.getEventRow
 
 ### Description
-Returns the row number of the provided Y-coordinate, or the most recent mouse event if a Y-coordinate is not provided.
+Returns the row number of the most recent mouse event.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| y | [Integer](../reference_2.md#type-integer) | true | — | Y-coordinate relative to the top edge of the content to obtain the row number for. If not provided, then [Canvas.getOffsetY](Canvas.md#method-canvasgetoffsety) will be used. |
+| y | [Integer](../reference_2.md#type-integer) | true | — | optional y-coordinate to obtain row number, in lieu of the y coordinate of the last mouse event |
 
 ### Returns
 
@@ -1015,7 +1499,7 @@ Called when a cell receives a mouseup event.
 
 ### Returns
 
-`[Boolean](#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -1085,11 +1569,35 @@ Called when (cell-based) selection changes within this grid.
 
 ### Returns
 
-`[Boolean](#type-boolean)` — Returning false will prevent the GridRenderer styling from being updated to reflect the selection change.
+`[boolean](../reference.md#type-boolean)` — Returning false will prevent the GridRenderer styling from being updated to reflect the selection change.
 
 ### Groups
 
 - selection
+
+**Flags**: A
+
+---
+## Method: GridRenderer.cellOver
+
+### Description
+Called when the mouse pointer enters a cell
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| record | [ListGridRecord](#type-listgridrecord) | false | — | cell record as returned by getCellRecord |
+| rowNum | [number](#type-number) | false | — | row number for the cell |
+| colNum | [number](#type-number) | false | — | column number of the cell |
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
+
+### Groups
+
+- events
 
 **Flags**: A
 
@@ -1135,13 +1643,24 @@ Called when the mouse pointer leaves a cell
 
 ### Returns
 
-`[Boolean](#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 
 - events
 
 **Flags**: A
+
+---
+## Method: GridRenderer.getNearestColToEvent
+
+### Description
+Returns the nearest column to the event coordinates
+
+### Groups
+
+- events
+- selection
 
 ---
 ## Method: GridRenderer.cellValueHoverHTML
@@ -1196,6 +1715,18 @@ Return the width of a particular column.
 **Flags**: A
 
 ---
+## Method: GridRenderer.setColumnWidths
+
+### Description
+Sets the width of all columns in the grid.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| newWidths | [Array](#type-array) | false | — | array of new widths - one for each column. |
+
+---
 ## Method: GridRenderer.getRowSpan
 
 ### Description
@@ -1218,565 +1749,6 @@ NOTE: if a cell spans multiple rows, getCellRecord/Style/etc will be called with
 `[number](#type-number)` — number of cells to span
 
 **Flags**: A
-
----
-## Method: GridRenderer.rowHover
-
-### Description
-Called when the mouse hovers over a row if this.canHover is true. Returning false will suppress the hover text from being shown if this.showHover is true.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| record | [ListGridRecord](#type-listgridrecord) | false | — | cell record as returned by getCellRecord |
-| rowNum | [number](#type-number) | false | — | row number for the cell |
-| colNum | [number](#type-number) | false | — | column number of the cell |
-
-### Returns
-
-`[Boolean](#type-boolean)` — whether to cancel the event (default behavior of showing the hover)
-
-### Groups
-
-- events
-
-### See Also
-
-- [GridRenderer.canHover](#attr-gridrenderercanhover)
-
-**Flags**: A
-
----
-## Method: GridRenderer.cellHover
-
-### Description
-Called when the mouse hovers over a cell if `this.canHover` is `true`. Returning `false` will suppress the hover text from being shown if `showHover` is `true` for `this` or the field.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| record | [ListGridRecord](#type-listgridrecord) | false | — | cell record as returned by getCellRecord |
-| rowNum | [number](#type-number) | false | — | row number for the cell |
-| colNum | [number](#type-number) | false | — | column number of the cell |
-
-### Returns
-
-`[Boolean](#type-boolean)` — whether to cancel the event
-
-### Groups
-
-- events
-
-### See Also
-
-- [GridRenderer.canHover](#attr-gridrenderercanhover)
-
-**Flags**: A
-
----
-## Method: GridRenderer.rowOut
-
-### Description
-Called when the mouse pointer leaves a row
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| record | [ListGridRecord](#type-listgridrecord) | false | — | cell record as returned by getCellRecord |
-| rowNum | [number](#type-number) | false | — | row number for the cell |
-| colNum | [number](#type-number) | false | — | column number of the cell |
-
-### Returns
-
-`[Boolean](#type-boolean)` — whether to cancel the event
-
-### Groups
-
-- events
-
-**Flags**: A
-
----
-## Method: GridRenderer.findRowNum
-
-### Description
-Given a record displayed in this grid, find and return the rowNum in which the record appears.
-
-As with [GridRenderer.getCellRecord](#method-gridrenderergetcellrecord) implementing this method is optional as a valid grid may be created without any notion of records.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| record | [ListGridRecord](#type-listgridrecord) | false | — | cell record as returned by getCellRecord |
-
-### Returns
-
-`[number](#type-number)` — index of the row containing the record or -1 if not found
-
----
-## Method: GridRenderer.getNearestRowToEvent
-
-### Description
-Returns the nearest row to the event coordinates
-
-### Groups
-
-- events
-- selection
-
----
-## Method: GridRenderer.getDrawnRows
-
-### Description
-Get the rows that are currently drawn (exist in the DOM), as an array of \[firstRowNum, lastRowNum\].
-
-The drawn rows differ from the [visibleRows](#method-gridrenderergetvisiblerows) because of [drawAhead](#attr-gridrendererdrawaheadratio). The drawn rows are the appropriate range to consider if you need to, eg, using [GridRenderer.refreshCell](#method-gridrendererrefreshcell) to update all the cells in a column.
-
-If the grid is undrawn or the [GridRenderer.emptyMessage](#attr-gridrendereremptymessage) is currently shown, returns \[null,null\];
-
-### Returns
-
-`[Array](#type-array)` — —
-
----
-## Method: GridRenderer.refreshRow
-
-### Description
-Refresh an entire row of cells without redrawing the grid.
-
-The cells' values, CSS classes, and CSS text will be refreshed, to the current values returned by getCellValue(), getCellStyle() and getCellCSSText(), respectively. Also, if displaying a standard hover (not a hover component), re-checks to see if the hover should continue to be displayed, hiding the hover if not, or updating the hover if so.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| rowNum | [number](#type-number) | false | — | row number of cell to refresh |
-
-### Groups
-
-- appearance
-
-### See Also
-
-- [GridRenderer.refreshCellStyle](#method-gridrendererrefreshcellstyle)
-- [GridRenderer.refreshCell](#method-gridrendererrefreshcell)
-
-**Flags**: A
-
----
-## Method: GridRenderer.setColumnWidth
-
-### Description
-Sets the width of a single column.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| colNum | [number](#type-number) | false | — | the number of the column to resize |
-| newWidth | [number](#type-number) | false | — | the new width |
-
----
-## Method: GridRenderer.getRowTop
-
-### Description
-Returns the top coordinate for a given row number, relative to the top of body content. Use [GridRenderer.getRowPageTop](#method-gridrenderergetrowpagetop) for a page-relative coordinate.
-
-This method is reliable only for rows that are currently drawn, which is generally only rows that are visible in the viewport. If row heights vary (see `fixedRowHeights`), coordinates for rows that are not currently shown are rough approximations.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| rowNum | [int](../reference.md#type-int) | false | — | — |
-
-### Returns
-
-`[int](../reference.md#type-int)` — Y-coordinate
-
-### Groups
-
-- positioning
-
-**Flags**: A
-
----
-## Method: GridRenderer.setFastCellUpdates
-
-### Description
-Setter for [GridRenderer.fastCellUpdates](#attr-gridrendererfastcellupdates). Has no effect in browsers other than Internet Explorer.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| fastCellUpdates | [boolean](../reference.md#type-boolean) | false | — | whether to enable fastCellUpdates. |
-
----
-## Method: GridRenderer.getColumnPageLeft
-
-### Description
-Return the left coordinate for a given column number as a GLOBAL coordinate
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| colNum | [Integer](../reference_2.md#type-integer) | false | — | number of the column |
-
-### Returns
-
-`[Integer](../reference_2.md#type-integer)` — page left offset of the passed colNum, or null if undrawn or no such column
-
-### Groups
-
-- sizing
-- positioning
-
-**Flags**: A
-
----
-## Method: GridRenderer.cellDoubleClick
-
-### Description
-Called when a cell receives a double click event.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| record | [ListGridRecord](#type-listgridrecord) | false | — | Record object returned from getCellRecord() |
-| rowNum | [number](#type-number) | false | — | row number for the cell |
-| colNum | [number](#type-number) | false | — | column number of the cell |
-
-### Returns
-
-`[Boolean](#type-boolean)` — whether to cancel the event
-
-### Groups
-
-- events
-
-**Flags**: A
-
----
-## Method: GridRenderer.rowOver
-
-### Description
-Called when the mouse pointer enters a row
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| record | [ListGridRecord](#type-listgridrecord) | false | — | cell record as returned by getCellRecord |
-| rowNum | [number](#type-number) | false | — | row number for the cell |
-| colNum | [number](#type-number) | false | — | column number of the cell |
-
-### Returns
-
-`[Boolean](#type-boolean)` — whether to cancel the event
-
-### Groups
-
-- events
-
-**Flags**: A
-
----
-## Method: GridRenderer.getEventColumn
-
-### Description
-Returns the column number of the provided X-coordinate, or the most recent mouse event if an X-coordinate is not provided.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| x | [Integer](../reference_2.md#type-integer) | true | — | X-coordinate relative to the left edge of the content to obtain the column number for. If not provided, then [Canvas.getOffsetX](Canvas.md#method-canvasgetoffsetx) will be used. |
-
-### Returns
-
-`[int](../reference.md#type-int)` — column number, or -2 if beyond last drawn column
-
-### Groups
-
-- events
-- selection
-
----
-## Method: GridRenderer.refreshCell
-
-### Description
-Refresh an individual cell without redrawing the grid.
-
-The cell's value, CSS class, and CSS text will be refreshed, to the current values returned by getCellValue(), getCellStyle(), and getCellCSSText(), respectively. Also, if displaying a standard hover (not a hover component), re-checks to see if the hover should continue to be displayed, hiding the hover if not, or updating the hover if so.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| rowNum | [number](#type-number) | false | — | row number of cell to refresh |
-| colNum | [number](#type-number) | false | — | column number of cell to refresh |
-
-### Groups
-
-- appearance
-
-### See Also
-
-- [GridRenderer.refreshCellStyle](#method-gridrendererrefreshcellstyle)
-
-**Flags**: A
-
----
-## Method: GridRenderer.getCellStyle
-
-### Description
-Return the CSS class for a cell. By default this method has the following implementation:  
-\- return any custom style for the record ([GridRenderer.recordCustomStyleProperty](#attr-gridrendererrecordcustomstyleproperty)) if defined.  
-\- create a style name based on the result of [GridRenderer.getBaseStyle](#method-gridrenderergetbasestyle) and the state of the record using the rules described in [cellStyleSuffixes](../kb_topics/cellStyleSuffixes.md#kb-topic-cellstylesuffixes).
-
-Cell Styles are customizable by:
-
-*   attaching a custom style to a record by setting `record[this.recordCustomStyleProperty]` to some valid CSS style name.
-*   modifying the base style returned by getBaseStyle() \[see that method for further documentation on this\]
-*   overriding this function
-
-In addition to this, [getCellCSSText()](#method-gridrenderergetcellcsstext) may be overriden to provide custom cssText to apply on top of the styling attributes derived from the named style.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| record | [ListGridRecord](#type-listgridrecord) | false | — | record object for this row and column |
-| rowNum | [number](#type-number) | false | — | number of the row |
-| colNum | [number](#type-number) | false | — | number of the column |
-
-### Returns
-
-`[CSSStyleName](../reference.md#type-cssstylename)` — CSS style for this cell
-
-### Groups
-
-- appearance
-
----
-## Method: GridRenderer.getCellRowSpan
-
-### Description
-When using [row spanning](#method-gridrenderergetrowspan), returns the number of cells spanned by the cell at the given coordinates.
-
-If the passed coordinates are in the middle of a series of spanned cells, the row span of the spanning cell is returned. For example, if row 2 col 0 spans 3 cells, calls to `getCellRowSpan()` for row 2 col 0, row 3 col 0, row 4 col 0 will all return 3.
-
-This method returns row span information for the current rendered cells. In contrast, if the grid is about to be redrawn, a call to `getRowSpan()` may return row span values for how the grid is about to be drawn. Also, user-provided getRowSpan() functions are not required to operate properly when called outside of the grid rendering loop.
-
-**Note:** This method is a utility method for developers - it is not called directly by the grid rendering path and therefore is not intended for override. To set up custom row-spanning behavior, override [GridRenderer.getRowSpan](#method-gridrenderergetrowspan) instead.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| rowNum | [int](../reference.md#type-int) | false | — | row number of cell to return the row span for |
-| colNum | [int](../reference.md#type-int) | false | — | column number of cell to return the row span for |
-
-### Returns
-
-`[int](../reference.md#type-int)` — number of cells spanned by the cell that spans through these coordinates
-
----
-## Method: GridRenderer.rowClick
-
-### Description
-Called when a row receives a click event.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| record | [ListGridRecord](#type-listgridrecord) | false | — | Record object returned from getCellRecord() |
-| rowNum | [number](#type-number) | false | — | row number for the cell |
-| colNum | [number](#type-number) | false | — | column number of the cell |
-
-### Returns
-
-`[Boolean](#type-boolean)` — whether to cancel the event
-
-### Groups
-
-- events
-
-**Flags**: A
-
----
-## Method: GridRenderer.cellIsEnabled
-
-### Description
-Whether this cell should be considered enabled. Affects whether events will fire for the cell, and the default styling behavior in getCellStyle.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| rowNum | [number](#type-number) | false | — | row number for the cell |
-| colNum | [number](#type-number) | false | — | column number of the cell |
-
-### Returns
-
-`[boolean](../reference.md#type-boolean)` — whether this record is enabled or not
-
-### Groups
-
-- selection
-- appearance
-
-**Flags**: A
-
----
-## Method: GridRenderer.rowContextClick
-
-### Description
-Called when a row receives a contextclick event.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| record | [ListGridRecord](#type-listgridrecord) | false | — | cell record as returned by getCellRecord() |
-| rowNum | [number](#type-number) | false | — | row number for the cell |
-| colNum | [number](#type-number) | false | — | column number of the cell |
-
-### Returns
-
-`[Boolean](#type-boolean)` — whether to cancel the event
-
-### Groups
-
-- events
-
-**Flags**: A
-
----
-## Method: GridRenderer.getCellPageRect
-
-### Description
-Returns the page offsets and size of the cell at the passed row and column. If auto-sizing is enabled, sizes are not definitive until the grid has finished drawing, so calling this method before drawing completes will return the configured column sizes.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| rowNum | [number](#type-number) | false | — | row index of the cell |
-| colNum | [number](#type-number) | false | — | column index of the cell |
-
-### Returns
-
-`[Array of Integer](#type-array-of-integer)` — the page rect of the passed cell
-
-### Groups
-
-- sizing
-- positioning
-
-**Flags**: A
-
----
-## Method: GridRenderer.getColumnLeft
-
-### Description
-Return the left coordinate (in local coordinate space) of a particular column.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| colNum | [Integer](../reference_2.md#type-integer) | false | — | number of the column |
-
-### Returns
-
-`[Integer](../reference_2.md#type-integer)` — left coordinate of the passed colNum
-
-### Groups
-
-- sizing
-- positioning
-
-**Flags**: A
-
----
-## Method: GridRenderer.cellMouseDown
-
-### Description
-Called when a cell receives a mousedown event.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| record | [ListGridRecord](#type-listgridrecord) | false | — | cell record as returned by getCellRecord() |
-| rowNum | [number](#type-number) | false | — | row number for the cell |
-| colNum | [number](#type-number) | false | — | column number of the cell |
-
-### Returns
-
-`[Boolean](#type-boolean)` — whether to cancel the event
-
-### Groups
-
-- events
-
-**Flags**: A
-
----
-## Method: GridRenderer.cellOver
-
-### Description
-Called when the mouse pointer enters a cell
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| record | [ListGridRecord](#type-listgridrecord) | false | — | cell record as returned by getCellRecord |
-| rowNum | [number](#type-number) | false | — | row number for the cell |
-| colNum | [number](#type-number) | false | — | column number of the cell |
-
-### Returns
-
-`[Boolean](#type-boolean)` — whether to cancel the event
-
-### Groups
-
-- events
-
-**Flags**: A
-
----
-## Method: GridRenderer.getNearestColToEvent
-
-### Description
-Returns the nearest column to the event coordinates
-
-### Groups
-
-- events
-- selection
-
----
-## Method: GridRenderer.setColumnWidths
-
-### Description
-Sets the width of all columns in the grid.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| newWidths | [Array](#type-array) | false | — | array of new widths - one for each column. |
 
 ---
 ## Method: GridRenderer.cellValueIsClipped
@@ -1824,6 +1796,34 @@ Returns the Y-coordinate for a given row number as a page-relative coordinate. S
 **Flags**: A
 
 ---
+## Method: GridRenderer.rowHover
+
+### Description
+Called when the mouse hovers over a row if this.canHover is true. Returning false will suppress the hover text from being shown if this.showHover is true.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| record | [ListGridRecord](#type-listgridrecord) | false | — | cell record as returned by getCellRecord |
+| rowNum | [number](#type-number) | false | — | row number for the cell |
+| colNum | [number](#type-number) | false | — | column number of the cell |
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event (default behavior of showing the hover)
+
+### Groups
+
+- events
+
+### See Also
+
+- [GridRenderer.canHover](#attr-gridrenderercanhover)
+
+**Flags**: A
+
+---
 ## Method: GridRenderer.rowDoubleClick
 
 ### Description
@@ -1839,7 +1839,7 @@ Called when a row receives a double click event.
 
 ### Returns
 
-`[Boolean](#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -1863,7 +1863,7 @@ Called when a cell receives a click event.
 
 ### Returns
 
-`[Boolean](#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 
@@ -1908,7 +1908,7 @@ Called when a cell receives a contextclick event.
 
 ### Returns
 
-`[Boolean](#type-boolean)` — whether to cancel the event
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
 
 ### Groups
 

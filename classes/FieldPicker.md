@@ -44,10 +44,54 @@ A [label](Label.md#class-label) displaying the text assigned as the FieldPicker'
 **Flags**: IR
 
 ---
+## Attr: FieldPicker.cancelChangesButton
+
+### Description
+An AutoChild [button](../reference.md#class-ibutton) that saves the current field-set and exits the Field Picker.
+
+**Flags**: IR
+
+---
+## Attr: FieldPicker.showFieldOrderButtons
+
+### Description
+When set to false, hides the right-most set of buttons, used for re-ordering fields in the Visible Fields list.
+
+**Flags**: IR
+
+---
+## Attr: FieldPicker.currentFieldsGrid
+
+### Description
+A [ListGrid](ListGrid_1.md#class-listgrid) showing the list of currently selected fields.
+
+**Flags**: IR
+
+---
 ## Attr: FieldPicker.availableFieldsHeaderControls
 
 ### Description
 Provides a set of controls to appear as [section header controls](SectionHeader.md#attr-sectionheadercontrols) above the available fields grid.
+
+**Flags**: IR
+
+---
+## Attr: FieldPicker.saveAndExitButton
+
+### Description
+An AutoChild [button](../reference.md#class-ibutton) that saves the current field-set and exits the Field Picker.
+
+**Flags**: IR
+
+---
+## Attr: FieldPicker.hilitesText
+
+### Description
+—
+
+### Groups
+
+- i18nMessages
 
 **Flags**: IR
 
@@ -80,6 +124,30 @@ Shows a "Highlights..." button that shows an interface for editing hilites in th
 **Flags**: IR
 
 ---
+## Attr: FieldPicker.addCustomFieldsButtonTitle
+
+### Description
+The title displayed for the Add Custom Fields Button
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IR
+
+---
+## Attr: FieldPicker.availableTitleTitle
+
+### Description
+The title displayed for the title property of the available fields
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IR
+
+---
 ## Attr: FieldPicker.currentFieldsTitle
 
 ### Description
@@ -88,6 +156,26 @@ Shows a "Highlights..." button that shows an interface for editing hilites in th
 ### Groups
 
 - i18nMessages
+
+**Flags**: IR
+
+---
+## Attr: FieldPicker.emptyTitleHint
+
+### Description
+The hint shown when editing a field with no title defined.
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IR
+
+---
+## Attr: FieldPicker.dataSource
+
+### Description
+An optional DataSource that is used to create a disposable [FieldPicker.dataBoundComponent](#attr-fieldpickerdataboundcomponent) if none is provided. Has no effect if a [FieldPicker.dataBoundComponent](#attr-fieldpickerdataboundcomponent) is specified.
 
 **Flags**: IR
 
@@ -104,10 +192,47 @@ The title displayed for the sample value property of the current fields
 **Flags**: IR
 
 ---
+## Attr: FieldPicker.saveAndExitButtonTitle
+
+### Description
+The title shown on the Save and Exit button
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IR
+
+---
 ## Attr: FieldPicker.buttonLayout
 
 ### Description
 A [horizontal layout](../reference.md#class-hlayout) used to show the [Save](#attr-fieldpickersaveandexitbutton) and [Cancel](#attr-fieldpickercancelchangesbutton) buttons.
+
+**Flags**: IR
+
+---
+## Attr: FieldPicker.currentTitleTitle
+
+### Description
+The title displayed for the title property of the current fields
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IR
+
+---
+## Attr: FieldPicker.canFilterSampleValue
+
+### Description
+Whether the current fields' filter row allows the sample value column to be filtered.
+
+### See Also
+
+- [FieldPicker.sampleValueTitle](#attr-fieldpickersamplevaluetitle)
+- [FieldPicker.sampleRecord](#attr-fieldpickersamplerecord)
 
 **Flags**: IR
 
@@ -148,146 +273,21 @@ The title shown on the 'Visible Fields' grid's context menu item, whose click ha
 **Flags**: IR
 
 ---
+## Attr: FieldPicker.sampleRecord
+
+### Description
+If a `sampleRecord` is provided, the FieldPicker will show a second column in the Current Fields dialog showing the cell value that will appear for that field given the provided sample record.  
+A value of "first" means the first record. If the underlying [FieldPicker.dataBoundComponent](#attr-fieldpickerdataboundcomponent) is a [TreeGrid](TreeGrid.md#class-treegrid), you can specify "firstOpenLeaf" to use the first open leaf as the sampleRecord (this is often desirable in trees where the first record may be a folder that's used for organizational purposes only and hence would have no actual data for columns other than the tree column).
+
+**Flags**: IR
+
+---
 ## Attr: FieldPicker.dataBoundComponent
 
 ### Description
 The component whose fields should be edited.
 
 Note that if [DataBoundComponent.useAllDataSourceFields](DataBoundComponent.md#attr-databoundcomponentusealldatasourcefields) is set on the component, it will be cleared when the FieldPicker applies the requested ordering since that setting imposes a fixed ordering on the fields.
-
-**Flags**: IR
-
----
-## Attr: FieldPicker.cancelChangesButton
-
-### Description
-An AutoChild [button](../reference.md#class-ibutton) that saves the current field-set and exits the Field Picker.
-
-**Flags**: IR
-
----
-## Attr: FieldPicker.showFieldOrderButtons
-
-### Description
-When set to false, hides the right-most set of buttons, used for re-ordering fields in the Visible Fields list.
-
-**Flags**: IR
-
----
-## Attr: FieldPicker.currentFieldsGrid
-
-### Description
-A [ListGrid](ListGrid_1.md#class-listgrid) showing the list of currently selected fields.
-
-**Flags**: IR
-
----
-## Attr: FieldPicker.saveAndExitButton
-
-### Description
-An AutoChild [button](../reference.md#class-ibutton) that saves the current field-set and exits the Field Picker.
-
-**Flags**: IR
-
----
-## Attr: FieldPicker.hilitesText
-
-### Description
-—
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IR
-
----
-## Attr: FieldPicker.addCustomFieldsButtonTitle
-
-### Description
-The title displayed for the Add Custom Fields Button
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IR
-
----
-## Attr: FieldPicker.availableTitleTitle
-
-### Description
-The title displayed for the title property of the available fields
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IR
-
----
-## Attr: FieldPicker.emptyTitleHint
-
-### Description
-The hint shown when editing a field with no title defined.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IR
-
----
-## Attr: FieldPicker.dataSource
-
-### Description
-An optional DataSource that is used to create a disposable [FieldPicker.dataBoundComponent](#attr-fieldpickerdataboundcomponent) if none is provided. Has no effect if a [FieldPicker.dataBoundComponent](#attr-fieldpickerdataboundcomponent) is specified.
-
-**Flags**: IR
-
----
-## Attr: FieldPicker.saveAndExitButtonTitle
-
-### Description
-The title shown on the Save and Exit button
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IR
-
----
-## Attr: FieldPicker.currentTitleTitle
-
-### Description
-The title displayed for the title property of the current fields
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IR
-
----
-## Attr: FieldPicker.canFilterSampleValue
-
-### Description
-Whether the current fields' filter row allows the sample value column to be filtered.
-
-### See Also
-
-- [FieldPicker.sampleValueTitle](#attr-fieldpickersamplevaluetitle)
-- [FieldPicker.sampleRecord](#attr-fieldpickersamplerecord)
-
-**Flags**: IR
-
----
-## Attr: FieldPicker.sampleRecord
-
-### Description
-If a `sampleRecord` is provided, the FieldPicker will show a second column in the Current Fields dialog showing the cell value that will appear for that field given the provided sample record.  
-A value of "first" means the first record. If the underlying [FieldPicker.dataBoundComponent](#attr-fieldpickerdataboundcomponent) is a [TreeGrid](TreeGrid.md#class-treegrid), you can specify "firstOpenLeaf" to use the first open leaf as the sampleRecord (this is often desirable in trees where the first record may be a folder that's used for organizational purposes only and hence would have no actual data for columns other than the tree column).
 
 **Flags**: IR
 

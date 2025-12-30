@@ -4,43 +4,6 @@
 
 ---
 
-## Attr: ServerObject.bean
-
-### Description
-For use when [ServerObject.lookupStyle](#attr-serverobjectlookupstyle) is `"spring"` or `"cdi"`, id (name) of the bean to ask Spring (CDI) to create.
-
-**Flags**: IR
-
----
-## Attr: ServerObject.dropExtraFields
-
-### Description
-By default, for DMI DSResponses, DSResponse.data is filtered on the server to just the set of fields defined on the DataSource. This behavior can be overridden in several ways - see the overview in [DMI](../kb_topics/dmiOverview.md#kb-topic-direct-method-invocation) for details. The value of this attribute overrides [DataSource.dropExtraFields](DataSource.md#attr-datasourcedropextrafields).
-
-**Flags**: IR
-
----
-## Attr: ServerObject.methodName
-
-### Description
-Specifies the name of the method to call for operations using this ServerObject. This is a DataSource-level default; you can override it for individual operations either by specifying the [OperationBinding.serverMethod](OperationBinding.md#attr-operationbindingservermethod) attribute, or by declaring an operation-level serverObject that specifies a different methodName (if you specify both an operationBinding.serverMethod and an operation-level serverObject.methodName, the latter takes precedence)
-
-**Flags**: IR
-
----
-## Attr: ServerObject.attributeName
-
-### Description
-Specifies the name of the attribute by which to look up the DMI instance. This attribute is consulted only when the value of [ServerObject.lookupStyle](#attr-serverobjectlookupstyle) is `"attribute"`.
-
-### See Also
-
-- [ServerObject.attributeScope](#attr-serverobjectattributescope)
-- [ServerObject.lookupStyle](#attr-serverobjectlookupstyle)
-
-**Flags**: IR
-
----
 ## Attr: ServerObject.className
 
 ### Description
@@ -66,7 +29,7 @@ It is also used for `"cdi"` value of [ServerObject.lookupStyle](#attr-serverobje
 ### Description
 Specifies the mechanism for locating the class instance on which to invoke the method. Valid values are as follows:
 
-*   "spring": For use with the [Spring framework](https://spring.io/projects/spring-framework). [ServerObject.bean](#attr-serverobjectbean) contains the name of the bean to invoke. Which application context is used can be configured via web.xml (see the example web.xml in the SDK). See also [serverInit](../kb_topics/serverInit.md#kb-topic-server-framework-initialization) for special concerns with framework initialization when using Spring.
+*   "spring": For use with the [Spring framework](http://springframework.com). [ServerObject.bean](#attr-serverobjectbean) contains the name of the bean to invoke. Which application context is used can be configured via web.xml (see the example web.xml in the SDK). See also [serverInit](../kb_topics/serverInit.md#kb-topic-server-framework-initialization) for special concerns with framework initialization when using Spring.
 *   "cdi": For use with [CDI (Contexts and Dependency Injection)](http://docs.oracle.com/javaee/6/tutorial/doc/giwhb.html). Use [ServerObject.bean](#attr-serverobjectbean) to configure the name of the bean to invoke or, alternatively, [ServerObject.className](#attr-serverobjectclassname) to configure its class name.
 *   "new": A new instance of the class specified by [ServerObject.className](#attr-serverobjectclassname) will be created and the DMI method will be invoked on that instance (unless the specified method is static, in which case no instance is created, but the class specified by [ServerObject.className](#attr-serverobjectclassname) is still used).
 *   "factory": A custom factory provides the class instance on which the DMI method is to be invoked. In this case, [ServerObject.className](#attr-serverobjectclassname) specifies the className of the factory that will provide the instance on which the DMI method is to be invoked. The class specified by [ServerObject.className](#attr-serverobjectclassname) must provide exactly one method named `create` that must return the class instance on which you wish the DMI method to be invoked. Like the DMI methods, the `create` method can request a standard set of values as arguments. See [DMI](../kb_topics/dmiOverview.md#kb-topic-direct-method-invocation) for a list of available values.
@@ -82,14 +45,38 @@ Specifies the mechanism for locating the class instance on which to invoke the m
 **Flags**: IR
 
 ---
+## Attr: ServerObject.bean
+
+### Description
+For use when [ServerObject.lookupStyle](#attr-serverobjectlookupstyle) is `"spring"` or `"cdi"`, id (name) of the bean to ask Spring (CDI) to create.
+
+**Flags**: IR
+
+---
+## Attr: ServerObject.dropExtraFields
+
+### Description
+By default, for DMI DSResponses, DSResponse.data is filtered on the server to just the set of fields defined on the DataSource. This behavior can be overridden in several ways - see the overview in [DMI](../kb_topics/dmiOverview.md#kb-topic-direct-method-invocation) for details. The value of this attribute overrides [DataSource.dropExtraFields](DataSource.md#attr-datasourcedropextrafields).
+
+**Flags**: IR
+
+---
 ## Attr: ServerObject.visibleMethods
 
 ### Description
-When the [ServerObject](../reference_2.md#object-serverobject) appears in an .app.xml [Application declaration file](../kb_topics/applicationDeclaration.md#kb-topic-application-declaration-files) (for RPC DMI), this property specifies the list of [methods](../reference_2.md#object-visiblemethod) on the ServerObject that are callable from the client. Methods in the list can be the names of the exposed `ServerObject` APIs allowed to be called from the client or methods implemented right in the .app.xml file using the [inline server script](../kb_topics/serverScript.md#kb-topic-server-scripting). See the builtin.app.xml file in the /shared/app directory of the SDK for an example of a visibleMethods declaration block.
+When the [ServerObject](../reference_2.md#object-serverobject) appears in a .app.xml file (for RPC DMI), this property specifies the list of methods on the ServerObject that are callable from the client. See the builtin.app.xml file in the /shared/app directory of the SDK for an example of a visibleMethods declaration block.
 
 ### See Also
 
 - [DMI](DMI.md#class-dmi)
+
+**Flags**: IR
+
+---
+## Attr: ServerObject.methodName
+
+### Description
+Specifies the name of the method to call for operations using this ServerObject. This is a DataSource-level default; you can override it for individual operations either by specifying the [OperationBinding.serverMethod](OperationBinding.md#attr-operationbindingservermethod) attribute, or by declaring an operation-level serverObject that specifies a different methodName (if you specify both an operationBinding.serverMethod and an operation-level serverObject.methodName, the latter takes precedence)
 
 **Flags**: IR
 
@@ -126,6 +113,19 @@ You can optionally specify an ID on the ServerObject config block - in which cas
 
 ### Description
 If set, the SmartClient server will use JXPath to call your server code. The `JXPathContext` (start point) will be the object arrived at by applying the [lookupStyle](#attr-serverobjectlookupstyle) and related ServerObject properties. The intention of this property is to allow easier access to your existing Java objects and reduce the need to write SmartClient-specific server code.
+
+**Flags**: IR
+
+---
+## Attr: ServerObject.attributeName
+
+### Description
+Specifies the name of the attribute by which to look up the DMI instance. This attribute is consulted only when the value of [ServerObject.lookupStyle](#attr-serverobjectlookupstyle) is `"attribute"`.
+
+### See Also
+
+- [ServerObject.attributeScope](#attr-serverobjectattributescope)
+- [ServerObject.lookupStyle](#attr-serverobjectlookupstyle)
 
 **Flags**: IR
 

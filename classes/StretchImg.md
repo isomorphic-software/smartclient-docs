@@ -36,7 +36,7 @@ If set to false, items will be displayed in RTL order for RTL pages.
 ### Description
 The base URL for the image.
 
-The [State](../reference.md#type-state) for the component will be combined with this URL using the same approach as described in [Img.src](Img.md#attr-imgsrc). Then the image segment [name](StretchItem.md#attr-stretchitemname) as specified by each [StretchItem](../reference_2.md#object-stretchitem) is added.
+The [State](../reference.md#type-state) for the component will be combined with this URL using the same approach as described in [Img.src](Img.md#attr-imgsrc). Then the image segment [name](StretchItem.md#attr-stretchitemname) as specified by each [StretchItem](../reference.md#object-stretchitem) is added.
 
 For example, for a stretchImg in "Over" state with a `src` of "button.png" and a segment name of "stretch", the resulting URL would be "button\_Over\_stretch.png".
 
@@ -68,60 +68,6 @@ Suffix used the 'grip' image if [StretchImg.showGrip](#attr-stretchimgshowgrip) 
 
 ### Description
 If the default items are used, capSize is the size in pixels of the first and last images in this stretchImg.
-
-### Groups
-
-- appearance
-
-**Flags**: IRW
-
----
-## Attr: StretchImg.showRollOverGrip
-
-### Description
-If [StretchImg.showGrip](#attr-stretchimgshowgrip) is true, this property determines whether to show the 'Over' state on the grip image when the user rolls over on this widget. Has no effect if [StatefulCanvas.showRollOver](StatefulCanvas.md#attr-statefulcanvasshowrollover) is false.
-
-### Groups
-
-- grip
-
-**Flags**: IRA
-
----
-## Attr: StretchImg.showGrip
-
-### Description
-Should we show a "grip" image floating above the center of this widget?
-
-### Groups
-
-- grip
-
-**Flags**: IRA
-
----
-## Attr: StretchImg.items
-
-### Description
-The list of images to display as an array of objects specifying the image names and sizes.
-
-The [name](StretchItem.md#attr-stretchitemname) is appended as a suffix to the [StretchImg.src](#attr-stretchimgsrc) URL in order to fetch separate media files for each image. Alternatively a StretchItem may specify its own [src](StretchItem.md#attr-stretchitemsrc).
-
-The [height](StretchItem.md#attr-stretchitemheight) and [width](StretchItem.md#attr-stretchitemwidth) can be set to a number, "\*" (remaining space, divided amongst all images that specify "\*") or to the name of a property on this StretchImg component, such as "capSize" for the [StretchImg.capSize](#attr-stretchimgcapsize).
-
-Height or width is only used for the axis along which images are stacked. For example, if [StretchImg.vertical](#attr-stretchimgvertical) is true, images stack vertically and heights are used to size images on the vertical axis, but all images will have width matching the overall component size.
-
-For example, the default setting for `items`, which is used to produce stretchable buttons and headers with fixed-size endcaps, is as follows:
-
-```
-   items:[
-        {height:"capSize", name:"start", width:"capSize"},
-        {height:"*", name:"stretch", width:"*"},
-        {height:"capSize", name:"end", width:"capSize"}
-   ]
- 
-```
-Note that by default horizontal StretchImg instances will always render their items in left-to-right order, even if the page is localized for right-to-left display (see [Page.isRTL](Page.md#classmethod-pageisrtl)). This default behavior may be overridden by setting the [StretchImg.ignoreRTL](#attr-stretchimgignorertl) flag to false.
 
 ### Groups
 
@@ -165,6 +111,30 @@ Base URL for the image if [StretchImg.vertical](#attr-stretchimgvertical) is tru
 - [StretchImg.vSrc](#attr-stretchimgvsrc)
 
 **Flags**: IRW
+
+---
+## Attr: StretchImg.showRollOverGrip
+
+### Description
+If [StretchImg.showGrip](#attr-stretchimgshowgrip) is true, this property determines whether to show the 'Over' state on the grip image when the user rolls over on this widget. Has no effect if [StatefulCanvas.showRollOver](StatefulCanvas.md#attr-statefulcanvasshowrollover) is false.
+
+### Groups
+
+- grip
+
+**Flags**: IRA
+
+---
+## Attr: StretchImg.showGrip
+
+### Description
+Should we show a "grip" image floating above the center of this widget?
+
+### Groups
+
+- grip
+
+**Flags**: IRA
 
 ---
 ## Attr: StretchImg.showTitle
@@ -217,6 +187,36 @@ Indicates whether the list of images is drawn vertically from top to bottom (tru
 **Flags**: IRW
 
 ---
+## Attr: StretchImg.items
+
+### Description
+The list of images to display as an array of objects specifying the image names and sizes.
+
+The [name](StretchItem.md#attr-stretchitemname) is appended as a suffix to the [StretchImg.src](#attr-stretchimgsrc) URL in order to fetch separate media files for each image. Alternatively a StretchItem may specify its own [src](StretchItem.md#attr-stretchitemsrc).
+
+The [height](StretchItem.md#attr-stretchitemheight) and [width](StretchItem.md#attr-stretchitemwidth) can be set to a number, "\*" (remaining space, divided amongst all images that specify "\*") or to the name of a property on this StretchImg component, such as "capSize" for the [StretchImg.capSize](#attr-stretchimgcapsize).
+
+Height or width is only used for the axis along which images are stacked. For example, if [StretchImg.vertical](#attr-stretchimgvertical) is true, images stack vertically and heights are used to size images on the vertical axis, but all images will have width matching the overall component size.
+
+For example, the default setting for `items`, which is used to produce stretchable buttons and headers with fixed-size endcaps, is as follows:
+
+```
+   items:[
+        {height:"capSize", name:"start", width:"capSize"},
+        {height:"*", name:"stretch", width:"*"},
+        {height:"capSize", name:"end", width:"capSize"}
+   ]
+ 
+```
+Note that by default horizontal StretchImg instances will always render their items in left-to-right order, even if the page is localized for right-to-left display (see [Page.isRTL](Page.md#classmethod-pageisrtl)). This default behavior may be overridden by setting the [StretchImg.ignoreRTL](#attr-stretchimgignorertl) flag to false.
+
+### Groups
+
+- appearance
+
+**Flags**: IRW
+
+---
 ## Method: StretchImg.setIgnoreRTL
 
 ### Description
@@ -227,20 +227,6 @@ Setter for [StretchImg.ignoreRTL](#attr-stretchimgignorertl).
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | ignoreRTL | [boolean](../reference.md#type-boolean) | false | — | new value for ignoreRTL. |
-
-**Flags**: A
-
----
-## Method: StretchImg.setItems
-
-### Description
-Setter for [StretchImg.items](#attr-stretchimgitems).
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| items | [Array of StretchItem](#type-array-of-stretchitem) | false | — | the new array of items. |
 
 **Flags**: A
 
@@ -262,6 +248,20 @@ Set the specified image's state to newState and update the displayed image given
 - appearance
 
 ---
+## Method: StretchImg.setItems
+
+### Description
+Setter for [StretchImg.items](#attr-stretchimgitems).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| items | [Array of StretchItem](#type-array-of-stretchitem) | false | — | the new array of items. |
+
+**Flags**: A
+
+---
 ## Method: StretchImg.setSrc
 
 ### Description
@@ -271,7 +271,7 @@ Changes the base [StretchImg.src](#attr-stretchimgsrc) for this stretchImg, redr
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| src | [SCImgURL](../reference.md#type-scimgurl) | false | — | new URL for the image |
+| src | [SCImgURL](../reference_2.md#type-scimgurl) | false | — | new URL for the image |
 
 ### Groups
 

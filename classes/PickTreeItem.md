@@ -20,6 +20,26 @@ A [Tree](Tree.md#class-tree) of options from which the user can select.
 **Flags**: IR
 
 ---
+## Attr: PickTreeItem.loadDataOnDemand
+
+### Description
+If this is a databound item, should the load our set of possible options be loaded on demand (as submenus are displayed), or upfront?
+
+**Flags**: IRA
+
+---
+## Attr: PickTreeItem.dataProperties
+
+### Description
+For a `PickTreeItem` that uses a DataSource, these properties will be passed to the automatically-created ResultTree. This can be used for various customizations such as modifying the automatically-chosen [Tree.parentIdField](Tree.md#attr-treeparentidfield).
+
+### Groups
+
+- databinding
+
+**Flags**: IR
+
+---
 ## Attr: PickTreeItem.emptyDisplayValue
 
 ### Description
@@ -32,6 +52,28 @@ If the emptyDisplayValue is null (the default) then this item will use the stand
 ### Groups
 
 - display_values
+
+**Flags**: IRW
+
+---
+## Attr: PickTreeItem.optionDataSource
+
+### Description
+If set, this FormItem will map stored values to display values as though a [ValueMap](../reference.md#type-valuemap) were specified, by fetching records from the specified `optionDataSource` and extracting the [valueField](FormItem.md#attr-formitemvaluefield) and [displayField](FormItem.md#attr-formitemdisplayfield) in loaded records, to derive one valueMap entry per record loaded from the optionDataSource.
+
+With the default setting of [fetchMissingValues](FormItem.md#attr-formitemfetchmissingvalues), fetches will be initiated against the optionDataSource any time the FormItem has a non-null value and no corresponding display value is available. This includes when the form is first initialized, as well as any subsequent calls to [FormItem.setValue](FormItem.md#method-formitemsetvalue), such as may happen when [DynamicForm.editRecord](DynamicForm.md#method-dynamicformeditrecord) is called. Retrieved values are automatically cached by the FormItem.
+
+Note that if a normal, static [valueMap](FormItem.md#attr-formitemvaluemap) is **also** specified for the field (either directly in the form item or as part of the field definition in the dataSource), it will be preferred to the data derived from the optionDataSource for whatever mappings are present.
+
+In a databound form, if [FormItem.displayField](FormItem.md#attr-formitemdisplayfield) is specified for a FormItem and `optionDataSource` is unset, `optionDataSource` will default to the form's current DataSource
+
+### Groups
+
+- display_values
+
+### See Also
+
+- [FormItem.invalidateDisplayValueCache](FormItem.md#method-formiteminvalidatedisplayvaluecache)
 
 **Flags**: IRW
 
@@ -74,6 +116,26 @@ This message will be displayed as a single, disabled option in any empty menu/su
 **Flags**: IRA
 
 ---
+## Attr: PickTreeItem.canSelectParentItems
+
+### Description
+If true, clicking or pressing Enter on a menu item that has a submenu will select that item (with standard behavior of hiding the menus, calling click handlers, etc) instead of showing the submenu.
+
+### Groups
+
+- selection
+
+**Flags**: IRW
+
+---
+## Attr: PickTreeItem.valueField
+
+### Description
+Which field in the tree-data should be returned as this item's value? If unspecified, the path will be used
+
+**Flags**: IR
+
+---
 ## Attr: PickTreeItem.button
 
 ### Description
@@ -98,68 +160,6 @@ For PickTreeItems, this setting affects only the item's title - the button itsel
 If specified, the tree of possible options will be derived from the dataSource as a ResultTree, rather than using this.valueTree. Options can be loaded on demand or up front according tp [PickTreeItem.loadDataOnDemand](#attr-picktreeitemloaddataondemand).
 
 **Flags**: IRA
-
----
-## Attr: PickTreeItem.loadDataOnDemand
-
-### Description
-If this is a databound item, should the load our set of possible options be loaded on demand (as submenus are displayed), or upfront?
-
-**Flags**: IRA
-
----
-## Attr: PickTreeItem.dataProperties
-
-### Description
-For a `PickTreeItem` that uses a DataSource, these properties will be passed to the automatically-created ResultTree. This can be used for various customizations such as modifying the automatically-chosen [Tree.parentIdField](Tree.md#attr-treeparentidfield).
-
-### Groups
-
-- databinding
-
-**Flags**: IR
-
----
-## Attr: PickTreeItem.optionDataSource
-
-### Description
-If set, this FormItem will map stored values to display values as though a [ValueMap](../reference_2.md#type-valuemap) were specified, by fetching records from the specified `optionDataSource` and extracting the [valueField](FormItem.md#attr-formitemvaluefield) and [displayField](FormItem.md#attr-formitemdisplayfield) in loaded records, to derive one valueMap entry per record loaded from the optionDataSource.
-
-With the default setting of [fetchMissingValues](FormItem.md#attr-formitemfetchmissingvalues), fetches will be initiated against the optionDataSource any time the FormItem has a non-null value and no corresponding display value is available. This includes when the form is first initialized, as well as any subsequent calls to [FormItem.setValue](FormItem.md#method-formitemsetvalue), such as may happen when [DynamicForm.editRecord](DynamicForm.md#method-dynamicformeditrecord) is called. Retrieved values are automatically cached by the FormItem.
-
-Note that if a normal, static [valueMap](FormItem.md#attr-formitemvaluemap) is **also** specified for the field (either directly in the form item or as part of the field definition in the dataSource), it will be preferred to the data derived from the optionDataSource for whatever mappings are present.
-
-In a databound form, if [FormItem.displayField](FormItem.md#attr-formitemdisplayfield) is specified for a FormItem and `optionDataSource` is unset, `optionDataSource` will default to the form's current DataSource
-
-### Groups
-
-- display_values
-
-### See Also
-
-- [FormItem.invalidateDisplayValueCache](FormItem.md#method-formiteminvalidatedisplayvaluecache)
-
-**Flags**: IRW
-
----
-## Attr: PickTreeItem.canSelectParentItems
-
-### Description
-If true, clicking or pressing Enter on a menu item that has a submenu will select that item (with standard behavior of hiding the menus, calling click handlers, etc) instead of showing the submenu.
-
-### Groups
-
-- selection
-
-**Flags**: IRW
-
----
-## Attr: PickTreeItem.valueField
-
-### Description
-Which field in the tree-data should be returned as this item's value? If unspecified, the path will be used
-
-**Flags**: IR
 
 ---
 ## Attr: PickTreeItem.displayField
@@ -228,6 +228,6 @@ The default behavior is that the [titleStyle](FormItem.md#attr-formitemtitlestyl
 
 ### Returns
 
-`[Boolean](#type-boolean)` — `false` to cancel the default behavior.
+`[boolean](../reference.md#type-boolean)` — `false` to cancel the default behavior.
 
 ---

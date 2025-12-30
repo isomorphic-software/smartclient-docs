@@ -24,10 +24,12 @@ This component is an [AutoChild](../reference.md#type-autochild) and as such may
 **Flags**: IR
 
 ---
-## Attr: HiliteRule.removeIconSize
+## Attr: HiliteRule.removeButton
 
 ### Description
-When set, dictates the size of the [remove button](#attr-hiliteruleremovebutton) shown for this HiliteRule.
+The Hilite removal ImgButton that appears before this Hilite if [HiliteRule.showRemoveButton](#attr-hiliteruleshowremovebutton) is set.
+
+This component is an [AutoChild](../reference.md#type-autochild) and as such may be customized via `hiliteRule.removeButtonProperties`.
 
 **Flags**: IR
 
@@ -66,32 +68,6 @@ This component is an [AutoChild](../reference.md#type-autochild) and as such may
 **Flags**: IR
 
 ---
-## Attr: HiliteRule.removeIconBaseStyle
-
-### Description
-CSS class to apply to the [remove button](#attr-hiliteruleremovebutton) shown for this HiliteRule.
-
-**Flags**: IR
-
----
-## Attr: HiliteRule.showRemoveButton
-
-### Description
-If true, show a [button](#attr-hiliteruleremovebutton) for this HiliteRule, allowing it to be removed.
-
-**Flags**: IR
-
----
-## Attr: HiliteRule.removeButton
-
-### Description
-The Hilite removal ImgButton that appears before this Hilite if [HiliteRule.showRemoveButton](#attr-hiliteruleshowremovebutton) is set.
-
-This component is an [AutoChild](../reference.md#type-autochild) and as such may be customized via `hiliteRule.removeButtonProperties`.
-
-**Flags**: IR
-
----
 ## Attr: HiliteRule.removeButtonPrompt
 
 ### Description
@@ -122,6 +98,14 @@ The [title](FormItem.md#attr-formitemtitle) of the 'Icon' picker.
 ### Groups
 
 - i18nMessages
+
+**Flags**: IR
+
+---
+## Attr: HiliteRule.showRemoveButton
+
+### Description
+If true, show a [button](#attr-hiliteruleremovebutton) for this HiliteRule, allowing it to be removed.
 
 **Flags**: IR
 

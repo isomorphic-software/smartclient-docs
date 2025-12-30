@@ -77,7 +77,7 @@ Finally, this example shows how to perform a specific update operation via a `DS
 ```
 **NOTES**
 
-Because we are not running inside a servlet container, SmartClient's built-in logic to work out where its application root is does not work. Therefore, you need to manually set a "webRoot" in your [server.properties](server_properties.md#kb-topic-serverproperties-file) file. The webRoot should point to the root folder of your application (note for SmartGWT applications, this is typically the "war" subfolder of your project). Example entries:
+Because we are not running inside a servlet container, SmartClient's built-in logic to work out where its application root is does not work. Therefore, you need to manually set a "webRoot" in your [server.properties](../reference.md#kb-topic-serverproperties-file) file. The webRoot should point to the root folder of your application (note for SmartGWT applications, this is typically the "war" subfolder of your project). Example entries:
 
 `webRoot: /home/testUser/myProject`
 
@@ -85,11 +85,11 @@ or:
 
 `webRoot: C:\Projects\MyProject\war`
 
-Again in [server.properties](server_properties.md#kb-topic-serverproperties-file), you may need to set `isomorphicPathRootRelative` to match the standalone project's layout if you make the standalone mode separate:
+Again in [server.properties](../reference.md#kb-topic-serverproperties-file), you may need to set `isomorphicPathRootRelative` to match the standalone project's layout if you make the standalone mode separate:
 
 `isomorphicPathRootRelative: myProject/sc`
 
-You should place the [server.properties](server_properties.md#kb-topic-serverproperties-file) file somewhere on your classpath. Typically, the root of your `bin` or `classes` folder structure is the most suitable place for it.
+You should place the [server.properties](../reference.md#kb-topic-serverproperties-file) file somewhere on your classpath. Typically, the root of your `bin` or `classes` folder structure is the most suitable place for it.
 
 Both the built-in DataSources and custom DataSources can be used in standalone applications, **but only if you do not introduce dependencies on the servlet container in your DataSource code**. For example, if you have a security check in a DMI or custom DataSource that depends on checking the current logged-in user, code in a means of bypassing this, or create a parallel operationBinding that is accessible only to the superuser.  
 
@@ -99,7 +99,7 @@ When you use the DataSource layer in a standalone application, [Declarative Secu
 
 To enable a request for security checks you simply need to call `dsRequest.setUserId()` or `dsRequest.setUserRoles()`. If the request is apart of a transaction then security can also be defaulted using `dsTransaction.setClientRequest(true/false)`, however any value set on an individual request will still take priority. For instance if you call `dsTransaction.setClientRequest(false)` but then also call `dsRequest.setUserId(id)`, then security checks will still take place for that request as it has had security enabled which takes priority over the value on `DSTransaction`.
 
-Note: If you have Declarative Security checks in your DataSources and/or enabled via your Java code, and you want to completely disable such checks system-wide, you can set `security.disabled: true` in [server_properties](server_properties.md#kb-topic-serverproperties-file). This causes API calls like `dsRequest.setClientRequest()` to be completely ignored.
+Note: If you have Declarative Security checks in your DataSources and/or enabled via your Java code, and you want to completely disable such checks system-wide, you can set `security.disabled: true` in [server_properties](../reference.md#kb-topic-serverproperties-file). This causes API calls like `dsRequest.setClientRequest()` to be completely ignored.
 
 #### Transactions
 
@@ -169,7 +169,7 @@ Please note that [Transaction chaining](transactionChaining.md#kb-topic-transact
 
 In a typical web application, Spring configuration is picked up from an "applicationContext" file by a servlet or listener, and then made available to the rest of the app via the servletContext. When running standalone, this is not possible, so instead we read the applicationContext file manually when we need to, eg, create a DataSource object that is configured as a Spring bean.
 
-By default, the framework will create an instance of Spring's `FileSystemXmlApplicationContext` from a configuration at `WEB-INF/applicationContext.xml`. If you use another name or location for this file, and you want to run the application outside of a servlet engine, you can tell the framework where to find the configuration(s) by specifying a comma-separated list of paths via the `standalone.spring.applicationContext` property in your [server.properties](server_properties.md#kb-topic-serverproperties-file). You may provide your locations with the `classpath:` or `file:` prefixes as shown [here](https://docs.spring.io/spring-framework/docs/3.2.x/spring-framework-reference/html/resources.html#resources-app-ctx-construction) or without, in which case SmartClient will prepend the `file:` prefix for you at runtime. The default setting for this property looks like this:
+By default, the framework will look in the "normal" place for for this configuration: `WEB-INF/applicationContext.xml`. If you have changed the location or name of this file, and you want to run the application outside of a servlet engine, you can tell the framework where to find the configuration file by specifying property `standalone.spring.applicationContext` in your [server.properties](../reference.md#kb-topic-serverproperties-file). The default setting for this property looks like this:
 
 ```
     standalone.spring.applicationContext: $webRoot/WEB-INF/applicationContext.xml

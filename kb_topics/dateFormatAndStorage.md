@@ -13,7 +13,7 @@ DataSources and databound components may define fields of type `date`, `time`, o
 
 #### "date" handling
 
-Fields of type [date](../reference_2.md#type-fieldtype) are considered to be logical Dates with no time value, such as a holiday or birthday. In the browser, values for "date" fields are stored as Date objects, but when formatted for display to the user, they are typically displayed without any time information.
+Fields of type [date](../reference.md#type-fieldtype) are considered to be logical Dates with no time value, such as a holiday or birthday. In the browser, values for "date" fields are stored as Date objects, but when formatted for display to the user, they are typically displayed without any time information.
 
 When using the SmartClient server framework, "date" values are automatically transmitted with year, month and day preserved and time value ignored.
 
@@ -25,7 +25,7 @@ System wide formatting for dates may be controlled via the [DateUtil.setNormalDi
 
 #### "datetime" handling
 
-Fields of type [datetime](../reference_2.md#type-fieldtype) are dates with full time information. In the browser, values for datetime fields are stored as Date objects.
+Fields of type [datetime](../reference.md#type-fieldtype) are dates with full time information. In the browser, values for datetime fields are stored as Date objects.
 
 When using the SmartClient server framework, "datetime" values are automatically transmitted such that the resulting Date object has the same GMT/UTC timestamp. This value is referred to elsewhere in these discussions as an "epoch value", and it is precisely defined as: the number of milliseconds since midnight on January 1st 1970 in the UTC timezone (because 1970-01-01 00:00:00 UTC is "the epoch").
 
@@ -37,7 +37,7 @@ System wide formatting for datetimes may be controlled via the [DateUtil.setShor
 
 #### "time" handling
 
-Fields of type [time](../reference_2.md#type-fieldtype) are time values in the absence of a day, such as the beginning of the workday (9:00). In the browser, values for "time" fields are stored as Date objects with the time in browser local time. The date information has no meaning and only the time information is displayed to the user.
+Fields of type [time](../reference.md#type-fieldtype) are time values in the absence of a day, such as the beginning of the workday (9:00). In the browser, values for "time" fields are stored as Date objects with the time in browser local time. The date information has no meaning and only the time information is displayed to the user.
 
 Time formatting is handled by the [Time](../classes/Time.md#class-time) class APIs.  
 When using the SmartClient server framework, "time" values are automatically transmitted such that the resulting Date object has the same hour, minute and second values in local time, and year/month/day is ignored.
@@ -52,7 +52,7 @@ By default, "datetime" values will be shown to the user in browser local time, a
 
 Note that depending on the specific date being displayed, a Daylight Savings Time offset may also be applied based on the browser locale. To disable this behavior set [Time.adjustForDST](../classes/Time.md#classattr-timeadjustfordst) to false.
 
-If a custom timezone is specified, it will be respected by all [TimeDisplayFormat](../reference_2.md#type-timedisplayformat)s, and by the standard short [DateDisplayFormat](../reference.md#type-datedisplayformat)s when formatting dates representing datetime type values. However native JavaScript Date formatters, including `toLocaleString()` will not respect the specified timezone. Developers specifying a custom timezone may therefore wish to modify the [DateUtil.setNormalDisplayFormat](../classes/DateUtil.md#classmethod-dateutilsetnormaldisplayformat) to avoid using a native JS Date formatter function.
+If a custom timezone is specified, it will be respected by all [TimeDisplayFormat](../reference.md#type-timedisplayformat)s, and by the standard short [DateDisplayFormat](../reference.md#type-datedisplayformat)s when formatting dates representing datetime type values. However native JavaScript Date formatters, including `toLocaleString()` will not respect the specified timezone. Developers specifying a custom timezone may therefore wish to modify the [DateUtil.setNormalDisplayFormat](../classes/DateUtil.md#classmethod-dateutilsetnormaldisplayformat) to avoid using a native JS Date formatter function.
 
 Note that in addition to the system-wide date, datetime and time-formatting settings described above, databound components also support applying custom display formats for date values. Typically this can be achieved via a custom `dateFormatter` or `timeFormatter` at the field level (see [DataSourceField.dateFormatter](../classes/DataSourceField.md#attr-datasourcefielddateformatter), [DataSourceField.timeFormatter](../classes/DataSourceField.md#attr-datasourcefieldtimeformatter) and for example [ListGridField.dateFormatter](../classes/ListGridField.md#attr-listgridfielddateformatter)). Date formatting may also be configured at the component level by setting the `dateFormatter`, `datetimeFormatter` and `timeFormatter` attributes (See for example [ListGrid.dateFormatter](../classes/ListGrid_1.md#attr-listgriddateformatter), [ListGrid.timeFormatter](../classes/ListGrid_1.md#attr-listgridtimeformatter), and [ListGrid.datetimeFormatter](../classes/ListGrid_1.md#attr-listgriddatetimeformatter)).
 
@@ -148,44 +148,5 @@ If you're having a problem with round-tripping "datetime" values or "date" value
 6.  what value is being transmitted to the server? (use the RPC tab - same concerns as for server-to-client transmission above)
 7.  what value does the server have after de-serialization, before saving to the database or other permanent storage?
 8.  what value is sent to the database or permanent storage? If generating SQL or another similar query language, does the value in the SQL statement include an explicit timezone? If not, how will the database interpret it?
-
-#### Code examples
-There are separate builtin [FormItems](../classes/FormItem.md#class-formitem) for working with [logical-dates](../classes/DateItem.md#class-dateitem), where the time-portion is irrelevant, [logical-times](../classes/TimeItem.md#class-timeitem), where the date-portion is irrelevant, and [datetimes](../classes/DateTimeItem.md#class-datetimeitem), where all date-elements are relevant. There is also an editor for working with [relative-dates](../classes/RelativeDateItem.md#class-relativedateitem), where values are calculated via offsets from a base Date. These builtin items have [setValue()](../classes/FormItem.md#method-formitemsetvalue) and [getValue()](../classes/FormItem.md#method-formitemgetvalue) methods that work with values of the expected [date type](../classes/FormItem.md#attr-formitemtype). As covered earlier, the [DateUtil](../classes/DateUtil.md#class-dateutil) class provides APIs for managing logical [date](../classes/DateUtil.md#classmethod-dateutilcreatelogicaldate) and [time](../classes/DateUtil.md#classmethod-dateutilcreatelogicaltime) values, and for creating [regular datetimes](../classes/DateUtil.md#classmethod-dateutilcreatedatetime), which can be easily split into separate logical [date](../classes/DateUtil.md#classmethod-dateutilgetlogicaldateonly) and [time](../classes/DateUtil.md#classmethod-dateutilgetlogicaltimeonly) values, and later [recombined](../classes/DateUtil.md#classmethod-dateutilcombinelogicaldateandtime).
-
-Consider a requirement where a regular datetime value on a data-record should be edited as separate logical date and time values, and then restored to a regular datetime for saving.
-
-At it's simplest, this use-case would use a [dateItem](../classes/DateItem.md#class-dateitem) and a [timeItem](../classes/TimeItem.md#class-timeitem) in a UI.
-
-```
- dateItem.setValue(isc.DateUtil.getLogicalDateOnly(record.startDate));
- timeItem.setValue(isc.DateUtil.getLogicalTimeOnly(record.startDate);
- 
- ... edits
-
- record.startDate = isc.DateUtil.combineLogicalDateAndTime(dateItem.getValue(), timeItem.getValue());
- 
-```
-Assume the use-case requires a special UI, where each element of the date and the time should be edited as numbers in separate [selects](../classes/SelectItem.md#class-selectitem) or [spinners](../classes/SpinnerItem.md#class-spinneritem), named after the elements.
-```
- var logicalDate = isc.DateUtil.getLogicalDateOnly(record.startDate);
- year.setValue(logicalDate.getFullYear())
- month.setValue(logicalDate.getMonth())
- day.setValue(logicalDate.getDate())
- 
- var logicalTime = isc.DateUtil.getLogicalTimeOnly(record.startDate);
- hour.setValue(logicalTime.getHours())
- minute.setValue(logicalTime.getMinutes())
-
- ... edits
- 
- // make logical values and combine them
- logicalDate = isc.DateUtil.createLogicalDate(year.getValue(), month.getValue(), day.getValue());
- logicalTime = isc.DateUtil.createLogicalDate(hour.getValue(), minute.getValue())
- record.startDate = isc.DateUtil.combineLogicalDateAndTime(logicalDate, logicalTime);
-
- // or, create directly
- record.startDate = isc.DateUtil.createDatetime(year.getValue(), month.getValue(), day.getValue(), hour.getValue(), minute.getValue());
- 
-```
 
 ---

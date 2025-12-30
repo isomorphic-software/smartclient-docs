@@ -51,6 +51,14 @@ DrawGroup only supports the "move" knob type.
 **Flags**: IR
 
 ---
+## Attr: DrawGroup.height
+
+### Description
+Height of the [group rectangle](#method-drawgroupgetgrouprect) in pixels relative to the [DrawPane](DrawPane.md#class-drawpane) (the "drawing coordinate system").
+
+**Flags**: IRW
+
+---
 ## Attr: DrawGroup.showGroupRectOutline
 
 ### Description
@@ -79,6 +87,14 @@ If this group is showing a "move" [control knob](DrawItem.md#attr-drawitemknobs)
 **Flags**: IR
 
 ---
+## Attr: DrawGroup.top
+
+### Description
+Top coordinate of the [group rectangle](#method-drawgroupgetgrouprect) in pixels relative to the [DrawPane](DrawPane.md#class-drawpane) (the "drawing coordinate system").
+
+**Flags**: IRW
+
+---
 ## Attr: DrawGroup.useGroupRect
 
 ### Description
@@ -96,20 +112,37 @@ Left coordinate of the [group rectangle](#method-drawgroupgetgrouprect) in pixel
 **Flags**: IRW
 
 ---
-## Attr: DrawGroup.height
+## Method: DrawGroup.mouseOver
 
 ### Description
-Height of the [group rectangle](#method-drawgroupgetgrouprect) in pixels relative to the [DrawPane](DrawPane.md#class-drawpane) (the "drawing coordinate system").
+Notification fired when the mouse enters this DrawGroup.
 
-**Flags**: IRW
+Note that if [useGroupRect](#attr-drawgroupusegrouprect) is true, this notification will be triggered by the user interacting with the specified [group rectangle](#method-drawgroupgetgrouprect) for the group. If [useGroupRect](#attr-drawgroupusegrouprect) is false, the notification will bubble up from interactions with individual items within the group.
+
+### Returns
+
+`[Boolean](#type-boolean)` — false to prevent this event from bubbling to this widget's parent, true or undefined to bubble.
+
+### Groups
+
+- widgetEvents
+
+### See Also
+
+- [Canvas.getOffsetX](Canvas.md#method-canvasgetoffsetx)
+- [Canvas.getOffsetY](Canvas.md#method-canvasgetoffsety)
 
 ---
-## Attr: DrawGroup.top
+## Method: DrawGroup.getGroupRect
 
 ### Description
-Top coordinate of the [group rectangle](#method-drawgroupgetgrouprect) in pixels relative to the [DrawPane](DrawPane.md#class-drawpane) (the "drawing coordinate system").
+This method will return an array of integers (left, top, width, height) defining the area of the "group rectangle" for the group. If [useGroupRect](#attr-drawgroupusegrouprect) is true, this is the area of the DrawPane where user interactions will fire event notifications on this DrawGroup.
 
-**Flags**: IRW
+This is a convienence method to get the current coordinates of the [group rectangle](#attr-drawgroupusegrouprect). Developers must use [DrawGroup.setLeft](#method-drawgroupsetleft), [DrawGroup.setTop](#method-drawgroupsettop), [DrawGroup.setWidth](#method-drawgroupsetwidth) or [DrawGroup.setHeight](#method-drawgroupsetheight) to set each coordinate directly.
+
+### Returns
+
+`[Array of int](#type-array-of-int)` — 4 element array containing left, top, width, height of the group rectangle.
 
 ---
 ## Method: DrawGroup.scaleBy
@@ -123,6 +156,42 @@ Scale all drawItem\[\] shapes by the x, y multipliers
 |------|------|----------|---------|-------------|
 | x | [float](../reference.md#type-float) | false | — | scale in the x direction |
 | y | [float](../reference.md#type-float) | false | — | scale in the y direction |
+
+---
+## Method: DrawGroup.moveTo
+
+### Description
+Sets both the left and top coordinates of this `DrawGroup`'s [group rectangle](#method-drawgroupgetgrouprect). Note that this does not move or resize the items in this `DrawGroup`.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| left | [Integer](../reference_2.md#type-integer) | false | — | new left coordinate in pixels |
+| top | [Integer](../reference_2.md#type-integer) | false | — | new top coordinate in pixels |
+
+---
+## Method: DrawGroup.dragStart
+
+### Description
+Notification fired when the user starts to drag this DrawGroup. Will only fire if [canDrag](DrawItem.md#attr-drawitemcandrag) is true for this group.
+
+Note that if [useGroupRect](#attr-drawgroupusegrouprect) is true, this notification will be triggered by the user interacting with the specified [group rectangle](#method-drawgroupgetgrouprect) for the group. If [useGroupRect](#attr-drawgroupusegrouprect) is false, the notification will bubble up from interactions with individual items within the group.
+
+Default drag behavior will be to reposition all items in the group (and update the group rectangle).
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — false to cancel drag action.
+
+### Groups
+
+- widgetEvents
+
+### See Also
+
+- [Canvas.getOffsetX](Canvas.md#method-canvasgetoffsetx)
+- [Canvas.getOffsetY](Canvas.md#method-canvasgetoffsety)
 
 ---
 ## Method: DrawGroup.scaleTo
@@ -157,6 +226,27 @@ Updates the `DrawGroup`'s left coordinate by `dX` and the top coordinate by `dY`
 Erases all DrawItems in the DrawGroup.
 
 ---
+## Method: DrawGroup.mouseDown
+
+### Description
+Notification fired when the user presses the left mouse button on this DrawGroup.
+
+Note that if [useGroupRect](#attr-drawgroupusegrouprect) is true, this notification will be triggered by the user interacting with the specified [group rectangle](#method-drawgroupgetgrouprect) for the group. If [useGroupRect](#attr-drawgroupusegrouprect) is false, the notification will bubble up from interactions with individual items within the group.
+
+### Returns
+
+`[Boolean](#type-boolean)` — false to prevent this event from bubbling to this widget's parent, true or undefined to bubble.
+
+### Groups
+
+- widgetEvents
+
+### See Also
+
+- [Canvas.getOffsetX](Canvas.md#method-canvasgetoffsetx)
+- [Canvas.getOffsetY](Canvas.md#method-canvasgetoffsety)
+
+---
 ## Method: DrawGroup.dragMove
 
 ### Description
@@ -168,7 +258,7 @@ Default drag behavior will be to reposition all items in the group (and update t
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false to cancel drag interaction.
+`[boolean](../reference.md#type-boolean)` — false to cancel drag interaction.
 
 ### Groups
 
@@ -178,6 +268,18 @@ Default drag behavior will be to reposition all items in the group (and update t
 
 - [Canvas.getOffsetX](Canvas.md#method-canvasgetoffsetx)
 - [Canvas.getOffsetY](Canvas.md#method-canvasgetoffsety)
+
+---
+## Method: DrawGroup.setLeft
+
+### Description
+Sets the left coordinate of this `DrawGroup`'s [group rectangle](#method-drawgroupgetgrouprect). Note that setting the left coordinate will not move the items in this `DrawGroup`.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| left | [Coordinate](../reference.md#type-coordinate) | false | — | new left coordinate |
 
 ---
 ## Method: DrawGroup.getBoundingBox
@@ -230,6 +332,34 @@ Note that if [useGroupRect](#attr-drawgroupusegrouprect) is true, this notificat
 
 - [Canvas.getOffsetX](Canvas.md#method-canvasgetoffsetx)
 - [Canvas.getOffsetY](Canvas.md#method-canvasgetoffsety)
+
+---
+## Method: DrawGroup.rotateTo
+
+### Description
+Rotate each item in the group to the specified number of degrees.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| degrees | [float](../reference.md#type-float) | false | — | — |
+
+---
+## Method: DrawGroup.mouseOut
+
+### Description
+Notification fired when the mouse leaves this DrawGroup.
+
+Note that if [useGroupRect](#attr-drawgroupusegrouprect) is true, this notification will be triggered by the user interacting with the specified [group rectangle](#method-drawgroupgetgrouprect) for the group. If [useGroupRect](#attr-drawgroupusegrouprect) is false, the notification will bubble up from interactions with individual items within the group.
+
+### Returns
+
+`[Boolean](#type-boolean)` — false to prevent this event from bubbling to this widget's parent, true or undefined to bubble.
+
+### Groups
+
+- widgetEvents
 
 ---
 ## Method: DrawGroup.setHeight
@@ -311,136 +441,6 @@ Rotate each item in the group by the specified number of degrees.
 | degrees | [float](../reference.md#type-float) | false | — | — |
 
 ---
-## Method: DrawGroup.mouseOver
-
-### Description
-Notification fired when the mouse enters this DrawGroup.
-
-Note that if [useGroupRect](#attr-drawgroupusegrouprect) is true, this notification will be triggered by the user interacting with the specified [group rectangle](#method-drawgroupgetgrouprect) for the group. If [useGroupRect](#attr-drawgroupusegrouprect) is false, the notification will bubble up from interactions with individual items within the group.
-
-### Returns
-
-`[Boolean](#type-boolean)` — false to prevent this event from bubbling to this widget's parent, true or undefined to bubble.
-
-### Groups
-
-- widgetEvents
-
-### See Also
-
-- [Canvas.getOffsetX](Canvas.md#method-canvasgetoffsetx)
-- [Canvas.getOffsetY](Canvas.md#method-canvasgetoffsety)
-
----
-## Method: DrawGroup.getGroupRect
-
-### Description
-This method will return an array of integers (left, top, width, height) defining the area of the "group rectangle" for the group. If [useGroupRect](#attr-drawgroupusegrouprect) is true, this is the area of the DrawPane where user interactions will fire event notifications on this DrawGroup.
-
-This is a convienence method to get the current coordinates of the [group rectangle](#attr-drawgroupusegrouprect). Developers must use [DrawGroup.setLeft](#method-drawgroupsetleft), [DrawGroup.setTop](#method-drawgroupsettop), [DrawGroup.setWidth](#method-drawgroupsetwidth) or [DrawGroup.setHeight](#method-drawgroupsetheight) to set each coordinate directly.
-
-### Returns
-
-`[Array of int](#type-array-of-int)` — 4 element array containing left, top, width, height of the group rectangle.
-
----
-## Method: DrawGroup.moveTo
-
-### Description
-Sets both the left and top coordinates of this `DrawGroup`'s [group rectangle](#method-drawgroupgetgrouprect). Note that this does not move or resize the items in this `DrawGroup`.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| left | [Integer](../reference_2.md#type-integer) | false | — | new left coordinate in pixels |
-| top | [Integer](../reference_2.md#type-integer) | false | — | new top coordinate in pixels |
-
----
-## Method: DrawGroup.dragStart
-
-### Description
-Notification fired when the user starts to drag this DrawGroup. Will only fire if [canDrag](DrawItem.md#attr-drawitemcandrag) is true for this group.
-
-Note that if [useGroupRect](#attr-drawgroupusegrouprect) is true, this notification will be triggered by the user interacting with the specified [group rectangle](#method-drawgroupgetgrouprect) for the group. If [useGroupRect](#attr-drawgroupusegrouprect) is false, the notification will bubble up from interactions with individual items within the group.
-
-Default drag behavior will be to reposition all items in the group (and update the group rectangle).
-
-### Returns
-
-`[Boolean](#type-boolean)` — false to cancel drag action.
-
-### Groups
-
-- widgetEvents
-
-### See Also
-
-- [Canvas.getOffsetX](Canvas.md#method-canvasgetoffsetx)
-- [Canvas.getOffsetY](Canvas.md#method-canvasgetoffsety)
-
----
-## Method: DrawGroup.mouseDown
-
-### Description
-Notification fired when the user presses the left mouse button on this DrawGroup.
-
-Note that if [useGroupRect](#attr-drawgroupusegrouprect) is true, this notification will be triggered by the user interacting with the specified [group rectangle](#method-drawgroupgetgrouprect) for the group. If [useGroupRect](#attr-drawgroupusegrouprect) is false, the notification will bubble up from interactions with individual items within the group.
-
-### Returns
-
-`[Boolean](#type-boolean)` — false to prevent this event from bubbling to this widget's parent, true or undefined to bubble.
-
-### Groups
-
-- widgetEvents
-
-### See Also
-
-- [Canvas.getOffsetX](Canvas.md#method-canvasgetoffsetx)
-- [Canvas.getOffsetY](Canvas.md#method-canvasgetoffsety)
-
----
-## Method: DrawGroup.setLeft
-
-### Description
-Sets the left coordinate of this `DrawGroup`'s [group rectangle](#method-drawgroupgetgrouprect). Note that setting the left coordinate will not move the items in this `DrawGroup`.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| left | [Coordinate](../reference.md#type-coordinate) | false | — | new left coordinate |
-
----
-## Method: DrawGroup.rotateTo
-
-### Description
-Rotate each item in the group to the specified number of degrees.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| degrees | [float](../reference.md#type-float) | false | — | — |
-
----
-## Method: DrawGroup.mouseOut
-
-### Description
-Notification fired when the mouse leaves this DrawGroup.
-
-Note that if [useGroupRect](#attr-drawgroupusegrouprect) is true, this notification will be triggered by the user interacting with the specified [group rectangle](#method-drawgroupgetgrouprect) for the group. If [useGroupRect](#attr-drawgroupusegrouprect) is false, the notification will bubble up from interactions with individual items within the group.
-
-### Returns
-
-`[Boolean](#type-boolean)` — false to prevent this event from bubbling to this widget's parent, true or undefined to bubble.
-
-### Groups
-
-- widgetEvents
-
----
 ## Method: DrawGroup.dragStop
 
 ### Description
@@ -450,7 +450,7 @@ Note that if [useGroupRect](#attr-drawgroupusegrouprect) is true, this notificat
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false to cancel drag interaction.
+`[boolean](../reference.md#type-boolean)` — false to cancel drag interaction.
 
 ### Groups
 

@@ -28,10 +28,43 @@ If unset, defaults to [iconSize](StatefulCanvas.md#attr-statefulcanvasiconsize).
 **Flags**: IR
 
 ---
+## Attr: ImgButton.showTitle
+
+### Description
+Determines whether any specified [title](StatefulCanvas.md#method-statefulcanvasgettitle) will be displayed for this component.  
+Applies to Image-based components only, where the title will be rendered out in a label floating over the component
+
+**Flags**: IRWA
+
+---
+## Attr: ImgButton.iconOrientation
+
+### Description
+If this button is showing an icon should it appear to the left or right of the title? valid options are `"left"` and `"right"`.
+
+### Groups
+
+- buttonIcon
+
+**Flags**: IR
+
+---
 ## Attr: ImgButton.showRollOverIcon
 
 ### Description
 If using an icon for this button, whether to switch the icon image on mouse rollover.
+
+### Groups
+
+- buttonIcon
+
+**Flags**: IR
+
+---
+## Attr: ImgButton.showDisabledIcon
+
+### Description
+If using an icon for this button, whether to switch the icon image if the button becomes disabled.
 
 ### Groups
 
@@ -58,6 +91,30 @@ Note that if [StatefulCanvas.autoFit](StatefulCanvas.md#attr-statefulcanvasautof
 **Flags**: IRW
 
 ---
+## Attr: ImgButton.showFocused
+
+### Description
+Should we visibly change state when the canvas receives focus? If [StatefulCanvas.showFocusedAsOver](StatefulCanvas.md#attr-statefulcanvasshowfocusedasover) is `true`, then **`"over"`** will be used to indicate focus. Otherwise a separate **`"focused"`** state will be used.
+
+### Groups
+
+- state
+
+**Flags**: IRW
+
+---
+## Attr: ImgButton.showDisabled
+
+### Description
+Should we visibly change state when disabled?
+
+### Groups
+
+- state
+
+**Flags**: IRW
+
+---
 ## Attr: ImgButton.labelHPad
 
 ### Description
@@ -66,6 +123,42 @@ Horizontal padding to be applied to this widget's label. If this value is null, 
 The specified amount of padding is applied to the left and right edges of the button, so the total amount of padding is 2x the specified value.
 
 **Flags**: IRW
+
+---
+## Attr: ImgButton.title
+
+### Description
+The title HTML to display in this button.
+
+### Groups
+
+- basics
+
+**Flags**: IRW
+
+---
+## Attr: ImgButton.align
+
+### Description
+Horizontal alignment of this component's title.
+
+### Groups
+
+- appearance
+
+**Flags**: IRW
+
+---
+## Attr: ImgButton.showSelectedIcon
+
+### Description
+If using an icon for this button, whether to switch the icon image when the button becomes selected.
+
+### Groups
+
+- buttonIcon
+
+**Flags**: IR
 
 ---
 ## Attr: ImgButton.iconSize
@@ -108,6 +201,20 @@ Should we visibly change state when the mouse goes down in this object?
 **Flags**: IRW
 
 ---
+## Attr: ImgButton.autoFit
+
+### Description
+If true, ignore the specified size of this widget and always size just large enough to accommodate the title. If `setWidth()` is explicitly called on an autoFit:true button, autoFit will be reset to `false`.
+
+Note that for StretchImgButton instances, autoFit will occur horizontally only, as unpredictable vertical sizing is likely to distort the media. If you do want vertical auto-fit, this can be achieved by simply setting a small height, and having overflow:"visible"
+
+### Groups
+
+- sizing
+
+**Flags**: IRW
+
+---
 ## Attr: ImgButton.selected
 
 ### Description
@@ -136,6 +243,18 @@ Note that the string "blank" is a valid setting for this attribute and will alwa
 **Flags**: IRW
 
 ---
+## Attr: ImgButton.src
+
+### Description
+The base filename or stateful image configuration for the image. Note that as the [state](StatefulCanvas.md#attr-statefulcanvasstate) of the component changes, the image displayed will be updated as described in [statefulImages](../kb_topics/statefulImages.md#kb-topic-stateful-images).
+
+### Groups
+
+- appearance
+
+**Flags**: IRW
+
+---
 ## Attr: ImgButton.radioGroup
 
 ### Description
@@ -153,8 +272,6 @@ String identifier for this canvas's mutually exclusive selection group.
 
 ### Description
 Base CSS style className applied to the component.
-
-Note that if specified, this property takes precedence over any specified [StatefulCanvas.styleName](StatefulCanvas.md#attr-statefulcanvasstylename). If unset, the `styleName` will be used as a default `baseStyle` value.
 
 As the component changes [StatefulCanvas.state](StatefulCanvas.md#attr-statefulcanvasstate) and/or is selected, suffixes will be added to the base style. In some cases more than one suffix will be appended to reflect a combined state ("Selected" + "Disabled", for example).
 
@@ -191,7 +308,17 @@ then applying that style to the button with [overflow](Canvas.md#attr-canvasover
 *   The translation transform required along the x-axis is roughly (width - height) / 2, but may need slight offsetting for optimal centering.
 *   We've explicitly avoided describing an approach based on CSS "writing-mode", since support is incomplete and bugs are present in popular browsers such as Firefox and Safari that would prevent it from being used without Framework assistance.
 
-Note on css-margins: Developers should be aware that the css "margin" property is unreliable for certain subclasses of StatefulCanvas, including [buttons](Button.md#class-button). Developers may use the explicit [Canvas.margin](Canvas.md#attr-canvasmargin) property to specify button margins, or for a button within a layout, consider the layout properties [Layout.layoutMargin](Layout.md#attr-layoutlayoutmargin), [Layout.membersMargin](Layout.md#attr-layoutmembersmargin)
+**Flags**: IRW
+
+---
+## Attr: ImgButton.valign
+
+### Description
+Vertical alignment of this component's title.
+
+### Groups
+
+- appearance
 
 **Flags**: IRW
 
@@ -200,6 +327,20 @@ Note on css-margins: Developers should be aware that the css "margin" property i
 
 ### Description
 Pixels between icon and title text.
+
+### Groups
+
+- buttonIcon
+
+**Flags**: IR
+
+---
+## Attr: ImgButton.iconHeight
+
+### Description
+Height in pixels of the icon image.
+
+If unset, defaults to [iconSize](StatefulCanvas.md#attr-statefulcanvasiconsize).
 
 ### Groups
 
@@ -224,197 +365,6 @@ Note that if [StatefulCanvas.autoFit](StatefulCanvas.md#attr-statefulcanvasautof
 - [StatefulCanvas.autoFit](StatefulCanvas.md#attr-statefulcanvasautofit)
 
 **Flags**: IRW
-
----
-## Attr: ImgButton.iconAlign
-
-### Description
-If this button is showing an icon should it be right or left aligned?
-
-### Groups
-
-- buttonIcon
-
-**Flags**: IR
-
----
-## Attr: ImgButton.labelVPad
-
-### Description
-Vertical padding to be applied to this widget's label. If this value is null, the label will be given a vertial padding of zero.
-
-The specified amount of padding is applied to the top and bottom edges of the button, so the total amount of padding is 2x the specified value.
-
-**Flags**: IRW
-
----
-## Attr: ImgButton.showDownIcon
-
-### Description
-If using an icon for this button, whether to switch the icon image when the mouse goes down on the button.
-
-### Groups
-
-- buttonIcon
-
-**Flags**: IR
-
----
-## Attr: ImgButton.showRollOver
-
-### Description
-Should we visibly change state when the mouse goes over this object?
-
-### Groups
-
-- state
-
-**Flags**: IRW
-
----
-## Attr: ImgButton.showTitle
-
-### Description
-Determines whether any specified [title](StatefulCanvas.md#method-statefulcanvasgettitle) will be displayed for this component.  
-Applies to Image-based components only, where the title will be rendered out in a label floating over the component
-
-**Flags**: IRWA
-
----
-## Attr: ImgButton.iconOrientation
-
-### Description
-If this button is showing an icon should it appear to the left or right of the title? valid options are `"left"` and `"right"`.
-
-### Groups
-
-- buttonIcon
-
-**Flags**: IR
-
----
-## Attr: ImgButton.showDisabledIcon
-
-### Description
-If using an icon for this button, whether to switch the icon image if the button becomes disabled.
-
-### Groups
-
-- buttonIcon
-
-**Flags**: IR
-
----
-## Attr: ImgButton.showFocused
-
-### Description
-Should we visibly change state when the canvas receives focus? If [StatefulCanvas.showFocusedAsOver](StatefulCanvas.md#attr-statefulcanvasshowfocusedasover) is `true`, then **`"over"`** will be used to indicate focus. Otherwise a separate **`"focused"`** state will be used.
-
-### Groups
-
-- state
-
-**Flags**: IRW
-
----
-## Attr: ImgButton.showDisabled
-
-### Description
-Should we visibly change state when disabled?
-
-### Groups
-
-- state
-
-**Flags**: IRW
-
----
-## Attr: ImgButton.title
-
-### Description
-The title HTML to display in this button.
-
-### Groups
-
-- basics
-
-**Flags**: IRW
-
----
-## Attr: ImgButton.align
-
-### Description
-Horizontal alignment of this component's title.
-
-### Groups
-
-- appearance
-
-**Flags**: IRW
-
----
-## Attr: ImgButton.showSelectedIcon
-
-### Description
-If using an icon for this button, whether to switch the icon image when the button becomes selected.
-
-### Groups
-
-- buttonIcon
-
-**Flags**: IR
-
----
-## Attr: ImgButton.autoFit
-
-### Description
-If true, ignore the specified size of this widget and always size just large enough to accommodate the title. If `setWidth()` is explicitly called on an autoFit:true button, autoFit will be reset to `false`.
-
-Note that for StretchImgButton instances, autoFit will occur horizontally only, as unpredictable vertical sizing is likely to distort the media. If you do want vertical auto-fit, this can be achieved by simply setting a small height, and having overflow:"visible"
-
-### Groups
-
-- sizing
-
-**Flags**: IRW
-
----
-## Attr: ImgButton.src
-
-### Description
-The base filename or stateful image configuration for the image. Note that as the [state](StatefulCanvas.md#attr-statefulcanvasstate) of the component changes, the image displayed will be updated as described in [statefulImages](../kb_topics/statefulImages.md#kb-topic-stateful-images).
-
-### Groups
-
-- appearance
-
-**Flags**: IRW
-
----
-## Attr: ImgButton.valign
-
-### Description
-Vertical alignment of this component's title.
-
-### Groups
-
-- appearance
-
-**Flags**: IRW
-
----
-## Attr: ImgButton.iconHeight
-
-### Description
-Height in pixels of the icon image.
-
-If unset, defaults to [iconSize](StatefulCanvas.md#attr-statefulcanvasiconsize).
-
-### Groups
-
-- buttonIcon
-
-**Flags**: IR
 
 ---
 ## Attr: ImgButton.showFocus
@@ -464,6 +414,52 @@ If [StatefulCanvas.showFocusedAsOver](StatefulCanvas.md#attr-statefulcanvasshowf
 - buttonIcon
 
 **Flags**: IR
+
+---
+## Attr: ImgButton.iconAlign
+
+### Description
+If this button is showing an icon should it be right or left aligned?
+
+### Groups
+
+- buttonIcon
+
+**Flags**: IR
+
+---
+## Attr: ImgButton.labelVPad
+
+### Description
+Vertical padding to be applied to this widget's label. If this value is null, the label will be given a vertial padding of zero.
+
+The specified amount of padding is applied to the top and bottom edges of the button, so the total amount of padding is 2x the specified value.
+
+**Flags**: IRW
+
+---
+## Attr: ImgButton.showDownIcon
+
+### Description
+If using an icon for this button, whether to switch the icon image when the mouse goes down on the button.
+
+### Groups
+
+- buttonIcon
+
+**Flags**: IR
+
+---
+## Attr: ImgButton.showRollOver
+
+### Description
+Should we visibly change state when the mouse goes over this object?
+
+### Groups
+
+- state
+
+**Flags**: IRW
 
 ---
 ## Attr: ImgButton.actionType
@@ -522,139 +518,10 @@ Enable or disable this object
 ### Description
 Update the 'actionType' for this canvas (radio / checkbox / button) If the canvas is currently selected, and the passed in actionType is 'button' this method will deselect the canvas.
 
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| actionType | [SelectionType](../reference_2.md#type-selectiontype) | false | — | new action type |
-
 ### Groups
 
 - state
 - event handling
-
----
-## Method: ImgButton.select
-
-### Description
-Select this object.
-
-### Groups
-
-- state
-
----
-## Method: ImgButton.setIconOrientation
-
-### Description
-Changes the orientation of the icon relative to the text of the button.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| orientation | [String](#type-string) | false | — | The new orientation of the icon relative to the text of the button. |
-
-### Groups
-
-- buttonIcon
-
----
-## Method: ImgButton.deselect
-
-### Description
-Select this object.
-
-### Groups
-
-- state
-
----
-## Method: ImgButton.setSelected
-
-### Description
-Select this object.
-
-### Groups
-
-- state
-
----
-## Method: ImgButton.getState
-
-### Description
-Return the state of this StatefulCanvas
-
-### Returns
-
-`[State](../reference.md#type-state)` — —
-
-### Groups
-
-- state
-
----
-## Method: ImgButton.titleHoverHTML
-
-### Description
-Returns the HTML that is displayed by the default [titleHover](#method-imgbuttontitlehover) handler. Return null or an empty string to cancel the hover.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| defaultHTML | [HTMLString](../reference.md#type-htmlstring) | false | — | the HTML that would have been displayed by default |
-
-### Returns
-
-`[HTMLString](../reference.md#type-htmlstring)` — HTML to be displayed in the hover. If null or an empty string, then the hover is canceled.
-
----
-## Method: ImgButton.titleHover
-
-### Description
-Optional stringMethod to fire when the user hovers over this button and the title is clipped. If [ImgButton.showClippedTitleOnHover](#attr-imgbuttonshowclippedtitleonhover) is true, the default behavior is to show a hover canvas containing the HTML returned by [ImgButton.titleHoverHTML](#method-imgbuttontitlehoverhtml). Return false to suppress this default behavior.
-
-### Returns
-
-`[Boolean](#type-boolean)` — false to suppress the standard hover
-
-### Groups
-
-- hovers
-
-### See Also
-
-- [ImgButton.titleClipped](#method-imgbuttontitleclipped)
-
----
-## Method: ImgButton.getActionType
-
-### Description
-Return the 'actionType' for this canvas (radio / checkbox / button)
-
-### Returns
-
-`[SelectionType](../reference_2.md#type-selectiontype)` — the current action type
-
-### Groups
-
-- state
-- event handling
-
----
-## Method: ImgButton.isSelected
-
-### Description
-Find out if this object is selected
-
-### Returns
-
-`[Boolean](#type-boolean)` — —
-
-### Groups
-
-- state
 
 ---
 ## Method: ImgButton.titleClipped
@@ -678,7 +545,7 @@ Change the icon being shown next to the title text.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| icon | [SCImgURL](../reference.md#type-scimgurl) | false | — | URL of new icon |
+| icon | [SCImgURL](../reference_2.md#type-scimgurl) | false | — | URL of new icon |
 
 ### Groups
 
@@ -732,6 +599,42 @@ Default is to simply return this.title.
 **Flags**: A
 
 ---
+## Method: ImgButton.select
+
+### Description
+Select this object.
+
+### Groups
+
+- state
+
+---
+## Method: ImgButton.setIconOrientation
+
+### Description
+Changes the orientation of the icon relative to the text of the button.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| orientation | [String](#type-string) | false | — | The new orientation of the icon relative to the text of the button. |
+
+### Groups
+
+- buttonIcon
+
+---
+## Method: ImgButton.deselect
+
+### Description
+Select this object.
+
+### Groups
+
+- state
+
+---
 ## Method: ImgButton.setBaseStyle
 
 ### Description
@@ -744,10 +647,79 @@ Sets the base CSS style. As the component changes state and/or is selected, suff
 | style | [CSSStyleName](../reference.md#type-cssstylename) | false | — | new base style |
 
 ---
+## Method: ImgButton.setSelected
+
+### Description
+Select this object.
+
+### Groups
+
+- state
+
+---
+## Method: ImgButton.getState
+
+### Description
+Return the state of this StatefulCanvas
+
+### Returns
+
+`[State](../reference.md#type-state)` — —
+
+### Groups
+
+- state
+
+---
 ## Method: ImgButton.action
 
 ### Description
 This property contains the default 'action' for the Button to fire when activated.
+
+---
+## Method: ImgButton.titleHoverHTML
+
+### Description
+Returns the HTML that is displayed by the default [titleHover](#method-imgbuttontitlehover) handler. Return null or an empty string to cancel the hover.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| defaultHTML | [HTMLString](../reference.md#type-htmlstring) | false | — | the HTML that would have been displayed by default |
+
+### Returns
+
+`[HTMLString](../reference.md#type-htmlstring)` — HTML to be displayed in the hover. If null or an empty string, then the hover is canceled.
+
+---
+## Method: ImgButton.titleHover
+
+### Description
+Optional stringMethod to fire when the user hovers over this button and the title is clipped. If [ImgButton.showClippedTitleOnHover](#attr-imgbuttonshowclippedtitleonhover) is true, the default behavior is to show a hover canvas containing the HTML returned by [ImgButton.titleHoverHTML](#method-imgbuttontitlehoverhtml). Return false to suppress this default behavior.
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — false to suppress the standard hover
+
+### Groups
+
+- hovers
+
+### See Also
+
+- [ImgButton.titleClipped](#method-imgbuttontitleclipped)
+
+---
+## Method: ImgButton.getActionType
+
+### Description
+Return the 'actionType' for this canvas (radio / checkbox / button)
+
+### Groups
+
+- state
+- event handling
 
 ---
 ## Method: ImgButton.addToRadioGroup
@@ -765,6 +737,20 @@ Add this widget to the specified mutually exclusive selection group with the ID 
 
 - state
 - event handling
+
+---
+## Method: ImgButton.isSelected
+
+### Description
+Find out if this object is selected
+
+### Returns
+
+`[Boolean](#type-boolean)` — —
+
+### Groups
+
+- state
 
 ---
 ## Method: ImgButton.removeFromRadioGroup

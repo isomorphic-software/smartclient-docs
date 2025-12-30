@@ -16,10 +16,26 @@ The TableView provides built-in controls such as [navigation arrows](#attr-table
 NOTE: This widget is intended primarily for creating handset/phone-sized interfaces and does not have an appearance in any skin other than Mobile.
 
 ---
+## ClassAttr: TableView.TITLE_ONLY
+
+### Description
+A declared value of the enum type [RecordLayout](../reference_2.md#type-recordlayout).
+
+**Flags**: R
+
+---
 ## ClassAttr: TableView.WHOLE_RECORD
 
 ### Description
 A declared value of the enum type [NavigationMode](../reference.md#type-navigationmode).
+
+**Flags**: R
+
+---
+## ClassAttr: TableView.PLAIN
+
+### Description
+A declared value of the enum type [TableMode](../reference.md#type-tablemode).
 
 **Flags**: R
 
@@ -52,22 +68,6 @@ A declared value of the enum type [TableMode](../reference.md#type-tablemode).
 
 ### Description
 A declared value of the enum type [RecordLayout](../reference_2.md#type-recordlayout).
-
-**Flags**: R
-
----
-## ClassAttr: TableView.TITLE_ONLY
-
-### Description
-A declared value of the enum type [RecordLayout](../reference_2.md#type-recordlayout).
-
-**Flags**: R
-
----
-## ClassAttr: TableView.PLAIN
-
-### Description
-A declared value of the enum type [TableMode](../reference.md#type-tablemode).
 
 **Flags**: R
 
@@ -108,12 +108,20 @@ The navigation icon shown next to records when [TableView.showNavigation](#attr-
 **Flags**: IRW
 
 ---
-## Attr: TableView.canSaveSearches
+## Attr: TableView.wholeRecordNavIcon
 
 ### Description
-Option to save searches is disabled for TableView
+The navigation icon shown next to records when [TableView.showNavigation](#attr-tableviewshownavigation) is true and [NavigationMode](../reference.md#type-navigationmode) is set to "wholeRecord".
 
-**Flags**: IRA
+**Flags**: IRW
+
+---
+## Attr: TableView.recordNavigationProperty
+
+### Description
+Boolean property on each record that controls whether navigation controls are shown for that record. If property is not defined on the record a navigation icon is shown if [TableView.showNavigation](#attr-tableviewshownavigation) is `true`.
+
+**Flags**: IRW
 
 ---
 ## Attr: TableView.recordLayout
@@ -150,38 +158,6 @@ Set navigation mode for this TableView.
 **Flags**: IRW
 
 ---
-## Attr: TableView.showNavigation
-
-### Description
-Whether to show navigation controls by default on all records. Can also be configured per-record with [TableView.recordNavigationProperty](#attr-tableviewrecordnavigationproperty).
-
-**Flags**: IRW
-
----
-## Attr: TableView.showIconField
-
-### Description
-Should an icon field be shown for each record? A column in the table is set aside for an icon as specified on each record in the [TableView.iconField](#attr-tableviewiconfield).
-
-**Flags**: IRW
-
----
-## Attr: TableView.wholeRecordNavIcon
-
-### Description
-The navigation icon shown next to records when [TableView.showNavigation](#attr-tableviewshownavigation) is true and [NavigationMode](../reference.md#type-navigationmode) is set to "wholeRecord".
-
-**Flags**: IRW
-
----
-## Attr: TableView.recordNavigationProperty
-
-### Description
-Boolean property on each record that controls whether navigation controls are shown for that record. If property is not defined on the record a navigation icon is shown if [TableView.showNavigation](#attr-tableviewshownavigation) is `true`.
-
-**Flags**: IRW
-
----
 ## Attr: TableView.recordTitleStyle
 
 ### Description
@@ -190,18 +166,26 @@ Default style for title.
 **Flags**: IRW
 
 ---
-## Attr: TableView.canShowFilterEditor
+## Attr: TableView.showNavigation
 
 ### Description
-Option to show filter editor is disabled for TableView
+Whether to show navigation controls by default on all records. Can also be configured per-record with [TableView.recordNavigationProperty](#attr-tableviewrecordnavigationproperty).
 
-**Flags**: IRA
+**Flags**: IRW
 
 ---
 ## Attr: TableView.recordDescriptionStyle
 
 ### Description
 Default style for description.
+
+**Flags**: IRW
+
+---
+## Attr: TableView.showIconField
+
+### Description
+Should an icon field be shown for each record? A column in the table is set aside for an icon as specified on each record in the [TableView.iconField](#attr-tableviewiconfield).
 
 **Flags**: IRW
 

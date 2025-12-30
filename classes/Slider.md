@@ -44,6 +44,18 @@ The minimum slider value. The slider value is equal to minValue when the thumb i
 **Flags**: IRW
 
 ---
+## Attr: Slider.animateThumb
+
+### Description
+Should the thumb be animated to its new position when the value is changed programmatically, or by clicking in the slider track.
+
+### Groups
+
+- animation
+
+**Flags**: IRW
+
+---
 ## Attr: Slider.rangeFormat
 
 ### Description
@@ -56,12 +68,85 @@ The minimum slider value. The slider value is equal to minValue when the thumb i
 **Flags**: IR
 
 ---
+## Attr: Slider.value
+
+### Description
+The slider value. This value should lie between the minValue and maxValue and increases as the thumb is moved up (for a vertical slider) or right (for a horizontal slider) unless flipValues is set to true.
+
+### See Also
+
+- [Slider.minValue](#attr-sliderminvalue)
+- [Slider.maxValue](#attr-slidermaxvalue)
+- [Slider.flipValues](#attr-sliderflipvalues)
+- [Slider.showValue](#attr-slidershowvalue)
+
+**Flags**: IRW
+
+---
+## Attr: Slider.trackImageType
+
+### Description
+The imageType setting for the slider track.
+
+### See Also
+
+- [ImageStyle](../reference.md#type-imagestyle)
+- [StretchImg.imageType](StretchImg.md#attr-stretchimgimagetype)
+
+**Flags**: IRW
+
+---
 ## Attr: Slider.labelWidth
 
 ### Description
 The width of the labels used to display the minimum, maximum and current values of the slider.
 
 **Flags**: IRW
+
+---
+## Attr: Slider.showValue
+
+### Description
+Indicates whether a [label](#attr-slidervaluelabel) for the value of the slider should be displayed. The default position for this label is to the right of a [vertical](#attr-slidervertical) slider, or below a horizontal slider.
+
+### See Also
+
+- [Slider.value](#attr-slidervalue)
+
+**Flags**: IRW
+
+---
+## Attr: Slider.hValueStyle
+
+### Description
+Optional CSS style for the floating [valueLabel](#attr-slidervaluelabel), visible when [Slider.showValue](#attr-slidershowvalue) is true and [vertical](#attr-slidervertical) is false.
+
+**Flags**: IR
+
+---
+## Attr: Slider.showRange
+
+### Description
+Indicates whether labels for the [min and max values](#attr-sliderrangelabel) of the slider should be displayed. The default positions for these labels are below the start/end of a horizontal slider, or to the right of the start/end of a [vertical](#attr-slidervertical) slider.
+
+### See Also
+
+- [Slider.minValueLabel](#attr-sliderminvaluelabel)
+- [Slider.maxValueLabel](#attr-slidermaxvaluelabel)
+
+**Flags**: IRW
+
+---
+## Attr: Slider.valueFormat
+
+### Description
+[FormatString](../reference.md#type-formatstring) for numeric formatting of the value and range labels.
+
+### Groups
+
+- appearance
+
+**Flags**: IR
 
 ---
 ## Attr: Slider.titleSpacing
@@ -110,12 +195,48 @@ CSS style for the text in the floating [valueLabel](#attr-slidervaluelabel), vis
 **Flags**: IR
 
 ---
+## Attr: Slider.maxValue
+
+### Description
+The maximum slider value. The slider value is equal to maxValue when the thumb is at the top or right of the slider (unless flipValues is true, in which case the maximum value is at the bottom/left of the slider)
+
+### See Also
+
+- [Slider.flipValues](#attr-sliderflipvalues)
+
+**Flags**: IRW
+
+---
+## Attr: Slider.valueLabel
+
+### Description
+[AutoChild](../reference.md#type-autochild) displaying the current value as a floating label when [showValue](#attr-slidershowvalue) is true.
+
+**Flags**: IR
+
+---
 ## Attr: Slider.rangeStyle
 
 ### Description
 CSS style for the [min and max](#attr-sliderrangelabel) range-labels, when [showRange](#attr-slidershowrange) is true.
 
 **Flags**: IR
+
+---
+## Attr: Slider.roundValues
+
+### Description
+Specifies whether the slider value should be rounded to the nearest integer. If set to false, values will be rounded to a fixed number of decimal places controlled by [Slider.roundPrecision](#attr-sliderroundprecision).
+
+**Flags**: IRW
+
+---
+## Attr: Slider.thumbThickWidth
+
+### Description
+The dimension of the thumb perpendicular to the slider track.
+
+**Flags**: IRW
 
 ---
 ## Attr: Slider.vTrackStyle
@@ -126,6 +247,14 @@ Optional CSS style for the track for a [vertically oriented](#attr-slidervertica
 Will have the suffix "Disabled" added when the slider is disabled.
 
 **Flags**: IR
+
+---
+## Attr: Slider.hLabelSpacing
+
+### Description
+The space around the labels used to display the [minimum, maximum](#attr-sliderrangelabel) and [current](#attr-slidervaluelabel) values of the slider, when [vertical](#attr-slidervertical) is false. If unset, defaults to [Slider.labelSpacing](#attr-sliderlabelspacing).
+
+**Flags**: IRW
 
 ---
 ## Attr: Slider.activeTrackStyle
@@ -142,6 +271,14 @@ Will have the suffix "Disabled" added when the slider is disabled.
 
 ### Description
 The space around the labels used to display the [minimum, maximum](#attr-sliderrangelabel) and [current](#attr-slidervaluelabel) values of the slider, when [vertical](#attr-slidervertical) is true. If unset, defaults to [Slider.labelSpacing](#attr-sliderlabelspacing).
+
+**Flags**: IRW
+
+---
+## Attr: Slider.sliderTarget
+
+### Description
+The target widget for the `sliderMove` event generated when the slider thumb is moved.
 
 **Flags**: IRW
 
@@ -166,10 +303,67 @@ If thumb animation is enabled, should the thumb be animated to its initial value
 **Flags**: IRW
 
 ---
+## Attr: Slider.roundPrecision
+
+### Description
+If [Slider.roundValues](#attr-sliderroundvalues) is false, the slider value will be rounded to this number of decimal places. If set to null the value will not be rounded
+
+**Flags**: IRW
+
+---
+## Attr: Slider.minValueLabel
+
+### Description
+The text displayed in the label for the minimum value of the slider. If left as null, then slider.minValue will be displayed.
+
+### See Also
+
+- [Slider.showRange](#attr-slidershowrange)
+- [Slider.minValue](#attr-sliderminvalue)
+
+**Flags**: IRW
+
+---
+## Attr: Slider.animateThumbTime
+
+### Description
+Duration of thumb animation, in milliseconds.
+
+### Groups
+
+- animation
+
+**Flags**: IRW
+
+---
+## Attr: Slider.labelHeight
+
+### Description
+The height of the labels used to display the [minimum, maximum](#attr-sliderrangelabel) and [current](#attr-slidervaluelabel) values of the slider.
+
+**Flags**: IRW
+
+---
 ## Attr: Slider.length
 
 ### Description
 Used to set slider height if vertical, slider width if horizontal. Applied to the slider track, not necessarily the entire widget. Overridden by an explicit width/height specification for the widget.
+
+**Flags**: IRW
+
+---
+## Attr: Slider.titleStyle
+
+### Description
+CSS style for the [title-text](#attr-slidertitle), when [showTitle](#attr-slidershowtitle) is true.
+
+**Flags**: IR
+
+---
+## Attr: Slider.trackCapSize
+
+### Description
+The height of [vertical](#attr-slidervertical) slider start and end images, or width of horizontal slider start and end images.
 
 **Flags**: IRW
 
@@ -222,226 +416,6 @@ The thickness of the track. This is the width, for a [vertical](#attr-slidervert
 **Flags**: IRW
 
 ---
-## Attr: Slider.hThumbStyle
-
-### Description
-Optional CSS style for the thumb for a [horizontally oriented](#attr-slidervertical) slider.
-
-Will have the suffix "down" added when the mouse is down on the thumb, and "Disabled" added when the slider is disabled.
-
-**Flags**: IR
-
----
-## Attr: Slider.showActiveTrack
-
-### Description
-Whether to show the [activeTrack](#attr-slideractivetrack), which highlights the 'active' portion of a slider, from its minimum to its current [value](#attr-slidervalue).
-
-**Flags**: IR
-
----
-## Attr: Slider.numValues
-
-### Description
-The number of discrete values represented by slider. If specified, the range of valid values (between `minValue` and `maxValue`) will be divided into this many steps. As the thumb is moved along the track it will only select these values and appear to jump between the steps.
-
-**Flags**: IRW
-
----
-## Attr: Slider.animateThumb
-
-### Description
-Should the thumb be animated to its new position when the value is changed programmatically, or by clicking in the slider track.
-
-### Groups
-
-- animation
-
-**Flags**: IRW
-
----
-## Attr: Slider.value
-
-### Description
-The slider value. This value should lie between the minValue and maxValue and increases as the thumb is moved up (for a vertical slider) or right (for a horizontal slider) unless flipValues is set to true.
-
-### See Also
-
-- [Slider.minValue](#attr-sliderminvalue)
-- [Slider.maxValue](#attr-slidermaxvalue)
-- [Slider.flipValues](#attr-sliderflipvalues)
-- [Slider.showValue](#attr-slidershowvalue)
-
-**Flags**: IRW
-
----
-## Attr: Slider.trackImageType
-
-### Description
-The imageType setting for the slider track.
-
-### See Also
-
-- [ImageStyle](../reference.md#type-imagestyle)
-- [StretchImg.imageType](StretchImg.md#attr-stretchimgimagetype)
-
-**Flags**: IRW
-
----
-## Attr: Slider.showValue
-
-### Description
-Indicates whether a [label](#attr-slidervaluelabel) for the value of the slider should be displayed. The default position for this label is to the right of a [vertical](#attr-slidervertical) slider, or below a horizontal slider.
-
-### See Also
-
-- [Slider.value](#attr-slidervalue)
-
-**Flags**: IRW
-
----
-## Attr: Slider.hValueStyle
-
-### Description
-Optional CSS style for the floating [valueLabel](#attr-slidervaluelabel), visible when [Slider.showValue](#attr-slidershowvalue) is true and [vertical](#attr-slidervertical) is false.
-
-**Flags**: IR
-
----
-## Attr: Slider.showRange
-
-### Description
-Indicates whether labels for the [min and max values](#attr-sliderrangelabel) of the slider should be displayed. The default positions for these labels are below the start/end of a horizontal slider, or to the right of the start/end of a [vertical](#attr-slidervertical) slider.
-
-### See Also
-
-- [Slider.minValueLabel](#attr-sliderminvaluelabel)
-- [Slider.maxValueLabel](#attr-slidermaxvaluelabel)
-
-**Flags**: IRW
-
----
-## Attr: Slider.valueFormat
-
-### Description
-[FormatString](../reference.md#type-formatstring) for numeric formatting of the value and range labels.
-
-### Groups
-
-- appearance
-
-**Flags**: IR
-
----
-## Attr: Slider.maxValue
-
-### Description
-The maximum slider value. The slider value is equal to maxValue when the thumb is at the top or right of the slider (unless flipValues is true, in which case the maximum value is at the bottom/left of the slider)
-
-### See Also
-
-- [Slider.flipValues](#attr-sliderflipvalues)
-
-**Flags**: IRW
-
----
-## Attr: Slider.valueLabel
-
-### Description
-[AutoChild](../reference.md#type-autochild) displaying the current value as a floating label when [showValue](#attr-slidershowvalue) is true.
-
-**Flags**: IR
-
----
-## Attr: Slider.roundValues
-
-### Description
-Specifies whether the slider value should be rounded to the nearest integer. If set to false, values will be rounded to a fixed number of decimal places controlled by [Slider.roundPrecision](#attr-sliderroundprecision).
-
-**Flags**: IRW
-
----
-## Attr: Slider.thumbThickWidth
-
-### Description
-The dimension of the thumb perpendicular to the slider track.
-
-**Flags**: IRW
-
----
-## Attr: Slider.hLabelSpacing
-
-### Description
-The space around the labels used to display the [minimum, maximum](#attr-sliderrangelabel) and [current](#attr-slidervaluelabel) values of the slider, when [vertical](#attr-slidervertical) is false. If unset, defaults to [Slider.labelSpacing](#attr-sliderlabelspacing).
-
-**Flags**: IRW
-
----
-## Attr: Slider.sliderTarget
-
-### Description
-The target widget for the `sliderMove` event generated when the slider thumb is moved.
-
-**Flags**: IRW
-
----
-## Attr: Slider.roundPrecision
-
-### Description
-If [Slider.roundValues](#attr-sliderroundvalues) is false, the slider value will be rounded to this number of decimal places. If set to null the value will not be rounded
-
-**Flags**: IRW
-
----
-## Attr: Slider.minValueLabel
-
-### Description
-The text displayed in the label for the minimum value of the slider. If left as null, then slider.minValue will be displayed.
-
-### See Also
-
-- [Slider.showRange](#attr-slidershowrange)
-- [Slider.minValue](#attr-sliderminvalue)
-
-**Flags**: IRW
-
----
-## Attr: Slider.animateThumbTime
-
-### Description
-Duration of thumb animation, in milliseconds.
-
-### Groups
-
-- animation
-
-**Flags**: IRW
-
----
-## Attr: Slider.labelHeight
-
-### Description
-The height of the labels used to display the [minimum, maximum](#attr-sliderrangelabel) and [current](#attr-slidervaluelabel) values of the slider.
-
-**Flags**: IRW
-
----
-## Attr: Slider.titleStyle
-
-### Description
-CSS style for the [title-text](#attr-slidertitle), when [showTitle](#attr-slidershowtitle) is true.
-
-**Flags**: IR
-
----
-## Attr: Slider.trackCapSize
-
-### Description
-The height of [vertical](#attr-slidervertical) slider start and end images, or width of horizontal slider start and end images.
-
-**Flags**: IRW
-
----
 ## Attr: Slider.title
 
 ### Description
@@ -467,6 +441,24 @@ The text displayed in the label for the maximum value of the slider. If left as 
 **Flags**: IRW
 
 ---
+## Attr: Slider.hThumbStyle
+
+### Description
+Optional CSS style for the thumb for a [horizontally oriented](#attr-slidervertical) slider.
+
+Will have the suffix "down" added when the mouse is down on the thumb, and "Disabled" added when the slider is disabled.
+
+**Flags**: IR
+
+---
+## Attr: Slider.showActiveTrack
+
+### Description
+Whether to show the [activeTrack](#attr-slideractivetrack), which highlights the 'active' portion of a slider, from its minimum to its current [value](#attr-slidervalue).
+
+**Flags**: IR
+
+---
 ## Attr: Slider.thumbThinWidth
 
 ### Description
@@ -475,16 +467,12 @@ The dimension of the thumb parallel to the slider track.
 **Flags**: IRW
 
 ---
-## Attr: Slider.floatValueLabel
+## Attr: Slider.numValues
 
 ### Description
-When set to true, causes the [value-label](#attr-slidervaluelabel) to float as a top-level component. In a [horizontal](#attr-slidervertical) Slider, this means the value-label will always be h-centered above the thumb and extend outside of the Slider, potentially occluding adjacent components or being clipped by the Page extents.
+The number of discrete values represented by slider. If specified, the range of valid values (between `minValue` and `maxValue`) will be divided into this many steps. As the thumb is moved along the track it will only select these values and appear to jump between the steps.
 
-When set to false, the value-label is a peer of the thumb and is clamped to the extents of the track. When those points are reached, the value-label will stop moving, and the arrow beneath it will instead reposition according to the current position of the thumb.
-
-**Deprecated**
-
-**Flags**: IR
+**Flags**: IRW
 
 ---
 ## Attr: Slider.vThumbStyle
@@ -547,6 +535,18 @@ For vertical sliders:
 **Flags**: IRW
 
 ---
+## Method: Slider.setShowTitle
+
+### Description
+Sets the [Slider.showTitle](#attr-slidershowtitle) property of the slider
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| showTitle | [Boolean](#type-boolean) | false | — | show the slider title? |
+
+---
 ## Method: Slider.setMaxValueLabel
 
 ### Description
@@ -567,139 +567,6 @@ Returns the current slider value.
 ### Returns
 
 `[float](../reference.md#type-float)` — current slider value
-
----
-## Method: Slider.setMaxValue
-
-### Description
-Sets the [maximum value](#attr-slidermaxvalue) of the slider
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| newValue | [float](../reference.md#type-float) | false | — | the new maximum value |
-
----
-## Method: Slider.setRoundPrecision
-
-### Description
-Sets the [Slider.roundPrecision](#attr-sliderroundprecision) property of the slider
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| roundPrecision | [int](../reference.md#type-int) | false | — | new round precision |
-
----
-## Method: Slider.setThumbThinWidth
-
-### Description
-Sets the [Slider.thumbThinWidth](#attr-sliderthumbthinwidth) property of the slider
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| newWidth | [int](../reference.md#type-int) | false | — | new thumbThinWidth |
-
----
-## Method: Slider.setFlipValues
-
-### Description
-Sets the [Slider.flipValues](#attr-sliderflipvalues) property of the slider
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| flipValues | [boolean](../reference.md#type-boolean) | false | — | flip slider values? |
-
----
-## Method: Slider.setValue
-
-### Description
-Sets the slider value to newValue and moves the slider thumb to the appropriate position for this value. Sends the 'sliderMove' event to the sliderTarget.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| newValue | [float](../reference.md#type-float) | false | — | the new value |
-| noAnimation | [boolean](../reference.md#type-boolean) | true | — | do not animate the slider thumb to the new value |
-
----
-## Method: Slider.setLabelSpacing
-
-### Description
-Sets the [Slider.labelSpacing](#attr-sliderlabelspacing) property of the slider
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| labelWidth | [int](../reference.md#type-int) | false | — | new label spacing |
-
----
-## Method: Slider.setTitle
-
-### Description
-Sets the [Slider.title](#attr-slidertitle) of the slider
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| newTitle | [String](#type-string) | false | — | new title for the slider |
-
----
-## Method: Slider.setShowValue
-
-### Description
-Sets the [Slider.showValue](#attr-slidershowvalue) property of the slider
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| showValue | [boolean](../reference.md#type-boolean) | false | — | show the slider value? |
-
----
-## Method: Slider.setRoundValues
-
-### Description
-Sets the [Slider.roundValues](#attr-sliderroundvalues) property of the slider
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| roundValues | [boolean](../reference.md#type-boolean) | false | — | round slider values? |
-
----
-## Method: Slider.setThumbThickWidth
-
-### Description
-Sets the [Slider.thumbThickWidth](#attr-sliderthumbthickwidth) property of the slider
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| newWidth | [int](../reference.md#type-int) | false | — | new thumbThickWidth |
-
----
-## Method: Slider.setShowTitle
-
-### Description
-Sets the [Slider.showTitle](#attr-slidershowtitle) property of the slider
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| showTitle | [Boolean](#type-boolean) | false | — | show the slider title? |
 
 ---
 ## Method: Slider.setStepPercent
@@ -738,6 +605,42 @@ Sets the [number of values](#attr-slidernumvalues) for the slider
 | newNumValues | [Integer](../reference_2.md#type-integer) | false | — | the new number of values |
 
 ---
+## Method: Slider.setMaxValue
+
+### Description
+Sets the [maximum value](#attr-slidermaxvalue) of the slider
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| newValue | [float](../reference.md#type-float) | false | — | the new maximum value |
+
+---
+## Method: Slider.setRoundPrecision
+
+### Description
+Sets the [Slider.roundPrecision](#attr-sliderroundprecision) property of the slider
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| roundPrecision | [int](../reference.md#type-int) | false | — | new round precision |
+
+---
+## Method: Slider.setThumbThinWidth
+
+### Description
+Sets the [Slider.thumbThinWidth](#attr-sliderthumbthinwidth) property of the slider
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| newWidth | [int](../reference.md#type-int) | false | — | new thumbThinWidth |
+
+---
 ## Method: Slider.setThumbSrc
 
 ### Description
@@ -748,6 +651,18 @@ Sets the [Slider.thumbSrc](#attr-sliderthumbsrc) property of the slider
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | newSrc | [String](#type-string) | false | — | new thumbSrc |
+
+---
+## Method: Slider.setFlipValues
+
+### Description
+Sets the [Slider.flipValues](#attr-sliderflipvalues) property of the slider
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| flipValues | [boolean](../reference.md#type-boolean) | false | — | flip slider values? |
 
 ---
 ## Method: Slider.setLabelHeight
@@ -786,6 +701,19 @@ Sets the [Slider.trackSrc](#attr-slidertracksrc) property of the slider
 | newSrc | [String](#type-string) | false | — | new trackSrc |
 
 ---
+## Method: Slider.setValue
+
+### Description
+Sets the slider value to newValue and moves the slider thumb to the appropriate position for this value. Sends the 'sliderMove' event to the sliderTarget.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| newValue | [float](../reference.md#type-float) | false | — | the new value |
+| noAnimation | [boolean](../reference.md#type-boolean) | false | — | do not animate the slider thumb to the new value |
+
+---
 ## Method: Slider.setShowRange
 
 ### Description
@@ -796,6 +724,18 @@ Sets the [Slider.showRange](#attr-slidershowrange) property of the slider
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | showRange | [boolean](../reference.md#type-boolean) | false | — | show the slider range? |
+
+---
+## Method: Slider.setLabelSpacing
+
+### Description
+Sets the [Slider.labelSpacing](#attr-sliderlabelspacing) property of the slider
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| labelWidth | [int](../reference.md#type-int) | false | — | new label spacing |
 
 ---
 ## Method: Slider.setLabelWidth
@@ -834,6 +774,30 @@ Sets the [Slider.trackCapSize](#attr-slidertrackcapsize) property of the slider
 | newSize | [int](../reference.md#type-int) | false | — | new trackCapSize |
 
 ---
+## Method: Slider.setTitle
+
+### Description
+Sets the [Slider.title](#attr-slidertitle) of the slider
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| newTitle | [String](#type-string) | false | — | new title for the slider |
+
+---
+## Method: Slider.setShowValue
+
+### Description
+Sets the [Slider.showValue](#attr-slidershowvalue) property of the slider
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| showValue | [boolean](../reference.md#type-boolean) | false | — | show the slider value? |
+
+---
 ## Method: Slider.valueChanged
 
 ### Description
@@ -864,6 +828,18 @@ Sets the [minimum value](#attr-sliderminvalue) of the slider
 | newValue | [float](../reference.md#type-float) | false | — | the new minimum value |
 
 ---
+## Method: Slider.setRoundValues
+
+### Description
+Sets the [Slider.roundValues](#attr-sliderroundvalues) property of the slider
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| roundValues | [boolean](../reference.md#type-boolean) | false | — | round slider values? |
+
+---
 ## Method: Slider.setTrackImageType
 
 ### Description
@@ -874,5 +850,17 @@ Sets the [Slider.trackImageType](#attr-slidertrackimagetype) property of the sli
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | newType | [ImageStyle](../reference.md#type-imagestyle) | false | — | new trackImageType |
+
+---
+## Method: Slider.setThumbThickWidth
+
+### Description
+Sets the [Slider.thumbThickWidth](#attr-sliderthumbthickwidth) property of the slider
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| newWidth | [int](../reference.md#type-int) | false | — | new thumbThickWidth |
 
 ---

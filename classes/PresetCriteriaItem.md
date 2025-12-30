@@ -40,6 +40,18 @@ An object whose properties are user-visible titles for the preset ranges, and wh
 **Flags**: IR
 
 ---
+## Attr: PresetCriteriaItem.customOptionTitle
+
+### Description
+The title to show for the [custom option](#attr-presetcriteriaitemshowcustomoption).
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IR
+
+---
 ## Attr: PresetCriteriaItem.valueMap
 
 ### Description
@@ -56,28 +68,6 @@ If set, an additional option will be shown with the title [PresetCriteriaItem.cu
 **Flags**: IR
 
 ---
-## Attr: PresetCriteriaItem.customOptionTitle
-
-### Description
-The title to show for the [custom option](#attr-presetcriteriaitemshowcustomoption).
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IR
-
----
-## Method: PresetCriteriaItem.getCriterion
-
-### Description
-Get the criterion based on the value selected by the user.
-
-### Returns
-
-`[Criterion](#type-criterion)|[AdvancedCriteria](#type-advancedcriteria)` — the criteria for the selected option
-
----
 ## Method: PresetCriteriaItem.getCustomCriteria
 
 ### Description
@@ -90,5 +80,15 @@ This method is called when [PresetCriteriaItem.showCustomOption](#attr-presetcri
 | callback | [Callback](../reference.md#type-callback) | false | — | callback to fire when custom criteria has been gathered. Expects parameters "criteria,title". The "title" will be displayed as the currently selected value when custom criteria have been chosen. |
 
 **Flags**: A
+
+---
+## Method: PresetCriteriaItem.getCriterion
+
+### Description
+Get the criterion based on the value selected by the user.
+
+### Returns
+
+`[Criterion](#type-criterion)|[AdvancedCriteria](#type-advancedcriteria)` — the criteria for the selected option
 
 ---

@@ -12,52 +12,6 @@
 Simple SectionHeader class based on a Label with an icon, skinnable via CSS.
 
 ---
-## Attr: SectionHeader.baseStyle
-
-### Description
-CSS class for the section header.
-
-**Flags**: IRA
-
----
-## Attr: SectionHeader.showClippedTitleOnHover
-
-### Description
-If true and the title is clipped, then a hover containing the full title of this section header is enabled.
-
-### Groups
-
-- hovers
-
-**Flags**: IRW
-
----
-## Attr: SectionHeader.noDoubleClicks
-
-### Description
-By default doubleClicks are disabled for SectionHeaders. All mouse click events will be handled as single clicks. Set this property to `false` to enable standard double-click handling.
-
-**Flags**: IRA
-
----
-## Attr: SectionHeader.definingProperty
-
-### Description
-This attribute denotes the name of a property to use as a [getDefiningPropertyName()](Canvas.md#method-canvasgetdefiningpropertyname) for this property when generating and resolving [AutoTest locators with search segments](../reference_2.md#type-autotestlocator).
-
-**Flags**: IRWA
-
----
-## Attr: SectionHeader.icon
-
-### Description
-Base filename of the icon that represents open and closed states. The default settings also change the icon for disabled sections, so a total of four images are required (opened, closed, Disabled\_opened, Disabled\_closed).
-
-Not shown if [SectionStackSection.canCollapse](SectionStackSection.md#attr-sectionstacksectioncancollapse) is false.
-
-**Flags**: IRA
-
----
 ## Attr: SectionHeader.title
 
 ### Description
@@ -88,6 +42,44 @@ Note that this is an init-time property. If you need to dynamically change what 
 **Flags**: IR
 
 ---
+## Attr: SectionHeader.baseStyle
+
+### Description
+CSS class for the section header.
+
+**Flags**: IRA
+
+---
+## Attr: SectionHeader.showClippedTitleOnHover
+
+### Description
+If true and the title is clipped, then a hover containing the full title of this section header is enabled.
+
+### Groups
+
+- hovers
+
+**Flags**: IRW
+
+---
+## Attr: SectionHeader.noDoubleClicks
+
+### Description
+By default doubleClicks are disabled for SectionHeaders. All mouse click events will be handled as single clicks. Set this property to `false` to enable standard double-click handling.
+
+**Flags**: IRA
+
+---
+## Attr: SectionHeader.icon
+
+### Description
+Base filename of the icon that represents open and closed states. The default settings also change the icon for disabled sections, so a total of four images are required (opened, closed, Disabled\_opened, Disabled\_closed).
+
+Not shown if [SectionStackSection.canCollapse](SectionStackSection.md#attr-sectionstacksectioncancollapse) is false.
+
+**Flags**: IRA
+
+---
 ## Attr: SectionHeader.controlsLayout
 
 ### Description
@@ -102,6 +94,22 @@ A [Layout](Layout.md#class-layout) containing specified [SectionHeader.controls]
 Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas.md#method-canvasseteditmode).
 
 **Flags**: IR
+
+---
+## Method: SectionHeader.titleHoverHTML
+
+### Description
+Returns the HTML that is displayed by the default [titleHover](#method-sectionheadertitlehover) handler. Return null or an empty string to cancel the hover.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| defaultHTML | [HTMLString](../reference.md#type-htmlstring) | false | — | the HTML that would have been displayed by default |
+
+### Returns
+
+`[HTMLString](../reference.md#type-htmlstring)` — HTML to be displayed in the hover. If an empty string, then the hover is canceled. If null, then the default HTML is used.
 
 ---
 ## Method: SectionHeader.getSectionStack
@@ -137,7 +145,7 @@ Optional stringMethod to fire when the user hovers over this section header and 
 
 ### Returns
 
-`[Boolean](#type-boolean)` — false to suppress the standard hover
+`[boolean](../reference.md#type-boolean)` — false to suppress the standard hover
 
 ### Groups
 
@@ -147,21 +155,5 @@ Optional stringMethod to fire when the user hovers over this section header and 
 
 - [SectionHeader.clipTitle](#attr-sectionheadercliptitle)
 - [SectionHeader.titleClipped](#method-sectionheadertitleclipped)
-
----
-## Method: SectionHeader.titleHoverHTML
-
-### Description
-Returns the HTML that is displayed by the default [titleHover](#method-sectionheadertitlehover) handler. Return null or an empty string to cancel the hover.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| defaultHTML | [HTMLString](../reference.md#type-htmlstring) | false | — | the HTML that would have been displayed by default |
-
-### Returns
-
-`[HTMLString](../reference.md#type-htmlstring)` — HTML to be displayed in the hover. If an empty string, then the hover is canceled. If null, then the default HTML is used.
 
 ---

@@ -12,14 +12,6 @@
 Show a message which fades out automatically using [Notify](Notify.md#class-notify).
 
 ---
-## Attr: ShowNotificationTask.notifyType
-
-### Description
-NotifyType for message.
-
-**Flags**: IR
-
----
 ## Attr: ShowNotificationTask.textFormula
 
 ### Description
@@ -42,6 +34,14 @@ Message to display. To display a dynamic message see [ShowNotificationTask.textF
 
 ### Description
 Auto-dismiss message after a short duration.
+
+**Flags**: IR
+
+---
+## Attr: ShowNotificationTask.notifyType
+
+### Description
+NotifyType for message.
 
 **Flags**: IR
 

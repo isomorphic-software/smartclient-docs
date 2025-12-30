@@ -40,20 +40,22 @@ Can be retrieved at any time. Use [EditTree.getRootEditNode](#method-edittreeget
 **Flags**: IR
 
 ---
-## Attr: EditTree.canShowFilterEditor
-
-### Description
-Option to show filter editor is disabled for editTree
-
-**Flags**: IRA
-
----
 ## Attr: EditTree.defaultPalette
 
 ### Description
 [Palette](../reference.md#interface-palette) to use when an [EditNode](../reference.md#object-editnode) is being created directly by this EditContext, instead of being created due to a user interaction with a palette (eg dragging from a [TreePalette](../reference.md#class-treepalette), or clicking on [MenuPalette](../reference.md#class-menupalette)).
 
 If no defaultPalette is provided, the EditContext uses an automatically created [HiddenPalette](../reference.md#class-hiddenpalette).
+
+**Flags**: IR
+
+---
+## Attr: EditTree.hideGroupBorderOnDrag
+
+### Description
+Should the group selection box shown when [canGroupSelect](EditContext.md#attr-editcontextcangroupselect) is true be hidden during drag?
+
+Treated as `true` if not explicitly set to false.
 
 **Flags**: IR
 
@@ -65,7 +67,47 @@ When enabled, changes to a [liveObject](EditNode.md#attr-editnodeliveobject)'s p
 
 This feature can be disabled by either setting this property or [EditProxy.persistCoordinates](EditProxy.md#attr-editproxypersistcoordinates) to `false`. This property affects all nodes within the EditContext whereas the latter property affects children of a single node.
 
-In some use-cases, like Reify, coordinates should not be persisted except when a component explicitly enables this feature. By setting this property to `null` no component will persist coordinates of children unless `EditProxy.persistCoordinates` is explicitly set to `true`.
+In some use-cases, like VisualBuilder, coordinates should not be persisted except when a component explicitly enables this feature. By setting this property to `null` no component will persist coordinates of children unless `EditProxy.persistCoordinates` is explicitly set to `true`.
+
+**Flags**: IR
+
+---
+## Attr: EditTree.selectedBorder
+
+### Description
+Set the CSS border to be applied to the selection outline of the selected components. This property is used when [EditProxy.selectedAppearance](EditProxy.md#attr-editproxyselectedappearance) is `outlineMask` or `outlineEdges`.
+
+This value is applied as a default to [EditProxy.selectedBorder](EditProxy.md#attr-editproxyselectedborder).
+
+**Flags**: IR
+
+---
+## Attr: EditTree.allowNestedDrops
+
+### Description
+Controls whether components can be dropped into other components which support child components.
+
+When enabled, during a drop interaction in which a [PaletteNode](../reference_2.md#object-palettenode) or [EditNode](../reference.md#object-editnode) is the drop data, the [Component Schema](../kb_topics/componentSchema.md#kb-topic-component-schema) of the current candidate drop target is inspected to see whether that parent allows children of the type being dropped. If it does, the drop will result in a call to [EditTree.addNode](#method-edittreeaddnode) for a paletteNode or for an existing [EditNode](../reference.md#object-editnode) in the same tree.
+
+Specific components can disable nested drops by explicitly setting [EditProxy.allowNestedDrops](EditProxy.md#attr-editproxyallownesteddrops) to false.
+
+This mode is enabled by default unless explicitly disabled by setting this property to false.
+
+**Flags**: IR
+
+---
+## Attr: EditTree.autoEditNewNodes
+
+### Description
+New nodes added to the editContext are automatically placed into edit mode if the new node's parent is in edit mode. To suppress this action set `autoEditNewNodes` to false.
+
+**Flags**: IR
+
+---
+## Attr: EditTree.extraPalettes
+
+### Description
+Additional [Palettes](../reference.md#interface-palette) to consult for metadata when deserializing [Edit Nodes](../reference.md#object-editnode). Note that the [defaultPalette](#attr-edittreedefaultpalette) is always consulted and need not be provided again here.
 
 **Flags**: IR
 
@@ -84,6 +126,16 @@ If set, auto-enables [EditProxy.useCopyPasteShortcuts](EditProxy.md#attr-editpro
 Should the group selection box shown when [canGroupSelect](EditContext.md#attr-editcontextcangroupselect) is true allow dragging the group as a whole?
 
 Treated as `true` if not set and [canGroupSelect](EditContext.md#attr-editcontextcangroupselect) is true.
+
+**Flags**: IR
+
+---
+## Attr: EditTree.canGroupSelect
+
+### Description
+Should a group selection outline covering the outermost bounding boxes of all selected components be shown in this container?
+
+Treated as `true` if not set and hoop selection is enabled (see [EditProxy.canSelectChildren](EditProxy.md#attr-editproxycanselectchildren) and [selectionType](EditContext.md#attr-editcontextselectiontype).
 
 **Flags**: IR
 
@@ -116,66 +168,6 @@ NOTE: A selected component label is only supported when [EditProxy.selectedAppea
 **Flags**: IR
 
 ---
-## Attr: EditTree.hideGroupBorderOnDrag
-
-### Description
-Should the group selection box shown when [canGroupSelect](EditContext.md#attr-editcontextcangroupselect) is true be hidden during drag?
-
-Treated as `true` if not explicitly set to false.
-
-**Flags**: IR
-
----
-## Attr: EditTree.selectedBorder
-
-### Description
-Set the CSS border to be applied to the selection outline of the selected components. This property is used when [EditProxy.selectedAppearance](EditProxy.md#attr-editproxyselectedappearance) is `outlineMask` or `outlineEdges`.
-
-This value is applied as a default to [EditProxy.selectedBorder](EditProxy.md#attr-editproxyselectedborder).
-
-**Flags**: IR
-
----
-## Attr: EditTree.allowNestedDrops
-
-### Description
-Controls whether components can be dropped into other components which support child components.
-
-When enabled, during a drop interaction in which a [PaletteNode](../reference.md#object-palettenode) or [EditNode](../reference.md#object-editnode) is the drop data, the [Component Schema](../kb_topics/componentSchema.md#kb-topic-component-schema) of the current candidate drop target is inspected to see whether that parent allows children of the type being dropped. If it does, the drop will result in a call to [EditTree.addNode](#method-edittreeaddnode) for a paletteNode or for an existing [EditNode](../reference.md#object-editnode) in the same tree.
-
-Specific components can disable nested drops by explicitly setting [EditProxy.allowNestedDrops](EditProxy.md#attr-editproxyallownesteddrops) to false.
-
-This mode is enabled by default unless explicitly disabled by setting this property to false.
-
-**Flags**: IR
-
----
-## Attr: EditTree.autoEditNewNodes
-
-### Description
-New nodes added to the editContext are automatically placed into edit mode if the new node's parent is in edit mode. To suppress this action set `autoEditNewNodes` to false.
-
-**Flags**: IR
-
----
-## Attr: EditTree.extraPalettes
-
-### Description
-Additional [Palettes](../reference.md#interface-palette) to consult for metadata when deserializing [Edit Nodes](../reference.md#object-editnode). Note that the [defaultPalette](#attr-edittreedefaultpalette) is always consulted and need not be provided again here.
-
-**Flags**: IR
-
----
-## Attr: EditTree.canGroupSelect
-
-### Description
-Should a group selection outline covering the outermost bounding boxes of all selected components be shown in this container?
-
-Treated as `true` if not set and hoop selection is enabled (see [EditProxy.canSelectChildren](EditProxy.md#attr-editproxycanselectchildren) and [selectionType](EditContext.md#attr-editcontextselectiontype).
-
-**Flags**: IR
-
----
 ## Attr: EditTree.editContext
 
 ### Description
@@ -184,20 +176,12 @@ The [EditContext](EditContext.md#class-editcontext) managed by this EditTree. If
 **Flags**: IR
 
 ---
-## Attr: EditTree.canSaveSearches
-
-### Description
-Option to save searches is disabled for editTree
-
-**Flags**: IRA
-
----
 ## Method: EditTree.makePaletteNode
 
 ### Description
-Creates a [PaletteNode](../reference.md#object-palettenode) from an [EditNode](../reference.md#object-editnode) in this context's [editNodeTree](#method-edittreegeteditnodetree).
+Creates a [PaletteNode](../reference_2.md#object-palettenode) from an [EditNode](../reference.md#object-editnode) in this context's [editNodeTree](#method-edittreegeteditnodetree).
 
-This essentially creates a new [PaletteNode](../reference.md#object-palettenode) with the [EditNode.defaults](EditNode.md#attr-editnodedefaults) from the passed `editNode`. The returned `paletteNode` could then be used with [EditContext.addFromPaletteNode](EditContext.md#method-editcontextaddfrompalettenode) to effectively create a copy of the original editNode - specifically a new editNode with a new [EditNode.liveObject](EditNode.md#attr-editnodeliveobject) created from the same defaults.
+This essentially creates a new [PaletteNode](../reference_2.md#object-palettenode) with the [EditNode.defaults](EditNode.md#attr-editnodedefaults) from the passed `editNode`. The returned `paletteNode` could then be used with [EditContext.addFromPaletteNode](EditContext.md#method-editcontextaddfrompalettenode) to effectively create a copy of the original editNode - specifically a new editNode with a new [EditNode.liveObject](EditNode.md#attr-editnodeliveobject) created from the same defaults.
 
 However note that `makePaletteNode()` does not copy descendant nodes - use [EditTree.makePaletteNodeTree](#method-edittreemakepalettenodetree) for that.
 
@@ -217,7 +201,7 @@ May return null if the passed editNode cannot validly by transformed into a pale
 ## Method: EditTree.getPaletteNodesFromXML
 
 ### Description
-Obtain [PaletteNodes](../reference.md#object-palettenode) from an XML representation, but do not add them to the EditContext.
+Obtain [PaletteNodes](../reference_2.md#object-palettenode) from an XML representation, but do not add them to the EditContext.
 
 ### Parameters
 
@@ -239,6 +223,23 @@ Obtain [PaletteNodes](../reference.md#object-palettenode) from an XML representa
 Removes all [EditNodes](../reference.md#object-editnode) from the EditContext, and calls [destroy()](Canvas.md#method-canvasdestroy) on the [liveObjects](EditNode.md#attr-editnodeliveobject).
 
 ---
+## Method: EditTree.removeNodeProperties
+
+### Description
+Removes the specified properties from an editNode's serializable "defaults". Note that the [liveObject](EditNode.md#attr-editnodeliveobject) is not updated by this method. To set a property to null (rather than removing it), use [setNodeProperties()](#method-edittreesetnodeproperties) instead.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| editNode | [EditNode](#type-editnode) | false | — | the editNode to update |
+| properties | [Array of String](#type-array-of-string) | false | — | an array of property names to remove |
+
+### See Also
+
+- [EditTree.setNodeProperties](#method-edittreesetnodeproperties)
+
+---
 ## Method: EditTree.getRootEditNode
 
 ### Description
@@ -252,7 +253,7 @@ Returns the root [EditNode](../reference.md#object-editnode) of the EditContext 
 ## Method: EditTree.addPaletteNodesFromJSON
 
 ### Description
-Recreate [EditNodes](../reference.md#object-editnode) from a JSON representation of [PaletteNodes](../reference.md#object-palettenode) (possibly created by calling [EditTree.serializeAllEditNodesAsJSON](#method-edittreeserializealleditnodesasjson) or [EditTree.serializeEditNodesAsJSON](#method-edittreeserializeeditnodesasjson).
+Recreate [EditNodes](../reference.md#object-editnode) from a JSON representation of [PaletteNodes](../reference_2.md#object-palettenode) (possibly created by calling [EditTree.serializeAllEditNodesAsJSON](#method-edittreeserializealleditnodesasjson) or [EditTree.serializeEditNodesAsJSON](#method-edittreeserializeeditnodesasjson).
 
 By default, components that have [global IDs](Canvas.md#attr-canvasid) will not actually be allowed to take those global IDs - instead, only widgets that have one of the global IDs passed as the `globals` parameter will actually receive their global IDs. To override this behavior, pass the special value [RPCManager.ALL_GLOBALS](RPCManager.md#classattr-rpcmanagerall_globals) for the `globals` parameter.
 
@@ -270,6 +271,24 @@ By default, components that have [global IDs](Canvas.md#attr-canvasid) will not 
 - [EditTree.addFromPaletteNodes](#method-edittreeaddfrompalettenodes)
 - [EditTree.serializeAllEditNodesAsJSON](#method-edittreeserializealleditnodesasjson)
 - [EditTree.serializeEditNodesAsJSON](#method-edittreeserializeeditnodesasjson)
+
+---
+## Method: EditTree.setNodeProperties
+
+### Description
+Update an editNode's serializable "defaults" with the supplied properties. If you wish to remove a property from the defaults (rather than setting it to null), then use [removeNodeProperties()](#method-edittreeremovenodeproperties) instead.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| editNode | [EditNode](#type-editnode) | false | — | the editNode to update |
+| properties | [Canvas Properties](#type-canvas-properties) | false | — | the properties to apply |
+| skipLiveObjectUpdate | [Boolean](#type-boolean) | true | — | whether to skip updating the [liveObject](EditNode.md#attr-editnodeliveobject), e.g. if you have already updated the liveObject |
+
+### See Also
+
+- [EditTree.removeNodeProperties](#method-edittreeremovenodeproperties)
 
 ---
 ## Method: EditTree.makeEditNode
@@ -298,6 +317,26 @@ If no defaultPalette is provided, the EditContext uses an automatically created 
 ### Returns
 
 `[Palette](#type-palette)` — the default Palette
+
+---
+## Method: EditTree.serializeAllEditNodes
+
+### Description
+Serialize the tree of [EditNodes](../reference.md#object-editnode) to an XML representation of [PaletteNodes](../reference_2.md#object-palettenode). The result can be supplied to [addPaletteNodesFromXML()](#method-edittreeaddpalettenodesfromxml) to recreate the EditNodes.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| settings | [SerializationSettings](#type-serializationsettings) | true | — | Additional serialization settings |
+
+### Returns
+
+`[String](#type-string)` — an XML representation of PaletteNodes which can be used to recreate the tree of EditNodes.
+
+### See Also
+
+- [EditTree.addPaletteNodesFromXML](#method-edittreeaddpalettenodesfromxml)
 
 ---
 ## Method: EditTree.removeAll
@@ -334,10 +373,30 @@ Copies the passed editNode or editNodes to an internal "clipboard" space, for la
 | editNode | [EditNode](#type-editnode)|[Array of EditNode](#type-array-of-editnode) | false | — | — |
 
 ---
+## Method: EditTree.getPaletteNodesFromJS
+
+### Description
+Obtain [PaletteNodes](../reference_2.md#object-palettenode) from a JavaScript source representation.
+
+By default, components that have [global IDs](Canvas.md#attr-canvasid) will not actually be allowed to take those global IDs - instead, only widgets that have one of the global IDs passed as the `globals` parameter will actually receive their global IDs. To override this behavior, pass the special value [RPCManager.ALL_GLOBALS](RPCManager.md#classattr-rpcmanagerall_globals) for the `globals` parameter.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| jsCode | [String](#type-string) | false | — | JavaScript code to eval. |
+| callback | [PaletteNodeCallback](#type-palettenodecallback) | false | — | Callback used to return the PaletteNodes |
+| globals | [Array of String](#type-array-of-string) | true | — | widgets to allow to take their global IDs |
+
+### See Also
+
+- [Callbacks.PaletteNodeCallback](Callbacks.md#method-callbackspalettenodecallback)
+
+---
 ## Method: EditTree.addFromPaletteNodes
 
 ### Description
-Add the supplied [PaletteNodes](../reference.md#object-palettenode) to the parentNode, preserving internal references from one supplied PaletteNode to another. This method should be used with an array of possibly inter-related PaletteNodes (for instance, those produced as a result of serialization via [serializeAllEditNodes()](#method-edittreeserializealleditnodes)) rather than calling [addFromPaletteNode()](#method-edittreeaddfrompalettenode) on each individual PaletteNode.
+Add the supplied [PaletteNodes](../reference_2.md#object-palettenode) to the parentNode, preserving internal references from one supplied PaletteNode to another. This method should be used with an array of possibly inter-related PaletteNodes (for instance, those produced as a result of serialization via [serializeAllEditNodes()](#method-edittreeserializealleditnodes), rather than calling [addFromPaletteNode()](#method-edittreeaddfrompalettenode) on each individual PaletteNode.
 
 ### Parameters
 
@@ -355,217 +414,6 @@ Add the supplied [PaletteNodes](../reference.md#object-palettenode) to the paren
 - [EditTree.addFromPaletteNode](#method-edittreeaddfrompalettenode)
 
 ---
-## Method: EditTree.getEditContext
-
-### Description
-Returns the [EditContext](EditContext.md#class-editcontext) instance managed by the EditTree.
-
-### Returns
-
-`[EditContext](#type-editcontext)` — the EditContext instance
-
----
-## Method: EditTree.addNode
-
-### Description
-Add a new [EditNode](../reference.md#object-editnode) to the EditContext, under the specified parent. If the parentNode is not provided it will be determined from [EditContext.defaultParent](EditContext.md#attr-editcontextdefaultparent).
-
-The EditContext will interrogate the parent and new nodes to determine what field within the parent allows a child of this type, and to find a method to add the newNode's liveObject to the parentNode's liveObject. The new relationship will then be stored in the tree of EditNodes.
-
-For example, when a Tab is dropped on a TabSet, the field TabSet.tabs is discovered as the correct target field via naming conventions, and the method TabSet.addTab() is likewise discovered as the correct method to add a Tab to a TabSet.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| newNode | [EditNode](#type-editnode) | false | — | new node to be added |
-| parentNode | [EditNode](#type-editnode) | true | — | parent to add the new node under. |
-| index | [Integer](../reference_2.md#type-integer) | true | — | index within the parent's children array |
-| parentProperty | [String](#type-string) | true | — | the property of the liveParent to which the new node should be added, if not auto-discoverable from the schema |
-| skipParentComponentAdd | [Boolean](#type-boolean) | true | — | whether to skip adding the liveObject to the liveParent (default false) |
-| forceSingularFieldReplace | [Boolean](#type-boolean) | true | — | whether to replace existing single field node if newNode liveObject is the same (default false) |
-
-### Returns
-
-`[EditNode](#type-editnode)` — newNodenode added
-
----
-## Method: EditTree.makePaletteNodeTree
-
-### Description
-Creates a [Tree](Tree.md#class-tree) of [PaletteNodes](../reference.md#object-palettenode) from an [EditNode](../reference.md#object-editnode) in this context's [editNodeTree](#method-edittreegeteditnodetree), by using [EditTree.makePaletteNode](#method-edittreemakepalettenode) on the passed `EditNode` and its descendents within the [editNodeTree](EditContext.md#method-editcontextgeteditnodetree).
-
-The root node of the returned [Tree](Tree.md#class-tree) will be a PaletteNode derived from the passed `EditNode`.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| editNode | [EditNode](#type-editnode) | false | — | root editNode to make Tree of PaletteNodes from |
-| removeAutoIDs | [Boolean](#type-boolean) | false | — | should ID and autoID defaults be removed? |
-
-### Returns
-
-`[Tree](#type-tree)` — a Tree of paletteNodes or null
-
----
-## Method: EditTree.enableEditing
-
-### Description
-Enable edit mode for an [EditNode](../reference.md#object-editnode). This is a shortcut for calling [Canvas.setEditMode](Canvas.md#method-canvasseteditmode).
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| editNode | [EditNode](#type-editnode) | false | — | the EditNode on which to enable editing |
-
-### See Also
-
-- [Canvas.setEditMode](Canvas.md#method-canvasseteditmode)
-- [EditTree.isNodeEditingOn](#method-edittreeisnodeeditingon)
-
----
-## Method: EditTree.pasteEditNodes
-
-### Description
-"Pastes" `editNodes` previously captured via [EditTree.copyEditNodes](#method-edittreecopyeditnodes).
-
-New editNodes will be added as root-level nodes of the [editNodeTree](#method-edittreegeteditnodetree) unless a `targetEditNode` is passed.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| targetEditNode | [EditNode](#type-editnode) | true | — | — |
-
----
-## Method: EditTree.isNodeEditingOn
-
-### Description
-Returns true if `editNode` is in edit mode.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| editNode | [EditNode](#type-editnode) | false | — | the EditNode |
-
-### Returns
-
-`[boolean](../reference.md#type-boolean)` — true if node is in edit mode
-
----
-## Method: EditTree.serializeEditNodes
-
-### Description
-Serialize the provided [EditNodes](../reference.md#object-editnode) to an XML representation of [PaletteNodes](../reference.md#object-palettenode). Note that the EditNodes must have been added to this EditContext. The result can be supplied to [addPaletteNodesFromXML()](#method-edittreeaddpalettenodesfromxml) to recreate the EditNodes.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| nodes | [Array of EditNode](#type-array-of-editnode) | false | — | EditNodes to be serialized |
-| settings | [SerializationSettings](#type-serializationsettings) | true | — | Additional serialization settings |
-
-### Returns
-
-`[String](#type-string)` — an XML representtion of the provided EditNodes
-
----
-## Method: EditTree.getNodeProperty
-
-### Description
-Returns the specified property from the editNode's serializable "defaults".
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| editNode | [EditNode](#type-editnode) | false | — | the editNode to query |
-| name | [String](#type-string) | false | — | the property name to query |
-
-### See Also
-
-- [EditTree.setNodeProperties](#method-edittreesetnodeproperties)
-
----
-## Method: EditTree.removeNodeProperties
-
-### Description
-Removes the specified properties from an editNode's serializable "defaults". Note that the [liveObject](EditNode.md#attr-editnodeliveobject) is not updated by this method. To set a property to null (rather than removing it), use [setNodeProperties()](#method-edittreesetnodeproperties) instead.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| editNode | [EditNode](#type-editnode) | false | — | the editNode to update |
-| properties | [Array of String](#type-array-of-string) | false | — | an array of property names to remove |
-
-### See Also
-
-- [EditTree.setNodeProperties](#method-edittreesetnodeproperties)
-
----
-## Method: EditTree.setNodeProperties
-
-### Description
-Update an editNode's serializable "defaults" with the supplied properties. If you wish to remove a property from the defaults (rather than setting it to null), then use [removeNodeProperties()](#method-edittreeremovenodeproperties) instead.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| editNode | [EditNode](#type-editnode) | false | — | the editNode to update |
-| properties | [Canvas Properties](#type-canvas-properties) | false | — | the properties to apply |
-| skipLiveObjectUpdate | [Boolean](#type-boolean) | true | — | whether to skip updating the [liveObject](EditNode.md#attr-editnodeliveobject), e.g. if you have already updated the liveObject |
-
-### See Also
-
-- [EditTree.removeNodeProperties](#method-edittreeremovenodeproperties)
-- [EditTree.getNodeProperty](#method-edittreegetnodeproperty)
-
----
-## Method: EditTree.serializeAllEditNodes
-
-### Description
-Serialize the tree of [EditNodes](../reference.md#object-editnode) to an XML representation of [PaletteNodes](../reference.md#object-palettenode). The result can be supplied to [addPaletteNodesFromXML()](#method-edittreeaddpalettenodesfromxml) to recreate the EditNodes.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| settings | [SerializationSettings](#type-serializationsettings) | true | — | Additional serialization settings |
-
-### Returns
-
-`[String](#type-string)` — an XML representation of PaletteNodes which can be used to recreate the tree of EditNodes.
-
-### See Also
-
-- [EditTree.addPaletteNodesFromXML](#method-edittreeaddpalettenodesfromxml)
-
----
-## Method: EditTree.getPaletteNodesFromJS
-
-### Description
-Obtain [PaletteNodes](../reference.md#object-palettenode) from a JavaScript source representation.
-
-By default, components that have [global IDs](Canvas.md#attr-canvasid) will not actually be allowed to take those global IDs - instead, only widgets that have one of the global IDs passed as the `globals` parameter will actually receive their global IDs. To override this behavior, pass the special value [RPCManager.ALL_GLOBALS](RPCManager.md#classattr-rpcmanagerall_globals) for the `globals` parameter.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| jsCode | [String](#type-string) | false | — | JavaScript code to eval. |
-| callback | [PaletteNodeCallback](#type-palettenodecallback) | false | — | Callback used to return the PaletteNodes |
-| globals | [Array of String](#type-array-of-string) | true | — | widgets to allow to take their global IDs |
-
-### See Also
-
-- [Callbacks.PaletteNodeCallback](Callbacks.md#method-callbackspalettenodecallback)
-
----
 ## Method: EditTree.getEditNodeTree
 
 ### Description
@@ -581,7 +429,7 @@ Gets the tree of editNodes being edited by this editContext. Standard tree trave
 ## Method: EditTree.addPaletteNodesFromXML
 
 ### Description
-Recreate [EditNodes](../reference.md#object-editnode) from an XML representation of [PaletteNodes](../reference.md#object-palettenode) (possibly created by calling [EditTree.serializeAllEditNodes](#method-edittreeserializealleditnodes) or [EditTree.serializeEditNodes](#method-edittreeserializeeditnodes).
+Recreate [EditNodes](../reference.md#object-editnode) from an XML representation of [PaletteNodes](../reference_2.md#object-palettenode) (possibly created by calling [EditTree.serializeAllEditNodes](#method-edittreeserializealleditnodes) or [EditTree.serializeEditNodes](#method-edittreeserializeeditnodes).
 
 By default, components that have [global IDs](Canvas.md#attr-canvasid) will not actually be allowed to take those global IDs - instead, only widgets that have one of the global IDs passed as the `globals` parameter will actually receive their global IDs. To override this behavior, pass the special value [RPCManager.ALL_GLOBALS](RPCManager.md#classattr-rpcmanagerall_globals) for the `globals` parameter.
 
@@ -635,10 +483,45 @@ Creates a new EditNode from a PaletteNode, using the [EditTree.defaultPalette](#
 - [EditTree.addFromPaletteNodes](#method-edittreeaddfrompalettenodes)
 
 ---
+## Method: EditTree.getEditContext
+
+### Description
+Returns the [EditContext](EditContext.md#class-editcontext) instance managed by the EditTree.
+
+### Returns
+
+`[EditContext](#type-editcontext)` — the EditContext instance
+
+---
+## Method: EditTree.addNode
+
+### Description
+Add a new [EditNode](../reference.md#object-editnode) to the EditContext, under the specified parent. If the parentNode is not provided it will be determined from [EditContext.defaultParent](EditContext.md#attr-editcontextdefaultparent).
+
+The EditContext will interrogate the parent and new nodes to determine what field within the parent allows a child of this type, and to find a method to add the newNode's liveObject to the parentNode's liveObject. The new relationship will then be stored in the tree of EditNodes.
+
+For example, when a Tab is dropped on a TabSet, the field TabSet.tabs is discovered as the correct target field via naming conventions, and the method TabSet.addTab() is likewise discovered as the correct method to add a Tab to a TabSet.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| newNode | [EditNode](#type-editnode) | false | — | new node to be added |
+| parentNode | [EditNode](#type-editnode) | true | — | parent to add the new node under. |
+| index | [Integer](../reference_2.md#type-integer) | true | — | index within the parent's children array |
+| parentProperty | [String](#type-string) | true | — | the property of the liveParent to which the new node should be added, if not auto-discoverable from the schema |
+| skipParentComponentAdd | [Boolean](#type-boolean) | true | — | whether to skip adding the liveObject to the liveParent (default false) |
+| forceSingularFieldReplace | [Boolean](#type-boolean) | true | — | whether to replace existing single field node if newNode liveObject is the same (default false) |
+
+### Returns
+
+`[EditNode](#type-editnode)` — newNodenode added
+
+---
 ## Method: EditTree.addPaletteNodesFromJS
 
 ### Description
-Add [PaletteNodes](../reference.md#object-palettenode) from a JavaScript source representation.
+Add [PaletteNodes](../reference_2.md#object-palettenode) from a JavaScript source representation.
 
 By default, components that have [global IDs](Canvas.md#attr-canvasid) will not actually be allowed to take those global IDs - instead, only widgets that have one of the global IDs passed as the `globals` parameter will actually receive their global IDs. To override this behavior, pass the special value [RPCManager.ALL_GLOBALS](RPCManager.md#classattr-rpcmanagerall_globals) for the `globals` parameter.
 
@@ -651,10 +534,75 @@ By default, components that have [global IDs](Canvas.md#attr-canvasid) will not 
 | globals | [Array of String](#type-array-of-string) | true | — | widgets to allow to take their global IDs |
 
 ---
+## Method: EditTree.makePaletteNodeTree
+
+### Description
+Creates a [Tree](Tree.md#class-tree) of [PaletteNodes](../reference_2.md#object-palettenode) from an [EditNode](../reference.md#object-editnode) in this context's [editNodeTree](#method-edittreegeteditnodetree), by using [EditTree.makePaletteNode](#method-edittreemakepalettenode) on the passed `EditNode` and its descendents within the [editNodeTree](EditContext.md#method-editcontextgeteditnodetree).
+
+The root node of the returned [Tree](Tree.md#class-tree) will be a PaletteNode derived from the passed `EditNode`.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| editNode | [EditNode](#type-editnode) | false | — | root editNode to make Tree of PaletteNodes from |
+
+### Returns
+
+`[Tree](#type-tree)` — a Tree of paletteNodes or null
+
+---
+## Method: EditTree.enableEditing
+
+### Description
+Enable edit mode for an [EditNode](../reference.md#object-editnode). This is a shortcut for calling [Canvas.setEditMode](Canvas.md#method-canvasseteditmode).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| editNode | [EditNode](#type-editnode) | false | — | the EditNode on which to enable editing |
+
+### See Also
+
+- [Canvas.setEditMode](Canvas.md#method-canvasseteditmode)
+- [EditTree.isNodeEditingOn](#method-edittreeisnodeeditingon)
+
+---
+## Method: EditTree.pasteEditNodes
+
+### Description
+"Pastes" `editNodes` previously captured via [EditTree.copyEditNodes](#method-edittreecopyeditnodes).
+
+New editNodes will be added as root-level nodes of the [editNodeTree](#method-edittreegeteditnodetree) unless a `targetEditNode` is passed.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| targetEditNode | [EditNode](#type-editnode) | true | — | — |
+
+---
+## Method: EditTree.isNodeEditingOn
+
+### Description
+Returns true if `editNode` is in edit mode.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| editNode | [EditNode](#type-editnode) | false | — | the EditNode |
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — true if node is in edit mode
+
+---
 ## Method: EditTree.serializeEditNodesAsJSON
 
 ### Description
-Serialize the provided [EditNodes](../reference.md#object-editnode) to a JSON representation of [PaletteNodes](../reference.md#object-palettenode). Note that the EditNodes must have been added to this EditContext. The result can be supplied to [addPaletteNodesFromJSON()](#method-edittreeaddpalettenodesfromjson) to recreate the EditNodes.
+Serialize the provided [EditNodes](../reference.md#object-editnode) to a JSON representation of [PaletteNodes](../reference_2.md#object-palettenode). Note that the EditNodes must have been added to this EditContext. The result can be supplied to [addPaletteNodesFromJSON()](#method-edittreeaddpalettenodesfromjson) to recreate the EditNodes.
 
 ### Parameters
 
@@ -666,6 +614,23 @@ Serialize the provided [EditNodes](../reference.md#object-editnode) to a JSON re
 ### Returns
 
 `[String](#type-string)` — a JSON representtion of the provided EditNodes
+
+---
+## Method: EditTree.serializeEditNodes
+
+### Description
+Serialize the provided [EditNodes](../reference.md#object-editnode) to an XML representation of [PaletteNodes](../reference_2.md#object-palettenode). Note that the EditNodes must have been added to this EditContext. The result can be supplied to [addPaletteNodesFromXML()](#method-edittreeaddpalettenodesfromxml) to recreate the EditNodes.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| nodes | [Array of EditNode](#type-array-of-editnode) | false | — | EditNodes to be serialized |
+| settings | [SerializationSettings](#type-serializationsettings) | true | — | Additional serialization settings |
+
+### Returns
+
+`[String](#type-string)` — an XML representtion of the provided EditNodes
 
 ---
 ## Method: EditTree.removeNode
@@ -683,7 +648,7 @@ Removes [EditNode](../reference.md#object-editnode) from the EditContext. The ed
 ## Method: EditTree.serializeAllEditNodesAsJSON
 
 ### Description
-Encode the tree of [EditNodes](../reference.md#object-editnode) to a JSON representation of [PaletteNodes](../reference.md#object-palettenode). The result can be supplied to [addPaletteNodesFromJSON()](#method-edittreeaddpalettenodesfromjson) to recreate the EditNodes.
+Encode the tree of [EditNodes](../reference.md#object-editnode) to a JSON representation of [PaletteNodes](../reference_2.md#object-palettenode). The result can be supplied to [addPaletteNodesFromJSON()](#method-edittreeaddpalettenodesfromjson) to recreate the EditNodes.
 
 ### Parameters
 

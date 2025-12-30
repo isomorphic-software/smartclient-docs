@@ -12,6 +12,14 @@
 Specialized StretchImgButton used by TabSet/TabBar for tabs
 
 ---
+## Attr: ImgTab.baseStyle
+
+### Description
+—
+
+**Flags**: IR
+
+---
 ## Attr: ImgTab.skinImgDir
 
 ### Description
@@ -26,6 +34,24 @@ Base path for the images. **Note** that when used within a TabSet, the [TabSet.t
 Should we visibly change state when the mouse goes over this tab
 
 **Flags**: IRW
+
+---
+## Attr: ImgTab.src
+
+### Description
+Base URL for tab images
+
+**Flags**: IRW
+
+---
+## Attr: ImgTab.titleStyle
+
+### Description
+Like [StretchImgButton.titleStyle](StretchImgButton.md#attr-stretchimgbuttontitlestyle), can set to provide a separate style for the title text.
+
+If set and the ImgTab is [vertical](StretchImgButton.md#attr-stretchimgbuttonvertical), a "v" will be automatically prepended to the style name (hence "tabTitle" -> "vtabTitle").
+
+**Flags**: IR
 
 ---
 ## Attr: ImgTab.align
@@ -76,31 +102,5 @@ How big are the end pieces by default
 - appearance
 
 **Flags**: IRW
-
----
-## Attr: ImgTab.baseStyle
-
-### Description
-—
-
-**Flags**: IR
-
----
-## Attr: ImgTab.src
-
-### Description
-Base URL for tab images
-
-**Flags**: IRW
-
----
-## Attr: ImgTab.titleStyle
-
-### Description
-Like [StretchImgButton.titleStyle](StretchImgButton.md#attr-stretchimgbuttontitlestyle), can set to provide a separate style for the title text.
-
-If set and the ImgTab is [vertical](StretchImgButton.md#attr-stretchimgbuttonvertical), a "v" will be automatically prepended to the style name (hence "tabTitle" -> "vtabTitle").
-
-**Flags**: IR
 
 ---

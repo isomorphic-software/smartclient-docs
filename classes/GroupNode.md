@@ -36,10 +36,10 @@ Name of the field being grouped by this node.
 **Flags**: R
 
 ---
-## Attr: GroupNode.groupTitle
+## Attr: GroupNode.groupValue
 
 ### Description
-The computed title for the group, which results from [ListGridField.getGroupTitle](ListGridField.md#method-listgridfieldgetgrouptitle)
+The value from which groups are computed for a field, which results from [ListGridField.getGroupValue](ListGridField.md#method-listgridfieldgetgroupvalue)
 
 ### Groups
 
@@ -52,10 +52,10 @@ The computed title for the group, which results from [ListGridField.getGroupTitl
 **Flags**: R
 
 ---
-## Attr: GroupNode.groupValue
+## Attr: GroupNode.groupTitle
 
 ### Description
-The value from which groups are computed for a field, which results from [ListGridField.getGroupValue](ListGridField.md#method-listgridfieldgetgroupvalue)
+The computed title for the group, which results from [ListGridField.getGroupTitle](ListGridField.md#method-listgridfieldgetgrouptitle)
 
 ### Groups
 

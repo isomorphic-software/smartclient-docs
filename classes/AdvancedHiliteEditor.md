@@ -26,66 +26,22 @@ The message to show when the user clicks "Save" without entering any criteria.
 **Flags**: IR
 
 ---
-## Attr: AdvancedHiliteEditor.cancelButtonTitle
-
-### Description
-The title text for the [cancelButton](#attr-advancedhiliteeditorcancelbutton).
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IR
-
----
-## Attr: AdvancedHiliteEditor.filterBuilder
-
-### Description
-AutoChild [FilterBuilder](FilterBuilder.md#class-filterbuilder) for configuring the criteria for this Hilite.
-
-This component is an [AutoChild](../reference.md#type-autochild) and as such may be customized via `advancedHiliteEditor.filterBuilderProperties`.
-
-**Flags**: IR
-
----
-## Attr: AdvancedHiliteEditor.hiliteForm
-
-### Description
-AutoChild [DynamicForm](DynamicForm.md#class-dynamicform) for configuring the details of this Hilite.
-
-This component is an [AutoChild](../reference.md#type-autochild) and as such may be customized via `advancedHiliteEditor.hiliteFormProperties`.
-
-**Flags**: IR
-
----
-## Attr: AdvancedHiliteEditor.title
-
-### Description
-The title text shown in the header bar of this editor's dialog.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IR
-
----
-## Attr: AdvancedHiliteEditor.saveButtonTitle
-
-### Description
-The title text for the [saveButton](#attr-advancedhiliteeditorsavebutton).
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IR
-
----
 ## Attr: AdvancedHiliteEditor.filterGroupTitle
 
 ### Description
 The title for the Filter group.
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IR
+
+---
+## Attr: AdvancedHiliteEditor.cancelButtonTitle
+
+### Description
+The title text for the [cancelButton](#attr-advancedhiliteeditorcancelbutton).
 
 ### Groups
 
@@ -124,16 +80,36 @@ This component is an [AutoChild](../reference.md#type-autochild) and as such may
 **Flags**: IR
 
 ---
+## Attr: AdvancedHiliteEditor.filterBuilder
+
+### Description
+AutoChild [FilterBuilder](FilterBuilder.md#class-filterbuilder) for configuring the criteria for this Hilite.
+
+This component is an [AutoChild](../reference.md#type-autochild) and as such may be customized via `advancedHiliteEditor.filterBuilderProperties`.
+
+**Flags**: IR
+
+---
 ## Attr: AdvancedHiliteEditor.hiliteIcons
 
 ### Description
 Specifies a list of icons that can be used in hilites.
 
-`hiliteIcons` should be specified as an Array of [SCImgURL](../reference.md#type-scimgurl). When present, [hilite rules](HiliteRule.md#class-hiliterule) will offer the user a drop down for picking one of these icons.
+`hiliteIcons` should be specified as an Array of [SCImgURL](../reference_2.md#type-scimgurl). When present, [hilite rules](HiliteRule.md#class-hiliterule) will offer the user a drop down for picking one of these icons.
 
 If the user picks an icon, the created hiliting rule will have [Hilite.icon](Hilite.md#attr-hiliteicon) set to the chosen icon. [ListGridField.hiliteIconPosition](ListGridField.md#attr-listgridfieldhiliteiconposition) controls where the icon will appear for that field -- the default is that it appears in front of the normal cell content.
 
 **Flags**: IRW
+
+---
+## Attr: AdvancedHiliteEditor.hiliteForm
+
+### Description
+AutoChild [DynamicForm](DynamicForm.md#class-dynamicform) for configuring the details of this Hilite.
+
+This component is an [AutoChild](../reference.md#type-autochild) and as such may be customized via `advancedHiliteEditor.hiliteFormProperties`.
+
+**Flags**: IR
 
 ---
 ## Attr: AdvancedHiliteEditor.targetFieldsItemTitle
@@ -154,6 +130,30 @@ The title for the Target Field(s) picker.
 AutoChild [ImgButton](ImgButton.md#class-imgbutton) that accepts this Hilite and fires the [callback](#attr-advancedhiliteeditorcallback).
 
 This component is an [AutoChild](../reference.md#type-autochild) and as such may be customized via `advancedHiliteEditor.saveButtonProperties`.
+
+**Flags**: IR
+
+---
+## Attr: AdvancedHiliteEditor.title
+
+### Description
+The title text shown in the header bar of this editor's dialog.
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IR
+
+---
+## Attr: AdvancedHiliteEditor.saveButtonTitle
+
+### Description
+The title text for the [saveButton](#attr-advancedhiliteeditorsavebutton).
+
+### Groups
+
+- i18nMessages
 
 **Flags**: IR
 

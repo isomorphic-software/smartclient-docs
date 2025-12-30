@@ -26,6 +26,18 @@ Title for this button. If not specified, the selected value from the tree will b
 **Flags**: IRW
 
 ---
+## Attr: TreeMenuButton.dataProperties
+
+### Description
+For a `TreeMenuButton` that uses a DataSource, these properties will be passed to the automatically-created ResultTree. This can be used for various customizations such as modifying the automatically-chosen [Tree.parentIdField](Tree.md#attr-treeparentidfield).
+
+### Groups
+
+- databinding
+
+**Flags**: IR
+
+---
 ## Attr: TreeMenuButton.treeMenu
 
 ### Description
@@ -42,26 +54,6 @@ Base style to apply to the selected path within the menu. (The "over" version of
 **Flags**: IRW
 
 ---
-## Attr: TreeMenuButton.treeMenuConstructor
-
-### Description
-Widget class for the menu created by this button. The default is [SelectionTreeMenu](../reference.md#class-selectiontreemenu).
-
-**Flags**: IR
-
----
-## Attr: TreeMenuButton.dataProperties
-
-### Description
-For a `TreeMenuButton` that uses a DataSource, these properties will be passed to the automatically-created ResultTree. This can be used for various customizations such as modifying the automatically-chosen [Tree.parentIdField](Tree.md#attr-treeparentidfield).
-
-### Groups
-
-- databinding
-
-**Flags**: IR
-
----
 ## Attr: TreeMenuButton.emptyMenuMessage
 
 ### Description
@@ -76,6 +68,14 @@ If this button's menu (or any of its submenus) are empty, this property can be u
 If [title](#attr-treemenubuttontitle) is null, when the user selects an item, should we show the full path to the item, or just the item's title as the button's title?
 
 **Flags**: IRW
+
+---
+## Attr: TreeMenuButton.treeMenuConstructor
+
+### Description
+Widget class for the menu created by this button. The default is [SelectionTreeMenu](../reference.md#class-selectiontreemenu).
+
+**Flags**: IR
 
 ---
 ## Attr: TreeMenuButton.pathSeparatorString

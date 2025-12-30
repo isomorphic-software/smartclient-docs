@@ -12,14 +12,6 @@ The new [NavigationBar.alwaysShowLeftButtonTitle](NavigationBar.md#attr-navigati
 **Flags**: IRW
 
 ---
-## Attr: NavigationBarViewState.controls
-
-### Description
-The new [NavigationBar.controls](NavigationBar.md#attr-navigationbarcontrols) setting. If unset, the `controls` array is not changed.
-
-**Flags**: IRW
-
----
 ## Attr: NavigationBarViewState.shortLeftButtonTitle
 
 ### Description
@@ -32,6 +24,14 @@ The new [NavigationBar.shortLeftButtonTitle](NavigationBar.md#attr-navigationbar
 
 ### Description
 The new [NavigationBar.leftButtonTitle](NavigationBar.md#attr-navigationbarleftbuttontitle) setting. If unset, the `leftButtonTitle` is not changed.
+
+**Flags**: IRW
+
+---
+## Attr: NavigationBarViewState.controls
+
+### Description
+The new [NavigationBar.controls](NavigationBar.md#attr-navigationbarcontrols) setting. If unset, the `controls` array is not changed.
 
 **Flags**: IRW
 

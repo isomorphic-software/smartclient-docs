@@ -20,14 +20,6 @@ Radius of the sector.
 **Flags**: IR
 
 ---
-## Attr: DrawSector.rotation
-
-### Description
-Rotation in degrees about the [centerPoint](#attr-drawsectorcenterpoint) of the DrawSector. The positive direction is clockwise.
-
-**Flags**: IR
-
----
 ## Attr: DrawSector.startAngle
 
 ### Description
@@ -62,6 +54,14 @@ Center point of the sector
 
 ### Description
 End angle of the sector in degrees. See [DrawSector.startAngle](#attr-drawsectorstartangle) for further details.
+
+**Flags**: IR
+
+---
+## Attr: DrawSector.rotation
+
+### Description
+Rotation in degrees about the [centerPoint](#attr-drawsectorcenterpoint) of the DrawSector. The positive direction is clockwise.
 
 **Flags**: IR
 
@@ -126,6 +126,19 @@ Change the center point for this sector.
 | top | [Coordinate](../reference.md#type-coordinate) | false | — | Y coordinate of the center point (in the global coordinate system. |
 
 ---
+## Method: DrawSector.moveBy
+
+### Description
+Move the DrawSector by the specified amounts.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| x | [Distance](../reference.md#type-distance) | false | — | number of pixels to move by horizontally |
+| y | [Distance](../reference.md#type-distance) | false | — | number of pixels to move by vertically |
+
+---
 ## Method: DrawSector.getArcMidpoint
 
 ### Description
@@ -149,18 +162,5 @@ Returns the centerPoint endPoint
 ### Returns
 
 `[Array of double](#type-array-of-double)` — x1, y1, x2, y2 coordinates
-
----
-## Method: DrawSector.moveBy
-
-### Description
-Move the DrawSector by the specified amounts.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| x | [Distance](../reference.md#type-distance) | false | — | number of pixels to move by horizontally |
-| y | [Distance](../reference.md#type-distance) | false | — | number of pixels to move by vertically |
 
 ---

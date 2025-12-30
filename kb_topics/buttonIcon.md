@@ -28,7 +28,6 @@ Control over optional icons shown in Buttons, Labels and other contexts
 - [StatefulCanvas.iconWidth](../classes/StatefulCanvas.md#attr-statefulcanvasiconwidth)
 - [StatefulCanvas.iconHeight](../classes/StatefulCanvas.md#attr-statefulcanvasiconheight)
 - [StatefulCanvas.iconStyle](../classes/StatefulCanvas.md#attr-statefulcanvasiconstyle)
-- [StatefulCanvas.vIconStyle](../classes/StatefulCanvas.md#attr-statefulcanvasviconstyle)
 - [StatefulCanvas.iconOrientation](../classes/StatefulCanvas.md#attr-statefulcanvasiconorientation)
 - [StatefulCanvas.iconSpacing](../classes/StatefulCanvas.md#attr-statefulcanvasiconspacing)
 - [StatefulCanvas.showDisabledIcon](../classes/StatefulCanvas.md#attr-statefulcanvasshowdisabledicon)

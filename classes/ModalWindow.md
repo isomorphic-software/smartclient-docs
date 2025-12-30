@@ -19,7 +19,7 @@ This class is used by some development tools to simplify the creation of a modal
 ### Description
 If true, this Window widget will automatically be centered on the page when shown. If false, it will show up in the last position it was placed (either programmatically, or by user interaction).
 
-**Note:** If an auto-centering Window is either programmatically moved or dragged by an end user, auto-centering behavior is automatically turned off. To manually center a Window, you can use [centerInPage()](Window.md#method-windowcenterinpage). Auto-centering will also be disabled if you pass an explicit [left](Canvas.md#attr-canvasleft) or [top](Canvas.md#attr-canvastop) value at [create time](Class.md#classmethod-classcreate).
+**Note:** If an auto-centering Window is either programmatically moved or dragged by an end user, auto-centering behavior is automatically turned off. To manually center a Window, you can use [centerInPage()](Window.md#method-windowcenterinpage).
 
 ### Groups
 
@@ -32,79 +32,26 @@ If true, this Window widget will automatically be centered on the page when show
 ## Attr: ModalWindow.width
 
 ### Description
-The `canvas.width` attribute specifies the size for a component's horizontal dimension; `canvas.height` specifies the size for the vertical dimension.
+Size for this component's horizontal dimension.
 
-May be set to an integer value (a number of pixels), a percentage value like "50%", or "\*".
+Can be a number of pixels, or a percentage like "50%". Percentage sizes are resolved to pixel values as follows:
 
-See [percentSizing](../kb_topics/percentSizing.md#kb-topic-canvas-percentage-sizing) for details on how percentage or `"*"` values are resolved actual size.
+*   If a canvas has a specified [percentSource](Canvas.md#attr-canvaspercentsource), sizing will be a percentage of the size of that widget (see also [Canvas.percentBox](Canvas.md#attr-canvaspercentbox)).
+*   Otherwise, if a canvas has a [master canvas](Canvas.md#method-canvasgetmastercanvas), and [snapTo](Canvas.md#attr-canvassnapto) is set for the widget, sizing will be a percentage of the size of that widget (see also [Canvas.percentBox](Canvas.md#attr-canvaspercentbox)).
+*   Otherwise if this is a child of some other canvas, percentages will be based on the inner size of the [parent canvas](Canvas.md#method-canvasgetparentcanvas)'s viewport.
+*   Otherwise, for top level widgets, sizing is calculated as a percentage of page size.
 
-If [overflow](Canvas.md#attr-canvasoverflow) is set to "visible", the specified size acts as a minimum, and the component may overflow to show all content and/or children.
+Note that if a [Canvas.maxWidth](Canvas.md#attr-canvasmaxwidth) or [Canvas.minWidth](Canvas.md#attr-canvasminwidth) are specified (or [Canvas.maxHeight](Canvas.md#attr-canvasmaxheight) / [Canvas.minHeight](Canvas.md#attr-canvasminheight) for heights), these properties act as explicit pixel limits on the canvas' size. For example, a canvas with [Canvas.maxWidth](Canvas.md#attr-canvasmaxwidth) set to `500`, and width specified as "100%" will not render larger than 500 pixels in width even if there is more space available in the parent canvas or percentSource.
 
-Note that developers wishing to set a default width or height for a component class should set [defaultWidth](Canvas.md#attr-canvasdefaultwidth) or [Canvas.defaultHeight](Canvas.md#attr-canvasdefaultheight) instead of specifying an explicit default `width` or `height`. This is important for components added to a [Layout](Layout.md#class-layout) as members - it allows the Layout to determine whether the canvas has an explicitly specified size that must be respected, or whether it can participate in its [sizing policies](../reference_2.md#type-layoutpolicy).
+[Layouts](Layout.md#class-layout) may specially interpret percentage sizes on their children, and also allow "\*" as a size.
 
-### Groups
+Note that if [overflow](Canvas.md#attr-canvasoverflow) is set to "visible", this size is a minimum, and the component may overflow to show all content and/or children.
 
-- sizing
-
-**Flags**: IRW
-
----
-## Attr: ModalWindow.height
-
-### Description
-The `canvas.width` attribute specifies the size for a component's horizontal dimension; `canvas.height` specifies the size for the vertical dimension.
-
-May be set to an integer value (a number of pixels), a percentage value like "50%", or "\*".
-
-See [percentSizing](../kb_topics/percentSizing.md#kb-topic-canvas-percentage-sizing) for details on how percentage or `"*"` values are resolved actual size.
-
-If [overflow](Canvas.md#attr-canvasoverflow) is set to "visible", the specified size acts as a minimum, and the component may overflow to show all content and/or children.
-
-Note that developers wishing to set a default width or height for a component class should set [defaultWidth](Canvas.md#attr-canvasdefaultwidth) or [Canvas.defaultHeight](Canvas.md#attr-canvasdefaultheight) instead of specifying an explicit default `width` or `height`. This is important for components added to a [Layout](Layout.md#class-layout) as members - it allows the Layout to determine whether the canvas has an explicitly specified size that must be respected, or whether it can participate in its [sizing policies](../reference_2.md#type-layoutpolicy).
+If trying to establish a default width for a custom component, set [defaultWidth](Canvas.md#attr-canvasdefaultwidth) instead.
 
 ### Groups
 
 - sizing
-
-**Flags**: IRW
-
----
-## Attr: ModalWindow.visibility
-
-### Description
-Controls widget visibility when the widget is initialized. See [Visibility](../reference_2.md#type-visibility) type for details.
-
-Specifying "visible" sets the CSS visiblity to "visible", forcing a child to be visible even if the parent is hidden. **Not supported for use with SmartClient layouts, scrolling or auto-sizing** but may be useful when working with third-party or legacy DOM layout systems.
-
-Note that if [hideUsingDisplayNone](Canvas.md#attr-canvashideusingdisplaynone) is set for a hidden ancestor, setting `visibility` will have no effect at all until that ancestor becomes visible.
-
-### Groups
-
-- appearance
-
-**Flags**: IRW
-
----
-## Attr: ModalWindow.editProxyConstructor
-
-### Description
-Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas.md#method-canvasseteditmode).
-
-**Flags**: IR
-
----
-## Attr: ModalWindow.maxHeight
-
-### Description
-Maximum height available to this Canvas. See [ModalWindow.maxWidth](#attr-modalwindowmaxwidth) for details of behavior.
-
-### Groups
-
-- sizing
-
-### See Also
-
-- [Canvas.dragMaxHeight](Canvas.md#attr-canvasdragmaxheight)
 
 **Flags**: IRW
 
@@ -123,6 +70,40 @@ Note only top-level Windows (Windows without parents) can be modal.
 ### Groups
 
 - modal
+
+**Flags**: IRW
+
+---
+## Attr: ModalWindow.height
+
+### Description
+Size for this component's vertical dimension.
+
+Can be a number of pixels, or a percentage like "50%". See documentation for [Canvas.width](Canvas.md#attr-canvaswidth) for details on how percentage values are resolved actual size.
+
+Note that if [overflow](Canvas.md#attr-canvasoverflow) is set to "visible", this size is a minimum, and the component may overflow to show all content and/or children.
+
+If trying to establish a default height for a custom component, set [defaultHeight](Canvas.md#attr-canvasdefaultheight) instead.
+
+### Groups
+
+- sizing
+
+**Flags**: IRW
+
+---
+## Attr: ModalWindow.visibility
+
+### Description
+Controls widget visibility when the widget is initialized. See [Visibility](../reference.md#type-visibility) type for details.
+
+Specifying "visible" sets the CSS visiblity to "visible", forcing a child to be visible even if the parent is hidden. **Not supported for use with SmartClient layouts, scrolling or auto-sizing** but may be useful when working with third-party or legacy DOM layout systems.
+
+Note that if [hideUsingDisplayNone](Canvas.md#attr-canvashideusingdisplaynone) is set for a hidden ancestor, setting `visibility` will have no effect at all until that ancestor becomes visible.
+
+### Groups
+
+- appearance
 
 **Flags**: IRW
 
@@ -148,6 +129,30 @@ Maximum sizes do not apply in various other circumstances where sizes are being 
 ### See Also
 
 - [Canvas.dragMaxWidth](Canvas.md#attr-canvasdragmaxwidth)
+
+**Flags**: IRW
+
+---
+## Attr: ModalWindow.editProxyConstructor
+
+### Description
+Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas.md#method-canvasseteditmode).
+
+**Flags**: IR
+
+---
+## Attr: ModalWindow.maxHeight
+
+### Description
+Maximum height available to this Canvas. See [ModalWindow.maxWidth](#attr-modalwindowmaxwidth) for details of behavior.
+
+### Groups
+
+- sizing
+
+### See Also
+
+- [Canvas.dragMaxHeight](Canvas.md#attr-canvasdragmaxheight)
 
 **Flags**: IRW
 

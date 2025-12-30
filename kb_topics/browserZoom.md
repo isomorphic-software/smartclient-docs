@@ -26,7 +26,7 @@ Known issues by browser are listed below.
 *   Core DOM APIs for querying position and sizing information of an element return fractional values even though they shouldn't be, which can impact layout, scrolling, and event handling. See issue [60837](http://crbug.com/60837).
 *   The minimum font size feature can cause layout issues when the page zoom is decreased but the page is not refreshed at the new zoom level.
 *   Chrome fails `background-image` related CSS Working Group tests with page zoom, causing background images to draw oddly in certain cases. See issues [412914](http://crbug.com/412914) and [421331](http://crbug.com/421331).
-*   Borders do not scale properly, causing layout issues, cosmetic issues where borders do not line up with background images or appear beveled, and accessibility issues where borders may be too thin. See issues [382483](http://crbug.com/382483), [388879](http://crbug.com/388879), [406371](http://crbug.com/406371), and [434720](http://crbug.com/434720).
+*   Borders do not scale properly, causing layout issues, cosmetic issues where borders do not line up with background images or appear beveled, and accessibility issues where borders may be too thin. See issues [257220](http://crbug.com/257220), [382483](http://crbug.com/382483), [388879](http://crbug.com/388879), [406371](http://crbug.com/406371), and [434720](http://crbug.com/434720).
 *   Various issues affecting SVG drawings. See issues [181122](http://crbug.com/181122), [407159](http://crbug.com/407159), and [421926](http://crbug.com/421926).
 
 #### Firefox
@@ -39,9 +39,9 @@ Known issues by browser are listed below.
 
 #### Internet Explorer
 
-*   IE may draw "seams" on [EdgedCanvas](../classes/EdgedCanvas.md#class-edgedcanvas) objects, which are faint antialiasing artifacts between the images used to make up the `EdgedCanvas`. This affects [drop shadows](../classes/Canvas.md#attr-canvasshowshadow) and showing edges with a high [Canvas.edgeSize](../classes/Canvas.md#attr-canvasedgesize).
-*   Phantom borders may appear between table cells and other content that should be adjacent with no separation. This issue is also thought to be the cause of a line appearing below a selected [TabSet](../classes/TabSet.md#class-tabset) tab at certain zoom levels.
-*   SVG content may disappear at high zoom levels.
+*   IE may draw "seams" on [EdgedCanvas](../classes/EdgedCanvas.md#class-edgedcanvas) objects, which are faint antialiasing artifacts between the images used to make up the `EdgedCanvas`. This affects [drop shadows](../classes/Canvas.md#attr-canvasshowshadow) and showing edges with a high [Canvas.edgeSize](../classes/Canvas.md#attr-canvasedgesize). See issue [808337](https://connect.microsoft.com/IE/Feedback/Details/808337/IE11-still-shows-odd-lines-on-image-nine-patched-with-CSS-background-position).
+*   Phantom borders may appear between table cells and other content that should be adjacent with no separation. This issue is also thought to be the cause of a line appearing below a selected [TabSet](../classes/TabSet.md#class-tabset) tab at certain zoom levels. See issues [808838](https://connect.microsoft.com/IE/Feedback/Details/808838/css-border-radius-and-zoom-issues) and [814033](https://connect.microsoft.com/IE/Feedback/Details/814033/weird-lines-when-zoom-set-to-150).
+*   SVG content may disappear at high zoom levels. See issue [782997](https://connect.microsoft.com/IE/Feedback/Details/782997/svg-isnt-shown-on-high-zoom-levels-in-ie10).
 
 #### Safari and WebKit
 
@@ -108,17 +108,9 @@ isc.HTMLPane.create({
 })
  
 ```
-**Note:** the framework should set [Canvas.correctZoomOverflow](../classes/Canvas.md#attr-canvascorrectzoomoverflow) automatically for you where it's needed, so it's set explicitly above to force it to an excessive value.
+**Note:** the framework should set [Canvas.correctZoomOverflow](../classes/Canvas.md#attr-canvascorrectzoomoverflow) automatically for you where it's needed, but it's explicitly set in the sample above for completeness.
 
 If you can still reproduce the flickering scrollbar problem with our canvas default settings for your browser and OS, please contact Isomorphic and provide as much detail about your setup as possible: framework version, skin in use, whether the skin is customized, browser, browser version, OS platform and version, and any non-default visual settings for the browser or OS.
-
-## Disabling Browser-level Scrolling
-
-If native, browser-level scrolling is introduced on the viewport, it can make flickering more likely by creating situations in which the screen width or height may change outside the framework's control. For this reason we recommend disabling it by styling the document `body` to have hidden CSS [overflow](https://developer.mozilla.org/en-US/docs/Web/CSS/overflow) via something like:
-```
- <body style="overflow:hidden">
-```
-The framework will log a warning if overflow hasn't been properly suppressed. To avoid it, you can set the window property `isc_allowViewportScrolling` true before loading the framework files in your HTML.
 
 ### See Also
 

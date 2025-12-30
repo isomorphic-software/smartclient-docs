@@ -10,16 +10,13 @@
 The Hover class handles showing a simple SmartClient canvas containing arbitrary HTML, or triggering some other action in response to a user holding the mouse-pointer (or hovering) over a specific widget.
 
 ---
-## ClassAttr: Hover.hoverCanvas
+## ClassAttr: Hover.moveWithMouse
 
 ### Description
-This is a single-instance widget, used to show contextual hover HTML and created lazily on the first call to [Hover.show](#classmethod-hovershow).
+When the Hover canvas is shown by default, should it move as the user moves the mouse pointer?  
+May be overridden by including a `moveWithMouse` attribute on the properties block passed to [Hover.show](#classmethod-hovershow)
 
-This component is created using the [autoChild pattern](../reference.md#type-autochild), so you can configure it using [autoChild defaults](#classattr-hoverhovercanvasdefaults) and [properties](#classattr-hoverhovercanvasproperties), or change its type with [Hover.hoverCanvasConstructor](#classattr-hoverhovercanvasconstructor). Note that size and position are managed by the Hover subsystem, so not all [Canvas settings](Canvas.md#class-canvas) are supported.
-
-To fully customize what a hover looks like, see [Hover.showHoverComponent](#classmethod-hovershowhovercomponent), which allows entirely custom widgets such as [grids](ListGrid_1.md#class-listgrid) to be shown as hovers.
-
-**Flags**: RA
+**Flags**: RWA
 
 ---
 ## ClassAttr: Hover.hoverCanvasDefaults
@@ -50,111 +47,12 @@ When positioning the hover canvas, this will be the default top offset from the 
 **Flags**: RW
 
 ---
-## ClassAttr: Hover.focusKeyHintLabelOffset
-
-### Description
-The [Hover.focusKeyHintLabel](#classattr-hoverfocuskeyhintlabel) appears floated over the bottom-right edge of the hover canvas. This property determines how far to offset the label from the edge.
-
-**Flags**: IRW
-
----
-## ClassAttr: Hover.focusKeyHintLabelHeight
-
-### Description
-Height for the [Hover.focusKeyHintLabel](#classattr-hoverfocuskeyhintlabel)
-
-**Flags**: IRW
-
----
 ## ClassAttr: Hover.leftOffset
 
 ### Description
 When positioning the hover canvas, this will be the default left offset from the mousepointer, if no explicit position was passed to the [Hover.show](#classmethod-hovershow) method
 
 **Flags**: RW
-
----
-## ClassAttr: Hover.moveWithMouse
-
-### Description
-When the Hover canvas is shown by default, should it move as the user moves the mouse pointer?  
-May be overridden by including a `moveWithMouse` attribute on the properties block passed to [Hover.show](#classmethod-hovershow)
-
-**Flags**: RWA
-
----
-## ClassAttr: Hover.hoverCanvasConstructor
-
-### Description
-[SmartClient Class](../reference.md#type-scclassname) to use for showing hover HTML; a [Label](Label.md#class-label) by default and instantiated lazily as the first hover is requested.
-
-**Flags**: IR
-
----
-## ClassAttr: Hover.focusKeyHintLabelWidth
-
-### Description
-Width for the [Hover.focusKeyHintLabel](#classattr-hoverfocuskeyhintlabel)
-
-**Flags**: IRW
-
----
-## ClassAttr: Hover.persistent
-
-### Description
-Allows interaction with hovers when the cursor is positioned over them.
-
-It is recommended to use [hoverPersist](Canvas.md#attr-canvashoverpersist) on canvas-instances for most cases of controlling hover persistence. Changing the system-wide default hover setting could interfere with features of built-in components, but is allowed for rare cases like manually showing a hover via [Hover.show](#classmethod-hovershow) - you should just restore the default mode after the hover is hidden.
-
-### Groups
-
-- hovers
-
-**Flags**: IRA
-
----
-## ClassAttr: Hover.focusKeyHintLabel
-
-### Description
-The focusKeyHintLabel is automatically generated when showing the standard hover for canvases with a specified [Canvas.hoverFocusKey](Canvas.md#attr-canvashoverfocuskey), if [Hover.showFocusKeyHint](#classattr-hovershowfocuskeyhint) is true.
-
-Its content is determined via [Hover.focusKeyHintMessage](#classattr-hoverfocuskeyhintmessage) and its sizing and placement may be configured via [Hover.focusKeyHintLabelWidth](#classattr-hoverfocuskeyhintlabelwidth), [Hover.focusKeyHintLabelHeight](#classattr-hoverfocuskeyhintlabelheight) and [Hover.focusKeyHintLabelOffset](#classattr-hoverfocuskeyhintlabeloffset). Other configuration can be applied via the standard [autoChild configuration pattern](../kb_topics/autoChildUsage.md#kb-topic-using-autochildren).
-
-**Flags**: IRW
-
----
-## ClassAttr: Hover.hoverCanvasProperties
-
-### Description
-Properties to apply to the [hoverCanvas](#classattr-hoverhovercanvas) used to show contextual HTML when the user holds the mouse over some widget.
-
-**Flags**: IRW
-
----
-## ClassAttr: Hover.showFocusKeyHint
-
-### Description
-If [Canvas.hoverFocusKey](Canvas.md#attr-canvashoverfocuskey) is set, should we show a [hint label autoChild](#classattr-hoverfocuskeyhintlabel) within the standard hover canvas, prompting the user which focus key to press?
-
-**Flags**: IRW
-
----
-## ClassAttr: Hover.focusKeyHintLabelConstructor
-
-### Description
-Constructor for the [Hover.focusKeyHintLabel](#classattr-hoverfocuskeyhintlabel)
-
-**Flags**: IRA
-
----
-## ClassAttr: Hover.focusKeyHintMessage
-
-### Description
-Dynamic string message to display within the [Hover.focusKeyHintLabel](#classattr-hoverfocuskeyhintlabel).
-
-The specified hover focus key name is available via the variable _${focusKey}_.
-
-**Flags**: IRW
 
 ---
 ## ClassAttr: Hover.edgeOffset
@@ -168,7 +66,7 @@ When positioning the hover canvas, this will be the minimum offset from page edg
 ## ClassMethod: Hover.hide
 
 ### Description
-Hide hoverCanvas shown via [Hover.show](#classmethod-hovershow)
+Hide hover hover Canvas shown via [Hover.show](#classmethod-hovershow)
 
 ---
 ## ClassMethod: Hover.show
@@ -194,21 +92,5 @@ The default Hover canvas position will be based on the mouse pointer position, a
 *   moveWithMouse \[overrides [Hover.moveWithMouse](#classattr-hovermovewithmouse)\]
 *   autoFitWidth: If true, any specified width will be treated as a minimum and the hover canvas will expand horizontally to fit the content string (without wrapping) up to the specified autoFitMaxWidth. This setting differs from simply setting [wrap:false](Label.md#attr-labelwrap) for the hover in that wrapping of text will occur if the autoFitMaxWidth is exceeded.
 *   autoFitMaxWidth: Maximum width to expand to without wrapping (if autoFitWidth is true). |
-
----
-## ClassMethod: Hover.showHoverComponent
-
-### Description
-Similar to [Hover.show()](#classmethod-hovershow) but uses the hover mechanism to display some [component](Canvas.md#class-canvas) instead of showing [HTML text](Canvas.md#method-canvasgethoverhtml) in the builtin [hoverCanvas](#classattr-hoverhovercanvas). _Hover.showHoverComponent()_ is called automatically instead of _Hover.show()_ when [Canvas.showHoverComponents](Canvas.md#attr-canvasshowhovercomponents) is true.
-
-As with `Hover.show()`, the component-position is based on the mouse pointer position, adjusted by [Hover.leftOffset](#classattr-hoverleftoffset) and [Hover.topOffset](#classattr-hovertopoffset). If this position would render the component partially clipped or off-screen, it is moved to ensure the component is entirely visible.
-
-See [show()](#classmethod-hovershow) for more information.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| component | [Canvas](#type-canvas) | false | — | component to show using the hover mechanism |
 
 ---

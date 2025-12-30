@@ -11,9 +11,7 @@
 ### Description
 Use the HTMLFlow component to display HTML content that should expand to its natural size without scrolling.
 
-HTML content can be specified directly via [HTMLFlow.contents](#attr-htmlflowcontents), or loaded from a URL via the property [HTMLFlow.contentsURL](#attr-htmlflowcontentsurl). This method of loading is for simple HTML content only; SmartClient components should be loaded via the [ViewLoader](ViewLoader.md#class-viewloader) class.
-
-HTMLFlows are typically used to render snippets of HTML directly in the document rather than holding a complete HTML page, as the component can only size to fit HTML content it renders directly into the DOM. If you are looking to display a complete HTML page, you will need to modify the default [Overflow](../reference.md#type-overflow) and [HTMLFlow.defaultHeight](#attr-htmlflowdefaultheight), or use the [HTMLPane](HTMLPane.md#class-htmlpane) class
+HTML content can be loaded and reloaded from a URL via the property `contentsURL`. This method of loading is for simple HTML content only; SmartClient components should be loaded via the [ViewLoader](ViewLoader.md#class-viewloader) class.
 
 NOTE: Since the size of an HTMLFlow component is determined by its HTML contents, this component will draw at varying sizes if given content of varying size. When using HTMLFlow components within a Layout, consider what will happen if the HTMLFlow renders at various sizes. An HTMLFlow which can expand should be placed in a container where other components can render smaller, where the container is allowed to scroll, or where there is padding to expand into.
 
@@ -24,143 +22,6 @@ HTMLFlow is a [DataBoundComponent](../reference.md#interface-databoundcomponent)
 - contentLoading
 
 ---
-## Attr: HTMLFlow.supportsContentsAsPage
-
-### Description
-Can this component have its [HTMLFlow.contents](#attr-htmlflowcontents) specified as a complete standalone HTML page to be rendered into an embedded IFRAME?
-
-If true, if [ContentsType](../reference_2.md#type-contentstype) is specified as, or [derived to be](#attr-htmlflowautoderivecontentstype) "page", the contents will be rendered into an embedded IFRAME using the `srcdoc` attribute rather than written directly into the component handle.
-
-If false, contentsType has no effect unless contents are being loaded from an explicitly specified [HTMLFlow.contentsURL](#attr-htmlflowcontentsurl)
-
-**Flags**: IRW
-
----
-## Attr: HTMLFlow.contentsURLParams
-
-### Description
-Parameters to be sent to the contentsURL when fetching content.
-
-### Groups
-
-- contentLoading
-
-**Flags**: IRW
-
----
-## Attr: HTMLFlow.autoChangeProtocol
-
-### Description
-If this component is passed a URL with a protocol that differs from the current page, should it be automatically changed to match the page?
-
-**Flags**: IRW
-
----
-## Attr: HTMLFlow.captureSCComponents
-
-### Description
-If true, SmartClient components created while executing the loaded HTML are captured for rendering inside the HTMLFlow.
-
-Only applies when contentsType is **not** "page".
-
-### Groups
-
-- contentLoading
-
-**Flags**: IR
-
----
-## Attr: HTMLFlow.defaultWidth
-
-### Description
-For custom components, establishes a default width for the component.
-
-For a component that should potentially be sized automatically by a Layout, set this property rather than [width](Canvas.md#attr-canvaswidth) directly, because Layouts regard a width setting as an explicit size that shouldn't be changed.
-
-### Groups
-
-- sizing
-
-**Flags**: IRW
-
----
-## Attr: HTMLFlow.structuralHTMLTags
-
-### Description
-List of tags used to determine whether the HTML contents of an HTMLFlow should be rendered with [contentsType:"page"](#attr-htmlflowautoderivecontentstype).
-
-If an HTML string contains any of these tags not enclosed in either ``<pre>` ... `</pre>`` tags or comments (`<!-- ... -->`), [HTMLFlow.isPageHTML](#method-htmlflowispagehtml) will return true.
-
-The default list of tags are as follows:
-
-*   "!doctype"
-*   "html"
-*   "head"
-*   "body"
-*   "style"
-*   "link"
-*   "script"
-
-**Flags**: IRWA
-
----
-## Attr: HTMLFlow.dynamicContents
-
-### Description
-Dynamic string of HTML contents for this component. As with [HTMLFlow.contents](#attr-htmlflowcontents), this may be a fragment of HTML to display or a complete HTML page. See [HTMLFlow.contentsType](#attr-htmlflowcontentstype) and [HTMLFlow.supportsContentsAsPage](#attr-htmlflowsupportscontentsaspage).
-
-See [Canvas.dynamicContents](Canvas.md#attr-canvasdynamiccontents) for details on how dynamicContents are resolved to a final string value.
-
-**Flags**: IRWA
-
----
-## Attr: HTMLFlow.autoDeriveContentsType
-
-### Description
-If [ContentsType](../reference_2.md#type-contentstype) is not explicitly specified, should it be automatically derived?
-
-If set to true, this component will use [HTMLFlow.isPageHTML](#method-htmlflowispagehtml) to determine whether the contents are a standalone HTML page which should be rendered into an embedded IFRAME rather than written directly into the component's handle in the DOM.
-
-Note that this property will auto derive the appropriate contents type for both explicitly specified [HTMLFlow.contents](#attr-htmlflowcontents) and for HTML loaded from the [HTMLFlow.contentsURL](#attr-htmlflowcontentsurl)
-
-See [ContentsType](../reference_2.md#type-contentstype) for further information on displaying complete HTML pages in an IFRAME.
-
-**Flags**: IRW
-
----
-## Attr: HTMLFlow.contentsType
-
-### Description
-The `contentsType` attribute governs whether the contents of this htmlFlow are a fragment of HTML to inserted directly into the DOM, or a complete HTML page to be displayed in an IFRAME. If not explicitly specified, [HTMLFlow.autoDeriveContentsType](#attr-htmlflowautoderivecontentstype) may be set to automatically determine the appropriate contents type by analyzing the contents of the component. If `autoDeriveContentsType` is false and `contentsType` is not explicitly specified, contents will always be assumed to be `"fragment"`.
-
-HTMLFlow contents may be [directly specified](#attr-htmlflowcontents) or loaded from a [specified URL](#attr-htmlflowcontentsurl). Note that if [HTMLFlow.supportsContentsAsPage](#attr-htmlflowsupportscontentsaspage) is false and no [HTMLFlow.contentsURL](#attr-htmlflowcontentsurl) is specified, the contents string will always be assumed to be a fragment, even if [ContentsType](../reference_2.md#type-contentstype) is explicitly set to `"page"`.
-
-Note that an HTMLFlow with contentsType:"page" should not be used to load and display a page containing a set of SmartClient components into the application. To dynamically load SmartClient components, use [ViewLoader](ViewLoader.md#class-viewloader), **never** this mechanism (click [here](../kb_topics/noFrames.md#kb-topic-dont-misuse-frames) for why).
-
-**Scripting, CSS and scoping considerations for HTMLFlow contents**  
-The following considerations apply to HTMLFlow contents, whether directly specified or loaded from a contentsURL.
-
-When contentsType is `"page"`, the HTML content will be rendered as a standalone document using an IFRAME. Use [HTMLFlow.iframeSandbox](#attr-htmlflowiframesandbox) to specify IFRAME restrictions using the native [sandbox attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#sandbox). Note that any script (if allowed) will be executed in the scope of the embedded IFRAME window, not the main application window. Similarly, other features like css stylesheets loaded by the HTMLFlow will apply to the IFRAME window only, and the IFRAME will not pick up css style from the main application by default.
-
-When contentsType is `"fragment"`, if script is encountered within the HTML fragment it will be evaluated in the scope of the main application if [HTMLFlow.evalScriptBlocks](#attr-htmlflowevalscriptblocks) is enabled. Developers should be aware that this evaluation occurs as part of the draw/redraw process, but unlike script embedded directly in a static HTML page, it is not processed by the browser while the elements are being written into the DOM and `document.write(...)` can not be used to modify the HTML as it is being rendered. In this mode, since the contents is written directly into the DOM, standard css styling for the page will be applied.
-
-Note that if [HTMLFlow.autoDeriveContentsType](#attr-htmlflowautoderivecontentstype) is enabled, the default set of recognized [HTMLFlow.structuralHTMLTags](#attr-htmlflowstructuralhtmltags) include ``<script>``, so HTML contents including script will display as `contentsType:"page"`. The list of `structuralHTMLTags` can be modified to exclude script tags if desired.
-
-### Groups
-
-- contentLoading
-
-**Flags**: IR
-
----
-## Attr: HTMLFlow.canSelectText
-
-### Description
-Text selection for copy and paste is enabled by default in the HTMLFlow class. Note that this setting has no impact if [ContentsType](../reference_2.md#type-contentstype) is set to "page". In this case contents is loaded from a target URL via an IFRAME element, and text selection behavior will be dictated by the loaded HTML.
-
-**Flags**: IR
-
----
 ## Attr: HTMLFlow.httpMethod
 
 ### Description
@@ -169,16 +30,6 @@ Selects the HTTP method that will be used when fetching content. Valid values ar
 ### Groups
 
 - contentLoading
-
-**Flags**: IRW
-
----
-## Attr: HTMLFlow.defaultHeight
-
-### Description
-HTMLFlow defaultHeight is set to `1` which, together with [overflow:"visible"](../reference.md#type-overflow) causes the HTMLFlow to size to its content HTML.
-
-Note that if [ContentsType](../reference_2.md#type-contentstype) is `"page"`, `overflow:"visible"` is not supported - for this usage an explicit larger height should be specified. You may want to use the preconfigured [HTMLPane](HTMLPane.md#class-htmlpane) class instead of HTMLFlow for this usage.
 
 **Flags**: IRW
 
@@ -196,14 +47,27 @@ Not valid with [contentsType](#attr-htmlflowcontentstype) "page".
 ## Attr: HTMLFlow.contents
 
 ### Description
-String of HTML contents for this component - may be a fragment of HTML to display or a complete HTML page. See [HTMLFlow.contentsType](#attr-htmlflowcontentstype) and [HTMLFlow.supportsContentsAsPage](#attr-htmlflowsupportscontentsaspage).
+The contents of a canvas or label widget. Any HTML string is acceptable.
 
-To load HTML contents from a URL, use [HTMLFlow.contentsURL](#attr-htmlflowcontentsurl) instead of this property. If `contentsURL` is non-null, `contents` will be ignored.
+### Groups
+
+- contents
 
 ### See Also
 
-- [HTMLFlow.contentsURL](#attr-htmlflowcontentsurl)
 - [HTMLFlow.dynamicContents](#attr-htmlflowdynamiccontents)
+
+**Flags**: IRW
+
+---
+## Attr: HTMLFlow.contentsURLParams
+
+### Description
+Parameters to be sent to the contentsURL when fetching content.
+
+### Groups
+
+- contentLoading
 
 **Flags**: IRW
 
@@ -222,14 +86,18 @@ Note that SmartClient simply applies the provided value to the generated `<ifram
 **Flags**: IR
 
 ---
-## Attr: HTMLFlow.overflow
+## Attr: HTMLFlow.captureSCComponents
 
 ### Description
-HTMLFlows are `overflow:"visible"` by default, allowing them to fit their HTML content.
+If true, SmartClient components created while executing the loaded HTML are captured for rendering inside the HTMLFlow.
 
-Note that if [ContentsType](../reference_2.md#type-contentstype) is `"page"`, `overflow:"visible"` is not supported and the overflow will default to `"auto"` instead
+Only applies when contentsType is **not** "page".
 
-**Flags**: IRW
+### Groups
+
+- contentLoading
+
+**Flags**: IR
 
 ---
 ## Attr: HTMLFlow.loadingMessage
@@ -237,9 +105,8 @@ Note that if [ContentsType](../reference_2.md#type-contentstype) is `"page"`, `o
 ### Description
 HTML to show while content is being fetched, active only if the `contentsURL` property has been set. Use `"${loadingImage}"` to include [a loading image](Canvas.md#classattr-canvasloadingimagesrc).
 
-The loading message will show both during the initial load of content, and during reload if the contents are reloaded or the contentsURL changed. For a first-time only loading message, initialize the `contents` property instead.
-
-Note: the `loadingMessage` is never displayed when [HTMLFlow.contentsType](#attr-htmlflowcontentstype) was explicitly specified as `"page"`.
+The loading message will show both during the initial load of content, and during reload if the contents are reloaded or the contentsURL changed. For a first-time only loading message, initialize the `contents` property instead.  
+Note: the `loadingMessage` is never displayed when loading complete web pages rather than HTML fragments (see [HTMLFlow.contentsType](#attr-htmlflowcontentstype)).
 
 ### Groups
 
@@ -281,17 +148,93 @@ Set to true to allow browser caching **if the browser would normally do so**, in
 ## Attr: HTMLFlow.contentsURL
 
 ### Description
-If specified the HTMLFlow will load its contents from this URL instead of displaying [this.contents](#attr-htmlflowcontents). May be combined with parameters if [HTMLFlow.contentsURLParams](#attr-htmlflowcontentsurlparams) were specified.
+URL to load content from.
 
-The HTML retrieved from the target URL may be a complete standalone page to be rendered into its own scope using an IFRAME, or a fragment of HTML to display within this component's handle. See [ContentsType](../reference_2.md#type-contentstype) and [HTMLFlow.autoDeriveContentsType](#attr-htmlflowautoderivecontentstype) for more information.
+If specified, this component will load HTML content from the specified URL when it is first drawn.
 
-Note that the link{loadingMessage} and [HTMLFlow.httpMethod](#attr-htmlflowhttpmethod) features only apply if contentsURL was set and contentsType was not explicitly set to `"page"`
+This feature relies on the XMLHttpRequest object which can be disabled by end-users in some supported browsers. See [platformDependencies](../kb_topics/platformDependencies.md#kb-topic-platform-dependencies) for more information.
 
 ### Groups
 
 - contentLoading
 
 **Flags**: IRW
+
+---
+## Attr: HTMLFlow.dynamicContents
+
+### Description
+Dynamic contents allows the contents string to be treated as a simple but powerful template. When this attribute is set to true, JavaScript expressions may be embedded within the contents string, using the format: `${_[JavaScript to evaluate]_}`.
+
+For example, to include the current date in a templated message, `canvas.contents` could be set to:  
+`"Today's date is `<b>`${new Date().toUSShortDate()}`</b>`"`
+
+Embedded expressions will be evaluated when the canvas is drawn or redrawn, and the result of the evaluated expression will be displayed to the user. If the expression does not evaluate to a String, the `toString()` representation of the returned object will be displayed automatically
+
+Dynamic expressions are evaluated in the scope of the canvas displaying the content, so the `this` keyword may be used within your expression to refer to the canvas. Developers may also explicitly supply values for variables to be used within the evaluation via the [Canvas.dynamicContentsVars](Canvas.md#attr-canvasdynamiccontentsvars) property.
+
+Notes:
+
+*   Calling markForRedraw() on the canvas will evaluate any embedded expressions.
+*   Multiple such expressions may be embedded within the contents string for a component.
+*   If an error occurs during evaluation, a warning is logged to the [Developer Console](../kb_topics/debugging.md#kb-topic-debugging) and the error string will be embedded in place of the expected value in the Canvas.
+
+### Groups
+
+- contents
+
+### See Also
+
+- [HTMLFlow.contents](#attr-htmlflowcontents)
+- [Canvas.dynamicContentsVars](Canvas.md#attr-canvasdynamiccontentsvars)
+
+**Flags**: IRWA
+
+---
+## Attr: HTMLFlow.contentsType
+
+### Description
+The default setting of `null` or 'fragment' indicates that HTML loaded from [HTMLFlow.contentsURL](#attr-htmlflowcontentsurl) is assumed to be an HTML fragment rather than a complete page. Set to "page" to load HTML as a standalone page, via an IFRAME.
+
+`contentsType:"page"` should only be used for controlled HTML content, and only when such content cannot be delivered as an HTML fragment instead (the default). To dynamically load SmartClient components, use [ViewLoader](ViewLoader.md#class-viewloader), **never** this mechanism (click [here](../kb_topics/noFrames.md#kb-topic-dont-misuse-frames) for why).
+
+Loading HTML content as a fragment is less resource intensive and avoids visual artifacts such as translucent media becoming opaque or disappearing when placed over an IFRAME.
+
+Loading third-party, uncontrolled content could lead to the surrounding page disappearing if a user clicks on an HTML link with `target=_top`.
+
+With `contentsType:"page"`, [HTMLFlow.loadingMessage](#attr-htmlflowloadingmessage) is not supported, and only "GET" is supported for [httpMethod](#attr-htmlflowhttpmethod).
+
+Note that a native bug has been observed in Internet Explorer version 10 whereby if an HTMLFlow with `contentsType` set to `"page"` loads a page containing an HTML ``<frameset>``, when the HTMLFlow is [hidden](Canvas.md#method-canvashide), it can interfere with the rendering of other elements on the page. Setting [Canvas.shrinkElementOnHide](Canvas.md#attr-canvasshrinkelementonhide) to `true` will work around this behavior.
+
+### Groups
+
+- contentLoading
+
+**Flags**: IR
+
+---
+## Attr: HTMLFlow.canSelectText
+
+### Description
+Text selection for copy and paste is enabled by default in the HTMLFlow class. Note that this setting has no impact if [ContentsType](../reference.md#type-contentstype) is set to "page". In this case contents is loaded from a target URL via an IFRAME element, and text selection behavior will be dictated by the loaded HTML.
+
+**Flags**: IR
+
+---
+## Method: HTMLFlow.setContents
+
+### Description
+Changes the contents of a widget to newContents, an HTML string.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| newContents | [HTMLString](../reference.md#type-htmlstring) | true | — | an HTML string to be set as the contents of this widget |
+
+### See Also
+
+- [HTMLFlow.evalScriptBlocks](#attr-htmlflowevalscriptblocks)
 
 ---
 ## Method: HTMLFlow.fetchRelatedData
@@ -311,7 +254,7 @@ For example, given two related DataSources "orders" and "orderItems", where we w
 |------|------|----------|---------|-------------|
 | record | [ListGridRecord](#type-listgridrecord) | false | — | DataSource record |
 | schema | [Canvas](#type-canvas)|[DataSource](#type-datasource)|[ID](#type-id) | false | — | schema of the DataSource record, or DataBoundComponent already bound to that schema |
-| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke on completion |
+| callback | [DSCallback](../reference.md#type-dscallback) | true | — | callback to invoke on completion |
 | requestProperties | [DSRequest](#type-dsrequest) | true | — | additional properties to set on the DSRequest that will be issued |
 
 ### Groups
@@ -347,67 +290,18 @@ Change the URL this component loads content from. Triggers a fetch for content f
 
 Can also be called with no arguments to reload content from the existing [HTMLFlow.contentsURL](#attr-htmlflowcontentsurl).
 
+This feature relies on the XMLHttpRequest object which can be disabled by end-users in some supported browsers. See [platformDependencies](../kb_topics/platformDependencies.md#kb-topic-platform-dependencies) for more information.
+
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| url | [URL](../reference_2.md#type-url) | true | — | URL to retrieve contents from |
-| params | [Object](../reference.md#type-object) | true | — | Parameters to send to the contentsURL. Merged with `component.contentsURLParams` if both are set. |
+| url | [URL](../reference.md#type-url) | true | — | URL to retrieve contents from |
+| params | [Object](../reference_2.md#type-object) | true | — | Parameters to send to the contentsURL. Merged with `component.contentsURLParams` if both are set. |
 
 ### Groups
 
 - contentLoading
-
-### See Also
-
-- [HTMLFlow.evalScriptBlocks](#attr-htmlflowevalscriptblocks)
-
----
-## Method: HTMLFlow.contentLoaded
-
-### Description
-StringMethod fired when content is completely loaded in this htmlFlow. Has no default implementation. May be observed or overridden as a notification type method to fire custom logic when loading completes.
-
-Notes:
-
-*   A call to [this.setContents()](Canvas.md#method-canvassetcontents) will cause this notification to be fired when the contents have been set. If [HTMLFlow.evalScriptBlocks](#attr-htmlflowevalscriptblocks) is true, and the HTML passed into `setContents()` contains any ``<script src=... >`` tags, this callback will be fired asynchronously once the scripts have been loaded from the server and executed, as well as having the widget content updated
-*   When using [HTMLFlow.contentsURL](#attr-htmlflowcontentsurl), this does not apply to htmlFlows with [contentsType](#attr-htmlflowcontentstype) set to `"page"`
-
-### Groups
-
-- contentLoading
-
----
-## Method: HTMLFlow.isPageHTML
-
-### Description
-Determines whether the html string passed in is source for a standalone HTML page as opposed to an HTML fragment to be added to the DOM.
-
-Returns true if any [HTMLFlow.structuralHTMLTags](#attr-htmlflowstructuralhtmltags) are found in the HTML string, outside of HTML comment or ``<pre>` ... `</pre>`` blocks.
-
-This method is used by [HTMLFlow.autoDeriveContentsType](#attr-htmlflowautoderivecontentstype) to determine whether the widget contents should be rendered inside an embedded IFRAME.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| html | [String](#type-string) | false | — | HTML string to test |
-
-### Returns
-
-`[boolean](../reference.md#type-boolean)` — true if the HTML string contains any structural HTML page elements.
-
----
-## Method: HTMLFlow.setContents
-
-### Description
-Changes the contents of a widget to newContents, an HTML string.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| newContents | [HTMLString](../reference.md#type-htmlstring) | true | — | an HTML string to be set as the contents of this widget |
 
 ### See Also
 
@@ -424,6 +318,21 @@ Override to modify the loaded HTML before it is rendered.
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | html | [HTMLString](../reference.md#type-htmlstring) | false | — | the html as loaded from the server return (HTML) html to be rendered |
+
+### Groups
+
+- contentLoading
+
+---
+## Method: HTMLFlow.contentLoaded
+
+### Description
+StringMethod fired when content is completely loaded in this htmlFlow. Has no default implementation. May be observed or overridden as a notification type method to fire custom logic when loading completes.
+
+Notes:
+
+*   A call to [this.setContents()](Canvas.md#method-canvassetcontents) will cause this notification to be fired when the contents have been set. If [HTMLFlow.evalScriptBlocks](#attr-htmlflowevalscriptblocks) is true, and the HTML passed into `setContents()` contains any ``<script src=... >`` tags, this callback will be fired asynchronously once the scripts have been loaded from the server and executed, as well as having the widget content updated
+*   When using [HTMLFlow.contentsURL](#attr-htmlflowcontentsurl), this does not apply to htmlFlows with [contentsType](#attr-htmlflowcontentstype) set to `"page"`
 
 ### Groups
 

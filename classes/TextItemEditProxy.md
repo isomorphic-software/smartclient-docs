@@ -9,7 +9,7 @@
 *Inherits from:* [FormItemEditProxy](FormItemEditProxy.md#class-formitemeditproxy)
 
 ### Description
-[EditProxy](EditProxy.md#class-editproxy) that handles [TextItems](TextItem.md#class-textitem) and [StaticTextItems](StaticTextItem.md#class-statictextitem) when editMode is enabled.
+[EditProxy](EditProxy.md#class-editproxy) that handles [TextItems](TextItem.md#class-textitem), [StaticTextItems](StaticTextItem.md#class-statictextitem) and [BlurbItems](BlurbItem.md#class-blurbitem) when editMode is enabled.
 
 ### Groups
 

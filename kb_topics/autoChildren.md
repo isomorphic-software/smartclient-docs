@@ -17,8 +17,6 @@ This topic explains how to use the autoChild system when creating custom compone
 
 Before reading this topic, be sure you have read the *QuickStart Guide* material on creating custom components and have reviewed the provided examples.
 
-_Note:_ the autoChild pattern allows you to generate instances of any [Canvas](../classes/Canvas.md#class-canvas) subclass, but FormItems [may not be created outside of a DynamicForm](../classes/FormItem.md#classmethod-formitemcreate) and as such can not be instantiated as autoChildren using the APIs described below.
-
 #### Basics
 
 The following is an example of creating subcomponents **without** using the AutoChild pattern. In this case a fictitious "Portlet" class is being created, which uses an instance of isc.Label to serve as it's header.
@@ -46,7 +44,7 @@ While straightforward, this approach provides limited flexibility to someone usi
 
 1.  avoid creating the headerLabel, for a "headerless" portlet
 2.  use a different, more advanced class as a header (eg, StretchImgButton or a custom class)
-3.  skin / change the appearance of the headerLabel, beyond setting its `styleName`
+3.  skin the headerLabel, other than CSS (rounded corners, animations, etc, wouldn't be possible)
 4.  change it's layout behavior (eg enable autoSize)
 5.  add or override event handlers
 
@@ -110,8 +108,7 @@ The code below uses the autoChild system to create the "headerLabel" subcomponen
  
 ```
 
-The documentation for [addAutoChild()](../classes/Class.md#method-classaddautochild) and [autoChildUsage](autoChildUsage.md#kb-topic-using-autochildren) explains why this code will still respect the `showHeaderLabel` flag and other customization properties even though they aren't mentioned specifically.  
-In this case the `_constructor` property has been used to make the headerLabel be generated as an instance of [Label](../classes/Label.md#class-label), but the developer could alternatively have used `headerLabelConstructor`. If both `_autoChildName_Constructor` and `_constructor` are set, `_autoChildName_Constructor` will be used.
+The documentation for [addAutoChild()](../classes/Class.md#method-classaddautochild) explains why this code will still respect the `showHeaderLabel` flag and other customization properties even though they aren't mentioned specifically.
 
 Note that AutoChildren are not always created as soon as the parent component, and may be created only when the parent is drawn, or in some cases, only when needed. For the best chance of forward compatibility, use properties and defaults instead of accessing the live reference, and if you do access the live reference, access it only when it is clear that the AutoChild must have been created by that point. For example, even if you determined by experimentation that the Window class currently creates it's "header" AutoChild when the Window is created, you should avoid accessing it until the Window has drawn, to leave room for the Window's implementation to change such that creation of the "header" AutoChild is deferred until draw.
 

@@ -7,7 +7,7 @@
 ## KB Topic: Criteria Editing
 
 ### Description
-DynamicForms may be used to edit [Criteria](../reference_2.md#type-criteria) or [AdvancedCriteria](../reference.md#object-advancedcriteria) for filtering data from a DataSource.
+DynamicForms may be used to edit [Criteria](../reference.md#type-criteria) or [AdvancedCriteria](../reference.md#object-advancedcriteria) for filtering data from a DataSource.
 
 The main APIs for this are [DynamicForm.getValuesAsCriteria](../classes/DynamicForm.md#method-dynamicformgetvaluesascriteria) and [DynamicForm.setValuesAsCriteria](../classes/DynamicForm.md#method-dynamicformsetvaluesascriteria).
 

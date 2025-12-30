@@ -11,13 +11,13 @@ In SmartClient, "summarization" refers to applying functions to DataSource field
 
 For example, by applying an "average" function to a DataSourceField representing the dollar value of an order, you can calculate the average dollar amount of a set of orders.
 
-Server Summaries is a feature of the SmartClient Server allowing similar summaries to be computed server-side, generally by the database engine itself, or client-side for [clientOnly DataSources](clientOnlyDataSources.md#kb-topic-client-only-datasources). Client-side calculation of summary records is also supported on ListGrids via the [showGridSummary feature](../classes/ListGrid_1.md#attr-listgridshowgridsummary).
-
-**Server-side calculation is available with Power or better licenses only.** See [smartclient.com/product](http://smartclient.com/product) for details.
+Client-side calculation of summary records is a [listGrid feature](../classes/ListGrid_1.md#attr-listgridshowgridsummary). Server Summaries is a feature of the SmartClient Server allowing similar summaries to be computed server-side, generally by the database engine itself.
 
 See also the related feature which allows a single field to receive a value summarized from several related records, [DataSourceField.includeSummaryFunction](../classes/DataSourceField.md#attr-datasourcefieldincludesummaryfunction).
 
-Summarization can be statically configured directly in a .ds.xml file, or can be dynamically configured when sending a [DSRequest](../reference_2.md#object-dsrequest), either client-side or server-side. The following examples all assume a DataSource with fields like this:
+**The Server Summaries feature is available with Power or better licenses only.** See [smartclient.com/product](http://smartclient.com/product) for details.
+
+Summarization can be statically configured directly in a .ds.xml file, or can be dynamically configured when sending a [DSRequest](../reference.md#object-dsrequest), either client-side or server-side. The following examples all assume a DataSource with fields like this:
 
 ```
  <DataSource ID="dsOrders" ...>
@@ -94,46 +94,23 @@ You can also dynamically request summaries from server-side code (for example, i
  
 ```
 
-#### Sort & Data Paging
+#### Criteria, Sort & Data Paging
 
-Sort directions are supported for queries that involve server summarization although may only target fields that are returned by the query (only those fields included in `groupBy` or where a `summaryFunction` was applied).
-
-Data paging is also supported, however, consider that for aggregated queries, when asked for a second page of data, the database is likely to have to repeat all the work of calculating aggregated values. Turning paging off or setting a generous [ListGrid.dataPageSize](../classes/ListGrid_1.md#attr-listgriddatapagesize) is advised.
-
-#### Criteria
-
-#### SQL & clientOnly DataSource
-
-Criteria is automatically split into pre and post summarization parts:
-
-*   Fields that are not summarized will have criteria applied to them before summarization. This includes [group by](../classes/DSRequest.md#attr-dsrequestgroupby) fields and fields that are there just for filtering purposes, i.e. might not be fetched at all. For example if a "price" field would be a regular field in a fetch, i.e. not summarized, criteria like "price < 5" will eliminate records where price is less than 5, so such records would not affect the average or total computed.
-*   Fields that are summarized will have criteria applied to them after summarization. For example if the "avg" summary function is being applied to a "price" field would, same criteria "price < 5" would eliminate records where summarized value "avg(price)" is less than 5.
-
-This post-summarization server filtering matches client-side filtering, since it is always post-summarization on the client-side. Disabling filter for summarized fields on the client-side is no longer necessary to get the same results, as it was in previous versions.
-
-Previous versions applied criteria on the server for all fields **before** summarization. You can get that behavior back via [OperationBinding.applyCriteriaBeforeAggregation](../classes/OperationBinding.md#attr-operationbindingapplycriteriabeforeaggregation) setting. Note that in that case you need to turn off client-side filtering for aggregated fields, because client-side filtering cannot replicate pre-summarization filtering, as client sees only the final computed aggregates. See [OperationBinding.applyCriteriaBeforeAggregation](../classes/OperationBinding.md#attr-operationbindingapplycriteriabeforeaggregation) docs for more details.
-
-#### HB and JPA DataSources
+Criteria and sort directions are supported for queries that involve server summarization.
 
 Criteria apply to record **before** summaries are applied. For example, if the "avg" function is being applied to a "price" field, criteria like "price < 5" will eliminate records where price is less than 5 _before_ the average price is calculated. This means that client-side filtering may not work as expected with summarized results: client-side filter criteria are necessarily applied _after_ summary functions have been applied, so may not match the server's behavior. You can set [ResultSet.useClientFiltering](../classes/ResultSet.md#attr-resultsetuseclientfiltering) to disable client-side filtering on a grid via [ListGrid.dataProperties](../classes/ListGrid_1.md#attr-listgriddataproperties). Or individual fields can be marked [canFilter:false](../classes/ListGridField.md#attr-listgridfieldcanfilter).
 
-#### SQL Templating & Aggregation
+Sort directions may only target fields that are returned by the query (only those fields included in `groupBy` or where a `summaryFunction` was applied).
 
-With the [SQL Templating](customQuerying.md#kb-topic-custom-querying-overview) feature you can customize portions of the query without ever having to re-create portions that the framework knows how to generate. This allows to create partially or entirely custom complex aggregation queries to use in a regular "fetch" operation. The SQL Templating feature supports aggregated queries just as regular ones with some additions, see below.
+Data paging is also supported, however, consider that for aggregated queries, when asked for a second page of data, the database is likely to have to repeat all the work of calculating aggregated values. Turning paging off or setting a generous [ListGrid.dataPageSize](../classes/ListGrid_1.md#attr-listgriddatapagesize) is advised.
 
-In clause-by-clause substitution there are two additional aggregation specific clauses: [groupClause](../classes/OperationBinding.md#attr-operationbindinggroupclause) providing "group by" part of aggregated query and [afterWhereClause](../classes/OperationBinding.md#attr-operationbindingafterwhereclause) providing "having" part of aggregated query (or outer "where" part if sub-select approach is used, see [OperationBinding.useHavingClause](../classes/OperationBinding.md#attr-operationbindingusehavingclause) for more details). The automatically generated `groupClause` and `afterWhereClause` clauses are also available as [$defaultGroupClause](../reference.md#type-defaultqueryclause) and [$defaultAfterWhereClause](../reference.md#type-defaultqueryclause) SQL templating variables.
+#### SQL Templating
 
-Note that if [OperationBinding.applyCriteriaBeforeAggregation](../classes/OperationBinding.md#attr-operationbindingapplycriteriabeforeaggregation) is set to `true`, aggregated fields referenced in regular criteria are filtered before aggregation occurs. In this case, an `afterWhereClause` may still be generated, but only for the criteria defined in [DSRequest.afterCriteria](../classes/DSRequest.md#attr-dsrequestaftercriteria).
-
-`SQLDataSource.getSQLClause()` server-side API can generate the entire query, in case you wanted to use an aggregated query as just part of a larger query (perhaps a sub-select), or different parts of a query, including `groupClause` and `afterWhereClause` aggregated query clauses.
-
-Also note `SQLDataSource.getPartialHaving()` and `SQLDataSource.getHavingWithout()` server-side APIs which generate partial SQL condition expressions to be used as a complete or partial "having" or outer "where" clause. This is also can be accessed via `$sql.partialHaving` and `$sql.havingWithout` functions in SQL templates, see `$sql` variable description in [velocitySupport](velocitySupport.md#kb-topic-velocity-context-variables).
-
-To see an example of wrapping the main query as a sub-select to achieve additional aggregation level and splitting provided criteria into different chunks of condition expressions to apply them to specific parts of a completely customized aggregation query, see the [Custom Aggregation Query](https://www.smartclient.com/smartclient-latest/showcase/?id=summariesCustomSQL2) sample.
+[SQL Templating](#kb-topic-customquerying) is also supported with server summaries. Clause-by-clause substitution works normally.
 
 #### Fields with customSelectExpression
 
-Fields with [customSelectExpression](../classes/DataSourceField.md#attr-datasourcefieldcustomselectexpression) can be used with server summaries as both `groupBy` fields or fields with `summaryFunction`. In case of `summaryFunction` requested on field with `customSelectExpression` we will wrap SQL function around the expression, which may or may not be correct.
+Fields with [customSelectExpression](#attr-datasourcefieldcustomselectexpression) can be used with server summaries as both `groupBy` fields or fields with `summaryFunction`. In case of `summaryFunction` requested on field with `customSelectExpression` we will wrap SQL function around the expression, which may or may not be correct.
 
 #### Summarizing without Grouping
 
@@ -145,35 +122,18 @@ Declaring just `<groupBy>` without `<summaryFunctions>` is also allowed. This gi
 
 Check out [this example](https://www.smartclient.com/smartclient-latest/showcase/?id=loadedValues) of grouping without summarizing being used to determine all unique values of a field.
 
-#### Custom Aggregation
-
-You can implement your own custom aggregation functions in addition to the built-in ones by providing custom DMI implementation for the "fetch" operation. To see the example of using custom function see [Custom Aggregation](https://www.smartclient.com/smartclient-latest/showcase/?id=summariesCustom) sample. Note, that in order to access custom summary function on the server-side you need to use `DSRequest.getRawSummaryFunctions()` API.
-
-#### Extra fields in the [DSRequest.outputs](../classes/DSRequest.md#attr-dsrequestoutputs)
-
-Aggregated data fetches cannot include additional fields that are not aggregated or grouped by. Therefore, if [DSRequest.outputs](../classes/DSRequest.md#attr-dsrequestoutputs) includes fields that are not part of the aggregation request, we apply the ${isc.DocUtils.linkForRef('type:SummaryFunction','\\'MIN\\' summary function')} to those fields to ensure they are fetched.
-
 ### Related
 
-- [SummaryFunction](../reference_2.md#type-summaryfunction)
+- [SummaryFunction](../reference.md#type-summaryfunction)
 - [DSRequest.summaryFunctions](../classes/DSRequest.md#attr-dsrequestsummaryfunctions)
 - [DSRequest.groupBy](../classes/DSRequest.md#attr-dsrequestgroupby)
-- [DSRequest.afterCriteria](../classes/DSRequest.md#attr-dsrequestaftercriteria)
 - [OperationBinding.summaryFunctions](../classes/OperationBinding.md#attr-operationbindingsummaryfunctions)
 - [OperationBinding.groupBy](../classes/OperationBinding.md#attr-operationbindinggroupby)
 - [DataSourceField.includeSummaryFunction](../classes/DataSourceField.md#attr-datasourcefieldincludesummaryfunction)
 - [DataSourceField.joinPrefix](../classes/DataSourceField.md#attr-datasourcefieldjoinprefix)
 - [DataSourceField.joinString](../classes/DataSourceField.md#attr-datasourcefieldjoinstring)
 - [DataSourceField.joinSuffix](../classes/DataSourceField.md#attr-datasourcefieldjoinsuffix)
-- [DataSource.canAggregate](../classes/DataSource.md#attr-datasourcecanaggregate)
 - [DataSource.allowClientRequestedSummaries](../classes/DataSource.md#attr-datasourceallowclientrequestedsummaries)
 - [DataSourceField.allowClientRequestedSummaries](../classes/DataSourceField.md#attr-datasourcefieldallowclientrequestedsummaries)
-- [OperationBinding.afterWhereClause](../classes/OperationBinding.md#attr-operationbindingafterwhereclause)
-- [AdvancedCriterionSubquery.summaryFunctions](../classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubquerysummaryfunctions)
-- [AdvancedCriterionSubquery.groupBy](../classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubquerygroupby)
-- [DSRequestTask.groupBy](../classes/DSRequestTask.md#attr-dsrequesttaskgroupby)
-- [DSRequestTask.summaryFunctions](../classes/DSRequestTask.md#attr-dsrequesttasksummaryfunctions)
-- [GridFetchDataTask.groupBy](../classes/GridFetchDataTask.md#attr-gridfetchdatataskgroupby)
-- [GridFetchDataTask.summaryFunctions](../classes/GridFetchDataTask.md#attr-gridfetchdatatasksummaryfunctions)
 
 ---

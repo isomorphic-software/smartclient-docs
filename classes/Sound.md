@@ -6,7 +6,7 @@
 
 ## Class: Sound
 
-*Inherits from:* [BaseWidget](BaseWidget.md#class-basewidget)
+*Inherits from:* [BaseWidget](../reference.md#class-basewidget)
 
 ### Description
 SmartClient class for loading and playing audio files using the HTML5 `<AUDIO>` element.
@@ -40,6 +40,16 @@ If set to `false` developers may load the audio explicitly via [Sound.load](#met
 **Flags**: IRW
 
 ---
+## ClassMethod: Sound.isSupported
+
+### Description
+Returns true for browsers which natively support HTML5 Audio, used by the Sound class
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — true if Audio is supported in this browser
+
+---
 ## ClassMethod: Sound.play
 
 ### Description
@@ -53,16 +63,6 @@ For more explicit control over loading and playback of audio files, developers m
 |------|------|----------|---------|-------------|
 | src | [String](#type-string) | false | — | URL of the audio clip to play |
 | playbackCompleteCallback | [PlaybackCompleteCallback](#type-playbackcompletecallback) | true | — | callback to execute when the clip playback completes |
-
----
-## ClassMethod: Sound.isSupported
-
-### Description
-Returns true for browsers which natively support HTML5 Audio, used by the Sound class
-
-### Returns
-
-`[boolean](../reference.md#type-boolean)` — true if Audio is supported in this browser
 
 ---
 ## Method: Sound.setCurrentTime
@@ -87,22 +87,6 @@ Update the [Sound.src](#attr-soundsrc) of this sound instance at runtime. Note t
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | src | [String](#type-string)|[Array of String](#type-array-of-string) | false | — | URL of new audio file to be played by this sound instance. |
-
----
-## Method: Sound.getCurrentTime
-
-### Description
-Retrieves the current playback time of a playing or paused audio file in seconds.
-
-### Returns
-
-`[Float](../reference.md#type-float)` — current playback time audio file in seconds. If the file has not been loaded, or no [Sound.src](#attr-soundsrc) is defined, this method will return zero.
-
----
-## Method: Sound.reset
-
-### Description
-If playback is currently paused, reset the playback position to the start of the audio file so a call to [Sound.play](#method-soundplay) will play from the start, rather than resuming playback from the current position.
 
 ---
 ## Method: Sound.load
@@ -151,9 +135,25 @@ Notification method fired repeatedly to indicate a change in currentTime value w
 | currentTime | [float](../reference.md#type-float) | false | — | Current playback position in seconds. |
 
 ---
+## Method: Sound.getCurrentTime
+
+### Description
+Retrieves the current playback time of a playing or paused audio file in seconds.
+
+### Returns
+
+`[Float](../reference.md#type-float)` — current playback time audio file in seconds. If the file has not been loaded, or no [Sound.src](#attr-soundsrc) is defined, this method will return zero.
+
+---
 ## Method: Sound.pause
 
 ### Description
 Pause playback of the audio file.
+
+---
+## Method: Sound.reset
+
+### Description
+If playback is currently paused, reset the playback position to the start of the audio file so a call to [Sound.play](#method-soundplay) will play from the start, rather than resuming playback from the current position.
 
 ---

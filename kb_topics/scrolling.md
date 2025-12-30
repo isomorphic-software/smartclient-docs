@@ -31,7 +31,6 @@ Scrolling and clipping of objects when part of the object is obscured
 - [Canvas.showCustomScrollbars](../classes/Canvas.md#attr-canvasshowcustomscrollbars)
 - [Canvas.receiveScrollbarEvents](../classes/Canvas.md#attr-canvasreceivescrollbarevents)
 - [Canvas.alwaysShowScrollbars](../classes/Canvas.md#attr-canvasalwaysshowscrollbars)
-- [Canvas.nativeAutoHideScrollbars](../classes/Canvas.md#attr-canvasnativeautohidescrollbars)
 - [Canvas.useTouchScrolling](../classes/Canvas.md#attr-canvasusetouchscrolling)
 - [Canvas.disableTouchScrollingForDrag](../classes/Canvas.md#attr-canvasdisabletouchscrollingfordrag)
 - [Canvas.scrollbarSize](../classes/Canvas.md#attr-canvasscrollbarsize)

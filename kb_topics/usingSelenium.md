@@ -7,15 +7,11 @@
 ## KB Topic: Using Selenium Scripts (Selenese)
 
 ### Description
-[Selenium](http://seleniumhq.org/) is a powerful and popular tool which can be used to test your SmartClient applications.
-
-_For an overview of Automated Testing in SmartClient, see the documentation [here](automatedTesting.md#kb-topic-automated-testing)._
-
-Selenium executes tests against your running application in a browser emulating user interaction and asserting various conditions. Selenium provides a record/playback tool for authoring tests without learning a test scripting language - we refer to these as Selenium scripts or _Selenese_. You must be familiar with [Selenium](http://seleniumhq.org/) and use of [Selenium IDE](http://seleniumhq.org/projects/ide/) before proceeding. Refer to the documentation on the Selenium site.
+[Selenium](http://seleniumhq.org/) is a powerful and popular tool which can be used to test your SmartClient applications. Selenium executes tests against your running application in a browser emulating user interaction and asserting various conditions. Selenium provides a record/playback tool for authoring tests without learning a test scripting language - we refer to these as Selenium scripts or _Selenese_. You must be familiar with [Selenium](http://seleniumhq.org/) and use of [Selenium IDE](http://seleniumhq.org/projects/ide/) before proceeding. Refer to the documentation on the Selenium site.
 
 **Note that Selenium IDE 3 for Firefox Quantum has been released, but only recently added plugin APIs that should eventually allow us to add support for our our custom locators and commands (replacing our JavaScript user extensions from Selenium IDE 2.9). For now, if you want to write Selenese as this section describes, you must use Selenium IDE 2.9, which can be installed in [Firefox 52 ESR](https://www.mozilla.org/en-US/firefox/organizations/), the extended-support release of Firefox which is still receiving updates at the time of this writing.**
 
-Selenium supports the concept of [Locators](http://seleniumhq.org/docs/02_selenium_ide.html#locating-elements) in order to specify the element you'd like a given Selenium command to target. For example Selenium supports XPath based locators and DOM ID based locators. XPath based locators are extremely fragile due to complexity of certain highly nested DOM elements you need access to combined with the fact that XPath support varies across browsers and so your tests might not work across different browsers.
+Selenium supports the concept of [Locators](https://www.selenium.dev/documentation/en/webdriver/locating_elements/) in order to specify the element you'd like a given Selenium command to target. For example Selenium supports XPath based locators and DOM ID based locators. XPath based locators are extremely fragile due to complexity of certain highly nested DOM elements you need access to combined with the fact that XPath support varies across browsers and so your tests might not work across different browsers.
 
 Use of Selenium with SmartClient applications is no different than using Selenium to write and run test cases with any other application with the exception of one caveat: SmartClient occasionally renders a different DOM structure depending on the browser for performance or rendering the UI such that it appears identical across various browsers. As a result using DOM ID or DOM XPath based locators with SmartClient applications is not advisable.
 
@@ -41,21 +37,6 @@ These extensions (found in the `smartclientSDK/tools/selenium/` directory) augme
 That's it, we're done configuring the environment.
 
 Note: Tests recorded using Selenium IDE can be played back programmatically (e.g. from a test harness) using [SeleneseRunner](server/javadoc/com/isomorphic/webdriver/SeleneseRunner.html), a simulation tool that executes Selenese against SmartClient's WebDriver wrappers. This is required because Selenium 3 no longer supports executing Selenese using custom user extensions, as it no longer contains much of the Selenium RC code base.
-
-Alternatively, tests can be played back using the Playwright-based `selenese-runner.js`, located in `tools/playwright/`. This runner executes Selenese HTML test files using Playwright and SmartClient's AutoTest locator system. It automatically waits for SmartClient system quiescence after each command, matching the behavior of the Java SeleneseRunner.
-
-To use the Playwright runner, first install Playwright via npm:
-
-```
-     npm install playwright
- 
-```
-Then run tests from the `tools/playwright/` directory:
-```
-     node selenese-runner.js --baseUrl=http://localhost:8080 --tests=/path/to/test.rctest.html
- 
-```
-Multiple test files can be specified, and results are output in JUnit XML format for integration with CI/CD systems. Run with `--help` to see all available options.
 
 **Recording Selenium tests with Selenium IDE**
 

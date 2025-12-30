@@ -69,52 +69,6 @@ The test data file should consist of a top-level element containing a series of 
 For example, the following XML represents a list of supply items.
 
 ```
- <supplyItems>
-  <supplyItem>
-      <description>A revolutionary cushion-grip ballpoint pen that reduces
-          required gripping power, relieving stress and alleviating writing
-          fatigue. Excellent for people who suffer from arthritis or carpal
-          tunnel syndrome. Medium point, black ink. Refillable.</description>
-      <category>1</category>
-      <itemRef>ODC 204-502-153</itemRef>
-      <maxQuantity>5</maxQuantity>
-      <requiresJustification>0</requiresJustification>
-      <itemName>Dr. Grip Pens -- Blue Barrel</itemName>
-      <itemID>1</itemID>
-      <unitCost>4.99</unitCost>
-  </supplyItem>
-  <supplyItem>
-      <description>A revolutionary cushion-grip ballpoint pen that reduces
-          required gripping power, relieving stress and alleviating writing
-          fatigue. Excellent for people who suffer from arthritis or carpal
-          tunnel syndrome. Medium point, black ink. Refillable.</description>
-      <category>1</category>
-      <itemRef>ODC 204-708-834</itemRef>
-      <maxQuantity>5</maxQuantity>
-      <requiresJustification>0</requiresJustification>
-      <itemName>Dr. Grip Pens -- Black Barrel</itemName>
-      <itemID>2</itemID>
-      <unitCost>4.99</unitCost>
-  </supplyItem>
-  <supplyItem>
-      <description>Personalized business cards for all your networking
-          needs.</description>
-      <category>2</category>
-      <itemRef></itemRef>
-      <maxQuantity>500</maxQuantity>
-      <requiresJustification>1</requiresJustification>
-      <itemName>Personalized business cards -- 500 count</itemName>
-      <itemID>3</itemID>
-      <unitCost>25.00</unitCost>
-  </supplyItem>
-  ...
- <supplyItems/>
- 
-```
-
-You can name the root element anything you like when you describe its location using [DataSource.recordXPath](../classes/DataSource.md#attr-datasourcerecordxpath). The same sample could be written this way:
-
-```
  <records>
   <record>
       <description>A revolutionary cushion-grip ballpoint pen that reduces

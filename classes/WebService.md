@@ -94,12 +94,30 @@ If you have more than one <wsdl:service> in the same target namespace, use [WebS
 - webService
 
 ---
+## Method: WebService.getSoapMessage
+
+### Description
+Return the SOAP message that will be formed from this WSRequest.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| wsRequest | [WSRequest Properties](#type-wsrequest-properties) | false | — | web service request object |
+
+### Returns
+
+`[String](#type-string)` — SOAP message
+
+**Flags**: A
+
+---
 ## Method: WebService.getFetchDS
 
 ### Description
 Retrieve a DataSource that provides read-only access to records returned by a web service operation.
 
-[DataBound Components](../reference.md#interface-databoundcomponent) can be bound to the returned DataSource, and the [fetchData()](ListGrid_2.md#method-listgridfetchdata) method can be invoked to retrieve data from the web service.
+[DataBound Components](../reference.md#interface-databoundcomponent) can be bound to the returned DataSource, and the [fetchData()](ListGrid_1.md#method-listgridfetchdata) method can be invoked to retrieve data from the web service.
 
 The returned DataSource is only capable of the "fetch" [DataSource operation](../kb_topics/dataSourceOperations.md#kb-topic-datasource-operations), not "update", "add" or "remove". To create a DataSource capable of full read-write access, use [DataSource.operationBindings](DataSource.md#attr-datasourceoperationbindings) with the [wsOperation](OperationBinding.md#attr-operationbindingwsoperation) property set to associate each DataSource operation with a web service operation.
 
@@ -141,7 +159,7 @@ The schema are instances of [DataSource](DataSource.md#class-datasource) that ca
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — mapping from partName to schema
+`[Object](../reference_2.md#type-object)` — mapping from partName to schema
 
 ---
 ## Method: WebService.callOperation
@@ -154,7 +172,7 @@ The `data` parameter will be serialized to XML to form the input message for the
 The `resultType` selects what part of the message should be decoded to JavaScript and made available as the "data" variable in the callback. The `resultType` parameter can be either:
 
 *   an XPath. "data" will be always be an Array, containing the selected elements as decoded by [XMLTools.toJS](XMLTools.md#classmethod-xmltoolstojs). All properties will have String value.
-*   the name of an XML Schema type found somewhere in the response. You can use the WSDL tab of the Developer Console to analyze the WSDL file for an appropriate type name. "data" will be an Array, containing the decoded elements as decoded by [DataSource.recordsFromXML](#method-datasourcerecordsfromxml). In this case, since the XML Schema type of the selected data is known, properties will have correct type (eg "date" fields will have JavaScript Date objects)
+*   the name of an XML Schema type found somewhere in the response. You can use the WSDL tab of the Developer Console to analyze the WSDL file for an appropriate type name. "data" will be an Array, containing the decoded elements as decoded by [DataSource.recordsFromXML](DataSource.md#method-datasourcerecordsfromxml). In this case, since the XML Schema type of the selected data is known, properties will have correct type (eg "date" fields will have JavaScript Date objects)
 *   null. "data" will an Object representing the entire <SOAP:Body> as decoded to JavaScript. As above, properties will have correct type.
 
 In the callback, you also receive the XML document returned by the web service as "xmlDoc".
@@ -166,10 +184,24 @@ NOTE: `callOperation()` is appropriate for simple operations that do not involve
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | operationName | [String](#type-string) | false | — | Name of the operation to invoke |
-| data | [Object](../reference.md#type-object) | false | — | data to serialize as XML to form the inbound message of the operation |
+| data | [Object](../reference_2.md#type-object) | false | — | data to serialize as XML to form the inbound message of the operation |
 | resultType | [Type](#type-type)|[ElementName](#type-elementname)|[XPath](#type-xpath) | false | — | Type, Element name, or XPath that should be selected from the result. For XPaths, see [WSRequest.xmlNamespaces](WSRequest.md#attr-wsrequestxmlnamespaces) for available namespace prefixes and how to add more. |
 | callback | [Callback](../reference.md#type-callback) | false | — | Callback to invoke on completion. Signature callback(data, xmlDoc, rpcResponse, wsRequest) |
 | requestProperties | [WSRequest Properties](#type-wsrequest-properties) | false | — | Additional properties for the WSRequest, such as HTTPHeaders |
+
+### Groups
+
+- webService
+
+---
+## Method: WebService.getOperationNames
+
+### Description
+—
+
+### Returns
+
+`[Array](#type-array)` — names of the available operations supported by this service (array of strings)
 
 ### Groups
 
@@ -195,81 +227,7 @@ If `headerData` is instead provided via either dsRequest.headerData or as part o
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — data for SOAP headers
-
----
-## Method: WebService.setLocation
-
-### Description
-Set location can be used when the actual URL where a service will be accessible isn't known until runtime, or changes at runtime, hence can't be embedded in the service definition.
-
-With an operation parameter, `setLocation()` can be used to set a distinct URL for each web service operation. This is a development-time only feature that allows XML flat files to be placed at various URLs on a server, to serve as spoofed responses for each web service operation.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| location | [URL](../reference_2.md#type-url) | false | — | URL where web service can be contacted |
-| operation | [String](#type-string) | true | — | optional operation name to set the location for, for debugging only |
-
-### Groups
-
-- webService
-
-**Flags**: A
-
----
-## Method: WebService.getSchema
-
-### Description
-Get the schema definition of any complexType or element of complexType defined in any `<schema>` blocks in the WSDL file this WebService represents.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| schemaName | [String](#type-string) | false | — | name of type or element |
-| schemaType | [String](#type-string) | true | — | optional type of schema to return, either "element" for xs:element definitions only or "type" for xs:complexType definitions. If unspecified, either will be returned, with types preferred if names collide |
-
-### Returns
-
-`[DataSource](#type-datasource)` — requested schema
-
-### Groups
-
-- webService
-
----
-## Method: WebService.getSoapMessage
-
-### Description
-Return the SOAP message that will be formed from this WSRequest.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| wsRequest | [WSRequest Properties](#type-wsrequest-properties) | false | — | web service request object |
-
-### Returns
-
-`[String](#type-string)` — SOAP message
-
-**Flags**: A
-
----
-## Method: WebService.getOperationNames
-
-### Description
-—
-
-### Returns
-
-`[Array](#type-array)` — names of the available operations supported by this service (array of strings)
-
-### Groups
-
-- webService
+`[Object](../reference_2.md#type-object)` — data for SOAP headers
 
 ---
 ## Method: WebService.getInputDS
@@ -288,6 +246,27 @@ This DataSource is suitable for use as [form.dataSource](DataBoundComponent.md#a
 ### Returns
 
 `[DataSource](#type-datasource)` — DataSource representing the input message of a web service operation
+
+---
+## Method: WebService.setLocation
+
+### Description
+Set location can be used when the actual URL where a service will be accessible isn't known until runtime, or changes at runtime, hence can't be embedded in the service definition.
+
+With an operation parameter, `setLocation()` can be used to set a distinct URL for each web service operation. This is a development-time only feature that allows XML flat files to be placed at various URLs on a server, to serve as spoofed responses for each web service operation.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| location | [URL](../reference.md#type-url) | false | — | URL where web service can be contacted |
+| operation | [String](#type-string) | true | — | optional operation name to set the location for, for debugging only |
+
+### Groups
+
+- webService
+
+**Flags**: A
 
 ---
 ## Method: WebService.getInputHeaderSchema
@@ -315,6 +294,27 @@ The schema are instances of [DataSource](DataSource.md#class-datasource) that ca
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — mapping from partName to schema
+`[Object](../reference_2.md#type-object)` — mapping from partName to schema
+
+---
+## Method: WebService.getSchema
+
+### Description
+Get the schema definition of any complexType or element of complexType defined in any `<schema>` blocks in the WSDL file this WebService represents.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| schemaName | [String](#type-string) | false | — | name of type or element |
+| schemaType | [String](#type-string) | true | — | optional type of schema to return, either "element" for xs:element definitions only or "type" for xs:complexType definitions. If unspecified, either will be returned, with types preferred if names collide |
+
+### Returns
+
+`[DataSource](#type-datasource)` — requested schema
+
+### Groups
+
+- webService
 
 ---

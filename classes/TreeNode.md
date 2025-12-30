@@ -18,6 +18,21 @@ You can change the name of this property by setting [TreeGrid.iconPaddingPropert
 **Flags**: IRA
 
 ---
+## Attr: TreeNode.children
+
+### Description
+For trees with the modelType "children", this property specifies the children of this TreeNode.
+
+Note: the name of this property can be changed by setting [Tree.childrenProperty](Tree.md#attr-treechildrenproperty)
+
+### See Also
+
+- [Tree.modelType](Tree.md#attr-treemodeltype)
+- [Tree.childrenProperty](Tree.md#attr-treechildrenproperty)
+
+**Flags**: IRW
+
+---
 ## Attr: TreeNode.isFolder
 
 ### Description
@@ -53,88 +68,6 @@ Note: the name of this property can be changed by setting [Tree.nameProperty](Tr
 - [Tree.getTitle](Tree.md#method-treegettitle)
 
 **Flags**: IR
-
----
-## Attr: TreeNode.icon
-
-### Description
-This Property allows the developer to customize the icon displayed next to a node. Set `node.icon` to the URL of the desired icon to display and it will be shown instead of the standard [TreeGrid.nodeIcon](TreeGrid.md#attr-treegridnodeicon) for this node.  
-Note that if [TreeNode.showOpenIcon](#attr-treenodeshowopenicon) and/or [TreeNode.showDropIcon](#attr-treenodeshowdropicon) is true for this node, customized icons for folder nodes will be appended with the [TreeGrid.openIconSuffix](TreeGrid.md#attr-treegridopeniconsuffix) or [TreeGrid.dropIconSuffix](TreeGrid.md#attr-treegriddropiconsuffix) suffixes on state change as with the standard [TreeGrid.folderIcon](TreeGrid.md#attr-treegridfoldericon) for this treeGrid. Also note that for custom folder icons, the [TreeGrid.closedIconSuffix](TreeGrid.md#attr-treegridclosediconsuffix) will never be appended.
-
-You can change the name of this property by setting [TreeGrid.customIconProperty](TreeGrid.md#attr-treegridcustomiconproperty).
-
-### Groups
-
-- treeIcons
-
-**Flags**: IRW
-
----
-## Attr: TreeNode.enabled
-
-### Description
-Default property name denoting whether this record is enabled. Property name may be modified for some grid via [ListGrid.recordEnabledProperty](ListGrid_1.md#attr-listgridrecordenabledproperty).
-
-**Flags**: IR
-
----
-## Attr: TreeNode.canDrag
-
-### Description
-Governs whether this node can be dragged. Only has an effect if this node is displayed in a [TreeGrid](TreeGrid.md#class-treegrid) where [TreeGrid.canDragRecordsOut](TreeGrid.md#attr-treegridcandragrecordsout), [TreeGrid.canReorderRecords](TreeGrid.md#attr-treegridcanreorderrecords) or [TreeGrid.canReparentNodes](TreeGrid.md#attr-treegridcanreparentnodes) is `true`.
-
-**Flags**: IRA
-
----
-## Attr: TreeNode.parentId
-
-### Description
-For trees with modelType:"parent", this property specifies the unique ID of this node's parent node. The unique ID of a node, together with the unique ID of its parent is used by [Tree.linkNodes](Tree.md#method-treelinknodes) to link a list of nodes into a tree.
-
-Note: the name of this property can be changed by setting [Tree.parentIdField](Tree.md#attr-treeparentidfield).
-
-### See Also
-
-- [TreeNode.id](#attr-treenodeid)
-- [Tree.linkNodes](Tree.md#method-treelinknodes)
-- [Tree.modelType](Tree.md#attr-treemodeltype)
-- [Tree.parentIdField](Tree.md#attr-treeparentidfield)
-
-**Flags**: IR
-
----
-## Attr: TreeNode.id
-
-### Description
-Specifies the unique ID of this node.
-
-Required for trees with [Tree.modelType](Tree.md#attr-treemodeltype) "parent". With modelType:"parent", the unique ID of a node, together with the unique ID of its parent (see [TreeNode.parentId](#attr-treenodeparentid)) is used by [Tree.linkNodes](Tree.md#method-treelinknodes) to link a list of nodes into a tree.
-
-Note: the name of this property can be changed by setting [Tree.idField](Tree.md#attr-treeidfield).
-
-### See Also
-
-- [TreeNode.parentId](#attr-treenodeparentid)
-- [Tree.linkNodes](Tree.md#method-treelinknodes)
-- [Tree.modelType](Tree.md#attr-treemodeltype)
-- [Tree.idField](Tree.md#attr-treeidfield)
-
-**Flags**: IR
-
----
-## Attr: TreeNode.children
-
-### Description
-For trees with the modelType "children", this property specifies the children of this TreeNode.
-
-Note: the name of this property can be changed by setting [Tree.childrenProperty](Tree.md#attr-treechildrenproperty)
-
-### See Also
-
-- [Tree.modelType](Tree.md#attr-treemodeltype)
-- [Tree.childrenProperty](Tree.md#attr-treechildrenproperty)
-
-**Flags**: IRW
 
 ---
 ## Attr: TreeNode.showOpenIcon
@@ -198,6 +131,21 @@ You can change the name of this property by setting [TreeGrid.customIconDropProp
 **Flags**: IRWA
 
 ---
+## Attr: TreeNode.icon
+
+### Description
+This Property allows the developer to customize the icon displayed next to a node. Set `node.icon` to the URL of the desired icon to display and it will be shown instead of the standard [TreeGrid.nodeIcon](TreeGrid.md#attr-treegridnodeicon) for this node.  
+Note that if [TreeNode.showOpenIcon](#attr-treenodeshowopenicon) and/or [TreeNode.showDropIcon](#attr-treenodeshowdropicon) is true for this node, customized icons for folder nodes will be appended with the [TreeGrid.openIconSuffix](TreeGrid.md#attr-treegridopeniconsuffix) or [TreeGrid.dropIconSuffix](TreeGrid.md#attr-treegriddropiconsuffix) suffixes on state change as with the standard [TreeGrid.folderIcon](TreeGrid.md#attr-treegridfoldericon) for this treeGrid. Also note that for custom folder icons, the [TreeGrid.closedIconSuffix](TreeGrid.md#attr-treegridclosediconsuffix) will never be appended.
+
+You can change the name of this property by setting [TreeGrid.customIconProperty](TreeGrid.md#attr-treegridcustomiconproperty).
+
+### Groups
+
+- treeIcons
+
+**Flags**: IRW
+
+---
 ## Attr: TreeNode.title
 
 ### Description
@@ -219,5 +167,57 @@ Note: the name of this property can be changed by setting [Tree.titleProperty](T
 Governs whether dragged data (typically other `treeNode`s) may be dropped over this node. Only has an effect if this node is displayed in a [TreeGrid](TreeGrid.md#class-treegrid) where [TreeGrid.canAcceptDroppedRecords](TreeGrid.md#attr-treegridcanacceptdroppedrecords), [TreeGrid.canReorderRecords](TreeGrid.md#attr-treegridcanreorderrecords) or [TreeGrid.canReparentNodes](TreeGrid.md#attr-treegridcanreparentnodes) is true.
 
 **Flags**: IRA
+
+---
+## Attr: TreeNode.enabled
+
+### Description
+Default property name denoting whether this record is enabled. Property name may be modified for some grid via [ListGrid.recordEnabledProperty](ListGrid_1.md#attr-listgridrecordenabledproperty).
+
+**Flags**: IR
+
+---
+## Attr: TreeNode.canDrag
+
+### Description
+Governs whether this node can be dragged. Only has an effect if this node is displayed in a [TreeGrid](TreeGrid.md#class-treegrid) where [TreeGrid.canDragRecordsOut](TreeGrid.md#attr-treegridcandragrecordsout), [TreeGrid.canReorderRecords](TreeGrid.md#attr-treegridcanreorderrecords) or [TreeGrid.canReparentNodes](TreeGrid.md#attr-treegridcanreparentnodes) is `true`.
+
+**Flags**: IRA
+
+---
+## Attr: TreeNode.parentId
+
+### Description
+For trees with modelType:"parent", this property specifies the unique ID of this node's parent node. The unique ID of a node, together with the unique ID of its parent is used by [Tree.linkNodes](Tree.md#method-treelinknodes) to link a list of nodes into a tree.
+
+Note: the name of this property can be changed by setting [Tree.parentIdField](Tree.md#attr-treeparentidfield).
+
+### See Also
+
+- [TreeNode.id](#attr-treenodeid)
+- [Tree.linkNodes](Tree.md#method-treelinknodes)
+- [Tree.modelType](Tree.md#attr-treemodeltype)
+- [Tree.parentIdField](Tree.md#attr-treeparentidfield)
+
+**Flags**: IR
+
+---
+## Attr: TreeNode.id
+
+### Description
+Specifies the unique ID of this node.
+
+Required for trees with [Tree.modelType](Tree.md#attr-treemodeltype) "parent". With modelType:"parent", the unique ID of a node, together with the unique ID of its parent (see [TreeNode.parentId](#attr-treenodeparentid)) is used by [Tree.linkNodes](Tree.md#method-treelinknodes) to link a list of nodes into a tree.
+
+Note: the name of this property can be changed by setting [Tree.idField](Tree.md#attr-treeidfield).
+
+### See Also
+
+- [TreeNode.parentId](#attr-treenodeparentid)
+- [Tree.linkNodes](Tree.md#method-treelinknodes)
+- [Tree.modelType](Tree.md#attr-treemodeltype)
+- [Tree.idField](Tree.md#attr-treeidfield)
+
+**Flags**: IR
 
 ---

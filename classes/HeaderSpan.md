@@ -16,6 +16,34 @@ A title for this headerSpan, to display in the headerSpan button for this header
 **Flags**: IR
 
 ---
+## Attr: HeaderSpan.name
+
+### Description
+Name for this headerSpan, for use in APIs like [ListGrid.setHeaderSpanTitle](ListGrid_2.md#method-listgridsetheaderspantitle).
+
+Name is optional, but if specified, must be unique for this ListGrid (but not globally unique) as well as a valid JavaScript identifier, as specified by ECMA-262 Section 7.6 (the [String.isValidID](String.md#staticmethod-stringisvalidid) function can be used to test whether a name is a valid JavaScript identifier).
+
+### Groups
+
+- headerSpan
+
+**Flags**: IR
+
+---
+## Attr: HeaderSpan.fields
+
+### Description
+List of fields that this header spans. Fields should be identified by their value for [ListGridField.name](ListGridField.md#attr-listgridfieldname).
+
+Developers may define multiple levels of header-spans by specifying [HeaderSpan.spans](#attr-headerspanspans) however a span cannot be specified with both `fields` and `spans`.
+
+### Groups
+
+- headerSpan
+
+**Flags**: IR
+
+---
 ## Attr: HeaderSpan.wrap
 
 ### Description
@@ -79,6 +107,18 @@ Note that depending on the header button constructor, you may have to specify [H
 **Flags**: IRW
 
 ---
+## Attr: HeaderSpan.headerTitle
+
+### Description
+Optional title for the headerSpan button for this headerSpan. If specified this will be displayed in the headerSpan button instead of [HeaderSpan.title](#attr-headerspantitle). Set to an empty string to suppress the title in the header button entirely.
+
+### Groups
+
+- headerSpan
+
+**Flags**: IR
+
+---
 ## Attr: HeaderSpan.headerTitleStyle
 
 ### Description
@@ -115,46 +155,6 @@ Defaults to listGrid.headerSpanVAlign if unset.
 
 ### Description
 Horizontal alignment of the title of this headerSpan.
-
-### Groups
-
-- headerSpan
-
-**Flags**: IR
-
----
-## Attr: HeaderSpan.name
-
-### Description
-Name for this headerSpan, for use in APIs like [ListGrid.setHeaderSpanTitle](ListGrid_2.md#method-listgridsetheaderspantitle).
-
-Name is optional, but if specified, must be unique for this ListGrid (but not globally unique) as well as a valid JavaScript identifier, as specified by ECMA-262 Section 7.6 (the [String.isValidID](String.md#staticmethod-stringisvalidid) function can be used to test whether a name is a valid JavaScript identifier).
-
-### Groups
-
-- headerSpan
-
-**Flags**: IR
-
----
-## Attr: HeaderSpan.fields
-
-### Description
-List of fields that this header spans. Fields should be identified by their value for [ListGridField.name](ListGridField.md#attr-listgridfieldname).
-
-Developers may define multiple levels of header-spans by specifying [HeaderSpan.spans](#attr-headerspanspans) however a span cannot be specified with both `fields` and `spans`.
-
-### Groups
-
-- headerSpan
-
-**Flags**: IR
-
----
-## Attr: HeaderSpan.headerTitle
-
-### Description
-Optional title for the headerSpan button for this headerSpan. If specified this will be displayed in the headerSpan button instead of [HeaderSpan.title](#attr-headerspantitle). Set to an empty string to suppress the title in the header button entirely.
 
 ### Groups
 

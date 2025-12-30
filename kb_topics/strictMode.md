@@ -7,7 +7,7 @@
 ## KB Topic: Strict Mode
 
 ### Description
-Enabling "strict mode" means that any attributes in a [Component XML](componentXML.md#kb-topic-component-xml) file which are not declared in [Component Schema](../reference.md#class-componentschema) will cause warnings in the server-side log.
+Enabling "strict mode" means that any attributes in a [Component XML](componentXML.md#kb-topic-component-xml) file which are not declared in [Component Schema](componentSchema.md#kb-topic-component-schema) will cause warnings in the server-side log.
 
 Enabling strict mode can help catch typos in attribute names that may be difficult to spot. However, custom attributes are generally allowed in Component XML and it is not required to declare them in advance in Component Schema, so there are various ways to disable strict mode warnings at fine granularity.
 

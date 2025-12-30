@@ -20,38 +20,6 @@ Top coordinate in pixels relative to the [local coordinate system](DrawPane.md#c
 **Flags**: IRW
 
 ---
-## Attr: DrawImage.src
-
-### Description
-URL to the image file.
-
-**Flags**: IRW
-
----
-## Attr: DrawImage.title
-
-### Description
-Title (tooltip hover text) for this image.
-
-**Flags**: IR
-
----
-## Attr: DrawImage.height
-
-### Description
-Height in pixels relative to the [local coordinate system](DrawPane.md#class-drawpane).
-
-**Flags**: IRW
-
----
-## Attr: DrawImage.width
-
-### Description
-Width in pixels relative to the [local coordinate system](DrawPane.md#class-drawpane).
-
-**Flags**: IRW
-
----
 ## Attr: DrawImage.useMatrixFilter
 
 ### Description
@@ -74,10 +42,42 @@ When prohibited from using a matrix filter, DrawImage will ignore the shearing c
 **Flags**: IR
 
 ---
+## Attr: DrawImage.src
+
+### Description
+URL to the image file.
+
+**Flags**: IRW
+
+---
+## Attr: DrawImage.title
+
+### Description
+Title (tooltip hover text) for this image.
+
+**Flags**: IR
+
+---
 ## Attr: DrawImage.left
 
 ### Description
 Left coordinate in pixels relative to the [local coordinate system](DrawPane.md#class-drawpane).
+
+**Flags**: IRW
+
+---
+## Attr: DrawImage.height
+
+### Description
+Height in pixels relative to the [local coordinate system](DrawPane.md#class-drawpane).
+
+**Flags**: IRW
+
+---
+## Attr: DrawImage.width
+
+### Description
+Width in pixels relative to the [local coordinate system](DrawPane.md#class-drawpane).
 
 **Flags**: IRW
 
@@ -91,7 +91,7 @@ Change the URL of the image displayed.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| src | [URL](../reference_2.md#type-url) | false | — | new URL |
+| src | [URL](../reference.md#type-url) | false | — | new URL |
 
 ---
 ## Method: DrawImage.setRect
@@ -107,43 +107,6 @@ Updates the drawImage to match the specified coordinates and size in [local coor
 | top | [Integer](../reference_2.md#type-integer) | false | — | new top coordinate |
 | width | [Integer](../reference_2.md#type-integer) | false | — | new width |
 | height | [Integer](../reference_2.md#type-integer) | false | — | new height |
-
----
-## Method: DrawImage.setTop
-
-### Description
-Set the top coordinate of the drawImage.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| top | [Coordinate](../reference.md#type-coordinate) | false | — | new top coordinate |
-
----
-## Method: DrawImage.setHeight
-
-### Description
-Set the height of the drawImage.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| height | [Distance](../reference.md#type-distance) | false | — | new height |
-
----
-## Method: DrawImage.moveBy
-
-### Description
-Move the drawImage by the specified delta
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| dX | [Distance](../reference.md#type-distance) | false | — | number of pixels to move horizontally |
-| dY | [Distance](../reference.md#type-distance) | false | — | number of pixels to move vertically |
 
 ---
 ## Method: DrawImage.getBoundingBox
@@ -169,6 +132,18 @@ Move the drawImage to the specified position
 | top | [Integer](../reference_2.md#type-integer) | false | — | new top coordinate |
 
 ---
+## Method: DrawImage.setTop
+
+### Description
+Set the top coordinate of the drawImage.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| top | [Coordinate](../reference.md#type-coordinate) | false | — | new top coordinate |
+
+---
 ## Method: DrawImage.setLeft
 
 ### Description
@@ -179,6 +154,31 @@ Set the left coordinate of the drawImage.
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | left | [Coordinate](../reference.md#type-coordinate) | false | — | new left coordinate |
+
+---
+## Method: DrawImage.setHeight
+
+### Description
+Set the height of the drawImage.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| height | [Distance](../reference.md#type-distance) | false | — | new height |
+
+---
+## Method: DrawImage.moveBy
+
+### Description
+Move the drawImage by the specified delta
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| dX | [Distance](../reference.md#type-distance) | false | — | number of pixels to move horizontally |
+| dY | [Distance](../reference.md#type-distance) | false | — | number of pixels to move vertically |
 
 ---
 ## Method: DrawImage.setWidth

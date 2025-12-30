@@ -9,8 +9,6 @@
 ### Description
 Skinning (aka "theming" or "branding") is the process of modifying SmartClient's default look and feel to match the desired look and feel for your application. SmartClient supports an extremely powerful and simple skinning system that allows designers with a basic grasp of CSS and JSON to skin any SmartClient component.
 
-See the [Skin Editor overview](skinEditor.md#kb-topic-skin-editor) for information about the most modern approach to skinning a SmartClient application.
-
 #### Basics
 
 *   SmartClient components create their visual appearance by dynamically generating HTML, within the browser, using JavaScript.
@@ -19,19 +17,16 @@ See the [Skin Editor overview](skinEditor.md#kb-topic-skin-editor) for informati
 *   You can change the appearance of an individual SmartClient component by passing properties to [create()](../classes/Class.md#classmethod-classcreate), or you can skin all components of the same class at once, by using [addProperties()](../classes/Class.md#classmethod-classaddproperties) and [changeDefaults()](../classes/Class.md#classmethod-classchangedefaults) to change the defaults for the class.
 *   CSS is used to control details of appearance such as fonts, borders and background colors and gradients, but component properties are used to control layout and positioning of components. See [CSSStyleName](../reference.md#type-cssstylename) for more details about correct usage.
 *   A "skin" consists of:
-    *   `skin_styles.css` - a CSS stylesheet containing all CSS styles used by SmartClient components
-    *   `images/` - a directory tree of images organized by component
-    *   `load_skin.js` - a JavaScript file that loads the CSS stylesheet, applies the images and modifies any other component or framework default settings required for the skin
+    *   a single CSS stylesheet containing all CSS styles used by SmartClient components (`skin_styles.css`)
+    *   a single JavaScript file that sets component defaults (`load_skin.js`)
+    *   a directory tree of images organized by component
 *   The example skins that come with SmartClient are in `smartclientSDK/isomorphic/skins`. The standard directory layout for a skin is:
     ```
             skin_styles.css
             load_skin.js
             images/
-                Actions/
-                    add.png 
-                    ...
                 ListGrid/
-                    sort_ascending.png
+                    sort_ascending.gif
                     ...
                 Tab/
                 ... other directories containing
@@ -47,7 +42,7 @@ See the [Skin Editor overview](skinEditor.md#kb-topic-skin-editor) for informati
 SmartClient can make use of CSS3 features to render user interface component details such as rounded corners, gradients and drop-shadows. Prior to the wide adoption of CSS3 by browsers such UI details could only be achieved by writing out HTML structures including images.  
 Using images is a less efficient approach - it leads to a more complex DOM structure and increased server load to retrieve media.
 
-SmartClient's most recent builtin skins (the Flat series, comprising **Tahoe**, **Stratus**, **Twilight** and **Obsidian**), will always rely on CSS3 features for certain appearance details. If loaded in a browser with no CSS3 support (such as Internet Explorer 8), developers can expect to see some degradation in appearance (lack of certain drop-shadows, rounded edges becoming square, etc).
+The most modern SmartClient skins, **Tahoe**, **Obsidian** and **Stratus**, will always rely on CSS3 features for certain appearance details. If loaded in a browser with no CSS3 support (such as Internet Explorer 8), developers can expect to see some degredation in appearance (lack of certain drop-shadows, rounded edges becoming square, etc).
 
 Three of SmartClient's other most commonly used skins, **Enterprise**, **EnterpriseBlue** and **Graphite** will conditionally make use of CSS3 features. These skins have a "CSS3 mode" in which many images required by the skin are replaced with CSS3 settings that appear nearly identical to the image-based appearance.
 
@@ -70,23 +65,7 @@ Possible settings are:
 *   "on" :  
     CSS3 mode will be used for all browsers
 
-For more control than the above settings provide, you can create a custom skin based on one of the above Flat skins and modify load\_skin.js - whether CSS3 mode is used is controlled by a JavaScript variable `useCSS3` defined in this file.
-
-#### Changing Density
-
-SmartClient provides APIs that allow the general spaciousness of an application to be increased beyond the design of the loaded skin. You can see the feature in use in our [online showcase](https:\\www.smartclient.com\showcase), by loading a sample and picking options from the `Density` picker shown above it.
-
-The `Density` mechanism effectively zooms the application, by calling [Canvas.resizeFonts](../classes/Canvas.md#classmethod-canvasresizefonts) and [Canvas.resizeControls](../classes/Canvas.md#classmethod-canvasresizecontrols), APIs which uniformly alter the sizes of fonts in the skin's CSS-styles, and the heights of most builtin widgets, by the pixel amounts passed to them. These calls must be made after the skin is loaded, but before any components have been created.
-
-You can apply any amounts you wish, to get your desired look - the Densities available in the online Showcases are achieved with the following calls to `resizeFonts` and `resizeControls`:
-
-| Density | Settings |
-|---|---|
-| Dense | resizeFonts(0) & resizeControls(0) |
-| Compact | resizeFonts(1) & resizeControls(2) |
-| Medium | resizeFonts(2) & resizeControls(4) |
-| Expanded | resizeFonts(2) & resizeControls(6) |
-| Spacious | resizeFonts(3) & resizeControls(10) |
+For more control than the above settings provide, you can create a custom skin based on one of the above 3 skins and modify load\_skin.js - whether CSS3 mode is used is controlled by a JavaScript variable `useCSS3` defined in this file.
 
 #### Spriting
 
@@ -100,7 +79,7 @@ Spriting typically results in reduced load times and eliminates noticeable delay
 One consideration when using spriting is how to handle images being rendered at different sizes on the page. Simply increasing the size of an element using CSS to display a portion of a larger background image will not change the scale of that image - instead more of the image will be revealed to the user. This can result in visual glitches, for example, the user may be able to see other sprited elements from the larger background image.  
 If the "native" size of the image sprite is known as well as the desired rendered size scaling can be achieved. For SmartClient image attributes that support the special [sprited image URL](../reference.md#type-scspriteconfig) format, this can be specified, allowing the image to be rendered at various sizes.
 
-Our `Flat series` of skins (**Tahoe**, **Stratus**, **Twilight** and **Obsidian**) make use of the sprite-URL capability to ensure that sprited images appear correctly regardless of the size at which they are being drawn.  
+The **Tahoe**, **Obsidian** and **Stratus** skins make use of the sprite-URL capability to ensure that sprited images appear correctly regardless of the size at which they are being drawn.  
 The **Enterprise**, **EnterpriseBlue**, and **Graphite** skins also support spriting of user interface images, but do so via settings embedded in the css applied to certain elements instead of using the sprite-URL capability. As such if certain component metrics (such as the height of a component or padding) are changed, then the image sprites may no longer work. In this case, spriting can be disabled by setting the JavaScript global variable `isc_spriting` to "off" before any of the SmartClient libraries are loaded. For example:
 
 ```
@@ -114,8 +93,6 @@ Possible settings are:
 *   "off" :  
     Spriting will not be used
 
-**_Note - it is also possible to arrange arbitrary SVG graphics into a format which the framework can treat as a sprite_**, despite SVG not being images in the traditional sense. SVG graphics scale perfectly and, in the sprite format, can be re-used and re-colored at runtime without server trips, sizable DOM modifications or flickering. See the [SVG Symbols overview](svgSymbols.md#kb-topic-svg-symbols-overview) for more information.
-
 #### Modifying Skins
 #### Skin Editor
 To create new skins and easily make bulk changes to details like colors and fonts, see our [Skin Editor](skinEditor.md#kb-topic-skin-editor) tool, which can be accessed online, or locally in your environment if you have a [Pro or better](https://www.smartclient.com/product/) license.
@@ -123,7 +100,7 @@ To create new skins and easily make bulk changes to details like colors and font
 #### Manually
 To modify a skin, first create a copy of one of the skins that comes with the SmartClient SDK, then modify the copy. Full instructions are provided in Chapter 9 of the *QuickStart Guide*.
 
-For the most modern skins (**Tahoe**, **Stratus**, **Twilight** and **Obsidian**), the recommended approach is to use the [Skin Editor](skinEditor.md#kb-topic-skin-editor) tool, which provides UI for the majority of the skin CSS and takes advantage of the Sass templates provided with those skins. You can also manually affect the Sass templates - see the [Custom Sass Skinning](customSassSkins.md#kb-topic-customizing-sass-based-skins) discussion for more detail on leveraging that mechanism to customize a skin.
+For the most modern skins, **Tahoe**, **Obsidian** and **Stratus**, the recommended approach is to use the [Skin Editor](skinEditor.md#kb-topic-skin-editor) tool, which provides UI for the majority of the skin CSS and takes advantage of the Sass templates provided with those skins. You can also manually affect the Sass templates - see the [Custom Sass Skinning](customSassSkins.md#kb-topic-customizing-sass-based-skins) discussion for more detail on leveraging that mechanism to customize a skin.
 
 #### Locating Skinning Properties
 
@@ -161,7 +138,7 @@ Specific browsers offer alternate approaches to quickly discover the images or s
 
 Properties that refer to images by URL, such as [Img.src](../classes/Img.md#attr-imgsrc) and [Button.icon](../classes/Button.md#attr-buttonicon), are specially interpreted in SmartClient to allow for simpler and more uniform image URLs, and to allow applications to be restructured more easily.
 
-Unlike the URL used with an HTML `<IMG>` element, the image URL passed to a SmartClient component is not assumed to be relative to the current page. See [SCImgURL](../reference.md#type-scimgurl) for a full explanation of the default application image directory, and the meaning of the "\[SKIN\]" prefix.
+Unlike the URL used with an HTML `<IMG>` element, the image URL passed to a SmartClient component is not assumed to be relative to the current page. See [SCImgURL](../reference_2.md#type-scimgurl) for a full explanation of the default application image directory, and the meaning of the "\[SKIN\]" prefix.
 
 #### Specifying Image URLs
 

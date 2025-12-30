@@ -64,6 +64,18 @@ Shows (opens) a menu.
 | menu | [Menu](#type-menu)|[Integer](../reference_2.md#type-integer) | false | — | menu to show (may be specified as a menu object, or index of the menu from [this.menus](#attr-menubarmenus)). |
 
 ---
+## Method: MenuBar.setButtons
+
+### Description
+Invalid to call on Menubar, use [MenuBar.setMenus](#method-menubarsetmenus) instead.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| newButtons | [Array of Button Properties](#type-array-of-button-properties) | true | — | invalid; do not call |
+
+---
 ## Method: MenuBar.addMenus
 
 ### Description
@@ -87,17 +99,5 @@ Dynamically reset the set of menus displayed by this menu bar.
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | menus | [Array of Menu](#type-array-of-menu) | false | — | array of new menus for this menubar |
-
----
-## Method: MenuBar.setButtons
-
-### Description
-Invalid to call on Menubar, use [MenuBar.setMenus](#method-menubarsetmenus) instead.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| newButtons | [Array of Button Properties](#type-array-of-button-properties) | true | — | invalid; do not call |
 
 ---

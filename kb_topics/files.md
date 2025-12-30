@@ -9,10 +9,9 @@
 ### Description
 Referring to and loading other files.
 
-The two main URL settings relevant to file loading are:
-
-*   appDir (where application-specific files live)
-*   isomorphicDir (where system supplied files live)
+The two main URL settings relevant to file loading are:  
+\* appDir (where application-specific files live)  
+\* isomorphicDir (where system supplied files live)
 
 ### Related
 
@@ -35,7 +34,6 @@ The two main URL settings relevant to file loading are:
 - [Page.getSampleThumbnailDir](../classes/Page.md#classmethod-pagegetsamplethumbnaildir)
 - [Page.setSamplePhotoDir](../classes/Page.md#classmethod-pagesetsamplephotodir)
 - [Page.getSamplePhotoDir](../classes/Page.md#classmethod-pagegetsamplephotodir)
-- [Page.getIsomorphicDocsDir](../classes/Page.md#classmethod-pagegetisomorphicdocsdir)
 - [Page.getImgURL](../classes/Page.md#classmethod-pagegetimgurl)
 - [Page.getURL](../classes/Page.md#classmethod-pagegeturl)
 - [Page.loadStyleSheet](../classes/Page.md#classmethod-pageloadstylesheet)

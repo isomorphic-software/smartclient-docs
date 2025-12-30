@@ -27,7 +27,7 @@ The `clientOnly` property is specified to create a client-only DataSource, and t
    });
  
 ```
-If you have existing test data in XML (see [Database Configuration](dbConfigTool.md#kb-topic-database-configuration) for expected format) and your client-only DataSource is defined in a .jsp file, you can use the XML->JS translation engine to populate the DataSource with data from XML, like so:
+If you have existing test data in XML (see [Database Configuration](dbConfigTool.md#kb-topic-database-configuration-tools) for expected format) and your client-only DataSource is defined in a .jsp file, you can use the XML->JS translation engine to populate the DataSource with data from XML, like so:
 ```
    isc.DataSource.create({
      ID:"solutions",

@@ -11,7 +11,7 @@ Notify provides a means to display on-screen messages that are automatically dis
 
 One or more [actions](../reference.md#object-notifyaction) can be provided when [addMessage()](#classmethod-notifyaddmessage) is called to display a message. They will be rendered as links on which to click to execute the action.
 
-The behavior and appearance of messages are configured per [NotifyType](../reference_2.md#type-notifytype), which is simply a string that identifies that message group, similar to [log category](Class.md#method-classlogwarn). By calling [configureMessages()](#classmethod-notifyconfiguremessages) with the `NotifyType`, it can be assigned a [NotifySettings](../reference.md#object-notifysettings) configuration to control message animation, placement, and the the [Label](Label.md#class-label) used to render each message, allowing styling and autofit behavior to be configured.
+The behavior and appearance of messages are configured per [NotifyType](../reference.md#type-notifytype), which is simply a string that identifies that message group, similar to [log category](Class.md#method-classlogwarn). By calling [configureMessages()](#classmethod-notifyconfiguremessages) with the `NotifyType`, it can be assigned a [NotifySettings](../reference.md#object-notifysettings) configuration to control message animation, placement, and the the [Label](Label.md#class-label) used to render each message, allowing styling and autofit behavior to be configured.
 
 Messages of the same `NotifyType` may be stacked to provide a visible history, with a configurable stacking direction and maximum stacking depth. Details on how to configure messages are provided in the documentation for [NotifySettings](../reference.md#object-notifysettings).
 
@@ -43,23 +43,10 @@ In the linked sample, note how we take care to reuse the existing modal window, 
 - [isc.confirm](isc.md#staticmethod-iscconfirm)
 
 ---
-## ClassAttr: Notify.MESSAGE
-
-### Description
-Third-highest priority. Default priority for all [NotifyType](../reference_2.md#type-notifytype)s other than "error" and "warn".
-
-### See Also
-
-- [Notify.ERROR](#classattr-notifyerror)
-- [Notify.WARN](#classattr-notifywarn)
-
-**Flags**: R
-
----
 ## ClassAttr: Notify.WARN
 
 ### Description
-Second-highest priority. Default priority of [NotifyType](../reference_2.md#type-notifytype): "warn".
+Second-highest priority. Default priority of [NotifyType](../reference.md#type-notifytype): "warn".
 
 ### See Also
 
@@ -72,12 +59,25 @@ Second-highest priority. Default priority of [NotifyType](../reference_2.md#type
 ## ClassAttr: Notify.ERROR
 
 ### Description
-Highest priority. Default priority of [NotifyType](../reference_2.md#type-notifytype): "error".
+Highest priority. Default priority of [NotifyType](../reference.md#type-notifytype): "error".
 
 ### See Also
 
 - [Notify.WARN](#classattr-notifywarn)
 - [Notify.MESSAGE](#classattr-notifymessage)
+
+**Flags**: R
+
+---
+## ClassAttr: Notify.MESSAGE
+
+### Description
+Third-highest priority. Default priority for all [NotifyType](../reference.md#type-notifytype)s other than "error" and "warn".
+
+### See Also
+
+- [Notify.ERROR](#classattr-notifyerror)
+- [Notify.WARN](#classattr-notifywarn)
 
 **Flags**: R
 
@@ -89,7 +89,7 @@ Displays a new message, subject to the [stored configuration](#classmethod-notif
 
 Note that an empty string may be passed for `contents` if `actions` have been provided, so you may have the message consist only of your specified actions.
 
-Most users should do all configuration up front via a call to [Notify.configureMessages](#classmethod-notifyconfiguremessages). The `settings` argument in this method is provided to allow adjustment of properties that affect only one message, such as [autoFitWidth](NotifySettings.md#attr-notifysettingsautofitwidth), [styleName](NotifySettings.md#attr-notifysettingsstylename), or [labelProperties](NotifySettings.md#attr-notifysettingslabelproperties). Making changes to [stacking](../reference_2.md#type-multimessagemode)-related properties via this argument isn't supported, unless specifically documented on the property.
+Most users should do all configuration up front via a call to [Notify.configureMessages](#classmethod-notifyconfiguremessages). The `settings` argument in this method is provided to allow adjustment of properties that affect only one message, such as [autoFitWidth](NotifySettings.md#attr-notifysettingsautofitwidth), [styleName](NotifySettings.md#attr-notifysettingsstylename), or [labelProperties](NotifySettings.md#attr-notifysettingslabelproperties). Making changes to [stacking](../reference.md#type-multimessagemode)-related properties via this argument isn't supported, unless specifically documented on the property.
 
 ### Parameters
 
@@ -97,7 +97,7 @@ Most users should do all configuration up front via a call to [Notify.configureM
 |------|------|----------|---------|-------------|
 | contents | [HTMLString](../reference.md#type-htmlstring) | false | — | message to be displayed |
 | actions | [Array of NotifyAction](#type-array-of-notifyaction) | true | — | actions (if any) for this message |
-| notifyType | [NotifyType](../reference_2.md#type-notifytype) | true | — | category of message; default "message" |
+| notifyType | [NotifyType](../reference.md#type-notifytype) | true | — | category of message; default "message" |
 | settings | [NotifySettings](#type-notifysettings) | true | — | display and behavior settings for this message that override the [configured](#classmethod-notifyconfiguremessages) settings for the `notifyType` |
 
 ### Returns
@@ -109,44 +109,6 @@ Most users should do all configuration up front via a call to [Notify.configureM
 - [isc.say](isc.md#staticmethod-iscsay)
 - [isc.confirm](isc.md#staticmethod-iscconfirm)
 - [isc.notify](isc.md#staticmethod-iscnotify)
-
----
-## ClassMethod: Notify.setMessageContents
-
-### Description
-Updates the contents of the message from what was passed originally to [Notify.addMessage](#classmethod-notifyaddmessage), while preserving any existing [actions](../reference.md#object-notifyaction).
-
-The purpose of this method is to support messages that contain timer countdowns or other data that perhaps need refreshing during display. If you find yourself replacing the entire content with something new, you should probably just add it as a new message.
-
-Note that this method has minimal animation support. The change in message content and corresponding resizing are instant, but the repositioning of the message or stack (if stacked) to keep your requested [alignment](NotifySettings.md#attr-notifysettingsposition) is controlled by [NotifySettings.repositionMethod](NotifySettings.md#attr-notifysettingsrepositionmethod), allowing slide animation. However, that setting is ignored and the repositioning is instant if you've chosen [viewport alignment](NotifySettings.md#attr-notifysettingspositioncanvas) to a border or corner along the [bottom or right](NotifySettings.md#attr-notifysettingsposition) viewport edge, or if an animation is already in progress, in which case the instant repositioning will happen after it completes.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| messageID | [MessageID](#type-messageid) | false | — | message identifier from [Notify.addMessage](#classmethod-notifyaddmessage) |
-| contents | [HTMLString](../reference.md#type-htmlstring) | false | — | updated message |
-
-**Flags**: A
-
----
-## ClassMethod: Notify.configureMessages
-
-### Description
-Sets the default [NotifySettings](../reference.md#object-notifysettings) for the specified [NotifyType](../reference_2.md#type-notifytype). This may be overridden by passing settings to [Notify.addMessage](#classmethod-notifyaddmessage) when the message is shown, but changing [stacking](../reference_2.md#type-multimessagemode)-related properties via [Notify.addMessage](#classmethod-notifyaddmessage) isn't supported,
-
-By default, the [NotifyType](../reference_2.md#type-notifytype)s "message", "warn", and "error" are predefined, each with their own [NotifySettings](../reference.md#object-notifysettings) with different [styleName](NotifySettings.md#attr-notifysettingsstylename)s. When configuring a new (non-predefined) NotifyType with this method, any [NotifySettings](../reference.md#object-notifysettings) left unset will default to those for NotifyType "message".
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| notifyType | [NotifyType](../reference_2.md#type-notifytype) | false | — | category of message; null defaults to "message" |
-| settings | [NotifySettings](#type-notifysettings) | false | — | settings to store for the `notifyType` |
-
-### See Also
-
-- [Notify.configureDefaultSettings](#classmethod-notifyconfiguredefaultsettings)
 
 ---
 ## ClassMethod: Notify.setMessageActions
@@ -187,7 +149,7 @@ Can the message corresponding to the `messageID` be dismissed? Returns false if 
 ## ClassMethod: Notify.configureDefaultSettings
 
 ### Description
-Changes the default settings that are applied when you create a new [NotifyType](../reference_2.md#type-notifytype) with [Notify.configureMessages](#classmethod-notifyconfiguremessages). If you want to change the defaults for the built-in NotifyTypes "message", "warn", and "error", with this method, it must be called before the first call to [Notify.configureMessages](#classmethod-notifyconfiguremessages) or [Notify.addMessage](#classmethod-notifyaddmessage). Once a NotifyType has been created, you must use [Notify.configureMessages](#classmethod-notifyconfiguremessages) to change its settings.
+Changes the default settings that are applied when you create a new [NotifyType](../reference.md#type-notifytype) with [Notify.configureMessages](#classmethod-notifyconfiguremessages). If you want to change the defaults for the built-in NotifyTypes "message", "warn", and "error", with this method, it must be called before the first call to [Notify.configureMessages](#classmethod-notifyconfiguremessages) or [Notify.addMessage](#classmethod-notifyaddmessage). Once a NotifyType has been created, you must use [Notify.configureMessages](#classmethod-notifyconfiguremessages) to change its settings.
 
 Note that for defaults that depend on priority (and thus differ between the built-in NotifyTypes), this method only sets the defaults for the "message" NotifyType.
 
@@ -202,16 +164,54 @@ Note that for defaults that depend on priority (and thus differ between the buil
 - [Notify.configureMessages](#classmethod-notifyconfiguremessages)
 
 ---
-## ClassMethod: Notify.dismissMessage
+## ClassMethod: Notify.setMessageContents
 
 ### Description
-Dismisses one or more messages currently being shown, subject to the existing settings for their [NotifyType](../reference_2.md#type-notifytype). You may either pass the opaque message identifier returned from the call to [Notify.addMessage](#classmethod-notifyaddmessage) to dismiss a single message, or a `NotifyType` to dismiss all such messages.
+Updates the contents of the message from what was passed originally to [Notify.addMessage](#classmethod-notifyaddmessage), while preserving any existing [actions](../reference.md#object-notifyaction).
+
+The purpose of this method is to support messages that contain timer countdowns or other data that perhaps need refreshing during display. If you find yourself replacing the entire content with something new, you should probably just add it as a new message.
+
+Note that this method has minimal animation support. The change in message content and corresponding resizing are instant, but the repositioning of the message or stack (if stacked) to keep your requested [alignment](NotifySettings.md#attr-notifysettingsposition) is controlled by [NotifySettings.repositionMethod](NotifySettings.md#attr-notifysettingsrepositionmethod), allowing slide animation. However, that setting is ignored and the repositioning is instant if you've chosen [viewport alignment](NotifySettings.md#attr-notifysettingspositioncanvas) to a border or corner along the [bottom or right](NotifySettings.md#attr-notifysettingsposition) viewport edge, or if an animation is already in progress, in which case the instant repositioning will happen after it completes.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| messageID | [MessageID](#type-messageid)|[NotifyType](../reference_2.md#type-notifytype) | false | — | message identifier or category to dismiss |
+| messageID | [MessageID](#type-messageid) | false | — | message identifier from [Notify.addMessage](#classmethod-notifyaddmessage) |
+| contents | [HTMLString](../reference.md#type-htmlstring) | false | — | updated message |
+
+**Flags**: A
+
+---
+## ClassMethod: Notify.configureMessages
+
+### Description
+Sets the default [NotifySettings](../reference.md#object-notifysettings) for the specified [NotifyType](../reference.md#type-notifytype). This may be overridden by passing settings to [Notify.addMessage](#classmethod-notifyaddmessage) when the message is shown, but changing [stacking](../reference.md#type-multimessagemode)-related properties via [Notify.addMessage](#classmethod-notifyaddmessage) isn't supported,
+
+By default, the [NotifyType](../reference.md#type-notifytype)s "message", "warn", and "error" are predefined, each with their own [NotifySettings](../reference.md#object-notifysettings) with different [styleName](NotifySettings.md#attr-notifysettingsstylename)s. When configuring a new (non-predefined) NotifyType with this method, any [NotifySettings](../reference.md#object-notifysettings) left unset will default to those for NotifyType "message".
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| notifyType | [NotifyType](../reference.md#type-notifytype) | false | — | category of message; null defaults to "message" |
+| settings | [NotifySettings](#type-notifysettings) | false | — | settings to store for the `notifyType` |
+
+### See Also
+
+- [Notify.configureDefaultSettings](#classmethod-notifyconfiguredefaultsettings)
+
+---
+## ClassMethod: Notify.dismissMessage
+
+### Description
+Dismisses one or more messages currently being shown, subject to the existing settings for their [NotifyType](../reference.md#type-notifytype). You may either pass the opaque message identifier returned from the call to [Notify.addMessage](#classmethod-notifyaddmessage) to dismiss a single message, or a `NotifyType` to dismiss all such messages.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| messageID | [MessageID](#type-messageid)|[NotifyType](../reference.md#type-notifytype) | false | — | message identifier or category to dismiss |
 
 ### See Also
 

@@ -19,10 +19,7 @@ SmartClient client-side resources - the JavaScript runtime, skins, and schema - 
 
 ## Installation
 
-**When installing a module in npm v7, console output is suppressed, and interactive output is not allowed. So by default, we now install without prompting wherever a default response is available. Please be patient as it may take a minute or more, depending on your connection and hardware, to finish, with no console updates to indicate progress.**
-
 To install one of these packages, use:
-
 ```
    npm install <package name> [flags]
 ```
@@ -40,7 +37,7 @@ where the flags are as follows:
 | password | string | The password for your SmartClient account. Required for the Pro, Power, and Enterprise packages, and available subject to your licensing. |
 | analytics | true \| false | Whether to install the optional [Analytics Module](loadingOptionalModules.md#kb-topic-loading-optional-modules). Only available for the Power, and Enterprise packages, subject to your licensing. |
 | rtm | true \| false | Whether to install the optional [RealtimeMessaging Module](loadingOptionalModules.md#kb-topic-loading-optional-modules). Only available for the for the Power, and Enterprise packages, subject to your licensing. |
-| prompt | true \| false | Wait for input instead of assuming the default response to all queries during install; default is to not prompt to support newer npm releases. |
+| yes | true \| false | Assume answer 'yes' to prompts with default. This allows the install or update process to complete without interaction, to enable complete automation. |
 
 After installation, command-line configuration is persisted, so command-line arguments only need to be supplied when updating if the desired configuration has changed. If a username and password aren't supplied via the above options, you will be prompted to enter them by the update script. A password typed in response to the script won't be persisted to your configuration, so you may choose to always enter it interactively for security.
 
@@ -51,19 +48,6 @@ Since 'npm update' no longer runs a package's update script if the version hasn'
    npm run update [flags]
 ```
 to update your installation to the latest runtimes. The supported flags are the same as during installation.
-
-## Using npm v7
-
-The install script for a module is no longer allowed to write output in npm v7, which means that we can no longer interactively query for decisions or show zip download progress. So, to still have a complete install process, the module now proceeds automatically, without waiting, wherever a default response is available for what was formerly an interactive query. Please be patient as the zip download and installation of framework, skins, and other assets may take more than a minute, during which no additional output indicating progress will be printed.
-
-You have a few alternatives to this default behavior:
-
-*   You can pass "--prompt" to "npm install ...". Due to npm v7 rules, installing the module this way will skip the download and installation of the SmartClient framework and skins, and the isc-config.json configuration file won't be created. So afterwards, to install the missing assets you should navigate down to the module directory (under node\_modules) and manually execute "npm run update \[flags\]", passing your install flags.
-*   In addition to "--prompt", you can also pass "--foreground-scripts" as a flag to the install command to allow output as in npm v6, but in npm v7 this seems to trigger other timing logs that obfuscate what we print. Hopefully, support for the "--foreground-scripts" flag will improve in future npm releases.
-
-Note that since there are no default responses for the "username" and "password" flags, if they are required, installation of assets will be skipped (as in the first bullet above) unless you provide bindings on the command line initially for "npm install ...".
-
-"Uninstall" is no longer a lifecycle event in npm v7, so a module's uninstall script declared in package.json no longer gets called during uninstallation. The recommended workaround is to run "npm run uninstall" from the module directory (under node\_modules) before uninstalling.
 
 ## Examples
 
@@ -82,7 +66,7 @@ Update to SmartClient 12.1 branch, installing all skins:
 
 ## Importing
 
-If you are building a new Angular, React or similar application, and plan to use SmartClient pervasively throughout, you can just add an import declaration to your `main.ts` or `App.tsx` to make the framework available. However, if you are adding SmartClient to an existing application, and you only plan to use SmartClient for specific components like grids, or for [Reify screens](reifyForDevelopers.md#kb-topic-reify-for-developers), consider using [background download](backgroundDownload.md#kb-topic-background-download) instead of importing SmartClient directly (importing causes SmartClient to load immediately on all pages).
+If you are building a new Angular, React or similar application, and plan to use SmartClient pervasively throughout, you can just add an import declaration to your `main.ts` or `App.tsx` to make the framework available. However, if you are adding SmartClient to an existing application, and you only plan to use SmartClient for specific components like grids, or for [Reify screens](reifyForDevelopers.md#kb-topic-reify-for-developers), consider using [background download](#kb-topic-backgrounddownload) instead of importing SmartClient directly (importing causes SmartClient to load immediately on all pages).
 
 To directly import the release or debug framework, respectively, in your application, you can write:
 
@@ -138,6 +122,6 @@ SmartClient's TypeScript support is intended for IDE auto-completion and inline 
 
 ### See Also
 
-- [iscInstall](iscInstall.md#kb-topic-installing-the-smartclient-runtime)
+- [iscInstall](iscInstall.md#kb-topic-deploying-smartclient)
 
 ---

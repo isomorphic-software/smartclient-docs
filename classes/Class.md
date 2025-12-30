@@ -54,10 +54,26 @@ If left unspecified, the Framework applies rules to determine which component to
 **Flags**: IRA
 
 ---
+## Attr: Class.creator
+
+### Description
+For an [AutoChild](../kb_topics/autoChildren.md#kb-topic-autochildren), a read-only reference to the component on which [Class.createAutoChild](#method-classcreateautochild) or [Class.addAutoChild](#method-classaddautochild) was called to create it. Useful for authoring of event handlers (eg click:"this.creator.doSomething()")
+
+### Groups
+
+- autoChildren
+
+### See Also
+
+- [Class.autoCreator](#attr-classautocreator)
+
+**Flags**: R
+
+---
 ## Attr: Class.dynamicProperties
 
 ### Description
-Object mapping dynamic property names to the source - a [DataPath](../reference_2.md#type-datapath), [UserSummary](UserSummary.md#attr-usersummarytext) with [rule context](#attr-classrulescope), [UserFormula](UserFormula.md#attr-userformulatext) with rule context, [AdvancedCriteria](../reference.md#object-advancedcriteria) or a conditional set of the above (except trueWhen). This is a declarative alternative to calling [Class.addDynamicProperty](#method-classadddynamicproperty) for each property.
+Object mapping dynamic property names to the source - a `DataPath`, `UserSummary` or `UserFormula`. This is a declarative alternative to calling [Class.addDynamicProperty](#method-classadddynamicproperty) for each property.
 
 See [Class.addDynamicProperty](#method-classadddynamicproperty) for details on using dynamic properties.
 
@@ -65,20 +81,9 @@ In JavaScript dynamicProperties can be declaratively initialized as follows:
 
 ```
  dynamicProperties: {
-     propName1: "a/b/c",
-     propName2: { formula: .. formula definition .. },
-     propName3: { template: .. template definition .. },
-     propName4: { operator: "and",
-                  criteria: [
-                      { fieldName: "a/b/c", operator:"greaterOrEqual", value:"value1" },
-                      { fieldName: "a/b/c", operator:"lessOrEqual", value:"value2" }
-                  ]
-                }
-     propName5: { valueFrom: [
-                      { formula: "year(Order.orderData)", criteria: { ... } },
-                      { template: "2010 & earlier" }
-                  ]
-                }    
+     propName1 : "a/b/c",
+     propName2 : { formula: .. formula definition .. }
+     propName3 : { textFormula: .. summary definition .. }
  }
  
 ```
@@ -88,25 +93,15 @@ In ComponentXML dynamicProperties can be intialized as:
 ```
  <dynamicProperties>
      <property name="propName" dataPath="a/b/c"/>
-     <property name="propName2" formula="..."/>
-     <property name="propName3" template="..."/>
-     <property name="propName4">
-         <trueWhen>
-             <criteria operator="and">
-                 <criteria fieldName="a/b/c" operator="greaterOrEqual" value="value1"/>
-                 <criteria fieldName="a/b/c" operator="lessOrEqual" value="value2"/>
-             </criteria>
-         </trueWhen>
+     <property name="propName2">
+         <formula>
+             <UserFormula ... >
+         </formula>
      </property>
-     <property name="propName5">
-         <valueFrom>
-             <case formula="year(Order.orderDate)">
-                 <criteria fieldName="Order.orderDate" operator="greaterThan">
-                     <value xsi:type="xsd:date">2010-12-31</value>
-                 </criteria>
-             </case>
-             <case template="2010 & earlier">
-         </valueFrom>
+     <property name="propName3">
+         <textFormula>
+             <UserSummary ... >
+         </textFormula>
      </property>
  </dynamicProperties>
  
@@ -114,7 +109,6 @@ In ComponentXML dynamicProperties can be intialized as:
 
 ### See Also
 
-- [Canvas.dataPath](Canvas.md#attr-canvasdatapath)
 - [Class.addDynamicProperty](#method-classadddynamicproperty)
 
 **Flags**: IR
@@ -128,23 +122,6 @@ In ComponentXML dynamicProperties can be intialized as:
 ### See Also
 
 - [Canvas.ruleScope](Canvas.md#attr-canvasrulescope)
-
-**Flags**: IR
-
----
-## Attr: Class.ID
-
-### Description
-Global identifier for referring to a Class instance in JavaScript. If you specify this property at initialization, the instance will be available as a global variable via the ID.
-
-Not all Class subclasses support this property. The following commonly-used subclasses support global IDs:
-
-*   [Canvas](Canvas.md#class-canvas) and all visual widget subclasses
-*   [DataSource](DataSource.md#class-datasource)
-*   [Tree](Tree.md#class-tree)
-*   [ValuesManager](ValuesManager.md#class-valuesmanager)
-*   [ResultSet](ResultSet.md#class-resultset)
-*   [ResultTree](ResultTree.md#class-resulttree)
 
 **Flags**: IR
 
@@ -168,44 +145,58 @@ Regardless of the setting for `addPropertiesOnCreate`, all arguments passed to [
 **Flags**: RA
 
 ---
-## Attr: Class.unnamedFieldTitle
+## ClassMethod: Class.toString
 
 ### Description
-Substitute title to use for a title-less, unnamed field.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
+The default toString() for a ClassObject reports that you have a ClassObject and what class it is.
 
 ---
-## Attr: Class.creator
+## ClassMethod: Class.create
 
 ### Description
-For an [AutoChild](../kb_topics/autoChildren.md#kb-topic-autochildren), a read-only reference to the component on which [Class.createAutoChild](#method-classcreateautochild) or [Class.addAutoChild](#method-classaddautochild) was called to create it. Useful for authoring of event handlers (eg click:"this.creator.doSomething()")
+Create an instance of this class.
 
-### Groups
+All arguments passed to this method are passed on to the [Class.init](#method-classinit) instance method. Unless [Class.addPropertiesOnCreate](#attr-classaddpropertiesoncreate) is set to `false`, all arguments passed to this method must be Objects and all properties on those objects will be copied to the newly created instance before [Class.init](#method-classinit) is called. If there are overlapping properties in the passed arguments, the last wins.
 
-- autoChildren
+Any return value from [Class.init](#method-classinit) is thrown away.
 
-### See Also
+Note: Generally, you would not override this method. If you want to specify a constructor for your class, provide an override for [Class.init](#method-classinit) for generic classes or [Canvas.initWidget](Canvas.md#method-canvasinitwidget) for any subclasses of UI components (i.e. descendants of [Canvas](Canvas.md#class-canvas)).
 
-- [Class.autoCreator](#attr-classautocreator)
+### Parameters
 
-**Flags**: R
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| arguments 0-N | [Any](#type-any) | true | — | Any arguments passed will be passed along to the init() routine of the instance. Unless [Class.addPropertiesOnCreate](#attr-classaddpropertiesoncreate) is set to false, any arguments passed to this method must be of type Object. |
+
+### Returns
+
+`[Object](../reference_2.md#type-object)` — New instance of this class, whose init() routine has already been called
 
 ---
-## Attr: Class.unknownFieldTitle
+## ClassMethod: Class.logIsInfoEnabled
 
 ### Description
-Substitute title to use for an unknown field.
+Check whether a message logged at "info" priority would be visible in the log.
 
-### Groups
+As with logDebug, category is defaulted to the current className. Use this method to avoid putting together expensive log messages if they will never appear in the log.
 
-- i18nMessages
+### Parameters
 
-**Flags**: IRW
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| category | [String](#type-string) | true | — | category to log in |
+
+---
+## ClassMethod: Class.setProperties
+
+### Description
+Apply a set of properties to a class object, calling the appropriate setter class methods if any are found.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| arguments 0-N | [Object](../reference_2.md#type-object) | true | — | objects with properties to add (think named parameters). all the properties of each argument will be applied one after another so later properties will override |
 
 ---
 ## ClassMethod: Class.changeDefaults
@@ -261,9 +252,35 @@ See also the [AutoChild](../reference.md#type-autochild) system for information 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | defaultsName | [String](#type-string) | false | — | name of the property to change |
-| newDefaults | [Object](../reference.md#type-object) | false | — | overrides for defaults |
+| newDefaults | [Object](../reference_2.md#type-object) | false | — | overrides for defaults |
 
 **Flags**: A
+
+---
+## ClassMethod: Class.registerStringMethods
+
+### Description
+Register a method, or set of methods, that can be provided to instances of this class as Strings (containing a JavaScript expression) and will be automatically converted into functions.
+
+For example:
+
+```
+  isc.MyClass.registerStringMethods({
+      myStringMethod: "arg1, arg2"
+  });
+  
+```
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| methodName | [Object](../reference_2.md#type-object) | false | — | If this is a string, name of the property to register If this is an object, assume passing in a set of name/value pairs to register |
+| argumentString | [String](#type-string) | false | — | named arguments for the property in a comma separated string (not used if methodName is an object) |
+
+### See Also
+
+- [stringMethods](../reference.md#kb-topic-string-methods-overview)
 
 ---
 ## ClassMethod: Class.fireCallback
@@ -278,11 +295,28 @@ Fire some arbitrary action specified as a [Callback](../reference.md#type-callba
 | callback | [Callback](../reference.md#type-callback) | false | — | Action to fire. |
 | argNames | [String](#type-string) | true | — | Comma separated string of variable names. If the callback passed in was a string of script, any arguments passed to the callback will be available as local variables with these names. |
 | args | [Array](#type-array) | true | — | Array of arguments to pass to the method. Note that the number of arguments should match the number of argNames. |
-| target | [Object](../reference.md#type-object) | true | — | If specified the callback will be evaluated in the scope of this object - the `this` keyword will be a pointer to this target when the callback is fired. |
+| target | [Object](../reference_2.md#type-object) | true | — | If specified the callback will be evaluated in the scope of this object - the `this` keyword will be a pointer to this target when the callback is fired. |
 
 ### Returns
 
 `[Any](#type-any)` — returns the value returned by the callback method passed in.
+
+---
+## ClassMethod: Class.clearLogPriority
+
+### Description
+Clear this object's priority setting for a particular category, so that the category's effective priority returns to the specified priority for this category at the Log level (or `Log.defaultPriority` if not set).  
+To clear the Page-level priority setting for this log category use `isc.Log.clearPriority()` instead.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| category | [String](#type-string) | false | — | Category name. If not specified, all logging on this object will revert to default priority settings. |
+
+### See Also
+
+- [Log.clearPriority](Log.md#classmethod-logclearpriority)
 
 ---
 ## ClassMethod: Class.modifyFrameworkDone
@@ -325,17 +359,75 @@ Functionally equivalent to [Class.addProperties](#method-classaddproperties), wh
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| arguments 0-N | [Object](../reference.md#type-object) | true | — | objects with methods to add (think named parameters). all the methods of each argument will be applied as instance-level methods. |
+| arguments 0-N | [Object](../reference_2.md#type-object) | true | — | objects with methods to add (think named parameters). all the methods of each argument will be applied as instance-level methods. |
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — the class after methods have been added to it
+`[Object](../reference_2.md#type-object)` — the class after methods have been added to it
+
+---
+## ClassMethod: Class.addProperties
+
+### Description
+Add default properties and methods to all instances of this class.  
+  
+These properties can then be accessed as `myInstance.property`, and methods can be called via `myInstance.methodName()`
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| arguments 0-N | [Object](../reference_2.md#type-object) | true | — | objects with properties to add (think named parameters). all the properties of each argument will be applied |
+
+### Returns
+
+`[Object](../reference_2.md#type-object)` — the class after properties have been added to it
+
+### See Also
+
+- [Class.addProperties](#method-classaddproperties)
+- [isc.addProperties](isc.md#staticmethod-iscaddproperties)
+
+---
+## ClassMethod: Class.isMethodSupported
+
+### Description
+Returns true if the method is supported by this class, meaning that it is not null and was not replaced by [Class.markUnsupportedMethods](#classmethod-classmarkunsupportedmethods).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| methodName | [Identifier](../reference.md#type-identifier) | false | — | the name of a method to test. |
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — true if the method is not null and is not an unsupported method; false otherwise.
+
+**Flags**: A
 
 ---
 ## ClassMethod: Class.logWarn
 
 ### Description
 Log a message at "warn" priority
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| message | [String](#type-string) | false | — | message to log |
+| category | [String](#type-string) | true | — | category to log in |
+
+### See Also
+
+- [Log.logDebug](Log.md#classmethod-loglogdebug)
+
+---
+## ClassMethod: Class.logInfo
+
+### Description
+Log a message at "info" priority
 
 ### Parameters
 
@@ -384,390 +476,6 @@ Note the `arguments` object is required in most cases for this method to functio
 ### Groups
 
 - debug
-
----
-## ClassMethod: Class.registerTemplates
-
-### Description
-Registers a set of named template functions under a given template type (for example, "default" or "email").
-
-Templates are stored in the class object and prototype inheritance is maintained along the class hierarchy. Subclasses can override templates without mutating their superclass, add new ones, and rely on late binding so templates can be defined at any point.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| templates | [Object](../reference.md#type-object) | false | — | Object mapping template names to template functions. |
-| type | [String](#type-string) | true | — | The namespace type for the templates. Defaults to "default". |
-
-### Groups
-
-- stringTemplateFunctions
-
-### See Also
-
-- [stringTemplateFunctions](../kb_topics/stringTemplateFunctions.md#kb-topic-string-template-functions)
-
----
-## ClassMethod: Class.setDefaultLogPriority
-
-### Description
-Set the default priority of logging for messages logged on this Class or Instance object. All categories for which there is no explicit, instance level logging priority set will log at this level on this object.  
-To set the default visible log priority across the entire page, use `isc.Log.setDefaultPriority()` instead.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| category | [String](#type-string) | false | — | Category for which the log priority will be updated. If not all logs on this canvas will be logged at the priority passed in. |
-| priority | [LogPriority](../reference.md#type-logpriority) | false | — | priority level |
-
-### See Also
-
-- [Log.setPriority](Log.md#classmethod-logsetpriority)
-
----
-## ClassMethod: Class.echoLeaf
-
-### Description
-Return a very short (generally less than 40 characters) string representation of any object, suitable for viewing by a developer for debugging purposes. This function is available as a static on every ISC Class and as an instance method on every instance of an ISC Class.  
-General best practice is to call the method as "this.echoLeaf" whenever "this" is an instance, or call the static classMethod on the [Log](Log.md#class-log) class otherwise.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| obj | [Any](#type-any) | false | — | object to echo |
-
-### Returns
-
-`[String](#type-string)` — a short string representation of the object
-
-### Groups
-
-- debug
-
-### See Also
-
-- [Class.echo](#method-classecho)
-
----
-## ClassMethod: Class.getInstanceProperty
-
-### Description
-Gets a named property from the instance defaults for this object.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| property | [String](#type-string) | false | — | name of the property to return |
-
-### Returns
-
-`[Any](#type-any)` — the value of the property from instance defaults
-
----
-## ClassMethod: Class.logIsWarnEnabled
-
-### Description
-Check whether a message logged at "warn" priority would be visible in the log.
-
-As with logDebug, category is defaulted to the current className. Use this method to avoid putting together expensive log messages if they will never appear in the log.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| category | [String](#type-string) | true | — | category to log in |
-
----
-## ClassMethod: Class.addPropertyList
-
-### Description
-Add default properties to all instances of this class
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| list | [Array of Object](#type-array-of-object)[] | false | — | array of objects with properties to add |
-
-### Returns
-
-`[Object](../reference.md#type-object)` — the class after properties have been added to it
-
----
-## ClassMethod: Class.logError
-
-### Description
-Log a message at "error" priority
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| message | [String](#type-string) | false | — | message to log |
-| category | [String](#type-string) | true | — | category to log in |
-
-### See Also
-
-- [Log.logDebug](Log.md#classmethod-loglogdebug)
-
----
-## ClassMethod: Class.markAsFrameworkClass
-
-### Description
-Mark this class as a framework class (member of the SmartClient framework). Sets [Class.isFrameworkClass](#classattr-classisframeworkclass). May be used in debugging and by the AutoTest subsystem
-
-### Groups
-
-- autoTest
-
----
-## ClassMethod: Class.render
-
-### Description
-Renders a template by name from the "default" template namespace type.
-
-Shared template utilities (`sc` and `json`) are automatically initialized and passed in. The template executes with `this` bound to the class object.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| templateName | [String](#type-string) | false | — | The name of the template to render, from the "default" namespace type. |
-| state | [Object](../reference.md#type-object) | false | — | Input state passed to the template function. |
-
-### Returns
-
-`[String](#type-string)` — Rendered string output, or an empty string if the template function was not found, or an exception occurred during execution of the template function.
-
-### Groups
-
-- stringTemplateFunctions
-
-### See Also
-
-- [stringTemplateFunctions](../kb_topics/stringTemplateFunctions.md#kb-topic-string-template-functions)
-
----
-## ClassMethod: Class.evaluate
-
-### Description
-Evaluate a string of script and return the result.
-
-This method is a wrapper around the native javascript method `eval()`. It papers over some native issues to ensure evaluation of script behaves consistently across browsers
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| expression | [String](#type-string) | false | — | the expression to be evaluated |
-| evalArgs | [Object](../reference.md#type-object) | false | — | Optional mapping of argument names to values - each key will be available as a local variable when the script is executed. |
-
-### Returns
-
-`[Any](#type-any)` — the result of the eval
-
----
-## ClassMethod: Class.getSuperClass
-
-### Description
-Gets a pointer to the superClass' Class object.
-
-### Returns
-
-`[Class](#type-class)` — Class object for superclass.
-
----
-## ClassMethod: Class.setInstanceProperty
-
-### Description
-Sets a named property from the instance defaults for this object.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| property | [String](#type-string) | false | — | name of the property to return |
-| value | [Any](#type-any) | false | — | value to set to |
-
----
-## ClassMethod: Class.isA
-
-### Description
-Returns whether this class object is the provided class or is a subclass of the provided class, or implements the provided interface.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| className | [String](#type-string) | false | — | Class name to test against |
-
-### Returns
-
-`[boolean](../reference.md#type-boolean)` — true == this Class is a subclass of the provided classname
-
----
-## ClassMethod: Class.toString
-
-### Description
-The default toString() for a ClassObject reports that you have a ClassObject and what class it is.
-
----
-## ClassMethod: Class.create
-
-### Description
-Create an instance of this class. For example:
-```
- var myInstance = MyClass.create();
- 
-```
-
-All arguments passed to this method are passed on to the [Class.init](#method-classinit) instance method. Unless [Class.addPropertiesOnCreate](#attr-classaddpropertiesoncreate) is set to `false`, all arguments passed to this method must be Objects and all properties on those objects will be copied to the newly created instance before [Class.init](#method-classinit) is called. If there are overlapping properties in the passed arguments, the last wins.
-
-Any return value from [Class.init](#method-classinit) is thrown away.
-
-Note: Generally, you would not override this method. If you want to specify a constructor for your class, provide an override for [Class.init](#method-classinit) for generic classes or [Canvas.initWidget](Canvas.md#method-canvasinitwidget) for any subclasses of UI components (i.e. descendants of [Canvas](Canvas.md#class-canvas)).
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| arguments 0-N | [Any](#type-any) | true | — | Any arguments passed will be passed along to the init() routine of the instance. Unless [Class.addPropertiesOnCreate](#attr-classaddpropertiesoncreate) is set to false, any arguments passed to this method must be of type Object. |
-
-### Returns
-
-`[Object](../reference.md#type-object)` — New instance of this class, whose init() routine has already been called
-
----
-## ClassMethod: Class.logIsInfoEnabled
-
-### Description
-Check whether a message logged at "info" priority would be visible in the log.
-
-As with logDebug, category is defaulted to the current className. Use this method to avoid putting together expensive log messages if they will never appear in the log.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| category | [String](#type-string) | true | — | category to log in |
-
----
-## ClassMethod: Class.setProperties
-
-### Description
-Apply a set of properties to a class object, calling the appropriate setter class methods if any are found.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| arguments 0-N | [Object](../reference.md#type-object) | true | — | objects with properties to add (think named parameters). all the properties of each argument will be applied one after another so later properties will override |
-
----
-## ClassMethod: Class.registerStringMethods
-
-### Description
-Register a method, or set of methods, that can be provided to instances of this class as Strings (containing a JavaScript expression) and will be automatically converted into functions.
-
-For example:
-
-```
-  isc.MyClass.registerStringMethods({
-      myStringMethod: "arg1, arg2"
-  });
-  
-```
-Note that registered stringMethods are eligible as target methods for `Action`s declared in Component XML files. See the _**Declarative Actions**_ section of the [Component XML article](../kb_topics/componentXML.md#kb-topic-component-xml).
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| methodName | [Object](../reference.md#type-object) | false | — | If this is a string, name of the property to register If this is an object, assume passing in a set of name/value pairs to register |
-| argumentString | [String](#type-string) | false | — | named arguments for the property in a comma separated string (not used if methodName is an object) |
-
-### See Also
-
-- [stringMethods](../kb_topics/stringMethods.md#kb-topic-string-methods-overview)
-
----
-## ClassMethod: Class.clearLogPriority
-
-### Description
-Clear this object's priority setting for a particular category, so that the category's effective priority returns to the specified priority for this category at the Log level (or `Log.defaultPriority` if not set).  
-To clear the Page-level priority setting for this log category use `isc.Log.clearPriority()` instead.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| category | [String](#type-string) | false | — | Category name. If not specified, all logging on this object will revert to default priority settings. |
-
-### See Also
-
-- [Log.clearPriority](Log.md#classmethod-logclearpriority)
-
----
-## ClassMethod: Class.addProperties
-
-### Description
-Add default properties and methods to all instances of this class.  
-  
-These properties can then be accessed as `myInstance.property`, and methods can be called via `myInstance.methodName()`
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| arguments 0-N | [Object](../reference.md#type-object) | true | — | objects with properties to add (think named parameters). all the properties of each argument will be applied |
-
-### Returns
-
-`[Object](../reference.md#type-object)` — the class after properties have been added to it
-
-### See Also
-
-- [Class.addProperties](#method-classaddproperties)
-- [isc.addProperties](isc.md#staticmethod-iscaddproperties)
-
----
-## ClassMethod: Class.isMethodSupported
-
-### Description
-Returns true if the method is supported by this class, meaning that it is not null and was not replaced by [Class.markUnsupportedMethods](#classmethod-classmarkunsupportedmethods).
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| methodName | [Identifier](../reference.md#type-identifier) | false | — | the name of a method to test. |
-
-### Returns
-
-`[boolean](../reference.md#type-boolean)` — true if the method is not null and is not an unsupported method; false otherwise.
-
-**Flags**: A
-
----
-## ClassMethod: Class.logInfo
-
-### Description
-Log a message at "info" priority
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| message | [String](#type-string) | false | — | message to log |
-| category | [String](#type-string) | true | — | category to log in |
-
-### See Also
-
-- [Log.logDebug](Log.md#classmethod-loglogdebug)
 
 ---
 ## ClassMethod: Class.echo
@@ -839,15 +547,34 @@ A method named log_Priority_ exists for each priority level, on every ISC Class 
 - [Log.setPriority](Log.md#classmethod-logsetpriority)
 
 ---
+## ClassMethod: Class.setDefaultLogPriority
+
+### Description
+Set the default priority of logging for messages logged on this Class or Instance object. All categories for which there is no explicit, instance level logging priority set will log at this level on this object.  
+To set the default visible log priority across the entire page, use `isc.Log.setDefaultPriority()` instead.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| category | [String](#type-string) | false | — | Category for which the log priority will be updated. If not all logs on this canvas will be logged at the priority passed in. |
+| priority | [LogPriority](../reference.md#type-logpriority) | false | — | priority level |
+
+### See Also
+
+- [Log.setPriority](Log.md#classmethod-logsetpriority)
+
+---
 ## ClassMethod: Class.getStackTrace
 
 ### Description
 Returns a "stack trace" - one line per method in the current call stack, showing the method name and any parameters passed. This function is available as a static on every ISC Class and as an instance method on every instance of an ISC Class.  
 General best practice is to call the method as "this.getStackTrace" whenever "this" is an instance, or call the static classMethod on the [Log](Log.md#class-log) class otherwise.
 
-If the current thread was started by a [timer](Timer.md#classmethod-timersettimeout), you can [enable debug-level logging for the "timerTrace" log category](../kb_topics/debugging.md#kb-topic-debugging) to also include the stack trace leading up to the setTimeout call in most cases.
+Platform Notes: In Mozilla Firefox, if Firebug is enabled, a stack trace will be logged to the firebug console in addition to the standard stack trace string returned by this method.  
+In browsers other than Internet Explorer a complete stack trace may not be available - this occurs when a function is re-entrant (meaning it calls itself). In this case the stack will terminate with text indicating where the recursive function call occurred.
 
-See [debugging](../kb_topics/debugging.md#kb-topic-debugging) for further information.
+See [debugging](../kb_topics/debugging.md#kb-topic-debugging) for further information information.
 
 ### Returns
 
@@ -856,7 +583,43 @@ See [debugging](../kb_topics/debugging.md#kb-topic-debugging) for further inform
 ### Groups
 
 - debug
-- prodErrorReport
+
+---
+## ClassMethod: Class.echoLeaf
+
+### Description
+Return a very short (generally less than 40 characters) string representation of any object, suitable for viewing by a developer for debugging purposes. This function is available as a static on every ISC Class and as an instance method on every instance of an ISC Class.  
+General best practice is to call the method as "this.echoLeaf" whenever "this" is an instance, or call the static classMethod on the [Log](Log.md#class-log) class otherwise.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| obj | [Any](#type-any) | false | — | object to echo |
+
+### Returns
+
+`[String](#type-string)` — a short string representation of the object
+
+### Groups
+
+- debug
+
+### See Also
+
+- [Class.echo](#method-classecho)
+
+---
+## ClassMethod: Class.getInstanceProperty
+
+### Description
+Gets a named property from the instance defaults for this object.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| property | [String](#type-string) | false | — | name of the property to return |
 
 ---
 ## ClassMethod: Class.delayCall
@@ -871,7 +634,7 @@ This is a helper to delay a call to a method on some target by a specified amoun
 | methodName | [String](#type-string) | false | — | name of the method to call |
 | arrayArgs | [Array](#type-array) | true | — | array of arguments to pass to the method in question |
 | time | [number](#type-number) | true | — | Number of ms to delay the call by - defaults to zero (so just pulls execution of the method out of the current execution thread. |
-| target | [Object](../reference.md#type-object) | true | — | Target to fire the method on - if unspecified assume this is a call to a classMethod on this Class. |
+| target | [Object](../reference_2.md#type-object) | true | — | Target to fire the method on - if unspecified assume this is a call to a classMethod on this Class. |
 
 ### Returns
 
@@ -911,6 +674,20 @@ Notifies the SmartClient Class system that any new classes created, or changes m
 Developers may call this method before applying changes which should be considered part of the core framework, rather than application code, for example in _load\_skin.js_ files. When changes are complete, [Class.modifyFrameworkDone](#classmethod-classmodifyframeworkdone) should be called. Note that this is an alternative approach to calling [Class.markAsFrameworkClass](#classmethod-classmarkasframeworkclass) directly on specific classes.
 
 ---
+## ClassMethod: Class.logIsWarnEnabled
+
+### Description
+Check whether a message logged at "warn" priority would be visible in the log.
+
+As with logDebug, category is defaulted to the current className. Use this method to avoid putting together expensive log messages if they will never appear in the log.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| category | [String](#type-string) | true | — | category to log in |
+
+---
 ## ClassMethod: Class.logFatal
 
 ### Description
@@ -926,6 +703,22 @@ Log a message at "fatal" priority
 ### See Also
 
 - [Log.logDebug](Log.md#classmethod-loglogdebug)
+
+---
+## ClassMethod: Class.addPropertyList
+
+### Description
+Add default properties to all instances of this class
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| list | [Array of Object](#type-array-of-object)[] | false | — | array of objects with properties to add |
+
+### Returns
+
+`[Object](../reference_2.md#type-object)` — the class after properties have been added to it
 
 ---
 ## ClassMethod: Class.markUnsupportedMethods
@@ -982,36 +775,38 @@ These properties can then be accessed as MyClass.property, or for functions, cal
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| arguments 0-N | [Object](../reference.md#type-object) | true | — | objects with properties to add (think named parameters). all the properties of each argument will be applied as class-level properties. |
+| arguments 0-N | [Object](../reference_2.md#type-object) | true | — | objects with properties to add (think named parameters). all the properties of each argument will be applied as class-level properties. |
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — the class after properties have been added to it
+`[Object](../reference_2.md#type-object)` — the class after properties have been added to it
 
 ---
-## ClassMethod: Class.getTemplate
+## ClassMethod: Class.logError
 
 ### Description
-Retrieves a registered template function by name and type.
+Log a message at "error" priority
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| name | [String](#type-string) | false | — | The template name to look up. |
-| type | [String](#type-string) | true | — | The namespace type (defaults to "default"). |
-
-### Returns
-
-`[Function](#type-function)` — The registered template function, or `null` if not found.
-
-### Groups
-
-- stringTemplateFunctions
+| message | [String](#type-string) | false | — | message to log |
+| category | [String](#type-string) | true | — | category to log in |
 
 ### See Also
 
-- [stringTemplateFunctions](../kb_topics/stringTemplateFunctions.md#kb-topic-string-template-functions)
+- [Log.logDebug](Log.md#classmethod-loglogdebug)
+
+---
+## ClassMethod: Class.markAsFrameworkClass
+
+### Description
+Mark this class as a framework class (member of the SmartClient framework). Sets [Class.isFrameworkClass](#classattr-classisframeworkclass). May be used in debugging and by the AutoTest subsystem
+
+### Groups
+
+- autoTest
 
 ---
 ## ClassMethod: Class.getClassName
@@ -1032,6 +827,25 @@ Retrieves the default priority of messages for this class or instance.
 ### Returns
 
 `[LogPriority](../reference.md#type-logpriority)` — default priority for logging messages on this object.
+
+---
+## ClassMethod: Class.evaluate
+
+### Description
+Evaluate a string of script and return the result.
+
+This method is a wrapper around the native javascript method `eval()`. It papers over some native issues to ensure evaluation of script behaves consistently across browsers
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| expression | [String](#type-string) | false | — | the expression to be evaluated |
+| evalArgs | [Object](../reference_2.md#type-object) | false | — | Optional mapping of argument names to values - each key will be available as a local variable when the script is executed. |
+
+### Returns
+
+`[Any](#type-any)` — the result of the eval
 
 ---
 ## ClassMethod: Class.logIsDebugEnabled
@@ -1062,6 +876,61 @@ As with logDebug, category is defaulted to the current className. Use this metho
 | category | [String](#type-string) | true | — | category to log in |
 
 ---
+## ClassMethod: Class.getSuperClass
+
+### Description
+Gets a pointer to the superClass' Class object.
+
+### Returns
+
+`[Class](#type-class)` — Class object for superclass.
+
+---
+## ClassMethod: Class.setInstanceProperty
+
+### Description
+Sets a named property from the instance defaults for this object.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| property | [String](#type-string) | false | — | name of the property to return |
+| value | [Any](#type-any) | false | — | value to set to |
+
+---
+## ClassMethod: Class.isA
+
+### Description
+Returns whether this class object is the provided class or is a subclass of the provided class, or implements the provided interface.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| className | [String](#type-string) | false | — | Class name to test against |
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — true == this Class is a subclass of the provided classname
+
+---
+## Method: Class.getDynamicPropertyRuleTime
+
+### Description
+Returns the last time the rule for the specified dynamic property fired, as a [Date](../reference.md#object-date).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| propertyName | [Identifier](../reference.md#type-identifier) | false | — | name of a settable property on this instance |
+
+### Returns
+
+`[Date](#type-date)` — last fire time of rule
+
+---
 ## Method: Class.getClassName
 
 ### Description
@@ -1070,6 +939,72 @@ Gets the name of this class as a string.
 ### Returns
 
 `[String](#type-string)` — String name of this instance's Class object.
+
+---
+## Method: Class.logIsEnabledFor
+
+### Description
+Check whether a message logged at the given priority would be visible in the log.
+
+As with logDebug, category is defaulted to the current className. Use this method to avoid putting together expensive log messages if they will never appear in the log.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| priority | [LogPriority](../reference.md#type-logpriority) | false | — | priority level |
+| category | [String](#type-string) | true | — | category to log in |
+
+---
+## Method: Class.setDefaultLogPriority
+
+### Description
+Set the default priority of logging for messages logged on this Class or Instance object. All categories for which there is no explicit, instance level logging priority set will log at this level on this object.  
+To set the default visible log priority across the entire page, use `isc.Log.setDefaultPriority()` instead.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| category | [String](#type-string) | false | — | Category for which the log priority will be updated. If not all logs on this canvas will be logged at the priority passed in. |
+| priority | [LogPriority](../reference.md#type-logpriority) | false | — | priority level |
+
+### See Also
+
+- [Log.setPriority](Log.md#classmethod-logsetpriority)
+
+---
+## Method: Class.setProperty
+
+### Description
+Set a property on this object, calling the setter method if it exists.
+
+Whenever you set a property on an ISC component, you should call either the specific setter for that property, or `setProperty()/setProperties()` if it doesn't have one. This future-proofs your code against the later addition of required setters.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| propertyName | [String](#type-string) | false | — | name of the property to set |
+| newValue | [Any](#type-any) | false | — | new value for the property |
+
+### See Also
+
+- [Class.setProperties](#method-classsetproperties)
+
+---
+## Method: Class.logIsErrorEnabled
+
+### Description
+Check whether a message logged at "error" priority would be visible in the log.
+
+As with logDebug, category is defaulted to the current className. Use this method to avoid putting together expensive log messages if they will never appear in the log.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| category | [String](#type-string) | true | — | category to log in |
 
 ---
 ## Method: Class.getCallTrace
@@ -1105,6 +1040,38 @@ Returns true if the property is dynamic.
 ### Returns
 
 `[boolean](../reference.md#type-boolean)` — true if the property is dynamic
+
+---
+## Method: Class.echo
+
+### Description
+Return a short string representation of any object, suitable for viewing by a developer for debugging purposes.
+
+If passed an object containing other objects, echo will not recurse into subobjects, summarizing them instead via echoLeaf().
+
+NOTE: echo() is used to generate the output shown in the Log window when evaluating an expression.
+
+This function is available as a static on every ISC Class and as an instance method on every instance of an ISC Class.  
+General best practice is to call the method as "this.echo()" whenever "this" is an instance, or call the static classMethod on the [Log](Log.md#class-log) class otherwise.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| obj | [Any](#type-any) | false | — | object to echo |
+
+### Returns
+
+`[String](#type-string)` — a short string representation of the object
+
+### Groups
+
+- debug
+
+### See Also
+
+- [Log.echoAll](Log.md#classmethod-logechoall)
+- [Log.echoLeaf](Log.md#classmethod-logecholeaf)
 
 ---
 ## Method: Class.Super
@@ -1166,6 +1133,31 @@ See also [defineClass()](ClassFactory.md#classmethod-classfactorydefineclass) an
 `[Any](#type-any)` — return value of the superclass call
 
 ---
+## Method: Class.addDynamicProperty
+
+### Description
+Sets up the value of `propertyName` to be dynamically derived from the [ruleScope](Canvas.md#attr-canvasrulescope), by either a simple [DataPath](../reference.md#type-datapath) into the ruleScope or via a textual or numeric formula using the ruleScope as available formula inputs.
+
+The dataPath or formula is evaluated immediately when addDynamicProperty() is called, then re-evaluated every time the ruleScope changes.
+
+It is invalid usage to use `addDynamicProperty()` on a property that is not runtime settable, however, `addDynamicProperty()` will not throw an error or log a warning if this is done.
+
+If a property is already dynamic and addDynamicProperty() is called again, the new dynamic behavior replaces the old. If a property should no longer be dynamic, call [Class.clearDynamicProperty](#method-classcleardynamicproperty).
+
+Dynamic properties can also be declared together via [Class.dynamicProperties](#attr-classdynamicproperties).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| propertyName | [Identifier](../reference.md#type-identifier) | false | — | name of a settable property on this instance |
+| source | [DataPath](../reference.md#type-datapath)|[UserSummary](#type-usersummary)|[UserFormula](#type-userformula) | false | — | — |
+
+### See Also
+
+- [Class.dynamicProperties](#attr-classdynamicproperties)
+
+---
 ## Method: Class.clearDynamicProperty
 
 ### Description
@@ -1182,6 +1174,33 @@ The current value of the property will not be changed by this call.
 | propertyName | [Identifier](../reference.md#type-identifier) | false | — | property name of the dynamic property to clear |
 
 ---
+## Method: Class.logInfo
+
+### Description
+Log a message at "info" priority
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| message | [String](#type-string) | false | — | message to log |
+| category | [String](#type-string) | true | — | category to log in |
+
+### See Also
+
+- [Log.logDebug](Log.md#classmethod-loglogdebug)
+
+---
+## Method: Class.getID
+
+### Description
+Return the global identifier for this object.
+
+### Returns
+
+`[String](#type-string)` — global identifier for this canvas
+
+---
 ## Method: Class.ignore
 
 ### Description
@@ -1191,7 +1210,7 @@ Stop observing a method on some other object.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| object | [Object](../reference.md#type-object) | false | — | object to observe |
+| object | [Object](../reference_2.md#type-object) | false | — | object to observe |
 | methodName | [String](#type-string) | false | — | name of the method to ignore |
 
 ### Returns
@@ -1240,6 +1259,33 @@ Log a message at "error" priority
 - [Log.logDebug](Log.md#classmethod-loglogdebug)
 
 ---
+## Method: Class.logWarn
+
+### Description
+Log a message at "warn" priority
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| message | [String](#type-string) | false | — | message to log |
+| category | [String](#type-string) | true | — | category to log in |
+
+### See Also
+
+- [Log.logDebug](Log.md#classmethod-loglogdebug)
+
+---
+## Method: Class.getDefaultLogPriority
+
+### Description
+Retrieves the default priority of messages for this class or instance.
+
+### Returns
+
+`[LogPriority](../reference.md#type-logpriority)` — default priority for logging messages on this object.
+
+---
 ## Method: Class.echoAll
 
 ### Description
@@ -1270,7 +1316,7 @@ General best practice is to call the method as "this.echo()" whenever "this" is 
 ### Description
 Initialize a new instance of this Class. This method is called automatically by [Class.create](#classmethod-classcreate).
 
-Override this method to provide initialization logic for your class. If your class is a subclass of a UI component (i.e. descendant of [Canvas](Canvas.md#class-canvas)), it is typically recommended to override [Canvas.initComplete](Canvas.md#method-canvasinitcomplete) or [Canvas.initWidget](Canvas.md#method-canvasinitwidget) instead.
+Override this method to provide initialization logic for your class. If your class is a subclass of a UI component (i.e. descendant of [Canvas](Canvas.md#class-canvas)), override [Canvas.initWidget](Canvas.md#method-canvasinitwidget) instead.
 
 ### Parameters
 
@@ -1295,15 +1341,41 @@ As with logDebug, category is defaulted to the current className. Use this metho
 | category | [String](#type-string) | true | — | category to log in |
 
 ---
+## Method: Class.echoLeaf
+
+### Description
+Return a very short (generally less than 40 characters) string representation of any object, suitable for viewing by a developer for debugging purposes. This function is available as a static on every ISC Class and as an instance method on every instance of an ISC Class.  
+General best practice is to call the method as "this.echoLeaf" whenever "this" is an instance, or call the static classMethod on the [Log](Log.md#class-log) class otherwise.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| obj | [Any](#type-any) | false | — | object to echo |
+
+### Returns
+
+`[String](#type-string)` — a short string representation of the object
+
+### Groups
+
+- debug
+
+### See Also
+
+- [Class.echo](#method-classecho)
+
+---
 ## Method: Class.getStackTrace
 
 ### Description
 Returns a "stack trace" - one line per method in the current call stack, showing the method name and any parameters passed. This function is available as a static on every ISC Class and as an instance method on every instance of an ISC Class.  
 General best practice is to call the method as "this.getStackTrace" whenever "this" is an instance, or call the static classMethod on the [Log](Log.md#class-log) class otherwise.
 
-If the current thread was started by a [timer](Timer.md#classmethod-timersettimeout), you can [enable debug-level logging for the "timerTrace" log category](../kb_topics/debugging.md#kb-topic-debugging) to also include the stack trace leading up to the setTimeout call in most cases.
+Platform Notes: In Mozilla Firefox, if Firebug is enabled, a stack trace will be logged to the firebug console in addition to the standard stack trace string returned by this method.  
+In browsers other than Internet Explorer a complete stack trace may not be available - this occurs when a function is re-entrant (meaning it calls itself). In this case the stack will terminate with text indicating where the recursive function call occurred.
 
-See [debugging](../kb_topics/debugging.md#kb-topic-debugging) for further information.
+See [debugging](../kb_topics/debugging.md#kb-topic-debugging) for further information information.
 
 ### Returns
 
@@ -1312,7 +1384,46 @@ See [debugging](../kb_topics/debugging.md#kb-topic-debugging) for further inform
 ### Groups
 
 - debug
-- prodErrorReport
+
+---
+## Method: Class.addProperties
+
+### Description
+Add properties or methods to this specific instance. Properties with the same name as existing properties will override.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| arguments 0-N | [Object](../reference_2.md#type-object) | true | — | Object containing name:value pairs to be added to this object |
+
+### Returns
+
+`[Object](../reference_2.md#type-object)` — the object after properties have been added to it
+
+### See Also
+
+- [Class.addProperties](#classmethod-classaddproperties)
+- [isc.addProperties](isc.md#staticmethod-iscaddproperties)
+
+---
+## Method: Class.fireCallback
+
+### Description
+Method to fire a callback. Callback will be fired in the scope of the object on which this method is called.  
+Falls through to [Class.fireCallback](#classmethod-classfirecallback)
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| callback | [Callback](../reference.md#type-callback) | false | — | Callback to fire |
+| argNames | [String](#type-string) | true | — | comma separated string of variables |
+| args | [Array](#type-array) | true | — | array of arguments to pass to the method |
+
+### Returns
+
+`[Any](#type-any)` — returns the value returned by the callback method passed in.
 
 ---
 ## Method: Class.addPropertyList
@@ -1328,7 +1439,66 @@ Add properties to this instance.
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — the object after properties have been added to it
+`[Object](../reference_2.md#type-object)` — the object after properties have been added to it
+
+---
+## Method: Class.toString
+
+### Description
+The default toString() for instances reports that you have an instance of a class and prints the instance ID if present.
+
+---
+## Method: Class.observe
+
+### Description
+Set up a notification action to be invoked whenever some method is called on a target object.
+
+For example, if you wanted to take an action every time some ListGrid on your page had its [selection updated](ListGrid_2.md#method-listgridselectionupdated), instead of _overriding_ the `selectioUpdated()` method on the grid, you could observe it with code like this:
+
+`myCanvas.observe(myListGrid, "selectionUpdated", "observer.gridSelectionUpdated()")`
+
+In this example, every time _selectionUpdated()_ fired on the grid "myListGrid", after that method completed, the specified action would be invoked. (In this case the action would call a method called "gridSelectionUpdated" on the observer, "myCanvas").
+
+An unlimited number of observers can be set up to observe any method. The notification actions will all be fired automatically in the order that the observations were set up.
+
+NOTES:
+
+*   The object to observe may be any JavaScript object with the specified method, including simple JavaScript Objects or Arrays, or instances of SmartClient classes like [Canvas](Canvas.md#class-canvas).
+*   For a given observer, observed object, and observed method combination, at most one action can be registered. If you attempt to call `observe()` again with the same combination, it will return false and the action will not be registered.
+*   A method could potentially trigger an observation of itself by another object, either through code within the method itself or within an observer's action.  
+    In this case the observation will be set up, but the new observation action will not fire as part of this thread. For subsequent calls to the method, the newly added observer will be fired.
+*   _\[Potential memory leak\]_: If the target object is a simple JavaScript object (not an instance of a SmartClient class), developers should always call [ignore()](#method-classignore) to stop observing the object when an observation is no longer necessary.  
+    This ensures that if the observed object is subsequently allowed to go out of scope by application code, the observation system will not retain a reference to it (so the browser can reclaim the allocated memory).  
+    While cleaning up observations that are no longer required is always good practice, this memory leak concern is not an issue if the target object is an instance of a SmartClient class. In that case the observation is automatically released when the target is [destroyed](#method-classdestroy).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| object | [Object](../reference_2.md#type-object) | false | — | Object to observe. This may be any JavaScript object with the specified target method, including native arrays, and instances of SmartClient classes such as [Canvas](Canvas.md#class-canvas). |
+| methodName | [String](#type-string) | false | — | Name of the method to observe. Every time this method is invoked on the target object the specified action will fire (after the default implementation completes). |
+| action | [Function](#type-function)|[String](#type-string) | true | — | Optional action to take when the observed method is invoked on the target object.  
+If `action` is a string to execute, certain keywords are available for context:
+
+*   `observer` is this object (the object on which the `observe(...)` method was called).
+*   `observed` is the target object being observed (on which the method was invoked).
+*   `returnVal` is the return value from the observed method (if there is one)
+*   For functions defined with explicit parameters, these will also be available as keywords within the action string
+
+If `action` is a function, this will be executed in the scope of the observer (so `this` will be the object on which `observe()` was invoked). The arguments for the original method will also be passed to this action function as arguments. If developers need to access the target object being observed from the action function they may use native javascript techniques such as [javascript closure](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures) to do so. The return value from the observed method is not available to the action function.  
+If the `action` parameter is omitted the default behavior will invoke the same named method on the observer, passing in the same parameters. |
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — true == observation set up, false == observation not set up
+
+### Groups
+
+- observation
+
+### See Also
+
+- [Class.ignore](#method-classignore)
 
 ---
 ## Method: Class.isObserving
@@ -1340,7 +1510,7 @@ Return true if this object is already observing a method of another object
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| object | [Object](../reference.md#type-object) | false | — | object we may be observing |
+| object | [Object](../reference_2.md#type-object) | false | — | object we may be observing |
 | methodName | [String](#type-string) | false | — | name of the method to observed |
 
 ### Returns
@@ -1362,6 +1532,23 @@ Gets a pointer to the class object for this instance's superclass.
 ### Returns
 
 `[Class](#type-class)` — Class object for superclass.
+
+---
+## Method: Class.logFatal
+
+### Description
+Log a message at "fatal" priority
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| message | [String](#type-string) | false | — | message to log |
+| category | [String](#type-string) | true | — | category to log in |
+
+### See Also
+
+- [Log.logDebug](Log.md#classmethod-loglogdebug)
 
 ---
 ## Method: Class.logIsWarnEnabled
@@ -1394,6 +1581,27 @@ This is a helper to delay a call to some method on this object by some specified
 ### Returns
 
 `[String](#type-string)` — Timer ID for the delayed call - can be passed to [Timer.clear](Timer.md#classmethod-timerclear) to cancel the call before it executes
+
+---
+## Method: Class.evaluate
+
+### Description
+Evaluate a string of script in the scope of this instance (so `this` is available as a pointer to the instance).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| expression | [String](#type-string) | false | — | the expression to be evaluated |
+| evalArgs | [Object](../reference_2.md#type-object) | false | — | Optional mapping of argument names to values - each key will be available as a local variable when the script is executed. |
+
+### Returns
+
+`[Any](#type-any)` — the result of the eval
+
+### See Also
+
+- [Class.evaluate](#classmethod-classevaluate)
 
 ---
 ## Method: Class.addAutoChild
@@ -1464,7 +1672,7 @@ With `setProperties()` in particular, some classes may be able to take shortcuts
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| arguments 0-N | [Object](../reference.md#type-object) | true | — | objects with properties to add (think named parameters). all the properties of each argument will be applied one after another so later properties will override |
+| arguments 0-N | [Object](../reference_2.md#type-object) | true | — | objects with properties to add (think named parameters). all the properties of each argument will be applied one after another so later properties will override |
 
 ### See Also
 
@@ -1498,6 +1706,23 @@ To set the visible log priority for some category across the entire page, use `i
 ### See Also
 
 - [Log.setPriority](Log.md#classmethod-logsetpriority)
+
+---
+## Method: Class.map
+
+### Description
+Call `method` on each item in `argsList` and return the Array of results.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| methodName | [String](#type-string) | false | — | Name of the method on this instance which should be called on each element of the Array |
+| items | [Array](#type-array) | false | — | Array of items to call the method on |
+
+### Returns
+
+`[Array](#type-array)` — Array of results, one per element in the passed "items" Array
 
 ---
 ## Method: Class.createAutoChild
@@ -1583,380 +1808,5 @@ To clear the Page-level priority setting for this log category use `isc.Log.clea
 ### See Also
 
 - [Log.clearPriority](Log.md#classmethod-logclearpriority)
-
----
-## Method: Class.getDynamicPropertyRuleTime
-
-### Description
-Returns the last time the rule for the specified dynamic property fired, as a [Date](../reference_2.md#object-date).
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| propertyName | [Identifier](../reference.md#type-identifier) | false | — | name of a settable property on this instance |
-
-### Returns
-
-`[Date](#type-date)` — last fire time of rule
-
----
-## Method: Class.logIsEnabledFor
-
-### Description
-Check whether a message logged at the given priority would be visible in the log.
-
-As with logDebug, category is defaulted to the current className. Use this method to avoid putting together expensive log messages if they will never appear in the log.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| priority | [LogPriority](../reference.md#type-logpriority) | false | — | priority level |
-| category | [String](#type-string) | true | — | category to log in |
-
----
-## Method: Class.setDefaultLogPriority
-
-### Description
-Set the default priority of logging for messages logged on this Class or Instance object. All categories for which there is no explicit, instance level logging priority set will log at this level on this object.  
-To set the default visible log priority across the entire page, use `isc.Log.setDefaultPriority()` instead.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| category | [String](#type-string) | false | — | Category for which the log priority will be updated. If not all logs on this canvas will be logged at the priority passed in. |
-| priority | [LogPriority](../reference.md#type-logpriority) | false | — | priority level |
-
-### See Also
-
-- [Log.setPriority](Log.md#classmethod-logsetpriority)
-
----
-## Method: Class.setProperty
-
-### Description
-Set a property on this object, calling the setter method if it exists.
-
-Whenever you set a property on an ISC component, you should call either the specific setter for that property, or `setProperty()/setProperties()` if it doesn't have one. This future-proofs your code against the later addition of required setters.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| propertyName | [String](#type-string) | false | — | name of the property to set |
-| newValue | [Any](#type-any) | false | — | new value for the property |
-
-### See Also
-
-- [Class.setProperties](#method-classsetproperties)
-
----
-## Method: Class.logIsErrorEnabled
-
-### Description
-Check whether a message logged at "error" priority would be visible in the log.
-
-As with logDebug, category is defaulted to the current className. Use this method to avoid putting together expensive log messages if they will never appear in the log.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| category | [String](#type-string) | true | — | category to log in |
-
----
-## Method: Class.echo
-
-### Description
-Return a short string representation of any object, suitable for viewing by a developer for debugging purposes.
-
-If passed an object containing other objects, echo will not recurse into subobjects, summarizing them instead via echoLeaf().
-
-NOTE: echo() is used to generate the output shown in the Log window when evaluating an expression.
-
-This function is available as a static on every ISC Class and as an instance method on every instance of an ISC Class.  
-General best practice is to call the method as "this.echo()" whenever "this" is an instance, or call the static classMethod on the [Log](Log.md#class-log) class otherwise.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| obj | [Any](#type-any) | false | — | object to echo |
-
-### Returns
-
-`[String](#type-string)` — a short string representation of the object
-
-### Groups
-
-- debug
-
-### See Also
-
-- [Log.echoAll](Log.md#classmethod-logechoall)
-- [Log.echoLeaf](Log.md#classmethod-logecholeaf)
-
----
-## Method: Class.addDynamicProperty
-
-### Description
-Sets up the value of `propertyName` to be dynamically derived from the [ruleScope](Canvas.md#attr-canvasrulescope), by either a simple [DataPath](../reference_2.md#type-datapath) into the ruleScope, an [AdvancedCriteria](../reference.md#object-advancedcriteria) built against [DataPaths](../reference_2.md#type-datapath), or via a template or numeric formula using the ruleScope as available formula inputs.
-
-The dataPath, criteria, template or formula is evaluated immediately when addDynamicProperty() is called, then re-evaluated every time the ruleScope changes. An [AdvancedCriteria](../reference.md#object-advancedcriteria) will always evaluate to boolean true or false, and a [template](../reference.md#object-usersummary) to a string.
-
-It is invalid usage to use `addDynamicProperty()` on a property that is not runtime settable. However, `addDynamicProperty()` will not throw an error or log a warning if this is done.
-
-If a property is already dynamic and addDynamicProperty() is called again, the new dynamic behavior replaces the old. If a property should no longer be dynamic, call [Class.clearDynamicProperty](#method-classcleardynamicproperty).
-
-Dynamic properties can also be declared together via [Class.dynamicProperties](#attr-classdynamicproperties).
-
-Note that you may convert a simple criteria to an [AdvancedCriteria](../reference.md#object-advancedcriteria) by calling [DataSource.convertCriteria](DataSource.md#classmethod-datasourceconvertcriteria).
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| propertyName | [Identifier](../reference.md#type-identifier) | false | — | name of a settable property on this instance |
-| source | [DataPath](../reference_2.md#type-datapath)|[UserSummary](#type-usersummary)|[UserFormula](#type-userformula)|[AdvancedCriteria](#type-advancedcriteria) | false | — | — |
-
-### See Also
-
-- [Canvas.dataPath](Canvas.md#attr-canvasdatapath)
-- [Class.dynamicProperties](#attr-classdynamicproperties)
-
----
-## Method: Class.logInfo
-
-### Description
-Log a message at "info" priority
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| message | [String](#type-string) | false | — | message to log |
-| category | [String](#type-string) | true | — | category to log in |
-
-### See Also
-
-- [Log.logDebug](Log.md#classmethod-loglogdebug)
-
----
-## Method: Class.getID
-
-### Description
-Return the global identifier for this object.
-
-### Returns
-
-`[String](#type-string)` — global identifier for this canvas
-
----
-## Method: Class.logWarn
-
-### Description
-Log a message at "warn" priority
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| message | [String](#type-string) | false | — | message to log |
-| category | [String](#type-string) | true | — | category to log in |
-
-### See Also
-
-- [Log.logDebug](Log.md#classmethod-loglogdebug)
-
----
-## Method: Class.getDefaultLogPriority
-
-### Description
-Retrieves the default priority of messages for this class or instance.
-
-### Returns
-
-`[LogPriority](../reference.md#type-logpriority)` — default priority for logging messages on this object.
-
----
-## Method: Class.echoLeaf
-
-### Description
-Return a very short (generally less than 40 characters) string representation of any object, suitable for viewing by a developer for debugging purposes. This function is available as a static on every ISC Class and as an instance method on every instance of an ISC Class.  
-General best practice is to call the method as "this.echoLeaf" whenever "this" is an instance, or call the static classMethod on the [Log](Log.md#class-log) class otherwise.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| obj | [Any](#type-any) | false | — | object to echo |
-
-### Returns
-
-`[String](#type-string)` — a short string representation of the object
-
-### Groups
-
-- debug
-
-### See Also
-
-- [Class.echo](#method-classecho)
-
----
-## Method: Class.addProperties
-
-### Description
-Add properties or methods to this specific instance. Properties with the same name as existing properties will override.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| arguments 0-N | [Object](../reference.md#type-object) | true | — | Object containing name:value pairs to be added to this object |
-
-### Returns
-
-`[Object](../reference.md#type-object)` — the object after properties have been added to it
-
-### See Also
-
-- [Class.addProperties](#classmethod-classaddproperties)
-- [isc.addProperties](isc.md#staticmethod-iscaddproperties)
-
----
-## Method: Class.fireCallback
-
-### Description
-Method to fire a callback. Callback will be fired in the scope of the object on which this method is called.  
-Falls through to [Class.fireCallback](#classmethod-classfirecallback)
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| callback | [Callback](../reference.md#type-callback) | false | — | Callback to fire |
-| argNames | [String](#type-string) | true | — | comma separated string of variables |
-| args | [Array](#type-array) | true | — | array of arguments to pass to the method |
-
-### Returns
-
-`[Any](#type-any)` — returns the value returned by the callback method passed in.
-
----
-## Method: Class.toString
-
-### Description
-The default toString() for instances reports that you have an instance of a class and prints the instance ID if present.
-
----
-## Method: Class.observe
-
-### Description
-Set up a notification action to be invoked whenever some method is called on a target object.
-
-For example, if you wanted to take an action every time some ListGrid on your page had its [selection updated](ListGrid_2.md#method-listgridselectionupdated), instead of _overriding_ the `selectionUpdated()` method on the grid, you could observe it with code like this:
-
-`myCanvas.observe(myListGrid, "selectionUpdated", "observer.gridSelectionUpdated()")`
-
-In this example, every time _selectionUpdated()_ fired on the grid "myListGrid", after that method completed, the specified action would be invoked. (In this case the action would call a method called "gridSelectionUpdated" on the observer, "myCanvas").
-
-An unlimited number of observers can be set up to observe any method. The notification actions will all be fired automatically in the order that the observations were set up.
-
-NOTES:
-
-*   The object to observe may be any JavaScript object with the specified method, including simple JavaScript Objects or Arrays, or instances of SmartClient classes like [Canvas](Canvas.md#class-canvas).
-*   For a given observer, observed object, and observed method combination, at most one action can be registered. If you attempt to call `observe()` again with the same combination, it will return false and the action will not be registered.
-*   A method could potentially trigger an observation of itself by another object, either through code within the method itself or within an observer's action.  
-    In this case the observation will be set up, but the new observation action will not fire as part of this thread. For subsequent calls to the method, the newly added observer will be fired.
-*   _\[Potential memory leak\]_: If the target object is a simple JavaScript object (not an instance of a SmartClient class), developers should always call [ignore()](#method-classignore) to stop observing the object when an observation is no longer necessary.  
-    This ensures that if the observed object is subsequently allowed to go out of scope by application code, the observation system will not retain a reference to it (so the browser can reclaim the allocated memory).  
-    While cleaning up observations that are no longer required is always good practice, this memory leak concern is not an issue if the target object is an instance of a SmartClient class. In that case the observation is automatically released when the target is [destroyed](#method-classdestroy).
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| object | [Object](../reference.md#type-object) | false | — | Object to observe. This may be any JavaScript object with the specified target method, including native arrays, and instances of SmartClient classes such as [Canvas](Canvas.md#class-canvas). |
-| methodName | [String](#type-string) | false | — | Name of the method to observe. Every time this method is invoked on the target object the specified action will fire (after the default implementation completes). |
-| action | [Function](#type-function)|[String](#type-string) | true | — | Optional action to take when the observed method is invoked on the target object.  
-If `action` is a string to execute, certain keywords are available for context:
-
-*   `observer` is this object (the object on which the `observe(...)` method was called).
-*   `observed` is the target object being observed (on which the method was invoked).
-*   `returnVal` is the return value from the observed method (if there is one)
-*   For functions defined with explicit parameters, these will also be available as keywords within the action string
-
-If `action` is a function, this will be executed in the scope of the observer (so `this` will be the object on which `observe()` was invoked). The arguments for the original method will also be passed to this action function as arguments. If developers need to access the target object being observed from the action function they may use native javascript techniques such as [javascript closure](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures) to do so. The return value from the observed method is not available to the action function.  
-If the `action` parameter is omitted the default behavior will invoke the same named method on the observer, passing in the same parameters. |
-
-### Returns
-
-`[boolean](../reference.md#type-boolean)` — true == observation set up, false == observation not set up
-
-### Groups
-
-- observation
-
-### See Also
-
-- [Class.ignore](#method-classignore)
-
----
-## Method: Class.logFatal
-
-### Description
-Log a message at "fatal" priority
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| message | [String](#type-string) | false | — | message to log |
-| category | [String](#type-string) | true | — | category to log in |
-
-### See Also
-
-- [Log.logDebug](Log.md#classmethod-loglogdebug)
-
----
-## Method: Class.evaluate
-
-### Description
-Evaluate a string of script in the scope of this instance (so `this` is available as a pointer to the instance).
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| expression | [String](#type-string) | false | — | the expression to be evaluated |
-| evalArgs | [Object](../reference.md#type-object) | false | — | Optional mapping of argument names to values - each key will be available as a local variable when the script is executed. |
-
-### Returns
-
-`[Any](#type-any)` — the result of the eval
-
-### See Also
-
-- [Class.evaluate](#classmethod-classevaluate)
-
----
-## Method: Class.map
-
-### Description
-Call `method` on each item in `argsList` and return the Array of results.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| methodName | [String](#type-string) | false | — | Name of the method on this instance which should be called on each element of the Array |
-| items | [Array](#type-array) | false | — | Array of items to call the method on |
-
-### Returns
-
-`[Array](#type-array)` — Array of results, one per element in the passed "items" Array
 
 ---

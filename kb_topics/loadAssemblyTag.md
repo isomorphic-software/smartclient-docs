@@ -7,8 +7,6 @@
 ## KB Topic: <isomorphic:loadAssembly>
 
 ### Description
-See [jspTags](../reference.md#kb-topic-smartclient-jsp-tags)
-
 _produces:_ HTML
 
 This tag emits the files listed under a single FileAssemblyEntry in your [fileAssembly](fileAssembly.md#kb-topic-file-assembly) config file. Note that as stated in the [fileAssembly](fileAssembly.md#kb-topic-file-assembly) docs, you can always include a file assembly by writing out a properly formatted `<script>` or `<link>` HTML tag and referencing the same URI as listed in the FileAssemblyEntry that you wish to include, but the `<loadAssembly>` JSP tag provides a useful mechanism to easily switch between development and production mode (via the **assemble** attribute - see below) as well as a few other control points.

@@ -30,20 +30,20 @@ A map of key/value pairs to pass to the flashlet as parameters. Note that these 
 **Flags**: IR
 
 ---
-## Attr: Flashlet.src
-
-### Description
-Location from which to load the Flashlet.
-
-**Flags**: IR
-
----
 ## Attr: Flashlet.classID
 
 ### Description
 This attribute specifies the clsid of the outer `<object>` tag.
 
 The default classID is: "clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+
+**Flags**: IR
+
+---
+## Attr: Flashlet.src
+
+### Description
+Location from which to load the Flashlet.
 
 **Flags**: IR
 
@@ -70,16 +70,6 @@ Sets the 'name' attribute on the flashlet object. If a name is not provided it w
 **Flags**: IR
 
 ---
-## ClassMethod: Flashlet.getFlashVersion
-
-### Description
-Which version of Flash is installed on this browser?
-
-### Returns
-
-`[number](#type-number)` — flash version number, or null if flash is not installed
-
----
 ## ClassMethod: Flashlet.flashAvailable
 
 ### Description
@@ -88,6 +78,16 @@ Is Shockwave Flash installed on this browser?
 ### Returns
 
 `[boolean](../reference.md#type-boolean)` — `true` if Flash is installed; `false` otherwise.
+
+---
+## ClassMethod: Flashlet.getFlashVersion
+
+### Description
+Which version of Flash is installed on this browser?
+
+### Returns
+
+`[number](#type-number)` — flash version number, or null if flash is not installed
 
 ---
 ## Method: Flashlet.setSrc

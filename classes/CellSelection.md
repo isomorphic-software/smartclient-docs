@@ -32,30 +32,6 @@ select a single cell and deselect everything else
 - selection
 
 ---
-## Method: CellSelection.selectionChanged
-
-### Description
-Observable handler fired whenever the cell selection is modified
-
-### Groups
-
-- selection
-
----
-## Method: CellSelection.getSelectedRecord
-
-### Description
-Returns the first record that has any cells selected.
-
-### Returns
-
-`[ListGridRecord](#type-listgridrecord)` — first selected record, or null if nothing selected
-
-### Groups
-
-- selection
-
----
 ## Method: CellSelection.deselectCell
 
 ### Description
@@ -181,6 +157,30 @@ Returns an array of the currently selected cells. Each cell is returned as a 2 e
 ### Returns
 
 `[Array](#type-array)` — an array of the selected cells, as 2 element arrays
+
+### Groups
+
+- selection
+
+---
+## Method: CellSelection.selectionChanged
+
+### Description
+Observable handler fired whenever the cell selection is modified
+
+### Groups
+
+- selection
+
+---
+## Method: CellSelection.getSelectedRecord
+
+### Description
+Returns the first record that has any cells selected.
+
+### Returns
+
+`[ListGridRecord](#type-listgridrecord)` — first selected record, or null if nothing selected
 
 ### Groups
 

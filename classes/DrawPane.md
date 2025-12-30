@@ -13,7 +13,7 @@ A DrawPane is a container for drawing bitmap and vector graphics using browser's
 
 To draw in a `DrawPane` you create [DrawLine](DrawLine.md#class-drawline)s, [DrawOval](DrawOval.md#class-drawoval)s, [DrawPath](DrawPath.md#class-drawpath)s and other [DrawItem](DrawItem.md#class-drawitem)-based components, and place them in the `DrawPane` via [DrawPane.drawItems](#attr-drawpanedrawitems) or add them incrementally via [DrawPane.addDrawItem](#method-drawpaneadddrawitem).
 
-`DrawItems` support a variety of common features, such as [gradient fills](../reference_2.md#object-gradient), [arrowheads](DrawItem.md#attr-drawitemstartarrow), events such as [click()](DrawItem.md#method-drawitemclick) and built-in [control knobs](DrawItem.md#attr-drawitemknobs) for end user resizing and manipulation of shapes.
+`DrawItems` support a variety of common features, such as [gradient fills](../reference.md#object-gradient), [arrowheads](DrawItem.md#attr-drawitemstartarrow), events such as [click()](DrawItem.md#method-drawitemclick) and built-in [control knobs](DrawItem.md#attr-drawitemknobs) for end user resizing and manipulation of shapes.
 
 Common shapes such as [rectangles](DrawRect.md#class-drawrect), [ovals](DrawOval.md#class-drawoval) and [triangles](../reference.md#class-drawtriangle) have dedicated DrawItem subclasses. For other shapes, consider:
 
@@ -45,35 +45,7 @@ There are three different coordinate systems involved when a DrawItem is drawn o
 
 The view port of the DrawPane is the rectangle in the global coordinate system from (0, 0) that is as wide as the DrawPane's [inner content width](Canvas.md#method-canvasgetinnercontentwidth) and as high as the DrawPane's [inner content height](Canvas.md#method-canvasgetinnercontentheight). Note: In the case of a [FacetChart](FacetChart.md#class-facetchart) showing a [zoom chart](FacetChart.md#attr-facetchartcanzoom), the view port height is decreased by the height of the zoom chart.
 
-One other coordinate system in use by a DrawPane when [drag-scrolling](#attr-drawpanecandragscroll) is enabled is the "viewbox coordinate system". The viewbox coordinate system is the drawing coordinate system with the [DrawPane.translate](#attr-drawpanetranslate) and [DrawPane.rotation](#attr-drawpanerotation) transforms applied. Use [drawingWidth](#attr-drawpanedrawingwidth) and [drawingHeight](#attr-drawpanedrawingheight) to control how much of the viewbox is available while panning.
-
----
-## Attr: DrawPane.drawingHeight
-
-### Description
-When [canDragScroll](#attr-drawpanecandragscroll) is enabled, this is the height of the area in viewbox coordinates that can be accessed through drag-scrolling.
-
-### See Also
-
-- [DrawPane.getViewPortRectInViewBoxCoords](#method-drawpanegetviewportrectinviewboxcoords)
-
-**Flags**: IR
-
----
-## Attr: DrawPane.zoomLevel
-
-### Description
-Zoom for the `DrawPane` as a whole, where 1 is normal size.
-
-**Flags**: IRW
-
----
-## Attr: DrawPane.editProxyConstructor
-
-### Description
-Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas.md#method-canvasseteditmode).
-
-**Flags**: IR
+One other coordinate system in use by a DrawPane when [drag-scrolling](#attr-drawpanecandragscroll) is enabled is the "viewbox coordinate system". The viewbox coordinate system is the drawing coordinate system with the [DrawPane.translate](#attr-drawpanetranslate) and [DrawPane.zoomLevel](#attr-drawpanezoomlevel) transforms applied.
 
 ---
 ## Attr: DrawPane.drawingType
@@ -115,10 +87,26 @@ Array of DrawItems to initially display in this DrawPane.
 **Flags**: IR
 
 ---
+## Attr: DrawPane.drawingHeight
+
+### Description
+When [canDragScroll](#attr-drawpanecandragscroll) is enabled, this is the height of the area in viewbox coordinates that can be accessed through drag-scrolling.
+
+**Flags**: IR
+
+---
 ## Attr: DrawPane.rotation
 
 ### Description
 Rotation in degrees for the `DrawPane` as a whole about the center of the `DrawPane`. The positive direction corresponds to clockwise rotation (for example, 45 is rotation clockwise by 45 degrees and -10 is rotation counterclockwise by 10 degrees).
+
+**Flags**: IRW
+
+---
+## Attr: DrawPane.zoomLevel
+
+### Description
+Zoom for the `DrawPane` as a whole, where 1 is normal size.
 
 **Flags**: IRW
 
@@ -131,56 +119,20 @@ Global translation. This array has two numbers. The first number is the X transl
 **Flags**: IR
 
 ---
+## Attr: DrawPane.editProxyConstructor
+
+### Description
+Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas.md#method-canvasseteditmode).
+
+**Flags**: IR
+
+---
 ## Attr: DrawPane.drawingWidth
 
 ### Description
 When [canDragScroll](#attr-drawpanecandragscroll) is enabled, this is the width of the area in viewbox coordinates that can be accessed through drag-scrolling.
 
-### See Also
-
-- [DrawPane.getViewPortRectInViewBoxCoords](#method-drawpanegetviewportrectinviewboxcoords)
-
 **Flags**: IR
-
----
-## ClassMethod: DrawPane.bezierExtrema
-
-### Description
-Computes the minimum and maximum value of the cubic Bézier curve polynomial defined in [DrawPane.bezier](#classmethod-drawpanebezier), for `0 ≤ t ≤ 1`.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| p1 | [double](../reference.md#type-double) | false | — | starting point coordinate |
-| cp1 | [double](../reference.md#type-double) | false | — | first control point coordinate |
-| cp2 | [double](../reference.md#type-double) | false | — | second control point coordinate |
-| p2 | [double](../reference.md#type-double) | false | — | end point coordinate |
-
-### Returns
-
-`[Array of double](#type-array-of-double)` — the minimum and maximum value of the cubic Bézier curve polynomial
-
----
-## ClassMethod: DrawPane.getRegularPolygonPoints
-
-### Description
-Calls [DrawPane.getPolygonPoints](#classmethod-drawpanegetpolygonpoints) with angles spread evenly over the full 360 degrees.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| n | [int](../reference.md#type-int) | false | — | the number of vertices the polygon |
-| width | [int](../reference.md#type-int) | false | — | width of target space |
-| height | [int](../reference.md#type-int) | false | — | height of target space |
-| xc | [int](../reference.md#type-int) | false | — | center point x |
-| yc | [int](../reference.md#type-int) | false | — | center point y |
-| startAngle | [double](../reference.md#type-double) | false | — | the angle (in radians) with respect to the center point of the first vertex of the polygon |
-
-### Returns
-
-`[Array of Point](#type-array-of-point)` — list of the vertices of the regular polygon
 
 ---
 ## ClassMethod: DrawPane.getPolygonPoints
@@ -222,6 +174,25 @@ Computes the top-, left-, bottom-, and right-most coordinates containing the Be�
 | controlPoint2 | [Point](#type-point) | false | — | second cubic Bézier control point |
 
 ---
+## ClassMethod: DrawPane.bezierExtrema
+
+### Description
+Computes the minimum and maximum value of the cubic Bézier curve polynomial defined in [DrawPane.bezier](#classmethod-drawpanebezier), for `0 ≤ t ≤ 1`.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| p1 | [double](../reference.md#type-double) | false | — | starting point coordinate |
+| cp1 | [double](../reference.md#type-double) | false | — | first control point coordinate |
+| cp2 | [double](../reference.md#type-double) | false | — | second control point coordinate |
+| p2 | [double](../reference.md#type-double) | false | — | end point coordinate |
+
+### Returns
+
+`[Array of double](#type-array-of-double)` — the minimum and maximum value of the cubic Bézier curve polynomial
+
+---
 ## ClassMethod: DrawPane.bezier
 
 ### Description
@@ -259,6 +230,27 @@ Calculate the bounding box of the cubic Bézier curve with endpoints `p1` and `
 ### Returns
 
 `[Array of double](#type-array-of-double)` — the x1, y1, x2, y2 coordinates. The point `(x1, y1)` is the top-left point of the bounding box and the point `(x2, y2)` is the bottom-right point of the bounding box.
+
+---
+## ClassMethod: DrawPane.getRegularPolygonPoints
+
+### Description
+Calls [DrawPane.getPolygonPoints](#classmethod-drawpanegetpolygonpoints) with angles spread evenly over the full 360 degrees.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| n | [int](../reference.md#type-int) | false | — | the number of vertices the polygon |
+| width | [int](../reference.md#type-int) | false | — | width of target space |
+| height | [int](../reference.md#type-int) | false | — | height of target space |
+| xc | [int](../reference.md#type-int) | false | — | center point x |
+| yc | [int](../reference.md#type-int) | false | — | center point y |
+| startAngle | [double](../reference.md#type-double) | false | — | the angle (in radians) with respect to the center point of the first vertex of the polygon |
+
+### Returns
+
+`[Array of Point](#type-array-of-point)` — list of the vertices of the regular polygon
 
 ---
 ## ClassMethod: DrawPane.scaleAndCenter
@@ -313,10 +305,51 @@ See the documentation of [getDrawingPoint()](#method-drawpanegetdrawingpoint) fo
 **Flags**: A
 
 ---
+## Method: DrawPane.setRotation
+
+### Description
+Sets the [rotation](#attr-drawpanerotation) of the `DrawPane`.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| degrees | [float](../reference.md#type-float) | false | — | the new rotation in degrees. The positive direction corresponds to clockwise rotation. |
+
+---
 ## Method: DrawPane.destroyItems
 
 ### Description
 Permanently [destroy](DrawItem.md#method-drawitemdestroy) all DrawItems currently associated with this DrawPane, leaving the DrawPane itself intact
+
+---
+## Method: DrawPane.getDataURL
+
+### Description
+Get a "data:" URL encoding the current contents of the `DrawPane`.
+
+The returned "data:" URLs can be used anywhere a URL to an image is valid, for example, [Img.src](Img.md#attr-imgsrc).
+
+This method will directly return the data URL on modern browsers when using `<canvas>`-style rendering (the default), and if there are no [DrawImage](DrawImage.md#class-drawimage)s in this `DrawPane` that load cross-domain images.
+
+On legacy browers (any version of IE in "quirks" mode, all versions of IE prior to 9.0), or if there is a `DrawImage` that loads a cross-domain image, data URL generation requires a server trip and requires the SmartClient Server to be installed with the same set of [required .jars](../kb_topics/javaModuleDependencies.md#kb-topic-java-module-dependencies) as are required for PDF export of charts in legacy IE. The method will return null and a callback must be passed, which fires when the data URL has been retrieved from the server.
+
+If the callback is passed but no server trip is required, the callback is fired immediately.
+
+For obtaining PNG or other image data for use in server-side processing (such as attaching to automated emails or saving to a database), see also the server-side APIs in com.isomorphic.contentexport.ImageExport.
+
+Note: It is recommended to pass a callback instead of relying on the method returning the data URL directly. This is because the callback will always be called with the generated data URL, whereas work-arounds for browser bugs may require asynchronous generation of the data URL, meaning that a data URL might not be returned immediately in certain browsers for certain `DrawPane` contents.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| callback | [DataURLCallback](#type-dataurlcallback) | true | — | callback to fire when the data URL is available. The callback is called regardless of whether the data URL is also returned. |
+| format | [DataURLFormat](../reference.md#type-dataurlformat) | true | — | the format of the data URL. If not specified, then "all" is assumed. |
+
+### Returns
+
+`[String](#type-string)` — the data URL if synchronously generated.
 
 ---
 ## Method: DrawPane.refreshNow
@@ -325,6 +358,50 @@ Permanently [destroy](DrawItem.md#method-drawitemdestroy) all DrawItems currentl
 Immediately draws or redraws any items of this `DrawPane` that are scheduled to be drawn or redrawn after a delay.
 
 For performance reasons, this `DrawPane` may delay refreshing its display to allow for multiple draw item updates to be drawn at the same time. If this is occurring, refreshNow() will immediately refresh the display instead of refreshing the display in a timer.
+
+**Flags**: A
+
+---
+## Method: DrawPane.drawEnd
+
+### Description
+Called after we finish drawing to the underlying HTML5 `<canvas>` element of a DrawPane, after the last [DrawItem](DrawItem.md#class-drawitem) has been drawn. Only called if the [DrawingType](../reference.md#type-drawingtype) is "bitmap".
+
+There is no default implementation of this method.
+
+**Flags**: A
+
+---
+## Method: DrawPane.rotate
+
+### Description
+Synonym of [DrawPane.setRotation](#method-drawpanesetrotation).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| degrees | [float](../reference.md#type-float) | false | — | the new rotation in degrees. The positive direction corresponds to clockwise rotation. |
+
+---
+## Method: DrawPane.erase
+
+### Description
+Call [DrawItem.erase](DrawItem.md#method-drawitemerase) on all DrawItems currently associated with the DrawPane.
+
+The DrawItems will continue to exist, and you can call draw() on them to make them appear again, or [destroy](DrawItem.md#method-drawitemdestroy) to get rid of them permanetly. Use [DrawPane.destroyItems](#method-drawpanedestroyitems) to permanently get rid of all DrawItems.
+
+---
+## Method: DrawPane.getDrawingPoint
+
+### Description
+Returns the point of the last event in the [drawing coordinate system](#class-drawpane).
+
+To give a concrete example, suppose that this `DrawPane` has [zoomLevel](#attr-drawpanezoomlevel) 2 and drag-panning is not enabled (just to simplify this example). If [getOffsetX()](Canvas.md#method-canvasgetoffsetx) and [getOffsetY()](Canvas.md#method-canvasgetoffsety) is (0, 0) (i.e. the mouse pointer is located at the top left point of this `DrawPane`), then getDrawingPoint() would return (0, 0). If getOffsetX/Y() is (20, 40), then getDrawingPoint() would return (10, 20) because when the 2× zoom level is applied, (10, 20) is translated to (20, 40) on the screen. You could, for example, create a new [DrawLine](DrawLine.md#class-drawline) with [startPoint](DrawLine.md#attr-drawlinestartpoint) (10, 20) and when this line is drawn on screen, the position of the line's start point would be at offset (20, 40) on screen.
+
+### Returns
+
+`[Point](#type-point)` — the point in drawing coordinates of the last event.
 
 **Flags**: A
 
@@ -359,7 +436,7 @@ The `printProperties` argument, if passed, must be passed to any subcomponents o
 
 **Notes on printing**
 
-To print a `DrawPane` for export on IE8 and earlier, it is important to pass [PrintProperties](../reference_2.md#object-printproperties) with [printForExport](PrintProperties.md#attr-printpropertiesprintforexport):true:
+To print a `DrawPane` for export on IE8 and earlier, it is important to pass [PrintProperties](../reference.md#object-printproperties) with [printForExport](PrintProperties.md#attr-printpropertiesprintforexport):true:
 
 ```
 var exportHTML = drawPane.getPrintHTML({ printForExport:true });
@@ -415,145 +492,6 @@ Returns gradient for gradientID.
 `[Gradient](#type-gradient)` — the gradient or null if not found
 
 ---
-## Method: DrawPane.getSvgString
-
-### Description
-Converts this DrawPane to the source of an ``<svg>`` element equivalent to the current drawing.
-
-In Pro edition and above, the returned string can be used with [RPCManager.exportImage](RPCManager.md#classmethod-rpcmanagerexportimage) to download an image, or with server-side APIs in com.isomorphic.contentexport.ImageExport to obtain various kinds of images for further server-side processing.
-
-### Returns
-
-`[String](#type-string)` — the source of an ``<svg>`` element.
-
----
-## Method: DrawPane.createLinearGradient
-
-### Description
-Creates a linear gradient which can be used by any DrawItem of this DrawPane. Any DrawItem's [fillGradient](DrawItem.md#attr-drawitemfillgradient) can reference the gradient by the given ID.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| id | [Identifier](../reference.md#type-identifier) | false | — | the ID of the linear gradient |
-| linearGradient | [LinearGradient](#type-lineargradient) | false | — | the linear gradient |
-
-### Returns
-
-`[Identifier](../reference.md#type-identifier)` — id
-
-**Deprecated**
-
----
-## Method: DrawPane.getBitmap
-
-### Description
-Returns the DrawPane's underlying HTML5 `<canvas>` element. Will only return a valid element if the [DrawingType](../reference.md#type-drawingtype) is "bitmap".
-
-To create a DrawItem drawn by custom HTML5 `<canvas>` drawing code, you should:
-
-*   Subclass the [DrawRect](DrawRect.md#class-drawrect) class, setting [DrawItem.lineOpacity](DrawItem.md#attr-drawitemlineopacity) to 0, and [DrawItem.eventOpaque](DrawItem.md#attr-drawitemeventopaque) to true.
-*   Define your HTML5 `<canvas>` drawing routine as [DrawItem.drawStart](DrawItem.md#method-drawitemdrawstart) or [DrawItem.drawEnd](DrawItem.md#method-drawitemdrawend).
-*   Limit your drawing to the DrawItem's [bounding box](DrawItem.md#method-drawitemgetresizeboundingbox).
-
-### Returns
-
-`[DOMElement](#type-domelement)` — HTML5 `<canvas>` element underlying this [DrawPane](#class-drawpane)
-
-### See Also
-
-- [DrawPane.drawStart](#method-drawpanedrawstart)
-- [DrawPane.drawEnd](#method-drawpanedrawend)
-
-**Flags**: A
-
----
-## Method: DrawPane.setRotation
-
-### Description
-Sets the [rotation](#attr-drawpanerotation) of the `DrawPane`.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| degrees | [float](../reference.md#type-float) | false | — | the new rotation in degrees. The positive direction corresponds to clockwise rotation. |
-
----
-## Method: DrawPane.getDataURL
-
-### Description
-Get a "data:" URL encoding the current contents of the `DrawPane`.
-
-The returned "data:" URLs can be used anywhere a URL to an image is valid, for example, [Img.src](Img.md#attr-imgsrc).
-
-This method will directly return the data URL on modern browsers when using `<canvas>`-style rendering (the default), and if there are no [DrawImage](DrawImage.md#class-drawimage)s in this `DrawPane` that load cross-domain images.
-
-On legacy browers (any version of IE in "quirks" mode, all versions of IE prior to 9.0), or if there is a `DrawImage` that loads a cross-domain image, data URL generation requires a server trip and requires the SmartClient Server to be installed with the same set of [required .jars](../kb_topics/javaModuleDependencies.md#kb-topic-java-module-dependencies) as are required for PDF export of charts in legacy IE. The method will return null and a callback must be passed, which fires when the data URL has been retrieved from the server.
-
-If the callback is passed but no server trip is required, the callback is fired immediately.
-
-For obtaining PNG or other image data for use in server-side processing (such as attaching to automated emails or saving to a database), see also the server-side APIs in com.isomorphic.contentexport.ImageExport.
-
-Note: It is recommended to pass a callback instead of relying on the method returning the data URL directly. This is because the callback will always be called with the generated data URL, whereas work-arounds for browser bugs may require asynchronous generation of the data URL, meaning that a data URL might not be returned immediately in certain browsers for certain `DrawPane` contents.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| callback | [DataURLCallback](#type-dataurlcallback) | true | — | callback to fire when the data URL is available. The callback is called regardless of whether the data URL is also returned. |
-| format | [DataURLFormat](../reference.md#type-dataurlformat) | true | — | the format of the data URL. If not specified, then "all" is assumed. |
-
-### Returns
-
-`[String](#type-string)` — the data URL if synchronously generated.
-
----
-## Method: DrawPane.drawEnd
-
-### Description
-Called after we finish drawing to the underlying HTML5 `<canvas>` element of a DrawPane, after the last [DrawItem](DrawItem.md#class-drawitem) has been drawn. Only called if the [DrawingType](../reference.md#type-drawingtype) is "bitmap".
-
-There is no default implementation of this method.
-
-**Flags**: A
-
----
-## Method: DrawPane.rotate
-
-### Description
-Synonym of [DrawPane.setRotation](#method-drawpanesetrotation).
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| degrees | [float](../reference.md#type-float) | false | — | the new rotation in degrees. The positive direction corresponds to clockwise rotation. |
-
----
-## Method: DrawPane.erase
-
-### Description
-Call [DrawItem.erase](DrawItem.md#method-drawitemerase) on all DrawItems currently associated with the DrawPane.
-
-The DrawItems will continue to exist, and you can call draw() on them to make them appear again, or [destroy](DrawItem.md#method-drawitemdestroy) to get rid of them permanetly. Use [DrawPane.destroyItems](#method-drawpanedestroyitems) to permanently get rid of all DrawItems.
-
----
-## Method: DrawPane.getDrawingPoint
-
-### Description
-Returns the point of the last event in the [drawing coordinate system](#class-drawpane).
-
-To give a concrete example, suppose that this `DrawPane` has [zoomLevel](#attr-drawpanezoomlevel) 2 and drag-panning is not enabled (just to simplify this example). If [getOffsetX()](Canvas.md#method-canvasgetoffsetx) and [getOffsetY()](Canvas.md#method-canvasgetoffsety) is (0, 0) (i.e. the mouse pointer is located at the top left point of this `DrawPane`), then getDrawingPoint() would return (0, 0). If getOffsetX/Y() is (20, 40), then getDrawingPoint() would return (10, 20) because when the 2× zoom level is applied, (10, 20) is translated to (20, 40) on the screen. You could, for example, create a new [DrawLine](DrawLine.md#class-drawline) with [startPoint](DrawLine.md#attr-drawlinestartpoint) (10, 20) and when this line is drawn on screen, the position of the line's start point would be at offset (20, 40) on screen.
-
-### Returns
-
-`[Point](#type-point)` — the point in drawing coordinates of the last event.
-
-**Flags**: A
-
----
 ## Method: DrawPane.drawStart
 
 ### Description
@@ -597,6 +535,18 @@ Creates a radial gradient which can be used by any DrawItem of this DrawPane. An
 **Deprecated**
 
 ---
+## Method: DrawPane.getSvgString
+
+### Description
+Converts this DrawPane to the source of an ``<svg>`` element equivalent to the current drawing.
+
+In Pro edition and above, the returned string can be used with [RPCManager.exportImage](RPCManager.md#classmethod-rpcmanagerexportimage) to download an image, or with server-side APIs in com.isomorphic.contentexport.ImageExport to obtain various kinds of images for further server-side processing.
+
+### Returns
+
+`[String](#type-string)` — the source of an ``<svg>`` element.
+
+---
 ## Method: DrawPane.setZoomLevel
 
 ### Description
@@ -609,19 +559,46 @@ Sets the zoom on this `DrawPane` to the specified magnification, maintaining the
 | zoomLevel | [float](../reference.md#type-float) | false | — | Desired zoom level as a float where `1.0` is equivalent to 100% magnification. Must be greater than 0. |
 
 ---
-## Method: DrawPane.getViewPortRectInViewBoxCoords
+## Method: DrawPane.createLinearGradient
 
 ### Description
-Returns the rectangle defining the drawPane's viewport (where content can be shown) in the viewbox coordinate system (see the "Note on Coordinate Systems" in the documentation for [DrawPane](#class-drawpane)). This can be useful for knowing what the viewport is showing, relative to the drawPane's [DrawPane.drawingWidth](#attr-drawpanedrawingwidth) and [DrawPane.drawingHeight](#attr-drawpanedrawingheight).
+Creates a linear gradient which can be used by any DrawItem of this DrawPane. Any DrawItem's [fillGradient](DrawItem.md#attr-drawitemfillgradient) can reference the gradient by the given ID.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| id | [Identifier](../reference.md#type-identifier) | false | — | the ID of the linear gradient |
+| linearGradient | [LinearGradient](#type-lineargradient) | false | — | the linear gradient |
 
 ### Returns
 
-`[Array of double](#type-array-of-double)` — top, left, width, height of the viewport in viewbox coordinates
+`[Identifier](../reference.md#type-identifier)` — id
+
+**Deprecated**
+
+---
+## Method: DrawPane.getBitmap
+
+### Description
+Returns the DrawPane's underlying HTML5 `<canvas>` element. Will only return a valid element if the [DrawingType](../reference.md#type-drawingtype) is "bitmap".
+
+To create a DrawItem drawn by custom HTML5 `<canvas>` drawing code, you should:
+
+*   Subclass the [DrawRect](DrawRect.md#class-drawrect) class, setting [DrawItem.lineOpacity](DrawItem.md#attr-drawitemlineopacity) to 0, and [DrawItem.eventOpaque](DrawItem.md#attr-drawitemeventopaque) to true.
+*   Define your HTML5 `<canvas>` drawing routine as [DrawItem.drawStart](DrawItem.md#method-drawitemdrawstart) or [DrawItem.drawEnd](DrawItem.md#method-drawitemdrawend).
+*   Limit your drawing to the DrawItem's [bounding box](DrawItem.md#method-drawitemgetresizeboundingbox).
+
+### Returns
+
+`[DOMElement](#type-domelement)` — HTML5 `<canvas>` element underlying this [DrawPane](#class-drawpane)
 
 ### See Also
 
-- [DrawPane.drawingWidth](#attr-drawpanedrawingwidth)
-- [DrawPane.drawingHeight](#attr-drawpanedrawingheight)
+- [DrawPane.drawStart](#method-drawpanedrawstart)
+- [DrawPane.drawEnd](#method-drawpanedrawend)
+
+**Flags**: A
 
 ---
 ## Method: DrawPane.createSimpleGradient

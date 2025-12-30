@@ -20,6 +20,30 @@ Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) fo
 **Flags**: IR
 
 ---
+## Attr: RadioGroupItem.textBoxStyle
+
+### Description
+Base CSS class applied to the text for items within this radio group.
+
+### Groups
+
+- appearance
+
+**Flags**: IRW
+
+---
+## Attr: RadioGroupItem.useNativeRadioItems
+
+### Description
+When set to false, replaces each native radio element in the group with a [CheckboxItem](CheckboxItem.md#class-checkboxitem) which can be customized via [RadioGroupItem.checkboxItemProperties](#attr-radiogroupitemcheckboxitemproperties).
+
+### Groups
+
+- appearance
+
+**Flags**: IRW
+
+---
 ## Attr: RadioGroupItem.wrap
 
 ### Description
@@ -40,16 +64,6 @@ If [RadioGroupItem.vertical](#attr-radiogroupitemvertical) is false, and this it
 ### Groups
 
 - appearance
-
-**Flags**: IRW
-
----
-## Attr: RadioGroupItem.allowEmptyValue
-
-### Description
-When set to true, allows a checked [RadioItem](../reference.md#class-radioitem) to be unchecked when clicked, clearing the value from the `RadioGroupItem`.
-
-Note that this is not a default behavior of native radios and could impact compliance with accessibility standards depending on the application.
 
 **Flags**: IRW
 
@@ -82,38 +96,6 @@ This property allows you to specify an initial set of disabled options within th
 **Flags**: I
 
 ---
-## Attr: RadioGroupItem.customIconSize
-
-### Description
-If set, this property overrides the size of the image rendered when [RadioGroupItem.useNativeRadioItems](#attr-radiogroupitemusenativeradioitems) is false.
-
-**Flags**: IR
-
----
-## Attr: RadioGroupItem.textBoxStyle
-
-### Description
-Base CSS class applied to the text for items within this radio group.
-
-### Groups
-
-- appearance
-
-**Flags**: IRW
-
----
-## Attr: RadioGroupItem.useNativeRadioItems
-
-### Description
-When set to false, replaces each native radio element in the group with a [CheckboxItem](CheckboxItem.md#class-checkboxitem) which can be customized via [RadioGroupItem.checkboxItemProperties](#attr-radiogroupitemcheckboxitemproperties).
-
-### Groups
-
-- appearance
-
-**Flags**: IRW
-
----
 ## Attr: RadioGroupItem.vertical
 
 ### Description
@@ -124,6 +106,40 @@ True == display options vertically, false == display in a single row
 - appearance
 
 **Flags**: IRW
+
+---
+## Method: RadioGroupItem.setTextBoxStyle
+
+### Description
+Setter for [RadioGroupItem.textBoxStyle](#attr-radiogroupitemtextboxstyle).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| newTextBoxStyle | [FormItemBaseStyle](../reference.md#type-formitembasestyle) | false | — | new `textBoxStyle`. |
+
+---
+## Method: RadioGroupItem.pendingStatusChanged
+
+### Description
+Notification method called when [showPending](FormItem.md#attr-formitemshowpending) is enabled and this radio group should either clear or show its pending visual state.
+
+The default behavior is that the [titleStyle](FormItem.md#attr-formitemtitlestyle) and [cellStyle](FormItem.md#attr-formitemcellstyle) are updated to include/exclude the "Pending" suffix. In addition, the label for the newly-selected option will have a different color. Returning `false` will cancel this default behavior.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| form | [DynamicForm](#type-dynamicform) | false | — | the managing `DynamicForm` instance. |
+| item | [FormItem](#type-formitem) | false | — | the form item itself (also available as "this"). |
+| pendingStatus | [boolean](../reference.md#type-boolean) | false | — | `true` if the item should show its pending visual state; `false` otherwise. |
+| newValue | [Any](#type-any) | false | — | the current form item value. |
+| value | [Any](#type-any) | false | — | the value that would be restored by a call to [DynamicForm.resetValues](DynamicForm.md#method-dynamicformresetvalues). |
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — `false` to cancel the default behavior.
 
 ---
 ## Method: RadioGroupItem.valueHoverHTML
@@ -161,39 +177,5 @@ Disable or Enable a specific option within this radioGroup
 |------|------|----------|---------|-------------|
 | value | [Any](#type-any) | false | — | value of option to disable |
 | disabled | [boolean](../reference.md#type-boolean) | false | — | true to disable the option, false to enable it |
-
----
-## Method: RadioGroupItem.setTextBoxStyle
-
-### Description
-Setter for [RadioGroupItem.textBoxStyle](#attr-radiogroupitemtextboxstyle).
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| newTextBoxStyle | [FormItemBaseStyle](../reference_2.md#type-formitembasestyle) | false | — | new `textBoxStyle`. |
-
----
-## Method: RadioGroupItem.pendingStatusChanged
-
-### Description
-Notification method called when [showPending](FormItem.md#attr-formitemshowpending) is enabled and this radio group should either clear or show its pending visual state.
-
-The default behavior is that the [titleStyle](FormItem.md#attr-formitemtitlestyle) and [cellStyle](FormItem.md#attr-formitemcellstyle) are updated to include/exclude the "Pending" suffix. In addition, the label for the newly-selected option will have a different color. Returning `false` will cancel this default behavior.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| form | [DynamicForm](#type-dynamicform) | false | — | the managing `DynamicForm` instance. |
-| item | [FormItem](#type-formitem) | false | — | the form item itself (also available as "this"). |
-| pendingStatus | [boolean](../reference.md#type-boolean) | false | — | `true` if the item should show its pending visual state; `false` otherwise. |
-| newValue | [Any](#type-any) | false | — | the current form item value. |
-| value | [Any](#type-any) | false | — | the value that would be restored by a call to [DynamicForm.resetValues](DynamicForm.md#method-dynamicformresetvalues). |
-
-### Returns
-
-`[Boolean](#type-boolean)` — `false` to cancel the default behavior.
 
 ---

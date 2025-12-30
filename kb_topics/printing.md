@@ -34,7 +34,7 @@ Note that the [CubeGrid](../classes/CubeGrid.md#class-cubegrid) component does n
 - [DrawPane.getPrintHTML](../classes/DrawPane.md#method-drawpanegetprinthtml)
 - [FormItem.getPrintValueIconStyle](../classes/FormItem.md#method-formitemgetprintvalueiconstyle)
 - [FormItem.getPrintValueIcon](../classes/FormItem.md#method-formitemgetprintvalueicon)
-- [PrintProperties](../reference_2.md#object-printproperties)
+- [PrintProperties](../reference.md#object-printproperties)
 - [PrintCanvas](../classes/PrintCanvas.md#class-printcanvas)
 - [PrintWindow](../reference.md#class-printwindow)
 - [FacetChart.printZoomChart](../classes/FacetChart.md#attr-facetchartprintzoomchart)

@@ -20,6 +20,14 @@ The following strings can be used to add special behaviors:
 *   the String "starSpacer" will cause a spacer to be created (instance of [LayoutSpacer](../reference.md#class-layoutspacer)).
 
 ---
+## Attr: ToolStrip.groupTitleOrientation
+
+### Description
+If set, this attribute affects the orientation of the titles in [ToolStripGroups](ToolStripGroup.md#class-toolstripgroup). You can override this at the [individual ToolStripGroup](ToolStripGroup.md#attr-toolstripgrouptitlealign) level.
+
+**Flags**: IR
+
+---
 ## Attr: ToolStrip.verticalStyleName
 
 ### Description
@@ -34,10 +42,18 @@ Note that this property only applies to the widget at init time. To modify the s
 **Flags**: IR
 
 ---
-## Attr: ToolStrip.separatorBreadth
+## Attr: ToolStrip.separatorClass
 
 ### Description
-Separator height, when vertical is true, or width otherwise.
+Class to create when the string "separator" appears in [ToolStrip.members](#attr-toolstripmembers).
+
+**Flags**: IR
+
+---
+## Attr: ToolStrip.members
+
+### Description
+Array of components that will be contained within this Toolstrip, like [Layout.members](Layout.md#attr-layoutmembers). Built-in special behaviors can be indicated as describe [here](#class-toolstrip).
 
 **Flags**: IR
 
@@ -60,44 +76,6 @@ Indicates whether the components are drawn horizontally from left to right (fals
 Thickness of the resizeBars in pixels.
 
 **Flags**: IRA
-
----
-## Attr: ToolStrip.formWrapperDefaults
-
-### Description
-Default properties to apply to [ToolStrip.formWrapper](#attr-toolstripformwrapper) components.
-
-The default configuration will has the following settings:
-
-*   [DynamicForm.numCols](DynamicForm.md#attr-dynamicformnumcols) set to `2`
-*   [DynamicForm.overflow](Canvas.md#attr-canvasoverflow) set to `"visible"`
-*   [DynamicForm.width](Canvas.md#attr-canvaswidth) and [DynamicForm.height](Canvas.md#attr-canvasheight) set to `1`
-
-To customize the wrapper form for an individual item, use the `formProperties` argument of [ToolStrip.addFormItem](#method-toolstripaddformitem).
-
-**Flags**: IR
-
----
-## Attr: ToolStrip.separatorClass
-
-### Description
-Class to create when the string "separator" appears in [ToolStrip.members](#attr-toolstripmembers).
-
-**Flags**: IR
-
----
-## Attr: ToolStrip.members
-
-### Description
-Array of components that will be contained within this Toolstrip. Like [Layout.members](Layout.md#attr-layoutmembers), Strings may be used as global IDs of Canvas instances.
-
-Additionally, the following special String values can be used to add built-in AutoChildren with standard ToolStrip behaviors:
-
-*   `"separator"` - creates a vertical separator (instance of [ToolStrip.separatorClass](#attr-toolstripseparatorclass))
-*   `"resizer"` - creates a resizer (instance of [ToolStrip.resizeBarClass](#attr-toolstripresizebarclass)), equivalent to setting [showResizeBar:true](Canvas.md#attr-canvasshowresizebar) on the preceding member
-*   `"starSpacer"` - creates a spacer (instance of [LayoutSpacer](../reference.md#class-layoutspacer))
-
-**Flags**: IR
 
 ---
 ## Attr: ToolStrip.formWrapperProperties
@@ -136,6 +114,21 @@ ToolStrips set a default [height](Canvas.md#attr-canvasheight) to avoid being st
 **Flags**: IRW
 
 ---
+## Attr: ToolStrip.formWrapperDefaults
+
+### Description
+Default properties to apply to [ToolStrip.formWrapper](#attr-toolstripformwrapper) components. Default object is as follows:
+```
+ { showTitle:false,
+   numCols:1,
+   overflow:"visible",
+   width:1, height:1 }
+ 
+```
+
+**Flags**: IR
+
+---
 ## Attr: ToolStrip.formWrapperConstructor
 
 ### Description
@@ -166,12 +159,26 @@ DynamicForm instance created by [ToolStrip.addFormItem](#method-toolstripaddform
 **Flags**: IR
 
 ---
+## Attr: ToolStrip.showGroupTitle
+
+### Description
+If set, this attribute affects whether [ToolStripGroups](ToolStripGroup.md#class-toolstripgroup) in this ToolStrip show their header control. You can override this at the [individual ToolStripGroup](ToolStripGroup.md#method-toolstripgroupsetshowtitle) level.
+
+**Flags**: IR
+
+---
+## Attr: ToolStrip.groupTitleAlign
+
+### Description
+If set, this attribute affects the alignment of the titles in [ToolStripGroups](ToolStripGroup.md#class-toolstripgroup). You can override this at the [individual ToolStripGroup](ToolStripGroup.md#attr-toolstripgrouptitlealign) level.
+
+**Flags**: IR
+
+---
 ## Method: ToolStrip.addFormItem
 
 ### Description
-Add a form item to this toolStrip. This method will create a DynamicForm autoChild with the item passed in as a single item, based on the [formWrapper config](#attr-toolstripformwrapper), and add it to the toolstrip as a member.
-
-Returns a pointer to the generated formWrapper component.
+Add a form item to this toolStrip. This method will create a DynamicForm autoChild with the item passed in as a single item, based on the [formWrapper config](#attr-toolstripformwrapper), and add it to the toolstrip as a member. Returns a pointer to the generated formWrapper component.
 
 ### Parameters
 

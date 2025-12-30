@@ -27,7 +27,7 @@ Furthermore, DataSources can extract specific fields from complex nested object 
 
 **Java / JS Reflection:** Any Java object can be delivered to the browser as a JavaScript object, and vice versa. As a developer of a custom DataSource, you do not need to concern yourself with dealing with translations to and from JSON or XML; you work directly with native Java objects. For example, a method you write to fulfill a "fetch" operation can simply return a `Collection` of Java beans; the SmartClient Server framework would transparently handle converting this into a matching Javascript structure. *Saving nested objects example*
 
-**Reify:** The DataSource Wizards in Reify are pluggable; we provide wizards for SQL and Hibernate DataSources, and it is easy to write a new wizard to integrate your custom DataSource into Reify. *SQL Wizard screenshots*, *Hibernate Wizard screenshots*
+**Visual Builder:** The DataSource Wizards in Visual Builder are pluggable; we provide wizards for SQL and Hibernate DataSources, and it is easy to write a new wizard to integrate your custom DataSource into Visual Builder. *SQL Wizard screenshots*, *Hibernate Wizard screenshots*
 
 **Batch DataSource Generator:** If the persistence scheme you are implementing your custom DataSource for is based on collections of Javabeans, the Batch DataSource Generator can generate DataSource definition files for instances of your custom DataSource. This is out of the box behavior, but you can also alter and extend the DataSource Generator to suit your exact needs - we supply the source and it has been specifically designed to be easy to modify.
 

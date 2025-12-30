@@ -6,7 +6,7 @@
 
 ## Class: FacetChartEditProxy
 
-*Inherits from:* [EditProxy](EditProxy.md#class-editproxy)
+*Inherits from:* [DrawPaneEditProxy](../reference.md#class-drawpaneeditproxy)
 
 ### Description
 [EditProxy](EditProxy.md#class-editproxy) that handles [FacetCharts](FacetChart.md#class-facetchart) when editMode is enabled.

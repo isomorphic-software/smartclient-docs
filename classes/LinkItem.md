@@ -16,6 +16,25 @@ The link to open is specified as the item value with [FormItem.setValue](FormIte
 Additionally, a custom action can be triggered when the link is clicked: see [LinkItem.target](#attr-linkitemtarget) for details.
 
 ---
+## Attr: LinkItem.readOnlyDisplay
+
+### Description
+If [canEdit](FormItem.md#attr-formitemcanedit) is set to `false`, how should this `LinkItem` be displayed to the user?
+
+Link items are, by default, canEdit:false. Note that the link remains active regardless of the `readOnlyDisplay` setting.
+
+### Groups
+
+- appearance
+- readOnly
+
+### See Also
+
+- [DynamicForm.readOnlyDisplay](DynamicForm.md#attr-dynamicformreadonlydisplay)
+
+**Flags**: IRW
+
+---
 ## Attr: LinkItem.disableIconsOnReadOnly
 
 ### Description
@@ -38,6 +57,16 @@ Optional title HTML to display for this item's link. If unset, the `LinkItem`'s 
 **Flags**: IRW
 
 ---
+## Attr: LinkItem.target
+
+### Description
+By default, clicking a link rendered by this item opens it in a new browser window. You can alter this behavior by setting this property. The value of this property will be passed as the value to the `target` attribute of the anchor tag used to render the link.
+
+If you set linkItem.target to "javascript", the default behaviour is to catch and consume mouse-clicks that would result in the link being followed. Instead, the [FormItem.click](FormItem.md#method-formitemclick) event is fired.
+
+**Flags**: IRW
+
+---
 ## Attr: LinkItem.iconVAlign
 
 ### Description
@@ -48,35 +77,6 @@ How should icons be aligned vertically for this form item.
 - formIcons
 
 **Flags**: IRWA
-
----
-## Attr: LinkItem.readOnlyDisplay
-
-### Description
-If [canEdit](FormItem.md#attr-formitemcanedit) is set to `false`, how should this `LinkItem` be displayed to the user?
-
-Link items are, by default, canEdit:false. Note that the link remains active regardless of the `readOnlyDisplay` setting.
-
-### Groups
-
-- appearance
-- readOnly
-
-### See Also
-
-- [DynamicForm.readOnlyDisplay](DynamicForm.md#attr-dynamicformreadonlydisplay)
-
-**Flags**: IRW
-
----
-## Attr: LinkItem.target
-
-### Description
-By default, clicking a link rendered by this item opens it in a new browser window. You can alter this behavior by setting this property. The value of this property will be passed as the value to the `target` attribute of the anchor tag used to render the link.
-
-If you set linkItem.target to "javascript", the default behaviour is to catch and consume mouse-clicks that would result in the link being followed. Instead, the [FormItem.click](FormItem.md#method-formitemclick) event is fired.
-
-**Flags**: IRW
 
 ---
 ## Method: LinkItem.setLinkTitle

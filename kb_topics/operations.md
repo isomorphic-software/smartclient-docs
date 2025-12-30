@@ -31,7 +31,7 @@ Integrating DataSource operations with an existing system is best approached by 
   
 The SmartClient Server comes with a built-in [SQLDataSource](sqlDataSource.md#kb-topic-sql-datasources) which can be used without any server-side code needing to be written. In contrast, any operation which uses custom server-side code is called a "Custom Operation".  
   
-Generally it makes sense to prototype an application using Built-in DataSource Operations, then on the backend, create Custom DataSource Operations to retrieve data from the data store you will use in production (though don't rule out using the SQL DataSource in production - see [this discussion](sqlVsJPA.md#kb-topic-sql-datasource-vs-jpa-ejb-mybatis-and-other-technologies) of the advantages of doing so}. As you switch from using Built-in DataSources to Custom Operations, no client-side code changes will be required, because the client cares only about the DataSource definition, not the data store which the data is ultimately retrieved from.  
+Generally it makes sense to prototype an application using Built-in DataSource Operations, then on the backend, create Custom DataSource Operations to retrieve data from the data store you will use in production (though don't rule out using the SQL DataSource in production - see [this discussion](sqlVsJPA.md#kb-topic-sql-datasource-vs-jpa-ejb-ibatis-and-other-technologies) of the advantages of doing so}. As you switch from using Built-in DataSources to Custom Operations, no client-side code changes will be required, because the client cares only about the DataSource definition, not the data store which the data is ultimately retrieved from.  
   
 **Data Managers: ResultSet and ResultTree**  
   
@@ -57,7 +57,6 @@ Data Managers provide load-on-demand for datasets too large to be loaded on the 
 - [DataBoundComponent.removeOperation](../classes/DataBoundComponent.md#attr-databoundcomponentremoveoperation)
 - [DataBoundComponent.exportOperation](../classes/DataBoundComponent.md#attr-databoundcomponentexportoperation)
 - [DSRequest.operationId](../classes/DSRequest.md#attr-dsrequestoperationid)
-- [AdvancedCriterionSubquery.operationId](../classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubqueryoperationid)
 - [ValuesManager.addOperation](../classes/ValuesManager.md#attr-valuesmanageraddoperation)
 - [ValuesManager.updateOperation](../classes/ValuesManager.md#attr-valuesmanagerupdateoperation)
 - [ValuesManager.removeOperation](../classes/ValuesManager.md#attr-valuesmanagerremoveoperation)

@@ -57,47 +57,6 @@ You're always guaranteed to receive the id you associate with a history entry in
 | data | [Any](#type-any) | true | — | Arbitrary data to associate with this history entry. When the user next navigates to this history entry, this data will be provided as an argument to your callback function. Note that the SmartClient Core module is also required to be loaded on the page for this particular feature to work. |
 
 ---
-## StaticMethod: History.registerCallback
-
-### Description
-Registers a callback to be called when the user navigates to a synthetic history entry.
-
-**NOTE:** Only one primary callback can be registered at a time. Unless `isAdditional` is true, then `registerCallback()` registers the primary callback. To register a callback that is called in addition to the primary callback, if set, pass `true` for `isAdditional`.
-
-If the SmartClient Core module is loaded on the page where you're using the History module, you can use any format acceptable to [Class.fireCallback](Class.md#method-classfirecallback) as the callback. The parameters 'id' and 'data' will be passed to your callback, in that order.
-
-If the SmartClient Core module is not loaded on the page, you can use one of the following formats:
-
-*   A function that takes an id and a data argument, in that order.
-*   An object literal with a property named 'method' whose value is a function that takes an id and a data argument, in that order; and a property named 'target' that specifies the object on which the callback function should be applied. So, e.g:
-    ```
-     {target: myObj, method: myObj.myFunction}
-     
-    ```
-    
-
-The user can navigate to a synthetic history entry (and trip this callback) in one of two ways:
-
-*   When [History.addHistoryEntry](#staticmethod-historyaddhistoryentry) method is called, a new URL associated with the history entry is generated, and the browser's back/forward navigation buttons become active. The user can then navigate back to a stored history entry via standard browser history navigation, or by explicitly hitting the appropriate URL. In this case both the ID and data parameter passed to [History.addHistoryEntry](#staticmethod-historyaddhistoryentry) will be available when the callback fires.
-*   Alternatively the user can store a generated history URL (for example in a browser bookmark) and navigate directly to it in a new browser session. In this case the 'addHistoryEntry()' may not have been fired within the browser session. This callback will still fire with the appropriate history ID but the data parameter will be null. You can disable this behavior by passing in the `requiresData` parameter.
-
-If this method is called before the page has loaded, and the page initially has a URL with a history ID, the callback will be fired with the appropriate ID on page load. However if a history callback is registered after the page has loaded, it will not be fired until the user moves to a new synthetic history entry. If you wish to explicitly check the current URL for a history entry, you can use the [History.getCurrentHistoryId](#staticmethod-historygetcurrenthistoryid) method.
-
-When the user transitions to the history entry immediately before the first synthetic history entry, the callback is fired with an id of null.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| callback | [String](#type-string)|[Object](../reference.md#type-object) | false | — | The callback to invoke when the user navigates to a synthetic history entry. |
-| requiresData | [boolean](../reference.md#type-boolean) | false | — | If passed, this callback will only be fired if the user is navigating to a history entry that was explicitly generated in this browser session. |
-| isAdditional | [boolean](../reference.md#type-boolean) | true | — | If false or unspecified, then the callback is considered to be the primary callback, replacing the previous primary callback if the primary callback was previously registered. If true, then the callback is an additive callback; that is, it is called in addition to the primary callback, and after the primary callback is called. |
-
-### Returns
-
-`[int](../reference.md#type-int)` — the ID of the callback. This can be passed to [History.unregisterCallback](#staticmethod-historyunregistercallback) to remove the callback.
-
----
 ## StaticMethod: History.getHistoryData
 
 ### Description
@@ -140,5 +99,46 @@ Browsers including Chrome and Firefox require a delay, even a minimal 1 millisec
 ### Returns
 
 `[boolean](../reference.md#type-boolean)` — whether another history entry can be added via [History.addHistoryEntry](#staticmethod-historyaddhistoryentry).
+
+---
+## StaticMethod: History.registerCallback
+
+### Description
+Registers a callback to be called when the user navigates to a synthetic history entry.
+
+**NOTE:** Only one primary callback can be registered at a time. Unless `isAdditional` is true, then `registerCallback()` registers the primary callback. To register a callback that is called in addition to the primary callback, if set, pass `true` for `isAdditional`.
+
+If the SmartClient Core module is loaded on the page where you're using the History module, you can use any format acceptable to [Class.fireCallback](Class.md#method-classfirecallback) as the callback. The parameters 'id' and 'data' will be passed to your callback, in that order.
+
+If the SmartClient Core module is not loaded on the page, you can use one of the following formats:
+
+*   A function that takes an id and a data argument, in that order.
+*   An object literal with a property named 'method' whose value is a function that takes an id and a data argument, in that order; and a property named 'target' that specifies the object on which the callback function should be applied. So, e.g:
+    ```
+     {target: myObj, method: myObj.myFunction}
+     
+    ```
+    
+
+The user can navigate to a synthetic history entry (and trip this callback) in one of two ways:
+
+*   When [History.addHistoryEntry](#staticmethod-historyaddhistoryentry) method is called, a new URL associated with the history entry is generated, and the browser's back/forward navigation buttons become active. The user can then navigate back to a stored history entry via standard browser history navigation, or by explicitly hitting the appropriate URL. In this case both the ID and data parameter passed to [History.addHistoryEntry](#staticmethod-historyaddhistoryentry) will be available when the callback fires.
+*   Alternatively the user can store a generated history URL (for example in a browser bookmark) and navigate directly to it in a new browser session. In this case the 'addHistoryEntry()' may not have been fired within the browser session. This callback will still fire with the appropriate history ID but the data parameter will be null. You can disable this behavior by passing in the `requiresData` parameter.
+
+If this method is called before the page has loaded, and the page initially has a URL with a history ID, the callback will be fired with the appropriate ID on page load. However if a history callback is registered after the page has loaded, it will not be fired until the user moves to a new synthetic history entry. If you wish to explicitly check the current URL for a history entry, you can use the [History.getCurrentHistoryId](#staticmethod-historygetcurrenthistoryid) method.
+
+When the user transitions to the history entry immediately before the first synthetic history entry, the callback is fired with an id of null.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| callback | [String](#type-string)|[Object](../reference_2.md#type-object) | false | — | The callback to invoke when the user navigates to a synthetic history entry. |
+| requiresData | [boolean](../reference.md#type-boolean) | false | — | If passed, this callback will only be fired if the user is navigating to a history entry that was explicitly generated in this browser session. |
+| isAdditional | [boolean](../reference.md#type-boolean) | true | — | If false or unspecified, then the callback is considered to be the primary callback, replacing the previous primary callback if the primary callback was previously registered. If true, then the callback is an additive callback; that is, it is called in addition to the primary callback, and after the primary callback is called. |
+
+### Returns
+
+`[int](../reference.md#type-int)` — the ID of the callback. This can be passed to [History.unregisterCallback](#staticmethod-historyunregistercallback) to remove the callback.
 
 ---

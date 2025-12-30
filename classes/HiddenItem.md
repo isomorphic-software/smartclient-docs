@@ -14,30 +14,6 @@ HiddenItems track a value but have no visible appearance and do not take up spac
 When using SmartClient databinding it is usually not necessary to use a HiddenItem, since the DynamicForm will track values for which no actual form control exists, and will submit these 'extra' values when [DynamicForm.saveData](DynamicForm.md#method-dynamicformsavedata) is called. HiddenItems only apply to forms that are submitted like ordinary HTML forms, via the [DynamicForm.submitForm](DynamicForm.md#method-dynamicformsubmitform) method.
 
 ---
-## Attr: HiddenItem.colSpan
-
-### Description
-hidden fields don't take up any columns
-
-### Groups
-
-- appearance
-
-**Flags**: IRW
-
----
-## Attr: HiddenItem.showTitle
-
-### Description
-we never show a separate title cell for hidden fields
-
-### Groups
-
-- appearance
-
-**Flags**: IRW
-
----
 ## Attr: HiddenItem.alwaysFetchMissingValues
 
 ### Description
@@ -58,10 +34,34 @@ Note: For hiddenItem [fetchMissingValues](#attr-hiddenitemfetchmissingvalues) is
 **Flags**: IRWA
 
 ---
+## Attr: HiddenItem.colSpan
+
+### Description
+hidden fields don't take up any columns
+
+### Groups
+
+- appearance
+
+**Flags**: IRW
+
+---
 ## Attr: HiddenItem.rowSpan
 
 ### Description
 hidden fields don't take up any rows
+
+### Groups
+
+- appearance
+
+**Flags**: IRW
+
+---
+## Attr: HiddenItem.showTitle
+
+### Description
+we never show a separate title cell for hidden fields
 
 ### Groups
 

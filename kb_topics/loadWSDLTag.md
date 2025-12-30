@@ -7,8 +7,6 @@
 ## KB Topic: <isomorphic:loadWSDL>
 
 ### Description
-See [jspTags](../reference.md#kb-topic-smartclient-jsp-tags)
-
 _produces:_ JavaScript
 
 Load a WSDL file and create an instance of [WebService](../classes/WebService.md#class-webservice) that allows invoking operations and binding DataSources to web service operations. This tag works just like [XMLTools.loadWSDL](../classes/XMLTools.md#classmethod-xmltoolsloadwsdl), except it's synchronous and the result is server-cacheable.

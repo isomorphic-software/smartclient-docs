@@ -67,50 +67,6 @@ Also in both cases, deletion of any file is immediate. In the case of a pre-exis
 - upload
 
 ---
-## Attr: MultiFileItem.editButton
-
-### Description
-Button for launching a picker to add new files for upload. Supports the properties of a [FormItemIcon](../reference.md#object-formitemicon).
-
-**Flags**: IR
-
----
-## Attr: MultiFileItem.pickerAddAnotherFileButtonTitle
-
-### Description
-The contents of the "Add another" file button in the picker launched by the [edit button](#attr-multifileitemeditbutton).
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IR
-
----
-## Attr: MultiFileItem.removeButtonPrompt
-
-### Description
-The [prompt](FormItemIcon.md#attr-formitemiconprompt) of the [remove button](#attr-multifileitemremovebutton).
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IR
-
----
-## Attr: MultiFileItem.emptyMessage
-
-### Description
-Empty message to display when there are no files listed.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IR
-
----
 ## Attr: MultiFileItem.dataSource
 
 ### Description
@@ -119,6 +75,14 @@ DataSource where files are stored.
 This DataSource is expected to have a field of type "binary" as well as a primaryKey and foreignKey declaration to some other DataSource; see the [MultiFileItem](#class-multifileitem) for an overview.
 
 This DataSource need only be capable of "fetch", "add" and "remove" - "update" is unused.
+
+**Flags**: IR
+
+---
+## Attr: MultiFileItem.editButton
+
+### Description
+Button for launching a picker to add new files for upload. Supports the properties of a [FormItemIcon](../reference_2.md#object-formitemicon).
 
 **Flags**: IR
 
@@ -139,10 +103,34 @@ The initial title of the upload button in the picker lauched by the [edit button
 **Flags**: IR
 
 ---
+## Attr: MultiFileItem.pickerAddAnotherFileButtonTitle
+
+### Description
+The contents of the "Add another" file button in the picker launched by the [edit button](#attr-multifileitemeditbutton).
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IR
+
+---
 ## Attr: MultiFileItem.removeButton
 
 ### Description
-Button for removing files. Supports the properties of a [FormItemIcon](../reference.md#object-formitemicon).
+Button for removing files. Supports the properties of a [FormItemIcon](../reference_2.md#object-formitemicon).
+
+**Flags**: IR
+
+---
+## Attr: MultiFileItem.removeButtonPrompt
+
+### Description
+The [prompt](FormItemIcon.md#attr-formitemiconprompt) of the [remove button](#attr-multifileitemremovebutton).
+
+### Groups
+
+- i18nMessages
 
 **Flags**: IR
 
@@ -199,6 +187,18 @@ Specifies the label of the progress meter in the picker lauched by the [edit but
 
 ### Description
 The [prompt](FormItemIcon.md#attr-formitemiconprompt) of the [edit button](#attr-multifileitemeditbutton).
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IR
+
+---
+## Attr: MultiFileItem.emptyMessage
+
+### Description
+Empty message to display when there are no files listed.
 
 ### Groups
 

@@ -22,14 +22,32 @@ To provide a value to the form, call [CanvasItem.storeValue](#method-canvasitems
 If you cannot easily detect changes to values in your Canvas, a workaround is to call `storeValue` right before the form saves.
 
 ---
+## Attr: CanvasItem.canvas
+
+### Description
+The canvas that will be displayed inside this item. You can pass an instance you've already created, or its global ID as a String. You can also implement [CanvasItem.createCanvas](#method-canvasitemcreatecanvas) to dynamically create the canvas when the FormItem is initialized.
+
+If `canvas` and `createCanvas()` are unspecified, the canvas for this item will be auto-created using the overrideable defaults: [CanvasItem.canvasProperties](#attr-canvasitemcanvasproperties) and [CanvasItem.canvasConstructor](#attr-canvasitemcanvasconstructor)
+
+Note that subclasses of `CanvasItem` may use a different AutoChild name than just "canvas". For example, [SliderItem](SliderItem.md#class-slideritem) uses "slider", and in that case, you need to use the specific APIs provided by the subclass.
+
+Note that [Canvas.canvasItem](Canvas.md#attr-canvascanvasitem) will be set on the canvas to point back to this item.
+
+### See Also
+
+- [autoChildUsage](../kb_topics/autoChildUsage.md#kb-topic-using-autochildren)
+
+**Flags**: IRW
+
+---
 ## Attr: CanvasItem.prompt
 
 ### Description
 This text is shown as a tooltip prompt when the cursor hovers over this item.
 
-When the item is [read-only](FormItem.md#method-formitemsetcanedit) a different hover can be shown with [FormItem.readOnlyHover](FormItem.md#attr-formitemreadonlyhover). Or, when the item is [disabled](FormItem.md#attr-formitemdisabled) or read-only with [readOnlyDisplay:disabled](FormItem.md#attr-formitemreadonlydisplay) a different hover can be shown with [FormItem.disabledHover](FormItem.md#attr-formitemdisabledhover).
+When item is [read-only](FormItem.md#method-formitemsetcanedit) a different hover can be shown with [FormItem.readOnlyHover](FormItem.md#attr-formitemreadonlyhover). Or, when item is [disabled](FormItem.md#attr-formitemdisabled) or read-only with [readOnlyDisplay:disabled](FormItem.md#attr-formitemreadonlydisplay) a different hover can be shown with [FormItem.disabledHover](FormItem.md#attr-formitemdisabledhover).
 
-Note that when the form is [disabled](Canvas.md#attr-canvasdisabled), or when this item [suppresses hovers](FormItem.md#attr-formitemcanhover), this prompt will not be shown.
+Note that when the form is [disabled](Canvas.md#attr-canvasdisabled) this prompt will not be shown.
 
 ### Groups
 
@@ -72,12 +90,36 @@ If [this.canvas](#attr-canvasitemcanvas) is not specified as a canvas instance a
 **Flags**: IRW
 
 ---
+## Attr: CanvasItem.canvasDefaults
+
+### Description
+Default properties for the canvas if this.canvas is not already a canvas instance.
+
+**Flags**: IRW
+
+---
 ## Attr: CanvasItem.multiple
 
 ### Description
 Whether this CanvasItem is intended to hold multiple values.
 
 **Flags**: IR
+
+---
+## Attr: CanvasItem.overflow
+
+### Description
+CanvasItems support specifying overflow for the Canvas directly on the item.
+
+**Flags**: IR
+
+---
+## Attr: CanvasItem.applyPromptToCanvas
+
+### Description
+If [FormItem.prompt](FormItem.md#attr-formitemprompt) is specified for this item, should the prompt be applied to the [CanvasItem.canvas](#attr-canvasitemcanvas) for this item?
+
+**Flags**: IRW
 
 ---
 ## Attr: CanvasItem.height
@@ -88,6 +130,19 @@ Height of the Canvas. Can be either a number indicating a fixed height in pixels
 Height may also be explicitly specified on the [CanvasItem.canvas](#attr-canvasitemcanvas). In this any `canvasItem.height` will be ignored in favor of the value applied to the canvas directly. In either case, percentage values will be resolved using standard formItem sizing rules as described in [formLayout](../kb_topics/formLayout.md#kb-topic-form-layout)
 
 **Flags**: IRW
+
+---
+## Attr: CanvasItem.autoDestroy
+
+### Description
+Should this item's [canvas](#attr-canvasitemcanvas) be automatically destroyed when the item is destroyed? Form items are destroyed automatically when a call to [DynamicForm.setItems](DynamicForm.md#method-dynamicformsetitems) removes them from their parent form, or if their parent form is destroyed. This property governs whether, when this occurs, the item's canvas should also be [destroyed](Canvas.md#method-canvasdestroy).
+
+This property has no effect for canvases automatically created via the "autoChild" pattern, using [CanvasItem.canvasProperties](#attr-canvasitemcanvasproperties), [CanvasItem.canvasDefaults](#attr-canvasitemcanvasdefaults) etc. CanvasItems which create their canvas in this way will always destroy the canvas when the item is destroyed or on an explicit [CanvasItem.setCanvas](#method-canvasitemsetcanvas) call, regardless of this property's value.
+
+Setting this property to true is typically appropriate for cases where a custom CanvasItem automatically creates its canvas as part of its initialization flow, and the canvas will not be re-used outside the item.  
+Note that once a canvas has been destroyed it can not be re-used elsewhere within an application.
+
+**Flags**: IRWA
 
 ---
 ## Attr: CanvasItem.shouldSaveValue
@@ -108,59 +163,16 @@ Properties to apply to this canvas on creation if this.canvas is not already a c
 **Flags**: IRW
 
 ---
-## Attr: CanvasItem.canvas
+## Method: CanvasItem.setPrompt
 
 ### Description
-The canvas that will be displayed inside this item. You can pass an instance you've already created, or its global ID as a String. You can also implement [CanvasItem.createCanvas](#method-canvasitemcreatecanvas) to dynamically create the canvas when the FormItem is initialized.
+Set the [FormItem.prompt](FormItem.md#attr-formitemprompt) for this item. Default implementation will also apply the prompt to [CanvasItem.canvas](#attr-canvasitemcanvas) if [CanvasItem.applyPromptToCanvas](#attr-canvasitemapplyprompttocanvas) is true.
 
-If `canvas` and `createCanvas()` are unspecified, the canvas for this item will be auto-created using the overrideable defaults: [CanvasItem.canvasProperties](#attr-canvasitemcanvasproperties) and [CanvasItem.canvasConstructor](#attr-canvasitemcanvasconstructor)
+### Parameters
 
-Note that subclasses of `CanvasItem` may use a different AutoChild name than just "canvas". For example, [SliderItem](SliderItem.md#class-slideritem) uses "slider", and in that case, you need to use the specific APIs provided by the subclass.
-
-Note that [Canvas.canvasItem](Canvas.md#attr-canvascanvasitem) will be set on the canvas to point back to this item.
-
-### See Also
-
-- [autoChildUsage](../kb_topics/autoChildUsage.md#kb-topic-using-autochildren)
-
-**Flags**: IRW
-
----
-## Attr: CanvasItem.canvasDefaults
-
-### Description
-Default properties for the canvas if this.canvas is not already a canvas instance.
-
-**Flags**: IRW
-
----
-## Attr: CanvasItem.overflow
-
-### Description
-CanvasItems support specifying overflow for the Canvas directly on the item.
-
-**Flags**: IR
-
----
-## Attr: CanvasItem.applyPromptToCanvas
-
-### Description
-If [FormItem.prompt](FormItem.md#attr-formitemprompt) is specified for this item, should the prompt be applied to the [CanvasItem.canvas](#attr-canvasitemcanvas) for this item?
-
-**Flags**: IRW
-
----
-## Attr: CanvasItem.autoDestroy
-
-### Description
-Should this item's [canvas](#attr-canvasitemcanvas) be automatically destroyed when the item is destroyed? Form items are destroyed automatically when a call to [DynamicForm.setItems](DynamicForm.md#method-dynamicformsetitems) removes them from their parent form, or if their parent form is destroyed. This property governs whether, when this occurs, the item's canvas should also be [destroyed](Canvas.md#method-canvasdestroy).
-
-This property has no effect for canvases automatically created via the "autoChild" pattern, using [CanvasItem.canvasProperties](#attr-canvasitemcanvasproperties), [CanvasItem.canvasDefaults](#attr-canvasitemcanvasdefaults) etc. CanvasItems which create their canvas in this way will always destroy the canvas when the item is destroyed or on an explicit [CanvasItem.setCanvas](#method-canvasitemsetcanvas) call, regardless of this property's value.
-
-Setting this property to true is typically appropriate for cases where a custom CanvasItem automatically creates its canvas as part of its initialization flow, and the canvas will not be re-used outside the item.  
-Note that once a canvas has been destroyed it can not be re-used elsewhere within an application.
-
-**Flags**: IRWA
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| prompt | [HTMLString](../reference.md#type-htmlstring) | false | — | new prompt for the item. |
 
 ---
 ## Method: CanvasItem.setCanvas
@@ -173,128 +185,6 @@ Setter to update the [CanvasItem.canvas](#attr-canvasitemcanvas) at runtime
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | canvas | [Canvas](#type-canvas) | false | — | New canvas to display. |
-
----
-## Method: CanvasItem.canEditChanged
-
-### Description
-Notification method called when the [canEdit](FormItem.md#attr-formitemcanedit) setting is modified. Developers may make use of this to toggle between an editable and a read-only appearance of the [canvas](#attr-canvasitemcanvas).
-
-The default behavior is:
-
-*   If `canvas` is a [DynamicForm](DynamicForm.md#class-dynamicform), the form's [DynamicForm.canEdit](DynamicForm.md#attr-dynamicformcanedit) setting is set to `canEdit`.
-*   [CanvasItem.shouldDisableCanvas](#method-canvasitemshoulddisablecanvas) is called to determine if the `canvas` should be disabled.
-
-Standard `CanvasItem`\-based form items may customize the default behavior. For example, a [MultiComboBoxItem](MultiComboBoxItem.md#class-multicomboboxitem) will hide its [comboForm](MultiComboBoxItem.md#attr-multicomboboxitemcomboform) if the [readOnlyDisplay](FormItem.md#attr-formitemreadonlydisplay) is "readOnly" or "static" and also disable the buttons when made read-only.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| canEdit | [boolean](../reference.md#type-boolean) | false | — | New `canEdit` value |
-
-### Returns
-
-`[Boolean](#type-boolean)` — `false` to cancel the default behavior.
-
-### See Also
-
-- [CanvasItem.readOnlyDisplayChanged](#method-canvasitemreadonlydisplaychanged)
-
----
-## Method: CanvasItem.setCriterion
-
-### Description
-Display a [Criterion](../reference_2.md#object-criterion) object in this item for editing. Overridden from [FormItem.setCriterion](FormItem.md#method-formitemsetcriterion) in order to support editing nested criteria using nested dynamicForms as described in [CanvasItem.getCriterion](#method-canvasitemgetcriterion).
-
-Implementation checks for this.canvas being specified as a DynamicForm, and applies criterion directly to the embedded form via setValuesAsCriteria()
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| criterion | [Criterion](#type-criterion) | false | — | criteria to edit |
-
-### Groups
-
-- criteriaEditing
-
----
-## Method: CanvasItem.hasAdvancedCriteria
-
-### Description
-Overridden to return true if [CanvasItem.canvas](#attr-canvasitemcanvas) is a dynamicForm. See [CanvasItem.getCriterion](#method-canvasitemgetcriterion) for details of editing advanced criteria using nested dynamicForms.
-
-### Returns
-
-`[Boolean](#type-boolean)` — true if this item's canvas is a DynamicForm
-
-### Groups
-
-- criteriaEditing
-
----
-## Method: CanvasItem.isFocused
-
-### Description
-Does this CanvasItem have keyboard focus.
-
-This method will return true if this item's canvas, or any of its descendents, has keyboard focus
-
-### Returns
-
-`[Boolean](#type-boolean)` — returns true if this item contains focus.
-
----
-## Method: CanvasItem.readOnlyDisplayChanged
-
-### Description
-Notification method called when the [readOnlyDisplay](FormItem.md#attr-formitemreadonlydisplay) setting is modified. Developers may make use of this to toggle between an editable and a read-only appearance of the [canvas](#attr-canvasitemcanvas).
-
-The default behavior is: when the `canvas` is a [DynamicForm](DynamicForm.md#class-dynamicform), the form's [DynamicForm.readOnlyDisplay](DynamicForm.md#attr-dynamicformreadonlydisplay) setting is set to `appearance`.
-
-Standard `CanvasItem`\-based form items may customize the default behavior.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| appearance | [ReadOnlyDisplayAppearance](../reference_2.md#type-readonlydisplayappearance) | false | — | new `readOnlyDisplay` value |
-
-### Returns
-
-`[Boolean](#type-boolean)` — `false` to cancel the default behavior.
-
-### See Also
-
-- [CanvasItem.canEditChanged](#method-canvasitemcaneditchanged)
-
----
-## Method: CanvasItem.showValue
-
-### Description
-This method will be called whenever this FormItem's value is being set via a programmatic call to e.g: [DynamicForm.setValues](DynamicForm.md#method-dynamicformsetvalues) or [FormItem.setValue](FormItem.md#method-formitemsetvalue) and may be overridden by CanvasItems intended to support displaying data values to update the embedded Canvas to reflect the value passed in. Note that the first parameter will be a formatted value - while the second parameter will contain the underlying data value for the item.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| displayValue | [Any](#type-any) | false | — | new display value for the item. This is the value after applying any custom formatter or valueMap |
-| dataValue | [Any](#type-any) | false | — | underlying data value for the item |
-| form | [DynamicForm](#type-dynamicform) | false | — | the dynamicForm in which this item is contained |
-| item | [CanvasItem](#type-canvasitem) | false | — | the live form item instance |
-
----
-## Method: CanvasItem.setPrompt
-
-### Description
-Set the [FormItem.prompt](FormItem.md#attr-formitemprompt) for this item. Default implementation will also apply the prompt to [CanvasItem.canvas](#attr-canvasitemcanvas) if [CanvasItem.applyPromptToCanvas](#attr-canvasitemapplyprompttocanvas) is true.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| prompt | [HTMLString](../reference.md#type-htmlstring) | false | — | new prompt for the item. |
 
 ---
 ## Method: CanvasItem.getCriterion
@@ -355,10 +245,37 @@ Note that this functionality may be entirely bypassed by setting [CanvasItem.edi
 - criteriaEditing
 
 ---
+## Method: CanvasItem.canEditChanged
+
+### Description
+Notification method called when the [canEdit](FormItem.md#attr-formitemcanedit) setting is modified. Developers may make use of this to toggle between an editable and a read-only appearance of the [canvas](#attr-canvasitemcanvas).
+
+The default behavior is:
+
+*   If `canvas` is a [DynamicForm](DynamicForm.md#class-dynamicform), the form's [DynamicForm.canEdit](DynamicForm.md#attr-dynamicformcanedit) setting is set to `canEdit`.
+*   [CanvasItem.shouldDisableCanvas](#method-canvasitemshoulddisablecanvas) is called to determine if the `canvas` should be disabled.
+
+Standard `CanvasItem`\-based form items may customize the default behavior. For example, a [MultiComboBoxItem](MultiComboBoxItem.md#class-multicomboboxitem) will hide its [comboForm](MultiComboBoxItem.md#attr-multicomboboxitemcomboform) if the [readOnlyDisplay](FormItem.md#attr-formitemreadonlydisplay) is "readOnly" or "static" and also disable the buttons when made read-only.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| canEdit | [boolean](../reference.md#type-boolean) | false | — | New `canEdit` value |
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — `false` to cancel the default behavior.
+
+### See Also
+
+- [CanvasItem.readOnlyDisplayChanged](#method-canvasitemreadonlydisplaychanged)
+
+---
 ## Method: CanvasItem.createCanvas
 
 ### Description
-This method allows dynamic creation of a CanvasItem's canvas, rather than setting [CanvasItem.canvas](#attr-canvasitemcanvas) statically. If specified this [StringMethod](../kb_topics/stringMethods.md#kb-topic-string-methods-overview) will be called when the form item is initialized and should return the Canvas to display for this item.
+This method allows dynamic creation of a CanvasItem's canvas, rather than setting [CanvasItem.canvas](#attr-canvasitemcanvas) statically. If specified this [StringMethod](../reference.md#kb-topic-string-methods-overview) will be called when the form item is initialized and should return the Canvas to display for this item.
 
 ### Parameters
 
@@ -372,12 +289,30 @@ This method allows dynamic creation of a CanvasItem's canvas, rather than settin
 `[Canvas](#type-canvas)` — the canvas to be rendered inside this CanvasItem
 
 ---
+## Method: CanvasItem.setCriterion
+
+### Description
+Display a [Criterion](../reference.md#object-criterion) object in this item for editing. Overridden from [FormItem.setCriterion](FormItem.md#method-formitemsetcriterion) in order to support editing nested criteria using nested dynamicForms as described in [CanvasItem.getCriterion](#method-canvasitemgetcriterion).
+
+Implementation checks for this.canvas being specified as a DynamicForm, and applies criterion directly to the embedded form via setValuesAsCriteria()
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| criterion | [Criterion](#type-criterion) | false | — | criteria to edit |
+
+### Groups
+
+- criteriaEditing
+
+---
 ## Method: CanvasItem.updateCanvasTabPosition
 
 ### Description
 This method will place an entry for the [CanvasItem.canvas](#attr-canvasitemcanvas) under this item in the [TabIndexManager](TabIndexManager.md#class-tabindexmanager). This ensures the user can tab into the canvas (and its descendants) in the expected position within this item's DynamicForm.
 
-See also [DynamicForm.updateChildTabPositions()](Canvas.md#method-canvasupdatechildtabpositions).
+See also [Canvas.updateChildTabPositions](Canvas.md#method-canvasupdatechildtabpositions).
 
 ---
 ## Method: CanvasItem.canEditCriterion
@@ -402,6 +337,32 @@ This method has been overridden to return true if this item's canvas is a Dynami
 - criteriaEditing
 
 ---
+## Method: CanvasItem.hasAdvancedCriteria
+
+### Description
+Overridden to return true if [CanvasItem.canvas](#attr-canvasitemcanvas) is a dynamicForm. See [CanvasItem.getCriterion](#method-canvasitemgetcriterion) for details of editing advanced criteria using nested dynamicForms.
+
+### Returns
+
+`[Boolean](#type-boolean)` — true if this item's canvas is a DynamicForm
+
+### Groups
+
+- criteriaEditing
+
+---
+## Method: CanvasItem.isFocused
+
+### Description
+Does this CanvasItem have keyboard focus.
+
+This method will return true if this item's canvas, or any of its descendents, has keyboard focus
+
+### Returns
+
+`[Boolean](#type-boolean)` — returns true if this item contains focus.
+
+---
 ## Method: CanvasItem.shouldDisableCanvas
 
 ### Description
@@ -414,6 +375,30 @@ This method may be overridden to customize the default return value.
 `[boolean](../reference.md#type-boolean)` — `true` if the `canvas` should be disabled; `false` otherwise.
 
 ---
+## Method: CanvasItem.readOnlyDisplayChanged
+
+### Description
+Notification method called when the [readOnlyDisplay](FormItem.md#attr-formitemreadonlydisplay) setting is modified. Developers may make use of this to toggle between an editable and a read-only appearance of the [canvas](#attr-canvasitemcanvas).
+
+The default behavior is: when the `canvas` is a [DynamicForm](DynamicForm.md#class-dynamicform), the form's [DynamicForm.readOnlyDisplay](DynamicForm.md#attr-dynamicformreadonlydisplay) setting is set to `appearance`.
+
+Standard `CanvasItem`\-based form items may customize the default behavior.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| appearance | [ReadOnlyDisplayAppearance](../reference.md#type-readonlydisplayappearance) | false | — | new `readOnlyDisplay` value |
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — `false` to cancel the default behavior.
+
+### See Also
+
+- [CanvasItem.canEditChanged](#method-canvasitemcaneditchanged)
+
+---
 ## Method: CanvasItem.storeValue
 
 ### Description
@@ -421,7 +406,7 @@ Store (and optionally show) a value for this form item.
 
 This method will fire standard [FormItem.change](FormItem.md#method-formitemchange) and [DynamicForm.itemChanged](DynamicForm.md#method-dynamicformitemchanged) handlers, and store the value passed in such that subsequent calls to [FormItem.getValue](FormItem.md#method-formitemgetvalue) or [DynamicForm.getValue](DynamicForm.md#method-dynamicformgetvalue) will return the new value for this item.
 
-This method is intended to provide a way for custom formItems - most commonly [canvasItems](#class-canvasitem) - to provide a new interface to the user, allowing them to manipulate the item's value, for example in an embedded [CanvasItem.canvas](#attr-canvasitemcanvas), or a pop-up dialog launched from an [icon](../reference.md#object-formitemicon), etc. Developers should call this method when the user interacts with this custom interface in order to store the changed value.
+This method is intended to provide a way for custom formItems - most commonly [canvasItems](#class-canvasitem) - to provide a new interface to the user, allowing them to manipulate the item's value, for example in an embedded [CanvasItem.canvas](#attr-canvasitemcanvas), or a pop-up dialog launched from an [icon](../reference_2.md#object-formitemicon), etc. Developers should call this method when the user interacts with this custom interface in order to store the changed value.
 
 [shouldSaveValue](#attr-canvasitemshouldsavevalue) for CanvasItems is false by default. Custom CanvasItems will need to override shouldSaveValue to true if the values stored via this API should be included in the form's [getValues()](DynamicForm.md#method-dynamicformgetvalues) and saved with the form when [saveData()](DynamicForm.md#method-dynamicformsavedata) is called.
 
@@ -435,5 +420,20 @@ Note that this method is not designed for customizing a value which is already b
 |------|------|----------|---------|-------------|
 | value | [Any](#type-any) | false | — | value to save for this item |
 | showValue | [Boolean](#type-boolean) | true | — | Should the formItem be updated to display the new value? |
+
+---
+## Method: CanvasItem.showValue
+
+### Description
+This method will be called whenever this FormItem's value is being set via a programmatic call to e.g: [DynamicForm.setValues](DynamicForm.md#method-dynamicformsetvalues) or [FormItem.setValue](FormItem.md#method-formitemsetvalue) and may be overridden by CanvasItems intended to support displaying data values to update the embedded Canvas to reflect the value passed in. Note that the first parameter will be a formatted value - while the second parameter will contain the underlying data value for the item.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| displayValue | [Any](#type-any) | false | — | new display value for the item. This is the value after applying any custom formatter or valueMap |
+| dataValue | [Any](#type-any) | false | — | underlying data value for the item |
+| form | [DynamicForm](#type-dynamicform) | false | — | the dynamicForm in which this item is contained |
+| item | [CanvasItem](#type-canvasitem) | false | — | the live form item instance |
 
 ---

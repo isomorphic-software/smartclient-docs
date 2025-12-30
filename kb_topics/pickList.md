@@ -16,7 +16,6 @@ Properties and methods related to the pickList, which is the drop-down list of o
 - [PickList.pickListMaxWidth](../classes/PickList.md#attr-picklistpicklistmaxwidth)
 - [PickList.pickListBaseStyle](../classes/PickList.md#attr-picklistpicklistbasestyle)
 - [PickList.pickListTallBaseStyle](../classes/PickList.md#attr-picklistpicklisttallbasestyle)
-- [PickList.pickListSeparateValuesBaseStyle](../classes/PickList.md#attr-picklistpicklistseparatevaluesbasestyle)
 - [PickList.pickListApplyRowNumberStyle](../classes/PickList.md#attr-picklistpicklistapplyrownumberstyle)
 - [PickList.animatePickList](../classes/PickList.md#attr-picklistanimatepicklist)
 - [PickList.pickListAnimationTime](../classes/PickList.md#attr-picklistpicklistanimationtime)

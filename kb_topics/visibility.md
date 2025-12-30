@@ -11,7 +11,7 @@ Whether an object can be seen
 
 ### Related
 
-- [Visibility](../reference_2.md#type-visibility)
+- [Visibility](../reference.md#type-visibility)
 - [Canvas.show](../classes/Canvas.md#method-canvasshow)
 - [Canvas.showRecursively](../classes/Canvas.md#method-canvasshowrecursively)
 - [Canvas.hide](../classes/Canvas.md#method-canvashide)

@@ -28,10 +28,18 @@ This setting exists due to platform limitations in some versions of Internet Exp
 **Flags**: IRW
 
 ---
+## ClassAttr: DrawLabel.RIGHT
+
+### Description
+A declared value of the enum type [LabelAlignment](../reference.md#type-labelalignment).
+
+**Flags**: R
+
+---
 ## ClassAttr: DrawLabel.LEFT
 
 ### Description
-A declared value of the enum type [LabelAlignment](../reference_2.md#type-labelalignment).
+A declared value of the enum type [LabelAlignment](../reference.md#type-labelalignment).
 
 **Flags**: R
 
@@ -47,7 +55,7 @@ This setting exists due to platform limitations in some versions of Internet Exp
 ## ClassAttr: DrawLabel.CENTER
 
 ### Description
-A declared value of the enum type [LabelAlignment](../reference_2.md#type-labelalignment).
+A declared value of the enum type [LabelAlignment](../reference.md#type-labelalignment).
 
 **Flags**: R
 
@@ -60,18 +68,10 @@ This setting exists due to platform limitations in some versions of Internet Exp
 **Flags**: IRW
 
 ---
-## ClassAttr: DrawLabel.RIGHT
-
-### Description
-A declared value of the enum type [LabelAlignment](../reference_2.md#type-labelalignment).
-
-**Flags**: R
-
----
 ## ClassAttr: DrawLabel.END
 
 ### Description
-A declared value of the enum type [LabelAlignment](../reference_2.md#type-labelalignment).
+A declared value of the enum type [LabelAlignment](../reference.md#type-labelalignment).
 
 **Flags**: R
 
@@ -79,7 +79,7 @@ A declared value of the enum type [LabelAlignment](../reference_2.md#type-labela
 ## ClassAttr: DrawLabel.START
 
 ### Description
-A declared value of the enum type [LabelAlignment](../reference_2.md#type-labelalignment).
+A declared value of the enum type [LabelAlignment](../reference.md#type-labelalignment).
 
 **Flags**: R
 
@@ -92,10 +92,66 @@ This setting exists due to platform limitations in some versions of Internet Exp
 **Flags**: IRW
 
 ---
+## Attr: DrawLabel.editProxyConstructor
+
+### Description
+Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas.md#method-canvasseteditmode).
+
+**Flags**: IR
+
+---
+## Attr: DrawLabel.fontSize
+
+### Description
+Font size in pixels, similar to the CSS font-size attribute.
+
+### See Also
+
+- [DrawLabel.styleName](#attr-drawlabelstylename)
+
+**Flags**: IRW
+
+---
+## Attr: DrawLabel.lineColor
+
+### Description
+The text color of the label.
+
+### Groups
+
+- line
+
+**Flags**: IRW
+
+---
 ## Attr: DrawLabel.fontStyle
 
 ### Description
 Font style, similar to the CSS font-style attribute, eg "normal", "italic".
+
+### See Also
+
+- [DrawLabel.styleName](#attr-drawlabelstylename)
+
+**Flags**: IR
+
+---
+## Attr: DrawLabel.contents
+
+### Description
+This is the content that will exist as the label.
+
+### See Also
+
+- [DrawLabel.escapeContents](#attr-drawlabelescapecontents)
+
+**Flags**: IRW
+
+---
+## Attr: DrawLabel.fontFamily
+
+### Description
+Font family name, similar to the CSS font-family attribute.
 
 ### See Also
 
@@ -116,6 +172,14 @@ DrawLabel only supports the "move" knob type.
 **Flags**: IR
 
 ---
+## Attr: DrawLabel.rotation
+
+### Description
+Rotation in degrees about the [top](#attr-drawlabeltop) [left](#attr-drawlabelleft) corner. The positive direction is clockwise.
+
+**Flags**: IR
+
+---
 ## Attr: DrawLabel.styleName
 
 ### Description
@@ -128,6 +192,14 @@ Note that only font sizes defined in pixels are supported through this property.
 - [DrawLabel.escapeContents](#attr-drawlabelescapecontents)
 
 **Flags**: IRW
+
+---
+## Attr: DrawLabel.top
+
+### Description
+Sets the amount from the top of its positioning that the element should be placed.
+
+**Flags**: IR
 
 ---
 ## Attr: DrawLabel.fontWeight
@@ -168,92 +240,20 @@ For a [titleLabel](DrawItem.md#attr-drawitemtitlelabel), the [alignment](#attr-d
 **Flags**: IRW
 
 ---
+## Attr: DrawLabel.left
+
+### Description
+Sets the amount from the left of its positioning that the element should be placed.
+
+**Flags**: IR
+
+---
 ## Attr: DrawLabel.alignment
 
 ### Description
 Sets the text alignment from the x position. Similar to HTML5 context.textAlign with alignment values such as "start", "center", and "end".
 
 Note that this setting is ignored for [DrawItem.titleLabel](DrawItem.md#attr-drawitemtitlelabel) autochildren, which are always considered to have "start" alignment to make handling of [DrawItem.titleRotationMode](DrawItem.md#attr-drawitemtitlerotationmode) simpler.
-
-**Flags**: IR
-
----
-## Attr: DrawLabel.editProxyConstructor
-
-### Description
-Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas.md#method-canvasseteditmode).
-
-**Flags**: IR
-
----
-## Attr: DrawLabel.fontSize
-
-### Description
-Font size in pixels, similar to the CSS font-size attribute.
-
-### See Also
-
-- [DrawLabel.styleName](#attr-drawlabelstylename)
-
-**Flags**: IRW
-
----
-## Attr: DrawLabel.lineColor
-
-### Description
-The text color of the label.
-
-### Groups
-
-- line
-
-**Flags**: IRW
-
----
-## Attr: DrawLabel.contents
-
-### Description
-This is the content that will exist as the label.
-
-### See Also
-
-- [DrawLabel.escapeContents](#attr-drawlabelescapecontents)
-
-**Flags**: IRW
-
----
-## Attr: DrawLabel.fontFamily
-
-### Description
-Font family name, similar to the CSS font-family attribute.
-
-### See Also
-
-- [DrawLabel.styleName](#attr-drawlabelstylename)
-
-**Flags**: IR
-
----
-## Attr: DrawLabel.rotation
-
-### Description
-Rotation in degrees about the [top](#attr-drawlabeltop) [left](#attr-drawlabelleft) corner. The positive direction is clockwise.
-
-**Flags**: IR
-
----
-## Attr: DrawLabel.top
-
-### Description
-Sets the amount from the top of its positioning that the element should be placed.
-
-**Flags**: IR
-
----
-## Attr: DrawLabel.left
-
-### Description
-Sets the amount from the left of its positioning that the element should be placed.
 
 **Flags**: IR
 
@@ -268,30 +268,6 @@ Sets this DrawLabel's [contents](#attr-drawlabelcontents).
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | contents | [String](#type-string) | false | — | the new contents. |
-
----
-## Method: DrawLabel.setLineColor
-
-### Description
-Sets the text color of the label.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| color | [CSSColor](../reference_2.md#type-csscolor) | false | — | new text color. |
-
----
-## Method: DrawLabel.setStyleName
-
-### Description
-Sets this DrawLabel's [styleName](#attr-drawlabelstylename).
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| styleName | [CSSStyleName](../reference.md#type-cssstylename) | false | — | the new styleName |
 
 ---
 ## Method: DrawLabel.setFontSize
@@ -318,6 +294,18 @@ Sets the [DrawLabel.escapeContents](#attr-drawlabelescapecontents) property for 
 | escapeContents | [boolean](../reference.md#type-boolean) | false | — | whether to escape [DrawLabel.contents](#attr-drawlabelcontents) |
 
 ---
+## Method: DrawLabel.setLineColor
+
+### Description
+Sets the text color of the label.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| color | [CSSColor](../reference_2.md#type-csscolor) | false | — | new text color. |
+
+---
 ## Method: DrawLabel.getCenter
 
 ### Description
@@ -336,5 +324,17 @@ Returns the left, top, left + textWidth, top + textHeight
 ### Returns
 
 `[Array of double](#type-array-of-double)` — x1, y1, x2, y2 coordinates
+
+---
+## Method: DrawLabel.setStyleName
+
+### Description
+Sets this DrawLabel's [styleName](#attr-drawlabelstylename).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| styleName | [CSSStyleName](../reference.md#type-cssstylename) | false | — | the new styleName |
 
 ---

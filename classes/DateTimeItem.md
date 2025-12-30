@@ -9,13 +9,7 @@
 *Inherits from:* [DateItem](DateItem.md#class-dateitem)
 
 ### Description
-A simple [DateItem subclass](DateItem.md#class-dateitem) for editing [regular datetime](DateUtil.md#classmethod-dateutilcreatedatetime) values, where date and time elements are relevant.
-
-The item edits datetimes directly as text-values, formatted according to your locale and settings such as [DateItem.dateFormatter](DateItem.md#attr-dateitemdateformatter).
-
-To edit [logical-Date values](DateUtil.md#classmethod-dateutilcreatelogicaldate), see [DateItem](DateItem.md#class-dateitem), and to edit [logical-time values](DateUtil.md#classmethod-dateutilcreatelogicaltime), see [TimeItem](TimeItem.md#class-timeitem). For [relative-date features](../reference_2.md#type-relativedatestring), see [RelativeDateItem](RelativeDateItem.md#class-relativedateitem).
-
-For detailed information on working with dates, times and datetimes, see the [Date and Time Format and Storage overview](../kb_topics/dateFormatAndStorage.md#kb-topic-date-and-time-format-and-storage).
+Subclass of DateItem for manipulating [datetimes](../reference.md#type-fieldtype).
 
 ---
 ## Attr: DateTimeItem.displayFormat
@@ -33,6 +27,18 @@ If unset, the standard shortDateTime format as set up in [DateUtil.setShortDatet
 - [DateTimeItem.inputFormat](#attr-datetimeiteminputformat)
 
 **Flags**: IRW
+
+---
+## Attr: DateTimeItem.useTextField
+
+### Description
+DateTimeItems show datetime values in a freeform text entry area.
+
+### Groups
+
+- basics
+
+**Flags**: R
 
 ---
 ## Attr: DateTimeItem.browserInputType
@@ -63,20 +69,8 @@ This attribute does not have an effect if a native HTML5 date input is being use
 
 ### See Also
 
-- [dateItem.displayFormat](#dateitemdisplayformat)
+- [DateItem.displayFormat](DateItem.md#attr-dateitemdisplayformat)
 
 **Flags**: IRW
-
----
-## Attr: DateTimeItem.useTextField
-
-### Description
-This property defaults to true in DateTimeItems and cannot be altered, since editing is via [formatted](#attr-datetimeitemdisplayformat) text-entry only.
-
-### Groups
-
-- basics
-
-**Flags**: R
 
 ---

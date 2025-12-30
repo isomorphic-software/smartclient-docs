@@ -12,6 +12,36 @@
 Checkbox form item, implemented with customizable checkbox images.
 
 ---
+## Attr: CheckboxItem.printCheckedImage
+
+### Description
+If set, the [CheckboxItem.checkedImage](#attr-checkboxitemcheckedimage) to use when [printing](../kb_topics/printing.md#kb-topic-printing).
+
+### Groups
+
+- printing
+
+### See Also
+
+- [CheckboxItem.checkedImage](#attr-checkboxitemcheckedimage)
+
+**Flags**: IRW
+
+---
+## Attr: CheckboxItem.titleStyle
+
+### Description
+Base CSS class for this item's title cell.
+
+**Note:** This styling applies to the standard form item title cell for this item - it does not apply to item's [label](#attr-checkboxitemshowlabel). To modify the styling for that text, use [CheckboxItem.textBoxStyle](#attr-checkboxitemtextboxstyle) instead.
+
+### Groups
+
+- appearance
+
+**Flags**: IRW
+
+---
 ## Attr: CheckboxItem.checkedDescription
 
 ### Description
@@ -24,16 +54,20 @@ The description shown in a hover when [FormItem.showOldValueInHover](FormItem.md
 **Flags**: IRA
 
 ---
-## Attr: CheckboxItem.showValueIconFocusedAsOver
+## Attr: CheckboxItem.printPartialSelectedImage
 
 ### Description
-When [showValueIconFocused](#attr-checkboxitemshowvalueiconfocused) is set to true, this attribute determines the state-name to use for the 'FocusedOver' state - when true, 'FocusedOver' will use the 'Over' media/style, otherwise it will use the 'Focused' media/style.
+If set, the [CheckboxItem.partialSelectedImage](#attr-checkboxitempartialselectedimage) to use when [printing](../kb_topics/printing.md#kb-topic-printing).
 
 ### Groups
 
-- valueIcons
+- printing
 
-**Flags**: IRWA
+### See Also
+
+- [CheckboxItem.partialSelectedImage](#attr-checkboxitempartialselectedimage)
+
+**Flags**: IRW
 
 ---
 ## Attr: CheckboxItem.checkedImage
@@ -116,16 +150,12 @@ Width of the checkbox image.
 **Flags**: IRW
 
 ---
-## Attr: CheckboxItem.showValueIconFocused
+## Attr: CheckboxItem.sizeToCheckboxImage
 
 ### Description
-When true, the icon is modified to reflect 'Focused' state.
+If this checkbox item is [not showing a label](#attr-checkboxitemshowlabel), should it ignore any specified [FormItem.width](FormItem.md#attr-formitemwidth) and instead size to fit its [checkbox icon](#attr-checkboxitemcheckedimage)?
 
-For the 'FocusedOver' state, the default is to reuse the "Over" state - if you want to retain the 'Focused' state instead, set [showValueIconFocusedAsOver](#attr-checkboxitemshowvalueiconfocusedasover) to false.
-
-### Groups
-
-- valueIcons
+When set to true (the default), the checkbox item ignores any specified width, ensuring that it does not impact the the containing DynamicForm's table geometry unnecessarily.
 
 **Flags**: IRWA
 
@@ -136,170 +166,6 @@ For the 'FocusedOver' state, the default is to reuse the "Over" state - if you w
 Should a null value be shown as checked (i.e. true)?
 
 **Flags**: IRW
-
----
-## Attr: CheckboxItem.showLabel
-
-### Description
-Should we show the label text next to the checkbox item.
-
-**Flags**: IRW
-
----
-## Attr: CheckboxItem.uncheckedImage
-
-### Description
-URL for the image to display when this checkbox is not selected, or unchecked.
-
-The special value "blank" means that no image will be shown.
-
-[Spriting](../kb_topics/skinning.md#kb-topic-skinning--theming) can be used for this image, by setting this property to a [SCSpriteConfig](../reference.md#type-scspriteconfig) formatted string. Alternatively developers can omit this property and instead use CSS directly in the [CheckboxItem.booleanBaseStyle](#attr-checkboxitembooleanbasestyle) property to provide an "unchecked" appearance.
-
-### Groups
-
-- appearance
-
-### See Also
-
-- [CheckboxItem.printUncheckedImage](#attr-checkboxitemprintuncheckedimage)
-
-**Flags**: IRW
-
----
-## Attr: CheckboxItem.partialSelectedImage
-
-### Description
-URL for the image to display when this checkbox is partially selected.
-
-The special value "blank" means that no image will be shown.
-
-[Spriting](../kb_topics/skinning.md#kb-topic-skinning--theming) can be used for this image, by setting this property to a [SCSpriteConfig](../reference.md#type-scspriteconfig) formatted string. Alternatively developers can omit this property and instead use CSS directly in the [CheckboxItem.booleanBaseStyle](#attr-checkboxitembooleanbasestyle) property to provide a "partially checked" appearance.
-
-### Groups
-
-- appearance
-
-### See Also
-
-- [CheckboxItem.printPartialSelectedImage](#attr-checkboxitemprintpartialselectedimage)
-
-**Flags**: IRW
-
----
-## Attr: CheckboxItem.booleanBaseStyle
-
-### Description
-An optional base CSS style to apply to the checkbox image. If supplied, the base style is suffixed with "True", "False", "Partial", or "Unset" if the checkbox is selected, unselected, partially selected, or unset. The style is then suffixed with the state of the value icon ("", "Over", "Down", "Disabled").
-
-### See Also
-
-- [CheckboxItem.printBooleanBaseStyle](#attr-checkboxitemprintbooleanbasestyle)
-
-**Flags**: IRA
-
----
-## Attr: CheckboxItem.defaultValue
-
-### Description
-Overridden to assign class-appropriate type.
-
-### Groups
-
-- basics
-
-### See Also
-
-- [FormItem.defaultValue](FormItem.md#attr-formitemdefaultvalue)
-
-**Flags**: IRW
-
----
-## Attr: CheckboxItem.showValueIconError
-
-### Description
-Whether a separate "Error" state should be applied to icons when the item fails validation. If set to true and this item has validation errors, the icon-src will be suffixed _Error_. If physical states also apply, such as [_Over_](#attr-checkboxitemshowvalueiconover) or [_Disabled_](#attr-checkboxitemshowvalueicondisabled), these are appended - for example, _ErrorOver_ or _ErrorDisabled_.
-
-Note that valid images must be made available for these `Error` states.
-
-### Groups
-
-- valueIcons
-
-**Flags**: IRWA
-
----
-## Attr: CheckboxItem.editProxyConstructor
-
-### Description
-Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas.md#method-canvasseteditmode).
-
-**Flags**: IR
-
----
-## Attr: CheckboxItem.showUnsetImage
-
-### Description
-Determines what image to display when the value for this checkbox is unset. Set to true to display the [CheckboxItem.unsetImage](#attr-checkboxitemunsetimage) for null values, or false to use the [CheckboxItem.uncheckedImage](#attr-checkboxitemuncheckedimage) for both null and explicitly unchecked values.
-
-If this attribute is not set, the [CheckboxItem.unsetImage](#attr-checkboxitemunsetimage) for null values if [CheckboxItem.allowEmptyValue](#attr-checkboxitemallowemptyvalue) is true for this item, otherwise the unchecked image will be used.
-
-**Flags**: IRA
-
----
-## Attr: CheckboxItem.printCheckedImage
-
-### Description
-If set, the [CheckboxItem.checkedImage](#attr-checkboxitemcheckedimage) to use when [printing](../kb_topics/printing.md#kb-topic-printing).
-
-### Groups
-
-- printing
-
-### See Also
-
-- [CheckboxItem.checkedImage](#attr-checkboxitemcheckedimage)
-
-**Flags**: IRW
-
----
-## Attr: CheckboxItem.titleStyle
-
-### Description
-Base CSS class for this item's title cell.
-
-**Note:** This styling applies to the standard form item title cell for this item - it does not apply to item's [label](#attr-checkboxitemshowlabel). To modify the styling for that text, use [CheckboxItem.textBoxStyle](#attr-checkboxitemtextboxstyle) instead.
-
-### Groups
-
-- appearance
-
-**Flags**: IRW
-
----
-## Attr: CheckboxItem.printPartialSelectedImage
-
-### Description
-If set, the [CheckboxItem.partialSelectedImage](#attr-checkboxitempartialselectedimage) to use when [printing](../kb_topics/printing.md#kb-topic-printing).
-
-### Groups
-
-- printing
-
-### See Also
-
-- [CheckboxItem.partialSelectedImage](#attr-checkboxitempartialselectedimage)
-
-**Flags**: IRW
-
----
-## Attr: CheckboxItem.sizeToCheckboxImage
-
-### Description
-If this checkbox item is [not showing a label](#attr-checkboxitemshowlabel), should it ignore any specified [FormItem.width](FormItem.md#attr-formitemwidth) and instead size to fit its [checkbox icon](#attr-checkboxitemcheckedimage)?
-
-When set to true (the default), the checkbox item ignores any specified width, ensuring that it does not impact the the containing DynamicForm's table geometry unnecessarily.
-
-**Flags**: IRWA
 
 ---
 ## Attr: CheckboxItem.unsetImage
@@ -330,10 +196,58 @@ The description shown in a hover when [FormItem.showOldValueInHover](FormItem.md
 **Flags**: IRA
 
 ---
+## Attr: CheckboxItem.showLabel
+
+### Description
+Should we show the label text next to the checkbox item.
+
+**Flags**: IRW
+
+---
+## Attr: CheckboxItem.uncheckedImage
+
+### Description
+URL for the image to display when this checkbox is not selected, or unchecked.
+
+The special value "blank" means that no image will be shown.
+
+[Spriting](../kb_topics/skinning.md#kb-topic-skinning--theming) can be used for this image, by setting this property to a [SCSpriteConfig](../reference.md#type-scspriteconfig) formatted string. Alternatively developers can omit this property and instead use CSS directly in the [CheckboxItem.booleanBaseStyle](#attr-checkboxitembooleanbasestyle) property to provide an "unchecked" appearance.
+
+### Groups
+
+- appearance
+
+### See Also
+
+- [CheckboxItem.printUncheckedImage](#attr-checkboxitemprintuncheckedimage)
+
+**Flags**: IRW
+
+---
 ## Attr: CheckboxItem.allowEmptyValue
 
 ### Description
 By default checkboxes allow the user to toggle between true and false values only. Setting this property to true will allow the user to toggle between three values - `true`, `false` and unset.
+
+**Flags**: IRW
+
+---
+## Attr: CheckboxItem.partialSelectedImage
+
+### Description
+URL for the image to display when this checkbox is partially selected.
+
+The special value "blank" means that no image will be shown.
+
+[Spriting](../kb_topics/skinning.md#kb-topic-skinning--theming) can be used for this image, by setting this property to a [SCSpriteConfig](../reference.md#type-scspriteconfig) formatted string. Alternatively developers can omit this property and instead use CSS directly in the [CheckboxItem.booleanBaseStyle](#attr-checkboxitembooleanbasestyle) property to provide a "partially checked" appearance.
+
+### Groups
+
+- appearance
+
+### See Also
+
+- [CheckboxItem.printPartialSelectedImage](#attr-checkboxitemprintpartialselectedimage)
 
 **Flags**: IRW
 
@@ -373,6 +287,18 @@ Base CSS class for this item's title text
 **Flags**: IRW
 
 ---
+## Attr: CheckboxItem.booleanBaseStyle
+
+### Description
+An optional base CSS style to apply to the checkbox image. If supplied, the base style is suffixed with "True", "False", "Partial", or "Unset" if the checkbox is selected, unselected, partially selected, or unset. The style is then suffixed with the state of the value icon ("", "Over", "Down", "Disabled").
+
+### See Also
+
+- [CheckboxItem.printBooleanBaseStyle](#attr-checkboxitemprintbooleanbasestyle)
+
+**Flags**: IRA
+
+---
 ## Attr: CheckboxItem.showValueIconDisabled
 
 ### Description
@@ -395,6 +321,14 @@ Should a "Down" state icon be shown when the mouse goes down over this checkbox
 - valueIcons
 
 **Flags**: IRWA
+
+---
+## Attr: CheckboxItem.editProxyConstructor
+
+### Description
+Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas.md#method-canvasseteditmode).
+
+**Flags**: IR
 
 ---
 ## Attr: CheckboxItem.uncheckedDescription
@@ -421,10 +355,20 @@ Height of the checkbox image.
 **Flags**: IRW
 
 ---
+## Attr: CheckboxItem.showUnsetImage
+
+### Description
+Determines what image to display when the value for this checkbox is unset. Set to true to display the [CheckboxItem.unsetImage](#attr-checkboxitemunsetimage) for null values, or false to use the [CheckboxItem.uncheckedImage](#attr-checkboxitemuncheckedimage) for both null and explicitly unchecked values.
+
+If this attribute is not set, the [CheckboxItem.unsetImage](#attr-checkboxitemunsetimage) for null values if [CheckboxItem.allowEmptyValue](#attr-checkboxitemallowemptyvalue) is true for this item, otherwise the unchecked image will be used.
+
+**Flags**: IRA
+
+---
 ## Attr: CheckboxItem.labelAsTitle
 
 ### Description
-By default a checkboxItem sets [CheckboxItem.showTitle](#attr-checkboxitemshowtitle):true, and so takes up two cells with the default [TitleOrientation](../reference_2.md#type-titleorientation) of "left" (see [form layout\\n overview](../kb_topics/formLayout.md#kb-topic-form-layout)). However, the title cell is left blank by default, and the title specified by [FormItem.title](FormItem.md#attr-formitemtitle) is shown inside the formItem's cell instead, in an element called the "label".
+By default a checkboxItem sets [CheckboxItem.showTitle](#attr-checkboxitemshowtitle):true, and so takes up two cells with the default [TitleOrientation](../reference.md#type-titleorientation) of "left" (see [form layout\\n overview](../kb_topics/formLayout.md#kb-topic-form-layout)). However, the title cell is left blank by default, and the title specified by [FormItem.title](FormItem.md#attr-formitemtitle) is shown inside the formItem's cell instead, in an element called the "label".
 
 To instead show the title in it's original location, set `labelAsTitle:true`. You can also set [CheckboxItem.showLabel](#attr-checkboxitemshowlabel):false to suppress the label and/or title altogether.
 
@@ -479,12 +423,18 @@ CheckboxItem has special behavior for titles, see [CheckboxItem.labelAsTitle](#a
 **Flags**: IR
 
 ---
-## Attr: CheckboxItem.showNullAsTrueIf
+## Method: CheckboxItem.getValueAsBoolean
 
 ### Description
-Set this property to the name of another field in the same record, to have this field be shown as checked (i.e. true) if this field is null and the other field is not null. For example, you could use this to show a "US Citizen" field as true if a value is entered into another field "US Social Security Number"
+Return the value tracked by this form item as a Boolean. If the value is not already a boolean, or is unset and [CheckboxItem.allowEmptyValue](#attr-checkboxitemallowemptyvalue) is true, then null will be returned.
 
-**Flags**: IRW
+### Returns
+
+`[Boolean](#type-boolean)` — value of this element
+
+### See Also
+
+- [FormItem.getValue](FormItem.md#method-formitemgetvalue)
 
 ---
 ## Method: CheckboxItem.setValueMap
@@ -500,20 +450,6 @@ Note that if this method is overridden, the override must call `this.Super("setV
 ### See Also
 
 - [CheckboxItem.valueMap](#attr-checkboxitemvaluemap)
-
----
-## Method: CheckboxItem.getValueAsBoolean
-
-### Description
-Return the value tracked by this form item as a Boolean. If the value is not already a boolean, or is unset and [CheckboxItem.allowEmptyValue](#attr-checkboxitemallowemptyvalue) is true, then null will be returned.
-
-### Returns
-
-`[Boolean](#type-boolean)` — value of this element
-
-### See Also
-
-- [FormItem.getValue](FormItem.md#method-formitemgetvalue)
 
 ---
 ## Method: CheckboxItem.pendingStatusChanged
@@ -535,6 +471,6 @@ The default behavior is that the [cellStyle](FormItem.md#attr-formitemcellstyle)
 
 ### Returns
 
-`[Boolean](#type-boolean)` — `false` to cancel the default behavior.
+`[boolean](../reference.md#type-boolean)` — `false` to cancel the default behavior.
 
 ---

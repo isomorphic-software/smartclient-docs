@@ -2374,7 +2374,7 @@ When [FacetChart.usePointSizeLogGradations](#attr-facetchartusepointsizeloggrada
 ## Attr: FacetChart.extraAxisSettings
 
 ### Description
-For charts will multiple vertical axes, optionally provides settings for how each [extra axis metric](#attr-facetchartextraaxismetrics) is plotted. See the main [FacetChart](#class-facetchart) docs for an overview of how multi-axis charts are used.
+For charts with multiple vertical axes, optionally provides settings for how each [extra axis metric](#attr-facetchartextraaxismetrics) is plotted. See the main [FacetChart](#class-facetchart) docs for an overview of how multi-axis charts are used.
 
 The chart of each metric's values may be of any rectangular chart type that uses a vertical value axis ("Column", "Area", or "Line" - "Histogram" is not supported). Because the charts will be superimposed over the same drawing area, there can only be one "Column" chart and one "Area" chart. The column chart is placed on the bottom followed by the area chart, and then the line charts are drawn on top in the order of their metric in the [FacetChart.extraAxisMetrics](#attr-facetchartextraaxismetrics) array. If the [chartType](MetricSettings.md#attr-metricsettingscharttype)s are left unspecified then by default the first metric will be drawn as columns and the remaining will be drawn as lines.
 

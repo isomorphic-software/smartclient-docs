@@ -2681,7 +2681,7 @@ To format the value displayed in the cell, make use of the [formatting](#method-
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| record | [Object](../reference.md#type-object) | false | — | the current record object |
+| record | [Record](#type-record) | false | — | the current record object |
 | recordNum | [number](#type-number) | false | — | number of the record in the current set of displayed record (e.g. 0 for the first displayed record) |
 | fieldNum | [number](#type-number) | false | — | number of the field in the listGrid.fields array |
 

@@ -1438,16 +1438,6 @@ When set to true, causes [Timelines](#attr-calendartimelineview) to highlight th
 **Flags**: IRW
 
 ---
-## Attr: Calendar.showEventDescriptions
-
-### Description
-When rendering the [canvas](#attr-calendareventcanvas) for an event, whether to show the [body area](EventCanvas.md#attr-eventcanvasshowbody), typically containing brief details of the event - [by default](#method-calendargeteventbodyhtml), [its description](#attr-calendardescriptionfield).
-
-The default is true - if set to false, the event's [header](EventCanvas.md#attr-eventcanvasshowheader) will fill the canvas.
-
-**Flags**: IR
-
----
 ## Attr: Calendar.weekViewTitle
 
 ### Description
@@ -1456,6 +1446,16 @@ The title for the [week view](#attr-calendarweekview).
 ### Groups
 
 - i18nMessages
+
+**Flags**: IR
+
+---
+## Attr: Calendar.showEventDescriptions
+
+### Description
+When rendering the [canvas](#attr-calendareventcanvas) for an event, whether to show the [body area](EventCanvas.md#attr-eventcanvasshowbody), typically containing brief details of the event - [by default](#method-calendargeteventbodyhtml), [its description](#attr-calendardescriptionfield).
+
+The default is true - if set to false, the event's [header](EventCanvas.md#attr-eventcanvasshowheader) will fill the canvas.
 
 **Flags**: IR
 

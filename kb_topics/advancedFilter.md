@@ -13,7 +13,7 @@ For a full list of operators, see [OperatorId](../reference.md#type-operatorid).
 
 ### Related
 
-- [OperatorValueType](../reference_2.md#type-operatorvaluetype)
+- [OperatorValueType](../reference.md#type-operatorvaluetype)
 - [OperatorId](../reference.md#type-operatorid)
 - [DataSource.addSearchOperator](../classes/DataSource.md#classmethod-datasourceaddsearchoperator)
 - [DataSource.setTypeOperators](../classes/DataSource.md#classmethod-datasourcesettypeoperators)

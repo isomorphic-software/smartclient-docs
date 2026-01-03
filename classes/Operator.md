@@ -127,7 +127,7 @@ This implies that if a [Criterion](../reference_2.md#object-criterion) using thi
 ## Attr: Operator.valueType
 
 ### Description
-Indicates the kind of value expected in a [Criterion](../reference_2.md#object-criterion) that uses this operator. [OperatorValueType](../reference.md#type-operatorvaluetype) lists possibilities.
+Indicates the kind of value expected in a [Criterion](../reference_2.md#object-criterion) that uses this operator. [OperatorValueType](../reference_2.md#type-operatorvaluetype) lists possibilities.
 
 The default of `null` is equivalent to "fieldType", indicating that [Criterion.value](Criterion.md#attr-criterionvalue) is expected to contain a value of the same type as the field indicated by [Criterion.fieldName](Criterion.md#attr-criterionfieldname).
 

@@ -51,13 +51,13 @@ This section aims to help you decide which of the many possible data integration
 *   write a [custom DataSource](writeCustomDataSource.md#kb-topic-custom-server-datasources) that provides the CRUD operations you want to support.
 
 *   Whether or not your storage is SQL, add business logic either declaratively in the DataSource definition, via [DMI](dmiOverview.md#kb-topic-direct-method-invocation), or any combination of the two:
-    *   The `<criteria>` and `<values>` properties of an [OperationBinding](../classes/OperationBinding.md#class-operationbinding) allow you to dynamically set data values at transaction-processing time, using built-in [Velocity support](velocitySupport.md#kb-topic-velocity-context-variables)
+    *   The `<criteria>` and `<values>` properties of an [OperationBinding](../classes/OperationBinding.md#class-operationbinding) allow you to dynamically set data values at transaction-processing time, using built-in [Velocity support](#kb-topic-velocitysupport)
     *   Override the `validate()` method of the DataSource to provide extra custom validations - just call `super` to obtain the list of errors derived from SmartClient validations, then add to that list as required with your own custom code
     *   Override the `execute()` method of the DataSource to add extra processing either before or after the SmartClient processing
     *   Use [Transaction Chaining](transactionChaining.md#kb-topic-transaction-chaining) to dynamically set data values according to the results of earlier transactions
-    *   For SQL DataSources, use [SQL Templating](customQuerying.md#kb-topic-custom-querying-overview) to change, add to or even completely replace the SQL sent to the database, and to implement special query requirements
-    *   For JPA DataSources, use [custom JQL queries](../classes/OperationBinding.md#attr-operationbindingcustomjql) to implement special query requirements
-    *   For Hibernate DataSources, use [custom HQL queries](../classes/OperationBinding.md#attr-operationbindingcustomhql) to implement special query requirementsRead more about the server-side request processing flow and how to customize it in [the server integration overview](serverDataIntegration.md#kb-topic-server-datasource-integration).
+    *   For SQL DataSources, use [SQL Templating](#kb-topic-customquerying) to change, add to or even completely replace the SQL sent to the database, and to implement special query requirements
+    *   For JPA DataSources, use [custom JQL queries](#attr-operationbindingcustomjql) to implement special query requirements
+    *   For Hibernate DataSources, use [custom HQL queries](#attr-operationbindingcustomhql) to implement special query requirementsRead more about the server-side request processing flow and how to customize it in [the server integration overview](serverDataIntegration.md#kb-topic-server-datasource-integration).
 
 *   If you do not have a Java server:
 

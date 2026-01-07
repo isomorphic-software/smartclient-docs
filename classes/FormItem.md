@@ -681,11 +681,22 @@ If true and the value is clipped, then a hover containing the full value of this
 
 The [FormItem.valueHover](#method-formitemvaluehover) method is called before the hover is displayed, allowing the hover to be canceled if desired. The HTML shown in the hover can be customized by overriding [FormItem.valueHoverHTML](#method-formitemvaluehoverhtml).
 
+**Interaction with valueHoverHTML vs itemHoverHTML:** This attribute controls which hover method handles textbox/value area hovers:
+
+*   `true` (default): textbox hovers are handled via [FormItem.itemHoverHTML](#method-formitemitemhoverhtml), which shows the item's prompt or clipped value
+*   `false`: no hover is shown for the textbox area
+*   `null`: textbox hovers are handled via [FormItem.valueHoverHTML](#method-formitemvaluehoverhtml), allowing custom value-specific hover content
+
 If the item [suppresses hovers](#attr-formitemcanhover), nothing will be shown.
 
 ### Groups
 
 - Hovers
+
+### See Also
+
+- [FormItem.valueHoverHTML](#method-formitemvaluehoverhtml)
+- [FormItem.itemHoverHTML](#method-formitemitemhoverhtml)
 
 **Flags**: IRW
 
@@ -4234,6 +4245,10 @@ If defined, this method should return the HTML to display in a hover canvas when
 
 If not defined, [DynamicForm.valueHoverHTML](DynamicForm.md#method-dynamicformvaluehoverhtml) will be evaluated to determine hover content instead.
 
+**Note:** This method is only called when hovering the value/textbox area if [FormItem.showClippedValueOnHover](#attr-formitemshowclippedvalueonhover) is not `true`. Since `showClippedValueOnHover` defaults to `true` for most text-based items, you must explicitly set it to `null` for this method to be invoked. When `showClippedValueOnHover` is `true`, textbox hovers are instead handled via [FormItem.itemHoverHTML](#method-formitemitemhoverhtml).
+
+Additionally, if [FormItem.itemHoverHTML](#method-formitemitemhoverhtml) is customized on the item or form, it takes priority and this method will not be called for textbox hovers.
+
 If [FormItem.canHover](#attr-formitemcanhover) is set to false, this method is not called.
 
 ### Parameters
@@ -4694,6 +4709,8 @@ If defined, this method should return the HTML to display in a hover canvas when
 
 If not defined, `dynamicForm.itemHoverHTML()` will be evaluated to determine hover content instead.
 
+**Note:** When customized on the item or form, this method takes priority over [FormItem.valueHoverHTML](#method-formitemvaluehoverhtml) for hovers over the value/textbox area. This means that if you define `itemHoverHTML()`, it will be called for textbox hovers instead of `valueHoverHTML()`. To use `valueHoverHTML()` for textbox hovers, do not customize `itemHoverHTML()` and set [FormItem.showClippedValueOnHover](#attr-formitemshowclippedvalueonhover) to `null`.
+
 If [FormItem.canHover](#attr-formitemcanhover) is set to false, this method is not called.
 
 ### Parameters
@@ -4717,6 +4734,7 @@ If [FormItem.canHover](#attr-formitemcanhover) is set to false, this method is n
 - [FormItem.prompt](#attr-formitemprompt)
 - [FormItem.itemHover](#method-formitemitemhover)
 - [FormItem.titleHoverHTML](#method-formitemtitlehoverhtml)
+- [FormItem.valueHoverHTML](#method-formitemvaluehoverhtml)
 
 **Flags**: A
 

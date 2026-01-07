@@ -12,7 +12,7 @@ Change of state and it's consequences for presentation.
 ### Related
 
 - [State](../reference.md#type-state)
-- [SelectionType](../reference.md#type-selectiontype)
+- [SelectionType](../reference_2.md#type-selectiontype)
 - [Selected](../reference.md#type-selected)
 - [isc.setRadioGroup](../classes/isc.md#staticmethod-iscsetradiogroup)
 - [StatefulCanvas.setState](../classes/StatefulCanvas.md#method-statefulcanvassetstate)

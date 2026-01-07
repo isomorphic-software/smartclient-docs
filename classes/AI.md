@@ -308,6 +308,22 @@ Requests that available AI engine(s) be used to re-evaluate an "aiFilter" [Advan
 `[Promise](#type-promise)` — A Promise for a [ReapplyAIFilterResponse](../reference.md#object-reapplyaifilterresponse). If the [ReapplyAIFilterResponse.type](AsyncOperationResult.md#attr-asyncoperationresulttype) is "success", then the returned Promise is resolved; otherwise, the returned Promise is rejected.
 
 ---
+## ClassMethod: AI.sendPrompt
+
+### Description
+Evaluates the given [dynamicString](#kb-topic-dynamicstring) dynamic string to form a prompt string that is then sent as the request to the default AI engine.
+
+Within `dynamicString`, any evaluated JavaScript expressions have access to all of the values in the `context` ValueMap.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| dynamicString | [String](#type-string) | false | — | A dynamic string. |
+| context | [ValueMap](../reference_2.md#type-valuemap) | false | — | A map from each in-scope [Identifier](../reference.md#type-identifier) to its value. |
+| callback | [AIResponseCallback](#type-airesponsecallback) | false | — | The callback to fire with the response from AI. |
+
+---
 ## ClassMethod: AI.buildAIFieldRequest
 
 ### Description

@@ -8575,6 +8575,14 @@ X/Y position in pixels, specified as an Array with two members, for example: \[3
 A set of properties that can be used to configure a [canvas pointer](classes/Canvas.md#attr-canvasshowpointer).
 
 ---
+## Object: PromiseOutcome
+
+### Description
+Holds information about the outcome of a settled [Promise](reference_2.md#object-promise).
+
+Note: This is the type of object returned by Promise.allSettled().
+
+---
 ## Object: RadialGradient
 
 ### Description

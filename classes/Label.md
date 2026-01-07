@@ -153,7 +153,8 @@ The contents of a canvas or label widget. Any HTML string is acceptable.
 ## Attr: Label.dynamicContents
 
 ### Description
-Dynamic contents allows the contents string to be treated as a simple but powerful template. When this attribute is set to true, JavaScript expressions may be embedded within the contents string, using the format: `${_[JavaScript to evaluate]_}`.
+Dynamic contents allows the contents string to be treated as a simple but powerful template. When this attribute is set to `true`, JavaScript expressions may be embedded within the contents string, using the format:  
+`${_[JavaScript to evaluate]_}`.
 
 For example, to include the current date in a templated message, `canvas.contents` could be set to:  
 `"Today's date is `<b>`${new Date().toUSShortDate()}`</b>`"`
@@ -166,7 +167,7 @@ Notes:
 
 *   Calling markForRedraw() on the canvas will evaluate any embedded expressions.
 *   Multiple such expressions may be embedded within the contents string for a component.
-*   If an error occurs during evaluation, a warning is logged to the [Developer Console](../kb_topics/debugging.md#kb-topic-debugging) and the error string will be embedded in place of the expected value in the Canvas.
+*   If an error occurs during evaluation, a warning is logged to the [Developer Console](../kb_topics/debugging.md#kb-topic-debugging) and an empty string will be substituted.
 
 ### Groups
 

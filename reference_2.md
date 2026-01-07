@@ -1975,6 +1975,19 @@ Controls whether and when individual items are selected when clicking on a form 
 - communication
 
 ---
+## Type: SettledPromiseStatus
+
+### Description
+The eventual state of a settled [Promise](reference_2.md#object-promise).
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| "fulfilled" | The `Promise` fulfilled with a value. |
+| "rejected" | The `Promise` rejected with a reason. |
+
+---
 ## Type: SkipJSONValidation
 
 ### Description

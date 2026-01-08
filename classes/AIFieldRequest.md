@@ -23,7 +23,7 @@ The class of value that AI will be asked to generate for the field.
 ## Attr: AIFieldRequest.minValue
 
 ### Description
-If the [AIFieldRequest.valueClass](#attr-aifieldrequestvalueclass) is "interval" or "ratio" , the minimum value that can be generated. If `null`, then there is no minimum.
+If the [AIFieldRequest.valueClass](#attr-aifieldrequestvalueclass) is "interval" or "ratio", the minimum value that can be generated. If `null`, then there is no minimum.
 
 **Flags**: IR
 
@@ -39,7 +39,7 @@ The names of fields that are relevant to each [SummarizeRecordsRequest](../refer
 ## Attr: AIFieldRequest.maxValue
 
 ### Description
-If the [AIFieldRequest.valueClass](#attr-aifieldrequestvalueclass) is "interval" or "ratio" , the maximum value that can be generated. If `null`, then there is no maximum.
+If the [AIFieldRequest.valueClass](#attr-aifieldrequestvalueclass) is "interval" or "ratio", the maximum value that can be generated. If `null`, then there is no maximum.
 
 **Flags**: IR
 

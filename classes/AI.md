@@ -311,7 +311,7 @@ Requests that available AI engine(s) be used to re-evaluate an "aiFilter" [Advan
 ## ClassMethod: AI.sendPrompt
 
 ### Description
-Evaluates the given [dynamicString](#kb-topic-dynamicstring) dynamic string to form a prompt string that is then sent as the request to the default AI engine.
+Evaluates the given [dynamic string](../kb_topics/dynamicStrings.md#kb-topic-dynamic-strings) to form a prompt string that is then sent as the request to the default AI engine.
 
 Within `dynamicString`, any evaluated JavaScript expressions have access to all of the values in the `context` ValueMap.
 
@@ -319,9 +319,13 @@ Within `dynamicString`, any evaluated JavaScript expressions have access to all 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| dynamicString | [String](#type-string) | false | — | A dynamic string. |
+| dynamicString | [DynamicString](../reference_2.md#type-dynamicstring) | false | — | A dynamic string. |
 | context | [ValueMap](../reference_2.md#type-valuemap) | false | — | A map from each in-scope [Identifier](../reference.md#type-identifier) to its value. |
 | callback | [AIResponseCallback](#type-airesponsecallback) | false | — | The callback to fire with the response from AI. |
+
+### Groups
+
+- dynamicStrings
 
 ---
 ## ClassMethod: AI.buildAIFieldRequest

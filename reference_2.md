@@ -2351,10 +2351,6 @@ Context object for an AI process.
 ### Description
 Settings that configure requests to AI to generate the values for a field.
 
-### See Also
-
-- [AI.buildAIFieldRequest](classes/AI.md#classmethod-aibuildaifieldrequest)
-
 ---
 ## Object: AIHoverRequest
 

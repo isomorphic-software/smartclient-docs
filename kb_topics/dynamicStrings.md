@@ -27,6 +27,7 @@ Note: If the resulting string, after evaluating the dynamic string, will be used
 ### Related
 
 - [DynamicString](../reference_2.md#type-dynamicstring)
+- [AI.sendPrompt](../classes/AI.md#classmethod-aisendprompt)
 - [Canvas.dynamicContents](../classes/Canvas.md#attr-canvasdynamiccontents)
 - [Label.dynamicContents](../classes/Label.md#attr-labeldynamiccontents)
 

@@ -78,7 +78,7 @@ Width and height of an object
 - [ListGrid.getColumnPageLeft](../classes/ListGrid_2.md#method-listgridgetcolumnpageleft)
 - [ListGrid.getColumnWidth](../classes/ListGrid_2.md#method-listgridgetcolumnwidth)
 - [ListGrid.getCellPageRect](../classes/ListGrid_2.md#method-listgridgetcellpagerect)
-- [ListGrid.getDrawnRowHeight](../classes/ListGrid_1.md#method-listgridgetdrawnrowheight)
+- [ListGrid.getDrawnRowHeight](../classes/ListGrid_2.md#method-listgridgetdrawnrowheight)
 - [ListGrid.setHeaderHeight](../classes/ListGrid_2.md#method-listgridsetheaderheight)
 - [ModalWindow.width](../classes/ModalWindow.md#attr-modalwindowwidth)
 - [ModalWindow.maxWidth](../classes/ModalWindow.md#attr-modalwindowmaxwidth)

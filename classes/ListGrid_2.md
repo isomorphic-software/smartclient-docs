@@ -4,6 +4,133 @@
 
 ---
 
+## Method: ListGrid.getDrawnRowHeight
+
+### Description
+Get the drawn height of a row.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| rowNum | [number](#type-number) | false | — | — |
+
+### Returns
+
+`[number](#type-number)` — height
+
+### Groups
+
+- sizing
+- positioning
+
+**Flags**: A
+
+---
+## Method: ListGrid.getFormattedValue
+
+### Description
+Get the fully formatted value for a cell, including all formatting applied by custom formatters and declarative formatting settings.
+
+This method returns the complete formatted value exactly as it would appear in the grid cell, applying all of the following in order:
+
+*   [ListGridField.valueMap](ListGridField.md#attr-listgridfieldvaluemap) mapping
+*   [ListGridField.displayField](ListGridField.md#attr-listgridfielddisplayfield) substitution
+*   Custom formatters ([ListGridField.formatCellValue](ListGridField.md#method-listgridfieldformatcellvalue) and [ListGrid.formatCellValue](#method-listgridformatcellvalue))
+*   [listGridField.cellValueTemplate](#listgridfieldcellvaluetemplate) evaluation
+*   [ListGridField.format](ListGridField.md#attr-listgridfieldformat) application
+*   Type-specific formatters
+*   Final string formatting and HTML escaping
+
+This method is useful when you want to display a grid cell's value elsewhere in your UI with the exact same formatting that appears in the grid itself.
+
+Unlike [ListGrid.getDefaultFormattedValue](#method-listgridgetdefaultformattedvalue), this method _will_ call any custom formatter methods that have been defined on the field or grid, so it returns the complete formatted value exactly as it would appear in the grid.
+
+For other use cases, see also:
+
+*   [ListGrid.getDefaultFormattedValue](#method-listgridgetdefaultformattedvalue) - get formatted value without any custom formatters
+*   [ListGrid.getDefaultFormattedFieldValue](ListGrid_1.md#method-listgridgetdefaultformattedfieldvalue) - get formatted value with field-level formatters only
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| record | [Record](#type-record) | false | — | the record containing the value to format |
+| fieldName | [String](#type-string) | false | — | the name of the field to format |
+| value | [Any](#type-any) | false | — | optional value to format; if not provided, the value will be extracted from the record |
+
+### Returns
+
+`[String](#type-string)` — the fully formatted cell value
+
+### See Also
+
+- [ListGrid.getDefaultFormattedValue](#method-listgridgetdefaultformattedvalue)
+- [ListGrid.getDefaultFormattedFieldValue](ListGrid_1.md#method-listgridgetdefaultformattedfieldvalue)
+
+**Flags**: A
+
+---
+## Method: ListGrid.getRowCountStatus
+
+### Description
+This method indicates whether [ListGrid.getRowCount](#method-listgridgetrowcount) reflects an accurate row-count for this listGrid. An accurate row count may not currently be available if [progressiveLoading](DataSource.md#attr-datasourceprogressiveloading) is active.
+
+See [RowCountStatus](../reference.md#type-rowcountstatus) for further details.
+
+### Returns
+
+`[RowCountStatus](../reference.md#type-rowcountstatus)` — Current row-count status for this grid
+
+### Groups
+
+- rowRangeDisplay
+
+---
+## Method: ListGrid.cellErrorIconOut
+
+### Description
+Optional stringMethod to fire when the mouse moves off the error icon of a cell with validation errors.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| record | [ListGridRecord](#type-listgridrecord) | false | — | cell record as returned by getCellRecord() |
+| rowNum | [number](#type-number) | false | — | row number for the cell |
+| colNum | [number](#type-number) | false | — | column number of the cell |
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — false to suppress the standard behavior (clear the standard error message hover if it is showing)
+
+### Groups
+
+- events
+
+### See Also
+
+- [ListGrid.showErrorIcons](ListGrid_1.md#attr-listgridshowerroricons)
+
+**Flags**: A
+
+---
+## Method: ListGrid.setHeaderSpans
+
+### Description
+Update the headerSpans configuration on the grid dynamically.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| headerSpans | [Array of HeaderSpan](#type-array-of-headerspan) | false | — | same configuration block as that passed to [ListGrid.headerSpans](ListGrid_1.md#attr-listgridheaderspans). |
+
+### Groups
+
+- headerSpan
+
+---
 ## Method: ListGrid.setFieldIcon
 
 ### Description
@@ -5278,7 +5405,7 @@ Returns the primary [body](ListGrid_1.md#attr-listgridbody), which, when there a
 ### Description
 Returns the [current total row count](#method-listgridgetrowcount) for this grid as a formatted string.
 
-Due to [progressiveLoading](DataSource.md#attr-datasourceprogressiveloading), an exact total row count may not be available. Depending on the current [rowCount status](ListGrid_1.md#method-listgridgetrowcountstatus), this method will return a value in one of the following formats. Note that if the row count is not exact, the numeric value will be rounded to the nearest multiple of [ListGrid.rowCountDisplayPrecision](ListGrid_1.md#attr-listgridrowcountdisplayprecision).
+Due to [progressiveLoading](DataSource.md#attr-datasourceprogressiveloading), an exact total row count may not be available. Depending on the current [rowCount status](#method-listgridgetrowcountstatus), this method will return a value in one of the following formats. Note that if the row count is not exact, the numeric value will be rounded to the nearest multiple of [ListGrid.rowCountDisplayPrecision](ListGrid_1.md#attr-listgridrowcountdisplayprecision).
 
 *   `"exact"`: The row count will be formatted using [ListGrid.exactRowCountFormat](ListGrid_1.md#attr-listgridexactrowcountformat)
 *   `"minimum"`: The row count will be formatted using [ListGrid.minimumRowCountFormat](ListGrid_1.md#attr-listgridminimumrowcountformat)
@@ -5455,8 +5582,8 @@ Depending on the field's current filter-value and operator, calls to this method
 
 In general, if the field has a current filter-value, it will be cleared if
 
-*   the new operator does not require a value (operator-type [none](../reference_2.md#type-operatorvaluetype) - [isBlank](../reference.md#type-operatorid), for example)
-*   the current and new operators have different [value-types](../reference_2.md#type-operatorvaluetype) and [ListGrid.allowFilterExpressions](ListGrid_1.md#attr-listgridallowfilterexpressions) is false
+*   the new operator does not require a value (operator-type [none](../reference.md#type-operatorvaluetype) - [isBlank](../reference.md#type-operatorid), for example)
+*   the current and new operators have different [value-types](../reference.md#type-operatorvaluetype) and [ListGrid.allowFilterExpressions](ListGrid_1.md#attr-listgridallowfilterexpressions) is false
 *   the item has an [optionDataSource](FormItem.md#attr-formitemoptiondatasource) or valueMap which no longer includes the current value
 
 If `filterOnKeypress` is true, a fetch will be issued if
@@ -6097,7 +6224,7 @@ Selected state is not supported if the component has no dataSource, or the dataS
 ### Description
 Retrieves the [row count](ResultSet.md#method-resultsetgetrowcount) for the grid, which may differ from the reported [data length](ResultSet.md#method-resultsetgetlength) if [progressive loading](DataSource.md#attr-datasourceprogressiveloading) is enabled.
 
-See also [ListGrid.getRowCountStatus](ListGrid_1.md#method-listgridgetrowcountstatus)
+See also [ListGrid.getRowCountStatus](#method-listgridgetrowcountstatus)
 
 ### Returns
 
@@ -6352,11 +6479,18 @@ Update the [alternateBodyStyleName](ListGrid_1.md#attr-listgridalternatebodystyl
 ## Method: ListGrid.getDefaultFormattedValue
 
 ### Description
-Get the value for some cell with default formatters applied.
+Get the value for some cell with default formatters applied, but without calling any custom [ListGridField.formatCellValue](ListGridField.md#method-listgridfieldformatcellvalue) or [ListGrid.formatCellValue](#method-listgridformatcellvalue) methods.
 
 This method is useful for cases where a developer wishes to conditionally customize a cell's formatting, but needs to see what the default formatted value would be.
 
 For example - a developer might wish to apply a custom [formatter](ListGridField.md#method-listgridfieldformatcellvalue) to some `link` type field, and be able to return the default active link HTML in some cases. In this case a formatter could check for the conditions in which custom formatting should be applied and run appropriate custom logic to generate a value for display - otherwise return the result of this method to leave the standard formatted-value intact.
+
+This method applies standard formatting such as [ListGridField.valueMap](ListGridField.md#attr-listgridfieldvaluemap) mapping, [ListGridField.displayField](ListGridField.md#attr-listgridfielddisplayfield) substitution, [ListGridField.format](ListGridField.md#attr-listgridfieldformat) application, and type-specific formatters. The [ListGrid.useLegacyDefaultFormattedValue](ListGrid_1.md#attr-listgriduselegacydefaultformattedvalue) flag can be used to revert to legacy behavior where these formatting steps were not applied.
+
+For other use cases, see also:
+
+*   [ListGrid.getFormattedValue](#method-listgridgetformattedvalue) - get fully formatted value including all custom formatters
+*   [ListGrid.getDefaultFormattedFieldValue](ListGrid_1.md#method-listgridgetdefaultformattedfieldvalue) - get formatted value with field-level formatters only
 
 ### Parameters
 
@@ -6372,6 +6506,7 @@ For example - a developer might wish to apply a custom [formatter](ListGridField
 
 ### See Also
 
+- [ListGrid.getFormattedValue](#method-listgridgetformattedvalue)
 - [ListGridField.formatCellValue](ListGridField.md#method-listgridfieldformatcellvalue)
 
 **Flags**: A

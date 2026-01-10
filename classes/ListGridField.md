@@ -2751,7 +2751,7 @@ Optional icon to show next to the title for this field. Should be set to a URL t
 
 If [field.type](#attr-listgridfieldtype) is set to "icon", this icon will also be shown in every cell of this field - see also [field.cellIcon](#attr-listgridfieldcellicon).
 
-To change this property after fields have been passed to [ListGrid.setFields](ListGrid_2.md#method-listgridsetfields), use [ListGrid.setFieldIcon](ListGrid_1.md#method-listgridsetfieldicon).
+To change this property after fields have been passed to [ListGrid.setFields](ListGrid_2.md#method-listgridsetfields), use [ListGrid.setFieldIcon](ListGrid_2.md#method-listgridsetfieldicon).
 
 **Flags**: IR
 

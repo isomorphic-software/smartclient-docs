@@ -15,7 +15,7 @@ See [RowCountStatus](../reference.md#type-rowcountstatus) for more details. Note
 
 When the true size of the data set is not known, the `rowRangeDisplay` will format the reported length in a way that indicates it is not an exact count (see [ListGrid.getFormattedRowCount](../classes/ListGrid_2.md#method-listgridgetformattedrowcount)). If [ListGrid.autoFetchRowCount](../classes/ListGrid_1.md#attr-listgridautofetchrowcount) is set to `true`, a separate row count fetch will be intiated as soon as data arrives, so an accurate row count will be displayed as soon as that fetch completes. Alternatively, if [ListGrid.canRequestRowCount](../classes/ListGrid_1.md#attr-listgridcanrequestrowcount) is set to `true`, the user may click the label to issue a row count fetch request and get back an accurate row count to display to the user.
 
-As an alternative to using the `rowRangeDisplay` autoChild, developers may also make use of various list grid APIs such as [ListGrid.getRowCountStatus](../classes/ListGrid_1.md#method-listgridgetrowcountstatus), [ListGrid.getRowCount](../classes/ListGrid_2.md#method-listgridgetrowcount), [ListGrid.getRowRangeDisplayValue](../classes/ListGrid_2.md#method-listgridgetrowrangedisplayvalue) and [ListGrid.fetchRowCount](../classes/ListGrid_2.md#method-listgridfetchrowcount) to directly display or retrieve row counts.
+As an alternative to using the `rowRangeDisplay` autoChild, developers may also make use of various list grid APIs such as [ListGrid.getRowCountStatus](../classes/ListGrid_2.md#method-listgridgetrowcountstatus), [ListGrid.getRowCount](../classes/ListGrid_2.md#method-listgridgetrowcount), [ListGrid.getRowRangeDisplayValue](../classes/ListGrid_2.md#method-listgridgetrowrangedisplayvalue) and [ListGrid.fetchRowCount](../classes/ListGrid_2.md#method-listgridfetchrowcount) to directly display or retrieve row counts.
 
 ### Related
 
@@ -31,7 +31,7 @@ As an alternative to using the `rowRangeDisplay` autoChild, developers may also 
 - [ListGrid.getFormattedRowCount](../classes/ListGrid_2.md#method-listgridgetformattedrowcount)
 - [ListGrid.getRowCount](../classes/ListGrid_2.md#method-listgridgetrowcount)
 - [ListGrid.getRowCountRange](../classes/ListGrid_2.md#method-listgridgetrowcountrange)
-- [ListGrid.getRowCountStatus](../classes/ListGrid_1.md#method-listgridgetrowcountstatus)
+- [ListGrid.getRowCountStatus](../classes/ListGrid_2.md#method-listgridgetrowcountstatus)
 - [ListGrid.fetchRowCount](../classes/ListGrid_2.md#method-listgridfetchrowcount)
 - [RowRangeDisplay.setSourceGrid](../classes/RowRangeDisplay.md#method-rowrangedisplaysetsourcegrid)
 - [RowRangeDisplay](../classes/RowRangeDisplay.md#class-rowrangedisplay)

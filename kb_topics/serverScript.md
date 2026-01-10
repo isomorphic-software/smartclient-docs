@@ -285,7 +285,20 @@ It is also possible to implement GraalJS (the Javascript engine from GraalVM) di
 
 See [javaModuleDependencies](javaModuleDependencies.md#kb-topic-java-module-dependencies) for the complete list.
 
-By default, references to Java classes and objects will not work from GraalJS scripts. This is a deliberate part of GraalVM's "secure by default" approach. It is possible to relax this by adding various security-related context flags, but SmartClient does not currently support that level of configuration. Instead, you will need to add the command-line flag `-Dpolyglot.js.nashorn-compat=true` to your servlet engine startup; this flag is an alternative way to relax Graal's default security lockdown and enables the `Java.type()` API used by Nashorn scripts. For further information, see [https://www.graalvm.org/latest/reference-manual/js/RunOnJDK](https://www.graalvm.org/latest/reference-manual/js/RunOnJDK) and [https://www.graalvm.org/latest/reference-manual/js/NashornMigrationGuide](https://www.graalvm.org/latest/reference-manual/js/NashornMigrationGuide)
+#### GraalJS 24.x Configuration
+
+**Important:** GraalJS 24.x removed the deprecated `js.nashorn-compat` option that was available in earlier versions. If you are upgrading from GraalJS 23.x or earlier, remove any `-Dpolyglot.js.nashorn-compat=true` JVM flags as they will cause startup failures in GraalJS 24.x.
+
+In GraalJS 24.x, Java interop is enabled by default when running through the JSR-223 ScriptEngine API (the mode used by SmartClient's server scripting feature). The `Java.type()` API works without additional configuration.
+
+If you see interpreter-only mode warnings, you can suppress them with:
+
+```
+     -Dpolyglot.engine.WarnInterpreterOnly=false
+ 
+```
+
+For further information on GraalJS configuration, see [Running GraalJS on JDK](https://www.graalvm.org/latest/reference-manual/js/RunOnJDK) and [Nashorn Migration Guide](https://www.graalvm.org/latest/reference-manual/js/NashornMigrationGuide).
 
 ### Related
 

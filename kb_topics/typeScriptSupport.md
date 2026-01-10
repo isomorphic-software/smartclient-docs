@@ -7,12 +7,42 @@
 ## KB Topic: TypeScript Support
 
 ### Description
-Isomorphic ships a TypeScript descriptor file that provides code completion and inline documentation with modern IDEs. Modern versions of Eclipse, Visual Studio, IntelliJ and other IDEs can detect this file for you, or you may choose to add explicit descriptor references in a special comment at the top of your own .ts file. For example:
+Isomorphic ships TypeScript support files that provide code completion and inline documentation with modern IDEs. Modern versions of Eclipse, Visual Studio, IntelliJ and other IDEs can detect these files for you, or you may choose to add explicit descriptor references in a special comment at the top of your own .ts file. For example:
 ```
- /// <reference path="path/to/isomorphic/system/development/smartclient.d.ts"/>
+ /// <reference path="path/to/isomorphic/system/typescript/smartclient.d.ts"/>
  
 ```
-As you can see above, the descriptor file resides in the isomorphic/system/development directory and is called smartclient.d.ts. You can copy this file to another location if you prefer (it is fully self contained), but note that new versions of SmartClient will ship with an up-to-date version of this file.
+As you can see above, the descriptor file resides in the isomorphic/system/typescript directory and is called smartclient.d.ts. You can copy this file to another location if you prefer (it is fully self contained), but note that new versions of SmartClient will ship with an up-to-date version of this file.
+
+#### ES Module (ESM) Imports
+
+SmartClient also provides an ES module re-export layer that enables modern import syntax in TypeScript projects. Instead of relying on the global `isc` namespace, you can use:
+
+```
+ import { ListGrid, DynamicForm, DataSource, isc } from 'smartclient-types';
+
+ // Create components using imported classes
+ const grid = ListGrid.create({
+     dataSource: "myDS",
+     autoFetchData: true
+ });
+ 
+```
+This approach provides:
+
+*   Better IDE integration with explicit imports
+*   Clearer dependencies at the top of each file
+*   Compatibility with modern build tools that understand ES modules
+
+**Important:** The ESM re-exports are a convenience layer for development. At runtime, SmartClient must still be loaded via script tags as it establishes the global `isc` namespace. The ESM imports simply re-export from `window.isc` for TypeScript's benefit.
+
+The ESM support files are located in the same typescript directory:
+
+*   `smartclient.d.ts` - Ambient type declarations (global namespace style)
+*   `index.d.ts` - ES module type declarations (for import syntax)
+*   `index.js` - Runtime re-exports from window.isc
+
+#### Using Traditional Reference Directives
 
 Some things to keep in mind:
 

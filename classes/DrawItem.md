@@ -159,7 +159,7 @@ The resize and move knobs show at the same position by default. However, when bo
 ## Attr: DrawItem.titleLabel
 
 ### Description
-When a non-null [title](#attr-drawitemtitle) is set, this AutoChild is created automatically and positioned at the [center](#method-drawitemgetcenter) of this `DrawItem` . The `titleLabel` moves with this `DrawItem` and, depending on [titleRotationMode](../reference_2.md#type-titlerotationmode), can rotate with this `DrawItem` as well.
+When a non-null [title](#attr-drawitemtitle) is set, this AutoChild is created automatically and positioned at the [center](#method-drawitemgetcenter) of this `DrawItem` . The `titleLabel` moves with this `DrawItem` and, depending on [titleRotationMode](../reference.md#type-titlerotationmode), can rotate with this `DrawItem` as well.
 
 The following [passthrough](../kb_topics/autoChildUsage.md#kb-topic-using-autochildren) applies:  
 [title](#attr-drawitemtitle) for [DrawLabel.contents](DrawLabel.md#attr-drawlabelcontents).
@@ -178,7 +178,7 @@ Related to the `titleLabel` is the [titleLabelBackground](#attr-drawitemtitlelab
 ### Description
 Whether the [DrawItem.titleLabel](#attr-drawitemtitlelabel) should be scaled to the maximum possible size that fits inside the bounds of this item. Currently only [DrawRect](DrawRect.md#class-drawrect)s and [DrawPolygon](DrawPolygon.md#class-drawpolygon)s with 90 degree angles are supported.
 
-Note that [DrawItem.titleAutoFit](#attr-drawitemtitleautofit) isn't supported for rotated, sheared, or scaled [DrawItem](#class-drawitem)s, and that therefore the value of [TitleRotationMode](../reference_2.md#type-titlerotationmode), which relates to rotation of the item, is ignored when this property is set. However, we do support having the label automatically rotate to run vertically if there's more space - see [DrawItem.titleAutoFitRotationMode](#attr-drawitemtitleautofitrotationmode).
+Note that [DrawItem.titleAutoFit](#attr-drawitemtitleautofit) isn't supported for rotated, sheared, or scaled [DrawItem](#class-drawitem)s, and that therefore the value of [TitleRotationMode](../reference.md#type-titlerotationmode), which relates to rotation of the item, is ignored when this property is set. However, we do support having the label automatically rotate to run vertically if there's more space - see [DrawItem.titleAutoFitRotationMode](#attr-drawitemtitleautofitrotationmode).
 
 ### See Also
 

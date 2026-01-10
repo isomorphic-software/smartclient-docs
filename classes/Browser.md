@@ -44,6 +44,18 @@ The value of this variable is only meaningful on touch devices.
 **Flags**: RW
 
 ---
+## ClassAttr: Browser.isGraalJS
+
+### Description
+True when running in a GraalJS environment (either JSR-223 ScriptEngine or Polyglot Context API). GraalJS provides full Java interop, allowing JavaScript code to instantiate Java classes and call Java methods directly via `Java.type()`.
+
+To distinguish between JSR-223 and Polyglot modes, check [Browser.isPolyglot](#classattr-browserispolyglot). When `isGraalJS` is true, [Browser.isServerJS](#classattr-browserisserverjs) is also true.
+
+See [serverScript](../kb_topics/serverScript.md#kb-topic-server-scripting) for documentation on using JavaScript in DataSource server scripts.
+
+**Flags**: R
+
+---
 ## ClassAttr: Browser.isDesktop
 
 ### Description
@@ -84,6 +96,16 @@ Are we in Internet Explorer?
 
 ### Description
 Are we in an [OpenFin](https://developers.openfin.co/of-docs/docs) environment? See class [OpenFin](../reference.md#class-openfin) for ways to call OpenFin methods from within SmartClient.
+
+**Flags**: R
+
+---
+## ClassAttr: Browser.isNode
+
+### Description
+True when running in a Node.js environment. Node.js mode is used for standalone server-side processing such as batch operations and internal tooling (for example, Isomorphic uses Node.js to generate [TypeScript definitions](../kb_topics/typeScriptSupport.md#kb-topic-typescript-support) from SmartClient's JSDoc metadata).
+
+When `isNode` is true, [Browser.isServerJS](#classattr-browserisserverjs) is also true.
 
 **Flags**: R
 
@@ -156,6 +178,34 @@ Is the application running on a handset-sized device, with a typical screen widt
 This typically implies that the application will be working with only 300-400 pixels.
 
 **Flags**: RW
+
+---
+## ClassAttr: Browser.isPolyglot
+
+### Description
+True when running in GraalJS via the Polyglot Context API (as opposed to JSR-223 ScriptEngine). The Polyglot API is typically used in standalone Java applications that embed SmartClient JavaScript processing, while JSR-223 is used for declarative server scripts in .ds.xml files.
+
+When `isPolyglot` is true, [Browser.isGraalJS](#classattr-browserisgraaljs) and [Browser.isServerJS](#classattr-browserisserverjs) are also true.
+
+See [graalPolyglotDMI](../kb_topics/graalPolyglotDMI.md#kb-topic-graaljs-polyglot-api-for-dmi) for documentation on using the Polyglot API from DMI.
+
+**Flags**: R
+
+---
+## ClassAttr: Browser.isServerJS
+
+### Description
+True in any server-side JavaScript environment (Node.js or GraalJS). This is a unified flag for code that needs to behave differently on server vs browser without caring which specific server runtime is in use.
+
+Use this flag when:
+
+*   Skipping UI operations that aren't supported server-side
+*   Using alternative logging (server-side doesn't have browser console)
+*   Bypassing browser-specific APIs (DOM, timers, events)
+
+To detect the specific server runtime, check [Browser.isNode](#classattr-browserisnode), [Browser.isGraalJS](#classattr-browserisgraaljs), or [Browser.isPolyglot](#classattr-browserispolyglot).
+
+**Flags**: R
 
 ---
 ## ClassMethod: Browser.setIsTablet

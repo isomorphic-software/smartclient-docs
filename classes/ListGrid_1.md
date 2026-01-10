@@ -440,7 +440,7 @@ With [frozen fields](#attr-listgridcanfreezefields), the `selectionCanvas` is di
 ## Attr: ListGrid.rangeRowCountFormat
 
 ### Description
-Format for the string returned from [ListGrid.getFormattedRowCount](ListGrid_2.md#method-listgridgetformattedrowcount) when [row count status](#method-listgridgetrowcountstatus) is `"range"`.
+Format for the string returned from [ListGrid.getFormattedRowCount](ListGrid_2.md#method-listgridgetformattedrowcount) when [row count status](ListGrid_2.md#method-listgridgetrowcountstatus) is `"range"`.
 
 The following variables are available for evaluation within this string:
 
@@ -1109,7 +1109,7 @@ Height of the error icon, if we're showing icons when validation errors occur.
 ## Attr: ListGrid.filterWindowFilter
 
 ### Description
-Instance of [FilterBuilder](FilterBuilder.md#class-filterbuilder) shown in [ListGrid.filterWindow](#attr-listgridfilterwindow) by [ListGrid.showFilterWindow](#method-listgridshowfilterwindow). See [ListGrid.filterWindow](#attr-listgridfilterwindow) for more information on the filter defaults and changing them.
+Instance of [FilterBuilder](FilterBuilder.md#class-filterbuilder) shown in [ListGrid.filterWindow](#attr-listgridfilterwindow) by [ListGrid.showFilterWindow](ListGrid_2.md#method-listgridshowfilterwindow). See [ListGrid.filterWindow](#attr-listgridfilterwindow) for more information on the filter defaults and changing them.
 
 **Flags**: IR
 
@@ -2057,7 +2057,7 @@ Class-level defaults to apply to the [MultiGroupDialog](MultiGroupDialog.md#clas
 ## Attr: ListGrid.exactRowCountFormat
 
 ### Description
-Format for the string returned from [ListGrid.getFormattedRowCount](ListGrid_2.md#method-listgridgetformattedrowcount) when [row count status](#method-listgridgetrowcountstatus) is `"exact"`.
+Format for the string returned from [ListGrid.getFormattedRowCount](ListGrid_2.md#method-listgridgetformattedrowcount) when [row count status](ListGrid_2.md#method-listgridgetrowcountstatus) is `"exact"`.
 
 The variable `rowCount` is available for evaluation within this string and will be set to the [current row count](ListGrid_2.md#method-listgridgetrowcount) as a [locale-formatted number](NumberUtil.md#classmethod-numberutiltolocalizedstring).
 
@@ -2101,7 +2101,7 @@ If `record[this.isSeparatorProperty]` is set for some record, the record will be
 ## Attr: ListGrid.minimumRowCountFormat
 
 ### Description
-Format for the string returned from [ListGrid.getFormattedRowCount](ListGrid_2.md#method-listgridgetformattedrowcount) when [row count status](#method-listgridgetrowcountstatus) is `"minimum"`.
+Format for the string returned from [ListGrid.getFormattedRowCount](ListGrid_2.md#method-listgridgetformattedrowcount) when [row count status](ListGrid_2.md#method-listgridgetrowcountstatus) is `"minimum"`.
 
 The variable `rowCount` is available for evaluation within this string and will be set to the [current row count](ListGrid_2.md#method-listgridgetrowcount) as a [locale-formatted number](NumberUtil.md#classmethod-numberutiltolocalizedstring).
 
@@ -2159,7 +2159,7 @@ When an exact [row count](ListGrid_2.md#method-listgridgetrowcount) is not known
 
 For example if the server reports a [DSResponse.totalRows](DSResponse.md#attr-dsresponsetotalrows) of `320` while progressive loading is active (meaning this is not an exact row count), and `rowCountDisplayPrecision` is set to `150`, the formatted rowCount may display `300+`
 
-The precision will round either up or down depending on the [row count status](#method-listgridgetrowcountstatus).
+The precision will round either up or down depending on the [row count status](ListGrid_2.md#method-listgridgetrowcountstatus).
 
 *   `rowCountStatus:"exact"` - this setting has no effect
 *   `rowCountStatus:"minimum"` - the reported row count will be rounded down to the previous multiple of this value.
@@ -2948,7 +2948,7 @@ To avoid automatic saving entirely, set [ListGrid.autoSaveEdits](#attr-listgrida
 ### Description
 Advanced filtering criteria, either [simple](../reference_2.md#type-criteria) or [advanced](../reference.md#object-advancedcriteria), that is combined with the [filter editor criteria](ListGrid_2.md#method-listgridgetfiltereditorcriteria) during filtering.
 
-This criteria is normally configured via [advanced filtering dialog](#method-listgridshowfilterwindow) shown because of the [ListGrid.allowFilterWindow](#attr-listgridallowfilterwindow) option but can be assigned directly as well.
+This criteria is normally configured via [advanced filtering dialog](ListGrid_2.md#method-listgridshowfilterwindow) shown because of the [ListGrid.allowFilterWindow](#attr-listgridallowfilterwindow) option but can be assigned directly as well.
 
 For a discussion of the various filtering and criteria-management APIs and when to use them, see the [Grid Filtering overview](../kb_topics/gridFiltering.md#kb-topic-grid-filtering-overview).
 
@@ -3594,7 +3594,7 @@ Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) fo
 ## Attr: ListGrid.approximateRowCountFormat
 
 ### Description
-Format for the string returned from [ListGrid.getFormattedRowCount](ListGrid_2.md#method-listgridgetformattedrowcount) when [row count status](#method-listgridgetrowcountstatus) is `"approximate"`.
+Format for the string returned from [ListGrid.getFormattedRowCount](ListGrid_2.md#method-listgridgetformattedrowcount) when [row count status](ListGrid_2.md#method-listgridgetrowcountstatus) is `"approximate"`.
 
 The variable `rowCount` is available for evaluation within this string and will be set to the [current row count](ListGrid_2.md#method-listgridgetrowcount) as a [locale-formatted number](NumberUtil.md#classmethod-numberutiltolocalizedstring).
 
@@ -3799,7 +3799,7 @@ Note that if [ListGrid.editOnFocus](#attr-listgrideditonfocus) is true for this 
 ## Attr: ListGrid.filterWindow
 
 ### Description
-Instance of [Window](Window.md#class-window) used to [show](#method-listgridshowfilterwindow) the [FilterBuilder](#attr-listgridfilterwindowfilter).
+Instance of [Window](Window.md#class-window) used to [show](ListGrid_2.md#method-listgridshowfilterwindow) the [FilterBuilder](#attr-listgridfilterwindowfilter).
 
 For a discussion of the various filtering and criteria-management APIs and when to use them, see the [Grid Filtering overview](../kb_topics/gridFiltering.md#kb-topic-grid-filtering-overview).
 
@@ -4327,7 +4327,7 @@ The title for the [AI-driven filter window](#attr-listgridaifilterwindow).
 ## Attr: ListGrid.maximumRowCountFormat
 
 ### Description
-Format for the string returned from [ListGrid.getFormattedRowCount](ListGrid_2.md#method-listgridgetformattedrowcount) when [row count status](#method-listgridgetrowcountstatus) is `"maximum"`.
+Format for the string returned from [ListGrid.getFormattedRowCount](ListGrid_2.md#method-listgridgetformattedrowcount) when [row count status](ListGrid_2.md#method-listgridgetrowcountstatus) is `"maximum"`.
 
 The variable `rowCount` is available for evaluation within this string and will be set to the [current row count](ListGrid_2.md#method-listgridgetrowcount) as a [locale-formatted number](NumberUtil.md#classmethod-numberutiltolocalizedstring).
 
@@ -4478,6 +4478,22 @@ When using [ListGrid.autoFitFieldWidths](#attr-listgridautofitfieldwidths), padd
 **Flags**: IR
 
 ---
+## Attr: ListGrid.canGroupBy
+
+### Description
+If false, grouping via context menu will be disabled.
+
+### Groups
+
+- grouping
+
+### See Also
+
+- [ListGrid.groupBy](ListGrid_2.md#method-listgridgroupby)
+
+**Flags**: IRW
+
+---
 ## Attr: ListGrid.asyncErrorCellValue
 
 ### Description
@@ -4492,22 +4508,6 @@ This is the grid-wide setting. [ListGridField.asyncErrorCellValue](ListGridField
 ### See Also
 
 - [DataBoundComponent.isValuePendingAsyncOrAsyncError](DataBoundComponent.md#method-databoundcomponentisvaluependingasyncorasyncerror)
-
-**Flags**: IRW
-
----
-## Attr: ListGrid.canGroupBy
-
-### Description
-If false, grouping via context menu will be disabled.
-
-### Groups
-
-- grouping
-
-### See Also
-
-- [ListGrid.groupBy](ListGrid_2.md#method-listgridgroupby)
 
 **Flags**: IRW
 
@@ -6130,6 +6130,18 @@ The `rollOverCanvas` has the following read-only attributes set:
 - [ListGrid.rollUnderCanvas](#attr-listgridrollundercanvas)
 
 **Flags**: RA
+
+---
+## Attr: ListGrid.useLegacyDefaultFormattedValue
+
+### Description
+Controls whether [ListGrid.getDefaultFormattedValue](ListGrid_2.md#method-listgridgetdefaultformattedvalue) uses legacy behavior that omits standard formatting operations.
+
+When `false` (the default), `getDefaultFormattedValue()` applies complete formatting including [ListGridField.valueMap](ListGridField.md#attr-listgridfieldvaluemap) mapping, [ListGridField.displayField](ListGridField.md#attr-listgridfielddisplayfield) substitution, [listGridField.cellValueTemplate](#listgridfieldcellvaluetemplate) evaluation, [ListGridField.format](ListGridField.md#attr-listgridfieldformat) application, and type-specific formatters, matching the behavior of normal cell rendering.
+
+Set to `true` to revert to legacy behavior where `getDefaultFormattedValue()` returned minimally formatted values without these transformations. This preserves backward compatibility with existing code that relies on the legacy behavior.
+
+**Flags**: IRWA
 
 ---
 ## Attr: ListGrid.initialCriteria
@@ -9633,12 +9645,18 @@ Optional stringMethod to fire when the mouse moves over the error icon of a cell
 ### Description
 Get a field value for some record with default field formatters applied.
 
-This method differs from [ListGrid.getDefaultFormattedValue](ListGrid_2.md#method-listgridgetdefaultformattedvalue) in a couple of ways. Firstly, this method does not rely on the rowNum and colNum parameters to find the record and field in the grid.  
-Secondly, unlike [ListGrid.getDefaultFormattedValue](ListGrid_2.md#method-listgridgetdefaultformattedvalue) this method _will_ call any explicit cell formatter specified on the field passed in (though it will not call a [component level formatter](ListGrid_2.md#method-listgridformatcellvalue) if one exists).
+This method differs from [ListGrid.getDefaultFormattedValue](ListGrid_2.md#method-listgridgetdefaultformattedvalue) in that this method does not rely on the rowNum and colNum parameters to find the record and field in the grid. Also, unlike [ListGrid.getDefaultFormattedValue](ListGrid_2.md#method-listgridgetdefaultformattedvalue), this method _will_ call any [field-level formatter](ListGridField.md#method-listgridfieldformatcellvalue) if one is defined on the field (though it will not call a [grid-level formatter](ListGrid_2.md#method-listgridformatcellvalue) if one exists).
 
-This is useful for cases where a developer wishes to display a formatted value for some record and field combination which does not necessarily map to a cell displayed in the ListGrid.
+This method is typically called from within a grid-level [formatCellValue()](ListGrid_2.md#method-listgridformatcellvalue) override when the developer wants to conditionally customize formatting for some fields while allowing other fields to use their standard formatting (including any field-level formatters). This avoids infinite recursion since the grid-level formatter is not called.
 
-If `rowNum` and `colNum` parameters are passed through to the field level cell formatter if one exists. If not explicitly provided these are defaulted to -1.
+This method applies standard formatting such as [ListGridField.valueMap](ListGridField.md#attr-listgridfieldvaluemap) mapping, [ListGridField.displayField](ListGridField.md#attr-listgridfielddisplayfield) substitution, [ListGridField.format](ListGridField.md#attr-listgridfieldformat) application, and type-specific formatters. If a field-level formatter is present, it is called and other declarative formatting is skipped. The [ListGrid.useLegacyDefaultFormattedValue](#attr-listgriduselegacydefaultformattedvalue) flag can be used to revert to legacy behavior where these formatting steps were not applied when no field-level formatter is present.
+
+The `rowNum` and `colNum` parameters are passed through to the field-level formatter if one exists. If not explicitly provided, these are defaulted to -1.
+
+For other use cases, see also:
+
+*   [ListGrid.getDefaultFormattedValue](ListGrid_2.md#method-listgridgetdefaultformattedvalue) - get formatted value without any custom formatters
+*   [ListGrid.getFormattedValue](ListGrid_2.md#method-listgridgetformattedvalue) - get fully formatted value including all custom formatters
 
 ### Parameters
 
@@ -9646,16 +9664,19 @@ If `rowNum` and `colNum` parameters are passed through to the field level cell f
 |------|------|----------|---------|-------------|
 | record | [Record](#type-record) | false | — | the record object |
 | field | [ListGridField](#type-listgridfield) | false | — | the field object |
-| rowNum | [int](../reference.md#type-int) | true | — | rowNum (passed to any field level cell formatter) |
-| colNum | [int](../reference.md#type-int) | true | — | colNum (passed to any field level cell formatter) |
+| rowNum | [int](../reference.md#type-int) | true | — | rowNum (passed to field-level formatter if present) |
+| colNum | [int](../reference.md#type-int) | true | — | colNum (passed to field-level formatter if present) |
 
 ### Returns
 
-`[String](#type-string)` — Default formatted value
+`[String](#type-string)` — Formatted value
 
 ### See Also
 
 - [ListGridField.formatCellValue](ListGridField.md#method-listgridfieldformatcellvalue)
+- [ListGrid.formatCellValue](ListGrid_2.md#method-listgridformatcellvalue)
+- [ListGrid.getDefaultFormattedValue](ListGrid_2.md#method-listgridgetdefaultformattedvalue)
+- [ListGrid.getFormattedValue](ListGrid_2.md#method-listgridgetformattedvalue)
 
 **Flags**: A
 
@@ -9752,96 +9773,5 @@ Note: for showing multiple fields it is more efficient to call this method than 
 |------|------|----------|---------|-------------|
 | field | [Array of String](#type-array-of-string)|[Array of ListGridField](#type-array-of-listgridfield) | false | — | Fields to show. |
 | suppressRelayout | [boolean](../reference.md#type-boolean) | true | — | If passed, don't resize non-explicitly sized columns to fill the available space. |
-
----
-## Method: ListGrid.showFilterWindow
-
-### Description
-Shows the dialog for [ListGrid.filterWindowCriteria](#attr-listgridfilterwindowcriteria) allowing end-users to edit the advanced filter. This method can be called directly but it is also used to show the dialog when [ListGrid.allowFilterWindow](#attr-listgridallowfilterwindow) is enabled and the user chooses the ["Advanced Filtering"](#attr-listgridadvancedfilteringtext) menu option.
-
-**Note:** this feature requires [SmartClient Pro](https://www.smartclient.com/product/) or better.
-
----
-## Method: ListGrid.getDrawnRowHeight
-
-### Description
-Get the drawn height of a row.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| rowNum | [number](#type-number) | false | — | — |
-
-### Returns
-
-`[number](#type-number)` — height
-
-### Groups
-
-- sizing
-- positioning
-
-**Flags**: A
-
----
-## Method: ListGrid.getRowCountStatus
-
-### Description
-This method indicates whether [ListGrid.getRowCount](ListGrid_2.md#method-listgridgetrowcount) reflects an accurate row-count for this listGrid. An accurate row count may not currently be available if [progressiveLoading](DataSource.md#attr-datasourceprogressiveloading) is active.
-
-See [RowCountStatus](../reference.md#type-rowcountstatus) for further details.
-
-### Returns
-
-`[RowCountStatus](../reference.md#type-rowcountstatus)` — Current row-count status for this grid
-
-### Groups
-
-- rowRangeDisplay
-
----
-## Method: ListGrid.cellErrorIconOut
-
-### Description
-Optional stringMethod to fire when the mouse moves off the error icon of a cell with validation errors.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| record | [ListGridRecord](#type-listgridrecord) | false | — | cell record as returned by getCellRecord() |
-| rowNum | [number](#type-number) | false | — | row number for the cell |
-| colNum | [number](#type-number) | false | — | column number of the cell |
-
-### Returns
-
-`[Boolean](#type-boolean)` — false to suppress the standard behavior (clear the standard error message hover if it is showing)
-
-### Groups
-
-- events
-
-### See Also
-
-- [ListGrid.showErrorIcons](#attr-listgridshowerroricons)
-
-**Flags**: A
-
----
-## Method: ListGrid.setHeaderSpans
-
-### Description
-Update the headerSpans configuration on the grid dynamically.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| headerSpans | [Array of HeaderSpan](#type-array-of-headerspan) | false | — | same configuration block as that passed to [ListGrid.headerSpans](#attr-listgridheaderspans). |
-
-### Groups
-
-- headerSpan
 
 ---

@@ -4660,6 +4660,41 @@ This method changes the value of [Canvas.nativeAutoHideScrollbars](#attr-canvasn
 - [Canvas.showCustomScrollbars](#attr-canvasshowcustomscrollbars)
 
 ---
+## ClassMethod: Canvas.getAllCanvases
+
+### Description
+Returns an array of Canvas instances based on the specified filter mode and optional [AdvancedCriteria](../reference.md#object-advancedcriteria).
+
+**Note:** This method is intended for debugging, testing, and diagnostic purposes only. It should not be used in production application code. Applications should maintain their own references to canvases they create rather than querying the global canvas registry.
+
+This method provides access to the internal registry of all created Canvas instances, filtered according to the specified mode. The default mode ("visible") returns only canvases that are drawn, visible to the end user (checking parental visibility), and non-generated (i.e., developer-created canvases, not autoChildren or other framework- generated components).
+
+The optional `criteria` parameter allows further filtering using [AdvancedCriteria](../reference.md#object-advancedcriteria). The criteria are evaluated against each canvas's properties. For example, to find all visible Buttons with a specific title:
+
+```
+ var buttons = isc.Canvas.getAllCanvases("visible", {
+     _constructor: "AdvancedCriteria",
+     operator: "and",
+     criteria: [
+         { fieldName: "_constructor", operator: "equals", value: "Button" },
+         { fieldName: "title", operator: "iContains", value: "Save" }
+     ]
+ });
+ 
+```
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| mode | [CanvasFilterMode](../reference_2.md#type-canvasfiltermode) | true | — | Filter mode determining which canvases to include. Defaults to "visible". |
+| criteria | [AdvancedCriteria](#type-advancedcriteria) | true | — | Optional criteria to further filter the results. Evaluated against each canvas's properties. |
+
+### Returns
+
+`[Array of Canvas](#type-array-of-canvas)` — Array of matching Canvas instances
+
+---
 ## ClassMethod: Canvas.getPrintPreview
 
 ### Description

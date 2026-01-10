@@ -65,7 +65,7 @@ Horizontal and vertical location on the page
 - [ListGrid.getColumnPageLeft](../classes/ListGrid_2.md#method-listgridgetcolumnpageleft)
 - [ListGrid.getColumnWidth](../classes/ListGrid_2.md#method-listgridgetcolumnwidth)
 - [ListGrid.getCellPageRect](../classes/ListGrid_2.md#method-listgridgetcellpagerect)
-- [ListGrid.getDrawnRowHeight](../classes/ListGrid_1.md#method-listgridgetdrawnrowheight)
+- [ListGrid.getDrawnRowHeight](../classes/ListGrid_2.md#method-listgridgetdrawnrowheight)
 - [Canvas.defaultPageSpace](../classes/Canvas.md#classattr-canvasdefaultpagespace)
 - [ImgTab.align](../classes/ImgTab.md#attr-imgtabalign)
 - [Canvas.htmlElement](../classes/Canvas.md#attr-canvashtmlelement)

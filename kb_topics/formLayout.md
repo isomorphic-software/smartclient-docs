@@ -21,6 +21,12 @@ The log category "tablePlacement" can be enabled from the Developer Console to w
 
 [DynamicForm.colWidths](../classes/DynamicForm.md#attr-dynamicformcolwidths) controls the widths of form columns. FormItems that have "\*" for [FormItem.width](../classes/FormItem.md#attr-formitemwidth) will fill the column. FormItems with a numeric width will have that width in pixels regardless of the column's specified width, which may cause the column to overflow as described under [DynamicForm.fixedColWidths](../classes/DynamicForm.md#attr-dynamicformfixedcolwidths).
 
+**Browser Layout and Column Compression**
+
+With [fixedColWidths:false](../classes/DynamicForm.md#attr-dynamicformfixedcolwidths) (the default), the browser may compress columns containing smaller content (such as titles) below their specified [colWidths](#colwidths) to make room for columns with larger content. This compression works well when all columns can shrink, but certain items cannot shrink below their specified width: TextItem with `width:"*"`, and FileItem and CanvasItem in general.
+
+If a colSpan item is sized based on policy column widths but other columns compress, the colSpan item may force the form to overflow. Use [colWidths](#colwidths) min/max syntax or [autoDetectColumnMinWidths](#autodetectcolumnminwidths) to prevent this by ensuring columns have appropriate minimums.
+
 For row heights, the largest pixel height specified on any item in the row is taken as a minimum size for the row. Then, any rows that have "\*" or "%" height items will share any height not taken up by fixed-sized items.
 
 Individual item heights are controlled by [item.height](../classes/FormItem.md#attr-formitemheight). This may be specified as an integer (pixel value), or a percentage string, or the special string "\*", which indicates an item should fill the available space.  
@@ -50,6 +56,7 @@ Several examples of Form Layout are available *here*.
 - [DynamicForm.linearNumCols](../classes/DynamicForm.md#attr-dynamicformlinearnumcols)
 - [DynamicForm.linearHintWidth](../classes/DynamicForm.md#attr-dynamicformlinearhintwidth)
 - [DynamicForm.fixedColWidths](../classes/DynamicForm.md#attr-dynamicformfixedcolwidths)
+- [DynamicForm.autoDetectColumnMinWidths](../classes/DynamicForm.md#attr-dynamicformautodetectcolumnminwidths)
 - [DynamicForm.colWidths](../classes/DynamicForm.md#attr-dynamicformcolwidths)
 - [DynamicForm.minColWidth](../classes/DynamicForm.md#attr-dynamicformmincolwidth)
 - [DynamicForm.cellPadding](../classes/DynamicForm.md#attr-dynamicformcellpadding)

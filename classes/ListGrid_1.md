@@ -3621,6 +3621,24 @@ To retrieve current state call [getSortState](ListGrid_2.md#method-listgridgetso
 **Flags**: IRW
 
 ---
+## Attr: ListGrid.linkTextStyleName
+
+### Description
+The name of the CSS class used to style the text in fields of type [_link_](../reference.md#type-listgridfieldtype).
+
+### Groups
+
+- display_values
+
+### See Also
+
+- [ListGridFieldType](../reference.md#type-listgridfieldtype)
+- [FieldType](../reference_2.md#type-fieldtype)
+- [ListGrid.linkTextProperty](#attr-listgridlinktextproperty)
+
+**Flags**: IRW
+
+---
 ## Attr: ListGrid.autoFetchTextMatchStyle
 
 ### Description
@@ -4478,22 +4496,6 @@ When using [ListGrid.autoFitFieldWidths](#attr-listgridautofitfieldwidths), padd
 **Flags**: IR
 
 ---
-## Attr: ListGrid.canGroupBy
-
-### Description
-If false, grouping via context menu will be disabled.
-
-### Groups
-
-- grouping
-
-### See Also
-
-- [ListGrid.groupBy](ListGrid_2.md#method-listgridgroupby)
-
-**Flags**: IRW
-
----
 ## Attr: ListGrid.asyncErrorCellValue
 
 ### Description
@@ -4508,6 +4510,22 @@ This is the grid-wide setting. [ListGridField.asyncErrorCellValue](ListGridField
 ### See Also
 
 - [DataBoundComponent.isValuePendingAsyncOrAsyncError](DataBoundComponent.md#method-databoundcomponentisvaluependingasyncorasyncerror)
+
+**Flags**: IRW
+
+---
+## Attr: ListGrid.canGroupBy
+
+### Description
+If false, grouping via context menu will be disabled.
+
+### Groups
+
+- grouping
+
+### See Also
+
+- [ListGrid.groupBy](ListGrid_2.md#method-listgridgroupby)
 
 **Flags**: IRW
 

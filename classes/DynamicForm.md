@@ -287,6 +287,22 @@ For databound forms, whether to show fields marked as detail fields.
 **Flags**: IR
 
 ---
+## Attr: DynamicForm.autoDetectColumnMinWidths
+
+### Description
+When true, columns with flexible widths ("\*", "N\*", or "N%") will automatically have their minimum width set based on fixed-width items in that column. Only items with colSpan:1 (or unset) are considered; colSpanning items do not contribute to auto-detected minimums.
+
+This prevents overflow when a column contains an item with a fixed pixel width that cannot shrink (such as a TextItem or CanvasItem). See [DynamicForm.colWidths](#attr-dynamicformcolwidths) for manual min/max specification using bracket notation.
+
+Note that colSpanning items with `width:"*"` prevent the browser's native table layout from shrink-wrapping spanned columns, effectively enforcing calculated column widths even when content would otherwise allow shrinking. This may cause overflow sooner than if colSpan were not used.
+
+### Groups
+
+- formLayout
+
+**Flags**: IRW
+
+---
 ## Attr: DynamicForm.editProxyConstructor
 
 ### Description
@@ -592,6 +608,13 @@ Acceptable values for each element in the array are:
 *   A number (e.g. 100) representing the number of pixel widths to allocate to a column.
 *   A percent (e.g. 20%) representing the percentage of the total form.width to allocate to a column.
 *   "\*" (all) to allocate remaining width (form.width minus all specified column widths). Multiple columns can use "\*", in which case remaining width is divided between all columns marked "\*".
+*   A star or percent with minimum and/or maximum bounds, using bracket notation:
+    *   `"*[160]"` - split remaining space, but at least 160px
+    *   `"*[160,300]"` - split remaining space, min 160px, max 300px
+    *   `"*[,300]"` - split remaining space, max 300px (no minimum)
+    *   `"50%[200]"` - 50% of width, but at least 200px
+
+Additionally, when [DynamicForm.autoDetectColumnMinWidths](#attr-dynamicformautodetectcolumnminwidths) is true (the default), columns with flexible widths will automatically use the width of any fixed-width items (with colSpan:1) as a minimum, preventing overflow from items that cannot shrink.
 
 Note that if title columns are left at the default [DynamicForm.titleWidth](#attr-dynamicformtitlewidth) or assigned a fixed width, while the others are configured to use the remaining horizontal space (i.e. with a percent or "\*" as described above), then care must be taken if you have long titles with no spaces or [DynamicForm.wrapItemTitles](#attr-dynamicformwrapitemtitles) is false.
 

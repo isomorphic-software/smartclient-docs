@@ -186,6 +186,8 @@ Note: If this is not specified, the edit-form item type may be derived from the 
 ### Description
 For a field with [ListGridField.displayField](#attr-listgridfielddisplayfield) configured, should client-side sorting be performed on the display field value? Unless explicitly set to `false`, the display field value is used.
 
+Note that [sortByField](Field.md#attr-fieldsortbyfield) takes precedence.
+
 ### Groups
 
 - display_values

@@ -19,13 +19,13 @@ See the [Upload Overview](../kb_topics/upload.md#kb-topic-uploading-files) for i
 
 **Read-only mode**
 
-For fields of type `"binary"` the raw data value will be displayed in the generated [FileItem.displayForm](#attr-fileitemdisplayform).
+There are multiple ways that a FileItem can present the file to the user in read-only mode.
 
-For other fields, the [FileItem.displayCanvas](#attr-fileitemdisplaycanvas) will be displayed.
+In most cases the FileItem will not have its `value` set to the raw binary data value stored on the server for the field. However if the value is present as a Base64 encoded string due to [DataSourceField.encodeInResponse](DataSourceField.md#attr-datasourcefieldencodeinresponse) being set or due to custom server logic populating the field value explicitly, the [displayForm](#displayform) will be displayed and the raw data value be rendered as a string within its [displayItem](#displayitem).
 
-For `"imageFile"` fields with [showFileInline](#attr-fileitemshowfileinline) set to true, the image-file will be streamed and displayed inline within the displayCanvas.
+If the `value` is not set, the [FileItem.displayCanvas](#attr-fileitemdisplaycanvas) will be displayed instead. For `"imageFile"` type fields with [showFileInline](#attr-fileitemshowfileinline) set to true, the image-file will be streamed and displayed inline within the displayCanvas.
 
-Otherwise, the displayCanvas will render out [View](#attr-fileitemviewiconsrc) and [Download](#attr-fileitemdownloadiconsrc) icons and the fileName.
+If `showFileInline` is false or this is not an image type field, the [file title](#method-fileitemgetfiletitle) will be displayed in the displayCanvas, along with icons to [View](#attr-fileitemviewiconsrc) and [Download](#attr-fileitemdownloadiconsrc) the file.
 
 ### Groups
 

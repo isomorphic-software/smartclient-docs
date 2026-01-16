@@ -21,12 +21,18 @@ Note that this engine does not support vision requests.
 
 | Engine ID | Provider | Name | Additional Installation Notes |
 |---|---|---|---|
-| "gpt-3.5-turbo" | OpenAI | GPT-3.5 Turbo | You must obtain an API key having access to the model(s) from: https://platform.openai.com/api-keysThen, the value of server configuration property OpenAI.api.key must be set to your API key.The o1-preview and o1-mini models may require higher tier API access. |
+| "gpt-3.5-turbo" | OpenAI | GPT-3.5 Turbo | You must obtain an API key having access to the model(s) from: https://platform.openai.com/api-keysThen, the value of server configuration property OpenAI.api.key must be set to your API key.The o-series models may require higher tier API access. |
 | "gpt-4" | OpenAI | GPT-4 |
 | "gpt-4-turbo" | OpenAI | GPT-4 Turbo |
 | "gpt-4o" | OpenAI | GPT-4o |
-| "o1-preview" | OpenAI | o1-preview |
-| "o1-mini" | OpenAI | o1-mini |
+| "gpt-4o-mini" | OpenAI | GPT-4o mini |
+| "gpt-4.1" | OpenAI | GPT-4.1 |
+| "gpt-4.1-mini" | OpenAI | GPT-4.1 mini |
+| "gpt-4.1-nano" | OpenAI | GPT-4.1 nano |
+| "o1" | OpenAI | o1 |
+| "o3" | OpenAI | o3 |
+| "o3-mini" | OpenAI | o3-mini |
+| "o4-mini" | OpenAI | o4-mini |
 | "gemini-pro" | Google | Gemini Pro & Gemini Pro Vision | You must obtain an API key having access to these models from: https://makersuite.google.com/app/apikey?authuser=1Then, the value of server configuration property Gemini.api.key must be set to your API key. |
 
 Note: The AI services corresponding to the IDs in AntiqueWhite do not support vision requests.
@@ -34,10 +40,10 @@ Note: The AI services corresponding to the IDs in AntiqueWhite do not support vi
 #### Enabling AI
 AI is disabled by default. To enable AI within your application, just set [AI.defaultEngineId](../classes/AI.md#classattr-aidefaultengineid) to a different engine ID if you don't like the default, and then set [AI.disabled](../classes/AI.md#classattr-aidisabled) to `false`.
 
-Here is sample SmartClient code that enables AI using GPT-4 Turbo:
+Here is sample SmartClient code that enables AI using GPT-4.1:
 
 ```
- isc.AI.defaultEngineId = "gpt-4-turbo";
+ isc.AI.defaultEngineId = "gpt-4.1";
  isc.AI.disabled = false;
 ```
 **Note:** If your application will need to ask AI to analyze images, you'll need an `AIEngine` that supports vision requests. Check the table above to see which built-in engines support vision, or you can register your own (covered below).

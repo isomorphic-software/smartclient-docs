@@ -28,7 +28,7 @@ A declared value of the enum type [RecordDropAppearance](../reference_2.md#type-
 ## ClassAttr: ListGrid.UP_ARROW_KEYPRESS
 
 ### Description
-A declared value of the enum type [EditCompletionEvent](../reference_2.md#type-editcompletionevent).
+A declared value of the enum type [EditCompletionEvent](../reference.md#type-editcompletionevent).
 
 **Flags**: R
 
@@ -60,7 +60,7 @@ A declared value of the enum type [RecordDropAppearance](../reference_2.md#type-
 ## ClassAttr: ListGrid.SHIFT_TAB_KEYPRESS
 
 ### Description
-A declared value of the enum type [EditCompletionEvent](../reference_2.md#type-editcompletionevent).
+A declared value of the enum type [EditCompletionEvent](../reference.md#type-editcompletionevent).
 
 **Flags**: R
 
@@ -68,7 +68,7 @@ A declared value of the enum type [EditCompletionEvent](../reference_2.md#type-e
 ## ClassAttr: ListGrid.CLICK_OUTSIDE
 
 ### Description
-A declared value of the enum type [EditCompletionEvent](../reference_2.md#type-editcompletionevent).
+A declared value of the enum type [EditCompletionEvent](../reference.md#type-editcompletionevent).
 
 **Flags**: R
 
@@ -76,7 +76,7 @@ A declared value of the enum type [EditCompletionEvent](../reference_2.md#type-e
 ## ClassAttr: ListGrid.ENTER_KEYPRESS
 
 ### Description
-A declared value of the enum type [EditCompletionEvent](../reference_2.md#type-editcompletionevent).
+A declared value of the enum type [EditCompletionEvent](../reference.md#type-editcompletionevent).
 
 **Flags**: R
 
@@ -84,7 +84,7 @@ A declared value of the enum type [EditCompletionEvent](../reference_2.md#type-e
 ## ClassAttr: ListGrid.CLICK
 
 ### Description
-A declared value of the enum type [EditCompletionEvent](../reference_2.md#type-editcompletionevent).
+A declared value of the enum type [EditCompletionEvent](../reference.md#type-editcompletionevent).
 
 **Flags**: R
 
@@ -92,7 +92,7 @@ A declared value of the enum type [EditCompletionEvent](../reference_2.md#type-e
 ## ClassAttr: ListGrid.ESCAPE_KEYPRESS
 
 ### Description
-A declared value of the enum type [EditCompletionEvent](../reference_2.md#type-editcompletionevent).
+A declared value of the enum type [EditCompletionEvent](../reference.md#type-editcompletionevent).
 
 **Flags**: R
 
@@ -100,7 +100,7 @@ A declared value of the enum type [EditCompletionEvent](../reference_2.md#type-e
 ## ClassAttr: ListGrid.OVER
 
 ### Description
-A declared value of the enum types [RecordDropPosition](../reference.md#type-recorddropposition), [ReorderPosition](../reference_2.md#type-reorderposition) and [RecordDropAppearance](../reference_2.md#type-recorddropappearance).
+A declared value of the enum types [RecordDropPosition](../reference.md#type-recorddropposition), [ReorderPosition](../reference.md#type-reorderposition) and [RecordDropAppearance](../reference_2.md#type-recorddropappearance).
 
 **Flags**: R
 
@@ -108,7 +108,7 @@ A declared value of the enum types [RecordDropPosition](../reference.md#type-rec
 ## ClassAttr: ListGrid.DOUBLE_CLICK
 
 ### Description
-A declared value of the enum type [EditCompletionEvent](../reference_2.md#type-editcompletionevent).
+A declared value of the enum type [EditCompletionEvent](../reference.md#type-editcompletionevent).
 
 **Flags**: R
 
@@ -116,7 +116,7 @@ A declared value of the enum type [EditCompletionEvent](../reference_2.md#type-e
 ## ClassAttr: ListGrid.PROGRAMMATIC
 
 ### Description
-A declared value of the enum type [EditCompletionEvent](../reference_2.md#type-editcompletionevent).
+A declared value of the enum type [EditCompletionEvent](../reference.md#type-editcompletionevent).
 
 **Flags**: R
 
@@ -124,7 +124,7 @@ A declared value of the enum type [EditCompletionEvent](../reference_2.md#type-e
 ## ClassAttr: ListGrid.BEFORE
 
 ### Description
-A declared value of the enum types [RecordDropPosition](../reference.md#type-recorddropposition) and [ReorderPosition](../reference_2.md#type-reorderposition).
+A declared value of the enum types [RecordDropPosition](../reference.md#type-recorddropposition) and [ReorderPosition](../reference.md#type-reorderposition).
 
 **Flags**: R
 
@@ -148,7 +148,7 @@ A declared value of the enum type [RecordDropAppearance](../reference_2.md#type-
 ## ClassAttr: ListGrid.EDIT_FIELD_CHANGE
 
 ### Description
-A declared value of the enum type [EditCompletionEvent](../reference_2.md#type-editcompletionevent).
+A declared value of the enum type [EditCompletionEvent](../reference.md#type-editcompletionevent).
 
 **Flags**: R
 
@@ -164,7 +164,7 @@ A declared value of the enum type [RecordDropPosition](../reference.md#type-reco
 ## ClassAttr: ListGrid.DOWN_ARROW_KEYPRESS
 
 ### Description
-A declared value of the enum type [EditCompletionEvent](../reference_2.md#type-editcompletionevent).
+A declared value of the enum type [EditCompletionEvent](../reference.md#type-editcompletionevent).
 
 **Flags**: R
 
@@ -172,7 +172,7 @@ A declared value of the enum type [EditCompletionEvent](../reference_2.md#type-e
 ## ClassAttr: ListGrid.AFTER
 
 ### Description
-A declared value of the enum types [RecordDropPosition](../reference.md#type-recorddropposition) and [ReorderPosition](../reference_2.md#type-reorderposition).
+A declared value of the enum types [RecordDropPosition](../reference.md#type-recorddropposition) and [ReorderPosition](../reference.md#type-reorderposition).
 
 **Flags**: R
 
@@ -180,7 +180,7 @@ A declared value of the enum types [RecordDropPosition](../reference.md#type-rec
 ## ClassAttr: ListGrid.TAB_KEYPRESS
 
 ### Description
-A declared value of the enum type [EditCompletionEvent](../reference_2.md#type-editcompletionevent).
+A declared value of the enum type [EditCompletionEvent](../reference.md#type-editcompletionevent).
 
 **Flags**: R
 
@@ -9705,7 +9705,7 @@ The default implementation of editFailed does nothing for normal validation erro
 | colNum | [number](#type-number) | false | — | index of the column where the edit failed, if applicable |
 | newValues | [Object](../reference.md#type-object)|[Record](#type-record) | false | — | new values that we attempted to save |
 | oldValues | [Record](#type-record) | false | — | the complete original values from before the save occurred |
-| editCompletionEvent | [EditCompletionEvent](../reference_2.md#type-editcompletionevent) | false | — | Edit completion event that led to the save attempt |
+| editCompletionEvent | [EditCompletionEvent](../reference.md#type-editcompletionevent) | false | — | Edit completion event that led to the save attempt |
 | dsResponse | [DSResponse](#type-dsresponse) | true | — | DSResponse, for saves through a DataSource |
 
 ### Groups

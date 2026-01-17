@@ -16,7 +16,7 @@ Dragging objects and dropping them onto other objects
 - [ProportionalResizeMode](../reference.md#type-proportionalresizemode)
 - [DragMaskType](../reference.md#type-dragmasktype)
 - [DragDataAction](../reference.md#type-dragdataaction)
-- [ReorderPosition](../reference_2.md#type-reorderposition)
+- [ReorderPosition](../reference.md#type-reorderposition)
 - [EventHandler.setDragTrackerImage](../classes/EventHandler.md#classmethod-eventhandlersetdragtrackerimage)
 - [EventHandler.setDragOffset](../classes/EventHandler.md#classmethod-eventhandlersetdragoffset)
 - [EventHandler.setDragTracker](../classes/EventHandler.md#classmethod-eventhandlersetdragtracker)

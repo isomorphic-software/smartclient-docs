@@ -243,6 +243,14 @@ Depending on your application configuration, it is possible that this method wil
 *   Similarly if [SystemDoneConfig.includeRedraws](SystemDoneConfig.md#attr-systemdoneconfigincluderedraws) is true, and the application is using messaging, or some other mechanism to periodically refresh component(s) such that they are repeatedly marked as dirty, this method may return `false` even though the application is ready for interaction
 *   If this application makes use of some third-party library to perform asynchronous actions, this method may return `true` even when the application is waiting on a response from this third-party tool.
 
+**Debugging systemDone issues**: To diagnose why the system is not becoming "done", enable the `"systemDone"` log category. At INFO level, the reason for each blocking condition is logged. At DEBUG level, detailed diagnostics are logged including canvas drawn state, layout reflow status, pending animations, and parent visibility.
+
+```
+     isc.Log.setPriority("systemDone", isc.Log.INFO);  // basic diagnostics
+     isc.Log.setPriority("systemDone", isc.Log.DEBUG); // detailed diagnostics
+ 
+```
+
 ### Parameters
 
 | Name | Type | Optional | Default | Description |

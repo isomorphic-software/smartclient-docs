@@ -25,6 +25,8 @@ Is `object` a non-empty String?
 ### Description
 Is `object` a Date object?
 
+This method should be used instead of `instanceof Date` when the object may have been created in a different frame (e.g., iframe or popup window), as `instanceof` fails cross-frame. This method includes fallback detection using constructor toString comparison.
+
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
@@ -195,6 +197,8 @@ Returns true for Object, Array, Regular Expression, Date and other kinds of nati
 ### Description
 Is `object` a Regular Expression (RegExp) object?
 
+This method should be used instead of `instanceof RegExp` when the object may have been created in a different frame (e.g., iframe or popup window), as `instanceof` fails cross-frame. This method includes fallback detection using constructor toString comparison.
+
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
@@ -203,7 +207,7 @@ Is `object` a Regular Expression (RegExp) object?
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — true == `object` is a Boolean
+`[boolean](../reference.md#type-boolean)` — true == `object` is a RegExp
 
 ---
 ## StaticMethod: isA.String

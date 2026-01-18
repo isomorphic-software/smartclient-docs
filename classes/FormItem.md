@@ -5174,9 +5174,14 @@ If you don't need dynamic evaluation, you can just use `item.defaultValue`.
 ## Method: FormItem.setValueByDisplayValue
 
 ### Description
-Sets the form item's value by looking up the corresponding value field from a display value. Requires [FormItem.displayField](#attr-formitemdisplayfield) and [FormItem.valueField](#attr-formitemvaluefield) to be configured.
+Sets the form item's value by looking up the corresponding data value from a display value using a series of fallback strategies.
 
-The method first checks the local valueMap and optionDataSource cache via [FormItem.mapDisplayToValue](#method-formitemmapdisplaytovalue). If no cached mapping is found, it fetches from the [FormItem.optionDataSource](#attr-formitemoptiondatasource) using the display value as criteria.
+The lookup proceeds through the following steps, stopping as soon as a mapping is found:
+
+1.  **valueMap/cache**: Checks if the display value maps to a data value via [FormItem.mapDisplayToValue](#method-formitemmapdisplaytovalue), which consults the [FormItem.valueMap](#attr-formitemvaluemap) and [FormItem.optionDataSource](#attr-formitemoptiondatasource) cache
+2.  **optionDataSource fetch**: If [FormItem.optionDataSource](#attr-formitemoptiondatasource) is configured with [FormItem.displayField](#attr-formitemdisplayfield) and [FormItem.valueField](#attr-formitemvaluefield), fetches from the server to find a matching record
+3.  **parseEditorValue**: If [FormItem.parseEditorValue](#method-formitemparseeditorvalue) is defined, calls it to transform the display value
+4.  **identity**: As a final fallback, assumes the display value and data value are the same, and uses the display value directly
 
 This method is asynchronous when fetching from the optionDataSource. Use the callback parameter to be notified when the operation completes.
 

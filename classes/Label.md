@@ -374,6 +374,7 @@ Change the icon being shown next to the title text.
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | icon | [SCImgURL](../reference.md#type-scimgurl) | false | — | URL of new icon |
+| redraw | [Boolean](#type-boolean) | true | — | when true, redraws the canvas to update the icon's HTML - this is required when switching between image-types like .png and non-images like SVG symbols, which render different HTML structures |
 
 ### Groups
 

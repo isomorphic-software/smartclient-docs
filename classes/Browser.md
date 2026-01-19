@@ -44,6 +44,24 @@ The value of this variable is only meaningful on touch devices.
 **Flags**: RW
 
 ---
+## ClassAttr: Browser.allowsSpeechRecognition
+
+### Description
+Whether this browser allows speech recognition sessions to be started using its SpeechRecognition implementation. Some browsers expose the API but prevent sessions from starting (for example, by blocking access to the vendor-operated speech-to-text service used by the implementation), typically surfacing as an immediate service or "network" error.
+
+This flag is set on the first attempt to start speech recognition.
+
+**Flags**: RA
+
+---
+## ClassAttr: Browser.supportsSpeechRecognition
+
+### Description
+Whether this browser exposes a SpeechRecognition implementation (API is present). This indicates that browser-provided speech-to-text \*may\* be available for features such as [VoiceAssist](VoiceAssist.md#class-voiceassist), but does not guarantee that recognition sessions can be started. See [Browser.allowsSpeechRecognition](#classattr-browserallowsspeechrecognition) for runtime viability.
+
+**Flags**: RA
+
+---
 ## ClassAttr: Browser.isGraalJS
 
 ### Description
@@ -120,6 +138,18 @@ Are the [MultiWindow](MultiWindow.md#class-multiwindow) APIs supported and cross
 **Flags**: RW
 
 ---
+## ClassAttr: Browser.micPermission
+
+### Description
+The browser's current permission state for microphone access for the current site (origin). Possible values are "granted", "denied", or "prompt", consistent with the Permissions API.
+
+"prompt" indicates that the user has not yet made a decision for this site and that the browser will request permission when microphone access is first attempted, typically in response to a user interaction.
+
+Note that not all browsers support querying microphone permission state in advance; in such cases this value may remain null until an access attempt is made.
+
+**Flags**: RA
+
+---
 ## ClassAttr: Browser.hasNativeDrag
 
 ### Description
@@ -178,6 +208,14 @@ Is the application running on a handset-sized device, with a typical screen widt
 This typically implies that the application will be working with only 300-400 pixels.
 
 **Flags**: RW
+
+---
+## ClassAttr: Browser.micAvailable
+
+### Description
+Whether at least one audio input device (microphone) is available to the browser. This reflects device presence only and does not imply that the site has [permission](#borwsermicpermission) to access the microphone. In some browsers, microphone enumeration may be limited or partially obscured until permission is granted.
+
+**Flags**: RA
 
 ---
 ## ClassAttr: Browser.isPolyglot

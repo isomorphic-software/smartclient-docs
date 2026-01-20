@@ -28,7 +28,7 @@ A declared value of the enum type [RecordDropAppearance](../reference_2.md#type-
 ## ClassAttr: ListGrid.UP_ARROW_KEYPRESS
 
 ### Description
-A declared value of the enum type [EditCompletionEvent](../reference.md#type-editcompletionevent).
+A declared value of the enum type [EditCompletionEvent](../reference_2.md#type-editcompletionevent).
 
 **Flags**: R
 
@@ -60,7 +60,7 @@ A declared value of the enum type [RecordDropAppearance](../reference_2.md#type-
 ## ClassAttr: ListGrid.SHIFT_TAB_KEYPRESS
 
 ### Description
-A declared value of the enum type [EditCompletionEvent](../reference.md#type-editcompletionevent).
+A declared value of the enum type [EditCompletionEvent](../reference_2.md#type-editcompletionevent).
 
 **Flags**: R
 
@@ -68,7 +68,7 @@ A declared value of the enum type [EditCompletionEvent](../reference.md#type-edi
 ## ClassAttr: ListGrid.CLICK_OUTSIDE
 
 ### Description
-A declared value of the enum type [EditCompletionEvent](../reference.md#type-editcompletionevent).
+A declared value of the enum type [EditCompletionEvent](../reference_2.md#type-editcompletionevent).
 
 **Flags**: R
 
@@ -76,7 +76,7 @@ A declared value of the enum type [EditCompletionEvent](../reference.md#type-edi
 ## ClassAttr: ListGrid.ENTER_KEYPRESS
 
 ### Description
-A declared value of the enum type [EditCompletionEvent](../reference.md#type-editcompletionevent).
+A declared value of the enum type [EditCompletionEvent](../reference_2.md#type-editcompletionevent).
 
 **Flags**: R
 
@@ -84,7 +84,7 @@ A declared value of the enum type [EditCompletionEvent](../reference.md#type-edi
 ## ClassAttr: ListGrid.CLICK
 
 ### Description
-A declared value of the enum type [EditCompletionEvent](../reference.md#type-editcompletionevent).
+A declared value of the enum type [EditCompletionEvent](../reference_2.md#type-editcompletionevent).
 
 **Flags**: R
 
@@ -92,7 +92,7 @@ A declared value of the enum type [EditCompletionEvent](../reference.md#type-edi
 ## ClassAttr: ListGrid.ESCAPE_KEYPRESS
 
 ### Description
-A declared value of the enum type [EditCompletionEvent](../reference.md#type-editcompletionevent).
+A declared value of the enum type [EditCompletionEvent](../reference_2.md#type-editcompletionevent).
 
 **Flags**: R
 
@@ -100,7 +100,7 @@ A declared value of the enum type [EditCompletionEvent](../reference.md#type-edi
 ## ClassAttr: ListGrid.OVER
 
 ### Description
-A declared value of the enum types [RecordDropPosition](../reference.md#type-recorddropposition), [ReorderPosition](../reference.md#type-reorderposition) and [RecordDropAppearance](../reference_2.md#type-recorddropappearance).
+A declared value of the enum types [RecordDropPosition](../reference.md#type-recorddropposition), [ReorderPosition](../reference_2.md#type-reorderposition) and [RecordDropAppearance](../reference_2.md#type-recorddropappearance).
 
 **Flags**: R
 
@@ -108,7 +108,7 @@ A declared value of the enum types [RecordDropPosition](../reference.md#type-rec
 ## ClassAttr: ListGrid.DOUBLE_CLICK
 
 ### Description
-A declared value of the enum type [EditCompletionEvent](../reference.md#type-editcompletionevent).
+A declared value of the enum type [EditCompletionEvent](../reference_2.md#type-editcompletionevent).
 
 **Flags**: R
 
@@ -116,7 +116,7 @@ A declared value of the enum type [EditCompletionEvent](../reference.md#type-edi
 ## ClassAttr: ListGrid.PROGRAMMATIC
 
 ### Description
-A declared value of the enum type [EditCompletionEvent](../reference.md#type-editcompletionevent).
+A declared value of the enum type [EditCompletionEvent](../reference_2.md#type-editcompletionevent).
 
 **Flags**: R
 
@@ -124,7 +124,7 @@ A declared value of the enum type [EditCompletionEvent](../reference.md#type-edi
 ## ClassAttr: ListGrid.BEFORE
 
 ### Description
-A declared value of the enum types [RecordDropPosition](../reference.md#type-recorddropposition) and [ReorderPosition](../reference.md#type-reorderposition).
+A declared value of the enum types [RecordDropPosition](../reference.md#type-recorddropposition) and [ReorderPosition](../reference_2.md#type-reorderposition).
 
 **Flags**: R
 
@@ -148,7 +148,7 @@ A declared value of the enum type [RecordDropAppearance](../reference_2.md#type-
 ## ClassAttr: ListGrid.EDIT_FIELD_CHANGE
 
 ### Description
-A declared value of the enum type [EditCompletionEvent](../reference.md#type-editcompletionevent).
+A declared value of the enum type [EditCompletionEvent](../reference_2.md#type-editcompletionevent).
 
 **Flags**: R
 
@@ -164,7 +164,7 @@ A declared value of the enum type [RecordDropPosition](../reference.md#type-reco
 ## ClassAttr: ListGrid.DOWN_ARROW_KEYPRESS
 
 ### Description
-A declared value of the enum type [EditCompletionEvent](../reference.md#type-editcompletionevent).
+A declared value of the enum type [EditCompletionEvent](../reference_2.md#type-editcompletionevent).
 
 **Flags**: R
 
@@ -172,7 +172,7 @@ A declared value of the enum type [EditCompletionEvent](../reference.md#type-edi
 ## ClassAttr: ListGrid.AFTER
 
 ### Description
-A declared value of the enum types [RecordDropPosition](../reference.md#type-recorddropposition) and [ReorderPosition](../reference.md#type-reorderposition).
+A declared value of the enum types [RecordDropPosition](../reference.md#type-recorddropposition) and [ReorderPosition](../reference_2.md#type-reorderposition).
 
 **Flags**: R
 
@@ -180,7 +180,7 @@ A declared value of the enum types [RecordDropPosition](../reference.md#type-rec
 ## ClassAttr: ListGrid.TAB_KEYPRESS
 
 ### Description
-A declared value of the enum type [EditCompletionEvent](../reference.md#type-editcompletionevent).
+A declared value of the enum type [EditCompletionEvent](../reference_2.md#type-editcompletionevent).
 
 **Flags**: R
 
@@ -7927,16 +7927,6 @@ When using [data paging](#attr-listgriddatafetchmode), how many records to fetch
 **Flags**: IRW
 
 ---
-## Attr: ListGrid.canEditFieldAttribute
-
-### Description
-If this component is bound to a dataSource, this attribute may be specified to customize what fields from the dataSource may be edited by default. For example the [SearchForm](SearchForm.md#class-searchform) class has this attribute set to `"canFilter"` which allows search forms to edit dataSource fields marked as `canEdit:false` (but not those marked as `canFilter:false`).
-
-Note that if `canEdit` is explicitly specified on a field in the [DataBoundComponent.fields](DataBoundComponent.md#attr-databoundcomponentfields) array, that property will be respected in preference to the canEditAttribute value. (See [FormItem.canEdit](FormItem.md#attr-formitemcanedit), [ListGridField.canEdit](ListGridField.md#attr-listgridfieldcanedit)). Also note that individual dataBoundComponents may have additional logic around whether a field can be edited - for example [ListGrid.canEditCell](ListGrid_2.md#method-listgridcaneditcell) may be overridden.
-
-**Flags**: IRA
-
----
 ## Attr: ListGrid.screenReaderWriteRowLabelledBy
 
 ### Description
@@ -9705,7 +9695,7 @@ The default implementation of editFailed does nothing for normal validation erro
 | colNum | [number](#type-number) | false | — | index of the column where the edit failed, if applicable |
 | newValues | [Object](../reference.md#type-object)|[Record](#type-record) | false | — | new values that we attempted to save |
 | oldValues | [Record](#type-record) | false | — | the complete original values from before the save occurred |
-| editCompletionEvent | [EditCompletionEvent](../reference.md#type-editcompletionevent) | false | — | Edit completion event that led to the save attempt |
+| editCompletionEvent | [EditCompletionEvent](../reference_2.md#type-editcompletionevent) | false | — | Edit completion event that led to the save attempt |
 | dsResponse | [DSResponse](#type-dsresponse) | true | — | DSResponse, for saves through a DataSource |
 
 ### Groups
@@ -9756,5 +9746,28 @@ Note: for showing multiple fields it is more efficient to call this method than 
 Shows the dialog for [ListGrid.filterWindowCriteria](#attr-listgridfilterwindowcriteria) allowing end-users to edit the advanced filter. This method can be called directly but it is also used to show the dialog when [ListGrid.allowFilterWindow](#attr-listgridallowfilterwindow) is enabled and the user chooses the ["Advanced Filtering"](#attr-listgridadvancedfilteringtext) menu option.
 
 **Note:** this feature requires [SmartClient Pro](https://www.smartclient.com/product/) or better.
+
+---
+## Method: ListGrid.getDrawnRowHeight
+
+### Description
+Get the drawn height of a row.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| rowNum | [number](#type-number) | false | — | — |
+
+### Returns
+
+`[number](#type-number)` — height
+
+### Groups
+
+- sizing
+- positioning
+
+**Flags**: A
 
 ---

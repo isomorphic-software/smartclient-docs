@@ -2571,7 +2571,7 @@ If not explicitly specified, see [ListGrid.getIconCursor](ListGrid_2.md#method-l
 ## Attr: ListGridField.canEdit
 
 ### Description
-This property establishes default editability for the field. May be overridden by setting the 'canEdit' property at the listGrid level. If not explicitly set and this grid is bound to a dataSource, the [ListGrid.canEditFieldAttribute](ListGrid_1.md#attr-listgridcaneditfieldattribute) may be used to set default editability at the field level.
+This property establishes default editability for the field. May be overridden by setting the 'canEdit' property at the listGrid level. If not explicitly set and this grid is bound to a dataSource, the [ListGrid.canEditFieldAttribute](DataBoundComponent.md#attr-databoundcomponentcaneditfieldattribute) may be used to set default editability at the field level.
 
 An override of [ListGrid.canEditCell](ListGrid_2.md#method-listgridcaneditcell) can be used for more dynamic control over whether fields can be edited.
 
@@ -2900,7 +2900,7 @@ Return false from this method to cancel the default behavior (Saving / cancellin
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| editCompletionEvent | [EditCompletionEvent](../reference.md#type-editcompletionevent) | false | — | What interaction triggered this edit cell exit |
+| editCompletionEvent | [EditCompletionEvent](../reference_2.md#type-editcompletionevent) | false | — | What interaction triggered this edit cell exit |
 | record | [ListGridRecord](#type-listgridrecord) | false | — | record for the cell being edited |
 | newValue | [Any](#type-any) | false | — | new edit value for the cell being edited. Note that if the user has not made any changes this will be undefined |
 | rowNum | [int](../reference.md#type-int) | false | — | row number for the cell |

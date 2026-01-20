@@ -3611,6 +3611,24 @@ To retrieve current state call [getSortState](ListGrid_2.md#method-listgridgetso
 **Flags**: IRW
 
 ---
+## Attr: ListGrid.linkTextStyleName
+
+### Description
+The name of the CSS class used to style the text in fields of type [_link_](../reference.md#type-listgridfieldtype).
+
+### Groups
+
+- display_values
+
+### See Also
+
+- [ListGridFieldType](../reference.md#type-listgridfieldtype)
+- [FieldType](../reference_2.md#type-fieldtype)
+- [ListGrid.linkTextProperty](#attr-listgridlinktextproperty)
+
+**Flags**: IRW
+
+---
 ## Attr: ListGrid.autoFetchTextMatchStyle
 
 ### Description
@@ -9771,28 +9789,5 @@ Note: for showing multiple fields it is more efficient to call this method than 
 Shows the dialog for [ListGrid.filterWindowCriteria](#attr-listgridfilterwindowcriteria) allowing end-users to edit the advanced filter. This method can be called directly but it is also used to show the dialog when [ListGrid.allowFilterWindow](#attr-listgridallowfilterwindow) is enabled and the user chooses the ["Advanced Filtering"](#attr-listgridadvancedfilteringtext) menu option.
 
 **Note:** this feature requires [SmartClient Pro](https://www.smartclient.com/product/) or better.
-
----
-## Method: ListGrid.getDrawnRowHeight
-
-### Description
-Get the drawn height of a row.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| rowNum | [number](#type-number) | false | — | — |
-
-### Returns
-
-`[number](#type-number)` — height
-
-### Groups
-
-- sizing
-- positioning
-
-**Flags**: A
 
 ---

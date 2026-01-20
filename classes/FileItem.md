@@ -19,13 +19,13 @@ See the [Upload Overview](../kb_topics/upload.md#kb-topic-uploading-files) for i
 
 **Read-only mode**
 
-For fields of type `"binary"` the raw data value will be displayed in the generated [FileItem.displayForm](#attr-fileitemdisplayform).
+There are multiple ways that a FileItem can present the file to the user in read-only mode.
 
-For other fields, the [FileItem.displayCanvas](#attr-fileitemdisplaycanvas) will be displayed.
+In most cases the FileItem will not have its `value` set to the raw binary data value stored on the server for the field. However if the value is present as a Base64 encoded string due to [DataSourceField.encodeInResponse](DataSourceField.md#attr-datasourcefieldencodeinresponse) being set or due to custom server logic populating the field value explicitly, the [displayForm](#displayform) will be displayed and the raw data value be rendered as a string within its [displayItem](#displayitem).
 
-For `"imageFile"` fields with [showFileInline](#attr-fileitemshowfileinline) set to true, the image-file will be streamed and displayed inline within the displayCanvas.
+If the `value` is not set, the [FileItem.displayCanvas](#attr-fileitemdisplaycanvas) will be displayed instead. For `"imageFile"` type fields with [showFileInline](#attr-fileitemshowfileinline) set to true, the image-file will be streamed and displayed inline within the displayCanvas.
 
-Otherwise, the displayCanvas will render out [View](#attr-fileitemviewiconsrc) and [Download](#attr-fileitemdownloadiconsrc) icons and the fileName.
+If `showFileInline` is false or this is not an image type field, the [file title](#method-fileitemgetfiletitle) will be displayed in the displayCanvas, along with icons to [View](#attr-fileitemviewiconsrc) and [Download](#attr-fileitemdownloadiconsrc) the file.
 
 ### Groups
 
@@ -259,6 +259,19 @@ This component is an [AutoChild](../reference.md#type-autochild) and as such may
 - upload
 
 **Flags**: RA
+
+---
+## Method: FileItem.getFileTitle
+
+### Description
+This method returns the title displayed next to the view and download buttons when displaying the file in read-only view. By default this displays the file name derived from `record[_fieldName__filename]`.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| value | [Any](#type-any) | false | — | value of this item. This will typically be null unless [DataSourceField.encodeInResponse](DataSourceField.md#attr-datasourcefieldencodeinresponse) is true. See the [Binary fields documentation](../kb_topics/binaryFields.md#kb-topic-binary-fields) for details of how binary fields are handled when fetching records in SmartClient. |
+| record | [Object](../reference.md#type-object) | false | — | the values being edited by the form or held by the [ValuesManager](ValuesManager.md#class-valuesmanager) that the form is a member of. |
 
 ---
 ## Method: FileItem.setMultiple

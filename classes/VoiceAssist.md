@@ -53,7 +53,7 @@ The time to wait for the browser to issue a "network" error when [VoiceAssist.en
 
 Some browsers provide a SpeechRecognition implementation but prevent it from contacting an external speech-to-text service, instead issuing an immediate "network" error once the mic is activated. To detect this, enabling VoiceAssist starts a test-session and waits `waitForNetworkErrorDelay` for a "network" error.
 
-If there's an error, a log is made and subsequent user-attempts to start VoiceAssist by triple-tapping the [voiceAssist.speechKey](#voiceassistspeechkey) will show the log in a popup.
+If there's an error, a log is made and subsequent user-attempts to start VoiceAssist by triple-tapping the [VoiceAssist.voiceKey](#attr-voiceassistvoicekey) will show the log in a popup.
 
 **Flags**: IRW
 
@@ -105,7 +105,7 @@ Enables the VoiceAssist module - once enabled, a user may triple-tap the [speech
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| doPermissionChecks | [Boolean](#type-boolean) | true | — | when true, performs permissions checks as part of this call - otherwise, checks are performed when user starts VoiceAssist, by triple-tapping the [voiceAssist.speechKey](#voiceassistspeechkey) |
+| doPermissionChecks | [Boolean](#type-boolean) | true | — | when true, performs permissions checks as part of this call - otherwise, checks are performed when user starts VoiceAssist, by triple-tapping the [VoiceAssist.voiceKey](#attr-voiceassistvoicekey) |
 | key | [String](#type-string) | true | — | optional different key to use for VoiceAssist - use with care |
 
 **Flags**: A

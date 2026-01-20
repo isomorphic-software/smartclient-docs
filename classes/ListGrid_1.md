@@ -5943,18 +5943,6 @@ For editable listGrids, outstanding unsaved edits when the user performs a new f
 **Flags**: IRW
 
 ---
-## Attr: ListGrid.unknownRowCountDisplayValue
-
-### Description
-Value to return from [ListGrid.getFormattedRowCount](ListGrid_2.md#method-listgridgetformattedrowcount) when the row count is unknown
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
-
----
 ## Attr: ListGrid.headerMenuButtonHeight
 
 ### Description
@@ -5969,6 +5957,18 @@ If [ListGrid.showHeaderMenuButton](#attr-listgridshowheadermenubutton) is true, 
 - [ListGrid.rotatedHeaderMenuButtonHeight](#attr-listgridrotatedheadermenubuttonheight)
 
 **Flags**: IRA
+
+---
+## Attr: ListGrid.unknownRowCountDisplayValue
+
+### Description
+Value to return from [ListGrid.getFormattedRowCount](ListGrid_2.md#method-listgridgetformattedrowcount) when the row count is unknown
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IRW
 
 ---
 ## Attr: ListGrid.headerMenuButtonIconHeight
@@ -6252,18 +6252,6 @@ An automatically generated field that can be dragged to drag the current selecti
 **Flags**: IR
 
 ---
-## Attr: ListGrid.rowRangeDisplayStyle
-
-### Description
-How should the [ListGrid.getFormattedRowRange](ListGrid_2.md#method-listgridgetformattedrowrange) format the row range and row count for display to the user?
-
-### Groups
-
-- rowRangeDisplay
-
-**Flags**: IRW
-
----
 ## Attr: ListGrid.warnOnRemovalMessage
 
 ### Description
@@ -6272,6 +6260,18 @@ Warning message to show the user on a click on the 'remove' icon if [ListGrid.ca
 ### Groups
 
 - i18nMessages
+
+**Flags**: IRW
+
+---
+## Attr: ListGrid.rowRangeDisplayStyle
+
+### Description
+How should the [ListGrid.getFormattedRowRange](ListGrid_2.md#method-listgridgetformattedrowrange) format the row range and row count for display to the user?
+
+### Groups
+
+- rowRangeDisplay
 
 **Flags**: IRW
 
@@ -7925,16 +7925,6 @@ When using [data paging](#attr-listgriddatafetchmode), how many records to fetch
 - [ResultSet.resultSize](ResultSet.md#attr-resultsetresultsize)
 
 **Flags**: IRW
-
----
-## Attr: ListGrid.canEditFieldAttribute
-
-### Description
-If this component is bound to a dataSource, this attribute may be specified to customize what fields from the dataSource may be edited by default. For example the [SearchForm](SearchForm.md#class-searchform) class has this attribute set to `"canFilter"` which allows search forms to edit dataSource fields marked as `canEdit:false` (but not those marked as `canFilter:false`).
-
-Note that if `canEdit` is explicitly specified on a field in the [DataBoundComponent.fields](DataBoundComponent.md#attr-databoundcomponentfields) array, that property will be respected in preference to the canEditAttribute value. (See [FormItem.canEdit](FormItem.md#attr-formitemcanedit), [ListGridField.canEdit](ListGridField.md#attr-listgridfieldcanedit)). Also note that individual dataBoundComponents may have additional logic around whether a field can be edited - for example [ListGrid.canEditCell](ListGrid_2.md#method-listgridcaneditcell) may be overridden.
-
-**Flags**: IRA
 
 ---
 ## Attr: ListGrid.screenReaderWriteRowLabelledBy
@@ -9756,5 +9746,28 @@ Note: for showing multiple fields it is more efficient to call this method than 
 Shows the dialog for [ListGrid.filterWindowCriteria](#attr-listgridfilterwindowcriteria) allowing end-users to edit the advanced filter. This method can be called directly but it is also used to show the dialog when [ListGrid.allowFilterWindow](#attr-listgridallowfilterwindow) is enabled and the user chooses the ["Advanced Filtering"](#attr-listgridadvancedfilteringtext) menu option.
 
 **Note:** this feature requires [SmartClient Pro](https://www.smartclient.com/product/) or better.
+
+---
+## Method: ListGrid.getDrawnRowHeight
+
+### Description
+Get the drawn height of a row.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| rowNum | [number](#type-number) | false | — | — |
+
+### Returns
+
+`[number](#type-number)` — height
+
+### Groups
+
+- sizing
+- positioning
+
+**Flags**: A
 
 ---

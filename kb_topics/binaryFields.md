@@ -43,9 +43,9 @@ Refer to *this example* to see how this case works.
 
 For an ordinary "fetch" operation, it's generally useless to return data for a binary field, because in most cases code running in the browser would not be able to do anything with a binary value (such as invoke a PDF viewing plugin). For this reason the SmartClient Server will automatically omit values of type InputStream, byte\[\] or Blob during a normal "fetch".
 
-However you can deliver the binary data to the browser by transforming it to a Base64-encoded String by setting [DataSourceField.encodeInResponse](../classes/DataSourceField.md#attr-datasourcefieldencodeinresponse) on your `<field>` declaration. This can be used with certain browser features such as [image data URIs](https://www.google.com/search?q=image+data+uri), but note that some older browsers (notably IE7 and earlier) do not support data URIs.
+However you can deliver the binary data to the browser by transforming it to a Base64-encoded String by setting [DataSourceField.encodeInResponse](../classes/DataSourceField.md#attr-datasourcefieldencodeinresponse) on your `<field>` declaration. When this flag is set, the server automatically encodes binary values (InputStream, byte\[\], or Byte\[\]) as base64 strings before sending them to the client.
 
-Refer to *this example* to see how this case works.
+On the client side, when a binary field has an actual value, the value will be a string containing the base64-encoded data. To display this data as an image, you need to provide custom rendering logic that constructs [data URIs](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs) from the base64 strings. For example, in a [ListGrid](../classes/ListGrid_1.md#class-listgrid), use [ListGridField.formatCellValue](../classes/ListGridField.md#method-listgridfieldformatcellvalue) to render thumbnails, and in a [DynamicForm](../classes/DynamicForm.md#class-dynamicform), use a custom [CanvasItem](../classes/CanvasItem.md#class-canvasitem) that generates image HTML from the base64 data.
 
 **Downloads unrelated to binary fields**
 

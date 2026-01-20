@@ -4,29 +4,6 @@
 
 ---
 
-## Method: ListGrid.getDrawnRowHeight
-
-### Description
-Get the drawn height of a row.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| rowNum | [number](#type-number) | false | — | — |
-
-### Returns
-
-`[number](#type-number)` — height
-
-### Groups
-
-- sizing
-- positioning
-
-**Flags**: A
-
----
 ## Method: ListGrid.getFormattedValue
 
 ### Description
@@ -5582,8 +5559,8 @@ Depending on the field's current filter-value and operator, calls to this method
 
 In general, if the field has a current filter-value, it will be cleared if
 
-*   the new operator does not require a value (operator-type [none](../reference_2.md#type-operatorvaluetype) - [isBlank](../reference.md#type-operatorid), for example)
-*   the current and new operators have different [value-types](../reference_2.md#type-operatorvaluetype) and [ListGrid.allowFilterExpressions](ListGrid_1.md#attr-listgridallowfilterexpressions) is false
+*   the new operator does not require a value (operator-type [none](../reference.md#type-operatorvaluetype) - [isBlank](../reference.md#type-operatorid), for example)
+*   the current and new operators have different [value-types](../reference.md#type-operatorvaluetype) and [ListGrid.allowFilterExpressions](ListGrid_1.md#attr-listgridallowfilterexpressions) is false
 *   the item has an [optionDataSource](FormItem.md#attr-formitemoptiondatasource) or valueMap which no longer includes the current value
 
 If `filterOnKeypress` is true, a fetch will be issued if
@@ -7970,7 +7947,7 @@ Can this cell be edited?
 The default implementation of `canEditCell()` respects the various property settings affecting editability:
 
 *   [field.canEdit](ListGridField.md#attr-listgridfieldcanedit) can be set to disable editing for a field
-*   If the grid is bound to a dataSource, the [ListGrid.canEditFieldAttribute](ListGrid_1.md#attr-listgridcaneditfieldattribute) value on the dataSource field may enable / disable editing
+*   If the grid is bound to a dataSource, the [canEditFieldAttribute](DataBoundComponent.md#attr-databoundcomponentcaneditfieldattribute) value on the dataSource field may enable / disable editing
 *   a record with the [recordEditProperty](ListGrid_1.md#attr-listgridrecordeditproperty) set to false is not editable
 *   disabled records are not editable
 

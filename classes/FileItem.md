@@ -261,6 +261,19 @@ This component is an [AutoChild](../reference.md#type-autochild) and as such may
 **Flags**: RA
 
 ---
+## Method: FileItem.getFileTitle
+
+### Description
+This method returns the title displayed next to the view and download buttons when displaying the file in read-only view. By default this displays the file name derived from `record[_fieldName__filename]`.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| value | [Any](#type-any) | false | — | value of this item. This will typically be null unless [DataSourceField.encodeInResponse](DataSourceField.md#attr-datasourcefieldencodeinresponse) is true. See the [Binary fields documentation](../kb_topics/binaryFields.md#kb-topic-binary-fields) for details of how binary fields are handled when fetching records in SmartClient. |
+| record | [Object](../reference.md#type-object) | false | — | the values being edited by the form or held by the [ValuesManager](ValuesManager.md#class-valuesmanager) that the form is a member of. |
+
+---
 ## Method: FileItem.setMultiple
 
 ### Description

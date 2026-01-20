@@ -122,7 +122,7 @@ TestRunner supports several more command-line options, or equivalent settings th
 
 #### Email Notifications
 
-At completion of the batch of tests, TestRunner can automatically send out an email notification summarizing the results of the test run, including error messages for any newly failing tests. A velocity template file is used to control its format; see [Velocity Support](velocitySupport.md#kb-topic-velocity-context-variables). The following velocity variables are available:
+At completion of the batch of tests, TestRunner can automatically send out an email notification summarizing the results of the test run, including error messages for any newly failing tests. A velocity template file is used to control its format; see [Velocity Support](#kb-topic-velocitysupport). The following velocity variables are available:
 
 *   **$firstBatchFound**. Whether baseline batch was found with which to compare
 *   **$fixed**. A list of the test results for tests fixed in this batch run

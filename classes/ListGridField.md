@@ -2571,7 +2571,7 @@ If not explicitly specified, see [ListGrid.getIconCursor](ListGrid_2.md#method-l
 ## Attr: ListGridField.canEdit
 
 ### Description
-This property establishes default editability for the field. May be overridden by setting the 'canEdit' property at the listGrid level. If not explicitly set and this grid is bound to a dataSource, the [ListGrid.canEditFieldAttribute](ListGrid_1.md#attr-listgridcaneditfieldattribute) may be used to set default editability at the field level.
+This property establishes default editability for the field. May be overridden by setting the 'canEdit' property at the listGrid level. If not explicitly set and this grid is bound to a dataSource, the [ListGrid.canEditFieldAttribute](DataBoundComponent.md#attr-databoundcomponentcaneditfieldattribute) may be used to set default editability at the field level.
 
 An override of [ListGrid.canEditCell](ListGrid_2.md#method-listgridcaneditcell) can be used for more dynamic control over whether fields can be edited.
 

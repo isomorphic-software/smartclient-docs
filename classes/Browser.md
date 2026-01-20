@@ -213,7 +213,7 @@ This typically implies that the application will be working with only 300-400 pi
 ## ClassAttr: Browser.micAvailable
 
 ### Description
-Whether at least one audio input device (microphone) is available to the browser. This reflects device presence only and does not imply that the site has [permission](#borwsermicpermission) to access the microphone. In some browsers, microphone enumeration may be limited or partially obscured until permission is granted.
+Whether at least one audio input device (microphone) is available to the browser. This reflects device presence only and does not imply that the site has [permission](#classattr-browsermicpermission) to access the microphone. In some browsers, microphone enumeration may be limited or partially obscured until permission is granted.
 
 **Flags**: RA
 

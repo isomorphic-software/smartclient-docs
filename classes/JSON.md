@@ -9,6 +9,30 @@
 ### Description
 Utilities for working with JSON data.
 
+#### Native JSON.stringify() vs isc.JSON.encode()
+
+For maximum performance when serializing large datasets, consider using the native `JSON.stringify()` when your data meets certain criteria. Native serialization is approximately **6-10x faster** than `isc.JSON.encode()`, but lacks several features that SmartClient provides:
+
+**Use native `JSON.stringify()` when ALL of these conditions are met:**
+
+*   Data contains **no circular references** - native throws an error on cycles rather than handling them gracefully. If your data might have cycles (e.g., parent/child back-references in tree structures), you must use `isc.JSON.encode()`.
+*   Data contains **no Date values**, OR you accept JSON's default date handling. Native `JSON.stringify()` converts Dates to ISO 8601 strings (e.g., "2024-01-15T14:30:00.000Z"). This loses:
+    *   **Logical Date distinction**: SmartClient's logical dates (date-only, no time component) are serialized identically to datetimes by native JSON
+    *   **Logical Time distinction**: SmartClient's logical times (time-only, no date component) become full datetime strings
+    *   **Timezone handling**: Native always outputs UTC; SmartClient can preserve local timezone context for logical dates/timesUse [JSONEncoder.dateFormat](JSONEncoder.md#attr-jsonencoderdateformat) with values like "logicalDateConstructor" to preserve these distinctions when round-tripping data.
+*   Data contains **no SmartClient class instances** - native JSON cannot serialize SmartClient widgets or other framework objects meaningfully
+*   You do **not need pretty-printed output** - native JSON.stringify's optional formatting is less flexible than [JSONEncoder.prettyPrint](JSONEncoder.md#attr-jsonencoderprettyprint)
+*   You do **not need custom serialization** via object `_serialize()` methods
+
+**Use `isc.JSON.encode()` when ANY of these apply:**
+
+*   Data might contain circular references (automatically detected and handled)
+*   You need to preserve SmartClient's logical date/time/datetime distinctions
+*   You're serializing SmartClient components or class instances
+*   You need back-reference paths for reconstructing object graphs
+*   You want configurable date formats ([JSONDateFormat](../reference.md#type-jsondateformat))
+*   You need readable, pretty-printed output
+
 ---
 ## ClassMethod: JSON.decodeSafe
 

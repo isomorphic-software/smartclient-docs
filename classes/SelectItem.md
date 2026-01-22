@@ -977,6 +977,26 @@ When this value is true, we disable doubleClick events by default, instead issui
 
 Note: `multiple:true` SelectItems with multipleAppearance:"grid" do not currently support optionDataSource binding. You can get around this by calling [DataSource.fetchData](DataSource.md#method-datasourcefetchdata) directly and calling [dsResponse.data.getValueMap()](List.md#method-listgetvaluemap) to obtain a valueMap.
 
+#### Databound pickLists and missing values
+When a SelectItem has an [optionDataSource](PickList.md#attr-picklistoptiondatasource), if the current value includes entries that do not correspond to records loaded in the pickList, those entries will be dropped if the user makes any changes to the selection. This can occur when:
+
+*   Data paging causes records for some selected values to fall outside the loaded data window
+*   The [pickListCriteria](PickList.md#attr-picklistpicklistcriteria) excludes some selected values
+*   The value was set programmatically to something that doesn't exist in the DataSource
+
+To avoid this issue with data paging, you can set `pickListProperties.dataProperties.fetchMode` to `"local"` to ensure all matching records are loaded upfront:
+
+```
+ pickListProperties: {
+     dataProperties: {
+         fetchMode: "local"
+     }
+ }
+ 
+```
+
+For large datasets where loading all records is not practical, consider using [MultiPickerItem](MultiPickerItem.md#class-multipickeritem) instead. MultiPickerItem provides a dedicated interface for viewing and managing selected values, allowing users to see and deselect any selected value without needing to scroll through or filter the entire dataset.
+
 If the `multiple` attribute is not explicitly specified, it will default to `false`, unless thie item has a specified [valueMap](FormItem.md#attr-formitemvaluemap) and is part of a [filter interface](SearchForm.md#class-searchform) with [SearchForm.useMultiSelectForValueMaps](SearchForm.md#attr-searchformusemultiselectforvaluemaps) set to true.
 
 ### Groups

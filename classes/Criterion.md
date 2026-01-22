@@ -82,7 +82,7 @@ For a criterion with an operator that acts on other criteria (eg "and", "or"), a
 ### Description
 Value to be used in the application of this criterion.
 
-Value may be required or not required, or may be an Array, according to the [OperatorValueType](../reference_2.md#type-operatorvaluetype) of the operator.
+Value may be required or not required, or may be an Array, according to the [OperatorValueType](../reference.md#type-operatorvaluetype) of the operator.
 
 ### Groups
 

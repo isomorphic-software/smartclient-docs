@@ -229,7 +229,7 @@ If this field has an optionDataSource specified and [autoFetchDisplayMap](#attr-
 ### Description
 If this listGrid has any fields of type `"summary"` and this field will be [included](#attr-listgridfieldincludeinrecordsummary) in summary calculations by default, this attribute provides an opportunity to explicitly specify which summary fields the record should be displayed in.
 
-Specified as an array of fieldNames. If set, this field value will only be included for record summary value calculations for summary fields who's name is included in this array.
+Specified as an array of fieldNames. If set, this field value will only be included for record summary value calculations for summary fields whose name is included in this array.
 
 **Flags**: IR
 
@@ -1487,6 +1487,8 @@ Specifies the [ListGridField.optionDataSource](#attr-listgridfieldoptiondatasour
 If no `optionDataSource` is defined for the field and [ListGridField.displayValueFromRecord](#attr-listgridfielddisplayvaluefromrecord) is not set to `false`, the cell will display the displayField value for the current record instead of the underlying value for this field. This approach can be used for situations where field values need a stored-value-to-displayed-value mapping, but the set of all possible values is too large to load as a [ValueMap](../reference_2.md#type-valuemap) - see [ListGridField.optionDataSource](#attr-listgridfieldoptiondatasource) for more details on this approach. Note that if this field is editable this will also be applied to this field's editors. *This sample* illustrates this approach achieved via a server-side SQL join.
 
 The display value for a record with a specified `displayField` can be picked up via [ListGrid.getDisplayValue](ListGrid_2.md#method-listgridgetdisplayvalue).
+
+Unless [ListGridField.sortByDisplayField](#attr-listgridfieldsortbydisplayfield) is explicitly set to `false`, sorting by this field will sort by the display field value instead.
 
 ### Groups
 
@@ -2834,9 +2836,11 @@ Note: this formatter will not be applied to the values displayed in cells being 
 ## Method: ListGridField.getRecordSummary
 
 ### Description
-Only applies to [summary-type](../reference.md#type-listgridfieldtype) fields. If specified, this method will be called to generate the record summary value to be displayed for each row in this field. When this method is called, current values for other [summary-type](../reference.md#type-listgridfieldtype) fields have not yet been stored on the record, but are accessible via [ListGrid.getRecordSummary](ListGrid_2.md#method-listgridgetrecordsummary).
+Only applies to ["summary"-type](../reference.md#type-listgridfieldtype) fields. If specified, this method will be called to generate the record summary value to be displayed for each row in this field. When this method is called, current values for other record summary fields have not necessarily been stored on the record, but are accessible via [ListGrid.getRecordSummary](ListGrid_2.md#method-listgridgetrecordsummary).
 
-Note that if specified, this is called instead of making use of the [ListGridField.recordSummaryFunction](#attr-listgridfieldrecordsummaryfunction).
+The grid is passed to be able to evaluate dependency record summary values via ListGrid.getRecordSummary(). Other than that, the properties and state of the grid should not be used in the implementation of this method. To do so would be a source of undefined behavior.
+
+Note that if implemented, this is called instead of making use of the [ListGridField.recordSummaryFunction](#attr-listgridfieldrecordsummaryfunction).
 
 If [ListGrid.showGridSummary](ListGrid_1.md#attr-listgridshowgridsummary) or [ListGrid.showGroupSummary](ListGrid_1.md#attr-listgridshowgroupsummary) is true, this field's value in the summary row\[s\] will still be calculated by calling this method. In this case, the record object passed in will contain summary values for each field. If custom handling is required for this case, it may be detected by checking the record object's [ListGridRecord.isGroupSummary](ListGridRecord.md#attr-listgridrecordisgroupsummary) and [ListGridRecord.isGridSummary](ListGridRecord.md#attr-listgridrecordisgridsummary) attributes.
 
@@ -2900,7 +2904,7 @@ Return false from this method to cancel the default behavior (Saving / cancellin
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| editCompletionEvent | [EditCompletionEvent](../reference.md#type-editcompletionevent) | false | — | What interaction triggered this edit cell exit |
+| editCompletionEvent | [EditCompletionEvent](../reference_2.md#type-editcompletionevent) | false | — | What interaction triggered this edit cell exit |
 | record | [ListGridRecord](#type-listgridrecord) | false | — | record for the cell being edited |
 | newValue | [Any](#type-any) | false | — | new edit value for the cell being edited. Note that if the user has not made any changes this will be undefined |
 | rowNum | [int](../reference.md#type-int) | false | — | row number for the cell |

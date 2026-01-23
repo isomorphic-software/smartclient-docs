@@ -371,7 +371,7 @@ The paging strategy to use for this DataSource. If this property is not set, the
 
 This setting can be overridden with the [OperationBinding.sqlPaging](OperationBinding.md#attr-operationbindingsqlpaging) property.
 
-**NOTE:** Operations that involve a [customSQL](#attr-operationbindingcustomsql) clause ignore this property, because customSQL operations usually need to be treated as special cases. For these operations, the paging strategy comes from the [server.properties](../kb_topics/server_properties.md#kb-topic-serverproperties-file) setting `sql.defaultCustomSQLPaging` or `sql.defaultCustomSQLProgressivePaging`, depending on whether or not [progressiveLoading](#attr-datasourceprogressiveloading) is in force. Note that these can always be overridden by a `sqlPaging` setting on the OperationBinding.
+**NOTE:** Operations that involve a [customSQL](OperationBinding.md#attr-operationbindingcustomsql) clause ignore this property, because customSQL operations usually need to be treated as special cases. For these operations, the paging strategy comes from the [server.properties](../kb_topics/server_properties.md#kb-topic-serverproperties-file) setting `sql.defaultCustomSQLPaging` or `sql.defaultCustomSQLProgressivePaging`, depending on whether or not [progressiveLoading](#attr-datasourceprogressiveloading) is in force. Note that these can always be overridden by a `sqlPaging` setting on the OperationBinding.
 
 ### See Also
 
@@ -448,6 +448,52 @@ If not specified for a DataSource, the fileNameField will be inferred on the ser
 **Flags**: IR
 
 ---
+## Attr: DataSource.autoJoinTransactions
+
+### Description
+If true, causes all operations on this DataSource to automatically start or join a transaction associated with the current HttpServletRequest. This means that multiple operations sent to the server in a [request queue](RPCManager.md#classmethod-rpcmanagerstartqueue) will be committed in a single transaction.
+
+Note that this includes fetch operations - setting this property to true has the same effect as a transaction policy of ALL for just this DataSource's operations - see the server-side `RPCManager.setTransactionPolicy()` for details of the different TransactionPolicy settings.
+
+If this property is explicitly false, this causes all operations on this DataSource to be committed individually - the same as a transaction policy of NONE, just for this DataSource's operations.
+
+In either case, you can override the setting for individual operations - see [OperationBinding.autoJoinTransactions](OperationBinding.md#attr-operationbindingautojointransactions).
+
+If this property if null or not defined, we fall back to the default setting for this type of DataSource. These are defined in [server.properties](../kb_topics/server_properties.md#kb-topic-serverproperties-file) as follows:
+
+*   **Hibernate:** `hibernate.autoJoinTransactions`
+*   **JPA/JPA2:** `jpa.autoJoinTransactions`
+*   **SQL:** There is one setting per configured database connection ([dbName](#attr-datasourcedbname)). For example, the setting for the default MySQL connection is `sql.Mysql.autoJoinTransactions`
+
+If the setting is not defined at the DataSource-type level, we use the system global default, which is defined in `server.properties` as `autoJoinTransactions`.
+
+At the dbName and global system levels, you can set the autoJoinTransactions attribute to a valid Transaction Policy, rather than a simple true or false (although these values work too - true is the same as ALL, false is the same as NONE). For valid TransactionPolicy values and their meanings, see the server-side Javadoc for `RPCManager.setTransactionPolicy()`
+
+Note that the configuration settings discussed here can be overridden for a particular queue of requests by setting the server-side RPCManager's transaction policy. Look in the server-side Javadoc for `RPCManager.getTransactionPolicy()`.
+
+Transactions can also be initiated manually, separate from the RPCManager/HttpServletRequest lifecycle, useful for both multi-threaded web applications, and standalone applications that don't use a servlet container - see [standaloneDataSourceUsage](../kb_topics/standaloneDataSourceUsage.md#kb-topic-standalone-datasource-usage).
+
+NOTE: Setting this property to true does not cause a transactional persistence mechanism to automatically appear - you have to ensure that your DataSource supports transactions. The SmartClient built-in SQL, Hibernate and JPA DataSources support transactions, but note that they do so **at the provider level**. This means that you can combine updates to, say, an Oracle database and a MySQL database in the same queue, but they will be committed in _two_ transactions - one per database. The SmartClient server will commit or rollback these two transactions as if they were one, so a failure in some Oracle update would cause all the updates to both databases to be rolled back. However, this is not a true atomic transaction; it is possible for one transaction to be committed whilst the other is not - in the case of hardware failure, for example.
+
+NOTE: Not all the supported SQL databases are supported for transactions. Databases supported in this release are:
+
+*   DB2
+*   HSQLDB
+*   Firebird
+*   Informix
+*   Microsoft SQL Server
+*   MySQL (you must use InnoDB tables; the default MyISAM storage engine does not support transactions)
+*   MariaDB
+*   Oracle
+*   PostgreSQL
+
+### See Also
+
+- [OperationBinding.autoJoinTransactions](OperationBinding.md#attr-operationbindingautojointransactions)
+
+**Flags**: IR
+
+---
 ## Attr: DataSource.auditUserFieldName
 
 ### Description
@@ -461,7 +507,7 @@ For DataSources with [auditing enabled](#attr-datasourceaudit), specifies the fi
 ### Description
 Optional array of OperationBindings, which provide instructions to the DataSource about how each DSOperation is to be performed.
 
-When using the SmartClient Server, OperationBindings are specified in your DataSource descriptor (.ds.xml file) and control server-side behavior such as what Java object to route DSRequest to ([OperationBinding.serverObject](OperationBinding.md#attr-operationbindingserverobject)) or customizations to SQL, JQL and HQL queries ([OperationBinding.customSQL](#attr-operationbindingcustomsql), [OperationBinding.customJQL](#attr-operationbindingcustomjql) and [OperationBinding.customHQL](#attr-operationbindingcustomhql)). See the *Java Integration samples*.
+When using the SmartClient Server, OperationBindings are specified in your DataSource descriptor (.ds.xml file) and control server-side behavior such as what Java object to route DSRequest to ([OperationBinding.serverObject](OperationBinding.md#attr-operationbindingserverobject)) or customizations to SQL, JQL and HQL queries ([OperationBinding.customSQL](OperationBinding.md#attr-operationbindingcustomsql), [OperationBinding.customJQL](OperationBinding.md#attr-operationbindingcustomjql) and [OperationBinding.customHQL](OperationBinding.md#attr-operationbindingcustomhql)). See the *Java Integration samples*.
 
 For DataSources bound to WSDL-described web services using [DataSource.serviceNamespace](#attr-datasourceservicenamespace), OperationBindings are used to bind each DataSource [operationType](OperationBinding.md#attr-operationbindingoperationtype) to an [operation](OperationBinding.md#attr-operationbindingwsoperation) of a WSDL-described [web service](WebService.md#class-webservice), so that a DataSource can both fetch and save data to a web service.
 
@@ -893,7 +939,7 @@ You can manually set this attribute after initialization by calling [DataSource.
 
 To cause automatic cache updates, you can set [DataSource.cacheMaxAge](#attr-datasourcecachemaxage) to a number of seconds and once data has been client-side for that length of time, the next fetch causes the cache to be dropped and a new cache retrieved.
 
-Note that multiple [DataSource.operationBindings](#attr-datasourceoperationbindings) of type "fetch" which return distinct results will not work with `cacheAllData`: only one cache is created and is used for all fetch operations, regardless of whether [DSRequest.operationId](DSRequest.md#attr-dsrequestoperationid) has been set. However, "fetch" operationBindings used as a [OperationBinding.cacheSyncOperation](#attr-operationbindingcachesyncoperation) will work normally, so long as they return all data fields that are returned by the default "fetch" operation, so that the cache can be updated.
+Note that multiple [DataSource.operationBindings](#attr-datasourceoperationbindings) of type "fetch" which return distinct results will not work with `cacheAllData`: only one cache is created and is used for all fetch operations, regardless of whether [DSRequest.operationId](DSRequest.md#attr-dsrequestoperationid) has been set. However, "fetch" operationBindings used as a [OperationBinding.cacheSyncOperation](OperationBinding.md#attr-operationbindingcachesyncoperation) will work normally, so long as they return all data fields that are returned by the default "fetch" operation, so that the cache can be updated.
 
 To specify which operationId to use for fetching all data, use [cacheAllOperationId](#attr-datasourcecachealloperationid).
 
@@ -1196,6 +1242,24 @@ If the fileVersionField is not configured, no automatic file versioning will be 
 - [DataSource.listFileVersions](#method-datasourcelistfileversions)
 - [DataSource.getFileVersion](#method-datasourcegetfileversion)
 - [DataSource.removeFileVersion](#method-datasourceremovefileversion)
+
+**Flags**: IR
+
+---
+## Attr: DataSource.unionFields
+
+### Description
+Only applicable to "union" dataSources, this is a comma-separated list of the names of the dataSource fields that make up the union. This property is optional; if it is not supplied, SmartClient Server will derive a list of fields from the member dataSources (see [unionOf](#attr-datasourceunionof)), where name and data type match. See [defaultUnionFieldsStrategy](#attr-datasourcedefaultunionfieldsstrategy) for more details.
+
+Note, this setting is only useful for fields that are named the same on the member dataSources. For a more flexible and powerful way to define the unioned fields, that does not rely on field names being the same in member dataSources, you can use [field-level unionOf definitions](DataSourceField.md#attr-datasourcefieldunionof).
+
+### Groups
+
+- unionDataSource
+
+### See Also
+
+- [OperationBinding.unionFields](OperationBinding.md#attr-operationbindingunionfields)
 
 **Flags**: IR
 
@@ -1635,6 +1699,26 @@ To simplify this intended usage, the string "sql" is allowed for `auditDSConstru
 **Flags**: IR
 
 ---
+## Attr: DataSource.cacheSyncTiming
+
+### Description
+The [cacheSyncTiming](../reference_2.md#type-cachesynctiming) to use for operations on this DataSource. Can be overridden at the [operation](OperationBinding.md#attr-operationbindingcachesynctiming) and [DSRequest](DSRequest.md#attr-dsrequestcachesynctiming) levels. The default value of null is the same as specifying "immediate".
+
+Note that `cacheSyncTiming` is not applicable to many common types of request, and is simply ignored for these request types. See the [CacheSyncTiming type documentation](../reference_2.md#type-cachesynctiming) for more details.
+
+### Groups
+
+- cacheSynchronization
+
+### See Also
+
+- [DataSource.cacheSyncStrategy](#attr-datasourcecachesyncstrategy)
+- [OperationBinding.cacheSyncTiming](OperationBinding.md#attr-operationbindingcachesynctiming)
+- [DSRequest.cacheSyncTiming](DSRequest.md#attr-dsrequestcachesynctiming)
+
+**Flags**: IR
+
+---
 ## Attr: DataSource.templateConfigToken
 
 ### Description
@@ -1693,7 +1777,7 @@ If you wish to switch on ANSI-style joins for every DataSource, without the need
 
 ### See Also
 
-- [OperationBinding.includeAnsiJoinsInTableClause](#attr-operationbindingincludeansijoinsintableclause)
+- [OperationBinding.includeAnsiJoinsInTableClause](OperationBinding.md#attr-operationbindingincludeansijoinsintableclause)
 
 **Flags**: IR
 
@@ -1895,6 +1979,49 @@ For DataSources using the [SmartClient SQL engine](../kb_topics/sqlDataSource.md
 **Flags**: IR
 
 ---
+## Attr: DataSource.unionOf
+
+### Description
+Only applicable to "union" dataSources, this is a comma-separated list of the names of the member dataSources that make up the union. If all the named dataSources are [SQL DataSource](../kb_topics/sqlDataSource.md#kb-topic-sql-datasources)s, or union dataSources whose members are SQL dataSurces, the union will be implemented purely in SQL, which is the most efficient thing to do.
+
+**Nesting Union DataSources**  
+It is valid for union DataSources to be nested inside other union DataSources; nesting is valid to any depth. If you are nesting union dataSources, bear in mind the following considerations:
+
+*   If you are renaming fields from underlying SQL DataSources in a union DataSource, and you then include that union DataSource as a nested element of another union DataSource, it is the renamed fields that should be referenced in the outer union DataSource. For example, if you have union DataSource "union1" that specifes a unioned field like this:
+    ```
+        <field name="c" unionOf="sqlDS1.a, sqlDS2.b" />
+    ```
+    If you want to then include dataSource "union1" as a member dataSource of another union dataSource, "union2", you need to refer to the field as "c", not "a" or "b":
+    ```
+        <field name="myField" unionOf="union1.c, sqlDS3.xyz" />
+    ```
+    SmartClient will follow the chain of field renames to ensure that the appropriate SQL-level fields are unioned together, and renamed consistently
+*   It is not an error to specify the same dataSource as a member of a union dataSource multiple times, but it is also not correct and may have performance implications. If you configure duplicate member dataSources directly, eg:
+    ```
+        <DataSource serverType="union" unionOf="sqlDS1,sqlDS2,sqlDS1">
+    ```
+    SmartClient will simply remove the duplicate entries. However, with nested union dataSources, it becomes possible to indirectly include the same member dataSource more than once. Eg:
+    ```
+        <DataSource ID="bigUnion" serverType="union" unionOf="union1,union2">
+    ```
+    and
+    ```
+        <DataSource ID="union1" serverType="union" unionOf="sqlDS1,sqlDS2">
+    ```
+    and
+    ```
+        <DataSource ID="union2" serverType="union" unionOf="sqlDS2,sqlDS3">
+    ```
+    You can see, dataSource "sqlDS2" is going to be included twice. This will result in the union DataSource generating SQL that fetches the rows from "sqlDS2" twice, but because of the way the SQL "UNION" keyword works, all the duplicate rows will be dropped. So the end result will be correct, but the system will have wasted time fetching and then dropping duplicate rows.
+*   The ability to nest union dataSources within other union dataSources introduces a whole category of extra considerations. For example, you need to make sure you do not set up self references or looping structures, and as mentioned above, field renaming becomes potentially more involved
+
+### Groups
+
+- unionDataSource
+
+**Flags**: IR
+
+---
 ## Attr: DataSource.recordXPath
 
 ### Description
@@ -1910,7 +2037,7 @@ See [OperationBinding.recordXPath](OperationBinding.md#attr-operationbindingreco
 ## Attr: DataSource.useSubselectForRowCount
 
 ### Description
-This property is only applicable to [SQL](#attr-datasourceservertype) DataSources, and only for [operations](OperationBinding.md#class-operationbinding) that express a [customSQL](#attr-operationbindingcustomsql) clause. In these circumstances, we generally switch off paging because we are unable to generate a "row count" query that tells the framework the size of the complete, unpaged resultset.
+This property is only applicable to [SQL](#attr-datasourceservertype) DataSources, and only for [operations](OperationBinding.md#class-operationbinding) that express a [customSQL](OperationBinding.md#attr-operationbindingcustomsql) clause. In these circumstances, we generally switch off paging because we are unable to generate a "row count" query that tells the framework the size of the complete, unpaged resultset.
 
 The `useSubselectForRowCount` flag causes the framework to derive a rowcount query by simply wrapping the entire customSQL clause in a subselect, like so:    `SELECT COUNT(*) FROM ({customSQL clause here})`
 
@@ -2110,6 +2237,42 @@ Also supported: one startsWith, multiple contains, one endsWith.
 **Flags**: IR
 
 ---
+## Attr: DataSource.cacheSyncStrategy
+
+### Description
+The [cacheSyncStrategy](../reference_2.md#type-cachesyncstrategy) to use for operations on this DataSource. Can be overridden at the [operation](OperationBinding.md#attr-operationbindingcachesyncstrategy) and [DSRequest](DSRequest.md#attr-dsrequestcachesyncstrategy) levels.
+
+If `cacheSyncStrategy` is not explicitly set for a `DataSource`, we will use the default strategy for this [DataSource type](#attr-datasourceservertype). The defaults as shipped, are:
+
+| Server Type | Strategy |
+|---|---|
+| sql | requestValuesPlusSequences |
+| hibernate | refetch |
+| jpa/jpa1 | refetch |
+| rest | responseValues |
+| generic | refetch |
+
+You can override these default strategies by adding a "`default.{server-type}.cache.sync.strategy`" setting to your `server.properties` file, like these examples:
+
+```
+    default.sql.cache.sync.strategy: refetch
+    default.rest.cache.sync.strategy: none
+ 
+```
+Note that global `cacheSyncStrategy` settings are defaults only; SmartClient Server will override them intelligently in some circumstances. See the "CacheSyncStrategy" section of the [cache synchronization overview](../kb_topics/cacheSynchronization.md#kb-topic-automatic-cache-synchronization) for details of when and why we do this.
+
+### Groups
+
+- cacheSynchronization
+
+### See Also
+
+- [OperationBinding.cacheSyncStrategy](OperationBinding.md#attr-operationbindingcachesyncstrategy)
+- [DSRequest.cacheSyncStrategy](DSRequest.md#attr-dsrequestcachesyncstrategy)
+
+**Flags**: IR
+
+---
 ## Attr: DataSource.titleField
 
 ### Description
@@ -2127,6 +2290,32 @@ If no field is found that matches any of the names above, then the first field i
 
 - titles
 - dsSpecialFields
+
+**Flags**: IR
+
+---
+## Attr: DataSource.defaultUnionFieldsStrategy
+
+### Description
+Only applicable to "union" dataSources. Determines the strategy we adopt when automatically deriving a list of fields when no explicit [unionFields](#attr-datasourceunionfields) setting is provided. Note that explicit field declarations that include [unionOf](DataSourceField.md#attr-datasourcefieldunionof) definitions take precedence over whatever `defaultUnionFieldsStrategy` is defined. As an example of how this property affects field derivation, assume our unionDataSource specifies three member dataSources in its [unionOf](#attr-datasourceunionof) setting:
+
+*   **ds1** has fields **f1 (integer)**, **f2 (text)** and **f3 (boolean)**
+*   **ds2** has fields **f1 (integer)**, **f2 (text)** and **f4 (datetime)**
+*   **ds3** has fields **f1 (integer)**, **f2 (float)**, **f4 (datetime)** and **f5 (text)**
+
+Given this, the different unionFieldsStrategy settings would derive the following fields:
+
+*   **intersect** would give just **f1** (**f2** exists on every dataSource, but the data type is not the same in every case)
+*   **matching** would derive **f1** and **f4** - again, **f2** would be excluded because of the data type discrepancy. Records from **ds1** would contribute a null value for **f4**
+*   **all** would derive all fields except **f2**, excluded because of the data type discrepancy. Values for missing fields from any given dataSource would be null
+
+### Groups
+
+- unionDataSource
+
+### See Also
+
+- [OperationBinding.unionFields](OperationBinding.md#attr-operationbindingunionfields)
 
 **Flags**: IR
 
@@ -2517,6 +2706,84 @@ When defining the data source in a .ds.xml file (see [dataSourceDeclaration](../
 **Flags**: IRW
 
 ---
+## Attr: DataSource.useSpringTransaction
+
+### Description
+This flag is part of the Automatic Transactions feature; it is only applicable in Power Edition and above.
+
+If true, causes all transactional operations on this DataSource to use the current Spring-managed transaction, if one exists. If there is no current Spring transaction to use at the time of execution, a server-side Exception is thrown. Note, a "transactional operation" is one that would have joined the SmartClient shared transaction in the absence of Spring integration - see [auotJoinTransactions](#attr-datasourceautojointransactions).
+
+This feature is primarily intended for situations where you have [DMI methods](../kb_topics/dmiOverview.md#kb-topic-direct-method-invocation) that make use of both Spring DAO operations and SmartClient DSRequest operations, and you would like all of them to share the same transaction. An example of the primary intended use case:
+
+```
+   @Transactional(isolation=Isolation.READ_COMMITTED, propagation=Propagation.REQUIRED)
+   public class WorldService {
+
+     public DSResponse doSomeStuff(DSRequest dsReq, HttpServletRequest servletReq) 
+     throws Exception 
+     {
+     	 ApplicationContext ac = (ApplicationContext)servletReq.getSession().getServletContext().getAttribute("applicationContext");
+       WorldDao dao = (WorldDao)ac.getBean("worldDao");
+       dao.insert(req.getValues());
+       DSRequest other = new DSRequest("MyOtherDataSource", "add");
+       // Set up the 'other' dsRequest with critiera, values, etc
+       //  ...
+
+       // This dsRequest execution will use the same transaction that the DAO operation
+       // above used; if it fails, the DAO operation will be rolled back
+       other.execute();
+
+       return new DSResponse();
+     }
+   }
+```
+Note: if you want to rollback an integrated Spring-managed transaction, you can use any of the normal Spring methods for transaction rollback:
+
+*   Programmatically mark the transaction for rollback with the `setRollbackOnly()` API
+*   Throw a `RuntimeException`, or
+*   Throw an ordinary checked `Exception`. but configure Spring to rollback on that Exception. This can be done in the @Transactional annotation:
+    ```
+         @Transactional(isolation=Isolation.READ_COMMITTED, propagation=Propagation.REQUIRED, rollbackFor=MyRollbackException.class)
+    ```
+    
+
+Spring's exception-handling model is different from SmartClient's, so care must be taken to get the correct error processing. If a transactional DSRequest fails, SmartClient code will throw an ordinary checked `Exception`; but Spring will ignore that `Exception`. So you can either:
+
+*   Wrap every `DSRequest.execute()` in a try/catch block. Catch `Exception` and throw a `RuntimeException` instead
+*   Just use the "rollbackFor" annotation to make your transactional method rollback for all instances of `Exception`
+
+  
+Note: Spring transaction integration is conceptually different from SmartClient's [built-in transaction feature](#attr-datasourceautojointransactions), because SmartClient transactions apply to a queue of DSRequests, whereas Spring transactions are scoped to a single method invocation. If you want to make a whole SmartClient queue share a single Spring-managed transaction, you can wrap the processing of an entire queue in a call to a transactional Spring method. See the _Using Spring Transactions with SmartClient DMI_ section at the bottom of the [Spring integration page](../kb_topics/springIntegration.md#kb-topic-integration-with-spring) for more details.
+
+You can set `useSpringTransaction` as the default setting for all dataSources for a given database provider by adding the property `{dbName}.useSpringTransaction` to your `server.properties` file. For example, `Mysql.useSpringTransaction: true` or `hibernate.useSpringTransaction: true`. You can set it as the default for all providers with a `server.properties` setting like this: `useSpringTransaction: true`. When `useSpringTransaction` is the default, you can switch it off for a specific dataSource by explicitly setting the flag to false for that DataSource.
+
+Finally, this setting can be overridden at the operationBinding level - see [OperationBinding.useSpringTransaction](OperationBinding.md#attr-operationbindingusespringtransaction)
+
+#### Configuration
+When using Spring transactions, SmartClient needs a way to lookup the JNDI connection being used by Spring, and this needs to be configured. First, register a bean like this in your applicationContext.xml file:
+```
+   <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+       <!-- Set this to the JNDI name Spring is using -->
+       <property name="jndiName" value="isomorphic/jdbc/defaultDatabase"/>
+   </bean>
+ 
+```
+and then add a line like this to your server.properties:
+```
+   # Set this property to match the "id" of the JndiObjectFactoryBean registered in Spring
+   sql.spring.jdbcDataSourceBean: dataSource
+ 
+```
+
+### See Also
+
+- [DataSource.autoJoinTransactions](#attr-datasourceautojointransactions)
+- [OperationBinding.useSpringTransaction](OperationBinding.md#attr-operationbindingusespringtransaction)
+- [springIntegration](../kb_topics/springIntegration.md#kb-topic-integration-with-spring)
+
+**Flags**: IR
+
+---
 ## Attr: DataSource.transformResponseScript
 
 ### Description
@@ -2609,11 +2876,11 @@ Switching to "false" effectively creates caching just for one specific `operatio
 ## Attr: DataSource.defaultBooleanStorageStrategy
 
 ### Description
-For [serverType:"sql"](#attr-datasourceservertype) DataSources, sets the default [sqlStorageStrategy](#attr-datasourcefieldsqlstoragestrategy) to use for boolean fields where no `sqlStorageStrategy` has been declared on the field.
+For [serverType:"sql"](#attr-datasourceservertype) DataSources, sets the default [sqlStorageStrategy](DataSourceField.md#attr-datasourcefieldsqlstoragestrategy) to use for boolean fields where no `sqlStorageStrategy` has been declared on the field.
 
 Can also be set system-wide via the [server_properties](../kb_topics/server_properties.md#kb-topic-serverproperties-file) setting `sql.defaultBooleanStorageStrategy`, or for a particular database configuration by setting `sql._dbName_.defaultBooleanStorageStrategy` (see [Admin Console overview](../kb_topics/adminConsole.md#kb-topic-admin-console) for more information on SQL configuration).
 
-Note that when this property is unset, the default [DataSourceField.sqlStorageStrategy](#attr-datasourcefieldsqlstoragestrategy) strategy is effectively "string".
+Note that when this property is unset, the default [DataSourceField.sqlStorageStrategy](DataSourceField.md#attr-datasourcefieldsqlstoragestrategy) strategy is effectively "string".
 
 ### Groups
 
@@ -2632,6 +2899,20 @@ Default value of null means this DataSource will use the system-wide default, wh
 ### See Also
 
 - [OperationBinding.allowMultiUpdate](OperationBinding.md#attr-operationbindingallowmultiupdate)
+
+**Flags**: IR
+
+---
+## Attr: DataSource.sqlSuffix
+
+### Description
+**This feature is available with Power or better licenses only.** See [smartclient.com/product](http://smartclient.com/product) for details.
+
+For DataSources of [serverType](#attr-datasourceservertype) "sql" only, some text to add right at the end of any generated query, after all other text. See the documentation for the [operationBinding level](OperationBinding.md#attr-operationbindingsqlsuffix) property for more detail.
+
+### Groups
+
+- customQuerying
 
 **Flags**: IR
 
@@ -3295,6 +3576,20 @@ This feature can be disabled system-wide via setting `datasource.autoLinkFKs` to
 **Flags**: R
 
 ---
+## Attr: DataSource.sqlPrefix
+
+### Description
+**This feature is available with Power or better licenses only.** See [smartclient.com/product](http://smartclient.com/product) for details.
+
+For DataSources of [serverType](#attr-datasourceservertype) "sql" only, some text to add right at the beginning of any generated query, before all other text. See the documentation for the [operationBinding level](OperationBinding.md#attr-operationbindingsqlprefix) property for more detail.
+
+### Groups
+
+- customQuerying
+
+**Flags**: IR
+
+---
 ## Attr: DataSource.arrayCriteriaForceExact
 
 ### Description
@@ -3486,7 +3781,7 @@ For a [SQL DataSource](../kb_topics/sqlDataSource.md#kb-topic-sql-datasources) t
 
 Aliasing is necessary when the same table appears more than once in a query. In addition to use cases described in [DataSourceField.relatedTableAlias](DataSourceField.md#attr-datasourcefieldrelatedtablealias), this may happen when `includeFrom` field using [foreign key defined in otherFKs](DataSourceField.md#attr-datasourcefieldotherfks) would be included multiple times in a related DataSource.
 
-See the "Automatically generated table aliases" section of the [SQL Templating](#kb-topic-customquerying) for the complete set of general rules how aliases are generated. Also, see [dataSourceField.otherFKs](DataSourceField.md#attr-datasourcefieldotherfks) for more details and usage samples.
+See the "Automatically generated table aliases" section of the [SQL Templating](../kb_topics/customQuerying.md#kb-topic-custom-querying-overview) for the complete set of general rules how aliases are generated. Also, see [dataSourceField.otherFKs](DataSourceField.md#attr-datasourcefieldotherfks) for more details and usage samples.
 
 ### Groups
 
@@ -3999,14 +4294,14 @@ If the parent DataSource is already loaded, calling `loadWithParents` will not a
 ## ClassMethod: DataSource.registerRecordSummaryFunction
 
 ### Description
-Register a new standard [RecordSummaryFunction](../reference_2.md#type-recordsummaryfunction). This will then be available by calling [applySummaryFunction()](SimpleType.md#classmethod-simpletypeapplysummaryfunction) and passing in just the new method name.
+Register a new [RecordSummaryFunction](../reference_2.md#type-recordsummaryfunction). This will then be available by calling [DataSource.applyRecordSummaryFunction](#classmethod-datasourceapplyrecordsummaryfunction) and passing in the `functionName`, or by setting the [ListGridField.recordSummaryFunction](ListGridField.md#attr-listgridfieldrecordsummaryfunction) property of a summary field to `functionName`.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| methodName | [String](#type-string) | false | — | identifier for the new summary function |
-| summaryFunction | [Function](#type-function)|[StringMethod](../reference_2.md#type-stringmethod) | false | — | new summary function implementation. This method should take 3 parameters: `record` (the record for which the summary is being generated), `fields` (an array of fields to include in the generated summary) and `summaryField` (a pointer to the field in which the summary will be displayed \[may be null\]. |
+| functionName | [String](#type-string) | false | — | identifier for the new record summary function |
+| summaryFunction | [Function](#type-function)|[StringMethod](../reference_2.md#type-stringmethod) | false | — | new summary function implementation. This method takes 3 parameters: `record` (the record for which the summary is being generated), `fields` (an array of the available fields) and `summaryField` (the summary field). |
 
 ---
 ## ClassMethod: DataSource.load
@@ -4141,10 +4436,10 @@ Applies a [RecordSummaryFunction](../reference_2.md#type-recordsummaryfunction) 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| summaryFunction | [SummaryFunction](../reference_2.md#type-summaryfunction) | false | — | Summary Function or identifier for registered recordSummaryFunction to execute. If passed in as an explicit function record, fields and summaryField parameters will be passed through to the function. |
-| record | [DataSourceRecord](#type-datasourcerecord) | false | — | Record to retrieve a summary for |
-| fields | [Array of DataSourceField](#type-array-of-datasourcefield) | false | — | Set of fields to include in the summary |
-| summaryField | [DataSourceField](#type-datasourcefield) | false | — | field in which this summary will be displayed. |
+| summaryFunction | [RecordSummaryFunction](../reference_2.md#type-recordsummaryfunction) | false | — | The record summary function to execute. |
+| record | [Record](#type-record) | false | — | Record to retrieve a summary for. |
+| fields | [Array of Field](#type-array-of-field) | false | — | The available fields. |
+| summaryField | [DBCField](#type-dbcfield) | false | — | The summary field. |
 
 ### Returns
 
@@ -5513,7 +5808,7 @@ Note, the Oracle database product does not support this syntax, so we implement 
 Batch inserting can be configured at the [DSRequest](../reference_2.md#object-dsrequest), [DataSource](#class-datasource) and [OperationBinding](OperationBinding.md#class-operationbinding) levels, and it can also be globally configured in `server.properties`. See the [multiInsertStrategy](#attr-datasourcemultiinsertstrategy) documentation for details.
 
 #### Cache Synchronization and Audit
-This optimized batch insert style of multi-record add only supports [cache synchronization](#attr-operationbindingcansynccache) in a limited way, because database products do not provide a reliable way to determine the generated keys of rows inserted in this way. We support cache synchronization of batch-inserted records only when
+This optimized batch insert style of multi-record add only supports [cache synchronization](OperationBinding.md#attr-operationbindingcansynccache) in a limited way, because database products do not provide a reliable way to determine the generated keys of rows inserted in this way. We support cache synchronization of batch-inserted records only when
 
 *   The DataSource does not specify any "sequence" fields, and
 *   The `requestValuesPlusSequences` [cacheSyncStrategy](../reference_2.md#type-cachesyncstrategy) is in force
@@ -5522,13 +5817,13 @@ We support [automatic audit](#attr-datasourceaudit) of batch-inserted records on
 
 Additionally, be aware that any values missing from the original request data for whatever reason, will also be missing from both the cache-sync data and the audit records.
 
-"Simple" multi-record add, where each record is added with a discrete INSERT, does fully support cache-sync by default, but you may wish to consider turning it off when adding large numbers of records because the extra cache sync fetches can add significantly to the overall operation time (note, this only applies to the default "refetch" cache-sync strategy, so it does not affect the limited cache sync applicable to optimized batch inserts, described above). In fact, the elapsed time of a large multi-record `addData()` operation using "simple" multi-insert is more than doubled with "refecth" cache sync switched on, with all major databases, and it is significantly more than double on some of them. You can switch off cache sync for an operation by setting the [canSyncCache](#attr-operationbindingcansynccache) flag to `false` on your `OperationBinding`; alternatively, you can switch to `cacheSyncStrategy` "requestValuesPlusSequences" if that is an option for your use case (ie, you do not have database-generated field values, or can live without them). Note, auditing is not possible if cache sync is completely switched off.
+"Simple" multi-record add, where each record is added with a discrete INSERT, does fully support cache-sync by default, but you may wish to consider turning it off when adding large numbers of records because the extra cache sync fetches can add significantly to the overall operation time (note, this only applies to the default "refetch" cache-sync strategy, so it does not affect the limited cache sync applicable to optimized batch inserts, described above). In fact, the elapsed time of a large multi-record `addData()` operation using "simple" multi-insert is more than doubled with "refecth" cache sync switched on, with all major databases, and it is significantly more than double on some of them. You can switch off cache sync for an operation by setting the [canSyncCache](OperationBinding.md#attr-operationbindingcansynccache) flag to `false` on your `OperationBinding`; alternatively, you can switch to `cacheSyncStrategy` "requestValuesPlusSequences" if that is an option for your use case (ie, you do not have database-generated field values, or can live without them). Note, auditing is not possible if cache sync is completely switched off.
 
 #### Additional notes
 Please note a couple of provisos about batch inserting; since batch insert has a specialized and quite narrow set of use cases, we do not currently plan to remove any of these restrictions
 
 *   It is not supported by all database products. The following databases have been tested and verified to work: MySQL/MariaDB, HSQLDB, Microsoft SQL Server, PostgreSQL Oracle and DB/2. Other databases may work, but we do not guaranteee it
-*   It is not properly supported with [SQL templating](#kb-topic-customquerying). If you try to make use of **$valuesClause** in a custom querying scenario where batch inserting is in force, you will only get the `valuesClause` applicable to the first valueSet. The same restriction applies to **$values** references in things like [custom SQL expressions](#attr-datasourcefieldcustominsertexpression)
+*   It is not properly supported with [SQL templating](../kb_topics/customQuerying.md#kb-topic-custom-querying-overview). If you try to make use of **$valuesClause** in a custom querying scenario where batch inserting is in force, you will only get the `valuesClause` applicable to the first valueSet. The same restriction applies to **$values** references in things like [custom SQL expressions](DataSourceField.md#attr-datasourcefieldcustominsertexpression)
 *   It does not fully support binary fields. We do support values being sent from the client for fields of type "binary" as Base64-encoded strings, and we also support server-side Java code adding `InputStream` objects to valueSets before the SQL subsystem sees them (for example, by using a [DMI](#attr-datasourceserverobject)). However, we do not support upload of real binary files in a multi-record "add" request, primarily because there is no clear way to discern which of the records the uploaded file(s) belong with
 
 ### Parameters
@@ -5736,7 +6031,7 @@ In particular:
 
 Instead, the specific purpose of this API is to bypass all checks and side effects that normally occur for CRUD operations, for example, that a "fetch" requires valid Criteria or that an "update" or "remove" operation contains a valid primary key, or that an "add" operation returns the newly added record. `performCustomOperation` allows you to pass an arbitrary Record to the server, act on it with custom code, and return arbitray results or even no results.
 
-The "data" parameter becomes [dsRequest.data](DSRequest.md#attr-dsrequestdata). With the SmartClient Server Framework, the data is accessible server-side via DSRequest.getValues() and in [Velocity templates](#kb-topic-velocitysupport) (such as `<customSQL>`) as $values.
+The "data" parameter becomes [dsRequest.data](DSRequest.md#attr-dsrequestdata). With the SmartClient Server Framework, the data is accessible server-side via DSRequest.getValues() and in [Velocity templates](../kb_topics/velocitySupport.md#kb-topic-velocity-context-variables) (such as `<customSQL>`) as $values.
 
 Note that with SQLDataSource, `performCustomOperation` must be used if you plan to have a `<customSQL>` tag in your operationBinding that will execute SQL operations other than SELECT, UPDATE, INSERT, DELETE (such as creating a new table). By declaring [OperationBinding.operationType](OperationBinding.md#attr-operationbindingoperationtype) "custom" in your .ds.xml file, all checks related to normal CRUD operations will be skipped and your `<customSQL>` can do arbitrary things.
 
@@ -6074,7 +6369,7 @@ This method will return true for fields with the following attributes:
 
 *   [DataSourceField.formula](DataSourceField.md#attr-datasourcefieldformula)
 *   [DataSourceField.template](DataSourceField.md#attr-datasourcefieldtemplate)
-*   [DataSourceField.customSelectExpression](#attr-datasourcefieldcustomselectexpression)
+*   [DataSourceField.customSelectExpression](DataSourceField.md#attr-datasourcefieldcustomselectexpression)
 
 Or if the field has explicitly been marked as [calculated:true](DataSourceField.md#attr-datasourcefieldcalculated).
 

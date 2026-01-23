@@ -173,9 +173,9 @@ Note: `null`, `undefined`, and empty slots in an array are still considered an i
 ## StaticMethod: isA.Object
 
 ### Description
-Returns whether the passed value is a non-null Object.
+Returns whether the passed value is a non-`null` Object.
 
-Returns false for values that are Numbers, Strings, Booleans, Functions or are null or undefined.
+Returns `false` for values that are numbers, strings, booleans, functions or are `null` or `undefined`. (Note: Returns `true` for the wrapper types, e.g. `new String("some string")`.)
 
 Returns true for Object, Array, Regular Expression, Date and other kinds of native objects which are considered to extend from window.Object.
 

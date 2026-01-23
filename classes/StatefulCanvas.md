@@ -31,7 +31,7 @@ A declared value of the enum type [State](../reference.md#type-state).
 ## ClassAttr: StatefulCanvas.CHECKBOX
 
 ### Description
-A declared value of the enum type [SelectionType](../reference.md#type-selectiontype).
+A declared value of the enum type [SelectionType](../reference_2.md#type-selectiontype).
 
 **Flags**: R
 
@@ -71,7 +71,7 @@ A declared value of the enum type [State](../reference.md#type-state).
 ## ClassAttr: StatefulCanvas.BUTTON
 
 ### Description
-A declared value of the enum type [SelectionType](../reference.md#type-selectiontype).
+A declared value of the enum type [SelectionType](../reference_2.md#type-selectiontype).
 
 **Flags**: R
 
@@ -87,7 +87,7 @@ A declared value of the enum type [State](../reference.md#type-state).
 ## ClassAttr: StatefulCanvas.RADIO
 
 ### Description
-A declared value of the enum type [SelectionType](../reference.md#type-selectiontype).
+A declared value of the enum type [SelectionType](../reference_2.md#type-selectiontype).
 
 **Flags**: R
 
@@ -741,7 +741,7 @@ Return the 'actionType' for this canvas (radio / checkbox / button)
 
 ### Returns
 
-`[SelectionType](../reference.md#type-selectiontype)` — the current action type
+`[SelectionType](../reference_2.md#type-selectiontype)` — the current action type
 
 ### Groups
 
@@ -932,7 +932,7 @@ Update the 'actionType' for this canvas (radio / checkbox / button) If the canva
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| actionType | [SelectionType](../reference.md#type-selectiontype) | false | — | new action type |
+| actionType | [SelectionType](../reference_2.md#type-selectiontype) | false | — | new action type |
 
 ### Groups
 

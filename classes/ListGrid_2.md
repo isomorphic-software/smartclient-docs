@@ -1357,7 +1357,7 @@ You can alternatively use [ListGridField.cellChanged](ListGridField.md#method-li
 ## Method: ListGrid.getRecordSummary
 
 ### Description
-Provides access to the summary (see [summary-type](../reference.md#type-listgridfieldtype) fields) value of the record for other fields when called from inside the body of [ListGridField.getRecordSummary](ListGridField.md#method-listgridfieldgetrecordsummary) (since they're not available directly off the record). The behavior is unspecified if not called from inside the [ListGridField.getRecordSummary](ListGridField.md#method-listgridfieldgetrecordsummary) method.
+Provides access to the summary (see ["summary"-type](../reference.md#type-listgridfieldtype) fields) value of the record for other fields when called from inside the body of [ListGridField.getRecordSummary](ListGridField.md#method-listgridfieldgetrecordsummary) (since they're not available directly off the record). The behavior is undefined if not called from inside the [ListGridField.getRecordSummary](ListGridField.md#method-listgridfieldgetrecordsummary) method, or if the summary field has generated dependencies.
 
 ### Parameters
 
@@ -1580,7 +1580,7 @@ No default implementation.
 | colNum | [number](#type-number) | false | — | index of the column that was saved, if applicable |
 | newValues | [Object](../reference.md#type-object)|[Record](#type-record) | false | — | new values that were saved |
 | oldValues | [Record](#type-record) | false | — | the complete original values from before the save occurred |
-| editCompletionEvent | [EditCompletionEvent](../reference.md#type-editcompletionevent) | false | — | Event that led to the save |
+| editCompletionEvent | [EditCompletionEvent](../reference_2.md#type-editcompletionevent) | false | — | Event that led to the save |
 | dsResponse | [DSResponse](#type-dsresponse) | true | — | for DataSource saves, DSResponse object returned |
 
 ### Groups
@@ -1853,7 +1853,7 @@ For more information on editing, see the [editing overview](../kb_topics/editing
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| editCompletionEvent | [EditCompletionEvent](../reference.md#type-editcompletionevent) | true | — | Event used to complete cell editing. Optional, and defaults to `"programmatic"`. Can be used by the `callback` method to perform custom actions such as navigation when the save completes. |
+| editCompletionEvent | [EditCompletionEvent](../reference_2.md#type-editcompletionevent) | true | — | Event used to complete cell editing. Optional, and defaults to `"programmatic"`. Can be used by the `callback` method to perform custom actions such as navigation when the save completes. |
 | callback | [Callback](../reference.md#type-callback) | true | — | Callback to fire on completion of the saving process. If no edits were made or client-side validation fails the callback will be fired synchronously at the end of this method.  
 Takes the following parameters:  
 \- rowNum _(Number) edited row number_  
@@ -3284,7 +3284,7 @@ This is a synonym for `selectRange(startRow, endRow, false);`
 ### Description
 How should "Up" and "Down" arrow keypresses be handled when the user is editing an item in the grid.
 
-Returning "none" will cause the grid to take no action and allow default up/down arrow key behavior within the editor to proceed. Returning "editNext" will create an appropriate [EditCompletionEvent](../reference.md#type-editcompletionevent) (_"arrow\_up"_ or _"arrow\_down"_ and cause the grid to start editing the previous or next row).
+Returning "none" will cause the grid to take no action and allow default up/down arrow key behavior within the editor to proceed. Returning "editNext" will create an appropriate [EditCompletionEvent](../reference_2.md#type-editcompletionevent) (_"arrow\_up"_ or _"arrow\_down"_ and cause the grid to start editing the previous or next row).
 
 Default behavior varies by item type. For items where up and down arrows have significant functionality to the editor this method returns _"none"_, allowing that standard behavior to proceed. This includes:  
 \- Multi line editors (such as TextAreaItems)  
@@ -3426,14 +3426,14 @@ When there are no rows in the grid, getDropIndex() returns zero.
 
 If parameter _recordNum_ is not passed, the current event row is used, see [ListGrid.getEventRow](#method-listgridgeteventrow).
 
-Parameter [reorderPosition](../reference.md#type-reorderposition) indicates where the drop-item should appear in relation to the row at index _recordNum_. If no reorderPosition is provided, it is calculated based on the physical position of the mouse in the drop-target row when the drop occurs; if the mouse is in the top half of a row, the drop-index is before _recordNum_. Otherwise, the drop-index is after _recordNum_.
+Parameter [reorderPosition](../reference_2.md#type-reorderposition) indicates where the drop-item should appear in relation to the row at index _recordNum_. If no reorderPosition is provided, it is calculated based on the physical position of the mouse in the drop-target row when the drop occurs; if the mouse is in the top half of a row, the drop-index is before _recordNum_. Otherwise, the drop-index is after _recordNum_.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | recordNum | [number](#type-number) | true | — | Index of the record to drop onto |
-| reorderPosition | [ReorderPosition](../reference.md#type-reorderposition) | true | — | Where to drop in relation to _recordNum_ |
+| reorderPosition | [ReorderPosition](../reference_2.md#type-reorderposition) | true | — | Where to drop in relation to _recordNum_ |
 
 ### Returns
 
@@ -5596,7 +5596,7 @@ Can be overridden at the field level as field.editorExit.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| editCompletionEvent | [EditCompletionEvent](../reference.md#type-editcompletionevent) | false | — | How was the edit completion fired? |
+| editCompletionEvent | [EditCompletionEvent](../reference_2.md#type-editcompletionevent) | false | — | How was the edit completion fired? |
 | record | [ListGridRecord](#type-listgridrecord) | false | — | record for the cell being edited |
 | newValue | [Any](#type-any) | false | — | new edit value for the cell being edited. Note that if the user has not made any changes this will be undefined |
 | rowNum | [number](#type-number) | false | — | row number for the cell |
@@ -7001,7 +7001,7 @@ Return false from this method to cancel the default behavior (Saving / cancellin
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| editCompletionEvent | [EditCompletionEvent](../reference.md#type-editcompletionevent) | false | — | How was the edit completion fired? |
+| editCompletionEvent | [EditCompletionEvent](../reference_2.md#type-editcompletionevent) | false | — | How was the edit completion fired? |
 | record | [ListGridRecord](#type-listgridrecord) | false | — | record for the cell being edited |
 | newValues | [Object](../reference.md#type-object) | false | — | new values for the record \[Note that fields that have not been edited will not be included in this object\] |
 | rowNum | [number](#type-number) | false | — | row number for the row being left |
@@ -7576,13 +7576,13 @@ If you need such ground-up recalculation, consider re-creating the grid as a who
 ## Method: ListGrid.toggleSort
 
 ### Description
-Toggles the sort-direction of the field with the passed name and resorts the grid.
+Toggles the sort direction of the field having the specified name, and re-sorts the grid. If the grid is not already sorted by the field, then a sort specifier for the field will be added.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| fieldName | [String](#type-string) | false | — | The name of a field, visible, hidden or existing only in the dataSource |
+| fieldName | [String](#type-string) | false | — | The name of a field, either visible, hidden or existing only in the dataSource |
 
 ### Groups
 

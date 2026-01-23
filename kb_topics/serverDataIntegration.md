@@ -45,10 +45,10 @@ This basic request handling flow can be customized at a number of points:
 *   The [DataSource.serverType](../classes/DataSource.md#attr-datasourceservertype) specification within your `.ds.xml` configuration file is used to specify a standard server-side connector to service your requests.
 *   General custom business logic can be added in a number of ways, both declaratively and programmatically:
 
-*   The `<criteria>` and `<values>` properties of an [OperationBinding](../classes/OperationBinding.md#class-operationbinding) allow you to modify the dataSource request dynamically at transaction-processing time, using built-in [Velocity support](#kb-topic-velocitysupport).  
+*   The `<criteria>` and `<values>` properties of an [OperationBinding](../classes/OperationBinding.md#class-operationbinding) allow you to modify the dataSource request dynamically at transaction-processing time, using built-in [Velocity support](velocitySupport.md#kb-topic-velocity-context-variables).  
     Note this feature also allows developers to use [Transaction Chaining](transactionChaining.md#kb-topic-transaction-chaining) to dynamically set data values according to the results of earlier transactions.
 *   For editing, standard [DataSourceField.validators](../classes/DataSourceField.md#attr-datasourcefieldvalidators) defined in the `.ds.xml` file will be processed on both the client and the server. In addition to the built-in validator types, entirely custom server validation logic may be implemented using ["serverCustom" type validators](../reference.md#type-validatortype).
-*   For SQL DataSources, use [SQL Templating](#kb-topic-customquerying) to change, add to or even completely replace the SQL sent to the database, including calling stored procedures
+*   For SQL DataSources, use [SQL Templating](customQuerying.md#kb-topic-custom-querying-overview) to change, add to or even completely replace the SQL sent to the database, including calling stored procedures
 *   The [DataSource.serverConstructor](../classes/DataSource.md#attr-datasourceserverconstructor) allows you to specify an explicit custom DataSource subclass to create as your DataSource instance. This must be a subclass of `BasicDataSource`.  
     When requests are recieved by the `IDACall` servlet, they will be passed to standard methods on this DataSource, which can be overridden for custom behavior.  
     Validation is performed via a call to the `validate()` method.  

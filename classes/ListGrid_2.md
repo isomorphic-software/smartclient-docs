@@ -1357,7 +1357,7 @@ You can alternatively use [ListGridField.cellChanged](ListGridField.md#method-li
 ## Method: ListGrid.getRecordSummary
 
 ### Description
-Provides access to the summary (see [summary-type](../reference.md#type-listgridfieldtype) fields) value of the record for other fields when called from inside the body of [ListGridField.getRecordSummary](ListGridField.md#method-listgridfieldgetrecordsummary) (since they're not available directly off the record). The behavior is unspecified if not called from inside the [ListGridField.getRecordSummary](ListGridField.md#method-listgridfieldgetrecordsummary) method.
+Provides access to the summary (see ["summary"-type](../reference.md#type-listgridfieldtype) fields) value of the record for other fields when called from inside the body of [ListGridField.getRecordSummary](ListGridField.md#method-listgridfieldgetrecordsummary) (since they're not available directly off the record). The behavior is undefined if not called from inside the [ListGridField.getRecordSummary](ListGridField.md#method-listgridfieldgetrecordsummary) method, or if the summary field has generated dependencies.
 
 ### Parameters
 
@@ -5559,8 +5559,8 @@ Depending on the field's current filter-value and operator, calls to this method
 
 In general, if the field has a current filter-value, it will be cleared if
 
-*   the new operator does not require a value (operator-type [none](../reference.md#type-operatorvaluetype) - [isBlank](../reference.md#type-operatorid), for example)
-*   the current and new operators have different [value-types](../reference.md#type-operatorvaluetype) and [ListGrid.allowFilterExpressions](ListGrid_1.md#attr-listgridallowfilterexpressions) is false
+*   the new operator does not require a value (operator-type [none](../reference_2.md#type-operatorvaluetype) - [isBlank](../reference.md#type-operatorid), for example)
+*   the current and new operators have different [value-types](../reference_2.md#type-operatorvaluetype) and [ListGrid.allowFilterExpressions](ListGrid_1.md#attr-listgridallowfilterexpressions) is false
 *   the item has an [optionDataSource](FormItem.md#attr-formitemoptiondatasource) or valueMap which no longer includes the current value
 
 If `filterOnKeypress` is true, a fetch will be issued if
@@ -7576,13 +7576,13 @@ If you need such ground-up recalculation, consider re-creating the grid as a who
 ## Method: ListGrid.toggleSort
 
 ### Description
-Toggles the sort-direction of the field with the passed name and resorts the grid.
+Toggles the sort direction of the field having the specified name, and re-sorts the grid. If the grid is not already sorted by the field, then a sort specifier for the field will be added.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| fieldName | [String](#type-string) | false | — | The name of a field, visible, hidden or existing only in the dataSource |
+| fieldName | [String](#type-string) | false | — | The name of a field, either visible, hidden or existing only in the dataSource |
 
 ### Groups
 

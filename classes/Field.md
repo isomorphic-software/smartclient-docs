@@ -45,6 +45,16 @@ Optional title HTML to use for the field in exports.
 **Flags**: IR
 
 ---
+## Attr: Field.primaryKey
+
+### Description
+If set to `true`, indicates that the value for this field (together with the values of any other fields that are also primaryKey:`true`) uniquely identify a record.
+
+Note: the case where multiple fields are primary key fields—called "composite" or "multipart" keys—is not recommended by Isomorphic. See [DataSourceField.primaryKey](DataSourceField.md#attr-datasourcefieldprimarykey) for more information.
+
+**Flags**: IR
+
+---
 ## Attr: Field.name
 
 ### Description

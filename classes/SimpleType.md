@@ -329,7 +329,7 @@ Applies a [SummaryFunction](../reference_2.md#type-summaryfunction) to an array 
 |------|------|----------|---------|-------------|
 | records | [Array of Objects](#type-array-of-objects) | false | — | set of records to retrieve a summary value for |
 | field | [DataSourceField](#type-datasourcefield) | false | — | field for which we're picking up a summary value |
-| summaryFunction | [SummaryFunction](../reference_2.md#type-summaryfunction) | false | — | SummaryFunction to apply to the records in order to retrieve the summary value. May be specified as an explicit function or string of script to execute, or a SummaryFunction identifier |
+| summaryFunction | [SummaryFunction](../reference_2.md#type-summaryfunction) | false | — | SummaryFunction to apply to the records in order to retrieve the summary value. May be specified as an explicit function or string of script to execute, or a built-in or [registered](#classmethod-simpletyperegistersummaryfunction) SummaryFunction identifier |
 | summaryConfig | [SummaryConfiguration](#type-summaryconfiguration) | false | — | config that affects summary calculation |
 
 ### Returns

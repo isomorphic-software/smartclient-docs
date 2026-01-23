@@ -160,7 +160,7 @@ Substitute title to use for a title-less, unnamed field.
 
 - i18nMessages
 
-**Flags**: RW
+**Flags**: IRW
 
 ---
 ## Attr: Class.creator
@@ -188,7 +188,7 @@ Substitute title to use for an unknown field.
 
 - i18nMessages
 
-**Flags**: RW
+**Flags**: IRW
 
 ---
 ## ClassMethod: Class.changeDefaults

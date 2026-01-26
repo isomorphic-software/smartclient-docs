@@ -55,6 +55,26 @@ Note that, because JSON has no way of representing dates, serializing a structur
 `[Object](../reference.md#type-object)` — object derived from JSON String
 
 ---
+## ClassMethod: JSON.decodeStrict
+
+### Description
+De-serialize an object from JSON, attempting native JSON.parse() first for performance, then falling back to eval() if the input contains SmartClient pseudo-JSON extensions (unquoted keys, single quotes, trailing commas, etc.).
+
+This method is optimized for cases where the JSON is typically strict (conforming to the JSON spec) but may occasionally contain pseudo-JSON extensions. The native JSON.parse() fast path provides significant performance improvements in V8 and other modern engines.
+
+For data that is always strict JSON, use [JSON.decodeSafe](#classmethod-jsondecodesafe) instead.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| jsonString | [String](#type-string) | false | — | JSON or pseudo-JSON data to be de-serialized |
+
+### Returns
+
+`[Object](../reference.md#type-object)` — object derived from JSON String
+
+---
 ## ClassMethod: JSON.encode
 
 ### Description

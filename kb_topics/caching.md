@@ -76,4 +76,13 @@ Next, map any resource that you want to serve with caching headers to the FileDo
  
 ```
 
+### Related
+
+- [ResultSet.createIndex](../classes/ResultSet.md#method-resultsetcreateindex)
+- [ResultSet.removeIndex](../classes/ResultSet.md#method-resultsetremoveindex)
+- [ResultSet.updateIndex](../classes/ResultSet.md#method-resultsetupdateindex)
+- [ResultSet.findAll](../classes/ResultSet.md#method-resultsetfindall)
+- [ResultSet.getUniquePropertyValues](../classes/ResultSet.md#method-resultsetgetuniquepropertyvalues)
+- [ResultSet.indexedProperties](../classes/ResultSet.md#attr-resultsetindexedproperties)
+
 ---

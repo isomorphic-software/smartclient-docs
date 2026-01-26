@@ -1763,7 +1763,7 @@ If set to an explicit value, this will be respected. If unset, the axis start va
 
 For multi-axis charts, Bubble charts, and Scatter charts, the `facetChart.axisStartValue` affects only the **first** axis of the chart. Start values for other axes of multi-axis charts can be set on a per-axis basis via [MetricSettings.axisStartValue](MetricSettings.md#attr-metricsettingsaxisstartvalue). For Scatter charts, the [FacetChart.xAxisStartValue](#attr-facetchartxaxisstartvalue) property must be used to set the start value of the x-axis.
 
-Note that if this chart's data includes points that fall below this value, they are ommitted and effectively treated as null values. For charts showing a data line, developers may wish to set [FacetChart.discontinuousLines](#attr-facetchartdiscontinuouslines) to true in this case.
+Note that if this chart's data includes points that fall below this value, they are omitted and effectively treated as null values. For charts showing a data line, developers may wish to set [FacetChart.discontinuousLines](#attr-facetchartdiscontinuouslines) to true in this case.
 
 **Flags**: IR
 
@@ -2296,7 +2296,7 @@ If set to an explicit value, this will be respected. If unset, the axis end valu
 
 For multi-axis charts, Bubble charts, and Scatter charts, the `facetChart.axisEndValue` affects only the **first** axis of the chart. End values for other axes of multi-axis charts can be set on a per-axis basis via [MetricSettings.xAxisEndValue](MetricSettings.md#attr-metricsettingsxaxisendvalue). For Scatter charts, the [FacetChart.xAxisEndValue](#attr-facetchartxaxisendvalue) property must be used to set the end value of the x-axis.
 
-Note that if this chart's data includes points that fall above this value, they are ommitted and effectively treated as null values. For charts showing a data line, developers may wish to set [FacetChart.discontinuousLines](#attr-facetchartdiscontinuouslines) to true in this case.
+Note that if this chart's data includes points that fall above this value, they are omitted and effectively treated as null values. For charts showing a data line, developers may wish to set [FacetChart.discontinuousLines](#attr-facetchartdiscontinuouslines) to true in this case.
 
 **Flags**: IR
 

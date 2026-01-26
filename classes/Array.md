@@ -44,6 +44,26 @@ This is a built-in comparator for the [find](#method-arrayfind) and [findIndex](
 **Flags**: R
 
 ---
+## Attr: Array.autoCreateIndexes
+
+### Description
+When true, automatically creates property indexes after repeated searches on the same property. This can improve performance for arrays that are searched frequently, but adds overhead for tracking search patterns and building indexes.
+
+Auto-indexing activates when:
+
+*   A property is searched via find() or findAll() at least 10 times
+*   The array has more than 100 elements
+*   No comparator is used in the search
+
+Once activated, an index is created for that property, providing O(1) lookups for subsequent searches. The feature is off by default to avoid overhead for arrays that are not searched repeatedly.
+
+### Groups
+
+- indexing
+
+**Flags**: IRW
+
+---
 ## ClassMethod: Array.isLoading
 
 ### Description
@@ -166,6 +186,36 @@ Sort this Array by a list of [SortSpecifier](../reference_2.md#object-sortspecif
 `[Array](#type-array)` — the array itself
 
 ---
+## Method: Array.getUniquePropertyValues
+
+### Description
+Optimized method combining getProperty() and getUniqueItems() into a single pass. Returns an array of unique values for the specified property, preserving the order in which values were first encountered.
+
+This method is significantly faster than chaining `array.getProperty(prop).getUniqueItems()` because it:
+
+*   Uses forward iteration (much faster than backward iteration in V8)
+*   Uses Set for O(1) uniqueness checking instead of Array.contains() which is O(n)
+*   Avoids creating an intermediate array with all property values
+
+Usage example:  
+    // Instead of: uniqueValues = fundAssetList.getProperty("securityType").getUniqueItems();  
+    uniqueValues = fundAssetList.getUniquePropertyValues("securityType");
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| property | [String](#type-string) | false | — | the property name to extract |
+
+### Returns
+
+`[Array](#type-array)` — array of unique property values in order encountered
+
+### Groups
+
+- subset
+
+---
 ## Method: Array.slide
 
 ### Description
@@ -179,6 +229,26 @@ Slide element at position start to position destination, moving all the other el
 | destination | [number](#type-number) | false | — | destination position for the value at start |
 
 **Flags**: A
+
+---
+## Method: Array.removeIndex
+
+### Description
+Remove a property index created by [Array.createIndex](#method-arraycreateindex). This frees the memory used by the index. After removal, find operations on this property will revert to O(n) linear scans.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| property | [String](#type-string) | false | — | Name of the indexed property to remove |
+
+### Returns
+
+`[Array](#type-array)` — this array (for chaining)
+
+### Groups
+
+- indexing
 
 ---
 ## Method: Array.unsort
@@ -329,6 +399,27 @@ Note: you can specify that a subset range be added by passing start and end indi
 ### Groups
 
 - modification
+
+---
+## Method: Array.findAllByPropertyValues
+
+### Description
+Find all elements where a property matches any value in the supplied values array. More efficient than calling findAll() multiple times or manually checking membership. Uses Set-based O(1) lookups for the values array.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| property | [String](#type-string) | false | — | Name of the property to match |
+| values | [Array](#type-array) | false | — | Array of values to match against |
+
+### Returns
+
+`[Array](#type-array)` — Array of matching elements, or null if no matches found
+
+### Groups
+
+- find
 
 ---
 ## Method: Array.slideRange
@@ -841,6 +932,49 @@ Returns true if all values between the start and end indices are true.
 - arrayMath
 
 ---
+## Method: Array.createIndex
+
+### Description
+Create a property index on this array to accelerate lookups by that property. Once an index is created, operations like [Array.find](#method-arrayfind), [Array.findAll](#method-arrayfindall), and [Array.findIndex](#method-arrayfindindex) will use O(1) Map lookups instead of O(n) linear scans when searching by the indexed property.
+
+**Note:** Indexing is supported on Array and [ResultSet](ResultSet.md#class-resultset), but not on generic List implementations, as the indexing code uses direct array access which violates the List API. List provides base implementations of find/findAll without indexing support.
+
+The index is automatically maintained when array elements are added, removed, or modified via standard Array methods (push, pop, splice, etc) or when using [Array.add](#method-arrayadd), [Array.remove](#method-arrayremove), etc. If you modify array elements directly (e.g., `array[5].name = "newValue"`), you must call [Array.updateIndex](#method-arrayupdateindex) to refresh the index.
+
+**Performance characteristics:**  
+\- Index creation: O(n) - must scan all elements once  
+\- Indexed find/findAll/findIndex: O(1) average case using Map  
+\- Array modifications: O(1) overhead per operation to maintain index  
+\- Memory cost: ~24 bytes per unique property value (Map entry overhead)
+
+**Example usage:**
+
+```
+   var users = [{userID: 1, name: "Alice"}, {userID: 2, name: "Bob"}, ...];
+   users.createIndex("userID");  // Create index on userID property
+
+   var user = users.find("userID", 42);  // Now O(1) instead of O(n)
+   users.removeIndex("userID");  // Remove index when no longer needed
+ 
+```
+
+**Note for ResultSet users:** When using [ResultSet.createIndex](ResultSet.md#method-resultsetcreateindex) with client-side filtering, see [ResultSet.indexFilteredData](ResultSet.md#attr-resultsetindexfiltereddata) to control whether indices are maintained on both the full cache and the filtered subset.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| property | [String](#type-string) | false | — | Name of the property to index |
+
+### Returns
+
+`[Array](#type-array)` — this array (for chaining)
+
+### Groups
+
+- indexing
+
+---
 ## Method: Array.intersect
 
 ### Description
@@ -1038,6 +1172,26 @@ Add list of items list to this array at item pos. All items after array\[pos\] w
 ### Groups
 
 - modification
+
+---
+## Method: Array.updateIndex
+
+### Description
+Refresh a property index after direct modifications to array elements. Call this if you modify element properties directly (e.g., `array[5].name = "newValue"`) rather than using Array methods. Not needed if you only use push(), splice(), add(), etc.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| property | [String](#type-string) | false | — | Name of the indexed property to refresh |
+
+### Returns
+
+`[Array](#type-array)` — this array (for chaining)
+
+### Groups
+
+- indexing
 
 ---
 ## Method: Array.get

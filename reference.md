@@ -76,10 +76,6 @@ This is the central API reference for the SmartClient framework.
           - [AISortProgressDialog](#class-aisortprogressdialog)
         - [ColumnTree](classes/ColumnTree.md)
         - [FilterBuilder](classes/FilterBuilder.md)
-        - [VStack](#class-vstack)
-          - [BatchUploader](classes/BatchUploader.md)
-          - [AdvancedHiliteEditor](classes/AdvancedHiliteEditor.md)
-          - [MultiFilePicker](#class-multifilepicker)
         - [HLayout](#class-hlayout)
           - [Shuttle](classes/Shuttle.md)
           - [NavigationBar](classes/NavigationBar.md)
@@ -97,6 +93,9 @@ This is the central API reference for the SmartClient framework.
           - [Header](classes/Header.md)
         - [AdaptiveMenu](classes/AdaptiveMenu.md)
         - [Deck](classes/Deck.md)
+        - [VStack](#class-vstack)
+          - [AdvancedHiliteEditor](classes/AdvancedHiliteEditor.md)
+          - [MultiFilePicker](#class-multifilepicker)
         - [ListPropertiesPane](classes/ListPropertiesPane.md)
         - [HStack](#class-hstack)
       - [DrawPane](classes/DrawPane.md)
@@ -261,12 +260,12 @@ This is the central API reference for the SmartClient framework.
     - [NativeCheckboxItem](#class-nativecheckboxitem)
       - [RadioItem](#class-radioitem)
     - [BooleanItem](#class-booleanitem)
-  - [OperationBinding](classes/OperationBinding.md)
   - [RPCManager](classes/RPCManager.md)
-  - [Tree](classes/Tree.md)
-    - [ResultTree](classes/ResultTree.md)
   - [ResultSet](classes/ResultSet.md)
     - [FilteredList](classes/FilteredList.md)
+  - [Tree](classes/Tree.md)
+    - [ResultTree](classes/ResultTree.md)
+  - [OperationBinding](classes/OperationBinding.md)
   - [ValuesManager](classes/ValuesManager.md)
   - [EditContext](classes/EditContext.md)
   - [AutoTest](classes/AutoTest.md)
@@ -409,14 +408,13 @@ This is the central API reference for the SmartClient framework.
   - [RemoteWindow](classes/RemoteWindow.md)
     - [OpenFinWindow](#class-openfinwindow)
   - [Media](classes/Media.md)
+  - [JSON](classes/JSON.md)
   - [Messaging](classes/Messaging.md)
   - [AI](classes/AI.md)
   - [Offline](classes/Offline.md)
   - [StyleSheetHandler](classes/StyleSheetHandler.md)
-  - [JSON](classes/JSON.md)
   - [DMI](classes/DMI.md)
   - [VoiceAssist](classes/VoiceAssist.md)
-  - [MathFunction](classes/MathFunction.md)
   - [MultiLinkSelection](classes/MultiLinkSelection.md)
   - [AsyncUtil](classes/AsyncUtil.md)
   - [JSONEncoder](classes/JSONEncoder.md)
@@ -500,7 +498,6 @@ This is the central API reference for the SmartClient framework.
 - [CoTPromptScope](kb_topics/CoTPromptScope.md)
 - [Criteria Editing](kb_topics/criteriaEditing.md)
 - [cues](#kb-topic-cues)
-- [Custom Querying Overview](kb_topics/customQuerying.md)
 - [Customizing Sass-based Skins](kb_topics/customSassSkins.md)
 - [Including custom elements in the tab order](kb_topics/customTabElements.md)
 - [DataBinding](kb_topics/databinding.md)
@@ -557,6 +554,7 @@ This is the central API reference for the SmartClient framework.
 - [DataSourceField formula functions](kb_topics/formulaFunction.md)
 - [Values Manager](#kb-topic-values-manager)
 - [Frozen Fields](kb_topics/frozenFields.md)
+- [Full Text Search](kb_topics/fullTextSearch.md)
 - [Google Application Engine (GAE)](#kb-topic-google-application-engine-gae)
 - [Determining the size of a drawn canvas](kb_topics/gettingCanvasSize.md)
 - [GraalJS Polyglot API for DMI](kb_topics/graalPolyglotDMI.md)
@@ -713,7 +711,6 @@ This is the central API reference for the SmartClient framework.
 - [validatorExecution](#kb-topic-validatorexecution)
 - [valueMap](#kb-topic-valuemap)
 - [values](#kb-topic-values)
-- [Velocity context variables](kb_topics/velocitySupport.md)
 - [visibility](kb_topics/visibility.md)
 - [Waiting for asynchronous actions](kb_topics/waitingForAsyncActions.md)
 - [Window Header](#kb-topic-window-header)
@@ -732,18 +729,6 @@ This is the central API reference for the SmartClient framework.
 
 ### Description
 A subclass of Layout that applies a sizing policy along the vertical axis, interpreting percent and "\*" sizes as proportions of the height of the layout. VLayouts will set any members that do not have explicit widths to match the layout.
-
-### See Also
-
-- [Layout.vPolicy](classes/Layout.md#attr-layoutvpolicy)
-
----
-## Class: VStack
-
-*Inherits from:* [Layout](classes/Layout.md#class-layout)
-
-### Description
-A subclass of Layout that simply stacks members on the vertical axis without trying to manage their height. On the horizontal axis, any members that do not have explicit widths will be sized to match the width of the stack.
 
 ### See Also
 
@@ -784,6 +769,18 @@ A subclass of Layout that applies a sizing policy along the horizontal axis, int
 ### Groups
 
 - devTools
+
+---
+## Class: VStack
+
+*Inherits from:* [Layout](classes/Layout.md#class-layout)
+
+### Description
+A subclass of Layout that simply stacks members on the vertical axis without trying to manage their height. On the horizontal axis, any members that do not have explicit widths will be sized to match the width of the stack.
+
+### See Also
+
+- [Layout.vPolicy](classes/Layout.md#attr-layoutvpolicy)
 
 ---
 ## Class: BrowserPlugin
@@ -4869,29 +4866,6 @@ As an example - an input format of "MDY" would parse "01/02/1999" to Jan 2nd 199
 Note: In addition to these standard formats, a custom date string parser function may be passed directly to [DateUtil.setInputFormat](classes/DateUtil.md#classmethod-dateutilsetinputformat) or passed into [DateUtil.parseInput](classes/DateUtil.md#classmethod-dateutilparseinput) as the inputFormat parameter.
 
 ---
-## Type: DefaultQueryClause
-
-### Description
-The Velocity variable names of the "pieces" of SQL that SmartClient generates to form a complete fetch or update query. You can use these variables in you own custom queries and query clause overrides to build on the SmartClient functionality. See [customQuerying](kb_topics/customQuerying.md#kb-topic-custom-querying-overview) for a full discussion.
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| "$defaultSelectClause" | The column names to select, for a fetch operation only |
-| "$defaultTableClause" | The table name(s) to select from or update |
-| "$defaultAnsiJoinClause" | The [ansi join(s)](classes/DataSource.md#attr-datasourceuseansijoins) to join tables to select from, if enabled. |
-| "$defaultWhereClause" | The "where" condition, which will be derived from supplied criteria or a primary key value, depending on the type of operation |
-| "$defaultGroupClause" | For a fetch operation when using the [Server Summaries](kb_topics/serverSummaries.md#kb-topic-server-summaries) feature, "group by" part of aggregated query |
-| "$defaultAfterWhereClause" | For a fetch operation when using the [Server Summaries](kb_topics/serverSummaries.md#kb-topic-server-summaries) feature, "having" part of aggregated query (or outer "where" part if sub-select approach is used, see [OperationBinding.useHavingClause](classes/OperationBinding.md#attr-operationbindingusehavingclause) for more details) |
-| "$defaultValuesClause" | The column names to update and the update values, for an update or add operation |
-| "$defaultOrderClause" | The column names to sort by, for a fetch operation only |
-
-### Groups
-
-- customQuerying
-
----
 ## Type: DetailViewerViewState
 
 ### Description
@@ -5087,7 +5061,7 @@ For DataSources of type "sql" and "hibernate", specifies the kind of inheritance
 | Value | Description |
 |-------|-------------|
 | "full" | Inherit fields by copying them onto the inheriting DataSource's underlying table. When we import a DataSource with this inheritanceMode, we create actual columns for inherited fields on the table we create. With this inheritanceMode, inherited fields are updatable. |
-| "none" | Do not physically inherit fields onto the inheriting DataSource's SQL table. Columns will not be created for inherited fields on import, and all generated SQL operations will exclude inherited fields. However, those fields are still part of the DataSource's schema so you can, for example, write [custom SQL](kb_topics/customQuerying.md#kb-topic-custom-querying-overview) that returns values for the inherited fields, and they will be delivered to the client. |
+| "none" | Do not physically inherit fields onto the inheriting DataSource's SQL table. Columns will not be created for inherited fields on import, and all generated SQL operations will exclude inherited fields. However, those fields are still part of the DataSource's schema so you can, for example, write [custom SQL](#kb-topic-customquerying) that returns values for the inherited fields, and they will be delivered to the client. |
 
 ### Groups
 
@@ -5618,6 +5592,23 @@ Event that will trigger inline editing. See [EditProxy.inlineEditEvent](classes/
 
 ### Description
 A whole number, for example, 5. Decimal numbers, for example 5.5, are not allowed. May not be null.
+
+---
+## Type: JoinType
+
+### Description
+The type of join to make between two SQL tables when resolving [includeFrom](classes/DataSourceField.md#attr-datasourcefieldincludefrom) fields.
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| "inner" | A regular inner join, whereby rows are only included in the resultset where the join can be satisified, so a missing row in the table being joined to results in the entire row being omitted. |
+| "outer" | An outer join. All outer joins generated by SmartClient's SQL subsystem are left outer joins, meaning that every row in the join-from (or "left") table that matches the criteria is included, and missing rows in the join-to (or "right") table cause columns to be set to null. |
+
+### Groups
+
+- dataSourceRelations
 
 ---
 ## Type: JSONDateFormat
@@ -6674,7 +6665,7 @@ Indicates the response format to be used for a REST operation. Is only applicabl
 |-------|-------------|
 | "json" | Indicates that the REST service response is a valid [JSON](https://www.json.org/json-en.html) message. We will parse the response text as JSON, and the resulting object structure can be further processed with [XPaths](classes/DataSource.md#attr-datasourcerecordxpath), [templates](classes/DataSource.md#attr-datasourceresponsetemplate) and [scripting](classes/DataSource.md#attr-datasourcetransformresponsescript) |
 | "xml" | Indicates that the REST service response is an XML message. We will parse the response text as XML, and the resulting object structure can be further processed with XPaths, templates and scripting |
-| "csv" | Indicates that the the REST service response is in delimited text format in the body of the HTTP response. We will parse the response text as delimited flat text data, and the resulting object structure can be further processed with scripting. Note, we do not support XPaths because they do not make sense with flat data, and we also do not support templating of CSV responses. Record-level and field-level transformation scripts, however, are applicable, and field [nativeName](classes/DataSourceField.md#attr-datasourcefieldnativename)s are honored if the CSV text includes a header row
+| "csv" | Indicates that the the REST service response is in delimited text format in the body of the HTTP response. We will parse the response text as delimited flat text data, and the resulting object structure can be further processed with scripting. Note, we do not support XPaths because they do not make sense with flat data, and we also do not support templating of CSV responses. Record-level and field-level transformation scripts, however, are applicable, and field [nativeName](#attr-datasourcefieldnativename)s are honored if the CSV text includes a header row
 
 `RestConnector` only supports a couple options for CSV-based REST services - see [DataSource.csvDelimiter](classes/DataSource.md#attr-datasourcecsvdelimiter) and [DataSource.csvQuoteCharacter](classes/DataSource.md#attr-datasourcecsvquotecharacter) |
 | "text" | Indicates that REST service response is to be treated simply as a piece of text, with no parsing or other processing attempted. Use this format for services that return simple strings or messages in some non-standard format; you can provide your own parsing logic in a [transformResponseScript](classes/DataSource.md#attr-datasourcetransformresponsescript) |
@@ -7045,7 +7036,7 @@ The possible types of sequence handling SmartClient Server can apply. This refer
 |-------|-------------|
 | "jdbcDriver" | Use the JDBC 3.0 API "getGeneratedKeys()" to get the most recent sequence value. Obviously, this is only an option for JDBC 3.0+ drivers. **NOTE: Oracle special case** The Oracle JDBC driver provides a "getGeneratedKeys" method, but that method does not actually return the generated key values; instead, it returns a ROWID, which we must use to fetch the inserted row, and obtain the generated key values from it. For this reason, you may find that "native" is slightly faster to retrieve sequence values than "jdbcDriver" with Oracle (or you may find that it makes no noticeable difference; it depends on too many factors for us to give a concrete recommendation) |
 | "native" | Use a database-specific native technique to obtain the most recent sequence value. The actual technique used varies widely depending on the vagaries of the underlying database (and sometimes the vagaries of particular releases of a database product) |
-| "none" | No automatic attempt is made to retrieve the most recent sequence value. You are expected to handle this by providing a [cacheSyncOperation](classes/OperationBinding.md#attr-operationbindingcachesyncoperation) that is able to return the entire row without needing generated PK values for context. For example, a query that uses `MAX(pk)` would be capable of this. To give a more complex example, say you have a sequence value that is retrieved from a legacy system: you could store that sequence value in the HTTP session and then have your custom `cacheSyncOperation` reference that session attribute in its `WHERE` clause. Also note that cacheSyncOperations, like any other [DataSource operation](classes/OperationBinding.md#class-operationbinding), can be [written in Java](classes/OperationBinding.md#attr-operationbindingserverobject) or any [JSR223-compliant scripting language](classes/OperationBinding.md#attr-operationbindingscript) - you do not have to use SQL |
+| "none" | No automatic attempt is made to retrieve the most recent sequence value. You are expected to handle this by providing a [cacheSyncOperation](#attr-operationbindingcachesyncoperation) that is able to return the entire row without needing generated PK values for context. For example, a query that uses `MAX(pk)` would be capable of this. To give a more complex example, say you have a sequence value that is retrieved from a legacy system: you could store that sequence value in the HTTP session and then have your custom `cacheSyncOperation` reference that session attribute in its `WHERE` clause. Also note that cacheSyncOperations, like any other [DataSource operation](classes/OperationBinding.md#class-operationbinding), can be [written in Java](classes/OperationBinding.md#attr-operationbindingserverobject) or any [JSR223-compliant scripting language](classes/OperationBinding.md#attr-operationbindingscript) - you do not have to use SQL |
 
 ---
 ## Type: ShowDataValuesMode
@@ -7129,7 +7120,7 @@ The technique SmartClient Server's SQL DataSource should use to select a "page" 
 
 | Value | Description |
 |-------|-------------|
-| "sqlLimit" | Specify the paging directly in the SQL query we generate. The way this is done varies considerably from database to database: with some it is a straightforward built-in facility while others require arcane tricks or simply don't support the idea. This is the most efficient method, where available. Note that this strategy is not supported for operations that make use of a [customSQL](classes/OperationBinding.md#attr-operationbindingcustomsql) clause, because it depends upon being able to determine the size of the whole dataset without actually retrieving the whole dataset. Ordinary operations do this by means of an automatically-generated "row count query", but we cannot generate such a query for a `customSQL` operation. |
+| "sqlLimit" | Specify the paging directly in the SQL query we generate. The way this is done varies considerably from database to database: with some it is a straightforward built-in facility while others require arcane tricks or simply don't support the idea. This is the most efficient method, where available. Note that this strategy is not supported for operations that make use of a [customSQL](#attr-operationbindingcustomsql) clause, because it depends upon being able to determine the size of the whole dataset without actually retrieving the whole dataset. Ordinary operations do this by means of an automatically-generated "row count query", but we cannot generate such a query for a `customSQL` operation. |
 | "jdbcScroll" | Implement the paging behavior by use of the `absolute()` method of the JDBC `ResultSet`. |
 | "dropAtServer" | Implement the paging behavior by fetching the entire resultset from the database and dropping any unnecessary rows on the server before returning the data to the client. This approach is extremely inefficient, but also extremely straightforward; it is intended as a fallback option, for situations where the more sophisticated approaches cause problems (a JDBC driver that throws vague exceptions when `absolute()` is called, for example) |
 | "none" | No paging behavior: we always return the entire resultset to the client. |
@@ -7281,6 +7272,28 @@ Strategy for determining how to place maximum-sized labels for [DrawItem.titleAu
 | "never" | do not rotate |
 | "auto" | rotate only if doing so would allow label to be larger |
 | "always" | always rotate |
+
+---
+## Type: TitleRotationMode
+
+### Description
+The different ways in which the [titleLabel](classes/DrawItem.md#attr-drawitemtitlelabel) of a [DrawItem](classes/DrawItem.md#class-drawitem) can be rotated with the item.
+
+**NOTE:** The effect of the "withItemAlwaysUp" and "withLineAlwaysUp" settings is not affected by the global rotation, if any (see [DrawPane.rotation](classes/DrawPane.md#attr-drawpanerotation)).
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| "neverRotate" | the `titleLabel` is never rotated with the item. |
+| "withItem" | the `titleLabel` is rotated exactly to match the item's rotation (see [DrawItem.rotation](classes/DrawItem.md#attr-drawitemrotation)). |
+| "withItemAlwaysUp" | the `titleLabel` is rotated exactly to match the item's rotation, except that at certain rotations, the `titleLabel` is flipped by 180° so that the title text is never upside down. |
+| "withLine" | (applies only to [DrawLine](classes/DrawLine.md#class-drawline) and [DrawLinePath](classes/DrawLinePath.md#class-drawlinepath)) the `titleLabel` is rotated to match the line or center segment.
+
+If used on a `DrawItem` that is not a `DrawLine` or `DrawLinePath`, then the effect is the same as "withItem". |
+| "withLineAlwaysUp" | (applies only to [DrawLine](classes/DrawLine.md#class-drawline) and [DrawLinePath](classes/DrawLinePath.md#class-drawlinepath)) the `titleLabel` is rotated to match the line or center segment, except that at certain rotations, the `titleLabel` is flipped by 180° so that the title text is never upside down.
+
+If used on a `DrawItem` that is not a `DrawLine` or `DrawLinePath`, then the effect is the same as "withItemAlwaysUp". |
 
 ---
 ## Type: TopOperatorAppearance
@@ -7495,7 +7508,7 @@ By default the uniqueness check is not case sensitive but this can be controlled
 
 Validators of this type have [requiresServer](classes/ValidatorDefinition.md#attr-validatordefinitionrequiresserver) set to `true` and do not run on the client.
 
-Note that this validation is generally unnecessary for data coming from a UI. The typical UI uses a [SelectItem](classes/SelectItem.md#class-selectitem) or [ComboBoxItem](classes/ComboBoxItem.md#class-comboboxitem) with an [optionDataSource](classes/FormItem.md#attr-formitemoptiondatasource) for user entry, such that the user can't accidentally enter a related record if that doesn't exist, and a typical SQL schema will include constraints that prevent a bad insert if the user attempts to circumvent the UI. The primary purpose of declaring this validation explicitly is to provide clear, friendly error messages for use cases such as [BatchUploader](classes/BatchUploader.md#class-batchuploader), where values aren't individually chosen by the user. See also the example *Related Records*. |
+Note that this validation is generally unnecessary for data coming from a UI. The typical UI uses a [SelectItem](classes/SelectItem.md#class-selectitem) or [ComboBoxItem](classes/ComboBoxItem.md#class-comboboxitem) with an [optionDataSource](classes/FormItem.md#attr-formitemoptiondatasource) for user entry, such that the user can't accidentally enter a related record if that doesn't exist, and a typical SQL schema will include constraints that prevent a bad insert if the user attempts to circumvent the UI. The primary purpose of declaring this validation explicitly is to provide clear, friendly error messages for use cases such as [BatchUploader](#class-batchuploader), where values aren't individually chosen by the user. See also the example *Related Records*. |
 | maxFileSize | This validator type is not for direct usage, instead [DataSourceField.maxFileSize](classes/DataSourceField.md#attr-datasourcefieldmaxfilesize) can be set and `maxFileSize` validator will be added automatically. Use [DataSource.maxFileSizeExceededMessage](classes/DataSource.md#classattr-datasourcemaxfilesizeexceededmessage) to customize validation error message.
 
 In supported browsers (Internet Explorer 10+, Chrome, Firefox, Safari 6+, Opera 11.1+), returns `true` if the file(s) selected by the user are not larger than the field's [DataSourceField.maxFileSize](classes/DataSourceField.md#attr-datasourcefieldmaxfilesize). If not supported by the browser, the validator will always return `true`.
@@ -7705,7 +7718,7 @@ This join from the subquery to the outer query is applied implicitly by SmartCli
 *   There is no direct or indirect Relation from the subquery dataSource to the main dataSource. This is an unusual case for a subquery - most use use cases call for related dataSources - but valid cases are conceivable. To cope with this scenario, you set [queryFK](classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubqueryqueryfk) to the special value "`***none***`". Note, if SmartClient fails to find a path from the subquery dataSource to the main dataSource and `queryFK:"*none*"` has not been set, the framework will log a warning and the fetch will fail
 *   There is more than one direct or indirect Relation from the subquery dataSource to the main dataSource, and you want to use a different one from the one that was auto-discovered. Again, the solution is to explicitly name the [queryFK](classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubqueryqueryfk) - see the documentation for that property for details of the syntax
 
-Since SmartClient can only make use of a single value as output from a subquery, if your subquery returns multiple records, we will simply use the first. If the query returns multiple fields, you can specify the field to use as the subquery output with [queryOutput](classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubqueryqueryoutput). If the subquery returns more than one field and no `queryOutput` is specified, we will use the first aggregated ([summaryFunction](classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubquerysummaryfunctions)) field, or the first [grouped](classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubquerygroupby) field if there are no aggregated fields, or the [primaryKey](classes/DataSourceField.md#attr-datasourcefieldprimarykey) field if there are also no `groupBy` fields, or just the first numeric field failing all else. Note, however, that although we attempt to derive a sensible value, it never makes sense to return multiple records from a subquery, and it only really makes sense to return multiple fields if you explicitly identify the correct field with `queryOutput`. Ideally, for the sake of clarity, return a single record, and either have that record contain a single field, or specify `queryOutput`
+Since SmartClient can usually only make use of a single value as output from a subquery (see the section "Subqueries with inSet criteria" below for an important caveat), if your subquery returns multiple records, we will simply use the first. If the query returns multiple fields, you can specify the field to use as the subquery output with [queryOutput](classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubqueryqueryoutput). If the subquery returns more than one field and no `queryOutput` is specified, we will use the first aggregated ([summaryFunction](classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubquerysummaryfunctions)) field, or the first [grouped](classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubquerygroupby) field if there are no aggregated fields, or the [primaryKey](classes/DataSourceField.md#attr-datasourcefieldprimarykey) field if there are also no `groupBy` fields, or just the first numeric field failing all else. Note, however, that although we attempt to derive a sensible value, it never makes sense to return multiple records from a subquery, and it only really makes sense to return multiple fields if you explicitly identify the correct field with `queryOutput`. Ideally, for the sake of clarity, return a single record, and either have that record contain a single field, or specify `queryOutput`
 
 #### Restrictions on client-driven subqueries
 For security reasons, subqueries in [requests](reference_2.md#object-dsrequest) that came from the client-side are only permitted to specify a handful of properties. These properties are sufficient to allow the full power of the subquery feature to be used, without allowing any of the much broader set of general properties associated with the `DSRequest` superclass. The properties that can be set in a client-driven subquery are just those that are documented as direct properties of the `AdvancedCriterionSubquery` class - specifically [canEmbedSQL](classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubquerycanembedsql), [criteria](classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubquerycriteria), [dataSource](classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubquerydatasource), [groupBy](classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubquerygroupby), [operationId](classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubqueryoperationid), [queryFK](classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubqueryqueryfk), [queryOutput](classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubqueryqueryoutput), and [summaryFunctions](classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubquerysummaryfunctions)
@@ -7719,10 +7732,13 @@ Finally, note that it is possible to switch off the ability to use subqueries al
  
 ```
 
+#### Subqueries with inSet criteria
+As noted above, subqueries nearly always need to return a single value, since that value is going to be used instead of a literal scalar value in record-by-record comparisons. The exception to this rule is when you are specifying a `valueQuery` with the `inSet` operator. In this case, you are saying that the field value must be one of a set of valid values, so in this one case it is appropriate and correct for the `valueQuery` to return a list of values rather than a single value. Note, we are still comparing a single field to the values in the list, so it should be a list of simple values (strings, numbers, booleans or dates, as appropriate), NOT a list of records
+
 #### `exists / notExists` operators
 The [`exists / notExists`](#type-operatorid) operators provide a concise way to filter records based on the existence (or absence) of related rows.
 
-When both main DataSource and suquery DataSource is backed by `SQLDataSource`, these operators are transformed into `EXISTS (...)` / `NOT EXISTS (...)` correlated subselects in the generated SQL. Non-SQL backends, as well as when [canEmbedSQL:false](classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubquerycanembedsql) is set for SQL backends, will execute subqueries as separate [DSRequests](reference_2.md#object-dsrequest) and apply their results manually.
+When both main DataSource and subquery DataSource are instances of `SQLDataSource`, these operators are transformed into `EXISTS (...)` / `NOT EXISTS (...)` correlated subselects in the generated SQL. Non-SQL backends, as well as when [canEmbedSQL:false](classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubquerycanembedsql) is set for SQL backends, will execute subqueries as separate [DSRequests](reference_2.md#object-dsrequest) and apply their results manually.
 
 These operators must be used with a [fieldQuery](classes/Criterion.md#attr-criterionfieldquery):
 
@@ -8799,7 +8815,7 @@ An object representing a user-created formula.
 
 Note that the current implementation of formulas simply executes the [text](classes/UserFormula.md#attr-userformulatext) as a JavaScript string after making special variables and methods available to the formula. It is safe to allow users to define formulas for themselves (since an end user can always execute whatever JavaScript they want via the browser's built-in developer tools), and is safe to allow formulas to be shared between trusted users. However it would not be safe to allow an untrusted user to create formulas that are shared to other users.
 
-Also, while the current implementation would allow creation of a formula that calls JavaScript functions which are not part of the standard or custom [MathFunctions](classes/MathFunction.md#class-mathfunction), this behavior should not be relied upon, as future versions of the formula engine may prohibit such calls.
+Also, while the current implementation would allow creation of a formula that calls JavaScript functions which are not part of the standard or custom [MathFunctions](#mathfunction), this behavior should not be relied upon, as future versions of the formula engine may prohibit such calls.
 
 [ListGrid](classes/ListGrid_1.md#class-listgrid)s additionally allow the formula to be user-modifiable, with the formula created and edited with a [FormulaBuilder](classes/FormulaBuilder.md#class-formulabuilder), either directly or via the [ListGrid.canAddFormulaFields](classes/ListGrid_1.md#attr-listgridcanaddformulafields) behavior.
 

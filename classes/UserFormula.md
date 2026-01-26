@@ -15,7 +15,7 @@ In addition to these variables, the keyword `record` may be used to refer direct
 
 In the context of forms and editing, variables are dot-separated (.) names representing the nested hierarchy path to the desired value within the [rule context](Canvas.md#attr-canvasrulescope). No mapping with [UserFormula.formulaVars](#attr-userformulaformulavars) is needed.
 
-The formula text must be valid JavaScript code and may only call either the built-in [math functions](MathFunction.md#class-mathfunction) or [custom functions](MathFunction.md#classmethod-mathfunctionregisterfunction).
+The formula text must be valid JavaScript code and may only call either the built-in [math functions](#mathfunction) or [custom functions](#classmethod-mathfunctionregisterfunction).
 
 This attribute is writable only in [ListGrid](ListGrid_1.md#class-listgrid)s. Applications must call either [ListGrid.setUserFormula](ListGrid_2.md#method-listgridsetuserformula) or [ListGrid.setUserFormulaText](ListGrid_2.md#method-listgridsetuserformulatext) to re-evaluate the formula.
 
@@ -38,7 +38,7 @@ When used in the context of grid or detail viewer fields, field names are evalua
 
 When used in the context of forms and editing, this property is not used for formula mapping. Instead, field names are evaluated directly against the current [rule context](Canvas.md#attr-canvasrulescope).
 
-Formulas built by a [FormulaBuilder](FormulaBuilder.md#class-formulabuilder) for a [ListGrid](ListGrid_1.md#class-listgrid) will normally not define this property and the field names will be used directly, unless [useSingleLetterKey](FormulaBuilder.md#attr-formulabuilderusesingleletterkey) is `true`. However, the Builder may add mapping keys to avoid collisions with registered [math functions](MathFunction.md#classmethod-mathfunctionregisterfunction). When directly using field names in a formula, any mapping keys you add to avoid collisions should contain the string "Field" so that the SmartClient Framework can detect when single-letter keys are not in use.
+Formulas built by a [FormulaBuilder](FormulaBuilder.md#class-formulabuilder) for a [ListGrid](ListGrid_1.md#class-listgrid) will normally not define this property and the field names will be used directly, unless [useSingleLetterKey](FormulaBuilder.md#attr-formulabuilderusesingleletterkey) is `true`. However, the Builder may add mapping keys to avoid collisions with registered [math functions](#classmethod-mathfunctionregisterfunction). When directly using field names in a formula, any mapping keys you add to avoid collisions should contain the string "Field" so that the SmartClient Framework can detect when single-letter keys are not in use.
 
 So, for example, if your grid contains a field "max" and you want to use it in a formula, your userFormula might look something like:
 
@@ -50,7 +50,7 @@ So, for example, if your grid contains a field "max" and you want to use it in a
      }
  }
 ```
-.. where the formula also uses the built-in [math function](MathFunction.md#class-mathfunction) max().
+.. where the formula also uses the built-in [math function](#mathfunction) max().
 
 **Flags**: IR
 

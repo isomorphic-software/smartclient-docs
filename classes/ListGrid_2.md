@@ -924,7 +924,7 @@ When applying sparse field state to a component via [ListGrid.setFieldState](#me
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| sparse | [Boolean](#type-boolean) | true | — | If true, field state will be ommitted for hidden fields. |
+| sparse | [Boolean](#type-boolean) | true | — | If true, field state will be omitted for hidden fields. |
 
 ### Returns
 

@@ -741,7 +741,7 @@ Note that if more than one member has the same `name`, passing in a `name` has a
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| memberID | [String](#type-string)|[Canvas](#type-canvas)|[int](../reference.md#type-int) | false | — | identifier for the required member |
+| memberID | [String](#type-string)|[Canvas](#type-canvas)|[int](../reference.md#type-int) | false | — | required member or its identifier |
 
 ### Returns
 

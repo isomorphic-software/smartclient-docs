@@ -1387,7 +1387,7 @@ Changes the title of a tab
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| tab | [Tab](#type-tab)|[number](#type-number)|[GlobalId](../reference.md#type-globalid)|[TabName](../reference.md#type-tabname) | false | — | — |
+| tab | [Tab](#type-tab)|[number](#type-number)|[GlobalId](../reference.md#type-globalid)|[TabName](../reference.md#type-tabname) | false | — | specifies tab |
 | title | [HTMLString](../reference.md#type-htmlstring) | false | — | new title |
 
 **Flags**: A

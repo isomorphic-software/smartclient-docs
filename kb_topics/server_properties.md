@@ -47,5 +47,6 @@ _Note that this is not intended to be an exhaustive list_:
 *   `sql.log.queriesSlowerThan` can be set to an integer controlling SQL query execution time threshold in milliseconds (defaults to 10000), which if exceeded query is identified as "slow" and may be logged under specific logging category. See [DataSource.logSlowSQL](../classes/DataSource.md#attr-datasourcelogslowsql) for more details.
 *   `reflection.classCache` specifies how (if enabled) Smartclient Reflection library caches loaded classes, availables values are "global", "classloader" (default), "jdk" and "off". See comment in server.properties for more details.
 *   `sql_comment_mdc_key` if specified is used as a logging MDC key to get the configurable "log\_correlation\_id" third party tools, like Dynatrace, Graylog etc., use for the context. Smartclient picks that from the logging MDC and adds as a comment to the end of generated SQL queries, so those can be connected to the context.
+*   This file can contain [Full Text Search provider configuration](fullTextSearch.md#kb-topic-full-text-search) for searching document/binary fields via external providers like OpenSearch or Oracle Text.
 
 ---

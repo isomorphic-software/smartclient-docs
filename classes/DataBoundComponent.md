@@ -2125,6 +2125,22 @@ Note that developers may wish to use [DataBoundComponent.deselectRange](#method-
 - [Selection](Selection.md#class-selection)
 
 ---
+## Method: DataBoundComponent.getCompleteField
+
+### Description
+Get a field from completeFields by name. Uses an internal cache for O(1) lookup instead of O(n) linear search. The cache is automatically maintained when completeFields changes.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| fieldName | [String](#type-string) | false | — | Name of the field to retrieve |
+
+### Returns
+
+`[DataSourceField](#type-datasourcefield)` — field object, or null if not found
+
+---
 ## Method: DataBoundComponent.selectRange
 
 ### Description

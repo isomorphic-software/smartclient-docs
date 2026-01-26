@@ -1396,7 +1396,7 @@ When enabled, the default header context menu for this field will include an ite
 
 If unset, these behaviors are enabled when [ListGrid.canAutoFitFields](ListGrid_1.md#attr-listgridcanautofitfields) is true.
 
-If this property is set to false, and [ListGrid.canAutoFitFields](ListGrid_1.md#attr-listgridcanautofitfields) is true, this field will be ommitted from auto-fit when the user selects the header menu option to [auto fit all fields](ListGrid_1.md#attr-listgridautofitalltext).
+If this property is set to false, and [ListGrid.canAutoFitFields](ListGrid_1.md#attr-listgridcanautofitfields) is true, this field will be omitted from auto-fit when the user selects the header menu option to [auto fit all fields](ListGrid_1.md#attr-listgridautofitalltext).
 
 Note - this property governs user-initiated auto-fit only. It has no impact on autoFit set up via [ListGridField.autoFitWidth](#attr-listgridfieldautofitwidth) and [ListGrid.autoFitFieldWidths](ListGrid_1.md#attr-listgridautofitfieldwidths).
 
@@ -1920,7 +1920,7 @@ Advanced applications that wish to save formulas separately from a grid's [viewS
 
 Note that the current implementation of `UserFormula` simply executes [UserFormula.text](UserFormula.md#attr-userformulatext) as a JavaScript string after making special variables and methods available to the formula. It is safe to allow users to define formulas for themselves (since an end user can always execute whatever JavaScript they want via the browser's built-in developer tools), and is safe to allow formulas to be shared between trusted users. However it would not be safe to allow an untrusted user to create formulas that are shared to other users.
 
-Also, while the current implementation would allow creation of a formula that calls JavaScript functions that are not part of the standard or custom [MathFunctions](MathFunction.md#class-mathfunction), this should not be relied upon, as future versions of the formula engine may prohibit such calls.
+Also, while the current implementation would allow creation of a formula that calls JavaScript functions that are not part of the standard or custom [MathFunctions](#mathfunction), this should not be relied upon, as future versions of the formula engine may prohibit such calls.
 
 To change this field's formula, either call [ListGrid.setUserFormula](ListGrid_2.md#method-listgridsetuserformula) with a new `UserFormula` object or call [ListGrid.setUserFormulaText](ListGrid_2.md#method-listgridsetuserformulatext) to change just the [UserFormula.text](UserFormula.md#attr-userformulatext).
 

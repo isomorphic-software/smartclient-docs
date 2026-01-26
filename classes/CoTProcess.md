@@ -98,6 +98,14 @@ Part of the default [prompt assembly](CoTTask.md#attr-cottaskprompt) for [CoTTas
 **Flags**: IR
 
 ---
+## Attr: CoTProcess.pauseAtTaskBoundaries
+
+### Description
+When true (the default), pause requests take effect at task boundaries rather than interrupting mid-task. This ensures consistent state.
+
+**Flags**: IRW
+
+---
 ## Attr: CoTProcess.defaultTaskConstructor
 
 ### Description
@@ -240,6 +248,14 @@ Primer text shown before the goal value when using [CoTProcess.getPromptPart](#m
 **Flags**: IR
 
 ---
+## Attr: CoTProcess.asyncOperation
+
+### Description
+When this process is used as an async operation (via getAsyncOperation() or asyncStart()), this property holds the PausableAsyncOperation instance that manages pause/resume/cancel semantics and the result Promise.
+
+**Flags**: R
+
+---
 ## Attr: CoTProcess.promptModeNoData
 
 ### Description
@@ -250,6 +266,23 @@ Uses truncation for history and errors to limit size without hiding logic. Best 
 ### Groups
 
 - CoTPartialPrompt
+
+**Flags**: IR
+
+---
+## Attr: CoTProcess.systemPrompt
+
+### Description
+The system message sent to the AI engine. If not set, a default generic message is used.
+
+This is distinct from [CoTProcess.introPrompt](#attr-cotprocessintroprompt) which is prepended to the user message content. The systemPrompt is sent as a separate system-role message to the AI, which most models treat as high-priority instructions.
+
+Can be a template string with `${...}` expressions evaluated against the [prompt scope](../kb_topics/CoTPromptScope.md#kb-topic-cotpromptscope). For example:
+
+```
+ systemPrompt: "*** ${task.title} step ***"
+ 
+```
 
 **Flags**: IR
 
@@ -280,6 +313,14 @@ Shows history and errors while omitting most other content. Best for: "What acti
 - CoTPartialPrompt
 
 **Flags**: IR
+
+---
+## Attr: CoTProcess.paused
+
+### Description
+True if this process is currently paused.
+
+**Flags**: R
 
 ---
 ## Attr: CoTProcess.historyMaxItems
@@ -343,6 +384,14 @@ Primer text shown before validation errors when using [CoTProcess.getPromptPart]
 **Flags**: IR
 
 ---
+## Attr: CoTProcess.asyncOperationParams
+
+### Description
+Optional parameters to pass to the PausableAsyncOperation when created. Can include a cancellationController for external cancellation control.
+
+**Flags**: IRW
+
+---
 ## Method: CoTProcess.getPromptPart
 
 ### Description
@@ -370,6 +419,16 @@ Names matching keys in [CoTProcess.optionalPrompts](#attr-cotprocessoptionalprom
 ### Groups
 
 - CoT
+
+---
+## Method: CoTProcess.isCanceled
+
+### Description
+Returns true if this process has been canceled.
+
+### Returns
+
+`[Boolean](#type-boolean)` — —
 
 ---
 ## Method: CoTProcess.mockOutput
@@ -410,6 +469,65 @@ When overriding, call `this.Super("mockOutput", arguments)` to get this default 
 ### Groups
 
 - CoTMocking
+
+---
+## Method: CoTProcess.asyncStart
+
+### Description
+Starts the process and returns a Promise for the result. This is a convenience method that combines getAsyncOperation().asyncGetResult() with start().
+
+### Returns
+
+`[Promise](#type-promise)` — Promise that resolves with the process result or rejects on error/cancel
+
+---
+## Method: CoTProcess._buildSuccessResult
+
+### Description
+Builds the success result object to post to the async operation. Subclasses override to provide appropriate result format.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| state | [Object](../reference.md#type-object) | false | — | The final process state |
+
+### Returns
+
+`[AsyncOperationResult](#type-asyncoperationresult)` — The success result
+
+---
+## Method: CoTProcess.processingElement
+
+### Description
+Observable method called before each element (task) begins execution. Override or observe to show progress UI.
+
+Callers can access:
+
+*   element.ID: Task identifier (e.g., "determineIsNew", "addComponent")
+*   element.title: Human-readable task name
+*   process.state.\*: Current state including pendingIntent, pendingComponentType, etc.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| element | [ProcessElement](#type-processelement) | false | — | The element about to execute |
+| process | [CoTProcess](#type-cotprocess) | false | — | The process instance (for accessing state) |
+
+---
+## Method: CoTProcess.unpause
+
+### Description
+Resumes a paused process.
+
+### Returns
+
+`[Boolean](#type-boolean)` — true if was paused and is now resumed
+
+### See Also
+
+- [PausableAsyncOperation.unpause](#method-pausableasyncoperationunpause)
 
 ---
 ## Method: CoTProcess.getPartialPrompt
@@ -459,6 +577,63 @@ If a requested mode is not found, a log message is generated and the full prompt
 - [PartialPromptConfig](../reference.md#object-partialpromptconfig)
 
 ---
+## Method: CoTProcess.asyncGetResult
+
+### Description
+Returns a Promise for the final result of this process.
+
+### Returns
+
+`[Promise](#type-promise)` — Promise for AsyncOperationResult
+
+### See Also
+
+- [PausableAsyncOperation.asyncGetResult](#method-pausableasyncoperationasyncgetresult)
+
+---
+## Method: CoTProcess.processingElementResult
+
+### Description
+Observable method called after each element completes.
+
+Callers can access:
+
+*   element.ID: Task identifier
+*   output.\*: Task-specific output (e.g., isNew, uiTitle, paletteNodes)
+*   process.state.\*: Updated state after task completion
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| element | [ProcessElement](#type-processelement) | false | — | The element that completed |
+| output | [Object](../reference.md#type-object) | false | — | The task's output object |
+| process | [CoTProcess](#type-cotprocess) | false | — | The process instance |
+
+---
+## Method: CoTProcess.start
+
+### Description
+Starts or resumes the process. Overrides Process.start() to check for mock replay failure - if a prior task called [CoTProcess.setMockReplayFailure](#method-cotprocesssetmockreplayfailure), the process terminates immediately rather than continuing to execute tasks against stale mockData.
+
+---
+## Method: CoTProcess.cancel
+
+### Description
+Cancels this process. Any in-progress AI call is aborted, and the result Promise rejects with a canceled result.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| reason | [String](#type-string) | true | — | Reason for cancellation |
+| initiator | [Initiator](#type-initiator) | true | — | Who initiated the cancel |
+
+### See Also
+
+- [PausableAsyncOperation.cancel](#method-pausableasyncoperationcancel)
+
+---
 ## Method: CoTProcess.addHistory
 
 ### Description
@@ -473,6 +648,16 @@ Add a history entry to [history](#attr-cotprocesshistory) and, if within limits,
 ### Groups
 
 - CoTHistory
+
+---
+## Method: CoTProcess.getAsyncOperation
+
+### Description
+Returns the PausableAsyncOperation for this process, creating it if necessary. Use this when you need to pass the operation to UI components like PauseResumeDialog.
+
+### Returns
+
+`[PausableAsyncOperation](#type-pausableasyncoperation)` — The async operation instance
 
 ---
 ## Method: CoTProcess.setMockReplayFailure
@@ -491,5 +676,31 @@ Use this in custom mockOutput() or processOutputs() implementations to enforce s
 ### Groups
 
 - CoTMocking
+
+---
+## Method: CoTProcess.finished
+
+### Description
+Called when the process completes. Posts the success result to the async operation if one exists.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| state | [Object](../reference.md#type-object) | false | — | The final process state |
+
+---
+## Method: CoTProcess.pause
+
+### Description
+Pauses this process at the next task boundary. If the process is not running or already paused, this has no effect.
+
+### Returns
+
+`[Promise](#type-promise)` — Promise that resolves when unpaused, or rejects if canceled
+
+### See Also
+
+- [PausableAsyncOperation.pause](#method-pausableasyncoperationpause)
 
 ---

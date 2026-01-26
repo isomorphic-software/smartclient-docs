@@ -522,7 +522,7 @@ Button to Cancel this FormulaBuilder. The formula is not tested, formulaBuilder.
 ## Attr: FormulaBuilder.mathFunctions
 
 ### Description
-The list of math functions available in this FormulaBuilder, as an array of [MathFunction](MathFunction.md#class-mathfunction) names.
+The list of math functions available in this FormulaBuilder, as an array of [MathFunction](#mathfunction) names.
 
 The following function list is supported in FormulaBuilders by default: min(), max(), round(), ceil(), floor(), abs(), pow(), sin(), cos(), tan(), ln() and log().
 

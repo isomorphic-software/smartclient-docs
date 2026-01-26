@@ -74,7 +74,7 @@ Note that the client-side filtering described above is also used to determine wh
 
 If automatic cache synchronization isn't working, troubleshoot the problem using the steps suggested [in the FAQ](http://forums.smartclient.com/showthread.php?t=8159#aGrid).
 
-Regarding [operationIds](OperationBinding.md#attr-operationbindingoperationid) and how they affect caching, take into account that cache sync is based on the fetch used - any add or update operation uses a fetch to retrieve updated data, and the operationId of that fetch can be set via [cacheSyncOperation](OperationBinding.md#attr-operationbindingcachesyncoperation). If the operationId of the cache is different from the operationId of the cache update data, it won't be used to update the cache, since the fields included and other aspects of the data are allowed to be different across different operationIds. This allows to maintain distinct caches on a per component basis, so when two components are using separate operationIds they are assumed to have distinct caches, because updates performed with one operationId will not affect the cache obtained via another operationId. Also, take into account that operationId must be unique per DataSource, across all operationTypes for that DataSource.
+Regarding [operationIds](OperationBinding.md#attr-operationbindingoperationid) and how they affect caching, take into account that cache sync is based on the fetch used - any add or update operation uses a fetch to retrieve updated data, and the operationId of that fetch can be set via [cacheSyncOperation](#attr-operationbindingcachesyncoperation). If the operationId of the cache is different from the operationId of the cache update data, it won't be used to update the cache, since the fields included and other aspects of the data are allowed to be different across different operationIds. This allows to maintain distinct caches on a per component basis, so when two components are using separate operationIds they are assumed to have distinct caches, because updates performed with one operationId will not affect the cache obtained via another operationId. Also, take into account that operationId must be unique per DataSource, across all operationTypes for that DataSource.
 
 **Data Paging with partial cache**
 
@@ -270,6 +270,25 @@ The [operationId](DSRequest.md#attr-dsrequestoperationid) this ResultSet should 
 **Flags**: IR
 
 ---
+## Attr: ResultSet.indexedProperties
+
+### Description
+List of property names to create indexes for. Property indexes accelerate find operations by providing O(1) Map-based lookups instead of O(n) linear scans. Indexes are only built for cached records and do not trigger fetches.
+
+When data is partially loaded (paging), indexes only contain entries for loaded records. This means find operations may return null even though matching records exist on the server but have not been loaded yet. To ensure complete results, either:
+
+*   Use [ResultSet.allRowsCached](#method-resultsetallrowscached) to verify all data is loaded before relying on indexed find operations
+*   Set [ResultSet.fetchMode](#attr-resultsetfetchmode) to "local" to ensure complete data is available
+
+Indexes are automatically maintained as records are added, removed, or updated in the cache.
+
+### Groups
+
+- caching
+
+**Flags**: IRA
+
+---
 ## Attr: ResultSet.implicitCriteria
 
 ### Description
@@ -310,6 +329,29 @@ See [ResultSet.applyFilter](#method-resultsetapplyfilter) for default filtering 
 **NOTE:** even with useClientFiltering false, client-side filtering will be used during cache sync to determine if an updated or added row matches the current criteria. To avoid relying on client-side filtering in this case, either:  
 \- avoid returning update data when the updated row doesn't match the current filter  
 \- set dropCacheOnUpdate
+
+**Flags**: IRWA
+
+---
+## Attr: ResultSet.indexFilteredData
+
+### Description
+Whether to automatically maintain property indices on filtered data (localData) when client-side filtering narrows the visible dataset from the complete cache (allRows).
+
+When this feature is enabled and property indices have been created via [ResultSet.createIndex](#method-resultsetcreateindex), the ResultSet will automatically build and maintain secondary indices on the filtered dataset whenever localData becomes a subset of allRows due to more restrictive criteria.
+
+This provides O(1) performance for [ResultSet.find](#method-resultsetfind), [ResultSet.findAll](#method-resultsetfindall), and [ResultSet.getUniquePropertyValues](#method-resultsetgetuniquepropertyvalues) operations on filtered data, rather than requiring linear scans of the filtered dataset.
+
+**Default behavior:** When null (the default), filtered indices are automatically maintained if any property indices have been created via createIndex(). Set explicitly to false to disable this behavior even when indices exist, or true to enable it unconditionally.
+
+**Automatic maintenance:** Filtered indices are:
+
+*   Built during the existing filtering traversal (no extra iteration cost)
+*   Updated automatically when records are added, updated, or removed
+*   Invalidated when criteria change to become less restrictive or when the cache is cleared
+*   Re-created when criteria narrow further from an already-filtered state
+
+**Memory impact:** When active, this feature maintains a second set of index structures for the filtered data. For large datasets with many indices, this approximately doubles the memory overhead of indexing. The indices are automatically freed when no longer needed.
 
 **Flags**: IRWA
 
@@ -624,6 +666,8 @@ This method is automatically called by [ResultSet.setCriteria](#method-resultset
 ### Description
 Like [List.find](List.md#method-listfind). Checks only loaded rows and will not trigger a fetch.
 
+When [filtered indexing](#attr-resultsetindexfiltereddata) is enabled, this method automatically uses filtered indices for O(1) lookups when criteria have narrowed the visible dataset.
+
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
@@ -721,6 +765,36 @@ Note, if you pass a simple value to this method, it will be matched against the 
 ### Returns
 
 `[Record](#type-record)` — the record with a matching primary key field, or null if not found
+
+---
+## Method: ResultSet.getUniquePropertyValues
+
+### Description
+Returns an array of unique values for the specified property from loaded records only. This method operates only on cached data and does not trigger fetches.
+
+For partial caches, only loaded records are examined. Use [ResultSet.allRowsCached](#method-resultsetallrowscached) to check if all data is loaded before relying on complete results.
+
+This override works directly with the ResultSet's cache structure to avoid triggering data fetches. When a property index exists, this method uses the appropriate index for O(1) performance:
+
+*   When [filtered indexing](#attr-resultsetindexfiltereddata) is enabled and criteria have narrowed the visible dataset, filtered indices are used to return only values from records matching the current filter
+*   When no filtering is active and all data is cached, primary indices are used
+*   Otherwise, a single-pass iteration of the available data is performed
+
+**Important:** This method respects client-side filtering. When criteria are active and [client filtering](#attr-resultsetuseclientfiltering) is enabled, only unique values from records matching the current criteria are returned, not from all cached data.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| property | [String](#type-string) | false | — | the property name to extract unique values from |
+
+### Returns
+
+`[Array](#type-array)` — array of unique property values from loaded records only
+
+### Groups
+
+- caching
 
 ---
 ## Method: ResultSet.getCachedRange
@@ -1107,6 +1181,26 @@ This method returns false if data is not loaded yet.
 - [ResultSet.getAllCachedRows](#method-resultsetgetallcachedrows)
 
 ---
+## Method: ResultSet.removeIndex
+
+### Description
+Remove a property index created by [ResultSet.createIndex](#method-resultsetcreateindex).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| property | [String](#type-string) | false | — | Name of the indexed property to remove |
+
+### Returns
+
+`[ResultSet](#type-resultset)` — this ResultSet (for chaining)
+
+### Groups
+
+- caching
+
+---
 ## Method: ResultSet.getRowCountStatus
 
 ### Description
@@ -1192,23 +1286,46 @@ Developers using this pattern may also wish to consider the [FilteredList](Filte
 ## Method: ResultSet.findAll
 
 ### Description
-Like [List.findAll](List.md#method-listfindall). Checks only loaded rows and will not trigger a fetch.
+Returns all records matching the specified property value from loaded records only. This method operates only on cached data and does not trigger fetches.
+
+This override works directly with the ResultSet's cache structure using property indices when available. When [filtered indexing](#attr-resultsetindexfiltereddata) is enabled and criteria have narrowed the visible dataset, filtered indices provide O(1) lookup performance instead of O(n) linear search.
+
+**Important:** This method respects client-side filtering. When criteria are active, only records matching the current criteria are searched.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| propertyName | [String](#type-string)|[Object](../reference.md#type-object)|[AdvancedCriteria](#type-advancedcriteria) | false | — | property to match, or if an Object is passed, set of properties and values to match |
-| value | [Any](#type-any) | true | — | value to compare against (if propertyName is a string) |
+| property | [String](#type-string) | false | — | the property name to match, or an object with property:value pairs |
+| value | [Any](#type-any) | true | — | value to match (if property is a string) |
 
 ### Returns
 
-`[Array](#type-array)` — all matching Objects or null if none found
+`[Array](#type-array)` — array of matching records, or null if no matches
 
 ### Groups
 
-- access
-- find
+- caching
+
+---
+## Method: ResultSet.updateIndex
+
+### Description
+Refresh a property index after records have been loaded or modified. This is automatically called when records are added/removed/updated, but can be called manually if direct modifications were made to the cache.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| property | [String](#type-string) | false | — | Name of the indexed property to refresh |
+
+### Returns
+
+`[ResultSet](#type-resultset)` — this ResultSet (for chaining)
+
+### Groups
+
+- caching
 
 ---
 ## Method: ResultSet.getRowCount
@@ -1357,5 +1474,27 @@ Calling getRange for records that have not yet loaded will trigger an asynchrono
 
 - [ResultSet.getLoadingMarker](#classmethod-resultsetgetloadingmarker)
 - [ResultSet.dataArrived](#method-resultsetdataarrived)
+
+---
+## Method: ResultSet.createIndex
+
+### Description
+Create a property index on this ResultSet to accelerate find operations. Indexes are only built for cached records (allRows) and do not trigger fetches. When data is partially loaded, indexes only contain entries for loaded records.
+
+To check if all data is loaded before relying on indexed results, use [ResultSet.allRowsCached](#method-resultsetallrowscached).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| property | [String](#type-string) | false | — | Name of the property to index |
+
+### Returns
+
+`[ResultSet](#type-resultset)` — this ResultSet (for chaining)
+
+### Groups
+
+- caching
 
 ---

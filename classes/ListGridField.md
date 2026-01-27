@@ -1793,20 +1793,6 @@ Groups will be formed based on ranges of values of size `groupGranularity`. For 
 **Flags**: IR
 
 ---
-## Attr: ListGridField.aiFieldRequest
-
-### Description
-The settings that configure requests to AI to generate the values for this field. This can be set by the application directly or created and edited by the user with an [AIFieldBuilder](AIFieldBuilder.md#class-aifieldbuilder), either directly or via the grid header menu items to add an AI summary or sort field (see [ListGrid.canAddAISummaryFields](DataBoundComponent.md#attr-databoundcomponentcanaddaisummaryfields)).
-
-Note that setting an `aiFieldRequest` will cause the default value of [ListGridField.escapeHTML](#attr-listgridfieldescapehtml) to be `true`.
-
-### See Also
-
-- [ListGridField.canEditAISummary](#attr-listgridfieldcaneditaisummary)
-
-**Flags**: IR
-
----
 ## Attr: ListGridField.hideOnPhone
 
 ### Description
@@ -1893,7 +1879,7 @@ Also, while the current implementation would allow creation of a formula that ca
 
 To change this field's formula, either call [ListGrid.setUserFormula](ListGrid_2.md#method-listgridsetuserformula) with a new `UserFormula` object or call [ListGrid.setUserFormulaText](ListGrid_2.md#method-listgridsetuserformulatext) to change just the [UserFormula.text](UserFormula.md#attr-userformulatext).
 
-It is undefined behavior to share the same record objects, or the same [ResultSet](ResultSet.md#class-resultset) instances, among multiple grids if one of the grid's fields specifies a `userFormula`, [userSummary](#attr-listgridfieldusersummary), [aiFieldRequest](#attr-listgridfieldaifieldrequest), or [aiHoverRequest](#attr-listgridfieldaihoverrequest), or if one of the grids has a [Hilite](../reference_2.md#object-hilite) with an asynchronous filter in the hilite's [criteria](Hilite.md#attr-hilitecriteria).
+It is undefined behavior to share the same record objects, or the same [ResultSet](ResultSet.md#class-resultset) instances, among multiple grids if one of the grid's fields specifies a `userFormula`, [userSummary](#attr-listgridfieldusersummary), [aiFieldPrompt](#attr-listgridfieldaifieldprompt), or [aiHoverRequest](#attr-listgridfieldaihoverrequest), or if one of the grids has a [Hilite](../reference_2.md#object-hilite) with an asynchronous filter in the hilite's [criteria](Hilite.md#attr-hilitecriteria).
 
 ### Groups
 
@@ -2038,6 +2024,18 @@ Also supported at the [ListGrid-level](ListGrid_1.md#attr-listgridshowhovercompo
 - hoverComponents
 
 **Flags**: IRW
+
+---
+## Attr: ListGridField.aiFieldPrompt
+
+### Description
+The prompt to send to AI to generate the field's values.
+
+Setting this property causes the field to be AI-generated, and the default value of [ListGridField.escapeHTML](#attr-listgridfieldescapehtml) will be `true`.
+
+AI must be enabled in the application. See [AI.disabled](AI.md#classattr-aidisabled).
+
+**Flags**: IR
 
 ---
 ## Attr: ListGridField.prompt
@@ -2316,7 +2314,7 @@ Advanced applications that wish to save summaries separately from a grid's [view
 
 To change this field's summary definition, either call [ListGrid.setUserSummary](ListGrid_2.md#method-listgridsetusersummary) with a new `UserSummary` object or call [ListGrid.setUserSummaryText](ListGrid_2.md#method-listgridsetusersummarytext) to change just the [UserSummary.text](UserSummary.md#attr-usersummarytext).
 
-It is undefined behavior to share the same record objects, or the same [ResultSet](ResultSet.md#class-resultset) instances, among multiple grids if one of the grid's fields specifies a `userSummary`, [userFormula](#attr-listgridfielduserformula), [aiFieldRequest](#attr-listgridfieldaifieldrequest), or [aiHoverRequest](#attr-listgridfieldaihoverrequest), or if one of the grids has a [Hilite](../reference_2.md#object-hilite) with an asynchronous filter in the hilite's [criteria](Hilite.md#attr-hilitecriteria).
+It is undefined behavior to share the same record objects, or the same [ResultSet](ResultSet.md#class-resultset) instances, among multiple grids if one of the grid's fields specifies a `userSummary`, [userFormula](#attr-listgridfielduserformula), [aiFieldPrompt](#attr-listgridfieldaifieldprompt), or [aiHoverRequest](#attr-listgridfieldaihoverrequest), or if one of the grids has a [Hilite](../reference_2.md#object-hilite) with an asynchronous filter in the hilite's [criteria](Hilite.md#attr-hilitecriteria).
 
 ### Groups
 
@@ -2423,7 +2421,7 @@ If unset, default behavior is derived from [ListGrid.headerHoverWidth](ListGrid_
 ### Description
 By default HTML values in ListGrid cells will be interpreted by the browser. Setting this flag to `true` will cause HTML characters to be escaped, meaning the raw value of the field (for example `"`<b>`AAA`</b>`"`) is displayed to the user rather than being interpreted as HTML (for example `"**AAA**"`)
 
-If this field has an [ListGridField.aiFieldRequest](#attr-listgridfieldaifieldrequest), then the default value of this setting is `true`.
+If this field has an [ListGridField.aiFieldPrompt](#attr-listgridfieldaifieldprompt), then the default value of this setting is `true`.
 
 ### See Also
 

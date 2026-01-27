@@ -1110,6 +1110,20 @@ Given a rowNum and a colNum or fieldName, determine whether we currently have st
 - [ListGrid.rowHasErrors](#method-listgridrowhaserrors)
 
 ---
+## Method: ListGrid.hiliteViaAI
+
+### Description
+If hilite-via-AI is enabled (see [ListGrid.canHiliteViaAI](ListGrid_1.md#attr-listgridcanhiliteviaai)), asks AI to hilite the grid according to the given natural language description of the hilite(s) to apply.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| prompt | [String](#type-string) | false | — | The natural language description of hilite(s). |
+| settings | [HiliteViaAISettings](#type-hiliteviaaisettings) | true | — | Optional settings to use. |
+| callback | [HiliteViaAIResultCallback](#type-hiliteviaairesultcallback) | true | — | Optional callback to fire with the result. |
+
+---
 ## Method: ListGrid.getFieldNum
 
 ### Description
@@ -8005,6 +8019,19 @@ Cancel the current edit without saving.
 ### Groups
 
 - editing
+
+---
+## Method: ListGrid.filterViaAI
+
+### Description
+If filter-via-AI is enabled (see [ListGrid.filterViaAIMode](ListGrid_1.md#attr-listgridfilterviaaimode)), asks AI to filter the grid according to the given natual language description of a filter.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| prompt | [String](#type-string) | false | — | The natual language description of a filter. |
+| settings | [FilterViaAISettings](#type-filterviaaisettings) | true | — | Optional settings to use. |
 
 ---
 ## Method: ListGrid.deselectAllRecords

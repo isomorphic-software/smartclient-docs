@@ -1063,7 +1063,7 @@ Note: Unlike [ListGrid.autoFitMaxWidth](#attr-listgridautofitmaxwidth), this pro
 ### Description
 Hilites to be applied to the data for this grid. See [hiliting](../kb_topics/hiliting.md#kb-topic-hiliting).
 
-It is undefined behavior to share the same record objects, or the same [ResultSet](ResultSet.md#class-resultset) instances, among multiple grids if one of the grid's fields specifies a [userFormula](ListGridField.md#attr-listgridfielduserformula), [userSummary](ListGridField.md#attr-listgridfieldusersummary), [aiFieldRequest](ListGridField.md#attr-listgridfieldaifieldrequest), or [aiHoverRequest](ListGridField.md#attr-listgridfieldaihoverrequest), or if one of the grids has a [Hilite](../reference_2.md#object-hilite) with an asynchronous filter in the hilite's [criteria](Hilite.md#attr-hilitecriteria).
+It is undefined behavior to share the same record objects, or the same [ResultSet](ResultSet.md#class-resultset) instances, among multiple grids if one of the grid's fields specifies a [userFormula](ListGridField.md#attr-listgridfielduserformula), [userSummary](ListGridField.md#attr-listgridfieldusersummary), [aiFieldPrompt](ListGridField.md#attr-listgridfieldaifieldprompt), or [aiHoverRequest](ListGridField.md#attr-listgridfieldaihoverrequest), or if one of the grids has a [Hilite](../reference_2.md#object-hilite) with an asynchronous filter in the hilite's [criteria](Hilite.md#attr-hilitecriteria).
 
 ### Groups
 
@@ -7314,7 +7314,7 @@ This property may be set to customize the vertical alignment for the hover shown
 ## Attr: ListGrid.filterViaAIMode
 
 ### Description
-If filtering of the grid is enabled, filtering-via-AI can also be enabled by setting the [AIServiceMode](../reference.md#type-aiservicemode) to use.
+If filtering of the grid is enabled and AI [is enabled](AI.md#classmethod-aiisenabled), filtering-via-AI can be enabled by setting the [AIServiceMode](../reference.md#type-aiservicemode) to use.
 
 **Flags**: IR
 

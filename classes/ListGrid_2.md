@@ -4,6 +4,66 @@
 
 ---
 
+## Method: ListGrid.editFailed
+
+### Description
+Called when an attempt to save inline edits fails, due to a validation error or other server error.
+
+The default implementation of editFailed does nothing for normal validation errors, which are displayed before editFailed() is called. For any other errors, the default implementation will call [RPCManager.handleError](RPCManager.md#classmethod-rpcmanagerhandleerror), which by default will result in a warning dialog.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| rowNum | [number](#type-number) | false | — | current index of the row we attempted to save |
+| colNum | [number](#type-number) | false | — | index of the column where the edit failed, if applicable |
+| newValues | [Object](../reference.md#type-object)|[Record](#type-record) | false | — | new values that we attempted to save |
+| oldValues | [Record](#type-record) | false | — | the complete original values from before the save occurred |
+| editCompletionEvent | [EditCompletionEvent](../reference_2.md#type-editcompletionevent) | false | — | Edit completion event that led to the save attempt |
+| dsResponse | [DSResponse](#type-dsresponse) | true | — | DSResponse, for saves through a DataSource |
+
+### Groups
+
+- editing
+
+---
+## Method: ListGrid.cellContextClick
+
+### Description
+Called when a cell receives a contextclick event.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| record | [ListGridRecord](#type-listgridrecord) | false | — | cell record as returned by getCellRecord |
+| rowNum | [number](#type-number) | false | — | row number for the cell |
+| colNum | [number](#type-number) | false | — | column number of the cell |
+
+### Returns
+
+`[Boolean](#type-boolean)` — whether to cancel the event
+
+### Groups
+
+- events
+
+---
+## Method: ListGrid.showFields
+
+### Description
+Force an array of fields to be shown. This method does not add new fields to the grid, it simply changes field visibility. If a field.showIf expression exists, it will be destroyed.
+
+Note: for showing multiple fields it is more efficient to call this method than to call [ListGrid.showField](#method-listgridshowfield) repeatedly.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| field | [Array of String](#type-array-of-string)|[Array of ListGridField](#type-array-of-listgridfield) | false | — | Fields to show. |
+| suppressRelayout | [boolean](../reference.md#type-boolean) | true | — | If passed, don't resize non-explicitly sized columns to fill the available space. |
+
+---
 ## Method: ListGrid.showFilterWindow
 
 ### Description
@@ -280,7 +340,7 @@ Note that if [ListGrid.saveRequestProperties](ListGrid_1.md#attr-listgridsavereq
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | rows | [Array of Number](#type-array-of-number) | true | — | optionally specify which rows to save |
-| saveCallback | [Callback](../reference.md#type-callback) | true | — | If specified this callback will be fired on a successful save of the specified rows. Note that if there are no pending edits to be saved this callback will not fire - you can check for this condition using [ListGrid.hasChanges](#method-listgridhaschanges) or [ListGrid.rowHasChanges](#method-listgridrowhaschanges). Use [ListGrid.editFailed](ListGrid_1.md#method-listgrideditfailed) to find out about failures encountered during saving (on a per-row basis). |
+| saveCallback | [Callback](../reference.md#type-callback) | true | — | If specified this callback will be fired on a successful save of the specified rows. Note that if there are no pending edits to be saved this callback will not fire - you can check for this condition using [ListGrid.hasChanges](#method-listgridhaschanges) or [ListGrid.rowHasChanges](#method-listgridrowhaschanges). Use [ListGrid.editFailed](#method-listgrideditfailed) to find out about failures encountered during saving (on a per-row basis). |
 
 ### Returns
 
@@ -1870,7 +1930,7 @@ The 'callback' parameter provides a notification when the save attempt completes
 
 Note that if this method was unable to determine the row to be saved, the callback will NOT fire - in this case, the method is a no-op.
 
-Other, standard callbacks such as [ListGrid.editComplete](#method-listgrideditcomplete), [ListGrid.editFailed](ListGrid_1.md#method-listgrideditfailed) and [ListGrid.cellChanged](#method-listgridcellchanged) will fire normally.
+Other, standard callbacks such as [ListGrid.editComplete](#method-listgrideditcomplete), [ListGrid.editFailed](#method-listgrideditfailed) and [ListGrid.cellChanged](#method-listgridcellchanged) will fire normally.
 
 Note this method does not hide the inline editors if they are showing - to explicitly save and end editing, use the method 'endEditing()'
 
@@ -5743,7 +5803,7 @@ or, to ensure the specified [ListGrid.autoFetchTextMatchStyle](ListGrid_1.md#att
 ### Description
 Force a field to be shown. This method does not add new fields to the grid, it simply changes field visibility. If a field.showIf expression exists, it will be destroyed.
 
-Note: for showing multiple fields it is more efficient to call [ListGrid.showFields](ListGrid_1.md#method-listgridshowfields) than to call this method repeatedly.
+Note: for showing multiple fields it is more efficient to call [ListGrid.showFields](#method-listgridshowfields) than to call this method repeatedly.
 
 ### Parameters
 

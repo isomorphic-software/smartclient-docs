@@ -3392,6 +3392,25 @@ Set to 0 to have the advanced picker always used (when useAdvancedFieldPicker is
 **Flags**: IR
 
 ---
+## Attr: ListGrid.centralStyling
+
+### Description
+When enabled, generates CSS using nth-child selectors to apply cell styling centrally, eliminating the class attribute for base cells (normal and alternating row styles). Dynamic cells (selection, rollover, etc.) retain their class attributes.
+
+This optimization extracts CSS properties from the skin's cell style classes at runtime and caches them statically - subsequent grids using the same baseStyle reuse the cached CSS without re-inspecting styles. The generated CSS uses selectors like:
+
+*   `#gridId table tbody tr:nth-child(odd) td:not([class])` - normal rows
+*   `#gridId table tbody tr:nth-child(even) td:not([class])` - alternate rows
+
+For large grids, this reduces per-cell HTML by ~15-20 characters (the class attribute), with a one-time CSS overhead of ~300-500 bytes. The break-even point is approximately 20-30 cells; larger grids see net savings that grow with cell count.
+
+### Groups
+
+- performance
+
+**Flags**: IR
+
+---
 ## Attr: ListGrid.pendingAsyncCellValue
 
 ### Description
@@ -4496,22 +4515,6 @@ When using [ListGrid.autoFitFieldWidths](#attr-listgridautofitfieldwidths), padd
 **Flags**: IR
 
 ---
-## Attr: ListGrid.canGroupBy
-
-### Description
-If false, grouping via context menu will be disabled.
-
-### Groups
-
-- grouping
-
-### See Also
-
-- [ListGrid.groupBy](ListGrid_2.md#method-listgridgroupby)
-
-**Flags**: IRW
-
----
 ## Attr: ListGrid.asyncErrorCellValue
 
 ### Description
@@ -4526,6 +4529,22 @@ This is the grid-wide setting. [ListGridField.asyncErrorCellValue](ListGridField
 ### See Also
 
 - [DataBoundComponent.isValuePendingAsyncOrAsyncError](DataBoundComponent.md#method-databoundcomponentisvaluependingasyncorasyncerror)
+
+**Flags**: IRW
+
+---
+## Attr: ListGrid.canGroupBy
+
+### Description
+If false, grouping via context menu will be disabled.
+
+### Groups
+
+- grouping
+
+### See Also
+
+- [ListGrid.groupBy](ListGrid_2.md#method-listgridgroupby)
 
 **Flags**: IRW
 
@@ -8550,6 +8569,24 @@ See also [ListGrid.generateClickOnEnter](#attr-listgridgenerateclickonenter), [L
 **Flags**: IRWA
 
 ---
+## Attr: ListGrid.skipClipDiv
+
+### Description
+Controls whether the inner clipDiv element is written for grid cells. The clipDiv is normally required for text overflow handling (ellipsis) and vertical centering, but Chrome can handle horizontal overflow via overflow:hidden on the TD element itself.
+
+When left as null (default), browser detection automatically skips the clipDiv for Chrome browsers when vertical clipping is not needed (no wrapCells, no enforceVClipping). This reduces HTML size by approximately 40% for grids with single-line text.
+
+Set to true to force skip the clipDiv on all browsers (use with caution - may cause visual issues on non-Chrome browsers). Set to false to force write clipDiv for all cells on all browsers (backcompat mode, disables the Chrome optimization).
+
+Note: Even when skipClipDiv is enabled, the clipDiv will still be written when needed for vertical clipping (wrapCells:true or enforceVClipping).
+
+### Groups
+
+- performance
+
+**Flags**: IR
+
+---
 ## Attr: ListGrid.fixedRecordHeights
 
 ### Description
@@ -9731,65 +9768,5 @@ Whether at least one item is selected
 ### Groups
 
 - selection
-
----
-## Method: ListGrid.editFailed
-
-### Description
-Called when an attempt to save inline edits fails, due to a validation error or other server error.
-
-The default implementation of editFailed does nothing for normal validation errors, which are displayed before editFailed() is called. For any other errors, the default implementation will call [RPCManager.handleError](RPCManager.md#classmethod-rpcmanagerhandleerror), which by default will result in a warning dialog.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| rowNum | [number](#type-number) | false | — | current index of the row we attempted to save |
-| colNum | [number](#type-number) | false | — | index of the column where the edit failed, if applicable |
-| newValues | [Object](../reference.md#type-object)|[Record](#type-record) | false | — | new values that we attempted to save |
-| oldValues | [Record](#type-record) | false | — | the complete original values from before the save occurred |
-| editCompletionEvent | [EditCompletionEvent](../reference_2.md#type-editcompletionevent) | false | — | Edit completion event that led to the save attempt |
-| dsResponse | [DSResponse](#type-dsresponse) | true | — | DSResponse, for saves through a DataSource |
-
-### Groups
-
-- editing
-
----
-## Method: ListGrid.cellContextClick
-
-### Description
-Called when a cell receives a contextclick event.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| record | [ListGridRecord](#type-listgridrecord) | false | — | cell record as returned by getCellRecord |
-| rowNum | [number](#type-number) | false | — | row number for the cell |
-| colNum | [number](#type-number) | false | — | column number of the cell |
-
-### Returns
-
-`[Boolean](#type-boolean)` — whether to cancel the event
-
-### Groups
-
-- events
-
----
-## Method: ListGrid.showFields
-
-### Description
-Force an array of fields to be shown. This method does not add new fields to the grid, it simply changes field visibility. If a field.showIf expression exists, it will be destroyed.
-
-Note: for showing multiple fields it is more efficient to call this method than to call [ListGrid.showField](ListGrid_2.md#method-listgridshowfield) repeatedly.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| field | [Array of String](#type-array-of-string)|[Array of ListGridField](#type-array-of-listgridfield) | false | — | Fields to show. |
-| suppressRelayout | [boolean](../reference.md#type-boolean) | true | — | If passed, don't resize non-explicitly sized columns to fill the available space. |
 
 ---

@@ -1309,7 +1309,7 @@ Return the [SortSpecifier](../reference.md#object-sortspecifier)s representing t
 
 ### Returns
 
-`[Array of SortSpecifier](#type-array-of-sortspecifier)` — sortSpecifiersThe current sort specification for this component
+`[Array of SortSpecifier](#type-array-of-sortspecifier)` — sortSpecifiersA copy of the current sort specification for this component
 
 ---
 ## Method: DataBoundComponent.findAll

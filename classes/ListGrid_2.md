@@ -1110,6 +1110,20 @@ Given a rowNum and a colNum or fieldName, determine whether we currently have st
 - [ListGrid.rowHasErrors](#method-listgridrowhaserrors)
 
 ---
+## Method: ListGrid.hiliteViaAI
+
+### Description
+If hilite-via-AI is enabled (see [ListGrid.canHiliteViaAI](ListGrid_1.md#attr-listgridcanhiliteviaai)), asks AI to hilite the grid according to the given natural language description of the hilite(s) to apply.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| prompt | [String](#type-string) | false | — | The natural language description of hilite(s). |
+| settings | [HiliteViaAISettings](#type-hiliteviaaisettings) | true | — | Optional settings to use. |
+| callback | [HiliteViaAIResultCallback](#type-hiliteviaairesultcallback) | true | — | Optional callback to fire with the result. |
+
+---
 ## Method: ListGrid.getFieldNum
 
 ### Description
@@ -5559,8 +5573,8 @@ Depending on the field's current filter-value and operator, calls to this method
 
 In general, if the field has a current filter-value, it will be cleared if
 
-*   the new operator does not require a value (operator-type [none](../reference_2.md#type-operatorvaluetype) - [isBlank](../reference.md#type-operatorid), for example)
-*   the current and new operators have different [value-types](../reference_2.md#type-operatorvaluetype) and [ListGrid.allowFilterExpressions](ListGrid_1.md#attr-listgridallowfilterexpressions) is false
+*   the new operator does not require a value (operator-type [none](../reference.md#type-operatorvaluetype) - [isBlank](../reference.md#type-operatorid), for example)
+*   the current and new operators have different [value-types](../reference.md#type-operatorvaluetype) and [ListGrid.allowFilterExpressions](ListGrid_1.md#attr-listgridallowfilterexpressions) is false
 *   the item has an [optionDataSource](FormItem.md#attr-formitemoptiondatasource) or valueMap which no longer includes the current value
 
 If `filterOnKeypress` is true, a fetch will be issued if
@@ -8005,6 +8019,19 @@ Cancel the current edit without saving.
 ### Groups
 
 - editing
+
+---
+## Method: ListGrid.filterViaAI
+
+### Description
+If filter-via-AI is enabled (see [ListGrid.filterViaAIMode](ListGrid_1.md#attr-listgridfilterviaaimode)), asks AI to filter the grid according to the given natual language description of a filter.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| prompt | [String](#type-string) | false | — | The natual language description of a filter. |
+| settings | [FilterViaAISettings](#type-filterviaaisettings) | true | — | Optional settings to use. |
 
 ---
 ## Method: ListGrid.deselectAllRecords

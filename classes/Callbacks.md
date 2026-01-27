@@ -766,6 +766,18 @@ Callback fired when ResultSet.fetchRowCount() completes
 - rowRangeDisplay
 
 ---
+## Method: Callbacks.HiliteViaAIResultCallback
+
+### Description
+Callback fired asynchronously with the result of a [hilite-via-AI operation](#method-hiliteviaai).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| result | [HiliteViaAIResult](#type-hiliteviaairesult) | false | — | The result. |
+
+---
 ## Method: Callbacks.Function
 
 ### Description

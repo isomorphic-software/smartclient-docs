@@ -133,4 +133,39 @@ To switch to another servlet engine, such as Jetty, you just need to remove the 
 ```
 in the directory where you originally expanded the Reify OnSite package. This will produce a standard Java war file that can be deployed to any servlet engine / application server that supports at least J2SE.
 
+**Skin Editor Requirements (Ruby and Compass)**
+
+Reify OnSite's [Skin Editor](skinEditor.md#kb-topic-skin-editor) feature, which allows creating and customizing skins/themes, requires Ruby and the Compass gem to be installed on the server. These utilities are used to compile SCSS (Sass) stylesheets into CSS when a custom skin is created or modified.
+
+_What breaks without Ruby/Compass:_ The Skin Editor will fail to compile custom skins. When attempting to save a customized skin, an error will be reported indicating that the `compass` command could not be executed. All other Reify OnSite functionality will work normally; only creating or modifying custom skins requires these utilities.
+
+_How these utilities are used:_ The SmartClient server invokes the system `compass compile` command via Java's process execution API (`ISCSystem.execute()`) to transform SCSS files into the final CSS used by skins.
+
+_Installation:_ To enable the Skin Editor, install Ruby and the Compass gem. Compass 1.0.3 (the final release) requires Ruby 2.5 to 2.7; it is not compatible with Ruby 3.x:
+
+*   **On Linux (Debian/Ubuntu):**
+    ```
+        sudo apt-get install ruby
+         sudo gem install compass
+    ```
+    
+*   **On Linux (RHEL/CentOS):**
+    ```
+        sudo yum install ruby
+         sudo gem install compass
+    ```
+    
+*   **On macOS:** Ruby is typically pre-installed; just install Compass:
+    ```
+        sudo gem install compass
+    ```
+    
+*   **On Windows:** Install Ruby from [RubyInstaller](https://rubyinstaller.org/), then open a command prompt and run:
+    ```
+        gem install compass
+    ```
+    
+
+Ensure the `compass` command is available in the system PATH for the user account running the servlet engine.
+
 ---

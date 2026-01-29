@@ -11,6 +11,7 @@ This is a built-in comparator for the [find](#method-arrayfind) and [findIndex](
 
 ### See Also
 
+- [Array.TIME_VALUES](#classattr-arraytime_values)
 - [Array.DATETIME_VALUES](#classattr-arraydatetime_values)
 
 **Flags**: R
@@ -32,6 +33,7 @@ This is a built-in comparator for the [find](#method-arrayfind) and [findIndex](
 ### See Also
 
 - [Array.DATE_VALUES](#classattr-arraydate_values)
+- [Array.TIME_VALUES](#classattr-arraytime_values)
 
 **Flags**: R
 
@@ -40,6 +42,19 @@ This is a built-in comparator for the [find](#method-arrayfind) and [findIndex](
 
 ### Description
 This is a built-in comparator for the [find](#method-arrayfind) and [findIndex](#method-arrayfindindex) methods of Array. Passing this comparator to those methods will find case-insensitively, so, eg, `find("foo", "bar")` would find objects with a "foo" property set to "Bar", "BAR" or "bar"
+
+**Flags**: R
+
+---
+## ClassAttr: Array.TIME_VALUES
+
+### Description
+This is a built-in comparator for the [find](#method-arrayfind) and [findIndex](#method-arrayfindindex) methods of Array. Passing this comparator to those methods will find instances where Dates in the search criteria match Dates in the array members (ordinarily, Javascript only regards Dates as equal if they refer to the exact same object). This comparator compares _logical_ times; the date elements of the values being compared are ignored, so two Dates representing different dates but the same time of day will be considered equal.
+
+### See Also
+
+- [Array.DATE_VALUES](#classattr-arraydate_values)
+- [Array.DATETIME_VALUES](#classattr-arraydatetime_values)
 
 **Flags**: R
 
@@ -1063,6 +1078,24 @@ Remove all instances of objects in the specified list from this list, sliding th
 ### Groups
 
 - modification
+
+---
+## Method: Array.getIndexedProperties
+
+### Description
+Returns an array of property names that currently have indices created via [Array.createIndex](#method-arraycreateindex).
+
+This is useful for debugging, memory management, and understanding which properties are indexed for performance optimization.
+
+**Note:** This method always returns an Array, never null. If no indices exist, an empty array is returned.
+
+### Returns
+
+`[Array of String](#type-array-of-string)` — Array of indexed property names (empty array if no indices exist, never null)
+
+### Groups
+
+- indexing
 
 ---
 ## Method: Array.removeAt

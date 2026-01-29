@@ -134,6 +134,10 @@ Before starting on implementing paging within sets of children, carefully consid
 
 ### Related
 
+- [Tree.createIndex](../classes/Tree.md#method-treecreateindex)
+- [Tree.removeIndex](../classes/Tree.md#method-treeremoveindex)
+- [Tree.updateIndex](../classes/Tree.md#method-treeupdateindex)
+- [Tree.getIndexedProperties](../classes/Tree.md#method-treegetindexedproperties)
 - [DSRequest.keepParentsOnFilter](../classes/DSRequest.md#attr-dsrequestkeepparentsonfilter)
 - [ResultTree.data](../classes/ResultTree.md#attr-resulttreedata)
 - [ResultTree.fetchMode](../classes/ResultTree.md#attr-resulttreefetchmode)

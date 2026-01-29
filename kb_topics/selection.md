@@ -96,7 +96,7 @@ Only applicable to a [DataBoundComponent](../reference.md#interface-databoundcom
 - [ListGrid.deselectAllRecords](../classes/ListGrid_2.md#method-listgriddeselectallrecords)
 - [ListGrid.selectRange](../classes/ListGrid_2.md#method-listgridselectrange)
 - [ListGrid.deselectRange](../classes/ListGrid_2.md#method-listgriddeselectrange)
-- [ListGrid.anySelected](../classes/ListGrid_1.md#method-listgridanyselected)
+- [ListGrid.anySelected](../classes/ListGrid_2.md#method-listgridanyselected)
 - [ListGrid.selectSingleRecord](../classes/ListGrid_2.md#method-listgridselectsinglerecord)
 - [ListGrid.cellSelectionChanged](../classes/ListGrid_2.md#method-listgridcellselectionchanged)
 - [ListGrid.selectionChanged](../classes/ListGrid_2.md#method-listgridselectionchanged)

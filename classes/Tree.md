@@ -907,6 +907,24 @@ Given a node, return the path to its parent. This works just like [Tree.getPath]
 - [Tree.getPath](#method-treegetpath)
 
 ---
+## Method: Tree.getIndexedProperties
+
+### Description
+Returns an array of property names that currently have indices created via [Tree.createIndex](#method-treecreateindex).
+
+This is useful for debugging, memory management, and understanding which properties are indexed for performance optimization.
+
+**Note:** This method always returns an Array, never null. If no indices exist, an empty array is returned.
+
+### Returns
+
+`[Array of String](#type-array-of-string)` — Array of indexed property names (empty array if no indices exist, never null)
+
+### Groups
+
+- treeDataBinding
+
+---
 ## Method: Tree.getDescendantLeaves
 
 ### Description
@@ -1230,6 +1248,63 @@ That said, if you do choose to use this `add()` API to add a node to a multi-lin
 - [Tree.addList](#method-treeaddlist)
 
 ---
+## Method: Tree.removeIndex
+
+### Description
+Remove a property index created by [Tree.createIndex](#method-treecreateindex). This frees the memory used by the index. After removal, [tree.findAll](#method-treefindall) will revert to O(N) tree traversal for the specified property.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| property | [String](#type-string) | false | — | Name of the indexed property to remove |
+
+### Returns
+
+`[Tree](#type-tree)` — this tree (for chaining)
+
+### Groups
+
+- treeDataBinding
+
+---
+## Method: Tree.createIndex
+
+### Description
+Creates a property index on this tree to accelerate [findAll](#method-findall) lookups from O(N) tree traversal to O(1) Map lookups. Once created, the index is automatically maintained as nodes are added or removed via [Tree.add](#method-treeadd) and [Tree.remove](#method-treeremove).
+
+Indices support duplicate values: [findAll](#method-findall) returns all matching nodes. Index ordering matches insertion order, which may differ from tree traversal order.
+
+**Particularly beneficial for:**
+
+*   Large trees (1000+ nodes) with frequent property-based lookups
+*   ListGrid group trees when using programmatic record selection
+*   Trees with cascading selection or batch operations
+
+**Performance characteristics:**
+
+*   Initial index creation: O(N) where N = total nodes in tree
+*   Subsequent add/remove: O(1) index maintenance
+*   findAll() with index: O(1) lookup + O(K) to return K matching nodes
+*   Memory cost: ~24 bytes per unique property value (Map entry overhead)
+
+**When to use:** Create indices for properties that are frequently searched but rarely modified. For trees with frequent structural changes, index maintenance overhead may outweigh lookup benefits. This is an opt-in optimization: indices consume memory (proportional to tree size) and add overhead to [Tree.add](#method-treeadd) and [Tree.remove](#method-treeremove) operations.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| property | [String](#type-string) | false | — | Name of the property to index |
+
+### Returns
+
+`[Tree](#type-tree)` — this tree (for chaining)
+
+### Groups
+
+- treeDataBinding
+
+---
 ## Method: Tree.isFolder
 
 ### Description
@@ -1376,6 +1451,28 @@ For non-multiLink trees, returns null (calling this method makes no sense for no
 ### Returns
 
 `[Array of Record](#type-array-of-record)` — the parents and positions of this node
+
+---
+## Method: Tree.updateIndex
+
+### Description
+Update a property index created by [Tree.createIndex](#method-treecreateindex). This rebuilds the index from current tree data, which is useful if nodes have been modified directly without using [Tree.add](#method-treeadd) or [Tree.remove](#method-treeremove).
+
+Normal add/remove operations automatically maintain indices, so this method is only needed if you've modified node properties directly.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| property | [String](#type-string) | false | — | Name of the indexed property to update |
+
+### Returns
+
+`[Tree](#type-tree)` — this tree (for chaining)
+
+### Groups
+
+- treeDataBinding
 
 ---
 ## Method: Tree.isLeaf

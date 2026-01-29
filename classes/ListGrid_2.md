@@ -4,6 +4,81 @@
 
 ---
 
+## Method: ListGrid.getDefaultFormattedFieldValue
+
+### Description
+Get a field value for some record with default field formatters applied.
+
+This method differs from [ListGrid.getDefaultFormattedValue](#method-listgridgetdefaultformattedvalue) in that this method does not rely on the rowNum and colNum parameters to find the record and field in the grid. Also, unlike [ListGrid.getDefaultFormattedValue](#method-listgridgetdefaultformattedvalue), this method _will_ call any [field-level formatter](ListGridField.md#method-listgridfieldformatcellvalue) if one is defined on the field (though it will not call a [grid-level formatter](#method-listgridformatcellvalue) if one exists).
+
+This method is typically called from within a grid-level [formatCellValue()](#method-listgridformatcellvalue) override when the developer wants to conditionally customize formatting for some fields while allowing other fields to use their standard formatting (including any field-level formatters). This avoids infinite recursion since the grid-level formatter is not called.
+
+This method applies standard formatting such as [ListGridField.valueMap](ListGridField.md#attr-listgridfieldvaluemap) mapping, [ListGridField.displayField](ListGridField.md#attr-listgridfielddisplayfield) substitution, [ListGridField.format](ListGridField.md#attr-listgridfieldformat) application, and type-specific formatters. If a field-level formatter is present, it is called and other declarative formatting is skipped. The [ListGrid.useLegacyDefaultFormattedValue](ListGrid_1.md#attr-listgriduselegacydefaultformattedvalue) flag can be used to revert to legacy behavior where these formatting steps were not applied when no field-level formatter is present.
+
+The `rowNum` and `colNum` parameters are passed through to the field-level formatter if one exists. If not explicitly provided, these are defaulted to -1.
+
+For other use cases, see also:
+
+*   [ListGrid.getDefaultFormattedValue](#method-listgridgetdefaultformattedvalue) - get formatted value without any custom formatters
+*   [ListGrid.getFormattedValue](#method-listgridgetformattedvalue) - get fully formatted value including all custom formatters
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| record | [Record](#type-record) | false | — | the record object |
+| field | [ListGridField](#type-listgridfield) | false | — | the field object |
+| rowNum | [int](../reference.md#type-int) | true | — | rowNum (passed to field-level formatter if present) |
+| colNum | [int](../reference.md#type-int) | true | — | colNum (passed to field-level formatter if present) |
+
+### Returns
+
+`[String](#type-string)` — Formatted value
+
+### See Also
+
+- [ListGridField.formatCellValue](ListGridField.md#method-listgridfieldformatcellvalue)
+- [ListGrid.formatCellValue](#method-listgridformatcellvalue)
+- [ListGrid.getDefaultFormattedValue](#method-listgridgetdefaultformattedvalue)
+- [ListGrid.getFormattedValue](#method-listgridgetformattedvalue)
+
+**Flags**: A
+
+---
+## Method: ListGrid.getHeaderSpanContextMenuItems
+
+### Description
+Return the menus items that should be shown in a menu triggered from a [headerSpan](ListGrid_1.md#attr-listgridheaderspans). The default implementation returns the parent element's context menu, unless [ListGrid.showHeaderSpanContextMenu](ListGrid_1.md#attr-listgridshowheaderspancontextmenu) is `true`, in which case it returns standard items for showing / hiding fields and freezing / unfreezing header spans. Note that no column picker will be shown unless [ListGrid.showTreeColumnPicker](ListGrid_1.md#attr-listgridshowtreecolumnpicker) is `true`.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| headerSpan | [HeaderSpan](#type-headerspan) | false | — | the component representing the headerSpan. This component will have all the properties specified via [ListGrid.headerSpans](ListGrid_1.md#attr-listgridheaderspans). |
+
+### Returns
+
+`[Array of MenuItem](#type-array-of-menuitem)` — return false instead to avoid showing any menu
+
+### Groups
+
+- headerSpan
+
+---
+## Method: ListGrid.anySelected
+
+### Description
+Whether at least one item is selected
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — true == at least one item is selected false == nothing at all is selected
+
+### Groups
+
+- selection
+
+---
 ## Method: ListGrid.editFailed
 
 ### Description
@@ -116,7 +191,7 @@ Unlike [ListGrid.getDefaultFormattedValue](#method-listgridgetdefaultformattedva
 For other use cases, see also:
 
 *   [ListGrid.getDefaultFormattedValue](#method-listgridgetdefaultformattedvalue) - get formatted value without any custom formatters
-*   [ListGrid.getDefaultFormattedFieldValue](ListGrid_1.md#method-listgridgetdefaultformattedfieldvalue) - get formatted value with field-level formatters only
+*   [ListGrid.getDefaultFormattedFieldValue](#method-listgridgetdefaultformattedfieldvalue) - get formatted value with field-level formatters only
 
 ### Parameters
 
@@ -133,7 +208,7 @@ For other use cases, see also:
 ### See Also
 
 - [ListGrid.getDefaultFormattedValue](#method-listgridgetdefaultformattedvalue)
-- [ListGrid.getDefaultFormattedFieldValue](ListGrid_1.md#method-listgridgetdefaultformattedfieldvalue)
+- [ListGrid.getDefaultFormattedFieldValue](#method-listgridgetdefaultformattedfieldvalue)
 
 ---
 ## Method: ListGrid.getRowCountStatus
@@ -5226,6 +5301,30 @@ If this listGrid can be edited, this method will return true if the cell passed 
 - editing
 
 ---
+## Method: ListGrid.getGroupIndexInfo
+
+### Description
+Returns debugging information about internal group indexing optimizations active in this grid.
+
+When grouping is active, SmartClient automatically maintains internal indices to accelerate group formation (finding existing groups) and summary calculations (filtering records). This method provides visibility into whether these optimizations are active and their sizes.
+
+Returns an object with:
+
+*   `grouped` (boolean): whether grid is currently grouped
+*   `groupCount` (integer): number of group nodes in tree
+*   `groupIndexActive` (boolean): whether group value indices exist
+*   `summaryCache Active` (boolean): whether summary caches exist
+*   `sampleIndexSize` (integer): size of first group's value index (if active)
+
+### Returns
+
+`[Object](../reference.md#type-object)` — Object with group index information for debugging
+
+### Groups
+
+- grouping
+
+---
 ## Method: ListGrid.drop
 
 ### Description
@@ -6573,7 +6672,7 @@ This method applies standard formatting such as [ListGridField.valueMap](ListGri
 For other use cases, see also:
 
 *   [ListGrid.getFormattedValue](#method-listgridgetformattedvalue) - get fully formatted value including all custom formatters
-*   [ListGrid.getDefaultFormattedFieldValue](ListGrid_1.md#method-listgridgetdefaultformattedfieldvalue) - get formatted value with field-level formatters only
+*   [ListGrid.getDefaultFormattedFieldValue](#method-listgridgetdefaultformattedfieldvalue) - get formatted value with field-level formatters only
 
 ### Parameters
 

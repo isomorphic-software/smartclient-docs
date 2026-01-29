@@ -797,6 +797,24 @@ This override works directly with the ResultSet's cache structure to avoid trigg
 - caching
 
 ---
+## Method: ResultSet.getIndexedProperties
+
+### Description
+Returns an array of property names that currently have indices created via [Array.createIndex](Array.md#method-arraycreateindex).
+
+This is useful for debugging, memory management, and understanding which properties are indexed for performance optimization.
+
+**Note:** This method always returns an Array, never null. If no indices exist, an empty array is returned.
+
+### Returns
+
+`[Array of String](#type-array-of-string)` — Array of indexed property names (empty array if no indices exist, never null)
+
+### Groups
+
+- caching
+
+---
 ## Method: ResultSet.getCachedRange
 
 ### Description
@@ -1311,7 +1329,7 @@ This override works directly with the ResultSet's cache structure using property
 ## Method: ResultSet.updateIndex
 
 ### Description
-Refresh a property index after records have been loaded or modified. This is automatically called when records are added/removed/updated, but can be called manually if direct modifications were made to the cache.
+Refresh a property index after direct modifications to array elements. Call this if you modify element properties directly (e.g., `array[5].name = "newValue"`) rather than using Array methods. Not needed if you only use push(), splice(), add(), etc.
 
 ### Parameters
 

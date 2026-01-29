@@ -23,6 +23,8 @@ For Skin Editor team support, registered users can access the tool via [Reify](h
 #### Locally
 If you have a [Pro or better](https://www.smartclient.com/product/) license, the Skin Editor is shipped with your SDK, in the `/tools/skinEditor/` directory. You can run the tool by navigating to `tools/skinTools/skinEditor.jsp` or by clicking the `Skin Editor` icon in the SmartClient SDK Explorer.
 
+For [Reify OnSite](reifyOnSite.md#kb-topic-reify-onsite) deployments, the server must have Ruby and the Compass gem installed to compile custom skins; see the "Skin Editor Requirements" section in the Reify OnSite documentation for details.
+
 #### Creating a new skin
 To create a new skin in the Skin Editor, select a Base-skin from the grid and enter a name for your skin. The name must be unique across all existing User-skins, including those in the `isc_userSkin` dataSource and those on-disk.
 

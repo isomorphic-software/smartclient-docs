@@ -590,6 +590,18 @@ Title for the "iContainsField" operator
 **Flags**: IR
 
 ---
+## ClassAttr: Operators.notExists
+
+### Description
+Title for the "notExists" operator
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IR
+
+---
 ## ClassAttr: Operators.greaterOrEqualTitle
 
 ### Description
@@ -678,6 +690,18 @@ Title for the "equalsField" operator
 
 ### Description
 Title for the "greaterThanField" operator
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IR
+
+---
+## ClassAttr: Operators.exists
+
+### Description
+Title for the "exists" operator
 
 ### Groups
 

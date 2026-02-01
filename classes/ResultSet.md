@@ -74,7 +74,7 @@ Note that the client-side filtering described above is also used to determine wh
 
 If automatic cache synchronization isn't working, troubleshoot the problem using the steps suggested [in the FAQ](http://forums.smartclient.com/showthread.php?t=8159#aGrid).
 
-Regarding [operationIds](OperationBinding.md#attr-operationbindingoperationid) and how they affect caching, take into account that cache sync is based on the fetch used - any add or update operation uses a fetch to retrieve updated data, and the operationId of that fetch can be set via [cacheSyncOperation](#attr-operationbindingcachesyncoperation). If the operationId of the cache is different from the operationId of the cache update data, it won't be used to update the cache, since the fields included and other aspects of the data are allowed to be different across different operationIds. This allows to maintain distinct caches on a per component basis, so when two components are using separate operationIds they are assumed to have distinct caches, because updates performed with one operationId will not affect the cache obtained via another operationId. Also, take into account that operationId must be unique per DataSource, across all operationTypes for that DataSource.
+Regarding [operationIds](OperationBinding.md#attr-operationbindingoperationid) and how they affect caching, take into account that cache sync is based on the fetch used - any add or update operation uses a fetch to retrieve updated data, and the operationId of that fetch can be set via [cacheSyncOperation](OperationBinding.md#attr-operationbindingcachesyncoperation). If the operationId of the cache is different from the operationId of the cache update data, it won't be used to update the cache, since the fields included and other aspects of the data are allowed to be different across different operationIds. This allows to maintain distinct caches on a per component basis, so when two components are using separate operationIds they are assumed to have distinct caches, because updates performed with one operationId will not affect the cache obtained via another operationId. Also, take into account that operationId must be unique per DataSource, across all operationTypes for that DataSource.
 
 **Data Paging with partial cache**
 
@@ -684,6 +684,10 @@ When [filtered indexing](#attr-resultsetindexfiltereddata) is enabled, this meth
 - access
 - find
 
+### See Also
+
+- [DataSource.isAdvancedCriteria](DataSource.md#classmethod-datasourceisadvancedcriteria)
+
 ---
 ## Method: ResultSet.transformData
 
@@ -1048,6 +1052,10 @@ Like [List.findIndex](List.md#method-listfindindex). Checks only loaded rows and
 - access
 - find
 
+### See Also
+
+- [DataSource.isAdvancedCriteria](DataSource.md#classmethod-datasourceisadvancedcriteria)
+
 ---
 ## Method: ResultSet.getSort
 
@@ -1310,11 +1318,13 @@ This override works directly with the ResultSet's cache structure using property
 
 **Important:** This method respects client-side filtering. When criteria are active, only records matching the current criteria are searched.
 
+When an Object is passed as the `property` argument, [DataSource.isAdvancedCriteria](DataSource.md#classmethod-datasourceisadvancedcriteria) is used to determine if it should be treated as [AdvancedCriteria](../reference.md#object-advancedcriteria). Since ResultSet always has an associated [dataSource](#attr-resultsetdatasource), it is passed to `isAdvancedCriteria()` for enhanced detection. See `isAdvancedCriteria()` for details on the heuristics used to detect AdvancedCriteria format.
+
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| property | [String](#type-string) | false | — | the property name to match, or an object with property:value pairs |
+| property | [String](#type-string)|[Object](../reference.md#type-object)|[AdvancedCriteria](#type-advancedcriteria) | false | — | the property name to match, or an object with property:value pairs |
 | value | [Any](#type-any) | true | — | value to match (if property is a string) |
 
 ### Returns
@@ -1324,6 +1334,10 @@ This override works directly with the ResultSet's cache structure using property
 ### Groups
 
 - caching
+
+### See Also
+
+- [DataSource.isAdvancedCriteria](DataSource.md#classmethod-datasourceisadvancedcriteria)
 
 ---
 ## Method: ResultSet.updateIndex

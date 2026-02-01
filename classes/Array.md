@@ -146,6 +146,8 @@ Compare two values for a descending order sort, using locale-sensitive compariso
 ### Description
 Like [Array.findIndex](#method-arrayfindindex), but returns the object itself instead of its index.
 
+When an Object is passed as the first argument, [DataSource.isAdvancedCriteria](DataSource.md#classmethod-datasourceisadvancedcriteria) is used to determine if it should be treated as [AdvancedCriteria](../reference.md#object-advancedcriteria). If the list has an associated [dataSource](ResultSet.md#attr-resultsetdatasource), it is passed to `isAdvancedCriteria()` for enhanced detection. See `isAdvancedCriteria()` for details on the heuristics used to detect AdvancedCriteria format.
+
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
@@ -161,6 +163,10 @@ Like [Array.findIndex](#method-arrayfindindex), but returns the object itself in
 
 - access
 - find
+
+### See Also
+
+- [DataSource.isAdvancedCriteria](DataSource.md#classmethod-datasourceisadvancedcriteria)
 
 ---
 ## Method: Array.equals
@@ -628,6 +634,8 @@ Pass an Object instead to match multiple properties.
 
 Note: for string values, matches are case sensitive.
 
+When an Object is passed, [DataSource.isAdvancedCriteria](DataSource.md#classmethod-datasourceisadvancedcriteria) is used to determine if it should be treated as [AdvancedCriteria](../reference.md#object-advancedcriteria). If the list has an associated [dataSource](ResultSet.md#attr-resultsetdatasource), it is passed to `isAdvancedCriteria()` for enhanced detection. See `isAdvancedCriteria()` for details on the heuristics used to detect AdvancedCriteria format.
+
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
@@ -643,6 +651,10 @@ Note: for string values, matches are case sensitive.
 
 - access
 - find
+
+### See Also
+
+- [DataSource.isAdvancedCriteria](DataSource.md#classmethod-datasourceisadvancedcriteria)
 
 ---
 ## Method: Array.map
@@ -770,6 +782,8 @@ Find all objects where property == value in the object.
 
 Pass an Object as the `propertyName` argument to match multiple properties.
 
+When an Object is passed, [DataSource.isAdvancedCriteria](DataSource.md#classmethod-datasourceisadvancedcriteria) is used to determine if it should be treated as [AdvancedCriteria](../reference.md#object-advancedcriteria). If the list has an associated [dataSource](ResultSet.md#attr-resultsetdatasource), it is passed to `isAdvancedCriteria()` for enhanced detection. See `isAdvancedCriteria()` for details on the heuristics used to detect AdvancedCriteria format.
+
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
@@ -785,6 +799,10 @@ Pass an Object as the `propertyName` argument to match multiple properties.
 
 - access
 - find
+
+### See Also
+
+- [DataSource.isAdvancedCriteria](DataSource.md#classmethod-datasourceisadvancedcriteria)
 
 ---
 ## Method: Array.containsAll

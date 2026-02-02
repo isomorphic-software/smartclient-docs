@@ -679,7 +679,7 @@ Override to provide a dynamic color generation scheme.
 
 In most cases, the method is passed the associated data Record, which can be used to retrieve the value being processed.
 
-Must return a color in the format of a leading hash (#) plus 6 hexadecimal digits as specified for [MetricSettings.dataColors](#attr-metricsettingsdatacolors).
+Must return a color string in the format of a leading hash (#) plus 6 hexadecimal digits as specified for [MetricSettings.dataColors](#attr-metricsettingsdatacolors).
 
 ### Parameters
 

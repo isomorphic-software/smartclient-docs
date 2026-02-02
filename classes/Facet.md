@@ -110,6 +110,16 @@ If true, treat all values in this facet as a facetValueGroup - causes synched he
 **Flags**: IR
 
 ---
+## Attr: Facet.canBeLegendFacet
+
+### Description
+`false` if the facet cannot be the [legend facet](FacetChart.md#method-facetchartgetlegendfacet).
+
+**Note:** This property is specific to [FacetCharts](FacetChart.md#class-facetchart).
+
+**Flags**: IRA
+
+---
 ## Attr: Facet.title
 
 ### Description

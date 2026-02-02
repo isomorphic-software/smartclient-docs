@@ -608,18 +608,18 @@ Properties for labels of value axis.
 ## Attr: FacetChart.facets
 
 ### Description
-An Array of facets, exactly analogous to [CubeGrid.facets](CubeGrid.md#attr-cubegridfacets), except that:
+An array of facets, exactly analogous to [CubeGrid.facets](CubeGrid.md#attr-cubegridfacets), except that:
 
-*   the "inlinedValues" property can be set on a facet to change data representation as described under [Chart.data](Chart.md#attr-chartdata).
-*   for a non-inlined facet, Charts support auto-derivation of facetValues from the data.
+*   the [inlinedValues](Facet.md#attr-facetinlinedvalues) property can be set on a facet to change data representation, as described under [Chart.data](Chart.md#attr-chartdata).
+*   for a non-inlined facet, charts support auto-derivation of facet values from the data.
 
-In all chart types except "Bubble" and "Scatter", the chart displays a value for each discrete value of one facet (i.e. single-facet charts) or it displays a value for each combination of discrete values of two facets (multi-facet charts). The two discrete facets are the [data label facet](#method-facetchartgetdatalabelfacet) and the [legend facet](#method-facetchartgetlegendfacet). They are named based on where the [values](Facet.md#attr-facetvalues) of the facet appear in the chart. The facet whose values are rendered as labels along the data axis or in the main chart area is the data label facet, and the facet whose values are rendered in the legend is the legend facet.
+In all chart types except Bubble and Scatter, the chart displays a value for each discrete value of one facet (i.e. single-facet charts) or it displays a value for each combination of discrete values of two facets (multi-facet charts). The two different facets are the [data label facet](#method-facetchartgetdatalabelfacet) and the [legend facet](#method-facetchartgetlegendfacet). They are named based on where the [values](Facet.md#attr-facetvalues) of the facet appear in the chart. The facet whose values are rendered as labels along the data axis or in the main chart area is the data label facet, and the facet whose values are rendered in the legend is the legend facet.
 
 For single-facet charts, most chart types have a data label facet as the first facet but no legend facet. Single-facet Pie charts have a legend facet as the first facet but no data label facet. Bubble and Scatter plots may have a legend facet as the second facet, after the metric facet.
 
-In all multi-facet charts, the data label facet is always first and the legend facet is second. In most chart types the data label facet and the legend facet may be swapped on the fly by the user clicking on the "Swap Facets" item of the context menu.
+In multi-facet charts with two non-metric facets, the data label facet is the first facet and the legend facet is the second facet. These may be swapped on the fly by the user clicking the "Swap Facets" item of the context menu.
 
-In the case of [Bar and Column Charts](#class-facetchart), up to three facets are supported, where the first two facets in that case are taken as the data label facets, and the third facet as the legend facet. This works by positioning both data label facets on the same axis, in a way that clearly shows which inner facet values are associated with each outer facet value.
+Bar and Column charts also support three non-metric facets, where the first two facets in that case are taken as the data label facets, and the third facet as the legend facet. This works by positioning both data label facets on the same axis, in a way that clearly shows which inner facet values are associated with each outer facet value. "Swap Facets" swaps the order of the two data label facets.
 
 For databound charts, [FacetChart.facetFields](#attr-facetchartfacetfields) may be specified instead of this property. If both are provided, [FacetChart.facetFields](#attr-facetchartfacetfields) is definitive but [Facet](../reference_2.md#object-facet) properties will be picked up from [FacetChart.facets](#attr-facetchartfacets) also present in the [FacetChart.facetFields](#attr-facetchartfacetfields).
 
@@ -3753,9 +3753,9 @@ Provides a new data set to the chart after it has been created or drawn. The Fac
 ### Description
 Returns the [Facet](../reference_2.md#object-facet) in the list of [facets](#attr-facetchartfacets) whose [values](Facet.md#attr-facetvalues) are rendered in the chart's legend.
 
-Most single-facet charts do not have a legend facet. The exceptions are that single-facet Pie/Doughnut charts have a legend facet as the first facet and Bubble and Scatter charts may optionally have a legend facet as the second facet, after the metric facet.
+Most single-facet charts do not have a legend facet. The exceptions are: single-facet Pie/Doughnut charts have a legend facet as the first facet, and Bubble and Scatter charts may optionally have a legend facet as the second facet, after the metric facet.
 
-In all multi-facet charts, the legend facet is the second facet.
+In all multi-facet charts, the legend facet is after the data label facet(s).
 
 Note that the user may swap the legend facet and the [data label facet](#method-facetchartgetdatalabelfacet) in most chart types using the context menu.
 
@@ -4812,7 +4812,7 @@ Override to provide a dynamic color generation scheme.
 
 In most cases, the method is passed the associated data Record, which can be used to retrieve the value being processed.
 
-Must return a color in the format of a leading hash (#) plus 6 hexadecimal digits as specified for [FacetChart.dataColors](#attr-facetchartdatacolors).
+Must return a color string in the format of a leading hash (#) plus 6 hexadecimal digits as specified for [FacetChart.dataColors](#attr-facetchartdatacolors).
 
 ### Parameters
 
@@ -4825,7 +4825,7 @@ Must return a color in the format of a leading hash (#) plus 6 hexadecimal digit
 
 ### Returns
 
-`[CSSColor](../reference_2.md#type-csscolor)` — —
+`[CSSColor](../reference_2.md#type-csscolor)` — The color string to use. Must not be `null`.
 
 ### See Also
 

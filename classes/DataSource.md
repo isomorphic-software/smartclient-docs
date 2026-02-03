@@ -3691,6 +3691,33 @@ Returns true if a given AdvancedCriteria is "flat." That is, the criteria consis
 `[boolean](../reference.md#type-boolean)` — true if criteria is flat
 
 ---
+## ClassMethod: DataSource.isAdvancedCriteria
+
+### Description
+Determines whether the passed criteria object is AdvancedCriteria or simple criteria.
+
+Criteria with an explicit `_constructor: "AdvancedCriteria"` property are always recognized as AdvancedCriteria. For criteria without this marker, heuristics are used to detect AdvancedCriteria based on properties like `fieldName`, `operator`, and `value`.
+
+When a `dataSource` is provided, additional validation is performed - a criterion with just a `fieldName` (no operator or value) is treated as AdvancedCriteria shorthand if that fieldName is a valid field on the DataSource. This supports the ruleScope shorthand format where `{fieldName: "someField"}` means "someField equals true".
+
+Without a DataSource, a criteria object must have a valid `operator` to be detected as AdvancedCriteria (unless explicitly marked with `_constructor`). This ensures that simple property-matching objects like `{fieldName: "X"}` used in [Array.find](Array.md#method-arrayfind) are not incorrectly treated as AdvancedCriteria.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| criteria | [Criteria](../reference_2.md#type-criteria) | false | — | the criteria object to examine |
+| dataSource | [DataSource](#type-datasource)|[String](#type-string) | true | — | optional DataSource (or DataSource ID) for additional field validation |
+
+### Returns
+
+`[Boolean](#type-boolean)` — true if the criteria is AdvancedCriteria, false otherwise
+
+### See Also
+
+- [DataSource.isAdvancedCriteria](#method-datasourceisadvancedcriteria)
+
+---
 ## ClassMethod: DataSource.loadWithParents
 
 ### Description
@@ -5626,6 +5653,24 @@ Get a list of files from the DataSource. Note, if [automatic file versioning](#a
 ### See Also
 
 - [DataSource.listFileVersions](#method-datasourcelistfileversions)
+
+---
+## Method: DataSource.isAdvancedCriteria
+
+### Description
+Instance method that calls [DataSource.isAdvancedCriteria](#classmethod-datasourceisadvancedcriteria), passing this DataSource for enhanced heuristic detection. When a DataSource is available, `fieldName`\-only criteria are recognized as AdvancedCriteria shorthand if the fieldName is a valid field on this DataSource.
+
+See [DataSource.isAdvancedCriteria](#classmethod-datasourceisadvancedcriteria) for full documentation of the heuristics used to detect AdvancedCriteria format.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| criteria | [Criteria](../reference_2.md#type-criteria) | false | — | the criteria object to examine |
+
+### Returns
+
+`[Boolean](#type-boolean)` — true if the criteria is AdvancedCriteria, false otherwise
 
 ---
 ## Method: DataSource.getFetchDataURL

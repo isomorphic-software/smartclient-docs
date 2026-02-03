@@ -5592,18 +5592,18 @@ Format for encoding dates in JSON. Note you can override [JSONEncoder.encodeDate
 | Value | Description |
 |-------|-------------|
 | "xmlSchema" | dates are encoded as a String in [XML Schema date format](http://www.w3.org/TR/xmlschema-2/#dateTime) in UTC, for example, "2005-08-02" for logical date fields or "2005-08-01T21:35:48.350" for `datetime` fields. See [Date format and\\n storage](kb_topics/dateFormatAndStorage.md#kb-topic-date-and-time-format-and-storage) for more information.  
-**Note.**If JSON containing xmlSchema-formatted date values is passed to [JSON.decodeSafe](classes/JSON.md#classmethod-jsondecodesafe) or [JSON.decodeSafeWithDates](classes/JSON.md#classmethod-jsondecodesafewithdates), these formatted date values will not be converted to actual date objects in the generated JavaScript object. Use logicalDateString instead. |
+**Note.**If JSON containing xmlSchema-formatted date values is passed to [JSON.decodeSafe](classes/JSON.md#classmethod-jsondecodesafe) or [JSON.decodeSafeWithDates](classes/JSON.md#classmethod-jsondecodesafewithdates), these formatted date values will not be converted to actual date objects in the generated JavaScript object. Use "logicalDateString" instead. |
 | "dateConstructor" | dates are encoded as raw JavaScript code for creating a Date object, that is:
 ```
         new Date(1238792738633)
         
 ```
 This is not strictly valid JSON, but if eval()d, will result in an identical date object, regardless of timezone. However, it does not preserve the distinction between logical dates vs full datetime values - use "logicalDateConstructor" mode for that.  
-**Note.**This format does not work with [JSON.decodeSafe](classes/JSON.md#classmethod-jsondecodesafe). If you need to use [JSON.decodeSafe](classes/JSON.md#classmethod-jsondecodesafe) and/or [JSON.decodeSafeWithDates](classes/JSON.md#classmethod-jsondecodesafewithdates), you will need to use _logicalDateString_ instead. |
+**Note.**This format does not work with [JSON.decodeSafe](classes/JSON.md#classmethod-jsondecodesafe). If you need to use [JSON.decodeSafe](classes/JSON.md#classmethod-jsondecodesafe) and/or [JSON.decodeSafeWithDates](classes/JSON.md#classmethod-jsondecodesafewithdates), you will need to use "logicalDateString" instead. |
 | "logicalDateConstructor" | serializes Date instances in a way that preserves the distinction between logical dates, logical times, and full datetime values, as explained [here](kb_topics/dateFormatAndStorage.md#kb-topic-date-and-time-format-and-storage). Like 'dateConstructor' mode, this does not produce strictly valid JSON, and instead embeds JavaScript calls.
 
 In addition, unlike 'dateConstructor' mode, using eval() to reconstruct the original JavaScript objects will only work in the presence of SmartClient, and not just in a generic JavaScript interpreter.  
-**Note.**This format does not work with [JSON.decodeSafe](classes/JSON.md#classmethod-jsondecodesafe). If you need to use [JSON.decodeSafe](classes/JSON.md#classmethod-jsondecodesafe) and/or [JSON.decodeSafeWithDates](classes/JSON.md#classmethod-jsondecodesafewithdates), you will need to use _logicalDateString_ instead. |
+**Note.**This format does not work with [JSON.decodeSafe](classes/JSON.md#classmethod-jsondecodesafe). If you need to use [JSON.decodeSafe](classes/JSON.md#classmethod-jsondecodesafe) and/or [JSON.decodeSafeWithDates](classes/JSON.md#classmethod-jsondecodesafewithdates), you will need to use "logicalDateString" instead. |
 | "logicalDateString" | Dates are encoded as strings in a format that [JSON.decodeSafeWithDates](classes/JSON.md#classmethod-jsondecodesafewithdates) will recognize. This allows developers to round-trip date, time and datetime values to and from strict JSON. |
 
 ---

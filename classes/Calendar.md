@@ -3430,7 +3430,7 @@ Not called if the day falls outside the current month and [Calendar.showOtherDay
 
 ### Returns
 
-`[Boolean](#type-boolean)` — return false to cancel the action
+`[Boolean](#type-boolean)` — return false to cancel the default action
 
 ### Groups
 
@@ -4679,6 +4679,26 @@ Return false to prevent the default action, of actually [updating](#method-calen
 `[Boolean](#type-boolean)` — return false to cancel the default drag-resize stop behavior
 
 ---
+## Method: Calendar.dateFieldClick
+
+### Description
+Called when a user clicks a date-field in the header area of a vertical view or Timeline.
+
+In the [weekView](#attr-calendarweekview), the default behavior is to show the clicked date in the [dayView](#attr-calendardayview). There is no default behavior in other views.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| date | [Date](#type-date) | false | — | JavaScript Date object representing this day |
+| field | [ListGridField](#type-listgridfield) | false | — | field that was clicked |
+| view | [CalendarView](#type-calendarview) | false | — | the calendar view showing the field |
+
+### Returns
+
+`[Boolean](#type-boolean)` — return false to cancel the default action
+
+---
 ## Method: Calendar.getDateLabelText
 
 ### Description
@@ -4932,6 +4952,23 @@ Returns the currently selected [view](CalendarView.md#class-calendarview).
 ### Returns
 
 `[CalendarView](#type-calendarview)` — the currently selected view
+
+---
+## Method: Calendar.laneFieldClick
+
+### Description
+Called when a user clicks a laneField-cell in a horizontal timeline, or a lane-field header in a vertical day-view when [showDayLanes](#attr-calendarshowdaylanes) is true.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| lane | [Lane](#type-lane) | false | — | Lane object that was clicked |
+| view | [CalendarView](#type-calendarview) | false | — | the calendar view showing the lane |
+
+### Returns
+
+`[Boolean](#type-boolean)` — return false to cancel the default action
 
 ---
 ## Method: Calendar.addLaneEvent

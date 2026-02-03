@@ -199,7 +199,7 @@ For other use cases, see also:
 |------|------|----------|---------|-------------|
 | record | [Record](#type-record) | false | — | the record containing the value to format |
 | fieldName | [String](#type-string) | false | — | the name of the field to format |
-| value | [Any](#type-any) | false | — | optional value to format; if not provided, the value will be extracted from the record |
+| value | [Any](#type-any) | true | — | the value to format. If not provided, the value will be extracted from the record |
 
 ### Returns
 

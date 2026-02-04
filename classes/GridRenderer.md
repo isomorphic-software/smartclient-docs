@@ -340,6 +340,18 @@ NOTE: in order to create a valid grid, you must either provide a totalRows value
 **Flags**: IRW
 
 ---
+## Attr: GridRenderer.cellMarkerClass
+
+### Description
+CSS class name used as a marker on cell elements in divGrid mode. This marker enables efficient CSS selector matching (.marker:nth-child) which outperforms child combinators in browser style recalculation.
+
+If null (the default), a marker class is automatically determined at first use by checking for an empty (undefined) single-letter class name. The system tries "c", "x", "z", "q" in order, then "isc", and finally falls back to "isc-cell" if all others have CSS rules defined.
+
+Override this property to use a specific marker class, for example if you need to ensure no collision with existing CSS in your application.
+
+**Flags**: IRA
+
+---
 ## Attr: GridRenderer.fastCellUpdates
 
 ### Description

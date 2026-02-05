@@ -4,6 +4,23 @@
 
 ---
 
+## Type: AIContentType
+
+### Description
+—
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| "text" | Text content. |
+| "jpegImage" | JPEG image. |
+| "pngImage" | PNG image. |
+| "number" | A number. |
+| "object" | JSON-encodable object. Note, however, that when requesting an object response, the schema of the object is not guaranteed. |
+| "array" | Array of JSON-encodable objects. Similar to "object", the schema of the elements of the array is not guaranteed. |
+
+---
 ## Type: Alignment
 
 ### Description
@@ -744,6 +761,39 @@ Note that, unlike either the "json" or "xml" settings of `dataFormat`, you are r
 
 - clientDataIntegration
 - serverDataIntegration
+
+---
+## Type: DSOperationType
+
+### Description
+One of the four basic operations that can be performed on DataSource data: "fetch", "add", "update", "remove". Elsewhere called CRUD operations, where CRUD stands for "create", "retrieve", "update", "delete", which correspond to "add", "fetch", "update" and "remove" in SmartClient terminology. See [dataSourceOperations](kb_topics/dataSourceOperations.md#kb-topic-datasource-operations) for a full description.
+
+There are also additional, non-CRUD operations explained below.
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| "fetch" | Fetch one or more records that match a set of search criteria. |
+| "add" | Store new records |
+| "update" | Update an existing record |
+| "remove" | Remove (delete) an existing record |
+| "custom" | perform some arbitrary custom logic that is not a CRUD operation. Format of the inputs and outputs is unconstrained, and the operation will be ignored for cache sync purposes by [ResultSet](classes/ResultSet.md#class-resultset)s. See [DataSource.performCustomOperation](classes/DataSource.md#method-datasourceperformcustomoperation). |
+| "validate" | Run server-side validation for "add" or "update" without actually adding or updating anything. See [DataSource.validateData](classes/DataSource.md#method-datasourcevalidatedata). |
+| "viewFile" | Retrieve a file stored in a binary field in a DataSource record, and allow the browser to choose whether to view it directly or prompt the user to save. See [binaryFields](kb_topics/binaryFields.md#kb-topic-binary-fields). |
+| "downloadFile" | Like "viewFile", but the HTTP header Content-Disposition is used to suggest that the browser show a save dialog. See [binaryFields](kb_topics/binaryFields.md#kb-topic-binary-fields). |
+| "storeTestData" | Takes a List of Maps and stores the data in Admin Console XML test data format |
+| "clientExport" | Upload formatted client data and export it to Excel, XML and other formats. Used automatically by [exportClientData()](classes/DataSource.md#method-datasourceexportclientdata) and cannot be used directly. Usable only with the SmartClient server framework. |
+| "getFile" | Use the DataSource as a [source for files](kb_topics/fileSource.md#kb-topic-filesource-operations). Used automatically by [DataSource.getFile](classes/DataSource.md#method-datasourcegetfile), and would not normally be used directly. Usable only with the SmartClient server framework. |
+| "hasFile" | Use the DataSource as a [source for files](kb_topics/fileSource.md#kb-topic-filesource-operations). Used automatically by [DataSource.hasFile](classes/DataSource.md#method-datasourcehasfile), and would not normally be used directly. Usable only with the SmartClient server framework. |
+| "listFiles" | Use the DataSource as a [source for files](kb_topics/fileSource.md#kb-topic-filesource-operations). Used automatically by [DataSource.listFiles](classes/DataSource.md#method-datasourcelistfiles), and would not normally be used directly. Usable only with the SmartClient server framework. |
+| "removeFile" | Use the DataSource as a [source for files](kb_topics/fileSource.md#kb-topic-filesource-operations). Used automatically by [DataSource.removeFile](classes/DataSource.md#method-datasourceremovefile), and would not normally be used directly. Usable only with the SmartClient server framework. |
+| "saveFile" | Use the DataSource as a [source for files](kb_topics/fileSource.md#kb-topic-filesource-operations). Used automatically by [DataSource.saveFile](classes/DataSource.md#method-datasourcesavefile), and would not normally be used directly. Usable only with the SmartClient server framework. |
+| "renameFile" | Use the DataSource as a [source for files](kb_topics/fileSource.md#kb-topic-filesource-operations). Used automatically by [DataSource.renameFile](classes/DataSource.md#method-datasourcerenamefile), and would not normally be used directly. Usable only with the SmartClient server framework. |
+| "getFileVersion" | Use the DataSource as a [source for files](kb_topics/fileSource.md#kb-topic-filesource-operations). Used automatically by [DataSource.getFileVersion](classes/DataSource.md#method-datasourcegetfileversion), and would not normally be used directly. Usable only with the SmartClient server framework. |
+| "hasFileVersion" | Use the DataSource as a [source for files](kb_topics/fileSource.md#kb-topic-filesource-operations). Used automatically by [DataSource.hasFileVersion](classes/DataSource.md#method-datasourcehasfileversion), and would not normally be used directly. Usable only with the SmartClient server framework. |
+| "listFileVersions" | Use the DataSource as a [source for files](kb_topics/fileSource.md#kb-topic-filesource-operations). Used automatically by [DataSource.listFileVersions](classes/DataSource.md#method-datasourcelistfileversions), and would not normally be used directly. Usable only with the SmartClient server framework. |
+| "removeFileVersion" | Use the DataSource as a [source for files](kb_topics/fileSource.md#kb-topic-filesource-operations). Used automatically by [DataSource.removeFileVersion](classes/DataSource.md#method-datasourceremovefileversion), and would not normally be used directly. Usable only with the SmartClient server framework. |
 
 ---
 ## Type: DSProtocol
@@ -2879,6 +2929,16 @@ JavaScript's native Array is retrofitted to support the `List` API.
 ### See Also
 
 - [List](reference_2.md#interface-list)
+
+---
+## Object: AsyncOperationContext
+
+### Description
+Context for an asynchronous operation.
+
+### See Also
+
+- [AsyncOperationParams](#object-asyncoperationparams)
 
 ---
 ## Object: Boolean

@@ -4156,23 +4156,6 @@ Policy for choosing between admin searches fetched from the DataSource vs. those
 | "localOnly" | Only report the records from [adminSavedSearches](#attr-databoundcomponentadminsavedsearches). |
 
 ---
-## Type: AIContentType
-
-### Description
-—
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| "text" | Text content. |
-| "jpegImage" | JPEG image. |
-| "pngImage" | PNG image. |
-| "number" | A number. |
-| "object" | JSON-encodable object. Note, however, that when requesting an object response, the schema of the object is not guaranteed. |
-| "array" | Array of JSON-encodable objects. Similar to "object", the schema of the elements of the array is not guaranteed. |
-
----
 ## Type: AIMessageSource
 
 ### Description
@@ -5054,39 +5037,6 @@ For DataSources of type "sql" and "hibernate", specifies the kind of inheritance
 ### Groups
 
 - fields
-
----
-## Type: DSOperationType
-
-### Description
-One of the four basic operations that can be performed on DataSource data: "fetch", "add", "update", "remove". Elsewhere called CRUD operations, where CRUD stands for "create", "retrieve", "update", "delete", which correspond to "add", "fetch", "update" and "remove" in SmartClient terminology. See [dataSourceOperations](kb_topics/dataSourceOperations.md#kb-topic-datasource-operations) for a full description.
-
-There are also additional, non-CRUD operations explained below.
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| "fetch" | Fetch one or more records that match a set of search criteria. |
-| "add" | Store new records |
-| "update" | Update an existing record |
-| "remove" | Remove (delete) an existing record |
-| "custom" | perform some arbitrary custom logic that is not a CRUD operation. Format of the inputs and outputs is unconstrained, and the operation will be ignored for cache sync purposes by [ResultSet](classes/ResultSet.md#class-resultset)s. See [DataSource.performCustomOperation](classes/DataSource.md#method-datasourceperformcustomoperation). |
-| "validate" | Run server-side validation for "add" or "update" without actually adding or updating anything. See [DataSource.validateData](classes/DataSource.md#method-datasourcevalidatedata). |
-| "viewFile" | Retrieve a file stored in a binary field in a DataSource record, and allow the browser to choose whether to view it directly or prompt the user to save. See [binaryFields](kb_topics/binaryFields.md#kb-topic-binary-fields). |
-| "downloadFile" | Like "viewFile", but the HTTP header Content-Disposition is used to suggest that the browser show a save dialog. See [binaryFields](kb_topics/binaryFields.md#kb-topic-binary-fields). |
-| "storeTestData" | Takes a List of Maps and stores the data in Admin Console XML test data format |
-| "clientExport" | Upload formatted client data and export it to Excel, XML and other formats. Used automatically by [exportClientData()](classes/DataSource.md#method-datasourceexportclientdata) and cannot be used directly. Usable only with the SmartClient server framework. |
-| "getFile" | Use the DataSource as a [source for files](kb_topics/fileSource.md#kb-topic-filesource-operations). Used automatically by [DataSource.getFile](classes/DataSource.md#method-datasourcegetfile), and would not normally be used directly. Usable only with the SmartClient server framework. |
-| "hasFile" | Use the DataSource as a [source for files](kb_topics/fileSource.md#kb-topic-filesource-operations). Used automatically by [DataSource.hasFile](classes/DataSource.md#method-datasourcehasfile), and would not normally be used directly. Usable only with the SmartClient server framework. |
-| "listFiles" | Use the DataSource as a [source for files](kb_topics/fileSource.md#kb-topic-filesource-operations). Used automatically by [DataSource.listFiles](classes/DataSource.md#method-datasourcelistfiles), and would not normally be used directly. Usable only with the SmartClient server framework. |
-| "removeFile" | Use the DataSource as a [source for files](kb_topics/fileSource.md#kb-topic-filesource-operations). Used automatically by [DataSource.removeFile](classes/DataSource.md#method-datasourceremovefile), and would not normally be used directly. Usable only with the SmartClient server framework. |
-| "saveFile" | Use the DataSource as a [source for files](kb_topics/fileSource.md#kb-topic-filesource-operations). Used automatically by [DataSource.saveFile](classes/DataSource.md#method-datasourcesavefile), and would not normally be used directly. Usable only with the SmartClient server framework. |
-| "renameFile" | Use the DataSource as a [source for files](kb_topics/fileSource.md#kb-topic-filesource-operations). Used automatically by [DataSource.renameFile](classes/DataSource.md#method-datasourcerenamefile), and would not normally be used directly. Usable only with the SmartClient server framework. |
-| "getFileVersion" | Use the DataSource as a [source for files](kb_topics/fileSource.md#kb-topic-filesource-operations). Used automatically by [DataSource.getFileVersion](classes/DataSource.md#method-datasourcegetfileversion), and would not normally be used directly. Usable only with the SmartClient server framework. |
-| "hasFileVersion" | Use the DataSource as a [source for files](kb_topics/fileSource.md#kb-topic-filesource-operations). Used automatically by [DataSource.hasFileVersion](classes/DataSource.md#method-datasourcehasfileversion), and would not normally be used directly. Usable only with the SmartClient server framework. |
-| "listFileVersions" | Use the DataSource as a [source for files](kb_topics/fileSource.md#kb-topic-filesource-operations). Used automatically by [DataSource.listFileVersions](classes/DataSource.md#method-datasourcelistfileversions), and would not normally be used directly. Usable only with the SmartClient server framework. |
-| "removeFileVersion" | Use the DataSource as a [source for files](kb_topics/fileSource.md#kb-topic-filesource-operations). Used automatically by [DataSource.removeFileVersion](classes/DataSource.md#method-datasourceremovefileversion), and would not normally be used directly. Usable only with the SmartClient server framework. |
 
 ---
 ## Type: EdgeName
@@ -6282,6 +6232,8 @@ You can extend the list of operators with [DataSource.addSearchOperator](classes
 | "or" | at least one subcriteria (criterion.criteria) is true |
 | "between" | shortcut for "greaterThan" + "lessThan" + "and". Specify criterion.start and criterion.end |
 | "betweenInclusive" | shortcut for "greaterOrEqual" + "lessOrEqual" + "and". Specify criterion.start and criterion.end |
+| "exists" | One or more related records exist (for [AdvancedCriteria subqueries](#object-advancedcriterionsubquery)). |
+| "notExists" | No related records exist (for [AdvancedCriteria subqueries](#object-advancedcriterionsubquery)). |
 
 ### Groups
 
@@ -7670,6 +7622,22 @@ Finally, note that it is possible to switch off the ability to use subqueries al
 #### Subqueries with inSet criteria
 As noted above, subqueries nearly always need to return a single value, since that value is going to be used instead of a literal scalar value in record-by-record comparisons. The exception to this rule is when you are specifying a `valueQuery` with the `inSet` operator. In this case, you are saying that the field value must be one of a set of valid values, so in this one case it is appropriate and correct for the `valueQuery` to return a list of values rather than a single value. Note, we are still comparing a single field to the values in the list, so it should be a list of simple values (strings, numbers, booleans or dates, as appropriate), NOT a list of records
 
+#### `exists / notExists` operators (SQLDataSource only)
+The [`exists / notExists`](#type-operatorid) operators provide a concise way to filter records based on the existence (or absence) of related rows.
+
+When both main DataSource and subquery DataSource are instances of `SQLDataSource`, these operators are transformed into `EXISTS (...)` / `NOT EXISTS (...)` correlated subselects in the generated SQL. Non-SQL backends, as well as when [canEmbedSQL:false](classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubquerycanembedsql) is set for SQL backends, will execute subqueries as separate [DSRequests](reference_2.md#object-dsrequest) and apply their results manually.
+
+These operators must be used with a [fieldQuery](classes/Criterion.md#attr-criterionfieldquery):
+
+```
+ // EXISTS: at least one related row matches the subquery
+ { operator: "exists",
+   fieldQuery: { dataSource: "OrderLine", criteria: { ... } }
+ }
+ 
+```
+See full examples in the "Examples" section below.
+
 #### Examples
 Subqueries are quite hard to describe in narrative text, but the following examples demonstrate their use and should make things clearer
 
@@ -7735,6 +7703,39 @@ This example uses both a `fieldQuery` and a `valueQuery` to select all US-based 
  });
  
 ```
+#### `exists` / `notExists` operators
+Show customers with any Orders in 2024 (exists).
+```
+ Customer.fetchData({
+   _constructor: "AdvancedCriteria", operator: "and", criteria: [
+     { operator: "exists",
+       fieldQuery: {
+         dataSource: "Order",
+         criteria: { fieldName: "orderDate", operator: "iBetweenInclusive",
+                     start: new Date("2024-01-01"), end: new Date("2024-12-31") }
+       }
+     }
+   ]
+ });
+ 
+```
+Products not ordered last month (notExists).
+```
+ Product.fetchData({
+   _constructor: "AdvancedCriteria", operator: "and", criteria: [
+     { operator: "notExists",
+       fieldQuery: {
+         dataSource: "OrderLine",
+         criteria: { operator: "and", criteria: [
+           { fieldName: "orderDate", operator: "iBetweenInclusive",
+             start: startOfLastMonth, end: endOfLastMonth }
+         ]}
+       }
+     }
+   ]
+ });
+ 
+```
 
 ### Groups
 
@@ -7789,16 +7790,6 @@ The result of an asynchronous operation to generate multiple values.
 - fieldGeneration
 
 ---
-## Object: AsyncOperationContext
-
-### Description
-Context for an asynchronous operation.
-
-### See Also
-
-- [AsyncOperationParams](#object-asyncoperationparams)
-
----
 ## Object: AsyncOperationParams
 
 ### Description
@@ -7806,7 +7797,7 @@ Parameters to an asynchronous operation.
 
 ### See Also
 
-- [AsyncOperationContext](#object-asyncoperationcontext)
+- [AsyncOperationContext](reference_2.md#object-asyncoperationcontext)
 
 ---
 ## Object: AsyncOperationResult

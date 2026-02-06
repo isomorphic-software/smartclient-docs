@@ -3658,6 +3658,18 @@ The name of the CSS class used to style the text in fields of type [_link_](../r
 **Flags**: IRW
 
 ---
+## Attr: ListGrid.showHeaderSeparators
+
+### Description
+Controls whether the CSS-based vertical separators provided by some skins are displayed after individual fields and spans in this grid's header.
+
+By default, separators are displayed if the skin provides them, for all field and span buttons, with one exception: in many cases, it is undesirable to have a separator on the last field or span in the header, and this is [not displayed by default](#attr-listgridshowlastheaderseparators).
+
+You can also control separator-visibility for individual [fields](ListGridField.md#attr-listgridfieldshowseparator) and [spans](HeaderSpan.md#attr-headerspanshowseparator) in the header.
+
+**Flags**: IRW
+
+---
 ## Attr: ListGrid.autoFetchTextMatchStyle
 
 ### Description
@@ -4334,6 +4346,16 @@ Note, however, that this is a multi-instance component (potentially one per reco
 - expansionField
 
 **Flags**: RA
+
+---
+## Attr: ListGrid.showLastHeaderSeparators
+
+### Description
+When [showHeaderSeparators](#attr-listgridshowheaderseparators) is true, this attribute controls whether the CSS-based vertical separator provided by some skins is shown after the final field or span in each row of the header.
+
+You can also control separator-visibility for individual [fields](ListGridField.md#attr-listgridfieldshowseparator) and [spans](HeaderSpan.md#attr-headerspanshowseparator) in the header.
+
+**Flags**: IRW
 
 ---
 ## Attr: ListGrid.skinImgDir
@@ -6907,6 +6929,8 @@ Event that will trigger inline editing, see [ListGridEditEvent](../reference.md#
 Note this setting has no effect unless [ListGrid.canEdit](#attr-listgridcanedit) has been set to enable editing.
 
 See also [ListGrid.editOnFocus](#attr-listgrideditonfocus) and [ListGrid.startEditing](ListGrid_2.md#method-listgridstartediting).
+
+**Note:** Even when `editEvent` is `"click"`, clicking on a [link-type field](../reference.md#type-listgridfieldtype) will follow the link rather than starting editing. This is because the click is understood to be intended to navigate to the link target, not to edit the cell. Similarly, clicks on the [checkbox field](#attr-listgridcheckboxfield) are understood to be for selection, not editing.
 
 ### Groups
 

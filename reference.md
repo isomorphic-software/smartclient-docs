@@ -5837,6 +5837,8 @@ Clicking the link opens the URL in a new window by default. To change this behav
 
 In inline edit mode, this type works like a text field.
 
+**Note:** When [ListGrid.editEvent](classes/ListGrid_1.md#attr-listgrideditevent) is `"click"`, clicking on a link-type field will follow the link rather than starting inline editing. The click is understood to be intended to navigate to the link target. Editing can still be started via keyboard navigation or by double-clicking if [ListGrid.canEdit](classes/ListGrid_1.md#attr-listgridcanedit) is enabled.
+
 To create a link not covered by this feature, consider using [ListGridField.formatCellValue](classes/ListGridField.md#method-listgridfieldformatcellvalue) along with [Canvas.linkHTML](classes/Canvas.md#method-canvaslinkhtml), or simply [styling the field](classes/ListGrid_2.md#method-listgridgetcellstyle) to look like a link, and providing interactivity via [field.recordClick()](classes/ListGridField.md#method-listgridfieldrecordclick). |
 | "image" | Renders a different image in each row based on the value of the field. If this URL is not absolute, it is assumed to be relative to [ListGridField.imageURLPrefix](classes/ListGridField.md#attr-listgridfieldimageurlprefix) if specified. The size of the image is controlled by [ListGridField.imageSize](classes/ListGridField.md#attr-listgridfieldimagesize), [ListGridField.imageWidth](classes/ListGridField.md#attr-listgridfieldimagewidth), [ListGridField.imageHeight](classes/ListGridField.md#attr-listgridfieldimageheight) (and by the similarly-named global default attributes on the ListGrid itself).
 

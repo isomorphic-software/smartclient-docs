@@ -151,6 +151,16 @@ Developers may define multiple levels of header-spans by specifying [HeaderSpan.
 **Flags**: IR
 
 ---
+## Attr: HeaderSpan.showSeparator
+
+### Description
+Controls whether the CSS-based vertical separator provided by some skins should be displayed after this span in this grid's header.
+
+By default, the separator [is displayed](ListGrid_1.md#attr-listgridshowheaderseparators) if the skin provides them, unless this span is the [last in its row](ListGrid_1.md#attr-listgridshowlastheaderseparators).
+
+**Flags**: IRW
+
+---
 ## Attr: HeaderSpan.headerTitle
 
 ### Description

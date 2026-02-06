@@ -625,6 +625,16 @@ If this field is editable, this property will be passed to editors displayed for
 **Flags**: IRA
 
 ---
+## Attr: ListGridField.showSeparator
+
+### Description
+Controls whether the CSS-based vertical separator provided by some skins should be displayed after this field in this grid's header.
+
+By default, the separator [is displayed](ListGrid_1.md#attr-listgridshowheaderseparators) if the skin provides them, unless this field is the [last in its row](ListGrid_1.md#attr-listgridshowlastheaderseparators).
+
+**Flags**: IRW
+
+---
 ## Attr: ListGridField.formatGridSummary
 
 ### Description

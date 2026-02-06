@@ -394,6 +394,32 @@ Vertical alignment of this component's title.
 **Flags**: IRW
 
 ---
+## Attr: Button.useSpan
+
+### Description
+Controls whether the button title is wrapped in a span element.
+
+**Note:** This property only has a visual effect when [button.supportsCSSAlignment](#buttonsupportscssalignment) is true. When supportsCSSAlignment is false (table-based layout), ellipsis display works correctly without a span wrapper.
+
+When null (default), defaults to true for all overflow modes to preserve ellipsis display behavior. Set explicitly to false to skip the span wrapper for simpler DOM when ellipsis is not needed.
+
+**Why the span matters:** CSS text-overflow:ellipsis does NOT visually render on direct text children of flex/grid containers - text is truncated but no "..." shows. The span element is required to display the ellipsis indicator.
+
+When useSpan is explicitly set to false (and supportsCSSAlignment is true):
+
+*   Overflowing text is truncated but NO ellipsis "..." displays
+*   [Button.titleClipped](#method-buttontitleclipped) returns false
+*   [Button.showClippedTitleOnHover](#attr-buttonshowclippedtitleonhover) will not trigger
+*   Simpler DOM structure with fewer elements
+
+### See Also
+
+- [Button.titleClipped](#method-buttontitleclipped)
+- [Button.showClippedTitleOnHover](#attr-buttonshowclippedtitleonhover)
+
+**Flags**: IRA
+
+---
 ## Attr: Button.showDownIcon
 
 ### Description
@@ -666,6 +692,10 @@ Is the title of this button clipped?
 ### Returns
 
 `[boolean](../reference.md#type-boolean)` — whether the title is clipped.
+
+### See Also
+
+- [Button.useSpan](#attr-buttonusespan)
 
 **Flags**: A
 

@@ -1099,7 +1099,7 @@ Height of the error icon, if we're showing icons when validation errors occur.
 ## Attr: ListGrid.filterWindowFilter
 
 ### Description
-Instance of [FilterBuilder](FilterBuilder.md#class-filterbuilder) shown in [ListGrid.filterWindow](#attr-listgridfilterwindow) by [ListGrid.showFilterWindow](#method-listgridshowfilterwindow). See [ListGrid.filterWindow](#attr-listgridfilterwindow) for more information on the filter defaults and changing them.
+Instance of [FilterBuilder](FilterBuilder.md#class-filterbuilder) shown in [ListGrid.filterWindow](#attr-listgridfilterwindow) by [ListGrid.showFilterWindow](ListGrid_2.md#method-listgridshowfilterwindow). See [ListGrid.filterWindow](#attr-listgridfilterwindow) for more information on the filter defaults and changing them.
 
 **Flags**: IR
 
@@ -2938,7 +2938,7 @@ To avoid automatic saving entirely, set [ListGrid.autoSaveEdits](#attr-listgrida
 ### Description
 Advanced filtering criteria, either [simple](../reference_2.md#type-criteria) or [advanced](../reference.md#object-advancedcriteria), that is combined with the [filter editor criteria](ListGrid_2.md#method-listgridgetfiltereditorcriteria) during filtering.
 
-This criteria is normally configured via [advanced filtering dialog](#method-listgridshowfilterwindow) shown because of the [ListGrid.allowFilterWindow](#attr-listgridallowfilterwindow) option but can be assigned directly as well.
+This criteria is normally configured via [advanced filtering dialog](ListGrid_2.md#method-listgridshowfilterwindow) shown because of the [ListGrid.allowFilterWindow](#attr-listgridallowfilterwindow) option but can be assigned directly as well.
 
 For a discussion of the various filtering and criteria-management APIs and when to use them, see the [Grid Filtering overview](../kb_topics/gridFiltering.md#kb-topic-grid-filtering-overview).
 
@@ -3807,7 +3807,7 @@ Note that if [ListGrid.editOnFocus](#attr-listgrideditonfocus) is true for this 
 ## Attr: ListGrid.filterWindow
 
 ### Description
-Instance of [Window](Window.md#class-window) used to [show](#method-listgridshowfilterwindow) the [FilterBuilder](#attr-listgridfilterwindowfilter).
+Instance of [Window](Window.md#class-window) used to [show](ListGrid_2.md#method-listgridshowfilterwindow) the [FilterBuilder](#attr-listgridfilterwindowfilter).
 
 For a discussion of the various filtering and criteria-management APIs and when to use them, see the [Grid Filtering overview](../kb_topics/gridFiltering.md#kb-topic-grid-filtering-overview).
 
@@ -6879,6 +6879,8 @@ Note this setting has no effect unless [ListGrid.canEdit](#attr-listgridcanedit)
 
 See also [ListGrid.editOnFocus](#attr-listgrideditonfocus) and [ListGrid.startEditing](ListGrid_2.md#method-listgridstartediting).
 
+**Note:** Even when `editEvent` is `"click"`, clicking on a [link-type field](../reference.md#type-listgridfieldtype) will follow the link rather than starting editing. This is because the click is understood to be intended to navigate to the link target, not to edit the cell. Similarly, clicks on the [checkbox field](#attr-listgridcheckboxfield) are understood to be for selection, not editing.
+
 ### Groups
 
 - editing
@@ -9781,13 +9783,5 @@ Note: for showing multiple fields it is more efficient to call this method than 
 |------|------|----------|---------|-------------|
 | field | [Array of String](#type-array-of-string)|[Array of ListGridField](#type-array-of-listgridfield) | false | — | Fields to show. |
 | suppressRelayout | [boolean](../reference.md#type-boolean) | true | — | If passed, don't resize non-explicitly sized columns to fill the available space. |
-
----
-## Method: ListGrid.showFilterWindow
-
-### Description
-Shows the dialog for [ListGrid.filterWindowCriteria](#attr-listgridfilterwindowcriteria) allowing end-users to edit the advanced filter. This method can be called directly but it is also used to show the dialog when [ListGrid.allowFilterWindow](#attr-listgridallowfilterwindow) is enabled and the user chooses the ["Advanced Filtering"](#attr-listgridadvancedfilteringtext) menu option.
-
-**Note:** this feature requires [SmartClient Pro](https://www.smartclient.com/product/) or better.
 
 ---

@@ -3629,6 +3629,18 @@ The name of the CSS class used to style the text in fields of type [_link_](../r
 **Flags**: IRW
 
 ---
+## Attr: ListGrid.showHeaderSeparators
+
+### Description
+Controls whether the CSS-based vertical separators provided by some skins are displayed after individual fields and spans in this grid's header.
+
+By default, separators are displayed if the skin provides them, for all field and span buttons, with one exception: in many cases, it is undesirable to have a separator on the last field or span in the header, and this is [not displayed by default](#attr-listgridshowlastheaderseparators).
+
+You can also control separator-visibility for individual [fields](ListGridField.md#attr-listgridfieldshowseparator) and [spans](HeaderSpan.md#attr-headerspanshowseparator) in the header.
+
+**Flags**: IRW
+
+---
 ## Attr: ListGrid.autoFetchTextMatchStyle
 
 ### Description
@@ -4305,6 +4317,16 @@ Note, however, that this is a multi-instance component (potentially one per reco
 - expansionField
 
 **Flags**: RA
+
+---
+## Attr: ListGrid.showLastHeaderSeparators
+
+### Description
+When [showHeaderSeparators](#attr-listgridshowheaderseparators) is true, this attribute controls whether the CSS-based vertical separator provided by some skins is shown after the final field or span in each row of the header.
+
+You can also control separator-visibility for individual [fields](ListGridField.md#attr-listgridfieldshowseparator) and [spans](HeaderSpan.md#attr-headerspanshowseparator) in the header.
+
+**Flags**: IRW
 
 ---
 ## Attr: ListGrid.skinImgDir
@@ -9746,42 +9768,5 @@ The default implementation of editFailed does nothing for normal validation erro
 ### Groups
 
 - editing
-
----
-## Method: ListGrid.cellContextClick
-
-### Description
-Called when a cell receives a contextclick event.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| record | [ListGridRecord](#type-listgridrecord) | false | — | cell record as returned by getCellRecord |
-| rowNum | [number](#type-number) | false | — | row number for the cell |
-| colNum | [number](#type-number) | false | — | column number of the cell |
-
-### Returns
-
-`[boolean](../reference.md#type-boolean)` — whether to cancel the event
-
-### Groups
-
-- events
-
----
-## Method: ListGrid.showFields
-
-### Description
-Force an array of fields to be shown. This method does not add new fields to the grid, it simply changes field visibility. If a field.showIf expression exists, it will be destroyed.
-
-Note: for showing multiple fields it is more efficient to call this method than to call [ListGrid.showField](ListGrid_2.md#method-listgridshowfield) repeatedly.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| field | [Array of String](#type-array-of-string)|[Array of ListGridField](#type-array-of-listgridfield) | false | — | Fields to show. |
-| suppressRelayout | [boolean](../reference.md#type-boolean) | true | — | If passed, don't resize non-explicitly sized columns to fill the available space. |
 
 ---

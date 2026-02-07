@@ -4,6 +4,43 @@
 
 ---
 
+## Method: ListGrid.cellContextClick
+
+### Description
+Called when a cell receives a contextclick event.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| record | [ListGridRecord](#type-listgridrecord) | false | — | cell record as returned by getCellRecord |
+| rowNum | [number](#type-number) | false | — | row number for the cell |
+| colNum | [number](#type-number) | false | — | column number of the cell |
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — whether to cancel the event
+
+### Groups
+
+- events
+
+---
+## Method: ListGrid.showFields
+
+### Description
+Force an array of fields to be shown. This method does not add new fields to the grid, it simply changes field visibility. If a field.showIf expression exists, it will be destroyed.
+
+Note: for showing multiple fields it is more efficient to call this method than to call [ListGrid.showField](#method-listgridshowfield) repeatedly.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| field | [Array of String](#type-array-of-string)|[Array of ListGridField](#type-array-of-listgridfield) | false | — | Fields to show. |
+| suppressRelayout | [boolean](../reference.md#type-boolean) | true | — | If passed, don't resize non-explicitly sized columns to fill the available space. |
+
+---
 ## Method: ListGrid.showFilterWindow
 
 ### Description
@@ -927,7 +964,7 @@ When applying sparse field state to a component via [ListGrid.setFieldState](#me
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| sparse | [Boolean](#type-boolean) | true | — | If true, field state will be ommitted for hidden fields. |
+| sparse | [Boolean](#type-boolean) | true | — | If true, field state will be omitted for hidden fields. |
 
 ### Returns
 
@@ -5746,7 +5783,7 @@ or, to ensure the specified [ListGrid.autoFetchTextMatchStyle](ListGrid_1.md#att
 ### Description
 Force a field to be shown. This method does not add new fields to the grid, it simply changes field visibility. If a field.showIf expression exists, it will be destroyed.
 
-Note: for showing multiple fields it is more efficient to call [ListGrid.showFields](ListGrid_1.md#method-listgridshowfields) than to call this method repeatedly.
+Note: for showing multiple fields it is more efficient to call [ListGrid.showFields](#method-listgridshowfields) than to call this method repeatedly.
 
 ### Parameters
 

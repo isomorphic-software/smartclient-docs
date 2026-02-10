@@ -4178,7 +4178,7 @@ The default rule context available from [Canvas.getRuleContext](#method-canvasge
 In addition, an application can put custom data into the ruleScope via [Canvas.provideRuleContext](#method-canvasproviderulecontext).
 
 #### ValuesManager and RuleContext
-[\*WhenRules](#rulecriteria) in member forms of a ValuesManager using short-form field references (i.e. no prefix) apply to the particular member form. To reference field values outside of the form use the dataSource-prefixed path (e.g. Customer.email).
+[\*WhenRules](../kb_topics/ruleCriteria.md#kb-topic-dynamic-rules) in member forms of a ValuesManager using short-form field references (i.e. no prefix) apply to the particular member form. To reference field values outside of the form use the dataSource-prefixed path (e.g. Customer.email).
 
 ## Troubleshooting RuleScope issues
 

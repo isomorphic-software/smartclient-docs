@@ -116,6 +116,8 @@ The following attributes are also supported but are unlikely to be as useful - s
 *   stroke:\[color} - a color to apply to stroked lines that don't specify a stroke - may also form the outlines of closed shapes
 *   stroke-width:\[1px, eg} - the width of stroked lines that don't specify a width
 
+Properties specified in the src-string are applied as inline overrides and override values from the cssClass. Supplying a property with an empty value (e.g. "color:;") clears any prior inline override so the property is resolved by base or state CSS.
+
 See below for example usages.
 
 #### Styling symbols

@@ -370,6 +370,7 @@ Does nothing if the src has not changed - if `src` has not changed but other sta
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | URL | [SCImgURL](../reference.md#type-scimgurl) | false | — | new URL for the image |
+| redraw | [Boolean](#type-boolean) | true | — | when true, redraws the canvas to update the image HTML - this is required when switching between image-types like .png and non-images like SVG symbols, which render different HTML structures |
 
 ### Groups
 

@@ -317,6 +317,8 @@ The mode in which the [titleLabel](#attr-drawitemtitlelabel) (if shown) is rotat
 ### Description
 Should events inside this DrawItem be attributed to it regardless of which pixels are actually set, if no fill is specified? If set for DrawItems that aren't closed, will capture events occurring in the region that would filled if a fill were specified. This property is true by default for closed shapes, and false for paths, lines, etc.
 
+For [DrawLabel](DrawLabel.md#class-drawlabel), this property defaults to true, meaning clicks anywhere in the label's bounding box are attributed to the label. Since pixel-level text hit detection is not practical, setting `eventOpaque` to false on a DrawLabel causes it to never receive click events, allowing clicks to pass through to items underneath.
+
 **Note:** this property must be true if you're writing to an HTML5 `<canvas>` element directly in your code (only applies to [DrawingType](../reference.md#type-drawingtype) "bitmap" ).
 
 ### See Also

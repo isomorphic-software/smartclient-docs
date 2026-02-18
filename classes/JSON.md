@@ -34,9 +34,19 @@ Note that, because JSON has no way of representing dates, serializing a structur
 ## ClassMethod: JSON.encode
 
 ### Description
-Serialize an object as a JSON string by creating a [JSONEncoder](JSONEncoder.md#class-jsonencoder) and calling [JSONEncoder.encode](JSONEncoder.md#method-jsonencoderencode).
+Serialize an object as a JSON-like string by creating a [JSONEncoder](JSONEncoder.md#class-jsonencoder) and calling [JSONEncoder.encode](JSONEncoder.md#method-jsonencoderencode). The resulting string, which by default is **not** strict JSON, may be decoded back to objects via [JSON.decode](#classmethod-jsondecode).
 
-Note that using the String produced by this API with [JSON.decode](#classmethod-jsondecode) **will not successfully preserve dates**. Use [JSONEncoder.dateFormat](JSONEncoder.md#attr-jsonencoderdateformat) "dateConstructor" or "logicalDateConstructor" to have dates round-trip properly.
+There is an important caveat regarding Date values: for Date values to be decoded properly by decode(), it is required to use [dateFormat](JSONEncoder.md#attr-jsonencoderdateformat) "dateConstructor" or "logicalDateConstructor"; this causes Date values to be represented in the encoded string as JavaScript `new Date(...)` or [DateUtil.createLogicalDate](DateUtil.md#classmethod-dateutilcreatelogicaldate) calls, respectively.
+
+**Strict JSON output**: to ensure output conforms to strict JSON (no unquoted keys or embedded JavaScript), pass settings like:
+
+- isc.JSON.encode(data, {
+- strictQuoting: true,          // quote all property names
+- dateFormat: "xmlSchema",      // or "logicalDateString" for use with [JSON.decodeSafeWithDates](#classmethod-jsondecodesafewithdates)
+- serializeInstances: "skip",   // skip instances of SmartClasses
+- showDebugOutput: false        // avoid placeholders that are not valid JSON
+- });
+When strict JSON is desired, avoid dateFormats "dateConstructor" and "logicalDateConstructor", which embed JavaScript in the string output and therefore do not produce strict JSON.
 
 ### Parameters
 

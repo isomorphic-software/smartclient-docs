@@ -53,9 +53,9 @@ Enable [verifyAsError](RPCManager.md#classattr-rpcmanagerverifyaserror) behavior
 ## Attr: LoadProjectSettings.password
 
 ### Description
-Overrides [Reify.password](Reify.md#classattr-reifypassword) setting the account password for [Reify.loadProject](#method-reifyloadproject).
+Overrides [Reify.password](Reify.md#classattr-reifypassword) setting the account password for [Reify.loadProject](Reify.md#method-reifyloadproject).
 
-Note that this setting only applies when using [Reify.loadProject](#method-reifyloadproject).
+Note that this setting only applies when using [Reify.loadProject](Reify.md#method-reifyloadproject).
 
 **Flags**: IR
 
@@ -98,9 +98,9 @@ Should [Placeholders](Placeholder.md#class-placeholder) in loaded screens be ren
 ## Attr: LoadProjectSettings.userName
 
 ### Description
-Overrides [Reify.userName](Reify.md#classattr-reifyusername) setting the account name for [Reify.loadProject](#method-reifyloadproject).
+Overrides [Reify.userName](Reify.md#classattr-reifyusername) setting the account name for [Reify.loadProject](Reify.md#method-reifyloadproject).
 
-Note that this setting only applies when using [Reify.loadProject](#method-reifyloadproject).
+Note that this setting only applies when using [Reify.loadProject](Reify.md#method-reifyloadproject).
 
 **Flags**: IR
 
@@ -164,7 +164,7 @@ Note that this setting only has an impact if [LoadProjectSettings.drawFirstScree
 ### Description
 Path relative to the [server root](#attr-loadprojectsettingsserverurl), to target to use the project loader servlet, instead of [Reify.projectLoaderPath](Reify.md#classattr-reifyprojectloaderpath).
 
-Note that this setting only applies when using [Reify.loadProject](#method-reifyloadproject).
+Note that this setting only applies when using [Reify.loadProject](Reify.md#method-reifyloadproject).
 
 **Flags**: IR
 
@@ -184,9 +184,9 @@ Note that, unless [LoadProjectSettings.omitLoadedDataSources](#attr-loadprojects
 ## Attr: LoadProjectSettings.serverURL
 
 ### Description
-URL of Reify server to use when calling [Reify.loadProject](#method-reifyloadproject) instead of [Reify.serverURL](Reify.md#classattr-reifyserverurl).
+URL of Reify server to use when calling [Reify.loadProject](Reify.md#method-reifyloadproject) instead of [Reify.serverURL](Reify.md#classattr-reifyserverurl).
 
-Note that this setting only applies when using [Reify.loadProject](#method-reifyloadproject).
+Note that this setting only applies when using [Reify.loadProject](Reify.md#method-reifyloadproject).
 
 **Flags**: IR
 

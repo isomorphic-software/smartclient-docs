@@ -11,7 +11,7 @@
 
 The SmartClient server provides a number of ways to let you customize the SQL, JPA or Hibernate query it generates to fetch data from or update your database.
 
-For DataSources with [serverType](../classes/DataSource.md#attr-datasourceservertype) set to "sql", "hibernate" or "jpa", you can provide full custom queries via [OperationBinding.customSQL](../classes/OperationBinding.md#attr-operationbindingcustomsql).  
+For DataSources with [serverType](../classes/DataSource_1.md#attr-datasourceservertype) set to "sql", "hibernate" or "jpa", you can provide full custom queries via [OperationBinding.customSQL](../classes/OperationBinding.md#attr-operationbindingcustomsql).  
 Hibernate dataSources also support custom HQL queries via [OperationBinding.customHQL](../classes/OperationBinding.md#attr-operationbindingcustomhql), and JPA dataSources also support custom JQL queries via [OperationBinding.customJQL](../classes/OperationBinding.md#attr-operationbindingcustomjql).
 
 For DataSources with serverType set to "sql" you can replace individual parts of the query ([the WHERE clause](../classes/OperationBinding.md#attr-operationbindingwhereclause), for example) while letting SmartClient generate the rest. The default SQL clauses are available as variables (`$defaultWhereClause`, `$defaultOrderClause`, etc).  
@@ -60,7 +60,7 @@ You can also use them within individual clauses in order to customize a clause w
 #### Server Summaries & SQL Templating
 When using the [Server Summaries](serverSummaries.md#kb-topic-server-summaries) feature to get aggregated results, there are additional automatically generated and replaceable clauses [groupClause](../classes/OperationBinding.md#attr-operationbindinggroupclause) and [afterWhereClause](../classes/OperationBinding.md#attr-operationbindingafterwhereclause). See the "SQL Templating & Aggregation" section of the [Server Summaries](serverSummaries.md#kb-topic-server-summaries) overview for more information.
 #### Mixing SQL Templating and custom Java Logic
-You can use both SQL Templating and custom Java logic added via [DMI](../classes/DMI.md#class-dmi) in the same operationBinding. Your DMI method is called before SQL is generated, and the SQL template will be evaluated and the actual SQL operation performed only when you call dsRequest.execute(). Or, you can use a [custom DataSource](../classes/DataSource.md#attr-datasourceserverconstructor) that extends `SQLDataSource`; your overrides of, eg, `executeFetch()` will be called, and the SQL operation performed only when you call, eg, `super.executeFetch(dsRequest)`
+You can use both SQL Templating and custom Java logic added via [DMI](../classes/DMI.md#class-dmi) in the same operationBinding. Your DMI method is called before SQL is generated, and the SQL template will be evaluated and the actual SQL operation performed only when you call dsRequest.execute(). Or, you can use a [custom DataSource](../classes/DataSource_1.md#attr-datasourceserverconstructor) that extends `SQLDataSource`; your overrides of, eg, `executeFetch()` will be called, and the SQL operation performed only when you call, eg, `super.executeFetch(dsRequest)`
 
 This allows you to modify the criteria or values on the DSRequest, which will change the values retrieved by $criteria and $values when the SQL Template is evaluated. You can also add entirely new information to the Velocity context used to evaluate the template, via the server-side API `DSRequest.addToTemplateContext()`.
 
@@ -190,14 +190,14 @@ For the DataSource joined via [DataSourceField.foreignKey](../classes/DataSource
 
 *   [DataSourceField.relatedTableAlias](../classes/DataSourceField.md#attr-datasourcefieldrelatedtablealias) if it is set (always forces alias usage)
 *   [DataSourceField.name](../classes/DataSourceField.md#attr-datasourcefieldname) of the field with `foreignKey` set if it is referenced by the [DataSourceField.includeVia](../classes/DataSourceField.md#attr-datasourcefieldincludevia) feature, or if the DataSource is in the middle of the relations chain and the alias has already started to build up
-*   absent (no alias will be used) if none of the above is true, i.e. SQL table will be referenced directly by the [DataSource.tableName](../classes/DataSource.md#attr-datasourcetablename) in generated SQL
+*   absent (no alias will be used) if none of the above is true, i.e. SQL table will be referenced directly by the [DataSource.tableName](../classes/DataSource_1.md#attr-datasourcetablename) in generated SQL
 
 For the DataSource joined via the [DataSourceField.foreignKey](../classes/DataSourceField.md#attr-datasourcefieldforeignkey) declared on the "other side" of relation or via the [DataSourceField.otherFKs](../classes/DataSourceField.md#attr-datasourcefieldotherfks) the SQL table alias will always consists of two parts, like _"`<field>`\_`<datasource>`"_, where:
 
 *   _"`<field>`"_ is the [DataSourceField.name](../classes/DataSourceField.md#attr-datasourcefieldname) (or [DataSourceField.relatedTableAlias](../classes/DataSourceField.md#attr-datasourcefieldrelatedtablealias) if set) of the field the relation is based on, which can be:  
     \- the "from" DataSource field that is linked by the "to" DataSource field with the `foreignKey` on the "other side" of the relation OR  
     \- the "from" DataSource field with the [DataSourceField.otherFKs](../classes/DataSourceField.md#attr-datasourcefieldotherfks) if one of the `otherFKs` sets was used to establish the relation
-*   _`<datasource>`"_ is referenced by the "to" DataSource [ID](../classes/DataSource.md#attr-datasourceid) (or [DataSource.relatedTableAlias](../classes/DataSource.md#attr-datasourcerelatedtablealias) if set)
+*   _`<datasource>`"_ is referenced by the "to" DataSource [ID](../classes/DataSource_1.md#attr-datasourceid) (or [DataSource.relatedTableAlias](../classes/DataSource_1.md#attr-datasourcerelatedtablealias) if set)
 
 **Note** that databases have their limitations for the length of identifier names. We limit table aliases according to the current database as described in [SQL Settings overview](sqlSettings.md#kb-topic-sql-database-settings-in-serverproperties) (search for `aliasLengthLimit` settings). If the generated table alias would exceed the length limit, we instead use a generated and unpredictable value like "a123". To avoid hitting this limit:
 
@@ -230,13 +230,13 @@ There's a possibility to use customized SQL together with auto generated joins, 
 - [OperationBinding.orderClause](../classes/OperationBinding.md#attr-operationbindingorderclause)
 - [OperationBinding.valuesClause](../classes/OperationBinding.md#attr-operationbindingvaluesclause)
 - [OperationBinding.customSQL](../classes/OperationBinding.md#attr-operationbindingcustomsql)
-- [DataSource.sqlPrefix](../classes/DataSource.md#attr-datasourcesqlprefix)
+- [DataSource.sqlPrefix](../classes/DataSource_1.md#attr-datasourcesqlprefix)
 - [OperationBinding.sqlPrefix](../classes/OperationBinding.md#attr-operationbindingsqlprefix)
-- [DataSource.sqlSuffix](../classes/DataSource.md#attr-datasourcesqlsuffix)
+- [DataSource.sqlSuffix](../classes/DataSource_1.md#attr-datasourcesqlsuffix)
 - [OperationBinding.sqlSuffix](../classes/OperationBinding.md#attr-operationbindingsqlsuffix)
-- [DataSource.applySqlPrefixToRowCount](../classes/DataSource.md#attr-datasourceapplysqlprefixtorowcount)
+- [DataSource.applySqlPrefixToRowCount](../classes/DataSource_1.md#attr-datasourceapplysqlprefixtorowcount)
 - [OperationBinding.applySqlPrefixToRowCount](../classes/OperationBinding.md#attr-operationbindingapplysqlprefixtorowcount)
-- [DataSource.applySqlSuffixToRowCount](../classes/DataSource.md#attr-datasourceapplysqlsuffixtorowcount)
+- [DataSource.applySqlSuffixToRowCount](../classes/DataSource_1.md#attr-datasourceapplysqlsuffixtorowcount)
 - [OperationBinding.applySqlSuffixToRowCount](../classes/OperationBinding.md#attr-operationbindingapplysqlsuffixtorowcount)
 - [OperationBinding.customHQL](../classes/OperationBinding.md#attr-operationbindingcustomhql)
 - [OperationBinding.customJQL](../classes/OperationBinding.md#attr-operationbindingcustomjql)

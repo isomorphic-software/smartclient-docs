@@ -91,7 +91,7 @@ This attribute does not have an effect if a native HTML5 date input is being use
 
 ### See Also
 
-- [dateItem.displayFormat](#dateitemdisplayformat)
+- [DateItem.dateFormatter](#attr-dateitemdateformatter)
 
 **Flags**: IRW
 
@@ -190,6 +190,16 @@ To change this attribute after being drawn, it is necessary to call [FormItem.re
 
 - [FormItem.hint](FormItem.md#attr-formitemhint)
 - [DateItem.usePlaceholderForHint](#attr-dateitemuseplaceholderforhint)
+
+**Flags**: IRW
+
+---
+## Attr: DateItem.showPickerIcon
+
+### Description
+Should we show the pick button icon?
+
+This attribute does not have an effect if a native HTML5 date input is being used. See [DateItem.browserInputType](#attr-dateitembrowserinputtype).
 
 **Flags**: IRW
 
@@ -665,6 +675,27 @@ Custom properties to apply to this dateItem's generated [DateItem.daySelector](#
 - dateItemAppearance
 
 **Flags**: IRA
+
+---
+## Attr: DateItem.displayFormat
+
+### Description
+If [DateItem.useTextField](#attr-dateitemusetextfield) is `true` this property can be used to customize the format in which dates are displayed.  
+Should be set to a standard [DateDisplayFormat](../reference.md#type-datedisplayformat) or a function which will return a formatted date string.
+
+If unset, the standard shortDate format as set up via [DateUtil.setShortDisplayFormat](DateUtil.md#classmethod-dateutilsetshortdisplayformat) will be used.
+
+**NOTE: you may need to update the [inputFormat](#attr-dateiteminputformat) to ensure the DateItem is able to parse user-entered date strings back into Dates**
+
+This attribute does not have an effect if a native HTML5 date input is being used. See [DateItem.browserInputType](#attr-dateitembrowserinputtype).
+
+### See Also
+
+- [DateItem.inputFormat](#attr-dateiteminputformat)
+
+**Deprecated**
+
+**Flags**: IRW
 
 ---
 ## Attr: DateItem.pickerConstructor

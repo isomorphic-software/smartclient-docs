@@ -54,7 +54,7 @@ An Reify project consists of:
 
 1.  a project file (projectName.proj.xml) which lists all the screens and DataSources involved in the project
 2.  one or more screen files (screenName.ui.xml) which have [Component XML](componentXML.md#kb-topic-component-xml) screen definitions
-3.  one or more DataSource files (dataSourceId.ds.xml) which have [DataSource](../classes/DataSource.md#class-datasource) definitions
+3.  one or more DataSource files (dataSourceId.ds.xml) which have [DataSource](../classes/DataSource_1.md#class-datasource) definitions
 
 You can load a Reify project from Reify.com (or from a [Reify Onsite](reifyOnSite.md#kb-topic-reify-onsite) server) with just a call to isc.Reify.loadProject(), like so:
 
@@ -74,7 +74,7 @@ This is the quickest way to try out a Reify screen when you are working in a sta
 
 If the SmartClient page where you load your project already has DataSources with the same IDs as the MockDataSources defined in the Reify project, the DataSources in the page will be used instead, and the MockDataSources ignored. In this way, you can easily test out a Reify screen working with real DataSources, even as it continues to be refined in the Reify visual tool, using equivalent MockDataSources. You can turn on [automatic verification](../classes/LoadProjectSettings.md#attr-loadprojectsettingsverifydatasources) of loaded DataSources, to make sure they match your local DataSources (no fields have been removed, for example) - see the [Verifying Screens](https://www.smartclient.com/smartclient-latest/showcase/?id=verifyingScreensReify) sample for an example of doing this.
 
-If the Reify screen has MockDataSources that don't exist in the local page, those will be used, where they will behave like [clientOnly DataSources](../classes/DataSource.md#attr-datasourceclientonly), mimicking a real DataSource but using using sample data embedded in the MockDataSource file itself, with all changes lost on page reload.
+If the Reify screen has MockDataSources that don't exist in the local page, those will be used, where they will behave like [clientOnly DataSources](../classes/DataSource_1.md#attr-datasourceclientonly), mimicking a real DataSource but using using sample data embedded in the MockDataSource file itself, with all changes lost on page reload.
 
 If you don't want to use live loading, you can alternatively:
 
@@ -212,6 +212,8 @@ Instead, a Reify screen can define _screen inputs_, which are data values that a
 
 This approach addresses all of the potential issues above, creating a clean & clear boundary between the Reify screen and the surrounding application.
 
+Within the Reify tool, screen inputs are stored as [Canvas.testDataContext](../classes/Canvas.md#attr-canvastestdatacontext). The designer selects DataSources the screen depends on, which provides the schema, and can also provide test values. This allows designers to define and test declarative logic (formulas, visibility rules, workflows, etc.) based on the expected inputs, even when testing the screen in isolation. At runtime, when the surrounding application provides a [Canvas.dataContext](../classes/Canvas.md#attr-canvasdatacontext), it replaces the `testDataContext` entirely.
+
 `dataContext` doesn't have to be limited to just DataSource records; in addition to required data, a Reify screen may have _settings_ that are allowed. For example, there might be a setting for whether the screen allows editing, or allows editing of specific fields. A Reify screen can just declare such settings as a DataSource, and set it as a screen input, and then code using the screen can pass settings via dataContext as well, for example:
 
 ```
@@ -242,7 +244,7 @@ There are a few simple techniques for doing this:
 
 *   watch for an event on some object in the Reify screen - for example, wait for the click event on a "Done" button
 *   watch for Reify screen to hide itself, if that's what it does on completion. You can do this by using `observe()` on [Canvas.visibilityChanged](../classes/Canvas.md#method-canvasvisibilitychanged)
-*   watch for a successful DataSource operation by using `observe()` on [DataSource.dataChanged](../classes/DataSource.md#method-datasourcedatachanged)
+*   watch for a successful DataSource operation by using `observe()` on [DataSource.dataChanged](../classes/DataSource_1.md#method-datasourcedatachanged)
 *   have the Reify screen write to a `clientOnly` DataSource when it completes. This is the same as the technique described above for providing initial data to a Reify screen, but in reverse. This is also useful if the Reify screen needs to pass data back to the main application, and you'd prefer not to retrieve that data by simply interrogating components in the Reify screen
 
 **Live Editable Applications**
@@ -253,8 +255,8 @@ If, in your deployed application, you use `isc.Reify.loadProject()` calls to loa
 
 Yes, you can:
 
-1.  Screen definitions and DataSources can be converted from Component XML to the equivalent JavaScript - this conversion is how they are actually used in Pro+ editions of SmartClient. In the Project > Export Project dialog in Reify, under Advanced Settings, check "include JavaScript versions" to request JavaScript screen and DataSource definitions. This can also be done [via Maven](reifyMaven.md#kb-topic-importing-from-reify) by setting the [reify-import](http://github.smartclient.com/isc-maven-plugin/reify-import-mojo.html) goal's `includeJs` property to true. Note that live loading via [Reify.loadProject](#method-reifyloadproject) already delivers JavaScript definitions, so no conversion is required.
-2.  If you have existing DataSources loaded in your SmartClient page, such as [RestDataSources](../classes/RestDataSource.md#class-restdatasource), they will be automatically used instead of the MockDataSources that are part of the Reify project definition. You do need to make sure that your LGPL DataSources [support AdvancedCriteria](../classes/DataSource.md#method-datasourcesupportsadvancedcriteria), as Reify-created screens generally assume this support is present. Ideally, you should support [queuing](../classes/RPCManager.md#classmethod-rpcmanagerstartqueue) as well, as it’s possible to build Reify screens that require it (explicitly, via the Start Queue workflow task, or implicitly via, for example, using [multi-row editing in grids](../classes/ListGrid_1.md#attr-listgridautosaveedits)). The [FacetChart](../classes/FacetChart.md#class-facetchart) class is only included with Pro+ Editions of SmartClient, so if you build screens in Reify that involve FacetChart, you will need Pro or better even if you do not use the server-side framework.
+1.  Screen definitions and DataSources can be converted from Component XML to the equivalent JavaScript - this conversion is how they are actually used in Pro+ editions of SmartClient. In the Project > Export Project dialog in Reify, under Advanced Settings, check "include JavaScript versions" to request JavaScript screen and DataSource definitions. This can also be done [via Maven](reifyMaven.md#kb-topic-importing-from-reify) by setting the [reify-import](http://github.smartclient.com/isc-maven-plugin/reify-import-mojo.html) goal's `includeJs` property to true. Note that live loading via [Reify.loadProject](../classes/Reify.md#method-reifyloadproject) already delivers JavaScript definitions, so no conversion is required.
+2.  If you have existing DataSources loaded in your SmartClient page, such as [RestDataSources](../classes/RestDataSource.md#class-restdatasource), they will be automatically used instead of the MockDataSources that are part of the Reify project definition. You do need to make sure that your LGPL DataSources [support AdvancedCriteria](../classes/DataSource_1.md#method-datasourcesupportsadvancedcriteria), as Reify-created screens generally assume this support is present. Ideally, you should support [queuing](../classes/RPCManager.md#classmethod-rpcmanagerstartqueue) as well, as it’s possible to build Reify screens that require it (explicitly, via the Start Queue workflow task, or implicitly via, for example, using [multi-row editing in grids](../classes/ListGrid_1.md#attr-listgridautosaveedits)). The [FacetChart](../classes/FacetChart.md#class-facetchart) class is only included with Pro+ Editions of SmartClient, so if you build screens in Reify that involve FacetChart, you will need Pro or better even if you do not use the server-side framework.
 3.  The Developer Console tool for uploading data from existing DataSources does work in the LGPL edition (see Uploading existing DataSources to Reify below).
 
 **Best practices & long-term maintenance**
@@ -321,7 +323,7 @@ Reify _Screen Inputs_ and `dataContext`, covered above, is the recommended appro
 
 Similar to the example given for `dataContext` above, where a special DataSource is created to represent settings for the screen, a designer using Reify creates a DataSource to represent the required input data for the screen, called a _shuttle_ DataSource. That _shuttle DataSource_ has exactly one record, which the Reify screen fetches at startup (typically using the _drawn_ event) and uses to populate components and/or configure the screen.
 
-You may find that a particular designer has built screens in this style rather than using Screen Inputs and `dataContext`. If so, it's easy to provide data to such a screen: you just create a single-record, [clientOnly DataSource](../classes/DataSource.md#attr-datasourceclientonly), and provide the input data for the screen as that DataSource's [DataSource.cacheData](../classes/DataSource.md#attr-datasourcecachedata).
+You may find that a particular designer has built screens in this style rather than using Screen Inputs and `dataContext`. If so, it's easy to provide data to such a screen: you just create a single-record, [clientOnly DataSource](../classes/DataSource_1.md#attr-datasourceclientonly), and provide the input data for the screen as that DataSource's [DataSource.cacheData](../classes/DataSource_1.md#attr-datasourcecachedata).
 
 For example, a Reify screen may be designed to load data related to a selected record from the "customer" DataSource. In the Reify project, a MockDataSource called "selectedCustomer" was created to represent the "customer" record whose data should be loaded. In your code that needs to create the Reify screen, you've got a variable `currentCustomer` that has the Record for the currently selected customer. To make the data available to the Reify project, you can just do this:
 
@@ -336,7 +338,7 @@ For example, a Reify screen may be designed to load data related to a selected r
  
 ```
 
-Now the Reify screen can pull the data about the selected "customer" record from the "selectedCustomer" DataSource. The use of [DataSource.inheritsFrom](../classes/DataSource.md#attr-datasourceinheritsfrom) above helps to avoid duplicating field definitions, assuming the designer created their "selectedCustomer" DataSource as a field-compatible duplicate of the "customer" DataSource.
+Now the Reify screen can pull the data about the selected "customer" record from the "selectedCustomer" DataSource. The use of [DataSource.inheritsFrom](../classes/DataSource_1.md#attr-datasourceinheritsfrom) above helps to avoid duplicating field definitions, assuming the designer created their "selectedCustomer" DataSource as a field-compatible duplicate of the "customer" DataSource.
 
 If the Reify screen is to be created multiple times for different customers, just use DataSource.setCacheData() to update the data in the selectedCustomer client-only DataSource, immediately before creating another instance of the screen
 

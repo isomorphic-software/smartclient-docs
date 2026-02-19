@@ -18,13 +18,13 @@ Provides declarative support for prompt assembly, AI-driven "transitions" to oth
 #### Overview
 CoTTask:
 
-1.  assembles a prompt, typically in collaboration with a CoTProcess , such that only [taskPrompt](#taskprompt) is set on the task. This includes automatic prompt generation regarding [transitions](#transitions), [CoTProcess.history](CoTProcess.md#attr-cotprocesshistory) and [validation errors](#outputds) in the event of a retry.
-2.  contacts the configured LLM, which can be the [AI.defaultAIEngineId](#aidefaultaiengineid) or can be specified as [task.aiEngineId](#attr-cottaskaiengineid) or [process.aiEngineId](CoTProcess.md#attr-cotprocessaiengineid).
-3.  processes the AI response, in particular executing AI-driven [transitions](#transitions) to other states, applying [validation](#outputfields), and [auto-retrying](#maxretries) if validation fails
-4.  for a successful response, can declaratively store results ([stateUpdates](#stateupdates)) and can invoke custom processing ([processOutputs](#method-processoutputs))
-5.  after success, transitions to another task in the standard `Task` manner of checking [nextElement](#nextelement) or membership in a [sequence](Process.md#attr-processsequences), with a special fallback of returning to the calling task or to [CoTProcess.defaultReturnTask](CoTProcess.md#attr-cotprocessdefaultreturntask) if configured
+1.  assembles a prompt, typically in collaboration with a CoTProcess , such that only [CoTTask.taskPrompt](#attr-cottasktaskprompt) is set on the task. This includes automatic prompt generation regarding [CoTTask.transitions](#attr-cottasktransitions), [CoTProcess.history](CoTProcess.md#attr-cotprocesshistory) and [validation errors](#attr-cottaskoutputds) in the event of a retry.
+2.  contacts the configured LLM, which can be the [AI.defaultEngineId](AI.md#classattr-aidefaultengineid) or can be specified as [task.aiEngineId](#attr-cottaskaiengineid) or [process.aiEngineId](CoTProcess.md#attr-cotprocessaiengineid).
+3.  processes the AI response, in particular executing AI-driven [CoTTask.transitions](#attr-cottasktransitions) to other states, applying [validation](#attr-cottaskoutputfields), and [auto-retrying](#attr-cottaskmaxretries) if validation fails
+4.  for a successful response, can declaratively store results ([CoTTask.stateUpdates](#attr-cottaskstateupdates)) and can invoke custom processing ([CoTTask.processOutputs](#method-cottaskprocessoutputs))
+5.  after success, transitions to another task in the standard `Task` manner of checking [ProcessElement.nextElement](ProcessElement.md#attr-processelementnextelement) or membership in a [sequence](Process.md#attr-processsequences), with a special fallback of returning to the calling task or to [CoTProcess.defaultReturnTask](CoTProcess.md#attr-cotprocessdefaultreturntask) if configured
 
-Each of these phases is discussed in more detail below. As a running example, we'll use the following overall process: a small CoT designed to iteratively add fields to a DataSource definition to make the DataSource capable of a developer-specified use case (specified as [process.goal](#processgoal)):
+Each of these phases is discussed in more detail below. As a running example, we'll use the following overall process: a small CoT designed to iteratively add fields to a DataSource definition to make the DataSource capable of a developer-specified use case (specified as [CoTProcess.goal](CoTProcess.md#attr-cotprocessgoal)):
 ```
  isc.CoTProcess.create({
    ID: "dsBuilder",
@@ -64,11 +64,11 @@ Transitions are other states in the CoT that the AI can choose to go to. For exa
      },
  
 ```
-A [CoTTransition](../reference_2.md#object-cottransition) can declare a [label](CoTTransition.md#attr-cottransitionlabel) to describe the target step. If this is omitted, the target's [description](#attr-cottaskdescription) is used if present, otherwise its [title](#cottasktitle).
+A [CoTTransition](../reference_2.md#object-cottransition) can declare a [label](CoTTransition.md#attr-cottransitionlabel) to describe the target step. If this is omitted, the target's [description](#attr-cottaskdescription) is used if present, otherwise its [title](#attr-cottasktitle).
 
-As part of default prompt assembly, if `transitions` are defined, the [transitionsPrimer](#transitionsprimer) explains to the AI how to perform a transition (by outputting a particular JSON object). Then the `transitions` themselves are output one at a time using the [transitionsPrimer](#transitionsprimer).
+As part of default prompt assembly, if `transitions` are defined, the [CoTProcess.transitionsPrimer](CoTProcess.md#attr-cotprocesstransitionsprimer) explains to the AI how to perform a transition (by outputting a particular JSON object). Then the `transitions` themselves are output one at a time using the [CoTProcess.transitionsPrimer](CoTProcess.md#attr-cotprocesstransitionsprimer).
 
-Built-in logic in `CoTTask` recognizes when the AI has picked a `transition` and performs it (via [process.setNextElement(_targetTask_)](Process.md#method-processsetnextelement)). If the AI appears to attempt a transition but it's invalid in some way (bad target task, for example), validation errors are generated and the AI request is retried, up to [maxRetries](#maxretries). This makes transition handling 100% codeless.
+Built-in logic in `CoTTask` recognizes when the AI has picked a `transition` and performs it (via [process.setNextElement(_targetTask_)](Process.md#method-processsetnextelement)). If the AI appears to attempt a transition but it's invalid in some way (bad target task, for example), validation errors are generated and the AI request is retried, up to [CoTTask.maxRetries](#attr-cottaskmaxretries). This makes transition handling 100% codeless.
 
 The _transitionsPrimer_ tells the AI to generate intent and stepAfter attributes in the JSON output that triggers transitions. These attributes are included in the history to help the AI keep track of what it's doing when, to complete one logic action, it has to perform several tasks in a row. See **History** below.
 
@@ -80,20 +80,20 @@ However, in a more complex CoT involving _augmenting_ a DataSource (imagine a _m
 
 This can lead to loops, which the history feature helps to prevent.
 
-`history` is maintained as a simple Array of Objects under the "history" property in the [Process.state](Process.md#attr-processstate), which is serialized as JSON in the default prompt, with the [historyPrimer](#historyprimer) before it (to explain history).
+`history` is maintained as a simple Array of Objects under the "history" property in the [Process.state](Process.md#attr-processstate), which is serialized as JSON in the default prompt, with the [CoTProcess.historyPrimer](CoTProcess.md#attr-cotprocesshistoryprimer) before it (to explain history).
 
 Each successful transition automatically adds a history entry including intent and stepAfter. Each successful non-transition output is likewise auto-added to history. Retries are not tracked.
 
-Set [noHistory](#nohistory) to prevent a given task from adding automatic history entries, or [CoTProcess.noHistory](CoTProcess.md#attr-cotprocessnohistory) to disable history tracking for an entire process, such that history is not included in prompts and no history entries are recorded.
+Set [CoTTask.noHistory](#attr-cottasknohistory) to prevent a given task from adding automatic history entries, or [CoTProcess.noHistory](CoTProcess.md#attr-cotprocessnohistory) to disable history tracking for an entire process, such that history is not included in prompts and no history entries are recorded.
 
 #### Validation
 
 For non-transition output by the AI, validation is applied if configured. Validation is done via the same system used for DataSources that perform CRUD operations, so you have all of those features, including [conditional validators](Validator.md#attr-validatorapplywhen), [server-based validators](Validator.md#attr-validatorserveronly) and other features. Declare validation like so:
 
-1.  [outputFields](#outputfields): an Array of DataSourceField
-2.  [outputDS](#outputds): a full DataSource definition
+1.  [CoTTask.outputFields](#attr-cottaskoutputfields): an Array of DataSourceField
+2.  [CoTTask.outputDS](#attr-cottaskoutputds): a full DataSource definition
 
-Both forms of defining validators can validate nested structures by using [DataSourceField.type](DataSourceField.md#attr-datasourcefieldtype) to refer to the [DataSource.ID](DataSource.md#attr-datasourceid) of another DataSource which describes the nested object.
+Both forms of defining validators can validate nested structures by using [DataSourceField.type](DataSourceField.md#attr-datasourcefieldtype) to refer to the [DataSource.ID](DataSource_1.md#attr-datasourceid) of another DataSource which describes the nested object.
 
 Note that if you write a CoT that is supposed to produce a record to save to a currently loaded CRUD DataSource, you can simply supply the CRUD DataSource as `outputDS`, and you're done.
 
@@ -101,7 +101,7 @@ If validation fails, the task retries up to [CoTTask.maxRetries](#attr-cottaskma
 
 #### Declarative Process State Updates
 
-When AI produces a non-transition result, typically it just needs to be stored to `process.state`, and if so, this can be done declaratively. In our running example, [stateUpdates](#stateupdates) is used to add the AI-generated field to the existing fields Array:
+When AI produces a non-transition result, typically it just needs to be stored to `process.state`, and if so, this can be done declaratively. In our running example, [CoTTask.stateUpdates](#attr-cottaskstateupdates) is used to add the AI-generated field to the existing fields Array:
 
 ```
  { ID:"addField", title: "Add Field", ... other properties ...
@@ -109,7 +109,7 @@ When AI produces a non-transition result, typically it just needs to be stored t
   },
  
 ```
-Shown above is a shorthand format; in general `stateUpdates` is a mapping from a [statePath](../reference.md#type-statepath) to a ${TaskInputExpression} or other value.
+Shown above is a shorthand format; in general `stateUpdates` is a mapping from a [statePath](../reference_2.md#type-statepath) to a ${TaskInputExpression} or other value.
 ```
  { ID:"addField", title: "Add Field", ... other properties ...
     stateUpdates : {
@@ -118,7 +118,7 @@ Shown above is a shorthand format; in general `stateUpdates` is a mapping from a
   },
  
 ```
-If the processing of the AI result is more complicated, you can implement [processOutputs](#method-processoutputs). To achieve the above, you would implement:
+If the processing of the AI result is more complicated, you can implement [CoTTask.processOutputs](#method-cottaskprocessoutputs). To achieve the above, you would implement:
 ```
     processOutputs : function (task, process, outputs, state) {
          this.setState("currentDS.fields[]", outputs);
@@ -136,7 +136,7 @@ Note that `stateUpdates` can declare nested structures, and `TaskInputExpression
     }
  
 ```
-You can also programmatically apply `stateUpdates` at any time (even before outputs have been determined), via [process.applyUpdates(_stateUpdates_)](#processapplyupdates).
+You can also programmatically apply `stateUpdates` at any time (even before outputs have been determined), via [process.applyStateUpdates(_stateUpdates_)](Process.md#method-processapplystateupdates).
 #### Default routing and overrides
 
 If a response is not a transition (no top-level `goTo`/`intent`/`stepAfter`), and the task succeeds (no validation errors), the next task is determined by the standard [Process](Process.md#class-process) approach, with some special `CoTTask`/`CoTProcess` behaviors and settings. The next task (or more generally, `ProcessElement`) is:
@@ -170,7 +170,7 @@ Shorthand for [CoTTask.outputDS](#attr-cottaskoutputds), causing a temporary Dat
 ## Attr: CoTTask.stateUpdates
 
 ### Description
-Declarative mapping from [StatePaths](../reference.md#type-statepath) to [TaskInputExpressions](../reference_2.md#type-taskinputexpression), or just a single StatePath if the entire outputs object should be applied to a single path. When the task completes successfully (no validation errors), each mapping is applied to update [Process.state](Process.md#attr-processstate). Shorthand: a String path means the entire outputs go to that path.
+Declarative mapping from [StatePaths](../reference_2.md#type-statepath) to [TaskInputExpressions](../reference_2.md#type-taskinputexpression), or just a single StatePath if the entire outputs object should be applied to a single path. When the task completes successfully (no validation errors), each mapping is applied to update [Process.state](Process.md#attr-processstate). Shorthand: a String path means the entire outputs go to that path.
 
 **Flags**: IR
 
@@ -178,7 +178,7 @@ Declarative mapping from [StatePaths](../reference.md#type-statepath) to [TaskIn
 ## Attr: CoTTask.outputDS
 
 ### Description
-DataSource (definition or ID) used to validate outputs produced by the AI. Outputs are validated via [DataSource.validateData](DataSource.md#method-datasourcevalidatedata). Nested structures are supported via DataSource field types. If both `outputDS` and `outputFields` are provided, `outputDS` takes precedence.
+DataSource (definition or ID) used to validate outputs produced by the AI. Outputs are validated via [DataSource.validateData](DataSource_1.md#method-datasourcevalidatedata). Nested structures are supported via DataSource field types. If both `outputDS` and `outputFields` are provided, `outputDS` takes precedence.
 
 **Flags**: IR
 
@@ -222,7 +222,7 @@ Per-task control of mocking. When true, this task skips real AI calls and uses [
 ## Attr: CoTTask.description
 
 ### Description
-Human-readable description of this task's purpose. Used when generating prompt output for [CoTTask.transitions](#attr-cottasktransitions). If unset, [CoTTask.title](#cottasktitle) is used instead.
+Human-readable description of this task's purpose. Used when generating prompt output for [CoTTask.transitions](#attr-cottasktransitions). If unset, [CoTTask.title](#attr-cottasktitle) is used instead.
 
 **Flags**: IR
 
@@ -235,10 +235,18 @@ The task's main guidance/content, inserted by the default prompt builder after h
 **Flags**: IR
 
 ---
+## Attr: CoTTask.title
+
+### Description
+Human-readable name for this task. Used in default prompt assembly to identify the task to the AI, and as a fallback label for [CoTTask.transitions](#attr-cottasktransitions) when [CoTTask.description](#attr-cottaskdescription) is not set.
+
+**Flags**: IR
+
+---
 ## Attr: CoTTask.aiEngineId
 
 ### Description
-Identifier of the AI engine to use when this task calls an LLM. If unset, inherits from [CoTProcess.aiEngineId](CoTProcess.md#attr-cotprocessaiengineid) if set; otherwise falls back to [AI.defaultAIEngineId](#aidefaultaiengineid). Allows per-task specialization.
+Identifier of the AI engine to use when this task calls an LLM. If unset, inherits from [CoTProcess.aiEngineId](CoTProcess.md#attr-cotprocessaiengineid) if set; otherwise falls back to [AI.defaultEngineId](AI.md#classattr-aidefaultengineid). Allows per-task specialization.
 
 **Flags**: IR
 

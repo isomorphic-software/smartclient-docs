@@ -7,7 +7,7 @@
 ## Attr: CoTTransition.label
 
 ### Description
-Optional UI label override. If omitted, the target's [description](CoTTask.md#attr-cottaskdescription) is used if present, otherwise [CoTTask.title](#cottasktitle).
+Optional UI label override. If omitted, the target's [description](CoTTask.md#attr-cottaskdescription) is used if present, otherwise [CoTTask.title](CoTTask.md#attr-cottasktitle).
 
 **Flags**: IR
 

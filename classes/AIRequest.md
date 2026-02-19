@@ -41,7 +41,7 @@ When the [AIRequest.responseType](#attr-airequestresponsetype) is "number", the 
 ## Attr: AIRequest.willHandleError
 
 ### Description
-Unless willHandleError is `true`, responses that are non-successful will go through centralized error handling in the RPCManager, and the [AIResponseCallback](#airesponsecallback) will not be called.
+Unless willHandleError is `true`, responses that are non-successful will go through centralized error handling in the RPCManager, and the [Callbacks.AIResponseCallback](Callbacks.md#method-callbacksairesponsecallback) will not be called.
 
 Setting this attribute to `true` means that the callback will receive both successful and non-successful responses, and you must handle any errors.
 

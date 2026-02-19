@@ -127,7 +127,7 @@ When using tree-oriented selection modes like [TreeGrid.cascadeSelection](TreeGr
 ## Method: Selection.deselectList
 
 ### Description
-Deselect an array of items (subset of the entire list). Equivalent to calling +link{Selection.selectList(),selectList(list, false)
+Deselect an array of items (subset of the entire list). Equivalent to calling [selectList(list, false)](#method-selectionselectlist)
 
 ### Parameters
 

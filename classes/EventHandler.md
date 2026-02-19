@@ -325,13 +325,17 @@ See the [Keyboard Events Overview](../kb_topics/keyboardEvents.md#kb-topic-keybo
 ## ClassMethod: EventHandler.getNativeDragData
 
 ### Description
-For a cross-frame drag, retrieves the data made available when the drag was initiated in the foreign frame via [EventHandler.setNativeDragData](#classmethod-eventhandlersetnativedragdata).
+Retrieves the data from a native HTML5 drag / drop event.
 
-Can only be called during the [Canvas.drop](Canvas.md#method-canvasdrop) event (or methods called during the handling of that event, such as [ListGrid.recordDrop](ListGrid_2.md#method-listgridrecorddrop)); will return null if called at any other time, or if called during a non-HTML5 drag and drop.
+For a cross-frame drag initiated on another SmartClient browser window this method retrieves the data made available when the drag was initiated in the foreign frame via [EventHandler.setNativeDragData](#classmethod-eventhandlersetnativedragdata). See [Canvas.useNativeDrag](Canvas.md#attr-canvasusenativedrag) for details on cross-frame drag and drop in SmartClient.
+
+For a [file upload drag](Canvas.md#attr-canvascandropfiles), this method will return the [FileList](https://developer.mozilla.org/en-US/docs/Web/API/FileList) containing the file(s) that were dragged onto the component.
+
+This method may only be called during the [Canvas.drop](Canvas.md#method-canvasdrop) event (or methods called during the handling of that event, such as [ListGrid.recordDrop](ListGrid_2.md#method-listgridrecorddrop)). It will return null if called at any other time, or if called during a non-HTML5 drag and drop.
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — data made available in the foreign frame
+`[Object](../reference.md#type-object)` — data from a native HTML5 drag / drop event.
 
 ---
 ## ClassMethod: EventHandler.setDragTrackerImage

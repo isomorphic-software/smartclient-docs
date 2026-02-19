@@ -745,7 +745,7 @@ In [day](#attr-calendardayview) and [week](#attr-calendarweekview) views, it dic
 
 By default, events that share space in a Lane or column are rendered from top to bottom, or left to right according to their [start-dates](#attr-calendarstartdatefield) - the earliest in a given lane appears top-most in that lane, or left-most in its column.
 
-Providing `overlapSortSpecifiers` allows for the events to be ordered by one or more of the fields stored on the events, or in the underlying [data-source](DataSource.md#class-datasource), if the Calendar is databound.
+Providing `overlapSortSpecifiers` allows for the events to be ordered by one or more of the fields stored on the events, or in the underlying [data-source](DataSource_1.md#class-datasource), if the Calendar is databound.
 
 **Flags**: IRW
 
@@ -2483,6 +2483,20 @@ Whether to show the Month view.
 **Flags**: IR
 
 ---
+## Attr: Calendar.fixedMonths
+
+### Description
+When true, the [month view](#attr-calendarmonthview) always shows exactly 6 weeks of dates, regardless of how many weeks the current month actually spans. This avoids the need to rebuild the grid's data array when navigating between months, since the row count never changes - only the cell contents are updated in place, which is significantly faster.
+
+When false, the month view shows only as many weeks as needed to display the current month (typically 4-6), and the data array is rebuilt on every month navigation.
+
+### Groups
+
+- visibility
+
+**Flags**: IRW
+
+---
 ## Attr: Calendar.timelineViewTitle
 
 ### Description
@@ -4033,7 +4047,7 @@ Setter for updating [Calendar.showWeekends](#attr-calendarshowweekends) at runti
 ## Method: Calendar.eventSaveError
 
 ### Description
-Notification method fired when an attempt to save [an event](../reference.md#object-calendarevent) following edits or drag-movements results in an error from the server. May be overridden to handle specific errors and provide feedback to the user or push a server-provided record to client caches with a call to [updateCaches()](DataSource.md#method-datasourceupdatecaches), for example.
+Notification method fired when an attempt to save [an event](../reference.md#object-calendarevent) following edits or drag-movements results in an error from the server. May be overridden to handle specific errors and provide feedback to the user or push a server-provided record to client caches with a call to [updateCaches()](DataSource_1.md#method-datasourceupdatecaches), for example.
 
 The `scenarioCode` parameter may be used to determine [how the save was initiated](../reference.md#type-calendarsavescenario).
 

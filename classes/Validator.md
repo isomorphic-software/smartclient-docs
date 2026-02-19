@@ -364,7 +364,7 @@ Enabling this property also implies [FormItem.validateOnExit](FormItem.md#attr-f
 ### Description
 Used to create a conditional validator based on [criteria](../reference.md#object-advancedcriteria). The criteria defines when the validator applies. The form current values or ListGrid record is used as reference for the criteria. If the criteria match, then the validator will be processed. Otherwise the validator is skipped and assumed valid.
 
-To use an `applyWhen` criteria the form or grid must use a [DataSource](DataSource.md#class-datasource).
+To use an `applyWhen` criteria the form or grid must use a [DataSource](DataSource_1.md#class-datasource).
 
 **NOTE:** `applyWhen` is not supported for "binary" fields.
 
@@ -621,7 +621,7 @@ Note that "record" will contain only other values submitted at the same time, no
 ## Attr: Validator.operationId
 
 ### Description
-Applies only to the "isUnique" validator; allows you to name a specific [operation](DataSource.md#attr-datasourceoperationbindings) for the server-side uniqueness check. Ignored on the client.
+Applies only to the "isUnique" validator; allows you to name a specific [operation](DataSource_1.md#attr-datasourceoperationbindings) for the server-side uniqueness check. Ignored on the client.
 
 **Flags**: IR
 

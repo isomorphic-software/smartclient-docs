@@ -39,5 +39,7 @@ Scrolling and clipping of objects when part of the object is obscured
 - [GridRenderer.scrollRedrawDelay](../classes/GridRenderer.md#attr-gridrendererscrollredrawdelay)
 - [GridRenderer.dragScrollRedrawDelay](../classes/GridRenderer.md#attr-gridrendererdragscrollredrawdelay)
 - [GridRenderer.touchScrollRedrawDelay](../classes/GridRenderer.md#attr-gridrenderertouchscrollredrawdelay)
+- [GridRenderer.predictiveScrollRedraw](../classes/GridRenderer.md#attr-gridrendererpredictivescrollredraw)
+- [GridRenderer.touchInstantRedrawOnContact](../classes/GridRenderer.md#attr-gridrenderertouchinstantredrawoncontact)
 
 ---

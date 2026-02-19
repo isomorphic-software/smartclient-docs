@@ -27,7 +27,7 @@ When you call [DynamicForm.saveData](../classes/DynamicForm.md#method-dynamicfor
 
 Client-side callbacks, such as the callback passed to saveData(), fire normally.
 
-Note that FileItems cannot be programmatically populated - this is a browser security restriction over which we have no control. This restriction means that we are unable to populate a FileItem with the correct filename when a form is editing an existing record. Also, when you call saveData() on a form that is editing a new record, the FileItem will be cleared on successful completion of the saveData() call; this is a side-effect of the form being placed into "edit" mode. In both of these cases, the fact that the FileItem has been cleared will not cause the persisted binary data to be removed by SmartClient Server on subsequent calls to setData(). If the user selects another file, it will overwrite the existing one; if the FileItem is left blank, the server simply ignores it. If you actually wish to wipe out the value of a binary field, call [updateData()](../classes/DataSource.md#method-datasourceupdatedata) on the underlying dataSource, passing an explicit null value for the binary field.
+Note that FileItems cannot be programmatically populated - this is a browser security restriction over which we have no control. This restriction means that we are unable to populate a FileItem with the correct filename when a form is editing an existing record. Also, when you call saveData() on a form that is editing a new record, the FileItem will be cleared on successful completion of the saveData() call; this is a side-effect of the form being placed into "edit" mode. In both of these cases, the fact that the FileItem has been cleared will not cause the persisted binary data to be removed by SmartClient Server on subsequent calls to setData(). If the user selects another file, it will overwrite the existing one; if the FileItem is left blank, the server simply ignores it. If you actually wish to wipe out the value of a binary field, call [updateData()](../classes/DataSource_1.md#method-datasourceupdatedata) on the underlying dataSource, passing an explicit null value for the binary field.
 
 DataSources can have multiple binary fields, but developers should be aware that you can not submit more than one FileItem in a single form. Developers needing to upload multiple files can either use the [MultiFileItem](../classes/MultiFileItem.md#class-multifileitem), or use multiple DynamicForms (nested in a [VStack](../reference.md#class-vstack), or similar), and submit them separately. For an add operation, the pattern would be to perform the initial submission of values for the record and then use the [callback](../classes/DSRequest.md#attr-dsrequestcallback) to apply the primary key value for the new record to the forms with binary fields and save them to the server separately. This approach has the advantage that if an error or timeout occurs, users will not be caught waiting for files to complete uploading before being notified of the failure and having to repeat the entire transaction.  
 Note when adding a new record using this pattern, if you have a binary field marked as `required="true"` it should be submitted as part of the initial submission.
@@ -53,6 +53,20 @@ To configure the maximum number of files in a single request (set to 10 by defau
 fileUpload.maxFileCount: 10
 
 When a [FileItem](../classes/FileItem.md#class-fileitem) or [UploadItem](../classes/UploadItem.md#class-uploaditem) is bound to a "binary" `DataSourceField` with a `maxFileSize` setting, a [`maxFileSize`\-type](../reference.md#type-validatortype) validator is automatically added to the item's [validators](../classes/FormItem.md#attr-formitemvalidators). In supported browsers, a `maxFileSize` validator is a client-side check that the size of a file selected for upload does not exceed the field's `maxFileSize`. Note, however, that server-side enforcement of the `maxFileSize` is always required because the user's browser might not support client-side file size checks. Also, any client-side check can be bypassed by a malicious user.
+
+**Disk-based storage for large uploads**
+
+By default, uploaded files are held in memory during processing. For very large file uploads, this can cause memory pressure or OutOfMemoryErrors. To handle files larger than available memory, the server can be configured to automatically stream uploads exceeding a size threshold to temporary files on disk.
+
+To configure the threshold (in bytes) above which uploads are written to disk instead of held in memory, set the **fileUpload.sizeThreshold** property. The default is 10KB (10240 bytes):
+
+fileUpload.sizeThreshold: 10K
+
+To specify a custom directory for temporary files (defaults to the system temp directory), set the **fileUpload.tempDirectory** property:
+
+fileUpload.tempDirectory: /var/tmp/smartclient-uploads
+
+Temporary files are automatically deleted after request processing completes. When working with large uploads in server-side code, use [getInputStream()](#method-iscfileitemgetinputstream) rather than [get()](#method-iscfileitemget) to avoid loading the entire file into memory.
 
 **Processing File Uploads with server-side business logic**
 

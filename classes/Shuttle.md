@@ -43,7 +43,7 @@ Title for the source grid, shown as a [Canvas.groupTitle](Canvas.md#attr-canvasg
 ## Attr: Shuttle.fetchOperation
 
 ### Description
-[OperationId](DSRequest.md#attr-dsrequestoperationid) for fetching records from the shuttle's [DataSource](DataSource.md#class-datasource).
+[OperationId](DSRequest.md#attr-dsrequestoperationid) for fetching records from the shuttle's [DataSource](DataSource_1.md#class-datasource).
 
 **Flags**: IR
 
@@ -73,7 +73,7 @@ To update the selection by value at runtime use [Shuttle.setSelectedByValue](#me
 ## Attr: Shuttle.valueField
 
 ### Description
-This field is expected to be unique for records within the shuttle's data set. If not explicitly specified the [dataSource.primaryKey](DataSource.md#class-datasource) will be used.
+This field is expected to be unique for records within the shuttle's data set. If not explicitly specified the [dataSource.primaryKey](DataSource_1.md#class-datasource) will be used.
 
 May be used to [select records by value](#method-shuttlesetselectedbyvalue) and to retrieve the current [selected values](#method-shuttlegetselectedvalues).
 
@@ -365,7 +365,7 @@ In this case no record will be returned by this method for that record by defaul
 ### Description
 Method to add or remove records from the current selection where the [Shuttle.valueField](#attr-shuttlevaluefield) matches the values passed in.
 
-If the source listGrid does not have a [complete data set](ResultSet.md#method-resultsetallmatchingrowscached) and does not contain an entry for any of the requested values, a separate fetch request will be issued against our [DataSource](DataSource.md#class-datasource) to pick up the records for the specified value(s). The [Shuttle.valuesFetchInProgress](#method-shuttlevaluesfetchinprogress) and [Shuttle.valuesFetchComplete](#method-shuttlevaluesfetchcomplete) methods provide information about this fetch.
+If the source listGrid does not have a [complete data set](ResultSet.md#method-resultsetallmatchingrowscached) and does not contain an entry for any of the requested values, a separate fetch request will be issued against our [DataSource](DataSource_1.md#class-datasource) to pick up the records for the specified value(s). The [Shuttle.valuesFetchInProgress](#method-shuttlevaluesfetchinprogress) and [Shuttle.valuesFetchComplete](#method-shuttlevaluesfetchcomplete) methods provide information about this fetch.
 
 ### Parameters
 

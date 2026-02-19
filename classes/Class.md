@@ -140,7 +140,7 @@ Global identifier for referring to a Class instance in JavaScript. If you specif
 Not all Class subclasses support this property. The following commonly-used subclasses support global IDs:
 
 *   [Canvas](Canvas.md#class-canvas) and all visual widget subclasses
-*   [DataSource](DataSource.md#class-datasource)
+*   [DataSource](DataSource_1.md#class-datasource)
 *   [Tree](Tree.md#class-tree)
 *   [ValuesManager](ValuesManager.md#class-valuesmanager)
 *   [ResultSet](ResultSet.md#class-resultset)
@@ -1903,6 +1903,36 @@ If the `action` parameter is omitted the default behavior will invoke the same n
 ### See Also
 
 - [Class.ignore](#method-classignore)
+
+---
+## Method: Class.getChildPropertyValue
+
+### Description
+Returns the value that a property would have on an [AutoChild](../kb_topics/autoChildren.md#kb-topic-autochildren) based on the cascade of defaults and properties, without actually creating the AutoChild.
+
+This walks the same property cascade as [Class.createAutoChild](#method-classcreateautochild): autoChildDefaults, then \[childName\]Defaults, then dynamicDefaults, then \[childName\]Properties. If the property is not set in any of these, the method falls back to the class prototype of whatever class the AutoChild would use.
+
+**Caveats:**
+
+*   Does NOT account for [configureAutoChild](#method-configureautochild), `autoConfigure()`, [getDynamicDefaults](#method-getdynamicdefaults), autoPassthroughs, or any other custom code that modifies properties during construction.
+*   Intended for resolving one or two properties when instantiation would be wasteful (e.g., determining a dimension for layout calculations). Do NOT use it to resolve many properties as a substitute for creation — just use [Class.createAutoChild](#method-classcreateautochild) instead.
+*   For nested AutoChildren (an AutoChild of an AutoChild), call this method on the intermediate class or instance, not on the outermost parent.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| childName | [String](#type-string) | false | — | name of the autoChild |
+| propertyName | [String](#type-string) | false | — | property to resolve |
+| dynamicDefaults | [Properties](../reference.md#type-properties) | true | — | dynamic defaults that would be passed to createAutoChild() |
+
+### Returns
+
+`[Any](#type-any)` — resolved property value, or undefined if unset everywhere
+
+### Groups
+
+- autoChildren
 
 ---
 ## Method: Class.logFatal

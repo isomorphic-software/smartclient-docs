@@ -21,7 +21,7 @@ See the [Upload Overview](../kb_topics/upload.md#kb-topic-uploading-files) for i
 
 There are multiple ways that a FileItem can present the file to the user in read-only mode.
 
-In most cases the FileItem will not have its `value` set to the raw binary data value stored on the server for the field. However if the value is present as a Base64 encoded string due to [DataSourceField.encodeInResponse](DataSourceField.md#attr-datasourcefieldencodeinresponse) being set or due to custom server logic populating the field value explicitly, the [displayForm](#displayform) will be displayed and the raw data value be rendered as a string within its [displayItem](#displayitem).
+In most cases the FileItem will not have its `value` set to the raw binary data value stored on the server for the field. However if the value is present as a Base64 encoded string due to [DataSourceField.encodeInResponse](DataSourceField.md#attr-datasourcefieldencodeinresponse) being set or due to custom server logic populating the field value explicitly, the [FileItem.displayForm](#attr-fileitemdisplayform) will be displayed and the raw data value be rendered as a string within its [FileItem.displayItem](#attr-fileitemdisplayitem).
 
 If the `value` is not set, the [FileItem.displayCanvas](#attr-fileitemdisplaycanvas) will be displayed instead. For `"imageFile"` type fields with [showFileInline](#attr-fileitemshowfileinline) set to true, the image-file will be streamed and displayed inline within the displayCanvas.
 

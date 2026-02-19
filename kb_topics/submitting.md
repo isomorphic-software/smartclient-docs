@@ -24,6 +24,8 @@ Direct submission of forms to a target URL
 - [DynamicForm.target](../classes/DynamicForm.md#attr-dynamicformtarget)
 - [DynamicForm.method](../classes/DynamicForm.md#attr-dynamicformmethod)
 - [DynamicForm.encoding](../classes/DynamicForm.md#attr-dynamicformencoding)
+- [DynamicForm.useFileUploadItem](../classes/DynamicForm.md#attr-dynamicformusefileuploaditem)
+- [DynamicForm.showUploadProgress](../classes/DynamicForm.md#attr-dynamicformshowuploadprogress)
 - [DynamicForm.canSubmit](../classes/DynamicForm.md#attr-dynamicformcansubmit)
 - [DynamicForm.saveOnEnter](../classes/DynamicForm.md#attr-dynamicformsaveonenter)
 

@@ -1,9 +1,14 @@
-# DataSource Documentation
+# DataSource Documentation (Part 1 of 2)
 
 [← Back to API Index](../reference.md)
 
 ---
 
+# DataSource Documentation
+
+[← Back to API Index](../reference.md)
+
+---
 ## Class: DataSource
 
 ### Description
@@ -50,13 +55,13 @@ A message returned by a `DataSource` when an operation requires criteria, but no
 ## ClassAttr: DataSource.deepCloneNonFieldValuesOnEdit
 
 ### Description
-Provides the global default setting for deep or shallow cloning of non-field attributes of value objects prior to edit. See [DataSource.deepCloneNonFieldValuesOnEdit](#attr-datasourcedeepclonenonfieldvaluesonedit) for details of what this means.
+Provides the global default setting for deep or shallow cloning of non-field attributes of value objects prior to edit. See [DataSource.deepCloneNonFieldValuesOnEdit](DataSource_1.md#attr-datasourcedeepclonenonfieldvaluesonedit) for details of what this means.
 
 The default setting of null is the same as false; with this default in place, `deepCloneNonFieldValuesOnEdit` must be set explicitly set at dataSource or component level if you require deep cloning.
 
 ### See Also
 
-- [DataSource.deepCloneNonFieldValuesOnEdit](#attr-datasourcedeepclonenonfieldvaluesonedit)
+- [DataSource.deepCloneNonFieldValuesOnEdit](DataSource_1.md#attr-datasourcedeepclonenonfieldvaluesonedit)
 - [DataBoundComponent.deepCloneNonFieldValuesOnEdit](DataBoundComponent.md#attr-databoundcomponentdeepclonenonfieldvaluesonedit)
 
 **Flags**: IRWA
@@ -65,13 +70,13 @@ The default setting of null is the same as false; with this default in place, `d
 ## ClassAttr: DataSource.deepCloneOnEdit
 
 ### Description
-Provides the global default setting for deep or shallow cloning of objects prior to edit. See [DataSource.deepCloneOnEdit](#attr-datasourcedeepcloneonedit) for details of what this means.
+Provides the global default setting for deep or shallow cloning of objects prior to edit. See [DataSource.deepCloneOnEdit](DataSource_1.md#attr-datasourcedeepcloneonedit) for details of what this means.
 
 The default setting of null is the same as false; with this default in place, `deepCloneOnEdit` must be set explicitly set at dataSource, component or field level if you require deep cloning.
 
 ### See Also
 
-- [DataSource.deepCloneOnEdit](#attr-datasourcedeepcloneonedit)
+- [DataSource.deepCloneOnEdit](DataSource_1.md#attr-datasourcedeepcloneonedit)
 - [DataBoundComponent.deepCloneOnEdit](DataBoundComponent.md#attr-databoundcomponentdeepcloneonedit)
 - [DataSourceField.deepCloneOnEdit](DataSourceField.md#attr-datasourcefielddeepcloneonedit)
 
@@ -1158,7 +1163,7 @@ Whether to make this DataSource available as a global variable for convenience.
 ## Attr: DataSource.deepCloneNonFieldValuesOnEdit
 
 ### Description
-When editing values in [DataBoundComponent](../reference.md#interface-databoundcomponent)s bound to this dataSource, should we perform a deep clone of values that are not associated with a field (ie, attributes on the record that do not map to a component field either directly by name, or by [dataPath](FormItem.md#attr-formitemdatapath)). If this flag is not explicitly set, it defaults to the value of the same-named static property, [DataSource.deepCloneNonFieldValuesOnEdit](#classattr-datasourcedeepclonenonfieldvaluesonedit). This flag can also be overridden per-component - see [DataBoundComponent.deepCloneNonFieldValuesOnEdit](DataBoundComponent.md#attr-databoundcomponentdeepclonenonfieldvaluesonedit).
+When editing values in [DataBoundComponent](../reference.md#interface-databoundcomponent)s bound to this dataSource, should we perform a deep clone of values that are not associated with a field (ie, attributes on the record that do not map to a component field either directly by name, or by [dataPath](FormItem.md#attr-formitemdatapath)). If this flag is not explicitly set, it defaults to the value of the same-named static property, [DataSource.deepCloneNonFieldValuesOnEdit](DataSource.md#classattr-datasourcedeepclonenonfieldvaluesonedit). This flag can also be overridden per-component - see [DataBoundComponent.deepCloneNonFieldValuesOnEdit](DataBoundComponent.md#attr-databoundcomponentdeepclonenonfieldvaluesonedit).
 
 Note, a "deep clone" is one created by traversing the original values object recursively, cloning the contents of nested objects and arrays; a "shallow clone" is a copy created by simply copying the top-level attributes of an object; if you have nested objects that are copied like this, the "copies" are actual references to the original objects.
 
@@ -3065,7 +3070,7 @@ When using the [pattern operators](../kb_topics/patternOperators.md#kb-topic-pat
 ### Description
 Before we start editing values in [DataBoundComponent](../reference.md#interface-databoundcomponent)s bound to this dataSource, should we perform a deep clone of the underlying values (a "deep clone" is one created by traversing the original values object recursively, cloning the contents of nested objects and arrays). If this flag is explicitly set to false, we perform a shallow clone of the underlying values before edit (a "shallow clone" is a copy created by simply copying the top-level attributes of an object). Note, this setting only affects deep-cloning of attributes that are bound to a field; for other, non-field values, see [DataSource.deepCloneNonFieldValuesOnEdit](#attr-datasourcedeepclonenonfieldvaluesonedit).
 
-If this flag is not explicitly set, it defaults to the value of the same-named static property, [DataSource.deepCloneOnEdit](#classattr-datasourcedeepcloneonedit). This flag can also be overridden per-component and per-field - see [DataBoundComponent.deepCloneOnEdit](DataBoundComponent.md#attr-databoundcomponentdeepcloneonedit) and [DataSourceField.deepCloneOnEdit](DataSourceField.md#attr-datasourcefielddeepcloneonedit).
+If this flag is not explicitly set, it defaults to the value of the same-named static property, [DataSource.deepCloneOnEdit](DataSource.md#classattr-datasourcedeepcloneonedit). This flag can also be overridden per-component and per-field - see [DataBoundComponent.deepCloneOnEdit](DataBoundComponent.md#attr-databoundcomponentdeepcloneonedit) and [DataSourceField.deepCloneOnEdit](DataSourceField.md#attr-datasourcefielddeepcloneonedit).
 
 Note, this flag only has an effect if you are editing a values object that contains nested objects or arrays, using [dataPath](Canvas.md#attr-canvasdatapath)s. When editing "flat" data - the mainstream case - there is no difference between a deep clone and a shallow clone.
 
@@ -3227,10 +3232,15 @@ When we come across Java `Enum` properties in plain or annotated classes, as wel
 
 For cases where we generate a field of SmartClient type "enum" (see the above tables), the keys of the valueMap are the result of calling `name()` on each member of the underlying Java Enum (in other words, its value exactly as declared in its enum declaration). For cases where we generate a field of SmartClient type "intEnum", the keys of the valueMap are strings representing the ordinal number of each member in the Java Enum - "0", "1", etc. Note that this behavior will be overriden by [DataSource.enumTranslateStrategy](#attr-datasourceenumtranslatestrategy) if both are set.
 
-In both of these case, the display values generated for the valueMap are the result of calling `toString()` on each Enum member. If that gives the same value as calling `name()`, the value is passed through `DataTools.deriveTitleFromName()`, which applies the same processing rules as [DataSource.getAutoTitle](#classmethod-datasourcegetautotitle) to derive a more user-friendly display value.
+In both of these case, the display values generated for the valueMap are the result of calling `toString()` on each Enum member. If that gives the same value as calling `name()`, the value is passed through `DataTools.deriveTitleFromName()`, which applies the same processing rules as [DataSource.getAutoTitle](DataSource.md#classmethod-datasourcegetautotitle) to derive a more user-friendly display value.
 
 #### Further notes
 `schemaBean` implies `autoDeriveSchema`, because it has no other purpose than to name the bean to use for auto-derived schema. Thus, if you specify `schemaBean` you do not need to specify `autoDeriveSchema` as well (though it does no harm to do so). However, `tableName` and `beanClassName` can be validly specified without implying `autoDeriveSchema`, so in those cases you must explicitly specify `autoDeriveSchema`.
+
+#### Column descriptions as field titles
+When deriving schema from an SQL table, if a column has a non-empty description (the JDBC REMARKS attribute, which maps to `COMMENT ON COLUMN` in PostgreSQL and similar features in other databases), that description is used as the field title. If no description is present, the title is auto-derived from the column name via the same logic as [DataSource.getAutoTitle](DataSource.md#classmethod-datasourcegetautotitle).
+
+Some databases use column comments for annotations or metadata rather than human-readable titles. You can filter these out using the `sql.ignoreColumnDescriptionPrefix` property in [server.properties](../kb_topics/server_properties.md#kb-topic-serverproperties-file) — see [sqlSettings](../kb_topics/sqlSettings.md#kb-topic-sql-database-settings-in-serverproperties) for details.
 
 The underlying super-DataSource is cached in server memory, so that it does not have to be derived and created each time you need it. However, the cache manager will automatically refresh the cached copy if it detects that the deriving DataSource has changed. Thus, if you change the metadata your DataSource is deriving (if, for example, you add a column to a table), all you need to do is touch the `.ds.xml` file (ie, update its last changed timestamp - you don't actually have to change it) and the cached copy will be refreshed next time it is needed.
 
@@ -3541,7 +3551,7 @@ For other DataSources, a one-time fetch will be performed to retrieve sample dat
 
 Alternatively, mock data can be provided with [DataSource.cacheData](#attr-datasourcecachedata).
 
-DataSources can be loaded in `mockMode` via passing settings to [DataSource.load](#classmethod-datasourceload), or if loaded with a screen or project, by passing settings to [RPCManager.loadScreen](RPCManager.md#classmethod-rpcmanagerloadscreen) or the server-side Project.load() API.
+DataSources can be loaded in `mockMode` via passing settings to [DataSource.load](DataSource.md#classmethod-datasourceload), or if loaded with a screen or project, by passing settings to [RPCManager.loadScreen](RPCManager.md#classmethod-rpcmanagerloadscreen) or the server-side Project.load() API.
 
 **Flags**: IRW
 
@@ -4276,7 +4286,7 @@ If the DataSource is not yet loaded and a callback is provided, the DataSource w
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | ID | [GlobalId](../reference.md#type-globalid) | false | — | DataSource ID |
-| callback | [Callback](../reference.md#type-callback) | true | — | callback to fire when the DataSource is loaded. The callback receives the loaded [DataSource](#class-datasource) as its single parameter. |
+| callback | [Callback](../reference.md#type-callback) | true | — | callback to fire when the DataSource is loaded. The callback receives the loaded [DataSource](DataSource_1.md#class-datasource) as its single parameter. |
 
 ### Returns
 
@@ -4331,12 +4341,29 @@ Because the returned criteria may not be logically equivalent, `flattenCriteria`
 `[AdvancedCriteria](#type-advancedcriteria)` — flattened criteria
 
 ---
+## ClassMethod: DataSource.getAppDataSources
+
+### Description
+Returns the list of registered DataSources that represent application-level data, as opposed to framework-internal DataSources.
+
+The following categories are excluded:
+
+*   Internal framework DataSources (marked `_internal`, or with an ID starting with "\_"), such as those used by the Rules Engine or Selenium test infrastructure
+*   Component and builtin schema DataSources (`componentSchema` / `builtinSchema`)
+*   DataSources with IDs starting with "isc\_" (framework-internal)
+*   DataSources with auto-assigned IDs (potentially unstable references)
+
+### Returns
+
+`[Array of DataSource](#type-array-of-datasource)` — application DataSources
+
+---
 ## ClassMethod: DataSource.addSearchOperator
 
 ### Description
 Add a new search operator to all DataSources.
 
-See also [DataSource.addSearchOperator](#method-datasourceaddsearchoperator) for adding operators to specific DataSources only.
+See also [DataSource.addSearchOperator](DataSource_1.md#method-datasourceaddsearchoperator) for adding operators to specific DataSources only.
 
 ### Parameters
 
@@ -4420,13 +4447,13 @@ Without a DataSource, a criteria object must have a valid `operator` to be detec
 
 ### See Also
 
-- [DataSource.isAdvancedCriteria](#method-datasourceisadvancedcriteria)
+- [DataSource.isAdvancedCriteria](DataSource_1.md#method-datasourceisadvancedcriteria)
 
 ---
 ## ClassMethod: DataSource.loadWithParents
 
 ### Description
-Variation of [DataSource.load](#classmethod-datasourceload) that will also automatically load any DataSources that the requested DataSources inherit from (via [DataSource.inheritsFrom](#attr-datasourceinheritsfrom)).
+Variation of [DataSource.load](#classmethod-datasourceload) that will also automatically load any DataSources that the requested DataSources inherit from (via [DataSource.inheritsFrom](DataSource_1.md#attr-datasourceinheritsfrom)).
 
 If the parent DataSource is already loaded, calling `loadWithParents` will not automatically reload them unless the forceReload parameter is passed.
 
@@ -4666,7 +4693,7 @@ Synonym of [DataSource.getDataSource](#classmethod-datasourcegetdatasource): Loo
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | ID | [GlobalId](../reference.md#type-globalid) | false | — | DataSource ID |
-| callback | [Callback](../reference.md#type-callback) | true | — | callback to fire when the DataSource is loaded. The callback receives the loaded [DataSource](#class-datasource) as its single parameter. |
+| callback | [Callback](../reference.md#type-callback) | true | — | callback to fire when the DataSource is loaded. The callback receives the loaded [DataSource](DataSource_1.md#class-datasource) as its single parameter. |
 
 ### Returns
 
@@ -4774,7 +4801,7 @@ If the dataPath is null, this method will follow any [dataPath](ListGridField.md
 ## ClassMethod: DataSource.hasCustomTypeOperators
 
 ### Description
-Returns true if the operator list for the passed type has been customized via a call to [DataSource.setTypeOperators](#method-datasourcesettypeoperators).
+Returns true if the operator list for the passed type has been customized via a call to [DataSource.setTypeOperators](DataSource_1.md#method-datasourcesettypeoperators).
 
 ### Parameters
 
@@ -4793,9 +4820,9 @@ Returns true if the operator list for the passed type has been customized via a 
 ### Description
 Exports arbitrary client-side data, with client-side formatters applied, so is suitable for direct display to users. This method can be used to export data formatted outside of any kind of visual component.
 
-Requires the SmartClient server, but does not rely on any server-side DataSources. If you need to intervene in the export process server-side - for example, if you need to do something not directly supported with the exported object, such as attach it to an email - use the [instance method](#method-datasourceexportclientdata) with an appropriate [OperationBinding](OperationBinding.md#class-operationbinding), as described in the method documentation.
+Requires the SmartClient server, but does not rely on any server-side DataSources. If you need to intervene in the export process server-side - for example, if you need to do something not directly supported with the exported object, such as attach it to an email - use the [instance method](DataSource_1.md#method-datasourceexportclientdata) with an appropriate [OperationBinding](OperationBinding.md#class-operationbinding), as described in the method documentation.
 
-To export unformatted data, see [exportData](#method-datasourceexportdata) which does not include client-side formatters, but requires both the SmartClient server and the presence of server-side DataSources.
+To export unformatted data, see [exportData](DataSource_1.md#method-datasourceexportdata) which does not include client-side formatters, but requires both the SmartClient server and the presence of server-side DataSources.
 
 Note that field [displayFormat](DataSourceField.md#attr-datasourcefielddateformatter) is honored for "date" and "datetime" fields when exporting direct to Excel; see the displayFormat docs for details.
 
@@ -4948,6 +4975,25 @@ To troubleshoot message formation, you can set the log category "xmlSerialize" t
 `[String](#type-string)` — data as serialized to XML
 
 **Flags**: A
+
+---
+## Method: DataSource.compareValues
+
+### Description
+Compares two field values, returning -1, 0, or 1 to indicate sort order. Handles type-aware comparison including dates and relative date values.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| value1 | [Any](#type-any) | false | — | first value to compare |
+| value2 | [Any](#type-any) | false | — | second value to compare |
+| fieldName | [String](#type-string) | false | — | field name for type-aware comparison |
+| ignoreCase | [Boolean](#type-boolean) | true | — | whether to ignore case for string comparisons |
+
+### Returns
+
+`[Integer](../reference_2.md#type-integer)` — \-1 if value1 > value2, 1 if value1 < value2, 0 if equal, 2 if incomparable
 
 ---
 ## Method: DataSource.renameFile
@@ -5110,7 +5156,7 @@ It is also possible to have this function return only operators of a given [Oper
 
 ### See Also
 
-- [DataSource.getTypeOperatorMap](#method-datasourcegettypeoperatormap)
+- [DataSource.getTypeOperatorMap](DataSource_2.md#method-datasourcegettypeoperatormap)
 
 ---
 ## Method: DataSource.compareDates
@@ -5280,7 +5326,7 @@ A "validate" dsRequest is effectively always [RPCRequest.willHandleError](RPCReq
 ## Method: DataSource.convertDataSourceCriteria
 
 ### Description
-Converts criteria expressed in SmartClient's simple criteria format to an AdvancedCriteria object. This instance method differs from the class method [DataSource.convertCriteria](#classmethod-datasourceconvertcriteria) in that it makes use of the dataSource as schema to help in the conversion. For example, this method is able to honor [DataSourceField.ignoreTextMatchStyle](DataSourceField.md#attr-datasourcefieldignoretextmatchstyle) and use the dataSource's [defaultTextMatchStyle](#attr-datasourcedefaulttextmatchstyle) rather than assuming "substring"
+Converts criteria expressed in SmartClient's simple criteria format to an AdvancedCriteria object. This instance method differs from the class method [DataSource.convertCriteria](DataSource.md#classmethod-datasourceconvertcriteria) in that it makes use of the dataSource as schema to help in the conversion. For example, this method is able to honor [DataSourceField.ignoreTextMatchStyle](DataSourceField.md#attr-datasourcefieldignoretextmatchstyle) and use the dataSource's [defaultTextMatchStyle](#attr-datasourcedefaulttextmatchstyle) rather than assuming "substring"
 
 ### Parameters
 
@@ -5372,7 +5418,7 @@ Note: rather than overriding this method, we recommend using [observation](Class
 ### Description
 Exports arbitrary client-side data, with client-side formatters applied, so is suitable for direct display to users. This method can be used to export data formatted outside of any kind of visual component.
 
-If you do not specify an [operationId](OperationBinding.md#attr-operationbindingoperationid) in the `requestProperties` you pass to this method, it behaves exactly the same as the [static classMethod](#classmethod-datasourceexportclientdata) of the same name. If you do specify an `operationId`, the framework expects your DataSource to configure an [OperationBinding](OperationBinding.md#class-operationbinding) of [operationType](OperationBinding.md#attr-operationbindingoperationtype) "clientExport" with the same `operationId`. The framework will then send the `exportClientData` request via the ordinary [DSRequest](../reference_2.md#object-dsrequest) mechanism, which allows you to use normal framework features in the client data export.
+If you do not specify an [operationId](OperationBinding.md#attr-operationbindingoperationid) in the `requestProperties` you pass to this method, it behaves exactly the same as the [static classMethod](DataSource.md#classmethod-datasourceexportclientdata) of the same name. If you do specify an `operationId`, the framework expects your DataSource to configure an [OperationBinding](OperationBinding.md#class-operationbinding) of [operationType](OperationBinding.md#attr-operationbindingoperationtype) "clientExport" with the same `operationId`. The framework will then send the `exportClientData` request via the ordinary [DSRequest](../reference_2.md#object-dsrequest) mechanism, which allows you to use normal framework features in the client data export.
 
 For example, you could add a [DMI declaration](../kb_topics/dmiOverview.md#kb-topic-direct-method-invocation) to your `operationBinding`, which would allow you to write server-side code that intervenes in the export process - for instance, by calling the `getExportObject()` API to do something special with the export document, like saving it to a database table or sending it to an email list.
 
@@ -5400,7 +5446,7 @@ By default:
 
 *   any criteria that do not correspond to a DataSource field are ignored
 *   for simple criteria, any null or empty string criteria are ignored and all other criteria are passed to [DataSource.fieldMatchesFilter](#method-datasourcefieldmatchesfilter)
-*   for advanced criteria, each criterion is evaluated via [DataSource.evaluateCriterion](#method-datasourceevaluatecriterion)
+*   for advanced criteria, each criterion is evaluated via [DataSource.evaluateCriterion](DataSource_2.md#method-datasourceevaluatecriterion)
 
 This method is called by [ResultSet.applyFilter](ResultSet.md#method-resultsetapplyfilter) to provide filtering when a ResultSet has a complete cache and filtering can be performed client-side. You may want to override this method in order to mimic the filtering behavior that your server performs.
 
@@ -5634,7 +5680,7 @@ Call this method to set the data in the client-side test-data after initializati
 ## Method: DataSource.getAutoTitle
 
 ### Description
-Return a reasonable user-visible title given a fieldName. Called when [DataSource.autoDeriveTitles](#attr-datasourceautoderivetitles) is true and by default, calls the class method [DataSource.getAutoTitle](#classmethod-datasourcegetautotitle). Override to provide a different policy for auto-deriving titles for a particular DataSource or subclass of DataSource.
+Return a reasonable user-visible title given a fieldName. Called when [DataSource.autoDeriveTitles](#attr-datasourceautoderivetitles) is true and by default, calls the class method [DataSource.getAutoTitle](DataSource.md#classmethod-datasourcegetautotitle). Override to provide a different policy for auto-deriving titles for a particular DataSource or subclass of DataSource.
 
 ### Parameters
 
@@ -5674,11 +5720,11 @@ Save a file to the DataSource.
 ### Description
 Split a criteria apart based on `fields`.
 
-This method will take a simple or [Advanced](../reference.md#object-advancedcriteria) criteria object and extract the subcriteria that apply to the specified array of fields. If passed an AdvancedCriteria, the criteria should be [flat](#classmethod-datasourceisflatcriteria) and the outer operator must be `"and"`.
+This method will take a simple or [Advanced](../reference.md#object-advancedcriteria) criteria object and extract the subcriteria that apply to the specified array of fields. If passed an AdvancedCriteria, the criteria should be [flat](DataSource.md#classmethod-datasourceisflatcriteria) and the outer operator must be `"and"`.
 
 A new criteria object is returned with any criteria applicable to the specified fields. The passed `criteria` is then modified to remove these fields resulting in two distinct criteria.
 
-To avoid modifying an original criteria, use [DataSource.copyCriteria](#classmethod-datasourcecopycriteria) to make a copy to be passed in.
+To avoid modifying an original criteria, use [DataSource.copyCriteria](DataSource.md#classmethod-datasourcecopycriteria) to make a copy to be passed in.
 
 By default the field-specific criteria returned will be in simple criteria format even if the criteria passed in was Advanced. Developers may suppress this conversion by passing in the `preserveAdvanced` parameter. Note that not every [criterion operator](../reference.md#type-operatorid) can be converted to a simple format. This method will only to convert field level criterion with operators that correspond to one of the available [textMatchStyle](../reference_2.md#type-textmatchstyle) options - namely `"equals"`, `"iEquals"` `"iContains"` or `"startsWith"`.
 
@@ -6413,7 +6459,7 @@ This method is called by [ResultSet.compareCriteria](ResultSet.md#method-results
 ### Description
 Get the list of [OperatorId](../reference.md#type-operatorid)s available on this DataSource for the given [FieldType](../reference_2.md#type-fieldtype).
 
-If [DataSource.setTypeOperators](#method-datasourcesettypeoperators) has been called for this DataSource and FieldType, returns that list, otherwise, returns the set of valid operators for the [FieldType](../reference_2.md#type-fieldtype) as specified by [SimpleType.validOperators](SimpleType.md#attr-simpletypevalidoperators), otherwise, the system-wide set of valid operators for the type as registered via [DataSource.addSearchOperator](#classmethod-datasourceaddsearchoperator).
+If [DataSource.setTypeOperators](#method-datasourcesettypeoperators) has been called for this DataSource and FieldType, returns that list, otherwise, returns the set of valid operators for the [FieldType](../reference_2.md#type-fieldtype) as specified by [SimpleType.validOperators](SimpleType.md#attr-simpletypevalidoperators), otherwise, the system-wide set of valid operators for the type as registered via [DataSource.addSearchOperator](DataSource.md#classmethod-datasourceaddsearchoperator).
 
 ### Parameters
 
@@ -6470,9 +6516,9 @@ Get a list of files from the DataSource. Note, if [automatic file versioning](#a
 ## Method: DataSource.isAdvancedCriteria
 
 ### Description
-Instance method that calls [DataSource.isAdvancedCriteria](#classmethod-datasourceisadvancedcriteria), passing this DataSource for enhanced heuristic detection. When a DataSource is available, `fieldName`\-only criteria are recognized as AdvancedCriteria shorthand if the fieldName is a valid field on this DataSource.
+Instance method that calls [DataSource.isAdvancedCriteria](DataSource.md#classmethod-datasourceisadvancedcriteria), passing this DataSource for enhanced heuristic detection. When a DataSource is available, `fieldName`\-only criteria are recognized as AdvancedCriteria shorthand if the fieldName is a valid field on this DataSource.
 
-See [DataSource.isAdvancedCriteria](#classmethod-datasourceisadvancedcriteria) for full documentation of the heuristics used to detect AdvancedCriteria format.
+See [DataSource.isAdvancedCriteria](DataSource.md#classmethod-datasourceisadvancedcriteria) for full documentation of the heuristics used to detect AdvancedCriteria format.
 
 ### Parameters
 
@@ -6752,7 +6798,7 @@ Add a new search operator, only to this DataSource.
 
 If an existing [Operator](../reference.md#object-operator) is passed, restricts the set of FieldTypes to which that operator can be applied in this DataSource.
 
-See also [DataSource.addSearchOperator](#classmethod-datasourceaddsearchoperator) for adding operators to all DataSources.
+See also [DataSource.addSearchOperator](DataSource.md#classmethod-datasourceaddsearchoperator) for adding operators to all DataSources.
 
 ### Parameters
 
@@ -6851,73 +6897,5 @@ Returns this DataSource's [primaryKey](DataSourceField.md#attr-datasourcefieldpr
 
 - [DataSource.getPrimaryKeyField](#method-datasourcegetprimarykeyfield)
 - [DataSource.getPrimaryKeyFieldNames](#method-datasourcegetprimarykeyfieldnames)
-
----
-## Method: DataSource.getTypeOperatorMap
-
-### Description
-Get the list of [Operator](../reference.md#object-operator)s available for this [FieldType](../reference_2.md#type-fieldtype), as a [ValueMap](../reference_2.md#type-valuemap) from [OperatorId](../reference.md#type-operatorid) to the [Operator.title](Operator.md#attr-operatortitle) specified for the [Operator](../reference.md#object-operator), or the corresponding property in [Operators](Operators.md#class-operators) if [Operator.titleProperty](Operator.md#attr-operatortitleproperty) is set.
-
-This valueMap is suitable for use in a UI for building queries, similar to the [FilterBuilder](FilterBuilder.md#class-filterbuilder), and optionally omits operators marked [Operator.hidden](Operator.md#attr-operatorhidden) : true.
-
-It is also possible to have this function return only operators of a given [OperatorValueType](../reference_2.md#type-operatorvaluetype), or everything except operators of that type. This is useful, for example, if you want to return all the logical operators (like "and"), or everything except the logical operators.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| type | [FieldType](../reference_2.md#type-fieldtype) | true | — | Type to obtain operator map for. Defaults to "text" if not passed. |
-| includeHidden | [boolean](../reference.md#type-boolean) | true | — | whether to include Operators marked hidden:true |
-| valueType | [OperatorValueType](../reference_2.md#type-operatorvaluetype) | true | — | If passed, returns only operators of this [OperatorValueType](../reference_2.md#type-operatorvaluetype) |
-| omitValueType | [boolean](../reference.md#type-boolean) | true | — | If set, reverses the meaning of the `valueType` parameter, so operators of that [OperatorValueType](../reference_2.md#type-operatorvaluetype) are the only ones omitted |
-
-### Returns
-
-`[ValueMap](../reference_2.md#type-valuemap)` — mapping from [OperatorId](../reference.md#type-operatorid) to title, as described above
-
-### Groups
-
-- advancedFilter
-
-### See Also
-
-- [DataSource.getFieldOperatorMap](#method-datasourcegetfieldoperatormap)
-
----
-## Method: DataSource.getLegalChildTags
-
-### Description
-For a DataSource that describes a DOM structure, the list of legal child elements that can be contained by the element described by this DataSource.
-
-For a DataSource described by XML schema, this is the list of legal subelements **of complexType** (elements of simpleType become DataSourceFields with atomic type).
-
-Note that currently, if an XML schema file contains ordering constraints, DataSources derived from XML Schema do not capture these constraints.
-
-### Groups
-
-- xmlSchema
-
----
-## Method: DataSource.evaluateCriterion
-
-### Description
-Evaluate the given criterion with respect to the passed record.
-
-Typically called by the [condition](Operator.md#method-operatorcondition) function of a custom [Operator](../reference.md#object-operator) to evaluate [sub-criteria](Criterion.md#attr-criterioncriteria).
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| record | [Record](#type-record) | false | — | record to evaluate |
-| criterion | [Criterion](#type-criterion) | false | — | criterion to use |
-
-### Returns
-
-`[boolean](../reference.md#type-boolean)` — whether the record meets the supplied [Criterion](../reference_2.md#object-criterion)
-
-### Groups
-
-- advancedFilter
 
 ---

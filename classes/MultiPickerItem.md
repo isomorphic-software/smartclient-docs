@@ -143,7 +143,7 @@ Title for the [MultiPickerItem.selectAllButton](#attr-multipickeritemselectallbu
 ## Attr: MultiPickerItem.sortDirection
 
 ### Description
-[Sort direction](ListGrid_1.md#attr-listgridsortdirection) for this item's list of options. Will be applied to the +link{MultiPickeπrItem.pickList}, [MultiPickerItem.pickTree](#attr-multipickeritempicktree) or [MultiPickerItem.shuttle](#attr-multipickeritemshuttle) depending on the [MultiPickerItem.selectionStyle](#attr-multipickeritemselectionstyle) of this item.
+[Sort direction](ListGrid_1.md#attr-listgridsortdirection) for this item's list of options. Will be applied to the [MultiPickerItem.pickList](#attr-multipickeritempicklist), [MultiPickerItem.pickTree](#attr-multipickeritempicktree) or [MultiPickerItem.shuttle](#attr-multipickeritemshuttle) depending on the [MultiPickerItem.selectionStyle](#attr-multipickeritemselectionstyle) of this item.
 
 **Flags**: IR
 
@@ -327,7 +327,7 @@ If this item has a specified `optionDataSource`, this attribute may be set to sp
 ### Description
 If this MultiPickerItem is deriving its options from a dataSource, should it ensure unique field values by [grouping by](DSRequest.md#attr-dsrequestgroupby) the value field for this item? This is not necessary if the target dataSource value field is already unique - for example if this is the primaryKey field for a dataSource.
 
-Note that for MultiPickerItems with `deriveUniqueValues:true`, any [MultiPickerItem.expandedPickListFields](#attr-multipickeritemexpandedpicklistfields) to be displayed in the [expanded view](#attr-multipickeritemcanexpand) will not be able to display meaningful values unless a [summaryFunction](DSRequest.md#attr-dsrequestsummaryfunctions) is supplied to produce aggregated values from the grouped data. This may be achieved by specifying summaryFunctions directly on the [MultiPickerItem.optionFilterContext](#attr-multipickeritemoptionfiltercontext), or on the [operationBinding](DataSource.md#attr-datasourceoperationbindings) for the [fetch operation](#attr-multipickeritemoptionoperationid).
+Note that for MultiPickerItems with `deriveUniqueValues:true`, any [MultiPickerItem.expandedPickListFields](#attr-multipickeritemexpandedpicklistfields) to be displayed in the [expanded view](#attr-multipickeritemcanexpand) will not be able to display meaningful values unless a [summaryFunction](DSRequest.md#attr-dsrequestsummaryfunctions) is supplied to produce aggregated values from the grouped data. This may be achieved by specifying summaryFunctions directly on the [MultiPickerItem.optionFilterContext](#attr-multipickeritemoptionfiltercontext), or on the [operationBinding](DataSource_1.md#attr-datasourceoperationbindings) for the [fetch operation](#attr-multipickeritemoptionoperationid).
 
 **Flags**: IRA
 

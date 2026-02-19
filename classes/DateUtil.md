@@ -355,6 +355,28 @@ Initial default normalDisplayFormat is `"toLocaleString"`
 - dateFormatting
 
 ---
+## ClassMethod: DateUtil.getShortMonthNames
+
+### Description
+Return an array of the short names of each month, suitable for use in a selection list, etc. If [DateUtil.shortMonthNames](#classattr-dateutilshortmonthnames) is specified, this list will be used - by default, all locales specify shortMonthNames.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| length | [int](../reference.md#type-int) | false | — | maximum length of each day string - default is no maximum (full strings) |
+
+### Returns
+
+`[Array of String](#type-array-of-string)` — array of short month names
+
+### Groups
+
+- dateFormatting
+
+**Flags**: A
+
+---
 ## ClassMethod: DateUtil.compareLogicalDates
 
 ### Description
@@ -390,6 +412,22 @@ For further background on date, time and datetime types, storage and transmissio
 ### Returns
 
 `[Date](#type-date)` — a Date instance representing just the time portion of the datetime value, as a logical time
+
+---
+## ClassMethod: DateUtil.getMonthNames
+
+### Description
+Return an array of the full names of each month, suitable for use in a selection list, etc. If [DateUtil.monthNames](#classattr-dateutilmonthnames) is specified, this list will be used. Otherwise the value will be derived from the native browser date formatters. Note, if we have to derive names from the native browser date string, the day names may be in an abbreviated form, like the result of calling [DateUtil.getShortMonthNames](#classmethod-dateutilgetshortmonthnames) - we have no control over this, we have to work with whatever the browser returns, which may vary by browser as well as locale. If a consistent and correct set of day names is important in your application, ensure that `DateUtil.monthNames` is set.
+
+### Returns
+
+`[Array of String](#type-array-of-string)` — array of month names
+
+### Groups
+
+- dateFormatting
+
+**Flags**: A
 
 ---
 ## ClassMethod: DateUtil.getEndOf

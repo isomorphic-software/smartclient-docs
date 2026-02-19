@@ -232,6 +232,7 @@ For example:
 - [AutoChild](../reference.md#type-autochild)
 - [Class.addAutoChild](../classes/Class.md#method-classaddautochild)
 - [Class.createAutoChild](../classes/Class.md#method-classcreateautochild)
+- [Class.getChildPropertyValue](../classes/Class.md#method-classgetchildpropertyvalue)
 - [Class.creator](../classes/Class.md#attr-classcreator)
 - [Class.autoCreator](../classes/Class.md#attr-classautocreator)
 - [Canvas.autoParent](../classes/Canvas.md#attr-canvasautoparent)

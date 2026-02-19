@@ -60,6 +60,23 @@ Value to show in empty cells (when getCellValue returns null).
 **Flags**: IRW
 
 ---
+## Attr: GridRenderer.predictiveScrollRedraw
+
+### Description
+When true, the grid uses velocity tracking and momentum prediction to determine when and where to redraw during scrolling. This predicts where the user's scroll will stop and pre-renders that viewport, reducing perceived lag.
+
+The algorithm tracks scroll position history, calculates velocity and acceleration, and detects deceleration patterns that indicate the user is about to stop scrolling. When deceleration is detected, it predicts the final scroll position using exponential decay modeling and renders ahead to that position.
+
+Set to false to use the simple delay-based approach with [GridRenderer.scrollRedrawDelay](#attr-gridrendererscrollredrawdelay).
+
+### Groups
+
+- performance
+- scrolling
+
+**Flags**: IRW
+
+---
 ## Attr: GridRenderer.showHover
 
 ### Description
@@ -420,6 +437,21 @@ If we allow rows to expand, the row height as derived from [getRowHeight()](#met
 - cellStyling
 
 **Flags**: IRWA
+
+---
+## Attr: GridRenderer.touchInstantRedrawOnContact
+
+### Description
+On touch devices, when the user's finger is actively touching the screen (not during momentum/flick scrolling), redraw immediately rather than using a delay. Since the user can only scroll so far with direct finger movement before lifting for a flick, instant feedback is appropriate and prevents visible blank areas.
+
+This does not apply during momentum scrolling after a flick, where [GridRenderer.touchScrollRedrawDelay](#attr-gridrenderertouchscrollredrawdelay) or predictive scrolling is used instead.
+
+### Groups
+
+- performance
+- scrolling
+
+**Flags**: IRW
 
 ---
 ## Attr: GridRenderer.cellPadding

@@ -43,7 +43,7 @@ If a URL provided to various Page APIs begins with one of these Strings, it is t
 The default of protocols is:
 
 ```
-     ["http://","https://","file://","mailto:", "app-resource:", "data:"]
+     ["http://","https://","file://","mailto:", "app-resource:", "data:", "blob:"]
  
 ```
 .. and can be replaced via [Page.addClassProperties()](Class.md#classmethod-classaddclassproperties) or via setting the global variable isc\_protocolURLs before SmartClient loads.

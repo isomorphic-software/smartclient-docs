@@ -399,7 +399,7 @@ Vertical alignment of this component's title.
 ### Description
 Controls whether the button title is wrapped in a span element.
 
-**Note:** This property only has a visual effect when [button.supportsCSSAlignment](#buttonsupportscssalignment) is true. When supportsCSSAlignment is false (table-based layout), ellipsis display works correctly without a span wrapper.
+**Note:** This property only has a visual effect when [Button.supportsCSSAlignment](#attr-buttonsupportscssalignment) is true. When supportsCSSAlignment is false (table-based layout), ellipsis display works correctly without a span wrapper.
 
 When null (default), defaults to true for all overflow modes to preserve ellipsis display behavior. Set explicitly to false to skip the span wrapper for simpler DOM when ellipsis is not needed.
 

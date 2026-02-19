@@ -12,7 +12,7 @@ Tasks require "inputs" to do their work, just like a method call. For example, [
 
 For built-in tasks, you can typically use [TaskInputExpressions](../reference_2.md#type-taskinputexpression) to declare that the inputs of a task are drawn from [Process.state](../classes/Process.md#attr-processstate), the [output](../classes/Task.md#method-tasksetoutput) of a previous task in the process, or from global context such as [ruleScope](../classes/Process.md#attr-processrulescope). See the docs for each task for details.
 
-If you are implementing your own task and want to support `TaskInputExpressions` for the data required by your task, use +link{task.getExpressionValue(_expression_)}.
+If you are implementing your own task and want to support `TaskInputExpressions` for the data required by your task, use [Task.getExpressionValue](../classes/Task.md#method-taskgetexpressionvalue).
 
 You can also use the property [Task.inputs](../classes/Task.md#attr-taskinputs) to automatically support `TaskInputExpressions`: call [getInputRecord()](../classes/Task.md#method-taskgetinputrecord) to get the values of the provided expressions.
 

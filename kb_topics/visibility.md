@@ -26,6 +26,7 @@ Whether an object can be seen
 - [Calendar.showWeekends](../classes/Calendar.md#attr-calendarshowweekends)
 - [Calendar.showDayHeaders](../classes/Calendar.md#attr-calendarshowdayheaders)
 - [Calendar.showOtherDays](../classes/Calendar.md#attr-calendarshowotherdays)
+- [Calendar.fixedMonths](../classes/Calendar.md#attr-calendarfixedmonths)
 - [Calendar.selectChosenDate](../classes/Calendar.md#attr-calendarselectchosendate)
 - [Canvas.shrinkElementOnHide](../classes/Canvas.md#attr-canvasshrinkelementonhide)
 - [DateChooser.weekendDays](../classes/DateChooser.md#attr-datechooserweekenddays)

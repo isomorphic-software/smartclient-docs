@@ -548,6 +548,22 @@ If a Canvas is added as a child to Canvas parent, its htmlElement will be droppe
 **Flags**: IRWA
 
 ---
+## Attr: Canvas.canDropFiles
+
+### Description
+Set this property to true to enable HTML5 file upload by dropping files into this canvas from the desktop (in browsers where this feature is supported by the browser).
+
+To make use of this feature, developers should set [Canvas.canDrop](#attr-canvascandrop) to true. This will cause standard drop events ([Canvas.dropOver](#method-canvasdropover), [Canvas.dropOut](#method-canvasdropout), [Canvas.dropMove](#method-canvasdropmove) and [Canvas.drop](#method-canvasdrop)) to fire when the user drags a file onto this canvas.
+
+The dropped file(s) may be retrieved as a list of JavaScript File objects via [EventHandler.getNativeDragData](EventHandler.md#classmethod-eventhandlergetnativedragdata)
+
+### Groups
+
+- dragdrop
+
+**Flags**: IR
+
+---
 ## Attr: Canvas.animateScrollTime
 
 ### Description
@@ -721,17 +737,15 @@ A widget normally receives focus by being clicked on or tabbed to.
 ## Attr: Canvas.testDataContext
 
 ### Description
-A [DataContext](../reference.md#object-datacontext) to be used if no [Canvas.dataContext](#attr-canvasdatacontext) is provided (directly or indirectly via a parent). If a DataContext is provided it completely replaces the `testDataContext`.
+A [DataContext](../reference.md#object-datacontext) to be used if no [Canvas.dataContext](#attr-canvasdatacontext) is provided (directly or indirectly via a parent). If a `dataContext` is provided it completely replaces the `testDataContext`.
+
+In [Reify](../kb_topics/reifyForDevelopers.md#kb-topic-reify-for-developers), `testDataContext` is how a screen defines its [Screen Inputs](../kb_topics/reifyForDevelopers.md#kb-topic-reify-for-developers): the designer selects DataSources whose records the screen expects to receive when embedded in a larger application. The DataSource schemas plus the test values in `testDataContext` allow Reify to let designers define and test declarative logic (formulas, [visibility\\n rules](FormItem.md#attr-formitemvisiblewhen), [workflows](Process.md#class-process), etc.) based on a defined set of inputs, even when testing the screen in isolation.
 
 DataSources included in the `testDataContext` are immediately provided to [rule context](#attr-canvasrulescope) when used if no other component has done so already. These records are found in rule context 'dataContext' section (ex. `dataContext.Customer` for a Customer record in `testDataContext`) so they do not conflict with normal DataSource records.
 
 ### Groups
 
 - dataContext
-
-### See Also
-
-- [DataContext](../reference.md#object-datacontext)
 
 **Flags**: IR
 
@@ -1603,11 +1617,13 @@ The following list of default behavior is for reference only, developers should 
 ## Attr: Canvas.dataContext
 
 ### Description
-A mapping from [DataSource](DataSource.md#class-datasource) IDs to specific [Records](../reference.md#object-record) from those DataSources, that [DataBoundComponents](../reference.md#interface-databoundcomponent) contained within this Canvas should automatically bind to if a DataSource is provided but data is not provided (directly or indirectly, for example, indirectly via setting [ListGrid.autoFetchData](ListGrid_1.md#attr-listgridautofetchdata).
+A mapping from [DataSource](DataSource_1.md#class-datasource) IDs to specific [Records](../reference.md#object-record) from those DataSources, that [DataBoundComponents](../reference.md#interface-databoundcomponent) contained within this Canvas should automatically bind to if a DataSource is provided but data is not provided (directly or indirectly, for example, indirectly via setting [ListGrid.autoFetchData](ListGrid_1.md#attr-listgridautofetchdata).
 
 See [Canvas.autoPopulateData](#attr-canvasautopopulatedata) for details on how this is done.
 
 DataSources included in the `dataContext` are immediately provided to [rule context](#attr-canvasrulescope) when used if no other component has done so already. These records are found in rule context 'dataContext' section (ex. `dataContext.Customer` for a Customer record in `dataContext`) so they do not conflict with normal DataSource records.
+
+If no `dataContext` is provided, [Canvas.testDataContext](#attr-canvastestdatacontext) is used instead, which allows a screen to be tested in isolation while still having sample data available.
 
 ### Groups
 
@@ -2179,6 +2195,22 @@ On [touch devices](Browser.md#classattr-browseristouch), custom scrollbars are d
 **Flags**: IRA
 
 ---
+## Attr: Canvas.canDropContent
+
+### Description
+Set this property to true to enable dropping text content into this canvas from other applications (in browsers where HTML5 drag/drop is supported).
+
+To make use of this feature, developers should set [Canvas.canDrop](#attr-canvascandrop) to true. This will cause standard drop events ([Canvas.dropOver](#method-canvasdropover), [Canvas.dropOut](#method-canvasdropout), [Canvas.dropMove](#method-canvasdropmove) and [Canvas.drop](#method-canvasdrop)) to fire when the user drags content onto this canvas.
+
+The dropped content may be retrieved via [EventHandler.getNativeDragData](EventHandler.md#classmethod-eventhandlergetnativedragdata).
+
+### Groups
+
+- dragdrop
+
+**Flags**: IR
+
+---
 ## Attr: Canvas.canDrop
 
 ### Description
@@ -2226,7 +2258,7 @@ This property is defaulted to true in the [Canvas](#class-canvas) prototype for 
 ### Description
 For focusable widgets, should the native dotted focus outline be shown, where supported?
 
-This controls whether the browser's default focus outline (typically a dotted border) is displayed when the widget has keyboard focus. Set to false to suppress this outline, for example when custom focus styling is applied via [canvas.showFocused](#canvasshowfocused).
+This controls whether the browser's default focus outline (typically a dotted border) is displayed when the widget has keyboard focus. Set to false to suppress this outline, for example when custom focus styling is applied via [StatefulCanvas.showFocused](StatefulCanvas.md#attr-statefulcanvasshowfocused).
 
 ### Groups
 
@@ -3462,6 +3494,18 @@ Also does not apply to [touch scrolling interfaces](#attr-canvasusetouchscrollin
 **Flags**: IRA
 
 ---
+## Attr: Canvas.useGeneratedStyles
+
+### Description
+When enabled, SmartClient dynamically generates shared CSS classes for repetitive structural styles (overflow, white-space, etc) rather than applying inline styles to each element. Generated classes are reference-counted and automatically removed when no longer in use.
+
+Can be set per-class or per-instance to selectively enable or disable generated styles for specific components.
+
+There is no known reason to disable this feature. The flag is retained in case there is an unusual environment where dynamic stylesheet rules cannot be created or where doing so is very slow.
+
+**Flags**: IRW
+
+---
 ## Attr: Canvas.snapToCenterAlign
 
 ### Description
@@ -3791,6 +3835,20 @@ Automatically generated IDs will be unique as long as the canvases they refer to
 This attribute denotes the name of a property to use as a [Canvas.getDefiningPropertyName](#method-canvasgetdefiningpropertyname) for this property when generating and resolving [AutoTest locators with search segments](../reference_2.md#type-autotestlocator).
 
 **Flags**: IRWA
+
+---
+## Attr: Canvas.deferActionConversion
+
+### Description
+Controls whether action objects and Process definitions in event handler slots (like [Canvas.click](#method-canvasclick)) are converted to executable functions immediately during component creation, or deferred until the event is first invoked.
+
+When `true` (the default), a lightweight stub function is installed that converts the action to a real function only when the event fires. This optimizes creation time for components with many event handlers that may never be invoked.
+
+When `false`, action objects are converted to functions immediately during component creation, which was the original behavior prior to SmartClient 14.2.
+
+This setting can be changed system-wide via `isc.Canvas.addProperties({deferActionConversion: false})`, on any subclass, or on individual instances.
+
+**Flags**: IRA
 
 ---
 ## Attr: Canvas.visibility
@@ -4348,6 +4406,21 @@ Causes this canvas to snap to its parent's grid when resizing. Note that this va
 - snapGridDragging
 
 **Flags**: IRW
+
+---
+## Attr: Canvas.singleDiv
+
+### Description
+When true, uses a single DOM element per Canvas instead of the legacy double-DIV structure (clipDiv + contentDiv). The framework automatically falls back to double-DIV when required (showEdges, rotation, nested div scrolling).
+
+The only known reasons to set this to false would be:
+
+*   application code relies on details of SmartClient's generated DOM, which is not supported and never has been
+*   running in a browser that is no longer supported or is a customized build with non-standard behavior
+
+Setting this to false to revert to the legacy double-DIV structure is deprecated and not supported.
+
+**Flags**: IRA
 
 ---
 ## Attr: Canvas.name
@@ -8326,7 +8399,7 @@ The TabIndexManager maintains a hierarchy of focusable targets - so if a parent 
 ### Description
 Get the current value of the rule context collected by the [Canvas.ruleScope](#attr-canvasrulescope) of this component (which may be this component itself or whatever component is managing the `ruleScope` for this component).
 
-If the `databoundOnly` parameter is passed as true, only data from components that actually have a [DataSource](DataSource.md#class-datasource) is included.
+If the `databoundOnly` parameter is passed as true, only data from components that actually have a [DataSource](DataSource_1.md#class-datasource) is included.
 
 Use [Canvas.ruleContextChanged](#method-canvasrulecontextchanged) to get a notification of changes to the rule context.
 
@@ -8334,7 +8407,7 @@ Use [Canvas.ruleContextChanged](#method-canvasrulecontextchanged) to get a notif
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| databoundOnly | [boolean](../reference.md#type-boolean) | true | — | whether to include only data from components that have a [DataSource](DataSource.md#class-datasource) |
+| databoundOnly | [boolean](../reference.md#type-boolean) | true | — | whether to include only data from components that have a [DataSource](DataSource_1.md#class-datasource) |
 
 ### Returns
 
@@ -9111,6 +9184,24 @@ Sets the background to an image file given by newImage. This URL should be given
 ### Groups
 
 - appearance
+
+---
+## Method: Canvas.getEvents
+
+### Description
+Returns all Actions and Workflows defined on event handler properties of this canvas and all descendant canvases, including [FormItems](FormItem.md#class-formitem) within [DynamicForms](DynamicForm.md#class-dynamicform). Each returned record identifies the source component, the event handler name, and the Action or Workflow definition.
+
+This method walks the canvas tree rooted at this component and inspects every registered [StringMethod](../reference_2.md#type-stringmethod) property for an attached Action or Workflow. For DynamicForms, FormItem event handlers (such as ButtonItem.click or FormItem.changed) are also scanned, since FormItems store their own handlers separately from the canvas tree. Screen-global [workflows](#attr-canvasworkflows) are also included.
+
+Destroyed components are automatically excluded since they are removed from the canvas tree; changes via [setProperties()](Class.md#method-classsetproperties) are reflected immediately because current property values are read on each call.
+
+### Returns
+
+`[Array of Object](#type-array-of-object)` — array of records with properties:
+
+*   `source` ([Canvas](#class-canvas) or [FormItem](FormItem.md#class-formitem)) - the component that owns the event handler
+*   `eventName` (String) - the name of the event handler property (e.g. "click")
+*   `event` (Object) - the Action or Workflow definition (the original expression passed to the event handler)
 
 ---
 ## Method: Canvas.getInnerWidth

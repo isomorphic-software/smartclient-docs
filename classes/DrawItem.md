@@ -317,6 +317,8 @@ The mode in which the [titleLabel](#attr-drawitemtitlelabel) (if shown) is rotat
 ### Description
 Should events inside this DrawItem be attributed to it regardless of which pixels are actually set, if no fill is specified? If set for DrawItems that aren't closed, will capture events occurring in the region that would filled if a fill were specified. This property is true by default for closed shapes, and false for paths, lines, etc.
 
+For [DrawLabel](DrawLabel.md#class-drawlabel), this property defaults to true, meaning clicks anywhere in the label's bounding box are attributed to the label. Since pixel-level text hit detection is not practical, setting `eventOpaque` to false on a DrawLabel causes it to never receive click events, allowing clicks to pass through to items underneath.
+
 **Note:** this property must be true if you're writing to an HTML5 `<canvas>` element directly in your code (only applies to [DrawingType](../reference.md#type-drawingtype) "bitmap" ).
 
 ### See Also
@@ -324,6 +326,7 @@ Should events inside this DrawItem be attributed to it regardless of which pixel
 - [DrawItem.fillColor](#attr-drawitemfillcolor)
 - [DrawItem.fillOpacity](#attr-drawitemfillopacity)
 - [DrawPane.getBitmap](DrawPane.md#method-drawpanegetbitmap)
+- [DrawItem.eventPassThrough](#attr-drawitemeventpassthrough)
 
 **Flags**: IRA
 
@@ -419,6 +422,20 @@ Will this DrawItem fire hover events when the user hovers over it?
 - [DrawItem.showHover](#attr-drawitemshowhover)
 
 **Flags**: IRW
+
+---
+## Attr: DrawItem.eventPassThrough
+
+### Description
+When true, this DrawItem is completely transparent to mouse events. All events that would normally be attributed to this item are instead attributed to whatever is underneath it (other DrawItems or the [DrawPane](DrawPane.md#class-drawpane) itself), exactly as if this item did not exist.
+
+This differs from [DrawItem.eventOpaque](#attr-drawitemeventopaque): `eventOpaque` controls whether unfilled interior regions of a shape receive events, whereas `eventPassThrough` causes the **entire** item – stroke, fill, and interior – to be invisible to events.
+
+### See Also
+
+- [DrawItem.eventOpaque](#attr-drawitemeventopaque)
+
+**Flags**: IRA
 
 ---
 ## Attr: DrawItem.lineOpacity

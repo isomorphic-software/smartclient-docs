@@ -502,6 +502,34 @@ Builds a full Cypress test file by framing event commands in describe/it blocks.
 - [EventStream.getCypressScriptFromData](#classmethod-eventstreamgetcypressscriptfromdata)
 
 ---
+## Method: EventStream.transformSelenese
+
+### Description
+Allows you to transform the [Selenium commands](../reference.md#object-seleniumcommand) captured by the stream into one or more different Selenium commands. You're responsible for ensuring the transformed command(s) are legal Selenese and (more) correctly capture your interaction.
+
+The existing framework-created Selenium command is passed into this method, as well as the array of [event objects](../reference.md#object-eventstreamevent) which that command represents, to enable the best handling.
+
+**Note:** This method has no default implementation.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| command | [SeleniumCommand](#type-seleniumcommand) | false | — | — |
+| events | [Array of EventStreamEvent](#type-array-of-eventstreamevent) | false | — | — |
+
+### Returns
+
+`[SeleniumCommand](#type-seleniumcommand)|[Array of SeleniumCommand](#type-array-of-seleniumcommand)` — —
+
+### See Also
+
+- [EventStream.getAsSeleneseHTML](#method-eventstreamgetasselenesehtml)
+- [EventStream.getAsSeleneseCommands](#method-eventstreamgetasselenesecommands)
+
+**Flags**: A
+
+---
 ## Method: EventStream.start
 
 ### Description

@@ -696,6 +696,22 @@ Sets the global attribute that dictates whether the [choosers](DateChooser.md#cl
 **Deprecated**
 
 ---
+## StaticMethod: Date.getMonthNames
+
+### Description
+Return an array of the full names of each month, suitable for use in a selection list, etc. If [DateUtil.monthNames](DateUtil.md#classattr-dateutilmonthnames) is specified, this list will be used. Otherwise the value will be derived from the native browser date formatters. Note, if we have to derive names from the native browser date string, the day names may be in an abbreviated form, like the result of calling [Date.getShortMonthNames](#staticmethod-dategetshortmonthnames) - we have no control over this, we have to work with whatever the browser returns, which may vary by browser as well as locale. If a consistent and correct set of day names is important in your application, ensure that `DateUtil.monthNames` is set.
+
+### Returns
+
+`[Array of String](#type-array-of-string)` — array of month names
+
+### Groups
+
+- dateFormatting
+
+**Deprecated**
+
+---
 ## StaticMethod: Date.create
 
 ### Description
@@ -775,6 +791,28 @@ Sets a new default separator that will be used when formatting dates. By default
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | separator | [String](#type-string) | false | — | separator to use in dates |
+
+### Groups
+
+- dateFormatting
+
+**Deprecated**
+
+---
+## StaticMethod: Date.getShortMonthNames
+
+### Description
+Return an array of the short names of each month, suitable for use in a selection list, etc. If [DateUtil.shortMonthNames](DateUtil.md#classattr-dateutilshortmonthnames) is specified, this list will be used - by default, all locales specify shortMonthNames.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| length | [int](../reference.md#type-int) | false | — | maximum length of each day string - default is no maximum (full strings) |
+
+### Returns
+
+`[Array of String](#type-array-of-string)` — array of short month names
 
 ### Groups
 

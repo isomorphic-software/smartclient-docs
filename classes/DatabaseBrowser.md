@@ -109,7 +109,7 @@ Select a database to update [DatabaseBrowser.dbName](#attr-databasebrowserdbname
 ## Attr: DatabaseBrowser.schemaTree
 
 ### Description
-Instance of ListGrid used to display the database schema (ie, the list of tables). This grid makes use of an +link{listGrid.canExpandRecords,expansion component) to show columns for each table.
+Instance of ListGrid used to display the database schema (ie, the list of tables). This grid makes use of an [expansion component](ListGrid_1.md#attr-listgridcanexpandrecords) to show columns for each table.
 
 **Flags**: IR
 
@@ -291,7 +291,7 @@ For example, `includeSubstring: ["E", "qry"]` would match all the following tabl
 ## Method: DatabaseBrowser.getGeneratedDataSource
 
 ### Description
-Returns the [DataSource](DataSource.md#class-datasource) most recently auto-derived by this DatabaseBrowser. This will correspond to the currently-selected table.
+Returns the [DataSource](DataSource_1.md#class-datasource) most recently auto-derived by this DatabaseBrowser. This will correspond to the currently-selected table.
 
 ---
 ## Method: DatabaseBrowser.getResults

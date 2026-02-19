@@ -39,6 +39,8 @@ Dragging objects and dropping them onto other objects
 - [PortalLayout.portletDropTypes](../classes/PortalLayout.md#attr-portallayoutportletdroptypes)
 - [TabSet.canReorderTabs](../classes/TabSet.md#attr-tabsetcanreordertabs)
 - [Canvas.useNativeDrag](../classes/Canvas.md#attr-canvasusenativedrag)
+- [Canvas.canDropFiles](../classes/Canvas.md#attr-canvascandropfiles)
+- [Canvas.canDropContent](../classes/Canvas.md#attr-canvascandropcontent)
 - [Canvas.canDrag](../classes/Canvas.md#attr-canvascandrag)
 - [Canvas.dragStartDistance](../classes/Canvas.md#attr-canvasdragstartdistance)
 - [Canvas.dragIntersectStyle](../classes/Canvas.md#attr-canvasdragintersectstyle)

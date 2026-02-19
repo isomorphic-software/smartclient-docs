@@ -33,7 +33,7 @@ Should the system wait for any outstanding redraws to complete before [AutoTest.
 ## Attr: SystemDoneConfig.includeFileLoader
 
 ### Description
-Should the system wait for any outstanding [FileLoader](#classmethod-fileloaderloadfiles) requests? to complete before [AutoTest.isSystemDone](AutoTest.md#classmethod-autotestissystemdone) returns true?
+Should the system wait for any outstanding [FileLoader](FileLoader.md#classmethod-fileloaderload) requests to complete before [AutoTest.isSystemDone](AutoTest.md#classmethod-autotestissystemdone) returns true?
 
 **Flags**: IR
 

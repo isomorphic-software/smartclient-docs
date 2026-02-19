@@ -33,7 +33,7 @@ Note, that for [CSV data format](#attr-batchuploaderdataformat) header line is o
 
 Imported data can be transformed during import, see [DataSourceField.importStrategy](DataSourceField.md#attr-datasourcefieldimportstrategy) for details.
 
-A couple of server-side techniques are interesting in conjunction with the BatchUploader. One is to set the [DataSource.serverConstructor](DataSource.md#attr-datasourceserverconstructor) property to point at your own class that inherits from `com.isomorphic.datasource.BasicDataSource`. The most interesting reason for doing this is to override the `validate` method and provide complete custom validation - for example, checking relations to other tables.
+A couple of server-side techniques are interesting in conjunction with the BatchUploader. One is to set the [DataSource.serverConstructor](DataSource_1.md#attr-datasourceserverconstructor) property to point at your own class that inherits from `com.isomorphic.datasource.BasicDataSource`. The most interesting reason for doing this is to override the `validate` method and provide complete custom validation - for example, checking relations to other tables.
 
 Another technique is to handle the initial SmartClient call in your own servlet, by setting the [dataURL](#attr-batchuploaderdataurl) property. You then handle the add requests with a combination of your own code and SmartClient server API calls. This is a good way to add special pre- and post-processing to the normal server-side flow.
 
@@ -488,7 +488,7 @@ Error message to show when the uploading process is unable to detect the delimit
 ## Attr: BatchUploader.updatesRolledBackMessage
 
 ### Description
-Message to display if at least one update was rolled back due to errors in another row. See the [transactions overview](DataSource.md#attr-datasourceautojointransactions) for details of SmartClient's automatic transactional updates feature
+Message to display if at least one update was rolled back due to errors in another row. See the [transactions overview](DataSource_1.md#attr-datasourceautojointransactions) for details of SmartClient's automatic transactional updates feature
 
 ### Groups
 
@@ -557,7 +557,7 @@ Notification method fired when the [BatchUploader.grid](#attr-batchuploadergrid)
 
 This notification occurs after the user has uploaded a new data file, the data has been processed on the server, and the preview grid populated with the data ready for committing. Developers may use this notification to examine or modify the data set to be uploaded. The [ListGrid.data](ListGrid_1.md#attr-listgriddata) object will be populated with the array of uploaded records, and standard grid APIs such as [ListGrid.getRowErrors](ListGrid_2.md#method-listgridgetrowerrors), [ListGrid.setEditValue](ListGrid_2.md#method-listgridseteditvalue), etc may be used to interact with this data.
 
-Note that developers wishing to manipulate the uploaded data can also do this on the server side when user hits the commit button to submit the data to the [BatchUploader.uploadDataSource](#attr-batchuploaderuploaddatasource). This can be achieved by setting the [BatchUploader.uploadOperation](#attr-batchuploaderuploadoperation) to call a custom ["add" type operation](DataSource.md#attr-datasourceoperationbindings) on the target dataSource.
+Note that developers wishing to manipulate the uploaded data can also do this on the server side when user hits the commit button to submit the data to the [BatchUploader.uploadDataSource](#attr-batchuploaderuploaddatasource). This can be achieved by setting the [BatchUploader.uploadOperation](#attr-batchuploaderuploadoperation) to call a custom ["add" type operation](DataSource_1.md#attr-datasourceoperationbindings) on the target dataSource.
 
 ### Parameters
 

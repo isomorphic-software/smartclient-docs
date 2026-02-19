@@ -153,6 +153,20 @@ Specifies "hint" string to show next to the form item to indicate something to t
 **Flags**: IRW
 
 ---
+## Attr: FormItem.deferActionConversion
+
+### Description
+Controls whether action objects and Process definitions in event handler slots (like [FormItem.change](#method-formitemchange)) are converted to executable functions immediately during component creation, or deferred until the event is first invoked.
+
+When `true` (the default), a lightweight stub function is installed that converts the action to a real function only when the event fires. This optimizes creation time for forms with many event handlers that may never be invoked.
+
+When `false`, action objects are converted to functions immediately during component creation, which was the original behavior prior to SmartClient 14.2.
+
+This setting can be changed system-wide via `isc.FormItem.addProperties({deferActionConversion: false})`, on any subclass, or on individual form item configurations.
+
+**Flags**: IRA
+
+---
 ## Attr: FormItem.inputFormat
 
 ### Description
@@ -2101,7 +2115,7 @@ See [formItemStyling](../kb_topics/formItemStyling.md#kb-topic-formitem-styling)
 ## Attr: FormItem.requiredRightTitleSuffix
 
 ### Description
-The string appended to this item's title if it is required and the [TitleOrientation](../reference_2.md#type-titleorientation) property is set to "right". The +link(DynamicForm.requiredRightTitleSuffix) is used by default.
+The string appended to this item's title if it is required and the [TitleOrientation](../reference_2.md#type-titleorientation) property is set to "right". The [DynamicForm.requiredRightTitleSuffix](DynamicForm.md#attr-dynamicformrequiredrighttitlesuffix) is used by default.
 
 ### Groups
 
@@ -2135,7 +2149,7 @@ The string prepended to this item's title. The [DynamicForm.titlePrefix](Dynamic
 ### Description
 Whether a non-empty value is required for this field to pass validation.
 
-If the user does not fill in the required field, the error message to be shown will be taken from these properties in the following order: [FormItem.requiredMessage](#attr-formitemrequiredmessage), [DynamicForm.requiredMessage](DynamicForm.md#attr-dynamicformrequiredmessage), [DataSource.requiredMessage](DataSource.md#attr-datasourcerequiredmessage), [Validator.requiredField](Validator.md#classattr-validatorrequiredfield).
+If the user does not fill in the required field, the error message to be shown will be taken from these properties in the following order: [FormItem.requiredMessage](#attr-formitemrequiredmessage), [DynamicForm.requiredMessage](DynamicForm.md#attr-dynamicformrequiredmessage), [DataSource.requiredMessage](DataSource_1.md#attr-datasourcerequiredmessage), [Validator.requiredField](Validator.md#classattr-validatorrequiredfield).
 
 **Note:** if specified on a FormItem, `required` is only enforced on the client. `required` should generally be specified on a [DataSourceField](../reference_2.md#object-datasourcefield).
 
@@ -3397,7 +3411,7 @@ Is this form item editable (canEdit:true) or read-only (canEdit:false)? Setting 
 
 Read-only appearance may be specified via [FormItem.readOnlyDisplay](#attr-formitemreadonlydisplay). The default setting for this value (`"readOnly"`) differs from the disabled state in that the form item is not rendered with disabled styling and most form items will allow copying of the contents while read-only but do not while disabled.
 
-Note that for forms bound to a [DataSource](DataSource.md#class-datasource), if this property is not explicitly set at the item level, its default value will match the [DynamicForm.canEditFieldAttribute](DynamicForm.md#attr-dynamicformcaneditfieldattribute) on the associated dataSource field.
+Note that for forms bound to a [DataSource](DataSource_1.md#class-datasource), if this property is not explicitly set at the item level, its default value will match the [DynamicForm.canEditFieldAttribute](DynamicForm.md#attr-dynamicformcaneditfieldattribute) on the associated dataSource field.
 
 Developers should also be aware that the [FormItem.readOnlyDisplay](#attr-formitemreadonlydisplay) attribute is unrelated to the [DataSourceField.readOnlyEditorType](DataSourceField.md#attr-datasourcefieldreadonlyeditortype) attribute. When a DynamicForm is first bound to a dataSource, for [canEdit:false](DataSourceField.md#attr-datasourcefieldcanedit) DataSourceFields, [DataSourceField.readOnlyEditorType](DataSourceField.md#attr-datasourcefieldreadonlyeditortype) will determine what [FormItemType](../reference.md#type-formitemtype) should be created for the field. Once created, a FormItem's type can not be changed. Setting [FormItem.canEdit](#attr-formitemcanedit) at runtime will simply change the appearance of the item to allow or disallow editing of the item.
 

@@ -23,9 +23,9 @@ The log category "tablePlacement" can be enabled from the Developer Console to w
 
 **Browser Layout and Column Compression**
 
-With [fixedColWidths:false](../classes/DynamicForm.md#attr-dynamicformfixedcolwidths) (the default), the browser may compress columns containing smaller content (such as titles) below their specified [colWidths](#colwidths) to make room for columns with larger content. This compression works well when all columns can shrink, but certain items cannot shrink below their specified width: TextItem with `width:"*"`, and FileItem and CanvasItem in general.
+With [fixedColWidths:false](../classes/DynamicForm.md#attr-dynamicformfixedcolwidths) (the default), the browser may compress columns containing smaller content (such as titles) below their specified [DynamicForm.colWidths](../classes/DynamicForm.md#attr-dynamicformcolwidths) to make room for columns with larger content. This compression works well when all columns can shrink, but certain items cannot shrink below their specified width: TextItem with `width:"*"`, and FileItem and CanvasItem in general.
 
-If a colSpan item is sized based on policy column widths but other columns compress, the colSpan item may force the form to overflow. Use [colWidths](#colwidths) min/max syntax or [autoDetectColumnMinWidths](#autodetectcolumnminwidths) to prevent this by ensuring columns have appropriate minimums.
+If a colSpan item is sized based on policy column widths but other columns compress, the colSpan item may force the form to overflow. Use [DynamicForm.colWidths](../classes/DynamicForm.md#attr-dynamicformcolwidths) min/max syntax or [DynamicForm.autoDetectColumnMinWidths](../classes/DynamicForm.md#attr-dynamicformautodetectcolumnminwidths) to prevent this by ensuring columns have appropriate minimums.
 
 For row heights, the largest pixel height specified on any item in the row is taken as a minimum size for the row. Then, any rows that have "\*" or "%" height items will share any height not taken up by fixed-sized items.
 

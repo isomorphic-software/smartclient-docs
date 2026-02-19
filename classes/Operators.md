@@ -497,7 +497,7 @@ Title for the "iStartsWithField" operator
 ## ClassAttr: Operators.noDataSourceDescription
 
 ### Description
-Human-readable description of an object, such as a [Criterion](../reference_2.md#object-criterion), where there is no [DataSource](DataSource.md#class-datasource) available for context.
+Human-readable description of an object, such as a [Criterion](../reference_2.md#object-criterion), where there is no [DataSource](DataSource_1.md#class-datasource) available for context.
 
 ### Groups
 
@@ -582,6 +582,18 @@ Title for the "containsPattern" operator
 
 ### Description
 Title for the "iContainsField" operator
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IR
+
+---
+## ClassAttr: Operators.notExists
+
+### Description
+Title for the "notExists" operator
 
 ### Groups
 
@@ -678,6 +690,18 @@ Title for the "equalsField" operator
 
 ### Description
 Title for the "greaterThanField" operator
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IR
+
+---
+## ClassAttr: Operators.exists
+
+### Description
+Title for the "exists" operator
 
 ### Groups
 

@@ -37,7 +37,7 @@ Use [runTask()](Process.md#method-processruntask) to enter a single CoTTask with
 
 #### Further features
 
-*   Engine selection: [CoTProcess.aiEngineId](#attr-cotprocessaiengineid) (tasks may override with [CoTTask.aiEngineId](CoTTask.md#attr-cottaskaiengineid); system default [AI.defaultAIEngineId](#aidefaultaiengineid))  
+*   Engine selection: [CoTProcess.aiEngineId](#attr-cotprocessaiengineid) (tasks may override with [CoTTask.aiEngineId](CoTTask.md#attr-cottaskaiengineid); system default [AI.defaultEngineId](AI.md#classattr-aidefaultengineid))  
     
 *   Retry policy: [CoTProcess.maxRetries](#attr-cotprocessmaxretries) (task override [CoTTask.maxRetries](CoTTask.md#attr-cottaskmaxretries)); exhaustion semantics in [AIRetriesExhausted](../kb_topics/AIRetriesExhausted.md#kb-topic-airetriesexhausted)  
     
@@ -353,7 +353,7 @@ This is useful for "hub-and-spokes" CoTs where many leaf steps return to a singl
 ## Attr: CoTProcess.aiEngineId
 
 ### Description
-Identifier of the AI engine to use for all tasks in this process, unless overridden per-task by [CoTTask.aiEngineId](CoTTask.md#attr-cottaskaiengineid). If unset, tasks fall back to the system-wide default [AI.defaultAIEngineId](#aidefaultaiengineid).
+Identifier of the AI engine to use for all tasks in this process, unless overridden per-task by [CoTTask.aiEngineId](CoTTask.md#attr-cottaskaiengineid). If unset, tasks fall back to the system-wide default [AI.defaultEngineId](AI.md#classattr-aidefaultengineid).
 
 Use this to set a consistent model choice for an entire workflow. For fine-grained control, override per task with [CoTTask.aiEngineId](CoTTask.md#attr-cottaskaiengineid).
 

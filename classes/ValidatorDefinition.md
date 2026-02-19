@@ -38,7 +38,7 @@ For the required parameters, see the documentation for [ValidatorConditionCallba
 ## Attr: ValidatorDefinition.shortName
 
 ### Description
-Optional name to be shown in tools that edit validators. If not specified, the tools will derive the short name from the [ValidatorDefinition.type](#attr-validatordefinitiontype) by assuming it is camelCaps similar to [DataSource.getAutoTitle](DataSource.md#method-datasourcegetautotitle).
+Optional name to be shown in tools that edit validators. If not specified, the tools will derive the short name from the [ValidatorDefinition.type](#attr-validatordefinitiontype) by assuming it is camelCaps similar to [DataSource.getAutoTitle](DataSource_1.md#method-datasourcegetautotitle).
 
 **Flags**: IR
 

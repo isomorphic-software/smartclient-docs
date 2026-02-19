@@ -116,14 +116,6 @@ If using an icon for this button, whether to switch the icon image when the mous
 **Flags**: IR
 
 ---
-## Attr: ListGridField.summaryValue
-
-### Description
-The value to display for a ListGridField when it appears in the [summaryRow](ListGrid_1.md#attr-listgridsummaryrow). The default for normal fields is null and for special fields, like the [checkboxField](ListGrid_1.md#attr-listgridcheckboxfield), the default is to show a blank value (a non-breaking space).
-
-**Flags**: IRW
-
----
 ## Attr: ListGridField.editorValueIcons
 
 ### Description
@@ -132,6 +124,14 @@ When some cell in this field is being edited, setting this property will specify
 ### Groups
 
 - imageColumns
+
+**Flags**: IRW
+
+---
+## Attr: ListGridField.summaryValue
+
+### Description
+The value to display for a ListGridField when it appears in the [summaryRow](ListGrid_1.md#attr-listgridsummaryrow). The default for normal fields is null and for special fields, like the [checkboxField](ListGrid_1.md#attr-listgridcheckboxfield), the default is to show a blank value (a non-breaking space).
 
 **Flags**: IRW
 
@@ -193,6 +193,18 @@ Note that [sortByField](Field.md#attr-fieldsortbyfield) takes precedence.
 - display_values
 
 **Flags**: IRW
+
+---
+## Attr: ListGridField.cellValueTemplate
+
+### Description
+Template string for formatting cell values. The template is evaluated as a [DynamicString](../reference_2.md#type-dynamicstring) with variables including `value` (the cell value), `record` (the data record), and `field` (the field definition).
+
+### Groups
+
+- appearance
+
+**Flags**: IR
 
 ---
 ## Attr: ListGridField.canToggle
@@ -712,7 +724,7 @@ If [ListGrid.showGridSummary](ListGrid_1.md#attr-listgridshowgridsummary) or [Li
 ### Description
 Derive a [ValueMap](../reference_2.md#type-valuemap) by fetching records from another DataSource and extracting the [valueField](#attr-listgridfieldvaluefield) and [displayField](#attr-listgridfielddisplayfield) in the loaded records, to derive one valueMap entry per record loaded from the optionDataSource.
 
-Unlike the similar use of [PickList.optionDataSource](PickList.md#attr-picklistoptiondatasource) for [pickLists](../reference_2.md#interface-picklist) used during editing or filtering, `listGridField.optionDataSource` causes the **entire set of records from the optionDataSource to be fetched**, without paging. Hence listGridField.optionDataSource is appropriate only for smaller valueMaps, and in this situation, [DataSource.cacheAllData](DataSource.md#attr-datasourcecachealldata) may be a better choice, since it creates a write-through cache usable across all components.
+Unlike the similar use of [PickList.optionDataSource](PickList.md#attr-picklistoptiondatasource) for [pickLists](../reference_2.md#interface-picklist) used during editing or filtering, `listGridField.optionDataSource` causes the **entire set of records from the optionDataSource to be fetched**, without paging. Hence listGridField.optionDataSource is appropriate only for smaller valueMaps, and in this situation, [DataSource.cacheAllData](DataSource_1.md#attr-datasourcecachealldata) may be a better choice, since it creates a write-through cache usable across all components.
 
 For very large valueMap situations, such as an accountId field that should be displayed as an accountName where there are thousands of accounts, the correct approach is:
 
@@ -1374,7 +1386,7 @@ If this field is editable, and [ListGridField.editorIconWidth](#attr-listgridfie
 ## Attr: ListGridField.optionTextMatchStyle
 
 ### Description
-For fields with an [ListGridField.optionDataSource](#attr-listgridfieldoptiondatasource), where [ListGridField.autoFetchDisplayMap](#attr-listgridfieldautofetchdisplaymap) is true, this property will govern the `textMatchStyle` attribute of the [DSRequest](../reference_2.md#object-dsrequest) parameter passed to [DataSource.fetchData](DataSource.md#method-datasourcefetchdata) when retrieving the remote data set to be used as a basis for this field's valueMap.
+For fields with an [ListGridField.optionDataSource](#attr-listgridfieldoptiondatasource), where [ListGridField.autoFetchDisplayMap](#attr-listgridfieldautofetchdisplaymap) is true, this property will govern the `textMatchStyle` attribute of the [DSRequest](../reference_2.md#object-dsrequest) parameter passed to [DataSource.fetchData](DataSource_1.md#method-datasourcefetchdata) when retrieving the remote data set to be used as a basis for this field's valueMap.
 
 ### Groups
 
@@ -1459,7 +1471,7 @@ If unset, default behavior is derived from [ListGrid.headerHoverWrap](ListGrid_1
 Maximum number of characters for this text field. This property is typically set on [DataSourceField.length](DataSourceField.md#attr-datasourcefieldlength) to enforce data integrity and trigger automatic validation. However, it can also be set on a ListGridField to control ListGrid-specific behaviors without affecting validation:
 
 *   **Default field width:** For text fields with no explicit [ListGridField.width](#attr-listgridfieldwidth) and `length` less than 15, a default pixel width is calculated as `length * 7`, subject to [ListGridField.minWidth](#attr-listgridfieldminwidth) and [ListGrid.minFieldWidth](ListGrid_1.md#attr-listgridminfieldwidth).
-*   **Auto-fit field selection:** When [ListGrid.autoFitFieldWidths](ListGrid_1.md#attr-listgridautofitfieldwidths) causes the grid to choose a field to expand, fields with `length` below [autoFitExpandLengthThreshold](#listgridautofitexpandlengththreshold) (default 10) are skipped in favor of fields with longer or unspecified length.
+*   **Auto-fit field selection:** When [ListGrid.autoFitFieldWidths](ListGrid_1.md#attr-listgridautofitfieldwidths) causes the grid to choose a field to expand, fields with `length` below [autoFitExpandLengthThreshold](ListGrid_1.md#attr-listgridautofitexpandlengththreshold) (default 10) are skipped in favor of fields with longer or unspecified length.
 
 Note: Setting `length` on a ListGridField does **not** trigger validation. To enforce maximum character limits, set [DataSourceField.length](DataSourceField.md#attr-datasourcefieldlength) on the DataSource field, which enables both server and client validation.
 
@@ -1692,7 +1704,7 @@ Name of this field. Must be unique within the [ListGrid](ListGrid_1.md#class-lis
 
 The name of the field is also the property in each record which holds the record's value for the field.
 
-If a [ListGrid.dataSource](ListGrid_1.md#attr-listgriddatasource) is specified and the [DataSource](DataSource.md#class-datasource) has a field with the same [name](DataSourceField.md#attr-datasourcefieldname), the `ListGridField` and [DataSourceField](../reference_2.md#object-datasourcefield) are merged, with any properties on the `ListGridField` overriding those on the `DataSourceField`.
+If a [ListGrid.dataSource](ListGrid_1.md#attr-listgriddatasource) is specified and the [DataSource](DataSource_1.md#class-datasource) has a field with the same [name](DataSourceField.md#attr-datasourcefieldname), the `ListGridField` and [DataSourceField](../reference_2.md#object-datasourcefield) are merged, with any properties on the `ListGridField` overriding those on the `DataSourceField`.
 
 ### Groups
 
@@ -1930,7 +1942,7 @@ Advanced applications that wish to save formulas separately from a grid's [viewS
 
 Note that the current implementation of `UserFormula` simply executes [UserFormula.text](UserFormula.md#attr-userformulatext) as a JavaScript string after making special variables and methods available to the formula. It is safe to allow users to define formulas for themselves (since an end user can always execute whatever JavaScript they want via the browser's built-in developer tools), and is safe to allow formulas to be shared between trusted users. However it would not be safe to allow an untrusted user to create formulas that are shared to other users.
 
-Also, while the current implementation would allow creation of a formula that calls JavaScript functions that are not part of the standard or custom [MathFunctions](#mathfunction), this should not be relied upon, as future versions of the formula engine may prohibit such calls.
+Also, while the current implementation would allow creation of a formula that calls JavaScript functions that are not part of the standard or custom [MathFunctions](MathFunction.md#class-mathfunction), this should not be relied upon, as future versions of the formula engine may prohibit such calls.
 
 To change this field's formula, either call [ListGrid.setUserFormula](ListGrid_2.md#method-listgridsetuserformula) with a new `UserFormula` object or call [ListGrid.setUserFormulaText](ListGrid_2.md#method-listgridsetuserformulatext) to change just the [UserFormula.text](UserFormula.md#attr-userformulatext).
 

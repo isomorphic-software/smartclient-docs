@@ -65,7 +65,7 @@ If a component lacks appropriate setters for some properties but would work prop
 
 You may also have components that you don't want to try to use within Reify at all. In this case, just set [PaletteNode.alwaysUsePlaceholder](../classes/PaletteNode.md#attr-palettenodealwaysuseplaceholder) to true, and Reify will never try to create the component, and always show a placeholder. You can also set [PaletteNode.placeholderImage](../classes/PaletteNode.md#attr-palettenodeplaceholderimage) to the URL of an image file to use in lieu of the usual placeholder text.
 
-Note that when you use the Run within Reify, Placeholders will appear (otherwise your screen would presumably crash!) - this is because Reify is using the [LoadProjectSettings.allowPlaceholders](../classes/LoadProjectSettings.md#attr-loadprojectsettingsallowplaceholders) option. If you export a Reify project or [load it dynamically](#method-reifyloadproject), `allowPlaceholders` will be false, and your screen will use the real target components.
+Note that when you use the Run within Reify, Placeholders will appear (otherwise your screen would presumably crash!) - this is because Reify is using the [LoadProjectSettings.allowPlaceholders](../classes/LoadProjectSettings.md#attr-loadprojectsettingsallowplaceholders) option. If you export a Reify project or [load it dynamically](../classes/Reify.md#method-reifyloadproject), `allowPlaceholders` will be false, and your screen will use the real target components.
 
 **Event -> Action Bindings**
 

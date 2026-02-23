@@ -2056,6 +2056,18 @@ See [cellStyleSuffixes](../kb_topics/cellStyleSuffixes.md#kb-topic-cellstylesuff
 **Flags**: IRW
 
 ---
+## Attr: Calendar.hoverMoveWithMouse
+
+### Description
+Whether hovers shown by the Calendar's child views and [event canvases](#attr-calendareventcanvas) should move with the mouse. Propagated to each [CalendarView](CalendarView.md#class-calendarview) when it is created.
+
+### Groups
+
+- hovers
+
+**Flags**: IRW
+
+---
 ## Attr: Calendar.columnLayout
 
 ### Description
@@ -2479,6 +2491,22 @@ Whether to show the Month view.
 **Flags**: IR
 
 ---
+## Attr: Calendar.fixedMonths
+
+### Description
+When true, the [month view](#attr-calendarmonthview) always shows exactly 6 weeks of dates, regardless of how many weeks the current month actually spans.
+
+When false, the month view shows only as many weeks as needed to display the current month (typically 4-6).
+
+In-place data updates are used regardless of this setting whenever the row count is unchanged, so there is no performance penalty for the default of false.
+
+### Groups
+
+- visibility
+
+**Flags**: IRW
+
+---
 ## Attr: Calendar.timelineViewTitle
 
 ### Description
@@ -2617,6 +2645,14 @@ If set to true, enables the auto-arrangement of events that share time in the ca
 ### Groups
 
 - calendarEvent
+
+**Flags**: IR
+
+---
+## Attr: Calendar.showEventEditorErrorsInline
+
+### Description
+When true, validation errors in the [event editor](#attr-calendareventeditor) are shown as inline icons next to the errored fields. When false, a text blurb is shown instead, using the [Calendar.invalidDateMessage](#attr-calendarinvaliddatemessage) as its content.
 
 **Flags**: IR
 
@@ -2995,7 +3031,7 @@ Implement this method to intercept the automatic removal of data. You can return
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — false to cancel the removal
+`[Boolean](#type-boolean)` — false to cancel the removal
 
 ### Groups
 
@@ -3127,7 +3163,7 @@ Called when an event is moved via dragging by a user. Return false to disallow t
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — return false to disallow the move.
+`[Boolean](#type-boolean)` — return false to disallow the move.
 
 ### Groups
 
@@ -3220,7 +3256,7 @@ Not called if the day falls outside the current month and [Calendar.showOtherDay
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — false to cancel the default action
+`[Boolean](#type-boolean)` — false to cancel the default action
 
 ### Groups
 
@@ -3361,7 +3397,7 @@ Callback fired when the mouse is clicked in a background-cell, ie, one without a
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — return false to cancel the default behavior of creating a new event at the selected location and showing its editor.
+`[Boolean](#type-boolean)` — return false to cancel the default behavior of creating a new event at the selected location and showing its editor.
 
 ---
 ## Method: Calendar.setIndicators
@@ -3425,7 +3461,7 @@ Not called if the day falls outside the current month and [Calendar.showOtherDay
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — return false to cancel the action
+`[Boolean](#type-boolean)` — return false to cancel the default action
 
 ### Groups
 
@@ -3435,13 +3471,13 @@ Not called if the day falls outside the current month and [Calendar.showOtherDay
 ## Method: Calendar.getView
 
 ### Description
-Returns the [view](CalendarView.md#class-calendarview) with the passed [name](../reference.md#type-viewname).
+Returns the [view](CalendarView.md#class-calendarview) with the passed [name](../reference_2.md#type-viewname).
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| viewName | [ViewName](../reference.md#type-viewname) | false | — | the name of the CalendarView to return |
+| viewName | [ViewName](../reference_2.md#type-viewname) | false | — | the name of the CalendarView to return |
 
 ### Returns
 
@@ -3742,7 +3778,7 @@ By default, a dialog appears showing details for the event, and offering the abi
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | event | [CalendarEvent](#type-calendarevent) | false | — | event that was clicked on |
-| viewName | [ViewName](../reference.md#type-viewname) | false | — | view where the event's canvas was clicked |
+| viewName | [ViewName](../reference_2.md#type-viewname) | false | — | view where the event's canvas was clicked |
 
 ### Returns
 
@@ -3816,7 +3852,7 @@ Callback fired when the mouse button is depressed over a background-cell, ie, on
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — return false to suppress default behavior of allowing sweep selection via dragging.
+`[Boolean](#type-boolean)` — return false to suppress default behavior of allowing sweep selection via dragging.
 
 ---
 ## Method: Calendar.indicatorClick
@@ -3829,7 +3865,7 @@ Called whenever an [IndicatorCanvas](../reference.md#class-indicatorcanvas) is c
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | indicatorEvent | [CalendarEvent](#type-calendarevent) | false | — | indicator that was clicked on |
-| viewName | [ViewName](../reference.md#type-viewname) | false | — | view where the event's canvas was clicked |
+| viewName | [ViewName](../reference_2.md#type-viewname) | false | — | view where the event's canvas was clicked |
 
 ### Returns
 
@@ -3845,7 +3881,7 @@ Notification that fires whenever the current view changes via the [mainView tabs
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| viewName | [ViewName](../reference.md#type-viewname) | false | — | the name of the current view after the change |
+| viewName | [ViewName](../reference_2.md#type-viewname) | false | — | the name of the current view after the change |
 
 ---
 ## Method: Calendar.selectTab
@@ -4087,11 +4123,11 @@ Sets the currently visible view.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| viewName | [ViewName](../reference.md#type-viewname) | false | — | The name of the view that should be made visible. |
+| viewName | [ViewName](../reference_2.md#type-viewname) | false | — | The name of the view that should be made visible. |
 
 ### Returns
 
-`[ViewName](../reference.md#type-viewname)` — The name of the visible view.
+`[ViewName](../reference_2.md#type-viewname)` — The name of the visible view.
 
 ---
 ## Method: Calendar.backgroundMouseUp
@@ -4108,7 +4144,7 @@ Notification method fired when the mouse button is released over a background-ce
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — return false to suppress default behavior of showing a dialog to add a new event with the passed dates.
+`[Boolean](#type-boolean)` — return false to suppress default behavior of showing a dialog to add a new event with the passed dates.
 
 ---
 ## Method: Calendar.next
@@ -4386,7 +4422,7 @@ Called whenever a [ZoneCanvas](../reference.md#class-zonecanvas) is clicked in t
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | zoneEvent | [CalendarEvent](#type-calendarevent) | false | — | zone that was clicked on |
-| viewName | [ViewName](../reference.md#type-viewname) | false | — | view where the event's canvas was clicked |
+| viewName | [ViewName](../reference_2.md#type-viewname) | false | — | view where the event's canvas was clicked |
 
 ### Returns
 
@@ -4643,7 +4679,7 @@ Called when an event is resized with the mouse. The passed date value is the new
 
 ### Returns
 
-`[boolean](../reference.md#type-boolean)` — return false to disallow the resize
+`[Boolean](#type-boolean)` — return false to disallow the resize
 
 ### Groups
 
@@ -4795,7 +4831,7 @@ Get the name of the visible view. Returns one of 'day', 'week', 'month' or 'time
 
 ### Returns
 
-`[ViewName](../reference.md#type-viewname)` — The name of the currently visible view.
+`[ViewName](../reference_2.md#type-viewname)` — The name of the currently visible view.
 
 ---
 ## Method: Calendar.eventsRendered

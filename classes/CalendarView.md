@@ -92,6 +92,16 @@ If specified, overrides [Calendar.eventStyleName](Calendar.md#attr-calendarevent
 **Flags**: IR
 
 ---
+## Method: CalendarView.isVerticalView
+
+### Description
+Returns true if this is the [week](Calendar.md#attr-calendarweekview) or [day](Calendar.md#attr-calendardayview) view, false otherwise.
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — true if this is a Week or Day view
+
+---
 ## Method: CalendarView.rebuild
 
 ### Description

@@ -1714,6 +1714,20 @@ The hours of the workday can be customized for particular dates by providing imp
 **Flags**: IR
 
 ---
+## Attr: Calendar.longEventDragVAlign
+
+### Description
+When [Calendar.longEventCompactDrag](#attr-calendarlongeventcompactdrag) is true, controls the vertical alignment of the compact drag-ghost within the [Calendar.longEventLayoutSpace](#attr-calendarlongeventlayoutspace) region of [long-event layouts](CalendarView.md#attr-calendarviewlongeventslayout).
+
+When set to `"top"` (the default), the ghost appears at the top of the layout, above any existing events, and real events are offset downward by longEventLayoutSpace. When set to `"bottom"`, the ghost sits at the bottom of the layout, below any existing long-events.
+
+### Groups
+
+- appearance
+
+**Flags**: IRW
+
+---
 ## Attr: Calendar.eventScreen
 
 ### Description
@@ -2469,6 +2483,18 @@ The title for the [day view](#attr-calendardayview).
 - i18nMessages
 
 **Flags**: IR
+
+---
+## Attr: Calendar.longEventCompactDrag
+
+### Description
+When true, drag-creation and drag-move of [long-events](#attr-calendarallowlongevents) use a compact ghost canvas whose height equals [Calendar.longEventLayoutSpace](#attr-calendarlongeventlayoutspace) rather than the full [Calendar.longEventHeight](#attr-calendarlongeventheight). The compact ghost shows no text and is aligned within the longEventLayoutSpace region according to [Calendar.longEventDragVAlign](#attr-calendarlongeventdragvalign), so it never occupies the same vertical space as real event canvases. Additionally, the [long-event layouts](CalendarView.md#attr-calendarviewlongeventslayout) use longEventLayoutSpace as their [minHeight](Canvas.md#attr-canvasminheight) instead of longEventHeight, keeping empty rows shorter.
+
+### Groups
+
+- appearance
+
+**Flags**: IRW
 
 ---
 ## Attr: Calendar.descriptionField

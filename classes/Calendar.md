@@ -1714,6 +1714,20 @@ The hours of the workday can be customized for particular dates by providing imp
 **Flags**: IR
 
 ---
+## Attr: Calendar.longEventDragVAlign
+
+### Description
+When [Calendar.longEventCompactDrag](#attr-calendarlongeventcompactdrag) is true, controls the vertical alignment of the compact drag-ghost within the [Calendar.longEventLayoutSpace](#attr-calendarlongeventlayoutspace) region of [long-event layouts](CalendarView.md#attr-calendarviewlongeventslayout).
+
+When set to `"top"` (the default), the ghost appears at the top of the layout, above any existing events, and real events are offset downward by longEventLayoutSpace. When set to `"bottom"`, the ghost sits at the bottom of the layout, below any existing long-events.
+
+### Groups
+
+- appearance
+
+**Flags**: IRW
+
+---
 ## Attr: Calendar.eventScreen
 
 ### Description
@@ -2465,6 +2479,18 @@ The title for the [day view](#attr-calendardayview).
 - i18nMessages
 
 **Flags**: IR
+
+---
+## Attr: Calendar.longEventCompactDrag
+
+### Description
+When true, drag-creation and drag-move of [long-events](#attr-calendarallowlongevents) use a compact ghost canvas whose height equals [Calendar.longEventLayoutSpace](#attr-calendarlongeventlayoutspace) rather than the full [Calendar.longEventHeight](#attr-calendarlongeventheight). The compact ghost shows no text and is aligned within the longEventLayoutSpace region according to [Calendar.longEventDragVAlign](#attr-calendarlongeventdragvalign), so it never occupies the same vertical space as real event canvases. Additionally, the [long-event layouts](CalendarView.md#attr-calendarviewlongeventslayout) use longEventLayoutSpace as their [minHeight](Canvas.md#attr-canvasminheight) instead of longEventHeight, keeping empty rows shorter.
+
+### Groups
+
+- appearance
+
+**Flags**: IRW
 
 ---
 ## Attr: Calendar.descriptionField
@@ -3471,13 +3497,13 @@ Not called if the day falls outside the current month and [Calendar.showOtherDay
 ## Method: Calendar.getView
 
 ### Description
-Returns the [view](CalendarView.md#class-calendarview) with the passed [name](../reference_2.md#type-viewname).
+Returns the [view](CalendarView.md#class-calendarview) with the passed [name](../reference.md#type-viewname).
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| viewName | [ViewName](../reference_2.md#type-viewname) | false | — | the name of the CalendarView to return |
+| viewName | [ViewName](../reference.md#type-viewname) | false | — | the name of the CalendarView to return |
 
 ### Returns
 
@@ -3778,7 +3804,7 @@ By default, a dialog appears showing details for the event, and offering the abi
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | event | [CalendarEvent](#type-calendarevent) | false | — | event that was clicked on |
-| viewName | [ViewName](../reference_2.md#type-viewname) | false | — | view where the event's canvas was clicked |
+| viewName | [ViewName](../reference.md#type-viewname) | false | — | view where the event's canvas was clicked |
 
 ### Returns
 
@@ -3865,7 +3891,7 @@ Called whenever an [IndicatorCanvas](../reference.md#class-indicatorcanvas) is c
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | indicatorEvent | [CalendarEvent](#type-calendarevent) | false | — | indicator that was clicked on |
-| viewName | [ViewName](../reference_2.md#type-viewname) | false | — | view where the event's canvas was clicked |
+| viewName | [ViewName](../reference.md#type-viewname) | false | — | view where the event's canvas was clicked |
 
 ### Returns
 
@@ -3881,7 +3907,7 @@ Notification that fires whenever the current view changes via the [mainView tabs
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| viewName | [ViewName](../reference_2.md#type-viewname) | false | — | the name of the current view after the change |
+| viewName | [ViewName](../reference.md#type-viewname) | false | — | the name of the current view after the change |
 
 ---
 ## Method: Calendar.selectTab
@@ -4123,11 +4149,11 @@ Sets the currently visible view.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| viewName | [ViewName](../reference_2.md#type-viewname) | false | — | The name of the view that should be made visible. |
+| viewName | [ViewName](../reference.md#type-viewname) | false | — | The name of the view that should be made visible. |
 
 ### Returns
 
-`[ViewName](../reference_2.md#type-viewname)` — The name of the visible view.
+`[ViewName](../reference.md#type-viewname)` — The name of the visible view.
 
 ---
 ## Method: Calendar.backgroundMouseUp
@@ -4422,7 +4448,7 @@ Called whenever a [ZoneCanvas](../reference.md#class-zonecanvas) is clicked in t
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | zoneEvent | [CalendarEvent](#type-calendarevent) | false | — | zone that was clicked on |
-| viewName | [ViewName](../reference_2.md#type-viewname) | false | — | view where the event's canvas was clicked |
+| viewName | [ViewName](../reference.md#type-viewname) | false | — | view where the event's canvas was clicked |
 
 ### Returns
 
@@ -4831,7 +4857,7 @@ Get the name of the visible view. Returns one of 'day', 'week', 'month' or 'time
 
 ### Returns
 
-`[ViewName](../reference_2.md#type-viewname)` — The name of the currently visible view.
+`[ViewName](../reference.md#type-viewname)` — The name of the currently visible view.
 
 ---
 ## Method: Calendar.eventsRendered

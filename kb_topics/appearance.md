@@ -103,6 +103,8 @@ Properties defining an object's appearance
 - [Calendar.showColumnLayouts](../classes/Calendar.md#attr-calendarshowcolumnlayouts)
 - [Calendar.longEventLayoutStyleName](../classes/Calendar.md#attr-calendarlongeventlayoutstylename)
 - [Calendar.longEventLayoutSpace](../classes/Calendar.md#attr-calendarlongeventlayoutspace)
+- [Calendar.longEventCompactDrag](../classes/Calendar.md#attr-calendarlongeventcompactdrag)
+- [Calendar.longEventDragVAlign](../classes/Calendar.md#attr-calendarlongeventdragvalign)
 - [Calendar.longEventDragOpacity](../classes/Calendar.md#attr-calendarlongeventdragopacity)
 - [Calendar.longEventHeight](../classes/Calendar.md#attr-calendarlongeventheight)
 - [Calendar.fixedEventHeight](../classes/Calendar.md#attr-calendarfixedeventheight)

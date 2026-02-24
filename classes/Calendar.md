@@ -745,7 +745,7 @@ In [day](#attr-calendardayview) and [week](#attr-calendarweekview) views, it dic
 
 By default, events that share space in a Lane or column are rendered from top to bottom, or left to right according to their [start-dates](#attr-calendarstartdatefield) - the earliest in a given lane appears top-most in that lane, or left-most in its column.
 
-Providing `overlapSortSpecifiers` allows for the events to be ordered by one or more of the fields stored on the events, or in the underlying [data-source](DataSource_1.md#class-datasource), if the Calendar is databound.
+Providing `overlapSortSpecifiers` allows for the events to be ordered by one or more of the fields stored on the events, or in the underlying [data-source](DataSource.md#class-datasource), if the Calendar is databound.
 
 **Flags**: IRW
 
@@ -1714,6 +1714,20 @@ The hours of the workday can be customized for particular dates by providing imp
 **Flags**: IR
 
 ---
+## Attr: Calendar.longEventDragVAlign
+
+### Description
+When [Calendar.longEventCompactDrag](#attr-calendarlongeventcompactdrag) is true, controls the vertical alignment of the compact drag-ghost within the [Calendar.longEventLayoutSpace](#attr-calendarlongeventlayoutspace) region of [long-event layouts](CalendarView.md#attr-calendarviewlongeventslayout).
+
+When set to `"top"` (the default), the ghost appears at the top of the layout, above any existing events, and real events are offset downward by longEventLayoutSpace. When set to `"bottom"`, the ghost sits at the bottom of the layout, below any existing long-events.
+
+### Groups
+
+- appearance
+
+**Flags**: IRW
+
+---
 ## Attr: Calendar.eventScreen
 
 ### Description
@@ -2052,6 +2066,18 @@ See [cellStyleSuffixes](../kb_topics/cellStyleSuffixes.md#kb-topic-cellstylesuff
 ### Groups
 
 - appearance
+
+**Flags**: IRW
+
+---
+## Attr: Calendar.hoverMoveWithMouse
+
+### Description
+Whether hovers shown by the Calendar's child views and [event canvases](#attr-calendareventcanvas) should move with the mouse. Propagated to each [CalendarView](CalendarView.md#class-calendarview) when it is created.
+
+### Groups
+
+- hovers
 
 **Flags**: IRW
 
@@ -2459,6 +2485,18 @@ The title for the [day view](#attr-calendardayview).
 **Flags**: IR
 
 ---
+## Attr: Calendar.longEventCompactDrag
+
+### Description
+When true, drag-creation and drag-move of [long-events](#attr-calendarallowlongevents) use a compact ghost canvas whose height equals [Calendar.longEventLayoutSpace](#attr-calendarlongeventlayoutspace) rather than the full [Calendar.longEventHeight](#attr-calendarlongeventheight). The compact ghost shows no text and is aligned within the longEventLayoutSpace region according to [Calendar.longEventDragVAlign](#attr-calendarlongeventdragvalign), so it never occupies the same vertical space as real event canvases. Additionally, the [long-event layouts](CalendarView.md#attr-calendarviewlongeventslayout) use longEventLayoutSpace as their [minHeight](Canvas.md#attr-canvasminheight) instead of longEventHeight, keeping empty rows shorter.
+
+### Groups
+
+- appearance
+
+**Flags**: IRW
+
+---
 ## Attr: Calendar.descriptionField
 
 ### Description
@@ -2486,9 +2524,11 @@ Whether to show the Month view.
 ## Attr: Calendar.fixedMonths
 
 ### Description
-When true, the [month view](#attr-calendarmonthview) always shows exactly 6 weeks of dates, regardless of how many weeks the current month actually spans. This avoids the need to rebuild the grid's data array when navigating between months, since the row count never changes - only the cell contents are updated in place, which is significantly faster.
+When true, the [month view](#attr-calendarmonthview) always shows exactly 6 weeks of dates, regardless of how many weeks the current month actually spans.
 
-When false, the month view shows only as many weeks as needed to display the current month (typically 4-6), and the data array is rebuilt on every month navigation.
+When false, the month view shows only as many weeks as needed to display the current month (typically 4-6).
+
+In-place data updates are used regardless of this setting whenever the row count is unchanged, so there is no performance penalty for the default of false.
 
 ### Groups
 
@@ -2635,6 +2675,14 @@ If set to true, enables the auto-arrangement of events that share time in the ca
 ### Groups
 
 - calendarEvent
+
+**Flags**: IR
+
+---
+## Attr: Calendar.showEventEditorErrorsInline
+
+### Description
+When true, validation errors in the [event editor](#attr-calendareventeditor) are shown as inline icons next to the errored fields. When false, a text blurb is shown instead, using the [Calendar.invalidDateMessage](#attr-calendarinvaliddatemessage) as its content.
 
 **Flags**: IR
 
@@ -4047,7 +4095,7 @@ Setter for updating [Calendar.showWeekends](#attr-calendarshowweekends) at runti
 ## Method: Calendar.eventSaveError
 
 ### Description
-Notification method fired when an attempt to save [an event](../reference.md#object-calendarevent) following edits or drag-movements results in an error from the server. May be overridden to handle specific errors and provide feedback to the user or push a server-provided record to client caches with a call to [updateCaches()](DataSource_1.md#method-datasourceupdatecaches), for example.
+Notification method fired when an attempt to save [an event](../reference.md#object-calendarevent) following edits or drag-movements results in an error from the server. May be overridden to handle specific errors and provide feedback to the user or push a server-provided record to client caches with a call to [updateCaches()](DataSource.md#method-datasourceupdatecaches), for example.
 
 The `scenarioCode` parameter may be used to determine [how the save was initiated](../reference.md#type-calendarsavescenario).
 

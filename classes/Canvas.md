@@ -1617,7 +1617,7 @@ The following list of default behavior is for reference only, developers should 
 ## Attr: Canvas.dataContext
 
 ### Description
-A mapping from [DataSource](DataSource_1.md#class-datasource) IDs to specific [Records](../reference.md#object-record) from those DataSources, that [DataBoundComponents](../reference.md#interface-databoundcomponent) contained within this Canvas should automatically bind to if a DataSource is provided but data is not provided (directly or indirectly, for example, indirectly via setting [ListGrid.autoFetchData](ListGrid_1.md#attr-listgridautofetchdata).
+A mapping from [DataSource](DataSource.md#class-datasource) IDs to specific [Records](../reference.md#object-record) from those DataSources, that [DataBoundComponents](../reference.md#interface-databoundcomponent) contained within this Canvas should automatically bind to if a DataSource is provided but data is not provided (directly or indirectly, for example, indirectly via setting [ListGrid.autoFetchData](ListGrid_1.md#attr-listgridautofetchdata).
 
 See [Canvas.autoPopulateData](#attr-canvasautopopulatedata) for details on how this is done.
 
@@ -8399,7 +8399,7 @@ The TabIndexManager maintains a hierarchy of focusable targets - so if a parent 
 ### Description
 Get the current value of the rule context collected by the [Canvas.ruleScope](#attr-canvasrulescope) of this component (which may be this component itself or whatever component is managing the `ruleScope` for this component).
 
-If the `databoundOnly` parameter is passed as true, only data from components that actually have a [DataSource](DataSource_1.md#class-datasource) is included.
+If the `databoundOnly` parameter is passed as true, only data from components that actually have a [DataSource](DataSource.md#class-datasource) is included.
 
 Use [Canvas.ruleContextChanged](#method-canvasrulecontextchanged) to get a notification of changes to the rule context.
 
@@ -8407,7 +8407,7 @@ Use [Canvas.ruleContextChanged](#method-canvasrulecontextchanged) to get a notif
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| databoundOnly | [boolean](../reference.md#type-boolean) | true | — | whether to include only data from components that have a [DataSource](DataSource_1.md#class-datasource) |
+| databoundOnly | [boolean](../reference.md#type-boolean) | true | — | whether to include only data from components that have a [DataSource](DataSource.md#class-datasource) |
 
 ### Returns
 

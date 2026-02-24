@@ -95,7 +95,7 @@ Both the built-in DataSources and custom DataSources can be used in standalone a
 
 #### Declarative Security
 
-When you use the DataSource layer in a standalone application, [Declarative Security](../classes/DataSource_1.md#attr-datasourcerequiresauthentication) has to be explicitly controlled.
+When you use the DataSource layer in a standalone application, [Declarative Security](../classes/DataSource.md#attr-datasourcerequiresauthentication) has to be explicitly controlled.
 
 To enable a request for security checks you simply need to call `dsRequest.setUserId()` or `dsRequest.setUserRoles()`. If the request is apart of a transaction then security can also be defaulted using `dsTransaction.setClientRequest(true/false)`, however any value set on an individual request will still take priority. For instance if you call `dsTransaction.setClientRequest(false)` but then also call `dsRequest.setUserId(id)`, then security checks will still take place for that request as it has had security enabled which takes priority over the value on `DSTransaction`.
 

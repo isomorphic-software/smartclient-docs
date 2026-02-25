@@ -4977,6 +4977,27 @@ To determine what [TextMatchStyle](../reference_2.md#type-textmatchstyle) is bei
 - dataBoundComponentMethods
 
 ---
+## Method: ListGrid.getCellElement
+
+### Description
+Returns the DOM element for the cell at the specified row and column, or null if the cell is not currently rendered.
+
+Works in both table-based and DIV-based (divGrid) rendering modes, abstracting away the underlying DOM structure so callers need not access row children directly.
+
+Column indices beyond the last drawn data column are allowed, so this method can access implementation cells such as row-height spacers appended after the data columns.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| rowNum | [int](../reference.md#type-int) | false | — | row number of the cell |
+| colNum | [int](../reference.md#type-int) | false | — | column index of the cell within the row |
+
+### Returns
+
+`[DOMElement](#type-domelement)` — the cell DOM element, or null if not currently rendered
+
+---
 ## Method: ListGrid.clearAllCriteria
 
 ### Description

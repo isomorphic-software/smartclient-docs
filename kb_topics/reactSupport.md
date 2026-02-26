@@ -210,8 +210,9 @@ We recommend using React refs to reconfigure components after construction, as d
 
 When using conditional JSX, keep in mind:
 
-*   When JSX is re-rendered, React will call **componentDidUpdate()**, which will cause us to apply any detected property changes via [setters](../classes/Class.md#method-classsetproperty). This is limited to [writable properties](../reference.md#kb-topic-flag-abbreviations). The underlying SmartClient widget will not be recreated.
-*   To destroy and recreate the SC widget in **componentDidUpdate()**, you can set the attribute `recreateOnReactComponentUpdate` true on the component.
+*   When JSX is re-rendered, React will call **componentDidUpdate()**. By default, re-rendering does not automatically update the underlying SmartClient widget.
+*   To apply changed props to the SC widget via [setters](../classes/Class.md#method-classsetproperty), set the attribute `updateOnReactComponentUpdate` on the component, or set `isc.React.updateOnReactComponentUpdate` globally. This is limited to [writable properties](../reference.md#kb-topic-flag-abbreviations); the widget will not be recreated.
+*   To destroy and recreate the SC widget in **componentDidUpdate()**, set the attribute `recreateOnReactComponentUpdate` true on the component.
 *   Alternatively, if you set the `key` attribute on the component to a unique number, that will force React to re-create and remount the component, so that **componentDidMount()** gets called against, recreating the underlying SC widget.
 *   When declaring properties that can contain objects, like [Window.headerControls](../classes/Window.md#attr-windowheadercontrols) (a list of strings naming specific controls or Canvas instances), any falsy value will be considered an excluded child element and skipped.
 *   For other properties declared with conditional JSX, your conditional element must actually evaluate to `false` to be excluded from the declaration.

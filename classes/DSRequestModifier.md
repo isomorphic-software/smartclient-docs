@@ -51,7 +51,7 @@ The same rules apply to this attribute as apply to [value](#attr-dsrequestmodifi
 ## Attr: DSRequestModifier.value
 
 ### Description
-The value to assign to the field named by [fieldName](#attr-dsrequestmodifierfieldname). This value can be static, and for Pro licenses that is the only option. With Power and better licenses, this value can be an expression in the Velocity template language. In this latter case, all the standard [Velocity context variables](../kb_topics/velocitySupport.md#kb-topic-velocity-context-variables) provided by SmartClient Server are available to you.
+The value to assign to the field named by [fieldName](#attr-dsrequestmodifierfieldname). This value can be static, and for Pro licenses that is the only option. With Power and better licenses, this value can be an expression in the Velocity template language. In this latter case, all the standard [Velocity context variables](#kb-topic-velocitysupport) provided by SmartClient Server are available to you.
 
 Note, `dsRequestModifier` values are evaluated during [DSRequest](../reference.md#object-dsrequest) setup, before the request's `execute()` method is called. This means that variables added to the Velocity context by calling `addToTemplateContext()` from a [DMI](../kb_topics/dmiOverview.md#kb-topic-direct-method-invocation) method or [custom DataSource implementation](DataSource.md#attr-datasourceserverconstructor) will not be available. In this case, you can either
 
@@ -87,7 +87,7 @@ Please see the server-side Javadoc for the `com.isomorphic.velocity.ResponseData
 
 ### See Also
 
-- [velocitySupport](../kb_topics/velocitySupport.md#kb-topic-velocity-context-variables)
+- [velocitySupport](#kb-topic-velocitysupport)
 
 **Flags**: IR
 

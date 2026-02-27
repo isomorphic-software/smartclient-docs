@@ -93,7 +93,7 @@ For non-transition output by the AI, validation is applied if configured. Valida
 1.  [CoTTask.outputFields](#attr-cottaskoutputfields): an Array of DataSourceField
 2.  [CoTTask.outputDS](#attr-cottaskoutputds): a full DataSource definition
 
-Both forms of defining validators can validate nested structures by using [DataSourceField.type](DataSourceField.md#attr-datasourcefieldtype) to refer to the [DataSource.ID](DataSource.md#attr-datasourceid) of another DataSource which describes the nested object.
+Both forms of defining validators can validate nested structures by using [DataSourceField.type](DataSourceField.md#attr-datasourcefieldtype) to refer to the [DataSource.ID](DataSource_1.md#attr-datasourceid) of another DataSource which describes the nested object.
 
 Note that if you write a CoT that is supposed to produce a record to save to a currently loaded CRUD DataSource, you can simply supply the CRUD DataSource as `outputDS`, and you're done.
 
@@ -109,7 +109,7 @@ When AI produces a non-transition result, typically it just needs to be stored t
   },
  
 ```
-Shown above is a shorthand format; in general `stateUpdates` is a mapping from a [statePath](../reference.md#type-statepath) to a ${TaskInputExpression} or other value.
+Shown above is a shorthand format; in general `stateUpdates` is a mapping from a [statePath](../reference_2.md#type-statepath) to a ${TaskInputExpression} or other value.
 ```
  { ID:"addField", title: "Add Field", ... other properties ...
     stateUpdates : {
@@ -170,7 +170,7 @@ Shorthand for [CoTTask.outputDS](#attr-cottaskoutputds), causing a temporary Dat
 ## Attr: CoTTask.stateUpdates
 
 ### Description
-Declarative mapping from [StatePaths](../reference.md#type-statepath) to [TaskInputExpressions](../reference_2.md#type-taskinputexpression), or just a single StatePath if the entire outputs object should be applied to a single path. When the task completes successfully (no validation errors), each mapping is applied to update [Process.state](Process.md#attr-processstate). Shorthand: a String path means the entire outputs go to that path.
+Declarative mapping from [StatePaths](../reference_2.md#type-statepath) to [TaskInputExpressions](../reference_2.md#type-taskinputexpression), or just a single StatePath if the entire outputs object should be applied to a single path. When the task completes successfully (no validation errors), each mapping is applied to update [Process.state](Process.md#attr-processstate). Shorthand: a String path means the entire outputs go to that path.
 
 **Flags**: IR
 
@@ -178,7 +178,7 @@ Declarative mapping from [StatePaths](../reference.md#type-statepath) to [TaskIn
 ## Attr: CoTTask.outputDS
 
 ### Description
-DataSource (definition or ID) used to validate outputs produced by the AI. Outputs are validated via [DataSource.validateData](DataSource.md#method-datasourcevalidatedata). Nested structures are supported via DataSource field types. If both `outputDS` and `outputFields` are provided, `outputDS` takes precedence.
+DataSource (definition or ID) used to validate outputs produced by the AI. Outputs are validated via [DataSource.validateData](DataSource_1.md#method-datasourcevalidatedata). Nested structures are supported via DataSource field types. If both `outputDS` and `outputFields` are provided, `outputDS` takes precedence.
 
 **Flags**: IR
 

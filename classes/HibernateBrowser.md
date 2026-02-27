@@ -85,6 +85,6 @@ For example, `includeSubstring: ["Order", "inv"]` would match all the following 
 ## Method: HibernateBrowser.getGeneratedDataSource
 
 ### Description
-Returns the [DataSource](DataSource.md#class-datasource) most recently auto-derived by this HibernateBrowser. This will correspond to the currently-selected class mapping.
+Returns the [DataSource](DataSource_1.md#class-datasource) most recently auto-derived by this HibernateBrowser. This will correspond to the currently-selected class mapping.
 
 ---

@@ -54,7 +54,7 @@ Files used by the Skin Editor include:
 *   skinEditor.jsp - the bootstrap page for the tool
 *   colorTester.jsp - the page displayed in the Skin Editor's _Preview Pane_
 
-In addition to these application files, the tool requires several framework [DataSource](../classes/DataSource.md#class-datasource)s
+In addition to these application files, the tool requires several framework [DataSource](../classes/DataSource_1.md#class-datasource)s
 
 *   _isc\_baseSkin_ - manages information about "base" skins, which are skins that can be used as the starting point for custom skins in the Skin Editor. The _Flat series_ of framework skins are base-skins.
 *   _isc\_userSkin_ - manages information about "user" skins, which are custom skins created in the Skin Editor, as an extension of an existing _base_ skin. These user skins can exist either as dataSource-records or as exported skins on disk.

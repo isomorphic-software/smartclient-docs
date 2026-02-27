@@ -634,7 +634,7 @@ If this item is showing a dataBound pickList, this notification method will be f
 ### Description
 [StringMethod](../kb_topics/stringMethods.md#kb-topic-string-methods-overview) to return a set of filter criteria to be applied to the data displayed in the pickList when it is shown.
 
-If this is a databound item the criteria will be passed as criteria to [DataSource.fetchData](DataSource.md#method-datasourcefetchdata). Otherwise an equivalent client-side filter will be performed on the data returned by [PickList.getClientPickListData](#method-picklistgetclientpicklistdata).
+If this is a databound item the criteria will be passed as criteria to [DataSource.fetchData](DataSource_1.md#method-datasourcefetchdata). Otherwise an equivalent client-side filter will be performed on the data returned by [PickList.getClientPickListData](#method-picklistgetclientpicklistdata).
 
 By default combines [FormItem.optionCriteria](FormItem.md#attr-formitemoptioncriteria) with [PickList.pickListCriteria](#attr-picklistpicklistcriteria) if specified, otherwise an empty set of criteria so all records will be displayed.
 

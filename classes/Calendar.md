@@ -758,6 +758,20 @@ By default, the [close buttons](#attr-calendareventcanvasclosebutton) and the [h
 **Flags**: IR
 
 ---
+## Attr: Calendar.dragGhostVAlign
+
+### Description
+Controls how the ghost canvas is vertically aligned within the available [Calendar.longEventLayoutSpace](#attr-calendarlongeventlayoutspace) region during drag-creation and drag-move of [long-events](#attr-calendarallowlongevents).
+
+Accepts `"top"`, `"center"` (the default), or `"bottom"`. For example, when [Calendar.dragGhostHeight](#attr-calendardragghostheight) is 4 and longEventLayoutSpace is 10, a `"center"` alignment places the 4px ghost 3px from the top of the ghost region.
+
+### Groups
+
+- appearance
+
+**Flags**: IRW
+
+---
 ## Attr: Calendar.currentViewName
 
 ### Description
@@ -1175,6 +1189,20 @@ Multi-AutoChild component, created as a space-filling member in individual [even
 **Flags**: IR
 
 ---
+## Attr: Calendar.dragGhostSpaceVAlign
+
+### Description
+Controls the vertical alignment of the drag-ghost region within [long-event layouts](CalendarView.md#attr-calendarviewlongeventslayout). This region, sized by [Calendar.longEventLayoutSpace](#attr-calendarlongeventlayoutspace), is where a long-event can always be drag-created, and where the drag-ghost is always displayed.
+
+When set to `"top"` (the default), the ghost region appears at the top of the layout, above any existing events, and real events are offset downward by longEventLayoutSpace. When set to `"bottom"`, the ghost region sits at the bottom of the layout, below any existing long-events.
+
+### Groups
+
+- appearance
+
+**Flags**: IRW
+
+---
 ## Attr: Calendar.laneGroupByField
 
 ### Description
@@ -1414,6 +1442,18 @@ AutoChild Menu, shown when a user clicks the [more events](#attr-calendarmonthmo
 
 ### Description
 Display format to use for the time portion of events' date information. By default, times are displayed in the global format, including the influence of the global [24-hour](Time.md#classattr-timeuse24hourtime) option, which is true by default. P> Note that this display setting does not affect the way in which time values are edited in the [eventEditor](#attr-calendareventeditor) - see [Calendar.twentyFourHourTime](#attr-calendartwentyfourhourtime) for more information.
+
+**Flags**: IRW
+
+---
+## Attr: Calendar.dragGhostHeight
+
+### Description
+The pixel height of the actual ghost canvas used during drag-creation and drag-move of [long-events](#attr-calendarallowlongevents). This is distinct from [Calendar.longEventLayoutSpace](#attr-calendarlongeventlayoutspace), which controls the total vertical space reserved for the ghost region. A small value (eg 2 or 3) renders the ghost as a thin line, similar to Google Calendar and other calendar applications.
+
+### Groups
+
+- appearance
 
 **Flags**: IRW
 
@@ -1712,20 +1752,6 @@ The hours of the workday can be customized for particular dates by providing imp
 - date
 
 **Flags**: IR
-
----
-## Attr: Calendar.longEventDragVAlign
-
-### Description
-When [Calendar.longEventCompactDrag](#attr-calendarlongeventcompactdrag) is true, controls the vertical alignment of the compact drag-ghost within the [Calendar.longEventLayoutSpace](#attr-calendarlongeventlayoutspace) region of [long-event layouts](CalendarView.md#attr-calendarviewlongeventslayout).
-
-When set to `"top"` (the default), the ghost appears at the top of the layout, above any existing events, and real events are offset downward by longEventLayoutSpace. When set to `"bottom"`, the ghost sits at the bottom of the layout, below any existing long-events.
-
-### Groups
-
-- appearance
-
-**Flags**: IRW
 
 ---
 ## Attr: Calendar.eventScreen
@@ -2479,18 +2505,6 @@ The title for the [day view](#attr-calendardayview).
 - i18nMessages
 
 **Flags**: IR
-
----
-## Attr: Calendar.longEventCompactDrag
-
-### Description
-When true, drag-creation and drag-move of [long-events](#attr-calendarallowlongevents) use a compact ghost canvas whose height equals [Calendar.longEventLayoutSpace](#attr-calendarlongeventlayoutspace) rather than the full [Calendar.longEventHeight](#attr-calendarlongeventheight). The compact ghost shows no text and is aligned within the longEventLayoutSpace region according to [Calendar.longEventDragVAlign](#attr-calendarlongeventdragvalign), so it never occupies the same vertical space as real event canvases. Additionally, the [long-event layouts](CalendarView.md#attr-calendarviewlongeventslayout) use longEventLayoutSpace as their [minHeight](Canvas.md#attr-canvasminheight) instead of longEventHeight, keeping empty rows shorter.
-
-### Groups
-
-- appearance
-
-**Flags**: IRW
 
 ---
 ## Attr: Calendar.descriptionField

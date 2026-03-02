@@ -58,6 +58,14 @@ Whether to show an axis line for this extra value axis if it is not placed direc
 **Flags**: IR
 
 ---
+## Attr: MetricSettings.discontinuousLines
+
+### Description
+Same as [FacetChart.axisStartValue](FacetChart.md#attr-facetchartaxisstartvalue) but affects this metric only.
+
+**Flags**: IR
+
+---
 ## Attr: MetricSettings.valueLineProperties
 
 ### Description
@@ -203,7 +211,13 @@ See [ChartType](../reference.md#type-charttype) for a list of known types - Colu
 ## Attr: MetricSettings.axisStartValue
 
 ### Description
-Same as [FacetChart.axisStartValue](FacetChart.md#attr-facetchartaxisstartvalue) but affects only one metric.
+Same as [FacetChart.axisStartValue](FacetChart.md#attr-facetchartaxisstartvalue) but affects this metric only.
+
+Note that if there are data points that fall below this value, they are omitted and effectively treated as missing values. When showing a data line, developers may wish to set [MetricSettings.discontinuousLines](#attr-metricsettingsdiscontinuouslines) to `true` in this case.
+
+### See Also
+
+- [MetricSettings.axisEndValue](#attr-metricsettingsaxisendvalue)
 
 **Flags**: IR
 
@@ -228,6 +242,20 @@ Gradation labels will be switched to show percentage instead of absolute values.
 This setting is valid only for Column, Bar, Area and Radar chart types and only in [stacked](#attr-metricsettingsstacked) mode. Stacked columns will be as tall as the chart rect and stacked bars will be as wide as the chart rect. Area and Radar charts will be completely filled except for facet values where all values are 0.
 
 **Flags**: IRW
+
+---
+## Attr: MetricSettings.axisEndValue
+
+### Description
+Same as [FacetChart.axisEndValue](FacetChart.md#attr-facetchartaxisendvalue) but affects this metric only.
+
+Note that if there are data points that fall above this value, they are omitted and effectively treated as missing values. When showing a data line, developers may wish to set [MetricSettings.discontinuousLines](#attr-metricsettingsdiscontinuouslines) to `true` in this case.
+
+### See Also
+
+- [MetricSettings.axisStartValue](#attr-metricsettingsaxisstartvalue)
+
+**Flags**: IR
 
 ---
 ## Attr: MetricSettings.gradationLabelProperties
@@ -346,14 +374,6 @@ Default gradations can be overridden via [MetricSettings.logBase](#attr-metricse
 ### Groups
 
 - gradations
-
-**Flags**: IR
-
----
-## Attr: MetricSettings.xAxisEndValue
-
-### Description
-Same as [FacetChart.xAxisEndValue](FacetChart.md#attr-facetchartxaxisendvalue) but affects only one metric.
 
 **Flags**: IR
 

@@ -13,7 +13,7 @@ HTML5-based charting engine, implementing all [chartTypes](Chart.md#attr-chartch
 
 Can be used directly, or specified as [ListGrid.chartConstructor](ListGrid_1.md#attr-listgridchartconstructor) or [CubeGrid.chartConstructor](CubeGrid.md#attr-cubegridchartconstructor).
 
-**NOTE:** you must load the standard Drawing and [Optional](../kb_topics/loadingOptionalModules.md#kb-topic-loading-optional-modules) Charts modules before you can use FacetChart. Also, the Charts Module is available in Pro Edition or better, please see [smartclient.com/product](http://www.smartclient.com/product) for licensing information.
+**NOTE:** you must load the standard Drawing and [Optional](../kb_topics/loadingOptionalModules.md#kb-topic-loading-optional-modules) Charts modules before you can use FacetChart. Also, the Charts Module is available in Pro Edition or better. Please see [smartclient.com/product](http://www.smartclient.com/product) for licensing information.
 
 To create a FacetChart, set [FacetChart.facets](#attr-facetchartfacets) to an Array of Facet objects describing the chart dimensions and [FacetChart.valueProperty](#attr-facetchartvalueproperty) to value field name. For example:
 
@@ -49,10 +49,8 @@ See the following SDK examples for examples of charts with multiple facets:
 *   *Multi-Series Chart* example, and
 *   *Dynamic Data* example.
 
-#### the Inlined Facet
-
+#### The Inlined Facet
 Having an "inlined facet" is another method to provide data to the chart. In this case each CellRecord contains multiple data values; one facet definition is considered "inlined", meaning that the facetValueIds from this facet appear as properties in each Record, and each such property holds one data value. In this case the singular `valueProperty` is ignored. For example:
-
 ```
  isc.FacetChart.create({
      facets: [
@@ -97,9 +95,7 @@ Example with two facets:
  });
  
 ```
-
-#### Dual axis or multi-axis charts
-
+#### Dual-Axis or Multi-Axis Charts
 FacetChart supports drawing multiple vertical axes. This is commonly used to show values with different units (for example: sales in dollars, total units shipped) and/or very different ranges (for example: gross revenue, profit) on the same chart. Each set of values, referred to as a "metric", gets its own axis and gradation marks.
 
 To use multiple axes, you add an additional facet called the "metric facet" that specifies each axis to be plotted as a facetValueId. The metric facet is an inlined facet, so as with inlined facets in general, each CellRecord has a value for each facetValueId of the metric facet. You then set [extraAxisMetrics](#attr-facetchartextraaxismetrics) to the list of metrics that should be plotted as additional axes.
@@ -110,7 +106,7 @@ You can have multiple extra axes and the additional axes and gradation tics will
 
 Multi-axis, multi-facet charts are also allowed. Extending the previous example, you might add a new facet "company", for a total of 3 facets. Each CellRecord would have "revenue" and "profit" for one combination of "company" and "month". The default appearance in this case would show revenue as clustered columns (one cluster per month, one column per company) and would show profit as multiple lines (one per company). See the *Multi-Series* SDK sample for an example of a multi-axis, multi-facet chart.
 
-#### Mixed plots
+#### Mixed Plots
 In some cases you want to show some data series as one shape and other data series as another shape _but use the same axis_. This is commonly used when one series is of a fundamentally different kind than the other series (for example, a projection or average) but still has the same scale.
 
 To achieve a mixed plot like this, define it as a multi-axis chart as explained above, but set [MetricSettings.showAxis](MetricSettings.md#attr-metricsettingsshowaxis) false to avoid a second axis appearing, and set [MetricSettings.matchGradations](MetricSettings.md#attr-metricsettingsmatchgradations) to cause the same gradations to be used for both plots.
@@ -118,25 +114,22 @@ To achieve a mixed plot like this, define it as a multi-axis chart as explained 
 See the *Mixed Plots* SDK example.
 
 #### Histogram Charts
-
 A "histogram" chart is similar to a [stacked](#attr-facetchartstacked) "column" chart, showing multiple facet values vertically for each position along the x-axis / [data label facet](#method-facetchartgetdatalabelfacet), but instead of each vertical facet value being defined only by a length, a "histogram" chart defines a _segment_ for each, represented by both a start point (the ["value property"](#attr-facetchartvalueproperty)) and an end point (the ["endValue metric"](#attr-facetchartendvaluemetric)).
 
 Segments may overlap, with the last segment drawn receiving the highest z-ordering. To override this default behavior, values may be provided using an additional metric - [FacetChart.zIndexMetric](#attr-facetchartzindexmetric) - whose value must be a non-negative integer no greater than [FacetChart.maxDataZIndex](#attr-facetchartmaxdatazindex).
 
 #### Scatter Charts
-
 Scatter charts differ from other chart types in that both axes represent continuous numeric data rather than a discrete set of facet values (like months of the year). For this reason Scatter charts use the same concept of a "metric" facet as is used by Dual-Axis charts, where the metric facet is expected to have exactly two metrics: the [xAxisMetric](#attr-facetchartxaxismetric) and [yAxisMetric](#attr-facetchartyaxismetric).
 
 Unlike all other chart types, a scatter plot may be specified with only the metric facet. However one additional facet can be defined, which allows multiple sets of x,y points to be drawn in different colors, analogous to the different colors of a multi-series line chart.
 
 See the *Scatter Plot* SDK example.
 
-**Date values on the X axis**
+**Date values on the x-axis**
 
 FacetChart also supports scatter charts where the x-axis represents date- or time-valued data and the y-axis represents numeric data, as normal. To enable this mode all records in the data must have values for the facetValueId of the [xAxisMetric](#attr-facetchartxaxismetric) that are true Date objects, not Strings or `null`s. For these charts, vertical lines are drawn to represent a sequence of significant datetime values on the x-axis, such as the first day of the month or week. The mechanism used to select these Dates and format them into the x-axis labels is the same mechanism used by charts with [labelCollapseMode](#attr-facetchartlabelcollapsemode) set to "time".
 
 #### Bubble Charts
-
 A "bubble" chart is a type of scatter chart where the _size_ of each rendered data point represents an additional metric value, allowing 3 continuous data values to be visualized together. When using `chartType:"Bubble"`, the additional metric is configured via [pointSizeMetric](#attr-facetchartpointsizemetric). Points will be sized between the [minDataPointSize](#attr-facetchartmindatapointsize) and [maxDataPointSize](#attr-facetchartmaxdatapointsize), optionally with [logarithmic scaling](#attr-facetchartlogscalepointsize). A legend will be included showing how point size represents data values, and a multi-facet Bubble chart can optionally use a different shape for each `facetValue` via [useMultiplePointShapes](#attr-facetchartusemultiplepointshapes).
 
 Variable-size points can also be used with other, non-scatter chart types (such as "Line" or "Radar") when [showDataPoints](#attr-facetchartshowdatapoints) is enabled, by setting `pointSizeMetric` to the [FacetValue.id](FacetValue.md#attr-facetvalueid) of a [facetValue](Facet.md#attr-facetvalues) of the metric facet. In this case, a legend for point sizes is not shown by default, but can be enabled via [showPointSizeLegend](#attr-facetchartshowpointsizelegend).
@@ -146,7 +139,6 @@ Whenever drawing variable size data points, by default, the largest data points 
 See the *Bubble Chart* SDK example.
 
 #### Color Scale Charts
-
 FacetChart supports rendering an additional metric value as the _color_ of each data point. This feature requires that [showDataPoints](#attr-facetchartshowdatapoints) be enabled and is configured via [colorScaleMetric](#attr-facetchartcolorscalemetric). Instead of data points being drawn using a separate color for each `facetValue` of the legend facet, the data points will be drawn using a color interpolated between the [scaleStartColor](#attr-facetchartscalestartcolor) and [scaleEndColor](#attr-facetchartscaleendcolor), optionally with [logarithmic scaling](#attr-facetchartlogscalepointcolor). A legend is included by default via [showColorScaleLegend](#attr-facetchartshowcolorscalelegend) that shows how the data values are mapped to a color via a gradient over the range of colors used in the chart. Visual appearance of data points in color scale charts can be further customized by setting the [bubbleProperties](#attr-facetchartbubbleproperties), just as with bubble charts.
 
 Note that when color is being used to show values of the `colorScaleMetric` then color cannot be used to distinguish between different `facetValues`. Therefore color scale charts cannot have a (non-metric) legend facet.
@@ -154,7 +146,6 @@ Note that when color is being used to show values of the `colorScaleMetric` then
 See the *Color Scale Chart* SDK example.
 
 #### Three-Facet Bar and Column Charts
-
 Bar and Column charts support having three facets declared, unlike most other charts supporting data labels, which only allow two. With three facets, the first two are shown as [data label facets](#method-facetchartgetdatalabelfacet), as separate rows of labels, and the third facet is used as the [legend facet](#method-facetchartgetlegendfacet).
 
 You can use features such as [stacking](#attr-facetchartstacked) and [extra axes](#attr-facetchartextraaxissettings) with a three-facet Bar or Column chart, but certain chart settings are incompatible:
@@ -167,9 +158,19 @@ In addition, with a three-facet chart, you can only call [FacetChart.setChartTyp
 
 Take a look at [this example](https://www.smartclient.com/smartclient-latest/showcase/?id=threeFacetBarChart) to see this feature in action.
 
-#### Notes on printing
-
+#### Notes on Printing
 FacetCharts support printing on all supported desktop browsers. When using Pro Edition or better with the SmartClient Server Framework installed, charts can also be exported to PDF via [RPCManager.exportContent](RPCManager.md#classmethod-rpcmanagerexportcontent) or to images via [RPCManager.exportImage](RPCManager.md#classmethod-rpcmanagerexportimage).
+#### Best Practices
+
+*   Use scales, encodings, and chart types that accurately reflect the data's structure and magnitude.
+*   Avoid truncated axes and inconsistent facet scales that distort comparison.
+    
+    When, for example, the user can configure a different "view" of the data, consider fixing the bounds of value axes (via [FacetChart.axisStartValue](#attr-facetchartaxisstartvalue), [FacetChart.axisEndValue](#attr-facetchartaxisendvalue), [FacetChart.xAxisStartValue](#attr-facetchartxaxisstartvalue), and [FacetChart.xAxisEndValue](#attr-facetchartxaxisendvalue)) to prevent inconsistent scales from being used, or the layout of the chart from shifting slightly between views. Consider also setting [FacetChart.discontinuousLines](#attr-facetchartdiscontinuouslines) to `true` so that the omission of data points due to being outside axis bounds is visually clear. When extra axes are used, each extra axis' [settings](#attr-facetchartextraaxissettings) should configure [MetricSettings.axisStartValue](MetricSettings.md#attr-metricsettingsaxisstartvalue), [MetricSettings.axisEndValue](MetricSettings.md#attr-metricsettingsaxisendvalue), and [MetricSettings.discontinuousLines](MetricSettings.md#attr-metricsettingsdiscontinuouslines) separately.
+    
+*   When using size-based encodings (e.g. Bubble charts), ensure that area – not radius – is proportional to the underlying values, and use them only when magnitude-by-area comparisons are appropriate.
+*   Use color deliberately. Ensure sufficient contrast, apply consistent mappings across facets, and avoid palettes that imply an ordering or magnitude comparison that does not exist.
+
+Many excellent books discuss the principles of appropriate data visualization as well as common pitfalls. Such books can be consulted for more in-depth guidance.
 
 ---
 ## ClassAttr: FacetChart.invalidPolynomialDegreeMessage
@@ -1568,8 +1569,11 @@ Defaults to 0, or to a value that makes good use of horizontal space based on [F
 
 If the x-axis metric is date-valued, this value should be a date (typically applies to Scatter charts only).
 
+Note that if this chart's data includes points that fall before this value, they are omitted and effectively treated as null values.
+
 ### See Also
 
+- [FacetChart.xAxisEndValue](#attr-facetchartxaxisendvalue)
 - [FacetChart.axisStartValue](#attr-facetchartaxisstartvalue)
 
 **Flags**: IR
@@ -1761,9 +1765,13 @@ Start value for the primary axis of the chart.
 
 If set to an explicit value, this will be respected. If unset, the axis start value will default to 0, or to a value that makes good use of vertical space based on [FacetChart.minDataSpreadPercent](#attr-facetchartmindataspreadpercent).
 
-For multi-axis charts, Bubble charts, and Scatter charts, the `facetChart.axisStartValue` affects only the **first** axis of the chart. Start values for other axes of multi-axis charts can be set on a per-axis basis via [MetricSettings.axisStartValue](MetricSettings.md#attr-metricsettingsaxisstartvalue). For Scatter charts, the [FacetChart.xAxisStartValue](#attr-facetchartxaxisstartvalue) property must be used to set the start value of the x-axis.
+For multi-axis charts, Bubble charts, and Scatter charts, the `facetChart.axisStartValue` affects only the primary vertical axis of the chart. Start values for other axes of multi-axis charts can be set on a per-axis basis via [MetricSettings.axisStartValue](MetricSettings.md#attr-metricsettingsaxisstartvalue). For Bubble and Scatter charts, the [FacetChart.xAxisStartValue](#attr-facetchartxaxisstartvalue) property may be used to set the start value of the x-axis.
 
-Note that if this chart's data includes points that fall below this value, they are omitted and effectively treated as null values. For charts showing a data line, developers may wish to set [FacetChart.discontinuousLines](#attr-facetchartdiscontinuouslines) to true in this case.
+Note that if this chart's data includes points that fall below this value, they are omitted and effectively treated as missing values. For charts showing a data line, developers may wish to set [FacetChart.discontinuousLines](#attr-facetchartdiscontinuouslines) to `true` in this case.
+
+### See Also
+
+- [FacetChart.axisEndValue](#attr-facetchartaxisendvalue)
 
 **Flags**: IR
 
@@ -2294,9 +2302,13 @@ End value for the primary axis of the chart.
 
 If set to an explicit value, this will be respected. If unset, the axis end value will default to a value large enough to the largest data point, rounded up to the nearest (next) gradation.
 
-For multi-axis charts, Bubble charts, and Scatter charts, the `facetChart.axisEndValue` affects only the **first** axis of the chart. End values for other axes of multi-axis charts can be set on a per-axis basis via [MetricSettings.xAxisEndValue](MetricSettings.md#attr-metricsettingsxaxisendvalue). For Scatter charts, the [FacetChart.xAxisEndValue](#attr-facetchartxaxisendvalue) property must be used to set the end value of the x-axis.
+For multi-axis charts, Bubble charts, and Scatter charts, the `facetChart.axisEndValue` affects only the primary vertical axis of the chart. End values for other axes of multi-axis charts can be set on a per-axis basis via [MetricSettings.axisEndValue](MetricSettings.md#attr-metricsettingsaxisendvalue). For Bubble and Scatter charts, the [FacetChart.xAxisEndValue](#attr-facetchartxaxisendvalue) property may be used to set the end value of the x-axis.
 
-Note that if this chart's data includes points that fall above this value, they are omitted and effectively treated as null values. For charts showing a data line, developers may wish to set [FacetChart.discontinuousLines](#attr-facetchartdiscontinuouslines) to true in this case.
+Note that if this chart's data includes points that fall above this value, they are omitted and effectively treated as missing values. For charts showing a data line, developers may wish to set [FacetChart.discontinuousLines](#attr-facetchartdiscontinuouslines) to `true` in this case.
+
+### See Also
+
+- [FacetChart.axisStartValue](#attr-facetchartaxisstartvalue)
 
 **Flags**: IR
 
@@ -2313,6 +2325,8 @@ The additional value axis may have their own gradations, chart type, log scale, 
 Value axes, including the main value axis, are labelled in the legend along with representations of the charted data. The labels are taken from the [FacetValue.title](FacetValue.md#attr-facetvaluetitle) of each metric's FacetValue (or the [FacetChart.valueTitle](#attr-facetchartvaluetitle) if the metric is the [FacetChart.valueProperty](#attr-facetchartvalueproperty)).
 
 The order of the metrics determines the position of the corresponding axes on the chart as well as the z-ordering of the corresponding data lines. The first and second extra value axes are placed to the right of the chart rectangle, and any remaining extra value axes are placed to the left of the main value axis (and therefore to the left of the chart rectangle).
+
+Note: Extra value axes are only supported for Column, Area, and Line charts.
 
 ### Groups
 
@@ -2377,6 +2391,8 @@ When [FacetChart.usePointSizeLogGradations](#attr-facetchartusepointsizeloggrada
 For charts with multiple vertical axes, optionally provides settings for how each [extra axis metric](#attr-facetchartextraaxismetrics) is plotted. See the main [FacetChart](#class-facetchart) docs for an overview of how multi-axis charts are used.
 
 The chart of each metric's values may be of any rectangular chart type that uses a vertical value axis ("Column", "Area", or "Line" - "Histogram" is not supported). Because the charts will be superimposed over the same drawing area, there can only be one "Column" chart and one "Area" chart. The column chart is placed on the bottom followed by the area chart, and then the line charts are drawn on top in the order of their metric in the [FacetChart.extraAxisMetrics](#attr-facetchartextraaxismetrics) array. If the [chartType](MetricSettings.md#attr-metricsettingscharttype)s are left unspecified then by default the first metric will be drawn as columns and the remaining will be drawn as lines.
+
+Note: Extra value axes are only supported for Column, Area, and Line charts.
 
 ### Groups
 
@@ -2628,8 +2644,11 @@ If set to an explicit value, this will be respected. If unset, the axis end valu
 
 If the x-axis metric is date-valued, this value should be a date (typically applies to Scatter charts only).
 
+Note that if this chart's data includes points that fall after this value, they are omitted and effectively treated as null values.
+
 ### See Also
 
+- [FacetChart.xAxisStartValue](#attr-facetchartxaxisstartvalue)
 - [FacetChart.axisEndValue](#attr-facetchartaxisendvalue)
 
 **Flags**: IR
@@ -3403,7 +3422,9 @@ Size of individual color swatches in legend.
 ## Attr: FacetChart.discontinuousLines
 
 ### Description
-Whether to treat non-numeric values in the dataset as indicating a break in the data line. If set to `false` then null values are ignored. Defaults to `true` for [filled](#attr-facetchartfilled) charts and to `false` for line charts.
+Whether to treat non-numeric values in the dataset as indicating a break in the data line. If set to `false` then non-numeric and missing values are ignored. Defaults to `true` for [filled](#attr-facetchartfilled) charts and to `false` for line charts.
+
+For multi-axis charts, this affects only the primary chart. Each extra axis metric has its own [MetricSettings.discontinuousLines](MetricSettings.md#attr-metricsettingsdiscontinuouslines) setting.
 
 **Flags**: IRW
 

@@ -11,7 +11,7 @@ Class representing a WebService definition derived from a WSDL file.
 
 A Web Service object allows you to invoke operations (via [callOperation()](#method-webservicecalloperation)), inspect schema declared in the WSDL file ([getSchema()](#method-webservicegetschema)), and perform simple read-only databinding [WebService.getFetchDS](#method-webservicegetfetchds).
 
-Once a WebService has been loaded, a DataSource can be declared with a [DataSource.serviceNamespace](DataSource_1.md#attr-datasourceservicenamespace) to connect it to the web service, allowing DataSource data to be loaded and saved to the web service using [operationBindings](OperationBinding.md#class-operationbinding).
+Once a WebService has been loaded, a DataSource can be declared with a [DataSource.serviceNamespace](DataSource.md#attr-datasourceservicenamespace) to connect it to the web service, allowing DataSource data to be loaded and saved to the web service using [operationBindings](OperationBinding.md#class-operationbinding).
 
 ### Groups
 
@@ -101,7 +101,7 @@ Retrieve a DataSource that provides read-only access to records returned by a we
 
 [DataBound Components](../reference.md#interface-databoundcomponent) can be bound to the returned DataSource, and the [fetchData()](ListGrid_2.md#method-listgridfetchdata) method can be invoked to retrieve data from the web service.
 
-The returned DataSource is only capable of the "fetch" [DataSource operation](../kb_topics/dataSourceOperations.md#kb-topic-datasource-operations), not "update", "add" or "remove". To create a DataSource capable of full read-write access, use [DataSource.operationBindings](DataSource_1.md#attr-datasourceoperationbindings) with the [wsOperation](OperationBinding.md#attr-operationbindingwsoperation) property set to associate each DataSource operation with a web service operation.
+The returned DataSource is only capable of the "fetch" [DataSource operation](../kb_topics/dataSourceOperations.md#kb-topic-datasource-operations), not "update", "add" or "remove". To create a DataSource capable of full read-write access, use [DataSource.operationBindings](DataSource.md#attr-datasourceoperationbindings) with the [wsOperation](OperationBinding.md#attr-operationbindingwsoperation) property set to associate each DataSource operation with a web service operation.
 
 ### Parameters
 
@@ -131,7 +131,7 @@ The following schema would be returned:
        CallOptions : callOptionsPartSchema }
  
 ```
-The schema are instances of [DataSource](DataSource_1.md#class-datasource) that can be inspected to discover the elements and types that are legal in that header part, and can construct a valid SOAP header part if [DataSource.xmlSerialize](DataSource_1.md#method-datasourcexmlserialize) is invoked.
+The schema are instances of [DataSource](DataSource.md#class-datasource) that can be inspected to discover the elements and types that are legal in that header part, and can construct a valid SOAP header part if [DataSource.xmlSerialize](DataSource.md#method-datasourcexmlserialize) is invoked.
 
 ### Parameters
 
@@ -149,7 +149,7 @@ The schema are instances of [DataSource](DataSource_1.md#class-datasource) that 
 ### Description
 Invoke a web service operation.
 
-The `data` parameter will be serialized to XML to form the input message for the operation, as described by [DataSource.xmlSerialize](DataSource_1.md#method-datasourcexmlserialize). Namespacing, element ordering, and SOAP encoding rules are automatically followed. If the web service you are trying to contact requires a complicated nested structure, consider using [WSRequest.useFlatFields](WSRequest.md#attr-wsrequestuseflatfields) to simplify the required JavaScript input data.
+The `data` parameter will be serialized to XML to form the input message for the operation, as described by [DataSource.xmlSerialize](DataSource.md#method-datasourcexmlserialize). Namespacing, element ordering, and SOAP encoding rules are automatically followed. If the web service you are trying to contact requires a complicated nested structure, consider using [WSRequest.useFlatFields](WSRequest.md#attr-wsrequestuseflatfields) to simplify the required JavaScript input data.
 
 The `resultType` selects what part of the message should be decoded to JavaScript and made available as the "data" variable in the callback. The `resultType` parameter can be either:
 
@@ -305,7 +305,7 @@ The following schema would be returned:
        CallOptions : callOptionsPartSchema }
  
 ```
-The schema are instances of [DataSource](DataSource_1.md#class-datasource) that can be inspected to discover the elements and types that are legal in that header part, and can construct a valid SOAP header part if [DataSource.xmlSerialize](DataSource_1.md#method-datasourcexmlserialize) is invoked.
+The schema are instances of [DataSource](DataSource.md#class-datasource) that can be inspected to discover the elements and types that are legal in that header part, and can construct a valid SOAP header part if [DataSource.xmlSerialize](DataSource.md#method-datasourcexmlserialize) is invoked.
 
 ### Parameters
 

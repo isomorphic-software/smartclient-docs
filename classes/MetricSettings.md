@@ -157,7 +157,9 @@ Whether to automatically show shadows for various charts.
 ## Attr: MetricSettings.dataPointSize
 
 ### Description
-Size in pixels for data points drawn for line, area, radar and other chart types.
+Same as [FacetChart.dataPointSize](FacetChart.md#attr-facetchartdatapointsize), but affects this metric only.
+
+Defaults to the same setting as the chart.
 
 ### Groups
 

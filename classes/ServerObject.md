@@ -15,7 +15,7 @@ For use when [ServerObject.lookupStyle](#attr-serverobjectlookupstyle) is `"spri
 ## Attr: ServerObject.dropExtraFields
 
 ### Description
-By default, for DMI DSResponses, DSResponse.data is filtered on the server to just the set of fields defined on the DataSource. This behavior can be overridden in several ways - see the overview in [DMI](../kb_topics/dmiOverview.md#kb-topic-direct-method-invocation) for details. The value of this attribute overrides [DataSource.dropExtraFields](DataSource.md#attr-datasourcedropextrafields).
+By default, for DMI DSResponses, DSResponse.data is filtered on the server to just the set of fields defined on the DataSource. This behavior can be overridden in several ways - see the overview in [DMI](../kb_topics/dmiOverview.md#kb-topic-direct-method-invocation) for details. The value of this attribute overrides [DataSource.dropExtraFields](DataSource_1.md#attr-datasourcedropextrafields).
 
 **Flags**: IR
 
@@ -133,7 +133,7 @@ If set, the SmartClient server will use JXPath to call your server code. The `JX
 ## Attr: ServerObject.crudOnly
 
 ### Description
-For a ServerObject defined at the [DataSource level](DataSource.md#attr-datasourceserverobject), by default we only allow it to intercept standard CRUD operations (ie, ordinary fetches, adds, updates and removes). To allow the ServerObject to intercept other types of operation - custom operations, validations, etc - set this property to false. Note that ServerObjects declared at the [OperationBinding level](OperationBinding.md#attr-operationbindingserverobject) always intercept that operation, whatever its type, and this property has no effect.
+For a ServerObject defined at the [DataSource level](DataSource_1.md#attr-datasourceserverobject), by default we only allow it to intercept standard CRUD operations (ie, ordinary fetches, adds, updates and removes). To allow the ServerObject to intercept other types of operation - custom operations, validations, etc - set this property to false. Note that ServerObjects declared at the [OperationBinding level](OperationBinding.md#attr-operationbindingserverobject) always intercept that operation, whatever its type, and this property has no effect.
 
 **NOTE:** If you are intercepting operations on the server because you wish to inspect them before deciding whether to process them with bespoke code or allow them to proceed with normal processing, the way to invoke normal processing without causing any interference is:
 

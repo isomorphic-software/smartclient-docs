@@ -291,7 +291,7 @@ For example, `includeSubstring: ["E", "qry"]` would match all the following tabl
 ## Method: DatabaseBrowser.getGeneratedDataSource
 
 ### Description
-Returns the [DataSource](DataSource.md#class-datasource) most recently auto-derived by this DatabaseBrowser. This will correspond to the currently-selected table.
+Returns the [DataSource](DataSource_1.md#class-datasource) most recently auto-derived by this DatabaseBrowser. This will correspond to the currently-selected table.
 
 ---
 ## Method: DatabaseBrowser.getResults

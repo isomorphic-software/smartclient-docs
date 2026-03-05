@@ -35,7 +35,7 @@ To create a FacetChart, set [FacetChart.facets](#attr-facetchartfacets) to an Ar
  
 ```
 
-A [DataSource](DataSource.md#class-datasource) may be provided instead of inline [data](#attr-facetchartdata) to use the chart as a [DataBoundComponent](../reference.md#interface-databoundcomponent). In this case, [facetFields](#attr-facetchartfacetfields) may be provided instead of [facets](#attr-facetchartfacets), to specify which DataSource fields to use as the facets. If neither is set, the framework will attempt to auto-derive the [facetFields](#attr-facetchartfacetfields). The [valueProperty](#attr-facetchartvalueproperty) will also be auto-derived for databound charts if it hasn't been set in the chart instance.
+A [DataSource](DataSource_1.md#class-datasource) may be provided instead of inline [data](#attr-facetchartdata) to use the chart as a [DataBoundComponent](../reference.md#interface-databoundcomponent). In this case, [facetFields](#attr-facetchartfacetfields) may be provided instead of [facets](#attr-facetchartfacets), to specify which DataSource fields to use as the facets. If neither is set, the framework will attempt to auto-derive the [facetFields](#attr-facetchartfacetfields). The [valueProperty](#attr-facetchartvalueproperty) will also be auto-derived for databound charts if it hasn't been set in the chart instance.
 
 The following SDK examples demonstrate charts with a single facet:
 
@@ -165,9 +165,9 @@ FacetCharts support printing on all supported desktop browsers. When using Pro E
 *   Use scales, encodings, and chart types that accurately reflect the data's structure and magnitude.
 *   Avoid truncated axes and inconsistent facet scales that distort comparison.
     
-    When, for example, the user can configure a different "view" of the data, consider fixing the bounds of value axes (via [FacetChart.axisStartValue](#attr-facetchartaxisstartvalue), [FacetChart.axisEndValue](#attr-facetchartaxisendvalue), [FacetChart.xAxisStartValue](#attr-facetchartxaxisstartvalue), and [FacetChart.xAxisEndValue](#attr-facetchartxaxisendvalue)) to prevent inconsistent scales from being used, or the layout of the chart from shifting slightly between views. Consider also setting [FacetChart.discontinuousLines](#attr-facetchartdiscontinuouslines) to `true` so that the omission of data points due to being outside axis bounds is visually clear. When extra axes are used, each extra axis' [settings](#attr-facetchartextraaxissettings) should configure [MetricSettings.axisStartValue](MetricSettings.md#attr-metricsettingsaxisstartvalue), [MetricSettings.axisEndValue](MetricSettings.md#attr-metricsettingsaxisendvalue), and [MetricSettings.discontinuousLines](MetricSettings.md#attr-metricsettingsdiscontinuouslines) separately.
+    When, for example, the user can configure a different "view" of the data, consider fixing the bounds of value axes (via [FacetChart.axisStartValue](#attr-facetchartaxisstartvalue), [FacetChart.axisEndValue](#attr-facetchartaxisendvalue), [FacetChart.xAxisStartValue](#attr-facetchartxaxisstartvalue), and [FacetChart.xAxisEndValue](#attr-facetchartxaxisendvalue)) and values of the [FacetChart.pointSizeMetric](#attr-facetchartpointsizemetric) (via [FacetChart.pointSizeStartValue](#attr-facetchartpointsizestartvalue) and [FacetChart.pointSizeEndValue](#attr-facetchartpointsizeendvalue)) to prevent inconsistent scales from being used, or the layout of the chart from shifting slightly between views. Consider also setting [FacetChart.discontinuousLines](#attr-facetchartdiscontinuouslines) to `true` so that the omission of data points due to being outside axis bounds is visually clear. When extra axes are used, each extra axis' [settings](#attr-facetchartextraaxissettings) should configure [MetricSettings.axisStartValue](MetricSettings.md#attr-metricsettingsaxisstartvalue), [MetricSettings.axisEndValue](MetricSettings.md#attr-metricsettingsaxisendvalue), and [MetricSettings.discontinuousLines](MetricSettings.md#attr-metricsettingsdiscontinuouslines) separately.
     
-*   When using size-based encodings (e.g. Bubble charts), ensure that area – not radius – is proportional to the underlying values, and use them only when magnitude-by-area comparisons are appropriate.
+*   When using size-based encodings (e.g. Bubble charts), ensure that area – not radius – is proportional to the size values, and use them only when magnitude-by-area comparisons are appropriate. Consider using [FacetChart.dataPointSizeScaling](#attr-facetchartdatapointsizescaling) "proportional".
 *   Use color deliberately. Ensure sufficient contrast, apply consistent mappings across facets, and avoid palettes that imply an ordering or magnitude comparison that does not exist.
 
 Many excellent books discuss the principles of appropriate data visualization as well as common pitfalls. Such books can be consulted for more in-depth guidance.
@@ -520,7 +520,7 @@ Title for the `"Area"` item in the `"Chart Type"` submenu in the context menu.
 ## Attr: FacetChart.facetFields
 
 ### Description
-Specifies what [DataSource](DataSource.md#class-datasource) fields to use as the chart [FacetChart.facets](#attr-facetchartfacets) for a databound chart. If [FacetChart.facets](#attr-facetchartfacets) is also explicitly set, [FacetChart.facetFields](#attr-facetchartfacetfields) is definitive but [Facet](../reference_2.md#object-facet) properties will be picked up from [FacetChart.facets](#attr-facetchartfacets) also present in the [FacetChart.facetFields](#attr-facetchartfacetfields).
+Specifies what [DataSource](DataSource_1.md#class-datasource) fields to use as the chart [FacetChart.facets](#attr-facetchartfacets) for a databound chart. If [FacetChart.facets](#attr-facetchartfacets) is also explicitly set, [FacetChart.facetFields](#attr-facetchartfacetfields) is definitive but [Facet](../reference_2.md#object-facet) properties will be picked up from [FacetChart.facets](#attr-facetchartfacets) also present in the [FacetChart.facetFields](#attr-facetchartfacetfields).
 
 If neither this property nor [FacetChart.facets](#attr-facetchartfacets) is set, a databound chart will attempt to auto-derive [FacetChart.facetFields](#attr-facetchartfacetfields) from the DataSource fields. The first two text or text-derived fields in the DataSource will be assumed to be the [FacetChart.facetFields](#attr-facetchartfacetfields).
 
@@ -1473,7 +1473,7 @@ If bars would be smaller than this size, margins are reduced until bars overlap.
 ## Attr: FacetChart.valueProperty
 
 ### Description
-Property in each record that holds a data value. For databound charts, if `valueProperty` isn't set in the chart instance, it will be auto-derived from the [DataSource](DataSource.md#class-datasource) fields. The first numeric-typed DataSource field will be assumed to be the `valueProperty`.
+Property in each record that holds a data value. For databound charts, if `valueProperty` isn't set in the chart instance, it will be auto-derived from the [DataSource](DataSource_1.md#class-datasource) fields. The first numeric-typed DataSource field will be assumed to be the `valueProperty`.
 
 Not used if there is an inline facet, see [Chart.data](Chart.md#attr-chartdata).
 
@@ -2034,6 +2034,42 @@ Padding between color swatch and its label.
 **Flags**: IR
 
 ---
+## Attr: FacetChart.pointSizeEndValue
+
+### Description
+If using a [FacetChart.pointSizeMetric](#attr-facetchartpointsizemetric), specifies a maximum value of the `pointSizeMetric` for a point to be included.
+
+Note that if this chart's data includes points with sizes above this value, they are omitted.
+
+### Groups
+
+- dataPoints
+
+### See Also
+
+- [FacetChart.pointSizeStartValue](#attr-facetchartpointsizestartvalue)
+
+**Flags**: IR
+
+---
+## Attr: FacetChart.pointSizeStartValue
+
+### Description
+If using a [FacetChart.pointSizeMetric](#attr-facetchartpointsizemetric), specifies a minimum value of the `pointSizeMetric` for a point to be included.
+
+Note that if this chart's data includes points with sizes below this value, they are omitted.
+
+### Groups
+
+- dataPoints
+
+### See Also
+
+- [FacetChart.pointSizeEndValue](#attr-facetchartpointsizeendvalue)
+
+**Flags**: IR
+
+---
 ## Attr: FacetChart.probabilityMetric
 
 ### Description
@@ -2439,6 +2475,54 @@ Height of the [FacetChart.zoomChart](#attr-facetchartzoomchart). The zoomChart i
 **Flags**: IR
 
 ---
+## Attr: FacetChart.dataPointSizeScaling
+
+### Description
+Specifies how the `pointSizeMetric` values are mapped to rendered data point sizes. Let:
+
+*   `v` be a data point's `pointSizeMetric` value
+*   `vmin`, `vmax` be the min and max `pointSizeMetric` values in the data (after any log scaling), respectively
+*   `smin` = [FacetChart.minDataPointSize](#attr-facetchartmindatapointsize)
+*   `smax` = [FacetChart.maxDataPointSize](#attr-facetchartmaxdatapointsize)
+*   `amin` = `smin^2`, `amax` = `smax^2`
+*   `r = (v - vmin) / (vmax - vmin)` (clamped to \[0,1\])
+
+**"affine"** (default): linear interpolation in _area_.
+
+```
+ area = amin + (amax - amin) * r
+ size = sqrt(area)
+ 
+```
+This preserves both endpoints: `vmin` maps to `smin`, and `vmax` maps to `smax`. Ratios of areas do not necessarily match ratios of values because the mapping has a non-zero intercept (the area formula is `area = a + b*v` with `a ≠ 0` due to forcing `vmin` to map to `smin`).
+
+**"proportional"**: area proportional to the (scaled) value.
+
+```
+ area = k * v, where k = amax / vmax
+ size = sqrt(area)
+ 
+```
+This preserves ratios (area ratio equals value ratio), but does not guarantee `vmin` maps to `smin`. In this mode, [FacetChart.minDataPointSize](#attr-facetchartmindatapointsize) (if provided) is treated as a floor on the computed size. Negative values of the `pointSizeMetric` are mapped to 0.
+
+**"power"**: a tunable power curve applied to the area interpolation.
+
+```
+ area = amin + (amax - amin) * r^p
+ size = sqrt(area)
+ 
+```
+where `p` is [FacetChart.dataPointSizeScalingPower](#attr-facetchartdatapointsizescalingpower). This preserves endpoints, and allows expanding (`0 < p < 1`) or compressing (`p > 1`) the size differences. `p = 1` matches "affine".
+
+In practice, size values should be non-negative. When [FacetChart.logScalePointSize](#attr-facetchartlogscalepointsize) is `false`, both "affine" and "power" can accommodate negative values because they are normalized by the observed min and max values in the data. "proportional" does not support negative values.
+
+### Groups
+
+- dataPoints
+
+**Flags**: IR
+
+---
 ## Attr: FacetChart.legendPadding
 
 ### Description
@@ -2590,7 +2674,7 @@ Default angle in degrees where pie charts start drawing sectors to represent dat
 ### Description
 For charts where [FacetChart.showDataPoints](#attr-facetchartshowdatapoints) is enabled, this property specifies an additional metric (i.e. an "id" of a metric facet value) that determines the size of the data points drawn. For example, when a circle is drawn to represent a data point then the size of the data point is the diameter of the circle, in pixels.
 
-The size is calculated by linearly scaling the value of the `pointSizeMetric` of the point between the [FacetChart.minDataPointSize](#attr-facetchartmindatapointsize) and [FacetChart.maxDataPointSize](#attr-facetchartmaxdatapointsize). The data point that has the lowest value for the `pointSizeMetric` will be drawn as a shape `minDataPointSize` pixels in size, and the data point that has the highest value for the `pointSizeMetric` will be drawn as a shape `maxDataPointSize` pixels in size.
+The size mapping is controlled by [FacetChart.dataPointSizeScaling](#attr-facetchartdatapointsizescaling). The default "affine" mode performs square-root scaling so that the _area_ of the shape encodes the `pointSizeMetric` linearly, with values mapped between [FacetChart.minDataPointSize](#attr-facetchartmindatapointsize) and [FacetChart.maxDataPointSize](#attr-facetchartmaxdatapointsize).
 
 Using a log-scale to calulate the size of the data points is achieved by enabling [FacetChart.logScalePointSize](#attr-facetchartlogscalepointsize).
 
@@ -2973,7 +3057,7 @@ Comparing between the formats, the "standard model" format treats all facets ide
 
 ### See Also
 
-- [DataSource](DataSource.md#class-datasource)
+- [DataSource](DataSource_1.md#class-datasource)
 
 **Flags**: IWR
 
@@ -3203,6 +3287,55 @@ The selected range from this chart defaults to being shown with distinct styling
 ### Groups
 
 - zoom
+
+**Flags**: IR
+
+---
+## Attr: FacetChart.dataPointSizeScalingPower
+
+### Description
+Exponent `p` used by [FacetChart.dataPointSizeScaling](#attr-facetchartdatapointsizescaling) when set to "power".
+
+There is no generally "correct" default derived from the data because `p` is a perceptual tuning knob. The default `p = 1` keeps the mapping linear in area (same as `"affine"`) and avoids unintended distortion.
+
+If you want a data-driven `p`, you need to specify a target. Let `v*` be a reference value (such as the median), and let:
+
+```
+ r* = (v* - vmin) / (vmax - vmin)
+ amin = smin^2, amax = smax^2
+ 
+```
+Then choose a target area `a*` for `v*` and solve:
+```
+ t = (a* - amin) / (amax - amin)
+ p = ln(t) / ln(r*)
+ 
+```
+Examples:
+
+Make the median (the v\*) map to 60% of max size:
+
+```
+ a* = (0.6 * smax)^2 = 0.36 * amax
+ p = ln((a* - amin) / (amax - amin)) / ln(r*)
+ 
+```
+
+Match area ratios to value ratios at a specific percentile (at `v*`):
+
+```
+ a* = amax * (v* / vmax)
+ p = ln((a* - amin) / (amax - amin)) / ln(r*)
+ 
+```
+
+Boost small values: choose `0 < p < 1` (e.g. `p = 0.5`).
+
+Compress outliers: choose `p > 1` (e.g. `p = 2`).
+
+### Groups
+
+- dataPoints
 
 **Flags**: IR
 

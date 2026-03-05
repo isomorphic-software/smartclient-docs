@@ -23,10 +23,10 @@ With the default setting of [multiple:false](#multiple), a FileUploadItem allows
 
 **Multiple File Upload**
 
-To upload multiple files, set [multiple:true](#multiple) and configure a [DataSource](DataSource.md#class-datasource) property pointing to a related DataSource that will store the files. This follows the same master-detail pattern as [MultiFileItem](MultiFileItem.md#class-multifileitem):
+To upload multiple files, set [multiple:true](#multiple) and configure a [DataSource](DataSource_1.md#class-datasource) property pointing to a related DataSource that will store the files. This follows the same master-detail pattern as [MultiFileItem](MultiFileItem.md#class-multifileitem):
 
 *   The form's DataSource is the "master" record (e.g., an email message)
-*   The FileUploadItem's [DataSource](DataSource.md#class-datasource) is the "detail" DataSource storing files (e.g., email attachments)
+*   The FileUploadItem's [DataSource](DataSource_1.md#class-datasource) is the "detail" DataSource storing files (e.g., email attachments)
 *   The detail DataSource must have a [foreignKey](DataSourceField.md#attr-datasourcefieldforeignkey) linking to the master DataSource's primary key
 *   Each uploaded file creates a separate record in the detail DataSource
 
@@ -302,9 +302,9 @@ See [FileDropZone.maxFiles](FileDropZone.md#attr-filedropzonemaxfiles).
 ### Description
 Whether this FileUploadItem allows multiple files to be selected.
 
-When `multiple:true`, a [DataSource](DataSource.md#class-datasource) property must also be specified pointing to a related DataSource that will store the uploaded files, following the same master-detail pattern as [MultiFileItem](MultiFileItem.md#class-multifileitem). Each file will be uploaded as a separate record in the detail DataSource after the master record is saved.
+When `multiple:true`, a [DataSource](DataSource_1.md#class-datasource) property must also be specified pointing to a related DataSource that will store the uploaded files, following the same master-detail pattern as [MultiFileItem](MultiFileItem.md#class-multifileitem). Each file will be uploaded as a separate record in the detail DataSource after the master record is saved.
 
-If `multiple:true` is set without a valid [DataSource](DataSource.md#class-datasource), a warning will be logged and the item will behave as if `multiple:false`.
+If `multiple:true` is set without a valid [DataSource](DataSource_1.md#class-datasource), a warning will be logged and the item will behave as if `multiple:false`.
 
 See [FileDropZone.multiple](FileDropZone.md#attr-filedropzonemultiple) for the underlying FileDropZone property.
 

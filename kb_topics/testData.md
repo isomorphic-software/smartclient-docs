@@ -112,7 +112,7 @@ For example, the following XML represents a list of supply items.
  
 ```
 
-You can name the root element anything you like when you describe its location using [DataSource.recordXPath](../classes/DataSource.md#attr-datasourcerecordxpath). The same sample could be written this way:
+You can name the root element anything you like when you describe its location using [DataSource.recordXPath](../classes/DataSource_1.md#attr-datasourcerecordxpath). The same sample could be written this way:
 
 ```
  <records>

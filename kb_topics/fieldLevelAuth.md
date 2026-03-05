@@ -11,7 +11,7 @@ Properties that provide declarative security features at the level of individual
 
 ### Related
 
-- [DataSource.creatorOverrides](../classes/DataSource.md#attr-datasourcecreatoroverrides)
+- [DataSource.creatorOverrides](../classes/DataSource_1.md#attr-datasourcecreatoroverrides)
 - [DataSourceField.viewRequiresAuthentication](../classes/DataSourceField.md#attr-datasourcefieldviewrequiresauthentication)
 - [DataSourceField.editRequiresAuthentication](../classes/DataSourceField.md#attr-datasourcefieldeditrequiresauthentication)
 - [DataSourceField.initRequiresAuthentication](../classes/DataSourceField.md#attr-datasourcefieldinitrequiresauthentication)

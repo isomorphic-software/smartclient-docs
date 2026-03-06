@@ -114,6 +114,14 @@ Name of the default Task subclass to use when auto-constructing plain Objects de
 **Flags**: IR
 
 ---
+## Attr: CoTProcess.captureErrors
+
+### Description
+If true, the process will catch top-level exceptions during execution and report them via [CoTProcess.getLastError](#method-cotprocessgetlasterror) instead of throwing them. This allows the runner to gracefully handle crashes.
+
+**Flags**: IR
+
+---
 ## Attr: CoTProcess.historyPrimer
 
 ### Description
@@ -166,6 +174,14 @@ Omits shared boilerplate (introPrompt, history, errors, primers) to focus on wha
 **Flags**: IR
 
 ---
+## Attr: CoTProcess.stepTimeout
+
+### Description
+Maximum time (in ms) allowed for a single step (AI request + processing) before triggering an AI\_NETWORK\_TIMEOUT error.
+
+**Flags**: IR
+
+---
 ## Attr: CoTProcess.promptModeTransitionDebug
 
 ### Description
@@ -176,6 +192,14 @@ Keeps transitions visible while omitting intro and history noise. Best for: "Why
 ### Groups
 
 - CoTPartialPrompt
+
+**Flags**: IR
+
+---
+## Attr: CoTProcess.maxSteps
+
+### Description
+Maximum number of total steps allowed for the process before triggering a STEP\_LIMIT\_EXCEEDED error.
 
 **Flags**: IR
 
@@ -575,6 +599,16 @@ If a requested mode is not found, a log message is generated and the full prompt
 ### See Also
 
 - [PartialPromptConfig](../reference.md#object-partialpromptconfig)
+
+---
+## Method: CoTProcess.getLastError
+
+### Description
+Returns structured error information if the process failed.
+
+### Returns
+
+`[Object](../reference.md#type-object)` — Error object { type, message, stepIndex }
 
 ---
 ## Method: CoTProcess.asyncGetResult

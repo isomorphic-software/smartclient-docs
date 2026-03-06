@@ -55,7 +55,7 @@ The way this idea of multiple related records is handled is different according 
 
 ### Related
 
-- [JoinType](../reference_2.md#type-jointype)
+- [JoinType](../reference.md#type-jointype)
 - [DataSource.relatedTableAlias](../classes/DataSource.md#attr-datasourcerelatedtablealias)
 - [DataSourceField.primaryKey](../classes/DataSourceField.md#attr-datasourcefieldprimarykey)
 - [DataSourceField.foreignKey](../classes/DataSourceField.md#attr-datasourcefieldforeignkey)

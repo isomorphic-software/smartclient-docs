@@ -9,7 +9,7 @@
 *Inherits from:* [TextSettings](TextSettings.md#class-textsettings)
 
 ### Description
-Settings for use with [DataSource.recordsFromText](DataSource_1.md#method-datasourcerecordsfromtext).
+Settings for use with [DataSource.recordsFromText](DataSource.md#method-datasourcerecordsfromtext).
 
 ---
 ## Attr: TextImportSettings.hasHeaderLine

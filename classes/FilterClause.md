@@ -286,7 +286,7 @@ Remove this clause by destroy()ing it.
 ## Method: FilterClause.getFieldOperators
 
 ### Description
-Get the list of [operatorIds](../reference.md#type-operatorid) that are valid for this field. By default, calls through to the same method on [filterBuilder](FilterBuilder.md#method-filterbuildergetfieldoperators), which defaults to all operators returned by [DataSource.getFieldOperators](DataSource_1.md#method-datasourcegetfieldoperators).
+Get the list of [operatorIds](../reference.md#type-operatorid) that are valid for this field. By default, calls through to the same method on [filterBuilder](FilterBuilder.md#method-filterbuildergetfieldoperators), which defaults to all operators returned by [DataSource.getFieldOperators](DataSource.md#method-datasourcegetfieldoperators).
 
 Called whenever the fieldName is changed.
 

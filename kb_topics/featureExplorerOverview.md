@@ -9,7 +9,7 @@
 ### Description
 The *Feature Explorer* is an example shell designed to help you explore the capabilities of SmartClient. Read on for a brief overview, including specific instructions for using the example code in your own standalone application.
 
-The tree on the left of the Feature Explorer contains examples grouped by logical categories. Selecting an example brings it up on the right side of the screen, inside a tabbed view. The default "View" tab shows the interactive example itself, while other tabs show the underlying source. The "JS" tab shows the source for the example. There is sometimes also an "XML" tab that shows the corresponding version in [Component XML](componentXML.md#kb-topic-component-xml) format. For databound examples, there are also frequently additional tabs that show the [DataSources](../classes/DataSource_1.md#class-datasource) associated with the example.
+The tree on the left of the Feature Explorer contains examples grouped by logical categories. Selecting an example brings it up on the right side of the screen, inside a tabbed view. The default "View" tab shows the interactive example itself, while other tabs show the underlying source. The "JS" tab shows the source for the example. There is sometimes also an "XML" tab that shows the corresponding version in [Component XML](componentXML.md#kb-topic-component-xml) format. For databound examples, there are also frequently additional tabs that show the [DataSources](../classes/DataSource.md#class-datasource) associated with the example.
 
 **How to create a standalone application using code from the Feature Explorer**
 

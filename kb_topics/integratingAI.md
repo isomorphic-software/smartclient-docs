@@ -85,15 +85,15 @@ The amount of interaction with AI is lowest in AI Assist mode. AIDE requires mor
 With respect to a particular [DataBoundComponent](../reference.md#interface-databoundcomponent), the requirements for AI component views to be enabled are:
 
 *   AI must be enabled: [AI.isEnabled](../classes/AI.md#classmethod-aiisenabled)
-*   A globally-installed [DataSource](../classes/DataSource_1.md#class-datasource) with a primary key and [supporting AdvancedCriteria](../classes/DataSource_1.md#method-datasourcesupportsadvancedcriteria) must be set.
+*   A globally-installed [DataSource](../classes/DataSource.md#class-datasource) with a primary key and [supporting AdvancedCriteria](../classes/DataSource.md#method-datasourcesupportsadvancedcriteria) must be set.
 *   The `DataSource` cannot have a composite primary key.
 *   The number of data-records must be known, and the total number of records must be less than the DBC's [aiMaxRecords](../classes/DataBoundComponent.md#attr-databoundcomponentaimaxrecords).
 
 #### Best Practices for Integrating AI
 SmartClient handles the process of assembling the context to AI automatically. There are, however, places where you can add application-specific context to improve AI's understanding of your application:
 
-*   [DataSource.description](../classes/DataSource_1.md#attr-datasourcedescription) - An overview description of the data source.
-*   [DataSource.sampleData](../classes/DataSource_1.md#attr-datasourcesampledata) - Example records that illustrate typical values, formats, and relationships in the data source.
+*   [DataSource.description](../classes/DataSource.md#attr-datasourcedescription) - An overview description of the data source.
+*   [DataSource.sampleData](../classes/DataSource.md#attr-datasourcesampledata) - Example records that illustrate typical values, formats, and relationships in the data source.
 *   [DataSourceField.description](../classes/DataSourceField.md#attr-datasourcefielddescription) - A description of a particular data source field.
 
 See the linked APIs for guidance on the type of information to include in each attribute.

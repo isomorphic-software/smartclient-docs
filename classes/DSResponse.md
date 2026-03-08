@@ -77,7 +77,7 @@ For "fetch" operations, this is the array of Records fetched. For "update", "add
 ## Attr: DSResponse.estimatedTotalRows
 
 ### Description
-This attribute may be set for responses where [progressive loading](DataSource.md#attr-datasourceprogressiveloading) is active to indicate the estimated true total row count for the data set. In progressive loading mode, [DSResponse.totalRows](#attr-dsresponsetotalrows) can be thought of as an indication of the last row the user is allowed to request (EG by scrolling through a databound ListGrid), whereas `estimatedTotalRows` can convey the server's knowledge of the number of matching rows to the client.
+This attribute may be set for responses where [progressive loading](DataSource_1.md#attr-datasourceprogressiveloading) is active to indicate the estimated true total row count for the data set. In progressive loading mode, [DSResponse.totalRows](#attr-dsresponsetotalrows) can be thought of as an indication of the last row the user is allowed to request (EG by scrolling through a databound ListGrid), whereas `estimatedTotalRows` can convey the server's knowledge of the number of matching rows to the client.
 
 This value may be validly set to a String in the following format:
 
@@ -87,7 +87,7 @@ This value may be validly set to a String in the following format:
 *   "~500": There are approximately 500 records.
 *   "500": There are exactly 500 records.
 
-If you are using a SmartClient server side dataSource that supports the [DataSource.progressiveLoadingThreshold](DataSource.md#attr-datasourceprogressiveloadingthreshold) feature, this property will be populated automatically to an exact value if a row count query was performed and the result exceeded the progressiveLoadingThreshold causing progressiveLoading to be enabled.
+If you are using a SmartClient server side dataSource that supports the [DataSource.progressiveLoadingThreshold](DataSource_1.md#attr-datasourceprogressiveloadingthreshold) feature, this property will be populated automatically to an exact value if a row count query was performed and the result exceeded the progressiveLoadingThreshold causing progressiveLoading to be enabled.
 
 Developers may also write custom dataSource logic to populate this attribute if desired
 
@@ -166,7 +166,7 @@ Total number of rows available from the server that match the current filter cri
 ## Attr: DSResponse.progressiveLoading
 
 ### Description
-This attribute may be set to indicate that [progressive loading was enabled](DataSource.md#attr-datasourceprogressiveloading), for a paged data fetch, and as such the [total row count](#attr-dsresponsetotalrows) is not guaranteed to be accurate. Client side code, including the [ResultSet.lengthIsProgressive](ResultSet.md#method-resultsetlengthisprogressive) method may make use of this attribute.
+This attribute may be set to indicate that [progressive loading was enabled](DataSource_1.md#attr-datasourceprogressiveloading), for a paged data fetch, and as such the [total row count](#attr-dsresponsetotalrows) is not guaranteed to be accurate. Client side code, including the [ResultSet.lengthIsProgressive](ResultSet.md#method-resultsetlengthisprogressive) method may make use of this attribute.
 
 The SmartClient server will automatically set this property whenever progressive loading was enabled for the request.
 
@@ -192,7 +192,7 @@ The Java API DSResponse.addError(fieldName, errorMessage) is used to send server
 
 ### See Also
 
-- [DataSource.handleError](DataSource.md#method-datasourcehandleerror)
+- [DataSource.handleError](DataSource_1.md#method-datasourcehandleerror)
 
 **Flags**: R
 

@@ -608,6 +608,8 @@ In the [month view](#attr-calendarmonthview) when [Calendar.showDayHeaders](#att
 
 If `showDayHeaders` is false, this attribute has no effect - the minimum height of day cells is either an equal share of the available height, or the rendered height of the cell's HTML content, whichever is greater. If the latter, a vertical scrollbar is shown.
 
+The division of this height between the day header and day body can be controlled with [Calendar.monthDayHeaderHeight](#attr-calendarmonthdayheaderheight) and [Calendar.monthDayBodyHeight](#attr-calendarmonthdaybodyheight).
+
 ### Groups
 
 - appearance
@@ -745,7 +747,7 @@ In [day](#attr-calendardayview) and [week](#attr-calendarweekview) views, it dic
 
 By default, events that share space in a Lane or column are rendered from top to bottom, or left to right according to their [start-dates](#attr-calendarstartdatefield) - the earliest in a given lane appears top-most in that lane, or left-most in its column.
 
-Providing `overlapSortSpecifiers` allows for the events to be ordered by one or more of the fields stored on the events, or in the underlying [data-source](DataSource.md#class-datasource), if the Calendar is databound.
+Providing `overlapSortSpecifiers` allows for the events to be ordered by one or more of the fields stored on the events, or in the underlying [data-source](DataSource_1.md#class-datasource), if the Calendar is databound.
 
 **Flags**: IRW
 
@@ -837,6 +839,25 @@ Only has an effect when [canEditEvents](#attr-calendarcaneditevents) is true.
 An [AutoChild](../reference.md#type-autochild) of type [Window](Window.md#class-window) that displays the full [event editor](#attr-calendareventeditor)
 
 **Flags**: R
+
+---
+## Attr: Calendar.monthDayBodyHeight
+
+### Description
+In the [month view](#attr-calendarmonthview), the minimum height in pixels of the body cell for each day. This is the area below the day header that shows events.
+
+If unset, defaults to `[Calendar.minimumDayHeight](#attr-calendarminimumdayheight) - [Calendar.monthDayHeaderHeight](#attr-calendarmonthdayheaderheight)`.
+
+### Groups
+
+- appearance
+
+### See Also
+
+- [Calendar.minimumDayHeight](#attr-calendarminimumdayheight)
+- [Calendar.monthDayHeaderHeight](#attr-calendarmonthdayheaderheight)
+
+**Flags**: IRW
 
 ---
 ## Attr: Calendar.eventOverlap
@@ -975,6 +996,24 @@ The default height of the canvases for [long-events](#attr-calendarallowlongeven
 ### Groups
 
 - appearance
+
+**Flags**: IRW
+
+---
+## Attr: Calendar.monthDayHeaderHeight
+
+### Description
+In the [month view](#attr-calendarmonthview), the height in pixels of the header row for each day. This is the row that shows the day number.
+
+Increase this value if you are using [Canvas.resizeControls](Canvas.md#classmethod-canvasresizecontrols) and the day number text is being clipped. It is automatically adjusted by [Canvas.resizeControls](Canvas.md#classmethod-canvasresizecontrols).
+
+### Groups
+
+- appearance
+
+### See Also
+
+- [Calendar.minimumDayHeight](#attr-calendarminimumdayheight)
 
 **Flags**: IRW
 
@@ -2935,6 +2974,20 @@ Returns the [sublane](Lane.md#attr-lanesublanes) with the passed name, from the 
 `[Lane](#type-lane)` — the sublane with the passed name, or null if not found
 
 ---
+## Method: Calendar.cancelGhostDrag
+
+### Description
+Cancels any in-progress long-event drag operation and hides the ghost canvas displayed during drag-creation or drag-move of [long events](#attr-calendarallowlongevents).
+
+This method is primarily useful when [Calendar.showEventDialog](#method-calendarshoweventdialog) or [Calendar.showEventEditor](#method-calendarshoweventeditor) has been overridden to show a custom UI for event creation or editing. In that case, call this method when the custom UI is dismissed (whether saved or cancelled) to ensure the ghost canvas is cleared.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| view | [CalendarView](#type-calendarview) | true | — | the view to cancel the ghost drag in. If not passed, the [currently selected view](#method-calendargetselectedview) is used |
+
+---
 ## Method: Calendar.setHideUnusedLanes
 
 ### Description
@@ -4109,7 +4162,7 @@ Setter for updating [Calendar.showWeekends](#attr-calendarshowweekends) at runti
 ## Method: Calendar.eventSaveError
 
 ### Description
-Notification method fired when an attempt to save [an event](../reference.md#object-calendarevent) following edits or drag-movements results in an error from the server. May be overridden to handle specific errors and provide feedback to the user or push a server-provided record to client caches with a call to [updateCaches()](DataSource.md#method-datasourceupdatecaches), for example.
+Notification method fired when an attempt to save [an event](../reference.md#object-calendarevent) following edits or drag-movements results in an error from the server. May be overridden to handle specific errors and provide feedback to the user or push a server-provided record to client caches with a call to [updateCaches()](DataSource_1.md#method-datasourceupdatecaches), for example.
 
 The `scenarioCode` parameter may be used to determine [how the save was initiated](../reference.md#type-calendarsavescenario).
 

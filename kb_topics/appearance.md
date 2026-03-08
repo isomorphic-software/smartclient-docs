@@ -86,6 +86,8 @@ Properties defining an object's appearance
 - [Calendar.otherDayBodyBaseStyle](../classes/Calendar.md#attr-calendarotherdaybodybasestyle)
 - [Calendar.otherDayBlankStyle](../classes/Calendar.md#attr-calendarotherdayblankstyle)
 - [Calendar.minimumDayHeight](../classes/Calendar.md#attr-calendarminimumdayheight)
+- [Calendar.monthDayHeaderHeight](../classes/Calendar.md#attr-calendarmonthdayheaderheight)
+- [Calendar.monthDayBodyHeight](../classes/Calendar.md#attr-calendarmonthdaybodyheight)
 - [Calendar.showDayView](../classes/Calendar.md#attr-calendarshowdayview)
 - [Calendar.showWeekView](../classes/Calendar.md#attr-calendarshowweekview)
 - [Calendar.showMonthView](../classes/Calendar.md#attr-calendarshowmonthview)

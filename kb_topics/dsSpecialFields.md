@@ -24,10 +24,10 @@ Examples of the use of these fields include the [TileGrid](../classes/TileGrid.m
 
 ### Related
 
-- [DataSource.titleField](../classes/DataSource.md#attr-datasourcetitlefield)
-- [DataSource.iconField](../classes/DataSource.md#attr-datasourceiconfield)
-- [DataSource.infoField](../classes/DataSource.md#attr-datasourceinfofield)
-- [DataSource.dataField](../classes/DataSource.md#attr-datasourcedatafield)
-- [DataSource.descriptionField](../classes/DataSource.md#attr-datasourcedescriptionfield)
+- [DataSource.titleField](../classes/DataSource_1.md#attr-datasourcetitlefield)
+- [DataSource.iconField](../classes/DataSource_1.md#attr-datasourceiconfield)
+- [DataSource.infoField](../classes/DataSource_1.md#attr-datasourceinfofield)
+- [DataSource.dataField](../classes/DataSource_1.md#attr-datasourcedatafield)
+- [DataSource.descriptionField](../classes/DataSource_1.md#attr-datasourcedescriptionfield)
 
 ---

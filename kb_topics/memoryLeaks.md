@@ -12,7 +12,7 @@ Care must be taken to avoid memory leaks in your application:
 *   Any [Canvas](../classes/Canvas.md#class-canvas) (including subclasses) that you're done using should be destroy()d to avoid memory leaks. Since [destroy()](../classes/Canvas.md#method-canvasdestroy) is recursive, you only need to call destroy() on the topmost component in any hierarchy of widgets you don't need. This includes [DynamicForm](../classes/DynamicForm.md#class-dynamicform) automatically destroying [FormItem](../classes/FormItem.md#class-formitem)s and [DrawPane](../classes/DrawPane.md#class-drawpane) automatically destroying [DrawItem](../classes/DrawItem.md#class-drawitem)s.
 *   Any [ValuesManager](../classes/ValuesManager.md#class-valuesmanager)s that you are done using should be destroy()d to avoid memory leaks, and will never be automatically destroyed as a consequence of destroying any related Canvas.
 *   [ResultSet](../classes/ResultSet.md#class-resultset) and [ResultTree](../classes/ResultTree.md#class-resulttree) instances that you **manually** create need to be destroy()d to avoid leaks. ResultSet and ResultTree instances automatically created by [ListGrid](../classes/ListGrid_1.md#class-listgrid)s and [TreeGrid](../classes/TreeGrid.md#class-treegrid)s (see [ListGrid.fetchData](../classes/ListGrid_2.md#method-listgridfetchdata)) do not need to be destroy()d as they are automatically destroyed with the creating ListGrid or TreeGrid.
-*   If your application creates an unbounded number of DataSources while it is running (this is very rare), DataSources that are given a [DataSource.ID](../classes/DataSource.md#attr-datasourceid) need to be destroy()d to avoid leaks. Most applications do not need to worry about this, as they create a fixed set of DataSources, and [DataSource.get](../classes/DataSource.md#classmethod-datasourceget) will never cause a leak.
+*   If your application creates an unbounded number of DataSources while it is running (this is very rare), DataSources that are given a [DataSource.ID](../classes/DataSource_1.md#attr-datasourceid) need to be destroy()d to avoid leaks. Most applications do not need to worry about this, as they create a fixed set of DataSources, and [DataSource.get](../classes/DataSource.md#classmethod-datasourceget) will never cause a leak.
 *   Any other kinds of SmartClient objects you create will be garbage collected normally.
 
 #### Testing for memory leaks
@@ -28,7 +28,7 @@ Note that all debugging tools must be closed in order to demonstrate memory exha
 *   If using Firebug, close Firebug and restart Firefox, as Firebug may still be active even though closed.
 *   If using Internet Explorer's Developer Tools, close Developer Tools and restart IE, as the Developer Tools may still be active even though closed.
 
-To demonstrate memory exhaustion, you generally need to take whatever operation you suspect of leaking memory and cause it to be repeated thousands or hundreds of thousands of times - generally, by performing the same operation multiple times in a loop, or, for asynchronous operations like [DataSource](../classes/DataSource.md#class-datasource) saves, performing the operation again each time you receive notification of completion (via callbacks).
+To demonstrate memory exhaustion, you generally need to take whatever operation you suspect of leaking memory and cause it to be repeated thousands or hundreds of thousands of times - generally, by performing the same operation multiple times in a loop, or, for asynchronous operations like [DataSource](../classes/DataSource_1.md#class-datasource) saves, performing the operation again each time you receive notification of completion (via callbacks).
 
 In Windows, you can speed up the process of demonstrating memory exhaustion by disabling paging of memory to disk, which causes Windows to use the physical memory of the system (RAM) only. To disable paging, go to Advanced System Settings, and in the "Virtual Memory" section of the "Performance" settings, uncheck the "Automatically manage paging file size for all drives" checkbox and select "No paging file" (this process may differ slightly on different versions of Windows). The system will need to be rebooted for these new settings to take effect.
 
@@ -44,6 +44,6 @@ If you do not have a minimal test case and have simply shown that your applicati
 - [DrawItem.destroy](../classes/DrawItem.md#method-drawitemdestroy)
 - [Class.destroy](../classes/Class.md#method-classdestroy)
 - [ValuesManager](../classes/ValuesManager.md#class-valuesmanager)
-- [DataSource.ID](../classes/DataSource.md#attr-datasourceid)
+- [DataSource.ID](../classes/DataSource_1.md#attr-datasourceid)
 
 ---

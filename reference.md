@@ -495,6 +495,7 @@ This is the central API reference for the SmartClient framework.
 - [Compression](kb_topics/compression.md)
 - [Handling concurrent edits in SmartClient DataSources](kb_topics/concurrentEdits.md)
 - [Component Containment and Hierarchy](kb_topics/containment.md)
+- [Embedded Components in Contents](kb_topics/contentsEmbeddedComponents.md)
 - [CoT](kb_topics/CoT.md)
 - [CoTExecutionModels](kb_topics/CoTExecutionModels.md)
 - [CoTHistory](kb_topics/CoTHistory.md)

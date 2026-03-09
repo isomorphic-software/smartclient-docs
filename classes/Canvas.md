@@ -4124,6 +4124,34 @@ If `this.showHover` is true, this property can be used to specify the css style 
 **Flags**: IRW
 
 ---
+## Attr: Canvas.contentsComponentDefaults
+
+### Description
+Default properties applied to every child component that is connected to an `scID` placeholder in this Canvas's [Canvas.contents](#attr-canvascontents). These defaults are applied before any per-child properties, and can be used to set common [Canvas.matchElement](#attr-canvasmatchelement), [Canvas.htmlPosition](#attr-canvashtmlposition), or [Canvas.matchElementWidth](#attr-canvasmatchelementwidth) / [Canvas.matchElementHeight](#attr-canvasmatchelementheight) values for all embedded children.
+
+If not specified, the framework applies these defaults:
+
+```
+ {
+     htmlPosition: "afterBegin",
+     matchElement: true,
+     matchElementWidth: "matchElement",
+     matchElementHeight: "matchElement"
+ }
+ 
+```
+
+### Groups
+
+- contentsEmbeddedComponents
+
+### See Also
+
+- [contentsEmbeddedComponents](../kb_topics/contentsEmbeddedComponents.md#kb-topic-embedded-components-in-contents)
+
+**Flags**: IR
+
+---
 ## Attr: Canvas.snapAlignCandidates
 
 ### Description
@@ -5613,6 +5641,30 @@ Puts this widget just below the specified widget in the stacking order, so it ap
 ### Groups
 
 - zIndex
+
+---
+## Method: Canvas.contentsComponentConnected
+
+### Description
+Notification fired after an embedded component has been connected to its `scID` placeholder in the DOM. This is called during [Canvas.draw](#method-canvasdraw) and during [redraw()](#method-canvasredraw) (after reattachment), once per embedded child.
+
+This method can be used to perform additional configuration on the child after it has been connected to its placeholder — for example, fetching data that depends on the placeholder's rendered size.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| component | [Canvas](#type-canvas) | false | — | the embedded child component |
+| scID | [String](#type-string) | false | — | the `scID` value that was resolved to produce this component |
+| placeholder | [DOMElement](#type-domelement) | false | — | the placeholder DOM element |
+
+### Groups
+
+- contentsEmbeddedComponents
+
+### See Also
+
+- [contentsEmbeddedComponents](../kb_topics/contentsEmbeddedComponents.md#kb-topic-embedded-components-in-contents)
 
 ---
 ## Method: Canvas.enclosesRect
@@ -8758,6 +8810,39 @@ Sets this Canvas's "panel container". A panel container is a widget that manages
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | container | [Canvas](#type-canvas) | false | — | The container widget for this canvas |
+
+---
+## Method: Canvas.resolveContentsComponent
+
+### Description
+Called during [Canvas.draw](#method-canvasdraw) for each `scID` placeholder found in this Canvas's [Canvas.contents](#attr-canvascontents). Resolves the `scID` value to a child Canvas instance.
+
+On initial draw, this method is called for every `scID` in the contents. On [redraw()](#method-canvasredraw), it is called only for `scID` values that were not present in the previous contents — children already connected to an `scID` are reattached without re-resolving.
+
+The default implementation first searches [Canvas.children](#attr-canvaschildren) for a child whose [Canvas.name](#attr-canvasname) matches the `scID`. If no match is found, it attempts to create an [AutoChild](../kb_topics/autoChildren.md#kb-topic-autochildren) by calling [addAutoChild()](Class.md#method-classaddautochild) with the `scID` as the AutoChild name.
+
+Override this method to implement custom resolution logic, such as lazily creating children based on external configuration. Return `null` to skip a placeholder (no widget will be connected to it).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| scID | [String](#type-string) | false | — | the `scID` value from the placeholder element |
+| placeholder | [DOMElement](#type-domelement) | false | — | the placeholder DOM element |
+
+### Returns
+
+`[Canvas](#type-canvas)` — the child Canvas to embed, or null to skip
+
+### Groups
+
+- contentsEmbeddedComponents
+
+### See Also
+
+- [contentsEmbeddedComponents](../kb_topics/contentsEmbeddedComponents.md#kb-topic-embedded-components-in-contents)
+
+**Flags**: A
 
 ---
 ## Method: Canvas.getHoverComponent

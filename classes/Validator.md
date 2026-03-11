@@ -364,7 +364,7 @@ Enabling this property also implies [FormItem.validateOnExit](FormItem.md#attr-f
 ### Description
 Used to create a conditional validator based on [criteria](../reference.md#object-advancedcriteria). The criteria defines when the validator applies. The form current values or ListGrid record is used as reference for the criteria. If the criteria match, then the validator will be processed. Otherwise the validator is skipped and assumed valid.
 
-To use an `applyWhen` criteria the form or grid must use a [DataSource](DataSource_1.md#class-datasource).
+To use an `applyWhen` criteria the form or grid must use a [DataSource](DataSource.md#class-datasource).
 
 **NOTE:** `applyWhen` is not supported for "binary" fields.
 
@@ -431,7 +431,7 @@ For validators of type "serverCustom" only: a scriptlet in any supported JSR223 
 ```
 The scriptlet should return a boolean true or false value - failing to return a value will be considered a false result (validator failed). If your expression is syntactically invalid, an exception is thrown and the error message is displayed in the client.
 
-See [serverScript](../kb_topics/serverScript.md#kb-topic-server-scripting) for general information on Server Scripting and JSR223, and [velocitySupport](../kb_topics/velocitySupport.md#kb-topic-velocity-context-variables) for general information on Velocity support, and also see below for special rules for Velocity.
+See [serverScript](../kb_topics/serverScript.md#kb-topic-server-scripting) for general information on Server Scripting and JSR223, and [velocitySupport](#kb-topic-velocitysupport) for general information on Velocity support, and also see below for special rules for Velocity.
 
 **Available variables** The following variables are available in a `serverCondition`:
 
@@ -621,7 +621,7 @@ Note that "record" will contain only other values submitted at the same time, no
 ## Attr: Validator.operationId
 
 ### Description
-Applies only to the "isUnique" validator; allows you to name a specific [operation](DataSource_1.md#attr-datasourceoperationbindings) for the server-side uniqueness check. Ignored on the client.
+Applies only to the "isUnique" validator; allows you to name a specific [operation](DataSource.md#attr-datasourceoperationbindings) for the server-side uniqueness check. Ignored on the client.
 
 **Flags**: IR
 

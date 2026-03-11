@@ -61,7 +61,7 @@ _default value_: as set by the OS/JVM defaults
 _value format_: boolean - acceptable values: "true" or "false"  
 _default value_: "false"
 
-This attribute determines if the DataSource(s) is loaded in [DataSource.mockMode](../classes/DataSource_1.md#attr-datasourcemockmode).
+This attribute determines if the DataSource(s) is loaded in [DataSource.mockMode](../classes/DataSource.md#attr-datasourcemockmode).
 
 ### See Also
 

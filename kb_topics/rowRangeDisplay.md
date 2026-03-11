@@ -9,7 +9,7 @@
 ### Description
 ListGrids are able to create a [specialized label](../classes/ListGrid_2.md#method-listgridgetrowrangedisplay) that will display the currently visible range of rows in the viewport along with a total row count for the current data set.
 
-When [progressive loading is active](../classes/DataSource_1.md#attr-datasourceprogressiveloading), the [reported row count](../classes/ResultSet.md#method-resultsetgetrowcount) for list grid's data may not accurately reflect the true number of rows in the data set.
+When [progressive loading is active](../classes/DataSource.md#attr-datasourceprogressiveloading), the [reported row count](../classes/ResultSet.md#method-resultsetgetrowcount) for list grid's data may not accurately reflect the true number of rows in the data set.
 
 See [RowCountStatus](../reference.md#type-rowcountstatus) for more details. Note that for custom dataSources where progressive loading is active, the [DSResponse.estimatedTotalRows](../classes/DSResponse.md#attr-dsresponseestimatedtotalrows) may be used to explictly provide either an estimated or exact row count for the data set (distinct from the reported [DSResponse.totalRows](../classes/DSResponse.md#attr-dsresponsetotalrows).
 

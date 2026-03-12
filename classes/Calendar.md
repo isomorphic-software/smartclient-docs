@@ -747,7 +747,7 @@ In [day](#attr-calendardayview) and [week](#attr-calendarweekview) views, it dic
 
 By default, events that share space in a Lane or column are rendered from top to bottom, or left to right according to their [start-dates](#attr-calendarstartdatefield) - the earliest in a given lane appears top-most in that lane, or left-most in its column.
 
-Providing `overlapSortSpecifiers` allows for the events to be ordered by one or more of the fields stored on the events, or in the underlying [data-source](DataSource.md#class-datasource), if the Calendar is databound.
+Providing `overlapSortSpecifiers` allows for the events to be ordered by one or more of the fields stored on the events, or in the underlying [data-source](DataSource_1.md#class-datasource), if the Calendar is databound.
 
 **Flags**: IRW
 
@@ -4162,7 +4162,7 @@ Setter for updating [Calendar.showWeekends](#attr-calendarshowweekends) at runti
 ## Method: Calendar.eventSaveError
 
 ### Description
-Notification method fired when an attempt to save [an event](../reference.md#object-calendarevent) following edits or drag-movements results in an error from the server. May be overridden to handle specific errors and provide feedback to the user or push a server-provided record to client caches with a call to [updateCaches()](DataSource.md#method-datasourceupdatecaches), for example.
+Notification method fired when an attempt to save [an event](../reference.md#object-calendarevent) following edits or drag-movements results in an error from the server. May be overridden to handle specific errors and provide feedback to the user or push a server-provided record to client caches with a call to [updateCaches()](DataSource_1.md#method-datasourceupdatecaches), for example.
 
 The `scenarioCode` parameter may be used to determine [how the save was initiated](../reference.md#type-calendarsavescenario).
 

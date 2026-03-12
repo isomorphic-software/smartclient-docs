@@ -80,7 +80,7 @@ Note that, as with SQL, the returned records will _only_ include the fields wher
 	});
  
 ```
-By default such requests are allowed, but such requests can be disallowed on a per-DataSource or system-wide level if you have concerns - see [DataSource.allowClientRequestedSummaries](../classes/DataSource.md#attr-datasourceallowclientrequestedsummaries).
+By default such requests are allowed, but such requests can be disallowed on a per-DataSource or system-wide level if you have concerns - see [DataSource.allowClientRequestedSummaries](../classes/DataSource_1.md#attr-datasourceallowclientrequestedsummaries).
 
 You can also dynamically request summaries from server-side code (for example, in a [DMI](../classes/DMI.md#class-dmi) method):
 
@@ -113,27 +113,40 @@ This post-summarization server filtering matches client-side filtering, since it
 
 Previous versions applied criteria on the server for all fields **before** summarization. You can get that behavior back via [OperationBinding.applyCriteriaBeforeAggregation](../classes/OperationBinding.md#attr-operationbindingapplycriteriabeforeaggregation) setting. Note that in that case you need to turn off client-side filtering for aggregated fields, because client-side filtering cannot replicate pre-summarization filtering, as client sees only the final computed aggregates. See [OperationBinding.applyCriteriaBeforeAggregation](../classes/OperationBinding.md#attr-operationbindingapplycriteriabeforeaggregation) docs for more details.
 
+#### Explicit Post-Aggregation Criteria
+
+In addition to the automatic criteria splitting described above, [DSRequest.afterCriteria](../classes/DSRequest.md#attr-dsrequestaftercriteria) can be used to explicitly specify criteria that should always be applied _after_ aggregation, regardless of the `applyCriteriaBeforeAggregation` setting. This is conceptually equivalent to a SQL `HAVING` clause and is supported by the built-in SQL, Hibernate, and JPA connectors.
+
+When both regular criteria and `afterCriteria` are supplied:
+
+*   Regular criteria are split or applied according to the rules above (or placed entirely before aggregation if `applyCriteriaBeforeAggregation` is set).
+*   `afterCriteria` are always applied after aggregation.
+
+For SQL DataSources, the [OperationBinding.afterWhereClause](../classes/OperationBinding.md#attr-operationbindingafterwhereclause) clause gives further control by allowing a bespoke SQL expression to replace or extend the generated post-aggregation clause via [SQL Templating](customQuerying.md#kb-topic-custom-querying-overview).
+
 #### HB and JPA DataSources
 
 Criteria apply to record **before** summaries are applied. For example, if the "avg" function is being applied to a "price" field, criteria like "price < 5" will eliminate records where price is less than 5 _before_ the average price is calculated. This means that client-side filtering may not work as expected with summarized results: client-side filter criteria are necessarily applied _after_ summary functions have been applied, so may not match the server's behavior. You can set [ResultSet.useClientFiltering](../classes/ResultSet.md#attr-resultsetuseclientfiltering) to disable client-side filtering on a grid via [ListGrid.dataProperties](../classes/ListGrid_1.md#attr-listgriddataproperties). Or individual fields can be marked [canFilter:false](../classes/ListGridField.md#attr-listgridfieldcanfilter).
 
+However, [DSRequest.afterCriteria](../classes/DSRequest.md#attr-dsrequestaftercriteria) is fully supported for HB and JPA DataSources and provides explicit post-aggregation filtering when needed.
+
 #### SQL Templating & Aggregation
 
-With the [SQL Templating](#kb-topic-customquerying) feature you can customize portions of the query without ever having to re-create portions that the framework knows how to generate. This allows to create partially or entirely custom complex aggregation queries to use in a regular "fetch" operation. The SQL Templating feature supports aggregated queries just as regular ones with some additions, see below.
+With the [SQL Templating](customQuerying.md#kb-topic-custom-querying-overview) feature you can customize portions of the query without ever having to re-create portions that the framework knows how to generate. This allows to create partially or entirely custom complex aggregation queries to use in a regular "fetch" operation. The SQL Templating feature supports aggregated queries just as regular ones with some additions, see below.
 
-In clause-by-clause substitution there are two additional aggregation specific clauses: [groupClause](#attr-operationbindinggroupclause) providing "group by" part of aggregated query and [afterWhereClause](#attr-operationbindingafterwhereclause) providing "having" part of aggregated query (or outer "where" part if sub-select approach is used, see [OperationBinding.useHavingClause](../classes/OperationBinding.md#attr-operationbindingusehavingclause) for more details). The automatically generated `groupClause` and `afterWhereClause` clauses are also available as [$defaultGroupClause](#type-defaultqueryclause) and [$defaultAfterWhereClause](#type-defaultqueryclause) SQL templating variables.
+In clause-by-clause substitution there are two additional aggregation specific clauses: [groupClause](../classes/OperationBinding.md#attr-operationbindinggroupclause) providing "group by" part of aggregated query and [afterWhereClause](../classes/OperationBinding.md#attr-operationbindingafterwhereclause) providing "having" part of aggregated query (or outer "where" part if sub-select approach is used, see [OperationBinding.useHavingClause](../classes/OperationBinding.md#attr-operationbindingusehavingclause) for more details). The automatically generated `groupClause` and `afterWhereClause` clauses are also available as [$defaultGroupClause](../reference.md#type-defaultqueryclause) and [$defaultAfterWhereClause](../reference.md#type-defaultqueryclause) SQL templating variables.
 
 Note that if [OperationBinding.applyCriteriaBeforeAggregation](../classes/OperationBinding.md#attr-operationbindingapplycriteriabeforeaggregation) is set to `true`, aggregated fields referenced in regular criteria are filtered before aggregation occurs. In this case, an `afterWhereClause` may still be generated, but only for the criteria defined in [DSRequest.afterCriteria](../classes/DSRequest.md#attr-dsrequestaftercriteria).
 
 `SQLDataSource.getSQLClause()` server-side API can generate the entire query, in case you wanted to use an aggregated query as just part of a larger query (perhaps a sub-select), or different parts of a query, including `groupClause` and `afterWhereClause` aggregated query clauses.
 
-Also note `SQLDataSource.getPartialHaving()` and `SQLDataSource.getHavingWithout()` server-side APIs which generate partial SQL condition expressions to be used as a complete or partial "having" or outer "where" clause. This is also can be accessed via `$sql.partialHaving` and `$sql.havingWithout` functions in SQL templates, see `$sql` variable description in [velocitySupport](#kb-topic-velocitysupport).
+Also note `SQLDataSource.getPartialHaving()` and `SQLDataSource.getHavingWithout()` server-side APIs which generate partial SQL condition expressions to be used as a complete or partial "having" or outer "where" clause. This is also can be accessed via `$sql.partialHaving` and `$sql.havingWithout` functions in SQL templates, see `$sql` variable description in [velocitySupport](velocitySupport.md#kb-topic-velocity-context-variables).
 
 To see an example of wrapping the main query as a sub-select to achieve additional aggregation level and splitting provided criteria into different chunks of condition expressions to apply them to specific parts of a completely customized aggregation query, see the [Custom Aggregation Query](https://www.smartclient.com/smartclient-latest/showcase/?id=summariesCustomSQL2) sample.
 
 #### Fields with customSelectExpression
 
-Fields with [customSelectExpression](#attr-datasourcefieldcustomselectexpression) can be used with server summaries as both `groupBy` fields or fields with `summaryFunction`. In case of `summaryFunction` requested on field with `customSelectExpression` we will wrap SQL function around the expression, which may or may not be correct.
+Fields with [customSelectExpression](../classes/DataSourceField.md#attr-datasourcefieldcustomselectexpression) can be used with server summaries as both `groupBy` fields or fields with `summaryFunction`. In case of `summaryFunction` requested on field with `customSelectExpression` we will wrap SQL function around the expression, which may or may not be correct.
 
 #### Summarizing without Grouping
 
@@ -165,9 +178,10 @@ Aggregated data fetches cannot include additional fields that are not aggregated
 - [DataSourceField.joinPrefix](../classes/DataSourceField.md#attr-datasourcefieldjoinprefix)
 - [DataSourceField.joinString](../classes/DataSourceField.md#attr-datasourcefieldjoinstring)
 - [DataSourceField.joinSuffix](../classes/DataSourceField.md#attr-datasourcefieldjoinsuffix)
-- [DataSource.canAggregate](../classes/DataSource.md#attr-datasourcecanaggregate)
-- [DataSource.allowClientRequestedSummaries](../classes/DataSource.md#attr-datasourceallowclientrequestedsummaries)
+- [DataSource.canAggregate](../classes/DataSource_1.md#attr-datasourcecanaggregate)
+- [DataSource.allowClientRequestedSummaries](../classes/DataSource_1.md#attr-datasourceallowclientrequestedsummaries)
 - [DataSourceField.allowClientRequestedSummaries](../classes/DataSourceField.md#attr-datasourcefieldallowclientrequestedsummaries)
+- [OperationBinding.afterWhereClause](../classes/OperationBinding.md#attr-operationbindingafterwhereclause)
 - [AdvancedCriterionSubquery.summaryFunctions](../classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubquerysummaryfunctions)
 - [AdvancedCriterionSubquery.groupBy](../classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubquerygroupby)
 - [DSRequestTask.groupBy](../classes/DSRequestTask.md#attr-dsrequesttaskgroupby)

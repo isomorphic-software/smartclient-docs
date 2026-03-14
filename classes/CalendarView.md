@@ -72,6 +72,16 @@ Should [event canvas](EventCanvas.md#class-eventcanvas) instances be reused when
 **Flags**: IRW
 
 ---
+## Attr: CalendarView.printLanePageHeight
+
+### Description
+For timeline views, the usable page height (in pixels) when generating multi-page print HTML. Lanes are grouped into pages that fit within this height; each page gets its own copy of the grid headers and a CSS page break before it.
+
+The default of 960 is sized for US Letter portrait with 0.5-inch margins (the Flying Saucer default when no explicit `<code>`@page`</code>` CSS is provided). Decrease for landscape orientation or larger margins, increase for larger paper sizes.
+
+**Flags**: IRW
+
+---
 ## Attr: CalendarView.eventStyleName
 
 ### Description

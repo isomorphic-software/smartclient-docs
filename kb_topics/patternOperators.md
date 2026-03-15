@@ -18,6 +18,6 @@ The [search operators](../reference.md#type-operatorid) use patterns like "foo\*
 *   "iStartsWithPattern" GLOB matching using wildcards. Value is considered to meet the criterion if it starts with the pattern. Matching is case insensitive.
 *   "iEndsWithPattern" GLOB matching using wildcards.Value is considered to meet the criterion if it ends with the pattern. Matching is case insensitive.
 
-See [DataSource.translatePatternOperators](../classes/DataSource_1.md#attr-datasourcetranslatepatternoperators) for more information on available patterns)
+See [DataSource.translatePatternOperators](../classes/DataSource.md#attr-datasourcetranslatepatternoperators) for more information on available patterns)
 
 ---

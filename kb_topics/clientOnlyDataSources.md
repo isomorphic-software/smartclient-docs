@@ -65,12 +65,12 @@ Finally test data can be included directly in the clientOnly DataSource XML. An 
  </DataSource>
  
 ```
-If you specify your DataSource as `clientOnly: true`, omit cacheData entirely, and provide either a [DataSource.dataURL](../classes/DataSource_1.md#attr-datasourcedataurl) or a `testFileName`, the DataSource will lazily make a one-time fetch against the specified data file the first time an operation is called on it. From then on, the DataSource will work against the local cache created from this initial request. This is a quick way to prototype against some test data that may eventually be returned from an arbitrary back-end.
+If you specify your DataSource as `clientOnly: true`, omit cacheData entirely, and provide either a [DataSource.dataURL](../classes/DataSource.md#attr-datasourcedataurl) or a `testFileName`, the DataSource will lazily make a one-time fetch against the specified data file the first time an operation is called on it. From then on, the DataSource will work against the local cache created from this initial request. This is a quick way to prototype against some test data that may eventually be returned from an arbitrary back-end.
 
-Finally, it is possible to have a DataSource which initially fetches the entire dataset and performs all subsequent fetching locally, while still visiting the server to perform all other operations. See [DataSource.cacheAllData](../classes/DataSource_1.md#attr-datasourcecachealldata).
+Finally, it is possible to have a DataSource which initially fetches the entire dataset and performs all subsequent fetching locally, while still visiting the server to perform all other operations. See [DataSource.cacheAllData](../classes/DataSource.md#attr-datasourcecachealldata).
 
 ### Related
 
-- [DataSource.clientOnly](../classes/DataSource_1.md#attr-datasourceclientonly)
+- [DataSource.clientOnly](../classes/DataSource.md#attr-datasourceclientonly)
 
 ---

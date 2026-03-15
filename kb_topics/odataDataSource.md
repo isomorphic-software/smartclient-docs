@@ -7,7 +7,7 @@
 ## KB Topic: Server-side OData DataSource
 
 ### Description
-`ODataDataSource` is a built-in server-side [DataSource](../classes/DataSource_1.md#class-datasource) implementation that extends [RestConnector](serverRestConnector.md#kb-topic-server-side-rest-connector) to add functionality for REST webservices that follow the [OData protocol](https://www.odata.org/). Everything that applies to `RestConnector` also applies to `ODataDataSource` - it is configured in the same way, provides the same support for pervasive Velocity templating, etc.
+`ODataDataSource` is a built-in server-side [DataSource](../classes/DataSource.md#class-datasource) implementation that extends [RestConnector](serverRestConnector.md#kb-topic-server-side-rest-connector) to add functionality for REST webservices that follow the [OData protocol](https://www.odata.org/). Everything that applies to `RestConnector` also applies to `ODataDataSource` - it is configured in the same way, provides the same support for pervasive Velocity templating, etc.
 
 In addition to the regular `RestConnector` facilities, `ODataDataSource` adds the following support, specifically for REST services that follow the OData protocol
 

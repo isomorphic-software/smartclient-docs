@@ -23,7 +23,7 @@ Message shown to user to confirm deleting a single record on a bound grid.
 
 This is a dynamic string - text within `${...}` are dynamic variables and will be evaluated as JS code when the message is displayed.
 
-Only three dynamic variables, dsTitle; dsPluralTitle and recordTitle, are available and represent the bound [DataSource.title](DataSource_1.md#attr-datasourcetitle) and [DataSource.pluralTitle](DataSource_1.md#attr-datasourcepluraltitle) and the value of the [DataSource.titleField](DataSource_1.md#attr-datasourcetitlefield) from the first selected record.
+Only three dynamic variables, dsTitle; dsPluralTitle and recordTitle, are available and represent the bound [DataSource.title](DataSource.md#attr-datasourcetitle) and [DataSource.pluralTitle](DataSource.md#attr-datasourcepluraltitle) and the value of the [DataSource.titleField](DataSource.md#attr-datasourcetitlefield) from the first selected record.
 
 ### Groups
 
@@ -39,7 +39,7 @@ Message shwon to user to confirm deleting a single record on an unbound grid.
 
 This is a dynamic string - text within `${...}` are dynamic variables and will be evaluated as JS code when the message is displayed.
 
-Only one dynamic variable, recordTitle, is available and represents the value of the [DataSource.titleField](DataSource_1.md#attr-datasourcetitlefield) from the first selected record.
+Only one dynamic variable, recordTitle, is available and represents the value of the [DataSource.titleField](DataSource.md#attr-datasourcetitlefield) from the first selected record.
 
 ### Groups
 
@@ -55,7 +55,7 @@ Message shown to user to confirm deleting a group of records on a bound grid.
 
 This is a dynamic string - text within `${...}` are dynamic variables and will be evaluated as JS code when the message is displayed.
 
-Only two dynamic variables, dsTitle and dsPluralTitle, are available and represent the bound [DataSource.title](DataSource_1.md#attr-datasourcetitle) and [DataSource.pluralTitle](DataSource_1.md#attr-datasourcepluraltitle) .
+Only two dynamic variables, dsTitle and dsPluralTitle, are available and represent the bound [DataSource.title](DataSource.md#attr-datasourcetitle) and [DataSource.pluralTitle](DataSource.md#attr-datasourcepluraltitle) .
 
 ### Groups
 
@@ -111,7 +111,7 @@ Message shown to user to confirm deleting a group of records on an unbound grid.
 
 This is a dynamic string - text within `${...}` are dynamic variables and will be evaluated as JS code when the message is displayed.
 
-Only one dynamic variable, recordTitle, is available and represents the value of the [DataSource.titleField](DataSource_1.md#attr-datasourcetitlefield) from the first selected record.
+Only one dynamic variable, recordTitle, is available and represents the value of the [DataSource.titleField](DataSource.md#attr-datasourcetitlefield) from the first selected record.
 
 ### Groups
 

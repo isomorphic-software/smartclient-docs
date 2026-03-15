@@ -104,7 +104,7 @@ Note that member forms should have the same dataSource applied to them to allow 
 ## Attr: ValuesManager.saveOperationType
 
 ### Description
-Default [DSOperationType](../reference.md#type-dsoperationtype) to be performed when [DynamicForm.saveData](DynamicForm.md#method-dynamicformsavedata) is called. This property is automatically set on a call to [DynamicForm.editRecord](DynamicForm.md#method-dynamicformeditrecord) or [DynamicForm.editNewRecord](DynamicForm.md#method-dynamicformeditnewrecord), or may be set directly via [DynamicForm.setSaveOperationType](DynamicForm.md#method-dynamicformsetsaveoperationtype).
+Default [DSOperationType](../reference_2.md#type-dsoperationtype) to be performed when [DynamicForm.saveData](DynamicForm.md#method-dynamicformsavedata) is called. This property is automatically set on a call to [DynamicForm.editRecord](DynamicForm.md#method-dynamicformeditrecord) or [DynamicForm.editNewRecord](DynamicForm.md#method-dynamicformeditnewrecord), or may be set directly via [DynamicForm.setSaveOperationType](DynamicForm.md#method-dynamicformsetsaveoperationtype).
 
 If `saveOperationType` is unset, the form will heuristically determine whether an "add" or "update" operation is intended based on whether the primaryKey field is present and editable.
 
@@ -1172,13 +1172,13 @@ Make a snapshot of the current set of values, so we can reset to them later. Cre
 ## Method: ValuesManager.setSaveOperationType
 
 ### Description
-Setter for the default [DSOperationType](../reference.md#type-dsoperationtype) when [DynamicForm.saveData](DynamicForm.md#method-dynamicformsavedata) is called. Note that this property can also be set by calling [DynamicForm.editRecord](DynamicForm.md#method-dynamicformeditrecord) or [DynamicForm.editNewRecord](DynamicForm.md#method-dynamicformeditnewrecord)
+Setter for the default [DSOperationType](../reference_2.md#type-dsoperationtype) when [DynamicForm.saveData](DynamicForm.md#method-dynamicformsavedata) is called. Note that this property can also be set by calling [DynamicForm.editRecord](DynamicForm.md#method-dynamicformeditrecord) or [DynamicForm.editNewRecord](DynamicForm.md#method-dynamicformeditnewrecord)
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| operationType | [DSOperationType](../reference.md#type-dsoperationtype) | false | — | Operation type to use as a default. Valid values are `"add"` or `"update"`. |
+| operationType | [DSOperationType](../reference_2.md#type-dsoperationtype) | false | — | Operation type to use as a default. Valid values are `"add"` or `"update"`. |
 
 ---
 ## Method: ValuesManager.setValues
@@ -1244,7 +1244,7 @@ Adds validation errors to the existing set of errors for the field in question. 
 ## Method: ValuesManager.getSaveOperationType
 
 ### Description
-Returns the [DSOperationType](../reference.md#type-dsoperationtype) to be performed when [DynamicForm.saveData](DynamicForm.md#method-dynamicformsavedata) or [ValuesManager.saveData](#method-valuesmanagersavedata) is called.  
+Returns the [DSOperationType](../reference_2.md#type-dsoperationtype) to be performed when [DynamicForm.saveData](DynamicForm.md#method-dynamicformsavedata) or [ValuesManager.saveData](#method-valuesmanagersavedata) is called.  
 Valid options are `"add"` or `"update"`.
 
 If a [DSRequest](../reference_2.md#object-dsrequest) configuration object is passed in containing an explicit operationType this will be returned. Otherwise [this.saveOperationType](DynamicForm.md#attr-dynamicformsaveoperationtype) will be returned if set. Note that `saveOperationType` is automatically set via calls to data binding methods such as [DynamicForm.editNewRecord](DynamicForm.md#method-dynamicformeditnewrecord), or it may be [set explicitly](DynamicForm.md#method-dynamicformsetsaveoperationtype).
@@ -1264,7 +1264,7 @@ If no explicit saveOperationType is present, the system will use the following h
 
 ### Returns
 
-`[DSOperationType](../reference.md#type-dsoperationtype)` — Operation type for the save request.
+`[DSOperationType](../reference_2.md#type-dsoperationtype)` — Operation type for the save request.
 
 ---
 ## Method: ValuesManager.showFieldErrors

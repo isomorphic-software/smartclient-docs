@@ -154,7 +154,7 @@ MSXML does not allow the 'xml' namespace prefix to be declared, and will raise t
 ## ClassMethod: XMLTools.loadXMLSchema
 
 ### Description
-Load an XML file containing XML schema definitions and create DataSource and SimpleType objects to represent the schema. You can use to loaded schema to bind ISC components, perform validation, create editing interfaces, and build other metadata-driven interfaces. You can also use [schema inheritance](DataSource.md#attr-datasourceinheritsfrom) to overlay presentation-specific data (such as user-visible titles) on top of XML Schema.
+Load an XML file containing XML schema definitions and create DataSource and SimpleType objects to represent the schema. You can use to loaded schema to bind ISC components, perform validation, create editing interfaces, and build other metadata-driven interfaces. You can also use [schema inheritance](DataSource_1.md#attr-datasourceinheritsfrom) to overlay presentation-specific data (such as user-visible titles) on top of XML Schema.
 
 In the loaded XML Schema, all <xsd:complexType> declarations become SmartClient DataSources, and all <xsd:simpleType> definitions become SmartClient [atomic type definitions](SimpleType.md#class-simpletype).
 

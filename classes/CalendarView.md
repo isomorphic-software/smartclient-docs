@@ -102,6 +102,25 @@ If specified, overrides [Calendar.eventStyleName](Calendar.md#attr-calendarevent
 **Flags**: IR
 
 ---
+## Method: CalendarView.getDateLabelText
+
+### Description
+Returns the text to display in the [date label](Calendar.md#attr-calendardatelabel) for this view. The default implementation returns a formatted date or date-range string appropriate to the view type (day, week, month or timeline).
+
+Called by [Calendar.getDateLabelText](Calendar.md#method-calendargetdatelabeltext) whenever the visible date range changes. Override per-view to customize the label for a specific view, or override the Calendar-level method to customize all views at once.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| startDate | [Date](#type-date) | false | — | the start of the visible date range |
+| endDate | [Date](#type-date) | true | — | the end of the visible date range, if applicable |
+
+### Returns
+
+`[String](#type-string)` — the formatted label text for this view
+
+---
 ## Method: CalendarView.isVerticalView
 
 ### Description

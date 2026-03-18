@@ -23,7 +23,7 @@ To bind a component to a web service operation, call
 
   [WebService.getFetchDS(_operationName,elementName_)](../classes/WebService.md#method-webservicegetfetchds)
 
-to obtain a DataSource which describes the structure of an XML element or XML Schema type named _elementName_, which appears in the response message for the operation named _operationName_. A component bound to this DataSource will show fields corresponding to the structure of the chosen XML element or type, that is, one field per subelement or attribute. [fetchData()](../classes/ListGrid_2.md#method-listgridfetchdata) called on this DataSource (or on a component bound to it) will invoke the specified web service operation, using the [Criteria](../reference_2.md#type-criteria) passed to fetchData() to fill out the input message via [DataSource.xmlSerialize](../classes/DataSource.md#method-datasourcexmlserialize), and using the specified XML element from the response message as data.
+to obtain a DataSource which describes the structure of an XML element or XML Schema type named _elementName_, which appears in the response message for the operation named _operationName_. A component bound to this DataSource will show fields corresponding to the structure of the chosen XML element or type, that is, one field per subelement or attribute. [fetchData()](../classes/ListGrid_2.md#method-listgridfetchdata) called on this DataSource (or on a component bound to it) will invoke the specified web service operation, using the [Criteria](../reference_2.md#type-criteria) passed to fetchData() to fill out the input message via [DataSource.xmlSerialize](../classes/DataSource_1.md#method-datasourcexmlserialize), and using the specified XML element from the response message as data.
 
 Similarly, [WebService.getInputDS(_operationName_)](../classes/WebService.md#method-webservicegetinputds) returns a DataSource suitable for binding to a form that a user will fill out to provide inputs to the specified web service operation. Typical use is to let the user fill in the form, then pass the results of [form.getValues()](../classes/DynamicForm.md#method-dynamicformgetvalues) to [fetchData()](../classes/ListGrid_2.md#method-listgridfetchdata) as criteria.
 
@@ -37,21 +37,21 @@ Take a look at the *Google SOAP Search example* and the [.NET example](/examples
 
 Because XML Schema lacks key presentation metadata such as user-viewable titles, typically you cannot directly use the DataSources derived from XML Schema embedded in a WSDL file to drive visual component DataBinding in your final application.
 
-You can create a DataSource that has custom fields **and** invokes a web service operation by setting [DataSource.serviceNamespace](../classes/DataSource.md#attr-datasourceservicenamespace) to match the targetNamespace of the [WebService](../classes/WebService.md#class-webservice) (found on the ``<definitions>`` element from the WSDL file), and setting [wsOperation](../classes/OperationBinding.md#attr-operationbindingwsoperation) to the name of the web service operation to invoke. `fetchData()` called on such a DataSource will invoke the web service operation named by [wsOperation](../classes/OperationBinding.md#attr-operationbindingwsoperation), just like a DataSource returned by [WebService.getFetchDS](../classes/WebService.md#method-webservicegetfetchds).
+You can create a DataSource that has custom fields **and** invokes a web service operation by setting [DataSource.serviceNamespace](../classes/DataSource_1.md#attr-datasourceservicenamespace) to match the targetNamespace of the [WebService](../classes/WebService.md#class-webservice) (found on the ``<definitions>`` element from the WSDL file), and setting [wsOperation](../classes/OperationBinding.md#attr-operationbindingwsoperation) to the name of the web service operation to invoke. `fetchData()` called on such a DataSource will invoke the web service operation named by [wsOperation](../classes/OperationBinding.md#attr-operationbindingwsoperation), just like a DataSource returned by [WebService.getFetchDS](../classes/WebService.md#method-webservicegetfetchds).
 
 In contrast to `getFetchDS()`, creating a DataSource in this way gives you the opportunity to:
 
 *   declare arbitrary fields, with SmartClient presentation attributes such as titles and formatters
-*   extract any data from the response message, via [operationBinding.recordXPath](../classes/OperationBinding.md#attr-operationbindingrecordxpath) and [field.valueXPath](../classes/DataSourceField.md#attr-datasourcefieldvaluexpath), and transform it with [transformResponse()](../classes/DataSource.md#method-datasourcetransformresponse)
+*   extract any data from the response message, via [operationBinding.recordXPath](../classes/OperationBinding.md#attr-operationbindingrecordxpath) and [field.valueXPath](../classes/DataSourceField.md#attr-datasourcefieldvaluexpath), and transform it with [transformResponse()](../classes/DataSource_1.md#method-datasourcetransformresponse)
 *   transform the inbound data, if necessary, in order to add metadata such as [DSRequest.startRow](../classes/DSRequest.md#attr-dsrequeststartrow) for paging, or a sessionId for a service requiring authentication
 
 These techniques are shown in the *Google SOAP Search example*.
 
 **XML Schema Reuse**
 
-Having loaded a WSDL file, all of the XML Schema definitions within the service definition get translated to SmartClient [DataSources](../classes/DataSource.md#class-datasource) and [SimpleTypes](../classes/SimpleType.md#class-simpletype) via the rules described by [XMLTools.loadXMLSchema](../classes/XMLTools.md#classmethod-xmltoolsloadxmlschema), and are available to you via [WebService.getSchema](../classes/WebService.md#method-webservicegetschema) and [DataSourceField.type](../classes/DataSourceField.md#attr-datasourcefieldtype).
+Having loaded a WSDL file, all of the XML Schema definitions within the service definition get translated to SmartClient [DataSources](../classes/DataSource_1.md#class-datasource) and [SimpleTypes](../classes/SimpleType.md#class-simpletype) via the rules described by [XMLTools.loadXMLSchema](../classes/XMLTools.md#classmethod-xmltoolsloadxmlschema), and are available to you via [WebService.getSchema](../classes/WebService.md#method-webservicegetschema) and [DataSourceField.type](../classes/DataSourceField.md#attr-datasourcefieldtype).
 
-You can use the [DataSource.inheritsFrom](../classes/DataSource.md#attr-datasourceinheritsfrom) property to create DataSources that extend from XML schema definitions, then add presentation metadata not found in XML schema.
+You can use the [DataSource.inheritsFrom](../classes/DataSource_1.md#attr-datasourceinheritsfrom) property to create DataSources that extend from XML schema definitions, then add presentation metadata not found in XML schema.
 
 Even if you choose to declare all fields manually, you can leverage XML Schema `<simpleType>` definitions by setting [field.type](../classes/DataSourceField.md#attr-datasourcefieldtype) to the name of an XML Schema simple type embedded in the WSDL file.
 
@@ -76,17 +76,17 @@ For example, this code accomplishes part of the binding to the [SalesForce partn
 ```
 NOTE: additional code is required to handle authentication and other details, see the complete code in smartclientSDK/examples/databinding/SalesForce.
 
-In this usage, any DSRequest performed on this DataSource invokes the web service operation named by the `wsOperation` property on the corresponding operationBinding, and [DSRequest.data](../classes/DSRequest.md#attr-dsrequestdata) is serialized via [DataSource.xmlSerialize](../classes/DataSource.md#method-datasourcexmlserialize) to form the input message to send to the web service. For example, if a [DynamicForm.saveData](../classes/DynamicForm.md#method-dynamicformsavedata) is invoked and triggers a DSRequest with operationType:"add", the DataSource above will invoke the "create" operation, and [form.values](../classes/DynamicForm.md#method-dynamicformgetvalues) will become [DSRequest.data](../classes/DSRequest.md#attr-dsrequestdata) and be serialized to form the input message of the "create" web service operation.
+In this usage, any DSRequest performed on this DataSource invokes the web service operation named by the `wsOperation` property on the corresponding operationBinding, and [DSRequest.data](../classes/DSRequest.md#attr-dsrequestdata) is serialized via [DataSource.xmlSerialize](../classes/DataSource_1.md#method-datasourcexmlserialize) to form the input message to send to the web service. For example, if a [DynamicForm.saveData](../classes/DynamicForm.md#method-dynamicformsavedata) is invoked and triggers a DSRequest with operationType:"add", the DataSource above will invoke the "create" operation, and [form.values](../classes/DynamicForm.md#method-dynamicformgetvalues) will become [DSRequest.data](../classes/DSRequest.md#attr-dsrequestdata) and be serialized to form the input message of the "create" web service operation.
 
 Typical usage is:
 
-1.  declare a DataSource that represents the fields of the object as you want them represented in the UI. This DataSource is considered the "entity DataSource". It may extend from an XML Schema complex type via [DataSource.inheritsFrom](../classes/DataSource.md#attr-datasourceinheritsfrom).
+1.  declare a DataSource that represents the fields of the object as you want them represented in the UI. This DataSource is considered the "entity DataSource". It may extend from an XML Schema complex type via [DataSource.inheritsFrom](../classes/DataSource_1.md#attr-datasourceinheritsfrom).
 2.  use [operationBindings](../classes/OperationBinding.md#class-operationbinding) to configure the entity DataSource to call the appropriate web service operations for each DataSource operation, and extract results via [recordXPath](../classes/OperationBinding.md#attr-operationbindingrecordxpath)/[recordName](../classes/OperationBinding.md#attr-operationbindingrecordname)
 3.  bind components as follows:
     *   bind [grids](../classes/ListGrid_1.md#class-listgrid) to the entity DataSource
     *   bind [SearchForms](../classes/SearchForm.md#class-searchform) to the input message of the fetch operation (obtained via [webService.getInputDS("operationName")](../classes/WebService.md#method-webservicegetinputds). This is done because search inputs are frequently unrelated to the structure of the objects being searched for
     *   bind forms use for editing ("add" and "update" operations) to the entity DataSource
-4.  use [transformRequest](../classes/DataSource.md#method-datasourcetransformrequest)/[transformResponse](../classes/DataSource.md#method-datasourcetransformresponse), [OperationBinding.useFlatFields](../classes/OperationBinding.md#attr-operationbindinguseflatfields) and [OperationBinding.responseDataSchema](../classes/OperationBinding.md#attr-operationbindingresponsedataschema) to handle inconsistencies between the WSDL operations and the data you want in the presentation layer.
+4.  use [transformRequest](../classes/DataSource_1.md#method-datasourcetransformrequest)/[transformResponse](../classes/DataSource_1.md#method-datasourcetransformresponse), [OperationBinding.useFlatFields](../classes/OperationBinding.md#attr-operationbindinguseflatfields) and [OperationBinding.responseDataSchema](../classes/OperationBinding.md#attr-operationbindingresponsedataschema) to handle inconsistencies between the WSDL operations and the data you want in the presentation layer.
 
 A complete example of binding to the SalesForce "partner" web service, including authentication via SOAP headers, saving data and cache sync, inline editing, validation error handling and data paging, can be found in \[webroot\]/examples/databinding/SalesForce.
 
@@ -115,7 +115,7 @@ To implement a web service **starting from a WSDL file**:
 
 ### Related
 
-- [DataSource.serviceNamespace](../classes/DataSource.md#attr-datasourceservicenamespace)
-- [DataSource.schemaNamespace](../classes/DataSource.md#attr-datasourceschemanamespace)
+- [DataSource.serviceNamespace](../classes/DataSource_1.md#attr-datasourceservicenamespace)
+- [DataSource.schemaNamespace](../classes/DataSource_1.md#attr-datasourceschemanamespace)
 
 ---

@@ -7,7 +7,7 @@
 ## KB Topic: Copy and Paste with Excel
 
 ### Description
-[DataSource.recordsAsText](../classes/DataSource.md#method-datasourcerecordsastext) can export a set of DataSource records in tab-separated-values format so that it can be copied and pasted into a Microsoft Excel spreadsheet.
+[DataSource.recordsAsText](../classes/DataSource_1.md#method-datasourcerecordsastext) can export a set of DataSource records in tab-separated-values format so that it can be copied and pasted into a Microsoft Excel spreadsheet.
 
 However, be aware that Excel does a bunch of type guessing on pasted data:
 
@@ -22,6 +22,6 @@ Unfortunately, when these behaviors are undesirable, there is no means of turnin
 *   turning the cell into a trivial formula, eg ="literal value". But this means that when the cell is edited, it's value is a formula.
 *   format the cells as text in Excel before pasting data onto them
 
-The first or second approach can be enabled when exporting text - see [DataSource.recordsAsText](../classes/DataSource.md#method-datasourcerecordsastext) and [DataSourceField.exportForceText](../classes/DataSourceField.md#attr-datasourcefieldexportforcetext).
+The first or second approach can be enabled when exporting text - see [DataSource.recordsAsText](../classes/DataSource_1.md#method-datasourcerecordsastext) and [DataSourceField.exportForceText](../classes/DataSourceField.md#attr-datasourcefieldexportforcetext).
 
 ---

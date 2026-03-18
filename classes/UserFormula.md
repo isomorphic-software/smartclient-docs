@@ -9,13 +9,23 @@
 ### Description
 Formula to be evaluated.
 
-There are two contexts where a `UserFormula` is used: [ListGridField.userFormula](ListGridField.md#attr-listgridfielduserformula) / [DetailViewerField.userFormula](DetailViewerField.md#attr-detailviewerfielduserformula) and [FormItem.formula](FormItem.md#attr-formitemformula) or [ListGridField.editorFormula](ListGridField.md#attr-listgridfieldeditorformula). For the grid/detail viewer field formula, all variables used by the formula must be single capital letters (e.g. A). These are derived from field values for the record in question - see [UserFormula.formulaVars](#attr-userformulaformulavars).
+The formula text should be a mathematical expression composed of:
 
-In addition to these variables, the keyword `record` may be used to refer directly to the record for which the formula is being evaluated.
+*   Standard arithmetic operators: `+`, `-`, `*`, `/`, `%`
+*   Parentheses for grouping
+*   The ternary operator: `(A > B) ? A : B`
+*   Calls to built-in [math functions](MathFunction.md#class-mathfunction): min(), max(), round(), ceil(), floor(), abs(), pow(), sin(), cos(), tan(), ln(), log()
+*   Calls to [custom functions](MathFunction.md#classmethod-mathfunctionregisterfunction)
 
-In the context of forms and editing, variables are dot-separated (.) names representing the nested hierarchy path to the desired value within the [rule context](Canvas.md#attr-canvasrulescope). No mapping with [UserFormula.formulaVars](#attr-userformulaformulavars) is needed.
+Do **not** use JavaScript control-flow constructs such as `if`/`else`, `return`, `var`/`let`/`const`, curly braces, or `function` declarations.
 
-The formula text must be valid JavaScript code and may only call either the built-in [math functions](MathFunction.md#class-mathfunction) or [custom functions](MathFunction.md#classmethod-mathfunctionregisterfunction).
+**Grid / DetailViewer context**
+
+For [ListGridField.userFormula](ListGridField.md#attr-listgridfielduserformula) and [DetailViewerField.userFormula](DetailViewerField.md#attr-detailviewerfielduserformula), all variables used by the formula must be single capital letters (e.g. A, B, C) mapped to field names via [UserFormula.formulaVars](#attr-userformulaformulavars). In addition, the keyword `record` may be used to refer directly to the record for which the formula is being evaluated.
+
+**Forms / Editing context**
+
+For [FormItem.formula](FormItem.md#attr-formitemformula) and [ListGridField.editorFormula](ListGridField.md#attr-listgridfieldeditorformula), variables are dot-separated (.) names representing the nested hierarchy path to the desired value within the [rule context](Canvas.md#attr-canvasrulescope). No mapping with [UserFormula.formulaVars](#attr-userformulaformulavars) is needed.
 
 This attribute is writable only in [ListGrid](ListGrid_1.md#class-listgrid)s. Applications must call either [ListGrid.setUserFormula](ListGrid_2.md#method-listgridsetuserformula) or [ListGrid.setUserFormulaText](ListGrid_2.md#method-listgridsetuserformulatext) to re-evaluate the formula.
 

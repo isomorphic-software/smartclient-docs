@@ -46,18 +46,6 @@ VoiceAssist will stop recording automatically if the user doesn't speak at all f
 **Flags**: IRW
 
 ---
-## Attr: VoiceAssist.waitForNetworkErrorDelay
-
-### Description
-The time to wait for the browser to issue a "network" error when [VoiceAssist.enable()](#classmethod-voiceassistenable) runs.
-
-Some browsers provide a SpeechRecognition implementation but prevent it from contacting an external speech-to-text service, instead issuing an immediate "network" error once the mic is activated. To detect this, enabling VoiceAssist starts a test-session and waits `waitForNetworkErrorDelay` for a "network" error.
-
-If there's an error, a log is made and subsequent user-attempts to start VoiceAssist by triple-tapping the [VoiceAssist.voiceKey](#attr-voiceassistvoicekey) will show the log in a popup.
-
-**Flags**: IRW
-
----
 ## Attr: VoiceAssist.voiceKey
 
 ### Description
@@ -101,12 +89,17 @@ Disables the VoiceAssist module, canceling any current dictation and deactivatin
 ### Description
 Enables the VoiceAssist module - once enabled, a user may triple-tap the [speech-key](#attr-voiceassistvoicekey) to activate VoiceAssist, allowing them to dictate values and commands for components in the UI.
 
+No intrusive mic/speech probe is performed at enable time. On the user's first triple-tap to activate VoiceAssist, [Browser.checkSpeechRecognition](Browser.md#classmethod-browsercheckspeechrecognition) runs a brief probe to verify mic access and speech-service connectivity. If the probe fails, VoiceAssist shows an explanatory message and will not activate. Subsequent triple-taps skip the probe and re-show the result.
+
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| doPermissionChecks | [Boolean](#type-boolean) | true | — | when true, performs permissions checks as part of this call - otherwise, checks are performed when user starts VoiceAssist, by triple-tapping the [VoiceAssist.voiceKey](#attr-voiceassistvoicekey) |
 | key | [String](#type-string) | true | — | optional different key to use for VoiceAssist - use with care |
+
+### See Also
+
+- [Browser.checkSpeechRecognition](Browser.md#classmethod-browsercheckspeechrecognition)
 
 **Flags**: A
 

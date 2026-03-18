@@ -9,6 +9,8 @@
 ### Description
 The `Browser` class contains various class attributes that indicate basic properties of the browser and whether certain features are enabled.
 
+These flags represent a "best effort" at browser detection based on the user agent string and other indicators. Browser detection is inherently imperfect - browsers may spoof their user agent, new browser versions may change behavior, and unusual browser configurations may not be detected correctly. These properties should not be considered a fully supported API for all edge cases - applications with unusual browser compatibility requirements may need to implement their own detection logic.
+
 ---
 ## ClassAttr: Browser.isSupported
 
@@ -40,6 +42,32 @@ SmartClient can correctly determine whether the device is a tablet in most cases
 The value of this variable is only meaningful on touch devices.
 
 **Flags**: RW
+
+---
+## ClassAttr: Browser.allowsSpeechRecognition
+
+### Description
+Whether the browser allows speech recognition sessions to succeed - that is, whether the SpeechRecognition implementation can contact the vendor-operated speech-to-text service it depends on.
+
+Some browsers (notably Brave) expose the SpeechRecognition API but block the underlying service, causing an immediate "network" error when a session is started. There is no way to detect this without actually starting a session, which requires microphone access, displays browser recording-chrome, and may trigger a permissions dialog.
+
+This flag starts as `null` and is set to `true` or `false` either by an explicit call to [Browser.checkSpeechRecognition](#classmethod-browsercheckspeechrecognition), or automatically by [VoiceAssist](VoiceAssist.md#class-voiceassist) the first time a real recording is attempted (in which case VoiceAssist handles the failure gracefully without requiring a separate probe).
+
+### See Also
+
+- [Browser.checkSpeechRecognition](#classmethod-browsercheckspeechrecognition)
+
+**Flags**: RA
+
+---
+## ClassAttr: Browser.supportsSpeechRecognition
+
+### Description
+Whether this browser exposes a SpeechRecognition implementation (the API class exists on `window`). This indicates that browser-provided speech-to-text _may_ be available for features such as [VoiceAssist](VoiceAssist.md#class-voiceassist), but does not guarantee that recognition sessions can actually be started - see [Browser.allowsSpeechRecognition](#classattr-browserallowsspeechrecognition) for runtime viability.
+
+This flag is set synchronously at page load. A value of `false` means the browser does not implement SpeechRecognition at all (for example, Firefox).
+
+**Flags**: RA
 
 ---
 ## ClassAttr: Browser.isDesktop
@@ -76,6 +104,22 @@ Are the [MultiWindow](MultiWindow.md#class-multiwindow) APIs supported and cross
 **Note:** [MultiWindow](MultiWindow.md#class-multiwindow) is currently an experimental feature and not supported except by special arrangement
 
 **Flags**: RW
+
+---
+## ClassAttr: Browser.micPermission
+
+### Description
+The browser's current permission state for microphone access for the current site (origin). Possible values are `"granted"`, `"denied"`, or `"prompt"`, consistent with the Permissions API.
+
+`"prompt"` indicates that the user has not yet made a decision for this site and the browser will request permission when microphone access is first attempted, typically in response to a user interaction.
+
+Not all browsers support querying microphone permission state in advance; in such cases this value may remain `null` until an access attempt is made. To refresh it, call [Browser.checkMicStatus](#classmethod-browsercheckmicstatus).
+
+### See Also
+
+- [Browser.checkMicStatus](#classmethod-browsercheckmicstatus)
+
+**Flags**: RA
 
 ---
 ## ClassAttr: Browser.supportsDualInput
@@ -120,6 +164,20 @@ Is the application running on a handset-sized device, with a typical screen widt
 This typically implies that the application will be working with only 300-400 pixels.
 
 **Flags**: RW
+
+---
+## ClassAttr: Browser.micAvailable
+
+### Description
+Whether at least one audio input device (microphone) is available to the browser. This reflects device presence only and does not imply that the site has [permission](#classattr-browsermicpermission) to access the microphone. In some browsers, microphone enumeration may be limited or partially obscured until permission is granted.
+
+This is populated asynchronously at page load via `enumerateDevices()`. To refresh it later (for example, after a device is plugged in), call [Browser.checkMicStatus](#classmethod-browsercheckmicstatus).
+
+### See Also
+
+- [Browser.checkMicStatus](#classmethod-browsercheckmicstatus)
+
+**Flags**: RA
 
 ---
 ## ClassMethod: Browser.setIsTablet
@@ -170,6 +228,31 @@ Note that setting `Browser.isTouch` might affect the values of [Browser.isDeskto
 **Flags**: A
 
 ---
+## ClassMethod: Browser.checkMicStatus
+
+### Description
+Refreshes [Browser.micAvailable](#classattr-browsermicavailable) and [Browser.micPermission](#classattr-browsermicpermission) by re-querying the browser's device list and permission state. This is non-intrusive: it does not trigger a permissions dialog or activate the microphone.
+
+This check runs automatically at page load. Call it explicitly to pick up changes that occurred after load, such as a microphone being plugged in or the user changing site permissions via browser settings.
+
+The callback receives a single argument, an object with two properties:
+
+*   `micAvailable` (Boolean) - whether a mic is present
+*   `micPermission` (String) - the permission state, or null if the Permissions API is unavailable
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| callback | [Function](#type-function) | true | — | called when the check completes |
+
+### See Also
+
+- [Browser.micAvailable](#classattr-browsermicavailable)
+- [Browser.micPermission](#classattr-browsermicpermission)
+- [Browser.checkSpeechRecognition](#classmethod-browsercheckspeechrecognition)
+
+---
 ## ClassMethod: Browser.setIsHandset
 
 ### Description
@@ -184,6 +267,35 @@ Note that setting `Browser.isHandset` might affect the values of [Browser.isDesk
 | isHandset | [boolean](../reference.md#type-boolean) | false | — | new setting for `Browser.isHandset`. |
 
 **Flags**: A
+
+---
+## ClassMethod: Browser.checkSpeechRecognition
+
+### Description
+Tests whether the browser's SpeechRecognition implementation can successfully contact the vendor-operated speech-to-text service it depends on, and updates [Browser.allowsSpeechRecognition](#classattr-browserallowsspeechrecognition), [Browser.micAvailable](#classattr-browsermicavailable), and [Browser.micPermission](#classattr-browsermicpermission) accordingly.
+
+**This method is intrusive**: it calls `getUserMedia({audio:true})`, which activates the microphone, shows browser recording-chrome, and may trigger a permissions dialog if the user has not already granted microphone access. It then starts a short throwaway SpeechRecognition session to detect browsers (such as Brave) that expose the API but block the underlying service.
+
+[VoiceAssist](VoiceAssist.md#class-voiceassist) calls this method on the user's first triple-tap to activate voice input. If the probe fails, VoiceAssist shows an explanatory message and does not enable. The result is cached, so subsequent triple-taps skip the probe. Developers may also call this method independently - for example, to decide whether to show a voice-input button in the UI.
+
+The callback receives a single argument, an object with these properties:
+
+*   `mic` (Boolean) - whether mic access was granted
+*   `speech` (Boolean) - whether the speech service responded (not blocked)
+*   `reason` (String) - a short token describing the outcome: `"ok"`, `"denied"`, `"no-mic"`, `"speech-blocked"`, `"speech-unsupported"`, `"unsupported"`, or `"exception"`
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| callback | [Function](#type-function) | true | — | called when the check completes |
+| delay | [Integer](../reference_2.md#type-integer) | true | — | milliseconds to wait for a "network" error before concluding the service is reachable; default 1000 |
+
+### See Also
+
+- [Browser.allowsSpeechRecognition](#classattr-browserallowsspeechrecognition)
+- [Browser.supportsSpeechRecognition](#classattr-browsersupportsspeechrecognition)
+- [Browser.checkMicStatus](#classmethod-browsercheckmicstatus)
 
 ---
 ## ClassMethod: Browser.setIsDesktop

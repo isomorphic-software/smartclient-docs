@@ -6307,6 +6307,7 @@ Standard pickers
 | "refresh" | Picker icon to refresh a value. |
 | "date" | Picker icon for date value. |
 | "comboBox" | Picker icon for a general combobox. |
+| "voiceAssist" | Inline icon that triggers [VoiceAssist](classes/VoiceAssist.md#class-voiceassist) value-dictation. Shows on focus; activating it begins dictating a new value for the field. |
 
 ---
 ## Type: PickListItemIconPlacement

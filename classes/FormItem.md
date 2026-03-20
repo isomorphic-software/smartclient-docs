@@ -30,6 +30,14 @@ Default [hspace](FormItemIcon.md#attr-formitemiconhspace) value for pickers crea
 **Flags**: IR
 
 ---
+## ClassAttr: FormItem.defaultIcons
+
+### Description
+Registry of named default icons that can be referenced as plain strings in the [FormItem.icons](#attr-formitemicons) array. Each key maps to a FormItemIcon properties object that will be used when that string appears in the array. Currently contains `"voiceAssist"`.
+
+**Flags**: IR
+
+---
 ## Attr: FormItem.editProxyConstructor
 
 ### Description
@@ -1790,6 +1798,24 @@ If specified, this overrides the [DynamicForm.storeDisplayValues](DynamicForm.md
 **Flags**: IRA
 
 ---
+## Attr: FormItem.showVoiceAssistIcon
+
+### Description
+When true, automatically adds an inline [VoiceAssist](VoiceAssist.md#class-voiceassist) icon to this item's [icons](#attr-formitemicons) array. The icon appears when the item has focus and, when activated, begins value-dictation so the user can speak a new value for the field.
+
+If unset, the value is inherited from [DynamicForm.showVoiceAssistIcon](DynamicForm.md#attr-dynamicformshowvoiceassisticon).
+
+Only effective on items where `supportsValueDictation()` returns true (currently [TextItem](TextItem.md#class-textitem) and [TextAreaItem](TextAreaItem.md#class-textareaitem)). On items that do not support value-dictation, this property is ignored. Also has no effect unless [VoiceAssist](VoiceAssist.md#class-voiceassist) has been [enabled](VoiceAssist.md#classmethod-voiceassistenable).
+
+The same icon can also be added manually by including the string `"voiceAssist"` in the [FormItem.icons](#attr-formitemicons) array.
+
+### Groups
+
+- formIcons
+
+**Flags**: IRWA
+
+---
 ## Attr: FormItem.errorIconWidth
 
 ### Description
@@ -2088,7 +2114,7 @@ See [formItemStyling](../kb_topics/formItemStyling.md#kb-topic-formitem-styling)
 ## Attr: FormItem.requiredRightTitleSuffix
 
 ### Description
-The string appended to this item's title if it is required and the [TitleOrientation](../reference_2.md#type-titleorientation) property is set to "right". The +link(DynamicForm.requiredRightTitleSuffix) is used by default.
+The string appended to this item's title if it is required and the [TitleOrientation](../reference_2.md#type-titleorientation) property is set to "right". The [DynamicForm.requiredRightTitleSuffix](DynamicForm.md#attr-dynamicformrequiredrighttitlesuffix) is used by default.
 
 ### Groups
 
@@ -2337,6 +2363,8 @@ This is an advanced attribute - while it can be used to modify many properties, 
 
 ### Description
 An array of descriptor objects for icons to display in a line after this form item. These icons are clickable images, often used to display some kind of helper for populating a form item.
+
+In addition to FormItemIcon property objects, this array may contain plain strings that reference named default icons registered in [FormItem.defaultIcons](#classattr-formitemdefaulticons). For example, including `"voiceAssist"` adds an inline [VoiceAssist](VoiceAssist.md#class-voiceassist) icon that shows on focus and triggers value-dictation.
 
 ### Groups
 

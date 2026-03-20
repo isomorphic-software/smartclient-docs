@@ -459,6 +459,24 @@ Return false to cancel this event. If this event is not cancelled by the icon-le
 - formIcons
 
 ---
+## Method: FormItemIcon.doubleClick
+
+### Description
+Double-click handler for this icon. Fires when the user double-clicks the icon. If unset, double-clicking an icon fires [FormItemIcon.click](#method-formitemiconclick) instead.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| form | [DynamicForm](#type-dynamicform) | false | — | The Dynamic Form to which this icon's item belongs. |
+| item | [FormItem](#type-formitem) | false | — | The Form Item containing this icon |
+| icon | [FormItemIcon](#type-formitemicon) | false | — | A pointer to the form item icon |
+
+### Groups
+
+- formIcons
+
+---
 ## Method: FormItemIcon.keyPress
 
 ### Description
@@ -470,6 +488,42 @@ StringMethod action to fire when this icon has focus and receives a keypress eve
 |------|------|----------|---------|-------------|
 | keyName | [KeyName](../reference_2.md#type-keyname) | false | — | Name of the key pressed |
 | character | [Character](#type-character) | false | — | character produced by the keypress |
+| form | [DynamicForm](#type-dynamicform) | false | — | The Dynamic Form to which this icon's item belongs. |
+| item | [FormItem](#type-formitem) | false | — | The Form Item containing this icon |
+| icon | [FormItemIcon](#type-formitemicon) | false | — | A pointer to the form item icon |
+
+### Groups
+
+- formIcons
+
+---
+## Method: FormItemIcon.mouseDown
+
+### Description
+MouseDown handler for this icon. Fires when the user presses the mouse button over the icon. Useful for press-and-hold interactions such as voice recording.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| form | [DynamicForm](#type-dynamicform) | false | — | The Dynamic Form to which this icon's item belongs. |
+| item | [FormItem](#type-formitem) | false | — | The Form Item containing this icon |
+| icon | [FormItemIcon](#type-formitemicon) | false | — | A pointer to the form item icon |
+
+### Groups
+
+- formIcons
+
+---
+## Method: FormItemIcon.mouseUp
+
+### Description
+MouseUp handler for this icon. Fires when the user releases the mouse button after a [FormItemIcon.mouseDown](#method-formitemiconmousedown) on this icon. The mouseUp is always delivered to the same icon that received the mouseDown, even if the pointer has moved off the icon.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
 | form | [DynamicForm](#type-dynamicform) | false | — | The Dynamic Form to which this icon's item belongs. |
 | item | [FormItem](#type-formitem) | false | — | The Form Item containing this icon |
 | icon | [FormItemIcon](#type-formitemicon) | false | — | A pointer to the form item icon |

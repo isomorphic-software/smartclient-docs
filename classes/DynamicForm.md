@@ -311,6 +311,20 @@ If set at init time, this dynamicForm will be created as a member form of the sp
 **Flags**: I
 
 ---
+## Attr: DynamicForm.showVoiceAssistIcon
+
+### Description
+When true, automatically adds an inline [VoiceAssist](VoiceAssist.md#class-voiceassist) icon to every item in this form that supports value-dictation (currently [TextItem](TextItem.md#class-textitem) and [TextAreaItem](TextAreaItem.md#class-textareaitem)). Can be overridden on a per-item basis via [FormItem.showVoiceAssistIcon](FormItem.md#attr-formitemshowvoiceassisticon).
+
+Only effective when [VoiceAssist](VoiceAssist.md#class-voiceassist) has been [enabled](VoiceAssist.md#classmethod-voiceassistenable).
+
+### Groups
+
+- formIcons
+
+**Flags**: IRWA
+
+---
 ## Attr: DynamicForm.wrapItemTitles
 
 ### Description

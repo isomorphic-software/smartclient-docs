@@ -686,7 +686,7 @@ The fields to be used for the summary calculation can be determined either by ex
 
 By default, all visible fields of numeric type are used. Note that, in this mode, if the user is able to hide some fields, this could change the formula. If this isn't desirable, consider setting [ListGridField.canHide](#attr-listgridfieldcanhide) to prevent fields from being hidden. Consider this even if fields to include in the summary are explicitly listed, as hidden fields involved in a visible calculation can be confusing for an end user.
 
-If [ListGrid.showGridSummary](ListGrid_1.md#attr-listgridshowgridsummary) or [ListGrid.showGroupSummary](ListGrid_1.md#attr-listgridshowgroupsummary) is true, this field's value in the summary row\[s\] will still be calculated by calling this method. In this case, the record object passed in will contain summary values for each field. If custom handling is required for this case, it may be detected by checking the record object's [ListGridRecord.isGroupSummary](ListGridRecord.md#attr-listgridrecordisgroupsummary) and [ListGridRecord.isGridSummary](ListGridRecord.md#attr-listgridrecordisgridsummary) attributes.
+If [ListGrid.showGridSummary](ListGrid_1.md#attr-listgridshowgridsummary) or [ListGrid.showGroupSummary](ListGrid_2.md#attr-listgridshowgroupsummary) is true, this field's value in the summary row\[s\] will still be calculated by calling this method. In this case, the record object passed in will contain summary values for each field. If custom handling is required for this case, it may be detected by checking the record object's [ListGridRecord.isGroupSummary](ListGridRecord.md#attr-listgridrecordisgroupsummary) and [ListGridRecord.isGridSummary](ListGridRecord.md#attr-listgridrecordisgridsummary) attributes.
 
 ### See Also
 
@@ -714,7 +714,7 @@ See also the related property [ListGridField.hideOnPhone](#attr-listgridfieldhid
 ## Attr: ListGridField.summaryValueTitle
 
 ### Description
-If [ListGrid.showGridSummary](ListGrid_1.md#attr-listgridshowgridsummary) or [ListGrid.showGroupSummary](ListGrid_1.md#attr-listgridshowgroupsummary) is true and the [ListGridField.summaryFunction](#attr-listgridfieldsummaryfunction) is set to `"title"`, this attribute may be set to a string to display in the group and/or grid summary. If unspecified the [ListGridField.title](#attr-listgridfieldtitle) will show up in the summary.
+If [ListGrid.showGridSummary](ListGrid_1.md#attr-listgridshowgridsummary) or [ListGrid.showGroupSummary](ListGrid_2.md#attr-listgridshowgroupsummary) is true and the [ListGridField.summaryFunction](#attr-listgridfieldsummaryfunction) is set to `"title"`, this attribute may be set to a string to display in the group and/or grid summary. If unspecified the [ListGridField.title](#attr-listgridfieldtitle) will show up in the summary.
 
 **Flags**: IR
 
@@ -842,7 +842,7 @@ Determines whether this field will be groupable in the header context menu.
 ## Attr: ListGridField.valueIconLeftPadding
 
 ### Description
-How much padding should there be on the left of valueIcons for this field Overrides [ListGrid.valueIconLeftPadding](ListGrid_1.md#attr-listgridvalueiconleftpadding)
+How much padding should there be on the left of valueIcons for this field Overrides [ListGrid.valueIconLeftPadding](ListGrid_2.md#attr-listgridvalueiconleftpadding)
 
 ### Groups
 
@@ -1008,7 +1008,7 @@ Shortcut to configure a [FormItem.formula](FormItem.md#attr-formitemformula) for
 ## Attr: ListGridField.applyAfterSummary
 
 ### Description
-If [ListGridField.userFormula](#attr-listgridfielduserformula) is set for this field, and this grid is showing [group summaries](ListGrid_1.md#attr-listgridshowgroupsummary) or a [grid summary](ListGrid_1.md#attr-listgridshowgridsummary), this property determines what field value should be present in those summary rows. Should the field's user-formula be applied to the calculated summary row (applyAfterSummary `true`), or should a standard grid or group summary be applied to the user-formula values displayed in the grid (applyAfterSummary `false`)?
+If [ListGridField.userFormula](#attr-listgridfielduserformula) is set for this field, and this grid is showing [group summaries](ListGrid_2.md#attr-listgridshowgroupsummary) or a [grid summary](ListGrid_1.md#attr-listgridshowgridsummary), this property determines what field value should be present in those summary rows. Should the field's user-formula be applied to the calculated summary row (applyAfterSummary `true`), or should a standard grid or group summary be applied to the user-formula values displayed in the grid (applyAfterSummary `false`)?
 
 Default behavior may be specified at the grid level via [ListGrid.applyFormulaAfterSummary](ListGrid_1.md#attr-listgridapplyformulaaftersummary)
 
@@ -1807,7 +1807,7 @@ Note this property may also be set to false to avoid showing the standard [ListG
 ## Attr: ListGridField.formatGroupSummary
 
 ### Description
-Optional stringMethod to format the group level summary values for this field displayed via [ListGrid.showGroupSummary](ListGrid_1.md#attr-listgridshowgroupsummary). Takes a single parameter `value` and should return the formatted version of that value. If specified this will be applied instead of any formatting logic applied via [ListGridField.formatCellValue](#method-listgridfieldformatcellvalue), [ListGrid.formatCellValue](ListGrid_2.md#method-listgridformatcellvalue), etc.
+Optional stringMethod to format the group level summary values for this field displayed via [ListGrid.showGroupSummary](ListGrid_2.md#attr-listgridshowgroupsummary). Takes a single parameter `value` and should return the formatted version of that value. If specified this will be applied instead of any formatting logic applied via [ListGridField.formatCellValue](#method-listgridfieldformatcellvalue), [ListGrid.formatCellValue](ListGrid_2.md#method-listgridformatcellvalue), etc.
 
 Note that for fields with a specified summary function of "count", if no custom formatting is applied, we default to formatting the count value by appending `field.pluralTitle` if defined, otherwise `field.title` to the numeric count value returned by the standard count function. To change this behavior for such fields, specify an explicit 'formatGridSummary' and/or 'formatGroupSummary' method
 
@@ -2130,7 +2130,7 @@ If set, this will override the grid-wide [ListGrid.asyncErrorCellValue](ListGrid
 ## Attr: ListGridField.summaryFunction
 
 ### Description
-If [ListGrid.showGridSummary](ListGrid_1.md#attr-listgridshowgridsummary) or [ListGrid.showGroupSummary](ListGrid_1.md#attr-listgridshowgroupsummary) is true, this attribute can be used to specify an explicit [SummaryFunction](../reference_2.md#type-summaryfunction) for calculating the summary value to display.
+If [ListGrid.showGridSummary](ListGrid_1.md#attr-listgridshowgridsummary) or [ListGrid.showGroupSummary](ListGrid_2.md#attr-listgridshowgroupsummary) is true, this attribute can be used to specify an explicit [SummaryFunction](../reference_2.md#type-summaryfunction) for calculating the summary value to display.
 
 If an array of summaryFunctions is specified, they will be executed in turn and the grid will show multiple summary rows at the grid or group level (or both) containing the resulting values.
 
@@ -2395,7 +2395,7 @@ It is undefined behavior to share the same record objects, or the same [ResultSe
 ### Description
 Should the cell content be natively selected (ready for copying to clip-board) on click?
 
-See [ListGrid.selectCellTextOnClick](ListGrid_1.md#attr-listgridselectcelltextonclick) for more information.
+See [ListGrid.selectCellTextOnClick](ListGrid_2.md#attr-listgridselectcelltextonclick) for more information.
 
 **Flags**: IRW
 
@@ -2403,7 +2403,7 @@ See [ListGrid.selectCellTextOnClick](ListGrid_1.md#attr-listgridselectcelltexton
 ## Attr: ListGridField.showGroupSummary
 
 ### Description
-If [ListGrid.showGroupSummary](ListGrid_1.md#attr-listgridshowgroupsummary) is true, should this field show a summary value in a summary row when the grid is grouped? If unset, this field will show a summary value in the summary row if an explicit [ListGridField.summaryFunction](#attr-listgridfieldsummaryfunction) is specified or if a [default summary function](SimpleType.md#classmethod-simpletypegetdefaultsummaryfunction) is defined for the specified field type.
+If [ListGrid.showGroupSummary](ListGrid_2.md#attr-listgridshowgroupsummary) is true, should this field show a summary value in a summary row when the grid is grouped? If unset, this field will show a summary value in the summary row if an explicit [ListGridField.summaryFunction](#attr-listgridfieldsummaryfunction) is specified or if a [default summary function](SimpleType.md#classmethod-simpletypegetdefaultsummaryfunction) is defined for the specified field type.
 
 **Flags**: IR
 
@@ -2907,7 +2907,7 @@ The grid is passed to be able to evaluate dependency record summary values via L
 
 Note that if implemented, this is called instead of making use of the [ListGridField.recordSummaryFunction](#attr-listgridfieldrecordsummaryfunction).
 
-If [ListGrid.showGridSummary](ListGrid_1.md#attr-listgridshowgridsummary) or [ListGrid.showGroupSummary](ListGrid_1.md#attr-listgridshowgroupsummary) is true, this field's value in the summary row\[s\] will still be calculated by calling this method. In this case, the record object passed in will contain summary values for each field. If custom handling is required for this case, it may be detected by checking the record object's [ListGridRecord.isGroupSummary](ListGridRecord.md#attr-listgridrecordisgroupsummary) and [ListGridRecord.isGridSummary](ListGridRecord.md#attr-listgridrecordisgridsummary) attributes.
+If [ListGrid.showGridSummary](ListGrid_1.md#attr-listgridshowgridsummary) or [ListGrid.showGroupSummary](ListGrid_2.md#attr-listgridshowgroupsummary) is true, this field's value in the summary row\[s\] will still be calculated by calling this method. In this case, the record object passed in will contain summary values for each field. If custom handling is required for this case, it may be detected by checking the record object's [ListGridRecord.isGroupSummary](ListGridRecord.md#attr-listgridrecordisgroupsummary) and [ListGridRecord.isGridSummary](ListGridRecord.md#attr-listgridrecordisgridsummary) attributes.
 
 ### Parameters
 
@@ -2998,7 +2998,7 @@ If [ListGrid.showGridSummary](ListGrid_1.md#attr-listgridshowgridsummary) is tru
 
 As with [ListGrid.getGridSummary](ListGrid_2.md#method-listgridgetgridsummary) this method may return an array of results - in this case each result will show up in a separate row in the [ListGrid.summaryRow](ListGrid_1.md#attr-listgridsummaryrow) grid.
 
-If this grid is grouped, and [ListGrid.showGroupSummary](ListGrid_1.md#attr-listgridshowgroupsummary) is true, this method will be passed a third parameter - an array of group-level summaries.
+If this grid is grouped, and [ListGrid.showGroupSummary](ListGrid_2.md#attr-listgridshowgroupsummary) is true, this method will be passed a third parameter - an array of group-level summaries.
 
 ### Parameters
 
@@ -3092,7 +3092,7 @@ If your derivation of the field title is more complex than specifying a static s
 ## Method: ListGridField.getGroupSummary
 
 ### Description
-If [ListGrid.showGroupSummary](ListGrid_1.md#attr-listgridshowgroupsummary) is true, and this method is specified it will be called to generate the field summary value to be displayed for each group level summary row. Note that this is called instead of making use of the [ListGridField.summaryFunction](#attr-listgridfieldsummaryfunction).
+If [ListGrid.showGroupSummary](ListGrid_2.md#attr-listgridshowgroupsummary) is true, and this method is specified it will be called to generate the field summary value to be displayed for each group level summary row. Note that this is called instead of making use of the [ListGridField.summaryFunction](#attr-listgridfieldsummaryfunction).
 
 This method may return an array of results - in this case the group will show multiple summary rows, with each entry in the array showing up in a different record.
 

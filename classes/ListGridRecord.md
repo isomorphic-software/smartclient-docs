@@ -84,7 +84,7 @@ Note: this attribute name is governed by [ListGrid.singleCellValueProperty](List
 ## Attr: ListGridRecord.isGroupSummary
 
 ### Description
-This attribute will automatically be set to true for records representing group-level summary rows shown if [ListGrid.showGroupSummary](ListGrid_1.md#attr-listgridshowgroupsummary) is true.
+This attribute will automatically be set to true for records representing group-level summary rows shown if [ListGrid.showGroupSummary](ListGrid_2.md#attr-listgridshowgroupsummary) is true.
 
 Note that `isGroupSummary` is the default property name for this attribute but it may be modified by setting [ListGrid.groupSummaryRecordProperty](ListGrid_1.md#attr-listgridgroupsummaryrecordproperty)
 
@@ -249,7 +249,7 @@ Note: this attribute name is governed by [ListGrid.isSeparatorProperty](ListGrid
 ## Attr: ListGridRecord.showRollOver
 
 ### Description
-Set to false to disable rollover for this individual record when [ListGrid.showRollOver](ListGrid_1.md#attr-listgridshowrollover) is true.
+Set to false to disable rollover for this individual record when [ListGrid.showRollOver](ListGrid_2.md#attr-listgridshowrollover) is true.
 
 Note this property can be renamed to prevent collision with data members - see [ListGrid.recordShowRollOverProperty](ListGrid_1.md#attr-listgridrecordshowrolloverproperty).
 

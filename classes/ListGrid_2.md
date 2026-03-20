@@ -4,6 +4,221 @@
 
 ---
 
+## Attr: ListGrid.selectCellTextOnClick
+
+### Description
+If this property is set to true, clicking on a cell will natively select the cell's content, ready to be copied to the browser clipboard.
+
+For control of this behavior at the field level, [ListGridField.selectCellTextOnClick](ListGridField.md#attr-listgridfieldselectcelltextonclick) may be used. These properties interact as follows:
+
+| listGrid.selectCellTextOnClick value | listGridField.selectCellTextOnClick value | Behavior |
+|---|---|---|
+| true | unset or true | Cell contents will be natively selected on click. |
+| false | Cell contents will not be natively selected on click. |
+| unset | true | Cell contents will be natively selected on click. |
+| unset or false | Cell contents will not be natively selected on click. |
+| false | true, false or unset | Cell contents will not be natively selected on click. |
+
+This is related to the [ListGrid.canDragSelectText](ListGrid_1.md#attr-listgridcandragselecttext) attribute which enables native text selection of grid content by standard browser interactions (drag selecting or double-click selecting).
+
+Note that developers may also be interested in the related formItem properties [FormItem.selectOnClick](FormItem.md#attr-formitemselectonclick) and [FormItem.selectOnFocus](FormItem.md#attr-formitemselectonfocus).
+
+**Flags**: IRW
+
+---
+## Attr: ListGrid.groupIcon
+
+### Description
+The URL of the base icon for the group icons in this listGrid. Default value may be overridden by the [current skin](../kb_topics/skinning.md#kb-topic-skinning--theming).
+
+### Groups
+
+- grouping
+
+### See Also
+
+- [grouping](../reference.md#kb-topic-grouping)
+
+**Flags**: IRW
+
+---
+## Attr: ListGrid.initialSort
+
+### Description
+An array of [SortSpecifier](../reference_2.md#object-sortspecifier) objects used to set up the initial sort configuration for this grid. If specified, this will be used instead of any [ListGrid.sortField](ListGrid_1.md#attr-listgridsortfield) specified.
+
+### Groups
+
+- sorting
+
+**Flags**: IR
+
+---
+## Attr: ListGrid.canReorderRecords
+
+### Description
+Indicates whether records can be reordered by dragging within this `ListGrid`.
+
+**NOTE:** If `canReorderRecords` is initially enabled or might be [dynamically enabled](#method-listgridsetcanreorderrecords) after the grid is created, it may be desirable to disable [touch scrolling](Canvas.md#attr-canvasusetouchscrolling) so that touch-dragging a record starts a reorder operation rather than a scroll, but see the discussion of [drag handles](#method-listgridshowdraghandles). If [Canvas.disableTouchScrollingForDrag](Canvas.md#attr-canvasdisabletouchscrollingfordrag) is set to `true`, then touch scrolling will be disabled automatically. However, for [accessibility](../kb_topics/accessibility.md#kb-topic-accessibility--section-508-compliance) reasons, it is recommended to leave touch scrolling enabled and provide an alternative set of controls that can be used to perform drag-reordering of records.
+
+### Groups
+
+- dragging
+
+### See Also
+
+- [ListGridRecord.canDrag](ListGridRecord.md#attr-listgridrecordcandrag)
+- [ListGridRecord.canAcceptDrop](ListGridRecord.md#attr-listgridrecordcanacceptdrop)
+- [ListGrid.showDragHandles](#method-listgridshowdraghandles)
+
+**Flags**: IRW
+
+---
+## Attr: ListGrid.canExpandMultipleRecords
+
+### Description
+When [ListGrid.canExpandRecords](ListGrid_1.md#attr-listgridcanexpandrecords) is true, this property indicates whether multiple records can be expanded simultaneously. If set to false, expanding a record will automatically collapse any record which is already expanded. The default value is `true`.
+
+### Groups
+
+- expansionField
+
+**Flags**: IRW
+
+---
+## Attr: ListGrid.valueIconLeftPadding
+
+### Description
+How much padding should there be on the left of valueIcons by default Can be overridden at the field level
+
+### Groups
+
+- imageColumns
+
+### See Also
+
+- [ListGridField.valueIcons](ListGridField.md#attr-listgridfieldvalueicons)
+
+**Flags**: IRW
+
+---
+## Attr: ListGrid.headerMenuButtonWidth
+
+### Description
+If [ListGrid.showHeaderMenuButton](ListGrid_1.md#attr-listgridshowheadermenubutton) is true, this property governs the width of the auto-generated `headerMenuButton`
+
+### Groups
+
+- headerMenuButton
+
+### See Also
+
+- [ListGrid.rotatedHeaderMenuButtonWidth](ListGrid_1.md#attr-listgridrotatedheadermenubuttonwidth)
+
+**Flags**: IRA
+
+---
+## Attr: ListGrid.animateFolderEffect
+
+### Description
+When animating folder opening / closing, this property can be set to apply an animated acceleration effect. This allows the animation speed to be "weighted", for example expanding or collapsing at a faster rate toward the beginning of the animation than at the end.
+
+For a ListGrid, this property applies when [grouping](ListGrid_1.md#attr-listgridcangroupby) is enabled.
+
+### Groups
+
+- animation
+
+**Flags**: IRW
+
+---
+## Attr: ListGrid.showRollOver
+
+### Description
+Should we show different styling for the cell the mouse is over?
+
+If true, the cell style will have the suffix "Over" appended.
+
+Can be overridden on a per-record basis via [ListGridRecord.showRollOver](ListGridRecord.md#attr-listgridrecordshowrollover).
+
+### Groups
+
+- appearance
+
+**Flags**: IRW
+
+---
+## Attr: ListGrid.rowRangeDisplay
+
+### Description
+[RowRangeDisplay](RowRangeDisplay.md#class-rowrangedisplay) autoChild, which may be retrieved by calling [ListGrid.getRowRangeDisplay](#method-listgridgetrowrangedisplay).
+
+### Groups
+
+- rowRangeDisplay
+
+**Flags**: R
+
+---
+## Attr: ListGrid.showGroupSummary
+
+### Description
+If this listGrid supports [grouping](ListGrid_1.md#attr-listgridcangroupby), setting this property will cause the grid to render an extra row at the end of each group when grouped, containing summary information for the fields. Summary information will be calculated by the [ListGridField.getGroupSummary](ListGridField.md#method-listgridfieldgetgroupsummary) method if specified, otherwise via the specified [ListGridField.summaryFunction](ListGridField.md#attr-listgridfieldsummaryfunction).
+
+### See Also
+
+- [ListGrid.groupByFieldSummaries](ListGrid_1.md#attr-listgridgroupbyfieldsummaries)
+
+**Flags**: IRW
+
+---
+## Attr: ListGrid.enterKeyEditAction
+
+### Description
+What to do when a user hits enter while editing a cell:
+
+*   "nextCell": start editing the next editable cell in this record (or the first editable cell in the next record if focus is in the last editable cell in the row)
+*   "nextRow": start editing the same field in the next row (skipping any rows where that would be a non-editable cell.
+*   "nextRowStart": start editing the first editable cell in the next row.
+*   "done": hide the editor (editing is complete)
+
+Note that if this.autoSaveEdits is true, this may cause a save of the current edit values
+
+### Groups
+
+- editing
+
+**Flags**: IRW
+
+---
+## Method: ListGrid.cellErrorIconOver
+
+### Description
+Optional stringMethod to fire when the mouse moves over the error icon of a cell with validation errors.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| record | [ListGridRecord](#type-listgridrecord) | false | — | cell record as returned by getCellRecord() |
+| rowNum | [number](#type-number) | false | — | row number for the cell |
+| colNum | [number](#type-number) | false | — | column number of the cell |
+
+### Returns
+
+`[Boolean](#type-boolean)` — false to suppress the default behavior (show a standard error message hover)
+
+### Groups
+
+- events
+
+### See Also
+
+- [ListGrid.showErrorIcons](ListGrid_1.md#attr-listgridshowerroricons)
+
+**Flags**: A
+
+---
 ## Method: ListGrid.getDefaultFormattedFieldValue
 
 ### Description
@@ -3079,7 +3294,7 @@ Called when the mouse hovers over a cell if `this.canHover` is `true`. Returning
 ### Description
 Refresh the [grid summary](ListGrid_1.md#attr-listgridshowgridsummary), by either re-calculating from already-loaded data or doing a new fetch from the [ListGrid.summaryRowDataSource](ListGrid_1.md#attr-listgridsummaryrowdatasource).
 
-Note unlike [ListGrid.recalculateSummaries](#method-listgridrecalculatesummaries), this method will not force a refresh of field-level summaries (see [ListGridField.recordSummaryFunction](ListGridField.md#attr-listgridfieldrecordsummaryfunction)) or group level summaries (see [ListGrid.showGroupSummary](ListGrid_1.md#attr-listgridshowgroupsummary)).
+Note unlike [ListGrid.recalculateSummaries](#method-listgridrecalculatesummaries), this method will not force a refresh of field-level summaries (see [ListGridField.recordSummaryFunction](ListGridField.md#attr-listgridfieldrecordsummaryfunction)) or group level summaries (see [ListGrid.showGroupSummary](#attr-listgridshowgroupsummary)).
 
 ---
 ## Method: ListGrid.userSelectAllRecords
@@ -3830,7 +4045,7 @@ Returns the page offsets and size of the cell at the passed row and column. If a
 ### Description
 Shows an additional field near the beginning of the field list (after any [row number](ListGrid_1.md#attr-listgridshowrownumbers) field) that can be dragged to drag the current selection. This feature is useful in [touch environments](Browser.md#classattr-browseristouch) where both touch scrolling and dragging are needed on the same grid, and allows scrolling to be triggered on the other fields so that both operations are available. Targeted touch environments include both mobile devices, and Windows hardware that supports [Dual Input Mode](Browser.md#classattr-browsersupportsdualinput) such as Microsoft Surface.
 
-Note that the [drag handle field](ListGrid_1.md#attr-listgriddraghandlefield) will never be shown unless [ListGrid.canReorderRecords](ListGrid_1.md#attr-listgridcanreorderrecords) or [ListGrid.canDragRecordsOut](ListGrid_1.md#attr-listgridcandragrecordsout) are true.
+Note that the [drag handle field](ListGrid_1.md#attr-listgriddraghandlefield) will never be shown unless [ListGrid.canReorderRecords](#attr-listgridcanreorderrecords) or [ListGrid.canDragRecordsOut](ListGrid_1.md#attr-listgridcandragrecordsout) are true.
 
 In IE11 or Microsoft Edge, dragging a record in a grid may not be possible using a touch device without enabling drag handles, or disabling native touch scrolling by setting  `window.isc_useNativeTouchScrolling = false`  before SmartClient is loaded.
 
@@ -4239,7 +4454,7 @@ Does this grid currently have errors associated with editValues for any row in t
 This method overrides [Canvas.willAcceptDrop](Canvas.md#method-canvaswillacceptdrop) and works as follows:  
 
 *   If [Canvas.willAcceptDrop](Canvas.md#method-canvaswillacceptdrop) (the superclass definition) returns false, this method always returns false. This allows [Canvas.dragType](Canvas.md#attr-canvasdragtype) and [Canvas.dropTypes](Canvas.md#attr-canvasdroptypes) to be used to configure eligibility for drop. By default, a ListGrid has no dropTypes configured and so this check will not prevent a drop.
-*   If this is a self-drop, that is, the user is dragging a record within this list, this is an attempted drag-reorder. If [ListGrid.canReorderRecords](ListGrid_1.md#attr-listgridcanreorderrecords) is false, this method returns false.
+*   If this is a self-drop, that is, the user is dragging a record within this list, this is an attempted drag-reorder. If [ListGrid.canReorderRecords](#attr-listgridcanreorderrecords) is false, this method returns false.
 *   If the [dragTarget](EventHandler.md#classmethod-eventhandlergetdragtarget) is another widget, if [ListGrid.canAcceptDroppedRecords](ListGrid_1.md#attr-listgridcanacceptdroppedrecords) is false this method returns false.
 *   If a call to [ListGrid.getDragData](#method-listgridgetdragdata) on the `dragTarget` fails to return an record object or an array of records, this method returns null.
 *   If the drop target record is disabled or has [ListGridRecord.canAcceptDrop](ListGridRecord.md#attr-listgridrecordcanacceptdrop) set to false, return false.
@@ -4548,7 +4763,7 @@ This is essentially the same as calling listGrid.data.indexOf(record), except th
 ## Method: ListGrid.getGridSummaryFunction
 
 ### Description
-Determines the [SummaryFunction](../reference_2.md#type-summaryfunction) to use when calculating per-field summary values describing multiple records in this grid. Used to determine the summary function to use for both [ListGrid.showGridSummary](ListGrid_1.md#attr-listgridshowgridsummary) and [ListGrid.showGroupSummary](ListGrid_1.md#attr-listgridshowgroupsummary).
+Determines the [SummaryFunction](../reference_2.md#type-summaryfunction) to use when calculating per-field summary values describing multiple records in this grid. Used to determine the summary function to use for both [ListGrid.showGridSummary](ListGrid_1.md#attr-listgridshowgridsummary) and [ListGrid.showGroupSummary](#attr-listgridshowgroupsummary).
 
 Default implementation picks up [ListGridField.summaryFunction](ListGridField.md#attr-listgridfieldsummaryfunction) if explicitly specified, otherwise checks for a default summary function based on field type (see [SimpleType.setDefaultSummaryFunction](SimpleType.md#classmethod-simpletypesetdefaultsummaryfunction)). Note that a default summary function will not be supplied if the field represents a [primaryKey](DataSourceField.md#attr-datasourcefieldprimarykey) or [foreignKey](DataSourceField.md#attr-datasourcefieldforeignkey), since it would likely not be meaningful.
 
@@ -4780,7 +4995,7 @@ Return null to avoid re-adding the component to the row or cell.
 ## Method: ListGrid.setShowGroupSummary
 
 ### Description
-Setter for the [ListGrid.showGroupSummary](ListGrid_1.md#attr-listgridshowgroupsummary) attribute
+Setter for the [ListGrid.showGroupSummary](#attr-listgridshowgroupsummary) attribute
 
 ### Parameters
 
@@ -4827,7 +5042,7 @@ Update the [ListGridField.headerBaseStyle](ListGridField.md#attr-listgridfieldhe
 ## Method: ListGrid.getGroupSummaryData
 
 ### Description
-If this grid is [grouped](ListGrid_1.md#attr-listgridgroupbyfield), and [ListGrid.showGroupSummary](ListGrid_1.md#attr-listgridshowgroupsummary) is true, this method will be called for each group to return the group summary data to display at the end of the group.
+If this grid is [grouped](ListGrid_1.md#attr-listgridgroupbyfield), and [ListGrid.showGroupSummary](#attr-listgridshowgroupsummary) is true, this method will be called for each group to return the group summary data to display at the end of the group.
 
 By default this will call [ListGridField.getGroupSummary](ListGridField.md#method-listgridfieldgetgroupsummary) if defined for each field and generate an array of records containing the resulting values. If no explicit per-field getGroupSummary method is present, this method will fall back to calling the appropriate [ListGridField.summaryFunction](ListGridField.md#attr-listgridfieldsummaryfunction).
 
@@ -5520,7 +5735,7 @@ Returns `true` if the passed fieldName is in the current sort-specification.
 ## Method: ListGrid.setCanReorderRecords
 
 ### Description
-Setter for the [ListGrid.canReorderRecords](ListGrid_1.md#attr-listgridcanreorderrecords) attribute.
+Setter for the [ListGrid.canReorderRecords](#attr-listgridcanreorderrecords) attribute.
 
 ### Parameters
 
@@ -6016,7 +6231,7 @@ Will update the UI to show the editor for the new cell, and put focus in it unle
 ## Method: ListGrid.recalculateSummaries
 
 ### Description
-Recalculates values for fields with [summary-functions](ListGridField.md#attr-listgridfieldrecordsummaryfunction) or [user formulae](ListGridField.md#attr-listgridfielduserformula) defined and for values displayed in the [grid summary](ListGrid_1.md#attr-listgridshowgridsummary) and [group summary rows](ListGrid_1.md#attr-listgridshowgroupsummary).
+Recalculates values for fields with [summary-functions](ListGridField.md#attr-listgridfieldrecordsummaryfunction) or [user formulae](ListGridField.md#attr-listgridfielduserformula) defined and for values displayed in the [grid summary](ListGrid_1.md#attr-listgridshowgridsummary) and [group summary rows](#attr-listgridshowgroupsummary).
 
 ### Parameters
 
@@ -7203,7 +7418,7 @@ See also [ListGrid.getRollOverCanvas](#method-listgridgetrollovercanvas).
 ## Method: ListGrid.getSort
 
 ### Description
-Returns the current [SortSpecifiers](../reference_2.md#object-sortspecifier) for this ListGrid. Will return null if this grid has never been sorted (and has no specified [ListGrid.initialSort](ListGrid_1.md#attr-listgridinitialsort) or [ListGrid.sortField](ListGrid_1.md#attr-listgridsortfield)).
+Returns the current [SortSpecifiers](../reference_2.md#object-sortspecifier) for this ListGrid. Will return null if this grid has never been sorted (and has no specified [ListGrid.initialSort](#attr-listgridinitialsort) or [ListGrid.sortField](ListGrid_1.md#attr-listgridsortfield)).
 
 Note that if sorting was applied via [ListGrid.sort](#method-listgridsort) \[rather than [ListGrid.setSort](#method-listgridsetsort)\] the sortSpecifiers returned will have been created based on the specified sort field / direction passed into [ListGrid.sort](#method-listgridsort).
 

@@ -470,7 +470,7 @@ Properties defining an object's appearance
 - [ListGrid.editPendingMarkerStyle](../classes/ListGrid_1.md#attr-listgrideditpendingmarkerstyle)
 - [ListGrid.recordBaseStyleProperty](../classes/ListGrid_1.md#attr-listgridrecordbasestyleproperty)
 - [ListGrid.frozenBaseStyle](../classes/ListGrid_1.md#attr-listgridfrozenbasestyle)
-- [ListGrid.showRollOver](../classes/ListGrid_1.md#attr-listgridshowrollover)
+- [ListGrid.showRollOver](../classes/ListGrid_2.md#attr-listgridshowrollover)
 - [ListGrid.recordShowRollOverProperty](../classes/ListGrid_1.md#attr-listgridrecordshowrolloverproperty)
 - [ListGridRecord.showRollOver](../classes/ListGridRecord.md#attr-listgridrecordshowrollover)
 - [ListGridRecord.embeddedComponent](../classes/ListGridRecord.md#attr-listgridrecordembeddedcomponent)

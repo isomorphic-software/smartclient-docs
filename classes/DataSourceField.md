@@ -838,7 +838,7 @@ This property is typically set when a custom component is being used that doesn'
 ## Attr: DataSourceField.childTagName
 
 ### Description
-For a field that is [multiple:"true"](#attr-datasourcefieldmultiple), controls the name of the XML tag used for each subelement during [DataSource.xmlSerialize](DataSource_1.md#method-datasourcexmlserialize).
+For a field that is [multiple:true](#attr-datasourcefieldmultiple), controls the name of the XML tag used for each subelement during [DataSource.xmlSerialize](DataSource_1.md#method-datasourcexmlserialize).
 
 If unset, the default tag name is "value" for a field of simple type, and for a field of DataSource type, is the tagName or ID of the DataSource (as though `xmlSerialize()` were called on the child DataSource).
 
@@ -1295,7 +1295,7 @@ Comma-separated list of user roles that are allowed to initialize this field. If
 ## Attr: DataSourceField.summaryFunction
 
 ### Description
-If [ListGrid.showGridSummary](ListGrid_1.md#attr-listgridshowgridsummary) or [ListGrid.showGroupSummary](ListGrid_1.md#attr-listgridshowgroupsummary) is true, this attribute can be used to specify an explicit [SummaryFunction](../reference_2.md#type-summaryfunction) for calculating the summary value to display.
+If [ListGrid.showGridSummary](ListGrid_1.md#attr-listgridshowgridsummary) or [ListGrid.showGroupSummary](ListGrid_2.md#attr-listgridshowgroupsummary) is true, this attribute can be used to specify an explicit [SummaryFunction](../reference_2.md#type-summaryfunction) for calculating the summary value to display.
 
 If an array of summaryFunctions is specified, they will be executed in turn and the grid will show multiple summary rows at the grid or group level (or both) containing the resulting values.
 
@@ -1857,7 +1857,8 @@ In complex cases involving composite foreign keys or indirect relation chains (m
 ### See Also
 
 - [DataSourceField.relatedTableAlias](#attr-datasourcefieldrelatedtablealias)
-- [advancedIncludeVia](#advancedincludevia)
+- [includeViaSyntax](../kb_topics/includeViaSyntax.md#kb-topic-includevia-syntax)
+- [includeViaAndDomainKey](../kb_topics/includeViaAndDomainKey.md#kb-topic-using-includevia-with-composite-keys-and-domainkey)
 
 **Flags**: IR
 
@@ -2931,7 +2932,7 @@ For the `inSet` operator, the field matches if there is any intersection between
 
 Values for multiple:true fields appear as Java Lists when received in server code such as a DMI. The SmartClient Server supports simple storage of values that are multiple:true, controlled via the [DataSourceField.multipleStorage](#attr-datasourcefieldmultiplestorage) setting.
 
-For server-side behavior of relation fields that are multiple:true, see +link{group:dataSourceRelations); for the specifics of JPA and Hibernate relation fields that are multiple:true, see [jpaHibernateRelations](../kb_topics/jpaHibernateRelations.md#kb-topic-jpa--hibernate-relations).
+For server-side behavior of relation fields that are multiple:true, see [dataSourceRelations](../kb_topics/dataSourceRelations.md#kb-topic-relations); for the specifics of JPA and Hibernate relation fields that are multiple:true, see [jpaHibernateRelations](../kb_topics/jpaHibernateRelations.md#kb-topic-jpa--hibernate-relations).
 
 For non-relation fields, the SmartClient Server supports simple storage of values that are multiple:true, controlled via the [DataSourceField.multipleStorage](#attr-datasourcefieldmultiplestorage) setting, with some limited support for server-side filtering, as described in the [DataSourceField.multipleStorage](#attr-datasourcefieldmultiplestorage) docs.
 

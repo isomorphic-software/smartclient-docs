@@ -57,7 +57,7 @@ This means that most applications that are written with mouse interaction in min
 
 Components that normally show scrollbars on desktop browsers will, by default, hide scrollbars and allow scrolling via finger dragging instead.
 
-If you are using drag and drop features such as [ListGrid.canReorderRecords](../classes/ListGrid_1.md#attr-listgridcanreorderrecords), this obviously conflicts with using finger drags for scrolling. There are two options:
+If you are using drag and drop features such as [ListGrid.canReorderRecords](../classes/ListGrid_2.md#attr-listgridcanreorderrecords), this obviously conflicts with using finger drags for scrolling. There are two options:
 
 1.  Leave touch scrolling active for the grid, but provide additional controls, such as buttons, that enable users to perform the drag operation in a different way. Optionally display scrollbars _in addition to_ leaving touch scrolling active by setting [Canvas.alwaysShowScrollbars](../classes/Canvas.md#attr-canvasalwaysshowscrollbars) to `true`.
 2.  Set [useTouchScrolling](../classes/Canvas.md#attr-canvasusetouchscrolling) to `false` on the component. Scrollbars will be shown, and finger drags will no longer cause scrolling, so that finger drags can now be used for the drag and drop operation configured on the component

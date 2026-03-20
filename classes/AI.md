@@ -196,6 +196,26 @@ Determines whether AI support is enabled. [AI.disabled](#classattr-aidisabled) m
 - [AI.defaultEngineId](#classattr-aidefaultengineid)
 
 ---
+## ClassMethod: AI.unregisterEngine
+
+### Description
+Unregisters an [AIEngine](AIEngine.md#class-aiengine) specified by its ID.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| engineId | [String](#type-string) | false | — | the ID of the `AIEngine` to unregister. |
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — `true` if the `AIEngine` was successfully unregistered; `false` otherwise.
+
+### See Also
+
+- [AI.registerEngine](#classmethod-airegisterengine)
+
+---
 ## ClassMethod: AI.sendPrompt
 
 ### Description
@@ -249,6 +269,26 @@ Asks AI to answer a question about the data of the application.
 ### Groups
 
 - answerEngine
+
+---
+## ClassMethod: AI.registerEngine
+
+### Description
+Registers the given [AIEngine](AIEngine.md#class-aiengine).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| engine | [AIEngine](#type-aiengine) | false | — | The `AIEngine` to register. |
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — `true` if the `AIEngine` was successfully registered; `false` otherwise.
+
+### See Also
+
+- [AI.unregisterEngine](#classmethod-aiunregisterengine)
 
 ---
 ## ClassMethod: AI.getEngine

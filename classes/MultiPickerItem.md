@@ -373,7 +373,7 @@ Width for the [MultiPickerItem.pickerLayout](#attr-multipickeritempickerlayout) 
 ## Attr: MultiPickerItem.initialSort
 
 ### Description
-[Initial sort specifiers](ListGrid_1.md#attr-listgridinitialsort) for this item's list of options. Will be applied to the [MultiPickerItem.pickList](#attr-multipickeritempicklist), [MultiPickerItem.pickTree](#attr-multipickeritempicktree) or [MultiPickerItem.shuttle](#attr-multipickeritemshuttle) depending on the [MultiPickerItem.selectionStyle](#attr-multipickeritemselectionstyle) of this item.
+[Initial sort specifiers](ListGrid_2.md#attr-listgridinitialsort) for this item's list of options. Will be applied to the [MultiPickerItem.pickList](#attr-multipickeritempicklist), [MultiPickerItem.pickTree](#attr-multipickeritempicktree) or [MultiPickerItem.shuttle](#attr-multipickeritemshuttle) depending on the [MultiPickerItem.selectionStyle](#attr-multipickeritemselectionstyle) of this item.
 
 **Flags**: IR
 

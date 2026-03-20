@@ -213,7 +213,7 @@ Width for the [Shuttle.selectAllButton](#attr-shuttleselectallbutton)
 ## Attr: Shuttle.initialSort
 
 ### Description
-[Initial sort specifiers](ListGrid_1.md#attr-listgridinitialsort) for this item's list of options. Will be applied to [Shuttle.sourceGrid](#attr-shuttlesourcegrid) and [Shuttle.targetGrid](#attr-shuttletargetgrid). To specify initial sort for each grid separately, these properties may be set per grid using the standard [autoChild pattern](../reference.md#type-autochild).
+[Initial sort specifiers](ListGrid_2.md#attr-listgridinitialsort) for this item's list of options. Will be applied to [Shuttle.sourceGrid](#attr-shuttlesourcegrid) and [Shuttle.targetGrid](#attr-shuttletargetgrid). To specify initial sort for each grid separately, these properties may be set per grid using the standard [autoChild pattern](../reference.md#type-autochild).
 
 **Flags**: IR
 

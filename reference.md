@@ -410,11 +410,11 @@ This is the central API reference for the SmartClient framework.
   - [NumberUtil](classes/NumberUtil.md)
   - [GroupingMessages](classes/GroupingMessages.md)
   - [JSON](classes/JSON.md)
+  - [AI](classes/AI.md)
   - [RemoteWindow](classes/RemoteWindow.md)
     - [OpenFinWindow](#class-openfinwindow)
   - [Media](classes/Media.md)
   - [Messaging](classes/Messaging.md)
-  - [AI](classes/AI.md)
   - [Offline](classes/Offline.md)
   - [StyleSheetHandler](classes/StyleSheetHandler.md)
   - [DMI](classes/DMI.md)
@@ -5082,39 +5082,6 @@ For DataSources of type "sql" and "hibernate", specifies the kind of inheritance
 - fields
 
 ---
-## Type: DSOperationType
-
-### Description
-One of the four basic operations that can be performed on DataSource data: "fetch", "add", "update", "remove". Elsewhere called CRUD operations, where CRUD stands for "create", "retrieve", "update", "delete", which correspond to "add", "fetch", "update" and "remove" in SmartClient terminology. See [dataSourceOperations](kb_topics/dataSourceOperations.md#kb-topic-datasource-operations) for a full description.
-
-There are also additional, non-CRUD operations explained below.
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| "fetch" | Fetch one or more records that match a set of search criteria. |
-| "add" | Store new records |
-| "update" | Update an existing record |
-| "remove" | Remove (delete) an existing record |
-| "custom" | perform some arbitrary custom logic that is not a CRUD operation. Format of the inputs and outputs is unconstrained, and the operation will be ignored for cache sync purposes by [ResultSet](classes/ResultSet.md#class-resultset)s. See [DataSource.performCustomOperation](classes/DataSource_1.md#method-datasourceperformcustomoperation). |
-| "validate" | Run server-side validation for "add" or "update" without actually adding or updating anything. See [DataSource.validateData](classes/DataSource_1.md#method-datasourcevalidatedata). |
-| "viewFile" | Retrieve a file stored in a binary field in a DataSource record, and allow the browser to choose whether to view it directly or prompt the user to save. See [binaryFields](kb_topics/binaryFields.md#kb-topic-binary-fields). |
-| "downloadFile" | Like "viewFile", but the HTTP header Content-Disposition is used to suggest that the browser show a save dialog. See [binaryFields](kb_topics/binaryFields.md#kb-topic-binary-fields). |
-| "storeTestData" | Takes a List of Maps and stores the data in Admin Console XML test data format |
-| "clientExport" | Upload formatted client data and export it to Excel, XML and other formats. Used automatically by [exportClientData()](classes/DataSource_1.md#method-datasourceexportclientdata) and cannot be used directly. Usable only with the SmartClient server framework. |
-| "getFile" | Use the DataSource as a [source for files](kb_topics/fileSource.md#kb-topic-filesource-operations). Used automatically by [DataSource.getFile](classes/DataSource_1.md#method-datasourcegetfile), and would not normally be used directly. Usable only with the SmartClient server framework. |
-| "hasFile" | Use the DataSource as a [source for files](kb_topics/fileSource.md#kb-topic-filesource-operations). Used automatically by [DataSource.hasFile](classes/DataSource_1.md#method-datasourcehasfile), and would not normally be used directly. Usable only with the SmartClient server framework. |
-| "listFiles" | Use the DataSource as a [source for files](kb_topics/fileSource.md#kb-topic-filesource-operations). Used automatically by [DataSource.listFiles](classes/DataSource_1.md#method-datasourcelistfiles), and would not normally be used directly. Usable only with the SmartClient server framework. |
-| "removeFile" | Use the DataSource as a [source for files](kb_topics/fileSource.md#kb-topic-filesource-operations). Used automatically by [DataSource.removeFile](classes/DataSource_1.md#method-datasourceremovefile), and would not normally be used directly. Usable only with the SmartClient server framework. |
-| "saveFile" | Use the DataSource as a [source for files](kb_topics/fileSource.md#kb-topic-filesource-operations). Used automatically by [DataSource.saveFile](classes/DataSource_1.md#method-datasourcesavefile), and would not normally be used directly. Usable only with the SmartClient server framework. |
-| "renameFile" | Use the DataSource as a [source for files](kb_topics/fileSource.md#kb-topic-filesource-operations). Used automatically by [DataSource.renameFile](classes/DataSource_1.md#method-datasourcerenamefile), and would not normally be used directly. Usable only with the SmartClient server framework. |
-| "getFileVersion" | Use the DataSource as a [source for files](kb_topics/fileSource.md#kb-topic-filesource-operations). Used automatically by [DataSource.getFileVersion](classes/DataSource_1.md#method-datasourcegetfileversion), and would not normally be used directly. Usable only with the SmartClient server framework. |
-| "hasFileVersion" | Use the DataSource as a [source for files](kb_topics/fileSource.md#kb-topic-filesource-operations). Used automatically by [DataSource.hasFileVersion](classes/DataSource_1.md#method-datasourcehasfileversion), and would not normally be used directly. Usable only with the SmartClient server framework. |
-| "listFileVersions" | Use the DataSource as a [source for files](kb_topics/fileSource.md#kb-topic-filesource-operations). Used automatically by [DataSource.listFileVersions](classes/DataSource_1.md#method-datasourcelistfileversions), and would not normally be used directly. Usable only with the SmartClient server framework. |
-| "removeFileVersion" | Use the DataSource as a [source for files](kb_topics/fileSource.md#kb-topic-filesource-operations). Used automatically by [DataSource.removeFileVersion](classes/DataSource_1.md#method-datasourceremovefileversion), and would not normally be used directly. Usable only with the SmartClient server framework. |
-
----
 ## Type: EdgeName
 
 ### Description
@@ -6433,6 +6400,20 @@ Supported data point shapes for [FacetChart.pointShapes](classes/FacetChart.md#a
 
 ### Description
 A positive whole number or 0, for example, 5. Negative values are not allowed. Null is allowed.
+
+---
+## Type: PreRenderMode
+
+### Description
+Mode for canvas-based pre-rendering of ListGrid content.
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| "none" | No canvas pre-rendering; standard DOM rendering only. |
+| "structure" | Canvas renders grid lines and placeholder rectangles, no data. |
+| "data" | Canvas renders actual cell values with styling. |
 
 ---
 ## Type: PreserveOpenState

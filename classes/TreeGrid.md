@@ -1906,7 +1906,7 @@ This method overrides [ListGrid.willAcceptDrop](ListGrid_2.md#method-listgridwil
   
 First, [ListGrid.willAcceptDrop](ListGrid_2.md#method-listgridwillacceptdrop) (the superclass definition) is consulted. If it returns false, then this method returns false immediately.  
 This handles the following cases:  
-\- reordering of records withing this TreeGrid when [ListGrid.canReorderRecords](ListGrid_1.md#attr-listgridcanreorderrecords) is true  
+\- reordering of records withing this TreeGrid when [ListGrid.canReorderRecords](ListGrid_2.md#attr-listgridcanreorderrecords) is true  
 \- accepting dropped records from another dragTarget when [ListGrid.canAcceptDroppedRecords](ListGrid_1.md#attr-listgridcanacceptdroppedrecords) is true and the dragTarget gives us a valid set of records to drop into place.  
 \- disallowing drop over disabled nodes, or nodes with `canAcceptDrop:false`  
 This method will also return false if the drop occurred over a leaf node whos immediate parent has `canAcceptDrop` set to `false`  

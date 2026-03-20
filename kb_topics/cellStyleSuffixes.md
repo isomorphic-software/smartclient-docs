@@ -27,7 +27,7 @@ This leads to the following set of standard style names:
 | baseStyle+alternateColumnSuffix | Suffix for alternating color bands when [alternateColumnStyles](../classes/GridRenderer.md#attr-gridrendereralternatecolumnstyles) is true | cellAltCol |
 | baseStyle+Disabled | Whether the cell is disabled; enable by setting the "enabled" flag on record returned by getCellRecord. | cellDisabled |
 | baseStyle+Selected | Whether the cell is [selected](../classes/ListGrid_2.md#method-listgridgetselectedrecord). Only applies if [ListGrid.showSelectedStyle](../classes/ListGrid_1.md#attr-listgridshowselectedstyle) is true | cellSelected |
-| baseStyle+Over | Mouse is over this record. Only applies if [ListGrid.showRollOver](../classes/ListGrid_1.md#attr-listgridshowrollover) is true | cellOver |
+| baseStyle+Over | Mouse is over this record. Only applies if [ListGrid.showRollOver](../classes/ListGrid_2.md#attr-listgridshowrollover) is true | cellOver |
 | Combined styles |
 | baseStyle+alternateRowSuffix+alternateColumnSuffix | Disabled style applied to cells in both alternate row and column color bands. | cellDarkAltCol |
 | baseStyle+Disabled+alternateRowSuffix | Disabled style applied to cells in alternate row color bands. | cellDisabledDark |

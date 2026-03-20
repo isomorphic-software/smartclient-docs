@@ -33,7 +33,7 @@ Columns that show images either as their only appearance or in addition to text.
 - [ListGridField.showValueIconOnly](../classes/ListGridField.md#attr-listgridfieldshowvalueicononly)
 - [ListGridField.suppressValueIcon](../classes/ListGridField.md#attr-listgridfieldsuppressvalueicon)
 - [ListGridField.valueIconOrientation](../classes/ListGridField.md#attr-listgridfieldvalueiconorientation)
-- [ListGrid.valueIconLeftPadding](../classes/ListGrid_1.md#attr-listgridvalueiconleftpadding)
+- [ListGrid.valueIconLeftPadding](../classes/ListGrid_2.md#attr-listgridvalueiconleftpadding)
 - [ListGrid.valueIconRightPadding](../classes/ListGrid_1.md#attr-listgridvalueiconrightpadding)
 - [ListGridField.imageURLPrefix](../classes/ListGridField.md#attr-listgridfieldimageurlprefix)
 - [ListGridField.imageURLSuffix](../classes/ListGridField.md#attr-listgridfieldimageurlsuffix)

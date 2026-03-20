@@ -39,7 +39,7 @@ As an alternative to using the `rowRangeDisplay` autoChild, developers may also 
 - [ResultSet.rowCountOperation](../classes/ResultSet.md#attr-resultsetrowcountoperation)
 - [ResultSet.rowCountContext](../classes/ResultSet.md#attr-resultsetrowcountcontext)
 - [ResultSet.blockingRowCountFetch](../classes/ResultSet.md#attr-resultsetblockingrowcountfetch)
-- [ListGrid.rowRangeDisplay](../classes/ListGrid_1.md#attr-listgridrowrangedisplay)
+- [ListGrid.rowRangeDisplay](../classes/ListGrid_2.md#attr-listgridrowrangedisplay)
 - [ListGrid.canRequestRowCount](../classes/ListGrid_1.md#attr-listgridcanrequestrowcount)
 - [ListGrid.applyRowCountToLength](../classes/ListGrid_1.md#attr-listgridapplyrowcounttolength)
 - [ListGrid.blockingRowCountFetch](../classes/ListGrid_1.md#attr-listgridblockingrowcountfetch)

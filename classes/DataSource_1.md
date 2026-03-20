@@ -549,7 +549,7 @@ This also means that for a read-only DataSource, that is, a DataSource only capa
 ## Attr: DataSource.logSlowRemove
 
 ### Description
-Allows you to specify ["remove" operation](../reference.md#type-dsoperationtype) SQL query execution time threshold in milliseconds, which if exceeded query is identified as "slow" and may be logged under specific logging category.
+Allows you to specify ["remove" operation](../reference_2.md#type-dsoperationtype) SQL query execution time threshold in milliseconds, which if exceeded query is identified as "slow" and may be logged under specific logging category.
 
 See [DataSource.logSlowSQL](#attr-datasourcelogslowsql) for more details.
 
@@ -1078,7 +1078,7 @@ See the [Velocity User Guide](https://velocity.apache.org/engine/2.3/user-guide.
 ## Attr: DataSource.logSlowAdd
 
 ### Description
-Allows you to specify ["add" operation](../reference.md#type-dsoperationtype) SQL query execution time threshold in milliseconds, which if exceeded query is identified as "slow" and may be logged under specific logging category.
+Allows you to specify ["add" operation](../reference_2.md#type-dsoperationtype) SQL query execution time threshold in milliseconds, which if exceeded query is identified as "slow" and may be logged under specific logging category.
 
 See [DataSource.logSlowSQL](#attr-datasourcelogslowsql) for more details.
 
@@ -1625,7 +1625,7 @@ If true, indicates that the SmartClient Server should automatically apply a [Val
 ## Attr: DataSource.logSlowCustom
 
 ### Description
-Allows you to specify ["custom" operation](../reference.md#type-dsoperationtype) SQL query execution time threshold in milliseconds, which if exceeded query is identified as "slow" and may be logged under specific logging category.
+Allows you to specify ["custom" operation](../reference_2.md#type-dsoperationtype) SQL query execution time threshold in milliseconds, which if exceeded query is identified as "slow" and may be logged under specific logging category.
 
 See [DataSource.logSlowSQL](#attr-datasourcelogslowsql) for more details.
 
@@ -2244,7 +2244,7 @@ Note that setting this property does not automatically cause an authentication m
 ## Attr: DataSource.logSlowFetch
 
 ### Description
-Allows you to specify ["fetch" operation](../reference.md#type-dsoperationtype) SQL query execution time threshold in milliseconds, which if exceeded query is identified as "slow" and may be logged under specific logging category.
+Allows you to specify ["fetch" operation](../reference_2.md#type-dsoperationtype) SQL query execution time threshold in milliseconds, which if exceeded query is identified as "slow" and may be logged under specific logging category.
 
 See [DataSource.logSlowSQL](#attr-datasourcelogslowsql) for more details.
 
@@ -2767,7 +2767,7 @@ If you specify both `projectFileKey` and `projectFileLocations`, then both with 
 ## Attr: DataSource.logSlowUpdate
 
 ### Description
-Allows you to specify ["update" operation](../reference.md#type-dsoperationtype) SQL query execution time threshold in milliseconds, which if exceeded query is identified as "slow" and may be logged under specific logging category.
+Allows you to specify ["update" operation](../reference_2.md#type-dsoperationtype) SQL query execution time threshold in milliseconds, which if exceeded query is identified as "slow" and may be logged under specific logging category.
 
 See [DataSource.logSlowSQL](#attr-datasourcelogslowsql) for more details.
 
@@ -3052,7 +3052,7 @@ For JPA and Hibernate DataSources this property indicates, that data source has 
 ### Description
 For DataSources with [auditing enabled](#attr-datasourceaudit), specifies the field name used to store the names of the fields which were updated. If empty string is specified as the field name, the audit DataSource will not store this field.
 
-Note that this field will only be set for [update](../reference.md#type-dsoperationtype) operations.
+Note that this field will only be set for [update](../reference_2.md#type-dsoperationtype) operations.
 
 **Flags**: IR
 
@@ -3663,7 +3663,7 @@ These properties are applied before [DataSource.transformRequest](#method-dataso
 ## Attr: DataSource.auditTypeFieldName
 
 ### Description
-For DataSources with [auditing enabled](#attr-datasourceaudit), specifies the field name used to store the [operationType](../reference.md#type-dsoperationtype) (in a field of type "text"). If empty string is specified as the field name, the audit DataSource will not store this field.
+For DataSources with [auditing enabled](#attr-datasourceaudit), specifies the field name used to store the [operationType](../reference_2.md#type-dsoperationtype) (in a field of type "text"). If empty string is specified as the field name, the audit DataSource will not store this field.
 
 **Flags**: IR
 
@@ -6408,7 +6408,7 @@ Call this method to set the data in the client-side cache after initialization.
 ### Description
 Invoke an operation declared with [OperationBinding.operationType](OperationBinding.md#attr-operationbindingoperationtype) "custom".
 
-**This is a rarely used API.** If the operation you are performing can be thought of as one of the standard "CRUD" [operation types](../reference.md#type-dsoperationtype), declare it with a CRUD operationType. For example, if your operation updates a record, declare it with operationType "update" and invoke it via [DataSource.updateData](#method-datasourceupdatedata) - this will cause [cache sync](ResultSet.md#class-resultset) to work correctly.
+**This is a rarely used API.** If the operation you are performing can be thought of as one of the standard "CRUD" [operation types](../reference_2.md#type-dsoperationtype), declare it with a CRUD operationType. For example, if your operation updates a record, declare it with operationType "update" and invoke it via [DataSource.updateData](#method-datasourceupdatedata) - this will cause [cache sync](ResultSet.md#class-resultset) to work correctly.
 
 In particular:
 

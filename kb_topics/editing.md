@@ -204,7 +204,7 @@ However you _can_ create an editor with a [FormItem icon](../classes/FormItem.md
 - [ListGrid.rowEndEditAction](../classes/ListGrid_1.md#attr-listgridrowendeditaction)
 - [ListGrid.listEndEditAction](../classes/ListGrid_1.md#attr-listgridlistendeditaction)
 - [ListGrid.newRecordRowMessage](../classes/ListGrid_1.md#attr-listgridnewrecordrowmessage)
-- [ListGrid.enterKeyEditAction](../classes/ListGrid_1.md#attr-listgridenterkeyeditaction)
+- [ListGrid.enterKeyEditAction](../classes/ListGrid_2.md#attr-listgridenterkeyeditaction)
 - [ListGrid.escapeKeyEditAction](../classes/ListGrid_1.md#attr-listgridescapekeyeditaction)
 - [ListGrid.arrowKeyEditAction](../classes/ListGrid_1.md#attr-listgridarrowkeyeditaction)
 - [ListGrid.editEvent](../classes/ListGrid_1.md#attr-listgrideditevent)

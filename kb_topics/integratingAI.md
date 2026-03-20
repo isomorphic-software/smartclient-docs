@@ -59,9 +59,9 @@ Bedrock integration requies a couple of additional `server.properties` entries, 
 *   `**Bedrock.api.model**` As mentioned above, Bedrock itself is not an AI model, so you must provide the name of the model to use. This must be a valid modelId or ARN that you have access to through the AWS account associated with your API key. This is not a completely straightforward topic and you should consult AWS Bedrock documentation to work out the correct modelId or ARN to specify
 
 #### Adding your own AIEngine
-If the built-in [AI Engines](../classes/AIEngine.md#class-aiengine) aren't enough, even with Bedrock support, you can implement your own for the generative AI service that you would like to use, and [register](#classmethod-airegisterengine) it with the Framework. You can then set your engine's ID into [AI.defaultEngineId](../classes/AI.md#classattr-aidefaultengineid).
+If the built-in [AI Engines](../classes/AIEngine.md#class-aiengine) aren't enough, even with Bedrock support, you can implement your own for the generative AI service that you would like to use, and [register](../classes/AI.md#classmethod-airegisterengine) it with the Framework. You can then set your engine's ID into [AI.defaultEngineId](../classes/AI.md#classattr-aidefaultengineid).
 
-You can also [unregister](#classmethod-aiunregisterengine) an engine, or grab the `AIEngine` instance of a built-in or manually registered engine by passing the ID to [AI.getEngine](../classes/AI.md#classmethod-aigetengine).
+You can also [unregister](../classes/AI.md#classmethod-aiunregisterengine) an engine, or grab the `AIEngine` instance of a built-in or manually registered engine by passing the ID to [AI.getEngine](../classes/AI.md#classmethod-aigetengine).
 
 #### AI Component Views and `AIServiceMode`
 AI can be used to set up the view settings of a [ListGrid](../classes/ListGrid_1.md#class-listgrid), such as filters, sorts, and record hilites, according to the user's natural-language request for how the records should be filtered, sorted, and hilited. These AI-generated view settings are saved in the component [viewState](../reference.md#kb-topic-viewstate).

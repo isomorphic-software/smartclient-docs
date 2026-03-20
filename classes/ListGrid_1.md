@@ -256,7 +256,7 @@ If [ListGrid.autoFitData](#attr-listgridautofitdata) is set to `"vertical"` or `
 ## Attr: ListGrid.showGroupSummaryInHeader
 
 ### Description
-If this grid is [grouped](ListGrid_2.md#method-listgridgroupby), and [ListGrid.showGroupSummary](#attr-listgridshowgroupsummary) is true, setting this property causes field summary values for each group to be displayed directly in the group header node, rather than showing up at the bottom of each expanded group.
+If this grid is [grouped](ListGrid_2.md#method-listgridgroupby), and [ListGrid.showGroupSummary](ListGrid_2.md#attr-listgridshowgroupsummary) is true, setting this property causes field summary values for each group to be displayed directly in the group header node, rather than showing up at the bottom of each expanded group.
 
 Note that this means the group header node will be showing multiple field values rather than the default display of a single cell spanning all columns containing the group title. Developers may specify an explicit [ListGrid.groupTitleField](#attr-listgridgrouptitlefield), or rely on the automatically generated [groupTitleColumn](#attr-listgridshowgrouptitlecolumn) to have group titles be visible as well as the summary values.
 
@@ -289,7 +289,7 @@ Widget class for the corner sort button, if showing. This button displays the cu
 ## Attr: ListGrid.collapseGroupOnRowClick
 
 ### Description
-If [ListGrid.canCollapseGroup](#attr-listgridcancollapsegroup) is true, will a click anywhere on the group row toggle the group's expanded state? If false, the user must click the [ListGrid.groupIcon](#attr-listgridgroupicon) directly to toggle the group.
+If [ListGrid.canCollapseGroup](#attr-listgridcancollapsegroup) is true, will a click anywhere on the group row toggle the group's expanded state? If false, the user must click the [ListGrid.groupIcon](ListGrid_2.md#attr-listgridgroupicon) directly to toggle the group.
 
 ### Groups
 
@@ -619,7 +619,7 @@ The inline hint-text displayed in the user-entry area in the [ListGrid.aiFilterW
 ## Attr: ListGrid.applyFormulaAfterSummary
 
 ### Description
-If [ListGridField.userFormula](ListGridField.md#attr-listgridfielduserformula) is set for some field, and this grid is showing [group summaries](#attr-listgridshowgroupsummary) or a [grid summary](#attr-listgridshowgridsummary), this property determines what field value should be present in those summary rows. Should the field's user-formula be applied to the calculated summary row (applyFormulaAfterSummary `true`), or should a standard grid or group summary be applied to the user-formula values displayed in the grid (applyFormulaAfterSummary `false`)?
+If [ListGridField.userFormula](ListGridField.md#attr-listgridfielduserformula) is set for some field, and this grid is showing [group summaries](ListGrid_2.md#attr-listgridshowgroupsummary) or a [grid summary](#attr-listgridshowgridsummary), this property determines what field value should be present in those summary rows. Should the field's user-formula be applied to the calculated summary row (applyFormulaAfterSummary `true`), or should a standard grid or group summary be applied to the user-formula values displayed in the grid (applyFormulaAfterSummary `false`)?
 
 May be overridden at the field level via [ListGridField.applyAfterSummary](ListGridField.md#attr-listgridfieldapplyaftersummary)
 
@@ -649,7 +649,7 @@ When true, indicates that this ListGrid supports grouping on multiple fields.
 ## Attr: ListGrid.invalidSummaryValue
 
 ### Description
-Value to display to the user if showing summary values (through [ListGrid.showGridSummary](#attr-listgridshowgridsummary), [ListGrid.showGroupSummary](#attr-listgridshowgroupsummary) or [listGridFieldType:"summary"](../reference.md#type-listgridfieldtype)), and the summary function returns `"null"` (implying it was unable to calculate a valid summary value). This property will only be used in the default formatting behavior. If an explicit formatter has been specified - via [ListGrid.formatCellValue](ListGrid_2.md#method-listgridformatcellvalue) or [formatGridSummary()](ListGridField.md#attr-listgridfieldformatgridsummary), for example - this property has no effect.
+Value to display to the user if showing summary values (through [ListGrid.showGridSummary](#attr-listgridshowgridsummary), [ListGrid.showGroupSummary](ListGrid_2.md#attr-listgridshowgroupsummary) or [listGridFieldType:"summary"](../reference.md#type-listgridfieldtype)), and the summary function returns `"null"` (implying it was unable to calculate a valid summary value). This property will only be used in the default formatting behavior. If an explicit formatter has been specified - via [ListGrid.formatCellValue](ListGrid_2.md#method-listgridformatcellvalue) or [formatGridSummary()](ListGridField.md#attr-listgridfieldformatgridsummary), for example - this property has no effect.
 
 **Flags**: IRWA
 
@@ -724,7 +724,7 @@ The message to show when a user asks the AI to sort more than the [maximum allow
 ## Attr: ListGrid.groupSummaryRecordProperty
 
 ### Description
-If [ListGrid.showGroupSummary](#attr-listgridshowgroupsummary) is true, this attribute will be set to true on each record object representing a group-level summary row.
+If [ListGrid.showGroupSummary](ListGrid_2.md#attr-listgridshowgroupsummary) is true, this attribute will be set to true on each record object representing a group-level summary row.
 
 **Flags**: IRW
 
@@ -1046,6 +1046,22 @@ If true, when an update operation occurs on a selected record in a [databound](#
 **Flags**: IRA
 
 ---
+## Attr: ListGrid.autoHideCanvasGrid
+
+### Description
+When [ListGrid.preRender](#attr-listgridprerender) is enabled, whether to automatically hide the canvas pre-render layer after the real grid body has fully rendered. Set to false to keep the canvas layer visible (useful for debugging or comparison).
+
+### Groups
+
+- performance
+
+### See Also
+
+- [ListGrid.preRender](#attr-listgridprerender)
+
+**Flags**: IR
+
+---
 ## Attr: ListGrid.editFailedBaseStyle
 
 ### Description
@@ -1126,7 +1142,7 @@ For ListGrids with [canSelectCells:true](#attr-listgridcanselectcells), enabling
 
 **Note:** setting this property to true will disable standard copy and paste behavior to the native Browser or OS-level clipboard. To copy data to and from applications outside of the browser, use the technique shown in the *Grid to Excel* and *Excel to Grid* samples.
 
-If this property is unset, default behavior will enable these shortcuts if [ListGrid.canSelectCells](#attr-listgridcanselectcells) is true, and [ListGrid.canDragSelectText](#attr-listgridcandragselecttext) and [ListGrid.selectCellTextOnClick](#attr-listgridselectcelltextonclick) are both false, so as to minimize the chances of interfering with native copy and paste of cell content.
+If this property is unset, default behavior will enable these shortcuts if [ListGrid.canSelectCells](#attr-listgridcanselectcells) is true, and [ListGrid.canDragSelectText](#attr-listgridcandragselecttext) and [ListGrid.selectCellTextOnClick](ListGrid_2.md#attr-listgridselectcelltextonclick) are both false, so as to minimize the chances of interfering with native copy and paste of cell content.
 
 **Flags**: IRW
 
@@ -1353,6 +1369,22 @@ When [hiliteIcons](#attr-listgridhiliteicons) are present, where the hilite icon
 **Flags**: IR
 
 ---
+## Attr: ListGrid.preRenderTransitionFrameDefaults
+
+### Description
+Default properties for the [ListGrid.preRenderTransitionFrame](#attr-listgridprerendertransitionframe) AutoChild. The default creates a 5px bright blue border frame.
+
+### Groups
+
+- performance
+
+### See Also
+
+- [ListGrid.preRenderTransitionFrame](#attr-listgridprerendertransitionframe)
+
+**Flags**: IR
+
+---
 ## Attr: ListGrid.sortEditorSpanTitleSeparator
 
 ### Description
@@ -1424,6 +1456,22 @@ In cases where client-filtering alone is not sufficient, note the following:
 *   a custom search operator can be used if you want to create custom filtering behavior which applies to a variety of different grids & DataSources
 
 **Flags**: IRW
+
+---
+## Attr: ListGrid.preRenderTransitionDuration
+
+### Description
+Duration in milliseconds for the [ListGrid.preRenderTransitionFrame](#attr-listgridprerendertransitionframe) fade-out animation. The frame appears at full opacity when the canvas preview is hidden, then fades to transparent over this duration.
+
+### Groups
+
+- performance
+
+### See Also
+
+- [ListGrid.preRenderTransitionFrame](#attr-listgridprerendertransitionframe)
+
+**Flags**: IR
 
 ---
 ## Attr: ListGrid.hiliteIconLeftPadding
@@ -2155,7 +2203,7 @@ Instance of [FieldPickerWindow](FieldPickerWindow.md#class-fieldpickerwindow) us
 ## Attr: ListGrid.rowCountDisplayPrecision
 
 ### Description
-When an exact [row count](ListGrid_2.md#method-listgridgetrowcount) is not known due to progressive loading, this attribute allows the formatted row count returned by [ListGrid.getFormattedRowCount](ListGrid_2.md#method-listgridgetformattedrowcount) and ultimately displayed in the [rowRangeDisplay label](#attr-listgridrowrangedisplay) to be rounded to a multiple of the specified value. If not explicitly set, this value defaults to the [page size](ResultSet.md#attr-resultsetresultsize) for the data.
+When an exact [row count](ListGrid_2.md#method-listgridgetrowcount) is not known due to progressive loading, this attribute allows the formatted row count returned by [ListGrid.getFormattedRowCount](ListGrid_2.md#method-listgridgetformattedrowcount) and ultimately displayed in the [rowRangeDisplay label](ListGrid_2.md#attr-listgridrowrangedisplay) to be rounded to a multiple of the specified value. If not explicitly set, this value defaults to the [page size](ResultSet.md#attr-resultsetresultsize) for the data.
 
 For example if the server reports a [DSResponse.totalRows](DSResponse.md#attr-dsresponsetotalrows) of `320` while progressive loading is active (meaning this is not an exact row count), and `rowCountDisplayPrecision` is set to `150`, the formatted rowCount may display `300+`
 
@@ -2680,7 +2728,7 @@ If this listGrid contains any frozen fields, this property can be used to apply 
 ## Attr: ListGrid.maxExpandedRecords
 
 ### Description
-When [ListGrid.canExpandRecords](#attr-listgridcanexpandrecords) and [ListGrid.canExpandMultipleRecords](#attr-listgridcanexpandmultiplerecords) are both true, this property dictates the number of records which can be expanded simultaneously. If the expanded record count hits the value of this property, further attempts to expand records will result in a popup warning (see [ListGrid.maxExpandedRecordsPrompt](#attr-listgridmaxexpandedrecordsprompt)) and expansion will be cancelled.
+When [ListGrid.canExpandRecords](#attr-listgridcanexpandrecords) and [ListGrid.canExpandMultipleRecords](ListGrid_2.md#attr-listgridcanexpandmultiplerecords) are both true, this property dictates the number of records which can be expanded simultaneously. If the expanded record count hits the value of this property, further attempts to expand records will result in a popup warning (see [ListGrid.maxExpandedRecordsPrompt](#attr-listgridmaxexpandedrecordsprompt)) and expansion will be cancelled.
 
 The default value is null, meaning there is no limit on the number of expanded records.
 
@@ -2733,9 +2781,9 @@ This setting is incompatible with [ListGrid.dataFetchMode](#attr-listgriddatafet
 
 ### Description
 If this property is true, users can drag the mouse to select text within grid rows, ready to be cliped to clipboard.  
-This is mutually exclusive with [rearranging rows or cells by dragging](#attr-listgridcanreorderrecords), and with [drag selection of rows](#attr-listgridcandragselect).
+This is mutually exclusive with [rearranging rows or cells by dragging](ListGrid_2.md#attr-listgridcanreorderrecords), and with [drag selection of rows](#attr-listgridcandragselect).
 
-To enable selecting cell text on click, see [ListGrid.selectCellTextOnClick](#attr-listgridselectcelltextonclick).
+To enable selecting cell text on click, see [ListGrid.selectCellTextOnClick](ListGrid_2.md#attr-listgridselectcelltextonclick).
 
 ### Groups
 
@@ -2859,6 +2907,23 @@ Because this setting enables [ListGrid.canSelectCells](#attr-listgridcanselectce
 Because this setting only makes sense when row spanning decreases from the first column to the last, it has unspecified behavior with [ListGrid.canReorderFields](#attr-listgridcanreorderfields).
 
 **Flags**: IR
+
+---
+## Attr: ListGrid.canvasGridProperties
+
+### Description
+Properties to apply to the [CanvasGrid](#canvasgrid) AutoChild in addition to [ListGrid.canvasGridDefaults](#attr-listgridcanvasgriddefaults).
+
+### Groups
+
+- performance
+
+### See Also
+
+- [ListGrid.preRender](#attr-listgridprerender)
+- [ListGrid.canvasGridDefaults](#attr-listgridcanvasgriddefaults)
+
+**Flags**: IRA
 
 ---
 ## Attr: ListGrid.expansionFieldFalseImage
@@ -3156,7 +3221,7 @@ Height for the filterEditor, if shown.
 ### Description
 Minimum number of milliseconds to wait before retrying to generate hover contents via AI.
 
-The results of [SummarizeValueRequest](#object-summarizevaluerequest)s generated from a field's [aiHoverRequest](ListGridField.md#attr-listgridfieldaihoverrequest) are cached, whether it was a successful or non-successful result. In the case of a non-successful result, the message therefrom will be displayed to the user for this configurable number of milliseconds before another request is made to try to generate the hover contents.
+The results of [SummarizeValueRequest](../reference_2.md#object-summarizevaluerequest)s generated from a field's [aiHoverRequest](ListGridField.md#attr-listgridfieldaihoverrequest) are cached, whether it was a successful or non-successful result. In the case of a non-successful result, the message therefrom will be displayed to the user for this configurable number of milliseconds before another request is made to try to generate the hover contents.
 
 **Flags**: IRW
 
@@ -3488,7 +3553,7 @@ If [ListGrid.showHeaderMenuButton](#attr-listgridshowheadermenubutton) is true, 
 
 ### See Also
 
-- [ListGrid.headerMenuButtonWidth](#attr-listgridheadermenubuttonwidth)
+- [ListGrid.headerMenuButtonWidth](ListGrid_2.md#attr-listgridheadermenubuttonwidth)
 
 **Flags**: IRA
 
@@ -4026,8 +4091,8 @@ If showing any record summary fields (IE: fields of [type:"summary"](../referenc
 ## Attr: ListGrid.preserveFocusStylingOnMouseOut
 
 ### Description
-If [ListGrid.showRollOver](#attr-listgridshowrollover) or [ListGrid.hiliteRowOnFocus](#attr-listgridhiliterowonfocus) is true the current keyboard focus row for navigation via arrow keys, etc, will be hilighted with `"Over"` styling. This is particularly valuable to indicate which row has keyboard focus where there are multiple selected rows, or where the user is navigating without changing selection (see [ListGrid.arrowKeyAction](#attr-listgridarrowkeyaction)).  
-However, note that as the user interacts with the rows using the mouse, the rollover styling will be updated to reflect the mouse position if [ListGrid.showRollOver](#attr-listgridshowrollover) is true.
+If [ListGrid.showRollOver](ListGrid_2.md#attr-listgridshowrollover) or [ListGrid.hiliteRowOnFocus](#attr-listgridhiliterowonfocus) is true the current keyboard focus row for navigation via arrow keys, etc, will be hilighted with `"Over"` styling. This is particularly valuable to indicate which row has keyboard focus where there are multiple selected rows, or where the user is navigating without changing selection (see [ListGrid.arrowKeyAction](#attr-listgridarrowkeyaction)).  
+However, note that as the user interacts with the rows using the mouse, the rollover styling will be updated to reflect the mouse position if [ListGrid.showRollOver](ListGrid_2.md#attr-listgridshowrollover) is true.
 
 When the user rolls the mouse off the grid, the default behavior is to re-style the current focus row with `"Over"` styling if the grid has keyboard focus. That way a user has a clear visual indication of where navigation would start. This may be disabled by setting `preserveFocusStylingOnMouseOut` to false.
 
@@ -4218,7 +4283,7 @@ The string to display in the body of a listGrid while data is being loaded. Use 
 ## Attr: ListGrid.groupIconStyle
 
 ### Description
-Custom style to apply to the [ListGrid.groupIcon](#attr-listgridgroupicon) displayed in collapsible rows when [ListGrid.canGroupBy](#attr-listgridcangroupby) is true.
+Custom style to apply to the [ListGrid.groupIcon](ListGrid_2.md#attr-listgridgroupicon) displayed in collapsible rows when [ListGrid.canGroupBy](#attr-listgridcangroupby) is true.
 
 ### Groups
 
@@ -4489,7 +4554,7 @@ How much padding should there be on the right of [hilite icons](#attr-listgridhi
 ## Attr: ListGrid.groupSummaryStyle
 
 ### Description
-[ListGridRecord.customStyle](ListGridRecord.md#attr-listgridrecordcustomstyle) for the group-level summary row displayed when [ListGrid.showGroupSummary](#attr-listgridshowgroupsummary) is true.
+[ListGridRecord.customStyle](ListGridRecord.md#attr-listgridrecordcustomstyle) for the group-level summary row displayed when [ListGrid.showGroupSummary](ListGrid_2.md#attr-listgridshowgroupsummary) is true.
 
 **Flags**: IR
 
@@ -4619,6 +4684,25 @@ Src of the image to show as an error icon, if we're showing icons when validatio
 **Flags**: IRW
 
 ---
+## Attr: ListGrid.showPreRenderTransition
+
+### Description
+When true, shows a visual transition effect when the canvas preRender is replaced by the real HTML body content. The effect is a bright blue frame (5px border) that appears above the body for 500ms and fades out, making it easy to see exactly when the transition from canvas preview to DOM content occurs.
+
+This is primarily useful for debugging and demonstrating the preRender feature. The transition frame is implemented as an AutoChild ([ListGrid.preRenderTransitionFrame](#attr-listgridprerendertransitionframe)).
+
+### Groups
+
+- performance
+
+### See Also
+
+- [ListGrid.preRender](#attr-listgridprerender)
+- [ListGrid.preRenderTransitionFrame](#attr-listgridprerendertransitionframe)
+
+**Flags**: IRW
+
+---
 ## Attr: ListGrid.maxExpandedRecordsPrompt
 
 ### Description
@@ -4703,7 +4787,7 @@ This is the default setting for the grid and can be overridden on a [per-field](
 ## Attr: ListGrid.canCollapseGroup
 
 ### Description
-Can a group be collapsed/expanded? When true a collapse/expand icon is shown ([groupIcon](#attr-listgridgroupicon)) and the user can collapse or expand the group by clicking either the row as a whole or the opener icon (see [ListGrid.collapseGroupOnRowClick](#attr-listgridcollapsegrouponrowclick)); When false the group icon is not shown and clicking on the row does not change group state. Additionally [groupStartOpen](../reference.md#type-groupstartopen) is initialized to "all".
+Can a group be collapsed/expanded? When true a collapse/expand icon is shown ([groupIcon](ListGrid_2.md#attr-listgridgroupicon)) and the user can collapse or expand the group by clicking either the row as a whole or the opener icon (see [ListGrid.collapseGroupOnRowClick](#attr-listgridcollapsegrouponrowclick)); When false the group icon is not shown and clicking on the row does not change group state. Additionally [groupStartOpen](../reference.md#type-groupstartopen) is initialized to "all".
 
 ### Groups
 
@@ -4887,7 +4971,7 @@ For grids with [frozen fields](ListGridField.md#attr-listgridfieldfrozen), the b
 
 The rollOver/rollUnder canvas added to the frozen body will be created by calling the [ListGrid.getFrozenRollOverCanvas](ListGrid_2.md#method-listgridgetfrozenrollovercanvas) or [ListGrid.getFrozenRollUnderCanvas](ListGrid_2.md#method-listgridgetfrozenrollundercanvas) methods. The default implementation for these methods matches their equivalents for non-frozen rollOver / rollUnder canvases - it will use the autoChild subsystem to create a canvas from the [ListGrid.rollOverCanvas](#attr-listgridrollovercanvas) autoChild configuration.
 
-`showRollOverCanvas` has no effect if [ListGrid.showRollOver](#attr-listgridshowrollover) is `false`.
+`showRollOverCanvas` has no effect if [ListGrid.showRollOver](ListGrid_2.md#attr-listgridshowrollover) is `false`.
 
 See also [ListGrid.showSelectedRollOverCanvas](#attr-listgridshowselectedrollovercanvas).
 
@@ -4924,6 +5008,36 @@ Drawing all columns causes longer initial rendering time, but allows smoother ho
 ### Groups
 
 - performance
+
+**Flags**: IR
+
+---
+## Attr: ListGrid.preRender
+
+### Description
+Controls whether an HTML5 Canvas-based preview layer is rendered before the full DOM grid body, providing near-instant visual feedback while the real grid renders.
+
+*   **"none"** (default): Standard ListGrid rendering with no canvas pre-render
+*   **"structure"**: Canvas shows grid lines, header, and placeholder rectangles in each cell, but no actual data values
+*   **"data"**: Canvas shows actual cell values, backgrounds, and grid lines
+
+When preRender is enabled, the sequence is:
+
+1.  CanvasGrid renders immediately using HTML5 Canvas 2D drawing
+2.  A 0ms setTimeout schedules the real ListGrid body rendering
+3.  When the real body renders, it appears on top of the CanvasGrid
+
+The canvas pre-render extracts styling from the grid's [ListGrid.baseStyle](#attr-listgridbasestyle) and [ListGrid.headerBaseStyle](#attr-listgridheaderbasestyle) CSS classes to approximate the final appearance. However, CSS features like gradients, shadows, and border-radius are simplified. This tradeoff favors speed over perfect visual fidelity during the brief preview period.
+
+This setting is most beneficial for grids with many visible cells where the DOM rendering time is noticeable (50ms+). For small grids, the overhead of canvas rendering may not provide perceptible benefit.
+
+### Groups
+
+- performance
+
+### See Also
+
+- [ListGrid.canvasGridDefaults](#attr-listgridcanvasgriddefaults)
 
 **Flags**: IR
 
@@ -5057,6 +5171,22 @@ If a summary format string contains an invalid field reference, replace the refe
 - summaryFields
 
 **Flags**: IRW
+
+---
+## Attr: ListGrid.canvasGrid
+
+### Description
+The [CanvasGrid](#canvasgrid) AutoChild created when [ListGrid.preRender](#attr-listgridprerender) is "structure" or "data". Positioned behind the grid body to show a canvas-based preview while the DOM renders.
+
+### Groups
+
+- performance
+
+### See Also
+
+- [ListGrid.preRender](#attr-listgridprerender)
+
+**Flags**: R
 
 ---
 ## Attr: ListGrid.showEllipsisWhenClipped
@@ -5232,7 +5362,7 @@ Text to show for the saved searches submenu.
 ## Attr: ListGrid.frozenRollOverCanvas
 
 ### Description
-Automatically generated canvas embedded in the grid's frozen body if [showRollOver](#attr-listgridshowrollover) is `true` and [showRollOverCanvas](#attr-listgridshowrollovercanvas) is `true` or for selected records, if [showSelectedRollOverCanvas](#attr-listgridshowselectedrollovercanvas) is true. This component will be created and displayed above the current rollOver row or cell in the frozen body.
+Automatically generated canvas embedded in the grid's frozen body if [showRollOver](ListGrid_2.md#attr-listgridshowrollover) is `true` and [showRollOverCanvas](#attr-listgridshowrollovercanvas) is `true` or for selected records, if [showSelectedRollOverCanvas](#attr-listgridshowselectedrollovercanvas) is true. This component will be created and displayed above the current rollOver row or cell in the frozen body.
 
 The frozenRollOverCanvas will be created using the [AutoChild](../reference.md#type-autochild) subsystem, and will derive its configuration from the [ListGrid.rollOverCanvas](#attr-listgridrollovercanvas) autoChild properties (`"rollOverCanvasProperties"`, et al).
 
@@ -5422,7 +5552,7 @@ When scrollToCell is called, this is used as defaults if xPosition weren't expli
 ### Description
 If roll overs are enabled, should the [rollUnderCanvas](#attr-listgridrollundercanvas) be displayed?
 
-Use of the `showRollUnderCanvas` is enabled if [showRollOver](#attr-listgridshowrollover) is `true`, and either [showRollOverCanvas](#attr-listgridshowrollovercanvas) is `true` and `showRollUnderCanvas` is unset, or `showRollUnderCanvas` is explicitly set to `true`.
+Use of the `showRollUnderCanvas` is enabled if [showRollOver](ListGrid_2.md#attr-listgridshowrollover) is `true`, and either [showRollOverCanvas](#attr-listgridshowrollovercanvas) is `true` and `showRollUnderCanvas` is unset, or `showRollUnderCanvas` is explicitly set to `true`.
 
 See also [ListGrid.showSelectedRollUnderCanvas](#attr-listgridshowselectedrollundercanvas).
 
@@ -5528,7 +5658,7 @@ virtualScrolling is also automatically enabled when [ListGrid.canExpandRecords](
 ### Description
 Specifies the field by which this grid should be initially sorted. Can be set to either a [field name](ListGridField.md#attr-listgridfieldname) or the index of the field in the fields Array.
 
-ListGrids also support being initialized with multiple-field sort via [ListGrid.initialSort](#attr-listgridinitialsort). If initialSort is specified, it will be used in preference to this property.
+ListGrids also support being initialized with multiple-field sort via [ListGrid.initialSort](ListGrid_2.md#attr-listgridinitialsort). If initialSort is specified, it will be used in preference to this property.
 
 To sort the grid after it has been initialized, use [ListGrid.sort](ListGrid_2.md#method-listgridsort) or [ListGrid.setSort](ListGrid_2.md#method-listgridsetsort). Details about the current sort of a live grid can be retrieved by calling [ListGrid.getSortField](ListGrid_2.md#method-listgridgetsortfield) or [ListGrid.getSort](ListGrid_2.md#method-listgridgetsort)
 
@@ -5558,7 +5688,7 @@ Note that expanded records are not currently supported in conjunction with [froz
 ## Attr: ListGrid.recordSummaryAttributePrefix
 
 ### Description
-Prefix prepended to the name of a ["summary"](ListGridField.md#attr-listgridfieldrecordsummaryfunction) [type](ListGridField.md#attr-listgridfieldtype) field when accessing its value as record metadata. The Framework may write out this value to make rendering the cell values or calculating a [grid summary row](#attr-listgridshowgridsummary) or [group summary rows](#attr-listgridshowgroupsummary) more efficient.
+Prefix prepended to the name of a ["summary"](ListGridField.md#attr-listgridfieldrecordsummaryfunction) [type](ListGridField.md#attr-listgridfieldtype) field when accessing its value as record metadata. The Framework may write out this value to make rendering the cell values or calculating a [grid summary row](#attr-listgridshowgridsummary) or [group summary rows](ListGrid_2.md#attr-listgridshowgroupsummary) more efficient.
 
 ### See Also
 
@@ -5606,13 +5736,13 @@ See [ListGrid.getValueIconCursor](ListGrid_2.md#method-listgridgetvalueiconcurso
 ## Attr: ListGrid.groupByFieldSummaries
 
 ### Description
-If this grid is [grouped](#attr-listgridgroupbyfield), and [ListGrid.showGroupSummary](#attr-listgridshowgroupsummary) is true, this attribute may be set to an array of groupBy field names for which group summaries should appear.
+If this grid is [grouped](#attr-listgridgroupbyfield), and [ListGrid.showGroupSummary](ListGrid_2.md#attr-listgridshowgroupsummary) is true, this attribute may be set to an array of groupBy field names for which group summaries should appear.
 
 This is particularly useful for listGrids grouped by more than one field as it allows developers to display the group summary for a particular nested group without showing a summary for every level of the tree.
 
 ### See Also
 
-- [ListGrid.showGroupSummary](#attr-listgridshowgroupsummary)
+- [ListGrid.showGroupSummary](ListGrid_2.md#attr-listgridshowgroupsummary)
 
 **Flags**: IRWA
 
@@ -5685,6 +5815,24 @@ The title for the corner sort button. The title will only [ListGrid.changeDefaul
 **Flags**: IR
 
 ---
+## Attr: ListGrid.canvasGridDefaults
+
+### Description
+Default properties for the [CanvasGrid](#canvasgrid) AutoChild used when [ListGrid.preRender](#attr-listgridprerender) is set to "structure" or "data". The CanvasGrid renders an HTML5 Canvas preview layer behind the main grid body.
+
+Properties can be customized to adjust canvas rendering behavior, such as [CanvasGrid.structurePlaceholderColor](#canvasgridstructureplaceholdercolor) for structure mode placeholder color.
+
+### Groups
+
+- performance
+
+### See Also
+
+- [ListGrid.preRender](#attr-listgridprerender)
+
+**Flags**: IR
+
+---
 ## Attr: ListGrid.datetimeFormatter
 
 ### Description
@@ -5740,7 +5888,7 @@ The name of the ListGridRecord property that specifies the DataSource to use whe
 ### Description
 Array of [RecordTypes](../reference.md#type-recordtype) that should be rounded when [ListGrid.recordRadius](#attr-listgridrecordradius) is set to a valid CSS _border-radius_ string.
 
-By default, [group-headers](#attr-listgridcangroupby) and records showing [group](#attr-listgridshowgroupsummary) or [grid](#attr-listgridshowgridsummary) summaries are not rounded, because these records typically have a separator line to distinguish them from surrounding records.
+By default, [group-headers](#attr-listgridcangroupby) and records showing [group](ListGrid_2.md#attr-listgridshowgroupsummary) or [grid](#attr-listgridshowgridsummary) summaries are not rounded, because these records typically have a separator line to distinguish them from surrounding records.
 
 **Flags**: IRW
 
@@ -5806,7 +5954,7 @@ When [ListGrid.canRemoveRecords](#attr-listgridcanremoverecords) is enabled, def
 ### Description
 Depending on whether [DataSource.progressiveLoading](DataSource_1.md#attr-datasourceprogressiveloading) is active, the exact count of available rows may not be known, and `canRequestRowCount` controls whether the end user may explicitly request it by clicking the [RowRangeDisplay](RowRangeDisplay.md#class-rowrangedisplay) label.
 
-When this property is set to `true`, the user may request an accurate row count if one is not currently known by [clicking](RowRangeDisplay.md#attr-rowrangedisplaycanrequestrowcount) the [ListGrid.rowRangeDisplay](#attr-listgridrowrangedisplay). To have a row count fetch operation occur automatically when progressive data is loaded instead of requiring a user interaction to initiate the fetch, see [ListGrid.autoFetchRowCount](#attr-listgridautofetchrowcount).
+When this property is set to `true`, the user may request an accurate row count if one is not currently known by [clicking](RowRangeDisplay.md#attr-rowrangedisplaycanrequestrowcount) the [ListGrid.rowRangeDisplay](ListGrid_2.md#attr-listgridrowrangedisplay). To have a row count fetch operation occur automatically when progressive data is loaded instead of requiring a user interaction to initiate the fetch, see [ListGrid.autoFetchRowCount](#attr-listgridautofetchrowcount).
 
 Note: This property also acts as a default for [ResultSet.applyRowCountToLength](ResultSet.md#attr-resultsetapplyrowcounttolength). By default, if set to true, a user may therefore click the rowRangeDisplay label to request a row count query be executed on the server, and when the query is complete they may scroll the listGrid body freely, retrieving records from anywhere within the data set.
 
@@ -5939,6 +6087,26 @@ Hover contents to use when the AI-generated hover text is empty.
 ### Groups
 
 - i18nMessages
+
+**Flags**: IRW
+
+---
+## Attr: ListGrid.preRenderDelay
+
+### Description
+Artificial delay in milliseconds between the canvas pre-render completing and the DOM body rendering starting. This is useful for testing/demonstrating the preRender effect, making the canvas preview visible for longer before being replaced by the real DOM content.
+
+When set to 0 (default), the DOM render starts immediately after canvas render via a 0ms timer (allowing the canvas to paint first). When set to a positive value, that delay is added before DOM rendering begins.
+
+This delay applies to both initial draw and redraws triggered by scrolling.
+
+### Groups
+
+- performance
+
+### See Also
+
+- [ListGrid.preRender](#attr-listgridprerender)
 
 **Flags**: IRW
 
@@ -6171,7 +6339,7 @@ If this listGrid has specified [ListGrid.headerSpans](#attr-listgridheaderspans)
 ## Attr: ListGrid.rollOverCanvas
 
 ### Description
-AutoChild created and embedded in the grid if [showRollOver](#attr-listgridshowrollover) is `true` and [showRollOverCanvas](#attr-listgridshowrollovercanvas) is `true` or for selected records, if [showSelectedRollOverCanvas](#attr-listgridshowselectedrollovercanvas) is true. This component will be created and displayed above the current rollOver row or cell.
+AutoChild created and embedded in the grid if [showRollOver](ListGrid_2.md#attr-listgridshowrollover) is `true` and [showRollOverCanvas](#attr-listgridshowrollovercanvas) is `true` or for selected records, if [showSelectedRollOverCanvas](#attr-listgridshowselectedrollovercanvas) is true. This component will be created and displayed above the current rollOver row or cell.
 
 Note that if this grid has frozen fields, the [AutoChild](../reference.md#type-autochild) subsystem will use the `rollOverCanvas` configuration settings to create the [ListGrid.frozenRollOverCanvas](#attr-listgridfrozenrollovercanvas) (displayed in the frozen listGrid body).
 
@@ -6463,7 +6631,7 @@ See [exportBGColor](../kb_topics/exportBGColor.md#kb-topic-exports--cell-backgro
 ### Description
 When the grid body gets keyboard focus, should we highlight the current focus row, using the rollover cell style?
 
-This property may be explicitly set to control this behavior independently of [ListGrid.showRollOver](#attr-listgridshowrollover). Otherwise (if this property is null), we will show the roll-over styling for the keyboard focus row if [ListGrid.showRollOver](#attr-listgridshowrollover) is true.
+This property may be explicitly set to control this behavior independently of [ListGrid.showRollOver](ListGrid_2.md#attr-listgridshowrollover). Otherwise (if this property is null), we will show the roll-over styling for the keyboard focus row if [ListGrid.showRollOver](ListGrid_2.md#attr-listgridshowrollover) is true.
 
 **Flags**: IRW
 
@@ -6615,7 +6783,7 @@ If the frozen fields' combined width exceeds this value, a horizontal scrollbar 
 ## Attr: ListGrid.sortArrowMenuButtonSpaceOffset
 
 ### Description
-When [ListGrid.leaveHeaderMenuButtonSpace](#attr-listgridleaveheadermenubuttonspace) is true, configures the amount of space beyond the [ListGrid.headerMenuButtonWidth](#attr-listgridheadermenubuttonwidth) on the right side of a ListGrid header button (left for [RTL mode](Page.md#classmethod-pageisrtl)) to reserve for the sort arrow if sorting is active for that field and the arrow will be shown. May be increased for more separation between the sort arrow and the title text, at the expense of a reduced space for the title text.
+When [ListGrid.leaveHeaderMenuButtonSpace](#attr-listgridleaveheadermenubuttonspace) is true, configures the amount of space beyond the [ListGrid.headerMenuButtonWidth](ListGrid_2.md#attr-listgridheadermenubuttonwidth) on the right side of a ListGrid header button (left for [RTL mode](Page.md#classmethod-pageisrtl)) to reserve for the sort arrow if sorting is active for that field and the arrow will be shown. May be increased for more separation between the sort arrow and the title text, at the expense of a reduced space for the title text.
 
 This value may need to be customized in your skin or if [ListGrid.sortAscendingImage](#attr-listgridsortascendingimage) or [ListGrid.sortDescendingImage](#attr-listgridsortdescendingimage) are changed.
 
@@ -6831,7 +6999,7 @@ This property may be set to customize the css style for the hover shown on [List
 ### Description
 The CSS style that [group](ListGrid_2.md#method-listgridgroupby) rows will have.
 
-Note that this is not a [base style](ListGrid_2.md#method-listgridgetbasestyle), so, if this property is set, group nodes will not show stateful styling (different styles for [ListGrid.showRollOver](#attr-listgridshowrollover), [ListGrid.alternateRecordStyles](#attr-listgridalternaterecordstyles), etc). To enable stateful styling for groupNodes, set this property to `null` and specify a [ListGrid.groupNodeBaseStyle](#attr-listgridgroupnodebasestyle)
+Note that this is not a [base style](ListGrid_2.md#method-listgridgetbasestyle), so, if this property is set, group nodes will not show stateful styling (different styles for [ListGrid.showRollOver](ListGrid_2.md#attr-listgridshowrollover), [ListGrid.alternateRecordStyles](#attr-listgridalternaterecordstyles), etc). To enable stateful styling for groupNodes, set this property to `null` and specify a [ListGrid.groupNodeBaseStyle](#attr-listgridgroupnodebasestyle)
 
 ### Groups
 
@@ -7297,7 +7465,7 @@ By default clicking a partially selected checkbox selects it.
 ## Attr: ListGrid.rollUnderCanvas
 
 ### Description
-AutoChild created and embedded in the grid if [showRollOver](#attr-listgridshowrollover) is `true`, and either [showRollOverCanvas](#attr-listgridshowrollovercanvas) is `true` and [showRollUnderCanvas](#attr-listgridshowrollundercanvas) is unset, or `showRollUnderCanvas` is explicitly set to `true`. This component will be created and displayed behind the current rollOver row or cell in the page's z-order, meaning that it will only be visible if the cell styling is transparent.
+AutoChild created and embedded in the grid if [showRollOver](ListGrid_2.md#attr-listgridshowrollover) is `true`, and either [showRollOverCanvas](#attr-listgridshowrollovercanvas) is `true` and [showRollUnderCanvas](#attr-listgridshowrollundercanvas) is unset, or `showRollUnderCanvas` is explicitly set to `true`. This component will be created and displayed behind the current rollOver row or cell in the page's z-order, meaning that it will only be visible if the cell styling is transparent.
 
 Note that if this grid has frozen fields, the [AutoChild](../reference.md#type-autochild) subsystem will use the `rollUnderCanvas` configuration settings to create the [ListGrid.frozenRollUnderCanvas](#attr-listgridfrozenrollundercanvas) (displayed in the frozen listGrid body).
 
@@ -7310,6 +7478,27 @@ The `rollUnderCanvas` has the following read-only attributes set:
 - rowEffects
 
 **Flags**: RA
+
+---
+## Attr: ListGrid.preRenderPlaceholderColor
+
+### Description
+Color used for placeholder rectangles in [ListGrid.preRender](#attr-listgridprerender) modes. This affects:
+
+*   All cells in "structure" mode (grey placeholder rectangles instead of text)
+*   Unloaded rows in "data" mode (mixed mode: loaded rows show text, unloaded show placeholders)
+
+If not set, the color is automatically calculated by lightening the cell text color from the [ListGrid.baseStyle](#attr-listgridbasestyle) to create an attractive placeholder that matches the visual density of text.
+
+### Groups
+
+- performance
+
+### See Also
+
+- [ListGrid.preRender](#attr-listgridprerender)
+
+**Flags**: IR
 
 ---
 ## Attr: ListGrid.groupNodeBaseStyle
@@ -7497,7 +7686,7 @@ Sorting direction of this ListGrid. If specified when the ListGrid is initialize
 
 After initialization, this property will be updated on [ListGrid.sort](ListGrid_2.md#method-listgridsort) or [ListGrid.setSort](ListGrid_2.md#method-listgridsetsort) to reflect the current sort direction of the grid. When this grid is sorted by multiple fields, the grid's sortDirection reflects the sort direction of the primary sort field.
 
-Note: A side effect of [ListGrid.setSort](ListGrid_2.md#method-listgridsetsort) is that it updates the grid's `sortDirection` to the direction of the first sort. In particular, if there is an [ListGrid.initialSort](#attr-listgridinitialsort) or [ListGrid.sortField](#attr-listgridsortfield), then `sortDirection` will be updated during initialization to the direction of the first sort.
+Note: A side effect of [ListGrid.setSort](ListGrid_2.md#method-listgridsetsort) is that it updates the grid's `sortDirection` to the direction of the first sort. In particular, if there is an [ListGrid.initialSort](ListGrid_2.md#attr-listgridinitialsort) or [ListGrid.sortField](#attr-listgridsortfield), then `sortDirection` will be updated during initialization to the direction of the first sort.
 
 ### Groups
 
@@ -8071,7 +8260,7 @@ If [ListGrid.canExpandRecords](#attr-listgridcanexpandrecords) is set to `true`,
 ## Attr: ListGrid.recordShowRollOverProperty
 
 ### Description
-Name of the property that can be set on a per-record basis to disabled rollover for an individual record when [ListGrid.showRollOver](#attr-listgridshowrollover) is true.
+Name of the property that can be set on a per-record basis to disabled rollover for an individual record when [ListGrid.showRollOver](ListGrid_2.md#attr-listgridshowrollover) is true.
 
 ### Groups
 
@@ -8416,7 +8605,7 @@ This subsystem is requires canResizeFields be enabled and will be disabled if th
 ## Attr: ListGrid.sortNumeralMenuButtonSpaceOffset
 
 ### Description
-When [ListGrid.leaveHeaderMenuButtonSpace](#attr-listgridleaveheadermenubuttonspace) is true, configures the amount of space beyond the [ListGrid.headerMenuButtonWidth](#attr-listgridheadermenubuttonwidth) on the right side of a ListGrid header button (left for [RTL mode](Page.md#classmethod-pageisrtl)) to reserve for the sort numeral if [multi-sorting](#attr-listgridcanmultisort) is active for that field and the numeral will be shown. May be increased for more separation between the title text and the sort arrow when multi-sorting.
+When [ListGrid.leaveHeaderMenuButtonSpace](#attr-listgridleaveheadermenubuttonspace) is true, configures the amount of space beyond the [ListGrid.headerMenuButtonWidth](ListGrid_2.md#attr-listgridheadermenubuttonwidth) on the right side of a ListGrid header button (left for [RTL mode](Page.md#classmethod-pageisrtl)) to reserve for the sort numeral if [multi-sorting](#attr-listgridcanmultisort) is active for that field and the numeral will be shown. May be increased for more separation between the title text and the sort arrow when multi-sorting.
 
 Note that larger values may required if 10 or more fields are sorted at once, as the numeral will occupy more space. This value may need to be customized in your skin or if [ListGrid.sortAscendingImage](#attr-listgridsortascendingimage) or [ListGrid.sortDescendingImage](#attr-listgridsortdescendingimage) are changed.
 
@@ -8535,6 +8724,14 @@ Default number of pixels by which to indent all groups.
 - [ListGrid.getGroupNodeHTML](ListGrid_2.md#method-listgridgetgroupnodehtml)
 
 **Flags**: IRW
+
+---
+## Attr: ListGrid.canvasGridConstructor
+
+### Description
+The class used to construct the [ListGrid.canvasGrid](#attr-listgridcanvasgrid) AutoChild.
+
+**Flags**: IRA
 
 ---
 ## Attr: ListGrid.linkTextProperty
@@ -8726,6 +8923,25 @@ Only has an impact when [ListGrid.canAutoFitFields](#attr-listgridcanautofitfiel
 Returns a mapping of default WAI ARIA attributes for rows within this listGrid. See [ListGrid.getRowAriaState](ListGrid_2.md#method-listgridgetrowariastate)
 
 **Flags**: IRWA
+
+---
+## Attr: ListGrid.preRenderTransitionFrame
+
+### Description
+When [ListGrid.preRender](#attr-listgridprerender) is enabled, this AutoChild appears as a visual indicator during the transition from canvas preview to real DOM content. The frame is a bright blue border (5px by default) that appears around the grid body and fades out over [ListGrid.preRenderTransitionDuration](#attr-listgridprerendertransitionduration) milliseconds.
+
+This provides clear visual feedback that the transition has occurred, helping users perceive the moment when the fast canvas preview is replaced by the fully interactive DOM-based grid.
+
+### Groups
+
+- performance
+
+### See Also
+
+- [ListGrid.preRender](#attr-listgridprerender)
+- [ListGrid.preRenderTransitionDuration](#attr-listgridprerendertransitionduration)
+
+**Flags**: R
 
 ---
 ## Attr: ListGrid.canAddFormulaFields
@@ -8994,7 +9210,7 @@ Default value returns "Group by " + the field's summary title.
 ### Description
 Should group summaries be visible when the group is collapsed?
 
-This property only applies to [grouped](ListGrid_2.md#method-listgridgroupby) grids showing [group summary rows](#attr-listgridshowgroupsummary). When set to true, the group summary row(s) for each group will show up under the group header nodes when the group is collapsed, or at then end of the grouped set of data if the group is expanded.
+This property only applies to [grouped](ListGrid_2.md#method-listgridgroupby) grids showing [group summary rows](ListGrid_2.md#attr-listgridshowgroupsummary). When set to true, the group summary row(s) for each group will show up under the group header nodes when the group is collapsed, or at then end of the grouped set of data if the group is expanded.
 
 This property has no effect if [ListGrid.showGroupSummaryInHeader](#attr-listgridshowgroupsummaryinheader) is true.
 
@@ -9229,6 +9445,27 @@ Custom style to apply to the image in the [removeField](#attr-listgridremovefiel
 **Flags**: IRW
 
 ---
+## Attr: ListGrid.preRenderStructureDelay
+
+### Description
+Separate delay for "structure" mode preRender, which can be more aggressive since structure mode is much faster than data mode (Item 30). When set, this overrides [ListGrid.preRenderDelay](#attr-listgridprerenderdelay) for structure mode scrolling.
+
+Structure mode rendering is O(1) using canvas pattern fills, allowing near-synchronous re-render on scroll. A value of 0 means almost immediate hiding of the canvas preview. Even synchronous (no delay) can work because structure mode renders so quickly.
+
+If not set, [ListGrid.preRenderDelay](#attr-listgridprerenderdelay) is used for both modes.
+
+### Groups
+
+- performance
+
+### See Also
+
+- [ListGrid.preRender](#attr-listgridprerender)
+- [ListGrid.preRenderDelay](#attr-listgridprerenderdelay)
+
+**Flags**: IRW
+
+---
 ## Attr: ListGrid.rotatedHeaderMenuButtonHeight
 
 ### Description
@@ -9386,7 +9623,7 @@ See also [ListGrid.disabledGroupByPrompt](#attr-listgriddisabledgroupbyprompt).
 ## Attr: ListGrid.updateSummariesDuringEditing
 
 ### Description
-Should the [summary row](#attr-listgridshowgridsummary) or [group summaries](#attr-listgridshowgroupsummary) be updated during editing of grid records? This can be set false to improve performance when a large number of [ListGridFields](../reference_2.md#object-listgridfield) or [DataSourceFields](../reference_2.md#object-datasourcefield) are present for the grid.
+Should the [summary row](#attr-listgridshowgridsummary) or [group summaries](ListGrid_2.md#attr-listgridshowgroupsummary) be updated during editing of grid records? This can be set false to improve performance when a large number of [ListGridFields](../reference_2.md#object-listgridfield) or [DataSourceFields](../reference_2.md#object-datasourcefield) are present for the grid.
 
 Note that summaries will always be updated when the edits are saved, so to avoid recalculation overhead when a row or cell edit is completed, you must also set [ListGrid.autoSaveEdits](#attr-listgridautosaveedits): false. Summaries will then be updated upon your manual save, such as [ListGrid.saveAllEdits](ListGrid_2.md#method-listgridsavealledits).
 
@@ -9532,220 +9769,5 @@ May be explicitly specified at the [field level](ListGridField.md#attr-listgridf
 - [ListGrid.sortNumeralMenuButtonSpaceOffset](#attr-listgridsortnumeralmenubuttonspaceoffset)
 
 **Flags**: IWA
-
----
-## Attr: ListGrid.selectCellTextOnClick
-
-### Description
-If this property is set to true, clicking on a cell will natively select the cell's content, ready to be copied to the browser clipboard.
-
-For control of this behavior at the field level, [ListGridField.selectCellTextOnClick](ListGridField.md#attr-listgridfieldselectcelltextonclick) may be used. These properties interact as follows:
-
-| listGrid.selectCellTextOnClick value | listGridField.selectCellTextOnClick value | Behavior |
-|---|---|---|
-| true | unset or true | Cell contents will be natively selected on click. |
-| false | Cell contents will not be natively selected on click. |
-| unset | true | Cell contents will be natively selected on click. |
-| unset or false | Cell contents will not be natively selected on click. |
-| false | true, false or unset | Cell contents will not be natively selected on click. |
-
-This is related to the [ListGrid.canDragSelectText](#attr-listgridcandragselecttext) attribute which enables native text selection of grid content by standard browser interactions (drag selecting or double-click selecting).
-
-Note that developers may also be interested in the related formItem properties [FormItem.selectOnClick](FormItem.md#attr-formitemselectonclick) and [FormItem.selectOnFocus](FormItem.md#attr-formitemselectonfocus).
-
-**Flags**: IRW
-
----
-## Attr: ListGrid.groupIcon
-
-### Description
-The URL of the base icon for the group icons in this listGrid. Default value may be overridden by the [current skin](../kb_topics/skinning.md#kb-topic-skinning--theming).
-
-### Groups
-
-- grouping
-
-### See Also
-
-- [grouping](../reference.md#kb-topic-grouping)
-
-**Flags**: IRW
-
----
-## Attr: ListGrid.initialSort
-
-### Description
-An array of [SortSpecifier](../reference_2.md#object-sortspecifier) objects used to set up the initial sort configuration for this grid. If specified, this will be used instead of any [ListGrid.sortField](#attr-listgridsortfield) specified.
-
-### Groups
-
-- sorting
-
-**Flags**: IR
-
----
-## Attr: ListGrid.canReorderRecords
-
-### Description
-Indicates whether records can be reordered by dragging within this `ListGrid`.
-
-**NOTE:** If `canReorderRecords` is initially enabled or might be [dynamically enabled](ListGrid_2.md#method-listgridsetcanreorderrecords) after the grid is created, it may be desirable to disable [touch scrolling](Canvas.md#attr-canvasusetouchscrolling) so that touch-dragging a record starts a reorder operation rather than a scroll, but see the discussion of [drag handles](ListGrid_2.md#method-listgridshowdraghandles). If [Canvas.disableTouchScrollingForDrag](Canvas.md#attr-canvasdisabletouchscrollingfordrag) is set to `true`, then touch scrolling will be disabled automatically. However, for [accessibility](../kb_topics/accessibility.md#kb-topic-accessibility--section-508-compliance) reasons, it is recommended to leave touch scrolling enabled and provide an alternative set of controls that can be used to perform drag-reordering of records.
-
-### Groups
-
-- dragging
-
-### See Also
-
-- [ListGridRecord.canDrag](ListGridRecord.md#attr-listgridrecordcandrag)
-- [ListGridRecord.canAcceptDrop](ListGridRecord.md#attr-listgridrecordcanacceptdrop)
-- [ListGrid.showDragHandles](ListGrid_2.md#method-listgridshowdraghandles)
-
-**Flags**: IRW
-
----
-## Attr: ListGrid.canExpandMultipleRecords
-
-### Description
-When [ListGrid.canExpandRecords](#attr-listgridcanexpandrecords) is true, this property indicates whether multiple records can be expanded simultaneously. If set to false, expanding a record will automatically collapse any record which is already expanded. The default value is `true`.
-
-### Groups
-
-- expansionField
-
-**Flags**: IRW
-
----
-## Attr: ListGrid.valueIconLeftPadding
-
-### Description
-How much padding should there be on the left of valueIcons by default Can be overridden at the field level
-
-### Groups
-
-- imageColumns
-
-### See Also
-
-- [ListGridField.valueIcons](ListGridField.md#attr-listgridfieldvalueicons)
-
-**Flags**: IRW
-
----
-## Attr: ListGrid.headerMenuButtonWidth
-
-### Description
-If [ListGrid.showHeaderMenuButton](#attr-listgridshowheadermenubutton) is true, this property governs the width of the auto-generated `headerMenuButton`
-
-### Groups
-
-- headerMenuButton
-
-### See Also
-
-- [ListGrid.rotatedHeaderMenuButtonWidth](#attr-listgridrotatedheadermenubuttonwidth)
-
-**Flags**: IRA
-
----
-## Attr: ListGrid.animateFolderEffect
-
-### Description
-When animating folder opening / closing, this property can be set to apply an animated acceleration effect. This allows the animation speed to be "weighted", for example expanding or collapsing at a faster rate toward the beginning of the animation than at the end.
-
-For a ListGrid, this property applies when [grouping](#attr-listgridcangroupby) is enabled.
-
-### Groups
-
-- animation
-
-**Flags**: IRW
-
----
-## Attr: ListGrid.showRollOver
-
-### Description
-Should we show different styling for the cell the mouse is over?
-
-If true, the cell style will have the suffix "Over" appended.
-
-Can be overridden on a per-record basis via [ListGridRecord.showRollOver](ListGridRecord.md#attr-listgridrecordshowrollover).
-
-### Groups
-
-- appearance
-
-**Flags**: IRW
-
----
-## Attr: ListGrid.rowRangeDisplay
-
-### Description
-[RowRangeDisplay](RowRangeDisplay.md#class-rowrangedisplay) autoChild, which may be retrieved by calling [ListGrid.getRowRangeDisplay](ListGrid_2.md#method-listgridgetrowrangedisplay).
-
-### Groups
-
-- rowRangeDisplay
-
-**Flags**: R
-
----
-## Attr: ListGrid.showGroupSummary
-
-### Description
-If this listGrid supports [grouping](#attr-listgridcangroupby), setting this property will cause the grid to render an extra row at the end of each group when grouped, containing summary information for the fields. Summary information will be calculated by the [ListGridField.getGroupSummary](ListGridField.md#method-listgridfieldgetgroupsummary) method if specified, otherwise via the specified [ListGridField.summaryFunction](ListGridField.md#attr-listgridfieldsummaryfunction).
-
-### See Also
-
-- [ListGrid.groupByFieldSummaries](#attr-listgridgroupbyfieldsummaries)
-
-**Flags**: IRW
-
----
-## Attr: ListGrid.enterKeyEditAction
-
-### Description
-What to do when a user hits enter while editing a cell:
-
-*   "nextCell": start editing the next editable cell in this record (or the first editable cell in the next record if focus is in the last editable cell in the row)
-*   "nextRow": start editing the same field in the next row (skipping any rows where that would be a non-editable cell.
-*   "nextRowStart": start editing the first editable cell in the next row.
-*   "done": hide the editor (editing is complete)
-
-Note that if this.autoSaveEdits is true, this may cause a save of the current edit values
-
-### Groups
-
-- editing
-
-**Flags**: IRW
-
----
-## Method: ListGrid.cellErrorIconOver
-
-### Description
-Optional stringMethod to fire when the mouse moves over the error icon of a cell with validation errors.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| record | [ListGridRecord](#type-listgridrecord) | false | — | cell record as returned by getCellRecord() |
-| rowNum | [number](#type-number) | false | — | row number for the cell |
-| colNum | [number](#type-number) | false | — | column number of the cell |
-
-### Returns
-
-`[Boolean](#type-boolean)` — false to suppress the default behavior (show a standard error message hover)
-
-### Groups
-
-- events
-
-### See Also
-
-- [ListGrid.showErrorIcons](#attr-listgridshowerroricons)
-
-**Flags**: A
 
 ---

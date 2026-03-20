@@ -1345,7 +1345,7 @@ May be overridden at the form item level via [FormItem.selectOnClick](FormItem.m
 ## Attr: DynamicForm.saveOperationType
 
 ### Description
-Default [DSOperationType](../reference.md#type-dsoperationtype) to be performed when [DynamicForm.saveData](#method-dynamicformsavedata) is called. This property is automatically set on a call to [DynamicForm.editRecord](#method-dynamicformeditrecord) or [DynamicForm.editNewRecord](#method-dynamicformeditnewrecord), or may be set directly via [DynamicForm.setSaveOperationType](#method-dynamicformsetsaveoperationtype).
+Default [DSOperationType](../reference_2.md#type-dsoperationtype) to be performed when [DynamicForm.saveData](#method-dynamicformsavedata) is called. This property is automatically set on a call to [DynamicForm.editRecord](#method-dynamicformeditrecord) or [DynamicForm.editNewRecord](#method-dynamicformeditnewrecord), or may be set directly via [DynamicForm.setSaveOperationType](#method-dynamicformsetsaveoperationtype).
 
 If `saveOperationType` is unset, the form will heuristically determine whether an "add" or "update" operation is intended based on whether the primaryKey field is present and editable.
 
@@ -1954,7 +1954,7 @@ Sets the [action](#attr-dynamicformaction) for this form.
 ## Method: DynamicForm.getSaveOperationType
 
 ### Description
-Returns the [DSOperationType](../reference.md#type-dsoperationtype) to be performed when [DynamicForm.saveData](#method-dynamicformsavedata) or [ValuesManager.saveData](ValuesManager.md#method-valuesmanagersavedata) is called.  
+Returns the [DSOperationType](../reference_2.md#type-dsoperationtype) to be performed when [DynamicForm.saveData](#method-dynamicformsavedata) or [ValuesManager.saveData](ValuesManager.md#method-valuesmanagersavedata) is called.  
 Valid options are `"add"` or `"update"`.
 
 If a [DSRequest](../reference_2.md#object-dsrequest) configuration object is passed in containing an explicit operationType this will be returned. Otherwise [this.saveOperationType](#attr-dynamicformsaveoperationtype) will be returned if set. Note that `saveOperationType` is automatically set via calls to data binding methods such as [DynamicForm.editNewRecord](#method-dynamicformeditnewrecord), or it may be [set explicitly](#method-dynamicformsetsaveoperationtype).
@@ -1974,7 +1974,7 @@ If no explicit saveOperationType is present, the system will use the following h
 
 ### Returns
 
-`[DSOperationType](../reference.md#type-dsoperationtype)` — Operation type for the save request.
+`[DSOperationType](../reference_2.md#type-dsoperationtype)` — Operation type for the save request.
 
 ---
 ## Method: DynamicForm.showFieldErrors
@@ -2375,13 +2375,13 @@ Clears all errors for this DynamicForm.
 ## Method: DynamicForm.setSaveOperationType
 
 ### Description
-Setter for the default [DSOperationType](../reference.md#type-dsoperationtype) when [DynamicForm.saveData](#method-dynamicformsavedata) is called. Note that this property can also be set by calling [DynamicForm.editRecord](#method-dynamicformeditrecord) or [DynamicForm.editNewRecord](#method-dynamicformeditnewrecord)
+Setter for the default [DSOperationType](../reference_2.md#type-dsoperationtype) when [DynamicForm.saveData](#method-dynamicformsavedata) is called. Note that this property can also be set by calling [DynamicForm.editRecord](#method-dynamicformeditrecord) or [DynamicForm.editNewRecord](#method-dynamicformeditnewrecord)
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| operationType | [DSOperationType](../reference.md#type-dsoperationtype) | false | — | Operation type to use as a default. Valid values are `"add"` or `"update"`. |
+| operationType | [DSOperationType](../reference_2.md#type-dsoperationtype) | false | — | Operation type to use as a default. Valid values are `"add"` or `"update"`. |
 
 ---
 ## Method: DynamicForm.getEventItemInfo

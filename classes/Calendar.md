@@ -496,6 +496,14 @@ An [AutoChild](../reference.md#type-autochild) of type [IButton](../reference.md
 **Flags**: R
 
 ---
+## Attr: Calendar.dateLabelStyleName
+
+### Description
+CSS style applied to the [date label](#attr-calendardatelabel) shown above the calendar views.
+
+**Flags**: IRW
+
+---
 ## Attr: Calendar.eventCanvasButtonLayout
 
 ### Description
@@ -763,9 +771,9 @@ By default, the [close buttons](#attr-calendareventcanvasclosebutton) and the [h
 ## Attr: Calendar.dragGhostVAlign
 
 ### Description
-Controls how the ghost canvas is vertically aligned within the available [Calendar.longEventLayoutSpace](#attr-calendarlongeventlayoutspace) region during drag-creation and drag-move of [long-events](#attr-calendarallowlongevents).
+Controls how the ghost canvas is vertically aligned within the available [Calendar.dragGhostSpace](#attr-calendardragghostspace) region during drag-creation and drag-move of [long-events](#attr-calendarallowlongevents).
 
-Accepts `"top"`, `"center"` (the default), or `"bottom"`. For example, when [Calendar.dragGhostHeight](#attr-calendardragghostheight) is 4 and longEventLayoutSpace is 10, a `"center"` alignment places the 4px ghost 3px from the top of the ghost region.
+Accepts `"top"`, `"center"` (the default), or `"bottom"`. For example, when [Calendar.dragGhostHeight](#attr-calendardragghostheight) is 4 and dragGhostSpace is 10, a `"center"` alignment places the 4px ghost 3px from the top of the ghost region.
 
 ### Groups
 
@@ -1231,9 +1239,9 @@ Multi-AutoChild component, created as a space-filling member in individual [even
 ## Attr: Calendar.dragGhostSpaceVAlign
 
 ### Description
-Controls the vertical alignment of the drag-ghost region within [long-event layouts](CalendarView.md#attr-calendarviewlongeventslayout). This region, sized by [Calendar.longEventLayoutSpace](#attr-calendarlongeventlayoutspace), is where a long-event can always be drag-created, and where the drag-ghost is always displayed.
+Controls the vertical alignment of the drag-ghost region within [long-event layouts](CalendarView.md#attr-calendarviewlongeventslayout). This region, sized by [Calendar.dragGhostSpace](#attr-calendardragghostspace), is where a long-event can always be drag-created, and where the drag-ghost is always displayed.
 
-When set to `"top"` (the default), the ghost region appears at the top of the layout, above any existing events, and real events are offset downward by longEventLayoutSpace. When set to `"bottom"`, the ghost region sits at the bottom of the layout, below any existing long-events.
+When set to `"top"` (the default), the ghost region appears at the top of the layout, above any existing events, and real events are offset downward by dragGhostSpace. When set to `"bottom"`, the ghost region sits at the bottom of the layout, below any existing long-events.
 
 ### Groups
 
@@ -1488,7 +1496,7 @@ Display format to use for the time portion of events' date information. By defau
 ## Attr: Calendar.dragGhostHeight
 
 ### Description
-The pixel height of the actual ghost canvas used during drag-creation and drag-move of [long-events](#attr-calendarallowlongevents). This is distinct from [Calendar.longEventLayoutSpace](#attr-calendarlongeventlayoutspace), which controls the total vertical space reserved for the ghost region. A small value (eg 2 or 3) renders the ghost as a thin line, similar to Google Calendar and other calendar applications.
+The pixel height of the actual ghost canvas used during drag-creation and drag-move of [long-events](#attr-calendarallowlongevents). This is distinct from [Calendar.dragGhostSpace](#attr-calendardragghostspace), which controls the total vertical space reserved for the ghost region. A small value (eg 2 or 3) renders the ghost as a thin line, similar to Google Calendar and other calendar applications.
 
 ### Groups
 
@@ -2031,6 +2039,18 @@ Set to true to render any defined [zones](#attr-calendarzones) into [timeline vi
 **Flags**: IRW
 
 ---
+## Attr: Calendar.dragGhostSpace
+
+### Description
+The amount of space available in [long-event layouts](CalendarView.md#attr-calendarviewlongeventslayout) for drag-click and drag-creation of new events. Represents the default height of long-event layouts that have no events, and additional height in layouts with events.
+
+### Groups
+
+- appearance
+
+**Flags**: IRW
+
+---
 ## Attr: Calendar.showIndicators
 
 ### Description
@@ -2452,18 +2472,6 @@ The content of the hover is determined by a call to [Calendar.getDragHoverHTML](
 An array of CalendarEvent instances representing pre-defined periods of time to be highlighted in [timeline views](#attr-calendartimelineview). Each zone renders out a [zone canvas](../reference.md#class-zonecanvas), a special, non-interactive subclass of [EventCanvas](EventCanvas.md#class-eventcanvas), which spans all lanes and draws behind any normal, interactive events in the zorder.
 
 The default [style](#attr-calendarzonestylename) for these components renders them semi-transparent and with a bottom-aligned title label.
-
-**Flags**: IRW
-
----
-## Attr: Calendar.longEventLayoutSpace
-
-### Description
-The amount of space available in [long-event layouts](CalendarView.md#attr-calendarviewlongeventslayout) for drag-click and drag-creation of new events. Represents the default height of long-event layouts that have no events, and additional height in layouts with events.
-
-### Groups
-
-- appearance
 
 **Flags**: IRW
 

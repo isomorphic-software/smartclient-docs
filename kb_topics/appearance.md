@@ -104,7 +104,7 @@ Properties defining an object's appearance
 - [Lane.fieldStyleName](../classes/Lane.md#attr-lanefieldstylename)
 - [Calendar.showColumnLayouts](../classes/Calendar.md#attr-calendarshowcolumnlayouts)
 - [Calendar.longEventLayoutStyleName](../classes/Calendar.md#attr-calendarlongeventlayoutstylename)
-- [Calendar.longEventLayoutSpace](../classes/Calendar.md#attr-calendarlongeventlayoutspace)
+- [Calendar.dragGhostSpace](../classes/Calendar.md#attr-calendardragghostspace)
 - [Calendar.dragGhostSpaceVAlign](../classes/Calendar.md#attr-calendardragghostspacevalign)
 - [Calendar.dragGhostHeight](../classes/Calendar.md#attr-calendardragghostheight)
 - [Calendar.dragGhostVAlign](../classes/Calendar.md#attr-calendardragghostvalign)

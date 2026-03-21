@@ -20,7 +20,7 @@ For examples of this type of databinding, see the following SDK examples:
 
 #### Loading Tree nodes on demand
 
-In this mode, tree nodes are loaded on-demand the first time a user expands a folder. This approach is necessary for large trees. This functionality is provided by the [ResultTree](../classes/ResultTree.md#class-resulttree) class, which uses a [DataSource](../classes/DataSource_1.md#class-datasource) to load data from the server. Each DataSource Record becomes a [TreeNode](../reference_2.md#object-treenode).
+In this mode, tree nodes are loaded on-demand the first time a user expands a folder. This approach is necessary for large trees. This functionality is provided by the [ResultTree](../classes/ResultTree.md#class-resulttree) class, which uses a [DataSource](../classes/DataSource.md#class-datasource) to load data from the server. Each DataSource Record becomes a [TreeNode](../reference_2.md#object-treenode).
 
 When the user expands a folder whose children have not yet been loaded from the server (or you programmatically call openFolder() on such a node), the client automatically sends a [DSRequest](../reference_2.md#object-dsrequest) to the server to ask for all immediate children of that node.
 
@@ -42,7 +42,7 @@ If you have a tree where there is no convenient unique ID, for example, you have
     
     In the case of filesystems or XML documents, you can use the full path to the file or XML element as the unique ID.
     
-2.  have all properties of the parentNode [sent to the server](../classes/DataSource_1.md#attr-datasourcesendparentnode)
+2.  have all properties of the parentNode [sent to the server](../classes/DataSource.md#attr-datasourcesendparentnode)
     
     If having all the properties of the parentNode would allow you to look up children, this approach may be more convenient than having to generate synthetic node IDs and parse them when looking up children.
     
@@ -70,7 +70,7 @@ The ResultTree's DSRequests ask for the immediate children of a node only (by sp
 
 Note that when receiving multiple levels of children, the ResultTree's assumption is that if any children are loaded for a parent, then that parent is considered fully loaded.
 
-When loading children for a given parent node, the ResultTree calls [DataSource.fetchData](../classes/DataSource_1.md#method-datasourcefetchdata) on its DataSource. For custom code that may need to reference the parentNode or tree in some way, the parent node whose children are being loaded is available on the dsRequest instance in the DataSource flow as dsRequest.parentNode, where it can be inspected during [DataSource.transformRequest](../classes/DataSource_1.md#method-datasourcetransformrequest).
+When loading children for a given parent node, the ResultTree calls [DataSource.fetchData](../classes/DataSource.md#method-datasourcefetchdata) on its DataSource. For custom code that may need to reference the parentNode or tree in some way, the parent node whose children are being loaded is available on the dsRequest instance in the DataSource flow as dsRequest.parentNode, where it can be inspected during [DataSource.transformRequest](../classes/DataSource.md#method-datasourcetransformrequest).
 
 For an example of this feature, see the following SDK example:
 

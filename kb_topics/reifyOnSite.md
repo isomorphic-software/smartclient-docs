@@ -98,7 +98,7 @@ When using the Runtime Customization to register the custom skin, set the load t
 
 **Runtime Customization**
 
-Reify OnSite provides a mechanism, the "isc\_reifyCustomizations" [DataSource](../classes/DataSource_1.md#class-datasource), whereby you can customize the project runtime environment with your own JavaScript snippets. Note that direct access to this dataSource [requies the _"superuser"_ role](../classes/DataSource_1.md#attr-datasourcerequiresrole).  
+Reify OnSite provides a mechanism, the "isc\_reifyCustomizations" [DataSource](../classes/DataSource.md#class-datasource), whereby you can customize the project runtime environment with your own JavaScript snippets. Note that direct access to this dataSource [requies the _"superuser"_ role](../classes/DataSource.md#attr-datasourcerequiresrole).  
 To add customizations, use the [DataSources tab](dataSourcesTab.md#kb-topic-datasources-tab) in the Admin or Developer Console. Select "isc\_reifyCustomizations" in the DataSource List, and then click "Add Record" at the bottom of the new section that appears to start editing a new record. The following fields should be populated:
 
 *   Place the number 1 in the "Org Id" field, since Reify OnSite currently only supports a single organization. If in the future, full organization support is added, this field will allow different customizations to be added for each organization.

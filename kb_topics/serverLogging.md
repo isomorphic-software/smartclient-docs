@@ -61,7 +61,7 @@ Smartclient uses Quartz Scheduler 2.3.1 and also continues to support Hibernate 
 
 #### Special logging category: com.isomorphic.SLOW\_SQL
 
-Used to log slow SQL queries. SQL query is considered "slow" if its execution time exceeds configured threshold, see the global _sql.log.queriesSlowerThan_ [server.properties SQL setting](sqlSettings.md#kb-topic-sql-database-settings-in-serverproperties) and more specific [DataSource.logSlowSQL](../classes/DataSource_1.md#attr-datasourcelogslowsql) setting for more details.
+Used to log slow SQL queries. SQL query is considered "slow" if its execution time exceeds configured threshold, see the global _sql.log.queriesSlowerThan_ [server.properties SQL setting](sqlSettings.md#kb-topic-sql-database-settings-in-serverproperties) and more specific [DataSource.logSlowSQL](../classes/DataSource.md#attr-datasourcelogslowsql) setting for more details.
 
 Set category logging level to "DEBUG" to log all slow queries:
 
@@ -69,7 +69,7 @@ Set category logging level to "DEBUG" to log all slow queries:
  <Logger name="com.isomorphic.SLOW_SQL" level="DEBUG" />
  
 ```
-or enable logging for specific [operation types](../reference_2.md#type-dsoperationtype):
+or enable logging for specific [operation types](../reference.md#type-dsoperationtype):
 ```
  <Logger name="com.isomorphic.SLOW_SQL.fetch" level="DEBUG" />
  <Logger name="com.isomorphic.SLOW_SQL.add" level="DEBUG" />

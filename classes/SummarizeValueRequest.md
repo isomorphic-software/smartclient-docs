@@ -7,7 +7,7 @@
 ## Attr: SummarizeValueRequest.dataSource
 
 ### Description
-If specified, the [DataSource](DataSource_1.md#class-datasource) where the [SummarizeValueRequest.value](#attr-summarizevaluerequestvalue) originated.
+If specified, the [DataSource](DataSource.md#class-datasource) where the [SummarizeValueRequest.value](#attr-summarizevaluerequestvalue) originated.
 
 If [SummarizeValueRequest.component](#attr-summarizevaluerequestcomponent) is also specified, then the component should be bound to the same `DataSource` or a `DataSource` inheriting from it.
 

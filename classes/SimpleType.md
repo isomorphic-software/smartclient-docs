@@ -9,7 +9,7 @@
 ### Description
 An atomic type such as a string or number, that is generally stored, displayed and manipulated as a single value.
 
-SimpleTypes can be [created](#classmethod-simpletypecreate) at any time, and subsequently referred to as a [field type](Field.md#attr-fieldtype) in [DataSources](DataSource_1.md#class-datasource) and [DataBoundComponents](../reference.md#interface-databoundcomponent). This allows you to define [validation](#attr-simpletypevalidators), [formatting](#method-simpletypenormaldisplayformatter) and [editing](#attr-simpletypeeditortype) behaviors for a type to be reused across all [DataBoundComponents](../reference.md#interface-databoundcomponent).
+SimpleTypes can be [created](#classmethod-simpletypecreate) at any time, and subsequently referred to as a [field type](Field.md#attr-fieldtype) in [DataSources](DataSource.md#class-datasource) and [DataBoundComponents](../reference.md#interface-databoundcomponent). This allows you to define [validation](#attr-simpletypevalidators), [formatting](#method-simpletypenormaldisplayformatter) and [editing](#attr-simpletypeeditortype) behaviors for a type to be reused across all [DataBoundComponents](../reference.md#interface-databoundcomponent).
 
 The SimpleType class also allows data to be stored in some opaque format but treated as simple atomic values as far as SmartClient components are concerned by implementing [SimpleType.getAtomicValue](#method-simpletypegetatomicvalue) and [SimpleType.updateAtomicValue](#method-simpletypeupdateatomicvalue) methods. For example, if some record has a field value set to a javascript object with the following properties:
 

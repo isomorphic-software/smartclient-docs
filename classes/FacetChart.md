@@ -4863,7 +4863,7 @@ See [FacetChart.chartBackgroundDrawn](#method-facetchartchartbackgrounddrawn) fo
 ### Description
 Return the text string to display along the axes for [gradation labels](#attr-facetchartgradationlabelproperties) or facet value labels given the raw metric value or facet value id.
 
-Note that this formatter will be called for the gradation labels on an axis, including those generated for [LabelCollapseMode](../reference.md#type-labelcollapsemode) "numeric". It also will be called for each facet value along the linear axes of a chart (vertical or horizontal) when [LabelCollapseMode](../reference.md#type-labelcollapsemode) is _not_ active, unless a [FacetValue.title](FacetValue.md#attr-facetvaluetitle) has been specified (in [Facet.values](Facet.md#attr-facetvalues)) or the raw value is a string and [FacetChart.formatStringFacetValueIds](#attr-facetchartformatstringfacetvalueids) is false.
+Note that this formatter will be called for the gradation labels on an axis, including those generated for [LabelCollapseMode](../reference.md#type-labelcollapsemode) "numeric". It also will be called for each facet value along the linear axes of a chart (vertical or horizontal) unless a [FacetValue.title](FacetValue.md#attr-facetvaluetitle) has been specified (in [Facet.values](Facet.md#attr-facetvalues)) or the raw value is a string and [FacetChart.formatStringFacetValueIds](#attr-facetchartformatstringfacetvalueids) is `false`.
 
 Note that the rendering of values in hovers or via [FacetChart.showDataValues](#attr-facetchartshowdatavalues) is handled by [FacetChart.formatDataValue](#method-facetchartformatdatavalue).
 
@@ -4872,7 +4872,7 @@ Note that the rendering of values in hovers or via [FacetChart.showDataValues](#
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | value | [Any](#type-any) | false | — | raw value of the metric or facet value id |
-| forHorizontalAxis | [boolean](../reference.md#type-boolean) | false | — | whether the raw value is for the horizontal/x-axis (true) or for the vertical/y-axis (false) |
+| forHorizontalAxis | [boolean](../reference.md#type-boolean) | false | — | whether the raw value is for the horizontal/x-axis (`true`) or for the vertical/y-axis (`false`) |
 
 ### Returns
 

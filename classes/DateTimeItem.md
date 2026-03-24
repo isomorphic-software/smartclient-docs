@@ -63,7 +63,7 @@ This attribute does not have an effect if a native HTML5 date input is being use
 
 ### See Also
 
-- [dateItem.displayFormat](#dateitemdisplayformat)
+- [DateItem.dateFormatter](DateItem.md#attr-dateitemdateformatter)
 
 **Flags**: IRW
 

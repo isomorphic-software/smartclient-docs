@@ -57,6 +57,8 @@ See the [subquery overview](../reference.md#object-advancedcriterionsubquery) fo
 
 Note, if you specify both `valueQuery` and `value` in a criterion, we use the `value` and the `valueQuery` is ignored
 
+`valueQuery` is supported for client-side filtering of `clientOnly` DataSources, [MockDataSource](MockDataSource.md#class-mockdatasource)s, and cached DataSources. See the "Client-Side Subquery Support" section in the [subquery overview](../reference.md#object-advancedcriterionsubquery) for details.
+
 ### Groups
 
 - advancedFilter
@@ -74,6 +76,35 @@ See the [subquery overview](../reference.md#object-advancedcriterionsubquery) fo
 Note, if you specify both `fieldQuery` and `fieldName` in a criterion, we use the `fieldName` and the `fieldQuery` is ignored.
 
 Note also that `fieldName` supports a special shortcut syntax for declaring a `fieldQuery` as a simple qualified reference to a related field. See the `fieldName` doc linked above for details
+
+`fieldQuery` is supported for client-side filtering of `clientOnly` DataSources, [MockDataSource](MockDataSource.md#class-mockdatasource)s, and cached DataSources. See the "Client-Side Subquery Support" section in the [subquery overview](../reference.md#object-advancedcriterionsubquery) for details.
+
+### Groups
+
+- advancedFilter
+
+**Flags**: IR
+
+---
+## Attr: Criterion.fieldStaticValue
+
+### Description
+A constant value to use as the left-hand side of the comparison, instead of using a field value from the record. When set, this value is used in place of the field value that would normally be derived from [Criterion.fieldName](#attr-criterionfieldname) or [Criterion.fieldQuery](#attr-criterionfieldquery).
+
+This is useful when comparing a known constant against the result of a [valueQuery](#attr-criterionvaluequery). For example, to check whether a particular product code appears in the set of products ordered by a customer:
+
+```
+ {
+     fieldStaticValue: "PROD-001",
+     operator: "inSet",
+     valueQuery: {
+         dataSource: "OrderLine",
+         queryOutput: "productCode"
+     }
+ }
+ 
+```
+If both `fieldStaticValue` and `fieldName` are specified, `fieldStaticValue` is used instead. If both `fieldStaticValue` and `fieldQuery` are specified, `fieldStaticValue` is used instead.
 
 ### Groups
 

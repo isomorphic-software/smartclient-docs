@@ -3606,6 +3606,8 @@ Controls whether [AdvancedCriteria subqueries](../reference.md#object-advancedcr
 
 The default value of null means that we use the global setting, controlled by setting the `allowCriteriaSubqueries` flag in your `server.properties` file (this global flag is true by default))
 
+On the client, this property is also applied to `clientOnly`, [MockDataSource](MockDataSource.md#class-mockdatasource), and cached DataSources before processing [fieldQuery](Criterion.md#attr-criterionfieldquery) or [valueQuery](Criterion.md#attr-criterionvaluequery) criteria. When set to `false`, subquery criteria are ignored during client-side filtering.
+
 ### Groups
 
 - advancedFilter

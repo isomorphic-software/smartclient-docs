@@ -45,6 +45,7 @@ For a full list of operators, see [OperatorId](../reference.md#type-operatorid).
 - [DataSource.allowCriteriaSubqueries](../classes/DataSource.md#attr-datasourceallowcriteriasubqueries)
 - [Criterion.fieldQuery](../classes/Criterion.md#attr-criterionfieldquery)
 - [Criterion.valueQuery](../classes/Criterion.md#attr-criterionvaluequery)
+- [Criterion.fieldStaticValue](../classes/Criterion.md#attr-criterionfieldstaticvalue)
 - [AdvancedCriterionSubquery.queryOutput](../classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubqueryqueryoutput)
 - [AdvancedCriterionSubquery.queryFK](../classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubqueryqueryfk)
 - [AdvancedCriterionSubquery.dataSource](../classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubquerydatasource)

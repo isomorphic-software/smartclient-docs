@@ -7599,6 +7599,20 @@ Finally, note that it is possible to switch off the ability to use subqueries al
 #### Subqueries with inSet criteria
 As noted above, subqueries nearly always need to return a single value, since that value is going to be used instead of a literal scalar value in record-by-record comparisons. The exception to this rule is when you are specifying a `valueQuery` with the `inSet` operator. In this case, you are saying that the field value must be one of a set of valid values, so in this one case it is appropriate and correct for the `valueQuery` to return a list of values rather than a single value. Note, we are still comparing a single field to the values in the list, so it should be a list of simple values (strings, numbers, booleans or dates, as appropriate), NOT a list of records
 
+#### Composite Foreign Key Support
+Subqueries support composite foreign keys — relations where multiple fields jointly form the key. When a subquery's join to the parent DataSource involves a composite FK, all participating key fields are used in the join constraint automatically.
+
+To explicitly specify a composite FK in [queryFK](classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubqueryqueryfk), list the participating fields separated by a dash (e.g. `queryFK: "fkField1-fkField2"`). For indirect relations, combine this with the colon-separated step syntax (e.g. `queryFK: "fkField1-fkField2:nextFkField"`). See [includeVia syntax](kb_topics/includeViaSyntax.md#kb-topic-includevia-syntax) for the full format specification, which applies identically to `queryFK`.
+
+#### Client-Side Subquery Support
+`fieldQuery` and `valueQuery` are supported for purely client-side DataSources: `clientOnly` DataSources, [MockDataSource](classes/MockDataSource.md#class-mockdatasource)s, and any DataSource whose [ResultSet](classes/ResultSet.md#class-resultset) cache is complete (all rows fetched from the server).
+
+When filtering client-side data with AdvancedCriteria that contain subquery criteria, subqueries are resolved against the target DataSource's local cache, then the resolved values are used for filtering. The `queryFK` join constraints, `summaryFunctions`, `groupBy`, and `queryOutput` properties are all respected.
+
+If a subquery targets a DataSource that does not have a complete local cache, the request is delegated to the server, where the subquery can be resolved normally. If the server is not available, the subquery criteria are skipped and a warning is logged.
+
+The [DataSource.allowCriteriaSubqueries](classes/DataSource.md#attr-datasourceallowcriteriasubqueries) property is enforced on the client as well — if set to `false`, subquery criteria are ignored during client-side filtering.
+
 #### `exists / notExists` operators (SQLDataSource only)
 The [`exists / notExists`](#type-operatorid) operators provide a concise way to filter records based on the existence (or absence) of related rows.
 

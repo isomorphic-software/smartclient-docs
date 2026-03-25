@@ -41,7 +41,7 @@ Note that, just as a DynamicForm can track values that are not shown in any Form
 ## Attr: ValuesManager.deepCloneNonFieldValuesOnEdit
 
 ### Description
-When editing values in this ValuesManager in one or more DataBoundComponents, should we perform a deep clone of values that are not associated with a field (ie, attributes on the record that do not map to a component field either directly by name, or by [FormItem.dataPath](FormItem.md#attr-formitemdatapath). If this value is not explicitly set, it defaults to the value of [DataSource.deepCloneNonFieldValuesOnEdit](DataSource.md#attr-datasourcedeepclonenonfieldvaluesonedit) if there is a dataSource, or to the value of the static [DataSource.deepCloneNonFieldValuesOnEdit](DataSource.md#classattr-datasourcedeepclonenonfieldvaluesonedit) if there is no dataSource.
+When editing values in this ValuesManager in one or more DataBoundComponents, should we perform a deep clone of values that are not associated with a field (ie, attributes on the record that do not map to a component field either directly by name, or by [FormItem.dataPath](FormItem.md#attr-formitemdatapath). If this value is not explicitly set, it defaults to the value of [DataSource.deepCloneNonFieldValuesOnEdit](DataSource_1.md#attr-datasourcedeepclonenonfieldvaluesonedit) if there is a dataSource, or to the value of the static [DataSource.deepCloneNonFieldValuesOnEdit](DataSource.md#classattr-datasourcedeepclonenonfieldvaluesonedit) if there is no dataSource.
 
 Like the other `deepCloneOnEdit` settings, this flag only has an effect if you are editing a values object that contains nested objects or arrays.
 
@@ -50,7 +50,7 @@ Like the other `deepCloneOnEdit` settings, this flag only has an effect if you a
 - [Canvas.dataPath](Canvas.md#attr-canvasdatapath)
 - [FormItem.dataPath](FormItem.md#attr-formitemdatapath)
 - [DataSourceField.deepCloneOnEdit](DataSourceField.md#attr-datasourcefielddeepcloneonedit)
-- [DataSource.deepCloneOnEdit](DataSource.md#attr-datasourcedeepcloneonedit)
+- [DataSource.deepCloneOnEdit](DataSource_1.md#attr-datasourcedeepcloneonedit)
 
 **Flags**: IRWA
 
@@ -104,7 +104,7 @@ Note that member forms should have the same dataSource applied to them to allow 
 ## Attr: ValuesManager.saveOperationType
 
 ### Description
-Default [DSOperationType](../reference.md#type-dsoperationtype) to be performed when [DynamicForm.saveData](DynamicForm.md#method-dynamicformsavedata) is called. This property is automatically set on a call to [DynamicForm.editRecord](DynamicForm.md#method-dynamicformeditrecord) or [DynamicForm.editNewRecord](DynamicForm.md#method-dynamicformeditnewrecord), or may be set directly via [DynamicForm.setSaveOperationType](DynamicForm.md#method-dynamicformsetsaveoperationtype).
+Default [DSOperationType](../reference_2.md#type-dsoperationtype) to be performed when [DynamicForm.saveData](DynamicForm.md#method-dynamicformsavedata) is called. This property is automatically set on a call to [DynamicForm.editRecord](DynamicForm.md#method-dynamicformeditrecord) or [DynamicForm.editNewRecord](DynamicForm.md#method-dynamicformeditnewrecord), or may be set directly via [DynamicForm.setSaveOperationType](DynamicForm.md#method-dynamicformsetsaveoperationtype).
 
 If `saveOperationType` is unset, the form will heuristically determine whether an "add" or "update" operation is intended based on whether the primaryKey field is present and editable.
 
@@ -155,9 +155,9 @@ If set to true, client-side validators will not run on the form when validate() 
 ## Attr: ValuesManager.deepCloneOnEdit
 
 ### Description
-Before we start editing the values of this ValuesManager in one or more DataBoundComponents, should we perform a deep clone of the underlying values. See [DataSource.deepCloneOnEdit](DataSource.md#attr-datasourcedeepcloneonedit) for details of what this means.
+Before we start editing the values of this ValuesManager in one or more DataBoundComponents, should we perform a deep clone of the underlying values. See [DataSource.deepCloneOnEdit](DataSource_1.md#attr-datasourcedeepcloneonedit) for details of what this means.
 
-If this value is not explicitly set, it defaults to the value of [DataSource.deepCloneOnEdit](DataSource.md#attr-datasourcedeepcloneonedit). This value can be overridden per-field with [DataSourceField.deepCloneOnEdit](DataSourceField.md#attr-datasourcefielddeepcloneonedit).
+If this value is not explicitly set, it defaults to the value of [DataSource.deepCloneOnEdit](DataSource_1.md#attr-datasourcedeepcloneonedit). This value can be overridden per-field with [DataSourceField.deepCloneOnEdit](DataSourceField.md#attr-datasourcefielddeepcloneonedit).
 
 Like the other `deepCloneOnEdit` settings, this flag only has an effect if you are editing a values object that contains nested objects or arrays, using [dataPath](Canvas.md#attr-canvasdatapath)s.
 
@@ -166,7 +166,7 @@ Like the other `deepCloneOnEdit` settings, this flag only has an effect if you a
 - [Canvas.dataPath](Canvas.md#attr-canvasdatapath)
 - [FormItem.dataPath](FormItem.md#attr-formitemdatapath)
 - [DataSourceField.deepCloneOnEdit](DataSourceField.md#attr-datasourcefielddeepcloneonedit)
-- [DataSource.deepCloneOnEdit](DataSource.md#attr-datasourcedeepcloneonedit)
+- [DataSource.deepCloneOnEdit](DataSource_1.md#attr-datasourcedeepcloneonedit)
 
 **Flags**: IRWA
 
@@ -439,7 +439,7 @@ Note on pre-existent values when the member component is a [DynamicForm](Dynamic
 If the valuesManager has a value specified for some field, for which the member form has an item, this value will be applied to the member form. This is true whether the item has a value or not.  
 However if the member form has a value for some field, and the ValuesManager does not have a specified value for the same field, we allow the valuesManager to pick up the value from the member form.
 
-**Caution:** If a DynamicForm without a [DataSource](DataSource.md#class-datasource) is passed to this method, [DataBoundComponent.setDataSource](DataBoundComponent.md#method-databoundcomponentsetdatasource) will be called on that form, recreating the items from copies of the item configuration stored at the time the form was created. This means that any properties or handlers added to the items after form creation will be lost. When in doubt, set the DataSource in the form as soon as possible.
+**Caution:** If a DynamicForm without a [DataSource](DataSource_1.md#class-datasource) is passed to this method, [DataBoundComponent.setDataSource](DataBoundComponent.md#method-databoundcomponentsetdatasource) will be called on that form, recreating the items from copies of the item configuration stored at the time the form was created. This means that any properties or handlers added to the items after form creation will be lost. When in doubt, set the DataSource in the form as soon as possible.
 
 ### Parameters
 
@@ -786,11 +786,11 @@ Remove multiple member forms from this valuesManager.
 ## Method: ValuesManager.saveData
 
 ### Description
-Validate and then save the form's current values to the [DataSource](DataSource.md#class-datasource) this form is bound to.
+Validate and then save the form's current values to the [DataSource](DataSource_1.md#class-datasource) this form is bound to.
 
 If client-side validators are defined, they are executed first, and if any errors are found the save is aborted and the form will show the errors.
 
-If client-side validation passes, a [DSRequest](../reference_2.md#object-dsrequest) will be sent, exactly as though [DataSource.addData](DataSource.md#method-datasourceadddata) or [DataSource.updateData](DataSource.md#method-datasourceupdatedata) had been called with ${isc.DocUtils.linkForRef('method:DynamicForm.getValues','the form\\'s values')} as data. The [DSRequest.operationType](DSRequest.md#attr-dsrequestoperationtype) will be either "update" or "add", depending on the current [DynamicForm.saveOperationType](DynamicForm.md#attr-dynamicformsaveoperationtype).
+If client-side validation passes, a [DSRequest](../reference_2.md#object-dsrequest) will be sent, exactly as though [DataSource.addData](DataSource_1.md#method-datasourceadddata) or [DataSource.updateData](DataSource_1.md#method-datasourceupdatedata) had been called with ${isc.DocUtils.linkForRef('method:DynamicForm.getValues','the form\\'s values')} as data. The [DSRequest.operationType](DSRequest.md#attr-dsrequestoperationtype) will be either "update" or "add", depending on the current [DynamicForm.saveOperationType](DynamicForm.md#attr-dynamicformsaveoperationtype).
 
 On either a client-side or server-side validation failure, validation errors will be displayed in the form. Visible items within a DynamicForm will be redrawn to display errors. Validation failure occurring on hidden items, or DataSource fields with no associated form items may be handled via [DynamicForm.handleHiddenValidationErrors](DynamicForm.md#method-dynamicformhandlehiddenvalidationerrors) or [ValuesManager.handleHiddenValidationErrors](#method-valuesmanagerhandlehiddenvalidationerrors).
 
@@ -1172,13 +1172,13 @@ Make a snapshot of the current set of values, so we can reset to them later. Cre
 ## Method: ValuesManager.setSaveOperationType
 
 ### Description
-Setter for the default [DSOperationType](../reference.md#type-dsoperationtype) when [DynamicForm.saveData](DynamicForm.md#method-dynamicformsavedata) is called. Note that this property can also be set by calling [DynamicForm.editRecord](DynamicForm.md#method-dynamicformeditrecord) or [DynamicForm.editNewRecord](DynamicForm.md#method-dynamicformeditnewrecord)
+Setter for the default [DSOperationType](../reference_2.md#type-dsoperationtype) when [DynamicForm.saveData](DynamicForm.md#method-dynamicformsavedata) is called. Note that this property can also be set by calling [DynamicForm.editRecord](DynamicForm.md#method-dynamicformeditrecord) or [DynamicForm.editNewRecord](DynamicForm.md#method-dynamicformeditnewrecord)
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| operationType | [DSOperationType](../reference.md#type-dsoperationtype) | false | — | Operation type to use as a default. Valid values are `"add"` or `"update"`. |
+| operationType | [DSOperationType](../reference_2.md#type-dsoperationtype) | false | — | Operation type to use as a default. Valid values are `"add"` or `"update"`. |
 
 ---
 ## Method: ValuesManager.setValues
@@ -1244,16 +1244,16 @@ Adds validation errors to the existing set of errors for the field in question. 
 ## Method: ValuesManager.getSaveOperationType
 
 ### Description
-Returns the [DSOperationType](../reference.md#type-dsoperationtype) to be performed when [DynamicForm.saveData](DynamicForm.md#method-dynamicformsavedata) or [ValuesManager.saveData](#method-valuesmanagersavedata) is called.  
+Returns the [DSOperationType](../reference_2.md#type-dsoperationtype) to be performed when [DynamicForm.saveData](DynamicForm.md#method-dynamicformsavedata) or [ValuesManager.saveData](#method-valuesmanagersavedata) is called.  
 Valid options are `"add"` or `"update"`.
 
 If a [DSRequest](../reference_2.md#object-dsrequest) configuration object is passed in containing an explicit operationType this will be returned. Otherwise [this.saveOperationType](DynamicForm.md#attr-dynamicformsaveoperationtype) will be returned if set. Note that `saveOperationType` is automatically set via calls to data binding methods such as [DynamicForm.editNewRecord](DynamicForm.md#method-dynamicformeditnewrecord), or it may be [set explicitly](DynamicForm.md#method-dynamicformsetsaveoperationtype).
 
 If no explicit saveOperationType is present, the system will use the following heuristic to determine the save operationType:
 
-*   If the form has no value for the [primaryKey field](DataSource.md#method-datasourcegetprimarykeyfield) this method will return "add". The assumption is that this is a new record, and the field will be populated when the record is created, (as with a "sequence" type field).
-*   If, ${isc.DocUtils.linkForRef('method:DynamicForm.setValues','when the form\\'s values were populated')}, the form had value for the [primaryKey field](DataSource.md#method-datasourcegetprimarykeyfield) but it has subsequently be changed, this method will return "add". In this case the value has been changed, either by the user or programmatically so a different (new) record is assumed. This is determined by looking at the [oldValues](DynamicForm.md#method-dynamicformgetoldvalues) for the form.
-*   If the [primaryKey field](DataSource.md#method-datasourcegetprimarykeyfield) is editable and a value is now present for the primary key field, but was not present in the [oldValues](DynamicForm.md#method-dynamicformgetoldvalues) for the form, this method will return "add". In this case either no initial values were provided, or a 'sparse' set of values for a new record (with no primary key) were provided to the form and the user has subsequently explicitly entered a new primaryKey field value.
+*   If the form has no value for the [primaryKey field](DataSource_1.md#method-datasourcegetprimarykeyfield) this method will return "add". The assumption is that this is a new record, and the field will be populated when the record is created, (as with a "sequence" type field).
+*   If, ${isc.DocUtils.linkForRef('method:DynamicForm.setValues','when the form\\'s values were populated')}, the form had value for the [primaryKey field](DataSource_1.md#method-datasourcegetprimarykeyfield) but it has subsequently be changed, this method will return "add". In this case the value has been changed, either by the user or programmatically so a different (new) record is assumed. This is determined by looking at the [oldValues](DynamicForm.md#method-dynamicformgetoldvalues) for the form.
+*   If the [primaryKey field](DataSource_1.md#method-datasourcegetprimarykeyfield) is editable and a value is now present for the primary key field, but was not present in the [oldValues](DynamicForm.md#method-dynamicformgetoldvalues) for the form, this method will return "add". In this case either no initial values were provided, or a 'sparse' set of values for a new record (with no primary key) were provided to the form and the user has subsequently explicitly entered a new primaryKey field value.
 *   Otherwise this method will return "update". Either the primaryKey field is non editable, or the user has not changed it from its initial value.
 
 ### Parameters
@@ -1264,7 +1264,7 @@ If no explicit saveOperationType is present, the system will use the following h
 
 ### Returns
 
-`[DSOperationType](../reference.md#type-dsoperationtype)` — Operation type for the save request.
+`[DSOperationType](../reference_2.md#type-dsoperationtype)` — Operation type for the save request.
 
 ---
 ## Method: ValuesManager.showFieldErrors

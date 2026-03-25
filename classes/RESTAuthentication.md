@@ -57,7 +57,7 @@ For a [RestConnector DataSource](../kb_topics/serverRestConnector.md#kb-topic-se
 ### Description
 For a [RestConnector DataSource](../kb_topics/serverRestConnector.md#kb-topic-server-side-rest-connector), the authentication type to use. Note, as well as the formal header-based authentication types used by most REST services, `RestConnector` can also support more ad-hoc auth schemes, such as sending a username/password or authentication token in the body of a request. Whether or not such non-standard auth schemes are a good idea is academic; if the REST endpoint you need to target is expecting a token in a URL param, that's what you have to provide.
 
-Because `RestConnector` is so configurable, it is easy to achieve this. Assuming you have an API token that must be passed as parameter "Token", and that token is stored in your `system.properties` file, achieving this is as easy as adding the following to your [serverConfig](DataSource.md#attr-datasourceserverconfig):
+Because `RestConnector` is so configurable, it is easy to achieve this. Assuming you have an API token that must be passed as parameter "Token", and that token is stored in your `system.properties` file, achieving this is as easy as adding the following to your [serverConfig](DataSource_1.md#attr-datasourceserverconfig):
 
 ```
     <params>
@@ -65,7 +65,7 @@ Because `RestConnector` is so configurable, it is easy to achieve this. Assuming
     </params>
  
 ```
-Note, if the REST service you are targeting does have a non-standard auth scheme that does not use the HTTP Authorization header, you should simply omit the [auth block](DataSource.md#attr-datasourceauth)
+Note, if the REST service you are targeting does have a non-standard auth scheme that does not use the HTTP Authorization header, you should simply omit the [auth block](DataSource_1.md#attr-datasourceauth)
 
 ### Groups
 
@@ -81,7 +81,7 @@ For a [RestConnector DataSource](../kb_topics/serverRestConnector.md#kb-topic-se
 
 Typically, this dataSource will be a separate "rest" dataSource that connects to the token vending endpoint of an authorization server, passing in a "refresh" token and getting back an "access" token. Access tokens are typically short-lived, to minimize their usefulness to attackers if the token should somehow be exposed. When an access token expires it must be refreshed by again connecting to the token vending endpoint of the authorization server. `RestConnector` handles all the mechanics of this for you; you just have to provide a dataSource that can do the fetch.
 
-Note, `RestConnector` will issue a straightforward fetch with null criteria on the authentication dataSource when it needs to refresh its access token. This means that the authentication dataSource must be able to supply the refresh token to the REST auth endpoint without context from the dataSource fetch request. As mentioned above, the authentication dataSource is typically another "rest" dataSource, so you can use `RestConnector`'s extensive request templating features to accomplish this - for example, by embedding a reference to a `server.properties` property in the [dataURL](DataSource.md#attr-datasourcedataurl)
+Note, `RestConnector` will issue a straightforward fetch with null criteria on the authentication dataSource when it needs to refresh its access token. This means that the authentication dataSource must be able to supply the refresh token to the REST auth endpoint without context from the dataSource fetch request. As mentioned above, the authentication dataSource is typically another "rest" dataSource, so you can use `RestConnector`'s extensive request templating features to accomplish this - for example, by embedding a reference to a `server.properties` property in the [dataURL](DataSource_1.md#attr-datasourcedataurl)
 
 A `RestConnector` authentication dataSource should include the following fields. Note, the "Field name" shown in the table is just the default; you can override the name of any of these fields by setting the property shown in the "Customize" column. So, eg, if you set `tokenField: "custom_token"` in the [auth](../reference.md#object-restauthentication) config block, we will expect the dataSource to contain a field called "custom\_token" instead of the default "access\_token"
 

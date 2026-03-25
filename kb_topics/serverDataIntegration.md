@@ -42,22 +42,22 @@ Requests that go through `IDACall` have the following lifecycle:
 This basic request handling flow can be customized at a number of points:
 
 *   If you need an overarching authentication service, this is best implemented using [servlet Filters](http://java.sun.com/products/servlet/Filters.html) to intercept unauthenticated requests before they reach the `IDACall` servlet
-*   The [DataSource.serverType](../classes/DataSource.md#attr-datasourceservertype) specification within your `.ds.xml` configuration file is used to specify a standard server-side connector to service your requests.
+*   The [DataSource.serverType](../classes/DataSource_1.md#attr-datasourceservertype) specification within your `.ds.xml` configuration file is used to specify a standard server-side connector to service your requests.
 *   General custom business logic can be added in a number of ways, both declaratively and programmatically:
 
-*   The `<criteria>` and `<values>` properties of an [OperationBinding](../classes/OperationBinding.md#class-operationbinding) allow you to modify the dataSource request dynamically at transaction-processing time, using built-in [Velocity support](#kb-topic-velocitysupport).  
+*   The `<criteria>` and `<values>` properties of an [OperationBinding](../classes/OperationBinding.md#class-operationbinding) allow you to modify the dataSource request dynamically at transaction-processing time, using built-in [Velocity support](velocitySupport.md#kb-topic-velocity-context-variables).  
     Note this feature also allows developers to use [Transaction Chaining](transactionChaining.md#kb-topic-transaction-chaining) to dynamically set data values according to the results of earlier transactions.
 *   For editing, standard [DataSourceField.validators](../classes/DataSourceField.md#attr-datasourcefieldvalidators) defined in the `.ds.xml` file will be processed on both the client and the server. In addition to the built-in validator types, entirely custom server validation logic may be implemented using ["serverCustom" type validators](../reference.md#type-validatortype).
-*   For SQL DataSources, use [SQL Templating](#kb-topic-customquerying) to change, add to or even completely replace the SQL sent to the database, including calling stored procedures
-*   The [DataSource.serverConstructor](../classes/DataSource.md#attr-datasourceserverconstructor) allows you to specify an explicit custom DataSource subclass to create as your DataSource instance. This must be a subclass of `BasicDataSource`.  
+*   For SQL DataSources, use [SQL Templating](customQuerying.md#kb-topic-custom-querying-overview) to change, add to or even completely replace the SQL sent to the database, including calling stored procedures
+*   The [DataSource.serverConstructor](../classes/DataSource_1.md#attr-datasourceserverconstructor) allows you to specify an explicit custom DataSource subclass to create as your DataSource instance. This must be a subclass of `BasicDataSource`.  
     When requests are recieved by the `IDACall` servlet, they will be passed to standard methods on this DataSource, which can be overridden for custom behavior.  
     Validation is performed via a call to the `validate()` method.  
     The request is processed by the `execute()`, method which can be overridden directly, or developers may override the operation-specific methods `executeFetch()`, `executeAdd()`, `executeUpdate`, or `executeRemove()` called from the standard `execute()` implementation.  
     This approach allows you to either extend one of the built-in persistence mechanisms by subclassing a shipped class such as `SQLDataSource`, or create an entirely custom implementation from scratch.  
     A custom dataSource will still take full advantage of DataSource-agnostic features of the SmartClient Server, like validation, queuing, transaction chaining, support for Velocity templating, and so on.  
     For more information see the [custom server dataSource overview](writeCustomDataSource.md#kb-topic-custom-server-datasources)
-*   Use [Direct Method Invocation](dmiOverview.md#kb-topic-direct-method-invocation) to call directly into your own Java classes. An operation configured to use DMI will invoke the specified method instead of running through the standard DataSource `execute()` method directly - the DMI implementation can then use `dsRequest.execute()` to call the default behavior. This means DMIs allow you to modify the `DSRequest` before it executes, modify the `DSResponse` before it returns, or replace the default behavior with unrelated actions. Note that DMI can be applied [to all operations](../classes/DataSource.md#attr-datasourceserverobject), or to [individual operation bindings](../classes/OperationBinding.md#attr-operationbindingserverobject), and can be used in conjunction with a [custom dataSource](../classes/DataSource.md#attr-datasourceserverobject).
-*   Use [server scripting](serverScript.md#kb-topic-server-scripting) to add small amounts of business logic right in your `.ds.xml` file (either [per operation](../classes/OperationBinding.md#attr-operationbindingscript), or as standard handling for [all operations](../classes/DataSource.md#attr-datasourcescript)). DMI scripts allow you to add business logic just like normal DMIs, but don't require the logic to be in a separate .java file.
+*   Use [Direct Method Invocation](dmiOverview.md#kb-topic-direct-method-invocation) to call directly into your own Java classes. An operation configured to use DMI will invoke the specified method instead of running through the standard DataSource `execute()` method directly - the DMI implementation can then use `dsRequest.execute()` to call the default behavior. This means DMIs allow you to modify the `DSRequest` before it executes, modify the `DSResponse` before it returns, or replace the default behavior with unrelated actions. Note that DMI can be applied [to all operations](../classes/DataSource_1.md#attr-datasourceserverobject), or to [individual operation bindings](../classes/OperationBinding.md#attr-operationbindingserverobject), and can be used in conjunction with a [custom dataSource](../classes/DataSource_1.md#attr-datasourceserverobject).
+*   Use [server scripting](serverScript.md#kb-topic-server-scripting) to add small amounts of business logic right in your `.ds.xml` file (either [per operation](../classes/OperationBinding.md#attr-operationbindingscript), or as standard handling for [all operations](../classes/DataSource_1.md#attr-datasourcescript)). DMI scripts allow you to add business logic just like normal DMIs, but don't require the logic to be in a separate .java file.
 
   
 *   If you need to use a Front Controller servlet for some other reason than authentication - for example, you are using Spring some other similar system which requires that all requests go through some particular servlet - just call `RPCManager.processRequest()` within your Spring Controller or whatever the equivalent is in the framework in use.
@@ -85,27 +85,27 @@ For more information, see the [RPCManager documentation](../classes/RPCManager.m
 
 - [DSDataFormat](../reference_2.md#type-dsdataformat)
 - [DSServerType](../reference_2.md#type-dsservertype)
-- [DataSource.dataFormat](../classes/DataSource.md#attr-datasourcedataformat)
-- [DataSource.dataProtocol](../classes/DataSource.md#attr-datasourcedataprotocol)
-- [DataSource.requestProperties](../classes/DataSource.md#attr-datasourcerequestproperties)
-- [DataSource.serverType](../classes/DataSource.md#attr-datasourceservertype)
-- [DataSource.tableName](../classes/DataSource.md#attr-datasourcetablename)
-- [DataSource.quoteTableName](../classes/DataSource.md#attr-datasourcequotetablename)
-- [DataSource.dbName](../classes/DataSource.md#attr-datasourcedbname)
-- [DataSource.configBean](../classes/DataSource.md#attr-datasourceconfigbean)
-- [DataSource.forceSort](../classes/DataSource.md#attr-datasourceforcesort)
+- [DataSource.dataFormat](../classes/DataSource_1.md#attr-datasourcedataformat)
+- [DataSource.dataProtocol](../classes/DataSource_1.md#attr-datasourcedataprotocol)
+- [DataSource.requestProperties](../classes/DataSource_1.md#attr-datasourcerequestproperties)
+- [DataSource.serverType](../classes/DataSource_1.md#attr-datasourceservertype)
+- [DataSource.tableName](../classes/DataSource_1.md#attr-datasourcetablename)
+- [DataSource.quoteTableName](../classes/DataSource_1.md#attr-datasourcequotetablename)
+- [DataSource.dbName](../classes/DataSource_1.md#attr-datasourcedbname)
+- [DataSource.configBean](../classes/DataSource_1.md#attr-datasourceconfigbean)
+- [DataSource.forceSort](../classes/DataSource_1.md#attr-datasourceforcesort)
 - [OperationBinding.forceSort](../classes/OperationBinding.md#attr-operationbindingforcesort)
-- [DataSource.defaultSortField](../classes/DataSource.md#attr-datasourcedefaultsortfield)
-- [DataSource.defaultTextMatchStyle](../classes/DataSource.md#attr-datasourcedefaulttextmatchstyle)
-- [DataSource.arrayCriteriaForceExact](../classes/DataSource.md#attr-datasourcearraycriteriaforceexact)
+- [DataSource.defaultSortField](../classes/DataSource_1.md#attr-datasourcedefaultsortfield)
+- [DataSource.defaultTextMatchStyle](../classes/DataSource_1.md#attr-datasourcedefaulttextmatchstyle)
+- [DataSource.arrayCriteriaForceExact](../classes/DataSource_1.md#attr-datasourcearraycriteriaforceexact)
 - [OperationBinding.arrayCriteriaForceExact](../classes/OperationBinding.md#attr-operationbindingarraycriteriaforceexact)
 - [DSRequest.arrayCriteriaForceExact](../classes/DSRequest.md#attr-dsrequestarraycriteriaforceexact)
-- [DataSource.defaultBooleanStorageStrategy](../classes/DataSource.md#attr-datasourcedefaultbooleanstoragestrategy)
-- [DataSource.useAnsiJoins](../classes/DataSource.md#attr-datasourceuseansijoins)
-- [DataSource.audit](../classes/DataSource.md#attr-datasourceaudit)
-- [DataSource.serverObject](../classes/DataSource.md#attr-datasourceserverobject)
+- [DataSource.defaultBooleanStorageStrategy](../classes/DataSource_1.md#attr-datasourcedefaultbooleanstoragestrategy)
+- [DataSource.useAnsiJoins](../classes/DataSource_1.md#attr-datasourceuseansijoins)
+- [DataSource.audit](../classes/DataSource_1.md#attr-datasourceaudit)
+- [DataSource.serverObject](../classes/DataSource_1.md#attr-datasourceserverobject)
 - [OperationBinding.requestProperties](../classes/OperationBinding.md#attr-operationbindingrequestproperties)
-- [DataSource.suppressManualAggregation](../classes/DataSource.md#attr-datasourcesuppressmanualaggregation)
+- [DataSource.suppressManualAggregation](../classes/DataSource_1.md#attr-datasourcesuppressmanualaggregation)
 - [RestDataSource.dataProtocol](../classes/RestDataSource.md#attr-restdatasourcedataprotocol)
 
 ---

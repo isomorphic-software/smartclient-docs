@@ -517,9 +517,9 @@ By default, SmartClient solves this with a client-driven implementation of this 
 
 There are three ways this recursive traversal can be implemented:
 
-*   For dataSources that [support dynamic tree joins](DataSource_2.md#method-datasourcesupportsdynamictreejoins), we use the [additionalOutputs](DSRequest.md#attr-dsrequestadditionaloutputs) feature to declare self-joins that fetch multiple levels of parent in one query (the number of levels is configurable, see [ResultTree.matchingLeafJoinDepth](ResultTree.md#attr-resulttreematchingleafjoindepth)). Of SmartClient's built-in DataSource types, only SQLDataSource is currently capable of this approach
+*   For dataSources that [support dynamic tree joins](DataSource.md#method-datasourcesupportsdynamictreejoins), we use the [additionalOutputs](DSRequest.md#attr-dsrequestadditionaloutputs) feature to declare self-joins that fetch multiple levels of parent in one query (the number of levels is configurable, see [ResultTree.matchingLeafJoinDepth](ResultTree.md#attr-resulttreematchingleafjoindepth)). Of SmartClient's built-in DataSource types, only SQLDataSource is currently capable of this approach
 *   For server-side dataSources that do not support self-joins, we combine individual single-level fetches into a [queue](RPCManager.md#classmethod-rpcmanagersendqueue), using [fieldValueExpressions](DSRequest.md#attr-dsrequestfieldvalueexpressions) with [responseData "allRecords"](DSRequestModifier.md#attr-dsrequestmodifiervalue) so that each fetch in the queue uses the output of the previous fetch as its criteria (so the first fetch returns the parents of the matching nodes, the second fetch returns the parents of those nodes, and so on). Again, the number of fetches per queue can be configured with the `matchingLeafJoinDepth` property. This approach works for any server-side DataSource implementation, including your own custom implementations
-*   For [client-side](DataSource_1.md#attr-datasourceclientonly) dataSources, which support neither self-joins not queueing, the algorithm simply makes as many single-level requests as necessary to build the entire skeleton. Note, this is exactly what would happen with previously-mentioned queueing approach, if you set `matchingLeafJoinDepth` to 1
+*   For [client-side](DataSource.md#attr-datasourceclientonly) dataSources, which support neither self-joins not queueing, the algorithm simply makes as many single-level requests as necessary to build the entire skeleton. Note, this is exactly what would happen with previously-mentioned queueing approach, if you set `matchingLeafJoinDepth` to 1
 
 If you want to disable the automatic handling of `keepParentsOnFilter` on load-on-demand trees, see [ResultTree.serverKeepParentsOnFilter](ResultTree.md#attr-resulttreeserverkeepparentsonfilter)
 
@@ -1008,7 +1008,7 @@ For [fetchMode:"local"](../reference_2.md#type-fetchmode) ResultTrees, this prop
 
 This property may be used to ensure a dataSource receives the necessary criteria to populate a ResultTree's data, and also support [TreeGrid.keepParentsOnFilter](#attr-treegridkeepparentsonfilter).
 
-Note that for some AdvancedCriteria it will not be possible to extract the subcriteria that apply to certain fields. See [DataSource.splitCriteria](DataSource_1.md#method-datasourcesplitcriteria) for details on how serverFilterFields-applicable subcriteria are extracted from the specified criteria for the tree.
+Note that for some AdvancedCriteria it will not be possible to extract the subcriteria that apply to certain fields. See [DataSource.splitCriteria](DataSource.md#method-datasourcesplitcriteria) for details on how serverFilterFields-applicable subcriteria are extracted from the specified criteria for the tree.
 
 **Flags**: IR
 
@@ -1858,7 +1858,7 @@ During a drag-and-drop interaction, this method returns the set of node occurren
 ### Description
 During a drag-and-drop interaction, this method is called to transfer a set of records that were dropped onto some other component. This method is called after the set of records has been copied to the other component. Whether or not this component's data is modified is determined by the value of [DataBoundComponent.dragDataAction](DataBoundComponent.md#attr-databoundcomponentdragdataaction).
 
-With a `dragDataAction` of "move", a databound component will issue "remove" dsRequests against its DataSource to actually remove the data, via [DataSource.removeData](DataSource_1.md#method-datasourceremovedata).
+With a `dragDataAction` of "move", a databound component will issue "remove" dsRequests against its DataSource to actually remove the data, via [DataSource.removeData](DataSource.md#method-datasourceremovedata).
 
 ### Returns
 
@@ -1996,7 +1996,7 @@ If [TreeGrid.animateFolders](#attr-treegridanimatefolders) is true for this tree
 ## Method: TreeGrid.fetchData
 
 ### Description
-Uses a "fetch" operation on the current [grid.dataSource](DataSource_1.md#class-datasource) to retrieve data that matches the provided criteria, and displays the matching data in this component as a tree.
+Uses a "fetch" operation on the current [grid.dataSource](DataSource.md#class-datasource) to retrieve data that matches the provided criteria, and displays the matching data in this component as a tree.
 
 This method will create a [ResultTree](ResultTree.md#class-resulttree) to manage tree data, which will subsequently be available as `treeGrid.data`. DataSource records returned by the "fetch" operation are linked into a tree structure according to [primaryKey](DataSourceField.md#attr-datasourcefieldprimarykey) and [foreignKey](DataSourceField.md#attr-datasourcefieldforeignkey) declarations on DataSource fields. See the [treeDataBinding](../kb_topics/treeDataBinding.md#kb-topic-tree-databinding) topic for complete details.
 
@@ -2142,7 +2142,7 @@ For a drop from another widget, [TreeGrid.transferDragData](#method-treegridtran
 
 In either case the new row(s) appear in the `folder` at the `index` specified by the arguments of the same name.
 
-If this grid is databound, the new nodes will be added to the dataset by calling [DataSource.addData](DataSource_1.md#method-datasourceadddata). Further, if the new nodes were dragged from another databound component, and [addDropValues](DataBoundComponent.md#attr-databoundcomponentadddropvalues) is true, [getDropValues](DataBoundComponent.md#method-databoundcomponentgetdropvalues) will be called for every item being dropped.
+If this grid is databound, the new nodes will be added to the dataset by calling [DataSource.addData](DataSource.md#method-datasourceadddata). Further, if the new nodes were dragged from another databound component, and [addDropValues](DataBoundComponent.md#attr-databoundcomponentadddropvalues) is true, [getDropValues](DataBoundComponent.md#method-databoundcomponentgetdropvalues) will be called for every item being dropped.
 
 As a special case, if the `sourceWidget` is also databound and a [foreignKey](DataSourceField.md#attr-datasourcefieldforeignkey) relationship is declared from the `sourceWidget`'s DataSource to this TreeGrid's DataSource, the interaction will be treated as a "drag recategorization" use case such as files being placed in folders, employees being assigned to teams, etc. "update" DSRequests will be submitted that change the foreignKey field in the dropped records to point to the tree folder that was the target of the drop. In this case no change will be made to the Tree data as such, only to the dropped records.
 
@@ -2150,7 +2150,7 @@ For multi-record drops, Queuing is automatically used to combine all DSRequests 
 
 If these default persistence behaviors are undesirable, return false to cancel them , then implement your own behavior, typically by using grid.updateData() or addData() to add new records.
 
-**NOTE:** the records you receive in this event are the actual Records from the source component. Use [DataSource.copyRecords](DataSource_1.md#method-datasourcecopyrecords) to create a copy before modifying the records or using them with updateData() or addData().
+**NOTE:** the records you receive in this event are the actual Records from the source component. Use [DataSource.copyRecords](DataSource.md#method-datasourcecopyrecords) to create a copy before modifying the records or using them with updateData() or addData().
 
 ### Parameters
 
@@ -2239,7 +2239,7 @@ Notification method fired when the TreeGrid's data changes, for any reason. If o
 Examples of why data changed might be:
 
 *   a call to [addData()](ListGrid_2.md#method-listgridadddata), [updateData()](ListGrid_2.md#method-listgridupdatedata), or [removeData()](ListGrid_2.md#method-listgridremovedata)
-*   [DataSource](DataSource_1.md#class-datasource) updates from the server for [ResultTree](ResultTree.md#class-resulttree) data (triggered by record editing, etc.)
+*   [DataSource](DataSource.md#class-datasource) updates from the server for [ResultTree](ResultTree.md#class-resulttree) data (triggered by record editing, etc.)
 *   fetches arriving back from the server for [ResultTree](ResultTree.md#class-resulttree) data
 *   programmatic changes to [Tree](Tree.md#class-tree) data if made through APIs such as [Tree.add](Tree.md#method-treeadd), [Tree.remove](Tree.md#method-treeremove), etc.
 *   cache invalidation
@@ -2247,7 +2247,7 @@ Examples of why data changed might be:
 
 Calling [TreeGrid.setData](#method-treegridsetdata) doesn't call this notification directly, but it may fire if one of the above listed events is triggered (e.g. a server fetch for [ResultTree](ResultTree.md#class-resulttree) data).
 
-Note that the `operationType` parameter is optional and will be passed and contain the operation (e.g. "update") if this notification was triggered by a fetch, an [addData()](ListGrid_2.md#method-listgridadddata), [updateData()](ListGrid_2.md#method-listgridupdatedata), or [removeData()](ListGrid_2.md#method-listgridremovedata), or a [DataSource](DataSource_1.md#class-datasource) update for [ResultTree](ResultTree.md#class-resulttree) data (the first three reasons listed above) but otherwise will be undefined.
+Note that the `operationType` parameter is optional and will be passed and contain the operation (e.g. "update") if this notification was triggered by a fetch, an [addData()](ListGrid_2.md#method-listgridadddata), [updateData()](ListGrid_2.md#method-listgridupdatedata), or [removeData()](ListGrid_2.md#method-listgridremovedata), or a [DataSource](DataSource.md#class-datasource) update for [ResultTree](ResultTree.md#class-resulttree) data (the first three reasons listed above) but otherwise will be undefined.
 
 ### Parameters
 
@@ -2369,7 +2369,7 @@ Set the icon for a particular treenode to a specified URL
 This inherited [ListGrid API](ListGrid_2.md#method-listgridstarteditingnew) is not supported by the TreeGrid since adding a new tree node arbitrarily at the end of the tree is usually not useful. Instead, to add a new tree node and begin editing it, use either of these two strategies:
 
 1.  add a new node to the client-side Tree model via [Tree.add](Tree.md#method-treeadd), then use [TreeGrid.startEditing()](ListGrid_2.md#method-listgridstartediting) to begin editing this node. Note that if using a DataSource, when the node is saved, an "update" operation will be used since adding a node directly to the client-side [ResultTree](ResultTree.md#class-resulttree) effectively means a new node has been added server side.
-2.  use [DataSource.addData](DataSource_1.md#method-datasourceadddata) to immediately save a new node. Automatic cache sync by the [ResultTree](ResultTree.md#class-resulttree) will cause the node to be integrated into the tree. When the callback to addData() fires, locate the new node by matching primary key and call [TreeGrid.startEditing()](ListGrid_2.md#method-listgridstartediting) to begin editing it.
+2.  use [DataSource.addData](DataSource.md#method-datasourceadddata) to immediately save a new node. Automatic cache sync by the [ResultTree](ResultTree.md#class-resulttree) will cause the node to be integrated into the tree. When the callback to addData() fires, locate the new node by matching primary key and call [TreeGrid.startEditing()](ListGrid_2.md#method-listgridstartediting) to begin editing it.
 
 ### Parameters
 

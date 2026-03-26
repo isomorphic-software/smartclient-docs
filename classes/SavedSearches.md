@@ -20,7 +20,7 @@ User interface components for storing and retreiving saved searches are availabl
 
 You acquire the `SavedSearches` singleton via [SavedSearches.get](#classmethod-savedsearchesget) and you can configure defaults via [Class.addProperties](Class.md#method-classaddproperties) or [Class.changeDefaults](Class.md#classmethod-classchangedefaults).
 
-Saved searches are stored [serialized as JSON](JSONEncoder.md#class-jsonencoder) in [DataSource](DataSource_1.md#class-datasource) Records.  
+Saved searches are stored [serialized as JSON](JSONEncoder.md#class-jsonencoder) in [DataSource](DataSource.md#class-datasource) Records.  
 By default saved searches are stored in [HTML5 browser localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage) via automatically generated custom DataSources. In this mode the searches are only retained for a specific user on a particular machine, and searches cannot be shared with other users - but this approach is sufficient for many applications, works out of the box, does not require any storage and has no impact on scalability.
 
 For more capable saved search storage and retrieval, an explicit saved search dataSource backed by permanent storage such as an SQL database table may be specified.  
@@ -43,7 +43,7 @@ A SavedSearch dataSource has the following fields, some of which are optional, a
 *   ["isDefault"](#attr-savedsearchesdefaultfield), See "Default Searches" below.
 *   ["isSharedDefault"](#attr-savedsearchesadmindefaultfield), See "Default Searches" below.
 
-In your SDK, look for `sc_SavedSearches.ds.xml` for a sample SQL-based implementation of saved-search (entirely declarative). Note that [DataSource.cacheAllData](DataSource_1.md#attr-datasourcecachealldata) is set to true - this causes all searches applicable to a given user to be loaded in advance, the first time any component requests saved searches. For most applications, this is the right approach, and is much better than performing server requests each time a new component is shown that _might_ have saved searches.
+In your SDK, look for `sc_SavedSearches.ds.xml` for a sample SQL-based implementation of saved-search (entirely declarative). Note that [DataSource.cacheAllData](DataSource.md#attr-datasourcecachealldata) is set to true - this causes all searches applicable to a given user to be loaded in advance, the first time any component requests saved searches. For most applications, this is the right approach, and is much better than performing server requests each time a new component is shown that _might_ have saved searches.
 
 Note that the SavedSearches system can be used to store any kind of component setting; in particular, [ListGrids](ListGrid_1.md#attr-listgridcansavesearches) used `SavedSearches` to store complete [viewState](ListGrid_2.md#method-listgridgetviewstate), which includes field order & visibility, sorting and group state in addition to search criteria.
 

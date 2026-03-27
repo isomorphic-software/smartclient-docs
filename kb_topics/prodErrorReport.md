@@ -9,7 +9,7 @@
 ### Description
 SmartClient provides a comprehensive set of APIs for capturing rich diagnostic information when JavaScript errors occur in production systems. These APIs enable developers to gather detailed context about errors, making it significantly easier to troubleshoot issues that occur in deployed applications.
 
-This information can be captured by saving it to a [DataSource](../classes/DataSource.md#class-datasource) for later analysis, or by integrating with third-party error monitoring tools such as [Datadog](https://www.datadoghq.com/) or [Sentry](https://sentry.io/). These tools can automatically aggregate errors, track trends, and alert developers when issues occur.
+This information can be captured by saving it to a [DataSource](../classes/DataSource_1.md#class-datasource) for later analysis, or by integrating with third-party error monitoring tools such as [Datadog](https://www.datadoghq.com/) or [Sentry](https://sentry.io/). These tools can automatically aggregate errors, track trends, and alert developers when issues occur.
 
 **Automated AI Analysis**
 

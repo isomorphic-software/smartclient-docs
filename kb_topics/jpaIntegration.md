@@ -7,7 +7,7 @@
 ## KB Topic: Integration with JPA
 
 ### Description
-To use JPA, set serverType="jpa" in your .ds.xml file, then set [beanClassName](../classes/DataSource.md#attr-datasourcebeanclassname) to the fully qualified class name of the JPA entity. For example:
+To use JPA, set serverType="jpa" in your .ds.xml file, then set [beanClassName](../classes/DataSource_1.md#attr-datasourcebeanclassname) to the fully qualified class name of the JPA entity. For example:
 ```
  <DataSource
      ID="countryDS"
@@ -20,7 +20,7 @@ To use JPA, set serverType="jpa" in your .ds.xml file, then set [beanClassName](
  </DataSource>
  
 ```
-[DataSource.autoDeriveSchema](../classes/DataSource.md#attr-datasourceautoderiveschema) is supported for deriving DataSource fields from JPA entities automatically (except with JPA 1.0; see below).
+[DataSource.autoDeriveSchema](../classes/DataSource_1.md#attr-datasourceautoderiveschema) is supported for deriving DataSource fields from JPA entities automatically (except with JPA 1.0; see below).
 
 Full support is provided for executing simple [Criteria](../reference_2.md#type-criteria), with [AdvancedCriteria](../reference.md#object-advancedcriteria) supported if you have Power Edition or above. However, note that there are limitations with case sensitive search in MySQL since MySQL automatically uses the 'like' operator in a case-insensitive manner and JPA does not correct this. See [MySQL Reference Manual :: C.5.5.1 Case Sensitivity in String Searches](http://dev.mysql.com/doc/refman/5.5/en/case-sensitivity.html) for more information.
 
@@ -51,13 +51,13 @@ JPA configuration should be specified in the `persistence.xml` file as usual, an
 ```
   
 
-JPADataSource supports operations with composite primary keys. Setting data source level property [idClassName](../classes/DataSource.md#attr-datasourceidclassname) to fully qualified class name indicates, that entity uses composite primary key.
+JPADataSource supports operations with composite primary keys. Setting data source level property [idClassName](../classes/DataSource_1.md#attr-datasourceidclassname) to fully qualified class name indicates, that entity uses composite primary key.
 
 JPADataSource supports automatic handling of JPA relations that don't declare a concrete field to hold ID values - see [jpaHibernateRelations](jpaHibernateRelations.md#kb-topic-jpa--hibernate-relations).
 
 #### JPA 1.0 compatibility
 
-To use JPA 1.0, set serverType="jpa1" instead. JPA 1.0 does not support [DataSource.autoDeriveSchema](../classes/DataSource.md#attr-datasourceautoderiveschema). For JPA 1.0, the concrete implementation class (for subclassing to create a custom DataSource) is `com.isomorphic.jpa.JPADataSource`.
+To use JPA 1.0, set serverType="jpa1" instead. JPA 1.0 does not support [DataSource.autoDeriveSchema](../classes/DataSource_1.md#attr-datasourceautoderiveschema). For JPA 1.0, the concrete implementation class (for subclassing to create a custom DataSource) is `com.isomorphic.jpa.JPADataSource`.
 
 #### JPA transactions
 

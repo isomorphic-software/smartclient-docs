@@ -7,7 +7,7 @@
 ## KB Topic: DataSource Operations
 
 ### Description
-A DataSource Operation is a type of [operation](operations.md#kb-topic-operations-overview) that acts on the set of stored objects represented by a [DataSource](../classes/DataSource.md#class-datasource), performing one of the basic actions that makes sense on a set of similar records: "fetch", "add", "update" or "remove". There is also a fifth DataSource Operation, "custom", which is intended for arbitrary server operations that are more complex than a fetch of some records, or an update to a single record.
+A DataSource Operation is a type of [operation](operations.md#kb-topic-operations-overview) that acts on the set of stored objects represented by a [DataSource](../classes/DataSource_1.md#class-datasource), performing one of the basic actions that makes sense on a set of similar records: "fetch", "add", "update" or "remove". There is also a fifth DataSource Operation, "custom", which is intended for arbitrary server operations that are more complex than a fetch of some records, or an update to a single record.
 
 Each DataSource operation has specific request and response data, for example, in the "fetch" DataSource operation, the request data is expected to be search criteria, and the response data is expected to be a list of matching DataSource records. Listed below are the request data and response data for each DataSource operation type, and what they mean.
 

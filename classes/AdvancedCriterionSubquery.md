@@ -79,11 +79,11 @@ Note, whether or not we separate out the subquery into its own `DSRequest`, [dec
 
 The rules around embedding or separating a subquery are, in order, as follows. As you can see, `canEmbedSQL` overrides all rules except the first (we obviously can't embed SQL if one of the dataSources isn't implemented using SQL)
 
-1.  If either the "main" dataSource or the subquery dataSource is not an [sql dataSource](DataSource.md#attr-datasourceservertype), the subquery must by separated. Otherwise,
+1.  If either the "main" dataSource or the subquery dataSource is not an [sql dataSource](DataSource_1.md#attr-datasourceservertype), the subquery must by separated. Otherwise,
 2.  If the `canEmbedSQL` flag is non-null, we honor it. Otherwise,
 3.  If the subquery specifies an explicit operationId, the subquery must be separated. Otherwise,
 4.  If the subquery dataSource declares a custom fetch [operation](OperationBinding.md#class-operationbinding) (that is, a fetch operation that does not declare an [operationId](OperationBinding.md#attr-operationbindingoperationid)), the subquery must be separated. Otherwise,
-5.  If the subquery dataSource declares either of the dataSource-level customization properties [DataSource.serverObject](DataSource.md#attr-datasourceserverobject) or [DataSource.script](DataSource.md#attr-datasourcescript), the subquery must be separated. Otherwise,
+5.  If the subquery dataSource declares either of the dataSource-level customization properties [DataSource.serverObject](DataSource_1.md#attr-datasourceserverobject) or [DataSource.script](DataSource_1.md#attr-datasourcescript), the subquery must be separated. Otherwise,
 6.  If the subquery DataSource is a direct instance of the base class (ie, its canonical class name is `com.isomorphic.sql.SQLDataSource`), the subquery can be embedded. Otherwise,
 7.  We now know that subquery dataSource is a subclass of `SQLDataSource`. We use Reflection to inspect the implementing class: if it overrides any of the methods `execute()`, `executeFetch{}` or `SQLExecute`, the subquery must be separated (note, we cache the results of these tests so Reflection is only used the first time a given dataSource instance is used)
 8.  If we get to this point without having decided whether the subquery can be embedded, or must be separated, the subquery can be embedded
@@ -110,7 +110,7 @@ The rules around embedding or separating a subquery are, in order, as follows. A
 ## Attr: AdvancedCriterionSubquery.dataSource
 
 ### Description
-The name of the [DataSource](DataSource.md#class-datasource) to use for this subquery
+The name of the [DataSource](DataSource_1.md#class-datasource) to use for this subquery
 
 ### Groups
 

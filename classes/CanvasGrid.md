@@ -42,6 +42,22 @@ When true, cell values are obtained via [ListGrid.getDefaultFormattedValue](List
 **Flags**: IR
 
 ---
+## Attr: CanvasGrid.typicalCharSample
+
+### Description
+Reference string used to measure average character width for text clipping decisions during canvas pre-rendering. The measured average width of this string determines how many characters fit in each cell before an ellipsis is shown.
+
+The default string weights characters by approximate English letter frequency (Lewand corpus) so that the measured average closely tracks real cell content. Each letter appears in proportion to its frequency rank: "e" and "t" appear 3 times, mid-frequency letters like "d" and "l" twice, and rare letters like "z" and "q" once. Digits, space, and common punctuation are included since they dominate formatted values (dates, currency, IDs). A small uppercase contingent (~15%) prevents over-clipping on headings and abbreviations.
+
+Custom strings can be set to bias the measurement toward a specific character distribution — for example, CJK-heavy content or all-numeric columns. The string should be representative of actual cell content: characters that appear more often in data should appear more often in the sample.
+
+### See Also
+
+- [CanvasGrid.clipFillRatio](#attr-canvasgridclipfillratio)
+
+**Flags**: IR
+
+---
 ## Attr: CanvasGrid.clipFillRatio
 
 ### Description
@@ -49,9 +65,9 @@ Controls how aggressively text fills each cell before being clipped with an elli
 
 Canvas pre-rendering estimates text width from average character width rather than measuring each string individually. This is O(1) per cell but introduces uncertainty from proportional font character width variation. In a typical UI font (Calibri 12px), character widths range from 3px ("i", "l", ".") to 11px ("W", "@") — a 3.7:1 ratio. Ten narrow characters like "llllllllll" occupy 30px while ten wide characters like "WWWWWWWWWW" occupy 110px — 3.7x wider for the same character count.
 
-When null (the default), cells are filled using the average character width directly — no safety margin is applied. Because the calibration sample weights uppercase and lowercase equally, the average is slightly biased high relative to typical cell content, so text naturally lands 1-2 characters short of the cell boundary. Strings dominated by wide characters (e.g. all-caps) may occasionally overflow, which is acceptable for a fast preview.
+The default value (0.95) applies a 5% safety margin to offset the optimistic bias of the character width sample, which averages over lowercase letters, digits, and common punctuation. This brings the canvas clipping in line with CSS text-overflow ellipsis placement.
 
-Set to a value less than 1.0 (e.g. 0.85) to add an explicit safety margin, reducing overflow at the cost of shorter visible text.
+Increase toward 1.0 to fill cells more aggressively (shows more text but risks occasional overflow). Decrease toward 0.85 for a wider safety margin at the cost of shorter visible text.
 
 **Flags**: IR
 

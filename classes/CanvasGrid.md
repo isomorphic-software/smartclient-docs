@@ -65,9 +65,9 @@ Controls how aggressively text fills each cell before being clipped with an elli
 
 Canvas pre-rendering estimates text width from average character width rather than measuring each string individually. This is O(1) per cell but introduces uncertainty from proportional font character width variation. In a typical UI font (Calibri 12px), character widths range from 3px ("i", "l", ".") to 11px ("W", "@") — a 3.7:1 ratio. Ten narrow characters like "llllllllll" occupy 30px while ten wide characters like "WWWWWWWWWW" occupy 110px — 3.7x wider for the same character count.
 
-The default value (0.95) applies a 5% safety margin to offset the optimistic bias of the character width sample, which averages over lowercase letters, digits, and common punctuation. This brings the canvas clipping in line with CSS text-overflow ellipsis placement.
+The default value (1.07) adds a 7% bias toward showing more text. The frequency-weighted [CanvasGrid.typicalCharSample](#attr-canvasgridtypicalcharsample) produces an average character width that includes uppercase letters and wide punctuation, making it ~7% wider than typical grid data (which is dominated by lowercase, digits, and short codes). The 7% compensates so that the canvas shows the same character count as CSS text-overflow:ellipsis. Because canvas is a temporary preview replaced by exact HTML rendering, occasional overflow into the right cell padding is acceptable.
 
-Increase toward 1.0 to fill cells more aggressively (shows more text but risks occasional overflow). Decrease toward 0.85 for a wider safety margin at the cost of shorter visible text.
+Decrease toward 0.90 to apply a wider safety margin at the cost of shorter visible text. Increase above 1.10 only if data is predominantly narrow characters (digits, lowercase) and the canvas preview appears to clip too aggressively.
 
 **Flags**: IR
 

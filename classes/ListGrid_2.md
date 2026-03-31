@@ -5708,6 +5708,26 @@ Note that developers may wish to use [ListGrid.deselectRange](#method-listgridde
 - [Selection](Selection.md#class-selection)
 
 ---
+## Method: ListGrid.setPreRender
+
+### Description
+Dynamically enables or disables the canvas pre-render layer. When switching from "none" to "data" or "structure", creates and draws the [CanvasGrid](CanvasGrid.md#class-canvasgrid) AutoChild over the body area. When switching to "none", hides and destroys the canvasGrid.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| mode | [PreRenderMode](../reference.md#type-prerendermode) | false | — | the new mode |
+
+### Groups
+
+- performance
+
+### See Also
+
+- [ListGrid.preRender](ListGrid_1.md#attr-listgridprerender)
+
+---
 ## Method: ListGrid.refreshFields
 
 ### Description

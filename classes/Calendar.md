@@ -82,6 +82,25 @@ The vertical alignment of the header-text in each [zone](#attr-calendarzones).
 **Flags**: IR
 
 ---
+## Attr: Calendar.minEventWidth
+
+### Description
+The minimum pixel width for event canvases in [day](#attr-calendardayview) and [week](#attr-calendarweekview) views. When overlapping events would be narrower than this, excess events are hidden and a [+N overflow chip](#attr-calendareventoverflowimg) appears in the [eventDragGap](#attr-calendareventdraggap) area.
+
+The maximum number of visible events in a column is computed as `floor((columnWidth - eventDragGap) / minEventWidth)`. Events beyond that limit are collected into [overflow regions](#attr-calendarshoweventoverflowdialog) accessible via the chip.
+
+### Groups
+
+- appearance
+
+### See Also
+
+- [Calendar.eventDragGap](#attr-calendareventdraggap)
+- [Calendar.showEventOverflowImg](#attr-calendarshoweventoverflowimg)
+
+**Flags**: IRW
+
+---
 ## Attr: Calendar.otherDayBodyBaseStyle
 
 ### Description
@@ -136,6 +155,23 @@ Can be specified as either a DataSource instance or the String ID of a DataSourc
 ### Groups
 
 - databinding
+
+**Flags**: IRW
+
+---
+## Attr: Calendar.eventOverflowImgWidth
+
+### Description
+Width of the [Img](Img.md#class-img) widget used for each [overflow chip](#attr-calendareventoverflowimg). This is the outer container size, not the icon inside it - the icon size comes from the `size:` attribute in [Calendar.eventOverflowSrc](#attr-calendareventoverflowsrc). A value larger than the icon provides horizontal padding around it. This property scales automatically with density via [font-based icon sizing](Canvas.md#classmethod-canvasregistericonsizingattributes).
+
+### Groups
+
+- appearance
+
+### See Also
+
+- [Calendar.eventOverflowImg](#attr-calendareventoverflowimg)
+- [Calendar.eventDragGap](#attr-calendareventdraggap)
 
 **Flags**: IRW
 
@@ -202,6 +238,22 @@ If set to true, clicking an event will bring it to the front of the zorder.
 **Flags**: IR
 
 ---
+## Attr: Calendar.showEventOverflowImg
+
+### Description
+Whether to show [overflow chips](#attr-calendareventoverflowimg) when overlapping events exceed the [minEventWidth](#attr-calendarmineventwidth) threshold. When false, excess events are simply hidden with no visual indicator.
+
+### Groups
+
+- appearance
+
+### See Also
+
+- [Calendar.minEventWidth](#attr-calendarmineventwidth)
+
+**Flags**: IRW
+
+---
 ## Attr: Calendar.zoneCanvas
 
 ### Description
@@ -213,7 +265,9 @@ AutoChild component created for each [zone](#attr-calendarzones) entry.
 ## Attr: Calendar.eventDragGap
 
 ### Description
-The number of pixels to leave to the right of events so overlapping events can still be added using the mouse.
+The number of pixels to leave to the right of events so overlapping events can still be added using the mouse. Also accommodates the [event overflow chip](#attr-calendareventoverflowimg). Both this value and the chip icon scale automatically with density via [font-based icon sizing](Canvas.md#classmethod-canvasregistericonsizingattributes).
+
+If [Calendar.eventOverflowImgWidth](#attr-calendareventoverflowimgwidth) is larger than this value, the gap is automatically increased to match, since the overflow chip must fit inside the gap area.
 
 **Flags**: IRW
 
@@ -300,6 +354,22 @@ The text to be displayed when a user hovers over the [previous](#attr-calendarpr
 - i18nMessages
 
 **Flags**: IR
+
+---
+## Attr: Calendar.eventOverflowHoverHTML
+
+### Description
+Hover text shown on [overflow chips](#attr-calendareventoverflowimg). The variable `${eventCount}` is replaced with the number of hidden events in the region. The final hover content is built by [Calendar.getEventOverflowHoverHTML](#method-calendargeteventoverflowhoverhtml), which prepends a time range to this template.
+
+### Groups
+
+- i18nMessages
+
+### See Also
+
+- [Calendar.getEventOverflowHoverHTML](#method-calendargeteventoverflowhoverhtml)
+
+**Flags**: IRW
 
 ---
 ## Attr: Calendar.selectionManager
@@ -585,6 +655,36 @@ The title for the [Calendar.startDateField](#attr-calendarstartdatefield) in the
 **Flags**: IR
 
 ---
+## Attr: Calendar.eventOverflowImg
+
+### Description
+[MultiAutoChild](../reference.md#type-multiautochild) [Img](Img.md#class-img) displayed in the [Calendar.eventDragGap](#attr-calendareventdraggap) area when overlapping events exceed the [Calendar.minEventWidth](#attr-calendarmineventwidth) threshold. Shows a "+N" label over the [CalendarEventOverflow](#stockicon-calendareventoverflow) icon (a downward chevron).
+
+Each chip covers a contiguous vertical region where the same set of events overflows. Chips are pooled and repositioned as the view scrolls or the data changes. They are always keyboard-focusable regardless of [Calendar.canSelectEvents](#attr-calendarcanselectevents), because hidden events have no other access path (WCAG 2.1.1 Level A).
+
+Customize via the [AutoChild](../reference.md#type-autochild) pattern:
+
+```
+ isc.Calendar.create({
+     eventOverflowImgProperties: {
+         width: 16, height: 20
+     }
+ });
+ 
+```
+
+### Groups
+
+- appearance
+
+### See Also
+
+- [Calendar.getEventOverflowImg](#method-calendargeteventoverflowimg)
+- [Calendar.eventOverflowImgClick](#method-calendareventoverflowimgclick)
+
+**Flags**: A
+
+---
 ## Attr: Calendar.showNextButton
 
 ### Description
@@ -677,6 +777,22 @@ See [cellStyleSuffixes](../kb_topics/cellStyleSuffixes.md#kb-topic-cellstylesuff
 The background color for cells that represent today in all [CalendarView](CalendarView.md#class-calendarview)s.
 
 **Flags**: IR
+
+---
+## Attr: Calendar.showEventOverflowDialog
+
+### Description
+Whether to show the [overflow dialog](#attr-calendareventoverflowdialog) when an [overflow chip](#attr-calendareventoverflowimg) is clicked. The dialog is suppressed when this property is false or when [Calendar.eventOverflowImgClick](#method-calendareventoverflowimgclick) returns false.
+
+### Groups
+
+- appearance
+
+### See Also
+
+- [Calendar.eventOverflowImgClick](#method-calendareventoverflowimgclick)
+
+**Flags**: IRW
 
 ---
 ## Attr: Calendar.showDayHeaders
@@ -804,6 +920,25 @@ Name of the field on each [CalendarEvent](../reference.md#object-calendarevent) 
 - [CalendarEvent](../reference.md#object-calendarevent)
 
 **Flags**: IR
+
+---
+## Attr: Calendar.eventOverflowDialog
+
+### Description
+[AutoChild](../reference.md#type-autochild) [Window](Window.md#class-window) shown when an [overflow chip](#attr-calendareventoverflowimg) is clicked, listing all hidden events in the overflow region. Contains an [embedded ListGrid](#attr-calendareventoverflowdialoggrid) with event name, description, start, and end columns. When [Calendar.canRemoveEvents](#attr-calendarcanremoveevents) is true, each row also shows a remove icon.
+
+The title is generated by [Calendar.getEventOverflowDialogTitle](#method-calendargeteventoverflowdialogtitle), which shows the date range and event count by default. Double-clicking a row opens the [event editor](#attr-calendareventeditor) for that event. Pressing Escape closes the dialog and returns focus to the chip that opened it.
+
+### Groups
+
+- appearance
+
+### See Also
+
+- [Calendar.showEventOverflowDialog](#attr-calendarshoweventoverflowdialog)
+- [Calendar.getEventOverflowDialogTitle](#method-calendargeteventoverflowdialogtitle)
+
+**Flags**: A
 
 ---
 ## Attr: Calendar.mainView
@@ -1120,6 +1255,34 @@ The title for the [Calendar.nameField](#attr-calendarnamefield) in the quick [ev
 **Flags**: IR
 
 ---
+## Attr: Calendar.eventOverflowOverlay
+
+### Description
+[AutoChild](../reference.md#type-autochild) [Canvas](Canvas.md#class-canvas) shown as a semi-transparent highlight behind event canvases when hovering an [overflow chip](#attr-calendareventoverflowimg). Spans the full column width across the overflow region's time range so the user can see which rows contain hidden events.
+
+The overlay is purely visual and does not intercept pointer events. Customize opacity and color via the [AutoChild](../reference.md#type-autochild) pattern:
+
+```
+ isc.Calendar.create({
+     eventOverflowOverlayProperties: {
+         opacity: 20,
+         backgroundColor: "#3366CC"
+     }
+ });
+ 
+```
+
+### Groups
+
+- appearance
+
+### See Also
+
+- [Calendar.eventOverflowImg](#attr-calendareventoverflowimg)
+
+**Flags**: A
+
+---
 ## Attr: Calendar.showEventHovers
 
 ### Description
@@ -1289,11 +1452,16 @@ Name of the field on each [CalendarEvent](../reference.md#object-calendarevent) 
 ## Attr: Calendar.eventOverlapIdenticalStartTimes
 
 ### Description
-When set to true, events that start at the same time will not overlap each other to prevent events having their close button hidden.
+When [Calendar.eventOverlap](#attr-calendareventoverlap) is true, controls whether events that share the same start time are allowed to physically overlap each other. When false, events with identical start times are laid out side-by-side without the [Calendar.eventOverlapPercent](#attr-calendareventoverlappercent) pixel shift, preventing neighboring events from hiding each other's close buttons.
 
 ### Groups
 
 - calendarEvent
+
+### See Also
+
+- [Calendar.eventOverlap](#attr-calendareventoverlap)
+- [Calendar.eventOverlapPercent](#attr-calendareventoverlappercent)
 
 **Flags**: IR
 
@@ -1408,6 +1576,22 @@ The minimum height for Lanes in a Timeline. When events have a [fixed height](#a
 An [AutoChild](../reference.md#type-autochild) of type [HLayout](../reference.md#class-hlayout) which houses the [Save](#attr-calendarsavebutton), [Remove](#attr-calendarremovebutton) and [Cancel](#attr-calendarcancelbutton) buttons in the [eventEditor](#attr-calendareventeditor).
 
 **Flags**: R
+
+---
+## Attr: Calendar.eventOverflowSrc
+
+### Description
+The [Img.src](Img.md#attr-imgsrc) for each [overflow chip](#attr-calendareventoverflowimg). This value is automatically applied to each chip instance; set it to use a different stock icon or image URL. Alternatively, override via the [AutoChild](../reference.md#type-autochild) pattern with `eventOverflowImgProperties.src`.
+
+### Groups
+
+- appearance
+
+### See Also
+
+- [Calendar.eventOverflowImg](#attr-calendareventoverflowimg)
+
+**Flags**: IR
 
 ---
 ## Attr: Calendar.renderEventsOnDemand
@@ -1839,6 +2023,22 @@ If set, and [showWorkday](#attr-calendarshowworkday) is true, automatically scro
 **Flags**: IRW
 
 ---
+## Attr: Calendar.eventOverflowStyle
+
+### Description
+CSS class applied to each [overflow chip](#attr-calendareventoverflowimg). The class does not yet ship with any skin - set it to a custom class to style the chip container.
+
+### Groups
+
+- appearance
+
+### See Also
+
+- [Calendar.eventOverflowImg](#attr-calendareventoverflowimg)
+
+**Flags**: IRW
+
+---
 ## Attr: Calendar.canEditSublaneField
 
 ### Description
@@ -1897,6 +2097,18 @@ The title for the [Cancel button](#attr-calendarcancelbutton) in the [event edit
 - i18nMessages
 
 **Flags**: IR
+
+---
+## Attr: Calendar.eventOverflowDialogGrid
+
+### Description
+[AutoChild](../reference.md#type-autochild) [ListGrid](ListGrid_1.md#class-listgrid) embedded in the [Calendar.eventOverflowDialog](#attr-calendareventoverflowdialog) that lists overflow events. By default shows name, description, start, and end columns, with a remove icon when [Calendar.canRemoveEvents](#attr-calendarcanremoveevents) is true.
+
+### Groups
+
+- appearance
+
+**Flags**: A
 
 ---
 ## Attr: Calendar.indicatorStyleName
@@ -2387,6 +2599,22 @@ When set to true, allows events to be managed by duration, as well as by end dat
 ### See Also
 
 - [CalendarEvent](../reference.md#object-calendarevent)
+
+**Flags**: IRW
+
+---
+## Attr: Calendar.eventOverflowDialogTitleSuffix
+
+### Description
+Suffix appended to the date range in the [overflow\\n dialog](#attr-calendareventoverflowdialog) title. The variable `${eventCount}` is replaced with the number of hidden events.
+
+### Groups
+
+- i18nMessages
+
+### See Also
+
+- [Calendar.getEventOverflowDialogTitle](#method-calendargeteventoverflowdialogtitle)
 
 **Flags**: IRW
 
@@ -3024,6 +3252,25 @@ Selects a single event in the current view, showing it in a selected style and d
 `[Boolean](#type-boolean)` — true if the selection was changed, false otherwise
 
 ---
+## Method: Calendar.getEventOverflowDialogTitle
+
+### Description
+Returns the title for the [overflow dialog](#attr-calendareventoverflowdialog). Override to provide a custom title string. The default implementation shows the date range followed by the [event count suffix](#attr-calendareventoverflowdialogtitlesuffix).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| events | [Array of CalendarEvent](#type-array-of-calendarevent) | false | — | the hidden events in the overflow region |
+| startDate | [Date](#type-date) | false | — | start of the overflow region |
+| endDate | [Date](#type-date) | false | — | end of the overflow region |
+| view | [CalendarView](#type-calendarview) | false | — | the view containing the overflow |
+
+### Returns
+
+`[String](#type-string)` — the dialog title
+
+---
 ## Method: Calendar.getEventLength
 
 ### Description
@@ -3102,6 +3349,24 @@ You can override this method to prevent the default action, perhaps instead show
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | event | [CalendarEvent](#type-calendarevent) | true | — | defaults for the new event |
+
+---
+## Method: Calendar.getEventOverflowHoverHTML
+
+### Description
+Returns the hover HTML for an [overflow chip](#attr-calendareventoverflowimg). The default implementation prepends a compact time range (e.g. "10:00 AM - 12:00 PM") to the [i18n template string](#attr-calendareventoverflowhoverhtml). Override to provide fully custom hover content.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| events | [Array of CalendarEvent](#type-array-of-calendarevent) | false | — | the hidden events in the overflow region |
+| startDate | [Date](#type-date) | false | — | start of the overflow region |
+| endDate | [Date](#type-date) | false | — | end of the overflow region |
+
+### Returns
+
+`[HTMLString](../reference.md#type-htmlstring)` — the hover HTML
 
 ---
 ## Method: Calendar.deselectEvents
@@ -4323,6 +4588,25 @@ Accepts either a [Lane object](../reference.md#object-lane) or a string that rep
 | lane | [Lane](#type-lane)|[String](#type-string) | false | — | either the actual Lane object or the name of the lane to remove |
 
 ---
+## Method: Calendar.getEventOverflowImg
+
+### Description
+Creates and returns the [overflow chip](#attr-calendareventoverflowimg) for a given overflow region. Override to provide a completely custom chip widget.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| view | [CalendarView](#type-calendarview) | false | — | the view containing the overflow |
+| events | [Array of CalendarEvent](#type-array-of-calendarevent) | false | — | the hidden events in this region |
+| startDate | [Date](#type-date) | false | — | start of the overflow region |
+| endDate | [Date](#type-date) | false | — | end of the overflow region |
+
+### Returns
+
+`[Img](#type-img)` — the overflow chip widget
+
+---
 ## Method: Calendar.setTimelineRange
 
 ### Description
@@ -4416,6 +4700,28 @@ Returns the [source image](#attr-calendareventcanvasgrippericon) to use as the g
 ### Returns
 
 `[SCImgURL](../reference.md#type-scimgurl)` — the URL for the image to load
+
+---
+## Method: Calendar.eventOverflowImgClick
+
+### Description
+[StringMethod](../reference_2.md#type-stringmethod) fired when an [overflow chip](#attr-calendareventoverflowimg) is clicked. Return `false` to suppress the default behavior of opening the [overflow dialog](#attr-calendareventoverflowdialog).
+
+Use this to show a custom UI or navigate to a different view when events overflow.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| img | [Img](#type-img) | false | — | the overflow chip that was clicked |
+| events | [Array of CalendarEvent](#type-array-of-calendarevent) | false | — | the hidden events in this overflow region |
+| startDate | [Date](#type-date) | false | — | start of the overflow region |
+| endDate | [Date](#type-date) | false | — | end of the overflow region |
+| view | [CalendarView](#type-calendarview) | false | — | the view containing the overflow |
+
+### Returns
+
+`[Boolean](#type-boolean)` — false to cancel the default overflow dialog
 
 ---
 ## Method: Calendar.shouldShowLane

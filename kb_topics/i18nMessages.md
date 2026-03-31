@@ -304,6 +304,8 @@ The properties in this group are default system messages that a localized applic
 - [CubeGrid.controlCloseTitle](../classes/CubeGrid.md#attr-cubegridcontrolclosetitle)
 - [CubeGrid.chartTypeTitle](../classes/CubeGrid.md#attr-cubegridcharttypetitle)
 - [CubeGrid.chartStackedTitle](../classes/CubeGrid.md#attr-cubegridchartstackedtitle)
+- [Calendar.eventOverflowHoverHTML](../classes/Calendar.md#attr-calendareventoverflowhoverhtml)
+- [Calendar.eventOverflowDialogTitleSuffix](../classes/Calendar.md#attr-calendareventoverflowdialogtitlesuffix)
 - [Calendar.eventEditorDateFieldTitle](../classes/Calendar.md#attr-calendareventeditordatefieldtitle)
 - [Calendar.weekPrefix](../classes/Calendar.md#attr-calendarweekprefix)
 - [Calendar.dayViewTitle](../classes/Calendar.md#attr-calendardayviewtitle)

@@ -5039,7 +5039,7 @@ This setting is most beneficial for grids with many visible cells where the DOM 
 
 - [ListGrid.canvasGridDefaults](#attr-listgridcanvasgriddefaults)
 
-**Flags**: IR
+**Flags**: IRW
 
 ---
 ## Attr: ListGrid.alternateRecordStyles

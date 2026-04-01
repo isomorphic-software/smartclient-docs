@@ -359,7 +359,7 @@ The text to be displayed when a user hovers over the [previous](#attr-calendarpr
 ## Attr: Calendar.eventOverflowHoverHTML
 
 ### Description
-Hover text shown on [overflow chips](#attr-calendareventoverflowimg). The variable `${eventCount}` is replaced with the number of hidden events in the region. The final hover content is built by [Calendar.getEventOverflowHoverHTML](#method-calendargeteventoverflowhoverhtml), which prepends a time range to this template.
+Summary line shown in the hover for [overflow chips](#attr-calendareventoverflowimg). The variable `${eventCount}` is replaced with the number of hidden events in the region. The final hover content is built by [Calendar.getEventOverflowHoverHTML](#method-calendargeteventoverflowhoverhtml), which prepends a time range and appends a list of event names below this summary.
 
 ### Groups
 
@@ -2026,7 +2026,7 @@ If set, and [showWorkday](#attr-calendarshowworkday) is true, automatically scro
 ## Attr: Calendar.eventOverflowStyle
 
 ### Description
-CSS class applied to each [overflow chip](#attr-calendareventoverflowimg). The class does not yet ship with any skin - set it to a custom class to style the chip container.
+CSS class applied to each [overflow chip](#attr-calendareventoverflowimg).
 
 ### Groups
 
@@ -2625,6 +2625,18 @@ Suffix appended to the date range in the [overflow\\n dialog](#attr-calendareven
 The close button that snaps to the top-right of an event canvas on rollover and allows an event to be removed from a [CalendarView](CalendarView.md#class-calendarview).
 
 **Flags**: A
+
+---
+## Attr: Calendar.eventOverflowHoverMaxEvents
+
+### Description
+Maximum number of event names to list in the hover for an [overflow chip](#attr-calendareventoverflowimg). When there are more hidden events than this limit, remaining events are summarized as "+N more..." at the end of the list. Set to 0 to suppress the event list entirely, showing only the time range and [summary line](#attr-calendareventoverflowhoverhtml).
+
+### See Also
+
+- [Calendar.getEventOverflowHoverHTML](#method-calendargeteventoverflowhoverhtml)
+
+**Flags**: IRW
 
 ---
 ## Attr: Calendar.eventStyleName
@@ -3354,7 +3366,7 @@ You can override this method to prevent the default action, perhaps instead show
 ## Method: Calendar.getEventOverflowHoverHTML
 
 ### Description
-Returns the hover HTML for an [overflow chip](#attr-calendareventoverflowimg). The default implementation prepends a compact time range (e.g. "10:00 AM - 12:00 PM") to the [i18n template string](#attr-calendareventoverflowhoverhtml). Override to provide fully custom hover content.
+Returns the hover HTML for an [overflow chip](#attr-calendareventoverflowimg). The default implementation shows a compact time range, the [summary line](#attr-calendareventoverflowhoverhtml), and a list of up to [Calendar.eventOverflowHoverMaxEvents](#attr-calendareventoverflowhovermaxevents) event names from the overflow region. Override to provide fully custom hover content.
 
 ### Parameters
 

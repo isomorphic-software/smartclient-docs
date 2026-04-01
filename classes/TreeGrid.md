@@ -369,7 +369,7 @@ Specifies the type of nodes displayed in the treeGrid.
 
 ### See Also
 
-- [DisplayNodeType](../reference.md#type-displaynodetype)
+- [DisplayNodeType](../reference_2.md#type-displaynodetype)
 
 **Flags**: IRW
 

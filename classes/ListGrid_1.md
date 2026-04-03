@@ -8309,6 +8309,20 @@ For editable listGrids, outstanding unsaved edits when the user performs a new f
 **Flags**: IRW
 
 ---
+## Attr: ListGrid.exportWrapCells
+
+### Description
+When exporting data to Excel/OpenOffice format using [ListGrid.exportData](ListGrid_2.md#method-listgridexportdata) or [ListGrid.exportClientData](ListGrid_2.md#method-listgridexportclientdata), whether data cells should have text wrapping enabled.
+
+When true (the default), cells with content wider than the column will wrap to additional lines and the row height expands to fit. However, due to sub-pixel rounding differences between Excel's column auto-fit calculation and its text rendering engine, cells whose content _barely_ fits the column width may wrap by a fraction of a character, causing unexpected row height expansion even when the content logically fits on one line.
+
+Set to false to prevent this: cells will not wrap, so row heights stay at the single-line default. Content that genuinely exceeds the column width will be clipped or overflow into the next cell (standard Excel behavior for non-wrapped cells).
+
+See also [ListGrid.exportFieldWidths](#attr-listgridexportfieldwidths) and [ListGrid.exportWidthScale](#attr-listgridexportwidthscale) for controlling column widths in the exported spreadsheet.
+
+**Flags**: IRW
+
+---
 ## Attr: ListGrid.canDragRecordsOut
 
 ### Description
@@ -9745,28 +9759,5 @@ Whether at least one item is selected
 ### Groups
 
 - selection
-
----
-## Method: ListGrid.editFailed
-
-### Description
-Called when an attempt to save inline edits fails, due to a validation error or other server error.
-
-The default implementation of editFailed does nothing for normal validation errors, which are displayed before editFailed() is called. For any other errors, the default implementation will call [RPCManager.handleError](RPCManager.md#classmethod-rpcmanagerhandleerror), which by default will result in a warning dialog.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| rowNum | [number](#type-number) | false | — | current index of the row we attempted to save |
-| colNum | [number](#type-number) | false | — | index of the column where the edit failed, if applicable |
-| newValues | [Object](../reference.md#type-object)|[Record](#type-record) | false | — | new values that we attempted to save |
-| oldValues | [Record](#type-record) | false | — | the complete original values from before the save occurred |
-| editCompletionEvent | [EditCompletionEvent](../reference_2.md#type-editcompletionevent) | false | — | Edit completion event that led to the save attempt |
-| dsResponse | [DSResponse](#type-dsresponse) | true | — | DSResponse, for saves through a DataSource |
-
-### Groups
-
-- editing
 
 ---

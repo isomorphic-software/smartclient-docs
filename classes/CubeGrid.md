@@ -2688,7 +2688,7 @@ The 'callback' parameter provides a notification when the save attempt completes
 
 Note that if no rowNum/colNum were passed in and the editor is not showing for the cell, the callback will NOT fire - in this case, the method is a no-op.
 
-Other, standard callbacks such as [editComplete()](ListGrid_2.md#method-listgrideditcomplete), [editFailed()](ListGrid_1.md#method-listgrideditfailed) and [cellChanged()](ListGrid_2.md#method-listgridcellchanged) will fire normally.
+Other, standard callbacks such as [editComplete()](ListGrid_2.md#method-listgrideditcomplete), [editFailed()](ListGrid_2.md#method-listgrideditfailed) and [cellChanged()](ListGrid_2.md#method-listgridcellchanged) will fire normally.
 
 Note this method does not hide the inline editors if they are showing - to explicitly save and end editing, use the method 'endEditing()'
 

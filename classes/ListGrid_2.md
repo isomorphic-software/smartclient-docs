@@ -4,6 +4,29 @@
 
 ---
 
+## Method: ListGrid.editFailed
+
+### Description
+Called when an attempt to save inline edits fails, due to a validation error or other server error.
+
+The default implementation of editFailed does nothing for normal validation errors, which are displayed before editFailed() is called. For any other errors, the default implementation will call [RPCManager.handleError](RPCManager.md#classmethod-rpcmanagerhandleerror), which by default will result in a warning dialog.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| rowNum | [number](#type-number) | false | — | current index of the row we attempted to save |
+| colNum | [number](#type-number) | false | — | index of the column where the edit failed, if applicable |
+| newValues | [Object](../reference.md#type-object)|[Record](#type-record) | false | — | new values that we attempted to save |
+| oldValues | [Record](#type-record) | false | — | the complete original values from before the save occurred |
+| editCompletionEvent | [EditCompletionEvent](../reference_2.md#type-editcompletionevent) | false | — | Edit completion event that led to the save attempt |
+| dsResponse | [DSResponse](#type-dsresponse) | true | — | DSResponse, for saves through a DataSource |
+
+### Groups
+
+- editing
+
+---
 ## Method: ListGrid.cellContextClick
 
 ### Description
@@ -320,7 +343,7 @@ Note that if [ListGrid.saveRequestProperties](ListGrid_1.md#attr-listgridsavereq
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | rows | [Array of Number](#type-array-of-number) | true | — | optionally specify which rows to save |
-| saveCallback | [Callback](../reference.md#type-callback) | true | — | If specified this callback will be fired on a successful save of the specified rows. Note that if there are no pending edits to be saved this callback will not fire - you can check for this condition using [ListGrid.hasChanges](#method-listgridhaschanges) or [ListGrid.rowHasChanges](#method-listgridrowhaschanges). Use [ListGrid.editFailed](ListGrid_1.md#method-listgrideditfailed) to find out about failures encountered during saving (on a per-row basis). |
+| saveCallback | [Callback](../reference.md#type-callback) | true | — | If specified this callback will be fired on a successful save of the specified rows. Note that if there are no pending edits to be saved this callback will not fire - you can check for this condition using [ListGrid.hasChanges](#method-listgridhaschanges) or [ListGrid.rowHasChanges](#method-listgridrowhaschanges). Use [ListGrid.editFailed](#method-listgrideditfailed) to find out about failures encountered during saving (on a per-row basis). |
 
 ### Returns
 
@@ -1910,7 +1933,7 @@ The 'callback' parameter provides a notification when the save attempt completes
 
 Note that if this method was unable to determine the row to be saved, the callback will NOT fire - in this case, the method is a no-op.
 
-Other, standard callbacks such as [ListGrid.editComplete](#method-listgrideditcomplete), [ListGrid.editFailed](ListGrid_1.md#method-listgrideditfailed) and [ListGrid.cellChanged](#method-listgridcellchanged) will fire normally.
+Other, standard callbacks such as [ListGrid.editComplete](#method-listgrideditcomplete), [ListGrid.editFailed](#method-listgrideditfailed) and [ListGrid.cellChanged](#method-listgridcellchanged) will fire normally.
 
 Note this method does not hide the inline editors if they are showing - to explicitly save and end editing, use the method 'endEditing()'
 

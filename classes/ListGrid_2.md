@@ -4,6 +4,37 @@
 
 ---
 
+## Method: ListGrid.showFilterWindow
+
+### Description
+Shows the dialog for [ListGrid.filterWindowCriteria](ListGrid_1.md#attr-listgridfilterwindowcriteria) allowing end-users to edit the advanced filter. This method can be called directly but it is also used to show the dialog when [ListGrid.allowFilterWindow](ListGrid_1.md#attr-listgridallowfilterwindow) is enabled and the user chooses the ["Advanced Filtering"](ListGrid_1.md#attr-listgridadvancedfilteringtext) menu option.
+
+**Note:** this feature requires [SmartClient Pro](https://www.smartclient.com/product/) or better.
+
+---
+## Method: ListGrid.getDrawnRowHeight
+
+### Description
+Get the drawn height of a row.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| rowNum | [number](#type-number) | false | — | — |
+
+### Returns
+
+`[number](#type-number)` — height
+
+### Groups
+
+- sizing
+- positioning
+
+**Flags**: A
+
+---
 ## Method: ListGrid.getFormattedValue
 
 ### Description
@@ -5573,8 +5604,8 @@ Depending on the field's current filter-value and operator, calls to this method
 
 In general, if the field has a current filter-value, it will be cleared if
 
-*   the new operator does not require a value (operator-type [none](../reference_2.md#type-operatorvaluetype) - [isBlank](../reference.md#type-operatorid), for example)
-*   the current and new operators have different [value-types](../reference_2.md#type-operatorvaluetype) and [ListGrid.allowFilterExpressions](ListGrid_1.md#attr-listgridallowfilterexpressions) is false
+*   the new operator does not require a value (operator-type [none](../reference.md#type-operatorvaluetype) - [isBlank](../reference.md#type-operatorid), for example)
+*   the current and new operators have different [value-types](../reference.md#type-operatorvaluetype) and [ListGrid.allowFilterExpressions](ListGrid_1.md#attr-listgridallowfilterexpressions) is false
 *   the item has an [optionDataSource](FormItem.md#attr-formitemoptiondatasource) or valueMap which no longer includes the current value
 
 If `filterOnKeypress` is true, a fetch will be issued if
@@ -5689,7 +5720,7 @@ May fire as criteria values are being edited if [ListGrid.filterByCell](ListGrid
 
 Return false to cancel the default behavior - you **must** cancel the default behavior if your code is going to call [ListGrid.filterData](#method-listgridfilterdata), [ListGrid.setCriteria](#method-listgridsetcriteria) or any other API that affects the criteria applied to the grid.
 
-The `criteria` parameter contains the current criteria applied to the grid including edits the user has just made using the Filter Editor and those applied with the [advanced filtering dialog](ListGrid_1.md#method-listgridshowfilterwindow). A call to [ListGrid.getFilterEditorCriteria](#method-listgridgetfiltereditorcriteria) does not include the [advanced filtering criteria](#method-listgridgetfilterwindowcriteria).
+The `criteria` parameter contains the current criteria applied to the grid including edits the user has just made using the Filter Editor and those applied with the [advanced filtering dialog](#method-listgridshowfilterwindow). A call to [ListGrid.getFilterEditorCriteria](#method-listgridgetfiltereditorcriteria) does not include the [advanced filtering criteria](#method-listgridgetfilterwindowcriteria).
 
 If you wish to access the `criteria` applied to the grid without picking up any edits to the Filter Editor, use [ListGrid.getCriteria](#method-listgridgetcriteria) instead.
 

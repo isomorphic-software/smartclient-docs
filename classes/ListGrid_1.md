@@ -1063,7 +1063,7 @@ Note: Unlike [ListGrid.autoFitMaxWidth](#attr-listgridautofitmaxwidth), this pro
 ### Description
 Hilites to be applied to the data for this grid. See [hiliting](../kb_topics/hiliting.md#kb-topic-hiliting).
 
-It is undefined behavior to share the same record objects, or the same [ResultSet](ResultSet.md#class-resultset) instances, among multiple grids if one of the grid's fields specifies a [userFormula](ListGridField.md#attr-listgridfielduserformula), [userSummary](ListGridField.md#attr-listgridfieldusersummary), [aiFieldPrompt](ListGridField.md#attr-listgridfieldaifieldprompt), or [aiHoverRequest](ListGridField.md#attr-listgridfieldaihoverrequest), or if one of the grids has a [Hilite](../reference_2.md#object-hilite) with an asynchronous filter in the hilite's [criteria](Hilite.md#attr-hilitecriteria).
+It is undefined behavior to share the same record objects, or the same [ResultSet](ResultSet.md#class-resultset) instances, among multiple grids if one of the grid's fields specifies a [userFormula](ListGridField.md#attr-listgridfielduserformula), [userSummary](ListGridField.md#attr-listgridfieldusersummary), [aiFieldPrompt](ListGridField.md#attr-listgridfieldaifieldprompt), or [aiHoverRequest](ListGridField.md#attr-listgridfieldaihoverrequest), or if one of the grids has a [Hilite](../reference.md#object-hilite) with an asynchronous filter in the hilite's [criteria](Hilite.md#attr-hilitecriteria).
 
 ### Groups
 
@@ -1087,7 +1087,7 @@ Height of the error icon, if we're showing icons when validation errors occur.
 ## Attr: ListGrid.filterWindowFilter
 
 ### Description
-Instance of [FilterBuilder](FilterBuilder.md#class-filterbuilder) shown in [ListGrid.filterWindow](#attr-listgridfilterwindow) by [ListGrid.showFilterWindow](#method-listgridshowfilterwindow). See [ListGrid.filterWindow](#attr-listgridfilterwindow) for more information on the filter defaults and changing them.
+Instance of [FilterBuilder](FilterBuilder.md#class-filterbuilder) shown in [ListGrid.filterWindow](#attr-listgridfilterwindow) by [ListGrid.showFilterWindow](ListGrid_2.md#method-listgridshowfilterwindow). See [ListGrid.filterWindow](#attr-listgridfilterwindow) for more information on the filter defaults and changing them.
 
 **Flags**: IR
 
@@ -2926,7 +2926,7 @@ To avoid automatic saving entirely, set [ListGrid.autoSaveEdits](#attr-listgrida
 ### Description
 Advanced filtering criteria, either [simple](../reference_2.md#type-criteria) or [advanced](../reference.md#object-advancedcriteria), that is combined with the [filter editor criteria](ListGrid_2.md#method-listgridgetfiltereditorcriteria) during filtering.
 
-This criteria is normally configured via [advanced filtering dialog](#method-listgridshowfilterwindow) shown because of the [ListGrid.allowFilterWindow](#attr-listgridallowfilterwindow) option but can be assigned directly as well.
+This criteria is normally configured via [advanced filtering dialog](ListGrid_2.md#method-listgridshowfilterwindow) shown because of the [ListGrid.allowFilterWindow](#attr-listgridallowfilterwindow) option but can be assigned directly as well.
 
 For a discussion of the various filtering and criteria-management APIs and when to use them, see the [Grid Filtering overview](../kb_topics/gridFiltering.md#kb-topic-grid-filtering-overview).
 
@@ -3777,7 +3777,7 @@ Note that if [ListGrid.editOnFocus](#attr-listgrideditonfocus) is true for this 
 ## Attr: ListGrid.filterWindow
 
 ### Description
-Instance of [Window](Window.md#class-window) used to [show](#method-listgridshowfilterwindow) the [FilterBuilder](#attr-listgridfilterwindowfilter).
+Instance of [Window](Window.md#class-window) used to [show](ListGrid_2.md#method-listgridshowfilterwindow) the [FilterBuilder](#attr-listgridfilterwindowfilter).
 
 For a discussion of the various filtering and criteria-management APIs and when to use them, see the [Grid Filtering overview](../kb_topics/gridFiltering.md#kb-topic-grid-filtering-overview).
 
@@ -5943,18 +5943,6 @@ For editable listGrids, outstanding unsaved edits when the user performs a new f
 **Flags**: IRW
 
 ---
-## Attr: ListGrid.unknownRowCountDisplayValue
-
-### Description
-Value to return from [ListGrid.getFormattedRowCount](ListGrid_2.md#method-listgridgetformattedrowcount) when the row count is unknown
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
-
----
 ## Attr: ListGrid.headerMenuButtonHeight
 
 ### Description
@@ -5969,6 +5957,18 @@ If [ListGrid.showHeaderMenuButton](#attr-listgridshowheadermenubutton) is true, 
 - [ListGrid.rotatedHeaderMenuButtonHeight](#attr-listgridrotatedheadermenubuttonheight)
 
 **Flags**: IRA
+
+---
+## Attr: ListGrid.unknownRowCountDisplayValue
+
+### Description
+Value to return from [ListGrid.getFormattedRowCount](ListGrid_2.md#method-listgridgetformattedrowcount) when the row count is unknown
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IRW
 
 ---
 ## Attr: ListGrid.headerMenuButtonIconHeight
@@ -6252,18 +6252,6 @@ An automatically generated field that can be dragged to drag the current selecti
 **Flags**: IR
 
 ---
-## Attr: ListGrid.rowRangeDisplayStyle
-
-### Description
-How should the [ListGrid.getFormattedRowRange](ListGrid_2.md#method-listgridgetformattedrowrange) format the row range and row count for display to the user?
-
-### Groups
-
-- rowRangeDisplay
-
-**Flags**: IRW
-
----
 ## Attr: ListGrid.warnOnRemovalMessage
 
 ### Description
@@ -6272,6 +6260,18 @@ Warning message to show the user on a click on the 'remove' icon if [ListGrid.ca
 ### Groups
 
 - i18nMessages
+
+**Flags**: IRW
+
+---
+## Attr: ListGrid.rowRangeDisplayStyle
+
+### Description
+How should the [ListGrid.getFormattedRowRange](ListGrid_2.md#method-listgridgetformattedrowrange) format the row range and row count for display to the user?
+
+### Groups
+
+- rowRangeDisplay
 
 **Flags**: IRW
 
@@ -8242,6 +8242,20 @@ For editable listGrids, outstanding unsaved edits when the user performs a new f
 **Flags**: IRW
 
 ---
+## Attr: ListGrid.exportWrapCells
+
+### Description
+When exporting data to Excel/OpenOffice format using [ListGrid.exportData](ListGrid_2.md#method-listgridexportdata) or [ListGrid.exportClientData](ListGrid_2.md#method-listgridexportclientdata), whether data cells should have text wrapping enabled.
+
+When true (the default), cells with content wider than the column will wrap to additional lines and the row height expands to fit. However, due to sub-pixel rounding differences between Excel's column auto-fit calculation and its text rendering engine, cells whose content _barely_ fits the column width may wrap by a fraction of a character, causing unexpected row height expansion even when the content logically fits on one line.
+
+Set to false to prevent this: cells will not wrap, so row heights stay at the single-line default. Content that genuinely exceeds the column width will be clipped or overflow into the next cell (standard Excel behavior for non-wrapped cells).
+
+See also [ListGrid.exportFieldWidths](#attr-listgridexportfieldwidths) and [ListGrid.exportWidthScale](#attr-listgridexportwidthscale) for controlling column widths in the exported spreadsheet.
+
+**Flags**: IRW
+
+---
 ## Attr: ListGrid.canDragRecordsOut
 
 ### Description
@@ -9738,36 +9752,5 @@ Note: for showing multiple fields it is more efficient to call this method than 
 |------|------|----------|---------|-------------|
 | field | [Array of String](#type-array-of-string)|[Array of ListGridField](#type-array-of-listgridfield) | false | — | Fields to show. |
 | suppressRelayout | [boolean](../reference.md#type-boolean) | true | — | If passed, don't resize non-explicitly sized columns to fill the available space. |
-
----
-## Method: ListGrid.showFilterWindow
-
-### Description
-Shows the dialog for [ListGrid.filterWindowCriteria](#attr-listgridfilterwindowcriteria) allowing end-users to edit the advanced filter. This method can be called directly but it is also used to show the dialog when [ListGrid.allowFilterWindow](#attr-listgridallowfilterwindow) is enabled and the user chooses the ["Advanced Filtering"](#attr-listgridadvancedfilteringtext) menu option.
-
-**Note:** this feature requires [SmartClient Pro](https://www.smartclient.com/product/) or better.
-
----
-## Method: ListGrid.getDrawnRowHeight
-
-### Description
-Get the drawn height of a row.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| rowNum | [number](#type-number) | false | — | — |
-
-### Returns
-
-`[number](#type-number)` — height
-
-### Groups
-
-- sizing
-- positioning
-
-**Flags**: A
 
 ---

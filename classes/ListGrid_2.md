@@ -4,6 +4,37 @@
 
 ---
 
+## Method: ListGrid.showFilterWindow
+
+### Description
+Shows the dialog for [ListGrid.filterWindowCriteria](ListGrid_1.md#attr-listgridfilterwindowcriteria) allowing end-users to edit the advanced filter. This method can be called directly but it is also used to show the dialog when [ListGrid.allowFilterWindow](ListGrid_1.md#attr-listgridallowfilterwindow) is enabled and the user chooses the ["Advanced Filtering"](ListGrid_1.md#attr-listgridadvancedfilteringtext) menu option.
+
+**Note:** this feature requires [SmartClient Pro](https://www.smartclient.com/product/) or better.
+
+---
+## Method: ListGrid.getDrawnRowHeight
+
+### Description
+Get the drawn height of a row.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| rowNum | [number](#type-number) | false | — | — |
+
+### Returns
+
+`[number](#type-number)` — height
+
+### Groups
+
+- sizing
+- positioning
+
+**Flags**: A
+
+---
 ## Method: ListGrid.getFormattedValue
 
 ### Description
@@ -5689,7 +5720,7 @@ May fire as criteria values are being edited if [ListGrid.filterByCell](ListGrid
 
 Return false to cancel the default behavior - you **must** cancel the default behavior if your code is going to call [ListGrid.filterData](#method-listgridfilterdata), [ListGrid.setCriteria](#method-listgridsetcriteria) or any other API that affects the criteria applied to the grid.
 
-The `criteria` parameter contains the current criteria applied to the grid including edits the user has just made using the Filter Editor and those applied with the [advanced filtering dialog](ListGrid_1.md#method-listgridshowfilterwindow). A call to [ListGrid.getFilterEditorCriteria](#method-listgridgetfiltereditorcriteria) does not include the [advanced filtering criteria](#method-listgridgetfilterwindowcriteria).
+The `criteria` parameter contains the current criteria applied to the grid including edits the user has just made using the Filter Editor and those applied with the [advanced filtering dialog](#method-listgridshowfilterwindow). A call to [ListGrid.getFilterEditorCriteria](#method-listgridgetfiltereditorcriteria) does not include the [advanced filtering criteria](#method-listgridgetfilterwindowcriteria).
 
 If you wish to access the `criteria` applied to the grid without picking up any edits to the Filter Editor, use [ListGrid.getCriteria](#method-listgridgetcriteria) instead.
 

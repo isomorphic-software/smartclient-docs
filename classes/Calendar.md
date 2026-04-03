@@ -359,7 +359,7 @@ The text to be displayed when a user hovers over the [previous](#attr-calendarpr
 ## Attr: Calendar.eventOverflowHoverHTML
 
 ### Description
-Summary line shown in the hover for [overflow chips](#attr-calendareventoverflowimg). The variable `${eventCount}` is replaced with the number of hidden events in the region. The final hover content is built by [Calendar.getEventOverflowHoverHTML](#method-calendargeteventoverflowhoverhtml), which prepends a time range and appends a list of event names below this summary.
+Summary text shown in the first line of the hover for [overflow chips](#attr-calendareventoverflowimg). The variable `${eventCount}` is replaced with the number of hidden events in the region. The final hover content is built by [Calendar.getEventOverflowHoverHTML](#method-calendargeteventoverflowhoverhtml), which combines the time range and this summary into a single non-wrapping line, then appends a list of event names below it.
 
 ### Groups
 
@@ -3366,7 +3366,7 @@ You can override this method to prevent the default action, perhaps instead show
 ## Method: Calendar.getEventOverflowHoverHTML
 
 ### Description
-Returns the hover HTML for an [overflow chip](#attr-calendareventoverflowimg). The default implementation shows a compact time range, the [summary line](#attr-calendareventoverflowhoverhtml), and a list of up to [Calendar.eventOverflowHoverMaxEvents](#attr-calendareventoverflowhovermaxevents) event names from the overflow region. Override to provide fully custom hover content.
+Returns the hover HTML for an [overflow chip](#attr-calendareventoverflowimg). The default implementation shows a non-wrapping first line combining the time range and the [summary text](#attr-calendareventoverflowhoverhtml) (for example, "10:00 - 16:00:&nbsp;&nbsp;14 hidden events"), followed by a list of up to [Calendar.eventOverflowHoverMaxEvents](#attr-calendareventoverflowhovermaxevents) event names from the overflow region. Override to provide fully custom hover content.
 
 ### Parameters
 

@@ -7148,7 +7148,7 @@ If this canvas has keyboard focus, blur it. After this method, the canvas will n
 ### Description
 If [Canvas.supportsVoiceCommands](#method-canvassupportsvoicecommands) returns true, this method must be implemented to deal with Voice commands recorded while this Canvas has focus.
 
-If focus is in this canvas or one of its children when the user holds down the [VoiceAssist.voiceKey](VoiceAssist.md#attr-voiceassistvoicekey), records some speech and releases the key, this method is invoked with the final dictated-text, allowing the canvas to display it or process it in some way, such as saving it to a database or providing it to an AI for processing.
+If focus is in this canvas or one of its children when the user holds down the [VoiceAssist.voiceKey](VoiceAssist.md#classattr-voiceassistvoicekey), records some speech and releases the key, this method is invoked with the final dictated-text, allowing the canvas to display it or process it in some way, such as saving it to a database or providing it to an AI for processing.
 
 ### Parameters
 
@@ -7947,13 +7947,13 @@ Get the number of pixels this Canvas is scrolled from its top edge.
 ## Method: Canvas.supportsValueDictation
 
 ### Description
-If this method returns true and VoiceAssist has been activated by triple-tapping the [Control key](VoiceAssist.md#attr-voiceassistvoicekey), the user may dictate a new value for this Canvas by double-tapping [Control](VoiceAssist.md#attr-voiceassistvoicekey) to start recording.
+If this method returns true and VoiceAssist has been activated by triple-tapping the [Control key](VoiceAssist.md#classattr-voiceassistvoicekey), the user may dictate a new value for this Canvas by double-tapping [Control](VoiceAssist.md#classattr-voiceassistvoicekey) to start recording.
 
 If this canvas has a `setValue()` method, it will be called interactively as the user speaks. Alternatively, a developer may observe [VoiceAssist.recordingProgress](VoiceAssist.md#classmethod-voiceassistrecordingprogress) to access the interim transcription.
 
-While recording, if the user says a [cancel-phrase](VoiceAssist.md#attr-voiceassistcancelphrases), by default the English phrase "never mind", recording is canceled and not completed. If the transcription was being displayed interactively in the canvas, it is restored to its pre-recording value.
+While recording, if the user says a [cancel-phrase](VoiceAssist.md#classattr-voiceassistcancelphrases), by default the English phrase "never mind", recording is canceled and not completed. If the transcription was being displayed interactively in the canvas, it is restored to its pre-recording value.
 
-If the user falls silent for [a few seconds](VoiceAssist.md#attr-voiceassistautostopdelay), or when they double-tap `Control` again, recording is completed normally and `doValueDictation` is invoked with the final transcription, allowing the canvas to display it or process it in some way, such as saving it to a database or providing it to an AI for action.
+If the user falls silent for [a few seconds](VoiceAssist.md#classattr-voiceassistautostopdelay), or when they double-tap `Control` again, recording is completed normally and `doValueDictation` is invoked with the final transcription, allowing the canvas to display it or process it in some way, such as saving it to a database or providing it to an AI for action.
 
 ### Returns
 
@@ -8079,11 +8079,11 @@ If the passed-in widget is not a child of this Canvas, this method has no effect
 ## Method: Canvas.supportsVoiceCommands
 
 ### Description
-If this method returns true and VoiceAssist has been activated by triple-tapping the [Control key](VoiceAssist.md#attr-voiceassistvoicekey), the user may dictate a command to this Canvas.
+If this method returns true and VoiceAssist has been activated by triple-tapping the [Control key](VoiceAssist.md#classattr-voiceassistvoicekey), the user may dictate a command to this Canvas.
 
 When this method returns true, the widget must also implement [Canvas.doVoiceCommand](#method-canvasdovoicecommand).
 
-When the user holds down the [VoiceAssist.voiceKey](VoiceAssist.md#attr-voiceassistvoicekey), records some speech and releases the key, `doVoiceCommand` is invoked with the final dictated-text, allowing the canvas to display it or process it in some way, such as saving it to a database or providing it to an AI for processing.
+When the user holds down the [VoiceAssist.voiceKey](VoiceAssist.md#classattr-voiceassistvoicekey), records some speech and releases the key, `doVoiceCommand` is invoked with the final dictated-text, allowing the canvas to display it or process it in some way, such as saving it to a database or providing it to an AI for processing.
 
 A developer may also observe [VoiceAssist.recordingProgress](VoiceAssist.md#classmethod-voiceassistrecordingprogress) to access the interim command-transcription interactively as the user speaks.
 
@@ -9776,7 +9776,7 @@ This property sets the same thickness of padding on every side. Differing per-si
 ### Description
 If [Canvas.supportsVoiceCommands](#method-canvassupportsvoicecommands) returns true, this method may be implemented to deal with transcriptions recorded while this Canvas has focus.
 
-If focus is in this canvas when the user double-taps the [voice-key](VoiceAssist.md#attr-voiceassistvoicekey), records some speech and double-taps again, this method is invoked with the final dictated-text, allowing the canvas to display it or process it in some way, such as saving it to a database or providing it to an AI for processing.
+If focus is in this canvas when the user double-taps the [voice-key](VoiceAssist.md#classattr-voiceassistvoicekey), records some speech and double-taps again, this method is invoked with the final dictated-text, allowing the canvas to display it or process it in some way, such as saving it to a database or providing it to an AI for processing.
 
 Note that, if the canvas has a `setValue` method, the transcription will be applied automatically and interactively as the user speaks. If that functionality suits your needs, there is no need to implement this method.
 

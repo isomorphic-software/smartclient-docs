@@ -33,7 +33,9 @@ Default [hspace](FormItemIcon.md#attr-formitemiconhspace) value for pickers crea
 ## ClassAttr: FormItem.defaultIcons
 
 ### Description
-Registry of named default icons that can be referenced as plain strings in the [FormItem.icons](#attr-formitemicons) array. Each key maps to a FormItemIcon properties object that will be used when that string appears in the array. Currently contains `"voiceAssist"`.
+Registry of named default icons that can be referenced as plain strings in the [FormItem.icons](#attr-formitemicons) array. Each key maps to a [FormItemIcon](../reference.md#object-formitemicon) properties object that will be used when that string appears in the array.
+
+The built-in `"voiceAssist"` icon is provided by [VoiceAssist.getVoiceAssistIcon](VoiceAssist.md#classmethod-voiceassistgetvoiceassisticon) and does not need to be registered here.
 
 **Flags**: IR
 

@@ -1120,7 +1120,13 @@ If this property is false, saved searches will persist across DataSource changes
 ## Attr: DataBoundComponent.dragRecategorize
 
 ### Description
-Flag controlling when to recategorize records being dropped on a databound component from another databound component.
+Controls when a drop onto this component is treated as a recategorization. A recategorization is an update of existing records to move them to a new parent or category. Recategorization only applies when the drag-source and drop-target components are bound to the same DataSource or to DataSources with a defined foreignKey relationship. See [treeGridDrop](../kb_topics/treeGridDrop.md#kb-topic-treegrid-drag-and-drop) for details.
+
+This property interacts with the source widget's [dragDataAction](TreeGrid.md#attr-treegriddragdataaction):
+
+*   `"checked"`: (the default) Recategorize only when `dragDataAction` on the source of the drag is set to "move".
+*   `"always"`: Recategorize regardless of the source widget's `dragDataAction`.
+*   `"never"`: Never recategorize; drops are always treated as adds.
 
 **Flags**: IRW
 

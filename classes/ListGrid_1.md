@@ -6783,7 +6783,7 @@ If the frozen fields' combined width exceeds this value, a horizontal scrollbar 
 ## Attr: ListGrid.sortArrowMenuButtonSpaceOffset
 
 ### Description
-When [ListGrid.leaveHeaderMenuButtonSpace](#attr-listgridleaveheadermenubuttonspace) is true, configures the amount of space beyond the [ListGrid.headerMenuButtonWidth](ListGrid_2.md#attr-listgridheadermenubuttonwidth) on the right side of a ListGrid header button (left for [RTL mode](Page.md#classmethod-pageisrtl)) to reserve for the sort arrow if sorting is active for that field and the arrow will be shown. May be increased for more separation between the sort arrow and the title text, at the expense of a reduced space for the title text.
+When [ListGrid.leaveHeaderMenuButtonSpace](ListGrid_2.md#attr-listgridleaveheadermenubuttonspace) is true, configures the amount of space beyond the [ListGrid.headerMenuButtonWidth](ListGrid_2.md#attr-listgridheadermenubuttonwidth) on the right side of a ListGrid header button (left for [RTL mode](Page.md#classmethod-pageisrtl)) to reserve for the sort arrow if sorting is active for that field and the arrow will be shown. May be increased for more separation between the sort arrow and the title text, at the expense of a reduced space for the title text.
 
 This value may need to be customized in your skin or if [ListGrid.sortAscendingImage](#attr-listgridsortascendingimage) or [ListGrid.sortDescendingImage](#attr-listgridsortdescendingimage) are changed.
 
@@ -8535,6 +8535,20 @@ For editable listGrids, outstanding unsaved edits when the user performs a new f
 **Flags**: IRW
 
 ---
+## Attr: ListGrid.exportWrapCells
+
+### Description
+When exporting data to Excel/OpenOffice format using [ListGrid.exportData](ListGrid_2.md#method-listgridexportdata) or [ListGrid.exportClientData](ListGrid_2.md#method-listgridexportclientdata), whether data cells should have text wrapping enabled.
+
+When true (the default), cells with content wider than the column will wrap to additional lines and the row height expands to fit. However, due to sub-pixel rounding differences between Excel's column auto-fit calculation and its text rendering engine, cells whose content _barely_ fits the column width may wrap by a fraction of a character, causing unexpected row height expansion even when the content logically fits on one line.
+
+Set to false to prevent this: cells will not wrap, so row heights stay at the single-line default. Content that genuinely exceeds the column width will be clipped or overflow into the next cell (standard Excel behavior for non-wrapped cells).
+
+See also [ListGrid.exportFieldWidths](#attr-listgridexportfieldwidths) and [ListGrid.exportWidthScale](#attr-listgridexportwidthscale) for controlling column widths in the exported spreadsheet.
+
+**Flags**: IRW
+
+---
 ## Attr: ListGrid.canDragRecordsOut
 
 ### Description
@@ -8605,7 +8619,7 @@ This subsystem is requires canResizeFields be enabled and will be disabled if th
 ## Attr: ListGrid.sortNumeralMenuButtonSpaceOffset
 
 ### Description
-When [ListGrid.leaveHeaderMenuButtonSpace](#attr-listgridleaveheadermenubuttonspace) is true, configures the amount of space beyond the [ListGrid.headerMenuButtonWidth](ListGrid_2.md#attr-listgridheadermenubuttonwidth) on the right side of a ListGrid header button (left for [RTL mode](Page.md#classmethod-pageisrtl)) to reserve for the sort numeral if [multi-sorting](#attr-listgridcanmultisort) is active for that field and the numeral will be shown. May be increased for more separation between the title text and the sort arrow when multi-sorting.
+When [ListGrid.leaveHeaderMenuButtonSpace](ListGrid_2.md#attr-listgridleaveheadermenubuttonspace) is true, configures the amount of space beyond the [ListGrid.headerMenuButtonWidth](ListGrid_2.md#attr-listgridheadermenubuttonwidth) on the right side of a ListGrid header button (left for [RTL mode](Page.md#classmethod-pageisrtl)) to reserve for the sort numeral if [multi-sorting](#attr-listgridcanmultisort) is active for that field and the numeral will be shown. May be increased for more separation between the title text and the sort arrow when multi-sorting.
 
 Note that larger values may required if 10 or more fields are sorted at once, as the numeral will occupy more space. This value may need to be customized in your skin or if [ListGrid.sortAscendingImage](#attr-listgridsortascendingimage) or [ListGrid.sortDescendingImage](#attr-listgridsortdescendingimage) are changed.
 
@@ -9750,24 +9764,5 @@ If this grid has a [dataSource](#attr-listgriddatasource), the created screen is
 - expansionField
 
 **Flags**: IR
-
----
-## Attr: ListGrid.leaveHeaderMenuButtonSpace
-
-### Description
-If [ListGrid.showHeaderMenuButton](#attr-listgridshowheadermenubutton) is true, when auto-fitting fields to the title width via [ListGrid.autoFitFieldWidths](#attr-listgridautofitfieldwidths) or [ListGridField.autoFitWidth](ListGridField.md#attr-listgridfieldautofitwidth), should the button be sized such that there is enough space for the header menu button to show without covering the field title?
-
-May be explicitly specified at the [field level](ListGridField.md#attr-listgridfieldleaveheadermenubuttonspace) or at the [grid level](#attr-listgridleaveheadermenubuttonspace). If not explicitly specified space will be left for fields with [ListGridField.align](ListGridField.md#attr-listgridfieldalign) set to `"left"` or `"right"`, but not for fields with align set to `"center"`.
-
-### Groups
-
-- headerMenuButton
-
-### See Also
-
-- [ListGrid.sortArrowMenuButtonSpaceOffset](#attr-listgridsortarrowmenubuttonspaceoffset)
-- [ListGrid.sortNumeralMenuButtonSpaceOffset](#attr-listgridsortnumeralmenubuttonspaceoffset)
-
-**Flags**: IWA
 
 ---

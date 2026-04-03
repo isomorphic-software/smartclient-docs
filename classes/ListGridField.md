@@ -2744,7 +2744,7 @@ Optional "default width" for this field. If set, this value will be returned by 
 ### Description
 If [ListGrid.showHeaderMenuButton](ListGrid_1.md#attr-listgridshowheadermenubutton) is true, when auto-fitting fields to the title width via [ListGrid.autoFitFieldWidths](ListGrid_1.md#attr-listgridautofitfieldwidths) or [ListGridField.autoFitWidth](#attr-listgridfieldautofitwidth), should the button be sized such that there is enough space for the header menu button to show without covering the field title?
 
-May be explicitly specified at the [field level](#attr-listgridfieldleaveheadermenubuttonspace) or at the [grid level](ListGrid_1.md#attr-listgridleaveheadermenubuttonspace). If not explicitly specified space will be left for fields with [ListGridField.align](#attr-listgridfieldalign) set to `"left"` or `"right"`, but not for fields with align set to `"center"`.
+May be explicitly specified at the [field level](#attr-listgridfieldleaveheadermenubuttonspace) or at the [grid level](ListGrid_2.md#attr-listgridleaveheadermenubuttonspace). If not explicitly specified space will be left for fields with [ListGridField.align](#attr-listgridfieldalign) set to `"left"` or `"right"`, but not for fields with align set to `"center"`.
 
 ### Groups
 

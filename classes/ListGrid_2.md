@@ -4,6 +4,25 @@
 
 ---
 
+## Attr: ListGrid.leaveHeaderMenuButtonSpace
+
+### Description
+If [ListGrid.showHeaderMenuButton](ListGrid_1.md#attr-listgridshowheadermenubutton) is true, when auto-fitting fields to the title width via [ListGrid.autoFitFieldWidths](ListGrid_1.md#attr-listgridautofitfieldwidths) or [ListGridField.autoFitWidth](ListGridField.md#attr-listgridfieldautofitwidth), should the button be sized such that there is enough space for the header menu button to show without covering the field title?
+
+May be explicitly specified at the [field level](ListGridField.md#attr-listgridfieldleaveheadermenubuttonspace) or at the [grid level](#attr-listgridleaveheadermenubuttonspace). If not explicitly specified space will be left for fields with [ListGridField.align](ListGridField.md#attr-listgridfieldalign) set to `"left"` or `"right"`, but not for fields with align set to `"center"`.
+
+### Groups
+
+- headerMenuButton
+
+### See Also
+
+- [ListGrid.sortArrowMenuButtonSpaceOffset](ListGrid_1.md#attr-listgridsortarrowmenubuttonspaceoffset)
+- [ListGrid.sortNumeralMenuButtonSpaceOffset](ListGrid_1.md#attr-listgridsortnumeralmenubuttonspaceoffset)
+
+**Flags**: IWA
+
+---
 ## Attr: ListGrid.selectCellTextOnClick
 
 ### Description

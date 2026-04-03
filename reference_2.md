@@ -2162,15 +2162,15 @@ Dictates the appearance of form items when [FormItem.canEdit](classes/FormItem.m
 ## Type: RecategorizeMode
 
 ### Description
-Type for controlling when a "recategorize" is applied to records being dropped on a databound component from another databound component.
+Determines whether records are recategorized on databound componenty drop rather than just being added to the drop target. See [treeGridDrop](kb_topics/treeGridDrop.md#kb-topic-treegrid-drag-and-drop)
 
 ### Values
 
 | Value | Description |
 |-------|-------------|
-| "always" | recategorize is always applied |
-| "checked" | recategorize if normal checks pass |
-| "never" | never recategorize |
+| "always" | Recategorize regardless of the source widget's `dragDataAction`. |
+| "checked" | (the default) Recategorize only when `dragDataAction` on the source of the drag is set to "move". |
+| "never" | Never recategorize. Drops are always treated as adds. |
 
 ---
 ## Type: RecordComponentPoolingMode
@@ -3599,9 +3599,7 @@ These properties behave identically to the same-named properties of FacetChart. 
 
 The extra value axes that are not positioned directly adjacent to the [chart rect.](classes/FacetChart.md#attr-facetchartshowchartrect) of the FacetChart may additionally have an axis line to connect the gradation tick marks. Whether to draw this line is controlled by the [showAxisLine](classes/MetricSettings.md#attr-metricsettingsshowaxisline) property, and the properties of the line are specified using [axisLineProperties](classes/MetricSettings.md#attr-metricsettingsaxislineproperties). The default is to draw the axis lines whenever the chart rect. is drawn and to draw the line using the same properties as the lines of the chart rect. (for example, lineColor and lineWidth).
 
-The extra value axis charts may be [single- or multi-facet](classes/MetricSettings.md#attr-metricsettingsmultifacet) charts. If the underlying [data](classes/FacetChart.md#attr-facetchartdata) is multi-facet then the extra value axes may use the facet whose values are labelled on the data axis or the facet used to create the legend (the first and second facets, respectively). Both types of charts vary the first facet to get a data series to plot. Multi-facet charts also vary the second facet, but single-facet charts keep the second facet fixed at a constant [FacetValue](#object-facetvalue).
-
-The exact facet value to use for the second facet is specified using the [fixedFacetValue](classes/MetricSettings.md#attr-metricsettingsfixedfacetvalue) property.
+The extra value axis charts may be [single- or multi-facet](classes/MetricSettings.md#attr-metricsettingsmultifacet) charts. If the underlying [data](classes/FacetChart.md#attr-facetchartdata) is multi-facet then the extra value axes may use the facet whose values are labelled on the data axis or the facet used to create the legend (the first and second facets, respectively). Both types of charts vary the first facet to get a data series to plot. Multi-facet charts also vary the second facet, but single-facet charts keep the second facet (the legend facet) fixed at a constant [FacetValue](#object-facetvalue). The exact facet value to use for the legend facet is specified using the [fixedFacetValue](classes/MetricSettings.md#attr-metricsettingsfixedfacetvalue) property.
 
 ---
 ## Object: MockDSExportSettings

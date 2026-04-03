@@ -1118,7 +1118,11 @@ The opener icon URL is derived from the specified [TreeGrid.openerImage](#attr-t
 ## Attr: TreeGrid.dragDataAction
 
 ### Description
-Specifies what to do with data dragged from this TreeGrid (into another component, or another node in this TreeGrid. The default action is to move the data. A setting of "none" is not recommended for trees because Trees maintain the node open state on the nodes themselves, and hence having multiple Tree objects share a reference to a node can have unintended consequences (such as opening a folder in one tree also triggering an open in another tree that shares the same node).
+Specifies what to do with data dragged _from_ this TreeGrid (into another component, or another node in this TreeGrid). The default action is to move the data — records are removed from this component after a successful drop. A setting of "copy" leaves the source records in place.
+
+A setting of "none" is not recommended for trees because Trees maintain the node open state on the nodes themselves, and hence having multiple Tree objects share a reference to a node can have unintended consequences (such as opening a folder in one tree also triggering an open in another tree that shares the same node).
+
+Note that this is a _source-side_ property: it controls what happens in the component the records are dragged _from_. What happens in the _target_ component depends on the target's [dragRecategorize](DataBoundComponent.md#attr-databoundcomponentdragrecategorize) setting and the DataSource relationship between source and target. With the default `dragRecategorize:"checked"`, a `dragDataAction` of "move" enables automatic recategorization on the target when the DataSources are related (see [treeGridDrop](../kb_topics/treeGridDrop.md#kb-topic-treegrid-drag-and-drop)).
 
 See [TreeGrid.folderDrop](#method-treegridfolderdrop) for a full explanation of default behaviors on drop, and how to customize them.
 

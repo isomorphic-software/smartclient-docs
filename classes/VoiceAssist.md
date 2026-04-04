@@ -30,18 +30,27 @@ The default cancel-phrase is "never mind" (or "nevermind").
 **Flags**: IRW
 
 ---
-## ClassAttr: VoiceAssist.voiceAssistIconDefaults
+## ClassAttr: VoiceAssist.voiceAssistIcon
 
 ### Description
-Default properties for the [FormItemIcon](../reference.md#object-formitemicon) returned by [VoiceAssist.getVoiceAssistIcon](#classmethod-voiceassistgetvoiceassisticon). Developers can customize icon appearance declaratively:
+[FormItemIcon](../reference.md#object-formitemicon) shown inline on applicable [FormItems](FormItem.md#class-formitem) when VoiceAssist is [active](#classattr-voiceassistactive). Clicking the icon toggles value-dictation on and off.
+
+This is not a true [AutoChild](../reference.md#type-autochild) since VoiceAssist is not a widget, but it follows the same defaults/properties customization pattern. To customize, use `voiceAssistIconDefaults` for skinning-level changes and `voiceAssistIconProperties` for per-application overrides:
+
 ```
    isc.VoiceAssist.addClassProperties({
-       voiceAssistIconDefaults: {
+       voiceAssistIconProperties: {
            showOnFocus: false
        }
    });
  
 ```
+Use [VoiceAssist.getVoiceAssistIcon](#classmethod-voiceassistgetvoiceassisticon) to retrieve a copy of the icon configuration for manual inclusion in a custom item's [FormItem.icons](FormItem.md#attr-formitemicons) array.
+
+### See Also
+
+- [VoiceAssist.getVoiceAssistIcon](#classmethod-voiceassistgetvoiceassisticon)
+- [FormItem.showVoiceAssistIcon](FormItem.md#attr-formitemshowvoiceassisticon)
 
 **Flags**: IR
 
@@ -67,6 +76,21 @@ The BCP 47 language-tag for the language that VoiceAssist expects to interpret. 
 **Flags**: IRW
 
 ---
+## ClassAttr: VoiceAssist.active
+
+### Description
+Whether VoiceAssist is currently active for end-user interaction. This is distinct from [VoiceAssist.enabled](#classattr-voiceassistenabled) - a developer enables VoiceAssist (via [VoiceAssist.enable](#classmethod-voiceassistenable)), and the end user activates it (via triple-tap of the [speech-key](#classattr-voiceassistvoicekey), a UI button, or a programmatic call to [VoiceAssist.setActive](#classmethod-voiceassistsetactive)). Use [VoiceAssist.setActive](#classmethod-voiceassistsetactive) to change.
+
+When active, voice-assist icons appear on applicable [FormItems](FormItem.md#class-formitem) and the dictation methods ([VoiceAssist.startDictatingValue](#classmethod-voiceassiststartdictatingvalue), [VoiceAssist.startDictatingCommand](#classmethod-voiceassiststartdictatingcommand)) become operational.
+
+### See Also
+
+- [VoiceAssist.setActive](#classmethod-voiceassistsetactive)
+- [VoiceAssist.enabled](#classattr-voiceassistenabled)
+
+**Flags**: IRW
+
+---
 ## ClassAttr: VoiceAssist.canDictateValues
 
 ### Description
@@ -86,6 +110,20 @@ Whether VoiceAssist allows value-dictation, where the user's speech is transcrib
 VoiceAssist will stop recording automatically if the user stops speaking for this length of time. The default is 2 seconds.
 
 **Flags**: IRW
+
+---
+## ClassAttr: VoiceAssist.enabled
+
+### Description
+Whether VoiceAssist has been enabled by the application developer via [VoiceAssist.enable](#classmethod-voiceassistenable). Enabling installs keyboard listeners (on non-mobile browsers) and initializes the speech-recognition engine, making VoiceAssist available for end-user activation via [setActive(true)](#classmethod-voiceassistsetactive). Use [VoiceAssist.disable](#classmethod-voiceassistdisable) to reverse.
+
+### See Also
+
+- [VoiceAssist.enable](#classmethod-voiceassistenable)
+- [VoiceAssist.disable](#classmethod-voiceassistdisable)
+- [VoiceAssist.active](#classattr-voiceassistactive)
+
+**Flags**: IR
 
 ---
 ## ClassAttr: VoiceAssist.voiceKey
@@ -138,7 +176,7 @@ Begins value-dictation for the currently focused [FormItem](FormItem.md#class-fo
 
 Recording stops automatically after a period of silence (see [VoiceAssist.autoStopDelay](#classattr-voiceassistautostopdelay)), or can be stopped explicitly via [VoiceAssist.stopDictatingValue](#classmethod-voiceassiststopdictatingvalue). The user can also say a [cancel phrase](#classattr-voiceassistcancelphrases) to discard the transcription.
 
-Has no effect if VoiceAssist is not [active](#voiceassistactive), if [VoiceAssist.canDictateValues](#classattr-voiceassistcandictatevalues) is false, if no focused item supports value-dictation, or if a recording is already in progress.
+Has no effect if VoiceAssist is not [active](#classattr-voiceassistactive), if [VoiceAssist.canDictateValues](#classattr-voiceassistcandictatevalues) is false, if no focused item supports value-dictation, or if a recording is already in progress.
 
 ### See Also
 
@@ -149,16 +187,61 @@ Has no effect if VoiceAssist is not [active](#voiceassistactive), if [VoiceAssis
 **Flags**: A
 
 ---
+## ClassMethod: VoiceAssist.setCancelPhrases
+
+### Description
+Sets the list of [cancel phrases](#classattr-voiceassistcancelphrases) that will abort an ongoing recording when spoken.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| cancelPhrases | [Array of String](#type-array-of-string) | false | — | new cancel phrases |
+
+### See Also
+
+- [VoiceAssist.cancelPhrases](#classattr-voiceassistcancelphrases)
+
+---
 ## ClassMethod: VoiceAssist.disable
 
 ### Description
-Disables VoiceAssist completely, removing keyboard listeners, deactivating if currently [active](#voiceassistactive), and canceling any in-progress recording. After calling this method, [VoiceAssist.enable](#classmethod-voiceassistenable) must be called again before VoiceAssist can be reactivated.
+Disables VoiceAssist completely, removing keyboard listeners, deactivating if currently [active](#classattr-voiceassistactive), and canceling any in-progress recording. After calling this method, [VoiceAssist.enable](#classmethod-voiceassistenable) must be called again before VoiceAssist can be reactivated.
 
 ### See Also
 
 - [VoiceAssist.setActive](#classmethod-voiceassistsetactive)
 
 **Flags**: A
+
+---
+## ClassMethod: VoiceAssist.getActive
+
+### Description
+Returns whether VoiceAssist is currently [active](#classattr-voiceassistactive) for end-user interaction.
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — true if VoiceAssist is active
+
+### See Also
+
+- [VoiceAssist.setActive](#classmethod-voiceassistsetactive)
+
+---
+## ClassMethod: VoiceAssist.getEnabled
+
+### Description
+Returns whether VoiceAssist has been [enabled](#classattr-voiceassistenabled) by the application developer.
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — true if VoiceAssist is enabled
+
+### See Also
+
+- [VoiceAssist.enable](#classmethod-voiceassistenable)
+- [VoiceAssist.disable](#classmethod-voiceassistdisable)
 
 ---
 ## ClassMethod: VoiceAssist.stopRecording
@@ -226,7 +309,7 @@ Returns an [Img](Img.md#class-img) widget pre-configured to start and stop Voice
 
 When clicked, the button determines the recording mode based on the currently focused component. If a [FormItem](FormItem.md#class-formitem) that supports value-dictation is focused, value-dictation begins; otherwise, command-dictation begins. Recording stops on a second click, or automatically after a period of silence (see [VoiceAssist.autoStopDelay](#classattr-voiceassistautostopdelay)).
 
-If VoiceAssist has not yet been [active](#voiceassistactive) when clicked, the button calls [VoiceAssist.setActive](#classmethod-voiceassistsetactive) automatically.
+If VoiceAssist has not yet been [active](#classattr-voiceassistactive) when clicked, the button calls [VoiceAssist.setActive](#classmethod-voiceassistsetactive) automatically. Note that [VoiceAssist.enable](#classmethod-voiceassistenable) must have been called first, otherwise setActive() will log a warning and return without activating.
 
 The button is created with `canFocus: false` so that clicking it does not steal focus from the component whose value or commands are being dictated.
 
@@ -238,21 +321,37 @@ The button is created with `canFocus: false` so that clicking it does not steal 
 ## ClassMethod: VoiceAssist.getVoiceAssistIcon
 
 ### Description
-Returns a [FormItemIcon](../reference.md#object-formitemicon) properties object configured for VoiceAssist value-dictation. The icon appears inline on the right side of a text field when focused, and clicking it toggles voice recording on and off.
+Returns a [FormItemIcon](../reference.md#object-formitemicon) properties object configured for VoiceAssist value-dictation. The returned object merges [voiceAssistIcon](#classattr-voiceassistvoiceassisticon) defaults, then `voiceAssistIconProperties`, then any supplied `properties` argument, so all three customization levels are reflected.
 
 This is the same icon configuration used internally when [FormItem.showVoiceAssistIcon](FormItem.md#attr-formitemshowvoiceassisticon) is enabled. Use this method to retrieve the config for manual inclusion in a custom item's [FormItem.icons](FormItem.md#attr-formitemicons) array.
-
-The returned object is a copy of [VoiceAssist.voiceAssistIconDefaults](#classattr-voiceassistvoiceassisticondefaults), so customizations made to the defaults are reflected in all subsequently created icons.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| properties | [FormItemIcon Properties](#type-formitemicon-properties) | true | — | additional properties to apply to the icon, overriding defaults |
+| properties | [FormItemIcon Properties](#type-formitemicon-properties) | true | — | additional properties to apply to the icon, overriding both defaults and properties |
 
 ### Returns
 
 `[FormItemIcon](#type-formitemicon)` — icon properties for VoiceAssist
+
+### See Also
+
+- [VoiceAssist.voiceAssistIcon](#classattr-voiceassistvoiceassisticon)
+
+---
+## ClassMethod: VoiceAssist.getCancelPhrases
+
+### Description
+Returns the current list of [cancel phrases](#classattr-voiceassistcancelphrases).
+
+### Returns
+
+`[Array of String](#type-array-of-string)` — current cancel phrases
+
+### See Also
+
+- [VoiceAssist.cancelPhrases](#classattr-voiceassistcancelphrases)
 
 ---
 ## ClassMethod: VoiceAssist.startDictatingCommand
@@ -262,7 +361,7 @@ Begins command-dictation. VoiceAssist locates a target component by walking up t
 
 Recording stops automatically after a period of silence (see [VoiceAssist.autoStopDelay](#classattr-voiceassistautostopdelay)), or can be stopped explicitly via [VoiceAssist.stopDictatingCommand](#classmethod-voiceassiststopdictatingcommand). The user can also say a [cancel phrase](#classattr-voiceassistcancelphrases) to discard the transcription.
 
-Has no effect if VoiceAssist is not [active](#voiceassistactive), if [VoiceAssist.canDictateCommands](#classattr-voiceassistcandictatecommands) is false, or if a recording is already in progress.
+Has no effect if VoiceAssist is not [active](#classattr-voiceassistactive), if [VoiceAssist.canDictateCommands](#classattr-voiceassistcandictatecommands) is false, or if a recording is already in progress.
 
 ### See Also
 
@@ -280,7 +379,7 @@ Sets whether VoiceAssist is active. When active, the dictation methods ([VoiceAs
 
 On the first call with `true`, [Browser.checkSpeechRecognition](Browser.md#classmethod-browsercheckspeechrecognition) runs a brief probe to verify mic access and speech-service connectivity. If the probe fails, VoiceAssist shows an explanatory message and does not become active. Subsequent calls skip the probe and use the cached result.
 
-If [VoiceAssist.enable](#classmethod-voiceassistenable) has not yet been called, this method calls it automatically.
+[VoiceAssist.enable](#classmethod-voiceassistenable) must be called before this method can activate VoiceAssist. If `enable()` has not been called, this method logs a warning and returns without activating.
 
 On non-mobile devices, this method is called internally when the user triple-taps the [speech-key](#classattr-voiceassistvoicekey) (toggling the active state). On [handset](Browser.md#classattr-browserishandset) and [tablet](Browser.md#classattr-browseristablet) devices, call it directly from a button or other UI element.
 

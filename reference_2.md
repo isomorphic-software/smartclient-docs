@@ -2162,7 +2162,7 @@ Dictates the appearance of form items when [FormItem.canEdit](classes/FormItem.m
 ## Type: RecategorizeMode
 
 ### Description
-Determines whether records are recategorized on databound componenty drop rather than just being added to the drop target. See [treeGridDrop](kb_topics/treeGridDrop.md#kb-topic-treegrid-drag-and-drop)
+Determines whether records are recategorized on databound componenty drop rather than just being added to the drop target. See [DataBoundComponent.dragRecategorize](classes/DataBoundComponent.md#attr-databoundcomponentdragrecategorize) and [treeGridDrop](kb_topics/treeGridDrop.md#kb-topic-treegrid-drag-and-drop)
 
 ### Values
 

@@ -4,6 +4,20 @@
 
 ---
 
+## Attr: ListGrid.expansionScreen
+
+### Description
+Screen to create (via [createScreen()](RPCManager.md#classmethod-rpcmanagercreatescreen)) in lieu of calling [ListGrid.getExpansionComponent](#method-listgridgetexpansioncomponent).
+
+If this grid has a [dataSource](ListGrid_1.md#attr-listgriddatasource), the created screen is provided with a [Canvas.dataContext](Canvas.md#attr-canvasdatacontext) that includes the record being expanded. Be sure the expansion screen meets these [requirements](Canvas.md#attr-canvasautopopulatedata) to utilize the `dataContext`.
+
+### Groups
+
+- expansionField
+
+**Flags**: IR
+
+---
 ## Attr: ListGrid.leaveHeaderMenuButtonSpace
 
 ### Description
@@ -1037,7 +1051,7 @@ When an expanded record is collapsed, the component is disassociated from the re
 
 ### See Also
 
-- [ListGrid.expansionScreen](ListGrid_1.md#attr-listgridexpansionscreen)
+- [ListGrid.expansionScreen](#attr-listgridexpansionscreen)
 
 ---
 ## Method: ListGrid.setSelectionAppearance

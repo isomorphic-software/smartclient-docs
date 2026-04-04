@@ -3855,6 +3855,18 @@ Does not apply to special fields where exact match is obviously the right defaul
 **Flags**: IR
 
 ---
+## Attr: ListGrid.exportColumnWidthPadding
+
+### Description
+Extra character-widths to add to every column in Excel/OpenOffice exports, compensating for sub-pixel rounding between Excel's column auto-fit calculation and its text rendering engine. Without padding, text that barely fits the column can wrap by a fraction of a character and expand the row height — even when [ListGrid.exportWrapCells](#attr-listgridexportwrapcells) is true (the default).
+
+A value of 1 (one extra character width) is generally sufficient. The server has its own default for this setting (configured via the `export.columnWidthPadding` [server property](../kb_topics/server_properties.md#kb-topic-serverproperties-file)); a non-null value sent from the client overrides the server default for that export. Leave null to use the server default.
+
+See also [ListGrid.exportFieldWidths](#attr-listgridexportfieldwidths) and [ListGrid.exportWidthScale](#attr-listgridexportwidthscale) for other column width controls.
+
+**Flags**: IRW
+
+---
 ## Attr: ListGrid.showInitialDragHandles
 
 ### Description
@@ -8544,7 +8556,7 @@ When true (the default), cells with content wider than the column will wrap to a
 
 Set to false to prevent this: cells will not wrap, so row heights stay at the single-line default. Content that genuinely exceeds the column width will be clipped or overflow into the next cell (standard Excel behavior for non-wrapped cells).
 
-See also [ListGrid.exportFieldWidths](#attr-listgridexportfieldwidths) and [ListGrid.exportWidthScale](#attr-listgridexportwidthscale) for controlling column widths in the exported spreadsheet.
+As an alternative to disabling wrapping entirely, [ListGrid.exportColumnWidthPadding](#attr-listgridexportcolumnwidthpadding) adds a small amount of extra width to each column, which is usually enough to prevent the sub-pixel rounding from triggering a wrap.
 
 **Flags**: IRW
 
@@ -9750,19 +9762,5 @@ When set to true, shows an additional field at the beginning of the field-list (
 - rowNumberField
 
 **Flags**: IRWA
-
----
-## Attr: ListGrid.expansionScreen
-
-### Description
-Screen to create (via [createScreen()](RPCManager.md#classmethod-rpcmanagercreatescreen)) in lieu of calling [ListGrid.getExpansionComponent](ListGrid_2.md#method-listgridgetexpansioncomponent).
-
-If this grid has a [dataSource](#attr-listgriddatasource), the created screen is provided with a [Canvas.dataContext](Canvas.md#attr-canvasdatacontext) that includes the record being expanded. Be sure the expansion screen meets these [requirements](Canvas.md#attr-canvasautopopulatedata) to utilize the `dataContext`.
-
-### Groups
-
-- expansionField
-
-**Flags**: IR
 
 ---

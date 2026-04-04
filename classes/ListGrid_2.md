@@ -4,6 +4,40 @@
 
 ---
 
+## Method: ListGrid.getHeaderSpanContextMenuItems
+
+### Description
+Return the menus items that should be shown in a menu triggered from a [headerSpan](ListGrid_1.md#attr-listgridheaderspans). The default implementation returns the parent element's context menu, unless [ListGrid.showHeaderSpanContextMenu](ListGrid_1.md#attr-listgridshowheaderspancontextmenu) is `true`, in which case it returns standard items for showing / hiding fields and freezing / unfreezing header spans. Note that no column picker will be shown unless [ListGrid.showTreeColumnPicker](ListGrid_1.md#attr-listgridshowtreecolumnpicker) is `true`.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| headerSpan | [HeaderSpan](#type-headerspan) | false | — | the component representing the headerSpan. This component will have all the properties specified via [ListGrid.headerSpans](ListGrid_1.md#attr-listgridheaderspans). |
+
+### Returns
+
+`[Array of MenuItem](#type-array-of-menuitem)` — return false instead to avoid showing any menu
+
+### Groups
+
+- headerSpan
+
+---
+## Method: ListGrid.anySelected
+
+### Description
+Whether at least one item is selected
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — true == at least one item is selected false == nothing at all is selected
+
+### Groups
+
+- selection
+
+---
 ## Method: ListGrid.editFailed
 
 ### Description

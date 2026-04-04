@@ -819,7 +819,7 @@ Whether to show a context menu on the header span with standard items for showin
 
 ### See Also
 
-- [ListGrid.getHeaderSpanContextMenuItems](#method-listgridgetheaderspancontextmenuitems)
+- [ListGrid.getHeaderSpanContextMenuItems](ListGrid_2.md#method-listgridgetheaderspancontextmenuitems)
 
 **Flags**: IR
 
@@ -3759,6 +3759,18 @@ Default [filter operator](../reference.md#type-operatorid) to use for text-based
 Does not apply to special fields where exact match is obviously the right default setting, such as fields of type:"enum", or fields with a [valueMap](FormItem.md#attr-formitemvaluemap) or [optionDataSource](FormItem.md#attr-formitemoptiondatasource).
 
 **Flags**: IR
+
+---
+## Attr: ListGrid.exportColumnWidthPadding
+
+### Description
+Extra character-widths to add to every column in Excel/OpenOffice exports, compensating for sub-pixel rounding between Excel's column auto-fit calculation and its text rendering engine. Without padding, text that barely fits the column can wrap by a fraction of a character and expand the row height — even when [ListGrid.exportWrapCells](#attr-listgridexportwrapcells) is true (the default).
+
+A value of 1 (one extra character width) is generally sufficient. The server has its own default for this setting (configured via the `export.columnWidthPadding` [server property](../kb_topics/server_properties.md#kb-topic-serverproperties-file)); a non-null value sent from the client overrides the server default for that export. Leave null to use the server default.
+
+See also [ListGrid.exportFieldWidths](#attr-listgridexportfieldwidths) and [ListGrid.exportWidthScale](#attr-listgridexportwidthscale) for other column width controls.
+
+**Flags**: IRW
 
 ---
 ## Attr: ListGrid.showInitialDragHandles
@@ -8318,7 +8330,7 @@ When true (the default), cells with content wider than the column will wrap to a
 
 Set to false to prevent this: cells will not wrap, so row heights stay at the single-line default. Content that genuinely exceeds the column width will be clipped or overflow into the next cell (standard Excel behavior for non-wrapped cells).
 
-See also [ListGrid.exportFieldWidths](#attr-listgridexportfieldwidths) and [ListGrid.exportWidthScale](#attr-listgridexportwidthscale) for controlling column widths in the exported spreadsheet.
+As an alternative to disabling wrapping entirely, [ListGrid.exportColumnWidthPadding](#attr-listgridexportcolumnwidthpadding) adds a small amount of extra width to each column, which is usually enough to prevent the sub-pixel rounding from triggering a wrap.
 
 **Flags**: IRW
 
@@ -9725,39 +9737,5 @@ For other use cases, see also:
 - [ListGrid.getFormattedValue](ListGrid_2.md#method-listgridgetformattedvalue)
 
 **Flags**: A
-
----
-## Method: ListGrid.getHeaderSpanContextMenuItems
-
-### Description
-Return the menus items that should be shown in a menu triggered from a [headerSpan](#attr-listgridheaderspans). The default implementation returns the parent element's context menu, unless [ListGrid.showHeaderSpanContextMenu](#attr-listgridshowheaderspancontextmenu) is `true`, in which case it returns standard items for showing / hiding fields and freezing / unfreezing header spans. Note that no column picker will be shown unless [ListGrid.showTreeColumnPicker](#attr-listgridshowtreecolumnpicker) is `true`.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| headerSpan | [HeaderSpan](#type-headerspan) | false | — | the component representing the headerSpan. This component will have all the properties specified via [ListGrid.headerSpans](#attr-listgridheaderspans). |
-
-### Returns
-
-`[Array of MenuItem](#type-array-of-menuitem)` — return false instead to avoid showing any menu
-
-### Groups
-
-- headerSpan
-
----
-## Method: ListGrid.anySelected
-
-### Description
-Whether at least one item is selected
-
-### Returns
-
-`[boolean](../reference.md#type-boolean)` — true == at least one item is selected false == nothing at all is selected
-
-### Groups
-
-- selection
 
 ---

@@ -3375,6 +3375,7 @@ Returns the hover HTML for an [overflow chip](#attr-calendareventoverflowimg). T
 | events | [Array of CalendarEvent](#type-array-of-calendarevent) | false | — | the hidden events in the overflow region |
 | startDate | [Date](#type-date) | false | — | start of the overflow region |
 | endDate | [Date](#type-date) | false | — | end of the overflow region |
+| view | [CalendarView](#type-calendarview) | false | — | the view containing the overflow |
 
 ### Returns
 

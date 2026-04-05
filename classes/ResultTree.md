@@ -15,9 +15,9 @@ ResultTrees are an implementation of the [Tree](Tree.md#class-tree) API, used to
 
 `ResultTree` nodes cannot be directly added or removed from a [paged](#attr-resulttreefetchmode) `ResultTree` via [Tree](Tree.md#class-tree) APIs such as [Tree.add](Tree.md#method-treeadd) or [Tree.remove](Tree.md#method-treeremove), since such trees are considered to be read-only by virtue of containing [ResultSet](ResultSet.md#class-resultset)s, which are read-only data structures. Even in other [FetchMode](../reference_2.md#type-fetchmode)s, calling such APIs will only update the local cache of the ResultTree, rather than triggering any server traffict to update the DataSource.
 
-Use [DataSource.addData](DataSource_1.md#method-datasourceadddata)/[removeData()](DataSource_1.md#method-datasourceremovedata) to add/remove rows from the [DataSource](DataSource_1.md#class-datasource), and the `ResultTree` will reflect the changes automatically. Alternatively, the [DataSource.updateCaches](DataSource_1.md#method-datasourceupdatecaches) method may be called to only update local caches of the DataSource in question, without generating any server traffic.
+Use [DataSource.addData](DataSource.md#method-datasourceadddata)/[removeData()](DataSource.md#method-datasourceremovedata) to add/remove rows from the [DataSource](DataSource.md#class-datasource), and the `ResultTree` will reflect the changes automatically. Alternatively, the [DataSource.updateCaches](DataSource.md#method-datasourceupdatecaches) method may be called to only update local caches of the DataSource in question, without generating any server traffic.
 
-To create a locally modifiable cache of records from a DataSource, you can use [DataSource.fetchData](DataSource_1.md#method-datasourcefetchdata) to retrieve a List of records which can be modified directly, or you can create a client-only [DataSource](DataSource_1.md#class-datasource) from the retrieved data to share a modifiable cache between several DataBoundComponents.
+To create a locally modifiable cache of records from a DataSource, you can use [DataSource.fetchData](DataSource.md#method-datasourcefetchdata) to retrieve a List of records which can be modified directly, or you can create a client-only [DataSource](DataSource.md#class-datasource) from the retrieved data to share a modifiable cache between several DataBoundComponents.
 
 ---
 ## Attr: ResultTree.serverKeepParentsOnFilter
@@ -114,7 +114,7 @@ Whether or not we should skip promotion of a simple criteria to an [AdvancedCrit
 ### See Also
 
 - [TreeGrid.autoFetchTextMatchStyle](TreeGrid.md#attr-treegridautofetchtextmatchstyle)
-- [DataSource.defaultTextMatchStyle](DataSource_1.md#attr-datasourcedefaulttextmatchstyle)
+- [DataSource.defaultTextMatchStyle](DataSource.md#attr-datasourcedefaulttextmatchstyle)
 
 **Flags**: IRWA
 
@@ -239,7 +239,7 @@ When using [fetchMode:"paged"](../reference_2.md#type-fetchmode) and providing m
 ### Description
 This property allows you to specify the dataSource to be used for fetching link information in a databound _multilink_ tree. A multilink tree is one where the same node is allowed to appear in multiple places in the tree, and it is achieved by providing the node data and the link data separately. Nodes are provided via the normal [dataSource](#attr-resulttreedatasource); `linkDataSource` is only used for fetching and updating link information.
 
-The `linkDataSource` is an ordinary [DataSource](DataSource_1.md#class-datasource) that you implement just like any other. However, for correct operation as a `linkDataSource`, it must have the following:
+The `linkDataSource` is an ordinary [DataSource](DataSource.md#class-datasource) that you implement just like any other. However, for correct operation as a `linkDataSource`, it must have the following:
 
 *   A [primaryKey field](DataSourceField.md#attr-datasourcefieldprimarykey). Like any dataSource, a `linkDataSource` is not fully functional without a `primaryKey` field
 *   A field named the same as the [Tree.parentIdField](Tree.md#attr-treeparentidfield)
@@ -349,7 +349,7 @@ For [fetchMode:"local"](../reference_2.md#type-fetchmode) ResultTrees, this prop
 
 This property may be used to ensure a dataSource receives the necessary criteria to populate a ResultTree's data, and also support [ResultTree.keepParentsOnFilter](#attr-resulttreekeepparentsonfilter).
 
-Note that for some AdvancedCriteria it will not be possible to extract the subcriteria that apply to certain fields. See [DataSource.splitCriteria](DataSource_1.md#method-datasourcesplitcriteria) for details on how serverFilterFields-applicable subcriteria are extracted from the specified criteria for the tree.
+Note that for some AdvancedCriteria it will not be possible to extract the subcriteria that apply to certain fields. See [DataSource.splitCriteria](DataSource.md#method-datasourcesplitcriteria) for details on how serverFilterFields-applicable subcriteria are extracted from the specified criteria for the tree.
 
 **Flags**: IR
 
@@ -381,9 +381,9 @@ The filter criteria to use when fetching rows. For usage see [ResultTree.setCrit
 ### Description
 This attribute governs how to handle cache-synch when a new node is added to this dataSource with no explicit parentId.
 
-If set to `true`, when a new node is added to this dataSource via [DataSource.addData](DataSource_1.md#method-datasourceadddata), with no explicit parentId, the node will be added as a child of the root node of this result tree. Otherwise it will be ignored.
+If set to `true`, when a new node is added to this dataSource via [DataSource.addData](DataSource.md#method-datasourceadddata), with no explicit parentId, the node will be added as a child of the root node of this result tree. Otherwise it will be ignored.
 
-Similar logic applies to [updated nodes](DataSource_1.md#method-datasourceupdatedata) - if this property is true and the parentId of an updated node is cleared, it will be moved to become a child of root, otherwise it will be dropped from the tree.
+Similar logic applies to [updated nodes](DataSource.md#method-datasourceupdatedata) - if this property is true and the parentId of an updated node is cleared, it will be moved to become a child of root, otherwise it will be dropped from the tree.
 
 **Flags**: IRWA
 
@@ -515,9 +515,9 @@ By default, SmartClient solves this with a client-driven implementation of this 
 
 There are three ways this recursive traversal can be implemented:
 
-*   For dataSources that [support dynamic tree joins](DataSource_2.md#method-datasourcesupportsdynamictreejoins), we use the [additionalOutputs](DSRequest.md#attr-dsrequestadditionaloutputs) feature to declare self-joins that fetch multiple levels of parent in one query (the number of levels is configurable, see [ResultTree.matchingLeafJoinDepth](#attr-resulttreematchingleafjoindepth)). Of SmartClient's built-in DataSource types, only SQLDataSource is currently capable of this approach
+*   For dataSources that [support dynamic tree joins](DataSource.md#method-datasourcesupportsdynamictreejoins), we use the [additionalOutputs](DSRequest.md#attr-dsrequestadditionaloutputs) feature to declare self-joins that fetch multiple levels of parent in one query (the number of levels is configurable, see [ResultTree.matchingLeafJoinDepth](#attr-resulttreematchingleafjoindepth)). Of SmartClient's built-in DataSource types, only SQLDataSource is currently capable of this approach
 *   For server-side dataSources that do not support self-joins, we combine individual single-level fetches into a [queue](RPCManager.md#classmethod-rpcmanagersendqueue), using [fieldValueExpressions](DSRequest.md#attr-dsrequestfieldvalueexpressions) with [responseData "allRecords"](DSRequestModifier.md#attr-dsrequestmodifiervalue) so that each fetch in the queue uses the output of the previous fetch as its criteria (so the first fetch returns the parents of the matching nodes, the second fetch returns the parents of those nodes, and so on). Again, the number of fetches per queue can be configured with the `matchingLeafJoinDepth` property. This approach works for any server-side DataSource implementation, including your own custom implementations
-*   For [client-side](DataSource_1.md#attr-datasourceclientonly) dataSources, which support neither self-joins not queueing, the algorithm simply makes as many single-level requests as necessary to build the entire skeleton. Note, this is exactly what would happen with previously-mentioned queueing approach, if you set `matchingLeafJoinDepth` to 1
+*   For [client-side](DataSource.md#attr-datasourceclientonly) dataSources, which support neither self-joins not queueing, the algorithm simply makes as many single-level requests as necessary to build the entire skeleton. Note, this is exactly what would happen with previously-mentioned queueing approach, if you set `matchingLeafJoinDepth` to 1
 
 If you want to disable the automatic handling of `keepParentsOnFilter` on load-on-demand trees, see [ResultTree.serverKeepParentsOnFilter](#attr-resulttreeserverkeepparentsonfilter)
 
@@ -535,7 +535,7 @@ If you want to disable the automatic handling of `keepParentsOnFilter` on load-o
 ## Attr: ResultTree.progressiveLoading
 
 ### Description
-Sets [progressive loading mode](DataSource_1.md#attr-datasourceprogressiveloading) for this ResultTree. The ResultTree will copy this setting onto the [DSRequest](../reference_2.md#object-dsrequest)s that it issues, overriding the OperationBinding- and DataSource-level settings, in cases where the use of progressive loading does not affect the correctness of the tree's paging algorithm.
+Sets [progressive loading mode](DataSource.md#attr-datasourceprogressiveloading) for this ResultTree. The ResultTree will copy this setting onto the [DSRequest](../reference_2.md#object-dsrequest)s that it issues, overriding the OperationBinding- and DataSource-level settings, in cases where the use of progressive loading does not affect the correctness of the tree's paging algorithm.
 
 This setting is applied automatically by [DataBoundComponent](../reference.md#interface-databoundcomponent)s that have their own explicit setting for [progressiveLoading](DataBoundComponent.md#attr-databoundcomponentprogressiveloading).
 
@@ -547,7 +547,7 @@ This setting is applied automatically by [DataBoundComponent](../reference.md#in
 
 ### See Also
 
-- [DataSource.progressiveLoading](DataSource_1.md#attr-datasourceprogressiveloading)
+- [DataSource.progressiveLoading](DataSource.md#attr-datasourceprogressiveloading)
 - [OperationBinding.progressiveLoading](OperationBinding.md#attr-operationbindingprogressiveloading)
 - [DSRequest.progressiveLoading](DSRequest.md#attr-dsrequestprogressiveloading)
 - [DataBoundComponent.progressiveLoading](DataBoundComponent.md#attr-databoundcomponentprogressiveloading)
@@ -570,7 +570,7 @@ Note: For `loadDataOnDemand:false` trees, if this property is unset at init time
 ## Attr: ResultTree.dataSource
 
 ### Description
-What [DataSource](DataSource_1.md#class-datasource) is this resultTree associated with?
+What [DataSource](DataSource.md#class-datasource) is this resultTree associated with?
 
 ### Groups
 
@@ -604,7 +604,7 @@ Set the filter criteria to use when fetching rows.
 
 Depending on the result of [ResultTree.compareCriteria](#method-resulttreecomparecriteria) and setting for [ResultTree.fetchMode](#attr-resulttreefetchmode), setting criteria may cause a trip to the server to get a new set of nodes, or may simply cause already-fetched nodes to be re-filtered according to the new criteria.
 
-For a basic overview on when server fetches are generally performed, see [ResultTree.fetchMode](#attr-resulttreefetchmode). However, this is not the final determination of when server fetches occur. Criteria can be split into local criteria and server criteria by specifying [ResultTree.serverFilterFields](#attr-resulttreeserverfilterfields). Thus, even when using fetchMode:"local" a new server fetch will occur if the server criteria changes. For details on how the criteria is split, see [DataSource.splitCriteria](DataSource_1.md#method-datasourcesplitcriteria).
+For a basic overview on when server fetches are generally performed, see [ResultTree.fetchMode](#attr-resulttreefetchmode). However, this is not the final determination of when server fetches occur. Criteria can be split into local criteria and server criteria by specifying [ResultTree.serverFilterFields](#attr-resulttreeserverfilterfields). Thus, even when using fetchMode:"local" a new server fetch will occur if the server criteria changes. For details on how the criteria is split, see [DataSource.splitCriteria](DataSource.md#method-datasourcesplitcriteria).
 
 Note: if criteria is being split to retrieve server criteria portion and the criteria is an [AdvancedCriteria](../reference.md#object-advancedcriteria), the criteria must consist of a single "and" operator and one or more simple criteria below it. No other logical operators may be used. In other words, the [AdvancedCriteria](../reference.md#object-advancedcriteria) provided must be exactly representable by a simple criteria.
 
@@ -618,11 +618,11 @@ Note: if criteria is being split to retrieve server criteria portion and the cri
 ## Method: ResultTree.compareCriteria
 
 ### Description
-Default behavior is to call [DataSource.compareCriteria](DataSource_1.md#method-datasourcecomparecriteria) to determine whether new criteria is equivalent to the old criteria (returns 0) or not.
+Default behavior is to call [DataSource.compareCriteria](DataSource.md#method-datasourcecomparecriteria) to determine whether new criteria is equivalent to the old criteria (returns 0) or not.
 
-See [DataSource.compareCriteria](DataSource_1.md#method-datasourcecomparecriteria) for a full explanation of the default behavior. The [CriteriaPolicy](../reference_2.md#type-criteriapolicy) used is "dropOnChange".
+See [DataSource.compareCriteria](DataSource.md#method-datasourcecomparecriteria) for a full explanation of the default behavior. The [CriteriaPolicy](../reference_2.md#type-criteriapolicy) used is "dropOnChange".
 
-Override this method or [DataSource.compareCriteria](DataSource_1.md#method-datasourcecomparecriteria) to implement your own client-side filtering behavior.
+Override this method or [DataSource.compareCriteria](DataSource.md#method-datasourcecomparecriteria) to implement your own client-side filtering behavior.
 
 ### Parameters
 
@@ -759,7 +759,7 @@ In particular, note that for a [paged](#attr-resulttreefetchmode) `ResultTree`, 
 ### See Also
 
 - [Tree.removeChildren](Tree.md#method-treeremovechildren)
-- [DataSource.updateCaches](DataSource_1.md#method-datasourceupdatecaches)
+- [DataSource.updateCaches](DataSource.md#method-datasourceupdatecaches)
 
 ---
 ## Method: ResultTree.getRange

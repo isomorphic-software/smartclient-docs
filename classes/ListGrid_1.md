@@ -486,7 +486,7 @@ Causes a menu item titled ["Filter using"](#attr-listgridfilterusingtext) to app
 
 Once an operator has been chosen, the active operator is indicated by an [ListGrid.operatorIcon](#attr-listgridoperatoricon) placed within the field (you can alternatively cause the icon to [always be present](#attr-listgridalwaysshowoperatoricon)). The `operatorIcon` shows the same textual representation of the search operator as is used by the [FormItem.allowExpressions](FormItem.md#attr-formitemallowexpressions) feature. Clicking on the icon provides a second way to modify the search operator.
 
-This feature is enabled by default if [DataSource.supportsAdvancedCriteria](DataSource_1.md#method-datasourcesupportsadvancedcriteria) is true, for all fields where it is normally possible to filter by typing in a search string. This excludes field types such as "date" or "boolean" which show specialized filter controls. Use [ListGridField.allowFilterOperators](ListGridField.md#attr-listgridfieldallowfilteroperators) to disable this interface for individual fields, or set [DataSourceField.canFilter](DataSourceField.md#attr-datasourcefieldcanfilter) to false to disallow filtering entirely for a field.
+This feature is enabled by default if [DataSource.supportsAdvancedCriteria](DataSource.md#method-datasourcesupportsadvancedcriteria) is true, for all fields where it is normally possible to filter by typing in a search string. This excludes field types such as "date" or "boolean" which show specialized filter controls. Use [ListGridField.allowFilterOperators](ListGridField.md#attr-listgridfieldallowfilteroperators) to disable this interface for individual fields, or set [DataSourceField.canFilter](DataSourceField.md#attr-datasourcefieldcanfilter) to false to disallow filtering entirely for a field.
 
 Note that this feature is similar to [ListGrid.allowFilterExpressions](#attr-listgridallowfilterexpressions), which allows the end users to directly type in characters such as ">" to control filtering. `allowFilterOperators` is easier to use and more discoverable than `allowFilterExpressions`, and also avoids the drawback where special characters like ">" cannot be used in filter values. However, `allowFilterExpressions` allows users to make use of certain operators that `allowFilterOperators` does not support, such as using the "betweenInclusive" operator by typing "5...10".
 
@@ -2067,7 +2067,7 @@ Adds the ability for a user to define additional criteria above and beyond those
 
 Causes a menu item titled ["Advanced Filtering"](#attr-listgridadvancedfilteringtext) to appear in the ["Filter using"](#attr-listgridfilterusingtext) menu show in the [headerContextMenu](#attr-listgridshowheadercontextmenu) that allows the end user to configure an advanced filter on the grid that can supplement the [filter editor](#attr-listgridshowfiltereditor). Note that the menu option will show even if [filter operators](#attr-listgridallowfilteroperators) is disabled.
 
-To use this feature, the grid must be configured with a [DataSource](DataSource_1.md#class-datasource). In fact, this feature is enabled by default if the grid has a [DataSource](DataSource_1.md#class-datasource) and both [DataSource.supportsAdvancedCriteria](DataSource_1.md#method-datasourcesupportsadvancedcriteria) and [ListGrid.allowFilterOperators](#attr-listgridallowfilteroperators) are true. This default can be disabled by setting `allowFilterWindow` to `false`.
+To use this feature, the grid must be configured with a [DataSource](DataSource.md#class-datasource). In fact, this feature is enabled by default if the grid has a [DataSource](DataSource.md#class-datasource) and both [DataSource.supportsAdvancedCriteria](DataSource.md#method-datasourcesupportsadvancedcriteria) and [ListGrid.allowFilterOperators](#attr-listgridallowfilteroperators) are true. This default can be disabled by setting `allowFilterWindow` to `false`.
 
 [This example](https://www.smartclient.com/smartclient-latest/showcase/?id=filterWindow) shows the `allowFilterWindow` setting in use.
 
@@ -3848,7 +3848,7 @@ Style for header cells in printed output. Defaults to [ListGrid.headerBaseStyle]
 ## Attr: ListGrid.defaultFilterOperator
 
 ### Description
-Default [filter operator](../reference.md#type-operatorid) to use for text-based fields in this grid's [filter editor](#attr-listgridfiltereditor), when producing [AdvancedCriteria](../reference.md#object-advancedcriteria). When [allowFilterExpressions](#attr-listgridallowfilterexpressions) or [allowFilterOperators](#attr-listgridallowfilteroperators) are enabled for the grid, the default is ["iContainsPattern"](DataSource_1.md#attr-datasourcetranslatepatternoperators). Otherwise, the default is "iContains".
+Default [filter operator](../reference.md#type-operatorid) to use for text-based fields in this grid's [filter editor](#attr-listgridfiltereditor), when producing [AdvancedCriteria](../reference.md#object-advancedcriteria). When [allowFilterExpressions](#attr-listgridallowfilterexpressions) or [allowFilterOperators](#attr-listgridallowfilteroperators) are enabled for the grid, the default is ["iContainsPattern"](DataSource.md#attr-datasourcetranslatepatternoperators). Otherwise, the default is "iContains".
 
 Does not apply to special fields where exact match is obviously the right default setting, such as fields of type:"enum", or fields with a [valueMap](FormItem.md#attr-formitemvaluemap) or [optionDataSource](FormItem.md#attr-formitemoptiondatasource).
 
@@ -4412,7 +4412,7 @@ Instead we could use `addProperties()` on our new subclass to set `defaultFields
 ## Attr: ListGrid.expansionRelated
 
 ### Description
-Automatically generated [ListGrid](#class-listgrid) for displaying data related to a record in its expanded section when [listGrid.expansionMode](../reference_2.md#type-expansionmode) is `related`. The [DataSource](DataSource_1.md#class-datasource) containing the related data is provided by [getRelatedDataSource()](ListGrid_2.md#method-listgridgetrelateddatasource) which, by default, returns the DataSource referred to in [ListGridRecord.detailDS](ListGridRecord.md#attr-listgridrecorddetailds).
+Automatically generated [ListGrid](#class-listgrid) for displaying data related to a record in its expanded section when [listGrid.expansionMode](../reference_2.md#type-expansionmode) is `related`. The [DataSource](DataSource.md#class-datasource) containing the related data is provided by [getRelatedDataSource()](ListGrid_2.md#method-listgridgetrelateddatasource) which, by default, returns the DataSource referred to in [ListGridRecord.detailDS](ListGridRecord.md#attr-listgridrecorddetailds).
 
 This component is an [AutoChild](../reference.md#type-autochild) and as such may be customized via `listGrid.expansionRelatedProperties` and `listGrid.expansionRelatedDefaults`.
 
@@ -5083,7 +5083,7 @@ The CSS style name applied to the [ListGrid.emptyMessage](#attr-listgridemptymes
 ## Attr: ListGrid.autoFetchDisplayMap
 
 ### Description
-If true, for fields where [ListGridField.optionDataSource](ListGridField.md#attr-listgridfieldoptiondatasource) is specified, a valueMap will be automatically created by making a [DataSource.fetchData](DataSource_1.md#method-datasourcefetchdata) call against the specified dataSource and extracting a valueMap from the returned records based on the displayField and valueField.
+If true, for fields where [ListGridField.optionDataSource](ListGridField.md#attr-listgridfieldoptiondatasource) is specified, a valueMap will be automatically created by making a [DataSource.fetchData](DataSource.md#method-datasourcefetchdata) call against the specified dataSource and extracting a valueMap from the returned records based on the displayField and valueField.
 
 If set to false, valueMaps will not be automatically fetched. In this case, setting field.optionDataSource is effectively a shortcut for setting optionDataSource on the editor via [ListGridField.editorProperties](ListGridField.md#attr-listgridfieldeditorproperties).
 
@@ -5794,7 +5794,7 @@ This setting overrides the [general indent](#attr-listgridembeddedcomponentinden
 ### Description
 A list of ListGridRecord objects, specifying the data to be used to populate the ListGrid. In ListGrids, the data array specifies rows.
 
-When using a [DataSource](DataSource_1.md#class-datasource), rather than directly providing `data`, you will typically call [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata) instead, which will automatically establish `data` as a [ResultSet](ResultSet.md#class-resultset) (see the [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata) docs for details).
+When using a [DataSource](DataSource.md#class-datasource), rather than directly providing `data`, you will typically call [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata) instead, which will automatically establish `data` as a [ResultSet](ResultSet.md#class-resultset) (see the [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata) docs for details).
 
 If you call `fetchData`, any previously supplied `data` is discarded. Also, it is not necessary to call `setData()` after calling [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata).
 
@@ -5964,7 +5964,7 @@ When [ListGrid.canRemoveRecords](#attr-listgridcanremoverecords) is enabled, def
 ## Attr: ListGrid.canRequestRowCount
 
 ### Description
-Depending on whether [DataSource.progressiveLoading](DataSource_1.md#attr-datasourceprogressiveloading) is active, the exact count of available rows may not be known, and `canRequestRowCount` controls whether the end user may explicitly request it by clicking the [RowRangeDisplay](RowRangeDisplay.md#class-rowrangedisplay) label.
+Depending on whether [DataSource.progressiveLoading](DataSource.md#attr-datasourceprogressiveloading) is active, the exact count of available rows may not be known, and `canRequestRowCount` controls whether the end user may explicitly request it by clicking the [RowRangeDisplay](RowRangeDisplay.md#class-rowrangedisplay) label.
 
 When this property is set to `true`, the user may request an accurate row count if one is not currently known by [clicking](RowRangeDisplay.md#attr-rowrangedisplaycanrequestrowcount) the [ListGrid.rowRangeDisplay](ListGrid_2.md#attr-listgridrowrangedisplay). To have a row count fetch operation occur automatically when progressive data is loaded instead of requiring a user interaction to initiate the fetch, see [ListGrid.autoFetchRowCount](#attr-listgridautofetchrowcount).
 
@@ -8054,7 +8054,7 @@ If `true` this grid will create and show per-row backgroundComponents as detaile
 ## Attr: ListGrid.autoFetchRowCount
 
 ### Description
-Depending on whether [DataSource.progressiveLoading](DataSource_1.md#attr-datasourceprogressiveloading) is active, the exact count of available rows may not be available as part of the standard data fetch response - setting `autoFetchRowCount:true` will cause a fetch for an accurate row count to be issued as soon as data arrives (from a [progressive dataSource response](DSResponse.md#attr-dsresponseprogressiveloading)) without an accurate row count. This value will then be available for display in the [RowRangeDisplay](RowRangeDisplay.md#class-rowrangedisplay) label.
+Depending on whether [DataSource.progressiveLoading](DataSource.md#attr-datasourceprogressiveloading) is active, the exact count of available rows may not be available as part of the standard data fetch response - setting `autoFetchRowCount:true` will cause a fetch for an accurate row count to be issued as soon as data arrives (from a [progressive dataSource response](DSResponse.md#attr-dsresponseprogressiveloading)) without an accurate row count. This value will then be available for display in the [RowRangeDisplay](RowRangeDisplay.md#class-rowrangedisplay) label.
 
 To allow users to request an accurate row count by clicking the [RowRangeDisplay](RowRangeDisplay.md#class-rowrangedisplay) instead of kicking off a row count fetch automatically, use [ListGrid.canRequestRowCount](#attr-listgridcanrequestrowcount).
 

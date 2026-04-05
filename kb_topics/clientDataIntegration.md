@@ -31,7 +31,7 @@ In particular, if you are choosing between tools that can automatically generate
 
 Specifically for pre-existing WSDL web services, see the discussion of WSDL Integration below instead.
 
-To display XML or JSON from a pre-existing service in a visual component such as a ListGrid, you bind the component to a [DataSource](../classes/DataSource_1.md#class-datasource) which provides the [URL](../classes/DataSource_1.md#attr-datasourcedataurl) of the service, as well as a declaration of how to form inputs to the service and how to interpret service responses as DataSource records.
+To display XML or JSON from a pre-existing service in a visual component such as a ListGrid, you bind the component to a [DataSource](../classes/DataSource.md#class-datasource) which provides the [URL](../classes/DataSource.md#attr-datasourcedataurl) of the service, as well as a declaration of how to form inputs to the service and how to interpret service responses as DataSource records.
 
 An XPath expression, the [recordXPath](../classes/OperationBinding.md#attr-operationbindingrecordxpath), is applied to the service response to select the XML elements or JSON objects that should be interpreted as DataSource records. Then, for each field of the DataSource, an optional [DataSourceField.valueXPath](../classes/DataSourceField.md#attr-datasourcefieldvaluexpath) can be declared which selects the value for the field from within each of the XML elements or JSON objects selected by the recordXPath. If no valueXPath is specified, the field name itself is taken as an XPath, which will select the same-named subelement or property from the record element or object.
 
@@ -87,9 +87,9 @@ By using settings such as [OperationBinding.dataProtocol](../classes/OperationBi
 
 **Controlling how DSRequests are sent**
 
-According to the [protocol](../classes/OperationBinding.md#attr-operationbindingdataprotocol) being used, the [DataSource request data](dataSourceOperations.md#kb-topic-datasource-operations), if any, either becomes HTTP params (sent by GET or POST), or an XML message as put together by [DataSource.xmlSerialize](../classes/DataSource_1.md#method-datasourcexmlserialize). For a DataSource invoking a WSDL-described web service, XML serialization automatically handles namespacing and SOAP encoding.
+According to the [protocol](../classes/OperationBinding.md#attr-operationbindingdataprotocol) being used, the [DataSource request data](dataSourceOperations.md#kb-topic-datasource-operations), if any, either becomes HTTP params (sent by GET or POST), or an XML message as put together by [DataSource.xmlSerialize](../classes/DataSource.md#method-datasourcexmlserialize). For a DataSource invoking a WSDL-described web service, XML serialization automatically handles namespacing and SOAP encoding.
 
-Note that, by default, just [DSRequest.data](../classes/DSRequest.md#attr-dsrequestdata) is sent, not any of the metadata such as [DSRequest.startRow](../classes/DSRequest.md#attr-dsrequeststartrow). This can be customized via [DataSource.transformRequest](../classes/DataSource_1.md#method-datasourcetransformrequest).
+Note that, by default, just [DSRequest.data](../classes/DSRequest.md#attr-dsrequestdata) is sent, not any of the metadata such as [DSRequest.startRow](../classes/DSRequest.md#attr-dsrequeststartrow). This can be customized via [DataSource.transformRequest](../classes/DataSource.md#method-datasourcetransformrequest).
 
 The URL to contact is set via the [dataURL](../classes/OperationBinding.md#attr-operationbindingdataurl) property. If using a Web Service, the `dataURL` defaults to the service location URL embedded in the WSDL file.
 
@@ -108,7 +108,7 @@ A [DSResponse](../classes/DSResponse.md#class-dsresponse) is created from the re
 
 See the *"Edit and Save"* example for sample XML responses for all four operationTypes.
 
-Similar to input processing, by default DataSource layer metadata, such as [DSResponse.startRow](../classes/DSResponse.md#attr-dsresponsestartrow), is not extracted from the response data. You can implement [DataSource.transformResponse](../classes/DataSource_1.md#method-datasourcetransformresponse) to fill out the metadata fields of the [DSResponse](../classes/DSResponse.md#class-dsresponse), in order to allow more DataSource features, such as paging and validation errors, to be used with a web service that supports such features.
+Similar to input processing, by default DataSource layer metadata, such as [DSResponse.startRow](../classes/DSResponse.md#attr-dsresponsestartrow), is not extracted from the response data. You can implement [DataSource.transformResponse](../classes/DataSource.md#method-datasourcetransformresponse) to fill out the metadata fields of the [DSResponse](../classes/DSResponse.md#class-dsresponse), in order to allow more DataSource features, such as paging and validation errors, to be used with a web service that supports such features.
 
 See the *XML* and *JSON* versions of the transformResponse() example for an example of providing validation errors in XML or JSON responses.
 
@@ -117,22 +117,22 @@ See the *XML* and *JSON* versions of the transformResponse() example for an exam
 - [DSDataFormat](../reference_2.md#type-dsdataformat)
 - [DSProtocol](../reference_2.md#type-dsprotocol)
 - [Callbacks.GetFieldValueCallback](../classes/Callbacks.md#method-callbacksgetfieldvaluecallback)
-- [DataSource.dataFormat](../classes/DataSource_1.md#attr-datasourcedataformat)
-- [DataSource.dataProtocol](../classes/DataSource_1.md#attr-datasourcedataprotocol)
-- [DataSource.useHttpProxy](../classes/DataSource_1.md#attr-datasourceusehttpproxy)
-- [DataSource.callbackParam](../classes/DataSource_1.md#attr-datasourcecallbackparam)
-- [DataSource.requestProperties](../classes/DataSource_1.md#attr-datasourcerequestproperties)
-- [DataSource.dataTransport](../classes/DataSource_1.md#attr-datasourcedatatransport)
-- [DataSource.dropExtraFields](../classes/DataSource_1.md#attr-datasourcedropextrafields)
-- [DataSource.sendExtraFields](../classes/DataSource_1.md#attr-datasourcesendextrafields)
-- [DataSource.xmlNamespaces](../classes/DataSource_1.md#attr-datasourcexmlnamespaces)
-- [DataSource.serviceNamespace](../classes/DataSource_1.md#attr-datasourceservicenamespace)
-- [DataSource.schemaNamespace](../classes/DataSource_1.md#attr-datasourceschemanamespace)
-- [DataSource.recordXPath](../classes/DataSource_1.md#attr-datasourcerecordxpath)
-- [DataSource.dataURL](../classes/DataSource_1.md#attr-datasourcedataurl)
-- [DataSource.tagName](../classes/DataSource_1.md#attr-datasourcetagname)
-- [DataSource.defaultTextMatchStyle](../classes/DataSource_1.md#attr-datasourcedefaulttextmatchstyle)
-- [DataSource.arrayCriteriaForceExact](../classes/DataSource_1.md#attr-datasourcearraycriteriaforceexact)
+- [DataSource.dataFormat](../classes/DataSource.md#attr-datasourcedataformat)
+- [DataSource.dataProtocol](../classes/DataSource.md#attr-datasourcedataprotocol)
+- [DataSource.useHttpProxy](../classes/DataSource.md#attr-datasourceusehttpproxy)
+- [DataSource.callbackParam](../classes/DataSource.md#attr-datasourcecallbackparam)
+- [DataSource.requestProperties](../classes/DataSource.md#attr-datasourcerequestproperties)
+- [DataSource.dataTransport](../classes/DataSource.md#attr-datasourcedatatransport)
+- [DataSource.dropExtraFields](../classes/DataSource.md#attr-datasourcedropextrafields)
+- [DataSource.sendExtraFields](../classes/DataSource.md#attr-datasourcesendextrafields)
+- [DataSource.xmlNamespaces](../classes/DataSource.md#attr-datasourcexmlnamespaces)
+- [DataSource.serviceNamespace](../classes/DataSource.md#attr-datasourceservicenamespace)
+- [DataSource.schemaNamespace](../classes/DataSource.md#attr-datasourceschemanamespace)
+- [DataSource.recordXPath](../classes/DataSource.md#attr-datasourcerecordxpath)
+- [DataSource.dataURL](../classes/DataSource.md#attr-datasourcedataurl)
+- [DataSource.tagName](../classes/DataSource.md#attr-datasourcetagname)
+- [DataSource.defaultTextMatchStyle](../classes/DataSource.md#attr-datasourcedefaulttextmatchstyle)
+- [DataSource.arrayCriteriaForceExact](../classes/DataSource.md#attr-datasourcearraycriteriaforceexact)
 - [OperationBinding.arrayCriteriaForceExact](../classes/OperationBinding.md#attr-operationbindingarraycriteriaforceexact)
 - [DSRequest.arrayCriteriaForceExact](../classes/DSRequest.md#attr-dsrequestarraycriteriaforceexact)
 - [DataSourceField.valueXPath](../classes/DataSourceField.md#attr-datasourcefieldvaluexpath)
@@ -154,7 +154,7 @@ See the *XML* and *JSON* versions of the transformResponse() example for an exam
 - [OperationBinding.useFlatFields](../classes/OperationBinding.md#attr-operationbindinguseflatfields)
 - [OperationBinding.recordXPath](../classes/OperationBinding.md#attr-operationbindingrecordxpath)
 - [OperationBinding.recordName](../classes/OperationBinding.md#attr-operationbindingrecordname)
-- [DataSource.recordName](../classes/DataSource_1.md#attr-datasourcerecordname)
+- [DataSource.recordName](../classes/DataSource.md#attr-datasourcerecordname)
 - [OperationBinding.spoofResponses](../classes/OperationBinding.md#attr-operationbindingspoofresponses)
 - [OperationBinding.xmlNamespaces](../classes/OperationBinding.md#attr-operationbindingxmlnamespaces)
 - [OperationBinding.responseDataSchema](../classes/OperationBinding.md#attr-operationbindingresponsedataschema)

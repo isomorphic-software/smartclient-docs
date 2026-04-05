@@ -23,7 +23,7 @@ Setting hidden:true means the operator can be used in a programmatic search, for
 ### Description
 List of types that this Operator is valid for.
 
-If omitted, the operator is assumed to be valid for all FieldTypes unless a list of FieldTypes is passed to [DataSource.addSearchOperator](DataSource_1.md#method-datasourceaddsearchoperator).
+If omitted, the operator is assumed to be valid for all FieldTypes unless a list of FieldTypes is passed to [DataSource.addSearchOperator](DataSource.md#method-datasourceaddsearchoperator).
 
 ### Groups
 
@@ -215,7 +215,7 @@ If not implemented, returns the result of calling [getCriterion()](FormItem.md#m
 ### Description
 Method which actually evaluates whether a given record meets a [Criterion](../reference_2.md#object-criterion).
 
-For operators that act on [sub-criteria](Criterion.md#attr-criterioncriteria), call [DataSource.evaluateCriterion](DataSource_2.md#method-datasourceevaluatecriterion) to evaluate sub-criteria.
+For operators that act on [sub-criteria](Criterion.md#attr-criterioncriteria), call [DataSource.evaluateCriterion](DataSource.md#method-datasourceevaluatecriterion) to evaluate sub-criteria.
 
 Because criteria are sometimes applied to user-entered data that has not been validated, a robust `condition()` function should expect that data found in a [Record](../reference.md#object-record) may be null, NaN, not the correct type (eg "NA" for a type:"date" field) or otherwise out of the expected range.
 
@@ -228,7 +228,7 @@ Note that `this` is the [Operator](../reference.md#object-operator) object, allo
 | fieldName | [String](#type-string) | false | — | the [Criterion.fieldName](Criterion.md#attr-criterionfieldname) |
 | value | [Any](#type-any) | false | — | value of the record at [Criterion.fieldName](Criterion.md#attr-criterionfieldname), if applicable |
 | criterionValues | [CriterionValues](#type-criterionvalues) | false | — | the [CriterionValues](../reference.md#object-criterionvalues) |
-| dataSource | [DataSource](#type-datasource) | false | — | the [DataSource](DataSource_1.md#class-datasource) performing the evaluation |
+| dataSource | [DataSource](#type-datasource) | false | — | the [DataSource](DataSource.md#class-datasource) performing the evaluation |
 
 ### Returns
 

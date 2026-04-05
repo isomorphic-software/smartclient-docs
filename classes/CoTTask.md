@@ -93,7 +93,7 @@ For non-transition output by the AI, validation is applied if configured. Valida
 1.  [CoTTask.outputFields](#attr-cottaskoutputfields): an Array of DataSourceField
 2.  [CoTTask.outputDS](#attr-cottaskoutputds): a full DataSource definition
 
-Both forms of defining validators can validate nested structures by using [DataSourceField.type](DataSourceField.md#attr-datasourcefieldtype) to refer to the [DataSource.ID](DataSource_1.md#attr-datasourceid) of another DataSource which describes the nested object.
+Both forms of defining validators can validate nested structures by using [DataSourceField.type](DataSourceField.md#attr-datasourcefieldtype) to refer to the [DataSource.ID](DataSource.md#attr-datasourceid) of another DataSource which describes the nested object.
 
 Note that if you write a CoT that is supposed to produce a record to save to a currently loaded CRUD DataSource, you can simply supply the CRUD DataSource as `outputDS`, and you're done.
 
@@ -178,7 +178,7 @@ Declarative mapping from [StatePaths](../reference_2.md#type-statepath) to [Task
 ## Attr: CoTTask.outputDS
 
 ### Description
-DataSource (definition or ID) used to validate outputs produced by the AI. Outputs are validated via [DataSource.validateData](DataSource_1.md#method-datasourcevalidatedata). Nested structures are supported via DataSource field types. If both `outputDS` and `outputFields` are provided, `outputDS` takes precedence.
+DataSource (definition or ID) used to validate outputs produced by the AI. Outputs are validated via [DataSource.validateData](DataSource.md#method-datasourcevalidatedata). Nested structures are supported via DataSource field types. If both `outputDS` and `outputFields` are provided, `outputDS` takes precedence.
 
 **Flags**: IR
 

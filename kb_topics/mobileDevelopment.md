@@ -174,7 +174,7 @@ SmartClient applications support "offline" operation (continuing to work without
 
 Permanent caching of resources such as .js, .css files and images are handled via the standard [HTML5 Manifest](https://www.google.com/search?q=html5+manifest) - just list all the static files your application needs in a manifest file and mobile browsers will cache those resources.
 
-Dynamic data is handled via the [Offline](../classes/Offline.md#class-offline) APIs as well as special DataSource support enabled by [DataSource.useOfflineStorage](../classes/DataSource_1.md#attr-datasourceuseofflinestorage).
+Dynamic data is handled via the [Offline](../classes/Offline.md#class-offline) APIs as well as special DataSource support enabled by [DataSource.useOfflineStorage](../classes/DataSource.md#attr-datasourceuseofflinestorage).
 
 The end result is that you can bookmark a SmartClient application to a phone's home screen and use it offline with cached data, much like an installed native application.
 

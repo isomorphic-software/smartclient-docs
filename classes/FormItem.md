@@ -2177,7 +2177,7 @@ The string prepended to this item's title. The [DynamicForm.titlePrefix](Dynamic
 ### Description
 Whether a non-empty value is required for this field to pass validation.
 
-If the user does not fill in the required field, the error message to be shown will be taken from these properties in the following order: [FormItem.requiredMessage](#attr-formitemrequiredmessage), [DynamicForm.requiredMessage](DynamicForm.md#attr-dynamicformrequiredmessage), [DataSource.requiredMessage](DataSource.md#attr-datasourcerequiredmessage), [Validator.requiredField](Validator.md#classattr-validatorrequiredfield).
+If the user does not fill in the required field, the error message to be shown will be taken from these properties in the following order: [FormItem.requiredMessage](#attr-formitemrequiredmessage), [DynamicForm.requiredMessage](DynamicForm.md#attr-dynamicformrequiredmessage), [DataSource.requiredMessage](DataSource_1.md#attr-datasourcerequiredmessage), [Validator.requiredField](Validator.md#classattr-validatorrequiredfield).
 
 **Note:** if specified on a FormItem, `required` is only enforced on the client. `required` should generally be specified on a [DataSourceField](../reference_2.md#object-datasourcefield).
 
@@ -3441,7 +3441,7 @@ Is this form item editable (canEdit:true) or read-only (canEdit:false)? Setting 
 
 Read-only appearance may be specified via [FormItem.readOnlyDisplay](#attr-formitemreadonlydisplay). The default setting for this value (`"readOnly"`) differs from the disabled state in that the form item is not rendered with disabled styling and most form items will allow copying of the contents while read-only but do not while disabled.
 
-Note that for forms bound to a [DataSource](DataSource.md#class-datasource), if this property is not explicitly set at the item level, its default value will match the [DynamicForm.canEditFieldAttribute](DynamicForm.md#attr-dynamicformcaneditfieldattribute) on the associated dataSource field.
+Note that for forms bound to a [DataSource](DataSource_1.md#class-datasource), if this property is not explicitly set at the item level, its default value will match the [DynamicForm.canEditFieldAttribute](DynamicForm.md#attr-dynamicformcaneditfieldattribute) on the associated dataSource field.
 
 Developers should also be aware that the [FormItem.readOnlyDisplay](#attr-formitemreadonlydisplay) attribute is unrelated to the [DataSourceField.readOnlyEditorType](DataSourceField.md#attr-datasourcefieldreadonlyeditortype) attribute. When a DynamicForm is first bound to a dataSource, for [canEdit:false](DataSourceField.md#attr-datasourcefieldcanedit) DataSourceFields, [DataSourceField.readOnlyEditorType](DataSourceField.md#attr-datasourcefieldreadonlyeditortype) will determine what [FormItemType](../reference.md#type-formitemtype) should be created for the field. Once created, a FormItem's type can not be changed. Setting [FormItem.canEdit](#attr-formitemcanedit) at runtime will simply change the appearance of the item to allow or disallow editing of the item.
 

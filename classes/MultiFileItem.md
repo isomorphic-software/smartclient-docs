@@ -28,7 +28,7 @@ To use a MultiFileItem:
 *   [bind](DataBoundComponent.md#attr-databoundcomponentdatasource) a DynamicForm to the "master" DataSource
 *   in the DynamicForm bound to the "master" DataSource, declare a field with [editorType](FormItem.md#attr-formitemeditortype):"MultiFileItem" and a `dataSource` property set to the ID of the "detail" DataSource
 
-An example "detail" DataSource for storing files is shown below. This "detail" DataSource assumes a "master" DataSource with [DataSource.ID](DataSource.md#attr-datasourceid) "masterRecord" and with a primaryKey field "id".
+An example "detail" DataSource for storing files is shown below. This "detail" DataSource assumes a "master" DataSource with [DataSource.ID](DataSource_1.md#attr-datasourceid) "masterRecord" and with a primaryKey field "id".
 ```
  
    <DataSource ID="uploadedFiles" serverType="sql">

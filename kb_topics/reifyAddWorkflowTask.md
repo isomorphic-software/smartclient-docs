@@ -37,9 +37,9 @@ For Reify, load the task implementation via `globalDependencies.xml` (see ["Addi
 
 In Reify, a [component schema](componentSchema.md#kb-topic-component-schema) is needed so the task configuration can be serialized. The schema can be XML or JavaScript and requires:
 
-*   [ID](../classes/DataSource.md#attr-datasourceid) = _same as your task class name_
-*   [serverType](../classes/DataSource.md#attr-datasourceservertype) = "component"
-*   [inheritsFrom](../classes/DataSource.md#attr-datasourceinheritsfrom) = _superclass name_
+*   [ID](../classes/DataSource_1.md#attr-datasourceid) = _same as your task class name_
+*   [serverType](../classes/DataSource_1.md#attr-datasourceservertype) = "component"
+*   [inheritsFrom](../classes/DataSource_1.md#attr-datasourceinheritsfrom) = _superclass name_
 *   instanceConstructor = _same as your task class name_
 
 For standalone WorkflowEditor usage without Reify, no schema is needed — tasks are serialized via [getProcessJS()](#method-workfloweditorgetprocessjs) which uses JavaScript reflection.

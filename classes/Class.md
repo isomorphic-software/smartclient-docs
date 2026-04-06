@@ -140,7 +140,7 @@ Global identifier for referring to a Class instance in JavaScript. If you specif
 Not all Class subclasses support this property. The following commonly-used subclasses support global IDs:
 
 *   [Canvas](Canvas.md#class-canvas) and all visual widget subclasses
-*   [DataSource](DataSource.md#class-datasource)
+*   [DataSource](DataSource_1.md#class-datasource)
 *   [Tree](Tree.md#class-tree)
 *   [ValuesManager](ValuesManager.md#class-valuesmanager)
 *   [ResultSet](ResultSet.md#class-resultset)

@@ -28,7 +28,7 @@ SmartClient's data protocol is:
 *   automatically compressed: provides 6-8x improvement in bandwidth utilization
 *   efficient on the server: high speed data serialization for any Java Object
 *   efficient in the browser: faster than ordinary XML or JSON data delivery
-*   minimal: facilities for [trimming](../classes/DataSource.md#attr-datasourcedropextrafields) and [extracting](../classes/DataSourceField.md#attr-datasourcefieldvaluexpath) only the data you want the browser to see
+*   minimal: facilities for [trimming](../classes/DataSource_1.md#attr-datasourcedropextrafields) and [extracting](../classes/DataSourceField.md#attr-datasourcefieldvaluexpath) only the data you want the browser to see
 
 #### Transparent upload support
 
@@ -92,7 +92,7 @@ This standardized protocol avoids developers in different groups inventing their
 
 Most UI designs do not directly reflect the underlying Object model and so some degree of translation is necessary in order to populate UI components with data and apply user changes to the Java Object model. This is often accomplished with brittle, difficult to understand data translation code sprinkled throughout the system, done in a different way for every screen or component.
 
-SmartClient provides a standard, [XPath-based approach](../classes/DataSourceField.md#attr-datasourcefieldvaluexpath) to adapting any Java-based Object model to the requirements of the UI design. Data relevant to the application UI is centrally extracted in the server-side [DataSource](../classes/DataSource.md#class-datasource) layer, so that all UI components have a consistent, unified view of the data model for both loading **and** saving data.
+SmartClient provides a standard, [XPath-based approach](../classes/DataSourceField.md#attr-datasourcefieldvaluexpath) to adapting any Java-based Object model to the requirements of the UI design. Data relevant to the application UI is centrally extracted in the server-side [DataSource](../classes/DataSource_1.md#class-datasource) layer, so that all UI components have a consistent, unified view of the data model for both loading **and** saving data.
 
 #### Broadest possible browser support
 

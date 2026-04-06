@@ -32,7 +32,7 @@ We also support a generic SQL92 database connection which works for basic CRUD o
 
 *   Sequences
 *   Paging via SQL limit queries
-*   [Automatic transaction management](../classes/DataSource.md#attr-datasourceautojointransactions)
+*   [Automatic transaction management](#attr-datasourceautojointransactions)
 *   Long text values (there is no real definition of "long" here - we try to use a standard VARCHAR, but different databases will support different maximum values for this)
 *   Databases that do not implement the widely-supported LOWER() function
 *   Databases that do not support the ability to perform string-type operations on numeric columns - for example, `myNumericColumn LIKE '%5%'`

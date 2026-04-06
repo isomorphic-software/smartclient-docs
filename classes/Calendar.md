@@ -1741,6 +1741,18 @@ The title-text displayed in the popup event dialog/editor for new events.
 **Flags**: IR
 
 ---
+## Attr: Calendar.eventMultiDayFieldTitle
+
+### Description
+The title for the multi-day checkbox in the [event editor](#attr-calendareventeditor).
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IR
+
+---
 ## Attr: Calendar.addEventButtonHoverText
 
 ### Description

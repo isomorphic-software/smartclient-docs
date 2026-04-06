@@ -305,6 +305,7 @@ The properties in this group are default system messages that a localized applic
 - [Calendar.eventDurationFieldTitle](../classes/Calendar.md#attr-calendareventdurationfieldtitle)
 - [Calendar.eventDurationUnitFieldTitle](../classes/Calendar.md#attr-calendareventdurationunitfieldtitle)
 - [Calendar.eventAllDayFieldTitle](../classes/Calendar.md#attr-calendareventalldayfieldtitle)
+- [Calendar.eventMultiDayFieldTitle](../classes/Calendar.md#attr-calendareventmultidayfieldtitle)
 - [Calendar.saveButtonTitle](../classes/Calendar.md#attr-calendarsavebuttontitle)
 - [Calendar.detailsButtonTitle](../classes/Calendar.md#attr-calendardetailsbuttontitle)
 - [Calendar.removeButtonTitle](../classes/Calendar.md#attr-calendarremovebuttontitle)

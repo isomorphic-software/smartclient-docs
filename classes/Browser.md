@@ -276,7 +276,7 @@ Tests whether the browser's SpeechRecognition implementation can successfully co
 
 **This method is intrusive**: it calls `getUserMedia({audio:true})`, which activates the microphone, shows browser recording-chrome, and may trigger a permissions dialog if the user has not already granted microphone access. It then starts a short throwaway SpeechRecognition session to detect browsers (such as Brave) that expose the API but block the underlying service.
 
-[VoiceAssist](VoiceAssist.md#class-voiceassist) calls this method on the user's first triple-tap to activate voice input. If the probe fails, VoiceAssist shows an explanatory message and does not enable. The result is cached, so subsequent triple-taps skip the probe. Developers may also call this method independently - for example, to decide whether to show a voice-input button in the UI.
+[VoiceAssist.setActive](VoiceAssist.md#classmethod-voiceassistsetactive) calls this method - whether invoked directly or triggered by a triple-tap - before activating. If the probe fails, [VoiceAssist](VoiceAssist.md#class-voiceassist) shows an explanatory message and does not activate. The result is cached, so subsequent calls skip the probe. Developers may also call this method independently - for example, to decide whether to show a voice-input button in the UI.
 
 The callback receives a single argument, an object with these properties:
 

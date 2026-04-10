@@ -716,7 +716,7 @@ Return the CSS class for a cell. Default implementation calls [getCellStyle()](D
 
 ### Returns
 
-`[CSSStyleName](../reference.md#type-cssstylename)` — CSS style for this cell
+`[CSSStyleName](../reference_2.md#type-cssstylename)` — CSS style for this cell
 
 ### Groups
 
@@ -790,7 +790,7 @@ A variety of DSRequest settings, such as [exportAs](DSRequest.md#attr-dsrequeste
 
 Note that data exported via this method skips client-side fields defined only in the component, excludes any client-side formatting and relies on both the SmartClient server and server-side DataSources. To export client-data including client-only fields and with client-side formatting applied, see [exportClientData](ListGrid_2.md#method-listgridexportclientdata), which still requires the SmartClient server but does not rely on server-side DataSource definitions (.ds.xml files).
 
-For more information on exporting data, see [DataSource.exportData](DataSource_1.md#method-datasourceexportdata).
+For more information on exporting data, see [DataSource.exportData](DataSource.md#method-datasourceexportdata).
 
 ### Parameters
 

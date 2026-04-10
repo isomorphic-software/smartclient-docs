@@ -726,7 +726,7 @@ If [ListGrid.showGridSummary](ListGrid_1.md#attr-listgridshowgridsummary) or [Li
 ### Description
 Derive a [ValueMap](../reference_2.md#type-valuemap) by fetching records from another DataSource and extracting the [valueField](#attr-listgridfieldvaluefield) and [displayField](#attr-listgridfielddisplayfield) in the loaded records, to derive one valueMap entry per record loaded from the optionDataSource.
 
-Unlike the similar use of [PickList.optionDataSource](PickList.md#attr-picklistoptiondatasource) for [pickLists](../reference_2.md#interface-picklist) used during editing or filtering, `listGridField.optionDataSource` causes the **entire set of records from the optionDataSource to be fetched**, without paging. Hence listGridField.optionDataSource is appropriate only for smaller valueMaps, and in this situation, [DataSource.cacheAllData](DataSource_1.md#attr-datasourcecachealldata) may be a better choice, since it creates a write-through cache usable across all components.
+Unlike the similar use of [PickList.optionDataSource](PickList.md#attr-picklistoptiondatasource) for [pickLists](../reference_2.md#interface-picklist) used during editing or filtering, `listGridField.optionDataSource` causes the **entire set of records from the optionDataSource to be fetched**, without paging. Hence listGridField.optionDataSource is appropriate only for smaller valueMaps, and in this situation, [DataSource.cacheAllData](DataSource.md#attr-datasourcecachealldata) may be a better choice, since it creates a write-through cache usable across all components.
 
 For very large valueMap situations, such as an accountId field that should be displayed as an accountName where there are thousands of accounts, the correct approach is:
 
@@ -1035,7 +1035,7 @@ Overrides the `escapeKeyEditAction` as specified at the listGrid level while foc
 ### Description
 A valueMap to use for editors shown for this field. By default if this is not specified [field.valueMap](#attr-listgridfieldvaluemap) will be used instead.
 
-Dynamic valueMaps can be provided by implementing [ListGrid.getEditorValueMap](ListGrid_2.md#method-listgridgeteditorvaluemap).
+Dynamic valueMaps can be provided by implementing [ListGrid.getEditorValueMap](ListGrid_3.md#method-listgridgeteditorvaluemap).
 
 ### Groups
 
@@ -1043,7 +1043,7 @@ Dynamic valueMaps can be provided by implementing [ListGrid.getEditorValueMap](L
 
 ### See Also
 
-- [ListGrid.getEditorValueMap](ListGrid_2.md#method-listgridgeteditorvaluemap)
+- [ListGrid.getEditorValueMap](ListGrid_3.md#method-listgridgeteditorvaluemap)
 - [ListGrid.setEditorValueMap](ListGrid_2.md#method-listgridseteditorvaluemap)
 
 **Flags**: IRW
@@ -1390,7 +1390,7 @@ If this field is editable, and [ListGridField.editorIconWidth](#attr-listgridfie
 ## Attr: ListGridField.optionTextMatchStyle
 
 ### Description
-For fields with an [ListGridField.optionDataSource](#attr-listgridfieldoptiondatasource), where [ListGridField.autoFetchDisplayMap](#attr-listgridfieldautofetchdisplaymap) is true, this property will govern the `textMatchStyle` attribute of the [DSRequest](../reference_2.md#object-dsrequest) parameter passed to [DataSource.fetchData](DataSource_1.md#method-datasourcefetchdata) when retrieving the remote data set to be used as a basis for this field's valueMap.
+For fields with an [ListGridField.optionDataSource](#attr-listgridfieldoptiondatasource), where [ListGridField.autoFetchDisplayMap](#attr-listgridfieldautofetchdisplaymap) is true, this property will govern the `textMatchStyle` attribute of the [DSRequest](../reference_2.md#object-dsrequest) parameter passed to [DataSource.fetchData](DataSource.md#method-datasourcefetchdata) when retrieving the remote data set to be used as a basis for this field's valueMap.
 
 ### Groups
 
@@ -1708,7 +1708,7 @@ Name of this field. Must be unique within the [ListGrid](ListGrid_1.md#class-lis
 
 The name of the field is also the property in each record which holds the record's value for the field.
 
-If a [ListGrid.dataSource](ListGrid_1.md#attr-listgriddatasource) is specified and the [DataSource](DataSource_1.md#class-datasource) has a field with the same [name](DataSourceField.md#attr-datasourcefieldname), the `ListGridField` and [DataSourceField](../reference_2.md#object-datasourcefield) are merged, with any properties on the `ListGridField` overriding those on the `DataSourceField`.
+If a [ListGrid.dataSource](ListGrid_1.md#attr-listgriddatasource) is specified and the [DataSource](DataSource.md#class-datasource) has a field with the same [name](DataSourceField.md#attr-datasourcefieldname), the `ListGridField` and [DataSourceField](../reference_2.md#object-datasourcefield) are merged, with any properties on the `ListGridField` overriding those on the `DataSourceField`.
 
 ### Groups
 
@@ -2048,6 +2048,24 @@ If set to a String, assumed to be a property on each record that specifies the i
 If this field has type \[[ListGridFieldType](../reference.md#type-listgridfieldtype)\] set to `"link"`, setting this property will apply a standard suffix to the link URL for cells in this field.
 
 **Flags**: IRWA
+
+---
+## Attr: ListGridField.preRenderFormatValues
+
+### Description
+Per-field override of [ListGrid.preRenderFormatValues](ListGrid_1.md#attr-listgridprerenderformatvalues). When set, controls how this field's values are formatted during canvas [ListGrid.preRender](ListGrid_1.md#attr-listgridprerender) rendering. When null, the grid-level setting applies.
+
+**Note:** when the grid-level setting is explicitly `"none"`, per-field overrides are ignored — no formatting is applied to any field regardless of this setting. This allows the grid-level `"none"` to act as a hard override that disables all formatting for maximum speed.
+
+### Groups
+
+- performance
+
+### See Also
+
+- [ListGrid.preRenderFormatValues](ListGrid_1.md#attr-listgridprerenderformatvalues)
+
+**Flags**: IR
 
 ---
 ## Attr: ListGridField.canHide
@@ -3053,7 +3071,7 @@ Executed when this field is clicked on. Note that if [ListGrid.recordClick](List
 ## Method: ListGridField.getEditorValueMap
 
 ### Description
-Optional stringMethod to get a [ListGridField.valueMap](#attr-listgridfieldvaluemap) for a specific field. If present this method will be called from [ListGrid.getEditorValueMap](ListGrid_2.md#method-listgridgeteditorvaluemap) and the resulting valueMap will be used instead of any static specified valueMap for the field.
+Optional stringMethod to get a [ListGridField.valueMap](#attr-listgridfieldvaluemap) for a specific field. If present this method will be called from [ListGrid.getEditorValueMap](ListGrid_3.md#method-listgridgeteditorvaluemap) and the resulting valueMap will be used instead of any static specified valueMap for the field.
 
 ### Parameters
 

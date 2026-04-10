@@ -871,7 +871,7 @@ In [day](#attr-calendardayview) and [week](#attr-calendarweekview) views, it dic
 
 By default, events that share space in a Lane or column are rendered from top to bottom, or left to right according to their [start-dates](#attr-calendarstartdatefield) - the earliest in a given lane appears top-most in that lane, or left-most in its column.
 
-Providing `overlapSortSpecifiers` allows for the events to be ordered by one or more of the fields stored on the events, or in the underlying [data-source](DataSource_1.md#class-datasource), if the Calendar is databound.
+Providing `overlapSortSpecifiers` allows for the events to be ordered by one or more of the fields stored on the events, or in the underlying [data-source](DataSource.md#class-datasource), if the Calendar is databound.
 
 **Flags**: IRW
 
@@ -3958,7 +3958,7 @@ Returns the currently selected [event](../reference.md#object-calendarevent), or
 ## Method: Calendar.getIndicatorCanvasStyle
 
 ### Description
-Returns the [styleName](../reference.md#type-cssstylename) to use for the passed [indicator](#attr-calendarindicators), in the passed [view](CalendarView.md#class-calendarview). By default, returns the style [on the indicator](#attr-calendareventstylenamefield), if one is specified, or the style specified on the [calendar](#attr-calendarindicatorstylename) otherwise.
+Returns the [styleName](../reference_2.md#type-cssstylename) to use for the passed [indicator](#attr-calendarindicators), in the passed [view](CalendarView.md#class-calendarview). By default, returns the style [on the indicator](#attr-calendareventstylenamefield), if one is specified, or the style specified on the [calendar](#attr-calendarindicatorstylename) otherwise.
 
 ### Parameters
 
@@ -3969,7 +3969,7 @@ Returns the [styleName](../reference.md#type-cssstylename) to use for the passed
 
 ### Returns
 
-`[CSSStyleName](../reference.md#type-cssstylename)` — —
+`[CSSStyleName](../reference_2.md#type-cssstylename)` — —
 
 ---
 ## Method: Calendar.getEventLane
@@ -4320,7 +4320,7 @@ Return the CSS styleName for the associated date-cell in the passed view.
 
 ### Returns
 
-`[CSSStyleName](../reference.md#type-cssstylename)` — CSS style for the cell with the passed date and rowNum/colNum
+`[CSSStyleName](../reference_2.md#type-cssstylename)` — CSS style for the cell with the passed date and rowNum/colNum
 
 ### See Also
 
@@ -4460,7 +4460,7 @@ Setter for updating [Calendar.showWeekends](#attr-calendarshowweekends) at runti
 ## Method: Calendar.eventSaveError
 
 ### Description
-Notification method fired when an attempt to save [an event](../reference.md#object-calendarevent) following edits or drag-movements results in an error from the server. May be overridden to handle specific errors and provide feedback to the user or push a server-provided record to client caches with a call to [updateCaches()](DataSource_1.md#method-datasourceupdatecaches), for example.
+Notification method fired when an attempt to save [an event](../reference.md#object-calendarevent) following edits or drag-movements results in an error from the server. May be overridden to handle specific errors and provide feedback to the user or push a server-provided record to client caches with a call to [updateCaches()](DataSource.md#method-datasourceupdatecaches), for example.
 
 The `scenarioCode` parameter may be used to determine [how the save was initiated](../reference.md#type-calendarsavescenario).
 
@@ -4552,7 +4552,7 @@ Move to the next day, week, or month, depending on which tab is selected.
 ## Method: Calendar.getEventCanvasStyle
 
 ### Description
-Returns the [styleName](../reference.md#type-cssstylename) to use for the passed [event](../reference.md#object-calendarevent), in the passed [view](CalendarView.md#class-calendarview). By default, returns the style [on the event](#attr-calendareventstylenamefield), if one is specified - otherwise, in [lane-based](#attr-calendarlanes) views, it returns the style specified on the [lane or sublane](Lane.md#attr-laneeventstylename), or the style specified on the [calendar](#attr-calendareventstylename).
+Returns the [styleName](../reference_2.md#type-cssstylename) to use for the passed [event](../reference.md#object-calendarevent), in the passed [view](CalendarView.md#class-calendarview). By default, returns the style [on the event](#attr-calendareventstylenamefield), if one is specified - otherwise, in [lane-based](#attr-calendarlanes) views, it returns the style specified on the [lane or sublane](Lane.md#attr-laneeventstylename), or the style specified on the [calendar](#attr-calendareventstylename).
 
 ### Parameters
 
@@ -4563,13 +4563,13 @@ Returns the [styleName](../reference.md#type-cssstylename) to use for the passed
 
 ### Returns
 
-`[CSSStyleName](../reference.md#type-cssstylename)` — the CSS style to apply to the passed event in the passed view
+`[CSSStyleName](../reference_2.md#type-cssstylename)` — the CSS style to apply to the passed event in the passed view
 
 ---
 ## Method: Calendar.getZoneCanvasStyle
 
 ### Description
-Returns the [styleName](../reference.md#type-cssstylename) to use for the passed [zone](#attr-calendarzones), in the passed [view](CalendarView.md#class-calendarview). By default, returns the style [on the zone](#attr-calendareventstylenamefield), if one is specified, or the style specified on the [calendar](#attr-calendarzonestylename) otherwise.
+Returns the [styleName](../reference_2.md#type-cssstylename) to use for the passed [zone](#attr-calendarzones), in the passed [view](CalendarView.md#class-calendarview). By default, returns the style [on the zone](#attr-calendareventstylenamefield), if one is specified, or the style specified on the [calendar](#attr-calendarzonestylename) otherwise.
 
 ### Parameters
 
@@ -4580,7 +4580,7 @@ Returns the [styleName](../reference.md#type-cssstylename) to use for the passed
 
 ### Returns
 
-`[CSSStyleName](../reference.md#type-cssstylename)` — —
+`[CSSStyleName](../reference_2.md#type-cssstylename)` — —
 
 ---
 ## Method: Calendar.getPeriodEndDate
@@ -4696,7 +4696,7 @@ Update the styleName for the passed event. Refreshes the event's canvas in the c
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | event | [CalendarEvent](#type-calendarevent) | false | — | The event object to refresh in the current view |
-| styleName | [CSSStyleName](../reference.md#type-cssstylename) | false | — | The new CSS style to apply to the canvases showing this event |
+| styleName | [CSSStyleName](../reference_2.md#type-cssstylename) | false | — | The new CSS style to apply to the canvases showing this event |
 
 ---
 ## Method: Calendar.removeEvent

@@ -575,7 +575,7 @@ Pass a mode name string to use a pre-configured set of omissions. The mode is re
 AUN adds additional modes - see [AUN.getPartialPrompt](AUN.md#method-aungetpartialprompt).
 
 #### Customizing Modes
-Pass a [PartialPromptConfig](../reference.md#object-partialpromptconfig) object to customize the mode: // Start with taskPromptOnly, but include history var partial = process.getPartialPrompt({ mode: "taskPromptOnly", add: \["history"\] }); // Start with transitionDebug, also omit errors var partial = process.getPartialPrompt({ mode: "transitionDebug", remove: \["errors"\] });
+Pass a [PartialPromptConfig](../reference_2.md#object-partialpromptconfig) object to customize the mode: // Start with taskPromptOnly, but include history var partial = process.getPartialPrompt({ mode: "taskPromptOnly", add: \["history"\] }); // Start with transitionDebug, also omit errors var partial = process.getPartialPrompt({ mode: "transitionDebug", remove: \["errors"\] });
 
 #### Custom Configuration
 For full control, pass a config without a mode: var partial = process.getPartialPrompt({ omit: \["introPrompt", "history"\], omitStateVars: \["currentSummary", "eventStream"\], truncateHistory: 3 });
@@ -598,7 +598,7 @@ If a requested mode is not found, a log message is generated and the full prompt
 
 ### See Also
 
-- [PartialPromptConfig](../reference.md#object-partialpromptconfig)
+- [PartialPromptConfig](../reference_2.md#object-partialpromptconfig)
 
 ---
 ## Method: CoTProcess.getLastError

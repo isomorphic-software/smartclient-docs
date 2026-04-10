@@ -41,7 +41,7 @@ An end color for the gradient. If both [startColor](#attr-gradientstartcolor) an
 ## Attr: Gradient.direction
 
 ### Description
-For a [SimpleGradient](../reference.md#object-simplegradient), the angle of the direction vector in degrees. The default of 0.0 causes the gradient to sweep from the start color on the left to the end color on the right. Positive direction angles correspond to clockwise rotations of the default gradient.
+For a [SimpleGradient](../reference_2.md#object-simplegradient), the angle of the direction vector in degrees. The default of 0.0 causes the gradient to sweep from the start color on the left to the end color on the right. Positive direction angles correspond to clockwise rotations of the default gradient.
 
 This property is only applicable when using [Gradient.startColor](#attr-gradientstartcolor) and [Gradient.endColor](#attr-gradientendcolor) (not [Gradient.colorStops](#attr-gradientcolorstops)).
 

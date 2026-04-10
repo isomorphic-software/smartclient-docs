@@ -16,15 +16,25 @@ This is the central API reference for the SmartClient framework.
               - [TreePalette](#class-treepalette)
               - [PickTreeMenu](#class-picktreemenu)
               - [DOMGrid](#class-domgrid)
+              - [StripedTreeGrid](#class-stripedtreegrid)
+              - [BorderedTreeGrid](#class-borderedtreegrid)
+              - [CompactTreeGrid](#class-compacttreegrid)
+              - [FlatTreeGrid](#class-flattreegrid)
             - [CubeGrid](classes/CubeGrid.md)
             - [Menu](classes/Menu.md)
               - [SelectionTreeMenu](#class-selectiontreemenu)
               - [MenuPalette](#class-menupalette)
+              - [CompactMenu](#class-compactmenu)
+              - [RoundedMenu](#class-roundedmenu)
             - [CalendarView](classes/CalendarView.md)
             - [TableView](classes/TableView.md)
             - [RecordEditor](classes/RecordEditor.md)
             - [PickListMenu](classes/PickListMenu.md)
             - [ListPalette](#class-listpalette)
+            - [CompactGrid](#class-compactgrid)
+            - [BorderedGrid](#class-borderedgrid)
+            - [FlatGrid](#class-flatgrid)
+            - [StripedGrid](#class-stripedgrid)
             - [DateGrid](#class-dategrid)
           - [DateChooser](classes/DateChooser.md)
           - [SectionStack](classes/SectionStack.md)
@@ -74,17 +84,16 @@ This is the central API reference for the SmartClient framework.
           - [InlineWindow](#class-inlinewindow)
           - [AIWindow](#class-aiwindow)
           - [AISortProgressDialog](#class-aisortprogressdialog)
+          - [DarkWindow](#class-darkwindow)
+          - [TranslucentWindow](#class-translucentwindow)
         - [ColumnTree](classes/ColumnTree.md)
         - [FilterBuilder](classes/FilterBuilder.md)
-        - [VStack](#class-vstack)
-          - [BatchUploader](classes/BatchUploader.md)
-          - [AdvancedHiliteEditor](classes/AdvancedHiliteEditor.md)
-          - [MultiFilePicker](#class-multifilepicker)
         - [HLayout](#class-hlayout)
           - [Shuttle](classes/Shuttle.md)
           - [NavigationBar](classes/NavigationBar.md)
           - [ImgSectionHeader](classes/ImgSectionHeader.md)
           - [HiliteRule](classes/HiliteRule.md)
+          - [AvatarStack](classes/AvatarStack.md)
         - [Toolbar](classes/Toolbar.md)
           - [TabBar](classes/TabBar.md)
             - [VerticalTabBar](#class-verticaltabbar)
@@ -97,6 +106,9 @@ This is the central API reference for the SmartClient framework.
           - [Header](classes/Header.md)
         - [AdaptiveMenu](classes/AdaptiveMenu.md)
         - [Deck](classes/Deck.md)
+        - [VStack](#class-vstack)
+          - [AdvancedHiliteEditor](classes/AdvancedHiliteEditor.md)
+          - [MultiFilePicker](#class-multifilepicker)
         - [ListPropertiesPane](classes/ListPropertiesPane.md)
         - [HStack](#class-hstack)
       - [Calendar](classes/Calendar.md)
@@ -116,6 +128,9 @@ This is the central API reference for the SmartClient framework.
       - [GridRenderer](classes/GridRenderer.md)
       - [TabSet](classes/TabSet.md)
         - [VerticalTabs](#class-verticaltabs)
+        - [UnderlineTabSet](#class-underlinetabset)
+        - [CardTabSet](#class-cardtabset)
+        - [PillTabSet](#class-pilltabset)
       - [EditPane](classes/EditPane.md)
       - [DetailViewer](classes/DetailViewer.md)
       - [StatefulCanvas](classes/StatefulCanvas.md)
@@ -135,6 +150,9 @@ This is the central API reference for the SmartClient framework.
               - [FileDropZone](classes/FileDropZone.md)
             - [ViewLoader](classes/ViewLoader.md)
             - [SectionHeader](classes/SectionHeader.md)
+              - [BorderedSection](#class-borderedsection)
+              - [GradientHeader](#class-gradientheader)
+              - [MinimalSection](#class-minimalsection)
             - [RowRangeDisplay](classes/RowRangeDisplay.md)
             - [Placeholder](classes/Placeholder.md)
           - [RibbonButton](classes/RibbonButton.md)
@@ -148,11 +166,21 @@ This is the central API reference for the SmartClient framework.
             - [ToolStripMenuButton](#class-toolstripmenubutton)
             - [TextMenuButton](#class-textmenubutton)
           - [NavigationButton](classes/NavigationButton.md)
+          - [BadgeButton](#class-badgebutton)
           - [SecondaryButton](#class-secondarybutton)
           - [IButton](#class-ibutton)
+          - [PillButton](#class-pillbutton)
           - [SimpleTabButton](#class-simpletabbutton)
+          - [OutlineButton](#class-outlinebutton)
+          - [GhostButton](#class-ghostbutton)
           - [AutoFitButton](#class-autofitbutton)
           - [ToolStripButton](#class-toolstripbutton)
+          - [CircleButton](#class-circlebutton)
+          - [SuccessButton](#class-successbutton)
+          - [DangerButton](#class-dangerbutton)
+          - [WhiteButton](#class-whitebutton)
+          - [SoftButton](#class-softbutton)
+          - [LinkButton](#class-linkbutton)
         - [Img](classes/Img.md)
           - [ImgButton](classes/ImgButton.md)
             - [IconImgButton](classes/IconImgButton.md)
@@ -183,6 +211,10 @@ This is the central API reference for the SmartClient framework.
         - [FixedSpacer](#class-fixedspacer)
         - [FlexSpacer](#class-flexspacer)
       - [HandPlacedContainer](#class-handplacedcontainer)
+      - [CardPanel](#class-cardpanel)
+      - [ElevatedPanel](#class-elevatedpanel)
+      - [BorderedPanel](#class-borderedpanel)
+      - [FlatPanel](#class-flatpanel)
     - [DrawItem](classes/DrawItem.md)
       - [DrawGroup](classes/DrawGroup.md)
       - [DrawLabel](classes/DrawLabel.md)
@@ -202,6 +234,7 @@ This is the central API reference for the SmartClient framework.
     - [Sound](classes/Sound.md)
   - [DataSource](classes/DataSource.md)
     - [RestDataSource](classes/RestDataSource.md)
+    - [GraalDS](classes/GraalDS.md)
     - [MockDataSource](classes/MockDataSource.md)
     - [FacadeDataSource](classes/FacadeDataSource.md)
     - [XJSONDataSource](classes/XJSONDataSource.md)
@@ -210,28 +243,42 @@ This is the central API reference for the SmartClient framework.
   - [FormItem](classes/FormItem.md)
     - [TextItem](classes/TextItem.md)
       - [ComboBoxItem](classes/ComboBoxItem.md)
+        - [InlineComboBoxItem](#class-inlinecomboboxitem)
       - [SpinnerItem](classes/SpinnerItem.md)
+        - [InlineSpinnerItem](#class-inlinespinneritem)
       - [UploadItem](classes/UploadItem.md)
       - [ColorItem](classes/ColorItem.md)
         - [ColorPickerItem](#class-colorpickeritem)
+        - [InlineColorItem](#class-inlinecoloritem)
       - [LinkItem](classes/LinkItem.md)
       - [FloatItem](#class-floatitem)
         - [DoubleItem](#class-doubleitem)
+        - [InlineFloatItem](#class-inlinefloatitem)
       - [AIAssistItem](#class-aiassistitem)
       - [IntegerItem](#class-integeritem)
+        - [InlineIntegerItem](#class-inlineintegeritem)
+      - [MinimalTextItem](#class-minimaltextitem)
+      - [FilledTextItem](#class-filledtextitem)
+      - [RoundedTextItem](#class-roundedtextitem)
+      - [InlineTextItem](#class-inlinetextitem)
       - [PasswordItem](#class-passworditem)
+        - [InlinePasswordItem](#class-inlinepassworditem)
       - [DataPathItem](#class-datapathitem)
     - [SelectItem](classes/SelectItem.md)
       - [SavedSearchItem](classes/SavedSearchItem.md)
       - [PresetCriteriaItem](classes/PresetCriteriaItem.md)
         - [PresetDateRangeItem](classes/PresetDateRangeItem.md)
+      - [InlineSelectItem](#class-inlineselectitem)
     - [DateItem](classes/DateItem.md)
       - [DateTimeItem](classes/DateTimeItem.md)
+      - [InlineDateItem](#class-inlinedateitem)
     - [TimeItem](classes/TimeItem.md)
+      - [InlineTimeItem](#class-inlinetimeitem)
     - [StaticTextItem](classes/StaticTextItem.md)
       - [MultiPickerItem](classes/MultiPickerItem.md)
         - [SetFilterItem](classes/SetFilterItem.md)
       - [MiniDateRangeItem](classes/MiniDateRangeItem.md)
+        - [InlineMiniDateRangeItem](#class-inlineminidaterangeitem)
     - [CanvasItem](classes/CanvasItem.md)
       - [RelativeDateItem](classes/RelativeDateItem.md)
       - [MultiComboBoxItem](classes/MultiComboBoxItem.md)
@@ -255,6 +302,7 @@ This is the central API reference for the SmartClient framework.
     - [TextAreaItem](classes/TextAreaItem.md)
       - [AutoFitTextAreaItem](#class-autofittextareaitem)
     - [CheckboxItem](classes/CheckboxItem.md)
+      - [InlineCheckboxItem](#class-inlinecheckboxitem)
     - [RadioGroupItem](classes/RadioGroupItem.md)
     - [HiddenItem](classes/HiddenItem.md)
     - [HeaderItem](classes/HeaderItem.md)
@@ -265,12 +313,12 @@ This is the central API reference for the SmartClient framework.
     - [NativeCheckboxItem](#class-nativecheckboxitem)
       - [RadioItem](#class-radioitem)
     - [BooleanItem](#class-booleanitem)
-  - [OperationBinding](classes/OperationBinding.md)
   - [RPCManager](classes/RPCManager.md)
   - [Tree](classes/Tree.md)
     - [ResultTree](classes/ResultTree.md)
   - [ResultSet](classes/ResultSet.md)
     - [FilteredList](classes/FilteredList.md)
+  - [OperationBinding](classes/OperationBinding.md)
   - [ValuesManager](classes/ValuesManager.md)
   - [EditContext](classes/EditContext.md)
   - [AutoTest](classes/AutoTest.md)
@@ -279,12 +327,12 @@ This is the central API reference for the SmartClient framework.
   - [SavedSearches](classes/SavedSearches.md)
   - [Validator](classes/Validator.md)
   - [Callbacks](classes/Callbacks.md)
-  - [EventStream](classes/EventStream.md)
   - [Process](classes/Process.md)
     - [CoTProcess](classes/CoTProcess.md)
       - [AUN](classes/AUN.md)
     - [Tour](classes/Tour.md)
       - [Tutorial](#class-tutorial)
+  - [EventStream](classes/EventStream.md)
   - [EventHandler](classes/EventHandler.md)
   - [SimpleType](classes/SimpleType.md)
   - [ProcessElement](classes/ProcessElement.md)
@@ -293,6 +341,7 @@ This is the central API reference for the SmartClient framework.
       - [UserTask](classes/UserTask.md)
         - [TourStep](classes/TourStep.md)
         - [TourConfirmStep](classes/TourConfirmStep.md)
+      - [HumanTask](classes/HumanTask.md)
       - [DSRequestTask](classes/DSRequestTask.md)
         - [DSRemoveTask](#class-dsremovetask)
         - [DSUpdateTask](#class-dsupdatetask)
@@ -335,6 +384,7 @@ This is the central API reference for the SmartClient framework.
       - [StateTask](classes/StateTask.md)
       - [ScriptTask](classes/ScriptTask.md)
         - [StartProcessTask](classes/StartProcessTask.md)
+      - [TimerTask](classes/TimerTask.md)
     - [SendEmailTask](classes/SendEmailTask.md)
     - [DecisionTask](classes/DecisionTask.md)
       - [XORGateway](#class-xorgateway)
@@ -352,11 +402,11 @@ This is the central API reference for the SmartClient framework.
     - [LogOutTask](#class-logouttask)
     - [StartTransactionTask](#class-starttransactiontask)
     - [SendTransactionTask](#class-sendtransactiontask)
+  - [VoiceAssist](classes/VoiceAssist.md)
   - [Browser](classes/Browser.md)
   - [TabIndexManager](classes/TabIndexManager.md)
   - [Log](classes/Log.md)
   - [XMLTools](classes/XMLTools.md)
-  - [VoiceAssist](classes/VoiceAssist.md)
   - [Time](classes/Time.md)
   - [Notify](classes/Notify.md)
   - [RPCResponse](classes/RPCResponse.md)
@@ -422,11 +472,13 @@ This is the central API reference for the SmartClient framework.
   - [DMI](classes/DMI.md)
   - [MultiLinkSelection](classes/MultiLinkSelection.md)
   - [AsyncUtil](classes/AsyncUtil.md)
+  - [Project](classes/Project.md)
   - [JSONEncoder](classes/JSONEncoder.md)
   - [CellSelection](classes/CellSelection.md)
   - [CancellationController](classes/CancellationController.md)
-  - [Project](classes/Project.md)
   - [MathFunction](classes/MathFunction.md)
+  - [ReifyRemote](classes/ReifyRemote.md)
+  - [Variant](classes/Variant.md)
   - [SortSpecifierUtil](classes/SortSpecifierUtil.md)
   - [FontLoader](classes/FontLoader.md)
   - [SelectOtherItem](classes/SelectOtherItem.md)
@@ -506,7 +558,6 @@ This is the central API reference for the SmartClient framework.
 - [Criteria Editing](kb_topics/criteriaEditing.md)
 - [Content Security Policy (CSP)](kb_topics/cspSupport.md)
 - [cues](#kb-topic-cues)
-- [Custom Querying Overview](kb_topics/customQuerying.md)
 - [Customizing Sass-based Skins](kb_topics/customSassSkins.md)
 - [Including custom elements in the tab order](kb_topics/customTabElements.md)
 - [DataBinding](kb_topics/databinding.md)
@@ -567,6 +618,7 @@ This is the central API reference for the SmartClient framework.
 - [Google Application Engine (GAE)](#kb-topic-google-application-engine-gae)
 - [Determining the size of a drawn canvas](kb_topics/gettingCanvasSize.md)
 - [GraalJS Polyglot API for DMI](kb_topics/graalPolyglotDMI.md)
+- [Graal Utilities](kb_topics/graalUtilities.md)
 - [Grid Filtering Overview](kb_topics/gridFiltering.md)
 - [gridHeader](kb_topics/gridHeader.md)
 - [gridValidation](kb_topics/gridValidation.md)
@@ -678,6 +730,7 @@ This is the central API reference for the SmartClient framework.
 - [Skin Editor](kb_topics/skinEditor.md)
 - [Skinning / Theming](kb_topics/skinning.md)
 - [skins](kb_topics/skins.md)
+- [Skin Variants](kb_topics/skinVariant.md)
 - [SmartClient Architecture](kb_topics/smartArchitecture.md)
 - [Integrating SmartClient with Cypress](kb_topics/smartClientCypress.md)
 - [Integrating SmartClient with Playwright](kb_topics/smartClientPlaywright.md)
@@ -720,7 +773,6 @@ This is the central API reference for the SmartClient framework.
 - [validatorExecution](#kb-topic-validatorexecution)
 - [valueMap](#kb-topic-valuemap)
 - [values](#kb-topic-values)
-- [Velocity context variables](kb_topics/velocitySupport.md)
 - [visibility](kb_topics/visibility.md)
 - [Waiting for asynchronous actions](kb_topics/waitingForAsyncActions.md)
 - [Window Header](#kb-topic-window-header)
@@ -739,18 +791,6 @@ This is the central API reference for the SmartClient framework.
 
 ### Description
 A subclass of Layout that applies a sizing policy along the vertical axis, interpreting percent and "\*" sizes as proportions of the height of the layout. VLayouts will set any members that do not have explicit widths to match the layout.
-
-### See Also
-
-- [Layout.vPolicy](classes/Layout.md#attr-layoutvpolicy)
-
----
-## Class: VStack
-
-*Inherits from:* [Layout](classes/Layout.md#class-layout)
-
-### Description
-A subclass of Layout that simply stacks members on the vertical axis without trying to manage their height. On the horizontal axis, any members that do not have explicit widths will be sized to match the width of the stack.
 
 ### See Also
 
@@ -791,6 +831,18 @@ A subclass of Layout that applies a sizing policy along the horizontal axis, int
 ### Groups
 
 - devTools
+
+---
+## Class: VStack
+
+*Inherits from:* [Layout](classes/Layout.md#class-layout)
+
+### Description
+A subclass of Layout that simply stacks members on the vertical axis without trying to manage their height. On the horizontal axis, any members that do not have explicit widths will be sized to match the width of the stack.
+
+### See Also
+
+- [Layout.vPolicy](classes/Layout.md#attr-layoutvpolicy)
 
 ---
 ## Class: BrowserPlugin
@@ -1574,14 +1626,50 @@ Set to `false` to not use animation to show component.
 ---
 ## Class: WSDataSource
 
-*Inherits from:* [DataSource](classes/DataSource_1.md#class-datasource)
+*Inherits from:* [DataSource](classes/DataSource.md#class-datasource)
 
 ### Description
 A WSDataSource is a DataSource that is preconfigured to contact the WSDL web service built into the SDK (see isomorphic/system/schema/SmartClientOperations.wsdl). This WSDL service can be easily implemented on Java and non-Java backends.
 
 WSDataSource supports all 4 DataSource operations (fetch, add, update, remove) and can be used with ListGrids, DynamicForms and other [DataBoundComponent](#interface-databoundcomponent)s just like other DataSources.
 
-Note that WSDataSource is specifically designed for use with SmartClientOperations.wsdl. If you are trying to connect to a pre-existing WSDL service, start with just [DataSource](classes/DataSource_1.md#class-datasource), not WSDataSource, and see the [WSDL Integration](kb_topics/wsdlBinding.md#kb-topic-wsdl-binding) chapter for an overview.
+Note that WSDataSource is specifically designed for use with SmartClientOperations.wsdl. If you are trying to connect to a pre-existing WSDL service, start with just [DataSource](classes/DataSource.md#class-datasource), not WSDataSource, and see the [WSDL Integration](kb_topics/wsdlBinding.md#kb-topic-wsdl-binding) chapter for an overview.
+
+---
+## Class: BadgeButton
+
+*Inherits from:* [Button](classes/Button.md#class-button)
+
+### Description
+Button that displays a notification badge count at the top-right corner. The badge overlays a small absolutely- positioned element via direct DOM manipulation — a CSS ::after pseudo-element cannot display dynamic numeric content.
+
+---
+## Attr: BadgeButton.badgeCount
+
+### Description
+Number to display in the badge. Set to 0 or null to hide the badge.
+
+**Flags**: IRW
+
+---
+## Attr: BadgeButton.badgeStyle
+
+### Description
+CSS class for the badge circle element.
+
+**Flags**: IR
+
+---
+## Method: BadgeButton.setBadgeCount
+
+### Description
+Update the badge count. Pass 0 or null to hide the badge.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| count | [Integer](reference_2.md#type-integer) | false | — | new badge count |
 
 ---
 ## Class: FloatItem
@@ -2788,12 +2876,24 @@ Source component from which the record(s) will be transferred.
 **Flags**: IR
 
 ---
-## Class: ComponentSchema
+## Class: PillButton
 
-*Inherits from:* [DataSource](classes/DataSource_1.md#class-datasource)
+*Inherits from:* [Button](classes/Button.md#class-button)
 
 ### Description
-Specialized subclass of [DataSource](classes/DataSource_1.md#class-datasource), used to represent [component schema](kb_topics/componentSchema.md#kb-topic-component-schema).
+[Button](classes/Button.md#class-button) subclass with fully rounded "pill" shape. Uses `baseStyle: "pillButton"`. In skins that do not define the `.pillButton` CSS class, the style auto-reverts to the standard Button baseStyle (see [Canvas.autoRevertStyles](classes/Canvas.md#attr-canvasautorevertstyles)).
+
+### Groups
+
+- skinVariant
+
+---
+## Class: ComponentSchema
+
+*Inherits from:* [DataSource](classes/DataSource.md#class-datasource)
+
+### Description
+Specialized subclass of [DataSource](classes/DataSource.md#class-datasource), used to represent [component schema](kb_topics/componentSchema.md#kb-topic-component-schema).
 
 ### Groups
 
@@ -2847,6 +2947,18 @@ Title for this Window, shown if [showTitle](classes/Window.md#attr-windowshowtit
 - i18nMessages
 
 **Flags**: IRW
+
+---
+## Class: OutlineButton
+
+*Inherits from:* [Button](classes/Button.md#class-button)
+
+### Description
+[Button](classes/Button.md#class-button) subclass with colored border and transparent background. The visible "border" is rendered as an inset box-shadow on the baseStyle element to avoid box-model conflicts with SC's own border handling. Uses `baseStyle: "outlineButton"`.
+
+### Groups
+
+- skinVariant
 
 ---
 ## Class: FilterViaAIProgressDialog
@@ -2973,6 +3085,18 @@ Overridden to assign class-appropriate type.
 Add a spacer to a [Layout](classes/Layout.md#class-layout) that takes up space just like a normal member, without actually drawing anything. A `LayoutSpacer` is semantically equivalent to using an empty canvas, but higher performance for this particular use case.
 
 ---
+## Class: GhostButton
+
+*Inherits from:* [Button](classes/Button.md#class-button)
+
+### Description
+[Button](classes/Button.md#class-button) subclass with transparent background that shows border/fill on hover. Uses `baseStyle: "ghostButton"`. Auto-reverts to the standard Button baseStyle in skins without the `.ghostButton` CSS class.
+
+### Groups
+
+- skinVariant
+
+---
 ## Class: AIWindow
 
 *Inherits from:* [Window](classes/Window.md#class-window)
@@ -3021,6 +3145,18 @@ A button that automatically sizes to the length of its title. Implemented via th
 - devTools
 
 ---
+## Class: CompactGrid
+
+*Inherits from:* [ListGrid](classes/ListGrid_1.md#class-listgrid)
+
+### Description
+[ListGrid](classes/ListGrid_1.md#class-listgrid) subclass with reduced cell padding for denser display. Uses compactCell and compactHeaderButton style series for smaller font and tighter padding.
+
+### Groups
+
+- skinVariant
+
+---
 ## Class: RadioGroupItemEditProxy
 
 *Inherits from:* [SelectItemEditProxy](classes/SelectItemEditProxy.md#class-selectitemeditproxy)
@@ -3051,6 +3187,18 @@ Simple subclass of Button with appearance appropriate for a ToolStrip button. Ca
 ### Groups
 
 - devTools
+
+---
+## Class: CircleButton
+
+*Inherits from:* [Button](classes/Button.md#class-button)
+
+### Description
+[Button](classes/Button.md#class-button) subclass styled as a circular icon-only button. Named CircleButton to avoid collision with RibbonBar.IconButton. Uses `baseStyle: "iconButton"`.
+
+### Groups
+
+- skinVariant
 
 ---
 ## Class: ToolStripSpacer
@@ -3319,12 +3467,96 @@ Another synonym is AbsoluteForm.
 Form item for selecting a color via a pop-up [ColorPicker](classes/ColorPicker.md#class-colorpicker). This is an alias of [ColorItem](classes/ColorItem.md#class-coloritem).
 
 ---
+## Class: DarkWindow
+
+*Inherits from:* [Window](classes/Window.md#class-window)
+
+### Description
+[Window](classes/Window.md#class-window) with dark header chrome. Uses flat style classes for the header and header label rather than cascading CSS selectors.
+
+### Groups
+
+- skinVariant
+
+---
+## Class: UnderlineTabSet
+
+*Inherits from:* [TabSet](classes/TabSet.md#class-tabset)
+
+### Description
+[TabSet](classes/TabSet.md#class-tabset) subclass with underline-style tab indicators instead of boxed tabs. Uses `simpleTabBaseStyle: "underlineTab"`.
+
+### Groups
+
+- skinVariant
+
+---
+## Class: MinimalTextItem
+
+*Inherits from:* [TextItem](classes/TextItem.md#class-textitem)
+
+### Description
+[TextItem](classes/TextItem.md#class-textitem) subclass with bottom border only (Material Design style). Uses `textBoxStyle: "minimalTextItem"`.
+
+### Groups
+
+- skinVariant
+
+---
 ## Class: ResetItem
 
 *Inherits from:* [ButtonItem](classes/ButtonItem.md#class-buttonitem)
 
 ### Description
 Button that resets the form to default values, by calling `DynamicForm.resetValues()` If you define a click handler on this item, you can return false to cancel the reset.
+
+---
+## Class: StripedTreeGrid
+
+*Inherits from:* [TreeGrid](classes/TreeGrid.md#class-treegrid)
+
+### Description
+[TreeGrid](classes/TreeGrid.md#class-treegrid) subclass with alternating row colors. TreeGrid counterpart of [StripedGrid](#class-stripedgrid).
+
+### Groups
+
+- skinVariant
+
+---
+## Class: BorderedGrid
+
+*Inherits from:* [ListGrid](classes/ListGrid_1.md#class-listgrid)
+
+### Description
+[ListGrid](classes/ListGrid_1.md#class-listgrid) subclass with full cell borders including vertical column dividers on both cells and headers.
+
+### Groups
+
+- skinVariant
+
+---
+## Class: BorderedTreeGrid
+
+*Inherits from:* [TreeGrid](classes/TreeGrid.md#class-treegrid)
+
+### Description
+[TreeGrid](classes/TreeGrid.md#class-treegrid) subclass with full cell borders. TreeGrid counterpart of [BorderedGrid](#class-borderedgrid).
+
+### Groups
+
+- skinVariant
+
+---
+## Class: CompactTreeGrid
+
+*Inherits from:* [TreeGrid](classes/TreeGrid.md#class-treegrid)
+
+### Description
+[TreeGrid](classes/TreeGrid.md#class-treegrid) subclass with reduced cell padding. TreeGrid counterpart of [CompactGrid](#class-compactgrid).
+
+### Groups
+
+- skinVariant
 
 ---
 ## Class: SplitPaneEditProxy
@@ -3371,6 +3603,18 @@ Contains [OpenFin](https://developers.openfin.co/of-docs/docs)\-specific code to
 - experimental
 
 ---
+## Class: FlatTreeGrid
+
+*Inherits from:* [TreeGrid](classes/TreeGrid.md#class-treegrid)
+
+### Description
+[TreeGrid](classes/TreeGrid.md#class-treegrid) subclass without visible cell borders. TreeGrid counterpart of [FlatGrid](#class-flatgrid).
+
+### Groups
+
+- skinVariant
+
+---
 ## Class: ImgEditProxy
 
 *Inherits from:* [StatefulCanvasEditProxy](#class-statefulcanvaseditproxy)
@@ -3381,6 +3625,18 @@ Contains [OpenFin](https://developers.openfin.co/of-docs/docs)\-specific code to
 ### Groups
 
 - devTools
+
+---
+## Class: SuccessButton
+
+*Inherits from:* [Button](classes/Button.md#class-button)
+
+### Description
+[Button](classes/Button.md#class-button) subclass with green styling for positive/ confirmation actions. Uses `baseStyle: "successButton"`.
+
+### Groups
+
+- skinVariant
 
 ---
 ## Class: DrawPaneEditProxy
@@ -3419,6 +3675,90 @@ Default value.
 **Flags**: IR
 
 ---
+## Class: FlatGrid
+
+*Inherits from:* [ListGrid](classes/ListGrid_1.md#class-listgrid)
+
+### Description
+[ListGrid](classes/ListGrid_1.md#class-listgrid) subclass without visible cell borders, uses very subtle separators for a clean look.
+
+### Groups
+
+- skinVariant
+
+---
+## Class: DangerButton
+
+*Inherits from:* [Button](classes/Button.md#class-button)
+
+### Description
+[Button](classes/Button.md#class-button) subclass with red/destructive styling for dangerous actions. Uses `baseStyle: "dangerButton"`.
+
+### Groups
+
+- skinVariant
+
+---
+## Class: CardTabSet
+
+*Inherits from:* [TabSet](classes/TabSet.md#class-tabset)
+
+### Description
+[TabSet](classes/TabSet.md#class-tabset) subclass with card-style tabs having rounded top corners. Uses `simpleTabBaseStyle: "cardTab"`.
+
+### Groups
+
+- skinVariant
+
+---
+## Class: PillTabSet
+
+*Inherits from:* [TabSet](classes/TabSet.md#class-tabset)
+
+### Description
+[TabSet](classes/TabSet.md#class-tabset) subclass with pill/rounded indicator for selected tabs. Uses `simpleTabBaseStyle: "pillTab"`.
+
+### Groups
+
+- skinVariant
+
+---
+## Class: WhiteButton
+
+*Inherits from:* [Button](classes/Button.md#class-button)
+
+### Description
+[Button](classes/Button.md#class-button) subclass with white/light background for secondary actions. Uses `baseStyle: "whiteButton"`.
+
+### Groups
+
+- skinVariant
+
+---
+## Class: SoftButton
+
+*Inherits from:* [Button](classes/Button.md#class-button)
+
+### Description
+[Button](classes/Button.md#class-button) subclass with a subtle background tint of the primary color. Uses `baseStyle: "softButton"`.
+
+### Groups
+
+- skinVariant
+
+---
+## Class: CardPanel
+
+*Inherits from:* [Canvas](classes/Canvas.md#class-canvas)
+
+### Description
+[Canvas](classes/Canvas.md#class-canvas) subclass with rounded corners and subtle shadow (card style). Uses `styleName: "cardPanel"`.
+
+### Groups
+
+- skinVariant
+
+---
 ## Class: FormClearValuesTask
 
 *Inherits from:* [ComponentTask](classes/ComponentTask.md#class-componenttask)
@@ -3431,6 +3771,66 @@ Clear form values and errors.
 - [DynamicForm.clearValues](classes/DynamicForm.md#method-dynamicformclearvalues)
 
 ---
+## Class: TranslucentWindow
+
+*Inherits from:* [Window](classes/Window.md#class-window)
+
+### Description
+[Window](classes/Window.md#class-window) with glassmorphism effect (backdrop blur). Uses `styleName: "translucentWindow"`.
+
+### Groups
+
+- skinVariant
+
+---
+## Class: FilledTextItem
+
+*Inherits from:* [TextItem](classes/TextItem.md#class-textitem)
+
+### Description
+[TextItem](classes/TextItem.md#class-textitem) subclass with filled background. Uses `textBoxStyle: "filledTextItem"`.
+
+### Groups
+
+- skinVariant
+
+---
+## Class: LinkButton
+
+*Inherits from:* [Button](classes/Button.md#class-button)
+
+### Description
+[Button](classes/Button.md#class-button) subclass styled as a text link with underline on hover. Uses `baseStyle: "linkButton"`.
+
+### Groups
+
+- skinVariant
+
+---
+## Class: RoundedTextItem
+
+*Inherits from:* [TextItem](classes/TextItem.md#class-textitem)
+
+### Description
+[TextItem](classes/TextItem.md#class-textitem) subclass with rounded corners. Uses `textBoxStyle: "roundedTextItem"`.
+
+### Groups
+
+- skinVariant
+
+---
+## Class: BorderedSection
+
+*Inherits from:* [SectionHeader](classes/SectionHeader.md#class-sectionheader)
+
+### Description
+[SectionHeader](classes/SectionHeader.md#class-sectionheader) subclass with left border accent.
+
+### Groups
+
+- skinVariant
+
+---
 ## Class: FormResetValuesTask
 
 *Inherits from:* [ComponentTask](classes/ComponentTask.md#class-componenttask)
@@ -3441,6 +3841,62 @@ Revert unsaved changes in a form.
 ### See Also
 
 - [DynamicForm.reset](classes/DynamicForm.md#method-dynamicformreset)
+
+---
+## Class: GradientHeader
+
+*Inherits from:* [SectionHeader](classes/SectionHeader.md#class-sectionheader)
+
+### Description
+[SectionHeader](classes/SectionHeader.md#class-sectionheader) subclass with gradient background.
+
+### Groups
+
+- skinVariant
+
+---
+## Class: StripedGrid
+
+*Inherits from:* [ListGrid](classes/ListGrid_1.md#class-listgrid)
+
+### Description
+[ListGrid](classes/ListGrid_1.md#class-listgrid) subclass with alternating row colors for improved readability.
+
+### Groups
+
+- skinVariant
+
+---
+## Class: ElevatedPanel
+
+*Inherits from:* [Canvas](classes/Canvas.md#class-canvas)
+
+### Description
+[Canvas](classes/Canvas.md#class-canvas) subclass with more pronounced shadow. Uses `styleName: "elevatedPanel"`.
+
+### Groups
+
+- skinVariant
+
+---
+## Class: InlineTextItem
+
+*Inherits from:* [TextItem](classes/TextItem.md#class-textitem)
+
+### Description
+TextItem subclass for inline contexts (filter editors, toolbars, headers). Uses compact rounded input with accent-colored focus ring.
+
+---
+## Class: MinimalSection
+
+*Inherits from:* [SectionHeader](classes/SectionHeader.md#class-sectionheader)
+
+### Description
+[SectionHeader](classes/SectionHeader.md#class-sectionheader) subclass with no background.
+
+### Groups
+
+- skinVariant
 
 ---
 ## Class: TriplePane
@@ -3465,6 +3921,30 @@ Class used for the draggable "thumb" of a scrollbar. Do not use directly; this c
 
 ### Description
 Starts queuing all DataSource operations so they can be sent to the server all together as a transaction.
+
+---
+## Class: BorderedPanel
+
+*Inherits from:* [Canvas](classes/Canvas.md#class-canvas)
+
+### Description
+[Canvas](classes/Canvas.md#class-canvas) subclass with prominent border. Uses `styleName: "borderedPanel"`.
+
+### Groups
+
+- skinVariant
+
+---
+## Class: FlatPanel
+
+*Inherits from:* [Canvas](classes/Canvas.md#class-canvas)
+
+### Description
+[Canvas](classes/Canvas.md#class-canvas) subclass with border only, no shadow. Uses `styleName: "flatPanel"`.
+
+### Groups
+
+- skinVariant
 
 ---
 ## Class: FixedSpacer
@@ -3589,12 +4069,44 @@ Synonym for the [Authentication](classes/Authentication.md#class-authentication)
 FormItem for password fields, where text input by the user should not be shown in readable text.
 
 ---
+## Class: InlineMiniDateRangeItem
+
+*Inherits from:* [MiniDateRangeItem](classes/MiniDateRangeItem.md#class-minidaterangeitem)
+
+### Description
+MiniDateRangeItem subclass for inline contexts.
+
+---
+## Class: CompactMenu
+
+*Inherits from:* [Menu](classes/Menu.md#class-menu)
+
+### Description
+[Menu](classes/Menu.md#class-menu) subclass with reduced item padding.
+
+### Groups
+
+- skinVariant
+
+---
 ## Class: VerticalTabBar
 
 *Inherits from:* [TabBar](classes/TabBar.md#class-tabbar)
 
 ### Description
 Simple subclass of [TabBar](classes/TabBar.md#class-tabbar), with customized buttons.
+
+---
+## Class: RoundedMenu
+
+*Inherits from:* [Menu](classes/Menu.md#class-menu)
+
+### Description
+[Menu](classes/Menu.md#class-menu) subclass with rounded corners.
+
+### Groups
+
+- skinVariant
 
 ---
 ## Class: DrawBlockConnector
@@ -3623,6 +4135,38 @@ A simple subclass of [RibbonMenuButton](#class-ribbonmenubutton).
 Boolean form item, implemented with customizable checkbox images
 
 ---
+## Class: InlineCheckboxItem
+
+*Inherits from:* [CheckboxItem](classes/CheckboxItem.md#class-checkboxitem)
+
+### Description
+CheckboxItem subclass for inline contexts.
+
+---
+## Class: InlineComboBoxItem
+
+*Inherits from:* [ComboBoxItem](classes/ComboBoxItem.md#class-comboboxitem)
+
+### Description
+ComboBoxItem subclass for inline contexts.
+
+---
+## Class: InlineSpinnerItem
+
+*Inherits from:* [SpinnerItem](classes/SpinnerItem.md#class-spinneritem)
+
+### Description
+SpinnerItem subclass for inline contexts.
+
+---
+## Class: InlineSelectItem
+
+*Inherits from:* [SelectItem](classes/SelectItem.md#class-selectitem)
+
+### Description
+SelectItem subclass for inline contexts.
+
+---
 ## Class: DateGrid
 
 *Inherits from:* [ListGrid](classes/ListGrid_1.md#class-listgrid)
@@ -3631,12 +4175,60 @@ Boolean form item, implemented with customizable checkbox images
 A ListGrid subclass that manages calendar views.
 
 ---
+## Class: InlineColorItem
+
+*Inherits from:* [ColorItem](classes/ColorItem.md#class-coloritem)
+
+### Description
+ColorItem subclass for inline contexts.
+
+---
 ## Class: DataPathItem
 
 *Inherits from:* [TextItem](classes/TextItem.md#class-textitem)
 
 ### Description
 TextItem subclass for managing a DataPath
+
+---
+## Class: InlineDateItem
+
+*Inherits from:* [DateItem](classes/DateItem.md#class-dateitem)
+
+### Description
+DateItem subclass for inline contexts.
+
+---
+## Class: InlineTimeItem
+
+*Inherits from:* [TimeItem](classes/TimeItem.md#class-timeitem)
+
+### Description
+TimeItem subclass for inline contexts.
+
+---
+## Class: InlinePasswordItem
+
+*Inherits from:* [PasswordItem](#class-passworditem)
+
+### Description
+PasswordItem subclass for inline contexts.
+
+---
+## Class: InlineIntegerItem
+
+*Inherits from:* [IntegerItem](#class-integeritem)
+
+### Description
+IntegerItem subclass for inline contexts.
+
+---
+## Class: InlineFloatItem
+
+*Inherits from:* [FloatItem](#class-floatitem)
+
+### Description
+FloatItem subclass for inline contexts.
 
 ---
 ## Class: React
@@ -4673,63 +5265,10 @@ Policy controlling how the window will manage content within its body.
 | Window.HORIZONTAL | Window body defaults to HLayout behavior. (Body is actually just a Layout with [Layout.vertical](classes/Layout.md#attr-layoutvertical): false.) |
 
 ---
-## Type: ControlName
-
-### Description
-Names for the standard controls built into the RichTextEditor. You can use these `ControlNames` in APIs like [RichTextEditor.styleControls](classes/RichTextEditor.md#attr-richtexteditorstylecontrols) to control the order in which controls appear, to omit default controls or to show controls that are not shown by default.
-
-Every `ControlName` is also the name of an [AutoChild](#type-autochild), so all the built-in controls can be skinned or otherwise customized via the [AutoChild system](kb_topics/autoChildUsage.md#kb-topic-using-autochildren).
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| "boldSelection" | A button to make the current selection bold. |
-| "italicSelection" | A button to make the current selection italic. |
-| "underlineSelection" | A button to make the current selection underlined. |
-| "fontSelector" | A select item allowing the user to change the font of the current text selection. |
-| "fontSizeSelector" | A select item allowing the user to change the font size of the current text selection. |
-| "alignLeft" | A button to left-align the selected text. |
-| "alignRight" | A button to right-align the selected text. |
-| "alignCenter" | A button to center the selected text. |
-| "justify" | A button to justify the selected line of text. |
-| "color" | A color-picker allowing the user to set the text color. |
-| "backgroundColor" | A color picker allowing the user to set the text background color. |
-| "indent" | Within text, indents the paragraph. Within a list, increases the list level. |
-| "outdent" | Within text, outdents the paragraph. Within a list, decreases the list level. |
-| "orderedList" | Turns the current selection into an ordered list (HTML `<ol>`) or converts an unordered list to an ordered list. |
-| "unorderedList" | Turns the current selection into an unordered list (HTML `<ul>`) or converts an ordered list to an unordered list. |
-| "listProperties" | Shows the [listPropertiesDialog](classes/RichTextEditor.md#attr-richtexteditorlistpropertiesdialog) to allow configuring the options of the currently selected HTML list. |
-
----
 ## Type: Coordinate
 
 ### Description
 A number representing a horizontal or vertical offset from the origin of a [coordinate system](classes/DrawPane.md#class-drawpane) in the `DrawPane`. [DrawRect.left](classes/DrawRect.md#attr-drawrectleft) is an example of a [DrawItem](classes/DrawItem.md#class-drawitem) attribute that's a `Coordinate`. A `Coordinate` is not limited to integers except for [DrawingType](#type-drawingtype) "vml".
-
----
-## Type: CSSStyleName
-
-### Description
-CSS class name to apply to some HTML element on this page. This is a string that should match the css class defined for the page in an external stylesheet or in inline html `<STYLE>` tags.
-
-As a general rule, wherever it is possible to provide a CSS styleName (such as [Canvas.styleName](classes/Canvas.md#attr-canvasstylename) or [Button.baseStyle](classes/Button.md#attr-buttonbasestyle), your CSS style can specify border, margins, padding, and any CSS attributes controlling background or text styling. You should not specify any CSS properties related to positioning, clipping, sizing or visibility (such as "overflow", "position", "display", "visibility" and "float") - use SmartClient APIs for this kind of control.
-
-Because text wrapping cannot be consistently controlled cross-browser from CSS alone, you should use SmartClient properties such as [Button.wrap](classes/Button.md#attr-buttonwrap) instead of the corresponding CSS properties, when provided.
-
-Content contained within SmartClient components can use arbitrary CSS, with the caveat that the content should be tested on all supported browsers, just as content outside of SmartClient must be.
-
-**Special note on CSS margins**: wherever possible, use CSS padding and border in lieu of CSS margins, or non-CSS approaches such as [Layout.layoutMargin](classes/Layout.md#attr-layoutlayoutmargin), [Canvas.snapTo](classes/Canvas.md#attr-canvassnapto), or absolute positioning (including specifying percentage left/top coordinates). We recommend this because CSS specifies a very complicated and widely criticized "margin-collapse" behavior which has surprising effects when margins exist on both parents and children. Compounding the problem, margins are implemented very differently on different browsers, especially when it comes to HTML margins.
-
-**Note about CSS "box models"**
-
-The CSS "box model" defines whether the size applied to a DOM element includes padding, borders or margins, or whether such settings effectively **increase** the size of the component beyond the size specified in CSS.
-
-In SmartClient, the size configured for a component _includes_ border, padding and margins if specified (in CSS terminology, the box model is "margin-box"). This allows CSS borders, margins and padding to be treated as purely visual properties with no effect on sizing or layout.
-
-### Groups
-
-- appearance
 
 ---
 ## Type: CurrentPane
@@ -4857,29 +5396,6 @@ The type of date/time editing style to use when editing an event.
 As an example - an input format of "MDY" would parse "01/02/1999" to Jan 2nd 1999
 
 Note: In addition to these standard formats, a custom date string parser function may be passed directly to [DateUtil.setInputFormat](classes/DateUtil.md#classmethod-dateutilsetinputformat) or passed into [DateUtil.parseInput](classes/DateUtil.md#classmethod-dateutilparseinput) as the inputFormat parameter.
-
----
-## Type: DefaultQueryClause
-
-### Description
-The Velocity variable names of the "pieces" of SQL that SmartClient generates to form a complete fetch or update query. You can use these variables in you own custom queries and query clause overrides to build on the SmartClient functionality. See [customQuerying](kb_topics/customQuerying.md#kb-topic-custom-querying-overview) for a full discussion.
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| "$defaultSelectClause" | The column names to select, for a fetch operation only |
-| "$defaultTableClause" | The table name(s) to select from or update |
-| "$defaultAnsiJoinClause" | The [ansi join(s)](classes/DataSource_1.md#attr-datasourceuseansijoins) to join tables to select from, if enabled. |
-| "$defaultWhereClause" | The "where" condition, which will be derived from supplied criteria or a primary key value, depending on the type of operation |
-| "$defaultGroupClause" | For a fetch operation when using the [Server Summaries](kb_topics/serverSummaries.md#kb-topic-server-summaries) feature, "group by" part of aggregated query |
-| "$defaultAfterWhereClause" | For a fetch operation when using the [Server Summaries](kb_topics/serverSummaries.md#kb-topic-server-summaries) feature, "having" part of aggregated query (or outer "where" part if sub-select approach is used, see [OperationBinding.useHavingClause](classes/OperationBinding.md#attr-operationbindingusehavingclause) for more details) |
-| "$defaultValuesClause" | The column names to update and the update values, for an update or add operation |
-| "$defaultOrderClause" | The column names to sort by, for a fetch operation only |
-
-### Groups
-
-- customQuerying
 
 ---
 ## Type: DetailViewerViewState
@@ -5070,14 +5586,14 @@ Note that the *"circleto" Command example* can be very helpful when learning how
 ## Type: DSInheritanceMode
 
 ### Description
-For DataSources of type "sql" and "hibernate", specifies the kind of inheritance to use when a dataSource specifies [inheritsFrom](classes/DataSource_1.md#attr-datasourceinheritsfrom).
+For DataSources of type "sql" and "hibernate", specifies the kind of inheritance to use when a dataSource specifies [inheritsFrom](classes/DataSource.md#attr-datasourceinheritsfrom).
 
 ### Values
 
 | Value | Description |
 |-------|-------------|
 | "full" | Inherit fields by copying them onto the inheriting DataSource's underlying table. When we import a DataSource with this inheritanceMode, we create actual columns for inherited fields on the table we create. With this inheritanceMode, inherited fields are updatable. |
-| "none" | Do not physically inherit fields onto the inheriting DataSource's SQL table. Columns will not be created for inherited fields on import, and all generated SQL operations will exclude inherited fields. However, those fields are still part of the DataSource's schema so you can, for example, write [custom SQL](kb_topics/customQuerying.md#kb-topic-custom-querying-overview) that returns values for the inherited fields, and they will be delivered to the client. |
+| "none" | Do not physically inherit fields onto the inheriting DataSource's SQL table. Columns will not be created for inherited fields on import, and all generated SQL operations will exclude inherited fields. However, those fields are still part of the DataSource's schema so you can, for example, write [custom SQL](#kb-topic-customquerying) that returns values for the inherited fields, and they will be delivered to the client. |
 
 ### Groups
 
@@ -5151,7 +5667,7 @@ What to do if the user hits escape while editing a cell.
 ## Type: EscapingMode
 
 ### Description
-Mode for escaping text values when using [DataSource.recordsAsText](classes/DataSource_1.md#method-datasourcerecordsastext) or [DataSource.recordsFromText](classes/DataSource_1.md#method-datasourcerecordsfromtext).
+Mode for escaping text values when using [DataSource.recordsAsText](classes/DataSource.md#method-datasourcerecordsastext) or [DataSource.recordsFromText](classes/DataSource.md#method-datasourcerecordsfromtext).
 
 ### Values
 
@@ -5238,16 +5754,6 @@ Strategies for calculating the FiscalYear within a [FiscalCalendar](#object-fisc
 A decimal (or "floating point") number, for example, 5.5. May not be null.
 
 ---
-## Type: Float
-
-### Description
-A decimal (or "floating point") number, for example, 5.5. Null is allowed.
-
-### See Also
-
-- [float](#type-float)
-
----
 ## Type: ForceTextApproach
 
 ### Description
@@ -5280,7 +5786,7 @@ This category includes cases where code running in the browser does the renderin
 #### Excel export
 Almost the same as in-browser rendering, with minor limitations due to missing features in Excel. Exact differences are described under [DataSourceField.exportFormat](classes/DataSourceField.md#attr-datasourcefieldexportformat).
 #### non-Excel server export
-For example, CSV, XML or JSON [export formats](reference_2.md#type-exportformat) provided via [DataSource.exportData](classes/DataSource_1.md#method-datasourceexportdata). Full support for SimpleDateFormat/DecimalFormat as provided by whichever Java version you have installed on the server. However note that depending on the context of the export, the default behavior may be to ignore format strings, since formatting intended for end users wouldn't be desirable if data exchange is the goal. See the [Export Formatting overview](kb_topics/exportFormatting.md#kb-topic-exports--formatting) for details.
+For example, CSV, XML or JSON [export formats](reference_2.md#type-exportformat) provided via [DataSource.exportData](classes/DataSource.md#method-datasourceexportdata). Full support for SimpleDateFormat/DecimalFormat as provided by whichever Java version you have installed on the server. However note that depending on the context of the export, the default behavior may be to ignore format strings, since formatting intended for end users wouldn't be desirable if data exchange is the goal. See the [Export Formatting overview](kb_topics/exportFormatting.md#kb-topic-exports--formatting) for details.
 
 #### Date Format
 
@@ -5480,12 +5986,6 @@ Form METHOD parameters - how the form fields are submitted to the server
 - submitting
 
 ---
-## Type: GlobalId
-
-### Description
-An [Identifier](#type-identifier) that's unique in the global scope. For example, the [ID](classes/Canvas.md#attr-canvasid) of a [Canvas](classes/Canvas.md#class-canvas) is a `GlobalId`.
-
----
 ## Type: GroupStartOpen
 
 ### Description
@@ -5536,15 +6036,7 @@ A String of HTML, such as "text".
 
 In many contexts, such as [Button.title](classes/Button.md#attr-buttontitle) and [ListGrid.formatCellValue](classes/ListGrid_2.md#method-listgridformatcellvalue), an HTML String can be specified, allowing you to use normal HTML tags and CSS to do formatting or styling.
 
-However, bear in mind that if you attempt any kind of layout or advanced styling in such an HTML string, different browsers may render the HTML differently - use SmartClient [layout](classes/Layout.md#class-layout) and [styling](classes/Canvas.md#attr-canvasstylename) features wherever possible to avoid this. See also [CSSStyleName](#type-cssstylename).
-
----
-## Type: Identifier
-
-### Description
-A string which is a valid JavaScript identifier, as specified by ECMA-262 Section 7.6.
-
-Note: The [String.isValidID](classes/String.md#staticmethod-stringisvalidid) function can be used to test whether a name is a valid JavaScript identifier.
+However, bear in mind that if you attempt any kind of layout or advanced styling in such an HTML string, different browsers may render the HTML differently - use SmartClient [layout](classes/Layout.md#class-layout) and [styling](classes/Canvas.md#attr-canvasstylename) features wherever possible to avoid this. See also [CSSStyleName](reference_2.md#type-cssstylename).
 
 ---
 ## Type: ImageStyle
@@ -5717,27 +6209,6 @@ Supported styles of drawing the endpoints of a line
 - line
 
 ---
-## Type: LinePattern
-
-### Description
-Supported styles of drawing lines.
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| "solid" | Solid line |
-| "dot" | Dotted line |
-| "dash" | Dashed line |
-| "shortdot" | Dotted line, with more tightly spaced dots |
-| "shortdash" | Dashed line, with shorter, more tightly spaced dashes |
-| "longdash" | Dashed line, with longer, more widely spaced dashes |
-
-### Groups
-
-- line
-
----
 ## Type: LinkDataFetchMode
 
 ### Description
@@ -5825,7 +6296,7 @@ NOTE: for a field that shows different icons depending on the field value, see [
 [field.iconWidth](classes/ListGridField.md#attr-listgridfieldiconwidth) and related properties configure the size of the icon both in the header and in body cells.
 
 If you want the icon to appear only in body cells and not in the header, set [field.cellIcon](classes/ListGridField.md#attr-listgridfieldcellicon) instead, leaving field.icon null. |
-| "binary" | For viewing, the grid renders a 'view' icon (looking glass) followed by a 'download' icon and then the name of the file is displayed in text. If the user clicks the 'view' icon, a new browser window is opened and the file is streamed to that browser instance, using [DataSource.viewFile](classes/DataSource_1.md#method-datasourceviewfile). For images and other file types with known handlers, the content is typically displayed inline - otherwise the browser will ask the user how to handle the content. If the download icon is clicked, [DataSource.downloadFile](classes/DataSource_2.md#method-datasourcedownloadfile) is used to cause the browser to show a "save" dialog. There is no inline editing mode for this field type. |
+| "binary" | For viewing, the grid renders a 'view' icon (looking glass) followed by a 'download' icon and then the name of the file is displayed in text. If the user clicks the 'view' icon, a new browser window is opened and the file is streamed to that browser instance, using [DataSource.viewFile](classes/DataSource.md#method-datasourceviewfile). For images and other file types with known handlers, the content is typically displayed inline - otherwise the browser will ask the user how to handle the content. If the download icon is clicked, [DataSource.downloadFile](classes/DataSource.md#method-datasourcedownloadfile) is used to cause the browser to show a "save" dialog. There is no inline editing mode for this field type. |
 | "imageFile" | Same as `binary` |
 | "summary" | Show a calculated summary based on other field values within the current record. See [ListGridField.recordSummaryFunction](classes/ListGridField.md#attr-listgridfieldrecordsummaryfunction) for more information |
 | "any" | Fields of this type can contain any data value and have no default formatting or validation behavior. This is useful as the [parent type](classes/SimpleType.md#attr-simpletypeinheritsfrom) for SimpleTypes where you do not want any of the standard validation or formatting logic to be inherited from the standard built-in types. |
@@ -5851,16 +6322,6 @@ and adding "#" and "\*" to the regular expressions above would allow for users t
 
 - [ListGridField.type](classes/ListGridField.md#attr-listgridfieldtype)
 - [FieldType](reference_2.md#type-fieldtype)
-
----
-## Type: ListGridGroupState
-
-### Description
-An object containing the stored grouping information for a listGrid. Note that this object is not intended to be interrogated directly, but may be stored (for example) as a blob on the server for state persistence across sessions.
-
-### Groups
-
-- viewState
 
 ---
 ## Type: ListGridSortState
@@ -6082,7 +6543,7 @@ Controls when primary keys are required for "update" and "remove" server operati
 
 ### See Also
 
-- [DataSource.defaultMultiUpdatePolicy](classes/DataSource_1.md#attr-datasourcedefaultmultiupdatepolicy)
+- [DataSource.defaultMultiUpdatePolicy](classes/DataSource.md#attr-datasourcedefaultmultiupdatepolicy)
 - [OperationBinding.allowMultiUpdate](classes/OperationBinding.md#attr-operationbindingallowmultiupdate)
 
 ---
@@ -6098,19 +6559,6 @@ Navigation direction.
 | "back" | Back |
 | "forward" | Forward |
 | "none" | none |
-
----
-## Type: NavigationMode
-
-### Description
-Controls the navigation mode of records.
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| TableView.WHOLE_RECORD | Clicking anywhere on the record navigates |
-| TableView.NAVICON_ONLY | Only clicking directly on the navigation icon triggers navigation |
 
 ---
 ## Type: NotifyTransition
@@ -6130,7 +6578,7 @@ Controls the navigation mode of records.
 ## Type: NullAccessType
 
 ### Description
-The possible access types for records with a null [ownerIdField](classes/DataSource_1.md#attr-datasourceowneridfield) (only applicable if `ownerIdField` is specified)
+The possible access types for records with a null [ownerIdField](classes/DataSource.md#attr-datasourceowneridfield) (only applicable if `ownerIdField` is specified)
 
 ### Values
 
@@ -6142,19 +6590,19 @@ The possible access types for records with a null [ownerIdField](classes/DataSou
 
 ### See Also
 
-- [DataSource.ownerIdField](classes/DataSource_1.md#attr-datasourceowneridfield)
-- [DataSource.ownerIdNullAccess](classes/DataSource_1.md#attr-datasourceowneridnullaccess)
-- [DataSource.ownerIdNullRole](classes/DataSource_1.md#attr-datasourceowneridnullrole)
+- [DataSource.ownerIdField](classes/DataSource.md#attr-datasourceowneridfield)
+- [DataSource.ownerIdNullAccess](classes/DataSource.md#attr-datasourceowneridnullaccess)
+- [DataSource.ownerIdNullRole](classes/DataSource.md#attr-datasourceowneridnullrole)
 
 ---
 ## Type: Object
 
 ### Description
-An ordinary JavaScript as obtained by "new Object()" or via [Object Literal](#type-objectliteral) syntax.
+An ordinary JavaScript as obtained by "new Object()" or via [Object Literal](reference_2.md#type-objectliteral) syntax.
 
 Methods that return Objects or take Objects as parameters make use of the ability of a JavaScript Object to contain an arbitrary set of named properties, without requiring declaration in advance. This capability makes it possible to use a JavaScript Object much like a HashMap in Java or .NET, but without the need to call get() or set() to create and retrieve properties.
 
-For example if you created an Object using [Object Literal](#type-objectliteral) syntax like so:
+For example if you created an Object using [Object Literal](reference_2.md#type-objectliteral) syntax like so:
 
 ```
     var request = {
@@ -6184,39 +6632,6 @@ Note that while JavaScript allows you to get and set properties in this way on a
 All documented attributes have [flags](#kb-topic-flag-abbreviations) (eg IRW) that indicate when direct property access is allowed or not.
 
 ---
-## Type: ObjectLiteral
-
-### Description
-An "Object literal" is JavaScript shorthand for defining a JavaScript Object with a set of properties. For example, code like this:
-```
-    var request = {
-        actionURL : "/foo.do",
-        showPrompt:false
-    };
-```
-.. is equivalent to ..
-```
-    var request = new Object();
-    request.actionURL = "/foo.do";
-    request.showPrompt = false;
-```
-In situations where a set of [properties](#type-properties) may be passed to a method, the Object literal notation is much more compact. For example:
-```
-    isc.RPCManager.sendRequest({
-        actionURL : "/foo.do",
-        showPrompt:false
-    });
-```
-**NOTE:** if you have a 'trailing comma' in an object literal, like so:
-```
-    var request = {
-        actionURL : "/foo.do",
-        showPrompt:false, // TRAILING COMMA
-    };
-```
-This is considered a syntax error by Internet Explorer, but not by Firefox. This is by far the #1 cause of Internet Explorer-specific errors that do not occur in other browsers. Pay special attention to this error, and, if you can, install the JSSyntaxScannerFilter into your development environment (as described in the [deployment instructions](kb_topics/iscInstall.md#kb-topic-installing-the-smartclient-runtime)).
-
----
 ## Type: OperatorId
 
 ### Description
@@ -6224,7 +6639,7 @@ An operator is used as part of a [Criterion](reference_2.md#object-criterion) wh
 
 This list of operators indicates the set of operators built into SmartClient DataSources, which can be used for both client and server-side filtering. Some operators offer case-insensitive versions, prefixed with a lower-case _i_, such as `iContains`. **Note that such operators are intended for text-based searches and are not available to numeric or date fields (integer/float/date/datetime and derivatives), where there is no use for case.**
 
-You can extend the list of operators with [DataSource.addSearchOperator](classes/DataSource_1.md#method-datasourceaddsearchoperator).
+You can extend the list of operators with [DataSource.addSearchOperator](classes/DataSource.md#method-datasourceaddsearchoperator).
 
 ### Values
 
@@ -6252,14 +6667,14 @@ You can extend the list of operators with [DataSource.addSearchOperator](classes
 | "iNotEndsWith" | Does not end with (case insensitive) |
 | "iBetween" | shortcut for "greaterThan" + "and" + "lessThan" (case insensitive) |
 | "iBetweenInclusive" | shortcut for "greaterOrEqual" + "and" + "lessOrEqual" (case insensitive) |
-| "matchesPattern" | Basic GLOB matching using wildcards (see [DataSource.translatePatternOperators](classes/DataSource_1.md#attr-datasourcetranslatepatternoperators) for more information on available patterns) |
-| "iMatchesPattern" | Basic GLOB matching using wildcards (case insensitive) (see [DataSource.translatePatternOperators](classes/DataSource_1.md#attr-datasourcetranslatepatternoperators) for more information on available patterns) |
-| "containsPattern" | GLOB matching using wildcards. Value is considered to meet the criterion if it contains the pattern. See [DataSource.translatePatternOperators](classes/DataSource_1.md#attr-datasourcetranslatepatternoperators) for more information on available patterns) |
-| "startsWithPattern" | GLOB matching using wildcards. Value is considered to meet the criterion if it starts with the pattern.See [DataSource.translatePatternOperators](classes/DataSource_1.md#attr-datasourcetranslatepatternoperators) for more information on available patterns) |
-| "endsWithPattern" | GLOB matching using wildcards. Value is considered to meet the criterion if it starts with the pattern.See [DataSource.translatePatternOperators](classes/DataSource_1.md#attr-datasourcetranslatepatternoperators) for more information on available patterns) |
-| "iContainsPattern" | GLOB matching using wildcards. Value is considered to meet the criterion if it contains the pattern. Matching is case insensitive. See [DataSource.translatePatternOperators](classes/DataSource_1.md#attr-datasourcetranslatepatternoperators) for more information on available patterns) |
-| "iStartsWithPattern" | GLOB matching using wildcards. Value is considered to meet the criterion if it starts with the pattern. Matching is case insensitive.See [DataSource.translatePatternOperators](classes/DataSource_1.md#attr-datasourcetranslatepatternoperators) for more information on available patterns) |
-| "iEndsWithPattern" | GLOB matching using wildcards.Value is considered to meet the criterion if it ends with the pattern. Matching is case insensitive. See [DataSource.translatePatternOperators](classes/DataSource_1.md#attr-datasourcetranslatepatternoperators) for more information on available patterns) |
+| "matchesPattern" | Basic GLOB matching using wildcards (see [DataSource.translatePatternOperators](classes/DataSource.md#attr-datasourcetranslatepatternoperators) for more information on available patterns) |
+| "iMatchesPattern" | Basic GLOB matching using wildcards (case insensitive) (see [DataSource.translatePatternOperators](classes/DataSource.md#attr-datasourcetranslatepatternoperators) for more information on available patterns) |
+| "containsPattern" | GLOB matching using wildcards. Value is considered to meet the criterion if it contains the pattern. See [DataSource.translatePatternOperators](classes/DataSource.md#attr-datasourcetranslatepatternoperators) for more information on available patterns) |
+| "startsWithPattern" | GLOB matching using wildcards. Value is considered to meet the criterion if it starts with the pattern.See [DataSource.translatePatternOperators](classes/DataSource.md#attr-datasourcetranslatepatternoperators) for more information on available patterns) |
+| "endsWithPattern" | GLOB matching using wildcards. Value is considered to meet the criterion if it starts with the pattern.See [DataSource.translatePatternOperators](classes/DataSource.md#attr-datasourcetranslatepatternoperators) for more information on available patterns) |
+| "iContainsPattern" | GLOB matching using wildcards. Value is considered to meet the criterion if it contains the pattern. Matching is case insensitive. See [DataSource.translatePatternOperators](classes/DataSource.md#attr-datasourcetranslatepatternoperators) for more information on available patterns) |
+| "iStartsWithPattern" | GLOB matching using wildcards. Value is considered to meet the criterion if it starts with the pattern. Matching is case insensitive.See [DataSource.translatePatternOperators](classes/DataSource.md#attr-datasourcetranslatepatternoperators) for more information on available patterns) |
+| "iEndsWithPattern" | GLOB matching using wildcards.Value is considered to meet the criterion if it ends with the pattern. Matching is case insensitive. See [DataSource.translatePatternOperators](classes/DataSource.md#attr-datasourcetranslatepatternoperators) for more information on available patterns) |
 | "regexp" | Regular expression match - built-in SQL only, JPA and Hibernate do not support regexp operator. Additionally, when using PostgreSQL, it is supported only starting from PostgreSQL version 9.3. |
 | "iregexp" | Regular expression match (case insensitive) - regexp operator limitations apply. |
 | "isBlank" | value is either null or the empty string. For numeric fields it behaves as isNull |
@@ -6398,10 +6813,21 @@ Supported data point shapes for [FacetChart.pointShapes](classes/FacetChart.md#a
 | Triangle | (an isosceles triangle pointing up) |
 
 ---
-## Type: PositiveInteger
+## Type: PreRenderImageMode
 
 ### Description
-A positive whole number or 0, for example, 5. Negative values are not allowed. Null is allowed.
+Controls how framework-generated icons (group expand/collapse, tree openers, folder icons, value icons, boolean checkboxes) are handled in the canvas [ListGrid.preRender](classes/ListGrid_1.md#attr-listgridprerender) preview.
+
+Icons in the HTML grid are rendered as ``<img>`` or CSS-styled ``<span>`` elements. The canvas preview approximates these using Canvas 2D drawing or reserves the correct amount of space.
+
+Regardless of this setting, icon space is always reserved so that text positioning matches the final HTML grid layout.
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| "all" | All detectable framework icons are cached via Image objects and drawn via `ctx.drawImage()`. Icons with resolvable URLs (group openers, raster value icons) are rendered; sprite and CSS-class icons fall back to space reservation. First render for any given icon URL shows space only (async image loading); subsequent renders show the actual icon. |
+| "space" | Icon positions are detected and the correct horizontal space is reserved, but no images are drawn. Text is offset to match the HTML grid layout. |
 
 ---
 ## Type: PreRenderMode
@@ -6447,20 +6873,7 @@ For example, the first parameter of [RPCManager.sendRequest](classes/RPCManager.
 ```
 [actionURL](classes/RPCRequest.md#attr-rpcrequestactionurl) and [showPrompt](classes/RPCRequest.md#attr-rpcrequestshowprompt) are properties of [RPCRequest](#object-rpcrequest).
 
-Note that the notation shown above is an example of a [JavaScript object literal](#type-objectliteral).
-
----
-## Type: PropertyIdentifier
-
-### Description
-A means of identifying the properties in an exported dataset - either the property name or its title.
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| "name" | Identify properties by internal name |
-| "title" | Identify properties by localized descriptive title |
+Note that the notation shown above is an example of a [JavaScript object literal](reference_2.md#type-objectliteral).
 
 ---
 ## Type: ProportionalResizeMode
@@ -6563,13 +6976,13 @@ Builtin options include
 ## Type: RESTRequestFormat
 
 ### Description
-Indicates the request format to be used for a REST operation. Is only applicable to [RestConnector DataSources](kb_topics/serverRestConnector.md#kb-topic-server-side-rest-connector). Note for all of these `RESTRequestFormat` options, only simple key-value criteria are supported; to handle [AdvancedCriteria](#object-advancedcriteria), you can use a [requestTemplate](classes/DataSource_1.md#attr-datasourcerequesttemplate), or subclass `com.isomorphic.dataSource.RestConnector` and override the `applyValuesOrCriteriaToRequest()` method.
+Indicates the request format to be used for a REST operation. Is only applicable to [RestConnector DataSources](kb_topics/serverRestConnector.md#kb-topic-server-side-rest-connector). Note for all of these `RESTRequestFormat` options, only simple key-value criteria are supported; to handle [AdvancedCriteria](#object-advancedcriteria), you can use a [requestTemplate](classes/DataSource.md#attr-datasourcerequesttemplate), or subclass `com.isomorphic.dataSource.RestConnector` and override the `applyValuesOrCriteriaToRequest()` method.
 
 ### Values
 
 | Value | Description |
 |-------|-------------|
-| "params" | Indicates that context is provided to the target REST service by setting parameter values in the URL. With this request format, the [DSRequest](reference_2.md#object-dsrequest)'s values or criteria will be added to the [target dataURL](classes/DataSource_1.md#attr-datasourcedataurl) as standard HTTP parameters values as follows:
+| "params" | Indicates that context is provided to the target REST service by setting parameter values in the URL. With this request format, the [DSRequest](reference_2.md#object-dsrequest)'s values or criteria will be added to the [target dataURL](classes/DataSource.md#attr-datasourcedataurl) as standard HTTP parameters values as follows:
 
 *   For "add" and "update" requests the "values" will be added to the target URL (see the server-side Javadoc for `DSRequest.getValues()`)
 *   For "fetch" and "remove" requests, where the concept of "values" doesn't make sense, the "criteria" will be added to the target URL (see the server-side Javadoc for `DSRequest.getCriteria()`)
@@ -6589,11 +7002,11 @@ we would end up with a target URL like this:
     https://somerestservice.com/customer/fetch?countryCode=US&stateCode=CA
  
 ```
-Also, note that any explicitly declared [params](classes/DataSource_1.md#attr-datasourceparams) will also be added to the target URL as standard HTTP parameters, as well as the request values/criteria (if there are any name collisions, the request values/criteria take precedence).
+Also, note that any explicitly declared [params](classes/DataSource.md#attr-datasourceparams) will also be added to the target URL as standard HTTP parameters, as well as the request values/criteria (if there are any name collisions, the request values/criteria take precedence).
 
 This format is often used to supply criteria to "fetch" operations, and primary-key values to "remove" operations. However, this is by no means a universal approach; different REST services adopt different approaches, there is no generally-accepted "right way" to handle things
 
-It is possible to suppress this automatic mapping - see [DataSource.suppressAutoMappings](classes/DataSource_1.md#attr-datasourcesuppressautomappings) |
+It is possible to suppress this automatic mapping - see [DataSource.suppressAutoMappings](classes/DataSource.md#attr-datasourcesuppressautomappings) |
 | "json" | Indicates that context is provided to the target REST service by providing a block of JSON-encoded text in the body of the HTTP request sent to the REST server. With this request format, `RestConnector` will render an incoming [DSRequest](reference_2.md#object-dsrequest)'s values or criteria as a JSON object; for "add" and "update" requests, the "values" will be used, and for "fetch" and "remove" operations, the criteria will be used (see the server-side Javadoc for `DSRequest.getCriteria()`).
 
 So if we had an add request with the following record:
@@ -6617,8 +7030,8 @@ those values would be included, in strict JSON form, in the body of the HTTP req
 
 This format is most often used when you need to supply more extensive amounts of data, like entire records to "add" and "update" operations. However, as mentioned above, this is by no means a universal approach, and some REST services use URL parameters even when specifying entire records of data. Also, some REST services use XML rather than JSON
 
-Note, if there is a [requestTemplate](classes/DataSource_1.md#attr-datasourcerequesttemplate) in force, we use that to drive the content and format of the generated JSON block |
-| "xml" | Indicates that context is provided to the target REST service by providing a block of XML text in the body of the HTTP request sent to the REST server. With this request format, `RestConnector` will render an incoming [DSRequest](reference_2.md#object-dsrequest)'s values or criteria as a snippet of XML text; for "add" and "update" requests, the "values" will be used, and for "fetch" and "remove" operations, the criteria will be used (see the server-side Javadoc for `DSRequest.getCriteria()`). The name of the enclosing tag is specified in [DataSource.xmlTag](classes/DataSource_1.md#attr-datasourcexmltag).
+Note, if there is a [requestTemplate](classes/DataSource.md#attr-datasourcerequesttemplate) in force, we use that to drive the content and format of the generated JSON block |
+| "xml" | Indicates that context is provided to the target REST service by providing a block of XML text in the body of the HTTP request sent to the REST server. With this request format, `RestConnector` will render an incoming [DSRequest](reference_2.md#object-dsrequest)'s values or criteria as a snippet of XML text; for "add" and "update" requests, the "values" will be used, and for "fetch" and "remove" operations, the criteria will be used (see the server-side Javadoc for `DSRequest.getCriteria()`). The name of the enclosing tag is specified in [DataSource.xmlTag](classes/DataSource.md#attr-datasourcexmltag).
 
 So if we had an add request with the following record:
 
@@ -6644,7 +7057,7 @@ those values would be included in the body of the HTTP request that `RestConnect
  
 ```
 
-Note, if there is a [requestTemplate](classes/DataSource_1.md#attr-datasourcerequesttemplate) in force, we use that to drive the content and format of the generated XML |
+Note, if there is a [requestTemplate](classes/DataSource.md#attr-datasourcerequesttemplate) in force, we use that to drive the content and format of the generated XML |
 
 ### Groups
 
@@ -6660,12 +7073,12 @@ Indicates the response format to be used for a REST operation. Is only applicabl
 
 | Value | Description |
 |-------|-------------|
-| "json" | Indicates that the REST service response is a valid [JSON](https://www.json.org/json-en.html) message. We will parse the response text as JSON, and the resulting object structure can be further processed with [XPaths](classes/DataSource_1.md#attr-datasourcerecordxpath), [templates](classes/DataSource_1.md#attr-datasourceresponsetemplate) and [scripting](classes/DataSource_1.md#attr-datasourcetransformresponsescript) |
+| "json" | Indicates that the REST service response is a valid [JSON](https://www.json.org/json-en.html) message. We will parse the response text as JSON, and the resulting object structure can be further processed with [XPaths](classes/DataSource.md#attr-datasourcerecordxpath), [templates](classes/DataSource.md#attr-datasourceresponsetemplate) and [scripting](classes/DataSource.md#attr-datasourcetransformresponsescript) |
 | "xml" | Indicates that the REST service response is an XML message. We will parse the response text as XML, and the resulting object structure can be further processed with XPaths, templates and scripting |
-| "csv" | Indicates that the the REST service response is in delimited text format in the body of the HTTP response. We will parse the response text as delimited flat text data, and the resulting object structure can be further processed with scripting. Note, we do not support XPaths because they do not make sense with flat data, and we also do not support templating of CSV responses. Record-level and field-level transformation scripts, however, are applicable, and field [nativeName](classes/DataSourceField.md#attr-datasourcefieldnativename)s are honored if the CSV text includes a header row
+| "csv" | Indicates that the the REST service response is in delimited text format in the body of the HTTP response. We will parse the response text as delimited flat text data, and the resulting object structure can be further processed with scripting. Note, we do not support XPaths because they do not make sense with flat data, and we also do not support templating of CSV responses. Record-level and field-level transformation scripts, however, are applicable, and field [nativeName](#attr-datasourcefieldnativename)s are honored if the CSV text includes a header row
 
-`RestConnector` only supports a couple options for CSV-based REST services - see [DataSource.csvDelimiter](classes/DataSource_1.md#attr-datasourcecsvdelimiter) and [DataSource.csvQuoteCharacter](classes/DataSource_1.md#attr-datasourcecsvquotecharacter) |
-| "text" | Indicates that REST service response is to be treated simply as a piece of text, with no parsing or other processing attempted. Use this format for services that return simple strings or messages in some non-standard format; you can provide your own parsing logic in a [transformResponseScript](classes/DataSource_1.md#attr-datasourcetransformresponsescript) |
+`RestConnector` only supports a couple options for CSV-based REST services - see [DataSource.csvDelimiter](classes/DataSource.md#attr-datasourcecsvdelimiter) and [DataSource.csvQuoteCharacter](classes/DataSource.md#attr-datasourcecsvquotecharacter) |
+| "text" | Indicates that REST service response is to be treated simply as a piece of text, with no parsing or other processing attempted. Use this format for services that return simple strings or messages in some non-standard format; you can provide your own parsing logic in a [transformResponseScript](classes/DataSource.md#attr-datasourcetransformresponsescript) |
 
 ### Groups
 
@@ -6677,13 +7090,13 @@ Indicates the response format to be used for a REST operation. Is only applicabl
 ### Description
 Enumerated status indicating whether a ResultSet has an accurate [ResultSet.getRowCount](classes/ResultSet.md#method-resultsetgetrowcount) row count for the data set.
 
-This is a feature associated with [progressive loading of data](classes/DataSource_1.md#attr-datasourceprogressiveloading). When progressive loading is active, the [length](classes/ResultSet.md#method-resultsetgetlength) may not indicate the true size of the data set. In this case a different total row count may be maintained by the ResultSet data object and retrieved via [ResultSet.getRowCount](classes/ResultSet.md#method-resultsetgetrowcount). This status code indicates whether this row count is an exact value or not.
+This is a feature associated with [progressive loading of data](classes/DataSource.md#attr-datasourceprogressiveloading). When progressive loading is active, the [length](classes/ResultSet.md#method-resultsetgetlength) may not indicate the true size of the data set. In this case a different total row count may be maintained by the ResultSet data object and retrieved via [ResultSet.getRowCount](classes/ResultSet.md#method-resultsetgetrowcount). This status code indicates whether this row count is an exact value or not.
 
 ### Values
 
 | Value | Description |
 |-------|-------------|
-| "exact" | The size of the data set is known and the current row count is accurate. This always will be the case if [progressiveLoading](classes/DataSource_1.md#attr-datasourceprogressiveloading) is not active. If progressiveLoading is active, we may have an accurate row count in the following scenarios:
+| "exact" | The size of the data set is known and the current row count is accurate. This always will be the case if [progressiveLoading](classes/DataSource.md#attr-datasourceprogressiveloading) is not active. If progressiveLoading is active, we may have an accurate row count in the following scenarios:
 
 *   [ResultSet.setFullLength](classes/ResultSet.md#method-resultsetsetfulllength) was explicitly invoked to tell the resultSet its total length.  
     In this case [ResultSet.getLength](classes/ResultSet.md#method-resultsetgetlength) will return the same value as [ResultSet.getRowCount](classes/ResultSet.md#method-resultsetgetrowcount)
@@ -6695,10 +7108,10 @@ This is a feature associated with [progressive loading of data](classes/DataSour
     In this case [ResultSet.getLength](classes/ResultSet.md#method-resultsetgetlength) will return the same value as [ResultSet.getRowCount](classes/ResultSet.md#method-resultsetgetrowcount) if [ResultSet.applyRowCountToLength](classes/ResultSet.md#attr-resultsetapplyrowcounttolength) is true, otherwise the values may differ. |
 | "unknown" | The current row count is unknown. This value indicates [ResultSet.lengthIsKnown](classes/ResultSet.md#method-resultsetlengthisknown) returns false. |
 | "loading" | This value indicates that the ResultSet is waiting for an active [row count fetch](classes/ResultSet.md#method-resultsetfetchrowcount) to complete. |
-| "minimum" | The current row count is a minimum - there are at least this many records in the data set. Note that when [progressiveLoading](classes/DataSource_1.md#attr-datasourceprogressiveloading) is active, this will be the status if no explicit [DSResponse.estimatedTotalRows](classes/DSResponse.md#attr-dsresponseestimatedtotalrows) was available, so [DSResponse.totalRows](classes/DSResponse.md#attr-dsresponsetotalrows) is a minimum, or if [DSResponse.estimatedTotalRows](classes/DSResponse.md#attr-dsresponseestimatedtotalrows) contained a value in the format `_"[rowCount]+"_`. |
-| "approximate" | The current row count is an approximation. This will be the status if [progressiveLoading](classes/DataSource_1.md#attr-datasourceprogressiveloading) is active and a fetch request contained an explicit [DSResponse.estimatedTotalRows](classes/DSResponse.md#attr-dsresponseestimatedtotalrows) in the format `_"~[rowCount]"_`. |
-| "maximum" | The current row count is a maximum - there are no more than this many records in the data set. This will be the status if [progressiveLoading](classes/DataSource_1.md#attr-datasourceprogressiveloading) is active and a fetch request contained an explicit [DSResponse.estimatedTotalRows](classes/DSResponse.md#attr-dsresponseestimatedtotalrows) in the format `_"-[rowCount]"_`. |
-| "range" | The data object knows the total number of records in the data set lies within a particular range. In this case [ListGrid.getRowCountRange](classes/ListGrid_2.md#method-listgridgetrowcountrange) may be used to retrieve the upper and lower bound of this range, and [ListGrid.getRowCount](classes/ListGrid_2.md#method-listgridgetrowcount) will return the lower bound. This will be the status if [progressiveLoading](classes/DataSource_1.md#attr-datasourceprogressiveloading) is active and a fetch request contained an explicit [DSResponse.estimatedTotalRows](classes/DSResponse.md#attr-dsresponseestimatedtotalrows) in the format `_"[minRowCount]-[maxRowCount]"_`. |
+| "minimum" | The current row count is a minimum - there are at least this many records in the data set. Note that when [progressiveLoading](classes/DataSource.md#attr-datasourceprogressiveloading) is active, this will be the status if no explicit [DSResponse.estimatedTotalRows](classes/DSResponse.md#attr-dsresponseestimatedtotalrows) was available, so [DSResponse.totalRows](classes/DSResponse.md#attr-dsresponsetotalrows) is a minimum, or if [DSResponse.estimatedTotalRows](classes/DSResponse.md#attr-dsresponseestimatedtotalrows) contained a value in the format `_"[rowCount]+"_`. |
+| "approximate" | The current row count is an approximation. This will be the status if [progressiveLoading](classes/DataSource.md#attr-datasourceprogressiveloading) is active and a fetch request contained an explicit [DSResponse.estimatedTotalRows](classes/DSResponse.md#attr-dsresponseestimatedtotalrows) in the format `_"~[rowCount]"_`. |
+| "maximum" | The current row count is a maximum - there are no more than this many records in the data set. This will be the status if [progressiveLoading](classes/DataSource.md#attr-datasourceprogressiveloading) is active and a fetch request contained an explicit [DSResponse.estimatedTotalRows](classes/DSResponse.md#attr-dsresponseestimatedtotalrows) in the format `_"-[rowCount]"_`. |
+| "range" | The data object knows the total number of records in the data set lies within a particular range. In this case [ListGrid.getRowCountRange](classes/ListGrid_2.md#method-listgridgetrowcountrange) may be used to retrieve the upper and lower bound of this range, and [ListGrid.getRowCount](classes/ListGrid_2.md#method-listgridgetrowcount) will return the lower bound. This will be the status if [progressiveLoading](classes/DataSource.md#attr-datasourceprogressiveloading) is active and a fetch request contained an explicit [DSResponse.estimatedTotalRows](classes/DSResponse.md#attr-dsresponseestimatedtotalrows) in the format `_"[minRowCount]-[maxRowCount]"_`. |
 
 ### Groups
 
@@ -6744,20 +7157,6 @@ See also: [ListGrid.useRowSpanStyling](classes/ListGrid_1.md#attr-listgriduserow
 |-------|-------------|
 | "first" | This setting assumes that only the field-value for the first record spanned by this cell is significant. In this case the editor will only show for this cell if the user is editing the first spanned record. If the user initialized the edit on another spanned row, the editor will not show for this field. |
 | "each" | This setting assumes that each row's values are logically separate, so if a cell spans multiple rows, and a user initializes an edit on some cell in the second spanned row, the spanning cell will show an editor containing the value for the second spanned row. This may differ from the value displayed when not in edit mode (which is derived from the first spanned row by default). This setting may be useful for developers who which to implement their own logic on how to handle spanning cell display values and/or edit values (for example by using custom [formatting](classes/ListGridField.md#method-listgridfieldformatcellvalue) and applying custom logic to handle editing on [ListGridField.editorEnter](classes/ListGridField.md#method-listgridfieldeditorenter) and [ListGridField.editorExit](classes/ListGridField.md#method-listgridfieldeditorexit)). |
-
----
-## Type: RowSpanSelectionMode
-
-### Description
-Behavior of selection when row spanning is active. See [ListGrid.useRowSpanStyling](classes/ListGrid_1.md#attr-listgriduserowspanstyling).
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| "forward" | when a cell is clicked on, select any cells in subsequent columns which are at least partially spanned by the clicked cell |
-| "both" | when a cell is clicked on, selects any cells in any other columns which are at least partially spanned by the clicked cell |
-| "outerSpan" | behaves like "forward", except as though the cell in the first column was clicked instead. If the largest row spans are in the first column and all cells in subsequent columns do not extend out of the first cell's span, this creates a row-like selection model where the span of the left-most cell defines the "row" of cells being selected. |
 
 ---
 ## Type: RPCTransport
@@ -7033,7 +7432,7 @@ The possible types of sequence handling SmartClient Server can apply. This refer
 |-------|-------------|
 | "jdbcDriver" | Use the JDBC 3.0 API "getGeneratedKeys()" to get the most recent sequence value. Obviously, this is only an option for JDBC 3.0+ drivers. **NOTE: Oracle special case** The Oracle JDBC driver provides a "getGeneratedKeys" method, but that method does not actually return the generated key values; instead, it returns a ROWID, which we must use to fetch the inserted row, and obtain the generated key values from it. For this reason, you may find that "native" is slightly faster to retrieve sequence values than "jdbcDriver" with Oracle (or you may find that it makes no noticeable difference; it depends on too many factors for us to give a concrete recommendation) |
 | "native" | Use a database-specific native technique to obtain the most recent sequence value. The actual technique used varies widely depending on the vagaries of the underlying database (and sometimes the vagaries of particular releases of a database product) |
-| "none" | No automatic attempt is made to retrieve the most recent sequence value. You are expected to handle this by providing a [cacheSyncOperation](classes/OperationBinding.md#attr-operationbindingcachesyncoperation) that is able to return the entire row without needing generated PK values for context. For example, a query that uses `MAX(pk)` would be capable of this. To give a more complex example, say you have a sequence value that is retrieved from a legacy system: you could store that sequence value in the HTTP session and then have your custom `cacheSyncOperation` reference that session attribute in its `WHERE` clause. Also note that cacheSyncOperations, like any other [DataSource operation](classes/OperationBinding.md#class-operationbinding), can be [written in Java](classes/OperationBinding.md#attr-operationbindingserverobject) or any [JSR223-compliant scripting language](classes/OperationBinding.md#attr-operationbindingscript) - you do not have to use SQL |
+| "none" | No automatic attempt is made to retrieve the most recent sequence value. You are expected to handle this by providing a [cacheSyncOperation](#attr-operationbindingcachesyncoperation) that is able to return the entire row without needing generated PK values for context. For example, a query that uses `MAX(pk)` would be capable of this. To give a more complex example, say you have a sequence value that is retrieved from a legacy system: you could store that sequence value in the HTTP session and then have your custom `cacheSyncOperation` reference that session attribute in its `WHERE` clause. Also note that cacheSyncOperations, like any other [DataSource operation](classes/OperationBinding.md#class-operationbinding), can be [written in Java](classes/OperationBinding.md#attr-operationbindingserverobject) or any [JSR223-compliant scripting language](classes/OperationBinding.md#attr-operationbindingscript) - you do not have to use SQL |
 
 ---
 ## Type: ShowDataValuesMode
@@ -7060,24 +7459,6 @@ Support for showing data-values differs by [chart-type](classes/FacetChart.md#at
 ### Groups
 
 - labelsAndTitles
-
----
-## Type: ShowMessageType
-
-### Description
-Type of message to display in [ShowMessageTask](#class-showmessagetask). Controls the display of the icon.
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| "normal" | Normal message |
-| "warning" | Warning message |
-| "error" | Error message |
-
-### See Also
-
-- [ShowMessageTask.type](#attr-showmessagetasktype)
 
 ---
 ## Type: Side
@@ -7117,14 +7498,14 @@ The technique SmartClient Server's SQL DataSource should use to select a "page" 
 
 | Value | Description |
 |-------|-------------|
-| "sqlLimit" | Specify the paging directly in the SQL query we generate. The way this is done varies considerably from database to database: with some it is a straightforward built-in facility while others require arcane tricks or simply don't support the idea. This is the most efficient method, where available. Note that this strategy is not supported for operations that make use of a [customSQL](classes/OperationBinding.md#attr-operationbindingcustomsql) clause, because it depends upon being able to determine the size of the whole dataset without actually retrieving the whole dataset. Ordinary operations do this by means of an automatically-generated "row count query", but we cannot generate such a query for a `customSQL` operation. |
+| "sqlLimit" | Specify the paging directly in the SQL query we generate. The way this is done varies considerably from database to database: with some it is a straightforward built-in facility while others require arcane tricks or simply don't support the idea. This is the most efficient method, where available. Note that this strategy is not supported for operations that make use of a [customSQL](#attr-operationbindingcustomsql) clause, because it depends upon being able to determine the size of the whole dataset without actually retrieving the whole dataset. Ordinary operations do this by means of an automatically-generated "row count query", but we cannot generate such a query for a `customSQL` operation. |
 | "jdbcScroll" | Implement the paging behavior by use of the `absolute()` method of the JDBC `ResultSet`. |
 | "dropAtServer" | Implement the paging behavior by fetching the entire resultset from the database and dropping any unnecessary rows on the server before returning the data to the client. This approach is extremely inefficient, but also extremely straightforward; it is intended as a fallback option, for situations where the more sophisticated approaches cause problems (a JDBC driver that throws vague exceptions when `absolute()` is called, for example) |
 | "none" | No paging behavior: we always return the entire resultset to the client. |
 
 ### See Also
 
-- [DataSource.sqlPaging](classes/DataSource_1.md#attr-datasourcesqlpaging)
+- [DataSource.sqlPaging](classes/DataSource.md#attr-datasourcesqlpaging)
 - [OperationBinding.sqlPaging](classes/OperationBinding.md#attr-operationbindingsqlpaging)
 
 ---
@@ -7194,7 +7575,7 @@ Controls the display mode of TableView record display
 ## Type: TabName
 
 ### Description
-An [Identifier](#type-identifier) that must be locally unique within the containing [TabSet](classes/TabSet.md#class-tabset).
+An [Identifier](reference_2.md#type-identifier) that must be locally unique within the containing [TabSet](classes/TabSet.md#class-tabset).
 
 ---
 ## Type: TabTitleEditEvent
@@ -7452,7 +7833,7 @@ Note that the `errorMessage` for this validator will be evaluated as a dynamicSt
 | required | A non-empty value is required for this field to pass validation.
 
 In the case of a "binary" field, a non-empty file must be uploaded. |
-| isUnique | Returns true if the value for this field is unique. The uniqueness check is performed across the whole DataSource unless you specify property `validator.criteriaFields` as a comma-separated string of field names; in that case, the uniqueness check is done in the context of those extra criteria, allowing you to check, for example, whether an employee number is unique for the department and location found on the record being validated. By default the uniqueness check is not case sensitive but this can be controlled through the [caseSensitive](classes/Validator.md#attr-validatorcasesensitive) attribute. You can specify the [operation](classes/DataSource_1.md#attr-datasourceoperationbindings) to use for the uniqueness check with the [operationId](classes/Validator.md#attr-validatoroperationid) attribute.
+| isUnique | Returns true if the value for this field is unique. The uniqueness check is performed across the whole DataSource unless you specify property `validator.criteriaFields` as a comma-separated string of field names; in that case, the uniqueness check is done in the context of those extra criteria, allowing you to check, for example, whether an employee number is unique for the department and location found on the record being validated. By default the uniqueness check is not case sensitive but this can be controlled through the [caseSensitive](classes/Validator.md#attr-validatorcasesensitive) attribute. You can specify the [operation](classes/DataSource.md#attr-datasourceoperationbindings) to use for the uniqueness check with the [operationId](classes/Validator.md#attr-validatoroperationid) attribute.
 
 Validators of this type have [requiresServer](classes/ValidatorDefinition.md#attr-validatordefinitionrequiresserver) set to `true` and do not run on the client, unless all of the following are true:
 
@@ -7465,13 +7846,13 @@ Note when isUnique validator is executed as part of validation process during up
 See *uniqueCheckValidation example*. |
 | hasRelatedRecord | Returns true if the record implied by a relation exists. The relation can be derived automatically from the [DataSourceField.foreignKey](classes/DataSourceField.md#attr-datasourcefieldforeignkey) attribute of the field being validated, or you can specify it manually via `validator.relatedDataSource` and `validator.relatedField`.
 
-You can specify at DataSource level that this validator should be automatically applied to all fields that specify a [foreignKey](classes/DataSourceField.md#attr-datasourcefieldforeignkey) - see [DataSource.validateRelatedRecords](classes/DataSource_1.md#attr-datasourcevalidaterelatedrecords).
+You can specify at DataSource level that this validator should be automatically applied to all fields that specify a [foreignKey](classes/DataSourceField.md#attr-datasourcefieldforeignkey) - see [DataSource.validateRelatedRecords](classes/DataSource.md#attr-datasourcevalidaterelatedrecords).
 
 By default the uniqueness check is not case sensitive but this can be controlled through the [caseSensitive](classes/Validator.md#attr-validatorcasesensitive) attribute.
 
 Validators of this type have [requiresServer](classes/ValidatorDefinition.md#attr-validatordefinitionrequiresserver) set to `true` and do not run on the client.
 
-Note that this validation is generally unnecessary for data coming from a UI. The typical UI uses a [SelectItem](classes/SelectItem.md#class-selectitem) or [ComboBoxItem](classes/ComboBoxItem.md#class-comboboxitem) with an [optionDataSource](classes/FormItem.md#attr-formitemoptiondatasource) for user entry, such that the user can't accidentally enter a related record if that doesn't exist, and a typical SQL schema will include constraints that prevent a bad insert if the user attempts to circumvent the UI. The primary purpose of declaring this validation explicitly is to provide clear, friendly error messages for use cases such as [BatchUploader](classes/BatchUploader.md#class-batchuploader), where values aren't individually chosen by the user. See also the example *Related Records*. |
+Note that this validation is generally unnecessary for data coming from a UI. The typical UI uses a [SelectItem](classes/SelectItem.md#class-selectitem) or [ComboBoxItem](classes/ComboBoxItem.md#class-comboboxitem) with an [optionDataSource](classes/FormItem.md#attr-formitemoptiondatasource) for user entry, such that the user can't accidentally enter a related record if that doesn't exist, and a typical SQL schema will include constraints that prevent a bad insert if the user attempts to circumvent the UI. The primary purpose of declaring this validation explicitly is to provide clear, friendly error messages for use cases such as [BatchUploader](#class-batchuploader), where values aren't individually chosen by the user. See also the example *Related Records*. |
 | maxFileSize | This validator type is not for direct usage, instead [DataSourceField.maxFileSize](classes/DataSourceField.md#attr-datasourcefieldmaxfilesize) can be set and `maxFileSize` validator will be added automatically. Use [DataSource.maxFileSizeExceededMessage](classes/DataSource.md#classattr-datasourcemaxfilesizeexceededmessage) to customize validation error message.
 
 In supported browsers (Internet Explorer 10+, Chrome, Firefox, Safari 6+, Opera 11.1+), returns `true` if the file(s) selected by the user are not larger than the field's [DataSourceField.maxFileSize](classes/DataSourceField.md#attr-datasourcefieldmaxfilesize). If not supported by the browser, the validator will always return `true`.
@@ -7640,7 +8021,7 @@ When passed to the SmartClient Server, a server-side AdvancedCriteria instance (
 
 It's a best practice for XML representation to have ``<value>`` as a subelement with `xsi:type`. Although most systems will auto-convert criteria explicitly setting type leaves the least room for error or ambiguity.
 
-For other servers, you can translate `AdvancedCriteria` into whatever format is expected by the server, typically by implementing [DataSource.transformRequest](classes/DataSource_1.md#method-datasourcetransformrequest).
+For other servers, you can translate `AdvancedCriteria` into whatever format is expected by the server, typically by implementing [DataSource.transformRequest](classes/DataSource.md#method-datasourcetransformrequest).
 
 See [Criteria Editing](kb_topics/criteriaEditing.md#kb-topic-criteria-editing) for information about editing AdvancedCriteria in a DynamicForm.
 
@@ -7665,7 +8046,7 @@ Criteria subquery definitions fall into two broad categories:
 *   **Aggregation**, where the subquery uses a [SummaryFunction](reference_2.md#type-summaryfunction) to aggregate or summarize a related dataset, and then filter on that aggregated or summarized value. For example, orders with more than 10 lines, customers with an average order value more than $1000, UK customers with an outstanding payment more than a week old, etc
 *   **Related value**, where the subquery selects a value (or, for `inSet`\-type clauses, a set of values) from a related dataSource and then filters on that value. For example, Products that were not ordered last month, Employees who are based in one of the North American offices, Orders that include a particular category of Product, etc
 
-In ideal circumstances - when both main and subquery [dataSource](classes/DataSource_1.md#class-datasource)s are [SQL DataSources](kb_topics/sqlDataSource.md#kb-topic-sql-datasources), and a number of other restrictions are satisfied - subqueries are implemented by incorporating their functionality into a larger overall SQL query, because this is the most efficient thing to do, and gives the best performance. See [canEmbedSQL](classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubquerycanembedsql) for a description of the rules and nuances around this.
+In ideal circumstances - when both main and subquery [dataSource](classes/DataSource.md#class-datasource)s are [SQL DataSources](kb_topics/sqlDataSource.md#kb-topic-sql-datasources), and a number of other restrictions are satisfied - subqueries are implemented by incorporating their functionality into a larger overall SQL query, because this is the most efficient thing to do, and gives the best performance. See [canEmbedSQL](classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubquerycanembedsql) for a description of the rules and nuances around this.
 
 In cases where we cannot implement subqueries by embedding SQL, they are implemented by converting the subquery definitions into separate real `DSRequest`s, executing them, and then combining their results into the wider resultset.
 
@@ -7688,7 +8069,7 @@ For security reasons, subqueries in [requests](reference_2.md#object-dsrequest) 
 
 For `DSRequest`s that originally came from the server, it is possible to have a subquery that specifies any `DSRequest` property. Many of these would only have any relevance or effect if the subquery was run separately rather than embedded (as described above and in the [canEmbedSQL](classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubquerycanembedsql) doc). If you need to do this, look in the server Javadoc for `DSRequest.setAllowArbitrarySubqueries(boolean)`
 
-Finally, note that it is possible to switch off the ability to use subqueries altogether, either [per-DataSource](classes/DataSource_1.md#attr-datasourceallowcriteriasubqueries), or globally by setting the `allowCriteriaSubqueries` flag in your `server.properties` file:
+Finally, note that it is possible to switch off the ability to use subqueries altogether, either [per-DataSource](classes/DataSource.md#attr-datasourceallowcriteriasubqueries), or globally by setting the `allowCriteriaSubqueries` flag in your `server.properties` file:
 
 ```
  allowCriteriaSubqueries: false
@@ -7713,7 +8094,7 @@ When filtering client-side data with AdvancedCriteria that contain subquery crit
 
 If a subquery targets a DataSource that does not have a complete local cache, the request is delegated to the server, where the subquery is resolved. If the server is not available, the subquery criteria are ignored and a warning is logged.
 
-The [DataSource.allowCriteriaSubqueries](classes/DataSource_1.md#attr-datasourceallowcriteriasubqueries) property is enforced on the client as well — if set to `false`, subquery criteria are ignored during client-side filtering.
+The [DataSource.allowCriteriaSubqueries](classes/DataSource.md#attr-datasourceallowcriteriasubqueries) property is enforced on the client as well — if set to `false`, subquery criteria are ignored during client-side filtering.
 
 #### `exists / notExists` operators
 The [`exists / notExists`](#type-operatorid) operators provide a concise way to filter records based on the existence (or absence) of related rows.
@@ -7967,18 +8348,6 @@ Each CellRecord should be an object that minimally has a property named after ea
 Cell records can contain any other properties desired, such as cell ids, or values for facets not initially shown.
 
 ---
-## Object: ComponentSchemaField
-
-### Description
-A field in component schema.
-
-This typically represents an attribute of an object or smartclass.
-
-### Groups
-
-- componentSchema
-
----
 ## Object: CreateScreenSettings
 
 ### Description
@@ -8006,28 +8375,10 @@ An object that contains information needed to evaluate an [operator](#object-ope
 - advancedFilter
 
 ---
-## Object: DataContext
-
-### Description
-A mapping from [DataSource](classes/DataSource_1.md#class-datasource) IDs to specific [Records](#object-record).
-
-To understand how `dataContext` is used to automatically populate [DataBoundComponents](#interface-databoundcomponent), see [Canvas.autoPopulateData](classes/Canvas.md#attr-canvasautopopulatedata).
-
-For example, in JavaScript:
-
-```
-   {
-      "Customer": { customerNumber: "15", name: "Trish Joiner" },
-      "Employee": { employeeID: "4231", name: "Fred Smith" }
-   }
- 
-```
-
----
 ## Object: DataContextBinding
 
 ### Description
-Identical to a [DataContext](#object-datacontext) but in addition to fixed values, [ruleContext](classes/Canvas.md#method-canvasgetrulecontext) values can be specified by prefixing the `ruleContext` path with `$ruleScope.` as shown below:
+Identical to a [DataContext](reference_2.md#object-datacontext) but in addition to fixed values, [ruleContext](classes/Canvas.md#method-canvasgetrulecontext) values can be specified by prefixing the `ruleContext` path with `$ruleScope.` as shown below:
 
 For example, in JavaScript:
 
@@ -8370,12 +8721,6 @@ An isA method is automatically created for every ISC Class and Interface definit
 See also [Simple Names mode](kb_topics/simpleNamesMode.md#kb-topic-simple-names-mode).
 
 ---
-## Object: JSONSchemaSettings
-
-### Description
-Settings for [DataSource.asJSONSchema](classes/DataSource_1.md#method-datasourceasjsonschema), controlling what information is included and how it is formatted.
-
----
 ## Object: KeyIdentifier
 
 ### Description
@@ -8444,13 +8789,13 @@ Extra methods added to the Number object, available on all number variables. Att
 
 - [Integer](reference_2.md#type-integer)
 - [Double](#type-double)
-- [Float](#type-float)
+- [Float](reference_2.md#type-float)
 
 ---
 ## Object: Operator
 
 ### Description
-Specification of an operator for use in filtering, for example "equals". Use with [DataSource.addSearchOperator](classes/DataSource_1.md#method-datasourceaddsearchoperator) to define custom filtering behaviors for client-side filtering.
+Specification of an operator for use in filtering, for example "equals". Use with [DataSource.addSearchOperator](classes/DataSource.md#method-datasourceaddsearchoperator) to define custom filtering behaviors for client-side filtering.
 
 ### Groups
 
@@ -8467,18 +8812,6 @@ A PaletteNode expresses visual properties for how the palette will display it (e
 Various types of palettes ([ListPalette](#class-listpalette), [TreePalette](#class-treepalette), [MenuPalette](#class-menupalette), [TilePalette](#class-tilepalette)) render a PaletteNode in different ways, and allow the user to trigger creation in different ways (eg drag and drop, or just click). All share a common pattern for how components are created from palettes.
 
 Note that in a TreePalette, a PaletteNode is essentially a [TreeNode](reference_2.md#object-treenode) and can have properties expected for a TreeNode (eg, [showDropIcon](classes/TreeGrid.md#attr-treegridcustomicondropproperty)). Likewise a PaletteNode in a MenuPalette can have the properties of a [MenuItem](reference_2.md#object-menuitem), such as [MenuItem.enableIf](classes/MenuItem.md#method-menuitemenableif).
-
----
-## Object: PartialPromptConfig
-
-### Description
-Configuration for partial prompt generation specifying which fragments to omit.
-
-Used with [CoTProcess.getPartialPrompt](classes/CoTProcess.md#method-cotprocessgetpartialprompt) to generate prompts with selected fragments replaced by placeholders for debugging/logging purposes.
-
-### Groups
-
-- CoTPartialPrompt
 
 ---
 ## Object: PlaceholderDefaults
@@ -8539,6 +8872,12 @@ A Record is always an ordinary JavaScript Object regardless of how the record is
 The concept of working with Records is common to all [DataBoundComponent](#interface-databoundcomponent)s, although individual DataBoundComponents may work with singular records ([DynamicForm](classes/DynamicForm.md#class-dynamicform)) or may work with lists ([ListGrid](classes/ListGrid_1.md#class-listgrid)), trees ([TreeGrid](classes/TreeGrid.md#class-treegrid)), or cubes ([CubeGrid](classes/CubeGrid.md#class-cubegrid)) of records.
 
 Individual DataComponents may also look for special properties on Records which control styling or behavior for those records, such as [`record.canEdit`](classes/ListGrid_1.md#attr-listgridrecordeditproperty).
+
+---
+## Object: ReifyLoadConfig
+
+### Description
+Configuration object for [Reify.loadReify](classes/Reify.md#classmethod-reifyloadreify).
 
 ---
 ## Object: RelationPath
@@ -8675,12 +9014,6 @@ Settings to control [EditContext](classes/EditContext.md#class-editcontext) seri
 A class used to define a shadow used in a Draw`<Shape>` Types.
 
 ---
-## Object: SimpleGradient
-
-### Description
-Definition of a simple linear gradient defined by 2 colors and a [direction](#attr-simplegradientdirection).
-
----
 ## Object: StyleGroup
 
 ### Description
@@ -8810,6 +9143,16 @@ An object representing a user-created summary.
 ### Groups
 
 - fieldGeneration
+
+---
+## Object: VariantDefinition
+
+### Description
+A plain JavaScript object that describes a skin variant: the properties to apply, the target class(es), and the variant name.
+
+Register definitions via [Variant.register](classes/Variant.md#classmethod-variantregister) or [Variant.registerAll](classes/Variant.md#classmethod-variantregisterall). During framework init, each registered definition auto-creates a named subclass (e.g. `name:"PillButton"` creates `isc.PillButton`).
+
+For keys ending in `"Properties"` or `"Defaults"`, values are merged via [Class.changeDefaults](classes/Class.md#classmethod-classchangedefaults) rather than simple assignment, so the variant class inherits all superclass AutoChild settings with variant overrides layered on top as a distinct object.
 
 ---
 ## Interface: DataBoundComponent

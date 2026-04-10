@@ -40,7 +40,7 @@ Any mode can be customized via [PartialPromptConfig.add](../classes/PartialPromp
 - [CoTProcess.getPartialPrompt](../classes/CoTProcess.md#method-cotprocessgetpartialprompt)
 - [AUN.getPartialPrompt](../classes/AUN.md#method-aungetpartialprompt)
 - [AUN.exportMarkdownLog](../classes/AUN.md#method-aunexportmarkdownlog)
-- [PartialPromptConfig](../reference.md#object-partialpromptconfig)
+- [PartialPromptConfig](../reference_2.md#object-partialpromptconfig)
 - [CoTProcess.promptModeTaskPromptOnly](../classes/CoTProcess.md#attr-cotprocesspromptmodetaskpromptonly)
 - [CoTProcess.promptModeTransitionDebug](../classes/CoTProcess.md#attr-cotprocesspromptmodetransitiondebug)
 - [CoTProcess.promptModeStateTracking](../classes/CoTProcess.md#attr-cotprocesspromptmodestatetracking)
@@ -55,6 +55,6 @@ Any mode can be customized via [PartialPromptConfig.add](../classes/PartialPromp
 ### See Also
 
 - [CoTProcess.getPartialPrompt](../classes/CoTProcess.md#method-cotprocessgetpartialprompt)
-- [PartialPromptConfig](../reference.md#object-partialpromptconfig)
+- [PartialPromptConfig](../reference_2.md#object-partialpromptconfig)
 
 ---

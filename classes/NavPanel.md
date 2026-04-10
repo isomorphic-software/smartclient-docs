@@ -171,6 +171,6 @@ Setter for [NavPanel.currentItemId](#attr-navpanelcurrentitemid). Note that [Nav
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newCurrentItemId | [Identifier](../reference.md#type-identifier) | true | — | the ID of the new current item, which may be either the item's [NavItem.id](NavItem.md#attr-navitemid) or the ID of the item's [NavItem.pane](NavItem.md#attr-navitempane). May be `null` or an empty string to hide the current item. If the item with ID `newCurrentItemId` is a separator or header item, then setCurrentItemId() has no effect. |
+| newCurrentItemId | [Identifier](../reference_2.md#type-identifier) | true | — | the ID of the new current item, which may be either the item's [NavItem.id](NavItem.md#attr-navitemid) or the ID of the item's [NavItem.pane](NavItem.md#attr-navitempane). May be `null` or an empty string to hide the current item. If the item with ID `newCurrentItemId` is a separator or header item, then setCurrentItemId() has no effect. |
 
 ---

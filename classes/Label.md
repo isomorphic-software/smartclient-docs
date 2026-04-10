@@ -331,7 +331,7 @@ Dynamically change the CSS class for this widget. For a Label, this is equivalen
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newStyle | [CSSStyleName](../reference.md#type-cssstylename) | false | — | new CSS style name |
+| newStyle | [CSSStyleName](../reference_2.md#type-cssstylename) | false | — | new CSS style name |
 
 ---
 ## Method: Label.setContents

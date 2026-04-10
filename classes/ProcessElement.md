@@ -207,8 +207,8 @@ There are a number of helper methods to make this easier listed below.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| oldId | [Identifier](../reference.md#type-identifier) | false | — | the ID being renamed |
-| newId | [Identifier](../reference.md#type-identifier) | false | — | the new ID to be assigned |
+| oldId | [Identifier](../reference_2.md#type-identifier) | false | — | the ID being renamed |
+| newId | [Identifier](../reference_2.md#type-identifier) | false | — | the new ID to be assigned |
 
 ### Returns
 
@@ -233,8 +233,8 @@ This method is a helper to implement task-specific [ProcessElement.updateGlobalI
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | criteria | [AdvancedCriteria](#type-advancedcriteria) | false | — | the criteria to be updated in place |
-| oldId | [Identifier](../reference.md#type-identifier) | false | — | the ID being renamed |
-| newId | [Identifier](../reference.md#type-identifier) | false | — | the new ID to be assigned |
+| oldId | [Identifier](../reference_2.md#type-identifier) | false | — | the ID being renamed |
+| newId | [Identifier](../reference_2.md#type-identifier) | false | — | the new ID to be assigned |
 
 ### Returns
 
@@ -335,8 +335,8 @@ This method is a helper to implement task-specific [ProcessElement.updateGlobalI
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | values | [Object](../reference.md#type-object) | false | — | the object to be updated |
-| oldId | [Identifier](../reference.md#type-identifier) | false | — | the ID being renamed |
-| newId | [Identifier](../reference.md#type-identifier) | false | — | the new ID to be assigned |
+| oldId | [Identifier](../reference_2.md#type-identifier) | false | — | the ID being renamed |
+| newId | [Identifier](../reference_2.md#type-identifier) | false | — | the new ID to be assigned |
 
 ### Returns
 
@@ -434,8 +434,8 @@ This method is a helper to implement task-specific [ProcessElement.updateGlobalI
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | propertyName | [String](#type-string) | false | — | the property name to be updated in this task |
-| oldId | [Identifier](../reference.md#type-identifier) | false | — | the ID being renamed |
-| newId | [Identifier](../reference.md#type-identifier) | false | — | the new ID to be assigned |
+| oldId | [Identifier](../reference_2.md#type-identifier) | false | — | the ID being renamed |
+| newId | [Identifier](../reference_2.md#type-identifier) | false | — | the new ID to be assigned |
 
 ### Returns
 
@@ -512,8 +512,8 @@ There are a number of helper methods to make this easier listed below.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| oldId | [Identifier](../reference.md#type-identifier) | false | — | the ID being renamed |
-| newId | [Identifier](../reference.md#type-identifier) | false | — | the new ID to be assigned |
+| oldId | [Identifier](../reference_2.md#type-identifier) | false | — | the ID being renamed |
+| newId | [Identifier](../reference_2.md#type-identifier) | false | — | the new ID to be assigned |
 
 ### Returns
 
@@ -560,8 +560,8 @@ This method is a helper to implement task-specific [ProcessElement.updateGlobalI
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | textFormula | [UserSummary](#type-usersummary) | false | — | the UserSummary to be updated in place |
-| oldId | [Identifier](../reference.md#type-identifier) | false | — | the ID being renamed |
-| newId | [Identifier](../reference.md#type-identifier) | false | — | the new ID to be assigned |
+| oldId | [Identifier](../reference_2.md#type-identifier) | false | — | the ID being renamed |
+| newId | [Identifier](../reference_2.md#type-identifier) | false | — | the new ID to be assigned |
 
 ### Returns
 

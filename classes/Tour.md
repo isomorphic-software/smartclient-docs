@@ -713,7 +713,7 @@ Get a Tour instance by it's ID.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| tourId | [Identifier](../reference.md#type-identifier) | false | — | tour ID to retrieve |
+| tourId | [Identifier](../reference_2.md#type-identifier) | false | — | tour ID to retrieve |
 
 ### Returns
 
@@ -731,7 +731,7 @@ Tour files are stored as .proc.xml files in [Component XML](../kb_topics/compone
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| tourId | [Identifier](../reference.md#type-identifier)|[Array of Identifier](#type-array-of-identifier) | false | — | tour ID or IDs to load |
+| tourId | [Identifier](../reference_2.md#type-identifier)|[Array of Identifier](#type-array-of-identifier) | false | — | tour ID or IDs to load |
 | callback | [ProcessCallback](#type-processcallback) | false | — | called when the tour is loaded with argument "process", the first tour. Other tours can be looked up via [Tour.getTour](#classmethod-tourgettour). |
 
 ---

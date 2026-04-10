@@ -1100,7 +1100,7 @@ Setter for [headerStyle](#attr-windowheaderstyle).
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newHeaderStyle | [CSSStyleName](../reference.md#type-cssstylename) | false | — | new [styleName](Canvas.md#attr-canvasstylename) for the [header](#attr-windowheader). |
+| newHeaderStyle | [CSSStyleName](../reference_2.md#type-cssstylename) | false | — | new [styleName](Canvas.md#attr-canvasstylename) for the [header](#attr-windowheader). |
 
 ---
 ## Method: Window.setBodyStyle
@@ -1112,7 +1112,7 @@ Setter for [bodyStyle](#attr-windowbodystyle).
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newBodyStyle | [CSSStyleName](../reference.md#type-cssstylename) | false | — | new [styleName](Canvas.md#attr-canvasstylename) for the [body](#attr-windowbody). |
+| newBodyStyle | [CSSStyleName](../reference_2.md#type-cssstylename) | false | — | new [styleName](Canvas.md#attr-canvasstylename) for the [body](#attr-windowbody). |
 
 ---
 ## Method: Window.centerInPage
@@ -1231,7 +1231,7 @@ Reveals the child Canvas passed in by showing it if it is currently hidden. Note
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| child | [GlobalId](../reference.md#type-globalid)|[Canvas](#type-canvas) | false | — | the child Canvas to reveal, or its global ID |
+| child | [GlobalId](../reference_2.md#type-globalid)|[Canvas](#type-canvas) | false | — | the child Canvas to reveal, or its global ID |
 
 ---
 ## Method: Window.shouldDismissOnEscape

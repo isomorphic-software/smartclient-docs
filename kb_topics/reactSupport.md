@@ -48,7 +48,7 @@ where the SmartClient utility class `SC` provides a `render()` method that inter
 With a few exceptions, you should be able to use [Component XML](componentXML.md#kb-topic-component-xml) syntax to specify widgets and objects in JSX:
 
 *   [Canvas.children](../classes/Canvas.md#attr-canvaschildren) should be specified in JSX with the tag `childComponents` instead, since React reserves the use of the `children` property.
-*   [ListGridFIelds](../reference_2.md#object-listgridfield) should be declared in JSX via the tag `LGField` rather than `field` as in Component XML, since in React types are expected to be capitalized and clearly denote the underlying object type. The same applies to [DataSources](../classes/DataSource_1.md#class-datasource) and other [DBCs](../reference.md#interface-databoundcomponent), such as [TreeGrids](../classes/TreeGrid.md#class-treegrid), [TileGrids](../classes/TileGrid.md#class-tilegrid) and [DetailViewers](../classes/DetailViewer.md#class-detailviewer), where respectively the tags to use are `DSField`, `TGField`, and then `DVField` (for both TileGrid and DetailViewer fields).
+*   [ListGridFIelds](../reference_2.md#object-listgridfield) should be declared in JSX via the tag `LGField` rather than `field` as in Component XML, since in React types are expected to be capitalized and clearly denote the underlying object type. The same applies to [DataSources](../classes/DataSource.md#class-datasource) and other [DBCs](../reference.md#interface-databoundcomponent), such as [TreeGrids](../classes/TreeGrid.md#class-treegrid), [TileGrids](../classes/TileGrid.md#class-tilegrid) and [DetailViewers](../classes/DetailViewer.md#class-detailviewer), where respectively the tags to use are `DSField`, `TGField`, and then `DVField` (for both TileGrid and DetailViewer fields).
     
     For example:
     
@@ -74,7 +74,7 @@ With a few exceptions, you should be able to use [Component XML](componentXML.md
      );
     ```
     
-*   [ValueMaps](../reference_2.md#type-valuemap) or other JS objects that have capitalized property names, or property names that aren't valid [Identifiers](../reference.md#type-identifier) will not parse as React JSX. So the following Component XML, for example, declared as the value of the `valueMap` property for a component, is _not_ valid JSX:
+*   [ValueMaps](../reference_2.md#type-valuemap) or other JS objects that have capitalized property names, or property names that aren't valid [Identifiers](../reference_2.md#type-identifier) will not parse as React JSX. So the following Component XML, for example, declared as the value of the `valueMap` property for a component, is _not_ valid JSX:
     ```
      <valueMap>
          <Weather>Current Weather</Weather>

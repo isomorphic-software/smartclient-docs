@@ -703,7 +703,7 @@ Sets the base CSS style. As the component changes state and/or is selected, suff
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| style | [CSSStyleName](../reference.md#type-cssstylename) | false | — | new base style |
+| style | [CSSStyleName](../reference_2.md#type-cssstylename) | false | — | new base style |
 
 ---
 ## Method: StatefulCanvas.setIgnoreRTL
@@ -987,7 +987,7 @@ Setter for [StatefulCanvas.iconStyle](#attr-statefulcanvasiconstyle).
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| iconStyle | [CSSStyleName](../reference.md#type-cssstylename) | false | — | the new `iconStyle` (may be `null` to remove the className on the image). |
+| iconStyle | [CSSStyleName](../reference_2.md#type-cssstylename) | false | — | the new `iconStyle` (may be `null` to remove the className on the image). |
 
 ---
 ## Method: StatefulCanvas.addToRadioGroup

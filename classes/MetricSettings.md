@@ -756,7 +756,7 @@ Note that when [canZoom](FacetChart.md#attr-facetchartcanzoom) is enabled, this 
 
 ### Returns
 
-`[Float](../reference.md#type-float)` — the X coordinate where the passed data value would be drawn; or null if the passed `FacetValueMap` does not identify a currently-drawn data cell.
+`[Float](../reference_2.md#type-float)` — the X coordinate where the passed data value would be drawn; or null if the passed `FacetValueMap` does not identify a currently-drawn data cell.
 
 ---
 ## Method: MetricSettings.setFilled

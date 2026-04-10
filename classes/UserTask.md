@@ -11,6 +11,10 @@
 ### Description
 A task that involves showing a user interface to the end user allowing the user to view and input data and press a button (or do some other UI gesture) to complete the task.
 
+**UserTask vs HumanTask**
+
+UserTask is designed for **client-side workflows** where a form is shown immediately to the current user. For **server-side workflows** where tasks persist in a database for later completion (e.g., task inbox, approvals by different users, external systems), use [HumanTask](HumanTask.md#class-humantask) instead.
+
 A UserTask takes the following steps:
 
 *   Optionally show() or otherwise make visible the [targetView](#attr-usertasktargetview) or [inlineView](#attr-usertaskinlineview)
@@ -18,6 +22,10 @@ A UserTask takes the following steps:
 *   Waits for notification of completion or cancellation. The UserTask is notified of completion if a [SubmitItem](../reference.md#class-submititem) is pressed in either the `targetForm` or any form that is a member of the `targetVM`. Likewise a [CancelItem](../reference.md#class-cancelitem) triggers cancellation. Direct calls to [DynamicForm.cancelEditing](DynamicForm.md#method-dynamicformcancelediting) or [DynamicForm.completeEditing](DynamicForm.md#method-dynamicformcompleteediting) achieve the same result.
 *   if cancellation occurs, the process continues to the [cancelElement](#attr-usertaskcancelelement) if specified. Otherwise the workflow is immediately finished.
 *   if completion occurs, values are retrieved from the form or valuesManager and applied to the process state based on [outputField](Task.md#attr-taskoutputfield), [outputFieldList](Task.md#attr-taskoutputfieldlist) or [inputs](Task.md#attr-taskinputs), in that order.
+
+### See Also
+
+- [HumanTask](HumanTask.md#class-humantask)
 
 ---
 ## Attr: UserTask.previousElement

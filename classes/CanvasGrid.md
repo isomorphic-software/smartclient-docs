@@ -37,7 +37,11 @@ This setting only applies to the [ResultSet](ResultSet.md#class-resultset) autom
 ## Attr: CanvasGrid.useFormattedValues
 
 ### Description
-When true, cell values are obtained via [ListGrid.getDefaultFormattedValue](ListGrid_2.md#method-listgridgetdefaultformattedvalue) instead of raw record\[field.name\]. This applies valueMaps, displayField substitution, format strings, and type-specific formatters — producing output that more closely matches what the HTML grid renders. Adds ~63% total render overhead due to per-cell calls into the ListGrid formatting pipeline.
+When true, cell values are obtained via [ListGrid.getDefaultFormattedValue](ListGrid_2.md#method-listgridgetdefaultformattedvalue) instead of raw record\[field.name\]. This applies valueMaps, displayField substitution, format strings, and type-specific formatters — producing output that more closely matches what the HTML grid renders.
+
+Superseded by [ListGrid.preRenderFormatValues](ListGrid_1.md#attr-listgridprerenderformatvalues) which provides finer-grained control. If `preRenderFormatValues` is set on the grid, this property is ignored.
+
+**Deprecated**
 
 **Flags**: IR
 
@@ -113,9 +117,11 @@ Can be specified as either a DataSource instance or the String ID of a DataSourc
 ## Attr: CanvasGrid.useExactClipping
 
 ### Description
-When true, text clipping uses per-cell `ctx.measureText()` to determine the exact pixel width of each value, producing pixel-perfect clipping that fills cells as fully as the HTML grid does. This eliminates the uncertainty inherent in average-character-width estimation (see [CanvasGrid.clipFillRatio](#attr-canvasgridclipfillratio)).
+Controls whether text clipping uses per-cell `ctx.measureText()` or average character width estimation.
 
-The cost is at most one `measureText()` call per visible cell. Cells whose text certainly fits (based on maxCharWidth) skip the call entirely. Cells that overflow are truncated using a proportional estimate from the single measurement — no additional `measureText()` calls.
+When false (the default), text width is estimated from a pre-measured average character width — O(1) per cell with no canvas API calls. This is fast but imprecise: some cells may show slightly more or less text than the HTML grid. The [CanvasGrid.clipFillRatio](#attr-canvasgridclipfillratio) tuning knob controls how aggressively cells are filled.
+
+When true, `ctx.measureText()` is called per cell for pixel-perfect text truncation matching the HTML grid. Cells whose text certainly fits (based on maxCharWidth) skip the call. Cost: +10-14% total render time (see the Canvas PreRender Performance IDocument in CanvasGrid.js for detailed measurements).
 
 ### See Also
 

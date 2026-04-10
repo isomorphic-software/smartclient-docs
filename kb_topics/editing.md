@@ -68,7 +68,7 @@ You can customize the editor by setting [ListGridField.editorProperties](../clas
 
 **Events**
 
-Editing triggers several events which you can provide handlers for in order to customize editing behavior. Some of the most popular are [field.change()](../classes/ListGridField.md#method-listgridfieldchange), [field.changed()](../classes/ListGridField.md#method-listgridfieldchanged) for detecting changes made by the user, [ListGrid.cellChanged](../classes/ListGrid_2.md#method-listgridcellchanged) for detecting changes that have been successfully saved, and [editorEnter](../classes/ListGrid_2.md#method-listgrideditorenter) and [editorExit()](../classes/ListGrid_2.md#method-listgrideditorexit) for detecting user navigation during editing.
+Editing triggers several events which you can provide handlers for in order to customize editing behavior. Some of the most popular are [field.change()](../classes/ListGridField.md#method-listgridfieldchange), [field.changed()](../classes/ListGridField.md#method-listgridfieldchanged) for detecting changes made by the user, [ListGrid.cellChanged](../classes/ListGrid_2.md#method-listgridcellchanged) for detecting changes that have been successfully saved, and [editorEnter](../classes/ListGrid_3.md#method-listgrideditorenter) and [editorExit()](../classes/ListGrid_2.md#method-listgrideditorexit) for detecting user navigation during editing.
 
 You can also install event handlers directly on the FormItem-based editors used in the grid via [editorProperties](../classes/ListGridField.md#attr-listgridfieldeditorproperties) as mentioned above. When handling events on items, or which involve items, be aware that in addition to standard [FormItem](../classes/FormItem.md#class-formitem) APIs, editors have the following properties:
 
@@ -124,7 +124,7 @@ However you _can_ create an editor with a [FormItem icon](../classes/FormItem.md
 - [ListGrid.fieldIsEditable](../classes/ListGrid_2.md#method-listgridfieldiseditable)
 - [ListGrid.startEditing](../classes/ListGrid_2.md#method-listgridstartediting)
 - [ListGrid.editExistingRecord](../classes/ListGrid_2.md#method-listgrideditexistingrecord)
-- [ListGrid.getEditorValueMap](../classes/ListGrid_2.md#method-listgridgeteditorvaluemap)
+- [ListGrid.getEditorValueMap](../classes/ListGrid_3.md#method-listgridgeteditorvaluemap)
 - [ListGrid.setEditorValueMap](../classes/ListGrid_2.md#method-listgridseteditorvaluemap)
 - [ListGrid.getEditorType](../classes/ListGrid_2.md#method-listgridgeteditortype)
 - [ListGrid.startEditingNew](../classes/ListGrid_2.md#method-listgridstarteditingnew)
@@ -151,7 +151,7 @@ However you _can_ create an editor with a [FormItem icon](../classes/FormItem.md
 - [ListGrid.cellChanged](../classes/ListGrid_2.md#method-listgridcellchanged)
 - [ListGrid.editComplete](../classes/ListGrid_2.md#method-listgrideditcomplete)
 - [ListGrid.editFailed](../classes/ListGrid_2.md#method-listgrideditfailed)
-- [ListGrid.editorEnter](../classes/ListGrid_2.md#method-listgrideditorenter)
+- [ListGrid.editorEnter](../classes/ListGrid_3.md#method-listgrideditorenter)
 - [ListGrid.rowEditorEnter](../classes/ListGrid_2.md#method-listgridroweditorenter)
 - [ListGrid.editorExit](../classes/ListGrid_2.md#method-listgrideditorexit)
 - [ListGrid.rowEditorExit](../classes/ListGrid_2.md#method-listgridroweditorexit)

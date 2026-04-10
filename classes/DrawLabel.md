@@ -291,7 +291,7 @@ Sets this DrawLabel's [styleName](#attr-drawlabelstylename).
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| styleName | [CSSStyleName](../reference.md#type-cssstylename) | false | — | the new styleName |
+| styleName | [CSSStyleName](../reference_2.md#type-cssstylename) | false | — | the new styleName |
 
 ---
 ## Method: DrawLabel.setFontSize

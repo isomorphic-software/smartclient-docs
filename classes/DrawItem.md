@@ -231,7 +231,7 @@ The slope of an x-shearing transformation applied to this DrawItem. Each point i
 ## Attr: DrawItem.fillGradient
 
 ### Description
-Fill gradient to use for shapes. If a string it uses the gradient identifier parameter provided in [DrawPane.addGradient](DrawPane.md#method-drawpaneaddgradient). Otherwise it expects one of [SimpleGradient](../reference.md#object-simplegradient), [LinearGradient](../reference.md#object-lineargradient) or [RadialGradient](../reference.md#object-radialgradient).
+Fill gradient to use for shapes. If a string it uses the gradient identifier parameter provided in [DrawPane.addGradient](DrawPane.md#method-drawpaneaddgradient). Otherwise it expects one of [SimpleGradient](../reference_2.md#object-simplegradient), [LinearGradient](../reference.md#object-lineargradient) or [RadialGradient](../reference.md#object-radialgradient).
 
 ### Groups
 
@@ -1618,7 +1618,7 @@ Update linePattern for this drawItem.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| pattern | [LinePattern](../reference.md#type-linepattern) | false | — | new linePattern to use |
+| pattern | [LinePattern](../reference_2.md#type-linepattern) | false | — | new linePattern to use |
 
 ---
 ## Method: DrawItem.destroy

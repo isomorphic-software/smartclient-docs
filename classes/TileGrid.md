@@ -30,12 +30,22 @@ This property supports [dynamicCriteria](../kb_topics/dynamicCriteria.md#kb-topi
 **Flags**: IRW
 
 ---
+## Attr: TileGrid.showDropOverRollOver
+
+### Description
+When [tileDropAppearance](#tiledropappearance) is set to `"over"` or `"both"`, this property controls whether rollover styling is shown on the tile that will receive the drop during a drag-drop operation.
+
+When enabled, the drop target tile will show visual feedback (the "Over" state suffix) as the user drags over it. This parallels the behavior of [ListGrid.showDropOverRollOver](ListGrid_1.md#attr-listgridshowdropoverrollover).
+
+**Flags**: IRW
+
+---
 ## Attr: TileGrid.fields
 
 ### Description
 Array of field definitions to control the default rendering of tiles.
 
-If not specified, if the DataSource has an [iconField](DataSource_1.md#attr-datasourceiconfield), only the `iconField` and [titleField](DataSource_1.md#attr-datasourcetitlefield) will be shown. Otherwise, all non-[hidden](DataSourceField.md#attr-datasourcefieldhidden) non-[detail](DataSourceField.md#attr-datasourcefielddetail) fields will be shown, similar to the default set of fields shown by a [ListGrid](ListGrid_1.md#class-listgrid).
+If not specified, if the DataSource has an [iconField](DataSource.md#attr-datasourceiconfield), only the `iconField` and [titleField](DataSource.md#attr-datasourcetitlefield) will be shown. Otherwise, all non-[hidden](DataSourceField.md#attr-datasourcefieldhidden) non-[detail](DataSourceField.md#attr-datasourcefielddetail) fields will be shown, similar to the default set of fields shown by a [ListGrid](ListGrid_1.md#class-listgrid).
 
 Only applicable if using the default [SimpleTile](SimpleTile.md#class-simpletile) class for tiles. (See [TileGrid.tile](#attr-tilegridtile) for more information).
 
@@ -706,7 +716,7 @@ If you want to cancel the click based on the parameters, return false. Otherwise
 
 ### Description
 Method to return the fieldName which represents the "title" for records in this Component.  
-If this.titleField is explicitly specified it will always be used. Otherwise, default implementation will check [DataSource.titleField](DataSource_1.md#attr-datasourcetitlefield) for databound compounds.  
+If this.titleField is explicitly specified it will always be used. Otherwise, default implementation will check [DataSource.titleField](DataSource.md#attr-datasourcetitlefield) for databound compounds.  
 For non databound components returns the first defined field name of `"title"`, `"name"`, or `"id"` where the field is visible. If we don't find any field-names that match these titles, the first field in the component will be used instead.
 
 ### Returns
@@ -746,7 +756,7 @@ A variety of DSRequest settings, such as [exportAs](DSRequest.md#attr-dsrequeste
 
 Note that data exported via this method skips client-side fields defined only in the component, excludes any client-side formatting and relies on both the SmartClient server and server-side DataSources. To export client-data including client-only fields and with client-side formatting applied, see [exportClientData](ListGrid_2.md#method-listgridexportclientdata), which still requires the SmartClient server but does not rely on server-side DataSource definitions (.ds.xml files).
 
-For more information on exporting data, see [DataSource.exportData](DataSource_1.md#method-datasourceexportdata).
+For more information on exporting data, see [DataSource.exportData](DataSource.md#method-datasourceexportdata).
 
 ### Parameters
 
@@ -913,7 +923,7 @@ Synonym for `selectRecord(record, false)`
 ### Description
 During a drag-and-drop interaction, this method is called to transfer a set of records that were dropped onto some other component. This method is called after the set of records has been copied to the other component. Whether or not this component's data is modified is determined by the value of [DataBoundComponent.dragDataAction](DataBoundComponent.md#attr-databoundcomponentdragdataaction).
 
-With a `dragDataAction` of "move", a databound component will issue "remove" dsRequests against its DataSource to actually remove the data, via [DataSource.removeData](DataSource_1.md#method-datasourceremovedata).
+With a `dragDataAction` of "move", a databound component will issue "remove" dsRequests against its DataSource to actually remove the data, via [DataSource.removeData](DataSource.md#method-datasourceremovedata).
 
 ### Returns
 

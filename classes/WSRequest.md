@@ -108,7 +108,7 @@ Data to be serialized to form the SOAP headers, as a map from the header part na
            CallOptions : data };
  
 ```
-The provided data will be serialized to XML by the [SOAP header schema](WebService.md#method-webservicegetinputheaderschema) via [DataSource.xmlSerialize](DataSource_1.md#method-datasourcexmlserialize)
+The provided data will be serialized to XML by the [SOAP header schema](WebService.md#method-webservicegetinputheaderschema) via [DataSource.xmlSerialize](DataSource.md#method-datasourcexmlserialize)
 
 **Flags**: IR
 

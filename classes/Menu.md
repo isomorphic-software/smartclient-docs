@@ -892,7 +892,7 @@ In addition to this, [getCellCSSText()](GridRenderer.md#method-gridrenderergetce
 
 ### Returns
 
-`[CSSStyleName](../reference.md#type-cssstylename)` — CSS style for this cell
+`[CSSStyleName](../reference_2.md#type-cssstylename)` — CSS style for this cell
 
 ### Groups
 

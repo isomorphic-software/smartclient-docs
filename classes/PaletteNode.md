@@ -27,7 +27,7 @@ Prefix used to create unique component ID. If not specified, [PaletteNode.type](
 ### Description
 Name used to create unique component ID. If not specified, [PaletteNode.type](#attr-palettenodetype) is used.
 
-Note: idName must follow all rules for a [Identifier](../reference.md#type-identifier).
+Note: idName must follow all rules for a [Identifier](../reference_2.md#type-identifier).
 
 **Flags**: IR
 

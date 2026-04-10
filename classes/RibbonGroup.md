@@ -253,7 +253,7 @@ This method forcibly sets the [CSS class name](#attr-ribbongrouptitlestyle) for 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| styleName | [CSSStyleName](../reference.md#type-cssstylename) | false | — | the CSS class to apply to the [title label](#attr-ribbongrouplabel). |
+| styleName | [CSSStyleName](../reference_2.md#type-cssstylename) | false | — | the CSS class to apply to the [title label](#attr-ribbongrouplabel). |
 
 ---
 ## Method: RibbonGroup.reflowControls

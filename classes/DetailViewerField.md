@@ -548,7 +548,7 @@ Optional method to return the CSS class for cells in this field. If specified, t
 
 ### Returns
 
-`[CSSStyleName](../reference.md#type-cssstylename)` — CSS style for this cell
+`[CSSStyleName](../reference_2.md#type-cssstylename)` — CSS style for this cell
 
 ### Groups
 

@@ -7,7 +7,7 @@
 ## Class: Project
 
 ### Description
-Represents a [reify](../kb_topics/reify.md#kb-topic-reify-overview) project loaded from the server via [RPCManager.loadProject](RPCManager.md#classmethod-rpcmanagerloadproject). A project contains cached screens and [DataSources](DataSource_1.md#class-datasource) that can be used to create actual screens by calling [Project.createScreen](#method-projectcreatescreen) or [Project.createStartScreen](#method-projectcreatestartscreen).
+Represents a [reify](../kb_topics/reify.md#kb-topic-reify-overview) project loaded from the server via [RPCManager.loadProject](RPCManager.md#classmethod-rpcmanagerloadproject). A project contains cached screens and [DataSources](DataSource.md#class-datasource) that can be used to create actual screens by calling [Project.createScreen](#method-projectcreatescreen) or [Project.createStartScreen](#method-projectcreatestartscreen).
 
 ### See Also
 
@@ -33,7 +33,20 @@ Returns a cached project given its name.
 ## Method: Project.destroy
 
 ### Description
-Releases cached screens and [DataSources](DataSource_1.md#class-datasource) associated with this project, and unregisters it so [Project.get](#classmethod-projectget) no longer can find it by name. After destroying a project, it is an error to call any instance method on it.
+Releases cached screens and [DataSources](DataSource.md#class-datasource) associated with this project, and unregisters it so [Project.get](#classmethod-projectget) no longer can find it by name. After destroying a project, it is an error to call any instance method on it.
+
+---
+## Method: Project.loadInReify
+
+### Description
+Open this project in Reify for editing. The project must be stored in Reify's project storage; if not, a warning is logged and the call fails.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| config | [ReifyLoadConfig](#type-reifyloadconfig) | false | — | optional config for [Reify.loadReify](Reify.md#classmethod-reifyloadreify) |
+| callback | [Function](#type-function) | false | — | called with [ReifyRemote](ReifyRemote.md#class-reifyremote) |
 
 ---
 ## Method: Project.createScreen
@@ -74,17 +87,29 @@ Return the names of the screens cached in this project.
 ## Method: Project.getDataSourceNames
 
 ### Description
-Return the names of the [DataSources](DataSource_1.md#class-datasource) cached in this project.
+Return the names of the [DataSources](DataSource.md#class-datasource) cached in this project.
 
 ### Returns
 
 `[Array of String](#type-array-of-string)` — names of cached DataSources
 
 ---
+## Method: Project.isInReify
+
+### Description
+Check whether this project is stored in Reify's project storage.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| callback | [Function](#type-function) | false | — | called with (Boolean isStored) |
+
+---
 ## Method: Project.getDataSource
 
 ### Description
-Returns an instance of the requested [DataSource](DataSource_1.md#class-datasource) by creating it from the project's cache. If the ID is not globally bound, the framework will globally bind the instance before returning it.
+Returns an instance of the requested [DataSource](DataSource.md#class-datasource) by creating it from the project's cache. If the ID is not globally bound, the framework will globally bind the instance before returning it.
 
 Note that when a screen cached in the project is created, all project DataSources in the screen will be automatically instantiated from the project cache, so this method need not be called before creating a screen just to ensure its DataSources are available.
 
@@ -92,7 +117,7 @@ Note that when a screen cached in the project is created, all project DataSource
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| ID | [Identifier](../reference.md#type-identifier) | false | — | ID of the DataSource to create |
+| ID | [Identifier](../reference_2.md#type-identifier) | false | — | ID of the DataSource to create |
 
 ### Returns
 

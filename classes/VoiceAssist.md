@@ -9,7 +9,7 @@
 ### Description
 The VoiceAssist class provides voice-interaction features by leveraging the browser’s speech recognition capabilities, typically through the SpeechRecognition or webkitSpeechRecognition interfaces. At the time of writing, full support is available in Chromium-based browsers like Chrome and Edge (on desktop). Safari provides partial support through the webkitSpeechRecognition API. Firefox does not support speech recognition due to privacy and security concerns, and some Chromium-based browsers like Brave also omit support due to their exclusion of Google’s proprietary services.
 
-To enable VoiceAssist, call [VoiceAssist.enable](#classmethod-voiceassistenable), optionally passing the [keyName](#classattr-voiceassistvoicekey) you want to use for activation and recording - the default is `Control`. Once initialized, VoiceAssist can be activated or deactivated with three quick taps of the [VoiceAssist.voiceKey](#classattr-voiceassistvoicekey).
+To enable VoiceAssist, call [VoiceAssist.enable](#classmethod-voiceassistenable), optionally passing the [keyName](#classattr-voiceassistvoicekey) you want to use for activation and recording - the default is `Control`. Once initialized, VoiceAssist can be activated or deactivated with a triple-tap of the [VoiceAssist.voiceKey](#classattr-voiceassistvoicekey).
 
 When recognition is active, a user may double-tap the `voiceKey` to begin dictating a value for a focused input control. Text appears in the input control as the user speaks and the transcription is completed by a subsequent double-tap of the `voiceKey`, or by remaining silent for a number of seconds.
 
@@ -19,6 +19,8 @@ If the user speaks one of the [VoiceAssist.cancelPhrases](#classattr-voiceassist
 
 When the user releases the speech-key, recording is stopped and the final text of the recording is passed to the [target component](Canvas.md#method-canvasdovoicecommand) for action.
 
+**Note:** On [handset](Browser.md#classattr-browserishandset) and [tablet](Browser.md#classattr-browseristablet) devices, the keyboard gestures described above (triple-tap, double-tap, press-and-hold) are not available because virtual keyboards do not fire physical key events for modifier keys. Call [VoiceAssist.setActive](#classmethod-voiceassistsetactive) from a button or other UI element, and use [VoiceAssist.startDictatingValue](#classmethod-voiceassiststartdictatingvalue) or [VoiceAssist.startDictatingCommand](#classmethod-voiceassiststartdictatingcommand) to initiate recording programmatically.
+
 ---
 ## ClassAttr: VoiceAssist.cancelPhrases
 
@@ -26,6 +28,66 @@ When the user releases the speech-key, recording is stopped and the final text o
 A list of phrases that, when spoken, will cancel an ongoing recording without completing normally. When dictating a command, the transcription is simply discarded. When dictating a value, the transcription is discarded and the value in the focused component is restored to its pre-recording value.
 
 The default cancel-phrase is "never mind" (or "nevermind").
+
+**Flags**: IRW
+
+---
+## ClassAttr: VoiceAssist.doubleTapValueHint
+
+### Description
+Hint shown in the activation notification explaining how to dictate a value. The `${voiceKey}` token is replaced with the current [VoiceAssist.voiceKey](#classattr-voiceassistvoicekey).
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IRW
+
+---
+## ClassAttr: VoiceAssist.checkingMessage
+
+### Description
+Message shown in a brief notification while [Browser.checkSpeechRecognition](Browser.md#classmethod-browsercheckspeechrecognition) probes mic access and speech-service connectivity on the first call to [VoiceAssist.setActive](#classmethod-voiceassistsetactive).
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IRW
+
+---
+## ClassAttr: VoiceAssist.speechBlockedMessage
+
+### Description
+Error message shown when the browser blocks connections to an external speech-to-text service (for example, Brave blocks Google's speech service). The `${title}` token is replaced with [VoiceAssist.title](#classattr-voiceassisttitle).
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IRW
+
+---
+## ClassAttr: VoiceAssist.longPressButtonPrompt
+
+### Description
+Tooltip for the [voice-assist button](#classmethod-voiceassistgetvoiceassistbutton) when [voiceAssist.longPressRecording](#voiceassistlongpressrecording) is enabled. The `${title}` token is replaced with [VoiceAssist.title](#classattr-voiceassisttitle).
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IRW
+
+---
+## ClassAttr: VoiceAssist.networkErrorMessage
+
+### Description
+Error message shown when a network error interrupts an active recording. The partial transcription captured before the error is applied to the target field.
+
+### Groups
+
+- i18nMessages
 
 **Flags**: IRW
 
@@ -55,6 +117,30 @@ Use [VoiceAssist.getVoiceAssistIcon](#classmethod-voiceassistgetvoiceassisticon)
 **Flags**: IR
 
 ---
+## ClassAttr: VoiceAssist.dictateValueIconPrompt
+
+### Description
+Tooltip for the [voice-assist icon](#classattr-voiceassistvoiceassisticon) shown on [FormItems](FormItem.md#class-formitem) when VoiceAssist is active. The `${title}` token is replaced with [VoiceAssist.title](#classattr-voiceassisttitle).
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IRW
+
+---
+## ClassAttr: VoiceAssist.noSpeechSupportMessage
+
+### Description
+Error message shown when the browser does not provide a SpeechRecognition API at all (for example, Firefox). The `${title}` token is replaced with [VoiceAssist.title](#classattr-voiceassisttitle).
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IRW
+
+---
 ## ClassAttr: VoiceAssist.canDictateCommands
 
 ### Description
@@ -76,6 +162,42 @@ The BCP 47 language-tag for the language that VoiceAssist expects to interpret. 
 **Flags**: IRW
 
 ---
+## ClassAttr: VoiceAssist.enabledMessage
+
+### Description
+Message shown in a notification when VoiceAssist is [activated](#classmethod-voiceassistsetactive). The `${title}` token is replaced with [VoiceAssist.title](#classattr-voiceassisttitle).
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IRW
+
+---
+## ClassAttr: VoiceAssist.title
+
+### Description
+The display title used in dialogs, notifications, and tooltips.
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IRW
+
+---
+## ClassAttr: VoiceAssist.clickToRecordButtonPrompt
+
+### Description
+Tooltip for the [voice-assist button](#classmethod-voiceassistgetvoiceassistbutton) when [voiceAssist.longPressRecording](#voiceassistlongpressrecording) is not enabled. The `${title}` token is replaced with [VoiceAssist.title](#classattr-voiceassisttitle).
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IRW
+
+---
 ## ClassAttr: VoiceAssist.active
 
 ### Description
@@ -87,6 +209,30 @@ When active, voice-assist icons appear on applicable [FormItems](FormItem.md#cla
 
 - [VoiceAssist.setActive](#classmethod-voiceassistsetactive)
 - [VoiceAssist.enabled](#classattr-voiceassistenabled)
+
+**Flags**: IRW
+
+---
+## ClassAttr: VoiceAssist.disabledMessage
+
+### Description
+Message shown in a notification when VoiceAssist is [deactivated](#classmethod-voiceassistsetactive). The `${title}` token is replaced with [VoiceAssist.title](#classattr-voiceassisttitle).
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IRW
+
+---
+## ClassAttr: VoiceAssist.pressAndHoldCommandHint
+
+### Description
+Hint shown in the activation notification explaining how to dictate a command. The `${voiceKey}` token is replaced with the current [VoiceAssist.voiceKey](#classattr-voiceassistvoicekey).
+
+### Groups
+
+- i18nMessages
 
 **Flags**: IRW
 
@@ -112,6 +258,18 @@ VoiceAssist will stop recording automatically if the user stops speaking for thi
 **Flags**: IRW
 
 ---
+## ClassAttr: VoiceAssist.micDeniedMessage
+
+### Description
+Error message shown when microphone permission has been denied by the user or by browser policy. The `${title}` token is replaced with [VoiceAssist.title](#classattr-voiceassisttitle).
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IRW
+
+---
 ## ClassAttr: VoiceAssist.enabled
 
 ### Description
@@ -124,6 +282,18 @@ Whether VoiceAssist has been enabled by the application developer via [VoiceAssi
 - [VoiceAssist.active](#classattr-voiceassistactive)
 
 **Flags**: IR
+
+---
+## ClassAttr: VoiceAssist.noMicMessage
+
+### Description
+Error message shown when no microphone hardware is detected or the microphone was disconnected during recording. The `${title}` token is replaced with [VoiceAssist.title](#classattr-voiceassisttitle).
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IRW
 
 ---
 ## ClassAttr: VoiceAssist.voiceKey
@@ -309,9 +479,15 @@ Returns an [Img](Img.md#class-img) widget pre-configured to start and stop Voice
 
 When clicked, the button determines the recording mode based on the currently focused component. If a [FormItem](FormItem.md#class-formitem) that supports value-dictation is focused, value-dictation begins; otherwise, command-dictation begins. Recording stops on a second click, or automatically after a period of silence (see [VoiceAssist.autoStopDelay](#classattr-voiceassistautostopdelay)).
 
-If VoiceAssist has not yet been [active](#classattr-voiceassistactive) when clicked, the button calls [VoiceAssist.setActive](#classmethod-voiceassistsetactive) automatically. Note that [VoiceAssist.enable](#classmethod-voiceassistenable) must have been called first, otherwise setActive() will log a warning and return without activating.
+If VoiceAssist is not yet [active](#classmethod-voiceassistsetactive) when clicked, the button calls [VoiceAssist.setActive](#classmethod-voiceassistsetactive) automatically. Note that [VoiceAssist.enable](#classmethod-voiceassistenable) must have been called first, otherwise setActive() will log a warning and return without activating.
 
 The button is created with `canFocus: false` so that clicking it does not steal focus from the component whose value or commands are being dictated.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| properties | [Img Properties](#type-img-properties) | true | — | optional properties to apply to the returned Img widget, for example a title or ID |
 
 ### Returns
 

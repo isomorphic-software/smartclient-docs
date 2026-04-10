@@ -19,7 +19,7 @@ NOTE: This widget is intended primarily for creating handset/phone-sized interfa
 ## ClassAttr: TableView.WHOLE_RECORD
 
 ### Description
-A declared value of the enum type [NavigationMode](../reference.md#type-navigationmode).
+A declared value of the enum type [NavigationMode](../reference_2.md#type-navigationmode).
 
 **Flags**: R
 
@@ -75,7 +75,7 @@ A declared value of the enum type [TableMode](../reference.md#type-tablemode).
 ## ClassAttr: TableView.NAVICON_ONLY
 
 ### Description
-A declared value of the enum type [NavigationMode](../reference.md#type-navigationmode).
+A declared value of the enum type [NavigationMode](../reference_2.md#type-navigationmode).
 
 **Flags**: R
 
@@ -103,7 +103,7 @@ Field to display as part of individual record in "summary" [RecordLayout](../ref
 ## Attr: TableView.navIcon
 
 ### Description
-The navigation icon shown next to records when [TableView.showNavigation](#attr-tableviewshownavigation) is true and [NavigationMode](../reference.md#type-navigationmode) is set to "navIconOny".
+The navigation icon shown next to records when [TableView.showNavigation](#attr-tableviewshownavigation) is true and [NavigationMode](../reference_2.md#type-navigationmode) is set to "navIconOny".
 
 **Flags**: IRW
 
@@ -169,7 +169,7 @@ Should an icon field be shown for each record? A column in the table is set asid
 ## Attr: TableView.wholeRecordNavIcon
 
 ### Description
-The navigation icon shown next to records when [TableView.showNavigation](#attr-tableviewshownavigation) is true and [NavigationMode](../reference.md#type-navigationmode) is set to "wholeRecord".
+The navigation icon shown next to records when [TableView.showNavigation](#attr-tableviewshownavigation) is true and [NavigationMode](../reference_2.md#type-navigationmode) is set to "wholeRecord".
 
 **Flags**: IRW
 
@@ -277,7 +277,7 @@ Executed when the user clicks on the image displayed in a record if [TableView.i
 ## Method: TableView.recordNavigationClick
 
 ### Description
-Executed when the user clicks on a record, or on the navigate icon for a record depending on [NavigationMode](../reference.md#type-navigationmode).
+Executed when the user clicks on a record, or on the navigate icon for a record depending on [NavigationMode](../reference_2.md#type-navigationmode).
 
 ### Parameters
 

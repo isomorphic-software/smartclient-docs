@@ -14,7 +14,7 @@ Base class for all SmartClient visual components (except [FormItems](FormItem.md
 Canvas provides:
 
 *   basic visual lifecycle support - creation and destruction of HTML via [draw()](#method-canvasdraw) and [clear()](#method-canvasclear), visibility via [show()](#method-canvasshow) and [hide()](#method-canvashide), z-layering via [bringToFront()](#method-canvasbringtofront) and [sendToBack()](#method-canvassendtoback).
-*   consistent cross-browser [positioning](#method-canvasmoveto), [sizing](#method-canvasresizeto) and [size detection](#method-canvasgetscrollheight), with automatic compensation for [browser CSS behavior differences](../reference.md#type-cssstylename).
+*   consistent cross-browser [positioning](#method-canvasmoveto), [sizing](#method-canvasresizeto) and [size detection](#method-canvasgetscrollheight), with automatic compensation for [browser CSS behavior differences](../reference_2.md#type-cssstylename).
 *   clipping, scrolling and overflow management of content via [Canvas.overflow](#attr-canvasoverflow)
 *   consistent cross-browser [key](#method-canvaskeypress) and [mouse](#method-canvasmousedown) events, including [mapping touch events](../kb_topics/mobileDevelopment.md#kb-topic-mobile-application-development) to mouse events
 *   built-in drag and drop capabilities including [moving](#attr-canvascandragreposition), [resizing](#attr-canvascandragresize), [drag scrolling](#attr-canvascandragscroll) and [snap-to-grid](#attr-canvassnaptogrid) behavior.
@@ -737,7 +737,7 @@ A widget normally receives focus by being clicked on or tabbed to.
 ## Attr: Canvas.testDataContext
 
 ### Description
-A [DataContext](../reference.md#object-datacontext) to be used if no [Canvas.dataContext](#attr-canvasdatacontext) is provided (directly or indirectly via a parent). If a `dataContext` is provided it completely replaces the `testDataContext`.
+A [DataContext](../reference_2.md#object-datacontext) to be used if no [Canvas.dataContext](#attr-canvasdatacontext) is provided (directly or indirectly via a parent). If a `dataContext` is provided it completely replaces the `testDataContext`.
 
 In [Reify](../kb_topics/reifyForDevelopers.md#kb-topic-reify-for-developers), `testDataContext` is how a screen defines its [Screen Inputs](../kb_topics/reifyForDevelopers.md#kb-topic-reify-for-developers): the designer selects DataSources whose records the screen expects to receive when embedded in a larger application. The DataSource schemas plus the test values in `testDataContext` allow Reify to let designers define and test declarative logic (formulas, [visibility\\n rules](FormItem.md#attr-formitemvisiblewhen), [workflows](Process.md#class-process), etc.) based on a defined set of inputs, even when testing the screen in isolation.
 
@@ -1617,7 +1617,7 @@ The following list of default behavior is for reference only, developers should 
 ## Attr: Canvas.dataContext
 
 ### Description
-A mapping from [DataSource](DataSource_1.md#class-datasource) IDs to specific [Records](../reference.md#object-record) from those DataSources, that [DataBoundComponents](../reference.md#interface-databoundcomponent) contained within this Canvas should automatically bind to if a DataSource is provided but data is not provided (directly or indirectly, for example, indirectly via setting [ListGrid.autoFetchData](ListGrid_1.md#attr-listgridautofetchdata).
+A mapping from [DataSource](DataSource.md#class-datasource) IDs to specific [Records](../reference.md#object-record) from those DataSources, that [DataBoundComponents](../reference.md#interface-databoundcomponent) contained within this Canvas should automatically bind to if a DataSource is provided but data is not provided (directly or indirectly, for example, indirectly via setting [ListGrid.autoFetchData](ListGrid_1.md#attr-listgridautofetchdata).
 
 See [Canvas.autoPopulateData](#attr-canvasautopopulatedata) for details on how this is done.
 
@@ -3526,6 +3526,22 @@ See [Canvas.canAdaptWidth](#attr-canvascanadaptwidth).
 **Flags**: IRW
 
 ---
+## Attr: Canvas.autoRevertStyles
+
+### Description
+Array of property names (each ending in `"Style"`) whose values should be validated against loaded CSS on first use. If a CSS class name set by a listed property does not exist in any stylesheet, the property reverts to the superclass value.
+
+This is primarily used by skin variant subclasses (see [skinVariant](#groupdef-skinvariant)) to gracefully fall back to default styling in skins that don't define variant CSS. The validation occurs once per page load per class, on the first call to `create()`.
+
+**Example:** a PillButton variant declares `autoRevertStyles: ["baseStyle"]`. If the current skin does not define a `.pillButton` CSS class, the PillButton's baseStyle reverts to the standard Button baseStyle for that skin.
+
+### Groups
+
+- skinVariant
+
+**Flags**: IR
+
+---
 ## Attr: Canvas.shrinkElementOnHide
 
 ### Description
@@ -4223,7 +4239,7 @@ By default, the rule context contains data as follows:
 *   any DynamicForm or other component that edits values and has been assigned an explicit [Canvas.ID](#attr-canvasid) contributes its current values under ``<componentId>`.values`, and contributes a flag `hasChanges`.
 *   any DynamicForm or ListGrid that has been assigned an explicit [Canvas.ID](#attr-canvasid) contributes a value ``<componentId>`.focusField`. When present the value indicates the component has focus along with the name of the field that has focus. Its absense indicates the component does not have focus at all.
 *   any ListGrid that has been assigned an explicit [Canvas.ID](#attr-canvasid) contributes a flag `isGrouped` under ``<componentId>``.
-*   any DataSource included in a [DataContext](../reference.md#object-datacontext) or [Canvas.testDataContext](#attr-canvastestdatacontext) that is being used for this ruleScope contributes the values into the `dataContext` section of the ruleContext (ex. `dataContext.Customer`) so the values do not conflict with normal DataSource contributions. Note that the `dataContext` is immutable so only the first contribution is actually saved.
+*   any DataSource included in a [DataContext](../reference_2.md#object-datacontext) or [Canvas.testDataContext](#attr-canvastestdatacontext) that is being used for this ruleScope contributes the values into the `dataContext` section of the ruleContext (ex. `dataContext.Customer`) so the values do not conflict with normal DataSource contributions. Note that the `dataContext` is immutable so only the first contribution is actually saved.
 
 A [ValuesManager](ValuesManager.md#class-valuesmanager) contributes the DataSource-prefixed portion of ruleContext prior to the member forms. See additional ValuesManager information below.
 
@@ -5506,7 +5522,7 @@ Set a specific [ARIA state](#attr-canvasariastate) for this component.
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | stateName | [String](#type-string) | false | — | aria state to update |
-| stateValue | [String](#type-string)|[Boolean](#type-boolean)|[Integer](../reference_2.md#type-integer)|[Float](../reference.md#type-float) | false | — | value for the aria state |
+| stateValue | [String](#type-string)|[Boolean](#type-boolean)|[Integer](../reference_2.md#type-integer)|[Float](../reference_2.md#type-float) | false | — | value for the aria state |
 
 ### Groups
 
@@ -6007,7 +6023,7 @@ Sets the CSS class for this widget
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newStyle | [CSSStyleName](../reference.md#type-cssstylename) | false | — | new CSS style name |
+| newStyle | [CSSStyleName](../reference_2.md#type-cssstylename) | false | — | new CSS style name |
 
 ### Groups
 
@@ -6408,7 +6424,7 @@ When a widget instance is created, it is assigned a unique global identifier tha
 
 ### Returns
 
-`[GlobalId](../reference.md#type-globalid)` — global identifier for this canvas
+`[GlobalId](../reference_2.md#type-globalid)` — global identifier for this canvas
 
 ---
 ## Method: Canvas.animateHide
@@ -7518,7 +7534,7 @@ Get the CSS class to apply when printing this widget. Returns the [print style](
 
 ### Returns
 
-`[CSSStyleName](../reference.md#type-cssstylename)` — printStyleName
+`[CSSStyleName](../reference_2.md#type-cssstylename)` — printStyleName
 
 ### Groups
 
@@ -7902,7 +7918,7 @@ Set the [Canvas.edgeOpacity](#attr-canvasedgeopacity) and mark the canvas for re
 ## Method: Canvas.dataContextChanged
 
 ### Description
-Notification method fired when [DataContext](../reference.md#object-datacontext) is bound. This can occur on the initial draw or by an explicit call to [Canvas.setDataContext](#method-canvassetdatacontext).
+Notification method fired when [DataContext](../reference_2.md#object-datacontext) is bound. This can occur on the initial draw or by an explicit call to [Canvas.setDataContext](#method-canvassetdatacontext).
 
 This feature allows the use of the `dataContext` as a general-purpose API to the screen. For example, if you wanted your screen to support _dynamically_ showing or hiding parts of itself based on a button that is external to the screen, you could do that by implementing this handler to show/hide that part of the screen based on the current state of the `dataContext`.
 
@@ -8073,7 +8089,7 @@ If the passed-in widget is not a child of this Canvas, this method has no effect
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| child | [GlobalId](../reference.md#type-globalid)|[Canvas](#type-canvas) | false | — | the child Canvas to reveal, or its global ID |
+| child | [GlobalId](../reference_2.md#type-globalid)|[Canvas](#type-canvas) | false | — | the child Canvas to reveal, or its global ID |
 
 ---
 ## Method: Canvas.supportsVoiceCommands
@@ -8451,7 +8467,7 @@ The TabIndexManager maintains a hierarchy of focusable targets - so if a parent 
 ### Description
 Get the current value of the rule context collected by the [Canvas.ruleScope](#attr-canvasrulescope) of this component (which may be this component itself or whatever component is managing the `ruleScope` for this component).
 
-If the `databoundOnly` parameter is passed as true, only data from components that actually have a [DataSource](DataSource_1.md#class-datasource) is included.
+If the `databoundOnly` parameter is passed as true, only data from components that actually have a [DataSource](DataSource.md#class-datasource) is included.
 
 Use [Canvas.ruleContextChanged](#method-canvasrulecontextchanged) to get a notification of changes to the rule context.
 
@@ -8459,7 +8475,7 @@ Use [Canvas.ruleContextChanged](#method-canvasrulecontextchanged) to get a notif
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| databoundOnly | [boolean](../reference.md#type-boolean) | true | — | whether to include only data from components that have a [DataSource](DataSource_1.md#class-datasource) |
+| databoundOnly | [boolean](../reference.md#type-boolean) | true | — | whether to include only data from components that have a [DataSource](DataSource.md#class-datasource) |
 
 ### Returns
 
@@ -8771,7 +8787,7 @@ Will return false if any parent canvas does not contain the specified point, (EG
 ## Method: Canvas.setDataContext
 
 ### Description
-Provides a new [DataContext](../reference.md#object-datacontext) to the Canvas. If the DataContext is new, [DataBoundComponents](../reference.md#interface-databoundcomponent) contained within this Canvas will be automatically bound as described in [Canvas.dataContext](#attr-canvasdatacontext). If the DataContext replaces an existing one, any contained components that were originally bound against the DataContext will be re-bound.
+Provides a new [DataContext](../reference_2.md#object-datacontext) to the Canvas. If the DataContext is new, [DataBoundComponents](../reference.md#interface-databoundcomponent) contained within this Canvas will be automatically bound as described in [Canvas.dataContext](#attr-canvasdatacontext). If the DataContext replaces an existing one, any contained components that were originally bound against the DataContext will be re-bound.
 
 ### Parameters
 

@@ -86,7 +86,7 @@ If the passed pane is not contained in this `Deck`, logs a warning and does noth
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| pane | [Canvas](#type-canvas)|[GlobalId](../reference.md#type-globalid) | false | — | the pane to show, as either a `Canvas` or the [Canvas.ID](Canvas.md#attr-canvasid) |
+| pane | [Canvas](#type-canvas)|[GlobalId](../reference_2.md#type-globalid) | false | — | the pane to show, as either a `Canvas` or the [Canvas.ID](Canvas.md#attr-canvasid) |
 
 ---
 ## Method: Deck.addPane

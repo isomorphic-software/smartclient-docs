@@ -810,7 +810,7 @@ Sets the base CSS style. As the component changes state and/or is selected, suff
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| style | [CSSStyleName](../reference.md#type-cssstylename) | false | — | new base style |
+| style | [CSSStyleName](../reference_2.md#type-cssstylename) | false | — | new base style |
 
 ---
 ## Method: Button.setActionType

@@ -89,7 +89,7 @@ Set the dataContextBinding property.
 ## Method: ScreenLoader.dataContextChanged
 
 ### Description
-Notification method fired when [DataContext](../reference.md#object-datacontext) is bound on the embedded screen. This can occur on the initial draw or by an explicit call to [setDataContext()](Canvas.md#method-canvassetdatacontext) either via this ScreenLoader or from other components including the screen itself.
+Notification method fired when [DataContext](../reference_2.md#object-datacontext) is bound on the embedded screen. This can occur on the initial draw or by an explicit call to [setDataContext()](Canvas.md#method-canvassetdatacontext) either via this ScreenLoader or from other components including the screen itself.
 
 ### Groups
 

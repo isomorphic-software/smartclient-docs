@@ -29,7 +29,7 @@ EditTree automatically creates an [EditContext](EditContext.md#class-editcontext
 ## Attr: EditTree.rootComponent
 
 ### Description
-Root of data to edit. Must contain the "type" property, with the name of a valid [schema](DataSource_1.md#class-datasource) or nothing will be able to be dropped on this EditContext. A "liveObject" property representing the rootComponent is also suggested. Otherwise, a live object will be created from the palette node.
+Root of data to edit. Must contain the "type" property, with the name of a valid [schema](DataSource.md#class-datasource) or nothing will be able to be dropped on this EditContext. A "liveObject" property representing the rootComponent is also suggested. Otherwise, a live object will be created from the palette node.
 
 Can be retrieved at any time. Use [EditTree.getRootEditNode](#method-edittreegetrooteditnode) to retrieve the [EditNode](../reference.md#object-editnode) created from the rootComponent.
 

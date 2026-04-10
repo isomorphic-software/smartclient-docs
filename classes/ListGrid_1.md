@@ -1,4 +1,4 @@
-# ListGrid Documentation (Part 1 of 2)
+# ListGrid Documentation (Part 1 of 3)
 
 [← Back to API Index](../reference.md)
 
@@ -357,7 +357,7 @@ Once set, this styleName is automatically appended to the style-list for cells w
 ## Attr: ListGrid.removeFieldProperties
 
 ### Description
-Configuration properties for the "remove field" displayed when [ListGrid.canRemoveRecords](#attr-listgridcanremoverecords) is enabled. These configuration settings will be overlaid on top of the [ListGrid.removeFieldDefaults](#attr-listgridremovefielddefaults).
+Configuration properties for the "remove field" displayed when [ListGrid.canRemoveRecords](#attr-listgridcanremoverecords) is enabled. These configuration settings will be overlaid on top of the [ListGrid.removeFieldDefaults](ListGrid_2.md#attr-listgridremovefielddefaults).
 
 **Flags**: IR
 
@@ -457,7 +457,7 @@ The following variables are available for evaluation within this string:
 ## Attr: ListGrid.rowSpanSelectionMode
 
 ### Description
-Chooses the selection mode when [ListGrid.useRowSpanStyling](#attr-listgriduserowspanstyling) is enabled. See [RowSpanSelectionMode](../reference.md#type-rowspanselectionmode).
+Chooses the selection mode when [ListGrid.useRowSpanStyling](#attr-listgriduserowspanstyling) is enabled. See [RowSpanSelectionMode](../reference_2.md#type-rowspanselectionmode).
 
 **Flags**: IR
 
@@ -486,7 +486,7 @@ Causes a menu item titled ["Filter using"](#attr-listgridfilterusingtext) to app
 
 Once an operator has been chosen, the active operator is indicated by an [ListGrid.operatorIcon](#attr-listgridoperatoricon) placed within the field (you can alternatively cause the icon to [always be present](#attr-listgridalwaysshowoperatoricon)). The `operatorIcon` shows the same textual representation of the search operator as is used by the [FormItem.allowExpressions](FormItem.md#attr-formitemallowexpressions) feature. Clicking on the icon provides a second way to modify the search operator.
 
-This feature is enabled by default if [DataSource.supportsAdvancedCriteria](DataSource_1.md#method-datasourcesupportsadvancedcriteria) is true, for all fields where it is normally possible to filter by typing in a search string. This excludes field types such as "date" or "boolean" which show specialized filter controls. Use [ListGridField.allowFilterOperators](ListGridField.md#attr-listgridfieldallowfilteroperators) to disable this interface for individual fields, or set [DataSourceField.canFilter](DataSourceField.md#attr-datasourcefieldcanfilter) to false to disallow filtering entirely for a field.
+This feature is enabled by default if [DataSource.supportsAdvancedCriteria](DataSource.md#method-datasourcesupportsadvancedcriteria) is true, for all fields where it is normally possible to filter by typing in a search string. This excludes field types such as "date" or "boolean" which show specialized filter controls. Use [ListGridField.allowFilterOperators](ListGridField.md#attr-listgridfieldallowfilteroperators) to disable this interface for individual fields, or set [DataSourceField.canFilter](DataSourceField.md#attr-datasourcefieldcanfilter) to false to disallow filtering entirely for a field.
 
 Note that this feature is similar to [ListGrid.allowFilterExpressions](#attr-listgridallowfilterexpressions), which allows the end users to directly type in characters such as ">" to control filtering. `allowFilterOperators` is easier to use and more discoverable than `allowFilterExpressions`, and also avoids the drawback where special characters like ">" cannot be used in filter values. However, `allowFilterExpressions` allows users to make use of certain operators that `allowFilterOperators` does not support, such as using the "betweenInclusive" operator by typing "5...10".
 
@@ -594,7 +594,7 @@ If this, [ListGrid.booleanTrueImage](#attr-listgridbooleantrueimage) and [ListGr
 ## Attr: ListGrid.headerButtonProperties
 
 ### Description
-Properties to apply to all header buttons. Overrides defaults applied via [ListGrid.headerButtonDefaults](#attr-listgridheaderbuttondefaults).
+Properties to apply to all header buttons. Overrides defaults applied via [ListGrid.headerButtonDefaults](ListGrid_2.md#attr-listgridheaderbuttondefaults).
 
 ### Groups
 
@@ -947,7 +947,7 @@ Should the [filter-editor](#attr-listgridshowfiltereditor) in this grid always p
 ### Description
 When [ExpansionMode](../reference_2.md#type-expansionmode) is _editor_, should a Save button be shown below the the expanded editor?
 
-Note that if an expanded-row containing an editor is collapsed while changes are outstanding, changes will be either be automatically updated to the grid, or will first show a confirmation dialog, according to the value of [ListGrid.expansionEditorShowSaveDialog](#attr-listgridexpansioneditorshowsavedialog).
+Note that if an expanded-row containing an editor is collapsed while changes are outstanding, changes will be either be automatically updated to the grid, or will first show a confirmation dialog, according to the value of [ListGrid.expansionEditorShowSaveDialog](ListGrid_2.md#attr-listgridexpansioneditorshowsavedialog).
 
 ### Groups
 
@@ -1033,7 +1033,7 @@ If this, [ListGrid.booleanFalseImage](#attr-listgridbooleanfalseimage) and [List
 
 - [ListGrid.booleanFalseImage](#attr-listgridbooleanfalseimage)
 - [ListGrid.booleanPartialImage](#attr-listgridbooleanpartialimage)
-- [ListGrid.printBooleanTrueImage](#attr-listgridprintbooleantrueimage)
+- [ListGrid.printBooleanTrueImage](ListGrid_2.md#attr-listgridprintbooleantrueimage)
 
 **Flags**: IRWA
 
@@ -1257,7 +1257,7 @@ If all you want to do is provide rounded-corners for records in this grid, it ma
 ### Description
 When exporting data to Excel/OpenOffice format using [ListGrid.exportData](ListGrid_2.md#method-listgridexportdata) or [ListGrid.exportClientData](ListGrid_2.md#method-listgridexportclientdata), whether widths of fields should be replicated in the resulting spreadsheet.
 
-Because Excel's unit of measurement for field widths is based on the default system font, there is no exact way to translate field widths in pixels to Excel column widths. The [ListGrid.exportWidthScale](#attr-listgridexportwidthscale) property can be set to adjust scaling; it's default value errs on the side of making Excel's columns slightly wider than the ListGrid field's actual width to avoid clipping.
+Because Excel's unit of measurement for field widths is based on the default system font, there is no exact way to translate field widths in pixels to Excel column widths. The [ListGrid.exportWidthScale](ListGrid_2.md#attr-listgridexportwidthscale) property can be set to adjust scaling; it's default value errs on the side of making Excel's columns slightly wider than the ListGrid field's actual width to avoid clipping.
 
 Note that you can switch off width export for individual fields with the [ListGridField.exportFieldWidth](ListGridField.md#attr-listgridfieldexportfieldwidth) flag.
 
@@ -1372,7 +1372,7 @@ When [hiliteIcons](#attr-listgridhiliteicons) are present, where the hilite icon
 ## Attr: ListGrid.preRenderTransitionFrameDefaults
 
 ### Description
-Default properties for the [ListGrid.preRenderTransitionFrame](#attr-listgridprerendertransitionframe) AutoChild. The default creates a 5px bright blue border frame.
+Default properties for the [ListGrid.preRenderTransitionFrame](#attr-listgridprerendertransitionframe) AutoChild used by [ListGrid.preRender](#attr-listgridprerender) debugging. Creates a 5px bright blue border frame by default.
 
 ### Groups
 
@@ -1461,7 +1461,7 @@ In cases where client-filtering alone is not sufficient, note the following:
 ## Attr: ListGrid.preRenderTransitionDuration
 
 ### Description
-Duration in milliseconds for the [ListGrid.preRenderTransitionFrame](#attr-listgridprerendertransitionframe) fade-out animation. The frame appears at full opacity when the canvas preview is hidden, then fades to transparent over this duration.
+Duration in milliseconds for the [ListGrid.preRenderTransitionFrame](#attr-listgridprerendertransitionframe) fade-out animation used when debugging [ListGrid.preRender](#attr-listgridprerender) transitions. Only relevant when [ListGrid.showPreRenderTransition](#attr-listgridshowprerendertransition) is true.
 
 ### Groups
 
@@ -1469,6 +1469,7 @@ Duration in milliseconds for the [ListGrid.preRenderTransitionFrame](#attr-listg
 
 ### See Also
 
+- [ListGrid.showPreRenderTransition](#attr-listgridshowprerendertransition)
 - [ListGrid.preRenderTransitionFrame](#attr-listgridprerendertransitionframe)
 
 **Flags**: IR
@@ -1636,6 +1637,31 @@ Canvas created and embedded in the body behind a given record. When [ListGridRec
 ### Groups
 
 - rowEffects
+
+**Flags**: IR
+
+---
+## Attr: ListGrid.preRenderFormatValues
+
+### Description
+Controls how cell values are formatted during canvas [ListGrid.preRender](#attr-listgridprerender) rendering in "data" mode. See [PreRenderFormatValues](../reference_2.md#type-prerenderformatvalues) for available options.
+
+The default `"default"` applies valueMaps, displayField substitution, [format strings](ListGridField.md#attr-listgridfieldformat), and type-specific formatters — so dates, numbers, and mapped values look correct in the canvas preview without calling custom [formatCellValue()](ListGridField.md#method-listgridfieldformatcellvalue) methods.
+
+When explicitly set to `"none"`, formatting is disabled for all fields and the per-field setting is ignored entirely.
+
+When set to `"custom"`, the full formatting pipeline runs including custom formatCellValue methods. Individual fields can still override to a different mode (including `"none"` to disable formatting for that field) via [ListGridField.preRenderFormatValues](ListGridField.md#attr-listgridfieldprerenderformatvalues).
+
+This setting also controls group header titles in [grouped](ListGrid_2.md#method-listgridgroupby) grids. When set to `"custom"`, [listGrid.getGroupTitle](#method-listgridgetgrouptitle) is called to produce group titles (since custom formatters are already being called for cell values). Otherwise, the raw `groupValue` is shown. Custom code in getGroupTitle() can call [ListGrid.isPreRendering](ListGrid_2.md#method-listgridisprerendering) to detect the canvas context and return plain-text titles (canvas cannot render HTML).
+
+### Groups
+
+- performance
+
+### See Also
+
+- [ListGrid.preRender](#attr-listgridprerender)
+- [ListGrid.isPreRendering](ListGrid_2.md#method-listgridisprerendering)
 
 **Flags**: IR
 
@@ -1841,7 +1867,7 @@ If this property is set, further customization of selection can be made by apply
 ## Attr: ListGrid.rowNumberField
 
 ### Description
-An automatically generated field that displays the current row number when [showRowNumbers](#attr-listgridshowrownumbers) is true.
+An automatically generated field that displays the current row number when [showRowNumbers](ListGrid_2.md#attr-listgridshowrownumbers) is true.
 
 ### Groups
 
@@ -2067,7 +2093,7 @@ Adds the ability for a user to define additional criteria above and beyond those
 
 Causes a menu item titled ["Advanced Filtering"](#attr-listgridadvancedfilteringtext) to appear in the ["Filter using"](#attr-listgridfilterusingtext) menu show in the [headerContextMenu](#attr-listgridshowheadercontextmenu) that allows the end user to configure an advanced filter on the grid that can supplement the [filter editor](#attr-listgridshowfiltereditor). Note that the menu option will show even if [filter operators](#attr-listgridallowfilteroperators) is disabled.
 
-To use this feature, the grid must be configured with a [DataSource](DataSource_1.md#class-datasource). In fact, this feature is enabled by default if the grid has a [DataSource](DataSource_1.md#class-datasource) and both [DataSource.supportsAdvancedCriteria](DataSource_1.md#method-datasourcesupportsadvancedcriteria) and [ListGrid.allowFilterOperators](#attr-listgridallowfilteroperators) are true. This default can be disabled by setting `allowFilterWindow` to `false`.
+To use this feature, the grid must be configured with a [DataSource](DataSource.md#class-datasource). In fact, this feature is enabled by default if the grid has a [DataSource](DataSource.md#class-datasource) and both [DataSource.supportsAdvancedCriteria](DataSource.md#method-datasourcesupportsadvancedcriteria) and [ListGrid.allowFilterOperators](#attr-listgridallowfilteroperators) are true. This default can be disabled by setting `allowFilterWindow` to `false`.
 
 [This example](https://www.smartclient.com/smartclient-latest/showcase/?id=filterWindow) shows the `allowFilterWindow` setting in use.
 
@@ -2900,7 +2926,7 @@ Enables various styling behaviors that potentially make sense when [ListGrid.get
 
 *   computes [banded styling](#attr-listgridalternaterecordstyles) based on the span of the cell in the left-most column
 *   enables [cell-level selection](#attr-listgridcanselectcells), including [cell-level rollover](#attr-listgridusecellrollovers) styling
-*   enables row-span-sensitive cell selection. See also [RowSpanSelectionMode](../reference.md#type-rowspanselectionmode) for available behaviors
+*   enables row-span-sensitive cell selection. See also [RowSpanSelectionMode](../reference_2.md#type-rowspanselectionmode) for available behaviors
 
 Because this setting enables [ListGrid.canSelectCells](#attr-listgridcanselectcells), it is incompatible with any APIs that expect a record-oriented data model.
 
@@ -2912,7 +2938,7 @@ Because this setting only makes sense when row spanning decreases from the first
 ## Attr: ListGrid.canvasGridProperties
 
 ### Description
-Properties to apply to the [CanvasGrid](CanvasGrid.md#class-canvasgrid) AutoChild in addition to [ListGrid.canvasGridDefaults](#attr-listgridcanvasgriddefaults).
+Additional properties for the [CanvasGrid](CanvasGrid.md#class-canvasgrid) AutoChild used by [ListGrid.preRender](#attr-listgridprerender), applied on top of [ListGrid.canvasGridDefaults](#attr-listgridcanvasgriddefaults).
 
 ### Groups
 
@@ -3078,7 +3104,7 @@ This property may be set to customize the opacity for the hover shown on [ListGr
 ### Description
 If set, the [ListGrid.booleanPartialImage](#attr-listgridbooleanpartialimage) to use when [printing](../kb_topics/printing.md#kb-topic-printing).
 
-If this, [ListGrid.printBooleanTrueImage](#attr-listgridprintbooleantrueimage) and [ListGrid.printBooleanFalseImage](#attr-listgridprintbooleanfalseimage) are unset, this will be set to the default [CheckboxItem.printPartialSelectedImage](CheckboxItem.md#attr-checkboxitemprintpartialselectedimage).
+If this, [ListGrid.printBooleanTrueImage](ListGrid_2.md#attr-listgridprintbooleantrueimage) and [ListGrid.printBooleanFalseImage](#attr-listgridprintbooleanfalseimage) are unset, this will be set to the default [CheckboxItem.printPartialSelectedImage](CheckboxItem.md#attr-checkboxitemprintpartialselectedimage).
 
 ### Groups
 
@@ -3300,6 +3326,26 @@ Default width for editable date type fields. See [ListGrid.autoFitDateFields](#a
 - autoFitFields
 
 **Flags**: IRW
+
+---
+## Attr: ListGrid.preRenderImageMode
+
+### Description
+Controls how framework-generated icons are handled in the canvas [ListGrid.preRender](#attr-listgridprerender) preview. See [PreRenderImageMode](../reference.md#type-prerenderimagemode) for available modes.
+
+The default `"all"` mode detects all built-in icon situations (group expand/collapse, tree openers and folder icons, value icons, boolean checkbox images) and both reserves horizontal space AND draws cached icon images on the canvas. Icons that cannot be resolved to a drawable URL (sprite-based, CSS-class-based) are rendered as reserved space only.
+
+Set to `"space"` to reserve icon space without drawing images (slightly faster). In both modes, icon space is always reserved so text aligns correctly with the HTML grid.
+
+### Groups
+
+- performance
+
+### See Also
+
+- [ListGrid.preRender](#attr-listgridprerender)
+
+**Flags**: IR
 
 ---
 ## Attr: ListGrid.selectedState
@@ -3848,7 +3894,7 @@ Style for header cells in printed output. Defaults to [ListGrid.headerBaseStyle]
 ## Attr: ListGrid.defaultFilterOperator
 
 ### Description
-Default [filter operator](../reference.md#type-operatorid) to use for text-based fields in this grid's [filter editor](#attr-listgridfiltereditor), when producing [AdvancedCriteria](../reference.md#object-advancedcriteria). When [allowFilterExpressions](#attr-listgridallowfilterexpressions) or [allowFilterOperators](#attr-listgridallowfilteroperators) are enabled for the grid, the default is ["iContainsPattern"](DataSource_1.md#attr-datasourcetranslatepatternoperators). Otherwise, the default is "iContains".
+Default [filter operator](../reference.md#type-operatorid) to use for text-based fields in this grid's [filter editor](#attr-listgridfiltereditor), when producing [AdvancedCriteria](../reference.md#object-advancedcriteria). When [allowFilterExpressions](#attr-listgridallowfilterexpressions) or [allowFilterOperators](#attr-listgridallowfilteroperators) are enabled for the grid, the default is ["iContainsPattern"](DataSource.md#attr-datasourcetranslatepatternoperators). Otherwise, the default is "iContains".
 
 Does not apply to special fields where exact match is obviously the right default setting, such as fields of type:"enum", or fields with a [valueMap](FormItem.md#attr-formitemvaluemap) or [optionDataSource](FormItem.md#attr-formitemoptiondatasource).
 
@@ -3862,7 +3908,7 @@ Extra character-widths to add to every column in Excel/OpenOffice exports, compe
 
 A value of 1 (one extra character width) is generally sufficient. The server has its own default for this setting (configured via the `export.columnWidthPadding` [server property](../kb_topics/server_properties.md#kb-topic-serverproperties-file)); a non-null value sent from the client overrides the server default for that export. Leave null to use the server default.
 
-See also [ListGrid.exportFieldWidths](#attr-listgridexportfieldwidths) and [ListGrid.exportWidthScale](#attr-listgridexportwidthscale) for other column width controls.
+See also [ListGrid.exportFieldWidths](#attr-listgridexportfieldwidths) and [ListGrid.exportWidthScale](ListGrid_2.md#attr-listgridexportwidthscale) for other column width controls.
 
 **Flags**: IRW
 
@@ -4412,7 +4458,7 @@ Instead we could use `addProperties()` on our new subclass to set `defaultFields
 ## Attr: ListGrid.expansionRelated
 
 ### Description
-Automatically generated [ListGrid](#class-listgrid) for displaying data related to a record in its expanded section when [listGrid.expansionMode](../reference_2.md#type-expansionmode) is `related`. The [DataSource](DataSource_1.md#class-datasource) containing the related data is provided by [getRelatedDataSource()](ListGrid_2.md#method-listgridgetrelateddatasource) which, by default, returns the DataSource referred to in [ListGridRecord.detailDS](ListGridRecord.md#attr-listgridrecorddetailds).
+Automatically generated [ListGrid](#class-listgrid) for displaying data related to a record in its expanded section when [listGrid.expansionMode](../reference_2.md#type-expansionmode) is `related`. The [DataSource](DataSource.md#class-datasource) containing the related data is provided by [getRelatedDataSource()](ListGrid_2.md#method-listgridgetrelateddatasource) which, by default, returns the DataSource referred to in [ListGridRecord.detailDS](ListGridRecord.md#attr-listgridrecorddetailds).
 
 This component is an [AutoChild](../reference.md#type-autochild) and as such may be customized via `listGrid.expansionRelatedProperties` and `listGrid.expansionRelatedDefaults`.
 
@@ -4699,9 +4745,9 @@ Src of the image to show as an error icon, if we're showing icons when validatio
 ## Attr: ListGrid.showPreRenderTransition
 
 ### Description
-When true, shows a visual transition effect when the canvas preRender is replaced by the real HTML body content. The effect is a bright blue frame (5px border) that appears above the body for 500ms and fades out, making it easy to see exactly when the transition from canvas preview to DOM content occurs.
+Debugging/troubleshooting aid: when true, shows a visual indicator each time the canvas [ListGrid.preRender](#attr-listgridprerender) preview is replaced by the real HTML body content. The effect is a bright blue frame (5px border) that appears above the body for [500ms](#attr-listgridprerendertransitionduration) and fades out, making it easy to see exactly when each transition occurs.
 
-This is primarily useful for debugging and demonstrating the preRender feature. The transition frame is implemented as an AutoChild ([ListGrid.preRenderTransitionFrame](#attr-listgridprerendertransitionframe)).
+Not intended for production use — this is for verifying that preRender transitions are happening at the expected times and scroll positions. The frame is implemented as an AutoChild ([ListGrid.preRenderTransitionFrame](#attr-listgridprerendertransitionframe)).
 
 ### Groups
 
@@ -4843,7 +4889,7 @@ Prompt to indicate that grouping is disabled as the data set size exceeds [ListG
 
 This prompt will be shown as a hover for the disabled [group by menu item](#attr-listgridcangroupby).
 
-See also [ListGrid.groupByMaxRecordsExceededMessage](#attr-listgridgroupbymaxrecordsexceededmessage).
+See also [ListGrid.groupByMaxRecordsExceededMessage](ListGrid_2.md#attr-listgridgroupbymaxrecordsexceededmessage).
 
 ### Groups
 
@@ -5039,8 +5085,26 @@ When preRender is enabled, the sequence is:
 2.  A 0ms setTimeout schedules the real ListGrid body rendering
 3.  When the real body renders, it appears on top of the CanvasGrid
 
+#### What "data" mode renders by default
+By default ([PreRenderFormatValues](../reference_2.md#type-prerenderformatvalues) `"default"`), the canvas preview applies built-in formatting so cell values closely match the final HTML grid:
+
+*   [valueMaps](ListGridField.md#attr-listgridfieldvaluemap) are applied (e.g. "A" shows as "Active")
+*   [displayField](ListGridField.md#attr-listgridfielddisplayfield) substitution is applied
+*   [Format strings](ListGridField.md#attr-listgridfieldformat) (`field.format`) and type-specific formatters (date, number) are applied
+*   Custom [formatCellValue()](ListGridField.md#method-listgridfieldformatcellvalue) methods are **not** called — set [PreRenderFormatValues](../reference_2.md#type-prerenderformatvalues) to `"custom"` to include them
+
+#### HTML tags in cell values
+Canvas 2D has no HTML rendering capability — there is no way to render arbitrary HTML in a `<canvas>` element. Any HTML tags in cell values (whether from raw data or returned by a `"custom"` formatCellValue) will appear as literal text in the canvas preview — for example, `"`<b>`Bold`</b>`"` renders as the string "`<b>`Bold`</b>`". This is a brief preview artifact; the real HTML grid replaces it momentarily.
+
+[PreRenderFormatValues](../reference_2.md#type-prerenderformatvalues) can also be set per-field via [ListGridField.preRenderFormatValues](ListGridField.md#attr-listgridfieldprerenderformatvalues) — for example, disable formatting for one expensive column while keeping it for the rest.
+
+#### Styling
 The canvas pre-render extracts styling from the grid's [ListGrid.baseStyle](#attr-listgridbasestyle) and [ListGrid.headerBaseStyle](#attr-listgridheaderbasestyle) CSS classes to approximate the final appearance. However, CSS features like gradients, shadows, and border-radius are simplified. This tradeoff favors speed over perfect visual fidelity during the brief preview period.
 
+#### Frozen columns
+The canvas preview covers only the grid body (not the header). When using [frozen columns](ListGridField.md#attr-listgridfieldfrozen), a separate canvas is created for the frozen body area, rendering only frozen fields while the main canvas renders unfrozen fields. Both canvases scroll vertically in sync.
+
+#### When to use
 This setting is most beneficial for grids with many visible cells where the DOM rendering time is noticeable (50ms+). For small grids, the overhead of canvas rendering may not provide perceptible benefit.
 
 ### Groups
@@ -5049,6 +5113,12 @@ This setting is most beneficial for grids with many visible cells where the DOM 
 
 ### See Also
 
+- [PreRenderFormatValues](../reference_2.md#type-prerenderformatvalues)
+- [PreRenderImageMode](../reference.md#type-prerenderimagemode)
+- [ListGrid.preRenderDelay](#attr-listgridprerenderdelay)
+- [ListGrid.isPreRendering](ListGrid_2.md#method-listgridisprerendering)
+- [ListGrid.preRenderDone](ListGrid_2.md#method-listgridprerenderdone)
+- [ListGrid.preRenderHTMLReplaced](ListGrid_2.md#method-listgridprerenderhtmlreplaced)
 - [ListGrid.canvasGridDefaults](#attr-listgridcanvasgriddefaults)
 
 **Flags**: IRW
@@ -5083,7 +5153,7 @@ The CSS style name applied to the [ListGrid.emptyMessage](#attr-listgridemptymes
 ## Attr: ListGrid.autoFetchDisplayMap
 
 ### Description
-If true, for fields where [ListGridField.optionDataSource](ListGridField.md#attr-listgridfieldoptiondatasource) is specified, a valueMap will be automatically created by making a [DataSource.fetchData](DataSource_1.md#method-datasourcefetchdata) call against the specified dataSource and extracting a valueMap from the returned records based on the displayField and valueField.
+If true, for fields where [ListGridField.optionDataSource](ListGridField.md#attr-listgridfieldoptiondatasource) is specified, a valueMap will be automatically created by making a [DataSource.fetchData](DataSource.md#method-datasourcefetchdata) call against the specified dataSource and extracting a valueMap from the returned records based on the displayField and valueField.
 
 If set to false, valueMaps will not be automatically fetched. In this case, setting field.optionDataSource is effectively a shortcut for setting optionDataSource on the editor via [ListGridField.editorProperties](ListGridField.md#attr-listgridfieldeditorproperties).
 
@@ -5638,7 +5708,7 @@ Note, however, that this is a multi-instance component (potentially one per reco
 ## Attr: ListGrid.applyRowNumberStyle
 
 ### Description
-If [ListGrid.showRowNumbers](#attr-listgridshowrownumbers) is true, should we apply the [ListGrid.rowNumberStyle](#attr-listgridrownumberstyle) to the [ListGrid.rowNumberField](#attr-listgridrownumberfield)
+If [ListGrid.showRowNumbers](ListGrid_2.md#attr-listgridshowrownumbers) is true, should we apply the [ListGrid.rowNumberStyle](#attr-listgridrownumberstyle) to the [ListGrid.rowNumberField](#attr-listgridrownumberfield)
 
 ### Groups
 
@@ -5672,7 +5742,7 @@ Specifies the field by which this grid should be initially sorted. Can be set to
 
 ListGrids also support being initialized with multiple-field sort via [ListGrid.initialSort](ListGrid_2.md#attr-listgridinitialsort). If initialSort is specified, it will be used in preference to this property.
 
-To sort the grid after it has been initialized, use [ListGrid.sort](ListGrid_2.md#method-listgridsort) or [ListGrid.setSort](ListGrid_2.md#method-listgridsetsort). Details about the current sort of a live grid can be retrieved by calling [ListGrid.getSortField](ListGrid_2.md#method-listgridgetsortfield) or [ListGrid.getSort](ListGrid_2.md#method-listgridgetsort)
+To sort the grid after it has been initialized, use [ListGrid.sort](ListGrid_2.md#method-listgridsort) or [ListGrid.setSort](ListGrid_2.md#method-listgridsetsort). Details about the current sort of a live grid can be retrieved by calling [ListGrid.getSortField](ListGrid_3.md#method-listgridgetsortfield) or [ListGrid.getSort](ListGrid_2.md#method-listgridgetsort)
 
 ### Groups
 
@@ -5794,7 +5864,7 @@ This setting overrides the [general indent](#attr-listgridembeddedcomponentinden
 ### Description
 A list of ListGridRecord objects, specifying the data to be used to populate the ListGrid. In ListGrids, the data array specifies rows.
 
-When using a [DataSource](DataSource_1.md#class-datasource), rather than directly providing `data`, you will typically call [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata) instead, which will automatically establish `data` as a [ResultSet](ResultSet.md#class-resultset) (see the [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata) docs for details).
+When using a [DataSource](DataSource.md#class-datasource), rather than directly providing `data`, you will typically call [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata) instead, which will automatically establish `data` as a [ResultSet](ResultSet.md#class-resultset) (see the [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata) docs for details).
 
 If you call `fetchData`, any previously supplied `data` is discarded. Also, it is not necessary to call `setData()` after calling [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata).
 
@@ -5964,7 +6034,7 @@ When [ListGrid.canRemoveRecords](#attr-listgridcanremoverecords) is enabled, def
 ## Attr: ListGrid.canRequestRowCount
 
 ### Description
-Depending on whether [DataSource.progressiveLoading](DataSource_1.md#attr-datasourceprogressiveloading) is active, the exact count of available rows may not be known, and `canRequestRowCount` controls whether the end user may explicitly request it by clicking the [RowRangeDisplay](RowRangeDisplay.md#class-rowrangedisplay) label.
+Depending on whether [DataSource.progressiveLoading](DataSource.md#attr-datasourceprogressiveloading) is active, the exact count of available rows may not be known, and `canRequestRowCount` controls whether the end user may explicitly request it by clicking the [RowRangeDisplay](RowRangeDisplay.md#class-rowrangedisplay) label.
 
 When this property is set to `true`, the user may request an accurate row count if one is not currently known by [clicking](RowRangeDisplay.md#attr-rowrangedisplaycanrequestrowcount) the [ListGrid.rowRangeDisplay](ListGrid_2.md#attr-listgridrowrangedisplay). To have a row count fetch operation occur automatically when progressive data is loaded instead of requiring a user interaction to initiate the fetch, see [ListGrid.autoFetchRowCount](#attr-listgridautofetchrowcount).
 
@@ -6106,7 +6176,7 @@ Hover contents to use when the AI-generated hover text is empty.
 ## Attr: ListGrid.preRenderDelay
 
 ### Description
-Artificial delay in milliseconds between the canvas pre-render completing and the DOM body rendering starting. This is useful for testing/demonstrating the preRender effect, making the canvas preview visible for longer before being replaced by the real DOM content.
+Delay in milliseconds between the canvas [ListGrid.preRender](#attr-listgridprerender) completing and the DOM body rendering starting. Useful for testing/demonstrating the preRender effect, making the canvas preview visible for longer before being replaced by real DOM content.
 
 When set to 0 (default), the DOM render starts immediately after canvas render via a 0ms timer (allowing the canvas to paint first). When set to a positive value, that delay is added before DOM rendering begins.
 
@@ -6718,6 +6788,16 @@ The title for the [advanced filtering window](#attr-listgridfilterwindow).
 **Flags**: IR
 
 ---
+## Attr: ListGrid.showDropOverRollOver
+
+### Description
+When [RecordDropAppearance](../reference_2.md#type-recorddropappearance) is set to `"over"` or `"both"`, this property controls whether rollover styling is shown on the record that will receive the drop. Since normal rollover is suppressed during drag operations, this provides important visual feedback about which record will receive a drop.
+
+The rollover styling uses the same [ListGrid.baseStyle](#attr-listgridbasestyle) suffixes as normal rollover (e.g., "Over", "SelectedOver"), so no additional CSS is required.
+
+**Flags**: IRW
+
+---
 ## Attr: ListGrid.savedSearchDS
 
 ### Description
@@ -6849,7 +6929,7 @@ The context menu displayed for column headers.
 ### Description
 If this grid is [grouped](ListGrid_2.md#method-listgridgroupby) and [ListGrid.showGroupSummaryInHeader](#attr-listgridshowgroupsummaryinheader) is true, instead of group header nodes showing up with a single cell value spanning the full set of columns, summaries for each field will show up in the appropriate columns of the header node.
 
-In this case there are 2 options for where the group title will show up. Developers may specify an existing field to put the title values into via [ListGrid.groupTitleField](#attr-listgridgrouptitlefield). If no groupTitleField is specified, this property may be set to `true` which causes a `groupTitleColumn` to be automatically generated. Each group header will show the group title in this column (records within the group will not show a value for this column). The column appears in the leftmost position within the grid (unless [ListGrid.showRowNumbers](#attr-listgridshowrownumbers) is true, in which case this column shows up in the second-leftmost position), and by default will auto-fit to its data.
+In this case there are 2 options for where the group title will show up. Developers may specify an existing field to put the title values into via [ListGrid.groupTitleField](#attr-listgridgrouptitlefield). If no groupTitleField is specified, this property may be set to `true` which causes a `groupTitleColumn` to be automatically generated. Each group header will show the group title in this column (records within the group will not show a value for this column). The column appears in the leftmost position within the grid (unless [ListGrid.showRowNumbers](ListGrid_2.md#attr-listgridshowrownumbers) is true, in which case this column shows up in the second-leftmost position), and by default will auto-fit to its data.
 
 To customize this field, developers may modify [ListGrid.groupTitleColumnProperties](#attr-listgridgrouptitlecolumnproperties) or [ListGrid.groupTitleColumnDefaults](#attr-listgridgrouptitlecolumndefaults) at the class level.
 
@@ -7550,9 +7630,9 @@ If the [selectionCanvas](#attr-listgridselectioncanvas) is enabled, setting this
 ## Attr: ListGrid.removeFieldTitle
 
 ### Description
-The title to use for the [remove field](#attr-listgridremovefielddefaults).
+The title to use for the [remove field](ListGrid_2.md#attr-listgridremovefielddefaults).
 
-By default this title is not displayed in the remove column header button as the [ListGrid.removeFieldDefaults](#attr-listgridremovefielddefaults) sets [ListGridField.showTitle](ListGridField.md#attr-listgridfieldshowtitle) to `false`.
+By default this title is not displayed in the remove column header button as the [ListGrid.removeFieldDefaults](ListGrid_2.md#attr-listgridremovefielddefaults) sets [ListGridField.showTitle](ListGridField.md#attr-listgridfieldshowtitle) to `false`.
 
 **Flags**: IRWA
 
@@ -8054,7 +8134,7 @@ If `true` this grid will create and show per-row backgroundComponents as detaile
 ## Attr: ListGrid.autoFetchRowCount
 
 ### Description
-Depending on whether [DataSource.progressiveLoading](DataSource_1.md#attr-datasourceprogressiveloading) is active, the exact count of available rows may not be available as part of the standard data fetch response - setting `autoFetchRowCount:true` will cause a fetch for an accurate row count to be issued as soon as data arrives (from a [progressive dataSource response](DSResponse.md#attr-dsresponseprogressiveloading)) without an accurate row count. This value will then be available for display in the [RowRangeDisplay](RowRangeDisplay.md#class-rowrangedisplay) label.
+Depending on whether [DataSource.progressiveLoading](DataSource.md#attr-datasourceprogressiveloading) is active, the exact count of available rows may not be available as part of the standard data fetch response - setting `autoFetchRowCount:true` will cause a fetch for an accurate row count to be issued as soon as data arrives (from a [progressive dataSource response](DSResponse.md#attr-dsresponseprogressiveloading)) without an accurate row count. This value will then be available for display in the [RowRangeDisplay](RowRangeDisplay.md#class-rowrangedisplay) label.
 
 To allow users to request an accurate row count by clicking the [RowRangeDisplay](RowRangeDisplay.md#class-rowrangedisplay) instead of kicking off a row count fetch automatically, use [ListGrid.canRequestRowCount](#attr-listgridcanrequestrowcount).
 
@@ -8755,7 +8835,7 @@ Default number of pixels by which to indent all groups.
 ## Attr: ListGrid.canvasGridConstructor
 
 ### Description
-The class used to construct the [CanvasGrid](CanvasGrid.md#class-canvasgrid) AutoChild.
+The class used to construct the [CanvasGrid](CanvasGrid.md#class-canvasgrid) AutoChild for [ListGrid.preRender](#attr-listgridprerender).
 
 **Flags**: IRA
 
@@ -8954,9 +9034,9 @@ Returns a mapping of default WAI ARIA attributes for rows within this listGrid. 
 ## Attr: ListGrid.preRenderTransitionFrame
 
 ### Description
-When [ListGrid.preRender](#attr-listgridprerender) is enabled, this AutoChild appears as a visual indicator during the transition from canvas preview to real DOM content. The frame is a bright blue border (5px by default) that appears around the grid body and fades out over [ListGrid.preRenderTransitionDuration](#attr-listgridprerendertransitionduration) milliseconds.
+Debugging/troubleshooting AutoChild: a bright blue border (5px by default) that appears around the grid body each time the canvas [ListGrid.preRender](#attr-listgridprerender) preview transitions to real DOM content, then fades out over [ListGrid.preRenderTransitionDuration](#attr-listgridprerendertransitionduration) milliseconds.
 
-This provides clear visual feedback that the transition has occurred, helping users perceive the moment when the fast canvas preview is replaced by the fully interactive DOM-based grid.
+Only created when [ListGrid.showPreRenderTransition](#attr-listgridshowprerendertransition) is set to true. Intended for development and troubleshooting — not for production use.
 
 ### Groups
 
@@ -8964,7 +9044,7 @@ This provides clear visual feedback that the transition has occurred, helping us
 
 ### See Also
 
-- [ListGrid.preRender](#attr-listgridprerender)
+- [ListGrid.showPreRenderTransition](#attr-listgridshowprerendertransition)
 - [ListGrid.preRenderTransitionDuration](#attr-listgridprerendertransitionduration)
 
 **Flags**: R
@@ -9474,7 +9554,7 @@ Custom style to apply to the image in the [removeField](#attr-listgridremovefiel
 ## Attr: ListGrid.preRenderStructureDelay
 
 ### Description
-Separate delay for "structure" mode preRender, which can be more aggressive since structure mode is much faster than data mode (Item 30). When set, this overrides [ListGrid.preRenderDelay](#attr-listgridprerenderdelay) for structure mode scrolling.
+Separate delay for "structure" mode [ListGrid.preRender](#attr-listgridprerender), which can be more aggressive since structure mode is much faster than data mode. When set, this overrides [ListGrid.preRenderDelay](#attr-listgridprerenderdelay) for structure mode scrolling.
 
 Structure mode rendering is O(1) using canvas pattern fills, allowing near-synchronous re-render on scroll. A value of 0 means almost immediate hiding of the canvas preview. Even synchronous (no delay) can work because structure mode renders so quickly.
 
@@ -9529,7 +9609,7 @@ Note that this setting will have no effect if [DataSourceField.sortByField](Data
 ### Description
 If set, the [ListGrid.booleanFalseImage](#attr-listgridbooleanfalseimage) to use when [printing](../kb_topics/printing.md#kb-topic-printing).
 
-If this, [ListGrid.printBooleanTrueImage](#attr-listgridprintbooleantrueimage) and [ListGrid.printBooleanPartialImage](#attr-listgridprintbooleanpartialimage) are unset, this will be set to the default [CheckboxItem.printUncheckedImage](CheckboxItem.md#attr-checkboxitemprintuncheckedimage).
+If this, [ListGrid.printBooleanTrueImage](ListGrid_2.md#attr-listgridprintbooleantrueimage) and [ListGrid.printBooleanPartialImage](#attr-listgridprintbooleanpartialimage) are unset, this will be set to the default [CheckboxItem.printUncheckedImage](CheckboxItem.md#attr-checkboxitemprintuncheckedimage).
 
 ### Groups
 
@@ -9603,164 +9683,5 @@ Note that this async processing covers grouping **only** - it does not cover who
 At this time, there is no generally effective way to avoid this warning dialog appearing with very large datasets in Microsoft's Internet Explorer (IE). IE's severely flawed detection algorithm for runaway scripts has been shown to interrupt computations after only 0.2 seconds elapsed time even if the computation would have finished in 0.3 seconds. Optimizations that reduce execution time can sometimes trigger the "script running slowly" dialog sooner. Since not every operation can reasonably be made asynchronous, the current recommendation is to avoid working with overly large datasets until the affected versions of IE are obsoleted.
 
 **Flags**: IRW
-
----
-## Attr: ListGrid.printBooleanTrueImage
-
-### Description
-If set, the [ListGrid.booleanTrueImage](#attr-listgridbooleantrueimage) to use when [printing](../kb_topics/printing.md#kb-topic-printing).
-
-If this, [ListGrid.printBooleanFalseImage](#attr-listgridprintbooleanfalseimage) and [ListGrid.printBooleanPartialImage](#attr-listgridprintbooleanpartialimage) are unset, this will be set to the default [CheckboxItem.printCheckedImage](CheckboxItem.md#attr-checkboxitemprintcheckedimage).
-
-### Groups
-
-- imageColumns
-- printing
-
-### See Also
-
-- [ListGrid.booleanTrueImage](#attr-listgridbooleantrueimage)
-
-**Flags**: IRWA
-
----
-## Attr: ListGrid.groupByMaxRecordsExceededMessage
-
-### Description
-Warning shown to the user when a grouping attempt failed as the data set length exceeds [ListGrid.groupByMaxRecords](#attr-listgridgroupbymaxrecords).
-
-If defined, this prompt will be shown to the user in a [warning dialog](isc.md#staticmethod-iscwarn) when the user attempts to group a data set that exceeds the [ListGrid.groupByMaxRecords](#attr-listgridgroupbymaxrecords) threshold.
-
-This can occur if an already-grouped grid's filter criteria are modified such that a new set of records is loaded from the DataSource which exceeds the [ListGrid.groupByMaxRecords](#attr-listgridgroupbymaxrecords) threshold.
-
-It can also occur when a user attempts to group a grid with a partially loaded data set where the true size of the data set is not known due to [progressiveLoading](DataBoundComponent.md#attr-databoundcomponentprogressiveloading). In this case, the grouping logic will attempt to retrieve all the records in the data set and may get back a new total row count from the DataSource which exceeds [ListGrid.groupByMaxRecords](#attr-listgridgroupbymaxrecords).
-
-In either case the warning will be displayed to the user and the [group by menu item](#attr-listgridcangroupby) will be disabled.
-
-See also [ListGrid.disabledGroupByPrompt](#attr-listgriddisabledgroupbyprompt).
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
-
----
-## Attr: ListGrid.updateSummariesDuringEditing
-
-### Description
-Should the [summary row](#attr-listgridshowgridsummary) or [group summaries](ListGrid_2.md#attr-listgridshowgroupsummary) be updated during editing of grid records? This can be set false to improve performance when a large number of [ListGridFields](../reference_2.md#object-listgridfield) or [DataSourceFields](../reference_2.md#object-datasourcefield) are present for the grid.
-
-Note that summaries will always be updated when the edits are saved, so to avoid recalculation overhead when a row or cell edit is completed, you must also set [ListGrid.autoSaveEdits](#attr-listgridautosaveedits): false. Summaries will then be updated upon your manual save, such as [ListGrid.saveAllEdits](ListGrid_2.md#method-listgridsavealledits).
-
-### See Also
-
-- [ListGrid.recalculateSummaries](ListGrid_2.md#method-listgridrecalculatesummaries)
-
-**Flags**: IRW
-
----
-## Attr: ListGrid.locateColumnsBy
-
-### Description
-When [AutoTest.getElement](AutoTest.md#classmethod-autotestgetelement) is used to parse locator strings generated by [AutoTest.getLocator](AutoTest.md#classmethod-autotestgetlocator) for a cell in this grid, how should the column be identified?  
-Note that getLocator() will actually store all available information about the column in the generated string -- this attribute effects how a stored string will be parsed only.
-
-Valid options area:
-
-*   `"fieldName"` Attempt to identify by fieldName.
-*   `"index"` Attempt to identify by colNum (index in the fields array).
-
-If unset, default behavior is to identify by fieldName (if available), otherwise by index.
-
-### Groups
-
-- autoTest
-
-### See Also
-
-- [LocatorStrategy](../reference_2.md#type-locatorstrategy)
-
-**Flags**: IRW
-
----
-## Attr: ListGrid.headerButtonDefaults
-
-### Description
-Defaults to apply to all header buttons. To modify this object, use [ListGrid.changeDefaults()](Class.md#classmethod-classchangedefaults) rather than replacing with an entirely new object.
-
-### Groups
-
-- gridHeader
-- appearance
-
-**Flags**: IRA
-
----
-## Attr: ListGrid.exportWidthScale
-
-### Description
-Scaling factor to translate from ListGrid field widths in pixels to Excel/OpenOffice units for field width, which are 1/256th of the width of the widest digit character in the default font for the spreadsheet. See [ListGrid.exportFieldWidths](#attr-listgridexportfieldwidths) for where this is used.
-
-**Flags**: IRW
-
----
-## Attr: ListGrid.offlineMessageStyle
-
-### Description
-The CSS style name applied to the [offlineMessage](DataBoundComponent.md#attr-databoundcomponentofflinemessage) if displayed.
-
-### Groups
-
-- offlineGroup
-
-**Flags**: IRW
-
----
-## Attr: ListGrid.expansionEditorShowSaveDialog
-
-### Description
-When [canExpandRecords](#attr-listgridcanexpandrecords) is true and [expansionMode](#attr-listgridexpansionmode) is _editor_, whether a dialog should be displayed when an expanded row is collapsed while it's nested editor has changed values.
-
-### Groups
-
-- expansionField
-
-**Flags**: IR
-
----
-## Attr: ListGrid.sorterProperties
-
-### Description
-Properties to apply to the sorter button. Overrides defaults applied via [ListGrid.sorterDefaults](#attr-listgridsorterdefaults).
-
-### Groups
-
-- gridHeader
-- appearance
-
-**Flags**: IRA
-
----
-## Attr: ListGrid.removeFieldDefaults
-
-### Description
-Default configuration properties for the "remove field" displayed when [ListGrid.canRemoveRecords](#attr-listgridcanremoverecords) is enabled. [Class.changeDefaults](Class.md#classmethod-classchangedefaults) should be used when modifying this object.
-
-The default configuration includes a [ListGridField.recordClick](ListGridField.md#method-listgridfieldrecordclick) handler which calls [ListGrid.removeData](ListGrid_2.md#method-listgridremovedata) to actually perform the data removal.
-
-**Flags**: IR
-
----
-## Attr: ListGrid.showRowNumbers
-
-### Description
-When set to true, shows an additional field at the beginning of the field-list (respecting RTL) that displays the current rowNum for each record.
-
-### Groups
-
-- rowNumberField
-
-**Flags**: IRWA
 
 ---

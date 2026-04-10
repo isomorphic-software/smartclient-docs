@@ -115,7 +115,7 @@ First, be sure you have read the QuickStart Guide chapters on Data Binding and t
 
 **Grids and Trees**
 
-Sample data provided for grids and trees in the mockup is converted to a special kind of DataSource called a [MockDataSource](../classes/MockDataSource.md#class-mockdatasource), which is essentially a [clientOnly DataSource](../classes/DataSource_1.md#attr-datasourceclientonly). There are two ways to replace these with real DataSources that save to a persistent store:
+Sample data provided for grids and trees in the mockup is converted to a special kind of DataSource called a [MockDataSource](../classes/MockDataSource.md#class-mockdatasource), which is essentially a [clientOnly DataSource](../classes/DataSource.md#attr-datasourceclientonly). There are two ways to replace these with real DataSources that save to a persistent store:
 
 *   if you have already separately developed real DataSources: the simplest approach is to load your DataSources normally, then just delete the `<MockDataSource>` definitions from the XML source, and replace the `dataSource` attribute on the `<ListGrid>` or `<TreeGrid>` element with the ID of your real DataSource
 *   if you want to start from the mockup DataSources: move the XML definition of the MockDataSource into a new .ds.xml file, rename the outer tag to just `<DataSource>`, add `clientOnly="true"` and remove the `<mockData>` element. Load the DataSource normally and the application imported from the mockup will continue to function just as it has. You can now add settings to the new .ds.xml file to set up persistence (see QuickStart Guide) - remove the `clientOnly="true"` setting and `<cacheData>` element whenever you want to switch over to real persistence.

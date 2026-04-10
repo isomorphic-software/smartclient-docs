@@ -933,7 +933,7 @@ Return the base stylename for this cell. Default implementation just returns thi
 
 ### Returns
 
-`[CSSStyleName](../reference.md#type-cssstylename)` — CSS class for this cell
+`[CSSStyleName](../reference_2.md#type-cssstylename)` — CSS class for this cell
 
 ### See Also
 
@@ -1603,7 +1603,7 @@ In addition to this, [getCellCSSText()](#method-gridrenderergetcellcsstext) may 
 
 ### Returns
 
-`[CSSStyleName](../reference.md#type-cssstylename)` — CSS style for this cell
+`[CSSStyleName](../reference_2.md#type-cssstylename)` — CSS style for this cell
 
 ### Groups
 

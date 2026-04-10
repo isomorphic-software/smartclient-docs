@@ -488,7 +488,7 @@ Update progress indication during upload/processing.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| percentDone | [Float](../reference.md#type-float) | false | — | Progress percentage (0-100) |
+| percentDone | [Float](../reference_2.md#type-float) | false | — | Progress percentage (0-100) |
 | processed | [Integer](../reference_2.md#type-integer) | false | — | Bytes processed so far |
 | total | [Integer](../reference_2.md#type-integer) | false | — | Total bytes being processed |
 
@@ -589,7 +589,7 @@ Update progress indication for a specific file during concurrent uploads.
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | file | [File](#type-file) | false | — | The file being uploaded |
-| percentDone | [Float](../reference.md#type-float) | false | — | Progress percentage (0-100) for this file |
+| percentDone | [Float](../reference_2.md#type-float) | false | — | Progress percentage (0-100) for this file |
 | processed | [Integer](../reference_2.md#type-integer) | false | — | Bytes processed so far for this file |
 | total | [Integer](../reference_2.md#type-integer) | false | — | Total bytes for this file |
 

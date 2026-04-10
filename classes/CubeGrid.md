@@ -107,7 +107,7 @@ To use this feature, either:
 *   all data must be returned by the first DataSource fetch, OR
 *   [CubeGrid.hideEmptyAxis](#attr-cubegridhideemptyaxis) must be set to either "row" or "column" so that empty values are only automatically hidden for one axis
 
-This last point is required because there is no way to determine whether a row is empty unless data for all columns of the row has been loaded (and vice-versa). For this reason if you set hideEmptyFacetValues but do not set hideEmptyAxis, the default behavior of [loading only visible data](DataSource_1.md#class-datasource) is automatically disabled and only [CubeGrid.fixedFacetValues](#attr-cubegridfixedfacetvalues) will be sent as criteria.
+This last point is required because there is no way to determine whether a row is empty unless data for all columns of the row has been loaded (and vice-versa). For this reason if you set hideEmptyFacetValues but do not set hideEmptyAxis, the default behavior of [loading only visible data](DataSource.md#class-datasource) is automatically disabled and only [CubeGrid.fixedFacetValues](#attr-cubegridfixedfacetvalues) will be sent as criteria.
 
 ### Groups
 
@@ -173,7 +173,7 @@ Scrolling, expanding/collapsing tree facets, pivoting, and changing the currentl
 
 The CubeGrid will generally attempt to fetch a minimal set of data to fill the viewport, sending multiple fetch operations in a batch (via [queueing](RPCManager.md#classmethod-rpcmanagerstartqueue)) which minimally describe newly revealed areas without specifying each individual cell. The CubeGrid will automatically handle being provided _more_ data than was asked for, so server-side fetch-ahead policies can be implemented without any client-side customization.
 
-Note that the [SQL connector](DataSource_1.md#attr-datasourceservertype) shipped with the SmartClient SDK is capable of responding to the CubeGrid's data requests without writing any custom server code.
+Note that the [SQL connector](DataSource.md#attr-datasourceservertype) shipped with the SmartClient SDK is capable of responding to the CubeGrid's data requests without writing any custom server code.
 
 **Flags**: IR
 
@@ -1496,7 +1496,7 @@ Set the title of a facet (appears in facet label).
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| facetId | [Identifier](../reference.md#type-identifier) | false | — | facet to update |
+| facetId | [Identifier](../reference_2.md#type-identifier) | false | — | facet to update |
 | newTitle | [String](#type-string) | false | — | title for the facet |
 
 ### Groups
@@ -1619,8 +1619,8 @@ Remove a facet from the current view, using a fixed value from that facet. For e
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| facetId | [Identifier](../reference.md#type-identifier) | false | — | facetId to remove |
-| fixedFacetValueId | [Identifier](../reference.md#type-identifier) | true | — | New fixed value for the facet, to be added to [CubeGrid.fixedFacetValues](#attr-cubegridfixedfacetvalues). Default is the rollup value for the facet. |
+| facetId | [Identifier](../reference_2.md#type-identifier) | false | — | facetId to remove |
+| fixedFacetValueId | [Identifier](../reference_2.md#type-identifier) | true | — | New fixed value for the facet, to be added to [CubeGrid.fixedFacetValues](#attr-cubegridfixedfacetvalues). Default is the rollup value for the facet. |
 
 ### Groups
 
@@ -1720,7 +1720,7 @@ Return the base stylename for this cell. Default implementation just returns thi
 
 ### Returns
 
-`[CSSStyleName](../reference.md#type-cssstylename)` — CSS class for this cell
+`[CSSStyleName](../reference_2.md#type-cssstylename)` — CSS class for this cell
 
 ### See Also
 
@@ -1890,7 +1890,7 @@ The facet being added should currently have a fixed facet value (unless it's alr
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| facetId | [Identifier](../reference.md#type-identifier) | false | — | facetId to add. Definition must have been provided at init time. |
+| facetId | [Identifier](../reference_2.md#type-identifier) | false | — | facetId to add. Definition must have been provided at init time. |
 | intoRows | [Boolean](#type-boolean) | true | true | whether to add facet as a row facet |
 | index | [Integer](../reference_2.md#type-integer) | true | — | index to add the facet at. 0 = outermost (default innermost) |
 
@@ -2031,8 +2031,8 @@ Set the title for a facet value.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| facetId | [Identifier](../reference.md#type-identifier) | false | — | facet to update |
-| facetValueId | [Identifier](../reference.md#type-identifier) | false | — | facetValue to update |
+| facetId | [Identifier](../reference_2.md#type-identifier) | false | — | facet to update |
+| facetValueId | [Identifier](../reference_2.md#type-identifier) | false | — | facetValue to update |
 | newTitle | [String](#type-string) | false | — | title for the facet |
 
 ### Groups
@@ -2215,7 +2215,7 @@ StringMethod handler fired from hover over a facet label
 ## Method: CubeGrid.getPrintHTML
 
 ### Description
-Note that CubeGrid does not support a WYSIWYG print view by default(also used when [exporting to pdf](RPCManager.md#classmethod-rpcmanagerexportcontent)). Instead we recommend [exporting to excel or csv format](DataSource_1.md#method-datasourceexportclientdata).
+Note that CubeGrid does not support a WYSIWYG print view by default(also used when [exporting to pdf](RPCManager.md#classmethod-rpcmanagerexportcontent)). Instead we recommend [exporting to excel or csv format](DataSource.md#method-datasourceexportclientdata).
 
 ### Parameters
 
@@ -2380,7 +2380,7 @@ In addition to this, [getCellCSSText()](GridRenderer.md#method-gridrenderergetce
 
 ### Returns
 
-`[CSSStyleName](../reference.md#type-cssstylename)` — CSS style for this cell
+`[CSSStyleName](../reference_2.md#type-cssstylename)` — CSS style for this cell
 
 ### Groups
 
@@ -2429,7 +2429,7 @@ Resizes all columns for the provided facetValueId, which must be a facetValueId 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| facetValueId | [Identifier](../reference.md#type-identifier) | false | — | facetValueId of columns to be resized |
+| facetValueId | [Identifier](../reference_2.md#type-identifier) | false | — | facetValueId of columns to be resized |
 | newWidth | [number](#type-number) | false | — | column's new width |
 
 ---
@@ -2726,7 +2726,7 @@ Set the align of a facet title (appears in facet label).
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| facetId | [Identifier](../reference.md#type-identifier) | false | — | facet to update |
+| facetId | [Identifier](../reference_2.md#type-identifier) | false | — | facet to update |
 | align | [Alignment](../reference_2.md#type-alignment) | false | — | new alignment for facet title |
 
 ### Groups
@@ -2850,8 +2850,8 @@ Set the align for the title for a facet value.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| facetId | [Identifier](../reference.md#type-identifier) | false | — | facet to update |
-| facetValueId | [Identifier](../reference.md#type-identifier) | false | — | facetValue to update |
+| facetId | [Identifier](../reference_2.md#type-identifier) | false | — | facet to update |
+| facetValueId | [Identifier](../reference_2.md#type-identifier) | false | — | facetValue to update |
 | align | [Alignment](../reference_2.md#type-alignment) | false | — | new alignment for facet value title |
 
 ### Groups
@@ -3013,7 +3013,7 @@ _methodType_ action
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| facetId | [Identifier](../reference.md#type-identifier) | false | — | facetId to add. Definition must have been provided at init time. |
+| facetId | [Identifier](../reference_2.md#type-identifier) | false | — | facetId to add. Definition must have been provided at init time. |
 | index | [Integer](../reference_2.md#type-integer) | true | — | index to add the facet at. 0 = outermost (default innermost) |
 
 ### Groups
@@ -3083,8 +3083,8 @@ Modify fixedFacetValues for this cubeGrid.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| facetId | [Identifier](../reference.md#type-identifier) | false | — | facetId |
-| fixedFacetValueId | [Identifier](../reference.md#type-identifier) | false | — | New fixed value for the facet, to be added to [CubeGrid.fixedFacetValues](#attr-cubegridfixedfacetvalues). Default is the rollup value for the facet. |
+| facetId | [Identifier](../reference_2.md#type-identifier) | false | — | facetId |
+| fixedFacetValueId | [Identifier](../reference_2.md#type-identifier) | false | — | New fixed value for the facet, to be added to [CubeGrid.fixedFacetValues](#attr-cubegridfixedfacetvalues). Default is the rollup value for the facet. |
 
 ### Groups
 
@@ -3164,7 +3164,7 @@ _methodType_ action
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| facetId | [Identifier](../reference.md#type-identifier) | false | — | facetId to add. Definition must have been provided at init time. |
+| facetId | [Identifier](../reference_2.md#type-identifier) | false | — | facetId to add. Definition must have been provided at init time. |
 | index | [Integer](../reference_2.md#type-integer) | true | — | index to add the facet at. 0 = outermost (default innermost) |
 
 ### Groups

@@ -29,7 +29,7 @@ Reloading of child windows is in general supported (but see [MultiWindow.autoCop
 ## ClassAttr: MultiWindow.autoCopyDataSources
 
 ### Description
-Should [DataSources](DataSource_1.md#class-datasource) from other OpenFin windows with SmartClient loaded be copied by reference into this window? Such DataSources will be copied:
+Should [DataSources](DataSource.md#class-datasource) from other OpenFin windows with SmartClient loaded be copied by reference into this window? Such DataSources will be copied:
 
 *   when a page in another window is loaded (potentially several DataSources at once)
 *   at the moment DataSources are created in a page loaded in another window (just that DataSource)
@@ -82,11 +82,11 @@ Minimizes the existing window with the specified name,
 ## ClassMethod: MultiWindow.getDataContext
 
 ### Description
-Returns the [DataContext](../reference.md#object-datacontext) provided by the [MultiWindow.open](#classmethod-multiwindowopen) call that opened this window, or a newly created (on demand) [DataContext](../reference.md#object-datacontext) if this is the main application window, or no DataContext was provided.
+Returns the [DataContext](../reference_2.md#object-datacontext) provided by the [MultiWindow.open](#classmethod-multiwindowopen) call that opened this window, or a newly created (on demand) [DataContext](../reference_2.md#object-datacontext) if this is the main application window, or no DataContext was provided.
 
 ### Returns
 
-`[DataContext](#type-datacontext)` — [DataContext](../reference.md#object-datacontext) for this window
+`[DataContext](#type-datacontext)` — [DataContext](../reference_2.md#object-datacontext) for this window
 
 ---
 ## ClassMethod: MultiWindow.restore
@@ -195,7 +195,7 @@ Deactivates (blurs) the existing window with the specified name,
 ## ClassMethod: MultiWindow.open
 
 ### Description
-Opens a new window with the specified URL, name, and [DataContext](../reference.md#object-datacontext).
+Opens a new window with the specified URL, name, and [DataContext](../reference_2.md#object-datacontext).
 
 Note that if the provided window name already exists, that window will just be [activated](#classmethod-multiwindowactivate), and though the callback will be run, the supplied url, dataContext, windowSettings, and classSettings will be ignored.
 

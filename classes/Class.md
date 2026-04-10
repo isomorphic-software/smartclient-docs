@@ -140,7 +140,7 @@ Global identifier for referring to a Class instance in JavaScript. If you specif
 Not all Class subclasses support this property. The following commonly-used subclasses support global IDs:
 
 *   [Canvas](Canvas.md#class-canvas) and all visual widget subclasses
-*   [DataSource](DataSource_1.md#class-datasource)
+*   [DataSource](DataSource.md#class-datasource)
 *   [Tree](Tree.md#class-tree)
 *   [ValuesManager](ValuesManager.md#class-valuesmanager)
 *   [ResultSet](ResultSet.md#class-resultset)
@@ -152,7 +152,7 @@ Not all Class subclasses support this property. The following commonly-used subc
 ## Attr: Class.addPropertiesOnCreate
 
 ### Description
-Controls whether arguments passed to [Class.create](#classmethod-classcreate) are assumed to be Objects containing properties that should be added to the newly created instance. This behavior is how `create()` works with almost all SmartClient widgets and other components, allowing the convenient shorthand of setting a batch of properties via an [JavaScript Object Literal](../reference.md#type-objectliteral) passed to create().
+Controls whether arguments passed to [Class.create](#classmethod-classcreate) are assumed to be Objects containing properties that should be added to the newly created instance. This behavior is how `create()` works with almost all SmartClient widgets and other components, allowing the convenient shorthand of setting a batch of properties via an [JavaScript Object Literal](../reference_2.md#type-objectliteral) passed to create().
 
 The setting defaults to true if unset. To disable this behavior for a custom class, such that `create()` works more like typical constructors found in Java and other languages, use:
 
@@ -744,7 +744,7 @@ Returns true if the method is supported by this class, meaning that it is not nu
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| methodName | [Identifier](../reference.md#type-identifier) | false | — | the name of a method to test. |
+| methodName | [Identifier](../reference_2.md#type-identifier) | false | — | the name of a method to test. |
 
 ### Returns
 
@@ -1100,7 +1100,7 @@ Returns true if the property is dynamic.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| propertyName | [Identifier](../reference.md#type-identifier) | false | — | name of a settable property on this instance |
+| propertyName | [Identifier](../reference_2.md#type-identifier) | false | — | name of a settable property on this instance |
 
 ### Returns
 
@@ -1179,7 +1179,7 @@ The current value of the property will not be changed by this call.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| propertyName | [Identifier](../reference.md#type-identifier) | false | — | property name of the dynamic property to clear |
+| propertyName | [Identifier](../reference_2.md#type-identifier) | false | — | property name of the dynamic property to clear |
 
 ---
 ## Method: Class.ignore
@@ -1594,7 +1594,7 @@ Returns the last time the rule for the specified dynamic property fired, as a [D
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| propertyName | [Identifier](../reference.md#type-identifier) | false | — | name of a settable property on this instance |
+| propertyName | [Identifier](../reference_2.md#type-identifier) | false | — | name of a settable property on this instance |
 
 ### Returns
 
@@ -1718,7 +1718,7 @@ Note that you may convert a simple criteria to an [AdvancedCriteria](../referenc
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| propertyName | [Identifier](../reference.md#type-identifier) | false | — | name of a settable property on this instance |
+| propertyName | [Identifier](../reference_2.md#type-identifier) | false | — | name of a settable property on this instance |
 | source | [DataPath](../reference_2.md#type-datapath)|[UserSummary](#type-usersummary)|[UserFormula](#type-userformula)|[AdvancedCriteria](#type-advancedcriteria) | false | — | — |
 
 ### See Also

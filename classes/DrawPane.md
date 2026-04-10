@@ -396,7 +396,7 @@ Add a new gradient to the drawPane shared gradient list ([DrawPane.gradients](#a
 
 ### Returns
 
-`[Identifier](../reference.md#type-identifier)` — the ID of the gradient (either provided or auto-assigned)
+`[Identifier](../reference_2.md#type-identifier)` — the ID of the gradient (either provided or auto-assigned)
 
 ---
 ## Method: DrawPane.getGradient
@@ -408,7 +408,7 @@ Returns gradient for gradientID.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| gradientID | [Identifier](../reference.md#type-identifier) | false | — | ID of gradient to retrieve |
+| gradientID | [Identifier](../reference_2.md#type-identifier) | false | — | ID of gradient to retrieve |
 
 ### Returns
 
@@ -436,12 +436,12 @@ Creates a linear gradient which can be used by any DrawItem of this DrawPane. An
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| id | [Identifier](../reference.md#type-identifier) | false | — | the ID of the linear gradient |
+| id | [Identifier](../reference_2.md#type-identifier) | false | — | the ID of the linear gradient |
 | linearGradient | [LinearGradient](#type-lineargradient) | false | — | the linear gradient |
 
 ### Returns
 
-`[Identifier](../reference.md#type-identifier)` — id
+`[Identifier](../reference_2.md#type-identifier)` — id
 
 **Deprecated**
 
@@ -587,12 +587,12 @@ Creates a radial gradient which can be used by any DrawItem of this DrawPane. An
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| id | [Identifier](../reference.md#type-identifier) | false | — | the ID of the radial gradient |
+| id | [Identifier](../reference_2.md#type-identifier) | false | — | the ID of the radial gradient |
 | radialGradient | [RadialGradient](#type-radialgradient) | false | — | the radial gradient |
 
 ### Returns
 
-`[Identifier](../reference.md#type-identifier)` — id
+`[Identifier](../reference_2.md#type-identifier)` — id
 
 **Deprecated**
 
@@ -633,12 +633,12 @@ Creates a simple linear gradient which can be used by any DrawItem of this DrawP
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| id | [Identifier](../reference.md#type-identifier) | false | — | the ID of the simple linear gradient |
+| id | [Identifier](../reference_2.md#type-identifier) | false | — | the ID of the simple linear gradient |
 | simple | [SimpleGradient](#type-simplegradient) | false | — | the simple linear gradient |
 
 ### Returns
 
-`[Identifier](../reference.md#type-identifier)` — id
+`[Identifier](../reference_2.md#type-identifier)` — id
 
 **Deprecated**
 
@@ -652,6 +652,6 @@ Removes gradient for gradientID.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| gradientID | [Identifier](../reference.md#type-identifier) | false | — | ID of gradient to remove |
+| gradientID | [Identifier](../reference_2.md#type-identifier) | false | — | ID of gradient to remove |
 
 ---

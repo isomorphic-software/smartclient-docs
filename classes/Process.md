@@ -317,7 +317,7 @@ Process files are stored as .proc.xml files in [Component XML](../kb_topics/comp
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| processId | [Identifier](../reference.md#type-identifier)|[Array of Identifier](#type-array-of-identifier) | false | — | process ID or IDs to load |
+| processId | [Identifier](../reference_2.md#type-identifier)|[Array of Identifier](#type-array-of-identifier) | false | — | process ID or IDs to load |
 | callback | [ProcessCallback](#type-processcallback) | false | — | called when the process is loaded with argument "process", the first process. Other processes can be looked up via [Process.getProcess](#classmethod-processgetprocess). |
 
 ---
@@ -332,7 +332,7 @@ Each process instance created that has an [ID](ProcessElement.md#attr-processele
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| processId | [Identifier](../reference.md#type-identifier) | false | — | process ID to retrieve |
+| processId | [Identifier](../reference_2.md#type-identifier) | false | — | process ID to retrieve |
 
 ### Returns
 
@@ -358,6 +358,29 @@ If the task sets `bindOutput` the output value is also written into that [proces
 | value | [Any](#type-any) | false | — | the output value for task |
 
 ---
+## Method: Process.getProcessState
+
+### Description
+Returns the complete process state for persistence. This includes not just process.state, but execution position and transient data needed to resume the workflow.
+
+### Returns
+
+`[Object](../reference.md#type-object)` — Complete state object with: - state: process.state variables - execution: current execution position - transientData: task outputs that feed into subsequent tasks
+
+---
+## Method: Process.restoreFromState
+
+### Description
+Restores process state from a previously saved complete state and optionally resumes execution.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| completeState | [Object](../reference.md#type-object) | false | — | State object from getProcessState() |
+| resume | [Boolean](#type-boolean) | true | — | If true, immediately resume execution after restore |
+
+---
 ## Method: Process.reset
 
 ### Description
@@ -368,6 +391,19 @@ Reset process to its initial state, so process can be started again.
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | state | [Record](#type-record) | true | — | new state of the process |
+
+---
+## Method: Process.suspend
+
+### Description
+Suspends process execution at the current point. The process state can be retrieved via getProcessState() for persistence.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| reason | [String](#type-string) | false | — | Reason for suspension (e.g., "HumanTask", "Timer") |
+| taskId | [String](#type-string) | false | — | ID of the task where process is suspended |
 
 ---
 ## Method: Process.getComponentReferences
@@ -501,6 +537,16 @@ Returns the task output of the last task executed. More commonly a [TaskInputExp
 `[Any](#type-any)` — the last task output or null if none is found
 
 ---
+## Method: Process.getSuspendInfo
+
+### Description
+Returns information about why and where the process is suspended.
+
+### Returns
+
+`[Object](../reference.md#type-object)` — Object with reason and taskId, or null if not suspended
+
+---
 ## Method: Process.getProcessDescription
 
 ### Description
@@ -578,6 +624,28 @@ This method is not just a shortcut to set output of a pass-thru task, but it als
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | task | [ProcessElement](#type-processelement) | false | — | the workflow task setting the output (i.e. this) |
+
+---
+## Method: Process.isSuspended
+
+### Description
+Returns true if the process is currently suspended.
+
+### Returns
+
+`[Boolean](#type-boolean)` — true if suspended
+
+---
+## Method: Process.resume
+
+### Description
+Resumes a suspended process. If the process was suspended at a HumanTask, the taskOutput should contain the result of the human task completion.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| taskOutput | [Object](../reference.md#type-object) | true | — | Output from the completed async task |
 
 ---
 ## Method: Process.beforeTaskCommit

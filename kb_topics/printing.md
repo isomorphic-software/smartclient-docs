@@ -62,7 +62,7 @@ Note that the [CubeGrid](../classes/CubeGrid.md#class-cubegrid) component does n
 - [ListGrid.printCheckboxFieldFalseImage](../classes/ListGrid_1.md#attr-listgridprintcheckboxfieldfalseimage)
 - [ListGrid.printCheckboxFieldPartialImage](../classes/ListGrid_1.md#attr-listgridprintcheckboxfieldpartialimage)
 - [ListGrid.printBooleanBaseStyle](../classes/ListGrid_1.md#attr-listgridprintbooleanbasestyle)
-- [ListGrid.printBooleanTrueImage](../classes/ListGrid_1.md#attr-listgridprintbooleantrueimage)
+- [ListGrid.printBooleanTrueImage](../classes/ListGrid_2.md#attr-listgridprintbooleantrueimage)
 - [ListGrid.printBooleanFalseImage](../classes/ListGrid_1.md#attr-listgridprintbooleanfalseimage)
 - [ListGrid.printBooleanPartialImage](../classes/ListGrid_1.md#attr-listgridprintbooleanpartialimage)
 - [ListGrid.printAutoFit](../classes/ListGrid_1.md#attr-listgridprintautofit)

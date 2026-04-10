@@ -1073,7 +1073,7 @@ Optional handler to fire when a tab is deselected. Returning false will cancel t
 |------|------|----------|---------|-------------|
 | tabNum | [Integer](../reference_2.md#type-integer) | false | — | the index of the deselected tab |
 | tabPane | [Canvas](#type-canvas) | false | — | the deselected tab's pane if set |
-| ID | [GlobalId](../reference.md#type-globalid) | false | — | the ID of the deselected tab |
+| ID | [GlobalId](../reference_2.md#type-globalid) | false | — | the ID of the deselected tab |
 | tab | [Tab](#type-tab) | false | — | the deselected tab object (not tab button instance) |
 | newTab | [Tab](#type-tab) | false | — | the tab object being selected |
 | name | [TabName](../reference.md#type-tabname) | false | — | the name of the deselected tab |
@@ -1092,7 +1092,7 @@ Get the tab Object originally passed to [TabSet.tabs](#attr-tabsettabs), by inde
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| tab | [int](../reference.md#type-int)|[GlobalId](../reference.md#type-globalid)|[TabName](../reference.md#type-tabname)|[Tab](#type-tab) | false | — | — |
+| tab | [int](../reference.md#type-int)|[GlobalId](../reference_2.md#type-globalid)|[TabName](../reference.md#type-tabname)|[Tab](#type-tab) | false | — | — |
 
 ### Returns
 
@@ -1165,7 +1165,7 @@ The pane associated with the removed tab is automatically destroyed when you cal
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| tabs | [Tab](#type-tab)|[GlobalId](../reference.md#type-globalid)|[TabName](../reference.md#type-tabname)|[number](#type-number)|[Array of Tab](#type-array-of-tab) | false | — | list of tabs, tabIDs, or tab numbers |
+| tabs | [Tab](#type-tab)|[GlobalId](../reference_2.md#type-globalid)|[TabName](../reference.md#type-tabname)|[number](#type-number)|[Array of Tab](#type-array-of-tab) | false | — | list of tabs, tabIDs, or tab numbers |
 
 ### See Also
 
@@ -1206,7 +1206,7 @@ Changes the title of the picker menu item of a tab
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| tab | [Tab](#type-tab)|[number](#type-number)|[GlobalId](../reference.md#type-globalid)|[TabName](../reference.md#type-tabname) | false | — | — |
+| tab | [Tab](#type-tab)|[number](#type-number)|[GlobalId](../reference_2.md#type-globalid)|[TabName](../reference.md#type-tabname) | false | — | — |
 | pickerTitle | [HTMLString](../reference.md#type-htmlstring) | false | — | new title |
 
 **Flags**: A
@@ -1250,7 +1250,7 @@ Changes the icon for a tab
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| tab | [Tab](#type-tab)|[number](#type-number)|[GlobalId](../reference.md#type-globalid)|[TabName](../reference.md#type-tabname) | false | — | tab to update |
+| tab | [Tab](#type-tab)|[number](#type-number)|[GlobalId](../reference_2.md#type-globalid)|[TabName](../reference.md#type-tabname) | false | — | tab to update |
 | icon | [SCImgURL](../reference.md#type-scimgurl) | false | — | new icon |
 
 **Flags**: A
@@ -1285,7 +1285,7 @@ Remove one or more tabs. The pane(s) associated with the removed tab(s) is autom
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| tabs | [Tab](#type-tab)|[GlobalId](../reference.md#type-globalid)|[TabName](../reference.md#type-tabname)|[number](#type-number) | false | — | list of tabs, tabIDs, tab names, or tab numbers |
+| tabs | [Tab](#type-tab)|[GlobalId](../reference_2.md#type-globalid)|[TabName](../reference.md#type-tabname)|[number](#type-number) | false | — | list of tabs, tabIDs, tab names, or tab numbers |
 
 ### See Also
 
@@ -1342,7 +1342,7 @@ Get the index of a tab, from the tab, tab ID or tab name. If passed a number, ju
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| tab | [number](#type-number)|[GlobalId](../reference.md#type-globalid)|[TabName](../reference.md#type-tabname)|[Tab](#type-tab) | false | — | — |
+| tab | [number](#type-number)|[GlobalId](../reference_2.md#type-globalid)|[TabName](../reference.md#type-tabname)|[Tab](#type-tab) | false | — | — |
 
 ### Returns
 
@@ -1358,7 +1358,7 @@ If the specified tab is enabled, disable it now.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| tab | [Tab](#type-tab)|[number](#type-number)|[GlobalId](../reference.md#type-globalid)|[TabName](../reference.md#type-tabname) | false | — | — |
+| tab | [Tab](#type-tab)|[number](#type-number)|[GlobalId](../reference_2.md#type-globalid)|[TabName](../reference.md#type-tabname) | false | — | — |
 
 ### See Also
 
@@ -1374,7 +1374,7 @@ Sets the given tab's [canClose](Tab.md#attr-tabcanclose) property to the boolean
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| tab | [Tab](#type-tab)|[GlobalId](../reference.md#type-globalid)|[TabName](../reference.md#type-tabname)|[number](#type-number) | false | — | tab to change |
+| tab | [Tab](#type-tab)|[GlobalId](../reference_2.md#type-globalid)|[TabName](../reference.md#type-tabname)|[number](#type-number) | false | — | tab to change |
 | canClose | [boolean](../reference.md#type-boolean) | false | — | new value for the tab's canClose property, or null to clear it |
 
 ---
@@ -1387,7 +1387,7 @@ Changes the title of a tab
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| tab | [Tab](#type-tab)|[number](#type-number)|[GlobalId](../reference.md#type-globalid)|[TabName](../reference.md#type-tabname) | false | — | specifies tab |
+| tab | [Tab](#type-tab)|[number](#type-number)|[GlobalId](../reference_2.md#type-globalid)|[TabName](../reference.md#type-tabname) | false | — | specifies tab |
 | title | [HTMLString](../reference.md#type-htmlstring) | false | — | new title |
 
 **Flags**: A
@@ -1416,7 +1416,7 @@ Returns the pane for a given tab.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| tab | [Object](../reference.md#type-object)|[number](#type-number)|[GlobalId](../reference.md#type-globalid)|[TabName](../reference.md#type-tabname)|[Tab](#type-tab) | false | — | — |
+| tab | [Object](../reference.md#type-object)|[number](#type-number)|[GlobalId](../reference_2.md#type-globalid)|[TabName](../reference.md#type-tabname)|[Tab](#type-tab) | false | — | — |
 
 ### Returns
 
@@ -1432,7 +1432,7 @@ Reveals the child Canvas passed in by selecting the tab containing that child if
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| child | [GlobalId](../reference.md#type-globalid)|[Canvas](#type-canvas) | false | — | the child Canvas to reveal, or its global ID |
+| child | [GlobalId](../reference_2.md#type-globalid)|[Canvas](#type-canvas) | false | — | the child Canvas to reveal, or its global ID |
 
 ---
 ## Method: TabSet.showTab
@@ -1458,7 +1458,7 @@ Apply properties to an existing tab in a tabSet.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| tab | [Tab](#type-tab)|[number](#type-number)|[GlobalId](../reference.md#type-globalid)|[TabName](../reference.md#type-tabname) | false | — | Identifier for the tab to be modified |
+| tab | [Tab](#type-tab)|[number](#type-number)|[GlobalId](../reference_2.md#type-globalid)|[TabName](../reference.md#type-tabname) | false | — | Identifier for the tab to be modified |
 | properties | [Object](../reference.md#type-object) | false | — | Javascript object containing the set of properties to be applied to the tab. |
 
 **Flags**: A
@@ -1492,7 +1492,7 @@ Move a tab to another location in the tabset.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| tab | [Tab](#type-tab)|[GlobalId](../reference.md#type-globalid)|[TabName](../reference.md#type-tabname)|[number](#type-number) | false | — | tab to move |
+| tab | [Tab](#type-tab)|[GlobalId](../reference_2.md#type-globalid)|[TabName](../reference.md#type-tabname)|[number](#type-number) | false | — | tab to move |
 | moveToPosition | [number](#type-number) | true | — | the index to move the tab to - defaults to the end of the tabset if not passed |
 
 ---
@@ -1505,7 +1505,7 @@ If the specified tab is disabled, enable it now.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| tab | [Tab](#type-tab)|[number](#type-number)|[GlobalId](../reference.md#type-globalid)|[TabName](../reference.md#type-tabname) | false | — | — |
+| tab | [Tab](#type-tab)|[number](#type-number)|[GlobalId](../reference_2.md#type-globalid)|[TabName](../reference.md#type-tabname) | false | — | — |
 
 ### See Also
 
@@ -1576,7 +1576,7 @@ The returned Tab is considered an internal component of the TabSet. In order to 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| tab | [int](../reference.md#type-int)|[GlobalId](../reference.md#type-globalid)|[TabName](../reference.md#type-tabname)|[Canvas](#type-canvas) | false | — | identifier for the tab or tab button |
+| tab | [int](../reference.md#type-int)|[GlobalId](../reference_2.md#type-globalid)|[TabName](../reference.md#type-tabname)|[Canvas](#type-canvas) | false | — | identifier for the tab or tab button |
 
 ### Returns
 
@@ -1596,7 +1596,7 @@ NOTE: the old pane for the tab is not destroy()d
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| tab | [number](#type-number)|[GlobalId](../reference.md#type-globalid)|[TabName](../reference.md#type-tabname)|[Tab](#type-tab) | false | — | tab to update |
+| tab | [number](#type-number)|[GlobalId](../reference_2.md#type-globalid)|[TabName](../reference.md#type-tabname)|[Tab](#type-tab) | false | — | tab to update |
 | pane | [Canvas](#type-canvas)|[ID](#type-id) | false | — | new pane for the tab |
 
 ---
@@ -1611,7 +1611,7 @@ Notification fired when a tab is selected. Note that this will only fire if this
 |------|------|----------|---------|-------------|
 | tabNum | [Integer](../reference_2.md#type-integer) | false | — | the index of the newly selected tab |
 | tabPane | [Canvas](#type-canvas) | false | — | the newly selected tab's pane if set |
-| ID | [GlobalId](../reference.md#type-globalid) | false | — | the ID of the newly selected tab |
+| ID | [GlobalId](../reference_2.md#type-globalid) | false | — | the ID of the newly selected tab |
 | tab | [Tab](#type-tab) | false | — | the tab object (not tab button instance) |
 | name | [TabName](../reference.md#type-tabname) | false | — | the name of the newly selected tab |
 
@@ -1655,6 +1655,6 @@ Select a tab. Note that this method will have no effect if the tab is [hidden](T
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| tab | [number](#type-number)|[GlobalId](../reference.md#type-globalid)|[TabName](../reference.md#type-tabname)|[Tab](#type-tab) | false | — | tab to select |
+| tab | [number](#type-number)|[GlobalId](../reference_2.md#type-globalid)|[TabName](../reference.md#type-tabname)|[Tab](#type-tab) | false | — | tab to select |
 
 ---

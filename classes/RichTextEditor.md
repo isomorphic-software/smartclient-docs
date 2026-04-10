@@ -25,7 +25,7 @@ Layout used to contain each of the [RichTextEditor.controlGroups](#attr-richtext
 ## Attr: RichTextEditor.backgroundColorPrompt
 
 ### Description
-The prompt for the built-in [backgroundColor](../reference.md#type-controlname) control.
+The prompt for the built-in [backgroundColor](../reference_2.md#type-controlname) control.
 
 ### Groups
 
@@ -53,7 +53,7 @@ The [AutoChild](../reference.md#type-autochild) [SelectItem](SelectItem.md#class
 ## Attr: RichTextEditor.pasteSelectionPrompt
 
 ### Description
-The prompt for the built-in [pasteSelection](../reference.md#type-controlname) control.
+The prompt for the built-in [pasteSelection](../reference_2.md#type-controlname) control.
 
 ### Groups
 
@@ -73,7 +73,7 @@ The background color for the toolbar.
 ## Attr: RichTextEditor.strikethroughSelectionPrompt
 
 ### Description
-The prompt for the built-in [strikethroughSelection](../reference.md#type-controlname) control.
+The prompt for the built-in [strikethroughSelection](../reference_2.md#type-controlname) control.
 
 ### Groups
 
@@ -97,7 +97,7 @@ The warning message displayed in a dialog when a user tries to configure a list 
 ## Attr: RichTextEditor.colorControls
 
 ### Description
-Control group for modifying text color / background color. Consists of an array of [ControlName](../reference.md#type-controlname)s and/or [Canvas](Canvas.md#class-canvas) instances. To display this group of controls for some RichTextEditor, include `"formatControls"` in the [RichTextEditor.controlGroups](#attr-richtexteditorcontrolgroups) array.
+Control group for modifying text color / background color. Consists of an array of [ControlName](../reference_2.md#type-controlname)s and/or [Canvas](Canvas.md#class-canvas) instances. To display this group of controls for some RichTextEditor, include `"formatControls"` in the [RichTextEditor.controlGroups](#attr-richtexteditorcontrolgroups) array.
 
 **Flags**: IRA
 
@@ -117,7 +117,7 @@ The prompt for the built-in [font-size selector](#attr-richtexteditorfontsizesel
 ## Attr: RichTextEditor.alignRightPrompt
 
 ### Description
-The prompt for the built-in [alignRight](../reference.md#type-controlname) control.
+The prompt for the built-in [alignRight](../reference_2.md#type-controlname) control.
 
 ### Groups
 
@@ -129,7 +129,7 @@ The prompt for the built-in [alignRight](../reference.md#type-controlname) contr
 ## Attr: RichTextEditor.italicSelectionPrompt
 
 ### Description
-The prompt for the built-in [italicSelection](../reference.md#type-controlname) control.
+The prompt for the built-in [italicSelection](../reference_2.md#type-controlname) control.
 
 ### Groups
 
@@ -141,7 +141,7 @@ The prompt for the built-in [italicSelection](../reference.md#type-controlname) 
 ## Attr: RichTextEditor.cutSelectionPrompt
 
 ### Description
-The prompt for the built-in [cutSelection](../reference.md#type-controlname) control.
+The prompt for the built-in [cutSelection](../reference_2.md#type-controlname) control.
 
 ### Groups
 
@@ -153,7 +153,7 @@ The prompt for the built-in [cutSelection](../reference.md#type-controlname) con
 ## Attr: RichTextEditor.orderedListPrompt
 
 ### Description
-The prompt for the built-in [orderedList](../reference.md#type-controlname) control.
+The prompt for the built-in [orderedList](../reference_2.md#type-controlname) control.
 
 ### Groups
 
@@ -173,7 +173,7 @@ Should this editor use a separate IFRAME with special cross-browser support for 
 ## Attr: RichTextEditor.outdentPrompt
 
 ### Description
-The prompt for the built-in [outdent](../reference.md#type-controlname) control.
+The prompt for the built-in [outdent](../reference_2.md#type-controlname) control.
 
 ### Groups
 
@@ -185,7 +185,7 @@ The prompt for the built-in [outdent](../reference.md#type-controlname) control.
 ## Attr: RichTextEditor.unorderedListPrompt
 
 ### Description
-The prompt for the built-in [unorderedList](../reference.md#type-controlname) control.
+The prompt for the built-in [unorderedList](../reference_2.md#type-controlname) control.
 
 ### Groups
 
@@ -197,7 +197,7 @@ The prompt for the built-in [unorderedList](../reference.md#type-controlname) co
 ## Attr: RichTextEditor.justifyPrompt
 
 ### Description
-The prompt for the built-in [justify](../reference.md#type-controlname) control.
+The prompt for the built-in [justify](../reference_2.md#type-controlname) control.
 
 ### Groups
 
@@ -217,7 +217,7 @@ If the user presses the "Tab" key, should focus be taken from this editor? If se
 ## Attr: RichTextEditor.alignCenterPrompt
 
 ### Description
-The prompt for the built-in [alignCenter](../reference.md#type-controlname) control.
+The prompt for the built-in [alignCenter](../reference_2.md#type-controlname) control.
 
 ### Groups
 
@@ -229,7 +229,7 @@ The prompt for the built-in [alignCenter](../reference.md#type-controlname) cont
 ## Attr: RichTextEditor.alignLeftPrompt
 
 ### Description
-The prompt for the built-in [alignLeft](../reference.md#type-controlname) control.
+The prompt for the built-in [alignLeft](../reference_2.md#type-controlname) control.
 
 ### Groups
 
@@ -241,7 +241,7 @@ The prompt for the built-in [alignLeft](../reference.md#type-controlname) contro
 ## Attr: RichTextEditor.colorPrompt
 
 ### Description
-The prompt for the built-in [color](../reference.md#type-controlname) control.
+The prompt for the built-in [color](../reference_2.md#type-controlname) control.
 
 ### Groups
 
@@ -262,7 +262,7 @@ ValueMap of css font size property values to font size titles to display in the 
 ## Attr: RichTextEditor.bulletControls
 
 ### Description
-Default HTML list control group. Consists of an array of [ControlName](../reference.md#type-controlname)s and/or [Canvas](Canvas.md#class-canvas) instances. To display this group of controls for some RichTextEditor, include `"bulletControls"` in the [RichTextEditor.controlGroups](#attr-richtexteditorcontrolgroups) array.
+Default HTML list control group. Consists of an array of [ControlName](../reference_2.md#type-controlname)s and/or [Canvas](Canvas.md#class-canvas) instances. To display this group of controls for some RichTextEditor, include `"bulletControls"` in the [RichTextEditor.controlGroups](#attr-richtexteditorcontrolgroups) array.
 
 **Flags**: IRA
 
@@ -290,7 +290,7 @@ Layout used to contain all of the [toolbar](#attr-richtexteditortoolbar) AutoChi
 ## Attr: RichTextEditor.formatControls
 
 ### Description
-Default text formatting control group. Consists of an array of [ControlName](../reference.md#type-controlname)s and/or [Canvas](Canvas.md#class-canvas) instances. To display this group of controls for some RichTextEditor, include `"formatControls"` in the [RichTextEditor.controlGroups](#attr-richtexteditorcontrolgroups) array.
+Default text formatting control group. Consists of an array of [ControlName](../reference_2.md#type-controlname)s and/or [Canvas](Canvas.md#class-canvas) instances. To display this group of controls for some RichTextEditor, include `"formatControls"` in the [RichTextEditor.controlGroups](#attr-richtexteditorcontrolgroups) array.
 
 **Flags**: IRA
 
@@ -298,7 +298,7 @@ Default text formatting control group. Consists of an array of [ControlName](../
 ## Attr: RichTextEditor.copySelectionPrompt
 
 ### Description
-The prompt for the built-in [copySelection](../reference.md#type-controlname) control.
+The prompt for the built-in [copySelection](../reference_2.md#type-controlname) control.
 
 ### Groups
 
@@ -318,7 +318,7 @@ The edit canvas created automatically for this RichTextEditor.
 ## Attr: RichTextEditor.indentPrompt
 
 ### Description
-The prompt for the built-in [indent](../reference.md#type-controlname) control.
+The prompt for the built-in [indent](../reference_2.md#type-controlname) control.
 
 ### Groups
 
@@ -332,7 +332,7 @@ The prompt for the built-in [indent](../reference.md#type-controlname) control.
 ### Description
 An array of control groups specifying which groups of controls should be included in the editor tool area. The values of this array may be the name of a control group such as one of the [StandardControlGroup](../reference.md#type-standardcontrolgroup)s, a [Canvas](Canvas.md#class-canvas), or the special string "break" which causes the subsequent control groups to continue onto a new line.
 
-For each control group name, this\[controlGroupName\] should be defined as an array of [ControlName](../reference.md#type-controlname)s or Canvas instances. This allows the controls of a control group to be customized.
+For each control group name, this\[controlGroupName\] should be defined as an array of [ControlName](../reference_2.md#type-controlname)s or Canvas instances. This allows the controls of a control group to be customized.
 
 **Flags**: IRA
 
@@ -340,7 +340,7 @@ For each control group name, this\[controlGroupName\] should be defined as an ar
 ## Attr: RichTextEditor.listPropertiesPrompt
 
 ### Description
-The prompt for the built-in [listProperties](../reference.md#type-controlname) control.
+The prompt for the built-in [listProperties](../reference_2.md#type-controlname) control.
 
 ### Groups
 
@@ -352,7 +352,7 @@ The prompt for the built-in [listProperties](../reference.md#type-controlname) c
 ## Attr: RichTextEditor.underlineSelectionPrompt
 
 ### Description
-The prompt for the built-in [underlineSelection](../reference.md#type-controlname) control.
+The prompt for the built-in [underlineSelection](../reference_2.md#type-controlname) control.
 
 ### Groups
 
@@ -364,7 +364,7 @@ The prompt for the built-in [underlineSelection](../reference.md#type-controlnam
 ## Attr: RichTextEditor.fontControls
 
 ### Description
-Default font control group. Consists of an array of [ControlName](../reference.md#type-controlname)s and/or [Canvas](Canvas.md#class-canvas) instances. To display this group of controls for some RichTextEditor, include `"fontControls"` in the [RichTextEditor.controlGroups](#attr-richtexteditorcontrolgroups) array.
+Default font control group. Consists of an array of [ControlName](../reference_2.md#type-controlname)s and/or [Canvas](Canvas.md#class-canvas) instances. To display this group of controls for some RichTextEditor, include `"fontControls"` in the [RichTextEditor.controlGroups](#attr-richtexteditorcontrolgroups) array.
 
 **Flags**: IRA
 
@@ -372,7 +372,7 @@ Default font control group. Consists of an array of [ControlName](../reference.m
 ## Attr: RichTextEditor.styleControls
 
 ### Description
-Default text styling control group. Consists of an array of [ControlName](../reference.md#type-controlname)s and/or [Canvas](Canvas.md#class-canvas) instances. To display this group of controls for some RichTextEditor, include `"styleControls"` in the [RichTextEditor.controlGroups](#attr-richtexteditorcontrolgroups) array.
+Default text styling control group. Consists of an array of [ControlName](../reference_2.md#type-controlname)s and/or [Canvas](Canvas.md#class-canvas) instances. To display this group of controls for some RichTextEditor, include `"styleControls"` in the [RichTextEditor.controlGroups](#attr-richtexteditorcontrolgroups) array.
 
 **Flags**: IRA
 
@@ -380,7 +380,7 @@ Default text styling control group. Consists of an array of [ControlName](../ref
 ## Attr: RichTextEditor.listPropertiesDialog
 
 ### Description
-Dialog shown when the ["listProperties" control](../reference.md#type-controlname) is pressed. Provides options for the user to control formatting of lists.
+Dialog shown when the ["listProperties" control](../reference_2.md#type-controlname) is pressed. Provides options for the user to control formatting of lists.
 
 **Flags**: R
 
@@ -404,7 +404,7 @@ When true, applies style attributes in markup instead of presentation elements.
 ## Attr: RichTextEditor.boldSelectionPrompt
 
 ### Description
-The prompt for the built-in [boldSelection](../reference.md#type-controlname) control.
+The prompt for the built-in [boldSelection](../reference_2.md#type-controlname) control.
 
 ### Groups
 

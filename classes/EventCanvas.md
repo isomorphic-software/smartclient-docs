@@ -234,9 +234,9 @@ Assigns a new [event](../reference.md#object-calendarevent) to this EventCanvas,
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | event | [CalendarEvent](#type-calendarevent) | false | — | the new event to apply to this EventCanvas |
-| styleName | [CSSStyleName](../reference.md#type-cssstylename) | true | — | optional CSS class to apply to this EventCanvas |
-| headerStyle | [CSSStyleName](../reference.md#type-cssstylename) | true | — | optional separate CSS class to apply to the [header](#attr-eventcanvasshowheader). |
-| bodyStyle | [CSSStyleName](../reference.md#type-cssstylename) | true | — | optional separate CSS class to apply to the [body](#attr-eventcanvasshowbody). |
+| styleName | [CSSStyleName](../reference_2.md#type-cssstylename) | true | — | optional CSS class to apply to this EventCanvas |
+| headerStyle | [CSSStyleName](../reference_2.md#type-cssstylename) | true | — | optional separate CSS class to apply to the [header](#attr-eventcanvasshowheader). |
+| bodyStyle | [CSSStyleName](../reference_2.md#type-cssstylename) | true | — | optional separate CSS class to apply to the [body](#attr-eventcanvasshowbody). |
 
 ### Groups
 

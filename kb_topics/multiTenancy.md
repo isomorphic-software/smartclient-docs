@@ -47,7 +47,7 @@ All the rest is handled for you, by SmartClient.
 
 ## SmartClient multi-tenancy
 
-[DataSources](../classes/DataSource_1.md#class-datasource) in SmartClient support the Bridge model and Silo model for multi-tenancy. as described in the section below titled, "Multi-tenancy models."
+[DataSources](../classes/DataSource.md#class-datasource) in SmartClient support the Bridge model and Silo model for multi-tenancy. as described in the section below titled, "Multi-tenancy models."
 #### Multi-tenant DataSource loading
 By default multi-tenant DataSources in SmartClient are named `mt_`<tenantId>`_`<baseId>``, where `baseId` is the filename prefix of the XML DS definition file (e.g. `supplyItem` for `supplyItem.ds.xml`), but when loaded by the client an alias is automatically created so that it's accessible simply as `baseId` via [DataSource.get](../classes/DataSource.md#classmethod-datasourceget). The server looks for the definitions under the `tenants` subdirectory of each of your `project.datasources` paths, so if that property is just the directory `$webRoot/shared/ds`, for example, then we'll look in `$webRoot/shared/ds/tenants`.
 

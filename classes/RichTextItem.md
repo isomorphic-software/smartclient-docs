@@ -75,7 +75,7 @@ By default RichTextItems take up an entire row
 ## Attr: RichTextItem.controlGroups
 
 ### Description
-[RichTextEditor.controlGroups](RichTextEditor.md#attr-richtexteditorcontrolgroups) to display for this editor. Each controlGroup should be a property set either on this item or on the RichTextEditor prototype and should be set to an array of [ControlName](../reference.md#type-controlname)s.
+[RichTextEditor.controlGroups](RichTextEditor.md#attr-richtexteditorcontrolgroups) to display for this editor. Each controlGroup should be a property set either on this item or on the RichTextEditor prototype and should be set to an array of [ControlName](../reference_2.md#type-controlname)s.
 
 **Flags**: IA
 

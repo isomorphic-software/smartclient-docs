@@ -726,7 +726,7 @@ If [ListGrid.showGridSummary](ListGrid_1.md#attr-listgridshowgridsummary) or [Li
 ### Description
 Derive a [ValueMap](../reference_2.md#type-valuemap) by fetching records from another DataSource and extracting the [valueField](#attr-listgridfieldvaluefield) and [displayField](#attr-listgridfielddisplayfield) in the loaded records, to derive one valueMap entry per record loaded from the optionDataSource.
 
-Unlike the similar use of [PickList.optionDataSource](PickList.md#attr-picklistoptiondatasource) for [pickLists](../reference_2.md#interface-picklist) used during editing or filtering, `listGridField.optionDataSource` causes the **entire set of records from the optionDataSource to be fetched**, without paging. Hence listGridField.optionDataSource is appropriate only for smaller valueMaps, and in this situation, [DataSource.cacheAllData](DataSource.md#attr-datasourcecachealldata) may be a better choice, since it creates a write-through cache usable across all components.
+Unlike the similar use of [PickList.optionDataSource](PickList.md#attr-picklistoptiondatasource) for [pickLists](../reference_2.md#interface-picklist) used during editing or filtering, `listGridField.optionDataSource` causes the **entire set of records from the optionDataSource to be fetched**, without paging. Hence listGridField.optionDataSource is appropriate only for smaller valueMaps, and in this situation, [DataSource.cacheAllData](DataSource_1.md#attr-datasourcecachealldata) may be a better choice, since it creates a write-through cache usable across all components.
 
 For very large valueMap situations, such as an accountId field that should be displayed as an accountName where there are thousands of accounts, the correct approach is:
 
@@ -1390,7 +1390,7 @@ If this field is editable, and [ListGridField.editorIconWidth](#attr-listgridfie
 ## Attr: ListGridField.optionTextMatchStyle
 
 ### Description
-For fields with an [ListGridField.optionDataSource](#attr-listgridfieldoptiondatasource), where [ListGridField.autoFetchDisplayMap](#attr-listgridfieldautofetchdisplaymap) is true, this property will govern the `textMatchStyle` attribute of the [DSRequest](../reference_2.md#object-dsrequest) parameter passed to [DataSource.fetchData](DataSource.md#method-datasourcefetchdata) when retrieving the remote data set to be used as a basis for this field's valueMap.
+For fields with an [ListGridField.optionDataSource](#attr-listgridfieldoptiondatasource), where [ListGridField.autoFetchDisplayMap](#attr-listgridfieldautofetchdisplaymap) is true, this property will govern the `textMatchStyle` attribute of the [DSRequest](../reference_2.md#object-dsrequest) parameter passed to [DataSource.fetchData](DataSource_1.md#method-datasourcefetchdata) when retrieving the remote data set to be used as a basis for this field's valueMap.
 
 ### Groups
 
@@ -1708,7 +1708,7 @@ Name of this field. Must be unique within the [ListGrid](ListGrid_1.md#class-lis
 
 The name of the field is also the property in each record which holds the record's value for the field.
 
-If a [ListGrid.dataSource](ListGrid_1.md#attr-listgriddatasource) is specified and the [DataSource](DataSource.md#class-datasource) has a field with the same [name](DataSourceField.md#attr-datasourcefieldname), the `ListGridField` and [DataSourceField](../reference_2.md#object-datasourcefield) are merged, with any properties on the `ListGridField` overriding those on the `DataSourceField`.
+If a [ListGrid.dataSource](ListGrid_1.md#attr-listgriddatasource) is specified and the [DataSource](DataSource_1.md#class-datasource) has a field with the same [name](DataSourceField.md#attr-datasourcefieldname), the `ListGridField` and [DataSourceField](../reference_2.md#object-datasourcefield) are merged, with any properties on the `ListGridField` overriding those on the `DataSourceField`.
 
 ### Groups
 

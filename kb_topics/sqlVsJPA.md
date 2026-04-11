@@ -11,7 +11,7 @@ If you are free to choose which persistence mechanism your application will use,
 
 **Simplicity**
 
-With the SmartClient SQL DataSource, simple CRUD connectivity can easily be set up in a way that requires zero server side code. Only a DataSource descriptor (.ds.xml file) needs to exist; this descriptor can include field-level details explicitly, if you choose to provide them, or can be inferred from your schema via [DataSource.autoDeriveSchema](../classes/DataSource.md#attr-datasourceautoderiveschema). The descriptor actually serves double duty by also providing the configuration for UI components - in other words, this is information that you would need to express anyway.
+With the SmartClient SQL DataSource, simple CRUD connectivity can easily be set up in a way that requires zero server side code. Only a DataSource descriptor (.ds.xml file) needs to exist; this descriptor can include field-level details explicitly, if you choose to provide them, or can be inferred from your schema via [DataSource.autoDeriveSchema](../classes/DataSource_1.md#attr-datasourceautoderiveschema). The descriptor actually serves double duty by also providing the configuration for UI components - in other words, this is information that you would need to express anyway.
 
 Semi-technical product managers, testers, business analysts and IT staff who have no familiarity with Java can easily comprehend DataSource definitions and even customized SQL queries, allowing them to go further with prototyping efforts, provide more specific feedback and capture more relevant diagnostics when reporting issues.
 
@@ -23,7 +23,7 @@ Systems like JPA work nicely when dealing with a single object at a time, but en
 
 Trying to "trick" the persistence system into generating efficient queries doesn't make sense - this just leads to a far more complex and fragile solution that now requires deep knowledge of how the ORM system generates SQL as well as SQL itself.
 
-SQLDataSource allows you to directly write SQL when it makes sense, and [to use beans](../classes/DataSource.md#attr-datasourcebeanclassname) when object oriented approaches are clearer and simpler. When you do write SQL directly, you override just the parts of the query that you need to change - you still leverage SQLDataSource's ability to generate cross-database SQL for complex search criteria, efficient data paging and sorting, even in a complex reporting query (see *this example*).
+SQLDataSource allows you to directly write SQL when it makes sense, and [to use beans](../classes/DataSource_1.md#attr-datasourcebeanclassname) when object oriented approaches are clearer and simpler. When you do write SQL directly, you override just the parts of the query that you need to change - you still leverage SQLDataSource's ability to generate cross-database SQL for complex search criteria, efficient data paging and sorting, even in a complex reporting query (see *this example*).
 
 **Portability**
 
@@ -45,6 +45,6 @@ Because the central DataSource definition expresses all the available operations
 
 There is no information leakage from server to client with the SQL DataSource. All server-side declarations, such as SQL templates, are automatically stripped out of the DataSource definition before the browser sees it.
 
-Custom SQL in a SmartClient SQL DataSource is protected from SQL injection attacks. It is impossible for a developer to write a SQL template that is vulnerable to SQL injection without going through the [$rawValue](#kb-topic-velocitysupport) feature, a rarely used feature that is very prominently flagged in the documentation as requiring special care. Other ORM systems tend to require hand-coded SQL queries for advanced use cases such as reporting; these hand-written queries are where most security holes appear. By providing a safe environment for SQL customizations, SQL DataSource removes these risks.
+Custom SQL in a SmartClient SQL DataSource is protected from SQL injection attacks. It is impossible for a developer to write a SQL template that is vulnerable to SQL injection without going through the [$rawValue](velocitySupport.md#kb-topic-velocity-context-variables) feature, a rarely used feature that is very prominently flagged in the documentation as requiring special care. Other ORM systems tend to require hand-coded SQL queries for advanced use cases such as reporting; these hand-written queries are where most security holes appear. By providing a safe environment for SQL customizations, SQL DataSource removes these risks.
 
 ---

@@ -486,7 +486,7 @@ Causes a menu item titled ["Filter using"](#attr-listgridfilterusingtext) to app
 
 Once an operator has been chosen, the active operator is indicated by an [ListGrid.operatorIcon](#attr-listgridoperatoricon) placed within the field (you can alternatively cause the icon to [always be present](#attr-listgridalwaysshowoperatoricon)). The `operatorIcon` shows the same textual representation of the search operator as is used by the [FormItem.allowExpressions](FormItem.md#attr-formitemallowexpressions) feature. Clicking on the icon provides a second way to modify the search operator.
 
-This feature is enabled by default if [DataSource.supportsAdvancedCriteria](DataSource.md#method-datasourcesupportsadvancedcriteria) is true, for all fields where it is normally possible to filter by typing in a search string. This excludes field types such as "date" or "boolean" which show specialized filter controls. Use [ListGridField.allowFilterOperators](ListGridField.md#attr-listgridfieldallowfilteroperators) to disable this interface for individual fields, or set [DataSourceField.canFilter](DataSourceField.md#attr-datasourcefieldcanfilter) to false to disallow filtering entirely for a field.
+This feature is enabled by default if [DataSource.supportsAdvancedCriteria](DataSource_1.md#method-datasourcesupportsadvancedcriteria) is true, for all fields where it is normally possible to filter by typing in a search string. This excludes field types such as "date" or "boolean" which show specialized filter controls. Use [ListGridField.allowFilterOperators](ListGridField.md#attr-listgridfieldallowfilteroperators) to disable this interface for individual fields, or set [DataSourceField.canFilter](DataSourceField.md#attr-datasourcefieldcanfilter) to false to disallow filtering entirely for a field.
 
 Note that this feature is similar to [ListGrid.allowFilterExpressions](#attr-listgridallowfilterexpressions), which allows the end users to directly type in characters such as ">" to control filtering. `allowFilterOperators` is easier to use and more discoverable than `allowFilterExpressions`, and also avoids the drawback where special characters like ">" cannot be used in filter values. However, `allowFilterExpressions` allows users to make use of certain operators that `allowFilterOperators` does not support, such as using the "betweenInclusive" operator by typing "5...10".
 
@@ -2037,7 +2037,7 @@ Note that if [ListGrid.filterData](ListGrid_2.md#method-listgridfilterdata) or [
    myListGrid.setCriteria(newCriteria);
  
 ```
-In this example code we're using [ListGrid.getFilterEditorCriteria](ListGrid_2.md#method-listgridgetfiltereditorcriteria) rather than [ListGrid.getCriteria](ListGrid_2.md#method-listgridgetcriteria) - this ensures that if the user has typed a new value into the filter editor, but not yet clicked the filter button, we pick up the value the user entered. This sample code uses [DataSource.combineCriteria](DataSource.md#classmethod-datasourcecombinecriteria) to combine the existing filterEditorCriteria with some new custom criteria. This technique is applicable to both simple and advanced criteria.
+In this example code we're using [ListGrid.getFilterEditorCriteria](ListGrid_2.md#method-listgridgetfiltereditorcriteria) rather than [ListGrid.getCriteria](ListGrid_3.md#method-listgridgetcriteria) - this ensures that if the user has typed a new value into the filter editor, but not yet clicked the filter button, we pick up the value the user entered. This sample code uses [DataSource.combineCriteria](DataSource.md#classmethod-datasourcecombinecriteria) to combine the existing filterEditorCriteria with some new custom criteria. This technique is applicable to both simple and advanced criteria.
 
 If you call `filterData()` and pass in criteria for dataSource fields that are not present in the ListGrid, these criteria will continue to be applied along with the user-visible criteria.
 
@@ -2093,7 +2093,7 @@ Adds the ability for a user to define additional criteria above and beyond those
 
 Causes a menu item titled ["Advanced Filtering"](#attr-listgridadvancedfilteringtext) to appear in the ["Filter using"](#attr-listgridfilterusingtext) menu show in the [headerContextMenu](#attr-listgridshowheadercontextmenu) that allows the end user to configure an advanced filter on the grid that can supplement the [filter editor](#attr-listgridshowfiltereditor). Note that the menu option will show even if [filter operators](#attr-listgridallowfilteroperators) is disabled.
 
-To use this feature, the grid must be configured with a [DataSource](DataSource.md#class-datasource). In fact, this feature is enabled by default if the grid has a [DataSource](DataSource.md#class-datasource) and both [DataSource.supportsAdvancedCriteria](DataSource.md#method-datasourcesupportsadvancedcriteria) and [ListGrid.allowFilterOperators](#attr-listgridallowfilteroperators) are true. This default can be disabled by setting `allowFilterWindow` to `false`.
+To use this feature, the grid must be configured with a [DataSource](DataSource_1.md#class-datasource). In fact, this feature is enabled by default if the grid has a [DataSource](DataSource_1.md#class-datasource) and both [DataSource.supportsAdvancedCriteria](DataSource_1.md#method-datasourcesupportsadvancedcriteria) and [ListGrid.allowFilterOperators](#attr-listgridallowfilteroperators) are true. This default can be disabled by setting `allowFilterWindow` to `false`.
 
 [This example](https://www.smartclient.com/smartclient-latest/showcase/?id=filterWindow) shows the `allowFilterWindow` setting in use.
 
@@ -2279,7 +2279,7 @@ This overrides [SearchForm.useMultiSelectForValueMaps](SearchForm.md#attr-search
 ## Attr: ListGrid.showAsynchGroupingPrompt
 
 ### Description
-If set to false, do not show the [ListGrid.asynchGroupingPrompt](#attr-listgridasynchgroupingprompt) dialog during [asynchronous grouping](#attr-listgridgroupbyasyncthreshold).
+If set to false, do not show the [ListGrid.asynchGroupingPrompt](#attr-listgridasynchgroupingprompt) dialog during [asynchronous grouping](ListGrid_2.md#attr-listgridgroupbyasyncthreshold).
 
 **Flags**: IR
 
@@ -3894,7 +3894,7 @@ Style for header cells in printed output. Defaults to [ListGrid.headerBaseStyle]
 ## Attr: ListGrid.defaultFilterOperator
 
 ### Description
-Default [filter operator](../reference.md#type-operatorid) to use for text-based fields in this grid's [filter editor](#attr-listgridfiltereditor), when producing [AdvancedCriteria](../reference.md#object-advancedcriteria). When [allowFilterExpressions](#attr-listgridallowfilterexpressions) or [allowFilterOperators](#attr-listgridallowfilteroperators) are enabled for the grid, the default is ["iContainsPattern"](DataSource.md#attr-datasourcetranslatepatternoperators). Otherwise, the default is "iContains".
+Default [filter operator](../reference.md#type-operatorid) to use for text-based fields in this grid's [filter editor](#attr-listgridfiltereditor), when producing [AdvancedCriteria](../reference.md#object-advancedcriteria). When [allowFilterExpressions](#attr-listgridallowfilterexpressions) or [allowFilterOperators](#attr-listgridallowfilteroperators) are enabled for the grid, the default is ["iContainsPattern"](DataSource_1.md#attr-datasourcetranslatepatternoperators). Otherwise, the default is "iContains".
 
 Does not apply to special fields where exact match is obviously the right default setting, such as fields of type:"enum", or fields with a [valueMap](FormItem.md#attr-formitemvaluemap) or [optionDataSource](FormItem.md#attr-formitemoptiondatasource).
 
@@ -4458,7 +4458,7 @@ Instead we could use `addProperties()` on our new subclass to set `defaultFields
 ## Attr: ListGrid.expansionRelated
 
 ### Description
-Automatically generated [ListGrid](#class-listgrid) for displaying data related to a record in its expanded section when [listGrid.expansionMode](../reference_2.md#type-expansionmode) is `related`. The [DataSource](DataSource.md#class-datasource) containing the related data is provided by [getRelatedDataSource()](ListGrid_2.md#method-listgridgetrelateddatasource) which, by default, returns the DataSource referred to in [ListGridRecord.detailDS](ListGridRecord.md#attr-listgridrecorddetailds).
+Automatically generated [ListGrid](#class-listgrid) for displaying data related to a record in its expanded section when [listGrid.expansionMode](../reference_2.md#type-expansionmode) is `related`. The [DataSource](DataSource_1.md#class-datasource) containing the related data is provided by [getRelatedDataSource()](ListGrid_2.md#method-listgridgetrelateddatasource) which, by default, returns the DataSource referred to in [ListGridRecord.detailDS](ListGridRecord.md#attr-listgridrecorddetailds).
 
 This component is an [AutoChild](../reference.md#type-autochild) and as such may be customized via `listGrid.expansionRelatedProperties` and `listGrid.expansionRelatedDefaults`.
 
@@ -5153,7 +5153,7 @@ The CSS style name applied to the [ListGrid.emptyMessage](#attr-listgridemptymes
 ## Attr: ListGrid.autoFetchDisplayMap
 
 ### Description
-If true, for fields where [ListGridField.optionDataSource](ListGridField.md#attr-listgridfieldoptiondatasource) is specified, a valueMap will be automatically created by making a [DataSource.fetchData](DataSource.md#method-datasourcefetchdata) call against the specified dataSource and extracting a valueMap from the returned records based on the displayField and valueField.
+If true, for fields where [ListGridField.optionDataSource](ListGridField.md#attr-listgridfieldoptiondatasource) is specified, a valueMap will be automatically created by making a [DataSource.fetchData](DataSource_1.md#method-datasourcefetchdata) call against the specified dataSource and extracting a valueMap from the returned records based on the displayField and valueField.
 
 If set to false, valueMaps will not be automatically fetched. In this case, setting field.optionDataSource is effectively a shortcut for setting optionDataSource on the editor via [ListGridField.editorProperties](ListGridField.md#attr-listgridfieldeditorproperties).
 
@@ -5167,6 +5167,26 @@ Can also be disabled on a per-field basis with [ListGridField.autoFetchDisplayMa
 
 - [ListGridField.autoFetchDisplayMap](ListGridField.md#attr-listgridfieldautofetchdisplaymap)
 - [ListGridField.optionDataSource](ListGridField.md#attr-listgridfieldoptiondatasource)
+
+**Flags**: IRW
+
+---
+## Attr: ListGrid.dragRecategorize
+
+### Description
+For databound drops where there is a parent-child or one to many type relationship between the drop target and the source component data set, should a recategorization occur on drop?
+
+Recategorization can be performed when the drag-source and drop-target components are bound to the same DataSource containing hierarchical data, or to separate DataSources with a defined foreignKey relationship establishing a one-to-many connection. Effectively, the user may select "items" from the source grid and drag them into a new "category" type record within the target component.
+
+This feature is supported by ListGrids and TileGrids, but by default is enabled only at the TreeGrid level - see [treeGridDrop](../kb_topics/treeGridDrop.md#kb-topic-treegrid-drag-and-drop) for more details on TreeGrid drag and drop behavior.
+
+Note that this feature is different from the ListGrid feature whereby [getDropValues()](DataBoundComponent.md#method-databoundcomponentgetdropvalues) may use the current grid criteria to update dropped records within the same dataSource so that they will show up in the grid. That can also be considered "recategorization" but it does not allow the user to drop records into specific target categories.
+
+This property interacts with the source widget's [dragDataAction](TreeGrid.md#attr-treegriddragdataaction):
+
+*   `"checked"`: Recategorize only when `dragDataAction` on the source of the drag is set to "move".
+*   `"always"`: Recategorize regardless of the source widget's `dragDataAction`.
+*   `"never"`: Never recategorize; drops are always treated as adds.
 
 **Flags**: IRW
 
@@ -5864,7 +5884,7 @@ This setting overrides the [general indent](#attr-listgridembeddedcomponentinden
 ### Description
 A list of ListGridRecord objects, specifying the data to be used to populate the ListGrid. In ListGrids, the data array specifies rows.
 
-When using a [DataSource](DataSource.md#class-datasource), rather than directly providing `data`, you will typically call [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata) instead, which will automatically establish `data` as a [ResultSet](ResultSet.md#class-resultset) (see the [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata) docs for details).
+When using a [DataSource](DataSource_1.md#class-datasource), rather than directly providing `data`, you will typically call [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata) instead, which will automatically establish `data` as a [ResultSet](ResultSet.md#class-resultset) (see the [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata) docs for details).
 
 If you call `fetchData`, any previously supplied `data` is discarded. Also, it is not necessary to call `setData()` after calling [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata).
 
@@ -6034,7 +6054,7 @@ When [ListGrid.canRemoveRecords](#attr-listgridcanremoverecords) is enabled, def
 ## Attr: ListGrid.canRequestRowCount
 
 ### Description
-Depending on whether [DataSource.progressiveLoading](DataSource.md#attr-datasourceprogressiveloading) is active, the exact count of available rows may not be known, and `canRequestRowCount` controls whether the end user may explicitly request it by clicking the [RowRangeDisplay](RowRangeDisplay.md#class-rowrangedisplay) label.
+Depending on whether [DataSource.progressiveLoading](DataSource_1.md#attr-datasourceprogressiveloading) is active, the exact count of available rows may not be known, and `canRequestRowCount` controls whether the end user may explicitly request it by clicking the [RowRangeDisplay](RowRangeDisplay.md#class-rowrangedisplay) label.
 
 When this property is set to `true`, the user may request an accurate row count if one is not currently known by [clicking](RowRangeDisplay.md#attr-rowrangedisplaycanrequestrowcount) the [ListGrid.rowRangeDisplay](ListGrid_2.md#attr-listgridrowrangedisplay). To have a row count fetch operation occur automatically when progressive data is loaded instead of requiring a user interaction to initiate the fetch, see [ListGrid.autoFetchRowCount](#attr-listgridautofetchrowcount).
 
@@ -8134,7 +8154,7 @@ If `true` this grid will create and show per-row backgroundComponents as detaile
 ## Attr: ListGrid.autoFetchRowCount
 
 ### Description
-Depending on whether [DataSource.progressiveLoading](DataSource.md#attr-datasourceprogressiveloading) is active, the exact count of available rows may not be available as part of the standard data fetch response - setting `autoFetchRowCount:true` will cause a fetch for an accurate row count to be issued as soon as data arrives (from a [progressive dataSource response](DSResponse.md#attr-dsresponseprogressiveloading)) without an accurate row count. This value will then be available for display in the [RowRangeDisplay](RowRangeDisplay.md#class-rowrangedisplay) label.
+Depending on whether [DataSource.progressiveLoading](DataSource_1.md#attr-datasourceprogressiveloading) is active, the exact count of available rows may not be available as part of the standard data fetch response - setting `autoFetchRowCount:true` will cause a fetch for an accurate row count to be issued as soon as data arrives (from a [progressive dataSource response](DSResponse.md#attr-dsresponseprogressiveloading)) without an accurate row count. This value will then be available for display in the [RowRangeDisplay](RowRangeDisplay.md#class-rowrangedisplay) label.
 
 To allow users to request an accurate row count by clicking the [RowRangeDisplay](RowRangeDisplay.md#class-rowrangedisplay) instead of kicking off a row count fetch automatically, use [ListGrid.canRequestRowCount](#attr-listgridcanrequestrowcount).
 
@@ -8725,7 +8745,7 @@ Note that larger values may required if 10 or more fields are sorted at once, as
 ## Attr: ListGrid.asynchGroupingPrompt
 
 ### Description
-The prompt to display while interactivity is blocked during [asynchronous grouping](#attr-listgridgroupbyasyncthreshold).
+The prompt to display while interactivity is blocked during [asynchronous grouping](ListGrid_2.md#attr-listgridgroupbyasyncthreshold).
 
 ### Groups
 
@@ -9667,21 +9687,5 @@ If [ListGrid.showGridSummary](#attr-listgridshowgridsummary) is true, and a [Lis
 If this property is set, the [textMatchStyle](DSRequest.md#attr-dsrequesttextmatchstyle) will default to "exact". Otherwise [ListGrid.autoFetchTextMatchStyle](#attr-listgridautofetchtextmatchstyle) will be used. This can be overridden via [ListGrid.summaryRowFetchRequestProperties](#attr-listgridsummaryrowfetchrequestproperties).
 
 **Flags**: IRWA
-
----
-## Attr: ListGrid.groupByAsyncThreshold
-
-### Description
-When grouping is requested with this number of records or more, an asynchronous approach is used to avoid the browser showing a "script is running slowly.." message prompting the user to stop execution of JavaScript.
-
-Note that [ListGrid.groupByMaxRecords](#attr-listgridgroupbymaxrecords) must be set at least as high as [ListGrid.groupByAsyncThreshold](#attr-listgridgroupbyasyncthreshold) or asynchronous grouping will never be used.
-
-During async grouping, interactivity is blocked and the [ListGrid.asynchGroupingPrompt](#attr-listgridasynchgroupingprompt) is shown to the user, then hidden when grouping completes; [ListGrid.groupByComplete](ListGrid_2.md#method-listgridgroupbycomplete) then fires.
-
-Note that this async processing covers grouping **only** - it does not cover whole grid or per-group summaries, client-side sort or filter, or other operations that may cause the browser to show the "script is running slowly" prompt when working with very large sets of records in a grid.
-
-At this time, there is no generally effective way to avoid this warning dialog appearing with very large datasets in Microsoft's Internet Explorer (IE). IE's severely flawed detection algorithm for runaway scripts has been shown to interrupt computations after only 0.2 seconds elapsed time even if the computation would have finished in 0.3 seconds. Optimizations that reduce execution time can sometimes trigger the "script running slowly" dialog sooner. Since not every operation can reasonably be made asynchronous, the current recommendation is to avoid working with overly large datasets until the affected versions of IE are obsoleted.
-
-**Flags**: IRW
 
 ---

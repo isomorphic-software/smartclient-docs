@@ -4,6 +4,44 @@
 
 ---
 
+## Method: ListGrid.selectRange
+
+### Description
+Select a contiguous range of records by index
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| startRow | [int](../reference.md#type-int) | false | — | start of selection range |
+| endRow | [int](../reference.md#type-int) | false | — | end of selection range (non-inclusive) |
+| newState | [boolean](../reference.md#type-boolean) | true | — | new selection state (if null, defaults to true) |
+
+### Groups
+
+- selection
+
+### See Also
+
+- [Selection](Selection.md#class-selection)
+
+---
+## Method: ListGrid.getCriteria
+
+### Description
+Retrieves a copy of the explicit criteria currently applied to this component, including criteria provided by a grid's [ListGrid.filterWindow](ListGrid_1.md#attr-listgridfilterwindow) or [ListGrid.searchForm](ListGrid_1.md#attr-listgridsearchform), but not criteria applied [implicitly](DataBoundComponent.md#attr-databoundcomponentimplicitcriteria). May return null.
+
+Note: if [ListGrid.showFilterEditor](ListGrid_1.md#attr-listgridshowfiltereditor) is true, the criteria returned by this method may not match the values currently displayed in the filter editor, since the user may have entered values which have not yet been applied to our data. [ListGrid.getFilterEditorCriteria](ListGrid_2.md#method-listgridgetfiltereditorcriteria) may be used to retrieve the current criteria displayed in the filterEditor.
+
+### Returns
+
+`[Criteria](../reference_2.md#type-criteria)` — current filter criteria
+
+### Groups
+
+- dataBoundComponentMethods
+
+---
 ## Method: ListGrid.getCellRecord
 
 ### Description

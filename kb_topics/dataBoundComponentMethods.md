@@ -22,7 +22,7 @@ Action Methods are available on DataBoundComponents.
 - [ListGrid.filterData](../classes/ListGrid_2.md#method-listgridfilterdata)
 - [ListGrid.fetchRelatedData](../classes/ListGrid_2.md#method-listgridfetchrelateddata)
 - [ListGrid.clearCriteria](../classes/ListGrid_2.md#method-listgridclearcriteria)
-- [ListGrid.getCriteria](../classes/ListGrid_2.md#method-listgridgetcriteria)
+- [ListGrid.getCriteria](../classes/ListGrid_3.md#method-listgridgetcriteria)
 - [ListGrid.setCriteria](../classes/ListGrid_2.md#method-listgridsetcriteria)
 - [ListGrid.invalidateCache](../classes/ListGrid_2.md#method-listgridinvalidatecache)
 - [ListGrid.refreshData](../classes/ListGrid_2.md#method-listgridrefreshdata)

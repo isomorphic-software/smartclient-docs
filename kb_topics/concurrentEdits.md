@@ -14,14 +14,14 @@ Consider a scenario where two users - _userA_ and _userB_ - are logged into the 
 *   _userA_ makes a change to a record and [saves the edit](../classes/DynamicForm.md#method-dynamicformsavedata)
 *   _userB_ then makes another change to the same record and saves their edit
 
-By default SmartClient dataSources have simple "most recent edit wins" behavior, so the changes made by userB will be preserved in the dataSource permanent storage - though if [DataSource.sparseUpdates](../classes/DataSource.md#attr-datasourcesparseupdates) is false, any changes made by _userA_ to fields that were not explicitly edited by _userB_ will also be preserved.
+By default SmartClient dataSources have simple "most recent edit wins" behavior, so the changes made by userB will be preserved in the dataSource permanent storage - though if [DataSource.sparseUpdates](../classes/DataSource_1.md#attr-datasourcesparseupdates) is false, any changes made by _userA_ to fields that were not explicitly edited by _userB_ will also be preserved.
 
 In this case when _userA_ performs their first edit (before _userB_ has attempted a save), _userB_ will not see _userA_'s changes unless they explicitly re-fetch the data. Similarly, _userA_ will not see _userB_'s subsequent edit without a re-fetch.
 
 In many applications this behavior is acceptable but there may be cases where users will need to see other users' updates as they occur, and simple "last edit wins" is not sufficient. There are 2 things you can do to make this more sophisticated:
 
 **Broadcasting changes:**  
-The [DataSource.updateCaches](../classes/DataSource.md#method-datasourceupdatecaches) method is a way to notify a DataSource that a change has occurred. It will update its client-side caches to reflect the change and databound components showing the record will be refreshed as appropriate.
+The [DataSource.updateCaches](../classes/DataSource_1.md#method-datasourceupdatecaches) method is a way to notify a DataSource that a change has occurred. It will update its client-side caches to reflect the change and databound components showing the record will be refreshed as appropriate.
 
 Developers using the SmartClient server and [messaging](messaging.md#kb-topic-real-time-messaging) may use this feature to propogate changes from the server to the client.
 

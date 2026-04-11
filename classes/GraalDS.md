@@ -6,7 +6,7 @@
 
 ## Class: GraalDS
 
-*Inherits from:* [DataSource](DataSource.md#class-datasource)
+*Inherits from:* [DataSource](DataSource_1.md#class-datasource)
 
 ### Description
 A DataSource subclass for use in server-side JavaScript running under GraalJS inside the Java VM. GraalDS provides direct, synchronous access to the SmartClient Server's DataSource machinery without HTTP round-trips.
@@ -22,7 +22,7 @@ GraalDS only functions when running under GraalJS in the Java VM. Attempting to 
 GraalDS can be used in two ways:
 
 *   **Synchronous methods**: [GraalDS.fetchSync](#method-graaldsfetchsync), [GraalDS.addSync](#method-graaldsaddsync), [GraalDS.updateSync](#method-graaldsupdatesync), [GraalDS.removeSync](#method-graaldsremovesync) return data directly
-*   **Standard DataSource API**: [DataSource.fetchData](DataSource.md#method-datasourcefetchdata), [DataSource.addData](DataSource.md#method-datasourceadddata), etc. work with callbacks. In the Graal server-side environment, callbacks always fire synchronously since Java `DSRequest.execute()` is synchronous
+*   **Standard DataSource API**: [DataSource.fetchData](DataSource_1.md#method-datasourcefetchdata), [DataSource.addData](DataSource_1.md#method-datasourceadddata), etc. work with callbacks. In the Graal server-side environment, callbacks always fire synchronously since Java `DSRequest.execute()` is synchronous
 
 Example using synchronous methods:
 
@@ -489,7 +489,7 @@ Synchronously remove a record from the DataSource.
 ### Description
 Synchronously fetch records from the DataSource.
 
-Unlike [fetchData()](DataSource.md#method-datasourcefetchdata), this method blocks and returns the fetched data directly, making it convenient for server-side scripts that don't need async patterns.
+Unlike [fetchData()](DataSource_1.md#method-datasourcefetchdata), this method blocks and returns the fetched data directly, making it convenient for server-side scripts that don't need async patterns.
 
 ### Parameters
 

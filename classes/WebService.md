@@ -99,7 +99,7 @@ If you have more than one <wsdl:service> in the same target namespace, use [WebS
 ### Description
 Retrieve a DataSource that provides read-only access to records returned by a web service operation.
 
-[DataBound Components](../reference.md#interface-databoundcomponent) can be bound to the returned DataSource, and the [fetchData()](ListGrid_1.md#method-listgridfetchdata) method can be invoked to retrieve data from the web service.
+[DataBound Components](../reference.md#interface-databoundcomponent) can be bound to the returned DataSource, and the [fetchData()](ListGrid_2.md#method-listgridfetchdata) method can be invoked to retrieve data from the web service.
 
 The returned DataSource is only capable of the "fetch" [DataSource operation](../kb_topics/dataSourceOperations.md#kb-topic-datasource-operations), not "update", "add" or "remove". To create a DataSource capable of full read-write access, use [DataSource.operationBindings](DataSource.md#attr-datasourceoperationbindings) with the [wsOperation](OperationBinding.md#attr-operationbindingwsoperation) property set to associate each DataSource operation with a web service operation.
 

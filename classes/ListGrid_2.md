@@ -4,6 +4,52 @@
 
 ---
 
+## Method: ListGrid.fetchData
+
+### Description
+Retrieves data from the DataSource that matches the specified criteria.
+
+For a discussion of the various filtering and criteria-management APIs and when to use them, see the [Grid Filtering overview](../kb_topics/gridFiltering.md#kb-topic-grid-filtering-overview).
+
+When `fetchData()` is first called, if data has not already been provided via [setData()](#method-listgridsetdata), this method will create a [ResultSet](ResultSet.md#class-resultset), which will be configured based on component settings such as [DataBoundComponent.fetchOperation](DataBoundComponent.md#attr-databoundcomponentfetchoperation) and [DataBoundComponent.dataPageSize](DataBoundComponent.md#attr-databoundcomponentdatapagesize), as well as the general purpose [ListGrid.dataProperties](ListGrid_1.md#attr-listgriddataproperties). The created ResultSet will automatically send a DSRequest to retrieve data from [listGrid.dataSource](ListGrid_1.md#attr-listgriddatasource), and from then on will automatically manage paging through large datasets, as well as performing filtering and sorting operations inside the browser when possible - see the [ResultSet](ResultSet.md#class-resultset) docs for details.
+
+**NOTE:** do not use **both** [autoFetchData:true](DataBoundComponent.md#attr-databoundcomponentautofetchdata) **and** a call to `fetchData()` - this may result in two DSRequests to fetch data. Use either [autoFetchData](DataBoundComponent.md#attr-databoundcomponentautofetchdata) and [Criteria](../reference_2.md#type-criteria) **or** a manual call to fetchData() passing criteria.
+
+Whether a ResultSet was automatically created or provided via [setData()](#method-listgridsetdata), subsequent calls to fetchData() will simply call [ResultSet.setCriteria](ResultSet.md#method-resultsetsetcriteria).
+
+Changes to criteria may or may not result in a DSRequest to the server due to [client-side filtering](ResultSet.md#attr-resultsetuseclientfiltering). You can call [willFetchData(criteria)](DataBoundComponent.md#method-databoundcomponentwillfetchdata) to determine if new criteria will result in a server fetch.
+
+If you need to force data to be re-fetched, you can call [invalidateCache()](#method-listgridinvalidatecache) and new data will automatically be fetched from the server using the current criteria and sort direction. **NOTE:** when using `invalidateCache()` there is no need to **also** call `fetchData()` and in fact this could produce unexpected results.
+
+This method takes an optional callback parameter (set to a [DSCallback](../reference_2.md#type-dscallback)) to fire when the fetch completes. Note that this callback will not fire if no server fetch is performed. In this case the data is updated synchronously, so as soon as this method completes you can interact with the new data. If necessary, you can use [willFetchData()](DataBoundComponent.md#method-databoundcomponentwillfetchdata) to determine whether or not a server fetch will occur when `fetchData()` is called with new criteria.
+
+In addition to the callback parameter for this method, developers can use [dataArrived()](#method-listgriddataarrived) to be notified every time data is loaded.
+
+By default, this method assumes a [TextMatchStyle](../reference.md#type-textmatchstyle) of "exact"; that can be overridden by supplying a different value in the requestProperties parameter. See [DataBoundComponent.willFetchData](DataBoundComponent.md#method-databoundcomponentwillfetchdata);
+
+**Changing the request properties**
+
+Changes to [TextMatchStyle](../reference.md#type-textmatchstyle) made via `requestProperties` will be honored in combination with the fetch criteria, possibly invalidating cache and triggering a server request if needed, as documented for [willFetchData()](DataBoundComponent.md#method-databoundcomponentwillfetchdata). In contrast, changes to [operationId](DSRequest.md#attr-dsrequestoperationid) in the request properties will cause the [ResultSet](ResultSet.md#class-resultset) or [ResultTree](ResultTree.md#class-resulttree) to be rebuilt, always refetching from the server. However, changes to other request properties after the initial fetch won't be detected, and no fetch will get triggered based on that new request context.
+
+To pick up such changes, we recommend that you call [setData(\[\])](#method-listgridsetdata) (passing an empty array to ensure the data model is cleared), and then call this method to fetch again. If you try to do it by calling [invalidateCache()](#method-listgridinvalidatecache), you may see duplicate fetches if you haven't already updated the data context by calling this method with the new request properties, and fail to do so before the component is [redrawn](Canvas.md#method-canvasredraw).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| criteria | [Criteria](../reference_2.md#type-criteria) | true | — | Search criteria. If a [DynamicForm](DynamicForm.md#class-dynamicform) is passed in as this argument instead of a raw criteria object, will be derived by calling [DynamicForm.getValuesAsCriteria](DynamicForm.md#method-dynamicformgetvaluesascriteria) |
+| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke when a fetch is complete. Fires only if server contact was required |
+| requestProperties | [DSRequest](#type-dsrequest) | true | — | additional properties to set on the DSRequest that will be issued |
+
+### Groups
+
+- dataBoundComponentMethods
+
+### See Also
+
+- [ListGrid.refreshData](#method-listgridrefreshdata)
+
+---
 ## Method: ListGrid.getFieldState
 
 ### Description
@@ -381,7 +427,7 @@ Called when a cell receives a double click event.
 ## Method: ListGrid.dataArrived
 
 ### Description
-Notification method fired when new data arrives from the server to be displayed in this ListGrid, (for example in response to the user scrolling a new set of rows into view). Only applies to databound listGrids where the [data](ListGrid_1.md#attr-listgriddata) attribute is a [ResultSet](ResultSet.md#class-resultset). This ResultSet may have been created manually and applied to the grid via a call to [ListGrid.setData](#method-listgridsetdata) or may have been created and automatically assigned if [ListGrid.fetchData](ListGrid_1.md#method-listgridfetchdata) was used to populate the grid. This method is fired directly in response to [dataArrived()](ResultSet.md#method-resultsetdataarrived) firing on the data object.
+Notification method fired when new data arrives from the server to be displayed in this ListGrid, (for example in response to the user scrolling a new set of rows into view). Only applies to databound listGrids where the [data](ListGrid_1.md#attr-listgriddata) attribute is a [ResultSet](ResultSet.md#class-resultset). This ResultSet may have been created manually and applied to the grid via a call to [ListGrid.setData](#method-listgridsetdata) or may have been created and automatically assigned if [ListGrid.fetchData](#method-listgridfetchdata) was used to populate the grid. This method is fired directly in response to [dataArrived()](ResultSet.md#method-resultsetdataarrived) firing on the data object.
 
 Note that `dataArrived()`, unlike [ListGrid.dataChanged](#method-listgriddatachanged), only fires in limited circumstances - when data for a [ResultSet](ResultSet.md#class-resultset) arrives from the server due to a fetch or cache invalidation, or as a result of filtering. If you want to catch all data changes, you should instead react to [ListGrid.dataChanged](#method-listgriddatachanged).
 
@@ -1087,7 +1133,7 @@ Clear the current criteria used to filter data. This method clears filter-values
 
 ### See Also
 
-- [ListGrid.fetchData](ListGrid_1.md#method-listgridfetchdata)
+- [ListGrid.fetchData](#method-listgridfetchdata)
 
 ---
 ## Method: ListGrid.fieldIsEditable
@@ -1290,7 +1336,7 @@ While grouped, the automatically created Tree is available as [grid.groupTree](L
 
 #### Data Requirements
 
-Before grouping can be performed, all records that match current [criteria](ListGrid_1.md#method-listgridfetchdata) must be loaded. If [data paging](ListGrid_1.md#attr-listgriddatafetchmode) is in use, not all matching records are cached, and the [total rows available from the server](ResultSet.md#method-resultsetgetlength) is less than [ListGrid.groupByMaxRecords](ListGrid_1.md#attr-listgridgroupbymaxrecords), the grid will automatically request all unloaded records from the server, then perform grouping once they arrive.
+Before grouping can be performed, all records that match current [criteria](#method-listgridfetchdata) must be loaded. If [data paging](ListGrid_1.md#attr-listgriddatafetchmode) is in use, not all matching records are cached, and the [total rows available from the server](ResultSet.md#method-resultsetgetlength) is less than [ListGrid.groupByMaxRecords](ListGrid_1.md#attr-listgridgroupbymaxrecords), the grid will automatically request all unloaded records from the server, then perform grouping once they arrive.
 
 If the total number of rows available from the server exceeds [ListGrid.groupByMaxRecords](ListGrid_1.md#attr-listgridgroupbymaxrecords), calling `groupBy` will have no effect, and menu items for grouping will appear disabled.
 
@@ -1388,7 +1434,7 @@ For a discussion of the various filtering and criteria-management APIs and when 
 ### Description
 Retrieves data that matches the provided criteria and displays the matching data in this component.
 
-This method behaves exactly like [ListGrid.fetchData](ListGrid_1.md#method-listgridfetchdata) except that [DSRequest.textMatchStyle](DSRequest.md#attr-dsrequesttextmatchstyle) is automatically set to "substring" so that String-valued fields are matched by case-insensitive substring comparison.
+This method behaves exactly like [ListGrid.fetchData](#method-listgridfetchdata) except that [DSRequest.textMatchStyle](DSRequest.md#attr-dsrequesttextmatchstyle) is automatically set to "substring" so that String-valued fields are matched by case-insensitive substring comparison.
 
 For a discussion of the various filtering and criteria-management APIs and when to use them, see the [Grid Filtering overview](../kb_topics/gridFiltering.md#kb-topic-grid-filtering-overview).
 
@@ -1397,7 +1443,7 @@ For a discussion of the various filtering and criteria-management APIs and when 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | criteria | [Criteria](../reference_2.md#type-criteria) | true | — | Search criteria. If a [DynamicForm](DynamicForm.md#class-dynamicform) is passed in as this argument instead of a raw criteria object, will be derived by calling [DynamicForm.getValuesAsCriteria](DynamicForm.md#method-dynamicformgetvaluesascriteria) |
-| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke when a fetch is complete. Fires only if server contact was required; see [fetchData()](ListGrid_1.md#method-listgridfetchdata) for details |
+| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke when a fetch is complete. Fires only if server contact was required; see [fetchData()](#method-listgridfetchdata) for details |
 | requestProperties | [DSRequest](#type-dsrequest) | true | — | for databound components only - optional additional properties to set on the DSRequest that will be issued |
 
 ### Groups
@@ -3515,7 +3561,7 @@ With mixed-height rows it will only reliably work if virtualScrolling is enabled
 ## Method: ListGrid.criteriaChanged
 
 ### Description
-Callback fired when the end-user changes criteria. This occurs via the +{FilterEditor} or +{showFilterWindow,advanced filtering} interface. It does not fire when a change is made via [ListGrid.setCriteria](#method-listgridsetcriteria), [ListGrid.fetchData](ListGrid_1.md#method-listgridfetchdata), [ListGrid.setFilterWindowCriteria](#method-listgridsetfilterwindowcriteria) or other APIs are called to change the criteria.
+Callback fired when the end-user changes criteria. This occurs via the +{FilterEditor} or +{showFilterWindow,advanced filtering} interface. It does not fire when a change is made via [ListGrid.setCriteria](#method-listgridsetcriteria), [ListGrid.fetchData](#method-listgridfetchdata), [ListGrid.setFilterWindowCriteria](#method-listgridsetfilterwindowcriteria) or other APIs are called to change the criteria.
 
 ---
 ## Method: ListGrid.getGroupedRecordIndex
@@ -3584,9 +3630,9 @@ Notification method executed whenever the groupState of this grid changes. Group
 ### Description
 Unlike [invalidateCache](#method-listgridinvalidatecache) this will perform an asynchronous (background) refresh of this component's data and then call the provided callback method on completion. A grid needs to have a [DataSource](DataSource.md#class-datasource) associated with it to use this method.
 
-If `refreshData()` is called while the grid is waiting for a response from [ListGrid.fetchData](ListGrid_1.md#method-listgridfetchdata) the `refreshData()` call will be aborted. This is because the fetch has higher priority.
+If `refreshData()` is called while the grid is waiting for a response from [ListGrid.fetchData](#method-listgridfetchdata) the `refreshData()` call will be aborted. This is because the fetch has higher priority.
 
-If [ListGrid.fetchData](ListGrid_1.md#method-listgridfetchdata) is called while the grid is waiting for a response from `refreshData()` and the `fetchData()` call has altered the criteria or sort specifiers, the `refreshData()` call will be aborted.
+If [ListGrid.fetchData](#method-listgridfetchdata) is called while the grid is waiting for a response from `refreshData()` and the `fetchData()` call has altered the criteria or sort specifiers, the `refreshData()` call will be aborted.
 
 If data is being edited or has been edited without being saved when `refreshData()` is called, the data will be retained so you can save it after the refresh is complete. If you however want to throw away your edited but unsaved data when calling `refreshData()` you first need to call [ListGrid.discardAllEdits](#method-listgriddiscardalledits) which will discard any unsaved edited data.
 
@@ -3606,7 +3652,7 @@ Except for changes to the dataset length, [dataChanged()](#method-listgriddatach
 
 ### See Also
 
-- [ListGrid.fetchData](ListGrid_1.md#method-listgridfetchdata)
+- [ListGrid.fetchData](#method-listgridfetchdata)
 - [ListGrid.invalidateCache](#method-listgridinvalidatecache)
 
 ---
@@ -3835,7 +3881,7 @@ Compares the specified criteria with the current criteria applied to this compon
 
 This is equivalent to calling `this.data.willFetchData(...)`. Always returns true if this component is not showing a set of data from the dataSource.
 
-Note that to predict correctly the decision that will be made by filter/fetch, you'll need to pass the same [TextMatchStyle](../reference.md#type-textmatchstyle) that will be used by the future filter/fetch. Fetching manually (e.g. [ListGrid.fetchData](ListGrid_1.md#method-listgridfetchdata)) will by default use "exact" while filtering (e.g. [ListGrid.filterData](#method-listgridfilterdata)) will by default use "substring". If the component is configured for autofetch (i.e. [ListGrid.autoFetchData](ListGrid_1.md#attr-listgridautofetchdata): true), that will use [ListGrid.autoFetchTextMatchStyle](ListGrid_1.md#attr-listgridautofetchtextmatchstyle), which defaults to "substring". If nothing/null is passed for the style, this method assumes you want the style from the last filter/fetch.
+Note that to predict correctly the decision that will be made by filter/fetch, you'll need to pass the same [TextMatchStyle](../reference.md#type-textmatchstyle) that will be used by the future filter/fetch. Fetching manually (e.g. [ListGrid.fetchData](#method-listgridfetchdata)) will by default use "exact" while filtering (e.g. [ListGrid.filterData](#method-listgridfilterdata)) will by default use "substring". If the component is configured for autofetch (i.e. [ListGrid.autoFetchData](ListGrid_1.md#attr-listgridautofetchdata): true), that will use [ListGrid.autoFetchTextMatchStyle](ListGrid_1.md#attr-listgridautofetchtextmatchstyle), which defaults to "substring". If nothing/null is passed for the style, this method assumes you want the style from the last filter/fetch.
 
 To determine what [TextMatchStyle](../reference.md#type-textmatchstyle) is being used, check the RPC Tab of the [SmartClient Developer Console](../kb_topics/debugging.md#kb-topic-debugging) and check the relevant [DSRequest](../reference.md#object-dsrequest).
 
@@ -4646,7 +4692,7 @@ Note that the `fields` argument may be an empty array if the data is not grouped
 
 By design, this method is not called when the data is regrouped, either [programmatically](#method-listgridregroup), or in response to new data arriving from the server. You can use the callback [ListGrid.groupTreeChanged](#method-listgridgrouptreechanged) to be notified in that situation.
 
-If you monitor only this method and call [ListGrid.groupBy](#method-listgridgroupby) before data is fetched, the notification that you'll receive will be for grouping the initial (perhaps empty) data set only. To have this method actually trigger when grouping of the fetched data is done, you should avoid calling [ListGrid.groupBy](#method-listgridgroupby) before the initial fetch, and instead do it in the the [fetch callback](ListGrid_1.md#method-listgridfetchdata).
+If you monitor only this method and call [ListGrid.groupBy](#method-listgridgroupby) before data is fetched, the notification that you'll receive will be for grouping the initial (perhaps empty) data set only. To have this method actually trigger when grouping of the fetched data is done, you should avoid calling [ListGrid.groupBy](#method-listgridgroupby) before the initial fetch, and instead do it in the the [fetch callback](#method-listgridfetchdata).
 
 ### Parameters
 

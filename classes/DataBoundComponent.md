@@ -9,7 +9,7 @@
 ### Description
 How to fetch and manage records retrieve from the server. See [FetchMode](../reference_2.md#type-fetchmode).
 
-This setting only applies to the [ResultSet](ResultSet.md#class-resultset) automatically created by calling [fetchData()](ListGrid_1.md#method-listgridfetchdata). If a pre-existing ResultSet is passed to setData() instead, it's existing setting for [ResultSet.fetchMode](ResultSet.md#attr-resultsetfetchmode) applies.
+This setting only applies to the [ResultSet](ResultSet.md#class-resultset) automatically created by calling [fetchData()](ListGrid_2.md#method-listgridfetchdata). If a pre-existing ResultSet is passed to setData() instead, it's existing setting for [ResultSet.fetchMode](ResultSet.md#attr-resultsetfetchmode) applies.
 
 ### Groups
 
@@ -408,7 +408,7 @@ Text for a menu item allowing users to edit the formatter for a field
 ## Attr: DataBoundComponent.dataPageSize
 
 ### Description
-When using [data paging](#attr-databoundcomponentdatafetchmode), how many records to fetch at a time. If set to a positive integer, `dataPageSize` will override the default [resultSize](ResultSet.md#attr-resultsetresultsize) for ResultSets automatically created when you call [fetchData()](ListGrid_1.md#method-listgridfetchdata) (and similarly for the [resultSize](ResultTree.md#attr-resulttreeresultsize) of ResultTrees). Leaving `dataPageSize` at its default means to just use the default page size of the data container.
+When using [data paging](#attr-databoundcomponentdatafetchmode), how many records to fetch at a time. If set to a positive integer, `dataPageSize` will override the default [resultSize](ResultSet.md#attr-resultsetresultsize) for ResultSets automatically created when you call [fetchData()](ListGrid_2.md#method-listgridfetchdata) (and similarly for the [resultSize](ResultTree.md#attr-resulttreeresultsize) of ResultTrees). Leaving `dataPageSize` at its default means to just use the default page size of the data container.
 
 **Note** that regardless of the `dataPageSize` setting, a component will always fetch all of data that it needs to draw. Settings such as [showAllRecords:true](ListGrid_1.md#attr-listgridshowallrecords), [drawAllMaxCells](ListGrid_1.md#attr-listgriddrawallmaxcells) and [drawAheadRatio](ListGrid_1.md#attr-listgriddrawaheadratio) can cause more rows than the configured `dataPageSize` to be fetched.
 
@@ -731,7 +731,7 @@ For example, consider dragging "employees" to "teams", where "teams" has a field
 ### Description
 If true, when this component is first drawn, automatically call `this.fetchData()`. Criteria for this fetch may be picked up from [DataBoundComponent.initialCriteria](#attr-databoundcomponentinitialcriteria), and textMatchStyle may be specified via [autoFetchTextMatchStyle](ListGrid_1.md#attr-listgridautofetchtextmatchstyle).
 
-NOTE: if `autoFetchData` is set, calling [fetchData()](ListGrid_1.md#method-listgridfetchdata) before draw will cause two requests to be issued, one from the manual call to fetchData() and one from the autoFetchData setting. The second request will use only [DataBoundComponent.initialCriteria](#attr-databoundcomponentinitialcriteria) and not any other criteria or settings from the first request. Generally, turn off autoFetchData if you are going to manually call [fetchData()](ListGrid_1.md#method-listgridfetchdata) at any time. Note: If you are using saved searches - either via [SavedSearchItem](SavedSearchItem.md#class-savedsearchitem) or [ListGrid.saveDefaultSearch](ListGrid_1.md#attr-listgridsavedefaultsearch), autoFetchData will be automatically suspended and replaced with the saved criteria/view state, if applicable.
+NOTE: if `autoFetchData` is set, calling [fetchData()](ListGrid_2.md#method-listgridfetchdata) before draw will cause two requests to be issued, one from the manual call to fetchData() and one from the autoFetchData setting. The second request will use only [DataBoundComponent.initialCriteria](#attr-databoundcomponentinitialcriteria) and not any other criteria or settings from the first request. Generally, turn off autoFetchData if you are going to manually call [fetchData()](ListGrid_2.md#method-listgridfetchdata) at any time. Note: If you are using saved searches - either via [SavedSearchItem](SavedSearchItem.md#class-savedsearchitem) or [ListGrid.saveDefaultSearch](ListGrid_1.md#attr-listgridsavedefaultsearch), autoFetchData will be automatically suspended and replaced with the saved criteria/view state, if applicable.
 
 ### Groups
 
@@ -739,7 +739,7 @@ NOTE: if `autoFetchData` is set, calling [fetchData()](ListGrid_1.md#method-list
 
 ### See Also
 
-- [ListGrid.fetchData](ListGrid_1.md#method-listgridfetchdata)
+- [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata)
 
 **Flags**: IR
 
@@ -955,7 +955,7 @@ To control hilites showing in group summaries, see [showHilitesInGroupSummary](L
 ### Description
 Delay in milliseconds before fetching data.
 
-This setting only applies to the [ResultSet](ResultSet.md#class-resultset) automatically created by calling [fetchData()](ListGrid_1.md#method-listgridfetchdata). If a pre-existing ResultSet is passed to setData() instead, it's existing setting for [ResultSet.fetchDelay](ResultSet.md#attr-resultsetfetchdelay) applies.
+This setting only applies to the [ResultSet](ResultSet.md#class-resultset) automatically created by calling [fetchData()](ListGrid_2.md#method-listgridfetchdata). If a pre-existing ResultSet is passed to setData() instead, it's existing setting for [ResultSet.fetchDelay](ResultSet.md#attr-resultsetfetchdelay) applies.
 
 ### Groups
 
@@ -1104,7 +1104,7 @@ Return the [SortSpecifier](../reference.md#object-sortspecifier)s representing t
 ## Method: DataBoundComponent.findAll
 
 ### Description
-This API is equivalent to [List.findAll](List.md#method-listfindall) but searches for a matching record among already-loaded data only. Use [fetchData](ListGrid_1.md#method-listgridfetchdata) to load data from the server.
+This API is equivalent to [List.findAll](List.md#method-listfindall) but searches for a matching record among already-loaded data only. Use [fetchData](ListGrid_2.md#method-listgridfetchdata) to load data from the server.
 
 ### Parameters
 
@@ -1337,7 +1337,7 @@ This method may be overridden to customize this behavior. For example the follow
 ## Method: DataBoundComponent.findIndex
 
 ### Description
-This API is equivalent to [List.findIndex](List.md#method-listfindindex) but searches for a matching record among already-loaded data only. Use [fetchData](ListGrid_1.md#method-listgridfetchdata) to load data from the server.
+This API is equivalent to [List.findIndex](List.md#method-listfindindex) but searches for a matching record among already-loaded data only. Use [fetchData](ListGrid_2.md#method-listgridfetchdata) to load data from the server.
 
 ### Parameters
 
@@ -1357,7 +1357,7 @@ Compares the specified criteria with the current criteria applied to this compon
 
 This is equivalent to calling `this.data.willFetchData(...)`. Always returns true if this component is not showing a set of data from the dataSource.
 
-Note that to predict correctly the decision that will be made by filter/fetch, you'll need to pass the same [TextMatchStyle](../reference.md#type-textmatchstyle) that will be used by the future filter/fetch. Fetching manually (e.g. [ListGrid.fetchData](ListGrid_1.md#method-listgridfetchdata)) will by default use "exact" while filtering (e.g. [ListGrid.filterData](ListGrid_2.md#method-listgridfilterdata)) will by default use "substring". If the component is configured for autofetch (i.e. [ListGrid.autoFetchData](ListGrid_1.md#attr-listgridautofetchdata): true), that will use [ListGrid.autoFetchTextMatchStyle](ListGrid_1.md#attr-listgridautofetchtextmatchstyle), which defaults to "substring". If nothing/null is passed for the style, this method assumes you want the style from the last filter/fetch.
+Note that to predict correctly the decision that will be made by filter/fetch, you'll need to pass the same [TextMatchStyle](../reference.md#type-textmatchstyle) that will be used by the future filter/fetch. Fetching manually (e.g. [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata)) will by default use "exact" while filtering (e.g. [ListGrid.filterData](ListGrid_2.md#method-listgridfilterdata)) will by default use "substring". If the component is configured for autofetch (i.e. [ListGrid.autoFetchData](ListGrid_1.md#attr-listgridautofetchdata): true), that will use [ListGrid.autoFetchTextMatchStyle](ListGrid_1.md#attr-listgridautofetchtextmatchstyle), which defaults to "substring". If nothing/null is passed for the style, this method assumes you want the style from the last filter/fetch.
 
 To determine what [TextMatchStyle](../reference.md#type-textmatchstyle) is being used, check the RPC Tab of the [SmartClient Developer Console](../kb_topics/debugging.md#kb-topic-debugging) and check the relevant [DSRequest](../reference.md#object-dsrequest).
 
@@ -1523,7 +1523,7 @@ This is a synonym for `selectRange(startRow, endRow, false);`
 ## Method: DataBoundComponent.find
 
 ### Description
-This API is equivalent to [List.find](List.md#method-listfind) but searches for a matching record among already-loaded data only. Use [fetchData](ListGrid_1.md#method-listgridfetchdata) to load data from the server.
+This API is equivalent to [List.find](List.md#method-listfind) but searches for a matching record among already-loaded data only. Use [fetchData](ListGrid_2.md#method-listgridfetchdata) to load data from the server.
 
 ### Parameters
 
@@ -2202,7 +2202,7 @@ You can override this method if you need more complex setting of drop values tha
 ## Method: DataBoundComponent.findNextIndex
 
 ### Description
-This API is equivalent to [List.findNextIndex](List.md#method-listfindnextindex) but searches for a matching record among already-loaded data only. Use [fetchData](ListGrid_1.md#method-listgridfetchdata) to load data from the server.
+This API is equivalent to [List.findNextIndex](List.md#method-listfindnextindex) but searches for a matching record among already-loaded data only. Use [fetchData](ListGrid_2.md#method-listgridfetchdata) to load data from the server.
 
 ### Parameters
 

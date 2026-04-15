@@ -17,7 +17,7 @@ Action Methods are available on DataBoundComponents.
 
 - [Calendar.fetchData](../classes/Calendar.md#method-calendarfetchdata)
 - [Calendar.filterData](../classes/Calendar.md#method-calendarfilterdata)
-- [ListGrid.fetchData](../classes/ListGrid_1.md#method-listgridfetchdata)
+- [ListGrid.fetchData](../classes/ListGrid_2.md#method-listgridfetchdata)
 - [ListGrid.exportData](../classes/ListGrid_2.md#method-listgridexportdata)
 - [ListGrid.filterData](../classes/ListGrid_2.md#method-listgridfilterdata)
 - [ListGrid.fetchRelatedData](../classes/ListGrid_2.md#method-listgridfetchrelateddata)

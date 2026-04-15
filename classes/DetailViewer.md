@@ -620,7 +620,7 @@ Use [DetailViewerField.linkTextProperty](DetailViewerField.md#attr-detailviewerf
 ### Description
 If true, when this component is first drawn, automatically call `this.fetchData()`. Criteria for this fetch may be picked up from [DetailViewer.initialCriteria](#attr-detailviewerinitialcriteria), and textMatchStyle may be specified via [autoFetchTextMatchStyle](ListGrid_1.md#attr-listgridautofetchtextmatchstyle).
 
-NOTE: if `autoFetchData` is set, calling [fetchData()](ListGrid_1.md#method-listgridfetchdata) before draw will cause two requests to be issued, one from the manual call to fetchData() and one from the autoFetchData setting. The second request will use only [DetailViewer.initialCriteria](#attr-detailviewerinitialcriteria) and not any other criteria or settings from the first request. Generally, turn off autoFetchData if you are going to manually call [fetchData()](ListGrid_1.md#method-listgridfetchdata) at any time. Note: If you are using saved searches - either via [SavedSearchItem](SavedSearchItem.md#class-savedsearchitem) or [ListGrid.saveDefaultSearch](ListGrid_1.md#attr-listgridsavedefaultsearch), autoFetchData will be automatically suspended and replaced with the saved criteria/view state, if applicable.
+NOTE: if `autoFetchData` is set, calling [fetchData()](ListGrid_2.md#method-listgridfetchdata) before draw will cause two requests to be issued, one from the manual call to fetchData() and one from the autoFetchData setting. The second request will use only [DetailViewer.initialCriteria](#attr-detailviewerinitialcriteria) and not any other criteria or settings from the first request. Generally, turn off autoFetchData if you are going to manually call [fetchData()](ListGrid_2.md#method-listgridfetchdata) at any time. Note: If you are using saved searches - either via [SavedSearchItem](SavedSearchItem.md#class-savedsearchitem) or [ListGrid.saveDefaultSearch](ListGrid_1.md#attr-listgridsavedefaultsearch), autoFetchData will be automatically suspended and replaced with the saved criteria/view state, if applicable.
 
 ### Groups
 
@@ -628,7 +628,7 @@ NOTE: if `autoFetchData` is set, calling [fetchData()](ListGrid_1.md#method-list
 
 ### See Also
 
-- [ListGrid.fetchData](ListGrid_1.md#method-listgridfetchdata)
+- [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata)
 
 **Flags**: IR
 

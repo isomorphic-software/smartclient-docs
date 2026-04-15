@@ -1048,7 +1048,7 @@ May be overridden at the form item level via [FormItem.selectOnFocus](FormItem.m
 ### Description
 How to fetch and manage records retrieve from the server. See [FetchMode](../reference_2.md#type-fetchmode).
 
-This setting only applies to the [ResultSet](ResultSet.md#class-resultset) automatically created by calling [fetchData()](ListGrid_1.md#method-listgridfetchdata). If a pre-existing ResultSet is passed to setData() instead, it's existing setting for [ResultSet.fetchMode](ResultSet.md#attr-resultsetfetchmode) applies.
+This setting only applies to the [ResultSet](ResultSet.md#class-resultset) automatically created by calling [fetchData()](ListGrid_2.md#method-listgridfetchdata). If a pre-existing ResultSet is passed to setData() instead, it's existing setting for [ResultSet.fetchMode](ResultSet.md#attr-resultsetfetchmode) applies.
 
 ### Groups
 
@@ -1088,7 +1088,7 @@ Note that form values are logical values, for example, the value of a [DateItem]
 ## Attr: DynamicForm.autoFetchTextMatchStyle
 
 ### Description
-If [DynamicForm.autoFetchData](#attr-dynamicformautofetchdata) is `true`, this attribute allows the developer to specify a textMatchStyle for the initial [fetchData()](ListGrid_1.md#method-listgridfetchdata) call.
+If [DynamicForm.autoFetchData](#attr-dynamicformautofetchdata) is `true`, this attribute allows the developer to specify a textMatchStyle for the initial [fetchData()](ListGrid_2.md#method-listgridfetchdata) call.
 
 ### Groups
 
@@ -1415,7 +1415,7 @@ If no explicit formatter is specified at the field or component level, datetime 
 ### Description
 If true, when this component is first drawn, automatically call `this.fetchData()`. Criteria for this fetch may be picked up from [DynamicForm.initialCriteria](#attr-dynamicforminitialcriteria), and textMatchStyle may be specified via [autoFetchTextMatchStyle](ListGrid_1.md#attr-listgridautofetchtextmatchstyle).
 
-NOTE: if `autoFetchData` is set, calling [fetchData()](ListGrid_1.md#method-listgridfetchdata) before draw will cause two requests to be issued, one from the manual call to fetchData() and one from the autoFetchData setting. The second request will use only [DynamicForm.initialCriteria](#attr-dynamicforminitialcriteria) and not any other criteria or settings from the first request. Generally, turn off autoFetchData if you are going to manually call [fetchData()](ListGrid_1.md#method-listgridfetchdata) at any time. Note: If you are using saved searches - either via [SavedSearchItem](SavedSearchItem.md#class-savedsearchitem) or [ListGrid.saveDefaultSearch](ListGrid_1.md#attr-listgridsavedefaultsearch), autoFetchData will be automatically suspended and replaced with the saved criteria/view state, if applicable.
+NOTE: if `autoFetchData` is set, calling [fetchData()](ListGrid_2.md#method-listgridfetchdata) before draw will cause two requests to be issued, one from the manual call to fetchData() and one from the autoFetchData setting. The second request will use only [DynamicForm.initialCriteria](#attr-dynamicforminitialcriteria) and not any other criteria or settings from the first request. Generally, turn off autoFetchData if you are going to manually call [fetchData()](ListGrid_2.md#method-listgridfetchdata) at any time. Note: If you are using saved searches - either via [SavedSearchItem](SavedSearchItem.md#class-savedsearchitem) or [ListGrid.saveDefaultSearch](ListGrid_1.md#attr-listgridsavedefaultsearch), autoFetchData will be automatically suspended and replaced with the saved criteria/view state, if applicable.
 
 ### Groups
 
@@ -1423,7 +1423,7 @@ NOTE: if `autoFetchData` is set, calling [fetchData()](ListGrid_1.md#method-list
 
 ### See Also
 
-- [ListGrid.fetchData](ListGrid_1.md#method-listgridfetchdata)
+- [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata)
 
 **Flags**: IR
 
@@ -2852,7 +2852,7 @@ The returned search criteria will be a simple [Criteria](../reference_2.md#type-
 
 The criteria returned will be picked up from the current values for this form. For simple criteria, each form item simply maps its value to it's fieldName. See [FormItem.getCriterion](FormItem.md#method-formitemgetcriterion) for details on how form items generate advanced criteria. Note that any values or criteria specified via [DynamicForm.setValues](#method-dynamicformsetvalues) or [DynamicForm.setValuesAsCriteria](#method-dynamicformsetvaluesascriteria) which do not correspond to an item within the form will be combined with the live item values when criteria are generated.
 
-The returned criteria object can be used to filter data via methods such as [ListGrid.fetchData](ListGrid_1.md#method-listgridfetchdata), [DataSource.fetchData](DataSource.md#method-datasourcefetchdata), or, for more advanced usage, [ResultSet.setCriteria](ResultSet.md#method-resultsetsetcriteria).
+The returned criteria object can be used to filter data via methods such as [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata), [DataSource.fetchData](DataSource.md#method-datasourcefetchdata), or, for more advanced usage, [ResultSet.setCriteria](ResultSet.md#method-resultsetsetcriteria).
 
 Note that any form field which the user has left blank is omitted as criteria, that is, a blank field is assumed to mean "allow any value for this field" and not "this field must be blank". Examples of empty values include a blank text field or SelectItem with an empty selection.
 

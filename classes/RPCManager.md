@@ -331,7 +331,7 @@ The default loginStatusCodeMarker is the following string: `"`<SCRIPT>`//'\"]]>>
 
 ### Description
 Default prompt displayed to the user while an operation is running to fetch data from the server.  
-Displayed as a result of [ListGrid.filterData](ListGrid_2.md#method-listgridfilterdata), [ListGrid.fetchData](ListGrid_1.md#method-listgridfetchdata) and [ListGrid.clearCriteria](ListGrid_2.md#method-listgridclearcriteria) code paths.
+Displayed as a result of [ListGrid.filterData](ListGrid_2.md#method-listgridfilterdata), [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata) and [ListGrid.clearCriteria](ListGrid_2.md#method-listgridclearcriteria) code paths.
 
 ### Groups
 
@@ -1066,7 +1066,7 @@ For all the reasons given above, it's extremely important to use DataSources tha
 
 **Order of Execution**
 
-When the SmartClient Server framework receives a queued request, it will process all requests, in order, in a single thread, before any response is sent to the client. All client-side actions related to queued requests, such as [callbacks firing](ListGrid_1.md#method-listgridfetchdata) on completion, likewise happen in queue order, after all server-side processing has taken place.
+When the SmartClient Server framework receives a queued request, it will process all requests, in order, in a single thread, before any response is sent to the client. All client-side actions related to queued requests, such as [callbacks firing](ListGrid_2.md#method-listgridfetchdata) on completion, likewise happen in queue order, after all server-side processing has taken place.
 
 Therefore when using queuing you can use the callback argument of [RPCManager.sendQueue](#classmethod-rpcmanagersendqueue) to detect that all operations have completed, which is much simpler than the logic needed to track multiple asynchronous operations and wait for all to complete.
 

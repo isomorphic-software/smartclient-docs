@@ -1736,11 +1736,11 @@ When there are large numbers of available fields, the FieldPicker-based interfac
 Should this listGrid display a filter row. If true, this ListGrid will be drawn with a single editable row, (separate from the body) with a filter button.
 
 Values entered into this row are used as filter criteria to filter this List's data. The [ListGrid.filterByCell](#attr-listgridfilterbycell) and [ListGrid.filterOnKeypress](#attr-listgridfilteronkeypress) attributes allow developers to configure whether filtering occurs automatically on change or requires an enter-keypress or filter button click.  
-[ListGrid.autoFetchTextMatchStyle](#attr-listgridautofetchtextmatchstyle) determines the textMatchStyle for the request passed to [ListGrid.fetchData](#method-listgridfetchdata).
+[ListGrid.autoFetchTextMatchStyle](#attr-listgridautofetchtextmatchstyle) determines the textMatchStyle for the request passed to [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata).
 
 The default [search operator](FormItem.md#attr-formitemoperator) for an item in the filterEditor can be set via [ListGridField.filterOperator](ListGridField.md#attr-listgridfieldfilteroperator). When `field.filterOperator` has been set calls to retrieve the criteria from the grid return [AdvancedCriteria](../reference.md#object-advancedcriteria). See also [ListGrid.allowFilterOperators](#attr-listgridallowfilteroperators) for a UI that allows end users to change the search operator on the fly
 
-Note that if [ListGrid.filterData](ListGrid_2.md#method-listgridfilterdata) or [ListGrid.fetchData](#method-listgridfetchdata) is called directly while the filter editor is showing, the filter editor values will be updated to reflect the new set of criteria. If you wish to retain the user entered filter criteria and modify a subset of field values programmatically, this can be achieved by copying the existing set of criteria and adding other changes - something like this:
+Note that if [ListGrid.filterData](ListGrid_2.md#method-listgridfilterdata) or [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata) is called directly while the filter editor is showing, the filter editor values will be updated to reflect the new set of criteria. If you wish to retain the user entered filter criteria and modify a subset of field values programmatically, this can be achieved by copying the existing set of criteria and adding other changes - something like this:
 
 ```
    var newCriteria = myListGrid.getFilterEditorCriteria();
@@ -1827,7 +1827,7 @@ If this is an editable ListGrid, setting this property to true causes an extra r
 
 Clicking this row will start editing a new record at the end of the data set, as if [ListGrid.startEditingNew](ListGrid_2.md#method-listgridstarteditingnew) had been called.
 
-Note that for [databound grids](#attr-listgriddatasource), the new record row will be suppressed if the grid has not [fetched data](#method-listgridfetchdata), unless [ListGrid.saveLocally](#attr-listgridsavelocally) has been set.
+Note that for [databound grids](#attr-listgriddatasource), the new record row will be suppressed if the grid has not [fetched data](ListGrid_2.md#method-listgridfetchdata), unless [ListGrid.saveLocally](#attr-listgridsavelocally) has been set.
 
 **Flags**: IRW
 
@@ -2086,7 +2086,7 @@ When [canExpandRecords](#attr-listgridcanexpandrecords) is true and [expansionMo
 ### Description
 If true, when this component is first drawn, automatically call `this.fetchData()`. Criteria for this fetch may be picked up from [ListGrid.initialCriteria](#attr-listgridinitialcriteria), and textMatchStyle may be specified via [autoFetchTextMatchStyle](#attr-listgridautofetchtextmatchstyle).
 
-NOTE: if `autoFetchData` is set, calling [fetchData()](#method-listgridfetchdata) before draw will cause two requests to be issued, one from the manual call to fetchData() and one from the autoFetchData setting. The second request will use only [ListGrid.initialCriteria](#attr-listgridinitialcriteria) and not any other criteria or settings from the first request. Generally, turn off autoFetchData if you are going to manually call [fetchData()](#method-listgridfetchdata) at any time. Note: If you are using saved searches - either via [SavedSearchItem](SavedSearchItem.md#class-savedsearchitem) or [ListGrid.saveDefaultSearch](#attr-listgridsavedefaultsearch), autoFetchData will be automatically suspended and replaced with the saved criteria/view state, if applicable.
+NOTE: if `autoFetchData` is set, calling [fetchData()](ListGrid_2.md#method-listgridfetchdata) before draw will cause two requests to be issued, one from the manual call to fetchData() and one from the autoFetchData setting. The second request will use only [ListGrid.initialCriteria](#attr-listgridinitialcriteria) and not any other criteria or settings from the first request. Generally, turn off autoFetchData if you are going to manually call [fetchData()](ListGrid_2.md#method-listgridfetchdata) at any time. Note: If you are using saved searches - either via [SavedSearchItem](SavedSearchItem.md#class-savedsearchitem) or [ListGrid.saveDefaultSearch](#attr-listgridsavedefaultsearch), autoFetchData will be automatically suspended and replaced with the saved criteria/view state, if applicable.
 
 ### Groups
 
@@ -2094,7 +2094,7 @@ NOTE: if `autoFetchData` is set, calling [fetchData()](#method-listgridfetchdata
 
 ### See Also
 
-- [ListGrid.fetchData](#method-listgridfetchdata)
+- [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata)
 
 **Flags**: IR
 
@@ -2294,7 +2294,7 @@ If [ListGrid.autoFitData](#attr-listgridautofitdata) is set to `"horizontal"` or
 ### Description
 For grids with a specified [ListGrid.dataSource](#attr-listgriddatasource), this property can be set to `true` to cause the grid directly update its local data set instead of performing an operation against it's configured DataSource.
 
-When using this mode, data must be provided to the grid via [ListGrid.setData](ListGrid_2.md#method-listgridsetdata), and must be provided as a simple Array of Records . Setting `saveLocally` is invalid if either [ListGrid.fetchData](#method-listgridfetchdata) is called or if a [ResultSet](ResultSet.md#class-resultset) is provided as the data model.
+When using this mode, data must be provided to the grid via [ListGrid.setData](ListGrid_2.md#method-listgridsetdata), and must be provided as a simple Array of Records . Setting `saveLocally` is invalid if either [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata) is called or if a [ResultSet](ResultSet.md#class-resultset) is provided as the data model.
 
 `saveLocally` mode includes changes made via [inline editing](#attr-listgridcanedit), record removal via [ListGrid.canRemoveRecords](#attr-listgridcanremoverecords), as well as programmatic calls to [ListGrid.updateData](#method-listgridupdatedata), [addData()](ListGrid_2.md#method-listgridadddata) and [removeData()](ListGrid_2.md#method-listgridremovedata). This also causes saves to be performed synchronously (unlike normal DataSource operations).
 
@@ -2932,7 +2932,7 @@ Note that a [ListGrid.dataSource](#attr-listgriddatasource) must be provided for
 
 If this property is set to true, the supplied data is applied as the [complete dataset](ResultSet.md#attr-resultsetallrows) of a [ResultSet](ResultSet.md#class-resultset), which is then filtered according to the specified criteria, and the results displayed. If false, a normal databound fetch will occur, retrieving records that match the specified criteria from this component's [ListGrid.dataSource](#attr-listgriddatasource).
 
-`filterLocalData` includes both calls to [ListGrid.fetchData](#method-listgridfetchdata) and [ListGrid.filterData](ListGrid_2.md#method-listgridfilterdata) as well as automatic filtering when the [ListGrid.filterEditor](#attr-listgridfiltereditor) is enabled.
+`filterLocalData` includes both calls to [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata) and [ListGrid.filterData](ListGrid_2.md#method-listgridfilterdata) as well as automatic filtering when the [ListGrid.filterEditor](#attr-listgridfiltereditor) is enabled.
 
 If this property is not explicitly set, default behavior will filter against the dataSource unless the grid has a specified [dataPath](../reference_2.md#type-datapath), in which case filtering will occur locally.
 
@@ -3308,6 +3308,18 @@ Default [filter operator](../reference.md#type-operatorid) to use for text-based
 Does not apply to special fields where exact match is obviously the right default setting, such as fields of type:"enum", or fields with a [valueMap](FormItem.md#attr-formitemvaluemap) or [optionDataSource](FormItem.md#attr-formitemoptiondatasource).
 
 **Flags**: IR
+
+---
+## Attr: ListGrid.exportColumnWidthPadding
+
+### Description
+Extra character-widths to add to every column in Excel/OpenOffice exports, compensating for sub-pixel rounding between Excel's column auto-fit calculation and its text rendering engine. Without padding, text that barely fits the column can wrap by a fraction of a character and expand the row height — even when [ListGrid.exportWrapCells](#attr-listgridexportwrapcells) is true (the default).
+
+A value of 1 (one extra character width) is generally sufficient. The server has its own default for this setting (configured via the `export.columnWidthPadding` [server property](../kb_topics/server_properties.md#kb-topic-serverproperties-file)); a non-null value sent from the client overrides the server default for that export. Leave null to use the server default.
+
+See also [ListGrid.exportFieldWidths](#attr-listgridexportfieldwidths) and [ListGrid.exportWidthScale](#attr-listgridexportwidthscale) for other column width controls.
+
+**Flags**: IRW
 
 ---
 ## Attr: ListGrid.showInitialDragHandles
@@ -4710,7 +4722,7 @@ Note that if multiple records are being dragged the displayed tracker will be ba
 ### Description
 How to fetch and manage records retrieve from the server. See [FetchMode](../reference_2.md#type-fetchmode).
 
-This setting only applies to the [ResultSet](ResultSet.md#class-resultset) automatically created by calling [fetchData()](#method-listgridfetchdata). If a pre-existing ResultSet is passed to setData() instead, it's existing setting for [ResultSet.fetchMode](ResultSet.md#attr-resultsetfetchmode) applies.
+This setting only applies to the [ResultSet](ResultSet.md#class-resultset) automatically created by calling [fetchData()](ListGrid_2.md#method-listgridfetchdata). If a pre-existing ResultSet is passed to setData() instead, it's existing setting for [ResultSet.fetchMode](ResultSet.md#attr-resultsetfetchmode) applies.
 
 ### Groups
 
@@ -5004,9 +5016,9 @@ This setting overrides the [general indent](#attr-listgridembeddedcomponentinden
 ### Description
 A list of ListGridRecord objects, specifying the data to be used to populate the ListGrid. In ListGrids, the data array specifies rows.
 
-When using a [DataSource](DataSource.md#class-datasource), rather than directly providing `data`, you will typically call [ListGrid.fetchData](#method-listgridfetchdata) instead, which will automatically establish `data` as a [ResultSet](ResultSet.md#class-resultset) (see the [ListGrid.fetchData](#method-listgridfetchdata) docs for details).
+When using a [DataSource](DataSource.md#class-datasource), rather than directly providing `data`, you will typically call [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata) instead, which will automatically establish `data` as a [ResultSet](ResultSet.md#class-resultset) (see the [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata) docs for details).
 
-If you call `fetchData`, any previously supplied `data` is discarded. Also, it is not necessary to call `setData()` after calling [ListGrid.fetchData](#method-listgridfetchdata).
+If you call `fetchData`, any previously supplied `data` is discarded. Also, it is not necessary to call `setData()` after calling [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata).
 
 When calling `setData()`, direct changes to the list using Framework APIs such as [List.add](List.md#method-listadd) or [List.remove](List.md#method-listremove) will be automatically observed and the ListGrid will redraw in response. However, direct changes to individual Records will not be automatically observed and require calls to [ListGrid.refreshCell](ListGrid_2.md#method-listgridrefreshcell) or [ListGrid.refreshRow](ListGrid_2.md#method-listgridrefreshrow) to cause the ListGrid to visually update. Calling methods such as [ListGrid.updateData](#method-listgridupdatedata), [ListGrid.removeData](ListGrid_2.md#method-listgridremovedata) or [ListGrid.addData](ListGrid_2.md#method-listgridadddata) always causes automatic visual refresh.
 
@@ -7120,7 +7132,7 @@ If this grid has specified [headerSpans](#attr-listgridheaderspans), should fiel
 ## Attr: ListGrid.dataPageSize
 
 ### Description
-When using [data paging](#attr-listgriddatafetchmode), how many records to fetch at a time. If set to a positive integer, `dataPageSize` will override the default [resultSize](ResultSet.md#attr-resultsetresultsize) for ResultSets automatically created when you call [fetchData()](#method-listgridfetchdata) (and similarly for the [resultSize](ResultTree.md#attr-resulttreeresultsize) of ResultTrees). Leaving `dataPageSize` at its default means to just use the default page size of the data container.
+When using [data paging](#attr-listgriddatafetchmode), how many records to fetch at a time. If set to a positive integer, `dataPageSize` will override the default [resultSize](ResultSet.md#attr-resultsetresultsize) for ResultSets automatically created when you call [fetchData()](ListGrid_2.md#method-listgridfetchdata) (and similarly for the [resultSize](ResultTree.md#attr-resulttreeresultsize) of ResultTrees). Leaving `dataPageSize` at its default means to just use the default page size of the data container.
 
 **Note** that regardless of the `dataPageSize` setting, a component will always fetch all of data that it needs to draw. Settings such as [showAllRecords:true](#attr-listgridshowallrecords), [drawAllMaxCells](#attr-listgriddrawallmaxcells) and [drawAheadRatio](#attr-listgriddrawaheadratio) can cause more rows than the configured `dataPageSize` to be fetched.
 
@@ -7434,6 +7446,20 @@ For editable listGrids, outstanding unsaved edits when the user performs a new f
 ### Groups
 
 - editing
+
+**Flags**: IRW
+
+---
+## Attr: ListGrid.exportWrapCells
+
+### Description
+When exporting data to Excel/OpenOffice format using [ListGrid.exportData](ListGrid_2.md#method-listgridexportdata) or [ListGrid.exportClientData](#method-listgridexportclientdata), whether data cells should have text wrapping enabled.
+
+When true (the default), cells with content wider than the column will wrap to additional lines and the row height expands to fit. However, due to sub-pixel rounding differences between Excel's column auto-fit calculation and its text rendering engine, cells whose content _barely_ fits the column width may wrap by a fraction of a character, causing unexpected row height expansion even when the content logically fits on one line.
+
+Set to false to prevent this: cells will not wrap, so row heights stay at the single-line default. Content that genuinely exceeds the column width will be clipped or overflow into the next cell (standard Excel behavior for non-wrapped cells).
+
+As an alternative to disabling wrapping entirely, [ListGrid.exportColumnWidthPadding](#attr-listgridexportcolumnwidthpadding) adds a small amount of extra width to each column, which is usually enough to prevent the sub-pixel rounding from triggering a wrap.
 
 **Flags**: IRW
 
@@ -8133,7 +8159,7 @@ When declared, the specified form is automatically used as a search form for thi
 
 For a discussion of the various filtering and criteria-management APIs and when to use them, see the [Grid Filtering overview](../kb_topics/gridFiltering.md#kb-topic-grid-filtering-overview).
 
-This is similar to the effect of adding a [ListGrid.filterEditorSubmit](ListGrid_2.md#method-listgridfiltereditorsubmit) override that pulls in criteria from the external form, and having the external form call [ListGrid.filterByEditor](ListGrid_2.md#method-listgridfilterbyeditor) instead of [ListGrid.fetchData](#method-listgridfetchdata), as shown in the +exampleLink{additiveFilter} example.
+This is similar to the effect of adding a [ListGrid.filterEditorSubmit](ListGrid_2.md#method-listgridfiltereditorsubmit) override that pulls in criteria from the external form, and having the external form call [ListGrid.filterByEditor](ListGrid_2.md#method-listgridfilterbyeditor) instead of [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata), as shown in the +exampleLink{additiveFilter} example.
 
 In particular. the grid will automatically filter when the searchForm.search() or dynamicForm.submit() event fires on the form (happens if a SubmitItem is present and is pressed), and will automatically trigger filtering if enter is pressed in the form, as though searchOnEnter / saveOnEnter had been set.
 
@@ -9669,51 +9695,5 @@ Perform a DataSource "update" operation to update existing records in this compo
 ### Groups
 
 - dataBoundComponentMethods
-
----
-## Method: ListGrid.fetchData
-
-### Description
-Retrieves data from the DataSource that matches the specified criteria.
-
-For a discussion of the various filtering and criteria-management APIs and when to use them, see the [Grid Filtering overview](../kb_topics/gridFiltering.md#kb-topic-grid-filtering-overview).
-
-When `fetchData()` is first called, if data has not already been provided via [setData()](ListGrid_2.md#method-listgridsetdata), this method will create a [ResultSet](ResultSet.md#class-resultset), which will be configured based on component settings such as [DataBoundComponent.fetchOperation](DataBoundComponent.md#attr-databoundcomponentfetchoperation) and [DataBoundComponent.dataPageSize](DataBoundComponent.md#attr-databoundcomponentdatapagesize), as well as the general purpose [ListGrid.dataProperties](#attr-listgriddataproperties). The created ResultSet will automatically send a DSRequest to retrieve data from [listGrid.dataSource](#attr-listgriddatasource), and from then on will automatically manage paging through large datasets, as well as performing filtering and sorting operations inside the browser when possible - see the [ResultSet](ResultSet.md#class-resultset) docs for details.
-
-**NOTE:** do not use **both** [autoFetchData:true](DataBoundComponent.md#attr-databoundcomponentautofetchdata) **and** a call to `fetchData()` - this may result in two DSRequests to fetch data. Use either [autoFetchData](DataBoundComponent.md#attr-databoundcomponentautofetchdata) and [Criteria](../reference_2.md#type-criteria) **or** a manual call to fetchData() passing criteria.
-
-Whether a ResultSet was automatically created or provided via [setData()](ListGrid_2.md#method-listgridsetdata), subsequent calls to fetchData() will simply call [ResultSet.setCriteria](ResultSet.md#method-resultsetsetcriteria).
-
-Changes to criteria may or may not result in a DSRequest to the server due to [client-side filtering](ResultSet.md#attr-resultsetuseclientfiltering). You can call [willFetchData(criteria)](DataBoundComponent.md#method-databoundcomponentwillfetchdata) to determine if new criteria will result in a server fetch.
-
-If you need to force data to be re-fetched, you can call [invalidateCache()](ListGrid_2.md#method-listgridinvalidatecache) and new data will automatically be fetched from the server using the current criteria and sort direction. **NOTE:** when using `invalidateCache()` there is no need to **also** call `fetchData()` and in fact this could produce unexpected results.
-
-This method takes an optional callback parameter (set to a [DSCallback](../reference_2.md#type-dscallback)) to fire when the fetch completes. Note that this callback will not fire if no server fetch is performed. In this case the data is updated synchronously, so as soon as this method completes you can interact with the new data. If necessary, you can use [willFetchData()](DataBoundComponent.md#method-databoundcomponentwillfetchdata) to determine whether or not a server fetch will occur when `fetchData()` is called with new criteria.
-
-In addition to the callback parameter for this method, developers can use [dataArrived()](ListGrid_2.md#method-listgriddataarrived) to be notified every time data is loaded.
-
-By default, this method assumes a [TextMatchStyle](../reference.md#type-textmatchstyle) of "exact"; that can be overridden by supplying a different value in the requestProperties parameter. See [DataBoundComponent.willFetchData](DataBoundComponent.md#method-databoundcomponentwillfetchdata);
-
-**Changing the request properties**
-
-Changes to [TextMatchStyle](../reference.md#type-textmatchstyle) made via `requestProperties` will be honored in combination with the fetch criteria, possibly invalidating cache and triggering a server request if needed, as documented for [willFetchData()](DataBoundComponent.md#method-databoundcomponentwillfetchdata). In contrast, changes to [operationId](DSRequest.md#attr-dsrequestoperationid) in the request properties will cause the [ResultSet](ResultSet.md#class-resultset) or [ResultTree](ResultTree.md#class-resulttree) to be rebuilt, always refetching from the server. However, changes to other request properties after the initial fetch won't be detected, and no fetch will get triggered based on that new request context.
-
-To pick up such changes, we recommend that you call [setData(\[\])](ListGrid_2.md#method-listgridsetdata) (passing an empty array to ensure the data model is cleared), and then call this method to fetch again. If you try to do it by calling [invalidateCache()](ListGrid_2.md#method-listgridinvalidatecache), you may see duplicate fetches if you haven't already updated the data context by calling this method with the new request properties, and fail to do so before the component is [redrawn](Canvas.md#method-canvasredraw).
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| criteria | [Criteria](../reference_2.md#type-criteria) | true | — | Search criteria. If a [DynamicForm](DynamicForm.md#class-dynamicform) is passed in as this argument instead of a raw criteria object, will be derived by calling [DynamicForm.getValuesAsCriteria](DynamicForm.md#method-dynamicformgetvaluesascriteria) |
-| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke when a fetch is complete. Fires only if server contact was required |
-| requestProperties | [DSRequest](#type-dsrequest) | true | — | additional properties to set on the DSRequest that will be issued |
-
-### Groups
-
-- dataBoundComponentMethods
-
-### See Also
-
-- [ListGrid.refreshData](ListGrid_2.md#method-listgridrefreshdata)
 
 ---

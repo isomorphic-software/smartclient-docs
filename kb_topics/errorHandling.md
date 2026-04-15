@@ -37,7 +37,7 @@ As an alternative to handling errors centrally, you can handle them in your regu
 
 Note, when you are handling errors in user callbacks, a negative status in the response indicates some sort of serious, unrecoverable error (except in the case of [RPCResponse.STATUS_VALIDATION_ERROR](../classes/RPCResponse.md#classattr-rpcresponsestatus_validation_error)). Therefore, ensure that your error handling code does not assume that the response will be properly formed or contain particular elements.
 
-You can specify `willHandleError` (or any other DSRequest/RPCRequest property) on a component request by providing the DSRequest Properties parameter. For example, on a [ListGrid.fetchData](../classes/ListGrid_1.md#method-listgridfetchdata):
+You can specify `willHandleError` (or any other DSRequest/RPCRequest property) on a component request by providing the DSRequest Properties parameter. For example, on a [ListGrid.fetchData](../classes/ListGrid_2.md#method-listgridfetchdata):
 
 ```
      listGrid.fetchData({}, function(dsResponse, data, dsRequest) {

@@ -590,7 +590,7 @@ This property is generally automatically populated, for example when calling `fe
 ### Description
 Data, such as search criteria or an updated record, to be acted upon. Contents differ by `operationType`, see [DataSource Operations](../kb_topics/dataSourceOperations.md#kb-topic-datasource-operations) for details.
 
-This field is generally filled in by passing the "data" argument to methods such as [ListGrid.fetchData](ListGrid_1.md#method-listgridfetchdata).
+This field is generally filled in by passing the "data" argument to methods such as [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata).
 
 **Flags**: IR
 

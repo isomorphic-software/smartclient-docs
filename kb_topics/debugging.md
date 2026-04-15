@@ -167,7 +167,7 @@ The core log methods (`logDebug()`, `logInfo()`, `logWarn()`) and the "echo" fac
      });
  
 ```
-The special value "this" is not always set to a SmartClient component, for example, in some kinds of callbacks (eg [fetchData()](../classes/ListGrid_1.md#method-listgridfetchdata)). When in doubt, use these methods via the Log class as `isc.Log.logWarn()`.
+The special value "this" is not always set to a SmartClient component, for example, in some kinds of callbacks (eg [fetchData()](../classes/ListGrid_2.md#method-listgridfetchdata)). When in doubt, use these methods via the Log class as `isc.Log.logWarn()`.
 
 **Find the source of logs** Sometimes, you will see a log message with a warning, usage error or other unusual condition, and it won't be clear how your code is causing the log to appear. In these situations, you can use [Log.traceLogMessage](../classes/Log.md#classmethod-logtracelogmessage) to request that a stack trace is logged whether that specific message appears. **Logging performance**
 

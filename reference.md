@@ -1308,7 +1308,7 @@ Fetch data matching specified criteria into grid.
 
 ### See Also
 
-- [ListGrid.fetchData](classes/ListGrid_1.md#method-listgridfetchdata)
+- [ListGrid.fetchData](classes/ListGrid_2.md#method-listgridfetchdata)
 
 ---
 ## Attr: GridFetchDataTask.applyToImplicitCriteria

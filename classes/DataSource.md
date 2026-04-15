@@ -4318,7 +4318,7 @@ Perform a "fetch" DataSource operation against this DataSource, sending search c
 
 **NOTE:** do not attempt to override this method to create a custom DataSource. For a server-side custom DataSource, use the [DataSource.serverConstructor](#attr-datasourceserverconstructor) attribute, and the *Custom DataSource samples*. For a client-side custom DataSource, see [dataProtocol:"custom"](#attr-datasourcedataprotocol).
 
-In contrast to [ListGrid.fetchData](ListGrid_1.md#method-listgridfetchdata), which creates a [ResultSet](ResultSet.md#class-resultset) to manage the returned data, calling `dataSource.fetchData()` provides the returned data in the callback as a simple JavaScript Array of JavaScript Objects. Calling `dataSource.fetchData()` does not automatically update any visual components or caches: code in the callback passed to `fetchData()` decides what to do with the returned data.
+In contrast to [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata), which creates a [ResultSet](ResultSet.md#class-resultset) to manage the returned data, calling `dataSource.fetchData()` provides the returned data in the callback as a simple JavaScript Array of JavaScript Objects. Calling `dataSource.fetchData()` does not automatically update any visual components or caches: code in the callback passed to `fetchData()` decides what to do with the returned data.
 
 For example, given a ListGrid "myGrid" and a DataSource "employees", the following code would populate "myGrid" with data fetched from the DataSource:
 
@@ -4447,7 +4447,7 @@ Returns the path having the shortest distance between this and the given targetD
 ### Description
 For a dataSource using [client-side data integration](../kb_topics/clientDataIntegration.md#kb-topic-client-side-data-integration), return the data that should be sent to the [DataSource.dataURL](#attr-datasourcedataurl).
 
-By default, HTTP requests sent to non-SmartClient servers do not include DSRequest metadata such as [DSRequest.startRow](DSRequest.md#attr-dsrequeststartrow), [endRow](DSRequest.md#attr-dsrequestendrow), and [oldValues](DSRequest.md#attr-dsrequestoldvalues). Only the core [datasource protocol data](../kb_topics/dataSourceOperations.md#kb-topic-datasource-operations) is sent, such as the criteria passed to [fetchData()](ListGrid_1.md#method-listgridfetchdata) or the updated values submitted by [form.saveData()](DynamicForm.md#method-dynamicformsavedata).
+By default, HTTP requests sent to non-SmartClient servers do not include DSRequest metadata such as [DSRequest.startRow](DSRequest.md#attr-dsrequeststartrow), [endRow](DSRequest.md#attr-dsrequestendrow), and [oldValues](DSRequest.md#attr-dsrequestoldvalues). Only the core [datasource protocol data](../kb_topics/dataSourceOperations.md#kb-topic-datasource-operations) is sent, such as the criteria passed to [fetchData()](ListGrid_2.md#method-listgridfetchdata) or the updated values submitted by [form.saveData()](DynamicForm.md#method-dynamicformsavedata).
 
 transformRequest() allows you to transform dsRequest metadata into a format understood by your server and include it in the HTTP request, so that you can integrate DataSource features such as data paging with servers that support such features.
 

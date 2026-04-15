@@ -2414,6 +2414,8 @@ This setting overrides the [DSRequest.outputs](DSRequest.md#attr-dsrequestoutput
 
 This setting does not affect [OperationBinding.outputs](OperationBinding.md#attr-operationbindingoutputs), meaning that if field is explicitly listed in operationBinding.outputs, then it will be fetched and delivered to the client regardless of outputWhen condition.
 
+Note that [binary field](../reference_2.md#type-fieldtype) values (InputStream, byte\[\], Blob) are automatically omitted from normal fetch responses even when this setting allows the field to be delivered. See the [Binary Fields overview](../kb_topics/binaryFields.md#kb-topic-binary-fields) for details and the [DataSourceField.encodeInResponse](#attr-datasourcefieldencodeinresponse) option for delivering binary data as Base64.
+
 ### See Also
 
 - [OperationBinding.outputs](OperationBinding.md#attr-operationbindingoutputs)

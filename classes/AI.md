@@ -26,6 +26,22 @@ Provides class methods for enabling and disabling the use of AI technology, regi
 **Flags**: RW
 
 ---
+## ClassAttr: AI.mockMode
+
+### Description
+Alias for [AI.responseSpoofingMode](#classattr-airesponsespoofingmode). Value mappings:
+
+*   "none" = "none" (no mocking)
+*   "auto" = "hybrid" (use mock data when available)
+*   "interactive" = "full" (always prompt user)
+
+### Groups
+
+- AIMocking
+
+**Flags**: IRW
+
+---
 ## ClassAttr: AI.noAIEngineSupportingVisionRequestsIsRegisteredErrorMessage
 
 ### Description
@@ -165,6 +181,20 @@ The defualt maximum number of retries for any one particular request to AI.
 **Flags**: RW
 
 ---
+## ClassMethod: AI.getMockMode
+
+### Description
+Returns the [AI.mockMode](#classattr-aimockmode).
+
+### Returns
+
+`[String](#type-string)` — The current mock mode: "none", "auto", or "interactive"
+
+### Groups
+
+- AIMocking
+
+---
 ## ClassMethod: AI.resumeDataQuestion
 
 ### Description
@@ -236,6 +266,22 @@ Within `dynamicString`, any evaluated JavaScript expressions have access to all 
 - dynamicStrings
 
 ---
+## ClassMethod: AI.setMockMode
+
+### Description
+Sets the [AI.mockMode](#classattr-aimockmode).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| mode | [String](#type-string) | false | — | The mock mode: "none", "auto", or "interactive" |
+
+### Groups
+
+- AIMocking
+
+---
 ## ClassMethod: AI.pauseDataQuestion
 
 ### Description
@@ -269,6 +315,22 @@ Asks AI to answer a question about the data of the application.
 ### Groups
 
 - answerEngine
+
+---
+## ClassMethod: AI.addMockResponses
+
+### Description
+Alias for [AI.addSpoofedResponses](#classmethod-aiaddspoofedresponses).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| responses | [Array of Object](#type-array-of-object) | false | — | mock response entries |
+
+### Groups
+
+- AIMocking
 
 ---
 ## ClassMethod: AI.registerEngine
@@ -321,5 +383,15 @@ Cancels a data question if not already canceled.
 ### Groups
 
 - answerEngine
+
+---
+## ClassMethod: AI.clearMockResponses
+
+### Description
+Alias for [AI.clearSpoofedResponses](#method-aiclearspoofedresponses).
+
+### Groups
+
+- AIMocking
 
 ---

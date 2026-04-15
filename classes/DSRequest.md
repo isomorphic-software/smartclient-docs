@@ -647,7 +647,7 @@ Note that streaming requires specific server support; of SmartClient's built-in 
 
 See also the server-side documentation for `DSResponse`, `SQLDataSource` and `StreamingResponseIterator`.
 
-Note, that streaming results does not support fields with ["concat" summary function](../reference_2.md#type-summaryfunction) on non-Oracle databases. Such fields will be skipped.
+Note, that streaming results does not support fields with ["concat" summary function](../reference_2.md#type-summaryfunction) on databases other than Oracle and PostgreSQL. Such fields will be skipped.
 
 **Flags**: IR
 
@@ -655,7 +655,7 @@ Note, that streaming results does not support fields with ["concat" summary func
 ## Attr: DSRequest.lineBreakStyle
 
 ### Description
-The style of line-breaks to use in the exported output. See [LineBreakStyle](../reference.md#type-linebreakstyle) for more information.
+The style of line-breaks to use in the exported output. See [LineBreakStyle](../reference_2.md#type-linebreakstyle) for more information.
 
 **Flags**: IR
 
@@ -753,7 +753,7 @@ The export field-list can also be configured, see [DSRequest.exportFields](#attr
 
 Once the operation completes, [DSRequest.exportDisplay](#attr-dsrequestexportdisplay) specifies whether the exported data should be downloaded to the file-system or displayed in a new window. The default value of exportDisplay is "download" which displays the Save As dialog. See [ExportDisplay](../reference_2.md#type-exportdisplay) for more information.
 
-You can configure the style of [line-breaks](../reference.md#type-linebreakstyle) to use when generating the output, the [delimiter](#attr-dsrequestexportdelimiter) to use when exporting to CSV and the [separator-character](#attr-dsrequestexporttitleseparatorchar) to use in field-titles when exporting to XML.
+You can configure the style of [line-breaks](../reference_2.md#type-linebreakstyle) to use when generating the output, the [delimiter](#attr-dsrequestexportdelimiter) to use when exporting to CSV and the [separator-character](#attr-dsrequestexporttitleseparatorchar) to use in field-titles when exporting to XML.
 
 Additionally, you can output arbitrary text before and after the exported data by setting [exportHeader](#attr-dsrequestexportheader) and [exportFooter](#attr-dsrequestexportfooter).
 

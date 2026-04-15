@@ -246,6 +246,7 @@ Properties defining an object's appearance
 - [FormItem.decimalPad](../classes/FormItem.md#attr-formitemdecimalpad)
 - [FormItem.format](../classes/FormItem.md#attr-formitemformat)
 - [FormItem.visible](../classes/FormItem.md#attr-formitemvisible)
+- [FormItem.permanentlyHidden](../classes/FormItem.md#attr-formitempermanentlyhidden)
 - [FormItem.visibleWhen](../classes/FormItem.md#attr-formitemvisiblewhen)
 - [FormItem.readOnlyDisplay](../classes/FormItem.md#attr-formitemreadonlydisplay)
 - [FormItem.disabled](../classes/FormItem.md#attr-formitemdisabled)

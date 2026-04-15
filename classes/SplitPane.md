@@ -17,7 +17,7 @@ A `SplitPane` can manage either two or three panes — a [navigationPane](#attr-
 *   `listPane`: [ListGrid](ListGrid_1.md#class-listgrid) showing messages in a folder
 *   `detailPane`: message detail view (perhaps a [DetailViewer](DetailViewer.md#class-detailviewer) over an [HTMLFlow](HTMLFlow.md#class-htmlflow) or similar arrangement)
 
-The placement of the panes is by default sensitive to whether the device is detected as a handset (phone), tablet or desktop device (see [DeviceMode](../reference.md#type-devicemode)) and to the current [PageOrientation](../reference.md#type-pageorientation). You can also configure a `SplitPane` with a fixed [SplitPane.pageOrientation](#attr-splitpanepageorientation) or [SplitPane.deviceMode](#attr-splitpanedevicemode).
+The placement of the panes is by default sensitive to whether the device is detected as a handset (phone), tablet or desktop device (see [DeviceMode](../reference_2.md#type-devicemode)) and to the current [PageOrientation](../reference.md#type-pageorientation). You can also configure a `SplitPane` with a fixed [SplitPane.pageOrientation](#attr-splitpanepageorientation) or [SplitPane.deviceMode](#attr-splitpanedevicemode).
 
 Beyond providing the panes listed above, typical usage is simply to call [showListPane()](#method-splitpaneshowlistpane) and [showDetailPane()](#method-splitpaneshowdetailpane) when the `SplitPane` should navigate to a new pane. For example, in an email application, clicking on a folder in the `navigationPane` should cause the `listPane` to show messages from the folder, then `showListPane(_"folder name"_)` would be called to show the `listPane` and give it a new title reflecting the name of the folder.
 
@@ -266,7 +266,7 @@ Available variables are:
 ## Attr: SplitPane.currentPane
 
 ### Description
-The most recently shown pane. In handset [DeviceMode](../reference.md#type-devicemode), the `currentPane` is the only pane that is actually visible to the user. In other modes more than one pane can be simultaneously visible, so the `currentPane` is the most recent pane that was brought into view via a call to [SplitPane.setCurrentPane](#method-splitpanesetcurrentpane) or [SplitPane.showNavigationPane](#method-splitpaneshownavigationpane).
+The most recently shown pane. In handset [DeviceMode](../reference_2.md#type-devicemode), the `currentPane` is the only pane that is actually visible to the user. In other modes more than one pane can be simultaneously visible, so the `currentPane` is the most recent pane that was brought into view via a call to [SplitPane.setCurrentPane](#method-splitpanesetcurrentpane) or [SplitPane.showNavigationPane](#method-splitpaneshownavigationpane).
 
 The default value of `currentPane` is "navigation".
 
@@ -409,7 +409,7 @@ If set to `false`, the [listToolStrip](#attr-splitpanelisttoolstrip) will not be
 ### Description
 UI layout mode used for this `SplitPane`.
 
-A `SplitPane` can be configured with up to 3 panes: the [SplitPane.navigationPane](#attr-splitpanenavigationpane), [SplitPane.listPane](#attr-splitpanelistpane) and [SplitPane.detailPane](#attr-splitpanedetailpane). Both [DeviceMode](../reference.md#type-devicemode) and [PageOrientation](../reference.md#type-pageorientation) influence the placement of these panes as follows:
+A `SplitPane` can be configured with up to 3 panes: the [SplitPane.navigationPane](#attr-splitpanenavigationpane), [SplitPane.listPane](#attr-splitpanelistpane) and [SplitPane.detailPane](#attr-splitpanedetailpane). Both [DeviceMode](../reference_2.md#type-devicemode) and [PageOrientation](../reference.md#type-pageorientation) influence the placement of these panes as follows:
 
 *   "handset" `deviceMode`: only a single pane is shown at a time. Not orientation sensitive
 *   "tablet" `deviceMode` with `pageOrientation`:"landscape": the `detailPane` is shown side by side with either the `navigationPane` or `listPane`
@@ -763,7 +763,7 @@ Setter for the [rightButtonTitle](NavigationBar.md#attr-navigationbarrightbutton
 ### Description
 Reveals the pane indicated by the `newPane` parameter.
 
-This has different effects based on the [DeviceMode](../reference.md#type-devicemode) and [PageOrientation](../reference.md#type-pageorientation). For example, in "handset" mode, the new pane will be the only one showing. In other modes such as "desktop", this method may do nothing, but should still be called in order to ensure correct behavior with other [DeviceMode](../reference.md#type-devicemode) settings.
+This has different effects based on the [DeviceMode](../reference_2.md#type-devicemode) and [PageOrientation](../reference.md#type-pageorientation). For example, in "handset" mode, the new pane will be the only one showing. In other modes such as "desktop", this method may do nothing, but should still be called in order to ensure correct behavior with other [DeviceMode](../reference_2.md#type-devicemode) settings.
 
 ### Parameters
 
@@ -839,7 +839,7 @@ Setter for [SplitPane.showDetailToolStrip](#attr-splitpaneshowdetailtoolstrip). 
 ### Description
 Notification fired when the [SplitPane.currentPane](#attr-splitpanecurrentpane) changes, either due to end-user action or due to a programmatic call to [setCurrentPane()](#method-splitpanesetcurrentpane) or other APIs that can change the pane.
 
-Note that depending on the [DeviceMode](../reference.md#type-devicemode), this event may not signal that any pane has actually been shown or hidden, since in some modes multiple panes are shown simultaneously.
+Note that depending on the [DeviceMode](../reference_2.md#type-devicemode), this event may not signal that any pane has actually been shown or hidden, since in some modes multiple panes are shown simultaneously.
 
 Never fires while the `SplitPane` is not drawn.
 

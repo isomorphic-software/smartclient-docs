@@ -254,6 +254,30 @@ When set to false, this field will not show a context menu in its header.
 **Flags**: IRW
 
 ---
+## Attr: ListGridField.valueIconAriaRole
+
+### Description
+Controls the WAI ARIA role applied to valueIcon elements in this field when [screen reader mode](isc.md#staticmethod-iscsetscreenreadermode) is active.
+
+When unset (the default), the role is determined automatically:
+
+*   If [ListGridField.showValueIconOnly](#attr-listgridfieldshowvalueicononly) is true the icon gets `role="img"` with an `aria-label` derived from the cell value (since the icon is the only content).
+*   Otherwise the icon gets `role="presentation"` (since accompanying text already conveys the value).
+
+Set to `"img"` to force screen readers to announce the icon even when text is also shown (useful when the icon conveys meaning not present in the text, such as a color-coded status indicator). Set to `"presentation"` to force the icon to be treated as decorative.
+
+### Groups
+
+- imageColumns
+- accessibility
+
+### See Also
+
+- [ListGridField.showValueIconOnly](#attr-listgridfieldshowvalueicononly)
+
+**Flags**: IRW
+
+---
 ## Attr: ListGridField.spannedHeaderBaseStyle
 
 ### Description

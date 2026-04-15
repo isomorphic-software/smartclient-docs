@@ -227,6 +227,18 @@ Human-readable description of this task's purpose. Used when generating prompt o
 **Flags**: IR
 
 ---
+## Attr: CoTTask.mockInteractive
+
+### Description
+Per-task override for [CoTProcess.mockInteractive](CoTProcess.md#attr-cotprocessmockinteractive). When true, this task shows the interactive UI even if the process doesn't. When false, this task skips the UI even if the process uses it. When null (or unset), inherits from process.
+
+### Groups
+
+- CoTMocking
+
+**Flags**: IRW
+
+---
 ## Attr: CoTTask.taskPrompt
 
 ### Description

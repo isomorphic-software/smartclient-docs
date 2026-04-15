@@ -50,6 +50,25 @@ Use [runTask()](Process.md#method-processruntask) to enter a single CoTTask with
 - CoT
 
 ---
+## ClassAttr: CoTProcess.defaultMockInteractive
+
+### Description
+Global default for [CoTProcess.mockInteractive](#attr-cotprocessmockinteractive). When a CoTProcess instance has `mockInteractive: null` (the default), this class-level setting is used.
+
+This allows developers to enable interactive mocking globally for all CoT processes (including built-in features like InstantUI) without needing to intercept process creation:
+
+```
+ isc.CoTProcess.defaultMockInteractive = true;
+ 
+```
+
+### Groups
+
+- CoTMocking
+
+**Flags**: IRW
+
+---
 ## Attr: CoTProcess.promptModeMinimal
 
 ### Description
@@ -278,6 +297,26 @@ Primer text shown before the goal value when using [CoTProcess.getPromptPart](#m
 When this process is used as an async operation (via getAsyncOperation() or asyncStart()), this property holds the PausableAsyncOperation instance that manages pause/resume/cancel semantics and the result Promise.
 
 **Flags**: R
+
+---
+## Attr: CoTProcess.mockInteractive
+
+### Description
+When true, displays an interactive UI before each CoTTask executes, allowing the developer to inspect the prompt, modify the response, or forward to the real AI service.
+
+This is useful for debugging workflow logic and understanding how tasks interact. Unlike [CoTProcess.mockMode](#attr-cotprocessmockmode), which automatically uses recorded responses, mockInteractive pauses for human review at each step.
+
+When both mockMode and mockInteractive are true, the UI is pre-populated with the mockData response (if available) but still pauses for review.
+
+Individual tasks can override this setting via [CoTTask.mockInteractive](CoTTask.md#attr-cottaskmockinteractive).
+
+When null (the default), the class-level [CoTProcess.defaultMockInteractive](#classattr-cotprocessdefaultmockinteractive) setting is used. This allows enabling interactive mocking globally without needing to intercept process creation.
+
+### Groups
+
+- CoTMocking
+
+**Flags**: IRW
 
 ---
 ## Attr: CoTProcess.promptModeNoData

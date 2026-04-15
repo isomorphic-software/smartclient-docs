@@ -75,6 +75,9 @@ This is the central API reference for the SmartClient framework.
           - [Portlet](classes/Portlet.md)
           - [ModalWindow](classes/ModalWindow.md)
           - [TourWindow](classes/TourWindow.md)
+          - [MockInterceptDialog](classes/MockInterceptDialog.md)
+            - [CoTInterceptDialog](classes/CoTInterceptDialog.md)
+            - [AIInterceptDialog](#class-aiinterceptdialog)
           - [HibernateBrowser](classes/HibernateBrowser.md)
           - [DateRangeDialog](classes/DateRangeDialog.md)
           - [ListPropertiesDialog](classes/ListPropertiesDialog.md)
@@ -305,6 +308,7 @@ This is the central API reference for the SmartClient framework.
     - [CheckboxItem](classes/CheckboxItem.md)
       - [InlineCheckboxItem](#class-inlinecheckboxitem)
     - [RadioGroupItem](classes/RadioGroupItem.md)
+      - [InlineRadioGroupItem](#class-inlineradiogroupitem)
     - [HiddenItem](classes/HiddenItem.md)
     - [HeaderItem](classes/HeaderItem.md)
     - [BlurbItem](classes/BlurbItem.md)
@@ -461,9 +465,9 @@ This is the central API reference for the SmartClient framework.
   - [Authentication](classes/Authentication.md)
     - [Auth](#class-auth)
   - [NumberUtil](classes/NumberUtil.md)
+  - [AI](classes/AI.md)
   - [GroupingMessages](classes/GroupingMessages.md)
   - [JSON](classes/JSON.md)
-  - [AI](classes/AI.md)
   - [RemoteWindow](classes/RemoteWindow.md)
     - [OpenFinWindow](#class-openfinwindow)
   - [Media](classes/Media.md)
@@ -516,6 +520,7 @@ This is the central API reference for the SmartClient framework.
 - [Accessibility / Section 508 compliance](kb_topics/accessibility.md)
 - [Admin Console](kb_topics/adminConsole.md)
 - [Advanced Filtering](kb_topics/advancedFilter.md)
+- [AI Mocking](#kb-topic-ai-mocking)
 - [AIRetriesExhausted](kb_topics/AIRetriesExhausted.md)
 - [ancestry](#kb-topic-ancestry)
 - [Angular Integration](kb_topics/angularIntegration.md)
@@ -1963,6 +1968,40 @@ Title for this Window, shown if [showTitle](classes/Window.md#attr-windowshowtit
 
 ### Description
 Whether to allow the user to cancel the AI process.
+
+**Flags**: IR
+
+---
+## Class: AIInterceptDialog
+
+*Inherits from:* [MockInterceptDialog](classes/MockInterceptDialog.md#class-mockinterceptdialog)
+
+### Description
+Interactive mock dialog for raw AI requests. Shows the AI engine information and provides a text area for entering the raw response text.
+
+This dialog is shown when [AI.mockMode](classes/AI.md#classattr-aimockmode) is set to `"interactive"`. It allows developers to:
+
+*   View the raw prompt being sent to the AI
+*   Enter a mock response manually
+*   Forward to the real AI and preview/modify the result
+
+### Groups
+
+- AIMocking
+
+---
+## Attr: AIInterceptDialog.aiEngine
+
+### Description
+The AI engine handling this request.
+
+**Flags**: IR
+
+---
+## Attr: AIInterceptDialog.aiRequest
+
+### Description
+The AI request being intercepted.
 
 **Flags**: IR
 
@@ -3986,6 +4025,14 @@ Show a currently hidden component.
 - [Canvas.show](classes/Canvas.md#method-canvasshow)
 
 ---
+## Class: InlineRadioGroupItem
+
+*Inherits from:* [RadioGroupItem](classes/RadioGroupItem.md#class-radiogroupitem)
+
+### Description
+RadioGroupItem subclass for inline contexts with reduced item height for consistent row sizing.
+
+---
 ## Class: RibbonGroupEditProxy
 
 ### Description
@@ -4244,6 +4291,29 @@ Container for various helper methods used by our React wrapper classes.
 
 ### Description
 AI-backed utility for generating applications and arbitrary UI.
+
+---
+## KB Topic: AI Mocking
+
+### Description
+Components for intercepting, mocking, and debugging AI requests.
+
+SmartClient provides two levels of AI request interception:
+
+*   **AI Level** - Raw request/response interception via [AI.mockMode](classes/AI.md#classattr-aimockmode)
+*   **CoT Level** - Workflow task interception via [CoTProcess.mockInteractive](classes/CoTProcess.md#attr-cotprocessmockinteractive)
+
+Both levels share a common UI infrastructure through [MockInterceptDialog](classes/MockInterceptDialog.md#class-mockinterceptdialog).
+
+### Related
+
+- [AI.getMockMode](classes/AI.md#classmethod-aigetmockmode)
+- [AI.setMockMode](classes/AI.md#classmethod-aisetmockmode)
+- [AI.addMockResponses](classes/AI.md#classmethod-aiaddmockresponses)
+- [AI.clearMockResponses](classes/AI.md#classmethod-aiclearmockresponses)
+- [MockInterceptDialog](classes/MockInterceptDialog.md#class-mockinterceptdialog)
+- [AIInterceptDialog](#class-aiinterceptdialog)
+- [AI.mockMode](classes/AI.md#classattr-aimockmode)
 
 ---
 ## KB Topic: ancestry
@@ -4735,6 +4805,7 @@ Manipulating the values stored in the form.
 ### Related
 
 - [FormItem.changeOnKeypress](classes/FormItem.md#attr-formitemchangeonkeypress)
+- [FormItem.treatEmptyAsNull](classes/FormItem.md#attr-formitemtreatemptyasnull)
 - [TextItem.changeOnKeypress](classes/TextItem.md#attr-textitemchangeonkeypress)
 - [TextAreaItem.changeOnKeypress](classes/TextAreaItem.md#attr-textareaitemchangeonkeypress)
 - [DetailViewer.valueAlign](classes/DetailViewer.md#attr-detailviewervaluealign)
@@ -4948,23 +5019,6 @@ A string with the format "autoChild:_autoChildName_" passed as a [Tab.pane](clas
 ### See Also
 
 - [autoChildren](kb_topics/autoChildren.md#kb-topic-autochildren)
-
----
-## Type: AutoComplete
-
-### Description
-AutoComplete behavior for [FormItems](classes/FormItem.md#class-formitem).
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| "none" | Disable browser autoComplete. Note that some browsers will disregard this setting and still perform native autoComplete for certain items - typically only for log in / password forms. See the discussion [here](classes/FormItem.md#attr-formitemautocomplete). |
-| "native" | Allow native browser autoComplete. |
-
-### Groups
-
-- autoComplete
 
 ---
 ## Type: AutoFitEvent
@@ -5432,20 +5486,6 @@ An object containing the stored grouping information for a detailViewer. Note th
 ### Groups
 
 - viewState
-
----
-## Type: DeviceMode
-
-### Description
-Possible layout modes for UI components that are sensitive to the device type being used (a.k.a. "responsive design"). See for example [SplitPane.deviceMode](classes/SplitPane.md#attr-splitpanedevicemode).
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| "handset" | mode intended for handset-size devices (phones). Generally only one UI panel will be shown at a time. |
-| "tablet" | mode intended for tablet-size devices. Generally, up to two panels are shown side by side in "landscape" [PageOrientation](#type-pageorientation), and only one panel is shown in "portrait" orientation. |
-| "desktop" | mode intended for desktop browsers. Three or more panels may be shown simultaneously. |
 
 ---
 ## Type: DialogButtons
@@ -6200,21 +6240,6 @@ Supported positioning of the chart Legend.
 ### Groups
 
 - legend
-
----
-## Type: LineBreakStyle
-
-### Description
-The style of line-breaks to use when exporting data
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| "default" | Use the default line-break style of the server OS |
-| "unix" | Use UNIX-style line-breaks (LF only) |
-| "mac" | Use MAC-style line-breaks (CR only) |
-| "dos" | Use DOS-style line-breaks (both CR & LF) |
 
 ---
 ## Type: LineCap
@@ -8403,31 +8428,6 @@ Represents a field in a [DataBoundComponent](#interface-databoundcomponent).
 
 ### Description
 An object literal with a particular set of properties used to configure the display of and interaction with the rows of a [DetailViewer](classes/DetailViewer.md#class-detailviewer).
-
----
-## Object: DetailViewerRecord
-
-### Description
-A DetailViewerRecord is an object literal with properties that define the values for the various fields of a [DetailViewer](classes/DetailViewer.md#class-detailviewer).
-
-For example a DetailViewer that defines the following fields:
-
-```
- fields : [
-     {name: "field1"},
-     {name: "field2"}
- ],
- 
-```
-Might have the following data:
-```
- data : [
-     {field1: "foo", field2: "bar"},
-     {field1: "field1 value", field2: "field2 value"}
- ]
- 
-```
-Each element in the data array above is an instance of DetailViewerRecord - notice that these are specified simply as object literals with properties.
 
 ---
 ## Object: DrawShapeCommand

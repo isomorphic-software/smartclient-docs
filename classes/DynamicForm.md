@@ -294,6 +294,8 @@ When true, columns with flexible widths ("\*", "N\*", or "N%") will automaticall
 
 This prevents overflow when a column contains an item with a fixed pixel width that cannot shrink (such as a TextItem or CanvasItem). See [DynamicForm.colWidths](#attr-dynamicformcolwidths) for manual min/max specification using bracket notation.
 
+Additionally, when enabled, a warning is logged if a column with a fixed pixel width (specified as a plain number in [DynamicForm.colWidths](#attr-dynamicformcolwidths)) contains a colSpan:1 item whose width plus cell padding exceeds the column width. This catches a common configuration error where, for example, a column is set to 200px but the skin's default item width is 220px — the item will silently overflow, causing the browser to redistribute column widths unpredictably. The warning identifies the item and suggests corrective values. Cell padding is computed using CSS-aware style inspection (accounting for custom [cellStyle](FormItem.md#attr-formitemcellstyle) overrides), not just [DynamicForm.cellPadding](#attr-dynamicformcellpadding).
+
 Note that colSpanning items with `width:"*"` prevent the browser's native table layout from shrink-wrapping spanned columns, effectively enforcing calculated column widths even when content would otherwise allow shrinking. This may cause overflow sooner than if colSpan were not used.
 
 ### Groups

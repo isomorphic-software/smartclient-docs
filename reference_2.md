@@ -73,6 +73,23 @@ Supported styles for arrowheads.
 | "open" | Two lines are drawn on each side of the path. |
 
 ---
+## Type: AutoComplete
+
+### Description
+AutoComplete behavior for [FormItems](classes/FormItem.md#class-formitem).
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| "none" | Disable browser autoComplete. Note that some browsers will disregard this setting and still perform native autoComplete for certain items - typically only for log in / password forms. See the discussion [here](classes/FormItem.md#attr-formitemautocomplete). |
+| "native" | Allow native browser autoComplete. |
+
+### Groups
+
+- autoComplete
+
+---
 ## Type: Autofit
 
 ### Description
@@ -708,6 +725,20 @@ Some interfaces, for example the [FieldPicker](classes/FieldPicker.md#class-fiel
 | "brief" | One-line summary descriptions. |
 | "reify" | Reify-level descriptions (medium detail). |
 | "developer" | Full developer-facing documentation. |
+
+---
+## Type: DeviceMode
+
+### Description
+Possible layout modes for UI components that are sensitive to the device type being used (a.k.a. "responsive design"). See for example [SplitPane.deviceMode](classes/SplitPane.md#attr-splitpanedevicemode).
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| "handset" | mode intended for handset-size devices (phones). Generally only one UI panel will be shown at a time. |
+| "tablet" | mode intended for tablet-size devices. Generally, up to two panels are shown side by side in "landscape" [PageOrientation](#type-pageorientation), and only one panel is shown in "portrait" orientation. |
+| "desktop" | mode intended for desktop browsers. Three or more panels may be shown simultaneously. |
 
 ---
 ## Type: Direction
@@ -1666,6 +1697,21 @@ In addition, components may declare that they have [adaptive sizing](classes/Can
 ### See Also
 
 - [Layout.minBreadthMember](classes/Layout.md#attr-layoutminbreadthmember)
+
+---
+## Type: LineBreakStyle
+
+### Description
+The style of line-breaks to use when exporting data
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| "default" | Use the default line-break style of the server OS |
+| "unix" | Use UNIX-style line-breaks (LF only) |
+| "mac" | Use MAC-style line-breaks (CR only) |
+| "dos" | Use DOS-style line-breaks (both CR & LF) |
 
 ---
 ## Type: LinePattern
@@ -2913,7 +2959,7 @@ _Server:_ **not supported**. |
 | first | _Client:_ Currently the same as the **min** function.  
 _Server:_ implemented as SQL MIN function. |
 | concat | _Client:_ iterates through the set of records, producing a string with each value concatenated to the end.  
-_Server:_ implemented as SQL CONCAT function by the Oracle database driver; other SQL drivers perform an additional query to fetch the values for concatenation. This function is also supported for generic dataSources that do not have inherent support for aggregation - see the description of this in the [allowAggregation](classes/DataSource_1.md#attr-datasourceallowaggregation) documentation. Not supported by JPA or Hibernate dataSources. **Note:** This function is only supported for [DataSourceField.includeSummaryFunction](classes/DataSourceField.md#attr-datasourcefieldincludesummaryfunction); it is **not** supported in other summary contexts, such as [DSRequest.summaryFunctions](classes/DSRequest.md#attr-dsrequestsummaryfunctions). See also [joinPrefix](classes/DataSourceField.md#attr-datasourcefieldjoinprefix), [joinString](classes/DataSourceField.md#attr-datasourcefieldjoinstring) and [joinSuffix](classes/DataSourceField.md#attr-datasourcefieldjoinsuffix) related datasource field attributes. |
+_Server:_ implemented as a native SQL aggregate expression by the Oracle (LISTAGG) and PostgreSQL (string\_agg) database drivers; other SQL drivers perform an additional query to fetch the values for concatenation. This function is also supported for generic dataSources that do not have inherent support for aggregation - see the description of this in the [allowAggregation](classes/DataSource_1.md#attr-datasourceallowaggregation) documentation. Not supported by JPA or Hibernate dataSources. **Note:** This function is only supported for [DataSourceField.includeSummaryFunction](classes/DataSourceField.md#attr-datasourcefieldincludesummaryfunction); it is **not** supported in other summary contexts, such as [DSRequest.summaryFunctions](classes/DSRequest.md#attr-dsrequestsummaryfunctions). See also [joinPrefix](classes/DataSourceField.md#attr-datasourcefieldjoinprefix), [joinString](classes/DataSourceField.md#attr-datasourcefieldjoinstring) and [joinSuffix](classes/DataSourceField.md#attr-datasourcefieldjoinsuffix) related datasource field attributes. |
 | array | _Client:_ The same approach as for "concat"but returning an array of the values, rather than a string concatenation  
 _Server:_ The same approach as for "concat", and with the same restrictons and limitations, but returning an array of the values, rather than a string concatenation. |
 
@@ -3509,6 +3555,31 @@ The general approach is that we track a maximum of [maxTrackedOverflows](classes
 
 ### Description
 Identifies a potential branch within a [MultiDecisionTask](classes/MultiDecisionTask.md#class-multidecisiontask). Each decision has a criteria and a target ProcessElement ID.
+
+---
+## Object: DetailViewerRecord
+
+### Description
+A DetailViewerRecord is an object literal with properties that define the values for the various fields of a [DetailViewer](classes/DetailViewer.md#class-detailviewer).
+
+For example a DetailViewer that defines the following fields:
+
+```
+ fields : [
+     {name: "field1"},
+     {name: "field2"}
+ ],
+ 
+```
+Might have the following data:
+```
+ data : [
+     {field1: "foo", field2: "bar"},
+     {field1: "field1 value", field2: "field2 value"}
+ ]
+ 
+```
+Each element in the data array above is an instance of DetailViewerRecord - notice that these are specified simply as object literals with properties.
 
 ---
 ## Object: DiscoverTreeSettings

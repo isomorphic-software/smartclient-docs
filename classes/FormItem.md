@@ -725,6 +725,20 @@ If the item [suppresses hovers](#attr-formitemcanhover), nothing will be shown.
 **Flags**: IRW
 
 ---
+## Attr: FormItem.suppressOptionDSFallback
+
+### Description
+When set to `true`, [getOptionDataSource()](#method-formitemgetoptiondatasource) returns only the explicitly configured [FormItem.optionDataSource](#attr-formitemoptiondatasource) without falling back to the [foreignKey](DataSourceField.md#attr-datasourcefieldforeignkey) target DataSource or the form's DataSource.
+
+This is useful in applications that create per-field DataSources dynamically and do not want the framework to infer an option DataSource from the form's DataSource, which could trigger unwanted fetches or produce incorrect display values.
+
+### Groups
+
+- display_values
+
+**Flags**: IR
+
+---
 ## Attr: FormItem.updatePickerIconOnOver
 
 ### Description
@@ -1188,6 +1202,16 @@ This attribute should be set to a mapping of aria state-names to values - for ex
 **Flags**: IRWA
 
 ---
+## Attr: FormItem.textBoxVPad
+
+### Description
+Extra vertical padding (in pixels, per side) between the FormItem boundary and the visible text input area. When set, the text box is shortened by `2 * textBoxVPad` and remains centered within the item's configured height. Defaults to null (no extra padding).
+
+If reducing the text box height would make it smaller than 8px, the effective padding is clamped to 1px per side.
+
+**Flags**: IR
+
+---
 ## Attr: FormItem.implicitSaveOnBlur
 
 ### Description
@@ -1259,6 +1283,20 @@ An internal, unique ID will automatically be created upon instantiation for any 
 - basics
 
 **Flags**: IRW
+
+---
+## Attr: FormItem.permanentlyHidden
+
+### Description
+When set to `true`, this item cannot be shown via [FormItem.show](#method-formitemshow) or any other mechanism. The item remains permanently hidden regardless of [FormItem.showIf](#method-formitemshowif) or [FormItem.visibleWhen](#attr-formitemvisiblewhen) evaluation.
+
+This is useful for items that are part of a DataSource-driven form but should never be displayed to the user, such as internal tracking fields. Unlike simply setting [visible:false](#attr-formitemvisible), `permanentlyHidden` prevents any later code from inadvertently showing the item.
+
+### Groups
+
+- appearance
+
+**Flags**: IR
 
 ---
 ## Attr: FormItem.allowExpressions
@@ -1385,6 +1423,18 @@ Overrides the [same attribute](Canvas.md#attr-canvashoverfocuskey) on the parent
 - [FormItem.hoverPersist](#attr-formitemhoverpersist)
 
 **Flags**: IRW
+
+---
+## Attr: FormItem.enableTitleClickWhenDisabled
+
+### Description
+When set to `true`, [titleClick()](#method-formitemtitleclick) fires even when the item is [disabled](#method-formitemisdisabled). By default, title clicks on disabled items are suppressed.
+
+### Groups
+
+- event handling
+
+**Flags**: IR
 
 ---
 ## Attr: FormItem.showDisabledIconsOnFocus
@@ -2300,6 +2350,20 @@ CSS class for a form item's cell in the form layout
 **Flags**: IR
 
 ---
+## Attr: FormItem.treatEmptyAsNull
+
+### Description
+When set to `true`, [compareValues](#method-comparevalues) treats `null`, `undefined`, and the empty string `""` as equivalent values. This affects change detection: transitioning between any of these three values will not be considered a change.
+
+This is useful for forms that interact with servers or data models where the distinction between null and empty string is not meaningful, such as ERP systems that use empty strings and nulls interchangeably.
+
+### Groups
+
+- values
+
+**Flags**: IR
+
+---
 ## Attr: FormItem.showFocused
 
 ### Description
@@ -2557,6 +2621,27 @@ Note: the default value of this attribute is overridden by some subclasses.
 ### Groups
 
 - title
+
+**Flags**: IRW
+
+---
+## Attr: FormItem.valueIconAriaRole
+
+### Description
+Controls the WAI ARIA role applied to valueIcon elements for this item when [screen reader\\n mode](isc.md#staticmethod-iscsetscreenreadermode) is active.
+
+When unset, the role is determined automatically: if [FormItem.showValueIconOnly](#attr-formitemshowvalueicononly) is true the icon gets `role="img"` with an `aria-label`; otherwise it gets `role="presentation"`.
+
+Set to `"img"` to force screen reader announcement even when text is shown, or `"presentation"` to suppress even when icon-only.
+
+### Groups
+
+- valueIcons
+- accessibility
+
+### See Also
+
+- [FormItem.showValueIconOnly](#attr-formitemshowvalueicononly)
 
 **Flags**: IRW
 
@@ -5825,6 +5910,8 @@ Is the user performing a native "paste" event to modify the value of a freeform 
 Returns the [FormItem.optionDataSource](#attr-formitemoptiondatasource) for this item.
 
 Always uses `item.optionDataSource` if specified. Otherwise, if [DataSourceField.foreignKey](DataSourceField.md#attr-datasourcefieldforeignkey) was specified, uses the target DataSource. Otherwise, uses the DataSource of this item's form (if one is configured).
+
+Set [FormItem.suppressOptionDSFallback](#attr-formitemsuppressoptiondsfallback) to prevent the foreignKey and form DataSource fallback behavior.
 
 ### Returns
 

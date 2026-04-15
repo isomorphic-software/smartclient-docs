@@ -28,10 +28,14 @@ For regression testing, you can capture real AI responses during a live run and 
 - [CoTProcess.setMockReplayFailure](../classes/CoTProcess.md#method-cotprocesssetmockreplayfailure)
 - [CoTTask.mockOutput](../classes/CoTTask.md#method-cottaskmockoutput)
 - [AUN.mockOutput](../classes/AUN.md#method-aunmockoutput)
+- [CoTInterceptDialog](../classes/CoTInterceptDialog.md#class-cotinterceptdialog)
+- [CoTProcess.defaultMockInteractive](../classes/CoTProcess.md#classattr-cotprocessdefaultmockinteractive)
 - [CoTProcess.mockMode](../classes/CoTProcess.md#attr-cotprocessmockmode)
+- [CoTProcess.mockInteractive](../classes/CoTProcess.md#attr-cotprocessmockinteractive)
 - [CoTProcess.captureMockData](../classes/CoTProcess.md#attr-cotprocesscapturemockdata)
 - [CoTProcess.mockData](../classes/CoTProcess.md#attr-cotprocessmockdata)
 - [CoTTask.mockMode](../classes/CoTTask.md#attr-cottaskmockmode)
+- [CoTTask.mockInteractive](../classes/CoTTask.md#attr-cottaskmockinteractive)
 - [AUN.mockMode](../classes/AUN.md#attr-aunmockmode)
 
 ---

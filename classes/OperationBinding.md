@@ -204,7 +204,7 @@ Valid only for an operation of type "fetch". See the [Server Summaries overview]
 ## Attr: OperationBinding.lineBreakStyle
 
 ### Description
-The style of line-breaks to use in the exported output. See [LineBreakStyle](../reference.md#type-linebreakstyle) for more information.
+The style of line-breaks to use in the exported output. See [LineBreakStyle](../reference_2.md#type-linebreakstyle) for more information.
 
 **Flags**: IR
 
@@ -523,7 +523,7 @@ When set, causes the results of the DataSource Operation to be exported to a fil
 
 The export field-list can also be configured, see [DSRequest.exportFields](DSRequest.md#attr-dsrequestexportfields).
 
-You can also configure the style of line-breaks to use when generating the output. See [LineBreakStyle](../reference.md#type-linebreakstyle) for more information.
+You can also configure the style of line-breaks to use when generating the output. See [LineBreakStyle](../reference_2.md#type-linebreakstyle) for more information.
 
 As well as setting this and other properties on the [OperationBinding](#class-operationbinding), Exports can be initiated in two other ways. You can set properties on the dsRequest by passing _requestProperties_ into [DataSource.exportData](DataSource_1.md#method-datasourceexportdata). Note that this method does not support exporting to JSON format (see [this post](http://forums.smartclient.com/showthread.php?t=235) for more detail). Additionally, custom server code may set export-related properties on the [DSResponse](DSResponse.md#class-dsresponse).
 

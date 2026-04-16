@@ -647,7 +647,7 @@ Note that streaming requires specific server support; of SmartClient's built-in 
 
 See also the server-side documentation for `DSResponse`, `SQLDataSource` and `StreamingResponseIterator`.
 
-Note, that streaming results does not support fields with ["concat" summary function](../reference_2.md#type-summaryfunction) on databases other than Oracle and PostgreSQL. Such fields will be skipped.
+Note, that streaming results does not support fields with ["concat" or "concatDistinct"](../reference_2.md#type-summaryfunction) summary functions on databases other than Oracle, PostgreSQL, and MySQL. Such fields will be skipped.
 
 **Flags**: IR
 

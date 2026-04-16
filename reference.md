@@ -460,12 +460,12 @@ This is the central API reference for the SmartClient framework.
     - [HandPlacedContainerEditProxy](#class-handplacedcontainereditproxy)
   - [Selection](classes/Selection.md)
   - [Operators](classes/Operators.md)
+  - [AI](classes/AI.md)
   - [Mail](classes/Mail.md)
   - [Hover](classes/Hover.md)
   - [Authentication](classes/Authentication.md)
     - [Auth](#class-auth)
   - [NumberUtil](classes/NumberUtil.md)
-  - [AI](classes/AI.md)
   - [GroupingMessages](classes/GroupingMessages.md)
   - [JSON](classes/JSON.md)
   - [RemoteWindow](classes/RemoteWindow.md)
@@ -1892,6 +1892,40 @@ Message type.
 **Flags**: IR
 
 ---
+## Class: AIInterceptDialog
+
+*Inherits from:* [MockInterceptDialog](classes/MockInterceptDialog.md#class-mockinterceptdialog)
+
+### Description
+Interactive mock dialog for raw AI requests. Shows the AI engine information and provides a text area for entering the raw response text.
+
+This dialog is shown when [AI.mockingPolicy](classes/AI.md#classattr-aimockingpolicy) is set to `"interactive"`. It allows developers to:
+
+*   View the raw prompt being sent to the AI
+*   Enter a mock response manually
+*   Forward to the real AI and preview/modify the result
+
+### Groups
+
+- AIMocking
+
+---
+## Attr: AIInterceptDialog.aiEngine
+
+### Description
+The AI engine handling this request.
+
+**Flags**: IR
+
+---
+## Attr: AIInterceptDialog.aiRequest
+
+### Description
+The AI request being intercepted.
+
+**Flags**: IR
+
+---
 ## Class: FormValidateValuesTask
 
 *Inherits from:* [ComponentTask](classes/ComponentTask.md#class-componenttask)
@@ -1968,40 +2002,6 @@ Title for this Window, shown if [showTitle](classes/Window.md#attr-windowshowtit
 
 ### Description
 Whether to allow the user to cancel the AI process.
-
-**Flags**: IR
-
----
-## Class: AIInterceptDialog
-
-*Inherits from:* [MockInterceptDialog](classes/MockInterceptDialog.md#class-mockinterceptdialog)
-
-### Description
-Interactive mock dialog for raw AI requests. Shows the AI engine information and provides a text area for entering the raw response text.
-
-This dialog is shown when [AI.mockMode](classes/AI.md#classattr-aimockmode) is set to `"interactive"`. It allows developers to:
-
-*   View the raw prompt being sent to the AI
-*   Enter a mock response manually
-*   Forward to the real AI and preview/modify the result
-
-### Groups
-
-- AIMocking
-
----
-## Attr: AIInterceptDialog.aiEngine
-
-### Description
-The AI engine handling this request.
-
-**Flags**: IR
-
----
-## Attr: AIInterceptDialog.aiRequest
-
-### Description
-The AI request being intercepted.
 
 **Flags**: IR
 
@@ -4300,20 +4300,20 @@ Components for intercepting, mocking, and debugging AI requests.
 
 SmartClient provides two levels of AI request interception:
 
-*   **AI Level** - Raw request/response interception via [AI.mockMode](classes/AI.md#classattr-aimockmode)
+*   **AI Level** - Raw request/response interception via [AI.mockingPolicy](classes/AI.md#classattr-aimockingpolicy)
 *   **CoT Level** - Workflow task interception via [CoTProcess.mockInteractive](classes/CoTProcess.md#attr-cotprocessmockinteractive)
 
 Both levels share a common UI infrastructure through [MockInterceptDialog](classes/MockInterceptDialog.md#class-mockinterceptdialog).
 
 ### Related
 
-- [AI.getMockMode](classes/AI.md#classmethod-aigetmockmode)
-- [AI.setMockMode](classes/AI.md#classmethod-aisetmockmode)
+- [AI.getMockingPolicy](classes/AI.md#classmethod-aigetmockingpolicy)
+- [AI.setMockingPolicy](classes/AI.md#classmethod-aisetmockingpolicy)
 - [AI.addMockResponses](classes/AI.md#classmethod-aiaddmockresponses)
 - [AI.clearMockResponses](classes/AI.md#classmethod-aiclearmockresponses)
 - [MockInterceptDialog](classes/MockInterceptDialog.md#class-mockinterceptdialog)
 - [AIInterceptDialog](#class-aiinterceptdialog)
-- [AI.mockMode](classes/AI.md#classattr-aimockmode)
+- [AI.mockingPolicy](classes/AI.md#classattr-aimockingpolicy)
 
 ---
 ## KB Topic: ancestry

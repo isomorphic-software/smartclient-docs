@@ -464,9 +464,12 @@ Returns a named prompt fragment or concatenation of fragments for inclusion in t
 *   **"history"** – primer from [CoTProcess.historyPrimer](#attr-cotprocesshistoryprimer), then recent entries (omitted if [noHistory](#attr-cotprocessnohistory) is true)
 *   **"transitions"** – [CoTProcess.transitionsPrimer](#attr-cotprocesstransitionsprimer) followed by the current task's transitions
 *   **"errors"** – primer from [CoTProcess.errorsPrimer](#attr-cotprocesserrorsprimer) (or [CoTTask.errorsPrimer](CoTTask.md#attr-cottaskerrorsprimer)), then current validation errors if any
+*   **"outputFormat"** – auto-generated "respond in this format" section built from the current task's [CoTTask.outputFields](CoTTask.md#attr-cottaskoutputfields) / [CoTTask.outputDS](CoTTask.md#attr-cottaskoutputds). Renders field name, type, required flag, `description`, and enumerated `valueMap`. Returns empty when the current task has no output schema.
 *   **"goalData"** – the raw [CoTProcess.goal](#attr-cotprocessgoal) value.
 
 Names matching keys in [CoTProcess.optionalPrompts](#attr-cotprocessoptionalprompts) return that text. Pass an Array of names to concatenate multiple parts. Set `omitNewlines` to true to omit surrounding newlines.
+
+A task can suppress any of these named parts by setting [CoTTask.partialPrompt](CoTTask.md#attr-cottaskpartialprompt) with an `omit` array; names listed there resolve to the empty string. This lets a task opt out of an auto-generated part (e.g. `"outputFormat"`) when its format is too conditional to express via field metadata.
 
 ### Parameters
 

@@ -26,22 +26,6 @@ Provides class methods for enabling and disabling the use of AI technology, regi
 **Flags**: RW
 
 ---
-## ClassAttr: AI.mockMode
-
-### Description
-Alias for [AI.responseSpoofingMode](#classattr-airesponsespoofingmode). Value mappings:
-
-*   "none" = "none" (no mocking)
-*   "auto" = "hybrid" (use mock data when available)
-*   "interactive" = "full" (always prompt user)
-
-### Groups
-
-- AIMocking
-
-**Flags**: IRW
-
----
 ## ClassAttr: AI.noAIEngineSupportingVisionRequestsIsRegisteredErrorMessage
 
 ### Description
@@ -52,6 +36,26 @@ Alias for [AI.responseSpoofingMode](#classattr-airesponsespoofingmode). Value ma
 - i18nMessages
 
 **Flags**: RW
+
+---
+## ClassAttr: AI.mockingPolicy
+
+### Description
+Governs whether mock responses registered via [AI.addMockResponses](#classmethod-aiaddmockresponses) are used in place of real AI calls, and whether the [AIInterceptDialog](../reference.md#class-aiinterceptdialog) is shown to let a user inspect or edit each response before it is returned. Alias for the older [AI.responseSpoofingMode](#classattr-airesponsespoofingmode).
+
+Value mappings to the legacy attribute:
+
+*   `"none"` = legacy `"none"` (never use mock responses; always contact the AI server)
+*   `"auto"` = legacy `"hybrid"` (use a registered mock response when one matches the current request; otherwise contact the AI server)
+*   `"interactive"` = legacy `"full"` (always show the intercept dialog for every AI request; the user can edit the response, forward the prompt to the real AI, or cancel)
+
+This attribute operates at the raw AI-request layer and is independent of the CoT-level mocking flags [CoTProcess.mockMode](CoTProcess.md#attr-cotprocessmockmode) / [CoTProcess.mockInteractive](CoTProcess.md#attr-cotprocessmockinteractive). When both layers are active, the CoT-level dialog appears first and the AI-level dialog appears subsequently when the user forwards the request to the AI engine.
+
+### Groups
+
+- AIMocking
+
+**Flags**: IRW
 
 ---
 ## ClassAttr: AI.aiWasDisabledMessage
@@ -181,20 +185,6 @@ The defualt maximum number of retries for any one particular request to AI.
 **Flags**: RW
 
 ---
-## ClassMethod: AI.getMockMode
-
-### Description
-Returns the [AI.mockMode](#classattr-aimockmode).
-
-### Returns
-
-`[String](#type-string)` — The current mock mode: "none", "auto", or "interactive"
-
-### Groups
-
-- AIMocking
-
----
 ## ClassMethod: AI.resumeDataQuestion
 
 ### Description
@@ -266,22 +256,6 @@ Within `dynamicString`, any evaluated JavaScript expressions have access to all 
 - dynamicStrings
 
 ---
-## ClassMethod: AI.setMockMode
-
-### Description
-Sets the [AI.mockMode](#classattr-aimockmode).
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| mode | [String](#type-string) | false | — | The mock mode: "none", "auto", or "interactive" |
-
-### Groups
-
-- AIMocking
-
----
 ## ClassMethod: AI.pauseDataQuestion
 
 ### Description
@@ -315,6 +289,36 @@ Asks AI to answer a question about the data of the application.
 ### Groups
 
 - answerEngine
+
+---
+## ClassMethod: AI.getMockingPolicy
+
+### Description
+Returns the current [AI.mockingPolicy](#classattr-aimockingpolicy). The return value is always one of `"none"`, `"auto"`, or `"interactive"`; the legacy [AI.responseSpoofingMode](#classattr-airesponsespoofingmode) values `"hybrid"` and `"full"` are normalized before returning.
+
+### Returns
+
+`[String](#type-string)` — The current mocking policy: "none", "auto", or "interactive"
+
+### Groups
+
+- AIMocking
+
+---
+## ClassMethod: AI.setMockingPolicy
+
+### Description
+Sets [AI.mockingPolicy](#classattr-aimockingpolicy). Pass one of `"none"`, `"auto"`, or `"interactive"`.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| policy | [String](#type-string) | false | — | The mocking policy: "none", "auto", or "interactive" |
+
+### Groups
+
+- AIMocking
 
 ---
 ## ClassMethod: AI.addMockResponses

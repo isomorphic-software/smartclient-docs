@@ -164,6 +164,8 @@ Maximum number of retries for validation failures for this task. If unset, inher
 ### Description
 Shorthand for [CoTTask.outputDS](#attr-cottaskoutputds), causing a temporary DataSource to be created to validate AI outputs. See [CoTTask.outputDS](#attr-cottaskoutputds) for details of how validation is performed.
 
+The same field metadata drives the auto-generated `"outputFormat"` prompt part (see [CoTProcess.getPromptPart](CoTProcess.md#method-cotprocessgetpromptpart)). Setting `description` and `valueMap` on an output field adds the corresponding guidance to the format section shown to the AI, so a single schema description serves both prompting and validation. A task that wants to write a custom format block instead can suppress the auto-generated one via [CoTTask.partialPrompt](#attr-cottaskpartialprompt).
+
 **Flags**: IR
 
 ---
@@ -171,6 +173,16 @@ Shorthand for [CoTTask.outputDS](#attr-cottaskoutputds), causing a temporary Dat
 
 ### Description
 Declarative mapping from [StatePaths](../reference_2.md#type-statepath) to [TaskInputExpressions](../reference_2.md#type-taskinputexpression), or just a single StatePath if the entire outputs object should be applied to a single path. When the task completes successfully (no validation errors), each mapping is applied to update [Process.state](Process.md#attr-processstate). Shorthand: a String path means the entire outputs go to that path.
+
+**Flags**: IR
+
+---
+## Attr: CoTTask.partialPrompt
+
+### Description
+Optional object controlling which prompt parts this task contributes to its assembled prompt. Currently supports a single sub-property, `omit`, which is an Array of prompt-part names to suppress. Any name listed there resolves to the empty string when [CoTProcess.getPromptPart](CoTProcess.md#method-cotprocessgetpromptpart) is called for this task - both in the default template and from explicit `promptPart()` / `prt()` calls in a custom `taskPrompt`.
+
+The typical use case is opting out of the auto-generated `"outputFormat"` section when a task's output shape is too conditional or complex to express via field metadata - the task can omit `"outputFormat"` and include its own hand-written format instructions in `taskPrompt` instead. Example: `partialPrompt: { omit: ["outputFormat"] }`.
 
 **Flags**: IR
 

@@ -55,6 +55,16 @@ Value of `failureElement` in various [tasks](ProcessElement.md#class-processelem
 **Flags**: IR
 
 ---
+## Attr: Process.currentTask
+
+### Description
+The task that is currently being executed by this process, or `null` when no task is running. Populated by [Process.start](#method-processstart) immediately before each call to [ProcessElement.executeElement](ProcessElement.md#method-processelementexecuteelement) and remains set until either (a) the task completes synchronously and the loop advances, or (b) the task completes asynchronously and a subsequent [Process.start](#method-processstart) invocation picks up the next task and overwrites the pointer. A fully-finished process clears it back to `null`.
+
+This is the authoritative "what is running right now" pointer for code that needs to inspect the active task from outside the execution call stack - most notably CoT prompt assembly, which uses it to resolve task-scoped prompt fragments against the correct [CoTTask](CoTTask.md#class-cottask). Application code should treat it as read-only.
+
+**Flags**: IR
+
+---
 ## Attr: Process.state
 
 ### Description

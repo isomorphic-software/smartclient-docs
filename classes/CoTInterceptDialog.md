@@ -11,7 +11,7 @@
 ### Description
 A modal dialog that intercepts CoTTask execution, allowing developers to inspect the assembled prompt, view/modify the response fields, and optionally forward to the real AI.
 
-This dialog is shown when [CoTProcess.mockInteractive](CoTProcess.md#attr-cotprocessmockinteractive) or [CoTTask.mockInteractive](CoTTask.md#attr-cottaskmockinteractive) is true. It provides workflow-level debugging that complements the transport-level debugging available via [AI.mockMode](AI.md#classattr-aimockmode).
+This dialog is shown when [CoTProcess.mockInteractive](CoTProcess.md#attr-cotprocessmockinteractive) or [CoTTask.mockInteractive](CoTTask.md#attr-cottaskmockinteractive) is true. It provides workflow-level debugging that complements the transport-level debugging available via [AI.mockingPolicy](AI.md#classattr-aimockingpolicy).
 
 CoTInterceptDialog extends [MockInterceptDialog](MockInterceptDialog.md#class-mockinterceptdialog) (if available) or Window, providing a structured form editor based on the task's [CoTTask.outputFields](CoTTask.md#attr-cottaskoutputfields).
 

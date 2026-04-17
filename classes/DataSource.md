@@ -47,6 +47,14 @@ A message returned by a `DataSource` when an operation requires criteria, but no
 **Flags**: IRW
 
 ---
+## ClassAttr: DataSource.defaultAccentInsensitive
+
+### Description
+System-wide default for [DataSource.accentInsensitive](#attr-datasourceaccentinsensitive). When true, all DataSources default to accent-insensitive client-side filtering unless they explicitly set `accentInsensitive:false`.
+
+**Flags**: RW
+
+---
 ## ClassAttr: DataSource.deepCloneNonFieldValuesOnEdit
 
 ### Description
@@ -2478,6 +2486,20 @@ If you specify both `projectFileKey` and `projectFileLocations`, then both with 
 Allows you to specify ["update" operation](../reference_2.md#type-dsoperationtype) SQL query execution time threshold in milliseconds, which if exceeded query is identified as "slow" and may be logged under specific logging category.
 
 See [DataSource.logSlowSQL](#attr-datasourcelogslowsql) for more details.
+
+**Flags**: IR
+
+---
+## Attr: DataSource.accentInsensitive
+
+### Description
+When true, client-side filtering via [DataSource.fieldMatchesFilter](#method-datasourcefieldmatchesfilter) strips diacritical marks (accents) from both the field value and the filter value before comparison. This makes "cafe" match "café", "ñ" match "n", etc.
+
+Uses Unicode NFD normalization to decompose accented characters, then removes the combining marks. This handles all Unicode accents, not just Latin characters.
+
+This setting only affects client-side filtering. For server-side accent-insensitive filtering, configure the database collation appropriately.
+
+Can also be set system-wide via [DataSource.defaultAccentInsensitive](#classattr-datasourcedefaultaccentinsensitive).
 
 **Flags**: IR
 

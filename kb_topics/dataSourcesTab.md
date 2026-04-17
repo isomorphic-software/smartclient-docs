@@ -13,7 +13,7 @@ The DataSources tab, found in the [Admin Console](adminConsole.md#kb-topic-admin
 
 If you are using our server product and you have [deployed the tools](toolsDeployment.md#kb-topic-tools-deployment), then the DataSources tab bypasses normal security restrictions and allows any operation on any DataSource. Otherwise, if the tools are not deployed or not accessible to the current user, then the DataSources tab only lets you do whatever the currently authorized user can do.
 
-If you use the [DataSource auditing](../classes/DataSource_1.md#attr-datasourceaudit) feature, the DataSources tab also allows you to access the audit trail for any DataSource where auditing is enabled.
+If you use the [DataSource auditing](../classes/DataSource.md#attr-datasourceaudit) feature, the DataSources tab also allows you to access the audit trail for any DataSource where auditing is enabled.
 
 **Usage**
 

@@ -32,17 +32,17 @@ Note: you may need to restart your servlet engine/J2EE container before this exa
 
 The attributes set directly on the DataSource tag have special meaning for a component schema definition:
 
-*   [serverType](../classes/DataSource_1.md#attr-datasourceservertype)="component" indicates this DataSource describes a component, as opposed to a SQL table or other data provider
-*   [ID](../classes/DataSource_1.md#attr-datasourceid) means the tagName that will be used to create your custom component. This must match the first component of the filename. (ID="MyListGrid" means the filename must be MyListGrid.ds.xml, and typically also matches the name of the class).
-*   [DataSource.inheritsFrom](../classes/DataSource_1.md#attr-datasourceinheritsfrom)="ListGrid" inherits the ListGrid property definitions via [DataSource.inheritsFrom](../classes/DataSource_1.md#attr-datasourceinheritsfrom).
+*   [serverType](../classes/DataSource.md#attr-datasourceservertype)="component" indicates this DataSource describes a component, as opposed to a SQL table or other data provider
+*   [ID](../classes/DataSource.md#attr-datasourceid) means the tagName that will be used to create your custom component. This must match the first component of the filename. (ID="MyListGrid" means the filename must be MyListGrid.ds.xml, and typically also matches the name of the class).
+*   [DataSource.inheritsFrom](../classes/DataSource.md#attr-datasourceinheritsfrom)="ListGrid" inherits the ListGrid property definitions via [DataSource.inheritsFrom](../classes/DataSource.md#attr-datasourceinheritsfrom).
 *   instanceConstructor="MyListGrid" indicates the SmartClient class that [create()](../classes/Class.md#classmethod-classcreate) should be called on to construct an instance.
-*   showLocalFieldsOnly is a boolean that, when set to true, tells the [Reify](reify.md#kb-topic-reify-overview) to show only the fields declared in this schema in the component editor. Otherwise fields inherited via [DataSource.inheritsFrom](../classes/DataSource_1.md#attr-datasourceinheritsfrom) (all the way up the chain) are also included.
+*   showLocalFieldsOnly is a boolean that, when set to true, tells the [Reify](reify.md#kb-topic-reify-overview) to show only the fields declared in this schema in the component editor. Otherwise fields inherited via [DataSource.inheritsFrom](../classes/DataSource.md#attr-datasourceinheritsfrom) (all the way up the chain) are also included.
 *   showSuperClassEvents is a boolean that, like showLocalFieldsOnly, optionally restricts the list of events shown in the Events tab of the [Reify](reify.md#kb-topic-reify-overview) to those defined in this schema only.
 *   showSuperClassActions is a boolean that optionally restricts the list of actions shown in the menu when you map a component Event to a component Action within [Reify](reify.md#kb-topic-reify-overview) to those defined in this schema only.
 
 **Declaring custom properties**
 
-Custom properties are declared via [fields](../classes/DataSource_1.md#attr-datasourcefields) as for an ordinary [DataSource](../classes/DataSource_1.md#class-datasource). As with ordinary DataSources, it is legal to redeclare inherited fields in order to modify properties such as [field.editorType](../classes/DataSourceField.md#attr-datasourcefieldeditortype).
+Custom properties are declared via [fields](../classes/DataSource.md#attr-datasourcefields) as for an ordinary [DataSource](../classes/DataSource.md#class-datasource). As with ordinary DataSources, it is legal to redeclare inherited fields in order to modify properties such as [field.editorType](../classes/DataSourceField.md#attr-datasourcefieldeditortype).
 
 The following DataSourceField properties have special significance when a component schema is used to process [component XML](componentXML.md#kb-topic-component-xml):
 

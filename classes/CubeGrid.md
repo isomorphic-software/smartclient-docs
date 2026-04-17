@@ -107,7 +107,7 @@ To use this feature, either:
 *   all data must be returned by the first DataSource fetch, OR
 *   [CubeGrid.hideEmptyAxis](#attr-cubegridhideemptyaxis) must be set to either "row" or "column" so that empty values are only automatically hidden for one axis
 
-This last point is required because there is no way to determine whether a row is empty unless data for all columns of the row has been loaded (and vice-versa). For this reason if you set hideEmptyFacetValues but do not set hideEmptyAxis, the default behavior of [loading only visible data](DataSource_1.md#class-datasource) is automatically disabled and only [CubeGrid.fixedFacetValues](#attr-cubegridfixedfacetvalues) will be sent as criteria.
+This last point is required because there is no way to determine whether a row is empty unless data for all columns of the row has been loaded (and vice-versa). For this reason if you set hideEmptyFacetValues but do not set hideEmptyAxis, the default behavior of [loading only visible data](DataSource.md#class-datasource) is automatically disabled and only [CubeGrid.fixedFacetValues](#attr-cubegridfixedfacetvalues) will be sent as criteria.
 
 ### Groups
 
@@ -173,7 +173,7 @@ Scrolling, expanding/collapsing tree facets, pivoting, and changing the currentl
 
 The CubeGrid will generally attempt to fetch a minimal set of data to fill the viewport, sending multiple fetch operations in a batch (via [queueing](RPCManager.md#classmethod-rpcmanagerstartqueue)) which minimally describe newly revealed areas without specifying each individual cell. The CubeGrid will automatically handle being provided _more_ data than was asked for, so server-side fetch-ahead policies can be implemented without any client-side customization.
 
-Note that the [SQL connector](DataSource_1.md#attr-datasourceservertype) shipped with the SmartClient SDK is capable of responding to the CubeGrid's data requests without writing any custom server code.
+Note that the [SQL connector](DataSource.md#attr-datasourceservertype) shipped with the SmartClient SDK is capable of responding to the CubeGrid's data requests without writing any custom server code.
 
 **Flags**: IR
 
@@ -2215,7 +2215,7 @@ StringMethod handler fired from hover over a facet label
 ## Method: CubeGrid.getPrintHTML
 
 ### Description
-Note that CubeGrid does not support a WYSIWYG print view by default(also used when [exporting to pdf](RPCManager.md#classmethod-rpcmanagerexportcontent)). Instead we recommend [exporting to excel or csv format](DataSource_1.md#method-datasourceexportclientdata).
+Note that CubeGrid does not support a WYSIWYG print view by default(also used when [exporting to pdf](RPCManager.md#classmethod-rpcmanagerexportcontent)). Instead we recommend [exporting to excel or csv format](DataSource.md#method-datasourceexportclientdata).
 
 ### Parameters
 

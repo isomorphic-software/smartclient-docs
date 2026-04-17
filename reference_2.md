@@ -73,23 +73,6 @@ Supported styles for arrowheads.
 | "open" | Two lines are drawn on each side of the path. |
 
 ---
-## Type: AutoComplete
-
-### Description
-AutoComplete behavior for [FormItems](classes/FormItem.md#class-formitem).
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| "none" | Disable browser autoComplete. Note that some browsers will disregard this setting and still perform native autoComplete for certain items - typically only for log in / password forms. See the discussion [here](classes/FormItem.md#attr-formitemautocomplete). |
-| "native" | Allow native browser autoComplete. |
-
-### Groups
-
-- autoComplete
-
----
 ## Type: Autofit
 
 ### Description
@@ -199,21 +182,21 @@ Possible values for [Canvas.backgroundRepeat](classes/Canvas.md#attr-canvasbackg
 ## Type: CacheSyncStrategy
 
 ### Description
-Indicates the strategy to be used for [automatic cache synchronization](kb_topics/cacheSynchronization.md#kb-topic-automatic-cache-synchronization), for a given [DataSource](classes/DataSource_1.md#attr-datasourcecachesyncstrategy), [OperationBinding](classes/OperationBinding.md#attr-operationbindingcachesyncstrategy) or [DSRequest](classes/DSRequest.md#attr-dsrequestcachesyncstrategy).
+Indicates the strategy to be used for [automatic cache synchronization](kb_topics/cacheSynchronization.md#kb-topic-automatic-cache-synchronization), for a given [DataSource](#attr-datasourcecachesyncstrategy), [OperationBinding](#attr-operationbindingcachesyncstrategy) or [DSRequest](#attr-dsrequestcachesyncstrategy).
 
 ### Values
 
 | Value | Description |
 |-------|-------------|
-| "refetch" | Obtain cache sync values by refetching the record we just updated or added. If the DataSource contains [primary key fields](classes/DataSource_2.md#method-datasourcegetprimarykeyfields) of type `sequence`, the framework will first attempt to obtain values for those fields - see [sequenceMode](#type-sequencemode).
+| "refetch" | Obtain cache sync values by refetching the record we just updated or added. If the DataSource contains [primary key fields](classes/DataSource.md#method-datasourcegetprimarykeyfields) of type `sequence`, the framework will first attempt to obtain values for those fields - see [sequenceMode](#type-sequencemode).
 
 This is the most complete and foolproof way to get cache sync data, because we pick up any changes to the record that were applied by the persistence layer - for example database default values, values applied by database triggers or transformations applied to the record we sent by a remote REST service or legacy program call. However, it is also the least performant, since it involves a full refetch of the data. This is the default strategy for [SQL DataSources](kb_topics/sqlDataSource.md#kb-topic-sql-datasources) and [custom DataSources](kb_topics/writeCustomDataSource.md#kb-topic-custom-server-datasources). It is also the strategy used for [Hibernate](kb_topics/hibernateIntegration.md#kb-topic-integration-with-hibernate) and [JPA](kb_topics/jpaIntegration.md#kb-topic-integration-with-jpa) DataSources, though for these two, it is implemented inherently by the ORM system and you should not attempt to change it. See the [cache synchronization overview](kb_topics/cacheSynchronization.md#kb-topic-automatic-cache-synchronization) for details |
-| "requestValuesPlusSequences" | Obtain cache sync values by merging the request values on top of the request's [oldValues](classes/DSRequest.md#attr-dsrequestoldvalues). If the DataSource contains [primary key fields](classes/DataSource_2.md#method-datasourcegetprimarykeyfields) of type `sequence`, the framework will then attempt to obtain values for those fields - see [sequenceMode](#type-sequencemode) - and merge those values into the cache sync data as well. This strategy avoids a data refetch, which may be a significant performance gain (though please see the note in the `sequenceMode` documentation regarding Oracle as a special case in this regard). Despite the name, this strategy is also suitable and effective for situations where your keys are not sequences - for example, when they are GUIDs or when they are user-entered codes. In this case, we simply do not attempt to resolve sequence values, and since the key values are already included in the request values, everything works
+| "requestValuesPlusSequences" | Obtain cache sync values by merging the request values on top of the request's [oldValues](classes/DSRequest.md#attr-dsrequestoldvalues). If the DataSource contains [primary key fields](classes/DataSource.md#method-datasourcegetprimarykeyfields) of type `sequence`, the framework will then attempt to obtain values for those fields - see [sequenceMode](#type-sequencemode) - and merge those values into the cache sync data as well. This strategy avoids a data refetch, which may be a significant performance gain (though please see the note in the `sequenceMode` documentation regarding Oracle as a special case in this regard). Despite the name, this strategy is also suitable and effective for situations where your keys are not sequences - for example, when they are GUIDs or when they are user-entered codes. In this case, we simply do not attempt to resolve sequence values, and since the key values are already included in the request values, everything works
 
-Note, if no `oldValues` are available and the updated record is [incomplete](classes/DataSource_1.md#attr-datasourcesparseupdates), or if the combination of `oldValues` and values is missing a value for a [required field](classes/DataSourceField.md#attr-datasourcefieldrequired) for any other reason, this strategy will return incomplete cache sync data. For details of what we do in these circumstances, see the "CacheSyncStrategy" section of the [cache synchronization overview](kb_topics/cacheSynchronization.md#kb-topic-automatic-cache-synchronization) |
+Note, if no `oldValues` are available and the updated record is [incomplete](classes/DataSource.md#attr-datasourcesparseupdates), or if the combination of `oldValues` and values is missing a value for a [required field](classes/DataSourceField.md#attr-datasourcefieldrequired) for any other reason, this strategy will return incomplete cache sync data. For details of what we do in these circumstances, see the "CacheSyncStrategy" section of the [cache synchronization overview](kb_topics/cacheSynchronization.md#kb-topic-automatic-cache-synchronization) |
 | "responseValues" | This strategy simply returns the data returned by the add or update operation, as the cache sync data. This only makes sense for `DataSource` types that return a value for an update operation. This may include generic DataSources and `RestConnector`s, depending entirely on what the implementation returns. It specifically does not include [SQL DataSources](kb_topics/sqlDataSource.md#kb-topic-sql-datasources), because SQL/JDBC update operations do not return a value (other than the number of affected records).
 
-This is the default strategy for [RestConnector](kb_topics/serverRestConnector.md#kb-topic-server-side-rest-connector)s, because it was the default way we did cache sync for that DataSource type before `CacheSyncStrategy` was introduced (and also because it is the ideal strategy for REST services that return the record-as-updated). See [DataSource.cacheSyncStrategy](classes/DataSource_1.md#attr-datasourcecachesyncstrategy) for details of how to change the default strategy for a given dataSource type. |
+This is the default strategy for [RestConnector](kb_topics/serverRestConnector.md#kb-topic-server-side-rest-connector)s, because it was the default way we did cache sync for that DataSource type before `CacheSyncStrategy` was introduced (and also because it is the ideal strategy for REST services that return the record-as-updated). See [DataSource.cacheSyncStrategy](#attr-datasourcecachesyncstrategy) for details of how to change the default strategy for a given dataSource type. |
 | "none" | This strategy does not attempt to derive cache sync data at all. No response data is sent back to the caller, and the response is marked for [cache invalidation](classes/DSResponse.md#attr-dsresponseinvalidatecache) |
 
 ### See Also
@@ -224,16 +207,16 @@ This is the default strategy for [RestConnector](kb_topics/serverRestConnector.m
 ## Type: CacheSyncTiming
 
 ### Description
-Indicates the timing strategy to be used for [automatic cache synchronization](kb_topics/cacheSynchronization.md#kb-topic-automatic-cache-synchronization), for a given [DataSource](classes/DataSource_1.md#attr-datasourcecachesynctiming), [OperationBinding](classes/OperationBinding.md#attr-operationbindingcachesynctiming) or [DSRequest](classes/DSRequest.md#attr-dsrequestcachesynctiming). This property controls the "when" of cache synchronization; the "how" is controlled by [CacheSyncStrategy](reference_2.md#type-cachesyncstrategy).
+Indicates the timing strategy to be used for [automatic cache synchronization](kb_topics/cacheSynchronization.md#kb-topic-automatic-cache-synchronization), for a given [DataSource](#attr-datasourcecachesynctiming), [OperationBinding](#attr-operationbindingcachesynctiming) or [DSRequest](#attr-dsrequestcachesynctiming). This property controls the "when" of cache synchronization; the "how" is controlled by [CacheSyncStrategy](reference_2.md#type-cachesyncstrategy).
 
 **NOTE:** `CacheSyncTiming` is intended to allow applications to defer cache synchronization to the point where response data is actually requested; the primary aim of this is to avoid doing cache sync altogether in cases where the response data is never requested. There are some mainstream types of request where we know that the response data unequivocally _is_ required, and for these requests a global default `CacheSyncTiming` will be overridden to "immediate" by SmartClient because there is no point in deferring cache sync when we know for sure it will eventually be needed. Thus, cache sync will always run immediately regardless of the default `cacheSyncTiming` setting in these cases:
 
 *   Requests sent from a client
 *   Server-created requests that copy an `RPCManager` across from a client-originated request, either by specifying it in the `DSRequest` constructor, or by calling `dsRequest.setRPCManager()`
 
-The above only applies to the global default `cacheSyncTiming`: a `cacheSyncTiming` set explicitly at the [DataSource](classes/DataSource_1.md#attr-datasourcecachesynctiming), [operation](classes/OperationBinding.md#attr-operationbindingcachesynctiming) or [request](classes/DSRequest.md#attr-dsrequestcachesynctiming) level will usually be honored. However, even an explicit `cacheSyncTiming` setting on the DataSource, operation or request will be ignored in situations where it could break a framework feature if we honored it. These situations are:
+The above only applies to the global default `cacheSyncTiming`: a `cacheSyncTiming` set explicitly at the [DataSource](#attr-datasourcecachesynctiming), [operation](#attr-operationbindingcachesynctiming) or [request](#attr-dsrequestcachesynctiming) level will usually be honored. However, even an explicit `cacheSyncTiming` setting on the DataSource, operation or request will be ignored in situations where it could break a framework feature if we honored it. These situations are:
 
-*   Requests where [automatic auditing](classes/DataSource_1.md#attr-datasourceaudit) is in force
+*   Requests where [automatic auditing](classes/DataSource.md#attr-datasourceaudit) is in force
 *   Requests on a dataSource with one-to-many or many-to-many relations, where the update means that SmartClient must update foreign keys on the related dataSources to maintain relation integrity
 
 In both these cases, we cannot allow the cache sync to be deferred because it is possible that a deferred cache sync fetch would never be invoked - indeed, that is the whole point of allowing cache sync to be deferred - and in that case, key processes would fail to run.
@@ -246,7 +229,7 @@ In both these cases, we cannot allow the cache sync to be deferred because it is
 | "lazy" | Defer running cache sync until the first time `getData()` is called on the server-side `DSResponse`. As described above, the point of deferring cache sync is to avoid running it at all in cases where nothing needs the response data (and thus nothing calls `getData()`). In addition to the above-listed cases where we know that cache sync is _always_ going to be required, there are other cases where `getData()` will be called, even if your application code doesn't do so. Some examples:
 
 *   If logging levels are set such that the framework is logging response data
-*   If you have a [multiple](classes/DataSourceField.md#attr-datasourcefieldmultiple) field in your dataSource and its value requires transformation because of [multipleStorage](classes/DataSourceField.md#attr-datasourcefieldmultiplestorage) or [transformMultipleFields](classes/DataSource_1.md#attr-datasourcetransformmultiplefields) settings
+*   If you have a [multiple](classes/DataSourceField.md#attr-datasourcefieldmultiple) field in your dataSource and its value requires transformation because of [multipleStorage](classes/DataSourceField.md#attr-datasourcefieldmultiplestorage) or [transformMultipleFields](classes/DataSource.md#attr-datasourcetransformmultiplefields) settings
 
 In these cases, and others where the response data is required, the cache sync process will be deferred to later in the process, but it will run. |
 
@@ -540,7 +523,7 @@ _*   If a subobject exists just to bundle several related fields together, and i
     
     It may seem like a good idea to work with a single hierarchical order object, where the "deliveryAddress" attribute is set to a sub-object that matches the structure defined in the "address" dataSource. DataPaths could be used to extract individual address fields for editing in a form alongside other fields from the order, and edits would be saved via a simple "add" or "update" operation, passing in the modified nested data object.
     
-    In fact, this has a number of disadvantages. Since there is no call to the "update" operation on the "address" subobject, the address will be modified without the normal features of a dataSource update. You can't specify [security rules](classes/DataSource_1.md#attr-datasourcerequiresauthentication), [DMI](kb_topics/dmiOverview.md#kb-topic-direct-method-invocation) logic, [request modifiers](reference_2.md#object-dsrequestmodifier), and no logging or [auditing](classes/DataSource_1.md#attr-datasourceaudit) will run.  
+    In fact, this has a number of disadvantages. Since there is no call to the "update" operation on the "address" subobject, the address will be modified without the normal features of a dataSource update. You can't specify [security rules](classes/DataSource.md#attr-datasourcerequiresauthentication), [DMI](kb_topics/dmiOverview.md#kb-topic-direct-method-invocation) logic, [request modifiers](reference_2.md#object-dsrequestmodifier), and no logging or [auditing](classes/DataSource.md#attr-datasourceaudit) will run.  
     The same "bypassing" problem occurs, in perhaps worse form, if a subobject does not yet exist and the framework creates it automatically, skipping a DataSource "add" operation that may have established defaults, not been allowed for the user, etc.
     
     Loading and saving nested data objects as a single hierarchical block also offers no advantages in terms of performance or simplicity.  
@@ -643,7 +626,7 @@ The scaling mode used to map [FacetChart.pointSizeMetric](classes/FacetChart.md#
 ## Type: DataSourceTemplateReferenceMode
 
 ### Description
-Indicates the mode to use for resolving templated references in a DataSource's configuration file. See [DataSource.allowTemplateReferences](classes/DataSource_1.md#attr-datasourceallowtemplatereferences) for an overview of configuration templating.
+Indicates the mode to use for resolving templated references in a DataSource's configuration file. See [DataSource.allowTemplateReferences](classes/DataSource.md#attr-datasourceallowtemplatereferences) for an overview of configuration templating.
 
 ### Values
 
@@ -660,12 +643,12 @@ the below example would cause `dbName` to be resolved as `MyDatabase`
      dbName="$config['database.name']"
  
 ```
-(Note, you can use a different token than "`$config`" if you need to - see [templateConfigToken](classes/DataSource_1.md#attr-datasourcetemplateconfigtoken)) |
-| "all" | Indicates that full Velocity processing will be used to resolve templated references. This allows you to use all of Velocity's template-handling features - for example, conditional blocks and iteration - and so is more powerful than the simple "configOnly" option above. Note, however, that this templating is necessarily limited by the fact that it takes place during DataSource initialization, when there is not a lot of context available for templating purposes - you have the "`$config`" object, as with "configOnly", and some of the other variables listed in the [Velocity overview](kb_topics/velocitySupport.md#kb-topic-velocity-context-variables), but nothing relating to [DSRequest](reference_2.md#object-dsrequest)s |
+(Note, you can use a different token than "`$config`" if you need to - see [templateConfigToken](classes/DataSource.md#attr-datasourcetemplateconfigtoken)) |
+| "all" | Indicates that full Velocity processing will be used to resolve templated references. This allows you to use all of Velocity's template-handling features - for example, conditional blocks and iteration - and so is more powerful than the simple "configOnly" option above. Note, however, that this templating is necessarily limited by the fact that it takes place during DataSource initialization, when there is not a lot of context available for templating purposes - you have the "`$config`" object, as with "configOnly", and some of the other variables listed in the [Velocity overview](#kb-topic-velocitysupport), but nothing relating to [DSRequest](reference_2.md#object-dsrequest)s |
 
 ### See Also
 
-- [DataSource.templateConfigToken](classes/DataSource_1.md#attr-datasourcetemplateconfigtoken)
+- [DataSource.templateConfigToken](classes/DataSource.md#attr-datasourcetemplateconfigtoken)
 
 ---
 ## Type: DateFieldLayout
@@ -837,13 +820,13 @@ or
  
 ```
 
-Note that if the request encounters a low-level error (such as 500 server error), by default the callback will **not** be fired, instead, [DataSource.handleError](classes/DataSource_1.md#method-datasourcehandleerror) is called to invoke the default system-wide error handling. Set [willHandleError](classes/RPCRequest.md#attr-rpcrequestwillhandleerror):true to have your callback invoked regardless of whether there are errors, however, make sure your callback properly handles malformed responses when [DSResponse.status](classes/DSResponse.md#attr-dsresponsestatus) is non-zero.
+Note that if the request encounters a low-level error (such as 500 server error), by default the callback will **not** be fired, instead, [DataSource.handleError](classes/DataSource.md#method-datasourcehandleerror) is called to invoke the default system-wide error handling. Set [willHandleError](classes/RPCRequest.md#attr-rpcrequestwillhandleerror):true to have your callback invoked regardless of whether there are errors, however, make sure your callback properly handles malformed responses when [DSResponse.status](classes/DSResponse.md#attr-dsresponsestatus) is non-zero.
 
 ---
 ## Type: DSDataFormat
 
 ### Description
-Indicates the format to be used for HTTP requests and responses when fulfilling DSRequests (eg, when [DataSource.fetchData](classes/DataSource_1.md#method-datasourcefetchdata) is called).
+Indicates the format to be used for HTTP requests and responses when fulfilling DSRequests (eg, when [DataSource.fetchData](classes/DataSource.md#method-datasourcefetchdata) is called).
 
 Note that [request queuing](classes/RPCManager.md#classmethod-rpcmanagerstartqueue) is only available for "iscServer" requests.
 
@@ -856,7 +839,7 @@ Note that [request queuing](classes/RPCManager.md#classmethod-rpcmanagerstartque
 
 Values for "date", "time" or "datetime" fields in responses should be specified in the applicable [XML Schema date format](http://www.w3.org/TR/xmlschema-2/#dateTime). If no timezone is explicitly specified, dates / datetimes received by the client are assumed to be GMT. Note that "date" type fields represent logical dates and may omit time information entirely, and "time" type fields may omit date information. See [Date and Time Format and storage](kb_topics/dateFormatAndStorage.md#kb-topic-date-and-time-format-and-storage) for more information on how date values are serialized in requests sent to the server.
 
-A DSResponse will be derived from the returned XML via the process described under [DataSource.transformResponse](classes/DataSource_1.md#method-datasourcetransformresponse). |
+A DSResponse will be derived from the returned XML via the process described under [DataSource.transformResponse](classes/DataSource.md#method-datasourcetransformresponse). |
 | "json" | Expect response in JSON [(Java Script Object Notation)](http://json.org) format, ready to be eval()'d. Response should either be a naked object literal:
 ```
      { "property":"value1", "property2" : "value2", ... }
@@ -869,12 +852,12 @@ or a string that evals to return a valid response object:
  
 ```
 
-A DSResponse will be derived from the returned JSON via the process described under [DataSource.transformResponse](classes/DataSource_1.md#method-datasourcetransformresponse).
+A DSResponse will be derived from the returned JSON via the process described under [DataSource.transformResponse](classes/DataSource.md#method-datasourcetransformresponse).
 
 As with `"xml"` responses, values for "date" or "datetime" fields should be specified as a String in [XML Schema date format](http://www.w3.org/TR/xmlschema-2/#dateTime) and may include a timezone. In the absence of a timezone they will be assumed to be GMT.
 
 Request format depends on the setting for [protocol](classes/OperationBinding.md#attr-operationbindingdataprotocol). See also [XJSONDataSource](classes/XJSONDataSource.md#class-xjsondatasource). |
-| "custom" | SmartClient will not attempt to parse the response, instead, [DataSource.transformResponse](classes/DataSource_1.md#method-datasourcetransformresponse) must be implemented. `transformResponse` will receive the "data" parameter as a String, and must parse this String into an Array of Objects, which should be set as [DSResponse.data](classes/DSResponse.md#attr-dsresponsedata). Request format depends on the setting for [protocol](classes/OperationBinding.md#attr-operationbindingdataprotocol).
+| "custom" | SmartClient will not attempt to parse the response, instead, [DataSource.transformResponse](classes/DataSource.md#method-datasourcetransformresponse) must be implemented. `transformResponse` will receive the "data" parameter as a String, and must parse this String into an Array of Objects, which should be set as [DSResponse.data](classes/DSResponse.md#attr-dsresponsedata). Request format depends on the setting for [protocol](classes/OperationBinding.md#attr-operationbindingdataprotocol).
 
 Note that, unlike either the "json" or "xml" settings of `dataFormat`, you are responsible for ensuring that parsed values are the correct type, for example, using the JavaScript built-ins `parseInt` and `parseFloat` on integer and decimal values respectively, and using `new Date()` to construct valid Dates. |
 
@@ -899,32 +882,32 @@ There are also additional, non-CRUD operations explained below.
 | "add" | Store new records |
 | "update" | Update an existing record |
 | "remove" | Remove (delete) an existing record |
-| "custom" | perform some arbitrary custom logic that is not a CRUD operation. Format of the inputs and outputs is unconstrained, and the operation will be ignored for cache sync purposes by [ResultSet](classes/ResultSet.md#class-resultset)s. See [DataSource.performCustomOperation](classes/DataSource_1.md#method-datasourceperformcustomoperation). |
-| "validate" | Run server-side validation for "add" or "update" without actually adding or updating anything. See [DataSource.validateData](classes/DataSource_1.md#method-datasourcevalidatedata). |
+| "custom" | perform some arbitrary custom logic that is not a CRUD operation. Format of the inputs and outputs is unconstrained, and the operation will be ignored for cache sync purposes by [ResultSet](classes/ResultSet.md#class-resultset)s. See [DataSource.performCustomOperation](classes/DataSource.md#method-datasourceperformcustomoperation). |
+| "validate" | Run server-side validation for "add" or "update" without actually adding or updating anything. See [DataSource.validateData](classes/DataSource.md#method-datasourcevalidatedata). |
 | "viewFile" | Retrieve a file stored in a binary field in a DataSource record, and allow the browser to choose whether to view it directly or prompt the user to save. See [binaryFields](kb_topics/binaryFields.md#kb-topic-binary-fields). |
 | "downloadFile" | Like "viewFile", but the HTTP header Content-Disposition is used to suggest that the browser show a save dialog. See [binaryFields](kb_topics/binaryFields.md#kb-topic-binary-fields). |
 | "storeTestData" | Takes a List of Maps and stores the data in Admin Console XML test data format |
-| "clientExport" | Upload formatted client data and export it to Excel, XML and other formats. Used automatically by [exportClientData()](classes/DataSource_1.md#method-datasourceexportclientdata) and cannot be used directly. Usable only with the SmartClient server framework. |
-| "getFile" | Use the DataSource as a [source for files](kb_topics/fileSource.md#kb-topic-filesource-operations). Used automatically by [DataSource.getFile](classes/DataSource_1.md#method-datasourcegetfile), and would not normally be used directly. Usable only with the SmartClient server framework. |
-| "hasFile" | Use the DataSource as a [source for files](kb_topics/fileSource.md#kb-topic-filesource-operations). Used automatically by [DataSource.hasFile](classes/DataSource_1.md#method-datasourcehasfile), and would not normally be used directly. Usable only with the SmartClient server framework. |
-| "listFiles" | Use the DataSource as a [source for files](kb_topics/fileSource.md#kb-topic-filesource-operations). Used automatically by [DataSource.listFiles](classes/DataSource_1.md#method-datasourcelistfiles), and would not normally be used directly. Usable only with the SmartClient server framework. |
-| "removeFile" | Use the DataSource as a [source for files](kb_topics/fileSource.md#kb-topic-filesource-operations). Used automatically by [DataSource.removeFile](classes/DataSource_1.md#method-datasourceremovefile), and would not normally be used directly. Usable only with the SmartClient server framework. |
-| "saveFile" | Use the DataSource as a [source for files](kb_topics/fileSource.md#kb-topic-filesource-operations). Used automatically by [DataSource.saveFile](classes/DataSource_1.md#method-datasourcesavefile), and would not normally be used directly. Usable only with the SmartClient server framework. |
-| "renameFile" | Use the DataSource as a [source for files](kb_topics/fileSource.md#kb-topic-filesource-operations). Used automatically by [DataSource.renameFile](classes/DataSource_1.md#method-datasourcerenamefile), and would not normally be used directly. Usable only with the SmartClient server framework. |
-| "getFileVersion" | Use the DataSource as a [source for files](kb_topics/fileSource.md#kb-topic-filesource-operations). Used automatically by [DataSource.getFileVersion](classes/DataSource_1.md#method-datasourcegetfileversion), and would not normally be used directly. Usable only with the SmartClient server framework. |
-| "hasFileVersion" | Use the DataSource as a [source for files](kb_topics/fileSource.md#kb-topic-filesource-operations). Used automatically by [DataSource.hasFileVersion](classes/DataSource_1.md#method-datasourcehasfileversion), and would not normally be used directly. Usable only with the SmartClient server framework. |
-| "listFileVersions" | Use the DataSource as a [source for files](kb_topics/fileSource.md#kb-topic-filesource-operations). Used automatically by [DataSource.listFileVersions](classes/DataSource_1.md#method-datasourcelistfileversions), and would not normally be used directly. Usable only with the SmartClient server framework. |
-| "removeFileVersion" | Use the DataSource as a [source for files](kb_topics/fileSource.md#kb-topic-filesource-operations). Used automatically by [DataSource.removeFileVersion](classes/DataSource_1.md#method-datasourceremovefileversion), and would not normally be used directly. Usable only with the SmartClient server framework. |
+| "clientExport" | Upload formatted client data and export it to Excel, XML and other formats. Used automatically by [exportClientData()](classes/DataSource.md#method-datasourceexportclientdata) and cannot be used directly. Usable only with the SmartClient server framework. |
+| "getFile" | Use the DataSource as a [source for files](kb_topics/fileSource.md#kb-topic-filesource-operations). Used automatically by [DataSource.getFile](classes/DataSource.md#method-datasourcegetfile), and would not normally be used directly. Usable only with the SmartClient server framework. |
+| "hasFile" | Use the DataSource as a [source for files](kb_topics/fileSource.md#kb-topic-filesource-operations). Used automatically by [DataSource.hasFile](classes/DataSource.md#method-datasourcehasfile), and would not normally be used directly. Usable only with the SmartClient server framework. |
+| "listFiles" | Use the DataSource as a [source for files](kb_topics/fileSource.md#kb-topic-filesource-operations). Used automatically by [DataSource.listFiles](classes/DataSource.md#method-datasourcelistfiles), and would not normally be used directly. Usable only with the SmartClient server framework. |
+| "removeFile" | Use the DataSource as a [source for files](kb_topics/fileSource.md#kb-topic-filesource-operations). Used automatically by [DataSource.removeFile](classes/DataSource.md#method-datasourceremovefile), and would not normally be used directly. Usable only with the SmartClient server framework. |
+| "saveFile" | Use the DataSource as a [source for files](kb_topics/fileSource.md#kb-topic-filesource-operations). Used automatically by [DataSource.saveFile](classes/DataSource.md#method-datasourcesavefile), and would not normally be used directly. Usable only with the SmartClient server framework. |
+| "renameFile" | Use the DataSource as a [source for files](kb_topics/fileSource.md#kb-topic-filesource-operations). Used automatically by [DataSource.renameFile](classes/DataSource.md#method-datasourcerenamefile), and would not normally be used directly. Usable only with the SmartClient server framework. |
+| "getFileVersion" | Use the DataSource as a [source for files](kb_topics/fileSource.md#kb-topic-filesource-operations). Used automatically by [DataSource.getFileVersion](classes/DataSource.md#method-datasourcegetfileversion), and would not normally be used directly. Usable only with the SmartClient server framework. |
+| "hasFileVersion" | Use the DataSource as a [source for files](kb_topics/fileSource.md#kb-topic-filesource-operations). Used automatically by [DataSource.hasFileVersion](classes/DataSource.md#method-datasourcehasfileversion), and would not normally be used directly. Usable only with the SmartClient server framework. |
+| "listFileVersions" | Use the DataSource as a [source for files](kb_topics/fileSource.md#kb-topic-filesource-operations). Used automatically by [DataSource.listFileVersions](classes/DataSource.md#method-datasourcelistfileversions), and would not normally be used directly. Usable only with the SmartClient server framework. |
+| "removeFileVersion" | Use the DataSource as a [source for files](kb_topics/fileSource.md#kb-topic-filesource-operations). Used automatically by [DataSource.removeFileVersion](classes/DataSource.md#method-datasourceremovefileversion), and would not normally be used directly. Usable only with the SmartClient server framework. |
 
 ---
 ## Type: DSProtocol
 
 ### Description
-[OperationBinding.dataProtocol](classes/OperationBinding.md#attr-operationbindingdataprotocol) affects how the data in the DSRequest ([DSRequest.data](classes/DSRequest.md#attr-dsrequestdata)) is sent to the [DataSource.dataURL](classes/DataSource_1.md#attr-datasourcedataurl). Listed below are the valid values for [OperationBinding.dataProtocol](classes/OperationBinding.md#attr-operationbindingdataprotocol) and their behavior.
+[OperationBinding.dataProtocol](classes/OperationBinding.md#attr-operationbindingdataprotocol) affects how the data in the DSRequest ([DSRequest.data](classes/DSRequest.md#attr-dsrequestdata)) is sent to the [DataSource.dataURL](classes/DataSource.md#attr-datasourcedataurl). Listed below are the valid values for [OperationBinding.dataProtocol](classes/OperationBinding.md#attr-operationbindingdataprotocol) and their behavior.
 
 Note that, when using the SmartClient server, data is automatically translated from JavaScript to Java according to the rules described [here](classes/RPCRequest.md#attr-rpcrequestdata); dataProtocol does not apply and is ignored.
 
-If you are integrating with a [REST](classes/RestDataSource.md#class-restdatasource) server that requires the more obscure [RPCRequest.httpMethod](classes/RPCRequest.md#attr-rpcrequesthttpmethod)s of "PUT", "DELETE" or "HEAD", you can specify these httpMethod settings via [OperationBinding.requestProperties](classes/OperationBinding.md#attr-operationbindingrequestproperties). dataProtocol settings that mention "GET" or "POST" are compatible with these additional HTTP methods as well. Typical [operationBindings](classes/DataSource_1.md#attr-datasourceoperationbindings) for a REST server that uses "PUT" and "DELETE" are as follows:
+If you are integrating with a [REST](classes/RestDataSource.md#class-restdatasource) server that requires the more obscure [RPCRequest.httpMethod](classes/RPCRequest.md#attr-rpcrequesthttpmethod)s of "PUT", "DELETE" or "HEAD", you can specify these httpMethod settings via [OperationBinding.requestProperties](classes/OperationBinding.md#attr-operationbindingrequestproperties). dataProtocol settings that mention "GET" or "POST" are compatible with these additional HTTP methods as well. Typical [operationBindings](classes/DataSource.md#attr-datasourceoperationbindings) for a REST server that uses "PUT" and "DELETE" are as follows:
 
 ```
     operationBindings:[
@@ -943,10 +926,10 @@ If you are integrating with a [REST](classes/RestDataSource.md#class-restdatasou
 | "getParams" | Data is added to the dataURL, with each property in the data becoming an HTTP parameter, eg http://service.com/search?keyword=foo |
 | "postParams" | Data is POST'd to the dataURL, with each property becoming an HTTP parameter, exactly as an HTML form would submit them if it had one input field per property in the data. |
 | "postJSON" | Data is serialized as a JSON string and POST'd to the dataURL. |
-| "postXML" | Data is serialized as XML via [DataSource.xmlSerialize](classes/DataSource_1.md#method-datasourcexmlserialize) and POST'd as the HTTP request body with contentType "text/xml". |
-| "soap" | Data is serialized as XML via [DataSource.xmlSerialize](classes/DataSource_1.md#method-datasourcexmlserialize), wrapped in a SOAP envelope, and POST'd as the HTTP request body with contentType "text/xml". Generally only used in connection with a [WSDL web service](kb_topics/wsdlBinding.md#kb-topic-wsdl-binding). |
-| "postMessage" | dsRequest.data is assumed to be a String set up by [DataSource.transformRequest](classes/DataSource_1.md#method-datasourcetransformrequest) and is POST'd as the HTTP request body. |
-| "clientCustom" | This setting entirely bypasses the SmartClient comm system. Instead of the DataSource sending an HTTP request to a URL, the developer is expected to implement [DataSource.transformRequest](classes/DataSource_1.md#method-datasourcetransformrequest) to perform their own custom logic, and then call [DataSource.processResponse](classes/DataSource_1.md#method-datasourceprocessresponse) to handle the results of this action. This `dataProtocol` setting can be used to implement access to in-browser resources such as HTML5 "localStorage", native APIs available to applications [packaged as native applications](kb_topics/mobileDevelopment.md#kb-topic-mobile-application-development), or to implement the [DataSource Facade pattern](kb_topics/dsFacade.md#kb-topic-datasource-facade-pattern). |
+| "postXML" | Data is serialized as XML via [DataSource.xmlSerialize](classes/DataSource.md#method-datasourcexmlserialize) and POST'd as the HTTP request body with contentType "text/xml". |
+| "soap" | Data is serialized as XML via [DataSource.xmlSerialize](classes/DataSource.md#method-datasourcexmlserialize), wrapped in a SOAP envelope, and POST'd as the HTTP request body with contentType "text/xml". Generally only used in connection with a [WSDL web service](kb_topics/wsdlBinding.md#kb-topic-wsdl-binding). |
+| "postMessage" | dsRequest.data is assumed to be a String set up by [DataSource.transformRequest](classes/DataSource.md#method-datasourcetransformrequest) and is POST'd as the HTTP request body. |
+| "clientCustom" | This setting entirely bypasses the SmartClient comm system. Instead of the DataSource sending an HTTP request to a URL, the developer is expected to implement [DataSource.transformRequest](classes/DataSource.md#method-datasourcetransformrequest) to perform their own custom logic, and then call [DataSource.processResponse](classes/DataSource.md#method-datasourceprocessresponse) to handle the results of this action. This `dataProtocol` setting can be used to implement access to in-browser resources such as HTML5 "localStorage", native APIs available to applications [packaged as native applications](kb_topics/mobileDevelopment.md#kb-topic-mobile-application-development), or to implement the [DataSource Facade pattern](kb_topics/dsFacade.md#kb-topic-datasource-facade-pattern). |
 
 ### Groups
 
@@ -975,7 +958,7 @@ If you use a Java-based persistence layer not provided by SmartClient, such as E
 | "rest" | Use SmartClient's built-in [RestConnector](kb_topics/serverRestConnector.md#kb-topic-server-side-rest-connector), which can connect to many different types of REST webservice |
 | "odata" | Use SmartClient's built-in [OData DataSource](kb_topics/odataDataSource.md#kb-topic-server-side-odata-datasource). This is a specialized subclass of the `RestConnector` which adds functionality for REST webservices that follow the [OData protocol](https://www.odata.org/) |
 | "generic" | Requests will be delivered to the server and you are expected to write Java code to create a valid response. Throws an error if the server side method dsRequest.execute() is called. This is appropriate if you intend an entirely custom implementation, and you want an error thrown if there is an attempt to call an operation you have not implemented. |
-| "projectFile" | Requests will be delivered to the server and processed as [FileSource operations](kb_topics/fileSource.md#kb-topic-filesource-operations), using directories or other DataSources which you configure via [DataSource.projectFileKey](classes/DataSource_1.md#attr-datasourceprojectfilekey) or [DataSource.projectFileLocations](classes/DataSource_1.md#attr-datasourceprojectfilelocations) |
+| "projectFile" | Requests will be delivered to the server and processed as [FileSource operations](kb_topics/fileSource.md#kb-topic-filesource-operations), using directories or other DataSources which you configure via [DataSource.projectFileKey](classes/DataSource.md#attr-datasourceprojectfilekey) or [DataSource.projectFileLocations](classes/DataSource.md#attr-datasourceprojectfilelocations) |
 | "union" | Use SmartClient's built-in [unionDataSource](kb_topics/unionDataSource.md#kb-topic-union-datasources), which assimilates records from multiple member dataSources |
 
 ### Groups
@@ -1078,11 +1061,11 @@ Determines how Java enums are translated to and from Javascript by the SmartClie
 | "name" | Translates to/from a String matching the constant name. This is the default if not set. |
 | "string" | Translates to/from a String matching the `enum.toString()`. |
 | "ordinal" | Translates to/from an integer matching the ordinal number of the constant within the enumeration |
-| "bean" | Translates to/from a Javascript object containing one property for each property defined within the enum. The constant itself and the ordinal number are included in the JS object. By default they are called "\_constant" and "\_ordinal", but this can be overridden with the [DataSource.enumOrdinalProperty](classes/DataSource_1.md#attr-datasourceenumordinalproperty) and [DataSource.enumConstantProperty](classes/DataSource_1.md#attr-datasourceenumconstantproperty) properties |
+| "bean" | Translates to/from a Javascript object containing one property for each property defined within the enum. The constant itself and the ordinal number are included in the JS object. By default they are called "\_constant" and "\_ordinal", but this can be overridden with the [DataSource.enumOrdinalProperty](classes/DataSource.md#attr-datasourceenumordinalproperty) and [DataSource.enumConstantProperty](classes/DataSource.md#attr-datasourceenumconstantproperty) properties |
 
 ### See Also
 
-- [DataSource.enumTranslateStrategy](classes/DataSource_1.md#attr-datasourceenumtranslatestrategy)
+- [DataSource.enumTranslateStrategy](classes/DataSource.md#attr-datasourceenumtranslatestrategy)
 
 ---
 ## Type: ExpansionComponentPoolingMode
@@ -1266,7 +1249,7 @@ The types listed below are built-in types that [databound\\n components](#interf
 
 You can declare custom types via [SimpleType.create()](classes/SimpleType.md#class-simpletype), with settings that will influence DataBound components. You can also create your own subclasses of databound components to add further custom, reusable behaviors based on field.type.
 
-`field.type` can also be the ID of another [DataSource](classes/DataSource_1.md#class-datasource), which allows you to model nested structures such as XML documents (in fact, [XMLTools.loadXMLSchema](classes/XMLTools.md#classmethod-xmltoolsloadxmlschema) models XML schema in this way). Nested DataSource declarations affect how XML and JSON data is deserialized into JavaScript objects in the [client-side integration](kb_topics/clientDataIntegration.md#kb-topic-client-side-data-integration) pipeline, so that you can load complex XML documents and have them deserialized into a correctly typed nested data structure.
+`field.type` can also be the ID of another [DataSource](classes/DataSource.md#class-datasource), which allows you to model nested structures such as XML documents (in fact, [XMLTools.loadXMLSchema](classes/XMLTools.md#classmethod-xmltoolsloadxmlschema) models XML schema in this way). Nested DataSource declarations affect how XML and JSON data is deserialized into JavaScript objects in the [client-side integration](kb_topics/clientDataIntegration.md#kb-topic-client-side-data-integration) pipeline, so that you can load complex XML documents and have them deserialized into a correctly typed nested data structure.
 
 Note: to declare related but _separate_ objects, as in an "Account" object that can be related to both a "Contact" object and "Order" objects, use [DataSourceField.foreignKey](classes/DataSourceField.md#attr-datasourcefieldforeignkey), **not** a nested structure declaration.
 
@@ -1283,7 +1266,7 @@ Note: to declare related but _separate_ objects, as in an "Account" object that 
 | "datetime" | A date and time, accurate to the [second](classes/DataSourceField.md#attr-datasourcefieldstoremilliseconds). Represented on the client as a JavaScript `Date` object. See also [dateFormatAndStorage](kb_topics/dateFormatAndStorage.md#kb-topic-date-and-time-format-and-storage). |
 | "enum" | A text value constrained to a set of legal values specified by the field's [valueMap](classes/DataSourceField.md#attr-datasourcefieldvaluemap), as though a [ValidatorType](#type-validatortype) of "isOneOf" had been declared. |
 | "intEnum" | An enum whose values are numeric. |
-| "sequence" | If you are using the SmartClient SQL datasource connector, a `sequence` is a unique, increasing whole number, incremented whenever a new record is added. Otherwise, `sequence` behaves identically to `integer`. This type is typically used with `field.primaryKey` to auto-generate unique primary keys. See also [DataSourceField.sequenceName](classes/DataSourceField.md#attr-datasourcefieldsequencename) and [DataSource.sequenceMode](classes/DataSource_1.md#attr-datasourcesequencemode) |
+| "sequence" | If you are using the SmartClient SQL datasource connector, a `sequence` is a unique, increasing whole number, incremented whenever a new record is added. Otherwise, `sequence` behaves identically to `integer`. This type is typically used with `field.primaryKey` to auto-generate unique primary keys. See also [DataSourceField.sequenceName](classes/DataSourceField.md#attr-datasourcefieldsequencename) and [DataSource.sequenceMode](classes/DataSource.md#attr-datasourcesequencemode) |
 | "link" | A string representing a well-formed URL. Some components will render this as an HTML link (using an anchor tag for example). |
 | "image" | A string representing a well-formed URL that points to an image. Some components will render an IMG tag with the value of this field as the 'src' attribute to render the image. |
 | "binary" | Arbitrary binary data. When this field type is present, three additional fields are automatically generated. They are: `<fieldName>`\_filename, `<fieldName>`\_filesize, and `<fieldName>`\_date\_created where `<fieldName>` is the value of the `name` attribute of this field. These fields are marked as [DataSourceField.hidden](classes/DataSourceField.md#attr-datasourcefieldhidden)`:true` to suppress their rendering by default. You can show one or more of these fields by specifying the field with a `hidden:false` override in the fields array of the databound component. _Stream / view file support for custom DataSources_: a custom DataSource or [DMI](classes/DMI.md#class-dmi) must implement the "viewFile" and "downloadFile" operationTypes and return a single Record with a byte\[\] as the field value for the binary field. For more detail see the overview of [Binary Fields](kb_topics/binaryFields.md#kb-topic-binary-fields). |
@@ -1296,7 +1279,7 @@ Note: to declare related but _separate_ objects, as in an "Account" object that 
 | "creatorTimestamp" | Fields of this type are automatically populated by the SmartClient Server with the current date and time as part of an "add" operation (when the record is first created). By default, fields of this type are hidden and not editable; the server ignores any value that the client sends in a field of this type (but see also [writeToGeneratedFields](classes/DSRequest.md#attr-dsrequestwritetogeneratedfields)). |
 | "uuid" | Fields of this type are automatically populated by the SmartClient Server with a new UUID (Universally Unique Identifier) as part of an "add" operation, if no value is provided by the client. This is useful for primary key fields where you want the server to auto-generate unique IDs. Unlike [creatorTimestamp](reference_2.md#type-fieldtype), if the client provides a value, that value is used instead of generating a new UUID. The generated UUID is a standard 36-character string in the format `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`. |
 | "password" | Same as "text", but causes [PasswordItem](#class-passworditem) to be used by default for editing (hides typed-in value), and defaults [storeWithhash](classes/DataSourceField.md#attr-datasourcefieldstorewithhash) to "bcrypt" (affecting server operations). |
-| "ntext" | A special field type specifically for use with Unicode data in conjunction with the Microsoft SQL Server database. Field type "ntext" implies the use of [sqlStorageStrategy](classes/DataSourceField.md#attr-datasourcefieldsqlstoragestrategy) "ntext"; other than that, this type is identical to "text" |
+| "ntext" | A special field type specifically for use with Unicode data in conjunction with the Microsoft SQL Server database. Field type "ntext" implies the use of [sqlStorageStrategy](#attr-datasourcefieldsqlstoragestrategy) "ntext"; other than that, this type is identical to "text" |
 | "localeInt" | An integer number with locale-based formatting, e.g. `12,345,678`. See [Localized Number Formatting](#kb-topic-localized-number-formatting) for more info. |
 | "localeFloat" | A float number with locale-based formatting, e.g. `12,345.67`. See [Localized Number Formatting](#kb-topic-localized-number-formatting) for more info. |
 | "localeCurrency" | A float number with locale-based formatting and using currency symbol, e.g. `$12,345.67`. See [Localized Number Formatting](#kb-topic-localized-number-formatting) for more info. |
@@ -1510,21 +1493,6 @@ A string which is a valid JavaScript identifier, as specified by ECMA-262 Sectio
 Note: The [String.isValidID](classes/String.md#staticmethod-stringisvalidid) function can be used to test whether a name is a valid JavaScript identifier.
 
 ---
-## Type: ImportFormat
-
-### Description
-—
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| "xml" | XML format: same as that expected by the [adminConsole](kb_topics/adminConsole.md#kb-topic-admin-console) for DataSource [test data](kb_topics/testData.md#kb-topic-test-data) |
-| "json" | JSON format: a JSON Array of JSON Objects |
-| "csv" | Comma-separated values, or in general delimiter-separated values based on a provided delimiter. |
-| "auto" | Auto-detect format |
-
----
 ## Type: Integer
 
 ### Description
@@ -1697,21 +1665,6 @@ In addition, components may declare that they have [adaptive sizing](classes/Can
 ### See Also
 
 - [Layout.minBreadthMember](classes/Layout.md#attr-layoutminbreadthmember)
-
----
-## Type: LineBreakStyle
-
-### Description
-The style of line-breaks to use when exporting data
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| "default" | Use the default line-break style of the server OS |
-| "unix" | Use UNIX-style line-breaks (LF only) |
-| "mac" | Use MAC-style line-breaks (CR only) |
-| "dos" | Use DOS-style line-breaks (both CR & LF) |
 
 ---
 ## Type: LinePattern
@@ -2044,7 +1997,7 @@ Specifies the layout of the combo box and buttons in a MultiComboBoxItem.
 ## Type: MultiInsertNonMatchingStrategy
 
 ### Description
-For `SQLDataSource` only, the strategy to use to harmonize multiple records when [addData()](classes/DataSource_1.md#method-datasourceadddata) is called with a list of records, and [multiInsertStrategy](classes/DataSource_1.md#attr-datasourcemultiinsertstrategy) "multipleValues" is in force, and the supplied records do not all contain exactly the same fields. Harmonization is necessary because we only specify a single list of fields to the multi-insert, and each of the multiple `VALUES` clauses must exactly match that list of fields or we will get either SQL errors or corrupted inserts, depending on the underlying database
+For `SQLDataSource` only, the strategy to use to harmonize multiple records when [addData()](classes/DataSource.md#method-datasourceadddata) is called with a list of records, and [multiInsertStrategy](classes/DataSource.md#attr-datasourcemultiinsertstrategy) "multipleValues" is in force, and the supplied records do not all contain exactly the same fields. Harmonization is necessary because we only specify a single list of fields to the multi-insert, and each of the multiple `VALUES` clauses must exactly match that list of fields or we will get either SQL errors or corrupted inserts, depending on the underlying database
 
 ### Values
 
@@ -2058,14 +2011,14 @@ For `SQLDataSource` only, the strategy to use to harmonize multiple records when
 ## Type: MultiInsertStrategy
 
 ### Description
-For `SQLDataSource` only, the strategy to use to insert multiple records when [addData()](classes/DataSource_1.md#method-datasourceadddata) is called with a list of records.
+For `SQLDataSource` only, the strategy to use to insert multiple records when [addData()](classes/DataSource.md#method-datasourceadddata) is called with a list of records.
 
 ### Values
 
 | Value | Description |
 |-------|-------------|
 | "simple" | Iterate over the supplied list of records and issue a single-record add for each of them |
-| "multipleValues" | Generate a single SQL statement that inserts multiple rows, using a database-specific strategy (usually specifying multiple `VALUES` clauses, but Oracle does not support that approach so we implement the same behavior using subselects). Actually, depending on the number of records to insert and the [batch size](classes/DataSource_1.md#attr-datasourcemultiinsertbatchsize), this strategy may generate more than one SQL statement |
+| "multipleValues" | Generate a single SQL statement that inserts multiple rows, using a database-specific strategy (usually specifying multiple `VALUES` clauses, but Oracle does not support that approach so we implement the same behavior using subselects). Actually, depending on the number of records to insert and the [batch size](classes/DataSource.md#attr-datasourcemultiinsertbatchsize), this strategy may generate more than one SQL statement |
 
 ---
 ## Type: MultiMessageMode
@@ -2294,21 +2247,6 @@ Possible placements for pop-up choosers, menus, dialogs or other temporary UIs, 
 | "fillScreen" | fill the entire screen |
 | "halfScreen" | fill the bottom half of the screen. This is the default behavior on iOS6/7 for plain HTML `<select>`, but note that native apps rarely use this interface for picking from lists and it is not generally recommended. |
 | "none" | this setting disables all panelPlacement sizing and positioning logic. Explicitly specified size and positioning will be used. |
-
----
-## Type: PartialCommitOption
-
-### Description
-Action to take if a user attempts to save the dataset produced by a [BatchUploader](classes/BatchUploader.md#class-batchuploader) whilst it still contains errors.
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| "allow" | Silently allow the partial commit to proceed (note that this will result in the user losing those records that contain errors) |
-| "prevent" | Pop up a message window showing the [BatchUploader.partialCommitError](classes/BatchUploader.md#attr-batchuploaderpartialcommiterror) and prevent the partial commit |
-| "prompt" | Pop up a confirmation window with the [BatchUploader.partialCommitPrompt](classes/BatchUploader.md#attr-batchuploaderpartialcommitprompt) and allow the user to choose whether or not to proceed |
-| "retain" | Commit any records that are error-free and remove them from the grid. If any records had errors, leave them in the grid and leave the grid visible. If no records had errors, run normal cleanup as we would for "allow". This option allows the user to fix errors iteratively, rather than having to fix everything upfront before committing |
 
 ---
 ## Type: Positioning
@@ -2857,23 +2795,6 @@ Do we display an arrow for the sorted field ?
 - sorting
 
 ---
-## Type: SQLType
-
-### Description
-The types of custom query that can be handled by SmartClient's built-in "sql" and "hibernate" DataSources. Note, only applies to [OperationBinding.operationType](classes/OperationBinding.md#attr-operationbindingoperationtype) "custom".
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| "query" | The custom SQL or HQL is read-only |
-| "update" | The custom SQL or HQL updates data |
-
-### Groups
-
-- customQuerying
-
----
 ## Type: StackPersistence
 
 ### Description
@@ -2959,7 +2880,7 @@ _Server:_ **not supported**. |
 | first | _Client:_ Currently the same as the **min** function.  
 _Server:_ implemented as SQL MIN function. |
 | concat | _Client:_ iterates through the set of records, producing a string with each value concatenated to the end.  
-_Server:_ implemented as a native SQL aggregate expression by the Oracle (LISTAGG), PostgreSQL (string\_agg), and MySQL (GROUP\_CONCAT) database drivers. Other SQL drivers perform an additional query to fetch the values for concatenation. Also supported for generic dataSources that do not have inherent support for aggregation — see the description of this in the [allowAggregation](classes/DataSource_1.md#attr-datasourceallowaggregation) documentation. Not supported by JPA or Hibernate dataSources. See also [joinPrefix](classes/DataSourceField.md#attr-datasourcefieldjoinprefix), [joinString](classes/DataSourceField.md#attr-datasourcefieldjoinstring) and [joinSuffix](classes/DataSourceField.md#attr-datasourcefieldjoinsuffix) related datasource field attributes. |
+_Server:_ implemented as a native SQL aggregate expression by the Oracle (LISTAGG), PostgreSQL (string\_agg), and MySQL (GROUP\_CONCAT) database drivers. Other SQL drivers perform an additional query to fetch the values for concatenation. Also supported for generic dataSources that do not have inherent support for aggregation — see the description of this in the [allowAggregation](classes/DataSource.md#attr-datasourceallowaggregation) documentation. Not supported by JPA or Hibernate dataSources. See also [joinPrefix](classes/DataSourceField.md#attr-datasourcefieldjoinprefix), [joinString](classes/DataSourceField.md#attr-datasourcefieldjoinstring) and [joinSuffix](classes/DataSourceField.md#attr-datasourcefieldjoinsuffix) related datasource field attributes. |
 | concatDistinct | _Client:_ like "concat", but removes duplicate values before concatenation.  
 _Server:_ natively supported on Oracle 19c+ (LISTAGG DISTINCT), PostgreSQL 9.0+ (string\_agg DISTINCT), and MySQL (GROUP\_CONCAT DISTINCT). On other SQL databases, deduplication is applied programmatically after fetching values. Also supported client-side for clientOnly and cached dataSources. See also [joinPrefix](classes/DataSourceField.md#attr-datasourcefieldjoinprefix), [joinString](classes/DataSourceField.md#attr-datasourcefieldjoinstring) and [joinSuffix](classes/DataSourceField.md#attr-datasourcefieldjoinsuffix) related datasource field attributes. |
 | array | _Client:_ The same approach as for "concat"but returning an array of the values, rather than a string concatenation  
@@ -3212,7 +3133,7 @@ Note that this object is not intended to be interrogated directly, but may be st
 ## Type: UnionFieldsStrategy
 
 ### Description
-The strategy used when auto-deriving the fields that make up a UnionDataSource, if no [unionFields](classes/DataSource_1.md#attr-datasourceunionfields) setting is provided.
+The strategy used when auto-deriving the fields that make up a UnionDataSource, if no [unionFields](#attr-datasourceunionfields) setting is provided.
 
 ### Values
 
@@ -3224,7 +3145,7 @@ The strategy used when auto-deriving the fields that make up a UnionDataSource, 
 
 ### See Also
 
-- [DataSource.unionFields](classes/DataSource_1.md#attr-datasourceunionfields)
+- [DataSource.unionFields](#attr-datasourceunionfields)
 
 ---
 ## Type: URL
@@ -3273,7 +3194,7 @@ A ValueMap can be entirely static or entirely dynamic, with many options in betw
 
 *   statically defined in a JavaScript or XML file. Such a valueMap changes only when application code is upgraded.
 *   generated dynamically by server code when the application first loads, for example, by generating JavaScript or XML dynamically in a .jsp or .asp file. Such a valueMap may be different for each session and for each user.
-*   loaded on demand from a DataSource, via the [optionDataSource](classes/PickList.md#attr-picklistoptiondatasource) property, or via a call to [DataSource.fetchData](classes/DataSource_1.md#method-datasourcefetchdata) where a valueMap is derived dynamically from the returned data (see [DataSource.fetchData](classes/DataSource_1.md#method-datasourcefetchdata) for an example). Such a valueMap may be updated at any time, for example, every time the user changes a related field while editing data.
+*   loaded on demand from a DataSource, via the [optionDataSource](classes/PickList.md#attr-picklistoptiondatasource) property, or via a call to [DataSource.fetchData](classes/DataSource.md#method-datasourcefetchdata) where a valueMap is derived dynamically from the returned data (see [DataSource.fetchData](classes/DataSource.md#method-datasourcefetchdata) for an example). Such a valueMap may be updated at any time, for example, every time the user changes a related field while editing data.
 
 See also the [SmartClient Architecture Overview](kb_topics/smartArchitecture.md#kb-topic-smartclient-architecture) to understand the best architecture from a performance and caching perspective.
 
@@ -3281,9 +3202,9 @@ See also the [SmartClient Architecture Overview](kb_topics/smartArchitecture.md#
 ## Type: VelocityExpression
 
 ### Description
-An expression in the [Velocity Template Language](http://velocity.apache.org/engine/releases/velocity-1.7/user-guide.html) (VTL). For more information on SmartClient's Velocity support, see [Velocity support](kb_topics/velocitySupport.md#kb-topic-velocity-context-variables).
+An expression in the [Velocity Template Language](http://velocity.apache.org/engine/releases/velocity-1.7/user-guide.html) (VTL). For more information on SmartClient's Velocity support, see [Velocity support](#kb-topic-velocitysupport).
 
-Note that a `VelocityExpression` must often evaluate to a particular type of value to be useful. For example, [DataSource.requires](classes/DataSource_1.md#attr-datasourcerequires) must evaluate to true or false (Boolean objects or strings containing those two words), and [Mail.messageData](classes/Mail.md#attr-mailmessagedata) must evaluate to a Java `Map` object, or a Java `List` containing only `Map`s.
+Note that a `VelocityExpression` must often evaluate to a particular type of value to be useful. For example, [DataSource.requires](classes/DataSource.md#attr-datasourcerequires) must evaluate to true or false (Boolean objects or strings containing those two words), and [Mail.messageData](classes/Mail.md#attr-mailmessagedata) must evaluate to a Java `Map` object, or a Java `List` containing only `Map`s.
 
 ### Groups
 
@@ -3491,7 +3412,7 @@ A shortcut form is also allowed where only `fieldName` and `value` values are pr
 ## Object: DataContext
 
 ### Description
-A mapping from [DataSource](classes/DataSource_1.md#class-datasource) IDs to specific [Records](#object-record).
+A mapping from [DataSource](classes/DataSource.md#class-datasource) IDs to specific [Records](#object-record).
 
 To understand how `dataContext` is used to automatically populate [DataBoundComponents](#interface-databoundcomponent), see [Canvas.autoPopulateData](classes/Canvas.md#attr-canvasautopopulatedata).
 
@@ -3559,31 +3480,6 @@ The general approach is that we track a maximum of [maxTrackedOverflows](classes
 Identifies a potential branch within a [MultiDecisionTask](classes/MultiDecisionTask.md#class-multidecisiontask). Each decision has a criteria and a target ProcessElement ID.
 
 ---
-## Object: DetailViewerRecord
-
-### Description
-A DetailViewerRecord is an object literal with properties that define the values for the various fields of a [DetailViewer](classes/DetailViewer.md#class-detailviewer).
-
-For example a DetailViewer that defines the following fields:
-
-```
- fields : [
-     {name: "field1"},
-     {name: "field2"}
- ],
- 
-```
-Might have the following data:
-```
- data : [
-     {field1: "foo", field2: "bar"},
-     {field1: "field1 value", field2: "field2 value"}
- ]
- 
-```
-Each element in the data array above is an instance of DetailViewerRecord - notice that these are specified simply as object literals with properties.
-
----
 ## Object: DiscoverTreeSettings
 
 ### Description
@@ -3647,7 +3543,7 @@ You provide a list of DSRequestModifiers as the [OperationBinding.criteria](clas
 
 A DSRequestModifier consists of a [fieldName](classes/DSRequestModifier.md#attr-dsrequestmodifierfieldname), usually a [value](classes/DSRequestModifier.md#attr-dsrequestmodifiervalue) and possibly an [operator](classes/DSRequestModifier.md#attr-dsrequestmodifieroperator) and [start](classes/DSRequestModifier.md#attr-dsrequestmodifierstart) and/or [end](classes/DSRequestModifier.md#attr-dsrequestmodifierend) values (applicable to advanced criteria only). The value, start and end settings can be static, or - with Power or better licenses - they can be expressions in the Velocity template language, which will be resolved at runtime, immediately before the DSRequest is executed.
 
-In addition to the standard [Velocity variables](kb_topics/velocitySupport.md#kb-topic-velocity-context-variables), special Velocity variables are available for the _value_ field when used in a `<values>` declaration - see [DSRequestModifier.value](classes/DSRequestModifier.md#attr-dsrequestmodifiervalue) for details.
+In addition to the standard [Velocity variables](#kb-topic-velocitysupport), special Velocity variables are available for the _value_ field when used in a `<values>` declaration - see [DSRequestModifier.value](classes/DSRequestModifier.md#attr-dsrequestmodifiervalue) for details.
 
 See below some examples of [OperationBinding.criteria](classes/OperationBinding.md#attr-operationbindingcriteria) declarations:
 
@@ -3703,7 +3599,7 @@ Facet definition object made use of by the [CubeGrid](classes/CubeGrid.md#class-
 ### Description
 Base type representing a field.
 
-Field container implementations may extend this type with additional attributes and/or methods. For example, [DataSource](classes/DataSource_1.md#class-datasource) uses [DataSourceField](reference_2.md#object-datasourcefield), [DataBoundComponent](#interface-databoundcomponent) uses [DBCField](#object-dbcfield), and [ListGrid](classes/ListGrid_1.md#class-listgrid) uses [ListGridField](reference_2.md#object-listgridfield) (itself an extension of `DBCField`).
+Field container implementations may extend this type with additional attributes and/or methods. For example, [DataSource](classes/DataSource.md#class-datasource) uses [DataSourceField](reference_2.md#object-datasourcefield), [DataBoundComponent](#interface-databoundcomponent) uses [DBCField](#object-dbcfield), and [ListGrid](classes/ListGrid_1.md#class-listgrid) uses [ListGridField](reference_2.md#object-listgridfield) (itself an extension of `DBCField`).
 
 In general, `Field` instances should not be shared with multiple field containers.
 
@@ -3846,7 +3742,7 @@ At minimum, an `ImgHTMLProperties` object should include a _src_ and, in most ca
 ## Object: JSONSchemaSettings
 
 ### Description
-Settings for [DataSource.asJSONSchema](classes/DataSource_1.md#method-datasourceasjsonschema), controlling what information is included and how it is formatted.
+Settings for [DataSource.asJSONSchema](classes/DataSource.md#method-datasourceasjsonschema), controlling what information is included and how it is formatted.
 
 ---
 ## Object: ListGridField
@@ -3975,7 +3871,7 @@ The extra value axis charts may be [single- or multi-facet](classes/MetricSettin
 ## Object: MockDSExportSettings
 
 ### Description
-Settings used to control the export or serialization of a [DataSource](classes/DataSource_1.md#class-datasource) by [Reify.getMockDS](classes/Reify.md#classmethod-reifygetmockds).
+Settings used to control the export or serialization of a [DataSource](classes/DataSource.md#class-datasource) by [Reify.getMockDS](classes/Reify.md#classmethod-reifygetmockds).
 
 ---
 ## Object: NavigationBarViewState
@@ -4061,7 +3957,7 @@ An object used to configure how Selenese is generated by [EventStream.getAsSelen
 ### Description
 The ServerObject tells the ISC server how to find or create a server-side object involved in [DMI](kb_topics/dmiOverview.md#kb-topic-direct-method-invocation) (Direct Method Invocation).
 
-A ServerObject declaration appears in the XML definition of a [DataSource](classes/DataSource_1.md#class-datasource) (for responding to [DSRequest](reference_2.md#object-dsrequest)s) or in an Application configuration file (.app.xml) for responding to [RPCRequest](#object-rpcrequest)s.
+A ServerObject declaration appears in the XML definition of a [DataSource](classes/DataSource.md#class-datasource) (for responding to [DSRequest](reference_2.md#object-dsrequest)s) or in an Application configuration file (.app.xml) for responding to [RPCRequest](#object-rpcrequest)s.
 
 NOTE: Please take note of the points made in [this discussion](kb_topics/serverDataSourceImplementation.md#kb-topic-notes-on-server-side-datasource-implementations) of caching and thread-safety issues in server-side DataSources.
 

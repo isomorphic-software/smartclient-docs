@@ -11,7 +11,7 @@
 ### Description
 An application available within [Reify OnSite](../kb_topics/reifyOnSite.md#kb-topic-reify-onsite) that allows developers to create and manage SmartClient screens and datasources. Only **internal framework code** can create an instance of the Reify tool - do not try it directly in your applications. If you want to create visual tools similar to Reify, see [the Dashboards & Tools framework overview](../kb_topics/devTools.md#kb-topic-dashboards--tools-framework-overview).
 
-Note that in the SmartClient SDK, this class present only to provide [Reify](../kb_topics/reifyForDevelopers.md#kb-topic-reify-for-developers) utility class method APIs, and is not an instantiable widget. For example, you can call [Reify.getMockDS](#classmethod-reifygetmockds) to export a [DataSource](DataSource_1.md#class-datasource) as XML-formatted values and metadata for importing into Reify to create a [MockDataSource](MockDataSource.md#class-mockdatasource).
+Note that in the SmartClient SDK, this class present only to provide [Reify](../kb_topics/reifyForDevelopers.md#kb-topic-reify-for-developers) utility class method APIs, and is not an instantiable widget. For example, you can call [Reify.getMockDS](#classmethod-reifygetmockds) to export a [DataSource](DataSource.md#class-datasource) as XML-formatted values and metadata for importing into Reify to create a [MockDataSource](MockDataSource.md#class-mockdatasource).
 
 ### Groups
 
@@ -73,7 +73,7 @@ Controls whether [DataSource verification](LoadProjectSettings.md#attr-loadproje
 ## Attr: Reify.projectDataSource
 
 ### Description
-The [DataSource](DataSource_1.md#class-datasource) to use for saving the project, using fileSource operations. If not set, the property defaults to "vbProjects" except in hostedMode where "isc\_hostedProjects" is the default.
+The [DataSource](DataSource.md#class-datasource) to use for saving the project, using fileSource operations. If not set, the property defaults to "vbProjects" except in hostedMode where "isc\_hostedProjects" is the default.
 
 ### Groups
 
@@ -105,7 +105,7 @@ Note that the callback is fired when the window is closed, not when it's populat
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| dsNames | [Array of String](#type-array-of-string)|[String](#type-string) | false | — | [ID](DataSource_1.md#attr-datasourceid)s of the desired DataSources |
+| dsNames | [Array of String](#type-array-of-string)|[String](#type-string) | false | — | [ID](DataSource.md#attr-datasourceid)s of the desired DataSources |
 | callback | [MockDSExportCallback](#type-mockdsexportcallback) | false | — | called with the complete export or serialization |
 | settings | [MockDSExportSettings](#type-mockdsexportsettings) | false | — | controls format and what records and metadata to include |
 
@@ -158,7 +158,7 @@ Setter for [Reify.userName](#classattr-reifyusername).
 ## ClassMethod: Reify.getMockDS
 
 ### Description
-Exports or serializes the specified [DataSources](DataSource_1.md#class-datasource) using the provided settings.
+Exports or serializes the specified [DataSources](DataSource.md#class-datasource) using the provided settings.
 
 The "reifyCSV" [format](MockDSExportSettings.md#attr-mockdsexportsettingsformat) generates comma-separated values to paste into the DataSource creation wizard in [Reify](../kb_topics/reifyForDevelopers.md#kb-topic-reify-for-developers). The use case for the other two formats is, if you have a SmartClient application, and you plan to load [MockDataSources](MockDataSource.md#class-mockdatasource) to enable people to add screens to your application using Reify, you may want to test your application with the MockDataSources to ensure they have the right data to allow your application to function (for example, that records in one MockDataSource that are related to another MockDataSource match up). Similarly, you may want to test any custom classes that you upload to Reify in a standalone file using [MockDataSources](MockDataSource.md#class-mockdatasource).
 
@@ -170,7 +170,7 @@ Unless you need programmatic or expert control over the settings, you will likel
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| dsNames | [Array of String](#type-array-of-string)|[String](#type-string) | false | — | [ID](DataSource_1.md#attr-datasourceid)s of the desired DataSources |
+| dsNames | [Array of String](#type-array-of-string)|[String](#type-string) | false | — | [ID](DataSource.md#attr-datasourceid)s of the desired DataSources |
 | callback | [MockDSExportCallback](#type-mockdsexportcallback) | false | — | called with the complete export or serialization |
 | settings | [MockDSExportSettings](#type-mockdsexportsettings) | false | — | controls format and what records and metadata to include |
 
@@ -286,7 +286,7 @@ Setter for [Reify.password](#classattr-reifypassword).
 ### Description
 Open a named screen in Reify for editing. The screen must be stored in Reify's screen storage (vbScreens); if not, a warning is logged and the call fails.
 
-This is the screen equivalent of [Project.loadInReify](Project.md#method-projectloadinreify) and [DataSource.loadInReify](DataSource_1.md#method-datasourceloadinreify). Since screens are not first-class objects in SmartClient (they are Canvas hierarchies returned by [RPCManager.loadScreen](RPCManager.md#classmethod-rpcmanagerloadscreen)), this method is on the Reify class rather than on a Screen instance.
+This is the screen equivalent of [Project.loadInReify](Project.md#method-projectloadinreify) and [DataSource.loadInReify](DataSource.md#method-datasourceloadinreify). Since screens are not first-class objects in SmartClient (they are Canvas hierarchies returned by [RPCManager.loadScreen](RPCManager.md#classmethod-rpcmanagerloadscreen)), this method is on the Reify class rather than on a Screen instance.
 
 ### Parameters
 

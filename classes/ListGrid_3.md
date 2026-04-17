@@ -4,6 +4,19 @@
 
 ---
 
+## Method: ListGrid.setFieldButtonProperties
+
+### Description
+Method to update properties on a field's header button at runtime. This property allows customization of any settable properties on the ListGridField's header button after it has been generated.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| name | [String](#type-string) | false | — | Field to update |
+| properties | [Canvas Properties](#type-canvas-properties) | false | — | new properties to apply to the header button |
+
+---
 ## Method: ListGrid.selectRange
 
 ### Description

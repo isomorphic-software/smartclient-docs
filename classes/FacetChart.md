@@ -35,7 +35,7 @@ To create a FacetChart, set [FacetChart.facets](#attr-facetchartfacets) to an Ar
  
 ```
 
-A [DataSource](DataSource_1.md#class-datasource) may be provided instead of inline [data](#attr-facetchartdata) to use the chart as a [DataBoundComponent](../reference.md#interface-databoundcomponent). In this case, [facetFields](#attr-facetchartfacetfields) may be provided instead of [facets](#attr-facetchartfacets), to specify which DataSource fields to use as the facets. If neither is set, the framework will attempt to auto-derive the [facetFields](#attr-facetchartfacetfields). The [valueProperty](#attr-facetchartvalueproperty) will also be auto-derived for databound charts if it hasn't been set in the chart instance.
+A [DataSource](DataSource.md#class-datasource) may be provided instead of inline [data](#attr-facetchartdata) to use the chart as a [DataBoundComponent](../reference.md#interface-databoundcomponent). In this case, [facetFields](#attr-facetchartfacetfields) may be provided instead of [facets](#attr-facetchartfacets), to specify which DataSource fields to use as the facets. If neither is set, the framework will attempt to auto-derive the [facetFields](#attr-facetchartfacetfields). The [valueProperty](#attr-facetchartvalueproperty) will also be auto-derived for databound charts if it hasn't been set in the chart instance.
 
 The following SDK examples demonstrate charts with a single facet:
 
@@ -520,7 +520,7 @@ Title for the `"Area"` item in the `"Chart Type"` submenu in the context menu.
 ## Attr: FacetChart.facetFields
 
 ### Description
-Specifies what [DataSource](DataSource_1.md#class-datasource) fields to use as the chart [FacetChart.facets](#attr-facetchartfacets) for a databound chart. If [FacetChart.facets](#attr-facetchartfacets) is also explicitly set, [FacetChart.facetFields](#attr-facetchartfacetfields) is definitive but [Facet](../reference_2.md#object-facet) properties will be picked up from [FacetChart.facets](#attr-facetchartfacets) also present in the [FacetChart.facetFields](#attr-facetchartfacetfields).
+Specifies what [DataSource](DataSource.md#class-datasource) fields to use as the chart [FacetChart.facets](#attr-facetchartfacets) for a databound chart. If [FacetChart.facets](#attr-facetchartfacets) is also explicitly set, [FacetChart.facetFields](#attr-facetchartfacetfields) is definitive but [Facet](../reference_2.md#object-facet) properties will be picked up from [FacetChart.facets](#attr-facetchartfacets) also present in the [FacetChart.facetFields](#attr-facetchartfacetfields).
 
 If neither this property nor [FacetChart.facets](#attr-facetchartfacets) is set, a databound chart will attempt to auto-derive [FacetChart.facetFields](#attr-facetchartfacetfields) from the DataSource fields. The first two text or text-derived fields in the DataSource will be assumed to be the [FacetChart.facetFields](#attr-facetchartfacetfields).
 
@@ -1473,7 +1473,7 @@ If bars would be smaller than this size, margins are reduced until bars overlap.
 ## Attr: FacetChart.valueProperty
 
 ### Description
-Property in each record that holds a data value. For databound charts, if `valueProperty` isn't set in the chart instance, it will be auto-derived from the [DataSource](DataSource_1.md#class-datasource) fields. The first numeric-typed DataSource field will be assumed to be the `valueProperty`.
+Property in each record that holds a data value. For databound charts, if `valueProperty` isn't set in the chart instance, it will be auto-derived from the [DataSource](DataSource.md#class-datasource) fields. The first numeric-typed DataSource field will be assumed to be the `valueProperty`.
 
 Not used if there is an inline facet, see [Chart.data](Chart.md#attr-chartdata).
 
@@ -3057,7 +3057,7 @@ Comparing between the formats, the "standard model" format treats all facets ide
 
 ### See Also
 
-- [DataSource](DataSource_1.md#class-datasource)
+- [DataSource](DataSource.md#class-datasource)
 
 **Flags**: IWR
 

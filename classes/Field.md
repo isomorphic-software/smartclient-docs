@@ -66,7 +66,7 @@ Name of the field.
 ## Attr: Field.type
 
 ### Description
-Type of the field. This may be a built-in [FieldType](../reference_2.md#type-fieldtype), the [name](SimpleType.md#attr-simpletypename) of a [SimpleType](SimpleType.md#class-simpletype), or the [ID](DataSource_1.md#attr-datasourceid) of a [DataSource](DataSource_1.md#class-datasource).
+Type of the field. This may be a built-in [FieldType](../reference_2.md#type-fieldtype), the [name](SimpleType.md#attr-simpletypename) of a [SimpleType](SimpleType.md#class-simpletype), or the [ID](DataSource.md#attr-datasourceid) of a [DataSource](DataSource.md#class-datasource).
 
 **Flags**: IR
 

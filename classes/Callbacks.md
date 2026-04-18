@@ -211,7 +211,7 @@ A typical implementation will shift focus to some native element associated with
 ## Method: Callbacks.DSCallback
 
 ### Description
-Callback fired when DataSource methods that send DSRequests complete (such as [DataSource.fetchData](DataSource.md#method-datasourcefetchdata)).
+Callback fired when DataSource methods that send DSRequests complete (such as [DataSource.fetchData](DataSource_1.md#method-datasourcefetchdata)).
 
 ### Parameters
 
@@ -270,8 +270,8 @@ A [Callback](../reference.md#type-callback) called when the move completes.
 ### Description
 Callback fired upon successful completion of [Reify.getMockDS](Reify.md#classmethod-reifygetmockds) or [Reify.showMockDS](Reify.md#classmethod-reifyshowmockds):
 
-*   Output for all [DataSources](DataSource.md#class-datasource) together is reported as the single string parameter `allDSData`. When using [format](MockDSExportSettings.md#attr-mockdsexportsettingsformat): "reifyCSV", output for separate DataSources is separated by a special marker.
-*   Output with each [DataSource](DataSource.md#class-datasource) as a separate string array element is also available as the parameter `perDSData`, ordered to match the `dsNames` parameter in [Reify.getMockDS](Reify.md#classmethod-reifygetmockds) or [Reify.showMockDS](Reify.md#classmethod-reifyshowmockds).
+*   Output for all [DataSources](DataSource_1.md#class-datasource) together is reported as the single string parameter `allDSData`. When using [format](MockDSExportSettings.md#attr-mockdsexportsettingsformat): "reifyCSV", output for separate DataSources is separated by a special marker.
+*   Output with each [DataSource](DataSource_1.md#class-datasource) as a separate string array element is also available as the parameter `perDSData`, ordered to match the `dsNames` parameter in [Reify.getMockDS](Reify.md#classmethod-reifygetmockds) or [Reify.showMockDS](Reify.md#classmethod-reifyshowmockds).
 
 Note that in the case of [Reify.showMockDS](Reify.md#classmethod-reifyshowmockds), the callback is fired after the window is closed, not when it's populated.
 
@@ -366,7 +366,7 @@ Callback to execute after the section has been shown.
 ## Method: Callbacks.HasFileVersionCallback
 
 ### Description
-A [Callback](../reference.md#type-callback) fired when [DataSource.hasFileVersion](DataSource.md#method-datasourcehasfileversion) completes.
+A [Callback](../reference.md#type-callback) fired when [DataSource.hasFileVersion](DataSource_1.md#method-datasourcehasfileversion) completes.
 
 ### Parameters
 
@@ -396,7 +396,7 @@ Callback fired with the [PaletteNodes](../reference.md#object-palettenode) obtai
 ## Method: Callbacks.HasFileCallback
 
 ### Description
-A [Callback](../reference.md#type-callback) fired when [DataSource.hasFile](DataSource.md#method-datasourcehasfile) completes.
+A [Callback](../reference.md#type-callback) fired when [DataSource.hasFile](DataSource_1.md#method-datasourcehasfile) completes.
 
 ### Parameters
 
@@ -437,7 +437,7 @@ Callback fired with the result of asking AI to answer a data question.
 ## Method: Callbacks.GetFileVersionCallback
 
 ### Description
-Callback fired when [DataSource.getFileVersion](DataSource.md#method-datasourcegetfileversion) completes.
+Callback fired when [DataSource.getFileVersion](DataSource_1.md#method-datasourcegetfileversion) completes.
 
 ### Parameters
 
@@ -543,7 +543,7 @@ Callback for [DateRangeDialog.askForRange](DateRangeDialog.md#classmethod-datera
 ## Method: Callbacks.GetFileCallback
 
 ### Description
-Callback fired when [DataSource.getFile](DataSource.md#method-datasourcegetfile) completes.
+Callback fired when [DataSource.getFile](DataSource_1.md#method-datasourcegetfile) completes.
 
 ### Parameters
 

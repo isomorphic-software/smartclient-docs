@@ -601,7 +601,7 @@ If this item has a databound pickList (for example [PickList.optionDataSource](P
 ## Attr: SelectItem.progressiveLoading
 
 ### Description
-Indicates whether or not this SelectItem will load its list of options [progressively](DataSource.md#attr-datasourceprogressiveloading). This property is copied onto the underlying [PickList](../reference_2.md#interface-picklist).
+Indicates whether or not this SelectItem will load its list of options [progressively](DataSource_1.md#attr-datasourceprogressiveloading). This property is copied onto the underlying [PickList](../reference_2.md#interface-picklist).
 
 ### Groups
 
@@ -609,7 +609,7 @@ Indicates whether or not this SelectItem will load its list of options [progress
 
 ### See Also
 
-- [DataSource.progressiveLoading](DataSource.md#attr-datasourceprogressiveloading)
+- [DataSource.progressiveLoading](DataSource_1.md#attr-datasourceprogressiveloading)
 
 **Flags**: IRW
 
@@ -987,7 +987,7 @@ The logical value of the formItem, as retrieved by [getValue()](FormItem.md#meth
 
 When this value is true, we disable doubleClick events by default, instead issuing two single clicks by forcibly setting [noDoubleClicks: true](Canvas.md#attr-canvasnodoubleclicks). If you need to work with doubleClick events, you can disable this default behavior by explicitly setting formItem.pickListProperties.noDoubleClicks: false.
 
-Note: `multiple:true` SelectItems with multipleAppearance:"grid" do not currently support optionDataSource binding. You can get around this by calling [DataSource.fetchData](DataSource.md#method-datasourcefetchdata) directly and calling [dsResponse.data.getValueMap()](List.md#method-listgetvaluemap) to obtain a valueMap.
+Note: `multiple:true` SelectItems with multipleAppearance:"grid" do not currently support optionDataSource binding. You can get around this by calling [DataSource.fetchData](DataSource_1.md#method-datasourcefetchdata) directly and calling [dsResponse.data.getValueMap()](List.md#method-listgetvaluemap) to obtain a valueMap.
 
 #### Databound pickLists and missing values
 When a SelectItem has an [optionDataSource](PickList.md#attr-picklistoptiondatasource), if the current value includes entries that do not correspond to records loaded in the pickList, those entries will be dropped if the user makes any changes to the selection. This can occur when:

@@ -11,7 +11,7 @@ Like client-server desktop applications, SmartClient browser-based applications 
 
 **DataSources**
 
-First you must create [DataSources](../classes/DataSource.md#class-datasource) that describe the objects from your object model that will be loaded or manipulated within your application. All of SmartClient's most powerful functionality builds on the concept of a DataSource, and because of SmartClient's databinding framework (see [DataBoundComponent](../reference.md#interface-databoundcomponent)), it's as easy to create a DataSource that can configure an unlimited number of components as it is to configure a single component.
+First you must create [DataSources](../classes/DataSource_1.md#class-datasource) that describe the objects from your object model that will be loaded or manipulated within your application. All of SmartClient's most powerful functionality builds on the concept of a DataSource, and because of SmartClient's databinding framework (see [DataBoundComponent](../reference.md#interface-databoundcomponent)), it's as easy to create a DataSource that can configure an unlimited number of components as it is to configure a single component.
 
 For background information on how to create DataSources, [bind](../reference.md#interface-databoundcomponent) components to DataSources and initiate [DSRequest](../reference_2.md#object-dsrequest)s, please see the _Data Binding_ chapter of the _SmartClient Quickstart Guide_.
 
@@ -43,21 +43,21 @@ This section aims to help you decide which of the many possible data integration
 *   If your ultimate storage is a SQL database:
 
 *   Use the SQLDataSource unless you have a very large amount of pre-existing JPA or Hibernate code - small amounts of business logic can be easily migrated. Be sure to read the overview of [SQLDataSource vs JPA/Hibernate](sqlVsJPA.md#kb-topic-sql-datasource-vs-jpa-ejb-mybatis-and-other-technologies) in order to understand the large benefits the SQLDataSource provides
-*   Derive DataSource definitions from existing tables or Hibernate mappings using the [autoDeriveSchema](../classes/DataSource.md#attr-datasourceautoderiveschema) feature, or from Java Beans via the [schemaBean](../classes/DataSource.md#attr-datasourceschemabean) feature. Or, use the [Admin Console](adminConsole.md#kb-topic-admin-console) to generate tables from DataSource definitions you create by hand
+*   Derive DataSource definitions from existing tables or Hibernate mappings using the [autoDeriveSchema](../classes/DataSource_1.md#attr-datasourceautoderiveschema) feature, or from Java Beans via the [schemaBean](../classes/DataSource_1.md#attr-datasourceschemabean) feature. Or, use the [Admin Console](adminConsole.md#kb-topic-admin-console) to generate tables from DataSource definitions you create by hand
 
 *   If your ultimate storage is not a SQL database:
 
-*   If your persistence is based on Java Beans, use the [schemaBean](../classes/DataSource.md#attr-datasourceschemabean) feature to derive DataSource definitions from any Java bean
+*   If your persistence is based on Java Beans, use the [schemaBean](../classes/DataSource_1.md#attr-datasourceschemabean) feature to derive DataSource definitions from any Java bean
 *   write a [custom DataSource](writeCustomDataSource.md#kb-topic-custom-server-datasources) that provides the CRUD operations you want to support.
 
 *   Whether or not your storage is SQL, add business logic either declaratively in the DataSource definition, via [DMI](dmiOverview.md#kb-topic-direct-method-invocation), or any combination of the two:
-    *   The `<criteria>` and `<values>` properties of an [OperationBinding](../classes/OperationBinding.md#class-operationbinding) allow you to dynamically set data values at transaction-processing time, using built-in [Velocity support](#kb-topic-velocitysupport)
+    *   The `<criteria>` and `<values>` properties of an [OperationBinding](../classes/OperationBinding.md#class-operationbinding) allow you to dynamically set data values at transaction-processing time, using built-in [Velocity support](velocitySupport.md#kb-topic-velocity-context-variables)
     *   Override the `validate()` method of the DataSource to provide extra custom validations - just call `super` to obtain the list of errors derived from SmartClient validations, then add to that list as required with your own custom code
     *   Override the `execute()` method of the DataSource to add extra processing either before or after the SmartClient processing
     *   Use [Transaction Chaining](transactionChaining.md#kb-topic-transaction-chaining) to dynamically set data values according to the results of earlier transactions
-    *   For SQL DataSources, use [SQL Templating](#kb-topic-customquerying) to change, add to or even completely replace the SQL sent to the database, and to implement special query requirements
-    *   For JPA DataSources, use [custom JQL queries](#attr-operationbindingcustomjql) to implement special query requirements
-    *   For Hibernate DataSources, use [custom HQL queries](#attr-operationbindingcustomhql) to implement special query requirementsRead more about the server-side request processing flow and how to customize it in [the server integration overview](serverDataIntegration.md#kb-topic-server-datasource-integration).
+    *   For SQL DataSources, use [SQL Templating](customQuerying.md#kb-topic-custom-querying-overview) to change, add to or even completely replace the SQL sent to the database, and to implement special query requirements
+    *   For JPA DataSources, use [custom JQL queries](../classes/OperationBinding.md#attr-operationbindingcustomjql) to implement special query requirements
+    *   For Hibernate DataSources, use [custom HQL queries](../classes/OperationBinding.md#attr-operationbindingcustomhql) to implement special query requirementsRead more about the server-side request processing flow and how to customize it in [the server integration overview](serverDataIntegration.md#kb-topic-server-datasource-integration).
 
 *   If you do not have a Java server:
 
@@ -72,7 +72,7 @@ SmartClient also supports "unstructured" client-server operations. These [RPCReq
 *   may contain arbitrary data
 *   are always initiated by custom code (a call to [RPCManager.send](../classes/RPCManager.md#classmethod-rpcmanagersend)), and have their responses handled by custom code (the callback passed to `send()`)
 
-RPCRequests are relatively rare. Most client-server communications are better done in a structured fashion using a [DSRequest](../reference_2.md#object-dsrequest) (DataSource Request). Note that _any_ RPCRequest can alternatively be framed as a [DataSource fetch](../classes/DataSource.md#method-datasourcefetchdata); depending on the circumstances, this may be more convenient.
+RPCRequests are relatively rare. Most client-server communications are better done in a structured fashion using a [DSRequest](../reference_2.md#object-dsrequest) (DataSource Request). Note that _any_ RPCRequest can alternatively be framed as a [DataSource fetch](../classes/DataSource_1.md#method-datasourcefetchdata); depending on the circumstances, this may be more convenient.
 
 See the [RPCManager](../classes/RPCManager.md#class-rpcmanager) documentation for further information on RPCRequests.
 

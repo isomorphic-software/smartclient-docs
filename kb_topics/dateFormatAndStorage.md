@@ -142,9 +142,9 @@ If you're having a problem with round-tripping "datetime" values or "date" value
 2.  what value is being transmitted to the client? (use the RPC Tab of the Developer Console to see the actual data sent)
     *   was the value shifted to a different time/date by my serialization approach?
     *   does it have the right format? (see above for correct JSON/XML formats)
-3.  what value do I have on the client before it gets to any widgets (eg, do a direct call to [DataSource.fetchData](../classes/DataSource.md#method-datasourcefetchdata) and inspect the data in the callback)
+3.  what value do I have on the client before it gets to any widgets (eg, do a direct call to [DataSource.fetchData](../classes/DataSource_1.md#method-datasourcefetchdata) and inspect the data in the callback)
 4.  what value does the FormItem or other editing widget report before saving is attempted?
-5.  what value is reported right before the value is serialized for transmission to the server ([DataSource.transformRequest](../classes/DataSource.md#method-datasourcetransformrequest) is a good place to check)
+5.  what value is reported right before the value is serialized for transmission to the server ([DataSource.transformRequest](../classes/DataSource_1.md#method-datasourcetransformrequest) is a good place to check)
 6.  what value is being transmitted to the server? (use the RPC tab - same concerns as for server-to-client transmission above)
 7.  what value does the server have after de-serialization, before saving to the database or other permanent storage?
 8.  what value is sent to the database or permanent storage? If generating SQL or another similar query language, does the value in the SQL statement include an explicit timezone? If not, how will the database interpret it?

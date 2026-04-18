@@ -30,7 +30,7 @@ Many-to-one relations, where the "child" dataSource declares a foreignKey to the
 
 SmartClient does not support updating the "parent" dataSource fields across a many-to-one relation. You can update the relation itself (by updating the `foreignKey`), but any fields that are included from the parent dataSource must be updated with a separate update operation on the parent dataSource
 
-Many-to-one relations are supported for all dataSource types, both the built-in server dataSource types and [clientOnly](../classes/DataSource.md#attr-datasourceclientonly) dataSources. They are also supported without any extra effort with your own custom dataSource implementations on the server
+Many-to-one relations are supported for all dataSource types, both the built-in server dataSource types and [clientOnly](../classes/DataSource_1.md#attr-datasourceclientonly) dataSources. They are also supported without any extra effort with your own custom dataSource implementations on the server
 
 #### One-to-many relations
 One-to-many relations, where the "parent" dataSource declares a foreignKey to the "child" dataSource, are more complicated than many-to-one relations because they involve a requirement to handle multiple related records. You designate a one-to-many relation by declaring both the `foreignKey` to the other dataSource and the [multiple](../classes/DataSourceField.md#attr-datasourcefieldmultiple) property on the field.
@@ -57,7 +57,7 @@ The way this idea of multiple related records is handled is different according 
 
 - [JoinType](../reference_2.md#type-jointype)
 - [DBCField.displayField](../classes/DBCField.md#attr-dbcfielddisplayfield)
-- [DataSource.relatedTableAlias](../classes/DataSource.md#attr-datasourcerelatedtablealias)
+- [DataSource.relatedTableAlias](../classes/DataSource_1.md#attr-datasourcerelatedtablealias)
 - [DataSourceField.primaryKey](../classes/DataSourceField.md#attr-datasourcefieldprimarykey)
 - [DataSourceField.foreignKey](../classes/DataSourceField.md#attr-datasourcefieldforeignkey)
 - [DataSourceField.childrenProperty](../classes/DataSourceField.md#attr-datasourcefieldchildrenproperty)
@@ -69,7 +69,7 @@ The way this idea of multiple related records is handled is different according 
 - [DataSourceField.displayField](../classes/DataSourceField.md#attr-datasourcefielddisplayfield)
 - [DataSourceField.foreignDisplayField](../classes/DataSourceField.md#attr-datasourcefieldforeigndisplayfield)
 - [DataSourceField.joinType](../classes/DataSourceField.md#attr-datasourcefieldjointype)
-- [DataSource.childrenField](../classes/DataSource.md#attr-datasourcechildrenfield)
+- [DataSource.childrenField](../classes/DataSource_1.md#attr-datasourcechildrenfield)
 
 ### See Also
 

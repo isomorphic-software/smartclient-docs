@@ -137,8 +137,8 @@ For approach #2,
 3.  For any issue that isn't cosmetic, revert to a default SmartClient skin
 4.  For any necessary RPC/DataSource interactions, spoof the interaction with one of these approaches:
     *   switch any DataSources to one of the sample DataSources from the SDK (eg "supplyItem") if your issue can still be reproduced in this case.
-    *   create a small sample dataset in JavaScript directly in the .html file, and use a [clientOnly DataSource](../classes/DataSource.md#attr-datasourceclientonly) with that dataset.
-    *   capture server responses verbatim by setting the RPCManager log category to DEBUG, save the responses as flat files, and set [DataSource.dataURL](../classes/DataSource.md#attr-datasourcedataurl) to point at them.
+    *   create a small sample dataset in JavaScript directly in the .html file, and use a [clientOnly DataSource](../classes/DataSource_1.md#attr-datasourceclientonly) with that dataset.
+    *   capture server responses verbatim by setting the RPCManager log category to DEBUG, save the responses as flat files, and set [DataSource.dataURL](../classes/DataSource_1.md#attr-datasourcedataurl) to point at them.
     *   for RPCs, instead of calling the RPCManager, directly call your own callback function, passing a spoofed RPCResponse that includes just the fields your code depends upon
 5.  Finally, move your .html file into the stock SmartClient SDK along with any remaining dependencies and verify the problem can still be reproduced
 

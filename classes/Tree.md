@@ -236,9 +236,9 @@ Title assigned to nodes without a [Tree.titleProperty](#attr-treetitleproperty) 
 ## Attr: Tree.dataSource
 
 ### Description
-Specifies what [DataSource](DataSource.md#class-datasource) this tree is associated with.
+Specifies what [DataSource](DataSource_1.md#class-datasource) this tree is associated with.
 
-A [DataSource](DataSource.md#class-datasource) is required when filtering a tree, even if it isn't a [ResultTree](ResultTree.md#class-resulttree), though it may be passed to [Tree.getFilteredTree](#method-treegetfilteredtree) rather than set on the tree itself. If a [DataSource](DataSource.md#class-datasource) is specified it will also affect sorting, where relevant, such as if the tree is set as [TreeGrid.data](TreeGrid.md#attr-treegriddata).
+A [DataSource](DataSource_1.md#class-datasource) is required when filtering a tree, even if it isn't a [ResultTree](ResultTree.md#class-resulttree), though it may be passed to [Tree.getFilteredTree](#method-treegetfilteredtree) rather than set on the tree itself. If a [DataSource](DataSource_1.md#class-datasource) is specified it will also affect sorting, where relevant, such as if the tree is set as [TreeGrid.data](TreeGrid.md#attr-treegriddata).
 
 ### Groups
 
@@ -605,7 +605,7 @@ For load on demand trees (those that only have a partial representation client-s
 ## Method: Tree.removeChildren
 
 ### Description
-Removes all children of the node and sets it to a loaded state. For non-[ResultTree](ResultTree.md#class-resulttree)s, or non-[paged](ResultTree.md#attr-resulttreefetchmode) `ResultTree`s, [Tree.add](#method-treeadd) or [Tree.addList](#method-treeaddlist) can then be used to provide new children. For [paged](ResultTree.md#attr-resulttreefetchmode) `ResultTrees`, [DataSource.updateCaches](DataSource.md#method-datasourceupdatecaches) must be used to insert nodes into the cache as local data, since such `ResultTree`s are considered read-only, and [Tree.add](#method-treeadd) and [Tree.addList](#method-treeaddlist) are not perrmitted.
+Removes all children of the node and sets it to a loaded state. For non-[ResultTree](ResultTree.md#class-resulttree)s, or non-[paged](ResultTree.md#attr-resulttreefetchmode) `ResultTree`s, [Tree.add](#method-treeadd) or [Tree.addList](#method-treeaddlist) can then be used to provide new children. For [paged](ResultTree.md#attr-resulttreefetchmode) `ResultTrees`, [DataSource.updateCaches](DataSource_1.md#method-datasourceupdatecaches) must be used to insert nodes into the cache as local data, since such `ResultTree`s are considered read-only, and [Tree.add](#method-treeadd) and [Tree.addList](#method-treeaddlist) are not perrmitted.
 
 ### Parameters
 
@@ -786,9 +786,9 @@ Filters this tree by the provided criteria, returning a new Tree containing just
 
 If `filterMode` is "keepParents", parents are retained if any of their children match the criteria even if those parents do not match the criteria.
 
-Note that the [DataSource](DataSource.md#class-datasource) argument is **required** if one is not [already specified](DataSource.md#class-datasource) on the tree.
+Note that the [DataSource](DataSource_1.md#class-datasource) argument is **required** if one is not [already specified](DataSource_1.md#class-datasource) on the tree.
 
-If you want a [TreeGrid](TreeGrid.md#class-treegrid) with local tree data that supports filtering, please consider using a [TreeGrid](TreeGrid.md#class-treegrid) bound to a [client-only DataSource](DataSource.md#attr-datasourceclientonly) rather than writing your own code to filter the tree's data with this method.
+If you want a [TreeGrid](TreeGrid.md#class-treegrid) with local tree data that supports filtering, please consider using a [TreeGrid](TreeGrid.md#class-treegrid) bound to a [client-only DataSource](DataSource_1.md#attr-datasourceclientonly) rather than writing your own code to filter the tree's data with this method.
 
 ### Parameters
 
@@ -1221,7 +1221,7 @@ Find the node with the specified ID. Specifically, it returns the node whose idF
 Add a single node under the specified parent. See ["Modifying ResultTrees"](ResultTree.md#class-resulttree) when working with a `ResultTree` for limitations.
 
 #### Adding nodes to Multi-link trees
-[Multi-link trees](#attr-treemultilinktree) support ordering of nodes amongst their peers by setting the value of the [linkPositionField](#attr-treelinkpositionfield) in the associated [linkData](#attr-treelinkdata). Nodes can also be added at a specific index position in the child list via this API, but be aware that - like other kinds of [databound tree](ResultTree.md#class-resulttree) - nodes added using this API are not automatically persisted. Because of this, typically you would not use this API for a databound multi-link tree; you would instead [add a record](DataSource.md#method-datasourceadddata) to the tree's [linkDataSource](ResultTree.md#attr-resulttreelinkdatasource), and possibly also to its primary [dataSource](ResultTree.md#attr-resulttreedatasource), if this is an entirely new node that does not already exist elsewhere in the tree. [Cache synchronization](DataSource.md#method-datasourceupdatecaches) will then take care of linking the new node into the tree (or the existing node into a new position in the tree).
+[Multi-link trees](#attr-treemultilinktree) support ordering of nodes amongst their peers by setting the value of the [linkPositionField](#attr-treelinkpositionfield) in the associated [linkData](#attr-treelinkdata). Nodes can also be added at a specific index position in the child list via this API, but be aware that - like other kinds of [databound tree](ResultTree.md#class-resulttree) - nodes added using this API are not automatically persisted. Because of this, typically you would not use this API for a databound multi-link tree; you would instead [add a record](DataSource_1.md#method-datasourceadddata) to the tree's [linkDataSource](ResultTree.md#attr-resulttreelinkdatasource), and possibly also to its primary [dataSource](ResultTree.md#attr-resulttreedatasource), if this is an entirely new node that does not already exist elsewhere in the tree. [Cache synchronization](DataSource_1.md#method-datasourceupdatecaches) will then take care of linking the new node into the tree (or the existing node into a new position in the tree).
 
 That said, if you do choose to use this `add()` API to add a node to a multi-link tree, the following rules are used:
 
@@ -1677,7 +1677,7 @@ Replaces the existing children of a parent node, leaving the node in the loaded 
 ### See Also
 
 - [Tree.removeChildren](#method-treeremovechildren)
-- [DataSource.updateCaches](DataSource.md#method-datasourceupdatecaches)
+- [DataSource.updateCaches](DataSource_1.md#method-datasourceupdatecaches)
 
 ---
 ## Method: Tree.linkDataChanged

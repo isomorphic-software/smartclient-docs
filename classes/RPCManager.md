@@ -9,14 +9,14 @@
 ### Description
 RPCManager is a static singleton class that manages transparent client/server RPC (remote procedure call). This class provides a generic, low-level client/server communication integration point.
 
-SmartClient's powerful databinding subsystem (see [DataSource](DataSource_1.md#class-datasource), [DataBoundComponents](../reference.md#interface-databoundcomponent)) automatically make use of this class to issue RPCs as necessary, based on the [DataSource protocol](../kb_topics/dataSourceOperations.md#kb-topic-datasource-operations). To integrate DataBoundComponents with your server, [start here](../kb_topics/clientServerIntegration.md#kb-topic-client-server-integration).
+SmartClient's powerful databinding subsystem (see [DataSource](DataSource.md#class-datasource), [DataBoundComponents](../reference.md#interface-databoundcomponent)) automatically make use of this class to issue RPCs as necessary, based on the [DataSource protocol](../kb_topics/dataSourceOperations.md#kb-topic-datasource-operations). To integrate DataBoundComponents with your server, [start here](../kb_topics/clientServerIntegration.md#kb-topic-client-server-integration).
 
 For arbitrary client/server interactions outside of the DataSource subsystem, the SmartClient server also provides the [Direct Method Invocation](../kb_topics/dmiOverview.md#kb-topic-direct-method-invocation) feature.
 
 The RPCManager class can also be used _directly_ to send data to a URL of your choosing and optionally be called back with server-returned data when the server replies.
 
 The SmartClient [server code](../kb_topics/iscServer.md#kb-topic-smartclient-server-summary) has APIs for processing RPC requests providing features such as automatic Java <--> JavaScript object translation and handling of queued requests.  
-The [IDACall servlet](../kb_topics/servletDetails.md#kb-topic-the-core-and-optional-smartclient-servlets) makes use of these features to handle standard [DataSource](DataSource_1.md#class-datasource) requests and [DMI](DMI.md#class-dmi) calls. Developers can also override the `actionURL` of specific requests and use these APIs directly in a JSP, Servlet or Filter.
+The [IDACall servlet](../kb_topics/servletDetails.md#kb-topic-the-core-and-optional-smartclient-servlets) makes use of these features to handle standard [DataSource](DataSource.md#class-datasource) requests and [DMI](DMI.md#class-dmi) calls. Developers can also override the `actionURL` of specific requests and use these APIs directly in a JSP, Servlet or Filter.
 
 Note: the client-side RPCManager class can also be used without the SmartClient server. For an overview of client/server interactions without the SmartClient server, see [this overview](../kb_topics/nonJavaBackend.md#kb-topic-net-php-serverless-integration).
 
@@ -240,7 +240,7 @@ If set to `true`, the RPCManager will block the UI with a modal dialog containin
 
 If set to `false`, the RPC happens transparently, allowing the user to continue interacting with the UI.
 
-DataSource requests, which are a particular type of RPCRequest, are controlled by the more-specific DataSource-level setting [DataSource.showPrompt](DataSource_1.md#attr-datasourceshowprompt).
+DataSource requests, which are a particular type of RPCRequest, are controlled by the more-specific DataSource-level setting [DataSource.showPrompt](DataSource.md#attr-datasourceshowprompt).
 
 ### Groups
 
@@ -444,7 +444,7 @@ Selects the transport use for RPC requests by default. You can override this set
 ### Description
 Specifies the default URL for RPCRequests and DSRequests that do not specify a URL.
 
-URLs can be set on a per-request basis via [RPCRequest.actionURL](RPCRequest.md#attr-rpcrequestactionurl), or on a per-DataSource or per-operationType basis via [DataSource.dataURL](DataSource_1.md#attr-datasourcedataurl) and [OperationBinding.dataURL](OperationBinding.md#attr-operationbindingdataurl) respectively. However, note that in order to be able to make use of [queuing](#classmethod-rpcmanagerstartqueue), you should have all data loading and saving requests go to a single URL unless you are forced to use distinct URLs by legacy services.
+URLs can be set on a per-request basis via [RPCRequest.actionURL](RPCRequest.md#attr-rpcrequestactionurl), or on a per-DataSource or per-operationType basis via [DataSource.dataURL](DataSource.md#attr-datasourcedataurl) and [OperationBinding.dataURL](OperationBinding.md#attr-operationbindingdataurl) respectively. However, note that in order to be able to make use of [queuing](#classmethod-rpcmanagerstartqueue), you should have all data loading and saving requests go to a single URL unless you are forced to use distinct URLs by legacy services.
 
 The primary use case for setting the default `actionURL` is to add a CSRF / XSRF ([Cross-site Request Forgery](http://en.wikipedia.org/wiki/Cross-site_request_forgery)) token. Assuming you are using a single URL for all data requests as covered above, adding a CSRF token to the default `actionURL` as a simple HTTP parameter will cause the CSRF token to be included in all RPCRequests and DSRequests from all DataSources without further effort.
 
@@ -491,7 +491,7 @@ In Internet Explorer 9, when a string of JavaScript is evaluated via the native 
 
 SmartClient uses the `eval()` function to evaluate JSON formatted responses to RPCRequests by default, making long running applications potentially susceptible to memory leaks over time.
 
-Note that this does not apply to DataSources which use [DataSource.useStrictJSON](DataSource_1.md#attr-datasourceusestrictjson) formatted responses as the framework avoids calling eval() altogether and makes use of the native browser `JSON.parse()` method which does not have this issue. By default we also use strict json formatted responses for all [dataFormat:"iscServer"](DataSource_1.md#attr-datasourcedataformat) dataSources in IE9, so these leaks are mainly a concern only for dataSources with [DataSource.dataFormat](DataSource_1.md#attr-datasourcedataformat) set to "json".
+Note that this does not apply to DataSources which use [DataSource.useStrictJSON](DataSource.md#attr-datasourceusestrictjson) formatted responses as the framework avoids calling eval() altogether and makes use of the native browser `JSON.parse()` method which does not have this issue. By default we also use strict json formatted responses for all [dataFormat:"iscServer"](DataSource.md#attr-datasourcedataformat) dataSources in IE9, so these leaks are mainly a concern only for dataSources with [DataSource.dataFormat](DataSource.md#attr-datasourcedataformat) set to "json".
 
 Setting this property to `false` enables a workaround suggested on the [Microsoft Knowledge Base](http://support.microsoft.com/kb/2572253) to avoid such memory leaks by evaluating script in a hidden iframe and periodically refresh that frame. However developers should be aware of the following limitation with this setting: attempting to access certain object types including `Date` or `function` objects generated from such an evaluation can subsequently lead to a JavaScript error with the message `"Can't execute code from a freed script"`.
 
@@ -627,7 +627,7 @@ See the [overview of error handling](../kb_topics/errorHandling.md#kb-topic-erro
 
 ### See Also
 
-- [DataSource.handleError](DataSource_1.md#method-datasourcehandleerror)
+- [DataSource.handleError](DataSource.md#method-datasourcehandleerror)
 - [RPCManager.handleTransportError](#classmethod-rpcmanagerhandletransporterror)
 - [RPCManager.runDefaultErrorHandling](#classmethod-rpcmanagerrundefaulterrorhandling)
 
@@ -667,7 +667,7 @@ Setter for [RPCManager.actionURL](#classattr-rpcmanageractionurl).
 ### Description
 Returns the data that should be sent to the [RPCManager.actionURL](#classattr-rpcmanageractionurl).
 
-In a manner analogous to [DataSource.transformRequest](DataSource_1.md#method-datasourcetransformrequest), this method allows you to transform an [RPCRequest](../reference.md#object-rpcrequest), such as by adding [HTTP headers](RPCRequest.md#attr-rpcrequesthttpheaders), to ensure proper handling on the server.
+In a manner analogous to [DataSource.transformRequest](DataSource.md#method-datasourcetransformrequest), this method allows you to transform an [RPCRequest](../reference.md#object-rpcrequest), such as by adding [HTTP headers](RPCRequest.md#attr-rpcrequesthttpheaders), to ensure proper handling on the server.
 
 ### Parameters
 
@@ -771,9 +771,9 @@ The HttpProxy will be used if the [RPCRequest.actionURL](RPCRequest.md#attr-rpcr
 
 The [RPCRequest](../reference.md#object-rpcrequest) properties that will be respected when relaying requests via the HttpProxy are: [actionURL](RPCRequest.md#attr-rpcrequestactionurl), [httpMethod](RPCRequest.md#attr-rpcrequesthttpmethod), [params](RPCRequest.md#attr-rpcrequestparams), [contentType](RPCRequest.md#attr-rpcrequestcontenttype), [httpHeaders](RPCRequest.md#attr-rpcrequesthttpheaders), and [data](RPCRequest.md#attr-rpcrequestdata). In this case "data", if set, will be used as the request body for an HTTP POST.
 
-Higher-level APIs like [DataSource](DataSource_1.md#class-datasource) or [WebService](WebService.md#class-webservice) call through this API, and so automatically use the HttpProxy if [DataSource.dataURL](DataSource_1.md#attr-datasourcedataurl) or [webService.location](WebService.md#method-webservicesetlocation) is set to a foreign server.
+Higher-level APIs like [DataSource](DataSource.md#class-datasource) or [WebService](WebService.md#class-webservice) call through this API, and so automatically use the HttpProxy if [DataSource.dataURL](DataSource.md#attr-datasourcedataurl) or [webService.location](WebService.md#method-webservicesetlocation) is set to a foreign server.
 
-This API is only suitable for direct use when loading unstructured data that will not be shown in a [DataBoundComponent](../reference.md#interface-databoundcomponent). For a WSDL-described web service, use [XMLTools.loadWSDL](XMLTools.md#classmethod-xmltoolsloadwsdl) instead. For other web services, use a [DataSource](DataSource_1.md#class-datasource) with [dataURL](DataSource_1.md#attr-datasourcedataurl), and use [DataSource.transformRequest](DataSource_1.md#method-datasourcetransformrequest) and [DataSource.transformResponse](DataSource_1.md#method-datasourcetransformresponse) as necessary to form requests for the service and transform responses for display.
+This API is only suitable for direct use when loading unstructured data that will not be shown in a [DataBoundComponent](../reference.md#interface-databoundcomponent). For a WSDL-described web service, use [XMLTools.loadWSDL](XMLTools.md#classmethod-xmltoolsloadwsdl) instead. For other web services, use a [DataSource](DataSource.md#class-datasource) with [dataURL](DataSource.md#attr-datasourcedataurl), and use [DataSource.transformRequest](DataSource.md#method-datasourcetransformrequest) and [DataSource.transformResponse](DataSource.md#method-datasourcetransformresponse) as necessary to form requests for the service and transform responses for display.
 
 ### Parameters
 
@@ -1256,10 +1256,10 @@ If you are in the rare situation that:
 *   the server you are integrating with some pre-existing support for combining operations in a flexible way, similar to queuing
 *   you are totally unable to implement the RestDataSource protocol for this server, even through approaches such as adding it as an additional service while leaving the original services unchanged, or going through an intermediate server
 
-.. then you can implement a crude version of the built-in queuing feature by using [dataProtocol:"clientCustom"](DataSource_1.md#attr-datasourcedataprotocol) to avoid HTTP requests being immediately sent when a DataSource executes. In outline:
+.. then you can implement a crude version of the built-in queuing feature by using [dataProtocol:"clientCustom"](DataSource.md#attr-datasourcedataprotocol) to avoid HTTP requests being immediately sent when a DataSource executes. In outline:
 
-*   create an API similar to `startQueue()` for managing a global setting reflecting whether your special queuing system is active. Your DataSources should check for this global setting in [DataSource.transformRequest](DataSource_1.md#method-datasourcetransformrequest), and, if queuing is active, store the request you received in [DataSource.transformRequest](DataSource_1.md#method-datasourcetransformrequest) in memory, for example in an Array
-*   implement your own equivalent of `RPCManager.sendQueue()` which sends an HTTP request representing your combined requests, then once you receive your combined response, call [DataSource.processResponse](DataSource_1.md#method-datasourceprocessresponse) for each request.
+*   create an API similar to `startQueue()` for managing a global setting reflecting whether your special queuing system is active. Your DataSources should check for this global setting in [DataSource.transformRequest](DataSource.md#method-datasourcetransformrequest), and, if queuing is active, store the request you received in [DataSource.transformRequest](DataSource.md#method-datasourcetransformrequest) in memory, for example in an Array
+*   implement your own equivalent of `RPCManager.sendQueue()` which sends an HTTP request representing your combined requests, then once you receive your combined response, call [DataSource.processResponse](DataSource.md#method-datasourceprocessresponse) for each request.
 
 Note that attempting to integrate with `RPCManager`'s queuing system doesn't really make sense - `RPCManager` won't be aware of your separate, special queue of requests, so will reject calls to `sendQueue()` since RPCManager's queue is empty. Similarly, enabling queuing on `RPCManager` may cause inadvertent queuing of unrelated requests you did not intend to queue. Maintaining your own separate notion of whether queuing is active is simpler and less error prone.
 

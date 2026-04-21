@@ -337,6 +337,8 @@ The DataSource that this component should bind to for default fields and for per
 
 Can be specified as either a DataSource instance or the String ID of a DataSource.
 
+To limit fetched data to just the visible fields and fields required for declared formulas, see [ListGrid.fetchFields](ListGrid_1.md#attr-listgridfetchfields).
+
 ### Groups
 
 - databinding
@@ -559,7 +561,7 @@ Whether at least one item is selected in the supplied column (the first column i
 ## Method: ColumnTree.fetchData
 
 ### Description
-Uses a "fetch" operation on the current [grid.dataSource](DataSource_1.md#class-datasource) to retrieve data that matches the provided criteria, and displays the matching data in this component as a tree.
+Uses a "fetch" operation on the current [grid.dataSource](DataSource.md#class-datasource) to retrieve data that matches the provided criteria, and displays the matching data in this component as a tree.
 
 This method will create a [ResultTree](ResultTree.md#class-resulttree) to manage tree data, which will subsequently be available as `columnTree.data`. DataSource records returned by the "fetch" operation are linked into a tree structure according to [primaryKey](DataSourceField.md#attr-datasourcefieldprimarykey) and [foreignKey](DataSourceField.md#attr-datasourcefieldforeignkey) declarations on DataSource fields. See the [treeDataBinding](../kb_topics/treeDataBinding.md#kb-topic-tree-databinding) topic for complete details.
 
@@ -721,7 +723,7 @@ For a drop from another widget, [TreeGrid.transferDragData](TreeGrid.md#method-t
 
 In either case the new row(s) appear in the `folder` at the `index` specified by the arguments of the same name.
 
-If this grid is databound, the new nodes will be added to the dataset by calling [DataSource.addData](DataSource_1.md#method-datasourceadddata). Further, if the new nodes were dragged from another databound component, and [addDropValues](DataBoundComponent.md#attr-databoundcomponentadddropvalues) is true, [getDropValues](DataBoundComponent.md#method-databoundcomponentgetdropvalues) will be called for every item being dropped.
+If this grid is databound, the new nodes will be added to the dataset by calling [DataSource.addData](DataSource.md#method-datasourceadddata). Further, if the new nodes were dragged from another databound component, and [addDropValues](DataBoundComponent.md#attr-databoundcomponentadddropvalues) is true, [getDropValues](DataBoundComponent.md#method-databoundcomponentgetdropvalues) will be called for every item being dropped.
 
 As a special case, if the `sourceWidget` is also databound and a [foreignKey](DataSourceField.md#attr-datasourcefieldforeignkey) relationship is declared from the `sourceWidget`'s DataSource to this TreeGrid's DataSource, the interaction will be treated as a "drag recategorization" use case such as files being placed in folders, employees being assigned to teams, etc. "update" DSRequests will be submitted that change the foreignKey field in the dropped records to point to the tree folder that was the target of the drop. In this case no change will be made to the Tree data as such, only to the dropped records.
 
@@ -729,7 +731,7 @@ For multi-record drops, Queuing is automatically used to combine all DSRequests 
 
 If these default persistence behaviors are undesirable, return false to cancel them , then implement your own behavior, typically by using grid.updateData() or addData() to add new records.
 
-**NOTE:** the records you receive in this event are the actual Records from the source component. Use [DataSource.copyRecords](DataSource_1.md#method-datasourcecopyrecords) to create a copy before modifying the records or using them with updateData() or addData().
+**NOTE:** the records you receive in this event are the actual Records from the source component. Use [DataSource.copyRecords](DataSource.md#method-datasourcecopyrecords) to create a copy before modifying the records or using them with updateData() or addData().
 
 ### Parameters
 

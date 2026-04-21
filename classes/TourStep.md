@@ -133,7 +133,7 @@ Applied directly to [TourStep.targetView](#attr-toursteptargetview). Defaults fr
 ### Description
 Should the [TourStep.targetView](#attr-toursteptargetview) [action button](TourWindow.md#attr-tourwindowshowactionbutton) be shown for this step?
 
-If no value is provided it will be defaulted to `true` when [autoComplete](../reference_2.md#type-autocomplete) is `not false` and any of the following are true:
+If no value is provided it will be defaulted to `true` when [autoComplete](../reference.md#type-autocomplete) is `not false` and any of the following are true:
 
 *   [actionType](#attr-tourstepactiontype) is "click"
 *   actionType is "mouseDown"

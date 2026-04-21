@@ -13,7 +13,7 @@ These scriptlets can be written in any language supported by the Java "JSR 223" 
 
 The primary use cases for server scripts are:
 
-*   DMI scriptlet declared via [DataSource.script](../classes/DataSource_1.md#attr-datasourcescript). Like DMI logic declared via [ServerObject](../reference_2.md#object-serverobject), DMI scriptlets can be used to add business logic by modifying the DSRequest before it is executed, modifying the default DSResponse, or taking other, unrelated actions.
+*   DMI scriptlet declared via [DataSource.script](../classes/DataSource.md#attr-datasourcescript). Like DMI logic declared via [ServerObject](../reference_2.md#object-serverobject), DMI scriptlets can be used to add business logic by modifying the DSRequest before it is executed, modifying the default DSResponse, or taking other, unrelated actions.
 *   DMI scriplet declared via [OperationBinding.script](../classes/OperationBinding.md#attr-operationbindingscript), same as the above, but `operationBinding` specific and prioritized over the `DataSource.script` if both present.
 *   validator scriptlets declared via [Validator.serverCondition](../classes/Validator.md#attr-validatorservercondition). Like a validator declared via [ServerObject](../reference_2.md#object-serverobject), a scriptlet validator defines whether data is valid by running arbitrary logic, then returning true or false.
 *   scripted [VisibleMethod](../reference_2.md#object-visiblemethod) as part of [ServerObject.visibleMethods](../classes/ServerObject.md#attr-serverobjectvisiblemethods) declared in an [Application declaration file](applicationDeclaration.md#kb-topic-application-declaration-files).
@@ -53,7 +53,7 @@ Another example below shows [Validator.serverCondition](../classes/Validator.md#
  </field>
  
 ```
-Note that general principles of [DataSource.operationBindings](../classes/DataSource_1.md#attr-datasourceoperationbindings) also apply, so you have the complete control over which operations end up being executed via scriplets. For example you can declare an `operationBinding` with no `operationId` to affect the default behavior of an operation. So if all update operations in a DataSource need to do a specific security check, you can just do:
+Note that general principles of [DataSource.operationBindings](../classes/DataSource.md#attr-datasourceoperationbindings) also apply, so you have the complete control over which operations end up being executed via scriplets. For example you can declare an `operationBinding` with no `operationId` to affect the default behavior of an operation. So if all update operations in a DataSource need to do a specific security check, you can just do:
 ```
  <operationBinding operationType="update">
      <script>
@@ -150,7 +150,7 @@ For convenience, SmartClient also bundles a .jar providing Groovy support from [
 
 There are **many** other languages available, sometimes with multiple implementations, and they are best found via web search. Making use of any available JSR223 language is as straightforward as dropping the applicable JAR file into your project and then using the name under which that language registers itself (from the language's documentation) as the `language` property of your script.
 
-**NOTE:** There is a known problem using SmartClient's built-in Java language scripting with Tomcat version 7.0.53 and newer (including Tomcat 8.x versions). The problem is a classloader issue for which there is no obvious workaround. For this reason, we recommend that you use Groovy if you wish to use Java as a scripting language: to a very large extent, Groovy is a superset of Java, so the great majority of scripted Java source will work unchanged if you just change the language definition from "java" to "groovy". There is no need to learn or use any of the Groovy language features - you are simply using Groovy as an evaluation engine for plain Java language script. Of course, if you want to use "real" Java, that is always available to you through the normal channels of [DMI](../classes/OperationBinding.md#attr-operationbindingserverobject) and [custom datasources](../classes/DataSource_1.md#attr-datasourceserverconstructor).
+**NOTE:** There is a known problem using SmartClient's built-in Java language scripting with Tomcat version 7.0.53 and newer (including Tomcat 8.x versions). The problem is a classloader issue for which there is no obvious workaround. For this reason, we recommend that you use Groovy if you wish to use Java as a scripting language: to a very large extent, Groovy is a superset of Java, so the great majority of scripted Java source will work unchanged if you just change the language definition from "java" to "groovy". There is no need to learn or use any of the Groovy language features - you are simply using Groovy as an evaluation engine for plain Java language script. Of course, if you want to use "real" Java, that is always available to you through the normal channels of [DMI](../classes/OperationBinding.md#attr-operationbindingserverobject) and [custom datasources](../classes/DataSource.md#attr-datasourceserverconstructor).
 
 A full description of the differences between Groovy and Java is [here](http://groovy-lang.org/differences.html)
 
@@ -302,9 +302,9 @@ For further information on GraalJS configuration, see [Running GraalJS on JDK](h
 
 ### Related
 
-- [DataSource.transformRequestScript](../classes/DataSource_1.md#attr-datasourcetransformrequestscript)
-- [DataSource.transformRawResponseScript](../classes/DataSource_1.md#attr-datasourcetransformrawresponsescript)
-- [DataSource.transformResponseScript](../classes/DataSource_1.md#attr-datasourcetransformresponsescript)
+- [DataSource.transformRequestScript](../classes/DataSource.md#attr-datasourcetransformrequestscript)
+- [DataSource.transformRawResponseScript](../classes/DataSource.md#attr-datasourcetransformrawresponsescript)
+- [DataSource.transformResponseScript](../classes/DataSource.md#attr-datasourcetransformresponsescript)
 - [DataSourceField.fieldValueScript](../classes/DataSourceField.md#attr-datasourcefieldfieldvaluescript)
 - [OperationBinding.transformRequestScript](../classes/OperationBinding.md#attr-operationbindingtransformrequestscript)
 - [OperationBinding.transformRawResponseScript](../classes/OperationBinding.md#attr-operationbindingtransformrawresponsescript)

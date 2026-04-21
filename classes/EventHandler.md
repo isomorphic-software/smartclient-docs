@@ -331,7 +331,7 @@ For a cross-frame drag initiated on another SmartClient browser window this meth
 
 For a [file upload drag](Canvas.md#attr-canvascandropfiles), this method will return the [FileList](https://developer.mozilla.org/en-US/docs/Web/API/FileList) containing the file(s) that were dragged onto the component.
 
-This method may only be called during the [Canvas.drop](Canvas.md#method-canvasdrop) event (or methods called during the handling of that event, such as [ListGrid.recordDrop](ListGrid_2.md#method-listgridrecorddrop)). It will return null if called at any other time, or if called during a non-HTML5 drag and drop.
+This method may only be called during the [Canvas.drop](Canvas.md#method-canvasdrop) event (or methods called during the handling of that event, such as [ListGrid.recordDrop](ListGrid_3.md#method-listgridrecorddrop)). It will return null if called at any other time, or if called during a non-HTML5 drag and drop.
 
 ### Returns
 

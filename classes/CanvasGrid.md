@@ -107,6 +107,8 @@ The DataSource that this component should bind to for default fields and for per
 
 Can be specified as either a DataSource instance or the String ID of a DataSource.
 
+To limit fetched data to just the visible fields and fields required for declared formulas, see [ListGrid.fetchFields](ListGrid_1.md#attr-listgridfetchfields).
+
 ### Groups
 
 - databinding

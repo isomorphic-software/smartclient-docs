@@ -7,9 +7,9 @@
 ## KB Topic: Integration with Hibernate
 
 ### Description
-SmartClient can integrate with Hibernate in two main ways, both of which are enabled by creating a DataSource descriptor (.ds.xml file) with [serverType="hibernate"](../classes/DataSource_1.md#attr-datasourceservertype):
+SmartClient can integrate with Hibernate in two main ways, both of which are enabled by creating a DataSource descriptor (.ds.xml file) with [serverType="hibernate"](../classes/DataSource.md#attr-datasourceservertype):
 
-*   Pre-existing beans: a SmartClient DataSource can be automatically derived from either a Hibernate-managed bean or the Hibernate mapping. Use [schemaBean](../classes/DataSource_1.md#attr-datasourceschemabean) to derive from the bean or [DataSource.autoDeriveSchema](../classes/DataSource_1.md#attr-datasourceautoderiveschema) to derive from the mapping. In this case you will initially have a very short .ds.xml per bean - no `<fields>` are required unless and until you want to override the automatically derived fields.
+*   Pre-existing beans: a SmartClient DataSource can be automatically derived from either a Hibernate-managed bean or the Hibernate mapping. Use [schemaBean](../classes/DataSource.md#attr-datasourceschemabean) to derive from the bean or [DataSource.autoDeriveSchema](../classes/DataSource.md#attr-datasourceautoderiveschema) to derive from the mapping. In this case you will initially have a very short .ds.xml per bean - no `<fields>` are required unless and until you want to override the automatically derived fields.
 *   "Beanless" mode: SmartClient can drive Hibernate as a storage layer only, automatically generating Hibernate configuration from a SmartClient DataSource file (_dataSourceID_.ds.xml). In this case, you do not write a Java bean or create Hibernate mappings; Hibernate's beanless ["dynamic model"](http://docs.jboss.org/hibernate/orm/3.3/reference/en-US/html/persistent-classes.html#persistent-classes-dynamicmodels) mode is used.
 
 Which mode to use is primarily a matter of preference and pre-existing code. However, if you do not have pre-existing code or other special circumstances, the following approach is the most productive:
@@ -21,7 +21,7 @@ Which mode to use is primarily a matter of preference and pre-existing code. How
 
 Note that the [Admin Console](adminConsole.md#kb-topic-admin-console)'s "Import DataSources" section can be used to import test data into serverType:"hibernate" DataSources in the same manner as SQLDataSources.
 
-HibernateDataSource supports operations with composite primary keys. Setting data source level property [idClassName](../classes/DataSource_1.md#attr-datasourceidclassname) to fully qualified class name indicates, that entity uses composite primary key.
+HibernateDataSource supports operations with composite primary keys. Setting data source level property [idClassName](../classes/DataSource.md#attr-datasourceidclassname) to fully qualified class name indicates, that entity uses composite primary key.
 
 #### Beans and the DSRequest / DSResponse
 
@@ -43,7 +43,7 @@ You can provide Hibernate configuration to the SmartClient server in three ways:
      
     ```
     
-*   You can provide a Hibernate configuration at the level of individual DataSources, by specifying a [configBean](../classes/DataSource_1.md#attr-datasourceconfigbean) on the dataSource (this is only applicable if you are using Spring; see below)
+*   You can provide a Hibernate configuration at the level of individual DataSources, by specifying a [configBean](../classes/DataSource.md#attr-datasourceconfigbean) on the dataSource (this is only applicable if you are using Spring; see below)
 
 If you choose to have SmartClient lookup the Hibernate configuration, and you specify a [lookupStyle](../classes/ServerObject.md#attr-serverobjectlookupstyle) of "spring", SmartClient will make use of a Hibernate `SessionFactory` configured by Spring. It is possible to set up multiple Hibernate configurations in Spring, and to map individual DataSources to different configurations by making use of the `dataSource.configBean` property mentioned above. Please note the following caveats:
 
@@ -60,7 +60,7 @@ In some cases you may not be able to immediately use the built-in HibernateDataS
 
 ### See Also
 
-- [DataSource.beanClassName](../classes/DataSource_1.md#attr-datasourcebeanclassname)
+- [DataSource.beanClassName](../classes/DataSource.md#attr-datasourcebeanclassname)
 - [sqlConnectionPooling](sqlConnectionPooling.md#kb-topic-sql-connection-pooling)
 
 ---

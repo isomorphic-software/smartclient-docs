@@ -29,7 +29,7 @@ Reloading of child windows is in general supported (but see [MultiWindow.autoCop
 ## ClassAttr: MultiWindow.autoCopyDataSources
 
 ### Description
-Should [DataSources](DataSource_1.md#class-datasource) from other OpenFin windows with SmartClient loaded be copied by reference into this window? Such DataSources will be copied:
+Should [DataSources](DataSource.md#class-datasource) from other OpenFin windows with SmartClient loaded be copied by reference into this window? Such DataSources will be copied:
 
 *   when a page in another window is loaded (potentially several DataSources at once)
 *   at the moment DataSources are created in a page loaded in another window (just that DataSource)

@@ -15,11 +15,11 @@ ResultSets manage data paging, that is, loading records in batches as the user n
 
 A ResultSet can be passed to any component that expects a List, and the List APIs can be called directly on the ResultSet as long as the caller is able to deal with asynchronous loading; see [ResultSet.getRange](#method-resultsetgetrange).
 
-Generally ResultSets do not need to be created directly, but are created by DataBound components as an automatic consequence of calling [DataBound Component Methods](../kb_topics/dataBoundComponentMethods.md#kb-topic-databound-component-methods). For example, the [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata) causes [ListGrid.data](ListGrid_1.md#attr-listgriddata) to become an automatically created `ResultSet` object. Automatically created ResultSets can be customized via properties on ListGrids such as [ListGrid.dataPageSize](ListGrid_1.md#attr-listgriddatapagesize) and [ListGrid.dataProperties](ListGrid_1.md#attr-listgriddataproperties). All ResultSets for a given DataSource may also be customized via setting [DataSource.resultSetClass](DataSource_1.md#attr-datasourceresultsetclass) to the name of a ResultSet [subclass](isc.md#staticmethod-iscdefineclass) in which [defaults have been changed](Class.md#classmethod-classaddproperties).
+Generally ResultSets do not need to be created directly, but are created by DataBound components as an automatic consequence of calling [DataBound Component Methods](../kb_topics/dataBoundComponentMethods.md#kb-topic-databound-component-methods). For example, the [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata) causes [ListGrid.data](ListGrid_1.md#attr-listgriddata) to become an automatically created `ResultSet` object. Automatically created ResultSets can be customized via properties on ListGrids such as [ListGrid.dataPageSize](ListGrid_1.md#attr-listgriddatapagesize) and [ListGrid.dataProperties](ListGrid_1.md#attr-listgriddataproperties). All ResultSets for a given DataSource may also be customized via setting [DataSource.resultSetClass](DataSource.md#attr-datasourceresultsetclass) to the name of a ResultSet [subclass](isc.md#staticmethod-iscdefineclass) in which [defaults have been changed](Class.md#classmethod-classaddproperties).
 
 A ResultSet defaults to using data paging, setting [DSRequest.startRow](DSRequest.md#attr-dsrequeststartrow) and [DSRequest.endRow](DSRequest.md#attr-dsrequestendrow) in issued dsRequests. Server code may always return more rows than the ResultSet requests and the ResultSet will correctly integrate those rows based on [DSResponse.startRow](DSResponse.md#attr-dsresponsestartrow)/[endRow](DSResponse.md#attr-dsresponseendrow). Hence the server can always avoid paging mode by simply returning all matching rows.
 
-A ResultSet can be created directly with just the ID of a [DataSource](DataSource_1.md#class-datasource):
+A ResultSet can be created directly with just the ID of a [DataSource](DataSource.md#class-datasource):
 
 ```
      isc.ResultSet.create({
@@ -38,9 +38,9 @@ When using data paging, the server communicates the total number of records that
 
 However, the ResultSet does not require that the server calculate the true length of the dataset, which can be costly for an extremely large, searchable dataset. Instead, the server _may_ advertise a `totalRows` value that is one page larger than the last row loaded. This results in a UI sometimes called "progressive loading", where the user may load more rows by scrolling past the end of the currently loaded rows, but is not allowed to skip to the end of the dataset.
 
-The SmartClient server offers built in support for progressive loading at the [dataSource](DataSource_1.md#attr-datasourceprogressiveloading), [operationBinding](OperationBinding.md#attr-operationbindingprogressiveloading) and [request](DSRequest.md#attr-dsrequestprogressiveloading) level for SQL-backed dataSources. Setting [ResultSet.progressiveLoading](#attr-resultsetprogressiveloading) or [DataBoundComponent.progressiveLoading](DataBoundComponent.md#attr-databoundcomponentprogressiveloading) to true will also enable this feature where available.
+The SmartClient server offers built in support for progressive loading at the [dataSource](DataSource.md#attr-datasourceprogressiveloading), [operationBinding](OperationBinding.md#attr-operationbindingprogressiveloading) and [request](DSRequest.md#attr-dsrequestprogressiveloading) level for SQL-backed dataSources. Setting [ResultSet.progressiveLoading](#attr-resultsetprogressiveloading) or [DataBoundComponent.progressiveLoading](DataBoundComponent.md#attr-databoundcomponentprogressiveloading) to true will also enable this feature where available.
 
-Where available, progressive loading will also be enabled automatically for very large data sets if a [DataSource.progressiveLoadingThreshold](DataSource_1.md#attr-datasourceprogressiveloadingthreshold) is specified.
+Where available, progressive loading will also be enabled automatically for very large data sets if a [DataSource.progressiveLoadingThreshold](DataSource.md#attr-datasourceprogressiveloadingthreshold) is specified.
 
 Note that the SmartClient server is not a requirement for progressive loading - any DataSource implementation can enable progressive loading by simply populating the [DSResponse.totalRows](DSResponse.md#attr-dsresponsetotalrows) property with an appropriate value. We recommend the [DSResponse.progressiveLoading](DSResponse.md#attr-dsresponseprogressiveloading) attribute be set to true as well - this allows client side logic to treat the reported totalRows value specially if necessary.
 
@@ -60,9 +60,9 @@ By default, client-side filtering interprets the [criteria](../reference_2.md#ty
 
 Records cannot be directly added or removed from a ResultSet via [List](../reference_2.md#interface-list) APIs such as [removeAt()](List.md#method-listremoveat), unless it always filters locally, since this would break the consistency of server and client row numbering needed for data paging, and also create some issues with automatic cache synchronization. Set [modifiable](#attr-resultsetmodifiable) to enable the [List](../reference_2.md#interface-list) modification APIs on a [fetchMode](#attr-resultsetfetchmode):"local" ResultSet. Note that the special [FilteredList](FilteredList.md#class-filteredlist) class sets this property to allow developers to modify its data.
 
-Use [DataSource.addData](DataSource_1.md#method-datasourceadddata)/[removeData()](DataSource_1.md#method-datasourceremovedata) to add/remove rows from the [DataSource](DataSource_1.md#class-datasource), and the ResultSet will reflect the changes automatically. Alternatively, the [DataSource.updateCaches](DataSource_1.md#method-datasourceupdatecaches) method may be called to only update local caches of the DataSource in question, without generating any server traffic.
+Use [DataSource.addData](DataSource.md#method-datasourceadddata)/[removeData()](DataSource.md#method-datasourceremovedata) to add/remove rows from the [DataSource](DataSource.md#class-datasource), and the ResultSet will reflect the changes automatically. Alternatively, the [DataSource.updateCaches](DataSource.md#method-datasourceupdatecaches) method may be called to only update local caches of the DataSource in question, without generating any server traffic.
 
-To create a locally modifiable cache of Records from a DataSource, you can use [DataSource.fetchData](DataSource_1.md#method-datasourcefetchdata) to retrieve a List of Records which can be modified directly, or you can create a client-only [DataSource](DataSource_1.md#class-datasource) from the retrieved data to share a modifiable cache between several DataBoundComponents.
+To create a locally modifiable cache of Records from a DataSource, you can use [DataSource.fetchData](DataSource.md#method-datasourcefetchdata) to retrieve a List of Records which can be modified directly, or you can create a client-only [DataSource](DataSource.md#class-datasource) from the retrieved data to share a modifiable cache between several DataBoundComponents.
 
 **Updates and Automatic Cache Synchronization**
 
@@ -74,7 +74,7 @@ Note that the client-side filtering described above is also used to determine wh
 
 If automatic cache synchronization isn't working, troubleshoot the problem using the steps suggested [in the FAQ](http://forums.smartclient.com/showthread.php?t=8159#aGrid).
 
-Regarding [operationIds](OperationBinding.md#attr-operationbindingoperationid) and how they affect caching, take into account that cache sync is based on the fetch used - any add or update operation uses a fetch to retrieve updated data, and the operationId of that fetch can be set via [cacheSyncOperation](OperationBinding.md#attr-operationbindingcachesyncoperation). If the operationId of the cache is different from the operationId of the cache update data, it won't be used to update the cache, since the fields included and other aspects of the data are allowed to be different across different operationIds. This allows to maintain distinct caches on a per component basis, so when two components are using separate operationIds they are assumed to have distinct caches, because updates performed with one operationId will not affect the cache obtained via another operationId. Also, take into account that operationId must be unique per DataSource, across all operationTypes for that DataSource.
+Regarding [operationIds](OperationBinding.md#attr-operationbindingoperationid) and how they affect caching, take into account that cache sync is based on the fetch used - any add or update operation uses a fetch to retrieve updated data, and the operationId of that fetch can be set via [cacheSyncOperation](#attr-operationbindingcachesyncoperation). If the operationId of the cache is different from the operationId of the cache update data, it won't be used to update the cache, since the fields included and other aspects of the data are allowed to be different across different operationIds. This allows to maintain distinct caches on a per component basis, so when two components are using separate operationIds they are assumed to have distinct caches, because updates performed with one operationId will not affect the cache obtained via another operationId. Also, take into account that operationId must be unique per DataSource, across all operationTypes for that DataSource.
 
 **Data Paging with partial cache**
 
@@ -90,7 +90,7 @@ For this reason, after an "add" or "update" operation with a partial cache, the 
 
 - [DataBoundComponent](../reference.md#interface-databoundcomponent)
 - [dataBoundComponentMethods](../kb_topics/dataBoundComponentMethods.md#kb-topic-databound-component-methods)
-- [DataSource.resultSetClass](DataSource_1.md#attr-datasourceresultsetclass)
+- [DataSource.resultSetClass](DataSource.md#attr-datasourceresultsetclass)
 - [ResultSet.getRange](#method-resultsetgetrange)
 
 ---
@@ -175,7 +175,7 @@ Applicable only with `fetchMode: "paged"`. When a paged ResultSet is asked for r
 ### Description
 If [ResultSet.progressiveLoading](#attr-resultsetprogressiveloading) is not explicitly set, but the ResultSet recieves a response from the server where [DSResponse.progressiveLoading](DSResponse.md#attr-dsresponseprogressiveloading) is set to true, should subsequent requests for other rows in the same data set explicitly request progressiveLoading via [DSRequest.progressiveLoading](DSRequest.md#attr-dsrequestprogressiveloading), as long as the criteria are unchanged and the cache is not explicitly invalidated?
 
-This property is useful for the case where the server side [DataSource.progressiveLoadingThreshold](DataSource_1.md#attr-datasourceprogressiveloadingthreshold) enabled progressive loading after the row-count query determined that the requested data set was very large. By explicitly [requesting progressive loading](DSRequest.md#attr-dsrequestprogressiveloading) for subsequent fetches the server is able to avoid an unnecessary and potentially expensive row-count query while returning other rows from the same data set.
+This property is useful for the case where the server side [DataSource.progressiveLoadingThreshold](DataSource.md#attr-datasourceprogressiveloadingthreshold) enabled progressive loading after the row-count query determined that the requested data set was very large. By explicitly [requesting progressive loading](DSRequest.md#attr-dsrequestprogressiveloading) for subsequent fetches the server is able to avoid an unnecessary and potentially expensive row-count query while returning other rows from the same data set.
 
 ### Groups
 
@@ -202,7 +202,7 @@ Note: if [ResultSet.initialData](#attr-resultsetinitialdata) was specified, the 
 ## Attr: ResultSet.modifiable
 
 ### Description
-When true, allows the ResultSet to be modified by list APIs [List.addAt](List.md#method-listaddat), [List.set](List.md#method-listset), and [List.removeAt](List.md#method-listremoveat). Only applies to [fetchMode](#attr-resultsetfetchmode):"local" ResultSets, since in all other cases, such modifications would break the consistency of server and client row numbering needed for data paging, and also create some issues with automatic cache synchronization. See the "Modifying ResultSets" subtopic in the [ResultSet Overview](#class-resultset) for the alternative approach of updating the [DataSource](DataSource_1.md#class-datasource).
+When true, allows the ResultSet to be modified by list APIs [List.addAt](List.md#method-listaddat), [List.set](List.md#method-listset), and [List.removeAt](List.md#method-listremoveat). Only applies to [fetchMode](#attr-resultsetfetchmode):"local" ResultSets, since in all other cases, such modifications would break the consistency of server and client row numbering needed for data paging, and also create some issues with automatic cache synchronization. See the "Modifying ResultSets" subtopic in the [ResultSet Overview](#class-resultset) for the alternative approach of updating the [DataSource](DataSource.md#class-datasource).
 
 One known case where modification can be useful is when an array has been passed to [ListGrid.setData](ListGrid_2.md#method-listgridsetdata) for a ListGrid with [ListGrid.filterLocalData](ListGrid_1.md#attr-listgridfilterlocaldata):true. If the data is filtered using the [filterEditor](ListGrid_1.md#attr-listgridshowfiltereditor), then a new local ResultSet will be created as [data](ListGrid_1.md#attr-listgriddata) to reflect the filtering.
 
@@ -212,9 +212,9 @@ One known case where modification can be useful is when an array has been passed
 
 ### See Also
 
-- [DataSource.addData](DataSource_1.md#method-datasourceadddata)
-- [DataSource.removeData](DataSource_1.md#method-datasourceremovedata)
-- [DataSource.updateCaches](DataSource_1.md#method-datasourceupdatecaches)
+- [DataSource.addData](DataSource.md#method-datasourceadddata)
+- [DataSource.removeData](DataSource.md#method-datasourceremovedata)
+- [DataSource.updateCaches](DataSource.md#method-datasourceupdatecaches)
 
 **Flags**: IRW
 
@@ -222,7 +222,7 @@ One known case where modification can be useful is when an array has been passed
 ## Attr: ResultSet.progressiveLoading
 
 ### Description
-Sets [progressive loading mode](DataSource_1.md#attr-datasourceprogressiveloading) for this ResultSet. Any [DSRequest](../reference_2.md#object-dsrequest)s issued by this ResultSet will copy this setting onto the request, overriding the OperationBinding- and DataSource-level settings.
+Sets [progressive loading mode](DataSource.md#attr-datasourceprogressiveloading) for this ResultSet. Any [DSRequest](../reference_2.md#object-dsrequest)s issued by this ResultSet will copy this setting onto the request, overriding the OperationBinding- and DataSource-level settings.
 
 This setting is applied automatically by [DataBoundComponent](../reference.md#interface-databoundcomponent)s that have their own explicit setting for [progressiveLoading](DataBoundComponent.md#attr-databoundcomponentprogressiveloading)
 
@@ -234,7 +234,7 @@ See also the [ResultSet.rememberDynamicProgressiveLoading](#attr-resultsetrememb
 
 ### See Also
 
-- [DataSource.progressiveLoading](DataSource_1.md#attr-datasourceprogressiveloading)
+- [DataSource.progressiveLoading](DataSource.md#attr-datasourceprogressiveloading)
 - [OperationBinding.progressiveLoading](OperationBinding.md#attr-operationbindingprogressiveloading)
 - [DSRequest.progressiveLoading](DSRequest.md#attr-dsrequestprogressiveloading)
 - [DataBoundComponent.progressiveLoading](DataBoundComponent.md#attr-databoundcomponentprogressiveloading)
@@ -245,7 +245,7 @@ See also the [ResultSet.rememberDynamicProgressiveLoading](#attr-resultsetrememb
 ## Attr: ResultSet.applyRowCountToLength
 
 ### Description
-If [progressiveLoading](DataSource_1.md#attr-datasourceprogressiveloading) is active for a ResultSet we may not know the true size of the data set being displayed.
+If [progressiveLoading](DataSource.md#attr-datasourceprogressiveloading) is active for a ResultSet we may not know the true size of the data set being displayed.
 
 However the exact length may be known thanks to [DSResponse.estimatedTotalRows](DSResponse.md#attr-dsresponseestimatedtotalrows) containing an exact row count, or due to an explicit [row count fetch](#method-resultsetfetchrowcount) having been performed.
 
@@ -316,7 +316,7 @@ A ResultSet that has a complete cache for the current filter criteria can potent
 ## Attr: ResultSet.useClientFiltering
 
 ### Description
-Whether to filter data locally when we have a complete cache of all DataSource records for the current criteria, and the user further restricts the criteria (see [DataSource.compareCriteria](DataSource_1.md#method-datasourcecomparecriteria)).
+Whether to filter data locally when we have a complete cache of all DataSource records for the current criteria, and the user further restricts the criteria (see [DataSource.compareCriteria](DataSource.md#method-datasourcecomparecriteria)).
 
 This may need to be disabled if client-side filtering differs from server-side filtering in a way that affects functionality or is surprising.
 
@@ -408,7 +408,7 @@ The row-count fetch operation will ultimately be constructed as follows:
 ## Attr: ResultSet.updateCacheFromRequest
 
 ### Description
-When a successful Add, Update or Remove type operation fires on this ResultSet's dataSource, if [DSResponse.data](DSResponse.md#attr-dsresponsedata) is unset, should we integrate the submitted data values (from the request) into our data-set? This attribute will be passed to [DataSource.getUpdatedData](DataSource_1.md#method-datasourcegetupdateddata) as the `useDataFromRequest` parameter.
+When a successful Add, Update or Remove type operation fires on this ResultSet's dataSource, if [DSResponse.data](DSResponse.md#attr-dsresponsedata) is unset, should we integrate the submitted data values (from the request) into our data-set? This attribute will be passed to [DataSource.getUpdatedData](DataSource.md#method-datasourcegetupdateddata) as the `useDataFromRequest` parameter.
 
 ### Groups
 
@@ -481,7 +481,7 @@ Decides under what conditions the cache should be dropped when the [Criteria](..
 ### See Also
 
 - [Criteria](../reference_2.md#type-criteria)
-- [DataSource.criteriaPolicy](DataSource_1.md#attr-datasourcecriteriapolicy)
+- [DataSource.criteriaPolicy](DataSource.md#attr-datasourcecriteriapolicy)
 
 **Flags**: IRWA
 
@@ -508,7 +508,7 @@ The cache will then be dropped the next time rows are fetched, to prevent proble
 ## Attr: ResultSet.dataSource
 
 ### Description
-What [DataSource](DataSource_1.md#class-datasource) is this resultSet associated with?
+What [DataSource](DataSource.md#class-datasource) is this resultSet associated with?
 
 ### Groups
 
@@ -536,7 +536,7 @@ The intent of this delay is to avoid triggering many unnecessary fetches during 
 ## Attr: ResultSet.autoFetchRowCount
 
 ### Description
-If this ResultSet does not know its length due to [DataSource.progressiveLoading](DataSource_1.md#attr-datasourceprogressiveloading), should a [row count fetch](#method-resultsetfetchrowcount) automatically when data is loaded?
+If this ResultSet does not know its length due to [DataSource.progressiveLoading](DataSource.md#attr-datasourceprogressiveloading), should a [row count fetch](#method-resultsetfetchrowcount) automatically when data is loaded?
 
 The fetch will be issued when the first page of data arrives from the server as part of a progressive-loading response. If the cache is invalidated or the criteria change, a new row count fetch will be issued automatically when new data arrives that does not have an accurate row count.
 
@@ -698,7 +698,7 @@ If data is not immediately suited for client-side use when it is returned from t
 
 It is legal for `transformData()` to modify not only the records, but also their number (by modifying startRow and endRow on the [DSResponse](DSResponse.md#class-dsresponse) object).
 
-See also [DataSource.transformResponse](DataSource_1.md#method-datasourcetransformresponse) for an alternative entry point which applies to all DSResponses for a DataSource.
+See also [DataSource.transformResponse](DataSource.md#method-datasourcetransformresponse) for an alternative entry point which applies to all DSResponses for a DataSource.
 
 ### Parameters
 
@@ -842,9 +842,9 @@ Returns the index of the first and last cached row around a given row, or null i
 ### Description
 The ResultSet will call applyFilter() when it needs to determine whether rows match the current filter criteria.
 
-Default behavior is to call [DataSource.applyFilter](DataSource_1.md#method-datasourceapplyfilter) to determine which rows match that provided criteria.
+Default behavior is to call [DataSource.applyFilter](DataSource.md#method-datasourceapplyfilter) to determine which rows match that provided criteria.
 
-Override this method or [DataSource.applyFilter](DataSource_1.md#method-datasourceapplyfilter) to implement your own client-side filtering behavior.
+Override this method or [DataSource.applyFilter](DataSource.md#method-datasourceapplyfilter) to implement your own client-side filtering behavior.
 
 ### Parameters
 
@@ -864,13 +864,13 @@ Override this method or [DataSource.applyFilter](DataSource_1.md#method-datasour
 ## Method: ResultSet.fetchRowCount
 
 ### Description
-For cases where the exact size of the data set is not known due to [progressiveLoading](DataSource_1.md#attr-datasourceprogressiveloading), this method may be used to issue an explicit fetch request to the data source, asking for an accurate row count for the criteria currently applied to this ResultSet. The row count will then be available via [ResultSet.getRowCount](#method-resultsetgetrowcount), and if [ResultSet.applyRowCountToLength](#attr-resultsetapplyrowcounttolength) is true, the [length](#method-resultsetgetlength) of the ResultSet will be updated to reflect the reported value.
+For cases where the exact size of the data set is not known due to [progressiveLoading](DataSource.md#attr-datasourceprogressiveloading), this method may be used to issue an explicit fetch request to the data source, asking for an accurate row count for the criteria currently applied to this ResultSet. The row count will then be available via [ResultSet.getRowCount](#method-resultsetgetrowcount), and if [ResultSet.applyRowCountToLength](#attr-resultsetapplyrowcounttolength) is true, the [length](#method-resultsetgetlength) of the ResultSet will be updated to reflect the reported value.
 
 If the [criteria](#method-resultsetsetcriteria) for the ResultSet change while a row count fetch is in progress, the [rowCount](#method-resultsetgetrowcount) for the resultSet will not be updated. In this case the callback passed to this method will still fire, with the [criteriaChanged](Callbacks.md#method-callbacksrowcountcallback) parameter set to `true`
 
 Note the fetch request sent to the dataSource will have [DSRequest.progressiveLoading](DSRequest.md#attr-dsrequestprogressiveloading) explicitly set to false and [startRow:0](DSRequest.md#attr-dsrequeststartrow) and [endRow:0](DSRequest.md#attr-dsrequestendrow). See [ResultSet.rowCountContext](#attr-resultsetrowcountcontext) for full details of the request that will be sent to the dataSource.
 
-SmartClient server side dataSources will process such a request by calculating the row-count (for [serverType:"sql"](DataSource_1.md#attr-datasourceservertype), this means issuing a row-count database query), skipping any logic to retrieve actual data, and return a response with [progressiveLoading:false](DSResponse.md#attr-dsresponseprogressiveloading) and an accurate [DSResponse.totalRows](DSResponse.md#attr-dsresponsetotalrows).
+SmartClient server side dataSources will process such a request by calculating the row-count (for [serverType:"sql"](DataSource.md#attr-datasourceservertype), this means issuing a row-count database query), skipping any logic to retrieve actual data, and return a response with [progressiveLoading:false](DSResponse.md#attr-dsresponseprogressiveloading) and an accurate [DSResponse.totalRows](DSResponse.md#attr-dsresponsetotalrows).
 
 If this ResultSet is backed by a custom dataSource implementation, it is recommended that the dataSource either also returns a response with [progressiveLoading:false](DSResponse.md#attr-dsresponseprogressiveloading) and an accurate [DSResponse.totalRows](DSResponse.md#attr-dsresponsetotalrows), or uses the [DSResponse.estimatedTotalRows](DSResponse.md#attr-dsresponseestimatedtotalrows) attribute to indicate an accurate row count for the data set.
 
@@ -897,7 +897,7 @@ When the ResultSet fetches data from the DataSource in response to [ResultSet.ge
 
 Prior to the completion of the first fetch, (or after [dropping cache](#method-resultsetinvalidatecache)) the ResultSet will not know how many records are available. At this time `lengthIsKnown()` will return false, and a call to [ResultSet.getLength](#method-resultsetgetlength) will return an arbitrary, large value.
 
-Note: If [progressive loading](DataSource_1.md#attr-datasourceprogressiveloading) is active the reported [DSResponse.totalRows](DSResponse.md#attr-dsresponsetotalrows) value may not accurately reflect the true dataset size on the server. In this case `lengthIsKnown()` returns true, but the [reported length](#method-resultsetgetlength) of the ResultSet may change as additional rows are retrieved from the server. The [ResultSet.lengthIsProgressive](#method-resultsetlengthisprogressive) method will indicate when the resultSet is in this state.
+Note: If [progressive loading](DataSource.md#attr-datasourceprogressiveloading) is active the reported [DSResponse.totalRows](DSResponse.md#attr-dsresponsetotalrows) value may not accurately reflect the true dataset size on the server. In this case `lengthIsKnown()` returns true, but the [reported length](#method-resultsetgetlength) of the ResultSet may change as additional rows are retrieved from the server. The [ResultSet.lengthIsProgressive](#method-resultsetlengthisprogressive) method will indicate when the resultSet is in this state.
 
 ### Returns
 
@@ -995,7 +995,7 @@ Return the total number of records that match the current filter criteria.
 
 This length can only be known, even approximately, when the first results are retrieved from the server. Before then, the ResultSet returns a large length in order to encourage viewers to ask for rows. [ResultSet.lengthIsKnown()](#method-resultsetlengthisknown) can be called to determine whether an actual length is known.
 
-Note that if [progressive loading](DataSource_1.md#attr-datasourceprogressiveloading) is active, the length advertised by the server may not be an accurate total row count for the data set. [ResultSet.lengthIsProgressive()](#method-resultsetlengthisprogressive) can be called to determine whether this is the case.
+Note that if [progressive loading](DataSource.md#attr-datasourceprogressiveloading) is active, the length advertised by the server may not be an accurate total row count for the data set. [ResultSet.lengthIsProgressive()](#method-resultsetlengthisprogressive) can be called to determine whether this is the case.
 
 ### Returns
 
@@ -1009,9 +1009,9 @@ Note that if [progressive loading](DataSource_1.md#attr-datasourceprogressiveloa
 ## Method: ResultSet.compareCriteria
 
 ### Description
-Default behavior is to call [DataSource.compareCriteria](DataSource_1.md#method-datasourcecomparecriteria) to determine whether new criteria is guaranteed more restrictive, equivalent to the old criteria, or not guaranteed more restrictive, returning 1, 0 or -1 respectively. See [DataSource.compareCriteria](DataSource_1.md#method-datasourcecomparecriteria) for a full explanation of the default behavior.
+Default behavior is to call [DataSource.compareCriteria](DataSource.md#method-datasourcecomparecriteria) to determine whether new criteria is guaranteed more restrictive, equivalent to the old criteria, or not guaranteed more restrictive, returning 1, 0 or -1 respectively. See [DataSource.compareCriteria](DataSource.md#method-datasourcecomparecriteria) for a full explanation of the default behavior.
 
-Override this method or [DataSource.compareCriteria](DataSource_1.md#method-datasourcecomparecriteria) to implement your own client-side filtering behavior.
+Override this method or [DataSource.compareCriteria](DataSource.md#method-datasourcecomparecriteria) to implement your own client-side filtering behavior.
 
 ### Parameters
 
@@ -1379,7 +1379,7 @@ This method retrieves the row-count for this data set. If progressive loading is
 ### Description
 Clear any [sort specifiers](#method-resultsetsetsort) applied to this ResultSet, while maintaining the current order of records. This feature is not supported for all lists. This method returns true if supported.
 
-If a [paged resultSet](#attr-resultsetfetchmode) has a partial cache, the order of records in the local data must always match the order of records as provided by the [DataSource](DataSource_1.md#class-datasource) - otherwise the wrong set of records will be returned as new pages of data are fetched (in response to a user scrolling a ListGrid, for example).
+If a [paged resultSet](#attr-resultsetfetchmode) has a partial cache, the order of records in the local data must always match the order of records as provided by the [DataSource](DataSource.md#class-datasource) - otherwise the wrong set of records will be returned as new pages of data are fetched (in response to a user scrolling a ListGrid, for example).
 
 It's therefore not possible to unsort a paged resultSet with a partial cache and maintain the current order of any loaded records. If this method is called on a resultSet in this state, it will always no-op and return false.
 

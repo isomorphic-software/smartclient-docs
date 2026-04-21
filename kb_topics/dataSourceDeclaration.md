@@ -23,7 +23,7 @@ DataSources created on the client use the same style of creation as DataBound co
     });
  
 ```
-Reference for all properties that can be set for DataSources, their fields and validators is given in the [DataSource](../classes/DataSource_1.md#class-datasource) class reference.
+Reference for all properties that can be set for DataSources, their fields and validators is given in the [DataSource](../classes/DataSource.md#class-datasource) class reference.
 
 DataSources defined in XML declare fields, validators and other settings using XML tags:
 
@@ -67,7 +67,7 @@ XML DataSources can also be generated on the fly in case the entire DataSource o
 
 ### See Also
 
-- [DataSource](../classes/DataSource_1.md#class-datasource)
+- [DataSource](../classes/DataSource.md#class-datasource)
 - [loadDSTag](loadDSTag.md#kb-topic-isomorphicloadds)
 
 ---

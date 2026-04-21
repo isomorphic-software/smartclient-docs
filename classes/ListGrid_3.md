@@ -4,6 +4,83 @@
 
 ---
 
+## Method: ListGrid.recordDrop
+
+### Description
+Process a drop of one or more records on a ListGrid record.
+
+This method can be overridden to provide custom drop behaviors, and is a more appropriate override point than the lower level [Canvas.drop](Canvas.md#method-canvasdrop) handler.
+
+If this is a self-drop, records are simply reordered.
+
+For a drop from another widget, [ListGrid.transferDragData](ListGrid_2.md#method-listgridtransferdragdata) is called, which depending on the [dragDataAction](ListGrid_1.md#attr-listgriddragdataaction) specified on the source widget, may either remove the source records from the original list (`dragDataAction:"move"`) or just provide a copy to this list (`dragDataAction:"copy"`).
+
+If this grid is databound, the new records will be added to the dataset by calling [DataSource.addData](DataSource.md#method-datasourceadddata). Further, if the new records were dragged from another databound component, and [addDropValues](DataBoundComponent.md#attr-databoundcomponentadddropvalues) is true, [getDropValues](DataBoundComponent.md#method-databoundcomponentgetdropvalues) will be called for every item being dropped.
+
+For multi-record drops, Queuing is automatically used to combine all DSRequests into a single HTTP Request (see QuickStart Guide, Server Framework chapter). This allows the server to persist all changes caused by the drop in a single transaction (and this is automatically done when using the built-in server DataSources with Power Edition and above).
+
+Note that reordering records has no effect on a databound grid.
+
+The newly dropped data is then selected automatically.
+
+If these default persistence behaviors are undesirable, return false to cancel them, then and implement your own behavior, typically by using grid.updateData() or addData() to add new records.
+
+**NOTE:** the records you receive in this event are the actual Records from the source component. Use [DataSource.copyRecords](DataSource.md#method-datasourcecopyrecords) to create a copy before modifying the records or using them with updateData() or addData().
+
+NOTE: for a drop beyond the last visible record of a ListGrid, `targetRecord` will be null and the `index` will be one higher than the last record. This includes a drop into an empty ListGrid, where `index` will be 0.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| dropRecords | [Array of ListGridRecord](#type-array-of-listgridrecord)[] | false | — | records being dropped |
+| targetRecord | [ListGridRecord](#type-listgridrecord) | false | — | record being dropped on. May be null |
+| index | [int](../reference.md#type-int) | false | — | index of record being dropped on |
+| sourceWidget | [Canvas](#type-canvas) | false | — | widget where dragging began |
+
+---
+## Method: ListGrid.setEditorValueMap
+
+### Description
+Set a valueMap to display for this field while editing.  
+This method sets the [field.editorValueMap](ListGridField.md#attr-listgridfieldeditorvaluemap) property - note that if [ListGrid.getEditorValueMap](#method-listgridgeteditorvaluemap) has been overridden it may not make use of this property.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| fieldID | [Object](../reference.md#type-object)|[number](#type-number)|[FieldName](../reference.md#type-fieldname) | false | — | field object, number, or name |
+| map | [Object](../reference.md#type-object) | false | — | ValueMap to apply to the field |
+
+### Groups
+
+- editing
+
+**Flags**: A
+
+---
+## Method: ListGrid.cellMouseUp
+
+### Description
+Called when a cell receives a mouseup event.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| record | [ListGridRecord](#type-listgridrecord) | false | — | Record object (retrieved from getCellRecord(rowNum, colNum)) |
+| rowNum | [number](#type-number) | false | — | row number for the cell |
+| colNum | [number](#type-number) | false | — | column number of the cell |
+
+### Returns
+
+`[Boolean](#type-boolean)` — whether to cancel the event
+
+### Groups
+
+- events
+
+---
 ## Method: ListGrid.setFieldButtonProperties
 
 ### Description
@@ -85,7 +162,7 @@ Notes:
 
 ### Description
 Returns the valueMap to display for a field when it is displayed in the editor while editing some record.  
-Called when a user starts to edit a field, or whenever the field valueMap is updated via a call to [ListGrid.setValueMap](ListGrid_2.md#method-listgridsetvaluemap) or [ListGrid.setEditorValueMap](ListGrid_2.md#method-listgridseteditorvaluemap). Default implementation will return the `field.editorValueMap` if specified, otherwise `field.valueMap` - can be overridden to provide a different specific valueMap for some field based on the record/field data.
+Called when a user starts to edit a field, or whenever the field valueMap is updated via a call to [ListGrid.setValueMap](ListGrid_2.md#method-listgridsetvaluemap) or [ListGrid.setEditorValueMap](#method-listgridseteditorvaluemap). Default implementation will return the `field.editorValueMap` if specified, otherwise `field.valueMap` - can be overridden to provide a different specific valueMap for some field based on the record/field data.
 
 ### Parameters
 

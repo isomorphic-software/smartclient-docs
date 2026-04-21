@@ -4,6 +4,44 @@
 
 ---
 
+## Attr: ListGrid.hoverMode
+
+### Description
+When [showHoverComponents](ListGrid_1.md#attr-listgridshowhovercomponents) is true, the builtin mode to use when automatically creating a hover component for rows in this grid.
+
+A number of builtin modes are provided - see [HoverMode](../reference.md#type-hovermode). You can also override [getCellHoverComponent()](#method-listgridgetcellhovercomponent) to provide a custom hover widget - in that case, this attribute is ignored.
+
+If `showHoverComponents` is true but `hoverMode` is not set, it defaults to "detailRelated" if [ListGrid.detailDS](ListGrid_1.md#attr-listgriddetailds) is set, or to "details" otherwise. If `showHoverComponents` is not set (ie, is null) and `hoverMode` _is_ set, `showHoverComponents` defaults to true.
+
+### Groups
+
+- hoverComponents
+
+**Flags**: IRW
+
+---
+## Attr: ListGrid.newSearchText
+
+### Description
+Text to show for saving the current view as a new "saved search".
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IR
+
+---
+## Attr: ListGrid.summaryRowCriteria
+
+### Description
+If [ListGrid.showGridSummary](ListGrid_1.md#attr-listgridshowgridsummary) is true, and a [ListGrid.summaryRowDataSource](ListGrid_1.md#attr-listgridsummaryrowdatasource) is specified this property may be used to specify fetch criteria to apply when retrieving summary data to show in the summary row. If unset, and any filter criteria have been specified for the grid, they will be used.
+
+If this property is set, the [textMatchStyle](DSRequest.md#attr-dsrequesttextmatchstyle) will default to "exact". Otherwise [ListGrid.autoFetchTextMatchStyle](ListGrid_1.md#attr-listgridautofetchtextmatchstyle) will be used. This can be overridden via [ListGrid.summaryRowFetchRequestProperties](ListGrid_1.md#attr-listgridsummaryrowfetchrequestproperties).
+
+**Flags**: IRWA
+
+---
 ## Attr: ListGrid.groupByAsyncThreshold
 
 ### Description
@@ -637,7 +675,7 @@ For other use cases, see also:
 ## Method: ListGrid.getRowCountStatus
 
 ### Description
-This method indicates whether [ListGrid.getRowCount](#method-listgridgetrowcount) reflects an accurate row-count for this listGrid. An accurate row count may not currently be available if [progressiveLoading](DataSource_1.md#attr-datasourceprogressiveloading) is active.
+This method indicates whether [ListGrid.getRowCount](#method-listgridgetrowcount) reflects an accurate row-count for this listGrid. An accurate row count may not currently be available if [progressiveLoading](DataSource.md#attr-datasourceprogressiveloading) is active.
 
 See [RowCountStatus](../reference.md#type-rowcountstatus) for further details.
 
@@ -990,7 +1028,7 @@ If your ListGrid has custom formatters, formatted values will be exported by def
 
 Note that during export, the [ListGridField.escapeHTML](ListGridField.md#attr-listgridfieldescapehtml) setting on a field determines how escaped and unescaped HTML values are handled. In particular, if `escapeHTML` is not set for a field, a value like "`<FOO>`" will be exported as the empty string, and you'd need the escaped value "&lt;FOO&gt;" to end up exporting "`<FOO>`".
 
-Ordinarily, calls to this method go through the static classMethod [DataSource.exportClientData](DataSource.md#classmethod-datasourceexportclientdata). In this case, no server-side DataSources are required. However, if this component is [databound](DataBoundComponent.md#method-databoundcomponentsetdatasource) and you specify a valid [operationId](DSRequest.md#attr-dsrequestoperationid) in the properties passed to this method, the call will go through the instance method [DataSource.exportClientData](DataSource_1.md#method-datasourceexportclientdata) instead. As the documentation for that method explains, this allows you more control on the server side. This approach requires both the SmartClient server and server-side DataSource definitions.
+Ordinarily, calls to this method go through the static classMethod [DataSource.exportClientData](DataSource.md#classmethod-datasourceexportclientdata). In this case, no server-side DataSources are required. However, if this component is [databound](DataBoundComponent.md#method-databoundcomponentsetdatasource) and you specify a valid [operationId](DSRequest.md#attr-dsrequestoperationid) in the properties passed to this method, the call will go through the instance method [DataSource.exportClientData](DataSource.md#method-datasourceexportclientdata) instead. As the documentation for that method explains, this allows you more control on the server side. This approach requires both the SmartClient server and server-side DataSource definitions.
 
 To export data from this component's dataSource, see [exportData](DataBoundComponent.md#method-databoundcomponentexportdata), which does not include client-side formatters, but **does** include formatters declared in the `.ds.xml` file. `exportData()` relies on both the SmartClient server and server-side DataSources.
 
@@ -1003,7 +1041,7 @@ To export data from this component's dataSource, see [exportData](DataBoundCompo
 
 ### See Also
 
-- [DataSource.exportClientData](DataSource_1.md#method-datasourceexportclientdata)
+- [DataSource.exportClientData](DataSource.md#method-datasourceexportclientdata)
 - [exportFormatting](../kb_topics/exportFormatting.md#kb-topic-exports--formatting)
 
 ---
@@ -1068,7 +1106,7 @@ The `ignorePendingValues` parameter may be used by developers who want to ignore
 ## Method: ListGrid.fetchRowCount
 
 ### Description
-For databound grids, method will fall through to [ResultSet.fetchRowCount](ResultSet.md#method-resultsetfetchrowcount), allowing developers to request an accurate row count from the dataSource when [progressive loading is active](DataSource_1.md#attr-datasourceprogressiveloading).
+For databound grids, method will fall through to [ResultSet.fetchRowCount](ResultSet.md#method-resultsetfetchrowcount), allowing developers to request an accurate row count from the dataSource when [progressive loading is active](DataSource.md#attr-datasourceprogressiveloading).
 
 ### Parameters
 
@@ -3104,7 +3142,7 @@ Othewise, the default implementation returns `"columnheader"` if [ListGrid.ariaR
 ### Description
 During a drag-and-drop interaction, this method is called to transfer a set of records that were dropped onto some other component. This method is called after the set of records has been copied to the other component. Whether or not this component's data is modified is determined by the value of [DataBoundComponent.dragDataAction](DataBoundComponent.md#attr-databoundcomponentdragdataaction).
 
-With a `dragDataAction` of "move", a databound component will issue "remove" dsRequests against its DataSource to actually remove the data, via [DataSource.removeData](DataSource_1.md#method-datasourceremovedata).
+With a `dragDataAction` of "move", a databound component will issue "remove" dsRequests against its DataSource to actually remove the data, via [DataSource.removeData](DataSource.md#method-datasourceremovedata).
 
 ### Returns
 
@@ -3299,7 +3337,7 @@ Overridden by ListGrid to pick up aria-rowcount and aria-colcount.
 ## Method: ListGrid.getRecordDropPosition
 
 ### Description
-Returns the [RecordDropPosition](../reference.md#type-recorddropposition) for some record drop operation. This value is passed to the [ListGrid.recordDrop](#method-listgridrecorddrop) event notification method.
+Returns the [RecordDropPosition](../reference.md#type-recorddropposition) for some record drop operation. This value is passed to the [ListGrid.recordDrop](ListGrid_3.md#method-listgridrecorddrop) event notification method.
 
 Default implementation determines the position to return based on the specified [ListGrid.recordDropAppearance](ListGrid_1.md#attr-listgridrecorddropappearance) for the grid and the [y-coordinate of the drop event](EventHandler.md#classmethod-eventhandlergety).
 
@@ -3393,7 +3431,7 @@ To format the value displayed in the cell, make use of the [formatting](#method-
 ## Method: ListGrid.getRowCountRange
 
 ### Description
-Retrieves the [row count range](ResultSet.md#method-resultsetgetrowcountrange) for listGrids where [progressive loading](DataSource_1.md#attr-datasourceprogressiveloading) is active and the row count has been specified as a [range](ResultSet.md#method-resultsetgetrowcountstatus).
+Retrieves the [row count range](ResultSet.md#method-resultsetgetrowcountrange) for listGrids where [progressive loading](DataSource.md#attr-datasourceprogressiveloading) is active and the row count has been specified as a [range](ResultSet.md#method-resultsetgetrowcountstatus).
 
 The returned value will be a two element array, containing the min and max bounds for the row-count. Note that if the row count has not been recorded as a range, the first element in the array will be the [row count](#method-listgridgetrowcount), and the second element will be null.
 
@@ -3450,7 +3488,7 @@ A variety of DSRequest settings, such as [exportAs](DSRequest.md#attr-dsrequeste
 
 Note that data exported via this method skips client-side fields defined only in the component, excludes any client-side formatting and relies on both the SmartClient server and server-side DataSources. To export client-data including client-only fields and with client-side formatting applied, see [exportClientData](#method-listgridexportclientdata), which still requires the SmartClient server but does not rely on server-side DataSource definitions (.ds.xml files).
 
-For more information on exporting data, see [DataSource.exportData](DataSource_1.md#method-datasourceexportdata).
+For more information on exporting data, see [DataSource.exportData](DataSource.md#method-datasourceexportdata).
 
 ### Parameters
 
@@ -3835,7 +3873,7 @@ This method has no effect if no specific operator has been set on the field, eit
 ### Description
 Sort the grid on one or more fields.
 
-Pass in an array of [SortSpecifier](../reference_2.md#object-sortspecifier)s to have the grid's data sorted by the fields in each [specifier.property](../reference.md#attr-sortspecifierproperty) and in the directions specified. The grid can be sorted by any combination of fields, including fields specified in the fields array, whether visible or hidden, and [unused fields from the\\n underlying dataSource](DataSource_1.md#attr-datasourcefields), if there is one.
+Pass in an array of [SortSpecifier](../reference_2.md#object-sortspecifier)s to have the grid's data sorted by the fields in each [specifier.property](../reference.md#attr-sortspecifierproperty) and in the directions specified. The grid can be sorted by any combination of fields, including fields specified in the fields array, whether visible or hidden, and [unused fields from the\\n underlying dataSource](DataSource.md#attr-datasourcefields), if there is one.
 
 If multiple fields are sorted, those that are visible show a directional icon and a small [sort-numeral](ListGrid_1.md#attr-listgridsortnumeralstyle) indicating that field's index in the sort configuration.
 
@@ -3857,7 +3895,7 @@ Note that for editable grids, sorting is performed by underlying data values, no
 ### Description
 Returns a snapshot of the current view state of this ListGrid.  
 This includes the field, sort, hilite, group, and selected state of the grid, its criteria and, when canShowFilterEditor is true, whether the filter-editor is visible, returned as a string representation of a [ListGridViewState](../reference_2.md#type-listgridviewstate) object.  
-This string can be stored over page-reloads (for example, in [browser local storage](Offline.md#classmethod-offlineput) or as field value in a record stored to a [DataSource](DataSource_1.md#class-datasource)) and then reapplied to the grid via [ListGrid.setViewState](#method-listgridsetviewstate) later to reset the grid to to the current state (assuming the same data / fields are present).
+This string can be stored over page-reloads (for example, in [browser local storage](Offline.md#classmethod-offlineput) or as field value in a record stored to a [DataSource](DataSource.md#class-datasource)) and then reapplied to the grid via [ListGrid.setViewState](#method-listgridsetviewstate) later to reset the grid to to the current state (assuming the same data / fields are present).
 
 To detect when view state changes, developers may use the [viewStateChanged event](#method-listgridviewstatechanged).
 
@@ -4070,7 +4108,7 @@ If newFields is specified, it is assumed that the new fields may have nothing in
 
 Two specific values of newFields have explicit meanings:
 
-*   null - a newFields value of `null` indicates there are no field overrides. All current fields are removed and, if the grid is bound to a [DataSource](DataSource_1.md#class-datasource), the "default binding" is used. (see [DataBoundComponent.fields](DataBoundComponent.md#attr-databoundcomponentfields)).
+*   null - a newFields value of `null` indicates there are no field overrides. All current fields are removed and, if the grid is bound to a [DataSource](DataSource.md#class-datasource), the "default binding" is used. (see [DataBoundComponent.fields](DataBoundComponent.md#attr-databoundcomponentfields)).
 *   empty array (\[\]) - providing an empty array for the newFields indicates that no fields are desired even if a dataSource is provided.
 
 ### Parameters
@@ -4911,7 +4949,7 @@ To do something specific if a particular field is clicked, add a recordClick met
 ## Method: ListGrid.getRelatedDataSource
 
 ### Description
-Returns the [DataSource](DataSource_1.md#class-datasource) containing data related to the passed record. Used when [ListGrid.canExpandRecords](ListGrid_1.md#attr-listgridcanexpandrecords) is true and [ExpansionMode](../reference_2.md#type-expansionmode) is "related". The default implementation returns the DataSource specified in [ListGridRecord.detailDS](ListGridRecord.md#attr-listgridrecorddetailds) if set, otherwise [ListGrid.detailDS](ListGrid_1.md#attr-listgriddetailds).
+Returns the [DataSource](DataSource.md#class-datasource) containing data related to the passed record. Used when [ListGrid.canExpandRecords](ListGrid_1.md#attr-listgridcanexpandrecords) is true and [ExpansionMode](../reference_2.md#type-expansionmode) is "related". The default implementation returns the DataSource specified in [ListGridRecord.detailDS](ListGridRecord.md#attr-listgridrecorddetailds) if set, otherwise [ListGrid.detailDS](ListGrid_1.md#attr-listgriddetailds).
 
 ### Parameters
 
@@ -4940,7 +4978,7 @@ Setter for [ListGrid.filterWindowCriteria](ListGrid_1.md#attr-listgridfilterwind
 
 ### Description
 Method to return the fieldName which represents the "title" for records in this Component.  
-If this.titleField is explicitly specified it will always be used. Otherwise, default implementation will check [DataSource.titleField](DataSource_1.md#attr-datasourcetitlefield) for databound compounds.  
+If this.titleField is explicitly specified it will always be used. Otherwise, default implementation will check [DataSource.titleField](DataSource.md#attr-datasourcetitlefield) for databound compounds.  
 For non databound components returns the first defined field name of `"title"`, `"name"`, or `"id"` where the field is visible. If we don't find any field-names that match these titles, the first field in the component will be used instead.
 
 ### Returns
@@ -5207,7 +5245,7 @@ Notification method executed whenever the groupState of this grid changes. Group
 ## Method: ListGrid.refreshData
 
 ### Description
-Unlike [invalidateCache](#method-listgridinvalidatecache) this will perform an asynchronous (background) refresh of this component's data and then call the provided callback method on completion. A grid needs to have a [DataSource](DataSource_1.md#class-datasource) associated with it to use this method.
+Unlike [invalidateCache](#method-listgridinvalidatecache) this will perform an asynchronous (background) refresh of this component's data and then call the provided callback method on completion. A grid needs to have a [DataSource](DataSource.md#class-datasource) associated with it to use this method.
 
 If `refreshData()` is called while the grid is waiting for a response from [ListGrid.fetchData](#method-listgridfetchdata) the `refreshData()` call will be aborted. This is because the fetch has higher priority.
 
@@ -5854,7 +5892,7 @@ Returns an object with:
 ### Description
 Handle a drop event. Default implementation supports moving data within this grid or transferring data into the grid from some other component.
 
-Developers wishing to implement custom listGrid record drag and drop behavior should typically use the [ListGrid.recordDrop](#method-listgridrecorddrop) method rather than overriding this method directly.
+Developers wishing to implement custom listGrid record drag and drop behavior should typically use the [ListGrid.recordDrop](ListGrid_3.md#method-listgridrecorddrop) method rather than overriding this method directly.
 
 ### Returns
 
@@ -6115,7 +6153,7 @@ Returns the primary [body](ListGrid_1.md#attr-listgridbody), which, when there a
 ### Description
 Returns the [current total row count](#method-listgridgetrowcount) for this grid as a formatted string.
 
-Due to [progressiveLoading](DataSource_1.md#attr-datasourceprogressiveloading), an exact total row count may not be available. Depending on the current [rowCount status](#method-listgridgetrowcountstatus), this method will return a value in one of the following formats. Note that if the row count is not exact, the numeric value will be rounded to the nearest multiple of [ListGrid.rowCountDisplayPrecision](ListGrid_1.md#attr-listgridrowcountdisplayprecision).
+Due to [progressiveLoading](DataSource.md#attr-datasourceprogressiveloading), an exact total row count may not be available. Depending on the current [rowCount status](#method-listgridgetrowcountstatus), this method will return a value in one of the following formats. Note that if the row count is not exact, the numeric value will be rounded to the nearest multiple of [ListGrid.rowCountDisplayPrecision](ListGrid_1.md#attr-listgridrowcountdisplayprecision).
 
 *   `"exact"`: The row count will be formatted using [ListGrid.exactRowCountFormat](ListGrid_1.md#attr-listgridexactrowcountformat)
 *   `"minimum"`: The row count will be formatted using [ListGrid.minimumRowCountFormat](ListGrid_1.md#attr-listgridminimumrowcountformat)
@@ -6322,7 +6360,7 @@ Callback fired when the user attempts to navigate away from the current edit cel
 
 Return false from this method to cancel the default behavior (Saving / cancelling the current edit / moving to the next edit cell).
 
-This callback is typically used to dynamically update values or value maps for related fields (via [ListGrid.setEditValue](#method-listgridseteditvalue) and [ListGrid.setEditorValueMap](#method-listgridseteditorvaluemap) respectively, or to implement custom navigation (via [startEditing(rowNum,colNum)](#method-listgridstartediting).
+This callback is typically used to dynamically update values or value maps for related fields (via [ListGrid.setEditValue](#method-listgridseteditvalue) and [ListGrid.setEditorValueMap](ListGrid_3.md#method-listgridseteditorvaluemap) respectively, or to implement custom navigation (via [startEditing(rowNum,colNum)](#method-listgridstartediting).
 
 Can be overridden at the field level as field.editorExit.
 
@@ -6947,7 +6985,7 @@ Selected state is not supported if the component has no dataSource, or the dataS
 ## Method: ListGrid.getRowCount
 
 ### Description
-Retrieves the [row count](ResultSet.md#method-resultsetgetrowcount) for the grid, which may differ from the reported [data length](ResultSet.md#method-resultsetgetlength) if [progressive loading](DataSource_1.md#attr-datasourceprogressiveloading) is enabled.
+Retrieves the [row count](ResultSet.md#method-resultsetgetrowcount) for the grid, which may differ from the reported [data length](ResultSet.md#method-resultsetgetlength) if [progressive loading](DataSource.md#attr-datasourceprogressiveloading) is enabled.
 
 See also [ListGrid.getRowCountStatus](#method-listgridgetrowcountstatus)
 
@@ -8190,7 +8228,7 @@ Method invoked when changes to the listGrid's data occur. This method will perfo
 May be invoked by any of the following:
 
 *   a call to [ListGrid.addData](#method-listgridadddata), [ListGrid.updateData](#method-listgridupdatedata), or [ListGrid.removeData](#method-listgridremovedata)
-*   [DataSource](DataSource_1.md#class-datasource) updates from the server for [ResultSet](ResultSet.md#class-resultset) data (triggered by record editing, etc.)
+*   [DataSource](DataSource.md#class-datasource) updates from the server for [ResultSet](ResultSet.md#class-resultset) data (triggered by record editing, etc.)
 *   fetches arriving back from the server for [ResultSet](ResultSet.md#class-resultset) data
 *   changes to array data if made through APIs such as [Array.set](Array.md#method-arrayset), [Array.add](Array.md#method-arrayadd), etc.
 *   cache invalidation
@@ -8198,7 +8236,7 @@ May be invoked by any of the following:
 
 Calling [ListGrid.setData](#method-listgridsetdata) will not call this method directly, but it may fire if one of the above listed events is triggered (e.g. a server fetch for [ResultSet](ResultSet.md#class-resultset) data).
 
-Note that the `operationType` parameter is optional and will be passed and contain the operation (e.g. "update") if this notification was triggered by a fetch, an [ListGrid.addData](#method-listgridadddata), [ListGrid.updateData](#method-listgridupdatedata), or [ListGrid.removeData](#method-listgridremovedata), or a [DataSource](DataSource_1.md#class-datasource) update for [ResultSet](ResultSet.md#class-resultset) data (the first three reasons listed above) but otherwise will be undefined.
+Note that the `operationType` parameter is optional and will be passed and contain the operation (e.g. "update") if this notification was triggered by a fetch, an [ListGrid.addData](#method-listgridadddata), [ListGrid.updateData](#method-listgridupdatedata), or [ListGrid.removeData](#method-listgridremovedata), or a [DataSource](DataSource.md#class-datasource) update for [ResultSet](ResultSet.md#class-resultset) data (the first three reasons listed above) but otherwise will be undefined.
 
 ### Parameters
 
@@ -8442,7 +8480,7 @@ See [exportBGColor](../kb_topics/exportBGColor.md#kb-topic-exports--cell-backgro
 ## Method: ListGrid.setValueMap
 
 ### Description
-Set the [valueMap](ListGridField.md#attr-listgridfieldvaluemap) for a field. See also the [setEditorValueMap()](#method-listgridseteditorvaluemap) and [getEditorValueMap()](ListGrid_3.md#method-listgridgeteditorvaluemap) methods which allow further customization of the valueMap displayed while the field is in edit mode.
+Set the [valueMap](ListGridField.md#attr-listgridfieldvaluemap) for a field. See also the [setEditorValueMap()](ListGrid_3.md#method-listgridseteditorvaluemap) and [getEditorValueMap()](ListGrid_3.md#method-listgridgeteditorvaluemap) methods which allow further customization of the valueMap displayed while the field is in edit mode.
 
 ### Parameters
 
@@ -9133,82 +9171,5 @@ Returns true if the specified record is marked as removed via a call to [ListGri
 ### Groups
 
 - editing
-
----
-## Method: ListGrid.recordDrop
-
-### Description
-Process a drop of one or more records on a ListGrid record.
-
-This method can be overridden to provide custom drop behaviors, and is a more appropriate override point than the lower level [Canvas.drop](Canvas.md#method-canvasdrop) handler.
-
-If this is a self-drop, records are simply reordered.
-
-For a drop from another widget, [ListGrid.transferDragData](#method-listgridtransferdragdata) is called, which depending on the [dragDataAction](ListGrid_1.md#attr-listgriddragdataaction) specified on the source widget, may either remove the source records from the original list (`dragDataAction:"move"`) or just provide a copy to this list (`dragDataAction:"copy"`).
-
-If this grid is databound, the new records will be added to the dataset by calling [DataSource.addData](DataSource_1.md#method-datasourceadddata). Further, if the new records were dragged from another databound component, and [addDropValues](DataBoundComponent.md#attr-databoundcomponentadddropvalues) is true, [getDropValues](DataBoundComponent.md#method-databoundcomponentgetdropvalues) will be called for every item being dropped.
-
-For multi-record drops, Queuing is automatically used to combine all DSRequests into a single HTTP Request (see QuickStart Guide, Server Framework chapter). This allows the server to persist all changes caused by the drop in a single transaction (and this is automatically done when using the built-in server DataSources with Power Edition and above).
-
-Note that reordering records has no effect on a databound grid.
-
-The newly dropped data is then selected automatically.
-
-If these default persistence behaviors are undesirable, return false to cancel them, then and implement your own behavior, typically by using grid.updateData() or addData() to add new records.
-
-**NOTE:** the records you receive in this event are the actual Records from the source component. Use [DataSource.copyRecords](DataSource_1.md#method-datasourcecopyrecords) to create a copy before modifying the records or using them with updateData() or addData().
-
-NOTE: for a drop beyond the last visible record of a ListGrid, `targetRecord` will be null and the `index` will be one higher than the last record. This includes a drop into an empty ListGrid, where `index` will be 0.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| dropRecords | [Array of ListGridRecord](#type-array-of-listgridrecord)[] | false | — | records being dropped |
-| targetRecord | [ListGridRecord](#type-listgridrecord) | false | — | record being dropped on. May be null |
-| index | [int](../reference.md#type-int) | false | — | index of record being dropped on |
-| sourceWidget | [Canvas](#type-canvas) | false | — | widget where dragging began |
-
----
-## Method: ListGrid.setEditorValueMap
-
-### Description
-Set a valueMap to display for this field while editing.  
-This method sets the [field.editorValueMap](ListGridField.md#attr-listgridfieldeditorvaluemap) property - note that if [ListGrid.getEditorValueMap](ListGrid_3.md#method-listgridgeteditorvaluemap) has been overridden it may not make use of this property.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| fieldID | [Object](../reference.md#type-object)|[number](#type-number)|[FieldName](../reference.md#type-fieldname) | false | — | field object, number, or name |
-| map | [Object](../reference.md#type-object) | false | — | ValueMap to apply to the field |
-
-### Groups
-
-- editing
-
-**Flags**: A
-
----
-## Method: ListGrid.cellMouseUp
-
-### Description
-Called when a cell receives a mouseup event.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| record | [ListGridRecord](#type-listgridrecord) | false | — | Record object (retrieved from getCellRecord(rowNum, colNum)) |
-| rowNum | [number](#type-number) | false | — | row number for the cell |
-| colNum | [number](#type-number) | false | — | column number of the cell |
-
-### Returns
-
-`[Boolean](#type-boolean)` — whether to cancel the event
-
-### Groups
-
-- events
 
 ---

@@ -23,7 +23,7 @@ These DataSources are present in the `smartclientSDK/tools/selenium/` directory 
 These DataSources behave just like other SQLDataSources:
 
 *   they are compatible with all the database types that SmartClient supports
-*   they will use the default database configured for your project, or you can set [DataSource.dbName](../classes/DataSource_1.md#attr-datasourcedbname) in the .ds.xml file to use a second database instead
+*   they will use the default database configured for your project, or you can set [DataSource.dbName](../classes/DataSource.md#attr-datasourcedbname) in the .ds.xml file to use a second database instead
 *   you can setup the database connection and generate SQL tables using the [adminConsole](adminConsole.md#kb-topic-admin-console)
 *   you can build your own UI for viewing test results, by loading the `batchRun` and `testResult` DataSources like any other SQLDataSource and binding components such as ListGrids to them.
 *   if you deploy an application that includes these DataSources, third-party tools can access these DataSources via the RESTHandler servlet
@@ -122,7 +122,7 @@ TestRunner supports several more command-line options, or equivalent settings th
 
 #### Email Notifications
 
-At completion of the batch of tests, TestRunner can automatically send out an email notification summarizing the results of the test run, including error messages for any newly failing tests. A velocity template file is used to control its format; see [Velocity Support](velocitySupport.md#kb-topic-velocity-context-variables). The following velocity variables are available:
+At completion of the batch of tests, TestRunner can automatically send out an email notification summarizing the results of the test run, including error messages for any newly failing tests. A velocity template file is used to control its format; see [Velocity Support](#kb-topic-velocitysupport). The following velocity variables are available:
 
 *   **$firstBatchFound**. Whether baseline batch was found with which to compare
 *   **$fixed**. A list of the test results for tests fixed in this batch run

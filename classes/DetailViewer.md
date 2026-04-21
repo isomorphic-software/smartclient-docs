@@ -147,6 +147,8 @@ The DataSource that this component should bind to for default fields and for per
 
 Can be specified as either a DataSource instance or the String ID of a DataSource.
 
+To limit fetched data to just the visible fields and fields required for declared formulas, see [ListGrid.fetchFields](ListGrid_1.md#attr-listgridfetchfields).
+
 ### Groups
 
 - databinding
@@ -790,7 +792,7 @@ A variety of DSRequest settings, such as [exportAs](DSRequest.md#attr-dsrequeste
 
 Note that data exported via this method skips client-side fields defined only in the component, excludes any client-side formatting and relies on both the SmartClient server and server-side DataSources. To export client-data including client-only fields and with client-side formatting applied, see [exportClientData](ListGrid_2.md#method-listgridexportclientdata), which still requires the SmartClient server but does not rely on server-side DataSource definitions (.ds.xml files).
 
-For more information on exporting data, see [DataSource.exportData](DataSource_1.md#method-datasourceexportdata).
+For more information on exporting data, see [DataSource.exportData](DataSource.md#method-datasourceexportdata).
 
 ### Parameters
 

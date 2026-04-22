@@ -335,7 +335,7 @@ The paging strategy to use for this DataSource. If this property is not set, the
 
 This setting can be overridden with the [OperationBinding.sqlPaging](OperationBinding.md#attr-operationbindingsqlpaging) property.
 
-**NOTE:** Operations that involve a [customSQL](#attr-operationbindingcustomsql) clause ignore this property, because customSQL operations usually need to be treated as special cases. For these operations, the paging strategy comes from the [server.properties](../kb_topics/server_properties.md#kb-topic-serverproperties-file) setting `sql.defaultCustomSQLPaging` or `sql.defaultCustomSQLProgressivePaging`, depending on whether or not [progressiveLoading](#attr-datasourceprogressiveloading) is in force. Note that these can always be overridden by a `sqlPaging` setting on the OperationBinding.
+**NOTE:** Operations that involve a [customSQL](OperationBinding.md#attr-operationbindingcustomsql) clause ignore this property, because customSQL operations usually need to be treated as special cases. For these operations, the paging strategy comes from the [server.properties](../kb_topics/server_properties.md#kb-topic-serverproperties-file) setting `sql.defaultCustomSQLPaging` or `sql.defaultCustomSQLProgressivePaging`, depending on whether or not [progressiveLoading](#attr-datasourceprogressiveloading) is in force. Note that these can always be overridden by a `sqlPaging` setting on the OperationBinding.
 
 ### See Also
 
@@ -410,6 +410,52 @@ If not specified for a DataSource, the fileNameField will be inferred on the ser
 **Flags**: IR
 
 ---
+## Attr: DataSource.autoJoinTransactions
+
+### Description
+If true, causes all operations on this DataSource to automatically start or join a transaction associated with the current HttpServletRequest. This means that multiple operations sent to the server in a [request queue](RPCManager.md#classmethod-rpcmanagerstartqueue) will be committed in a single transaction.
+
+Note that this includes fetch operations - setting this property to true has the same effect as a transaction policy of ALL for just this DataSource's operations - see the server-side `RPCManager.setTransactionPolicy()` for details of the different TransactionPolicy settings.
+
+If this property is explicitly false, this causes all operations on this DataSource to be committed individually - the same as a transaction policy of NONE, just for this DataSource's operations.
+
+In either case, you can override the setting for individual operations - see [OperationBinding.autoJoinTransactions](OperationBinding.md#attr-operationbindingautojointransactions).
+
+If this property if null or not defined, we fall back to the default setting for this type of DataSource. These are defined in [server.properties](../kb_topics/server_properties.md#kb-topic-serverproperties-file) as follows:
+
+*   **Hibernate:** `hibernate.autoJoinTransactions`
+*   **JPA/JPA2:** `jpa.autoJoinTransactions`
+*   **SQL:** There is one setting per configured database connection ([dbName](#attr-datasourcedbname)). For example, the setting for the default MySQL connection is `sql.Mysql.autoJoinTransactions`
+
+If the setting is not defined at the DataSource-type level, we use the system global default, which is defined in `server.properties` as `autoJoinTransactions`.
+
+At the dbName and global system levels, you can set the autoJoinTransactions attribute to a valid Transaction Policy, rather than a simple true or false (although these values work too - true is the same as ALL, false is the same as NONE). For valid TransactionPolicy values and their meanings, see the server-side Javadoc for `RPCManager.setTransactionPolicy()`
+
+Note that the configuration settings discussed here can be overridden for a particular queue of requests by setting the server-side RPCManager's transaction policy. Look in the server-side Javadoc for `RPCManager.getTransactionPolicy()`.
+
+Transactions can also be initiated manually, separate from the RPCManager/HttpServletRequest lifecycle, useful for both multi-threaded web applications, and standalone applications that don't use a servlet container - see [standaloneDataSourceUsage](../kb_topics/standaloneDataSourceUsage.md#kb-topic-standalone-datasource-usage).
+
+NOTE: Setting this property to true does not cause a transactional persistence mechanism to automatically appear - you have to ensure that your DataSource supports transactions. The SmartClient built-in SQL, Hibernate and JPA DataSources support transactions, but note that they do so **at the provider level**. This means that you can combine updates to, say, an Oracle database and a MySQL database in the same queue, but they will be committed in _two_ transactions - one per database. The SmartClient server will commit or rollback these two transactions as if they were one, so a failure in some Oracle update would cause all the updates to both databases to be rolled back. However, this is not a true atomic transaction; it is possible for one transaction to be committed whilst the other is not - in the case of hardware failure, for example.
+
+NOTE: Not all the supported SQL databases are supported for transactions. Databases supported in this release are:
+
+*   DB2
+*   HSQLDB
+*   Firebird
+*   Informix
+*   Microsoft SQL Server
+*   MySQL (you must use InnoDB tables; the default MyISAM storage engine does not support transactions)
+*   MariaDB
+*   Oracle
+*   PostgreSQL
+
+### See Also
+
+- [OperationBinding.autoJoinTransactions](OperationBinding.md#attr-operationbindingautojointransactions)
+
+**Flags**: IR
+
+---
 ## Attr: DataSource.auditUserFieldName
 
 ### Description
@@ -423,7 +469,7 @@ For DataSources with [auditing enabled](#attr-datasourceaudit), specifies the fi
 ### Description
 Optional array of OperationBindings, which provide instructions to the DataSource about how each DSOperation is to be performed.
 
-When using the SmartClient Server, OperationBindings are specified in your DataSource descriptor (.ds.xml file) and control server-side behavior such as what Java object to route DSRequest to ([OperationBinding.serverObject](OperationBinding.md#attr-operationbindingserverobject)) or customizations to SQL, JQL and HQL queries ([OperationBinding.customSQL](#attr-operationbindingcustomsql), [OperationBinding.customJQL](#attr-operationbindingcustomjql) and [OperationBinding.customHQL](#attr-operationbindingcustomhql)). See the *Java Integration samples*.
+When using the SmartClient Server, OperationBindings are specified in your DataSource descriptor (.ds.xml file) and control server-side behavior such as what Java object to route DSRequest to ([OperationBinding.serverObject](OperationBinding.md#attr-operationbindingserverobject)) or customizations to SQL, JQL and HQL queries ([OperationBinding.customSQL](OperationBinding.md#attr-operationbindingcustomsql), [OperationBinding.customJQL](OperationBinding.md#attr-operationbindingcustomjql) and [OperationBinding.customHQL](OperationBinding.md#attr-operationbindingcustomhql)). See the *Java Integration samples*.
 
 For DataSources bound to WSDL-described web services using [DataSource.serviceNamespace](#attr-datasourceservicenamespace), OperationBindings are used to bind each DataSource [operationType](OperationBinding.md#attr-operationbindingoperationtype) to an [operation](OperationBinding.md#attr-operationbindingwsoperation) of a WSDL-described [web service](WebService.md#class-webservice), so that a DataSource can both fetch and save data to a web service.
 
@@ -731,7 +777,7 @@ You can manually set this attribute after initialization by calling [DataSource.
 
 To cause automatic cache updates, you can set [DataSource.cacheMaxAge](#attr-datasourcecachemaxage) to a number of seconds and once data has been client-side for that length of time, the next fetch causes the cache to be dropped and a new cache retrieved.
 
-Note that multiple [DataSource.operationBindings](#attr-datasourceoperationbindings) of type "fetch" which return distinct results will not work with `cacheAllData`: only one cache is created and is used for all fetch operations, regardless of whether [DSRequest.operationId](DSRequest.md#attr-dsrequestoperationid) has been set. However, "fetch" operationBindings used as a [OperationBinding.cacheSyncOperation](#attr-operationbindingcachesyncoperation) will work normally, so long as they return all data fields that are returned by the default "fetch" operation, so that the cache can be updated.
+Note that multiple [DataSource.operationBindings](#attr-datasourceoperationbindings) of type "fetch" which return distinct results will not work with `cacheAllData`: only one cache is created and is used for all fetch operations, regardless of whether [DSRequest.operationId](DSRequest.md#attr-dsrequestoperationid) has been set. However, "fetch" operationBindings used as a [OperationBinding.cacheSyncOperation](OperationBinding.md#attr-operationbindingcachesyncoperation) will work normally, so long as they return all data fields that are returned by the default "fetch" operation, so that the cache can be updated.
 
 To specify which operationId to use for fetching all data, use [cacheAllOperationId](#attr-datasourcecachealloperationid).
 
@@ -1311,7 +1357,7 @@ If you wish to switch on ANSI-style joins for every DataSource, without the need
 
 ### See Also
 
-- [OperationBinding.includeAnsiJoinsInTableClause](#attr-operationbindingincludeansijoinsintableclause)
+- [OperationBinding.includeAnsiJoinsInTableClause](OperationBinding.md#attr-operationbindingincludeansijoinsintableclause)
 
 **Flags**: IR
 
@@ -1505,7 +1551,7 @@ See [OperationBinding.recordXPath](OperationBinding.md#attr-operationbindingreco
 ## Attr: DataSource.useSubselectForRowCount
 
 ### Description
-This property is only applicable to [SQL](#attr-datasourceservertype) DataSources, and only for [operations](OperationBinding.md#class-operationbinding) that express a [customSQL](#attr-operationbindingcustomsql) clause. In these circumstances, we generally switch off paging because we are unable to generate a "row count" query that tells the framework the size of the complete, unpaged resultset.
+This property is only applicable to [SQL](#attr-datasourceservertype) DataSources, and only for [operations](OperationBinding.md#class-operationbinding) that express a [customSQL](OperationBinding.md#attr-operationbindingcustomsql) clause. In these circumstances, we generally switch off paging because we are unable to generate a "row count" query that tells the framework the size of the complete, unpaged resultset.
 
 The `useSubselectForRowCount` flag causes the framework to derive a rowcount query by simply wrapping the entire customSQL clause in a subselect, like so:    `SELECT COUNT(*) FROM ({customSQL clause here})`
 
@@ -1976,6 +2022,84 @@ See [DataSource.logSlowSQL](#attr-datasourcelogslowsql) for more details.
 **Flags**: IR
 
 ---
+## Attr: DataSource.useSpringTransaction
+
+### Description
+This flag is part of the Automatic Transactions feature; it is only applicable in Power Edition and above.
+
+If true, causes all transactional operations on this DataSource to use the current Spring-managed transaction, if one exists. If there is no current Spring transaction to use at the time of execution, a server-side Exception is thrown. Note, a "transactional operation" is one that would have joined the SmartClient shared transaction in the absence of Spring integration - see [auotJoinTransactions](#attr-datasourceautojointransactions).
+
+This feature is primarily intended for situations where you have [DMI methods](../kb_topics/dmiOverview.md#kb-topic-direct-method-invocation) that make use of both Spring DAO operations and SmartClient DSRequest operations, and you would like all of them to share the same transaction. An example of the primary intended use case:
+
+```
+   @Transactional(isolation=Isolation.READ_COMMITTED, propagation=Propagation.REQUIRED)
+   public class WorldService {
+
+     public DSResponse doSomeStuff(DSRequest dsReq, HttpServletRequest servletReq) 
+     throws Exception 
+     {
+     	 ApplicationContext ac = (ApplicationContext)servletReq.getSession().getServletContext().getAttribute("applicationContext");
+       WorldDao dao = (WorldDao)ac.getBean("worldDao");
+       dao.insert(req.getValues());
+       DSRequest other = new DSRequest("MyOtherDataSource", "add");
+       // Set up the 'other' dsRequest with critiera, values, etc
+       //  ...
+
+       // This dsRequest execution will use the same transaction that the DAO operation
+       // above used; if it fails, the DAO operation will be rolled back
+       other.execute();
+
+       return new DSResponse();
+     }
+   }
+```
+Note: if you want to rollback an integrated Spring-managed transaction, you can use any of the normal Spring methods for transaction rollback:
+
+*   Programmatically mark the transaction for rollback with the `setRollbackOnly()` API
+*   Throw a `RuntimeException`, or
+*   Throw an ordinary checked `Exception`. but configure Spring to rollback on that Exception. This can be done in the @Transactional annotation:
+    ```
+         @Transactional(isolation=Isolation.READ_COMMITTED, propagation=Propagation.REQUIRED, rollbackFor=MyRollbackException.class)
+    ```
+    
+
+Spring's exception-handling model is different from SmartClient's, so care must be taken to get the correct error processing. If a transactional DSRequest fails, SmartClient code will throw an ordinary checked `Exception`; but Spring will ignore that `Exception`. So you can either:
+
+*   Wrap every `DSRequest.execute()` in a try/catch block. Catch `Exception` and throw a `RuntimeException` instead
+*   Just use the "rollbackFor" annotation to make your transactional method rollback for all instances of `Exception`
+
+  
+Note: Spring transaction integration is conceptually different from SmartClient's [built-in transaction feature](#attr-datasourceautojointransactions), because SmartClient transactions apply to a queue of DSRequests, whereas Spring transactions are scoped to a single method invocation. If you want to make a whole SmartClient queue share a single Spring-managed transaction, you can wrap the processing of an entire queue in a call to a transactional Spring method. See the _Using Spring Transactions with SmartClient DMI_ section at the bottom of the [Spring integration page](../kb_topics/springIntegration.md#kb-topic-integration-with-spring) for more details.
+
+You can set `useSpringTransaction` as the default setting for all dataSources for a given database provider by adding the property `{dbName}.useSpringTransaction` to your `server.properties` file. For example, `Mysql.useSpringTransaction: true` or `hibernate.useSpringTransaction: true`. You can set it as the default for all providers with a `server.properties` setting like this: `useSpringTransaction: true`. When `useSpringTransaction` is the default, you can switch it off for a specific dataSource by explicitly setting the flag to false for that DataSource.
+
+Finally, this setting can be overridden at the operationBinding level - see [OperationBinding.useSpringTransaction](OperationBinding.md#attr-operationbindingusespringtransaction)
+
+#### Configuration
+When using Spring transactions, SmartClient needs a way to lookup the JNDI connection being used by Spring, and this needs to be configured. First, register a bean like this in your applicationContext.xml file:
+```
+   <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+       <!-- Set this to the JNDI name Spring is using -->
+       <property name="jndiName" value="isomorphic/jdbc/defaultDatabase"/>
+   </bean>
+ 
+```
+and then add a line like this to your server.properties:
+```
+   # Set this property to match the "id" of the JndiObjectFactoryBean registered in Spring
+   sql.spring.jdbcDataSourceBean: dataSource
+ 
+```
+
+### See Also
+
+- [DataSource.autoJoinTransactions](#attr-datasourceautojointransactions)
+- [OperationBinding.useSpringTransaction](OperationBinding.md#attr-operationbindingusespringtransaction)
+- [springIntegration](../kb_topics/springIntegration.md#kb-topic-integration-with-spring)
+
+**Flags**: IR
+
+---
 ## Attr: DataSource.cacheAcrossOperationIds
 
 ### Description
@@ -1995,11 +2119,11 @@ Switching to "false" effectively creates caching just for one specific `operatio
 ## Attr: DataSource.defaultBooleanStorageStrategy
 
 ### Description
-For [serverType:"sql"](#attr-datasourceservertype) DataSources, sets the default [sqlStorageStrategy](#attr-datasourcefieldsqlstoragestrategy) to use for boolean fields where no `sqlStorageStrategy` has been declared on the field.
+For [serverType:"sql"](#attr-datasourceservertype) DataSources, sets the default [sqlStorageStrategy](DataSourceField.md#attr-datasourcefieldsqlstoragestrategy) to use for boolean fields where no `sqlStorageStrategy` has been declared on the field.
 
 Can also be set system-wide via the [server_properties](../kb_topics/server_properties.md#kb-topic-serverproperties-file) setting `sql.defaultBooleanStorageStrategy`, or for a particular database configuration by setting `sql._dbName_.defaultBooleanStorageStrategy` (see [Admin Console overview](../kb_topics/adminConsole.md#kb-topic-admin-console) for more information on SQL configuration).
 
-Note that when this property is unset, the default [DataSourceField.sqlStorageStrategy](#attr-datasourcefieldsqlstoragestrategy) strategy is effectively "string".
+Note that when this property is unset, the default [DataSourceField.sqlStorageStrategy](DataSourceField.md#attr-datasourcefieldsqlstoragestrategy) strategy is effectively "string".
 
 ### Groups
 
@@ -2672,7 +2796,7 @@ For a [SQL DataSource](../kb_topics/sqlDataSource.md#kb-topic-sql-datasources) t
 
 Aliasing is necessary when the same table appears more than once in a query. In addition to use cases described in [DataSourceField.relatedTableAlias](DataSourceField.md#attr-datasourcefieldrelatedtablealias), this may happen when `includeFrom` field using [foreign key defined in otherFKs](DataSourceField.md#attr-datasourcefieldotherfks) would be included multiple times in a related DataSource.
 
-See the "Automatically generated table aliases" section of the [SQL Templating](#kb-topic-customquerying) for the complete set of general rules how aliases are generated. Also, see [dataSourceField.otherFKs](DataSourceField.md#attr-datasourcefieldotherfks) for more details and usage samples.
+See the "Automatically generated table aliases" section of the [SQL Templating](../kb_topics/customQuerying.md#kb-topic-custom-querying-overview) for the complete set of general rules how aliases are generated. Also, see [dataSourceField.otherFKs](DataSourceField.md#attr-datasourcefieldotherfks) for more details and usage samples.
 
 ### Groups
 
@@ -4823,7 +4947,7 @@ In particular:
 
 Instead, the specific purpose of this API is to bypass all checks and side effects that normally occur for CRUD operations, for example, that a "fetch" requires valid Criteria or that an "update" or "remove" operation contains a valid primary key, or that an "add" operation returns the newly added record. `performCustomOperation` allows you to pass an arbitrary Record to the server, act on it with custom code, and return arbitray results or even no results.
 
-The "data" parameter becomes [dsRequest.data](DSRequest.md#attr-dsrequestdata). With the SmartClient Server Framework, the data is accessible server-side via DSRequest.getValues() and in [Velocity templates](#kb-topic-velocitysupport) (such as `<customSQL>`) as $values.
+The "data" parameter becomes [dsRequest.data](DSRequest.md#attr-dsrequestdata). With the SmartClient Server Framework, the data is accessible server-side via DSRequest.getValues() and in [Velocity templates](../kb_topics/velocitySupport.md#kb-topic-velocity-context-variables) (such as `<customSQL>`) as $values.
 
 Note that with SQLDataSource, `performCustomOperation` must be used if you plan to have a `<customSQL>` tag in your operationBinding that will execute SQL operations other than SELECT, UPDATE, INSERT, DELETE (such as creating a new table). By declaring [OperationBinding.operationType](OperationBinding.md#attr-operationbindingoperationtype) "custom" in your .ds.xml file, all checks related to normal CRUD operations will be skipped and your `<customSQL>` can do arbitrary things.
 

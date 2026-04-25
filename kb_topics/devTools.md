@@ -43,7 +43,7 @@ User-editable components are created by [Palettes](../reference.md#interface-pal
 
 Most types of `palettes` provide a UI for an end user to create components from `paletteNodes`. For example, a [TreePalette](../reference.md#class-treepalette) presents a hierarchical set of `paletteNodes` as a tree, and allows end users to drag nodes out in order to create components. All `palettes` also support [programmatic creation of components](../classes/Palette.md#method-palettemakeeditnode) from `paletteNodes`.
 
-`paletteNodes` can be programmatically provided to a `Palette`, or, `Palettes` that are derived from [DataBoundComponents](../reference.md#interface-databoundcomponent) can load `paletteNodes` from a [DataSource](../classes/DataSource.md#class-datasource).
+`paletteNodes` can be programmatically provided to a `Palette`, or, `Palettes` that are derived from [DataBoundComponents](../reference.md#interface-databoundcomponent) can load `paletteNodes` from a [DataSource](../classes/DataSource_1.md#class-datasource).
 
 When a component is created from a `paletteNode`, an [EditNode](../reference.md#object-editnode) is created that tracks the [live component](../classes/EditNode.md#attr-editnodeliveobject) and the state needed to re-create it, called the [defaults](../classes/EditNode.md#attr-editnodedefaults).
 
@@ -119,7 +119,7 @@ _HTML tag:_
 - [EditPane](../classes/EditPane.md#class-editpane)
 - [EditTree](../classes/EditTree.md#class-edittree)
 - [Placeholder](../classes/Placeholder.md#class-placeholder)
-- [PlaceholderDefaults](../reference.md#object-placeholderdefaults)
+- [PlaceholderDefaults](../reference_2.md#object-placeholderdefaults)
 - [EditProxy](../classes/EditProxy.md#class-editproxy)
 - [ValuesManagerEditProxy](../reference.md#class-valuesmanagereditproxy)
 - [CanvasEditProxy](../reference.md#class-canvaseditproxy)

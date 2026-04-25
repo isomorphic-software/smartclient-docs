@@ -23,7 +23,7 @@ These DataSources are present in the `smartclientSDK/tools/selenium/` directory 
 These DataSources behave just like other SQLDataSources:
 
 *   they are compatible with all the database types that SmartClient supports
-*   they will use the default database configured for your project, or you can set [DataSource.dbName](../classes/DataSource.md#attr-datasourcedbname) in the .ds.xml file to use a second database instead
+*   they will use the default database configured for your project, or you can set [DataSource.dbName](../classes/DataSource_1.md#attr-datasourcedbname) in the .ds.xml file to use a second database instead
 *   you can setup the database connection and generate SQL tables using the [adminConsole](adminConsole.md#kb-topic-admin-console)
 *   you can build your own UI for viewing test results, by loading the `batchRun` and `testResult` DataSources like any other SQLDataSource and binding components such as ListGrids to them.
 *   if you deploy an application that includes these DataSources, third-party tools can access these DataSources via the RESTHandler servlet

@@ -38,7 +38,7 @@ When true, this field can only be used for sorting if the data is entirely clien
 ## Attr: DataSourceField.columnCode
 
 ### Description
-See [DataSource.tableCode](DataSource.md#attr-datasourcetablecode).
+See [DataSource.tableCode](DataSource_1.md#attr-datasourcetablecode).
 
 **Flags**: R
 
@@ -224,7 +224,7 @@ See the "Automatically generated table aliases" section of the [SQL Templating](
 
 ### See Also
 
-- [DataSource.relatedTableAlias](DataSource.md#attr-datasourcerelatedtablealias)
+- [DataSource.relatedTableAlias](DataSource_1.md#attr-datasourcerelatedtablealias)
 - [DataSourceField.includeVia](#attr-datasourcefieldincludevia)
 
 **Flags**: IR
@@ -275,7 +275,7 @@ When this happens, we mark the validation as having passed on the client, but in
 ## Attr: DataSourceField.sequenceName
 
 ### Description
-For a DataSource with [serverType:"sql"](DataSource.md#attr-datasourceservertype) with a field of type "sequence", the name of the SQL sequence that should be used when inserting new records into this table.
+For a DataSource with [serverType:"sql"](DataSource_1.md#attr-datasourceservertype) with a field of type "sequence", the name of the SQL sequence that should be used when inserting new records into this table.
 
 Note that this is never required for SQL tables that are generated from SmartClient DataSources (a default sequence name of tableName + "\_" + columnName is chosen, but see the notes below regarding this), and is never required for databases where inserting null into a sequence column is sufficient (MySQL, SQL Server, DB2 and others).
 
@@ -408,11 +408,11 @@ This description is also provided to AI when AI is asked to work with the field.
 *   Include descriptions of how the field relates to or depends on others.
 *   Give a brief note about how the field is populated. This might include the source of the data, formula(s) used to calculate the value, and the frequency and timing of updates.
 
-Sample values in the description may be appropriate, but a better practice is to provide [sampleData](DataSource.md#attr-datasourcesampledata) on the data source, which show AI sample values in the context of complete record(s) from the data source.
+Sample values in the description may be appropriate, but a better practice is to provide [sampleData](DataSource_1.md#attr-datasourcesampledata) on the data source, which show AI sample values in the context of complete record(s) from the data source.
 
 ### See Also
 
-- [DataSource.description](DataSource.md#attr-datasourcedescription)
+- [DataSource.description](DataSource_1.md#attr-datasourcedescription)
 
 **Flags**: IRW
 
@@ -424,7 +424,7 @@ Default user-visible title for this field.
 
 This will be picked up by [DataBoundComponent](../reference.md#interface-databoundcomponent)s and other views over this data source.
 
-Note this property frequently does not need to be set since [DataSource.autoDeriveTitles](DataSource.md#attr-datasourceautoderivetitles) (on by default) usually picks an appropriate user-visible title if you have a reasonable naming convention for your field names.
+Note this property frequently does not need to be set since [DataSource.autoDeriveTitles](DataSource_1.md#attr-datasourceautoderivetitles) (on by default) usually picks an appropriate user-visible title if you have a reasonable naming convention for your field names.
 
 Note that if this field is being displayed in a [ListGrid](ListGrid_1.md#class-listgrid) bound to this data source, the [ListGridField.headerTitle](ListGridField.md#attr-listgridfieldheadertitle) attribute may be used to specify a different string for display in the column header.
 
@@ -474,7 +474,7 @@ Note that this value is used even if the target Collection or Map is declared as
 ## Attr: DataSourceField.creatorOverrides
 
 ### Description
-Indicates that normal declarative security rules specified on this field are waived for rows that were created by the current user, as described in the discussion of [dataSource.creatorOverrides](DataSource.md#attr-datasourcecreatoroverrides). This setting overrides `dataSource.creatorOverrides`, for this field only.
+Indicates that normal declarative security rules specified on this field are waived for rows that were created by the current user, as described in the discussion of [dataSource.creatorOverrides](DataSource_1.md#attr-datasourcecreatoroverrides). This setting overrides `dataSource.creatorOverrides`, for this field only.
 
 Note that field-level `creatorOverrides` is conceptually slightly different to the setting at DataSource and OperationBinding levels. To give the example of a fetch operation, at the other two levels, it results in a limited set of rows being returned, rather than a security exception being thrown. At the field-level, it results in values for individual fields being present in those rows, rather than them being stripped out on the server.
 
@@ -487,7 +487,7 @@ Note that field-level `creatorOverrides` is conceptually slightly different to t
 
 - [DataSourceField.editRequires](#attr-datasourcefieldeditrequires)
 - [DataSourceField.viewRequires](#attr-datasourcefieldviewrequires)
-- [DataSource.creatorOverrides](DataSource.md#attr-datasourcecreatoroverrides)
+- [DataSource.creatorOverrides](DataSource_1.md#attr-datasourcecreatoroverrides)
 
 **Flags**: IR
 
@@ -565,7 +565,7 @@ Comma-separated list of user roles that are allowed to fetch this field. If the 
 ## Attr: DataSourceField.exportForceText
 
 ### Description
-When using [DataSource.recordsAsText](DataSource.md#method-datasourcerecordsastext), determines what approach (if any) should be used to force values to be intepreted as text instead of heuristically parsed as dates, times or other structured types.
+When using [DataSource.recordsAsText](DataSource_1.md#method-datasourcerecordsastext), determines what approach (if any) should be used to force values to be intepreted as text instead of heuristically parsed as dates, times or other structured types.
 
 ### See Also
 
@@ -604,9 +604,9 @@ This is useful if a binary field only stored one type of file and you chose not 
 ### Description
 XPath expression used to retrieve the field's value.
 
-This XPath expression will be evaluated in the scope of the record objects selected by the [DataSource.recordXPath](DataSource.md#attr-datasourcerecordxpath). For XML data ([dataFormat:"xml"](DataSource.md#attr-datasourcedataformat)) this means a call to [XMLTools.selectString](XMLTools.md#classmethod-xmltoolsselectstring) passing the selected XML element. For JSON data ([dataFormat:"json"](DataSource.md#attr-datasourcedataformat)), this means a call to [XMLTools.selectObjects](XMLTools.md#classmethod-xmltoolsselectobjects) passing the selected JSON object.
+This XPath expression will be evaluated in the scope of the record objects selected by the [DataSource.recordXPath](DataSource_1.md#attr-datasourcerecordxpath). For XML data ([dataFormat:"xml"](DataSource_1.md#attr-datasourcedataformat)) this means a call to [XMLTools.selectString](XMLTools.md#classmethod-xmltoolsselectstring) passing the selected XML element. For JSON data ([dataFormat:"json"](DataSource_1.md#attr-datasourcedataformat)), this means a call to [XMLTools.selectObjects](XMLTools.md#classmethod-xmltoolsselectobjects) passing the selected JSON object.
 
-In the absence of a `valueXPath`, for JSON data the value for the field will be the value of the same-named property in the record object selected by [recordXPath](DataSource.md#attr-datasourcerecordxpath).
+In the absence of a `valueXPath`, for JSON data the value for the field will be the value of the same-named property in the record object selected by [recordXPath](DataSource_1.md#attr-datasourcerecordxpath).
 
 For XML data, the value will be the attribute or subelement named after the field name. For example, for a field "author" on a record element `<book>`, the following structures require no valueXPath:
 
@@ -681,7 +681,7 @@ If using SQLDataSource, consider using a [DataSourceField.customSelectExpression
 ### Description
 The fully-qualified name of a Java class that implements the `com.isomorphic.datasource.DataTranslator` interface. If a field declares this attribute, SmartClient Server will create an instance of the translator class and call its `translate()` method for that field value on every record in the response data during `DSResponse` creation.
 
-Translators were originally provided as a mechanism for translating a plain text value of a field - for example, as provided in a CSV file or CSV REST server response - into a type-correct value. Now, however, they are integrated into the general response flow and are one of many ways in which you can modify response data; see also [Direct Method Invocation](DMI.md#class-dmi), [custom dataSources](DataSource.md#attr-datasourceserverconstructor), [transformResponseScript](OperationBinding.md#attr-operationbindingtransformresponsescript) and [fieldValueScript](#attr-datasourcefieldfieldvaluescript).
+Translators were originally provided as a mechanism for translating a plain text value of a field - for example, as provided in a CSV file or CSV REST server response - into a type-correct value. Now, however, they are integrated into the general response flow and are one of many ways in which you can modify response data; see also [Direct Method Invocation](DMI.md#class-dmi), [custom dataSources](DataSource_1.md#attr-datasourceserverconstructor), [transformResponseScript](OperationBinding.md#attr-operationbindingtransformresponsescript) and [fieldValueScript](#attr-datasourcefieldfieldvaluescript).
 
 Because the orignal translator implementation was intended to derive type-correct values from plain text CSV values, the `DataTranslator` interface only specifies a single `translate()` method, that accepts a String and returns an Object. For reasons of backwards compatibility, this has been left in place, but we have implemented an additional subinterface, `com.isomorphic.datasource.FieldDataTranslator`. If your translator implements `FieldDataTranslator`, the framework will call that interface's two-parameter `translate()` method, passing in both the raw text value and a type-correct object coerced from the raw value by SmartClient's type validation subsystem (though this automatic type coercion can be switched off with the [skipTypeCoercion flag](#attr-datasourcefieldskiptypecoercion)). Hence, `FieldDataTranslator`s are intended for more sophisticated value manipulations than simple type coercion.
 
@@ -751,7 +751,7 @@ When the system generates SQL to insert or update datetime values including a mi
    sql.MyNewDatabase.defaultDateTimeFormatWithMilliseconds: yy-MM-dd'T'hh.mm.ss.SSS
 ```
 
-Note that this property only controls the persistence of milliseconds into the database; there is no built-in support for sub-second elements of datetimes in any SmartClient visual components. See also the documentation for [DataSource.trimMilliseconds](DataSource.md#attr-datasourcetrimmilliseconds) for more details of how sub-second datetime elements are handled in the client-server flow.
+Note that this property only controls the persistence of milliseconds into the database; there is no built-in support for sub-second elements of datetimes in any SmartClient visual components. See also the documentation for [DataSource.trimMilliseconds](DataSource_1.md#attr-datasourcetrimmilliseconds) for more details of how sub-second datetime elements are handled in the client-server flow.
 
 This property is only applicable to DataSources of [serverType](../reference_2.md#type-dsservertype) "sql" and fields of [type](../reference_2.md#type-fieldtype) "datetime". It is ignored in all other cases. However, note that the built-in JPA and Hibernate dataSources will always persist millisecond values automatically if the underlying Java type, database and column support it.
 
@@ -759,7 +759,7 @@ Finally, note that this property only has an effect on _native_ datetime-type fi
 
 ### See Also
 
-- [DataSource.trimMilliseconds](DataSource.md#attr-datasourcetrimmilliseconds)
+- [DataSource.trimMilliseconds](DataSource_1.md#attr-datasourcetrimmilliseconds)
 
 **Flags**: IR
 
@@ -804,7 +804,7 @@ See [DataSourceField.javaClass](#attr-datasourcefieldjavaclass) - when auto-popu
 ## Attr: DataSourceField.fkColumnCode
 
 ### Description
-See [DataSource.tableCode](DataSource.md#attr-datasourcetablecode).
+See [DataSource.tableCode](DataSource_1.md#attr-datasourcetablecode).
 
 **Flags**: R
 
@@ -830,7 +830,7 @@ This property is typically set when a custom component is being used that doesn'
 ## Attr: DataSourceField.childTagName
 
 ### Description
-For a field that is [multiple:true](#attr-datasourcefieldmultiple), controls the name of the XML tag used for each subelement during [DataSource.xmlSerialize](DataSource.md#method-datasourcexmlserialize).
+For a field that is [multiple:true](#attr-datasourcefieldmultiple), controls the name of the XML tag used for each subelement during [DataSource.xmlSerialize](DataSource_1.md#method-datasourcexmlserialize).
 
 If unset, the default tag name is "value" for a field of simple type, and for a field of DataSource type, is the tagName or ID of the DataSource (as though `xmlSerialize()` were called on the child DataSource).
 
@@ -845,9 +845,9 @@ If unset, the default tag name is "value" for a field of simple type, and for a 
 ## Attr: DataSourceField.deepCloneOnEdit
 
 ### Description
-Before we start editing this field in a DataBoundComponent, should we perform a deep clone of the underlying field value. See [DataSource.deepCloneOnEdit](DataSource.md#attr-datasourcedeepcloneonedit) for details of what this means.
+Before we start editing this field in a DataBoundComponent, should we perform a deep clone of the underlying field value. See [DataSource.deepCloneOnEdit](DataSource_1.md#attr-datasourcedeepcloneonedit) for details of what this means.
 
-If this value is not explicitly set, it defaults first to the value of [DataBoundComponent.deepCloneOnEdit](DataBoundComponent.md#attr-databoundcomponentdeepcloneonedit), then to the value of [DataSource.deepCloneOnEdit](DataSource.md#attr-datasourcedeepcloneonedit).
+If this value is not explicitly set, it defaults first to the value of [DataBoundComponent.deepCloneOnEdit](DataBoundComponent.md#attr-databoundcomponentdeepcloneonedit), then to the value of [DataSource.deepCloneOnEdit](DataSource_1.md#attr-datasourcedeepcloneonedit).
 
 Like the other `deepCloneOnEdit` settings, this flag only has an effect if you are editing a values object that contains nested objects or arrays, using [dataPath](Canvas.md#attr-canvasdatapath)s.
 
@@ -856,7 +856,7 @@ Like the other `deepCloneOnEdit` settings, this flag only has an effect if you a
 - [Canvas.dataPath](Canvas.md#attr-canvasdatapath)
 - [FormItem.dataPath](FormItem.md#attr-formitemdatapath)
 - [DataBoundComponent.deepCloneOnEdit](DataBoundComponent.md#attr-databoundcomponentdeepcloneonedit)
-- [DataSource.deepCloneOnEdit](DataSource.md#attr-datasourcedeepcloneonedit)
+- [DataSource.deepCloneOnEdit](DataSource_1.md#attr-datasourcedeepcloneonedit)
 
 **Flags**: IRWA
 
@@ -896,7 +896,7 @@ If false, this property indicates that this field is considered "server only". T
 
 *   Components cannot bind to the field; even if you explicitly add a field with the same name to your [dataBoundComponent](../reference.md#interface-databoundcomponent), it will be dropped
 *   If you are using SmartClient Server, the client will never be sent a value for the field
-*   If you are using SmartClient Server, then similar to [canEdit](#attr-datasourcefieldcanedit), no updates to the field are allowed from the client. If you explicitly add a value for the field to, eg, a record you are passing to [DataSource.updateData](DataSource.md#method-datasourceupdatedata), the server will strip the value out of the record before processing the update request.
+*   If you are using SmartClient Server, then similar to [canEdit](#attr-datasourcefieldcanedit), no updates to the field are allowed from the client. If you explicitly add a value for the field to, eg, a record you are passing to [DataSource.updateData](DataSource_1.md#method-datasourceupdatedata), the server will strip the value out of the record before processing the update request.
 
 `canView:false` is **not** the same thing as [hidden](#attr-datasourcefieldhidden). Use `canView:false` when you want to prevent the client from ever seeing a field's definition or values; use `hidden:true` if it is fine from a security perspective that a field's definition and values are sent to the browser, but the field should not by default appear in user interface elements (but could do in some cases, like a special screen for advanced users or administrators, for example).
 
@@ -960,7 +960,7 @@ For a foreignKey within the same dataSource, you can omit the `dataSourceId` and
 
 `foreignKey` declarations also allow other automatic behaviors by [DataBoundComponents](../reference.md#interface-databoundcomponent), such as [ListGrid.fetchRelatedData](ListGrid_2.md#method-listgridfetchrelateddata).
 
-For SQLDataSources foreign keys can be automatically discovered from SQL tables if [autoDeriveSchema](DataSource.md#attr-datasourceautoderiveschema) is set.
+For SQLDataSources foreign keys can be automatically discovered from SQL tables if [autoDeriveSchema](DataSource_1.md#attr-datasourceautoderiveschema) is set.
 
 ### Groups
 
@@ -1006,7 +1006,7 @@ See [DataSourceField.detail](#attr-datasourcefielddetail) for fields that should
 ## Attr: DataSourceField.inapplicable
 
 ### Description
-For use in [componentSchema](../kb_topics/componentSchema.md#kb-topic-component-schema), a field [inherited](DataSource.md#attr-datasourceinheritsfrom) from another schema can be redeclared with this property set in order to indicate that the property should not be used.
+For use in [componentSchema](../kb_topics/componentSchema.md#kb-topic-component-schema), a field [inherited](DataSource_1.md#attr-datasourceinheritsfrom) from another schema can be redeclared with this property set in order to indicate that the property should not be used.
 
 This is primarily used to influence [Reify](../kb_topics/reify.md#kb-topic-reify-overview). For simple type properties, this avoids the property appearing in the Component Editor.
 
@@ -1054,12 +1054,12 @@ For example a composite field for a dataSource of citation references containing
 ```
 _\[This example might produce output like `"12 (5), 121-137"`\]_.
 
-For SQL DataSources, values are calculated on the server by modifying the generated SQL request as appropriate. As with other [dynamically calculated](DataSource.md#method-datasourceiscalculated) fields, fields with a specified template are non editable.  
+For SQL DataSources, values are calculated on the server by modifying the generated SQL request as appropriate. As with other [dynamically calculated](DataSource_1.md#method-datasourceiscalculated) fields, fields with a specified template are non editable.  
 When records are displayed in [dataBoundComponents that support editing](../reference.md#interface-databoundcomponent), template field values will be re-calculated dynamically on the client as the user edits a record, so a user may preview the result of their changes.
 
 Note that `template` fields may make use of [formula fields](#attr-datasourcefieldformula), [fields included from related dataSources](#attr-datasourcefieldincludefrom) [aggregated values from related dataSources](#attr-datasourcefieldincludesummaryfunction), and [fields derived via customSQL](#attr-datasourcefieldcustomselectexpression).
 
-`DataSourceField.template` is supported for [SQL DataSources](../reference_2.md#type-dsservertype), and for [clientOnly dataSources](DataSource.md#attr-datasourceclientonly) only.
+`DataSourceField.template` is supported for [SQL DataSources](../reference_2.md#type-dsservertype), and for [clientOnly dataSources](DataSource_1.md#attr-datasourceclientonly) only.
 
 **DataSourceField.formula is available with Power or better licenses only.** See [smartclient.com/product](http://smartclient.com/product) for details.
 
@@ -1095,7 +1095,7 @@ If using SmartClient's [SQL engine](../kb_topics/sqlDataSource.md#kb-topic-sql-d
 ### Description
 Affects whether client dsRequests can request summaries for this field.
 
-Default setting of null means that the DataSource-wide default setting [DataSource.allowClientRequestedSummaries](DataSource.md#attr-datasourceallowclientrequestedsummaries) is used for this field.
+Default setting of null means that the DataSource-wide default setting [DataSource.allowClientRequestedSummaries](DataSource_1.md#attr-datasourceallowclientrequestedsummaries) is used for this field.
 
 ### Groups
 
@@ -1103,7 +1103,7 @@ Default setting of null means that the DataSource-wide default setting [DataSour
 
 ### See Also
 
-- [DataSource.allowClientRequestedSummaries](DataSource.md#attr-datasourceallowclientrequestedsummaries)
+- [DataSource.allowClientRequestedSummaries](DataSource_1.md#attr-datasourceallowclientrequestedsummaries)
 
 **Flags**: IR
 
@@ -1169,7 +1169,7 @@ If unset, a FormItem will be automatically chosen based on the type of the field
 ## Attr: DataSourceField.xmlAttribute
 
 ### Description
-Indicates that [DataSource.xmlSerialize](DataSource.md#method-datasourcexmlserialize) should serialize this value as an XML attribute.
+Indicates that [DataSource.xmlSerialize](DataSource_1.md#method-datasourcexmlserialize) should serialize this value as an XML attribute.
 
 Note this does not need to be declared in order for DataSource records to be derived from XML data: a field will be populated with either an attribute or subelement with matching name.
 
@@ -1184,13 +1184,13 @@ Note this does not need to be declared in order for DataSource records to be der
 ## Attr: DataSourceField.fieldValueScript
 
 ### Description
-A scriptlet to be executed on the server when deriving values for this field. The script will run after the main operation (eg, SQL fetch) and after any [transformResponseScript](DataSource.md#attr-datasourcetransformresponsescript). It is intended to be used for fine-grained transformation at the field level, in cases where declarative approaches such as [customSelectExpression](#attr-datasourcefieldcustomselectexpression) are insufficient.
+A scriptlet to be executed on the server when deriving values for this field. The script will run after the main operation (eg, SQL fetch) and after any [transformResponseScript](DataSource_1.md#attr-datasourcetransformresponsescript). It is intended to be used for fine-grained transformation at the field level, in cases where declarative approaches such as [customSelectExpression](#attr-datasourcefieldcustomselectexpression) are insufficient.
 
 The script will be provided with the following variables:
 
 *   **dsRequest** The current [DSRequest](../reference_2.md#object-dsrequest)
 *   **field** The current field, as an instance of `com.isomorphic.datasource.DSField`
-*   **record** The record containing the current field value, as either a Map or a Javabean, depending on your data model. See [beanClassName](DataSource.md#attr-datasourcebeanclassname)
+*   **record** The record containing the current field value, as either a Map or a Javabean, depending on your data model. See [beanClassName](DataSource_1.md#attr-datasourcebeanclassname)
 *   **value** The untransformed field value. Note, this will only be provided if the containing record is a Map; if it is a Javabean, your script is expected to derive the value itself, and to apply the transformed value directly to the bean
 
 Before the `fieldValueScript` is called, SmartClient will run type validations on the untransformed field value, to either confirm that the value is a valid one for the [declared field type](#attr-datasourcefieldtype), or to attempt to coerce it into such a valid value (for example, by parsing a number or date out of a string). Note, this validation/coercion step can be disabled - see [skipTypeCoercion](#attr-datasourcefieldskiptypecoercion) - but whether or not this step runs, and whether or not coercion was required, if the resulting value is valid for the declared field type, an additional variable of the appropriate type will be made available to your script
@@ -1211,9 +1211,9 @@ Your script can either manipulate the value directly in the record (if your reco
 
 ### See Also
 
-- [DataSource.script](DataSource.md#attr-datasourcescript)
-- [DataSource.transformRequestScript](DataSource.md#attr-datasourcetransformrequestscript)
-- [DataSource.transformResponseScript](DataSource.md#attr-datasourcetransformresponsescript)
+- [DataSource.script](DataSource_1.md#attr-datasourcescript)
+- [DataSource.transformRequestScript](DataSource_1.md#attr-datasourcetransformrequestscript)
+- [DataSource.transformResponseScript](DataSource_1.md#attr-datasourcetransformresponsescript)
 
 **Flags**: IR
 
@@ -1376,7 +1376,7 @@ NOTE: Although `valueOperation` can be used to derive any singular value from an
 ### Description
 Fully qualified Java className of an Enum that should be used to derive this field's [ValueMap](../reference_2.md#type-valuemap).
 
-This has the same behavior of auto-deriving a `valueMap` from a Java Enum as [DataSource.autoDeriveSchema](DataSource.md#attr-datasourceautoderiveschema) except it applies only to one field.
+This has the same behavior of auto-deriving a `valueMap` from a Java Enum as [DataSource.autoDeriveSchema](DataSource_1.md#attr-datasourceautoderiveschema) except it applies only to one field.
 
 If you enable `autoDeriveSchema` there is no need to set `valueMapEnum` for Enum fields unless you want to actually _override_ the behavior to use a different Enum for the field (eg, a superclass Enum that is more restrictive).
 
@@ -1483,7 +1483,7 @@ For fields of a type that are represented by binary data initially uploaded from
 ### Description
 A [Callback](../reference.md#type-callback), function, or JavaScript expression used to retrieve the field's value from the XML element or JSON record returned from a web service.
 
-This is an advanced attribute for use when a [valueXPath](#attr-datasourcefieldvaluexpath) setting is insufficient to derive a field's value, yet an implementation of [DataSource.transformResponse](DataSource.md#method-datasourcetransformresponse) is overkill.
+This is an advanced attribute for use when a [valueXPath](#attr-datasourcefieldvaluexpath) setting is insufficient to derive a field's value, yet an implementation of [DataSource.transformResponse](DataSource_1.md#method-datasourcetransformresponse) is overkill.
 
 For the required parameters, see the documentation for [GetFieldValueCallback](Callbacks.md#method-callbacksgetfieldvaluecallback).
 
@@ -1525,7 +1525,7 @@ Must be unique across all fields within the DataSource as well as a valid JavaSc
 
 The field name is also the property in each DataSource record which holds the value for this field.
 
-Note: If this is a [SQL-backed](DataSource.md#attr-datasourceservertype) dataSource, the field name should be a valid SQL colmn name, or the [DataSourceField.nativeName](#attr-datasourcefieldnativename) property should be set to a valid column name.
+Note: If this is a [SQL-backed](DataSource_1.md#attr-datasourceservertype) dataSource, the field name should be a valid SQL colmn name, or the [DataSourceField.nativeName](#attr-datasourcefieldnativename) property should be set to a valid column name.
 
 ### Groups
 
@@ -1561,13 +1561,13 @@ The default is null except for fields of [DataSourceField.type](#attr-datasource
 ## Attr: DataSourceField.audit
 
 ### Description
-Determines when the field value should be saved to the audit DataSource when [auditing](DataSource.md#attr-datasourceaudit) is enabled. Setting the property to "change" will conserve storage by only saving out the value when it's changed, and setting it to "never" will exclude the field values from ever being saved during auditing.
+Determines when the field value should be saved to the audit DataSource when [auditing](DataSource_1.md#attr-datasourceaudit) is enabled. Setting the property to "change" will conserve storage by only saving out the value when it's changed, and setting it to "never" will exclude the field values from ever being saved during auditing.
 #### Binary fields
 Because binary data can be very large compared to other data types, and in many use cases does not typically change (for example, an application that stores scanned documents), binary fields are treated specially for auditing purposes:
 
 *   The default `audit` setting is "change"
 *   The implied `_filename`, `_filesize` and `_date_created` metadata fields inherit their `audit` setting from the associated binary field, if no explicit setting is provided for the metadata field. This includes inheriting the the implicit "change" default. See the [binary fields overview](../kb_topics/binaryFields.md#kb-topic-binary-fields) for more details about the binary metadata fields, including how to provide explicit properties for them
-*   By default, we determine if the binary content has changed by comparing the `_filename` and `_filesize` metadata values. If both those values are unchanged, we assume the content is also unchanged. If you want to compare the actual binary content instead, set `DataSource` property [DataSource.compareMetadataForAuditChangeStatus](DataSource.md#attr-datasourcecomparemetadataforauditchangestatus) to false, but bear in mind this may have performance implications, as described in the documentation for that property
+*   By default, we determine if the binary content has changed by comparing the `_filename` and `_filesize` metadata values. If both those values are unchanged, we assume the content is also unchanged. If you want to compare the actual binary content instead, set `DataSource` property [DataSource.compareMetadataForAuditChangeStatus](DataSource_1.md#attr-datasourcecomparemetadataforauditchangestatus) to false, but bear in mind this may have performance implications, as described in the documentation for that property
 
 **Flags**: IR
 
@@ -1744,7 +1744,7 @@ The entirety of stringInBrowser processing can be completely disabled by setting
 
 For DataSources that are not based on the SmartClient Server, the client-side behaviors described above (such as leaving user input in string form if precision would be lost) are active by default.
 
-In addition, if [dataSource.dataFormat:"xml"](DataSource.md#attr-datasourcedataformat) is used, values that would lose precision remain as strings. For JSON, if behavior similar to `stringInBrowser` is desired, your server response must send the values as JSON strings rather than JSON numeric literals.
+In addition, if [dataSource.dataFormat:"xml"](DataSource_1.md#attr-datasourcedataformat) is used, values that would lose precision remain as strings. For JSON, if behavior similar to `stringInBrowser` is desired, your server response must send the values as JSON strings rather than JSON numeric literals.
 
 You can use [DataSource.defaultStringInBrowser](DataSource.md#classattr-datasourcedefaultstringinbrowser) to disable these behaviors. **NOTE:** don't use this setting if you are using the SmartClient Server, use the server.properties approach described above instead.
 
@@ -1756,7 +1756,7 @@ You can use [DataSource.defaultStringInBrowser](DataSource.md#classattr-datasour
 ### Description
 This property is only applicable to fields of SQL DataSources that also specify a [foreignKey](#attr-datasourcefieldforeignkey) property; it is ignored for all other fields. Indicates the type of join to make between the tables underlying this DataSource and the other DataSource referred to in the `foreignKey` property, when resolving [includeFrom](#attr-datasourcefieldincludefrom) fields. The default value of null is the same as specifying "inner".
 
-Note, outer joins are allowed for all supported database products only if you are using [ANSI-style joins](DataSource.md#attr-datasourceuseansijoins). If you are using the older strategy of additional join expressions in the WHERE clause, outer joins are only supported for database products that provide a proprietary native syntax for expressing outer joins. Those products are:
+Note, outer joins are allowed for all supported database products only if you are using [ANSI-style joins](DataSource_1.md#attr-datasourceuseansijoins). If you are using the older strategy of additional join expressions in the WHERE clause, outer joins are only supported for database products that provide a proprietary native syntax for expressing outer joins. Those products are:
 
 *   Oracle
 *   Versions of Microsoft SQL Server earlier than 2012, and running in compatibility mode 80
@@ -1800,11 +1800,11 @@ Rather than a security setting, `canFilter:false` is intended for situations whe
 ## Attr: DataSourceField.ignoreTextMatchStyle
 
 ### Description
-**NOTE:** Only applicable to [clientOnly](DataSource.md#attr-datasourceclientonly) DataSources and the built-in [SQL](../kb_topics/sqlDataSource.md#kb-topic-sql-datasources), [JPA](../kb_topics/jpaIntegration.md#kb-topic-integration-with-jpa) and [Hibernate](../kb_topics/hibernateIntegration.md#kb-topic-integration-with-hibernate) DataSources available in Pro, Power and Enterprise versions of SmartClient.
+**NOTE:** Only applicable to [clientOnly](DataSource_1.md#attr-datasourceclientonly) DataSources and the built-in [SQL](../kb_topics/sqlDataSource.md#kb-topic-sql-datasources), [JPA](../kb_topics/jpaIntegration.md#kb-topic-integration-with-jpa) and [Hibernate](../kb_topics/hibernateIntegration.md#kb-topic-integration-with-hibernate) DataSources available in Pro, Power and Enterprise versions of SmartClient.
 
 Use this flag to inhibit the normal use of [TextMatchStyle](../reference_2.md#type-textmatchstyle) for this field. A field with this flag set will always be tested for exact equality in generated queries, even for filter-style queries where normal behavior would be to use a substring match or similar.
 
-Whether or not the exact match is case-sensitive is determined by the DataSource's [ignoreTextMatchStyleCaseSensitive](DataSource.md#attr-datasourceignoretextmatchstylecasesensitive) setting.
+Whether or not the exact match is case-sensitive is determined by the DataSource's [ignoreTextMatchStyleCaseSensitive](DataSource_1.md#attr-datasourceignoretextmatchstylecasesensitive) setting.
 
 **Flags**: IRW
 
@@ -1892,17 +1892,17 @@ Some other common uses:
 ## Attr: DataSourceField.nullReplacementValue
 
 ### Description
-If [DataSource.noNullUpdates](DataSource.md#attr-datasourcenonullupdates) is set, the value to use for this field when a null value is assigned to it on an update operation. This property overrides the DataSource-level properties [nullStringValue](DataSource.md#attr-datasourcenullstringvalue), [nullIntegerValue](DataSource.md#attr-datasourcenullintegervalue), [nullFloatValue](DataSource.md#attr-datasourcenullfloatvalue) and [nullDateValue](DataSource.md#attr-datasourcenulldatevalue), for this field only.
+If [DataSource.noNullUpdates](DataSource_1.md#attr-datasourcenonullupdates) is set, the value to use for this field when a null value is assigned to it on an update operation. This property overrides the DataSource-level properties [nullStringValue](DataSource_1.md#attr-datasourcenullstringvalue), [nullIntegerValue](DataSource_1.md#attr-datasourcenullintegervalue), [nullFloatValue](DataSource_1.md#attr-datasourcenullfloatvalue) and [nullDateValue](DataSource_1.md#attr-datasourcenulldatevalue), for this field only.
 
 NOTE: If you use this property, you are responsible for ensuring that the replacement value is appropriate and valid.
 
 ### See Also
 
-- [DataSource.noNullUpdates](DataSource.md#attr-datasourcenonullupdates)
-- [DataSource.nullStringValue](DataSource.md#attr-datasourcenullstringvalue)
-- [DataSource.nullIntegerValue](DataSource.md#attr-datasourcenullintegervalue)
-- [DataSource.nullFloatValue](DataSource.md#attr-datasourcenullfloatvalue)
-- [DataSource.nullDateValue](DataSource.md#attr-datasourcenulldatevalue)
+- [DataSource.noNullUpdates](DataSource_1.md#attr-datasourcenonullupdates)
+- [DataSource.nullStringValue](DataSource_1.md#attr-datasourcenullstringvalue)
+- [DataSource.nullIntegerValue](DataSource_1.md#attr-datasourcenullintegervalue)
+- [DataSource.nullFloatValue](DataSource_1.md#attr-datasourcenullfloatvalue)
+- [DataSource.nullDateValue](DataSource_1.md#attr-datasourcenulldatevalue)
 
 **Flags**: IR
 
@@ -1972,7 +1972,7 @@ When populating Java Beans/ POJOs, `javaClass` does not normally have to be spec
 ### Description
 Boolean flag to indicate that a dataSource field has its values dynamically calculated rather than being populated in permanent storage.
 
-If explicitly set, this property will be respected by [DataSource.isCalculated](DataSource.md#method-datasourceiscalculated)
+If explicitly set, this property will be respected by [DataSource.isCalculated](DataSource_1.md#method-datasourceiscalculated)
 
 **Flags**: IRA
 
@@ -2089,7 +2089,7 @@ Similar to the `includeVia`, `otherFKs` feature uses SQL table aliases in the ge
 
 The `otherFKs` feature uses aliases constructed from two parts:  
 \- the [field name](#attr-datasourcefieldname), which otherFKs property is defined on;  
-\- the related [DataSource ID](DataSource.md#attr-datasourceid) or the [DataSource.relatedTableAlias](DataSource.md#attr-datasourcerelatedtablealias) if set.
+\- the related [DataSource ID](DataSource_1.md#attr-datasourceid) or the [DataSource.relatedTableAlias](DataSource_1.md#attr-datasourcerelatedtablealias) if set.
 
 So, in the extended sample above the aliases for the "parent" money transfer related tables would be "_parent\_id_" (regular FK) and "_parent\_**id\_invoiceDS**_" (other FK).
 
@@ -2155,7 +2155,7 @@ The inclusions may as well be indirect like shown below and they would produce s
 ### See Also
 
 - [DataSourceField.otherFKs](#attr-datasourcefieldotherfks)
-- [DataSource.relatedTableAlias](DataSource.md#attr-datasourcerelatedtablealias)
+- [DataSource.relatedTableAlias](DataSource_1.md#attr-datasourcerelatedtablealias)
 - [DataSourceField.includeVia](#attr-datasourcefieldincludevia)
 
 **Flags**: IR
@@ -2182,7 +2182,7 @@ Defines the delimiter between concatenated values if field is used with [Server 
 ## Attr: DataSourceField.implicitSequence
 
 ### Description
-For a field of [type](../reference_2.md#type-fieldtype) "sequence" on a DataSource with [serverType:"sql"](DataSource.md#attr-datasourceservertype), this flag indicates that the field is implicitly bound to a sequence. This setting means that SmartClient does not expect to find a value for the field in "add" operations, even if it is marked as a [primaryKey](#attr-datasourcefieldprimarykey), as such fields usually are. It also means that SmartClient does not attempt to retrieve the field value from an actual database sequence, instead relying on the JDBC driver to return the generated value (see the note on `sequenceMode` below).
+For a field of [type](../reference_2.md#type-fieldtype) "sequence" on a DataSource with [serverType:"sql"](DataSource_1.md#attr-datasourceservertype), this flag indicates that the field is implicitly bound to a sequence. This setting means that SmartClient does not expect to find a value for the field in "add" operations, even if it is marked as a [primaryKey](#attr-datasourcefieldprimarykey), as such fields usually are. It also means that SmartClient does not attempt to retrieve the field value from an actual database sequence, instead relying on the JDBC driver to return the generated value (see the note on `sequenceMode` below).
 
 Implicitly bound columns are a syntactic convenience provided by some databases to simulate the "auto-increment" or "identity" columns available natively in other products, without the underlying sequence having to be explicitly referenced in SQL queries. Currently, these database products support this idea:
 
@@ -2192,9 +2192,9 @@ Implicitly bound columns are a syntactic convenience provided by some databases 
 
 If you have columns like these in your database, declare them as type "sequence" and mark them with the `implicitSequence` flag.
 
-**NOTE:** If you use this property, you should also set the [DataSource sequenceMode](DataSource.md#attr-datasourcesequencemode) to "jdbcDriver". This is necessary because SmartClient cannot directly query the implicit sequence that is being used behind the scenes, so we must rely on the JDBC driver to do that.
+**NOTE:** If you use this property, you should also set the [DataSource sequenceMode](DataSource_1.md#attr-datasourcesequencemode) to "jdbcDriver". This is necessary because SmartClient cannot directly query the implicit sequence that is being used behind the scenes, so we must rely on the JDBC driver to do that.
 
-If you use [autoDeriveSchema](DataSource.md#attr-datasourceautoderiveschema) to automatically derive a dataSource from table metadata, SmartClient attempts to identify these special Oracle and Postgres columns by heuristic examination of the metadata. When it identifies such a column, it marks the corresponding dataSourceField `implicitSequence: true`, and changes the sequenceMode on the DataSource to "jdbcDriver". If your table contains one of these columns and SmartClient does not automatically identify it, bear in mind that you can always set this flag manually, even if you are using `autoDeriveSchema`.
+If you use [autoDeriveSchema](DataSource_1.md#attr-datasourceautoderiveschema) to automatically derive a dataSource from table metadata, SmartClient attempts to identify these special Oracle and Postgres columns by heuristic examination of the metadata. When it identifies such a column, it marks the corresponding dataSourceField `implicitSequence: true`, and changes the sequenceMode on the DataSource to "jdbcDriver". If your table contains one of these columns and SmartClient does not automatically identify it, bear in mind that you can always set this flag manually, even if you are using `autoDeriveSchema`.
 
 This setting has no effect for non-SQL dataSources, or for databases other than those mentioned above.
 
@@ -2204,7 +2204,7 @@ This setting has no effect for non-SQL dataSources, or for databases other than 
 
 ### See Also
 
-- [DataSource.sequenceMode](DataSource.md#attr-datasourcesequencemode)
+- [DataSource.sequenceMode](DataSource_1.md#attr-datasourcesequencemode)
 
 **Flags**: IR
 
@@ -2238,7 +2238,7 @@ Title to show in a [Summary of type "title"](../reference_2.md#type-summaryfunct
 ### Description
 The required message when a field that has been marked as [required](#attr-datasourcefieldrequired) is not filled in by the user.
 
-Note that this setting wins over [DataSource.requiredMessage](DataSource.md#attr-datasourcerequiredmessage) if both are set.
+Note that this setting wins over [DataSource.requiredMessage](DataSource_1.md#attr-datasourcerequiredmessage) if both are set.
 
 ### Groups
 
@@ -2256,7 +2256,7 @@ For example, for an "orderID" field in an "orderItem" DataSource, a plural title
 
 Defaults to `field.title` + "s" if not specified.
 
-This can be set on a field to override the DataSource's [DataSource.pluralTitle](DataSource.md#attr-datasourcepluraltitle) when the field refers to a related DataSource whose pluralTitle is unset or needs a different value in the current context (e.g. a more compact label).
+This can be set on a field to override the DataSource's [DataSource.pluralTitle](DataSource_1.md#attr-datasourcepluraltitle) when the field refers to a related DataSource whose pluralTitle is unset or needs a different value in the current context (e.g. a more compact label).
 
 ### Groups
 
@@ -2264,7 +2264,7 @@ This can be set on a field to override the DataSource's [DataSource.pluralTitle]
 
 ### See Also
 
-- [DataSource.pluralTitle](DataSource.md#attr-datasourcepluraltitle)
+- [DataSource.pluralTitle](DataSource_1.md#attr-datasourcepluraltitle)
 
 **Flags**: IR
 
@@ -2335,7 +2335,7 @@ Comma-separated list of user roles that are allowed to update this field. If the
 ### Description
 If `field.formula` is set, this field's value in records will be calculated dynamically.
 
-`DataSourceField.formula` is supported for [SQL DataSources](../reference_2.md#type-dsservertype) and for [clientOnly dataSources](DataSource.md#attr-datasourceclientonly) only.
+`DataSourceField.formula` is supported for [SQL DataSources](../reference_2.md#type-dsservertype) and for [clientOnly dataSources](DataSource_1.md#attr-datasourceclientonly) only.
 
 Valid formula expressions may reference other field values directly by field name, or may reference the record object itself. Formula expressions may make use of standard [FormulaFunctions](../kb_topics/formulaFunction.md#kb-topic-datasourcefield-formula-functions).
 
@@ -2348,9 +2348,9 @@ For example, given a dataSource with two numeric fields "population" and "area" 
  
 ```
 
-For SQL DataSources, values are calculated on the server by modifying the generated SQL request as appropriate. For clientOnly dataSources, values are calculated as part of the [standard fetch response flow](DataSource.md#method-datasourcegetclientonlyresponse). Since the field values are calculated in the data source layer, standard capbilities like server side sorting of paged data sets are supported for these fields. This would not be the case for formula field values calculated [at the component level](ListGridField.md#attr-listgridfielduserformula).
+For SQL DataSources, values are calculated on the server by modifying the generated SQL request as appropriate. For clientOnly dataSources, values are calculated as part of the [standard fetch response flow](DataSource_1.md#method-datasourcegetclientonlyresponse). Since the field values are calculated in the data source layer, standard capbilities like server side sorting of paged data sets are supported for these fields. This would not be the case for formula field values calculated [at the component level](ListGridField.md#attr-listgridfielduserformula).
 
-As with other [dynamically calculated](DataSource.md#method-datasourceiscalculated) fields, fields with a specified formula are non editable.  
+As with other [dynamically calculated](DataSource_1.md#method-datasourceiscalculated) fields, fields with a specified formula are non editable.  
 When records are displayed in [dataBoundComponents that support editing](../reference.md#interface-databoundcomponent), formula field values will be re-calculated dynamically on the client as the user edits a record, so a user may preview the result of their changes.
 
 Note that `formula` fields may not make use of [fields included from related dataSources](#attr-datasourcefieldincludefrom). **DataSourceField.formula is available with Power or better licenses only.** See [smartclient.com/product](http://smartclient.com/product) for details.
@@ -2478,7 +2478,7 @@ A DataSourceField that specifies a `foreignKey` is automatically nillable unless
 ### Description
 When set for a field with binary data, binary data will be delivered as a Base64 encoded string.
 
-When `encodeInResponse` is not set normal responses will not contain values for binary fields at all. Instead, UI components, such as [TileGrid](TileGrid.md#class-tilegrid) issue a second binary fetch for binary data when appropriate, and APIs such as [downloadFile()](DataSource.md#method-datasourcedownloadfile) and [viewFile()](DataSource.md#method-datasourceviewfile) can be used to programmatically trigger downloads.
+When `encodeInResponse` is not set normal responses will not contain values for binary fields at all. Instead, UI components, such as [TileGrid](TileGrid.md#class-tilegrid) issue a second binary fetch for binary data when appropriate, and APIs such as [downloadFile()](DataSource_1.md#method-datasourcedownloadfile) and [viewFile()](DataSource_1.md#method-datasourceviewfile) can be used to programmatically trigger downloads.
 
 Only applicable to fields of a type that are represented by binary data (currently "binary" and "imageFile", see [FieldType](../reference_2.md#type-fieldtype)).
 
@@ -2546,7 +2546,7 @@ In any other circumstances, this attribute is ignored.
 ## Attr: DataSourceField.childrenProperty
 
 ### Description
-If true, this property indicates that this field will hold an explicit array of child nodes for the current node. This has the same effect as specifying [DataSource.childrenField](DataSource.md#attr-datasourcechildrenfield) to this field's name.
+If true, this property indicates that this field will hold an explicit array of child nodes for the current node. This has the same effect as specifying [DataSource.childrenField](DataSource_1.md#attr-datasourcechildrenfield) to this field's name.
 
 ### Groups
 
@@ -2554,7 +2554,7 @@ If true, this property indicates that this field will hold an explicit array of 
 
 ### See Also
 
-- [DataSource.childrenField](DataSource.md#attr-datasourcechildrenfield)
+- [DataSource.childrenField](DataSource_1.md#attr-datasourcechildrenfield)
 
 **Flags**: IR
 
@@ -2562,7 +2562,7 @@ If true, this property indicates that this field will hold an explicit array of 
 ## Attr: DataSourceField.multiple
 
 ### Description
-Indicates that this field should always be Array-valued. If the value derived from [XML or JSON data](DataSource.md#attr-datasourcedataformat) is singular, it will be wrapped in an Array.
+Indicates that this field should always be Array-valued. If the value derived from [XML or JSON data](DataSource_1.md#attr-datasourcedataformat) is singular, it will be wrapped in an Array.
 
 JPA and Hibernate DataSources use `multiple:true` as part of the declaration of One-To-Many and Many-to-Many relations - see [jpaHibernateRelations](../kb_topics/jpaHibernateRelations.md#kb-topic-jpa--hibernate-relations) for details. On fields that also declare a [foreignKey](#attr-datasourcefieldforeignkey) `multiple:true` also indicates that this field is participating in a one-to-many or many-to-many relation - see [dataSourceRelations](../kb_topics/dataSourceRelations.md#kb-topic-relations) for details.
 
@@ -2590,7 +2590,7 @@ For non-relation fields, the SmartClient Server supports simple storage of value
 
 For the built-in SQL, Hibernate and JPA connectors, if criteria are specified for a multiple:true field where `multipleStorage` is null or "none", the SmartClient server knows nothing about how the multiple values are stored, so as a fallback the criteria will operate as though the field were a normal, non-multiple "text" field. This will generally **not** match the client-side filtering behavior described above, so filtering should either be performed entirely on the client (for example, via [dataFetchMode:"local"](ListGrid_1.md#attr-listgriddatafetchmode) or entirely on the server (via [ResultSet.useClientFiltering](ResultSet.md#attr-resultsetuseclientfiltering):"false")
 
-The server-side filtering is done through a criteria transform which happens with [transformMultipleFields](DataSource.md#attr-datasourcetransformmultiplefields).
+The server-side filtering is done through a criteria transform which happens with [transformMultipleFields](DataSource_1.md#attr-datasourcetransformmultiplefields).
 
 #### XML Serialization
 
@@ -2707,7 +2707,7 @@ In addition, the [formItem.showIf](FormItem.md#method-formitemshowif) property i
 ## Attr: DataSourceField.fkTableCode
 
 ### Description
-See [DataSource.tableCode](DataSource.md#attr-datasourcetablecode).
+See [DataSource.tableCode](DataSource_1.md#attr-datasourcetablecode).
 
 **Flags**: R
 
@@ -2740,7 +2740,7 @@ The ListGrid and ToolStrip do not construct themselves automatically. Instead, t
 ## Attr: DataSourceField.format
 
 ### Description
-Format string to use when rendering the value in any [DataBoundComponent](../reference.md#interface-databoundcomponent) or when exporting via [DataSource.exportData](DataSource.md#method-datasourceexportdata) or [ListGrid.exportData](ListGrid_2.md#method-listgridexportdata) or [ListGrid.exportClientData](ListGrid_2.md#method-listgridexportclientdata).
+Format string to use when rendering the value in any [DataBoundComponent](../reference.md#interface-databoundcomponent) or when exporting via [DataSource.exportData](DataSource_1.md#method-datasourceexportdata) or [ListGrid.exportData](ListGrid_2.md#method-listgridexportdata) or [ListGrid.exportClientData](ListGrid_2.md#method-listgridexportclientdata).
 
 Supported for fields of type "date", "time", "datetime", "int", "float" or any derived [SimpleType](SimpleType.md#class-simpletype).
 

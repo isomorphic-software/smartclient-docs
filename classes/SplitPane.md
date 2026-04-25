@@ -247,7 +247,7 @@ Default value chosen for [listPaneTitle](#method-splitpanesetlisttitle) when [Sp
 
 Available variables are:
 
-*   "titleField" - the value of the [DataSource.titleField](DataSource.md#attr-datasourcetitlefield) in the selected record from the [SplitPane.navigationPane](#attr-splitpanenavigationpane)
+*   "titleField" - the value of the [DataSource.titleField](DataSource_1.md#attr-datasourcetitlefield) in the selected record from the [SplitPane.navigationPane](#attr-splitpanenavigationpane)
 *   "index" - position of the selected record
 *   "totalRows" - total number of rows in the component where the record is selected
 *   "record" - the entire selected Record
@@ -448,7 +448,7 @@ If this property is unset, the [SplitPane.navigationBar](#attr-splitpanenavigati
 ### Description
 If set, the `SplitPane` will automatically monitor selection changes in the [SplitPane.navigationPane](#attr-splitpanenavigationpane) and [SplitPane.listPane](#attr-splitpanelistpane), and call [SplitPane.navigateListPane](#method-splitpanenavigatelistpane) or [SplitPane.navigateDetailPane](#method-splitpanenavigatedetailpane) when selections are changed.
 
-If a pane is not a [DataBoundComponent](../reference.md#interface-databoundcomponent), but contains a component (selected via a breadth-first search), then that inner component will be monitored for selection changes instead. In either case, `autoNavigate` does nothing unless the monitored component has a valid [DataSource](DataSource.md#class-datasource) and there is a DataSource relationship declared between panes. Note that for [Layout](Layout.md#class-layout)s, the [members](Layout.md#attr-layoutmembers) will be searched when looking for a component rather than the [children](Canvas.md#attr-canvaschildren).
+If a pane is not a [DataBoundComponent](../reference.md#interface-databoundcomponent), but contains a component (selected via a breadth-first search), then that inner component will be monitored for selection changes instead. In either case, `autoNavigate` does nothing unless the monitored component has a valid [DataSource](DataSource_1.md#class-datasource) and there is a DataSource relationship declared between panes. Note that for [Layout](Layout.md#class-layout)s, the [members](Layout.md#attr-layoutmembers) will be searched when looking for a component rather than the [children](Canvas.md#attr-canvaschildren).
 
 Auto-navigation occurs after the [recordClick()](ListGrid_2.md#method-listgridrecordclick) or [selectionUpdated()](DataBoundComponent.md#method-databoundcomponentselectionupdated) method is called, so if you implement these methods, your code will run first. Importantly, if your methods call [fetchData()](ListGrid_2.md#method-listgridfetchdata), [setCriteria()](ListGrid_2.md#method-listgridsetcriteria), [DynamicForm.editRecord](DynamicForm.md#method-dynamicformeditrecord) or [DynamicForm.editNewRecord](DynamicForm.md#method-dynamicformeditnewrecord) on the target component, navigation will still occur, but duplicate calls to fetch related data, set data into the target, or start editing the record in the target will be skipped.
 
@@ -676,7 +676,7 @@ Notification method fired when the [miniNav is showing](#attr-splitpaneshowminin
 ### Description
 Causes the target pane component to load data and update its title based on the current selection in the source pane. Also shows the target pane if it's not already visible.
 
-For the target pane to load data, both the source pane and target pane must be [DataBoundComponent](../reference.md#interface-databoundcomponent)s or contain a component as a descendant widget, and have a [DataSource](DataSource.md#class-datasource), and either:
+For the target pane to load data, both the source pane and target pane must be [DataBoundComponent](../reference.md#interface-databoundcomponent)s or contain a component as a descendant widget, and have a [DataSource](DataSource_1.md#class-datasource), and either:
 
 *   The two DataSources must have a Many-To-One relationship declared via [DataSourceField.foreignKey](DataSourceField.md#attr-datasourcefieldforeignkey), so that [ListGrid.fetchRelatedData](ListGrid_2.md#method-listgridfetchrelateddata) can be used on the target pane. A common example of this would be navigation from a source pane that's a [TreeGrid](TreeGrid.md#class-treegrid) to a [ListGrid](ListGrid_1.md#class-listgrid) target.
 *   The two DataSources must be the same, so that the record selected in the source pane can be displayed in the target pane via simply calling [setData()](DetailViewer.md#method-detailviewersetdata). This would apply, for example, if the source pane is a [ListGrid](ListGrid_1.md#class-listgrid) and the target is a [DynamicForm](DynamicForm.md#class-dynamicform), so that [editRecord()](DynamicForm.md#method-dynamicformeditrecord) gets called, or if the target is a [DetailViewer](DetailViewer.md#class-detailviewer).

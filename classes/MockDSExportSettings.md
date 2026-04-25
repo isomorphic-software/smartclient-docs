@@ -15,7 +15,7 @@ Whether to include custom-defined [SimpleTypes](SimpleType.md#class-simpletype).
 ## Attr: MockDSExportSettings.requestProperties
 
 ### Description
-The properties that will be specified on the [DSRequest](../reference_2.md#object-dsrequest) when fetching records. You can pass an array of different request properties matching the length of the `dsNames` param of [Reify.getMockDS](Reify.md#classmethod-reifygetmockds) or [Reify.showMockDS](Reify.md#classmethod-reifyshowmockds) if you want the fetch for each [DataSource](DataSource.md#class-datasource) made with different properties.
+The properties that will be specified on the [DSRequest](../reference_2.md#object-dsrequest) when fetching records. You can pass an array of different request properties matching the length of the `dsNames` param of [Reify.getMockDS](Reify.md#classmethod-reifygetmockds) or [Reify.showMockDS](Reify.md#classmethod-reifyshowmockds) if you want the fetch for each [DataSource](DataSource_1.md#class-datasource) made with different properties.
 
 **Flags**: IR
 
@@ -35,7 +35,7 @@ The number of levels of nodes to include, for DataSources that define a [tree re
 ## Attr: MockDSExportSettings.includeImageFields
 
 ### Description
-Should [image fields](../reference_2.md#type-fieldtype) be included in the export or serialization of the [DataSource](DataSource.md#class-datasource)? They are excluded by default since the stored paths are unlikely to be correct when placed in any other environment, such as Reify.
+Should [image fields](../reference_2.md#type-fieldtype) be included in the export or serialization of the [DataSource](DataSource_1.md#class-datasource)? They are excluded by default since the stored paths are unlikely to be correct when placed in any other environment, such as Reify.
 
 **Flags**: IR
 
@@ -79,7 +79,7 @@ For DataSources that define a [tree relationship](../kb_topics/treeDataBinding.m
 ## Attr: MockDSExportSettings.omitRelations
 
 ### Description
-If including [foreign key](DataSourceField.md#attr-datasourcefieldforeignkey) relationships, those relationships to skip. This can be used to avoid dangling references to [DataSources](DataSource.md#class-datasource) that are not being exported or serialized.
+If including [foreign key](DataSourceField.md#attr-datasourcefieldforeignkey) relationships, those relationships to skip. This can be used to avoid dangling references to [DataSources](DataSource_1.md#class-datasource) that are not being exported or serialized.
 
 ### See Also
 
@@ -96,10 +96,20 @@ The number of rows of data to include, if more meet the [MockDSExportSettings.cr
 **Flags**: IR
 
 ---
+## Attr: MockDSExportSettings.followFKDepth
+
+### Description
+When non-zero, automatically discovers [DataSources](DataSource_1.md#class-datasource) reachable from the explicitly requested DataSources via [foreignKey](DataSourceField.md#attr-datasourcefieldforeignkey) relationships, up to this many hops. A value of 1 adds DataSources directly referenced by a foreignKey on any requested DataSource; a value of 2 additionally adds DataSources referenced by those, and so on.
+
+This is useful when exporting a set of interlinked DataSources and you want to automatically include all related DataSources without enumerating them manually. The traversal walks both directions: from a field's `foreignKey` to the target DataSource, and from a target DataSource back to any DataSource that references it. Self-referential (tree) FKs are not counted as a hop.
+
+**Flags**: IR
+
+---
 ## Attr: MockDSExportSettings.includeFKs
 
 ### Description
-Should [foreign key](DataSourceField.md#attr-datasourcefieldforeignkey) relationships be included in the export or serialization of the [DataSource](DataSource.md#class-datasource)?
+Should [foreign key](DataSourceField.md#attr-datasourcefieldforeignkey) relationships be included in the export or serialization of the [DataSource](DataSource_1.md#class-datasource)?
 
 **Flags**: IR
 

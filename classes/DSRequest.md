@@ -53,13 +53,28 @@ Fields should be specified in the format `"localFieldName!relatedDataSourceID.re
 
 Note that as with [DataSourceField.includeFrom](DataSourceField.md#attr-datasourcefieldincludefrom), the related dataSource must be linked to the primary datasource via a foreignKey relationship.
 
+**Grouping and summarization:** Fields added via `additionalOutputs` are recognized by [DSRequest.groupBy](#attr-dsrequestgroupby) and [DSRequest.summaryFunctions](#attr-dsrequestsummaryfunctions) under their `localFieldName` alias for the same request. For example, to count orders per customer region without declaring `region` as an [DataSourceField.includeFrom](DataSourceField.md#attr-datasourcefieldincludefrom) on the orders DataSource:
+
+```
+     orderDS.fetchData(null, callback, {
+         additionalOutputs: "region!customer.region",
+         groupBy: ["region"],
+         summaryFunctions: {id: "count"}
+     });
+ 
+```
+
+**clientOnly DataSources:** `additionalOutputs` is honoured on [clientOnly](DataSource_1.md#attr-datasourceclientonly) DataSources with identical syntax and semantics: local-alias fields are projected onto every record in the response and may be referenced by `groupBy` / `summaryFunctions` as above. The related DataSource must also be clientOnly (or a [cacheAllData](DataSource_1.md#attr-datasourcecachealldata) DataSource whose data has been fetched); if the related DataSource is server-backed with no locally-cached data, the entry is dropped with a warning and the rest of the request continues to execute.
+
 Note additionalOutputs sent in request from the browser can be completely disabled in [server.properties](../kb_topics/server_properties.md#kb-topic-serverproperties-file) by setting `datasource.allowClientAdditionalOutputs`:
 
 ```
      datasource.allowClientAdditionalOutputs: false
  
 ```
-In this case [DSRequest.additionalOutputs](#attr-dsrequestadditionaloutputs) sent from the browser will be cleared before executing request. Note that programatically configured additionalOutputs are always allowed, but you can't modify them from within a DMI method, so the only way to execute a request with additionalOutputs that differ from what was sent by the client is to create a new DSRequest
+In this case [DSRequest.additionalOutputs](#attr-dsrequestadditionaloutputs) sent from the browser will be cleared before executing request. Note that programatically configured additionalOutputs are always allowed, but you can't modify them from within a DMI method, so the only way to execute a request with additionalOutputs that differ from what was sent by the client is to create a new DSRequest.
+
+The `datasource.allowClientAdditionalOutputs` server-properties gate only applies to requests that hit the SmartClient Server; for [clientOnly](DataSource_1.md#attr-datasourceclientonly) DataSources the request never leaves the browser and `additionalOutputs` is always honoured.
 
 **Flags**: IRA
 
@@ -69,7 +84,7 @@ In this case [DSRequest.additionalOutputs](#attr-dsrequestadditionaloutputs) sen
 ### Description
 For "fetch" operations, how search criteria should be interpreted for text fields: one of "exact" for exact match, "exactCase" for case-sensitive exact match, "startsWith" for matching at the beginning only, or "substring" for substring match. All `textMatchStyle` settings except "exactCase" are case-insensitive; use [AdvancedCriteria](../reference.md#object-advancedcriteria) for greater control over matching.
 
-This property defaults to the value of [DataSource.defaultTextMatchStyle](DataSource.md#attr-datasourcedefaulttextmatchstyle) if it is not explicitly provided on the `DSRequest`. Note, however, that DSRequests issued by [ListGrid](ListGrid_1.md#class-listgrid)s and other [components](../reference.md#interface-databoundcomponent) will generally have a setting for textMatchStyle on the component itself (see [ListGrid.autoFetchTextMatchStyle](ListGrid_1.md#attr-listgridautofetchtextmatchstyle), for example).
+This property defaults to the value of [DataSource.defaultTextMatchStyle](DataSource_1.md#attr-datasourcedefaulttextmatchstyle) if it is not explicitly provided on the `DSRequest`. Note, however, that DSRequests issued by [ListGrid](ListGrid_1.md#class-listgrid)s and other [components](../reference.md#interface-databoundcomponent) will generally have a setting for textMatchStyle on the component itself (see [ListGrid.autoFetchTextMatchStyle](ListGrid_1.md#attr-listgridautofetchtextmatchstyle), for example).
 
 This setting is respected by the built-in server-side connectors for SQL, JPA and Hibernate. A custom server-side DataSource implementation should generally respect this flag as well, or server-side filtering will not match client-side filtering, which will require [disabling client-side filtering](ResultSet.md#attr-resultsetuseclientfiltering), a huge performance loss.
 
@@ -183,7 +198,7 @@ Default if unspecified is "server".
 
 This setting does not affect fields of type "date" or "time", which are timezone-independent values. See [dateFormatAndStorage](../kb_topics/dateFormatAndStorage.md#kb-topic-date-and-time-format-and-storage) for more information on how SmartClient handles date, time and datetime values.
 
-All non-spreadsheet export formats always use UTC. This setting also does not affect client-driven exports ([DataSource.exportClientData](DataSource.md#method-datasourceexportclientdata)), which always use client-side time.
+All non-spreadsheet export formats always use UTC. This setting also does not affect client-driven exports ([DataSource.exportClientData](DataSource_1.md#method-datasourceexportclientdata)), which always use client-side time.
 
 ### Groups
 
@@ -217,7 +232,7 @@ If `exportNumbersAsFormattedString` is set to true, numbers will appear as strin
 ## Attr: DSRequest.arrayCriteriaForceExact
 
 ### Description
-DSRequest-level override for the DataSource-level [arrayCriteriaForceExact](DataSource.md#attr-datasourcearraycriteriaforceexact) flag. See the documentation for that flag for details.
+DSRequest-level override for the DataSource-level [arrayCriteriaForceExact](DataSource_1.md#attr-datasourcearraycriteriaforceexact) flag. See the documentation for that flag for details.
 
 ### Groups
 
@@ -248,7 +263,7 @@ For example, by setting the `fetchOperation` on a particular ListGrid, you could
 
 The `operationId` can also be directly received by the server in order to affect behavior. When using the SmartClient Server, `operationId` can be accessed via dsRequest.getOperationId(). The [RestDataSource](RestDataSource.md#class-restdatasource) will also send the `operationId` to the server as part of the [request metadata](RestDataSource.md#attr-restdatasourcemetadataprefix).
 
-Note that if you [manually invoke](DataSource.md#method-datasourcefetchdata) a DataSource operation, you can also specify operationId via the `requestProperties` parameter.
+Note that if you [manually invoke](DataSource_1.md#method-datasourcefetchdata) a DataSource operation, you can also specify operationId via the `requestProperties` parameter.
 
 Note that the `operationId` has special significance in terms of whether two DSRequests are considered equivalent for caching and synchronization purposes - see [dsRequestEquivalence](../kb_topics/dsRequestEquivalence.md#kb-topic-dsrequestequivalence).
 
@@ -262,7 +277,7 @@ Note that the `operationId` has special significance in terms of whether two DSR
 ## Attr: DSRequest.forceOuterJoins
 
 ### Description
-For dataSources of [serverType](DataSource.md#attr-datasourceservertype) "sql" only, this property causes all JOINs in the generated SQL to be outer joins, for this request only. See [joinType](DataSourceField.md#attr-datasourcefieldjointype) for more details about outer join support in SmartClient
+For dataSources of [serverType](DataSource_1.md#attr-datasourceservertype) "sql" only, this property causes all JOINs in the generated SQL to be outer joins, for this request only. See [joinType](DataSourceField.md#attr-datasourcefieldjointype) for more details about outer join support in SmartClient
 
 **Flags**: IRW
 
@@ -362,7 +377,7 @@ The character to use as a field-separator in CSV exports. The default delimiter 
 ### Description
 Should the HTTP response to this request be formatted using the strict JSON subset of the javascript language? If set to true, responses returned by the server should match the format described [here](http://www.json.org/js.html).
 
-Only applies to requests sent a server with [DataSource.dataFormat](DataSource.md#attr-datasourcedataformat) set to "json" or "iscServer".
+Only applies to requests sent a server with [DataSource.dataFormat](DataSource_1.md#attr-datasourcedataformat) set to "json" or "iscServer".
 
 **Flags**: IR
 
@@ -418,9 +433,9 @@ This property allows omitting column names from CSV and Excel exports (no effect
 ## Attr: DSRequest.multiInsertStrategy
 
 ### Description
-For dataSources of [serverType](DataSource.md#attr-datasourceservertype) "sql" only, this property sets the multi-insert strategy for this specific [dsRequest](../reference_2.md#object-dsrequest). Only has an effect if this is an [add request](DataSource.md#method-datasourceadddata) that specifies a list of records as the data.
+For dataSources of [serverType](DataSource_1.md#attr-datasourceservertype) "sql" only, this property sets the multi-insert strategy for this specific [dsRequest](../reference_2.md#object-dsrequest). Only has an effect if this is an [add request](DataSource_1.md#method-datasourceadddata) that specifies a list of records as the data.
 
-Note that this setting overrides the equivalent [operationBinding setting](OperationBinding.md#attr-operationbindingmultiinsertstrategy) and [dataSource setting](DataSource.md#attr-datasourcemultiinsertstrategy)
+Note that this setting overrides the equivalent [operationBinding setting](OperationBinding.md#attr-operationbindingmultiinsertstrategy) and [dataSource setting](DataSource_1.md#attr-datasourcemultiinsertstrategy)
 
 ### See Also
 
@@ -435,7 +450,7 @@ Note that this setting overrides the equivalent [operationBinding setting](Opera
 ### Description
 For requests submitted by a [DataBoundComponent](../reference.md#interface-databoundcomponent), the [Canvas.ID](Canvas.md#attr-canvasid) of the submitting component.
 
-This ID will be present for operations including automatic saves by a ListGrid [during editing](../kb_topics/editing.md#kb-topic-grid-editing), or calls to [form.saveData()](DynamicForm.md#method-dynamicformsavedata). It will not be present for a direct call to a DataSource method such as [DataSource.fetchData](DataSource.md#method-datasourcefetchdata).
+This ID will be present for operations including automatic saves by a ListGrid [during editing](../kb_topics/editing.md#kb-topic-grid-editing), or calls to [form.saveData()](DynamicForm.md#method-dynamicformsavedata). It will not be present for a direct call to a DataSource method such as [DataSource.fetchData](DataSource_1.md#method-datasourcefetchdata).
 
 Note this is the component's **String** ID - you can retrieve the component itself via [Canvas.getById](Canvas.md#classmethod-canvasgetbyid).
 
@@ -463,7 +478,7 @@ If exportFields is not provided:
 ### Description
 For advanced use in integrating trees that [load data on demand](TreeGrid.md#attr-treegridloaddataondemand) with web services, `parentNode` is automatically set in "fetch" DSRequests issued by a databound TreeGrid that is loading children for that `parentNode`.
 
-This is sometimes needed if a web service requires that additional properties beyond the ID of the parentNode must be passed in order to accomplished level-by-level loading. A custom implementation of [DataSource.transformRequest](DataSource.md#method-datasourcetransformrequest) can access dsRequest.parentNode and add any such properties to [DSRequest.data](#attr-dsrequestdata).
+This is sometimes needed if a web service requires that additional properties beyond the ID of the parentNode must be passed in order to accomplished level-by-level loading. A custom implementation of [DataSource.transformRequest](DataSource_1.md#method-datasourcetransformrequest) can access dsRequest.parentNode and add any such properties to [DSRequest.data](#attr-dsrequestdata).
 
 `parentNode` will also be automatically set by a TreeGrid performing databound reparenting of nodes, as implemented by [TreeGrid.folderDrop](TreeGrid.md#method-treegridfolderdrop).
 
@@ -477,7 +492,7 @@ This property can only be read. There is no meaning to setting this property you
 ### Description
 For DataSources using SOAP messaging with a WSDL web service, data to be serialized to form SOAP headers, as a map from the header part name to the data. See [WSRequest.headerData](WSRequest.md#attr-wsrequestheaderdata) for more information.
 
-SOAP headers typically contain request metadata such as a session id for authentication, and so `dsRequest.headerData` is typically populated by [DataSource.transformRequest](DataSource.md#method-datasourcetransformrequest), or, for data that applies to every request sent to the server, by [WebService.getHeaderData](WebService.md#method-webservicegetheaderdata).
+SOAP headers typically contain request metadata such as a session id for authentication, and so `dsRequest.headerData` is typically populated by [DataSource.transformRequest](DataSource_1.md#method-datasourcetransformrequest), or, for data that applies to every request sent to the server, by [WebService.getHeaderData](WebService.md#method-webservicegetheaderdata).
 
 Note that this only applies to SOAP headers. General HTTP headers for requests may be modified using [RPCRequest.httpHeaders](RPCRequest.md#attr-rpcrequesthttpheaders).
 
@@ -719,9 +734,9 @@ If `exportDatesAsFormattedString` is set to true, date fields will appear as str
 ## Attr: DSRequest.multiInsertNonMatchingStrategy
 
 ### Description
-For dataSources of [serverType](DataSource.md#attr-datasourceservertype) "sql" only, this property sets the multi-insert "non matching" strategy for this specific [dsRequest](../reference_2.md#object-dsrequest). Only has an effect if this is an [add request](DataSource.md#method-datasourceadddata) that specifies a list of records as the data, and only if [multiInsertStrategy](#attr-dsrequestmultiinsertstrategy) is set to "multipleValues" either globally or at the [DSRequest](../reference_2.md#object-dsrequest), [OperationBinding](OperationBinding.md#class-operationbinding), or [DataSource](DataSource.md#class-datasource) level.
+For dataSources of [serverType](DataSource_1.md#attr-datasourceservertype) "sql" only, this property sets the multi-insert "non matching" strategy for this specific [dsRequest](../reference_2.md#object-dsrequest). Only has an effect if this is an [add request](DataSource_1.md#method-datasourceadddata) that specifies a list of records as the data, and only if [multiInsertStrategy](#attr-dsrequestmultiinsertstrategy) is set to "multipleValues" either globally or at the [DSRequest](../reference_2.md#object-dsrequest), [OperationBinding](OperationBinding.md#class-operationbinding), or [DataSource](DataSource_1.md#class-datasource) level.
 
-Note that this setting overrides the equivalent [operationBinding setting](OperationBinding.md#attr-operationbindingmultiinsertnonmatchingstrategy) and [dataSource setting](DataSource.md#attr-datasourcemultiinsertnonmatchingstrategy)
+Note that this setting overrides the equivalent [operationBinding setting](OperationBinding.md#attr-operationbindingmultiinsertnonmatchingstrategy) and [dataSource setting](DataSource_1.md#attr-datasourcemultiinsertnonmatchingstrategy)
 
 ### See Also
 
@@ -807,7 +822,7 @@ Note that Many-to-Many works the same way as One-to-Many.
 ## Attr: DSRequest.shouldUseCache
 
 ### Description
-This is a per-request flag for explicitly controlling whether the cache is used (bypassing it when not wanted, or using it when settings would indicate otherwise). See [DataSource.cacheAllData](DataSource.md#attr-datasourcecachealldata), [DataSource.cacheAllOperationId](DataSource.md#attr-datasourcecachealloperationid) and [DataSource.cacheAcrossOperationIds](DataSource.md#attr-datasourcecacheacrossoperationids) for caching management for all requests of a dataSource.
+This is a per-request flag for explicitly controlling whether the cache is used (bypassing it when not wanted, or using it when settings would indicate otherwise). See [DataSource.cacheAllData](DataSource_1.md#attr-datasourcecachealldata), [DataSource.cacheAllOperationId](DataSource_1.md#attr-datasourcecachealloperationid) and [DataSource.cacheAcrossOperationIds](DataSource_1.md#attr-datasourcecacheacrossoperationids) for caching management for all requests of a dataSource.
 
 **Flags**: IRW
 
@@ -817,14 +832,14 @@ This is a per-request flag for explicitly controlling whether the cache is used 
 ### Description
 Timestamp recording when this request was created on the client, as epoch milliseconds, generated automatically.
 
-This timestamp is for client-side tracking only and is never sent to the server. It can be used to order requests chronologically, implement timeout logic, or filter queued changes by age when using [DataSource.queueChanges](DataSource.md#attr-datasourcequeuechanges).
+This timestamp is for client-side tracking only and is never sent to the server. It can be used to order requests chronologically, implement timeout logic, or filter queued changes by age when using [DataSource.queueChanges](DataSource_1.md#attr-datasourcequeuechanges).
 
 Note: This is distinct from any server-side timestamps that may be recorded for auditing or logging purposes.
 
 ### See Also
 
-- [DataSource.queueChanges](DataSource.md#attr-datasourcequeuechanges)
-- [DataSource.pendingChanges](DataSource.md#attr-datasourcependingchanges)
+- [DataSource.queueChanges](DataSource_1.md#attr-datasourcequeuechanges)
+- [DataSource.pendingChanges](DataSource_1.md#attr-datasourcependingchanges)
 
 **Flags**: R
 
@@ -834,7 +849,7 @@ Note: This is distinct from any server-side timestamps that may be recorded for 
 ### Description
 The list of fields to return in the response, specified as a comma-separated string (eg, `"foo, bar, baz"`). You can use this property to indicate to the server that you are only interested in a subset of the fields that would normally be returned.
 
-Note that you cannot use this property to request a _superset_ of the fields that would normally be returned, because that would be a security hole. It is possible to configure individual [OperationBinding](OperationBinding.md#class-operationbinding)s to return extra fields, but this must be done in the server's [DataSource](DataSource.md#class-datasource) descriptor; it cannot be altered on the fly from the client side.
+Note that you cannot use this property to request a _superset_ of the fields that would normally be returned, because that would be a security hole. It is possible to configure individual [OperationBinding](OperationBinding.md#class-operationbinding)s to return extra fields, but this must be done in the server's [DataSource](DataSource_1.md#class-datasource) descriptor; it cannot be altered on the fly from the client side.
 
 Also, this setting is overridden by the [DataSourceField.outputWhen](DataSourceField.md#attr-datasourcefieldoutputwhen) setting, meaning that if a field is listed in request.outputs, but does not match the type of condition of outputWhen setting, it won't be returned to the client.
 
@@ -870,9 +885,9 @@ The format in which the data should be exported. Note that 'JSON' is not allowed
 ## Attr: DSRequest.multiInsertBatchSize
 
 ### Description
-For dataSources of [serverType](DataSource.md#attr-datasourceservertype) "sql" only, this property sets the multi-insert batch size for this specific [dsRequest](../reference_2.md#object-dsrequest). Only has an effect if this is an [add request](DataSource.md#method-datasourceadddata) that specifies a list of records as the data, and only if [multiInsertStrategy](#attr-dsrequestmultiinsertstrategy) is set to "multipleValues" either globally or at the [DSRequest](../reference_2.md#object-dsrequest), [OperationBinding](OperationBinding.md#class-operationbinding), or [DataSource](DataSource.md#class-datasource) level.
+For dataSources of [serverType](DataSource_1.md#attr-datasourceservertype) "sql" only, this property sets the multi-insert batch size for this specific [dsRequest](../reference_2.md#object-dsrequest). Only has an effect if this is an [add request](DataSource_1.md#method-datasourceadddata) that specifies a list of records as the data, and only if [multiInsertStrategy](#attr-dsrequestmultiinsertstrategy) is set to "multipleValues" either globally or at the [DSRequest](../reference_2.md#object-dsrequest), [OperationBinding](OperationBinding.md#class-operationbinding), or [DataSource](DataSource_1.md#class-datasource) level.
 
-Note that this setting overrides the equivalent [operationBinding setting](OperationBinding.md#attr-operationbindingmultiinsertbatchsize) and [dataSource setting](DataSource.md#attr-datasourcemultiinsertbatchsize)
+Note that this setting overrides the equivalent [operationBinding setting](OperationBinding.md#attr-operationbindingmultiinsertbatchsize) and [dataSource setting](DataSource_1.md#attr-datasourcemultiinsertbatchsize)
 
 ### See Also
 
@@ -989,7 +1004,7 @@ For `exportData()` calls, if we encounter a field that has an in-record [display
 ### Description
 DataSource this DSRequest will act on.
 
-This property is generally automatically populated, for example when calling [DataSource.fetchData](DataSource.md#method-datasourcefetchdata) the dataSource property is set to the target DataSource.
+This property is generally automatically populated, for example when calling [DataSource.fetchData](DataSource_1.md#method-datasourcefetchdata) the dataSource property is set to the target DataSource.
 
 **Flags**: IR
 
@@ -997,7 +1012,7 @@ This property is generally automatically populated, for example when calling [Da
 ## Attr: DSRequest.progressiveLoading
 
 ### Description
-Sets [progressive loading mode](DataSource.md#attr-datasourceprogressiveloading) for this particular request, overriding the OperationBinding- and DataSource-level settings. This setting overrides the [progressiveLoadingThreshold](DataSource.md#attr-datasourceprogressiveloadingthreshold) setting as well, meaning that if `DSRequest.progressiveLoading` is explicitly set to `false` SmartClient won't automatically switch to loading data progressively even if `DataSource.progressiveLoadingThreshold` is exceeded.
+Sets [progressive loading mode](DataSource_1.md#attr-datasourceprogressiveloading) for this particular request, overriding the OperationBinding- and DataSource-level settings. This setting overrides the [progressiveLoadingThreshold](DataSource_1.md#attr-datasourceprogressiveloadingthreshold) setting as well, meaning that if `DSRequest.progressiveLoading` is explicitly set to `false` SmartClient won't automatically switch to loading data progressively even if `DataSource.progressiveLoadingThreshold` is exceeded.
 
 Note that this setting applies only to fetch requests - it has no effect if specified on any other kind of request.
 
@@ -1007,8 +1022,8 @@ Note that this setting applies only to fetch requests - it has no effect if spec
 
 ### See Also
 
-- [DataSource.progressiveLoading](DataSource.md#attr-datasourceprogressiveloading)
-- [DataSource.progressiveLoadingThreshold](DataSource.md#attr-datasourceprogressiveloadingthreshold)
+- [DataSource.progressiveLoading](DataSource_1.md#attr-datasourceprogressiveloading)
+- [DataSource.progressiveLoadingThreshold](DataSource_1.md#attr-datasourceprogressiveloadingthreshold)
 - [OperationBinding.progressiveLoading](OperationBinding.md#attr-operationbindingprogressiveloading)
 
 **Flags**: IRW
@@ -1070,13 +1085,13 @@ Note, it is possible to globally disable `fieldValueExpression` in client-origin
 ## Attr: DSRequest.dataProtocol
 
 ### Description
-[DataProtocol](DataSource.md#attr-datasourcedataprotocol) for this particular request.
+[DataProtocol](DataSource_1.md#attr-datasourcedataprotocol) for this particular request.
 
-**Note:** Typically developers should use [operation bindings](DataSource.md#attr-datasourceoperationbindings) to specify an explicit data protocol for a request.
+**Note:** Typically developers should use [operation bindings](DataSource_1.md#attr-datasourceoperationbindings) to specify an explicit data protocol for a request.
 
-One exception: advanced developers may wish to have a custom [request transformer](DataSource.md#method-datasourcetransformrequest) with entirely client-side handling for some requests. This may be achieved by setting the request's `dataProtocol` to ["clientCustom"](../reference_2.md#type-dsprotocol) within transformRequest, and also triggering application code which will fire [DataSource.processResponse](DataSource.md#method-datasourceprocessresponse) when complete.
+One exception: advanced developers may wish to have a custom [request transformer](DataSource_1.md#method-datasourcetransformrequest) with entirely client-side handling for some requests. This may be achieved by setting the request's `dataProtocol` to ["clientCustom"](../reference_2.md#type-dsprotocol) within transformRequest, and also triggering application code which will fire [DataSource.processResponse](DataSource_1.md#method-datasourceprocessresponse) when complete.
 
-The [DataSource.getDataProtocol](DataSource.md#method-datasourcegetdataprotocol) method may be used to determine what data protocol will be used to handle a specific request based on this property (if set), otherwise the settings at the [operationBinding](OperationBinding.md#attr-operationbindingdataprotocol) or [dataSource](DataSource.md#attr-datasourcedataprotocol) levels.
+The [DataSource.getDataProtocol](DataSource_1.md#method-datasourcegetdataprotocol) method may be used to determine what data protocol will be used to handle a specific request based on this property (if set), otherwise the settings at the [operationBinding](OperationBinding.md#attr-operationbindingdataprotocol) or [dataSource](DataSource_1.md#attr-datasourcedataprotocol) levels.
 
 **Flags**: IRW
 

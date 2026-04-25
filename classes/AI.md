@@ -357,6 +357,48 @@ Registers the given [AIEngine](AIEngine.md#class-aiengine).
 - [AI.unregisterEngine](#classmethod-aiunregisterengine)
 
 ---
+## ClassMethod: AI.getDataSourceSummary
+
+### Description
+Returns a structured summary of a DataSource at a configurable detail level. In `"compact"` mode (default), only identity metadata, primary key, and foreign key relationships are included — suitable for large-app DS selection where full field listings would exceed the AI context window. Higher detail levels progressively add field information via an `otherFields` property.
+
+**Detail levels** (set via `settings.detail`):
+
+*   `"compact"` — ID, title, description, fieldCount, pk, fk. No field list.
+*   `"salientNames"` — adds `otherFields` as an array of field name strings for salient/critical fields (PK and FK fields already shown in `pk`/`fk` are excluded).
+*   `"salientTyped"` — like salientNames but each entry is an object with `name`, `type`, and optionally `required` and `valueMap`.
+*   `"allTyped"` — like salientTyped but includes all fields, not just salient ones.
+*   `"full"` — all fields with the full [AI.salientFieldAttributes](#aisalientfieldattributes) attribute mask.
+
+**Settings**:
+
+*   `detail` (String) — one of the levels above; default `"compact"`.
+*   `maxFields` (Integer) — cap on the number of fields in `otherFields`.
+*   `excludeHousekeeping` (Boolean) — omit auto-populated fields (creator, modifier, creatorTimestamp, modifierTimestamp); default `true` for all modes except `"full"`.
+*   `includeData` (String) — if set, includes representative data samples from available client-side caches. Values: `"fieldValues"` (per-field unique sample values added as `sampleValues` on each field entry) or `"records"` (whole sample records added as `sampleRecords`). Data is sourced from clientOnly cacheData, cacheAllData cacheResultSet, or any default-fetch (no operationId) ResultSet observing the DataSource — no server requests are triggered.
+*   `dataSampleCount` (Integer) — maximum unique sample values per field (fieldValues mode) or sample records (records mode); default 3.
+*   `dataSampleMaxSearch` (Integer) — maximum cache records to scan when collecting unique sample values; default 100.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| dataSource | [DataSource](#type-datasource)|[String](#type-string) | false | — | DataSource or ID |
+| settings | [Object](../reference.md#type-object) | true | — | detail level and field options |
+
+### Returns
+
+`[Object](../reference.md#type-object)` — structured summary
+
+### Groups
+
+- answerEngine
+
+### See Also
+
+- [AI.getDataSourceSummaries](#classmethod-aigetdatasourcesummaries)
+
+---
 ## ClassMethod: AI.getEngine
 
 ### Description
@@ -397,5 +439,26 @@ Alias for [AI.clearSpoofedResponses](#method-aiclearspoofedresponses).
 ### Groups
 
 - AIMocking
+
+---
+## ClassMethod: AI.getDataSourceSummaries
+
+### Description
+Returns an array of summaries (see [AI.getDataSourceSummary](#classmethod-aigetdatasourcesummary)) for the specified DataSources, or all registered application DataSources if no list is provided. The `settings` parameter is passed through to each [AI.getDataSourceSummary](#classmethod-aigetdatasourcesummary) call.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| dataSourceNames | [Array of String](#type-array-of-string) | true | — | DataSource IDs to summarize; defaults to [AI.getDataSourceNames](#method-aigetdatasourcenames) |
+| settings | [Object](../reference.md#type-object) | true | — | passed through to [AI.getDataSourceSummary](#classmethod-aigetdatasourcesummary) |
+
+### Returns
+
+`[Array of Object](#type-array-of-object)` — array of summary objects
+
+### Groups
+
+- answerEngine
 
 ---

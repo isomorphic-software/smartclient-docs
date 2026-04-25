@@ -11,7 +11,7 @@
 ### Description
 An application available within [Reify OnSite](../kb_topics/reifyOnSite.md#kb-topic-reify-onsite) that allows developers to create and manage SmartClient screens and datasources. Only **internal framework code** can create an instance of the Reify tool - do not try it directly in your applications. If you want to create visual tools similar to Reify, see [the Dashboards & Tools framework overview](../kb_topics/devTools.md#kb-topic-dashboards--tools-framework-overview).
 
-Note that in the SmartClient SDK, this class present only to provide [Reify](../kb_topics/reifyForDevelopers.md#kb-topic-reify-for-developers) utility class method APIs, and is not an instantiable widget. For example, you can call [Reify.getMockDS](#classmethod-reifygetmockds) to export a [DataSource](DataSource.md#class-datasource) as XML-formatted values and metadata for importing into Reify to create a [MockDataSource](MockDataSource.md#class-mockdatasource).
+Note that in the SmartClient SDK, this class present only to provide [Reify](../kb_topics/reifyForDevelopers.md#kb-topic-reify-for-developers) utility class method APIs, and is not an instantiable widget. For example, you can call [Reify.getMockDS](#classmethod-reifygetmockds) to export a [DataSource](DataSource_1.md#class-datasource) as XML-formatted values and metadata for importing into Reify to create a [MockDataSource](MockDataSource.md#class-mockdatasource).
 
 ### Groups
 
@@ -147,7 +147,7 @@ Reassign with [Reify.setOverlayKey](#classmethod-reifysetoverlaykey).
 ## Attr: Reify.projectDataSource
 
 ### Description
-The [DataSource](DataSource.md#class-datasource) to use for saving the project, using fileSource operations. If not set, the property defaults to "vbProjects" except in hostedMode where "isc\_hostedProjects" is the default.
+The [DataSource](DataSource_1.md#class-datasource) to use for saving the project, using fileSource operations. If not set, the property defaults to "vbProjects" except in hostedMode where "isc\_hostedProjects" is the default.
 
 ### Groups
 
@@ -198,7 +198,7 @@ Note that the callback is fired when the window is closed, not when it's populat
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| dsNames | [Array of String](#type-array-of-string)|[String](#type-string) | false | — | [ID](DataSource.md#attr-datasourceid)s of the desired DataSources |
+| dsNames | [Array of String](#type-array-of-string)|[String](#type-string) | false | — | [ID](DataSource_1.md#attr-datasourceid)s of the desired DataSources |
 | callback | [MockDSExportCallback](#type-mockdsexportcallback) | false | — | called with the complete export or serialization |
 | settings | [MockDSExportSettings](#type-mockdsexportsettings) | false | — | controls format and what records and metadata to include |
 
@@ -206,7 +206,7 @@ Note that the callback is fired when the window is closed, not when it's populat
 ## ClassMethod: Reify.getDataSourcesDS
 
 ### Description
-Return a [DataSource](DataSource.md#class-datasource) for browsing the list of DataSources in a Reify installation. See [Reify.getProjectsDS](#classmethod-reifygetprojectsds) for behavior, settings, and remote-access details.
+Return a [DataSource](DataSource_1.md#class-datasource) for browsing the list of DataSources in a Reify installation. See [Reify.getProjectsDS](#classmethod-reifygetprojectsds) for behavior, settings, and remote-access details.
 
 ### Parameters
 
@@ -236,7 +236,7 @@ In **window mode**, Reify is opened in a new browser tab. Communication uses `wi
 ## ClassMethod: Reify.getScreensDS
 
 ### Description
-Return a [DataSource](DataSource.md#class-datasource) for browsing the list of screens in a Reify installation. See [Reify.getProjectsDS](#classmethod-reifygetprojectsds) for behavior, settings, and remote-access details.
+Return a [DataSource](DataSource_1.md#class-datasource) for browsing the list of screens in a Reify installation. See [Reify.getProjectsDS](#classmethod-reifygetprojectsds) for behavior, settings, and remote-access details.
 
 ### Parameters
 
@@ -277,19 +277,21 @@ Setter for [Reify.userName](#classattr-reifyusername).
 ## ClassMethod: Reify.getMockDS
 
 ### Description
-Exports or serializes the specified [DataSources](DataSource.md#class-datasource) using the provided settings.
+Exports or serializes the specified [DataSources](DataSource_1.md#class-datasource) using the provided settings.
 
 The "reifyCSV" [format](MockDSExportSettings.md#attr-mockdsexportsettingsformat) generates comma-separated values to paste into the DataSource creation wizard in [Reify](../kb_topics/reifyForDevelopers.md#kb-topic-reify-for-developers). The use case for the other two formats is, if you have a SmartClient application, and you plan to load [MockDataSources](MockDataSource.md#class-mockdatasource) to enable people to add screens to your application using Reify, you may want to test your application with the MockDataSources to ensure they have the right data to allow your application to function (for example, that records in one MockDataSource that are related to another MockDataSource match up). Similarly, you may want to test any custom classes that you upload to Reify in a standalone file using [MockDataSources](MockDataSource.md#class-mockdatasource).
 
 You can customize the `settings`, such as [numRows](MockDSExportSettings.md#attr-mockdsexportsettingsnumrows) (or [numLevels](MockDSExportSettings.md#attr-mockdsexportsettingsnumlevels) for tree-DataSources) to keep the data volume returned by the export low. When related DataSources are present, all related records will be included in the export, even if `numRows` is exceeded. If this is too much data, [criteria](MockDSExportSettings.md#attr-mockdsexportsettingscriteria) can be used to further restrict exported records. Note that `settings` supports an array of [requestProperties](MockDSExportSettings.md#attr-mockdsexportsettingsrequestproperties), so that you can provide unique configuration for each DataSource being exported, rather than only global configuration.
 
-Unless you need programmatic or expert control over the settings, you will likely find it easier to use the "Reify Export" button in the [DataSources tab](../kb_topics/dataSourcesTab.md#kb-topic-datasources-tab). as when using that route, useful global and per-DataSources settings can be configured in an intuitively-arranged popup dialog.
+When exporting interlinked DataSources, set [MockDSExportSettings.followFKDepth](MockDSExportSettings.md#attr-mockdsexportsettingsfollowfkdepth) to automatically discover additional DataSources reachable via foreignKey relationships, so you don't have to manually enumerate every related DataSource.
+
+Unless you need programmatic or expert control over the settings, you will likely find it easier to use the "Reify Export" button in the [DataSources tab](../kb_topics/dataSourcesTab.md#kb-topic-datasources-tab), as when using that route, useful global and per-DataSource settings can be configured in an intuitively-arranged popup dialog.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| dsNames | [Array of String](#type-array-of-string)|[String](#type-string) | false | — | [ID](DataSource.md#attr-datasourceid)s of the desired DataSources |
+| dsNames | [Array of String](#type-array-of-string)|[String](#type-string) | false | — | [ID](DataSource_1.md#attr-datasourceid)s of the desired DataSources |
 | callback | [MockDSExportCallback](#type-mockdsexportcallback) | false | — | called with the complete export or serialization |
 | settings | [MockDSExportSettings](#type-mockdsexportsettings) | false | — | controls format and what records and metadata to include |
 
@@ -297,6 +299,26 @@ Unless you need programmatic or expert control over the settings, you will likel
 
 - [reifyForDevelopers](../kb_topics/reifyForDevelopers.md#kb-topic-reify-for-developers)
 - [Reify.showMockDS](#classmethod-reifyshowmockds)
+
+---
+## ClassMethod: Reify.editInReify
+
+### Description
+Save an [EditContext](EditContext.md#class-editcontext)'s component tree (or raw screen XML) to Reify storage and open it in the Reify editor. This is the primary convenience method for the "Dashboards & Tools to Reify" workflow.
+
+The method handles the complete flow:
+
+1.  Serializes the EditContext to screen XML (if `editContext` is provided instead of raw `screenContents`)
+2.  Saves the screen to vbScreens via [Reify.saveScreen](#method-reifysavescreen)
+3.  Creates a new project or adds the screen to an existing project
+4.  Opens Reify via [Reify.loadReify](#classmethod-reifyloadreify) with the project and screen pre-selected
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| config | [EditInReifyConfig](#type-editinreifyconfig) | false | — | configuration |
+| callback | [Function](#type-function) | true | — | called with a [ReifyRemote](ReifyRemote.md#class-reifyremote) instance |
 
 ---
 ## ClassMethod: Reify.saveProject
@@ -343,6 +365,20 @@ Return an Array of records describing every screen currently registered in the l
 ### Returns
 
 `[Array of Object](#type-array-of-object)` — loaded screen records
+
+---
+## ClassMethod: Reify.saveScreen
+
+### Description
+Save screen content (XML or JSON) to Reify's screen storage (vbScreens). This makes the screen available for use in Reify projects via [Reify.loadReify](#classmethod-reifyloadreify) or [Reify.loadScreenInReify](#classmethod-reifyloadscreeninreify).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| screenName | [String](#type-string) | false | — | name for the screen |
+| screenContents | [String](#type-string) | false | — | screen XML or JSON content, as produced by [EditContext.serializeAllEditNodes](EditContext.md#method-editcontextserializealleditnodes) |
+| callback | [Function](#type-function) | true | — | called with (DSResponse dsResponse, Object data) |
 
 ---
 ## ClassMethod: Reify.unregisterLoadedDataSource
@@ -404,10 +440,24 @@ Determine which cached Reify project a DataSource belongs to, if any.
 `[Project](#type-project)` — the project containing the DS, or null
 
 ---
+## ClassMethod: Reify.addScreensToProject
+
+### Description
+Add one or more screens to an existing Reify project. The screens must already be saved via [Reify.saveScreen](#method-reifysavescreen). The project is loaded from vbProjects, the screen references are appended, and the project is saved back.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| projectName | [String](#type-string) | false | — | project name |
+| screenNames | [Array of String](#type-array-of-string) | false | — | screen names to add |
+| callback | [Function](#type-function) | true | — | called with (DSResponse dsResponse, Object data) |
+
+---
 ## ClassMethod: Reify.registerLoadedDataSource
 
 ### Description
-Add a [DataSource](DataSource.md#class-datasource) reference to the loaded-resource registry. Normally called from [Reify.registerLoadedProject](#classmethod-reifyregisterloadedproject) for project-bundled DSes, but available for application code that loads DSes outside the project flow.
+Add a [DataSource](DataSource_1.md#class-datasource) reference to the loaded-resource registry. Normally called from [Reify.registerLoadedProject](#classmethod-reifyregisterloadedproject) for project-bundled DSes, but available for application code that loads DSes outside the project flow.
 
 ### Parameters
 
@@ -458,7 +508,7 @@ Remove a [Project](Project.md#class-project) from the loaded-resource registry, 
 ### Description
 Open a named screen in Reify for editing. The screen must be stored in Reify's screen storage (vbScreens); if not, a warning is logged and the call fails.
 
-This is the screen equivalent of [Project.loadInReify](Project.md#method-projectloadinreify) and [DataSource.loadInReify](DataSource.md#method-datasourceloadinreify). Since screens are not first-class objects in SmartClient (they are Canvas hierarchies returned by [RPCManager.loadScreen](RPCManager.md#classmethod-rpcmanagerloadscreen)), this method is on the Reify class rather than on a Screen instance.
+This is the screen equivalent of [Project.loadInReify](Project.md#method-projectloadinreify) and [DataSource.loadInReify](DataSource_1.md#method-datasourceloadinreify). Since screens are not first-class objects in SmartClient (they are Canvas hierarchies returned by [RPCManager.loadScreen](RPCManager.md#classmethod-rpcmanagerloadscreen)), this method is on the Reify class rather than on a Screen instance.
 
 ### Parameters
 
@@ -522,6 +572,22 @@ Check whether a screen is stored in Reify's screen storage (vbScreens).
 | callback | [Function](#type-function) | false | — | called with (Boolean isStored) |
 
 ---
+## ClassMethod: Reify.createProjectWithScreens
+
+### Description
+Create a minimal Reify project that references one or more screens already stored in [vbScreens](#method-reifysavescreen). The project is saved to vbProjects.
+
+If a project with this name already exists, it is overwritten. To add screens to an existing project, use [Reify.addScreensToProject](#classmethod-reifyaddscreenstoproject) instead.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| projectName | [String](#type-string) | false | — | project name |
+| screenNames | [Array of String](#type-array-of-string) | false | — | screen names to include |
+| callback | [Function](#type-function) | true | — | called with (DSResponse dsResponse, Object data) |
+
+---
 ## ClassMethod: Reify.isProjectInReify
 
 ### Description
@@ -570,7 +636,7 @@ Find all assets (projects, screens, DataSources) in the current page that are al
 ## ClassMethod: Reify.getLoadedScreensDS
 
 ### Description
-Return a live clientOnly [DataSource](DataSource.md#class-datasource) of loaded screen records. See [Reify.getLoadedProjectsDS](#classmethod-reifygetloadedprojectsds).
+Return a live clientOnly [DataSource](DataSource_1.md#class-datasource) of loaded screen records. See [Reify.getLoadedProjectsDS](#classmethod-reifygetloadedprojectsds).
 
 ### Returns
 
@@ -628,7 +694,7 @@ A plain [KeyName](../reference_2.md#type-keyname) string (e.g. `"F2"`) is also a
 ## ClassMethod: Reify.getProjectsDS
 
 ### Description
-Return a [DataSource](DataSource.md#class-datasource) for browsing the list of projects in a Reify installation, suitable for binding to a [ListGrid](ListGrid_1.md#class-listgrid), [TreeGrid](TreeGrid.md#class-treegrid), [SelectItem](SelectItem.md#class-selectitem), etc.
+Return a [DataSource](DataSource_1.md#class-datasource) for browsing the list of projects in a Reify installation, suitable for binding to a [ListGrid](ListGrid_1.md#class-listgrid), [TreeGrid](TreeGrid.md#class-treegrid), [SelectItem](SelectItem.md#class-selectitem), etc.
 
 By default, the local server's Reify storage is used. Pass a [ReifyDSSettings](../reference.md#object-reifydssettings) object with `reifyURL` set to access a remote Reify server (see [Reify.defaultReifyURL](#classattr-reifydefaultreifyurl)).
 
@@ -645,7 +711,7 @@ The DataSource is delivered asynchronously via callback because the underlying D
 ## ClassMethod: Reify.getLoadedProjectsDS
 
 ### Description
-Return a [DataSource](DataSource.md#class-datasource) bound to the live set of records returned by [Reify.getLoadedProjects](#classmethod-reifygetloadedprojects). The DS is `clientOnly` with `cacheAllData:true`, so bound [ListGrids](ListGrid_1.md#class-listgrid) update automatically as projects are loaded and destroyed, and the DS supports synchronous [fetchDataSynchronous()](#method-datasourcefetchdatasynchronous).
+Return a [DataSource](DataSource_1.md#class-datasource) bound to the live set of records returned by [Reify.getLoadedProjects](#classmethod-reifygetloadedprojects). The DS is `clientOnly` with `cacheAllData:true`, so bound [ListGrids](ListGrid_1.md#class-listgrid) update automatically as projects are loaded and destroyed, and the DS supports synchronous [fetchDataSynchronous()](#method-datasourcefetchdatasynchronous).
 
 Returns the same DS instance on every call.
 
@@ -657,7 +723,7 @@ Returns the same DS instance on every call.
 ## ClassMethod: Reify.getLoadedDataSourcesDS
 
 ### Description
-Return a live clientOnly [DataSource](DataSource.md#class-datasource) of loaded DataSource records. See [Reify.getLoadedProjectsDS](#classmethod-reifygetloadedprojectsds).
+Return a live clientOnly [DataSource](DataSource_1.md#class-datasource) of loaded DataSource records. See [Reify.getLoadedProjectsDS](#classmethod-reifygetloadedprojectsds).
 
 ### Returns
 
@@ -668,6 +734,20 @@ Return a live clientOnly [DataSource](DataSource.md#class-datasource) of loaded 
 
 ### Description
 Show the overlay view. Equivalent to `showOverlay()` with default dismiss settings (Escape key dismisses, click-outside dismisses). Idempotent.
+
+---
+## ClassMethod: Reify.saveProjectFile
+
+### Description
+Save a project definition to Reify's project storage (vbProjects). `projectXml` must be valid Reify project XML as produced by `ReifyProject.xmlSerialize()`.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| projectName | [String](#type-string) | false | — | project name |
+| projectXml | [String](#type-string) | false | — | project XML content |
+| callback | [Function](#type-function) | true | — | called with (DSResponse dsResponse, Object data) |
 
 ---
 ## ClassMethod: Reify.getReifyScreens
@@ -700,7 +780,7 @@ Registration is idempotent: re-registering an already-known project just refresh
 ## ClassMethod: Reify.getLoadedDataSources
 
 ### Description
-Return an Array of records describing every Reify-loaded [DataSource](DataSource.md#class-datasource) currently registered.
+Return an Array of records describing every Reify-loaded [DataSource](DataSource_1.md#class-datasource) currently registered.
 
 ### Returns
 

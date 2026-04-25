@@ -15,7 +15,7 @@ If this is a self-drop, records are simply reordered.
 
 For a drop from another widget, [ListGrid.transferDragData](ListGrid_2.md#method-listgridtransferdragdata) is called, which depending on the [dragDataAction](ListGrid_1.md#attr-listgriddragdataaction) specified on the source widget, may either remove the source records from the original list (`dragDataAction:"move"`) or just provide a copy to this list (`dragDataAction:"copy"`).
 
-If this grid is databound, the new records will be added to the dataset by calling [DataSource.addData](DataSource.md#method-datasourceadddata). Further, if the new records were dragged from another databound component, and [addDropValues](DataBoundComponent.md#attr-databoundcomponentadddropvalues) is true, [getDropValues](DataBoundComponent.md#method-databoundcomponentgetdropvalues) will be called for every item being dropped.
+If this grid is databound, the new records will be added to the dataset by calling [DataSource.addData](DataSource_1.md#method-datasourceadddata). Further, if the new records were dragged from another databound component, and [addDropValues](DataBoundComponent.md#attr-databoundcomponentadddropvalues) is true, [getDropValues](DataBoundComponent.md#method-databoundcomponentgetdropvalues) will be called for every item being dropped.
 
 For multi-record drops, Queuing is automatically used to combine all DSRequests into a single HTTP Request (see QuickStart Guide, Server Framework chapter). This allows the server to persist all changes caused by the drop in a single transaction (and this is automatically done when using the built-in server DataSources with Power Edition and above).
 
@@ -25,7 +25,7 @@ The newly dropped data is then selected automatically.
 
 If these default persistence behaviors are undesirable, return false to cancel them, then and implement your own behavior, typically by using grid.updateData() or addData() to add new records.
 
-**NOTE:** the records you receive in this event are the actual Records from the source component. Use [DataSource.copyRecords](DataSource.md#method-datasourcecopyrecords) to create a copy before modifying the records or using them with updateData() or addData().
+**NOTE:** the records you receive in this event are the actual Records from the source component. Use [DataSource.copyRecords](DataSource_1.md#method-datasourcecopyrecords) to create a copy before modifying the records or using them with updateData() or addData().
 
 NOTE: for a drop beyond the last visible record of a ListGrid, `targetRecord` will be null and the `index` will be one higher than the last record. This includes a drop into an empty ListGrid, where `index` will be 0.
 

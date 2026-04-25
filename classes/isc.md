@@ -4,154 +4,89 @@
 
 ---
 
-## ClassMethod: isc.fileExists
+## StaticMethod: isc.warn
 
 ### Description
-Checks if a file exists at the given path.
+Show a modal dialog with a message, icon, and "OK" button. See [Dialog.warnIcon](Dialog.md#attr-dialogwarnicon).
+
+The callback will receive boolean true for an OK button click, or null if the Dialog is dismissed via the close button.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| path | [String](#type-string) | false | — | File path |
-
-### Returns
-
-`[boolean](../reference.md#type-boolean)` — true if file exists
+| message | [HTMLString](../reference.md#type-htmlstring) | false | — | message to display |
+| callback | [Callback](../reference.md#type-callback) | true | — | Optional Callback to fire when the user dismisses the dialog. This has the single parameter 'value', indicating the value returned by the Warn dialog from 'okClick()' etc. |
+| properties | [Dialog Properties](#type-dialog-properties) | true | — | additional properties for the Dialog. To set [custom buttons](Dialog.md#attr-dialogbuttons) for the Dialog, set properties.buttons to an array of buttons eg: { buttons : \[Dialog.OK, Dialog.CANCEL\] } |
 
 ### Groups
 
-- graalUtilities
+- Prompting
+
+### See Also
+
+- [Dialog.Warn](Dialog.md#classattr-dialogwarn)
+- [isc.say](#staticmethod-iscsay)
+- [isc.ask](#staticmethod-iscask)
+- [Dialog.okClick](Dialog.md#method-dialogokclick)
+- [Dialog.WARN_TITLE](Dialog.md#classattr-dialogwarn_title)
 
 ---
-## ClassMethod: isc.toJavaList
+## StaticMethod: isc.fromJavaValue
 
 ### Description
-Converts a JavaScript array to a Java ArrayList. Nested objects and arrays are recursively converted.
-
-This is a convenience method for server-side JavaScript that eliminates the need for `Java.type('java.util.ArrayList')` calls.
+Converts any Java value to its JavaScript equivalent. Maps become objects, Lists become arrays, and primitives pass through unchanged.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| jsArray | [Array](#type-array) | false | — | JavaScript array to convert |
+| value | [Any](#type-any) | false | — | Java value to convert |
 
 ### Returns
 
-`[Java.util.ArrayList](#type-javautilarraylist)` — Java ArrayList containing the converted data
+`[Any](#type-any)` — JavaScript equivalent
 
 ### Groups
 
 - graalUtilities
 
 ---
-## ClassMethod: isc.nanoTime
+## StaticMethod: isc.showConsole
 
 ### Description
-Returns the current value of the running Java Virtual Machine's high-resolution time source, in nanoseconds. Useful for benchmarking and performance measurement. Equivalent to `java.lang.System.nanoTime()`.
-
-### Returns
-
-`[Number](#type-number)` — nanoseconds from JVM high-resolution timer
+Method available on the isc object to open the Developer Console.
 
 ### Groups
 
-- graalUtilities
+- debug
 
 ---
-## ClassMethod: isc.fromJavaMap
+## StaticMethod: isc.showPrompt
 
 ### Description
-Converts a Java Map to a JavaScript object. Nested Maps and Lists are recursively converted to objects and arrays respectively.
+Method available on the isc object to show a modal prompt to the user. This method will display the message using the Dialog.Prompt singleton object.  
+Note: if this prompt is to be shown to the user during some slow JavaScript logic, we advise calling this method, then using [Class.delayCall](Class.md#method-classdelaycall) or [Timer.setTimeout](Timer.md#classmethod-timersettimeout) to kick off the slow logic in a separate thread. This ensures that the prompt is showing before the lengthy execution begins.
+
+Use `"${loadingImage}"` to include [a loading image](Canvas.md#classattr-canvasloadingimagesrc).
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| javaMap | [Java.util.Map](#type-javautilmap) | false | — | Java Map to convert |
-
-### Returns
-
-`[Object](../reference.md#type-object)` — JavaScript object containing the converted data
+| message | [HTMLString](../reference.md#type-htmlstring) | false | — | message to display |
+| properties | [Dialog Properties](#type-dialog-properties) | true | — | additional properties for the Dialog, applied before the Dialog is shown |
 
 ### Groups
 
-- graalUtilities
+- Prompting
+
+### See Also
+
+- [Dialog.Prompt](Dialog.md#classattr-dialogprompt)
 
 ---
-## ClassMethod: isc.setSystemProperty
-
-### Description
-Sets a Java system property value. This calls System.getProperties().put(key, value).
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| key | [String](#type-string) | false | — | Property key |
-| value | [Any](#type-any) | false | — | Property value |
-
-### Groups
-
-- graalUtilities
-
----
-## ClassMethod: isc.findInPath
-
-### Description
-Finds the first executable in PATH matching any of the given names.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| names | [String...](#type-string) | false | — | Executable names to search for |
-
-### Returns
-
-`[String](#type-string)` — Full path to executable, or null if not found
-
-### Groups
-
-- graalUtilities
-
----
-## ClassMethod: isc.isExpired
-
-### Description
-Checks if a Java Date is in the past (or null).
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| javaDate | [Java.util.Date](#type-javautildate) | false | — | Date to check |
-
-### Returns
-
-`[boolean](../reference.md#type-boolean)` — true if date is null or in the past
-
-### Groups
-
-- graalUtilities
-
----
-## ClassMethod: isc.jacksonMapper
-
-### Description
-Returns a Jackson ObjectMapper instance for JSON serialization, or null if Jackson is not available in the classpath.
-
-### Returns
-
-`[Com.fasterxml.jackson.databind.ObjectMapper](#type-comfasterxmljacksondatabindobjectmapper)` — Jackson ObjectMapper, or null
-
-### Groups
-
-- graalUtilities
-
----
-## ClassMethod: isc.dsResponse
+## StaticMethod: isc.dsResponse
 
 ### Description
 Creates a Java DSResponse object with the given data and optional properties. This is a convenience method that handles all necessary type conversions, eliminating the need for manual `Java.type()` calls and HashMap/ArrayList construction.
@@ -242,409 +177,7 @@ Both approaches support the same properties (data, status, startRow, endRow, tot
 - [DSResponse](DSResponse.md#class-dsresponse)
 
 ---
-## ClassMethod: isc.fromJavaValue
-
-### Description
-Converts any Java value to its JavaScript equivalent. Maps become objects, Lists become arrays, and primitives pass through unchanged.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| value | [Any](#type-any) | false | — | Java value to convert |
-
-### Returns
-
-`[Any](#type-any)` — JavaScript equivalent
-
-### Groups
-
-- graalUtilities
-
----
-## ClassMethod: isc.log
-
-### Description
-Convenience method for logging to the server console from Graal scripts. Equivalent to `java.lang.System.out.println()`.
-
-Use this for simple diagnostic output in server-side scripts. For structured logging with categories and log levels, use SmartClient's class-based logging methods instead (see below).
-
-#### SmartClient Logging Under GraalJS
-
-When running under GraalJS with `contextFiles="databinding"` or similar, the full SmartClient logging system is available:
-
-*   **Class methods**: `isc.Log.logWarn()`, `isc.Log.logDebug()`, `isc.Log.logInfo()` - log with the "Log" category
-*   **Instance methods**: When inside a SmartClient class method, use `this.logWarn()`, `this.logDebug()`, etc. - automatically uses the class name as the log category
-*   **Custom categories**: `this.logWarn("message", "myCategory")`
-
-SmartClient logs under GraalJS are written to the server's standard output, similar to isc.log(), but include timestamp, log level, and category information.
-
-Example:
-
-```
- // Simple console output
- isc.log("Processing started...");
-
- // Structured logging with category
- isc.Log.logWarn("Unexpected value: " + value);
-
- // Inside a GraalDS method
- var ds = isc.GraalDS.get("supplyItem");
- ds.logDebug("Fetching records...", "graalDS");
- 
-```
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| message | [String](#type-string) | false | — | Message to log |
-
-### Groups
-
-- graalUtilities
-
----
-## ClassMethod: isc.fromJavaList
-
-### Description
-Converts a Java List to a JavaScript array.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| javaList | [Java.util.List](#type-javautillist) | false | — | Java List to convert |
-
-### Returns
-
-`[Array](#type-array)` — JavaScript array containing the converted data
-
-### Groups
-
-- graalUtilities
-
----
-## ClassMethod: isc.nowPlus
-
-### Description
-Returns a Java Date object representing the current time plus the specified milliseconds.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| milliseconds | [int](../reference.md#type-int) | false | — | Number of milliseconds to add to current time |
-
-### Returns
-
-`[Java.util.Date](#type-javautildate)` — Future date/time
-
-### Groups
-
-- graalUtilities
-
----
-## ClassMethod: isc.getSystemProperty
-
-### Description
-Gets a Java system property value. This accesses System.getProperties().get(key).
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| key | [String](#type-string) | false | — | Property key |
-
-### Returns
-
-`[Any](#type-any)` — Property value, or null if not set
-
-### Groups
-
-- graalUtilities
-
----
-## ClassMethod: isc.javaInteger
-
-### Description
-Converts a JavaScript number to a Java Integer object.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| value | [Number](#type-number) | false | — | JavaScript number |
-
-### Returns
-
-`[Java.lang.Integer](#type-javalanginteger)` — Java Integer object
-
-### Groups
-
-- graalUtilities
-
----
-## ClassMethod: isc.executeDSRequest
-
-### Description
-Executes a DataSource operation directly via Java DSRequest.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| dataSourceId | [String](#type-string) | false | — | DataSource ID |
-| operationType | [String](#type-string) | false | — | Operation type: "fetch", "add", "update", "remove" |
-| values | [Object](../reference.md#type-object) | true | — | Values for add/update operations |
-| criteria | [Object](../reference.md#type-object) | true | — | Criteria for fetch/remove operations |
-| operationId | [String](#type-string) | true | — | Custom operation ID |
-
-### Returns
-
-`[Com.isomorphic.datasource.DSResponse](#type-comisomorphicdatasourcedsresponse)` — Java DSResponse object
-
-### Groups
-
-- graalUtilities
-
----
-## ClassMethod: isc.failureResponse
-
-### Description
-Creates a DSResponse with failure status (-1) and an error message.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| message | [String](#type-string) | false | — | Error message |
-
-### Returns
-
-`[Com.isomorphic.datasource.DSResponse](#type-comisomorphicdatasourcedsresponse)` — Failure DSResponse
-
-### Groups
-
-- graalUtilities
-
----
-## ClassMethod: isc.concurrentHashMap
-
-### Description
-Creates a new Java ConcurrentHashMap for thread-safe storage. Use this when storing data in JVM system properties that may be accessed by concurrent requests.
-
-### Returns
-
-`[Java.util.concurrent.ConcurrentHashMap](#type-javautilconcurrentconcurrenthashmap)` — New ConcurrentHashMap instance
-
-### Groups
-
-- graalUtilities
-
----
-## ClassMethod: isc.getGraalTypes
-
-### Description
-Returns an object containing cached references to commonly-used Java types. This avoids repeated `Java.type()` calls which have overhead.
-
-The returned object contains:
-
-*   **DSRequest** - com.isomorphic.datasource.DSRequest
-*   **DSResponse** - com.isomorphic.datasource.DSResponse
-*   **DataTools** - com.isomorphic.util.DataTools
-*   **HashMap** - java.util.HashMap
-*   **ArrayList** - java.util.ArrayList
-*   **ConcurrentHashMap** - java.util.concurrent.ConcurrentHashMap
-*   **Boolean**, **Integer**, **Long** - Java boxed primitives
-*   **System** - java.lang.System (for currentTimeMillis(), etc.)
-*   **Date** - java.util.Date
-*   **UUID** - java.util.UUID
-
-Example:
-
-```
- var types = isc.getGraalTypes();
- var uuid = types.UUID.randomUUID().toString();
- var now = new types.Date();
- var timestamp = types.System.currentTimeMillis();
- 
-```
-
-### Returns
-
-`[Object](../reference.md#type-object)` — Object with cached Java type references
-
-### Groups
-
-- graalUtilities
-
----
-## ClassMethod: isc.runProcess
-
-### Description
-Runs an external process and returns the result.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| command | [String](#type-string) | false | — | Command to run |
-| args | [Array](#type-array) | false | — | Command arguments |
-| workingDir | [String](#type-string) | false | — | Working directory (optional) |
-
-### Returns
-
-`[Object](../reference.md#type-object)` — Result with {exitCode, output} properties
-
-### Groups
-
-- graalUtilities
-
----
-## ClassMethod: isc.addRecord
-
-### Description
-Adds a record to a DataSource. Returns true on success.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| dataSourceId | [String](#type-string) | false | — | DataSource ID |
-| values | [Object](../reference.md#type-object) | false | — | Record values to add |
-
-### Returns
-
-`[boolean](../reference.md#type-boolean)` — true if add succeeded
-
-### Groups
-
-- graalUtilities
-
----
-## ClassMethod: isc.javaBoolean
-
-### Description
-Converts a JavaScript boolean to a Java Boolean object. This is useful when building Java Maps that require Boolean object values rather than primitive booleans.
-```
- var record = isc.toJavaMap({
-     testName: "myTest",
-     passed: isc.javaBoolean(true)
- });
- 
-```
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| value | [boolean](../reference.md#type-boolean) | false | — | JavaScript boolean value |
-
-### Returns
-
-`[Java.lang.Boolean](#type-javalangboolean)` — Java Boolean object
-
-### Groups
-
-- graalUtilities
-
----
-## ClassMethod: isc.dsRequest
-
-### Description
-Creates a new Java DSRequest object for the specified DataSource and operation type. This is a convenience method that eliminates the need for `Java.type('com.isomorphic.datasource.DSRequest')` calls.
-
-The returned DSRequest can be configured and executed directly:
-
-```
- var req = isc.dsRequest("supplyItem", "fetch");
- req.setStartRow(0);
- req.setEndRow(25);
- var response = req.execute();
- 
-```
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| dsId | [String](#type-string) | false | — | DataSource ID |
-| operationType | [String](#type-string) | false | — | Operation type: "fetch", "add", "update", "remove", "custom" |
-
-### Returns
-
-`[Com.isomorphic.datasource.DSRequest](#type-comisomorphicdatasourcedsrequest)` — Java DSRequest object
-
-### Groups
-
-- graalUtilities
-
----
-## ClassMethod: isc.now
-
-### Description
-Returns the current date/time as a Java Date object.
-
-### Returns
-
-`[Java.util.Date](#type-javautildate)` — Current date/time
-
-### Groups
-
-- graalUtilities
-
----
-## ClassMethod: isc.fetchOne
-
-### Description
-Fetches a single record from a DataSource matching the given criteria.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| dataSourceId | [String](#type-string) | false | — | DataSource ID |
-| criteria | [Object](../reference.md#type-object) | false | — | Criteria to match |
-
-### Returns
-
-`[Object](../reference.md#type-object)` — The first matching record as a JavaScript object, or null
-
-### Groups
-
-- graalUtilities
-
----
-## ClassMethod: isc.hashMap
-
-### Description
-Creates a new Java HashMap. For simple in-memory storage in scripts, a regular HashMap is sufficient. Use [isc.concurrentHashMap](#classmethod-iscconcurrenthashmap) for thread-safe storage that persists across multiple requests (stored in JVM system properties).
-
-### Returns
-
-`[Java.util.HashMap](#type-javautilhashmap)` — New HashMap instance
-
-### Groups
-
-- graalUtilities
-
----
-## ClassMethod: isc.newUUID
-
-### Description
-Generates a new random UUID string using Java's UUID.randomUUID().
-
-### Returns
-
-`[String](#type-string)` — A new UUID string
-
-### Groups
-
-- graalUtilities
-
----
-## ClassMethod: isc.getConfig
+## StaticMethod: isc.getConfig
 
 ### Description
 Gets a configuration value from the SmartClient server Config.
@@ -662,156 +195,6 @@ Gets a configuration value from the SmartClient server Config.
 ### Groups
 
 - graalUtilities
-
----
-## ClassMethod: isc.toJavaMap
-
-### Description
-Converts a JavaScript object to a Java HashMap. Nested objects and arrays are recursively converted to HashMap and ArrayList.
-
-This is a convenience method for server-side JavaScript that eliminates the need for `Java.type('java.util.HashMap')` calls.
-
-```
- var javaMap = isc.toJavaMap({name: "Test", count: 42});
- 
-```
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| jsObject | [Object](../reference.md#type-object) | false | — | JavaScript object to convert |
-
-### Returns
-
-`[Java.util.HashMap](#type-javautilhashmap)` — Java HashMap containing the converted data
-
-### Groups
-
-- graalUtilities
-
----
-## ClassMethod: isc.readFile
-
-### Description
-Reads the contents of a file as a string.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| path | [String](#type-string) | false | — | File path |
-
-### Returns
-
-`[String](#type-string)` — File contents, or null if file doesn't exist
-
-### Groups
-
-- graalUtilities
-
----
-## ClassMethod: isc.successResponse
-
-### Description
-Creates a DSResponse with success status (0) and optional data.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| data | [Object](../reference.md#type-object)|[Array](#type-array) | true | — | Response data (auto-converted to Java) |
-
-### Returns
-
-`[Com.isomorphic.datasource.DSResponse](#type-comisomorphicdatasourcedsresponse)` — Success DSResponse
-
-### Groups
-
-- graalUtilities
-
----
-## ClassMethod: isc.updateRecord
-
-### Description
-Updates a record in a DataSource. Returns true on success.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| dataSourceId | [String](#type-string) | false | — | DataSource ID |
-| values | [Object](../reference.md#type-object) | false | — | Record values including primary key |
-
-### Returns
-
-`[boolean](../reference.md#type-boolean)` — true if update succeeded
-
-### Groups
-
-- graalUtilities
-
----
-## StaticMethod: isc.warn
-
-### Description
-Show a modal dialog with a message, icon, and "OK" button. See [Dialog.warnIcon](Dialog.md#attr-dialogwarnicon).
-
-The callback will receive boolean true for an OK button click, or null if the Dialog is dismissed via the close button.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| message | [HTMLString](../reference.md#type-htmlstring) | false | — | message to display |
-| callback | [Callback](../reference.md#type-callback) | true | — | Optional Callback to fire when the user dismisses the dialog. This has the single parameter 'value', indicating the value returned by the Warn dialog from 'okClick()' etc. |
-| properties | [Dialog Properties](#type-dialog-properties) | true | — | additional properties for the Dialog. To set [custom buttons](Dialog.md#attr-dialogbuttons) for the Dialog, set properties.buttons to an array of buttons eg: { buttons : \[Dialog.OK, Dialog.CANCEL\] } |
-
-### Groups
-
-- Prompting
-
-### See Also
-
-- [Dialog.Warn](Dialog.md#classattr-dialogwarn)
-- [isc.say](#staticmethod-iscsay)
-- [isc.ask](#staticmethod-iscask)
-- [Dialog.okClick](Dialog.md#method-dialogokclick)
-- [Dialog.WARN_TITLE](Dialog.md#classattr-dialogwarn_title)
-
----
-## StaticMethod: isc.showConsole
-
-### Description
-Method available on the isc object to open the Developer Console.
-
-### Groups
-
-- debug
-
----
-## StaticMethod: isc.showPrompt
-
-### Description
-Method available on the isc object to show a modal prompt to the user. This method will display the message using the Dialog.Prompt singleton object.  
-Note: if this prompt is to be shown to the user during some slow JavaScript logic, we advise calling this method, then using [Class.delayCall](Class.md#method-classdelaycall) or [Timer.setTimeout](Timer.md#classmethod-timersettimeout) to kick off the slow logic in a separate thread. This ensures that the prompt is showing before the lengthy execution begins.
-
-Use `"${loadingImage}"` to include [a loading image](Canvas.md#classattr-canvasloadingimagesrc).
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| message | [HTMLString](../reference.md#type-htmlstring) | false | — | message to display |
-| properties | [Dialog Properties](#type-dialog-properties) | true | — | additional properties for the Dialog, applied before the Dialog is shown |
-
-### Groups
-
-- Prompting
-
-### See Also
-
-- [Dialog.Prompt](Dialog.md#classattr-dialogprompt)
 
 ---
 ## StaticMethod: isc.shallowClone
@@ -834,6 +217,26 @@ Only an Array directly passed to `shallowClone()` is copied. Arrays contained wi
 ### Returns
 
 `[Object](../reference.md#type-object)|[Array of Object](#type-array-of-object)` — a shallow copy of the passed-in data
+
+---
+## StaticMethod: isc.fromJavaList
+
+### Description
+Converts a Java List to a JavaScript array.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| javaList | [Java.util.List](#type-javautillist) | false | — | Java List to convert |
+
+### Returns
+
+`[Array](#type-array)` — JavaScript array containing the converted data
+
+### Groups
+
+- graalUtilities
 
 ---
 ## StaticMethod: isc.notify
@@ -932,6 +335,30 @@ See below for links to the default values for these properties.
 - [LoginDialog.LOGIN_ERROR_MESSAGE](LoginDialog.md#classattr-logindialoglogin_error_message)
 
 ---
+## StaticMethod: isc.executeDSRequest
+
+### Description
+Executes a DataSource operation directly via Java DSRequest.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| dataSourceId | [String](#type-string) | false | — | DataSource ID |
+| operationType | [String](#type-string) | false | — | Operation type: "fetch", "add", "update", "remove" |
+| values | [Object](../reference.md#type-object) | true | — | Values for add/update operations |
+| criteria | [Object](../reference.md#type-object) | true | — | Criteria for fetch/remove operations |
+| operationId | [String](#type-string) | true | — | Custom operation ID |
+
+### Returns
+
+`[Com.isomorphic.datasource.DSResponse](#type-comisomorphicdatasourcedsresponse)` — Java DSResponse object
+
+### Groups
+
+- graalUtilities
+
+---
 ## StaticMethod: isc.ignore
 
 ### Description
@@ -960,6 +387,26 @@ Same as [Log.echoAll](Log.md#classmethod-logechoall).
 ### Returns
 
 `[String](#type-string)` — a short string representation of the object
+
+---
+## StaticMethod: isc.fileExists
+
+### Description
+Checks if a file exists at the given path.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| path | [String](#type-string) | false | — | File path |
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — true if file exists
+
+### Groups
+
+- graalUtilities
 
 ---
 ## StaticMethod: isc.ask
@@ -1001,6 +448,26 @@ Same as [Log.logWarn](Log.md#classmethod-loglogwarn).
 |------|------|----------|---------|-------------|
 | message | [String](#type-string) | false | — | message to log |
 | category | [String](#type-string) | true | — | category to log in, defaults to "Log" |
+
+---
+## StaticMethod: isc.getSystemProperty
+
+### Description
+Gets a Java system property value. This accesses System.getProperties().get(key).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| key | [String](#type-string) | false | — | Property key |
+
+### Returns
+
+`[Any](#type-any)` — Property value, or null if not set
+
+### Groups
+
+- graalUtilities
 
 ---
 ## StaticMethod: isc.askForValue
@@ -1133,6 +600,27 @@ Return all values of a given object
 `[Array](#type-array)` — values of all properties. NOTE: never null
 
 ---
+## StaticMethod: isc.updateRecord
+
+### Description
+Updates a record in a DataSource. Returns true on success.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| dataSourceId | [String](#type-string) | false | — | DataSource ID |
+| values | [Object](../reference.md#type-object) | false | — | Record values including primary key |
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — true if update succeeded
+
+### Groups
+
+- graalUtilities
+
+---
 ## StaticMethod: isc.logInfo
 
 ### Description
@@ -1144,6 +632,27 @@ Same as [Log.logInfo](Log.md#classmethod-logloginfo).
 |------|------|----------|---------|-------------|
 | message | [String](#type-string) | false | — | message to log |
 | category | [String](#type-string) | true | — | category to log in, defaults to "Log" |
+
+---
+## StaticMethod: isc.fetchOne
+
+### Description
+Fetches a single record from a DataSource matching the given criteria.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| dataSourceId | [String](#type-string) | false | — | DataSource ID |
+| criteria | [Object](../reference.md#type-object) | false | — | Criteria to match |
+
+### Returns
+
+`[Object](../reference.md#type-object)` — The first matching record as a JavaScript object, or null
+
+### Groups
+
+- graalUtilities
 
 ---
 ## StaticMethod: isc.rejectWithError
@@ -1181,6 +690,60 @@ Returns the size / position of an icon on the page as an array of coordinates.
 **Flags**: A
 
 ---
+## StaticMethod: isc.now
+
+### Description
+Returns the current date/time as a Java Date object.
+
+### Returns
+
+`[Java.util.Date](#type-javautildate)` — Current date/time
+
+### Groups
+
+- graalUtilities
+
+---
+## StaticMethod: isc.findInPath
+
+### Description
+Finds the first executable in PATH matching any of the given names.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| names | [String...](#type-string) | false | — | Executable names to search for |
+
+### Returns
+
+`[String](#type-string)` — Full path to executable, or null if not found
+
+### Groups
+
+- graalUtilities
+
+---
+## StaticMethod: isc.isExpired
+
+### Description
+Checks if a Java Date is in the past (or null).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| javaDate | [Java.util.Date](#type-javautildate) | false | — | Date to check |
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — true if date is null or in the past
+
+### Groups
+
+- graalUtilities
+
+---
 ## StaticMethod: isc.getIconLeft
 
 ### Description
@@ -1197,6 +760,26 @@ Returns the (offset) left-coordinate of an icon within its containing widget.
 `[number](#type-number)` — icon left position in px
 
 **Flags**: A
+
+---
+## StaticMethod: isc.javaInteger
+
+### Description
+Converts a JavaScript number to a Java Integer object.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| value | [Number](#type-number) | false | — | JavaScript number |
+
+### Returns
+
+`[Java.lang.Integer](#type-javalanginteger)` — Java Integer object
+
+### Groups
+
+- graalUtilities
 
 ---
 ## StaticMethod: isc.say
@@ -1242,6 +825,20 @@ Same as [Log.echoLeaf](Log.md#classmethod-logecholeaf).
 ### Returns
 
 `[String](#type-string)` — a short string representation of the object
+
+---
+## StaticMethod: isc.concurrentHashMap
+
+### Description
+Creates a new Java ConcurrentHashMap for thread-safe storage. Use this when storing data in JVM system properties that may be accessed by concurrent requests.
+
+### Returns
+
+`[Java.util.concurrent.ConcurrentHashMap](#type-javautilconcurrentconcurrenthashmap)` — New ConcurrentHashMap instance
+
+### Groups
+
+- graalUtilities
 
 ---
 ## StaticMethod: isc.getValueForKey
@@ -1312,6 +909,37 @@ Returns the size / position of an icon with respect to the widget rendering out 
 **Flags**: A
 
 ---
+## StaticMethod: isc.dsRequest
+
+### Description
+Creates a new Java DSRequest object for the specified DataSource and operation type. This is a convenience method that eliminates the need for `Java.type('com.isomorphic.datasource.DSRequest')` calls.
+
+The returned DSRequest can be configured and executed directly:
+
+```
+ var req = isc.dsRequest("supplyItem", "fetch");
+ req.setStartRow(0);
+ req.setEndRow(25);
+ var response = req.execute();
+ 
+```
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| dsId | [String](#type-string) | false | — | DataSource ID |
+| operationType | [String](#type-string) | false | — | Operation type: "fetch", "add", "update", "remove", "custom" |
+
+### Returns
+
+`[Com.isomorphic.datasource.DSRequest](#type-comisomorphicdatasourcedsrequest)` — Java DSRequest object
+
+### Groups
+
+- graalUtilities
+
+---
 ## StaticMethod: isc.makeReverseMap
 
 ### Description
@@ -1328,6 +956,26 @@ If the same value appears more than once, the key will correspond to the last in
 ### Returns
 
 `[Object](../reference.md#type-object)` — reversed value map
+
+---
+## StaticMethod: isc.failureResponse
+
+### Description
+Creates a DSResponse with failure status (-1) and an error message.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| message | [String](#type-string) | false | — | Error message |
+
+### Returns
+
+`[Com.isomorphic.datasource.DSResponse](#type-comisomorphicdatasourcedsresponse)` — Failure DSResponse
+
+### Groups
+
+- graalUtilities
 
 ---
 ## StaticMethod: isc.firstKey
@@ -1355,6 +1003,28 @@ Sets the [radioGroup](StatefulCanvas.md#attr-statefulcanvasradiogroup) identifie
 
 - state
 - event handling
+
+---
+## StaticMethod: isc.toJavaList
+
+### Description
+Converts a JavaScript array to a Java ArrayList. Nested objects and arrays are recursively converted.
+
+This is a convenience method for server-side JavaScript that eliminates the need for `Java.type('java.util.ArrayList')` calls.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| jsArray | [Array](#type-array) | false | — | JavaScript array to convert |
+
+### Returns
+
+`[Java.util.ArrayList](#type-javautilarraylist)` — Java ArrayList containing the converted data
+
+### Groups
+
+- graalUtilities
 
 ---
 ## StaticMethod: isc.sortObjectByProperties
@@ -1390,6 +1060,40 @@ Logs the echoed object (using [isc.echoAll](#staticmethod-iscechoall)) as a warn
 ### See Also
 
 - [Log.logWarn](Log.md#classmethod-loglogwarn)
+
+---
+## StaticMethod: isc.newUUID
+
+### Description
+Generates a new random UUID string using Java's UUID.randomUUID().
+
+### Returns
+
+`[String](#type-string)` — A new UUID string
+
+### Groups
+
+- graalUtilities
+
+---
+## StaticMethod: isc.fromJavaMap
+
+### Description
+Converts a Java Map to a JavaScript object. Nested Maps and Lists are recursively converted to objects and arrays respectively.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| javaMap | [Java.util.Map](#type-javautilmap) | false | — | Java Map to convert |
+
+### Returns
+
+`[Object](../reference.md#type-object)` — JavaScript object containing the converted data
+
+### Groups
+
+- graalUtilities
 
 ---
 ## StaticMethod: isc.eval
@@ -1446,6 +1150,28 @@ If the key is not found, `defaultKey` will be returned if provided, otherwise th
 `[Any](#type-any)` — returns first key in valueMap with value, or defaultKey if value not found
 
 ---
+## StaticMethod: isc.runProcess
+
+### Description
+Runs an external process and returns the result.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| command | [String](#type-string) | false | — | Command to run |
+| args | [Array](#type-array) | false | — | Command arguments |
+| workingDir | [String](#type-string) | false | — | Working directory (optional) |
+
+### Returns
+
+`[Object](../reference.md#type-object)` — Result with {exitCode, output} properties
+
+### Groups
+
+- graalUtilities
+
+---
 ## StaticMethod: isc.echo
 
 ### Description
@@ -1484,6 +1210,20 @@ autoDraw:false is the recommended default setting for most applications since it
 ### See Also
 
 - [Canvas.autoDraw](Canvas.md#attr-canvasautodraw)
+
+---
+## StaticMethod: isc.jacksonMapper
+
+### Description
+Returns a Jackson ObjectMapper instance for JSON serialization, or null if Jackson is not available in the classpath.
+
+### Returns
+
+`[Com.fasterxml.jackson.databind.ObjectMapper](#type-comfasterxmljacksondatabindobjectmapper)` — Jackson ObjectMapper, or null
+
+### Groups
+
+- graalUtilities
 
 ---
 ## StaticMethod: isc.getIconTop
@@ -1556,6 +1296,26 @@ Shortcut for `isc.ClassFactory.overwriteClass()`.
 - [ClassFactory.overwriteClass](ClassFactory.md#classmethod-classfactoryoverwriteclass)
 
 ---
+## StaticMethod: isc.readFile
+
+### Description
+Reads the contents of a file as a string.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| path | [String](#type-string) | false | — | File path |
+
+### Returns
+
+`[String](#type-string)` — File contents, or null if file doesn't exist
+
+### Groups
+
+- graalUtilities
+
+---
 ## StaticMethod: isc.defaultAsyncOperationCatchCallback
 
 ### Description
@@ -1572,6 +1332,41 @@ A catch callback that can be used on a Promise for an [AsyncOperationResult](../
 `[AsyncOperationResult](#type-asyncoperationresult)` — an `AsyncOperationResult` from the provided reason.
 
 ---
+## StaticMethod: isc.hashMap
+
+### Description
+Creates a new Java HashMap. For simple in-memory storage in scripts, a regular HashMap is sufficient. Use [isc.concurrentHashMap](#staticmethod-iscconcurrenthashmap) for thread-safe storage that persists across multiple requests (stored in JVM system properties).
+
+### Returns
+
+`[Java.util.HashMap](#type-javautilhashmap)` — New HashMap instance
+
+### Groups
+
+- graalUtilities
+
+---
+## StaticMethod: isc.addRecord
+
+### Description
+Adds a record to a DataSource. Returns true on success.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| dataSourceId | [String](#type-string) | false | — | DataSource ID |
+| values | [Object](../reference.md#type-object) | false | — | Record values to add |
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — true if add succeeded
+
+### Groups
+
+- graalUtilities
+
+---
 ## StaticMethod: isc.timeStamp
 
 ### Description
@@ -1580,6 +1375,26 @@ Shorthand for `new Date().getTime();`, this returns a timeStamp - a large number
 ### Returns
 
 `[int](../reference.md#type-int)` — a large integer (actually the number of milliseconds since 1/1/1970)
+
+---
+## StaticMethod: isc.successResponse
+
+### Description
+Creates a DSResponse with success status (0) and optional data.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| data | [Object](../reference.md#type-object)|[Array](#type-array) | true | — | Response data (auto-converted to Java) |
+
+### Returns
+
+`[Com.isomorphic.datasource.DSResponse](#type-comisomorphicdatasourcedsresponse)` — Success DSResponse
+
+### Groups
+
+- graalUtilities
 
 ---
 ## StaticMethod: isc.logEcho
@@ -1597,6 +1412,76 @@ Logs the echoed object (using [isc.echo](#staticmethod-iscecho)) as a warning, p
 ### See Also
 
 - [Log.logWarn](Log.md#classmethod-loglogwarn)
+
+---
+## StaticMethod: isc.log
+
+### Description
+Convenience method for logging to the server console from Graal scripts. Equivalent to `java.lang.System.out.println()`.
+
+Use this for simple diagnostic output in server-side scripts. For structured logging with categories and log levels, use SmartClient's class-based logging methods instead (see below).
+
+#### SmartClient Logging Under GraalJS
+
+When running under GraalJS with `contextFiles="databinding"` or similar, the full SmartClient logging system is available:
+
+*   **Class methods**: `isc.Log.logWarn()`, `isc.Log.logDebug()`, `isc.Log.logInfo()` - log with the "Log" category
+*   **Instance methods**: When inside a SmartClient class method, use `this.logWarn()`, `this.logDebug()`, etc. - automatically uses the class name as the log category
+*   **Custom categories**: `this.logWarn("message", "myCategory")`
+
+SmartClient logs under GraalJS are written to the server's standard output, similar to isc.log(), but include timestamp, log level, and category information.
+
+Example:
+
+```
+ // Simple console output
+ isc.log("Processing started...");
+
+ // Structured logging with category
+ isc.Log.logWarn("Unexpected value: " + value);
+
+ // Inside a GraalDS method
+ var ds = isc.GraalDS.get("supplyItem");
+ ds.logDebug("Fetching records...", "graalDS");
+ 
+```
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| message | [String](#type-string) | false | — | Message to log |
+
+### Groups
+
+- graalUtilities
+
+---
+## StaticMethod: isc.toJavaMap
+
+### Description
+Converts a JavaScript object to a Java HashMap. Nested objects and arrays are recursively converted to HashMap and ArrayList.
+
+This is a convenience method for server-side JavaScript that eliminates the need for `Java.type('java.util.HashMap')` calls.
+
+```
+ var javaMap = isc.toJavaMap({name: "Test", count: 42});
+ 
+```
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| jsObject | [Object](../reference.md#type-object) | false | — | JavaScript object to convert |
+
+### Returns
+
+`[Java.util.HashMap](#type-javautilhashmap)` — Java HashMap containing the converted data
+
+### Groups
+
+- graalUtilities
 
 ---
 ## StaticMethod: isc.dismissCurrentDialog
@@ -1667,6 +1552,23 @@ Combining settings in order of precedence:
 - [Class.addProperties](Class.md#method-classaddproperties)
 
 ---
+## StaticMethod: isc.setSystemProperty
+
+### Description
+Sets a Java system property value. This calls System.getProperties().put(key, value).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| key | [String](#type-string) | false | — | Property key |
+| value | [Any](#type-any) | false | — | Property value |
+
+### Groups
+
+- graalUtilities
+
+---
 ## StaticMethod: isc.addDefaults
 
 ### Description
@@ -1732,6 +1634,26 @@ Returns a user-displayable message for the given [AsyncOperationResult](../refer
 - [AsyncUtil.asyncNonSuccessMessageGeneric](AsyncUtil.md#classattr-asyncutilasyncnonsuccessmessagegeneric)
 
 ---
+## StaticMethod: isc.nowPlus
+
+### Description
+Returns a Java Date object representing the current time plus the specified milliseconds.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| milliseconds | [int](../reference.md#type-int) | false | — | Number of milliseconds to add to current time |
+
+### Returns
+
+`[Java.util.Date](#type-javautildate)` — Future date/time
+
+### Groups
+
+- graalUtilities
+
+---
 ## StaticMethod: isc.propertyDefined
 
 ### Description
@@ -1774,5 +1696,83 @@ The prompt may be cleared before the duration has elapsed via a call to [isc.cle
 ### See Also
 
 - [Dialog.Prompt](Dialog.md#classattr-dialogprompt)
+
+---
+## StaticMethod: isc.getGraalTypes
+
+### Description
+Returns an object containing cached references to commonly-used Java types. This avoids repeated `Java.type()` calls which have overhead.
+
+The returned object contains:
+
+*   **DSRequest** - com.isomorphic.datasource.DSRequest
+*   **DSResponse** - com.isomorphic.datasource.DSResponse
+*   **DataTools** - com.isomorphic.util.DataTools
+*   **HashMap** - java.util.HashMap
+*   **ArrayList** - java.util.ArrayList
+*   **ConcurrentHashMap** - java.util.concurrent.ConcurrentHashMap
+*   **Boolean**, **Integer**, **Long** - Java boxed primitives
+*   **System** - java.lang.System (for currentTimeMillis(), etc.)
+*   **Date** - java.util.Date
+*   **UUID** - java.util.UUID
+
+Example:
+
+```
+ var types = isc.getGraalTypes();
+ var uuid = types.UUID.randomUUID().toString();
+ var now = new types.Date();
+ var timestamp = types.System.currentTimeMillis();
+ 
+```
+
+### Returns
+
+`[Object](../reference.md#type-object)` — Object with cached Java type references
+
+### Groups
+
+- graalUtilities
+
+---
+## StaticMethod: isc.javaBoolean
+
+### Description
+Converts a JavaScript boolean to a Java Boolean object. This is useful when building Java Maps that require Boolean object values rather than primitive booleans.
+```
+ var record = isc.toJavaMap({
+     testName: "myTest",
+     passed: isc.javaBoolean(true)
+ });
+ 
+```
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| value | [boolean](../reference.md#type-boolean) | false | — | JavaScript boolean value |
+
+### Returns
+
+`[Java.lang.Boolean](#type-javalangboolean)` — Java Boolean object
+
+### Groups
+
+- graalUtilities
+
+---
+## StaticMethod: isc.nanoTime
+
+### Description
+Returns the current value of the running Java Virtual Machine's high-resolution time source, in nanoseconds. Useful for benchmarking and performance measurement. Equivalent to `java.lang.System.nanoTime()`.
+
+### Returns
+
+`[Number](#type-number)` — nanoseconds from JVM high-resolution timer
+
+### Groups
+
+- graalUtilities
 
 ---

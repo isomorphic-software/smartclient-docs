@@ -11,9 +11,9 @@
 ### Description
 A form that allows the user to input advanced search criteria, including operators on field values such as "less than", and sub-clauses using "AND" and "OR" operators.
 
-A FilterBuilder produces an [AdvancedCriteria](../reference.md#object-advancedcriteria) object, which the [DataSource](DataSource.md#class-datasource) subsystem can use to filter datasets, including the ability to perform such filtering within the browser for datasets that are completely loaded.
+A FilterBuilder produces an [AdvancedCriteria](../reference.md#object-advancedcriteria) object, which the [DataSource](DataSource_1.md#class-datasource) subsystem can use to filter datasets, including the ability to perform such filtering within the browser for datasets that are completely loaded.
 
-The operators available for each field can be customized at the DataSource level via [DataSourceField.validOperators](DataSourceField.md#attr-datasourcefieldvalidoperators), [DataSource.setTypeOperators](DataSource.md#method-datasourcesettypeoperators) and related APIs.
+The operators available for each field can be customized at the DataSource level via [DataSourceField.validOperators](DataSourceField.md#attr-datasourcefieldvalidoperators), [DataSource.setTypeOperators](DataSource_1.md#method-datasourcesettypeoperators) and related APIs.
 
 ---
 ## Attr: FilterBuilder.operatorPickerWidth
@@ -39,7 +39,7 @@ If specified, the FilterBuilder will dynamically fetch DataSourceField definitio
 
 The records returned from the `fieldDataSource` must have properties corresponding to a [DataSourceField](../reference_2.md#object-datasourcefield) definition, at a minimum, ["name"](DataSourceField.md#attr-datasourcefieldname) and ["type"](DataSourceField.md#attr-datasourcefieldtype). Any property legal on a DataSourceField is legal on the returned records, including [valueMap](DataSourceField.md#attr-datasourcefieldvaluemap).
 
-Even when a `fieldDataSource` is specified, [FilterBuilder.dataSource](#attr-filterbuilderdatasource) may still be specified in order to control the list of [valid operators](DataSource.md#method-datasourcesettypeoperators) for each field.
+Even when a `fieldDataSource` is specified, [FilterBuilder.dataSource](#attr-filterbuilderdatasource) may still be specified in order to control the list of [valid operators](DataSource_1.md#method-datasourcesettypeoperators) for each field.
 
 **Flags**: IR
 
@@ -173,7 +173,7 @@ The hover prompt text for the dynamic value button.
 ### Description
 Logical operators to allow for [TopOperatorAppearance](../reference.md#type-topoperatorappearance)s of "radio" and "bracket".
 
-Note that this list may be further limited according to the [available operators](DataSource.md#method-datasourcegettypeoperatormap) returned by the [DataSource](DataSource.md#class-datasource).
+Note that this list may be further limited according to the [available operators](DataSource_1.md#method-datasourcegettypeoperatormap) returned by the [DataSource](DataSource_1.md#class-datasource).
 
 **Flags**: IR
 
@@ -353,7 +353,7 @@ DataSource this filter should use for field definitions and available [Operator]
 ## Attr: FilterBuilder.aggregationDataSources
 
 ### Description
-List of [DataSources](DataSource.md#class-datasource) to choose from when constructing a field or value sub-query if [FilterBuilder.allowAggregates](#attr-filterbuilderallowaggregates) is enabled. If not specified, the [filter DataSource](#attr-filterbuilderdatasource) plus all related DataSources are used.
+List of [DataSources](DataSource_1.md#class-datasource) to choose from when constructing a field or value sub-query if [FilterBuilder.allowAggregates](#attr-filterbuilderallowaggregates) is enabled. If not specified, the [filter DataSource](#attr-filterbuilderdatasource) plus all related DataSources are used.
 
 **Flags**: IR
 
@@ -818,7 +818,7 @@ A StringMethod that is automatically invoked if [FilterBuilder.saveOnEnter](#att
 ## Method: FilterBuilder.getFieldOperators
 
 ### Description
-Get the list of [operatorIds](../reference.md#type-operatorid) that are valid for the passed field. By default, all operators returned by [DataSource.getFieldOperators](DataSource.md#method-datasourcegetfieldoperators) are used.
+Get the list of [operatorIds](../reference.md#type-operatorid) that are valid for the passed field. By default, all operators returned by [DataSource.getFieldOperators](DataSource_1.md#method-datasourcegetfieldoperators) are used.
 
 Called automatically by the default implementation of the same method on each [clause](FilterClause.md#method-filterclausegetfieldoperators), whenever its fieldName is changed.
 
@@ -899,7 +899,7 @@ This API is intended for the rare use case of adding a highly customized FilterC
 
 If you just want to programmatically add a new FilterClause showing a specific Criterion use [FilterBuilder.addCriterion](#method-filterbuilderaddcriterion).
 
-If you want to use the standard field/operator/value interface but provide a custom control for editing the value, see [DataSource.addSearchOperator](DataSource.md#method-datasourceaddsearchoperator) and [Operator.editorType](Operator.md#attr-operatoreditortype).
+If you want to use the standard field/operator/value interface but provide a custom control for editing the value, see [DataSource.addSearchOperator](DataSource_1.md#method-datasourceaddsearchoperator) and [Operator.editorType](Operator.md#attr-operatoreditortype).
 
 ### Parameters
 

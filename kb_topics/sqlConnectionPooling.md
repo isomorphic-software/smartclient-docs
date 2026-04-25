@@ -33,7 +33,7 @@ You configure the behavior of DBCP-based SQL connection pooling with the followi
 | sql.pool.minEvictableIdleTimeMillis | The minimum time a connection may sit idle in the pool before it is eligible for eviction. If set to a negative value, connections will never be evicted due to the length of time they have sat idle (a connection will only be evicted if testWhileIdle is true and it fails validation). As shipped, this value is set to 120000, so connections that are idle for more than two minutes will become eligible for eviction |
 | sql.pool.numTestsPerEvictionRun | The number of connections to check during each eviction run. As shipped, this value is set to 5, so up to 5 connections will be checked by the evictor thread each time it wakes. Also, be aware that negative values of this setting are treated as the denominator in determining a fraction of the pool size, so -1 means check all connections, -2 means check half the connections, -3 means check a third, etc) |
 
-In addition to the `sql.pool` configuration subtree, you can specify per-database configuration by adding the [dbName](../classes/DataSource.md#attr-datasourcedbname) to the property, like so:
+In addition to the `sql.pool` configuration subtree, you can specify per-database configuration by adding the [dbName](../classes/DataSource_1.md#attr-datasourcedbname) to the property, like so:
 
 ```
      sql.mydatabase.pool.enabled: true

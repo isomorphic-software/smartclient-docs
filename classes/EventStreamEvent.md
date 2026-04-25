@@ -142,6 +142,14 @@ The [vertiacl scroll delta](EventHandler.md#classmethod-eventhandlergetwheeldelt
 **Flags**: R
 
 ---
+## Attr: EventStreamEvent.targetLocator
+
+### Description
+Provided by EventStream for use outside of UISession. Note: When used outside of a UISession, this locator lacks all of UISession's guarantees about deterministic playback.
+
+**Flags**: R
+
+---
 ## Attr: EventStreamEvent.errorTrace
 
 ### Description
@@ -247,19 +255,6 @@ Note that only self-inserting keys can be concentated by collapsing, not special
 ### See Also
 
 - [EventStreamEvent.keyName](#attr-eventstreameventkeyname)
-
-**Flags**: R
-
----
-## Attr: EventStreamEvent.locator
-
-### Description
-The locator representing the event target, if one exists. Designed to be robust, the the locator provides a future-proof way to specify a [Canvas](Canvas.md#class-canvas), [FormItem](FormItem.md#class-formitem), or widget part such as a row of a [ListGrid](ListGrid_1.md#class-listgrid).
-
-### See Also
-
-- [usingSelenium](../kb_topics/usingSelenium.md#kb-topic-using-selenium-scripts-selenese)
-- [AutoTest.getObject](AutoTest.md#classmethod-autotestgetobject)
 
 **Flags**: R
 

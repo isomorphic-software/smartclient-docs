@@ -155,10 +155,10 @@ When ILIKE is in use, Postgres is able to make use of indexes, which it does not
 ```
 
 **`sql.log.queriesSlowerThan`**  
-Allows you to specify SQL query execution time threshold in milliseconds (defaults to 10000), which if exceeded query is identified as "slow" and may be logged under specific logging category. See [DataSource.logSlowSQL](../classes/DataSource.md#attr-datasourcelogslowsql) for more details.
+Allows you to specify SQL query execution time threshold in milliseconds (defaults to 10000), which if exceeded query is identified as "slow" and may be logged under specific logging category. See [DataSource.logSlowSQL](../classes/DataSource_1.md#attr-datasourcelogslowsql) for more details.
 
 **`sql.ignoreColumnDescriptionPrefix` and `sql.MyDatabase.ignoreColumnDescriptionPrefix`**  
-When [DataSource.autoDeriveSchema](../classes/DataSource.md#attr-datasourceautoderiveschema) is used, column descriptions (JDBC REMARKS) from the database are normally used as field titles. However, some databases use column comments for annotations rather than human-readable titles — for example, OpenBravo stores type metadata like `--OBTG:NVARCHAR` as PostgreSQL column comments, which would otherwise appear as field titles.
+When [DataSource.autoDeriveSchema](../classes/DataSource_1.md#attr-datasourceautoderiveschema) is used, column descriptions (JDBC REMARKS) from the database are normally used as field titles. However, some databases use column comments for annotations rather than human-readable titles — for example, OpenBravo stores type metadata like `--OBTG:NVARCHAR` as PostgreSQL column comments, which would otherwise appear as field titles.
 
 This property is a comma-separated list of prefixes: any column description starting with one of these prefixes will be ignored, and the field title will instead be auto-derived from the column name as usual. The default value is `--` (the SQL comment prefix), which filters out the most common annotation pattern.
 

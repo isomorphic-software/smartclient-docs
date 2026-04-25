@@ -6,7 +6,7 @@
 
 ## Class: GraalDS
 
-*Inherits from:* [DataSource](DataSource.md#class-datasource)
+*Inherits from:* [DataSource](DataSource_1.md#class-datasource)
 
 ### Description
 A DataSource subclass for use in server-side JavaScript running under GraalJS inside the Java VM. GraalDS provides direct, synchronous access to the SmartClient Server's DataSource machinery without HTTP round-trips.
@@ -22,7 +22,7 @@ GraalDS only functions when running under GraalJS in the Java VM. Attempting to 
 GraalDS can be used in two ways:
 
 *   **Synchronous methods**: [GraalDS.fetchSync](#method-graaldsfetchsync), [GraalDS.addSync](#method-graaldsaddsync), [GraalDS.updateSync](#method-graaldsupdatesync), [GraalDS.removeSync](#method-graaldsremovesync) return data directly
-*   **Standard DataSource API**: [DataSource.fetchData](DataSource.md#method-datasourcefetchdata), [DataSource.addData](DataSource.md#method-datasourceadddata), etc. work with callbacks. In the Graal server-side environment, callbacks always fire synchronously since Java `DSRequest.execute()` is synchronous
+*   **Standard DataSource API**: [DataSource.fetchData](DataSource_1.md#method-datasourcefetchdata), [DataSource.addData](DataSource_1.md#method-datasourceadddata), etc. work with callbacks. In the Graal server-side environment, callbacks always fire synchronously since Java `DSRequest.execute()` is synchronous
 
 Example using synchronous methods:
 
@@ -65,7 +65,7 @@ GraalDS uses clientCustom protocol to intercept requests and execute them direct
 ### Description
 Converts a JavaScript array to a Java ArrayList. Nested objects and arrays are recursively converted.
 
-Note: The same functionality is available as [isc.toJavaList](isc.md#classmethod-isctojavalist).
+Note: The same functionality is available as [isc.toJavaList](#classmethod-isctojavalist).
 
 ### Parameters
 
@@ -83,7 +83,7 @@ Note: The same functionality is available as [isc.toJavaList](isc.md#classmethod
 ### Description
 Checks if a Java Date is in the past.
 
-Note: The same functionality is available as [isc.isExpired](isc.md#classmethod-iscisexpired).
+Note: The same functionality is available as [isc.isExpired](#classmethod-iscisexpired).
 
 ### Parameters
 
@@ -101,7 +101,7 @@ Note: The same functionality is available as [isc.isExpired](isc.md#classmethod-
 ### Description
 Adds a record to a DataSource. Returns true on success.
 
-Note: The same functionality is available as [isc.addRecord](isc.md#classmethod-iscaddrecord).
+Note: The same functionality is available as [isc.addRecord](#classmethod-iscaddrecord).
 
 ### Parameters
 
@@ -138,7 +138,7 @@ This method allows server-side JavaScript to use any defined DataSource (SQL, ge
 ### Description
 Converts a Java Map to a JavaScript object. Nested Maps and Lists are recursively converted to objects and arrays respectively.
 
-Note: The same functionality is available as [isc.fromJavaMap](isc.md#classmethod-iscfromjavamap).
+Note: The same functionality is available as [isc.fromJavaMap](#classmethod-iscfromjavamap).
 
 ### Parameters
 
@@ -156,7 +156,7 @@ Note: The same functionality is available as [isc.fromJavaMap](isc.md#classmetho
 ### Description
 Returns the current time as a Java Date object.
 
-Note: The same functionality is available as [isc.now](isc.md#classmethod-iscnow).
+Note: The same functionality is available as [isc.now](#classmethod-iscnow).
 
 ### Returns
 
@@ -193,7 +193,7 @@ For typical DataSource records, the manual iteration approach ([GraalDS.toJavaMa
 ### Description
 Converts a Java List to a JavaScript array.
 
-Note: The same functionality is available as [isc.fromJavaList](isc.md#classmethod-iscfromjavalist).
+Note: The same functionality is available as [isc.fromJavaList](#classmethod-iscfromjavalist).
 
 ### Parameters
 
@@ -211,7 +211,7 @@ Note: The same functionality is available as [isc.fromJavaList](isc.md#classmeth
 ### Description
 Converts any Java value to its JavaScript equivalent. Maps become objects, Lists become arrays, and primitives pass through unchanged.
 
-Note: The same functionality is available as [isc.fromJavaValue](isc.md#classmethod-iscfromjavavalue).
+Note: The same functionality is available as [isc.fromJavaValue](#classmethod-iscfromjavavalue).
 
 ### Parameters
 
@@ -229,7 +229,7 @@ Note: The same functionality is available as [isc.fromJavaValue](isc.md#classmet
 ### Description
 Executes a DataSource operation directly via Java DSRequest.
 
-Note: The same functionality is available as [isc.executeDSRequest](isc.md#classmethod-iscexecutedsrequest).
+Note: The same functionality is available as [isc.executeDSRequest](#classmethod-iscexecutedsrequest).
 
 ### Parameters
 
@@ -251,7 +251,7 @@ Note: The same functionality is available as [isc.executeDSRequest](isc.md#class
 ### Description
 Generates a new random UUID string.
 
-Note: The same functionality is available as [isc.newUUID](isc.md#classmethod-iscnewuuid).
+Note: The same functionality is available as [isc.newUUID](#classmethod-iscnewuuid).
 
 ### Returns
 
@@ -263,7 +263,7 @@ Note: The same functionality is available as [isc.newUUID](isc.md#classmethod-is
 ### Description
 Creates a DSResponse with success status (0) and optional data.
 
-Note: The same functionality is available as [isc.successResponse](isc.md#classmethod-iscsuccessresponse).
+Note: The same functionality is available as [isc.successResponse](#classmethod-iscsuccessresponse).
 
 ### Parameters
 
@@ -281,7 +281,7 @@ Note: The same functionality is available as [isc.successResponse](isc.md#classm
 ### Description
 Returns a Java Date representing the current time plus the specified milliseconds.
 
-Note: The same functionality is available as [isc.nowPlus](isc.md#classmethod-iscnowplus).
+Note: The same functionality is available as [isc.nowPlus](#classmethod-iscnowplus).
 
 ### Parameters
 
@@ -299,7 +299,7 @@ Note: The same functionality is available as [isc.nowPlus](isc.md#classmethod-is
 ### Description
 Updates a record in a DataSource. Returns true on success.
 
-Note: The same functionality is available as [isc.updateRecord](isc.md#classmethod-iscupdaterecord).
+Note: The same functionality is available as [isc.updateRecord](#classmethod-iscupdaterecord).
 
 ### Parameters
 
@@ -318,7 +318,7 @@ Note: The same functionality is available as [isc.updateRecord](isc.md#classmeth
 ### Description
 Creates a DSResponse with failure status (-1) and an error message.
 
-Note: The same functionality is available as [isc.failureResponse](isc.md#classmethod-iscfailureresponse).
+Note: The same functionality is available as [isc.failureResponse](#classmethod-iscfailureresponse).
 
 ### Parameters
 
@@ -336,7 +336,7 @@ Note: The same functionality is available as [isc.failureResponse](isc.md#classm
 ### Description
 Fetches a single record from a DataSource matching the given criteria.
 
-Note: The same functionality is available as [isc.fetchOne](isc.md#classmethod-iscfetchone).
+Note: The same functionality is available as [isc.fetchOne](#classmethod-iscfetchone).
 
 ### Parameters
 
@@ -377,7 +377,7 @@ Converts a JavaScript object to a Java HashMap using manual iteration. Nested ob
 
 This is the recommended approach per GraalVM documentation. For an alternative using JSON serialization, see [GraalDS.toJavaMapViaJSON](#classmethod-graaldstojavamapviajson).
 
-Note: The same functionality is available as [isc.toJavaMap](isc.md#classmethod-isctojavamap).
+Note: The same functionality is available as [isc.toJavaMap](#classmethod-isctojavamap).
 
 ### Parameters
 
@@ -395,7 +395,7 @@ Note: The same functionality is available as [isc.toJavaMap](isc.md#classmethod-
 ### Description
 Logs a message to the server console via System.out.println().
 
-Note: The same functionality is available as [isc.log](isc.md#classmethod-isclog).
+Note: The same functionality is available as [isc.log](#classmethod-isclog).
 
 ### Parameters
 
@@ -489,7 +489,7 @@ Synchronously remove a record from the DataSource.
 ### Description
 Synchronously fetch records from the DataSource.
 
-Unlike [fetchData()](DataSource.md#method-datasourcefetchdata), this method blocks and returns the fetched data directly, making it convenient for server-side scripts that don't need async patterns.
+Unlike [fetchData()](DataSource_1.md#method-datasourcefetchdata), this method blocks and returns the fetched data directly, making it convenient for server-side scripts that don't need async patterns.
 
 ### Parameters
 

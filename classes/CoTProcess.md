@@ -336,16 +336,17 @@ Uses truncation for history and errors to limit size without hiding logic. Best 
 ## Attr: CoTProcess.systemPrompt
 
 ### Description
-The system message sent to the AI engine. If not set, a default generic message is used.
+The system message sent to the AI engine. If not set, a default generic SmartClient-context message is used (see [CoTTask._getMessages](#method-cottask_getmessages)).
 
 This is distinct from [CoTProcess.introPrompt](#attr-cotprocessintroprompt) which is prepended to the user message content. The systemPrompt is sent as a separate system-role message to the AI, which most models treat as high-priority instructions.
 
-Can be a template string with `${...}` expressions evaluated against the [prompt scope](../kb_topics/CoTPromptScope.md#kb-topic-cotpromptscope). For example:
+The framework convention for CoT processes is to populate `systemPrompt` with a step delimiter followed by a newline and a one-line persona / role priming sentence, so that captured request transcripts are easy to scan and the AI receives consistent high-priority role instructions in the system slot:
 
 ```
- systemPrompt: "*** ${task.title} step ***"
+ systemPrompt: "*** ${task.ID} step ***\nYou are ..."
  
 ```
+Can be a template string with `${...}` expressions evaluated against the [prompt scope](../kb_topics/CoTPromptScope.md#kb-topic-cotpromptscope).
 
 **Flags**: IR
 
@@ -557,6 +558,7 @@ Builds the success result object to post to the async operation. Subclasses over
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | state | [Object](../reference.md#type-object) | false | — | The final process state |
+| output | [Any](#type-any) | true | — | The Process's validated output; see [Process.getOutput](Process.md#method-processgetoutput). |
 
 ### Returns
 
@@ -594,6 +596,22 @@ Resumes a paused process.
 ### See Also
 
 - [PausableAsyncOperation.unpause](#method-pausableasyncoperationunpause)
+
+---
+## Method: CoTProcess._buildFailureResult
+
+### Description
+Builds the failure result object to post to the async operation. Subclasses override to provide appropriate result format.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| failure | [ProcessFailure](#type-processfailure) | false | — | the failure record |
+
+### Returns
+
+`[AsyncOperationResult](#type-asyncoperationresult)` — The failure result
 
 ---
 ## Method: CoTProcess.getPartialPrompt
@@ -665,6 +683,20 @@ Returns a Promise for the final result of this process.
 ### See Also
 
 - [PausableAsyncOperation.asyncGetResult](#method-pausableasyncoperationasyncgetresult)
+
+---
+## Method: CoTProcess.failed
+
+### Description
+Called when the process terminates via an infrastructure failure - input/output schema mismatch, uncaught exception, AI engine unavailable, cancellation, or ancestor cycle in a [SubProcessTask](SubProcessTask.md#class-subprocesstask). Posts the failure result to the async operation if one exists.
+
+Recoverable errors that are part of the Process's designed output do NOT come through here; they live inside the [finished](#method-cotprocessfinished) result's `output` field.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| failure | [ProcessFailure](#type-processfailure) | false | — | the failure record |
 
 ---
 ## Method: CoTProcess.processingElementResult
@@ -757,13 +789,14 @@ Use this in custom mockOutput() or processOutputs() implementations to enforce s
 ## Method: CoTProcess.finished
 
 ### Description
-Called when the process completes. Posts the success result to the async operation if one exists.
+Called when the process completes successfully. Posts the success result to the async operation if one exists.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | state | [Object](../reference.md#type-object) | false | — | The final process state |
+| output | [Any](#type-any) | true | — | The Process's validated output as computed by [Process.getOutput](Process.md#method-processgetoutput). When no [Process.outputDS](Process.md#attr-processoutputds) / output schema is declared this is the same object as `state`. |
 
 ---
 ## Method: CoTProcess.pause

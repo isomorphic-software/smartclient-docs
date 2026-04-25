@@ -11,7 +11,7 @@ This overview discusses various ways that [search criteria](../reference_2.md#ty
 
 Typically, there are two types of criteria that affect how a grid matches data:
 
-*   Implicit criteria - hidden criteria, applied by the developer, to the [grid](../classes/ListGrid_1.md#attr-listgridimplicitcriteria) or its [dataSource](../classes/DataSource.md#attr-datasourceimplicitcriteria), and never made available to users
+*   Implicit criteria - hidden criteria, applied by the developer, to the [grid](../classes/ListGrid_1.md#attr-listgridimplicitcriteria) or its [dataSource](../classes/DataSource_1.md#attr-datasourceimplicitcriteria), and never made available to users
 *   Explicit criteria - public criteria, which may be applied by the developer or entered by the user - this criteria may be displayed to and modified by the user at runtime in various ways
 
 A grid may have both implicit criteria, and explicit criteria that may come from multiple sources. When data is fetched, the implicit-criteria and any sources of [explicit criteria](../classes/ListGrid_3.md#method-listgridgetcriteria) are [combined](../classes/DataSource.md#classmethod-datasourcecombinecriteria) and used to match records.

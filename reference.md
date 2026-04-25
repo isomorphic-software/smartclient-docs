@@ -46,6 +46,7 @@ This is the central API reference for the SmartClient framework.
           - [RibbonGroup](classes/RibbonGroup.md)
             - [ToolStripGroup](#class-toolstripgroup)
           - [RichTextEditor](classes/RichTextEditor.md)
+          - [ReportBuilder](classes/ReportBuilder.md)
           - [EventCanvas](classes/EventCanvas.md)
             - [ZoneCanvas](#class-zonecanvas)
             - [IndicatorCanvas](#class-indicatorcanvas)
@@ -332,14 +333,15 @@ This is the central API reference for the SmartClient framework.
   - [AutoTest](classes/AutoTest.md)
   - [DateUtil](classes/DateUtil.md)
   - [Page](classes/Page.md)
-  - [SavedSearches](classes/SavedSearches.md)
-  - [Validator](classes/Validator.md)
-  - [Callbacks](classes/Callbacks.md)
   - [Process](classes/Process.md)
     - [CoTProcess](classes/CoTProcess.md)
       - [AUN](classes/AUN.md)
+      - [DSRequestBuilderProcess](classes/DSRequestBuilderProcess.md)
     - [Tour](classes/Tour.md)
       - [Tutorial](#class-tutorial)
+  - [SavedSearches](classes/SavedSearches.md)
+  - [Validator](classes/Validator.md)
+  - [Callbacks](classes/Callbacks.md)
   - [EventStream](classes/EventStream.md)
   - [EventHandler](classes/EventHandler.md)
   - [SimpleType](classes/SimpleType.md)
@@ -355,6 +357,9 @@ This is the central API reference for the SmartClient framework.
         - [DSUpdateTask](#class-dsupdatetask)
         - [DSFetchTask](#class-dsfetchtask)
         - [DSAddTask](#class-dsaddtask)
+      - [ScriptTask](classes/ScriptTask.md)
+        - [StartProcessTask](classes/StartProcessTask.md)
+          - [SubProcessTask](classes/SubProcessTask.md)
       - [ComponentTask](classes/ComponentTask.md)
         - [GridRemoveSelectedDataTask](classes/GridRemoveSelectedDataTask.md)
         - [SetTitleTask](classes/SetTitleTask.md)
@@ -390,8 +395,6 @@ This is the central API reference for the SmartClient framework.
         - [FormResetValuesTask](#class-formresetvaluestask)
         - [ShowComponentTask](#class-showcomponenttask)
       - [StateTask](classes/StateTask.md)
-      - [ScriptTask](classes/ScriptTask.md)
-        - [StartProcessTask](classes/StartProcessTask.md)
       - [TimerTask](classes/TimerTask.md)
     - [SendEmailTask](classes/SendEmailTask.md)
     - [DecisionTask](classes/DecisionTask.md)
@@ -420,6 +423,7 @@ This is the central API reference for the SmartClient framework.
   - [RPCResponse](classes/RPCResponse.md)
     - [DSResponse](classes/DSResponse.md)
   - [WebService](classes/WebService.md)
+  - [AI](classes/AI.md)
   - [MultiWindow](classes/MultiWindow.md)
   - [EditProxy](classes/EditProxy.md)
     - [CanvasEditProxy](#class-canvaseditproxy)
@@ -463,7 +467,6 @@ This is the central API reference for the SmartClient framework.
     - [HandPlacedContainerEditProxy](#class-handplacedcontainereditproxy)
   - [Selection](classes/Selection.md)
   - [Operators](classes/Operators.md)
-  - [AI](classes/AI.md)
   - [Mail](classes/Mail.md)
   - [Hover](classes/Hover.md)
   - [Authentication](classes/Authentication.md)
@@ -484,8 +487,8 @@ This is the central API reference for the SmartClient framework.
   - [JSONEncoder](classes/JSONEncoder.md)
   - [CellSelection](classes/CellSelection.md)
   - [CancellationController](classes/CancellationController.md)
-  - [MathFunction](classes/MathFunction.md)
   - [ReifyRemote](classes/ReifyRemote.md)
+  - [MathFunction](classes/MathFunction.md)
   - [Variant](classes/Variant.md)
   - [SortSpecifierUtil](classes/SortSpecifierUtil.md)
   - [FontLoader](classes/FontLoader.md)
@@ -696,6 +699,7 @@ This is the central API reference for the SmartClient framework.
 - [Drag and Drop behavior within PortalLayouts](kb_topics/portalLayoutDrop.md)
 - [positioning](kb_topics/positioning.md)
 - [Printing](kb_topics/printing.md)
+- [Process Input and Output Schema](kb_topics/processIO.md)
 - [Production Error Reporting](kb_topics/prodErrorReport.md)
 - [Progressive Loading](kb_topics/progressiveLoading.md)
 - [Prompting](#kb-topic-prompting)
@@ -1635,14 +1639,14 @@ Set to `false` to not use animation to show component.
 ---
 ## Class: WSDataSource
 
-*Inherits from:* [DataSource](classes/DataSource.md#class-datasource)
+*Inherits from:* [DataSource](classes/DataSource_1.md#class-datasource)
 
 ### Description
 A WSDataSource is a DataSource that is preconfigured to contact the WSDL web service built into the SDK (see isomorphic/system/schema/SmartClientOperations.wsdl). This WSDL service can be easily implemented on Java and non-Java backends.
 
 WSDataSource supports all 4 DataSource operations (fetch, add, update, remove) and can be used with ListGrids, DynamicForms and other [DataBoundComponent](#interface-databoundcomponent)s just like other DataSources.
 
-Note that WSDataSource is specifically designed for use with SmartClientOperations.wsdl. If you are trying to connect to a pre-existing WSDL service, start with just [DataSource](classes/DataSource.md#class-datasource), not WSDataSource, and see the [WSDL Integration](kb_topics/wsdlBinding.md#kb-topic-wsdl-binding) chapter for an overview.
+Note that WSDataSource is specifically designed for use with SmartClientOperations.wsdl. If you are trying to connect to a pre-existing WSDL service, start with just [DataSource](classes/DataSource_1.md#class-datasource), not WSDataSource, and see the [WSDL Integration](kb_topics/wsdlBinding.md#kb-topic-wsdl-binding) chapter for an overview.
 
 ---
 ## Class: BadgeButton
@@ -2933,10 +2937,10 @@ Source component from which the record(s) will be transferred.
 ---
 ## Class: ComponentSchema
 
-*Inherits from:* [DataSource](classes/DataSource.md#class-datasource)
+*Inherits from:* [DataSource](classes/DataSource_1.md#class-datasource)
 
 ### Description
-Specialized subclass of [DataSource](classes/DataSource.md#class-datasource), used to represent [component schema](kb_topics/componentSchema.md#kb-topic-component-schema).
+Specialized subclass of [DataSource](classes/DataSource_1.md#class-datasource), used to represent [component schema](kb_topics/componentSchema.md#kb-topic-component-schema).
 
 ### Groups
 
@@ -4378,6 +4382,8 @@ The SmartClient Answer Engine (AE) employs AI to navigate your data to answer an
 
 ### Related
 
+- [AI.getDataSourceSummary](classes/AI.md#classmethod-aigetdatasourcesummary)
+- [AI.getDataSourceSummaries](classes/AI.md#classmethod-aigetdatasourcesummaries)
 - [AI.askDataQuestion](classes/AI.md#classmethod-aiaskdataquestion)
 - [AI.cancelDataQuestion](classes/AI.md#classmethod-aicanceldataquestion)
 - [AI.pauseDataQuestion](classes/AI.md#classmethod-aipausedataquestion)
@@ -5066,23 +5072,6 @@ A string with the format "autoChild:_autoChildName_" passed as a [Tab.pane](clas
 - [autoChildren](kb_topics/autoChildren.md#kb-topic-autochildren)
 
 ---
-## Type: AutoComplete
-
-### Description
-AutoComplete behavior for [FormItems](classes/FormItem.md#class-formitem).
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| "none" | Disable browser autoComplete. Note that some browsers will disregard this setting and still perform native autoComplete for certain items - typically only for log in / password forms. See the discussion [here](classes/FormItem.md#attr-formitemautocomplete). |
-| "native" | Allow native browser autoComplete. |
-
-### Groups
-
-- autoComplete
-
----
 ## Type: AutoFitEvent
 
 ### Description
@@ -5691,7 +5680,7 @@ Note that the *"circleto" Command example* can be very helpful when learning how
 ## Type: DSInheritanceMode
 
 ### Description
-For DataSources of type "sql" and "hibernate", specifies the kind of inheritance to use when a dataSource specifies [inheritsFrom](classes/DataSource.md#attr-datasourceinheritsfrom).
+For DataSources of type "sql" and "hibernate", specifies the kind of inheritance to use when a dataSource specifies [inheritsFrom](classes/DataSource_1.md#attr-datasourceinheritsfrom).
 
 ### Values
 
@@ -5703,26 +5692,6 @@ For DataSources of type "sql" and "hibernate", specifies the kind of inheritance
 ### Groups
 
 - fields
-
----
-## Type: EdgeName
-
-### Description
-An edge or corner of a rectange, or it's center. Used in APIs such as [Canvas.resizeFrom](classes/Canvas.md#attr-canvasresizefrom) and [Canvas.getEventEdge](classes/Canvas.md#classmethod-canvasgeteventedge).
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| "T" | top edge |
-| "B" | bottom edge |
-| "L" | left edge |
-| "R" | right edge |
-| "TL" | top-left corner |
-| "TR" | top-right corner |
-| "BL" | bottom-left corner |
-| "BR" | bottom-right corner |
-| "C" | center |
 
 ---
 ## Type: EdgeSizes
@@ -5772,7 +5741,7 @@ What to do if the user hits escape while editing a cell.
 ## Type: EscapingMode
 
 ### Description
-Mode for escaping text values when using [DataSource.recordsAsText](classes/DataSource.md#method-datasourcerecordsastext) or [DataSource.recordsFromText](classes/DataSource.md#method-datasourcerecordsfromtext).
+Mode for escaping text values when using [DataSource.recordsAsText](classes/DataSource_1.md#method-datasourcerecordsastext) or [DataSource.recordsFromText](classes/DataSource_1.md#method-datasourcerecordsfromtext).
 
 ### Values
 
@@ -5891,7 +5860,7 @@ This category includes cases where code running in the browser does the renderin
 #### Excel export
 Almost the same as in-browser rendering, with minor limitations due to missing features in Excel. Exact differences are described under [DataSourceField.exportFormat](classes/DataSourceField.md#attr-datasourcefieldexportformat).
 #### non-Excel server export
-For example, CSV, XML or JSON [export formats](reference_2.md#type-exportformat) provided via [DataSource.exportData](classes/DataSource.md#method-datasourceexportdata). Full support for SimpleDateFormat/DecimalFormat as provided by whichever Java version you have installed on the server. However note that depending on the context of the export, the default behavior may be to ignore format strings, since formatting intended for end users wouldn't be desirable if data exchange is the goal. See the [Export Formatting overview](kb_topics/exportFormatting.md#kb-topic-exports--formatting) for details.
+For example, CSV, XML or JSON [export formats](reference_2.md#type-exportformat) provided via [DataSource.exportData](classes/DataSource_1.md#method-datasourceexportdata). Full support for SimpleDateFormat/DecimalFormat as provided by whichever Java version you have installed on the server. However note that depending on the context of the export, the default behavior may be to ignore format strings, since formatting intended for end users wouldn't be desirable if data exchange is the goal. See the [Export Formatting overview](kb_topics/exportFormatting.md#kb-topic-exports--formatting) for details.
 
 #### Date Format
 
@@ -6386,7 +6355,7 @@ NOTE: for a field that shows different icons depending on the field value, see [
 [field.iconWidth](classes/ListGridField.md#attr-listgridfieldiconwidth) and related properties configure the size of the icon both in the header and in body cells.
 
 If you want the icon to appear only in body cells and not in the header, set [field.cellIcon](classes/ListGridField.md#attr-listgridfieldcellicon) instead, leaving field.icon null. |
-| "binary" | For viewing, the grid renders a 'view' icon (looking glass) followed by a 'download' icon and then the name of the file is displayed in text. If the user clicks the 'view' icon, a new browser window is opened and the file is streamed to that browser instance, using [DataSource.viewFile](classes/DataSource.md#method-datasourceviewfile). For images and other file types with known handlers, the content is typically displayed inline - otherwise the browser will ask the user how to handle the content. If the download icon is clicked, [DataSource.downloadFile](classes/DataSource.md#method-datasourcedownloadfile) is used to cause the browser to show a "save" dialog. There is no inline editing mode for this field type. |
+| "binary" | For viewing, the grid renders a 'view' icon (looking glass) followed by a 'download' icon and then the name of the file is displayed in text. If the user clicks the 'view' icon, a new browser window is opened and the file is streamed to that browser instance, using [DataSource.viewFile](classes/DataSource_1.md#method-datasourceviewfile). For images and other file types with known handlers, the content is typically displayed inline - otherwise the browser will ask the user how to handle the content. If the download icon is clicked, [DataSource.downloadFile](classes/DataSource_1.md#method-datasourcedownloadfile) is used to cause the browser to show a "save" dialog. There is no inline editing mode for this field type. |
 | "imageFile" | Same as `binary` |
 | "summary" | Show a calculated summary based on other field values within the current record. See [ListGridField.recordSummaryFunction](classes/ListGridField.md#attr-listgridfieldrecordsummaryfunction) for more information |
 | "any" | Fields of this type can contain any data value and have no default formatting or validation behavior. This is useful as the [parent type](classes/SimpleType.md#attr-simpletypeinheritsfrom) for SimpleTypes where you do not want any of the standard validation or formatting logic to be inherited from the standard built-in types. |
@@ -6615,7 +6584,7 @@ Controls when primary keys are required for "update" and "remove" server operati
 
 ### See Also
 
-- [DataSource.defaultMultiUpdatePolicy](classes/DataSource.md#attr-datasourcedefaultmultiupdatepolicy)
+- [DataSource.defaultMultiUpdatePolicy](classes/DataSource_1.md#attr-datasourcedefaultmultiupdatepolicy)
 - [OperationBinding.allowMultiUpdate](classes/OperationBinding.md#attr-operationbindingallowmultiupdate)
 
 ---
@@ -6650,7 +6619,7 @@ Navigation direction.
 ## Type: NullAccessType
 
 ### Description
-The possible access types for records with a null [ownerIdField](classes/DataSource.md#attr-datasourceowneridfield) (only applicable if `ownerIdField` is specified)
+The possible access types for records with a null [ownerIdField](classes/DataSource_1.md#attr-datasourceowneridfield) (only applicable if `ownerIdField` is specified)
 
 ### Values
 
@@ -6662,9 +6631,9 @@ The possible access types for records with a null [ownerIdField](classes/DataSou
 
 ### See Also
 
-- [DataSource.ownerIdField](classes/DataSource.md#attr-datasourceowneridfield)
-- [DataSource.ownerIdNullAccess](classes/DataSource.md#attr-datasourceowneridnullaccess)
-- [DataSource.ownerIdNullRole](classes/DataSource.md#attr-datasourceowneridnullrole)
+- [DataSource.ownerIdField](classes/DataSource_1.md#attr-datasourceowneridfield)
+- [DataSource.ownerIdNullAccess](classes/DataSource_1.md#attr-datasourceowneridnullaccess)
+- [DataSource.ownerIdNullRole](classes/DataSource_1.md#attr-datasourceowneridnullrole)
 
 ---
 ## Type: Object
@@ -6711,7 +6680,7 @@ An operator is used as part of a [Criterion](reference_2.md#object-criterion) wh
 
 This list of operators indicates the set of operators built into SmartClient DataSources, which can be used for both client and server-side filtering. Some operators offer case-insensitive versions, prefixed with a lower-case _i_, such as `iContains`. **Note that such operators are intended for text-based searches and are not available to numeric or date fields (integer/float/date/datetime and derivatives), where there is no use for case.**
 
-You can extend the list of operators with [DataSource.addSearchOperator](classes/DataSource.md#method-datasourceaddsearchoperator).
+You can extend the list of operators with [DataSource.addSearchOperator](classes/DataSource_1.md#method-datasourceaddsearchoperator).
 
 ### Values
 
@@ -6739,14 +6708,14 @@ You can extend the list of operators with [DataSource.addSearchOperator](classes
 | "iNotEndsWith" | Does not end with (case insensitive) |
 | "iBetween" | shortcut for "greaterThan" + "and" + "lessThan" (case insensitive) |
 | "iBetweenInclusive" | shortcut for "greaterOrEqual" + "and" + "lessOrEqual" (case insensitive) |
-| "matchesPattern" | Basic GLOB matching using wildcards (see [DataSource.translatePatternOperators](classes/DataSource.md#attr-datasourcetranslatepatternoperators) for more information on available patterns) |
-| "iMatchesPattern" | Basic GLOB matching using wildcards (case insensitive) (see [DataSource.translatePatternOperators](classes/DataSource.md#attr-datasourcetranslatepatternoperators) for more information on available patterns) |
-| "containsPattern" | GLOB matching using wildcards. Value is considered to meet the criterion if it contains the pattern. See [DataSource.translatePatternOperators](classes/DataSource.md#attr-datasourcetranslatepatternoperators) for more information on available patterns) |
-| "startsWithPattern" | GLOB matching using wildcards. Value is considered to meet the criterion if it starts with the pattern.See [DataSource.translatePatternOperators](classes/DataSource.md#attr-datasourcetranslatepatternoperators) for more information on available patterns) |
-| "endsWithPattern" | GLOB matching using wildcards. Value is considered to meet the criterion if it starts with the pattern.See [DataSource.translatePatternOperators](classes/DataSource.md#attr-datasourcetranslatepatternoperators) for more information on available patterns) |
-| "iContainsPattern" | GLOB matching using wildcards. Value is considered to meet the criterion if it contains the pattern. Matching is case insensitive. See [DataSource.translatePatternOperators](classes/DataSource.md#attr-datasourcetranslatepatternoperators) for more information on available patterns) |
-| "iStartsWithPattern" | GLOB matching using wildcards. Value is considered to meet the criterion if it starts with the pattern. Matching is case insensitive.See [DataSource.translatePatternOperators](classes/DataSource.md#attr-datasourcetranslatepatternoperators) for more information on available patterns) |
-| "iEndsWithPattern" | GLOB matching using wildcards.Value is considered to meet the criterion if it ends with the pattern. Matching is case insensitive. See [DataSource.translatePatternOperators](classes/DataSource.md#attr-datasourcetranslatepatternoperators) for more information on available patterns) |
+| "matchesPattern" | Basic GLOB matching using wildcards (see [DataSource.translatePatternOperators](classes/DataSource_1.md#attr-datasourcetranslatepatternoperators) for more information on available patterns) |
+| "iMatchesPattern" | Basic GLOB matching using wildcards (case insensitive) (see [DataSource.translatePatternOperators](classes/DataSource_1.md#attr-datasourcetranslatepatternoperators) for more information on available patterns) |
+| "containsPattern" | GLOB matching using wildcards. Value is considered to meet the criterion if it contains the pattern. See [DataSource.translatePatternOperators](classes/DataSource_1.md#attr-datasourcetranslatepatternoperators) for more information on available patterns) |
+| "startsWithPattern" | GLOB matching using wildcards. Value is considered to meet the criterion if it starts with the pattern.See [DataSource.translatePatternOperators](classes/DataSource_1.md#attr-datasourcetranslatepatternoperators) for more information on available patterns) |
+| "endsWithPattern" | GLOB matching using wildcards. Value is considered to meet the criterion if it starts with the pattern.See [DataSource.translatePatternOperators](classes/DataSource_1.md#attr-datasourcetranslatepatternoperators) for more information on available patterns) |
+| "iContainsPattern" | GLOB matching using wildcards. Value is considered to meet the criterion if it contains the pattern. Matching is case insensitive. See [DataSource.translatePatternOperators](classes/DataSource_1.md#attr-datasourcetranslatepatternoperators) for more information on available patterns) |
+| "iStartsWithPattern" | GLOB matching using wildcards. Value is considered to meet the criterion if it starts with the pattern. Matching is case insensitive.See [DataSource.translatePatternOperators](classes/DataSource_1.md#attr-datasourcetranslatepatternoperators) for more information on available patterns) |
+| "iEndsWithPattern" | GLOB matching using wildcards.Value is considered to meet the criterion if it ends with the pattern. Matching is case insensitive. See [DataSource.translatePatternOperators](classes/DataSource_1.md#attr-datasourcetranslatepatternoperators) for more information on available patterns) |
 | "regexp" | Regular expression match - built-in SQL only, JPA and Hibernate do not support regexp operator. Additionally, when using PostgreSQL, it is supported only starting from PostgreSQL version 9.3. |
 | "iregexp" | Regular expression match (case insensitive) - regexp operator limitations apply. |
 | "isBlank" | value is either null or the empty string. For numeric fields it behaves as isNull |
@@ -7048,13 +7017,13 @@ Builtin options include
 ## Type: RESTRequestFormat
 
 ### Description
-Indicates the request format to be used for a REST operation. Is only applicable to [RestConnector DataSources](kb_topics/serverRestConnector.md#kb-topic-server-side-rest-connector). Note for all of these `RESTRequestFormat` options, only simple key-value criteria are supported; to handle [AdvancedCriteria](#object-advancedcriteria), you can use a [requestTemplate](classes/DataSource.md#attr-datasourcerequesttemplate), or subclass `com.isomorphic.dataSource.RestConnector` and override the `applyValuesOrCriteriaToRequest()` method.
+Indicates the request format to be used for a REST operation. Is only applicable to [RestConnector DataSources](kb_topics/serverRestConnector.md#kb-topic-server-side-rest-connector). Note for all of these `RESTRequestFormat` options, only simple key-value criteria are supported; to handle [AdvancedCriteria](#object-advancedcriteria), you can use a [requestTemplate](classes/DataSource_1.md#attr-datasourcerequesttemplate), or subclass `com.isomorphic.dataSource.RestConnector` and override the `applyValuesOrCriteriaToRequest()` method.
 
 ### Values
 
 | Value | Description |
 |-------|-------------|
-| "params" | Indicates that context is provided to the target REST service by setting parameter values in the URL. With this request format, the [DSRequest](reference_2.md#object-dsrequest)'s values or criteria will be added to the [target dataURL](classes/DataSource.md#attr-datasourcedataurl) as standard HTTP parameters values as follows:
+| "params" | Indicates that context is provided to the target REST service by setting parameter values in the URL. With this request format, the [DSRequest](reference_2.md#object-dsrequest)'s values or criteria will be added to the [target dataURL](classes/DataSource_1.md#attr-datasourcedataurl) as standard HTTP parameters values as follows:
 
 *   For "add" and "update" requests the "values" will be added to the target URL (see the server-side Javadoc for `DSRequest.getValues()`)
 *   For "fetch" and "remove" requests, where the concept of "values" doesn't make sense, the "criteria" will be added to the target URL (see the server-side Javadoc for `DSRequest.getCriteria()`)
@@ -7074,11 +7043,11 @@ we would end up with a target URL like this:
     https://somerestservice.com/customer/fetch?countryCode=US&stateCode=CA
  
 ```
-Also, note that any explicitly declared [params](classes/DataSource.md#attr-datasourceparams) will also be added to the target URL as standard HTTP parameters, as well as the request values/criteria (if there are any name collisions, the request values/criteria take precedence).
+Also, note that any explicitly declared [params](classes/DataSource_1.md#attr-datasourceparams) will also be added to the target URL as standard HTTP parameters, as well as the request values/criteria (if there are any name collisions, the request values/criteria take precedence).
 
 This format is often used to supply criteria to "fetch" operations, and primary-key values to "remove" operations. However, this is by no means a universal approach; different REST services adopt different approaches, there is no generally-accepted "right way" to handle things
 
-It is possible to suppress this automatic mapping - see [DataSource.suppressAutoMappings](classes/DataSource.md#attr-datasourcesuppressautomappings) |
+It is possible to suppress this automatic mapping - see [DataSource.suppressAutoMappings](classes/DataSource_1.md#attr-datasourcesuppressautomappings) |
 | "json" | Indicates that context is provided to the target REST service by providing a block of JSON-encoded text in the body of the HTTP request sent to the REST server. With this request format, `RestConnector` will render an incoming [DSRequest](reference_2.md#object-dsrequest)'s values or criteria as a JSON object; for "add" and "update" requests, the "values" will be used, and for "fetch" and "remove" operations, the criteria will be used (see the server-side Javadoc for `DSRequest.getCriteria()`).
 
 So if we had an add request with the following record:
@@ -7102,8 +7071,8 @@ those values would be included, in strict JSON form, in the body of the HTTP req
 
 This format is most often used when you need to supply more extensive amounts of data, like entire records to "add" and "update" operations. However, as mentioned above, this is by no means a universal approach, and some REST services use URL parameters even when specifying entire records of data. Also, some REST services use XML rather than JSON
 
-Note, if there is a [requestTemplate](classes/DataSource.md#attr-datasourcerequesttemplate) in force, we use that to drive the content and format of the generated JSON block |
-| "xml" | Indicates that context is provided to the target REST service by providing a block of XML text in the body of the HTTP request sent to the REST server. With this request format, `RestConnector` will render an incoming [DSRequest](reference_2.md#object-dsrequest)'s values or criteria as a snippet of XML text; for "add" and "update" requests, the "values" will be used, and for "fetch" and "remove" operations, the criteria will be used (see the server-side Javadoc for `DSRequest.getCriteria()`). The name of the enclosing tag is specified in [DataSource.xmlTag](classes/DataSource.md#attr-datasourcexmltag).
+Note, if there is a [requestTemplate](classes/DataSource_1.md#attr-datasourcerequesttemplate) in force, we use that to drive the content and format of the generated JSON block |
+| "xml" | Indicates that context is provided to the target REST service by providing a block of XML text in the body of the HTTP request sent to the REST server. With this request format, `RestConnector` will render an incoming [DSRequest](reference_2.md#object-dsrequest)'s values or criteria as a snippet of XML text; for "add" and "update" requests, the "values" will be used, and for "fetch" and "remove" operations, the criteria will be used (see the server-side Javadoc for `DSRequest.getCriteria()`). The name of the enclosing tag is specified in [DataSource.xmlTag](classes/DataSource_1.md#attr-datasourcexmltag).
 
 So if we had an add request with the following record:
 
@@ -7129,7 +7098,7 @@ those values would be included in the body of the HTTP request that `RestConnect
  
 ```
 
-Note, if there is a [requestTemplate](classes/DataSource.md#attr-datasourcerequesttemplate) in force, we use that to drive the content and format of the generated XML |
+Note, if there is a [requestTemplate](classes/DataSource_1.md#attr-datasourcerequesttemplate) in force, we use that to drive the content and format of the generated XML |
 
 ### Groups
 
@@ -7145,12 +7114,12 @@ Indicates the response format to be used for a REST operation. Is only applicabl
 
 | Value | Description |
 |-------|-------------|
-| "json" | Indicates that the REST service response is a valid [JSON](https://www.json.org/json-en.html) message. We will parse the response text as JSON, and the resulting object structure can be further processed with [XPaths](classes/DataSource.md#attr-datasourcerecordxpath), [templates](classes/DataSource.md#attr-datasourceresponsetemplate) and [scripting](classes/DataSource.md#attr-datasourcetransformresponsescript) |
+| "json" | Indicates that the REST service response is a valid [JSON](https://www.json.org/json-en.html) message. We will parse the response text as JSON, and the resulting object structure can be further processed with [XPaths](classes/DataSource_1.md#attr-datasourcerecordxpath), [templates](classes/DataSource_1.md#attr-datasourceresponsetemplate) and [scripting](classes/DataSource_1.md#attr-datasourcetransformresponsescript) |
 | "xml" | Indicates that the REST service response is an XML message. We will parse the response text as XML, and the resulting object structure can be further processed with XPaths, templates and scripting |
 | "csv" | Indicates that the the REST service response is in delimited text format in the body of the HTTP response. We will parse the response text as delimited flat text data, and the resulting object structure can be further processed with scripting. Note, we do not support XPaths because they do not make sense with flat data, and we also do not support templating of CSV responses. Record-level and field-level transformation scripts, however, are applicable, and field [nativeName](#attr-datasourcefieldnativename)s are honored if the CSV text includes a header row
 
-`RestConnector` only supports a couple options for CSV-based REST services - see [DataSource.csvDelimiter](classes/DataSource.md#attr-datasourcecsvdelimiter) and [DataSource.csvQuoteCharacter](classes/DataSource.md#attr-datasourcecsvquotecharacter) |
-| "text" | Indicates that REST service response is to be treated simply as a piece of text, with no parsing or other processing attempted. Use this format for services that return simple strings or messages in some non-standard format; you can provide your own parsing logic in a [transformResponseScript](classes/DataSource.md#attr-datasourcetransformresponsescript) |
+`RestConnector` only supports a couple options for CSV-based REST services - see [DataSource.csvDelimiter](classes/DataSource_1.md#attr-datasourcecsvdelimiter) and [DataSource.csvQuoteCharacter](classes/DataSource_1.md#attr-datasourcecsvquotecharacter) |
+| "text" | Indicates that REST service response is to be treated simply as a piece of text, with no parsing or other processing attempted. Use this format for services that return simple strings or messages in some non-standard format; you can provide your own parsing logic in a [transformResponseScript](classes/DataSource_1.md#attr-datasourcetransformresponsescript) |
 
 ### Groups
 
@@ -7162,13 +7131,13 @@ Indicates the response format to be used for a REST operation. Is only applicabl
 ### Description
 Enumerated status indicating whether a ResultSet has an accurate [ResultSet.getRowCount](classes/ResultSet.md#method-resultsetgetrowcount) row count for the data set.
 
-This is a feature associated with [progressive loading of data](classes/DataSource.md#attr-datasourceprogressiveloading). When progressive loading is active, the [length](classes/ResultSet.md#method-resultsetgetlength) may not indicate the true size of the data set. In this case a different total row count may be maintained by the ResultSet data object and retrieved via [ResultSet.getRowCount](classes/ResultSet.md#method-resultsetgetrowcount). This status code indicates whether this row count is an exact value or not.
+This is a feature associated with [progressive loading of data](classes/DataSource_1.md#attr-datasourceprogressiveloading). When progressive loading is active, the [length](classes/ResultSet.md#method-resultsetgetlength) may not indicate the true size of the data set. In this case a different total row count may be maintained by the ResultSet data object and retrieved via [ResultSet.getRowCount](classes/ResultSet.md#method-resultsetgetrowcount). This status code indicates whether this row count is an exact value or not.
 
 ### Values
 
 | Value | Description |
 |-------|-------------|
-| "exact" | The size of the data set is known and the current row count is accurate. This always will be the case if [progressiveLoading](classes/DataSource.md#attr-datasourceprogressiveloading) is not active. If progressiveLoading is active, we may have an accurate row count in the following scenarios:
+| "exact" | The size of the data set is known and the current row count is accurate. This always will be the case if [progressiveLoading](classes/DataSource_1.md#attr-datasourceprogressiveloading) is not active. If progressiveLoading is active, we may have an accurate row count in the following scenarios:
 
 *   [ResultSet.setFullLength](classes/ResultSet.md#method-resultsetsetfulllength) was explicitly invoked to tell the resultSet its total length.  
     In this case [ResultSet.getLength](classes/ResultSet.md#method-resultsetgetlength) will return the same value as [ResultSet.getRowCount](classes/ResultSet.md#method-resultsetgetrowcount)
@@ -7180,10 +7149,10 @@ This is a feature associated with [progressive loading of data](classes/DataSour
     In this case [ResultSet.getLength](classes/ResultSet.md#method-resultsetgetlength) will return the same value as [ResultSet.getRowCount](classes/ResultSet.md#method-resultsetgetrowcount) if [ResultSet.applyRowCountToLength](classes/ResultSet.md#attr-resultsetapplyrowcounttolength) is true, otherwise the values may differ. |
 | "unknown" | The current row count is unknown. This value indicates [ResultSet.lengthIsKnown](classes/ResultSet.md#method-resultsetlengthisknown) returns false. |
 | "loading" | This value indicates that the ResultSet is waiting for an active [row count fetch](classes/ResultSet.md#method-resultsetfetchrowcount) to complete. |
-| "minimum" | The current row count is a minimum - there are at least this many records in the data set. Note that when [progressiveLoading](classes/DataSource.md#attr-datasourceprogressiveloading) is active, this will be the status if no explicit [DSResponse.estimatedTotalRows](classes/DSResponse.md#attr-dsresponseestimatedtotalrows) was available, so [DSResponse.totalRows](classes/DSResponse.md#attr-dsresponsetotalrows) is a minimum, or if [DSResponse.estimatedTotalRows](classes/DSResponse.md#attr-dsresponseestimatedtotalrows) contained a value in the format `_"[rowCount]+"_`. |
-| "approximate" | The current row count is an approximation. This will be the status if [progressiveLoading](classes/DataSource.md#attr-datasourceprogressiveloading) is active and a fetch request contained an explicit [DSResponse.estimatedTotalRows](classes/DSResponse.md#attr-dsresponseestimatedtotalrows) in the format `_"~[rowCount]"_`. |
-| "maximum" | The current row count is a maximum - there are no more than this many records in the data set. This will be the status if [progressiveLoading](classes/DataSource.md#attr-datasourceprogressiveloading) is active and a fetch request contained an explicit [DSResponse.estimatedTotalRows](classes/DSResponse.md#attr-dsresponseestimatedtotalrows) in the format `_"-[rowCount]"_`. |
-| "range" | The data object knows the total number of records in the data set lies within a particular range. In this case [ListGrid.getRowCountRange](classes/ListGrid_2.md#method-listgridgetrowcountrange) may be used to retrieve the upper and lower bound of this range, and [ListGrid.getRowCount](classes/ListGrid_2.md#method-listgridgetrowcount) will return the lower bound. This will be the status if [progressiveLoading](classes/DataSource.md#attr-datasourceprogressiveloading) is active and a fetch request contained an explicit [DSResponse.estimatedTotalRows](classes/DSResponse.md#attr-dsresponseestimatedtotalrows) in the format `_"[minRowCount]-[maxRowCount]"_`. |
+| "minimum" | The current row count is a minimum - there are at least this many records in the data set. Note that when [progressiveLoading](classes/DataSource_1.md#attr-datasourceprogressiveloading) is active, this will be the status if no explicit [DSResponse.estimatedTotalRows](classes/DSResponse.md#attr-dsresponseestimatedtotalrows) was available, so [DSResponse.totalRows](classes/DSResponse.md#attr-dsresponsetotalrows) is a minimum, or if [DSResponse.estimatedTotalRows](classes/DSResponse.md#attr-dsresponseestimatedtotalrows) contained a value in the format `_"[rowCount]+"_`. |
+| "approximate" | The current row count is an approximation. This will be the status if [progressiveLoading](classes/DataSource_1.md#attr-datasourceprogressiveloading) is active and a fetch request contained an explicit [DSResponse.estimatedTotalRows](classes/DSResponse.md#attr-dsresponseestimatedtotalrows) in the format `_"~[rowCount]"_`. |
+| "maximum" | The current row count is a maximum - there are no more than this many records in the data set. This will be the status if [progressiveLoading](classes/DataSource_1.md#attr-datasourceprogressiveloading) is active and a fetch request contained an explicit [DSResponse.estimatedTotalRows](classes/DSResponse.md#attr-dsresponseestimatedtotalrows) in the format `_"-[rowCount]"_`. |
+| "range" | The data object knows the total number of records in the data set lies within a particular range. In this case [ListGrid.getRowCountRange](classes/ListGrid_2.md#method-listgridgetrowcountrange) may be used to retrieve the upper and lower bound of this range, and [ListGrid.getRowCount](classes/ListGrid_2.md#method-listgridgetrowcount) will return the lower bound. This will be the status if [progressiveLoading](classes/DataSource_1.md#attr-datasourceprogressiveloading) is active and a fetch request contained an explicit [DSResponse.estimatedTotalRows](classes/DSResponse.md#attr-dsresponseestimatedtotalrows) in the format `_"[minRowCount]-[maxRowCount]"_`. |
 
 ### Groups
 
@@ -7564,7 +7533,7 @@ The technique SmartClient Server's SQL DataSource should use to select a "page" 
 
 ### See Also
 
-- [DataSource.sqlPaging](classes/DataSource.md#attr-datasourcesqlpaging)
+- [DataSource.sqlPaging](classes/DataSource_1.md#attr-datasourcesqlpaging)
 - [OperationBinding.sqlPaging](classes/OperationBinding.md#attr-operationbindingsqlpaging)
 
 ---
@@ -7881,7 +7850,7 @@ Note that the `errorMessage` for this validator will be evaluated as a dynamicSt
 | required | A non-empty value is required for this field to pass validation.
 
 In the case of a "binary" field, a non-empty file must be uploaded. |
-| isUnique | Returns true if the value for this field is unique. The uniqueness check is performed across the whole DataSource unless you specify property `validator.criteriaFields` as a comma-separated string of field names; in that case, the uniqueness check is done in the context of those extra criteria, allowing you to check, for example, whether an employee number is unique for the department and location found on the record being validated. By default the uniqueness check is not case sensitive but this can be controlled through the [caseSensitive](classes/Validator.md#attr-validatorcasesensitive) attribute. You can specify the [operation](classes/DataSource.md#attr-datasourceoperationbindings) to use for the uniqueness check with the [operationId](classes/Validator.md#attr-validatoroperationid) attribute.
+| isUnique | Returns true if the value for this field is unique. The uniqueness check is performed across the whole DataSource unless you specify property `validator.criteriaFields` as a comma-separated string of field names; in that case, the uniqueness check is done in the context of those extra criteria, allowing you to check, for example, whether an employee number is unique for the department and location found on the record being validated. By default the uniqueness check is not case sensitive but this can be controlled through the [caseSensitive](classes/Validator.md#attr-validatorcasesensitive) attribute. You can specify the [operation](classes/DataSource_1.md#attr-datasourceoperationbindings) to use for the uniqueness check with the [operationId](classes/Validator.md#attr-validatoroperationid) attribute.
 
 Validators of this type have [requiresServer](classes/ValidatorDefinition.md#attr-validatordefinitionrequiresserver) set to `true` and do not run on the client, unless all of the following are true:
 
@@ -7894,7 +7863,7 @@ Note when isUnique validator is executed as part of validation process during up
 See *uniqueCheckValidation example*. |
 | hasRelatedRecord | Returns true if the record implied by a relation exists. The relation can be derived automatically from the [DataSourceField.foreignKey](classes/DataSourceField.md#attr-datasourcefieldforeignkey) attribute of the field being validated, or you can specify it manually via `validator.relatedDataSource` and `validator.relatedField`.
 
-You can specify at DataSource level that this validator should be automatically applied to all fields that specify a [foreignKey](classes/DataSourceField.md#attr-datasourcefieldforeignkey) - see [DataSource.validateRelatedRecords](classes/DataSource.md#attr-datasourcevalidaterelatedrecords).
+You can specify at DataSource level that this validator should be automatically applied to all fields that specify a [foreignKey](classes/DataSourceField.md#attr-datasourcefieldforeignkey) - see [DataSource.validateRelatedRecords](classes/DataSource_1.md#attr-datasourcevalidaterelatedrecords).
 
 By default the uniqueness check is not case sensitive but this can be controlled through the [caseSensitive](classes/Validator.md#attr-validatorcasesensitive) attribute.
 
@@ -8069,7 +8038,7 @@ When passed to the SmartClient Server, a server-side AdvancedCriteria instance (
 
 It's a best practice for XML representation to have ``<value>`` as a subelement with `xsi:type`. Although most systems will auto-convert criteria explicitly setting type leaves the least room for error or ambiguity.
 
-For other servers, you can translate `AdvancedCriteria` into whatever format is expected by the server, typically by implementing [DataSource.transformRequest](classes/DataSource.md#method-datasourcetransformrequest).
+For other servers, you can translate `AdvancedCriteria` into whatever format is expected by the server, typically by implementing [DataSource.transformRequest](classes/DataSource_1.md#method-datasourcetransformrequest).
 
 See [Criteria Editing](kb_topics/criteriaEditing.md#kb-topic-criteria-editing) for information about editing AdvancedCriteria in a DynamicForm.
 
@@ -8094,7 +8063,7 @@ Criteria subquery definitions fall into two broad categories:
 *   **Aggregation**, where the subquery uses a [SummaryFunction](reference_2.md#type-summaryfunction) to aggregate or summarize a related dataset, and then filter on that aggregated or summarized value. For example, orders with more than 10 lines, customers with an average order value more than $1000, UK customers with an outstanding payment more than a week old, etc
 *   **Related value**, where the subquery selects a value (or, for `inSet`\-type clauses, a set of values) from a related dataSource and then filters on that value. For example, Products that were not ordered last month, Employees who are based in one of the North American offices, Orders that include a particular category of Product, etc
 
-In ideal circumstances - when both main and subquery [dataSource](classes/DataSource.md#class-datasource)s are [SQL DataSources](kb_topics/sqlDataSource.md#kb-topic-sql-datasources), and a number of other restrictions are satisfied - subqueries are implemented by incorporating their functionality into a larger overall SQL query, because this is the most efficient thing to do, and gives the best performance. See [canEmbedSQL](classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubquerycanembedsql) for a description of the rules and nuances around this.
+In ideal circumstances - when both main and subquery [dataSource](classes/DataSource_1.md#class-datasource)s are [SQL DataSources](kb_topics/sqlDataSource.md#kb-topic-sql-datasources), and a number of other restrictions are satisfied - subqueries are implemented by incorporating their functionality into a larger overall SQL query, because this is the most efficient thing to do, and gives the best performance. See [canEmbedSQL](classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubquerycanembedsql) for a description of the rules and nuances around this.
 
 In cases where we cannot implement subqueries by embedding SQL, they are implemented by converting the subquery definitions into separate real `DSRequest`s, executing them, and then combining their results into the wider resultset.
 
@@ -8117,7 +8086,7 @@ For security reasons, subqueries in [requests](reference_2.md#object-dsrequest) 
 
 For `DSRequest`s that originally came from the server, it is possible to have a subquery that specifies any `DSRequest` property. Many of these would only have any relevance or effect if the subquery was run separately rather than embedded (as described above and in the [canEmbedSQL](classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubquerycanembedsql) doc). If you need to do this, look in the server Javadoc for `DSRequest.setAllowArbitrarySubqueries(boolean)`
 
-Finally, note that it is possible to switch off the ability to use subqueries altogether, either [per-DataSource](classes/DataSource.md#attr-datasourceallowcriteriasubqueries), or globally by setting the `allowCriteriaSubqueries` flag in your `server.properties` file:
+Finally, note that it is possible to switch off the ability to use subqueries altogether, either [per-DataSource](classes/DataSource_1.md#attr-datasourceallowcriteriasubqueries), or globally by setting the `allowCriteriaSubqueries` flag in your `server.properties` file:
 
 ```
  allowCriteriaSubqueries: false
@@ -8142,7 +8111,7 @@ When filtering client-side data with AdvancedCriteria that contain subquery crit
 
 If a subquery targets a DataSource that does not have a complete local cache, the request is delegated to the server, where the subquery is resolved. If the server is not available, the subquery criteria are ignored and a warning is logged.
 
-The [DataSource.allowCriteriaSubqueries](classes/DataSource.md#attr-datasourceallowcriteriasubqueries) property is enforced on the client as well — if set to `false`, subquery criteria are ignored during client-side filtering.
+The [DataSource.allowCriteriaSubqueries](classes/DataSource_1.md#attr-datasourceallowcriteriasubqueries) property is enforced on the client as well — if set to `false`, subquery criteria are ignored during client-side filtering.
 
 #### `exists / notExists` operators
 The [`exists / notExists`](#type-operatorid) operators provide a concise way to filter records based on the existence (or absence) of related rows.
@@ -8818,7 +8787,7 @@ Extra methods added to the Number object, available on all number variables. Att
 ## Object: Operator
 
 ### Description
-Specification of an operator for use in filtering, for example "equals". Use with [DataSource.addSearchOperator](classes/DataSource.md#method-datasourceaddsearchoperator) to define custom filtering behaviors for client-side filtering.
+Specification of an operator for use in filtering, for example "equals". Use with [DataSource.addSearchOperator](classes/DataSource_1.md#method-datasourceaddsearchoperator) to define custom filtering behaviors for client-side filtering.
 
 ### Groups
 
@@ -8837,20 +8806,16 @@ Various types of palettes ([ListPalette](#class-listpalette), [TreePalette](#cla
 Note that in a TreePalette, a PaletteNode is essentially a [TreeNode](reference_2.md#object-treenode) and can have properties expected for a TreeNode (eg, [showDropIcon](classes/TreeGrid.md#attr-treegridcustomicondropproperty)). Likewise a PaletteNode in a MenuPalette can have the properties of a [MenuItem](reference_2.md#object-menuitem), such as [MenuItem.enableIf](classes/MenuItem.md#method-menuitemenableif).
 
 ---
-## Object: PlaceholderDefaults
-
-### Description
-An object representing the configuration of the placeholder. When a placeholder is created and not replaced by the target component, these are the properties that are applied.
-
-### Groups
-
-- devTools
-
----
 ## Object: PointerSettings
 
 ### Description
 A set of properties that can be used to configure a [canvas pointer](classes/Canvas.md#attr-canvasshowpointer).
+
+---
+## Object: ProcessFailure
+
+### Description
+Shape of the infrastructure-failure record delivered to [Process.failed](classes/Process.md#method-processfailed) and (for [CoTProcess](classes/CoTProcess.md#class-cotprocess)) via the async operation's failure result. Recoverable, schema-conformant errors do NOT use this type; they live inside the Process's successful output (see [processIO](kb_topics/processIO.md#kb-topic-process-input-and-output-schema)).
 
 ---
 ## Object: PromiseOutcome

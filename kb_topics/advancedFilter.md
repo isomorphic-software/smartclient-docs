@@ -7,7 +7,7 @@
 ## KB Topic: Advanced Filtering
 
 ### Description
-Isomorphic [DataSources](../classes/DataSource.md#class-datasource) provide an advanced filtering mechanism for searching data, including a wide range of builtin [search-operators](../reference.md#object-operator), which allow searching via simple comparisons like `equals` and `contains` and more complex checks, like `equalsOtherField` and `regex`. You can also add entirely custom search-operators, via DataSource method [addSearchOperator()](../classes/DataSource.md#method-datasourceaddsearchoperator).
+Isomorphic [DataSources](../classes/DataSource_1.md#class-datasource) provide an advanced filtering mechanism for searching data, including a wide range of builtin [search-operators](../reference.md#object-operator), which allow searching via simple comparisons like `equals` and `contains` and more complex checks, like `equalsOtherField` and `regex`. You can also add entirely custom search-operators, via DataSource method [addSearchOperator()](../classes/DataSource_1.md#method-datasourceaddsearchoperator).
 
 For a full list of operators, see [OperatorId](../reference.md#type-operatorid).
 
@@ -20,16 +20,16 @@ For a full list of operators, see [OperatorId](../reference.md#type-operatorid).
 - [DataSource.hasCustomTypeOperators](../classes/DataSource.md#classmethod-datasourcehascustomtypeoperators)
 - [Operator.condition](../classes/Operator.md#method-operatorcondition)
 - [Operator.compareCriteria](../classes/Operator.md#method-operatorcomparecriteria)
-- [DataSource.addSearchOperator](../classes/DataSource.md#method-datasourceaddsearchoperator)
-- [DataSource.getSearchOperator](../classes/DataSource.md#method-datasourcegetsearchoperator)
-- [DataSource.getTypeOperators](../classes/DataSource.md#method-datasourcegettypeoperators)
-- [DataSource.setTypeOperators](../classes/DataSource.md#method-datasourcesettypeoperators)
-- [DataSource.hasCustomTypeOperators](../classes/DataSource.md#method-datasourcehascustomtypeoperators)
-- [DataSource.getFieldOperators](../classes/DataSource.md#method-datasourcegetfieldoperators)
-- [DataSource.getFieldDefaultOperator](../classes/DataSource.md#method-datasourcegetfielddefaultoperator)
-- [DataSource.getFieldOperatorMap](../classes/DataSource.md#method-datasourcegetfieldoperatormap)
-- [DataSource.getTypeOperatorMap](../classes/DataSource.md#method-datasourcegettypeoperatormap)
-- [DataSource.evaluateCriterion](../classes/DataSource.md#method-datasourceevaluatecriterion)
+- [DataSource.addSearchOperator](../classes/DataSource_1.md#method-datasourceaddsearchoperator)
+- [DataSource.getSearchOperator](../classes/DataSource_1.md#method-datasourcegetsearchoperator)
+- [DataSource.getTypeOperators](../classes/DataSource_1.md#method-datasourcegettypeoperators)
+- [DataSource.setTypeOperators](../classes/DataSource_1.md#method-datasourcesettypeoperators)
+- [DataSource.hasCustomTypeOperators](../classes/DataSource_1.md#method-datasourcehascustomtypeoperators)
+- [DataSource.getFieldOperators](../classes/DataSource_1.md#method-datasourcegetfieldoperators)
+- [DataSource.getFieldDefaultOperator](../classes/DataSource_1.md#method-datasourcegetfielddefaultoperator)
+- [DataSource.getFieldOperatorMap](../classes/DataSource_1.md#method-datasourcegetfieldoperatormap)
+- [DataSource.getTypeOperatorMap](../classes/DataSource_1.md#method-datasourcegettypeoperatormap)
+- [DataSource.evaluateCriterion](../classes/DataSource_2.md#method-datasourceevaluatecriterion)
 - [AdvancedCriteria](../reference.md#object-advancedcriteria)
 - [Criterion](../reference_2.md#object-criterion)
 - [AdvancedCriterionSubquery](../reference.md#object-advancedcriterionsubquery)
@@ -45,7 +45,7 @@ For a full list of operators, see [OperatorId](../reference.md#type-operatorid).
 - [Criterion.criteria](../classes/Criterion.md#attr-criterioncriteria)
 - [Criterion.start](../classes/Criterion.md#attr-criterionstart)
 - [Criterion.end](../classes/Criterion.md#attr-criterionend)
-- [DataSource.allowCriteriaSubqueries](../classes/DataSource.md#attr-datasourceallowcriteriasubqueries)
+- [DataSource.allowCriteriaSubqueries](../classes/DataSource_1.md#attr-datasourceallowcriteriasubqueries)
 - [Criterion.fieldQuery](../classes/Criterion.md#attr-criterionfieldquery)
 - [Criterion.valueQuery](../classes/Criterion.md#attr-criterionvaluequery)
 - [Criterion.fieldStaticValue](../classes/Criterion.md#attr-criterionfieldstaticvalue)

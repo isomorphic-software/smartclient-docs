@@ -84,6 +84,16 @@ Name of the default Process subclass to use when auto-constructing plain Objects
 **Flags**: IR
 
 ---
+## Attr: Process.inputFields
+
+### Description
+Shorthand alternative to [Process.inputDS](#attr-processinputds): a list of [DataSourceField](../reference_2.md#object-datasourcefield) definitions the engine compiles into a temporary validation DataSource on demand.
+
+See [processIO](../kb_topics/processIO.md#kb-topic-process-input-and-output-schema).
+
+**Flags**: IR
+
+---
 ## Attr: Process.sequences
 
 ### Description
@@ -124,6 +134,26 @@ You do not have to explicitly create a [ProcessSequence](../reference.md#class-p
  });
  
 ```
+
+**Flags**: IR
+
+---
+## Attr: Process.outputDS
+
+### Description
+Optional [DataSource](DataSource_1.md#class-datasource) that describes and validates the final output this Process produces on successful completion. May be a full DataSource definition, an existing instance, or the global ID of a registered DataSource.
+
+See [processIO](../kb_topics/processIO.md#kb-topic-process-input-and-output-schema). When set, a [SubProcessTask](SubProcessTask.md#class-subprocesstask) caller references fields on this schema via `$output.`<fieldName>`` in [CoTTask.stateUpdates](CoTTask.md#attr-cottaskstateupdates).
+
+**Flags**: IR
+
+---
+## Attr: Process.outputFields
+
+### Description
+Shorthand alternative to [Process.outputDS](#attr-processoutputds): a list of [DataSourceField](../reference_2.md#object-datasourcefield) definitions the engine compiles into a temporary validation DataSource on demand. The declared field names also govern which [Process.state](#attr-processstate) properties are picked into the Process's output value if [Process.setOutput](#method-processsetoutput) is never called.
+
+See [processIO](../kb_topics/processIO.md#kb-topic-process-input-and-output-schema).
 
 **Flags**: IR
 
@@ -191,6 +221,18 @@ The ID of either a [sequence](#attr-processsequences) or an [element](#attr-proc
 **Flags**: IR
 
 ---
+## Attr: Process.inputDS
+
+### Description
+Optional [DataSource](DataSource_1.md#class-datasource) that constrains the input record a caller may provide to this Process. May be a full DataSource definition, an existing instance, or the global ID of a registered DataSource. Nested DataSources are permitted.
+
+When set, the input record is validated via [DataSource.validateData](DataSource_1.md#method-datasourcevalidatedata) before the Process starts.
+
+See [processIO](../kb_topics/processIO.md#kb-topic-process-input-and-output-schema). If both `inputDS` and [Process.inputFields](#attr-processinputfields) are set, `inputDS` wins.
+
+**Flags**: IR
+
+---
 ## Attr: Process.traceContext
 
 ### Description
@@ -241,7 +283,7 @@ Nested Processes are often used to encapsulate a sub-workflow. When auto-constru
 1.  If the element is already a constructed instance (Task or StartProcessTask), use it as-is.
 2.  If the element declares `_constructor`, use that class directly.
 3.  **If the element has a `process` property**:
-    1.  Construct a [StartProcessTask](StartProcessTask.md#class-startprocesstask) for the element itself (unless the object declares its own `_constructor` to override this).
+    1.  Construct a [SubProcessTask](SubProcessTask.md#class-subprocesstask) for the element itself (unless the object declares its own `_constructor` to override this). SubProcessTask is a strict superset of [StartProcessTask](StartProcessTask.md#class-startprocesstask): with neither `stateUpdates` nor process-level I/O schemas declared it behaves identically to StartProcessTask; with them it additionally supports CoT-style state flow, [TaskInputExpression](../reference_2.md#type-taskinputexpression) `$output.`<fieldName>`` references, and infra-failure routing via `failureElement`.
     2.  If `process` is a plain Object (not already constructed), auto-instantiate it as a Process using [Process.defaultProcessConstructor](#attr-processdefaultprocessconstructor) and assign the instance to `task.process`.
     3.  If `process` is already a Process instance, assign it directly to `task.process`.
 4.  Otherwise, construct it as a Task using [Process.defaultTaskConstructor](#attr-processdefaulttaskconstructor) if set, otherwise [Task](Task.md#class-task).
@@ -428,6 +470,18 @@ List is assembled by calling [ProcessElement.getComponentReferences](ProcessElem
 `[Array of String](#type-array-of-string)` — array of component IDs that are referenced by this process
 
 ---
+## Method: Process.setOutput
+
+### Description
+Explicitly set the final output this Process will deliver on successful completion, overriding the default behavior of picking output fields out of [Process.state](#attr-processstate). Callable from anywhere during execution; the most recent value wins.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| output | [Any](#type-any) | false | — | the output value to deliver |
+
+---
 ## Method: Process.applyStateUpdates
 
 ### Description
@@ -456,6 +510,20 @@ In this example, the output is appended to the "currentDS.fields" array in [Proc
 | stateUpdates | [Object](../reference.md#type-object) | false | — | state updates to apply |
 | inputRecord | [Object](../reference.md#type-object) | true | — | record to use as the source for any $input [TaskInputExpression](../reference_2.md#type-taskinputexpression) properties. |
 | strict | [Boolean](#type-boolean) | true | — | if true, the paths must exist in the state to be set. Otherwise, the paths will be created if not existing. Defaults to `process.strictPaths` when null. |
+
+---
+## Method: Process.fail
+
+### Description
+Programmatically signal that this Process has hit an infrastructure failure and should terminate through its [Process.failed](#method-processfailed) channel rather than completing normally. Recoverable errors that are part of the Process's designed output schema should NOT use this path; model them as fields in [Process.outputDS](#attr-processoutputds).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| code | [String](#type-string) | false | — | short identifier, e.g. `"aiUnavailable"`. See [ProcessFailure](#type-processfailure). |
+| message | [String](#type-string) | true | — | human-readable description |
+| cause | [Any](#type-any) | true | — | optional underlying exception or nested failure |
 
 ---
 ## Method: Process.getElement
@@ -531,6 +599,20 @@ Sets the task ID of the next task to execute after the current task finishes. If
 | nextElement | [String](#type-string) | true | — | ID of the next task execute or null to terminate the process |
 
 ---
+## Method: Process.failed
+
+### Description
+StringMethod called when a process terminates via an infrastructure failure - for example AI engine unavailable, schema-validation mismatch on input or output, uncaught JS exception, cancellation, or an ancestor-cycle deadlock when invoking a sub-Process. Recoverable errors that are part of the Process's designed output do NOT come through here; they live inside the successful [finished](#method-processfinished) result.
+
+See [ProcessFailure](#type-processfailure) for the shape of the argument.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| failure | [ProcessFailure](#type-processfailure) | false | — | the failure record |
+
+---
 ## Method: Process.getLastTaskOutput
 
 ### Description
@@ -580,6 +662,20 @@ Notification hook invoked after a Task's outputs have been committed to state an
 | outputs | [Object](../reference.md#type-object) | false | — | The committed outputs (if any). |
 
 ---
+## Method: Process.getOutput
+
+### Description
+Returns the Process's output, computed in this priority order:
+
+1.  The value passed to [Process.setOutput](#method-processsetoutput) if any.
+2.  If [Process.outputDS](#attr-processoutputds)/[Process.outputFields](#attr-processoutputfields) are declared: a shallow pick of those field names from [Process.state](#attr-processstate).
+3.  Otherwise: [Process.state](#attr-processstate) itself (back-compat).
+
+### Returns
+
+`[Any](#type-any)` — the computed output
+
+---
 ## Method: Process.start
 
 ### Description
@@ -591,11 +687,14 @@ Starts this task by executing the [Process.startElement](#attr-processstarteleme
 ### Description
 StringMethod called when a process completes, meaning the process executes a ProcessElement with no next element.
 
+Handlers declared with a single `(state)` signature remain supported; the second argument is ignored harmlessly for such handlers. Handlers that want the schema-validated result use the two-argument form.
+
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | state | [Record](#type-record) | false | — | the final process state |
+| output | [Any](#type-any) | false | — | the Process's validated output, as computed by [Process.getOutput](#method-processgetoutput). When no output schema is declared, this is the same object as `state`. |
 
 ---
 ## Method: Process.runTask

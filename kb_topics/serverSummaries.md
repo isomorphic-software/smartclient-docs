@@ -80,7 +80,7 @@ Note that, as with SQL, the returned records will _only_ include the fields wher
 	});
  
 ```
-By default such requests are allowed, but such requests can be disallowed on a per-DataSource or system-wide level if you have concerns - see [DataSource.allowClientRequestedSummaries](../classes/DataSource.md#attr-datasourceallowclientrequestedsummaries).
+By default such requests are allowed, but such requests can be disallowed on a per-DataSource or system-wide level if you have concerns - see [DataSource.allowClientRequestedSummaries](../classes/DataSource_1.md#attr-datasourceallowclientrequestedsummaries).
 
 You can also dynamically request summaries from server-side code (for example, in a [DMI](../classes/DMI.md#class-dmi) method):
 
@@ -180,8 +180,8 @@ Aggregated data fetches cannot include additional fields that are not aggregated
 - [DataSourceField.joinPrefix](../classes/DataSourceField.md#attr-datasourcefieldjoinprefix)
 - [DataSourceField.joinString](../classes/DataSourceField.md#attr-datasourcefieldjoinstring)
 - [DataSourceField.joinSuffix](../classes/DataSourceField.md#attr-datasourcefieldjoinsuffix)
-- [DataSource.canAggregate](../classes/DataSource.md#attr-datasourcecanaggregate)
-- [DataSource.allowClientRequestedSummaries](../classes/DataSource.md#attr-datasourceallowclientrequestedsummaries)
+- [DataSource.canAggregate](../classes/DataSource_1.md#attr-datasourcecanaggregate)
+- [DataSource.allowClientRequestedSummaries](../classes/DataSource_1.md#attr-datasourceallowclientrequestedsummaries)
 - [DataSourceField.allowClientRequestedSummaries](../classes/DataSourceField.md#attr-datasourcefieldallowclientrequestedsummaries)
 - [AdvancedCriterionSubquery.summaryFunctions](../classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubquerysummaryfunctions)
 - [AdvancedCriterionSubquery.groupBy](../classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubquerygroupby)

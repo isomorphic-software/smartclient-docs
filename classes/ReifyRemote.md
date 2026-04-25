@@ -98,6 +98,22 @@ Whether the Reify instance is still open / alive.
 Clean up the ReifyRemote, removing all listeners.
 
 ---
+## Method: ReifyRemote.loadProjectAndScreen
+
+### Description
+Load a project and then navigate to a specific screen within it. Unlike calling [ReifyRemote.loadProject](#method-reifyremoteloadproject) and [ReifyRemote.loadScreen](#method-reifyremoteloadscreen) separately, this method waits for the project to finish loading before requesting the screen, avoiding the race condition where the screen list is not yet populated.
+
+The optional `callback` fires after the screen has been loaded.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| projectName | [String](#type-string) | false | — | project to load |
+| screenName | [String](#type-string) | false | — | screen to load within the project |
+| callback | [Function](#type-function) | true | — | called after screen loads |
+
+---
 ## Method: ReifyRemote.loadProject
 
 ### Description

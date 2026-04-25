@@ -1,9 +1,14 @@
-# DataSource Documentation
+# DataSource Documentation (Part 1 of 2)
 
 [← Back to API Index](../reference.md)
 
 ---
 
+# DataSource Documentation
+
+[← Back to API Index](../reference.md)
+
+---
 ## Class: DataSource
 
 ### Description
@@ -50,13 +55,13 @@ A message returned by a `DataSource` when an operation requires criteria, but no
 ## ClassAttr: DataSource.deepCloneNonFieldValuesOnEdit
 
 ### Description
-Provides the global default setting for deep or shallow cloning of non-field attributes of value objects prior to edit. See [DataSource.deepCloneNonFieldValuesOnEdit](#attr-datasourcedeepclonenonfieldvaluesonedit) for details of what this means.
+Provides the global default setting for deep or shallow cloning of non-field attributes of value objects prior to edit. See [DataSource.deepCloneNonFieldValuesOnEdit](DataSource_1.md#attr-datasourcedeepclonenonfieldvaluesonedit) for details of what this means.
 
 The default setting of null is the same as false; with this default in place, `deepCloneNonFieldValuesOnEdit` must be set explicitly set at dataSource or component level if you require deep cloning.
 
 ### See Also
 
-- [DataSource.deepCloneNonFieldValuesOnEdit](#attr-datasourcedeepclonenonfieldvaluesonedit)
+- [DataSource.deepCloneNonFieldValuesOnEdit](DataSource_1.md#attr-datasourcedeepclonenonfieldvaluesonedit)
 - [DataBoundComponent.deepCloneNonFieldValuesOnEdit](DataBoundComponent.md#attr-databoundcomponentdeepclonenonfieldvaluesonedit)
 
 **Flags**: IRWA
@@ -65,13 +70,13 @@ The default setting of null is the same as false; with this default in place, `d
 ## ClassAttr: DataSource.deepCloneOnEdit
 
 ### Description
-Provides the global default setting for deep or shallow cloning of objects prior to edit. See [DataSource.deepCloneOnEdit](#attr-datasourcedeepcloneonedit) for details of what this means.
+Provides the global default setting for deep or shallow cloning of objects prior to edit. See [DataSource.deepCloneOnEdit](DataSource_1.md#attr-datasourcedeepcloneonedit) for details of what this means.
 
 The default setting of null is the same as false; with this default in place, `deepCloneOnEdit` must be set explicitly set at dataSource, component or field level if you require deep cloning.
 
 ### See Also
 
-- [DataSource.deepCloneOnEdit](#attr-datasourcedeepcloneonedit)
+- [DataSource.deepCloneOnEdit](DataSource_1.md#attr-datasourcedeepcloneonedit)
 - [DataBoundComponent.deepCloneOnEdit](DataBoundComponent.md#attr-databoundcomponentdeepcloneonedit)
 - [DataSourceField.deepCloneOnEdit](DataSourceField.md#attr-datasourcefielddeepcloneonedit)
 
@@ -1112,7 +1117,7 @@ Whether to make this DataSource available as a global variable for convenience.
 ## Attr: DataSource.deepCloneNonFieldValuesOnEdit
 
 ### Description
-When editing values in [DataBoundComponent](../reference.md#interface-databoundcomponent)s bound to this dataSource, should we perform a deep clone of values that are not associated with a field (ie, attributes on the record that do not map to a component field either directly by name, or by [dataPath](FormItem.md#attr-formitemdatapath)). If this flag is not explicitly set, it defaults to the value of the same-named static property, [DataSource.deepCloneNonFieldValuesOnEdit](#classattr-datasourcedeepclonenonfieldvaluesonedit). This flag can also be overridden per-component - see [DataBoundComponent.deepCloneNonFieldValuesOnEdit](DataBoundComponent.md#attr-databoundcomponentdeepclonenonfieldvaluesonedit).
+When editing values in [DataBoundComponent](../reference.md#interface-databoundcomponent)s bound to this dataSource, should we perform a deep clone of values that are not associated with a field (ie, attributes on the record that do not map to a component field either directly by name, or by [dataPath](FormItem.md#attr-formitemdatapath)). If this flag is not explicitly set, it defaults to the value of the same-named static property, [DataSource.deepCloneNonFieldValuesOnEdit](DataSource.md#classattr-datasourcedeepclonenonfieldvaluesonedit). This flag can also be overridden per-component - see [DataBoundComponent.deepCloneNonFieldValuesOnEdit](DataBoundComponent.md#attr-databoundcomponentdeepclonenonfieldvaluesonedit).
 
 Note, a "deep clone" is one created by traversing the original values object recursively, cloning the contents of nested objects and arrays; a "shallow clone" is a copy created by simply copying the top-level attributes of an object; if you have nested objects that are copied like this, the "copies" are actual references to the original objects.
 
@@ -2748,7 +2753,7 @@ When using the [pattern operators](../kb_topics/patternOperators.md#kb-topic-pat
 ### Description
 Before we start editing values in [DataBoundComponent](../reference.md#interface-databoundcomponent)s bound to this dataSource, should we perform a deep clone of the underlying values (a "deep clone" is one created by traversing the original values object recursively, cloning the contents of nested objects and arrays). If this flag is explicitly set to false, we perform a shallow clone of the underlying values before edit (a "shallow clone" is a copy created by simply copying the top-level attributes of an object). Note, this setting only affects deep-cloning of attributes that are bound to a field; for other, non-field values, see [DataSource.deepCloneNonFieldValuesOnEdit](#attr-datasourcedeepclonenonfieldvaluesonedit).
 
-If this flag is not explicitly set, it defaults to the value of the same-named static property, [DataSource.deepCloneOnEdit](#classattr-datasourcedeepcloneonedit). This flag can also be overridden per-component and per-field - see [DataBoundComponent.deepCloneOnEdit](DataBoundComponent.md#attr-databoundcomponentdeepcloneonedit) and [DataSourceField.deepCloneOnEdit](DataSourceField.md#attr-datasourcefielddeepcloneonedit).
+If this flag is not explicitly set, it defaults to the value of the same-named static property, [DataSource.deepCloneOnEdit](DataSource.md#classattr-datasourcedeepcloneonedit). This flag can also be overridden per-component and per-field - see [DataBoundComponent.deepCloneOnEdit](DataBoundComponent.md#attr-databoundcomponentdeepcloneonedit) and [DataSourceField.deepCloneOnEdit](DataSourceField.md#attr-datasourcefielddeepcloneonedit).
 
 Note, this flag only has an effect if you are editing a values object that contains nested objects or arrays, using [dataPath](Canvas.md#attr-canvasdatapath)s. When editing "flat" data - the mainstream case - there is no difference between a deep clone and a shallow clone.
 
@@ -2910,13 +2915,13 @@ When we come across Java `Enum` properties in plain or annotated classes, as wel
 
 For cases where we generate a field of SmartClient type "enum" (see the above tables), the keys of the valueMap are the result of calling `name()` on each member of the underlying Java Enum (in other words, its value exactly as declared in its enum declaration). For cases where we generate a field of SmartClient type "intEnum", the keys of the valueMap are strings representing the ordinal number of each member in the Java Enum - "0", "1", etc. Note that this behavior will be overriden by [DataSource.enumTranslateStrategy](#attr-datasourceenumtranslatestrategy) if both are set.
 
-In both of these case, the display values generated for the valueMap are the result of calling `toString()` on each Enum member. If that gives the same value as calling `name()`, the value is passed through `DataTools.deriveTitleFromName()`, which applies the same processing rules as [DataSource.getAutoTitle](#classmethod-datasourcegetautotitle) to derive a more user-friendly display value.
+In both of these case, the display values generated for the valueMap are the result of calling `toString()` on each Enum member. If that gives the same value as calling `name()`, the value is passed through `DataTools.deriveTitleFromName()`, which applies the same processing rules as [DataSource.getAutoTitle](DataSource.md#classmethod-datasourcegetautotitle) to derive a more user-friendly display value.
 
 #### Further notes
 `schemaBean` implies `autoDeriveSchema`, because it has no other purpose than to name the bean to use for auto-derived schema. Thus, if you specify `schemaBean` you do not need to specify `autoDeriveSchema` as well (though it does no harm to do so). However, `tableName` and `beanClassName` can be validly specified without implying `autoDeriveSchema`, so in those cases you must explicitly specify `autoDeriveSchema`.
 
 #### Column descriptions as field titles
-When deriving schema from an SQL table, if a column has a non-empty description (the JDBC REMARKS attribute, which maps to `COMMENT ON COLUMN` in PostgreSQL and similar features in other databases), that description is used as the field title. If no description is present, the title is auto-derived from the column name via the same logic as [DataSource.getAutoTitle](#classmethod-datasourcegetautotitle).
+When deriving schema from an SQL table, if a column has a non-empty description (the JDBC REMARKS attribute, which maps to `COMMENT ON COLUMN` in PostgreSQL and similar features in other databases), that description is used as the field title. If no description is present, the title is auto-derived from the column name via the same logic as [DataSource.getAutoTitle](DataSource.md#classmethod-datasourcegetautotitle).
 
 Some databases use column comments for annotations or metadata rather than human-readable titles. You can filter these out using the `sql.ignoreColumnDescriptionPrefix` property in [server.properties](../kb_topics/server_properties.md#kb-topic-serverproperties-file) — see [sqlSettings](../kb_topics/sqlSettings.md#kb-topic-sql-database-settings-in-serverproperties) for details.
 
@@ -3229,7 +3234,7 @@ For other DataSources, a one-time fetch will be performed to retrieve sample dat
 
 Alternatively, mock data can be provided with [DataSource.cacheData](#attr-datasourcecachedata).
 
-DataSources can be loaded in `mockMode` via passing settings to [DataSource.load](#classmethod-datasourceload), or if loaded with a screen or project, by passing settings to [RPCManager.loadScreen](RPCManager.md#classmethod-rpcmanagerloadscreen) or the server-side Project.load() API.
+DataSources can be loaded in `mockMode` via passing settings to [DataSource.load](DataSource.md#classmethod-datasourceload), or if loaded with a screen or project, by passing settings to [RPCManager.loadScreen](RPCManager.md#classmethod-rpcmanagerloadscreen) or the server-side Project.load() API.
 
 **Flags**: IRW
 
@@ -3952,7 +3957,7 @@ If the DataSource is not yet loaded and a callback is provided, the DataSource w
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | ID | [GlobalId](../reference_2.md#type-globalid) | false | — | DataSource ID |
-| callback | [Callback](../reference.md#type-callback) | true | — | callback to fire when the DataSource is loaded. The callback receives the loaded [DataSource](#class-datasource) as its single parameter. |
+| callback | [Callback](../reference.md#type-callback) | true | — | callback to fire when the DataSource is loaded. The callback receives the loaded [DataSource](DataSource_1.md#class-datasource) as its single parameter. |
 
 ### Returns
 
@@ -4029,7 +4034,7 @@ The following categories are excluded:
 ### Description
 Add a new search operator to all DataSources.
 
-See also [DataSource.addSearchOperator](#method-datasourceaddsearchoperator) for adding operators to specific DataSources only.
+See also [DataSource.addSearchOperator](DataSource_1.md#method-datasourceaddsearchoperator) for adding operators to specific DataSources only.
 
 ### Parameters
 
@@ -4113,15 +4118,15 @@ Without a DataSource, a criteria object must have a valid `operator` to be detec
 
 ### See Also
 
-- [DataSource.isAdvancedCriteria](#method-datasourceisadvancedcriteria)
+- [DataSource.isAdvancedCriteria](DataSource_1.md#method-datasourceisadvancedcriteria)
 
 ---
 ## ClassMethod: DataSource.getCriteriaSchema
 
 ### Description
-Returns a DataSource describing valid [AdvancedCriteria](../reference.md#object-advancedcriteria) given a list of valid field names and operator IDs. This is the class- level factory used by the instance method [DataSource.getCriteriaSchema](#method-datasourcegetcriteriaschema).
+Returns a DataSource describing valid [AdvancedCriteria](../reference.md#object-advancedcriteria) given a list of valid field names and operator IDs. This is the class- level factory used by the instance method [DataSource.getCriteriaSchema](DataSource_1.md#method-datasourcegetcriteriaschema).
 
-The returned DataSource uses a two-type pattern to distinguish field-level criteria from logical criteria (and/or/not), matching the server-side Java class hierarchy. When serialized via [DataSource.asJSONSchema](#method-datasourceasjsonschema), these become separate `$defs` entries.
+The returned DataSource uses a two-type pattern to distinguish field-level criteria from logical criteria (and/or/not), matching the server-side Java class hierarchy. When serialized via [DataSource.asJSONSchema](DataSource_1.md#method-datasourceasjsonschema), these become separate `$defs` entries.
 
 ### Parameters
 
@@ -4140,7 +4145,7 @@ The returned DataSource uses a two-type pattern to distinguish field-level crite
 ## ClassMethod: DataSource.loadWithParents
 
 ### Description
-Variation of [DataSource.load](#classmethod-datasourceload) that will also automatically load any DataSources that the requested DataSources inherit from (via [DataSource.inheritsFrom](#attr-datasourceinheritsfrom)).
+Variation of [DataSource.load](#classmethod-datasourceload) that will also automatically load any DataSources that the requested DataSources inherit from (via [DataSource.inheritsFrom](DataSource_1.md#attr-datasourceinheritsfrom)).
 
 If the parent DataSource is already loaded, calling `loadWithParents` will not automatically reload them unless the forceReload parameter is passed.
 
@@ -4164,6 +4169,29 @@ Register a new [RecordSummaryFunction](../reference_2.md#type-recordsummaryfunct
 |------|------|----------|---------|-------------|
 | functionName | [String](#type-string) | false | — | identifier for the new record summary function |
 | summaryFunction | [Function](#type-function)|[StringMethod](../reference_2.md#type-stringmethod) | false | — | new summary function implementation. This method takes 3 parameters: `record` (the record for which the summary is being generated), `fields` (an array of the available fields) and `summaryField` (the summary field). |
+
+---
+## ClassMethod: DataSource.getDSRequestJSONSchema
+
+### Description
+Returns a JSON Schema describing a [DSRequest](../reference_2.md#object-dsrequest) against any of the given DataSources. The top-level shape is a `oneOf` over per-DataSource [DataSource.getDSRequestJSONSchema](DataSource_1.md#method-datasourcegetdsrequestjsonschema) branches, each branch having its `dataSource` property constrained to that DataSource's ID.
+
+All supplied DataSources are passed as [jSONSchemaSettings.relatedDataSources](#jsonschemasettingsrelateddatasources) into each branch, so cross-DataSource references (`includeFrom`, `fieldQuery`, `valueQuery`) inside each branch resolve against the full input set.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| dataSources | [Array of DataSource](#type-array-of-datasource)|[Array of GlobalId](#type-array-of-globalid) | false | — | The DataSources in scope. Strings are resolved via [isc.DS.get](#method-iscdsget). |
+| settings | [JSONSchemaSettings](#type-jsonschemasettings) | true | — | Optional settings. All options documented on the instance method are supported; additionally any `relatedDataSources` supplied here is merged with the input list. |
+
+### Returns
+
+`[Object](../reference.md#type-object)|[String](#type-string)` — JSON Schema object (or string if [JSONSchemaSettings.asString](JSONSchemaSettings.md#attr-jsonschemasettingsasstring)).
+
+### See Also
+
+- [DataSource.getDSRequestJSONSchema](DataSource_1.md#method-datasourcegetdsrequestjsonschema)
 
 ---
 ## ClassMethod: DataSource.load
@@ -4380,7 +4408,7 @@ Synonym of [DataSource.getDataSource](#classmethod-datasourcegetdatasource): Loo
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | ID | [GlobalId](../reference_2.md#type-globalid) | false | — | DataSource ID |
-| callback | [Callback](../reference.md#type-callback) | true | — | callback to fire when the DataSource is loaded. The callback receives the loaded [DataSource](#class-datasource) as its single parameter. |
+| callback | [Callback](../reference.md#type-callback) | true | — | callback to fire when the DataSource is loaded. The callback receives the loaded [DataSource](DataSource_1.md#class-datasource) as its single parameter. |
 
 ### Returns
 
@@ -4488,7 +4516,7 @@ If the dataPath is null, this method will follow any [dataPath](ListGridField.md
 ## ClassMethod: DataSource.hasCustomTypeOperators
 
 ### Description
-Returns true if the operator list for the passed type has been customized via a call to [DataSource.setTypeOperators](#method-datasourcesettypeoperators).
+Returns true if the operator list for the passed type has been customized via a call to [DataSource.setTypeOperators](DataSource_1.md#method-datasourcesettypeoperators).
 
 ### Parameters
 
@@ -4507,9 +4535,9 @@ Returns true if the operator list for the passed type has been customized via a 
 ### Description
 Exports arbitrary client-side data, with client-side formatters applied, so is suitable for direct display to users. This method can be used to export data formatted outside of any kind of visual component.
 
-Requires the SmartClient server, but does not rely on any server-side DataSources. If you need to intervene in the export process server-side - for example, if you need to do something not directly supported with the exported object, such as attach it to an email - use the [instance method](#method-datasourceexportclientdata) with an appropriate [OperationBinding](OperationBinding.md#class-operationbinding), as described in the method documentation.
+Requires the SmartClient server, but does not rely on any server-side DataSources. If you need to intervene in the export process server-side - for example, if you need to do something not directly supported with the exported object, such as attach it to an email - use the [instance method](DataSource_1.md#method-datasourceexportclientdata) with an appropriate [OperationBinding](OperationBinding.md#class-operationbinding), as described in the method documentation.
 
-To export unformatted data, see [exportData](#method-datasourceexportdata) which does not include client-side formatters, but requires both the SmartClient server and the presence of server-side DataSources.
+To export unformatted data, see [exportData](DataSource_1.md#method-datasourceexportdata) which does not include client-side formatters, but requires both the SmartClient server and the presence of server-side DataSources.
 
 Note that field [displayFormat](DataSourceField.md#attr-datasourcefielddateformatter) is honored for "date" and "datetime" fields when exporting direct to Excel; see the displayFormat docs for details.
 
@@ -4746,6 +4774,28 @@ The `mode` parameter selects between:
 ### Returns
 
 `[DataSource](#type-datasource)` — DataSource describing the event binding
+
+---
+## Method: DataSource.getDSRequestJSONSchema
+
+### Description
+Returns a JSON Schema (Draft 2020-12) describing a complete [DSRequest](../reference_2.md#object-dsrequest) against this DataSource. The schema composes the individual sub-schemas (criteria, sortBy, groupBy, summaryFunctions, outputs, pagination, textMatchStyle, includeFrom, fieldQuery, valueQuery) under a single top-level `object` schema whose `dataSource` property is constrained to this DataSource's ID.
+
+`settings.include` controls which parts are emitted; the default includes every part applicable to `settings.operationType` (default `"fetch"`). For `"add"` / `"update"` operations, `data` is a record schema (this DataSource's own [DataSource.asJSONSchema](#method-datasourceasjsonschema) output) rather than a criteria schema.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| settings | [JSONSchemaSettings](#type-jsonschemasettings) | true | — | Optional settings. See the expanded options documented on [JSONSchemaSettings](../reference_2.md#object-jsonschemasettings). |
+
+### Returns
+
+`[Object](../reference.md#type-object)|[String](#type-string)` — JSON Schema object (or string if [JSONSchemaSettings.asString](JSONSchemaSettings.md#attr-jsonschemasettingsasstring)).
+
+### See Also
+
+- [DataSource.getDSRequestJSONSchema](DataSource.md#classmethod-datasourcegetdsrequestjsonschema)
 
 ---
 ## Method: DataSource.renameFile
@@ -5078,7 +5128,7 @@ A "validate" dsRequest is effectively always [RPCRequest.willHandleError](RPCReq
 ## Method: DataSource.convertDataSourceCriteria
 
 ### Description
-Converts criteria expressed in SmartClient's simple criteria format to an AdvancedCriteria object. This instance method differs from the class method [DataSource.convertCriteria](#classmethod-datasourceconvertcriteria) in that it makes use of the dataSource as schema to help in the conversion. For example, this method is able to honor [DataSourceField.ignoreTextMatchStyle](DataSourceField.md#attr-datasourcefieldignoretextmatchstyle) and use the dataSource's [defaultTextMatchStyle](#attr-datasourcedefaulttextmatchstyle) rather than assuming "substring"
+Converts criteria expressed in SmartClient's simple criteria format to an AdvancedCriteria object. This instance method differs from the class method [DataSource.convertCriteria](DataSource.md#classmethod-datasourceconvertcriteria) in that it makes use of the dataSource as schema to help in the conversion. For example, this method is able to honor [DataSourceField.ignoreTextMatchStyle](DataSourceField.md#attr-datasourcefieldignoretextmatchstyle) and use the dataSource's [defaultTextMatchStyle](#attr-datasourcedefaulttextmatchstyle) rather than assuming "substring"
 
 ### Parameters
 
@@ -5170,7 +5220,7 @@ Note: rather than overriding this method, we recommend using [observation](Class
 ### Description
 Exports arbitrary client-side data, with client-side formatters applied, so is suitable for direct display to users. This method can be used to export data formatted outside of any kind of visual component.
 
-If you do not specify an [operationId](OperationBinding.md#attr-operationbindingoperationid) in the `requestProperties` you pass to this method, it behaves exactly the same as the [static classMethod](#classmethod-datasourceexportclientdata) of the same name. If you do specify an `operationId`, the framework expects your DataSource to configure an [OperationBinding](OperationBinding.md#class-operationbinding) of [operationType](OperationBinding.md#attr-operationbindingoperationtype) "clientExport" with the same `operationId`. The framework will then send the `exportClientData` request via the ordinary [DSRequest](../reference_2.md#object-dsrequest) mechanism, which allows you to use normal framework features in the client data export.
+If you do not specify an [operationId](OperationBinding.md#attr-operationbindingoperationid) in the `requestProperties` you pass to this method, it behaves exactly the same as the [static classMethod](DataSource.md#classmethod-datasourceexportclientdata) of the same name. If you do specify an `operationId`, the framework expects your DataSource to configure an [OperationBinding](OperationBinding.md#class-operationbinding) of [operationType](OperationBinding.md#attr-operationbindingoperationtype) "clientExport" with the same `operationId`. The framework will then send the `exportClientData` request via the ordinary [DSRequest](../reference_2.md#object-dsrequest) mechanism, which allows you to use normal framework features in the client data export.
 
 For example, you could add a [DMI declaration](../kb_topics/dmiOverview.md#kb-topic-direct-method-invocation) to your `operationBinding`, which would allow you to write server-side code that intervenes in the export process - for instance, by calling the `getExportObject()` API to do something special with the export document, like saving it to a database table or sending it to an email list.
 
@@ -5189,6 +5239,22 @@ Note that field [displayFormat](DataSourceField.md#attr-datasourcefielddateforma
 | callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | Optional callback. Note that this is only applicable if you also specify [exportToClient](DSRequest.md#attr-dsrequestexporttoclient): false in the request properties |
 
 ---
+## Method: DataSource.getFieldQueryJSONSchema
+
+### Description
+Returns a JSON Schema for a [Criterion.fieldQuery](Criterion.md#attr-criterionfieldquery) object as used to express a sub-query in AdvancedCriteria against a related DataSource. The shape covers both same-DS and cross-DS fieldQueries, with the `dataSource` property restricted to DSes reachable from this DataSource's FK graph (plus any in [jSONSchemaSettings.relatedDataSources](#jsonschemasettingsrelateddatasources)).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| settings | [JSONSchemaSettings](#type-jsonschemasettings) | true | — | Optional settings. |
+
+### Returns
+
+`[Object](../reference.md#type-object)|[String](#type-string)` — JSON Schema.
+
+---
 ## Method: DataSource.applyFilter
 
 ### Description
@@ -5198,7 +5264,7 @@ By default:
 
 *   any criteria that do not correspond to a DataSource field are ignored
 *   for simple criteria, any null or empty string criteria are ignored and all other criteria are passed to [DataSource.fieldMatchesFilter](#method-datasourcefieldmatchesfilter)
-*   for advanced criteria, each criterion is evaluated via [DataSource.evaluateCriterion](#method-datasourceevaluatecriterion)
+*   for advanced criteria, each criterion is evaluated via [DataSource.evaluateCriterion](DataSource_2.md#method-datasourceevaluatecriterion)
 
 This method is called by [ResultSet.applyFilter](ResultSet.md#method-resultsetapplyfilter) to provide filtering when a ResultSet has a complete cache and filtering can be performed client-side. You may want to override this method in order to mimic the filtering behavior that your server performs.
 
@@ -5232,6 +5298,22 @@ Remove a file stored in this DataSource. Note, if [automatic file versioning](#a
 ### Groups
 
 - fileSource
+
+---
+## Method: DataSource.getValueQueryJSONSchema
+
+### Description
+Returns a JSON Schema for a [Criterion.valueQuery](Criterion.md#attr-criterionvaluequery) object. Shape is the same as [DataSource.getFieldQueryJSONSchema](#method-datasourcegetfieldqueryjsonschema); the semantic difference (scalar vs per-record) is described rather than enforced structurally, matching the server's handling.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| settings | [JSONSchemaSettings](#type-jsonschemasettings) | true | — | Optional settings. |
+
+### Returns
+
+`[Object](../reference.md#type-object)|[String](#type-string)` — JSON Schema.
 
 ---
 ## Method: DataSource.getFieldDefaultOperator
@@ -5394,6 +5476,22 @@ Does this dataSource support the specified "textMatchStyle" when performing a fi
 **Flags**: A
 
 ---
+## Method: DataSource.getOutputsJSONSchema
+
+### Description
+Returns a JSON Schema for a DSRequest `outputs` value against this DataSource. Accepts an array of field-path strings, or a single comma-separated string (the legacy shorthand).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| settings | [JSONSchemaSettings](#type-jsonschemasettings) | true | — | Optional settings. |
+
+### Returns
+
+`[Object](../reference.md#type-object)|[String](#type-string)` — JSON Schema.
+
+---
 ## Method: DataSource.listFileVersions
 
 ### Description
@@ -5432,7 +5530,7 @@ Call this method to set the data in the client-side test-data after initializati
 ## Method: DataSource.getAutoTitle
 
 ### Description
-Return a reasonable user-visible title given a fieldName. Called when [DataSource.autoDeriveTitles](#attr-datasourceautoderivetitles) is true and by default, calls the class method [DataSource.getAutoTitle](#classmethod-datasourcegetautotitle). Override to provide a different policy for auto-deriving titles for a particular DataSource or subclass of DataSource.
+Return a reasonable user-visible title given a fieldName. Called when [DataSource.autoDeriveTitles](#attr-datasourceautoderivetitles) is true and by default, calls the class method [DataSource.getAutoTitle](DataSource.md#classmethod-datasourcegetautotitle). Override to provide a different policy for auto-deriving titles for a particular DataSource or subclass of DataSource.
 
 ### Parameters
 
@@ -5467,16 +5565,32 @@ Save a file to the DataSource.
 - fileSource
 
 ---
+## Method: DataSource.getGroupByJSONSchema
+
+### Description
+Returns a JSON Schema for a DSRequest `groupBy` value against this DataSource. Accepts a single field-path string or an array of field-path strings, drawn from the FK-aware field set.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| settings | [JSONSchemaSettings](#type-jsonschemasettings) | true | — | Optional settings. |
+
+### Returns
+
+`[Object](../reference.md#type-object)|[String](#type-string)` — JSON Schema.
+
+---
 ## Method: DataSource.splitCriteria
 
 ### Description
 Split a criteria apart based on `fields`.
 
-This method will take a simple or [Advanced](../reference.md#object-advancedcriteria) criteria object and extract the subcriteria that apply to the specified array of fields. If passed an AdvancedCriteria, the criteria should be [flat](#classmethod-datasourceisflatcriteria) and the outer operator must be `"and"`.
+This method will take a simple or [Advanced](../reference.md#object-advancedcriteria) criteria object and extract the subcriteria that apply to the specified array of fields. If passed an AdvancedCriteria, the criteria should be [flat](DataSource.md#classmethod-datasourceisflatcriteria) and the outer operator must be `"and"`.
 
 A new criteria object is returned with any criteria applicable to the specified fields. The passed `criteria` is then modified to remove these fields resulting in two distinct criteria.
 
-To avoid modifying an original criteria, use [DataSource.copyCriteria](#classmethod-datasourcecopycriteria) to make a copy to be passed in.
+To avoid modifying an original criteria, use [DataSource.copyCriteria](DataSource.md#classmethod-datasourcecopycriteria) to make a copy to be passed in.
 
 By default the field-specific criteria returned will be in simple criteria format even if the criteria passed in was Advanced. Developers may suppress this conversion by passing in the `preserveAdvanced` parameter. Note that not every [criterion operator](../reference.md#type-operatorid) can be converted to a simple format. This method will only to convert field level criterion with operators that correspond to one of the available [textMatchStyle](../reference_2.md#type-textmatchstyle) options - namely `"equals"`, `"iEquals"` `"iContains"` or `"startsWith"`.
 
@@ -5734,6 +5848,24 @@ Note that the DSResponse provided to this method will **not** go through [DataSo
 | dsRequest | [DSRequest](#type-dsrequest) | true | — | optional dsRequest. If not specified, a DSRequest will be automatically created based on the DataSource and operationType of the DSResponse |
 
 ---
+## Method: DataSource.getAdditionalOutputsJSONSchema
+
+### Description
+Returns a JSON Schema for a DSRequest [additionalOutputs](DSRequest.md#attr-dsrequestadditionaloutputs) value. The value is a comma-separated string of entries of the form `"localAlias!relatedDS.field"` that project cross-DS fields onto every response record; the local aliases can be referenced by name in the same request's [groupBy](DSRequest.md#attr-dsrequestgroupby), [summaryFunctions](DSRequest.md#attr-dsrequestsummaryfunctions), [outputs](DSRequest.md#attr-dsrequestoutputs), or `criteria`.
+
+The schema's description + examples enumerate the FK-reachable candidates for this DataSource so that AI consumers can emit valid entries without guessing at the FK graph.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| settings | [JSONSchemaSettings](#type-jsonschemasettings) | true | — | Optional settings. |
+
+### Returns
+
+`[Object](../reference.md#type-object)|[String](#type-string)` — JSON Schema.
+
+---
 ## Method: DataSource.transformResponse
 
 ### Description
@@ -5805,7 +5937,7 @@ Caching: the result is cached when `settings` is not passed or is an empty objec
 
 ### See Also
 
-- [DataSource.getCriteriaSchema](#classmethod-datasourcegetcriteriaschema)
+- [DataSource.getCriteriaSchema](DataSource.md#classmethod-datasourcegetcriteriaschema)
 
 ---
 ## Method: DataSource.filterData
@@ -6043,6 +6175,22 @@ Overriding this method is also a means of detecting that a normal DataSource (no
 `[DSResponse](#type-dsresponse)` — —
 
 ---
+## Method: DataSource.getIncludeFromJSONSchema
+
+### Description
+Returns a JSON Schema for a single [DataSourceField.includeFrom](DataSourceField.md#attr-datasourcefieldincludefrom) path expression, as used in dynamic/runtime includeFrom specifications. The schema is a string enum of the valid ``<OtherDSID>`.`<fieldName>`` forms reachable from this DataSource via its FK graph.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| settings | [JSONSchemaSettings](#type-jsonschemasettings) | true | — | Optional settings. |
+
+### Returns
+
+`[Object](../reference.md#type-object)|[String](#type-string)` — JSON Schema.
+
+---
 ## Method: DataSource.fieldMatchesFilter
 
 ### Description
@@ -6128,6 +6276,22 @@ Note that with SQLDataSource, `performCustomOperation` must be used if you plan 
 - operations
 
 ---
+## Method: DataSource.getCriteriaJSONSchema
+
+### Description
+Returns a JSON Schema for an [AdvancedCriteria](../reference.md#object-advancedcriteria) against this DataSource. This is the JSON-Schema flavor of [DataSource.getCriteriaSchema](#method-datasourcegetcriteriaschema): it delegates to the existing method to obtain the criteria DataSource, then serializes it via [DataSource.asJSONSchema](#method-datasourceasjsonschema), augmenting the `fieldName` / `valuePath` enums with any cross-DS paths exposed by [jSONSchemaSettings.relatedDataSources](#jsonschemasettingsrelateddatasources).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| settings | [JSONSchemaSettings](#type-jsonschemasettings) | true | — | Optional settings. |
+
+### Returns
+
+`[Object](../reference.md#type-object)|[String](#type-string)` — JSON Schema.
+
+---
 ## Method: DataSource.getPrimaryKeyFieldNames
 
 ### Description
@@ -6174,6 +6338,22 @@ Remove a particular file version stored in this DataSource. Any other versions o
 ### Groups
 
 - fileSource
+
+---
+## Method: DataSource.getSummaryFunctionsJSONSchema
+
+### Description
+Returns a JSON Schema for a DSRequest `summaryFunctions` value against this DataSource — an object mapping field-path names to [SummaryFunction](../reference_2.md#type-summaryfunction) values (or arrays of SummaryFunctions).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| settings | [JSONSchemaSettings](#type-jsonschemasettings) | true | — | Optional settings. |
+
+### Returns
+
+`[Object](../reference.md#type-object)|[String](#type-string)` — JSON Schema.
 
 ---
 ## Method: DataSource.getPrimaryKeyField
@@ -6254,7 +6434,7 @@ This method is called by [ResultSet.compareCriteria](ResultSet.md#method-results
 ### Description
 Get the list of [OperatorId](../reference.md#type-operatorid)s available on this DataSource for the given [FieldType](../reference_2.md#type-fieldtype).
 
-If [DataSource.setTypeOperators](#method-datasourcesettypeoperators) has been called for this DataSource and FieldType, returns that list, otherwise, returns the set of valid operators for the [FieldType](../reference_2.md#type-fieldtype) as specified by [SimpleType.validOperators](SimpleType.md#attr-simpletypevalidoperators), otherwise, the system-wide set of valid operators for the type as registered via [DataSource.addSearchOperator](#classmethod-datasourceaddsearchoperator).
+If [DataSource.setTypeOperators](#method-datasourcesettypeoperators) has been called for this DataSource and FieldType, returns that list, otherwise, returns the set of valid operators for the [FieldType](../reference_2.md#type-fieldtype) as specified by [SimpleType.validOperators](SimpleType.md#attr-simpletypevalidoperators), otherwise, the system-wide set of valid operators for the type as registered via [DataSource.addSearchOperator](DataSource.md#classmethod-datasourceaddsearchoperator).
 
 ### Parameters
 
@@ -6311,9 +6491,9 @@ Get a list of files from the DataSource. Note, if [automatic file versioning](#a
 ## Method: DataSource.isAdvancedCriteria
 
 ### Description
-Instance method that calls [DataSource.isAdvancedCriteria](#classmethod-datasourceisadvancedcriteria), passing this DataSource for enhanced heuristic detection. When a DataSource is available, `fieldName`\-only criteria are recognized as AdvancedCriteria shorthand if the fieldName is a valid field on this DataSource.
+Instance method that calls [DataSource.isAdvancedCriteria](DataSource.md#classmethod-datasourceisadvancedcriteria), passing this DataSource for enhanced heuristic detection. When a DataSource is available, `fieldName`\-only criteria are recognized as AdvancedCriteria shorthand if the fieldName is a valid field on this DataSource.
 
-See [DataSource.isAdvancedCriteria](#classmethod-datasourceisadvancedcriteria) for full documentation of the heuristics used to detect AdvancedCriteria format.
+See [DataSource.isAdvancedCriteria](DataSource.md#classmethod-datasourceisadvancedcriteria) for full documentation of the heuristics used to detect AdvancedCriteria format.
 
 ### Parameters
 
@@ -6343,6 +6523,22 @@ Note that because the entirety of the request is encoded in the URL, there is an
 ### Returns
 
 `[String](#type-string)` — a URL that targets the specified fetch operation.
+
+---
+## Method: DataSource.getTextMatchStyleJSONSchema
+
+### Description
+Returns a JSON Schema for a DSRequest `textMatchStyle` value. This is a fixed enum and does not depend on DataSource shape, but is exposed as an instance method for uniform access alongside the other DSRequest sub-schemas.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| settings | [JSONSchemaSettings](#type-jsonschemasettings) | true | — | Optional settings. |
+
+### Returns
+
+`[Object](../reference.md#type-object)|[String](#type-string)` — JSON Schema.
 
 ---
 ## Method: DataSource.getAllPathsToRelation
@@ -6464,6 +6660,24 @@ Accepts standard [Criteria](../reference_2.md#type-criteria) or [AdvancedCriteri
 ### See Also
 
 - [DataSource.pendingChanges](#attr-datasourcependingchanges)
+
+---
+## Method: DataSource.getSortByJSONSchema
+
+### Description
+Returns a JSON Schema for a DSRequest `sortBy` value against this DataSource. The schema allows any of the three documented forms: a single field-path string, an array of field-path strings, or an array of [SortSpecifier](../reference_2.md#object-sortspecifier) objects.
+
+Field references include dotted FK-graph paths out to [jSONSchemaSettings.fkDepth](#jsonschemasettingsfkdepth) (default 2), so an Order DataSource with a `customerId` foreign key will accept `"customerId.name"` as a sort property.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| settings | [JSONSchemaSettings](#type-jsonschemasettings) | true | — | Optional settings. |
+
+### Returns
+
+`[Object](../reference.md#type-object)|[String](#type-string)` — JSON Schema object (or string if [JSONSchemaSettings.asString](JSONSchemaSettings.md#attr-jsonschemasettingsasstring)).
 
 ---
 ## Method: DataSource.supportsAdvancedCriteria
@@ -6593,7 +6807,7 @@ Add a new search operator, only to this DataSource.
 
 If an existing [Operator](../reference.md#object-operator) is passed, restricts the set of FieldTypes to which that operator can be applied in this DataSource.
 
-See also [DataSource.addSearchOperator](#classmethod-datasourceaddsearchoperator) for adding operators to all DataSources.
+See also [DataSource.addSearchOperator](DataSource.md#classmethod-datasourceaddsearchoperator) for adding operators to all DataSources.
 
 ### Parameters
 
@@ -6737,28 +6951,5 @@ Note that currently, if an XML schema file contains ordering constraints, DataSo
 ### Groups
 
 - xmlSchema
-
----
-## Method: DataSource.evaluateCriterion
-
-### Description
-Evaluate the given criterion with respect to the passed record.
-
-Typically called by the [condition](Operator.md#method-operatorcondition) function of a custom [Operator](../reference.md#object-operator) to evaluate [sub-criteria](Criterion.md#attr-criterioncriteria).
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| record | [Record](#type-record) | false | — | record to evaluate |
-| criterion | [Criterion](#type-criterion) | false | — | criterion to use |
-
-### Returns
-
-`[boolean](../reference.md#type-boolean)` — whether the record meets the supplied [Criterion](../reference_2.md#object-criterion)
-
-### Groups
-
-- advancedFilter
 
 ---

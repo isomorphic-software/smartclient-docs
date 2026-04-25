@@ -28,7 +28,7 @@ Validation
 - [DataBoundComponent.unknownErrorMessage](../classes/DataBoundComponent.md#attr-databoundcomponentunknownerrormessage)
 - [DataBoundComponent.noErrorDetailsMessage](../classes/DataBoundComponent.md#attr-databoundcomponentnoerrordetailsmessage)
 - [SimpleType.validators](../classes/SimpleType.md#attr-simpletypevalidators)
-- [DataSource.useLocalValidators](../classes/DataSource.md#attr-datasourceuselocalvalidators)
+- [DataSource.useLocalValidators](../classes/DataSource_1.md#attr-datasourceuselocalvalidators)
 - [DataSourceField.validators](../classes/DataSourceField.md#attr-datasourcefieldvalidators)
 - [DynamicForm.showInlineErrors](../classes/DynamicForm.md#attr-dynamicformshowinlineerrors)
 - [DynamicForm.showErrorIcons](../classes/DynamicForm.md#attr-dynamicformshowerroricons)

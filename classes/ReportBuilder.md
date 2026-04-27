@@ -70,6 +70,34 @@ Whether AI-powered report creation is enabled. When true, the AI prompt form is 
 **Flags**: IRW
 
 ---
+## Attr: ReportBuilder.aiIncompleteReasonLabel
+
+### Description
+Label above the bulleted reason list in the incomplete dialog.
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IRW
+
+---
+## Attr: ReportBuilder.aiProcessLogAutoHideDelay
+
+### Description
+Milliseconds to wait after the AI process completes before hiding the [AI process log](#attr-reportbuilderaiprocesslog) overlay automatically. The delay gives the user time to see the final "Done." (or failure) row before the window disappears; set to 0 to leave the log open until dismissed manually.
+
+**Flags**: IRW
+
+---
+## Attr: ReportBuilder.suggestedPrompts
+
+### Description
+Optional list of natural-language prompt strings deployments want authors to discover. Surfaced in the AI prompt input's history grid as "suggested" rows alongside actual prompt history. Suggestions are not per-DataSource — the AI sees every available DataSource regardless of the picker selection, so suggested prompts are equally relevant across the catalog.
+
+**Flags**: IRW
+
+---
 ## Attr: ReportBuilder.reportSaveForm
 
 ### Description
@@ -113,9 +141,61 @@ Dialog for configuring chart facets, measures, and aggregation. Created as a top
 ## Attr: ReportBuilder.aiPromptLayout
 
 ### Description
-Layout containing the AI prompt form for natural language report creation.
+Layout hosting the compact AI prompt input. Collapsed by default it shows a one-line TextArea + Submit + expand chevron in roughly 50px; expanded it grows the TextArea to several rows and reveals a history grid populated from [ReportBuilder.historyDataSource](#attr-reportbuilderhistorydatasource) merged with [ReportBuilder.suggestedPrompts](#attr-reportbuildersuggestedprompts).
 
 **Flags**: R
+
+---
+## Attr: ReportBuilder.historyKey
+
+### Description
+Override the auto-generated localStorage scope key. Defaults to `"reportBuilder.aiPromptHistory.`<reifyProjectName or 'default'>`"`. Has no effect when [ReportBuilder.historyDataSource](#attr-reportbuilderhistorydatasource) is configured to a real server-backed DataSource.
+
+**Flags**: IRW
+
+---
+## Attr: ReportBuilder.aiIncompleteSummaryLabel
+
+### Description
+Label above [output.summary](#outputsummary) in the incomplete dialog. Only rendered when the CoT supplied a summary.
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IRW
+
+---
+## Attr: ReportBuilder.historyMax
+
+### Description
+Cap on persisted AI prompt history records. Older records are trimmed in FIFO order once the cap is reached.
+
+**Flags**: IRW
+
+---
+## Attr: ReportBuilder.aiIncompleteSubtitle
+
+### Description
+Subtitle text in the incomplete dialog.
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IRW
+
+---
+## Attr: ReportBuilder.aiIncompletePromptLabel
+
+### Description
+Label above the original prompt in the incomplete dialog.
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IRW
 
 ---
 ## Attr: ReportBuilder.reportSaved
@@ -132,6 +212,18 @@ Signature: `reportSaved(report)` where `report` is the saved report record (`Obj
 
 ### Description
 Default format for report export.
+
+**Flags**: IRW
+
+---
+## Attr: ReportBuilder.aiTimeoutMessage
+
+### Description
+Synthesized error message used when the watchdog timer fires.
+
+### Groups
+
+- i18nMessages
 
 **Flags**: IRW
 
@@ -184,6 +276,38 @@ DataSources available for report building. Can be an array of DataSource instanc
 **Flags**: IRW
 
 ---
+## Attr: ReportBuilder.aiNoOutputMessage
+
+### Description
+Notify text shown when the CoT calls [finished](#finished) with no output object.
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IRW
+
+---
+## Attr: ReportBuilder.aiIncompleteKeepButtonTitle
+
+### Description
+"Keep Anyway" button title - accepts the partial result and raises the persistent incomplete badge on the AI prompt header.
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IRW
+
+---
+## Attr: ReportBuilder.aiTimeoutMillis
+
+### Description
+Watchdog timeout for the [ReportBuilderProcess](#class-reportbuilderprocess) CoT. If the process doesn't call [finished](#finished) within this many milliseconds, ReportBuilder synthesizes an [ReportBuilder.aiTimeoutMessage](#attr-reportbuilderaitimeoutmessage) error and routes it through the standard failure handler so the loading indicator clears and the user gets a Retry affordance. Set to 0 or a negative value to disable the watchdog.
+
+**Flags**: IRW
+
+---
 ## Attr: ReportBuilder.exportFormats
 
 ### Description
@@ -195,7 +319,7 @@ Available export formats for reports.
 ## Attr: ReportBuilder.aiPromptForm
 
 ### Description
-Form for entering AI prompts to generate report components.
+Form for entering AI prompts to generate report components. Holds the prompt TextArea, Submit button, and expand chevron in a single row.
 
 **Flags**: R
 
@@ -237,6 +361,28 @@ Signature: `componentCreated(editNode, paletteNode)` where:
 **Flags**: IRW
 
 ---
+## Attr: ReportBuilder.aiProcessLog
+
+### Description
+Non-blocking overlay window that surfaces the running [ReportBuilderProcess](#class-reportbuilderprocess) as a per-task progress log. Created lazily on the first AI submission and re-attached (via [CoTProcessLog.setProcess](CoTProcessLog.md#method-cotprocesslogsetprocess)) on every subsequent run. The "AI is working…" inline label remains as the always-on, low-attention indicator; this widget is opt-in detail for users who want to see what the AI is doing step-by-step.
+
+The log auto-hides shortly after the process completes (success or failure) so the canvas isn't permanently obstructed; the user can also close or minimize it at any time without affecting the AI run.
+
+**Flags**: R
+
+---
+## Attr: ReportBuilder.aiErrorTitle
+
+### Description
+Title for the dialog shown on hard AI failure (error output, empty output, watchdog timeout, synchronous throw).
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IRW
+
+---
 ## Attr: ReportBuilder.componentPalette
 
 ### Description
@@ -253,12 +399,44 @@ ToolStrip providing report-level actions: Save, Load, Export, New, etc.
 **Flags**: R
 
 ---
+## Attr: ReportBuilder.historyDataSource
+
+### Description
+DataSource ID (or DataSource instance) to persist AI prompt history into. If unset, ReportBuilder auto-creates a [LocalDataSource](#class-localdatasource) keyed by [ReportBuilder.historyKey](#attr-reportbuilderhistorykey) so prompt history survives page reloads on the local browser. Setting this to a server-backed DataSource ID swaps in cross-device persistence with no other code changes.
+
+**Flags**: IRW
+
+---
+## Attr: ReportBuilder.aiErrorRetryButtonTitle
+
+### Description
+"Retry" button title in the error dialog. Re-submits the original prompt verbatim.
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IRW
+
+---
 ## Attr: ReportBuilder.mainLayout
 
 ### Description
 Main horizontal layout containing the palette panel and edit area.
 
 **Flags**: R
+
+---
+## Attr: ReportBuilder.aiIncompleteEditButtonTitle
+
+### Description
+"Edit & Retry" button title - re-populates the prompt for editing.
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IRW
 
 ---
 ## Attr: ReportBuilder.reportSaveDialog
@@ -269,10 +447,30 @@ Dialog for saving reports with title and description.
 **Flags**: R
 
 ---
+## Attr: ReportBuilder.aiIncompleteTitle
+
+### Description
+Title for the dialog shown when the AI flow finishes with [output.incomplete](#outputincomplete)=true.
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IRW
+
+---
 ## Attr: ReportBuilder.reportDataSource
 
 ### Description
 DataSource for persisting saved reports. If not specified, reports can only be saved to local storage or exported.
+
+**Flags**: IRW
+
+---
+## Attr: ReportBuilder.aiPromptTextBoxStyle
+
+### Description
+Optional override for the [TextAreaItem.textBoxStyle](TextAreaItem.md#attr-textareaitemtextboxstyle) of the "Ask AI..." prompt input, so embedders can theme it without touching the rest of the framework's textArea styles. Picks up the standard SmartClient state suffixes (_Focused_, _Disabled_, _Error_, _Hint_) - define those alongside the base class. When unset, the prompt uses the framework's default `textAreaItem` style.
 
 **Flags**: IRW
 

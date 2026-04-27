@@ -43,10 +43,10 @@ This is the central API reference for the SmartClient framework.
             - [SummaryBuilder](classes/SummaryBuilder.md)
               - [AIFieldBuilder](classes/AIFieldBuilder.md)
                 - [AISortFieldBuilder](#class-aisortfieldbuilder)
+          - [ReportBuilder](classes/ReportBuilder.md)
           - [RibbonGroup](classes/RibbonGroup.md)
             - [ToolStripGroup](#class-toolstripgroup)
           - [RichTextEditor](classes/RichTextEditor.md)
-          - [ReportBuilder](classes/ReportBuilder.md)
           - [EventCanvas](classes/EventCanvas.md)
             - [ZoneCanvas](#class-zonecanvas)
             - [IndicatorCanvas](#class-indicatorcanvas)
@@ -519,6 +519,7 @@ This is the central API reference for the SmartClient framework.
   - [ToolStripSeparatorEditProxy](#class-toolstripseparatoreditproxy)
   - [React](#class-react)
   - [InstantUI](#class-instantui)
+- [CoTProcessLog](classes/CoTProcessLog.md)
 - [AnswerEngineOperation](classes/AnswerEngineOperation.md)
 
 ### Knowledge Base

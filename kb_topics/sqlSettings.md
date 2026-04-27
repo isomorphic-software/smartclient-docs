@@ -81,6 +81,14 @@ _sql.MyDatabase.spring.dataSourceBean: springDataSourceBeanId_
 `**sql.MyDatabase.driver.url**`  
 For configurations where `sql.MyDatabase.interface.type` is "driverManager", this property allows you to manually enter the URL we use to connect to the database. If this property is not provided, we build the URL from other settings such as `sql.MyDatabase.driver.serverName` and `sql.MyDatabase.driver.databaseName`.
 
+`**sql.MyDatabase.driver.urlParams**`  
+For "driverManager" configurations where `sql.MyDatabase.driver.url` is **not** set (i.e., the URL is auto-constructed from serverName, portNumber, etc.), this property appends additional query parameters to the generated JDBC URL. The value should be formatted as URL query parameters, for example `ApplicationName=MyApp` or `ApplicationName=MyApp&ssl=true`. The framework automatically prepends `?` or `&` as appropriate.
+
+This is useful when the JDBC driver does not expose a corresponding setter method (which would be needed for the Reflection-based approach described below), or when parameters must appear in the URL itself. For example, to pass an application name to PostgreSQL:  
+`sql.MyDatabase.driver.urlParams: ApplicationName=MyApp`
+
+If `sql.MyDatabase.driver.url` is set, this property is ignored — include any parameters directly in the manually specified URL instead.
+
 **Other properties**  
 Different JDBC drivers support different properties to support product-specific quirks and features. You can often specify these properties by embedding them as parameters in the URL used to connect to the database.
 

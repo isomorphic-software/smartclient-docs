@@ -7,7 +7,7 @@
 ## KB Topic: Advanced Filtering
 
 ### Description
-Isomorphic [DataSources](../classes/DataSource_1.md#class-datasource) provide an advanced filtering mechanism for searching data, including a wide range of builtin [search-operators](../reference.md#object-operator), which allow searching via simple comparisons like `equals` and `contains` and more complex checks, like `equalsOtherField` and `regex`. You can also add entirely custom search-operators, via DataSource method [addSearchOperator()](../classes/DataSource_1.md#method-datasourceaddsearchoperator).
+Isomorphic [DataSources](../classes/DataSource_1.md#class-datasource) provide an advanced filtering mechanism for searching data, including a wide range of builtin [search-operators](../reference_2.md#object-operator), which allow searching via simple comparisons like `equals` and `contains` and more complex checks, like `equalsOtherField` and `regex`. You can also add entirely custom search-operators, via DataSource method [addSearchOperator()](../classes/DataSource_2.md#method-datasourceaddsearchoperator).
 
 For a full list of operators, see [OperatorId](../reference.md#type-operatorid).
 
@@ -20,7 +20,7 @@ For a full list of operators, see [OperatorId](../reference.md#type-operatorid).
 - [DataSource.hasCustomTypeOperators](../classes/DataSource.md#classmethod-datasourcehascustomtypeoperators)
 - [Operator.condition](../classes/Operator.md#method-operatorcondition)
 - [Operator.compareCriteria](../classes/Operator.md#method-operatorcomparecriteria)
-- [DataSource.addSearchOperator](../classes/DataSource_1.md#method-datasourceaddsearchoperator)
+- [DataSource.addSearchOperator](../classes/DataSource_2.md#method-datasourceaddsearchoperator)
 - [DataSource.getSearchOperator](../classes/DataSource_1.md#method-datasourcegetsearchoperator)
 - [DataSource.getTypeOperators](../classes/DataSource_1.md#method-datasourcegettypeoperators)
 - [DataSource.setTypeOperators](../classes/DataSource_1.md#method-datasourcesettypeoperators)
@@ -28,12 +28,12 @@ For a full list of operators, see [OperatorId](../reference.md#type-operatorid).
 - [DataSource.getFieldOperators](../classes/DataSource_1.md#method-datasourcegetfieldoperators)
 - [DataSource.getFieldDefaultOperator](../classes/DataSource_1.md#method-datasourcegetfielddefaultoperator)
 - [DataSource.getFieldOperatorMap](../classes/DataSource_1.md#method-datasourcegetfieldoperatormap)
-- [DataSource.getTypeOperatorMap](../classes/DataSource_1.md#method-datasourcegettypeoperatormap)
+- [DataSource.getTypeOperatorMap](../classes/DataSource_2.md#method-datasourcegettypeoperatormap)
 - [DataSource.evaluateCriterion](../classes/DataSource_2.md#method-datasourceevaluatecriterion)
 - [AdvancedCriteria](../reference.md#object-advancedcriteria)
 - [Criterion](../reference_2.md#object-criterion)
 - [AdvancedCriterionSubquery](../reference.md#object-advancedcriterionsubquery)
-- [Operator](../reference.md#object-operator)
+- [Operator](../reference_2.md#object-operator)
 - [CriterionValues](../reference.md#object-criterionvalues)
 - [SimpleType.validOperators](../classes/SimpleType.md#attr-simpletypevalidoperators)
 - [SimpleType.defaultOperator](../classes/SimpleType.md#attr-simpletypedefaultoperator)

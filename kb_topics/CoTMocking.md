@@ -24,12 +24,19 @@ For regression testing, you can capture real AI responses during a live run and 
 
 ### Related
 
+- [CoTProcess.armCapture](../classes/CoTProcess.md#classmethod-cotprocessarmcapture)
+- [CoTProcess.armReplay](../classes/CoTProcess.md#classmethod-cotprocessarmreplay)
+- [CoTProcess.dumpCapturedMockData](../classes/CoTProcess.md#classmethod-cotprocessdumpcapturedmockdata)
+- [CoTProcess.disarm](../classes/CoTProcess.md#classmethod-cotprocessdisarm)
 - [CoTProcess.mockOutput](../classes/CoTProcess.md#method-cotprocessmockoutput)
 - [CoTProcess.setMockReplayFailure](../classes/CoTProcess.md#method-cotprocesssetmockreplayfailure)
 - [CoTTask.mockOutput](../classes/CoTTask.md#method-cottaskmockoutput)
 - [AUN.mockOutput](../classes/AUN.md#method-aunmockoutput)
 - [CoTInterceptDialog](../classes/CoTInterceptDialog.md#class-cotinterceptdialog)
 - [CoTProcess.defaultMockInteractive](../classes/CoTProcess.md#classattr-cotprocessdefaultmockinteractive)
+- [CoTProcess.defaultCaptureMockData](../classes/CoTProcess.md#classattr-cotprocessdefaultcapturemockdata)
+- [CoTProcess.defaultMockSteps](../classes/CoTProcess.md#classattr-cotprocessdefaultmocksteps)
+- [CoTProcess.defaultMockReplayDelay](../classes/CoTProcess.md#classattr-cotprocessdefaultmockreplaydelay)
 - [CoTProcess.mockMode](../classes/CoTProcess.md#attr-cotprocessmockmode)
 - [CoTProcess.mockInteractive](../classes/CoTProcess.md#attr-cotprocessmockinteractive)
 - [CoTProcess.captureMockData](../classes/CoTProcess.md#attr-cotprocesscapturemockdata)

@@ -50,6 +50,36 @@ Use [runTask()](Process.md#method-processruntask) to enter a single CoTTask with
 - CoT
 
 ---
+## ClassAttr: CoTProcess.defaultCaptureMockData
+
+### Description
+When true, the class-level capture session is armed: every running [CoTProcess](#class-cotprocess) that does _not_ explicitly opt out via its own [CoTProcess.captureMockData](#attr-cotprocesscapturemockdata) flag captures AI responses, both into the per-instance [CoTProcess.mockData](#attr-cotprocessmockdata) array and as flat entries in [CoTProcess.defaultMockSteps](#classattr-cotprocessdefaultmocksteps) - so a single test can capture an entire feature tree of nested sub-processes (see [CoTProcess.armCapture](#classmethod-cotprocessarmcapture)) without enumerating sub-process IDs.
+
+Most callers should use the [armCapture()](#classmethod-cotprocessarmcapture) / [disarm()](#classmethod-cotprocessdisarm) helpers rather than setting this flag directly; see [CoTMocking](../kb_topics/CoTMocking.md#kb-topic-cotmocking).
+
+### Groups
+
+- CoTMocking
+
+**Flags**: IRW
+
+---
+## ClassAttr: CoTProcess.defaultMockSteps
+
+### Description
+Class-level mock-replay payload as a flat global sequence of step entries covering an entire tree of nested CoTProcesses. Each entry has the shape `{processKey, taskID, aiResponse, timestamp, delay?}`. The `processKey` is the running process's `ID` for cached singletons, or its leaf class name for anonymous transient processes. The optional numeric `delay` overrides [CoTProcess.defaultMockReplayDelay](#classattr-cotprocessdefaultmockreplaydelay) for that one step (set to `0` to run that step synchronously).
+
+When set and [CoTProcess._mockSessionMode](#cotprocess_mocksessionmode) is `"replay"`, every running CoTTask is matched against the entry at [CoTProcess._stepCursor](#cotprocess_stepcursor) by the `(processKey, taskID)` tuple. A match yields the entry's `aiResponse` as the synthesized AI output and advances the cursor; a mismatch is a hard failure that terminates the run with a diagnostic. Strict global ordering is intentional: any change to the CoT workflow (task reorder, sub-process moved, extra/missing invocation) surfaces as a divergence rather than silent wrong-data consumption.
+
+Most callers should use the [armReplay()](#classmethod-cotprocessarmreplay) helper rather than setting this directly.
+
+### Groups
+
+- CoTMocking
+
+**Flags**: IRW
+
+---
 ## ClassAttr: CoTProcess.defaultMockInteractive
 
 ### Description
@@ -61,6 +91,20 @@ This allows developers to enable interactive mocking globally for all CoT proces
  isc.CoTProcess.defaultMockInteractive = true;
  
 ```
+
+### Groups
+
+- CoTMocking
+
+**Flags**: IRW
+
+---
+## ClassAttr: CoTProcess.defaultMockReplayDelay
+
+### Description
+Default delay (in milliseconds) inserted before each mocked CoTTask response is processed - both during a class-level replay session (see [CoTProcess.armReplay](#classmethod-cotprocessarmreplay)) and when a single CoTProcess is run in mock mode via per-instance [CoTProcess.mockMode](#attr-cotprocessmockmode) / [CoTProcess.mockData](#attr-cotprocessmockdata). Models a realistic AI-response cadence for demos, capture/replay walkthroughs, and offline development - mirroring [AI.spoofedResponseDelay](#aispoofedresponsedelay) at the lower-level AI spoofing layer.
+
+A per-step `delay` field on a captured bag entry, when set to a number, overrides this class default for that one step. Set the class default (or a per-step override) to `0` to run mocks synchronously - recommended for unit tests that drive the coordinator directly.
 
 ### Groups
 
@@ -99,6 +143,8 @@ Array of mock data entries for capture or replay.
 **During Capture:** When [CoTProcess.captureMockData](#attr-cotprocesscapturemockdata) is true, this array is automatically populated with entries containing `taskID`, `aiResponse`, and `timestamp` for each AI call.
 
 **During Replay:** When [CoTProcess.mockMode](#attr-cotprocessmockmode) is true and this array is populated, the framework replays responses in sequence, matching each entry's `taskID` against the current task. If the workflow diverges (task IDs don't match), replay fails with a diagnostic error.
+
+For multi-process bags spanning a tree of nested sub-processes, see [CoTProcess.defaultMockSteps](#classattr-cotprocessdefaultmocksteps) / [CoTProcess.armReplay](#classmethod-cotprocessarmreplay).
 
 ### Groups
 
@@ -171,6 +217,8 @@ When true, enables mock data capture mode. During execution, each AI response is
 To avoid false regressions, ensure the test environment is reset to the same state before each replay (e.g., restore database snapshots, use deterministic component IDs via [Canvas.ID](Canvas.md#attr-canvasid), or isolate tests in fresh browser sessions).
 
 **ID Stability via UISession:** CoT processes that use [UISession](#class-uisession) (such as [AUN](AUN.md#class-aun)) benefit from UISession's deterministic ID generation. UISession assigns its own [PathLocalIds](#type-pathlocalid) that are independent of SmartClient's global ID counters, so components created _before_ the session do not affect IDs within the session's scope. See [UISession](#class-uisession) for details on ID stability guarantees.
+
+For coordinated capture across a tree of nested sub-processes (without enumerating each sub-process by ID), see [CoTProcess.armCapture](#classmethod-cotprocessarmcapture).
 
 ### Groups
 
@@ -265,6 +313,8 @@ Name of the default Process subclass to use when auto-instantiating nested proce
 
 ### Description
 Process-wide default for mocking. When true, tasks inherit mocking unless they explicitly set [CoTTask.mockMode](CoTTask.md#attr-cottaskmockmode) to true (force mock) or false (force real). See precedence rules under [CoTMocking](../kb_topics/CoTMocking.md#kb-topic-cotmocking).
+
+For class-level coordinated capture/replay across nested sub-processes, see [CoTProcess.armReplay](#classmethod-cotprocessarmreplay) and [CoTProcess.defaultMockSteps](#classattr-cotprocessdefaultmocksteps).
 
 ### Groups
 
@@ -454,6 +504,70 @@ Primer text shown before validation errors when using [CoTProcess.getPromptPart]
 Optional parameters to pass to the PausableAsyncOperation when created. Can include a cancellationController for external cancellation control.
 
 **Flags**: IRW
+
+---
+## ClassMethod: CoTProcess.disarm
+
+### Description
+End the current class-level mock-capture or mock-replay session and return to `"idle"`. Reverts any per-instance `captureMockData` flips that [CoTProcess.armCapture](#classmethod-cotprocessarmcapture) made on cached singletons, but does _not_ clear per-instance `mockData` arrays that were populated by the session - those remain available for inspection.
+
+### Groups
+
+- CoTMocking
+
+---
+## ClassMethod: CoTProcess.armReplay
+
+### Description
+Begin a class-level mock-replay session using a bag previously produced by [CoTProcess.dumpCapturedMockData](#classmethod-cotprocessdumpcapturedmockdata). Installs the bag's flat step sequence as [CoTProcess.defaultMockSteps](#classattr-cotprocessdefaultmocksteps) and resets the class step cursor. Replay is enforced strictly: every running CoTTask is matched against the next step's `(processKey, taskID)` tuple. Any divergence (task reorder, sub-process skipped, sub-process moved to a different parent step, replay running longer than capture) is a hard failure that terminates the run with a diagnostic naming both expected and actual coordinates.
+
+No-ops with a warning if a capture session is already armed; call [CoTProcess.disarm](#classmethod-cotprocessdisarm) first. Bags whose `formatVersion` does not match the current implementation are also rejected.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| bag | [Object](../reference.md#type-object) | false | — | Bag previously produced by [CoTProcess.dumpCapturedMockData](#classmethod-cotprocessdumpcapturedmockdata). |
+
+### Groups
+
+- CoTMocking
+
+---
+## ClassMethod: CoTProcess.armCapture
+
+### Description
+Begin a class-level mock-capture session. Every [CoTProcess](#class-cotprocess) that subsequently runs - including nested children invoked via [SubProcessTask](SubProcessTask.md#class-subprocesstask) - records its AI responses, both into the per-instance [CoTProcess.mockData](#attr-cotprocessmockdata) array (existing behavior) and as flat `{processKey, taskID, aiResponse, timestamp}` entries in a class-level global step sequence. `processKey` is `process.ID` for cached singletons, falling back to the leaf class name for anonymous transient parents.
+
+Use [CoTProcess.dumpCapturedMockData](#classmethod-cotprocessdumpcapturedmockdata) to retrieve a serializable bag covering the entire feature tree, then [CoTProcess.armReplay](#classmethod-cotprocessarmreplay) on a later run to replay it. Call [CoTProcess.disarm](#classmethod-cotprocessdisarm) between sessions.
+
+No-ops with a warning if a replay session is already armed; call [CoTProcess.disarm](#classmethod-cotprocessdisarm) first.
+
+### Groups
+
+- CoTMocking
+
+---
+## ClassMethod: CoTProcess.dumpCapturedMockData
+
+### Description
+Return a serializable bag of every AI response captured since [CoTProcess.armCapture](#classmethod-cotprocessarmcapture) was called, suitable for later use with [CoTProcess.armReplay](#classmethod-cotprocessarmreplay).
+
+Safe to call any time during or after a capture session. Calling outside a capture session returns a bag whose `steps` array is empty.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| rootKey | [String](#type-string) | true | — | Informational only - identifies the entry-point process so a viewer can label the tree by root. Replay does not require it. |
+
+### Returns
+
+`[Object](../reference.md#type-object)` — Bag with shape `{formatVersion, captured, rootKey?, steps}` where `steps` is an array of `{processKey, taskID, aiResponse, timestamp}` entries in capture order. Each step may be hand-edited to add an optional numeric `delay` field that overrides [CoTProcess.defaultMockReplayDelay](#classattr-cotprocessdefaultmockreplaydelay) for that one step at replay time.
+
+### Groups
+
+- CoTMocking
 
 ---
 ## Method: CoTProcess.getPromptPart
@@ -723,6 +837,8 @@ Callers can access:
 
 ### Description
 Starts or resumes the process. Overrides Process.start() to check for mock replay failure - if a prior task called [CoTProcess.setMockReplayFailure](#method-cotprocesssetmockreplayfailure), the process terminates immediately rather than continuing to execute tasks against stale mockData.
+
+Also consults the class-level mock-session coordinator (see [CoTProcess.armCapture](#classmethod-cotprocessarmcapture), [CoTProcess.armReplay](#classmethod-cotprocessarmreplay)) to enable capture or pre-load replay data on this run when no explicit per-instance setting exists.
 
 ---
 ## Method: CoTProcess.cancel

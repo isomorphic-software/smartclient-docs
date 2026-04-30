@@ -683,7 +683,7 @@ In a manner analogous to [DataSource.transformRequest](DataSource_1.md#method-da
 ## ClassMethod: RPCManager.suspendTransaction
 
 ### Description
-Suspends the current transaction, such that all processing of the transaction is halted, any remaining [callbacks](RPCRequest.md#attr-rpcrequestcallback) in the transaction won't fire, and the transaction can never [timeout](RPCRequest.md#attr-rpcrequesttimeout).
+Suspends the current transaction (rollback / abort / undo of an in-flight queued dsRequest or rpcRequest), such that all processing of the transaction is halted, any remaining [callbacks](RPCRequest.md#attr-rpcrequestcallback) in the transaction won't fire, and the transaction can never [timeout](RPCRequest.md#attr-rpcrequesttimeout).
 
 `suspendTransaction()` is typically used to handle total failures for an entire transaction, such as HTTP status 500, or session timeout resulting in [loginRequired()](#classmethod-rpcmanagerloginrequired) being called. In both cases the intent is to put the transaction on hold so that a transient problem can be resolved, and then the transaction can be re-sent successfully. By using suspendTransaction(), components that submitted requests never realize there was a transient failure, and so error handling logic does not have to be implemented in every component.
 
@@ -969,6 +969,8 @@ If you do not pass `globals` and avoid depending on global IDs within the screen
 Creating a screen may or may not cause it to draw, depending on current global autoDraw setting ([isc.setAutoDraw](isc.md#staticmethod-iscsetautodraw)) and any `autoDraw` settings in the screen itself.
 
 Instead of `globals`, you may instead pass a [substitution configuration](../reference.md#object-createscreensettings) to change what classes are used to construct widgets, or subsitute existing widgets for those to be constructed, by widget ID.
+
+During creation of screens originating from XML translation, [class.assumeGoodCode](#classassumegoodcode) is automatically enabled for faster widget initialization.
 
 ### Parameters
 

@@ -9,6 +9,8 @@
 ### Description
 The Real-Time Messaging module creates a channel for messages to be sent from the server to the client (a.k.a. "server push") in real-time (as opposed to periodically polling the server for updates).
 
+Use this for live data feeds, streaming notifications, push alerts, presence indicators, dashboards that auto-refresh, chat, collaborative editing signals, and any scenario where the server needs to notify clients of state changes without the client having to poll. The transport is WebSocket where supported, with HTTP long-poll / Server-Sent Events (SSE / EventSource) and "forever frame" Comet as fallbacks.
+
 See [Messaging overview](../kb_topics/messaging.md#kb-topic-real-time-messaging) for information.
 
 ---

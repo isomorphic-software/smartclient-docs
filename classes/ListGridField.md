@@ -1374,7 +1374,7 @@ When enabled, the default header context menu for this field will include an ite
 
 If unset, these behaviors are enabled when [ListGrid.canAutoFitFields](ListGrid_1.md#attr-listgridcanautofitfields) is true.
 
-If this property is set to false, and [ListGrid.canAutoFitFields](ListGrid_1.md#attr-listgridcanautofitfields) is true, this field will be ommitted from auto-fit when the user selects the header menu option to [auto fit all fields](ListGrid_1.md#attr-listgridautofitalltext).
+If this property is set to false, and [ListGrid.canAutoFitFields](ListGrid_1.md#attr-listgridcanautofitfields) is true, this field will be omitted from auto-fit when the user selects the header menu option to [auto fit all fields](ListGrid_1.md#attr-listgridautofitalltext).
 
 Note - this property governs user-initiated auto-fit only. It has no impact on autoFit set up via [ListGridField.autoFitWidth](#attr-listgridfieldautofitwidth) and [ListGrid.autoFitFieldWidths](ListGrid_1.md#attr-listgridautofitfieldwidths).
 

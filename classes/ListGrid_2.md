@@ -7177,6 +7177,24 @@ Note that this method is not called when the data is regrouped, either [programm
 - [ListGrid.groupByComplete](#method-listgridgroupbycomplete)
 
 ---
+## Method: ListGrid.getHeightForRows
+
+### Description
+Returns the pixel height needed to display the specified number of data rows, accounting for header, filter editor, cell heights, and grid border. Uses skin- and density-aware defaults via [Class.getInstanceProperty](Class.md#classmethod-classgetinstanceproperty).
+
+If `rowCount` is omitted, sizes for [ListGrid.autoFitMaxRecords](ListGrid_1.md#attr-listgridautofitmaxrecords), capped at the dataset length when it is known. When the dataset length is not yet known (e.g. fetch in progress), the cap is not applied.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| rowCount | [Integer](../reference_2.md#type-integer) | true | — | number of data rows |
+
+### Returns
+
+`[Integer](../reference_2.md#type-integer)` — pixel height
+
+---
 ## Method: ListGrid.isExpansionField
 
 ### Description

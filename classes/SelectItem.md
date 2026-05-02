@@ -333,6 +333,18 @@ If enabled, this setting overrides [SelectItem.defaultValue](#attr-selectitemdef
 **Flags**: IRW
 
 ---
+## Attr: SelectItem.pickerIconPrompt
+
+### Description
+Prompt to show when the user hovers the mouse over the picker icon for this SelectItem. Also used as the ARIA label for screen readers. May be overridden for localization.
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IR
+
+---
 ## Attr: SelectItem.escapeHTML
 
 ### Description

@@ -734,6 +734,18 @@ If this item has a specified `optionDataSource`, and this property is not null, 
 **Flags**: IRA
 
 ---
+## Attr: ComboBoxItem.pickerIconPrompt
+
+### Description
+Prompt to show when the user hovers the mouse over the picker icon for this ComboBoxItem. Also used as the ARIA label for screen readers. May be overridden for localization.
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IR
+
+---
 ## Attr: ComboBoxItem.showPickerIcon
 
 ### Description

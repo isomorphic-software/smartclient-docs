@@ -31,6 +31,7 @@ Columns that show images either as their only appearance or in addition to text.
 - [ListGridField.editorValueIconWidth](../classes/ListGridField.md#attr-listgridfieldeditorvalueiconwidth)
 - [ListGridField.editorValueIconHeight](../classes/ListGridField.md#attr-listgridfieldeditorvalueiconheight)
 - [ListGridField.showValueIconOnly](../classes/ListGridField.md#attr-listgridfieldshowvalueicononly)
+- [ListGridField.valueIconAriaRole](../classes/ListGridField.md#attr-listgridfieldvalueiconariarole)
 - [ListGridField.suppressValueIcon](../classes/ListGridField.md#attr-listgridfieldsuppressvalueicon)
 - [ListGridField.valueIconOrientation](../classes/ListGridField.md#attr-listgridfieldvalueiconorientation)
 - [ListGrid.valueIconLeftPadding](../classes/ListGrid_1.md#attr-listgridvalueiconleftpadding)

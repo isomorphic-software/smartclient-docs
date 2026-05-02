@@ -2532,6 +2532,27 @@ Note: the default value of this attribute is overridden by some subclasses.
 **Flags**: IRW
 
 ---
+## Attr: FormItem.valueIconAriaRole
+
+### Description
+Controls the WAI ARIA role applied to valueIcon elements for this item when [screen reader\\n mode](isc.md#staticmethod-iscsetscreenreadermode) is active.
+
+When unset, the role is determined automatically: if [FormItem.showValueIconOnly](#attr-formitemshowvalueicononly) is true the icon gets `role="img"` with an `aria-label`; otherwise it gets `role="presentation"`.
+
+Set to `"img"` to force screen reader announcement even when text is shown, or `"presentation"` to suppress even when icon-only.
+
+### Groups
+
+- valueIcons
+- accessibility
+
+### See Also
+
+- [FormItem.showValueIconOnly](#attr-formitemshowvalueicononly)
+
+**Flags**: IRW
+
+---
 ## Attr: FormItem.updateControlOnOver
 
 ### Description

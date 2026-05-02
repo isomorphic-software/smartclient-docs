@@ -1374,7 +1374,7 @@ When enabled, the default header context menu for this field will include an ite
 
 If unset, these behaviors are enabled when [ListGrid.canAutoFitFields](ListGrid_1.md#attr-listgridcanautofitfields) is true.
 
-If this property is set to false, and [ListGrid.canAutoFitFields](ListGrid_1.md#attr-listgridcanautofitfields) is true, this field will be ommitted from auto-fit when the user selects the header menu option to [auto fit all fields](ListGrid_1.md#attr-listgridautofitalltext).
+If this property is set to false, and [ListGrid.canAutoFitFields](ListGrid_1.md#attr-listgridcanautofitfields) is true, this field will be omitted from auto-fit when the user selects the header menu option to [auto fit all fields](ListGrid_1.md#attr-listgridautofitalltext).
 
 Note - this property governs user-initiated auto-fit only. It has no impact on autoFit set up via [ListGridField.autoFitWidth](#attr-listgridfieldautofitwidth) and [ListGrid.autoFitFieldWidths](ListGrid_1.md#attr-listgridautofitfieldwidths).
 
@@ -1879,7 +1879,7 @@ Also, while the current implementation would allow creation of a formula that ca
 
 To change this field's formula, either call [ListGrid.setUserFormula](ListGrid_2.md#method-listgridsetuserformula) with a new `UserFormula` object or call [ListGrid.setUserFormulaText](ListGrid_2.md#method-listgridsetuserformulatext) to change just the [UserFormula.text](UserFormula.md#attr-userformulatext).
 
-It is undefined behavior to share the same record objects, or the same [ResultSet](ResultSet.md#class-resultset) instances, among multiple grids if one of the grid's fields specifies a `userFormula`, [userSummary](#attr-listgridfieldusersummary), [aiFieldPrompt](#attr-listgridfieldaifieldprompt), or [aiHoverRequest](#attr-listgridfieldaihoverrequest), or if one of the grids has a [Hilite](../reference_2.md#object-hilite) with an asynchronous filter in the hilite's [criteria](Hilite.md#attr-hilitecriteria).
+It is undefined behavior to share the same record objects, or the same [ResultSet](ResultSet.md#class-resultset) instances, among multiple grids if one of the grid's fields specifies a `userFormula`, [userSummary](#attr-listgridfieldusersummary), [aiFieldPrompt](#attr-listgridfieldaifieldprompt), or [aiHoverRequest](#attr-listgridfieldaihoverrequest), or if one of the grids has a [Hilite](../reference.md#object-hilite) with an asynchronous filter in the hilite's [criteria](Hilite.md#attr-hilitecriteria).
 
 ### Groups
 
@@ -2314,7 +2314,7 @@ Advanced applications that wish to save summaries separately from a grid's [view
 
 To change this field's summary definition, either call [ListGrid.setUserSummary](ListGrid_2.md#method-listgridsetusersummary) with a new `UserSummary` object or call [ListGrid.setUserSummaryText](ListGrid_2.md#method-listgridsetusersummarytext) to change just the [UserSummary.text](UserSummary.md#attr-usersummarytext).
 
-It is undefined behavior to share the same record objects, or the same [ResultSet](ResultSet.md#class-resultset) instances, among multiple grids if one of the grid's fields specifies a `userSummary`, [userFormula](#attr-listgridfielduserformula), [aiFieldPrompt](#attr-listgridfieldaifieldprompt), or [aiHoverRequest](#attr-listgridfieldaihoverrequest), or if one of the grids has a [Hilite](../reference_2.md#object-hilite) with an asynchronous filter in the hilite's [criteria](Hilite.md#attr-hilitecriteria).
+It is undefined behavior to share the same record objects, or the same [ResultSet](ResultSet.md#class-resultset) instances, among multiple grids if one of the grid's fields specifies a `userSummary`, [userFormula](#attr-listgridfielduserformula), [aiFieldPrompt](#attr-listgridfieldaifieldprompt), or [aiHoverRequest](#attr-listgridfieldaihoverrequest), or if one of the grids has a [Hilite](../reference.md#object-hilite) with an asynchronous filter in the hilite's [criteria](Hilite.md#attr-hilitecriteria).
 
 ### Groups
 

@@ -134,6 +134,32 @@ To avoid undefined behavior, this property must be set to `false` if the same re
 **Flags**: IRW
 
 ---
+## Attr: DataBoundComponent.recordLimit
+
+### Description
+If set, the component will display at most this many records, regardless of how many records match the current criteria. The grid's row count, scrollbar extent, and [row range display](ListGrid_2.md#method-listgridgetrowrangedisplayvalue) all reflect the cap rather than the true matching count. The component will never fetch records beyond row `recordLimit - 1`.
+
+Most commonly used to render "top N" displays — top 10 customers by sales, last 20 alerts, etc. To get a true "top N" semantic, also specify a sort (via [ListGrid.initialSort](ListGrid_2.md#attr-listgridinitialsort) or [bound DataSource sort](FacetChart.md#attr-facetchartdata)) so that the N records returned are the ones the user expects.
+
+When set, by default the component forces server-side filtering and sorting so every criteria/sort change re-queries under the cap. Set [recordLimitClientOperations:true](#attr-databoundcomponentrecordlimitclientoperations) to allow client-side filter and sort to operate within the already-fetched top N.
+
+Use [DataBoundComponent.setRecordLimit](#method-databoundcomponentsetrecordlimit) to change the cap at runtime. Compatible with all [DataSource](DataSource_1.md#class-datasource) types (clientOnly, server-backed, cacheAllData) — the cap is enforced in the [ResultSet](ResultSet.md#class-resultset) layer, so any DataSource that honors `endRow` works.
+
+Not supported on [TreeGrid](TreeGrid.md#class-treegrid) or [CubeGrid](CubeGrid.md#class-cubegrid); their data models differ enough that "top N" needs separate design.
+
+### Groups
+
+- fetching
+
+### See Also
+
+- [ResultSet.recordLimit](ResultSet.md#attr-resultsetrecordlimit)
+- [DataBoundComponent.recordLimitClientOperations](#attr-databoundcomponentrecordlimitclientoperations)
+- [DataBoundComponent.setRecordLimit](#method-databoundcomponentsetrecordlimit)
+
+**Flags**: IRW
+
+---
 ## Attr: DataBoundComponent.multiSortDialogProperties
 
 ### Description
@@ -421,6 +447,28 @@ If an application changes the dataSource associated with a component at runtime 
 SmartClient has logic to automatically detect this case and log a warning by default. This property may be set to false to suppress this warning - useful for cases where you want to use the same set of stored SavedSearches even after a component's dataSource has been changed.
 
 **Flags**: IRWA
+
+---
+## Attr: DataBoundComponent.autoRefresh
+
+### Description
+If `true`, the component automatically refreshes its data on a timer at [DataBoundComponent.autoRefreshPollingInterval](#attr-databoundcomponentautorefreshpollinginterval) milliseconds, calling [DataBoundComponent.refreshData](#method-databoundcomponentrefreshdata) on each tick. `refreshData()` preserves selection, scroll position, uncommitted in-place edits, TreeGrid expansion and similar UI state across the refresh.
+
+To toggle at runtime call [DataBoundComponent.setAutoRefresh](#method-databoundcomponentsetautorefresh). Setting `autoRefresh:false` stops the timer but leaves `autoRefreshPollingInterval` untouched, so re-enabling restores the previously chosen cadence without re-entry. There is no separate transient pause API — the model is on or off.
+
+The first refresh fires `autoRefreshPollingInterval` ms after the component is drawn (or after `setAutoRefresh(true)`). If no fetch has yet completed when a tick arrives, the tick no-ops without warning and reschedules; once data lands, subsequent ticks refresh.
+
+### Groups
+
+- fetching
+
+### See Also
+
+- [DataBoundComponent.autoRefreshPollingInterval](#attr-databoundcomponentautorefreshpollinginterval)
+- [DataBoundComponent.setAutoRefresh](#method-databoundcomponentsetautorefresh)
+- [DataBoundComponent.refreshData](#method-databoundcomponentrefreshdata)
+
+**Flags**: IRW
 
 ---
 ## Attr: DataBoundComponent.unknownErrorMessage
@@ -903,6 +951,28 @@ NOTE: if `autoFetchData` is set, calling [fetchData()](ListGrid_2.md#method-list
 **Flags**: IRW
 
 ---
+## Attr: DataBoundComponent.recordLimitClientOperations
+
+### Description
+When [DataBoundComponent.recordLimit](#attr-databoundcomponentrecordlimit) is set, controls whether client-side filter and sort are allowed within the capped result set. Default `false`: the component forces server-side filtering and sorting, so every criteria or sort change re-queries the server under the cap (correct "top N" semantic — switching sort from "by sales" to "by margin" gets the top 10 by margin, not a re-sort of the top 10 by sales).
+
+Set to `true` for static dashboards where the cap is itself the primary criterion and local filtering is desired as a UX affordance, not a re-query.
+
+Note: when a ListGrid is grouped, sorting acts on the grouped data on the client regardless of this setting — the sort is dispatched to the groupTree, not the underlying ResultSet, so it does not re-fetch under the cap.
+
+Has no effect when `recordLimit` is null.
+
+### Groups
+
+- fetching
+
+### See Also
+
+- [DataBoundComponent.recordLimit](#attr-databoundcomponentrecordlimit)
+
+**Flags**: IRW
+
+---
 ## Attr: DataBoundComponent.editFormulaFieldText
 
 ### Description
@@ -1023,6 +1093,25 @@ Like the other `deepCloneOnEdit` settings, this flag only has an effect if you a
 ### Groups
 
 - operations
+
+**Flags**: IRW
+
+---
+## Attr: DataBoundComponent.autoRefreshPollingInterval
+
+### Description
+When [DataBoundComponent.autoRefresh](#attr-databoundcomponentautorefresh) is `true`, the cadence (in milliseconds) at which the auto-refresh timer fires [DataBoundComponent.refreshData](#method-databoundcomponentrefreshdata). Default 30000 (30 seconds). Consulted only when `autoRefresh` is `true`. No enforced floor — sub-second cadences are the developer's responsibility.
+
+To change the cadence at runtime, set this property and call [setAutoRefresh(true)](#method-databoundcomponentsetautorefresh) (which restarts the timer against the new value). Setting this property alone does not restart a running timer.
+
+### Groups
+
+- fetching
+
+### See Also
+
+- [DataBoundComponent.autoRefresh](#attr-databoundcomponentautorefresh)
+- [DataBoundComponent.setAutoRefresh](#method-databoundcomponentsetautorefresh)
 
 **Flags**: IRW
 
@@ -1552,6 +1641,20 @@ Deselect all records
 ### See Also
 
 - [Selection](Selection.md#class-selection)
+
+---
+## Method: DataBoundComponent.setRecordLimit
+
+### Description
+Set the [DataBoundComponent.recordLimit](#attr-databoundcomponentrecordlimit) cap at runtime. The data cache is invalidated and a fresh fetch is issued under the new cap. Pass `null` to remove the cap.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| limit | [Integer](../reference_2.md#type-integer) | false | — | new cap, or null to remove |
+
+**Flags**: A
 
 ---
 ## Method: DataBoundComponent.getHiliteState
@@ -2142,6 +2245,18 @@ Show a dialog to configure the sorting of multiple fields on this component. Cal
 The generated multiSortDialog can be customized via [DataBoundComponent.multiSortDialogDefaults](#attr-databoundcomponentmultisortdialogdefaults), [DataBoundComponent.multiSortDialogProperties](#attr-databoundcomponentmultisortdialogproperties).
 
 ---
+## Method: DataBoundComponent.setAutoRefresh
+
+### Description
+Toggle [DataBoundComponent.autoRefresh](#attr-databoundcomponentautorefresh) at runtime. Idempotent — calling with the current value is a no-op. Calling with `true` starts the auto-refresh timer at [DataBoundComponent.autoRefreshPollingInterval](#attr-databoundcomponentautorefreshpollinginterval) ms; calling with `false` clears the timer. The polling interval is left untouched so re-enabling restores the previously configured cadence.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| enabled | [Boolean](#type-boolean) | false | — | new auto-refresh state |
+
+---
 ## Method: DataBoundComponent.userRemovedField
 
 ### Description
@@ -2455,6 +2570,18 @@ Whether at least one item is selected
 ### Groups
 
 - selection
+
+---
+## Method: DataBoundComponent.setAutoRefreshPollingInterval
+
+### Description
+Update [DataBoundComponent.autoRefreshPollingInterval](#attr-databoundcomponentautorefreshpollinginterval) at runtime. If [DataBoundComponent.autoRefresh](#attr-databoundcomponentautorefresh) is currently `true`, the running timer is restarted against the new value so the next tick fires after the updated cadence (without waiting for the previously-scheduled tick to land first). When `autoRefresh` is `false` this just stores the value for the next time it is enabled.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| interval | [Integer](../reference_2.md#type-integer) | false | — | new polling interval in ms |
 
 ---
 ## Method: DataBoundComponent.disableHilite

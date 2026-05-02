@@ -1041,7 +1041,7 @@ If this, [ListGrid.booleanFalseImage](#attr-listgridbooleanfalseimage) and [List
 ## Attr: ListGrid.reselectOnUpdate
 
 ### Description
-If true, when an update operation occurs on a selected record in a [databound](#attr-listgriddatasource) listGrid, ensure the updated record is re-selected when the operation completes. The [ListGrid.reselectOnUpdateNotifications](#attr-listgridreselectonupdatenotifications) attributes governs whether [ListGrid.selectionUpdated](ListGrid_2.md#method-listgridselectionupdated) and [ListGrid.selectionChanged](ListGrid_2.md#method-listgridselectionchanged) will fire when this occurs.
+If true, when an update operation occurs on a selected record in a [databound](#attr-listgriddatasource) listGrid, ensure the updated record is re-selected when the operation completes. The [ListGrid.reselectOnUpdateNotifications](ListGrid_2.md#attr-listgridreselectonupdatenotifications) attributes governs whether [ListGrid.selectionUpdated](ListGrid_2.md#method-listgridselectionupdated) and [ListGrid.selectionChanged](ListGrid_2.md#method-listgridselectionchanged) will fire when this occurs.
 
 **Flags**: IRA
 
@@ -3106,7 +3106,7 @@ This property may be set to customize the opacity for the hover shown on [ListGr
 ### Description
 If set, the [ListGrid.booleanPartialImage](#attr-listgridbooleanpartialimage) to use when [printing](../kb_topics/printing.md#kb-topic-printing).
 
-If this, [ListGrid.printBooleanTrueImage](ListGrid_2.md#attr-listgridprintbooleantrueimage) and [ListGrid.printBooleanFalseImage](#attr-listgridprintbooleanfalseimage) are unset, this will be set to the default [CheckboxItem.printPartialSelectedImage](CheckboxItem.md#attr-checkboxitemprintpartialselectedimage).
+If this, [ListGrid.printBooleanTrueImage](ListGrid_2.md#attr-listgridprintbooleantrueimage) and [ListGrid.printBooleanFalseImage](ListGrid_2.md#attr-listgridprintbooleanfalseimage) are unset, this will be set to the default [CheckboxItem.printPartialSelectedImage](CheckboxItem.md#attr-checkboxitemprintpartialselectedimage).
 
 ### Groups
 
@@ -7341,7 +7341,7 @@ If this, [ListGrid.booleanTrueImage](#attr-listgridbooleantrueimage) and [ListGr
 
 - [ListGrid.booleanTrueImage](#attr-listgridbooleantrueimage)
 - [ListGrid.booleanPartialImage](#attr-listgridbooleanpartialimage)
-- [ListGrid.printBooleanFalseImage](#attr-listgridprintbooleanfalseimage)
+- [ListGrid.printBooleanFalseImage](ListGrid_2.md#attr-listgridprintbooleanfalseimage)
 
 **Flags**: IRWA
 
@@ -9600,6 +9600,20 @@ If we're showing a [headerContextMenu](#attr-listgridshowheadercontextmenu) for 
 **Flags**: IRW
 
 ---
+## Attr: ListGrid.recordLimitMessage
+
+### Description
+Message shown in the row-range display area when [DataBoundComponent.recordLimit](DataBoundComponent.md#attr-databoundcomponentrecordlimit) is in effect. Variables: `${recordLimit}`, and `${trueTotal}` (only when the server provides [DSResponse.estimatedTotalRows](DSResponse.md#attr-dsresponseestimatedtotalrows)).
+
+When `${trueTotal}` is unknown, set this to a shorter form like "Showing first ${recordLimit}".
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IRW
+
+---
 ## Attr: ListGrid.removeIconStyle
 
 ### Description
@@ -9663,32 +9677,5 @@ Note that this setting will have no effect if [DataSourceField.sortByField](Data
 - sorting
 
 **Flags**: IRW
-
----
-## Attr: ListGrid.printBooleanFalseImage
-
-### Description
-If set, the [ListGrid.booleanFalseImage](#attr-listgridbooleanfalseimage) to use when [printing](../kb_topics/printing.md#kb-topic-printing).
-
-If this, [ListGrid.printBooleanTrueImage](ListGrid_2.md#attr-listgridprintbooleantrueimage) and [ListGrid.printBooleanPartialImage](#attr-listgridprintbooleanpartialimage) are unset, this will be set to the default [CheckboxItem.printUncheckedImage](CheckboxItem.md#attr-checkboxitemprintuncheckedimage).
-
-### Groups
-
-- imageColumns
-- printing
-
-### See Also
-
-- [ListGrid.booleanFalseImage](#attr-listgridbooleanfalseimage)
-
-**Flags**: IRWA
-
----
-## Attr: ListGrid.reselectOnUpdateNotifications
-
-### Description
-if [ListGrid.reselectOnUpdate](#attr-listgridreselectonupdate) is true, this property governs what selection changed notifications should be triggered when a selected record is edited then automatically reselected when the edited data is merged into the data set.
-
-**Flags**: IRWA
 
 ---

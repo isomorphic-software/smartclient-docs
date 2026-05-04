@@ -208,6 +208,22 @@ Substitute title to use for an unknown field.
 **Flags**: IRW
 
 ---
+## Attr: Class.assumeGoodCode
+
+### Description
+When set, skips defensive checks during widget creation that validate inputs such as duplicate children, invalid global IDs, reused field objects, and CSS property type mismatches. These checks emit warnings and coerce bad values, but add overhead.
+
+This flag is set automatically during screen creation ([RPCManager.createScreen](RPCManager.md#classmethod-rpcmanagercreatescreen), [RPCManager.loadScreen](RPCManager.md#classmethod-rpcmanagerloadscreen), and [Project.createScreen](Project.md#method-projectcreatescreen)) because screens are built from validated definitions where these conditions cannot arise.
+
+Applications can also set this flag in production on individual components, or globally via `isc.Class.addProperties({assumeGoodCode: true})`, to skip checks during any widget creation. The checks skipped include:
+
+*   **ID validation** – regex check that widget IDs are valid JavaScript identifiers
+*   **CSS property coercion** – parseInt/toString conversion of margin, padding, border, and borderRadius when specified with the wrong type
+*   **Duplicate children** – scan for duplicate entries in children and peers arrays
+
+**Flags**: IRWA
+
+---
 ## ClassMethod: Class.changeDefaults
 
 ### Description

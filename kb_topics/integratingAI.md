@@ -85,7 +85,7 @@ The amount of interaction with AI is lowest in AI Assist mode. AIDE requires mor
 With respect to a particular [DataBoundComponent](../reference.md#interface-databoundcomponent), the requirements for AI component views to be enabled are:
 
 *   AI must be enabled: [AI.isEnabled](../classes/AI.md#classmethod-aiisenabled)
-*   A globally-installed [DataSource](../classes/DataSource_1.md#class-datasource) with a primary key and [supporting AdvancedCriteria](../classes/DataSource_2.md#method-datasourcesupportsadvancedcriteria) must be set.
+*   A globally-installed [DataSource](../classes/DataSource_1.md#class-datasource) with a primary key and [supporting AdvancedCriteria](../classes/DataSource_1.md#method-datasourcesupportsadvancedcriteria) must be set.
 *   The `DataSource` cannot have a composite primary key.
 *   The number of data-records must be known, and the total number of records must be less than the DBC's [aiMaxRecords](../classes/DataBoundComponent.md#attr-databoundcomponentaimaxrecords).
 

@@ -78,7 +78,7 @@ If the server responds to a [file download request](../classes/RPCRequest.md#att
 This includes:
 
 *   export operations such as [exportData()](../classes/ListGrid_2.md#method-listgridexportdata), [exportClientData()](../classes/ListGrid_2.md#method-listgridexportclientdata), or [exportContent()](../classes/RPCManager.md#classmethod-rpcmanagerexportcontent).
-*   downloading of binary field values via [DataSource.downloadFile](../classes/DataSource_2.md#method-datasourcedownloadfile)
+*   downloading of binary field values via [DataSource.downloadFile](../classes/DataSource_1.md#method-datasourcedownloadfile)
 *   custom download operations where the [RPCRequest.downloadResult](../classes/RPCRequest.md#attr-rpcrequestdownloadresult) flag is set
 
 However if a server encounters an error while [streaming a response](../classes/DSRequest.md#attr-dsrequeststreamresults) to the browser this will not trigger [RPCManager.handleError](../classes/RPCManager.md#classmethod-rpcmanagerhandleerror) and the centralized error handling pathway.
@@ -97,7 +97,7 @@ Unrecoverable server `Exception` will be written to HTTP response as a warning c
 - [RPCManager.handleError](../classes/RPCManager.md#classmethod-rpcmanagerhandleerror)
 - [RPCManager.runDefaultErrorHandling](../classes/RPCManager.md#classmethod-rpcmanagerrundefaulterrorhandling)
 - [RPCManager.handleTransportError](../classes/RPCManager.md#classmethod-rpcmanagerhandletransporterror)
-- [DataSource.handleError](../classes/DataSource_2.md#method-datasourcehandleerror)
+- [DataSource.handleError](../classes/DataSource_1.md#method-datasourcehandleerror)
 - [FormItem.clearErrors](../classes/FormItem.md#method-formitemclearerrors)
 - [FormItem.setErrors](../classes/FormItem.md#method-formitemseterrors)
 - [FormItem.hasErrors](../classes/FormItem.md#method-formitemhaserrors)

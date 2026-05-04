@@ -582,7 +582,7 @@ For a discussion of the various filtering and criteria-management APIs and when 
 ## Attr: ListGridField.operator
 
 ### Description
-When [allowFilterOperators](ListGrid_1.md#attr-listgridallowfilteroperators) is true, this read-only property is set to the [filter/search operator](../reference_2.md#object-operator) currently assigned to this field. You can also retrieve a field's current operator by calling [ListGrid.getFieldSearchOperator](ListGrid_2.md#method-listgridgetfieldsearchoperator).
+When [allowFilterOperators](ListGrid_1.md#attr-listgridallowfilteroperators) is true, this read-only property is set to the [filter/search operator](../reference.md#object-operator) currently assigned to this field. You can also retrieve a field's current operator by calling [ListGrid.getFieldSearchOperator](ListGrid_2.md#method-listgridgetfieldsearchoperator).
 
 For a discussion of the various filtering and criteria-management APIs and when to use them, see the [Grid Filtering overview](../kb_topics/gridFiltering.md#kb-topic-grid-filtering-overview).
 
@@ -1907,7 +1907,7 @@ See also the related property [ListGridField.hideOnTablet](#attr-listgridfieldhi
 ## Attr: ListGridField.filterOperator
 
 ### Description
-With the [FilterEditor](ListGrid_1.md#attr-listgridshowfiltereditor) showing, the default [Operator](../reference_2.md#object-operator) to use when matching values for this field.
+With the [FilterEditor](ListGrid_1.md#attr-listgridshowfiltereditor) showing, the default [Operator](../reference.md#object-operator) to use when matching values for this field.
 
 For a discussion of the various filtering and criteria-management APIs and when to use them, see the [Grid Filtering overview](../kb_topics/gridFiltering.md#kb-topic-grid-filtering-overview).
 

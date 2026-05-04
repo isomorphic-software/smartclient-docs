@@ -4848,6 +4848,22 @@ To resize autoChild attributes with other policies, developers should call [Canv
 | autoResize | [boolean](../reference.md#type-boolean) | false | — | true if attributes should be auto-resized |
 
 ---
+## ClassMethod: Canvas.endBatchCreation
+
+### Description
+Disables batch widget creation mode previously enabled by [Canvas.startBatchCreation](#classmethod-canvasstartbatchcreation).
+
+This method is safe to call even if batch creation mode is not currently active.
+
+### Groups
+
+- batchCreation
+
+### See Also
+
+- [Canvas.startBatchCreation](#classmethod-canvasstartbatchcreation)
+
+---
 ## ClassMethod: Canvas.resizeControlsTo
 
 ### Description
@@ -4858,6 +4874,33 @@ Resizes controls as if calling [Canvas.resizeControls](#classmethod-canvasresize
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | targetDelta | [int](../reference.md#type-int) | false | — | the final size, expressed as a differential from the default |
+
+---
+## ClassMethod: Canvas.startBatchCreation
+
+### Description
+Enables batch widget creation mode, deferring initialization work that is premature before draw. Call [Canvas.endBatchCreation](#classmethod-canvasendbatchcreation) when all widgets have been created.
+
+A thread-exit action (TEA) is automatically registered to call `endBatchCreation()` at the end of the current JavaScript thread as a safety net, so the mode is always disabled even if an error prevents the explicit `endBatchCreation()` call.
+
+Batch creation mode defers the following per-widget work to draw time:
+
+*   Visual decoration creation (edges, shadows, corner clips, back masks, trigger areas)
+*   Layout margin computation and `membersChanged()` notification
+*   Form item icon setup and validator scanning
+*   Rule engine (`*When`) rule creation
+*   TopElement propagation in the widget tree
+
+It also activates faster code paths in the property-assignment and method-installation internals that exploit the guarantee that newly created instances have no observers or existing slots.
+
+### Groups
+
+- batchCreation
+
+### See Also
+
+- [Canvas.endBatchCreation](#classmethod-canvasendbatchcreation)
+- [Class.assumeGoodCode](Class.md#attr-classassumegoodcode)
 
 ---
 ## ClassMethod: Canvas.setAllowExternalFilters

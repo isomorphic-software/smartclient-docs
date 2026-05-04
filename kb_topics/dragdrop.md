@@ -12,7 +12,7 @@ Dragging objects and dropping them onto other objects
 ### Related
 
 - [DragAppearance](../reference_2.md#type-dragappearance)
-- [DragIntersectStyle](../reference_2.md#type-dragintersectstyle)
+- [DragIntersectStyle](../reference.md#type-dragintersectstyle)
 - [ProportionalResizeMode](../reference.md#type-proportionalresizemode)
 - [DragMaskType](../reference.md#type-dragmasktype)
 - [DragDataAction](../reference.md#type-dragdataaction)

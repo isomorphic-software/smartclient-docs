@@ -7,7 +7,7 @@
 ## Class: Operators
 
 ### Description
-The Operators class provides a collection of class-level properties that can be used to modify the descriptions associated with the logical [Operator](../reference_2.md#object-operator)s used in [AdvancedCriteria](../reference.md#object-advancedcriteria). This is primarily intended for internationalization.
+The Operators class provides a collection of class-level properties that can be used to modify the descriptions associated with the logical [Operator](../reference.md#object-operator)s used in [AdvancedCriteria](../reference.md#object-advancedcriteria). This is primarily intended for internationalization.
 
 To add or override an operator's description, use Operators.[addClassProperties()](Class.md#classmethod-classaddclassproperties). For example:
 

@@ -627,7 +627,7 @@ See the [overview of error handling](../kb_topics/errorHandling.md#kb-topic-erro
 
 ### See Also
 
-- [DataSource.handleError](DataSource_2.md#method-datasourcehandleerror)
+- [DataSource.handleError](DataSource_1.md#method-datasourcehandleerror)
 - [RPCManager.handleTransportError](#classmethod-rpcmanagerhandletransporterror)
 - [RPCManager.runDefaultErrorHandling](#classmethod-rpcmanagerrundefaulterrorhandling)
 
@@ -970,7 +970,7 @@ Creating a screen may or may not cause it to draw, depending on current global a
 
 Instead of `globals`, you may instead pass a [substitution configuration](../reference.md#object-createscreensettings) to change what classes are used to construct widgets, or subsitute existing widgets for those to be constructed, by widget ID.
 
-During creation of screens originating from XML translation, [class.assumeGoodCode](#classassumegoodcode) is automatically enabled for faster widget initialization.
+During creation of screens originating from XML translation, [Class.assumeGoodCode](Class.md#attr-classassumegoodcode) is automatically enabled for faster widget initialization.
 
 ### Parameters
 

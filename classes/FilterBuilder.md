@@ -173,7 +173,7 @@ The hover prompt text for the dynamic value button.
 ### Description
 Logical operators to allow for [TopOperatorAppearance](../reference.md#type-topoperatorappearance)s of "radio" and "bracket".
 
-Note that this list may be further limited according to the [available operators](DataSource_2.md#method-datasourcegettypeoperatormap) returned by the [DataSource](DataSource_1.md#class-datasource).
+Note that this list may be further limited according to the [available operators](DataSource_1.md#method-datasourcegettypeoperatormap) returned by the [DataSource](DataSource_1.md#class-datasource).
 
 **Flags**: IR
 
@@ -345,7 +345,7 @@ Shows either [modeSwitcherSimpleMessage](#attr-filterbuildermodeswitchersimpleme
 ## Attr: FilterBuilder.dataSource
 
 ### Description
-DataSource this filter should use for field definitions and available [Operator](../reference_2.md#object-operator)s.
+DataSource this filter should use for field definitions and available [Operator](../reference.md#object-operator)s.
 
 **Flags**: IRW
 
@@ -899,7 +899,7 @@ This API is intended for the rare use case of adding a highly customized FilterC
 
 If you just want to programmatically add a new FilterClause showing a specific Criterion use [FilterBuilder.addCriterion](#method-filterbuilderaddcriterion).
 
-If you want to use the standard field/operator/value interface but provide a custom control for editing the value, see [DataSource.addSearchOperator](DataSource_2.md#method-datasourceaddsearchoperator) and [Operator.editorType](Operator.md#attr-operatoreditortype).
+If you want to use the standard field/operator/value interface but provide a custom control for editing the value, see [DataSource.addSearchOperator](DataSource_1.md#method-datasourceaddsearchoperator) and [Operator.editorType](Operator.md#attr-operatoreditortype).
 
 ### Parameters
 

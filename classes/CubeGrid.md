@@ -13,7 +13,7 @@ The CubeGrid is an interactive grid component that presents very large, multi-di
 
 CubeGrids are often called crosstabs, for their cross-tabular display of data dimensions in stacked/nested rows and columns, or pivot tables, for their ability to "pivot" dimensions between rows and columns to view a data cube from different perspectives. They are typically used in the querying and reporting front-ends of data warehousing, decision support, OLAP, and business intelligence systems.
 
-For example, CubeGrids can be connected to Pentaho Mondrian, Jasper Reports, Microsoft Analysis Services and any other OLAP technology that supports the XMLA standard - the Isomorphic public wiki has [examples](http://wiki.smartclient.com/pages/viewpage.action?pageId=1441839). of such integration.
+For example, CubeGrids can be connected to Pentaho Mondrian, Jasper Reports, Microsoft Analysis Services and any other OLAP technology that supports the XMLA standard - the Isomorphic public wiki has [examples](https://isomorphic.atlassian.net/wiki/spaces/Main/pages/525494/Connecting+the+CubeGrid+with+Pentaho+Mondrian+JasperReports+and+Microsoft+Analysis+Services). of such integration.
 
 **NOTE:** you must load the Analytics [Optional Module](../kb_topics/loadingOptionalModules.md#kb-topic-loading-optional-modules) before you can use CubeGrid.
 

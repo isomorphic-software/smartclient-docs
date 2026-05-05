@@ -146,7 +146,7 @@ So for example, if you have Topic ConnectionFactory named either "jms/MyFactory"
         messaging.jms.topicConnectionFactory: MyFactory
  
 ```
-Example configurations for various popular JMS engines (ActiveMQ, JBoss, etc) can be found on the [Isomorphic Public Wiki](http://wiki.smartclient.com/). Try searching for ["messaging"](http://wiki.smartclient.com/dosearchsite.action?queryString=messaging) or ["jms"](http://wiki.smartclient.com/dosearchsite.action?queryString=jms) or the name of the engine you are trying to configure.
+Example configurations for various popular JMS engines (ActiveMQ, JBoss, etc) can be found on the [Isomorphic Public Wiki](https://isomorphic.atlassian.net/wiki/spaces/Main/overview). Try searching for ["messaging"](https://isomorphic.atlassian.net/wiki/search?text=messaging) or ["jms"](https://isomorphic.atlassian.net/wiki/search?text=jms) or the name of the engine you are trying to configure.
 
 #### Other Messaging properties
 

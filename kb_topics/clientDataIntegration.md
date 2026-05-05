@@ -21,7 +21,7 @@ This approach is called Client-Side Data Integration, which means:
 
 The [RestDataSource](../classes/RestDataSource.md#class-restdatasource) provides a complete XML or JSON-based protocol that supports all of the features of SmartClient's databinding layer (data paging, queuing/batching of requests for transactions, nested AdvancedCriteria, server-side validation errors, automatic cache synchronization, etc). To use the RestDataSource, simply write server code that can parse RestDataSource requests and produce the required responses; example requests and responses are [provided](../classes/RestDataSource.md#class-restdatasource).
 
-The SmartClient public wiki contains examples of integration with [.NET's ASP.NET MVC](http://wiki.smartclient.com/display/Main/Integrating+with+ASP.Net+MVC) as well as [PHP with Doctrine](https://isomorphic.atlassian.net/wiki/spaces/Main/pages/524974/Integrating+with+PHP+Doctrine).
+The SmartClient public wiki contains examples of integration with [.NET's ASP.NET MVC](https://isomorphic.atlassian.net/wiki/spaces/Main/pages/525016/Integrating+with+ASP.Net+MVC) as well as [PHP with Doctrine](https://isomorphic.atlassian.net/wiki/spaces/Main/pages/524974/Integrating+with+PHP+Doctrine).
 
 #### Consuming Existing XML and JSON formats
 

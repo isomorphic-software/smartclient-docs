@@ -23,7 +23,7 @@ Setting hidden:true means the operator can be used in a programmatic search, for
 ### Description
 List of types that this Operator is valid for.
 
-If omitted, the operator is assumed to be valid for all FieldTypes unless a list of FieldTypes is passed to [DataSource.addSearchOperator](DataSource_1.md#method-datasourceaddsearchoperator).
+If omitted, the operator is assumed to be valid for all FieldTypes unless a list of FieldTypes is passed to [DataSource.addSearchOperator](DataSource_2.md#method-datasourceaddsearchoperator).
 
 ### Groups
 
@@ -47,7 +47,7 @@ Name of a property on the [Operators](Operators.md#class-operators) class that p
 ## Attr: Operator.ID
 
 ### Description
-Unique id for an operator, which appears within [AdvancedCriteria](../reference.md#object-advancedcriteria) as the [Operator](../reference.md#object-operator) property.
+Unique id for an operator, which appears within [AdvancedCriteria](../reference.md#object-advancedcriteria) as the [Operator](../reference_2.md#object-operator) property.
 
 A list of built-in identifiers is [here](../reference.md#type-operatorid).
 
@@ -219,7 +219,7 @@ For operators that act on [sub-criteria](Criterion.md#attr-criterioncriteria), c
 
 Because criteria are sometimes applied to user-entered data that has not been validated, a robust `condition()` function should expect that data found in a [Record](../reference.md#object-record) may be null, NaN, not the correct type (eg "NA" for a type:"date" field) or otherwise out of the expected range.
 
-Note that `this` is the [Operator](../reference.md#object-operator) object, allowing a `condition()` function to be shared across a range of related operators with different [OperatorId](../reference.md#type-operatorid)s.
+Note that `this` is the [Operator](../reference_2.md#object-operator) object, allowing a `condition()` function to be shared across a range of related operators with different [OperatorId](../reference.md#type-operatorid)s.
 
 ### Parameters
 

@@ -115,7 +115,7 @@ When relations are declared, JPA and Hibernate consider only one of the two enti
 
 #### Search criteria on One-to-Many and Many-to-Many relations
 
-The following [search operators](../reference.md#object-operator) are supported with the behaviors listed below. For simple Criteria, criteria values are treated identically to the "equals" operator and the [textMatchStyle](../classes/DSRequest.md#attr-dsrequesttextmatchstyle) is ignored.
+The following [search operators](../reference_2.md#object-operator) are supported with the behaviors listed below. For simple Criteria, criteria values are treated identically to the "equals" operator and the [textMatchStyle](../classes/DSRequest.md#attr-dsrequesttextmatchstyle) is ignored.
 
 Examples are given in terms of a "country" DataSource that has a one-to-many relation with a "city" DataSource through a relation field called "cities"
 

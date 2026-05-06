@@ -146,6 +146,29 @@ Going forward, we may deprecate this property, so you should move to approach th
 **Flags**: IRWA
 
 ---
+## Attr: ResultSet.recordLimit
+
+### Description
+If set, the ResultSet will display at most this many records, regardless of how many records match the current criteria. The cap is applied on every fetch — the request's `endRow` is clamped to `recordLimit - 1`, and any response with a larger `totalRows` is silently clamped on arrival.
+
+`recordLimit` exists to support "top N" style displays — top 10 customers by sales, last 20 alerts, etc. To get a true "top N" semantic, also specify a [sort](ListGrid_1.md#attr-listgridinitialsort) so that the N records returned are the ones the user expects.
+
+When `recordLimit` is set, the ResultSet automatically forces server-side filtering and sorting (`useClientFiltering:false`, `useClientSorting:false`) unless [DataBoundComponent.recordLimitClientOperations](DataBoundComponent.md#attr-databoundcomponentrecordlimitclientoperations) is true. This ensures criteria and sort changes always re-query under the cap.
+
+Use [ResultSet.setRecordLimit](#method-resultsetsetrecordlimit) to change the cap at runtime; the cache is invalidated and a fresh fetch is issued.
+
+### Groups
+
+- fetching
+
+### See Also
+
+- [DataBoundComponent.recordLimit](DataBoundComponent.md#attr-databoundcomponentrecordlimit)
+- [ResultSet.setRecordLimit](#method-resultsetsetrecordlimit)
+
+**Flags**: IRW
+
+---
 ## Attr: ResultSet.criteria
 
 ### Description
@@ -806,6 +829,20 @@ Note: If [progressive loading](DataSource.md#attr-datasourceprogressiveloading) 
 ### Returns
 
 `[boolean](../reference.md#type-boolean)` — whether length is known
+
+---
+## Method: ResultSet.setRecordLimit
+
+### Description
+Set the [recordLimit](#attr-resultsetrecordlimit) cap at runtime. The cache is invalidated and a fresh fetch is issued under the new cap. Pass `null` to remove the cap.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| limit | [Integer](../reference_2.md#type-integer) | false | — | new cap, or null to remove |
+
+**Flags**: A
 
 ---
 ## Method: ResultSet.getCombinedCriteria

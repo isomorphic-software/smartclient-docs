@@ -144,6 +144,32 @@ To avoid undefined behavior, this property must be set to `false` if the same re
 **Flags**: IRW
 
 ---
+## Attr: DataBoundComponent.recordLimit
+
+### Description
+If set, the component will display at most this many records, regardless of how many records match the current criteria. The grid's row count, scrollbar extent, and [row range display](ListGrid_2.md#method-listgridgetrowrangedisplayvalue) all reflect the cap rather than the true matching count. The component will never fetch records beyond row `recordLimit - 1`.
+
+Most commonly used to render "top N" displays — top 10 customers by sales, last 20 alerts, etc. To get a true "top N" semantic, also specify a sort (via [ListGrid.initialSort](ListGrid_1.md#attr-listgridinitialsort) or [bound DataSource sort](FacetChart.md#attr-facetchartdata)) so that the N records returned are the ones the user expects.
+
+When set, by default the component forces server-side filtering and sorting so every criteria/sort change re-queries under the cap. Set [recordLimitClientOperations:true](#attr-databoundcomponentrecordlimitclientoperations) to allow client-side filter and sort to operate within the already-fetched top N.
+
+Use [DataBoundComponent.setRecordLimit](#method-databoundcomponentsetrecordlimit) to change the cap at runtime. Compatible with all [DataSource](DataSource.md#class-datasource) types (clientOnly, server-backed, cacheAllData) — the cap is enforced in the [ResultSet](ResultSet.md#class-resultset) layer, so any DataSource that honors `endRow` works.
+
+Not supported on [TreeGrid](TreeGrid.md#class-treegrid) or [CubeGrid](CubeGrid.md#class-cubegrid); their data models differ enough that "top N" needs separate design.
+
+### Groups
+
+- fetching
+
+### See Also
+
+- [ResultSet.recordLimit](ResultSet.md#attr-resultsetrecordlimit)
+- [DataBoundComponent.recordLimitClientOperations](#attr-databoundcomponentrecordlimitclientoperations)
+- [DataBoundComponent.setRecordLimit](#method-databoundcomponentsetrecordlimit)
+
+**Flags**: IRW
+
+---
 ## Attr: DataBoundComponent.multiSortDialogProperties
 
 ### Description
@@ -885,6 +911,28 @@ NOTE: if `autoFetchData` is set, calling [fetchData()](ListGrid_2.md#method-list
 **Flags**: IRW
 
 ---
+## Attr: DataBoundComponent.recordLimitClientOperations
+
+### Description
+When [DataBoundComponent.recordLimit](#attr-databoundcomponentrecordlimit) is set, controls whether client-side filter and sort are allowed within the capped result set. Default `false`: the component forces server-side filtering and sorting, so every criteria or sort change re-queries the server under the cap (correct "top N" semantic — switching sort from "by sales" to "by margin" gets the top 10 by margin, not a re-sort of the top 10 by sales).
+
+Set to `true` for static dashboards where the cap is itself the primary criterion and local filtering is desired as a UX affordance, not a re-query.
+
+Note: when a ListGrid is grouped, sorting acts on the grouped data on the client regardless of this setting — the sort is dispatched to the groupTree, not the underlying ResultSet, so it does not re-fetch under the cap.
+
+Has no effect when `recordLimit` is null.
+
+### Groups
+
+- fetching
+
+### See Also
+
+- [DataBoundComponent.recordLimit](#attr-databoundcomponentrecordlimit)
+
+**Flags**: IRW
+
+---
 ## Attr: DataBoundComponent.editFormulaFieldText
 
 ### Description
@@ -1498,6 +1546,20 @@ Deselect all records
 ### See Also
 
 - [Selection](Selection.md#class-selection)
+
+---
+## Method: DataBoundComponent.setRecordLimit
+
+### Description
+Set the [DataBoundComponent.recordLimit](#attr-databoundcomponentrecordlimit) cap at runtime. The data cache is invalidated and a fresh fetch is issued under the new cap. Pass `null` to remove the cap.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| limit | [Integer](../reference_2.md#type-integer) | false | — | new cap, or null to remove |
+
+**Flags**: A
 
 ---
 ## Method: DataBoundComponent.getHiliteState

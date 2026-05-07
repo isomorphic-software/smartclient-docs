@@ -24,8 +24,8 @@ To enable MinimalScrollbars we recommend the following component-level settings:
 
 *   [scrollbarConstructor:"MinimalScrollbar"](Canvas.md#attr-canvasscrollbarconstructor)
 *   [showCustomScrollbars:true](Canvas.md#attr-canvasshowcustomscrollbars)
-*   [nativeAutoHideScrollbars:false](Canvas.md#attr-canvasnativeautohidescrollbars)
-*   [floatingScrollbars:true](Canvas.md#attr-canvasfloatingscrollbars)
+*   [nativeAutoHideScrollbars:false](Canvas.md#attr-canvasnativeautohidescrollbars) - prevents the [nativeAutoHideScrollbars](#nativeautohidescrollbars) system from overriding the `scrollbarConstructor` with [NativeScrollbar](../reference.md#class-nativescrollbar)
+*   [floatingScrollbars:true](Canvas.md#attr-canvasfloatingscrollbars) - since MinimalScrollbars auto-hide when not in use, the component should not reserve a permanent gap for them
 
 ---
 ## Attr: MinimalScrollbar.setInteractiveOnMouseOver

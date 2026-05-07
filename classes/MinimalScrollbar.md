@@ -24,8 +24,8 @@ To enable MinimalScrollbars we recommend the following component-level settings:
 
 *   [scrollbarConstructor:"MinimalScrollbar"](Canvas.md#attr-canvasscrollbarconstructor)
 *   [showCustomScrollbars:true](Canvas.md#attr-canvasshowcustomscrollbars)
-*   [nativeAutoHideScrollbars:false](Canvas.md#attr-canvasnativeautohidescrollbars)
-*   [floatingScrollbars:true](Canvas.md#attr-canvasfloatingscrollbars)
+*   [nativeAutoHideScrollbars:false](Canvas.md#attr-canvasnativeautohidescrollbars) - prevents the [nativeAutoHideScrollbars](#nativeautohidescrollbars) system from overriding the `scrollbarConstructor` with [NativeScrollbar](../reference.md#class-nativescrollbar)
+*   [floatingScrollbars:true](Canvas.md#attr-canvasfloatingscrollbars) - since MinimalScrollbars auto-hide when not in use, the component should not reserve a permanent gap for them
 
 ---
 ## Attr: MinimalScrollbar.setInteractiveOnMouseOver
@@ -138,6 +138,14 @@ The minimum pixel size of the draggable thumb regardless of how large the scroll
 
 ### Description
 Suffix to apply to the [MinimalScrollbar.thumbBaseStyle](#attr-minimalscrollbarthumbbasestyle) and [MinimalScrollbar.trackBaseStyle](#attr-minimalscrollbartrackbasestyle) to show scrollbars with an appropriate contrast against a light or dark background
+
+**Flags**: IRW
+
+---
+## Attr: MinimalScrollbar.showOnTargetMouseMove
+
+### Description
+If [MinimalScrollbar.autoShow](#attr-minimalscrollbarautoshow) is enabled, should this scrollbar automatically show itself whenever the user moves the mouse over the scroll target?
 
 **Flags**: IRW
 

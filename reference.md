@@ -132,6 +132,7 @@ This is the central API reference for the SmartClient framework.
       - [DynamicForm](classes/DynamicForm.md)
         - [SavedSearchForm](classes/SavedSearchForm.md)
         - [SearchForm](classes/SearchForm.md)
+        - [ScalarViewer](classes/ScalarViewer.md)
         - [HandPlacedForm](#class-handplacedform)
         - [PropertySheet](#class-propertysheet)
       - [TileLayout](classes/TileLayout.md)

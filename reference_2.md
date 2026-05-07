@@ -2714,7 +2714,7 @@ When discovering a tree, the scanMode determines how to scan for the childrenPro
 ## Type: SelectionNotificationType
 
 ### Description
-Enum to indicate selection change notification types. Used by [ListGrid.reselectOnUpdateNotifications](classes/ListGrid_2.md#attr-listgridreselectonupdatenotifications) and [TileGrid.reselectOnUpdateNotifications](classes/TileGrid.md#attr-tilegridreselectonupdatenotifications).
+Enum to indicate selection change notification types. Used by [ListGrid.reselectOnUpdateNotifications](classes/ListGrid_1.md#attr-listgridreselectonupdatenotifications) and [TileGrid.reselectOnUpdateNotifications](classes/TileGrid.md#attr-tilegridreselectonupdatenotifications).
 
 ### Values
 

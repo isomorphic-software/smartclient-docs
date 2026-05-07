@@ -29,6 +29,7 @@ Scrolling and clipping of objects when part of the object is obscured
 - [ListGrid.scrollToRow](../classes/ListGrid_2.md#method-listgridscrolltorow)
 - [ListGrid.scrollToCell](../classes/ListGrid_2.md#method-listgridscrolltocell)
 - [Canvas.showCustomScrollbars](../classes/Canvas.md#attr-canvasshowcustomscrollbars)
+- [Canvas.floatingScrollbars](../classes/Canvas.md#attr-canvasfloatingscrollbars)
 - [Canvas.receiveScrollbarEvents](../classes/Canvas.md#attr-canvasreceivescrollbarevents)
 - [Canvas.alwaysShowScrollbars](../classes/Canvas.md#attr-canvasalwaysshowscrollbars)
 - [Canvas.nativeAutoHideScrollbars](../classes/Canvas.md#attr-canvasnativeautohidescrollbars)

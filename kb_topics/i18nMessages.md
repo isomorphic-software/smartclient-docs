@@ -679,7 +679,6 @@ The properties in this group are default system messages that a localized applic
 - [ListGrid.fullRowRangeDisplayValue](../classes/ListGrid_1.md#attr-listgridfullrowrangedisplayvalue)
 - [ListGrid.briefRowRangeDisplayValue](../classes/ListGrid_1.md#attr-listgridbriefrowrangedisplayvalue)
 - [ListGrid.emptyRowRangeDisplayValue](../classes/ListGrid_1.md#attr-listgridemptyrowrangedisplayvalue)
-- [ListGrid.recordLimitMessage](../classes/ListGrid_1.md#attr-listgridrecordlimitmessage)
 - [ListGrid.rowRangeFormat](../classes/ListGrid_1.md#attr-listgridrowrangeformat)
 - [ListGrid.unknownRowCountDisplayValue](../classes/ListGrid_1.md#attr-listgridunknownrowcountdisplayvalue)
 - [ListGrid.maxExpandedRecordsPrompt](../classes/ListGrid_1.md#attr-listgridmaxexpandedrecordsprompt)

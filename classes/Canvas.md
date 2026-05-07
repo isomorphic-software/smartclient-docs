@@ -1718,7 +1718,7 @@ The class that will be used to create custom scrollbars for this component. Set 
 
 When [spriting is enabled](../kb_topics/skinning.md#kb-topic-skinning--theming) and supported by the skin, the default `scrollbarConstructor` is changed to a different scrollbar class which handles scrollbar spriting. Spriting of the scrollbars of an individual component can therefore be disabled by creating the component with `scrollbarConstructor` set to the "Scrollbar" class. "Scrollbar" is a basic scrollbar class that does not employ spriting.
 
-**Note:** This setting may be ignored if [Canvas.nativeAutoHideScrollbars](#attr-canvasnativeautohidescrollbars) is enabled - see that setting for details.
+**Note:** On platforms with auto-hiding scrollbars, [Canvas.nativeAutoHideScrollbars](#attr-canvasnativeautohidescrollbars) (when enabled) will override this setting in favor of [NativeScrollbar](../reference.md#class-nativescrollbar). To force a specific scrollbar class on all platforms, set `nativeAutoHideScrollbars: false`.
 
 ### Groups
 
@@ -2181,7 +2181,7 @@ The `showCustomScrollbars` setting is typically overridden in load\_skin.js in o
 
 On [touch devices](Browser.md#classattr-browseristouch), custom scrollbars are disabled in favor of enabling native touch scrolling if available. However, custom scrollbars _and_ native touch scrolling can be enabled for the component by setting [Canvas.alwaysShowScrollbars](#attr-canvasalwaysshowscrollbars) to `true`.
 
-**Note:** This setting may be ignored if [Canvas.nativeAutoHideScrollbars](#attr-canvasnativeautohidescrollbars) is enabled - see that setting for details.
+**Note:** When [Canvas.nativeAutoHideScrollbars](#attr-canvasnativeautohidescrollbars) is enabled and the current platform has auto-hiding scrollbars, the [Canvas.scrollbarConstructor](#attr-canvasscrollbarconstructor) will be overridden to use [NativeScrollbar](../reference.md#class-nativescrollbar) regardless of any explicit setting. See [Canvas.nativeAutoHideScrollbars](#attr-canvasnativeautohidescrollbars) for details.
 
 ### Groups
 
@@ -3470,17 +3470,21 @@ See the [Mobile Development overview](../kb_topics/mobileDevelopment.md#kb-topic
 ### Description
 In some platform/browser configurations, scrollable regions do not show visible scrollbars until the user attempts to interact with the region. The interaction to show the scrollbar varies by browser/OS but may include starting a trackpad scroll or simply rolling over the scrollable element.
 
-If `nativeAutoHideScrollbars` is set to true, we detect platforms that show scrollbars dynamically on user interaction and for components with [Canvas.showCustomScrollbars](#attr-canvasshowcustomscrollbars) we ignore the specified [Canvas.scrollbarConstructor](#attr-canvasscrollbarconstructor), and instead create system-managed native scrollbars via the special [NativeScrollbar](../reference.md#class-nativescrollbar) class, and set [Canvas.floatingScrollbars](#attr-canvasfloatingscrollbars) to true.
+If `nativeAutoHideScrollbars` is set to true, we detect platforms that show scrollbars dynamically on user interaction. On such platforms, if [Canvas.showCustomScrollbars](#attr-canvasshowcustomscrollbars) is true, the specified [Canvas.scrollbarConstructor](#attr-canvasscrollbarconstructor) is overridden in favor of the special [NativeScrollbar](../reference.md#class-nativescrollbar) class, and [Canvas.floatingScrollbars](#attr-canvasfloatingscrollbars) is set to `true` so that no space is reserved for the usually-hidden scrollbar. Any explicit instance-level settings for `scrollbarConstructor` or `floatingScrollbars` are also overridden.
 
-This means that on platforms with auto-hiding scrollbars (such as macOS and Windows 11 Firefox), both [Canvas.scrollbarConstructor](#attr-canvasscrollbarconstructor) and [Canvas.showCustomScrollbars](#attr-canvasshowcustomscrollbars) will be ignored in favor of using [NativeScrollbar](../reference.md#class-nativescrollbar). To force use of a specific scrollbar constructor on all platforms, set `nativeAutoHideScrollbars: false`.
+On platforms where scrollbars are always visible (such as Chrome on Windows), this setting has no effect - scrollbars are not auto-hiding, so the override does not apply and the normal [Canvas.scrollbarConstructor](#attr-canvasscrollbarconstructor) and [Canvas.floatingScrollbars](#attr-canvasfloatingscrollbars) settings are used as-is.
 
-Not applicable to [touch devices](Browser.md#classattr-browseristouch)
+To force use of a specific scrollbar constructor on all platforms (for example, [MinimalScrollbar](MinimalScrollbar.md#class-minimalscrollbar)), set `nativeAutoHideScrollbars: false`.
+
+The Canvas-level default is `false`, but most modern skins set this to `true` in `load_skin.js`.
+
+Not applicable to [touch devices](Browser.md#classattr-browseristouch).
 
 Has no impact if [Canvas.alwaysShowScrollbars](#attr-canvasalwaysshowscrollbars) is true.
 
-If [Canvas.showCustomScrollbars](#attr-canvasshowcustomscrollbars) is false, this setting will have no effect (we would be showing custom scrollbars in any case)  
+Only applies when [Canvas.showCustomScrollbars](#attr-canvasshowcustomscrollbars) is true (the default); when `showCustomScrollbars` is false, native browser scrollbars are used directly and this setting has no effect.
 
-Also does not apply to [touch scrolling interfaces](#attr-canvasusetouchscrolling) (where scrollbars are always hidden unless [Canvas.alwaysShowScrollbars](#attr-canvasalwaysshowscrollbars) is true).
+Also does not apply to [touch scrolling\\n interfaces](#attr-canvasusetouchscrolling) (where scrollbars are always hidden unless [Canvas.alwaysShowScrollbars](#attr-canvasalwaysshowscrollbars) is true).
 
 ### Groups
 
@@ -3490,6 +3494,7 @@ Also does not apply to [touch scrolling interfaces](#attr-canvasusetouchscrollin
 
 - [Canvas.scrollbarConstructor](#attr-canvasscrollbarconstructor)
 - [Canvas.showCustomScrollbars](#attr-canvasshowcustomscrollbars)
+- [Canvas.floatingScrollbars](#attr-canvasfloatingscrollbars)
 
 **Flags**: IRA
 
@@ -3918,7 +3923,30 @@ If `this.showHover` is true, this property can be used to customize the vertical
 ### Description
 If [Canvas.showCustomScrollbars](#attr-canvasshowcustomscrollbars) is true, should the scrollbars be drawn floating over the component handle, or should the handle shrink to accommodate them?
 
-Floating scrollbars are typically only appropriate for scrollbars that are hidden by default and get shown as the user actively scrolls the widget handle, such as in the [Canvas.nativeAutoHideScrollbars](#attr-canvasnativeautohidescrollbars) case. If floating scrollbars are permanently visible over the component handle, they may block some of the widget's content.
+Floating scrollbars are typically only appropriate for scrollbars that hide themselves when the user is not actively scrolling - if floating scrollbars are permanently visible over the component handle, they will block content.
+
+On platforms with auto-hiding native scrollbars (such as macOS or Firefox on Windows 11), [Canvas.nativeAutoHideScrollbars](#attr-canvasnativeautohidescrollbars) automatically sets this property to `true` along with switching to the [NativeScrollbar](../reference.md#class-nativescrollbar) class. In that case, setting `floatingScrollbars` explicitly on an instance has no additional effect - use `nativeAutoHideScrollbars: false` to disable the automatic behavior.
+
+The main use for setting this property explicitly is when using [MinimalScrollbar](MinimalScrollbar.md#class-minimalscrollbar), which auto-shows and auto-hides via JavaScript rather than relying on native scrollbar behavior. In that case, set `floatingScrollbars: true` so the component does not reserve a permanent gap for the usually-hidden scrollbar. For example:
+
+```
+     isc.ListGrid.create({
+         scrollbarConstructor: "MinimalScrollbar",
+         nativeAutoHideScrollbars: false,
+         floatingScrollbars: true
+     });
+ 
+```
+See [MinimalScrollbar](MinimalScrollbar.md#class-minimalscrollbar) for full details.
+
+### Groups
+
+- scrolling
+
+### See Also
+
+- [Canvas.nativeAutoHideScrollbars](#attr-canvasnativeautohidescrollbars)
+- [MinimalScrollbar](MinimalScrollbar.md#class-minimalscrollbar)
 
 **Flags**: IRA
 

@@ -4,33 +4,6 @@
 
 ---
 
-## Attr: ListGrid.printBooleanFalseImage
-
-### Description
-If set, the [ListGrid.booleanFalseImage](ListGrid_1.md#attr-listgridbooleanfalseimage) to use when [printing](../kb_topics/printing.md#kb-topic-printing).
-
-If this, [ListGrid.printBooleanTrueImage](#attr-listgridprintbooleantrueimage) and [ListGrid.printBooleanPartialImage](ListGrid_1.md#attr-listgridprintbooleanpartialimage) are unset, this will be set to the default [CheckboxItem.printUncheckedImage](CheckboxItem.md#attr-checkboxitemprintuncheckedimage).
-
-### Groups
-
-- imageColumns
-- printing
-
-### See Also
-
-- [ListGrid.booleanFalseImage](ListGrid_1.md#attr-listgridbooleanfalseimage)
-
-**Flags**: IRWA
-
----
-## Attr: ListGrid.reselectOnUpdateNotifications
-
-### Description
-if [ListGrid.reselectOnUpdate](ListGrid_1.md#attr-listgridreselectonupdate) is true, this property governs what selection changed notifications should be triggered when a selected record is edited then automatically reselected when the edited data is merged into the data set.
-
-**Flags**: IRWA
-
----
 ## Attr: ListGrid.hoverMode
 
 ### Description
@@ -90,7 +63,7 @@ At this time, there is no generally effective way to avoid this warning dialog a
 ### Description
 If set, the [ListGrid.booleanTrueImage](ListGrid_1.md#attr-listgridbooleantrueimage) to use when [printing](../kb_topics/printing.md#kb-topic-printing).
 
-If this, [ListGrid.printBooleanFalseImage](#attr-listgridprintbooleanfalseimage) and [ListGrid.printBooleanPartialImage](ListGrid_1.md#attr-listgridprintbooleanpartialimage) are unset, this will be set to the default [CheckboxItem.printCheckedImage](CheckboxItem.md#attr-checkboxitemprintcheckedimage).
+If this, [ListGrid.printBooleanFalseImage](ListGrid_1.md#attr-listgridprintbooleanfalseimage) and [ListGrid.printBooleanPartialImage](ListGrid_1.md#attr-listgridprintbooleanpartialimage) are unset, this will be set to the default [CheckboxItem.printCheckedImage](CheckboxItem.md#attr-checkboxitemprintcheckedimage).
 
 ### Groups
 

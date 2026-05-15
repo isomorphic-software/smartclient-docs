@@ -483,6 +483,12 @@ If VoiceAssist is not yet [active](#classmethod-voiceassistsetactive) when click
 
 The button is created with `canFocus: false` so that clicking it does not steal focus from the component whose value or commands are being dictated.
 
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| properties | [Img Properties](#type-img-properties) | true | — | optional properties to apply to the returned Img widget, for example a title or ID |
+
 ### Returns
 
 `[Img](#type-img)` — a live widget wired for VoiceAssist recording
@@ -558,6 +564,7 @@ On non-mobile devices, this method is called internally when the user triple-tap
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | active | [boolean](../reference.md#type-boolean) | false | — | true to activate, false to deactivate |
+| callback | [Callback](../reference.md#type-callback) | true | — | optional callback fired when the activation or deactivation is complete. Because the first activation involves an asynchronous speech-recognition probe, callers that need to know when VoiceAssist is actually ready should pass a callback rather than assuming synchronous completion. The callback receives a single boolean argument: true if VoiceAssist is now in the requested state, false if activation failed (mic denied, speech service blocked, etc.). |
 
 ### See Also
 

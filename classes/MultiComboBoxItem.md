@@ -233,6 +233,8 @@ Specifies the size of the combo box field.
 
 Note that this attribute only has an effect in "flow", "horizontal", and "horizontalReverse" [modes](#attr-multicomboboxitemlayoutstyle). In the other modes, the combo box is as wide as the overall MultiComboBoxItem.
 
+When [MultiComboBoxItem.autoExpandComboBox](#attr-multicomboboxitemautoexpandcombobox) is true, this value acts as the minimum width of the combo box.
+
 **Flags**: IRW
 
 ---

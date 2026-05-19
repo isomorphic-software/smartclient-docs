@@ -7,6 +7,8 @@
 ## KB Topic: Integration with Spring
 
 ### Description
+_Note, this section is about integrating with the traditional Spring framework. If you are looking for information about integrating with [Spring Boot](https://spring.io/projects/spring-boot), read the [Integrating with Spring Boot](springBootIntegration.md#kb-topic-integration-with-spring-boot) article_
+
 **Overview**
 
 The Spring framework has many different parts, from integration with Object Relational Mapping (ORM) and transaction management systems, to a Model View Controller (MVC) architecture.

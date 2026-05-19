@@ -564,6 +564,7 @@ On non-mobile devices, this method is called internally when the user triple-tap
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | active | [boolean](../reference.md#type-boolean) | false | — | true to activate, false to deactivate |
+| callback | [Callback](../reference.md#type-callback) | true | — | optional callback fired when the activation or deactivation is complete. Because the first activation involves an asynchronous speech-recognition probe, callers that need to know when VoiceAssist is actually ready should pass a callback rather than assuming synchronous completion. The callback receives a single boolean argument: true if VoiceAssist is now in the requested state, false if activation failed (mic denied, speech service blocked, etc.). |
 
 ### See Also
 

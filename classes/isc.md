@@ -265,6 +265,56 @@ This method is simply a shorthand way to call [Notify.addMessage](Notify.md#clas
 - [isc.confirm](#staticmethod-iscconfirm)
 
 ---
+## StaticMethod: isc.dynamic
+
+### Description
+Marks a property value as an inline reactive expression. Unlike [isc.dyn](#staticmethod-iscdyn), which produces a string, this returns the expression's native type — suitable for numeric, boolean, or object-typed properties. The expression is re-evaluated when its referenced ruleScope paths change, and the new typed value is passed to the property's setter.
+
+`isc.dynamic()` is a concise inline alternative to [Class.dynamicProperties](Class.md#attr-classdynamicproperties).
+
+```
+    isc.Layout.create({
+        layoutStartMargin: isc.dynamic("form.values.margin + 10")
+    });
+ 
+```
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| expression | [String](#type-string) | false | — | JavaScript expression in terms of ruleScope paths |
+
+### Returns
+
+`[Any](#type-any)` — opaque marker that the framework detects in [Class.create](Class.md#classmethod-classcreate) and replaces with the compiled dynamic property
+
+---
+## StaticMethod: isc.dynOnce
+
+### Description
+Marks a [dynamic template](../kb_topics/dynamicTemplates.md#kb-topic-dynamic-templates) or expression as non-reactive. The value is evaluated once at [create()](Class.md#classmethod-classcreate) time against the current ruleScope and no listener is registered — subsequent ruleScope changes will not trigger re-evaluation. Use for values that are computed once from initial state and never need to update afterwards.
+
+Accepts either a plain string template or the result of [isc.dynamic](#staticmethod-iscdynamic).
+
+```
+    isc.Layout.create({
+        layoutStartMargin: isc.dynOnce(isc.dynamic("form.values.margin + 10"))
+    });
+ 
+```
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| value | [Any](#type-any) | false | — | string template, or the result of [isc.dynamic](#staticmethod-iscdynamic) |
+
+### Returns
+
+`[Any](#type-any)` — opaque marker that the framework detects in [Class.create](Class.md#classmethod-classcreate) and replaces with a one-shot evaluation
+
+---
 ## StaticMethod: isc.showLoginDialog
 
 ### Description
@@ -873,6 +923,24 @@ Clear the modal prompt being shown to the user.
 ### See Also
 
 - [Dialog.Prompt](Dialog.md#classattr-dialogprompt)
+
+---
+## StaticMethod: isc.dyn
+
+### Description
+Marks a string value as a [dynamic template](../kb_topics/dynamicTemplates.md#kb-topic-dynamic-templates), opting in to template detection on a property whose declared type is not [DynString](../reference.md#type-dynstring) or [DynHTMLString](../reference_2.md#type-dynhtmlstring). The string may contain {expr} expression delimiters and is compiled to a reactive string that re-evaluates when the referenced ruleScope paths change.
+
+For a typed (non-string) result, see [isc.dynamic](#staticmethod-iscdynamic). For a one-shot evaluation with no listener, see [isc.dynOnce](#staticmethod-iscdynonce). For an untrusted template source, see [isc.dynRestricted](#staticmethod-iscdynrestricted).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| template | [String](#type-string) | false | — | string template containing zero or more {expr} delimiters |
+
+### Returns
+
+`[Any](#type-any)` — opaque marker that the framework detects in [Class.create](Class.md#classmethod-classcreate) and replaces with the compiled dynamic property
 
 ---
 ## StaticMethod: isc.getKeys
@@ -1760,6 +1828,24 @@ Converts a JavaScript boolean to a Java Boolean object. This is useful when buil
 ### Groups
 
 - graalUtilities
+
+---
+## StaticMethod: isc.dynRestricted
+
+### Description
+Marks a string value as a [dynamic template](../kb_topics/dynamicTemplates.md#kb-topic-dynamic-templates) to be compiled in _restricted mode_. Restricted-mode templates are validated before compilation: function calls, assignment, bracket access, and other code-injection vectors are rejected. Use whenever the template source is not developer-authored code — for example, when the template is loaded from end-user preferences, a database, or any external feed.
+
+For properties whose declared type is [DynString](../reference.md#type-dynstring) or [DynHTMLString](../reference_2.md#type-dynhtmlstring), restricted mode can also be enabled per instance via the [Canvas.dynRestricted](Class.md#classattr-classdynrestricted) property.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| template | [String](#type-string) | false | — | string template containing zero or more {expr} delimiters |
+
+### Returns
+
+`[Any](#type-any)` — opaque marker that the framework detects in [Class.create](Class.md#classmethod-classcreate) and replaces with the compiled dynamic property, with restricted-mode validation applied
 
 ---
 ## StaticMethod: isc.nanoTime

@@ -762,6 +762,27 @@ If records will be variable height, you should switch on [virtualScrolling](#att
 `[number](#type-number)` — height in pixels
 
 ---
+## Method: GridRenderer.getCellCentering
+
+### Description
+Returns the vertical centering mode for the given row (or cell, if [GridRenderer.centerByCell](#attr-gridrenderercenterbycell) is true). The return value is one of the numeric constants [GridRenderer.TEXT_HEIGHT](#classattr-gridrenderertext_height), [GridRenderer.TABLE](#classattr-gridrenderertable), or [GridRenderer.FLEX](#classattr-gridrendererflex).
+
+The default implementation returns [gridRenderer.defaultCentering](#attr-gridrendererdefaultcentering) for all rows. [ListGrid](ListGrid_1.md#class-listgrid) overrides this to return FLEX for edit rows when the default centering is TEXT\_HEIGHT, because inline-block form items require geometric centering in divGrid block-DIV cells.
+
+Override this method to provide per-row or per-cell centering control. The method must be very fast — it may be called once per row (or per cell if centerByCell is true) during every table redraw.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| rowNum | [int](../reference.md#type-int) | false | — | row index |
+| optional | [int](../reference.md#type-int) | true | — | colNumcolumn index, only passed when centerByCell is true |
+
+### Returns
+
+`[int](../reference.md#type-int)` — centering mode constant
+
+---
 ## Method: GridRenderer.getCellRecord
 
 ### Description

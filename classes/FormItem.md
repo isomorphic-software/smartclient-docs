@@ -1718,6 +1718,18 @@ Number of rows that this item spans
 **Flags**: IRW
 
 ---
+## Attr: FormItem.pickerSnapEdge
+
+### Description
+Which edge or corner of the picker should be placed at the [FormItem.pickerSnapTo](#attr-formitempickersnapto) anchor point on the item. Uses the same edge/corner codes as [Canvas.snapEdge](Canvas.md#attr-canvassnapedge): `"TL"`, `"T"`, `"TR"`, `"L"`, `"C"`, `"R"`, `"BL"`, `"B"`, `"BR"`.
+
+### Groups
+
+- pickerIcon
+
+**Flags**: IRW
+
+---
 ## Attr: FormItem.criteriaField
 
 ### Description
@@ -1907,6 +1919,22 @@ Height of the error icon, if we're showing icons when validation errors occur.
 ### See Also
 
 - [FormItem.showErrorIcon](#attr-formitemshowerroricon)
+
+**Flags**: IRW
+
+---
+## Attr: FormItem.pickerSnapTo
+
+### Description
+Controls where the picker is placed relative to this item by specifying which edge or corner of the item the picker should be anchored to. Uses the same edge/corner codes as [Canvas.snapTo](Canvas.md#attr-canvassnapto): `"TL"`, `"T"`, `"TR"`, `"L"`, `"C"`, `"R"`, `"BL"`, `"B"`, `"BR"`.
+
+The [FormItem.pickerSnapEdge](#attr-formitempickersnapedge) property determines which edge of the picker aligns to this anchor point. Together they allow any edge/corner of the picker to be aligned with any edge/corner of the item (e.g. `pickerSnapTo:"BR"` with `pickerSnapEdge:"BL"` places the picker to the right of the item, bottom-aligned).
+
+The picker is still constrained to remain within the browser viewport via [Canvas.placeNear](Canvas.md#method-canvasplacenear). These properties apply whether the picker is shown via the [picker icon](#attr-formitemshowpickericon) or via [FormItem.showPickerOnFocus](#attr-formitemshowpickeronfocus).
+
+### Groups
+
+- pickerIcon
 
 **Flags**: IRW
 
@@ -2276,6 +2304,20 @@ For finer control over suppressing hovers, see [itemHover](#method-formitemitemh
 **Flags**: IRW
 
 ---
+## Attr: FormItem.showPickerOnFocusDelay
+
+### Description
+When [FormItem.showPickerOnFocus](#attr-formitemshowpickeronfocus) is true, an optional number of milliseconds to wait before automatically moving focus into the picker after it is shown. During this window, a Tab or click away from the item will dismiss the picker without requiring an Escape keypress.
+
+If unset (the default), focus remains in the item until the user explicitly presses the Down Arrow key to enter the picker. This lets users Tab through picker-equipped fields without dismissing each picker individually.
+
+### Groups
+
+- pickerIcon
+
+**Flags**: IRW
+
+---
 ## Attr: FormItem.title
 
 ### Description
@@ -2609,6 +2651,26 @@ Class name of the picker to be created.
 - appearance
 
 **Flags**: IR
+
+---
+## Attr: FormItem.showPickerOnFocus
+
+### Description
+If true, the item's picker will be shown automatically when the item receives focus, as though the user had clicked the [picker icon](#attr-formitemshowpickericon). This is useful for items like [DateItem](DateItem.md#class-dateitem) or [ColorItem](ColorItem.md#class-coloritem) where the picker is the primary interaction mode and users should not need to separately click the icon.
+
+When the picker appears, keyboard focus remains in the item so that pressing **Tab** advances to the next item (dismissing the picker) and **Shift-Tab** moves backward. To transfer focus into the picker for keyboard-driven interaction, the user presses **Down Arrow**. **Escape** dismisses the picker while keeping focus in the item.
+
+Alternatively, set [FormItem.showPickerOnFocusDelay](#attr-formitemshowpickeronfocusdelay) to automatically move focus into the picker after a short delay, so the user does not need to press Down Arrow.
+
+Use [FormItem.pickerSnapTo](#attr-formitempickersnapto) and [FormItem.pickerSnapEdge](#attr-formitempickersnapedge) to control where the picker is placed relative to the item.
+
+The picker is shown via the same [FormItem.showPicker](#method-formitemshowpicker) pathway used by the picker icon click, so all picker configuration (autoChild properties, etc.) applies normally.
+
+### Groups
+
+- pickerIcon
+
+**Flags**: IRW
 
 ---
 ## Attr: FormItem.showTitle

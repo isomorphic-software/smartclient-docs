@@ -119,7 +119,7 @@ Should the title for this button wrap? If unset, default behavior is to allow wr
 ## Attr: StretchImgButton.title
 
 ### Description
-The title HTML to display in this button.
+The title HTML to display in this button. May include [dynamic template](../kb_topics/dynamicTemplates.md#kb-topic-dynamic-templates) expressions in {expr} form — for example, `title: "Save {Customer.name}'s data"` — which re-evaluate when their referenced ruleScope paths change.
 
 ### Groups
 

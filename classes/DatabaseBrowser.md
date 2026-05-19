@@ -91,7 +91,7 @@ Optional criteria to pass to the [DatabaseBrowser.tableDataSource](#attr-databas
 ## Attr: DatabaseBrowser.serverType
 
 ### Description
-The type of database server this DatabaseBrowser should connect to. Valid values are "sql" (SmartClient's own built-in support for SQL databases) or "hibernate"
+The type of database server this DatabaseBrowser should connect to. The only supported value is "sql" (SmartClient's built-in SQL database support). Hibernate beanless table-browsing mode has been removed; use "sql" mode for table browsing and define .ds.xml files with beanClassName for Hibernate entity-based DataSources.
 
 **Flags**: IR
 

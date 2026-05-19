@@ -1972,6 +1972,22 @@ Notes:
 **Flags**: IRWA
 
 ---
+## Attr: Canvas.suppressRedraw
+
+### Description
+When set to `true`, this Canvas will not be redrawn while the flag remains set: [markForRedraw()](#method-canvasmarkforredraw) becomes a no-op, and a direct call to [redraw()](#method-canvasredraw) logs a warning and returns without re-emitting the Canvas's HTML.
+
+Used when an external system — a React root, a Web Component, or any other engine that owns the Canvas's inner DOM — needs to be the sole writer of `innerHTML`, since a SmartClient redraw replaces `innerHTML` and would destroy any externally-managed DOM along with any user state held within it (input focus, scroll position, etc.).
+
+To force a fresh render after the external content has been torn down, either clear `suppressRedraw` and call `redraw()`, or ask the external owner to rebuild its content; for a React-managed Canvas, see [React JSX integration](#kb-topic-reactjsxintegration).
+
+### Groups
+
+- drawing
+
+**Flags**: IRWA
+
+---
 ## Attr: Canvas.showDragShadow
 
 ### Description
@@ -4989,6 +5005,25 @@ The intent is that the same font size change be passed to this method as is pass
 
 - [Canvas.resizeFonts](#classmethod-canvasresizefonts)
 - [Canvas.resizeControls](#classmethod-canvasresizecontrols)
+
+---
+## ClassMethod: Canvas.getControlHeight
+
+### Description
+Returns the standard control height at the current density. This is the height a single-line text input would have after any prior [Canvas.resizeControls](#classmethod-canvasresizecontrols) calls — 22 at Normal density in Shiva-family skins, smaller at Compact, larger at Spacious.
+
+Useful for computing density-aware layout heights in Showcase samples and application code, e.g. sizing a grid to show exactly N rows:
+
+```
+     var ch = isc.Canvas.getControlHeight();
+     grid.setHeight(ch * 5 + grid.headerHeight +
+                    grid.filterEditorHeight);
+ 
+```
+
+### Returns
+
+`[int](../reference.md#type-int)` — current standard control height in pixels
 
 ---
 ## ClassMethod: Canvas.resizeIcons

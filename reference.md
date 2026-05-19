@@ -557,7 +557,7 @@ This is the central API reference for the SmartClient framework.
 - [Client-Server Integration](kb_topics/clientServerIntegration.md)
 - [ComboBoxItem PickList Filtering](kb_topics/comboBoxFiltering.md)
 - [ComboBoxItem criteria](kb_topics/comboBoxItemCriteria.md)
-- [Component Binding](#kb-topic-component-binding)
+- [Component Binding](kb_topics/componentBinding.md)
 - [Component Schema](kb_topics/componentSchema.md)
 - [Component XML](kb_topics/componentXML.md)
 - [CompoundFormItem_skinning](#kb-topic-compoundformitem_skinning)
@@ -605,6 +605,7 @@ This is the central API reference for the SmartClient framework.
 - [dsSpecialFields](kb_topics/dsSpecialFields.md)
 - [dynamicCriteria](kb_topics/dynamicCriteria.md)
 - [Dynamic Strings](kb_topics/dynamicStrings.md)
+- [Dynamic Templates](kb_topics/dynamicTemplates.md)
 - [Grid Editing](kb_topics/editing.md)
 - [elements](#kb-topic-elements)
 - [Enabling and Disabling](kb_topics/enable.md)
@@ -710,6 +711,7 @@ This is the central API reference for the SmartClient framework.
 - [Prompting](#kb-topic-prompting)
 - [Quartz DataSources](kb_topics/quartzAdapters.md)
 - [Integrating Pre-Existing SmartClient Apps with React](kb_topics/reactIntegration.md)
+- [React JSX Integration](kb_topics/reactJSXIntegration.md)
 - [Using SmartClient with React](kb_topics/reactSupport.md)
 - [Registering Classes for Reflection](kb_topics/reflection.md)
 - [Reify Overview](kb_topics/reify.md)
@@ -754,6 +756,7 @@ This is the central API reference for the SmartClient framework.
 - [Integrating SmartClient with Playwright](kb_topics/smartClientPlaywright.md)
 - [snapGridDragging](kb_topics/snapGridDragging.md)
 - [snapPositioning](#kb-topic-snappositioning)
+- [Integration with Spring Boot](kb_topics/springBootIntegration.md)
 - [Integration with Spring](kb_topics/springIntegration.md)
 - [SQL Connection Pooling](kb_topics/sqlConnectionPooling.md)
 - [SQL DataSources](kb_topics/sqlDataSource.md)
@@ -4429,25 +4432,6 @@ The baseLine is StretchImg that is placed along the edge of the TabBar that bord
 - [TabBar.baseLineCapSize](classes/TabBar.md#attr-tabbarbaselinecapsize)
 
 ---
-## KB Topic: Component Binding
-
-### Description
-Properties that control how a [DataBoundComponent](#interface-databoundcomponent) binds to this data source.
-
-### Related
-
-- [DataSourceField.title](classes/DataSourceField.md#attr-datasourcefieldtitle)
-- [DataSourceField.canView](classes/DataSourceField.md#attr-datasourcefieldcanview)
-- [DataSourceField.canEdit](classes/DataSourceField.md#attr-datasourcefieldcanedit)
-- [DataSourceField.canSave](classes/DataSourceField.md#attr-datasourcefieldcansave)
-- [DataSourceField.editorType](classes/DataSourceField.md#attr-datasourcefieldeditortype)
-- [DataSourceField.readOnlyEditorType](classes/DataSourceField.md#attr-datasourcefieldreadonlyeditortype)
-- [DataSourceField.filterEditorType](classes/DataSourceField.md#attr-datasourcefieldfiltereditortype)
-- [DataSourceField.hidden](classes/DataSourceField.md#attr-datasourcefieldhidden)
-- [DataSourceField.ignore](classes/DataSourceField.md#attr-datasourcefieldignore)
-- [DataSourceField.detail](classes/DataSourceField.md#attr-datasourcefielddetail)
-
----
 ## KB Topic: CompoundFormItem_skinning
 
 ### Description
@@ -4509,6 +4493,7 @@ Rendering an object on the page.
 - [ListGrid.markForRedraw](classes/ListGrid_2.md#method-listgridmarkforredraw)
 - [BaseWidget.autoDraw](classes/BaseWidget.md#attr-basewidgetautodraw)
 - [Canvas.autoDraw](classes/Canvas.md#attr-canvasautodraw)
+- [Canvas.suppressRedraw](classes/Canvas.md#attr-canvassuppressredraw)
 - [Canvas.redrawOnResize](classes/Canvas.md#attr-canvasredrawonresize)
 
 ---
@@ -5704,6 +5689,14 @@ For DataSources of type "sql" and "hibernate", specifies the kind of inheritance
 ### Groups
 
 - fields
+
+---
+## Type: DynString
+
+### Description
+A string-typed property that natively accepts a [dynamic\\n template](kb_topics/dynamicTemplates.md#kb-topic-dynamic-templates) containing {expr} expression delimiters. Any plain string value is also a valid `DynString` — only when an opening brace is present in the value does the framework parse and compile it as a template.
+
+To embed a dynamic template in a property whose declared type is plain [String](#type-string), wrap the value with [isc.dyn](classes/isc.md#staticmethod-iscdyn).
 
 ---
 ## Type: EdgeSizes

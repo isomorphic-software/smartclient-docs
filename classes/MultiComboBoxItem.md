@@ -226,12 +226,24 @@ When this item is showing a [tree-based picker](PickList.md#attr-picklistdataset
 **Flags**: IRW
 
 ---
+## Attr: MultiComboBoxItem.autoExpandComboBox
+
+### Description
+When true and [MultiComboBoxItem.layoutStyle](#attr-multicomboboxitemlayoutstyle) is "flow" or "flowReverse", the combo box expands to fill remaining horizontal space in each row. As the user selects values and chips are added, the combo box shrinks to accommodate them. When chips fill an entire row, the combo box wraps to the next row and expands to fill that row.
+
+[MultiComboBoxItem.comboBoxWidth](#attr-multicomboboxitemcomboboxwidth) acts as a minimum width for the combo box when this mode is active.
+
+**Flags**: IR
+
+---
 ## Attr: MultiComboBoxItem.comboBoxWidth
 
 ### Description
 Specifies the size of the combo box field.
 
 Note that this attribute only has an effect in "flow", "horizontal", and "horizontalReverse" [modes](#attr-multicomboboxitemlayoutstyle). In the other modes, the combo box is as wide as the overall MultiComboBoxItem.
+
+When [MultiComboBoxItem.autoExpandComboBox](#attr-multicomboboxitemautoexpandcombobox) is true, this value acts as the minimum width of the combo box.
 
 **Flags**: IRW
 
@@ -334,6 +346,18 @@ The value of a MultiComboBoxItem to the form is an array of valueField values co
 | dataValue | [Any](#type-any) | false | — | underlying data value for the item |
 | form | [DynamicForm](#type-dynamicform) | false | — | the dynamicForm in which this item is contained |
 | item | [CanvasItem](#type-canvasitem) | false | — | the live form item instance |
+
+---
+## Method: MultiComboBoxItem.setAutoExpandComboBox
+
+### Description
+Setter for [MultiComboBoxItem.autoExpandComboBox](#attr-multicomboboxitemautoexpandcombobox).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| autoExpand | [Boolean](#type-boolean) | false | — | new value |
 
 ---
 ## Method: MultiComboBoxItem.setLayoutStyle

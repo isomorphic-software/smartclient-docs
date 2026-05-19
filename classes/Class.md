@@ -24,6 +24,16 @@ You can then:
 NOTE: as a convention, all class names begin with a capital letter and all instances begin with a lower case letter.
 
 ---
+## ClassAttr: Class.useDynamicTemplates
+
+### Description
+Whether [dynamic template](../kb_topics/dynamicTemplates.md#kb-topic-dynamic-templates) detection runs for instances of this class. When `false`, [DynString](../reference.md#type-dynstring) and [DynHTMLString](../reference_2.md#type-dynhtmlstring) property values are passed through verbatim, and [isc.dyn](isc.md#staticmethod-iscdyn) / [isc.dynamic](isc.md#staticmethod-iscdynamic) markers are not interpreted. Set per class on the prototype, or per instance via `useDynamicTemplates: false` in the [create()](#classmethod-classcreate) properties.
+
+System-wide, dynamic-template detection can also be disabled by setting `isc.dynamicTemplates = false`.
+
+**Flags**: RWA
+
+---
 ## ClassAttr: Class.isFrameworkClass
 
 ### Description
@@ -32,6 +42,14 @@ Is this a core SmartClient class (part of the SmartClient framework)? This attri
 ### Groups
 
 - autoTest
+
+**Flags**: RWA
+
+---
+## ClassAttr: Class.dynRestricted
+
+### Description
+When `true`, [DynString](../reference.md#type-dynstring) and [DynHTMLString](../reference_2.md#type-dynhtmlstring) template values on instances of this class are compiled in restricted mode — equivalent to wrapping every template with [isc.dynRestricted](isc.md#staticmethod-iscdynrestricted). Use when an entire class's templates originate from untrusted sources. See the [dynamic templates overview](../kb_topics/dynamicTemplates.md#kb-topic-dynamic-templates) for the restricted-mode grammar.
 
 **Flags**: RWA
 

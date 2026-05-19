@@ -232,6 +232,22 @@ Policy for laying out tiles. See [TileLayoutPolicy](../reference.md#type-tilelay
 **Flags**: IR
 
 ---
+## Attr: TileLayout.tileFlowPolicy
+
+### Description
+Controls whether tiles are stretch-sized within each row when [LayoutPolicy](../reference_2.md#type-layoutpolicy) is "flow". Parallels [Layout.hPolicy](Layout.md#attr-layouthpolicy) / [Layout.vPolicy](Layout.md#attr-layoutvpolicy).
+
+With `"none"` (the default), tiles are placed at their natural size and never resized.
+
+With `"fill"`, tiles that specify `width:"*"` or a percentage width (e.g. `"30%"`) are stretch-sized to fill remaining space within each row, using the same algorithm as [HLayout](../reference.md#class-hlayout). Tiles with numeric or unset widths are left at their natural size.
+
+### Groups
+
+- layoutPolicy
+
+**Flags**: IR
+
+---
 ## Attr: TileLayout.tileHMargin
 
 ### Description
@@ -240,6 +256,20 @@ Horizontal margin in between tiles. See [TileLayout.tileMargin](#attr-tilelayout
 ### Groups
 
 - layoutMargin
+
+**Flags**: IR
+
+---
+## Attr: TileLayout.minFlowTileSize
+
+### Description
+Minimum size in pixels for stretch-resolved tiles when [TileLayout.tileFlowPolicy](#attr-tilelayouttileflowpolicy) is "fill". Tiles whose width (or height for [vertical orientation](../reference_2.md#type-orientation)) resolves via `"*"` or `"%"` will never be sized below this value. Also used as the effective width of stretch tiles when deciding whether a row is full (prevents unbounded accumulation of `"*"` tiles on one row).
+
+Defaults to [TileLayout.tileSize](#attr-tilelayouttilesize) if unset. Per-tile [Canvas.minWidth](Canvas.md#attr-canvasminwidth) takes precedence when larger.
+
+### Groups
+
+- sizing
 
 **Flags**: IR
 

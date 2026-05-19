@@ -145,5 +145,6 @@ Width and height of an object
 - [TileLayout.tileWidth](../classes/TileLayout.md#attr-tilelayouttilewidth)
 - [TileLayout.tileHeight](../classes/TileLayout.md#attr-tilelayouttileheight)
 - [TileLayout.overflow](../classes/TileLayout.md#attr-tilelayoutoverflow)
+- [TileLayout.minFlowTileSize](../classes/TileLayout.md#attr-tilelayoutminflowtilesize)
 
 ---

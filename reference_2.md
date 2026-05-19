@@ -1010,6 +1010,14 @@ A [dynamic string](kb_topics/dynamicStrings.md#kb-topic-dynamic-strings).
 - dynamicStrings
 
 ---
+## Type: DynHTMLString
+
+### Description
+An HTML-string-typed property that natively accepts a [dynamic template](kb_topics/dynamicTemplates.md#kb-topic-dynamic-templates) containing {expr} expression delimiters. Any plain HTML value is also a valid `DynHTMLString` — only when an opening brace is present in the value does the framework parse and compile it as a template.
+
+To embed a dynamic template in a property whose declared type is plain [HTMLString](#type-htmlstring), wrap the value with [isc.dyn](classes/isc.md#staticmethod-iscdyn).
+
+---
 ## Type: EdgeName
 
 ### Description
@@ -2773,6 +2781,72 @@ Controls whether and when individual items are selected when clicking on a form 
 ### Groups
 
 - communication
+
+---
+## Type: ServerDynamicCriteria
+
+### Description
+An [AdvancedCriteria](#object-advancedcriteria) with server-side extensions for referencing authentication/session context and fields on related DataSources.
+
+On the client, a ServerDynamicCriteria is treated identically to a normal AdvancedCriteria. On the server, the following additional `fieldName` forms are recognized:
+
+#### Scoped values
+Reference authentication or request context:
+
+*   `auth.userId` — the authenticated user ID (from `DSRequest.getUserId()`)
+*   `auth.roles` — the list of roles for the authenticated user (from `DSRequest.getUserRoles()`)
+*   `context.operationType` — the operation type of the current DSRequest (`"add"`, `"update"`, `"fetch"`, or `"remove"`)
+
+#### Relational references
+Reference fields on related DataSources via dot notation, with automatic server-side fetching:
+
+*   `Order.status` — traverse the default FK to the Order DataSource and read its `status` field
+*   `processorId:Employee.workStatus` — disambiguate which FK to follow when multiple FKs reference the same DataSource
+*   `Order.Customer.region` — multi-hop traversal through Order to Customer
+
+The relational reference syntax reuses the same format as [DataSourceField.includeVia](classes/DataSourceField.md#attr-datasourcefieldincludevia) / `queryFK`. The last dot-separated segment is the target field; everything before it identifies the relation path. Only many-to-one relations are supported.
+
+If a DataSource is named `auth` or `context`, prefix with `ds.` to force DataSource lookup — e.g. `ds.auth.someField`.
+
+#### Caching and performance
+Related records fetched during server-side evaluation are cached for the lifetime of the current [DSRequest](reference_2.md#object-dsrequest), so multiple criteria referencing the same related record incur only a single fetch. Auto-fetches bypass [declarativeSecurity](kb_topics/declarativeSecurity.md#kb-topic-declarative-security) since they are internal server operations enforcing declared constraints, not user-initiated data requests.
+
+The maximum relation chain depth defaults to 5 and can be changed via the `ServerDynamicCriteria.maxRelationDepth` setting in `server.properties`. If a chain exceeds this limit, the criterion is treated as non-matching.
+
+#### Example
+```
+ <!-- Quantity capped at 10 only for Pending orders -->
+ <field name="quantity" type="integer">
+   <validators>
+     <validator type="integerRange" min="1" max="10">
+       <applyWhen fieldName="Order.status"
+                  operator="equals" value="Pending"/>
+     </validator>
+   </validators>
+ </field>
+ 
+```
+#### Usage
+ServerDynamicCriteria is the type used by:
+
+*   [Validator.applyWhen](classes/Validator.md#attr-validatorapplywhen) — conditionally apply a validator
+*   [Validator.passWhen](classes/Validator.md#attr-validatorpasswhen) / [Validator.failWhen](classes/Validator.md#attr-validatorfailwhen) — criteria-based validation logic
+*   [DataSourceField.requiredWhen](classes/DataSourceField.md#attr-datasourcefieldrequiredwhen) — conditionally require a field
+*   [DataSourceField.readOnlyWhen](classes/DataSourceField.md#attr-datasourcefieldreadonlywhen) / [DataSourceField.editWhen](classes/DataSourceField.md#attr-datasourcefieldeditwhen) — conditionally restrict field editability
+*   [DataSourceField.initWhen](classes/DataSourceField.md#attr-datasourcefieldinitwhen) / [DataSourceField.updateWhen](classes/DataSourceField.md#attr-datasourcefieldupdatewhen) — restrict editability by operation type
+
+The resolved values are also available programmatically via `DSRequest.getRelatedRecord()` and `DSRequest.getRelatedFieldValue()` in server-side Java code (e.g. from a DMI).
+
+### See Also
+
+- [Validator.applyWhen](classes/Validator.md#attr-validatorapplywhen)
+- [Validator.passWhen](classes/Validator.md#attr-validatorpasswhen)
+- [Validator.failWhen](classes/Validator.md#attr-validatorfailwhen)
+- [DataSourceField.requiredWhen](classes/DataSourceField.md#attr-datasourcefieldrequiredwhen)
+- [DataSourceField.readOnlyWhen](classes/DataSourceField.md#attr-datasourcefieldreadonlywhen)
+- [DataSourceField.editWhen](classes/DataSourceField.md#attr-datasourcefieldeditwhen)
+- [DataSourceField.initWhen](classes/DataSourceField.md#attr-datasourcefieldinitwhen)
+- [DataSourceField.updateWhen](classes/DataSourceField.md#attr-datasourcefieldupdatewhen)
 
 ---
 ## Type: SetterPath

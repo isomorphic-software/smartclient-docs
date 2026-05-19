@@ -1423,6 +1423,34 @@ For fields with an [ListGridField.optionDataSource](#attr-listgridfieldoptiondat
 **Flags**: IR
 
 ---
+## Attr: ListGridField.cellTemplate
+
+### Description
+HTML template used to format the cell's display value. Accepts a [dynamic template](../kb_topics/dynamicTemplates.md#kb-topic-dynamic-templates) containing {expr} expression delimiters; available context variables are `value`, `record`, `field`, and `grid`.
+
+```
+   { name: "name",
+     cellTemplate: "{record.lastName}, {record.firstName}" }
+   { name: "status",
+     cellTemplate: "{record.priority > 3 ? 'High' : 'Normal'}" }
+ 
+```
+
+Compared with [formatCellValue()](#method-listgridfieldformatcellvalue), `cellTemplate` is declarative: no function is required, and the template can be authored by non-developers or stored externally. Both mechanisms produce HTML displayed in the cell. When both are configured on the same field, `cellTemplate` takes precedence.
+
+If the template source is loaded from an untrusted feed (database, end-user preferences, external configuration), set [dynRestricted:true](#attr-listgridfielddynrestricted) on the field to compile the template in restricted mode — only dot expressions, ternaries, and literal values are permitted. See the [dynamic templates\\n overview](../kb_topics/dynamicTemplates.md#kb-topic-dynamic-templates) for the full restricted-mode grammar.
+
+### Groups
+
+- display_values
+
+### See Also
+
+- [ListGridField.formatCellValue](#method-listgridfieldformatcellvalue)
+
+**Flags**: IRW
+
+---
 ## Attr: ListGridField.imageURLSuffix
 
 ### Description
@@ -2679,6 +2707,22 @@ Specifies the cursor to display when the mouse pointer is over an icon image in 
 If not explicitly specified, see [ListGrid.getIconCursor](ListGrid_2.md#method-listgridgeticoncursor) for how `"icon"` fields determine icon image cursors, and [ListGrid.getValueIconCursor](ListGrid_2.md#method-listgridgetvalueiconcursor) for how value icon image cursors are determined.
 
 **Flags**: IRWA
+
+---
+## Attr: ListGridField.dynRestricted
+
+### Description
+When `true`, the [ListGridField.cellTemplate](#attr-listgridfieldcelltemplate) on this field is compiled in restricted mode — equivalent to wrapping the template with [isc.dynRestricted](isc.md#staticmethod-iscdynrestricted). Set when the template source is not developer-authored, for example a template loaded from end-user preferences or from a database. See the [dynamic templates overview](../kb_topics/dynamicTemplates.md#kb-topic-dynamic-templates) for the restricted-mode grammar.
+
+### Groups
+
+- display_values
+
+### See Also
+
+- [ListGridField.cellTemplate](#attr-listgridfieldcelltemplate)
+
+**Flags**: IRW
 
 ---
 ## Attr: ListGridField.canEdit

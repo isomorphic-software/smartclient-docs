@@ -11,7 +11,7 @@
 ### Description
 FormItem intended for inserting blurbs of instructional HTML into DynamicForms.
 
-Set the `defaultValue` of this item to the HTML you want to embed in the form.
+Set the `defaultValue` of this item to the HTML you want to embed in the form. The value is treated as a `DynHTMLString`, so it may include `{expr}` dynamic-template segments that resolve against the ambient rule scope and re-render in place when the referenced paths mutate.
 
 ---
 ## Attr: BlurbItem.textBoxStyle

@@ -510,7 +510,7 @@ If using an icon for this button, whether to switch the icon image when the butt
 ## Attr: Button.title
 
 ### Description
-The title HTML to display in this button.
+The title HTML to display in this button. May include [dynamic template](../kb_topics/dynamicTemplates.md#kb-topic-dynamic-templates) expressions in {expr} form — for example, `title: "Save {Customer.name}'s data"` — which re-evaluate when their referenced ruleScope paths change.
 
 ### Groups
 

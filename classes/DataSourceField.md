@@ -817,6 +817,25 @@ See [DataSource.tableCode](DataSource_1.md#attr-datasourcetablecode).
 **Flags**: R
 
 ---
+## Attr: DataSourceField.updateWhen
+
+### Description
+Criteria-based control for field settability on update operations. The field can be set during an update when criteria match. On add operations, the field is always read-only (like [canUpdate:false](#canupdate)).
+
+On the server, if the operation is an add, or the criteria do not match on an update, the field value is stripped.
+
+### Groups
+
+- componentBinding
+
+### See Also
+
+- [ServerDynamicCriteria](../reference_2.md#type-serverdynamiccriteria)
+- [DataSourceField.initWhen](#attr-datasourcefieldinitwhen)
+
+**Flags**: IR
+
+---
 ## Attr: DataSourceField.recreateOnChange
 
 ### Description
@@ -1421,6 +1440,25 @@ NOTE: Although `valueOperation` can be used to derive any singular value from an
 - [OperationBinding.summaryFunctions](OperationBinding.md#attr-operationbindingsummaryfunctions)
 
 **Flags**: IRA
+
+---
+## Attr: DataSourceField.initWhen
+
+### Description
+Criteria-based control for field settability on add operations. The field can be set during an add when criteria match. On update operations, the field is always read-only (like [canInit:false](#caninit)).
+
+On the server, if the operation is an update, or the criteria do not match on an add, the field value is stripped.
+
+### Groups
+
+- componentBinding
+
+### See Also
+
+- [ServerDynamicCriteria](../reference_2.md#type-serverdynamiccriteria)
+- [DataSourceField.updateWhen](#attr-datasourcefieldupdatewhen)
+
+**Flags**: IR
 
 ---
 ## Attr: DataSourceField.valueMapEnum
@@ -2246,6 +2284,36 @@ When populating Java Beans/ POJOs, `javaClass` does not normally have to be spec
 **Flags**: IR
 
 ---
+## Attr: DataSourceField.requiredWhen
+
+### Description
+Criteria to be evaluated to determine whether this field is [required](#attr-datasourcefieldrequired). Equivalent to adding a `required` validator with [applyWhen](Validator.md#attr-validatorapplywhen) set to these criteria.
+
+On the client, criteria are evaluated against the form's current values and the current [rule context](Canvas.md#attr-canvasrulescope). On the server, criteria are evaluated with full [ServerDynamicCriteria](../reference_2.md#type-serverdynamiccriteria) support, including scoped values (`auth.*`, `context.*`) and relational references.
+
+Example — field is required only on add:
+
+```
+ <field name="reason" type="text">
+   <requiredWhen fieldName="context.operationType"
+                 operator="equals" value="add"/>
+ </field>
+ 
+```
+
+### Groups
+
+- dataType
+
+### See Also
+
+- [ServerDynamicCriteria](../reference_2.md#type-serverdynamiccriteria)
+- [DataSourceField.required](#attr-datasourcefieldrequired)
+- [Validator.applyWhen](Validator.md#attr-validatorapplywhen)
+
+**Flags**: IR
+
+---
 ## Attr: DataSourceField.sqlFalseValue
 
 ### Description
@@ -2547,6 +2615,25 @@ Defines the delimiter between concatenated values if field is used with [Server 
 **Flags**: IR
 
 ---
+## Attr: DataSourceField.editWhen
+
+### Description
+Criteria-based editability control. The field is editable when criteria match, read-only otherwise. Inverse of [DataSourceField.readOnlyWhen](#attr-datasourcefieldreadonlywhen).
+
+On the server, if the criteria do NOT match, the field value is stripped from add/update operations.
+
+### Groups
+
+- componentBinding
+
+### See Also
+
+- [ServerDynamicCriteria](../reference_2.md#type-serverdynamiccriteria)
+- [DataSourceField.readOnlyWhen](#attr-datasourcefieldreadonlywhen)
+
+**Flags**: IR
+
+---
 ## Attr: DataSourceField.implicitSequence
 
 ### Description
@@ -2627,6 +2714,26 @@ Note that this property only applies to users of the SmartClient server using da
 - [DataSourceField.customSelectExpression](#attr-datasourcefieldcustomselectexpression)
 - [DataSourceField.customCriteriaExpression](#attr-datasourcefieldcustomcriteriaexpression)
 - [DataSourceField.autoQuoteCustomExpressions](#attr-datasourcefieldautoquotecustomexpressions)
+
+**Flags**: IR
+
+---
+## Attr: DataSourceField.readOnlyWhen
+
+### Description
+Criteria-based version of [canEdit:false](#attr-datasourcefieldcanedit). When the criteria match, the field is treated as read-only: the server strips the field value from add/update operations (same as `canSave:false`), and the client makes the field non-editable in forms.
+
+Supports the full [ServerDynamicCriteria](../reference_2.md#type-serverdynamiccriteria) syntax on the server, including scoped values and relational references.
+
+### Groups
+
+- componentBinding
+
+### See Also
+
+- [ServerDynamicCriteria](../reference_2.md#type-serverdynamiccriteria)
+- [DataSourceField.editWhen](#attr-datasourcefieldeditwhen)
+- [DataSourceField.canEdit](#attr-datasourcefieldcanedit)
 
 **Flags**: IR
 

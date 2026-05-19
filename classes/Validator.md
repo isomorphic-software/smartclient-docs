@@ -291,6 +291,36 @@ Applies only to the "isUnique" and "hasRelatedRecord" validators and controls wh
 **Flags**: IR
 
 ---
+## Attr: Validator.passWhen
+
+### Description
+Defines validation purely via criteria: the record is valid when the criteria match. If the criteria do not match, the validator fails and returns [Validator.errorMessage](#attr-validatorerrormessage).
+
+This is an alternative to [Validator.serverCondition](#attr-validatorservercondition) that uses declarative criteria instead of scripting. No [Validator.type](#attr-validatortype) is required — the criteria ARE the validation logic.
+
+Supports the full [ServerDynamicCriteria](../reference_2.md#type-serverdynamiccriteria) syntax including scoped values and relational references.
+
+```
+ <validator errorMessage="Status must be Pending or Active">
+   <passWhen fieldName="status" operator="inSet">
+     <value>
+       <value>Pending</value>
+       <value>Active</value>
+     </value>
+   </passWhen>
+ </validator>
+ 
+```
+
+### See Also
+
+- [ServerDynamicCriteria](../reference_2.md#type-serverdynamiccriteria)
+- [Validator.failWhen](#attr-validatorfailwhen)
+- [Validator.applyWhen](#attr-validatorapplywhen)
+
+**Flags**: IRA
+
+---
 ## Attr: Validator.errorMessage
 
 ### Description
@@ -413,6 +443,20 @@ Conditional validators can also be applied to [Component XML](../kb_topics/compo
 
 Conditional validators can be applied to DynamicForm or ListGrid fields in JavaScript code as well.
 
+#### Server-side scoped values and relational references
+Because the type of `applyWhen` is [ServerDynamicCriteria](../reference_2.md#type-serverdynamiccriteria), the `fieldName` in criteria can also reference:
+
+*   Scoped values such as `auth.userId` and `context.operationType`
+*   Fields on related DataSources via dot notation, e.g. `Order.status`
+
+These extended references are evaluated on the server only. See [ServerDynamicCriteria](../reference_2.md#type-serverdynamiccriteria) for the full syntax and details.
+
+### See Also
+
+- [ServerDynamicCriteria](../reference_2.md#type-serverdynamiccriteria)
+- [Validator.passWhen](#attr-validatorpasswhen)
+- [Validator.failWhen](#attr-validatorfailwhen)
+
 **Flags**: IRA
 
 ---
@@ -482,6 +526,30 @@ For a validator of type `"isUnique"` in a dataBoundComponent, under what circums
 Only applies to validators within a [multiple dataArity](DataBoundComponent.md#attr-databoundcomponentdataarity) component like a ListGrid.
 
 **Flags**: IR
+
+---
+## Attr: Validator.failWhen
+
+### Description
+Defines validation purely via criteria: the record is invalid when the criteria match. If the criteria match, the validator fails and returns [Validator.errorMessage](#attr-validatorerrormessage). Inverse of [Validator.passWhen](#attr-validatorpasswhen).
+
+Supports the full [ServerDynamicCriteria](../reference_2.md#type-serverdynamiccriteria) syntax including scoped values and relational references.
+
+```
+ <validator errorMessage="Cannot use status 'Cancelled'">
+   <failWhen fieldName="status" operator="equals"
+             value="Cancelled"/>
+ </validator>
+ 
+```
+
+### See Also
+
+- [ServerDynamicCriteria](../reference_2.md#type-serverdynamiccriteria)
+- [Validator.passWhen](#attr-validatorpasswhen)
+- [Validator.applyWhen](#attr-validatorapplywhen)
+
+**Flags**: IRA
 
 ---
 ## Attr: Validator.stopIfFalse

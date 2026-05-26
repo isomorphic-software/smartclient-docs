@@ -86,6 +86,23 @@ CSS style to display this message in
 **Flags**: IRWA
 
 ---
+## Attr: DetailViewer.linkTextStyleName
+
+### Description
+Optional CSS class to apply to the text of [link](../reference_2.md#type-fieldtype) type fields. If set, the link text will be wrapped in a styled anchor tag using this class. Can also be specified per-field via [DetailViewerField.linkTextStyleName](DetailViewerField.md#attr-detailviewerfieldlinktextstylename).
+
+### Groups
+
+- display_values
+
+### See Also
+
+- [ListGrid.linkTextStyleName](ListGrid_1.md#attr-listgridlinktextstylename)
+- [DetailViewerField.linkTextStyleName](DetailViewerField.md#attr-detailviewerfieldlinktextstylename)
+
+**Flags**: IRW
+
+---
 ## Attr: DetailViewer.valueAlign
 
 ### Description

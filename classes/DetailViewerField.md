@@ -422,6 +422,23 @@ Height for hilite icons for this field. Overrides [DetailViewer.hiliteIconSize](
 **Flags**: IRW
 
 ---
+## Attr: DetailViewerField.linkTextStyleName
+
+### Description
+Optional CSS class to apply to link text rendered by this field. If set, overrides [DetailViewer.linkTextStyleName](DetailViewer.md#attr-detailviewerlinktextstylename) for this field.
+
+### Groups
+
+- display_values
+
+### See Also
+
+- [DetailViewer.linkTextStyleName](DetailViewer.md#attr-detailviewerlinktextstylename)
+- [ListGrid.linkTextStyleName](ListGrid_1.md#attr-listgridlinktextstylename)
+
+**Flags**: IRW
+
+---
 ## Attr: DetailViewerField.imageSize
 
 ### Description
@@ -496,6 +513,27 @@ How much padding should there be on the right of [hilite icons](DetailViewer.md#
 - hiliting
 
 **Flags**: IRW
+
+---
+## Method: DetailViewerField.click
+
+### Description
+Executed when this field is clicked on, if the field's [type](#attr-detailviewerfieldtype) is `"link"` and the [target](#attr-detailviewerfieldtarget) is `"javascript"`.
+
+Called with the signature `click(viewer, record, recordNum, field)`, where `this` is the field definition object.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| viewer | [DetailViewer](#type-detailviewer) | false | — | the DetailViewer containing the field |
+| record | [DetailViewerRecord](#type-detailviewerrecord) | false | — | the record displayed in the cell that was clicked |
+| recordNum | [int](../reference.md#type-int) | false | — | index of the record in the DetailViewer's current data set |
+| field | [DetailViewerField](#type-detailviewerfield) | false | — | the field definition object |
+
+### Groups
+
+- events
 
 ---
 ## Method: DetailViewerField.showIf

@@ -61,6 +61,10 @@ This is the central API reference for the SmartClient framework.
         - [PortalLayout](classes/PortalLayout.md)
         - [ColumnTree](classes/ColumnTree.md)
         - [FilterBuilder](classes/FilterBuilder.md)
+        - [VStack](#class-vstack)
+          - [BatchUploader](classes/BatchUploader.md)
+          - [AdvancedHiliteEditor](classes/AdvancedHiliteEditor.md)
+          - [MultiFilePicker](#class-multifilepicker)
         - [HLayout](#class-hlayout)
           - [NavigationBar](classes/NavigationBar.md)
           - [ImgSectionHeader](classes/ImgSectionHeader.md)
@@ -75,9 +79,6 @@ This is the central API reference for the SmartClient framework.
           - [Header](#class-header)
           - [RibbonBar](#class-ribbonbar)
         - [AdaptiveMenu](classes/AdaptiveMenu.md)
-        - [VStack](#class-vstack)
-          - [AdvancedHiliteEditor](classes/AdvancedHiliteEditor.md)
-          - [MultiFilePicker](#class-multifilepicker)
         - [Deck](classes/Deck.md)
         - [ListPropertiesPane](classes/ListPropertiesPane.md)
         - [HStack](#class-hstack)
@@ -225,12 +226,12 @@ This is the central API reference for the SmartClient framework.
     - [NativeCheckboxItem](#class-nativecheckboxitem)
       - [RadioItem](#class-radioitem)
     - [BooleanItem](#class-booleanitem)
+  - [OperationBinding](classes/OperationBinding.md)
   - [Tree](classes/Tree.md)
     - [ResultTree](classes/ResultTree.md)
   - [RPCManager](classes/RPCManager.md)
   - [ValuesManager](classes/ValuesManager.md)
   - [ResultSet](classes/ResultSet.md)
-  - [OperationBinding](classes/OperationBinding.md)
   - [EditContext](classes/EditContext.md)
   - [DateUtil](classes/DateUtil.md)
   - [Page](classes/Page.md)
@@ -403,6 +404,7 @@ This is the central API reference for the SmartClient framework.
 - [containment](#kb-topic-containment)
 - [Criteria Editing](kb_topics/criteriaEditing.md)
 - [cues](#kb-topic-cues)
+- [Custom Querying Overview](kb_topics/customQuerying.md)
 - [Customizing Sass-based Skins](kb_topics/customSassSkins.md)
 - [Including custom elements in the tab order](kb_topics/customTabElements.md)
 - [DataBinding](kb_topics/databinding.md)
@@ -569,6 +571,7 @@ This is the central API reference for the SmartClient framework.
 - [validatorExecution](#kb-topic-validatorexecution)
 - [valueMap](#kb-topic-valuemap)
 - [values](#kb-topic-values)
+- [Velocity context variables](kb_topics/velocitySupport.md)
 - [visibility](kb_topics/visibility.md)
 - [Visual Builder](kb_topics/visualBuilder.md)
 - [Window Header](#kb-topic-window-header)
@@ -592,6 +595,18 @@ Base class for [Canvas](classes/Canvas.md#class-canvas) and [DrawItem](classes/D
 
 ### Description
 A subclass of Layout that applies a sizing policy along the vertical axis, interpreting percent and "\*" sizes as proportions of the height of the layout. VLayouts will set any members that do not have explicit widths to match the layout.
+
+### See Also
+
+- [Layout.vPolicy](classes/Layout.md#attr-layoutvpolicy)
+
+---
+## Class: VStack
+
+*Inherits from:* [Layout](classes/Layout.md#class-layout)
+
+### Description
+A subclass of Layout that simply stacks members on the vertical axis without trying to manage their height. On the horizontal axis, any members that do not have explicit widths will be sized to match the width of the stack.
 
 ### See Also
 
@@ -632,18 +647,6 @@ A subclass of Layout that applies a sizing policy along the horizontal axis, int
 ### Groups
 
 - devTools
-
----
-## Class: VStack
-
-*Inherits from:* [Layout](classes/Layout.md#class-layout)
-
-### Description
-A subclass of Layout that simply stacks members on the vertical axis without trying to manage their height. On the horizontal axis, any members that do not have explicit widths will be sized to match the width of the stack.
-
-### See Also
-
-- [Layout.vPolicy](classes/Layout.md#attr-layoutvpolicy)
 
 ---
 ## Class: BrowserPlugin
@@ -3848,25 +3851,6 @@ Typically AutoTestLocators will not be hand-written - they should be retrieved b
 - autoTest
 
 ---
-## Type: BackgroundRepeat
-
-### Description
-Possible values for [Canvas.backgroundRepeat](classes/Canvas.md#attr-canvasbackgroundrepeat).
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| Canvas.REPEAT | Tile the background image horizontally and vertically. |
-| Canvas.NO_REPEAT | Don't tile the background image at all. |
-| Canvas.REPEAT_X | Repeat the background image horizontally but not vertically. |
-| Canvas.REPEAT_Y | Repeat the background image vertically but not horizontally. |
-
-### Groups
-
-- appearance
-
----
 ## Type: boolean
 
 ### Description
@@ -4430,6 +4414,27 @@ Order of pickers and which pickers are present when using a DateItem with [DateI
 | DateItem.MONTH_YEAR | Output only month, year fields. |
 
 ---
+## Type: DefaultQueryClause
+
+### Description
+The Velocity variable names of the "pieces" of SQL that SmartClient generates to form a complete fetch or update query. You can use these variables in you own custom queries and query clause overrides to build on the SmartClient functionality. See [customQuerying](kb_topics/customQuerying.md#kb-topic-custom-querying-overview) for a full discussion.
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| "$defaultSelectClause" | The column names to select, for a fetch operation only |
+| "$defaultTableClause" | The table name(s) to select from or update |
+| "$defaultAnsiJoinClause" | The [ansi join(s)](classes/DataSource.md#attr-datasourceuseansijoins) to join tables to select from, if enabled. |
+| "$defaultWhereClause" | The "where" condition, which will be derived from supplied criteria or a primary key value, depending on the type of operation |
+| "$defaultValuesClause" | The column names to update and the update values, for an update or add operation |
+| "$defaultOrderClause" | The column names to sort by, for a fetch operation only |
+
+### Groups
+
+- customQuerying
+
+---
 ## Type: DefaultSampleRecord
 
 ### Description
@@ -4710,7 +4715,7 @@ For DataSources of type "sql" and "hibernate", specifies the kind of inheritance
 | Value | Description |
 |-------|-------------|
 | "full" | Inherit fields by copying them onto the inheriting DataSource's underlying table. When we import a DataSource with this inheritanceMode, we create actual columns for inherited fields on the table we create. With this inheritanceMode, inherited fields are updatable. |
-| "none" | Do not physically inherit fields onto the inheriting DataSource's SQL table. Columns will not be created for inherited fields on import, and all generated SQL operations will exclude inherited fields. However, those fields are still part of the DataSource's schema so you can, for example, write [custom SQL](#kb-topic-customquerying) that returns values for the inherited fields, and they will be delivered to the client. |
+| "none" | Do not physically inherit fields onto the inheriting DataSource's SQL table. Columns will not be created for inherited fields on import, and all generated SQL operations will exclude inherited fields. However, those fields are still part of the DataSource's schema so you can, for example, write [custom SQL](kb_topics/customQuerying.md#kb-topic-custom-querying-overview) that returns values for the inherited fields, and they will be delivered to the client. |
 
 ### Groups
 
@@ -5163,7 +5168,7 @@ Note: to declare related but _separate_ objects, as in an "Account" object that 
 | "creator" | Fields of this type are automatically populated by the SmartClient Server with the current authenticated userId as part of "add" operations. By default, fields of this type are hidden and not editable; the server ignores any value that the client sends in a field of this type. The notes about type "modifier" also apply to fields of this type. |
 | "creatorTimestamp" | Fields of this type are automatically populated by the SmartClient Server with the current date and time as part of an "add" operation (when the record is first created). By default, fields of this type are hidden and not editable; the server ignores any value that the client sends in a field of this type. |
 | "password" | Same as "text", but causes [PasswordItem](#class-passworditem) to be used by default for editing (hides typed-in value). |
-| "ntext" | A special field type specifically for use with Unicode data in conjunction with the Microsoft SQL Server database. Field type "ntext" implies the use of [sqlStorageStrategy](#attr-datasourcefieldsqlstoragestrategy) "ntext"; other than that, this type is identical to "text" |
+| "ntext" | A special field type specifically for use with Unicode data in conjunction with the Microsoft SQL Server database. Field type "ntext" implies the use of [sqlStorageStrategy](classes/DataSourceField.md#attr-datasourcefieldsqlstoragestrategy) "ntext"; other than that, this type is identical to "text" |
 | "localeInt" | An integer number with locale-based formatting, e.g. `12,345,678`. See [Localized Number Formatting](#kb-topic-localized-number-formatting) for more info. |
 | "localeFloat" | A float number with locale-based formatting, e.g. `12,345.67`. See [Localized Number Formatting](#kb-topic-localized-number-formatting) for more info. |
 | "localeCurrency" | A float number with locale-based formatting and using currency symbol, e.g. `$12,345.67`. See [Localized Number Formatting](#kb-topic-localized-number-formatting) for more info. |
@@ -5551,6 +5556,21 @@ A string which is a valid JavaScript identifier, as specified by ECMA-262 Sectio
 ### Groups
 
 - appearance
+
+---
+## Type: ImportFormat
+
+### Description
+—
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| "xml" | XML format: same as that expected by the [adminConsole](kb_topics/adminConsole.md#kb-topic-admin-console) for DataSource [test data](kb_topics/testData.md#kb-topic-test-data) |
+| "json" | JSON format: a JSON Array of JSON Objects |
+| "csv" | Comma-separated values, or in general delimiter-separated values based on a provided delimiter. |
+| "auto" | Auto-detect format |
 
 ---
 ## Type: InlineEditEvent
@@ -6180,20 +6200,6 @@ In some cases an explicit locatorTypeStrategy can be specified to modify this be
 - [LocatorStrategy](#type-locatorstrategy)
 
 ---
-## Type: LogicalOperator
-
-### Description
-Operators that can evaluate a set of criteria and produce a combined result.
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| "and" | true if all criteria are true |
-| "or" | true if any criteria are true |
-| "not" | true if all criteria are false |
-
----
 ## Type: LogPriority
 
 ### Description
@@ -6629,6 +6635,21 @@ Possible placements for pop-up choosers, menus, dialogs or other temporary UIs, 
 | "fillScreen" | fill the entire screen |
 | "halfScreen" | fill the bottom half of the screen. This is the default behavior on iOS6/7 for plain HTML `<select>`, but note that native apps rarely use this interface for picking from lists and it is not generally recommended. |
 | "none" | this setting disables all panelPlacement sizing and positioning logic. Explicitly specified size and positioning will be used. |
+
+---
+## Type: PartialCommitOption
+
+### Description
+Action to take if a user attempts to save the dataset produced by a [BatchUploader](classes/BatchUploader.md#class-batchuploader) whilst it still contains errors.
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| "allow" | Silently allow the partial commit to proceed (note that this will result in the user losing those records that contain errors) |
+| "prevent" | Pop up a message window showing the [BatchUploader.partialCommitError](classes/BatchUploader.md#attr-batchuploaderpartialcommiterror) and prevent the partial commit |
+| "prompt" | Pop up a confirmation window with the [BatchUploader.partialCommitPrompt](classes/BatchUploader.md#attr-batchuploaderpartialcommitprompt) and allow the user to choose whether or not to proceed |
+| "retain" | Commit any records that are error-free and remove them from the grid. If any records had errors, leave them in the grid and leave the grid visible. If no records had errors, run normal cleanup as we would for "allow". This option allows the user to fix errors iteratively, rather than having to fix everything upfront before committing |
 
 ---
 ## Type: PercentBoxModel
@@ -7255,7 +7276,7 @@ The possible types of sequence handling SmartClient Server can apply. This refer
 |-------|-------------|
 | "jdbcDriver" | Use the JDBC 3.0 API "getGeneratedKeys()" to get the most recent sequence value. Obviously, this is only an option for JDBC 3.0+ drivers |
 | "native" | Use a database-specific native technique to obtain the most recent sequence value. The actual technique used varies widely depending on the vagaries of the underlying database (and sometimes the vagaries of particular releases of a database product) |
-| "none" | No automatic attempt is made to retrieve the most recent sequence value. You are expected to handle this by providing a [cacheSyncOperation](#attr-operationbindingcachesyncoperation) that is able to return the entire row without needing generated PK values for context. For example, a query that uses `MAX(pk)` would be capable of this. To give a more complex example, say you have a sequence value that is retrieved from a legacy system: you could store that sequence value in the HTTP session and then have your custom `cacheSyncOperation` reference that session attribute in its `WHERE` clause. Also note that cacheSyncOperations, like any other [DataSource operation](classes/OperationBinding.md#class-operationbinding), can be [written in Java](classes/OperationBinding.md#attr-operationbindingserverobject) or any [JSR223-compliant scripting language](classes/OperationBinding.md#attr-operationbindingscript) - you do not have to use SQL |
+| "none" | No automatic attempt is made to retrieve the most recent sequence value. You are expected to handle this by providing a [cacheSyncOperation](classes/OperationBinding.md#attr-operationbindingcachesyncoperation) that is able to return the entire row without needing generated PK values for context. For example, a query that uses `MAX(pk)` would be capable of this. To give a more complex example, say you have a sequence value that is retrieved from a legacy system: you could store that sequence value in the HTTP session and then have your custom `cacheSyncOperation` reference that session attribute in its `WHERE` clause. Also note that cacheSyncOperations, like any other [DataSource operation](classes/OperationBinding.md#class-operationbinding), can be [written in Java](classes/OperationBinding.md#attr-operationbindingserverobject) or any [JSR223-compliant scripting language](classes/OperationBinding.md#attr-operationbindingscript) - you do not have to use SQL |
 
 ---
 ## Type: ShowDataValuesMode
@@ -7357,7 +7378,7 @@ The technique SmartClient Server's SQL DataSource should use to select a "page" 
 
 | Value | Description |
 |-------|-------------|
-| "sqlLimit" | Specify the paging directly in the SQL query we generate. The way this is done varies considerably from database to database: with some it is a straightforward built-in facility while others require arcane tricks or simply don't support the idea. This is the most efficient method, where available. Note that this strategy is not supported for operations that make use of a [customSQL](#attr-operationbindingcustomsql) clause, because it depends upon being able to determine the size of the whole dataset without actually retrieving the whole dataset. Ordinary operations do this by means of an automatically-generated "row count query", but we cannot generate such a query for a `customSQL` operation. |
+| "sqlLimit" | Specify the paging directly in the SQL query we generate. The way this is done varies considerably from database to database: with some it is a straightforward built-in facility while others require arcane tricks or simply don't support the idea. This is the most efficient method, where available. Note that this strategy is not supported for operations that make use of a [customSQL](classes/OperationBinding.md#attr-operationbindingcustomsql) clause, because it depends upon being able to determine the size of the whole dataset without actually retrieving the whole dataset. Ordinary operations do this by means of an automatically-generated "row count query", but we cannot generate such a query for a `customSQL` operation. |
 | "jdbcScroll" | Implement the paging behavior by use of the `absolute()` method of the JDBC `ResultSet`. |
 | "dropAtServer" | Implement the paging behavior by fetching the entire resultset from the database and dropping any unnecessary rows on the server before returning the data to the client. This approach is extremely inefficient, but also extremely straightforward; it is intended as a fallback option, for situations where the more sophisticated approaches cause problems (a JDBC driver that throws vague exceptions when `absolute()` is called, for example) |
 | "none" | No paging behavior: we always return the entire resultset to the client. |
@@ -7366,6 +7387,23 @@ The technique SmartClient Server's SQL DataSource should use to select a "page" 
 
 - [DataSource.sqlPaging](classes/DataSource.md#attr-datasourcesqlpaging)
 - [OperationBinding.sqlPaging](classes/OperationBinding.md#attr-operationbindingsqlpaging)
+
+---
+## Type: SQLType
+
+### Description
+The types of custom query that can be handled by SmartClient's built-in "sql" and "hibernate" DataSources. Note, only applies to [OperationBinding.operationType](classes/OperationBinding.md#attr-operationbindingoperationtype) "custom".
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| "query" | The custom SQL or HQL is read-only |
+| "update" | The custom SQL or HQL updates data |
+
+### Groups
+
+- customQuerying
 
 ---
 ## Type: StackDirection
@@ -7558,20 +7596,6 @@ textMatchStyle behavior is consistent across the client and all three of the bui
     *   HSQLDB has case sensitivity set with the `SET IGNORECASE` directive - [see here](http://www.hsqldb.org/doc/guide/ch09.html#set_ignorecase-section)
     *   MySQL is case-insensitive, but since it provides an easy way to do per-query, case-sensitive matching in SQL, we work around it for that database, but **only** in SQL DataSources
 *   If you are using Hibernate or JPA, whether "exactCase" works as expected depends entirely on the underlying database. Unlike the SQL DataSource, where we have fine-grained control of the SQL that the database executes, we are constrained by what the ORM will allow. This prevents us from compensating for database quirks, like we do with MySQL's case-insensitivity in the SQL DataSource |
-
----
-## Type: TieMode
-
-### Description
-what to do if there is more than one possible childrenProperty when using scanMode "branch" or "level" "node": continue, but pick childrenProperty on a per-node basis (will detect mixed) "highest": continue, picking the childrenProperty that occurred most as the single choice "stop": if there's a tie, stop at this level (assume no further children)
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| "node" | continue, but pick childrenProperty on a per-node basis (will detect mixed) |
-| "highest" | continue, picking the childrenProperty that occurred most as the single choice |
-| "stop" | if there's a tie, stop at this level (assume no further children) |
 
 ---
 ## Type: TileLayoutPolicy
@@ -7897,7 +7921,7 @@ By default the uniqueness check is not case sensitive but this can be controlled
 
 Validators of this type have [requiresServer](classes/ValidatorDefinition.md#attr-validatordefinitionrequiresserver) set to `true` and do not run on the client.
 
-Note that this validation is generally unnecessary for data coming from a UI. The typical UI uses a [SelectItem](classes/SelectItem.md#class-selectitem) or [ComboBoxItem](classes/ComboBoxItem.md#class-comboboxitem) with an [optionDataSource](classes/FormItem.md#attr-formitemoptiondatasource) for user entry, such that the user can't accidentally enter a related record if that doesn't exist, and a typical SQL schema will include constraints that prevent a bad insert if the user attempts to circumvent the UI. The primary purpose of declaring this validation explicitly is to provide clear, friendly error messages for use cases such as [BatchUploader](#class-batchuploader), where values aren't individually chosen by the user. See also the example *Related Records*. |
+Note that this validation is generally unnecessary for data coming from a UI. The typical UI uses a [SelectItem](classes/SelectItem.md#class-selectitem) or [ComboBoxItem](classes/ComboBoxItem.md#class-comboboxitem) with an [optionDataSource](classes/FormItem.md#attr-formitemoptiondatasource) for user entry, such that the user can't accidentally enter a related record if that doesn't exist, and a typical SQL schema will include constraints that prevent a bad insert if the user attempts to circumvent the UI. The primary purpose of declaring this validation explicitly is to provide clear, friendly error messages for use cases such as [BatchUploader](classes/BatchUploader.md#class-batchuploader), where values aren't individually chosen by the user. See also the example *Related Records*. |
 | maxFileSize | This validator type is not for direct usage, instead [DataSourceField.maxFileSize](classes/DataSourceField.md#attr-datasourcefieldmaxfilesize) can be set and `maxFileSize` validator will be added automatically. Use [DataSource.maxFileSizeExceededMessage](classes/DataSource.md#classattr-datasourcemaxfilesizeexceededmessage) to customize validation error message.
 
 In supported browsers (Internet Explorer 10+, Chrome, Firefox, Safari 6+, Opera 11.1+), returns `true` if the file(s) selected by the user are not larger than the field's [DataSourceField.maxFileSize](classes/DataSourceField.md#attr-datasourcefieldmaxfilesize). If not supported by the browser, the validator will always return `true`.
@@ -7943,7 +7967,7 @@ See also the [SmartClient Architecture Overview](kb_topics/smartArchitecture.md#
 ## Type: VelocityExpression
 
 ### Description
-An expression in the [Velocity Template Language](http://velocity.apache.org/engine/releases/velocity-1.7/user-guide.html) (VTL). For more information on SmartClient's Velocity support, see [Velocity support](#kb-topic-velocitysupport).
+An expression in the [Velocity Template Language](http://velocity.apache.org/engine/releases/velocity-1.7/user-guide.html) (VTL). For more information on SmartClient's Velocity support, see [Velocity support](kb_topics/velocitySupport.md#kb-topic-velocity-context-variables).
 
 Note that a `VelocityExpression` must often evaluate to a particular type of value to be useful. For example, [DataSource.requires](classes/DataSource.md#attr-datasourcerequires) must evaluate to true or false (Boolean objects or strings containing those two words), and [Mail.messageData](classes/Mail.md#attr-mailmessagedata) must evaluate to a Java `Map` object, or a Java `List` containing only `Map`s.
 
@@ -8319,7 +8343,7 @@ You provide a list of DSRequestModifiers as the [OperationBinding.criteria](clas
 
 A DSRequestModifier consists of a [fieldName](classes/DSRequestModifier.md#attr-dsrequestmodifierfieldname), usually a [value](classes/DSRequestModifier.md#attr-dsrequestmodifiervalue) and possibly an [operator](classes/DSRequestModifier.md#attr-dsrequestmodifieroperator) and [start](classes/DSRequestModifier.md#attr-dsrequestmodifierstart) and/or [end](classes/DSRequestModifier.md#attr-dsrequestmodifierend) values (applicable to advanced criteria only). The value, start and end settings can be static, or - with Power or better licenses - they can be expressions in the Velocity template language, which will be resolved at runtime, immediately before the DSRequest is executed.
 
-In addition to the standard [Velocity variables](#kb-topic-velocitysupport), special Velocity variables are available for the _value_ field when used in a `<values>` declaration - see [DSRequestModifier.value](classes/DSRequestModifier.md#attr-dsrequestmodifiervalue) for details.
+In addition to the standard [Velocity variables](kb_topics/velocitySupport.md#kb-topic-velocity-context-variables), special Velocity variables are available for the _value_ field when used in a `<values>` declaration - see [DSRequestModifier.value](classes/DSRequestModifier.md#attr-dsrequestmodifiervalue) for details.
 
 See below some examples of [OperationBinding.criteria](classes/OperationBinding.md#attr-operationbindingcriteria) declarations:
 

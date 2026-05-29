@@ -525,6 +525,22 @@ Requires the SmartClient server framework, but does not require use of server-ba
 
 You can also inject a small amount of CSS from the browser via [DSRequest.exportCSS](DSRequest.md#attr-dsrequestexportcss) - this is intended primarily for switching the page size on the fly, for exceptionally wide or tall exports.
 
+_**Note: PDF Export Resource Security**_
+
+It is possible to send custom HTML to the SmartClient server that attempts to include resources from the local server filesystem (predominantly images) and export them to PDF. By default, all filesystem access during PDF export is denied — only HTTP and HTTPS resource URLs are permitted.
+
+To allow specific filesystem paths or restrict which HTTP hosts are permitted, use the `contentExport.allowedResourceLocations` setting in [server.properties](../reference.md#kb-topic-serverproperties-file). This is a semicolon-separated list of path segments that identify allowed resource locations. A resource URL is allowed if its full path contains at least one of the listed segments as a substring. Disallowed resources are omitted from the PDF, and a warning is logged.
+
+The special placeholder `{webRoot}` is replaced at runtime with the application's web root directory (as configured via the `webRoot` setting in [server.properties](../reference.md#kb-topic-serverproperties-file)). For example:
+
+`contentExport.allowedResourceLocations:{webRoot};localhost:8080/otherApp/;http://www.foo.bar`
+
+This allows filesystem access under the web root, HTTP access to "otherApp" on localhost:8080, and any URL from the specified external address. **Important**: when this setting is present, it restricts _both_ filesystem and HTTP resources — only URLs matching a listed segment are permitted. Without this setting, all HTTP and HTTPS URLs are permitted and only filesystem access is denied.
+
+Note that the server cannot reliably determine whether an HTTP URL points to a resource under the web root (due to URL remapping, reverse proxies, etc.), so the allowlist uses a simple substring match against the full URL. When restricting HTTP access, list only the specific hosts and paths needed.
+
+In ContainerIO mode (WAR deployment where the framework loads resources from the classpath rather than the filesystem), filesystem access from user-provided HTML is always denied regardless of this setting. Internal skin resources (fonts, CSS, images) are loaded from known skin directories and are not affected by this setting in any deployment mode.
+
 ### Parameters
 
 | Name | Type | Optional | Default | Description |

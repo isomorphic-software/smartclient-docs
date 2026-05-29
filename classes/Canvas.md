@@ -25,7 +25,7 @@ Canvas provides:
 ## ClassAttr: Canvas.REPEAT
 
 ### Description
-A declared value of the enum type [BackgroundRepeat](../reference.md#type-backgroundrepeat).
+A declared value of the enum type [BackgroundRepeat](../reference_2.md#type-backgroundrepeat).
 
 **Flags**: R
 
@@ -156,7 +156,7 @@ A declared value of the enum type [Cursor](../reference.md#type-cursor).
 ## ClassAttr: Canvas.REPEAT_X
 
 ### Description
-A declared value of the enum type [BackgroundRepeat](../reference.md#type-backgroundrepeat).
+A declared value of the enum type [BackgroundRepeat](../reference_2.md#type-backgroundrepeat).
 
 **Flags**: R
 
@@ -298,7 +298,7 @@ A declared value of the enum type s [ImageStyle](../reference.md#type-imagestyle
 ## ClassAttr: Canvas.NO_REPEAT
 
 ### Description
-A declared value of the enum type [BackgroundRepeat](../reference.md#type-backgroundrepeat).
+A declared value of the enum type [BackgroundRepeat](../reference_2.md#type-backgroundrepeat).
 
 **Flags**: R
 
@@ -322,7 +322,7 @@ A declared value of the enum type [Direction](../reference.md#type-direction).
 ## ClassAttr: Canvas.REPEAT_Y
 
 ### Description
-A declared value of the enum type [BackgroundRepeat](../reference.md#type-backgroundrepeat).
+A declared value of the enum type [BackgroundRepeat](../reference_2.md#type-backgroundrepeat).
 
 **Flags**: R
 
@@ -3005,7 +3005,7 @@ Whether this canvas should always start a new line when used as a tile in a [Flo
 ### Description
 Specifies how the background image should be tiled if this widget is larger than the image. It corresponds to the CSS `background-repeat` attribute.
 
-The default of null means no `background-repeat` CSS will be written out. See [BackgroundRepeat](../reference.md#type-backgroundrepeat) type for details on other settings.
+The default of null means no `background-repeat` CSS will be written out. See [BackgroundRepeat](../reference_2.md#type-backgroundrepeat) type for details on other settings.
 
 NOTE: this setting directly sets the CSS property `background-repeat` but does not attempt to work around various known bugs with this setting, or lack of support in IE6. If you need to apply CSS-based workarounds for browser limitations with this setting, it's best to do so via setting [Canvas.styleName](#attr-canvasstylename).
 

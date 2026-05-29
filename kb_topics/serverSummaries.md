@@ -106,11 +106,11 @@ Data paging is also supported, however, consider that for aggregated queries, wh
 
 #### SQL Templating
 
-[SQL Templating](#kb-topic-customquerying) is also supported with server summaries. Clause-by-clause substitution works normally.
+[SQL Templating](customQuerying.md#kb-topic-custom-querying-overview) is also supported with server summaries. Clause-by-clause substitution works normally.
 
 #### Fields with customSelectExpression
 
-Fields with [customSelectExpression](#attr-datasourcefieldcustomselectexpression) can be used with server summaries as both `groupBy` fields or fields with `summaryFunction`. In case of `summaryFunction` requested on field with `customSelectExpression` we will wrap SQL function around the expression, which may or may not be correct.
+Fields with [customSelectExpression](../classes/DataSourceField.md#attr-datasourcefieldcustomselectexpression) can be used with server summaries as both `groupBy` fields or fields with `summaryFunction`. In case of `summaryFunction` requested on field with `customSelectExpression` we will wrap SQL function around the expression, which may or may not be correct.
 
 #### Summarizing without Grouping
 

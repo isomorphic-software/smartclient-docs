@@ -4958,6 +4958,26 @@ Can also be disabled on a per-field basis with [ListGridField.autoFetchDisplayMa
 **Flags**: IRW
 
 ---
+## Attr: ListGrid.dragRecategorize
+
+### Description
+For databound drops where there is a parent-child or one to many type relationship between the drop target and the source component data set, should a recategorization occur on drop?
+
+Recategorization can be performed when the drag-source and drop-target components are bound to the same DataSource containing hierarchical data, or to separate DataSources with a defined foreignKey relationship establishing a one-to-many connection. Effectively, the user may select "items" from the source grid and drag them into a new "category" type record within the target component.
+
+This feature is supported by ListGrids and TileGrids, but by default is enabled only at the TreeGrid level - see [treeGridDrop](../kb_topics/treeGridDrop.md#kb-topic-treegrid-drag-and-drop) for more details on TreeGrid drag and drop behavior.
+
+Note that this feature is different from the ListGrid feature whereby [getDropValues()](DataBoundComponent.md#method-databoundcomponentgetdropvalues) may use the current grid criteria to update dropped records within the same dataSource so that they will show up in the grid. That can also be considered "recategorization" but it does not allow the user to drop records into specific target categories.
+
+This property interacts with the source widget's [dragDataAction](TreeGrid.md#attr-treegriddragdataaction):
+
+*   `"checked"`: Recategorize only when `dragDataAction` on the source of the drag is set to "move".
+*   `"always"`: Recategorize regardless of the source widget's `dragDataAction`.
+*   `"never"`: Never recategorize; drops are always treated as adds.
+
+**Flags**: IRW
+
+---
 ## Attr: ListGrid.styledRowEnds
 
 ### Description
@@ -6519,6 +6539,16 @@ The title for the [advanced filtering window](#attr-listgridfilterwindow).
 - i18nMessages
 
 **Flags**: IR
+
+---
+## Attr: ListGrid.showDropOverRollOver
+
+### Description
+When [RecordDropAppearance](../reference_2.md#type-recorddropappearance) is set to `"over"` or `"both"`, this property controls whether rollover styling is shown on the record that will receive the drop. Since normal rollover is suppressed during drag operations, this provides important visual feedback about which record will receive a drop.
+
+The rollover styling uses the same [ListGrid.baseStyle](#attr-listgridbasestyle) suffixes as normal rollover (e.g., "Over", "SelectedOver"), so no additional CSS is required.
+
+**Flags**: IRW
 
 ---
 ## Attr: ListGrid.savedSearchDS
@@ -9694,47 +9724,6 @@ Optional stringMethod to fire when the mouse moves over the error icon of a cell
 ### See Also
 
 - [ListGrid.showErrorIcons](#attr-listgridshowerroricons)
-
-**Flags**: A
-
----
-## Method: ListGrid.getDefaultFormattedFieldValue
-
-### Description
-Get a field value for some record with default field formatters applied.
-
-This method differs from [ListGrid.getDefaultFormattedValue](ListGrid_2.md#method-listgridgetdefaultformattedvalue) in that this method does not rely on the rowNum and colNum parameters to find the record and field in the grid. Also, unlike [ListGrid.getDefaultFormattedValue](ListGrid_2.md#method-listgridgetdefaultformattedvalue), this method _will_ call any [field-level formatter](ListGridField.md#method-listgridfieldformatcellvalue) if one is defined on the field (though it will not call a [grid-level formatter](ListGrid_2.md#method-listgridformatcellvalue) if one exists).
-
-This method is typically called from within a grid-level [formatCellValue()](ListGrid_2.md#method-listgridformatcellvalue) override when the developer wants to conditionally customize formatting for some fields while allowing other fields to use their standard formatting (including any field-level formatters). This avoids infinite recursion since the grid-level formatter is not called.
-
-This method applies standard formatting such as [ListGridField.valueMap](ListGridField.md#attr-listgridfieldvaluemap) mapping, [ListGridField.displayField](ListGridField.md#attr-listgridfielddisplayfield) substitution, [ListGridField.format](ListGridField.md#attr-listgridfieldformat) application, and type-specific formatters. If a field-level formatter is present, it is called and other declarative formatting is skipped. The [ListGrid.useLegacyDefaultFormattedValue](#attr-listgriduselegacydefaultformattedvalue) flag can be used to revert to legacy behavior where these formatting steps were not applied when no field-level formatter is present.
-
-The `rowNum` and `colNum` parameters are passed through to the field-level formatter if one exists. If not explicitly provided, these are defaulted to -1.
-
-For other use cases, see also:
-
-*   [ListGrid.getDefaultFormattedValue](ListGrid_2.md#method-listgridgetdefaultformattedvalue) - get formatted value without any custom formatters
-*   [ListGrid.getFormattedValue](ListGrid_2.md#method-listgridgetformattedvalue) - get fully formatted value including all custom formatters
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| record | [Record](#type-record) | false | — | the record object |
-| field | [ListGridField](#type-listgridfield) | false | — | the field object |
-| rowNum | [int](../reference.md#type-int) | true | — | rowNum (passed to field-level formatter if present) |
-| colNum | [int](../reference.md#type-int) | true | — | colNum (passed to field-level formatter if present) |
-
-### Returns
-
-`[String](#type-string)` — Formatted value
-
-### See Also
-
-- [ListGridField.formatCellValue](ListGridField.md#method-listgridfieldformatcellvalue)
-- [ListGrid.formatCellValue](ListGrid_2.md#method-listgridformatcellvalue)
-- [ListGrid.getDefaultFormattedValue](ListGrid_2.md#method-listgridgetdefaultformattedvalue)
-- [ListGrid.getFormattedValue](ListGrid_2.md#method-listgridgetformattedvalue)
 
 **Flags**: A
 

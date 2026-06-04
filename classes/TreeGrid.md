@@ -1009,6 +1009,26 @@ Note that for some AdvancedCriteria it will not be possible to extract the subcr
 **Flags**: IR
 
 ---
+## Attr: TreeGrid.dragRecategorize
+
+### Description
+For databound drops where there is a parent-child or one to many type relationship between the drop target and the source component data set, should a recategorization occur on drop?
+
+Recategorization can be performed when the drag-source and drop-target components are bound to the same DataSource containing hierarchical data, or to separate DataSources with a defined foreignKey relationship establishing a one-to-many connection. Effectively, the user may select "items" from the source grid and drag them into a new "category" type record within the target component.
+
+This feature is supported by ListGrids and TileGrids, but by default is enabled only at the TreeGrid level - see [treeGridDrop](../kb_topics/treeGridDrop.md#kb-topic-treegrid-drag-and-drop) for more details on TreeGrid drag and drop behavior.
+
+Note that this feature is different from the ListGrid feature whereby [ListGrid.getDropValues()](DataBoundComponent.md#method-databoundcomponentgetdropvalues) may use the current grid criteria to update dropped records within the same dataSource so that they will show up in the grid. That can also be considered "recategorization" but it does not allow the user to drop records into specific target categories.
+
+This property interacts with the source widget's [dragDataAction](#attr-treegriddragdataaction):
+
+*   `"checked"`: Recategorize only when `dragDataAction` on the source of the drag is set to "move".
+*   `"always"`: Recategorize regardless of the source widget's `dragDataAction`.
+*   `"never"`: Never recategorize; drops are always treated as adds.
+
+**Flags**: IRW
+
+---
 ## Attr: TreeGrid.showDropEndSpace
 
 ### Description
@@ -1114,7 +1134,11 @@ The opener icon URL is derived from the specified [TreeGrid.openerImage](#attr-t
 ## Attr: TreeGrid.dragDataAction
 
 ### Description
-Specifies what to do with data dragged from this TreeGrid (into another component, or another node in this TreeGrid. The default action is to move the data. A setting of "none" is not recommended for trees because Trees maintain the node open state on the nodes themselves, and hence having multiple Tree objects share a reference to a node can have unintended consequences (such as opening a folder in one tree also triggering an open in another tree that shares the same node).
+Specifies what to do with data dragged _from_ this TreeGrid (into another component, or another node in this TreeGrid). The default action is to move the data — records are removed from this component after a successful drop. A setting of "copy" leaves the source records in place.
+
+A setting of "none" is not recommended for trees because Trees maintain the node open state on the nodes themselves, and hence having multiple Tree objects share a reference to a node can have unintended consequences (such as opening a folder in one tree also triggering an open in another tree that shares the same node).
+
+Note that this is a _source-side_ property: it controls what happens in the component the records are dragged _from_. What happens in the _target_ component depends on the target's [dragRecategorize](DataBoundComponent.md#attr-databoundcomponentdragrecategorize) setting and the DataSource relationship between source and target. With the default `dragRecategorize:"checked"`, a `dragDataAction` of "move" enables automatic recategorization on the target when the DataSources are related (see [treeGridDrop](../kb_topics/treeGridDrop.md#kb-topic-treegrid-drag-and-drop)).
 
 See [TreeGrid.folderDrop](#method-treegridfolderdrop) for a full explanation of default behaviors on drop, and how to customize them.
 

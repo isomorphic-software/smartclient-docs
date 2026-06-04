@@ -298,6 +298,14 @@ Height for hilite icons for this listGrid. Overrides [hiliteIconSize](#attr-data
 **Flags**: IRW
 
 ---
+## Attr: DataBoundComponent.applyDropValuesOnDragRecategorize
+
+### Description
+Should [dropValues](#method-databoundcomponentgetdropvalues) be applied to dropped records during a [dragRecategorize](#attr-databoundcomponentdragrecategorize) drop interaction?
+
+**Flags**: IRWA
+
+---
 ## Attr: DataBoundComponent.exportAs
 
 ### Description
@@ -1160,7 +1168,19 @@ If this property is false, saved searches will persist across DataSource changes
 ## Attr: DataBoundComponent.dragRecategorize
 
 ### Description
-Flag controlling when to recategorize records being dropped on a databound component from another databound component.
+For databound drops where there is a parent-child or one to many type relationship between the drop target and the source component data set, should a recategorization occur on drop?
+
+Recategorization can be performed when the drag-source and drop-target components are bound to the same DataSource containing hierarchical data, or to separate DataSources with a defined foreignKey relationship establishing a one-to-many connection. Effectively, the user may select "items" from the source grid and drag them into a new "category" type record within the target component.
+
+This feature is supported by ListGrids and TileGrids, but by default is enabled only at the TreeGrid level - see [treeGridDrop](../kb_topics/treeGridDrop.md#kb-topic-treegrid-drag-and-drop) for more details on TreeGrid drag and drop behavior.
+
+Note that this feature is different from the ListGrid feature whereby [ListGrid.getDropValues()](#method-databoundcomponentgetdropvalues) may use the current grid criteria to update dropped records within the same dataSource so that they will show up in the grid. That can also be considered "recategorization" but it does not allow the user to drop records into specific target categories.
+
+This property interacts with the source widget's [dragDataAction](TreeGrid.md#attr-treegriddragdataaction):
+
+*   `"checked"`: Recategorize only when `dragDataAction` on the source of the drag is set to "move".
+*   `"always"`: Recategorize regardless of the source widget's `dragDataAction`.
+*   `"never"`: Never recategorize; drops are always treated as adds.
 
 **Flags**: IRW
 
@@ -2593,6 +2613,8 @@ The default implementation of this method returns the following:
 *   Otherwise nothing
 
 You can override this method if you need more complex setting of drop values than can be provided by simply supplying a dropValues object.
+
+If you want dropValues to be applied during a [dragRecategorize](#attr-databoundcomponentdragrecategorize) interaction, set [DataBoundComponent.applyDropValuesOnDragRecategorize](#attr-databoundcomponentapplydropvaluesondragrecategorize) to true.
 
 ### Parameters
 

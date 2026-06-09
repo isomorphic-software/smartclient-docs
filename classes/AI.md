@@ -26,6 +26,25 @@ Provides class methods for enabling and disabling the use of AI technology, regi
 **Flags**: RW
 
 ---
+## ClassAttr: AI.delegatorPrompts
+
+### Description
+Customizable prompt templates used by the [AIDelegator](AIDelegator.md#class-aidelegator) CoTProcess to decide which registered [AI service](#type-aiservicedescriptor) should handle a user's request. Override any of these to change the delegator's behavior without writing code; see the [AI Assist overview](../kb_topics/aiAssist.md#kb-topic-ai-assist) for the full request flow.
+
+Properties:
+
+*   **introPrompt** - explains the Delegator's role to the AI
+*   **serviceListPrimer** - text before the list of available services
+*   **decisionPrompt** - the task prompt for the decision step, as a template string with `${...}` expressions evaluated against the [CoT prompt scope](../kb_topics/CoTPromptScope.md#kb-topic-cotpromptscope)
+
+### See Also
+
+- [AI.delegate](#classmethod-aidelegate)
+- [AIDelegator](AIDelegator.md#class-aidelegator)
+
+**Flags**: IRW
+
+---
 ## ClassAttr: AI.noAIEngineSupportingVisionRequestsIsRegisteredErrorMessage
 
 ### Description
@@ -129,6 +148,20 @@ The ID of the default [AIEngine](AIEngine.md#class-aiengine) to use.
 **Flags**: IRW
 
 ---
+## ClassAttr: AI.onAPIKeyError
+
+### Description
+Optional callback fired when any AI engine response is classified as an API key authentication error (invalid key, missing key, or permission denied). The callback receives a single `errorMessage` string argument containing the provider's error text.
+
+This fires before the per-request callback, regardless of whether the request was made with [AIRequest.willHandleError](AIRequest.md#attr-airequestwillhandleerror). Set to `null` (default) to disable. The Showcase uses this to surface [FeatureExplorer.showAPIKeyErrorDialog](#featureexplorershowapikeyerrordialog) automatically on any API key failure.
+
+### See Also
+
+- [AIEngine.isAPIKeyError](AIEngine.md#method-aiengineisapikeyerror)
+
+**Flags**: IRW
+
+---
 ## ClassAttr: AI.startingYourRequestDetailMessage
 
 ### Description
@@ -185,6 +218,29 @@ The defualt maximum number of retries for any one particular request to AI.
 **Flags**: RW
 
 ---
+## ClassMethod: AI.registerAIService
+
+### Description
+Registers an AI service globally so [AI.delegate](#classmethod-aidelegate) can discover and invoke it. Global services are available regardless of which component has focus.
+
+To register a service scoped to a specific component (and its descendants), use [Canvas.registerAIService](Canvas.md#method-canvasregisteraiservice) instead — canvas-scoped services shadow global ones with the same name.
+
+See the [AI Assist overview](../kb_topics/aiAssist.md#kb-topic-ai-assist) for the registration model and an end-to-end example.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| service | [AIServiceDescriptor](#type-aiservicedescriptor) | false | — | the service to register |
+
+### See Also
+
+- [Canvas.registerAIService](Canvas.md#method-canvasregisteraiservice)
+- [AI.unregisterAIService](#classmethod-aiunregisteraiservice)
+- [AI.delegate](#classmethod-aidelegate)
+- [aiAssist](../kb_topics/aiAssist.md#kb-topic-ai-assist)
+
+---
 ## ClassMethod: AI.resumeDataQuestion
 
 ### Description
@@ -216,6 +272,33 @@ Determines whether AI support is enabled. [AI.disabled](#classattr-aidisabled) m
 - [AI.defaultEngineId](#classattr-aidefaultengineid)
 
 ---
+## ClassMethod: AI.getSupportedEngineData
+
+### Description
+Returns display records for all built-in [AI engines](AIEngine.md#class-aiengine), suitable for populating a UI grid or list. Each record has the following properties:
+
+*   `engineId` — the engine ID (use as `ai.defaultEngineId` in server.properties)
+*   `name` — a human-readable model name
+*   `provider` — the AI service provider (OpenAI, Google, etc.)
+*   `apiKeyProperty` — the `server.properties` key that holds this provider's API key (e.g. `OpenAI.api.key`), or `null` for engines that use provider-specific configuration
+
+Custom engines added via [AI.registerEngine](#classmethod-airegisterengine) are not included.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| foundationalOnly | [boolean](../reference.md#type-boolean) | true | — | pass `true` to return only foundational AI chat/completion models, excluding specialized engines such as embedding models and vector database engines. Use this when presenting a list of engines a user can select as [AI.defaultEngineId](#classattr-aidefaultengineid). |
+
+### Returns
+
+`[Array of Object](#type-array-of-object)` — engine display records
+
+### See Also
+
+- [AI.getSupportedEngineIds](#classmethod-aigetsupportedengineids)
+
+---
 ## ClassMethod: AI.unregisterEngine
 
 ### Description
@@ -236,6 +319,18 @@ Unregisters an [AIEngine](AIEngine.md#class-aiengine) specified by its ID.
 - [AI.registerEngine](#classmethod-airegisterengine)
 
 ---
+## ClassMethod: AI.unregisterAIService
+
+### Description
+Removes a previously registered global AI service.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| name | [String](#type-string) | false | — | the name of the service to remove |
+
+---
 ## ClassMethod: AI.sendPrompt
 
 ### Description
@@ -254,6 +349,29 @@ Within `dynamicString`, any evaluated JavaScript expressions have access to all 
 ### Groups
 
 - dynamicStrings
+
+---
+## ClassMethod: AI.getSupportedEngineIds
+
+### Description
+Returns the engine IDs of all built-in [AI engines](AIEngine.md#class-aiengine) — those available without registration, provided the appropriate API key is set in [server.properties](#groupdef-server_properties).
+
+Note that custom engines added via [AI.registerEngine](#classmethod-airegisterengine) are not included.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| foundationalOnly | [boolean](../reference.md#type-boolean) | true | — | pass `true` to return only foundational AI chat/completion models, excluding specialized engines such as embedding models and vector database engines. Use this when presenting a list of engines a user can select as [AI.defaultEngineId](#classattr-aidefaultengineid). |
+
+### Returns
+
+`[Array of String](#type-array-of-string)` — the engine IDs of matching built-in AI engines
+
+### See Also
+
+- [AI.getSupportedEngineData](#classmethod-aigetsupportedenginedata)
+- [AI.getEngine](#classmethod-aigetengine)
 
 ---
 ## ClassMethod: AI.pauseDataQuestion
@@ -321,6 +439,22 @@ Sets [AI.mockingPolicy](#classattr-aimockingpolicy). Pass one of `"none"`, `"aut
 - AIMocking
 
 ---
+## ClassMethod: AI.getAIServicesForContext
+
+### Description
+Collects AI services available for a given context by walking the component hierarchy from `focusCanvas` upward and merging with global services. Component-level registrations shadow global ones of the same name.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| focusCanvas | [Canvas](#type-canvas) | false | — | the canvas that currently has focus (may be null) |
+
+### Returns
+
+`[Object](../reference.md#type-object)` — merged map of service name to [AIServiceDescriptor](../reference.md#object-aiservicedescriptor)
+
+---
 ## ClassMethod: AI.addMockResponses
 
 ### Description
@@ -355,6 +489,16 @@ Registers the given [AIEngine](AIEngine.md#class-aiengine).
 ### See Also
 
 - [AI.unregisterEngine](#classmethod-aiunregisterengine)
+
+---
+## ClassMethod: AI.getRegisteredAIServices
+
+### Description
+Returns the map of all globally registered AI services (name to descriptor).
+
+### Returns
+
+`[Object](../reference.md#type-object)` — map of service name to [AIServiceDescriptor](../reference.md#object-aiservicedescriptor)
 
 ---
 ## ClassMethod: AI.getDataSourceSummary
@@ -397,6 +541,38 @@ Returns a structured summary of a DataSource at a configurable detail level. In 
 ### See Also
 
 - [AI.getDataSourceSummaries](#classmethod-aigetdatasourcesummaries)
+
+---
+## ClassMethod: AI.delegate
+
+### Description
+Primary entry point for the AI Assist system. Routes a user request to the most appropriate registered [AI service](#type-aiservicedescriptor) by running the [AIDelegator](AIDelegator.md#class-aidelegator) — see the [AI Assist overview](../kb_topics/aiAssist.md#kb-topic-ai-assist) for the full registration and routing model.
+
+Behavior:
+
+*   If no services are registered, logs a warning and returns.
+*   If only one service is registered, invokes it directly (no AI call).
+*   Otherwise, runs the [AIDelegator](AIDelegator.md#class-aidelegator) to ask the AI which service best matches the user's intent, then calls that service's `invoke()`.
+*   If the AI call fails or returns an unknown service name, falls back to the first registered service so the request is never silently dropped.
+
+Services are resolved by walking the component hierarchy from `context.focusCanvas` upward (see [AI.getAIServicesForContext](#classmethod-aigetaiservicesforcontext)), so canvas-scoped services registered via [Canvas.registerAIService](Canvas.md#method-canvasregisteraiservice) take precedence over globals of the same name.
+
+Built-in UI entry points — [AIAssistItem](../reference.md#class-aiassistitem) and [VoiceAssist](VoiceAssist.md#class-voiceassist) — call this method automatically. Application code typically calls it directly only when building its own entry point.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| userPrompt | [String](#type-string) | false | — | the user's request text |
+| context | [Object](../reference.md#type-object) | true | — | optional context with `rootCanvas` and/or `focusCanvas`. `focusCanvas` is used for component-scoped service resolution; if omitted, the canvas with keyboard focus is used |
+| callback | [Function](#type-function) | true | — | optional callback fired when delegation completes, with arguments `(serviceName, fellBack)`. `fellBack` is truthy if the first-service fallback was used |
+
+### See Also
+
+- [AI.registerAIService](#classmethod-airegisteraiservice)
+- [Canvas.registerAIService](Canvas.md#method-canvasregisteraiservice)
+- [AI.delegatorPrompts](#classattr-aidelegatorprompts)
+- [aiAssist](../kb_topics/aiAssist.md#kb-topic-ai-assist)
 
 ---
 ## ClassMethod: AI.getEngine

@@ -590,7 +590,7 @@ Note that this method is simply an override point, since it has no default imple
 ### Description
 Return the text string to display in labels [in the chart-body or in hovers](FacetChart.md#attr-facetchartshowdatavaluesmode) given the raw value for the metric displayed on the value axis.
 
-This method may also be passed the [context](../reference.md#type-formattingcontext) for which the value is being formatted, the record associated with the value and the id of its [facet](FacetChart.md#attr-facetchartfacets).
+This method may also be passed the [context](../reference_2.md#type-formattingcontext) for which the value is being formatted, the record associated with the value and the id of its [facet](FacetChart.md#attr-facetchartfacets).
 
 Note that the rendering of values for gradation labels is handled by [MetricSettings.formatAxisValue](#method-metricsettingsformataxisvalue).
 

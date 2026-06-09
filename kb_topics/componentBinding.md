@@ -18,6 +18,7 @@ Properties that control how a [DataBoundComponent](../reference.md#interface-dat
 - [DataSourceField.editWhen](../classes/DataSourceField.md#attr-datasourcefieldeditwhen)
 - [DataSourceField.initWhen](../classes/DataSourceField.md#attr-datasourcefieldinitwhen)
 - [DataSourceField.updateWhen](../classes/DataSourceField.md#attr-datasourcefieldupdatewhen)
+- [DataSourceField.visibleWhen](../classes/DataSourceField.md#attr-datasourcefieldvisiblewhen)
 - [DataSourceField.canSave](../classes/DataSourceField.md#attr-datasourcefieldcansave)
 - [DataSourceField.editorType](../classes/DataSourceField.md#attr-datasourcefieldeditortype)
 - [DataSourceField.readOnlyEditorType](../classes/DataSourceField.md#attr-datasourcefieldreadonlyeditortype)

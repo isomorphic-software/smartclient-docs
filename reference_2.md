@@ -321,6 +321,21 @@ The `checkComponentData` setting simply allows developers to optimize performanc
 | "forceBoth" | _\[Advanced Setting\]_ As with `checkComponentData:"both"`, if a component has a [complete data cache](classes/ResultSet.md#method-resultsetallrowscached), uniqueness checking will be peformed against this data set instead of querying the dataSource. However unlike `checkComponentData:"both"`, the `"forceBoth"` setting enables this behavior even if the component's data object has a custom fetch operation specified, or was created explicitly by application code instead of being automatically created as part of the standard `fetchData()` flow. |
 
 ---
+## Type: ColorFormat
+
+### Description
+Target format for [Colors.getColor](classes/Colors.md#classmethod-colorsgetcolor) and [Colors.getString](classes/Colors.md#classmethod-colorsgetstring), and optional format filter for [Colors.isColor](classes/Colors.md#classmethod-colorsiscolor).
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| "rgb" | RGB (Red, Green, Blue). As an object: {r, g, b, alpha} with r/g/b as integers 0-255 and alpha as a float 0-1. As a string: "rgb(R, G, B)" or "rgba(R, G, B, A)". |
+| "hsl" | HSL (Hue, Saturation, Lightness). As an object: {h, s, l, alpha} with h 0-360 degrees, s/l 0-100 percent, and alpha 0-1. As a string: "hsl(H, S%, L%)" or "hsla(H, S%, L%, A)". |
+| "hex" | Hexadecimal HTML color. String only (not used as a getColor target): "#RRGGBB" when fully opaque, "#RRGGBBAA" when semi-transparent. Each pair is a two-digit hex value 00-FF for red, green, blue, and optionally alpha. |
+| "oklch" | Oklch (OK Lightness, Chroma, Hue) -- a perceptually uniform color space where equal numeric changes produce visually equal differences. As an object: {L, C, h, alpha} with L (lightness) 0-1, C (chroma/saturation) typically 0-0.4, h (hue angle) 0-360 degrees, and alpha 0-1. As a string: "oklch(L% C h)" or "oklch(L% C h / A)". |
+
+---
 ## Type: ConnectorOrientation
 
 ### Description
@@ -464,17 +479,17 @@ The logical operator to use when combining criteria objects with the [DataSource
 ## Type: CSSColor
 
 ### Description
-CSS color specification applied to a specific HTML element on this page.
+A CSS color string applied to a specific HTML element on this page. Any format accepted by modern browsers is supported:
 
-This is a string matching the syntax as specified in CSS1, and can be formatted in one of the following ways:
+*   A keyword color, `"white"`
+*   Hex notation: `"#ffffff"`, `"#fff"`, `"#ffffffcc"` (with alpha)
+*   RGB: `"rgb(255, 255, 255)"`, `"rgb(100%, 100%, 100%)"`
+*   RGBA: `"rgba(255, 255, 255, 0.8)"`
+*   HSL: `"hsl(0, 100%, 50%)"`
+*   HSLA: `"hsla(0, 100%, 50%, 0.8)"`
+*   Oklch: `"oklch(62.8% 0.26 29.2)"`
 
-*   A keyword color, “white”
-*   Six-digit hex notation, “#ffffff”
-*   Three-digit hex notation, “#fff”
-*   8-bit decimal notation, “rgb(255, 255, 255)”
-*   Percentage notation, “rgb(100%, 100%, 100%)”
-
-Note that when working with [FacetChart](classes/FacetChart.md#class-facetchart)s, it's required that colors be specified using the six-digit hex format listed above, rather than any of the others, since the Framework needs to perform math on the subfields. Affected properties include [FacetChart.dataColors](classes/FacetChart.md#attr-facetchartdatacolors), and affected methods include overrides of [FacetChart.getDataColor](classes/FacetChart.md#method-facetchartgetdatacolor) and [FacetChart.getDataLineColor](classes/FacetChart.md#method-facetchartgetdatalinecolor).
+All framework color math (such as hover highlighting in [FacetChart](classes/FacetChart.md#class-facetchart)s and color muting) uses [isc.Colors](#kb-topic-colors), which accepts any of the above formats.
 
 ### Groups
 
@@ -1364,7 +1379,7 @@ and adding "#" and "\*" to the regular expressions above would allow for users t
 ### See Also
 
 - [ListGridFieldType](#type-listgridfieldtype)
-- [FormItemType](#type-formitemtype)
+- [FormItemType](reference_2.md#type-formitemtype)
 
 ---
 ## Type: FilteredSelectAllAction
@@ -1425,6 +1440,19 @@ Approach to force a text value to be interpreted as text rather than parsed as a
 | "formula" | text value is turned into a trivial Excel formula (eg "car" becomes ="car"). In Excel, this renders just the value "car" but editing the cell reveals the formula. |
 
 ---
+## Type: FormattingContext
+
+### Description
+The context for which a data-value is being formatted.
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| static | for static display in the chart body |
+| hover | for transient display in a hover |
+
+---
 ## Type: FormItemBaseStyle
 
 ### Description
@@ -1454,6 +1482,38 @@ Name of a SmartClient Class that subclasses [FormItem](classes/FormItem.md#class
 *   ["TextItem"](classes/TextItem.md#class-textitem)
 *   ["SliderItem"](classes/SliderItem.md#class-slideritem),
 *   ["CanvasItem"](classes/CanvasItem.md#class-canvasitem)
+
+---
+## Type: FormItemType
+
+### Description
+DynamicForms automatically choose the FormItem type for a field based on the `type` property of the field and a number of other factors.
+
+See the [formItemTypeSelection](kb_topics/formItemTypeSelection.md#kb-topic-formitem-classes-for-databound-component-fields) overview for a full description of how this works. The table below describes the default basic FormItem chosen for various values of the `type` property when no explicit [FormItem.editorType](classes/FormItem.md#attr-formitemeditortype), [DataSourceField.filterEditorType](classes/DataSourceField.md#attr-datasourcefieldfiltereditortype) is specified, and when the item doesn't have properties set that cause it to behave differently as described in the overview linked above.
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| "text" | Rendered as a [TextItem](classes/TextItem.md#class-textitem) by default |
+| "boolean" | Rendered as a [CheckboxItem](classes/CheckboxItem.md#class-checkboxitem) |
+| "integer" | Rendered as an [IntegerItem](#class-integeritem), a trivial subclass of [TextItem](classes/TextItem.md#class-textitem), by default. Consider setting editorType:[SpinnerItem](classes/SpinnerItem.md#class-spinneritem). |
+| "float" | Rendered as a [FloatItem](#class-floatitem), a trivial subclass of [TextItem](classes/TextItem.md#class-textitem), by default. Consider setting editorType:[SpinnerItem](classes/SpinnerItem.md#class-spinneritem). |
+| "date" | Rendered as a [DateItem](classes/DateItem.md#class-dateitem) |
+| "time" | Rendered as a [TimeItem](classes/TimeItem.md#class-timeitem) |
+| "datetime" | Rendered as a [DateTimeItem](classes/DateTimeItem.md#class-datetimeitem) |
+| "enum" | Rendered as a [SelectItem](classes/SelectItem.md#class-selectitem). Also true for any field that specifies a [FormItem.valueMap](classes/FormItem.md#attr-formitemvaluemap). Consider setting editorType:[ComboBoxItem](classes/ComboBoxItem.md#class-comboboxitem). |
+| "sequence" | Same as `text` |
+| "link" | If [DataSourceField.canEdit](classes/DataSourceField.md#attr-datasourcefieldcanedit)`:false` is set on the field, the value is rendered as a [LinkItem](classes/LinkItem.md#class-linkitem). Otherwise the field is rendered as a [TextItem](classes/TextItem.md#class-textitem). |
+| "image" | If the field is editable, rendered as a [TextItem](classes/TextItem.md#class-textitem) to edit the URL or partial URL  
+If [non editable](classes/FormItem.md#attr-formitemcanedit), and [readOnlyDisplay](classes/DynamicForm.md#attr-dynamicformreadonlydisplay) is "static", an image will be rendered out, deriving the URL from the field value combined with [FormItem.imageURLPrefix](classes/FormItem.md#attr-formitemimageurlprefix) and [FormItem.imageURLSuffix](classes/FormItem.md#attr-formitemimageurlsuffix) if present. This behavior may be suppressed via [DynamicForm.showImageAsURL](classes/DynamicForm.md#attr-dynamicformshowimageasurl), in which case the value (URL or partial URL) will be rendered out as static text. |
+| "imageFile" | For editable fields, rendered as a [FileItem](classes/FileItem.md#class-fileitem) or a [FileUploadItem](classes/FileUploadItem.md#class-fileuploaditem) depending on the value of [DynamicForm.useFileUploadItem](classes/DynamicForm.md#attr-dynamicformusefileuploaditem). For non editable fields, rendered as a [ViewFileItem](#class-viewfileitem). |
+| "binary" | For editable fields, rendered as a [FileItem](classes/FileItem.md#class-fileitem) or a [FileUploadItem](classes/FileUploadItem.md#class-fileuploaditem) depending on the value of [DynamicForm.useFileUploadItem](classes/DynamicForm.md#attr-dynamicformusefileuploaditem). For non editable fields, rendered as a [ViewFileItem](#class-viewfileitem). |
+
+### See Also
+
+- [FormItem.type](classes/FormItem.md#attr-formitemtype)
+- [FieldType](reference_2.md#type-fieldtype)
 
 ---
 ## Type: GlobalId
@@ -2790,8 +2850,8 @@ An [AdvancedCriteria](#object-advancedcriteria) with server-side extensions for 
 
 On the client, a ServerDynamicCriteria is treated identically to a normal AdvancedCriteria. On the server, the following additional `fieldName` forms are recognized:
 
-#### Scoped values
-Reference authentication or request context:
+#### Authentication and request context
+Reference the current user or operation type:
 
 *   `auth.userId` — the authenticated user ID (from `DSRequest.getUserId()`)
 *   `auth.roles` — the list of roles for the authenticated user (from `DSRequest.getUserRoles()`)
@@ -2834,6 +2894,7 @@ ServerDynamicCriteria is the type used by:
 *   [DataSourceField.requiredWhen](classes/DataSourceField.md#attr-datasourcefieldrequiredwhen) — conditionally require a field
 *   [DataSourceField.readOnlyWhen](classes/DataSourceField.md#attr-datasourcefieldreadonlywhen) / [DataSourceField.editWhen](classes/DataSourceField.md#attr-datasourcefieldeditwhen) — conditionally restrict field editability
 *   [DataSourceField.initWhen](classes/DataSourceField.md#attr-datasourcefieldinitwhen) / [DataSourceField.updateWhen](classes/DataSourceField.md#attr-datasourcefieldupdatewhen) — restrict editability by operation type
+*   [DataSourceField.visibleWhen](classes/DataSourceField.md#attr-datasourcefieldvisiblewhen) — conditionally strip a field from server responses
 
 The resolved values are also available programmatically via `DSRequest.getRelatedRecord()` and `DSRequest.getRelatedFieldValue()` in server-side Java code (e.g. from a DMI).
 
@@ -2847,6 +2908,7 @@ The resolved values are also available programmatically via `DSRequest.getRelate
 - [DataSourceField.editWhen](classes/DataSourceField.md#attr-datasourcefieldeditwhen)
 - [DataSourceField.initWhen](classes/DataSourceField.md#attr-datasourcefieldinitwhen)
 - [DataSourceField.updateWhen](classes/DataSourceField.md#attr-datasourcefieldupdatewhen)
+- [DataSourceField.visibleWhen](classes/DataSourceField.md#attr-datasourcefieldvisiblewhen)
 
 ---
 ## Type: SetterPath
@@ -3575,6 +3637,35 @@ Sets up a real inheritance structure for Javascript objects. We separate out cla
 ### See Also
 
 - [Class](classes/Class.md#class-class)
+
+---
+## Object: Color
+
+### Description
+A structured color object returned by [Colors.getColor](classes/Colors.md#classmethod-colorsgetcolor). Contains RGB, HSL, and oklch properties pre-computed, a [hex](classes/Color.md#attr-colorhex) string, and convenience methods for manipulation that delegate to [Colors](classes/Colors.md#class-colors) classMethods.
+
+Properties are organized by color space: RGB (`r`, `g`, `b` ), HSL (`h`, `s`, `l`), and oklch (`ok_L`, `ok_C`, `ok_h`). The `ok_` prefix distinguishes oklch from HSL (both have a hue component). Oklch is the perceptually uniform color space that all [adjust()](classes/Colors.md#classmethod-colorsadjust) operations work in - equal numeric changes produce equal perceived visual differences.
+
+For raw numeric components without the full Color object, use [Colors.getValues](classes/Colors.md#classmethod-colorsgetvalues) which returns a plain unstructured object (`{r, g, b, alpha}`, `{h, s, l, alpha}`, or `{L, C, h, alpha}`) for a single requested format.
+
+[getColor()](classes/Colors.md#classmethod-colorsgetcolor) always returns a Color object. If the input was unparseable, [isValid()](classes/Color.md#method-colorisvalid) returns false and properties default to black. Color objects are immutable - manipulation methods return new instances.
+
+Instance methods return new Color objects, enabling chaining:
+
+```
+     var c = isc.Colors.getColor("#3366CC");
+     c.r          // 51
+     c.hex        // "#3366cc"
+     c.h          // 220 (HSL hue)
+     c.s          // 60 (HSL saturation %)
+     c.ok_L       // 0.52 (oklch lightness)
+     c.ok_h       // 265 (oklch hue)
+     c.isValid()  // true
+     c.lighten(20).getString()       // lighter hex string
+     c.adjust({lightness: 20, saturation: -30}).getString("rgb")
+     c.getString("hsl")             // "hsl(220, 60%, 50%)"
+ 
+```
 
 ---
 ## Object: ColorStop
@@ -4372,6 +4463,12 @@ Identifies a potential decision (branch) within a [MultiDecisionTask](classes/Mu
 **Deprecated**
 
 ---
+## Object: TaskResultModifications
+
+### Description
+Result object for [Process.beforeTaskCommit](classes/Process.md#method-processbeforetaskcommit).
+
+---
 ## Object: TestFunctionResult
 
 ### Description
@@ -4388,6 +4485,12 @@ Because TestFunctionResult is always an ordinary JavaScript Object, it supports 
 ### Groups
 
 - formulaFields
+
+---
+## Object: TileRecord
+
+### Description
+A TileRecord is a JavaScript Object whose properties contain values for each TileField. A TileRecord may have additional properties which affect the record's appearance or behavior, or which hold data for use by custom logic or other, related components.
 
 ---
 ## Object: TreeNode

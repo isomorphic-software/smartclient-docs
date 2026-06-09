@@ -3933,7 +3933,7 @@ Note that the user may swap the legend facet and the [data label facet](#method-
 ### Description
 Return the text string to display in labels [in the chart-body or in hovers](#attr-facetchartshowdatavaluesmode) given the raw value for the metric displayed on the value axis.
 
-This method may also be passed the [context](../reference.md#type-formattingcontext) for which the value is being formatted, the record associated with the value and the id of its [facet](#attr-facetchartfacets).
+This method may also be passed the [context](../reference_2.md#type-formattingcontext) for which the value is being formatted, the record associated with the value and the id of its [facet](#attr-facetchartfacets).
 
 Note that the rendering of values for gradation labels is handled by [FacetChart.formatAxisValue](#method-facetchartformataxisvalue).
 
@@ -3942,7 +3942,7 @@ Note that the rendering of values for gradation labels is handled by [FacetChart
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | value | [Any](#type-any) | false | — | raw value of the metric |
-| context | [FormattingContext](../reference.md#type-formattingcontext) | true | — | context in which the value is being displayed |
+| context | [FormattingContext](../reference_2.md#type-formattingcontext) | true | — | context in which the value is being displayed |
 | record | [Record](#type-record) | true | — | cell record for the data value |
 | facetId | [String](#type-string) | true | — | facet ID for the data value |
 

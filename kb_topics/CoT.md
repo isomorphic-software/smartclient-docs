@@ -23,5 +23,6 @@ When troubleshooting CoT workflows, [partial prompts](CoTPartialPrompt.md#kb-top
 - [CoTProcess.getPromptPart](../classes/CoTProcess.md#method-cotprocessgetpromptpart)
 - [CoTProcess](../classes/CoTProcess.md#class-cotprocess)
 - [CoTTask](../classes/CoTTask.md#class-cottask)
+- [AIDelegator](../classes/AIDelegator.md#class-aidelegator)
 
 ---

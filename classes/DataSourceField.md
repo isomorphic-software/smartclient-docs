@@ -1181,6 +1181,39 @@ In addition to the normal context variables available to Velocity expressions in
 **Flags**: IR
 
 ---
+## Attr: DataSourceField.visibleWhen
+
+### Description
+Criteria-based field visibility for server responses. When the criteria do not match, the field value is stripped from the server response — the client never receives it. This is the criteria-based equivalent of [DataSourceField.viewRequiresRole](#attr-datasourcefieldviewrequiresrole).
+
+On the client, `visibleWhen` already works as a [FormItem](FormItem.md#class-formitem) property via the RulesEngine (shows/hides UI). Adding it to DataSourceField extends that behavior to the server: the field is hidden in UI _and_ stripped from data.
+
+Criteria are evaluated **per record** in the response, so record-dependent criteria work — for example, showing a field only when the record's department matches the current user's department.
+
+Criteria can reference the current user (`auth.userId`, `auth.roles`), the current operation type (`context.operationType`), and fields on related DataSources via dot notation (`Order.Customer.tier`). See [ServerDynamicCriteria](../reference_2.md#type-serverdynamiccriteria) for the full syntax.
+
+**Example** — salary visible only to HR users:
+
+```
+ <field name="salary" type="float">
+   <visibleWhen fieldName="auth.roles" operator="contains"
+                value="HR"/>
+ </field>
+ 
+```
+
+### Groups
+
+- componentBinding
+
+### See Also
+
+- [ServerDynamicCriteria](../reference_2.md#type-serverdynamiccriteria)
+- [DataSourceField.viewRequiresRole](#attr-datasourcefieldviewrequiresrole)
+
+**Flags**: IR
+
+---
 ## Attr: DataSourceField.validators
 
 ### Description
@@ -1207,7 +1240,7 @@ For the available set of built-in validators, and how to define a custom validat
 ### Description
 Sets the default FormItem to be used whenever this field is edited (whether in a grid, form, or other component).
 
-If unset, a FormItem will be automatically chosen based on the type of the field, by the rules explained [here](../reference.md#type-formitemtype).
+If unset, a FormItem will be automatically chosen based on the type of the field, by the rules explained [here](../reference_2.md#type-formitemtype).
 
 ### Groups
 
@@ -2289,7 +2322,7 @@ When populating Java Beans/ POJOs, `javaClass` does not normally have to be spec
 ### Description
 Criteria to be evaluated to determine whether this field is [required](#attr-datasourcefieldrequired). Equivalent to adding a `required` validator with [applyWhen](Validator.md#attr-validatorapplywhen) set to these criteria.
 
-On the client, criteria are evaluated against the form's current values and the current [rule context](Canvas.md#attr-canvasrulescope). On the server, criteria are evaluated with full [ServerDynamicCriteria](../reference_2.md#type-serverdynamiccriteria) support, including scoped values (`auth.*`, `context.*`) and relational references.
+On the client, criteria are evaluated against the form's current values and the current [rule context](Canvas.md#attr-canvasrulescope). On the server, criteria are evaluated with full [ServerDynamicCriteria](../reference_2.md#type-serverdynamiccriteria) support, including references to the current user and operation type (`auth.*`, `context.*`) and fields on related DataSources.
 
 Example — field is required only on add:
 
@@ -2723,7 +2756,7 @@ Note that this property only applies to users of the SmartClient server using da
 ### Description
 Criteria-based version of [canEdit:false](#attr-datasourcefieldcanedit). When the criteria match, the field is treated as read-only: the server strips the field value from add/update operations (same as `canSave:false`), and the client makes the field non-editable in forms.
 
-Supports the full [ServerDynamicCriteria](../reference_2.md#type-serverdynamiccriteria) syntax on the server, including scoped values and relational references.
+Supports the full [ServerDynamicCriteria](../reference_2.md#type-serverdynamiccriteria) syntax on the server, including references to the current user, operation type, and fields on related DataSources.
 
 ### Groups
 

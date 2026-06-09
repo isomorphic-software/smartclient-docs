@@ -132,7 +132,7 @@ Returns true if the current skin has a dark background and light text, false oth
 Detection precedence:
 
 1.  If the skin's `load_skin.js` declares `darkMode:true` in its `isc.setCurrentSkin({...})` call, that value is returned directly — this is the authoritative, declarative marker a skin uses to identify itself as dark. Applications (like Showcase) can flip to a compatible dark appearance based on this single property without having to maintain a hardcoded list of dark skin names.
-2.  Otherwise, the background color of the `pageBackground` CSS class is sampled and compared against black vs white using tinycolor's readability heuristic — works for custom skins (e.g. those built in the Skin Editor) that do not declare `darkMode` but do set a dark pageBackground.
+2.  Otherwise, the background color of the `pageBackground` CSS class is sampled and compared against black vs white using a readability heuristic — works for custom skins (e.g. those built in the Skin Editor) that do not declare `darkMode` but do set a dark pageBackground.
 
 ### Returns
 

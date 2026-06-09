@@ -4026,6 +4026,8 @@ As noted under [ListGrid.enforceVClipping](ListGrid_1.md#attr-listgridenforcevcl
 ### Description
 If we're showing the filter (query-by-example) row for this ListGrid, this method is used to determine the type of form item to display in the filter edit row for this field. Default implementation will return the field.filterEditorType if specified, or the result of [form.getEditorType()](DynamicForm.md#method-dynamicformgeteditortype) otherwise.
 
+See the [formItemTypeSelection](../kb_topics/formItemTypeSelection.md#kb-topic-formitem-classes-for-databound-component-fields) overview for details on how various components determine the appopriate editorType for fields.
+
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
@@ -7471,6 +7473,8 @@ Setter for [ListGrid.alternateRecordStyles](ListGrid_1.md#attr-listgridalternate
 ### Description
 Returns the form item type (Class Name) to display for a field when it is displayed in the editor while editing some record.  
 Default implementation will return field.editorType if specified. If not specified, the default form item for the appropriate data type will be displayed - can be overridden to provide a different specific form item type for some field based on the record/field data.
+
+See the [formItemTypeSelection](../kb_topics/formItemTypeSelection.md#kb-topic-formitem-classes-for-databound-component-fields) overview for details on how various components determine the appopriate editorType for fields.
 
 ### Parameters
 

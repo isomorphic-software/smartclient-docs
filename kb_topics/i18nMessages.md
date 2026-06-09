@@ -580,6 +580,8 @@ The properties in this group are default system messages that a localized applic
 - [ColorPicker.basicColorLabel](../classes/ColorPicker.md#attr-colorpickerbasiccolorlabel)
 - [ColorPicker.selectedColorLabel](../classes/ColorPicker.md#attr-colorpickerselectedcolorlabel)
 - [ColorPicker.opacitySliderLabel](../classes/ColorPicker.md#attr-colorpickeropacitysliderlabel)
+- [ColorPicker.rgbItemHover](../classes/ColorPicker.md#attr-colorpickerrgbitemhover)
+- [ColorPicker.hslItemHover](../classes/ColorPicker.md#attr-colorpickerhslitemhover)
 - [ColorPicker.redFieldTitle](../classes/ColorPicker.md#attr-colorpickerredfieldtitle)
 - [ColorPicker.redFieldPrompt](../classes/ColorPicker.md#attr-colorpickerredfieldprompt)
 - [ColorPicker.greenFieldTitle](../classes/ColorPicker.md#attr-colorpickergreenfieldtitle)

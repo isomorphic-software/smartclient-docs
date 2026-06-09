@@ -21,6 +21,20 @@ On mobile devices, you may find that you need to increase the breadth of the bar
 - [ImgSplitbar](ImgSplitbar.md#class-imgsplitbar)
 
 ---
+## Attr: Splitbar.thumbStyle
+
+### Description
+CSS style for the thumb element - the floating label child that contains the grip icon. When set, the thumb gets its own stateful baseStyle independent of the bar's [baseStyle](StatefulCanvas.md#attr-statefulcanvasbasestyle), so CSS rules on the bar (background, pseudo- elements, etc.) do not bleed into the grip area. Stateful suffixes (Over, Down, closed, OverClosed, ...) are appended automatically.
+
+If unset, the thumb inherits the bar's baseStyle, which is the legacy behavior.
+
+### Groups
+
+- grip
+
+**Flags**: IR
+
+---
 ## Attr: Splitbar.showClosedGrip
 
 ### Description
@@ -31,6 +45,18 @@ If [Splitbar.showGrip](#attr-splitbarshowgrip) is true, this property determines
 - grip
 
 **Flags**: IRA
+
+---
+## Attr: Splitbar.thumbLength
+
+### Description
+Size of the thumb element along the bar's length axis (vertical for an HLayout bar, horizontal for a VLayout bar). Relevant only in [Splitbar.cssOnly](#attr-splitbarcssonly) mode where the thumb floats over the bar via [snapTo:"C"](Canvas.md#attr-canvassnapto). When set, the thumb is large enough to show a [Splitbar.thumbStyle](#attr-splitbarthumbstyle) background, border, or shadow around the grip icon. When unset, the thumb sizes to its grip icon.
+
+### Groups
+
+- grip
+
+**Flags**: IR
 
 ---
 ## Attr: Splitbar.canCollapse
@@ -180,6 +206,42 @@ Suffix used the 'grip' image if [StretchImg.showGrip](StretchImg.md#attr-stretch
 - grip
 
 **Flags**: IRA
+
+---
+## Attr: Splitbar.thumbBreadth
+
+### Description
+Size of the thumb element across the bar's breadth axis (horizontal for an HLayout bar, vertical for a VLayout bar). See [Splitbar.thumbLength](#attr-splitbarthumblength) for details.
+
+### Groups
+
+- grip
+
+**Flags**: IR
+
+---
+## Attr: Splitbar.cssOnly
+
+### Description
+When true, the splitbar relies entirely on CSS for its visual appearance rather than StretchImg piece images. Specifically this suppresses the StretchImg items array (rendering a single transparent element instead of image pieces) so that CSS properties on the stateful [baseStyle](StatefulCanvas.md#attr-statefulcanvasbasestyle) classes control the bar's look - background, border, box-shadow, pseudo-elements, etc.
+
+The grip is unaffected - set [Splitbar.showGrip](#attr-splitbarshowgrip) independently. When `cssOnly` is true the grip icon is rendered over a transparent background, making it easy to style the bar and grip independently via CSS.
+
+**Flags**: IR
+
+---
+## Attr: Splitbar.gripStyle
+
+### Description
+CSS style applied to the grip icon element inside the thumb. This is a shorthand for [StatefulCanvas.iconStyle](StatefulCanvas.md#attr-statefulcanvasiconstyle) in the Splitbar context. Stateful suffixes (Over, Down, etc.) are appended automatically.
+
+When the grip is an SVG stockIcon, this class receives the SVG sprite's ``<use>`` element, so CSS properties like `fill` and `color` can control the icon's appearance per state.
+
+### Groups
+
+- grip
+
+**Flags**: IR
 
 ---
 ## Attr: Splitbar.showRollOverGrip

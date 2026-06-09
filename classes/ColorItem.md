@@ -63,6 +63,22 @@ Prompt to show when the user hovers the mouse over the picker icon.
 **Flags**: IR
 
 ---
+## Attr: ColorItem.displayFormat
+
+### Description
+The format used to display the color value in the text field. Any valid CSS color input is accepted regardless of this setting; the display is converted to this format for presentation.
+
+**Flags**: IRW
+
+---
+## Attr: ColorItem.storageFormat
+
+### Description
+The format used to store the color value internally. Any valid CSS color input is accepted regardless of this setting; the value is converted to this format for storage.
+
+**Flags**: IRW
+
+---
 ## Attr: ColorItem.defaultPickerMode
 
 ### Description

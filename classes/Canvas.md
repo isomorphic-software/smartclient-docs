@@ -5170,6 +5170,25 @@ Given a string and a character, hilite the first occurrence of the character in 
 **Flags**: A
 
 ---
+## ClassMethod: Canvas.subtractRects
+
+### Description
+Given a bounding rectangle and an array of "hole" rectangles, return the minimal set of non-overlapping axis-aligned rectangles that tile the bounding rect while excluding every hole. Each rect in the input and output uses the standard `[left, top, width, height]` array format.
+
+Holes that extend beyond the bounding rect are clipped; holes that do not intersect the bounding rect are ignored. The output rectangles are guaranteed never to overlap one another, so rendering them with a translucent fill produces a uniform shade with no darker seams.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| pageRect | [Array of int](#type-array-of-int) | false | — | bounding area |
+| holes | [Array of Array of int](#type-array-of-array-of-int) | false | — | rects to exclude |
+
+### Returns
+
+`[Array of Array of int](#type-array-of-array-of-int)` — non-overlapping coverage rects
+
+---
 ## ClassMethod: Canvas.resizeAutoChildAttributes
 
 ### Description
@@ -6251,6 +6270,27 @@ Vertically scrolls the content of the widget to the end of its content
 This method is executed on draw. Default implementation for top-level widgets ensures this widget is at the end of the tab-sequence.
 
 Has no effect if this canvas is embedded in a [parent](#method-canvasgetparentcanvas).
+
+---
+## Method: Canvas.registerAIService
+
+### Description
+Registers an AI service scoped to this canvas and its descendants. When [AI.delegate](AI.md#classmethod-aidelegate) resolves available services, it walks the component hierarchy upward from the focus canvas, so a service registered on a specific canvas takes precedence over one registered higher in the tree or globally on [AI](AI.md#class-ai).
+
+See the [AI Assist overview](../kb_topics/aiAssist.md#kb-topic-ai-assist) for the registration model and an end-to-end example.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| service | [AIServiceDescriptor](#type-aiservicedescriptor) | false | — | the service to register |
+
+### See Also
+
+- [Canvas.unregisterAIService](#method-canvasunregisteraiservice)
+- [AI.registerAIService](AI.md#classmethod-airegisteraiservice)
+- [AI.delegate](AI.md#classmethod-aidelegate)
+- [aiAssist](../kb_topics/aiAssist.md#kb-topic-ai-assist)
 
 ---
 ## Method: Canvas.getScrollWidth
@@ -8047,6 +8087,18 @@ Set the showSnapGrid property.
 ### Groups
 
 - snapGridDragging
+
+---
+## Method: Canvas.unregisterAIService
+
+### Description
+Removes a previously registered canvas-scoped AI service.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| name | [String](#type-string) | false | — | the name of the service to remove |
 
 ---
 ## Method: Canvas.getScrollTop

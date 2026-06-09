@@ -23,11 +23,13 @@ Cancel button for the ColorPicker
 ## Attr: ColorPicker.satFieldTitle
 
 ### Description
-The title for the 'Sat' field in the complex chooser.
+—
 
 ### Groups
 
 - i18nMessages
+
+**Deprecated**
 
 **Flags**: IR
 
@@ -56,10 +58,25 @@ The label shown above the basic color blocks.
 **Flags**: IR
 
 ---
+## Attr: ColorPicker.color
+
+### Description
+The current color of the picker. Accepts a CSS color string in any [ColorFormat](../reference_2.md#type-colorformat) (including [named colors](Colors.md#classattr-colorscolornames)) or an existing [Color](../reference_2.md#object-color) object. When not set, the picker initializes to [ColorPicker.defaultColor](#attr-colorpickerdefaultcolor).
+
+Use [ColorPicker.getColor](#method-colorpickergetcolor) to retrieve the current color as a [Color](../reference_2.md#object-color) object, or [ColorPicker.getColorString](#method-colorpickergetcolorstring) to retrieve it as a CSS string in any [ColorFormat](../reference_2.md#type-colorformat).
+
+### See Also
+
+- [ColorPicker.getColor](#method-colorpickergetcolor)
+- [ColorPicker.getColorString](#method-colorpickergetcolorstring)
+
+**Flags**: IRW
+
+---
 ## Attr: ColorPicker.lumWidth
 
 ### Description
-Width of the Luminosity bar
+Width of the lightness bar
 
 **Flags**: IR
 
@@ -114,14 +131,27 @@ Width and height of the basic color boxes (they are always square, and they are 
 **Flags**: IR
 
 ---
+## Attr: ColorPicker.paletteMode
+
+### Description
+Controls which palette visualization is shown in complex mode.
+
+*   `"square"` - Hue x Saturation grid (X=hue 0-360, Y=saturation 100-0), fixed at L=50. Best for precise color selection.
+*   `"wheel"` - Oklch color wheel (angle=hue, radius=chroma). Perceptually uniform hue spacing; lightness tracks the current lightness slider value.
+
+**Flags**: IRW
+
+---
 ## Attr: ColorPicker.lumFieldTitle
 
 ### Description
-The title for the 'Luminosity' field in the complex chooser.
+—
 
 ### Groups
 
 - i18nMessages
+
+**Deprecated**
 
 **Flags**: IR
 
@@ -129,7 +159,11 @@ The title for the 'Luminosity' field in the complex chooser.
 ## Attr: ColorPicker.defaultColor
 
 ### Description
-The default color. This is the color that is selected when the picker first loads
+The default color. This is the color selected when the picker first loads if no [Color](../reference_2.md#object-color) is specified, and the color to which the picker reverts when [ColorPicker.getSharedColorPicker](#classmethod-colorpickergetsharedcolorpicker) is called without `keepCurrentState`.
+
+### See Also
+
+- [Color](../reference_2.md#object-color)
 
 **Flags**: IR
 
@@ -137,11 +171,21 @@ The default color. This is the color that is selected when the picker first load
 ## Attr: ColorPicker.blueFieldTitle
 
 ### Description
-The title for the 'Blue' field in the complex chooser.
+—
 
 ### Groups
 
 - i18nMessages
+
+**Deprecated**
+
+**Flags**: IR
+
+---
+## Attr: ColorPicker.showHarmonyRow
+
+### Description
+Whether to show the [ColorPicker.harmonyRow](#attr-colorpickerharmonyrow) of color harmonies below the palette in complex mode.
 
 **Flags**: IR
 
@@ -273,7 +317,7 @@ Determines whether to show the opacity slider. This allows the user to select co
 ## Attr: ColorPicker.htmlFieldTitle
 
 ### Description
-The title for the 'HTML' field in the complex chooser.
+The title for the hex color field in the complex chooser.
 
 ### Groups
 
@@ -285,7 +329,29 @@ The title for the 'HTML' field in the complex chooser.
 ## Attr: ColorPicker.hueFieldTitle
 
 ### Description
-The title for the 'Hue' field in the complex chooser.
+—
+
+### Groups
+
+- i18nMessages
+
+**Deprecated**
+
+**Flags**: IR
+
+---
+## Attr: ColorPicker.harmonyRow
+
+### Description
+Row of clickable swatches showing oklch-computed color harmonies (analogous, triadic, complement) of the currently-selected color. Visible only in [complex mode](../reference.md#type-colorpickermode).
+
+**Flags**: R
+
+---
+## Attr: ColorPicker.rgbItemHover
+
+### Description
+Hover text shown when the mouse is over the RGB form row title.
 
 ### Groups
 
@@ -317,7 +383,7 @@ The text to show when the mouse hovers over the 'Red' field in the complex choos
 ## Attr: ColorPicker.htmlFieldPrompt
 
 ### Description
-The text to show when the mouse hovers over the 'HTML' field in the complex chooser.
+The text to show when the mouse hovers over the hex field in the complex chooser.
 
 ### Groups
 
@@ -329,11 +395,13 @@ The text to show when the mouse hovers over the 'HTML' field in the complex choo
 ## Attr: ColorPicker.redFieldTitle
 
 ### Description
-The title for the 'Red' field in the complex chooser.
+—
 
 ### Groups
 
 - i18nMessages
+
+**Deprecated**
 
 **Flags**: IR
 
@@ -349,11 +417,13 @@ Displayed width of the color swatch image. The default width is approximately th
 ## Attr: ColorPicker.greenFieldTitle
 
 ### Description
-The title for the 'Green' field in the complex chooser.
+—
 
 ### Groups
 
 - i18nMessages
+
+**Deprecated**
 
 **Flags**: IR
 
@@ -388,6 +458,14 @@ The title for the 'Cancel' button.
 The class of the Cancel button. It is intended that you use either IButton or Button - other classes are unlikely to work correctly.
 
 **Flags**: IRWA
+
+---
+## Attr: ColorPicker.hslItemTitle
+
+### Description
+Title shown on the HSL form row in the complex chooser.
+
+**Flags**: IR
 
 ---
 ## Attr: ColorPicker.okButtonConstructor
@@ -425,7 +503,7 @@ The location of the crosshair image file
 ## Attr: ColorPicker.lumFieldPrompt
 
 ### Description
-The text to show when the mouse hovers over the 'Luminosity' field in the complex chooser.
+The text to show when the mouse hovers over the 'Lightness' field in the complex chooser.
 
 ### Groups
 
@@ -446,6 +524,18 @@ Array of 40 HTML color strings, used to render the basic color selection boxes.
 
 ### Description
 The label shown next to the opacity slider. Ignored if [ColorPicker.supportsTransparency](#attr-colorpickersupportstransparency) is false.
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IR
+
+---
+## Attr: ColorPicker.hslItemHover
+
+### Description
+Hover text shown when the mouse is over the HSL form row title.
 
 ### Groups
 
@@ -482,6 +572,14 @@ The text to show underneath the selected color box, so that it can be seen throu
 **Flags**: IR
 
 ---
+## Attr: ColorPicker.rgbItemTitle
+
+### Description
+Title shown on the RGB form row in the complex chooser.
+
+**Flags**: IR
+
+---
 ## Attr: ColorPicker.modeToggleButtonConstructor
 
 ### Description
@@ -509,10 +607,30 @@ The optional second parameter to this method indicates whether the shared picker
 `[ColorPicker](#type-colorpicker)` — the shared ColorPicker instance
 
 ---
+## Method: ColorPicker.getColorString
+
+### Description
+Returns the currently-selected color as a CSS string in any [ColorFormat](../reference_2.md#type-colorformat). Equivalent to `getColor().getString(format)`. When [ColorPicker.supportsTransparency](#attr-colorpickersupportstransparency) is false or the color is fully opaque, the alpha channel is omitted from the output.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| format | [ColorFormat](../reference_2.md#type-colorformat) | true | — | output format (defaults to "hex") |
+
+### Returns
+
+`[String](#type-string)` — CSS color string
+
+### See Also
+
+- [ColorPicker.getColor](#method-colorpickergetcolor)
+
+---
 ## Method: ColorPicker.getRed
 
 ### Description
-Returns the Red element of the currently-selected color, as an integer from 0-255
+Returns the Red element of the currently-selected color, as an integer from 0-255.
 
 ### Returns
 
@@ -522,11 +640,13 @@ Returns the Red element of the currently-selected color, as an integer from 0-25
 
 - [ColorPicker.setRed](#method-colorpickersetred)
 
+**Deprecated**
+
 ---
 ## Method: ColorPicker.getBlue
 
 ### Description
-Returns the Blue element of the currently-selected color, as an integer from 0-255
+Returns the Blue element of the currently-selected color, as an integer from 0-255.
 
 ### Returns
 
@@ -536,17 +656,19 @@ Returns the Blue element of the currently-selected color, as an integer from 0-2
 
 - [ColorPicker.setBlue](#method-colorpickersetblue)
 
+**Deprecated**
+
 ---
 ## Method: ColorPicker.setHue
 
 ### Description
-Sets the Hue of the selected color
+Sets the Hue of the selected color.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newValue | [Number](#type-number) | false | — | An integer between 0 and 239 |
+| newValue | [Number](#type-number) | false | — | An integer between 0 and 360 |
 
 ### See Also
 
@@ -556,13 +678,13 @@ Sets the Hue of the selected color
 ## Method: ColorPicker.setSaturation
 
 ### Description
-Sets the Saturation of the selected color
+Sets the Saturation of the selected color.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newValue | [Number](#type-number) | false | — | An integer between 0 and 240 |
+| newValue | [Number](#type-number) | false | — | An integer between 0 and 100 |
 
 ### See Also
 
@@ -588,7 +710,7 @@ Sets the Opacity of the selected color. Ignored if opacity is switched off.
 ## Method: ColorPicker.getGreen
 
 ### Description
-Returns the Green element of the currently-selected color, as an integer from 0-255
+Returns the Green element of the currently-selected color, as an integer from 0-255.
 
 ### Returns
 
@@ -598,11 +720,31 @@ Returns the Green element of the currently-selected color, as an integer from 0-
 
 - [ColorPicker.setGreen](#method-colorpickersetgreen)
 
+**Deprecated**
+
+---
+## Method: ColorPicker.colorUpdated
+
+### Description
+Notification fired in real-time as the user manipulates the color picker (dragging the crosshair, adjusting sliders, typing in fields). The `color` parameter is an [Color](../reference_2.md#object-color) object; when [ColorPicker.supportsTransparency](#attr-colorpickersupportstransparency) is true it carries the current alpha, otherwise alpha is always 1.
+
+This is the preferred replacement for [ColorPicker.colorChanged](#method-colorpickercolorchanged), which passes no parameters and requires the caller to use getter methods.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| color | [Color](#type-color) | false | — | the current color |
+
+### See Also
+
+- [ColorPicker.colorPicked](#method-colorpickercolorpicked)
+
 ---
 ## Method: ColorPicker.setBlue
 
 ### Description
-Sets the Blue element of the selected color
+Sets the Blue element of the selected color.
 
 ### Parameters
 
@@ -618,7 +760,7 @@ Sets the Blue element of the selected color
 ## Method: ColorPicker.setGreen
 
 ### Description
-Sets the Green element of the selected color
+Sets the Green element of the selected color.
 
 ### Parameters
 
@@ -644,7 +786,7 @@ Returns the opacity of the currently-selected color, as an integer from 0-100. I
 ## Method: ColorPicker.setRed
 
 ### Description
-Sets the Red element of the selected color
+Sets the Red element of the selected color.
 
 ### Parameters
 
@@ -657,10 +799,30 @@ Sets the Red element of the selected color
 - [ColorPicker.getRed](#method-colorpickergetred)
 
 ---
+## Method: ColorPicker.colorPicked
+
+### Description
+Notification fired when the user commits a color selection - either by clicking a swatch in [simple mode](../reference.md#type-colorpickermode) or clicking OK in complex mode. The `color` parameter is an [Color](../reference_2.md#object-color) object; when [ColorPicker.supportsTransparency](#attr-colorpickersupportstransparency) is true it carries the selected alpha, otherwise alpha is always 1.
+
+This is the preferred replacement for [ColorPicker.colorSelected](#method-colorpickercolorselected), which passes color and opacity as separate parameters.
+
+The `ColorPicker` may automatically hide itself after calling this method depending on [ColorPicker.autoHide](#attr-colorpickerautohide) and [ColorPicker.defaultPickMode](#attr-colorpickerdefaultpickmode).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| color | [Color](#type-color) | false | — | the selected color |
+
+### See Also
+
+- [ColorPicker.colorUpdated](#method-colorpickercolorupdated)
+
+---
 ## Method: ColorPicker.getSaturation
 
 ### Description
-Returns the Saturation of the currently-selected color, as an integer from 0-240
+Returns the Saturation of the currently-selected color, as an integer from 0-100 (CSS-standard HSL percentage).
 
 ### Returns
 
@@ -670,35 +832,54 @@ Returns the Saturation of the currently-selected color, as an integer from 0-240
 
 - [ColorPicker.setSaturation](#method-colorpickersetsaturation)
 
+**Deprecated**
+
 ---
 ## Method: ColorPicker.getLuminosity
 
 ### Description
-Returns the Luminosity (brightness) of the currently-selected color, as an integer from 0-240
+—
 
 ### Returns
 
-`[int](../reference.md#type-int)` — luminosity value
+`[int](../reference.md#type-int)` — lightness value (0-100)
+
+**Deprecated**
+
+---
+## Method: ColorPicker.setLightness
+
+### Description
+Sets the Lightness of the selected color (CSS-standard HSL: 0 is black, 50 is full chroma, 100 is white).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| newValue | [Number](#type-number) | false | — | An integer between 0 and 100 |
 
 ### See Also
 
-- [ColorPicker.setLuminosity](#method-colorpickersetluminosity)
+- [ColorPicker.getLightness](#method-colorpickergetlightness)
 
 ---
 ## Method: ColorPicker.colorChanged
 
 ### Description
-Override this method to be kept informed when the ColorPicker changes in real-time (for example, if you need to update your own GUI accordingly). Then use the getXxxx() methods (for example, [getBlue()](#method-colorpickergetblue) or [getLuminosity()](#method-colorpickergetluminosity))to obtain current state as required.
+Override this method to be kept informed when the ColorPicker changes in real-time (for example, if you need to update your own GUI accordingly). Then use the getXxxx() methods (for example, [getBlue()](#method-colorpickergetblue) or [getLuminosity()](#method-colorpickergetluminosity)) to obtain current state as required.
 
 ### See Also
 
+- [ColorPicker.colorUpdated](#method-colorpickercolorupdated)
 - [ColorPicker.colorSelected](#method-colorpickercolorselected)
+
+**Deprecated**
 
 ---
 ## Method: ColorPicker.getHtmlColor
 
 ### Description
-Returns the currently-selected color, in HTML color representation form, as a string. HTML color representation is a hash sign, followed by the red, green and blue elements of the color in 2-digit hex form - for example "#F17F1D"
+Returns the currently-selected color as a hex string. When [ColorPicker.supportsTransparency](#attr-colorpickersupportstransparency) is true and the color has alpha < 1, the string includes the alpha channel as two additional hex digits (e.g. `"#F17F1D80"`); otherwise it is a standard 6-digit hex string (e.g. `"#F17F1D"`).
 
 ### Returns
 
@@ -707,6 +888,8 @@ Returns the currently-selected color, in HTML color representation form, as a st
 ### See Also
 
 - [ColorPicker.setHtmlColor](#method-colorpickersethtmlcolor)
+
+**Deprecated**
 
 ---
 ## Method: ColorPicker.setCurrentPickMode
@@ -721,6 +904,36 @@ Note: It is not allowed to set the pick mode to "complex" if [allowComplexMode](
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | pickMode | [ColorPickerMode](../reference.md#type-colorpickermode) | false | — | the new pick mode. |
+
+---
+## Method: ColorPicker.getColor
+
+### Description
+Returns the currently-selected color as an [Color](../reference_2.md#object-color) object. If [ColorPicker.supportsTransparency](#attr-colorpickersupportstransparency) is true the returned Color includes the selected alpha; otherwise alpha is 1.
+
+### Returns
+
+`[Color](#type-color)` — the current color
+
+### See Also
+
+- [ColorPicker.getColorString](#method-colorpickergetcolorstring)
+
+---
+## Method: ColorPicker.getLightness
+
+### Description
+Returns the Lightness of the currently-selected color, as an integer from 0-100 (CSS-standard HSL percentage). 0 is black, 50 is full chroma, 100 is white.
+
+### Returns
+
+`[int](../reference.md#type-int)` — lightness value
+
+### See Also
+
+- [ColorPicker.setLightness](#method-colorpickersetlightness)
+
+**Deprecated**
 
 ---
 ## Method: ColorPicker.setSupportsTransparency
@@ -738,17 +951,32 @@ Set the [ColorPicker.supportsTransparency](#attr-colorpickersupportstransparency
 ## Method: ColorPicker.setLuminosity
 
 ### Description
-Sets the Luminosity (brightness) of the selected color
+—
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newValue | [Number](#type-number) | false | — | An integer between 0 and 240 |
+| newValue | [Number](#type-number) | false | — | An integer between 0 and 100 |
+
+**Deprecated**
+
+---
+## Method: ColorPicker.setColor
+
+### Description
+Sets the currently-selected color. Accepts any value that [Colors.getColor](Colors.md#classmethod-colorsgetcolor) accepts: a CSS color string, a structured `{r,g,b}` / `{h,s,l}` / `{L,C,h}` object, or an existing [Color](../reference_2.md#object-color).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| color | [String](#type-string)|[Color](#type-color)|[Object](../reference.md#type-object) | false | — | new color value |
 
 ### See Also
 
-- [ColorPicker.getLuminosity](#method-colorpickergetluminosity)
+- [ColorPicker.getColor](#method-colorpickergetcolor)
+- [ColorPicker.getColorString](#method-colorpickergetcolorstring)
 
 ---
 ## Method: ColorPicker.colorSelected
@@ -765,13 +993,16 @@ Override this method to be notified when the user selects a color either by clic
 
 ### See Also
 
+- [ColorPicker.colorPicked](#method-colorpickercolorpicked)
 - [ColorPicker.colorChanged](#method-colorpickercolorchanged)
+
+**Deprecated**
 
 ---
 ## Method: ColorPicker.getHue
 
 ### Description
-Returns the Hue of the currently-selected color, as an integer from 0-239
+Returns the Hue of the currently-selected color, as an integer from 0-360 (CSS-standard HSL hue wheel).
 
 ### Returns
 
@@ -781,20 +1012,24 @@ Returns the Hue of the currently-selected color, as an integer from 0-239
 
 - [ColorPicker.setHue](#method-colorpickersethue)
 
+**Deprecated**
+
 ---
 ## Method: ColorPicker.setHtmlColor
 
 ### Description
-Changes the selected color to the one represented by the supplied HTML color string. Note that the method only accepts the parameter if it represents a valid color (otherwise it is simply ignored).
+Changes the selected color to the one represented by the supplied HTML color string. Accepts any valid CSS color string (hex, rgb(), hsl(), named colors, "transparent"). Invalid values are ignored.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newValue | [String](#type-string) | false | — | A string in HTML color representation format (#RRGGBB) |
+| newValue | [String](#type-string) | false | — | a CSS color string |
 
 ### See Also
 
 - [ColorPicker.getHtmlColor](#method-colorpickergethtmlcolor)
+
+**Deprecated**
 
 ---

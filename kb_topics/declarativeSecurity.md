@@ -58,6 +58,7 @@ The example linked below shows how to use the client-side declarative security s
 - [OperationBinding.requiresAuthentication](../classes/OperationBinding.md#attr-operationbindingrequiresauthentication)
 - [OperationBinding.requiresRole](../classes/OperationBinding.md#attr-operationbindingrequiresrole)
 - [OperationBinding.requires](../classes/OperationBinding.md#attr-operationbindingrequires)
+- [OperationBinding.requiresWhen](../classes/OperationBinding.md#attr-operationbindingrequireswhen)
 - [OperationBinding.creatorOverrides](../classes/OperationBinding.md#attr-operationbindingcreatoroverrides)
 - [DataSource.enforceSecurityOnClient](../classes/DataSource_1.md#attr-datasourceenforcesecurityonclient)
 

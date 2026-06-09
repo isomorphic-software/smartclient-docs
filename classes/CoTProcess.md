@@ -662,6 +662,22 @@ Starts the process and returns a Promise for the result. This is a convenience m
 `[Promise](#type-promise)` — Promise that resolves with the process result or rejects on error/cancel
 
 ---
+## Method: CoTProcess.finishEarly
+
+### Description
+Cancels this process with the special "early finish" disposition: the wrapped operation reports the partial result with `earlyFinish:true` rather than a generic cancellation. Subclasses override the result-shaping hook (`_getEarlyFinishResultProperties()`) when they need to surface domain-specific partial-state alongside the cancellation.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| initiator | [Initiator](#type-initiator) | true | — | Who initiated the early finish |
+
+### See Also
+
+- [PausableAsyncOperation.cancel](#method-pausableasyncoperationcancel)
+
+---
 ## Method: CoTProcess._buildSuccessResult
 
 ### Description
@@ -677,6 +693,12 @@ Builds the success result object to post to the async operation. Subclasses over
 ### Returns
 
 `[AsyncOperationResult](#type-asyncoperationresult)` — The success result
+
+---
+## Method: CoTProcess.handlePaused
+
+### Description
+Observable notification that this process has been paused. Fires when the underlying PausableAsyncOperation reports a pause; consumers (such as PauseResumeDialog) can observe this method on the process directly to update UI state without reaching into getAsyncOperation().
 
 ---
 ## Method: CoTProcess.processingElement
@@ -913,6 +935,12 @@ Called when the process completes successfully. Posts the success result to the 
 |------|------|----------|---------|-------------|
 | state | [Object](../reference.md#type-object) | false | — | The final process state |
 | output | [Any](#type-any) | true | — | The Process's validated output as computed by [Process.getOutput](Process.md#method-processgetoutput). When no [Process.outputDS](Process.md#attr-processoutputds) / output schema is declared this is the same object as `state`. |
+
+---
+## Method: CoTProcess.handleUnpaused
+
+### Description
+Observable notification that this process has been unpaused. Counterpart to [CoTProcess.handlePaused](#method-cotprocesshandlepaused).
 
 ---
 ## Method: CoTProcess.pause

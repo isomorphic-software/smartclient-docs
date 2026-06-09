@@ -281,7 +281,7 @@ CSS class for the "hint" string.
 ### Description
 The DynamicForm picks a field renderer based on the type of the field (and sometimes other attributes of the field).
 
-In addition to the standard [FormItemType](../reference.md#type-formitemtype) values, this property also accepts the name of any [FormItem](#class-formitem) subclass (e.g., "ButtonItem", "CheckboxItem") or a shorthand lowercase version (e.g., "button", "checkbox"). When a class name or shorthand is provided, it acts as a shortcut for setting [FormItem.editorType](#attr-formitemeditortype).
+In addition to the standard [FormItemType](../reference_2.md#type-formitemtype) values, this property also accepts the name of any [FormItem](#class-formitem) subclass (e.g., "ButtonItem", "CheckboxItem") or a shorthand lowercase version (e.g., "button", "checkbox"). When a class name or shorthand is provided, it acts as a shortcut for setting [FormItem.editorType](#attr-formitemeditortype).
 
 ### Groups
 
@@ -289,7 +289,7 @@ In addition to the standard [FormItemType](../reference.md#type-formitemtype) va
 
 ### See Also
 
-- [FormItemType](../reference.md#type-formitemtype)
+- [FormItemType](../reference_2.md#type-formitemtype)
 - [FieldType](../reference_2.md#type-fieldtype)
 
 **Flags**: IR
@@ -1607,7 +1607,7 @@ If `errorOrientation` is unset, the error orientation will default to "top" if [
 ## Attr: FormItem.showImageAsURL
 
 ### Description
-For fields of [type:"image"](../reference.md#type-formitemtype), if the field is non editable, and being displayed with [readOnlyDisplay:"static"](#attr-formitemreadonlydisplay), should the value (URL) be displayed as text, or should an image be rendered?
+For fields of [type:"image"](../reference_2.md#type-formitemtype), if the field is non editable, and being displayed with [readOnlyDisplay:"static"](#attr-formitemreadonlydisplay), should the value (URL) be displayed as text, or should an image be rendered?
 
 If unset, [DynamicForm.showImageAsURL](DynamicForm.md#attr-dynamicformshowimageasurl) will be consulted instead.
 
@@ -2827,7 +2827,7 @@ How should icons be aligned vertically for this form item.
 ### Description
 Name of the FormItem to use for editing, eg "TextItem" or "SelectItem".
 
-The type of FormItem to use for editing is normally derived automatically from [field.type](#attr-formitemtype), which is the data type of the field, by the rules explained [here](../reference.md#type-formitemtype).
+The type of FormItem to use for editing is normally derived automatically from [field.type](#attr-formitemtype), which is the data type of the field, by the rules explained [here](../reference_2.md#type-formitemtype).
 
 ### Groups
 
@@ -2835,7 +2835,7 @@ The type of FormItem to use for editing is normally derived automatically from [
 
 ### See Also
 
-- [FormItemType](../reference.md#type-formitemtype)
+- [FormItemType](../reference_2.md#type-formitemtype)
 - [FieldType](../reference_2.md#type-fieldtype)
 
 **Flags**: IR
@@ -3590,7 +3590,7 @@ Read-only appearance may be specified via [FormItem.readOnlyDisplay](#attr-formi
 
 Note that for forms bound to a [DataSource](DataSource_1.md#class-datasource), if this property is not explicitly set at the item level, its default value will match the [DynamicForm.canEditFieldAttribute](DynamicForm.md#attr-dynamicformcaneditfieldattribute) on the associated dataSource field.
 
-Developers should also be aware that the [FormItem.readOnlyDisplay](#attr-formitemreadonlydisplay) attribute is unrelated to the [DataSourceField.readOnlyEditorType](DataSourceField.md#attr-datasourcefieldreadonlyeditortype) attribute. When a DynamicForm is first bound to a dataSource, for [canEdit:false](DataSourceField.md#attr-datasourcefieldcanedit) DataSourceFields, [DataSourceField.readOnlyEditorType](DataSourceField.md#attr-datasourcefieldreadonlyeditortype) will determine what [FormItemType](../reference.md#type-formitemtype) should be created for the field. Once created, a FormItem's type can not be changed. Setting [FormItem.canEdit](#attr-formitemcanedit) at runtime will simply change the appearance of the item to allow or disallow editing of the item.
+Developers should also be aware that the [FormItem.readOnlyDisplay](#attr-formitemreadonlydisplay) attribute is unrelated to the [DataSourceField.readOnlyEditorType](DataSourceField.md#attr-datasourcefieldreadonlyeditortype) attribute. When a DynamicForm is first bound to a dataSource, for [canEdit:false](DataSourceField.md#attr-datasourcefieldcanedit) DataSourceFields, [DataSourceField.readOnlyEditorType](DataSourceField.md#attr-datasourcefieldreadonlyeditortype) will determine what [FormItemType](../reference_2.md#type-formitemtype) should be created for the field. Once created, a FormItem's type can not be changed. Setting [FormItem.canEdit](#attr-formitemcanedit) at runtime will simply change the appearance of the item to allow or disallow editing of the item.
 
 ### Groups
 

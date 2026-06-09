@@ -145,17 +145,17 @@ This is the central API reference for the SmartClient framework.
         - [UnderlineTabSet](#class-underlinetabset)
         - [CardTabSet](#class-cardtabset)
         - [PillTabSet](#class-pilltabset)
-      - [EditPane](classes/EditPane.md)
       - [DetailViewer](classes/DetailViewer.md)
+      - [EditPane](classes/EditPane.md)
       - [StatefulCanvas](classes/StatefulCanvas.md)
         - [StretchImg](classes/StretchImg.md)
           - [StretchImgButton](classes/StretchImgButton.md)
             - [ImgTab](classes/ImgTab.md)
             - [MiniNavControl](#class-mininavcontrol)
-          - [Scrollbar](classes/Scrollbar.md)
           - [Splitbar](classes/Splitbar.md)
             - [LayoutResizeBar](classes/LayoutResizeBar.md)
             - [Snapbar](classes/Snapbar.md)
+          - [Scrollbar](classes/Scrollbar.md)
           - [Progressbar](classes/Progressbar.md)
           - [ScrollThumb](#class-scrollthumb)
         - [Button](classes/Button.md)
@@ -261,10 +261,10 @@ This is the central API reference for the SmartClient framework.
         - [ColorPickerItem](#class-colorpickeritem)
         - [InlineColorItem](#class-inlinecoloritem)
       - [LinkItem](classes/LinkItem.md)
+      - [AIAssistItem](#class-aiassistitem)
       - [FloatItem](#class-floatitem)
         - [DoubleItem](#class-doubleitem)
         - [InlineFloatItem](#class-inlinefloatitem)
-      - [AIAssistItem](#class-aiassistitem)
       - [IntegerItem](#class-integeritem)
         - [InlineIntegerItem](#class-inlineintegeritem)
       - [MinimalTextItem](#class-minimaltextitem)
@@ -325,9 +325,9 @@ This is the central API reference for the SmartClient framework.
       - [RadioItem](#class-radioitem)
     - [BooleanItem](#class-booleanitem)
   - [OperationBinding](classes/OperationBinding.md)
+  - [RPCManager](classes/RPCManager.md)
   - [ResultSet](classes/ResultSet.md)
     - [FilteredList](classes/FilteredList.md)
-  - [RPCManager](classes/RPCManager.md)
   - [Tree](classes/Tree.md)
     - [ResultTree](classes/ResultTree.md)
   - [ValuesManager](classes/ValuesManager.md)
@@ -338,8 +338,10 @@ This is the central API reference for the SmartClient framework.
     - [CoTProcess](classes/CoTProcess.md)
       - [AUN](classes/AUN.md)
       - [DSRequestBuilderProcess](classes/DSRequestBuilderProcess.md)
+      - [AIDelegator](classes/AIDelegator.md)
     - [Tour](classes/Tour.md)
       - [Tutorial](#class-tutorial)
+  - [Colors](classes/Colors.md)
   - [Page](classes/Page.md)
   - [SavedSearches](classes/SavedSearches.md)
   - [Validator](classes/Validator.md)
@@ -416,6 +418,7 @@ This is the central API reference for the SmartClient framework.
     - [StartTransactionTask](#class-starttransactiontask)
     - [SendTransactionTask](#class-sendtransactiontask)
   - [VoiceAssist](classes/VoiceAssist.md)
+  - [AI](classes/AI.md)
   - [Browser](classes/Browser.md)
   - [TabIndexManager](classes/TabIndexManager.md)
   - [Log](classes/Log.md)
@@ -425,7 +428,6 @@ This is the central API reference for the SmartClient framework.
   - [RPCResponse](classes/RPCResponse.md)
     - [DSResponse](classes/DSResponse.md)
   - [WebService](classes/WebService.md)
-  - [AI](classes/AI.md)
   - [MultiWindow](classes/MultiWindow.md)
   - [EditProxy](classes/EditProxy.md)
     - [CanvasEditProxy](#class-canvaseditproxy)
@@ -491,6 +493,7 @@ This is the central API reference for the SmartClient framework.
   - [CancellationController](classes/CancellationController.md)
   - [ReifyRemote](classes/ReifyRemote.md)
   - [MathFunction](classes/MathFunction.md)
+  - [AIEngine](classes/AIEngine.md)
   - [Variant](classes/Variant.md)
   - [SortSpecifierUtil](classes/SortSpecifierUtil.md)
   - [FontLoader](classes/FontLoader.md)
@@ -500,7 +503,6 @@ This is the central API reference for the SmartClient framework.
   - [TextSettings](classes/TextSettings.md)
     - [TextExportSettings](classes/TextExportSettings.md)
     - [TextImportSettings](classes/TextImportSettings.md)
-  - [AIEngine](classes/AIEngine.md)
   - [Comm](classes/Comm.md)
   - [SchemaSet](classes/SchemaSet.md)
   - [FieldPickerField](classes/FieldPickerField.md)
@@ -529,6 +531,7 @@ This is the central API reference for the SmartClient framework.
 - [Accessibility / Section 508 compliance](kb_topics/accessibility.md)
 - [Admin Console](kb_topics/adminConsole.md)
 - [Advanced Filtering](kb_topics/advancedFilter.md)
+- [AI Assist](kb_topics/aiAssist.md)
 - [AI Mocking](#kb-topic-ai-mocking)
 - [AIRetriesExhausted](kb_topics/AIRetriesExhausted.md)
 - [ancestry](#kb-topic-ancestry)
@@ -626,6 +629,7 @@ This is the central API reference for the SmartClient framework.
 - [Flag Abbreviations](#kb-topic-flag-abbreviations)
 - [Focus](kb_topics/focus.md)
 - [FormItem Styling](kb_topics/formItemStyling.md)
+- [FormItem classes for databound component fields](kb_topics/formItemTypeSelection.md)
 - [Form Layout](kb_topics/formLayout.md)
 - [Form Titles](kb_topics/formTitles.md)
 - [formulaFields](kb_topics/formulaFields.md)
@@ -1133,6 +1137,35 @@ Updates the component's `contents`.
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | newValue | [String](#type-string) | false | — | the new component contents |
+
+---
+## Class: AIAssistItem
+
+*Inherits from:* [TextItem](classes/TextItem.md#class-textitem)
+
+### Description
+FormItem that can be placed anywhere in a form to allow users to make AI requests. Typing a request and pressing Enter (or clicking the AI icon) routes the request through [AI.delegate](classes/AI.md#classmethod-aidelegate), which uses the [AIDelegator](classes/AIDelegator.md#class-aidelegator) to choose which registered [AI service](#type-aiservicedescriptor) should handle it. See the [AI Assist overview](kb_topics/aiAssist.md#kb-topic-ai-assist) for the registration and routing model.
+
+An optional [rootCanvas](#attr-aiassistitemrootcanvas) limits the UI context available to the AI.
+
+### See Also
+
+- [AI.delegate](classes/AI.md#classmethod-aidelegate)
+- [aiAssist](kb_topics/aiAssist.md#kb-topic-ai-assist)
+
+---
+## Attr: AIAssistItem.rootCanvas
+
+### Description
+Limits the UI context available to AI services when considering the user's request.
+
+By default, the AI has access to the entire UI.
+
+### Groups
+
+- ai
+
+**Flags**: IRW
 
 ---
 ## Class: PrintWindow
@@ -2596,28 +2629,6 @@ A simple [Button](classes/Button.md#class-button) subclass with a de-emphasized 
 Button used to display a hierarchical Menu group for representing / selecting tree data. This is derived from the [MenuButton](classes/MenuButton.md#class-menubutton) and is [StretchImgButton](classes/StretchImgButton.md#class-stretchimgbutton) based.
 
 _**Important Note:** this class should not be used directly - it is exposed purely for [i18n reasons.](kb_topics/i18nMessages.md#kb-topic-i18n-messages)_
-
----
-## Class: AIAssistItem
-
-*Inherits from:* [TextItem](classes/TextItem.md#class-textitem)
-
-### Description
-FormItem that can be bound to a [rootCanvas](classes/Canvas.md#class-canvas) and allows a user to ask the SmartClient AI system about that part of the UI, without directly showing the AI Assistant window.
-
----
-## Attr: AIAssistItem.rootCanvas
-
-### Description
-Limits the UI available to the AI when it considers your questions and responds.
-
-By default, the AI has access to the entire UI.
-
-### Groups
-
-- ai
-
-**Flags**: IRW
 
 ---
 ## Class: NativeCheckboxItem
@@ -5970,19 +5981,6 @@ The "‰" per mille symbol is specified as "\\u2030" in Javascript code; in XML 
 - [Time.toShortTime](classes/Time.md#classmethod-timetoshorttime)
 
 ---
-## Type: FormattingContext
-
-### Description
-The context for which a data-value is being formatted.
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| static | for static display in the chart body |
-| hover | for transient display in a hover |
-
----
 ## Type: FormItemElementType
 
 ### Description
@@ -6001,38 +5999,6 @@ HTML elements that make up a complete FormItem (note, not all FormItems use all 
 ### See Also
 
 - [FormItem.getCustomState](classes/FormItem.md#method-formitemgetcustomstate)
-
----
-## Type: FormItemType
-
-### Description
-DynamicForms automatically choose the FormItem type for a field based on the `type` property of the field. The table below describes the default FormItem chosen for various values of the `type` property.
-
-You can also set [field.editorType](classes/FormItem.md#attr-formitemeditortype) to the classname of a [FormItem](classes/FormItem.md#class-formitem) to override this default mapping. You can alternatively override [DynamicForm.getEditorType](classes/DynamicForm.md#method-dynamicformgeteditortype) to create a form with different rules for which FormItems are chosen.
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| "text" | Rendered as a [TextItem](classes/TextItem.md#class-textitem), unless the length of the field (as specified by [DataSourceField.length](classes/DataSourceField.md#attr-datasourcefieldlength) attribute) is larger than the value specified by [DynamicForm.longTextEditorThreshold](classes/DynamicForm.md#attr-dynamicformlongtexteditorthreshold), a [TextAreaItem](classes/TextAreaItem.md#class-textareaitem) is shown. |
-| "boolean" | Rendered as a [CheckboxItem](classes/CheckboxItem.md#class-checkboxitem) |
-| "integer" | Rendered as an [IntegerItem](#class-integeritem), a trivial subclass of [TextItem](classes/TextItem.md#class-textitem), by default. Consider setting editorType:[SpinnerItem](classes/SpinnerItem.md#class-spinneritem). |
-| "float" | Rendered as a [FloatItem](#class-floatitem), a trivial subclass of [TextItem](classes/TextItem.md#class-textitem), by default. Consider setting editorType:[SpinnerItem](classes/SpinnerItem.md#class-spinneritem). |
-| "date" | Rendered as a [DateItem](classes/DateItem.md#class-dateitem) |
-| "time" | Rendered as a [TimeItem](classes/TimeItem.md#class-timeitem) |
-| "datetime" | Rendered as a [DateTimeItem](classes/DateTimeItem.md#class-datetimeitem) |
-| "enum" | Rendered as a [SelectItem](classes/SelectItem.md#class-selectitem). Also true for any field that specifies a [FormItem.valueMap](classes/FormItem.md#attr-formitemvaluemap). Consider setting editorType:[ComboBoxItem](classes/ComboBoxItem.md#class-comboboxitem). |
-| "sequence" | Same as `text` |
-| "link" | If [DataSourceField.canEdit](classes/DataSourceField.md#attr-datasourcefieldcanedit)`:false` is set on the field, the value is rendered as a [LinkItem](classes/LinkItem.md#class-linkitem). Otherwise the field is rendered as a [TextItem](classes/TextItem.md#class-textitem). |
-| "image" | If the field is editable, rendered as a [TextItem](classes/TextItem.md#class-textitem) to edit the URL or partial URL  
-If [non editable](classes/FormItem.md#attr-formitemcanedit), and [readOnlyDisplay](classes/DynamicForm.md#attr-dynamicformreadonlydisplay) is "static", an image will be rendered out, deriving the URL from the field value combined with [FormItem.imageURLPrefix](classes/FormItem.md#attr-formitemimageurlprefix) and [FormItem.imageURLSuffix](classes/FormItem.md#attr-formitemimageurlsuffix) if present. This behavior may be suppressed via [DynamicForm.showImageAsURL](classes/DynamicForm.md#attr-dynamicformshowimageasurl), in which case the value (URL or partial URL) will be rendered out as static text. |
-| "imageFile" | Rendered as a [FileItem](classes/FileItem.md#class-fileitem), or a [ViewFileItem](#class-viewfileitem) if not editable |
-| "binary" | Rendered as a [FileItem](classes/FileItem.md#class-fileitem), or a [ViewFileItem](#class-viewfileitem) if not editable |
-
-### See Also
-
-- [FormItem.type](classes/FormItem.md#attr-formitemtype)
-- [FieldType](reference_2.md#type-fieldtype)
 
 ---
 ## Type: FormMethod
@@ -8237,6 +8203,20 @@ An individual message in the list of [AIRequest.messages](classes/AIRequest.md#a
 Represents a request to AI for a response.
 
 ---
+## Object: AIServiceDescriptor
+
+### Description
+Descriptor for an AI service that can be registered with [AI.registerAIService](classes/AI.md#classmethod-airegisteraiservice) (globally) or [Canvas.registerAIService](classes/Canvas.md#method-canvasregisteraiservice) (component-scoped) so that the [AIDelegator](classes/AIDelegator.md#class-aidelegator) can choose to invoke it on behalf of the user.
+
+See the [AI Assist overview](kb_topics/aiAssist.md#kb-topic-ai-assist) for the full registration and routing model.
+
+### See Also
+
+- [AI.registerAIService](classes/AI.md#classmethod-airegisteraiservice)
+- [Canvas.registerAIService](classes/Canvas.md#method-canvasregisteraiservice)
+- [AI.delegate](classes/AI.md#classmethod-aidelegate)
+
+---
 ## Object: AnimateShowEffect
 
 ### Description
@@ -9039,18 +9019,6 @@ And in XML:
  </TabSet>
  
 ```
-
----
-## Object: TaskResultModifications
-
-### Description
-Result object for [Process.beforeTaskCommit](classes/Process.md#method-processbeforetaskcommit).
-
----
-## Object: TileRecord
-
-### Description
-A TileRecord is a JavaScript Object whose properties contain values for each TileField. A TileRecord may have additional properties which affect the record's appearance or behavior, or which hold data for use by custom logic or other, related components.
 
 ---
 ## Object: TreeGridField

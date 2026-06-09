@@ -29,6 +29,8 @@ Criteria in the filter-row reflects current public criteria that [can be edited]
 
 Developers may specify a field's [filterEditor-type](../classes/ListGridField.md#attr-listgridfieldfiltereditortype), and this can be a custom [FormItem](../classes/FormItem.md#class-formitem) class that uses [getCriterion()](../classes/FormItem.md#method-formitemgetcriterion), [setCriterion()](../classes/FormItem.md#method-formitemsetcriterion) and [canEditCriterion()](../classes/FormItem.md#method-formitemcaneditcriterion) to manage the criteria it works with.
 
+Note that the default editor type for each field in the filter row is determined by [ListGrid.getFilterEditorType](../classes/ListGrid_2.md#method-listgridgetfiltereditortype). See
+
 For more complicated cases or more control, developers can implement [ListGrid.filterEditorSubmit](../classes/ListGrid_2.md#method-listgridfiltereditorsubmit).
 
 Criteria from the filter-row is combined with other sources of criteria when data is fetched.

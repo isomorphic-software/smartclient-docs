@@ -57,7 +57,7 @@ The SmartClient Developer Console is a powerful debugging tool that allows devel
 
 Reify enables visual, drag-and-drop application construction that generates SmartClient component trees from declarative screen definitions. Screens loaded from the server (via [RPCManager.loadScreen](../classes/RPCManager.md#classmethod-rpcmanagerloadscreen) and [RPCManager.createScreen](../classes/RPCManager.md#classmethod-rpcmanagercreatescreen)) are instantiated by evaluating their JavaScript representation at runtime. CSP restrictions would make it impossible to load or create screens dynamically, defeating the purpose of the tool.
 
-**[AI Integration](integratingAI.md#kb-topic-integrating-ai-technology) and [AI-Generated Components](#class-aibuilduioperation)**
+**[AI Integration](integratingAI.md#kb-topic-integrating-ai-technology) and [AI-Generated Components](#aibuilduioperation)**
 
 SmartClient's AI features allow natural-language operations like filtering grids, adding calculated columns, and generating entire data-bound components from user descriptions. The AI engine produces JavaScript component definitions that must be dynamically evaluated to create live UI. Chain-of-Thought prompt templates also use dynamic expression evaluation for variable interpolation. These features are fundamentally incompatible with CSP `eval` restrictions.
 

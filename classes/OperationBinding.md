@@ -1568,6 +1568,58 @@ Note, this property can only be used to narrow the list of fields in the union, 
 **Flags**: IR
 
 ---
+## Attr: OperationBinding.requiresWhen
+
+### Description
+[ServerDynamicCriteria](../reference_2.md#type-serverdynamiccriteria) evaluated server-side to determine whether the current operation is allowed. Unlike [OperationBinding.requiresRole](#attr-operationbindingrequiresrole) (which checks the user's static roles) and [OperationBinding.requires](#attr-operationbindingrequires) (which evaluates a Velocity expression), `requiresWhen` can reference record field values, authentication context, and related records.
+
+When both `requiresRole` and `requiresWhen` are set, both must pass — `requiresRole` is evaluated first (cheap static check), and `requiresWhen` only runs if the role check passes.
+
+**Behavior by operation type:**
+
+*   **fetch**: the criteria are merged into the request as an additional filter — non-matching rows are silently excluded from the response.
+*   **add**: the criteria are evaluated against the submitted record values. If they don't match, the add is denied.
+*   **update / remove** (single-record): the criteria are evaluated against the _existing_ record (pre-modification state, fetched from the database — client-sent oldValues are not trusted for security). If they don't match, the operation is denied.
+*   **update / remove** (with [OperationBinding.allowMultiUpdate](#attr-operationbindingallowmultiupdate)): the criteria are merged into the operation's criteria as an additional filter. Only rows matching the `requiresWhen` criteria are affected; non-matching rows are silently skipped. This prevents a multi-update from bypassing per-record access control.
+
+When a single-record operation is denied, the server returns a generic authorization-failure message that does not reveal which criteria failed or what field values were checked.
+
+**Example:** allow updates only when the record is not locked:
+
+```
+ <operationBinding operationType="update">
+   <requiresWhen fieldName="status" operator="notEqual"
+                  value="locked"/>
+ </operationBinding>
+ 
+```
+**Example:** only users with the "editor" role can update records whose related Order is still in process:
+```
+ <operationBinding operationType="update">
+   <requiresWhen operator="and">
+     <criteria fieldName="auth.roles" operator="contains"
+               value="editor"/>
+     <criteria fieldName="Order.status" operator="equals"
+               value="In Process"/>
+   </requiresWhen>
+ </operationBinding>
+ 
+```
+
+### Groups
+
+- auth
+- declarativeSecurity
+
+### See Also
+
+- [ServerDynamicCriteria](../reference_2.md#type-serverdynamiccriteria)
+- [OperationBinding.requiresRole](#attr-operationbindingrequiresrole)
+- [OperationBinding.requires](#attr-operationbindingrequires)
+
+**Flags**: IR
+
+---
 ## Attr: OperationBinding.useSubselectForRowCount
 
 ### Description

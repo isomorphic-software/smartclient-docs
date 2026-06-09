@@ -10,6 +10,26 @@
 Provides access to a particular generative AI model.
 
 ---
+## Attr: AIEngine.supportsTemperature
+
+### Description
+Whether this model supports [temperature](#attr-aienginetemperature). If this is false, any `temperature` configured at engine or reuqest level will be ignored
+
+**Flags**: IR
+
+---
+## Attr: AIEngine.temperature
+
+### Description
+Optional temperature of the model. This is a number between 0 and 1 denoting how much variation to receive in results.
+
+### See Also
+
+- [AIEngine.supportsTemperature](#attr-aienginesupportstemperature)
+
+**Flags**: IR
+
+---
 ## Attr: AIEngine.name
 
 ### Description
@@ -42,6 +62,28 @@ Whether this AI engine can handle vision requests, or requests where one or more
 ### Returns
 
 `[boolean](../reference.md#type-boolean)` — `true` if this AI engine can handle vision requests; `false` otherwise.
+
+---
+## Method: AIEngine.isAPIKeyError
+
+### Description
+Returns `true` if the given raw AI response represents an API key authentication failure from the provider (e.g. invalid key, missing key, or permission denied). The base implementation recognises the OpenAI-compatible error shape used by OpenAI and most OpenAI-API-compatible providers.
+
+Override this method in [AIEngine](#class-aiengine) subclasses to add provider-specific recognition logic.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| rawResponse | [String](#type-string)|[Object](../reference.md#type-object) | false | — | The raw provider error response, as received by [getErrorResponseInfo](#geterrorresponseinfo). |
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — `true` if this is an API key / authentication error.
+
+### See Also
+
+- [getErrorResponseInfo](#geterrorresponseinfo)
 
 ---
 ## Method: AIEngine.couldSupportRequest

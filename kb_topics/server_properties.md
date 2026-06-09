@@ -11,7 +11,7 @@ The `server.properties` file is a configuration file read by the SmartClient ser
 
 Note that this is a standard Java Properties file, except it allows variable substitution from other properties defined earlier in the file.
 
-It's loaded from the `CLASSPATH`, so it can be anywhere in the `CLASSPATH`, but is typically either in the projects java "src" directory or in `WEB-INF/classes`.
+It's loaded from the `CLASSPATH`, so it can be anywhere in the `CLASSPATH`, but is typically either in the project's java "src" directory or in `WEB-INF/classes`. For a Spring Boot project, it will be in the `src/main/resources/` directory
 
 Server side code can access and modify the properties specified in this file via the `com.isomorphic.base.Config` class.
 

@@ -15,28 +15,11 @@ AI technology is woven into the SmartClient Framework, not only at a base level,
 *   Build a custom [DataBoundComponent](../reference.md#interface-databoundcomponent) using available dataSources according to the user's description of what they would like to see.
 
 #### The `AIEngine` class
-Communication with AI services is performed by instances of the [AIEngine](../classes/AIEngine.md#class-aiengine) class. The following engines are built-in and don't require registration. Just put the appropriate API key in your [server configuration file](server_properties.md#kb-topic-serverproperties-file).
+Communication with AI services is performed by instances of the [AIEngine](../classes/AIEngine.md#class-aiengine) class. Several engines are built-in and don't require registration. Call [AI.getSupportedEngineIds](../classes/AI.md#classmethod-aigetsupportedengineids) to retrieve the current list of built-in engine IDs at runtime, or [AI.getSupportedEngineData](../classes/AI.md#classmethod-aigetsupportedenginedata) for full engine configuration including each engine's `apiKeyProperty`.
 
-Note that this engine does not support vision requests.
+Each provider requires a developer API key - not the login credentials or OAuth token associated with a paid consumer account such as ChatGPT Plus or Claude Pro. Consult your provider's developer documentation to obtain a separate API key, then set it in your [server configuration file](server_properties.md#kb-topic-serverproperties-file) using the property name given by the `apiKeyProperty` field returned by [AI.getSupportedEngineData](../classes/AI.md#classmethod-aigetsupportedenginedata).
 
-| Engine ID | Provider | Name | Additional Installation Notes |
-|---|---|---|---|
-| "gpt-3.5-turbo" | OpenAI | GPT-3.5 Turbo | You must obtain an API key having access to the model(s) from: https://platform.openai.com/api-keysThen, the value of server configuration property OpenAI.api.key must be set to your API key.The o-series models may require higher tier API access. |
-| "gpt-4" | OpenAI | GPT-4 |
-| "gpt-4-turbo" | OpenAI | GPT-4 Turbo |
-| "gpt-4o" | OpenAI | GPT-4o |
-| "gpt-4o-mini" | OpenAI | GPT-4o mini |
-| "gpt-4.1" | OpenAI | GPT-4.1 |
-| "gpt-4.1-mini" | OpenAI | GPT-4.1 mini |
-| "gpt-4.1-nano" | OpenAI | GPT-4.1 nano |
-| "o1" | OpenAI | o1 |
-| "o3" | OpenAI | o3 |
-| "o3-mini" | OpenAI | o3-mini |
-| "o4-mini" | OpenAI | o4-mini |
-| "gemini-pro" | Google | Gemini Pro & Gemini Pro Vision | You must obtain an API key having access to these models from: https://makersuite.google.com/app/apikey?authuser=1Then, the value of server configuration property Gemini.api.key must be set to your API key. |
-| "bedrock" | AWS Bedrock | Many different models are available, see the "AWS Bedrock" section below | You must obtain an API key from here (replacing $REGION with your region, eg "us-east-2"): https://$REGION.console.aws.amazon.com/bedrock/home?region=$REGION#/api-keys?tab=long-term">Then you need to request access to the model(s) you wish to use here (again, replacing $REGION): https://$REGION.console.aws.amazon.com/bedrock/home?region=$REGION#/modelaccess Then, set server configuration property Bedrock.api.key to your API key (ie, in your server.properties file) |
-
-Note: The AI services corresponding to the IDs in AntiqueWhite do not support vision requests.
+Note that some built-in engines do not support vision requests. Call [AIEngine.canSupportVisionRequests](../classes/AIEngine.md#method-aienginecansupportvisionrequests) on a retrieved engine instance to check.
 
 #### Enabling AI
 AI is disabled by default. To enable AI within your application, just set [AI.defaultEngineId](../classes/AI.md#classattr-aidefaultengineid) to a different engine ID if you don't like the default, and then set [AI.disabled](../classes/AI.md#classattr-aidisabled) to `false`.
@@ -47,9 +30,9 @@ Here is sample SmartClient code that enables AI using GPT-4.1:
  isc.AI.defaultEngineId = "gpt-4.1";
  isc.AI.disabled = false;
 ```
-**Note:** If your application will need to ask AI to analyze images, you'll need an `AIEngine` that supports vision requests. Check the table above to see which built-in engines support vision, or you can register your own (covered below).
+**Note:** If your application will need to ask AI to analyze images, you'll need an `AIEngine` that supports vision requests. Call [AIEngine.canSupportVisionRequests](../classes/AIEngine.md#method-aienginecansupportvisionrequests) on a retrieved engine instance to check, or you can register your own engine (covered below).
 #### AWS Bedrock
-Amazon Bedrock is not a model in itself but a managed service that provides access to multiple foundation models through a single AWS API. Instead of interacting directly with a specific AI vendor (as you would with OpenAI or Gemini), you connect to Bedrock and select which underlying model to use; Bedrock supports many such models, including Anthropic Claude, Meta Llama, Amazon's own Titan engine, Deepseek, and others).
+Amazon Bedrock is not a model in itself but a managed service that provides access to multiple foundation models through a single AWS API. Instead of interacting directly with a specific AI vendor (as you would with OpenAI, Anthropic or Gemini), you connect to Bedrock and select which underlying model to use; Bedrock supports many such models, including Mistral, Meta Llama, Amazon's own Titan and Nova engines, Deepseek, and others (including OpenAI GPT and Anthropic Claude, which you can also connect to directly).
 
 Therefore, Bedrock is an intermediary layer rather than the actual model provider. The most important thing about Bedrock integration into SmartClient is that it gives you access to a wide selection of models from numerous different AI providers, without the need for native support for all those different providers. It also means that billing is done through your AWS account rather than directly with the company that is providing the underlying AI service.
 

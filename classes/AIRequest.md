@@ -59,7 +59,7 @@ When this engine does not support multiple messages, all of the messages of the 
 ## Attr: AIRequest.temperature
 
 ### Description
-A number from 0 to 1 representing how much variability or creativity in responses AI should generate. 0 is little-to-no variation. 1 is high variation.
+A number from 0 to 1 representing how much variability or creativity in responses AI should generate. 0 is little-to-no variation. 1 is high variation. Note, not all models support the concept of temperature; if the [AIEngine](AIEngine.md#class-aiengine) you are using has [supportsTemperature](#supportstemperature) set to `false`, and temperature you set on the `AIRequest` will be ignored
 
 **Flags**: IR
 

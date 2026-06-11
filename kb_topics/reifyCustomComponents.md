@@ -49,7 +49,7 @@ When you provide [custom schema](componentSchema.md#kb-topic-component-schema) f
 
 Newly declared fields will appear in the Component Editor in the "Other" category at the bottom by default. You can create your own category by simply setting field.group to the name of a new group and using this on multiple custom fields.
 
-The ComponentEditor will pick a FormItem for a custom field by the [same rules](../reference_2.md#type-formitemtype) used for ordinary databinding, including the ability to set field.editorType to use a custom FormItem.
+The ComponentEditor will pick a FormItem for a custom field by the [same rules](../reference.md#type-formitemtype) used for ordinary databinding, including the ability to set field.editorType to use a custom FormItem.
 
 When properties are changed by the user, Reify will look for an appropriate "setter function" for the custom field, for example, for a field named "myProp", Reify will look for "setMyProp". The target component will also be [redrawn](../classes/Canvas.md#method-canvasredraw).
 

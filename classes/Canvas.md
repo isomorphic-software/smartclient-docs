@@ -3552,7 +3552,7 @@ See [Canvas.canAdaptWidth](#attr-canvascanadaptwidth).
 ### Description
 Array of property names (each ending in `"Style"`) whose values should be validated against loaded CSS on first use. If a CSS class name set by a listed property does not exist in any stylesheet, the property reverts to the superclass value.
 
-This is primarily used by skin variant subclasses (see [skinVariant](#groupdef-skinvariant)) to gracefully fall back to default styling in skins that don't define variant CSS. The validation occurs once per page load per class, on the first call to `create()`.
+This is primarily used by skin variant subclasses (see [skinVariant](../kb_topics/skinVariant.md#kb-topic-skin-variants)) to gracefully fall back to default styling in skins that don't define variant CSS. The validation occurs once per page load per class, on the first call to `create()`.
 
 **Example:** a PillButton variant declares `autoRevertStyles: ["baseStyle"]`. If the current skin does not define a `.pillButton` CSS class, the PillButton's baseStyle reverts to the standard Button baseStyle for that skin.
 

@@ -354,7 +354,7 @@ Within `dynamicString`, any evaluated JavaScript expressions have access to all 
 ## ClassMethod: AI.getSupportedEngineIds
 
 ### Description
-Returns the engine IDs of all built-in [AI engines](AIEngine.md#class-aiengine) — those available without registration, provided the appropriate API key is set in [server.properties](#groupdef-server_properties).
+Returns the engine IDs of all built-in [AI engines](AIEngine.md#class-aiengine) — those available without registration, provided the appropriate API key is set in [server.properties](../kb_topics/server_properties.md#kb-topic-serverproperties-file).
 
 Note that custom engines added via [AI.registerEngine](#classmethod-airegisterengine) are not included.
 

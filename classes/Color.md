@@ -186,6 +186,26 @@ Returns true if this color is perceptually dark (oklch L < 0.6).
 - [Colors.isDark](Colors.md#classmethod-colorsisdark)
 
 ---
+## Method: Color.brighten
+
+### Description
+Returns a brighter, more vivid Color by boosting both lightness and chroma together.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| amount | [double](../reference.md#type-double) | false | — | percentage to brighten, 0-100 |
+
+### Returns
+
+`[Color](#type-color)` — new Color object
+
+### See Also
+
+- [Colors.brighten](Colors.md#classmethod-colorsbrighten)
+
+---
 ## Method: Color.desaturate
 
 ### Description
@@ -204,6 +224,26 @@ Returns a new Color with chroma decreased (oklch C decreased).
 ### See Also
 
 - [Colors.desaturate](Colors.md#classmethod-colorsdesaturate)
+
+---
+## Method: Color.spin
+
+### Description
+Returns a new Color with hue rotated by the given number of degrees (oklch h).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| degrees | [double](../reference.md#type-double) | false | — | degrees to rotate, positive or negative |
+
+### Returns
+
+`[Color](#type-color)` — new Color object
+
+### See Also
+
+- [Colors.spin](Colors.md#classmethod-colorsspin)
 
 ---
 ## Method: Color.setAlpha
@@ -282,6 +322,26 @@ Returns the approximate perceptual contrast ratio between this color and another
 - [Colors.contrast](Colors.md#classmethod-colorscontrast)
 
 ---
+## Method: Color.distance
+
+### Description
+Returns the perceptual distance between this color and another in oklab space.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| other | [String](#type-string)|[Color](#type-color) | false | — | color to compare against |
+
+### Returns
+
+`[Double](../reference.md#type-double)` — perceptual distance (>= 0), or null if other is invalid
+
+### See Also
+
+- [Colors.distance](Colors.md#classmethod-colorsdistance)
+
+---
 ## Method: Color.isValid
 
 ### Description
@@ -290,6 +350,26 @@ Returns true if this Color was successfully parsed from valid input. Invalid Col
 ### Returns
 
 `[boolean](../reference.md#type-boolean)` — true if the color was parsed successfully
+
+---
+## Method: Color.dim
+
+### Description
+Returns a dimmer, more muted Color by reducing both lightness and chroma together.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| amount | [double](../reference.md#type-double) | false | — | percentage to dim, 0-100 |
+
+### Returns
+
+`[Color](#type-color)` — new Color object
+
+### See Also
+
+- [Colors.dim](Colors.md#classmethod-colorsdim)
 
 ---
 ## Method: Color.darken

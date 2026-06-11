@@ -7,43 +7,11 @@
 ## Class: Colors
 
 ### Description
-Utility class for color format conversion, validation, and manipulation. Accepts any valid CSS color specification (hex, rgb/rgba, hsl/hsla, oklch, named colors, "transparent") and converts between formats.
+Utility class for color format conversion, validation, and manipulation. Accepts any valid CSS color specification (hex, rgb/rgba, hsl/hsla, oklch, named colors, "transparent") and converts between formats. See the [Color Overview](../kb_topics/colorOverview.md#kb-topic-color-overview) for a detailed guide to color spaces, formats, manipulation, CSS color relationships, and palettes.
 
-**Core conversion**
+The core entry points are [getColor()](#classmethod-colorsgetcolor) to parse any color into a [Color](../reference_2.md#object-color) object (with RGB, HSL, and oklch properties pre-computed), [getString()](#classmethod-colorsgetstring) to convert back to a CSS string, and [getValues()](#classmethod-colorsgetvalues) for raw numeric components in a single color space. [adjust()](#classmethod-colorsadjust) is the general-purpose manipulation method - all convenience methods like [lighten()](#classmethod-colorslighten), [saturate()](#classmethod-colorssaturate), etc. delegate to it.
 
-*   [isColor(color, \[format\])](#classmethod-colorsiscolor) - validate a color string, optionally restricting to a specific format
-*   [getColor(color)](#classmethod-colorsgetcolor) - convert to a structured object
-*   [getString(color, format)](#classmethod-colorsgetstring) - convert to a CSS string
-
-**Inspection and alpha**
-
-*   [getFormat(color)](#classmethod-colorsgetformat) - detect the format of a color string
-*   [getAlpha(color)](#classmethod-colorsgetalpha) - extract the alpha (opacity) component
-*   [setAlpha(color, alpha)](#classmethod-colorssetalpha) - return a new color with a different alpha
-*   [isDark(color)](#classmethod-colorsisdark) - perceptual light-vs-dark test (oklch-based)
-*   [contrast(color1, color2)](#classmethod-colorscontrast) - approximate perceptual contrast ratio
-*   [equals(color1, color2)](#classmethod-colorsequals) - same-color comparison across formats
-*   [flatten(color, \[background\], \[outputFormat\])](#classmethod-colorsflatten) - composite semi-transparent color to opaque
-
-**Manipulation** (all operate in oklch for perceptual uniformity)
-
-*   [adjust(color, deltas)](#classmethod-colorsadjust) - general-purpose multi-axis adjustment
-*   [lighten()](#classmethod-colorslighten) / [darken()](#classmethod-colorsdarken) - lightness
-*   [saturate()](#classmethod-colorssaturate) / [desaturate()](#classmethod-colorsdesaturate) - chroma
-*   [complement()](#classmethod-colorscomplement) - hue rotation by 180 degrees
-
-**Palette generation**
-
-*   [colorScale()](#classmethod-colorscolorscale) - multi-step gradient between two colors
-*   [shades()](#classmethod-colorsshades) - lightness ramp from a single color
-*   [mix()](#classmethod-colorsmix) - blend two colors at a given ratio
-*   [mostReadable()](#classmethod-colorsmostreadable) - pick the highest-contrast candidate
-
-**Color harmony**
-
-*   [triad()](#classmethod-colorstriad) / [tetrad()](#classmethod-colorstetrad) - 3 or 4 evenly-spaced hues
-*   [splitComplement()](#classmethod-colorssplitcomplement) - flanking the complement
-*   [analogous()](#classmethod-colorsanalogous) - nearby hues
+See the [Color Overview](../kb_topics/colorOverview.md#kb-topic-color-overview) for a full guide organized by topic: [conversion](#classmethod-colorsgetcolor), [inspection](#classmethod-colorsisdark), [manipulation](#classmethod-colorsadjust) (including [alpha compositing](#classmethod-colorsflatten)), [palettes](#classmethod-colorscolorscale) and [harmony](#classmethod-colorstriad), [theme generation](#classmethod-colorspalette), and [CSS color relationships](#classmethod-colorsresolvecss).
 
 ---
 ## ClassAttr: Colors.colorNames
@@ -188,6 +156,47 @@ Supported target formats:
 ### Returns
 
 `[String](#type-string)` — CSS color string in the target format, or null
+
+---
+## ClassMethod: Colors.resolveCSS
+
+### Description
+Resolves any CSS color expression to a flat [Color](../reference_2.md#object-color) by evaluating it through the browser's CSS engine. Handles `var()` references, `color-mix()`, and any other CSS color constructs supported by the current browser.
+
+[Colors.getColor](#classmethod-colorsgetcolor) automatically delegates to this method for expressions containing `var()` or `color-mix()`, so most callers never need to call `resolveCSS()` directly. The main reason to use it explicitly is when you need to pass an `element` context for inherited CSS custom properties:
+
+```
+     // getColor() handles var() automatically:
+     var c = isc.Colors.getColor("var(--isc-button-hover)");
+
+     // Use resolveCSS() when you need element-scoped custom properties:
+     var c = isc.Colors.resolveCSS("var(--panel-bg)", someElement);
+ 
+```
+
+Internally, a scratch DOM element's `color` style is set to the expression and `getComputedStyle()` reads back the browser-resolved value. If an `element` is provided, the scratch element is temporarily appended as its child, allowing inherited CSS custom properties to resolve correctly.
+
+Returns an invalid Color (with [isValid()](Color.md#method-colorisvalid) false) if the expression is not a valid CSS color in the current browser, or if no DOM is available (e.g. server-side).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| expr | [String](#type-string) | false | — | any CSS color expression - hex, rgb(), hsl(), oklch(), color-mix(), var() references, RCS expressions, or any combination the browser supports |
+| element | [Element](#type-element) | true | — | optional DOM element to use as the resolution context; if provided, CSS custom properties inherited by this element will be available for `var()` resolution |
+
+### Returns
+
+`[Color](#type-color)` — resolved Color object, or an invalid Color if the expression could not be resolved
+
+### Groups
+
+- colorOverview
+
+### See Also
+
+- [Colors.getColor](#classmethod-colorsgetcolor)
+- [Colors.parseRelationship](#classmethod-colorsparserelationship)
 
 ---
 ## ClassMethod: Colors.darken
@@ -365,6 +374,56 @@ If the input color is already fully opaque (alpha = 1), it is returned unchanged
 `[String](#type-string)` — opaque CSS color string, or null if the input is not a valid color
 
 ---
+## ClassMethod: Colors.parseRelationship
+
+### Description
+Extracts structural information from a CSS Relative Color Syntax (RCS) expression - the origin reference, color space, and per-channel modifications - without evaluating it. This is pure string parsing: no DOM access and no color resolution. It works with any origin, including `var()` references (which [Colors.getColor](#classmethod-colorsgetcolor) would resolve via the DOM - parseRelationship preserves the raw reference for structural inspection).
+
+For example, a skin config stores `oklch(from var(--isc-accent) calc(l + 0.15) c h)` for a hover color. `parseRelationship()` extracts the structure so you can see what is being derived from what, without needing to resolve the colors:
+
+```
+     var rcs = "oklch(from var(--isc-accent) calc(l + 0.15) c h)";
+     var info = isc.Colors.parseRelationship(rcs);
+     info.origin      // "var(--isc-accent)" - the base color reference
+     info.space        // "oklch"
+     info.deltas       // { l: 0.15 } - 15% lighter, chroma and hue unchanged
+     info.rawChannels  // ["calc(l + 0.15)", "c", "h"]
+
+     // To actually see the resolved color, use resolveCSS() on the origin:
+     var baseColor = isc.Colors.resolveCSS(info.origin);
+ 
+```
+
+The returned object describes the expression's structure:
+
+*   **origin** - the raw origin string as it appears in the expression (e.g. `"var(--isc-accent)"`, `"#ff0000"`). If the origin is a `var()` reference, the caller must use [Colors.resolveCSS](#classmethod-colorsresolvecss) to resolve it to an actual color - [Colors.getColor](#classmethod-colorsgetcolor) cannot resolve `var()` references.
+*   **space** - the color space: `"rgb"`, `"hsl"`, or `"oklch"`
+*   **deltas** - an object mapping channel names to their additive delta (only channels that differ from identity). For example, `{l: 0.15}` means lightness is shifted by +0.15 while other channels pass through unchanged. Channels with complex expressions (multiplication, clamping via max/min) are omitted from deltas but present in rawChannels.
+*   **rawChannels** - an array of three raw channel expression strings in CSS order, useful for complex expressions that cannot be reduced to a simple delta
+*   **alpha** - the alpha value (1.0 if not specified)
+
+Returns null if the expression is not valid RCS syntax (plain hex, rgb(), named colors, and `color-mix()` are not RCS and will return null).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| rcsExpr | [String](#type-string) | false | — | a CSS RCS expression, e.g. `"oklch(from var(--x) calc(l + 0.15) c h)"` |
+
+### Returns
+
+`[Object](../reference.md#type-object)` — structured descriptor, or null if not valid RCS
+
+### Groups
+
+- colorOverview
+
+### See Also
+
+- [Colors.resolveCSS](#classmethod-colorsresolvecss)
+- [Colors.generateCSS](#classmethod-colorsgeneratecss)
+
+---
 ## ClassMethod: Colors.getFormat
 
 ### Description
@@ -384,7 +443,7 @@ Returns the [ColorFormat](../reference_2.md#type-colorformat) of the given color
 ## ClassMethod: Colors.isColor
 
 ### Description
-Returns true if the given value is a valid CSS color specification. Accepts any format: hex (#RGB, #RRGGBB, #RRGGBBAA), rgb(), rgba(), hsl(), hsla(), oklch(), named colors, and "transparent".
+Returns true if the given value is a valid CSS color specification. Accepts any format: hex (#RGB, #RRGGBB, #RRGGBBAA), rgb(), rgba(), hsl(), hsla(), oklch(), named colors, "transparent", CSS Relative Color Syntax expressions, and `var()` or `color-mix()` expressions (resolved via the browser's CSS engine when a DOM is available; returns false server-side).
 
 If `format` is specified, the value must be parseable in that particular format (or be "transparent", which is always valid).
 
@@ -451,12 +510,60 @@ Returns a dimmer, less vivid version of the given color — the inverse of [brig
 - [Colors.adjust](#classmethod-colorsadjust)
 
 ---
+## ClassMethod: Colors.generateCSS
+
+### Description
+Converts an oklch relationship descriptor (as returned by [Colors.describeRelationship](#classmethod-colorsdescriberelationship) or [Colors.parseRelationship](#classmethod-colorsparserelationship)) into a CSS Relative Color Syntax expression. The generated expression uses oklch as the color space, ensuring perceptually uniform transforms.
+
+For example, to define a hover color that is always 10% lighter than the theme's accent, regardless of what the accent color actually is:
+
+```
+     // "Make it 10% lighter" expressed as oklch RCS:
+     var css = isc.Colors.generateCSS("var(--accent)", { L: 0.10 });
+     // "oklch(from var(--accent) calc(l + 0.1) c h)"
+     // This can go directly into a CSS stylesheet or skin config.
+
+     // Analyze an existing pair of colors, then re-express the same
+     // relationship against a different base:
+     var rel = isc.Colors.describeRelationship("#3B82F6", "#6BA3F8");
+     var css2 = isc.Colors.generateCSS("var(--new-accent)", rel);
+ 
+```
+
+The `origin` parameter is the CSS expression to use as the RCS origin - typically a `var()` reference like `"var(--isc-accent)"`, but can also be a literal color like `"#3B82F6"`.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| origin | [String](#type-string) | false | — | the CSS origin expression for the RCS - typically a `var()` reference or a literal color |
+| relationship | [Object](../reference.md#type-object) | false | — | an object with oklch deltas: `L` (lightness), `C` (chroma), and/or `h` (hue). Properties that are zero, null, or omitted produce identity channel passes. Accepts the output of both [Colors.describeRelationship](#classmethod-colorsdescriberelationship) and [Colors.parseRelationship](#classmethod-colorsparserelationship) |
+
+### Returns
+
+`[String](#type-string)` — a CSS oklch RCS expression
+
+### Groups
+
+- colorOverview
+
+### See Also
+
+- [Colors.describeRelationship](#classmethod-colorsdescriberelationship)
+- [Colors.parseRelationship](#classmethod-colorsparserelationship)
+- [Colors.resolveCSS](#classmethod-colorsresolvecss)
+
+---
 ## ClassMethod: Colors.getColor
 
 ### Description
 Parses any valid CSS color into a structured [Color](../reference_2.md#object-color) object with RGB, HSL, and oklch properties pre-computed, plus convenience methods for manipulation.
 
 Accepts any CSS color string (`#hex`, `rgb()`, `hsl()`, `oklch()`, named colors) or a structured component object in any supported color space: `{r, g, b}`, `{h, s, l}`, or `{L, C, h}`.
+
+Also accepts CSS Relative Color Syntax (RCS) expressions with literal color origins, such as `rgb(from #47a7e3 calc(r - 71) calc(g - 118) calc(b - 123))`, `hsl(from #47a7e3 h s calc(l + 20))`, or `oklch(from #3B82F6 calc(l + 0.15) c h)`. The origin can be any parseable color string -- hex, named, or a nested function call like `rgb(from rgb(71, 167, 227) calc(r - 71) g b)`. The origin is resolved, the channel adjustments (bare keywords, `calc()`, `max()`, `min()`) are evaluated, and the result is returned as a fully resolved Color.
+
+Expressions containing `var()` references or `color-mix()` are automatically resolved through the browser's CSS engine (via [Colors.resolveCSS](#classmethod-colorsresolvecss)). This requires DOM access - on the server, such expressions return an invalid Color.
 
 Always returns a [Color](../reference_2.md#object-color) object. If the input cannot be parsed, the returned object will have [isValid()](Color.md#method-colorisvalid) returning false (properties default to black). If the input is already a [Color](../reference_2.md#object-color), a new Color with the same values is returned.
 
@@ -471,36 +578,24 @@ Always returns a [Color](../reference_2.md#object-color) object. If the input ca
 `[Color](#type-color)` — a Color object - check [isValid()](Color.md#method-colorisvalid) for parse success
 
 ---
-## ClassMethod: Colors.shades
+## ClassMethod: Colors.autoContrast
 
 ### Description
-Generates a lightness ramp from a single base color, producing an array of colors that range from near-white to near-black (or a custom range) while preserving the base color's hue and chroma. This is the core skin-generation operation: one brand color in, a full tint/shade palette out.
+Returns a text color that meets a target contrast ratio against the given background. Useful for ensuring readability - given any background color, this method finds a foreground color that passes WCAG accessibility guidelines.
 
-All interpolation is done in the oklch color space, so each step is perceptually equidistant - no uneven jumps or hue drift.
-
-The `range` parameter controls the lightness endpoints as a two-element array `[startL, endL]` where L is 0 (black) to 1 (white). The default is `[0.95, 0.20]` (near-white to dark). To generate only tints (lighter shades), use e.g. `[0.97, 0.60]`; for only darks, `[0.50, 0.10]`.
-
-Examples of common operations:
+By default, tries white first (preferred for dark backgrounds) and falls back to black. When `tint` is true, the result is lightly tinted toward the background's hue for a more polished look, while still meeting the contrast target.
 
 ```
-     var brand = "#3366CC";
+     // What text color is readable on this background?
+     var textColor = isc.Colors.autoContrast("#3B82F6");
+     // "#ffffff" (white has sufficient contrast against medium blue)
 
-     // Full palette: 7 shades from near-white to dark
-     isc.Colors.shades(brand, 7)
-     // => ["#E8EDF8", "#B6C4E6", "#6D8ACC", "#3D62B0",
-     //     "#2A4580", "#1C2F56", "#0E182D"]
+     var textColor2 = isc.Colors.autoContrast("#B0D4FF");
+     // "#1a1a1a" or similar dark color (white lacks contrast on light blue)
 
-     // Tints only (backgrounds, hover fills)
-     isc.Colors.shades(brand, 4, [0.95, 0.70])
-
-     // Dark shades only (text, borders, shadows)
-     isc.Colors.shades(brand, 4, [0.50, 0.10])
-
-     // Dark-mode palette (dark to light)
-     isc.Colors.shades(brand, 7, [0.15, 0.90])
-
-     // Output as oklch for CSS custom properties
-     isc.Colors.shades(brand, 5, null, "oklch")
+     // Tinted: text picks up a hint of the background hue
+     var tinted = isc.Colors.autoContrast("#3B82F6", { tint: true });
+     // a very light blue-white instead of pure white
  
 ```
 
@@ -508,14 +603,137 @@ Examples of common operations:
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| color | [String](#type-string)|[Color](#type-color) | false | — | base color - any valid CSS color string or structured object from [Colors.getColor](#classmethod-colorsgetcolor) |
-| steps | [int](../reference.md#type-int) | false | — | number of colors to produce (minimum 2) |
-| range | [Array of double](#type-array-of-double) | true | — | two-element array `[startL, endL]` defining the lightness range; defaults to `[0.95, 0.20]` |
-| outputFormat | [ColorFormat](../reference_2.md#type-colorformat) | true | — | format for the returned strings; defaults to the detected format of the input color (hex for named colors) |
+| background | [String](#type-string)|[Color](#type-color) | false | — | the background color to find a readable text color for |
+| options | [Object](../reference.md#type-object) | true | — | optional settings:
+
+*   `target` - minimum contrast ratio (default 4.5 for WCAG AA; use 7.0 for WCAG AAA)
+*   `prefer` - `"white"` (default) or `"black"`; which extreme to try first
+*   `tint` - if true, lightly tint the result toward the background's hue (default false) |
 
 ### Returns
 
-`[Array of String](#type-array-of-string)` — CSS color strings in the requested format, or null if the input is not a valid color
+`[Color](#type-color)` — a Color meeting the contrast target, or the best available if the target cannot be met
+
+### Groups
+
+- colorOverview
+
+### See Also
+
+- [Colors.contrast](#classmethod-colorscontrast)
+- [Colors.mostReadable](#classmethod-colorsmostreadable)
+
+---
+## ClassMethod: Colors.describeRelationship
+
+### Description
+Computes the perceptual relationship between two colors in oklch space and returns a structured description. This is the analytical inverse of color manipulation: given a base and a derived color, it tells you what oklch adjustments were applied.
+
+For example, a skin has an accent color `#3B82F6` and a hand-picked hover color `#6BA3F8`. To find out what the relationship actually is (so it can be expressed as a formula rather than a second hard-coded hex value):
+
+```
+     var rel = isc.Colors.describeRelationship("#3B82F6", "#6BA3F8");
+     rel.type  // "lighten" - the hover is essentially just lighter
+     rel.L     // 0.07 (oklch lightness increased by ~7%)
+     rel.C     // ~0 (chroma barely changed)
+     rel.h     // ~0 (hue barely changed)
+
+     // Now generate a CSS expression that captures this relationship:
+     var css = isc.Colors.generateCSS("var(--accent)", rel);
+     // "oklch(from var(--accent) calc(l + 0.07) c h)"
+ 
+```
+
+The returned object contains:
+
+*   **type** - a simplified classification: `"lighten"`, `"darken"`, `"saturate"`, `"desaturate"`, `"spin"`, `"adjust"` (multiple significant changes), or `"identical"`
+*   **L** - oklch lightness delta (positive = lighter, 0-1 scale)
+*   **C** - oklch chroma delta (positive = more saturated)
+*   **h** - oklch hue delta in degrees (shortest-arc rotation, -180 to +180)
+
+The type classification uses perceptual thresholds: L changes > 0.01, C changes > 0.005, and hue changes > 2 degrees are considered significant. When exactly one dimension changes significantly, the type reflects that dimension. When multiple dimensions change, the type is `"adjust"`.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| baseColor | [String](#type-string)|[Color](#type-color) | false | — | the origin/base color |
+| derivedColor | [String](#type-string)|[Color](#type-color) | false | — | the derived/transformed color |
+
+### Returns
+
+`[Object](../reference.md#type-object)` — relationship descriptor with type, L, C, h properties
+
+### Groups
+
+- colorOverview
+
+### See Also
+
+- [Colors.generateCSS](#classmethod-colorsgeneratecss)
+- [Colors.parseRelationship](#classmethod-colorsparserelationship)
+
+---
+## ClassMethod: Colors.palette
+
+### Description
+Generates a tonal ramp - an ordered series of colors at different lightness levels sharing the same hue. In color theory, lighter variants of a color are called _tints_ (mixed toward white) and darker variants are called _shades_ (mixed toward black); this method produces both in a single ramp. This is the core operation for theme generation: one brand color in, a full light-to-dark palette out.
+
+At its simplest, `palette("#3366CC", 7)` produces 7 stops from dark to light - usable directly as skin backgrounds, hover fills, text colors, and borders. With no options, it uses sensible defaults: a natural chroma curve (vivid in the mid-range, muted at extremes) and a subtle hue shift for a professional, non-flat appearance.
+
+For a plain lightness scale with no chroma or hue variation, pass `{ chromaCurve: "constant", hueShift: 0 }`.
+
+```
+     // Simple: 7-stop ramp from a brand color (most common use)
+     var ramp = isc.Colors.palette("#3366CC", 7);
+     ramp[0].hex  // dark shade  - text, borders
+     ramp[3].hex  // mid-tone    - near the seed color
+     ramp[6].hex  // light tint  - backgrounds, hover fills
+
+     // Plain lightness scale (no chroma curve or hue shift):
+     var plain = isc.Colors.palette("#3366CC", 7, {
+         chromaCurve: "constant", hueShift: 0
+     });
+
+     // Tints only (light backgrounds, subtle fills):
+     var tints = isc.Colors.palette("#3366CC", 5, {
+         lightnessRange: [0.70, 0.97]
+     });
+
+     // Shades only (text, borders, shadows):
+     var shades = isc.Colors.palette("#3366CC", 5, {
+         lightnessRange: [0.15, 0.45]
+     });
+ 
+```
+
+All returned colors are guaranteed to be within the sRGB gamut (via automatic chroma reduction at the extremes). The seed color's own lightness determines where in the ramp it falls - it is not forced to a specific stop index.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| color | [String](#type-string)|[Color](#type-color) | false | — | the seed color whose hue and chroma define the palette |
+| steps | [int](../reference.md#type-int) | true | — | number of stops to generate (default 11) |
+| options | [Object](../reference.md#type-object) | true | — | optional settings:
+
+*   `lightnessRange` - two-element array of oklch L values for the darkest and lightest stops (default `[0.15, 0.97]`)
+*   `chromaCurve` - `"natural"` (default) tapers chroma toward extremes using a cosine curve; `"constant"` uses the seed's chroma for all stops; `"peaked"` pushes maximum chroma to a configurable lightness
+*   `hueShift` - degrees of hue rotation across the full lightness range (default ~4; set to 0 to disable). Positive values shift lighter stops toward warmer hues. |
+
+### Returns
+
+`[Array of Color](#type-array-of-color)` — array of Color objects ordered from darkest to lightest
+
+### Groups
+
+- colorOverview
+
+### See Also
+
+- [Colors.scheme](#classmethod-colorsscheme)
+- [Colors.colorScale](#classmethod-colorscolorscale)
+- [Colors.autoContrast](#classmethod-colorsautocontrast)
 
 ---
 ## ClassMethod: Colors.adjust
@@ -735,6 +953,49 @@ For multi-axis adjustments (e.g. lighten and desaturate together), use [adjust()
 
 - [Colors.darken](#classmethod-colorsdarken)
 - [Colors.adjust](#classmethod-colorsadjust)
+
+---
+## ClassMethod: Colors.scheme
+
+### Description
+Generates a set of harmonious seed colors from a single primary. Unlike the lower-level harmony methods ([Colors.triad](#classmethod-colorstriad), [Colors.tetrad](#classmethod-colorstetrad), etc.) which return raw CSS strings at fixed hue rotations, `scheme()` returns a structured object with semantic key names and applies chroma/lightness adjustments so that secondary and tertiary colors feel subordinate to the primary - a requirement for professional UI themes.
+
+The returned object always contains a `primary` Color plus one or more supporting keys depending on the scheme type. It also includes auto-generated `neutral` (very low chroma at the primary's hue) and `error` (red variant) keys. Each seed can be passed to [Colors.palette](#classmethod-colorspalette) to generate a full tonal ramp.
+
+```
+     // Generate a split-complementary scheme from a brand blue:
+     var s = isc.Colors.scheme("#3B82F6", "split-complementary");
+     // s.primary   -> the original blue
+     // s.secondary -> a warm orange-ish complement (subdued chroma)
+     // s.tertiary  -> a cool red-violet complement (subdued chroma)
+     // s.neutral   -> desaturated blue-gray
+     // s.error     -> muted red
+
+     // Generate a tonal ramp for each seed:
+     var primaryRamp = isc.Colors.palette(s.primary, 11);
+     var neutralRamp = isc.Colors.palette(s.neutral, 11);
+ 
+```
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| color | [String](#type-string)|[Color](#type-color) | false | — | the primary seed color |
+| type | [String](#type-string) | true | — | scheme type: `"complementary"`, `"analogous"`, `"triadic"`, `"split-complementary"` (default), `"tetradic"`, or `"monochromatic"` |
+
+### Returns
+
+`[Object](../reference.md#type-object)` — a map with `primary`, `secondary`, `tertiary` (where applicable), `neutral`, and `error` keys, each a [Color](../reference_2.md#object-color) object
+
+### Groups
+
+- colorOverview
+
+### See Also
+
+- [Colors.palette](#classmethod-colorspalette)
+- [Colors.autoContrast](#classmethod-colorsautocontrast)
 
 ---
 ## ClassMethod: Colors.setAlpha

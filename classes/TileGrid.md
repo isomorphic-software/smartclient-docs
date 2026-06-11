@@ -333,7 +333,7 @@ This property will typically not be explicitly specified for databound TileGrids
 
 ### See Also
 
-- [TileRecord](../reference_2.md#object-tilerecord)
+- [TileRecord](../reference.md#object-tilerecord)
 
 **Flags**: IRW
 

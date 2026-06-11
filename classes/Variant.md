@@ -9,7 +9,7 @@
 ### Description
 Singleton class with static (class-level) APIs for managing the skin variant registry. Variants are named sets of property overrides applied to a base SmartClient class to change its visual appearance without altering behavior.
 
-See [skinVariant](#groupdef-skinvariant) for an overview of the variant system and [VariantDefinition](../reference.md#object-variantdefinition) for the definition format.
+See [skinVariant](../kb_topics/skinVariant.md#kb-topic-skin-variants) for an overview of the variant system and [VariantDefinition](../reference.md#object-variantdefinition) for the definition format.
 
 ---
 ## ClassMethod: Variant.getVariants

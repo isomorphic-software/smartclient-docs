@@ -28,7 +28,7 @@ The item `name` is an identifier for the item that must be unique just within th
 *   when retrieving the FormItem's current value (via [form.getValue()](#method-dynamicformgetvalue))
 *   to retrieve the item itself via [form.getItem()](#method-dynamicformgetitem)
 
-FormItems can also be created by binding the form to a DataSource via `setDataSource()`. In this case, FormItems are chosen based on the data type of the field - see [FormItemType](../reference_2.md#type-formitemtype). You can override the automatically chosen FormItem via [DataSourceField.editorType](DataSourceField.md#attr-datasourcefieldeditortype).
+FormItems can also be created by binding the form to a DataSource via `setDataSource()`. In this case, FormItems are chosen based on the data type of the field - see [FormItemType](../reference.md#type-formitemtype). You can override the automatically chosen FormItem via [DataSourceField.editorType](DataSourceField.md#attr-datasourcefieldeditortype).
 
 FormItem lifecycle is managed by the DynamicForm itself. FormItem instances are created and destroyed automatically when new fields are added to the form.
 
@@ -378,7 +378,7 @@ If no explicit formatter is specified at the field or component level, time valu
 ## Attr: DynamicForm.showImageAsURL
 
 ### Description
-For fields of [type:"image"](../reference_2.md#type-formitemtype), if the field is non editable, and being displayed with [readOnlyDisplay:"static"](FormItem.md#attr-formitemreadonlydisplay), should the value (URL) be displayed as text, or should an image be rendered?
+For fields of [type:"image"](../reference.md#type-formitemtype), if the field is non editable, and being displayed with [readOnlyDisplay:"static"](FormItem.md#attr-formitemreadonlydisplay), should the value (URL) be displayed as text, or should an image be rendered?
 
 May be overridden for individual items via [FormItem.showImageAsURL](FormItem.md#attr-formitemshowimageasurl).
 

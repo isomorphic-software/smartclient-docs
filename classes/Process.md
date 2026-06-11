@@ -766,7 +766,7 @@ Override point invoked after a Task completes successfully, but before any of th
 *   Augment or replace the Task's outputs prior to commit.
 *   Apply additional declarative updates to [state](#attr-processstate).
 
-Return a [TaskResultModifications](../reference_2.md#object-taskresultmodifications) object to influence commit behavior. If you return nothing, the engine proceeds normally.
+Return a [TaskResultModifications](../reference.md#object-taskresultmodifications) object to influence commit behavior. If you return nothing, the engine proceeds normally.
 
 ### Parameters
 

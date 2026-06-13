@@ -17,6 +17,10 @@ Some examples:
 *   inputField: "a", outputField: "b", type: "integer" - copies "a" to "b" converting "a" to an integer
 *   inputFieldList: \["a","b"\], outputField: \["c","d"\] - copies "a" and "b" to "c" and "d" respectively.
 
+### Groups
+
+- serverProcess
+
 ---
 ## Attr: StateTask.fieldListsLengthMismatchMessage
 

@@ -1209,7 +1209,7 @@ For the available set of built-in validators, and how to define a custom validat
 ### Description
 Sets the default FormItem to be used whenever this field is edited (whether in a grid, form, or other component).
 
-If unset, a FormItem will be automatically chosen based on the type of the field, by the rules explained [here](../reference.md#type-formitemtype).
+If unset, a FormItem will be automatically chosen based on the type of the field, by the rules explained [here](../reference_2.md#type-formitemtype).
 
 ### Groups
 

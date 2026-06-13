@@ -19,6 +19,10 @@ OutputData and outputFieldList work as filters. You should determine which prope
 
 For example, if you specify 'id' and 'name' in outputFieldList, only these properties will be fetched in the process state. If you pass '$orderHeader' in outputField a whole record will be stored in the process state under the 'orderHeader' key.
 
+### Groups
+
+- serverProcess
+
 ---
 ## Attr: DSRequestTask.passThruOutput
 

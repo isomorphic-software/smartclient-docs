@@ -1514,6 +1514,8 @@ Specifically, the following rules are used:
 
 If any of these behaviors is not desired, you can just set `autoPopulateData` to false on the specific component that should not be auto-populated.
 
+`autoPopulateData` also controls whether the component participates in ${isc.DocUtils.linkForRef('attr:Canvas.dataContext','dataContext\\'s')} `sharedCriteria` system by default. To control criteria participation independently, use [Canvas.useDataContextCriteria](#attr-canvasusedatacontextcriteria).
+
 Specific examples, using the _Order_ and _OrderDetail_ sample DataSources, where _OrderDetail_ records are associated (many-to-1) with _Order_ records, and the PK of _Order_ is _orderNumber_:
 
 1.  a form or DetailViewer bound to _Order_ and a ListGrid bound to _OrderDetail_:
@@ -1621,6 +1623,8 @@ A mapping from [DataSource](DataSource_1.md#class-datasource) IDs to specific [R
 
 See [Canvas.autoPopulateData](#attr-canvasautopopulatedata) for details on how this is done.
 
+In addition to records, a `dataContext` may include a `sharedCriteria` key containing [AdvancedCriteria](../reference.md#object-advancedcriteria) that are automatically combined into every matching DBC's fetch. See [DataContext](../reference_2.md#object-datacontext) for details and examples. Components can customize this via [Canvas.handleDataContextCriteria](#method-canvashandledatacontextcriteria).
+
 DataSources included in the `dataContext` are immediately provided to [rule context](#attr-canvasrulescope) when used if no other component has done so already. These records are found in rule context 'dataContext' section (ex. `dataContext.Customer` for a Customer record in `dataContext`) so they do not conflict with normal DataSource records.
 
 If no `dataContext` is provided, [Canvas.testDataContext](#attr-canvastestdatacontext) is used instead, which allows a screen to be tested in isolation while still having sample data available.
@@ -1630,6 +1634,30 @@ If no `dataContext` is provided, [Canvas.testDataContext](#attr-canvastestdataco
 - dataContext
 
 **Flags**: IWR
+
+---
+## Attr: Canvas.useDataContextCriteria
+
+### Description
+Controls whether this component participates in the `sharedCriteria` system within [Canvas.dataContext](#attr-canvasdatacontext). Participation means both **consuming** sharedCriteria (having them combined into this component's fetch) and being tracked for future criteria updates via [Canvas.setDataContextCriteria](#method-canvassetdatacontextcriteria).
+
+When `null` (the default), this setting inherits its effective value from [Canvas.autoPopulateData](#attr-canvasautopopulatedata). This means components already opted in to dataContext record binding also receive sharedCriteria, and components with `autoPopulateData: false` do not.
+
+Set to `true` to participate in sharedCriteria even when `autoPopulateData` is false — for example, a grid that manages its own data loading but should still respond to global date filters.
+
+Set to `false` to opt out of sharedCriteria without turning off `autoPopulateData` — for example, a "shuttle" grid that must maintain its own independent criteria.
+
+### Groups
+
+- dataContext
+
+### See Also
+
+- [Canvas.autoPopulateData](#attr-canvasautopopulatedata)
+- [Canvas.shareCriteria](#attr-canvassharecriteria)
+- [Canvas.setDataContextCriteria](#method-canvassetdatacontextcriteria)
+
+**Flags**: IRW
 
 ---
 ## Attr: Canvas.receiveScrollbarEvents
@@ -4228,6 +4256,32 @@ Possible candidates which are not drawn or are hidden are automatically ignored.
 **Flags**: IRW
 
 ---
+## Attr: Canvas.shareCriteria
+
+### Description
+Controls whether this component automatically publishes its criteria to the `sharedCriteria` section of the nearest parent [Canvas.dataContext](#attr-canvasdatacontext), keyed by [DataSource](DataSource_1.md#class-datasource) ID. Other [DataBoundComponents](../reference.md#interface-databoundcomponent) in the same dataContext that have matching fields will then include those criteria in their fetches.
+
+**Auto-resolution**: when `null` (the default), the effective value is resolved automatically:
+
+*   A standalone [SearchForm](SearchForm.md#class-searchform) (one that is NOT linked to a grid via [ListGrid.searchForm](ListGrid_1.md#attr-listgridsearchform)) resolves to `true` — it acts as a global filter, publishing its criteria to all sibling DBCs.
+*   All other DBCs (grids, charts, detail viewers, and SearchForms paired with a grid) resolve to `false`. These patterns commonly involve intentionally different criteria (shuttles, tree-to-list, grid-to-chart).
+
+Set to `true` explicitly to force contribution from any DBC. Set to `false` to suppress auto-contribution from a standalone SearchForm.
+
+When a contributing component fetches or filters, its criteria are automatically passed to [Canvas.setDataContextCriteria](#method-canvassetdatacontextcriteria) on the parent that owns the dataContext, scoped to this component's DataSource ID.
+
+### Groups
+
+- dataContext
+
+### See Also
+
+- [Canvas.useDataContextCriteria](#attr-canvasusedatacontextcriteria)
+- [Canvas.setDataContextCriteria](#method-canvassetdatacontextcriteria)
+
+**Flags**: IRW
+
+---
 ## Attr: Canvas.styleName
 
 ### Description
@@ -5593,6 +5647,38 @@ See [gettingCanvasSize](../kb_topics/gettingCanvasSize.md#kb-topic-determining-t
 - sizing
 
 ---
+## Method: Canvas.handleDataContextCriteria
+
+### Description
+Called on each [DataBoundComponent](../reference.md#interface-databoundcomponent) when `sharedCriteria` from a [Canvas.dataContext](#attr-canvasdatacontext) applies to this component's DataSource. The default implementation combines the supplied criteria with the component's existing criteria via [DataSource.combineCriteria](DataSource.md#classmethod-datasourcecombinecriteria) and re-fetches.
+
+**Type compatibility rules**: a criterion matches a DataSource field when the field name exists and the types are compatible:
+
+*   Same type: always matches
+*   `integer` criterion value matches a `float` field
+*   A `time` (logicalTime) criterion value matches a `datetime` field and is applied as a partial constraint on the time portion
+*   All other type mismatches: criterion is skipped for that component
+
+For singular-arity components ([DynamicForm](DynamicForm.md#class-dynamicform), [DetailViewer](DetailViewer.md#class-detailviewer)), the default is a no-op since criteria do not apply to single-record views. Override to opt in.
+
+Return `false` to suppress the default re-fetch entirely.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| criteria | [AdvancedCriteria](#type-advancedcriteria) | false | — | criteria filtered to fields that match this component's DataSource |
+| source | [String](#type-string) | false | — | "global" for field-matched criteria, or a DataSource ID for DS-specific criteria |
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — false to suppress re-fetch
+
+### Groups
+
+- dataContext
+
+---
 ## Method: Canvas.setBottom
 
 ### Description
@@ -6504,6 +6590,43 @@ Note: If you attempt to call this API before the widget is drawn, the call will 
 - scrolling
 
 ---
+## Method: Canvas.setDataContextCriteria
+
+### Description
+Updates the `sharedCriteria` section of this Canvas's [Canvas.dataContext](#attr-canvasdatacontext). All contained [DataBoundComponents](../reference.md#interface-databoundcomponent) whose DataSource has fields matching the criteria by name and compatible type will re-fetch with the updated criteria combined via [DataSource.combineCriteria](DataSource.md#classmethod-datasourcecombinecriteria).
+
+**Global form** (applies to all DataSources by field match):
+
+```
+     screen.setDataContextCriteria(newCriteria);
+ 
+```
+**DataSource-specific form** (applies only to components bound to the named DataSource(s)):
+```
+     screen.setDataContextCriteria("Orders",
+                                    newCriteria);
+     screen.setDataContextCriteria(
+         ["Orders","OrderDetail"], newCriteria);
+ 
+```
+
+Passing `null` as criteria clears the entry, causing components to re-fetch without the previously applied filter.
+
+[RelativeDate](../reference.md#object-relativedate) values inside the criteria are preserved in relative form and re-evaluated on each fetch.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| criteriaOrDSID | [Criteria](../reference_2.md#type-criteria)|[AdvancedCriteria](#type-advancedcriteria)|[String](#type-string)|[Array of String](#type-array-of-string) | false | — | either the criteria to apply globally (by field match), or a DataSource ID (or array of IDs) to scope the criteria |
+| criteria | [Criteria](../reference_2.md#type-criteria)|[AdvancedCriteria](#type-advancedcriteria) | true | — | criteria to apply when the first argument is a DataSource ID or array of IDs; null to clear |
+| contributorID | [String](#type-string) | true | — | optional unique identifier for the criteria source. When multiple independent components (such as [Slicers](Slicer.md#class-slicer)) each publish criteria for the same DataSource, pass a distinct `contributorID` per source. All contributors' criteria are AND-combined automatically. Without a `contributorID`, each call replaces the previous DS-specific criteria entirely. |
+
+### Groups
+
+- dataContext
+
+---
 ## Method: Canvas.initComplete
 
 ### Description
@@ -6818,6 +6941,28 @@ Return the page-relative bottom coordinate of this object, in pixels.
 - positioning
 
 ---
+## Method: Canvas.getDataContextCriteria
+
+### Description
+Returns the current [AdvancedCriteria](../reference.md#object-advancedcriteria) from the applicable ${isc.DocUtils.linkForRef('attr:Canvas.dataContext','dataContext\\'s')} `sharedCriteria`.
+
+When called with no arguments, returns the global (non-DS-specific) shared criteria. When called with a DataSource ID, returns criteria specific to that DataSource, or null.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| dataSourceID | [String](#type-string) | true | — | optional DataSource ID |
+
+### Returns
+
+`[AdvancedCriteria](#type-advancedcriteria)` — the criteria, or null
+
+### Groups
+
+- dataContext
+
+---
 ## Method: Canvas.hideComponentMask
 
 ### Description
@@ -6869,6 +7014,20 @@ The widget to be added as a peer will be removed from its old master and/or pare
 ### Groups
 
 - containment
+
+---
+## Method: Canvas.dataContextCriteriaChanged
+
+### Description
+Notification fired when the `sharedCriteria` section of the applicable [Canvas.dataContext](#attr-canvasdatacontext) changes. Fires after [Canvas.handleDataContextCriteria](#method-canvashandledatacontextcriteria) has been called on all affected DBCs.
+
+This notification allows non-DBC components (labels, KPI tiles, annotations) to react to filter changes. The current criteria state is available via [Canvas.getDataContextCriteria](#method-canvasgetdatacontextcriteria).
+
+Called from within [Canvas.dataContextChanged](#method-canvasdatacontextchanged), so overriding just this method lets you respond to criteria changes without intercepting record changes.
+
+### Groups
+
+- dataContext
 
 ---
 ## Method: Canvas.getOffsetY
@@ -8064,9 +8223,11 @@ Set the [Canvas.edgeOpacity](#attr-canvasedgeopacity) and mark the canvas for re
 ## Method: Canvas.dataContextChanged
 
 ### Description
-Notification method fired when [DataContext](../reference_2.md#object-datacontext) is bound. This can occur on the initial draw or by an explicit call to [Canvas.setDataContext](#method-canvassetdatacontext).
+Notification fired when [DataContext](../reference_2.md#object-datacontext) is bound. This can occur on the initial draw, via [Canvas.setDataContext](#method-canvassetdatacontext), or via [Canvas.setDataContextCriteria](#method-canvassetdatacontextcriteria).
 
-This feature allows the use of the `dataContext` as a general-purpose API to the screen. For example, if you wanted your screen to support _dynamically_ showing or hiding parts of itself based on a button that is external to the screen, you could do that by implementing this handler to show/hide that part of the screen based on the current state of the `dataContext`.
+This feature allows use of `dataContext` as a general-purpose API to the screen. For example, you could show/hide parts of a screen based on external state placed in `dataContext`.
+
+When the change is specifically to `sharedCriteria`, [Canvas.dataContextCriteriaChanged](#method-canvasdatacontextcriteriachanged) fires first as a more targeted notification. Override that method to react to criteria changes without intercepting record changes.
 
 ### Groups
 

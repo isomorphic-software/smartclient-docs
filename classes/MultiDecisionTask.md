@@ -11,6 +11,10 @@
 ### Description
 Chooses a next element in a [Process](Process.md#class-process) by evaluating a series of criteria against the [Process.state](Process.md#attr-processstate) and choosing the element associated with the criteria that matched, or a [defaultElement](#attr-multidecisiontaskdefaultelement) if none of the criteria match.
 
+### Groups
+
+- serverProcess
+
 ---
 ## Attr: MultiDecisionTask.decisionList
 

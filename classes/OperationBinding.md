@@ -652,6 +652,46 @@ Indicates that field-level declarative security rules are waived for rows that w
 **Flags**: IR
 
 ---
+## Attr: OperationBinding.dataSources
+
+### Description
+Comma-separated list of DataSource IDs to make available in the server-side scripting context when executing an [OperationBinding.process](#attr-operationbindingprocess) or [OperationBinding.script](#attr-operationbindingscript).
+
+When a [Process](Process.md#class-process) runs server-side, its [DS\*Tasks](DSRequestTask.md#class-dsrequesttask) resolve DataSources by ID automatically. However, DataSources referenced via dynamic expressions (e.g. `$values.targetDS`) or used directly in [ScriptTask](ScriptTask.md#class-scripttask) code must be pre-loaded. `dataSources` ensures they are available as DataSource instances and as same-named local variables.
+
+DataSources referenced directly in DS\*Task `dataSource` attributes are auto-resolved and do NOT need to be listed here.
+
+**Example:**
+
+```
+ <operationBinding operationType="update"
+     dataSources="auditLog,notification">
+     <process>
+         <Process startElement="step1">
+             ...
+             <ScriptTask ID="customAudit">
+                 <script>
+                     var ds = isc.DataSource.get("auditLog");
+                     ds.addData({ action: "update", ... });
+                 </script>
+             </ScriptTask>
+         </Process>
+     </process>
+ </operationBinding>
+ 
+```
+
+The legacy attribute name `graalDS` is also accepted for backward compatibility, but `dataSources` is preferred because it is engine-neutral.
+
+### See Also
+
+- [OperationBinding.process](#attr-operationbindingprocess)
+- [OperationBinding.script](#attr-operationbindingscript)
+- [serverProcess](../kb_topics/serverProcess.md#kb-topic-server-side-process-execution)
+
+**Flags**: IR
+
+---
 ## Attr: OperationBinding.transformRequestScript
 
 ### Description
@@ -887,6 +927,38 @@ Note that `useFlatFields` is not generally recommended for use with input messag
 ### Groups
 
 - clientDataIntegration
+
+**Flags**: IR
+
+---
+## Attr: OperationBinding.process
+
+### Description
+Declares a server-side workflow [Process](Process.md#class-process) to execute for this operation, as a declarative alternative to [OperationBinding.script](#attr-operationbindingscript) or a [DMI](../reference_2.md#object-serverobject).
+
+The process can be specified as:
+
+*   **Inline Process definition**: XML Process element within the operationBinding (editable by [WorkflowEditor](#class-workfloweditor))
+*   **Process ID**: String ID resolved via [Process.loadProcess](Process.md#classmethod-processloadprocess) from .proc.xml files
+
+The process receives automatic input state derived from the DSRequest (see [serverProcess](../kb_topics/serverProcess.md#kb-topic-server-side-process-execution) for full mapping).
+
+**Response:** If `process.state.dsResponse` is set, it becomes the operation response. Otherwise, the output of the last [DSRequestTask](DSRequestTask.md#class-dsrequesttask) is used. See [serverProcess](../kb_topics/serverProcess.md#kb-topic-server-side-process-execution) for the full precedence order.
+
+**Error Handling:** If any task fails and has no [DSRequestTask.failureElement](DSRequestTask.md#attr-dsrequesttaskfailureelement), the operation returns STATUS\_FAILURE. If the operation participates in a transaction ([OperationBinding.autoJoinTransactions](#attr-operationbindingautojointransactions)), it rolls back.
+
+Only synchronous task types are supported (DS\*Tasks, ScriptTask, DecisionTask, SubProcessTask, etc.). UI-interaction tasks are not applicable in the server-side context.
+
+### Groups
+
+- serverProcess
+
+### See Also
+
+- [serverProcess](../kb_topics/serverProcess.md#kb-topic-server-side-process-execution)
+- [OperationBinding.script](#attr-operationbindingscript)
+- [Process](Process.md#class-process)
+- [WorkflowEditor](#class-workfloweditor)
 
 **Flags**: IR
 

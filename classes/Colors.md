@@ -561,7 +561,7 @@ Parses any valid CSS color into a structured [Color](../reference_2.md#object-co
 
 Accepts any CSS color string (`#hex`, `rgb()`, `hsl()`, `oklch()`, named colors) or a structured component object in any supported color space: `{r, g, b}`, `{h, s, l}`, or `{L, C, h}`.
 
-Also accepts CSS Relative Color Syntax (RCS) expressions with literal color origins, such as `rgb(from #47a7e3 calc(r - 71) calc(g - 118) calc(b - 123))`, `hsl(from #47a7e3 h s calc(l + 20))`, or `oklch(from #3B82F6 calc(l + 0.15) c h)`. The origin can be any parseable color string -- hex, named, or a nested function call like `rgb(from rgb(71, 167, 227) calc(r - 71) g b)`. The origin is resolved, the channel adjustments (bare keywords, `calc()`, `max()`, `min()`) are evaluated, and the result is returned as a fully resolved Color.
+Also accepts CSS Relative Color Syntax (RCS) expressions with literal color origins, such as `rgb(from #3B82F6 calc(r - 0.1) g b)`, `hsl(from #47a7e3 h s calc(l + 20))`, or `oklch(from #3B82F6 calc(l + 0.15) c h)`. The origin can be any parseable color string - hex, named, or a nested function call. Channel keywords use CSS-native ranges: RGB channels are 0-1 sRGB fractions (not 0-255), HSL s/l are 0-100, oklch L is 0-1. The origin is resolved, the channel adjustments (bare keywords, `calc()`, `max()`, `min()`) are evaluated, and the result is returned as a fully resolved Color.
 
 Expressions containing `var()` references or `color-mix()` are automatically resolved through the browser's CSS engine (via [Colors.resolveCSS](#classmethod-colorsresolvecss)). This requires DOM access - on the server, such expressions return an invalid Color.
 

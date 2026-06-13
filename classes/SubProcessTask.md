@@ -38,6 +38,10 @@ SubProcessTask is built implicitly when a plain Object with a `process` property
 ```
 See the [Process I/O Schema](../kb_topics/processIO.md#kb-topic-process-input-and-output-schema) overview for the schema side and [TaskInputExpression](../reference_2.md#type-taskinputexpression) for the full list of input-expression prefixes.
 
+### Groups
+
+- serverProcess
+
 ---
 ## Attr: SubProcessTask.stateUpdates
 

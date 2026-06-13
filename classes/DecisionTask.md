@@ -13,6 +13,10 @@ Chooses one or another next process element based on AdvancedCriteria applied to
 
 If the AdvancedCriteria evaluate to true, the [nextElement](#attr-decisiontasknextelement) is chosen, otherwise the [failureElement](#attr-decisiontaskfailureelement).
 
+### Groups
+
+- serverProcess
+
 ---
 ## Attr: DecisionTask.failureElement
 

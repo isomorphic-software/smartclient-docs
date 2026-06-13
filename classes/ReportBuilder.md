@@ -82,6 +82,14 @@ Label above the bulleted reason list in the incomplete dialog.
 **Flags**: IRW
 
 ---
+## Attr: ReportBuilder.slicerFieldForm
+
+### Description
+Form within [ReportBuilder.slicerFieldDialog](#attr-reportbuilderslicerfielddialog) holding the field- selection SelectItem. Its valueMap is populated per drop with the sliceable fields of the selected DataSource.
+
+**Flags**: R
+
+---
 ## Attr: ReportBuilder.aiProcessLogAutoHideDelay
 
 ### Description
@@ -94,6 +102,14 @@ Milliseconds to wait after the AI process completes before hiding the [AI proces
 
 ### Description
 Optional list of natural-language prompt strings deployments want authors to discover. Surfaced in the AI prompt input's history grid as "suggested" rows alongside actual prompt history. Suggestions are not per-DataSource — the AI sees every available DataSource regardless of the picker selection, so suggested prompts are equally relevant across the catalog.
+
+**Flags**: IRW
+
+---
+## Attr: ReportBuilder.globalFilterDateField
+
+### Description
+Name of the date/datetime field driven by the report-level date-range filter in the global filter bar. The selected range is published to the report [dataContext](Canvas.md#attr-canvasdatacontext) for every available DataSource that has a field of this name, so a single date range narrows all data views at once. Defaults to `"created"` -- the row audit timestamp present on the demo's DataSources. A DataSource without this field is simply left unfiltered by the date range.
 
 **Flags**: IRW
 
@@ -340,14 +356,6 @@ Field definitions for report-level parameters. These appear in a parameter form 
 **Flags**: IRW
 
 ---
-## Attr: ReportBuilder.exportMenu
-
-### Description
-Menu for selecting export format.
-
-**Flags**: R
-
----
 ## Attr: ReportBuilder.componentCreated
 
 ### Description
@@ -389,6 +397,16 @@ Title for the dialog shown on hard AI failure (error output, empty output, watch
 Palette containing available component types. Data Views are standalone components that use the DataSource picker. Uses ListPalette so that setDefaultPalette works correctly and the framework handles drop positioning automatically.
 
 **Flags**: R
+
+---
+## Attr: ReportBuilder.gridAdvancedFilter
+
+### Description
+Whether ListGrid components dropped into a report are configured with the advanced [FilterBuilder](FilterBuilder.md#class-filterbuilder) window enabled -- accessed from a grid header's "Filter using" -> "Advanced Filtering" menu -- including **aggregate** (summary sub-query) criteria ([Criterion.fieldQuery](Criterion.md#attr-criterionfieldquery) / [Criterion.valueQuery](Criterion.md#attr-criterionvaluequery)). This lets a report author build nested and aggregate filters such as "partners whose total order value > 100k" directly on a grid.
+
+Aggregate criteria resolve client-side against cached data, so this works on the demo's `clientOnly` DataSources without a server. Defaults to `true`; set `false` to keep dropped grids on the plain filter editor only.
+
+**Flags**: IRW
 
 ---
 ## Attr: ReportBuilder.toolbar
@@ -467,10 +485,26 @@ DataSource for persisting saved reports. If not specified, reports can only be s
 **Flags**: IRW
 
 ---
+## Attr: ReportBuilder.slicerFieldDialog
+
+### Description
+Modal dialog shown when a Slicer palette node is dropped, prompting the author to choose which DataSource field the slicer targets. Created lazily on the first Slicer drop and reused; its field picker and the per-drop context are refreshed for each drop before the dialog is shown.
+
+**Flags**: R
+
+---
 ## Attr: ReportBuilder.aiPromptTextBoxStyle
 
 ### Description
 Optional override for the [TextAreaItem.textBoxStyle](TextAreaItem.md#attr-textareaitemtextboxstyle) of the "Ask AI..." prompt input, so embedders can theme it without touching the rest of the framework's textArea styles. Picks up the standard SmartClient state suffixes (_Focused_, _Disabled_, _Error_, _Hint_) - define those alongside the base class. When unset, the prompt uses the framework's default `textAreaItem` style.
+
+**Flags**: IRW
+
+---
+## Attr: ReportBuilder.showPlaceholderNodes
+
+### Description
+Whether work-in-progress "placeholder" palette nodes -- nodes that drop an inert labelled box rather than a working component -- are shown in the component palette. Defaults to `false` so the palette contains only nodes that produce a real, data-bound component. Set `true` during development to surface placeholder nodes for later-phase components.
 
 **Flags**: IRW
 
@@ -487,6 +521,18 @@ Grid showing available reports in the load dialog.
 
 ### Description
 Clears the current report and creates a new blank report.
+
+---
+## Method: ReportBuilder.saveReportAs
+
+### Description
+Saves the current report as a NEW report (or template), leaving any previously-saved report untouched. Use this to derive a separate template from a report (or vice versa) instead of overwriting it in place, which is what plain [ReportBuilder.saveReport](#method-reportbuildersavereport) does for an existing report.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| callback | [Callback](../reference.md#type-callback) | true | — | optional callback fired after the save |
 
 ---
 ## Method: ReportBuilder.setReportDefinition

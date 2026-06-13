@@ -401,6 +401,7 @@ This is the central API reference for the SmartClient framework.
       - [StateTask](classes/StateTask.md)
       - [TimerTask](classes/TimerTask.md)
     - [SendEmailTask](classes/SendEmailTask.md)
+    - [DefaultOperationTask](classes/DefaultOperationTask.md)
     - [DecisionTask](classes/DecisionTask.md)
       - [XORGateway](#class-xorgateway)
     - [MultiDecisionTask](classes/MultiDecisionTask.md)
@@ -411,12 +412,12 @@ This is the central API reference for the SmartClient framework.
     - [ShowNotificationTask](classes/ShowNotificationTask.md)
     - [ShowMessageTask](#class-showmessagetask)
     - [ProcessSequence](#class-processsequence)
+    - [StartTransactionTask](#class-starttransactiontask)
     - [EndProcessTask](#class-endprocesstask)
+    - [SendTransactionTask](#class-sendtransactiontask)
     - [UserConfirmationGateway](#class-userconfirmationgateway)
     - [ResetPasswordTask](#class-resetpasswordtask)
     - [LogOutTask](#class-logouttask)
-    - [StartTransactionTask](#class-starttransactiontask)
-    - [SendTransactionTask](#class-sendtransactiontask)
   - [VoiceAssist](classes/VoiceAssist.md)
   - [AI](classes/AI.md)
   - [Browser](classes/Browser.md)
@@ -743,6 +744,7 @@ This is the central API reference for the SmartClient framework.
 - [Server Framework Initialization](kb_topics/serverInit.md)
 - [Server-Side JavaScript CLI](kb_topics/serverJSCLI.md)
 - [Server logging](kb_topics/serverLogging.md)
+- [Server-Side Process Execution](kb_topics/serverProcess.md)
 - [Server-side REST Connector](kb_topics/serverRestConnector.md)
 - [Server Scripting](kb_topics/serverScript.md)
 - [Server Summaries](kb_topics/serverSummaries.md)
@@ -2452,6 +2454,14 @@ Component to pull record for editing.
 **Flags**: IR
 
 ---
+## Class: StartTransactionTask
+
+*Inherits from:* [ProcessElement](classes/ProcessElement.md#class-processelement)
+
+### Description
+Starts queuing all DataSource operations so they can be sent to the server all together as a transaction. This is a client-side batching mechanism (RPCManager.startQueue) and has no effect inside an [OperationBinding.process](classes/OperationBinding.md#attr-operationbindingprocess) where operations execute synchronously on the server. For server-side transaction control, use [OperationBinding.autoJoinTransactions](#attr-operationbindingautojointransactions) instead.
+
+---
 ## Class: SubmitItem
 
 *Inherits from:* [ButtonItem](classes/ButtonItem.md#class-buttonitem)
@@ -2684,6 +2694,20 @@ Each [TileGrid.tile](classes/TileGrid.md#attr-tilegridtile) can be a [PaletteNod
 - devTools
 
 ---
+## Class: EndProcessTask
+
+*Inherits from:* [ProcessElement](classes/ProcessElement.md#class-processelement)
+
+### Description
+Task that ends a workflow. This task is not necessary to end a workflow - having a task execute with no [ProcessElement.nextElement](classes/ProcessElement.md#attr-processelementnextelement) is sufficient to end the workflow.
+
+This task is primarily used in the workflow editor to render a "no-op" task or as an explicit visual marker for the end of workflow.
+
+### Groups
+
+- serverProcess
+
+---
 ## Class: InlineWindow
 
 *Inherits from:* [Window](classes/Window.md#class-window)
@@ -2766,16 +2790,6 @@ FormItem that uses a [ToggleSwitch](classes/ToggleSwitch.md#class-toggleswitch) 
 Constructor class for this item's [ToggleSwitch](classes/ToggleSwitch.md#class-toggleswitch).
 
 **Flags**: IR
-
----
-## Class: EndProcessTask
-
-*Inherits from:* [ProcessElement](classes/ProcessElement.md#class-processelement)
-
-### Description
-Task that ends a workflow. This task is not necessary to end a workflow - having a task execute with no [ProcessElement.nextElement](classes/ProcessElement.md#attr-processelementnextelement) is sufficient to end the workflow.
-
-This task is primarily used in the workflow editor to render a "no-op" task or as an explicit visual marker for the end of workflow.
 
 ---
 ## Class: IButton
@@ -2874,6 +2888,14 @@ Export data currently shown in a grid.
 Additional properties to set on the DSRequest that will be issued to perform server-side export.
 
 **Flags**: IR
+
+---
+## Class: SendTransactionTask
+
+*Inherits from:* [ProcessElement](classes/ProcessElement.md#class-processelement)
+
+### Description
+Sends any currently queued DataSource operations, as a single transactional request to the server. This is a client-side batching mechanism (RPCManager.sendQueue) and has no effect inside an [OperationBinding.process](classes/OperationBinding.md#attr-operationbindingprocess) where operations execute synchronously on the server.
 
 ---
 ## Class: FormEditSelectedTask
@@ -3909,6 +3931,30 @@ Revert unsaved changes in a form.
 - skinVariant
 
 ---
+## Class: DSRemoveTask
+
+*Inherits from:* [DSRequestTask](classes/DSRequestTask.md#class-dsrequesttask)
+
+### Description
+A [DSRequestTask](classes/DSRequestTask.md#class-dsrequesttask) configured to perform a remove.
+
+### Groups
+
+- serverProcess
+
+---
+## Class: DSUpdateTask
+
+*Inherits from:* [DSRequestTask](classes/DSRequestTask.md#class-dsrequesttask)
+
+### Description
+A [DSRequestTask](classes/DSRequestTask.md#class-dsrequesttask) configured to perform a update.
+
+### Groups
+
+- serverProcess
+
+---
 ## Class: StripedGrid
 
 *Inherits from:* [ListGrid](classes/ListGrid_1.md#class-listgrid)
@@ -3921,12 +3967,36 @@ Revert unsaved changes in a form.
 - skinVariant
 
 ---
+## Class: DSFetchTask
+
+*Inherits from:* [DSRequestTask](classes/DSRequestTask.md#class-dsrequesttask)
+
+### Description
+A [DSRequestTask](classes/DSRequestTask.md#class-dsrequesttask) configured to perform a fetch.
+
+### Groups
+
+- serverProcess
+
+---
 ## Class: InlineTextItem
 
 *Inherits from:* [TextItem](classes/TextItem.md#class-textitem)
 
 ### Description
 TextItem subclass for inline contexts (filter editors, toolbars, headers). Uses compact rounded input with accent-colored focus ring.
+
+---
+## Class: DSAddTask
+
+*Inherits from:* [DSRequestTask](classes/DSRequestTask.md#class-dsrequesttask)
+
+### Description
+A [DSRequestTask](classes/DSRequestTask.md#class-dsrequesttask) configured to perform an add.
+
+### Groups
+
+- serverProcess
 
 ---
 ## Class: MinimalSection
@@ -3957,14 +4027,6 @@ This class is a synonym for SplitPane that can be used to make intent clearer. I
 Class used for the draggable "thumb" of a scrollbar. Do not use directly; this class is documented only for skinning purposes.
 
 ---
-## Class: StartTransactionTask
-
-*Inherits from:* [ProcessElement](classes/ProcessElement.md#class-processelement)
-
-### Description
-Starts queuing all DataSource operations so they can be sent to the server all together as a transaction.
-
----
 ## Class: FixedSpacer
 
 *Inherits from:* [LayoutSpacer](#class-layoutspacer)
@@ -3979,14 +4041,6 @@ This class is a synonym for LayoutSpacer that can be used to make intent clearer
 
 ### Description
 This class is a synonym for LayoutSpacer that can be used to make intent clearer. It is used by some development tools for that purpose.
-
----
-## Class: SendTransactionTask
-
-*Inherits from:* [ProcessElement](classes/ProcessElement.md#class-processelement)
-
-### Description
-Sends any currently queued DataSource operations, as a single transactional request to the server.
 
 ---
 ## Class: BorderedCard
@@ -4089,22 +4143,6 @@ RadioGroupItem subclass for inline contexts with reduced item height for consist
 Editor with a minimalist appearance, tuned for editing large numbers of properties in a constrained space.
 
 ---
-## Class: DSRemoveTask
-
-*Inherits from:* [DSRequestTask](classes/DSRequestTask.md#class-dsrequesttask)
-
-### Description
-A [DSRequestTask](classes/DSRequestTask.md#class-dsrequesttask) configured to perform a remove.
-
----
-## Class: DSUpdateTask
-
-*Inherits from:* [DSRequestTask](classes/DSRequestTask.md#class-dsrequesttask)
-
-### Description
-A [DSRequestTask](classes/DSRequestTask.md#class-dsrequesttask) configured to perform a update.
-
----
 ## Class: CardPanel
 
 *Inherits from:* [Card](classes/Card.md#class-card)
@@ -4119,14 +4157,6 @@ Alias for [Card](classes/Card.md#class-card). Deprecated — use `Card` instead.
 **Deprecated**
 
 ---
-## Class: DSFetchTask
-
-*Inherits from:* [DSRequestTask](classes/DSRequestTask.md#class-dsrequesttask)
-
-### Description
-A [DSRequestTask](classes/DSRequestTask.md#class-dsrequesttask) configured to perform a fetch.
-
----
 ## Class: IconButton
 
 *Inherits from:* [RibbonButton](classes/RibbonButton.md#class-ribbonbutton)
@@ -4135,14 +4165,6 @@ A [DSRequestTask](classes/DSRequestTask.md#class-dsrequesttask) configured to pe
 A simple subclass of [RibbonButton](classes/RibbonButton.md#class-ribbonbutton).
 
 **Deprecated**
-
----
-## Class: DSAddTask
-
-*Inherits from:* [DSRequestTask](classes/DSRequestTask.md#class-dsrequesttask)
-
-### Description
-A [DSRequestTask](classes/DSRequestTask.md#class-dsrequesttask) configured to perform an add.
 
 ---
 ## Class: FlatCard
@@ -5975,38 +5997,6 @@ HTML elements that make up a complete FormItem (note, not all FormItems use all 
 ### See Also
 
 - [FormItem.getCustomState](classes/FormItem.md#method-formitemgetcustomstate)
-
----
-## Type: FormItemType
-
-### Description
-DynamicForms automatically choose the FormItem type for a field based on the `type` property of the field and a number of other factors.
-
-See the [formItemTypeSelection](kb_topics/formItemTypeSelection.md#kb-topic-formitem-classes-for-databound-component-fields) overview for a full description of how this works. The table below describes the default basic FormItem chosen for various values of the `type` property when no explicit [FormItem.editorType](classes/FormItem.md#attr-formitemeditortype), [DataSourceField.filterEditorType](classes/DataSourceField.md#attr-datasourcefieldfiltereditortype) is specified, and when the item doesn't have properties set that cause it to behave differently as described in the overview linked above.
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| "text" | Rendered as a [TextItem](classes/TextItem.md#class-textitem) by default |
-| "boolean" | Rendered as a [CheckboxItem](classes/CheckboxItem.md#class-checkboxitem) |
-| "integer" | Rendered as an [IntegerItem](#class-integeritem), a trivial subclass of [TextItem](classes/TextItem.md#class-textitem), by default. Consider setting editorType:[SpinnerItem](classes/SpinnerItem.md#class-spinneritem). |
-| "float" | Rendered as a [FloatItem](#class-floatitem), a trivial subclass of [TextItem](classes/TextItem.md#class-textitem), by default. Consider setting editorType:[SpinnerItem](classes/SpinnerItem.md#class-spinneritem). |
-| "date" | Rendered as a [DateItem](classes/DateItem.md#class-dateitem) |
-| "time" | Rendered as a [TimeItem](classes/TimeItem.md#class-timeitem) |
-| "datetime" | Rendered as a [DateTimeItem](classes/DateTimeItem.md#class-datetimeitem) |
-| "enum" | Rendered as a [SelectItem](classes/SelectItem.md#class-selectitem). Also true for any field that specifies a [FormItem.valueMap](classes/FormItem.md#attr-formitemvaluemap). Consider setting editorType:[ComboBoxItem](classes/ComboBoxItem.md#class-comboboxitem). |
-| "sequence" | Same as `text` |
-| "link" | If [DataSourceField.canEdit](classes/DataSourceField.md#attr-datasourcefieldcanedit)`:false` is set on the field, the value is rendered as a [LinkItem](classes/LinkItem.md#class-linkitem). Otherwise the field is rendered as a [TextItem](classes/TextItem.md#class-textitem). |
-| "image" | If the field is editable, rendered as a [TextItem](classes/TextItem.md#class-textitem) to edit the URL or partial URL  
-If [non editable](classes/FormItem.md#attr-formitemcanedit), and [readOnlyDisplay](classes/DynamicForm.md#attr-dynamicformreadonlydisplay) is "static", an image will be rendered out, deriving the URL from the field value combined with [FormItem.imageURLPrefix](classes/FormItem.md#attr-formitemimageurlprefix) and [FormItem.imageURLSuffix](classes/FormItem.md#attr-formitemimageurlsuffix) if present. This behavior may be suppressed via [DynamicForm.showImageAsURL](classes/DynamicForm.md#attr-dynamicformshowimageasurl), in which case the value (URL or partial URL) will be rendered out as static text. |
-| "imageFile" | For editable fields, rendered as a [FileItem](classes/FileItem.md#class-fileitem) or a [FileUploadItem](classes/FileUploadItem.md#class-fileuploaditem) depending on the value of [DynamicForm.useFileUploadItem](classes/DynamicForm.md#attr-dynamicformusefileuploaditem). For non editable fields, rendered as a [ViewFileItem](#class-viewfileitem). |
-| "binary" | For editable fields, rendered as a [FileItem](classes/FileItem.md#class-fileitem) or a [FileUploadItem](classes/FileUploadItem.md#class-fileuploaditem) depending on the value of [DynamicForm.useFileUploadItem](classes/DynamicForm.md#attr-dynamicformusefileuploaditem). For non editable fields, rendered as a [ViewFileItem](#class-viewfileitem). |
-
-### See Also
-
-- [FormItem.type](classes/FormItem.md#attr-formitemtype)
-- [FieldType](reference_2.md#type-fieldtype)
 
 ---
 ## Type: FormMethod
@@ -9027,18 +9017,6 @@ And in XML:
  </TabSet>
  
 ```
-
----
-## Object: TaskResultModifications
-
-### Description
-Result object for [Process.beforeTaskCommit](classes/Process.md#method-processbeforetaskcommit).
-
----
-## Object: TileRecord
-
-### Description
-A TileRecord is a JavaScript Object whose properties contain values for each TileField. A TileRecord may have additional properties which affect the record's appearance or behavior, or which hold data for use by custom logic or other, related components.
 
 ---
 ## Object: TreeGridField

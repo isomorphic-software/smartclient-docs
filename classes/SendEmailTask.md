@@ -17,6 +17,10 @@ There is a matching Reify Workflow Editor task editor, [SendEmailTaskEditor](#cl
 
 If [mock mode](Process.md#attr-processmockmode) is enabled, instead of sending an email a [notification message](#attr-sendemailtaskmockmodenotifymessage) is shown instead.
 
+### Groups
+
+- serverProcess
+
 ---
 ## Attr: SendEmailTask.mockModeNotifyMessage
 

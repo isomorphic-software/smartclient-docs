@@ -1379,7 +1379,7 @@ and adding "#" and "\*" to the regular expressions above would allow for users t
 ### See Also
 
 - [ListGridFieldType](#type-listgridfieldtype)
-- [FormItemType](#type-formitemtype)
+- [FormItemType](reference_2.md#type-formitemtype)
 
 ---
 ## Type: FilteredSelectAllAction
@@ -1482,6 +1482,38 @@ Name of a SmartClient Class that subclasses [FormItem](classes/FormItem.md#class
 *   ["TextItem"](classes/TextItem.md#class-textitem)
 *   ["SliderItem"](classes/SliderItem.md#class-slideritem),
 *   ["CanvasItem"](classes/CanvasItem.md#class-canvasitem)
+
+---
+## Type: FormItemType
+
+### Description
+DynamicForms automatically choose the FormItem type for a field based on the `type` property of the field and a number of other factors.
+
+See the [formItemTypeSelection](kb_topics/formItemTypeSelection.md#kb-topic-formitem-classes-for-databound-component-fields) overview for a full description of how this works. The table below describes the default basic FormItem chosen for various values of the `type` property when no explicit [FormItem.editorType](classes/FormItem.md#attr-formitemeditortype), [DataSourceField.filterEditorType](classes/DataSourceField.md#attr-datasourcefieldfiltereditortype) is specified, and when the item doesn't have properties set that cause it to behave differently as described in the overview linked above.
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| "text" | Rendered as a [TextItem](classes/TextItem.md#class-textitem) by default |
+| "boolean" | Rendered as a [CheckboxItem](classes/CheckboxItem.md#class-checkboxitem) |
+| "integer" | Rendered as an [IntegerItem](#class-integeritem), a trivial subclass of [TextItem](classes/TextItem.md#class-textitem), by default. Consider setting editorType:[SpinnerItem](classes/SpinnerItem.md#class-spinneritem). |
+| "float" | Rendered as a [FloatItem](#class-floatitem), a trivial subclass of [TextItem](classes/TextItem.md#class-textitem), by default. Consider setting editorType:[SpinnerItem](classes/SpinnerItem.md#class-spinneritem). |
+| "date" | Rendered as a [DateItem](classes/DateItem.md#class-dateitem) |
+| "time" | Rendered as a [TimeItem](classes/TimeItem.md#class-timeitem) |
+| "datetime" | Rendered as a [DateTimeItem](classes/DateTimeItem.md#class-datetimeitem) |
+| "enum" | Rendered as a [SelectItem](classes/SelectItem.md#class-selectitem). Also true for any field that specifies a [FormItem.valueMap](classes/FormItem.md#attr-formitemvaluemap). Consider setting editorType:[ComboBoxItem](classes/ComboBoxItem.md#class-comboboxitem). |
+| "sequence" | Same as `text` |
+| "link" | If [DataSourceField.canEdit](classes/DataSourceField.md#attr-datasourcefieldcanedit)`:false` is set on the field, the value is rendered as a [LinkItem](classes/LinkItem.md#class-linkitem). Otherwise the field is rendered as a [TextItem](classes/TextItem.md#class-textitem). |
+| "image" | If the field is editable, rendered as a [TextItem](classes/TextItem.md#class-textitem) to edit the URL or partial URL  
+If [non editable](classes/FormItem.md#attr-formitemcanedit), and [readOnlyDisplay](classes/DynamicForm.md#attr-dynamicformreadonlydisplay) is "static", an image will be rendered out, deriving the URL from the field value combined with [FormItem.imageURLPrefix](classes/FormItem.md#attr-formitemimageurlprefix) and [FormItem.imageURLSuffix](classes/FormItem.md#attr-formitemimageurlsuffix) if present. This behavior may be suppressed via [DynamicForm.showImageAsURL](classes/DynamicForm.md#attr-dynamicformshowimageasurl), in which case the value (URL or partial URL) will be rendered out as static text. |
+| "imageFile" | For editable fields, rendered as a [FileItem](classes/FileItem.md#class-fileitem) or a [FileUploadItem](classes/FileUploadItem.md#class-fileuploaditem) depending on the value of [DynamicForm.useFileUploadItem](classes/DynamicForm.md#attr-dynamicformusefileuploaditem). For non editable fields, rendered as a [ViewFileItem](#class-viewfileitem). |
+| "binary" | For editable fields, rendered as a [FileItem](classes/FileItem.md#class-fileitem) or a [FileUploadItem](classes/FileUploadItem.md#class-fileuploaditem) depending on the value of [DynamicForm.useFileUploadItem](classes/DynamicForm.md#attr-dynamicformusefileuploaditem). For non editable fields, rendered as a [ViewFileItem](#class-viewfileitem). |
+
+### See Also
+
+- [FormItem.type](classes/FormItem.md#attr-formitemtype)
+- [FieldType](reference_2.md#type-fieldtype)
 
 ---
 ## Type: GlobalId
@@ -2794,6 +2826,7 @@ Reference the current user or operation type:
 *   `auth.userId` — the authenticated user ID (from `DSRequest.getUserId()`)
 *   `auth.roles` — the list of roles for the authenticated user (from `DSRequest.getUserRoles()`)
 *   `context.operationType` — the operation type of the current DSRequest (`"add"`, `"update"`, `"fetch"`, or `"remove"`)
+*   `context.operationId` — the [OperationBinding.operationId](classes/OperationBinding.md#attr-operationbindingoperationid) of the current operation, if one was specified
 
 #### Relational references
 Reference fields on related DataSources via dot notation, with automatic server-side fetching:
@@ -3638,16 +3671,45 @@ A shortcut form is also allowed where only `fieldName` and `value` values are pr
 ## Object: DataContext
 
 ### Description
-A mapping from [DataSource](classes/DataSource_1.md#class-datasource) IDs to specific [Records](#object-record).
+A mapping from [DataSource](classes/DataSource_1.md#class-datasource) IDs to specific [Records](#object-record), and optionally, cross-component [Criteria](reference_2.md#type-criteria) via the reserved `sharedCriteria` key.
 
 To understand how `dataContext` is used to automatically populate [DataBoundComponents](#interface-databoundcomponent), see [Canvas.autoPopulateData](classes/Canvas.md#attr-canvasautopopulatedata).
+
+#### Shared Criteria
+
+The optional `sharedCriteria` key holds [AdvancedCriteria](#object-advancedcriteria) that are automatically combined into every matching DBC's fetch via [DataSource.combineCriteria](classes/DataSource.md#classmethod-datasourcecombinecriteria). Matching is by [fieldName](classes/Criterion.md#attr-criterionfieldname): each sub-criterion applies only to components whose DataSource contains a field of that name with a compatible type (see [Canvas.handleDataContextCriteria](classes/Canvas.md#method-canvashandledatacontextcriteria) for type compatibility rules).
+
+This is the mechanism that powers cross-component filtering: slicer chips, date-range pickers, and other global filters publish criteria into `sharedCriteria`, and all subscribing components re-fetch accordingly.
+
+[RelativeDate](#object-relativedate) values are fully supported inside `sharedCriteria` and are resolved at fetch time, so a criterion like `{ fieldName:"orderDate", operator:"greaterThan", value:{ _constructor: "RelativeDate", value:"-1m" } }` is kept in relative form and re-evaluated on each fetch.
+
+Shared criteria are also provided to [rule context](#rulescope) under the path `dataContext.sharedCriteria`, enabling [dynamic criteria](kb_topics/dynamicCriteria.md#kb-topic-dynamiccriteria) and [visibility rules](classes/FormItem.md#attr-formitemvisiblewhen) to react to the current global filter state.
 
 For example, in JavaScript:
 
 ```
    {
-      "Customer": { customerNumber: "15", name: "Trish Joiner" },
-      "Employee": { employeeID: "4231", name: "Fred Smith" }
+      "Customer": { customerNumber: "15",
+                     name: "Trish Joiner" },
+      "Employee": { employeeID: "4231",
+                     name: "Fred Smith" },
+
+      // Cross-component filter criteria (optional).
+      // Applied to every DBC whose DataSource has a
+      // matching field by name and compatible type.
+      "sharedCriteria": {
+          _constructor: "AdvancedCriteria",
+          operator: "and",
+          criteria: [
+              { fieldName: "orderDate",
+                operator: "betweenInclusive",
+                start: "2026-01-01",
+                end: "2026-03-31" },
+              { fieldName: "region",
+                operator: "inSet",
+                value: ["West", "East"] }
+          ]
+      }
    }
  
 ```
@@ -4384,6 +4446,12 @@ Identifies a potential decision (branch) within a [MultiDecisionTask](classes/Mu
 **Deprecated**
 
 ---
+## Object: TaskResultModifications
+
+### Description
+Result object for [Process.beforeTaskCommit](classes/Process.md#method-processbeforetaskcommit).
+
+---
 ## Object: TestFunctionResult
 
 ### Description
@@ -4400,6 +4468,12 @@ Because TestFunctionResult is always an ordinary JavaScript Object, it supports 
 ### Groups
 
 - formulaFields
+
+---
+## Object: TileRecord
+
+### Description
+A TileRecord is a JavaScript Object whose properties contain values for each TileField. A TileRecord may have additional properties which affect the record's appearance or behavior, or which hold data for use by custom logic or other, related components.
 
 ---
 ## Object: TreeNode

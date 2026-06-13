@@ -17,6 +17,10 @@ There is a matching Reify Workflow Editor task editor, [SendSMSTaskEditor](#clas
 
 If [mock mode](Process.md#attr-processmockmode) is enabled, instead of sending an SMS message a [notification message](#attr-sendsmstaskmockmodenotifymessage) is shown instead.
 
+### Groups
+
+- serverProcess
+
 ---
 ## Attr: SendSMSTask.requestProperties
 

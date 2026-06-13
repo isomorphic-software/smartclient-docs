@@ -138,6 +138,29 @@ You do not have to explicitly create a [ProcessSequence](../reference.md#class-p
 **Flags**: IR
 
 ---
+## Attr: Process.dataSources
+
+### Description
+Comma-separated list of DataSource IDs to pre-load when this process runs server-side (inside an [OperationBinding.process](OperationBinding.md#attr-operationbindingprocess)). The listed DataSources become available to all [ScriptTasks](ScriptTask.md#class-scripttask) in the process as DataSource instances and same-named local variables.
+
+This is the process-level equivalent of [OperationBinding.dataSources](OperationBinding.md#attr-operationbindingdatasources); it scopes the pre-load to this process definition rather than the enclosing operationBinding. Individual ScriptTasks can list additional DataSources via [ScriptTask.dataSources](ScriptTask.md#attr-scripttaskdatasources).
+
+DataSources already listed on the operationBinding or referenced directly in DS\*Task `dataSource` attributes do not need to be listed here.
+
+This attribute has no effect in client-side workflows.
+
+### Groups
+
+- serverProcess
+
+### See Also
+
+- [OperationBinding.dataSources](OperationBinding.md#attr-operationbindingdatasources)
+- [ScriptTask.dataSources](ScriptTask.md#attr-scripttaskdatasources)
+
+**Flags**: IR
+
+---
 ## Attr: Process.outputDS
 
 ### Description
@@ -766,7 +789,7 @@ Override point invoked after a Task completes successfully, but before any of th
 *   Augment or replace the Task's outputs prior to commit.
 *   Apply additional declarative updates to [state](#attr-processstate).
 
-Return a [TaskResultModifications](../reference.md#object-taskresultmodifications) object to influence commit behavior. If you return nothing, the engine proceeds normally.
+Return a [TaskResultModifications](../reference_2.md#object-taskresultmodifications) object to influence commit behavior. If you return nothing, the engine proceeds normally.
 
 ### Parameters
 

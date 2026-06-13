@@ -11,6 +11,31 @@
 ### Description
 Task that executes arbitrary code, either synchronous or asynchronous. Override the [execute()](#method-scripttaskexecute) method to provide custom logic.
 
+### Groups
+
+- serverProcess
+
+---
+## Attr: ScriptTask.language
+
+### Description
+Scripting language for the [ScriptTask.execute](#method-scripttaskexecute) body. When running inside an [OperationBinding.process](OperationBinding.md#attr-operationbindingprocess), this controls which script engine evaluates the code:
+
+*   `null` or `"graal.js"` (default) — execute in the current GraalJS server context, with full access to SmartClient APIs and [Process.state](Process.md#attr-processstate)
+*   Any other value (e.g. `"groovy"`) — delegate to the JSR-223 `ScriptEngine` registered under that name. The engine receives these bindings: `dsRequest`, `criteria`, `values`, `oldValues`, `session`, `config`, and `processState` (the [Process.state](Process.md#attr-processstate) map)
+
+This attribute has no effect in client-side workflows.
+
+### Groups
+
+- serverProcess
+
+### See Also
+
+- [OperationBinding.script](OperationBinding.md#attr-operationbindingscript)
+
+**Flags**: IR
+
 ---
 ## Attr: ScriptTask.isAsync
 
@@ -18,6 +43,27 @@ Task that executes arbitrary code, either synchronous or asynchronous. Override 
 Whether the script task is asynchronous. A synchronous task is expected to return data directly from execute() and is considered complete once the execute() method exits.
 
 An asynchronous task is expected to start processing in execute(), and will not be considered complete [ScriptTask.setOutput](#method-scripttasksetoutput) is called.
+
+**Flags**: IR
+
+---
+## Attr: ScriptTask.dataSources
+
+### Description
+Comma-separated list of DataSource IDs to pre-load into the server-side scripting context before this task executes. The listed DataSources become available as DataSource instances and same-named local variables.
+
+This is the task-level equivalent of [OperationBinding.dataSources](OperationBinding.md#attr-operationbindingdatasources) and [Process.dataSources](Process.md#attr-processdatasources); it scopes the pre-load to a single ScriptTask rather than the entire operationBinding or process.
+
+DataSources already listed on the operationBinding or process do not need to be repeated here.
+
+### Groups
+
+- serverProcess
+
+### See Also
+
+- [OperationBinding.dataSources](OperationBinding.md#attr-operationbindingdatasources)
+- [Process.dataSources](Process.md#attr-processdatasources)
 
 **Flags**: IR
 

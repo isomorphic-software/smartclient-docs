@@ -9,7 +9,7 @@
 *Inherits from:* [HLayout](../reference.md#class-hlayout)
 
 ### Description
-A compact filter control that targets a single DataSource field and publishes selection criteria via [canvas.setDataContextCriteria](#method-canvassetdatacontextcriteria).
+A compact filter control that targets a single DataSource field and publishes selection criteria via [Canvas.setDataContextCriteria](Canvas.md#method-canvassetdatacontextcriteria).
 
 Configure via [Slicer.field](#attr-slicerfield) using `dataSourceID.fieldName` dot notation:
 
@@ -115,7 +115,7 @@ The Slicer resolves the field's base type via [SimpleType.getBaseType](#method-s
 
 ### See Also
 
-- [canvas.setDataContextCriteria()](#canvassetdatacontextcriteria)
+- [Canvas.setDataContextCriteria](Canvas.md#method-canvassetdatacontextcriteria)
 
 **Flags**: IR
 

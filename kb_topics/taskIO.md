@@ -68,5 +68,6 @@ Consider these input definitions and resulting `inputRecord`:
 - [DSRequestTask.outputFieldList](../classes/DSRequestTask.md#attr-dsrequesttaskoutputfieldlist)
 - [HumanTask.inputs](../classes/HumanTask.md#attr-humantaskinputs)
 - [HumanTask.outputs](../classes/HumanTask.md#attr-humantaskoutputs)
+- [DefaultOperationTask.outputField](../classes/DefaultOperationTask.md#attr-defaultoperationtaskoutputfield)
 
 ---

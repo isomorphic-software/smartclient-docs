@@ -443,6 +443,14 @@ CSS style for each block (one record's worth of data).
 **Flags**: IRW
 
 ---
+## Attr: DetailViewer.clipLabels
+
+### Description
+Should field labels that exceed their column width be clipped rather than overflowing? When set, the value table uses fixed layout and each label cell is given `overflow:hidden`, so an over-long label is clipped to its column instead of spilling across the adjacent value. This is the label-cell analog of the internal value clipping used by [TileGrid](TileGrid.md#class-tilegrid).
+
+**Flags**: IRW
+
+---
 ## Attr: DetailViewer.separatorStyle
 
 ### Description

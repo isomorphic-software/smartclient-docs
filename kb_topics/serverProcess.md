@@ -42,7 +42,7 @@ The process produces a DSResponse via precedence:
 
 **Error Handling**
 
-If any task fails and has no [DSRequestTask.failureElement](../classes/DSRequestTask.md#attr-dsrequesttaskfailureelement), the process aborts immediately and returns STATUS\_FAILURE. If the operation participates in a transaction ([OperationBinding.autoJoinTransactions](#attr-operationbindingautojointransactions)), the transaction rolls back.
+If any task fails and has no [DSRequestTask.failureElement](../classes/DSRequestTask.md#attr-dsrequesttaskfailureelement), the process aborts immediately and returns STATUS\_FAILURE. If the operation participates in a transaction ([OperationBinding.autoJoinTransactions](../classes/OperationBinding.md#attr-operationbindingautojointransactions)), the transaction rolls back.
 
 **Server-Side Task Compatibility**
 

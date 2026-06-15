@@ -750,13 +750,21 @@ The general-purpose method for deriving a related color from a base color. Accep
 *   **hue** (degrees): signed rotation around the color wheel. See [complement()](#classmethod-colorscomplement) for the hue wheel reference.
 *   **alpha**: signed delta to opacity (0 = transparent, 1 = opaque).
 
+**RGB delta keys** (for direct channel control):
+
+*   **red**: signed delta to the red channel (0-255).
+*   **green**: signed delta to the green channel (0-255).
+*   **blue**: signed delta to the blue channel (0-255).
+
+RGB deltas are applied first (in RGB space, clamped to 0-255), before any oklch adjustments. This allows combining RGB shifts with perceptual adjustments in a single call, e.g. `{red: 20, lightness: 10}`.
+
 **Raw oklch keys** (for fine-grained control - see the [oklch color space](https://oklch.com/)):
 
 *   **L**: signed delta to lightness (0-1). +0.1 is noticeably lighter.
 *   **C**: signed delta to chroma (0 = gray, max ~0.4). -0.05 desaturates subtly.
 *   **h** and **alpha** work the same as the friendly keys above.
 
-Friendly and raw keys may be mixed freely; friendly keys are applied first. The output format defaults to the input format, so `rgb(...)` input returns `rgb(...)` output, etc.
+All key groups may be mixed freely; RGB deltas are applied first, then friendly percentage keys, then raw oklch keys. The output format defaults to the input format, so `rgb(...)` input returns `rgb(...)` output, etc.
 
 Examples:
 
@@ -790,7 +798,7 @@ Examples:
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | color | [String](#type-string)|[Color](#type-color) | false | — | base color - any valid CSS color string or structured object from [Colors.getColor](#classmethod-colorsgetcolor) |
-| deltas | [Object](../reference.md#type-object) | false | — | adjustment keys - any combination of friendly keys (`lightness` , `saturation`, `hue`, `alpha`) and/or raw oklch keys (`L`, `C`, `h`). See the key lists above. |
+| deltas | [Object](../reference.md#type-object) | false | — | adjustment keys - any combination of RGB keys (`red`, `green`, `blue`), friendly keys (`lightness`, `saturation`, `hue`, `alpha`), and/or raw oklch keys (`L`, `C`, `h`). See the key lists above. |
 | outputFormat | [ColorFormat](../reference_2.md#type-colorformat) | true | — | format for the returned string; defaults to the detected format of the input color (hex for named colors) |
 
 ### Returns

@@ -345,6 +345,8 @@ Specify as the partial URL to an image, relative to the imgDir of this component
 
 Note that the string "blank" is a valid setting for this attribute and will always result in the system blank image, with no state suffixes applied. Typically, this might be used when an iconStyle is also specified and the iconStyle renders the icon via a stateful background-image or other CSS approach.
 
+To show only an icon, with no title text (an "icon-only" button), set [title](#attr-statefulcanvastitle) to null. An explicit empty string ("") is not equivalent: it reserves space for an empty title and leaves the icon off-center, so use null rather than "" for an icon-only button.
+
 ### Groups
 
 - buttonIcon

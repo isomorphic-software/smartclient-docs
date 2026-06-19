@@ -131,6 +131,8 @@ Constructor class for the button.
 ### Description
 Optional icon image to display on the button for this item. See [Button.icon](Button.md#attr-buttonicon).
 
+To create an icon-only button, set this item's [title](FormItem.md#attr-formitemtitle) to null. This clears the title text so the icon is centered. Leaving the title unset shows the item's name on the button, and an explicit empty string ("") reserves space for an empty title and leaves the icon off-center, so use null for an icon-only button.
+
 ### Groups
 
 - appearance

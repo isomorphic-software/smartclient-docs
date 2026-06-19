@@ -296,6 +296,16 @@ Long events are rendered using a subclass of [EventCanvas](EventCanvas.md#class-
 **Flags**: RWA
 
 ---
+## Attr: Calendar.showIndicatorHovers
+
+### Description
+When [showViewHovers](#attr-calendarshowviewhovers) is true, dictates whether to display hover prompts when the mouse moves over an [indicator](#attr-calendarindicators) in a calendarView.
+
+The content of the hover is determined by a call to [Calendar.getIndicatorHoverHTML](#method-calendargetindicatorhoverhtml), which can be overridden to return custom results.
+
+**Flags**: IRW
+
+---
 ## Attr: Calendar.alternateLaneStyles
 
 ### Description
@@ -1378,7 +1388,7 @@ NOTE: if `autoFetchData` is set, calling [fetchData()](ListGrid_2.md#method-list
 ### Description
 When [showViewHovers](#attr-calendarshowviewhovers) is true, dictates whether to display hover prompts when the mouse moves over a [zone](#attr-calendarzones) in a calendarView.
 
-When [showCellHovers](#attr-calendarshowcellhovers) is true, this attribute is ignored and zone hovers are not displayed.
+When [showCellHovers](#attr-calendarshowcellhovers) is also true, zone hover content is appended to the cell hover rather than shown independently.
 
 The content of the hover is determined by a call to [Calendar.getZoneHoverHTML](#method-calendargetzonehoverhtml), which can be overridden to return custom results.
 
@@ -1488,6 +1498,14 @@ When using the Next and Previous arrows to scroll a Timeline, this is the number
 If true, allows the lanes in a Timeline to be grouped by providing a value for [laneGroupByField](#attr-calendarlanegroupbyfield). The fields available for grouping on are those defined as [lane fields](#attr-calendarlanefields). Since these are definitions for [normal fields](../reference_2.md#object-listgridfield), you can choose to [hide](ListGridField.md#method-listgridfieldshowif) the field in the timeline, but still have it available for grouping.
 
 **Flags**: IRW
+
+---
+## Attr: Calendar.eventCanvasButtonPadding
+
+### Description
+The offset in pixels from the top and right edges of an event canvas at which the [button layout](#attr-calendareventcanvasbuttonlayout) (containing the close and context buttons) is positioned on rollover. Applied as both `layoutTopMargin` and `layoutRightMargin` on the button layout. In skins that support density scaling, this value can be registered with [Canvas.registerIconSizingAttributes](Canvas.md#classmethod-canvasregistericonsizingattributes) so it grows with the UI density.
+
+**Flags**: IR
 
 ---
 ## Attr: Calendar.eventEditorFields
@@ -2164,7 +2182,7 @@ The icon to show in the [month-button](#attr-calendarmonthbutton) on Handsets wh
 ### Description
 When set to true, the default value, causes the Calendar to show customizable hovers when the mouse moves over various areas of a CalendarView.
 
-See [showEventHovers](#attr-calendarshoweventhovers), [showZoneHovers](#attr-calendarshowzonehovers), [showHeaderHovers](#attr-calendarshowheaderhovers), [showCellHovers](#attr-calendarshowcellhovers), [showLaneFieldHovers](#attr-calendarshowlanefieldhovers), [showDragHovers](#attr-calendarshowdraghovers) for further configuration options.
+See [showEventHovers](#attr-calendarshoweventhovers), [showZoneHovers](#attr-calendarshowzonehovers), [showIndicatorHovers](#attr-calendarshowindicatorhovers), [showHeaderHovers](#attr-calendarshowheaderhovers), [showCellHovers](#attr-calendarshowcellhovers), [showLaneFieldHovers](#attr-calendarshowlanefieldhovers), [showDragHovers](#attr-calendarshowdraghovers) for further configuration options.
 
 **Flags**: IRW
 
@@ -3178,18 +3196,22 @@ Gets the criteria to use when the calendar date ranges shift. This would be call
 ## Method: Calendar.getLongEventLayoutHoverHTML
 
 ### Description
-Returns the text to be displayed in a [hover](Canvas.md#attr-canvasshowhover) when the mouse is held over the [separate layout](CalendarView.md#attr-calendarviewlongeventslayout) where [long-events](#method-calendarislongevent) are displayed.
+Returns the hover HTML when the mouse is over the background of a [long-events layout](CalendarView.md#attr-calendarviewlongeventslayout) (not over an individual event canvas within it).
+
+Returns null by default, so no hover appears. Override to show custom content such as the date or summary information.
+
+In the [month view](#attr-calendarmonthview), hovering the layout background shows the cell hover for the day underneath instead of calling this method.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| layout | [Canvas](#type-canvas) | false | — | the longEventsLayout over which the mouse is hovered |
-| view | [CalendarView](#type-calendarview) | true | — | the view in which the event is being rendered |
+| layout | [Canvas](#type-canvas) | false | — | the longEventsLayout being hovered |
+| view | [CalendarView](#type-calendarview) | true | — | the CalendarView |
 
 ### Returns
 
-`[HTMLString](../reference.md#type-htmlstring)` — the HTML to display in the hover for this longEventsLayout
+`[HTMLString](../reference.md#type-htmlstring)` — HTML for the hover, or null for none
 
 ---
 ## Method: Calendar.getSublaneEvents
@@ -3457,19 +3479,42 @@ Return false to prevent the default action, of resizing the drag canvas to the n
 ## Method: Calendar.getLongEventHoverHTML
 
 ### Description
-Returns the text to be displayed in a [hover](Canvas.md#attr-canvasshowhover) when the mouse is held over a given [event](EventCanvas.md#class-eventcanvas) in the [separate layout](CalendarView.md#attr-calendarviewlongeventslayout) where [long-events](#method-calendarislongevent) are displayed.
+Returns the hover HTML for an event canvas in the [long-events layout](CalendarView.md#attr-calendarviewlongeventslayout).
+
+By default, uses the same hover path as regular [event canvases](EventCanvas.md#class-eventcanvas), building default HTML from the event's dates, name, and description, then calling [Calendar.getEventHoverHTML](#method-calendargeteventhoverhtml). This means overriding `getEventHoverHTML()` customizes both regular and long-event hovers.
+
+Override this method to provide different hover content specifically for long events; when overridden, this method takes precedence over the regular event hover path.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| event | [CalendarEvent](#type-calendarevent) | false | — | the event to get the description text for |
-| layout | [Canvas](#type-canvas) | false | — | the longEventsLayout in which this event is displayed |
-| view | [CalendarView](#type-calendarview) | true | — | the view in which the event is being rendered |
+| event | [CalendarEvent](#type-calendarevent) | false | — | the event being hovered |
+| layout | [Canvas](#type-canvas) | false | — | the longEventsLayout containing it |
+| view | [CalendarView](#type-calendarview) | true | — | the CalendarView |
 
 ### Returns
 
-`[HTMLString](../reference.md#type-htmlstring)` — the HTML to display in the header of an event canvas
+`[HTMLString](../reference.md#type-htmlstring)` — the HTML for the hover
+
+---
+## Method: Calendar.getMonthViewHeaderHoverHTML
+
+### Description
+Returns the hover HTML for a day-number header cell in the [month view](#attr-calendarmonthview). These cells are the day-number rows that alternate with the event-list body rows when [Calendar.showDayHeaders](#attr-calendarshowdayheaders) is true.
+
+By default, returns the formatted date. Override to show custom content. This method is only called when [Calendar.showHeaderHovers](#attr-calendarshowheaderhovers) is true.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| date | [Date](#type-date) | false | — | the date for this header cell |
+| view | [CalendarView](#type-calendarview) | false | — | the month view |
+
+### Returns
+
+`[HTMLString](../reference.md#type-htmlstring)` — HTML to display in the hover
 
 ---
 ## Method: Calendar.getEventCanvasMenuItems

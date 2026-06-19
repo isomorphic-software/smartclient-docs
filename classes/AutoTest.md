@@ -403,7 +403,7 @@ By default this will wait for the following system actions to complete:
 *   Any [queued redraws](Canvas.md#method-canvasmarkforredraw)
 *   Any non-recurring [delayed actions](Timer.md#class-timer)
 
-Note that this behavior may differ from the default settings for [AutoTest.isSystemDone](#classmethod-autotestissystemdone)
+Pass `{includeFieldRebuild:true}` to also wait for field-rebuild work on not-yet-drawn [ListGrids](ListGrid_1.md#class-listgrid) (e.g. async formula or summary field computation initiated before the grid is drawn). Note that this behavior may differ from the default settings for [AutoTest.isSystemDone](#classmethod-autotestissystemdone)
 
 The `options` parameter gives developers finer grained control over what to wait for.
 

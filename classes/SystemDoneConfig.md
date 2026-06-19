@@ -22,6 +22,16 @@ If not explicitly set, [AutoTest.implicitNetworkWait](AutoTest.md#classattr-auto
 **Flags**: IR
 
 ---
+## Attr: SystemDoneConfig.includeFieldRebuild
+
+### Description
+Should the system wait for any pending field-rebuild work to complete before [AutoTest.isSystemDone](AutoTest.md#classmethod-autotestissystemdone) returns true?
+
+When `true`, [AutoTest.isGridDone](AutoTest.md#classmethod-autotestisgriddone) is checked for all [ListGrids](ListGrid_1.md#class-listgrid) — including grids that have not yet been drawn — to detect pending asynchronous field generation (e.g. formula or summary field computation). For already-drawn grids this check happens automatically; the flag extends it to not-yet-drawn grids, and also makes the intent explicit in tests that modify field state via actions such as `addFormulaField` or `restoreState`.
+
+**Flags**: IR
+
+---
 ## Attr: SystemDoneConfig.includeRedraws
 
 ### Description

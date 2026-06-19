@@ -121,6 +121,8 @@ Should the title for this button wrap? If unset, default behavior is to allow wr
 ### Description
 The title HTML to display in this button. May include [dynamic template](../kb_topics/dynamicTemplates.md#kb-topic-dynamic-templates) expressions in {expr} form — for example, `title: "Save {Customer.name}'s data"` — which re-evaluate when their referenced ruleScope paths change.
 
+To create an "icon-only" button — one showing just an [icon](StatefulCanvas.md#attr-statefulcanvasicon) with no title — set title to null. An explicit empty string ("") is not equivalent: it reserves space for an empty title and leaves the icon off-center, so use null rather than "".
+
 ### Groups
 
 - basics
@@ -205,6 +207,8 @@ Optional icon to be shown with the button title text.
 Specify as the partial URL to an image, relative to the imgDir of this component. A sprited image can be specified using the [SCSpriteConfig](../reference.md#type-scspriteconfig) format.
 
 Note that the string "blank" is a valid setting for this attribute and will always result in the system blank image, with no state suffixes applied. Typically, this might be used when an iconStyle is also specified and the iconStyle renders the icon via a stateful background-image or other CSS approach.
+
+To show only an icon, with no title text (an "icon-only" button), set [title](StatefulCanvas.md#attr-statefulcanvastitle) to null. An explicit empty string ("") is not equivalent: it reserves space for an empty title and leaves the icon off-center, so use null rather than "" for an icon-only button.
 
 ### Groups
 

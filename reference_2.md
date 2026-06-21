@@ -408,6 +408,7 @@ Every `ControlName` is also the name of an [AutoChild](#type-autochild), so all 
 | "boldSelection" | A button to make the current selection bold. |
 | "italicSelection" | A button to make the current selection italic. |
 | "underlineSelection" | A button to make the current selection underlined. |
+| "strikethroughSelection" | A button to strike through the current selection. |
 | "fontSelector" | A select item allowing the user to change the font of the current text selection. |
 | "fontSizeSelector" | A select item allowing the user to change the font size of the current text selection. |
 | "alignLeft" | A button to left-align the selected text. |

@@ -722,8 +722,8 @@ See [dateFormatAndStorage](../kb_topics/dateFormatAndStorage.md#kb-topic-date-an
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | hour | [Integer](../reference_2.md#type-integer)|[Date](#type-date) | false | — | integer hour (0-23) or a Date instance - if passed a Date instance, its time-elements are mapped to hour, minute and second parameters. Passing null is the same as passing `new Date()` |
-| minute | [Integer](../reference_2.md#type-integer) | false | — | minute (0-59) - defaults to zero or, if the `hour` parameter is a Date instance, the minutes from that Date instance |
-| second | [Integer](../reference_2.md#type-integer) | false | — | second (0-59) - defaults to zero or, if the `hour` parameter is a Date instance, the seconds from that Date |
+| minute | [Integer](../reference_2.md#type-integer) | true | — | minute (0-59) - defaults to zero or, if the `hour` parameter is a Date instance, the minutes from that Date instance |
+| second | [Integer](../reference_2.md#type-integer) | true | — | second (0-59) - defaults to zero or, if the `hour` parameter is a Date instance, the seconds from that Date |
 
 ### Returns
 

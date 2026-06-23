@@ -106,6 +106,14 @@ AutoChild for the dual-thumb [RangeSlider](RangeSlider.md#class-rangeslider) use
 **Flags**: IR
 
 ---
+## Attr: Slicer.value
+
+### Description
+The Slicer's current selection, expressed as the [AdvancedCriteria](../reference.md#object-advancedcriteria) it publishes to the [dataContext](Canvas.md#attr-canvasdatacontext). This is the serializable representation of the slice: it is captured into the edit node at serialization time (see [updateEditNode()](Canvas.md#method-canvasupdateeditnode)) so it round-trips through edit-node storage just like a [listGrid.criteria](#listgridcriteria), and on recreation the Slicer reflects it in its control and re-publishes it (see [draw()](Canvas.md#method-canvasdraw)). Holds `null` when nothing is selected.
+
+**Flags**: IRW
+
+---
 ## Attr: Slicer.field
 
 ### Description

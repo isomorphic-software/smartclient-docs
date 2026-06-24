@@ -75,7 +75,7 @@ See the [subquery overview](../reference.md#object-advancedcriterionsubquery) fo
 
 Note, if you specify both `fieldQuery` and `fieldName` in a criterion, we use the `fieldName` and the `fieldQuery` is ignored.
 
-Note also that `fieldName` supports a special shortcut syntax for declaring a `fieldQuery` as a simple qualified reference to a related field. See the `fieldName` doc linked above for details
+Note also that [Criterion.fieldName](#attr-criterionfieldname) supports a shortcut syntax for declaring a a simple qualified `"dsName.fieldName"` reference, which gets automatically converted into a basic `fieldQuery` by the criteria system. See the documentation for that property for details.
 
 `fieldQuery` is supported for client-side filtering of `clientOnly` DataSources, [MockDataSource](MockDataSource.md#class-mockdatasource)s, and DataSources with a complete cache. See the "Client-Side Subquery Support" section in the [subquery overview](../reference.md#object-advancedcriterionsubquery) for details.
 

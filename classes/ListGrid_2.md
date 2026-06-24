@@ -1088,6 +1088,8 @@ Note that if this grid is bound to a [dataSource](ListGrid_1.md#attr-listgriddat
 
 The `ignorePendingValues` parameter may be used by developers who want to ignore this case and simply compare edit values against the record in the local data set.
 
+This grid contributes ``<gridId>`.hasChanges` to the [ruleContext](Canvas.md#attr-canvasrulescope), updated whenever edit state changes. To check only the row currently being edited, use [ListGrid.rowHasChanges](#method-listgridrowhaschanges).
+
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
@@ -1096,7 +1098,7 @@ The `ignorePendingValues` parameter may be used by developers who want to ignore
 
 ### Returns
 
-`[Boolean](#type-boolean)` — returns true of any unsaved edits are present
+`[Boolean](#type-boolean)` — returns true if any unsaved edits are present
 
 ### Groups
 
@@ -9080,6 +9082,8 @@ Note this method will not return true if a record has been marked as [removed](#
 Note that if this grid is bound to a [dataSource](ListGrid_1.md#attr-listgriddatasource), and an asynchronous save has been submitted, this method will compare the local edit values against the submitted values by default, returning false (no changes), if they match. This is useful for detecting whether the user is actively editing values and hasn't yet committed them.
 
 The `ignorePendingValues` parameter may be used by developers who want to ignore this case and simply compare edit values against the record in the local data set.
+
+When a row is being actively edited, this grid contributes ``<gridId>`.rowHasChanges` to the [ruleContext](Canvas.md#attr-canvasrulescope) reflecting the result of this method for the current edit row (null when no row is being edited). To check for unsaved edits across all rows, use [ListGrid.hasChanges](#method-listgridhaschanges).
 
 ### Parameters
 

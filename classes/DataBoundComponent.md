@@ -2002,7 +2002,11 @@ Returning `false` from this method will prevent the field from being added. Note
 ## Method: DataBoundComponent.getImplicitCriteria
 
 ### Description
-Returns a copy of the [DataBoundComponent.implicitCriteria](#attr-databoundcomponentimplicitcriteria) currently applied to this component.
+Returns a copy of the implicit criteria currently applied to this component.
+
+These criteria are never shown to or edited by the user and are cumulative with any criteria provided via [DataBoundComponent.initialCriteria](#attr-databoundcomponentinitialcriteria) and related methods.
+
+This method returns explicitly specified [DataBoundComponent.implicitCriteria](#attr-databoundcomponentimplicitcriteria), combined with criteria derived from any [dataContext.sharedCriteria](Canvas.md#attr-canvasdatacontext) that applies to this component.
 
 ---
 ## Method: DataBoundComponent.deselectRecord

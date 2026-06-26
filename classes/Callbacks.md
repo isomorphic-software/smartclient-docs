@@ -631,6 +631,19 @@ Callback executed when a message is sent to a channel that you have [subscribed]
 Callback to execute after the section has been hidden.
 
 ---
+## Method: Callbacks.PublishScreenCallback
+
+### Description
+Callback for [Reify.publishScreen](Reify.md#classmethod-reifypublishscreen).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| publishURL | [String](#type-string) | false | — | the viewable URL, or null on failure |
+| screenName | [String](#type-string) | false | — | the generated screen name |
+
+---
 ## Method: Callbacks.RowCountCallback
 
 ### Description

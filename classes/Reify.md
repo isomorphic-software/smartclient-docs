@@ -156,6 +156,21 @@ The [DataSource](DataSource_1.md#class-datasource) to use for saving the project
 **Flags**: IR
 
 ---
+## ClassMethod: Reify.publishScreen
+
+### Description
+Publishes a screen to a viewable URL via the Reify project infrastructure, without requiring a live Reify builder instance. The screen is saved to `vbScreens`, added to a Reify project in `vbProjects`, and a `projectRunner.jsp` URL is constructed that renders the screen on the fly. The callback receives the viewable URL.
+
+This reuses the same project storage and rendering pipeline that [Reify.editInReify](#classmethod-reifyeditinreify) and Reify's own Run button use.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| config | [PublishScreenConfig](#type-publishscreenconfig) | false | — | publish configuration |
+| callback | [PublishScreenCallback](#type-publishscreencallback) | true | — | called with the URL |
+
+---
 ## ClassMethod: Reify.toggleOverlay
 
 ### Description

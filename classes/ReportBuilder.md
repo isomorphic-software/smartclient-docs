@@ -130,6 +130,14 @@ Form containing the DataSource picker. Scoped to manual palette-based component 
 **Flags**: R
 
 ---
+## Attr: ReportBuilder.autoLinkComponents
+
+### Description
+When true, dropping two foreign-key-related data views (e.g. an Orders grid and an Order Items grid) automatically creates a master-detail link: selecting a row in the master (the FK parent) re-fetches the detail (the FK child) to that record's children via [DataBoundComponent.fetchRelatedData](#method-databoundcomponentfetchrelateddata). Auto-links surface an auto-dismissing notification and a "Driven by" affordance, and can be changed or removed by the user (which marks the link explicit, so a later auto-link pass leaves it alone). Turn this off for fully manual linking.
+
+**Flags**: IRW
+
+---
 ## Attr: ReportBuilder.allowedComponentTypes
 
 ### Description
@@ -672,5 +680,13 @@ Sets report-level query configuration including criteria, groupBy, and summaryFu
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | dsRequestProps | [DSRequest Properties](#type-dsrequest-properties) | false | — | query configuration |
+
+---
+## Method: ReportBuilder.publishReport
+
+### Description
+Publishes the current report to a shareable URL via [Reify.publishScreen](Reify.md#classmethod-reifypublishscreen). The report's EditContext is serialized, saved as a Reify screen, added to the [ReportBuilder.reifyProjectName](#attr-reportbuilderreifyprojectname) project, and a share record is written to `isc_sharedProjects`. On success a dialog displays the copyable share URL.
+
+This reuses the same Reify infrastructure (`projectRunner.jsp`) that [Reify.publishProject](#method-reifypublishproject) uses, so the published report is a real Reify screen that can also be opened in Reify for further editing.
 
 ---

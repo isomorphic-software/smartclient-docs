@@ -8776,6 +8776,12 @@ Holds information about the outcome of a settled [Promise](reference_2.md#object
 Note: This is the type of object returned by Promise.allSettled().
 
 ---
+## Object: PublishScreenConfig
+
+### Description
+Configuration for [Reify.publishScreen](classes/Reify.md#classmethod-reifypublishscreen).
+
+---
 ## Object: RadialGradient
 
 ### Description

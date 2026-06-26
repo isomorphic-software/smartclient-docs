@@ -3195,6 +3195,12 @@ Gets the criteria to use when the calendar date ranges shift. This would be call
 `[Criterion](#type-criterion)` — modified criteria
 
 ---
+## Method: Calendar.refreshSelectedView
+
+### Description
+Refresh the events shown in the currently selected [view](CalendarView.md#class-calendarview), re-laying them out from the current [data](#attr-calendardata). This is lighter than [Calendar.rebuildSelectedView](#method-calendarrebuildselectedview): it refreshes the events but does not rebuild the view's structure, so changes that affect that structure (such as a modified [Calendar.eventSnapGap](#attr-calendareventsnapgap)) need a rebuild instead.
+
+---
 ## Method: Calendar.getLongEventLayoutHoverHTML
 
 ### Description
@@ -5356,6 +5362,18 @@ Save an event to this Calendar's ${isc.DocUtils.linkForRef('attr:Calendar.dataSo
 | event | [CalendarEvent](#type-calendarevent) | false | — | The event object that will be updated |
 | newEvent | [CalendarEvent](#type-calendarevent) | false | — | The new attributes for the event |
 | otherFields | [Object](../reference.md#type-object) | false | — | new values of additional fields to be updated |
+
+---
+## Method: Calendar.rebuildSelectedView
+
+### Description
+Rebuild the currently selected [view](CalendarView.md#class-calendarview) - a shortcut for calling [CalendarView.rebuild](CalendarView.md#method-calendarviewrebuild) on [Calendar.getSelectedView](#method-calendargetselectedview). A rebuild (rather than a [refresh](#method-calendarrefreshselectedview)) is required to pick up changes that affect the structure of the view, such as a modified [Calendar.eventSnapGap](#attr-calendareventsnapgap).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| refreshData | [Boolean](#type-boolean) | true | — | passed through to [CalendarView.rebuild](CalendarView.md#method-calendarviewrebuild); if false, the view's data is not re-fetched |
 
 ---
 ## Method: Calendar.removeIndicator

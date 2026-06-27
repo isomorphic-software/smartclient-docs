@@ -216,6 +216,14 @@ AutoChild VLayouts created automatically by groups. Each manages a single column
 **Flags**: IR
 
 ---
+## Attr: RibbonGroup.controlVMargin
+
+### Description
+Vertical space, in pixels, between controls stacked within a single [column](#attr-ribbongroupcolumnlayout) of this group. Only has a visible effect when [RibbonGroup.numRows](#attr-ribbongroupnumrows) is greater than 1, so that a column holds more than one control. For the horizontal gap between controls that sit next to each other, see [RibbonGroup.controlHMargin](#attr-ribbongroupcontrolhmargin).
+
+**Flags**: IRW
+
+---
 ## Attr: RibbonGroup.newControlDefaults
 
 ### Description
@@ -226,6 +234,16 @@ Properties used by [createControl](#method-ribbongroupcreatecontrol) when creati
 - ribbonGroup
 
 **Flags**: IR
+
+---
+## Attr: RibbonGroup.controlHMargin
+
+### Description
+Horizontal space, in pixels, between controls that sit next to each other in this group.
+
+Controls in a RibbonGroup are arranged into [columns](#attr-ribbongroupcolumnlayout) (each holding up to [numRows](#attr-ribbongroupnumrows) controls stacked vertically), which the [body](#attr-ribbongroupbody) then lays out side by side. This property sets the [Layout.membersMargin](Layout.md#attr-layoutmembersmargin) of the body, so it governs the gap between controls in adjacent columns - which, with the default [RibbonGroup.numRows](#attr-ribbongroupnumrows) of 1, is every control in the group. For the vertical gap between controls stacked within a single column, see [RibbonGroup.controlVMargin](#attr-ribbongroupcontrolvmargin).
+
+**Flags**: IRW
 
 ---
 ## Method: RibbonGroup.setTitleOrientation
@@ -260,6 +278,18 @@ This method forcibly sets the [CSS class name](#attr-ribbongrouptitlestyle) for 
 
 ### Description
 Forces this group to reflow following changes to attributes that affect layout, like [numRows](#attr-ribbongroupnumrows).
+
+---
+## Method: RibbonGroup.setRowHeight
+
+### Description
+Setter for [RibbonGroup.rowHeight](#attr-ribbongrouprowheight), updating the height of rows - and therefore the height of each control - at runtime.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| rowHeight | [Number](#type-number) | false | — | new height, in pixels, for each row |
 
 ---
 ## Method: RibbonGroup.getControlColumn
@@ -330,6 +360,18 @@ This method forcibly sets the horizontal alignment of the [title-text](#attr-rib
 - ribbonGroup
 
 ---
+## Method: RibbonGroup.setControlVMargin
+
+### Description
+Setter for [RibbonGroup.controlVMargin](#attr-ribbongroupcontrolvmargin), updating the vertical space between controls stacked within a column at runtime.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| margin | [Integer](../reference_2.md#type-integer) | false | — | new vertical margin, in pixels, between controls |
+
+---
 ## Method: RibbonGroup.addControls
 
 ### Description
@@ -340,6 +382,18 @@ Adds an array of controls to this group, creating new [columns](#attr-ribbongrou
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | controls | [Array of Canvas](#type-array-of-canvas) | false | — | an array of widgets to add to this group |
+
+---
+## Method: RibbonGroup.setControlHMargin
+
+### Description
+Setter for [RibbonGroup.controlHMargin](#attr-ribbongroupcontrolhmargin), updating the horizontal space between controls at runtime.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| margin | [Integer](../reference_2.md#type-integer) | false | — | new horizontal margin, in pixels, between controls |
 
 ---
 ## Method: RibbonGroup.addControl

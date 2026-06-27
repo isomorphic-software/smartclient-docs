@@ -721,6 +721,22 @@ A plain [KeyName](../reference_2.md#type-keyname) string (e.g. `"F2"`) is also a
 | key | [KeyName](../reference_2.md#type-keyname)|[KeyIdentifier](#type-keyidentifier) | false | — | new key binding |
 
 ---
+## ClassMethod: Reify.addDataSourcesToProject
+
+### Description
+Register one or more DataSources in an existing Reify project's ``<datasources>`` section. The DataSource definitions must already be saved in `vbDataSources` storage; this method only updates the project's membership list so Reify-AI and the DataSources panel see them. Deduplicates by `dsName`.
+
+Mirrors [Reify.addScreensToProject](#classmethod-reifyaddscreenstoproject) for screens.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| projectName | [String](#type-string) | false | — | project name |
+| dsNames | [Array of String](#type-array-of-string) | false | — | DataSource IDs to register |
+| callback | [Function](#type-function) | true | — | called with (DSResponse dsResponse, Object data) |
+
+---
 ## ClassMethod: Reify.getProjectsDS
 
 ### Description

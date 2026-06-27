@@ -36,6 +36,14 @@ Name for the screen in Reify storage. If omitted, a timestamp-suffixed name is g
 **Flags**: IR
 
 ---
+## Attr: PublishScreenConfig.dataSources
+
+### Description
+DataSource IDs to register in the project's ``<datasources>`` section via [Reify.addDataSourcesToProject](Reify.md#classmethod-reifyadddatasourcestoproject). The DS definitions must already exist in `vbDataSources` storage.
+
+**Flags**: IR
+
+---
 ## Attr: PublishScreenConfig.editContext
 
 ### Description

@@ -232,6 +232,14 @@ Signature: `reportSaved(report)` where `report` is the saved report record (`Obj
 **Flags**: IRW
 
 ---
+## Attr: ReportBuilder.scheduleRecipientOptions
+
+### Description
+Suggested recipient email addresses offered in the Schedule dialog's recipients picker. Empty by default; a deployment supplies its own distribution lists / known addresses. Users may still type any valid email (validated on entry).
+
+**Flags**: IRW
+
+---
 ## Attr: ReportBuilder.defaultExportFormat
 
 ### Description
@@ -276,6 +284,14 @@ Default paletteNode for the PortalLayout used within the EditPane.
 **Flags**: R
 
 ---
+## Attr: ReportBuilder.dsDataSource
+
+### Description
+DataSource used for DataSource definition storage. Defaults to `vbDataSources` (Reify's on-prem ProjectFile fileSource). Hosted environments can point at `isc_hostedDataSources`. ReportBuilder and Reify share this storage so that Edit-in-Reify and Publish flows find the DataSources automatically.
+
+**Flags**: IR
+
+---
 ## Attr: ReportBuilder.reifyProjectName
 
 ### Description
@@ -295,7 +311,11 @@ AI engine ID to use for AI-powered component generation. If not specified, inher
 ## Attr: ReportBuilder.availableDataSources
 
 ### Description
-DataSources available for report building. Can be an array of DataSource instances or DataSource IDs. If not specified, uses isc.AI.getDataSourceNames() to discover available DataSources.
+DataSource IDs available for report building. These DataSources appear in the DS picker dropdown and are included in published and Edit-in-Reify screens so that indirectly referenced DataSources (via `includeFrom`, `foreignKey`, etc.) are available at runtime.
+
+The DataSource definitions must exist in [ReportBuilder.dsDataSource](#attr-reportbuilderdsdatasource) storage (typically `vbDataSources`). They are loaded on demand via `DataSourceLoader` when the picker initializes.
+
+This property is effectively required — without it ReportBuilder has no DataSources for its reports.
 
 **Flags**: IRW
 
@@ -441,6 +461,14 @@ DataSource ID (or DataSource instance) to persist AI prompt history into. If uns
 ### Groups
 
 - i18nMessages
+
+**Flags**: IRW
+
+---
+## Attr: ReportBuilder.scheduleTimeZones
+
+### Description
+Optional override for the Schedule dialog's time-zone list: a valueMap of IANA zone id to friendly "Location (Zone Name)" display. When null, [SchedulerItem](#class-scheduleritem)'s curated default (major world zones) is used; set this to offer a smaller / custom set.
 
 **Flags**: IRW
 

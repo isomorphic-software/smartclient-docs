@@ -195,6 +195,42 @@ Note that if a fixed number of different messages need to be sent, multiple ``<m
 **Flags**: IR
 
 ---
+## Attr: OperationBinding.contextFiles
+
+### Description
+Comma-separated list of JavaScript files to pre-load into a pooled Graal JavaScript context for this OperationBinding's [server-side scriptlet](#attr-operationbindingscript).
+
+Files are loaded once when the pool is initialized, then the context is reused across multiple requests, eliminating the repeated overhead of loading common modules or libraries.
+
+Supports path variables `[SCROOT]` and `[WEBROOT]`, as well as shortcuts for common SmartClient server module combinations:
+
+*   `"core"` - ISC\_Core\_Server.js only
+*   `"databinding"` - ISC\_Core\_Server.js + ISC\_DataBinding\_Server.js
+*   `"grids"` - Core + DataBinding + ISC\_Grids\_Server.js
+*   `"full"` - Core + DataBinding + Grids + ISC\_Forms\_Server.js
+
+When `contextFiles` is specified, context pooling is automatically enabled because [useContextFiles](#attr-operationbindingusecontextfiles) defaults to true. Files are cached via `ProcessedFileCache`, so changes to source files automatically invalidate affected context pools.
+
+Example usage:
+
+```
+   <operationBinding operationType="fetch" contextFiles="databinding,/path/to/myModule.js">
+     <script language="graal.js">
+       // Pre-loaded modules are already available
+       var result = isc.DataSource.get("myDS").fetchData();
+     </script>
+   </operationBinding>
+ 
+```
+
+### See Also
+
+- [OperationBinding.useContextFiles](#attr-operationbindingusecontextfiles)
+- [OperationBinding.operationFiles](#attr-operationbindingoperationfiles)
+
+**Flags**: IR
+
+---
 ## Attr: OperationBinding.dataProtocol
 
 ### Description
@@ -520,6 +556,43 @@ Valid only for an operation of type "fetch". See the [Server Summaries overview]
 **Flags**: IR
 
 ---
+## Attr: OperationBinding.operationFiles
+
+### Description
+Comma-separated list of JavaScript files to execute on every request for this OperationBinding's pooled Graal JavaScript context.
+
+This setting is used with [OperationBinding.contextFiles](#attr-operationbindingcontextfiles). Unlike `contextFiles`, which are loaded once and cached in the pooled context, operation files are executed fresh on each request. Use this for per-request logic like loading request-specific data or invoking calculations with that data.
+
+Operation files must be idempotent: safe to execute multiple times with the same result. They typically:
+
+*   Load or define request-specific data, such as dataset files
+*   Invoke calculation functions using that data
+*   Return results via DSResponse
+
+Supports webroot-relative paths, for example `"path/to/file.js"`, or absolute paths with `[SCROOT]` or `[WEBROOT]` path variables.
+
+Example usage:
+
+```
+   <operationBinding operationType="fetch"
+                    contextFiles="databinding,/path/to/calculations.js"
+                    operationFiles="/path/to/load-and-execute.js">
+     <script language="graal.js">
+       // Operation files have already been executed
+       // Just return the result they prepared
+       response;
+     </script>
+   </operationBinding>
+ 
+```
+
+### See Also
+
+- [OperationBinding.contextFiles](#attr-operationbindingcontextfiles)
+
+**Flags**: IR
+
+---
 ## Attr: OperationBinding.requiresCompleteRESTResponse
 
 ### Description
@@ -795,6 +868,27 @@ This property indicates whether this operation supports AdvancedCriteria. This s
 - [DataSource.allowAdvancedCriteria](DataSource_1.md#attr-datasourceallowadvancedcriteria)
 
 **Flags**: IRWA
+
+---
+## Attr: OperationBinding.useContextFiles
+
+### Description
+Controls whether context pooling is enabled when [OperationBinding.contextFiles](#attr-operationbindingcontextfiles) is specified.
+
+This property is primarily useful for sub-DataSource inheritance scenarios where a parent DataSource defines `contextFiles`, but a child needs to disable pooling. In most cases, you should not need to set this property - it defaults appropriately based on whether `contextFiles` is specified.
+
+Default behavior:
+
+*   If `contextFiles` is specified: `useContextFiles` defaults to true
+*   If `contextFiles` is not specified: `useContextFiles` defaults to false
+
+This is an advanced option. Most applications should rely on the default auto-enabling behavior and never need to explicitly set this property.
+
+### See Also
+
+- [OperationBinding.contextFiles](#attr-operationbindingcontextfiles)
+
+**Flags**: IRA
 
 ---
 ## Attr: OperationBinding.invalidateCache
@@ -1223,6 +1317,25 @@ The name of the method to invoke on the [ServerObject](../reference_2.md#object-
 **Flags**: IR
 
 ---
+## Attr: OperationBinding.contextPoolSize
+
+### Description
+Maximum number of pooled Graal JavaScript contexts to maintain for this OperationBinding's [contextFiles](#attr-operationbindingcontextfiles) configuration.
+
+When all contexts in the pool are in use, additional requests will block until a context becomes available. Higher values support more concurrent requests, but consume more memory because each context holds loaded JavaScript modules in memory.
+
+Typical values range from 3 to 10 depending on expected concurrency and available memory. The default value of 5 is appropriate for most applications.
+
+Can also be configured globally via `server.properties`:
+
+```
+   scripting.graal.contextPool.maxPoolSize: 5
+ 
+```
+
+**Flags**: IR
+
+---
 ## Attr: OperationBinding.applyCriteriaBeforeAggregation
 
 ### Description
@@ -1291,6 +1404,20 @@ For a [RestConnector DataSource](../kb_topics/serverRestConnector.md#kb-topic-se
 - serverRestConnector
 
 **Flags**: IR
+
+---
+## Attr: OperationBinding.poolJSContext
+
+### Description
+Controls whether a Graal JavaScript context can be pooled and reused for [server-side JavaScript scriptlets](#attr-operationbindingscript) that use [OperationBinding.contextFiles](#attr-operationbindingcontextfiles).
+
+When true (the default), contexts are returned to a pool after script execution and can be reused by subsequent requests. When false, contexts are created fresh for each request and discarded after use.
+
+Setting this to false disables the performance benefit of context pooling, but may be useful for debugging scenarios where you want to ensure a completely fresh execution environment.
+
+This is an advanced option. Most applications should leave this at the default value of true for optimal performance.
+
+**Flags**: IRA
 
 ---
 ## Attr: OperationBinding.guestUserId

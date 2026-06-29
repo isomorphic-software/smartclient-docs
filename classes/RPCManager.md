@@ -946,11 +946,18 @@ It is possible to send custom HTML to the SmartClient server that attempts to in
 
 To allow specific filesystem paths or restrict which HTTP hosts are permitted, use the `contentExport.allowedResourceLocations` setting in [server.properties](../kb_topics/server_properties.md#kb-topic-serverproperties-file). This is a semicolon-separated list of path segments that identify allowed resource locations. A resource URL is allowed if its full path contains at least one of the listed segments as a substring. Disallowed resources are omitted from the PDF, and a warning is logged.
 
-The special placeholder `{webRoot}` is replaced at runtime with the application's web root directory (as configured via the `webRoot` setting in [server.properties](../kb_topics/server_properties.md#kb-topic-serverproperties-file)). For example:
+The following placeholders are supported in the allowlist patterns:
 
-`contentExport.allowedResourceLocations:{webRoot};localhost:8080/otherApp/;http://www.foo.bar`
+*   `{webRoot}` – the application's web root directory on the filesystem (from the `webRoot` setting in [server.properties](../kb_topics/server_properties.md#kb-topic-serverproperties-file)). Expanded once at server startup. Useful for allowing filesystem paths under the web root.
+*   `{app.host}` – the server hostname, expanded per-request from `HttpServletRequest.getServerName()` (typically the value of the incoming HTTP `Host` header, e.g. `myserver.example.com`). In environments with reverse proxies, load balancers, or multi-homed servers, this reflects how the _client_ addressed the server, which may differ from the server's internal hostname. If the proxy does not forward the original `Host` header, or the server is known by multiple DNS names, hardcode the desired hostname directly instead of using this placeholder.
+*   `{app.context}` – the webapp context path, expanded per-request from `HttpServletRequest.getContextPath()` (e.g. `/myapp`). This is the webapp's deployment path, set at deploy time and not affected by network topology.
 
-This allows filesystem access under the web root, HTTP access to "otherApp" on localhost:8080, and any URL from the specified external address. **Important**: when this setting is present, it restricts _both_ filesystem and HTTP resources — only URLs matching a listed segment are permitted. Without this setting, all HTTP and HTTPS URLs are permitted and only filesystem access is denied.
+Examples:
+
+*   `{webRoot};{app.host}` – filesystem access under the web root, plus HTTP/HTTPS to the same server (any port, any path).
+*   `http://{app.host}:8080{app.context};https://{app.host}:8443{app.context}` – tighter: specific ports and only under the application context path.
+
+**Important**: when this setting is present, it restricts _both_ filesystem and HTTP resources — only URLs matching a listed segment are permitted. Without this setting, all HTTP and HTTPS URLs are permitted and only filesystem access is denied.
 
 Note that the server cannot reliably determine whether an HTTP URL points to a resource under the web root (due to URL remapping, reverse proxies, etc.), so the allowlist uses a simple substring match against the full URL. When restricting HTTP access, list only the specific hosts and paths needed.
 

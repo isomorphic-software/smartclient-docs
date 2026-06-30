@@ -365,6 +365,22 @@ An array of [SortSpecifier](../reference_2.md#object-sortspecifier) objects used
 **Flags**: IR
 
 ---
+## Attr: ComboBoxItem.escapeHTML
+
+### Description
+Should HTML characters in this item's drop-down pick list entries be escaped (rendered as source) rather than interpreted by the browser?
+
+Defaults to false, so HTML supplied via a [FormItem.valueMap](FormItem.md#attr-formitemvaluemap) (for example styled or icon markup) is interpreted and rendered in the pick list. Set `escapeHTML` to true to instead display such values as literal text -- so a raw value like `"`<b>`AAA`</b>`"` is shown to the user rather than the interpreted HTML `"**AAA**"`.
+
+Note: regardless of this setting, the editable text value shown in hovers and in the static (read-only) display is always HTML-escaped, to guard against rendering free-form (potentially user-entered) text as markup.
+
+### Groups
+
+- appearance
+
+**Flags**: IRW
+
+---
 ## Attr: ComboBoxItem.optionDataSource
 
 ### Description

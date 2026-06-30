@@ -352,6 +352,7 @@ Properties defining an object's appearance
 - [ToolbarItem.endRow](../classes/ToolbarItem.md#attr-toolbaritemendrow)
 - [ToolbarItem.colSpan](../classes/ToolbarItem.md#attr-toolbaritemcolspan)
 - [ToolbarItem.buttonBaseStyle](../classes/ToolbarItem.md#attr-toolbaritembuttonbasestyle)
+- [ComboBoxItem.escapeHTML](../classes/ComboBoxItem.md#attr-comboboxitemescapehtml)
 - [ComboBoxItem.showHintInField](../classes/ComboBoxItem.md#attr-comboboxitemshowhintinfield)
 - [ComboBoxItem.showPickerSearchIcon](../classes/ComboBoxItem.md#attr-comboboxitemshowpickersearchicon)
 - [ComboBoxItem.pickerSearchIconSize](../classes/ComboBoxItem.md#attr-comboboxitempickersearchiconsize)

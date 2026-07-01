@@ -1516,6 +1516,8 @@ If no explicit formatter is specified at the field or component level, datetime 
 ### Description
 If true, when this component is first drawn, automatically call `this.fetchData()`. Criteria for this fetch may be picked up from [DynamicForm.initialCriteria](#attr-dynamicforminitialcriteria), and textMatchStyle may be specified via [autoFetchTextMatchStyle](ListGrid_1.md#attr-listgridautofetchtextmatchstyle). Additional request properties may be specified using [DynamicForm.fetchRequestProperties](#attr-dynamicformfetchrequestproperties).
 
+This setting may also be enabled at runtime via [DataBoundComponent.setAutoFetchData](DataBoundComponent.md#method-databoundcomponentsetautofetchdata). Enabling it on a component that is already drawn and bound to a [dataSource](DataBoundComponent.md#attr-databoundcomponentdatasource), but has not yet fetched, triggers the fetch immediately.
+
 NOTE: if `autoFetchData` is set, calling [fetchData()](ListGrid_2.md#method-listgridfetchdata) before draw will cause two requests to be issued, one from the manual call to fetchData() and one from the autoFetchData setting. The second request will use only [DynamicForm.initialCriteria](#attr-dynamicforminitialcriteria) and not any other criteria or settings from the first request. Generally, turn off autoFetchData if you are going to manually call [fetchData()](ListGrid_2.md#method-listgridfetchdata) at any time. Note: If you are using saved searches - either via [SavedSearchItem](SavedSearchItem.md#class-savedsearchitem) or [ListGrid.saveDefaultSearch](ListGrid_1.md#attr-listgridsavedefaultsearch), autoFetchData will be automatically suspended and replaced with the saved criteria/view state, if applicable.
 
 ### Groups

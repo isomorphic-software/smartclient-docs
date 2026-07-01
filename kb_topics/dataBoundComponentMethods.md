@@ -38,6 +38,7 @@ Action Methods are available on DataBoundComponents.
 - [FacetChart.fetchRelatedData](../classes/FacetChart.md#method-facetchartfetchrelateddata)
 - [FacetChart.invalidateCache](../classes/FacetChart.md#method-facetchartinvalidatecache)
 - [DataBoundComponent.exportData](../classes/DataBoundComponent.md#method-databoundcomponentexportdata)
+- [DataBoundComponent.setAutoFetchData](../classes/DataBoundComponent.md#method-databoundcomponentsetautofetchdata)
 - [DataBoundComponent.willFetchData](../classes/DataBoundComponent.md#method-databoundcomponentwillfetchdata)
 - [DynamicForm.editNewRecord](../classes/DynamicForm.md#method-dynamicformeditnewrecord)
 - [DynamicForm.editRecord](../classes/DynamicForm.md#method-dynamicformeditrecord)

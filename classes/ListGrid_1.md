@@ -1041,7 +1041,7 @@ If this, [ListGrid.booleanFalseImage](#attr-listgridbooleanfalseimage) and [List
 ## Attr: ListGrid.reselectOnUpdate
 
 ### Description
-If true, when an update operation occurs on a selected record in a [databound](#attr-listgriddatasource) listGrid, ensure the updated record is re-selected when the operation completes. The [ListGrid.reselectOnUpdateNotifications](#attr-listgridreselectonupdatenotifications) attributes governs whether [ListGrid.selectionUpdated](ListGrid_2.md#method-listgridselectionupdated) and [ListGrid.selectionChanged](ListGrid_2.md#method-listgridselectionchanged) will fire when this occurs.
+If true, when an update operation occurs on a selected record in a [databound](#attr-listgriddatasource) listGrid, ensure the updated record is re-selected when the operation completes. The [ListGrid.reselectOnUpdateNotifications](ListGrid_2.md#attr-listgridreselectonupdatenotifications) attributes governs whether [ListGrid.selectionUpdated](ListGrid_2.md#method-listgridselectionupdated) and [ListGrid.selectionChanged](ListGrid_2.md#method-listgridselectionchanged) will fire when this occurs.
 
 **Flags**: IRA
 
@@ -2449,6 +2449,8 @@ When [canExpandRecords](#attr-listgridcanexpandrecords) is true and [expansionMo
 ### Description
 If true, when this component is first drawn, automatically call `this.fetchData()`. Criteria for this fetch may be picked up from [ListGrid.initialCriteria](#attr-listgridinitialcriteria), and textMatchStyle may be specified via [autoFetchTextMatchStyle](#attr-listgridautofetchtextmatchstyle). Additional request properties may be specified using [ListGrid.fetchRequestProperties](#attr-listgridfetchrequestproperties).
 
+This setting may also be enabled at runtime via [DataBoundComponent.setAutoFetchData](DataBoundComponent.md#method-databoundcomponentsetautofetchdata). Enabling it on a component that is already drawn and bound to a [dataSource](DataBoundComponent.md#attr-databoundcomponentdatasource), but has not yet fetched, triggers the fetch immediately.
+
 NOTE: if `autoFetchData` is set, calling [fetchData()](ListGrid_2.md#method-listgridfetchdata) before draw will cause two requests to be issued, one from the manual call to fetchData() and one from the autoFetchData setting. The second request will use only [ListGrid.initialCriteria](#attr-listgridinitialcriteria) and not any other criteria or settings from the first request. Generally, turn off autoFetchData if you are going to manually call [fetchData()](ListGrid_2.md#method-listgridfetchdata) at any time. Note: If you are using saved searches - either via [SavedSearchItem](SavedSearchItem.md#class-savedsearchitem) or [ListGrid.saveDefaultSearch](#attr-listgridsavedefaultsearch), autoFetchData will be automatically suspended and replaced with the saved criteria/view state, if applicable.
 
 ### Groups
@@ -2459,7 +2461,7 @@ NOTE: if `autoFetchData` is set, calling [fetchData()](ListGrid_2.md#method-list
 
 - [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata)
 
-**Flags**: IR
+**Flags**: IRW
 
 ---
 ## Attr: ListGrid.hiliteViaAIText
@@ -9680,14 +9682,6 @@ If this, [ListGrid.printBooleanTrueImage](ListGrid_2.md#attr-listgridprintboolea
 ### See Also
 
 - [ListGrid.booleanFalseImage](#attr-listgridbooleanfalseimage)
-
-**Flags**: IRWA
-
----
-## Attr: ListGrid.reselectOnUpdateNotifications
-
-### Description
-if [ListGrid.reselectOnUpdate](#attr-listgridreselectonupdate) is true, this property governs what selection changed notifications should be triggered when a selected record is edited then automatically reselected when the edited data is merged into the data set.
 
 **Flags**: IRWA
 

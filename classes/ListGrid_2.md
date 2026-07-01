@@ -4,6 +4,14 @@
 
 ---
 
+## Attr: ListGrid.reselectOnUpdateNotifications
+
+### Description
+if [ListGrid.reselectOnUpdate](ListGrid_1.md#attr-listgridreselectonupdate) is true, this property governs what selection changed notifications should be triggered when a selected record is edited then automatically reselected when the edited data is merged into the data set.
+
+**Flags**: IRWA
+
+---
 ## Attr: ListGrid.hoverMode
 
 ### Description
@@ -2062,6 +2070,8 @@ Default implementation will display a menu with entries derived from [ListGrid.g
 
 ### Description
 Based on the relationship between the DataSource this component is bound to and the DataSource specified as the "schema" argument, call fetchData() to retrieve records in this grid that are related to the passed-in record.
+
+If the passed in record is null, this method will clear its criteria and clear its current data set as there is no meaningul "related data" if there is no source record to find related data for.
 
 Relationships between DataSources are declared via [DataSourceField.foreignKey](DataSourceField.md#attr-datasourcefieldforeignkey).
 

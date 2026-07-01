@@ -3593,6 +3593,8 @@ The default y-axis metric is the first value of the metric facet.
 ### Description
 If true, when this component is first drawn, automatically call `this.fetchData()`. Criteria for this fetch may be picked up from [FacetChart.initialCriteria](#attr-facetchartinitialcriteria), and textMatchStyle may be specified via [autoFetchTextMatchStyle](ListGrid_1.md#attr-listgridautofetchtextmatchstyle). Additional request properties may be specified using [FacetChart.fetchRequestProperties](#attr-facetchartfetchrequestproperties).
 
+This setting may also be enabled at runtime via [DataBoundComponent.setAutoFetchData](DataBoundComponent.md#method-databoundcomponentsetautofetchdata). Enabling it on a component that is already drawn and bound to a [dataSource](DataBoundComponent.md#attr-databoundcomponentdatasource), but has not yet fetched, triggers the fetch immediately.
+
 NOTE: if `autoFetchData` is set, calling [fetchData()](ListGrid_2.md#method-listgridfetchdata) before draw will cause two requests to be issued, one from the manual call to fetchData() and one from the autoFetchData setting. The second request will use only [FacetChart.initialCriteria](#attr-facetchartinitialcriteria) and not any other criteria or settings from the first request. Generally, turn off autoFetchData if you are going to manually call [fetchData()](ListGrid_2.md#method-listgridfetchdata) at any time. Note: If you are using saved searches - either via [SavedSearchItem](SavedSearchItem.md#class-savedsearchitem) or [ListGrid.saveDefaultSearch](ListGrid_1.md#attr-listgridsavedefaultsearch), autoFetchData will be automatically suspended and replaced with the saved criteria/view state, if applicable.
 
 ### Groups
@@ -3603,7 +3605,7 @@ NOTE: if `autoFetchData` is set, calling [fetchData()](ListGrid_2.md#method-list
 
 - [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata)
 
-**Flags**: IR
+**Flags**: IRW
 
 ---
 ## Attr: FacetChart.implicitCriteria
@@ -4100,6 +4102,8 @@ The first argument, criteria, determines which metric is used to calculate the v
 
 ### Description
 Based on the relationship between the DataSource this component is bound to and the DataSource specified as the "schema" argument, call fetchData() to retrieve records in this grid that are related to the passed-in record.
+
+If the passed in record is null, this method will clear its criteria and clear its current data set as there is no meaningul "related data" if there is no source record to find related data for.
 
 Relationships between DataSources are declared via [DataSourceField.foreignKey](DataSourceField.md#attr-datasourcefieldforeignkey).
 

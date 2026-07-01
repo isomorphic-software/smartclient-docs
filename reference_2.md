@@ -2753,7 +2753,7 @@ When discovering a tree, the scanMode determines how to scan for the childrenPro
 ## Type: SelectionNotificationType
 
 ### Description
-Enum to indicate selection change notification types. Used by [ListGrid.reselectOnUpdateNotifications](classes/ListGrid_1.md#attr-listgridreselectonupdatenotifications) and [TileGrid.reselectOnUpdateNotifications](classes/TileGrid.md#attr-tilegridreselectonupdatenotifications).
+Enum to indicate selection change notification types. Used by [ListGrid.reselectOnUpdateNotifications](classes/ListGrid_2.md#attr-listgridreselectonupdatenotifications) and [TileGrid.reselectOnUpdateNotifications](classes/TileGrid.md#attr-tilegridreselectonupdatenotifications).
 
 ### Values
 
@@ -3096,6 +3096,9 @@ _Server:_ acts exactly like the SQL MIN aggregate function. |
 _Server:_ **not supported**. |
 | count | _Client:_ returns a numeric count of the total number of records passed in.  
 _Server:_ acts exactly like SQL COUNT function. |
+| countDistinct | _Client:_ returns the number of distinct non-null values of the field across the passed-in records. Null and empty-string values are excluded before deduplication.  
+_Server:_ emits `COUNT(DISTINCT `<column>`)` — standard SQL-92, supported by all SQL drivers. Result type is always integer regardless of the source column type. Single-field only; multi-column DISTINCT is not supported.  
+**Performance note:** `COUNT(DISTINCT)` may be significantly slower than a plain `COUNT` on very large tables. |
 | title | _Client:_ returns `field.summaryValueTitle` if specified, otherwise `field.title`  
 _Server:_ **not supported**. |
 | first | _Client:_ Currently the same as the **min** function.  

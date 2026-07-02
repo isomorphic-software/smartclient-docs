@@ -2088,7 +2088,9 @@ Name of the field on each [CalendarEvent](../reference.md#object-calendarevent) 
 ## Attr: Calendar.minLaneWidth
 
 ### Description
-When showing [vertical lanes](#attr-calendarshowdaylanes) in the [Calendar.dayView](#attr-calendardayview), this attribute sets the minimum width of each column or field.
+When showing [vertical lanes](#attr-calendarshowdaylanes) in the [Calendar.dayView](#attr-calendardayview), this attribute sets the minimum width of each lane column.
+
+This applies only to the day view's day lanes. It does not size a [timeline view](#attr-calendartimelineview)'s frozen lane-header columns - those are sized by the individual [Calendar.laneFields](#attr-calendarlanefields).
 
 **Flags**: IR
 

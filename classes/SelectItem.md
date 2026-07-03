@@ -350,6 +350,8 @@ Prompt to show when the user hovers the mouse over the picker icon for this Sele
 ### Description
 By default HTML values in a selectItem will be interpreted by the browser. Setting this flag to true will causes HTML characters to be escaped, meaning the raw value of the field (for example `"`<b>`AAA`</b>`"`) is displayed to the user rather than the interpreted HTML (for example `"**AAA**"`)
 
+This setting affects display only and does not alter the stored value returned by [FormItem.getValue](FormItem.md#method-formitemgetvalue). Note that with an Array [FormItem.valueMap](FormItem.md#attr-formitemvaluemap) each entry is itself the stored value, so any HTML it contains is part of the value regardless of this setting.
+
 ### Groups
 
 - appearance

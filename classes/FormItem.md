@@ -2795,6 +2795,8 @@ If `operator` is set for some fields but not others, the default operator is "eq
 ### Description
 In a form, valueMaps are used for FormItem types that allow the user to pick from a limited set of values, such as a SelectItem. The valueMap can be either an Array of legal values or an Object where each property maps a stored value to a user-displayable value.
 
+With the Array form, each entry is both the stored value and the displayed value (an identity mapping); with the Object form, each property name is the stored value and the property value is what is displayed. Consequently any display formatting (such as HTML markup) placed in an Array entry becomes part of the stored value returned by [FormItem.getValue](#method-formitemgetvalue): a valueMap of `["`<i>`Yes`</i>`", "No"]` stores `"`<i>`Yes`</i>`"` as the value. To show markup while keeping stored values clean, use the Object form instead -- `{ y: "`<i>`Yes`</i>`" }` displays the markup but stores `"y"`.
+
 To set the initial selection for a form item with a valueMap, use [FormItem.defaultValue](#attr-formitemdefaultvalue).
 
 See also [DataSourceField.valueMap](DataSourceField.md#attr-datasourcefieldvaluemap).

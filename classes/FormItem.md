@@ -2792,6 +2792,22 @@ Whether this item should always start a new row in the form layout.
 **Flags**: IRW
 
 ---
+## Attr: FormItem.pickerEscapeHTML
+
+### Description
+For form items that show a drop-down pick list (such as [SelectItem](SelectItem.md#class-selectitem) and [ComboBoxItem](ComboBoxItem.md#class-comboboxitem)), should HTML characters in the pick list entries be escaped (shown as literal source text) rather than interpreted by the browser?
+
+This governs the pick list independently of [escapeHTML](#attr-formitemescapehtml), which governs the item's own displayed value. When left null, the pick list follows `escapeHTML`, so items whose pick list shows the same values as the item itself (such as [SelectItem](SelectItem.md#class-selectitem)) need only set `escapeHTML`.
+
+[ComboBoxItem](ComboBoxItem.md#class-comboboxitem) defaults this to `false` so HTML supplied via a [FormItem.valueMap](#attr-formitemvaluemap) is interpreted and rendered in the drop-down, while its free-form text box and static display continue to show values as literal text.
+
+### Groups
+
+- appearance
+
+**Flags**: IRWA
+
+---
 ## Attr: FormItem.extraControlTableCSS
 
 ### Description
@@ -2949,6 +2965,8 @@ If `operator` is set for some fields but not others, the default operator is "eq
 
 ### Description
 In a form, valueMaps are used for FormItem types that allow the user to pick from a limited set of values, such as a SelectItem. The valueMap can be either an Array of legal values or an Object where each property maps a stored value to a user-displayable value.
+
+With the Array form, each entry is both the stored value and the displayed value (an identity mapping); with the Object form, each property name is the stored value and the property value is what is displayed. Consequently any display formatting (such as HTML markup) placed in an Array entry becomes part of the stored value returned by [FormItem.getValue](#method-formitemgetvalue): a valueMap of `["`<i>`Yes`</i>`", "No"]` stores `"`<i>`Yes`</i>`"` as the value. To show markup while keeping stored values clean, use the Object form instead -- `{ y: "`<i>`Yes`</i>`" }` displays the markup but stores `"y"`.
 
 To set the initial selection for a form item with a valueMap, use [FormItem.defaultValue](#attr-formitemdefaultvalue).
 

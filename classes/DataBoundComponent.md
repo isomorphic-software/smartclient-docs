@@ -894,6 +894,8 @@ For example, consider dragging "employees" to "teams", where "teams" has a field
 ### Description
 If true, when this component is first drawn, automatically call `this.fetchData()`. Criteria for this fetch may be picked up from [DataBoundComponent.initialCriteria](#attr-databoundcomponentinitialcriteria), and textMatchStyle may be specified via [autoFetchTextMatchStyle](ListGrid_1.md#attr-listgridautofetchtextmatchstyle). Additional request properties may be specified using [DataBoundComponent.fetchRequestProperties](#attr-databoundcomponentfetchrequestproperties).
 
+This setting may also be enabled at runtime via [DataBoundComponent.setAutoFetchData](#method-databoundcomponentsetautofetchdata). Enabling it on a component that is already drawn and bound to a [dataSource](#attr-databoundcomponentdatasource), but has not yet fetched, triggers the fetch immediately.
+
 NOTE: if `autoFetchData` is set, calling [fetchData()](ListGrid_2.md#method-listgridfetchdata) before draw will cause two requests to be issued, one from the manual call to fetchData() and one from the autoFetchData setting. The second request will use only [DataBoundComponent.initialCriteria](#attr-databoundcomponentinitialcriteria) and not any other criteria or settings from the first request. Generally, turn off autoFetchData if you are going to manually call [fetchData()](ListGrid_2.md#method-listgridfetchdata) at any time. Note: If you are using saved searches - either via [SavedSearchItem](SavedSearchItem.md#class-savedsearchitem) or [ListGrid.saveDefaultSearch](ListGrid_1.md#attr-listgridsavedefaultsearch), autoFetchData will be automatically suspended and replaced with the saved criteria/view state, if applicable.
 
 ### Groups
@@ -904,7 +906,7 @@ NOTE: if `autoFetchData` is set, calling [fetchData()](ListGrid_2.md#method-list
 
 - [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata)
 
-**Flags**: IR
+**Flags**: IRW
 
 ---
 ## Attr: DataBoundComponent.removeOperation
@@ -2581,6 +2583,24 @@ Returns an array of [field alignments](../reference_2.md#type-alignment) for thi
 ### Returns
 
 `[Array of Alignment](#type-array-of-alignment)` — —
+
+---
+## Method: DataBoundComponent.setAutoFetchData
+
+### Description
+Setter for [DataBoundComponent.autoFetchData](#attr-databoundcomponentautofetchdata).
+
+Enabling `autoFetchData` on a component that has already been drawn and bound to a [dataSource](#attr-databoundcomponentdatasource), but has not yet performed its initial fetch, triggers that fetch immediately. This mirrors the one-time fetch that [Canvas.draw](Canvas.md#method-canvasdraw) performs for a component created with `autoFetchData:true`, and supports tools (such as Reify) that bind the `dataSource` and enable `autoFetchData` as separate, independently-ordered edits.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| autoFetchData | [boolean](../reference.md#type-boolean) | false | — | new value for [DataBoundComponent.autoFetchData](#attr-databoundcomponentautofetchdata) |
+
+### Groups
+
+- dataBoundComponentMethods
 
 ---
 ## Method: DataBoundComponent.getFormulaFieldValue

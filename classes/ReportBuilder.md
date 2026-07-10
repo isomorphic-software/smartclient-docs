@@ -376,6 +376,18 @@ Initial number of columns in the PortalLayout. Additional columns are created au
 **Flags**: IRW
 
 ---
+## Attr: ReportBuilder.supportingDataSources
+
+### Description
+Additional DataSource IDs to load for every report screen that should **not** appear in the DataSource picker. Unlike [ReportBuilder.availableDataSources](#attr-reportbuilderavailabledatasources) — the DataSources an author actually builds report components on — supporting DataSources exist only to make the available ones work correctly at runtime: they supply the related DataSources that [DataSourceField.includeFrom](DataSourceField.md#attr-datasourcefieldincludefrom) fields, [DataSourceField.foreignKey](DataSourceField.md#attr-datasourcefieldforeignkey) links, and cross-DataSource [Slicer](Slicer.md#class-slicer) criteria resolve against. Without them, includeFrom fields log "related DataSource does not exist" / "cannot be resolved" warnings and cross-DataSource filters silently match no records.
+
+Supporting DataSources are loaded (via `isc.DataSource.load()`) alongside `availableDataSources`, and are included in the `loadID` declarations of published and Edit-in-Reify screens so they are present at runtime in those views. When a report is opened in Reify, supporting DataSources are treated no differently from available ones — a developer editing the screen there can bind new components to them. The distinction exists only within ReportBuilder itself, which hides them from the author's DataSource picker to keep the build list focused.
+
+Like `availableDataSources`, these definitions must exist in [ReportBuilder.dsDataSource](#attr-reportbuilderdsdatasource) storage.
+
+**Flags**: IRW
+
+---
 ## Attr: ReportBuilder.parameterFields
 
 ### Description

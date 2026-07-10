@@ -24,7 +24,8 @@ The Slicer publishes criteria to the nearest ancestor with a [Canvas.dataContext
 
 Editor selection by resolved base type (via [SimpleType.getBaseType](#method-simpletypegetbasetype)):
 
-*   **Enum** (field has a valueMap): chip buttons if count ≤ [Slicer.chipThreshold](#attr-slicerchipthreshold); otherwise [SetFilterItem](SetFilterItem.md#class-setfilteritem). When the count is unknown (dynamic valueMap requiring a fetch), a SetFilterItem is created first; if the loaded count turns out to be ≤ threshold, the SetFilterItem is replaced with chips.
+*   **Enum** (field has a static valueMap): chip buttons if the value count is ≤ [Slicer.chipThreshold](#attr-slicerchipthreshold); otherwise [SetFilterItem](SetFilterItem.md#class-setfilteritem).
+*   **Text / string** (no valueMap): with [Slicer.textMode](#attr-slicertextmode) `"list"` (the default) a [SetFilterItem](SetFilterItem.md#class-setfilteritem) wired to the bound DataSource as its `optionDataSource`; with `"search"` a plain [TextItem](TextItem.md#class-textitem) publishing a debounced `iContains` criterion.
 *   **Date / datetime**: [DateRangeItem](DateRangeItem.md#class-daterangeitem) (supports absolute and relative dates).
 *   **Boolean**: three-state [CheckboxItem](CheckboxItem.md#class-checkboxitem) (checked = true, unchecked = false, unset = no filter).
 *   **Numeric** (integer / float): dual-thumb [RangeSlider](RangeSlider.md#class-rangeslider) for min/max range filtering.
@@ -33,7 +34,7 @@ Editor selection by resolved base type (via [SimpleType.getBaseType](#method-sim
 ## Attr: Slicer.setFilterForm
 
 ### Description
-AutoChild form containing the [SetFilterItem](SetFilterItem.md#class-setfilteritem) for enum fields above [Slicer.chipThreshold](#attr-slicerchipthreshold). Customize via `setFilterFormDefaults` / `setFilterFormProperties`.
+AutoChild form containing the [SetFilterItem](SetFilterItem.md#class-setfilteritem) for enum fields and for text fields in [Slicer.textMode](#attr-slicertextmode) `"list"` mode. Customize via `setFilterFormDefaults` / `setFilterFormProperties`.
 
 **Flags**: IR
 
@@ -83,9 +84,7 @@ AutoChild form containing the [DateRangeItem](DateRangeItem.md#class-daterangeit
 ## Attr: Slicer.chipThreshold
 
 ### Description
-Maximum number of distinct values for which the Slicer renders individual chip buttons. Above this threshold, a [SetFilterItem](SetFilterItem.md#class-setfilteritem) multi-select is used.
-
-When the count is not known synchronously (no static valueMap), a SetFilterItem is created first to perform its own fetch. If the fetched count is at or below this threshold, the SetFilterItem is replaced with chips — no extra fetch is issued.
+Maximum number of distinct values for which an enum field (one with a static valueMap) renders as individual chip buttons. Above this threshold, a [SetFilterItem](SetFilterItem.md#class-setfilteritem) multi-select is used.
 
 **Flags**: IR
 
@@ -102,6 +101,19 @@ Explicit maximum for the numeric range slider. If unset, the Slicer derives the 
 
 ### Description
 AutoChild for the dual-thumb [RangeSlider](RangeSlider.md#class-rangeslider) used for integer and float fields. Customize via `numericRangeDefaults` / `numericRangeProperties`.
+
+**Flags**: IR
+
+---
+## Attr: Slicer.textMode
+
+### Description
+For text fields that have no [DataSourceField.valueMap](DataSourceField.md#attr-datasourcefieldvaluemap), controls which render mode the Slicer picks:
+
+*   **"list"** (default) — fetch distinct values of the field from the bound DataSource and show a SetFilterItem for pick-from-list selection. Publishes an `inSet` AdvancedCriteria on change. Suits bounded categorical fields (organization / warehouse / segment names) where the author wants to see and click the actual values.
+*   **"search"** — show a text input for free-form substring matching. Publishes an `iContains` AdvancedCriteria (case-insensitive) as the author types, debounced to avoid flooding. Suits high- cardinality or free-form text where a pick-list would be unwieldy.
+
+Ignored for enum (has valueMap), date, datetime, boolean, and numeric fields — those have unambiguous render modes and are dispatched without consulting this attribute.
 
 **Flags**: IR
 
@@ -142,6 +154,22 @@ AutoChild form containing the three-state [CheckboxItem](CheckboxItem.md#class-c
 AutoChild for each chip button in the enum chip strip. Customize via `chipButtonDefaults` / `chipButtonProperties`.
 
 **Flags**: IR
+
+---
+## Attr: Slicer.filterRelated
+
+### Description
+Whether this Slicer's published criteria should also filter components bound to **related** DataSources — those whose DataSource has a [DataSourceField.foreignKey](DataSourceField.md#attr-datasourcefieldforeignkey) to the Slicer's target DataSource.
+
+When `true` (the default), a Slicer on a reference DataSource (e.g. Organizations) automatically filters grids bound to transactional DataSources (e.g. Orders) via a `valueQuery` sub-criterion on their FK column.
+
+Set to `false` to restrict the Slicer's criteria to only components bound to the Slicer's own DataSource.
+
+### See Also
+
+- [Canvas.setDataContextCriteria](Canvas.md#method-canvassetdatacontextcriteria)
+
+**Flags**: IRW
 
 ---
 ## Method: Slicer.clearFilter

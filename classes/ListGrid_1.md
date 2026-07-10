@@ -486,7 +486,7 @@ Causes a menu item titled ["Filter using"](#attr-listgridfilterusingtext) to app
 
 Once an operator has been chosen, the active operator is indicated by an [ListGrid.operatorIcon](#attr-listgridoperatoricon) placed within the field (you can alternatively cause the icon to [always be present](#attr-listgridalwaysshowoperatoricon)). The `operatorIcon` shows the same textual representation of the search operator as is used by the [FormItem.allowExpressions](FormItem.md#attr-formitemallowexpressions) feature. Clicking on the icon provides a second way to modify the search operator.
 
-This feature is enabled by default if [DataSource.supportsAdvancedCriteria](DataSource_1.md#method-datasourcesupportsadvancedcriteria) is true, for all fields where it is normally possible to filter by typing in a search string. This excludes field types such as "date" or "boolean" which show specialized filter controls. Use [ListGridField.allowFilterOperators](ListGridField.md#attr-listgridfieldallowfilteroperators) to disable this interface for individual fields, or set [DataSourceField.canFilter](DataSourceField.md#attr-datasourcefieldcanfilter) to false to disallow filtering entirely for a field.
+This feature is enabled by default if [DataSource.supportsAdvancedCriteria](DataSource_2.md#method-datasourcesupportsadvancedcriteria) is true, for all fields where it is normally possible to filter by typing in a search string. This excludes field types such as "date" or "boolean" which show specialized filter controls. Use [ListGridField.allowFilterOperators](ListGridField.md#attr-listgridfieldallowfilteroperators) to disable this interface for individual fields, or set [DataSourceField.canFilter](DataSourceField.md#attr-datasourcefieldcanfilter) to false to disallow filtering entirely for a field.
 
 Note that this feature is similar to [ListGrid.allowFilterExpressions](#attr-listgridallowfilterexpressions), which allows the end users to directly type in characters such as ">" to control filtering. `allowFilterOperators` is easier to use and more discoverable than `allowFilterExpressions`, and also avoids the drawback where special characters like ">" cannot be used in filter values. However, `allowFilterExpressions` allows users to make use of certain operators that `allowFilterOperators` does not support, such as using the "betweenInclusive" operator by typing "5...10".
 
@@ -2095,7 +2095,7 @@ Adds the ability for a user to define additional criteria above and beyond those
 
 Causes a menu item titled ["Advanced Filtering"](#attr-listgridadvancedfilteringtext) to appear in the ["Filter using"](#attr-listgridfilterusingtext) menu show in the [headerContextMenu](#attr-listgridshowheadercontextmenu) that allows the end user to configure an advanced filter on the grid that can supplement the [filter editor](#attr-listgridshowfiltereditor). Note that the menu option will show even if [filter operators](#attr-listgridallowfilteroperators) is disabled.
 
-To use this feature, the grid must be configured with a [DataSource](DataSource_1.md#class-datasource). In fact, this feature is enabled by default if the grid has a [DataSource](DataSource_1.md#class-datasource) and both [DataSource.supportsAdvancedCriteria](DataSource_1.md#method-datasourcesupportsadvancedcriteria) and [ListGrid.allowFilterOperators](#attr-listgridallowfilteroperators) are true. This default can be disabled by setting `allowFilterWindow` to `false`.
+To use this feature, the grid must be configured with a [DataSource](DataSource_1.md#class-datasource). In fact, this feature is enabled by default if the grid has a [DataSource](DataSource_1.md#class-datasource) and both [DataSource.supportsAdvancedCriteria](DataSource_2.md#method-datasourcesupportsadvancedcriteria) and [ListGrid.allowFilterOperators](#attr-listgridallowfilteroperators) are true. This default can be disabled by setting `allowFilterWindow` to `false`.
 
 [This example](https://www.smartclient.com/smartclient-latest/showcase/?id=filterWindow) shows the `allowFilterWindow` setting in use.
 
@@ -2460,6 +2460,20 @@ NOTE: if `autoFetchData` is set, calling [fetchData()](ListGrid_2.md#method-list
 ### See Also
 
 - [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata)
+
+**Flags**: IRW
+
+---
+## Attr: ListGrid.canSelectOnRecordClick
+
+### Description
+When [ListGrid.selectionAppearance](#attr-listgridselectionappearance) is `"checkbox"`, setting this attribute to `true` lets a click anywhere in a record's row select or deselect that record, exactly as a click on the [checkbox field](#attr-listgridcheckboxfield) does. It has no effect with any other `selectionAppearance`.
+
+By default a checkbox-appearance grid changes selection only when the checkbox column itself is clicked, leaving the rest of the row free for other interactions such as [recordClick](ListGrid_2.md#method-listgridrecordclick), inline editing or record expansion. Enabling this setting is commonly wanted for a checkbox-style multiple-selection picklist, where it can be applied via [SelectItem.pickListProperties](SelectItem.md#attr-selectitempicklistproperties) so a value can be toggled by clicking any cell of its row.
+
+### Groups
+
+- selection
 
 **Flags**: IRW
 
@@ -3108,7 +3122,7 @@ This property may be set to customize the opacity for the hover shown on [ListGr
 ### Description
 If set, the [ListGrid.booleanPartialImage](#attr-listgridbooleanpartialimage) to use when [printing](../kb_topics/printing.md#kb-topic-printing).
 
-If this, [ListGrid.printBooleanTrueImage](ListGrid_2.md#attr-listgridprintbooleantrueimage) and [ListGrid.printBooleanFalseImage](#attr-listgridprintbooleanfalseimage) are unset, this will be set to the default [CheckboxItem.printPartialSelectedImage](CheckboxItem.md#attr-checkboxitemprintpartialselectedimage).
+If this, [ListGrid.printBooleanTrueImage](ListGrid_2.md#attr-listgridprintbooleantrueimage) and [ListGrid.printBooleanFalseImage](ListGrid_2.md#attr-listgridprintbooleanfalseimage) are unset, this will be set to the default [CheckboxItem.printPartialSelectedImage](CheckboxItem.md#attr-checkboxitemprintpartialselectedimage).
 
 ### Groups
 
@@ -7343,7 +7357,7 @@ If this, [ListGrid.booleanTrueImage](#attr-listgridbooleantrueimage) and [ListGr
 
 - [ListGrid.booleanTrueImage](#attr-listgridbooleantrueimage)
 - [ListGrid.booleanPartialImage](#attr-listgridbooleanpartialimage)
-- [ListGrid.printBooleanFalseImage](#attr-listgridprintbooleanfalseimage)
+- [ListGrid.printBooleanFalseImage](ListGrid_2.md#attr-listgridprintbooleanfalseimage)
 
 **Flags**: IRWA
 
@@ -9649,40 +9663,5 @@ If [ListGrid.showHeaderMenuButton](#attr-listgridshowheadermenubutton) is true, 
 - [ListGrid.headerMenuButtonHeight](#attr-listgridheadermenubuttonheight)
 
 **Flags**: IRA
-
----
-## Attr: ListGrid.sortBinaryByFileName
-
-### Description
-For any fields of [type "binary"](../reference_2.md#type-fieldtype), should sorting be performed against the fileName of the value for the field? For SmartClient server backed dataSources, this is applied to the record automatically as described in the [binaryFields](../kb_topics/binaryFields.md#kb-topic-binary-fields) overview.
-
-If set to false, binary fields will be sorted against the record value for the field in question. Client-side sorting does not support this, so developers who actually want to support a sort against the binary itself would typically set [ResultSet.useClientSorting](ResultSet.md#attr-resultsetuseclientsorting) to false on the [ListGrid.dataProperties](#attr-listgriddataproperties) block for this grid.
-
-Note that this setting will have no effect if [DataSourceField.sortByField](DataSourceField.md#attr-datasourcefieldsortbyfield) is specified
-
-### Groups
-
-- sorting
-
-**Flags**: IRW
-
----
-## Attr: ListGrid.printBooleanFalseImage
-
-### Description
-If set, the [ListGrid.booleanFalseImage](#attr-listgridbooleanfalseimage) to use when [printing](../kb_topics/printing.md#kb-topic-printing).
-
-If this, [ListGrid.printBooleanTrueImage](ListGrid_2.md#attr-listgridprintbooleantrueimage) and [ListGrid.printBooleanPartialImage](#attr-listgridprintbooleanpartialimage) are unset, this will be set to the default [CheckboxItem.printUncheckedImage](CheckboxItem.md#attr-checkboxitemprintuncheckedimage).
-
-### Groups
-
-- imageColumns
-- printing
-
-### See Also
-
-- [ListGrid.booleanFalseImage](#attr-listgridbooleanfalseimage)
-
-**Flags**: IRWA
 
 ---

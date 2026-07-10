@@ -6595,7 +6595,7 @@ Note: If you attempt to call this API before the widget is drawn, the call will 
 ### Description
 Updates the `sharedCriteria` section of this Canvas's [Canvas.dataContext](#attr-canvasdatacontext). All contained [DataBoundComponents](../reference.md#interface-databoundcomponent) whose DataSource has fields matching the criteria by name and compatible type will re-fetch with the updated criteria combined via [DataSource.combineCriteria](DataSource.md#classmethod-datasourcecombinecriteria).
 
-**Global form** (applies to all DataSources by field match):
+**Global form** (criteria only — applies to all DataSources by field-name match):
 
 ```
      screen.setDataContextCriteria(newCriteria);
@@ -6603,10 +6603,10 @@ Updates the `sharedCriteria` section of this Canvas's [Canvas.dataContext](#attr
 ```
 **DataSource-specific form** (applies only to components bound to the named DataSource(s)):
 ```
-     screen.setDataContextCriteria("Orders",
-                                    newCriteria);
      screen.setDataContextCriteria(
-         ["Orders","OrderDetail"], newCriteria);
+         newCriteria, "Orders");
+     screen.setDataContextCriteria(
+         newCriteria, ["Orders","OrderDetail"]);
  
 ```
 
@@ -6618,8 +6618,9 @@ Passing `null` as criteria clears the entry, causing components to re-fetch with
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| criteriaOrDSID | [Criteria](../reference_2.md#type-criteria)|[AdvancedCriteria](#type-advancedcriteria)|[String](#type-string)|[Array of String](#type-array-of-string) | false | — | either the criteria to apply globally (by field match), or a DataSource ID (or array of IDs) to scope the criteria |
-| criteria | [Criteria](../reference_2.md#type-criteria)|[AdvancedCriteria](#type-advancedcriteria) | true | — | criteria to apply when the first argument is a DataSource ID or array of IDs; null to clear |
+| criteria | [Criteria](../reference_2.md#type-criteria)|[AdvancedCriteria](#type-advancedcriteria) | false | — | the criteria to apply; null to clear |
+| dsID | [String](#type-string)|[Array of String](#type-array-of-string) | true | — | DataSource ID or array of IDs to scope the criteria. When omitted, the criteria are applied globally by field-name match across all DataSources. |
+| filterRelated | [Boolean](#type-boolean) | true | — | when true, components bound to DataSources that have a [DataSourceField.foreignKey](DataSourceField.md#attr-datasourcefieldforeignkey) relationship to the target DataSource are also filtered via a `valueQuery` sub-criterion on their FK column. Only supported when `dsID` is a single explicit ID (not null or an array). |
 | contributorID | [String](#type-string) | true | — | optional unique identifier for the criteria source. When multiple independent components (such as [Slicers](Slicer.md#class-slicer)) each publish criteria for the same DataSource, pass a distinct `contributorID` per source. All contributors' criteria are AND-combined automatically. Without a `contributorID`, each call replaces the previous DS-specific criteria entirely. |
 
 ### Groups

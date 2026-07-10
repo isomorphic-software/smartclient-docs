@@ -4,6 +4,50 @@
 
 ---
 
+## Method: ListGrid.getCellAlign
+
+### Description
+Returns the unmirrored or logical horizontal alignment for the specified cell's contents. The default implementation returns [ListGridField.cellAlign](ListGridField.md#attr-listgridfieldcellalign) if set or else [ListGridField.align](ListGridField.md#attr-listgridfieldalign), and mirrors this alignment in [RTL mode](Page.md#classmethod-pageisrtl) if [ListGrid.reverseRTLAlign](ListGrid_1.md#attr-listgridreversertlalign) is `true`.
+
+This method is an override point. Custom implementations are required to peform their own mirroring if mirroring in RTL mode is desired.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| record | [ListGridRecord](#type-listgridrecord) | false | — | this cell's record |
+| rowNum | [number](#type-number) | false | — | row number for the cell |
+| colNum | [number](#type-number) | false | — | column number of the cell |
+
+### Returns
+
+`[Alignment](../reference_2.md#type-alignment)` — Horizontal alignment of cell contents: 'right', 'center', or 'left'
+
+### See Also
+
+- [ListGrid.getCellStyle](ListGrid_2.md#method-listgridgetcellstyle)
+
+---
+## Method: ListGrid.recordMarkedAsRemoved
+
+### Description
+Returns true if the specified record is marked as removed via a call to [ListGrid.markRecordRemoved](ListGrid_2.md#method-listgridmarkrecordremoved)
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| rowNum | [int](../reference.md#type-int) | false | — | index of row to verify |
+
+### Returns
+
+`[Boolean](#type-boolean)` — true if the specified record has been marked for removal
+
+### Groups
+
+- editing
+
+---
 ## Method: ListGrid.recordDrop
 
 ### Description

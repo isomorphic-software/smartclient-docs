@@ -145,6 +145,7 @@ Only applicable to a [DataBoundComponent](../reference.md#interface-databoundcom
 - [ListGrid.selectionProperty](../classes/ListGrid_1.md#attr-listgridselectionproperty)
 - [ListGrid.canDragSelect](../classes/ListGrid_1.md#attr-listgridcandragselect)
 - [ListGrid.canDragSelectText](../classes/ListGrid_1.md#attr-listgridcandragselecttext)
+- [ListGrid.canSelectOnRecordClick](../classes/ListGrid_1.md#attr-listgridcanselectonrecordclick)
 - [TreeGrid.selectionProperty](../classes/TreeGrid.md#attr-treegridselectionproperty)
 - [TreeGrid.canSelectAll](../classes/TreeGrid.md#attr-treegridcanselectall)
 - [Menu.canSelectParentItems](../classes/Menu.md#attr-menucanselectparentitems)

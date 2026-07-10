@@ -48,7 +48,7 @@ Columns that show images either as their only appearance or in addition to text.
 - [ListGrid.booleanFalseImage](../classes/ListGrid_1.md#attr-listgridbooleanfalseimage)
 - [ListGrid.booleanPartialImage](../classes/ListGrid_1.md#attr-listgridbooleanpartialimage)
 - [ListGrid.printBooleanTrueImage](../classes/ListGrid_2.md#attr-listgridprintbooleantrueimage)
-- [ListGrid.printBooleanFalseImage](../classes/ListGrid_1.md#attr-listgridprintbooleanfalseimage)
+- [ListGrid.printBooleanFalseImage](../classes/ListGrid_2.md#attr-listgridprintbooleanfalseimage)
 - [ListGrid.printBooleanPartialImage](../classes/ListGrid_1.md#attr-listgridprintbooleanpartialimage)
 - [ListGrid.booleanImageWidth](../classes/ListGrid_1.md#attr-listgridbooleanimagewidth)
 - [ListGrid.booleanImageHeight](../classes/ListGrid_1.md#attr-listgridbooleanimageheight)

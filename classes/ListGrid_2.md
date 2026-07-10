@@ -4,6 +4,41 @@
 
 ---
 
+## Attr: ListGrid.sortBinaryByFileName
+
+### Description
+For any fields of [type "binary"](../reference_2.md#type-fieldtype), should sorting be performed against the fileName of the value for the field? For SmartClient server backed dataSources, this is applied to the record automatically as described in the [binaryFields](../kb_topics/binaryFields.md#kb-topic-binary-fields) overview.
+
+If set to false, binary fields will be sorted against the record value for the field in question. Client-side sorting does not support this, so developers who actually want to support a sort against the binary itself would typically set [ResultSet.useClientSorting](ResultSet.md#attr-resultsetuseclientsorting) to false on the [ListGrid.dataProperties](ListGrid_1.md#attr-listgriddataproperties) block for this grid.
+
+Note that this setting will have no effect if [DataSourceField.sortByField](DataSourceField.md#attr-datasourcefieldsortbyfield) is specified
+
+### Groups
+
+- sorting
+
+**Flags**: IRW
+
+---
+## Attr: ListGrid.printBooleanFalseImage
+
+### Description
+If set, the [ListGrid.booleanFalseImage](ListGrid_1.md#attr-listgridbooleanfalseimage) to use when [printing](../kb_topics/printing.md#kb-topic-printing).
+
+If this, [ListGrid.printBooleanTrueImage](#attr-listgridprintbooleantrueimage) and [ListGrid.printBooleanPartialImage](ListGrid_1.md#attr-listgridprintbooleanpartialimage) are unset, this will be set to the default [CheckboxItem.printUncheckedImage](CheckboxItem.md#attr-checkboxitemprintuncheckedimage).
+
+### Groups
+
+- imageColumns
+- printing
+
+### See Also
+
+- [ListGrid.booleanFalseImage](ListGrid_1.md#attr-listgridbooleanfalseimage)
+
+**Flags**: IRWA
+
+---
 ## Attr: ListGrid.reselectOnUpdateNotifications
 
 ### Description
@@ -71,7 +106,7 @@ At this time, there is no generally effective way to avoid this warning dialog a
 ### Description
 If set, the [ListGrid.booleanTrueImage](ListGrid_1.md#attr-listgridbooleantrueimage) to use when [printing](../kb_topics/printing.md#kb-topic-printing).
 
-If this, [ListGrid.printBooleanFalseImage](ListGrid_1.md#attr-listgridprintbooleanfalseimage) and [ListGrid.printBooleanPartialImage](ListGrid_1.md#attr-listgridprintbooleanpartialimage) are unset, this will be set to the default [CheckboxItem.printCheckedImage](CheckboxItem.md#attr-checkboxitemprintcheckedimage).
+If this, [ListGrid.printBooleanFalseImage](#attr-listgridprintbooleanfalseimage) and [ListGrid.printBooleanPartialImage](ListGrid_1.md#attr-listgridprintbooleanpartialimage) are unset, this will be set to the default [CheckboxItem.printCheckedImage](CheckboxItem.md#attr-checkboxitemprintcheckedimage).
 
 ### Groups
 
@@ -9087,7 +9122,7 @@ Records that have been marked for removal using this method may be 'unmarked' vi
 ### Description
 If this listGrid can be edited, this method will return true if the row passed in has been edited, but the edits have not yet been saved to the ListGrid's data object.
 
-Note this method will not return true if a record has been marked as [removed](#method-listgridmarkrecordremoved), but has no other changes. Developers can use [ListGrid.recordMarkedAsRemoved](#method-listgridrecordmarkedasremoved) to check for this case.
+Note this method will not return true if a record has been marked as [removed](#method-listgridmarkrecordremoved), but has no other changes. Developers can use [ListGrid.recordMarkedAsRemoved](ListGrid_3.md#method-listgridrecordmarkedasremoved) to check for this case.
 
 Note that if this grid is bound to a [dataSource](ListGrid_1.md#attr-listgriddatasource), and an asynchronous save has been submitted, this method will compare the local edit values against the submitted values by default, returning false (no changes), if they match. This is useful for detecting whether the user is actively editing values and hasn't yet committed them.
 
@@ -9149,49 +9184,5 @@ Note: Only called if [ListGrid.dragTrackerMode](ListGrid_1.md#attr-listgriddragt
 ### Groups
 
 - dragTracker
-
----
-## Method: ListGrid.getCellAlign
-
-### Description
-Returns the unmirrored or logical horizontal alignment for the specified cell's contents. The default implementation returns [ListGridField.cellAlign](ListGridField.md#attr-listgridfieldcellalign) if set or else [ListGridField.align](ListGridField.md#attr-listgridfieldalign), and mirrors this alignment in [RTL mode](Page.md#classmethod-pageisrtl) if [ListGrid.reverseRTLAlign](ListGrid_1.md#attr-listgridreversertlalign) is `true`.
-
-This method is an override point. Custom implementations are required to peform their own mirroring if mirroring in RTL mode is desired.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| record | [ListGridRecord](#type-listgridrecord) | false | — | this cell's record |
-| rowNum | [number](#type-number) | false | — | row number for the cell |
-| colNum | [number](#type-number) | false | — | column number of the cell |
-
-### Returns
-
-`[Alignment](../reference_2.md#type-alignment)` — Horizontal alignment of cell contents: 'right', 'center', or 'left'
-
-### See Also
-
-- [ListGrid.getCellStyle](#method-listgridgetcellstyle)
-
----
-## Method: ListGrid.recordMarkedAsRemoved
-
-### Description
-Returns true if the specified record is marked as removed via a call to [ListGrid.markRecordRemoved](#method-listgridmarkrecordremoved)
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| rowNum | [int](../reference.md#type-int) | false | — | index of row to verify |
-
-### Returns
-
-`[Boolean](#type-boolean)` — true if the specified record has been marked for removal
-
-### Groups
-
-- editing
 
 ---

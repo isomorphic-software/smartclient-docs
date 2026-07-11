@@ -2378,6 +2378,20 @@ NOTE: if `autoFetchData` is set, calling [fetchData()](ListGrid_2.md#method-list
 **Flags**: IRW
 
 ---
+## Attr: ListGrid.canSelectOnRecordClick
+
+### Description
+When [ListGrid.selectionAppearance](#attr-listgridselectionappearance) is `"checkbox"`, setting this attribute to `true` lets a click anywhere in a record's row select or deselect that record, exactly as a click on the [checkbox field](#attr-listgridcheckboxfield) does. It has no effect with any other `selectionAppearance`.
+
+By default a checkbox-appearance grid changes selection only when the checkbox column itself is clicked, leaving the rest of the row free for other interactions such as [recordClick](ListGrid_2.md#method-listgridrecordclick), inline editing or record expansion. Enabling this setting is commonly wanted for a checkbox-style multiple-selection picklist, where it can be applied via [SelectItem.pickListProperties](SelectItem.md#attr-selectitempicklistproperties) so a value can be toggled by clicking any cell of its row.
+
+### Groups
+
+- selection
+
+**Flags**: IRW
+
+---
 ## Attr: ListGrid.hiliteViaAIText
 
 ### Description
@@ -4522,6 +4536,22 @@ When using [ListGrid.autoFitFieldWidths](#attr-listgridautofitfieldwidths), padd
 **Flags**: IR
 
 ---
+## Attr: ListGrid.canGroupBy
+
+### Description
+If false, grouping via context menu will be disabled.
+
+### Groups
+
+- grouping
+
+### See Also
+
+- [ListGrid.groupBy](ListGrid_2.md#method-listgridgroupby)
+
+**Flags**: IRW
+
+---
 ## Attr: ListGrid.asyncErrorCellValue
 
 ### Description
@@ -4536,22 +4566,6 @@ This is the grid-wide setting. [ListGridField.asyncErrorCellValue](ListGridField
 ### See Also
 
 - [DataBoundComponent.isValuePendingAsyncOrAsyncError](DataBoundComponent.md#method-databoundcomponentisvaluependingasyncorasyncerror)
-
-**Flags**: IRW
-
----
-## Attr: ListGrid.canGroupBy
-
-### Description
-If false, grouping via context menu will be disabled.
-
-### Groups
-
-- grouping
-
-### See Also
-
-- [ListGrid.groupBy](ListGrid_2.md#method-listgridgroupby)
 
 **Flags**: IRW
 

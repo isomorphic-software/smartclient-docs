@@ -596,6 +596,16 @@ Loads a serialized report definition.
 | callback | [Callback](../reference.md#type-callback) | true | — | optional callback fired after load completes |
 
 ---
+## Method: ReportBuilder.isReportDirty
+
+### Description
+Returns whether the report has unsaved changes since it was last created, loaded, or saved.
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — true if there are unsaved changes
+
+---
 ## Method: ReportBuilder.loadReport
 
 ### Description

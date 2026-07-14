@@ -899,7 +899,7 @@ This API is intended for the rare use case of adding a highly customized FilterC
 
 If you just want to programmatically add a new FilterClause showing a specific Criterion use [FilterBuilder.addCriterion](#method-filterbuilderaddcriterion).
 
-If you want to use the standard field/operator/value interface but provide a custom control for editing the value, see [DataSource.addSearchOperator](DataSource_2.md#method-datasourceaddsearchoperator) and [Operator.editorType](Operator.md#attr-operatoreditortype).
+If you want to use the standard field/operator/value interface but provide a custom control for editing the value, see [DataSource.addSearchOperator](DataSource_1.md#method-datasourceaddsearchoperator) and [Operator.editorType](Operator.md#attr-operatoreditortype).
 
 ### Parameters
 

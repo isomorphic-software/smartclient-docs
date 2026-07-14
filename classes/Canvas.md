@@ -4788,7 +4788,7 @@ This property is useful for cases where the tab position of a widget will be man
 ### Description
 This flag controls whether we register the component as a maskable item with the EventHandler. If enabled, a backmask will be automatically created for the dragMoveTarget on the fly to avoid burnthrough e.g. by plugins or frames.
 
-Note that this property will be defaulted to false unless the canvas contains an IFrame, in which case it will be defaulted to true.
+If unset, this property defaults to false unless the canvas contains an IFrame, in which case it defaults to true.
 
 The [Canvas.dragMaskType](#attr-canvasdragmasktype) property controls what kind of mask is used in case useDragMask is enabled.
 

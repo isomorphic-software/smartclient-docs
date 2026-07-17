@@ -140,6 +140,16 @@ The Slicer resolves the field's base type via [SimpleType.getBaseType](#method-s
 **Flags**: IR
 
 ---
+## Attr: Slicer.contributorID
+
+### Description
+Stable identifier used as this Slicer's key in the [dataContext](Canvas.md#attr-canvasdatacontext) [sharedCriteria](#canvassharedcriteria) bus. If unset (the default), a deterministic ID is generated from the Slicer's [Slicer.field](#attr-slicerfield) in the form `"slicer__dsID_._fieldName_"`.
+
+An explicit value is only needed when two Slicers target the same DataSource and field (uncommon). Duplicate contributorIDs within the same dataContext produce a warning and last-writer-wins behavior.
+
+**Flags**: IR
+
+---
 ## Attr: Slicer.booleanForm
 
 ### Description

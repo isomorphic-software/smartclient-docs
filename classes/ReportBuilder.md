@@ -38,6 +38,14 @@ Signature: `reportLoaded(report)` where `report` is the loaded report record (`O
 **Flags**: IRW
 
 ---
+## Attr: ReportBuilder.showTheme
+
+### Description
+Whether the "Theme" toolbar menu button is shown.
+
+**Flags**: IR
+
+---
 ## Attr: ReportBuilder.editArea
 
 ### Description
@@ -138,6 +146,14 @@ When true, dropping two foreign-key-related data views (e.g. an Orders grid and 
 **Flags**: IRW
 
 ---
+## Attr: ReportBuilder.showUndo
+
+### Description
+Whether the "Undo" toolbar button is shown.
+
+**Flags**: IR
+
+---
 ## Attr: ReportBuilder.allowedComponentTypes
 
 ### Description
@@ -168,6 +184,14 @@ Dialog for configuring chart facets, measures, and aggregation. Created as a top
 Layout hosting the compact AI prompt input. Collapsed by default it shows a one-line TextArea + Submit + expand chevron in roughly 50px; expanded it grows the TextArea to several rows and reveals a history grid populated from [ReportBuilder.historyDataSource](#attr-reportbuilderhistorydatasource) merged with [ReportBuilder.suggestedPrompts](#attr-reportbuildersuggestedprompts).
 
 **Flags**: R
+
+---
+## Attr: ReportBuilder.showEditInReify
+
+### Description
+Whether the "Edit in Reify" toolbar button is shown. Defaults to the value of [ReportBuilder.reifyIntegration](#attr-reportbuilderreifyintegration).
+
+**Flags**: IR
 
 ---
 ## Attr: ReportBuilder.historyKey
@@ -360,6 +384,14 @@ Available export formats for reports.
 **Flags**: IRW
 
 ---
+## Attr: ReportBuilder.showSchedule
+
+### Description
+Whether the "Schedule" toolbar button is shown.
+
+**Flags**: IR
+
+---
 ## Attr: ReportBuilder.aiPromptForm
 
 ### Description
@@ -396,6 +428,14 @@ Field definitions for report-level parameters. These appear in a parameter form 
 **Flags**: IRW
 
 ---
+## Attr: ReportBuilder.showPublish
+
+### Description
+Whether the "Publish" toolbar button is shown. When `true` and [ReportBuilder.reifyIntegration](#attr-reportbuilderreifyintegration) is `false`, a [ReportBuilder.publishHandler](#attr-reportbuilderpublishhandler) must be provided (otherwise the button has no target).
+
+**Flags**: IR
+
+---
 ## Attr: ReportBuilder.componentCreated
 
 ### Description
@@ -409,6 +449,19 @@ Signature: `componentCreated(editNode, paletteNode)` where:
 **Flags**: IRW
 
 ---
+## Attr: ReportBuilder.publishHandler
+
+### Description
+Custom handler invoked by [ReportBuilder.publishReport](#method-reportbuilderpublishreport) instead of the default `isc.Reify.publishScreen()` flow. Receives two arguments:
+
+*   `reportSource` — the serialized report XML from [ReportBuilder.getReportDefinition](#method-reportbuildergetreportdefinition)
+*   `reportName` — the current report title (may be `null` for an unsaved report)
+
+Use this to implement a non-Reify publish action such as showing the live report and its source in a popup window.
+
+**Flags**: IR
+
+---
 ## Attr: ReportBuilder.aiProcessLog
 
 ### Description
@@ -417,6 +470,16 @@ Non-blocking overlay window that surfaces the running [ReportBuilderProcess](#cl
 The log auto-hides shortly after the process completes (success or failure) so the canvas isn't permanently obstructed; the user can also close or minimize it at any time without affecting the AI run.
 
 **Flags**: R
+
+---
+## Attr: ReportBuilder.reifyIntegration
+
+### Description
+Master switch for Reify integration. When `false`, no `isc.Reify.*` call is reachable and the Reify module is never lazy-loaded. Sets the defaults for [ReportBuilder.showEditInReify](#attr-reportbuildershoweditinreify) and [ReportBuilder.showPublish](#attr-reportbuildershowpublish).
+
+Set this to `false` for standalone use under an Enterprise (Portals & Tools) license with no Reify dependency.
+
+**Flags**: IR
 
 ---
 ## Attr: ReportBuilder.aiErrorTitle
@@ -531,6 +594,14 @@ Title for the dialog shown when the AI flow finishes with [output.incomplete](#o
 DataSource for persisting saved reports. If not specified, reports can only be saved to local storage or exported.
 
 **Flags**: IRW
+
+---
+## Attr: ReportBuilder.showRedo
+
+### Description
+Whether the "Redo" toolbar button is shown.
+
+**Flags**: IR
 
 ---
 ## Attr: ReportBuilder.slicerFieldDialog

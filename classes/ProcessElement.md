@@ -382,6 +382,18 @@ If this processElement is not [valid](#method-processelementisvalid), returns th
 `[String](#type-string)` — the reason for task being invalid or null if valid
 
 ---
+## Method: ProcessElement.getInstanceTitle
+
+### Description
+Returns a human-readable title for this specific processElement instance, preferring any instance-specific title over the type-level title this element's class would otherwise return via [getTitle()](#classmethod-processelementgettitle).
+
+The default implementation simply returns the class-level title. Subclasses whose title can vary per-instance - for example [DSRequestTask](DSRequestTask.md#class-dsrequesttask), whose title should reflect which [OperationBinding](OperationBinding.md#class-operationbinding) it invokes - override this method.
+
+### Returns
+
+`[String](#type-string)` — title for this instance
+
+---
 ## Method: ProcessElement.executeElement
 
 ### Description
@@ -485,6 +497,18 @@ This method is a helper to implement task-specific [ProcessElement.updateLastEle
 ### Returns
 
 `[Boolean](#type-boolean)` — true if any references were update; false otherwise
+
+---
+## Method: ProcessElement.getInstanceDescription
+
+### Description
+Returns a human-readable description for this specific processElement instance, preferring, in order: any instance-specific [description](#attr-processelementdescription); text derived from this instance's own configuration via [ProcessElement.getElementDescription](#method-processelementgetelementdescription); and finally the type-level [classDescription](#attr-processelementclassdescription) this element's class would otherwise return.
+
+Subclasses whose description can be derived from other instance state in a way [ProcessElement.getElementDescription](#method-processelementgetelementdescription) doesn't already cover - for example [DSRequestTask](DSRequestTask.md#class-dsrequesttask), which prefers the [OperationBinding.description](OperationBinding.md#attr-operationbindingdescription) of the [OperationBinding](OperationBinding.md#class-operationbinding) it invokes over the generic, criteria-derived text [ProcessElement.getElementDescription](#method-processelementgetelementdescription) would otherwise produce - override this method, typically falling back to this default implementation (via `Super()`) rather than duplicating its description/getElementDescription/classDescription chain.
+
+### Returns
+
+`[String](#type-string)` — description for this instance
 
 ---
 ## Method: ProcessElement.completeElement

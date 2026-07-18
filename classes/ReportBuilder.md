@@ -654,6 +654,18 @@ Saves the current report as a NEW report (or template), leaving any previously-s
 | callback | [Callback](../reference.md#type-callback) | true | — | optional callback fired after the save |
 
 ---
+## Method: ReportBuilder.exportReportToExcel
+
+### Description
+Exports the whole report as a multi-sheet .xlsx workbook -- the "data behind the report". Gathers a self-contained export model from the live report components (a working-model workbook), hands it to the static [DataSource.exportMultiSheetData](DataSource.md#classmethod-datasourceexportmultisheetdata), whose built-in server method builds the workbook with Apache POI and streams the result back so the browser downloads it. Slicer semantics: the live components already reflect any slicer filters applied in the report, so the rows we gather are the pre-filtered ("baked") data -- the author-fixed-filter model.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| callback | [Callback](../reference.md#type-callback) | true | — | fired after the export request completes |
+
+---
 ## Method: ReportBuilder.setReportDefinition
 
 ### Description

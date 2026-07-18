@@ -87,6 +87,7 @@ If a user working within the Reify then added ListGrid to the page and used the 
 - [DataSourceField.childTagName](../classes/DataSourceField.md#attr-datasourcefieldchildtagname)
 - [DataSourceField.propertiesOnly](../classes/DataSourceField.md#attr-datasourcefieldpropertiesonly)
 - [DataSourceField.inapplicable](../classes/DataSourceField.md#attr-datasourcefieldinapplicable)
+- [DataSourceField.typeDiscriminator](../classes/DataSourceField.md#attr-datasourcefieldtypediscriminator)
 - [DataSourceField.group](../classes/DataSourceField.md#attr-datasourcefieldgroup)
 - [DataSourceField.recreateOnChange](../classes/DataSourceField.md#attr-datasourcefieldrecreateonchange)
 - [DataSourceField.multiple](../classes/DataSourceField.md#attr-datasourcefieldmultiple)

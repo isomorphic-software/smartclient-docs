@@ -87,7 +87,7 @@ For this reason, `HibernateDataSource` and `JPADataSource` install a special `Ca
 #### RestConnector
 [RestConnector](serverRestConnector.md#kb-topic-server-side-rest-connector) supports all four of the default cache sync strategies. Note that `refetch` involves a second round-trip to the REST service, so may be a performance concern.
 
-`requestValuesPlusSequences` attempts to extract the values for any missing [primaryKey fields](../classes/DataSource_1.md#method-datasourcegetprimarykeyfields) from the response sent by the REST service to the add or update request, so it is obviously only of use if the REST service returns such values.
+`requestValuesPlusSequences` attempts to extract the values for any missing [primaryKey fields](../classes/DataSource_2.md#method-datasourcegetprimarykeyfields) from the response sent by the REST service to the add or update request, so it is obviously only of use if the REST service returns such values.
 
 `responseValues`, the default strategy for `RestConnector`, just uses the response data sent by the REST service to the update or add request. Again, this is only usable if the REST service returns such data, but if it does, this strategy is ideal.
 

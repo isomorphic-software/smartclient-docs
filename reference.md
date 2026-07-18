@@ -38,8 +38,8 @@ This is the central API reference for the SmartClient framework.
             - [DateGrid](#class-dategrid)
           - [Reify](classes/Reify.md)
           - [DateChooser](classes/DateChooser.md)
-          - [SectionStack](classes/SectionStack.md)
           - [ReportBuilder](classes/ReportBuilder.md)
+          - [SectionStack](classes/SectionStack.md)
           - [FormulaBuilder](classes/FormulaBuilder.md)
             - [SummaryBuilder](classes/SummaryBuilder.md)
               - [AIFieldBuilder](classes/AIFieldBuilder.md)
@@ -347,20 +347,18 @@ This is the central API reference for the SmartClient framework.
   - [Validator](classes/Validator.md)
   - [Callbacks](classes/Callbacks.md)
   - [EventStream](classes/EventStream.md)
-  - [EventHandler](classes/EventHandler.md)
-  - [SimpleType](classes/SimpleType.md)
   - [ProcessElement](classes/ProcessElement.md)
     - [Task](classes/Task.md)
       - [CoTTask](classes/CoTTask.md)
       - [UserTask](classes/UserTask.md)
         - [TourStep](classes/TourStep.md)
         - [TourConfirmStep](classes/TourConfirmStep.md)
-      - [HumanTask](classes/HumanTask.md)
       - [DSRequestTask](classes/DSRequestTask.md)
         - [DSRemoveTask](#class-dsremovetask)
         - [DSUpdateTask](#class-dsupdatetask)
         - [DSFetchTask](#class-dsfetchtask)
         - [DSAddTask](#class-dsaddtask)
+      - [HumanTask](classes/HumanTask.md)
       - [ScriptTask](classes/ScriptTask.md)
         - [StartProcessTask](classes/StartProcessTask.md)
           - [SubProcessTask](classes/SubProcessTask.md)
@@ -384,6 +382,7 @@ This is the central API reference for the SmartClient framework.
         - [NavigateSplitPaneTask](#class-navigatesplitpanetask)
         - [SetScreenDataTask](#class-setscreendatatask)
         - [GridSetEditValueTask](#class-gridseteditvaluetask)
+        - [ClickButtonTask](#class-clickbuttontask)
         - [FormEditNewRecordTask](#class-formeditnewrecordtask)
           - [FormEditRecordTask](#class-formeditrecordtask)
         - [FormSetFieldValueTask](#class-formsetfieldvaluetask)
@@ -394,6 +393,7 @@ This is the central API reference for the SmartClient framework.
         - [FormEditSelectedTask](#class-formeditselectedtask)
         - [GridTransferDataTask](#class-gridtransferdatatask)
         - [GridSaveAllEditsTask](#class-gridsavealleditstask)
+        - [SelectTabTask](#class-selecttabtask)
         - [GridDiscardAllEditsTask](#class-griddiscardalleditstask)
         - [FormClearValuesTask](#class-formclearvaluestask)
         - [FormResetValuesTask](#class-formresetvaluestask)
@@ -418,6 +418,8 @@ This is the central API reference for the SmartClient framework.
     - [UserConfirmationGateway](#class-userconfirmationgateway)
     - [ResetPasswordTask](#class-resetpasswordtask)
     - [LogOutTask](#class-logouttask)
+  - [EventHandler](classes/EventHandler.md)
+  - [SimpleType](classes/SimpleType.md)
   - [VoiceAssist](classes/VoiceAssist.md)
   - [AI](classes/AI.md)
   - [Browser](classes/Browser.md)
@@ -2364,6 +2366,18 @@ Timeline is a trivial subclass of [Calendar](classes/Calendar.md#class-calendar)
 Note that the [Calendar module](kb_topics/loadingOptionalModules.md#kb-topic-loading-optional-modules) must be loaded to make use of the Timeline class.
 
 ---
+## Class: ClickButtonTask
+
+*Inherits from:* [ComponentTask](classes/ComponentTask.md#class-componenttask)
+
+### Description
+Simulate a click on a button (or other [StatefulCanvas](classes/StatefulCanvas.md#class-statefulcanvas)), firing whatever handler is already attached to its [click](classes/Canvas.md#method-canvasclick) event - including a Workflow attached via a component event handler. Use this to reuse an existing, already-wired Workflow from within another Workflow, rather than duplicating it inline as a second, "floating" (component-detached) copy.
+
+### See Also
+
+- [Canvas.click](classes/Canvas.md#method-canvasclick)
+
+---
 ## Class: IPickTreeItem
 
 *Inherits from:* [PickTreeItem](classes/PickTreeItem.md#class-picktreeitem)
@@ -3139,6 +3153,26 @@ The Tutorial class is a specialized version of the Tour class with [Tour.mode](c
 The tour mode allows step configuration to be simplified by using the context to apply appropriate defaults.
 
 **Flags**: IRW
+
+---
+## Class: SelectTabTask
+
+*Inherits from:* [ComponentTask](classes/ComponentTask.md#class-componenttask)
+
+### Description
+Select a tab in a TabSet.
+
+### See Also
+
+- [TabSet.selectTab](classes/TabSet.md#method-tabsetselecttab)
+
+---
+## Attr: SelectTabTask.tabID
+
+### Description
+ID of the tab to select. See [TabSet.selectTab](classes/TabSet.md#method-tabsetselecttab).
+
+**Flags**: IR
 
 ---
 ## Class: IntegerItem

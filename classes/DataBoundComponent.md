@@ -698,6 +698,29 @@ Text for a menu item allowing users to remove a formula field
 **Flags**: IRW
 
 ---
+## Attr: DataBoundComponent.emptyRelatedFetchPolicy
+
+### Description
+Controls what this component does when `fetchRelatedData()` is called with a null source record. This happens when the master component in a master-detail relationship has its selection cleared: a `selectionUpdated` action fires `fetchRelatedData(null)` on the detail on deselection.
+
+Supported values:
+
+*   `"discardData"` – clear this component's data and criteria so it shows nothing.
+*   `"showAllRecords"` – restore the criteria this component showed **before** a master selection first narrowed it – its own initial, unrestricted-by-relationship set – removing the master relationship restriction. Note this **restores the component's own criteria**; it does not necessarily show every row in the DataSource, as any author-specified [DataBoundComponent.initialCriteria](#attr-databoundcomponentinitialcriteria) that was active before narrowing is preserved.
+
+If left unset, the effective policy is derived from [DataBoundComponent.autoFetchData](#attr-databoundcomponentautofetchdata): an auto-fetching component uses `"showAllRecords"` (it already shows an unrestricted set by default, so it returns to that on deselect), and a non-auto-fetching component uses `"discardData"`. See [DataBoundComponent.getEmptyRelatedFetchPolicy](#method-databoundcomponentgetemptyrelatedfetchpolicy).
+
+### Groups
+
+- dataBinding
+
+### See Also
+
+- [DataBoundComponent.getEmptyRelatedFetchPolicy](#method-databoundcomponentgetemptyrelatedfetchpolicy)
+
+**Flags**: IRW
+
+---
 ## Attr: DataBoundComponent.exportOperation
 
 ### Description
@@ -2054,6 +2077,20 @@ For components that support hiliting, sets the current hilites based on a hilite
 ### Groups
 
 - viewState
+
+---
+## Method: DataBoundComponent.getEmptyRelatedFetchPolicy
+
+### Description
+Returns the effective [DataBoundComponent.emptyRelatedFetchPolicy](#attr-databoundcomponentemptyrelatedfetchpolicy) for this component: the explicitly configured value if any, otherwise the value derived from [DataBoundComponent.autoFetchData](#attr-databoundcomponentautofetchdata) (`"showAllRecords"` when auto-fetching, `"discardData"` otherwise).
+
+### Returns
+
+`[String](#type-string)` — the effective policy: "discardData" or "showAllRecords"
+
+### See Also
+
+- [DataBoundComponent.emptyRelatedFetchPolicy](#attr-databoundcomponentemptyrelatedfetchpolicy)
 
 ---
 ## Method: DataBoundComponent.enableHiliting

@@ -780,6 +780,23 @@ Resumes a suspended process. If the process was suspended at a HumanTask, the ta
 | taskOutput | [Object](../reference.md#type-object) | true | — | Output from the completed async task |
 
 ---
+## Method: Process.getTextSummary
+
+### Description
+Returns a plain bulleted-text summary of this Process's current tasks - one bullet per task, using [ProcessElement.getInstanceTitle](ProcessElement.md#method-processelementgetinstancetitle) and [ProcessElement.getInstanceDescription](ProcessElement.md#method-processelementgetinstancedescription) - suitable for a non-technical review of what a Process does without opening [WorkflowEditor](#class-workfloweditor).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| markUnreferencedTasks | [Boolean](#type-boolean) | true | — | include tasks not reachable from the normal flow, as a trailing series - see [getProcessTree](#method-getprocesstree) |
+| unnamedSequencePrefix | [String](#type-string) | true | — | prefix used for auto-generated sequence IDs - see [getProcessTree](#method-getprocesstree) |
+
+### Returns
+
+`[String](#type-string)` — bulleted-text summary, one line per task
+
+---
 ## Method: Process.beforeTaskCommit
 
 ### Description

@@ -100,6 +100,16 @@ Whether to output non-translatable validator information (such as custom validat
 **Flags**: IR
 
 ---
+## Attr: JSONSchemaSettings.omitDiscriminatedFields
+
+### Description
+When true, fields marked with [DataSourceField.typeDiscriminator](DataSourceField.md#attr-datasourcefieldtypediscriminator) whose resolved type is complex (a DataSource relationship) are omitted from the output schema entirely, instead of being expanded.
+
+Intended for a two-step schema-driven flow: request schema with this setting enabled to obtain just the discriminator field(s), let the caller pick a value, then request schema again - without this setting, and now that the discriminator value is known - to obtain the field's full, unambiguous schema.
+
+**Flags**: IR
+
+---
 ## Attr: JSONSchemaSettings.asString
 
 ### Description

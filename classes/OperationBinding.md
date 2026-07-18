@@ -685,6 +685,14 @@ As with [OperationBinding.requiresRole](#attr-operationbindingrequiresrole), if 
 **Flags**: IR
 
 ---
+## Attr: OperationBinding.title
+
+### Description
+An optional, human-readable title for this operationBinding, for use anywhere an operation needs to be presented to an end user or developer - for example, the title of a [DSRequestTask](DSRequestTask.md#class-dsrequesttask) step in a [Process](Process.md#class-process). When unset, such callers fall back to an auto-title derived from [OperationBinding.operationId](#attr-operationbindingoperationid) via [DataSource.getAutoTitle](DataSource.md#classmethod-datasourcegetautotitle).
+
+**Flags**: IR
+
+---
 ## Attr: OperationBinding.csvDelimiter
 
 ### Description

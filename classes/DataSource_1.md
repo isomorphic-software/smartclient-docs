@@ -667,7 +667,7 @@ If [automatic file versioning](#attr-datasourcefileversionfield) is enabled for 
 ## Attr: DataSource.allowDynamicTreeJoins
 
 ### Description
-By default, custom dataSource implementations are assumed to be unable to support [dynamic tree joins](#method-datasourcesupportsdynamictreejoins). If you create a custom dataSource that can support such joins, set this flag to true
+By default, custom dataSource implementations are assumed to be unable to support [dynamic tree joins](DataSource_2.md#method-datasourcesupportsdynamictreejoins). If you create a custom dataSource that can support such joins, set this flag to true
 
 **Flags**: IRWA
 
@@ -4112,6 +4112,37 @@ Returns true if a given AdvancedCriteria is "flat." That is, the criteria consis
 `[boolean](../reference.md#type-boolean)` — true if criteria is flat
 
 ---
+## ClassMethod: DataSource.exportMultiSheetData
+
+### Description
+Export several datasets to a single multi-sheet spreadsheet (native `.xlsx`), one worksheet per dataset, streamed back to the browser as a file download.
+
+Where [DataSource.exportClientData](DataSource_1.md#method-datasourceexportclientdata) exports one client-supplied record list to a single sheet, this method assembles a workbook that can span **multiple DataSources**. Each dataset is either a **server fetch** -- a fetch spec (`dataSource` plus `criteria`, `sortBy`, `groupBy`/`summaryFunctions`) which the server runs itself, so a paged component exports its FULL filtered result rather than just the rows currently loaded on the client -- or a block of pre-supplied **client rows** (for [clientOnly](DataSource_1.md#attr-datasourceclientonly) DataSources or an already-computed client-side table).
+
+The transport is the framework's DataSource-free RPC download path: a [DMI](DMI.md#class-dmi) call to the built-in server method `downloadMultiSheetExport`, which runs the framework `MultiSheetDataExport` engine and streams the workbook via `RPCManager.doCustomResponse()`. No server DataSource is required.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| model | [Object](../reference.md#type-object) | false | — | the export model, of the form:
+```
+   {
+     report:     { title, singleComponent... },      // workbook options + cover
+     components: [                                    // one entry per worksheet
+       { title, fields:[{ name, title, format... }],
+         fetch: { dataSource, operationId, criteria,  // a server-fetched dataset
+                  sortBy, groupBy, summaryFunctions }
+         // -- OR --
+         rows: [ {...} ]                              // client-supplied rows
+       }
+     ]
+   }
+``` |
+| requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | additional request properties; notably `exportFilename` (base name of the downloaded file, the `.xlsx` extension is added automatically) and `exportDisplay` (`"download"` to save, or `"window"` to open inline). |
+| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | fires immediately after the download request is submitted -- the hidden-frame download transport has no completion callback. |
+
+---
 ## ClassMethod: DataSource.isAdvancedCriteria
 
 ### Description
@@ -6321,7 +6352,7 @@ Returns a list of the names of this DataSource's [primaryKey](DataSourceField.md
 
 ### See Also
 
-- [DataSource.getPrimaryKeyFields](#method-datasourcegetprimarykeyfields)
+- [DataSource.getPrimaryKeyFields](DataSource_2.md#method-datasourcegetprimarykeyfields)
 
 ---
 ## Method: DataSource.hasCustomTypeOperators
@@ -6385,7 +6416,7 @@ Returns a pointer to the primaryKey field for this DataSource. If this dataSourc
 
 ### See Also
 
-- [DataSource.getPrimaryKeyFields](#method-datasourcegetprimarykeyfields)
+- [DataSource.getPrimaryKeyFields](DataSource_2.md#method-datasourcegetprimarykeyfields)
 
 ---
 ## Method: DataSource.getShortestPathToRelation
@@ -6895,34 +6926,5 @@ The new DataSource is returned via the "callback" argument. If [DataSource.cache
 | callback | [ClientOnlyDataSourceCallback](#type-clientonlydatasourcecallback) | false | — | The callback to fire passing the clientOnly DS |
 | requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | optional properties to pass through to the DSRequest |
 | dataSourceProperties | [DataSource Properties](#type-datasource-properties) | true | — | optional properties to pass through to the clientOnly DS |
-
----
-## Method: DataSource.supportsDynamicTreeJoins
-
-### Description
-This method returns true for dataSources that support both self-joins and [additionalOutputs](DSRequest.md#attr-dsrequestadditionaloutputs). A "self-join" is a relation from a dataSource back to itself - for example a relation between a worker and his manager, both of whom are Employees. DataSources that can handle self-joins are able to create and navigate these relations, which are mostly useful for tree-type structures.
-
-Out of the box, only the built-in [SQL DataSource](../kb_topics/sqlDataSource.md#kb-topic-sql-datasources) implementation supports self-joins, and thus dynamic tree joins; neither [clientOnly](#attr-datasourceclientonly) nor the other server-side built-in DataSource implementations support them. If you create a custom DataSource implementation that can handle both of these features, you can set the [allowDynamicTreeJoins](#attr-datasourceallowdynamictreejoins) flag to true, which will cause supportsDynamicTreeJoins() to return true (and equally, you can set that flag explicitly to false to prevent the system from using dynamic tree joins for a given dataSource, even if it is able to use them)
-
-This method is called by the automatic [ResultTree.keepParentsOnFilter](ResultTree.md#attr-resulttreekeepparentsonfilter) algorithm to decide if it is possible to use self-referencing `additionalOutputs` to improve efficiency, and possibly performance.
-
-### Returns
-
-`[Boolean](#type-boolean)` — true if this dataSource supports both `additionalOutputs` and self-joins, otherwise false
-
----
-## Method: DataSource.getPrimaryKeyFields
-
-### Description
-Returns this DataSource's [primaryKey](DataSourceField.md#attr-datasourcefieldprimarykey) fields as a map of fieldName to field.
-
-### Returns
-
-`[Record](#type-record)` — Javascript object containing all this datasource's primaryKey fields, as a map of field name to field
-
-### See Also
-
-- [DataSource.getPrimaryKeyField](#method-datasourcegetprimarykeyfield)
-- [DataSource.getPrimaryKeyFieldNames](#method-datasourcegetprimarykeyfieldnames)
 
 ---

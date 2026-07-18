@@ -492,6 +492,22 @@ Note that field-level `creatorOverrides` is conceptually slightly different to t
 **Flags**: IR
 
 ---
+## Attr: DataSourceField.typeDiscriminator
+
+### Description
+For use in [componentSchema](../kb_topics/componentSchema.md#kb-topic-component-schema), names another field on the same schema whose current value determines the effective type/schema of this field.
+
+This is used when a field's shape cannot be fully described until a sibling "selector" field has been assigned - for example, a Workflow step's configuration depends on which operation was chosen for that step, so the configuration field's real schema is only meaningful once the operation field has a value.
+
+[DataSource.asJSONSchema](DataSource_1.md#method-datasourceasjsonschema) can omit discriminated fields of complex (DataSource) type via [JSONSchemaSettings.omitDiscriminatedFields](JSONSchemaSettings.md#attr-jsonschemasettingsomitdiscriminatedfields), so a consumer that must pick a discriminator value before the discriminated field's schema can be resolved is not shown a combined schema for every possible value at once.
+
+### Groups
+
+- componentSchema
+
+**Flags**: IR
+
+---
 ## Attr: DataSourceField.filterEditorType
 
 ### Description

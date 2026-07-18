@@ -196,3 +196,27 @@ ID of the next sequence or element to proceed to if a failure condition arises f
 **Flags**: IR
 
 ---
+## Method: DSRequestTask.getInstanceDescription
+
+### Description
+Overrides [ProcessElement.getInstanceDescription](ProcessElement.md#method-processelementgetinstancedescription) to prefer, in order: an instance-level [ProcessElement.description](ProcessElement.md#attr-processelementdescription); the [OperationBinding.description](OperationBinding.md#attr-operationbindingdescription) of the [OperationBinding](OperationBinding.md#class-operationbinding) this task invokes; and finally the inherited class-level [ProcessElement.classDescription](ProcessElement.md#attr-processelementclassdescription).
+
+[OperationBinding.description](OperationBinding.md#attr-operationbindingdescription) is checked before the generic [ProcessElement.classDescription](ProcessElement.md#attr-processelementclassdescription) fallback because every concrete [DSRequestTask](#class-dsrequesttask) subclass ([DSFetchTask](../reference.md#class-dsfetchtask) etc) always declares a non-empty `classDescription` - if the class-level fallback were checked first, the more specific operationBinding description would never be reached.
+
+See the IDocument on [DSRequestTask.getInstanceTitle](#method-dsrequesttaskgetinstancetitle) - the same getOperationBinding()-degrades-to-the-DataSource-itself hazard applies here, and is guarded the same way (\`binding != ds\`). Left unguarded, this method returns the DataSource's own, often long, hand-authored business-context [DataSource.description](DataSource_1.md#attr-datasourcedescription) - meant to describe the whole DataSource to a human or an AI reading its schema, not one Task's instance description - identically for every task against that DataSource regardless of operation type, which is misleading rather than merely wrong.
+
+### Returns
+
+`[String](#type-string)` — description for this instance
+
+---
+## Method: DSRequestTask.getInstanceTitle
+
+### Description
+Overrides [ProcessElement.getInstanceTitle](ProcessElement.md#method-processelementgetinstancetitle) to prefer, in order: the [OperationBinding.title](OperationBinding.md#attr-operationbindingtitle) of the [OperationBinding](OperationBinding.md#class-operationbinding) this task invokes; an auto-title derived from [DSRequestTask.operationId](#attr-dsrequesttaskoperationid) via [DataSource.getAutoTitle](DataSource.md#classmethod-datasourcegetautotitle); and finally the inherited class-level title (e.g. "DataSource Fetch" for [DSFetchTask](../reference.md#class-dsfetchtask)).
+
+### Returns
+
+`[String](#type-string)` — title for this instance
+
+---

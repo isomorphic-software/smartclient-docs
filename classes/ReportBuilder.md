@@ -98,6 +98,14 @@ Form within [ReportBuilder.slicerFieldDialog](#attr-reportbuilderslicerfielddial
 **Flags**: R
 
 ---
+## Attr: ReportBuilder.showScheduleDelivery
+
+### Description
+Whether the "Schedule Delivery" entry appears in the Share & Schedule menu. Opens the schedule-delivery editor with cadence, recipients, and format options. Requires [ReportBuilder.showSchedule](#attr-reportbuildershowschedule):true.
+
+**Flags**: IR
+
+---
 ## Attr: ReportBuilder.aiProcessLogAutoHideDelay
 
 ### Description
@@ -120,6 +128,14 @@ Optional list of natural-language prompt strings deployments want authors to dis
 Name of the date/datetime field driven by the report-level date-range filter in the global filter bar. The selected range is published to the report [dataContext](Canvas.md#attr-canvasdatacontext) for every available DataSource that has a field of this name, so a single date range narrows all data views at once. Defaults to `"created"` -- the row audit timestamp present on the demo's DataSources. A DataSource without this field is simply left unfiltered by the date range.
 
 **Flags**: IRW
+
+---
+## Attr: ReportBuilder.showShareNow
+
+### Description
+Whether the "Share Now" entry appears in the Share & Schedule menu. Share Now captures a screenshot of the current report and emails it immediately to specified recipients. Requires [ReportBuilder.showSchedule](#attr-reportbuildershowschedule):true.
+
+**Flags**: IR
 
 ---
 ## Attr: ReportBuilder.reportSaveForm
@@ -387,7 +403,7 @@ Available export formats for reports.
 ## Attr: ReportBuilder.showSchedule
 
 ### Description
-Whether the "Schedule" toolbar button is shown.
+Whether the "Share & Schedule" toolbar menu button is shown. When true, the button provides a menu with up to three entries (Share Now, Schedule Delivery, Manage Schedules), each independently controlled by [ReportBuilder.showShareNow](#attr-reportbuildershowsharenow), [ReportBuilder.showScheduleDelivery](#attr-reportbuildershowscheduledelivery), and [ReportBuilder.showManageSchedules](#attr-reportbuildershowmanageschedules).
 
 **Flags**: IR
 
@@ -618,6 +634,14 @@ Modal dialog shown when a Slicer palette node is dropped, prompting the author t
 Optional override for the [TextAreaItem.textBoxStyle](TextAreaItem.md#attr-textareaitemtextboxstyle) of the "Ask AI..." prompt input, so embedders can theme it without touching the rest of the framework's textArea styles. Picks up the standard SmartClient state suffixes (_Focused_, _Disabled_, _Error_, _Hint_) - define those alongside the base class. When unset, the prompt uses the framework's default `textAreaItem` style.
 
 **Flags**: IRW
+
+---
+## Attr: ReportBuilder.showManageSchedules
+
+### Description
+Whether the "Manage Schedules" entry appears in the Share & Schedule menu. Opens a list of existing scheduled deliveries for this report. Requires [ReportBuilder.showSchedule](#attr-reportbuildershowschedule):true.
+
+**Flags**: IR
 
 ---
 ## Attr: ReportBuilder.showPlaceholderNodes

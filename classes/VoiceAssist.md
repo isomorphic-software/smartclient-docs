@@ -95,7 +95,7 @@ Error message shown when a network error interrupts an active recording. The par
 ## ClassAttr: VoiceAssist.voiceAssistIcon
 
 ### Description
-[FormItemIcon](../reference.md#object-formitemicon) shown inline on applicable [FormItems](FormItem.md#class-formitem) when VoiceAssist is [active](#classattr-voiceassistactive). Clicking the icon toggles value-dictation on and off.
+[FormItemIcon](../reference_2.md#object-formitemicon) shown inline on applicable [FormItems](FormItem.md#class-formitem) when VoiceAssist is [active](#classattr-voiceassistactive). Clicking the icon toggles value-dictation on and off.
 
 This is not a true [AutoChild](../reference.md#type-autochild) since VoiceAssist is not a widget, but it follows the same defaults/properties customization pattern. To customize, use `voiceAssistIconDefaults` for skinning-level changes and `voiceAssistIconProperties` for per-application overrides:
 
@@ -497,7 +497,7 @@ The button is created with `canFocus: false` so that clicking it does not steal 
 ## ClassMethod: VoiceAssist.getVoiceAssistIcon
 
 ### Description
-Returns a [FormItemIcon](../reference.md#object-formitemicon) properties object configured for VoiceAssist value-dictation. The returned object merges [voiceAssistIcon](#classattr-voiceassistvoiceassisticon) defaults, then `voiceAssistIconProperties`, then any supplied `properties` argument, so all three customization levels are reflected.
+Returns a [FormItemIcon](../reference_2.md#object-formitemicon) properties object configured for VoiceAssist value-dictation. The returned object merges [voiceAssistIcon](#classattr-voiceassistvoiceassisticon) defaults, then `voiceAssistIconProperties`, then any supplied `properties` argument, so all three customization levels are reflected.
 
 This is the same icon configuration used internally when [FormItem.showVoiceAssistIcon](FormItem.md#attr-formitemshowvoiceassisticon) is enabled. Use this method to retrieve the config for manual inclusion in a custom item's [FormItem.icons](FormItem.md#attr-formitemicons) array.
 

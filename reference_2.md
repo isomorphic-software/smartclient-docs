@@ -4029,6 +4029,20 @@ See [FiscalCalendar](#object-fiscalcalendar) for more information on how FiscalY
 An object containing details for mouse events occurring over a FormItem.
 
 ---
+## Object: FormItemIcon
+
+### Description
+Form item icon descriptor objects used by Form Items to specify the appearance and behavior of icons displayed after the item in the page flow.
+
+### Groups
+
+- formIcons
+
+### See Also
+
+- [FormItem.icons](classes/FormItem.md#attr-formitemicons)
+
+---
 ## Object: GaugeSector
 
 ### Description

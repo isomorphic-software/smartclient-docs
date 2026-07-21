@@ -888,7 +888,7 @@ Scaleable spriting can be achieved using the [SCSpriteConfig](../reference.md#ty
 ## Attr: SelectItem.showPickerIcon
 
 ### Description
-Should we show a special 'picker' [icon](../reference.md#object-formitemicon) for this form item? Picker icons are customizable via [pickerIconProperties](FormItem.md#attr-formitempickericonproperties). By default they will be rendered inside the form item's ["control box"](FormItem.md#attr-formitemcontrolstyle) area. By default clicking the pickerIcon will call [FormItem.showPicker](FormItem.md#method-formitemshowpicker).
+Should we show a special 'picker' [icon](../reference_2.md#object-formitemicon) for this form item? Picker icons are customizable via [pickerIconProperties](FormItem.md#attr-formitempickericonproperties). By default they will be rendered inside the form item's ["control box"](FormItem.md#attr-formitemcontrolstyle) area. By default clicking the pickerIcon will call [FormItem.showPicker](FormItem.md#method-formitemshowpicker).
 
 ### Groups
 

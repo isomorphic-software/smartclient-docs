@@ -70,7 +70,7 @@ Also in both cases, deletion of any file is immediate. In the case of a pre-exis
 ## Attr: MultiFileItem.editButton
 
 ### Description
-Button for launching a picker to add new files for upload. Supports the properties of a [FormItemIcon](../reference.md#object-formitemicon).
+Button for launching a picker to add new files for upload. Supports the properties of a [FormItemIcon](../reference_2.md#object-formitemicon).
 
 **Flags**: IR
 
@@ -142,7 +142,7 @@ The initial title of the upload button in the picker lauched by the [edit button
 ## Attr: MultiFileItem.removeButton
 
 ### Description
-Button for removing files. Supports the properties of a [FormItemIcon](../reference.md#object-formitemicon).
+Button for removing files. Supports the properties of a [FormItemIcon](../reference_2.md#object-formitemicon).
 
 **Flags**: IR
 

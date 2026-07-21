@@ -33,7 +33,7 @@ Default [hspace](FormItemIcon.md#attr-formitemiconhspace) value for pickers crea
 ## ClassAttr: FormItem.defaultIcons
 
 ### Description
-Registry of named default icons that can be referenced as plain strings in the [FormItem.icons](#attr-formitemicons) array. Each key maps to a [FormItemIcon](../reference.md#object-formitemicon) properties object that will be used when that string appears in the array.
+Registry of named default icons that can be referenced as plain strings in the [FormItem.icons](#attr-formitemicons) array. Each key maps to a [FormItemIcon](../reference_2.md#object-formitemicon) properties object that will be used when that string appears in the array.
 
 The built-in `"voiceAssist"` icon is provided by [VoiceAssist.getVoiceAssistIcon](VoiceAssist.md#classmethod-voiceassistgetvoiceassisticon) and does not need to be registered here.
 
@@ -1116,7 +1116,7 @@ If false, the form will try to avoid blocking user interaction until it is stric
 ## Attr: FormItem.showPickerIcon
 
 ### Description
-Should we show a special 'picker' [icon](../reference.md#object-formitemicon) for this form item? Picker icons are customizable via [pickerIconProperties](#attr-formitempickericonproperties). By default they will be rendered inside the form item's ["control box"](#attr-formitemcontrolstyle) area. By default clicking the pickerIcon will call [FormItem.showPicker](#method-formitemshowpicker).
+Should we show a special 'picker' [icon](../reference_2.md#object-formitemicon) for this form item? Picker icons are customizable via [pickerIconProperties](#attr-formitempickericonproperties). By default they will be rendered inside the form item's ["control box"](#attr-formitemcontrolstyle) area. By default clicking the pickerIcon will call [FormItem.showPicker](#method-formitemshowpicker).
 
 ### Groups
 
@@ -1130,7 +1130,7 @@ Should we show a special 'picker' [icon](../reference.md#object-formitemicon) fo
 ### Description
 When set to true, this attribute renders the [error-icon](#attr-formitemerroriconsrc) [inline](FormItemIcon.md#attr-formitemiconinline) in the FormItem, next to other icons, instead of in a separate error-element outside of the item's main editor. When rendering the error-icon inline, the [error-text](#attr-formitemshowerrortext) is not displayed but is available in the icon's hover.
 
-[Icon-properties](../reference.md#object-formitemicon) can be applied to the error-icon via [errorIconProperties](#attr-formitemerroriconproperties).
+[Icon-properties](../reference_2.md#object-formitemicon) can be applied to the error-icon via [errorIconProperties](#attr-formitemerroriconproperties).
 
 **Flags**: IRA
 
@@ -2507,7 +2507,7 @@ In addition to FormItemIcon property objects, this array may contain plain strin
 
 ### See Also
 
-- [FormItemIcon](../reference.md#object-formitemicon)
+- [FormItemIcon](../reference_2.md#object-formitemicon)
 
 **Flags**: IRW
 
@@ -3535,7 +3535,7 @@ Block of default properties to apply to the pickerIcon for this widget. Intended
 ## Attr: FormItem.errorIconProperties
 
 ### Description
-[Icon-properties](../reference.md#object-formitemicon) to apply to the [error-icon](#attr-formitemshowerroricon) when [FormItem.showErrorIconInline](#attr-formitemshowerroriconinline) is true.
+[Icon-properties](../reference_2.md#object-formitemicon) to apply to the [error-icon](#attr-formitemshowerroricon) when [FormItem.showErrorIconInline](#attr-formitemshowerroriconinline) is true.
 
 **Flags**: IRA
 
@@ -3615,7 +3615,7 @@ FormItem.create() should never be called directly, instead, create a [DynamicFor
 ## ClassMethod: FormItem.getPickerIcon
 
 ### Description
-Returns a [FormItemIcon](../reference.md#object-formitemicon) for a standard picker with skin-specific settings.
+Returns a [FormItemIcon](../reference_2.md#object-formitemicon) for a standard picker with skin-specific settings.
 
 ### Parameters
 
@@ -4089,7 +4089,7 @@ Takes an icon definition object, and returns the height for that icon in px.
 ## Method: FormItem.addIcon
 
 ### Description
-Adds a [FormItemIcon](../reference.md#object-formitemicon) to this item. If the optional index parameter is not passed, the icon is added to the end of the existing [icon list](#attr-formitemicons).
+Adds a [FormItemIcon](../reference_2.md#object-formitemicon) to this item. If the optional index parameter is not passed, the icon is added to the end of the existing [icon list](#attr-formitemicons).
 
 If the passed icon already exists in the [icon list](#attr-formitemicons), by [name](FormItemIcon.md#attr-formitemiconname), the original icon is moved to the new index and no new icon is added.
 
@@ -5837,7 +5837,7 @@ Store (and optionally show) a value for this form item.
 
 This method will fire standard [FormItem.change](#method-formitemchange) and [DynamicForm.itemChanged](DynamicForm.md#method-dynamicformitemchanged) handlers, and store the value passed in such that subsequent calls to [FormItem.getValue](#method-formitemgetvalue) or [DynamicForm.getValue](DynamicForm.md#method-dynamicformgetvalue) will return the new value for this item.
 
-This method is intended to provide a way for custom formItems - most commonly [canvasItems](CanvasItem.md#class-canvasitem) - to provide a new interface to the user, allowing them to manipulate the item's value, for example in an embedded [CanvasItem.canvas](CanvasItem.md#attr-canvasitemcanvas), or a pop-up dialog launched from an [icon](../reference.md#object-formitemicon), etc. Developers should call this method when the user interacts with this custom interface in order to store the changed value.
+This method is intended to provide a way for custom formItems - most commonly [canvasItems](CanvasItem.md#class-canvasitem) - to provide a new interface to the user, allowing them to manipulate the item's value, for example in an embedded [CanvasItem.canvas](CanvasItem.md#attr-canvasitemcanvas), or a pop-up dialog launched from an [icon](../reference_2.md#object-formitemicon), etc. Developers should call this method when the user interacts with this custom interface in order to store the changed value.
 
 [shouldSaveValue](CanvasItem.md#attr-canvasitemshouldsavevalue) for CanvasItems is false by default. Custom CanvasItems will need to override shouldSaveValue to true if the values stored via this API should be included in the form's [getValues()](DynamicForm.md#method-dynamicformgetvalues) and saved with the form when [saveData()](DynamicForm.md#method-dynamicformsavedata) is called.
 

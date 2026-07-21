@@ -496,10 +496,12 @@ This is the central API reference for the SmartClient framework.
   - [CellSelection](classes/CellSelection.md)
   - [CancellationController](classes/CancellationController.md)
   - [ReifyRemote](classes/ReifyRemote.md)
+  - [DataReport](classes/DataReport.md)
   - [MathFunction](classes/MathFunction.md)
   - [AIEngine](classes/AIEngine.md)
   - [Variant](classes/Variant.md)
   - [SortSpecifierUtil](classes/SortSpecifierUtil.md)
+  - [ReportToolbar](classes/ReportToolbar.md)
   - [FontLoader](classes/FontLoader.md)
   - [SelectOtherItem](classes/SelectOtherItem.md)
   - [Timer](classes/Timer.md)
@@ -513,6 +515,7 @@ This is the central API reference for the SmartClient framework.
   - [SyntaxHiliter](#class-syntaxhiliter)
     - [XMLSyntaxHiliter](#class-xmlsyntaxhiliter)
     - [JSSyntaxHiliter](#class-jssyntaxhiliter)
+  - [ReportScreen](#class-reportscreen)
   - [WindowMaximizeButton](#class-windowmaximizebutton)
   - [WindowMinimizeButton](#class-windowminimizebutton)
   - [WindowCloseButton](#class-windowclosebutton)
@@ -2357,6 +2360,12 @@ In this sublass of [TabSet](classes/TabSet.md#class-tabset), the [tabBar](classe
 This attribute is set to true and cannot be changed in this sublass of [TabSet](classes/TabSet.md#class-tabset).
 
 **Flags**: IR
+
+---
+## Class: ReportScreen
+
+### Description
+The deployable frame around a [DataReport](classes/DataReport.md#class-datareport): a VLayout stacking a report-level [ReportToolbar](classes/ReportToolbar.md#class-reporttoolbar) (an autoChild, like a Window's header) above the DataReport body. This is the composite ReportBuilder authors and that a deployment renders like any other screen. Because the toolbar is an autoChild and [EditProxy.allowNestedDrops](classes/EditProxy.md#attr-editproxyallownesteddrops) is false, Reify treats the ReportScreen as fixed chrome + a single editable content area (the DataReport) -- a viewer/author cannot drop components between the toolbar and the report.
 
 ---
 ## Class: Timeline
@@ -8555,20 +8564,6 @@ An object representing the start date for fiscal years in the current locale.
 A fiscal year spans a configurable date range - it may not exactly match a calendar year in length and it can start on any date within the calendar year and potentially end in the next calendar year.
 
 Developers may specify explicit fiscal year start dates by adding [FiscalYear](reference_2.md#object-fiscalyear) objects to the [fiscal years array](classes/FiscalCalendar.md#attr-fiscalcalendarfiscalyears). If none are provided, or if there is no entry for the given year, one is manufactured based on the default [month](classes/FiscalCalendar.md#attr-fiscalcalendardefaultmonth) and [date](classes/FiscalCalendar.md#attr-fiscalcalendardefaultdate).
-
----
-## Object: FormItemIcon
-
-### Description
-Form item icon descriptor objects used by Form Items to specify the appearance and behavior of icons displayed after the item in the page flow.
-
-### Groups
-
-- formIcons
-
-### See Also
-
-- [FormItem.icons](classes/FormItem.md#attr-formitemicons)
 
 ---
 ## Object: GroupNode

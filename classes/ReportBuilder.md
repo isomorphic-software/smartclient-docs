@@ -54,6 +54,14 @@ Right panel containing the EditPane and optional PropertySheet.
 **Flags**: R
 
 ---
+## Attr: ReportBuilder.showExportToExcel
+
+### Description
+Whether the "Export to Excel" button is shown on the ReportBuilder's own header. This is an authoring convenience: the report's ReportToolbar Export is a disabled preview while editing (it runs against the deployed report), so this button lets an author export the whole report to a multi-sheet workbook without publishing first.
+
+**Flags**: IR
+
+---
 ## Attr: ReportBuilder.palettePanel
 
 ### Description
@@ -98,14 +106,6 @@ Form within [ReportBuilder.slicerFieldDialog](#attr-reportbuilderslicerfielddial
 **Flags**: R
 
 ---
-## Attr: ReportBuilder.showScheduleDelivery
-
-### Description
-Whether the "Schedule Delivery" entry appears in the Share & Schedule menu. Opens the schedule-delivery editor with cadence, recipients, and format options. Requires [ReportBuilder.showSchedule](#attr-reportbuildershowschedule):true.
-
-**Flags**: IR
-
----
 ## Attr: ReportBuilder.aiProcessLogAutoHideDelay
 
 ### Description
@@ -128,14 +128,6 @@ Optional list of natural-language prompt strings deployments want authors to dis
 Name of the date/datetime field driven by the report-level date-range filter in the global filter bar. The selected range is published to the report [dataContext](Canvas.md#attr-canvasdatacontext) for every available DataSource that has a field of this name, so a single date range narrows all data views at once. Defaults to `"created"` -- the row audit timestamp present on the demo's DataSources. A DataSource without this field is simply left unfiltered by the date range.
 
 **Flags**: IRW
-
----
-## Attr: ReportBuilder.showShareNow
-
-### Description
-Whether the "Share Now" entry appears in the Share & Schedule menu. Share Now captures a screenshot of the current report and emails it immediately to specified recipients. Requires [ReportBuilder.showSchedule](#attr-reportbuildershowschedule):true.
-
-**Flags**: IR
 
 ---
 ## Attr: ReportBuilder.reportSaveForm
@@ -400,14 +392,6 @@ Available export formats for reports.
 **Flags**: IRW
 
 ---
-## Attr: ReportBuilder.showSchedule
-
-### Description
-Whether the "Share & Schedule" toolbar menu button is shown. When true, the button provides a menu with up to three entries (Share Now, Schedule Delivery, Manage Schedules), each independently controlled by [ReportBuilder.showShareNow](#attr-reportbuildershowsharenow), [ReportBuilder.showScheduleDelivery](#attr-reportbuildershowscheduledelivery), and [ReportBuilder.showManageSchedules](#attr-reportbuildershowmanageschedules).
-
-**Flags**: IR
-
----
 ## Attr: ReportBuilder.aiPromptForm
 
 ### Description
@@ -636,14 +620,6 @@ Optional override for the [TextAreaItem.textBoxStyle](TextAreaItem.md#attr-texta
 **Flags**: IRW
 
 ---
-## Attr: ReportBuilder.showManageSchedules
-
-### Description
-Whether the "Manage Schedules" entry appears in the Share & Schedule menu. Opens a list of existing scheduled deliveries for this report. Requires [ReportBuilder.showSchedule](#attr-reportbuildershowschedule):true.
-
-**Flags**: IR
-
----
 ## Attr: ReportBuilder.showPlaceholderNodes
 
 ### Description
@@ -791,11 +767,11 @@ Removes a component from the report.
 ## Method: ReportBuilder.getComponents
 
 ### Description
-Returns all component EditNodes in the report.
+Returns the report's components as edit-node-shaped descriptors, one per portlet, in report order. Delegates to the [DataReport](DataReport.md#class-datareport) root, which enumerates its live portlets -- so the same list is produced whether the report is edited here or deployed standalone. See [DataReport.getComponents](DataReport.md#method-datareportgetcomponents).
 
 ### Returns
 
-`[Array of EditNode](#type-array-of-editnode)` — array of component EditNodes
+`[Array](#type-array)` — component descriptors
 
 ---
 ## Method: ReportBuilder.getReportDefinition

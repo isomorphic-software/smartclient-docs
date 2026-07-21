@@ -749,7 +749,7 @@ Prompt to show when the user hovers the mouse over the picker icon for this Comb
 ## Attr: ComboBoxItem.showPickerIcon
 
 ### Description
-Should we show a special 'picker' [icon](../reference.md#object-formitemicon) for this form item? Picker icons are customizable via [pickerIconProperties](FormItem.md#attr-formitempickericonproperties). By default they will be rendered inside the form item's ["control box"](FormItem.md#attr-formitemcontrolstyle) area. By default clicking the pickerIcon will call [FormItem.showPicker](FormItem.md#method-formitemshowpicker).
+Should we show a special 'picker' [icon](../reference_2.md#object-formitemicon) for this form item? Picker icons are customizable via [pickerIconProperties](FormItem.md#attr-formitempickericonproperties). By default they will be rendered inside the form item's ["control box"](FormItem.md#attr-formitemcontrolstyle) area. By default clicking the pickerIcon will call [FormItem.showPicker](FormItem.md#method-formitemshowpicker).
 
 ### Groups
 

@@ -15,7 +15,7 @@ This class allows developers to create, modify and load/unload custom CSS styles
 ### Description
 When true, this handler will automatically [inject](#method-stylesheethandlerinjectsheet) it's stylesheet into the DOM.
 
-**Flags**: IRW
+**Flags**: IR
 
 ---
 ## Attr: StyleSheetHandler.name
@@ -63,6 +63,10 @@ Rename the passed _oldClass_ to _newClass_ in all rules that reference it.
 
 ### Description
 Has this handler's [styleSheet](#attr-stylesheethandlerstylesheet) been loaded into the DOM?
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — true if this handler's stylesheet is currently loaded into the DOM
 
 ---
 ## Method: StyleSheetHandler.unload
@@ -163,7 +167,7 @@ Returns the list of CSS class-names defined in this handler's [stylesheet](#attr
 
 ### Returns
 
-`[Array of String](#type-array-of-string)` — the CSS declaration for the passed className
+`[Array of String](#type-array-of-string)` — the list of CSS class-names defined in the stylesheet
 
 ---
 ## Method: StyleSheetHandler.injectSheet

@@ -893,6 +893,14 @@ Note that this attribute is not compatible with [ComboBoxItem.completeOnTab](#at
 **Flags**: IRW
 
 ---
+## Attr: ComboBoxItem.pickerEscapeHTML
+
+### Description
+ComboBoxItem defaults pickerEscapeHTML to false, so HTML in a valueMap is interpreted and rendered in the drop-down pick list. The free-form text box always shows literal text, and static display escaping follows escapeHTML (inherited true from TextItem).
+
+**Flags**: IRW
+
+---
 ## Attr: ComboBoxItem.maskPadChar
 
 ### Description

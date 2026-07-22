@@ -2637,6 +2637,14 @@ Whether this item should always start a new row in the form layout.
 **Flags**: IRW
 
 ---
+## Attr: FormItem.pickerEscapeHTML
+
+### Description
+For items with a drop-down pick list, whether HTML in the pick list entries is escaped (shown as literal text) rather than interpreted. Governs the pick list independently of escapeHTML (which governs the item's own displayed value); when null the pick list follows escapeHTML. ComboBoxItem defaults it false to keep interpreting valueMap markup in the drop-down.
+
+**Flags**: IRWA
+
+---
 ## Attr: FormItem.extraControlTableCSS
 
 ### Description

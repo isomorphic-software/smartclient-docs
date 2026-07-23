@@ -2554,6 +2554,10 @@ Name of the field on each [CalendarEvent](../reference.md#object-calendarevent) 
 ### Description
 If true, lanes can be reordered by dragging their [laneFields](#attr-calendarlanefields) with the mouse.
 
+Reordering works by rewriting the [lanes](#attr-calendarlanes) array into the dropped order, so it has no lasting effect if the lane order is instead determined by a sort - for example a [sortField](#listgridfieldsortfield) on a laneField, or any other active lane sort - since the sort re-derives the order and overrides the drag.
+
+When lanes are [grouped](#attr-calendarcangrouplanes), a lane may be dragged to reorder it within its own group only; dragging a lane into a different group is not supported.
+
 **Flags**: IR
 
 ---

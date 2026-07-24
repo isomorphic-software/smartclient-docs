@@ -757,6 +757,27 @@ Possible layout modes for UI components that are sensitive to the device type be
 | "desktop" | mode intended for desktop browsers. Three or more panels may be shown simultaneously. |
 
 ---
+## Type: DialogButtons
+
+### Description
+Default buttons that you can use in your Dialogs.
+
+Refer to these buttons via the syntax `isc.Dialog.OK` when passing them into [Dialog.buttons](classes/Dialog.md#attr-dialogbuttons) or into the `properties` argument of helper methods such as [isc.say](classes/isc.md#staticmethod-iscsay).
+
+All buttons added via `setButtons` will fire the [buttonClick event](classes/Dialog.md#method-dialogbuttonclick) (whether they are built-in or custom buttons). Built-in buttons automatically close a Dialog, with the exception of the "Apply" button.
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| OK | Dismisses dialog by calling [Dialog.okClick](classes/Dialog.md#method-dialogokclick). Title derived from [Dialog.OK_BUTTON_TITLE](classes/Dialog.md#classattr-dialogok_button_title). |
+| APPLY | Does not dismiss dialog. Calls [Dialog.applyClick](classes/Dialog.md#method-dialogapplyclick) Title derived from [Dialog.APPLY_BUTTON_TITLE](classes/Dialog.md#classattr-dialogapply_button_title). |
+| YES | Dismisses dialog by calling [Dialog.yesClick](classes/Dialog.md#method-dialogyesclick). Title derived from [Dialog.YES_BUTTON_TITLE](classes/Dialog.md#classattr-dialogyes_button_title). |
+| NO | Dismisses dialog by calling [Dialog.noClick](classes/Dialog.md#method-dialognoclick). Title derived from [Dialog.NO_BUTTON_TITLE](classes/Dialog.md#classattr-dialogno_button_title). |
+| CANCEL | Dismisses dialog by calling [Dialog.cancelClick](classes/Dialog.md#method-dialogcancelclick). Title derived from [Dialog.CANCEL_BUTTON_TITLE](classes/Dialog.md#classattr-dialogcancel_button_title). |
+| DONE | Dismisses dialog by calling [Dialog.doneClick](classes/Dialog.md#method-dialogdoneclick). Title derived from [Dialog.DONE_BUTTON_TITLE](classes/Dialog.md#classattr-dialogdone_button_title). |
+
+---
 ## Type: Direction
 
 ### Description
@@ -1144,6 +1165,19 @@ Determines how Java enums are translated to and from Javascript by the SmartClie
 ### See Also
 
 - [DataSource.enumTranslateStrategy](classes/DataSource_1.md#attr-datasourceenumtranslatestrategy)
+
+---
+## Type: ErrorCategory
+
+### Description
+—
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| "expected" | part of the application's normal operation (for example, a validation error) - [UnexpectedErrorTask](classes/UnexpectedErrorTask.md#class-unexpectederrortask) skips the standard centralized error dialog. |
+| "unexpected" | a genuine infrastructure or programming problem - [UnexpectedErrorTask](classes/UnexpectedErrorTask.md#class-unexpectederrortask) shows the standard centralized error dialog. |
 
 ---
 ## Type: ExpansionComponentPoolingMode
@@ -2628,6 +2662,25 @@ Supported regression algorithms for fitting the data points of a scatter plot.
 | "polynomial" | polynomial regression |
 
 ---
+## Type: RelationalReference
+
+### Description
+A dot-notation string referencing a field on a related DataSource, used as a `fieldName` or `valuePath` within [ServerDynamicCriteria](reference_2.md#type-serverdynamiccriteria).
+
+**Forms:**
+
+*   `DS.field` — traverse the default FK to `DS` and read `field` (e.g. `Order.status`)
+*   `fkField:DS.field` — when multiple FK fields on the current DataSource point to the same target DataSource, `fkField` specifies which one to follow (e.g. `processorId:Employee.workStatus` where both `processorId` and `managerId` are FKs to Employee)
+*   `DS1.DS2.field` — multi-hop traversal through intermediate DataSources (e.g. `Order.Customer.region`)
+*   `DS.field.#count`, `DS.field.#sum`, etc. — aggregation shorthand for one-to-many relations (e.g. `OrderLine.#count`, `OrderLine.amount.#sum`)
+
+The syntax is shared with [DataSourceField.includeVia](classes/DataSourceField.md#attr-datasourcefieldincludevia) and `queryFK`. The last dot-separated segment is always the target field (or `#aggregation` function); everything before it identifies the relation path. Non-aggregation references traverse many-to-one relations (looking up a parent record via FK). With aggregation shorthand, one-to-many relations are also supported.
+
+### See Also
+
+- [ServerDynamicCriteria](reference_2.md#type-serverdynamiccriteria)
+
+---
 ## Type: RelativeDateRangePosition
 
 ### Description
@@ -2780,6 +2833,25 @@ When discovering a tree, the scanMode determines how to scan for the childrenPro
 | "level" | scan entire tree levels as a group, looking for best fit |
 
 ---
+## Type: SelectedAppearance
+
+### Description
+Appearance when a component is in [edit mode](classes/Canvas.md#method-canvasseteditmode) and is selected.
+
+Modes such as "tintMask" or "outlineMask" create an ["edit mask"](classes/EditProxy.md#attr-editproxyeditmask) that is layered over the selected component, and blocks all normal interaction with the component, so that behaviors like [EditProxy.supportsInlineEdit](classes/EditProxy.md#attr-editproxysupportsinlineedit) can completely take the place of the component's normal interactivity.
+
+"outlineEdges" mode allows normal interaction with the component, which allows the end user to do things like [freeze ListGrid fields](classes/ListGrid_1.md#attr-listgridcanfreezefields), which the [GridEditProxy](classes/GridEditProxy.md#class-grideditproxy) can implement as a ${isc.DocUtils.linkForRef('attr:GridEditProxy.saveFieldFrozenState','persistent change to grid\\'s configuration')}.
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| "tintMask" | editMask on top of the component is updated with [EditProxy.selectedTintColor](classes/EditProxy.md#attr-editproxyselectedtintcolor) and [EditProxy.selectedTintOpacity](classes/EditProxy.md#attr-editproxyselectedtintopacity) |
+| "outlineMask" | editMask on top of the component is updated with [EditProxy.selectedBorder](classes/EditProxy.md#attr-editproxyselectedborder) |
+| "outlineEdges" | MultiAutoChild is created on top of the component. This constructs a border around the component using 4 separate `outlineEdge` components so that interactivity is not blocked. |
+| "none" | no change in appearance. Override [EditProxy.showSelectedAppearance](classes/EditProxy.md#method-editproxyshowselectedappearance) to create a custom appearance. |
+
+---
 ## Type: SelectionNotificationType
 
 ### Description
@@ -2847,35 +2919,33 @@ Controls whether and when individual items are selected when clicking on a form 
 ## Type: ServerDynamicCriteria
 
 ### Description
-An [AdvancedCriteria](#object-advancedcriteria) with server-side extensions for referencing authentication/session context and fields on related DataSources.
+An [AdvancedCriteria](#object-advancedcriteria) extended with references to authentication context, request context, fields on related DataSources, and aggregation functions. Used to express conditional logic for validators, field editability, visibility, and security — all declaratively in the DataSource definition.
 
-On the client, a ServerDynamicCriteria is treated identically to a normal AdvancedCriteria. On the server, the following additional `fieldName` forms are recognized:
+The server enforces all ServerDynamicCriteria during CRUD operations (validation, field stripping, security checks). The client evaluates the same criteria locally where possible — resolving references from cached data, the [rule context](classes/Canvas.md#attr-canvasrulescope), and [Authentication](classes/Authentication.md#class-authentication) — to provide immediate UI feedback (field locking, visibility changes, validation errors) without a server round-trip. When the client cannot resolve a reference (e.g. no cached data for the related DataSource), the criterion is deferred to the server automatically.
+
+The following additional forms are recognized in `criterion.fieldName` and `criterion.valuePath`:
+
+*   **Authentication / request context** — `auth.userId`, `context.operationType`, etc.
+*   **Relational references** — `Order.status`, `processorId:Employee.name` ([dot notation](reference_2.md#type-relationalreference))
+*   **Aggregation shorthand** — `OrderLine.#count`, `OrderLine.amount.#sum`
+
+See below for more details.
 
 #### Authentication and request context
-Reference the current user or operation type:
 
 *   `auth.userId` — the authenticated user ID (from `DSRequest.getUserId()`)
 *   `auth.roles` — the list of roles for the authenticated user (from `DSRequest.getUserRoles()`)
 *   `context.operationType` — the operation type of the current DSRequest (`"add"`, `"update"`, `"fetch"`, or `"remove"`)
 *   `context.operationId` — the [OperationBinding.operationId](classes/OperationBinding.md#attr-operationbindingoperationid) of the current operation, if one was specified
 
+On the server, `auth.*` and `context.*` values are injected from the `DSRequest`. On the client, `auth.*` values are available via the [ruleScope](classes/Canvas.md#attr-canvasrulescope) when [Authentication](classes/Authentication.md#class-authentication) is configured. `context.operationType` is also available client-side — it is injected into the ruleScope by [dataBoundComponent.setSaveOperationType](#method-databoundcomponentsetsaveoperationtype) when a form or grid begins editing (set to `"add"` for new records, `"update"` for existing). `context.operationId` is server-only.
 #### Relational references
-Reference fields on related DataSources via dot notation, with automatic server-side fetching:
+Reference fields on related DataSources via [dot notation](reference_2.md#type-relationalreference). On the server, related records are fetched automatically. On the client, the framework attempts to resolve references from locally cached data (see "Client-side cache lookup" below) — if the related record is already loaded in a form, grid, or ResultSet, no server trip is needed.
 
-*   `Order.status` — traverse the default FK to the Order DataSource and read its `status` field
-*   `processorId:Employee.workStatus` — disambiguate which FK to follow when multiple FKs reference the same DataSource
-*   `Order.Customer.region` — multi-hop traversal through Order to Customer
+The relational reference syntax reuses the same format as [DataSourceField.includeVia](classes/DataSourceField.md#attr-datasourcefieldincludevia) / `queryFK`. The last dot-separated segment is the target field; everything before it identifies the relation path. Non-aggregation references traverse many-to-one relations (looking up a parent record via FK). With aggregation shorthand (`#count`, `#sum`, etc.), one-to-many relations are also supported.
 
-The relational reference syntax reuses the same format as [DataSourceField.includeVia](classes/DataSourceField.md#attr-datasourcefieldincludevia) / `queryFK`. The last dot-separated segment is the target field; everything before it identifies the relation path. Only many-to-one relations are supported.
+**Example:**
 
-If a DataSource is named `auth` or `context`, prefix with `ds.` to force DataSource lookup — e.g. `ds.auth.someField`.
-
-#### Caching and performance
-Related records fetched during server-side evaluation are cached for the lifetime of the current [DSRequest](reference_2.md#object-dsrequest), so multiple criteria referencing the same related record incur only a single fetch. Auto-fetches bypass [declarativeSecurity](kb_topics/declarativeSecurity.md#kb-topic-declarative-security) since they are internal server operations enforcing declared constraints, not user-initiated data requests.
-
-The maximum relation chain depth defaults to 5 and can be changed via the `ServerDynamicCriteria.maxRelationDepth` setting in `server.properties`. If a chain exceeds this limit, the criterion is treated as non-matching.
-
-#### Example
 ```
  <!-- Quantity capped at 10 only for Pending orders -->
  <field name="quantity" type="integer">
@@ -2888,6 +2958,60 @@ The maximum relation chain depth defaults to 5 and can be changed via the `Serve
  </field>
  
 ```
+
+**Disambiguation:** `auth.*` and `context.*` are first checked as DataSource names — if a DataSource named `auth` or `context` is loaded, references like `auth.field` are treated as relational references to that DataSource, not as authentication variables. To force variable interpretation when such a DataSource exists, use the `$` prefix: `$auth.userId`, `$context.operationType`. When no DataSource named `auth` or `context` exists (the common case), the `$` prefix is optional.
+
+#### Dynamic criterion values
+[Criterion.valuePath](classes/Criterion.md#attr-criterionvaluepath) supports the same [relational dot\\n notation](reference_2.md#type-relationalreference) as `fieldName`, enabling criteria where **both sides** are dynamic references to related DataSources. Relational references, aggregation shorthand (`#count`, `#sum`, etc.), and `auth.*` / `context.*` prefixes are all supported in `valuePath`.
+
+Use `valuePath` (not `value`) for dynamic references.
+
+**Example (both sides dynamic):**
+
+```
+ <!-- Gold tier requires enough orders for the region -->
+ <Criterion
+     fieldName="OrderLine.#count"
+     operator="greaterOrEqual"
+     valuePath="Region.goldThreshold"/>
+ 
+```
+Here the left side is an aggregate (count of related OrderLines) and the right side is a relational lookup (the Region's `goldThreshold` field). Both are resolved automatically on the server and from client caches when possible.
+
+#### Caching and performance
+Related records fetched during server-side evaluation are cached for the lifetime of the current [DSRequest](reference_2.md#object-dsrequest), so multiple criteria referencing the same related record incur only a single fetch. Auto-fetches bypass [declarativeSecurity](kb_topics/declarativeSecurity.md#kb-topic-declarative-security) since they are internal server operations enforcing declared constraints, not user-initiated data requests.
+
+The maximum relation chain depth on the server defaults to 5 and can be changed via the `ServerDynamicCriteria.maxRelationDepth` setting in `server.properties`. If a chain exceeds this limit, the criterion is treated as non-matching.
+
+#### Aggregation shorthand
+Reference one-to-many aggregate values using the `#` prefix on the last segment of a dot-notation fieldName. This is shorthand for the verbose `fieldQuery`/`valueQuery` XML and produces the equivalent subquery structure internally.
+
+*   `OrderLine.#count` — count of related OrderLine records
+*   `OrderLine.amount.#count` — same (any field works with `#count`)
+*   `OrderLine.amount.#sum` — sum of the `amount` field across related OrderLines
+*   `OrderLine.amount.#max` — max value
+*   `OrderLine.amount.#min` — min value
+*   `OrderLine.amount.#avg` — average
+
+`#count` supports both the 2-part form (`DS.#count`) and the 3-part form (`DS.field.#count`). All other aggregates require a field name before the `#` suffix (e.g. `DS.field.#sum`).
+
+This shorthand works in all ServerDynamicCriteria contexts (validators, field properties, Declarative Security) and is expanded to a `fieldQuery` with `summaryFunctions` both server-side and client-side.
+
+**Example:**
+
+```
+ <!-- Quantity limited to 5 when order has >10 line items -->
+ <field name="quantity" type="integer">
+   <validators>
+     <validator type="integerRange" min="1" max="5">
+       <applyWhen fieldName="OrderLine.#count"
+                  operator="greaterThan" value="10"/>
+     </validator>
+   </validators>
+ </field>
+ 
+```
+
 #### Usage
 ServerDynamicCriteria is the type used by:
 
@@ -2897,11 +3021,31 @@ ServerDynamicCriteria is the type used by:
 *   [DataSourceField.readOnlyWhen](classes/DataSourceField.md#attr-datasourcefieldreadonlywhen) / [DataSourceField.editWhen](classes/DataSourceField.md#attr-datasourcefieldeditwhen) — conditionally restrict field editability
 *   [DataSourceField.initWhen](classes/DataSourceField.md#attr-datasourcefieldinitwhen) / [DataSourceField.updateWhen](classes/DataSourceField.md#attr-datasourcefieldupdatewhen) — restrict editability by operation type
 *   [DataSourceField.visibleWhen](classes/DataSourceField.md#attr-datasourcefieldvisiblewhen) — conditionally strip a field from server responses
+*   [OperationBinding.requiresWhen](classes/OperationBinding.md#attr-operationbindingrequireswhen) — criteria-based operation-level security
 
 The resolved values are also available programmatically via `DSRequest.getRelatedRecord()` and `DSRequest.getRelatedFieldValue()` in server-side Java code (e.g. from a DMI).
 
+#### Client-side cache lookup
+When a criterion in ServerDynamicCriteria references related records (relational references or aggregation shorthand), the framework tries to find the related record on the client in order to avoid unnecessary server trips. The lookup order is:
+
+1.  **ruleScope** — DataSource-level values from the current ruleScope (picks up unsaved edits)
+2.  **includeFrom fields** — if the referenced value is already an included field on the record being validated
+3.  **Drawn components** — all ResultSets attached to drawn components, plus drawn forms and DetailViewers, sorted by visibility (fully visible components first), then by recency (most recently loaded or most recently edited first), with a maximum age of 3 minutes
+
+If none of these sources can provide the referenced value, the client-side check is silently skipped and the server evaluates the criteria during the actual CRUD operation.
+
+**Why client-side lookup is important:** consider an `editWhen` on `OrderLine.quantity` referencing `Order.status` — without client-side lookup, every edit would trigger a server round-trip just to check the Order's status, even though the Order is loaded right above in a form or grid.
+
+**Staleness risk:** in an incredibly obscure case, the client cache could return stale data — for example, if another user changed the related record between when it was loaded and when the validation fires. The dangerous case would be rejecting an edit on the client that would have passed on the server, frustrating the user. With the default [Criterion.relatedValueAge](classes/Criterion.md#attr-criterionrelatedvalueage) cache age limit (180 seconds), this scenario is extremely unlikely. The server always re-evaluates the criteria during the actual CRUD operation, so stale client-side results never cause data corruption — they only affect the UI presentation (field editability, visibility).
+
+**Controls:**
+
+*   [DataSource.validationCheckClientCaches](classes/DataSource_1.md#attr-datasourcevalidationcheckclientcaches) — system-wide, per-DataSource, or per-field flag to disable client-side cache lookup entirely
+*   [Criterion.relatedValueAge](classes/Criterion.md#attr-criterionrelatedvalueage) — per-criterion maximum age in seconds for cached data (default 180; set to 0 to skip client-side check for this criterion)
+
 ### See Also
 
+- [RelationalReference](reference_2.md#type-relationalreference)
 - [Validator.applyWhen](classes/Validator.md#attr-validatorapplywhen)
 - [Validator.passWhen](classes/Validator.md#attr-validatorpasswhen)
 - [Validator.failWhen](classes/Validator.md#attr-validatorfailwhen)
@@ -2911,6 +3055,7 @@ The resolved values are also available programmatically via `DSRequest.getRelate
 - [DataSourceField.initWhen](classes/DataSourceField.md#attr-datasourcefieldinitwhen)
 - [DataSourceField.updateWhen](classes/DataSourceField.md#attr-datasourcefieldupdatewhen)
 - [DataSourceField.visibleWhen](classes/DataSourceField.md#attr-datasourcefieldvisiblewhen)
+- [Authentication](classes/Authentication.md#class-authentication)
 
 ---
 ## Type: SetterPath
@@ -3958,10 +4103,37 @@ See the [Master/Detail Add Example](https://www.smartclient.com/smartclient-late
 Configuration for [Reify.editInReify](classes/Reify.md#classmethod-reifyeditinreify).
 
 ---
+## Object: ErrorContext
+
+### Description
+Every signal available about a task failure, passed to [Process.classifyError](classes/Process.md#classmethod-processclassifyerror). Fields not applicable to the failure that occurred are left unset - for example, a DataSource-operation failure ([DSRequestTask](classes/DSRequestTask.md#class-dsrequesttask) and similar) populates [ErrorContext.response](#attr-errorcontextresponse)/[ErrorContext.request](#attr-errorcontextrequest), while an infrastructure-style failure (propagated from a [SubProcessTask](classes/SubProcessTask.md#class-subprocesstask)'s child, or explicitly raised via [Process.fail](classes/Process.md#method-processfail)) populates [ErrorContext.failure](#attr-errorcontextfailure) instead.
+
+---
 ## Object: Facet
 
 ### Description
 Facet definition object made use of by the [CubeGrid](classes/CubeGrid.md#class-cubegrid) and [FacetChart](classes/FacetChart.md#class-facetchart) classes.
+
+---
+## Object: FailWhenValidator
+
+### Description
+A [Validator](classes/Validator.md#class-validator) defined purely by criteria: the record fails validation when [Validator.failWhen](classes/Validator.md#attr-validatorfailwhen) criteria match. Inverse of [PassWhenValidator](reference_2.md#object-passwhenvalidator). No [Validator.type](classes/Validator.md#attr-validatortype) is needed.
+
+**Example (XML):**
+
+```
+ <validator errorMessage="Cannot use status 'Cancelled'">
+   <failWhen fieldName="status" operator="equals"
+             value="Cancelled"/>
+ </validator>
+ 
+```
+
+### See Also
+
+- [Validator.failWhen](classes/Validator.md#attr-validatorfailwhen)
+- [ServerDynamicCriteria](reference_2.md#type-serverdynamiccriteria)
 
 ---
 ## Object: Field
@@ -4296,6 +4468,33 @@ Used with [CoTProcess.getPartialPrompt](classes/CoTProcess.md#method-cotprocessg
 ### Groups
 
 - CoTPartialPrompt
+
+---
+## Object: PassWhenValidator
+
+### Description
+A [Validator](classes/Validator.md#class-validator) defined purely by criteria: the record passes validation when [Validator.passWhen](classes/Validator.md#attr-validatorpasswhen) criteria match. No [Validator.type](classes/Validator.md#attr-validatortype) is needed.
+
+This is the preferred way to express most validation rules: the criteria define both the client-side and server-side check, with full [ServerDynamicCriteria](reference_2.md#type-serverdynamiccriteria) support (current user, operation type, related DataSources, aggregation shorthand).
+
+**Example (XML):**
+
+```
+ <validator errorMessage="Status must be Pending or Active">
+   <passWhen fieldName="status" operator="inSet">
+     <value>
+       <value>Pending</value>
+       <value>Active</value>
+     </value>
+   </passWhen>
+ </validator>
+ 
+```
+
+### See Also
+
+- [Validator.passWhen](classes/Validator.md#attr-validatorpasswhen)
+- [ServerDynamicCriteria](reference_2.md#type-serverdynamiccriteria)
 
 ---
 ## Object: PlaceholderDefaults

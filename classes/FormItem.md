@@ -1545,10 +1545,16 @@ A basic criteria uses textMatchStyle:"exact". When specified in [Component XML](
 
 Note: A FormItem using visibleWhen must have a [FormItem.name](#attr-formitemname) defined. [FormItem.shouldSaveValue](#attr-formitemshouldsavevalue) can be set to `false` to prevent the field from storing its value into the form's values.
 
+For server-side enforcement that also strips the field value from responses, use [DataSourceField.visibleWhen](DataSourceField.md#attr-datasourcefieldvisiblewhen) instead. The DataSourceField property uses [ServerDynamicCriteria](../reference_2.md#type-serverdynamiccriteria) and enforces on both client and server. Use this FormItem-level property only when the rule is component-specific or needs client-only state (e.g. whether a record is selected in a grid).
+
 ### Groups
 
 - ruleCriteria
 - appearance
+
+### See Also
+
+- [DataSourceField.visibleWhen](DataSourceField.md#attr-datasourcefieldvisiblewhen)
 
 **Flags**: IR
 
@@ -2792,6 +2798,22 @@ Whether this item should always start a new row in the form layout.
 **Flags**: IRW
 
 ---
+## Attr: FormItem.pickerEscapeHTML
+
+### Description
+For form items that show a drop-down pick list (such as [SelectItem](SelectItem.md#class-selectitem) and [ComboBoxItem](ComboBoxItem.md#class-comboboxitem)), should HTML characters in the pick list entries be escaped (shown as literal source text) rather than interpreted by the browser?
+
+This governs the pick list independently of [escapeHTML](#attr-formitemescapehtml), which governs the item's own displayed value. When left null, the pick list follows `escapeHTML`, so items whose pick list shows the same values as the item itself (such as [SelectItem](SelectItem.md#class-selectitem)) need only set `escapeHTML`.
+
+[ComboBoxItem](ComboBoxItem.md#class-comboboxitem) defaults this to `false` so HTML supplied via a [FormItem.valueMap](#attr-formitemvaluemap) is interpreted and rendered in the drop-down, while its free-form text box and static display continue to show values as literal text.
+
+### Groups
+
+- appearance
+
+**Flags**: IRWA
+
+---
 ## Attr: FormItem.extraControlTableCSS
 
 ### Description
@@ -2974,10 +2996,17 @@ A basic criteria uses textMatchStyle:"exact". When specified in [Component XML](
 
 Note: A FormItem using readOnlyWhen must have a [FormItem.name](#attr-formitemname) defined. [FormItem.shouldSaveValue](#attr-formitemshouldsavevalue) can be set to `false` to prevent the field from storing its value into the form's values.
 
+For server-side enforcement that also strips the field value from add/update operations, use [DataSourceField.readOnlyWhen](DataSourceField.md#attr-datasourcefieldreadonlywhen) or [DataSourceField.editWhen](DataSourceField.md#attr-datasourcefieldeditwhen) instead. The DataSourceField properties use [ServerDynamicCriteria](../reference_2.md#type-serverdynamiccriteria) and enforce on both client and server. Use this FormItem-level property only when the rule is component-specific or needs client-only state.
+
 ### Groups
 
 - ruleCriteria
 - readOnly
+
+### See Also
+
+- [DataSourceField.readOnlyWhen](DataSourceField.md#attr-datasourcefieldreadonlywhen)
+- [DataSourceField.editWhen](DataSourceField.md#attr-datasourcefieldeditwhen)
 
 **Flags**: IR
 

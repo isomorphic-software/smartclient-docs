@@ -143,6 +143,18 @@ A message returned by a DataSource when it is returning an empty dataset for a f
 **Flags**: IRW
 
 ---
+## ClassAttr: DataSource.validationCheckClientCaches
+
+### Description
+System-wide flag controlling whether client-side validation and \*When rule evaluation attempt to resolve ServerDynamicCriteria references (relational and aggregation) from locally cached data. When false, the client skips cache lookup entirely and defers to the server. Can be overridden per-DataSource ([DataSource.validationCheckClientCaches](DataSource_1.md#attr-datasourcevalidationcheckclientcaches)) or per-field ([DataSourceField.validationCheckClientCaches](DataSourceField.md#attr-datasourcefieldvalidationcheckclientcaches)).
+
+### See Also
+
+- [DataSource.validationCheckClientCaches](DataSource_1.md#attr-datasourcevalidationcheckclientcaches)
+
+**Flags**: IRW
+
+---
 ## ClassAttr: DataSource.loaderURL
 
 ### Description
@@ -3101,6 +3113,19 @@ Note, this flag only has an effect if you are editing a values object that conta
 - [ValuesManager.deepCloneOnEdit](ValuesManager.md#attr-valuesmanagerdeepcloneonedit)
 
 **Flags**: IRWA
+
+---
+## Attr: DataSource.validationCheckClientCaches
+
+### Description
+Per-DataSource flag controlling whether client-side validation and \*When rule evaluation attempt to resolve [ServerDynamicCriteria](../reference_2.md#type-serverdynamiccriteria) references from locally cached data. When `false`, the client skips cache lookup for all fields on this DataSource. When `null` (default), inherits from the system-wide [DataSource.validationCheckClientCaches](DataSource.md#classattr-datasourcevalidationcheckclientcaches). Can be overridden per-field via [DataSourceField.validationCheckClientCaches](DataSourceField.md#attr-datasourcefieldvalidationcheckclientcaches).
+
+### See Also
+
+- [DataSource.validationCheckClientCaches](#attr-datasourcevalidationcheckclientcaches)
+- [DataSourceField.validationCheckClientCaches](DataSourceField.md#attr-datasourcefieldvalidationcheckclientcaches)
+
+**Flags**: IRW
 
 ---
 ## Attr: DataSource.defaultSortField
@@ -6884,40 +6909,5 @@ See [DataSource.isAdvancedCriteria](DataSource.md#classmethod-datasourceisadvanc
 ### Returns
 
 `[Boolean](#type-boolean)` — true if the criteria is AdvancedCriteria, false otherwise
-
----
-## Method: DataSource.getFetchDataURL
-
-### Description
-Returns a URL to DataSource fetch operation. This API is intended to return media such as images or videos to the browser.
-
-Note that because the entirety of the request is encoded in the URL, there is an inherent limitation on the amount of data that you can send viat he criteria argument to the server. The actual length depends on your server configuration and other factors such as the size of cookies (if any) being sent to the server and other HTTP headers in use. Conservatively, assume that you have about 2 kilobytes to work with.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| criteria | [Criteria](../reference_2.md#type-criteria) | false | — | Criteria to be sent to server. |
-| requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | additional properties to set on the DSRequest that will be issued |
-
-### Returns
-
-`[String](#type-string)` — a URL that targets the specified fetch operation.
-
----
-## Method: DataSource.getTextMatchStyleJSONSchema
-
-### Description
-Returns a JSON Schema for a DSRequest `textMatchStyle` value. This is a fixed enum and does not depend on DataSource shape, but is exposed as an instance method for uniform access alongside the other DSRequest sub-schemas.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| settings | [JSONSchemaSettings](#type-jsonschemasettings) | true | — | Optional settings. |
-
-### Returns
-
-`[Object](../reference.md#type-object)|[String](#type-string)` — JSON Schema.
 
 ---

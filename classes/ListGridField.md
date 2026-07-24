@@ -482,9 +482,15 @@ Criteria to be evaluated to determine whether this field should be visible.
 
 This criteria is dynamic and will be renterpreted each time the rule context changes. Note that calling [ListGrid.showField](ListGrid_2.md#method-listgridshowfield) or [ListGrid.hideField](ListGrid_2.md#method-listgridhidefield) explicitly will cause any visibleWhen attribute to be dropped.
 
+For server-side enforcement that strips the field value from responses, use [DataSourceField.visibleWhen](DataSourceField.md#attr-datasourcefieldvisiblewhen).
+
 ### Groups
 
 - ruleCriteria
+
+### See Also
+
+- [DataSourceField.visibleWhen](DataSourceField.md#attr-datasourcefieldvisiblewhen)
 
 **Flags**: IR
 

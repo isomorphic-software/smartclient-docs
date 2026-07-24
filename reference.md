@@ -334,8 +334,6 @@ This is the central API reference for the SmartClient framework.
   - [ValuesManager](classes/ValuesManager.md)
   - [Colors](classes/Colors.md)
   - [EditContext](classes/EditContext.md)
-  - [AutoTest](classes/AutoTest.md)
-  - [DateUtil](classes/DateUtil.md)
   - [Process](classes/Process.md)
     - [CoTProcess](classes/CoTProcess.md)
       - [AUN](classes/AUN.md)
@@ -343,9 +341,11 @@ This is the central API reference for the SmartClient framework.
       - [AIDelegator](classes/AIDelegator.md)
     - [Tour](classes/Tour.md)
       - [Tutorial](#class-tutorial)
+  - [AutoTest](classes/AutoTest.md)
+  - [DateUtil](classes/DateUtil.md)
   - [Page](classes/Page.md)
-  - [SavedSearches](classes/SavedSearches.md)
   - [Validator](classes/Validator.md)
+  - [SavedSearches](classes/SavedSearches.md)
   - [Callbacks](classes/Callbacks.md)
   - [EventStream](classes/EventStream.md)
   - [ProcessElement](classes/ProcessElement.md)
@@ -400,6 +400,7 @@ This is the central API reference for the SmartClient framework.
         - [FormResetValuesTask](#class-formresetvaluestask)
         - [ShowComponentTask](#class-showcomponenttask)
       - [StateTask](classes/StateTask.md)
+      - [UnexpectedErrorTask](classes/UnexpectedErrorTask.md)
       - [TimerTask](classes/TimerTask.md)
     - [SendEmailTask](classes/SendEmailTask.md)
     - [DefaultOperationTask](classes/DefaultOperationTask.md)
@@ -5608,27 +5609,6 @@ An object containing the stored grouping information for a detailViewer. Note th
 - viewState
 
 ---
-## Type: DialogButtons
-
-### Description
-Default buttons that you can use in your Dialogs.
-
-Refer to these buttons via the syntax `isc.Dialog.OK` when passing them into [Dialog.buttons](classes/Dialog.md#attr-dialogbuttons) or into the `properties` argument of helper methods such as [isc.say](classes/isc.md#staticmethod-iscsay).
-
-All buttons added via `setButtons` will fire the [buttonClick event](classes/Dialog.md#method-dialogbuttonclick) (whether they are built-in or custom buttons). Built-in buttons automatically close a Dialog, with the exception of the "Apply" button.
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| OK | Dismisses dialog by calling [Dialog.okClick](classes/Dialog.md#method-dialogokclick). Title derived from [Dialog.OK_BUTTON_TITLE](classes/Dialog.md#classattr-dialogok_button_title). |
-| APPLY | Does not dismiss dialog. Calls [Dialog.applyClick](classes/Dialog.md#method-dialogapplyclick) Title derived from [Dialog.APPLY_BUTTON_TITLE](classes/Dialog.md#classattr-dialogapply_button_title). |
-| YES | Dismisses dialog by calling [Dialog.yesClick](classes/Dialog.md#method-dialogyesclick). Title derived from [Dialog.YES_BUTTON_TITLE](classes/Dialog.md#classattr-dialogyes_button_title). |
-| NO | Dismisses dialog by calling [Dialog.noClick](classes/Dialog.md#method-dialognoclick). Title derived from [Dialog.NO_BUTTON_TITLE](classes/Dialog.md#classattr-dialogno_button_title). |
-| CANCEL | Dismisses dialog by calling [Dialog.cancelClick](classes/Dialog.md#method-dialogcancelclick). Title derived from [Dialog.CANCEL_BUTTON_TITLE](classes/Dialog.md#classattr-dialogcancel_button_title). |
-| DONE | Dismisses dialog by calling [Dialog.doneClick](classes/Dialog.md#method-dialogdoneclick). Title derived from [Dialog.DONE_BUTTON_TITLE](classes/Dialog.md#classattr-dialogdone_button_title). |
-
----
 ## Type: Distance
 
 ### Description
@@ -7422,25 +7402,6 @@ Affects the appearance and behavior of the builtin [SavedSearchEditor](classes/S
 - state
 
 ---
-## Type: SelectedAppearance
-
-### Description
-Appearance when a component is in [edit mode](classes/Canvas.md#method-canvasseteditmode) and is selected.
-
-Modes such as "tintMask" or "outlineMask" create an ["edit mask"](classes/EditProxy.md#attr-editproxyeditmask) that is layered over the selected component, and blocks all normal interaction with the component, so that behaviors like [EditProxy.supportsInlineEdit](classes/EditProxy.md#attr-editproxysupportsinlineedit) can completely take the place of the component's normal interactivity.
-
-"outlineEdges" mode allows normal interaction with the component, which allows the end user to do things like [freeze ListGrid fields](classes/ListGrid_1.md#attr-listgridcanfreezefields), which the [GridEditProxy](classes/GridEditProxy.md#class-grideditproxy) can implement as a ${isc.DocUtils.linkForRef('attr:GridEditProxy.saveFieldFrozenState','persistent change to grid\\'s configuration')}.
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| "tintMask" | editMask on top of the component is updated with [EditProxy.selectedTintColor](classes/EditProxy.md#attr-editproxyselectedtintcolor) and [EditProxy.selectedTintOpacity](classes/EditProxy.md#attr-editproxyselectedtintopacity) |
-| "outlineMask" | editMask on top of the component is updated with [EditProxy.selectedBorder](classes/EditProxy.md#attr-editproxyselectedborder) |
-| "outlineEdges" | MultiAutoChild is created on top of the component. This constructs a border around the component using 4 separate `outlineEdge` components so that interactivity is not blocked. |
-| "none" | no change in appearance. Override [EditProxy.showSelectedAppearance](classes/EditProxy.md#method-editproxyshowselectedappearance) to create a custom appearance. |
-
----
 ## Type: SelectionAppearance
 
 ### Description
@@ -7802,7 +7763,13 @@ A Uniform Resource Identifier string, as defined by [https://tools.ietf.org/html
 ### Description
 Used to name a validator or reference a standard, built-in [Validator](classes/Validator.md#class-validator) - see list below.
 
-To make use of a standard validator type for a field in a DataSource, or DynamicForm instance, specify the `validators` property to an array containing a validator definition where the `type` property is set to the appropriate type.
+#### Criteria-Based Validation (ServerDynamicCriteria)
+The most flexible approach to validation is criteria-based: use [Validator.passWhen](classes/Validator.md#attr-validatorpasswhen) or [Validator.failWhen](classes/Validator.md#attr-validatorfailwhen) to define validation rules purely via [ServerDynamicCriteria](reference_2.md#type-serverdynamiccriteria) — no validator type is needed. These support references to the current user, operation type, fields on related DataSources, and subquery aggregation. They are enforced on both client and server.
+
+For conditional validators that should only fire in certain circumstances, use [Validator.applyWhen](classes/Validator.md#attr-validatorapplywhen) with any validator type. Most built-in validator types below are simply shortcuts for what can be expressed as criteria (exceptions: [isUnique](#type-validatortype) and [hasRelatedRecord](#type-validatortype) which require server-side checks that go beyond criteria evaluation).
+
+#### Built-In Validator Types
+To use a standard validator type, specify the `validators` property to an array containing a validator definition where the `type` property is set to the appropriate type.
 
 A custom error message can be specified for any validator type by setting the `errorMessage` property on the validator definition object, and some validator types make use of additional properties on the validator definition object such as `max` or `min`.
 
@@ -7816,6 +7783,29 @@ Custom validators can be reused on the client by adding them to the global valid
 
 | Value | Description |
 |-------|-------------|
+| isUnique | Returns true if the value for this field is unique. The uniqueness check is performed across the whole DataSource unless you specify property `validator.criteriaFields` as a comma-separated string of field names; in that case, the uniqueness check is done in the context of those extra criteria, allowing you to check, for example, whether an employee number is unique for the department and location found on the record being validated. By default the uniqueness check is not case sensitive but this can be controlled through the [caseSensitive](classes/Validator.md#attr-validatorcasesensitive) attribute. You can specify the [operation](classes/DataSource_1.md#attr-datasourceoperationbindings) to use for the uniqueness check with the [operationId](classes/Validator.md#attr-validatoroperationid) attribute.
+
+Validators of this type have [requiresServer](classes/ValidatorDefinition.md#attr-validatordefinitionrequiresserver) set to `true` and do not run on the client, unless all of the following are true:
+
+*   The validation is run in the context of a DataBoundComponent or ValuesManager bound to some DataSource.
+*   The DataSource is either clientOnly:true or cacheAllData: true and all data is loaded
+*   The item is made available to the validator. Note that the item is not be available during a save performed without a form (eg programmatic save), or if the field is not available in the form.
+
+Note when isUnique validator is executed as part of validation process during update operation, it will perform uniqueness check only for single row updates. If update targets [multiple records](classes/OperationBinding.md#attr-operationbindingallowmultiupdate), then isUnique validator will be skipped. If uniqueness check is needed when updating multiple records, consider using [custom DMI](kb_topics/dmiOverview.md#kb-topic-direct-method-invocation) approach to add this check manually.
+
+See *uniqueCheckValidation example*. |
+| hasRelatedRecord | Returns true if the record implied by a relation exists. The relation can be derived automatically from the [DataSourceField.foreignKey](classes/DataSourceField.md#attr-datasourcefieldforeignkey) attribute of the field being validated, or you can specify it manually via `validator.relatedDataSource` and `validator.relatedField`.
+
+You can specify at DataSource level that this validator should be automatically applied to all fields that specify a [foreignKey](classes/DataSourceField.md#attr-datasourcefieldforeignkey) - see [DataSource.validateRelatedRecords](classes/DataSource_1.md#attr-datasourcevalidaterelatedrecords).
+
+By default the uniqueness check is not case sensitive but this can be controlled through the [caseSensitive](classes/Validator.md#attr-validatorcasesensitive) attribute.
+
+Validators of this type have [requiresServer](classes/ValidatorDefinition.md#attr-validatordefinitionrequiresserver) set to `true` and do not run on the client.
+
+Note that this validation is generally unnecessary for data coming from a UI. The typical UI uses a [SelectItem](classes/SelectItem.md#class-selectitem) or [ComboBoxItem](classes/ComboBoxItem.md#class-comboboxitem) with an [optionDataSource](classes/FormItem.md#attr-formitemoptiondatasource) for user entry, such that the user can't accidentally enter a related record if that doesn't exist, and a typical SQL schema will include constraints that prevent a bad insert if the user attempts to circumvent the UI. The primary purpose of declaring this validation explicitly is to provide clear, friendly error messages for use cases such as [BatchUploader](classes/BatchUploader.md#class-batchuploader), where values aren't individually chosen by the user. See also the example *Related Records*. |
+| required | A non-empty value is required for this field to pass validation.
+
+In the case of a "binary" field, a non-empty file must be uploaded. |
 | isBoolean | Validation will fail if this field is non-empty and has a non-boolean value. |
 | isString | Validation will fail if the value is not a string value. |
 | isInteger | Tests whether the value for this field is a whole number. If `validator.convertToInteger` is true, float values will be converted into integers and validation will succeed. |
@@ -7872,29 +7862,6 @@ For backwards compatibility only. Use "floatRange" and/or "floatPrecision" inste
 
 Note that the `errorMessage` for this validator will be evaluated as a dynamicString - text within `${...}` will be evaluated as JS code when the message is displayed, with `max` and `min` available as variables mapped to `validator.max` and `validator.min`. |
 | floatPrecision | Tests whether the value for this field is a floating point number with the appropriate number of decimal places - specified in `validator.precision` If the value is of higher precision and `validator.roundToPrecision` is specified, the value will be rounded to the specified number of decimal places and validation will pass, otherwise validation will fail. |
-| required | A non-empty value is required for this field to pass validation.
-
-In the case of a "binary" field, a non-empty file must be uploaded. |
-| isUnique | Returns true if the value for this field is unique. The uniqueness check is performed across the whole DataSource unless you specify property `validator.criteriaFields` as a comma-separated string of field names; in that case, the uniqueness check is done in the context of those extra criteria, allowing you to check, for example, whether an employee number is unique for the department and location found on the record being validated. By default the uniqueness check is not case sensitive but this can be controlled through the [caseSensitive](classes/Validator.md#attr-validatorcasesensitive) attribute. You can specify the [operation](classes/DataSource_1.md#attr-datasourceoperationbindings) to use for the uniqueness check with the [operationId](classes/Validator.md#attr-validatoroperationid) attribute.
-
-Validators of this type have [requiresServer](classes/ValidatorDefinition.md#attr-validatordefinitionrequiresserver) set to `true` and do not run on the client, unless all of the following are true:
-
-*   The validation is run in the context of a DataBoundComponent or ValuesManager bound to some DataSource.
-*   The DataSource is either clientOnly:true or cacheAllData: true and all data is loaded
-*   The item is made available to the validator. Note that the item is not be available during a save performed without a form (eg programmatic save), or if the field is not available in the form.
-
-Note when isUnique validator is executed as part of validation process during update operation, it will perform uniqueness check only for single row updates. If update targets [multiple records](classes/OperationBinding.md#attr-operationbindingallowmultiupdate), then isUnique validator will be skipped. If uniqueness check is needed when updating multiple records, consider using [custom DMI](kb_topics/dmiOverview.md#kb-topic-direct-method-invocation) approach to add this check manually.
-
-See *uniqueCheckValidation example*. |
-| hasRelatedRecord | Returns true if the record implied by a relation exists. The relation can be derived automatically from the [DataSourceField.foreignKey](classes/DataSourceField.md#attr-datasourcefieldforeignkey) attribute of the field being validated, or you can specify it manually via `validator.relatedDataSource` and `validator.relatedField`.
-
-You can specify at DataSource level that this validator should be automatically applied to all fields that specify a [foreignKey](classes/DataSourceField.md#attr-datasourcefieldforeignkey) - see [DataSource.validateRelatedRecords](classes/DataSource_1.md#attr-datasourcevalidaterelatedrecords).
-
-By default the uniqueness check is not case sensitive but this can be controlled through the [caseSensitive](classes/Validator.md#attr-validatorcasesensitive) attribute.
-
-Validators of this type have [requiresServer](classes/ValidatorDefinition.md#attr-validatordefinitionrequiresserver) set to `true` and do not run on the client.
-
-Note that this validation is generally unnecessary for data coming from a UI. The typical UI uses a [SelectItem](classes/SelectItem.md#class-selectitem) or [ComboBoxItem](classes/ComboBoxItem.md#class-comboboxitem) with an [optionDataSource](classes/FormItem.md#attr-formitemoptiondatasource) for user entry, such that the user can't accidentally enter a related record if that doesn't exist, and a typical SQL schema will include constraints that prevent a bad insert if the user attempts to circumvent the UI. The primary purpose of declaring this validation explicitly is to provide clear, friendly error messages for use cases such as [BatchUploader](classes/BatchUploader.md#class-batchuploader), where values aren't individually chosen by the user. See also the example *Related Records*. |
 | maxFileSize | This validator type is not for direct usage, instead [DataSourceField.maxFileSize](classes/DataSourceField.md#attr-datasourcefieldmaxfilesize) can be set and `maxFileSize` validator will be added automatically. Use [DataSource.maxFileSizeExceededMessage](classes/DataSource.md#classattr-datasourcemaxfilesizeexceededmessage) to customize validation error message.
 
 In supported browsers (Internet Explorer 10+, Chrome, Firefox, Safari 6+, Opera 11.1+), returns `true` if the file(s) selected by the user are not larger than the field's [DataSourceField.maxFileSize](classes/DataSourceField.md#attr-datasourcefieldmaxfilesize). If not supported by the browser, the validator will always return `true`.
@@ -7903,7 +7870,9 @@ Note that server-side enforcement of the `maxFileSize` is always required becaus
 | custom | Custom client-side validator. [Validator.condition](classes/Validator.md#attr-validatorcondition) will be called to verify data. |
 | serverCustom | Custom server-side validator that either evaluates the Velocity expression provided in [serverCondition](classes/Validator.md#attr-validatorservercondition) (see *velocityValidation example*) or makes DMI call to [serverObject](classes/Validator.md#attr-validatorserverobject) to evaluate condition (see *dmiValidation example*).
 
-Validators of this type have [requiresServer](classes/ValidatorDefinition.md#attr-validatordefinitionrequiresserver) set to `true` and do not run on the client. |
+Validators of this type have [requiresServer](classes/ValidatorDefinition.md#attr-validatordefinitionrequiresserver) set to `true` and do not run on the client.
+
+If validation logic can be expressed as criteria, use [Validator.passWhen](classes/Validator.md#attr-validatorpasswhen) or [Validator.failWhen](classes/Validator.md#attr-validatorfailwhen) instead — these provide automatic client-side enforcement. Even if only part of the logic is criteria-expressible, use [Validator.applyWhen](classes/Validator.md#attr-validatorapplywhen) to gate the `serverCustom` validator. |
 
 ---
 ## Type: ValueItemType
@@ -8887,6 +8856,33 @@ A simple object representing the path for navigation from source to target DataS
 An object representing a relative date, useful for representing date ranges etc in criteria. RelativeDate objects may be created directly by SmartClient components such as the [RelativeDateItem](classes/RelativeDateItem.md#class-relativedateitem).
 
 RelativeDate objects will have `"_constructor"` set to `"RelativeDate"` and must have a specified [RelativeDate.value](#attr-relativedatevalue). Any other attributes are optional.
+
+---
+## Object: RequiredWhenValidator
+
+### Description
+A [Validator](classes/Validator.md#class-validator) of [type "required"](classes/Validator.md#attr-validatortype) gated by [Validator.applyWhen](classes/Validator.md#attr-validatorapplywhen) criteria: the field is required when the criteria match.
+
+On the client, the field dynamically changes appearance to match required/non-required state as related values change. On the server, the `required` check is enforced during CRUD operations when the criteria match.
+
+**Example (XML):**
+
+```
+ <field name="reason" type="text">
+   <validators>
+     <validator type="required">
+       <applyWhen fieldName="status" operator="equals"
+                  value="Cancelled"/>
+     </validator>
+   </validators>
+ </field>
+ 
+```
+
+### See Also
+
+- [Validator.applyWhen](classes/Validator.md#attr-validatorapplywhen)
+- [ServerDynamicCriteria](reference_2.md#type-serverdynamiccriteria)
 
 ---
 ## Object: RESTAuthentication

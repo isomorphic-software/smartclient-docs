@@ -998,9 +998,16 @@ Criteria to be evaluated to determine whether this Canvas should be enabled. Re-
 
 A basic criteria uses textMatchStyle:"exact". When specified in [Component XML](../kb_topics/componentXML.md#kb-topic-component-xml) this property allows [shorthand formats](../kb_topics/xmlCriteriaShorthand.md#kb-topic-xmlcriteriashorthand) for defining criteria.
 
+For field-level editability with server-side enforcement, use [DataSourceField.readOnlyWhen](DataSourceField.md#attr-datasourcefieldreadonlywhen) or [DataSourceField.editWhen](DataSourceField.md#attr-datasourcefieldeditwhen) instead.
+
 ### Groups
 
 - ruleCriteria
+
+### See Also
+
+- [DataSourceField.readOnlyWhen](DataSourceField.md#attr-datasourcefieldreadonlywhen)
+- [DataSourceField.editWhen](DataSourceField.md#attr-datasourcefieldeditwhen)
 
 **Flags**: IR
 
@@ -2553,9 +2560,15 @@ Criteria to be evaluated to determine whether this Canvas should be visible. Re-
 
 A basic criteria uses textMatchStyle:"exact". When specified in [Component XML](../kb_topics/componentXML.md#kb-topic-component-xml) this property allows [shorthand formats](../kb_topics/xmlCriteriaShorthand.md#kb-topic-xmlcriteriashorthand) for defining criteria.
 
+For field-level visibility with server-side enforcement (stripping the field value from responses), use [DataSourceField.visibleWhen](DataSourceField.md#attr-datasourcefieldvisiblewhen) instead.
+
 ### Groups
 
 - ruleCriteria
+
+### See Also
+
+- [DataSourceField.visibleWhen](DataSourceField.md#attr-datasourcefieldvisiblewhen)
 
 **Flags**: IR
 

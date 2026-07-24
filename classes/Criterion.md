@@ -16,6 +16,27 @@ Operator this criterion applies.
 **Flags**: IR
 
 ---
+## Attr: Criterion.relatedValueAge
+
+### Description
+Maximum age in seconds for client-side cached data when resolving this criterion's [ServerDynamicCriteria](../reference_2.md#type-serverdynamiccriteria) references (relational or aggregation shorthand). Overrides the system default of 180 seconds (3 minutes).
+
+Set to `0` to skip the client-side cache lookup entirely for this criterion, forcing server-side evaluation.
+
+Only relevant when the criterion is used within a `*When` property or validator `applyWhen` that references fields on related DataSources.
+
+### Groups
+
+- advancedFilter
+
+### See Also
+
+- [ServerDynamicCriteria](../reference_2.md#type-serverdynamiccriteria)
+- [DataSource.validationCheckClientCaches](DataSource_1.md#attr-datasourcevalidationcheckclientcaches)
+
+**Flags**: IR
+
+---
 ## Attr: Criterion.fieldName
 
 ### Description

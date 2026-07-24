@@ -237,6 +237,8 @@ Indicates this field must be non-null in order for a record to pass validation. 
 
 Note that `required` should not be set for a server-generated field, such as a sequence, or validation will fail on the client.
 
+For conditionally required fields, use [DataSourceField.requiredWhen](#attr-datasourcefieldrequiredwhen) instead of manually adding a `required` validator with [Validator.applyWhen](Validator.md#attr-validatorapplywhen). `requiredWhen` supports the full [ServerDynamicCriteria](../reference_2.md#type-serverdynamiccriteria) syntax including references to the current user, operation type, and fields on related DataSources.
+
 #### Conditionally required fields
 Adding an [applyWhen](Validator.md#attr-validatorapplywhen) condition to a `required` validator introduces subtle complexities to the process of validating an existing record. The client is not guaranteed to know the full and complete state of the record it is editing because it is common for a [DynamicForm](DynamicForm.md#class-dynamicform) to be editing a subset of fields. When a field is _unconditionally_ required, things are simple: if the DynamicForm has a [FormItem](FormItem.md#class-formitem) for that field, then the `required` validation passes if that FormItem has a value, and fails if it does not. If the form has no FormItem for the field, it can assume that the field has a value because otherwise it would have failed validation when we attempted to add it (when we are adding a record, we of course do know the full and complete state of the record - it is whatever we are about to add).
 
@@ -267,6 +269,7 @@ When this happens, we mark the validation as having passed on the client, but in
 
 ### See Also
 
+- [DataSourceField.requiredWhen](#attr-datasourcefieldrequiredwhen)
 - [Validator.applyWhen](Validator.md#attr-validatorapplywhen)
 
 **Flags**: IR
@@ -1206,7 +1209,7 @@ On the client, `visibleWhen` already works as a [FormItem](FormItem.md#class-for
 
 Criteria are evaluated **per record** in the response, so record-dependent criteria work — for example, showing a field only when the record's department matches the current user's department.
 
-Criteria can reference the current user (`auth.userId`, `auth.roles`), the current operation type (`context.operationType`), and fields on related DataSources via dot notation (`Order.Customer.tier`). See [ServerDynamicCriteria](../reference_2.md#type-serverdynamiccriteria) for the full syntax.
+Supports the full [ServerDynamicCriteria](../reference_2.md#type-serverdynamiccriteria) syntax, including references to the current user, operation type, and fields on related DataSources.
 
 **Example** — salary visible only to HR users:
 
@@ -2338,7 +2341,7 @@ When populating Java Beans/ POJOs, `javaClass` does not normally have to be spec
 ### Description
 Criteria to be evaluated to determine whether this field is [required](#attr-datasourcefieldrequired). Equivalent to adding a `required` validator with [applyWhen](Validator.md#attr-validatorapplywhen) set to these criteria.
 
-On the client, criteria are evaluated against the form's current values and the current [rule context](Canvas.md#attr-canvasrulescope). On the server, criteria are evaluated with full [ServerDynamicCriteria](../reference_2.md#type-serverdynamiccriteria) support, including references to the current user and operation type (`auth.*`, `context.*`) and fields on related DataSources.
+Supports the full [ServerDynamicCriteria](../reference_2.md#type-serverdynamiccriteria) syntax including references to the current user, operation type, and fields on related DataSources.
 
 Example — field is required only on add:
 
@@ -2772,7 +2775,9 @@ Note that this property only applies to users of the SmartClient server using da
 ### Description
 Criteria-based version of [canEdit:false](#attr-datasourcefieldcanedit). When the criteria match, the field is treated as read-only: the server strips the field value from add/update operations (same as `canSave:false`), and the client makes the field non-editable in forms.
 
-Supports the full [ServerDynamicCriteria](../reference_2.md#type-serverdynamiccriteria) syntax on the server, including references to the current user, operation type, and fields on related DataSources.
+Supports the full [ServerDynamicCriteria](../reference_2.md#type-serverdynamiccriteria) syntax, including references to the current user, operation type, and fields on related DataSources.
+
+For validation that also enforces on the server, use [DataSourceField.requiredWhen](#attr-datasourcefieldrequiredwhen) in combination with `readOnlyWhen` to both prevent editing and reject values server-side when the criteria match.
 
 ### Groups
 
@@ -2783,6 +2788,7 @@ Supports the full [ServerDynamicCriteria](../reference_2.md#type-serverdynamiccr
 - [ServerDynamicCriteria](../reference_2.md#type-serverdynamiccriteria)
 - [DataSourceField.editWhen](#attr-datasourcefieldeditwhen)
 - [DataSourceField.canEdit](#attr-datasourcefieldcanedit)
+- [DataSourceField.requiredWhen](#attr-datasourcefieldrequiredwhen)
 
 **Flags**: IR
 
@@ -3203,6 +3209,19 @@ See [DataSourceField.childTagName](#attr-datasourcefieldchildtagname) for custom
 
 - xmlSerialize
 - componentSchema
+
+**Flags**: IR
+
+---
+## Attr: DataSourceField.validationCheckClientCaches
+
+### Description
+Per-field control for client-side cache lookup when evaluating [ServerDynamicCriteria](../reference_2.md#type-serverdynamiccriteria) references (relational and aggregation). When `false`, the client skips cache lookup for this field's `*When` criteria and defers entirely to the server. When `null` (default), inherits from [DataSource.validationCheckClientCaches](DataSource_1.md#attr-datasourcevalidationcheckclientcaches).
+
+### See Also
+
+- [DataSource.validationCheckClientCaches](DataSource_1.md#attr-datasourcevalidationcheckclientcaches)
+- [ServerDynamicCriteria](../reference_2.md#type-serverdynamiccriteria)
 
 **Flags**: IR
 

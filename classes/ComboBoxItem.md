@@ -893,6 +893,18 @@ Note that this attribute is not compatible with [ComboBoxItem.completeOnTab](#at
 **Flags**: IRW
 
 ---
+## Attr: ComboBoxItem.pickerEscapeHTML
+
+### Description
+ComboBoxItem defaults [FormItem.pickerEscapeHTML](FormItem.md#attr-formitempickerescapehtml) to `false`, so HTML supplied via a [FormItem.valueMap](FormItem.md#attr-formitemvaluemap) is interpreted and rendered in the drop-down pick list; set it to true to show such values as literal source text instead. The free-form text box always shows the value as literal characters, and the static display escaping is governed separately by [TextItem.escapeHTML](TextItem.md#attr-textitemescapehtml). See [FormItem.pickerEscapeHTML](FormItem.md#attr-formitempickerescapehtml).
+
+### Groups
+
+- appearance
+
+**Flags**: IRW
+
+---
 ## Attr: ComboBoxItem.maskPadChar
 
 ### Description

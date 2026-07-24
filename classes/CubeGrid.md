@@ -181,7 +181,7 @@ Note that the [SQL connector](DataSource_1.md#attr-datasourceservertype) shipped
 ## Attr: CubeGrid.bodyMinWidth
 
 ### Description
-Minimum width for the body of this cubeGrid.
+Minimum width for the body of this cubeGrid. If unset, the body is floored at roughly one column so it never sizes to nothing when the CubeGrid is narrower than its row headers.
 
 ### Groups
 
@@ -669,6 +669,18 @@ facetValueId of the default rollupValue for each facet. Can be overridden per fa
 **Flags**: IR
 
 ---
+## Attr: CubeGrid.defaultRowFacetWidth
+
+### Description
+Default width of row-facet headers.
+
+### Groups
+
+- gridLayout
+
+**Flags**: IRW
+
+---
 ## Attr: CubeGrid.showHighlightsTitle
 
 ### Description
@@ -1006,7 +1018,7 @@ Name of the property in a cell record that holds it's unique ID. Note cell recor
 ## Attr: CubeGrid.bodyMinHeight
 
 ### Description
-Minimum height for the body of this cubeGrid.
+Minimum height for the body of this cubeGrid. If unset, the body is floored at roughly one cell so it never sizes to nothing when the CubeGrid is shorter than its column headers.
 
 ### Groups
 

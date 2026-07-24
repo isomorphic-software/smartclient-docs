@@ -47,12 +47,34 @@ Processes follow all the standard rules for encoding as [componentXML](../kb_top
 _**NOTE:** you must load the standard DataBinding module before you can use `Process`._
 
 ---
+## ClassAttr: Process.defaultErrorHandlingEnabled
+
+### Description
+Framework-wide switch for the [Process-level default error task](#attr-processerrortask) fallback: when a task fails with no [failureElement](DSRequestTask.md#attr-dsrequesttaskfailureelement) of its own and its owning Process (or an ancestor Process, if invoked as a [sub-process](SubProcessTask.md#class-subprocesstask)) has no explicit [Process.errorTask](#attr-processerrortask) either, a task failure used to always abort the Process straight to [finished()](#method-processfinished) with empty state/output - indistinguishable from a genuinely successful, empty result. With this flag at its default of `true`, that case now instead runs a default [UnexpectedErrorTask](UnexpectedErrorTask.md#class-unexpectederrortask) (see [Process.getDefaultErrorTask](#classmethod-processgetdefaulterrortask)), which routes the failure through [Process.fail](#method-processfail) instead - so [Process.failed](#method-processfailed) fires, not `finished()`, giving a real, distinguishable "did not complete successfully" signal for any Workflow that does not explicitly configure otherwise.
+
+Set this to `false` to restore that prior behavior framework-wide (a task failure with no `failureElement` and no `errorTask` anywhere in the ancestry silently reaches `finished()`). A single Process can also opt out on its own via `errorTask: false`, without affecting any other Process.
+
+**Flags**: IRW
+
+---
 ## ClassAttr: Process.decisionPlaceholderSelection
 
 ### Description
 Value of `failureElement` in various [tasks](ProcessElement.md#class-processelement) to indicate a placeholder is being used. Also applies to [DecisionBranch.targetTask](DecisionBranch.md#attr-decisionbranchtargettask) and [MultiDecisionTask.defaultElement](MultiDecisionTask.md#attr-multidecisiontaskdefaultelement).
 
 **Flags**: IR
+
+---
+## ClassAttr: Process.suppressDefaultErrorPopupWhenHandled
+
+### Description
+Framework-wide switch controlling whether a DataSource-operation task's (or [SendEmailTask](SendEmailTask.md#class-sendemailtask)/[SendSMSTask](SendSMSTask.md#class-sendsmstask)/[FormSaveDataTask](FormSaveDataTask.md#class-formsavedatatask)'s) automatic [runDefaultErrorHandling()](RPCManager.md#classmethod-rpcmanagerrundefaulterrorhandling) dialog/ report fires when the failure is ALSO about to be routed to a [failureElement](DSRequestTask.md#attr-dsrequesttaskfailureelement) or the owning Process's effective [Process.errorTask](#attr-processerrortask). Previously this raw, generic error surface always fired unconditionally, in addition to whatever failureElement/errorTask handling ran right afterward - visible, for example, as both a modal `isc.warn()`\-style dialog AND a graceful toast notification for the exact same single failure.
+
+With this flag at its default of `true`, the dialog/report is skipped whenever the failing task resolves a real failure target - an explicit `failureElement`, the literal `"next"` continuation sentinel (meaning "resume as if nothing failed" - popping a dialog anyway would contradict that explicit choice), or the Process-level default error task (see [Process.defaultErrorHandlingEnabled](#classattr-processdefaulterrorhandlingenabled)) - i.e. whenever SOMETHING will visibly respond to the failure. It still fires when nothing will: no `failureElement`, and no effective `errorTask` anywhere in the Process's ancestry.
+
+Set to `false` to restore the unconditional prior behavior framework-wide (the raw dialog always fires, regardless of `failureElement`/`errorTask`). Does not affect [UnexpectedErrorTask](UnexpectedErrorTask.md#class-unexpectederrortask)'s OWN, separate, classification-aware dialog ([Process.classifyError](#classmethod-processclassifyerror)) - that one already only shows for an "unexpected" classification, which is exactly the kind of narrower, smarter judgment this flag defers to instead of duplicating; as a direct consequence, suppressing the raw, unconditional dialog here also eliminates what used to be a genuine double-dialog for an unhandled failure that falls through to the default `UnexpectedErrorTask` (the raw dialog, immediately followed by `UnexpectedErrorTask`'s own).
+
+**Flags**: IRW
 
 ---
 ## Attr: Process.currentTask
@@ -177,6 +199,21 @@ See [processIO](../kb_topics/processIO.md#kb-topic-process-input-and-output-sche
 Shorthand alternative to [Process.outputDS](#attr-processoutputds): a list of [DataSourceField](../reference_2.md#object-datasourcefield) definitions the engine compiles into a temporary validation DataSource on demand. The declared field names also govern which [Process.state](#attr-processstate) properties are picked into the Process's output value if [Process.setOutput](#method-processsetoutput) is never called.
 
 See [processIO](../kb_topics/processIO.md#kb-topic-process-input-and-output-schema).
+
+**Flags**: IR
+
+---
+## Attr: Process.errorTask
+
+### Description
+Process-level default for any task that fails without its own [failureElement](DSRequestTask.md#attr-dsrequesttaskfailureelement) - the [Process](#class-process) analog of `failureElement`, one level up. When a task fails and has no `failureElement` of its own, its owning Process's [effective error task](#method-processgeteffectiveerrortask) is used instead, if one resolves. To designate an existing, hand-authored task on this same Process instead of a framework-provided default, use [Process.errorTaskRef](#attr-processerrortaskref) (a plain String ID) rather than this attribute.
+
+Two kinds of value are meaningful:
+
+*   A [ProcessElement](ProcessElement.md#class-processelement) instance, or a plain properties object naming a task type via `_constructor` (typically a [UnexpectedErrorTask](UnexpectedErrorTask.md#class-unexpectederrortask) or subclass). This is what propagates to sub-Processes (see below) - it is materialized as a real element of whichever Process actually needs it, so it works regardless of which Process in the ancestry declared it. Passing a literal, already-constructed instance means that same instance (and its [current process](ProcessElement.md#method-processelementsetcurrentprocess) link) is reused and retargeted by every Process that resolves to it; pass a plain properties object (the common case) to get an independent instance per Process instead.
+*   `false`, to explicitly stop error-task propagation for this Process (and anything invoked as its sub-Process that does not declare its own `errorTask`/`errorTaskRef`) without affecting any other Process.
+
+Unless one of the above (or [Process.errorTaskRef](#attr-processerrortaskref)) is set, this Process's effective error task is inherited from whichever Process invoked it as a [sub-process](SubProcessTask.md#class-subprocesstask) (see [Process.getEffectiveErrorTask](#method-processgeteffectiveerrortask)), and ultimately from [Process.getDefaultErrorTask](#classmethod-processgetdefaulterrortask) if [Process.defaultErrorHandlingEnabled](#classattr-processdefaulterrorhandlingenabled) is `true` and no Process in the ancestry configures anything at all.
 
 **Flags**: IR
 
@@ -355,10 +392,32 @@ mockMode can also be enabled or disabled for an individual task with [ProcessEle
 **Flags**: IRW
 
 ---
+## Attr: Process.errorTaskRef
+
+### Description
+ID of a task or [sequence](#attr-processsequences) declared directly on **this** Process to use as its [effective error task](#method-processgeteffectiveerrortask) - the [Process](#class-process) analog of [failureElement](DSRequestTask.md#attr-dsrequesttaskfailureelement), one level up, for the common case of designating an existing, hand-authored task as the Process-wide fallback (rather than the framework-provided default - see [Process.errorTask](#attr-processerrortask) for that). Only meaningful on the Process that declares the referenced element - not inherited by sub-Processes, since a child Process has no visibility into a parent's own elements; use [Process.errorTask](#attr-processerrortask)'s properties-object form for anything that needs to propagate across Process boundaries.
+
+Unlike [Process.errorTask](#attr-processerrortask), this is a plain String field (matching `failureElement`'s own declaration) and survives being exploded/collapsed through [process.getEditContext](#method-processgeteditcontext)/[Process.getPropertiesFromEditContext](#method-processgetpropertiesfromeditcontext) (as used by [WorkflowEditor](#class-workfloweditor)) correctly.
+
+A task designated this way is an ordinary element like any other - nothing stops it from also being reachable via the Process's normal [ProcessElement.nextElement](ProcessElement.md#attr-processelementnextelement)/ branch flow, exactly as nothing stops a `failureElement` target from also being reachable normally. Set [Process.errorTaskExclusive](#attr-processerrortaskexclusive) to surface a (non-blocking) [WorkflowEditor](#class-workfloweditor) warning if that happens; the task itself always displays with its own description plus a distinguishing note in its title - see [workflowEditor.updateProcessNodeFromElement](#method-workfloweditorupdateprocessnodefromelement) for the underlying document and [Process.getTextSummary](#method-processgettextsummary) for the same note in a Workflow's bulleted summary.
+
+**Flags**: IR
+
+---
 ## Attr: Process.defaultWaitDuration
 
 ### Description
 When [Process.defaultWaitFor](#attr-processdefaultwaitfor) or task [waitFor](ProcessElement.md#attr-processelementwaitfor) are set to "duration", how long should the wait be before starting the task? A task can override the default value with task [waitDuration](ProcessElement.md#attr-processelementwaitduration).
+
+**Flags**: IR
+
+---
+## Attr: Process.errorTaskExclusive
+
+### Description
+When `true`, [WorkflowEditor](#class-workfloweditor) flags [Process.errorTaskRef](#attr-processerrortaskref)'s target (via [WorkflowEditor.validate](#method-workfloweditorvalidate)) if it is **also** reachable via the Process's normal [ProcessElement.nextElement](ProcessElement.md#attr-processelementnextelement)/branch flow - a likely authoring mistake, since a node designated as the Process-wide error handler is normally meant to be reached only via failure routing. This is a visual warning only; it does not block saving or executing the Process either way.
+
+Default `false` matches `failureElement`'s own long-standing "no enforcement" contract for hand-authored Workflows - [WorkflowBuilderCoTProcess.createNewWorkflowProcess](#method-workflowbuildercotprocesscreatenewworkflowprocess) sets this `true` for Workflows it builds from scratch.
 
 **Flags**: IR
 
@@ -416,6 +475,34 @@ Each process instance created that has an [ID](ProcessElement.md#attr-processele
 ### See Also
 
 - [Process.loadProcess](#classmethod-processloadprocess)
+
+---
+## ClassMethod: Process.classifyError
+
+### Description
+Classifies a task failure as ["expected"](../reference_2.md#type-errorcategory) or "unexpected", for [UnexpectedErrorTask](UnexpectedErrorTask.md#class-unexpectederrortask) to decide whether to show the standard centralized error dialog. Default classification mirrors [RPCManager](../kb_topics/errorHandling.md#kb-topic-error-handling-overview)'s own documented validation-vs-other-errors split: a [ErrorContext.failure](../reference.md#attr-errorcontextfailure) whose `code` is `"inputValidation"`, `"outputValidation"`, or `"cancelled"` is "expected", as is a [ErrorContext.response](../reference.md#attr-errorcontextresponse) whose status is [RPCResponse.STATUS_VALIDATION_ERROR](RPCResponse.md#classattr-rpcresponsestatus_validation_error); everything else is "unexpected".
+
+Override to widen or change this split for your application - for example, in a network-diagnostics tool where users routinely type unreachable hostnames, classify [RPCResponse.STATUS_UNKNOWN_HOST_ERROR](RPCResponse.md#classattr-rpcresponsestatus_unknown_host_error)/ [RPCResponse.STATUS_TRANSPORT_ERROR](RPCResponse.md#classattr-rpcresponsestatus_transport_error) as "expected" too. The full [ErrorContext](#type-errorcontext) is passed (not just the response status) so an override can consult anything relevant to a better decision - the failed [ErrorContext.task](../reference.md#attr-errorcontexttask), the owning [ErrorContext.process](../reference.md#attr-errorcontextprocess) and its [Process.state](#attr-processstate), and so on.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| context | [ErrorContext](#type-errorcontext) | false | — | every signal available about the failure |
+
+### Returns
+
+`[ErrorCategory](../reference_2.md#type-errorcategory)` — "expected" or "unexpected"
+
+---
+## ClassMethod: Process.getDefaultErrorTask
+
+### Description
+Returns the task configuration used as ${isc.DocUtils.linkForRef('attr:Process.errorTask','every Process\\'s default\\n error task')} when [Process.defaultErrorHandlingEnabled](#classattr-processdefaulterrorhandlingenabled) is `true` and neither the Process nor any ancestor Process declares its own `errorTask`. Default implementation returns a plain [UnexpectedErrorTask](UnexpectedErrorTask.md#class-unexpectederrortask) configuration; override to change the framework-wide default (for example, to a subclass that also logs to an audit DataSource) without editing every Process.
+
+### Returns
+
+`[ProcessElement Properties](#type-processelement-properties)` — properties for a new [UnexpectedErrorTask](UnexpectedErrorTask.md#class-unexpectederrortask)
 
 ---
 ## Method: Process.setTaskOutput
@@ -503,6 +590,28 @@ Explicitly set the final output this Process will deliver on successful completi
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | output | [Any](#type-any) | false | — | the output value to deliver |
+
+---
+## Method: Process.getEffectiveErrorTask
+
+### Description
+Resolves this Process's effective error task: [Process.errorTaskRef](#attr-processerrortaskref) if set (an explicit reference to an existing task declared on this Process); else [Process.errorTask](#attr-processerrortask) if set (including an explicit `false`, which resolves to `null`); else the invoking parent Process's effective error task (if this Process was started as a [sub-process](SubProcessTask.md#class-subprocesstask)); else [Process.getDefaultErrorTask](#classmethod-processgetdefaulterrortask) when [Process.defaultErrorHandlingEnabled](#classattr-processdefaulterrorhandlingenabled) is `true`.
+
+`errorTaskRef` is returned directly (it already names an element declared here). A resolved [Process.errorTask](#attr-processerrortask) value (a ProcessElement instance, or a properties object identifying one) is materialized as a real element of this Process - registered under a stable, well-known ID so a String suitable for [Process.setNextElement](#method-processsetnextelement) is always what's returned.
+
+### Returns
+
+`[String](#type-string)` — ID of the effective error task, or null if none resolves
+
+---
+## Method: Process.getErrorTaskExclusivityViolation
+
+### Description
+Checks whether [Process.errorTaskRef](#attr-processerrortaskref)'s target is **also** reachable via this Process's normal [ProcessElement.nextElement](ProcessElement.md#attr-processelementnextelement)/branch flow, regardless of whether [Process.errorTaskExclusive](#attr-processerrortaskexclusive) is set - [WorkflowEditor](#class-workfloweditor) calls this itself only when that flag is `true`, but the check is exposed unconditionally so other callers (e.g. a custom pre-save check) can use it too.
+
+### Returns
+
+`[String](#type-string)` — errorTaskRef's value, if it is also normally reachable; else null
 
 ---
 ## Method: Process.applyStateUpdates

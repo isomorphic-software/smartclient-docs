@@ -65,6 +65,7 @@ Process execution uses server-side JavaScript context pooling. First invocation 
 - [StateTask](../classes/StateTask.md#class-statetask)
 - [StartProcessTask](../classes/StartProcessTask.md#class-startprocesstask)
 - [SubProcessTask](../classes/SubProcessTask.md#class-subprocesstask)
+- [UnexpectedErrorTask](../classes/UnexpectedErrorTask.md#class-unexpectederrortask)
 - [EndProcessTask](../reference.md#class-endprocesstask)
 - [SendEmailTask](../classes/SendEmailTask.md#class-sendemailtask)
 - [SendSMSTask](../classes/SendSMSTask.md#class-sendsmstask)

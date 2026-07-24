@@ -588,6 +588,30 @@ Title for the dialog shown when the AI flow finishes with [output.incomplete](#o
 **Flags**: IRW
 
 ---
+## Attr: ReportBuilder.componentDefaults
+
+### Description
+A map of component class name to a block of default properties applied to every component of that class created in this ReportBuilder -- whether added by the user (palette drag or double-click) or by the AI. The keys are SmartClient class names, matching the component types the palette offers (see [ReportBuilder](#class-reportbuilder) data / detail / layout view types).
+
+ReportBuilder ships built-in per-class defaults (for example a Grid's `showFilterEditor`, or a TileGrid's tile sizing). Values you provide here are merged OVER those built-ins, so you can either add new class-wide defaults or override the built-in ones. The resulting block is then applied as the **base** for each new component -- merged UNDER the dynamically-calculated structural defaults (`dataSource`, computed facets / fields) and the user's or AI's own picks, so those always win and are never clobbered. Effectively:
+
+```
+   isc.addProperties({}, builtin[type], componentDefaults[type], structuralConfig)
+ 
+```
+Example -- roomier pivot headers, and no filter editor on grids:
+```
+   componentDefaults: {
+       CubeGrid: { defaultRowFacetWidth: 160, facetHeight: 28 },
+       ListGrid: { showFilterEditor: false }
+   }
+ 
+```
+Restored (saved) reports are not re-defaulted -- these apply only to newly created components.
+
+**Flags**: IRW
+
+---
 ## Attr: ReportBuilder.reportDataSource
 
 ### Description
@@ -738,6 +762,22 @@ Exports the current report to a file.
 |------|------|----------|---------|-------------|
 | format | [String](#type-string) | true | — | export format (pdf, xlsx, csv, png). Defaults to defaultExportFormat. |
 | callback | [Callback](../reference.md#type-callback) | true | — | optional callback fired after export completes |
+
+---
+## Method: ReportBuilder.getComponentDefaults
+
+### Description
+Returns the effective componentDefaults block for a component class: the framework built-in defaults for that class with any [ReportBuilder.componentDefaults](#attr-reportbuildercomponentdefaults) overrides merged over them. Never returns null, so callers can merge the result unconditionally.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| className | [String](#type-string) | false | — | SmartClient class name, e.g. `"CubeGrid"` |
+
+### Returns
+
+`[Object](../reference.md#type-object)` — a copy of the effective defaults block (never null)
 
 ---
 ## Method: ReportBuilder.saveReport

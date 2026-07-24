@@ -298,8 +298,21 @@ Defines validation purely via criteria: the record is valid when the criteria ma
 
 This is an alternative to [Validator.serverCondition](#attr-validatorservercondition) that uses declarative criteria instead of scripting. No [Validator.type](#attr-validatortype) is required — the criteria ARE the validation logic.
 
-Supports the full [ServerDynamicCriteria](../reference_2.md#type-serverdynamiccriteria) syntax including scoped values and relational references.
+Supports the full [ServerDynamicCriteria](../reference_2.md#type-serverdynamiccriteria) syntax including references to the current user, operation type, and fields on related DataSources.
 
+If the outermost criterion omits `fieldName` (and has no `criteria` sub-array), it defaults to the name of the field the validator is declared on. This allows a compact shorthand:
+
+```
+ <!-- equivalent to fieldName="status" -->
+ <field name="status">
+   <validators>
+     <validator errorMessage="Must be Active">
+       <passWhen operator="equals" value="Active"/>
+     </validator>
+   </validators>
+ </field>
+ 
+```
 ```
  <validator errorMessage="Status must be Pending or Active">
    <passWhen fieldName="status" operator="inSet">
@@ -392,7 +405,7 @@ Enabling this property also implies [FormItem.validateOnExit](FormItem.md#attr-f
 ## Attr: Validator.applyWhen
 
 ### Description
-Used to create a conditional validator based on [criteria](../reference.md#object-advancedcriteria). The criteria defines when the validator applies. The form current values or ListGrid record is used as reference for the criteria. If the criteria match, then the validator will be processed. Otherwise the validator is skipped and assumed valid.
+Used to create a conditional validator based on [criteria](../reference_2.md#type-serverdynamiccriteria). The criteria defines when the validator applies — evaluated against the current record, [rule\\n context](Canvas.md#attr-canvasrulescope), and (when referencing related DataSources) locally cached data or the server. If the criteria match, the validator is processed; otherwise it is skipped and assumed valid.
 
 To use an `applyWhen` criteria the form or grid must use a [DataSource](DataSource_1.md#class-datasource).
 
@@ -401,55 +414,47 @@ To use an `applyWhen` criteria the form or grid must use a [DataSource](DataSour
 #### Server and client use
 Conditional validators are enforced both on the server and on the client-side when defined on a DataSource field as shown in the examples below. Note the `applyWhen` element is treated as a [Criterion](../reference_2.md#object-criterion).
 ```
- <!-- Normal format -->
- <field name="age" type="integer">
-   <validators>
-     <validator type="integerRange" min="0" max="100">
-       <applyWhen operator="or">
-         <criteria>
-           <criterion fieldName="restrictAge" operator="equals" value="true"/>
-           <criterion fieldName="gender" operator="equals" value="female"/>
-         </criteria> 
-       </applyWhen>
-     </validator>
-   </validators>
- </field>
-
- <!-- Conditional requirement -->
+ <!-- Conditional requirement: reason is required when
+      the order is being cancelled -->
  <field name="reason" type="text">
    <validators>
      <validator type="required">
-       <applyWhen fieldName="willAttend" operator="equals" value="false"/>
+       <applyWhen fieldName="status" operator="equals"
+                  value="Cancelled"/>
      </validator>
    </validators>
  </field>
- 
-```
-The last example above shows an alternate to the `requiredIf` validator using a [shorthand format](../kb_topics/xmlCriteriaShorthand.md#kb-topic-xmlcriteriashorthand) which is only available for client-side use. On the client the `reason` field will change appearance to match other required or non-required fields when `willAttend` changes. Note that using `applyWhen` for a validator of type `required` as in the example may result in validation request being set to the server where a fetch is made against the DataSource. For more details, see the discussion at the end of the [DataSourceField.required](DataSourceField.md#attr-datasourcefieldrequired) help topic.
 
-#### Component XML and client-only use
-Conditional validators can also be applied to [Component XML](../kb_topics/componentXML.md#kb-topic-component-xml) similarly to provide client-only validations or read-only state management. A common use case is conditionally displaying or enabling fields. Use the `readOnly` validator with an `applyWhen` value to control the read-only appearance of a field. The example below shows a field which is hidden when `willAttend=true`.
-```
- <!-- field definition within a Component XML DynamicForm -->
- <field name="reason" type="text">
+ <!-- Shipped orders: shipDate must not be before
+      orderDate -->
+ <field name="shipDate" type="date">
    <validators>
-     <validator type="readOnly" fieldAppearance="hidden">
-       <applyWhen fieldName="willAttend" operator="equals" value="true"/>
+     <validator
+         errorMessage="Ship date cannot be before order date">
+       <applyWhen fieldName="status" operator="equals"
+                  value="Shipped"/>
+       <passWhen fieldName="shipDate"
+                 operator="greaterOrEqualField"
+                 value="orderDate"/>
      </validator>
    </validators>
  </field>
  
 ```
+The first example shows a conditional `required` validator using [shorthand\\n format](../kb_topics/xmlCriteriaShorthand.md#kb-topic-xmlcriteriashorthand). For conditionally required fields, prefer [DataSourceField.requiredWhen](DataSourceField.md#attr-datasourcefieldrequiredwhen) — it is simpler (no validator wrapper), enforced on both client and server, and supports the full [ServerDynamicCriteria](../reference_2.md#type-serverdynamiccriteria) syntax. Using `applyWhen` with `type:"required"` as shown here still works but introduces complexities around partial-record edits; see the discussion at the end of the [DataSourceField.required](DataSourceField.md#attr-datasourcefieldrequired) help topic.
 
-Conditional validators can be applied to DynamicForm or ListGrid fields in JavaScript code as well.
+Conditional validators can also be applied to [Component XML](../kb_topics/componentXML.md#kb-topic-component-xml) and to DynamicForm or ListGrid fields in JavaScript code as well.
 
-#### Server-side scoped values and relational references
+#### Authentication, request context, and relational references
 Because the type of `applyWhen` is [ServerDynamicCriteria](../reference_2.md#type-serverdynamiccriteria), the `fieldName` in criteria can also reference:
 
-*   Scoped values such as `auth.userId` and `context.operationType`
-*   Fields on related DataSources via dot notation, e.g. `Order.status`
+*   The current user and request context (`auth.*`, `context.*`) — see [ServerDynamicCriteria](../reference_2.md#type-serverdynamiccriteria) for which variables are available client-side vs. server-only
+*   Fields on related DataSources via [dot notation](../reference_2.md#type-relationalreference), e.g. `Order.status`
 
-These extended references are evaluated on the server only. See [ServerDynamicCriteria](../reference_2.md#type-serverdynamiccriteria) for the full syntax and details.
+See [ServerDynamicCriteria](../reference_2.md#type-serverdynamiccriteria) for the full syntax.
+
+#### Security
+On the server, `applyWhen` criteria are evaluated against the stored database record overlaid with submitted update values. Client-sent `oldValues` are never used, preventing spoofing attacks where a client fabricates field values to bypass validation. For fields not included in the submitted update, the database value is used.
 
 ### See Also
 
@@ -515,6 +520,8 @@ Because it's tricky to call arbitrary Java methods in Velocity, the following sp
 *   **dataSources** - The list of all DataSources, accessible by name (so, for example, `$dataSources.supplyItem` refers to the `supplyItem` DataSource object).
 *   **util** - A `com.isomorphic.util.DataTools` object, giving you access to all of that class's useful helper functions
 
+**Note:** if your validation logic can be expressed as [ServerDynamicCriteria](../reference_2.md#type-serverdynamiccriteria), consider using [Validator.passWhen](#attr-validatorpasswhen) or [Validator.failWhen](#attr-validatorfailwhen) instead — these provide automatic client-side enforcement without any scripting.
+
 **Flags**: IR
 
 ---
@@ -533,7 +540,9 @@ Only applies to validators within a [multiple dataArity](DataBoundComponent.md#a
 ### Description
 Defines validation purely via criteria: the record is invalid when the criteria match. If the criteria match, the validator fails and returns [Validator.errorMessage](#attr-validatorerrormessage). Inverse of [Validator.passWhen](#attr-validatorpasswhen).
 
-Supports the full [ServerDynamicCriteria](../reference_2.md#type-serverdynamiccriteria) syntax including scoped values and relational references.
+Supports the full [ServerDynamicCriteria](../reference_2.md#type-serverdynamiccriteria) syntax including references to the current user, operation type, and fields on related DataSources.
+
+If the outermost criterion omits `fieldName`, it defaults to the field the validator is declared on (same shorthand as [Validator.passWhen](#attr-validatorpasswhen)).
 
 ```
  <validator errorMessage="Cannot use status 'Cancelled'">
@@ -682,6 +691,8 @@ Note that "record" will contain only other values submitted at the same time, no
      final Map existingRecord = dataSource.fetchById(record);
  
 ```
+
+**Note:** if your validation logic can be expressed as criteria, consider using [Validator.passWhen](#attr-validatorpasswhen) or [Validator.failWhen](#attr-validatorfailwhen) instead of a DMI call — these provide automatic client-side enforcement. Even if only part of your logic can be expressed as criteria, using [Validator.applyWhen](#attr-validatorapplywhen) to gate a `serverCustom` validator avoids the server call when the condition doesn't apply.
 
 **Flags**: IR
 

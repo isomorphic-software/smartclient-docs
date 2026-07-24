@@ -76,7 +76,7 @@ Title for the `"Yes"` button.
 
 ### See Also
 
-- [DialogButtons](../reference.md#type-dialogbuttons)
+- [DialogButtons](../reference_2.md#type-dialogbuttons)
 
 **Flags**: IRW
 
@@ -104,7 +104,7 @@ Title for the `"Done"` button.
 
 ### See Also
 
-- [DialogButtons](../reference.md#type-dialogbuttons)
+- [DialogButtons](../reference_2.md#type-dialogbuttons)
 
 **Flags**: IRW
 
@@ -120,7 +120,7 @@ Title for the `"No"` button.
 
 ### See Also
 
-- [DialogButtons](../reference.md#type-dialogbuttons)
+- [DialogButtons](../reference_2.md#type-dialogbuttons)
 
 **Flags**: IRW
 
@@ -173,7 +173,7 @@ Title for the `"Apply"` button.
 
 ### See Also
 
-- [DialogButtons](../reference.md#type-dialogbuttons)
+- [DialogButtons](../reference_2.md#type-dialogbuttons)
 
 **Flags**: IRW
 
@@ -225,7 +225,7 @@ Title for the `"OK"` button.
 
 ### See Also
 
-- [DialogButtons](../reference.md#type-dialogbuttons)
+- [DialogButtons](../reference_2.md#type-dialogbuttons)
 
 **Flags**: IRW
 
@@ -241,7 +241,7 @@ Title for the `"Cancel"` button.
 
 ### See Also
 
-- [DialogButtons](../reference.md#type-dialogbuttons)
+- [DialogButtons](../reference_2.md#type-dialogbuttons)
 
 **Flags**: IRW
 
@@ -437,7 +437,7 @@ Array of Buttons to show in the [toolbar](#attr-dialogshowtoolbar), if shown.
 
 The set of buttons to use is typically set by calling one of the shortcuts such as [isc.say](isc.md#staticmethod-iscsay) or [isc.confirm](isc.md#staticmethod-iscconfirm) . A custom set of buttons can be passed to these shortcuts methods via the "properties" argument, or to a directly created Dialog.
 
-In both cases, a mixture of [built-in buttons](../reference.md#type-dialogbuttons), custom buttons, and other components (such as a [LayoutSpacer](../reference.md#class-layoutspacer)) can be passed. Built-in buttons can be referred to as `isc.Dialog.OK`, for example:
+In both cases, a mixture of [built-in buttons](../reference_2.md#type-dialogbuttons), custom buttons, and other components (such as a [LayoutSpacer](../reference.md#class-layoutspacer)) can be passed. Built-in buttons can be referred to as `isc.Dialog.OK`, for example:
 
 ```
  isc.Dialog.create({
@@ -450,7 +450,7 @@ In both cases, a mixture of [built-in buttons](../reference.md#type-dialogbutton
  })
  
 ```
-Built-in buttons will call standard methods on the Dialog itself, such as [Dialog.cancelClick](#method-dialogcancelclick), as explained in the [list of built-in buttons](../reference.md#type-dialogbuttons).
+Built-in buttons will call standard methods on the Dialog itself, such as [Dialog.cancelClick](#method-dialogcancelclick), as explained in the [list of built-in buttons](../reference_2.md#type-dialogbuttons).
 
 **Flags**: IR
 
@@ -515,7 +515,7 @@ Handle a click on the 'apply' button of this Dialog. Default implementation is t
 
 ### See Also
 
-- [DialogButtons](../reference.md#type-dialogbuttons)
+- [DialogButtons](../reference_2.md#type-dialogbuttons)
 
 ---
 ## Method: Dialog.setToolbarButtons
@@ -541,7 +541,7 @@ Handle a click on the 'cancel' button of this Dialog. Default implementation is 
 
 ### See Also
 
-- [DialogButtons](../reference.md#type-dialogbuttons)
+- [DialogButtons](../reference_2.md#type-dialogbuttons)
 
 ---
 ## Method: Dialog.saveData
@@ -572,7 +572,7 @@ Handle a click on the 'ok' button of this Dialog. Default implementation is to c
 
 ### See Also
 
-- [DialogButtons](../reference.md#type-dialogbuttons)
+- [DialogButtons](../reference_2.md#type-dialogbuttons)
 
 ---
 ## Method: Dialog.doneClick
@@ -586,7 +586,7 @@ Handle a click on the 'done' button of this Dialog. Default implementation is to
 
 ### See Also
 
-- [DialogButtons](../reference.md#type-dialogbuttons)
+- [DialogButtons](../reference_2.md#type-dialogbuttons)
 
 ---
 ## Method: Dialog.buttonClick
@@ -629,7 +629,7 @@ Handle a click on the 'yes' button of this Dialog. Default implementation is to 
 
 ### See Also
 
-- [DialogButtons](../reference.md#type-dialogbuttons)
+- [DialogButtons](../reference_2.md#type-dialogbuttons)
 
 ---
 ## Method: Dialog.noClick
@@ -643,6 +643,6 @@ Handle a click on the 'no' button of this Dialog. Default implementation is to r
 
 ### See Also
 
-- [DialogButtons](../reference.md#type-dialogbuttons)
+- [DialogButtons](../reference_2.md#type-dialogbuttons)
 
 ---

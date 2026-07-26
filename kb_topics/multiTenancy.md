@@ -82,7 +82,7 @@ In a multi-tenant system, one tenant's data should not be accessible by other te
 
 In the first approach, your filter will need to intercept servlet traffic to the IDACall and DataSourceLoader servlets, adding authorization by setting the `isc_tenantId` attribute on the servlet request. For proper security, your solution should avoid just checking for certain query params, at least if their values can be easily guessed, since that would allow any client to gain access.
 
-Under this approach, when loading DataSources with a `<isomorphic:loadDS>` tag, there's no need to set the `tenantId` attribute as it's assumed to be whatever your servlet filter authorizes, though you can set the attribute to `"none"` to avoid unintentionally picking up a multi-tenant DS if you have one by the same name that's both multi-tenant and a normal DataSource.
+Under this approach, when loading DataSources with a [`<isomorphic:loadDS>`](loadDSTag.md#kb-topic-isomorphicloadds) tag, there's no need to set the `tenantId` attribute as it's assumed to be whatever your servlet filter authorizes, though you can set the attribute to `"none"` to avoid unintentionally picking up a multi-tenant DS if you have one by the same name that's both multi-tenant and a normal DataSource. Because "none" has this special meaning for the `<isomorphic:loadDS>` tag, avoid using "none" as an actual tenant ID.
 
 As an alternate approach, you can subclass the [IDACall](server/javadoc/com/isomorphic/servlet/IDACall.html) servlet, and override [IDACall.prepareRPCTransaction()](server/javadoc/com/isomorphic/servlet/IDACall.html#prepareRPCTransaction) like so:
 

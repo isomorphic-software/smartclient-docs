@@ -53,6 +53,12 @@ _default value_: NONE
 
 This is a synonym for the `ID` attribute.
 
+**tenantId**  
+_value format_: String - ID of the tenant whose DataSource should be loaded, or `"none"` to disable multi-tenant DataSource lookup  
+_default value_: the tenant authorized by the current servlet request, if any
+
+When a tenant is specified or authorized by the current request, the corresponding multi-tenant DataSource is loaded, falling back to the normal DataSource if no tenant-specific definition is found. Set this attribute to `"none"` to load only the normal DataSource, even when the current servlet request authorizes a tenant. See [multiTenancy](multiTenancy.md#kb-topic-transparent-multi-tenancy) for more information.
+
 **locale**  
 _value format_: valid locale string - see [dataSourceLocalization](dataSourceLocalization.md#kb-topic-datasource-and-component-xml-localization) for more details and examples.  
 _default value_: as set by the OS/JVM defaults

@@ -894,6 +894,8 @@ Resumes a suspended process. If the process was suspended at a HumanTask, the ta
 ### Description
 Returns a plain bulleted-text summary of this Process's current tasks - one bullet per task, using [ProcessElement.getInstanceTitle](ProcessElement.md#method-processelementgetinstancetitle) and [ProcessElement.getInstanceDescription](ProcessElement.md#method-processelementgetinstancedescription) - suitable for a non-technical review of what a Process does without opening [WorkflowEditor](#class-workfloweditor).
 
+A task reachable only via failure handling (a [failureElement](DSRequestTask.md#attr-dsrequesttaskfailureelement) or the Process-level default error task) - never by the Process's regular flow - is labeled "(Failure-Handling Only)"; a task reachable via BOTH regular flow AND failure handling is labeled "(Also Failure-Reachable)", the same call-out [WorkflowEditor](#class-workfloweditor) shows as a persistent icon (see [WorkflowEditor.dualReachabilityIcon](#attr-workfloweditordualreachabilityicon)). These labels are computed and shown regardless of `markUnreferencedTasks` below, which only controls whether genuinely unreferenced (orphaned) tasks are listed at all.
+
 ### Parameters
 
 | Name | Type | Optional | Default | Description |

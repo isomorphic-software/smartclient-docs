@@ -89,7 +89,7 @@ Typical uses include finding similar colors in a palette, detecting near-duplica
 ### Description
 Returns a brighter, more vivid version of the given color by boosting both chroma (color intensity) and lightness together. This produces an "intensified" highlight rather than a washed-out tint (as [lighten()](#classmethod-colorslighten) alone would) or a hue shift without luminance change (as [saturate()](#classmethod-colorssaturate) alone would).
 
-A typical use is hover highlighting in charts: the highlighted color should look like a more vibrant version of the base color rather than a lighter or pinker variant.
+A typical use is a rollover highlight: the highlighted color should read as a more vivid version of the base rather than a washed-out lighter tint - for example, a red should deepen into a warmer, more saturated red instead of fading toward pink.
 
 The `amount` controls both axes: lightness receives the full amount while chroma receives half, keeping the color recognizable at typical hover percentages (25–40). For independent control use [adjust()](#classmethod-colorsadjust) directly.
 
@@ -396,7 +396,7 @@ For example, a skin config stores `oklch(from var(--isc-accent) calc(l + 0.15) c
 
 The returned object describes the expression's structure:
 
-*   **origin** - the raw origin string as it appears in the expression (e.g. `"var(--isc-accent)"`, `"#ff0000"`). If the origin is a `var()` reference, the caller must use [Colors.resolveCSS](#classmethod-colorsresolvecss) to resolve it to an actual color - [Colors.getColor](#classmethod-colorsgetcolor) cannot resolve `var()` references.
+*   **origin** - the raw origin string as it appears in the expression (e.g. `"var(--isc-accent)"`, `"#ff0000"`). To turn the origin into an actual color, pass it to [Colors.getColor](#classmethod-colorsgetcolor) or [Colors.resolveCSS](#classmethod-colorsresolvecss); both resolve `var()` references through the browser's CSS engine when a DOM is available.
 *   **space** - the color space: `"rgb"`, `"hsl"`, or `"oklch"`
 *   **deltas** - an object mapping channel names to their additive delta (only channels that differ from identity). For example, `{l: 0.15}` means lightness is shifted by +0.15 while other channels pass through unchanged. Channels with complex expressions (multiplication, clamping via max/min) are omitted from deltas but present in rawChannels.
 *   **rawChannels** - an array of three raw channel expression strings in CSS order, useful for complex expressions that cannot be reduced to a simple delta
@@ -527,6 +527,7 @@ For example, to define a hover color that is always 10% lighter than the theme's
      // relationship against a different base:
      var rel = isc.Colors.describeRelationship("#3B82F6", "#6BA3F8");
      var css2 = isc.Colors.generateCSS("var(--new-accent)", rel);
+     // "oklch(from var(--new-accent) calc(l + 0.0905) calc(c - 0.0497) calc(h - 1.3))"
  
 ```
 
@@ -561,7 +562,7 @@ Parses any valid CSS color into a structured [Color](../reference_2.md#object-co
 
 Accepts any CSS color string (`#hex`, `rgb()`, `hsl()`, `oklch()`, named colors) or a structured component object in any supported color space: `{r, g, b}`, `{h, s, l}`, or `{L, C, h}`.
 
-Also accepts CSS Relative Color Syntax (RCS) expressions with literal color origins, such as `rgb(from #3B82F6 calc(r - 0.1) g b)`, `hsl(from #47a7e3 h s calc(l + 20))`, or `oklch(from #3B82F6 calc(l + 0.15) c h)`. The origin can be any parseable color string - hex, named, or a nested function call. Channel keywords use CSS-native ranges: RGB channels are 0-1 sRGB fractions (not 0-255), HSL s/l are 0-100, oklch L is 0-1. The origin is resolved, the channel adjustments (bare keywords, `calc()`, `max()`, `min()`) are evaluated, and the result is returned as a fully resolved Color.
+Also accepts CSS Relative Color Syntax (RCS) expressions, such as `oklch(from #3B82F6 calc(l + 0.15) c h)`, `hsl(from #47a7e3 h s calc(l + 20))`, or `oklch(from var(--accent) calc(l + 0.15) c h)`. The origin can be any parseable color - a hex or named color, an `rgb()`/`hsl()`/`oklch()` call, a nested function-string, or a `var()` custom-property reference (resolved through the browser's CSS engine when a DOM is available). Channel keywords use CSS-native ranges: RGB channels are 0-1 sRGB fractions (not 0-255), HSL s/l are 0-100, oklch L is 0-1. The origin is resolved, the channel adjustments (bare keywords, `calc()`, `max()`, `min()`) are evaluated, and the result is returned as a fully resolved Color.
 
 Also accepts manipulation function-strings such as `lighten(#3B82F6, 20)`, `darken(blue, 15%)`, `saturate(#abc, 30)`, or `complement(red)`. Supported function names: `lighten`, `darken`, `brighten`, `dim`, `saturate`, `desaturate`, `complement`, `spin`. The color argument can be any parseable color string; the amount is a number (optionally suffixed with "%"). `complement()` takes only a color argument. These are equivalent to calling the corresponding [Colors](#class-colors) class method, but expressed as a single string - useful when color expressions come from user input, configuration files, or declarative settings.
 

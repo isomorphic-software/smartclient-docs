@@ -44,6 +44,18 @@ Even when a `fieldDataSource` is specified, [FilterBuilder.dataSource](#attr-fil
 **Flags**: IR
 
 ---
+## Attr: FilterBuilder.indirectRelationTriggerTitle
+
+### Description
+Title for the "Indirect relations..." entry in the field picker drop-down that opens the indirect relation picker.
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IR
+
+---
 ## Attr: FilterBuilder.showLastRemoveButton
 
 ### Description
@@ -278,6 +290,30 @@ If true (the default), validates each entered value when it changes, to make sur
 **Flags**: IR
 
 ---
+## Attr: FilterBuilder.valuePathHint
+
+### Description
+Hint text shown in the valuePath TextItem when editing SDC conditions in the DataSourceEditor.
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IR
+
+---
+## Attr: FilterBuilder.indirectRelationSelectButtonTitle
+
+### Description
+Title for the Select button in the indirect relation picker window.
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IR
+
+---
 ## Attr: FilterBuilder.showSelectionCheckbox
 
 ### Description
@@ -440,6 +476,18 @@ Button allowing the user to add subclauses grouped by a [LogicalOperator](../ref
 **Flags**: IR
 
 ---
+## Attr: FilterBuilder.indirectRelationSearchHint
+
+### Description
+Hint text shown in the search field of the indirect relation picker window.
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IR
+
+---
 ## Attr: FilterBuilder.addButton
 
 ### Description
@@ -448,10 +496,34 @@ An ImgButton that allows new clauses to be added if [FilterBuilder.showAddButton
 **Flags**: IR
 
 ---
+## Attr: FilterBuilder.indirectRelationPickerTitle
+
+### Description
+Title for the indirect relation picker window opened from the field picker's "Indirect relations..." entry.
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IR
+
+---
 ## Attr: FilterBuilder.sortFields
 
 ### Description
 Should the [FieldPicker](FieldPicker.md#class-fieldpicker) items be sorted alphabetically in the drop down list.
+
+**Flags**: IR
+
+---
+## Attr: FilterBuilder.indirectRelationNextMatchPrompt
+
+### Description
+Prompt for the "next match" icon in the indirect relation picker's search field.
+
+### Groups
+
+- i18nMessages
 
 **Flags**: IR
 
@@ -506,6 +578,18 @@ The hover prompt text for the dynamic value button.
 
 ### Description
 CSS text to be added to the styling for Related Field and Aggregate selections in the field name picker. By default, the choices are italicized.
+
+**Flags**: IR
+
+---
+## Attr: FilterBuilder.indirectRelationPrevMatchPrompt
+
+### Description
+Prompt for the "previous match" icon in the indirect relation picker's search field.
+
+### Groups
+
+- i18nMessages
 
 **Flags**: IR
 
@@ -613,6 +697,18 @@ Note that, when switching between fields that have an optionDataSource or valueM
 
 ### Description
 The prefix to be displayed before a related field valueQuery value in the clause.
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IR
+
+---
+## Attr: FilterBuilder.indirectRelationCancelButtonTitle
+
+### Description
+Title for the Cancel button in the indirect relation picker window.
 
 ### Groups
 

@@ -287,6 +287,33 @@ For multi-axis adjustments, use [adjust()](#classmethod-colorsadjust) directly.
 - [Colors.adjust](#classmethod-colorsadjust)
 
 ---
+## ClassMethod: Colors.classifyRelationship
+
+### Description
+Classify a set of oklch channel deltas into a change type - the same categories [Colors.describeRelationship](#classmethod-colorsdescriberelationship) assigns, but taken directly from deltas (e.g. the `deltas` object of [Colors.parseRelationship](#classmethod-colorsparserelationship)) rather than measured between two colors. Useful when you already have an RCS expression and want to describe what it does.
+
+Returns one of: `"lighten"`, `"darken"`, `"saturate"`, `"desaturate"`, `"spin"` (hue rotation), `"adjust"` (more than one channel changed), or `"identical"`. Significance thresholds match [Colors.describeRelationship](#classmethod-colorsdescriberelationship): `|l| > 0.01`, `|c| > 0.005`, `|h| > 2` degrees.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| deltas | [Object](../reference.md#type-object) | false | — | oklch channel deltas - `l` (lightness), `c` (chroma), `h` (hue in degrees); omitted channels are treated as 0 |
+
+### Returns
+
+`[String](#type-string)` — the change-type classification
+
+### Groups
+
+- colorOverview
+
+### See Also
+
+- [Colors.describeRelationship](#classmethod-colorsdescriberelationship)
+- [Colors.parseRelationship](#classmethod-colorsparserelationship)
+
+---
 ## ClassMethod: Colors.mostReadable
 
 ### Description

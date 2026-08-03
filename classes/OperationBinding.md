@@ -818,7 +818,7 @@ Applies to RestConnector dataSources ([serverType](DataSource_1.md#attr-datasour
 ## Attr: OperationBinding.methodArguments
 
 ### Description
-You can explicitly declare the arguments to be passed to [OperationBinding.serverMethod](#attr-operationbindingservermethod) using this attribute. This isn't required - in the absence of `methodArguments`, the DMI implementation will still automatically pass a stock set of arguments to your method (see the overview in [ServerObject](../reference_2.md#object-serverobject)), but specifying arguments gives you the ability to call pre-existing methods without adding SmartClient-specific code.
+You can explicitly declare the arguments to be passed to [OperationBinding.serverMethod](#attr-operationbindingservermethod) using this attribute. This isn't required - in the absence of `methodArguments`, the DMI implementation will still automatically pass a stock set of arguments to your method (see "Method Invocation" in the [DMI overview](../kb_topics/dmiOverview.md#kb-topic-direct-method-invocation)), but specifying arguments gives you the ability to call pre-existing methods without adding SmartClient-specific code.
 
 The format for specifying `methodArguments` is as a comma separated list of VTL (Velocity Template Language) expressions. See the [VTL Reference](https://velocity.apache.org/engine/devel/vtl-reference.html) and [Velocity User Guide](https://velocity.apache.org/engine/2.3/user-guide.html) for an overview of how to use VTL.
 

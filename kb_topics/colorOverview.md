@@ -86,6 +86,7 @@ Typical workflow: `scheme()` picks harmonious seed colors, then `palette()` gene
 - [Colors.resolveCSS](../classes/Colors.md#classmethod-colorsresolvecss)
 - [Colors.parseRelationship](../classes/Colors.md#classmethod-colorsparserelationship)
 - [Colors.describeRelationship](../classes/Colors.md#classmethod-colorsdescriberelationship)
+- [Colors.classifyRelationship](../classes/Colors.md#classmethod-colorsclassifyrelationship)
 - [Colors.generateCSS](../classes/Colors.md#classmethod-colorsgeneratecss)
 
 ---

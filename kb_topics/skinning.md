@@ -40,37 +40,13 @@ See the [Skin Editor overview](skinEditor.md#kb-topic-skin-editor) for informati
     ```
     
 *   A skin is loaded via a `<SCRIPT SRC=>` tag that loads load\_skin.js, or, if using the SmartClient server, by specifying the "skin" property of the [loadISCTag](loadISCTag.md#kb-topic-isomorphicloadisc). load\_skin.js loads the stylesheet and sets the CSS styleNames and media URLs that SmartClient components will use.
-*   **Some skins also provide Sass templates for easier customization via variables - see the [Custom Sass Skinning](customSassSkins.md#kb-topic-customizing-sass-based-skins) discussion**
+*   **The modern "Flat" skins (such as Tahoe and Shiva) are customized through CSS variables and a JSON skin definition - see the [Customizing Skins](customSkins.md#kb-topic-customizing-skins) overview.**
 
-#### CSS3 mode
+#### Browser support
 
-SmartClient can make use of CSS3 features to render user interface component details such as rounded corners, gradients and drop-shadows. Prior to the wide adoption of CSS3 by browsers such UI details could only be achieved by writing out HTML structures including images.  
-Using images is a less efficient approach - it leads to a more complex DOM structure and increased server load to retrieve media.
+The recent skins - and all of SmartClient's skinning tools - style the interface with modern CSS, including CSS custom properties and features such as `oklch()` and `color-mix()`, which current browsers support directly. There is nothing to enable.
 
-SmartClient's most recent builtin skins (the Flat series, comprising **Tahoe**, **Stratus**, **Twilight** and **Obsidian**), will always rely on CSS3 features for certain appearance details. If loaded in a browser with no CSS3 support (such as Internet Explorer 8), developers can expect to see some degradation in appearance (lack of certain drop-shadows, rounded edges becoming square, etc).
-
-Three of SmartClient's other most commonly used skins, **Enterprise**, **EnterpriseBlue** and **Graphite** will conditionally make use of CSS3 features. These skins have a "CSS3 mode" in which many images required by the skin are replaced with CSS3 settings that appear nearly identical to the image-based appearance.
-
-For these skins, CSS3 mode is automatically used in modern browsers such as Firefox, Chrome, Safari, IE 9 in standards mode, and IE 10+.  
-Internet Explorer version 8 and earlier does not have sufficient CSS support to create a close match to the existing image-based skin, so CSS3 mode is not enabled by default. If CSS3 mode is manually enabled for IE when not automatically enabled, this will result in a degraded appearance that is similar across IE6, 7, and 8: rounded elements such as tabs will become square, and backgrounds will have lower quality if not disappear.
-
-To override the default decision on whether to use CSS3 support, set the JavaScript global variable `isc_css3Mode` before any of the SmartClient libraries are loaded. For example:
-
-```
-   <script>isc_css3Mode = "on";</script>
- 
-```
-
-Possible settings are:
-
-*   "supported" :  
-    _(default setting)_ CSS3 mode will be used for browsers that fully support it (including rounded edges and full gradient support)
-*   "off" :  
-    CSS3 mode will never be used
-*   "on" :  
-    CSS3 mode will be used for all browsers
-
-For more control than the above settings provide, you can create a custom skin based on one of the above Flat skins and modify load\_skin.js - whether CSS3 mode is used is controlled by a JavaScript variable `useCSS3` defined in this file.
+Some very old, legacy skins predate full CSS support in browsers (notably older versions of Internet Explorer) and rendered details such as borders, rounded edges and button backgrounds with images instead. Those skins are standalone; they are not related to the modern skins, the Skin Editor, or compact skins.
 
 #### Changing Density
 
@@ -123,7 +99,7 @@ To create new skins and easily make bulk changes to details like colors and font
 #### Manually
 To modify a skin, first create a copy of one of the skins that comes with the SmartClient SDK, then modify the copy. Full instructions are provided in Chapter 9 of the *QuickStart Guide*.
 
-For the most modern skins (**Tahoe**, **Stratus**, **Twilight** and **Obsidian**), the recommended approach is to use the [Skin Editor](skinEditor.md#kb-topic-skin-editor) tool, which provides UI for the majority of the skin CSS and takes advantage of the Sass templates provided with those skins. You can also manually affect the Sass templates - see the [Custom Sass Skinning](customSassSkins.md#kb-topic-customizing-sass-based-skins) discussion for more detail on leveraging that mechanism to customize a skin.
+For the modern "Flat" skins (**Tahoe**, **Shiva**, **Stratus**, **Twilight** and **Obsidian**), the recommended approach is the [Skin Editor](skinEditor.md#kb-topic-skin-editor), which provides a UI for editing the skin's CSS variables and custom styles. You can also edit a skin's `config.json` directly - see the [Customizing Skins](customSkins.md#kb-topic-customizing-skins) overview.
 
 #### Locating Skinning Properties
 

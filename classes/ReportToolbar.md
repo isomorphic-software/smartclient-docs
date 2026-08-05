@@ -7,7 +7,7 @@
 ## Class: ReportToolbar
 
 ### Description
-The report-level consumer toolbar for a deployed [DataReport](DataReport.md#class-datareport): whole-report actions a viewer invokes (Export, Restore Hidden, and a "data as of" freshness label). It is an autoChild of [ReportScreen](../reference.md#class-reportscreen) and drives that screen's DataReport. The runtime analog of ReportBuilder's authoring toolbar; per-action visibility is controlled by flags ([ReportToolbar.showExport](#attr-reporttoolbarshowexport) etc.). Export is built as a menu button from the start so added capture formats (PDF / image) are additive, not a relayout.
+The report-level consumer toolbar for a deployed [DataReport](DataReport.md#class-datareport): whole-report actions a viewer invokes (Export, Restore Hidden, and a "data as of" freshness label). It is an autoChild of [ReportScreen](ReportScreen.md#class-reportscreen) and drives that screen's DataReport. The runtime analog of ReportBuilder's authoring toolbar; per-action visibility is controlled by flags ([ReportToolbar.showExport](#attr-reporttoolbarshowexport) etc.). Export is built as a menu button from the start so added capture formats (PDF / image) are additive, not a relayout.
 
 ---
 ## Attr: ReportToolbar.showRestoreHidden

@@ -1861,7 +1861,7 @@ How thick should we make the scrollbars for this canvas. This only applies if [C
 ## Attr: Canvas.borderRadius
 
 ### Description
-The CSS border-radius for this widget. The value can be any variant of a CSS border-radius value - that is, from 1 to 4 space-separated px values, where one value affects all corners and 4 values affects individual corners. For example "10px" applies a 10px radius to all corners, where "5px 10px 15px 20px" applies a different radius to each corner, clockwise from Top-Left: "TL TR BR BL".
+The CSS border-radius for this widget. The value can be any variant of a CSS border-radius value - that is, from 1 to 4 space-separated px values, where one value affects all corners and 4 values affects individual corners. For example "10px" applies a 10px radius to all corners, where "5px 10px 15px 20px" applies a different radius to each corner, clockwise from Top-Left: "TL TR BR BL". A plain Integer is applied as a px radius to all corners.
 
 ### Groups
 

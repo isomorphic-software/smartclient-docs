@@ -494,6 +494,7 @@ This is the central API reference for the SmartClient framework.
   - [AsyncUtil](classes/AsyncUtil.md)
   - [Project](classes/Project.md)
   - [JSONEncoder](classes/JSONEncoder.md)
+  - [ReportScreen](classes/ReportScreen.md)
   - [CellSelection](classes/CellSelection.md)
   - [CancellationController](classes/CancellationController.md)
   - [ReifyRemote](classes/ReifyRemote.md)
@@ -516,7 +517,6 @@ This is the central API reference for the SmartClient framework.
   - [SyntaxHiliter](#class-syntaxhiliter)
     - [XMLSyntaxHiliter](#class-xmlsyntaxhiliter)
     - [JSSyntaxHiliter](#class-jssyntaxhiliter)
-  - [ReportScreen](#class-reportscreen)
   - [WindowMaximizeButton](#class-windowmaximizebutton)
   - [WindowMinimizeButton](#class-windowminimizebutton)
   - [WindowCloseButton](#class-windowclosebutton)
@@ -2362,12 +2362,6 @@ In this sublass of [TabSet](classes/TabSet.md#class-tabset), the [tabBar](classe
 This attribute is set to true and cannot be changed in this sublass of [TabSet](classes/TabSet.md#class-tabset).
 
 **Flags**: IR
-
----
-## Class: ReportScreen
-
-### Description
-The deployable frame around a [DataReport](classes/DataReport.md#class-datareport): a VLayout stacking a report-level [ReportToolbar](classes/ReportToolbar.md#class-reporttoolbar) (an autoChild, like a Window's header) above the DataReport body. This is the composite ReportBuilder authors and that a deployment renders like any other screen. Because the toolbar is an autoChild and [EditProxy.allowNestedDrops](classes/EditProxy.md#attr-editproxyallownesteddrops) is false, Reify treats the ReportScreen as fixed chrome + a single editable content area (the DataReport) -- a viewer/author cannot drop components between the toolbar and the report.
 
 ---
 ## Class: Timeline

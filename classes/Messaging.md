@@ -42,6 +42,14 @@ URL where the MessagingServlet has been installed. See the server-side JavaDoc f
 **Flags**: IR
 
 ---
+## ClassAttr: Messaging.webSocketConnectTimeout
+
+### Description
+Number of milliseconds to wait when initiating a server connection before dropping the attempt and trying again.
+
+**Flags**: IR
+
+---
 ## ClassAttr: Messaging.useWebSocket
 
 ### Description
@@ -55,14 +63,6 @@ Note that once a successful connection using the webSocket protocol is establish
 
 ---
 ## ClassAttr: Messaging.connectTimeout
-
-### Description
-Number of milliseconds to wait when initiating a server connection before dropping the attempt and trying again.
-
-**Flags**: IR
-
----
-## ClassAttr: Messaging.websocketConnectTimeout
 
 ### Description
 Number of milliseconds to wait when initiating a server connection before dropping the attempt and trying again.

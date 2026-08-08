@@ -31,7 +31,7 @@ For pasting, if [EditContext.allowNestedDrops](EditContext.md#attr-editcontextal
 ## Attr: EditProxy.canSelectChildren
 
 ### Description
-Whether to allow selection of the children of this [EditNode](../reference.md#object-editnode). The appearance and behavior of selected components is controlled by [SelectedAppearance](../reference_2.md#type-selectedappearance), or centrally across an [EditContext](EditContext.md#class-editcontext) via [EditContext.selectedAppearance](EditContext.md#attr-editcontextselectedappearance).
+Whether to allow selection of the children of this [EditNode](../reference.md#object-editnode). The appearance and behavior of selected components is controlled by [SelectedAppearance](../reference.md#type-selectedappearance), or centrally across an [EditContext](EditContext.md#class-editcontext) via [EditContext.selectedAppearance](EditContext.md#attr-editcontextselectedappearance).
 
 Individual children can be marked non-selectable via setting [EditProxy.canSelect](#attr-editproxycanselect) to `false`.
 

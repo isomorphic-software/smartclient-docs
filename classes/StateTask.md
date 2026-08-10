@@ -17,6 +17,8 @@ Some examples:
 *   inputField: "a", outputField: "b", type: "integer" - copies "a" to "b" converting "a" to an integer
 *   inputFieldList: \["a","b"\], outputField: \["c","d"\] - copies "a" and "b" to "c" and "d" respectively.
 
+Works inside [server-side\\n processes](OperationBinding.md#attr-operationbindingprocess).
+
 ### Groups
 
 - serverProcess

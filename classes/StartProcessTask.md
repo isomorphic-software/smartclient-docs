@@ -11,6 +11,8 @@
 ### Description
 Task that executes another [Process](Process.md#class-process) inside the current one. A process cannot be embedded within another process as a normal task element. Instead, a StartProcessTask is used to provide the input state, execute the inner process, then write the output back into the calling process state.
 
+Works inside [server-side\\n processes](OperationBinding.md#attr-operationbindingprocess) — the child process runs synchronously within the same server request.
+
 ### Groups
 
 - serverProcess

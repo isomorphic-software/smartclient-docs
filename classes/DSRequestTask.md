@@ -23,6 +23,11 @@ For example, if you specify 'id' and 'name' in outputFieldList, only these prope
 
 - serverProcess
 
+### See Also
+
+- [OperationBinding.process](OperationBinding.md#attr-operationbindingprocess)
+- [serverProcess](../kb_topics/serverProcess.md#kb-topic-server-side-process-execution)
+
 ---
 ## Attr: DSRequestTask.passThruOutput
 

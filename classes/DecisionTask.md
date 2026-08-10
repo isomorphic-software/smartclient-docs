@@ -13,9 +13,29 @@ Chooses one or another next process element based on AdvancedCriteria applied to
 
 If the AdvancedCriteria evaluate to true, the [nextElement](#attr-decisiontasknextelement) is chosen, otherwise the [failureElement](#attr-decisiontaskfailureelement).
 
+Inside an [OperationBinding.process](OperationBinding.md#attr-operationbindingprocess), criteria support the full [ServerDynamicCriteria](../reference_2.md#type-serverdynamiccriteria) syntax including `auth.userId`, `auth.roles`, relational FK references, and aggregation shorthand. For example, if an Order DS has `foreignKey="Customer.customerId"`:
+
+```
+ <DecisionTask ID="checkCredit"
+     nextElement="approve"
+     failureElement="reject">
+   <criteria
+       fieldName="Customer.creditStatus"
+       operator="equals"
+       value="approved"/>
+ </DecisionTask>
+ 
+```
+See [serverProcess](../kb_topics/serverProcess.md#kb-topic-server-side-process-execution) for a complete example.
+
 ### Groups
 
 - serverProcess
+
+### See Also
+
+- [ServerDynamicCriteria](../reference_2.md#type-serverdynamiccriteria)
+- [serverProcess](../kb_topics/serverProcess.md#kb-topic-server-side-process-execution)
 
 ---
 ## Attr: DecisionTask.failureElement

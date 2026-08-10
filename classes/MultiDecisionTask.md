@@ -11,9 +11,16 @@
 ### Description
 Chooses a next element in a [Process](Process.md#class-process) by evaluating a series of criteria against the [Process.state](Process.md#attr-processstate) and choosing the element associated with the criteria that matched, or a [defaultElement](#attr-multidecisiontaskdefaultelement) if none of the criteria match.
 
+Inside an [OperationBinding.process](OperationBinding.md#attr-operationbindingprocess), criteria support the full [ServerDynamicCriteria](../reference_2.md#type-serverdynamiccriteria) syntax — see [serverProcess](../kb_topics/serverProcess.md#kb-topic-server-side-process-execution) for details and examples.
+
 ### Groups
 
 - serverProcess
+
+### See Also
+
+- [ServerDynamicCriteria](../reference_2.md#type-serverdynamiccriteria)
+- [serverProcess](../kb_topics/serverProcess.md#kb-topic-server-side-process-execution)
 
 ---
 ## Attr: MultiDecisionTask.decisionList

@@ -22,7 +22,7 @@ Task that executes arbitrary code, either synchronous or asynchronous. Override 
 Scripting language for the [ScriptTask.execute](#method-scripttaskexecute) body. When running inside an [OperationBinding.process](OperationBinding.md#attr-operationbindingprocess), this controls which script engine evaluates the code:
 
 *   `null` or `"graal.js"` (default) — execute in the current GraalJS server context, with full access to SmartClient APIs and [Process.state](Process.md#attr-processstate)
-*   Any other value (e.g. `"groovy"`) — delegate to the JSR-223 `ScriptEngine` registered under that name. The engine receives these bindings: `dsRequest`, `criteria`, `values`, `oldValues`, `session`, `config`, and `processState` (the [Process.state](Process.md#attr-processstate) map)
+*   Any other value (e.g. `"groovy"`) — delegate to the JSR-223 `ScriptEngine` registered under that name. The engine receives these bindings: `dsRequest`, `criteria`, `values`, `oldValues`, `input`, `inputRecord`, `processState` (the [Process.state](Process.md#attr-processstate) map), `session`, `config`, `log`, and `ds`
 
 This attribute has no effect in client-side workflows.
 

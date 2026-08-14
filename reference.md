@@ -76,10 +76,6 @@ This is the central API reference for the SmartClient framework.
         - [PortalLayout](classes/PortalLayout.md)
         - [ColumnTree](classes/ColumnTree.md)
         - [FilterBuilder](classes/FilterBuilder.md)
-        - [VStack](#class-vstack)
-          - [BatchUploader](classes/BatchUploader.md)
-          - [AdvancedHiliteEditor](classes/AdvancedHiliteEditor.md)
-          - [MultiFilePicker](#class-multifilepicker)
         - [HLayout](#class-hlayout)
           - [NavigationBar](classes/NavigationBar.md)
           - [ImgSectionHeader](classes/ImgSectionHeader.md)
@@ -95,6 +91,9 @@ This is the central API reference for the SmartClient framework.
         - [ToolStrip](classes/ToolStrip.md)
           - [RibbonBar](classes/RibbonBar.md)
           - [Header](classes/Header.md)
+        - [VStack](#class-vstack)
+          - [AdvancedHiliteEditor](classes/AdvancedHiliteEditor.md)
+          - [MultiFilePicker](#class-multifilepicker)
         - [Deck](classes/Deck.md)
         - [ListPropertiesPane](classes/ListPropertiesPane.md)
         - [HStack](#class-hstack)
@@ -255,13 +254,13 @@ This is the central API reference for the SmartClient framework.
     - [NativeCheckboxItem](#class-nativecheckboxitem)
       - [RadioItem](#class-radioitem)
     - [BooleanItem](#class-booleanitem)
-  - [OperationBinding](classes/OperationBinding.md)
   - [RPCManager](classes/RPCManager.md)
   - [Tree](classes/Tree.md)
     - [ResultTree](classes/ResultTree.md)
   - [ResultSet](classes/ResultSet.md)
     - [FilteredList](classes/FilteredList.md)
   - [ValuesManager](classes/ValuesManager.md)
+  - [OperationBinding](classes/OperationBinding.md)
   - [EditContext](classes/EditContext.md)
   - [AutoTest](classes/AutoTest.md)
   - [DateUtil](classes/DateUtil.md)
@@ -482,7 +481,6 @@ This is the central API reference for the SmartClient framework.
 - [Criteria Editing](kb_topics/criteriaEditing.md)
 - [Content Security Policy (CSP)](kb_topics/cspSupport.md)
 - [cues](#kb-topic-cues)
-- [Custom Querying Overview](kb_topics/customQuerying.md)
 - [Customizing Sass-based Skins](kb_topics/customSassSkins.md)
 - [Including custom elements in the tab order](kb_topics/customTabElements.md)
 - [DataBinding](kb_topics/databinding.md)
@@ -681,7 +679,6 @@ This is the central API reference for the SmartClient framework.
 - [validatorExecution](#kb-topic-validatorexecution)
 - [valueMap](#kb-topic-valuemap)
 - [values](#kb-topic-values)
-- [Velocity context variables](kb_topics/velocitySupport.md)
 - [visibility](kb_topics/visibility.md)
 - [Window Header](#kb-topic-window-header)
 - [Custom Server DataSources](kb_topics/writeCustomDataSource.md)
@@ -705,18 +702,6 @@ Base class for [Canvas](classes/Canvas.md#class-canvas) and [DrawItem](classes/D
 
 ### Description
 A subclass of Layout that applies a sizing policy along the vertical axis, interpreting percent and "\*" sizes as proportions of the height of the layout. VLayouts will set any members that do not have explicit widths to match the layout.
-
-### See Also
-
-- [Layout.vPolicy](classes/Layout.md#attr-layoutvpolicy)
-
----
-## Class: VStack
-
-*Inherits from:* [Layout](classes/Layout.md#class-layout)
-
-### Description
-A subclass of Layout that simply stacks members on the vertical axis without trying to manage their height. On the horizontal axis, any members that do not have explicit widths will be sized to match the width of the stack.
 
 ### See Also
 
@@ -757,6 +742,18 @@ A subclass of Layout that applies a sizing policy along the horizontal axis, int
 ### Groups
 
 - devTools
+
+---
+## Class: VStack
+
+*Inherits from:* [Layout](classes/Layout.md#class-layout)
+
+### Description
+A subclass of Layout that simply stacks members on the vertical axis without trying to manage their height. On the horizontal axis, any members that do not have explicit widths will be sized to match the width of the stack.
+
+### See Also
+
+- [Layout.vPolicy](classes/Layout.md#attr-layoutvpolicy)
 
 ---
 ## Class: BrowserPlugin
@@ -3574,7 +3571,7 @@ Parent/child relationships
 
 ### Related
 
-- [DisplayNodeType](reference_2.md#type-displaynodetype)
+- [DisplayNodeType](#type-displaynodetype)
 
 ---
 ## KB Topic: Array Math
@@ -4755,29 +4752,6 @@ As an example - an input format of "MDY" would parse "01/02/1999" to Jan 2nd 199
 Note: In addition to these standard formats, a custom date string parser function may be passed directly to [DateUtil.setInputFormat](classes/DateUtil.md#classmethod-dateutilsetinputformat) or passed into [DateUtil.parseInput](classes/DateUtil.md#classmethod-dateutilparseinput) as the inputFormat parameter.
 
 ---
-## Type: DefaultQueryClause
-
-### Description
-The Velocity variable names of the "pieces" of SQL that SmartClient generates to form a complete fetch or update query. You can use these variables in you own custom queries and query clause overrides to build on the SmartClient functionality. See [customQuerying](kb_topics/customQuerying.md#kb-topic-custom-querying-overview) for a full discussion.
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| "$defaultSelectClause" | The column names to select, for a fetch operation only |
-| "$defaultTableClause" | The table name(s) to select from or update |
-| "$defaultAnsiJoinClause" | The [ansi join(s)](classes/DataSource.md#attr-datasourceuseansijoins) to join tables to select from, if enabled. |
-| "$defaultWhereClause" | The "where" condition, which will be derived from supplied criteria or a primary key value, depending on the type of operation |
-| "$defaultGroupClause" | For a fetch operation when using the [Server Summaries](kb_topics/serverSummaries.md#kb-topic-server-summaries) feature, "group by" part of aggregated query |
-| "$defaultGroupWhereClause" | For a fetch operation when using the [Server Summaries](kb_topics/serverSummaries.md#kb-topic-server-summaries) feature, "having" part of aggregated query (or outer "where" part if sub-select approach is used, see [OperationBinding.useHavingClause](classes/OperationBinding.md#attr-operationbindingusehavingclause) for more details) |
-| "$defaultValuesClause" | The column names to update and the update values, for an update or add operation |
-| "$defaultOrderClause" | The column names to sort by, for a fetch operation only |
-
-### Groups
-
-- customQuerying
-
----
 ## Type: DetailViewerViewState
 
 ### Description
@@ -4821,6 +4795,24 @@ All buttons added via `setButtons` will fire the [buttonClick event](classes/Dia
 | NO | Dismisses dialog by calling [Dialog.noClick](classes/Dialog.md#method-dialognoclick). Title derived from [Dialog.NO_BUTTON_TITLE](classes/Dialog.md#classattr-dialogno_button_title). |
 | CANCEL | Dismisses dialog by calling [Dialog.cancelClick](classes/Dialog.md#method-dialogcancelclick). Title derived from [Dialog.CANCEL_BUTTON_TITLE](classes/Dialog.md#classattr-dialogcancel_button_title). |
 | DONE | Dismisses dialog by calling [Dialog.doneClick](classes/Dialog.md#method-dialogdoneclick). Title derived from [Dialog.DONE_BUTTON_TITLE](classes/Dialog.md#classattr-dialogdone_button_title). |
+
+---
+## Type: DisplayNodeType
+
+### Description
+Flag passed to functions as displayNodeType, telling the function whether it should work on folders, leaves or both at once.
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| null/unset | operate on both folders and leaves |
+| "folders" | operate on folders only, ignoring leaves |
+| "leaves" | operate on leaves only, ignoring folders |
+
+### Groups
+
+- ancestry
 
 ---
 ## Type: Distance
@@ -4973,7 +4965,7 @@ For DataSources of type "sql" and "hibernate", specifies the kind of inheritance
 | Value | Description |
 |-------|-------------|
 | "full" | Inherit fields by copying them onto the inheriting DataSource's underlying table. When we import a DataSource with this inheritanceMode, we create actual columns for inherited fields on the table we create. With this inheritanceMode, inherited fields are updatable. |
-| "none" | Do not physically inherit fields onto the inheriting DataSource's SQL table. Columns will not be created for inherited fields on import, and all generated SQL operations will exclude inherited fields. However, those fields are still part of the DataSource's schema so you can, for example, write [custom SQL](kb_topics/customQuerying.md#kb-topic-custom-querying-overview) that returns values for the inherited fields, and they will be delivered to the client. |
+| "none" | Do not physically inherit fields onto the inheriting DataSource's SQL table. Columns will not be created for inherited fields on import, and all generated SQL operations will exclude inherited fields. However, those fields are still part of the DataSource's schema so you can, for example, write [custom SQL](#kb-topic-customquerying) that returns values for the inherited fields, and they will be delivered to the client. |
 
 ### Groups
 
@@ -6375,6 +6367,28 @@ You can extend the list of operators with [DataSource.addSearchOperator](classes
 - advancedFilter
 
 ---
+## Type: OperatorValueType
+
+### Description
+Indicates the kind of value expected in a [Criterion](reference_2.md#object-criterion) that uses this operator.
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| "fieldType" | [Criterion.value](classes/Criterion.md#attr-criterionvalue) should contain a value of the same type as the field. |
+| "fieldName" | [Criterion.value](classes/Criterion.md#attr-criterionvalue) should be the name of another field in the record |
+| "none" | no criterion.value or other setting required (used for operators like isBlank or isNull). |
+| "criteria" | [Criterion.criteria](classes/Criterion.md#attr-criterioncriteria) should be an Array of criteria (used for logical operators like "and"). |
+| "valueRange" | [Criterion.start](classes/Criterion.md#attr-criterionstart) and [Criterion.end](classes/Criterion.md#attr-criterionend) should contain start and end values, both of the same type as the field. |
+| "valueSet" | [Criterion.value](classes/Criterion.md#attr-criterionvalue) should contain an Array of valid field values. |
+| "custom" | [Criterion.value](classes/Criterion.md#attr-criterionvalue) should contain a value which is not necessarily the same type as the field (used for regexp and similar operators). [Operator.editorType](classes/Operator.md#attr-operatoreditortype) can be specified as a FormItem to use to enter a value for the criterion. |
+
+### Groups
+
+- advancedFilter
+
+---
 ## Type: Overflow
 
 ### Description
@@ -6409,21 +6423,6 @@ Is this page being viewed in landscape or portrait orientation? Typically used w
 |-------|-------------|
 | "landscape" | Landscape orientation: page is wider than it is tall. |
 | "portrait" | Portrait orientation: page is taller than it is wide. |
-
----
-## Type: PartialCommitOption
-
-### Description
-Action to take if a user attempts to save the dataset produced by a [BatchUploader](classes/BatchUploader.md#class-batchuploader) whilst it still contains errors.
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| "allow" | Silently allow the partial commit to proceed (note that this will result in the user losing those records that contain errors) |
-| "prevent" | Pop up a message window showing the [BatchUploader.partialCommitError](classes/BatchUploader.md#attr-batchuploaderpartialcommiterror) and prevent the partial commit |
-| "prompt" | Pop up a confirmation window with the [BatchUploader.partialCommitPrompt](classes/BatchUploader.md#attr-batchuploaderpartialcommitprompt) and allow the user to choose whether or not to proceed |
-| "retain" | Commit any records that are error-free and remove them from the grid. If any records had errors, leave them in the grid and leave the grid visible. If no records had errors, run normal cleanup as we would for "allow". This option allows the user to fix errors iteratively, rather than having to fix everything upfront before committing |
 
 ---
 ## Type: PercentBoxModel
@@ -7032,7 +7031,7 @@ The possible types of sequence handling SmartClient Server can apply. This refer
 |-------|-------------|
 | "jdbcDriver" | Use the JDBC 3.0 API "getGeneratedKeys()" to get the most recent sequence value. Obviously, this is only an option for JDBC 3.0+ drivers. **NOTE: Oracle special case** The Oracle JDBC driver provides a "getGeneratedKeys" method, but that method does not actually return the generated key values; instead, it returns a ROWID, which we must use to fetch the inserted row, and obtain the generated key values from it. For this reason, you may find that "native" is slightly faster to retrieve sequence values than "jdbcDriver" with Oracle (or you may find that it makes no noticeable difference; it depends on too many factors for us to give a concrete recommendation) |
 | "native" | Use a database-specific native technique to obtain the most recent sequence value. The actual technique used varies widely depending on the vagaries of the underlying database (and sometimes the vagaries of particular releases of a database product) |
-| "none" | No automatic attempt is made to retrieve the most recent sequence value. You are expected to handle this by providing a [cacheSyncOperation](classes/OperationBinding.md#attr-operationbindingcachesyncoperation) that is able to return the entire row without needing generated PK values for context. For example, a query that uses `MAX(pk)` would be capable of this. To give a more complex example, say you have a sequence value that is retrieved from a legacy system: you could store that sequence value in the HTTP session and then have your custom `cacheSyncOperation` reference that session attribute in its `WHERE` clause. Also note that cacheSyncOperations, like any other [DataSource operation](classes/OperationBinding.md#class-operationbinding), can be [written in Java](classes/OperationBinding.md#attr-operationbindingserverobject) or any [JSR223-compliant scripting language](classes/OperationBinding.md#attr-operationbindingscript) - you do not have to use SQL |
+| "none" | No automatic attempt is made to retrieve the most recent sequence value. You are expected to handle this by providing a [cacheSyncOperation](#attr-operationbindingcachesyncoperation) that is able to return the entire row without needing generated PK values for context. For example, a query that uses `MAX(pk)` would be capable of this. To give a more complex example, say you have a sequence value that is retrieved from a legacy system: you could store that sequence value in the HTTP session and then have your custom `cacheSyncOperation` reference that session attribute in its `WHERE` clause. Also note that cacheSyncOperations, like any other [DataSource operation](classes/OperationBinding.md#class-operationbinding), can be [written in Java](classes/OperationBinding.md#attr-operationbindingserverobject) or any [JSR223-compliant scripting language](classes/OperationBinding.md#attr-operationbindingscript) - you do not have to use SQL |
 
 ---
 ## Type: ShowDataValuesMode
@@ -7116,7 +7115,7 @@ The technique SmartClient Server's SQL DataSource should use to select a "page" 
 
 | Value | Description |
 |-------|-------------|
-| "sqlLimit" | Specify the paging directly in the SQL query we generate. The way this is done varies considerably from database to database: with some it is a straightforward built-in facility while others require arcane tricks or simply don't support the idea. This is the most efficient method, where available. Note that this strategy is not supported for operations that make use of a [customSQL](classes/OperationBinding.md#attr-operationbindingcustomsql) clause, because it depends upon being able to determine the size of the whole dataset without actually retrieving the whole dataset. Ordinary operations do this by means of an automatically-generated "row count query", but we cannot generate such a query for a `customSQL` operation. |
+| "sqlLimit" | Specify the paging directly in the SQL query we generate. The way this is done varies considerably from database to database: with some it is a straightforward built-in facility while others require arcane tricks or simply don't support the idea. This is the most efficient method, where available. Note that this strategy is not supported for operations that make use of a [customSQL](#attr-operationbindingcustomsql) clause, because it depends upon being able to determine the size of the whole dataset without actually retrieving the whole dataset. Ordinary operations do this by means of an automatically-generated "row count query", but we cannot generate such a query for a `customSQL` operation. |
 | "jdbcScroll" | Implement the paging behavior by use of the `absolute()` method of the JDBC `ResultSet`. |
 | "dropAtServer" | Implement the paging behavior by fetching the entire resultset from the database and dropping any unnecessary rows on the server before returning the data to the client. This approach is extremely inefficient, but also extremely straightforward; it is intended as a fallback option, for situations where the more sophisticated approaches cause problems (a JDBC driver that throws vague exceptions when `absolute()` is called, for example) |
 | "none" | No paging behavior: we always return the entire resultset to the client. |
@@ -7125,23 +7124,6 @@ The technique SmartClient Server's SQL DataSource should use to select a "page" 
 
 - [DataSource.sqlPaging](classes/DataSource.md#attr-datasourcesqlpaging)
 - [OperationBinding.sqlPaging](classes/OperationBinding.md#attr-operationbindingsqlpaging)
-
----
-## Type: SQLType
-
-### Description
-The types of custom query that can be handled by SmartClient's built-in "sql" and "hibernate" DataSources. Note, only applies to [OperationBinding.operationType](classes/OperationBinding.md#attr-operationbindingoperationtype) "custom".
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| "query" | The custom SQL or HQL is read-only |
-| "update" | The custom SQL or HQL updates data |
-
-### Groups
-
-- customQuerying
 
 ---
 ## Type: StackDirection
@@ -7267,6 +7249,24 @@ Tiles that do not specify a size will be sized to fill available space. |
 | "flow" | Tiles are laid out with varying numbers of tiles per line according to each tile's size, the [tileMargin](classes/TileLayout.md#attr-tilelayouttilemargin), and the available space.
 
 Tiles are never resized by the TileLayout and [TileLayout.tileSize](classes/TileLayout.md#attr-tilelayouttilesize) is ignored. |
+
+---
+## Type: TitleAlign
+
+### Description
+Supported positioning of the chart Title.
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| "left" | Align to the left of the chart title header |
+| "center" | Align centrally in the chart title header |
+| "right" | Align to the right of the chart title header |
+
+### Groups
+
+- chartTitle
 
 ---
 ## Type: TitleAutoFitRotationMode
@@ -7530,7 +7530,7 @@ By default the uniqueness check is not case sensitive but this can be controlled
 
 Validators of this type have [requiresServer](classes/ValidatorDefinition.md#attr-validatordefinitionrequiresserver) set to `true` and do not run on the client.
 
-Note that this validation is generally unnecessary for data coming from a UI. The typical UI uses a [SelectItem](classes/SelectItem.md#class-selectitem) or [ComboBoxItem](classes/ComboBoxItem.md#class-comboboxitem) with an [optionDataSource](classes/FormItem.md#attr-formitemoptiondatasource) for user entry, such that the user can't accidentally enter a related record if that doesn't exist, and a typical SQL schema will include constraints that prevent a bad insert if the user attempts to circumvent the UI. The primary purpose of declaring this validation explicitly is to provide clear, friendly error messages for use cases such as [BatchUploader](classes/BatchUploader.md#class-batchuploader), where values aren't individually chosen by the user. See also the example *Related Records*. |
+Note that this validation is generally unnecessary for data coming from a UI. The typical UI uses a [SelectItem](classes/SelectItem.md#class-selectitem) or [ComboBoxItem](classes/ComboBoxItem.md#class-comboboxitem) with an [optionDataSource](classes/FormItem.md#attr-formitemoptiondatasource) for user entry, such that the user can't accidentally enter a related record if that doesn't exist, and a typical SQL schema will include constraints that prevent a bad insert if the user attempts to circumvent the UI. The primary purpose of declaring this validation explicitly is to provide clear, friendly error messages for use cases such as [BatchUploader](#class-batchuploader), where values aren't individually chosen by the user. See also the example *Related Records*. |
 | maxFileSize | This validator type is not for direct usage, instead [DataSourceField.maxFileSize](classes/DataSourceField.md#attr-datasourcefieldmaxfilesize) can be set and `maxFileSize` validator will be added automatically. Use [DataSource.maxFileSizeExceededMessage](classes/DataSource.md#classattr-datasourcemaxfilesizeexceededmessage) to customize validation error message.
 
 In supported browsers (Internet Explorer 10+, Chrome, Firefox, Safari 6+, Opera 11.1+), returns `true` if the file(s) selected by the user are not larger than the field's [DataSourceField.maxFileSize](classes/DataSourceField.md#attr-datasourcefieldmaxfilesize). If not supported by the browser, the validator will always return `true`.
@@ -7573,6 +7573,21 @@ Enum used within the [FilterBuilder](classes/FilterBuilder.md#class-filterbuilde
 ### Groups
 
 - appearance
+
+---
+## Type: ViewName
+
+### Description
+The names of the Calendar views.
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| "day" | day view |
+| "week" | week view |
+| "month" | month view |
+| "timeline" | timeline view |
 
 ---
 ## Type: ViewState
@@ -7889,7 +7904,7 @@ Represents a response to a request to build an [AdvancedCriteria](#object-advanc
 ## Object: BuildHilitesRequest
 
 ### Description
-Represents a request to AI for creation of one or more [Hilite](reference_2.md#object-hilite) objects from a natural language description of hilite criteria and styling to apply.
+Represents a request to AI for creation of one or more [Hilite](#object-hilite) objects from a natural language description of hilite criteria and styling to apply.
 
 ### See Also
 
@@ -7899,7 +7914,7 @@ Represents a request to AI for creation of one or more [Hilite](reference_2.md#o
 ## Object: BuildHilitesResponse
 
 ### Description
-Represents a response from AI to a request to build one or more [Hilite](reference_2.md#object-hilite) objects.
+Represents a response from AI to a request to build one or more [Hilite](#object-hilite) objects.
 
 ### See Also
 
@@ -8095,7 +8110,7 @@ You provide a list of DSRequestModifiers as the [OperationBinding.criteria](clas
 
 A DSRequestModifier consists of a [fieldName](classes/DSRequestModifier.md#attr-dsrequestmodifierfieldname), usually a [value](classes/DSRequestModifier.md#attr-dsrequestmodifiervalue) and possibly an [operator](classes/DSRequestModifier.md#attr-dsrequestmodifieroperator) and [start](classes/DSRequestModifier.md#attr-dsrequestmodifierstart) and/or [end](classes/DSRequestModifier.md#attr-dsrequestmodifierend) values (applicable to advanced criteria only). The value, start and end settings can be static, or - with Power or better licenses - they can be expressions in the Velocity template language, which will be resolved at runtime, immediately before the DSRequest is executed.
 
-In addition to the standard [Velocity variables](kb_topics/velocitySupport.md#kb-topic-velocity-context-variables), special Velocity variables are available for the _value_ field when used in a `<values>` declaration - see [DSRequestModifier.value](classes/DSRequestModifier.md#attr-dsrequestmodifiervalue) for details.
+In addition to the standard [Velocity variables](#kb-topic-velocitysupport), special Velocity variables are available for the _value_ field when used in a `<values>` declaration - see [DSRequestModifier.value](classes/DSRequestModifier.md#attr-dsrequestmodifiervalue) for details.
 
 See below some examples of [OperationBinding.criteria](classes/OperationBinding.md#attr-operationbindingcriteria) declarations:
 
@@ -8271,6 +8286,18 @@ An auto-generated subclass of [TreeNode](reference_2.md#object-treenode) represe
 
 ### Description
 Group Summary.
+
+---
+## Object: Hilite
+
+### Description
+An object representing a user-created and user-modifiable hilite, which can be created and edited with a [HiliteEditor](classes/HiliteEditor.md#class-hiliteeditor) either directly or via the [ListGrid.canEditHilites](classes/ListGrid_1.md#attr-listgridcanedithilites) behavior.
+
+See [hiliting](kb_topics/hiliting.md#kb-topic-hiliting) for an overview.
+
+### Groups
+
+- hiliting
 
 ---
 ## Object: History
@@ -8451,6 +8478,20 @@ Configuration of an HTML list in a [RichTextEditor](classes/RichTextEditor.md#cl
 
 ### Description
 Set of properties to configure the loading indicator displayed by [FileLoader.showLoadingIndicator](classes/FileLoader.md#classmethod-fileloadershowloadingindicator)
+
+---
+## Object: MetricSettings
+
+### Description
+Defines a set of properties that are applicable to [additional value axes](classes/FacetChart.md#attr-facetchartextraaxismetrics) of a [FacetChart](classes/FacetChart.md#class-facetchart).
+
+These properties behave identically to the same-named properties of FacetChart. Two exceptions are the properties [gradationLineProperties](classes/MetricSettings.md#attr-metricsettingsgradationlineproperties) and [gradationZeroLineProperties](classes/MetricSettings.md#attr-metricsettingsgradationzerolineproperties) because they are used to draw tick marks along an extra value axis instead of lines through the chart rectangle. Also the default behavior of the [dataColors](classes/MetricSettings.md#attr-metricsettingsdatacolors) property is different, in that the default is to use unused colors from, and in the order of, the [main data colors array](classes/FacetChart.md#attr-facetchartdatacolors).
+
+The extra value axes that are not positioned directly adjacent to the [chart rect.](classes/FacetChart.md#attr-facetchartshowchartrect) of the FacetChart may additionally have an axis line to connect the gradation tick marks. Whether to draw this line is controlled by the [showAxisLine](classes/MetricSettings.md#attr-metricsettingsshowaxisline) property, and the properties of the line are specified using [axisLineProperties](classes/MetricSettings.md#attr-metricsettingsaxislineproperties). The default is to draw the axis lines whenever the chart rect. is drawn and to draw the line using the same properties as the lines of the chart rect. (for example, lineColor and lineWidth).
+
+The extra value axis charts may be [single- or multi-facet](classes/MetricSettings.md#attr-metricsettingsmultifacet) charts. If the underlying [data](classes/FacetChart.md#attr-facetchartdata) is multi-facet then the extra value axes may use the facet whose values are labelled on the data axis or the facet used to create the legend (the first and second facets, respectively). Both types of charts vary the first facet to get a data series to plot. Multi-facet charts also vary the second facet, but single-facet charts keep the second facet fixed at a constant [FacetValue](#object-facetvalue).
+
+The exact facet value to use for the second facet is specified using the [fixedFacetValue](classes/MetricSettings.md#attr-metricsettingsfixedfacetvalue) property.
 
 ---
 ## Object: MultiWindowSettings

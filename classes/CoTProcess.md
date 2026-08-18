@@ -195,6 +195,14 @@ Primer text shown before the history entries when using [CoTProcess.getPromptPar
 **Flags**: IR
 
 ---
+## Attr: CoTProcess.completedWorkPrimer
+
+### Description
+Primer shown before the compacted older entries when history is rendered.
+
+**Flags**: IR
+
+---
 ## Attr: CoTProcess.noHistory
 
 ### Description
@@ -440,7 +448,15 @@ True if this process is currently paused.
 ## Attr: CoTProcess.historyMaxItems
 
 ### Description
-Maximum number of entries retained in [history](#attr-cotprocesshistory). Older entries are discarded.
+Maximum number of entries retained in memory in [history](#attr-cotprocesshistory). A safety valve against a runaway process rather than a tuning knob: history is what a process uses to know what it has already done, so entries are not dropped to bound the prompt. To control how much of the history reaches the prompt in full, use [CoTProcess.historyDetailItems](#attr-cotprocesshistorydetailitems).
+
+**Flags**: IR
+
+---
+## Attr: CoTProcess.historyResultMaxChars
+
+### Description
+Longest rendered `result` in a compacted history line; longer values are truncated with an ellipsis. Bounds prompt growth from an entry carrying a large encoded structure.
 
 **Flags**: IR
 
@@ -460,6 +476,16 @@ This is useful for "hub-and-spokes" CoTs where many leaf steps return to a singl
 2.  Next element in a [sequence](Process.md#attr-processsequences)
 3.  [this defaultReturnTask](#attr-cotprocessdefaultreturntask)
 4.  Return to the calling task. This is a special CoTTask behavior designed for multiple "hub and spoke" CoTs
+
+**Flags**: IR
+
+---
+## Attr: CoTProcess.historyDetailItems
+
+### Description
+How many of the most recent [history](#attr-cotprocesshistory) entries are rendered in full - with their `intent` and `stepAfter` - when history is included in a prompt. Everything older is rendered as a single `action | result` line each, so nothing is hidden from the process; see [CoTProcess.getCompactHistoryLines](#method-cotprocessgetcompacthistorylines).
+
+Zero means no entry is rendered in full; the compacted lines are still included. To leave history out of a prompt entirely, use [CoTProcess.noHistory](#attr-cotprocessnohistory).
 
 **Flags**: IR
 
@@ -695,6 +721,20 @@ Builds the success result object to post to the async operation. Subclasses over
 `[AsyncOperationResult](#type-asyncoperationresult)` — The success result
 
 ---
+## Method: CoTProcess.getHistoryParts
+
+### Description
+Split [history](#attr-cotprocesshistory) into the recent entries that render in full - [CoTProcess.historyDetailItems](#attr-cotprocesshistorydetailitems) of them - and the older ones that render compacted.
+
+### Returns
+
+`[Object](../reference.md#type-object)` — `{older: Array, recent: Array}`
+
+### Groups
+
+- CoTHistory
+
+---
 ## Method: CoTProcess.handlePaused
 
 ### Description
@@ -807,6 +847,38 @@ Returns structured error information if the process failed.
 `[Object](../reference.md#type-object)` — Error object { type, message, stepIndex }
 
 ---
+## Method: CoTProcess.getCompactHistoryLines
+
+### Description
+Render entries as one `action | result` line each, for the older portion of the history.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| entries | [Array](#type-array) | false | — | entries to compact |
+
+### Returns
+
+`[String](#type-string)` — newline-separated lines, or "" when there are none
+
+### Groups
+
+- CoTHistory
+
+---
+## Method: CoTProcess.getStepsExecuted
+
+### Description
+Returns the number of task-loop iterations executed so far this run — incremented once per element in [CoTProcess.processingElement](#method-cotprocessprocessingelement), before every task's prompt is built, and the same count that [CoTProcess.maxSteps](#attr-cotprocessmaxsteps) enforcement compares against.
+
+Task authors that show step progress to the AI (e.g. AUN's scanUI/componentFocus prompts) must read this rather than maintaining their own counter. A task-local counter that skips incrementing on some outcomes silently understates real budget consumption, so the AI believes it has more room than [CoTProcess.maxSteps](#attr-cotprocessmaxsteps) actually allows and keeps exploring instead of committing to an action — producing an abrupt STEP\_LIMIT\_EXCEEDED with no warning.
+
+### Returns
+
+`[Integer](../reference_2.md#type-integer)` — steps executed so far this process run
+
+---
 ## Method: CoTProcess.asyncGetResult
 
 ### Description
@@ -883,7 +955,7 @@ Cancels this process. Any in-progress AI call is aborted, and the result Promise
 ## Method: CoTProcess.addHistory
 
 ### Description
-Add a history entry to [history](#attr-cotprocesshistory) and, if within limits, mirror to state.history. Honors [CoTProcess.noHistory](#attr-cotprocessnohistory). Entries beyond [CoTProcess.historyMaxItems](#attr-cotprocesshistorymaxitems) are discarded; the state mirror obeys [CoTProcess.stateHistoryMaxItems](#attr-cotprocessstatehistorymaxitems) (or historyMaxItems if null).
+Add a history entry to [history](#attr-cotprocesshistory) and mirror it to state.history. Honors [CoTProcess.noHistory](#attr-cotprocessnohistory). Entries are retained up to [CoTProcess.historyMaxItems](#attr-cotprocesshistorymaxitems); the state mirror obeys [CoTProcess.stateHistoryMaxItems](#attr-cotprocessstatehistorymaxitems) (or historyMaxItems if null). How much of the retained history reaches a prompt in full is [CoTProcess.historyDetailItems](#attr-cotprocesshistorydetailitems).
 
 ### Parameters
 

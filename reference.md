@@ -100,10 +100,6 @@ This is the central API reference for the SmartClient framework.
           - [TranslucentWindow](#class-translucentwindow)
         - [ColumnTree](classes/ColumnTree.md)
         - [FilterBuilder](classes/FilterBuilder.md)
-        - [VStack](#class-vstack)
-          - [BatchUploader](classes/BatchUploader.md)
-          - [AdvancedHiliteEditor](classes/AdvancedHiliteEditor.md)
-          - [MultiFilePicker](#class-multifilepicker)
         - [HLayout](#class-hlayout)
           - [Shuttle](classes/Shuttle.md)
           - [NavigationBar](classes/NavigationBar.md)
@@ -123,6 +119,9 @@ This is the central API reference for the SmartClient framework.
           - [Header](classes/Header.md)
         - [AdaptiveMenu](classes/AdaptiveMenu.md)
         - [Deck](classes/Deck.md)
+        - [VStack](#class-vstack)
+          - [AdvancedHiliteEditor](classes/AdvancedHiliteEditor.md)
+          - [MultiFilePicker](#class-multifilepicker)
         - [ListPropertiesPane](classes/ListPropertiesPane.md)
         - [HStack](#class-hstack)
       - [Calendar](classes/Calendar.md)
@@ -170,6 +169,7 @@ This is the central API reference for the SmartClient framework.
               - [MinimalSection](#class-minimalsection)
             - [RowRangeDisplay](classes/RowRangeDisplay.md)
             - [Placeholder](classes/Placeholder.md)
+            - [HeaderLabel](#class-headerlabel)
           - [RibbonButton](classes/RibbonButton.md)
             - [RibbonMenuButton](#class-ribbonmenubutton)
             - [IconButton](#class-iconbutton)
@@ -325,10 +325,10 @@ This is the central API reference for the SmartClient framework.
     - [NativeCheckboxItem](#class-nativecheckboxitem)
       - [RadioItem](#class-radioitem)
     - [BooleanItem](#class-booleanitem)
-  - [OperationBinding](classes/OperationBinding.md)
   - [RPCManager](classes/RPCManager.md)
   - [ResultSet](classes/ResultSet.md)
     - [FilteredList](classes/FilteredList.md)
+  - [OperationBinding](classes/OperationBinding.md)
   - [Tree](classes/Tree.md)
     - [ResultTree](classes/ResultTree.md)
   - [ValuesManager](classes/ValuesManager.md)
@@ -414,8 +414,8 @@ This is the central API reference for the SmartClient framework.
     - [ShowNotificationTask](classes/ShowNotificationTask.md)
     - [ShowMessageTask](#class-showmessagetask)
     - [ProcessSequence](#class-processsequence)
-    - [StartTransactionTask](#class-starttransactiontask)
     - [EndProcessTask](#class-endprocesstask)
+    - [StartTransactionTask](#class-starttransactiontask)
     - [SendTransactionTask](#class-sendtransactiontask)
     - [UserConfirmationGateway](#class-userconfirmationgateway)
     - [ResetPasswordTask](#class-resetpasswordtask)
@@ -586,7 +586,6 @@ This is the central API reference for the SmartClient framework.
 - [Criteria Editing](kb_topics/criteriaEditing.md)
 - [Content Security Policy (CSP)](kb_topics/cspSupport.md)
 - [cues](#kb-topic-cues)
-- [Custom Querying Overview](kb_topics/customQuerying.md)
 - [Customizing Sass-based Skins](kb_topics/customSassSkins.md)
 - [Customizing Skins](kb_topics/customSkins.md)
 - [Including custom elements in the tab order](kb_topics/customTabElements.md)
@@ -809,7 +808,6 @@ This is the central API reference for the SmartClient framework.
 - [validatorExecution](#kb-topic-validatorexecution)
 - [valueMap](#kb-topic-valuemap)
 - [values](#kb-topic-values)
-- [Velocity context variables](kb_topics/velocitySupport.md)
 - [visibility](kb_topics/visibility.md)
 - [Waiting for asynchronous actions](kb_topics/waitingForAsyncActions.md)
 - [Window Header](#kb-topic-window-header)
@@ -828,18 +826,6 @@ This is the central API reference for the SmartClient framework.
 
 ### Description
 A subclass of Layout that applies a sizing policy along the vertical axis, interpreting percent and "\*" sizes as proportions of the height of the layout. VLayouts will set any members that do not have explicit widths to match the layout.
-
-### See Also
-
-- [Layout.vPolicy](classes/Layout.md#attr-layoutvpolicy)
-
----
-## Class: VStack
-
-*Inherits from:* [Layout](classes/Layout.md#class-layout)
-
-### Description
-A subclass of Layout that simply stacks members on the vertical axis without trying to manage their height. On the horizontal axis, any members that do not have explicit widths will be sized to match the width of the stack.
 
 ### See Also
 
@@ -880,6 +866,18 @@ A subclass of Layout that applies a sizing policy along the horizontal axis, int
 ### Groups
 
 - devTools
+
+---
+## Class: VStack
+
+*Inherits from:* [Layout](classes/Layout.md#class-layout)
+
+### Description
+A subclass of Layout that simply stacks members on the vertical axis without trying to manage their height. On the horizontal axis, any members that do not have explicit widths will be sized to match the width of the stack.
+
+### See Also
+
+- [Layout.vPolicy](classes/Layout.md#attr-layoutvpolicy)
 
 ---
 ## Class: BrowserPlugin
@@ -2156,6 +2154,16 @@ The default pluginsPage is: "http://www.adobe.com/svg/viewer/install/"
 **Flags**: IR
 
 ---
+## Class: HeaderLabel
+
+*Inherits from:* [Label](classes/Label.md#class-label)
+
+### Description
+A [Label](classes/Label.md#class-label) subclass for headings, styled by the "headerItem" [CSS style-series](classes/StatefulCanvas.md#attr-statefulcanvasbasestyle) - the same series [HeaderItem](classes/HeaderItem.md#class-headeritem) uses inside a [DynamicForm](classes/DynamicForm.md#class-dynamicform), so a heading placed above a form matches the headings within it.
+
+Defaults to `width:"100%"` and `height:50`, so a `HeaderLabel` added to a [VLayout](#class-vlayout) spans the layout and reserves the same band for the heading whatever text it carries. Both are ordinary defaults; override either as you would on any [Canvas](classes/Canvas.md#class-canvas).
+
+---
 ## Class: MiniNavControl
 
 *Inherits from:* [StretchImgButton](classes/StretchImgButton.md#class-stretchimgbutton)
@@ -2386,14 +2394,6 @@ Simulate a click on a button (or other [StatefulCanvas](classes/StatefulCanvas.m
 - [Canvas.click](classes/Canvas.md#method-canvasclick)
 
 ---
-## Class: StartTransactionTask
-
-*Inherits from:* [ProcessElement](classes/ProcessElement.md#class-processelement)
-
-### Description
-Starts queuing all DataSource operations so they can be sent to the server all together as a transaction. This is a client-side batching mechanism (RPCManager.startQueue) and has no effect inside an [OperationBinding.process](classes/OperationBinding.md#attr-operationbindingprocess) where operations execute synchronously on the server. For server-side transaction control, use [OperationBinding.autoJoinTransactions](classes/OperationBinding.md#attr-operationbindingautojointransactions) instead.
-
----
 ## Class: IPickTreeItem
 
 *Inherits from:* [PickTreeItem](classes/PickTreeItem.md#class-picktreeitem)
@@ -2496,6 +2496,14 @@ Edit a record currently showing in some other component. The source record is ob
 Component to pull record for editing.
 
 **Flags**: IR
+
+---
+## Class: StartTransactionTask
+
+*Inherits from:* [ProcessElement](classes/ProcessElement.md#class-processelement)
+
+### Description
+Starts queuing all DataSource operations so they can be sent to the server all together as a transaction. This is a client-side batching mechanism (RPCManager.startQueue) and has no effect inside an [OperationBinding.process](classes/OperationBinding.md#attr-operationbindingprocess) where operations execute synchronously on the server. For server-side transaction control, use [OperationBinding.autoJoinTransactions](#attr-operationbindingautojointransactions) instead.
 
 ---
 ## Class: SubmitItem
@@ -5571,29 +5579,6 @@ As an example - an input format of "MDY" would parse "01/02/1999" to Jan 2nd 199
 Note: In addition to these standard formats, a custom date string parser function may be passed directly to [DateUtil.setInputFormat](classes/DateUtil.md#classmethod-dateutilsetinputformat) or passed into [DateUtil.parseInput](classes/DateUtil.md#classmethod-dateutilparseinput) as the inputFormat parameter.
 
 ---
-## Type: DefaultQueryClause
-
-### Description
-The Velocity variable names of the "pieces" of SQL that SmartClient generates to form a complete fetch or update query. You can use these variables in you own custom queries and query clause overrides to build on the SmartClient functionality. See [customQuerying](kb_topics/customQuerying.md#kb-topic-custom-querying-overview) for a full discussion.
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| "$defaultSelectClause" | The column names to select, for a fetch operation only |
-| "$defaultTableClause" | The table name(s) to select from or update |
-| "$defaultAnsiJoinClause" | The [ansi join(s)](classes/DataSource_1.md#attr-datasourceuseansijoins) to join tables to select from, if enabled. |
-| "$defaultWhereClause" | The "where" condition, which will be derived from supplied criteria or a primary key value, depending on the type of operation |
-| "$defaultGroupClause" | For a fetch operation when using the [Server Summaries](kb_topics/serverSummaries.md#kb-topic-server-summaries) feature, "group by" part of aggregated query |
-| "$defaultAfterWhereClause" | For a fetch operation when using the [Server Summaries](kb_topics/serverSummaries.md#kb-topic-server-summaries) feature, "having" part of aggregated query (or outer "where" part if sub-select approach is used, see [OperationBinding.useHavingClause](classes/OperationBinding.md#attr-operationbindingusehavingclause) for more details) |
-| "$defaultValuesClause" | The column names to update and the update values, for an update or add operation |
-| "$defaultOrderClause" | The column names to sort by, for a fetch operation only |
-
-### Groups
-
-- customQuerying
-
----
 ## Type: DetailViewerViewState
 
 ### Description
@@ -5737,7 +5722,7 @@ For DataSources of type "sql" and "hibernate", specifies the kind of inheritance
 | Value | Description |
 |-------|-------------|
 | "full" | Inherit fields by copying them onto the inheriting DataSource's underlying table. When we import a DataSource with this inheritanceMode, we create actual columns for inherited fields on the table we create. With this inheritanceMode, inherited fields are updatable. |
-| "none" | Do not physically inherit fields onto the inheriting DataSource's SQL table. Columns will not be created for inherited fields on import, and all generated SQL operations will exclude inherited fields. However, those fields are still part of the DataSource's schema so you can, for example, write [custom SQL](kb_topics/customQuerying.md#kb-topic-custom-querying-overview) that returns values for the inherited fields, and they will be delivered to the client. |
+| "none" | Do not physically inherit fields onto the inheriting DataSource's SQL table. Columns will not be created for inherited fields on import, and all generated SQL operations will exclude inherited fields. However, those fields are still part of the DataSource's schema so you can, for example, write [custom SQL](#kb-topic-customquerying) that returns values for the inherited fields, and they will be delivered to the client. |
 
 ### Groups
 
@@ -5799,7 +5784,7 @@ What to do if the user hits escape while editing a cell.
 ## Type: EscapingMode
 
 ### Description
-Mode for escaping text values when using [DataSource.recordsAsText](classes/DataSource_2.md#method-datasourcerecordsastext) or [DataSource.recordsFromText](classes/DataSource_1.md#method-datasourcerecordsfromtext).
+Mode for escaping text values when using [DataSource.recordsAsText](classes/DataSource_1.md#method-datasourcerecordsastext) or [DataSource.recordsFromText](classes/DataSource_1.md#method-datasourcerecordsfromtext).
 
 ### Values
 
@@ -6355,7 +6340,7 @@ NOTE: for a field that shows different icons depending on the field value, see [
 [field.iconWidth](classes/ListGridField.md#attr-listgridfieldiconwidth) and related properties configure the size of the icon both in the header and in body cells.
 
 If you want the icon to appear only in body cells and not in the header, set [field.cellIcon](classes/ListGridField.md#attr-listgridfieldcellicon) instead, leaving field.icon null. |
-| "binary" | For viewing, the grid renders a 'view' icon (looking glass) followed by a 'download' icon and then the name of the file is displayed in text. If the user clicks the 'view' icon, a new browser window is opened and the file is streamed to that browser instance, using [DataSource.viewFile](classes/DataSource_1.md#method-datasourceviewfile). For images and other file types with known handlers, the content is typically displayed inline - otherwise the browser will ask the user how to handle the content. If the download icon is clicked, [DataSource.downloadFile](classes/DataSource_2.md#method-datasourcedownloadfile) is used to cause the browser to show a "save" dialog. There is no inline editing mode for this field type. |
+| "binary" | For viewing, the grid renders a 'view' icon (looking glass) followed by a 'download' icon and then the name of the file is displayed in text. If the user clicks the 'view' icon, a new browser window is opened and the file is streamed to that browser instance, using [DataSource.viewFile](classes/DataSource_1.md#method-datasourceviewfile). For images and other file types with known handlers, the content is typically displayed inline - otherwise the browser will ask the user how to handle the content. If the download icon is clicked, [DataSource.downloadFile](classes/DataSource_1.md#method-datasourcedownloadfile) is used to cause the browser to show a "save" dialog. There is no inline editing mode for this field type. |
 | "imageFile" | Same as `binary` |
 | "summary" | Show a calculated summary based on other field values within the current record. See [ListGridField.recordSummaryFunction](classes/ListGridField.md#attr-listgridfieldrecordsummaryfunction) for more information |
 | "any" | Fields of this type can contain any data value and have no default formatting or validation behavior. This is useful as the [parent type](classes/SimpleType.md#attr-simpletypeinheritsfrom) for SimpleTypes where you do not want any of the standard validation or formatting logic to be inherited from the standard built-in types. |
@@ -6680,7 +6665,7 @@ An operator is used as part of a [Criterion](reference_2.md#object-criterion) wh
 
 This list of operators indicates the set of operators built into SmartClient DataSources, which can be used for both client and server-side filtering. Some operators offer case-insensitive versions, prefixed with a lower-case _i_, such as `iContains`. **Note that such operators are intended for text-based searches and are not available to numeric or date fields (integer/float/date/datetime and derivatives), where there is no use for case.**
 
-You can extend the list of operators with [DataSource.addSearchOperator](classes/DataSource_2.md#method-datasourceaddsearchoperator).
+You can extend the list of operators with [DataSource.addSearchOperator](classes/DataSource_1.md#method-datasourceaddsearchoperator).
 
 ### Values
 
@@ -7116,7 +7101,7 @@ Indicates the response format to be used for a REST operation. Is only applicabl
 |-------|-------------|
 | "json" | Indicates that the REST service response is a valid [JSON](https://www.json.org/json-en.html) message. We will parse the response text as JSON, and the resulting object structure can be further processed with [XPaths](classes/DataSource_1.md#attr-datasourcerecordxpath), [templates](classes/DataSource_1.md#attr-datasourceresponsetemplate) and [scripting](classes/DataSource_1.md#attr-datasourcetransformresponsescript) |
 | "xml" | Indicates that the REST service response is an XML message. We will parse the response text as XML, and the resulting object structure can be further processed with XPaths, templates and scripting |
-| "csv" | Indicates that the the REST service response is in delimited text format in the body of the HTTP response. We will parse the response text as delimited flat text data, and the resulting object structure can be further processed with scripting. Note, we do not support XPaths because they do not make sense with flat data, and we also do not support templating of CSV responses. Record-level and field-level transformation scripts, however, are applicable, and field [nativeName](classes/DataSourceField.md#attr-datasourcefieldnativename)s are honored if the CSV text includes a header row
+| "csv" | Indicates that the the REST service response is in delimited text format in the body of the HTTP response. We will parse the response text as delimited flat text data, and the resulting object structure can be further processed with scripting. Note, we do not support XPaths because they do not make sense with flat data, and we also do not support templating of CSV responses. Record-level and field-level transformation scripts, however, are applicable, and field [nativeName](#attr-datasourcefieldnativename)s are honored if the CSV text includes a header row
 
 `RestConnector` only supports a couple options for CSV-based REST services - see [DataSource.csvDelimiter](classes/DataSource_1.md#attr-datasourcecsvdelimiter) and [DataSource.csvQuoteCharacter](classes/DataSource_1.md#attr-datasourcecsvquotecharacter) |
 | "text" | Indicates that REST service response is to be treated simply as a piece of text, with no parsing or other processing attempted. Use this format for services that return simple strings or messages in some non-standard format; you can provide your own parsing logic in a [transformResponseScript](classes/DataSource_1.md#attr-datasourcetransformresponsescript) |
@@ -7397,6 +7382,25 @@ Affects the appearance and behavior of the builtin [SavedSearchEditor](classes/S
 - state
 
 ---
+## Type: SelectedAppearance
+
+### Description
+Appearance when a component is in [edit mode](classes/Canvas.md#method-canvasseteditmode) and is selected.
+
+Modes such as "tintMask" or "outlineMask" create an ["edit mask"](classes/EditProxy.md#attr-editproxyeditmask) that is layered over the selected component, and blocks all normal interaction with the component, so that behaviors like [EditProxy.supportsInlineEdit](classes/EditProxy.md#attr-editproxysupportsinlineedit) can completely take the place of the component's normal interactivity.
+
+"outlineEdges" mode allows normal interaction with the component, which allows the end user to do things like [freeze ListGrid fields](classes/ListGrid_1.md#attr-listgridcanfreezefields), which the [GridEditProxy](classes/GridEditProxy.md#class-grideditproxy) can implement as a ${isc.DocUtils.linkForRef('attr:GridEditProxy.saveFieldFrozenState','persistent change to grid\\'s configuration')}.
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| "tintMask" | editMask on top of the component is updated with [EditProxy.selectedTintColor](classes/EditProxy.md#attr-editproxyselectedtintcolor) and [EditProxy.selectedTintOpacity](classes/EditProxy.md#attr-editproxyselectedtintopacity) |
+| "outlineMask" | editMask on top of the component is updated with [EditProxy.selectedBorder](classes/EditProxy.md#attr-editproxyselectedborder) |
+| "outlineEdges" | MultiAutoChild is created on top of the component. This constructs a border around the component using 4 separate `outlineEdge` components so that interactivity is not blocked. |
+| "none" | no change in appearance. Override [EditProxy.showSelectedAppearance](classes/EditProxy.md#method-editproxyshowselectedappearance) to create a custom appearance. |
+
+---
 ## Type: SelectionAppearance
 
 ### Description
@@ -7454,7 +7458,7 @@ The possible types of sequence handling SmartClient Server can apply. This refer
 |-------|-------------|
 | "jdbcDriver" | Use the JDBC 3.0 API "getGeneratedKeys()" to get the most recent sequence value. Obviously, this is only an option for JDBC 3.0+ drivers. **NOTE: Oracle special case** The Oracle JDBC driver provides a "getGeneratedKeys" method, but that method does not actually return the generated key values; instead, it returns a ROWID, which we must use to fetch the inserted row, and obtain the generated key values from it. For this reason, you may find that "native" is slightly faster to retrieve sequence values than "jdbcDriver" with Oracle (or you may find that it makes no noticeable difference; it depends on too many factors for us to give a concrete recommendation) |
 | "native" | Use a database-specific native technique to obtain the most recent sequence value. The actual technique used varies widely depending on the vagaries of the underlying database (and sometimes the vagaries of particular releases of a database product) |
-| "none" | No automatic attempt is made to retrieve the most recent sequence value. You are expected to handle this by providing a [cacheSyncOperation](classes/OperationBinding.md#attr-operationbindingcachesyncoperation) that is able to return the entire row without needing generated PK values for context. For example, a query that uses `MAX(pk)` would be capable of this. To give a more complex example, say you have a sequence value that is retrieved from a legacy system: you could store that sequence value in the HTTP session and then have your custom `cacheSyncOperation` reference that session attribute in its `WHERE` clause. Also note that cacheSyncOperations, like any other [DataSource operation](classes/OperationBinding.md#class-operationbinding), can be [written in Java](classes/OperationBinding.md#attr-operationbindingserverobject) or any [JSR223-compliant scripting language](classes/OperationBinding.md#attr-operationbindingscript) - you do not have to use SQL |
+| "none" | No automatic attempt is made to retrieve the most recent sequence value. You are expected to handle this by providing a [cacheSyncOperation](#attr-operationbindingcachesyncoperation) that is able to return the entire row without needing generated PK values for context. For example, a query that uses `MAX(pk)` would be capable of this. To give a more complex example, say you have a sequence value that is retrieved from a legacy system: you could store that sequence value in the HTTP session and then have your custom `cacheSyncOperation` reference that session attribute in its `WHERE` clause. Also note that cacheSyncOperations, like any other [DataSource operation](classes/OperationBinding.md#class-operationbinding), can be [written in Java](classes/OperationBinding.md#attr-operationbindingserverobject) or any [JSR223-compliant scripting language](classes/OperationBinding.md#attr-operationbindingscript) - you do not have to use SQL |
 
 ---
 ## Type: ShowDataValuesMode
@@ -7507,7 +7511,7 @@ The technique SmartClient Server's SQL DataSource should use to select a "page" 
 
 | Value | Description |
 |-------|-------------|
-| "sqlLimit" | Specify the paging directly in the SQL query we generate. The way this is done varies considerably from database to database: with some it is a straightforward built-in facility while others require arcane tricks or simply don't support the idea. This is the most efficient method, where available. Note that this strategy is not supported for operations that make use of a [customSQL](classes/OperationBinding.md#attr-operationbindingcustomsql) clause, because it depends upon being able to determine the size of the whole dataset without actually retrieving the whole dataset. Ordinary operations do this by means of an automatically-generated "row count query", but we cannot generate such a query for a `customSQL` operation. |
+| "sqlLimit" | Specify the paging directly in the SQL query we generate. The way this is done varies considerably from database to database: with some it is a straightforward built-in facility while others require arcane tricks or simply don't support the idea. This is the most efficient method, where available. Note that this strategy is not supported for operations that make use of a [customSQL](#attr-operationbindingcustomsql) clause, because it depends upon being able to determine the size of the whole dataset without actually retrieving the whole dataset. Ordinary operations do this by means of an automatically-generated "row count query", but we cannot generate such a query for a `customSQL` operation. |
 | "jdbcScroll" | Implement the paging behavior by use of the `absolute()` method of the JDBC `ResultSet`. |
 | "dropAtServer" | Implement the paging behavior by fetching the entire resultset from the database and dropping any unnecessary rows on the server before returning the data to the client. This approach is extremely inefficient, but also extremely straightforward; it is intended as a fallback option, for situations where the more sophisticated approaches cause problems (a JDBC driver that throws vague exceptions when `absolute()` is called, for example) |
 | "none" | No paging behavior: we always return the entire resultset to the client. |
@@ -7797,7 +7801,7 @@ By default the uniqueness check is not case sensitive but this can be controlled
 
 Validators of this type have [requiresServer](classes/ValidatorDefinition.md#attr-validatordefinitionrequiresserver) set to `true` and do not run on the client.
 
-Note that this validation is generally unnecessary for data coming from a UI. The typical UI uses a [SelectItem](classes/SelectItem.md#class-selectitem) or [ComboBoxItem](classes/ComboBoxItem.md#class-comboboxitem) with an [optionDataSource](classes/FormItem.md#attr-formitemoptiondatasource) for user entry, such that the user can't accidentally enter a related record if that doesn't exist, and a typical SQL schema will include constraints that prevent a bad insert if the user attempts to circumvent the UI. The primary purpose of declaring this validation explicitly is to provide clear, friendly error messages for use cases such as [BatchUploader](classes/BatchUploader.md#class-batchuploader), where values aren't individually chosen by the user. See also the example *Related Records*. |
+Note that this validation is generally unnecessary for data coming from a UI. The typical UI uses a [SelectItem](classes/SelectItem.md#class-selectitem) or [ComboBoxItem](classes/ComboBoxItem.md#class-comboboxitem) with an [optionDataSource](classes/FormItem.md#attr-formitemoptiondatasource) for user entry, such that the user can't accidentally enter a related record if that doesn't exist, and a typical SQL schema will include constraints that prevent a bad insert if the user attempts to circumvent the UI. The primary purpose of declaring this validation explicitly is to provide clear, friendly error messages for use cases such as [BatchUploader](#class-batchuploader), where values aren't individually chosen by the user. See also the example *Related Records*. |
 | required | A non-empty value is required for this field to pass validation.
 
 In the case of a "binary" field, a non-empty file must be uploaded. |

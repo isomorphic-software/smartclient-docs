@@ -69,7 +69,7 @@ Optional [autoChild properties](../kb_topics/autoChildUsage.md#kb-topic-using-au
 ### Description
 Defaults for the generated [ScalarViewer.valueItem](#attr-scalarviewervalueitem).
 
-By default the valueItem will be a StaticTextItem with [titleOrientation:"top"](FormItem.md#attr-formitemtitleorientation).
+By default the valueItem will be a StaticTextItem with [titleOrientation:"top"](FormItem.md#attr-formitemtitleorientation), rendering the value as a large headline under a small caption via the skin's `scalarViewerValue` and `scalarViewerTitle` styles.
 
 **Flags**: IR
 

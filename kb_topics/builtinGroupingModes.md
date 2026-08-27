@@ -19,7 +19,7 @@ These [Grouping modes](../classes/SimpleType.md#attr-simpletypegroupingmodes) ca
 *   month: Group by Month number, all years
 *   quarter: Group by Quarter, all years
 *   year: Group by Year
-*   upcoming: Various specific date groups: Today, Yesterday, Last Week, Last Month, etc
+*   upcoming: Groups by proximity to today rather than by a calendar unit. Dates already past all fall in one "Before" group; the rest fall into "Today", "Tomorrow", "This Week", "Next Week", "This Month", "Next Month", "This Year", "Next Year" or "Later"
 *   date: Group by specific Date
 *   dayOfWeekAndYear: Group by week-day, week and year
 *   dayOfMonthAndYear: Group by month-day, month and year

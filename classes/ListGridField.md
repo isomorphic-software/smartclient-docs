@@ -2182,6 +2182,19 @@ Setting this property causes the field to be AI-generated, and the default value
 
 AI must be enabled in the application. See [AI.isEnabled](AI.md#classmethod-aiisenabled).
 
+**Sorting by an AI-generated field**
+
+The grid can be sorted by an AI-generated field like any other, with the asynchronous behavior common to all generated fields - see [Sorting by a Generated Field](../reference.md#kb-topic-fieldgeneration). Two parts of that behavior are specific to AI-generated fields:
+
+*   a sort that states no direction uses the one AI recommended for the field, captured in [AIFieldRequest.sortDirection](AIFieldRequest.md#attr-aifieldrequestsortdirection) when the field was built, so a "risk score" column sorts worst-first without the user having to ask for descending order.
+*   the sort is refused, and dropped with a notification to the user, when there are more matching records than [DataBoundComponent.aiSortFieldMaxRecords](DataBoundComponent.md#attr-databoundcomponentaisortfieldmaxrecords). A filter change that widens the result set can therefore drop a sort that was working a moment ago.
+
+### See Also
+
+- [ListGrid.refreshAIField](ListGrid_2.md#method-listgridrefreshaifield)
+- [DataBoundComponent.aiSortFieldMaxRecords](DataBoundComponent.md#attr-databoundcomponentaisortfieldmaxrecords)
+- [fieldGeneration](../reference.md#kb-topic-fieldgeneration)
+
 **Flags**: IR
 
 ---

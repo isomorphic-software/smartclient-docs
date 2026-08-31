@@ -416,7 +416,16 @@ To limit fetched data to just the visible fields and fields required for declare
 ## Attr: DataBoundComponent.aiSortFieldMaxRecords
 
 ### Description
-The maximum number of records that can be processed with AIDE sort-via-AI.
+The maximum number of records that can be ordered by an AI-generated field.
+
+Sorting by an AI-generated field means sorting on values AI has produced for every record in the result set, so the cost of the sort grows with the size of that result set. This limit caps it, and applies to every attempt to order records by such a field, not just to the point where the user creates one: it is re-checked whenever the set of matching records changes, so a filter change that brings in more records than this can invalidate a sort that was previously fine. When that happens the sort is dropped and the user is told why, in an auto-dismissing notification carrying [DataBoundComponent.aiSortFieldMaxRecordsMessage](#attr-databoundcomponentaisortfieldmaxrecordsmessage).
+
+AI cannot process more than [DataBoundComponent.aiMaxRecords](#attr-databoundcomponentaimaxrecords) records at all, so the effective limit on an AI sort is the lower of the two.
+
+### See Also
+
+- [DataBoundComponent.aiMaxRecords](#attr-databoundcomponentaimaxrecords)
+- [ListGridField.aiFieldPrompt](ListGridField.md#attr-listgridfieldaifieldprompt)
 
 **Flags**: IRW
 
@@ -1002,6 +1011,20 @@ Has no effect when `recordLimit` is null.
 
 ### Description
 Text for a menu item allowing users to edit a formula field
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IRW
+
+---
+## Attr: DataBoundComponent.aiSortFieldMaxRecordsMessage
+
+### Description
+The message shown when records cannot be ordered by an AI-generated field because there are more of them than [the maximum allowed](#attr-databoundcomponentaisortfieldmaxrecords). It is used both when the user asks for such a sort and when a sort already in place is dropped because the set of matching records grew past the limit.
+
+`${aiSortFieldMaxRecords}` is replaced with the effective limit, which is the lower of [DataBoundComponent.aiSortFieldMaxRecords](#attr-databoundcomponentaisortfieldmaxrecords) and [DataBoundComponent.aiMaxRecords](#attr-databoundcomponentaimaxrecords).
 
 ### Groups
 

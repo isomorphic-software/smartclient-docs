@@ -709,18 +709,6 @@ Note if [ListGrid.showGroupSummaryInHeader](#attr-listgridshowgroupsummaryinhead
 **Flags**: IR
 
 ---
-## Attr: ListGrid.aiSortFieldMaxRecordsMessage
-
-### Description
-The message to show when a user asks the AI to sort more than the [maximum allowed records](DataBoundComponent.md#attr-databoundcomponentaisortfieldmaxrecords).
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
-
----
 ## Attr: ListGrid.groupSummaryRecordProperty
 
 ### Description
@@ -4576,7 +4564,7 @@ Default image to use for the dragTracker when things are dragged within or out o
 ### See Also
 
 - [ListGrid.dragTrackerMode](#attr-listgriddragtrackermode)
-- [ListGrid.getDragTrackerIcon](ListGrid_2.md#method-listgridgetdragtrackericon)
+- [ListGrid.getDragTrackerIcon](ListGrid_3.md#method-listgridgetdragtrackericon)
 
 **Flags**: IRWA
 

@@ -4,6 +4,46 @@
 
 ---
 
+## Method: ListGrid.openGroup
+
+### Description
+Opens the node represented by the "record" parameter, if it is a folder and is not already open. This method only applies to [grouped](ListGrid_2.md#method-listgridgroupby) ListGrids.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| record | [Record](#type-record) | false | — | node to open |
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — true if the node was opened, false if it was not (either because it is not a folder, or because it was already open)
+
+---
+## Method: ListGrid.getDragTrackerIcon
+
+### Description
+Return an icon to display as a drag tracker when the user drags some record.  
+Default implementation: If [ListGridField.valueIcons](ListGridField.md#attr-listgridfieldvalueicons) is specified for the title field of this grid (see [ListGrid.getTitleField](ListGrid_2.md#method-listgridgettitlefield)), the appropriate value icon will be displayed. If no appropriate valueIcon can be found, the icon will be derived from [ListGrid.trackerImage](ListGrid_1.md#attr-listgridtrackerimage).  
+If multiple records are selected, only the first record is examined for valueIcons.
+
+Note: Only called if [ListGrid.dragTrackerMode](ListGrid_1.md#attr-listgriddragtrackermode) is set to `"icon"`.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| records | [Array of ListGridRecord](#type-array-of-listgridrecord) | false | — | Records being dragged |
+
+### Returns
+
+`[String](#type-string)` — Image URL of icon to display
+
+### Groups
+
+- dragTracker
+
+---
 ## Method: ListGrid.getCellAlign
 
 ### Description

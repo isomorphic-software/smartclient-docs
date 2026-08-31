@@ -113,6 +113,8 @@ You can override `headerControls` to change the order of standard controls in th
 
 By embedding a Canvas directly in this list you can add arbitrary additional controls to the header, for example, an additional button (eg return to dock) or a DynamicForm with various kinds of input controls.
 
+Adding any control other than the standard ones listed above switches the default for [Window.canFocusInHeaderButtons](#attr-windowcanfocusinheaderbuttons) to `true`, so that the header is reachable by keyboard.
+
 Note that having added controls to headerControls, you can still call APIs directly on those controls to change their appearance, and you can also show() and hide() them if they should not be shown in some circumstances.
 
 Tip: custom controls need to set layoutAlign:"center" to appear vertically centered.
@@ -565,6 +567,25 @@ You can override the the above properties by calling [Class.changeDefaults](Clas
 **Flags**: IRWA
 
 ---
+## Attr: Window.autoFocus
+
+### Description
+Should this Window place keyboard focus within itself when it is shown?
+
+If not explicitly set, defaults to true for [modal](#attr-windowismodal) Windows, so that the keyboard is usable immediately - a modal Window blocks the rest of the page, so leaving focus outside it would leave the user with nothing to interact with. Non-modal Windows leave focus alone by default.
+
+Focus is placed on the first focusable element in the [Window.body](#attr-windowbody) - not on the first element in the Window's overall tab order, which would be a header control when [Window.canFocusInHeaderButtons](#attr-windowcanfocusinheaderbuttons) is true. The header controls stay reachable by Tab and Shift+Tab; they are just not the initial landing spot. If the body has nothing focusable, focus falls back to the Window as a whole.
+
+Focus already placed within the body - by application code or a subclass focusing a field as the Window is created - is left as it is.
+
+### Groups
+
+- focus
+- modal
+
+**Flags**: IR
+
+---
 ## Attr: Window.closeButton
 
 ### Description
@@ -793,7 +814,13 @@ You can change the class-level bodyDefaults for all Windows by changing this ite
 ## Attr: Window.canFocusInHeaderButtons
 
 ### Description
-If true, the user can give the header buttons focus (see [Window.minimizeButton](#attr-windowminimizebutton), [Window.maximizeButton](#attr-windowmaximizebutton), [Window.restoreButton](#attr-windowrestorebutton) and [Window.closeButton](#attr-windowclosebutton)).
+If true, the user can give the header buttons focus (see [Window.minimizeButton](#attr-windowminimizebutton), [Window.maximizeButton](#attr-windowmaximizebutton), [Window.restoreButton](#attr-windowrestorebutton) and [Window.closeButton](#attr-windowclosebutton)), placing them in the page's tab order in the order they appear in [Window.headerControls](#attr-windowheadercontrols).
+
+If not explicitly set, this defaults to `true` when `headerControls` includes any control other than the standard ones - that is, whenever the application has added its own controls to the header - and `false` otherwise. Custom header controls carry application functionality which generally has no other keyboard route, so the header has to be reachable; once it is, every header button is included, so that keyboard users are offered the same set of controls as mouse users. The standard minimize / maximize / close buttons on their own are conventional window chrome which most users have no need to tab through, and [Escape](#method-windowshoulddismissonescape) already dismisses a Window showing a close button, so by default they stay out of the tab order.
+
+**Tab order.** The header precedes the body, so Shift+Tab from the first focusable element in the body moves back to the last focusable header control, and Tab from the last header control moves forward into the body. In a [modal](#attr-windowismodal) Window focus cannot leave the Window, so tabbing forward past the last focusable element in the body returns to the first header control, and Shift+Tab from the first header control wraps to the end of the body.
+
+Where focus first _lands_ is a separate question from tab order: [Window.autoFocus](#attr-windowautofocus) places initial focus in the body, never on a header control.
 
 ### Groups
 
@@ -1055,6 +1082,23 @@ Text to show in the status bar of the window (if one is visible)
 ### Groups
 
 - appearance
+
+**Flags**: IRW
+
+---
+## Attr: Window.maximizeOnHeaderDoubleClick
+
+### Description
+Should double-clicking the [Window.header](#attr-windowheader) toggle the Window between its normal size and maximized? A Window that is currently [maximized](#attr-windowmaximized) or [minimized](#attr-windowminimized) returns to its normal size; anything else maximizes. This matches the behavior of desktop window managers, and has the same effect as clicking the maximize or restore button - including firing any notification that would let the application cancel the action.
+
+Applies to a Window the user can resize ([Window.canDragResize](#attr-windowcandragresize)), or one showing a [maximize button](#attr-windowshowmaximizebutton). A Window that is neither resizable nor offers a maximize button cannot change size on the user's initiative at all, so its header does not respond to double-clicks.
+
+A `doubleClick` handler the application has installed on the header - via `headerProperties` or by assigning to `window.header.doubleClick` - replaces this behavior rather than competing with it. Set this property to false to leave header double-clicks alone without installing a handler of your own.
+
+### Groups
+
+- windowHeader
+- header
 
 **Flags**: IRW
 

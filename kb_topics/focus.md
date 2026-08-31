@@ -30,6 +30,7 @@ A widget normally receives focus by being clicked on or tabbed to.
 - [FormItem.blurItem](../classes/FormItem.md#method-formitembluritem)
 - [FormItem.focusAfterItem](../classes/FormItem.md#method-formitemfocusafteritem)
 - [Canvas.TAB_INDEX_FLOOR](../classes/Canvas.md#classattr-canvastab_index_floor)
+- [Window.autoFocus](../classes/Window.md#attr-windowautofocus)
 - [Window.canFocusInHeaderButtons](../classes/Window.md#attr-windowcanfocusinheaderbuttons)
 - [Canvas.canFocus](../classes/Canvas.md#attr-canvascanfocus)
 - [Canvas.showFocusOutline](../classes/Canvas.md#attr-canvasshowfocusoutline)

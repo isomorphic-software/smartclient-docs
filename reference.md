@@ -66,10 +66,6 @@ This is the central API reference for the SmartClient framework.
             - [FlatCard](#class-flatcard)
               - [FlatPanel](#class-flatpanel)
           - [DataView](classes/DataView.md)
-        - [SplitPane](classes/SplitPane.md)
-          - [NavPanel](classes/NavPanel.md)
-          - [TriplePane](#class-triplepane)
-        - [PortalLayout](classes/PortalLayout.md)
         - [Window](classes/Window.md)
           - [ColorPicker](classes/ColorPicker.md)
           - [DatabaseBrowser](classes/DatabaseBrowser.md)
@@ -98,6 +94,10 @@ This is the central API reference for the SmartClient framework.
           - [AISortProgressDialog](#class-aisortprogressdialog)
           - [DarkWindow](#class-darkwindow)
           - [TranslucentWindow](#class-translucentwindow)
+        - [SplitPane](classes/SplitPane.md)
+          - [NavPanel](classes/NavPanel.md)
+          - [TriplePane](#class-triplepane)
+        - [PortalLayout](classes/PortalLayout.md)
         - [ColumnTree](classes/ColumnTree.md)
         - [FilterBuilder](classes/FilterBuilder.md)
         - [HLayout](#class-hlayout)
@@ -4950,6 +4950,7 @@ Things related to the header subobject of Window
 - [Window.showCloseButton](classes/Window.md#attr-windowshowclosebutton)
 - [Window.showMinimizeButton](classes/Window.md#attr-windowshowminimizebutton)
 - [Window.showMaximizeButton](classes/Window.md#attr-windowshowmaximizebutton)
+- [Window.maximizeOnHeaderDoubleClick](classes/Window.md#attr-windowmaximizeonheaderdoubleclick)
 
 ---
 ## KB Topic: xmlClientVsServer
@@ -5658,7 +5659,7 @@ When records are being dragged from within a ListGrid, what sort of drag-tracker
 | Value | Description |
 |-------|-------------|
 | "none" | Don't display a drag tracker at all |
-| "icon" | Display an icon to represent the record(s) being dragged. Icon src is derived from [ListGrid.getDragTrackerIcon](classes/ListGrid_2.md#method-listgridgetdragtrackericon) |
+| "icon" | Display an icon to represent the record(s) being dragged. Icon src is derived from [ListGrid.getDragTrackerIcon](classes/ListGrid_3.md#method-listgridgetdragtrackericon) |
 | "title" | Display a title for the record being dragged. Title derived from [ListGrid.getDragTrackerTitle](classes/ListGrid_2.md#method-listgridgetdragtrackertitle) |
 | "record" | Display the entire record being dragged |
 

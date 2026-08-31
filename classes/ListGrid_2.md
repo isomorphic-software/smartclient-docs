@@ -7699,6 +7699,35 @@ Known component dependencies are:
 - [ListGridField.userSummary](ListGridField.md#attr-listgridfieldusersummary)
 
 ---
+## Method: ListGrid.refreshAIField
+
+### Description
+Re-runs AI generation for a field with an [ListGridField.aiFieldPrompt](ListGridField.md#attr-listgridfieldaifieldprompt), discarding the values previously generated for it and requesting new ones.
+
+Generated values are cached, and are regenerated automatically whenever the data they were derived from changes, so refreshing is not needed to pick up edits. This method covers the separate case where the same inputs may legitimately produce a different answer: AI output is not deterministic, so re-running a scoring or grading prompt can return different values and a different resulting order.
+
+The field's `aiFieldRequest` is preserved, so the field keeps the title, type and recommended sort direction established when it was first generated, and no second request to the AI service is needed to rebuild them. Only the generated values are discarded.
+
+Any generated field that depends on this one is refreshed along with it. If the grid is sorted by a refreshed field, it re-sorts once the new values have all arrived - see [Sorting by a Generated Field](../reference.md#kb-topic-fieldgeneration).
+
+Calling this method is what makes new values legitimate: generated fields are otherwise required to produce the same values from the same inputs, and the framework relies on that to know when a cached value is still good. A refresh discards the cached values first, so asking again is a fresh question rather than an inconsistent answer to the old one.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| field | [ListGridField](#type-listgridfield)|[String](#type-string) | false | — | the AI-generated field to refresh |
+
+### Groups
+
+- fieldGeneration
+
+### See Also
+
+- [ListGridField.aiFieldPrompt](ListGridField.md#attr-listgridfieldaifieldprompt)
+- [fieldGeneration](../reference.md#kb-topic-fieldgeneration)
+
+---
 ## Method: ListGrid.getFieldTitle
 
 ### Description
@@ -9144,45 +9173,5 @@ When a row is being actively edited, this grid contributes ``<gridId>`.rowHasCha
 ### Groups
 
 - editing
-
----
-## Method: ListGrid.openGroup
-
-### Description
-Opens the node represented by the "record" parameter, if it is a folder and is not already open. This method only applies to [grouped](#method-listgridgroupby) ListGrids.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| record | [Record](#type-record) | false | — | node to open |
-
-### Returns
-
-`[boolean](../reference.md#type-boolean)` — true if the node was opened, false if it was not (either because it is not a folder, or because it was already open)
-
----
-## Method: ListGrid.getDragTrackerIcon
-
-### Description
-Return an icon to display as a drag tracker when the user drags some record.  
-Default implementation: If [ListGridField.valueIcons](ListGridField.md#attr-listgridfieldvalueicons) is specified for the title field of this grid (see [ListGrid.getTitleField](#method-listgridgettitlefield)), the appropriate value icon will be displayed. If no appropriate valueIcon can be found, the icon will be derived from [ListGrid.trackerImage](ListGrid_1.md#attr-listgridtrackerimage).  
-If multiple records are selected, only the first record is examined for valueIcons.
-
-Note: Only called if [ListGrid.dragTrackerMode](ListGrid_1.md#attr-listgriddragtrackermode) is set to `"icon"`.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| records | [Array of ListGridRecord](#type-array-of-listgridrecord) | false | — | Records being dragged |
-
-### Returns
-
-`[String](#type-string)` — Image URL of icon to display
-
-### Groups
-
-- dragTracker
 
 ---

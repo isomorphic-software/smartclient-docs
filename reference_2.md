@@ -146,7 +146,7 @@ Possible values for [Canvas.backgroundRepeat](classes/Canvas.md#attr-canvasbackg
 ## Type: CacheSyncStrategy
 
 ### Description
-Indicates the strategy to be used for [automatic cache synchronization](kb_topics/cacheSynchronization.md#kb-topic-automatic-cache-synchronization), for a given [DataSource](#attr-datasourcecachesyncstrategy), [OperationBinding](#attr-operationbindingcachesyncstrategy) or [DSRequest](#attr-dsrequestcachesyncstrategy).
+Indicates the strategy to be used for [automatic cache synchronization](kb_topics/cacheSynchronization.md#kb-topic-automatic-cache-synchronization), for a given [DataSource](classes/DataSource.md#attr-datasourcecachesyncstrategy), [OperationBinding](classes/OperationBinding.md#attr-operationbindingcachesyncstrategy) or [DSRequest](classes/DSRequest.md#attr-dsrequestcachesyncstrategy).
 
 ### Values
 
@@ -169,14 +169,14 @@ Note, if no `oldValues` are available and the updated record is [incomplete](cla
 ## Type: CacheSyncTiming
 
 ### Description
-Indicates the timing strategy to be used for [automatic cache synchronization](kb_topics/cacheSynchronization.md#kb-topic-automatic-cache-synchronization), for a given [DataSource](#attr-datasourcecachesynctiming), [OperationBinding](#attr-operationbindingcachesynctiming) or [DSRequest](#attr-dsrequestcachesynctiming). This property controls the "when" of cache synchronization; the "how" is controlled by [CacheSyncStrategy](reference_2.md#type-cachesyncstrategy).
+Indicates the timing strategy to be used for [automatic cache synchronization](kb_topics/cacheSynchronization.md#kb-topic-automatic-cache-synchronization), for a given [DataSource](classes/DataSource.md#attr-datasourcecachesynctiming), [OperationBinding](classes/OperationBinding.md#attr-operationbindingcachesynctiming) or [DSRequest](classes/DSRequest.md#attr-dsrequestcachesynctiming). This property controls the "when" of cache synchronization; the "how" is controlled by [CacheSyncStrategy](reference_2.md#type-cachesyncstrategy).
 
 **NOTE:** `CacheSyncTiming` is intended to allow applications to defer cache synchronization to the point where response data is actually requested; the primary aim of this is to avoid doing cache sync altogether in cases where the response data is never requested. There are some mainstream types of request where we know that the response data unequivocally _is_ required, and for these requests a global default `CacheSyncTiming` will be overridden to "immediate" by SmartClient because there is no point in deferring cache sync when we know for sure it will eventually be needed. Thus, cache sync will always run immediately regardless of the default `cacheSyncTiming` setting in these cases:
 
 *   Requests sent from a client
 *   Server-created requests that copy an `RPCManager` across from a client-originated request, either by specifying it in the `DSRequest` constructor, or by calling `dsRequest.setRPCManager()`
 
-The above only applies to the global default `cacheSyncTiming`: a `cacheSyncTiming` set explicitly at the [DataSource](#attr-datasourcecachesynctiming), [operation](#attr-operationbindingcachesynctiming) or [request](#attr-dsrequestcachesynctiming) level will usually be honored. However, even an explicit `cacheSyncTiming` setting on the DataSource, operation or request will be ignored in situations where it could break a framework feature if we honored it. These situations are:
+The above only applies to the global default `cacheSyncTiming`: a `cacheSyncTiming` set explicitly at the [DataSource](classes/DataSource.md#attr-datasourcecachesynctiming), [operation](classes/OperationBinding.md#attr-operationbindingcachesynctiming) or [request](classes/DSRequest.md#attr-dsrequestcachesynctiming) level will usually be honored. However, even an explicit `cacheSyncTiming` setting on the DataSource, operation or request will be ignored in situations where it could break a framework feature if we honored it. These situations are:
 
 *   Requests where [automatic auditing](classes/DataSource.md#attr-datasourceaudit) is in force
 *   Requests on a dataSource with one-to-many or many-to-many relations, where the update means that SmartClient must update foreign keys on the related dataSources to maintain relation integrity
@@ -544,6 +544,24 @@ Some interfaces, for example the [FieldPicker](classes/FieldPicker.md#class-fiel
 - appearance
 
 ---
+## Type: DisplayNodeType
+
+### Description
+Flag passed to functions as displayNodeType, telling the function whether it should work on folders, leaves or both at once.
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| null/unset | operate on both folders and leaves |
+| "folders" | operate on folders only, ignoring leaves |
+| "leaves" | operate on leaves only, ignoring folders |
+
+### Groups
+
+- ancestry
+
+---
 ## Type: DragAppearance
 
 ### Description
@@ -842,7 +860,7 @@ Method to use for displaying the exported data.
 ## Type: ExportFormat
 
 ### Description
-One of the supported formats for data-export. If you are doing a [client export](classes/ListGrid_2.md#method-listgridexportclientdata) to one of the native spreadsheet formats (xls or ooxml), we also export [hilite-based](#object-hilite) coloring. So, if Hilites are causing a particular cell to be rendered as green text on a blue background, the corresponding cell in the exported spreadsheet document will also be colored that way.
+One of the supported formats for data-export. If you are doing a [client export](classes/ListGrid_2.md#method-listgridexportclientdata) to one of the native spreadsheet formats (xls or ooxml), we also export [hilite-based](reference_2.md#object-hilite) coloring. So, if Hilites are causing a particular cell to be rendered as green text on a blue background, the corresponding cell in the exported spreadsheet document will also be colored that way.
 
 ### Values
 
@@ -1000,7 +1018,7 @@ Note: to declare related but _separate_ objects, as in an "Account" object that 
 | "creator" | Fields of this type are automatically populated by the SmartClient Server with the current authenticated userId as part of "add" operations. By default, fields of this type are hidden and not editable; the server ignores any value that the client sends in a field of this type. (but see also [writeToGeneratedFields](classes/DSRequest.md#attr-dsrequestwritetogeneratedfields)). The notes about type "modifier" also apply to fields of this type. |
 | "creatorTimestamp" | Fields of this type are automatically populated by the SmartClient Server with the current date and time as part of an "add" operation (when the record is first created). By default, fields of this type are hidden and not editable; the server ignores any value that the client sends in a field of this type (but see also [writeToGeneratedFields](classes/DSRequest.md#attr-dsrequestwritetogeneratedfields)). |
 | "password" | Same as "text", but causes [PasswordItem](#class-passworditem) to be used by default for editing (hides typed-in value), and defaults [storeWithhash](classes/DataSourceField.md#attr-datasourcefieldstorewithhash) to "bcrypt" (affecting server operations). |
-| "ntext" | A special field type specifically for use with Unicode data in conjunction with the Microsoft SQL Server database. Field type "ntext" implies the use of [sqlStorageStrategy](#attr-datasourcefieldsqlstoragestrategy) "ntext"; other than that, this type is identical to "text" |
+| "ntext" | A special field type specifically for use with Unicode data in conjunction with the Microsoft SQL Server database. Field type "ntext" implies the use of [sqlStorageStrategy](classes/DataSourceField.md#attr-datasourcefieldsqlstoragestrategy) "ntext"; other than that, this type is identical to "text" |
 | "localeInt" | An integer number with locale-based formatting, e.g. `12,345,678`. See [Localized Number Formatting](#kb-topic-localized-number-formatting) for more info. |
 | "localeFloat" | A float number with locale-based formatting, e.g. `12,345.67`. See [Localized Number Formatting](#kb-topic-localized-number-formatting) for more info. |
 | "localeCurrency" | A float number with locale-based formatting and using currency symbol, e.g. `$12,345.67`. See [Localized Number Formatting](#kb-topic-localized-number-formatting) for more info. |
@@ -1139,6 +1157,21 @@ Property to govern when the 'over' styling is applied to a formItemIcon.
 | "icon" | Show rollover styling and media when the user is over the icon only |
 | "textBox" | Show rollover styling and media when the user is over the icon or over the textBox (or control-table, if present) for this icon. Only has an effect when [FormItem.showOver](classes/FormItem.md#attr-formitemshowover) is true. |
 | "item" | Show rollover styling and media when the user is over any part of the FormItem, including the entire cell within a DynamicForm table containing the item. |
+
+---
+## Type: ImportFormat
+
+### Description
+—
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| "xml" | XML format: same as that expected by the [adminConsole](kb_topics/adminConsole.md#kb-topic-admin-console) for DataSource [test data](kb_topics/testData.md#kb-topic-test-data) |
+| "json" | JSON format: a JSON Array of JSON Objects |
+| "csv" | Comma-separated values, or in general delimiter-separated values based on a provided delimiter. |
+| "auto" | Auto-detect format |
 
 ---
 ## Type: Integer
@@ -1587,6 +1620,28 @@ An identifier passed to [Notify](classes/Notify.md#class-notify) APIs to group r
 - [Notify.addMessage](classes/Notify.md#classmethod-notifyaddmessage)
 - [Notify.configureMessages](classes/Notify.md#classmethod-notifyconfiguremessages)
 - [Notify.dismissMessage](classes/Notify.md#classmethod-notifydismissmessage)
+
+---
+## Type: OperatorValueType
+
+### Description
+Indicates the kind of value expected in a [Criterion](reference_2.md#object-criterion) that uses this operator.
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| "fieldType" | [Criterion.value](classes/Criterion.md#attr-criterionvalue) should contain a value of the same type as the field. |
+| "fieldName" | [Criterion.value](classes/Criterion.md#attr-criterionvalue) should be the name of another field in the record |
+| "none" | no criterion.value or other setting required (used for operators like isBlank or isNull). |
+| "criteria" | [Criterion.criteria](classes/Criterion.md#attr-criterioncriteria) should be an Array of criteria (used for logical operators like "and"). |
+| "valueRange" | [Criterion.start](classes/Criterion.md#attr-criterionstart) and [Criterion.end](classes/Criterion.md#attr-criterionend) should contain start and end values, both of the same type as the field. |
+| "valueSet" | [Criterion.value](classes/Criterion.md#attr-criterionvalue) should contain an Array of valid field values. |
+| "custom" | [Criterion.value](classes/Criterion.md#attr-criterionvalue) should contain a value which is not necessarily the same type as the field (used for regexp and similar operators). [Operator.editorType](classes/Operator.md#attr-operatoreditortype) can be specified as a FormItem to use to enter a value for the criterion. |
+
+### Groups
+
+- advancedFilter
 
 ---
 ## Type: Orientation
@@ -2190,6 +2245,24 @@ An enum of time-units available for use with the [RelativeDateItem](classes/Rela
 | "year" | a year time-unit |
 
 ---
+## Type: TitleAlign
+
+### Description
+Supported positioning of the chart Title.
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| "left" | Align to the left of the chart title header |
+| "center" | Align centrally in the chart title header |
+| "right" | Align to the right of the chart title header |
+
+### Groups
+
+- chartTitle
+
+---
 ## Type: TitleOrientation
 
 ### Description
@@ -2226,7 +2299,7 @@ An object containing the open state for a treeGrid. Note that this object is not
 ## Type: UnionFieldsStrategy
 
 ### Description
-The strategy used when auto-deriving the fields that make up a UnionDataSource, if no [unionFields](#attr-datasourceunionfields) setting is provided.
+The strategy used when auto-deriving the fields that make up a UnionDataSource, if no [unionFields](classes/DataSource.md#attr-datasourceunionfields) setting is provided.
 
 ### Values
 
@@ -2238,7 +2311,7 @@ The strategy used when auto-deriving the fields that make up a UnionDataSource, 
 
 ### See Also
 
-- [DataSource.unionFields](#attr-datasourceunionfields)
+- [DataSource.unionFields](classes/DataSource.md#attr-datasourceunionfields)
 
 ---
 ## Type: URL
@@ -2282,13 +2355,28 @@ See also the [SmartClient Architecture Overview](kb_topics/smartArchitecture.md#
 ## Type: VelocityExpression
 
 ### Description
-An expression in the [Velocity Template Language](http://velocity.apache.org/engine/releases/velocity-1.7/user-guide.html) (VTL). For more information on SmartClient's Velocity support, see [Velocity support](#kb-topic-velocitysupport).
+An expression in the [Velocity Template Language](http://velocity.apache.org/engine/releases/velocity-1.7/user-guide.html) (VTL). For more information on SmartClient's Velocity support, see [Velocity support](kb_topics/velocitySupport.md#kb-topic-velocity-context-variables).
 
 Note that a `VelocityExpression` must often evaluate to a particular type of value to be useful. For example, [DataSource.requires](classes/DataSource.md#attr-datasourcerequires) must evaluate to true or false (Boolean objects or strings containing those two words), and [Mail.messageData](classes/Mail.md#attr-mailmessagedata) must evaluate to a Java `Map` object, or a Java `List` containing only `Map`s.
 
 ### Groups
 
 - velocitySupport
+
+---
+## Type: ViewName
+
+### Description
+The names of the Calendar views.
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| "day" | day view |
+| "week" | week view |
+| "month" | month view |
+| "timeline" | timeline view |
 
 ---
 ## Type: Visibility
@@ -2628,6 +2716,18 @@ In addition to the properties documented here, all other properties specified on
 - headerSpan
 
 ---
+## Object: Hilite
+
+### Description
+An object representing a user-created and user-modifiable hilite, which can be created and edited with a [HiliteEditor](classes/HiliteEditor.md#class-hiliteeditor) either directly or via the [ListGrid.canEditHilites](classes/ListGrid_1.md#attr-listgridcanedithilites) behavior.
+
+See [hiliting](kb_topics/hiliting.md#kb-topic-hiliting) for an overview.
+
+### Groups
+
+- hiliting
+
+---
 ## Object: HiliteViaAIResult
 
 ### Description
@@ -2751,6 +2851,20 @@ As another option, here's a sample of a Menu in [Component XML](kb_topics/compon
 
 ### Description
 Opaque message identifier for messages shown by the [Notify](classes/Notify.md#class-notify) class
+
+---
+## Object: MetricSettings
+
+### Description
+Defines a set of properties that are applicable to [additional value axes](classes/FacetChart.md#attr-facetchartextraaxismetrics) of a [FacetChart](classes/FacetChart.md#class-facetchart).
+
+These properties behave identically to the same-named properties of FacetChart. Two exceptions are the properties [gradationLineProperties](classes/MetricSettings.md#attr-metricsettingsgradationlineproperties) and [gradationZeroLineProperties](classes/MetricSettings.md#attr-metricsettingsgradationzerolineproperties) because they are used to draw tick marks along an extra value axis instead of lines through the chart rectangle. Also the default behavior of the [dataColors](classes/MetricSettings.md#attr-metricsettingsdatacolors) property is different, in that the default is to use unused colors from, and in the order of, the [main data colors array](classes/FacetChart.md#attr-facetchartdatacolors).
+
+The extra value axes that are not positioned directly adjacent to the [chart rect.](classes/FacetChart.md#attr-facetchartshowchartrect) of the FacetChart may additionally have an axis line to connect the gradation tick marks. Whether to draw this line is controlled by the [showAxisLine](classes/MetricSettings.md#attr-metricsettingsshowaxisline) property, and the properties of the line are specified using [axisLineProperties](classes/MetricSettings.md#attr-metricsettingsaxislineproperties). The default is to draw the axis lines whenever the chart rect. is drawn and to draw the line using the same properties as the lines of the chart rect. (for example, lineColor and lineWidth).
+
+The extra value axis charts may be [single- or multi-facet](classes/MetricSettings.md#attr-metricsettingsmultifacet) charts. If the underlying [data](classes/FacetChart.md#attr-facetchartdata) is multi-facet then the extra value axes may use the facet whose values are labelled on the data axis or the facet used to create the legend (the first and second facets, respectively). Both types of charts vary the first facet to get a data series to plot. Multi-facet charts also vary the second facet, but single-facet charts keep the second facet fixed at a constant [FacetValue](#object-facetvalue).
+
+The exact facet value to use for the second facet is specified using the [fixedFacetValue](classes/MetricSettings.md#attr-metricsettingsfixedfacetvalue) property.
 
 ---
 ## Object: MockDSExportSettings

@@ -417,7 +417,7 @@ The following default class declarations (also available as "loading.css" under 
  }
  .loadingIndicatorText {
    color: #282828;
-   font-family: calibri, Sans-Serif;
+   font-family: Carlito, Sans-Serif;
    font-size: 12px;
    padding: 8px;
  }

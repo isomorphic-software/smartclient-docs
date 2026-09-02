@@ -4536,22 +4536,6 @@ When using [ListGrid.autoFitFieldWidths](#attr-listgridautofitfieldwidths), padd
 **Flags**: IR
 
 ---
-## Attr: ListGrid.canGroupBy
-
-### Description
-If false, grouping via context menu will be disabled.
-
-### Groups
-
-- grouping
-
-### See Also
-
-- [ListGrid.groupBy](ListGrid_2.md#method-listgridgroupby)
-
-**Flags**: IRW
-
----
 ## Attr: ListGrid.asyncErrorCellValue
 
 ### Description
@@ -4566,6 +4550,22 @@ This is the grid-wide setting. [ListGridField.asyncErrorCellValue](ListGridField
 ### See Also
 
 - [DataBoundComponent.isValuePendingAsyncOrAsyncError](DataBoundComponent.md#method-databoundcomponentisvaluependingasyncorasyncerror)
+
+**Flags**: IRW
+
+---
+## Attr: ListGrid.canGroupBy
+
+### Description
+If false, grouping via context menu will be disabled.
+
+### Groups
+
+- grouping
+
+### See Also
+
+- [ListGrid.groupBy](ListGrid_2.md#method-listgridgroupby)
 
 **Flags**: IRW
 

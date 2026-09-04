@@ -66,25 +66,6 @@ An axis or "side" of a table.
 | "column" | Column axis |
 
 ---
-## Type: BackgroundRepeat
-
-### Description
-Possible values for [Canvas.backgroundRepeat](classes/Canvas.md#attr-canvasbackgroundrepeat).
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| Canvas.REPEAT | Tile the background image horizontally and vertically. |
-| Canvas.NO_REPEAT | Don't tile the background image at all. |
-| Canvas.REPEAT_X | Repeat the background image horizontally but not vertically. |
-| Canvas.REPEAT_Y | Repeat the background image vertically but not horizontally. |
-
-### Groups
-
-- appearance
-
----
 ## Type: CSSColor
 
 ### Description
@@ -361,20 +342,6 @@ The style of line-breaks to use when exporting data
 | "dos" | Use DOS-style line-breaks (both CR & LF) |
 
 ---
-## Type: LogicalOperator
-
-### Description
-Operators that can evaluate a set of criteria and produce a combined result.
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| "and" | true if all criteria are true |
-| "or" | true if any criteria are true |
-| "not" | true if all criteria are false |
-
----
 ## Type: MockDataFormat
 
 ### Description
@@ -645,20 +612,6 @@ Do we display an arrow for the sorted field ?
 
 - sorting
 - appearance
-
----
-## Type: TieMode
-
-### Description
-what to do if there is more than one possible childrenProperty when using scanMode "branch" or "level" "node": continue, but pick childrenProperty on a per-node basis (will detect mixed) "highest": continue, picking the childrenProperty that occurred most as the single choice "stop": if there's a tie, stop at this level (assume no further children)
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| "node" | continue, but pick childrenProperty on a per-node basis (will detect mixed) |
-| "highest" | continue, picking the childrenProperty that occurred most as the single choice |
-| "stop" | if there's a tie, stop at this level (assume no further children) |
 
 ---
 ## Type: TreeGridViewState

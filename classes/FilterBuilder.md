@@ -159,7 +159,7 @@ If set to false and showing clause [remove buttons](#attr-filterbuildershowremov
 ## Attr: FilterBuilder.subClauseButton
 
 ### Description
-Button allowing the user to add subclauses grouped by a [LogicalOperator](../reference_2.md#type-logicaloperator).
+Button allowing the user to add subclauses grouped by a [LogicalOperator](../reference.md#type-logicaloperator).
 
 **Flags**: IR
 
@@ -251,7 +251,7 @@ AutoChild for the [FormItem](FormItem.md#class-formitem) that allows a user to s
 ## Attr: FilterBuilder.radioOperatorForm
 
 ### Description
-With [TopOperatorAppearance](../reference.md#type-topoperatorappearance):"radio", form that appears above the stack of clauses and allows picking the [LogicalOperator](../reference_2.md#type-logicaloperator) for the overall FilterBuilder.
+With [TopOperatorAppearance](../reference.md#type-topoperatorappearance):"radio", form that appears above the stack of clauses and allows picking the [LogicalOperator](../reference.md#type-logicaloperator) for the overall FilterBuilder.
 
 By default, consists of a simple RadioGroupItem.
 
@@ -490,7 +490,7 @@ If set, a button will be shown underneath all current clauses allowing a new cla
 ## Attr: FilterBuilder.topOperatorForm
 
 ### Description
-With [TopOperatorAppearance](../reference.md#type-topoperatorappearance) "bracket" and "inline", a form that appears to the left of the stack of clauses and allows picking the [LogicalOperator](../reference_2.md#type-logicaloperator) for the overall FilterBuilder (or for that specific FilterClause, in the case of "inline")
+With [TopOperatorAppearance](../reference.md#type-topoperatorappearance) "bracket" and "inline", a form that appears to the left of the stack of clauses and allows picking the [LogicalOperator](../reference.md#type-logicaloperator) for the overall FilterBuilder (or for that specific FilterClause, in the case of "inline")
 
 By default, consists of a CheckboxItem if [FilterBuilder.showSelectionCheckbox](#attr-filterbuildershowselectioncheckbox) is true, and a simple SelectItem containing the available logical operators.
 
@@ -792,7 +792,7 @@ Programmatically change the [FilterBuilder.topOperator](#attr-filterbuildertopop
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| operator | [LogicalOperator](../reference_2.md#type-logicaloperator) | false | — | new top-level operator |
+| operator | [LogicalOperator](../reference.md#type-logicaloperator) | false | — | new top-level operator |
 
 ---
 ## Method: FilterBuilder.addClause

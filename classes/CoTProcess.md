@@ -113,6 +113,18 @@ A per-step `delay` field on a captured bag entry, when set to a number, override
 **Flags**: IRW
 
 ---
+## ClassAttr: CoTProcess.aiRequestFailedMessage
+
+### Description
+Message recorded as the [failure message](../reference.md#attr-processfailuremessage) when a task's AI request fails and the process ends through [failed()](Process.md#method-processfailed). The engine's own error text has already been shown to the user by the standard request error handling at that point; this is the summary a consumer's own failure UI shows alongside it.
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IRW
+
+---
 ## Attr: CoTProcess.promptModeMinimal
 
 ### Description

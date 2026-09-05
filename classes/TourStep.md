@@ -67,7 +67,7 @@ If unset this will be derived from [Tour.allowDropOnDescendants](Tour.md#attr-to
 ## Attr: TourStep.showInputValidationMessage
 
 ### Description
-Should [inputValidationNotifyMessage](#attr-tourstepinputvalidationnotifymessage) be shown as detailed in [TourInputValidationMode](../reference_2.md#type-tourinputvalidationmode)? Defaults from [Tour.showInputValidationMessage](Tour.md#attr-tourshowinputvalidationmessage) if not set.
+Should [inputValidationNotifyMessage](#attr-tourstepinputvalidationnotifymessage) be shown as detailed in [TourInputValidationMode](../reference.md#type-tourinputvalidationmode)? Defaults from [Tour.showInputValidationMessage](Tour.md#attr-tourshowinputvalidationmessage) if not set.
 
 If set to `false` reporting messages to the user are suppressed and therefore [Tour.notifyValidationMessage](Tour.md#method-tournotifyvalidationmessage) will not be called.
 

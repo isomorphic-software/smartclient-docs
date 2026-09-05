@@ -669,7 +669,7 @@ Title for the _Tour ID_ field in the TourComplete dialog.
 ## Attr: Tour.showInputValidationMessage
 
 ### Description
-Should [TourStep.inputValidationNotifyMessage](TourStep.md#attr-tourstepinputvalidationnotifymessage) be shown as detailed in [TourInputValidationMode](../reference_2.md#type-tourinputvalidationmode) for the entire tour? Set to `false` to suppress reporting messages to the user. [notifyValidationMessage](#method-tournotifyvalidationmessage) will not be called.
+Should [TourStep.inputValidationNotifyMessage](TourStep.md#attr-tourstepinputvalidationnotifymessage) be shown as detailed in [TourInputValidationMode](../reference.md#type-tourinputvalidationmode) for the entire tour? Set to `false` to suppress reporting messages to the user. [notifyValidationMessage](#method-tournotifyvalidationmessage) will not be called.
 
 This setting can be overridden for individual [tourSteps](TourStep.md#class-tourstep).
 

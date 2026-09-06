@@ -396,7 +396,7 @@ Callback fired with the [PaletteNodes](../reference.md#object-palettenode) obtai
 ## Method: Callbacks.HasFileCallback
 
 ### Description
-A [Callback](../reference.md#type-callback) fired when [DataSource.hasFile](DataSource_1.md#method-datasourcehasfile) completes.
+A [Callback](../reference.md#type-callback) fired when [DataSource.hasFile](DataSource_2.md#method-datasourcehasfile) completes.
 
 ### Parameters
 

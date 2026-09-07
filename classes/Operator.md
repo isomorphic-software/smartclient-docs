@@ -23,7 +23,7 @@ Setting hidden:true means the operator can be used in a programmatic search, for
 ### Description
 List of types that this Operator is valid for.
 
-If omitted, the operator is assumed to be valid for all FieldTypes unless a list of FieldTypes is passed to [DataSource.addSearchOperator](DataSource_2.md#method-datasourceaddsearchoperator).
+If omitted, the operator is assumed to be valid for all FieldTypes unless a list of FieldTypes is passed to [DataSource.addSearchOperator](DataSource_1.md#method-datasourceaddsearchoperator).
 
 ### Groups
 

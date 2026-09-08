@@ -3851,7 +3851,7 @@ Local fields (fields defined in this DataSource) are added to inherited fields t
 
 The default order of the combined fields is new local fields first (including any fields present in the parent DataSource which the local DataSource re-declares), then parent fields. You can set [DataSource.useParentFieldOrder](#attr-datasourceuseparentfieldorder) to instead use the parent's field order, with new local fields appearing last. You can set [DataSource.showLocalFieldsOnly](#attr-datasourceshowlocalfieldsonly) to have all non-local fields hidden.
 
-Note that **only fields are inherited** - other properties such as dataURL and dataFormat are not. You can use ordinary inheritance, that is, creating a subclass of DataSource, in order to share properties such as dataURL across a series of DataSources that also inherit fields from each other via `inheritsFrom`.
+Note that **only fields are inherited** - other properties such as dataURL, dataFormat, and [operationBindings](#attr-datasourceoperationbindings) are not. You can use ordinary inheritance, that is, creating a subclass of DataSource, in order to share properties such as dataURL across a series of DataSources that also inherit fields from each other via `inheritsFrom`.
 
 This feature can be used for:
 

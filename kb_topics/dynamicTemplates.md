@@ -9,7 +9,7 @@
 ### Description
 Dynamic templates let SmartClient property values include {expr} expression delimiters that are re-evaluated when their inputs change. The expression `{Customer.name}` inside a property value resolves the path `Customer.name` against the rules engine's ruleScope and substitutes its current value into the surrounding string. When the underlying ruleScope value changes, the property is re-evaluated and the widget's setter is called with the new value.
 
-Dynamic templates are syntactic sugar over the existing [Class.dynamicProperties](../classes/Class.md#attr-classdynamicproperties) mechanism: each template compiles to a DynamicProperty whose formula is the template expression. No new reactive runtime is introduced.
+Dynamic templates are syntactic sugar over the existing [Dynamic Properties](dynamicProperties.md#kb-topic-dynamic-properties) mechanism: each template compiles to a [DynamicProperty](../reference_2.md#object-dynamicproperty) whose formula is the template expression. No new reactive runtime is introduced.
 
 #### {expr} syntax
 Expressions are wrapped in braces:
@@ -34,7 +34,7 @@ Properties typed [DynString](../reference.md#type-dynstring) or [DynHTMLString](
 Templates compile to JavaScript via `new Function()`, so the trust level of the template source matters. For developer-authored templates that appear directly in source code, full expression mode is the default and any JavaScript expression is allowed. For templates that originate from untrusted sources (end-user preferences, database-stored configuration, external feeds), use [isc.dynRestricted](../classes/isc.md#staticmethod-iscdynrestricted), or set [dynRestricted:true](../classes/Class.md#classattr-classdynrestricted) on the instance to compile in restricted mode — only dot expressions, ternaries, and literal values are permitted. Function calls, assignment, bracket access, and similar constructs are rejected with a development-mode warning.
 
 #### Disabling detection
-Detection runs once per property value at create() time and is cheap, but for projects that prefer the verbose [Class.dynamicProperties](../classes/Class.md#attr-classdynamicproperties) syntax or need backward compatibility during incremental adoption, detection can be turned off at three levels:
+Detection runs once per property value at create() time and is cheap, but for projects that prefer the verbose [Dynamic Properties](dynamicProperties.md#kb-topic-dynamic-properties) syntax or need backward compatibility during incremental adoption, detection can be turned off at three levels:
 
 *   `isc.dynamicTemplates = false` — system-wide; the detection loop is skipped entirely
 *   [Class.useDynamicTemplates = false](../classes/Class.md#classattr-classusedynamictemplates) — per class, applies to all instances
@@ -42,5 +42,11 @@ Detection runs once per property value at create() time and is cheap, but for pr
 
 #### See also
 [reactJSXIntegration](reactJSXIntegration.md#kb-topic-react-jsx-integration) — the same {expr} syntax in JSX string props binds to React state instead of ruleScope, so application markup is portable between React and non-React builds.
+
+[Dynamic Properties](dynamicProperties.md#kb-topic-dynamic-properties) — the underlying mechanism that every compiled template ultimately runs through.
+
+### See Also
+
+- [dynamicProperties](dynamicProperties.md#kb-topic-dynamic-properties)
 
 ---

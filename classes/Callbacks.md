@@ -393,6 +393,18 @@ Callback fired with the [PaletteNodes](../reference.md#object-palettenode) obtai
 | paletteNodes | [Array of PaletteNode](#type-array-of-palettenode) | false | — | an array of PaletteNodes |
 
 ---
+## Method: Callbacks.WorkflowBuilderResultCallback
+
+### Description
+Callback called with the result of [AI.buildWorkflowStep](AI.md#classmethod-aibuildworkflowstep).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| result | [WorkflowBuilderCoTResult](#type-workflowbuildercotresult) | false | — | The result. |
+
+---
 ## Method: Callbacks.HasFileCallback
 
 ### Description

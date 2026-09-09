@@ -2014,7 +2014,7 @@ When set to `true`, this Canvas will not be redrawn while the flag remains set: 
 
 Used when an external system — a React root, a Web Component, or any other engine that owns the Canvas's inner DOM — needs to be the sole writer of `innerHTML`, since a SmartClient redraw replaces `innerHTML` and would destroy any externally-managed DOM along with any user state held within it (input focus, scroll position, etc.).
 
-To force a fresh render after the external content has been torn down, either clear `suppressRedraw` and call `redraw()`, or ask the external owner to rebuild its content; for a React-managed Canvas, see [React JSX integration](#kb-topic-reactjsxintegration).
+To force a fresh render after the external content has been torn down, either clear `suppressRedraw` and call `redraw()`, or ask the external owner to rebuild its content; for a React-managed Canvas, see [React JSX integration](../kb_topics/reactJSXIntegration.md#kb-topic-react-jsx-integration).
 
 ### Groups
 
@@ -4335,7 +4335,7 @@ Standard snapTo behavior will attach the outer edge of the widget to the parent 
 ## Attr: Canvas.ruleScope
 
 ### Description
-[Canvas.ID](#attr-canvasid) of the component that gathers the context for evaluation of criteria-based rules specified by properties such as [FormItem.visibleWhen](FormItem.md#attr-formitemvisiblewhen), [Dynamic Properties](Class.md#attr-classdynamicproperties), and [dynamicCriteria](../kb_topics/dynamicCriteria.md#kb-topic-dynamiccriteria) such as [ListGrid.initialCriteria](ListGrid_1.md#attr-listgridinitialcriteria).
+[Canvas.ID](#attr-canvasid) of the component that gathers the context for evaluation of criteria-based rules specified by properties such as [FormItem.visibleWhen](FormItem.md#attr-formitemvisiblewhen), [Dynamic Properties](../kb_topics/dynamicProperties.md#kb-topic-dynamic-properties), and [dynamicCriteria](../kb_topics/dynamicCriteria.md#kb-topic-dynamiccriteria) such as [ListGrid.initialCriteria](ListGrid_1.md#attr-listgridinitialcriteria).
 
 If `ruleScope` is not specified, this component will search through its [Canvas.parentCanvas](#attr-canvasparentcanvas) chain until it either reaches the top or reaches a parent marked [Canvas.isRuleScope](#attr-canvasisrulescope). This means that typically, `ruleScope` does not have to be explicitly specified, since components that want to reference each other often have the same top-level parent (eg, they are part of the same screen). However, you would need to specify `ruleScope` in scenarios such as a modal Window that wants to reference values in the component it was launched from.
 
@@ -4347,7 +4347,7 @@ By default, the rule context contains data as follows:
 
 *   any `DataBoundComponent` or ValuesManager that has a DataSource contributes the values of the selected record or record being edited under the ID of the DataSource. For any collision an editable display (such as a form or editable grid) wins over a static display (such as a non-editable grid with a selection.) Hidden or cleared components have lowest priority even if editable. For two editable components the first becomes the contributor.
 *   any ListGrid or other component that manages a selection and has been assigned an explicit [Canvas.ID](#attr-canvasid) will contribute the values of the selected record under ``<componentId>`.selectedRecord`, the values of the grid summary record under ``<componentId>`.summaryRecord`, and also contributes 3 flags for checking for selection: `anySelected`, `multiSelected`, `numSelected`. The selected record can also be identified by row number: ``<componentId>`.selectedRowNum` which also applies to the edit row since editing implies selection by default.
-*   any DynamicForm or other component that edits values and has been assigned an explicit [Canvas.ID](#attr-canvasid) contributes its current values under ``<componentId>`.values`, and contributes a flag `hasChanges`.
+*   any DynamicForm, editable ListGrid, or other component that edits values and has been assigned an explicit [Canvas.ID](#attr-canvasid) contributes its current values under ``<componentId>`.values`, and contributes a flag `hasChanges`. For a ListGrid, `hasChanges` reflects [ListGrid.hasChanges](ListGrid_2.md#method-listgridhaschanges): true when any row has unsaved edits or is [marked as removed](ListGrid_2.md#method-listgridmarkrecordremoved), across all rows. An editable ListGrid also contributes ``<componentId>`.rowHasChanges`, reflecting [ListGrid.rowHasChanges](ListGrid_2.md#method-listgridrowhaschanges) for the row currently being edited — true when that row alone has unsaved field edits (does not include rows only marked as removed), null when no row is being edited. Use `hasChanges` to enable a "Save All" control; use `rowHasChanges` to enable a "Save Row" control.
 *   any DynamicForm or ListGrid that has been assigned an explicit [Canvas.ID](#attr-canvasid) contributes a value ``<componentId>`.focusField`. When present the value indicates the component has focus along with the name of the field that has focus. Its absense indicates the component does not have focus at all.
 *   any ListGrid that has been assigned an explicit [Canvas.ID](#attr-canvasid) contributes a flag `isGrouped` under ``<componentId>``.
 *   any DataSource included in a [DataContext](../reference_2.md#object-datacontext) or [Canvas.testDataContext](#attr-canvastestdatacontext) that is being used for this ruleScope contributes the values into the `dataContext` section of the ruleContext (ex. `dataContext.Customer`) so the values do not conflict with normal DataSource contributions. Note that the `dataContext` is immutable so only the first contribution is actually saved.
@@ -4399,6 +4399,8 @@ The default rule context available from [Canvas.getRuleContext](#method-canvasge
   itemGrid.anySelected : true,
   itemGrid.multiSelected : false,
   itemGrid.numSelected : 1,
+  itemGrid.hasChanges : false,  // true when any row has unsaved edits or is marked removed
+  itemGrid.rowHasChanges : null,  // true while the currently-edited row has field changes
   itemGrid.isGrouped : false,
   device : {
      isPhone : false,
@@ -4547,6 +4549,11 @@ Here the isc\_SearchForm\_0 provides rule context changes as part of a 'transact
  15:16:44.228:TMR2:DEBUG:ruleContext:isc_ListGrid_0:provideRuleContext [ruleScope: isc_DataView_0, dbcID: isc_ListGrid_0]: orderDetailGrid.dataLoading = null
  
 ```
+
+### See Also
+
+- [dynamicProperties](../kb_topics/dynamicProperties.md#kb-topic-dynamic-properties)
+- [dynamicCriteria](../kb_topics/dynamicCriteria.md#kb-topic-dynamiccriteria)
 
 **Flags**: IR
 
@@ -9426,6 +9433,11 @@ Note that DataBoundComponents automatically contribute to the ruleContext as des
 | data | [Any](#type-any) | false | — | data to contribute to rule context |
 | dbc | [DataBoundComponent](#type-databoundcomponent)|[DataSource](#type-datasource) | true | — | dataBoundComponent contributing to ruleContext or DataSource defining the provided data type |
 | fieldName | [String](#type-string) | true | — | field name within DataSource defining the data type for a singular value (i.e. not a Record and not an Array of Records) |
+
+### See Also
+
+- [DynamicProperty.dataPath](DynamicProperty.md#attr-dynamicpropertydatapath)
+- [Criterion.fieldName](Criterion.md#attr-criterionfieldname)
 
 ---
 ## Method: Canvas.setDataPath

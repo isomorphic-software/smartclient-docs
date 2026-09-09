@@ -29,7 +29,7 @@ Provides class methods for enabling and disabling the use of AI technology, regi
 ## ClassAttr: AI.delegatorPrompts
 
 ### Description
-Customizable prompt templates used by the [AIDelegator](AIDelegator.md#class-aidelegator) CoTProcess to decide which registered [AI service](#type-aiservicedescriptor) should handle a user's request. Override any of these to change the delegator's behavior without writing code; see the [AI Assist overview](../kb_topics/aiAssist.md#kb-topic-ai-assist) for the full request flow.
+Customizable prompt templates used by the [AIDelegator](AIDelegator.md#class-aidelegator) CoTProcess to decide which registered [AI service](../reference.md#object-aiservicedescriptor) should handle a user's request. Override any of these to change the delegator's behavior without writing code; see the [AI Assist overview](../kb_topics/aiAssist.md#kb-topic-ai-assist) for the full request flow.
 
 Properties:
 
@@ -374,6 +374,23 @@ Note that custom engines added via [AI.registerEngine](#classmethod-airegisteren
 - [AI.getEngine](#classmethod-aigetengine)
 
 ---
+## ClassMethod: AI.buildWorkflowStep
+
+### Description
+Adds one or more steps to a Workflow from a natural-language description of the goal - see [WorkflowBuilderCoTProcess](#class-workflowbuildercotprocess) for the full behavior (decomposition, exploration mode, UI actions, branching). By default a single call decomposes a compound goal into as many steps as it takes; the callback fires exactly once, after the whole session (however many steps were added) completes.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| editContext | [EditContext](#type-editcontext) | false | — | The live EditContext the Workflow is being built in - see [Process.getEditContext](Process.md#method-processgeteditcontext). |
+| processEditNode | [EditNode](#type-editnode) | false | — | The root Process EditNode within editContext to append the new step(s) under. |
+| dataSourceIDs | [Array of GlobalId](#type-array-of-globalid) | false | — | DataSources the AI may target. |
+| stepIntent | [String](#type-string) | false | — | Natural-language description of the step(s) to add. |
+| callback | [WorkflowBuilderResultCallback](#type-workflowbuilderresultcallback) | true | — | The callback to call with the final result. |
+| params | [WorkflowBuilderCoTParams](#type-workflowbuildercotparams) | true | — | Additional parameters - see that object for the full set (singleStep, componentIDs, explorationSettings, dataSourceOperationsOnly, etc). |
+
+---
 ## ClassMethod: AI.pauseDataQuestion
 
 ### Description
@@ -546,7 +563,7 @@ Returns a structured summary of a DataSource at a configurable detail level. In 
 ## ClassMethod: AI.delegate
 
 ### Description
-Primary entry point for the AI Assist system. Routes a user request to the most appropriate registered [AI service](#type-aiservicedescriptor) by running the [AIDelegator](AIDelegator.md#class-aidelegator) — see the [AI Assist overview](../kb_topics/aiAssist.md#kb-topic-ai-assist) for the full registration and routing model.
+Primary entry point for the AI Assist system. Routes a user request to the most appropriate registered [AI service](../reference.md#object-aiservicedescriptor) by running the [AIDelegator](AIDelegator.md#class-aidelegator) — see the [AI Assist overview](../kb_topics/aiAssist.md#kb-topic-ai-assist) for the full registration and routing model.
 
 Behavior:
 

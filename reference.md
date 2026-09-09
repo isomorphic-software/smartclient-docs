@@ -616,6 +616,7 @@ This is the central API reference for the SmartClient framework.
 - [dsRequestEquivalence](kb_topics/dsRequestEquivalence.md)
 - [dsSpecialFields](kb_topics/dsSpecialFields.md)
 - [dynamicCriteria](kb_topics/dynamicCriteria.md)
+- [Dynamic Properties](kb_topics/dynamicProperties.md)
 - [Dynamic Strings](kb_topics/dynamicStrings.md)
 - [Dynamic Templates](kb_topics/dynamicTemplates.md)
 - [Grid Editing](kb_topics/editing.md)
@@ -1153,7 +1154,7 @@ Updates the component's `contents`.
 *Inherits from:* [TextItem](classes/TextItem.md#class-textitem)
 
 ### Description
-FormItem that can be placed anywhere in a form to allow users to make AI requests. Typing a request and pressing Enter (or clicking the AI icon) routes the request through [AI.delegate](classes/AI.md#classmethod-aidelegate), which uses the [AIDelegator](classes/AIDelegator.md#class-aidelegator) to choose which registered [AI service](#type-aiservicedescriptor) should handle it. See the [AI Assist overview](kb_topics/aiAssist.md#kb-topic-ai-assist) for the registration and routing model.
+FormItem that can be placed anywhere in a form to allow users to make AI requests. Typing a request and pressing Enter (or clicking the AI icon) routes the request through [AI.delegate](classes/AI.md#classmethod-aidelegate), which uses the [AIDelegator](classes/AIDelegator.md#class-aidelegator) to choose which registered [AI service](#object-aiservicedescriptor) should handle it. See the [AI Assist overview](kb_topics/aiAssist.md#kb-topic-ai-assist) for the registration and routing model.
 
 An optional [rootCanvas](#attr-aiassistitemrootcanvas) limits the UI context available to the AI.
 
@@ -4948,6 +4949,7 @@ Things related to the header subobject of Window
 - [Window.showTitle](classes/Window.md#attr-windowshowtitle)
 - [Window.showHeaderIcon](classes/Window.md#attr-windowshowheadericon)
 - [Window.showCloseButton](classes/Window.md#attr-windowshowclosebutton)
+- [Window.showHeaderControlPrompts](classes/Window.md#attr-windowshowheadercontrolprompts)
 - [Window.showMinimizeButton](classes/Window.md#attr-windowshowminimizebutton)
 - [Window.showMaximizeButton](classes/Window.md#attr-windowshowmaximizebutton)
 - [Window.maximizeOnHeaderDoubleClick](classes/Window.md#attr-windowmaximizeonheaderdoubleclick)
@@ -5735,7 +5737,7 @@ For DataSources of type "sql" and "hibernate", specifies the kind of inheritance
 ### Description
 A string-typed property that natively accepts a [dynamic\\n template](kb_topics/dynamicTemplates.md#kb-topic-dynamic-templates) containing {expr} expression delimiters. Any plain string value is also a valid `DynString` — only when an opening brace is present in the value does the framework parse and compile it as a template.
 
-To embed a dynamic template in a property whose declared type is plain [String](#type-string), wrap the value with [isc.dyn](classes/isc.md#staticmethod-iscdyn).
+To embed a dynamic template in a property whose declared type is plain [String](reference_2.md#object-string), wrap the value with [isc.dyn](classes/isc.md#staticmethod-iscdyn).
 
 ---
 ## Type: EdgeSizes
@@ -7383,25 +7385,6 @@ Affects the appearance and behavior of the builtin [SavedSearchEditor](classes/S
 - state
 
 ---
-## Type: SelectedAppearance
-
-### Description
-Appearance when a component is in [edit mode](classes/Canvas.md#method-canvasseteditmode) and is selected.
-
-Modes such as "tintMask" or "outlineMask" create an ["edit mask"](classes/EditProxy.md#attr-editproxyeditmask) that is layered over the selected component, and blocks all normal interaction with the component, so that behaviors like [EditProxy.supportsInlineEdit](classes/EditProxy.md#attr-editproxysupportsinlineedit) can completely take the place of the component's normal interactivity.
-
-"outlineEdges" mode allows normal interaction with the component, which allows the end user to do things like [freeze ListGrid fields](classes/ListGrid_1.md#attr-listgridcanfreezefields), which the [GridEditProxy](classes/GridEditProxy.md#class-grideditproxy) can implement as a ${isc.DocUtils.linkForRef('attr:GridEditProxy.saveFieldFrozenState','persistent change to grid\\'s configuration')}.
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| "tintMask" | editMask on top of the component is updated with [EditProxy.selectedTintColor](classes/EditProxy.md#attr-editproxyselectedtintcolor) and [EditProxy.selectedTintOpacity](classes/EditProxy.md#attr-editproxyselectedtintopacity) |
-| "outlineMask" | editMask on top of the component is updated with [EditProxy.selectedBorder](classes/EditProxy.md#attr-editproxyselectedborder) |
-| "outlineEdges" | MultiAutoChild is created on top of the component. This constructs a border around the component using 4 separate `outlineEdge` components so that interactivity is not blocked. |
-| "none" | no change in appearance. Override [EditProxy.showSelectedAppearance](classes/EditProxy.md#method-editproxyshowselectedappearance) to create a custom appearance. |
-
----
 ## Type: SelectionAppearance
 
 ### Description
@@ -7689,22 +7672,6 @@ Interface to use for showing and editing the [top-level operator](classes/Filter
 | "menuItemSelect" | The target locator should resolve to an item within a Menu. The item must be selected (clicked) to complete the step. |
 | "none" | No interaction is allowed with the target and the user must click the next button to complete the step |
 | "any" | Interaction is allowed with the target but the user must click the next button to complete the step |
-
----
-## Type: TourInputValidationMode
-
-### Description
-Policy for how [inputValidation](classes/TourStep.md#attr-tourstepinputvalidation) is performed for [actionType](classes/TourStep.md#attr-tourstepactiontype):"change". When users enter incorrect values, they are informed via the [Notify](classes/Notify.md#class-notify) system, and the specific message displayed is controlled by [inputValidationNotifyMessage](classes/TourStep.md#attr-tourstepinputvalidationnotifymessage).
-
-The notification can be disabled for the step by setting [TourStep.showInputValidationMessage](classes/TourStep.md#attr-tourstepshowinputvalidationmessage) to `false`.
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| "notify" | When there is a brief pause in typing, notify the user that they have typed something wrong. The pause delay is controlled by [inputValidationNotifyDelay](classes/TourStep.md#attr-tourstepinputvalidationnotifydelay). |
-| "strict" | Prevent the user from typing any characters that don't match the [expectedValue](classes/TourStep.md#attr-tourstepexpectedvalue), and tell them immediately when they have typed something wrong. |
-| "onExit" | text entry is only validated on field exit or click on [afterInputTarget](classes/TourStep.md#attr-tourstepafterinputtarget). |
 
 ---
 ## Type: TourMode
@@ -9124,6 +9091,19 @@ An object representing a user-created summary.
 - fieldGeneration
 
 ---
+## Object: ValueFromMapping
+
+### Description
+A single case within [DynamicProperty.valueFrom](classes/DynamicProperty.md#attr-dynamicpropertyvaluefrom): an optional [AdvancedCriteria](#object-advancedcriteria) guard plus one of the value-producing fields also found on [DynamicProperty](reference_2.md#object-dynamicproperty) itself ([value](classes/ValueFromMapping.md#attr-valuefrommappingvalue), [dataPath](classes/ValueFromMapping.md#attr-valuefrommappingdatapath), [formula](classes/ValueFromMapping.md#attr-valuefrommappingformula), or [template](classes/ValueFromMapping.md#attr-valuefrommappingtemplate)).
+
+[DynamicProperty.valueFrom](classes/DynamicProperty.md#attr-dynamicpropertyvaluefrom) evaluates its cases in array order and uses the first whose [criteria](classes/ValueFromMapping.md#attr-valuefrommappingcriteria) matches -- or the first case with no criteria at all, which therefore always matches and so acts as the default. See [Dynamic Properties](kb_topics/dynamicProperties.md#kb-topic-dynamic-properties) for a worked example.
+
+### See Also
+
+- [dynamicProperties](kb_topics/dynamicProperties.md#kb-topic-dynamic-properties)
+- [DynamicProperty.valueFrom](classes/DynamicProperty.md#attr-dynamicpropertyvaluefrom)
+
+---
 ## Object: VariantDefinition
 
 ### Description
@@ -9132,6 +9112,24 @@ A plain JavaScript object that describes a skin variant: the properties to apply
 Register definitions via [Variant.register](classes/Variant.md#classmethod-variantregister) or [Variant.registerAll](classes/Variant.md#classmethod-variantregisterall). During framework init, each registered definition auto-creates a named subclass (e.g. `name:"PillButton"` creates `isc.PillButton`).
 
 For keys ending in `"Properties"` or `"Defaults"`, values are merged via [Class.changeDefaults](classes/Class.md#classmethod-classchangedefaults) rather than simple assignment, so the variant class inherits all superclass AutoChild settings with variant overrides layered on top as a distinct object.
+
+---
+## Object: WorkflowBuilderAddedStep
+
+### Description
+One entry of [addedSteps](classes/WorkflowBuilderCoTResult.md#attr-workflowbuildercotresultaddedsteps) - a single Workflow step added by a [WorkflowBuilderCoTProcess](#class-workflowbuildercotprocess) run.
+
+---
+## Object: WorkflowBuilderCoTParams
+
+### Description
+The shape of `process.state` to populate before starting a [WorkflowBuilderCoTProcess](#class-workflowbuildercotprocess) directly (its own class documentation covers the three ways this process may be invoked - as a sub-process of [AI.buildUI](#classmethod-aibuildui), standalone, or via the EventStream/UISession convergence).
+
+---
+## Object: WorkflowBuilderCoTResult
+
+### Description
+The shape of the resolved output of a [WorkflowBuilderCoTProcess](#class-workflowbuildercotprocess) run, available via [AsyncOperationResult.output](#asyncoperationresultoutput) once [CoTProcess.asyncStart](classes/CoTProcess.md#method-cotprocessasyncstart) completes.
 
 ---
 ## Interface: DataBoundComponent

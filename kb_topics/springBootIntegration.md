@@ -184,7 +184,7 @@ However, Spring Boot places all configuration in code, so changing a framework s
 *   smartclient.idacall-servlet.enabled - note, `IDACall` provides access to the SmartClient server framework and is thus required in any meaningful application that uses the server framework, unless you are accessing it purely via REST
 *   smartclient.resthandler-servlet.enabled - if you do not need REST support
 *   smartclient.datasourceloader-servlet.enabled - if you do not want to load DataSource definitions from the server (note, you nearly always DO want to load dataSources from the server; do not switch this servlet off unless you have a good reason)
-*   smartclient.projectloader-servlet.enabled - if you do not need support for loading [Reify projects](#class-projects) into your application
+*   smartclient.projectloader-servlet.enabled - if you do not need support for loading [Reify projects](../classes/Project.md#class-project) into your application
 *   smartclient.screenloader-servlet.enabled - if you do not need support for loading Reify screens into your application
 *   smartclient.httpproxy-servlet.enabled - if you do not need [HTTP proxy support](../classes/RPCManager.md#classmethod-rpcmanagersendproxied)
 *   smartclient.filedownload-servlet.enabled - if you do not want to use SmartClient's built-in support for serving framework assets compressed and with caching headers

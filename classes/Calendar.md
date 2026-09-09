@@ -848,20 +848,6 @@ The name of the field used to override [Calendar.eventStyleName](#attr-calendare
 **Flags**: R
 
 ---
-## Attr: Calendar.monthViewMinRowHeight
-
-### Description
-In the [month view](#attr-calendarmonthview), a minimum height in pixels for each day row, applied whether or not [Calendar.showDayHeaders](#attr-calendarshowdayheaders) is set. When the view's body is too short to give every row this height, the rows keep the minimum and the body scrolls vertically instead of squeezing them.
-
-When `showDayHeaders` is true the minimum applies to the day body row beneath each header row, so a header and its day together occupy at least `monthViewMinRowHeight + [Calendar.monthDayHeaderHeight](#attr-calendarmonthdayheaderheight)` pixels; the larger of this and [Calendar.minimumDayHeight](#attr-calendarminimumdayheight) wins.
-
-### Groups
-
-- appearance
-
-**Flags**: IRW
-
----
 ## Attr: Calendar.eventAllDayFieldTitle
 
 ### Description

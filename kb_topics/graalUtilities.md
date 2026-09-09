@@ -13,8 +13,8 @@ These methods are automatically available in server-side JavaScript when using `
 
 #### Type Conversion
 
-*   [isc.toJavaMap](#classmethod-isctojavamap) / [isc.fromJavaMap](#classmethod-iscfromjavamap) - Object conversion
-*   [isc.toJavaList](#classmethod-isctojavalist) / [isc.fromJavaList](#classmethod-iscfromjavalist) - Array conversion
+*   [isc.toJavaMap()](../classes/GraalDS.md#classmethod-graaldstojavamap) / [isc.fromJavaMap()](../classes/GraalDS.md#classmethod-graaldsfromjavamap) - Object conversion
+*   [isc.toJavaList()](../classes/GraalDS.md#classmethod-graaldstojavalist) / [isc.fromJavaList()](../classes/GraalDS.md#classmethod-graaldsfromjavalist) - Array conversion
 *   [isc.hashMap](#classmethod-ischashmap) / [isc.concurrentHashMap](#classmethod-iscconcurrenthashmap) - Create Java Maps
 
 #### DataSource Operations
@@ -24,7 +24,7 @@ These methods are automatically available in server-side JavaScript when using `
 
 #### Logging
 
-*   [isc.log](#classmethod-isclog) - Simple console output via System.out.println()
+*   [isc.log()](../classes/GraalDS.md#classmethod-graaldslog) - Simple console output via System.out.println()
 *   SmartClient logging (isc.Log.logWarn, this.logDebug, etc.) - Structured logging with categories and levels, also available under GraalJS
 
 #### Other Utilities

@@ -4256,7 +4256,7 @@ All supplied DataSources are passed as [jSONSchemaSettings.relatedDataSources](#
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| dataSources | [Array of DataSource](#type-array-of-datasource)|[Array of GlobalId](#type-array-of-globalid) | false | — | The DataSources in scope. Strings are resolved via [isc.DS.get](#method-iscdsget). |
+| dataSources | [Array of DataSource](#type-array-of-datasource)|[Array of GlobalId](#type-array-of-globalid) | false | — | The DataSources in scope. Strings are resolved via [DataSource.get](#classmethod-datasourceget). |
 | settings | [JSONSchemaSettings](#type-jsonschemasettings) | true | — | Optional settings. All options documented on the instance method are supported; additionally any `relatedDataSources` supplied here is merged with the input list. |
 
 ### Returns

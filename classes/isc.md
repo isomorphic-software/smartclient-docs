@@ -270,7 +270,7 @@ This method is simply a shorthand way to call [Notify.addMessage](Notify.md#clas
 ### Description
 Marks a property value as an inline reactive expression. Unlike [isc.dyn](#staticmethod-iscdyn), which produces a string, this returns the expression's native type — suitable for numeric, boolean, or object-typed properties. The expression is re-evaluated when its referenced ruleScope paths change, and the new typed value is passed to the property's setter.
 
-`isc.dynamic()` is a concise inline alternative to [Class.dynamicProperties](Class.md#attr-classdynamicproperties).
+`isc.dynamic()` is a concise inline alternative to [Dynamic Properties](../kb_topics/dynamicProperties.md#kb-topic-dynamic-properties).
 
 ```
     isc.Layout.create({
@@ -288,6 +288,10 @@ Marks a property value as an inline reactive expression. Unlike [isc.dyn](#stati
 ### Returns
 
 `[Any](#type-any)` — opaque marker that the framework detects in [Class.create](Class.md#classmethod-classcreate) and replaces with the compiled dynamic property
+
+### See Also
+
+- [dynamicProperties](../kb_topics/dynamicProperties.md#kb-topic-dynamic-properties)
 
 ---
 ## StaticMethod: isc.dynOnce

@@ -13,7 +13,7 @@ AI Assist is the natural-language request layer of the SmartClient AI system. Th
 
 *   **Entry points** — [AIAssistItem](../reference.md#class-aiassistitem) (a FormItem with an inline AI icon), [VoiceAssist](../classes/VoiceAssist.md#class-voiceassist) (dictation), or direct calls to [AI.delegate](../classes/AI.md#classmethod-aidelegate).
 *   **Delegator** — [AIDelegator](../classes/AIDelegator.md#class-aidelegator), a lightweight [CoTProcess](../classes/CoTProcess.md#class-cotprocess) that asks the AI which registered service best matches the user's intent and then invokes it.
-*   **Services** — pluggable units of work. Each [AIServiceDescriptor](#type-aiservicedescriptor) has a `name`, a natural-language `description`, and an `invoke(prompt, rationale, context)` function. Built-in services are `"answerEngine"` (data queries) and `"buildUI"` (create new UI from a natural-language description).
+*   **Services** — pluggable units of work. Each [AIServiceDescriptor](../reference.md#object-aiservicedescriptor) has a `name`, a natural-language `description`, and an `invoke(prompt, rationale, context)` function. Built-in services are `"answerEngine"` (data queries) and `"buildUI"` (create new UI from a natural-language description).
 
 #### Flow
 ```
@@ -26,7 +26,7 @@ AI Assist is the natural-language request layer of the SmartClient AI system. Th
  
 ```
 #### Registering services
-A service is just a [AIServiceDescriptor](#type-aiservicedescriptor) — an object with `name`, `description`, and `invoke`. The `description` is shown to the AI so it can decide whether this service is appropriate for a given request; keep it a concise sentence or two that names the class of requests this service handles and the class of requests it does _not_.
+A service is just a [AIServiceDescriptor](../reference.md#object-aiservicedescriptor) — an object with `name`, `description`, and `invoke`. The `description` is shown to the AI so it can decide whether this service is appropriate for a given request; keep it a concise sentence or two that names the class of requests this service handles and the class of requests it does _not_.
 
 **Global services** are available regardless of which component has focus. Register them with [AI.registerAIService](../classes/AI.md#classmethod-airegisteraiservice):
 

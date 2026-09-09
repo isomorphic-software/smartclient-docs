@@ -71,7 +71,7 @@ For `mode:"window"`, a window features string to pass to `window.open()`. See th
 ## Attr: ReifyLoadConfig.useRTM
 
 ### Description
-For `mode:"window"`, whether to use [realtimeMessaging](#kb-topic-realtimemessaging) for communication between the host page and the Reify window. By default, `window.postMessage` is used, which requires same-origin. Set `useRTM:true` for cross-origin scenarios.
+For `mode:"window"`, whether to use [realtime messaging](../kb_topics/messaging.md#kb-topic-real-time-messaging) for communication between the host page and the Reify window. By default, `window.postMessage` is used, which requires same-origin. Set `useRTM:true` for cross-origin scenarios.
 
 **Flags**: IR
 

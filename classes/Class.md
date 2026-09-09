@@ -75,9 +75,11 @@ If left unspecified, the Framework applies rules to determine which component to
 ## Attr: Class.dynamicProperties
 
 ### Description
-Object mapping dynamic property names to the source - a [DataPath](../reference_2.md#type-datapath), [UserSummary](UserSummary.md#attr-usersummarytext) with [rule context](#attr-classrulescope), [UserFormula](UserFormula.md#attr-userformulatext) with rule context, [AdvancedCriteria](../reference.md#object-advancedcriteria) or a conditional set of the above (except trueWhen). This is a declarative alternative to calling [Class.addDynamicProperty](#method-classadddynamicproperty) for each property.
+Map of property name to a [DynamicProperty](../reference_2.md#object-dynamicproperty) source, declaring one or more of this component's (or FormItem's) properties as dynamic. This is a declarative alternative to calling [Class.addDynamicProperty](#method-classadddynamicproperty) once per property.
 
-See [Class.addDynamicProperty](#method-classadddynamicproperty) for details on using dynamic properties.
+Besides a full [DynamicProperty](../reference_2.md#object-dynamicproperty) object, several shorthand forms are accepted directly as a map value and are automatically converted to the equivalent DynamicProperty: a plain string, a [UserFormula](../reference.md#object-userformula) object, a [UserSummary](../reference.md#object-usersummary) object, or an [AdvancedCriteria](../reference.md#object-advancedcriteria) (including a single bare criterion). See [DynamicProperty](../reference_2.md#object-dynamicproperty) for exactly how each of these is converted.
+
+See [Dynamic Properties](../kb_topics/dynamicProperties.md#kb-topic-dynamic-properties) for an overview of the feature with worked examples, and [DynamicProperty](../reference_2.md#object-dynamicproperty) for the exact set of fields a source object accepts. See [Class.addDynamicProperty](#method-classadddynamicproperty) for details on how dynamic properties are evaluated and kept up to date.
 
 In JavaScript dynamicProperties can be declaratively initialized as follows:
 
@@ -96,7 +98,7 @@ In JavaScript dynamicProperties can be declaratively initialized as follows:
                       { formula: "year(Order.orderData)", criteria: { ... } },
                       { template: "2010 & earlier" }
                   ]
-                }    
+                }
  }
  
 ```
@@ -132,6 +134,8 @@ In ComponentXML dynamicProperties can be intialized as:
 
 ### See Also
 
+- [dynamicProperties](../kb_topics/dynamicProperties.md#kb-topic-dynamic-properties)
+- [DynamicProperty](../reference_2.md#object-dynamicproperty)
 - [Canvas.dataPath](Canvas.md#attr-canvasdatapath)
 - [Class.addDynamicProperty](#method-classadddynamicproperty)
 
@@ -141,11 +145,14 @@ In ComponentXML dynamicProperties can be intialized as:
 ## Attr: Class.ruleScope
 
 ### Description
-[Canvas.ID](Canvas.md#attr-canvasid) of the component that manages "rule context" for which this class participates. A non-Canvas class can only use the ruleScope for supporting [Class.dynamicProperties](#attr-classdynamicproperties). Unlike [Canvas.ruleScope](Canvas.md#attr-canvasrulescope) `ruleScope` on a standalone class must be explicitly specified.
+[Canvas.ID](Canvas.md#attr-canvasid) of the component that manages "rule context" for which this class participates. A non-Canvas class can only use the ruleScope for supporting [Class.dynamicProperties](#attr-classdynamicproperties). Unlike [Canvas.ruleScope](Canvas.md#attr-canvasrulescope) `ruleScope` on a standalone class must be explicitly specified: a non-Canvas class has no [Canvas.parentCanvas](Canvas.md#attr-canvasparentcanvas) chain to search for an enclosing [Canvas.isRuleScope](Canvas.md#attr-canvasisrulescope) component.
+
+A [FormItem](FormItem.md#class-formitem) is the one exception: it always takes on its form's ruleScope, and its dynamic properties are evaluated and managed by that form rather than by the FormItem itself.
 
 ### See Also
 
 - [Canvas.ruleScope](Canvas.md#attr-canvasrulescope)
+- [dynamicProperties](../kb_topics/dynamicProperties.md#kb-topic-dynamic-properties)
 
 **Flags**: IR
 
@@ -1140,6 +1147,10 @@ Returns true if the property is dynamic.
 
 `[boolean](../reference.md#type-boolean)` — true if the property is dynamic
 
+### See Also
+
+- [dynamicProperties](../kb_topics/dynamicProperties.md#kb-topic-dynamic-properties)
+
 ---
 ## Method: Class.Super
 
@@ -1214,6 +1225,10 @@ The current value of the property will not be changed by this call.
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | propertyName | [Identifier](../reference_2.md#type-identifier) | false | — | property name of the dynamic property to clear |
+
+### See Also
+
+- [dynamicProperties](../kb_topics/dynamicProperties.md#kb-topic-dynamic-properties)
 
 ---
 ## Method: Class.ignore
@@ -1634,6 +1649,10 @@ Returns the last time the rule for the specified dynamic property fired, as a [D
 
 `[Date](#type-date)` — last fire time of rule
 
+### See Also
+
+- [dynamicProperties](../kb_topics/dynamicProperties.md#kb-topic-dynamic-properties)
+
 ---
 ## Method: Class.logIsEnabledFor
 
@@ -1736,9 +1755,9 @@ General best practice is to call the method as "this.echo()" whenever "this" is 
 ## Method: Class.addDynamicProperty
 
 ### Description
-Sets up the value of `propertyName` to be dynamically derived from the [ruleScope](Canvas.md#attr-canvasrulescope), by either a simple [DataPath](../reference_2.md#type-datapath) into the ruleScope, an [AdvancedCriteria](../reference.md#object-advancedcriteria) built against [DataPaths](../reference_2.md#type-datapath), or via a template or numeric formula using the ruleScope as available formula inputs.
+Sets up the value of `propertyName` to be dynamically derived from the [ruleScope](Canvas.md#attr-canvasrulescope), via any of the forms documented under [DynamicProperty](../reference_2.md#object-dynamicproperty): a simple [DataPath](../reference_2.md#type-datapath) into the ruleScope, a numeric [formula](../reference.md#object-userformula) or text [template](../reference.md#object-usersummary), an [AdvancedCriteria](../reference.md#object-advancedcriteria) (or a single bare criterion such as `{fieldName: "...", operator: "...", value: ...}`) built against [DataPaths](../reference_2.md#type-datapath), or a [valueFrom](DynamicProperty.md#attr-dynamicpropertyvaluefrom) list of alternatives. A full [DynamicProperty](../reference_2.md#object-dynamicproperty) object combining several of these fields is also accepted directly as `source`.
 
-The dataPath, criteria, template or formula is evaluated immediately when addDynamicProperty() is called, then re-evaluated every time the ruleScope changes. An [AdvancedCriteria](../reference.md#object-advancedcriteria) will always evaluate to boolean true or false, and a [template](../reference.md#object-usersummary) to a string.
+The dataPath, criteria, template, formula, or valueFrom is evaluated immediately when addDynamicProperty() is called, then re-evaluated every time the ruleScope changes. An [AdvancedCriteria](../reference.md#object-advancedcriteria) (or bare criterion) always evaluates to boolean true or false, and a [template](../reference.md#object-usersummary) to a string.
 
 It is invalid usage to use `addDynamicProperty()` on a property that is not runtime settable. However, `addDynamicProperty()` will not throw an error or log a warning if this is done.
 
@@ -1746,19 +1765,21 @@ If a property is already dynamic and addDynamicProperty() is called again, the n
 
 Dynamic properties can also be declared together via [Class.dynamicProperties](#attr-classdynamicproperties).
 
-Note that you may convert a simple criteria to an [AdvancedCriteria](../reference.md#object-advancedcriteria) by calling [DataSource.convertCriteria](DataSource.md#classmethod-datasourceconvertcriteria).
+Note that you may convert a simple criteria (a plain map of fieldName to value) to an [AdvancedCriteria](../reference.md#object-advancedcriteria) by calling [DataSource.convertCriteria](DataSource.md#classmethod-datasourceconvertcriteria).
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | propertyName | [Identifier](../reference_2.md#type-identifier) | false | — | name of a settable property on this instance |
-| source | [DataPath](../reference_2.md#type-datapath)|[UserSummary](#type-usersummary)|[UserFormula](#type-userformula)|[AdvancedCriteria](#type-advancedcriteria) | false | — | — |
+| source | [DynamicProperty](#type-dynamicproperty)|[DataPath](../reference_2.md#type-datapath)|[UserFormula](#type-userformula)|[UserSummary](#type-usersummary)|[AdvancedCriteria](#type-advancedcriteria) | false | — | dynamic property source; see [DynamicProperty](../reference_2.md#object-dynamicproperty) for the complete set of accepted forms |
 
 ### See Also
 
 - [Canvas.dataPath](Canvas.md#attr-canvasdatapath)
 - [Class.dynamicProperties](#attr-classdynamicproperties)
+- [dynamicProperties](../kb_topics/dynamicProperties.md#kb-topic-dynamic-properties)
+- [DynamicProperty](../reference_2.md#object-dynamicproperty)
 
 ---
 ## Method: Class.logInfo

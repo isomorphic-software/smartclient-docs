@@ -397,7 +397,7 @@ mockMode can also be enabled or disabled for an individual task with [ProcessEle
 ### Description
 ID of a task or [sequence](#attr-processsequences) declared directly on **this** Process to use as its [effective error task](#method-processgeteffectiveerrortask) - the [Process](#class-process) analog of [failureElement](DSRequestTask.md#attr-dsrequesttaskfailureelement), one level up, for the common case of designating an existing, hand-authored task as the Process-wide fallback (rather than the framework-provided default - see [Process.errorTask](#attr-processerrortask) for that). Only meaningful on the Process that declares the referenced element - not inherited by sub-Processes, since a child Process has no visibility into a parent's own elements; use [Process.errorTask](#attr-processerrortask)'s properties-object form for anything that needs to propagate across Process boundaries.
 
-Unlike [Process.errorTask](#attr-processerrortask), this is a plain String field (matching `failureElement`'s own declaration) and survives being exploded/collapsed through [process.getEditContext](#method-processgeteditcontext)/[Process.getPropertiesFromEditContext](#method-processgetpropertiesfromeditcontext) (as used by [WorkflowEditor](#class-workfloweditor)) correctly.
+Unlike [Process.errorTask](#attr-processerrortask), this is a plain String field (matching `failureElement`'s own declaration) and survives being exploded/collapsed through [Process.getEditContext](#method-processgeteditcontext)/[Process.getPropertiesFromEditContext](#classmethod-processgetpropertiesfromeditcontext) (as used by [WorkflowEditor](#class-workfloweditor)) correctly.
 
 A task designated this way is an ordinary element like any other - nothing stops it from also being reachable via the Process's normal [ProcessElement.nextElement](ProcessElement.md#attr-processelementnextelement)/ branch flow, exactly as nothing stops a `failureElement` target from also being reachable normally. Set [Process.errorTaskExclusive](#attr-processerrortaskexclusive) to surface a (non-blocking) [WorkflowEditor](#class-workfloweditor) warning if that happens; the task itself always displays with its own description plus a distinguishing note in its title - see [workflowEditor.updateProcessNodeFromElement](#method-workfloweditorupdateprocessnodefromelement) for the underlying document and [Process.getTextSummary](#method-processgettextsummary) for the same note in a Workflow's bulleted summary.
 
@@ -455,6 +455,22 @@ Process files are stored as .proc.xml files in [Component XML](../kb_topics/comp
 | callback | [ProcessCallback](#type-processcallback) | false | — | called when the process is loaded with argument "process", the first process. Other processes can be looked up via [Process.getProcess](#classmethod-processgetprocess). |
 
 ---
+## ClassMethod: Process.getPropertiesFromEditContext
+
+### Description
+Collapses the current contents of an [EditContext](EditContext.md#class-editcontext) built via [Process.getEditContext](#method-processgeteditcontext) (or manually populated the same way - one root "Process" [EditNode](../reference.md#object-editnode) plus task/sequence descendants) into a Process properties object suitable for [create()](Class.md#classmethod-classcreate) or for CRUD-style persistence.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| editContext | [EditContext](#type-editcontext) | false | — | the EditContext to collapse |
+
+### Returns
+
+`[Object](../reference.md#type-object)` — plain Process properties object
+
+---
 ## ClassMethod: Process.getProcess
 
 ### Description
@@ -482,7 +498,7 @@ Each process instance created that has an [ID](ProcessElement.md#attr-processele
 ### Description
 Classifies a task failure as ["expected"](../reference_2.md#type-errorcategory) or "unexpected", for [UnexpectedErrorTask](UnexpectedErrorTask.md#class-unexpectederrortask) to decide whether to show the standard centralized error dialog. Default classification mirrors [RPCManager](../kb_topics/errorHandling.md#kb-topic-error-handling-overview)'s own documented validation-vs-other-errors split: a [ErrorContext.failure](../reference.md#attr-errorcontextfailure) whose `code` is `"inputValidation"`, `"outputValidation"`, or `"cancelled"` is "expected", as is a [ErrorContext.response](../reference.md#attr-errorcontextresponse) whose status is [RPCResponse.STATUS_VALIDATION_ERROR](RPCResponse.md#classattr-rpcresponsestatus_validation_error); everything else is "unexpected".
 
-Override to widen or change this split for your application - for example, in a network-diagnostics tool where users routinely type unreachable hostnames, classify [RPCResponse.STATUS_UNKNOWN_HOST_ERROR](RPCResponse.md#classattr-rpcresponsestatus_unknown_host_error)/ [RPCResponse.STATUS_TRANSPORT_ERROR](RPCResponse.md#classattr-rpcresponsestatus_transport_error) as "expected" too. The full [ErrorContext](#type-errorcontext) is passed (not just the response status) so an override can consult anything relevant to a better decision - the failed [ErrorContext.task](../reference.md#attr-errorcontexttask), the owning [ErrorContext.process](../reference.md#attr-errorcontextprocess) and its [Process.state](#attr-processstate), and so on.
+Override to widen or change this split for your application - for example, in a network-diagnostics tool where users routinely type unreachable hostnames, classify [RPCResponse.STATUS_UNKNOWN_HOST_ERROR](RPCResponse.md#classattr-rpcresponsestatus_unknown_host_error)/ [RPCResponse.STATUS_TRANSPORT_ERROR](RPCResponse.md#classattr-rpcresponsestatus_transport_error) as "expected" too. The full [ErrorContext](../reference_2.md#object-errorcontext) is passed (not just the response status) so an override can consult anything relevant to a better decision - the failed [ErrorContext.task](../reference.md#attr-errorcontexttask), the owning [ErrorContext.process](../reference.md#attr-errorcontextprocess) and its [Process.state](#attr-processstate), and so on.
 
 ### Parameters
 
@@ -604,6 +620,22 @@ Resolves this Process's effective error task: [Process.errorTaskRef](#attr-proce
 `[String](#type-string)` — ID of the effective error task, or null if none resolves
 
 ---
+## Method: Process.getEditContext
+
+### Description
+Returns a live [EditContext](EditContext.md#class-editcontext) reflecting this Process's current tasks/sequences - one [EditNode](../reference.md#object-editnode) per task/sequence under a single root "Process" EditNode. The caller owns the returned EditContext's lifecycle: call `destroyAll()` when finished with it, or `removeAll()` to detach the generated live objects (Process and Task instances) without destroying them.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| settings | [Object](../reference.md#type-object) | true | — | Optional settings; `settings.tree` supplies an already-computed process tree (from [Process.getProcessTree](#method-processgetprocesstree)) to reuse, rather than retracing it - see this method's own class IDocument for why retracing a second time on the same live process can be unsafe. |
+
+### Returns
+
+`[EditContext](#type-editcontext)` — the live EditContext
+
+---
 ## Method: Process.getErrorTaskExclusivityViolation
 
 ### Description
@@ -653,7 +685,7 @@ Programmatically signal that this Process has hit an infrastructure failure and 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| code | [String](#type-string) | false | — | short identifier, e.g. `"aiUnavailable"`. See [ProcessFailure](#type-processfailure). |
+| code | [String](#type-string) | false | — | short identifier, e.g. `"aiUnavailable"`. See [ProcessFailure](../reference.md#object-processfailure). |
 | message | [String](#type-string) | true | — | human-readable description |
 | cause | [Any](#type-any) | true | — | optional underlying exception or nested failure |
 
@@ -736,7 +768,7 @@ Sets the task ID of the next task to execute after the current task finishes. If
 ### Description
 StringMethod called when a process terminates via an infrastructure failure - for example AI engine unavailable, schema-validation mismatch on input or output, uncaught JS exception, cancellation, or an ancestor-cycle deadlock when invoking a sub-Process. Recoverable errors that are part of the Process's designed output do NOT come through here; they live inside the successful [finished](#method-processfinished) result.
 
-See [ProcessFailure](#type-processfailure) for the shape of the argument.
+See [ProcessFailure](../reference.md#object-processfailure) for the shape of the argument.
 
 ### Parameters
 

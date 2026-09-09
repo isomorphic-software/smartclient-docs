@@ -490,7 +490,7 @@ A CSS color string applied to a specific HTML element on this page. Any format a
 *   HSLA: `"hsla(0, 100%, 50%, 0.8)"`
 *   Oklch: `"oklch(62.8% 0.26 29.2)"`
 
-All framework color math (such as hover highlighting in [FacetChart](classes/FacetChart.md#class-facetchart)s and color muting) uses [isc.Colors](#kb-topic-colors), which accepts any of the above formats.
+All framework color math (such as hover highlighting in [FacetChart](classes/FacetChart.md#class-facetchart)s and color muting) uses [isc.Colors](kb_topics/colorOverview.md#kb-topic-color-overview), which accepts any of the above formats.
 
 ### Groups
 
@@ -2803,6 +2803,25 @@ When discovering a tree, the scanMode determines how to scan for the childrenPro
 | "level" | scan entire tree levels as a group, looking for best fit |
 
 ---
+## Type: SelectedAppearance
+
+### Description
+Appearance when a component is in [edit mode](classes/Canvas.md#method-canvasseteditmode) and is selected.
+
+Modes such as "tintMask" or "outlineMask" create an ["edit mask"](classes/EditProxy.md#attr-editproxyeditmask) that is layered over the selected component, and blocks all normal interaction with the component, so that behaviors like [EditProxy.supportsInlineEdit](classes/EditProxy.md#attr-editproxysupportsinlineedit) can completely take the place of the component's normal interactivity.
+
+"outlineEdges" mode allows normal interaction with the component, which allows the end user to do things like [freeze ListGrid fields](classes/ListGrid_1.md#attr-listgridcanfreezefields), which the [GridEditProxy](classes/GridEditProxy.md#class-grideditproxy) can implement as a ${isc.DocUtils.linkForRef('attr:GridEditProxy.saveFieldFrozenState','persistent change to grid\\'s configuration')}.
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| "tintMask" | editMask on top of the component is updated with [EditProxy.selectedTintColor](classes/EditProxy.md#attr-editproxyselectedtintcolor) and [EditProxy.selectedTintOpacity](classes/EditProxy.md#attr-editproxyselectedtintopacity) |
+| "outlineMask" | editMask on top of the component is updated with [EditProxy.selectedBorder](classes/EditProxy.md#attr-editproxyselectedborder) |
+| "outlineEdges" | MultiAutoChild is created on top of the component. This constructs a border around the component using 4 separate `outlineEdge` components so that interactivity is not blocked. |
+| "none" | no change in appearance. Override [EditProxy.showSelectedAppearance](classes/EditProxy.md#method-editproxyshowselectedappearance) to create a custom appearance. |
+
+---
 ## Type: SelectionNotificationType
 
 ### Description
@@ -3465,6 +3484,22 @@ If used on a `DrawItem` that is not a `DrawLine` or `DrawLinePath`, then the eff
 If used on a `DrawItem` that is not a `DrawLine` or `DrawLinePath`, then the effect is the same as "withItemAlwaysUp". |
 
 ---
+## Type: TourInputValidationMode
+
+### Description
+Policy for how [inputValidation](classes/TourStep.md#attr-tourstepinputvalidation) is performed for [actionType](classes/TourStep.md#attr-tourstepactiontype):"change". When users enter incorrect values, they are informed via the [Notify](classes/Notify.md#class-notify) system, and the specific message displayed is controlled by [inputValidationNotifyMessage](classes/TourStep.md#attr-tourstepinputvalidationnotifymessage).
+
+The notification can be disabled for the step by setting [TourStep.showInputValidationMessage](classes/TourStep.md#attr-tourstepshowinputvalidationmessage) to `false`.
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| "notify" | When there is a brief pause in typing, notify the user that they have typed something wrong. The pause delay is controlled by [inputValidationNotifyDelay](classes/TourStep.md#attr-tourstepinputvalidationnotifydelay). |
+| "strict" | Prevent the user from typing any characters that don't match the [expectedValue](classes/TourStep.md#attr-tourstepexpectedvalue), and tell them immediately when they have typed something wrong. |
+| "onExit" | text entry is only validated on field exit or click on [afterInputTarget](classes/TourStep.md#attr-tourstepafterinputtarget). |
+
+---
 ## Type: TreeGridOpenState
 
 ### Description
@@ -4035,6 +4070,27 @@ See the [Master/Detail Add Example](https://www.smartclient.com/smartclient-late
 ### Groups
 
 - transactionChaining
+
+---
+## Object: DynamicProperty
+
+### Description
+The source object accepted by [Class.dynamicProperties](classes/Class.md#attr-classdynamicproperties) (as a map value) and by [addDynamicProperty()](classes/Class.md#method-classadddynamicproperty) (as the `source` parameter), describing where a single dynamic property's value comes from and how it is computed against the current [rule context](classes/Canvas.md#attr-canvasrulescope). Exactly one of [dataPath](classes/DynamicProperty.md#attr-dynamicpropertydatapath), [formula](classes/DynamicProperty.md#attr-dynamicpropertyformula), [template](classes/DynamicProperty.md#attr-dynamicpropertytemplate), [trueWhen](classes/DynamicProperty.md#attr-dynamicpropertytruewhen), or [valueFrom](classes/DynamicProperty.md#attr-dynamicpropertyvaluefrom) should be set; whichever is present determines the source form -- see each field's own documentation for exactly how it draws on the rule context.
+
+Wherever a DynamicProperty is expected, several shorthand forms are also accepted directly in its place and are automatically converted to the equivalent DynamicProperty:
+
+*   A plain string is shorthand for `{ dataPath: "..." }`.
+*   A [UserFormula](#object-userformula) object (`{text, formulaVars}`) is treated as [formula](classes/DynamicProperty.md#attr-dynamicpropertyformula).
+*   A [UserSummary](#object-usersummary) object (`{text, summaryVars}`) is treated as [template](classes/DynamicProperty.md#attr-dynamicpropertytemplate).
+*   An [AdvancedCriteria](#object-advancedcriteria) -- or a single bare criterion with no `_constructor` or wrapping `criteria` array, such as `{fieldName: "...", operator: "...", value: ...}` -- is treated as [trueWhen](classes/DynamicProperty.md#attr-dynamicpropertytruewhen).
+
+See [Dynamic Properties](kb_topics/dynamicProperties.md#kb-topic-dynamic-properties) for an overview of the feature with worked examples covering each of these forms.
+
+### See Also
+
+- [dynamicProperties](kb_topics/dynamicProperties.md#kb-topic-dynamic-properties)
+- [Class.dynamicProperties](classes/Class.md#attr-classdynamicproperties)
+- [Class.addDynamicProperty](classes/Class.md#method-classadddynamicproperty)
 
 ---
 ## Object: EditInReifyConfig
@@ -4712,6 +4768,12 @@ Validator definition for a built-in [Validator.type](classes/Validator.md#attr-v
 
 ### Description
 Defines the method of the [ServerObject](reference_2.md#object-serverobject) if it appears in an [Application declaration file](kb_topics/applicationDeclaration.md#kb-topic-application-declaration-files). Method can refer the `ServerObject` method allowed to be called from the client or can be implemented right in the .app.xml file using the [inline server script](kb_topics/serverScript.md#kb-topic-server-scripting).
+
+---
+## Object: WorkflowExplorationEntry
+
+### Description
+One entry of [explorationHistory](classes/WorkflowBuilderCoTParams.md#attr-workflowbuildercotparamsexplorationhistory) / [explorationHistory](classes/WorkflowBuilderCoTResult.md#attr-workflowbuildercotresultexplorationhistory) - the outcome of executing one candidate step in "exploration mode" (see [explorationSettings](classes/WorkflowBuilderCoTParams.md#attr-workflowbuildercotparamsexplorationsettings)) before it was committed to the Workflow.
 
 ---
 ## Object: WSRequest

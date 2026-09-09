@@ -69,7 +69,7 @@ Most callers should use the [armCapture()](#classmethod-cotprocessarmcapture) / 
 ### Description
 Class-level mock-replay payload as a flat global sequence of step entries covering an entire tree of nested CoTProcesses. Each entry has the shape `{processKey, taskID, aiResponse, timestamp, delay?}`. The `processKey` is the running process's `ID` for cached singletons, or its leaf class name for anonymous transient processes. The optional numeric `delay` overrides [CoTProcess.defaultMockReplayDelay](#classattr-cotprocessdefaultmockreplaydelay) for that one step (set to `0` to run that step synchronously).
 
-When set and [CoTProcess._mockSessionMode](#cotprocess_mocksessionmode) is `"replay"`, every running CoTTask is matched against the entry at [CoTProcess._stepCursor](#cotprocess_stepcursor) by the `(processKey, taskID)` tuple. A match yields the entry's `aiResponse` as the synthesized AI output and advances the cursor; a mismatch is a hard failure that terminates the run with a diagnostic. Strict global ordering is intentional: any change to the CoT workflow (task reorder, sub-process moved, extra/missing invocation) surfaces as a divergence rather than silent wrong-data consumption.
+When set and the class is in mock-replay mode, every running CoTTask is matched against the entry at the current position in the sequence by the `(processKey, taskID)` tuple. A match yields the entry's `aiResponse` as the synthesized AI output and advances the cursor; a mismatch is a hard failure that terminates the run with a diagnostic. Strict global ordering is intentional: any change to the CoT workflow (task reorder, sub-process moved, extra/missing invocation) surfaces as a divergence rather than silent wrong-data consumption.
 
 Most callers should use the [armReplay()](#classmethod-cotprocessarmreplay) helper rather than setting this directly.
 
@@ -406,7 +406,7 @@ Uses truncation for history and errors to limit size without hiding logic. Best 
 ## Attr: CoTProcess.systemPrompt
 
 ### Description
-The system message sent to the AI engine. If not set, a default generic SmartClient-context message is used (see [CoTTask._getMessages](#method-cottask_getmessages)).
+The system message sent to the AI engine. If not set, a default generic SmartClient-context message is used.
 
 This is distinct from [CoTProcess.introPrompt](#attr-cotprocessintroprompt) which is prepended to the user message content. The systemPrompt is sent as a separate system-role message to the AI, which most models treat as high-priority instructions.
 

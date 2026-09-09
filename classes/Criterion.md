@@ -62,6 +62,8 @@ This transformation takes place before the filtering subsystem even sees the cri
 
 See the `AdvancedCriterionSubquery` overview linked above for more details of the extremely powerful subquery filtering options.
 
+When criteria are evaluated against a [rule context](Canvas.md#attr-canvasrulescope) (as with [FormItem.visibleWhen](FormItem.md#attr-formitemvisiblewhen), [Canvas.enableWhen](Canvas.md#attr-canvasenablewhen), or a [dynamic property](DynamicProperty.md#attr-dynamicpropertytruewhen)), `fieldName` as a dataPath also accepts `.` as a segment separator in addition to `/`, with no difference in behavior -- see [Canvas.provideRuleContext](Canvas.md#method-canvasproviderulecontext). Dot-separated paths such as `"grid.selectedRecord.name"` are preferred in this context.
+
 ### Groups
 
 - advancedFilter

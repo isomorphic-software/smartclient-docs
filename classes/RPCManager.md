@@ -627,7 +627,7 @@ See the [overview of error handling](../kb_topics/errorHandling.md#kb-topic-erro
 
 ### See Also
 
-- [DataSource.handleError](DataSource_1.md#method-datasourcehandleerror)
+- [DataSource.handleError](DataSource_2.md#method-datasourcehandleerror)
 - [RPCManager.handleTransportError](#classmethod-rpcmanagerhandletransporterror)
 - [RPCManager.runDefaultErrorHandling](#classmethod-rpcmanagerrundefaulterrorhandling)
 

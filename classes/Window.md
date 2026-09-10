@@ -154,18 +154,6 @@ If [Window.showHeaderBackground](#attr-windowshowheaderbackground) is true, this
 **Flags**: IRWA
 
 ---
-## Attr: Window.restoreButtonPrompt
-
-### Description
-Hover prompt for the [Window.restoreButton](#attr-windowrestorebutton) when [Window.showHeaderControlPrompts](#attr-windowshowheadercontrolprompts) is set; also the prompt of the [Window.minimizeButton](#attr-windowminimizebutton) while the Window is minimized, since the same button restores it.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IR
-
----
 ## Attr: Window.headerBackground
 
 ### Description
@@ -248,18 +236,6 @@ If set to true the image source is derived from [Window.headerSrc](#attr-windowh
 - header
 
 **Flags**: IRA
-
----
-## Attr: Window.maximizeButtonPrompt
-
-### Description
-Hover prompt for the [Window.maximizeButton](#attr-windowmaximizebutton) when [Window.showHeaderControlPrompts](#attr-windowshowheadercontrolprompts) is set.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IR
 
 ---
 ## Attr: Window.bodyConstructor
@@ -417,18 +393,6 @@ Can the window be drag-resized? If true the window may be drag resized from its 
 - [Window.showResizer](#attr-windowshowresizer)
 
 **Flags**: IRW
-
----
-## Attr: Window.minimizeButtonPrompt
-
-### Description
-Hover prompt for the [Window.minimizeButton](#attr-windowminimizebutton) when [Window.showHeaderControlPrompts](#attr-windowshowheadercontrolprompts) is set.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IR
 
 ---
 ## Attr: Window.resizer
@@ -905,18 +869,6 @@ Style for the Window header.
 **Flags**: IRWA
 
 ---
-## Attr: Window.closeButtonPrompt
-
-### Description
-Hover prompt for the [Window.closeButton](#attr-windowclosebutton) when [Window.showHeaderControlPrompts](#attr-windowshowheadercontrolprompts) is set.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IR
-
----
 ## Attr: Window.footer
 
 ### Description
@@ -1028,20 +980,6 @@ Controls the opacity of the modal mask displayed behind modal windows.
 ### See Also
 
 - [Window.modalMask](#attr-windowmodalmask)
-
-**Flags**: IR
-
----
-## Attr: Window.showHeaderControlPrompts
-
-### Description
-Whether the standard header buttons show a hover prompt naming their action: the [Window.minimizeButton](#attr-windowminimizebutton), [Window.maximizeButton](#attr-windowmaximizebutton), [Window.restoreButton](#attr-windowrestorebutton) and [Window.closeButton](#attr-windowclosebutton) are icon-only, so without a prompt nothing names them on hover. The texts are [Window.minimizeButtonPrompt](#attr-windowminimizebuttonprompt), [Window.maximizeButtonPrompt](#attr-windowmaximizebuttonprompt), [Window.restoreButtonPrompt](#attr-windowrestorebuttonprompt) and [Window.closeButtonPrompt](#attr-windowclosebuttonprompt). A custom button among the [Window.headerControls](#attr-windowheadercontrols) that has a title but no prompt of its own shows its title. Prompts are applied when the header is created.
-
-### Groups
-
-- windowHeader
-- appearance
-- header
 
 **Flags**: IR
 

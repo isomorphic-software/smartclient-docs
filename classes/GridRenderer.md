@@ -94,6 +94,16 @@ If true, and canHover is also true, when the user hovers over a cell, hover text
 **Flags**: RW
 
 ---
+## Attr: GridRenderer.defaultCentering
+
+### Description
+Base vertical centering mode for this grid body: one of the constants [GridRenderer.TEXT_HEIGHT](#classattr-gridrenderertext_height), [GridRenderer.TABLE](#classattr-gridrenderertable) or [GridRenderer.FLEX](#classattr-gridrendererflex). Applies to every row unless [GridRenderer.getCellCentering](#method-gridrenderergetcellcentering) is overridden to vary it per row or per cell.
+
+Leave this unset to have the mode chosen automatically during initialization: bodies rendered as a table use TABLE, and other bodies use FLEX, which centers every content type geometrically. TEXT\_HEIGHT is faster, but it offsets images and inline-block edit items vertically, so it is never chosen automatically - set it explicitly to opt in for text-only grids.
+
+**Flags**: IR
+
+---
 ## Attr: GridRenderer.showHoverOnDisabledCells
 
 ### Description
@@ -767,9 +777,9 @@ If records will be variable height, you should switch on [virtualScrolling](#att
 ### Description
 Returns the vertical centering mode for the given row (or cell, if [GridRenderer.centerByCell](#attr-gridrenderercenterbycell) is true). The return value is one of the numeric constants [GridRenderer.TEXT_HEIGHT](#classattr-gridrenderertext_height), [GridRenderer.TABLE](#classattr-gridrenderertable), or [GridRenderer.FLEX](#classattr-gridrendererflex).
 
-The default implementation returns [gridRenderer.defaultCentering](#attr-gridrendererdefaultcentering) for all rows. [ListGrid](ListGrid_1.md#class-listgrid) overrides this to return FLEX for edit rows when the default centering is TEXT\_HEIGHT, because inline-block form items require geometric centering in divGrid block-DIV cells.
+The default implementation returns [GridRenderer.defaultCentering](#attr-gridrendererdefaultcentering) for all rows. [ListGrid](ListGrid_1.md#class-listgrid) overrides this to return FLEX for edit rows when the default centering is TEXT\_HEIGHT, because inline-block form items require geometric centering in divGrid block-DIV cells.
 
-Override this method to provide per-row or per-cell centering control. The method must be very fast — it may be called once per row (or per cell if centerByCell is true) during every table redraw.
+Override this method to provide per-row or per-cell centering control. The method must be very fast -- it may be called once per row (or per cell if centerByCell is true) during every table redraw.
 
 ### Parameters
 

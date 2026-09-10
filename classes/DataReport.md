@@ -12,6 +12,16 @@ A runtime report document: a [PortalLayout](PortalLayout.md#class-portallayout) 
 [ReportBuilder](ReportBuilder.md#class-reportbuilder) is the _editor_ for a DataReport: it hosts one as the root of its edit canvas and delegates export to it, so a report exports identically whether driven from the builder or deployed standalone.
 
 ---
+## Attr: DataReport.reportTitle
+
+### Description
+The report's display title: names the report on the export cover sheet and download filename, and is the header title shown by the enclosing ReportScreen's toolbar. The hosting ReportBuilder pushes its current report title here before delegating an export; a standalone deployed report sets it from its definition.
+
+This is the report's DISPLAY title, distinct from the saved-report NAME the ReportBuilder Save dialog manages -- two reports may share a title but have different names.
+
+**Flags**: IRW
+
+---
 ## Method: DataReport.getComponents
 
 ### Description
@@ -71,7 +81,7 @@ Re-show every viewer-hidden component. Synonym for [DataReport.restoreAll](#meth
 ## Method: DataReport.setReportTitle
 
 ### Description
-Sets the report's display [DataReport.reportTitle](#datareportreporttitle): the header title (shown by the enclosing ReportScreen's toolbar) and the export base name. In an editor this writes THROUGH the edit node, so the new title serializes into the saved / published report and reaches the deployed header; the toolbar then refreshes to show it. This is the report's DISPLAY title, distinct from the saved-report NAME the ReportBuilder Save dialog manages -- two reports may share a title but have different names.
+Sets the report's display [DataReport.reportTitle](#attr-datareportreporttitle): the header title (shown by the enclosing ReportScreen's toolbar) and the export base name. In an editor this writes THROUGH the edit node, so the new title serializes into the saved / published report and reaches the deployed header; the toolbar then refreshes to show it. This is the report's DISPLAY title, distinct from the saved-report NAME the ReportBuilder Save dialog manages -- two reports may share a title but have different names.
 
 ### Parameters
 

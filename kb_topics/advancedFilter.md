@@ -7,7 +7,7 @@
 ## KB Topic: Advanced Filtering
 
 ### Description
-Isomorphic [DataSources](../classes/DataSource_1.md#class-datasource) provide an advanced filtering mechanism for searching data, including a wide range of builtin [search-operators](../reference_2.md#object-operator), which allow searching via simple comparisons like `equals` and `contains` and more complex checks, like `equalsOtherField` and `regex`. You can also add entirely custom search-operators, via DataSource method [addSearchOperator()](../classes/DataSource_1.md#method-datasourceaddsearchoperator).
+Isomorphic [DataSources](../classes/DataSource_1.md#class-datasource) provide an advanced filtering mechanism for searching data, including a wide range of builtin [search-operators](../reference_2.md#object-operator), which allow searching via simple comparisons like `equals` and `contains` and more complex checks, like `equalsOtherField` and `regex`. You can also add entirely custom search-operators, via DataSource method [addSearchOperator()](../classes/DataSource_2.md#method-datasourceaddsearchoperator).
 
 For a full list of operators, see [OperatorId](../reference.md#type-operatorid).
 
@@ -20,7 +20,7 @@ For a full list of operators, see [OperatorId](../reference.md#type-operatorid).
 - [DataSource.hasCustomTypeOperators](../classes/DataSource.md#classmethod-datasourcehascustomtypeoperators)
 - [Operator.condition](../classes/Operator.md#method-operatorcondition)
 - [Operator.compareCriteria](../classes/Operator.md#method-operatorcomparecriteria)
-- [DataSource.addSearchOperator](../classes/DataSource_1.md#method-datasourceaddsearchoperator)
+- [DataSource.addSearchOperator](../classes/DataSource_2.md#method-datasourceaddsearchoperator)
 - [DataSource.getSearchOperator](../classes/DataSource_1.md#method-datasourcegetsearchoperator)
 - [DataSource.getTypeOperators](../classes/DataSource_1.md#method-datasourcegettypeoperators)
 - [DataSource.setTypeOperators](../classes/DataSource_1.md#method-datasourcesettypeoperators)

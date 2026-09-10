@@ -175,7 +175,6 @@ Properties defining an object's appearance
 - [Window.showHeaderIcon](../classes/Window.md#attr-windowshowheadericon)
 - [Window.headerIconDefaults](../classes/Window.md#attr-windowheadericondefaults)
 - [Window.showCloseButton](../classes/Window.md#attr-windowshowclosebutton)
-- [Window.showHeaderControlPrompts](../classes/Window.md#attr-windowshowheadercontrolprompts)
 - [Window.showMinimizeButton](../classes/Window.md#attr-windowshowminimizebutton)
 - [Window.minimized](../classes/Window.md#attr-windowminimized)
 - [Window.defaultMinimizeHeight](../classes/Window.md#attr-windowdefaultminimizeheight)

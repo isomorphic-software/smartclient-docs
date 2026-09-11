@@ -90,6 +90,18 @@ Renders a header DIV above the main body of the event, an area of limited height
 **Flags**: IRW
 
 ---
+## Attr: EventCanvas.keepPeersInView
+
+### Description
+Causes the [gripper](#attr-eventcanvasgripper) and [label](#attr-eventcanvaslabel) to be kept within the visible area of the calendar view, when this canvas is tall enough that one or both ends of it are outside that area - where the peer marking that end would otherwise be clipped by the edge of the view, or hidden altogether once the end it marks is scrolled out of sight.
+
+The gripper stays centered on the topmost visible point of this canvas, so it remains available for dragging, and the label is aligned so that its bottom edge sits on the bottom-most visible point, so it marks the visible end of the canvas. Both are hidden only when no part of this canvas is in view.
+
+This is the default behavior for [indicators](../reference.md#class-indicatorcanvas), which always span every row in the view.
+
+**Flags**: IRW
+
+---
 ## Attr: EventCanvas.calendarView
 
 ### Description

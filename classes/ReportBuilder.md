@@ -130,6 +130,14 @@ Name of the date/datetime field driven by the report-level date-range filter in 
 **Flags**: IRW
 
 ---
+## Attr: ReportBuilder.emptyMessageImageSize
+
+### Description
+Natural `[width, height]` of [ReportBuilder.emptyMessageImage](#attr-reportbuilderemptymessageimage), in pixels. Used as a maximum size and to derive the aspect ratio the image keeps while being scaled down to fit; an image is never scaled above this size.
+
+**Flags**: IRW
+
+---
 ## Attr: ReportBuilder.reportSaveForm
 
 ### Description
@@ -230,6 +238,16 @@ Cap on persisted AI prompt history records. Older records are trimmed in FIFO or
 **Flags**: IRW
 
 ---
+## Attr: ReportBuilder.emptyMessage
+
+### Description
+Guidance shown across the body of an empty report, telling the author how to add a first component. Suppressed entirely by [showEmptyMessage:false](#attr-reportbuildershowemptymessage), and accompanied by [ReportBuilder.emptyMessageImage](#attr-reportbuilderemptymessageimage) where one is configured.
+
+The message is styled by [ReportBuilder.emptyMessageStyle](#attr-reportbuilderemptymessagestyle) and is never part of the report: it is not a report component, so it does not appear in [ReportBuilder.getReportDefinition](#method-reportbuildergetreportdefinition) output, in a published report, or in a report opened through [ReportBuilder.editInReify](#method-reportbuildereditinreify).
+
+**Flags**: IRW
+
+---
 ## Attr: ReportBuilder.aiIncompleteSubtitle
 
 ### Description
@@ -288,6 +306,14 @@ Synthesized error message used when the watchdog timer fires.
 ### Groups
 
 - i18nMessages
+
+**Flags**: IRW
+
+---
+## Attr: ReportBuilder.emptyMessageStyle
+
+### Description
+CSS style applied to the [ReportBuilder.emptyMessage](#attr-reportbuilderemptymessage) text shown across an empty report. Defaults to the style the visual builder uses for the same guidance on a new project, so the two tools present an empty document identically and one style change restyles both. Override to restyle the report guidance alone. Read when the guidance pane is created, so set it before an empty report is first shown.
 
 **Flags**: IRW
 
@@ -388,6 +414,14 @@ Watchdog timeout for the [ReportBuilderProcess](#class-reportbuilderprocess) CoT
 
 ### Description
 Available export formats for reports.
+
+**Flags**: IRW
+
+---
+## Attr: ReportBuilder.showEmptyMessage
+
+### Description
+Whether an empty report shows the [ReportBuilder.emptyMessage](#attr-reportbuilderemptymessage) guidance backdrop telling the author how to add their first component.
 
 **Flags**: IRW
 
@@ -634,6 +668,16 @@ Whether the "Redo" toolbar button is shown.
 Modal dialog shown when a Slicer palette node is dropped, prompting the author to choose which DataSource field the slicer targets. Created lazily on the first Slicer drop and reused; its field picker and the per-drop context are refreshed for each drop before the dialog is shown.
 
 **Flags**: R
+
+---
+## Attr: ReportBuilder.emptyMessageImage
+
+### Description
+Illustration shown below [ReportBuilder.emptyMessage](#attr-reportbuilderemptymessage) in an empty report. Scaled to fit the available space, preserving the aspect ratio implied by [ReportBuilder.emptyMessageImageSize](#attr-reportbuilderemptymessageimagesize). Set to `null` for no image.
+
+Defaults to the same illustration the visual builder shows on a new project, so the two tools present an empty document identically and one change restyles both. As a relative source it resolves against the page's application image directory, so that directory must carry this file -- see [Page.setAppImgDir](Page.md#classmethod-pagesetappimgdir); in the shipped tools it is the visual builder's own `graphics/` directory.
+
+**Flags**: IRW
 
 ---
 ## Attr: ReportBuilder.aiPromptTextBoxStyle

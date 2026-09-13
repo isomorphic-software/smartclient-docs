@@ -256,6 +256,14 @@ Whether to show [overflow chips](#attr-calendareventoverflowimg) when overlappin
 **Flags**: IRW
 
 ---
+## Attr: Calendar.eventCanvasGripperSize
+
+### Description
+The width and height of the [gripper](#attr-calendareventcanvasgripper) shown on an event canvas, including the ring of gripper styling that shows around the [icon](#attr-calendareventcanvasgrippericon) drawn inside it.
+
+**Flags**: IRA
+
+---
 ## Attr: Calendar.zoneCanvas
 
 ### Description
@@ -972,6 +980,14 @@ If [Calendar.showWorkday](#attr-calendarshowworkday) is set, this is the style u
 - appearance
 
 **Flags**: IR
+
+---
+## Attr: Calendar.eventCanvasGripperIconSize
+
+### Description
+The width and height at which the [gripper icon](#attr-calendareventcanvasgrippericon) is drawn, centered inside a gripper of [Calendar.eventCanvasGripperSize](#attr-calendareventcanvasgrippersize). The difference between the two sizes is the ring of gripper styling that shows around the icon.
+
+**Flags**: IRA
 
 ---
 ## Attr: Calendar.canDragEvents
@@ -2582,7 +2598,9 @@ The name of the field which will determine the [lane](#attr-calendarlanes) in wh
 ## Attr: Calendar.eventCanvasGripperIcon
 
 ### Description
-Icon used as the default eveng gripper icon.
+Icon used as the default event gripper icon.
+
+This is the name of a [stockIcon](../reference_2.md#object-stockicon) that resolves to an SVG symbol, so that it takes its color from the [gripper](#attr-calendareventcanvasgripper) style in the current skin, in skins whose icons are images as well as those whose icons are SVG sprites.
 
 **Flags**: A
 

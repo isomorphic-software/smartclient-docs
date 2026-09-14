@@ -276,6 +276,7 @@ Returns whether the canvas associated with the given DOM element is in a consist
 *   canvas isn't dirty
 *   canvas has no queued overflow operations
 *   canvas is not animating
+*   drawn children and peers satisfy their widget-specific readiness checks
 
 ### Parameters
 

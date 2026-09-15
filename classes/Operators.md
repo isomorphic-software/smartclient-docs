@@ -137,7 +137,7 @@ Title for the "iStartsWith" operator
 ## ClassAttr: Operators.valueRangeUsageHint
 
 ### Description
-The default usage description for operators with [valueType](../reference_2.md#type-operatorvaluetype) "valueRange". A usage hint can also be set directly on a [specific operator](Operator.md#attr-operatorusagehint).
+The default usage description for operators with [valueType](../reference.md#type-operatorvaluetype) "valueRange". A usage hint can also be set directly on a [specific operator](Operator.md#attr-operatorusagehint).
 
 ### Groups
 
@@ -245,7 +245,7 @@ Title for the "notStartsWithField" operator
 ## ClassAttr: Operators.fieldTypeUsageHint
 
 ### Description
-The default usage description for operators with [valueType](../reference_2.md#type-operatorvaluetype) "fieldType". A usage hint can also be set directly on a [specific operator](Operator.md#attr-operatorusagehint).
+The default usage description for operators with [valueType](../reference.md#type-operatorvaluetype) "fieldType". A usage hint can also be set directly on a [specific operator](Operator.md#attr-operatorusagehint).
 
 ### Groups
 
@@ -509,7 +509,7 @@ Human-readable description of an object, such as a [Criterion](../reference_2.md
 ## ClassAttr: Operators.fieldNameUsageHint
 
 ### Description
-The default usage description for operators with [valueType](../reference_2.md#type-operatorvaluetype) "fieldName". A usage hint can also be set directly on a [specific operator](Operator.md#attr-operatorusagehint).
+The default usage description for operators with [valueType](../reference.md#type-operatorvaluetype) "fieldName". A usage hint can also be set directly on a [specific operator](Operator.md#attr-operatorusagehint).
 
 ### Groups
 
@@ -521,7 +521,7 @@ The default usage description for operators with [valueType](../reference_2.md#t
 ## ClassAttr: Operators.valueSetUsageHint
 
 ### Description
-The default usage description for operators with [valueType](../reference_2.md#type-operatorvaluetype) "valueSet". A usage hint can also be set directly on a [specific operator](Operator.md#attr-operatorusagehint).
+The default usage description for operators with [valueType](../reference.md#type-operatorvaluetype) "valueSet". A usage hint can also be set directly on a [specific operator](Operator.md#attr-operatorusagehint).
 
 ### Groups
 

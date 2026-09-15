@@ -8719,7 +8719,7 @@ Resizes the widget, adding deltaX to its width and deltaY to its height (moves t
 ### Description
 Show a clickMask over the entire screen that intercepts mouse clicks and fires some action. The mask created will be associated with this canvas - calling this method multiple times will not show multiple (stacked) clickMasks if the mask associated with this canvas is already up.
 
-The clickMask useful for modal dialogs, menus and similar uses, where any click outside of some Canvas should either be suppressed (as in a modal dialog) or just cause something (like dismissing a menu).
+The `unmaskedTargets` argument may be used to register components that should not be occluded by the mask - potentially including the canvas on which the method was called. The clickMask useful for modal dialogs, menus and similar uses, where any click outside of some Canvas should either be suppressed (as in a modal dialog) or cause some action (like dismissing a menu).
 
 ### Parameters
 

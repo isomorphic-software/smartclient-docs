@@ -61,7 +61,7 @@ Refer to *this example* to see how this case works.
 
 **Binary handling without the SmartClient Server**
 
-To download or view files with the SmartClient Server, you can write a servlet that streams back binary data. For a download, you can then redirect the main page to the servlet by setting window.location - be sure the download can never fail if you this, because any error message returned by the server in lieu of a file will replace the application instead of triggering a "Save As.." dialog.
+To download or view files with the SmartClient Server, you can write a servlet that streams back binary data. For a download, you can then redirect the main page to the servlet by setting window.location - be sure the download can never fail if you do this, because any error message returned by the server in lieu of a file will replace the application instead of triggering a "Save As.." dialog.
 
 To view a file, you can open a new browser window to the URL of the servlet.
 

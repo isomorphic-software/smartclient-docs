@@ -9,7 +9,7 @@
 *Inherits from:* [MultiPickerItem](MultiPickerItem.md#class-multipickeritem)
 
 ### Description
-Specialized [MultiPickerItem](MultiPickerItem.md#class-multipickeritem) used for generating search criteria in the [FilterEditor](ListGrid_1.md#attr-listgridfiltereditor) and in SearchForms.
+Specialized [MultiPickerItem](MultiPickerItem.md#class-multipickeritem) used for generating search criteria in the [FilterEditor](ListGrid_1.md#attr-listgridfiltereditor) and in SearchForms. This is the default editor for filter fields that derive their options from an optionDataSource or a large valueMap. See [DynamicForm.largeValueMapFilterEditorType](DynamicForm.md#attr-dynamicformlargevaluemapfiltereditortype).
 
 SetFilterItem generates [inSet and notInSet](../reference.md#type-operatorid) filter criteria from a set of possible values, which can be provided via an explicit [valueMap](FormItem.md#attr-formitemvaluemap) or [optionDataSource](MultiPickerItem.md#attr-multipickeritemoptiondatasource), or can be derived from the [target databound component](#attr-setfilteritemfiltertargetcomponent) or a [list of records](#attr-setfilteritemsourcelist).
 

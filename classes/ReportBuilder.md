@@ -62,6 +62,14 @@ Whether the "Export to Excel" button is shown on the ReportBuilder's own header.
 **Flags**: IR
 
 ---
+## Attr: ReportBuilder.projectDataSource
+
+### Description
+Storage a report's publication project is saved to when the report is published -- see [ReportBuilder.publishReport](#method-reportbuilderpublishreport). A draft report stores no project.
+
+**Flags**: IRW
+
+---
 ## Attr: ReportBuilder.palettePanel
 
 ### Description
@@ -128,6 +136,14 @@ Optional list of natural-language prompt strings deployments want authors to dis
 Name of the date/datetime field driven by the report-level date-range filter in the global filter bar. The selected range is published to the report [dataContext](Canvas.md#attr-canvasdatacontext) for every available DataSource that has a field of this name, so a single date range narrows all data views at once. Defaults to `"created"` -- the row audit timestamp present on the demo's DataSources. A DataSource without this field is simply left unfiltered by the date range.
 
 **Flags**: IRW
+
+---
+## Attr: ReportBuilder.reportDeploymentType
+
+### Description
+Deployment type used when publishing through [ReportBuilder.deploymentDataSource](#attr-reportbuilderdeploymentdatasource): "test", "staging" or "production". Publishing a report means making it available at its real URL, so the default is "production" (served under the `/app/` URL space).
+
+**Flags**: IR
 
 ---
 ## Attr: ReportBuilder.emptyMessageImageSize
@@ -272,6 +288,14 @@ Label above the original prompt in the incomplete dialog.
 **Flags**: IRW
 
 ---
+## Attr: ReportBuilder.deploymentDataSource
+
+### Description
+In hosted Reify (Reify Cloud / Reify OnSite), publishing a report also deploys a SNAPSHOT of its publication project through this DataSource -- ordinarily `"isc_hostedDeployments"` -- so the deployed URL only changes when the report is re-published. When unset (the default, and the workspace configuration) publish stops at the published project, which the project runner serves live.
+
+**Flags**: IR
+
+---
 ## Attr: ReportBuilder.reportSaved
 
 ### Description
@@ -296,6 +320,20 @@ Suggested recipient email addresses offered in the Schedule dialog's recipients 
 Default format for report export.
 
 **Flags**: IRW
+
+---
+## Attr: ReportBuilder.reifyEditorURL
+
+### Description
+Entry URL of the Reify editor to open for [ReportBuilder.editInReify](#method-reportbuildereditinreify).
+
+Left null, editInReify opens the standalone workspace editor (`tools/visualBuilder/index.jsp`) resolved relative to the isomorphic directory — correct for the workspace ReportBuilder page. A HOSTED ReportBuilder page (served behind a URL-rewrite prefix such as `/reports/`) must instead set this to the hosted Reify editor entry — e.g. `"/create/"`, which the rewrite serves from `visualBuilder/hosted.jsp` and which reads the `project` parameter — because the relative default would otherwise resolve under the page's own prefix and target the wrong (workspace) editor.
+
+### See Also
+
+- [ReportBuilder.editInReify](#method-reportbuildereditinreify)
+
+**Flags**: IR
 
 ---
 ## Attr: ReportBuilder.aiTimeoutMessage
@@ -353,7 +391,17 @@ DataSource used for DataSource definition storage. Defaults to `vbDataSources` (
 ## Attr: ReportBuilder.reifyProjectName
 
 ### Description
-Name of the Reify project into which reports are written by [ReportBuilder.editInReify](#method-reportbuildereditinreify). If the project does not exist in Reify storage (`vbProjects`) it is created on the first save; on subsequent saves the new screen is appended to the existing project's screen list.
+Namespace under which per-builder browser-local state, such as the AI prompt history, is stored. Distinct values keep two ReportBuilder applications served from the same origin from sharing history.
+
+Reports themselves are not written to a project of this name: [ReportBuilder.editInReify](#method-reportbuildereditinreify) forks the report via `Reify.promoteReportScreen()`, and publishing creates a project named for the report -- see [ReportBuilder.publishReport](#method-reportbuilderpublishreport).
+
+**Flags**: IRW
+
+---
+## Attr: ReportBuilder.screenDataSource
+
+### Description
+Storage a report's screen is saved to.
 
 **Flags**: IRW
 
@@ -582,6 +630,20 @@ Optional override for the Schedule dialog's time-zone list: a valueMap of IANA z
 **Flags**: IRW
 
 ---
+## Attr: ReportBuilder.projectRunnerURL
+
+### Description
+URL of the project runner that serves published reports.
+
+The default names the directory, because the ReportBuilder is not served from the tools directory the way Reify is, so Reify's own bare `"projectRunner.jsp"` would not resolve here. It is written with the `[ISOMORPHIC]` prefix rather than a leading slash so that it survives deployment under a servlet context path.
+
+### See Also
+
+- [ReportBuilder.getReportDeploymentURL](#method-reportbuildergetreportdeploymenturl)
+
+**Flags**: IR
+
+---
 ## Attr: ReportBuilder.mainLayout
 
 ### Description
@@ -649,7 +711,9 @@ Restored (saved) reports are not re-defaulted -- these apply only to newly creat
 ## Attr: ReportBuilder.reportDataSource
 
 ### Description
-DataSource for persisting saved reports. If not specified, reports can only be saved to local storage or exported.
+Retired: reports save through [ReportBuilder.screenDataSource](#attr-reportbuilderscreendatasource) as ordinary Reify screens, so this attribute no longer selects where reports are stored. A configured value is honored only as the source that [ReportBuilder.migrateLegacyReports](#method-reportbuildermigratelegacyreports) migrates old-format reports from.
+
+**Deprecated**
 
 **Flags**: IRW
 
@@ -657,7 +721,7 @@ DataSource for persisting saved reports. If not specified, reports can only be s
 ## Attr: ReportBuilder.showRedo
 
 ### Description
-Whether the "Redo" toolbar button is shown.
+Whether the "Redo" toolbar button is shown. Note that redo is not currently supported for reports — [ReportBuilder.redo](#method-reportbuilderredo) is a no-op — so showing the button is not recommended.
 
 **Flags**: IR
 
@@ -668,6 +732,20 @@ Whether the "Redo" toolbar button is shown.
 Modal dialog shown when a Slicer palette node is dropped, prompting the author to choose which DataSource field the slicer targets. Created lazily on the first Slicer drop and reused; its field picker and the per-drop context are refreshed for each drop before the dialog is shown.
 
 **Flags**: R
+
+---
+## Attr: ReportBuilder.autoSaveReports
+
+### Description
+Whether an already-saved report is written again automatically as it is edited, the way Reify saves a screen it has open.
+
+A report that has never been saved has no name to save under and is left alone; so is a report with no unsaved changes. Autosave writes through the report's own project, so it is recorded as a version exactly like an explicit [Save](#method-reportbuildersavereporttostorage).
+
+### See Also
+
+- [ReportBuilder.autoSaveInterval](#attr-reportbuilderautosaveinterval)
+
+**Flags**: IRW
 
 ---
 ## Attr: ReportBuilder.emptyMessageImage
@@ -684,6 +762,14 @@ Defaults to the same illustration the visual builder shows on a new project, so 
 
 ### Description
 Optional override for the [TextAreaItem.textBoxStyle](TextAreaItem.md#attr-textareaitemtextboxstyle) of the "Ask AI..." prompt input, so embedders can theme it without touching the rest of the framework's textArea styles. Picks up the standard SmartClient state suffixes (_Focused_, _Disabled_, _Error_, _Hint_) - define those alongside the base class. When unset, the prompt uses the framework's default `textAreaItem` style.
+
+**Flags**: IRW
+
+---
+## Attr: ReportBuilder.autoSaveInterval
+
+### Description
+How often, in milliseconds, an edited report is checked for changes worth saving. See [ReportBuilder.autoSaveReports](#attr-reportbuilderautosavereports).
 
 **Flags**: IRW
 
@@ -708,6 +794,19 @@ Grid showing available reports in the load dialog.
 
 ### Description
 Clears the current report and creates a new blank report.
+
+---
+## Method: ReportBuilder.loadReportFromStorage
+
+### Description
+Load a stored report by name.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| reportName | [String](#type-string) | false | — | report to load |
+| callback | [Callback](../reference.md#type-callback) | true | — | fired with whether the load succeeded |
 
 ---
 ## Method: ReportBuilder.saveReportAs
@@ -785,6 +884,18 @@ Adds a component to the report from a paletteNode.
 `[EditNode](#type-editnode)` — the created EditNode
 
 ---
+## Method: ReportBuilder.listStoredReports
+
+### Description
+List the stored reports, most recently modified first.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| callback | [Callback](../reference.md#type-callback) | false | — | fired with an Array of file records, each carrying `fileName` and `fileLastModified` |
+
+---
 ## Method: ReportBuilder.getReportQuery
 
 ### Description
@@ -827,7 +938,7 @@ Returns the effective componentDefaults block for a component class: the framewo
 ## Method: ReportBuilder.saveReport
 
 ### Description
-Saves the current report. If a reportDataSource is configured, opens the save dialog. Otherwise, prompts the user to export the report.
+Saves the current report, prompting for a name if it does not have one yet. Otherwise, prompts the user to export the report.
 
 ### Parameters
 
@@ -858,6 +969,40 @@ Returns the report's components as edit-node-shaped descriptors, one per portlet
 `[Array](#type-array)` — component descriptors
 
 ---
+## Method: ReportBuilder.undo
+
+### Description
+Reverse the last edit made to the report.
+
+This is the edit context's own undo -- the same mechanism Reify uses -- so it covers every kind of edit the canvas records rather than a report-specific subset.
+
+### See Also
+
+- [ReportBuilder.redo](#method-reportbuilderredo)
+
+---
+## Method: ReportBuilder.redo
+
+### Description
+Redo is not currently supported for reports, so this method does nothing. See [ReportBuilder.showRedo](#attr-reportbuildershowredo).
+
+---
+## Method: ReportBuilder.getReportDeploymentURL
+
+### Description
+Returns the stable URL at which a published report is served. The report's publication project carries the report's name, so this URL does not change between publishes; content changes reach it because the project references the screen by name.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| fileName | [String](#type-string) | false | — | stored report identity |
+
+### Returns
+
+`[String](#type-string)` — URL serving the report
+
+---
 ## Method: ReportBuilder.getReportDefinition
 
 ### Description
@@ -871,7 +1016,7 @@ Returns the serialized report definition.
 ## Method: ReportBuilder.editInReify
 
 ### Description
-Opens the current report in Reify for advanced editing. The current report's [EditContext](EditContext.md#class-editcontext) is serialized and saved to Reify's screen storage (`vbScreens`) under a timestamp-suffixed screen name, the screen is added to the [ReportBuilder.reifyProjectName](#attr-reportbuilderreifyprojectname) project (creating it if necessary), then Reify is opened in a new browser window pointing at the saved project/screen.
+Opens the current report in Reify. The report is saved, a new project whose single screen is the report is created, and Reify opens in a new browser window on that project. The report opens as a hosted, **read-only** report screen — it is NOT promoted to an editable copy. Making an editable copy is a separate, explicit action in Reify (the read-only screen's "Promote to editable screen"); see `Reify.openReportInNewProject()` and `Reify.promoteCurrentReport()`.
 
 ---
 ## Method: ReportBuilder.addComponentViaAI
@@ -902,8 +1047,31 @@ Sets report-level query configuration including criteria, groupBy, and summaryFu
 ## Method: ReportBuilder.publishReport
 
 ### Description
-Publishes the current report to a shareable URL via [Reify.publishScreen](Reify.md#classmethod-reifypublishscreen). The report's EditContext is serialized, saved as a Reify screen, added to the [ReportBuilder.reifyProjectName](#attr-reportbuilderreifyprojectname) project, and a share record is written to `isc_sharedProjects`. On success a dialog displays the copyable share URL.
+Publishes the current report to a shareable URL. The report is saved, then its publication project -- an ordinary Reify project named for the report -- is created on first publish and merged on every publish after that, so anything a user has added to that project in Reify survives re-publishing. On success a dialog displays the copyable share URL.
 
-This reuses the same Reify infrastructure (`projectRunner.jsp`) that [Reify.publishProject](#method-reifypublishproject) uses, so the published report is a real Reify screen that can also be opened in Reify for further editing.
+The published project is served by the same Reify infrastructure (`projectRunner.jsp`) that serves every project, and the report's screen inside it stays maintained by the ReportBuilder: content changes flow to the served URL because the project references the screen by name.
+
+---
+## Method: ReportBuilder.saveReportToStorage
+
+### Description
+Save the current report under the given name, as an ordinary Reify screen. A draft persists nothing else; publishing is what creates a project.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| reportName | [String](#type-string) | false | — | name to save under |
+| callback | [Callback](../reference.md#type-callback) | true | — | fired with whether the save succeeded |
+
+---
+## Method: ReportBuilder.getReportVersions
+
+### Description
+Versions recorded for the report currently loaded, newest first. Populated as the report is saved; empty for a report that has not been saved in this session.
+
+### Returns
+
+`[Array](#type-array)` — version records from the screen store
 
 ---

@@ -453,6 +453,8 @@ Because the type of `applyWhen` is [ServerDynamicCriteria](../reference_2.md#typ
 
 See [ServerDynamicCriteria](../reference_2.md#type-serverdynamiccriteria) for the full syntax.
 
+**Client-side deferral:** when validator criteria reference `auth.*` or `context.*` fields, the client cannot resolve these values directly and the validator is automatically deferred to server-side evaluation. The client skips the validator; the server evaluates the full criteria during the CRUD operation.
+
 #### Security
 On the server, `applyWhen` criteria are evaluated against the stored database record overlaid with submitted update values. Client-sent `oldValues` are never used, preventing spoofing attacks where a client fabricates field values to bypass validation. For fields not included in the submitted update, the database value is used.
 
@@ -480,7 +482,7 @@ For validators of type "serverCustom" only: a scriptlet in any supported JSR223 
 ```
 The scriptlet should return a boolean true or false value - failing to return a value will be considered a false result (validator failed). If your expression is syntactically invalid, an exception is thrown and the error message is displayed in the client.
 
-See [serverScript](../kb_topics/serverScript.md#kb-topic-server-scripting) for general information on Server Scripting and JSR223, and [velocitySupport](../kb_topics/velocitySupport.md#kb-topic-velocity-context-variables) for general information on Velocity support, and also see below for special rules for Velocity.
+See [serverScript](../kb_topics/serverScript.md#kb-topic-server-scripting) for general information on Server Scripting and JSR223, and [velocitySupport](#kb-topic-velocitysupport) for general information on Velocity support, and also see below for special rules for Velocity.
 
 **Available variables** The following variables are available in a `serverCondition`:
 

@@ -42,6 +42,7 @@ Developers performing global styling modifications for formItems should also be 
 - [FormItem.cellStyle](../classes/FormItem.md#attr-formitemcellstyle)
 - [FormItem.hintStyle](../classes/FormItem.md#attr-formitemhintstyle)
 - [FormItem.titleStyle](../classes/FormItem.md#attr-formitemtitlestyle)
+- [FormItem.verticalTitleStyle](../classes/FormItem.md#attr-formitemverticaltitlestyle)
 - [FormItem.textBoxStyle](../classes/FormItem.md#attr-formitemtextboxstyle)
 - [FormItem.printTextBoxStyle](../classes/FormItem.md#attr-formitemprinttextboxstyle)
 - [FormItem.printReadOnlyTextBoxStyle](../classes/FormItem.md#attr-formitemprintreadonlytextboxstyle)

@@ -114,6 +114,14 @@ Opacity of the page-greying mask shown by the [overlay view](#classmethod-reifye
 **Flags**: IRWA
 
 ---
+## ClassAttr: Reify.DEFAULT_PROJECT_RUNNER_URL
+
+### Description
+Runner URL used by [Reify.getProjectRunnerBaseURL](#classmethod-reifygetprojectrunnerbaseurl) when the caller supplies none: `"[ISOMORPHIC]/../tools/visualBuilder/projectRunner.jsp"`. A tool served from its own page should supply its own URL rather than rely on this — see [Reify.projectRunnerURL](#attr-reifyprojectrunnerurl).
+
+**Flags**: R
+
+---
 ## ClassAttr: Reify.overlayMaskColor
 
 ### Description
@@ -289,6 +297,22 @@ Setter for [Reify.userName](#classattr-reifyusername).
 | userName | [String](#type-string) | false | — | — |
 
 ---
+## ClassMethod: Reify.getProjectRunnerBaseURL
+
+### Description
+Base URL of the project runner.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| projectRunnerURL | [URL](../reference_2.md#type-url) | true | — | the calling tool's configured runner URL -- [Reify.projectRunnerURL](#attr-reifyprojectrunnerurl) from a Reify instance, or the equivalent attribute on whichever tool is calling. May use the framework's bracketed directory prefixes. Falls back to [Reify.DEFAULT_PROJECT_RUNNER_URL](#classattr-reifydefault_project_runner_url) when not supplied. |
+
+### Returns
+
+`[URL](../reference_2.md#type-url)` — URL of the project runner
+
+---
 ## ClassMethod: Reify.getMockDS
 
 ### Description
@@ -409,6 +433,7 @@ Save screen content (XML or JSON) to Reify's screen storage (vbScreens). This ma
 | screenName | [String](#type-string) | false | — | name for the screen |
 | screenContents | [String](#type-string) | false | — | screen XML or JSON content, as produced by [EditContext.serializeAllEditNodes](EditContext.md#method-editcontextserializealleditnodes) |
 | callback | [Function](#type-function) | true | — | called with (DSResponse dsResponse, Object data) |
+| ds | [DataSource](#type-datasource)|[String](#type-string) | true | — | screen storage, defaulting to `"vbScreens"` |
 
 ---
 ## ClassMethod: Reify.unregisterLoadedDataSource
@@ -563,6 +588,25 @@ Show the overlay view with optional dismiss behaviour. Greys out the page and dr
 ### See Also
 
 - [Reify.enableOverlay](#classmethod-reifyenableoverlay)
+
+---
+## ClassMethod: Reify.getProjectRunnerURL
+
+### Description
+URL that serves a stored project, optionally opening a particular screen.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| projectName | [String](#type-string) | false | — | project to run |
+| screenName | [String](#type-string) | true | — | screen within the project to show first |
+| skin | [String](#type-string) | true | — | skin name for the served page |
+| projectRunnerURL | [String](#type-string) | true | — | the calling tool's configured runner URL; see [Reify.getProjectRunnerBaseURL](#classmethod-reifygetprojectrunnerbaseurl) |
+
+### Returns
+
+`[String](#type-string)` — URL serving the project
 
 ---
 ## ClassMethod: Reify.getReifyProjects
@@ -794,6 +838,8 @@ Save a project definition to Reify's project storage (vbProjects). `projectXml` 
 | projectName | [String](#type-string) | false | — | project name |
 | projectXml | [String](#type-string) | false | — | project XML content |
 | callback | [Function](#type-function) | true | — | called with (DSResponse dsResponse, Object data) |
+| fileType | [String](#type-string) | true | — | storage type, defaulting to `"proj"` |
+| ds | [DataSource](#type-datasource)|[String](#type-string) | true | — | project storage |
 
 ---
 ## ClassMethod: Reify.getReifyScreens

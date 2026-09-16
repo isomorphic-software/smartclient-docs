@@ -570,6 +570,24 @@ If this item is [read-only](#method-formitemgetcanedit) and is using [readOnlyDi
 **Flags**: IRW
 
 ---
+## Attr: FormItem.verticalTitleStyle
+
+### Description
+Base CSS class name for a form item's title when ${isc.DocUtils.linkForRef('attr:FormItem.titleOrientation','titleOrientation is \\'top\\'')} . Note that this is a [FormItemBaseStyle](../reference_2.md#type-formitembasestyle) so will pick up stateful suffixes on focus, disabled state change etc. by default.
+
+Note the appearance of the title is also affected by [DynamicForm.titlePrefix](DynamicForm.md#attr-dynamicformtitleprefix)/[titleSuffix](DynamicForm.md#attr-dynamicformtitlesuffix) and [DynamicForm.requiredTitlePrefix](DynamicForm.md#attr-dynamicformrequiredtitleprefix)/[requiredTitleSuffix](DynamicForm.md#attr-dynamicformrequiredtitlesuffix).
+
+### Groups
+
+- formItemStyling
+
+### See Also
+
+- [FormItem.cellStyle](#attr-formitemcellstyle)
+
+**Flags**: IRW
+
+---
 ## Attr: FormItem.textBoxStyle
 
 ### Description

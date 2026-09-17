@@ -55,7 +55,7 @@ Present only when [status](#attr-workflowexplorationentrystatus) is `"refused"` 
 ## Attr: WorkflowExplorationEntry.summary
 
 ### Description
-A one-line text summary of this entry - see +link{WorkflowBuilderCoTProcess. summarizeExploration()}. Always present.
+A one-line text summary of this entry - see +link{WorkflowBuilderProcess. summarizeExploration()}. Always present.
 
 **Flags**: IR
 

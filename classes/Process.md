@@ -417,7 +417,7 @@ When [Process.defaultWaitFor](#attr-processdefaultwaitfor) or task [waitFor](Pro
 ### Description
 When `true`, [WorkflowEditor](#class-workfloweditor) flags [Process.errorTaskRef](#attr-processerrortaskref)'s target (via [WorkflowEditor.validate](#method-workfloweditorvalidate)) if it is **also** reachable via the Process's normal [ProcessElement.nextElement](ProcessElement.md#attr-processelementnextelement)/branch flow - a likely authoring mistake, since a node designated as the Process-wide error handler is normally meant to be reached only via failure routing. This is a visual warning only; it does not block saving or executing the Process either way.
 
-Default `false` matches `failureElement`'s own long-standing "no enforcement" contract for hand-authored Workflows - [WorkflowBuilderCoTProcess.createNewWorkflowProcess](#method-workflowbuildercotprocesscreatenewworkflowprocess) sets this `true` for Workflows it builds from scratch.
+Default `false` matches `failureElement`'s own long-standing "no enforcement" contract for hand-authored Workflows - [WorkflowBuilderProcess.createNewWorkflowProcess](#method-workflowbuilderprocesscreatenewworkflowprocess) sets this `true` for Workflows it builds from scratch.
 
 **Flags**: IR
 

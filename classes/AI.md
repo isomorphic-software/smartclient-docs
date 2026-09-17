@@ -377,7 +377,7 @@ Note that custom engines added via [AI.registerEngine](#classmethod-airegisteren
 ## ClassMethod: AI.buildWorkflowStep
 
 ### Description
-Adds one or more steps to a Workflow from a natural-language description of the goal - see [WorkflowBuilderCoTProcess](#class-workflowbuildercotprocess) for the full behavior (decomposition, exploration mode, UI actions, branching). By default a single call decomposes a compound goal into as many steps as it takes; the callback fires exactly once, after the whole session (however many steps were added) completes.
+Adds one or more steps to a Workflow from a natural-language description of the goal - see [WorkflowBuilderProcess](#class-workflowbuilderprocess) for the full behavior (decomposition, exploration mode, UI actions, branching). By default a single call decomposes a compound goal into as many steps as it takes; the callback fires exactly once, after the whole session (however many steps were added) completes.
 
 ### Parameters
 

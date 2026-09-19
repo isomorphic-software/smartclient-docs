@@ -41,8 +41,8 @@ The following functions are available to provide equivalent functionality for [c
 | rand() | Returns a random float value from 0 through 1, exclusive | Y | N [available as random()] | Y | N |
 | String functions |
 | concat(val1,val2,...) | Join multiple values together as a string | Y | Y | Y | Y |
-| substring(val,start,length) | Returns a substring from a value | Y | N [available as substr()] | Y | Y |
-| substr(val,start,length) | Returns a substring from a value | Y | Y | N [available as substring()] | Y |
+| substring(val,start,length) | Returns a substring from a value. start is 1-based: position 1 is the first character. | Y | N [available as substr()] | Y | Y |
+| substr(val,start,length) | Returns a substring from a value. start is 1-based: position 1 is the first character. | Y | Y | N [available as substring()] | Y |
 | trim(value) | Removes leading and trailing space characters from a string | Y | Y | Y | Y |
 | length(value) | Returns the length of a string value | Y | Y | N [available as len()] | Y |
 | len(value) | Returns the length of a string value | N [available as length()] | N [available as length()] | Y | N [available as length()] |

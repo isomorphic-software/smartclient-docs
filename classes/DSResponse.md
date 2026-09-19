@@ -192,7 +192,7 @@ The Java API DSResponse.addError(fieldName, errorMessage) is used to send server
 
 ### See Also
 
-- [DataSource.handleError](DataSource_1.md#method-datasourcehandleerror)
+- [DataSource.handleError](DataSource_2.md#method-datasourcehandleerror)
 
 **Flags**: R
 

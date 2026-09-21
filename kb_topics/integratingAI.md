@@ -41,10 +41,10 @@ Note: The AI services corresponding to the IDs in AntiqueWhite do not support vi
 #### Enabling AI
 AI is disabled by default. To enable AI within your application, just set [AI.defaultEngineId](../classes/AI.md#classattr-aidefaultengineid) to a different engine ID if you don't like the default, and then set [AI.disabled](../classes/AI.md#classattr-aidisabled) to `false`.
 
-Here is sample SmartClient code that enables AI using GPT-4.1:
+Here is sample SmartClient code that enables AI using GPT-6 Astra:
 
 ```
- isc.AI.defaultEngineId = "gpt-4.1";
+ isc.AI.defaultEngineId = "gpt-6-astra";
  isc.AI.disabled = false;
 ```
 **Note:** If your application will need to ask AI to analyze images, you'll need an `AIEngine` that supports vision requests. Check the table above to see which built-in engines support vision, or you can register your own (covered below).

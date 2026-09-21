@@ -19,7 +19,7 @@ FileSource operations use standardized field names: fileName, fileType, fileForm
 - [Callbacks.GetFileCallback](../classes/Callbacks.md#method-callbacksgetfilecallback)
 - [Callbacks.GetFileVersionCallback](../classes/Callbacks.md#method-callbacksgetfileversioncallback)
 - [DataSource.getFile](../classes/DataSource_1.md#method-datasourcegetfile)
-- [DataSource.hasFile](../classes/DataSource_2.md#method-datasourcehasfile)
+- [DataSource.hasFile](../classes/DataSource_1.md#method-datasourcehasfile)
 - [DataSource.listFiles](../classes/DataSource_1.md#method-datasourcelistfiles)
 - [DataSource.saveFile](../classes/DataSource_1.md#method-datasourcesavefile)
 - [DataSource.renameFile](../classes/DataSource_1.md#method-datasourcerenamefile)

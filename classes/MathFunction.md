@@ -9,6 +9,8 @@
 ### Description
 Represents a mathematical function that can be used in [UserFormula](../reference.md#object-userformula) expressions. A library of standard functions is registered by default; additional functions can be added via [MathFunction.registerFunction](#classmethod-mathfunctionregisterfunction).
 
+For the timezone behavior of date-part functions, see [DataSourceField formula functions](../kb_topics/formulaFunction.md#kb-topic-datasourcefield-formula-functions).
+
 ### Groups
 
 - formulaFields

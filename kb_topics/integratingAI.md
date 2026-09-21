@@ -24,10 +24,10 @@ Note that some built-in engines do not support vision requests. Call [AIEngine.c
 #### Enabling AI
 AI is disabled by default. To enable AI within your application, just set [AI.defaultEngineId](../classes/AI.md#classattr-aidefaultengineid) to a different engine ID if you don't like the default, and then set [AI.disabled](../classes/AI.md#classattr-aidisabled) to `false`.
 
-Here is sample SmartClient code that enables AI using GPT-4.1:
+Here is sample SmartClient code that enables AI using GPT-6 Astra:
 
 ```
- isc.AI.defaultEngineId = "gpt-4.1";
+ isc.AI.defaultEngineId = "gpt-6-astra";
  isc.AI.disabled = false;
 ```
 **Note:** If your application will need to ask AI to analyze images, you'll need an `AIEngine` that supports vision requests. Call [AIEngine.canSupportVisionRequests](../classes/AIEngine.md#method-aienginecansupportvisionrequests) on a retrieved engine instance to check, or you can register your own engine (covered below).
@@ -68,7 +68,7 @@ The amount of interaction with AI is lowest in AI Assist mode. AIDE requires mor
 With respect to a particular [DataBoundComponent](../reference.md#interface-databoundcomponent), the requirements for AI component views to be enabled are:
 
 *   AI must be enabled: [AI.isEnabled](../classes/AI.md#classmethod-aiisenabled)
-*   A globally-installed [DataSource](../classes/DataSource_1.md#class-datasource) with a primary key and [supporting AdvancedCriteria](../classes/DataSource_2.md#method-datasourcesupportsadvancedcriteria) must be set.
+*   A globally-installed [DataSource](../classes/DataSource_1.md#class-datasource) with a primary key and [supporting AdvancedCriteria](../classes/DataSource_1.md#method-datasourcesupportsadvancedcriteria) must be set.
 *   The `DataSource` cannot have a composite primary key.
 *   The number of data-records must be known, and the total number of records must be less than the DBC's [aiMaxRecords](../classes/DataBoundComponent.md#attr-databoundcomponentaimaxrecords).
 

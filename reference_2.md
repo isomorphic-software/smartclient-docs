@@ -199,7 +199,7 @@ Possible values for [Canvas.backgroundRepeat](classes/Canvas.md#attr-canvasbackg
 ## Type: CacheSyncStrategy
 
 ### Description
-Indicates the strategy to be used for [automatic cache synchronization](kb_topics/cacheSynchronization.md#kb-topic-automatic-cache-synchronization), for a given [DataSource](classes/DataSource_1.md#attr-datasourcecachesyncstrategy), [OperationBinding](classes/OperationBinding.md#attr-operationbindingcachesyncstrategy) or [DSRequest](classes/DSRequest.md#attr-dsrequestcachesyncstrategy).
+Indicates the strategy to be used for [automatic cache synchronization](kb_topics/cacheSynchronization.md#kb-topic-automatic-cache-synchronization), for a given [DataSource](#attr-datasourcecachesyncstrategy), [OperationBinding](#attr-operationbindingcachesyncstrategy) or [DSRequest](#attr-dsrequestcachesyncstrategy).
 
 ### Values
 
@@ -213,7 +213,7 @@ This is the most complete and foolproof way to get cache sync data, because we p
 Note, if no `oldValues` are available and the updated record is [incomplete](classes/DataSource_1.md#attr-datasourcesparseupdates), or if the combination of `oldValues` and values is missing a value for a [required field](classes/DataSourceField.md#attr-datasourcefieldrequired) for any other reason, this strategy will return incomplete cache sync data. For details of what we do in these circumstances, see the "CacheSyncStrategy" section of the [cache synchronization overview](kb_topics/cacheSynchronization.md#kb-topic-automatic-cache-synchronization) |
 | "responseValues" | This strategy simply returns the data returned by the add or update operation, as the cache sync data. This only makes sense for `DataSource` types that return a value for an update operation. This may include generic DataSources and `RestConnector`s, depending entirely on what the implementation returns. It specifically does not include [SQL DataSources](kb_topics/sqlDataSource.md#kb-topic-sql-datasources), because SQL/JDBC update operations do not return a value (other than the number of affected records).
 
-This is the default strategy for [RestConnector](kb_topics/serverRestConnector.md#kb-topic-server-side-rest-connector)s, because it was the default way we did cache sync for that DataSource type before `CacheSyncStrategy` was introduced (and also because it is the ideal strategy for REST services that return the record-as-updated). See [DataSource.cacheSyncStrategy](classes/DataSource_1.md#attr-datasourcecachesyncstrategy) for details of how to change the default strategy for a given dataSource type. |
+This is the default strategy for [RestConnector](kb_topics/serverRestConnector.md#kb-topic-server-side-rest-connector)s, because it was the default way we did cache sync for that DataSource type before `CacheSyncStrategy` was introduced (and also because it is the ideal strategy for REST services that return the record-as-updated). See [DataSource.cacheSyncStrategy](#attr-datasourcecachesyncstrategy) for details of how to change the default strategy for a given dataSource type. |
 | "none" | This strategy does not attempt to derive cache sync data at all. No response data is sent back to the caller, and the response is marked for [cache invalidation](classes/DSResponse.md#attr-dsresponseinvalidatecache) |
 
 ### See Also
@@ -224,14 +224,14 @@ This is the default strategy for [RestConnector](kb_topics/serverRestConnector.m
 ## Type: CacheSyncTiming
 
 ### Description
-Indicates the timing strategy to be used for [automatic cache synchronization](kb_topics/cacheSynchronization.md#kb-topic-automatic-cache-synchronization), for a given [DataSource](classes/DataSource_1.md#attr-datasourcecachesynctiming), [OperationBinding](classes/OperationBinding.md#attr-operationbindingcachesynctiming) or [DSRequest](classes/DSRequest.md#attr-dsrequestcachesynctiming). This property controls the "when" of cache synchronization; the "how" is controlled by [CacheSyncStrategy](reference_2.md#type-cachesyncstrategy).
+Indicates the timing strategy to be used for [automatic cache synchronization](kb_topics/cacheSynchronization.md#kb-topic-automatic-cache-synchronization), for a given [DataSource](#attr-datasourcecachesynctiming), [OperationBinding](#attr-operationbindingcachesynctiming) or [DSRequest](#attr-dsrequestcachesynctiming). This property controls the "when" of cache synchronization; the "how" is controlled by [CacheSyncStrategy](reference_2.md#type-cachesyncstrategy).
 
 **NOTE:** `CacheSyncTiming` is intended to allow applications to defer cache synchronization to the point where response data is actually requested; the primary aim of this is to avoid doing cache sync altogether in cases where the response data is never requested. There are some mainstream types of request where we know that the response data unequivocally _is_ required, and for these requests a global default `CacheSyncTiming` will be overridden to "immediate" by SmartClient because there is no point in deferring cache sync when we know for sure it will eventually be needed. Thus, cache sync will always run immediately regardless of the default `cacheSyncTiming` setting in these cases:
 
 *   Requests sent from a client
 *   Server-created requests that copy an `RPCManager` across from a client-originated request, either by specifying it in the `DSRequest` constructor, or by calling `dsRequest.setRPCManager()`
 
-The above only applies to the global default `cacheSyncTiming`: a `cacheSyncTiming` set explicitly at the [DataSource](classes/DataSource_1.md#attr-datasourcecachesynctiming), [operation](classes/OperationBinding.md#attr-operationbindingcachesynctiming) or [request](classes/DSRequest.md#attr-dsrequestcachesynctiming) level will usually be honored. However, even an explicit `cacheSyncTiming` setting on the DataSource, operation or request will be ignored in situations where it could break a framework feature if we honored it. These situations are:
+The above only applies to the global default `cacheSyncTiming`: a `cacheSyncTiming` set explicitly at the [DataSource](#attr-datasourcecachesynctiming), [operation](#attr-operationbindingcachesynctiming) or [request](#attr-dsrequestcachesynctiming) level will usually be honored. However, even an explicit `cacheSyncTiming` setting on the DataSource, operation or request will be ignored in situations where it could break a framework feature if we honored it. These situations are:
 
 *   Requests where [automatic auditing](classes/DataSource_1.md#attr-datasourceaudit) is in force
 *   Requests on a dataSource with one-to-many or many-to-many relations, where the update means that SmartClient must update foreign keys on the related dataSources to maintain relation integrity
@@ -677,7 +677,7 @@ the below example would cause `dbName` to be resolved as `MyDatabase`
  
 ```
 (Note, you can use a different token than "`$config`" if you need to - see [templateConfigToken](classes/DataSource_1.md#attr-datasourcetemplateconfigtoken)) |
-| "all" | Indicates that full Velocity processing will be used to resolve templated references. This allows you to use all of Velocity's template-handling features - for example, conditional blocks and iteration - and so is more powerful than the simple "configOnly" option above. Note, however, that this templating is necessarily limited by the fact that it takes place during DataSource initialization, when there is not a lot of context available for templating purposes - you have the "`$config`" object, as with "configOnly", and some of the other variables listed in the [Velocity overview](kb_topics/velocitySupport.md#kb-topic-velocity-context-variables), but nothing relating to [DSRequest](reference_2.md#object-dsrequest)s |
+| "all" | Indicates that full Velocity processing will be used to resolve templated references. This allows you to use all of Velocity's template-handling features - for example, conditional blocks and iteration - and so is more powerful than the simple "configOnly" option above. Note, however, that this templating is necessarily limited by the fact that it takes place during DataSource initialization, when there is not a lot of context available for templating purposes - you have the "`$config`" object, as with "configOnly", and some of the other variables listed in the [Velocity overview](#kb-topic-velocitysupport), but nothing relating to [DSRequest](reference_2.md#object-dsrequest)s |
 
 ### See Also
 
@@ -891,7 +891,7 @@ or
  
 ```
 
-Note that if the request encounters a low-level error (such as 500 server error), by default the callback will **not** be fired, instead, [DataSource.handleError](classes/DataSource_2.md#method-datasourcehandleerror) is called to invoke the default system-wide error handling. Set [willHandleError](classes/RPCRequest.md#attr-rpcrequestwillhandleerror):true to have your callback invoked regardless of whether there are errors, however, make sure your callback properly handles malformed responses when [DSResponse.status](classes/DSResponse.md#attr-dsresponsestatus) is non-zero.
+Note that if the request encounters a low-level error (such as 500 server error), by default the callback will **not** be fired, instead, [DataSource.handleError](classes/DataSource_1.md#method-datasourcehandleerror) is called to invoke the default system-wide error handling. Set [willHandleError](classes/RPCRequest.md#attr-rpcrequestwillhandleerror):true to have your callback invoked regardless of whether there are errors, however, make sure your callback properly handles malformed responses when [DSResponse.status](classes/DSResponse.md#attr-dsresponsestatus) is non-zero.
 
 ---
 ## Type: DSDataFormat
@@ -960,7 +960,7 @@ There are also additional, non-CRUD operations explained below.
 | "storeTestData" | Takes a List of Maps and stores the data in Admin Console XML test data format |
 | "clientExport" | Upload formatted client data and export it to Excel, XML and other formats. Used automatically by [exportClientData()](classes/DataSource_1.md#method-datasourceexportclientdata) and cannot be used directly. Usable only with the SmartClient server framework. |
 | "getFile" | Use the DataSource as a [source for files](kb_topics/fileSource.md#kb-topic-filesource-operations). Used automatically by [DataSource.getFile](classes/DataSource_1.md#method-datasourcegetfile), and would not normally be used directly. Usable only with the SmartClient server framework. |
-| "hasFile" | Use the DataSource as a [source for files](kb_topics/fileSource.md#kb-topic-filesource-operations). Used automatically by [DataSource.hasFile](classes/DataSource_2.md#method-datasourcehasfile), and would not normally be used directly. Usable only with the SmartClient server framework. |
+| "hasFile" | Use the DataSource as a [source for files](kb_topics/fileSource.md#kb-topic-filesource-operations). Used automatically by [DataSource.hasFile](classes/DataSource_1.md#method-datasourcehasfile), and would not normally be used directly. Usable only with the SmartClient server framework. |
 | "listFiles" | Use the DataSource as a [source for files](kb_topics/fileSource.md#kb-topic-filesource-operations). Used automatically by [DataSource.listFiles](classes/DataSource_1.md#method-datasourcelistfiles), and would not normally be used directly. Usable only with the SmartClient server framework. |
 | "removeFile" | Use the DataSource as a [source for files](kb_topics/fileSource.md#kb-topic-filesource-operations). Used automatically by [DataSource.removeFile](classes/DataSource_1.md#method-datasourceremovefile), and would not normally be used directly. Usable only with the SmartClient server framework. |
 | "saveFile" | Use the DataSource as a [source for files](kb_topics/fileSource.md#kb-topic-filesource-operations). Used automatically by [DataSource.saveFile](classes/DataSource_1.md#method-datasourcesavefile), and would not normally be used directly. Usable only with the SmartClient server framework. |
@@ -1392,7 +1392,7 @@ Note: to declare related but _separate_ objects, as in an "Account" object that 
 | "creatorTimestamp" | Fields of this type are automatically populated by the SmartClient Server with the current date and time as part of an "add" operation (when the record is first created). By default, fields of this type are hidden and not editable; the server ignores any value that the client sends in a field of this type (but see also [writeToGeneratedFields](classes/DSRequest.md#attr-dsrequestwritetogeneratedfields)). |
 | "uuid" | Fields of this type are automatically populated by the SmartClient Server with a new UUID (Universally Unique Identifier) as part of an "add" operation, if no value is provided by the client. This is useful for primary key fields where you want the server to auto-generate unique IDs. Unlike [creatorTimestamp](reference_2.md#type-fieldtype), if the client provides a value, that value is used instead of generating a new UUID. The generated UUID is a standard 36-character string in the format `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`. |
 | "password" | Same as "text", but causes [PasswordItem](#class-passworditem) to be used by default for editing (hides typed-in value), and defaults [storeWithhash](classes/DataSourceField.md#attr-datasourcefieldstorewithhash) to "bcrypt" (affecting server operations). |
-| "ntext" | A special field type specifically for use with Unicode data in conjunction with the Microsoft SQL Server database. Field type "ntext" implies the use of [sqlStorageStrategy](classes/DataSourceField.md#attr-datasourcefieldsqlstoragestrategy) "ntext"; other than that, this type is identical to "text" |
+| "ntext" | A special field type specifically for use with Unicode data in conjunction with the Microsoft SQL Server database. Field type "ntext" implies the use of [sqlStorageStrategy](#attr-datasourcefieldsqlstoragestrategy) "ntext"; other than that, this type is identical to "text" |
 | "localeInt" | An integer number with locale-based formatting, e.g. `12,345,678`. See [Localized Number Formatting](#kb-topic-localized-number-formatting) for more info. |
 | "localeFloat" | A float number with locale-based formatting, e.g. `12,345.67`. See [Localized Number Formatting](#kb-topic-localized-number-formatting) for more info. |
 | "localeCurrency" | A float number with locale-based formatting and using currency symbol, e.g. `$12,345.67`. See [Localized Number Formatting](#kb-topic-localized-number-formatting) for more info. |
@@ -1662,21 +1662,6 @@ Property to govern when the 'over' styling is applied to a formItemIcon.
 A string which is a valid JavaScript identifier, as specified by ECMA-262 Section 7.6.
 
 Note: The [String.isValidID](classes/String.md#staticmethod-stringisvalidid) function can be used to test whether a name is a valid JavaScript identifier.
-
----
-## Type: ImportFormat
-
-### Description
-—
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| "xml" | XML format: same as that expected by the [adminConsole](kb_topics/adminConsole.md#kb-topic-admin-console) for DataSource [test data](kb_topics/testData.md#kb-topic-test-data) |
-| "json" | JSON format: a JSON Array of JSON Objects |
-| "csv" | Comma-separated values, or in general delimiter-separated values based on a provided delimiter. |
-| "auto" | Auto-detect format |
 
 ---
 ## Type: Integer
@@ -2450,21 +2435,6 @@ Possible placements for pop-up choosers, menus, dialogs or other temporary UIs, 
 | "none" | this setting disables all panelPlacement sizing and positioning logic. Explicitly specified size and positioning will be used. |
 
 ---
-## Type: PartialCommitOption
-
-### Description
-Action to take if a user attempts to save the dataset produced by a [BatchUploader](classes/BatchUploader.md#class-batchuploader) whilst it still contains errors.
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| "allow" | Silently allow the partial commit to proceed (note that this will result in the user losing those records that contain errors) |
-| "prevent" | Pop up a message window showing the [BatchUploader.partialCommitError](classes/BatchUploader.md#attr-batchuploaderpartialcommiterror) and prevent the partial commit |
-| "prompt" | Pop up a confirmation window with the [BatchUploader.partialCommitPrompt](classes/BatchUploader.md#attr-batchuploaderpartialcommitprompt) and allow the user to choose whether or not to proceed |
-| "retain" | Commit any records that are error-free and remove them from the grid. If any records had errors, leave them in the grid and leave the grid visible. If no records had errors, run normal cleanup as we would for "allow". This option allows the user to fix errors iteratively, rather than having to fix everything upfront before committing |
-
----
 ## Type: Positioning
 
 ### Description
@@ -2500,23 +2470,6 @@ Controls which formatting stages are applied to cell values during canvas [ListG
 | "none" | Raw record values only (`record[field.name]`). Fastest — no formatting overhead. |
 | "default" | Applies [valueMaps](classes/ListGridField.md#attr-listgridfieldvaluemap), [displayField](classes/ListGridField.md#attr-listgridfielddisplayfield) substitution, [format strings](classes/ListGridField.md#attr-listgridfieldformat), and type-specific formatters via [ListGrid.getDefaultFormattedValue](classes/ListGrid_2.md#method-listgridgetdefaultformattedvalue). Does **not** call custom [field.formatCellValue()](classes/ListGridField.md#method-listgridfieldformatcellvalue) or [grid.formatCellValue()](classes/ListGrid_2.md#method-listgridformatcellvalue). |
 | "custom" | Full formatting pipeline including custom [field.formatCellValue()](classes/ListGridField.md#method-listgridfieldformatcellvalue) and [grid.formatCellValue()](classes/ListGrid_2.md#method-listgridformatcellvalue) methods. Any HTML tags in the result will appear as literal text in the canvas preview, since Canvas 2D cannot render HTML. Slowest option. |
-
----
-## Type: PreRenderImageMode
-
-### Description
-Controls how framework-generated icons (group expand/collapse, tree openers, folder icons, value icons, boolean checkboxes) are handled in the canvas [ListGrid.preRender](classes/ListGrid_1.md#attr-listgridprerender) preview.
-
-Icons in the HTML grid are rendered as ``<img>`` or CSS-styled ``<span>`` elements. The canvas preview approximates these using Canvas 2D drawing or reserves the correct amount of space.
-
-Regardless of this setting, icon space is always reserved so that text positioning matches the final HTML grid layout.
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| "all" | All detectable framework icons are cached via Image objects and drawn via `ctx.drawImage()`. Icons with resolvable URLs (group openers, raster value icons) are rendered; sprite and CSS-class icons fall back to space reservation. First render for any given icon URL shows space only (async image loading); subsequent renders show the actual icon. |
-| "space" | Icon positions are detected and the correct horizontal space is reserved, but no images are drawn. Text is offset to match the HTML grid layout. |
 
 ---
 ## Type: ProcessValueType
@@ -2950,8 +2903,9 @@ See below for more details.
 
 #### Authentication and request context
 
-*   `auth.userId` — the authenticated user ID (from `DSRequest.getUserId()`)
-*   `auth.roles` — the list of roles for the authenticated user (from `DSRequest.getUserRoles()`)
+*   `auth.userId` — the authenticated user ID. Available on both server and client.
+*   `auth.currentUser.userId` — equivalent to `auth.userId`. On the client, the full `auth.currentUser` object (set via [Authentication.setCurrentUser](classes/Authentication.md#classmethod-authenticationsetcurrentuser)) is also available, providing access to any user properties (e.g. `auth.currentUser.firstName`). On the server, `auth.currentUser` contains only `userId`.
+*   `auth.roles` — the list of roles for the authenticated user. Available on both server and client.
 *   `context.operationType` — the operation type of the current DSRequest (`"add"`, `"update"`, `"fetch"`, or `"remove"`)
 *   `context.operationId` — the [OperationBinding.operationId](classes/OperationBinding.md#attr-operationbindingoperationid) of the current operation, if one was specified
 
@@ -2960,12 +2914,51 @@ On the server, `auth.*` and `context.*` values are injected from the `DSRequest`
 #### Request criteria and submitted values
 The following prefixes provide server-side access to the client's request data within [OperationBinding.requiresWhen](classes/OperationBinding.md#attr-operationbindingrequireswhen) and [OperationBinding.criteria](classes/OperationBinding.md#attr-operationbindingcriteria):
 
-*   `criteria.*` — the value the client supplied in its request criteria for the named field. Example: `criteria.startDate notNull` rejects if the client omitted `startDate` from its criteria. In `operationBinding.criteria`, `valuePath="criteria.qualityRating"` uses the client's `qualityRating` criterion value to constrain another column (e.g. requiring `peerRating` to meet the same threshold the user chose for `qualityRating`).
-*   `submitted.*` — the value the client included in the submitted record (`dsRequest.getValues()`). Example: `submitted.quantity lessThan 1000` caps order size.
+*   `criteria.*` — the value the client supplied in its request criteria for the named field. In `requiresWhen`, this acts as a gate on the request criteria — for example, `criteria.startDate notNull` rejects if the client omitted `startDate`. In `operationBinding.criteria`, `criteria.*` references are added to the client-supplied criteria, tightening the result set with server-enforced constraints.
+*   `values.*` — the value the client included in the submitted record (`dsRequest.getValues()`). Example: `values.quantity lessThan 1000` caps order size.
+*   `storedRecord.*` — the pre-modification database record (update/remove only). Example: `storedRecord.status notEqual "locked"` prevents updates to locked records. The stored record is immune to client manipulation — unlike `values.*`, a malicious client cannot influence its contents.
+*   `mergedRecord.*` — the stored record overlaid with client-submitted values. Fields the client submitted override the stored value; fields the client did not submit retain their stored value. Example: `mergedRecord.quantity lessOrEqual 50` ensures the _resulting_ quantity after the update does not exceed 50, regardless of whether the client submitted a new quantity or left the stored one unchanged.
 
-These prefixes are server-only. The client defers criteria containing these prefixes to the server for evaluation.
+`storedRecord.*` and `mergedRecord.*` are meaningful for **update** and **remove** operations only. On **add**, `mergedRecord.*` falls back to `values.*` (no stored record to merge with); `storedRecord.*` forces the criterion to fail (there is no prior record). On **fetch**, both force the criterion to fail.
 
-All prefixes support a `$` disambiguation form (`$criteria.*`, `$submitted.*`, `$auth.*`, `$context.*`) to force server-side prefix interpretation when a DataSource with the same name exists. For example, if a DataSource named "submitted" exists, `$submitted.quantity` references the client-submitted value, while `submitted.quantity` without the `$` would be treated as a relational reference to the "submitted" DataSource.
+When no prefix is used, the default evaluation record depends on the operation type: for update/remove, the stored record; for add, the submitted values.
+
+**Security note:** `storedRecord.*` should be used for security gates that lock records based on their current state (e.g. preventing updates to “Approved” records). Using `mergedRecord.*` for such a gate is a security vulnerability — a malicious client could submit `status:“Draft”` to bypass the lock. Use `mergedRecord.*` only for rules that validate the _resulting_ state (e.g. “the resulting quantity must not exceed 50 when status is Approved”).
+
+**Wrong** — security gate uses `mergedRecord.*`:
+
+```
+ <!-- WRONG: client can submit status="Draft" to
+      bypass this gate -->
+ <requiresWhen fieldName="mergedRecord.status"
+               operator="notEqual"
+               value="Approved"/>
+ 
+```
+**Right** — security gate uses `storedRecord.*`:
+```
+ <!-- RIGHT: gate checks the actual DB value, which
+      the client cannot influence -->
+ <requiresWhen fieldName="storedRecord.status"
+               operator="notEqual"
+               value="Approved"/>
+ 
+```
+For rules about the _resulting_ state, use `mergedRecord.*`:
+```
+ <!-- Resulting-state rule: high-quantity orders
+      cannot be set to Approved -->
+ <requiresWhen operator="or">
+   <criteria fieldName="mergedRecord.status"
+             operator="notEqual"
+             value="Approved"/>
+   <criteria fieldName="mergedRecord.quantity"
+             operator="lessOrEqual" value="50"/>
+ </requiresWhen>
+ 
+```
+
+All prefixes support a `$` disambiguation form (`$criteria.*`, `$values.*`, `$storedRecord.*`, `$mergedRecord.*`, `$auth.*`, `$context.*`) to force prefix interpretation when a DataSource with the same name exists. For example, if a DataSource named "values" exists, `$values.quantity` references the client-submitted value, while `values.quantity` without the `$` would be treated as a relational reference to the “values” DataSource.
 
 #### Relational references
 Reference fields on related DataSources via [dot notation](reference_2.md#type-relationalreference). On the server, related records are fetched automatically. On the client, the framework attempts to resolve references from locally cached data (see "Client-side cache lookup" below) — if the related record is already loaded in a form, grid, or ResultSet, no server trip is needed.
@@ -3235,23 +3228,6 @@ Do we display an arrow for the sorted field ?
 ### Groups
 
 - sorting
-
----
-## Type: SQLType
-
-### Description
-The types of custom query that can be handled by SmartClient's built-in "sql" and "hibernate" DataSources. Note, only applies to [OperationBinding.operationType](classes/OperationBinding.md#attr-operationbindingoperationtype) "custom".
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| "query" | The custom SQL or HQL is read-only |
-| "update" | The custom SQL or HQL updates data |
-
-### Groups
-
-- customQuerying
 
 ---
 ## Type: StackPersistence
@@ -3611,7 +3587,7 @@ Note that this object is not intended to be interrogated directly, but may be st
 ## Type: UnionFieldsStrategy
 
 ### Description
-The strategy used when auto-deriving the fields that make up a UnionDataSource, if no [unionFields](classes/DataSource_1.md#attr-datasourceunionfields) setting is provided.
+The strategy used when auto-deriving the fields that make up a UnionDataSource, if no [unionFields](#attr-datasourceunionfields) setting is provided.
 
 ### Values
 
@@ -3623,7 +3599,7 @@ The strategy used when auto-deriving the fields that make up a UnionDataSource, 
 
 ### See Also
 
-- [DataSource.unionFields](classes/DataSource_1.md#attr-datasourceunionfields)
+- [DataSource.unionFields](#attr-datasourceunionfields)
 
 ---
 ## Type: URL
@@ -3680,7 +3656,7 @@ See also the [SmartClient Architecture Overview](kb_topics/smartArchitecture.md#
 ## Type: VelocityExpression
 
 ### Description
-An expression in the [Velocity Template Language](http://velocity.apache.org/engine/releases/velocity-1.7/user-guide.html) (VTL). For more information on SmartClient's Velocity support, see [Velocity support](kb_topics/velocitySupport.md#kb-topic-velocity-context-variables).
+An expression in the [Velocity Template Language](http://velocity.apache.org/engine/releases/velocity-1.7/user-guide.html) (VTL). For more information on SmartClient's Velocity support, see [Velocity support](#kb-topic-velocitysupport).
 
 Note that a `VelocityExpression` must often evaluate to a particular type of value to be useful. For example, [DataSource.requires](classes/DataSource_1.md#attr-datasourcerequires) must evaluate to true or false (Boolean objects or strings containing those two words), and [Mail.messageData](classes/Mail.md#attr-mailmessagedata) must evaluate to a Java `Map` object, or a Java `List` containing only `Map`s.
 
@@ -4114,7 +4090,7 @@ You provide a list of DSRequestModifiers as the [OperationBinding.criteria](clas
 
 A DSRequestModifier consists of a [fieldName](classes/DSRequestModifier.md#attr-dsrequestmodifierfieldname), usually a [value](classes/DSRequestModifier.md#attr-dsrequestmodifiervalue) and possibly an [operator](classes/DSRequestModifier.md#attr-dsrequestmodifieroperator) and [start](classes/DSRequestModifier.md#attr-dsrequestmodifierstart) and/or [end](classes/DSRequestModifier.md#attr-dsrequestmodifierend) values (applicable to advanced criteria only). The value, start and end settings can be static, or - with Power or better licenses - they can be expressions in the Velocity template language, which will be resolved at runtime, immediately before the DSRequest is executed.
 
-In addition to the standard [Velocity variables](kb_topics/velocitySupport.md#kb-topic-velocity-context-variables), special Velocity variables are available for the _value_ field when used in a `<values>` declaration - see [DSRequestModifier.value](classes/DSRequestModifier.md#attr-dsrequestmodifiervalue) for details.
+In addition to the standard [Velocity variables](#kb-topic-velocitysupport), special Velocity variables are available for the _value_ field when used in a `<values>` declaration - see [DSRequestModifier.value](classes/DSRequestModifier.md#attr-dsrequestmodifiervalue) for details.
 
 See below some examples of [OperationBinding.criteria](classes/OperationBinding.md#attr-operationbindingcriteria) declarations:
 
@@ -4528,7 +4504,7 @@ An object containing sufficient context to unambiguously identify a single node 
 ## Object: Operator
 
 ### Description
-Specification of an operator for use in filtering, for example "equals". Use with [DataSource.addSearchOperator](classes/DataSource_2.md#method-datasourceaddsearchoperator) to define custom filtering behaviors for client-side filtering.
+Specification of an operator for use in filtering, for example "equals". Use with [DataSource.addSearchOperator](classes/DataSource_1.md#method-datasourceaddsearchoperator) to define custom filtering behaviors for client-side filtering.
 
 ### Groups
 

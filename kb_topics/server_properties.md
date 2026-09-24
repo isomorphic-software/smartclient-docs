@@ -34,6 +34,7 @@ _Note that this is not intended to be an exhaustive list_:
 *   `authentication.superuserRole` can be used to identify a [user role](../classes/OperationBinding.md#attr-operationbindingrequiresrole) as the super user role.
 *   This file can contain [DataBase configuration settings for SQL DataSources](dbConfigTool.md#kb-topic-database-configuration). Note that the [Admin Console tool](adminConsole.md#kb-topic-admin-console) provides an interface for adding database configuration blocks to server.properties without the need to edit the file by hand.
 *   This file can contain [SQL Connection pooling](sqlConnectionPooling.md#kb-topic-sql-connection-pooling) settings for SQL DataSources.
+*   `adminConsole.testConnection.timeout` caps, in seconds, how long the [Admin Console](adminConsole.md#kb-topic-admin-console) waits for the status check of a configured database. A database still unanswered at the deadline is listed with the status "Timed out after N seconds". Unset or 0, the default, waits for each driver's own timeouts.
 *   This file can contain various configuration properties used for [jpaIntegration](jpaIntegration.md#kb-topic-integration-with-jpa)
 *   This file can contain SMTP configuration settings for the [OperationBinding.mail](../classes/Mail.md#class-mail) feature.
 *   This file can contain configuration settings for the [optional RealTimeMessaging module](messaging.md#kb-topic-real-time-messaging).

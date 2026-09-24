@@ -306,14 +306,6 @@ Signature: `reportSaved(report)` where `report` is the saved report record (`Obj
 **Flags**: IRW
 
 ---
-## Attr: ReportBuilder.scheduleRecipientOptions
-
-### Description
-Suggested recipient email addresses offered in the Schedule dialog's recipients picker. Empty by default; a deployment supplies its own distribution lists / known addresses. Users may still type any valid email (validated on entry).
-
-**Flags**: IRW
-
----
 ## Attr: ReportBuilder.defaultExportFormat
 
 ### Description
@@ -622,24 +614,12 @@ DataSource ID (or DataSource instance) to persist AI prompt history into. If uns
 **Flags**: IRW
 
 ---
-## Attr: ReportBuilder.scheduleTimeZones
-
-### Description
-Optional override for the Schedule dialog's time-zone list: a valueMap of IANA zone id to friendly "Location (Zone Name)" display. When null, [SchedulerItem](#class-scheduleritem)'s curated default (major world zones) is used; set this to offer a smaller / custom set.
-
-**Flags**: IRW
-
----
 ## Attr: ReportBuilder.projectRunnerURL
 
 ### Description
 URL of the project runner that serves published reports.
 
 The default names the directory, because the ReportBuilder is not served from the tools directory the way Reify is, so Reify's own bare `"projectRunner.jsp"` would not resolve here. It is written with the `[ISOMORPHIC]` prefix rather than a leading slash so that it survives deployment under a servlet context path.
-
-### See Also
-
-- [ReportBuilder.getReportDeploymentURL](#method-reportbuildergetreportdeploymenturl)
 
 **Flags**: IR
 
@@ -985,22 +965,6 @@ This is the edit context's own undo -- the same mechanism Reify uses -- so it co
 
 ### Description
 Redo is not currently supported for reports, so this method does nothing. See [ReportBuilder.showRedo](#attr-reportbuildershowredo).
-
----
-## Method: ReportBuilder.getReportDeploymentURL
-
-### Description
-Returns the stable URL at which a published report is served. The report's publication project carries the report's name, so this URL does not change between publishes; content changes reach it because the project references the screen by name.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| fileName | [String](#type-string) | false | — | stored report identity |
-
-### Returns
-
-`[String](#type-string)` — URL serving the report
 
 ---
 ## Method: ReportBuilder.getReportDefinition

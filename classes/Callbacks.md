@@ -13,7 +13,7 @@ This object cannot be used; it exists for documentation purposes only as a place
 ## Method: Callbacks.BuildHilitesResponseCallback
 
 ### Description
-Callback fired with the result of a request to build one or more [Hilite](../reference.md#object-hilite) objects.
+Callback fired with the result of a request to build one or more [Hilite](../reference_2.md#object-hilite) objects.
 
 ### Parameters
 

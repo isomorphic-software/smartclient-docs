@@ -4779,7 +4779,7 @@ Additional DrawItems added in this method will appear underneath data elements s
 ### Description
 Returns the minimum cluster size (for clustered charts), or minimum bar thickness (for histogram or stacked charts) for the specified [data label\\n facet](#method-facetchartgetdatalabelfacet) value. Only applicable to a column, bar, or histogram chart. No default implementation. Both this minimum and [FacetChart.minBarThickness](#attr-facetchartminbarthickness) are used together to determine the effective minimum of the cluster or bar stack.
 
-Per-facet-value minimum cluster sizes aren't supported for [multi-axis](../reference.md#object-metricsettings) charts, in which multiple chart types are overlaid onto the same chart.
+Per-facet-value minimum cluster sizes aren't supported for [multi-axis](../reference_2.md#object-metricsettings) charts, in which multiple chart types are overlaid onto the same chart.
 
 Note that this method is simply an override point, since it has no default implementation.
 

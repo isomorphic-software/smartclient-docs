@@ -303,7 +303,7 @@ Clears an action registered to fire on a specific a keyPress event via the [Page
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| actionID | [KeyName](../reference.md#type-keyname) | false | — | Name of key to clear registry entries for. |
+| actionID | [KeyName](../reference_2.md#type-keyname) | false | — | Name of key to clear registry entries for. |
 | target | [Object](../reference.md#type-object) | true | — | target specified when the action was registered for the key. |
 
 ### Groups
